@@ -1,0 +1,56 @@
+---
+interface Props {
+  facts: { label: string; value: string }[];
+  /** side: desktop rail only · inline: narrow screens only · always: no responsive hiding */
+  placement?: "side" | "inline" | "always";
+}
+const { facts, placement = "always" } = Astro.props;
+const headingId = `facts-${placement}`;
+---
+
+{facts.length > 0 && (
+  <aside class={`facts facts--${placement}`} aria-labelledby={headingId}>
+    <h2 id={headingId} class="facts__head">الأرقام</h2>
+    <dl class="facts__list">
+      {facts.map((f) => (
+        <div class="facts__item">
+          <dd class="facts__value"><bdi>{f.value}</bdi></dd>
+          {f.label && <dt class="facts__label">{f.label}</dt>}
+        </div>
+      ))}
+    </dl>
+  </aside>
+)}
+
+<style>
+  .facts { background: var(--paper-2); padding: 1.1rem 1.2rem 1.2rem; position: relative; }
+  .facts__head {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-weight: 800;
+    font-size: 0.85rem;
+    line-height: 1;
+    padding: 0.4rem 0.6rem 0.3rem;
+    background: var(--spot);
+    color: var(--on-spot);
+    margin-bottom: 0.75rem;
+  }
+  .facts__list { margin: 0; display: grid; gap: 0.7rem; }
+  .facts__item { display: flex; flex-direction: column; gap: 0.1rem; }
+  .facts__value {
+    margin: 0;
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 1.55rem;
+    line-height: 1.15;
+    color: var(--spot-ink);
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+  .facts__label { font-family: var(--font-ui); font-weight: 500; font-size: 0.92rem; color: var(--ink-2); line-height: 1.4; }
+  .facts--inline { display: none; margin-bottom: 1.5rem; }
+  .facts--inline .facts__list { grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 0.9rem 1.5rem; }
+  @media (max-width: 1023px) {
+    .facts--inline { display: block; }
+    .facts--side { display: none; }
+  }
+</style>

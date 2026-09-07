@@ -1,0 +1,47 @@
+---
+/**
+ * The picture plate of a story: a licensed photograph printed as a one-colour
+ * halftone on the section field, or the story's generated cover art.
+ */
+import type { Article } from "@lib/articles";
+import { coverSvg } from "@lib/cover";
+import { getSection } from "@lib/sections";
+
+interface Props {
+  article: Article;
+  ratio?: "16/10" | "16/9" | "4/3" | "1/1" | "3/2" | "21/9";
+  eager?: boolean;
+  /** Full colour photo (article page) instead of the duotone plate. */
+  natural?: boolean;
+  sizes?: string;
+  class?: string;
+}
+const { article, ratio = "16/10", eager = false, natural = false, sizes = "(min-width: 1024px) 60vw, 100vw", class: className = "" } = Astro.props;
+const { image, slug, section } = article.data;
+const sec = getSection(section);
+const art = image ? "" : coverSvg(slug, { color: sec.color, ground: "field" });
+const classes = ["plate", image ? (natural ? "plate--photo" : "") : "plate--art", className].filter(Boolean).join(" ");
+---
+
+<div class={classes} style={`aspect-ratio:${ratio}`} data-section={section}>
+  {image ? (
+    <img
+      src={image.url}
+      width={image.width ?? 1280}
+      height={image.height ?? 800}
+      alt={image.alt}
+      loading={eager ? "eager" : "lazy"}
+      decoding="async"
+      fetchpriority={eager ? "high" : "auto"}
+      sizes={sizes}
+      referrerpolicy="no-referrer"
+    />
+  ) : (
+    <Fragment set:html={art} />
+  )}
+</div>
+
+<style>
+  .plate :global(svg) { width: 100%; height: 100%; }
+  .plate { width: 100%; }
+</style>

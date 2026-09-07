@@ -1,0 +1,73 @@
+---
+import { formatShortDate } from "@lib/format";
+
+interface Props {
+  sources: { name: string; nameEn?: string; title: string; url: string; publishedAt?: string | null; lang?: string }[];
+  models?: Record<string, string | null> | undefined;
+  explainer?: boolean;
+}
+const { sources, models, explainer = false } = Astro.props;
+function host(url: string) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return "";
+  }
+}
+const modelList = Object.values(models ?? {})
+  .filter((m): m is string => Boolean(m))
+  .flatMap((m) => m.split("→").map((s) => s.trim()))
+  .map((m) => m.replace(/:free$/, ""))
+  .filter((m, i, arr) => arr.indexOf(m) === i);
+---
+
+<section class="sources" aria-labelledby="sources-title">
+  <h2 id="sources-title" class="sources__head">{explainer ? "مواد ذات صلة في خازندار" : "المصادر"}</h2>
+  {sources.length > 0 ? (
+    <ol class="sources__list">
+      {sources.map((s) => (
+        <li class="sources__item">
+          <span class="sources__name ui">{s.name}</span>
+          <a class="sources__title" href={s.url} rel={s.url.startsWith("/") ? undefined : "noopener nofollow"} target={s.url.startsWith("/") ? undefined : "_blank"}>
+            <bdi>{s.title}</bdi>
+          </a>
+          <span class="sources__host ui">
+            {host(s.url) && <bdi dir="ltr">{host(s.url)}</bdi>}
+            {s.publishedAt && <time datetime={s.publishedAt}>{formatShortDate(s.publishedAt)}</time>}
+          </span>
+        </li>
+      ))}
+    </ol>
+  ) : (
+    <p class="sources__none">شرح مفاهيمي يستند إلى التعريفات الاقتصادية المتعارف عليها؛ الأرقام الواردة فيه أمثلة توضيحية لا إحصاءات جارية.</p>
+  )}
+  <p class="sources__note">
+    {explainer
+      ? "كُتب هذا الشرح آلياً بنماذج لغوية ثم رُوجع ببرنامج تدقيق مستقل. "
+      : "كُتب هذا المقال آلياً استناداً إلى المصادر أعلاه حصراً، ورُوجعت وقائعه وأرقامه ببرنامج تدقيق مستقل قبل النشر. "}
+    عند أي تعارض يُعتدّ بالمصدر الأصلي.
+    {modelList.length > 0 && (
+      <span class="sources__models"> النماذج: <bdi dir="ltr">{modelList.join(", ")}</bdi></span>
+    )}
+  </p>
+</section>
+
+<style>
+  .sources { border-top: 3px solid var(--ink); padding-top: 0.9rem; margin-top: 2.5rem; }
+  .sources__head { font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; line-height: 1.3; }
+  .sources__list { margin-top: 0.75rem; display: grid; gap: 0.6rem; counter-reset: src; }
+  .sources__item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.15rem 0.75rem;
+    align-items: baseline;
+    padding-block: 0.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  .sources__item:first-child { border-top: 0; }
+  .sources__name { font-weight: 800; font-size: 0.9rem; color: var(--spot-ink); white-space: nowrap; }
+  .sources__title { font-family: var(--font-body); font-size: 1.02rem; line-height: 1.6; color: var(--ink); overflow-wrap: anywhere; }
+  .sources__host { grid-column: 2; display: flex; gap: 0.6rem; font-size: 0.8rem; color: var(--ink-3); }
+  .sources__none, .sources__note { font-family: var(--font-ui); font-size: 0.9rem; line-height: 1.6; color: var(--ink-3); margin-top: 0.9rem; }
+  .sources__models { display: block; margin-top: 0.2rem; }
+</style>

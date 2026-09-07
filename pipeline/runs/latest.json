@@ -1,0 +1,40 @@
+{
+  "mode": "explainer",
+  "startedAt": "2026-09-07T13:40:29.927Z",
+  "durationSec": 126,
+  "published": 1,
+  "report": [
+    {
+      "headline": "مؤتمر أوبك+ وتأثيره على أسعار النفط",
+      "section": "explainers",
+      "outcome": "published",
+      "slug": "opec-plus-meetings-oil-prices-explainer-06a727",
+      "title": "كيف يُشكّل مؤتمر أوبك+ أسعار النفط العالمية؟",
+      "score": 6
+    }
+  ],
+  "llm": {
+    "calls": 5,
+    "failures": 0,
+    "promptTokens": 13575,
+    "completionTokens": 4856,
+    "byModel": {
+      "minimax/minimax-m3:free": 4,
+      "nvidia/nemotron-3-super-120b-a12b:free": 1
+    }
+  },
+  "log": [
+    "[13:40:29] newsroom start mode=explainer limit=6 dry-run=false",
+    "[13:40:32] llm ok role=editor model=minimax/minimax-m3:free attempt=1 ms=2863 tokens=157",
+    "[13:40:32] explainer topic: مؤتمر أوبك+ وتأثيره على أسعار النفط (OPEC+ meetings and their influence on oil prices)",
+    "[13:41:17] llm ok role=writer model=minimax/minimax-m3:free attempt=1 ms=44893 tokens=1637",
+    "[13:41:46] llm ok role=critic model=nvidia/nemotron-3-super-120b-a12b:free attempt=1 ms=28504 tokens=1706",
+    "[13:41:46] critic explainer: revise score=6",
+    "[13:42:03] llm ok role=writer model=minimax/minimax-m3:free attempt=1 ms=17110 tokens=1290",
+    "[13:42:04] commons \"oil refinery at sunset aerial\": 1 usable of 1",
+    "[13:42:05] commons \"OPEC ministers press conference table\": 0 usable of 0",
+    "[13:42:09] commons \"OPEC ministers\": 5 usable of 12",
+    "[13:42:36] llm ok role=vision model=minimax/minimax-m3:free attempt=1 ms=25812 tokens=66",
+    "[13:42:36] published explainer \"كيف يُشكّل مؤتمر أوبك+ أسعار النفط العالمية؟\" -> opec-plus-meetings-oil-prices-explainer-06a727"
+  ]
+}

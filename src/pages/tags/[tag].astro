@@ -1,0 +1,33 @@
+---
+import Base from "@layouts/Base.astro";
+import StoryCard from "@components/StoryCard.astro";
+import { getArticles, allTags } from "@lib/articles";
+
+export async function getStaticPaths() {
+  const articles = await getArticles();
+  return [...allTags(articles).entries()].map(([tag, items]) => ({ params: { tag }, props: { tag, items } }));
+}
+
+const { tag, items } = Astro.props;
+const n = items.length;
+const countWord = n === 1 ? "مادة" : n === 2 ? "مادتان" : n <= 10 ? "مواد" : "مادة";
+---
+
+<Base title={`وسم: ${tag}`} description={`كل مواد خازندار الموسومة بـ ${tag}`} path={`/tags/${encodeURIComponent(tag)}/`}>
+  <section class="wrap block">
+    <header class="tag__head">
+      <h1 class="page-title">{tag}</h1>
+      <p class="page-intro"><bdi>{n}</bdi> {countWord} في خازندار</p>
+    </header>
+    <div class="grid grid--stories">
+      {items.map((a, i) => (
+        <StoryCard article={a} variant="tile" class="span-6 lg-span-4" eager={i < 3} />
+      ))}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .tag__head { border-top: 3px solid var(--saffron); padding-top: 0.9rem; margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+  .tag__head .page-title { color: var(--ink); }
+</style>

@@ -1,0 +1,90 @@
+name: Newsroom
+
+on:
+  schedule:
+    # News every three hours; one explainer a day.
+    - cron: "23 */3 * * *"
+    - cron: "41 5 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: news or explainer
+        default: news
+        type: choice
+        options: [news, explainer]
+      limit:
+        description: maximum stories to publish
+        default: "6"
+        type: string
+
+concurrency:
+  group: newsroom
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    name: Write and publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    outputs:
+      published: ${{ steps.newsroom.outputs.published }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      - name: Decide mode
+        id: mode
+        shell: bash
+        run: |
+          mode="${{ inputs.mode }}"
+          if [ -z "$mode" ]; then
+            if [ "${{ github.event.schedule }}" = "41 5 * * *" ]; then mode=explainer; else mode=news; fi
+          fi
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          echo "limit=${{ inputs.limit || '6' }}" >> "$GITHUB_OUTPUT"
+
+      - name: Run the newsroom
+        id: newsroom
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: node pipeline/run.mjs --mode=${{ steps.mode.outputs.mode }} --limit=${{ steps.mode.outputs.limit }}
+
+      - name: Commit new articles
+        if: steps.newsroom.outputs.published != '0'
+        shell: bash
+        run: |
+          git config user.name "khazendar-newsroom"
+          git config user.email "newsroom@users.noreply.github.com"
+          git add content/articles pipeline/state pipeline/runs
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+            exit 0
+          fi
+          git commit -m "newsroom: ${{ steps.newsroom.outputs.published }} new ${{ steps.mode.outputs.mode }} item(s)"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then exit 0; fi
+            git pull --rebase origin main || true
+          done
+          git push origin HEAD:main
+
+  deploy:
+    name: Build and deploy
+    needs: run
+    if: needs.run.outputs.published != '0' && needs.run.outputs.published != ''
+    uses: ./.github/workflows/deploy.yml
+    permissions:
+      contents: read
+      pages: write
+      id-token: write

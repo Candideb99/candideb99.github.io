@@ -1,0 +1,96 @@
+---
+import Base from "@layouts/Base.astro";
+---
+
+<Base title="بحث" description="ابحث في أرشيف خازندار" path="/search/" noindex>
+  <section class="wrap block search" data-pagefind-ignore>
+    <header class="search__head">
+      <h1 class="page-title">بحث</h1>
+      <p class="page-intro">ابحث في كل ما نشره خازندار: العناوين والنصوص والوسوم.</p>
+    </header>
+    <form class="search__form" role="search" action="/search/" method="get" onsubmit="return false">
+      <label class="visually-hidden" for="q">عبارة البحث</label>
+      <input id="q" class="search__input" type="search" name="q" placeholder="مثال: التضخم في منطقة اليورو" autocomplete="off" autofocus />
+    </form>
+    <div id="results" class="search__results" aria-live="polite"></div>
+  </section>
+</Base>
+
+<script>
+  const input = document.getElementById("q") as HTMLInputElement;
+  const results = document.getElementById("results") as HTMLDivElement;
+  let pagefind: any = null;
+  let timer: number | undefined;
+
+  async function load() {
+    if (pagefind) return pagefind;
+    try {
+      // @ts-ignore — generated at build time by pagefind
+      pagefind = await import(/* @vite-ignore */ "/pagefind/pagefind.js");
+      await pagefind.options({ excerptLength: 30 });
+      await pagefind.init();
+    } catch {
+      results.innerHTML = '<p class="search__hint">البحث يعمل على النسخة المنشورة من الموقع فقط.</p>';
+    }
+    return pagefind;
+  }
+
+  async function run() {
+    const q = input.value.trim();
+    if (!q) {
+      results.innerHTML = "";
+      return;
+    }
+    const pf = await load();
+    if (!pf) return;
+    const search = await pf.search(q);
+    if (!search.results.length) {
+      results.innerHTML = '<p class="search__hint">لا نتائج. جرّب كلمة أخرى أو اسم مؤسسة.</p>';
+      return;
+    }
+    const items = await Promise.all(search.results.slice(0, 20).map((r: any) => r.data()));
+    results.innerHTML = `<p class="search__count ui"><bdi>${search.results.length}</bdi> نتيجة</p><ol class="search__list">${items
+      .map(
+        (d: any) => `<li class="search__item" data-section="${d.meta.section ?? ""}">
+          <a class="search__title" href="${d.url}">${d.meta.title ?? ""}</a>
+          <p class="search__excerpt">${d.excerpt}</p>
+          <p class="meta">${d.meta.sectionName ? `<span>${d.meta.sectionName}</span>` : ""}${d.meta.date ? `<time>${d.meta.date}</time>` : ""}</p>
+        </li>`,
+      )
+      .join("")}</ol>`;
+  }
+
+  input.addEventListener("input", () => {
+    window.clearTimeout(timer);
+    timer = window.setTimeout(run, 180);
+  });
+  const initial = new URLSearchParams(location.search).get("q");
+  if (initial) {
+    input.value = initial;
+    run();
+  }
+</script>
+
+<style>
+  .search__head { border-top: 3px solid var(--saffron); padding-top: 0.9rem; }
+  .search__head .page-title { color: var(--ink); }
+  .search__form { margin-top: 1.5rem; max-width: 40rem; }
+  .search__input {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 1.3rem;
+    padding: 0.7rem 1rem;
+    border: 2px solid var(--ink);
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .search__input:focus { outline: 3px solid var(--saffron); outline-offset: 2px; }
+  .search__results { margin-top: 1.5rem; max-width: 46rem; }
+  .search :global(.search__hint), .search :global(.search__count) { font-family: var(--font-ui); color: var(--ink-3); }
+  .search :global(.search__list) { display: grid; gap: 1rem; margin-top: 0.75rem; }
+  .search :global(.search__item) { border-top: 1px solid var(--rule); padding-top: 0.9rem; }
+  .search :global(.search__title) { font-family: var(--font-title); font-weight: 700; font-size: 1.2rem; line-height: 1.4; text-decoration: none; }
+  .search :global(.search__title:hover) { text-decoration: underline; text-decoration-color: var(--spot); }
+  .search :global(.search__excerpt) { font-size: 1rem; line-height: 1.7; color: var(--ink-2); margin-top: 0.3rem; }
+  .search :global(.search__excerpt mark) { background: var(--saffron); color: #171512; padding-inline: 0.1em; }
+</style>

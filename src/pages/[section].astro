@@ -1,0 +1,49 @@
+---
+import Base from "@layouts/Base.astro";
+import StoryCard from "@components/StoryCard.astro";
+import { getArticlesBySection } from "@lib/articles";
+import { sections } from "@lib/sections";
+
+export async function getStaticPaths() {
+  return sections.map((section) => ({ params: { section: section.id }, props: { section } }));
+}
+
+const { section } = Astro.props;
+const articles = await getArticlesBySection(section.id);
+const [first, ...others] = articles;
+---
+
+<Base title={section.name} description={`${section.name} في خازندار: ${section.description}`} path={`/${section.id}/`} section={section.id}>
+  <section class="wrap block" data-section={section.id}>
+    <header class="section-page__head">
+      <h1 class="page-title">{section.name}</h1>
+      <p class="page-intro">{section.description}</p>
+    </header>
+
+    {articles.length === 0 ? (
+      <p class="section-page__empty">لم تُنشر مواد في هذا القسم بعد. غرفة الأخبار تعمل على مدار الساعة.</p>
+    ) : (
+      <div class="grid grid--stories section-page__grid">
+        <StoryCard article={first} variant="tile" ratio="3/2" class="span-12 lg-span-8 section-page__lead" showSection={false} eager />
+        <div class="span-12 lg-span-4 section-page__rail">
+          {others.slice(0, 4).map((a) => (
+            <StoryCard article={a} variant="row" showSection={false} />
+          ))}
+        </div>
+        {others.slice(4).map((a) => (
+          <StoryCard article={a} variant="tile" class="span-6 lg-span-4" showSection={false} />
+        ))}
+      </div>
+    )}
+  </section>
+</Base>
+
+<style>
+  .section-page__head { border-top: 3px solid var(--spot); padding-top: 0.9rem; margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+  .section-page__empty { font-family: var(--font-ui); color: var(--ink-3); }
+  .section-page__rail { display: grid; gap: 1rem; align-content: start; }
+  .section-page__rail > :global(.card--row) { border-top: 1px solid var(--rule); padding-top: 1rem; }
+  .section-page__rail > :global(.card--row:first-child) { border-top: 0; padding-top: 0; }
+  .section-page__lead :global(.card__title) { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem); }
+  .section-page__lead :global(.card__summary) { font-size: 1.1rem; }
+</style>

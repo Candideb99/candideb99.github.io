@@ -1,0 +1,60 @@
+---
+import type { Article } from "@lib/articles";
+import { articleHref } from "@lib/articles";
+import { getSection, sectionHref } from "@lib/sections";
+import { excerpt, timeAgo } from "@lib/format";
+import Plate from "./Plate.astro";
+
+interface Props {
+  article: Article;
+  /** tile: plate above text · row: small plate beside text · text: title and meta only */
+  variant?: "tile" | "row" | "text";
+  eager?: boolean;
+  showSection?: boolean;
+  showExcerpt?: boolean;
+  ratio?: "16/10" | "16/9" | "4/3" | "3/2";
+  class?: string;
+}
+const { article, variant = "tile", eager = false, showSection = true, showExcerpt = variant !== "text", ratio = "4/3", class: className = "" } = Astro.props;
+const { title, subtitle, section, publishedAt, kind } = article.data;
+const sec = getSection(section);
+const href = articleHref(article);
+const summary = excerpt(subtitle || article.data.lede, variant === "tile" ? 150 : 110);
+---
+
+<article class={`card card--${variant} ${className}`} data-section={section}>
+  {variant !== "text" && (
+    <a class="card__plate" href={href} tabindex="-1" aria-hidden="true">
+      <Plate article={article} ratio={variant === "row" ? "1/1" : ratio} eager={eager} sizes={variant === "row" ? "120px" : "(min-width: 1024px) 33vw, (min-width: 720px) 50vw, 100vw"} />
+    </a>
+  )}
+  <div class="card__body">
+    <h3 class="card__title"><a href={href}>{title}</a></h3>
+    {showExcerpt && summary && <p class="card__summary">{summary}</p>}
+    <p class="meta card__meta">
+      {showSection && <a href={sectionHref(section)}>{kind === "explainer" ? "شرح" : sec.name}</a>}
+      <time datetime={publishedAt}>{timeAgo(publishedAt)}</time>
+    </p>
+  </div>
+</article>
+
+<style>
+  .card { display: flex; flex-direction: column; gap: 0.75rem; min-width: 0; }
+  .card__plate { display: block; text-decoration: none; }
+  .card__title { font-family: var(--font-title); font-weight: 700; font-size: 1.42rem; line-height: 1.45; }
+  .card__title a { text-decoration: none; }
+  .card__title a:hover { text-decoration: underline; text-decoration-color: var(--spot); text-decoration-thickness: 2px; }
+  .card__summary { font-family: var(--font-body); font-size: 1.02rem; line-height: 1.7; color: var(--ink-2); margin-top: 0.35rem; }
+  .card__meta { margin-top: 0.45rem; }
+
+  .card--row { flex-direction: row; align-items: flex-start; gap: 0.9rem; }
+  .card--row .card__plate { flex: 0 0 5.75rem; width: 5.75rem; }
+  .card--row .card__title { font-size: 1.22rem; line-height: 1.45; }
+  .card--row .card__summary { font-size: 0.95rem; line-height: 1.6; }
+
+  .card--text { border-top: 1px solid var(--rule); padding-top: 0.75rem; gap: 0.35rem; }
+  .card--text .card__title { font-size: 1.25rem; line-height: 1.45; }
+  .card--text .card__meta { margin-top: 0.15rem; }
+
+  .card--tile .card__body { padding-inline: 0; }
+</style>

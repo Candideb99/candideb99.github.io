@@ -1,0 +1,25 @@
+---
+import Base from "@layouts/Base.astro";
+import StoryCard from "@components/StoryCard.astro";
+import { getArticles } from "@lib/articles";
+const latest = (await getArticles()).slice(0, 3);
+---
+
+<Base title="الصفحة غير موجودة" description="لم نجد هذه الصفحة." path="/404" noindex>
+  <section class="wrap block notfound" data-pagefind-ignore>
+    <h1 class="page-title">هذه الصفحة ليست في هذا العدد</h1>
+    <p class="page-intro">ربما تغيّر العنوان أو حُذفت المادة. ابدأ من <a href="/">الصفحة الرئيسية</a> أو <a href="/search/">ابحث</a> عمّا تريد.</p>
+    {latest.length > 0 && (
+      <div class="grid grid--stories notfound__grid">
+        {latest.map((a) => (
+          <StoryCard article={a} variant="tile" class="span-4" />
+        ))}
+      </div>
+    )}
+  </section>
+</Base>
+
+<style>
+  .notfound .page-title { color: var(--ink); }
+  .notfound__grid { margin-top: 2.5rem; }
+</style>

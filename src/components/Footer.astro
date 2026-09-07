@@ -1,0 +1,68 @@
+---
+import site from "@data/site.json";
+import { sections, sectionHref } from "@lib/sections";
+const year = new Date().getUTCFullYear();
+---
+
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div class="footer__brand">
+      <a class="footer__wordmark" href="/">{site.name}</a>
+      <p class="footer__tagline">{site.tagline}</p>
+      <p class="footer__note">
+        صحيفة اقتصادية عربية تُكتب آلياً عدة مرات في اليوم من بيانات رسمية وتقارير موثوقة، ويُدقّق كل مقال ببرنامج مراجعة مستقل قبل نشره. كل مقال يعرض مصادره ليتمكن القارئ من التحقق بنفسه.
+      </p>
+    </div>
+    <nav class="footer__col" aria-label="الأقسام">
+      <h2 class="footer__head">الأقسام</h2>
+      <ul>
+        {sections.map((s) => (
+          <li data-section={s.id}><a href={sectionHref(s.id)}>{s.name}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <nav class="footer__col" aria-label="عن الموقع">
+      <h2 class="footer__head">خازندار</h2>
+      <ul>
+        <li><a href="/about/">عن خازندار</a></li>
+        <li><a href="/methodology/">المصادر والمنهجية</a></li>
+        <li><a href="/search/">بحث</a></li>
+        <li>
+          <a href="/rss.xml" class="footer__rss">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="19" r="2.4" /><path d="M3 10.5a10.5 10.5 0 0 1 10.5 10.5h-3A7.5 7.5 0 0 0 3 13.5zM3 3.5A17.5 17.5 0 0 1 20.5 21h-3A14.5 14.5 0 0 0 3 6.5z" /></svg>
+            خلاصة RSS
+          </a>
+        </li>
+        {site.contactEmail && <li><a href={`mailto:${site.contactEmail}`}>تواصل معنا</a></li>}
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap footer__bottom ui">
+    <p>© <bdi>{year}</bdi> {site.name}. النصوص أصلية ومنسوبة إلى مصادرها؛ الصور من ويكيميديا كومنز برخص مفتوحة مع ذكر المصوّر، أو رسوم أصلية.</p>
+    <p>قد تقع أخطاء رغم التدقيق. عند الشك، يُعتدّ بالمصدر الأصلي المذكور في المقال.</p>
+  </div>
+</footer>
+
+<style>
+  .footer { margin-top: clamp(2rem, 6vw, 4rem); background: var(--ink); color: var(--paper); }
+  @media (prefers-color-scheme: dark) { .footer { background: var(--paper-2); border-top: 1px solid var(--rule); } }
+  .footer__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    padding-block: clamp(2rem, 5vw, 3.5rem) 1.5rem;
+  }
+  .footer__wordmark { font-family: var(--font-display); font-weight: 700; font-size: 2.4rem; line-height: 1.2; text-decoration: none; color: var(--saffron); }
+  .footer__tagline { font-family: var(--font-title); font-weight: 400; font-size: 1.1rem; margin-top: 0.2rem; color: var(--paper); opacity: 0.85; }
+  .footer__note { margin-top: 1rem; font-size: 0.98rem; line-height: 1.8; max-width: 34rem; opacity: 0.85; }
+  .footer__head { font-family: var(--font-ui); font-weight: 800; font-size: 0.95rem; color: var(--saffron); margin-bottom: 0.6rem; }
+  .footer__col li { margin-block: 0.25rem; }
+  .footer__col a { font-family: var(--font-ui); font-weight: 500; font-size: 1rem; text-decoration: none; opacity: 0.9; }
+  .footer__col a:hover { text-decoration: underline; text-decoration-color: var(--saffron); opacity: 1; }
+  .footer__rss { display: inline-flex; align-items: center; gap: 0.35rem; }
+  .footer__bottom { border-top: 1px solid rgba(255, 255, 255, 0.15); padding-block: 1rem 1.5rem; font-size: 0.82rem; line-height: 1.6; opacity: 0.7; display: grid; gap: 0.25rem; }
+  @media (max-width: 719px) {
+    .footer__grid { grid-template-columns: 1fr 1fr; }
+    .footer__brand { grid-column: 1 / -1; }
+  }
+</style>

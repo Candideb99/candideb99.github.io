@@ -1,0 +1,110 @@
+---
+import Base from "@layouts/Base.astro";
+import Lead from "@components/Lead.astro";
+import StoryCard from "@components/StoryCard.astro";
+import { getArticles, pickLead } from "@lib/articles";
+import { newsSections, getSection, sectionHref } from "@lib/sections";
+import site from "@data/site.json";
+
+const articles = await getArticles();
+const lead = pickLead(articles);
+const rest = articles.filter((a) => a.id !== lead?.id);
+const contents = rest.slice(0, 6);
+const contentsIds = new Set(contents.map((a) => a.id));
+const explainers = articles.filter((a) => a.data.kind === "explainer").slice(0, 3);
+
+const perSection = newsSections.map((s) => ({ section: s, items: rest.filter((a) => a.data.section === s.id && a.data.kind === "news").slice(0, 5) }));
+// A section earns its own block from two stories; single stories gather in one shared grid.
+const blocks = perSection.filter((b) => b.items.length >= 2);
+const singles = perSection.filter((b) => b.items.length === 1).flatMap((b) => b.items);
+const explainerSection = getSection("explainers");
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "NewsMediaOrganization",
+  name: site.name,
+  alternateName: site.latinName,
+  url: site.url,
+  description: site.description,
+  inLanguage: "ar",
+};
+---
+
+<Base jsonLd={jsonLd}>
+  {lead ? (
+    <Lead lead={lead} contents={contents} />
+  ) : (
+    <section class="wrap block">
+      <h1 class="page-title">العدد الأول قيد الطباعة</h1>
+      <p class="page-intro">تعمل غرفة الأخبار الآن على أولى المواد. عد بعد قليل.</p>
+    </section>
+  )}
+
+  {blocks.map((b, index) => (
+    <section class={`wrap block section-block${index % 2 === 1 ? " section-block--alt" : ""}`} data-section={b.section.id} aria-labelledby={`sec-${b.section.id}`}>
+      <div class="section-head">
+        <div>
+          <h2 id={`sec-${b.section.id}`}><a href={sectionHref(b.section.id)}>{b.section.name}</a></h2>
+          <p>{b.section.description}</p>
+        </div>
+        <a class="more" href={sectionHref(b.section.id)}>كل مواد {b.section.name} ←</a>
+      </div>
+      <div class="grid grid--stories">
+        <StoryCard article={b.items[0]} variant="tile" class="span-6 lg-span-5" showSection={false} eager={index === 0 && !contentsIds.has(b.items[0].id)} />
+        <div class="span-6 lg-span-7 section-block__list">
+          {b.items.slice(1).map((a) => (
+            <StoryCard article={a} variant="row" showSection={false} />
+          ))}
+          {b.items.length === 1 && <p class="section-block__empty ui">مادة واحدة حتى الآن في هذا القسم.</p>}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  {singles.length > 0 && (
+    <section class="wrap block singles" aria-labelledby="sec-singles">
+      <div class="section-head singles__head">
+        <div>
+          <h2 id="sec-singles">أيضاً في هذا العدد</h2>
+          <p>مواد من أقسام أخرى.</p>
+        </div>
+      </div>
+      <div class="grid grid--stories">
+        {singles.map((a) => (
+          <StoryCard article={a} variant="tile" class="span-6 lg-span-4" />
+        ))}
+      </div>
+    </section>
+  )}
+
+  {explainers.length > 0 && (
+    <section class="block block--tint" data-section="explainers" aria-labelledby="sec-explainers">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2 id="sec-explainers"><a href={sectionHref("explainers")}>{explainerSection.name}</a></h2>
+            <p>{explainerSection.description}</p>
+          </div>
+          <a class="more" href={sectionHref("explainers")}>كل الشروح ←</a>
+        </div>
+        <div class="grid grid--stories">
+          {explainers.map((a) => (
+            <StoryCard article={a} variant="tile" class="span-4" showSection={false} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</Base>
+
+<style>
+  .section-block__list { display: grid; gap: 1rem; align-content: start; }
+  .section-block__list > :global(.card--row) { padding-top: 1rem; border-top: 1px solid var(--rule); }
+  .section-block__list > :global(.card--row:first-child) { padding-top: 0; border-top: 0; }
+  .section-block__empty { color: var(--ink-3); font-size: 0.9rem; }
+  .singles__head { border-top-color: var(--ink); }
+  .singles__head h2 { color: var(--ink); }
+  @media (min-width: 1024px) {
+    .section-block--alt .grid--stories > :global(.card--tile) { order: 2; }
+  }
+</style>

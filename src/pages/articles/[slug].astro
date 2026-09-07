@@ -1,0 +1,164 @@
+---
+import { render } from "astro:content";
+import Base from "@layouts/Base.astro";
+import Plate from "@components/Plate.astro";
+import KeyFacts from "@components/KeyFacts.astro";
+import Sources from "@components/Sources.astro";
+import StoryCard from "@components/StoryCard.astro";
+import { getArticles, related, articleHref } from "@lib/articles";
+import { getSection, sectionHref } from "@lib/sections";
+import { formatDate, formatTime, readingLabel, excerpt } from "@lib/format";
+import site from "@data/site.json";
+
+export async function getStaticPaths() {
+  const articles = await getArticles();
+  return articles.map((article) => ({ params: { slug: article.data.slug }, props: { article } }));
+}
+
+const { article } = Astro.props;
+const all = await getArticles();
+const { Content } = await render(article);
+const d = article.data;
+const sec = getSection(d.section);
+const isExplainer = d.kind === "explainer";
+const description = d.subtitle || excerpt(d.lede, 160);
+const ogImage = d.image?.url ?? `/og/${d.slug}.png`;
+const more = related(article, all, 4);
+const path = articleHref(article);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": isExplainer ? "Article" : "NewsArticle",
+  headline: d.title,
+  description,
+  inLanguage: "ar",
+  datePublished: d.publishedAt,
+  dateModified: d.updatedAt ?? d.publishedAt,
+  image: [new URL(ogImage, site.url).toString()],
+  articleSection: sec.name,
+  keywords: d.tags.join(", "),
+  author: { "@type": "Organization", name: site.name, url: site.url },
+  publisher: { "@type": "Organization", name: site.name, url: site.url, logo: { "@type": "ImageObject", url: new URL("/og-default.png", site.url).toString() } },
+  mainEntityOfPage: new URL(path, site.url).toString(),
+  isBasedOn: d.sources.filter((s) => !s.url.startsWith("/")).map((s) => s.url),
+};
+---
+
+<Base title={d.title} description={description} path={path} image={ogImage} imageAlt={d.image?.alt} type="article" section={d.section} jsonLd={jsonLd} publishedAt={d.publishedAt} updatedAt={d.updatedAt}>
+  <article class="article" data-section={d.section} data-pagefind-body data-pagefind-meta={`section:${d.section}, sectionName:${sec.name}, date:${formatDate(d.publishedAt, { weekday: false })}`}>
+    <header class="wrap article__head">
+      <h1 class="article__title" data-pagefind-meta="title">{d.title}</h1>
+      {d.subtitle && <p class="article__dek">{d.subtitle}</p>}
+      <p class="meta article__meta">
+        <a href={sectionHref(d.section)}>{isExplainer ? "شرح مفاهيم" : sec.name}</a>
+        <time datetime={d.publishedAt}>{formatDate(d.publishedAt)} · {formatTime(d.publishedAt)}</time>
+        <span>{readingLabel(d.readingMinutes)}</span>
+      </p>
+    </header>
+
+    <figure class="wrap article__figure">
+      <Plate article={article} ratio={d.image ? "16/9" : "21/9"} eager natural sizes="(min-width: 1280px) 1240px, 100vw" />
+      {d.image && (
+        <figcaption class="article__caption ui">
+          <span>{d.image.alt}</span>
+          {d.image.credit && (
+            <span class="article__credit">
+              الصورة: {d.image.pageUrl ? <a href={d.image.pageUrl} rel="noopener" target="_blank"><bdi>{d.image.credit}</bdi></a> : <bdi>{d.image.credit}</bdi>}
+            </span>
+          )}
+        </figcaption>
+      )}
+    </figure>
+
+    <div class="wrap article__layout">
+      <div class="article__main">
+        {d.lede && <p class="article__lede">{d.lede}</p>}
+        <KeyFacts facts={d.keyFacts} placement="inline" />
+        <div class="prose">
+          <Content />
+        </div>
+        {d.whyItMatters && (
+          <section class="why" aria-labelledby="why-title">
+            <h2 id="why-title" class="why__head">لماذا يهمّ</h2>
+            <p class="why__text">{d.whyItMatters}</p>
+          </section>
+        )}
+        {d.tags.length > 0 && (
+          <p class="tags">
+            {d.tags.map((t) => (
+              <a class="pill pill--spot" href={`/tags/${encodeURIComponent(t)}/`}>{t}</a>
+            ))}
+          </p>
+        )}
+        <Sources sources={d.sources} models={d.models} explainer={isExplainer} />
+      </div>
+      <aside class="article__side">
+        <KeyFacts facts={d.keyFacts} placement="side" />
+        {more.length > 0 && (
+          <section class="side-related" aria-labelledby="side-related-title">
+            <h2 id="side-related-title" class="side-related__head">اقرأ أيضاً</h2>
+            <div class="side-related__list">
+              {more.map((a) => (
+                <StoryCard article={a} variant="row" showExcerpt={false} />
+              ))}
+            </div>
+          </section>
+        )}
+      </aside>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .article__head { padding-top: clamp(1.5rem, 4vw, 3rem); max-width: 56rem; }
+  .article__title {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: clamp(1.85rem, 1.3rem + 2.4vw, 3rem);
+    line-height: 1.28;
+    color: var(--ink);
+  }
+  .article__dek {
+    font-family: var(--font-title);
+    font-weight: 400;
+    font-size: clamp(1.15rem, 1rem + 0.6vw, 1.4rem);
+    line-height: 1.65;
+    color: var(--ink-2);
+    margin-top: 0.75rem;
+    max-width: 46rem;
+  }
+  .article__meta { margin-top: 1rem; font-size: 0.95rem; }
+  .article__figure { margin: clamp(1.25rem, 3vw, 2rem) auto 0; }
+  .article__caption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.3rem 1.5rem; margin-top: 0.55rem; font-size: 0.85rem; color: var(--ink-3); line-height: 1.5; }
+  .article__credit a { color: var(--ink-3); }
+
+  .article__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 18rem;
+    gap: clamp(1.5rem, 4vw, 4rem);
+    padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .article__main { max-width: var(--measure); }
+  .article__lede {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.45rem);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .why { margin-top: 2rem; padding: 1.25rem 1.4rem 1.4rem; background: var(--paper-2); }
+  .why__head { display: inline-block; font-family: var(--font-ui); font-weight: 800; font-size: 0.85rem; line-height: 1; padding: 0.4rem 0.6rem 0.3rem; background: var(--ink); color: var(--paper); margin-bottom: 0.7rem; }
+  .why__text { font-family: var(--font-body); font-size: 1.12rem; line-height: 1.9; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.75rem; }
+
+  .article__side { display: grid; gap: 2rem; align-content: start; position: sticky; top: 1rem; }
+  .side-related__head { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; line-height: 1.3; border-top: 3px solid var(--ink); padding-top: 0.6rem; margin-bottom: 0.75rem; }
+  .side-related__list { display: grid; gap: 0.9rem; }
+  .side-related__list > :global(.card--row) { border-top: 1px solid var(--rule); padding-top: 0.9rem; }
+  .side-related__list > :global(.card--row:first-child) { border-top: 0; padding-top: 0; }
+
+  @media (max-width: 1023px) {
+    .article__layout { grid-template-columns: 1fr; }
+    .article__side { position: static; }
+  }
+</style>
