@@ -44,8 +44,8 @@ const year = new Date().getUTCFullYear();
 </footer>
 
 <style>
-  .footer { margin-top: clamp(2rem, 6vw, 4rem); background: var(--ink); color: var(--paper); }
-  @media (prefers-color-scheme: dark) { .footer { background: var(--paper-2); border-top: 1px solid var(--rule); } }
+  .footer { margin-top: clamp(2rem, 6vw, 4rem); background: var(--ink); color: var(--paper); --footer-rule: rgba(255, 255, 255, 0.15); }
+  @media (prefers-color-scheme: dark) { .footer { background: var(--paper-2); color: var(--ink); border-top: 1px solid var(--rule); --footer-rule: var(--rule); } }
   .footer__grid {
     display: grid;
     grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
@@ -53,14 +53,14 @@ const year = new Date().getUTCFullYear();
     padding-block: clamp(2rem, 5vw, 3.5rem) 1.5rem;
   }
   .footer__wordmark { font-family: var(--font-display); font-weight: 700; font-size: 2.4rem; line-height: 1.2; text-decoration: none; color: var(--saffron); }
-  .footer__tagline { font-family: var(--font-title); font-weight: 400; font-size: 1.1rem; margin-top: 0.2rem; color: var(--paper); opacity: 0.85; }
+  .footer__tagline { font-family: var(--font-title); font-weight: 400; font-size: 1.1rem; margin-top: 0.2rem; color: inherit; opacity: 0.85; }
   .footer__note { margin-top: 1rem; font-size: 0.98rem; line-height: 1.8; max-width: 34rem; opacity: 0.85; }
   .footer__head { font-family: var(--font-ui); font-weight: 800; font-size: 0.95rem; color: var(--saffron); margin-bottom: 0.6rem; }
   .footer__col li { margin-block: 0.25rem; }
   .footer__col a { font-family: var(--font-ui); font-weight: 500; font-size: 1rem; text-decoration: none; opacity: 0.9; }
   .footer__col a:hover { text-decoration: underline; text-decoration-color: var(--saffron); opacity: 1; }
   .footer__rss { display: inline-flex; align-items: center; gap: 0.35rem; }
-  .footer__bottom { border-top: 1px solid rgba(255, 255, 255, 0.15); padding-block: 1rem 1.5rem; font-size: 0.82rem; line-height: 1.6; opacity: 0.7; display: grid; gap: 0.25rem; }
+  .footer__bottom { border-top: 1px solid var(--footer-rule); padding-block: 1rem 1.5rem; font-size: 0.82rem; line-height: 1.6; opacity: 0.75; display: grid; gap: 0.25rem; }
   @media (max-width: 719px) {
     .footer__grid { grid-template-columns: 1fr 1fr; }
     .footer__brand { grid-column: 1 / -1; }

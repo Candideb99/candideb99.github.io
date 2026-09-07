@@ -18,6 +18,8 @@ const perSection = newsSections.map((s) => ({ section: s, items: rest.filter((a)
 const blocks = perSection.filter((b) => b.items.length >= 2);
 const singles = perSection.filter((b) => b.items.length === 1).flatMap((b) => b.items);
 const explainerSection = getSection("explainers");
+/** Grid span from item count, so a lone story or a pair fills the row instead of leaving holes. */
+const spanFor = (count: number) => (count === 1 ? "span-12 lg-span-8" : count === 2 ? "span-6" : "span-6 lg-span-4");
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -71,7 +73,7 @@ const jsonLd = {
       </div>
       <div class="grid grid--stories">
         {singles.map((a) => (
-          <StoryCard article={a} variant="tile" class="span-6 lg-span-4" />
+          <StoryCard article={a} variant="tile" class={spanFor(singles.length)} />
         ))}
       </div>
     </section>
@@ -89,7 +91,7 @@ const jsonLd = {
         </div>
         <div class="grid grid--stories">
           {explainers.map((a) => (
-            <StoryCard article={a} variant="tile" class="span-4" showSection={false} />
+            <StoryCard article={a} variant="tile" class={spanFor(explainers.length)} showSection={false} />
           ))}
         </div>
       </div>

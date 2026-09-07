@@ -3,6 +3,7 @@ import type { Article } from "@lib/articles";
 import { articleHref } from "@lib/articles";
 import { getSection, sectionHref } from "@lib/sections";
 import { excerpt, timeAgo } from "@lib/format";
+import { isolateNumbers } from "@lib/bidi";
 import Plate from "./Plate.astro";
 
 interface Props {
@@ -29,11 +30,11 @@ const summary = excerpt(subtitle || article.data.lede, variant === "tile" ? 150 
     </a>
   )}
   <div class="card__body">
-    <h3 class="card__title"><a href={href}>{title}</a></h3>
-    {showExcerpt && summary && <p class="card__summary">{summary}</p>}
+    <h3 class="card__title"><a href={href} set:html={isolateNumbers(title)} /></h3>
+    {showExcerpt && summary && <p class="card__summary" set:html={isolateNumbers(summary)} />}
     <p class="meta card__meta">
       {showSection && <a href={sectionHref(section)}>{kind === "explainer" ? "شرح" : sec.name}</a>}
-      <time datetime={publishedAt}>{timeAgo(publishedAt)}</time>
+      <time datetime={publishedAt} data-relative>{timeAgo(publishedAt)}</time>
     </p>
   </div>
 </article>

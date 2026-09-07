@@ -1,6 +1,6 @@
 /* ------------------------------------------------------------------
    خازندار — the issue. Mid-century Cairo magazine grammar on the web:
-   flat spot-colour fields, hand-lettered display, naskh body, halftone.
+   flat spot-colour fields, classical Amiri display, naskh body, halftone.
    ------------------------------------------------------------------ */
 
 @font-face {
@@ -105,13 +105,16 @@
   }
 }
 
-/* Section spot colours: every element inside a section context inherits its ink. */
-[data-section="economy"] { --spot: #1f47b8; --spot-ink: #122a70; }
-[data-section="markets"] { --spot: #d64524; --spot-ink: #8c2a14; }
-[data-section="energy"] { --spot: #0f7d6f; --spot-ink: #0a5248; }
-[data-section="companies"] { --spot: #7a2e6f; --spot-ink: #4d1c46; }
-[data-section="technology"] { --spot: #1b7fa8; --spot-ink: #11536e; }
-[data-section="explainers"] { --spot: #9a6b13; --spot-ink: #63450c; }
+/* Section spot colours: every element inside a section context inherits its ink.
+   --spot: the flat field; --spot-ink: text on paper (lifted in dark); --spot-deep: a field that
+   carries paper-coloured text and therefore never changes with the scheme. */
+:root { --spot-deep: #122a70; }
+[data-section="economy"] { --spot: #1f47b8; --spot-ink: #122a70; --spot-deep: #122a70; }
+[data-section="markets"] { --spot: #d64524; --spot-ink: #8c2a14; --spot-deep: #8c2a14; }
+[data-section="energy"] { --spot: #0f7d6f; --spot-ink: #0a5248; --spot-deep: #0a5248; }
+[data-section="companies"] { --spot: #7a2e6f; --spot-ink: #4d1c46; --spot-deep: #4d1c46; }
+[data-section="technology"] { --spot: #1b7fa8; --spot-ink: #11536e; --spot-deep: #11536e; }
+[data-section="explainers"] { --spot: #9a6b13; --spot-ink: #63450c; --spot-deep: #63450c; }
 @media (prefers-color-scheme: dark) {
   [data-section="economy"] { --spot-ink: #8fa6ee; }
   [data-section="markets"] { --spot-ink: #f19077; }
@@ -181,7 +184,7 @@ bdi { unicode-bidi: isolate; }
   line-height: 1;
   letter-spacing: 0.01em;
   padding: 0.42rem 0.6rem 0.32rem;
-  background: var(--spot);
+  background: var(--spot-deep);
   color: var(--on-spot);
   text-decoration: none;
 }
@@ -329,7 +332,9 @@ bdi { unicode-bidi: isolate; }
 
 /* ----- Page blocks ----- */
 .block { padding-block: clamp(1.75rem, 4vw, 3.25rem); }
-.block--tint { background: var(--paper-2); }
+.block--tint { background: var(--paper-2); --ink-3: #66615a; }
+@media (prefers-color-scheme: dark) { .block--tint { --ink-3: #a8a194; } }
+.band :focus-visible { outline-color: #171512; }
 .page-title {
   font-family: var(--font-display);
   font-weight: 700;
@@ -343,7 +348,7 @@ bdi { unicode-bidi: isolate; }
 @keyframes print-field { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
 @keyframes settle { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: no-preference) {
-  .cover { animation: print-field 0.7s var(--ease-out) both; }
+  .cover { animation: print-field 0.7s var(--ease-out) backwards; }
   .cover__text > * { animation: settle 0.6s var(--ease-out) 0.35s both; }
   .cover__text > * + * { animation-delay: 0.45s; }
   .cover__text > * + * + * { animation-delay: 0.55s; }

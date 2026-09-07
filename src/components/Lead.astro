@@ -4,6 +4,7 @@ import type { Article } from "@lib/articles";
 import { articleHref } from "@lib/articles";
 import { getSection, sectionHref } from "@lib/sections";
 import { timeAgo } from "@lib/format";
+import { isolateNumbers } from "@lib/bidi";
 import Plate from "./Plate.astro";
 
 interface Props {
@@ -19,9 +20,9 @@ const sec = getSection(lead.data.section);
     <a class="cover__link" href={articleHref(lead)}>
       <Plate article={lead} ratio="16/10" eager sizes="(min-width: 1024px) 66vw, 100vw" />
       <div class="cover__text">
-        <h2 id="cover-title" class="cover__title">{lead.data.title}</h2>
-        {lead.data.subtitle && <p class="cover__dek">{lead.data.subtitle}</p>}
-        <p class="cover__meta ui"><span>{sec.name}</span><time datetime={lead.data.publishedAt}>{timeAgo(lead.data.publishedAt)}</time></p>
+        <h1 id="cover-title" class="cover__title" set:html={isolateNumbers(lead.data.title)} />
+        {lead.data.subtitle && <p class="cover__dek" set:html={isolateNumbers(lead.data.subtitle)} />}
+        <p class="cover__meta ui"><span>{sec.name}</span><time datetime={lead.data.publishedAt} data-relative>{timeAgo(lead.data.publishedAt)}</time></p>
       </div>
     </a>
   </article>
@@ -33,8 +34,8 @@ const sec = getSection(lead.data.section);
         <li class="contents__item" data-section={a.data.section}>
           <span class="contents__no ui" aria-hidden="true">{i + 1}</span>
           <div>
-            <a class="contents__title" href={articleHref(a)}>{a.data.title}</a>
-            <p class="meta"><a href={sectionHref(a.data.section)}>{a.data.kind === "explainer" ? "شرح" : getSection(a.data.section).name}</a><time datetime={a.data.publishedAt}>{timeAgo(a.data.publishedAt)}</time></p>
+            <a class="contents__title" href={articleHref(a)} set:html={isolateNumbers(a.data.title)} />
+            <p class="meta"><a href={sectionHref(a.data.section)}>{a.data.kind === "explainer" ? "شرح" : getSection(a.data.section).name}</a><time datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time></p>
           </div>
         </li>
       ))}
@@ -57,8 +58,8 @@ const sec = getSection(lead.data.section);
     inset-inline: 0;
     bottom: 0;
     padding: clamp(1.25rem, 3vw, 2.25rem);
-    padding-top: 6rem;
-    background: linear-gradient(to top, var(--spot-ink) 0%, color-mix(in srgb, var(--spot-ink) 82%, transparent) 55%, transparent 100%);
+    padding-top: 5rem;
+    background: linear-gradient(to top, var(--spot-deep) 0, var(--spot-deep) calc(100% - 5rem), transparent 100%);
   }
   .cover__title {
     font-family: var(--font-display);
@@ -93,7 +94,7 @@ const sec = getSection(lead.data.section);
     border-top: 1px solid var(--rule);
   }
   .contents__item:first-child { border-top: 0; padding-top: 0.1rem; }
-  .contents__no { font-weight: 800; font-size: 1.55rem; line-height: 1; color: var(--spot); padding-top: 0.15rem; }
+  .contents__no { font-weight: 800; font-size: 1.55rem; line-height: 1; color: var(--spot-ink); padding-top: 0.15rem; }
   .contents__title { font-family: var(--font-title); font-weight: 700; font-size: 1.22rem; line-height: 1.45; text-decoration: none; display: block; }
   .contents__title:hover { text-decoration: underline; text-decoration-color: var(--spot); text-decoration-thickness: 2px; }
   .contents .meta { margin-top: 0.25rem; font-size: 0.85rem; }
@@ -102,7 +103,7 @@ const sec = getSection(lead.data.section);
     .issue { grid-template-columns: 1fr; }
   }
   @media (max-width: 719px) {
-    .cover__text { position: static; padding: 1.1rem 1rem 1.25rem; background: var(--spot-ink); }
+    .cover__text { position: static; padding: 1.1rem 1rem 1.25rem; background: var(--spot-deep); }
     .cover__title { font-size: clamp(1.7rem, 1.2rem + 3vw, 2.2rem); }
     .cover__dek { font-size: 1.05rem; }
   }

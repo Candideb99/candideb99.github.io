@@ -102,7 +102,7 @@ export function coverSvg(seed: string, { color, ink = INK, width = 1200, height 
   const screen = `<pattern id="${id}h" width="${dotSize}" height="${dotSize}" patternUnits="userSpaceOnUse"><circle cx="${dotSize / 2}" cy="${dotSize / 2}" r="${dotSize * 0.2}" fill="${ground === "field" ? PAPER : ink}" fill-opacity="${ground === "field" ? 0.55 : 0.28}"/></pattern>`;
   shapes.push(`<rect x="${hx}" y="${hy}" width="${hw}" height="${hh}" fill="url(#${id}h)"/>`);
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-hidden="true"><defs>${screen}</defs><rect width="${w}" height="${h}" fill="${bg}"/>${shapes.join("")}</svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true"><defs>${screen}</defs><rect width="${w}" height="${h}" fill="${bg}"/>${shapes.join("")}</svg>`;
 }
 
 export function coverDataUri(seed: string, options: CoverOptions): string {

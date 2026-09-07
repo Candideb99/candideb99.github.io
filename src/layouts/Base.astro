@@ -74,13 +74,14 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
     <!--
       DIRECTION CONTRACT (seed 6923a822)
       THESIS: خازندار is a daily issue, not a feed. A mid-century Cairo illustrated
-      magazine program on the web: flat spot-colour fields, hand-lettered display,
+      magazine program on the web: flat spot-colour fields, classical Arabic display,
       naskh text, one-colour halftone photographs. It refuses the cream broadsheet
       with gold hairlines and the black terminal with neon figures.
       OWN-WORLD: saffron masthead field; six section inks (cobalt, vermilion, teal,
-      plum, cyan, ochre) as flat fields; Rakkas display, Marhey titles, Naskh body,
-      Tajawal figures; duotone plates that reveal colour on hover; procedural
-      abstract covers when no licensed photo exists.
+      plum, cyan, ochre) as flat fields; Amiri display and titles (user-pinned
+      respectable register), Noto Naskh body, Tajawal labels and figures; duotone
+      plates that reveal colour on hover; procedural abstract covers when no
+      licensed photo exists.
       STORY: the reader opens today's issue, sees the cover story and the contents
       at once, reads sourced Arabic reporting with the numbers isolated, and
       trusts it because every source is shown.
@@ -97,5 +98,54 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
       <slot />
     </main>
     <Footer />
+    <script is:inline>
+      // Relative times and the masthead date are rendered at build time; keep them honest between builds.
+      (function () {
+        var MONTHS = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+        var DAYS = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+        function ago(iso) {
+          var diff = (Date.now() - Date.parse(iso)) / 1000;
+          if (!isFinite(diff)) return null;
+          if (diff < 60) return "الآن";
+          var m = Math.floor(diff / 60);
+          if (m < 60) return m === 1 ? "قبل دقيقة" : m === 2 ? "قبل دقيقتين" : m <= 10 ? "قبل " + m + " دقائق" : "قبل " + m + " دقيقة";
+          var h = Math.floor(m / 60);
+          if (h < 24) return h === 1 ? "قبل ساعة" : h === 2 ? "قبل ساعتين" : h <= 10 ? "قبل " + h + " ساعات" : "قبل " + h + " ساعة";
+          var d = Math.floor(h / 24);
+          if (d === 1) return "أمس";
+          if (d === 2) return "قبل يومين";
+          if (d <= 10) return "قبل " + d + " أيام";
+          var t = new Date(iso);
+          return t.getDate() + " " + MONTHS[t.getMonth()] + " " + t.getFullYear();
+        }
+        function tick() {
+          var nodes = document.querySelectorAll("time[data-relative][datetime]");
+          for (var i = 0; i < nodes.length; i++) {
+            var label = ago(nodes[i].getAttribute("datetime"));
+            if (label && nodes[i].textContent !== label) nodes[i].textContent = label;
+          }
+        }
+        function masthead() {
+          var date = document.querySelector("[data-issue-date]");
+          var no = document.querySelector("[data-issue-no]");
+          var launch = date && date.getAttribute("data-launch");
+          if (!date || !launch) return;
+          var now = new Date();
+          var parts = new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Riyadh", year: "numeric", month: "numeric", day: "numeric", weekday: "short" }).formatToParts(now);
+          var map = {};
+          parts.forEach(function (p) { map[p.type] = p.value; });
+          var wd = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(map.weekday);
+          var text = DAYS[wd] + " " + Number(map.day) + " " + MONTHS[Number(map.month) - 1] + " " + map.year;
+          if (date.textContent !== text) date.textContent = text;
+          if (no) {
+            var issue = Math.max(1, Math.floor((now - new Date(launch + "T00:00:00Z")) / 86400000) + 1);
+            no.textContent = String(issue);
+          }
+        }
+        tick();
+        masthead();
+        setInterval(tick, 60000);
+      })();
+    </script>
   </body>
 </html>

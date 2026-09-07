@@ -20,6 +20,7 @@
     "og": "node scripts/og-default.mjs"
   },
   "dependencies": {
+    "@astrojs/markdown-remark": "^7.3.0",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.6.0",
     "@fontsource-variable/noto-naskh-arabic": "^5.3.0",

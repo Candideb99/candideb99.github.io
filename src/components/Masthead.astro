@@ -16,8 +16,8 @@ const issue = issueNumber(now);
   <div class="band">
     <div class="wrap band__row">
       <p class="issue ui">
-        <span class="issue__no">العدد <bdi>{issue}</bdi></span>
-        <time datetime={now.toISOString().slice(0, 10)}>{today}</time>
+        <span class="issue__no">العدد <bdi data-issue-no>{issue}</bdi></span>
+        <time datetime={now.toISOString().slice(0, 10)} data-issue-date data-launch={site.launchDate}>{today}</time>
       </p>
       <div class="brand">
         <a class="wordmark" href="/" aria-label={`${site.name} — الصفحة الرئيسية`}>{site.name}</a>

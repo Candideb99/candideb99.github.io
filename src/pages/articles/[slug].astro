@@ -8,6 +8,7 @@ import StoryCard from "@components/StoryCard.astro";
 import { getArticles, related, articleHref } from "@lib/articles";
 import { getSection, sectionHref } from "@lib/sections";
 import { formatDate, formatTime, readingLabel, excerpt } from "@lib/format";
+import { isolateNumbers } from "@lib/bidi";
 import site from "@data/site.json";
 
 export async function getStaticPaths() {
@@ -47,17 +48,17 @@ const jsonLd = {
 <Base title={d.title} description={description} path={path} image={ogImage} imageAlt={d.image?.alt} type="article" section={d.section} jsonLd={jsonLd} publishedAt={d.publishedAt} updatedAt={d.updatedAt}>
   <article class="article" data-section={d.section} data-pagefind-body data-pagefind-meta={`section:${d.section}, sectionName:${sec.name}, date:${formatDate(d.publishedAt, { weekday: false })}`}>
     <header class="wrap article__head">
-      <h1 class="article__title" data-pagefind-meta="title">{d.title}</h1>
-      {d.subtitle && <p class="article__dek">{d.subtitle}</p>}
+      <h1 class="article__title" data-pagefind-meta={`title:${d.title}`} set:html={isolateNumbers(d.title)} />
+      {d.subtitle && <p class="article__dek" set:html={isolateNumbers(d.subtitle)} />}
       <p class="meta article__meta">
         <a href={sectionHref(d.section)}>{isExplainer ? "شرح مفاهيم" : sec.name}</a>
-        <time datetime={d.publishedAt}>{formatDate(d.publishedAt)} · {formatTime(d.publishedAt)}</time>
+        <time datetime={d.publishedAt}>{formatDate(d.publishedAt)} · {formatTime(d.publishedAt)} بتوقيت الرياض</time>
         <span>{readingLabel(d.readingMinutes)}</span>
       </p>
     </header>
 
     <figure class="wrap article__figure">
-      <Plate article={article} ratio={d.image ? "16/9" : "21/9"} eager natural sizes="(min-width: 1280px) 1240px, 100vw" />
+      <Plate article={article} ratio={d.image ? "16/9" : "3/1"} eager natural sizes="(min-width: 1280px) 1240px, 100vw" />
       {d.image && (
         <figcaption class="article__caption ui">
           <span>{d.image.alt}</span>
@@ -72,7 +73,7 @@ const jsonLd = {
 
     <div class="wrap article__layout">
       <div class="article__main">
-        {d.lede && <p class="article__lede">{d.lede}</p>}
+        {d.lede && <p class="article__lede" set:html={isolateNumbers(d.lede)} />}
         <KeyFacts facts={d.keyFacts} placement="inline" />
         <div class="prose">
           <Content />
@@ -80,7 +81,7 @@ const jsonLd = {
         {d.whyItMatters && (
           <section class="why" aria-labelledby="why-title">
             <h2 id="why-title" class="why__head">لماذا يهمّ</h2>
-            <p class="why__text">{d.whyItMatters}</p>
+            <p class="why__text" set:html={isolateNumbers(d.whyItMatters)} />
           </section>
         )}
         {d.tags.length > 0 && (
@@ -129,6 +130,8 @@ const jsonLd = {
   }
   .article__meta { margin-top: 1rem; font-size: 0.95rem; }
   .article__figure { margin: clamp(1.25rem, 3vw, 2rem) auto 0; }
+  .article__figure :global(.plate--art) { aspect-ratio: 3 / 1 !important; }
+  @media (max-width: 719px) { .article__figure :global(.plate--art) { aspect-ratio: 2 / 1 !important; } }
   .article__caption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.3rem 1.5rem; margin-top: 0.55rem; font-size: 0.85rem; color: var(--ink-3); line-height: 1.5; }
   .article__credit a { color: var(--ink-3); }
 
@@ -151,7 +154,7 @@ const jsonLd = {
   .why__text { font-family: var(--font-body); font-size: 1.12rem; line-height: 1.9; }
   .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.75rem; }
 
-  .article__side { display: grid; gap: 2rem; align-content: start; position: sticky; top: 1rem; }
+  .article__side { display: grid; gap: 2rem; align-content: start; }
   .side-related__head { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; line-height: 1.3; border-top: 3px solid var(--ink); padding-top: 0.6rem; margin-bottom: 0.75rem; }
   .side-related__list { display: grid; gap: 0.9rem; }
   .side-related__list > :global(.card--row) { border-top: 1px solid var(--rule); padding-top: 0.9rem; }

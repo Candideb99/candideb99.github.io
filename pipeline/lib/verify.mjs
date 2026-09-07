@@ -46,6 +46,16 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
   const titleNorm = draft.title.replace(/\s+/g, " ").trim();
   if (recentTitles.some((t) => t.replace(/\s+/g, " ").trim() === titleNorm)) issues.push("العنوان مكرر لمقال منشور.");
 
+  // The dek must belong to this story: most of its content words should appear somewhere in the article.
+  const stem = (w) => w.replace(/^(و|ف|ب|ك|ل)?(ال)?/, "").replace(/(ات|ون|ين|ة|ه|ها|هم)$/, "");
+  const wordsOf = (t) => new Set(String(t ?? "").replace(/[\p{P}\p{S}]/gu, " ").split(/\s+/).filter((w) => w.length >= 4).map(stem).filter((w) => w.length >= 3));
+  const dekWords = [...wordsOf(draft.subtitle)];
+  if (dekWords.length >= 4) {
+    const articleWords = wordsOf(`${draft.title}\n${draft.lede}\n${draft.body}\n${draft.whyItMatters}`);
+    const hits = dekWords.filter((w) => articleWords.has(w)).length;
+    if (hits / dekWords.length < 0.3) issues.push("الوصف الفرعي (subtitle) لا يتصل بموضوع المقال ولا يظهر مضمونه في النص؛ اكتب وصفاً فرعياً يلخص أهم تفصيل في هذا الخبر نفسه.");
+  }
+
   return { ok: issues.length === 0, issues, warnings, metrics: { arabicRatio: ratio, words, latin: latin.length } };
 }
 

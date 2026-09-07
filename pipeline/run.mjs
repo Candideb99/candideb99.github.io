@@ -178,14 +178,14 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
       log(`reject "${draft.title}" after revision: ${checks.issues.join(" | ")}`);
       return { rejected: true, items };
     }
-    if (rejected) {
-      review = await critique({ draft, sources, log });
-      log(`critic (second pass) "${draft.title}": ${review.verdict} score=${review.score} issues=${review.issues.length}`);
-      if (review.verdict === "reject" || review.score < 6) {
-        entry.outcome = `rejected by critic after revision (${review.score}): ${review.summary}`;
-        report.push(entry);
-        return { rejected: true, items };
-      }
+    // Every revised draft faces the critic again; nothing is published on a "revise" verdict alone.
+    const floor = rejected ? 6 : 5;
+    review = await critique({ draft, sources, log });
+    log(`critic (second pass) "${draft.title}": ${review.verdict} score=${review.score} issues=${review.issues.length}`);
+    if (review.verdict === "reject" || review.score < floor) {
+      entry.outcome = `rejected by critic after revision (${review.score}): ${review.summary}`;
+      report.push(entry);
+      return { rejected: true, items };
     }
   }
 
