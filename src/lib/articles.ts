@@ -29,7 +29,7 @@ export function pickLead(articles: Article[], now = Date.now()): Article | undef
   if (!news.length) return articles[0];
   const scored = news.map((a) => ({
     a,
-    score: (a.data.quality?.importance ?? 5) - hoursOld(a, now) / 12 + (a.data.image ? 0.5 : 0),
+    score: (a.data.quality?.importance ?? 5) - hoursOld(a, now) / 12 + (a.data.image ? 1.5 : 0),
   }));
   scored.sort((x, y) => y.score - x.score);
   return scored[0]?.a;
