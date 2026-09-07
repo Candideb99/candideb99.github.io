@@ -16,59 +16,75 @@ import Base from "@layouts/Base.astro";
   </section>
 </Base>
 
-<script>
-  const input = document.getElementById("q") as HTMLInputElement;
-  const results = document.getElementById("results") as HTMLDivElement;
-  let pagefind: any = null;
-  let timer: number | undefined;
-
-  async function load() {
-    if (pagefind) return pagefind;
-    try {
-      // @ts-ignore — generated at build time by pagefind
-      pagefind = await import(/* @vite-ignore */ "/pagefind/pagefind.js");
-      await pagefind.options({ excerptLength: 30 });
-      await pagefind.init();
-    } catch {
-      results.innerHTML = '<p class="search__hint">البحث يعمل على النسخة المنشورة من الموقع فقط.</p>';
+<script is:inline>
+  // Plain script on purpose: the Pagefind bundle is generated after the build and must not be touched by the bundler.
+  (function () {
+    var input = document.getElementById("q");
+    var results = document.getElementById("results");
+    var pagefind = null;
+    var timer;
+    function escape(text) {
+      return String(text == null ? "" : text).replace(/[&<>"]/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+      });
     }
-    return pagefind;
-  }
-
-  async function run() {
-    const q = input.value.trim();
-    if (!q) {
-      results.innerHTML = "";
-      return;
+    function load() {
+      if (pagefind) return Promise.resolve(pagefind);
+      return import("/pagefind/pagefind.js")
+        .then(function (pf) {
+          return pf.options({ excerptLength: 30 }).then(function () { return pf.init(); }).then(function () { pagefind = pf; return pf; });
+        })
+        .catch(function () {
+          results.innerHTML = '<p class="search__hint">تعذّر تحميل فهرس البحث. أعد تحميل الصفحة.</p>';
+          return null;
+        });
     }
-    const pf = await load();
-    if (!pf) return;
-    const search = await pf.search(q);
-    if (!search.results.length) {
-      results.innerHTML = '<p class="search__hint">لا نتائج. جرّب كلمة أخرى أو اسم مؤسسة.</p>';
-      return;
+    function render(search, items) {
+      results.innerHTML =
+        '<p class="search__count ui"><bdi>' + search.results.length + '</bdi> نتيجة</p><ol class="search__list">' +
+        items
+          .map(function (d) {
+            var meta = d.meta || {};
+            return (
+              '<li class="search__item" data-section="' + escape(meta.section) + '">' +
+              '<a class="search__title" href="' + escape(d.url) + '">' + escape(meta.title) + "</a>" +
+              '<p class="search__excerpt">' + d.excerpt + "</p>" +
+              '<p class="meta">' + (meta.sectionName ? "<span>" + escape(meta.sectionName) + "</span>" : "") + (meta.date ? "<time>" + escape(meta.date) + "</time>" : "") + "</p>" +
+              "</li>"
+            );
+          })
+          .join("") +
+        "</ol>";
     }
-    const items = await Promise.all(search.results.slice(0, 20).map((r: any) => r.data()));
-    results.innerHTML = `<p class="search__count ui"><bdi>${search.results.length}</bdi> نتيجة</p><ol class="search__list">${items
-      .map(
-        (d: any) => `<li class="search__item" data-section="${d.meta.section ?? ""}">
-          <a class="search__title" href="${d.url}">${d.meta.title ?? ""}</a>
-          <p class="search__excerpt">${d.excerpt}</p>
-          <p class="meta">${d.meta.sectionName ? `<span>${d.meta.sectionName}</span>` : ""}${d.meta.date ? `<time>${d.meta.date}</time>` : ""}</p>
-        </li>`,
-      )
-      .join("")}</ol>`;
-  }
-
-  input.addEventListener("input", () => {
-    window.clearTimeout(timer);
-    timer = window.setTimeout(run, 180);
-  });
-  const initial = new URLSearchParams(location.search).get("q");
-  if (initial) {
-    input.value = initial;
-    run();
-  }
+    function run() {
+      var q = input.value.trim();
+      if (!q) {
+        results.innerHTML = "";
+        return;
+      }
+      load().then(function (pf) {
+        if (!pf) return;
+        return pf.search(q).then(function (search) {
+          if (!search.results.length) {
+            results.innerHTML = '<p class="search__hint">لا نتائج. جرّب كلمة أخرى أو اسم مؤسسة.</p>';
+            return;
+          }
+          return Promise.all(search.results.slice(0, 20).map(function (r) { return r.data(); })).then(function (items) {
+            render(search, items);
+          });
+        });
+      });
+    }
+    input.addEventListener("input", function () {
+      clearTimeout(timer);
+      timer = setTimeout(run, 180);
+    });
+    var initial = new URLSearchParams(location.search).get("q");
+    if (initial) {
+      input.value = initial;
+      run();
+    }
+  })();
 </script>
 
 <style>
