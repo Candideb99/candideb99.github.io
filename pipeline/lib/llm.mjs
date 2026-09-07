@@ -126,7 +126,58 @@ function buildUserContent(user, images) {
   ];
 }
 
-async function callModel(model, { system, user, images, temperature, maxTokens, timeoutMs, jsonMode }) {
+/**
+ * Provider "claude": runs the prompt through the Claude Code command line, which uses the
+ * owner's Claude subscription (after `claude login` or `claude setup-token`) instead of an API key.
+ * Vision requests fall back to OpenRouter because the CLI takes text only here.
+ */
+async function callClaudeCli(model, { system, user, timeoutMs }) {
+  const { spawn } = await import("node:child_process");
+  const cliModel = process.env.KHAZENDAR_CLAUDE_MODEL ?? "sonnet";
+  const args = ["-p", "--output-format", "json", "--tools", "", "--no-session-persistence", "--model", cliModel];
+  if (system) args.push("--system-prompt", system);
+  const started = Date.now();
+  const result = await new Promise((resolve, reject) => {
+    const child = spawn("claude", args, { shell: process.platform === "win32", windowsHide: true });
+    let out = "";
+    let err = "";
+    const timer = setTimeout(() => {
+      child.kill();
+      reject(new LlmError(`claude cli timeout after ${timeoutMs}ms`, { retryable: true }));
+    }, timeoutMs);
+    child.stdout.on("data", (d) => (out += d));
+    child.stderr.on("data", (d) => (err += d));
+    child.on("error", (e) => {
+      clearTimeout(timer);
+      reject(new LlmError(`claude cli failed to start: ${e.message}`));
+    });
+    child.on("close", (code) => {
+      clearTimeout(timer);
+      if (code !== 0 && !out) return reject(new LlmError(`claude cli exit ${code}: ${err.slice(0, 200)}`, { retryable: true }));
+      resolve(out);
+    });
+    child.stdin.end(user);
+  });
+  let payload;
+  try {
+    payload = JSON.parse(result);
+  } catch {
+    throw new LlmError("claude cli returned non-JSON output", { sample: result.slice(0, 200) });
+  }
+  if (payload.is_error) throw new LlmError(`claude cli: ${String(payload.result).slice(0, 200)}`, { status: 401 });
+  usage.calls += 1;
+  usage.byModel[`claude-cli/${cliModel}`] = (usage.byModel[`claude-cli/${cliModel}`] ?? 0) + 1;
+  return { content: String(payload.result ?? ""), finish: "stop", ms: Date.now() - started, usage: payload.usage ?? {}, provider: "claude-cli" };
+}
+
+const PROVIDER = process.env.KHAZENDAR_PROVIDER ?? "openrouter";
+
+async function callModel(model, options) {
+  if (PROVIDER === "claude" && !options.images?.length) return callClaudeCli(model, options);
+  return callOpenRouter(model, options);
+}
+
+async function callOpenRouter(model, { system, user, images, temperature, maxTokens, timeoutMs, jsonMode }) {
   const key = process.env.OPENROUTER_API_KEY;
   if (!key) throw new LlmError("OPENROUTER_API_KEY is not set");
   const body = {
@@ -198,7 +249,7 @@ export async function chat({
   timeoutMs = 240000,
   log = () => {},
 }) {
-  const models = ROLES[role];
+  const models = PROVIDER === "claude" && role !== "vision" ? ["claude-cli"] : ROLES[role];
   if (!models?.length) throw new LlmError(`Unknown role ${role}`);
   const errors = [];
   for (const model of models) {

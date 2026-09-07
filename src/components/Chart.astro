@@ -1,0 +1,195 @@
+---
+/**
+ * Arabic data chart rendered as static SVG from source-grounded figures.
+ * One axis, thin marks, legend for two or more series, selective direct labels,
+ * native tooltips on every mark, and a table view of the same data.
+ */
+import { isolateNumbers, escapeHtml } from "@lib/bidi";
+
+interface Series {
+  name: string;
+  values: number[];
+}
+interface ChartSpec {
+  type: "bar" | "line";
+  title?: string | null;
+  unit?: string;
+  source?: string;
+  categories: string[];
+  series: Series[];
+}
+interface Props {
+  chart: ChartSpec;
+  id?: string;
+}
+const { chart, id = "chart" } = Astro.props;
+
+const W = 720;
+const H = 380;
+const PAD = { top: 28, right: 24, bottom: 56, left: 64 };
+const plotW = W - PAD.left - PAD.right;
+const plotH = H - PAD.top - PAD.bottom;
+
+const all = chart.series.flatMap((s) => s.values);
+const rawMin = Math.min(0, ...all);
+const rawMax = Math.max(0, ...all);
+const span = rawMax - rawMin || 1;
+const niceStep = (() => {
+  const rough = span / 4;
+  const mag = 10 ** Math.floor(Math.log10(rough));
+  const norm = rough / mag;
+  const step = norm <= 1 ? 1 : norm <= 2 ? 2 : norm <= 2.5 ? 2.5 : norm <= 5 ? 5 : 10;
+  return step * mag;
+})();
+const yMin = Math.floor(rawMin / niceStep) * niceStep;
+const yMax = Math.ceil(rawMax / niceStep) * niceStep || niceStep;
+const ticks: number[] = [];
+for (let v = yMin; v <= yMax + 1e-9; v += niceStep) ticks.push(Number(v.toFixed(6)));
+const y = (v: number) => PAD.top + plotH - ((v - yMin) / (yMax - yMin)) * plotH;
+const zeroY = y(0);
+
+const n = chart.categories.length;
+const slot = plotW / n;
+const x = (i: number) => PAD.left + slot * i;
+
+function fmt(v: number): string {
+  const abs = Math.abs(v);
+  const decimals = abs >= 100 ? 0 : abs >= 10 ? 1 : 2;
+  const s = v.toLocaleString("en-US", { maximumFractionDigits: decimals });
+  return s;
+}
+const unit = chart.unit ?? "";
+const label = (v: number) => `${fmt(v)}${unit === "%" ? "%" : unit ? ` ${unit}` : ""}`;
+
+const groupW = slot * 0.72;
+const barGap = 2;
+const barW = Math.max(6, (groupW - barGap * (chart.series.length - 1)) / chart.series.length);
+const showValueLabels = n <= 8 && chart.series.length === 1;
+const lineEndLabel = chart.series.length <= 3;
+const colors = ["var(--chart-1)", "var(--chart-2)", "var(--chart-3)"];
+
+const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as const);
+---
+
+<figure class="chart" role="group" aria-labelledby={`${id}-title`}>
+  <figcaption class="chart__head">
+    {chart.title && <h3 id={`${id}-title`} class="chart__title" set:html={isolateNumbers(chart.title)} />}
+    {unit && <p class="chart__unit ui">الوحدة: <bdi>{unit}</bdi></p>}
+  </figcaption>
+
+  {chart.series.length > 1 && (
+    <ul class="chart__legend ui" aria-label="سلاسل البيانات">
+      {chart.series.map((s, si) => (
+        <li><span class="chart__swatch" style={`background:${colors[si]}`} aria-hidden="true"></span>{s.name}</li>
+      ))}
+    </ul>
+  )}
+
+  <svg class="chart__svg" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={chart.title ?? "رسم بياني"} direction="ltr">
+    <g class="chart__grid">
+      {ticks.map((t) => (
+        <g>
+          <line x1={PAD.left} x2={W - PAD.right} y1={y(t)} y2={y(t)} class={t === 0 ? "chart__baseline" : "chart__gridline"} />
+          <text x={PAD.left - 10} y={y(t)} dy="0.35em" text-anchor="end" class="chart__tick">{fmt(t)}</text>
+        </g>
+      ))}
+    </g>
+
+    {chart.type === "bar" &&
+      chart.series.map((s, si) =>
+        s.values.map((v, i) => {
+          const gx = x(i) + (slot - groupW) / 2 + si * (barW + barGap);
+          const top = Math.min(y(v), zeroY);
+          const h = Math.max(1, Math.abs(y(v) - zeroY));
+          return (
+            <g class="chart__mark">
+              <title>{`${chart.categories[i]} — ${s.name}: ${label(v)}`}</title>
+              <rect x={gx} y={top} width={barW} height={h} rx="2" fill={colors[si]} />
+              {showValueLabels && (
+                <text x={gx + barW / 2} y={v >= 0 ? top - 6 : top + h + 14} text-anchor="middle" class="chart__value">{fmt(v)}</text>
+              )}
+            </g>
+          );
+        }),
+      )}
+
+    {chart.type === "line" &&
+      chart.series.map((s, si) => {
+        const pts = points(s);
+        const d = pts.map(([px, py], i) => `${i === 0 ? "M" : "L"}${px.toFixed(1)} ${py.toFixed(1)}`).join(" ");
+        const last = pts[pts.length - 1];
+        return (
+          <g class="chart__series">
+            <path d={d} fill="none" stroke={colors[si]} stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+            {pts.map(([px, py], i) => (
+              <g class="chart__mark">
+                <title>{`${chart.categories[i]} — ${s.name}: ${label(s.values[i])}`}</title>
+                <circle cx={px} cy={py} r="4.5" fill={colors[si]} stroke="var(--paper)" stroke-width="2" />
+              </g>
+            ))}
+            {lineEndLabel && (
+              <text x={last[0] + 8} y={last[1]} dy="0.35em" class="chart__value chart__value--end">{fmt(s.values[s.values.length - 1])}</text>
+            )}
+          </g>
+        );
+      })}
+
+    <g class="chart__axis">
+      {chart.categories.map((c, i) => (
+        <text x={x(i) + slot / 2} y={H - PAD.bottom + 22} text-anchor="middle" class="chart__cat">{c.length > 14 && n > 6 ? `${c.slice(0, 13)}…` : c}</text>
+      ))}
+    </g>
+  </svg>
+
+  <details class="chart__data">
+    <summary class="ui">عرض البيانات كجدول</summary>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">البند</th>
+          {chart.series.map((s) => <th scope="col">{s.name}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {chart.categories.map((c, i) => (
+          <tr>
+            <th scope="row">{c}</th>
+            {chart.series.map((s) => <td><bdi dir="ltr">{label(s.values[i])}</bdi></td>)}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </details>
+
+  <p class="chart__source ui">
+    {chart.source ? `المصدر: ${chart.source}. ` : ""}الرسم من إعداد خازندار اعتماداً على أرقام المصدر.
+  </p>
+</figure>
+
+<style>
+  .chart { margin: 1.75rem 0 2rem; padding: 1.1rem 1.2rem 1rem; background: var(--paper-2); }
+  .chart__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.25rem 1rem; }
+  .chart__title { font-family: var(--font-title); font-weight: 700; font-size: 1.25rem; line-height: 1.4; }
+  .chart__unit { font-size: 0.85rem; color: var(--ink-3); }
+  .chart__legend { display: flex; flex-wrap: wrap; gap: 0.35rem 1.25rem; margin-top: 0.6rem; font-size: 0.9rem; font-weight: 500; color: var(--ink-2); }
+  .chart__legend li { display: inline-flex; align-items: center; gap: 0.45rem; }
+  .chart__swatch { width: 0.9rem; height: 0.9rem; border-radius: 2px; display: inline-block; }
+  .chart__svg { width: 100%; height: auto; margin-top: 0.75rem; font-family: var(--font-ui); }
+  .chart__gridline { stroke: var(--rule); stroke-width: 1; }
+  .chart__baseline { stroke: var(--ink-3); stroke-width: 1; }
+  .chart__tick, .chart__cat, .chart__value { fill: var(--ink-2); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .chart__cat { fill: var(--ink); font-size: 12.5px; direction: rtl; unicode-bidi: plaintext; }
+  .chart__value { fill: var(--ink); font-weight: 700; }
+  .chart__value--end { font-size: 12px; }
+  .chart__mark:hover rect, .chart__mark:hover circle { filter: brightness(0.85); }
+  .chart__data { margin-top: 0.75rem; font-size: 0.92rem; }
+  .chart__data summary { cursor: pointer; color: var(--spot-ink); font-weight: 700; }
+  .chart__data table { width: 100%; border-collapse: collapse; margin-top: 0.6rem; font-family: var(--font-ui); }
+  .chart__data th, .chart__data td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--rule); text-align: start; }
+  .chart__data thead th { font-weight: 800; color: var(--ink-2); }
+  .chart__source { margin-top: 0.75rem; font-size: 0.8rem; color: var(--ink-3); }
+  @media (max-width: 719px) {
+    .chart { padding: 0.9rem 0.8rem; margin-inline: calc(-1 * var(--gutter)); }
+    .chart__tick, .chart__cat, .chart__value { font-size: 21px; }
+  }
+</style>

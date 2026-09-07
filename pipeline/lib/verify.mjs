@@ -29,6 +29,24 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
   const words = wordCount(`${draft.lede}\n${draft.body}`);
   if (words < 200) issues.push(`المقال قصير جداً (${words} كلمة). وسّع السياق من المصادر دون اختراع معلومات، بحيث لا يقل عن 260 كلمة.`);
 
+  // Data visuals must be built only from figures in the sources; a visual with invented numbers is dropped, not the article.
+  if (draft.chart) {
+    const chartNumbers = draft.chart.series.flatMap((s) => s.values).map(String).join(" ");
+    const bad = explainer ? [] : ungroundedNumbers(chartNumbers, sourceTexts, { ignoreYears: false });
+    if (bad.length || explainer) {
+      warnings.push(`chart dropped: ${explainer ? "explainers carry no source data" : `ungrounded values ${bad.join(", ")}`}`);
+      draft.chart = null;
+    }
+  }
+  if (draft.table) {
+    const tableNumbers = draft.table.rows.flat().join(" ");
+    const bad = explainer ? [] : ungroundedNumbers(tableNumbers, sourceTexts, { ignoreYears: false });
+    if (bad.length > 1 || explainer) {
+      warnings.push(`table dropped: ${explainer ? "explainers carry no source data" : `ungrounded values ${bad.join(", ")}`}`);
+      draft.table = null;
+    }
+  }
+
   if (!explainer) {
     const missing = ungroundedNumbers(`${prose}\n${factsText}`, sourceTexts);
     if (missing.length > 2) {

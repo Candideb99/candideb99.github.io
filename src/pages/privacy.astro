@@ -1,0 +1,38 @@
+---
+import Base from "@layouts/Base.astro";
+import site from "@data/site.json";
+const hasAds = Boolean(site.adsenseClient);
+---
+
+<Base title="سياسة الخصوصية" description="ما الذي يجمعه خازندار عن زوّاره، وما الذي لا يجمعه." path="/privacy/">
+  <article class="wrap block privacy" data-pagefind-ignore>
+    <header class="privacy__head">
+      <h1 class="page-title">سياسة الخصوصية</h1>
+      <p class="page-intro">خازندار موقع للقراءة فقط: لا حسابات، ولا تعليقات، ولا نماذج اشتراك.</p>
+    </header>
+    <div class="prose privacy__prose">
+      <h2>ما لا نجمعه</h2>
+      <p>لا يطلب خازندار أي بيانات شخصية، ولا يُنشئ حسابات، ولا يستخدم ملفات تعريف ارتباط (كوكيز) خاصة به لتتبّع الزوار. يُخزَّن الموقع كصفحات ثابتة على خدمة GitHub Pages، التي قد تسجّل بيانات تقنية عابرة (مثل عنوان IP ونوع المتصفح) لأغراض تشغيل الخدمة وأمنها وفق سياسة خصوصية GitHub.</p>
+      <h2>البحث</h2>
+      <p>يعمل البحث داخل متصفحك بالكامل؛ لا تُرسل عبارات البحث إلى أي خادم.</p>
+      <h2>الصور والروابط الخارجية</h2>
+      <p>تُحمَّل بعض الصور من خوادم ويكيميديا كومنز، وتنقلك روابط المصادر إلى مواقع ناشرين آخرين لكلٍّ منهم سياسته الخاصة.</p>
+      <h2>الإعلانات</h2>
+      {hasAds ? (
+        <p>يعرض الموقع إعلانات عبر Google AdSense. قد تستخدم Google وشركاؤها ملفات تعريف ارتباط لعرض إعلانات بناءً على زياراتك السابقة لهذا الموقع أو لمواقع أخرى. يمكنك إدارة تفضيلات الإعلانات أو إلغاء الإعلانات المخصّصة من خلال <a href="https://www.google.com/settings/ads" rel="noopener" target="_blank">إعدادات إعلانات Google</a>، والاطّلاع على <a href="https://policies.google.com/technologies/ads" rel="noopener" target="_blank">كيفية استخدام Google للبيانات</a>.</p>
+      ) : (
+        <p>لا يعرض الموقع إعلانات حالياً. إذا أُضيفت إعلانات لاحقاً فستُحدَّث هذه الصفحة لتوضيح الجهة المعلنة وما تجمعه.</p>
+      )}
+      <h2>التصحيح والتواصل</h2>
+      <p>إذا وجدت خطأً في مقال أو أردت الاستفسار عن هذه السياسة{site.contactEmail ? <span>، راسلنا على <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a></span> : <span>، فستجد وسيلة التواصل في صفحة <a href="/about/">عن خازندار</a> حين تُتاح</span>}.</p>
+      <p class="privacy__date">آخر تحديث: سبتمبر 2026.</p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .privacy__head { border-top: 3px solid var(--saffron); padding-top: 0.9rem; }
+  .privacy__head .page-title { color: var(--ink); }
+  .privacy__prose { margin-top: clamp(1.5rem, 3vw, 2.5rem); }
+  .privacy__date { font-family: var(--font-ui); color: var(--ink-3); font-size: 0.9rem; }
+</style>

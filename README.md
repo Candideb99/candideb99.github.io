@@ -4,6 +4,24 @@ An Arabic economics publication that writes itself. A scheduled newsroom reads o
 
 Live: https://candideb99.github.io
 
+New to this? Read **[START_HERE.md](START_HERE.md)** first: the three places to look, what runs by itself, ads, and how to use your own Claude or ChatGPT subscription.
+
+## Control room
+
+Double-click `OPEN_CONTROL_ROOM.cmd` (or `npm run control`) and open http://127.0.0.1:7777. It shows the last run's report, the next scheduled cloud run, every article with its critic score, and buttons to run the newsroom, write an explainer, dry-run, build a local preview, sync, publish local changes, or unpublish a story. It binds to localhost only and uses no GPU.
+
+## Data visuals
+
+When the sources contain at least three comparable figures, the writer emits a chart (bar or line) or a table with Arabic labels. Every value is checked against the sources by `pipeline/lib/verify.mjs`; a visual with an unsupported number is dropped without touching the article. Charts render as static SVG (`src/components/Chart.astro`) with a legend, tooltips and a table view.
+
+## Model providers
+
+Default: free OpenRouter models. Alternative: the owner's Claude subscription through Claude Code (`KHAZENDAR_PROVIDER=claude`, after `claude login` locally or a `CLAUDE_CODE_OAUTH_TOKEN` secret plus the `KHAZENDAR_PROVIDER` repository variable in the cloud). Photo selection always uses the free vision model.
+
+## Advertising
+
+Set `adsenseClient` (and optionally `googleSiteVerification`) in `src/data/site.json`; the AdSense script, `/ads.txt` and the privacy page's ads section switch on automatically.
+
 ## How it runs
 
 | Piece | Where | What it does |

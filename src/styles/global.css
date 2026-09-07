@@ -75,6 +75,10 @@
   --spot: #1f47b8;
   --spot-ink: #122a70;
   --on-spot: #fbfaf6;
+  /* Chart series (validated for CVD separation and contrast on the paper surface). */
+  --chart-1: #1f47b8;
+  --chart-2: #d64524;
+  --chart-3: #0f8f7c;
 
   --font-display: "Amiri", "Naskh", "Noto Naskh Arabic", "Times New Roman", serif;
   --font-title: "Amiri", "Naskh", "Noto Naskh Arabic", "Times New Roman", serif;
@@ -102,6 +106,9 @@
     --saffron-deep: #d99a22;
     --saffron-ink: #f0c669;
     --shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.7);
+    --chart-1: #5b7ee6;
+    --chart-2: #e8654a;
+    --chart-3: #26a08a;
   }
 }
 

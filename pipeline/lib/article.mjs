@@ -31,6 +31,8 @@ export function serializeArticle({ draft, slug, section, sources, image, models,
     tags: draft.tags,
     regions: draft.regions,
     readingMinutes: readingMinutes(draft),
+    chart: draft.chart ?? null,
+    table: draft.table ?? null,
     image: image
       ? {
           url: image.url,

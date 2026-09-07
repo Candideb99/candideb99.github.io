@@ -28,8 +28,11 @@ const SCHEMA_TEXT = `{
   "why_it_matters": "One Arabic paragraph (60-120 words) explaining concretely what this means for Arab economies, businesses or readers. Grounded in the sources; no speculation presented as fact.",
   "tags": ["3-5 Arabic tags: institutions, countries, sectors, indicators"],
   "regions": ["1-3 Arabic region tags"],
-  "image_queries": ["2-3 short English search terms (2-4 words each) naming a concrete subject that exists as a photo on Wikimedia Commons: an institution's headquarters, a city, a port, a plant, a product, a commodity (e.g. 'Bundesbank Frankfurt', 'Ras Laffan', 'oil tanker', 'Riyadh skyline'); no adjectives, no abstract concepts"]
-}`;
+  "image_queries": ["2-3 short English search terms (2-4 words each) naming a concrete subject that exists as a photo on Wikimedia Commons: an institution's headquarters, a city, a port, a plant, a product, a commodity (e.g. 'Bundesbank Frankfurt', 'Ras Laffan', 'oil tanker', 'Riyadh skyline'); no adjectives, no abstract concepts"],
+  "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit, e.g. % or مليار دولار", "source": "publisher name", "categories": ["Arabic x-axis labels, 3-12 items, in the sources' order"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the sources]}]},
+  "table": null or {"title": "Arabic table title", "source": "publisher name", "columns": ["2-5 Arabic column headers"], "rows": [["cells as Arabic text or numbers exactly as in the sources"]]}
+}
+Data visuals: include "chart" only when the sources give at least three comparable figures of the same kind (a time series, or the same indicator across countries/companies); use "line" for time series and "bar" for comparisons; at most 3 series. Include "table" only when the sources list comparable figures for several entities (max 12 rows). Every number in a chart or table must appear in the sources; translate all labels to Arabic; otherwise set them to null.`;
 
 function sourceBlock(source, index) {
   const text = source.text || source.summary || "";
@@ -123,7 +126,46 @@ export function normalizeDraft(d) {
     tags: [...new Set((Array.isArray(d.tags) ? d.tags : []).map((t) => String(t).trim()).filter(Boolean))].slice(0, 6),
     regions: [...new Set((Array.isArray(d.regions) ? d.regions : []).map((t) => String(t).trim()).filter(Boolean))].slice(0, 3),
     imageQueries: (Array.isArray(d.image_queries) ? d.image_queries : []).map((q) => String(q).trim()).filter(Boolean).slice(0, 3),
+    chart: normalizeChart(d.chart),
+    table: normalizeTable(d.table),
   };
+}
+
+function toNumber(value) {
+  if (typeof value === "number") return Number.isFinite(value) ? value : null;
+  const n = Number(String(value ?? "").replace(/[٠-٩]/g, (c) => "٠١٢٣٤٥٦٧٨٩".indexOf(c)).replace(/[,\s%]/g, "").replace(/٫/g, "."));
+  return Number.isFinite(n) ? n : null;
+}
+
+/** Keeps a chart only when it is structurally sound: 3-12 categories, 1-3 series of matching numeric length. */
+export function normalizeChart(chart) {
+  if (!chart || typeof chart !== "object") return null;
+  const categories = (Array.isArray(chart.categories) ? chart.categories : []).map((c) => String(c ?? "").trim()).filter(Boolean).slice(0, 12);
+  const series = (Array.isArray(chart.series) ? chart.series : [])
+    .map((s) => ({ name: String(s?.name ?? "").trim(), values: (Array.isArray(s?.values) ? s.values : []).map(toNumber) }))
+    .filter((s) => s.name && s.values.length === categories.length && s.values.every((v) => v !== null))
+    .slice(0, 3);
+  if (categories.length < 3 || !series.length) return null;
+  return {
+    type: chart.type === "line" ? "line" : "bar",
+    title: String(chart.title ?? "").trim() || null,
+    unit: String(chart.unit ?? "").trim(),
+    source: String(chart.source ?? "").trim(),
+    categories,
+    series,
+  };
+}
+
+/** Keeps a table only when every row has the column count and there are at least two rows. */
+export function normalizeTable(table) {
+  if (!table || typeof table !== "object") return null;
+  const columns = (Array.isArray(table.columns) ? table.columns : []).map((c) => String(c ?? "").trim()).filter(Boolean).slice(0, 5);
+  const rows = (Array.isArray(table.rows) ? table.rows : [])
+    .map((r) => (Array.isArray(r) ? r.map((c) => String(c ?? "").trim()) : []))
+    .filter((r) => r.length === columns.length && r.some(Boolean))
+    .slice(0, 12);
+  if (columns.length < 2 || rows.length < 2) return null;
+  return { title: String(table.title ?? "").trim() || null, source: String(table.source ?? "").trim(), columns, rows };
 }
 
 const EXPLAINER_SCHEMA = `{

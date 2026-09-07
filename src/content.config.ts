@@ -29,6 +29,28 @@ const image = z
   .nullable()
   .optional();
 
+const chart = z
+  .object({
+    type: z.enum(["bar", "line"]),
+    title: z.string().nullable().optional(),
+    unit: z.string().default(""),
+    source: z.string().default(""),
+    categories: z.array(z.string()).min(3).max(12),
+    series: z.array(z.object({ name: z.string(), values: z.array(z.number()) })).min(1).max(3),
+  })
+  .nullable()
+  .optional();
+
+const table = z
+  .object({
+    title: z.string().nullable().optional(),
+    source: z.string().default(""),
+    columns: z.array(z.string()).min(2).max(5),
+    rows: z.array(z.array(z.string())).min(2).max(12),
+  })
+  .nullable()
+  .optional();
+
 const articles = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./content/articles" }),
   schema: z.object({
@@ -45,6 +67,8 @@ const articles = defineCollection({
     tags: z.array(z.string()).default([]),
     regions: z.array(z.string()).default([]),
     readingMinutes: z.number().default(3),
+    chart,
+    table,
     image,
     sources: z.array(source).default([]),
     models: z.record(z.string(), z.string().nullable()).optional(),

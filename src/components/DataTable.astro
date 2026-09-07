@@ -1,0 +1,51 @@
+---
+import { isolateNumbers } from "@lib/bidi";
+
+interface TableSpec {
+  title?: string | null;
+  source?: string;
+  columns: string[];
+  rows: string[][];
+}
+interface Props {
+  table: TableSpec;
+}
+const { table } = Astro.props;
+const numeric = (cell: string) => /^[+\-−]?\d[\d.,]*\s?[%٪]?$/.test(cell.trim());
+---
+
+<figure class="dtable">
+  {table.title && <figcaption class="dtable__title" set:html={isolateNumbers(table.title)} />}
+  <div class="dtable__scroll">
+    <table>
+      <thead>
+        <tr>
+          {table.columns.map((c) => <th scope="col" set:html={isolateNumbers(c)} />)}
+        </tr>
+      </thead>
+      <tbody>
+        {table.rows.map((row) => (
+          <tr>
+            {row.map((cell, ci) =>
+              ci === 0 ? <th scope="row" set:html={isolateNumbers(cell)} /> : <td class={numeric(cell) ? "num" : ""} set:html={isolateNumbers(cell)} />,
+            )}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="dtable__source ui">{table.source ? `المصدر: ${table.source}. ` : ""}الجدول من إعداد خازندار اعتماداً على أرقام المصدر.</p>
+</figure>
+
+<style>
+  .dtable { margin: 1.75rem 0 2rem; }
+  .dtable__title { font-family: var(--font-title); font-weight: 700; font-size: 1.2rem; line-height: 1.4; margin-bottom: 0.6rem; }
+  .dtable__scroll { overflow-x: auto; border-top: 3px solid var(--ink); }
+  table { width: 100%; border-collapse: collapse; font-family: var(--font-ui); font-size: 0.95rem; }
+  th, td { padding: 0.55rem 0.6rem; border-bottom: 1px solid var(--rule); text-align: start; vertical-align: top; }
+  thead th { font-weight: 800; color: var(--ink-2); background: var(--paper-2); }
+  tbody th { font-weight: 700; }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tbody tr:hover { background: var(--paper-2); }
+  .dtable__source { margin-top: 0.6rem; font-size: 0.8rem; color: var(--ink-3); }
+</style>

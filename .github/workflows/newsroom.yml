@@ -55,10 +55,17 @@ jobs:
           echo "mode=$mode" >> "$GITHUB_OUTPUT"
           echo "limit=${{ inputs.limit || '6' }}" >> "$GITHUB_OUTPUT"
 
+      - name: Install Claude Code (only when the owner's subscription is the provider)
+        if: vars.KHAZENDAR_PROVIDER == 'claude'
+        run: npm install -g @anthropic-ai/claude-code
+
       - name: Run the newsroom
         id: newsroom
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          KHAZENDAR_PROVIDER: ${{ vars.KHAZENDAR_PROVIDER || 'openrouter' }}
+          KHAZENDAR_CLAUDE_MODEL: ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'sonnet' }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
         run: node pipeline/run.mjs --mode=${{ steps.mode.outputs.mode }} --limit=${{ steps.mode.outputs.limit }}
 
       - name: Commit new articles
