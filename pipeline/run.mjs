@@ -163,7 +163,6 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   for (const issue of [...checks.issues, ...review.issues].slice(0, 4)) log(`  · ${String(issue).slice(0, 160)}`);
 
   let revised = false;
-  const rejected = review.verdict === "reject" || review.score < 4;
   const issues = [...checks.issues, ...(review.verdict !== "publish" ? review.issues : [])];
   if (issues.length) {
     // One revision round. A rejected draft gets a second critic pass; a "revise" verdict is trusted after the fix.
@@ -178,8 +177,8 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
       log(`reject "${draft.title}" after revision: ${checks.issues.join(" | ")}`);
       return { rejected: true, items };
     }
-    // Every revised draft faces the critic again; nothing is published on a "revise" verdict alone.
-    const floor = rejected ? 6 : 5;
+    // Every revised draft faces the critic again and is published only with a second-pass score of 6 or more.
+    const floor = 6;
     review = await critique({ draft, sources, log });
     log(`critic (second pass) "${draft.title}": ${review.verdict} score=${review.score} issues=${review.issues.length}`);
     if (review.verdict === "reject" || review.score < floor) {
@@ -288,6 +287,7 @@ async function runExplainer() {
     return { report, published: 0 };
   }
   let revised = false;
+  let finalReview = review;
   const issues = [...checks.issues, ...(review.verdict === "revise" ? review.issues : [])];
   if (issues.length) {
     const revision = await reviseArticle({ draft, sources: [], issues, log });
@@ -296,6 +296,13 @@ async function runExplainer() {
     checks = programmaticChecks(draft, [], { explainer: true, recentTitles: explainers });
     if (!checks.ok) {
       entry.outcome = `rejected after revision: ${checks.issues.join(" | ")}`;
+      report.push(entry);
+      return { report, published: 0 };
+    }
+    finalReview = await critique({ draft, sources: [], explainer: true, log });
+    log(`critic (second pass) explainer: ${finalReview.verdict} score=${finalReview.score}`);
+    if (finalReview.verdict === "reject" || finalReview.score < 6) {
+      entry.outcome = `rejected by critic after revision (${finalReview.score}): ${finalReview.summary}`;
       report.push(entry);
       return { report, published: 0 };
     }
@@ -309,8 +316,8 @@ async function runExplainer() {
     explainer: true,
     sources: related.map((a) => ({ sourceName: "خازندار", sourceNameEn: "Khazendar", title: a.title, url: `/articles/${a.slug}/`, lang: "ar", publishedAt: a.publishedAt })),
     image,
-    models: { editor: editorModel, writer: writerModel, critic: review.model, vision: image?.model ?? null },
-    quality: { score: review.score, verdict: review.verdict, revised, warnings: checks.warnings, criticSummary: review.summary },
+    models: { editor: editorModel, writer: writerModel, critic: finalReview.model, vision: image?.model ?? null },
+    quality: { score: finalReview.score, verdict: finalReview.verdict, revised, warnings: checks.warnings, criticSummary: finalReview.summary },
   });
   if (!DRY_RUN) {
     await mkdir(ARTICLES_DIR, { recursive: true });
