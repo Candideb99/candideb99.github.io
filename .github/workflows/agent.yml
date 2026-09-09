@@ -1,0 +1,64 @@
+name: Agent
+
+# Ask Claude for a change from anywhere, without opening the project: open an issue on the
+# repository (the GitHub app on a phone works) and mention @claude in it. Claude answers on the
+# owner's subscription and opens a pull request for any change.
+#
+# Needs the same one-time setup as the Editor workflow: the CLAUDE_CODE_OAUTH_TOKEN secret, the
+# KHAZENDAR_EDITOR variable set to 1, and the Claude GitHub App installed.
+
+on:
+  issues:
+    types: [opened, labeled]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  actions: read
+
+jobs:
+  claude:
+    name: Answer the request
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # Only the owner may drive the agent: this repository is public.
+    if: >-
+      vars.KHAZENDAR_EDITOR == '1' &&
+      github.event.sender.login == github.repository_owner &&
+      (contains(github.event.issue.body, '@claude') || contains(github.event.comment.body, '@claude'))
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      - uses: anthropics/claude-code-action@v1
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          trigger_phrase: "@claude"
+          branch_prefix: "claude/"
+          base_branch: "main"
+          additional_permissions: "actions: read"
+          claude_args: "--max-turns 40"
+          prompt: |
+            You are the site agent of خازندار, an automated Arabic economics newspaper. Read
+            CLAUDE.md, HERMES.md and README.md first; they explain where everything lives and the
+            house rules that bind you. Do what the owner asks in the issue.
+
+            For any change to files, open a pull request against main and summarise it in one short
+            paragraph, in the language the owner used. Run `npm run check` and `npm run build` before
+            proposing it. For a question, answer in the issue.
+
+            Never hand-write a news article, never invent a figure, never generate a picture, never
+            commit a secret. Keep the design system in DESIGN.md unless he asks to change it.

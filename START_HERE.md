@@ -72,15 +72,54 @@ The site is prepared for Google AdSense but a person must open the account:
 
 Realistic expectations: ad income follows traffic, and traffic follows months of consistent publishing plus search visibility. The system gives you the consistency; the domain and time give you the rest.
 
-## 5. Using your Claude or ChatGPT subscription instead of free models
+## 5. Letting Claude run the paper on your subscription
 
-Yes, possible, without any API key:
+No API key and no per-message cost: this uses your Claude subscription. Do these three things once,
+then never again.
 
-- **Claude (recommended):** open a terminal once and run `claude login` (or `claude setup-token`, which prints a long-lived token). On this laptop, set `KHAZENDAR_PROVIDER=claude` in `.env` and the control room's newsroom runs will use your subscription. For the cloud runs, add the token as a GitHub secret named `CLAUDE_CODE_OAUTH_TOKEN` and set the repository variable `KHAZENDAR_PROVIDER` to `claude`; the workflow installs Claude Code and uses it. Photo selection still uses the free vision model.
-- **Codex:** possible in principle (`codex exec` with a ChatGPT login) but it has no clean way to run in the cloud without copying your login file; use it locally if you prefer.
-- Either agent can also edit this project directly: open the folder in Claude Code or Codex and describe the change in plain words.
+**Step 1, on this laptop.** Open a terminal in the project folder and run:
 
-Subscription plans have usage limits; a run uses roughly 25 to 40 model calls.
+```bash
+claude setup-token
+```
+
+It prints one long token. Copy it.
+
+**Step 2, on GitHub.** Open
+https://github.com/Candideb99/candideb99.github.io/settings/secrets/actions and add:
+
+| Where | Name | Value |
+| --- | --- | --- |
+| Secrets tab, "New repository secret" | `CLAUDE_CODE_OAUTH_TOKEN` | the token from step 1 |
+| Variables tab, "New repository variable" | `KHAZENDAR_EDITOR` | `1` |
+| Variables tab, optional | `KHAZENDAR_PROVIDER` | `claude` |
+
+**Step 3.** Install the Claude app on the repository: https://github.com/apps/claude
+
+### What each one switches on
+
+- **`KHAZENDAR_EDITOR = 1`** gives you an editor-in-chief. Every morning Claude reads the night's
+  runs, repairs a broken pipeline, finds any missing picture, checks the site still builds, and
+  leaves a short report. It commits its own fixes. Anything that would change how the paper looks
+  comes to you as a pull request instead. Nobody types a prompt; it is in `.github/workflows/editor.yml`.
+- **`KHAZENDAR_PROVIDER = claude`** makes Claude write the articles themselves, instead of the free
+  models, on every three-hourly run. This is the single biggest quality change available to you.
+  Photo choice still uses a free vision model.
+- **Asking for something from anywhere.** With the same setup, open an issue on the repository from
+  your phone and write `@claude` with your request. Claude answers and opens a pull request. You
+  never open the project folder.
+
+**Turning it off** is one edit: set `KHAZENDAR_EDITOR` to `0`. The newsroom keeps publishing on free
+models regardless, so nothing breaks.
+
+**The cost.** No money. It draws on your subscription's usage limits: the daily editor is one
+session, and a full newsroom run is roughly 25 to 40 model calls. If you hit your limit, set
+`KHAZENDAR_PROVIDER` back to `openrouter` and the free models take over again.
+
+### Codex
+
+Possible locally with `codex exec` and a ChatGPT login, but there is no clean way to run it in the
+cloud without copying your login file. Claude is the better route here.
 
 ## 6. Changing things
 

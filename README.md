@@ -6,6 +6,20 @@ Live: https://candideb99.github.io
 
 New to this? Read **[START_HERE.md](START_HERE.md)** first: the three places to look, what runs by itself, ads, and how to use your own Claude or ChatGPT subscription.
 
+## Claude as the scheduled editor
+
+`.github/workflows/editor.yml` runs Claude Code once a day on the owner's subscription
+(`claude setup-token` → secret `CLAUDE_CODE_OAUTH_TOKEN`, plus the Claude GitHub App), gated on the
+repository variable `KHAZENDAR_EDITOR=1`. It repairs failed newsroom runs, backfills missing
+pictures, keeps `npm run check` and `npm run build` green, and tightens de-duplication rules. It
+commits fixes confined to `pipeline/`, `content/articles/` and `.github/` itself, and opens a pull
+request for anything touching `src/` or the product documents. `.github/workflows/agent.yml` answers
+an issue that mentions `@claude`, restricted to the repository owner.
+
+Setting the variable `KHAZENDAR_PROVIDER=claude` additionally routes the newsroom's own writing and
+critic calls to the subscription instead of the free OpenRouter models (`pipeline/lib/llm.mjs`,
+`callClaudeCli`); vision stays on OpenRouter.
+
 ## Hermes, the local editor
 
 Hermes Agent (Nous Research, installed at `%LOCALAPPDATA%\hermes`) runs on the owner's laptop as the

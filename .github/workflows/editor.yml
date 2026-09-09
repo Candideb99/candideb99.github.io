@@ -1,0 +1,94 @@
+name: Editor
+
+# Claude Code as the newspaper's editor-in-chief, on the owner's subscription, on a schedule.
+# Nobody has to open the project or type a prompt: this runs by itself and fixes what it can.
+#
+# Switch it on once:
+#   1. On the laptop: `claude setup-token`, copy the token it prints.
+#   2. Repository → Settings → Secrets and variables → Actions:
+#        secret   CLAUDE_CODE_OAUTH_TOKEN = that token
+#        variable KHAZENDAR_EDITOR        = 1
+#   3. Install the Claude GitHub App: https://github.com/apps/claude
+# Set the variable to 0 to stop it. Nothing else changes; the newsroom keeps publishing either way.
+
+on:
+  schedule:
+    # Once a day, after the 05:41 explainer run has finished.
+    - cron: "17 7 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: editor
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  actions: read
+
+jobs:
+  editor:
+    name: Daily editor's round
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    if: vars.KHAZENDAR_EDITOR == '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      - name: Configure git
+        run: |
+          git config user.name "khazendar-editor"
+          git config user.email "editor@users.noreply.github.com"
+
+      - uses: anthropics/claude-code-action@v1
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          branch_prefix: "editor/"
+          base_branch: "main"
+          additional_permissions: "actions: read"
+          claude_args: "--max-turns 40"
+          prompt: |
+            You are the editor-in-chief of خازندار, an automated Arabic economics newspaper. You are
+            running unattended on a schedule. The owner, Ahmed, is not watching and cannot answer
+            questions, so decide and act. Read CLAUDE.md and HERMES.md in this repository first; they
+            are the house rules and they bind you.
+
+            A cloud job publishes the stories every three hours. You do NOT write or edit articles.
+            Do the editor's round:
+
+            1. Health. Run `gh run list --workflow newsroom.yml -L 8`. If a run failed, read it with
+               `gh run view <id> --log-failed` and fix the cause in the pipeline. The causes seen in
+               production are: a model that left the OpenRouter free tier (fix the chain in
+               pipeline/lib/llm.mjs, only `:free` models are allowed), a token cap too low for a
+               model that reasons before answering, and a feed that changed address. A story rejected
+               by the critic for copying an Arabic source too closely is NOT a bug; leave it.
+            2. Pictures. If any file in content/articles has `image: null`, run
+               `node pipeline/backfill-images.mjs`. Never choose a photograph yourself.
+            3. Soundness. Run `npm run check` and `npm run build`. Fix what breaks.
+            4. Duplicates. If two published stories cover the same event, that is a de-duplication
+               weakness in pipeline/lib/select.mjs. Tighten the rule; do not delete the articles.
+
+            Committing: push fixes to `main` yourself when they are confined to `pipeline/`,
+            `content/articles/` or `.github/`, and only after `npm run check` and `npm run build`
+            pass. Anything touching `src/`, `DESIGN.md`, `PRODUCT.md` or `src/data/site.json` changes
+            how the paper looks or what it promises: open a pull request instead and explain it.
+
+            Never invent a fact, never hand-write an article, never generate a picture, never commit a
+            secret, never force-push.
+
+            Finish by writing a short plain-language report to $GITHUB_STEP_SUMMARY: what the paper
+            published in the last day, what failed and why, and what you fixed. If nothing needed
+            doing, say that in one line.
