@@ -9,6 +9,7 @@ You own an automated Arabic economics newspaper. This page is the whole operatin
 | The live website | https://candideb99.github.io | What readers see. Updates itself every 3 hours. |
 | The control room (on this laptop) | double-click `OPEN_CONTROL_ROOM.cmd` → http://127.0.0.1:7777 | See what was published, run the newsroom by hand, remove a story, preview locally. |
 | The cloud runs | https://github.com/Candideb99/candideb99.github.io/actions | Every automatic run with a table of what it published or rejected and why. |
+| Hermes, the local editor | double-click `TALK_TO_HERMES.cmd` | Talk to an agent that runs the newsroom, fixes pictures, diagnoses failures and reports back. |
 
 Nothing here uses your GPU. Writing happens on OpenRouter's servers (or on your Claude subscription, see section 5); the site is built and served by GitHub.
 
@@ -24,6 +25,35 @@ Every 3 hours (and once a day for an explainer) a cloud job:
 6. commits the article and republishes the site.
 
 You never have to touch it. If a story is wrong, open the control room and press **Unpublish**.
+
+## 2c. Hermes, your local editor
+
+Hermes Agent is installed on this laptop and connected to your OpenRouter key, so it costs nothing to
+run. Double-click **`TALK_TO_HERMES.cmd`** and talk to it in plain words, Arabic or English:
+
+- "check the newsroom and tell me if anything is broken"
+- "publish two new stories now"
+- "find a better picture for the Oman trade story"
+- "add the Saudi central bank feed to the sources"
+
+**What it may do by itself.** Run the newsroom, find and replace pictures, check and build the site,
+publish what the pipeline produced, diagnose a failed cloud run and repair it. Its charter is in
+`HERMES.md`; it also obeys `CLAUDE.md`, the same house rules every agent here follows. It never
+writes an article by hand, never invents a number, and never generates a picture: the pipeline writes
+and the critic checks, which is what keeps the quality up.
+
+**What it does on its own every day.** At 9am it does the editor's round: reads the last cloud runs,
+fixes any story that lost its picture, and leaves you a short report. It only runs while the laptop is
+on and awake, which is why the cloud, not Hermes, remains the publisher.
+
+**Turning it off.** In a terminal:
+
+```
+%LOCALAPPDATA%\hermes\hermes-agent\.venv\Scripts\hermes.exe cron pause khazendar-editor-round
+```
+
+To stop it starting with Windows, run the same command with `gateway uninstall` instead. Neither
+touches the cloud newsroom, which keeps publishing either way.
 
 ## 3. Your weekly five minutes
 

@@ -6,6 +6,20 @@ Live: https://candideb99.github.io
 
 New to this? Read **[START_HERE.md](START_HERE.md)** first: the three places to look, what runs by itself, ads, and how to use your own Claude or ChatGPT subscription.
 
+## Hermes, the local editor
+
+Hermes Agent (Nous Research, installed at `%LOCALAPPDATA%\hermes`) runs on the owner's laptop as the
+newspaper's local editor, on OpenRouter free models (`inclusionai/ling-3.0-flash-fin:free`, provider
+and key in `%LOCALAPPDATA%\hermes\config.yaml` and `.env`, never in this repo). It is registered to
+the project `khazendar` and reads `HERMES.md` (its charter) together with `CLAUDE.md` (the house
+rules). Image generation and computer-use tools are disabled deliberately: this paper publishes
+licensed photographs or no picture at all.
+
+It drives the existing pipeline rather than replacing it, so every story it publishes passes the same
+grounding checks, critic pass and vision-verified image search as a cloud run. A scheduled job
+(`khazendar-editor-round`, `0 9 * * *`) does a daily editor's round; the Hermes gateway starts with
+Windows and fires it. `TALK_TO_HERMES.cmd` opens an interactive session.
+
 ## Control room
 
 Double-click `OPEN_CONTROL_ROOM.cmd` (or `npm run control`) and open http://127.0.0.1:7777. It shows the last run's report, the next scheduled cloud run, every article with its critic score, and buttons to run the newsroom, write an explainer, dry-run, build a local preview, sync, publish local changes, or unpublish a story. It binds to localhost only and uses no GPU.
