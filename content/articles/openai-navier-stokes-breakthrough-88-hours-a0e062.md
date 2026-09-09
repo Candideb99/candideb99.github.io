@@ -32,14 +32,14 @@ readingMinutes: 3
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/7/7e/Math_exam_questions_-_given_the_length_of_a_square%27s_side%2C_calculate_its_area_-_Oriental_Institute_Museum%2C_University_of_Chicago_-_DSC07192.JPG
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/San_Francisco_skyline_of_April_2017_seen_from_Treasure_Island.jpg/1280px-San_Francisco_skyline_of_April_2017_seen_from_Treasure_Island.jpg
   width: 1280
-  height: 1292
-  alt: طوب مع نحت خطوط هندسية على خلفية خضراء
-  credit: Daderot · CC0 · ويكيميديا كومنز
-  license: CC0
-  licenseUrl: http://creativecommons.org/publicdomain/zero/1.0/deed.en
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AMath_exam_questions_-_given_the_length_of_a_square's_side%2C_calculate_its_area_-_Oriental_Institute_Museum%2C_University_of_Chicago_-_DSC07192.JPG
+  height: 692
+  alt: منظر ليلي لأفق سان فرانسيسكو من جزيرة تريجر مع ناطحات السحاب
+  credit: Dllu · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ASan_Francisco_skyline_of_April_2017_seen_from_Treasure_Island.jpg
 sources:
   - name: بي بي سي
     nameEn: BBC News
@@ -69,7 +69,7 @@ models:
   editor: nvidia/nemotron-3-ultra-550b-a55b:free
   writer: nvidia/nemotron-3-ultra-550b-a55b:free → nvidia/nemotron-3-ultra-550b-a55b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
+  vision: nex-agi/nex-n2.5-pro:free
 quality:
   score: 6
   verdict: revise

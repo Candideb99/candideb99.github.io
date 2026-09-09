@@ -84,6 +84,7 @@ export async function loadExistingArticles() {
         kind: data.kind ?? "news",
         publishedAt: data.publishedAt,
         tags: data.tags ?? [],
+        imageUrl: data.image?.url ?? null,
         sourceUrls: (data.sources ?? []).map((s) => s.url).filter(Boolean),
       });
     } catch {

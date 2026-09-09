@@ -10,6 +10,14 @@ New to this? Read **[START_HERE.md](START_HERE.md)** first: the three places to 
 
 Double-click `OPEN_CONTROL_ROOM.cmd` (or `npm run control`) and open http://127.0.0.1:7777. It shows the last run's report, the next scheduled cloud run, every article with its critic score, and buttons to run the newsroom, write an explainer, dry-run, build a local preview, sync, publish local changes, or unpublish a story. It binds to localhost only and uses no GPU.
 
+## Design and brand
+
+The site is a classical Arabic daily on screen: white paper, black ink, one banknote green (the logo plate and the section bar), rules instead of boxes, Amiri headlines, Noto Naskh text justified in ruled columns, photographs in true colour at their column's width. `DESIGN.md` records the system as built.
+
+The logo is the owner's artwork, `brand/logo-source.png`: the wordmark خازندار in dark-green calligraphy over the treasurer's key in gold on a thin rule. `scripts/brand.mjs` (`npm run brand`) traces it into `public/logo.svg` and `public/logo-dark.svg` (paper lettering for dark pages), cuts the key's bow into `public/favicon.svg` and the touch icons, and builds `public/avatar.png` and `public/og-default.png` from it; the traced paths in `src/lib/brand.ts` also draw the per-article social cards (`src/pages/og/[slug].png.ts`). The artwork is used as delivered, never redrawn; never hand-edit the generated files.
+
+The front page is laid out like a news organisation's site: a latest-headlines strip, the top-stories list, the lead with two secondary stories, today's figures and the editor's picks, then a row of picture cards per section. Every story should carry a photograph: the newsroom first searches for the writer's specific subjects and then, as a newspaper would, for a generic illustration of the place, institution or sector (`pipeline/lib/images.mjs`); `node pipeline/backfill-images.mjs` fills older stories.
+
 ## Data visuals
 
 When the sources contain at least three comparable figures, the writer emits a chart (bar or line) or a table with Arabic labels. Every value is checked against the sources by `pipeline/lib/verify.mjs`; a visual with an unsupported number is dropped without touching the article. Charts render as static SVG (`src/components/Chart.astro`) with a legend, tooltips and a table view.

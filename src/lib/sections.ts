@@ -5,8 +5,6 @@ export type SectionId = "economy" | "markets" | "energy" | "companies" | "techno
 export interface Section {
   id: SectionId;
   name: string;
-  color: string;
-  ink: string;
   description: string;
 }
 

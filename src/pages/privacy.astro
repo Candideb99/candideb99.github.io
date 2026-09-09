@@ -6,7 +6,7 @@ const hasAds = Boolean(site.adsenseClient);
 
 <Base title="سياسة الخصوصية" description="ما الذي يجمعه خازندار عن زوّاره، وما الذي لا يجمعه." path="/privacy/">
   <article class="wrap block privacy" data-pagefind-ignore>
-    <header class="privacy__head">
+    <header class="page-head">
       <h1 class="page-title">سياسة الخصوصية</h1>
       <p class="page-intro">خازندار موقع للقراءة فقط: لا حسابات، ولا تعليقات، ولا نماذج اشتراك.</p>
     </header>
@@ -31,8 +31,6 @@ const hasAds = Boolean(site.adsenseClient);
 </Base>
 
 <style>
-  .privacy__head { border-top: 3px solid var(--saffron); padding-top: 0.9rem; }
-  .privacy__head .page-title { color: var(--ink); }
-  .privacy__prose { margin-top: clamp(1.5rem, 3vw, 2.5rem); }
+  .privacy__prose { margin-top: 0; }
   .privacy__date { font-family: var(--font-ui); color: var(--ink-3); font-size: 0.9rem; }
 </style>

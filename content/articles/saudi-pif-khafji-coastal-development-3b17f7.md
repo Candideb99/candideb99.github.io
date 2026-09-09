@@ -23,7 +23,15 @@ tags:
 regions:
   - الخليج
 readingMinutes: 2
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Riyadh_Skyline.jpg/1280px-Riyadh_Skyline.jpg
+  width: 1280
+  height: 720
+  alt: أفق مدينة الرياض عند الغروب مع أبراجها المضيئة ومشاريعها العمرانية
+  credit: B.alotaby · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ARiyadh_Skyline.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -53,7 +61,7 @@ models:
   editor: minimax/minimax-m3:free
   writer: minimax/minimax-m3:free → minimax/minimax-m3:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: null
+  vision: nex-agi/nex-n2.5-pro:free
 quality:
   score: 5
   verdict: revise

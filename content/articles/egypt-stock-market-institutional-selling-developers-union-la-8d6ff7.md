@@ -31,7 +31,15 @@ regions:
 readingMinutes: 3
 chart: null
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Cairo_Skyline_-_2676086921.jpg/1280px-Cairo_Skyline_-_2676086921.jpg
+  width: 1280
+  height: 960
+  alt: بانوراما لمدينة القاهرة تظهر أحياء كثيفة ومباني حديثة تحت سماء صافية
+  credit: Staeiou · CC BY-SA 2.0 · ويكيميديا كومنز
+  license: CC BY-SA 2.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/2.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ACairo_Skyline_-_2676086921.jpg
 sources:
   - name: البورصة
     nameEn: Alborsa News
@@ -61,7 +69,7 @@ models:
   editor: nvidia/nemotron-3-ultra-550b-a55b:free
   writer: nvidia/nemotron-3-ultra-550b-a55b:free → nvidia/nemotron-3-ultra-550b-a55b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: null
+  vision: nex-agi/nex-n2.5-pro:free
 quality:
   score: 6
   verdict: revise

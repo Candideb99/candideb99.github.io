@@ -29,7 +29,15 @@ regions:
   - الشرق الأوسط
   - شبه القارّة الهندية
 readingMinutes: 2
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/5/53/Mumbai_Skyline_during_monsoon.jpg
+  width: 1280
+  height: 711
+  alt: أفق مدينة مومباي وناطحات السحاب وسط سماء ملبدة بالغيوم في الهند
+  credit: Aj777x · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AMumbai_Skyline_during_monsoon.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -59,7 +67,7 @@ models:
   editor: minimax/minimax-m3:free
   writer: minimax/minimax-m3:free → minimax/minimax-m3:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: null
+  vision: nex-agi/nex-n2.5-pro:free
 quality:
   score: 5
   verdict: revise

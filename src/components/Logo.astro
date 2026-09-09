@@ -1,0 +1,34 @@
+---
+/**
+ * The brand, from the owner's artwork (brand/logo-source.png) traced by scripts/brand.mjs.
+ * lockup: the wordmark over the treasurer's key; served as cached SVG files, with the paper-lettered
+ * version for dark pages. mark: the key's bow on a green square (the favicon).
+ */
+import { LOGO } from "@lib/brand";
+import site from "@data/site.json";
+
+interface Props {
+  part?: "lockup" | "mark";
+  /** Rendered height in CSS pixels (width follows the artwork's aspect). */
+  height?: number;
+  class?: string;
+  eager?: boolean;
+}
+const { part = "lockup", height = 96, class: className = "", eager = false } = Astro.props;
+const width = Math.round((LOGO.width / LOGO.height) * height);
+---
+
+{part === "lockup" ? (
+  <picture class={`logo logo--lockup ${className}`}>
+    <source srcset="/logo-dark.svg" media="(prefers-color-scheme: dark)" />
+    <img src="/logo.svg" width={width} height={height} alt={`${site.name} — ${site.tagline}`} loading={eager ? "eager" : "lazy"} decoding="async" fetchpriority={eager ? "high" : "auto"} />
+  </picture>
+) : (
+  <img class={`logo logo--mark ${className}`} src="/favicon.svg" width={height} height={height} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+)}
+
+<style>
+  /* The SVG files carry a 900px intrinsic width; the width attribute and the global img rule size them. */
+  .logo { display: block; flex: none; min-width: 0; line-height: 0; }
+  .logo img { display: block; max-width: 100%; height: auto; }
+</style>

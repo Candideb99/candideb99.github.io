@@ -10,24 +10,29 @@ function chain(envName, fallback) {
 
 /** Ordered fallback chains per newsroom role. Only free OpenRouter models. */
 export const ROLES = {
+  // Re-benchmarked 2026-09-09 after MiniMax M3 left the free tier: Ling Flash Fin is fast and writes
+  // clean Arabic, the Nemotron 3 models are the strongest but slow, Nex N2.5 Mini is a sound reserve.
   editor: chain("KHAZENDAR_MODELS_EDITOR", [
-    "minimax/minimax-m3:free",
-    "nvidia/nemotron-3-ultra-550b-a55b:free",
     "inclusionai/ling-3.0-flash-fin:free",
+    "nex-agi/nex-n2.5-mini:free",
+    "nvidia/nemotron-3-super-120b-a12b:free",
   ]),
   writer: chain("KHAZENDAR_MODELS_WRITER", [
-    "minimax/minimax-m3:free",
-    "nvidia/nemotron-3-ultra-550b-a55b:free",
     "inclusionai/ling-3.0-flash-fin:free",
+    "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "nvidia/nemotron-3-super-120b-a12b:free",
+    "nex-agi/nex-n2.5-mini:free",
   ]),
   critic: chain("KHAZENDAR_MODELS_CRITIC", [
     "nvidia/nemotron-3-super-120b-a12b:free",
-    "minimax/minimax-m3:free",
     "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "nex-agi/nex-n2.5-mini:free",
   ]),
+  // Gemma is often rate-limited upstream; Nex N2.5 Pro and Nemotron Nano Omni answered reliably.
   vision: chain("KHAZENDAR_MODELS_VISION", [
-    "minimax/minimax-m3:free",
+    "nex-agi/nex-n2.5-pro:free",
     "google/gemma-4-31b-it:free",
+    "google/gemma-4-26b-a4b-it:free",
     "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
   ]),
 };

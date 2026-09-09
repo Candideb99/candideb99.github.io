@@ -106,7 +106,7 @@ Return JSON: {"concept_ar":"<concept in Arabic>","concept_en":"<concept in Engli
     system: EXPLAINER_SYSTEM,
     user,
     temperature: 0.4,
-    maxTokens: 800,
+    maxTokens: 2000,
     log,
     validate: (d) => {
       if (!d?.concept_ar) throw new Error("concept missing");

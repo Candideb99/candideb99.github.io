@@ -146,6 +146,9 @@ async function collectEvidence(story, candidates) {
   return { items, sources, evidenceChars };
 }
 
+/** Pictures already printed on the site; a new story never repeats one. */
+const usedImages = (existing) => new Set(existing.map((a) => a.imageUrl).filter(Boolean));
+
 async function produceStory({ story, candidates, existing, recentTitles, models, report }) {
   const { items, sources, evidenceChars } = await collectEvidence(story, candidates);
   const entry = { headline: story.headlineHint, section: story.section, importance: story.importance, sources: sources.map((s) => s.url) };
@@ -188,7 +191,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     }
   }
 
-  const image = await pickImage({ draft, story, log });
+  const image = await pickImage({ draft, story, log, exclude: usedImages(existing) });
   const slug = buildSlug(draft, story);
   const markdown = serializeArticle({
     draft,
@@ -307,7 +310,7 @@ async function runExplainer() {
       return { report, published: 0 };
     }
   }
-  const image = await pickImage({ draft, story: { angle: topic.hook }, log });
+  const image = await pickImage({ draft, story: { angle: topic.hook }, log, exclude: usedImages(existing) });
   const slug = buildSlug(draft, { headlineHint: topic.concept_en });
   const markdown = serializeArticle({
     draft,

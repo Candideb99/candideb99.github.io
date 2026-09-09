@@ -1,25 +1,82 @@
 ---
 import Base from "@layouts/Base.astro";
-import Lead from "@components/Lead.astro";
+import Front from "@components/Front.astro";
 import StoryCard from "@components/StoryCard.astro";
-import { getArticles, pickLead } from "@lib/articles";
+import { getArticles, pickLead, type Article } from "@lib/articles";
 import { newsSections, getSection, sectionHref } from "@lib/sections";
 import site from "@data/site.json";
 
 const articles = await getArticles();
-const lead = pickLead(articles);
-const rest = articles.filter((a) => a.id !== lead?.id);
-const contents = rest.slice(0, 6);
-const contentsIds = new Set(contents.map((a) => a.id));
-const explainers = articles.filter((a) => a.data.kind === "explainer").slice(0, 3);
+const news = articles.filter((a) => a.data.kind === "news");
+const explainers = articles.filter((a) => a.data.kind === "explainer");
+const importance = (a: Article) => (a.data.quality?.importance ?? 5) + (a.data.image ? 0.5 : 0);
 
-const perSection = newsSections.map((s) => ({ section: s, items: rest.filter((a) => a.data.section === s.id && a.data.kind === "news").slice(0, 5) }));
-// A section earns its own block from two stories; single stories gather in one shared grid.
-const blocks = perSection.filter((b) => b.items.length >= 2);
-const singles = perSection.filter((b) => b.items.length === 1).flatMap((b) => b.items);
+// Every story is placed once with its own module; anything shown again further down runs as text.
+const placed = new Set<string>();
+const place = (list: Article[]) => list.forEach((a) => placed.add(a.id));
+
+const lead = pickLead(articles);
+if (lead) placed.add(lead.id);
+const secondary = news
+  .filter((a) => !placed.has(a.id))
+  .slice(0, 8)
+  .sort((x, y) => importance(y) - importance(x))
+  .slice(0, 2);
+place(secondary);
+const top = news.filter((a) => !placed.has(a.id)).slice(0, 7);
+place(top);
+const ticker = news.slice(0, 5);
+const picks = articles
+  .filter((a) => !placed.has(a.id))
+  .sort((x, y) => importance(y) - importance(x))
+  .slice(0, 5);
+place(picks);
+// A lone explainer sits in the front's side column; two or more get their own row below instead.
+const asideExplainer = explainers.length === 1 ? explainers[0] : undefined;
+if (asideExplainer) placed.add(asideExplainer.id);
+
+// Today's figures: one telling number per recent story, never a bare year or a sprawling value.
+const figureScore = (value: string) => {
+  const v = value.trim();
+  if (!/\d/.test(v) || /^(19|20)\d{2}$/.test(v) || v.length > 30) return -1;
+  return (/[%٪]/.test(v) ? 2 : 0) + (/(مليار|مليون|ألف|دولار|ريال|يورو|جنيه|دينار|درهم|يوان|طن|برميل)/.test(v) ? 2 : 0) + (v.length <= 18 ? 1 : 0);
+};
+const figures = articles
+  .slice(0, 8)
+  .flatMap((a) => {
+    const best = [...a.data.keyFacts].map((f) => ({ ...f, article: a, score: figureScore(f.value) })).filter((f) => f.score >= 0 && (f.label ?? "").length <= 48).sort((x, y) => y.score - x.score)[0];
+    return best ? [best] : [];
+  })
+  .slice(0, 4);
+
+// Section rows: up to four stories, the ones not yet on the page first (with their pictures),
+// then stories already placed above, as text. Rows with fewer than three stories run as a list.
+const rows = newsSections
+  .map((s) => {
+    const inSection = news.filter((a) => a.data.section === s.id);
+    const fresh = inSection.filter((a) => !placed.has(a.id)).slice(0, 4);
+    const repeats = inSection.filter((a) => placed.has(a.id)).slice(0, Math.max(0, 4 - fresh.length));
+    const items = [...fresh.map((a) => ({ a, repeat: false })), ...repeats.map((a) => ({ a, repeat: true }))];
+    place(fresh);
+    return { section: s, items };
+  })
+  .filter((r) => r.items.length > 0);
+const explainerRow = explainers.length > 1 ? explainers.slice(0, 4) : [];
 const explainerSection = getSection("explainers");
-/** Grid span from item count, so a lone story or a pair fills the row instead of leaving holes. */
-const spanFor = (count: number) => (count === 1 ? "span-12 lg-span-8" : count === 2 ? "span-6" : "span-6 lg-span-4");
+
+// A picture is printed once per page even when two stories share it.
+const photoIds = new Set<string>();
+{
+  const seenUrls = new Set<string>();
+  const order = [lead, ...secondary, ...top, asideExplainer, ...rows.flatMap((r) => r.items.filter((i) => !i.repeat).map((i) => i.a)), ...explainerRow];
+  for (const a of order) {
+    const url = a?.data.image?.url;
+    if (!a || !url || seenUrls.has(url)) continue;
+    seenUrls.add(url);
+    photoIds.add(a.id);
+  }
+}
+const rowLayout = (count: number) => (count < 3 ? `cards cards--list` : `cards`);
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -29,12 +86,13 @@ const jsonLd = {
   url: site.url,
   description: site.description,
   inLanguage: "ar",
+  logo: new URL("/icon-512.png", site.url).toString(),
 };
 ---
 
 <Base jsonLd={jsonLd}>
   {lead ? (
-    <Lead lead={lead} contents={contents} />
+    <Front lead={lead} secondary={secondary} top={top} picks={picks} figures={figures} explainer={asideExplainer} ticker={ticker} photoIds={photoIds} />
   ) : (
     <section class="wrap block">
       <h1 class="page-title">العدد الأول قيد الطباعة</h1>
@@ -42,71 +100,41 @@ const jsonLd = {
     </section>
   )}
 
-  {blocks.map((b, index) => (
-    <section class={`wrap block section-block${index % 2 === 1 ? " section-block--alt" : ""}`} data-section={b.section.id} aria-labelledby={`sec-${b.section.id}`}>
+  {rows.map((r) => (
+    <section class="wrap row" data-section={r.section.id} aria-labelledby={`sec-${r.section.id}`}>
       <div class="section-head">
-        <div>
-          <h2 id={`sec-${b.section.id}`}><a href={sectionHref(b.section.id)}>{b.section.name}</a></h2>
-          <p>{b.section.description}</p>
-        </div>
-        <a class="more" href={sectionHref(b.section.id)}>كل مواد {b.section.name} ←</a>
+        <h2 id={`sec-${r.section.id}`}><a href={sectionHref(r.section.id)}>{r.section.name}</a></h2>
+        <a class="more" href={sectionHref(r.section.id)}>المزيد من {r.section.name}</a>
       </div>
-      <div class="grid grid--stories">
-        <StoryCard article={b.items[0]} variant="tile" class="span-6 lg-span-5" showSection={false} eager={index === 0 && !contentsIds.has(b.items[0].id)} />
-        <div class="span-6 lg-span-7 section-block__list">
-          {b.items.slice(1).map((a) => (
-            <StoryCard article={a} variant="row" showSection={false} />
-          ))}
-          {b.items.length === 1 && <p class="section-block__empty ui">مادة واحدة حتى الآن في هذا القسم.</p>}
-        </div>
+      <div class={rowLayout(r.items.length)} style={`--n:${r.items.length}`}>
+        {r.items.map(({ a, repeat }) => (
+          <StoryCard
+            article={a}
+            variant={r.items.length < 3 ? "list" : repeat ? "text" : "card"}
+            showSection={false}
+            showExcerpt={repeat || !a.data.image || !photoIds.has(a.id)}
+            showPhoto={!repeat && photoIds.has(a.id)}
+          />
+        ))}
       </div>
     </section>
   ))}
 
-  {singles.length > 0 && (
-    <section class="wrap block singles" aria-labelledby="sec-singles">
-      <div class="section-head singles__head">
-        <div>
-          <h2 id="sec-singles">أيضاً في هذا العدد</h2>
-          <p>مواد من أقسام أخرى.</p>
-        </div>
+  {explainerRow.length > 0 && (
+    <section class="wrap row" data-section="explainers" aria-labelledby="sec-explainers">
+      <div class="section-head">
+        <h2 id="sec-explainers"><a href={sectionHref("explainers")}>{explainerSection.name}</a></h2>
+        <a class="more" href={sectionHref("explainers")}>كل الشروح</a>
       </div>
-      <div class="grid grid--stories">
-        {singles.map((a) => (
-          <StoryCard article={a} variant="tile" class={spanFor(singles.length)} />
+      <div class={rowLayout(explainerRow.length)} style={`--n:${explainerRow.length}`}>
+        {explainerRow.map((a) => (
+          <StoryCard article={a} variant={explainerRow.length < 3 ? "list" : "card"} showSection={false} showExcerpt showPhoto={photoIds.has(a.id)} />
         ))}
-      </div>
-    </section>
-  )}
-
-  {explainers.length > 0 && (
-    <section class="block block--tint" data-section="explainers" aria-labelledby="sec-explainers">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <h2 id="sec-explainers"><a href={sectionHref("explainers")}>{explainerSection.name}</a></h2>
-            <p>{explainerSection.description}</p>
-          </div>
-          <a class="more" href={sectionHref("explainers")}>كل الشروح ←</a>
-        </div>
-        <div class="grid grid--stories">
-          {explainers.map((a) => (
-            <StoryCard article={a} variant="tile" class={spanFor(explainers.length)} showSection={false} />
-          ))}
-        </div>
       </div>
     </section>
   )}
 </Base>
 
 <style>
-  .section-block__list { display: grid; gap: 1rem; align-content: start; }
-  .section-block__list > :global(.card--row) { padding-top: 1rem; border-top: 1px solid var(--rule); }
-  .section-block__list > :global(.card--row:first-child) { padding-top: 0; border-top: 0; }
-  .section-block__empty { color: var(--ink-3); font-size: 0.9rem; }
-  .singles__head { border-top-color: var(--ink); }
-  .singles__head h2 { color: var(--ink); }
-  @media (min-width: 1024px) {
-    .section-block--alt .grid--stories > :global(.card--tile) { order: 2; }
-  }
+  .row { padding-top: clamp(1.5rem, 3vw, 2.25rem); }
 </style>

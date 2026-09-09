@@ -31,7 +31,15 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Paris_Paris_Skyline_%2837328639624%29.jpg/1280px-Paris_Paris_Skyline_%2837328639624%29.jpg
+  width: 1280
+  height: 760
+  alt: أفق واسع لمدينة باريس تحت سماء ملبدة بالغيوم مع بانوراما معمارية فرنسية
+  credit: Ali Sabbagh · CC0 · ويكيميديا كومنز
+  license: CC0
+  licenseUrl: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AParis_Paris_Skyline_(37328639624).jpg
 sources:
   - name: تك كرانش
     nameEn: TechCrunch
@@ -49,7 +57,7 @@ models:
   editor: nvidia/nemotron-3-ultra-550b-a55b:free
   writer: nvidia/nemotron-3-ultra-550b-a55b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: null
+  vision: nex-agi/nex-n2.5-pro:free
 quality:
   score: 8
   verdict: publish

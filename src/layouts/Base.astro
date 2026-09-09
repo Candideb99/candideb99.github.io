@@ -46,14 +46,15 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
-    <meta name="theme-color" content="#e5a52b" />
+    <meta name="theme-color" content="#0f5c3c" />
     <meta name="color-scheme" content="light dark" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="alternate" type="application/rss+xml" title={`${site.name} RSS`} href="/rss.xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="preload" href="/fonts/naskh-arabic.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/amiri-arabic-700.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/tajawal-arabic-700.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/tajawal-arabic-500.woff2" as="font" type="font/woff2" crossorigin />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:locale" content="ar_AR" />
     <meta property="og:type" content={type} />
@@ -76,23 +77,25 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
   </head>
   <body>
     <!--
-      DIRECTION CONTRACT (seed 6923a822)
-      THESIS: خازندار is a daily issue, not a feed. A mid-century Cairo illustrated
-      magazine program on the web: flat spot-colour fields, classical Arabic display,
-      naskh text, one-colour halftone photographs. It refuses the cream broadsheet
-      with gold hairlines and the black terminal with neon figures.
-      OWN-WORLD: saffron masthead field; six section inks (cobalt, vermilion, teal,
-      plum, cyan, ochre) as flat fields; Amiri display and titles (user-pinned
-      respectable register), Noto Naskh body, Tajawal labels and figures; duotone
-      plates that reveal colour on hover; procedural abstract covers when no
-      licensed photo exists.
-      STORY: the reader opens today's issue, sees the cover story and the contents
-      at once, reads sourced Arabic reporting with the numbers isolated, and
-      trusts it because every source is shown.
-      FIRST VIEWPORT: saffron band with wordmark, date and issue number; section
-      strip; the cover story as a full-colour plate with the headline lettered
-      over the field, and "في هذا العدد" contents beside it.
-      FORM: Cairo mid-century illustrated magazine program, candidate 5 of 7.
+      DIRECTION CONTRACT (canon, user-pinned 2026-09-09)
+      THESIS: خازندار is a news organisation's daily, not a web app: the dense,
+      picture-led front page of the Arabic dailies' sites, played straight, on
+      white paper with black ink and one banknote green. It refuses washed
+      photographs, generated art, sparse editorial templates and web decoration.
+      OWN-WORLD: paper #fcfcf9 / ink #141414 / green #0f5c3c (links, section names,
+      the section bar, the ticker label); the owner's logo, dark-green calligraphic
+      خازندار over the treasurer's gold key, used as delivered; Amiri heads, Noto
+      Naskh text justified in ruled columns, Tajawal for dates and small furniture;
+      true-colour photographs sized to their column on every story.
+      STORY: the reader opens today's paper, scans the headline strip and the top
+      stories, reads the lead, moves through the sections, and trusts every story
+      because its sources are printed.
+      FIRST VIEWPORT: date line; the logo centred; green section bar; latest-
+      headlines strip; top-stories list with thumbnails at the start, the lead with
+      two secondary stories in the centre, today's figures and the editor's picks
+      at the end.
+      FORM: the category standard (an Arabic daily's site), chosen by the user in
+      plain words; no seed roll.
       FINISH: unreviewed and undocumented is unfinished; this build ends with the
       finish review, the verdict, and DESIGN.md
     -->

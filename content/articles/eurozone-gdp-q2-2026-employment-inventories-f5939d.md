@@ -31,7 +31,15 @@ regions:
   - أوروبا
   - منطقة اليورو
 readingMinutes: 3
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Container_Terminal_Tollerort%2C_Vorhafen%2C_Hamburg_%28P1080405%29.jpg/1280px-Container_Terminal_Tollerort%2C_Vorhafen%2C_Hamburg_%28P1080405%29.jpg
+  width: 1280
+  height: 960
+  alt: ميناء هامبورغ في ألمانيا مع سفينة حاويات ورافعات تحت سماء صافية
+  credit: Matti Blume · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AContainer_Terminal_Tollerort%2C_Vorhafen%2C_Hamburg_(P1080405).jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -55,7 +63,7 @@ models:
   editor: minimax/minimax-m3:free
   writer: minimax/minimax-m3:free → minimax/minimax-m3:free
   critic: minimax/minimax-m3:free
-  vision: null
+  vision: nex-agi/nex-n2.5-pro:free
 quality:
   score: 6
   verdict: revise

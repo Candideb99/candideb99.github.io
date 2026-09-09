@@ -46,14 +46,14 @@ chart:
         - 100.6
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Strait_of_Hormuz_ARZ.png/1280px-Strait_of_Hormuz_ARZ.png
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Dubai_skyline_2015_%28crop%29.jpg/1280px-Dubai_skyline_2015_%28crop%29.jpg
   width: 1280
-  height: 781
-  alt: مضيق هرمز يربط الخليج العربي بخليج عمان
-  credit: Almajidy · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AStrait_of_Hormuz_ARZ.png
+  height: 969
+  alt: أفق دبي النهاري يبرز برج خليفة وسط ناطحات السحاب والمدينة
+  credit: Tim.Reckmann · CC BY-SA 3.0 · ويكيميديا كومنز
+  license: CC BY-SA 3.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/3.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ADubai_skyline_2015_(crop).jpg
 sources:
   - name: بي بي سي
     nameEn: BBC News
@@ -83,7 +83,7 @@ models:
   editor: nvidia/nemotron-3-ultra-550b-a55b:free
   writer: nvidia/nemotron-3-ultra-550b-a55b:free → nvidia/nemotron-3-ultra-550b-a55b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
+  vision: nex-agi/nex-n2.5-pro:free
 quality:
   score: 6
   verdict: revise

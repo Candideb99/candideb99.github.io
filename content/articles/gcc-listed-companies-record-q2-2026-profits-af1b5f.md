@@ -30,7 +30,15 @@ regions:
   - الخليج العربي
   - الشرق الأوسط
 readingMinutes: 3
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Riyadh_Skyline_showing_the_King_Abdullah_Financial_District_%28KAFD%29_and_the_famous_Kingdom_Tower_.jpg/1280px-Riyadh_Skyline_showing_the_King_Abdullah_Financial_District_%28KAFD%29_and_the_famous_Kingdom_Tower_.jpg
+  width: 1280
+  height: 853
+  alt: أفق الرياض عند الغروب ويظهر فيه برج المملكة ومنطقة الملك عبد الله المالية
+  credit: B.alotaby · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ARiyadh_Skyline_showing_the_King_Abdullah_Financial_District_(KAFD)_and_the_famous_Kingdom_Tower_.jpg
 sources:
   - name: إيكونومي ميدل إيست
     nameEn: Economy Middle East
@@ -48,7 +56,7 @@ models:
   editor: minimax/minimax-m3:free
   writer: minimax/minimax-m3:free → minimax/minimax-m3:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: null
+  vision: nex-agi/nex-n2.5-pro:free
 quality:
   score: 6
   verdict: revise

@@ -30,7 +30,15 @@ regions:
   - المملكة المتحدة
   - أوروبا الغربية
 readingMinutes: 4
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/City_of_London_skyline_from_London_City_Hall_-_Sept_2015_-_Crop_Aligned.jpg/1280px-City_of_London_skyline_from_London_City_Hall_-_Sept_2015_-_Crop_Aligned.jpg
+  width: 1280
+  height: 708
+  alt: أفق مدينة لندن ومنطقتها المالية على ضفاف نهر التايمز في بريطانيا
+  credit: User:Colin and Kim Hansen · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ACity_of_London_skyline_from_London_City_Hall_-_Sept_2015_-_Crop_Aligned.jpg
 sources:
   - name: الغارديان
     nameEn: The Guardian
@@ -60,7 +68,7 @@ models:
   editor: minimax/minimax-m3:free
   writer: minimax/minimax-m3:free → minimax/minimax-m3:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: null
+  vision: nex-agi/nex-n2.5-pro:free
 quality:
   score: 6
   verdict: revise

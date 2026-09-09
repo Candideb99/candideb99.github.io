@@ -35,14 +35,14 @@ readingMinutes: 3
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Strait_of_Hormuz_ARZ.png/1280px-Strait_of_Hormuz_ARZ.png
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Riyadh_North_Skyline_.jpg/1280px-Riyadh_North_Skyline_.jpg
   width: 1280
-  height: 781
-  alt: خليج عربي ومضيق هرمز يربط الخليج بسلطنة عمان
-  credit: Almajidy · CC BY-SA 4.0 · ويكيميديا كومنز
+  height: 854
+  alt: أفق مدينة الرياض عند الغروب مع برج المملكة ومركز الملك عبد الله المالي
+  credit: B.alotaby · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AStrait_of_Hormuz_ARZ.png
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ARiyadh_North_Skyline_.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -72,7 +72,7 @@ models:
   editor: nvidia/nemotron-3-ultra-550b-a55b:free
   writer: nvidia/nemotron-3-ultra-550b-a55b:free → nvidia/nemotron-3-ultra-550b-a55b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
+  vision: nex-agi/nex-n2.5-pro:free
 quality:
   score: 6
   verdict: revise

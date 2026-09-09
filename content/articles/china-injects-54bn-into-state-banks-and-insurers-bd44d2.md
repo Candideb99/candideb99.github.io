@@ -30,7 +30,15 @@ regions:
   - شرق آسيا
   - العالم العربي
 readingMinutes: 4
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Beijing_CBD_Skyline_%2820190104160952%29.jpg/1280px-Beijing_CBD_Skyline_%2820190104160952%29.jpg
+  width: 1280
+  height: 853
+  alt: منظر لأفق بكين المالي وناطحات السحاب والطرق السريعة في النهار
+  credit: N509FZ · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ABeijing_CBD_Skyline_(20190104160952).jpg
 sources:
   - name: بي بي سي
     nameEn: BBC News
@@ -60,7 +68,7 @@ models:
   editor: minimax/minimax-m3:free
   writer: minimax/minimax-m3:free → minimax/minimax-m3:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: null
+  vision: nex-agi/nex-n2.5-pro:free
 quality:
   score: 5
   verdict: revise

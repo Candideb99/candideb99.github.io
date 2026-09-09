@@ -28,7 +28,18 @@ regions:
   - شرق آسيا
   - أمريكا الشمالية
 readingMinutes: 2
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Skyline_view_from_Seoul_City_%28South_Korea%29.jpg/1280px-Skyline_view_from_Seoul_City_%28South_Korea%29.jpg
+  width: 1280
+  height: 853
+  alt: أفق مدينة سيول ليلاً مع مباني مضاءة وجبال في الخلفية
+  credit: |-
+    Flickr - Laurie Nevay
+
+     https://www.flickr.com/photos/laurienevay/ · CC BY-SA 2.0 · ويكيميديا كومنز
+  license: CC BY-SA 2.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/2.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ASkyline_view_from_Seoul_City_(South_Korea).jpg
 sources:
   - name: أويل برايس
     nameEn: OilPrice.com
@@ -46,7 +57,7 @@ models:
   editor: minimax/minimax-m3:free
   writer: minimax/minimax-m3:free → nvidia/nemotron-3-ultra-550b-a55b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: null
+  vision: nex-agi/nex-n2.5-pro:free
 quality:
   score: 8
   verdict: publish

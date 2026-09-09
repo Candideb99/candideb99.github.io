@@ -15,19 +15,14 @@ const countWord = n === 1 ? "مادة" : n === 2 ? "مادتان" : n <= 10 ? "�
 
 <Base title={`وسم: ${tag}`} description={`كل مواد خازندار الموسومة بـ ${tag}`} path={`/tags/${encodeURIComponent(tag)}/`}>
   <section class="wrap block">
-    <header class="tag__head">
+    <header class="page-head">
       <h1 class="page-title">{tag}</h1>
       <p class="page-intro"><bdi>{n}</bdi> {countWord} في خازندار</p>
     </header>
-    <div class="grid grid--stories">
+    <div class="cols" style={`--n:${Math.max(2, Math.min(n, 3))}`}>
       {items.map((a, i) => (
-        <StoryCard article={a} variant="tile" class="span-6 lg-span-4" eager={i < 3} />
+        <StoryCard article={a} variant="card" eager={i < 3} />
       ))}
     </div>
   </section>
 </Base>
-
-<style>
-  .tag__head { border-top: 3px solid var(--saffron); padding-top: 0.9rem; margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
-  .tag__head .page-title { color: var(--ink); }
-</style>

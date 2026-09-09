@@ -34,14 +34,14 @@ readingMinutes: 3
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/SAMSUNG_AIR_CONDITIONER_OUTDOOR_UNIT.jpg/1280px-SAMSUNG_AIR_CONDITIONER_OUTDOOR_UNIT.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Seoul_night_skyline_2018.jpg/1280px-Seoul_night_skyline_2018.jpg
   width: 1280
-  height: 986
-  alt: وحدة تكييف سامسونج الخارجية على جدار المبنى
-  credit: Dinkun Chen · CC BY-SA 4.0 · ويكيميديا كومنز
+  height: 960
+  alt: لقطة ليلية لأفق سيول ونهر الهان مضاءة بأضواء المدينة والجسور
+  credit: Takipoint123 · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ASAMSUNG_AIR_CONDITIONER_OUTDOOR_UNIT.jpg
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ASeoul_night_skyline_2018.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -59,7 +59,7 @@ models:
   editor: nvidia/nemotron-3-ultra-550b-a55b:free
   writer: nvidia/nemotron-3-ultra-550b-a55b:free → inclusionai/ling-3.0-flash-fin:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
+  vision: nex-agi/nex-n2.5-pro:free
 quality:
   score: 6
   verdict: revise

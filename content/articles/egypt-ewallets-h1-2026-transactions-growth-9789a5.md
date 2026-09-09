@@ -71,14 +71,14 @@ table:
       - "7.5"
       - 13%
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/How_mobile_payment_tokenization_works.png/1280px-How_mobile_payment_tokenization_works.png
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Main_Bank_of_Egypt.jpg/1280px-Main_Bank_of_Egypt.jpg
   width: 1280
-  height: 506
-  alt: مخطط يوضح كيفية عمل التOKENIZATION للدفع عبر الهاتف المحمول
-  credit: Keministi · CC0 · ويكيميديا كومنز
-  license: CC0
-  licenseUrl: http://creativecommons.org/publicdomain/zero/1.0/deed.en
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AHow_mobile_payment_tokenization_works.png
+  height: 854
+  alt: قاعة داخلية تاريخية بفرع بنك في القاهرة تضم أعمدة رخامية ومكاتب ورواداً
+  credit: Ahmed Yousry Mahfouz · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AMain_Bank_of_Egypt.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -108,7 +108,7 @@ models:
   editor: nvidia/nemotron-3-ultra-550b-a55b:free
   writer: nvidia/nemotron-3-ultra-550b-a55b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
+  vision: nex-agi/nex-n2.5-pro:free
 quality:
   score: 9
   verdict: publish

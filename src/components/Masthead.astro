@@ -2,6 +2,7 @@
 import site from "@data/site.json";
 import { sections, sectionHref } from "@lib/sections";
 import { formatDate, issueNumber } from "@lib/format";
+import Logo from "./Logo.astro";
 
 interface Props {
   active?: string;
@@ -13,28 +14,30 @@ const issue = issueNumber(now);
 ---
 
 <header class="masthead">
-  <div class="band">
-    <div class="wrap band__row">
-      <p class="issue ui">
-        <span class="issue__no">العدد <bdi data-issue-no>{issue}</bdi></span>
-        <time datetime={now.toISOString().slice(0, 10)} data-issue-date data-launch={site.launchDate}>{today}</time>
-      </p>
-      <div class="brand">
-        <a class="wordmark" href="/" aria-label={`${site.name} — الصفحة الرئيسية`}>{site.name}</a>
-        <p class="tagline">{site.tagline}</p>
-      </div>
-      <a class="search ui" href="/search/">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.6-3.6" /></svg>
-        <span>بحث</span>
-      </a>
-    </div>
+  <div class="wrap masthead__top ui">
+    <p class="masthead__issue">
+      <time datetime={now.toISOString().slice(0, 10)} data-issue-date data-launch={site.launchDate}>{today}</time>
+      <span class="masthead__sep" aria-hidden="true">·</span>
+      <span>العدد <bdi data-issue-no>{issue}</bdi></span>
+    </p>
+    <a class="masthead__search" href="/search/">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.6-3.6" /></svg>
+      <span>بحث</span>
+    </a>
   </div>
-  <nav class="nav" aria-label="أقسام خازندار">
+
+  <div class="wrap masthead__brand">
+    <a class="brand" href="/" aria-label={`${site.name} — الصفحة الرئيسية`}>
+      <Logo part="lockup" height={118} class="brand__lockup" eager />
+    </a>
+  </div>
+
+  <nav class="masthead__nav" aria-label="أقسام خازندار">
     <div class="wrap">
-      <ul class="nav__list">
+      <ul class="nav">
         <li><a href="/" class="nav__link" aria-current={active ? undefined : "page"}>الرئيسية</a></li>
         {sections.map((s) => (
-          <li data-section={s.id}>
+          <li>
             <a href={sectionHref(s.id)} class="nav__link" aria-current={active === s.id ? "page" : undefined}>{s.name}</a>
           </li>
         ))}
@@ -44,101 +47,60 @@ const issue = issueNumber(now);
 </header>
 
 <style>
-  .masthead { position: relative; z-index: 2; }
-  .band { background: var(--saffron); color: #171512; }
-  .band__row {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: end;
-    gap: 1rem;
-    padding-block: 1.1rem 0.9rem;
-  }
-  .issue {
+  .masthead { position: relative; z-index: 2; background: var(--paper); }
+  .masthead__top {
     display: flex;
-    flex-direction: column;
-    gap: 0.05rem;
-    font-weight: 700;
-    font-size: 0.95rem;
-    line-height: 1.35;
-    color: #171512;
-  }
-  .issue__no { font-weight: 800; }
-  .issue time { color: #4a3a12; font-weight: 500; }
-  .brand { text-align: center; }
-  .wordmark {
-    display: inline-block;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(3rem, 2.2rem + 3.8vw, 4.9rem);
-    line-height: 1.15;
-    text-decoration: none;
-    color: #171512;
-  }
-  .wordmark:hover { text-decoration: none; }
-  .tagline {
-    font-family: var(--font-title);
-    font-weight: 400;
-    font-size: 1.15rem;
-    line-height: 1.3;
-    color: #4a3a12;
-    margin-top: 0.1rem;
-  }
-  .search {
-    justify-self: end;
-    display: inline-flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.4rem;
-    font-weight: 800;
-    font-size: 0.95rem;
-    color: #171512;
-    text-decoration: none;
-    padding: 0.35rem 0.1rem;
-    border-bottom: 2px solid transparent;
+    gap: 1rem;
+    padding-block: 0.5rem 0.4rem;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: var(--ink-2);
   }
-  .search:hover, .search:focus-visible { border-bottom-color: #171512; }
+  .masthead__issue { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: baseline; }
+  .masthead__issue time { color: inherit; }
+  .masthead__sep { color: var(--ink-3); }
+  .masthead__search { display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 700; color: var(--ink); text-decoration: none; }
+  .masthead__search:hover, .masthead__search:focus-visible { color: var(--green); }
 
-  .nav { background: var(--paper); border-bottom: 1px solid var(--rule); }
-  .nav__list {
+  .masthead__brand { display: flex; justify-content: center; padding-block: clamp(0.8rem, 2vw, 1.15rem); }
+  .brand { display: block; min-width: 0; line-height: 0; }
+  .brand:focus-visible { outline-offset: 4px; }
+
+  /* The section bar: the one green field on the page. */
+  .masthead__nav { background: #0f5c3c; }
+  .nav {
     display: flex;
-    gap: 0;
+    justify-content: center;
     overflow-x: auto;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
   }
-  .nav__list::-webkit-scrollbar { display: none; }
-  @media (max-width: 719px) {
-    .nav__list { mask-image: linear-gradient(to right, transparent 0, #000 2.5rem, #000 100%); -webkit-mask-image: linear-gradient(to right, transparent 0, #000 2.5rem, #000 100%); padding-inline-end: 2rem; }
-  }
+  .nav::-webkit-scrollbar { display: none; }
   .nav__link {
     display: block;
-    padding: 0.85rem 0.95rem 0.7rem;
-    font-family: var(--font-ui);
+    padding: 0.62rem 1.1rem 0.5rem;
+    font-family: var(--font-body);
     font-weight: 700;
     font-size: 1rem;
+    line-height: 1.4;
     white-space: nowrap;
-    color: var(--ink);
+    color: #fcfcf9;
     text-decoration: none;
-    border-bottom: 4px solid transparent;
-    transition: border-color 0.2s var(--ease-out), color 0.2s var(--ease-out);
+    border-bottom: 3px solid transparent;
+    transition: background 0.15s var(--ease-out);
   }
-  .nav__link:hover, .nav__link:focus-visible { border-bottom-color: var(--spot); color: var(--spot-ink); }
-  .nav__link[aria-current="page"] { border-bottom-color: var(--spot); color: var(--spot-ink); }
-  li:first-child { --spot: #171512; --spot-ink: #171512; }
-  @media (prefers-color-scheme: dark) { li:first-child { --spot: var(--saffron); --spot-ink: var(--saffron-ink); } }
+  .nav__link:hover, .nav__link:focus-visible { background: rgba(255, 255, 255, 0.12); }
+  .nav__link:focus-visible { outline-color: #fcfcf9; outline-offset: -3px; }
+  .nav__link[aria-current="page"] { border-bottom-color: #fcfcf9; background: rgba(255, 255, 255, 0.08); }
 
   @media (max-width: 719px) {
-    .band__row {
-      grid-template-columns: 1fr 1fr;
-      grid-template-areas: "brand brand" "issue search";
-      align-items: center;
-      padding-block: 0.9rem 0.7rem;
-      row-gap: 0.5rem;
-    }
-    .brand { grid-area: brand; }
-    .issue { grid-area: issue; flex-direction: row; flex-wrap: wrap; gap: 0.15rem 0.5rem; font-size: 0.82rem; }
-    .issue__no, .issue time { white-space: nowrap; }
-    .search { grid-area: search; font-size: 0.85rem; }
-    .tagline { font-size: 0.95rem; }
-    .nav__link { padding: 0.7rem 0.75rem 0.55rem; font-size: 0.95rem; }
+    .masthead__top { font-size: 0.78rem; }
+    .masthead__brand { padding-block: 0.7rem; }
+    .brand :global(.brand__lockup img) { height: 72px; width: auto; }
+    .nav { justify-content: flex-start; padding-inline-end: 1rem; }
+    .nav__link { padding: 0.55rem 0.8rem 0.42rem; font-size: 0.92rem; }
   }
 </style>

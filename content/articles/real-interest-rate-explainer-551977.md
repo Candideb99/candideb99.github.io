@@ -28,14 +28,13 @@ readingMinutes: 3
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/European_Central_Bank_Frankfurt_Germany_18_Feb_2023.jpg/1280px-European_Central_Bank_Frankfurt_Germany_18_Feb_2023.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/9/99/Federal_Reserve_Board_%28Board_of_Governors_of_the_Federal_Reserve_System%29_open_meeting%2C_April_2019.jpg
   width: 1280
-  height: 854
-  alt: European Central Bank building and Frankfurt skyline under cloudy sky
-  credit: Norbert Nagel · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AEuropean_Central_Bank_Frankfurt_Germany_18_Feb_2023.jpg
+  height: 719
+  alt: اجتماع مجلس محافظي الاحتياطي الفيدرالي الأمريكي لمناقشة السياسات النقدية وأسعار الفائدة
+  credit: Federalreserve · Public domain · ويكيميديا كومنز
+  license: Public domain
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AFederal_Reserve_Board_(Board_of_Governors_of_the_Federal_Reserve_System)_open_meeting%2C_April_2019.jpg
 sources:
   - name: خازندار
     nameEn: Khazendar
@@ -59,7 +58,7 @@ models:
   editor: nvidia/nemotron-3-ultra-550b-a55b:free
   writer: nvidia/nemotron-3-ultra-550b-a55b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
+  vision: nex-agi/nex-n2.5-pro:free
 quality:
   score: 9
   verdict: publish

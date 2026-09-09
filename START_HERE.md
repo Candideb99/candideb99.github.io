@@ -20,7 +20,7 @@ Every 3 hours (and once a day for an explainer) a cloud job:
 2. picks the stories that matter to Arab readers and groups sources covering the same story,
 3. writes an original Arabic article with the key figures, a "why it matters" paragraph and, when the sources contain comparable numbers, an Arabic chart or table,
 4. checks every number against the sources by code and sends the draft to an independent critic model; anything that fails is rejected and logged,
-5. finds a licensed photo on Wikimedia Commons (credited) or draws a cover,
+5. finds a licensed photo on Wikimedia Commons (credited); a story with no suitable photo runs as text,
 6. commits the article and republishes the site.
 
 You never have to touch it. If a story is wrong, open the control room and press **Unpublish**.
@@ -61,6 +61,8 @@ Tell the agent what you want in plain language; these are the files it will touc
 - What blocks publication: `pipeline/lib/verify.mjs`.
 - Look and feel: `src/styles/global.css` and `src/components/`. The design rules are written down in `DESIGN.md`.
 - Site name, tagline, contact, ads: `src/data/site.json`.
+- The logo: replace `brand/logo-source.png` with new artwork (same idea: dark lettering and a gold key on white), then `npm run brand` (it regenerates the favicon, the social card and the logo files; never edit those by hand).
+- A story with a wrong or missing picture: run `node pipeline/backfill-images.mjs --redo=<slug>` (the slug is the last part of the story's address); without `--redo` it only fills stories that have no picture. New stories get a picture automatically, falling back to a generic photo of the place, institution or sector.
 
 ## 7. If something breaks
 

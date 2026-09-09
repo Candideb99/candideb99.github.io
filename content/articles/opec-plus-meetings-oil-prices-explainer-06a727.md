@@ -28,14 +28,14 @@ regions:
   - عالمي
 readingMinutes: 3
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Au%C3%9Fenministerin_Beate_Meinl-Reisinger_empfing_OPEC-Generalsekret%C3%A4r_Haitham_Al_Ghais%2C_2025-05-05_-_MGR3608.jpg/1280px-Au%C3%9Fenministerin_Beate_Meinl-Reisinger_empfing_OPEC-Generalsekret%C3%A4r_Haitham_Al_Ghais%2C_2025-05-05_-_MGR3608.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Tanker_waiting_to_enter_Durban_harbour.jpg/1280px-Tanker_waiting_to_enter_Durban_harbour.jpg
   width: 1280
-  height: 853
-  alt: الأمين العام لأوبك هيثم الغيص يصافح وزيرة خارجية النمسا في فيينا
-  credit: Österreichisches Außenministerium · CC BY 2.0 · ويكيميديا كومنز
-  license: CC BY 2.0
-  licenseUrl: https://creativecommons.org/licenses/by/2.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AAu%C3%9Fenministerin_Beate_Meinl-Reisinger_empfing_OPEC-Generalsekret%C3%A4r_Haitham_Al_Ghais%2C_2025-05-05_-_MGR3608.jpg
+  height: 719
+  alt: ناقلة نفط تبحر في البحر تحت سماء ملبدة بالغيوم
+  credit: Clusteringcoefficient · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ATanker_waiting_to_enter_Durban_harbour.jpg
 sources:
   - name: خازندار
     nameEn: Khazendar
@@ -59,7 +59,7 @@ models:
   editor: minimax/minimax-m3:free
   writer: minimax/minimax-m3:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: minimax/minimax-m3:free
+  vision: nex-agi/nex-n2.5-pro:free
 quality:
   score: 6
   verdict: revise

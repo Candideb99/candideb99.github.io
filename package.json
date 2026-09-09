@@ -18,7 +18,7 @@
     "fonts": "node scripts/copy-fonts.mjs",
     "predev": "node scripts/copy-fonts.mjs",
     "prebuild": "node scripts/copy-fonts.mjs",
-    "og": "node scripts/og-default.mjs"
+    "brand": "node scripts/brand.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.3.0",
@@ -31,6 +31,7 @@
     "@mozilla/readability": "^0.6.0",
     "astro": "^7.3.1",
     "fast-xml-parser": "^5.11.1",
+    "fontkit": "^2.0.4",
     "jsonrepair": "^3.15.0",
     "linkedom": "^0.18.13",
     "pagefind": "^1.5.2",
@@ -40,6 +41,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
+    "potrace": "^2.1.8",
     "typescript": "^5.9.3"
   }
 }

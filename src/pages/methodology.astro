@@ -9,7 +9,7 @@ const uniq = (list: typeof press) => [...new Map(list.map((s) => [s.nameEn, s]))
 
 <Base title="المصادر والمنهجية" description="قائمة المصادر التي يقرؤها خازندار، وقواعد الكتابة والتدقيق التي تحكم كل مقال." path="/methodology/">
   <article class="wrap block method" data-pagefind-ignore>
-    <header class="method__head">
+    <header class="page-head">
       <h1 class="page-title">المصادر والمنهجية</h1>
       <p class="page-intro">ما نقرأ، وكيف نكتب، وما الذي يمنع المقال من النشر.</p>
     </header>
@@ -29,7 +29,7 @@ const uniq = (list: typeof press) => [...new Map(list.map((s) => [s.nameEn, s]))
       </p>
       <h2>الصور</h2>
       <p>
-        الصور الفوتوغرافية تُختار من ويكيميديا كومنز بشرط أن تكون برخصة مفتوحة (المشاع الإبداعي أو الملك العام)، ويختارها نموذج رؤية يتحقق من صلتها بالموضوع وخلوّها من النصوص والعلامات المائية، وتُعرض مع اسم المصوّر والرخصة ورابط الصفحة الأصلية. حين لا توجد صورة مناسبة يُرسم للمقال غلاف أصلي مجرّد بلون قسمه.
+        الصور الفوتوغرافية تُختار من ويكيميديا كومنز بشرط أن تكون برخصة مفتوحة (المشاع الإبداعي أو الملك العام)، ويختارها نموذج رؤية يتحقق من صلتها بالموضوع وخلوّها من النصوص والعلامات المائية، وتُعرض مع اسم المصوّر والرخصة ورابط الصفحة الأصلية. حين لا توجد صورة مناسبة يُنشر المقال نصاً بلا صورة؛ لا نستخدم صوراً مولّدة ولا صوراً غير مرخّصة.
       </p>
       <h2>ما لا نفعله</h2>
       <p>
@@ -54,8 +54,6 @@ const uniq = (list: typeof press) => [...new Map(list.map((s) => [s.nameEn, s]))
 </Base>
 
 <style>
-  .method__head { border-top: 3px solid var(--saffron); padding-top: 0.9rem; }
-  .method__head .page-title { color: var(--ink); }
-  .method__prose { margin-top: clamp(1.5rem, 3vw, 2.5rem); }
+  .method__prose { margin-top: 0; }
   .method__en { font-family: var(--font-ui); color: var(--ink-3); font-size: 0.9em; }
 </style>

@@ -4,33 +4,41 @@ import { articleHref } from "@lib/articles";
 import { getSection, sectionHref } from "@lib/sections";
 import { excerpt, timeAgo } from "@lib/format";
 import { isolateNumbers } from "@lib/bidi";
-import Plate from "./Plate.astro";
+import Photo from "./Photo.astro";
 
 interface Props {
   article: Article;
-  /** tile: plate above text · row: small plate beside text · text: title and meta only */
-  variant?: "tile" | "row" | "text";
+  /**
+   * lead: the front page's main story · card: 16/9 picture above the headline (section rows) ·
+   * list: small square picture beside the headline (top-stories lists) · text: headline and meta only
+   */
+  variant?: "lead" | "card" | "list" | "text";
   eager?: boolean;
   showSection?: boolean;
   showExcerpt?: boolean;
-  ratio?: "16/10" | "16/9" | "4/3" | "3/2";
+  /** Heading level for the title, so lists stay a valid outline. */
+  level?: 2 | 3;
+  /** False when the same picture already appears higher on the page. */
+  showPhoto?: boolean;
   class?: string;
 }
-const { article, variant = "tile", eager = false, showSection = true, showExcerpt = variant !== "text", ratio = "4/3", class: className = "" } = Astro.props;
-const { title, subtitle, section, publishedAt, kind } = article.data;
+const { article, variant = "card", eager = false, showSection = true, showExcerpt = variant === "lead", level = 3, showPhoto = true, class: className = "" } = Astro.props;
+const { title, subtitle, section, publishedAt, kind, image } = article.data;
 const sec = getSection(section);
 const href = articleHref(article);
-const summary = excerpt(subtitle || article.data.lede, variant === "tile" ? 150 : 110);
+const summary = excerpt(subtitle || article.data.lede, variant === "lead" ? 200 : 120);
+const Heading = level === 2 ? "h2" : "h3";
+const hasPhoto = Boolean(image) && showPhoto && variant !== "text";
 ---
 
-<article class={`card card--${variant} ${className}`} data-section={section}>
-  {variant !== "text" && (
-    <a class="card__plate" href={href} tabindex="-1" aria-hidden="true">
-      <Plate article={article} ratio={variant === "row" ? "1/1" : ratio} eager={eager} sizes={variant === "row" ? "120px" : "(min-width: 1024px) 33vw, (min-width: 720px) 50vw, 100vw"} />
+<article class={`card card--${variant}${hasPhoto ? " card--photo" : ""} ${className}`} data-section={section}>
+  {hasPhoto && (
+    <a class="card__photo" href={href} tabindex="-1" aria-hidden="true">
+      <Photo image={image} ratio={variant === "list" ? "1/1" : "16/9"} eager={eager} sizes={variant === "list" ? "88px" : variant === "lead" ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 25vw, (min-width: 600px) 50vw, 100vw"} />
     </a>
   )}
   <div class="card__body">
-    <h3 class="card__title"><a href={href} set:html={isolateNumbers(title)} /></h3>
+    <Heading class="card__title"><a href={href} set:html={isolateNumbers(title)} /></Heading>
     {showExcerpt && summary && <p class="card__summary" set:html={isolateNumbers(summary)} />}
     <p class="meta card__meta">
       {showSection && <a href={sectionHref(section)}>{kind === "explainer" ? "شرح" : sec.name}</a>}
@@ -40,22 +48,33 @@ const summary = excerpt(subtitle || article.data.lede, variant === "tile" ? 150 
 </article>
 
 <style>
-  .card { display: flex; flex-direction: column; gap: 0.75rem; min-width: 0; }
-  .card__plate { display: block; text-decoration: none; }
-  .card__title { font-family: var(--font-title); font-weight: 700; font-size: 1.42rem; line-height: 1.45; }
+  .card { display: flex; flex-direction: column; gap: 0.55rem; min-width: 0; }
+  .card__photo { display: block; text-decoration: none; }
+  .card__title { font-family: var(--font-title); font-weight: 700; font-size: 1.12rem; line-height: 1.45; }
   .card__title a { text-decoration: none; }
-  .card__title a:hover { text-decoration: underline; text-decoration-color: var(--spot); text-decoration-thickness: 2px; }
-  .card__summary { font-family: var(--font-body); font-size: 1.02rem; line-height: 1.7; color: var(--ink-2); margin-top: 0.35rem; }
-  .card__meta { margin-top: 0.45rem; }
+  .card__title a:hover { color: var(--green); }
+  .card__summary { font-family: var(--font-body); font-size: 0.98rem; line-height: 1.65; color: var(--ink-2); margin-top: 0.25rem; }
+  .card__meta { margin-top: 0.3rem; font-size: 0.8rem; }
 
-  .card--row { flex-direction: row; align-items: flex-start; gap: 0.9rem; }
-  .card--row .card__plate { flex: 0 0 5.75rem; width: 5.75rem; }
-  .card--row .card__title { font-size: 1.22rem; line-height: 1.45; }
-  .card--row .card__summary { font-size: 0.95rem; line-height: 1.6; }
+  .card--lead .card__title { font-size: clamp(1.5rem, 1.15rem + 1.3vw, 2.1rem); line-height: 1.35; }
+  .card--lead .card__summary { font-size: 1.05rem; line-height: 1.7; margin-top: 0.4rem; }
+  .card--lead .card__photo { margin-bottom: 0.3rem; }
 
-  .card--text { border-top: 1px solid var(--rule); padding-top: 0.75rem; gap: 0.35rem; }
-  .card--text .card__title { font-size: 1.25rem; line-height: 1.45; }
-  .card--text .card__meta { margin-top: 0.15rem; }
+  .card--list { flex-direction: row; align-items: flex-start; gap: 0.75rem; }
+  .card--list .card__photo { flex: 0 0 5.5rem; width: 5.5rem; }
+  .card--list .card__title { font-size: 1.02rem; line-height: 1.45; }
+  .card--list .card__meta { margin-top: 0.15rem; }
 
-  .card--tile .card__body { padding-inline: 0; }
+  .card--text { gap: 0.25rem; }
+  .card--text .card__title { font-size: 1.05rem; }
+  .card--text .card__meta { margin-top: 0.1rem; }
+
+  /* On phones a row of picture cards becomes a ruled list of thumbnails, as the dailies' sites do. */
+  @media (max-width: 719px) {
+    :global(.cards) > .card--card, :global(.cols) > .card--card { flex-direction: row; align-items: flex-start; gap: 0.75rem; }
+    :global(.cards) > .card--card .card__photo, :global(.cols) > .card--card .card__photo { flex: 0 0 7.5rem; width: 7.5rem; }
+    :global(.cards) > .card--card .card__title, :global(.cols) > .card--card .card__title { font-size: 1.02rem; }
+    :global(.cards) > .card--card .card__summary, :global(.cols) > .card--card .card__summary { display: none; }
+    :global(.cards) > .card--card .card__meta, :global(.cols) > .card--card .card__meta { margin-top: 0.15rem; }
+  }
 </style>

@@ -33,7 +33,8 @@ export async function searchCommons(query, { limit = 10, log = () => {} } = {}) 
       const meta = info.extmetadata ?? {};
       const license = meta.LicenseShortName?.value ?? "";
       const title = String(page.title ?? "");
-      if (!/^image\/(jpeg|png|webp)$/i.test(info.mime ?? "")) continue;
+      // Photographs are JPEGs; PNG and WebP files on Commons are mostly maps, diagrams and screenshots.
+      if (!/^image\/jpeg$/i.test(info.mime ?? "")) continue;
       if (!ALLOWED_LICENSE.test(license)) continue;
       if (BAD_TITLE.test(title)) continue;
       if ((info.width ?? 0) < 1000 || (info.height ?? 0) < 600) continue;
