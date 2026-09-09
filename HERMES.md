@@ -35,6 +35,11 @@ Run these from the project root, `C:\Users\ahmed\Documents\Khazendar`.
 The OpenRouter key the pipeline needs is already in `.env` (git-ignored). Never print it, never copy
 it into another file, never commit it.
 
+**Scratch files.** Never write temporary files into the project folder; it is a git repository and
+they end up in the newspaper's history. Use `%TEMP%` and delete them when you are done. On
+2026-09-09 an image search left thirteen `wm*.json` files and one with a broken Windows path as its
+name in the project root.
+
 ## Publishing
 
 `git push pages rebuild:main` publishes: it sends the local branch to the site's repository, which

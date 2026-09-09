@@ -11,3 +11,7 @@ Thumbs.db
 pipeline/.cache/
 .claude/
 public/fonts/
+
+# Stray scratch files an agent may drop in the project root
+wm*.json
+*AppDataLocalTemp*
