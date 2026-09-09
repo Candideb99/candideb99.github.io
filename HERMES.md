@@ -65,6 +65,10 @@ force-push, never rewrite published history, never delete a branch of his.
 - Never invent a fact, a number, a quotation or a source. Every figure must come from a cited source.
 - Never generate a picture. Photographs come from Wikimedia Commons with a licence and a credit, or
   the story runs as text. Image generation is switched off in your tools deliberately.
+- Never choose a photograph by eye. Run `node pipeline/backfill-images.mjs`, which filters to
+  licensed JPEG photographs, rejects maps, diagrams and logos, and has a vision model confirm the
+  picture shows the subject. Tested on 2026-09-09: choosing unaided, you picked a 2014 amateur
+  snapshot dominated by a toy-shop sign; the tool illustrated all 36 stories correctly.
 - Never commit `.env`, the API key, or any token.
 - Never use the GPU or a local model. Ahmed's GPU is busy; all writing happens on OpenRouter's
   servers or on his Claude subscription.
