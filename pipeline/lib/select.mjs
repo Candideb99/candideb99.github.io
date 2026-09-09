@@ -43,7 +43,7 @@ Order stories by importance, highest first. Use only candidate ids that exist. R
     system: EDITOR_SYSTEM,
     user,
     temperature: 0.2,
-    maxTokens: 3000,
+    maxTokens: 8000,
     log,
     validate: (d) => {
       if (!d || !Array.isArray(d.stories)) throw new Error("stories[] missing");
