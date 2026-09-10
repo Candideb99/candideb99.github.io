@@ -48,7 +48,15 @@ chart:
         - 80
         - 54
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Dubai_Marina_Skyline.jpg/1280px-Dubai_Marina_Skyline.jpg
+  width: 1280
+  height: 853
+  alt: أفق دبي مارينا وناطحات السحاب المطلة على المياه في غروب اليوم
+  credit: Norlando Pobre · CC BY 2.0 · ويكيميديا كومنز
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ADubai_Marina_Skyline.jpg
 sources:
   - name: إيكونومي ميدل إيست
     nameEn: Economy Middle East
@@ -78,7 +86,7 @@ models:
   editor: nvidia/nemotron-3-super-120b-a12b:free
   writer: inclusionai/ling-3.0-flash-fin:free → inclusionai/ling-3.0-flash-fin:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: null
+  vision: nex-agi/nex-n2.5-pro:free
 quality:
   score: 6
   verdict: revise
