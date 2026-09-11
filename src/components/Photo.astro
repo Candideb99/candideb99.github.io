@@ -3,7 +3,12 @@
  * A licensed photograph, printed in true colour at the width of its column.
  * Renders nothing when the article has no photo: a story without a picture runs as text,
  * the way it would on a printed page.
+ *
+ * The browser picks a copy that suits the slot: `sizes` describes how wide the picture will be, and
+ * the srcset offers the Commons thumbnail widths that actually exist.
  */
+import { responsiveImage } from "@lib/wikimedia";
+
 interface Image {
   url: string;
   width?: number | null;
@@ -18,19 +23,21 @@ interface Props {
   class?: string;
 }
 const { image, ratio = "3/2", eager = false, sizes = "(min-width: 1024px) 40vw, 100vw", class: className = "" } = Astro.props;
+const source = image ? responsiveImage(image.url, image.width) : null;
 ---
 
-{image && (
+{image && source && (
   <div class={`photo ${className}`} style={`aspect-ratio:${ratio}`}>
     <img
-      src={image.url}
+      src={source.src}
+      srcset={source.srcset}
+      sizes={sizes}
       width={image.width ?? 1280}
       height={image.height ?? 853}
       alt={image.alt}
       loading={eager ? "eager" : "lazy"}
       decoding="async"
       fetchpriority={eager ? "high" : "auto"}
-      sizes={sizes}
       referrerpolicy="no-referrer"
     />
   </div>

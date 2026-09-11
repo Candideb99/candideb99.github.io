@@ -55,6 +55,21 @@ on and awake, which is why the cloud, not Hermes, remains the publisher.
 To stop it starting with Windows, run the same command with `gateway uninstall` instead. Neither
 touches the cloud newsroom, which keeps publishing either way.
 
+## 2d. Keeping it unlisted before you launch
+
+The site is live but asks the whole internet to ignore it. `src/data/site.json` carries
+`"private": true`, and while that is set every page says "do not index", `robots.txt` refuses every
+crawler, and no sitemap is published. Google and Bing will not list it.
+
+**To launch properly**, change that one line to `"private": false` and publish. The site starts
+asking to be indexed the same day.
+
+**Be honest with yourself about what this is.** It hides the site from search engines, not from
+people. Anyone you give the address to can read it, and the address is guessable from your public
+GitHub account. It is the right setting for "not ready for readers yet"; it is not a lock. A real
+lock means moving the site behind a login, which needs a different host, and I can set that up if
+you ever need it.
+
 ## 3. Your weekly five minutes
 
 - Open the live site once; read one article; make sure it looks right.

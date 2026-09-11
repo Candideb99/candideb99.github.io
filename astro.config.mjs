@@ -16,11 +16,15 @@ export default defineConfig({
     format: "directory",
     inlineStylesheets: "auto",
   },
-  integrations: [
-    sitemap({
-      filter: (page) => !page.includes("/search"),
-    }),
-  ],
+  // While `private` is set in site.json the site ships without a sitemap, so a crawler that ignores
+  // robots.txt still has no index of the pages to follow.
+  integrations: site.private
+    ? []
+    : [
+        sitemap({
+          filter: (page) => !page.includes("/search"),
+        }),
+      ],
   image: {
     remotePatterns: [{ protocol: "https", hostname: "**.wikimedia.org" }],
   },

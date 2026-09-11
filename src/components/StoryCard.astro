@@ -34,7 +34,7 @@ const hasPhoto = Boolean(image) && showPhoto && variant !== "text";
 <article class={`card card--${variant}${hasPhoto ? " card--photo" : ""} ${className}`} data-section={section}>
   {hasPhoto && (
     <a class="card__photo" href={href} tabindex="-1" aria-hidden="true">
-      <Photo image={image} ratio={variant === "list" ? "1/1" : "16/9"} eager={eager} sizes={variant === "list" ? "88px" : variant === "lead" ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 25vw, (min-width: 600px) 50vw, 100vw"} />
+      <Photo image={image} ratio={variant === "list" ? "1/1" : "16/9"} eager={eager} sizes={variant === "list" ? "88px" : variant === "lead" ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 25vw, (min-width: 720px) 50vw, 120px"} />
     </a>
   )}
   <div class="card__body">

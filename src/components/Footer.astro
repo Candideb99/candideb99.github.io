@@ -59,7 +59,9 @@ const year = new Date().getUTCFullYear();
     padding-block: clamp(1.5rem, 3.5vw, 2.5rem) 1.5rem;
   }
   .footer__logo { display: inline-flex; align-items: center; gap: 0.7rem; color: var(--green); text-decoration: none; }
-  .footer__tagline { font-family: var(--font-title); font-size: 1.05rem; margin-top: 0.4rem; color: var(--ink-2); }
+  /* Amiri 700, not 400: the regular weight is a 125 kB download and the tagline was its only
+     site-wide user, so it now loads solely on the rare article that carries a blockquote. */
+  .footer__tagline { font-family: var(--font-title); font-weight: 700; font-size: 1.02rem; margin-top: 0.4rem; color: var(--ink-2); }
   .footer__note { margin-top: 0.75rem; font-size: 0.98rem; line-height: 1.8; max-width: 34rem; color: var(--ink-2); }
   .footer__head { font-family: var(--font-title); font-weight: 700; font-size: 1.1rem; border-bottom: 1px solid var(--ink); padding-bottom: 0.3rem; margin-bottom: 0.6rem; }
   .footer__col li { margin-block: 0.25rem; }

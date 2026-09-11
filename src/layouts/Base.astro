@@ -45,13 +45,13 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {(noindex || site.private) && <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />}
     <meta name="theme-color" content="#0f5c3c" />
     <meta name="color-scheme" content="light dark" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="alternate" type="application/rss+xml" title={`${site.name} RSS`} href="/rss.xml" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    {!site.private && <link rel="sitemap" href="/sitemap-index.xml" />}
     <link rel="preload" href="/fonts/naskh-arabic.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/amiri-arabic-700.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/tajawal-arabic-500.woff2" as="font" type="font/woff2" crossorigin />

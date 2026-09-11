@@ -12,3 +12,5 @@ Arabic-first (RTL) economics publication written by an automated newsroom. Read 
 - Before handing off: `npm run check` and `npm run build` must pass; run `npm run newsroom:dry` to test pipeline changes without publishing.
 - Deploys: pushing `main` to `Candideb99/candideb99.github.io` builds and publishes via GitHub Pages; the newsroom workflow runs on a cron and commits to `main` itself.
 - Scheduled automation: `.github/workflows/editor.yml` (daily Claude editor) and `agent.yml` (issue-triggered) both run on the owner's subscription and are gated on the repository variable `KHAZENDAR_EDITOR=1`; `KHAZENDAR_PROVIDER=claude` additionally routes the newsroom's writing to it.
+- Pre-launch: `site.json` `private: true` forces noindex on every page, a blanket-refusal `robots.txt` and no sitemap. Set it to `false` to launch.
+- Photographs are hotlinked from Wikimedia Commons, which serves only the widths 120/250/330/500/960/1280; `src/lib/wikimedia.ts` builds the srcset and any other width answers HTTP 400.

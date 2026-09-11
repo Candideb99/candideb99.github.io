@@ -41,7 +41,25 @@ jobs:
 
       - run: npm ci --no-audit --no-fund
 
+      - name: Check for the subscription token
+        id: token
+        shell: bash
+        run: |
+          if [ -n "${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}" ]; then
+            echo "present=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=0" >> "$GITHUB_OUTPUT"
+            {
+              echo "### Editor skipped"
+              echo ""
+              echo "\`KHAZENDAR_EDITOR\` is set to 1 but the secret \`CLAUDE_CODE_OAUTH_TOKEN\` is missing,"
+              echo "so there is no subscription to run Claude on. Add it under Settings → Secrets and"
+              echo "variables → Actions, or set \`KHAZENDAR_EDITOR\` to 0 to stop this check."
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       - uses: anthropics/claude-code-action@v1
+        if: steps.token.outputs.present == '1'
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         with:

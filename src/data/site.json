@@ -10,5 +10,6 @@
   "contactEmail": "",
   "publisher": "",
   "adsenseClient": "",
-  "googleSiteVerification": ""
+  "googleSiteVerification": "",
+  "private": true
 }
