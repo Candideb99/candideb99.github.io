@@ -14,7 +14,10 @@ export default defineConfig({
   devToolbar: { enabled: false },
   build: {
     format: "directory",
-    inlineStylesheets: "auto",
+    // "always": GitHub Pages caches HTML for 10 minutes but every deploy renames and deletes the
+    // hashed stylesheet files, so a cached page pointed at a stylesheet that was gone and rendered
+    // half-styled. Embedded styles cannot go missing. The cost is ~4 kB gzipped per page.
+    inlineStylesheets: "always",
   },
   // While `private` is set in site.json the site ships without a sitemap, so a crawler that ignores
   // robots.txt still has no index of the pages to follow.
