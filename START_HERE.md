@@ -42,33 +42,15 @@ publish what the pipeline produced, diagnose a failed cloud run and repair it. I
 writes an article by hand, never invents a number, and never generates a picture: the pipeline writes
 and the critic checks, which is what keeps the quality up.
 
-**What it does on its own every day.** At 9am it does the editor's round: reads the last cloud runs,
-fixes any story that lost its picture, and leaves you a short report. It only runs while the laptop is
-on and awake, which is why the cloud, not Hermes, remains the publisher.
+**Switched off, 2026-09-11.** You asked for no extra services running, so Hermes is stopped and no
+longer starts with Windows, and its daily job is paused. It never touched your graphics card; it
+only made web requests. Claude now does the scheduled work instead. To bring Hermes back:
 
-**Turning it off.** In a terminal:
-
-```
-%LOCALAPPDATA%\hermes\hermes-agent\.venv\Scripts\hermes.exe cron pause khazendar-editor-round
+```bash
+%LOCALAPPDATA%\hermes\hermes-agent\.venv\Scripts\hermes.exe gateway install
 ```
 
-To stop it starting with Windows, run the same command with `gateway uninstall` instead. Neither
-touches the cloud newsroom, which keeps publishing either way.
-
-## 2d. Keeping it unlisted before you launch
-
-The site is live but asks the whole internet to ignore it. `src/data/site.json` carries
-`"private": true`, and while that is set every page says "do not index", `robots.txt` refuses every
-crawler, and no sitemap is published. Google and Bing will not list it.
-
-**To launch properly**, change that one line to `"private": false` and publish. The site starts
-asking to be indexed the same day.
-
-**Be honest with yourself about what this is.** It hides the site from search engines, not from
-people. Anyone you give the address to can read it, and the address is guessable from your public
-GitHub account. It is the right setting for "not ready for readers yet"; it is not a lock. A real
-lock means moving the site behind a login, which needs a different host, and I can set that up if
-you ever need it.
+`TALK_TO_HERMES.cmd` still works for a one-off chat without any of that.
 
 ## 3. Your weekly five minutes
 
