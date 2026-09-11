@@ -1,7 +1,7 @@
 ---
 /**
  * The latest-headlines bar under the section bar: a moving strip, as the news channels run it,
- * that pauses under the pointer. The list is printed twice so the loop is seamless; without
+ * scrolled by whole pixels so the text stays sharp, that pauses under the pointer. The list is printed twice so the loop is seamless; without
  * JavaScript, or for a reader who asked for reduced motion, it stands still and scrolls by hand.
  */
 import type { Article } from "@lib/articles";
@@ -43,13 +43,36 @@ const { items } = Astro.props;
   (function () {
     var wrap = document.querySelector("[data-ticker]");
     if (!wrap) return;
+    var vp = wrap.querySelector(".ticker__viewport");
     var list = wrap.querySelector(".ticker__list");
-    if (!list || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    // Sixty pixels a second, whatever the length of the headlines.
+    if (!vp || !list || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     var half = list.scrollWidth / 2;
     if (half < 200) return;
-    list.style.setProperty("--ticker-duration", Math.round(half / 60) + "s");
+    // The strip is scrolled by whole pixels, not transformed: text on a moving compositing layer
+    // blurs at fractional positions. Sixty pixels a second; the list is printed twice, so at half
+    // way the scroll position jumps back to the start and the loop is seamless. In a right-to-left
+    // page the content overflows leftwards, so the scroll position runs negative.
+    var speed = 60;
+    var pos = 0;
+    var paused = false;
+    var last = null;
+    vp.addEventListener("mouseenter", function () { paused = true; });
+    vp.addEventListener("mouseleave", function () { paused = false; last = null; });
+    vp.addEventListener("focusin", function () { paused = true; });
+    vp.addEventListener("focusout", function () { paused = false; last = null; });
     wrap.classList.add("ticker--moving");
+    function frame(now) {
+      if (!paused && !document.hidden) {
+        if (last !== null) pos += ((now - last) / 1000) * speed;
+        last = now;
+        if (pos >= half) pos -= half;
+        vp.scrollLeft = -Math.round(pos);
+      } else {
+        last = null;
+      }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
   })();
 </script>
 
@@ -65,13 +88,7 @@ const { items } = Astro.props;
   .ticker__item a:hover { color: var(--green); }
   .ticker__time { font-size: 0.75rem; color: var(--green); font-weight: 700; }
 
-  /* In a right-to-left page the strip travels rightwards; hovering holds it. */
   .ticker--moving .ticker__viewport { overflow: hidden; }
-  .ticker--moving .ticker__list { animation: ticker var(--ticker-duration, 40s) linear infinite; }
-  .ticker--moving .ticker__viewport:hover .ticker__list, .ticker--moving .ticker__viewport:focus-within .ticker__list { animation-play-state: paused; }
-  /* The list sits flush right and overflows leftwards, so it travels rightwards from 0 to +50%: the
-     second copy arrives exactly where the first began, and the strip is never blank. */
-  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(50%); } }
 
   @media (max-width: 719px) {
     .ticker__label { font-size: 0.78rem; padding-inline: 0.5rem; }

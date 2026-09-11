@@ -63,7 +63,7 @@ export function timeAgo(iso: string | Date, now = new Date()): string {
   const hours = Math.floor(minutes / 60);
   if (hours < 24) return hours === 1 ? "منذ ساعة" : hours === 2 ? "منذ ساعتين" : hours <= 10 ? `منذ ${hours} ساعات` : `منذ ${hours} ساعة`;
   const days = Math.floor(hours / 24);
-  if (days === 1) return "أمس";
+  if (days === 1) return "منذ يوم";
   if (days === 2) return "منذ يومين";
   if (days <= 10) return `منذ ${days} أيام`;
   return formatDate(d, { weekday: false });
