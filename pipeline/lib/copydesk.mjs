@@ -19,7 +19,7 @@ WHAT YOU CHANGE
 - Names and marks. Foreign names transliterated the way Arab business media write them; foreign programme and brand names in «» (e.g. «أوباماكير», «ناتس»); the Arabic comma (،) and «» quotation marks; Western digits; pan-Arab month names.
 
 WHAT YOU NEVER CHANGE
-- Facts. Every number, date, name, attribution ("بحسب", "وفقاً لـ", "قال"), quotation and causal claim stays exactly as it is, and so does every count written in letters ("جزأين من أربعة" means two of four and must stay two of four; "ثلاث شركات" stays three). You add no context, no adjectives, no interpretation. A sentence that is already idiomatic stays as it is.
+- Facts. Every number, date, name, attribution ("بحسب", "وفقاً لـ", "قال"), quotation and causal claim stays exactly as it is; an expectation stays an expectation ("يتجه لرفع" never becomes "يرفع"; "يعد بـ" never becomes "يعلن"; "قد" and "من المتوقع" stay), and so does every count written in letters ("جزأين من أربعة" means two of four and must stay two of four; "ثلاث شركات" stays three). You add no context, no adjectives, no interpretation. A sentence that is already idiomatic stays as it is.
 - Latin tokens (tickers, acronyms, Latin names in parentheses) stay verbatim.
 - Length and structure. Roughly the same length; the lede stays two or three sentences; the body keeps its paragraphs, blank lines and any "## " subheads; no markdown links, no URLs.
 
@@ -73,6 +73,13 @@ export function fieldGuard(field, before, after) {
   if (!dualsKept(a, b)) return { ok: false, reason: "a count written as a dual was dropped" };
   if (latinFingerprint(a) !== latinFingerprint(b)) return { ok: false, reason: "latin tokens changed" };
   if (/https?:\/\/|\]\(/.test(b)) return { ok: false, reason: "link introduced" };
+  // A word repeated back to back ("يتوسعون يتوسعون") is a model stutter, never Arabic.
+  if (/(?<![؀-ۿ])([؀-ۿ]{3,})\s+(?![؀-ۿ])/.test(b) && !/(?<![؀-ۿ])([؀-ۿ]{3,})\s+(?![؀-ۿ])/.test(a)) return { ok: false, reason: "a word was doubled" };
+  // An expectation must stay an expectation: the hedges of the original must survive the rewrite.
+  const HEDGES = /(?<![؀-ۿ])(?:يتجه|تتجه|قد|من المتوقع|المتوقع|متوقع|مرشح|مرشحة|محتمل|يُرجَّح|يرجح|ترجح|ربما|يتوقع|تتوقع|توقعات|توقع|تعهد|تعهدت|يعد|تعد|وعد|وعدت|يعتزم|تعتزم|يخطط|تخطط|قريباً|قريبا)(?![؀-ۿ])/g;
+  const hedgesBefore = new Set((a.match(HEDGES) ?? []));
+  const hedgesAfter = new Set((b.match(HEDGES) ?? []));
+  if ([...hedgesBefore].some((h) => !hedgesAfter.has(h))) return { ok: false, reason: `a hedge was dropped (${[...hedgesBefore].filter((h) => !hedgesAfter.has(h)).join("، ")})` };
   const [lo, hi] = field === "title" ? [0.45, 1.6] : field === "body" ? [0.8, 1.25] : field === "pair" ? [0.7, 1.4] : [0.6, 1.5];
   const ratio = b.length / Math.max(1, a.length);
   if (ratio < lo || ratio > hi) return { ok: false, reason: `length ${ratio.toFixed(2)}x` };
