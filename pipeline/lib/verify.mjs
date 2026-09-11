@@ -1,10 +1,23 @@
 import { chat } from "./llm.mjs";
 import { arabicRatio, phraseOverlap, suspiciousLatinWords, ungroundedNumbers, wordCount } from "./util.mjs";
 
-/** Deterministic checks. Returns { ok, issues[], warnings[], metrics }. */
-export function programmaticChecks(draft, sources, { recentTitles = [], explainer = false } = {}) {
+/** The four sections every house analysis must carry, matched loosely against its "## " subheads. */
+const ANALYSIS_SECTIONS = [
+  { name: "ما الذي تغيّر", test: /تغي/ },
+  { name: "من يربح ومن يخسر", test: /يربح|يخسر/ },
+  { name: "السيناريوهات", test: /سيناريو/ },
+  { name: "ما الذي نراقبه", test: /نراقب|المراقبة|نرصد/ },
+];
+
+/**
+ * Deterministic checks. Returns { ok, issues[], warnings[], metrics }.
+ * News and analyses are grounded: every figure must trace to `sources` (for an analysis, the paper's own
+ * related stories). Explainers carry only illustrative numbers, so their figures and visuals are not checked.
+ */
+export function programmaticChecks(draft, sources, { recentTitles = [], explainer = false, analysis = false } = {}) {
   const issues = [];
   const warnings = [];
+  const grounded = !explainer;
   const prose = [draft.title, draft.subtitle, draft.lede, draft.body, draft.whyItMatters].join("\n");
   const factsText = draft.keyFacts.map((f) => `${f.label} ${f.value}`).join("\n");
   const sourceTexts = sources.map((s) => `${s.title}\n${s.text || ""}\n${s.summary || ""}`);
@@ -27,37 +40,45 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
   if (/https?:\/\/|www\./i.test(prose)) issues.push("النص يحتوي على روابط؛ احذفها.");
 
   const words = wordCount(`${draft.lede}\n${draft.body}`);
-  if (words < 200) issues.push(`المقال قصير جداً (${words} كلمة). وسّع السياق من المصادر دون اختراع معلومات، بحيث لا يقل عن 260 كلمة.`);
+  if (analysis) {
+    if (words < 550) issues.push(`التحليل قصير جداً (${words} كلمة)؛ يجب ألا يقل عن 700 كلمة. وسّع الحجة والسيناريوهات من المواد المرفقة دون اختراع أرقام.`);
+    else if (words > 1100) warnings.push(`long analysis: ${words} words`);
+    const subheads = (draft.body.match(/^##\s+.+$/gm) ?? []).join("\n");
+    const missing = ANALYSIS_SECTIONS.filter((s) => !s.test.test(subheads)).map((s) => s.name);
+    if (missing.length) issues.push(`بنية التحليل ناقصة؛ العناوين الفرعية المطلوبة (بصيغة "## ") غير موجودة: ${missing.join("، ")}. أضفها بهذا الترتيب: ما الذي تغيّر، من يربح ومن يخسر، السيناريوهات، ما الذي نراقبه.`);
+  } else if (words < 200) issues.push(`المقال قصير جداً (${words} كلمة). وسّع السياق من المصادر دون اختراع معلومات، بحيث لا يقل عن 260 كلمة.`);
 
   // Data visuals must be built only from figures in the sources; a visual with invented numbers is dropped, not the article.
   if (draft.chart) {
     const chartNumbers = draft.chart.series.flatMap((s) => s.values).map(String).join(" ");
-    const bad = explainer ? [] : ungroundedNumbers(chartNumbers, sourceTexts, { ignoreYears: false });
-    if (bad.length || explainer) {
-      warnings.push(`chart dropped: ${explainer ? "explainers carry no source data" : `ungrounded values ${bad.join(", ")}`}`);
+    const bad = grounded ? ungroundedNumbers(chartNumbers, sourceTexts, { ignoreYears: false }) : [];
+    if (bad.length || !grounded) {
+      warnings.push(`chart dropped: ${grounded ? `ungrounded values ${bad.join(", ")}` : "explainers carry no source data"}`);
       draft.chart = null;
     }
   }
   if (draft.table) {
     const tableNumbers = draft.table.rows.flat().join(" ");
-    const bad = explainer ? [] : ungroundedNumbers(tableNumbers, sourceTexts, { ignoreYears: false });
-    if (bad.length > 1 || explainer) {
-      warnings.push(`table dropped: ${explainer ? "explainers carry no source data" : `ungrounded values ${bad.join(", ")}`}`);
+    const bad = grounded ? ungroundedNumbers(tableNumbers, sourceTexts, { ignoreYears: false }) : [];
+    if (bad.length > 1 || !grounded) {
+      warnings.push(`table dropped: ${grounded ? `ungrounded values ${bad.join(", ")}` : "explainers carry no source data"}`);
       draft.table = null;
     }
   }
 
-  if (!explainer) {
+  if (grounded) {
     const missing = ungroundedNumbers(`${prose}\n${factsText}`, sourceTexts);
     if (missing.length > 2) {
       issues.push(`أرقام لا تظهر في المصادر: ${missing.join(", ")}. احذف كل رقم غير مذكور في المصادر أو صحّحه.`);
     } else if (missing.length) {
       warnings.push(`ungrounded numbers (tolerated): ${missing.join(", ")}`);
     }
+    // Verbatim reuse of an Arabic source is plagiarism; an analysis restating the paper's own stories gets a little more room.
+    const overlapLimit = analysis ? 0.2 : 0.12;
     for (const source of sources) {
       if (source.lang !== "ar") continue;
       const overlap = phraseOverlap(`${draft.lede}\n${draft.body}`, source.text || source.summary || "");
-      if (overlap > 0.12) issues.push(`نسبة النقل الحرفي من مصدر عربي مرتفعة (${(overlap * 100).toFixed(0)}%). أعد الصياغة بأسلوبك.`);
+      if (overlap > overlapLimit) issues.push(`نسبة النقل الحرفي من مصدر عربي مرتفعة (${(overlap * 100).toFixed(0)}%). أعد الصياغة بأسلوبك.`);
     }
   }
 
@@ -80,19 +101,42 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
 const CRITIC_SYSTEM = `You are the standards editor of خازندار, an Arabic economics publication. You check a draft article against its source material with forensic care. You reward accuracy, attribution and clear Arabic; you punish invented or altered facts, unsupported numbers, misattributed quotes, speculation stated as fact, untranslated foreign text, and clumsy Arabic.
 You answer with one JSON object only.`;
 
+/** What the critic is told about the material, its first (facts) check and its third (kind-specific) check, per kind of piece. */
+const FACTS_CHECK = "Every number, date, name, quote and causal claim in the draft: is it supported by the sources? List each unsupported or altered item.";
+const CRITIC_RUBRIC = {
+  news: {
+    material: "",
+    facts: FACTS_CHECK,
+    check: "Does the article add anything not in the sources beyond neutral, well-known context?",
+  },
+  explainer: {
+    material: "(explainer: no external sources; judge internal consistency, standard definitions, and that every number is labelled as an illustrative example)",
+    facts: FACTS_CHECK,
+    check: "Are definitions standard and correct? Are all worked-example numbers clearly labelled as illustrative?",
+  },
+  analysis: {
+    material:
+      "(analysis: the sources below are خازندار's own published stories; every figure, date, name and quotation in the draft must trace to them. Interpretation is the genre: the paper's own reading of consequences is legitimate when it is clearly framed as a reading (يرجّح، قد، من المحتمل) and stays within what the stories support; it is a fault when asserted as fact or when it contradicts the stories.)",
+    facts: "Every number, date, name and quotation in the draft: does it trace to the supplied stories? List each unsupported or altered item. Causal reasoning is judged under point 3.",
+    check: "Is the argument coherent from the opening to the scenarios, and does the piece answer its own question? Is every causal claim either reported by the stories or clearly framed as the paper's hedged reading, never asserted as fact? Is every forecast framed as a scenario with a stated trigger?",
+  },
+};
+
 /** Critic pass. Returns { verdict: "publish"|"revise"|"reject", score, issues[], model }. */
-export async function critique({ draft, sources, explainer = false, log }) {
+export async function critique({ draft, sources, explainer = false, analysis = false, log }) {
+  const rubric = CRITIC_RUBRIC[explainer ? "explainer" : analysis ? "analysis" : "news"];
+  const material = sources.map((s, i) => `SOURCE ${i + 1}: ${s.sourceNameEn} (${s.lang}) — "${s.title}"\n${s.text || s.summary || ""}`).join("\n\n");
   const user = `SOURCE MATERIAL
-${sources.map((s, i) => `SOURCE ${i + 1}: ${s.sourceNameEn} (${s.lang}) — "${s.title}"\n${s.text || s.summary || ""}`).join("\n\n") || "(explainer: no external sources; judge internal consistency, standard definitions, and that every number is labelled as an illustrative example)"}
+${[rubric.material, material || (explainer ? "" : "(no sources supplied)")].filter(Boolean).join("\n\n")}
 
 DRAFT ARTICLE (JSON)
 ${JSON.stringify({ title: draft.title, subtitle: draft.subtitle, lede: draft.lede, body: draft.body, key_facts: draft.keyFacts, why_it_matters: draft.whyItMatters }, null, 2)}
 
 CHECK
-1. Every number, date, name, quote and causal claim in the draft: is it supported by the sources? List each unsupported or altered item.
+1. ${rubric.facts}
 2. Attribution: are claims attributed to the right source? Is anything presented as fact that the source presents as an estimate, forecast or opinion?
-3. ${explainer ? "Are definitions standard and correct? Are all worked-example numbers clearly labelled as illustrative?" : "Does the article add anything not in the sources beyond neutral, well-known context?"}
-4. Arabic quality: grammar, untranslated foreign words, awkward calques, sensational tone, repetition.
+3. ${rubric.check}
+4. Arabic quality. Translationese is a fault that requires "revise", never "publish": English syntax under Arabic words (an indefinite subject such as "إدارة أمريكية" where Arabic uses the definite or the name; "يعلن عن" + verbal noun; jargon rendered word for word such as "مستردات", "المعدل العقاري", "استئناف بيع", "للأضواء", "في زيارة دولة"; "من قبل"; "يقوم بـ"), wrong case endings on numbers and duals ("ألفين رحلة", "حل جزئي" as an object), a headline chaining two developments with "و", untranslated foreign words, sensational tone, repetition. Quote each offending phrase and give the idiomatic Arabic.
 5. Headline: accurate, specific, not misleading.
 
 Return JSON:

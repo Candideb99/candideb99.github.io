@@ -15,16 +15,41 @@ Nothing here uses your GPU. Writing happens on OpenRouter's servers (or on your 
 
 ## 2. What happens automatically
 
-Every 3 hours (and once a day for an explainer) a cloud job:
+Every 3 hours (and once a day each for an explainer and an analysis) a cloud job:
 
-1. reads 38 feeds (central banks, statistics offices, BBC, CNBC, Guardian, Al Jazeera, Asharq Al-Awsat, Sky News Arabia …),
+1. reads 47 feeds (central banks, statistics offices, BBC, CNBC, Guardian, Al Jazeera, Asharq Al-Awsat, Sky News Arabia, the defence press …),
 2. picks the stories that matter to Arab readers and groups sources covering the same story,
 3. writes an original Arabic article with the key figures, a "why it matters" paragraph and, when the sources contain comparable numbers, an Arabic chart or table,
-4. checks every number against the sources by code and sends the draft to an independent critic model; anything that fails is rejected and logged,
-5. finds a licensed photo on Wikimedia Commons (credited); a story with no suitable photo runs as text,
-6. commits the article and republishes the site.
+4. passes the draft through an Arabic copy desk that rewrites anything reading like a translation ("إدارة أمريكية تعلن عن مستردات" becomes "واشنطن تعيد 500 دولار للمشتركين"), under a guard that keeps every figure and name exactly as sourced,
+5. checks every number against the sources by code and sends the draft to an independent critic model; anything that fails is rejected and logged,
+6. finds a licensed photo on Wikimedia Commons (credited); a story with no suitable photo runs as text,
+7. commits the article and republishes the site.
 
-You never have to touch it. If a story is wrong, open the control room and press **Unpublish**.
+You never have to touch it. If a story is wrong, either open the control room on this laptop
+(double-click `OPEN_CONTROL_ROOM.cmd`) and press **Unpublish**, or, from any device, open an issue on
+the repository and write `@claude` followed by the request in plain words (see section 5).
+
+**What the front page does on its own.** The cover shows the day's strongest story and lists the next
+four beneath it as numbered tabs; it turns to the next one every seven seconds until the reader
+clicks, hovers or presses a key, and it stays still for readers who have asked their device for less
+motion. "ملفات نتابعها" gathers running stories (any topic with three or more articles) so a reader
+who missed a week can pick up the thread. "رسم اليوم" prints the freshest chart from the last three
+days. All of it is built from the articles; there is nothing to feed it.
+
+## 2b. Keeping it unlisted before you launch
+
+The site is live but asks the whole internet to ignore it. `src/data/site.json` carries
+`"private": true`, and while that is set every page says "do not index", `robots.txt` refuses every
+crawler, and no sitemap is published. Google and Bing will not list it.
+
+**To launch properly**, change that one line to `"private": false` and publish. The site starts
+asking to be indexed the same day.
+
+**Be honest with yourself about what this is.** It hides the site from search engines, not from
+people. Anyone you give the address to can read it, and the address is guessable from your public
+GitHub account. It is the right setting for "not ready for readers yet"; it is not a lock. A real
+lock means moving the site behind a login, which needs a different host, and I can set that up if
+you ever need it.
 
 ## 2c. Hermes, your local editor
 
@@ -55,7 +80,7 @@ only made web requests. Claude now does the scheduled work instead. To bring Her
 ## 3. Your weekly five minutes
 
 - Open the live site once; read one article; make sure it looks right.
-- Open the control room; glance at "Last run" for rejections that keep repeating (that means a source or a rule needs adjusting: tell Claude Code or Codex what you see).
+- Open the control room and glance at "Last run", or, once the Claude editor is switched on (section 5), read its morning note under the repository's Actions tab. Rejections that keep repeating mean a source or a rule needs adjusting; tell Claude what you see.
 - That is it.
 
 ## 4. Making money (ads)

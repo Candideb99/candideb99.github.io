@@ -23,6 +23,13 @@ export const ROLES = {
     "nvidia/nemotron-3-super-120b-a12b:free",
     "nex-agi/nex-n2.5-mini:free",
   ]),
+  // The copy desk rewrites Arabic idiom; the Nemotron models produce the most natural Arabic.
+  desk: chain("KHAZENDAR_MODELS_DESK", [
+    "nvidia/nemotron-3-super-120b-a12b:free",
+    "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "inclusionai/ling-3.0-flash-fin:free",
+    "nex-agi/nex-n2.5-mini:free",
+  ]),
   critic: chain("KHAZENDAR_MODELS_CRITIC", [
     "nvidia/nemotron-3-super-120b-a12b:free",
     "nvidia/nemotron-3-ultra-550b-a55b:free",
@@ -41,6 +48,18 @@ export const ROLES = {
 const NO_JSON_MODE = ["inclusionai/", "cohere/"];
 /** Models whose chain-of-thought spills into the content field and truncates the JSON answer. */
 const NO_REASONING = ["nvidia/"];
+/**
+ * Per role, models told to answer without reasoning. Ling reasons by default on OpenRouter and the reasoning
+ * counts against max_tokens: over the 260-item candidate list it alone outran the editor's 8000-token cap and
+ * every news run lost two attempts before falling through to Nemotron (probe, 2026-09-11: 819 of 1095 tokens
+ * were reasoning; 238 tokens with reasoning off). Writing keeps its reasoning. Nex N2.5 Mini answers with
+ * nothing when reasoning is off, so it is never listed here.
+ */
+const NO_REASONING_BY_ROLE = { editor: ["inclusionai/"] };
+
+function reasoningDisabled(role, model) {
+  return [...NO_REASONING, ...(NO_REASONING_BY_ROLE[role] ?? [])].some((prefix) => model.startsWith(prefix));
+}
 
 export const usage = { calls: 0, failures: 0, promptTokens: 0, completionTokens: 0, byModel: {} };
 
@@ -103,6 +122,8 @@ function balancedSlice(text, open, close) {
 
 export function parseJsonLoose(text) {
   const cleaned = stripNoise(text);
+  // A reasoning model that spends its whole token budget thinking answers with nothing at all.
+  if (!cleaned) throw new LlmError("Model returned an empty answer (raise maxTokens if it reasons at length)", { sample: "" });
   const candidates = [cleaned];
   const obj = balancedSlice(cleaned, "{", "}");
   const arr = balancedSlice(cleaned, "[", "]");
@@ -182,7 +203,7 @@ async function callModel(model, options) {
   return callOpenRouter(model, options);
 }
 
-async function callOpenRouter(model, { system, user, images, temperature, maxTokens, timeoutMs, jsonMode }) {
+async function callOpenRouter(model, { role, system, user, images, temperature, maxTokens, timeoutMs, jsonMode }) {
   const key = process.env.OPENROUTER_API_KEY;
   if (!key) throw new LlmError("OPENROUTER_API_KEY is not set");
   const body = {
@@ -195,8 +216,8 @@ async function callOpenRouter(model, { system, user, images, temperature, maxTok
     max_tokens: maxTokens,
   };
   if (jsonMode) body.response_format = { type: "json_object" };
-  // Reasoning models that leak their thinking into the answer are told to answer directly.
-  if (NO_REASONING.some((prefix) => model.startsWith(prefix))) body.reasoning = { enabled: false };
+  // Reasoning models that leak their thinking into the answer, or spend the whole cap on it, are told to answer directly.
+  if (reasoningDisabled(role, model)) body.reasoning = { enabled: false };
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
   const started = Date.now();
@@ -261,12 +282,14 @@ export async function chat({
     let jsonMode = json && !NO_JSON_MODE.some((prefix) => model.startsWith(prefix));
     for (let attempt = 1; attempt <= 2; attempt += 1) {
       await acquire();
+      let result = null;
       try {
         const nudge =
           attempt === 2 && json
             ? "\n\nIMPORTANT: Reply with ONE valid JSON value only. No prose, no markdown fences, no comments."
             : "";
-        const result = await callModel(model, {
+        result = await callModel(model, {
+          role,
           system,
           user: user + nudge,
           images,
@@ -284,7 +307,9 @@ export async function chat({
         usage.failures += 1;
         errors.push(`${model}#${attempt}: ${error.message}`);
         const sample = error.meta?.sample ? ` sample=${JSON.stringify(String(error.meta.sample).slice(0, 140))}` : "";
-        log(`llm fail role=${role} model=${model} attempt=${attempt}: ${String(error.message).slice(0, 200)}${sample}`);
+        // A "length" finish with a validation error means the answer was cut off: the fix is a higher maxTokens.
+        const shape = result ? ` (finish=${result.finish ?? "?"} tokens=${result.usage?.completion_tokens ?? "?"})` : "";
+        log(`llm fail role=${role} model=${model} attempt=${attempt}: ${String(error.message).slice(0, 200)}${shape}${sample}`);
         const meta = error.meta ?? {};
         if (meta.unsupportedJsonMode && jsonMode) {
           jsonMode = false; // retry this model without response_format

@@ -1,22 +1,29 @@
 import { chat } from "./llm.mjs";
 import { arabicRatio, truncate, wordCount } from "./util.mjs";
 
-export const WRITER_SYSTEM = `You are the senior economics correspondent of خازندار (Khazendar), an Arabic-language economics and business publication for educated readers across the Arab world.
-
-HOUSE STYLE
+const HOUSE_STYLE = `HOUSE STYLE
 - Write original journalism in clear Modern Standard Arabic (فصحى معاصرة). Never translate a source sentence by sentence; report the facts in your own structure and words.
 - When a source is itself in Arabic, rewrite it completely: never reuse any of its phrases longer than three words; copying Arabic sentences is plagiarism and the article will be rejected.
 - Attribute every claim to its source in the text ("وفقاً لبيانات يوروستات"، "قال البنك المركزي الأوروبي في بيان"، "بحسب تقرير بي بي سي"). Never present a source's claim as your own knowledge.
 - Keep every number, date and name exactly as in the sources. Never invent, estimate, round differently, or extrapolate figures. If a figure is missing, say the source did not disclose it.
 - Use Western digits (0-9), the pan-Arab month names (يناير، فبراير، مارس، أبريل، مايو، يونيو، يوليو، أغسطس، سبتمبر، أكتوبر، نوفمبر، ديسمبر), and Arabic units (مليار، مليون، نقطة أساس، %).
 - Write foreign names in Arabic transliteration; for lesser-known people or companies add the Latin original in parentheses once. Keep well-known tickers and acronyms in Latin (S&P 500, OPEC+, IMF) when that is how Arab business media write them.
-- Headlines: one clear sentence with the key fact; never use ".." or "!" or a colon-teaser; no "تعرف على" or question headlines for news.
+- Idiom, not translation. The reader must never feel English under the Arabic. Use the definite or the name for institutions ("الإدارة الأمريكية" or "واشنطن", never "إدارة أمريكية"); prefer a strong verb to "يعلن عن" + verbal noun; render financial terms as Arab business media do ("استرداد" or "شيكات", not "مستردات"; "المشتركون في", not "مستخدمو"; "فائدة الرهن العقاري", not "المعدل العقاري"; "موجة بيع", not "استئناف بيع"; "إلى الواجهة", not "للأضواء"); no "من قبل" for agents, no "يقوم بـ" + verbal noun, no paragraph opening with "و". Mind case endings and duals ("ألفي رحلة", "حلاً جزئياً").
+- Headlines: one clear sentence carrying ONE idea and the key fact; never chain two developments with "و"; never use ".." or "!" or a colon-teaser; no "تعرف على" or question headlines for news.
 - Tone: calm, precise, authoritative. No sensationalism, no clichés, no rhetorical questions, no first person, no moralising, no filler like "في هذا السياق" more than once.
 - Explain context that an Arab reader needs (what the institution is, why the indicator matters) in one clause, without lecturing.
 - No URLs, no markdown links, no headings other than optional "## " subheads for long pieces, no bullet lists inside the body.
 - Do not mention that you are an AI or that the article was generated.
 
 You always respond with a single JSON object and nothing else.`;
+
+export const WRITER_SYSTEM = `You are the senior economics correspondent of خازندار (Khazendar), an Arabic-language economics and business publication for educated readers across the Arab world.
+
+${HOUSE_STYLE}`;
+
+const ANALYST_SYSTEM = `You are the senior analyst of خازندار (Khazendar), an Arabic-language economics and business publication for educated readers across the Arab world. You write the paper's signed house analysis (تحليل): not a news report and not an explainer, but an argued reading of what the paper's own recent reporting means, for whom, and what could happen next. You use only the facts and figures in the material supplied; you never invent numbers, quotes or sources; and every forecast is framed as a scenario with the conditions that would trigger it, never asserted as fact. The paper's voice may say "نراقب" in the watch section; otherwise no first person.
+
+${HOUSE_STYLE}`;
 
 const SCHEMA_TEXT = `{
   "title": "Arabic headline, 35-80 characters, ONE idea (never chain two or three developments with و), specific, contains the key fact or number, no colon-tricks, no clickbait",
@@ -34,18 +41,50 @@ const SCHEMA_TEXT = `{
 }
 Data visuals: include "chart" only when the sources give at least three comparable figures of the same kind (a time series, or the same indicator across countries/companies); use "line" for time series and "bar" for comparisons; at most 3 series. Include "table" only when the sources list comparable figures for several entities (max 12 rows). Every number in a chart or table must appear in the sources; translate all labels to Arabic; otherwise set them to null.`;
 
+/**
+ * Arabic JSON is token-hungry and Ling's reasoning counts against the cap: at the old cap of 5000 the writer's
+ * answers were regularly cut off right where "tags" sits in the schema (run reports show many "draft.tags
+ * missing" failures at exactly 5000 tokens), and at 8000 a long think still left an empty answer.
+ */
+const NEWS_MAX_TOKENS = 12000;
+
 function sourceBlock(source, index) {
   const text = source.text || source.summary || "";
   return `SOURCE ${index + 1}: ${source.sourceNameEn} (${source.lang}) — "${source.title}" — published ${source.publishedAt ?? "unknown"}
 ${text}`;
 }
 
-export function validateDraft(draft) {
+/** Some models return the body as paragraphs or as sections ({heading, text} or heading → text); fold it into Markdown. */
+function coerceBody(body) {
+  if (Array.isArray(body)) {
+    return body
+      .map((p) => {
+        if (typeof p === "string") return p;
+        if (!p || typeof p !== "object") return "";
+        const heading = p.heading ?? p.title ?? p.subhead ?? "";
+        const text = p.text ?? p.body ?? p.content ?? p.paragraphs ?? "";
+        return [heading ? `## ${heading}` : "", Array.isArray(text) ? text.join("\n\n") : String(text)].filter(Boolean).join("\n\n");
+      })
+      .filter(Boolean)
+      .join("\n\n");
+  }
+  if (body && typeof body === "object") {
+    return Object.entries(body)
+      .map(([heading, text]) => [/^(intro|opening|lead|lede|argument)$/i.test(heading) ? "" : `## ${heading}`, Array.isArray(text) ? text.join("\n\n") : String(text ?? "")].filter(Boolean).join("\n\n"))
+      .join("\n\n");
+  }
+  return body;
+}
+
+/** Structural validation of a writer's answer. `minWords`/`maxWords` bound the lede plus body (news defaults; analyses are longer). */
+export function validateDraft(draft, { minWords = 170, maxWords = 1100 } = {}) {
   if (!draft || typeof draft !== "object") throw new Error("draft is not an object");
-  // Tolerate renamed keys from different models.
+  // Tolerate renamed keys and reshaped bodies from different models.
   draft.key_facts = draft.key_facts ?? draft.keyFacts ?? draft.key_figures ?? draft.facts ?? draft.numbers ?? [];
   draft.why_it_matters = draft.why_it_matters ?? draft.whyItMatters ?? draft.why ?? "";
   draft.image_queries = draft.image_queries ?? draft.imageQueries ?? draft.images ?? [];
+  draft.tags = draft.tags ?? draft.keywords ?? draft.topics;
+  draft.body = coerceBody(draft.body);
   const required = ["title", "subtitle", "slug", "lede", "body", "tags"];
   for (const key of required) if (draft[key] == null || draft[key] === "") throw new Error(`draft.${key} missing`);
   if (String(draft.title).length < 15 || String(draft.title).length > 95) throw new Error("title length out of range (15-95 chars); write one idea per headline");
@@ -54,7 +93,7 @@ export function validateDraft(draft) {
   const prose = [draft.title, draft.subtitle, draft.lede, draft.body, draft.why_it_matters].join("\n");
   if (arabicRatio(prose) < 0.85) throw new Error(`Arabic ratio too low: ${arabicRatio(prose).toFixed(2)}`);
   const words = wordCount(`${draft.lede}\n${draft.body}`);
-  if (words < 170 || words > 1100) throw new Error(`body word count out of range: ${words}`);
+  if (words < minWords || words > maxWords) throw new Error(`body word count out of range (${minWords}-${maxWords}): ${words}`);
   if (/https?:\/\//i.test(prose)) throw new Error("draft contains a URL");
 }
 
@@ -78,34 +117,34 @@ ${SCHEMA_TEXT}`;
     system: WRITER_SYSTEM,
     user,
     temperature: 0.35,
-    maxTokens: 5000,
+    maxTokens: NEWS_MAX_TOKENS,
     log,
     validate: validateDraft,
   });
   return { draft: normalizeDraft(data), model };
 }
 
-/** Sends critic findings back to the writer for one revision. */
-export async function reviseArticle({ draft, sources, issues, log }) {
+/** Sends critic findings back to the writer for one revision. `wordLimits` (analyses) overrides the news word bounds. */
+export async function reviseArticle({ draft, sources, issues, log, wordLimits }) {
   const user = `You previously wrote this article for خازندار:
 ${JSON.stringify(draft, null, 2)}
 
 SOURCE MATERIAL
 ${sources.map(sourceBlock).join("\n\n")}
 
-An editor found the following problems. Fix every one of them strictly using the source material. Remove any claim or number that the sources do not support. Keep everything else intact, and keep the article at least 260 words (lede + body) when the sources allow it; never pad with unsupported material.
+An editor found the following problems. Fix every one of them strictly using the source material. Remove any claim or number that the sources do not support. Keep everything else intact, and keep the article at least ${wordLimits?.target ?? 260} words (lede + body) when the sources allow it; never pad with unsupported material.
 PROBLEMS
 ${issues.map((i, n) => `${n + 1}. ${i}`).join("\n")}
 
-Return the complete corrected article as one JSON object with the same keys as before (title, subtitle, slug, lede, body, key_facts, why_it_matters, tags, regions, image_queries).`;
+Return the complete corrected article as one JSON object with the same keys as before (title, subtitle, slug, lede, body, key_facts, why_it_matters, tags, regions, image_queries${draft.chart || draft.table ? ", chart, table" : ""}).`;
   const { data, model } = await chat({
     role: "writer",
-    system: WRITER_SYSTEM,
+    system: wordLimits ? ANALYST_SYSTEM : WRITER_SYSTEM,
     user,
     temperature: 0.25,
-    maxTokens: 5000,
+    maxTokens: wordLimits ? ANALYSIS_MAX_TOKENS : NEWS_MAX_TOKENS,
     log,
-    validate: validateDraft,
+    validate: (d) => validateDraft(d, wordLimits),
   });
   return { draft: normalizeDraft(data), model };
 }
@@ -194,9 +233,74 @@ ${EXPLAINER_SCHEMA}`;
     system: WRITER_SYSTEM,
     user,
     temperature: 0.4,
-    maxTokens: 6000,
+    // 500-800 Arabic words with worked examples: Ling's answers were cut off at 6000 tokens.
+    maxTokens: 9000,
     log,
     validate: validateDraft,
+  });
+  return { draft: normalizeDraft(data), model };
+}
+
+/** Word bounds of a house analysis (lede + body) for validateDraft: the brief asks for 700-1000; the validator tolerates a margin. */
+export const ANALYSIS_WORDS = { minWords: 500, maxWords: 1500, target: 700 };
+/** A 1000-word Arabic JSON answer runs to ~5000 tokens; reasoning models also think first, so leave ample room. */
+const ANALYSIS_MAX_TOKENS = 12000;
+
+const ANALYSIS_SCHEMA = `{
+  "title": "Arabic title, 35-85 characters, stating the argument or the question the analysis answers (e.g. ماذا يعني نفط فوق 100 دولار لموازنات الخليج), ONE idea, no clickbait",
+  "subtitle": "Arabic dek: one sentence (max 160 chars) carrying the central claim of the analysis",
+  "slug": "english-kebab-case-slug-4-to-7-words",
+  "lede": "Opening paragraph, 2-3 sentences: the argument stated plainly and anchored in this week's facts",
+  "body": "Markdown. First one or two paragraphs (no subhead) that complete the argument; then exactly these four '## ' subheads in this order: '## ما الذي تغيّر' (what changed, from the facts of the related stories, attributed as they attribute them), '## من يربح ومن يخسر' (winners and losers, concrete: countries, sectors, companies, households), '## السيناريوهات' (two or three scenarios, each with what would trigger it and what it would mean), '## ما الذي نراقبه' (what to watch, with dates where the material gives them). Lede and body together 700-1000 words. Paragraphs separated by blank lines; no bullet lists.",
+  "key_facts": [{"label": "short Arabic label (2-5 words)", "value": "a figure exactly as it appears in the supplied material, e.g. 108 دولاراً or 2.5%"}],
+  "why_it_matters": "One Arabic paragraph (60-120 words): the bottom line for Arab economies, businesses or readers",
+  "tags": ["3-5 Arabic tags: institutions, countries, sectors, indicators"],
+  "regions": ["1-3 Arabic region tags"],
+  "image_queries": ["2-3 short English search terms (2-4 words each) naming a concrete subject that exists as a photo on Wikimedia Commons: a city skyline, a port, a refinery, an institution's headquarters, a commodity; no adjectives, no abstract concepts"],
+  "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit, e.g. % or مليار دولار", "source": "the publisher named in the material", "categories": ["Arabic labels, 3-12 items"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the supplied material]}]},
+  "table": null or {"title": "Arabic table title", "source": "the publisher named in the material", "columns": ["2-5 Arabic column headers"], "rows": [["cells exactly as in the supplied material"]]}
+}
+Data visuals: include "chart" or "table" only when the supplied material gives at least three comparable figures of the same kind; every number must appear in the material; otherwise set them to null.`;
+
+function relatedBlock(article, index) {
+  const facts = (article.keyFacts ?? []).map((f) => [f.label, f.value].filter(Boolean).join(": ")).join("؛ ");
+  return `ARTICLE ${index + 1}: "${article.title}" (section ${article.section}; published ${String(article.publishedAt ?? "").slice(0, 10)})
+${article.lede ?? ""}
+
+${article.body ?? ""}
+${facts ? `\nKey facts: ${facts}` : ""}${article.whyItMatters ? `\nWhy it matters: ${article.whyItMatters}` : ""}`;
+}
+
+/** Writes a house analysis that connects the paper's own related stories; every figure must come from them. */
+export async function writeAnalysis({ topic, relatedArticles, log }) {
+  const user = `ANALYSIS BRIEF FROM THE EDITOR
+Theme: ${topic.theme_ar} (${topic.theme_en})
+The question this analysis answers: ${topic.question_ar}
+Hook: ${topic.hook}
+Angle: ${topic.angle}
+Today (UTC): ${new Date().toISOString().slice(0, 10)}
+
+MATERIAL: خازندار's own recent reporting (use only this material; every figure, date, name and quotation must come from it)
+${relatedArticles.map(relatedBlock).join("\n\n")}
+
+TASK
+Write the analysis for خازندار. State the argument in the first two paragraphs, then develop it under the four required subheads. The editor's theme and angle are direction only: where the material does not support a part of them, drop that part rather than inventing support. Attribute facts as the material attributes them (the original institution or outlet), never to vague "reports". Do not add facts, figures or quotations from memory; if the material lacks a number, say so or leave it out. Restate the facts in fresh sentences of your own; do not copy sentences from the material. Frame every forecast as a scenario with its trigger; never assert what will happen. A consequence or causal link that the material does not itself report is the paper's reading: state it hedged (يرجّح، قد يعني، من المحتمل) and in proportion to the evidence, never as established fact, and never generalise one country's figure to a whole region. The title states the question or a claim the material supports; it must not overstate.
+LENGTH: 700-1000 words in the lede and body together; each of the four sections needs two or three full paragraphs. A draft under 700 words is rejected automatically.
+Return one JSON object exactly in this shape:
+${ANALYSIS_SCHEMA}`;
+  // An analysis without tags is still an analysis: fall back to the related stories' own tags.
+  const fallbackTags = [...new Set(relatedArticles.flatMap((a) => a.tags ?? []))].slice(0, 5);
+  const { data, model } = await chat({
+    role: "writer",
+    system: ANALYST_SYSTEM,
+    user,
+    temperature: 0.35,
+    maxTokens: ANALYSIS_MAX_TOKENS,
+    log,
+    validate: (d) => {
+      if (d && typeof d === "object" && !(Array.isArray(d.tags) && d.tags.length) && fallbackTags.length) d.tags = fallbackTags;
+      validateDraft(d, ANALYSIS_WORDS);
+    },
   });
   return { draft: normalizeDraft(data), model };
 }

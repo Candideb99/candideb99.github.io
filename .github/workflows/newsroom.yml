@@ -2,16 +2,17 @@ name: Newsroom
 
 on:
   schedule:
-    # News every three hours; one explainer a day.
+    # News every three hours; one explainer and one analysis a day.
     - cron: "23 */3 * * *"
     - cron: "41 5 * * *"
+    - cron: "7 14 * * *"
   workflow_dispatch:
     inputs:
       mode:
-        description: news or explainer
+        description: news, explainer or analysis
         default: news
         type: choice
-        options: [news, explainer]
+        options: [news, explainer, analysis]
       limit:
         description: maximum stories to publish
         default: "6"
@@ -50,7 +51,9 @@ jobs:
         run: |
           mode="${{ inputs.mode }}"
           if [ -z "$mode" ]; then
-            if [ "${{ github.event.schedule }}" = "41 5 * * *" ]; then mode=explainer; else mode=news; fi
+            if [ "${{ github.event.schedule }}" = "41 5 * * *" ]; then mode=explainer;
+            elif [ "${{ github.event.schedule }}" = "7 14 * * *" ]; then mode=analysis;
+            else mode=news; fi
           fi
           echo "mode=$mode" >> "$GITHUB_OUTPUT"
           echo "limit=${{ inputs.limit || '6' }}" >> "$GITHUB_OUTPUT"

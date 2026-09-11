@@ -16,14 +16,18 @@ export function readingMinutes(draft) {
   return Math.max(1, Math.round(words / 180));
 }
 
-/** Serializes an article as Markdown with YAML frontmatter. */
-export function serializeArticle({ draft, slug, section, sources, image, models, quality, explainer = false, publishedAt }) {
+/** The kinds of piece the newsroom files: news stories, explainers and house analyses. */
+export const KINDS = new Set(["news", "explainer", "analysis"]);
+
+/** Serializes an article as Markdown with YAML frontmatter. `kind` is "news" (default), "explainer" or "analysis". */
+export function serializeArticle({ draft, slug, section, sources, image, models, quality, kind = "news", publishedAt }) {
+  if (!KINDS.has(kind)) throw new Error(`unknown article kind "${kind}" (news, explainer or analysis)`);
   const frontmatter = {
     title: draft.title,
     subtitle: draft.subtitle,
     slug,
     section,
-    kind: explainer ? "explainer" : "news",
+    kind,
     publishedAt: publishedAt ?? new Date().toISOString(),
     lede: draft.lede,
     keyFacts: draft.keyFacts,
@@ -61,7 +65,10 @@ export function serializeArticle({ draft, slug, section, sources, image, models,
   return `---\n${yaml}\n---\n\n${draft.body.trim()}\n`;
 }
 
-/** Loads lightweight metadata of existing articles (for dedup, recency, related). */
+/**
+ * Loads the metadata and text of existing articles (for dedup, recency, related pieces, and as the
+ * material an analysis draws on). `kind` is news, explainer or analysis; `body` is the Markdown text.
+ */
 export async function loadExistingArticles() {
   let files = [];
   try {
@@ -73,17 +80,23 @@ export async function loadExistingArticles() {
   for (const file of files) {
     try {
       const raw = await readFile(path.join(ARTICLES_DIR, file), "utf8");
-      const match = raw.match(/^---\n([\s\S]*?)\n---/);
+      const match = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
       if (!match) continue;
       const data = YAML.parse(match[1]);
       out.push({
         file,
         slug: data.slug,
         title: data.title,
+        subtitle: data.subtitle ?? "",
         section: data.section,
         kind: data.kind ?? "news",
         publishedAt: data.publishedAt,
+        lede: data.lede ?? "",
+        body: match[2].trim(),
+        keyFacts: Array.isArray(data.keyFacts) ? data.keyFacts : [],
+        whyItMatters: data.whyItMatters ?? "",
         tags: data.tags ?? [],
+        regions: data.regions ?? [],
         imageUrl: data.image?.url ?? null,
         sourceUrls: (data.sources ?? []).map((s) => s.url).filter(Boolean),
       });

@@ -6,8 +6,8 @@ the house rules and they bind you exactly as they bind any other agent on this p
 
 ## What publishes the paper (and it is not you)
 
-A GitHub Actions job called **Newsroom** runs in the cloud every three hours, plus one explainer a
-day. It reads 38 feeds, picks the stories, writes original Arabic reporting, checks every number
+A GitHub Actions job called **Newsroom** runs in the cloud every three hours, plus one explainer and
+one analysis a day. It reads 47 feeds, picks the stories, writes original Arabic reporting, checks every number
 against the sources, has an independent critic model score the draft, finds a licensed photograph,
 and commits. That pipeline carries the quality of this paper. **Never write an article yourself and
 never edit a published article's text by hand.** When more stories are wanted, you run the pipeline.
@@ -23,9 +23,11 @@ Run these from the project root, `C:\Users\ahmed\Documents\Khazendar`.
 | --- | --- |
 | Write and publish stories now | `npm run newsroom -- --limit=3` |
 | Write one explainer | `npm run newsroom:explainer` |
+| Write one analysis | `npm run newsroom:analysis` |
 | Test the pipeline without publishing | `npm run newsroom:dry` |
 | Find pictures for stories that have none | `node pipeline/backfill-images.mjs` |
 | Replace one story's picture | `node pipeline/backfill-images.mjs --redo=<slug>` |
+| Re-run the Arabic copy desk over published articles | `node pipeline/copydesk.mjs [--dry-run] [--slugs=a,b] [--body]` |
 | Regenerate the logo and icons from the artwork | `npm run brand` |
 | Type-check | `npm run check` |
 | Build the site | `npm run build` |

@@ -6,16 +6,21 @@
  *   node pipeline/run.mjs --dry-run       # everything except writing files/state
  *   node pipeline/run.mjs --limit=4       # cap the number of stories
  *   node pipeline/run.mjs --source=ecb    # restrict to one feed
- *   node pipeline/run.mjs --mode=explainer
+ *   node pipeline/run.mjs --mode=explainer  # one evergreen explainer tied to recent coverage
+ *   node pipeline/run.mjs --mode=analysis   # one house analysis connecting recent stories
+ *
+ * Reads OPENROUTER_API_KEY from the environment or from .env (see lib/env.mjs).
  */
+import "./lib/env.mjs";
 import { mkdir, readFile, writeFile, appendFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { fetchFeed } from "./lib/feeds.mjs";
 import { extractArticle } from "./lib/extract.mjs";
-import { selectExplainerTopic, selectStories } from "./lib/select.mjs";
-import { reviseArticle, writeArticle, writeExplainer } from "./lib/write.mjs";
+import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectStories } from "./lib/select.mjs";
+import { ANALYSIS_WORDS, reviseArticle, writeAnalysis, writeArticle, writeExplainer } from "./lib/write.mjs";
 import { critique, programmaticChecks } from "./lib/verify.mjs";
+import { copyEdit } from "./lib/copydesk.mjs";
 import { pickImage } from "./lib/images.mjs";
 import { ARTICLES_DIR, buildSlug, loadExistingArticles, serializeArticle } from "./lib/article.mjs";
 import { usage as llmUsage } from "./lib/llm.mjs";
@@ -149,6 +154,22 @@ async function collectEvidence(story, candidates) {
 /** Pictures already printed on the site; a new story never repeats one. */
 const usedImages = (existing) => new Set(existing.map((a) => a.imageUrl).filter(Boolean));
 
+/**
+ * The Arabic copy desk runs on every draft before the critic sees it: it rewrites translationese
+ * (the owner's rule: no literal translations) and its guard keeps every figure and name intact. A
+ * desk failure never blocks a story; the draft simply goes on as written.
+ */
+async function copyDeskPass(draft, { includeBody = true } = {}) {
+  try {
+    const desk = await copyEdit({ draft, includeBody, role: "desk", log });
+    if (desk.changed) log(`desk "${desk.draft.title}": rewrote ${desk.applied.join(", ")}${desk.rejected.length ? `; refused ${desk.rejected.map((r) => `${r.field} (${r.reason})`).join(", ")}` : ""}`);
+    return desk;
+  } catch (error) {
+    log(`desk skipped: ${String(error.message).slice(0, 140)}`);
+    return { draft, changed: false, model: null };
+  }
+}
+
 async function produceStory({ story, candidates, existing, recentTitles, models, report }) {
   const { items, sources, evidenceChars } = await collectEvidence(story, candidates);
   const entry = { headline: story.headlineHint, section: story.section, importance: story.importance, sources: sources.map((s) => s.url) };
@@ -160,6 +181,9 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   }
 
   let { draft, model: writerModel } = await writeArticle({ story, sources, log });
+  const desk = await copyDeskPass(draft);
+  draft = desk.draft;
+  const deskModel = desk.model;
   let checks = programmaticChecks(draft, sources, { recentTitles });
   let review = await critique({ draft, sources, log });
   log(`critic "${draft.title}": ${review.verdict} score=${review.score} issues=${review.issues.length}`);
@@ -170,7 +194,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   if (issues.length) {
     // One revision round. A rejected draft gets a second critic pass; a "revise" verdict is trusted after the fix.
     const revision = await reviseArticle({ draft, sources, issues, log });
-    draft = revision.draft;
+    draft = (await copyDeskPass(revision.draft, { includeBody: false })).draft;
     writerModel = `${writerModel} → ${revision.model}`;
     revised = true;
     checks = programmaticChecks(draft, sources, { recentTitles });
@@ -199,7 +223,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     section: story.section,
     sources,
     image,
-    models: { editor: models.editor, writer: writerModel, critic: review.model, vision: image?.model ?? null },
+    models: { editor: models.editor, writer: writerModel, critic: review.model, vision: image?.model ?? null, desk: deskModel },
     quality: {
       score: review.score,
       verdict: review.verdict,
@@ -225,10 +249,14 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
 
 async function runNews() {
   const config = await readJson(path.join(root, "pipeline", "sources.json"), { sources: [] });
-  const sections = await readJson(path.join(root, "src", "data", "sections.json"), []);
+  // News is filed only into the news sections; the analysis and explainers hubs hold the paper's own pieces.
+  const sections = newsSectionsOf(await readJson(path.join(root, "src", "data", "sections.json"), []));
   const state = await loadState();
   const existing = await loadExistingArticles();
   const recentTitles = existing.filter((a) => hoursSince(a.publishedAt) < 96).map((a) => a.title);
+  // Stories per section in the last 24 hours, so the editor can favour a quiet section over a crowded one.
+  const coverage24h = {};
+  for (const a of existing) if (a.kind === "news" && hoursSince(a.publishedAt) < 24) coverage24h[a.section] = (coverage24h[a.section] ?? 0) + 1;
   const report = [];
 
   const candidates = await gatherCandidates(config.sources, state, existing);
@@ -238,7 +266,7 @@ async function runNews() {
     return { report, published: 0 };
   }
 
-  const { stories, model: editorModel } = await selectStories({ candidates, recentTitles, sections, limit: LIMIT, log });
+  const { stories, model: editorModel } = await selectStories({ candidates, recentTitles, sections, coverage24h, limit: LIMIT, log });
   log(`editor (${editorModel}) selected ${stories.length} stories`);
   const chosen = stories.filter((s) => s.importance >= MIN_IMPORTANCE).slice(0, LIMIT);
   for (const s of stories) log(`  [${s.importance}] ${s.section} — ${s.headlineHint} (${s.ids.join(",")})${chosen.includes(s) ? "" : s.importance < MIN_IMPORTANCE ? " (below threshold)" : " (deferred: over limit)"}`);
@@ -266,24 +294,47 @@ async function runNews() {
   return { report, published };
 }
 
-async function runExplainer() {
-  const existing = await loadExistingArticles();
-  const recent = existing.filter((a) => a.kind === "news" && hoursSince(a.publishedAt) < 72).slice(0, 25);
-  const explainers = existing.filter((a) => a.kind === "explainer").map((a) => a.title);
-  const report = [];
-  if (recent.length < 3) {
-    log("not enough recent coverage to anchor an explainer");
-    return { report, published: 0 };
-  }
-  const { topic, model: editorModel } = await selectExplainerTopic({ recentArticles: recent, existingExplainers: explainers, log });
-  log(`explainer topic: ${topic.concept_ar} (${topic.concept_en})`);
-  const related = recent.filter((a) => (topic.related_titles ?? []).includes(a.title)).slice(0, 4);
-  const { draft: firstDraft, model: writerModel } = await writeExplainer({ topic, relatedArticles: related, log });
-  let draft = firstDraft;
-  let checks = programmaticChecks(draft, [], { explainer: true, recentTitles: explainers });
-  const review = await critique({ draft, sources: [], explainer: true, log });
-  log(`critic explainer: ${review.verdict} score=${review.score}`);
-  const entry = { headline: topic.concept_ar, section: "explainers", outcome: "" };
+/** News stories of the last 72 hours, newest first: the coverage a hub piece (explainer, analysis) is anchored in. */
+const recentNews = (existing, max) => existing.filter((a) => a.kind === "news" && hoursSince(a.publishedAt) < 72).slice(0, max);
+
+/** The full text of a published story, as the material an analysis may cite and is checked against. */
+function articleText(a) {
+  const facts = (a.keyFacts ?? []).map((f) => `${f.label} ${f.value}`).join("\n");
+  return [a.title, a.subtitle, a.lede, a.body, facts, a.whyItMatters].filter(Boolean).join("\n\n");
+}
+
+/**
+ * The paper's own stories as source entries: the site's Sources component renders internal urls as
+ * "مواد ذات صلة". With `withText` they also carry the story text for the checks and the critic.
+ */
+function internalSources(articles, { withText = false } = {}) {
+  return articles.map((a) => ({
+    sourceName: "خازندار",
+    sourceNameEn: "Khazendar",
+    title: a.title,
+    url: `/articles/${a.slug}/`,
+    lang: "ar",
+    publishedAt: a.publishedAt,
+    ...(withText ? { text: articleText(a), summary: a.lede } : {}),
+  }));
+}
+
+/**
+ * Shared tail of the explainer and analysis modes: programmatic checks, the critic, one revision round
+ * with a second critic pass, the photo, and the file. `checkSources` is what the draft is checked
+ * against (nothing for an explainer, the related stories for an analysis); `sources` is what is filed.
+ */
+async function finishHubPiece({ kind, section, draft: firstDraft, sources, checkSources, recentTitles, wordLimits, story, headlineHint, headline, models, existing, report }) {
+  const desk = await copyDeskPass(firstDraft);
+  let draft = desk.draft;
+  const deskModel = desk.model;
+  const flags = { [kind]: true };
+  let checks = programmaticChecks(draft, checkSources, { ...flags, recentTitles });
+  log(`checks ${kind} "${draft.title}": ${checks.metrics.words} words, ${checks.issues.length} issues, ${checks.warnings.length} warnings`);
+  const review = await critique({ draft, sources: checkSources, ...flags, log });
+  log(`critic ${kind}: ${review.verdict} score=${review.score} issues=${review.issues.length}`);
+  for (const issue of [...checks.issues, ...review.issues].slice(0, 4)) log(`  · ${String(issue).slice(0, 160)}`);
+  const entry = { headline, section, outcome: "" };
   if (review.verdict === "reject" || review.score < 5) {
     entry.outcome = `rejected (${review.score}): ${review.summary}`;
     report.push(entry);
@@ -291,35 +342,38 @@ async function runExplainer() {
   }
   let revised = false;
   let finalReview = review;
+  let writerModel = models.writer;
   const issues = [...checks.issues, ...(review.verdict === "revise" ? review.issues : [])];
   if (issues.length) {
-    const revision = await reviseArticle({ draft, sources: [], issues, log });
-    draft = revision.draft;
+    const revision = await reviseArticle({ draft, sources: checkSources, issues, log, wordLimits });
+    draft = (await copyDeskPass(revision.draft, { includeBody: false })).draft;
+    writerModel = `${writerModel} → ${revision.model}`;
     revised = true;
-    checks = programmaticChecks(draft, [], { explainer: true, recentTitles: explainers });
+    checks = programmaticChecks(draft, checkSources, { ...flags, recentTitles });
     if (!checks.ok) {
       entry.outcome = `rejected after revision: ${checks.issues.join(" | ")}`;
       report.push(entry);
+      log(`reject ${kind} "${draft.title}" after revision: ${checks.issues.join(" | ")}`);
       return { report, published: 0 };
     }
-    finalReview = await critique({ draft, sources: [], explainer: true, log });
-    log(`critic (second pass) explainer: ${finalReview.verdict} score=${finalReview.score}`);
+    finalReview = await critique({ draft, sources: checkSources, ...flags, log });
+    log(`critic (second pass) ${kind}: ${finalReview.verdict} score=${finalReview.score}`);
     if (finalReview.verdict === "reject" || finalReview.score < 6) {
       entry.outcome = `rejected by critic after revision (${finalReview.score}): ${finalReview.summary}`;
       report.push(entry);
       return { report, published: 0 };
     }
   }
-  const image = await pickImage({ draft, story: { angle: topic.hook }, log, exclude: usedImages(existing) });
-  const slug = buildSlug(draft, { headlineHint: topic.concept_en });
+  const image = await pickImage({ draft, story, log, exclude: usedImages(existing) });
+  const slug = buildSlug(draft, { headlineHint });
   const markdown = serializeArticle({
     draft,
     slug,
-    section: "explainers",
-    explainer: true,
-    sources: related.map((a) => ({ sourceName: "خازندار", sourceNameEn: "Khazendar", title: a.title, url: `/articles/${a.slug}/`, lang: "ar", publishedAt: a.publishedAt })),
+    section,
+    kind,
+    sources,
     image,
-    models: { editor: editorModel, writer: writerModel, critic: finalReview.model, vision: image?.model ?? null },
+    models: { editor: models.editor, writer: writerModel, critic: finalReview.model, vision: image?.model ?? null, desk: deskModel },
     quality: { score: finalReview.score, verdict: finalReview.verdict, revised, warnings: checks.warnings, criticSummary: finalReview.summary },
   });
   if (!DRY_RUN) {
@@ -329,10 +383,90 @@ async function runExplainer() {
   entry.outcome = "published";
   entry.slug = slug;
   entry.title = draft.title;
-  entry.score = review.score;
+  entry.score = finalReview.score;
+  entry.image = image ? "photo" : "none";
   report.push(entry);
-  log(`published explainer "${draft.title}" -> ${slug}`);
+  log(`published ${kind} "${draft.title}" -> ${slug}${DRY_RUN ? " (dry-run)" : ""}`);
   return { report, published: 1 };
+}
+
+/**
+ * Runs a hub mode. A model failure (every free model down or answering badly) is reported like a failed
+ * news story instead of crashing the run, so the run report still lands and the next schedule tries again.
+ */
+async function runHub(kind, section, produce) {
+  const report = [];
+  try {
+    return await produce(report);
+  } catch (error) {
+    const message = String(error.message).split("\n")[0];
+    log(`${kind} failed: ${message}`);
+    report.push({ headline: "", section, outcome: `error: ${message}` });
+    return { report, published: 0 };
+  }
+}
+
+function runExplainer() {
+  return runHub("explainer", "explainers", async (report) => {
+    const existing = await loadExistingArticles();
+    const recent = recentNews(existing, 25);
+    const explainers = existing.filter((a) => a.kind === "explainer").map((a) => a.title);
+    if (recent.length < 3) {
+      log("not enough recent coverage to anchor an explainer");
+      return { report, published: 0 };
+    }
+    const { topic, model: editorModel } = await selectExplainerTopic({ recentArticles: recent, existingExplainers: explainers, log });
+    log(`explainer topic: ${topic.concept_ar} (${topic.concept_en})`);
+    const related = recent.filter((a) => (topic.related_titles ?? []).includes(a.title)).slice(0, 4);
+    const { draft, model: writerModel } = await writeExplainer({ topic, relatedArticles: related, log });
+    return finishHubPiece({
+      kind: "explainer",
+      section: "explainers",
+      draft,
+      sources: internalSources(related),
+      checkSources: [],
+      recentTitles: explainers,
+      story: { angle: topic.hook },
+      headlineHint: topic.concept_en,
+      headline: topic.concept_ar,
+      models: { editor: editorModel, writer: writerModel },
+      existing,
+      report,
+    });
+  });
+}
+
+/** One house analysis a day: a theme connecting at least two recent stories, written only from their facts. */
+function runAnalysis() {
+  return runHub("analysis", "analysis", async (report) => {
+    const existing = await loadExistingArticles();
+    const recent = recentNews(existing, 40);
+    const analyses = existing.filter((a) => a.kind === "analysis").map((a) => a.title);
+    if (recent.length < 3) {
+      log("not enough recent coverage to anchor an analysis");
+      return { report, published: 0 };
+    }
+    const { topic, related, model: editorModel } = await selectAnalysisTopic({ recentArticles: recent, existingAnalyses: analyses, log });
+    log(`analysis theme: ${topic.theme_ar} (${topic.theme_en}); question: ${topic.question_ar}`);
+    for (const a of related) log(`  related: ${a.title}`);
+    const sources = internalSources(related, { withText: true });
+    const { draft, model: writerModel } = await writeAnalysis({ topic, relatedArticles: related, log });
+    return finishHubPiece({
+      kind: "analysis",
+      section: "analysis",
+      draft,
+      sources,
+      checkSources: sources,
+      recentTitles: analyses,
+      wordLimits: ANALYSIS_WORDS,
+      story: { angle: topic.angle || topic.hook },
+      headlineHint: topic.theme_en,
+      headline: topic.theme_ar,
+      models: { editor: editorModel, writer: writerModel },
+      existing,
+      report,
+    });
+  });
 }
 
 async function writeRunReport(summary) {
@@ -354,10 +488,14 @@ function markdownSummary(summary) {
   return `## خازندار newsroom — ${summary.mode} (${summary.published} published)\n\n| section | story | score | image | outcome |\n|---|---|---|---|---|\n${rows || "| | (nothing) | | | |"}\n\nLLM calls: ${summary.llm.calls} ok, ${summary.llm.failures} failed; models: ${Object.entries(summary.llm.byModel).map(([m, n]) => `${m}×${n}`).join(", ") || "none"}\n`;
 }
 
+const RUNNERS = { news: runNews, explainer: runExplainer, analysis: runAnalysis };
+
 async function main() {
   const started = Date.now();
+  const run = RUNNERS[MODE];
+  if (!run) throw new Error(`unknown mode "${MODE}" (news, explainer or analysis)`);
   log(`newsroom start mode=${MODE} limit=${LIMIT} dry-run=${DRY_RUN}`);
-  const outcome = MODE === "explainer" ? await runExplainer() : await runNews();
+  const outcome = await run();
   const summary = {
     mode: MODE,
     startedAt: new Date(started).toISOString(),

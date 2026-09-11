@@ -5,6 +5,12 @@ const EDITOR_SYSTEM = `You are the managing editor of خازندار (Khazendar)
 You decide which stories the newsroom will write in the next hours. You are rigorous, allergic to fluff, and you think about what an educated Arab reader needs to understand the economy today.
 You always answer with a single JSON object and nothing else.`;
 
+/** Hub sections hold the paper's own analyses and explainers; news is never filed into them (mirrors src/lib/sections.ts). */
+export const HUB_SECTIONS = new Set(["analysis", "explainers"]);
+
+/** The sections news can be filed into. */
+export const newsSectionsOf = (sections) => sections.filter((s) => !HUB_SECTIONS.has(s.id));
+
 function formatCandidate(c) {
   const age = Number.isFinite(hoursSince(c.publishedAt)) ? `${Math.round(hoursSince(c.publishedAt))}h` : "?";
   const tier = c.reliability === 3 ? "A" : c.reliability === 2 ? "B" : "C";
@@ -13,10 +19,14 @@ function formatCandidate(c) {
 
 /**
  * Asks the editor model to cluster candidates into stories and pick the best ones.
+ * `coverage24h` maps section id → stories published there in the last 24 hours (for the balance rule).
  * Returns an array of { ids, section, importance, angle, headlineHint, regions }.
  */
-export async function selectStories({ candidates, recentTitles, sections, limit, log }) {
-  const sectionIds = sections.filter((s) => s.id !== "explainers").map((s) => `${s.id} (${s.name})`).join(", ");
+export async function selectStories({ candidates, recentTitles, sections, coverage24h = {}, limit, log }) {
+  const newsSections = newsSectionsOf(sections);
+  const sectionIds = newsSections.map((s) => `${s.id} (${s.name})`).join(", ");
+  const coverageLine = newsSections.map((s) => `${s.id} ${coverage24h[s.id] ?? 0}`).join(", ");
+  const quiet = newsSections.filter((s) => !(coverage24h[s.id] > 0)).map((s) => s.id);
   const idSet = new Set(candidates.map((c) => c.id));
   const user = `Today is ${new Date().toISOString().slice(0, 10)} (UTC).
 
@@ -26,13 +36,17 @@ ${candidates.map(formatCandidate).join("\n")}
 STORIES ALREADY PUBLISHED RECENTLY (do not select stories that merely repeat these; a genuinely new development is fine):
 ${recentTitles.length ? recentTitles.map((t) => `- ${t}`).join("\n") : "- (none)"}
 
+STORIES PUBLISHED PER SECTION IN THE LAST 24 HOURS: ${coverageLine}${quiet.length ? ` (no story yet in: ${quiet.join(", ")})` : ""}
+
 TASK
 1. Group candidate items that report the same underlying story into one cluster (items from different outlets about the same event belong together).
 2. Choose the ${limit} most important stories for our readers. Judge by: material economic significance; relevance to Arab economies (Gulf, Egypt, Levant, Maghreb) or to the global forces that shape them (oil, the dollar, the Fed, the ECB, China, trade, technology); primary or official sourcing; freshness; and novelty versus the recently published list.
+   Defence economics is part of our beat: defence budgets, procurement and contract awards (an official award with a stated value is news, not fluff), arms exports and imports, the defence industry and its suppliers, and what each of these means for Arab economies (Gulf procurement, offsets, local industry, public budgets). File such stories in the defense section.
 3. Skip: opinion columns, listicles, personal finance tips, celebrity and lifestyle, sports business, product reviews, minor local items, press-release fluff, stock-picking, crypto hype, and anything already covered.
 4. Prefer official statistics and central-bank decisions when they are new. Prefer clusters with at least one tier A source.
-5. Assign each story to exactly one section from: ${sectionIds}.
-6. The angle and headline_hint must state only what the candidate items themselves report; a neutral factual working title, no dramatisation, no ".." ellipses, no inferred events.
+5. Balance, applied mildly: when a worthy candidate exists in a section that has had no story in the last 24 hours, prefer it over a marginal extra story in an already-covered section. Never promote a weak item just to fill a section.
+6. Assign each story to exactly one section from: ${sectionIds}.
+7. The angle and headline_hint must state only what the candidate items themselves report; a neutral factual working title, no dramatisation, no ".." ellipses, no inferred events.
 
 Return JSON:
 {"stories":[{"ids":["<candidate id>", "..."],"section":"<section id>","importance":<1-10>,"angle":"<one Arabic sentence stating the story and the angle for Arab readers>","headline_hint":"<short Arabic working headline>","regions":["<Arabic region tags such as الخليج, مصر, أوروبا, الولايات المتحدة, الصين, عالمي>"]}]}
@@ -60,9 +74,10 @@ Order stories by importance, highest first. Use only candidate ids that exist. R
     const digits = text.match(/\d+/)?.[0];
     return digits && idSet.has(`c${digits}`) ? `c${digits}` : null;
   };
+  // Only news sections are recognised: an answer filed into a hub section (analysis, explainers) is dropped.
   const normalizeSection = (value) => {
     const text = String(value ?? "").trim().toLowerCase();
-    const hit = sections.find((s) => text === s.id || text.startsWith(`${s.id} `) || text.startsWith(`${s.id}(`) || text.includes(s.name));
+    const hit = newsSections.find((s) => text === s.id || text.startsWith(`${s.id} `) || text.startsWith(`${s.id}(`) || text.includes(s.name));
     return hit?.id ?? null;
   };
   if (data.stories.length) log(`editor raw: ${data.stories.length} stories; first ids=${JSON.stringify(data.stories[0].ids).slice(0, 80)} section=${data.stories[0].section}`);
@@ -75,7 +90,7 @@ Order stories by importance, highest first. Use only candidate ids that exist. R
       headlineHint: String(s.headline_hint ?? "").trim(),
       regions: Array.isArray(s.regions) ? s.regions.map(String).slice(0, 4) : [],
     }))
-    .filter((s) => s.ids.length && s.section && s.section !== "explainers")
+    .filter((s) => s.ids.length && s.section)
     .sort((a, b) => b.importance - a.importance);
 
   // Never let two selected stories share a candidate item.
@@ -113,4 +128,75 @@ Return JSON: {"concept_ar":"<concept in Arabic>","concept_en":"<concept in Engli
     },
   });
   return { topic: data, model };
+}
+
+const ANALYSIS_SYSTEM = `You are the analysis editor of خازندار, an Arabic economics publication. Once a day you commission one house analysis: a piece that connects several of the paper's own recent stories and answers the reader's question "what does this mean for us?". You answer with one JSON object only.`;
+
+/** Titles compared loosely: models drop punctuation, quotes and diacritics when they copy a title back. */
+const looseTitle = (t) =>
+  String(t ?? "")
+    .replace(/[ً-ْ]/g, "")
+    .replace(/[\p{P}\p{S}]+/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+
+function matchTitles(titles, articles) {
+  const byLoose = new Map(articles.map((a) => [looseTitle(a.title), a]));
+  const matched = [];
+  for (const raw of Array.isArray(titles) ? titles : []) {
+    const key = looseTitle(raw);
+    if (!key) continue;
+    const hit = byLoose.get(key) ?? articles.find((a) => looseTitle(a.title).startsWith(key.slice(0, 40)) || key.startsWith(looseTitle(a.title).slice(0, 40)));
+    if (hit && !matched.includes(hit)) matched.push(hit);
+  }
+  return matched.slice(0, 5);
+}
+
+/**
+ * Picks one theme for a house analysis: a question where at least two recent stories connect.
+ * Returns { topic: { theme_ar, theme_en, question_ar, related_titles, hook, angle }, related: [articles], model }.
+ */
+export async function selectAnalysisTopic({ recentArticles, existingAnalyses, log }) {
+  const lines = recentArticles.map((a, i) => {
+    const facts = (a.keyFacts ?? []).map((f) => [f.label, f.value].filter(Boolean).join(": ")).join("؛ ");
+    return `${i + 1}. [${a.section}] "${a.title}" — ${truncate(a.lede ?? "", 260)}${facts ? ` — key facts: ${truncate(facts, 220)}` : ""}`;
+  });
+  const user = `Today is ${new Date().toISOString().slice(0, 10)} (UTC).
+
+خازندار'S NEWS COVERAGE OF THE LAST 72 HOURS (section, exact title, lede, key facts):
+${lines.join("\n") || "- (none)"}
+
+ANALYSES ALREADY PUBLISHED (do not choose a theme that repeats one of these):
+${existingAnalyses.map((t) => `- ${t}`).join("\n") || "- (none)"}
+
+TASK
+Pick ONE theme where at least two of the stories above connect and an educated Arab reader would ask "what does this mean for us?". The register: what oil above 100 dollars means for Gulf budgets; what a Fed cut means for dollar-pegged currencies; what a defence deal means for a local industry. Prefer themes with concrete figures in the stories, direct relevance to Arab economies, and a real tension or consequence to unpack. Do not pick a theme that merely summarises one story. The theme, question and angle must be answerable from the facts in the stories listed: do not introduce framings or concepts the stories do not contain, because the writer may use no other material. Keep the theme sober and specific, in the paper's calm register: no metaphors or dramatic framings (no "vicious cycle", "hidden price", "crisis" unless a story reports one); the theme names the question, not a conclusion.
+
+Return JSON:
+{"theme_ar":"<the theme in Arabic, one line>","theme_en":"<the theme in English, one line>","question_ar":"<the single question the analysis answers, in Arabic>","related_titles":["<2 to 5 titles copied EXACTLY from the list above>"],"hook":"<one Arabic sentence tying the theme to this week's news>","angle":"<one Arabic sentence stating the argument the analysis should make and for whom it matters>"}`;
+  let related = [];
+  const { data, model } = await chat({
+    role: "editor",
+    system: ANALYSIS_SYSTEM,
+    user,
+    temperature: 0.3,
+    // Reasoning models spend their first tokens thinking; leave room so the JSON is not cut off.
+    maxTokens: 4000,
+    log,
+    validate: (d) => {
+      if (!d?.theme_ar || !d?.question_ar) throw new Error("theme or question missing");
+      related = matchTitles(d.related_titles, recentArticles);
+      if (related.length < 2) throw new Error(`fewer than two related_titles match the coverage list (${related.length})`);
+    },
+  });
+  const topic = {
+    theme_ar: String(data.theme_ar).trim(),
+    theme_en: String(data.theme_en ?? "").trim(),
+    question_ar: String(data.question_ar).trim(),
+    related_titles: related.map((a) => a.title),
+    hook: String(data.hook ?? "").trim(),
+    angle: String(data.angle ?? "").trim(),
+  };
+  return { topic, related, model };
 }
