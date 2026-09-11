@@ -20,6 +20,13 @@ Setting the variable `KHAZENDAR_PROVIDER=claude` additionally routes the newsroo
 critic calls to the subscription instead of the free OpenRouter models (`pipeline/lib/llm.mjs`,
 `callClaudeCli`); vision stays on OpenRouter.
 
+## The house style
+
+`STYLE.md` records how the paper writes and organises news, taken from the practice of the Arabic
+economics desks: the lede formula, attribution forms, the banned calques and fillers, headline
+forms, the kicker, relative time, and what is deliberately not copied. `pipeline/lib/style.mjs`
+is its machine-checkable half.
+
 ## The Arabic copy desk
 
 `pipeline/lib/copydesk.mjs` runs on every draft before the critic: a model rewrites translationese
