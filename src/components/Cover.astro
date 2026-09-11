@@ -1,13 +1,12 @@
 ---
 /**
- * The cover: the day's strongest stories, one at a time, with the others listed beneath as tabs.
+ * The cover: the day's lead story, still, with the next four beside it as a list.
  *
- * The whole list of headlines stays visible, so a reader never has to wait for a slide to learn
- * what else is on the cover; a tab switches the stage, and the active tab (or the headline and the
- * photograph on the stage) opens the story. It rotates on its own every few seconds, stops the
- * moment the reader touches it, pauses under the pointer or keyboard focus, and never rotates for
- * a reader who asked the system for less motion. Without JavaScript the first story stands alone
- * and the tabs are plain links.
+ * This replaced a rotating cover on 2026-09-11 after a survey of sixteen major news sites: fifteen
+ * present a still lead (every economics title does), and the usability research on homepage
+ * carousels is one-sided (about 1% of visitors click one, 84% of those clicks on the first slide;
+ * NN/g, Baymard). The four other stories lose nothing: as a list they are all visible, scannable and
+ * clickable at once, the way العربية, سكاي نيوز, FT and BBC set their lead package.
  */
 import type { Article } from "@lib/articles";
 import { articleHref, topicOf } from "@lib/articles";
@@ -20,250 +19,96 @@ interface Props {
   stories: Article[];
   /** Ids of the stories allowed to show their picture here (the first appearance of each picture). */
   photoIds: Set<string>;
-  /** Milliseconds a story stays on the stage before the next one. */
-  interval?: number;
 }
-const { stories, photoIds, interval = 7000 } = Astro.props;
+const { stories, photoIds } = Astro.props;
+const [lead, ...beside] = stories;
+const d = lead.data;
+const summary = excerpt(d.subtitle || d.lede, 200);
+const href = articleHref(lead);
+const withPhoto = Boolean(d.image) && photoIds.has(lead.id);
+const topic = topicOf(lead);
 ---
 
-<section class="wrap cover" data-cover data-interval={interval} aria-roledescription="carousel" aria-label="أبرز أخبار العدد" style={`--tabs:${stories.length}`}>
-  <div class="cover__stage">
-    {stories.map((a, i) => {
-      const d = a.data;
-      const summary = excerpt(d.subtitle || d.lede, 200);
-      const href = articleHref(a);
-      const withPhoto = Boolean(d.image) && photoIds.has(a.id);
-      const topic = topicOf(a);
-      return (
-        <article class={`cover__slide${withPhoto ? "" : " cover__slide--text"}`} id={`cover-slide-${i}`} role="tabpanel" aria-labelledby={`cover-tab-${i}`} data-index={i} hidden={i !== 0} data-section={d.section}>
-          <div class="cover__body">
-            {topic && <span class="kicker"><a href={`/tags/${encodeURIComponent(topic)}/`}>{topic}</a></span>}
-            <h2 class="cover__title"><a href={href} set:html={isolateNumbers(d.title)} /></h2>
-            {summary && <p class="cover__dek" set:html={isolateNumbers(summary)} />}
-            <p class="meta cover__meta">
-              <a href={sectionHref(d.section)}>{kindLabel(d.kind, d.section)}</a>
-              <time datetime={d.publishedAt} data-relative>{timeAgo(d.publishedAt)}</time>
-            </p>
-          </div>
-          {withPhoto && (
-            <a class="cover__photo" href={href} tabindex="-1" aria-hidden="true">
-              <Photo image={d.image} ratio="3/2" eager={i === 0} sizes="(min-width: 1320px) 723px, (min-width: 720px) 58vw, 100vw" />
-            </a>
-          )}
-        </article>
-      );
-    })}
-  </div>
+<section class="wrap cover" aria-label="أبرز أخبار العدد">
+  <article class={`cover__lead${withPhoto ? "" : " cover__lead--text"}`} data-section={d.section}>
+    <div class="cover__body">
+      {topic && <span class="kicker"><a href={`/tags/${encodeURIComponent(topic)}/`}>{topic}</a></span>}
+      <h2 class="cover__title"><a href={href} set:html={isolateNumbers(d.title)} /></h2>
+      {summary && <p class="cover__dek" set:html={isolateNumbers(summary)} />}
+      <p class="meta cover__meta">
+        <a href={sectionHref(d.section)}>{kindLabel(d.kind, d.section)}</a>
+        <time datetime={d.publishedAt} data-relative>{timeAgo(d.publishedAt)}</time>
+      </p>
+    </div>
+    {withPhoto && (
+      <a class="cover__photo" href={href} tabindex="-1" aria-hidden="true">
+        <Photo image={d.image} ratio="3/2" eager sizes="(min-width: 1320px) 560px, (min-width: 1024px) 45vw, 100vw" />
+      </a>
+    )}
+  </article>
 
-  {stories.length > 1 && (
-    <div class="cover__nav">
-      <ul class="cover__tabs" role="tablist" aria-label="أخبار الغلاف">
-        {stories.map((a, i) => (
-          <li role="presentation">
-            <a role="tab" id={`cover-tab-${i}`} class="cover__tab" href={articleHref(a)} aria-selected={i === 0 ? "true" : "false"} aria-controls={`cover-slide-${i}`} tabindex={i === 0 ? 0 : -1} data-index={i}>
-              <span class="cover__no ui" aria-hidden="true">{i + 1}</span>
-              <span class="cover__tab-text" set:html={isolateNumbers(a.data.title)} />
-              <span class="cover__progress" aria-hidden="true"></span>
-            </a>
-          </li>
-        ))}
-      </ul>
-      <button type="button" class="cover__toggle ui" data-cover-toggle aria-pressed="false" hidden>
-        <span data-when-running>إيقاف التبديل</span>
-        <span data-when-paused hidden>تشغيل التبديل</span>
-      </button>
+  {beside.length > 0 && (
+    <div class="cover__beside">
+      {beside.map((a) => {
+        const t = topicOf(a);
+        const photo = Boolean(a.data.image) && photoIds.has(a.id);
+        return (
+          <article class="cover__item" data-section={a.data.section}>
+            {photo && (
+              <a class="cover__thumb" href={articleHref(a)} tabindex="-1" aria-hidden="true">
+                <Photo image={a.data.image} ratio="1/1" sizes="88px" />
+              </a>
+            )}
+            <div class="cover__item-body">
+              {t && <span class="kicker"><a href={`/tags/${encodeURIComponent(t)}/`}>{t}</a></span>}
+              <h3 class="cover__item-title"><a href={articleHref(a)} set:html={isolateNumbers(a.data.title)} /></h3>
+              <p class="meta"><time datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time></p>
+            </div>
+          </article>
+        );
+      })}
     </div>
   )}
 </section>
 
-<script is:inline>
-  // Embedded on purpose: an external script file could go missing from a cached page the way the
-  // stylesheets once did. Plain ES2017, one cover per page in practice.
-  (function () {
-    var roots = document.querySelectorAll("[data-cover]");
-    for (var r = 0; r < roots.length; r++) init(roots[r]);
-
-    function init(root) {
-      var slides = root.querySelectorAll(".cover__slide");
-      var tabs = root.querySelectorAll(".cover__tab");
-      var toggle = root.querySelector("[data-cover-toggle]");
-      if (slides.length < 2 || tabs.length !== slides.length) return;
-      var interval = Number(root.getAttribute("data-interval")) || 7000;
-      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      var current = 0;
-      var timer = null;
-      var auto = !reduce;
-      root.classList.add("cover--js");
-      root.style.setProperty("--cover-interval", interval + "ms");
-
-      function show(i, focusTab) {
-        i = (i + slides.length) % slides.length;
-        for (var k = 0; k < slides.length; k++) {
-          var on = k === i;
-          slides[k].hidden = !on;
-          tabs[k].setAttribute("aria-selected", on ? "true" : "false");
-          tabs[k].tabIndex = on ? 0 : -1;
-        }
-        current = i;
-        warm((i + 1) % slides.length);
-        if (focusTab) tabs[i].focus();
-        revealTab(i);
-        restartProgress();
-      }
-      // On a phone the tabs are a strip: bring the active one to the start edge by scrolling the
-      // strip itself, never the page, and only while the cover is on screen.
-      function revealTab(i) {
-        var list = root.querySelector(".cover__tabs");
-        if (!list || list.scrollWidth <= list.clientWidth + 1) return;
-        var r = root.getBoundingClientRect();
-        if (r.bottom < 0 || r.top > window.innerHeight) return;
-        var delta = tabs[i].getBoundingClientRect().right - list.getBoundingClientRect().right;
-        list.scrollBy({ left: delta, behavior: "smooth" });
-      }
-      // Fetch the next story's photograph before it is needed, so the switch never shows a blank.
-      function warm(i) {
-        var img = slides[i].querySelector("img");
-        if (!img || img.getAttribute("data-warm")) return;
-        img.setAttribute("data-warm", "1");
-        var pre = new Image();
-        if (img.sizes) pre.sizes = img.sizes;
-        if (img.srcset) pre.srcset = img.srcset;
-        pre.src = img.currentSrc || img.src;
-      }
-      function restartProgress() {
-        root.classList.remove("is-running");
-        if (!auto || !timer) return;
-        void root.offsetWidth;
-        root.classList.add("is-running");
-      }
-      function start() {
-        if (!auto || timer) return;
-        timer = setInterval(function () { show(current + 1); }, interval);
-        restartProgress();
-      }
-      function stop() {
-        if (timer) { clearInterval(timer); timer = null; }
-        root.classList.remove("is-running");
-      }
-      function takeControl() {
-        auto = false;
-        stop();
-        syncToggle();
-      }
-      function syncToggle() {
-        if (!toggle) return;
-        toggle.setAttribute("aria-pressed", auto ? "false" : "true");
-        toggle.querySelector("[data-when-running]").hidden = !auto;
-        toggle.querySelector("[data-when-paused]").hidden = auto;
-      }
-
-      for (var t = 0; t < tabs.length; t++) {
-        tabs[t].addEventListener("click", function (e) {
-          var i = Number(this.getAttribute("data-index"));
-          if (i === current) return; // the active tab is a link to its story
-          e.preventDefault();
-          takeControl();
-          show(i);
-        });
-        tabs[t].addEventListener("keydown", function (e) {
-          var i = Number(this.getAttribute("data-index"));
-          var next;
-          // Right-to-left: the next story is to the left.
-          if (e.key === "ArrowLeft") next = i + 1;
-          else if (e.key === "ArrowRight") next = i - 1;
-          else if (e.key === "Home") next = 0;
-          else if (e.key === "End") next = slides.length - 1;
-          else return;
-          e.preventDefault();
-          takeControl();
-          show(next, true);
-        });
-      }
-
-      if (toggle && !reduce) {
-        toggle.hidden = false;
-        toggle.addEventListener("click", function () {
-          auto = !auto;
-          if (auto) start(); else stop();
-          syncToggle();
-        });
-      }
-
-      // A swipe on the stage: leftwards is forward in a right-to-left page.
-      var stage = root.querySelector(".cover__stage");
-      var downX = null;
-      stage.addEventListener("pointerdown", function (e) { downX = e.clientX; });
-      stage.addEventListener("pointerup", function (e) {
-        if (downX === null) return;
-        var dx = e.clientX - downX;
-        downX = null;
-        if (Math.abs(dx) < 40) return;
-        takeControl();
-        show(dx < 0 ? current + 1 : current - 1);
-      });
-
-      root.addEventListener("mouseenter", stop);
-      root.addEventListener("mouseleave", function () { if (auto) start(); });
-      root.addEventListener("focusin", stop);
-      root.addEventListener("focusout", function (e) { if (auto && !root.contains(e.relatedTarget)) start(); });
-      document.addEventListener("visibilitychange", function () { if (document.hidden) stop(); else if (auto) start(); });
-
-      show(0);
-      syncToggle();
-      start();
-    }
-  })();
-</script>
-
 <style>
-  .cover { padding-top: clamp(1.1rem, 2.5vw, 1.75rem); border-bottom: 3px solid var(--ink); }
-  .cover__stage { display: grid; }
-  .cover__slide { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 0 clamp(1.25rem, 3vw, 2.5rem); align-items: center; }
-  .cover__slide[hidden] { display: none; }
-  .cover__slide--text { grid-template-columns: 1fr; }
-  .cover__slide--text .cover__body { max-width: 56rem; padding-block: 1.5rem; }
-  .cover--js .cover__slide:not([hidden]) { animation: cover-in 0.2s var(--ease-out); }
-  @keyframes cover-in { from { opacity: 0; } }
+  .cover { display: grid; grid-template-columns: minmax(0, 9fr) minmax(0, 3fr); column-gap: 0; padding-top: clamp(1.1rem, 2.5vw, 1.75rem); padding-bottom: clamp(1.25rem, 2.5vw, 1.75rem); border-bottom: 3px solid var(--ink); align-items: start; }
+
+  /* The lead: headline first in the reading direction, the photograph beside it. */
+  .cover__lead { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 0 clamp(1.25rem, 3vw, 2.5rem); align-items: center; padding-inline-end: var(--col-gap); }
+  .cover__lead--text { grid-template-columns: 1fr; }
+  .cover__lead--text .cover__body { max-width: 56rem; padding-block: 1.5rem; }
   .cover__body { order: 1; }
   .cover__photo { order: 2; display: block; text-decoration: none; }
-  .cover__title { font-family: var(--font-title); font-weight: 700; font-size: clamp(1.85rem, 1.2rem + 2.5vw, 3.1rem); line-height: 1.26; }
+  .cover__title { font-family: var(--font-title); font-weight: 700; font-size: clamp(1.85rem, 1.2rem + 2.2vw, 2.9rem); line-height: 1.26; }
   .cover__title a { text-decoration: none; }
   .cover__title a:hover { color: var(--green); }
   .cover__dek { font-family: var(--font-body); font-size: clamp(1.05rem, 1rem + 0.25vw, 1.18rem); line-height: 1.7; color: var(--ink-2); margin-top: 0.55rem; max-width: 34em; }
   .cover__meta { margin-top: 0.6rem; }
 
-  /* The list of cover stories: five tabs across the measure, the active one carrying a green bar
-     that fills over the rotation interval, so the timing is visible rather than a surprise. */
-  .cover__nav { display: flex; align-items: stretch; margin-top: clamp(1rem, 2vw, 1.5rem); border-top: 1px solid var(--rule); }
-  .cover__tabs { flex: 1; min-width: 0; display: grid; grid-template-columns: repeat(var(--tabs, 5), minmax(0, 1fr)); }
-  .cover__tab { position: relative; display: grid; grid-template-columns: auto 1fr; column-gap: 0.55rem; align-items: start; height: 100%; padding: 0.75rem 0.8rem 0.9rem; font-family: var(--font-title); font-weight: 700; font-size: 0.98rem; line-height: 1.4; color: var(--ink-2); text-decoration: none; border-inline-start: 1px solid var(--rule); }
-  .cover__tabs > li:first-child .cover__tab { border-inline-start: 0; }
-  .cover__tab:hover { color: var(--ink); }
-  .cover__tab[aria-selected="true"] { color: var(--ink); }
-  .cover__no { font-size: 0.8rem; font-weight: 800; color: var(--green); padding-top: 0.2rem; }
-  .cover__tab-text { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-  .cover__progress { position: absolute; inset-inline: 0; top: -1px; height: 3px; background: var(--green); transform: scaleX(0); transform-origin: 100% 50%; }
-  .cover__tab[aria-selected="true"] .cover__progress { transform: scaleX(1); }
-  .cover.is-running .cover__tab[aria-selected="true"] .cover__progress { animation: cover-progress var(--cover-interval, 7000ms) linear forwards; }
-  @keyframes cover-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-  /* Quieter than a tab: plain text at the end of the strip, so it never reads as a sixth story. */
-  .cover__toggle { flex: none; align-self: center; margin-inline-start: 1.25rem; font-size: 0.78rem; font-weight: 700; color: var(--ink-3); background: none; border: 0; padding: 0.3rem 0; cursor: pointer; white-space: nowrap; text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 0.2em; }
-  .cover__toggle:hover { color: var(--green); text-decoration-color: var(--green); }
+  /* The four beside: a ruled list of thumbnails, all visible at once. */
+  .cover__beside { display: grid; align-content: start; border-inline-start: 1px solid var(--rule); padding-inline-start: var(--col-gap); }
+  .cover__item { display: flex; align-items: flex-start; gap: 0.75rem; padding-block: 0.7rem; border-top: 1px solid var(--rule); }
+  .cover__item:first-child { border-top: 0; padding-top: 0; }
+  .cover__thumb { flex: 0 0 5.5rem; width: 5.5rem; display: block; }
+  .cover__item-body { min-width: 0; }
+  .cover__item-title { font-family: var(--font-title); font-weight: 700; font-size: 1.02rem; line-height: 1.45; }
+  .cover__item-title a { text-decoration: none; }
+  .cover__item-title a:hover { color: var(--green); }
+  .cover__item .meta { margin-top: 0.15rem; font-size: 0.78rem; }
+  .cover__item .kicker { margin-bottom: 0.1rem; }
 
+  @media (max-width: 1023px) {
+    .cover { grid-template-columns: 1fr; row-gap: 1.25rem; }
+    .cover__lead { padding-inline-end: 0; }
+    .cover__beside { border-inline-start: 0; padding-inline-start: 0; border-top: 1px solid var(--ink); padding-top: 0.5rem; grid-template-columns: 1fr 1fr; column-gap: var(--col-gap); }
+    .cover__item:nth-child(2) { border-top: 0; padding-top: 0; }
+  }
   @media (max-width: 719px) {
-    .cover__slide { grid-template-columns: 1fr; gap: 0.6rem 0; align-items: start; }
+    .cover__lead { grid-template-columns: 1fr; gap: 0.6rem 0; align-items: start; }
     .cover__photo { order: 1; }
     .cover__body { order: 2; }
-    /* The five headlines stay readable on a phone as a strip that snaps one story at a time;
-       the active one scrolls into view as the cover turns. */
-    .cover__nav { display: grid; grid-template-columns: 1fr; row-gap: 0.35rem; }
-    .cover__tabs { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-    .cover__tabs::-webkit-scrollbar { display: none; }
-    .cover__tabs > li { flex: 0 0 74%; scroll-snap-align: start; }
-    .cover__tab { padding: 0.7rem 0.6rem 0.85rem; font-size: 0.95rem; }
-    .cover__toggle { justify-self: end; margin: 0 0 0.25rem; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .cover--js .cover__slide:not([hidden]) { animation: none; }
+    .cover__beside { grid-template-columns: 1fr; }
+    .cover__item:nth-child(2) { border-top: 1px solid var(--rule); padding-top: 0.7rem; }
   }
 </style>
