@@ -69,7 +69,9 @@ const { items } = Astro.props;
   .ticker--moving .ticker__viewport { overflow: hidden; }
   .ticker--moving .ticker__list { animation: ticker var(--ticker-duration, 40s) linear infinite; }
   .ticker--moving .ticker__viewport:hover .ticker__list, .ticker--moving .ticker__viewport:focus-within .ticker__list { animation-play-state: paused; }
-  @keyframes ticker { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+  /* The list sits flush right and overflows leftwards, so it travels rightwards from 0 to +50%: the
+     second copy arrives exactly where the first began, and the strip is never blank. */
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(50%); } }
 
   @media (max-width: 719px) {
     .ticker__label { font-size: 0.78rem; padding-inline: 0.5rem; }
