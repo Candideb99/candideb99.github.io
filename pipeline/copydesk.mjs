@@ -6,6 +6,7 @@
  *   node pipeline/copydesk.mjs --limit=10            the ten newest only
  *   node pipeline/copydesk.mjs --slugs=a,b           named articles only
  *   node pipeline/copydesk.mjs --body                the body text too (slower; guarded the same way)
+ *   node pipeline/copydesk.mjs --flagged             only articles still carrying a banned phrase
  *
  * Nothing is edited by hand: the desk model proposes, the guard in pipeline/lib/copydesk.mjs keeps
  * every number, date and Latin token intact or throws the proposal away, and the file is rewritten
@@ -15,7 +16,7 @@ import "./lib/env.mjs";
 import { readFile, writeFile, readdir, mkdir } from "node:fs/promises";
 import path from "node:path";
 import YAML from "yaml";
-import { copyEdit } from "./lib/copydesk.mjs";
+import { copyEdit, bannedIn } from "./lib/copydesk.mjs";
 import { ARTICLES_DIR } from "./lib/article.mjs";
 
 const args = process.argv.slice(2);
@@ -26,6 +27,7 @@ const option = (name, fallback) => {
 };
 const DRY = flag("dry-run");
 const BODY = flag("body");
+const FLAGGED = flag("flagged");
 const LIMIT = Number(option("limit", "0")) || 0;
 const SLUGS = option("slugs", "").split(",").map((s) => s.trim()).filter(Boolean);
 
@@ -43,7 +45,10 @@ for (const file of files) {
   articles.push({ file, raw, doc, slug, body: match[2].trim(), publishedAt: String(doc.get("publishedAt") ?? "") });
 }
 articles.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
-const queue = LIMIT ? articles.slice(0, LIMIT) : articles;
+const wanted = FLAGGED
+  ? articles.filter((a) => bannedIn({ title: a.doc.get("title"), subtitle: a.doc.get("subtitle"), lede: a.doc.get("lede"), body: a.body }).length > 0)
+  : articles;
+const queue = LIMIT ? wanted.slice(0, LIMIT) : wanted;
 log(`${queue.length} article(s) to read${DRY ? " (dry run)" : ""}${BODY ? ", body included" : ""}`);
 
 const report = { startedAt: new Date().toISOString(), dryRun: DRY, body: BODY, items: [] };

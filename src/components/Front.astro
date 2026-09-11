@@ -41,7 +41,7 @@ const { secondary, top, picks, figures, chart, photoIds } = Astro.props;
     {secondary.length > 0 && (
       <div class="front__secondary">
         {secondary.map((a) => (
-          <StoryCard article={a} variant="card" showExcerpt showPhoto={photoIds.has(a.id)} />
+          <StoryCard article={a} variant="card" showExcerpt showTopic showPhoto={photoIds.has(a.id)} />
         ))}
       </div>
     )}

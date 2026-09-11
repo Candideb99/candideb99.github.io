@@ -59,13 +59,13 @@ export function timeAgo(iso: string | Date, now = new Date()): string {
   if (!Number.isFinite(diff)) return "";
   if (diff < 60) return "الآن";
   const minutes = Math.floor(diff / 60);
-  if (minutes < 60) return minutes === 1 ? "قبل دقيقة" : minutes === 2 ? "قبل دقيقتين" : minutes <= 10 ? `قبل ${minutes} دقائق` : `قبل ${minutes} دقيقة`;
+  if (minutes < 60) return minutes === 1 ? "منذ دقيقة" : minutes === 2 ? "منذ دقيقتين" : minutes <= 10 ? `منذ ${minutes} دقائق` : `منذ ${minutes} دقيقة`;
   const hours = Math.floor(minutes / 60);
-  if (hours < 24) return hours === 1 ? "قبل ساعة" : hours === 2 ? "قبل ساعتين" : hours <= 10 ? `قبل ${hours} ساعات` : `قبل ${hours} ساعة`;
+  if (hours < 24) return hours === 1 ? "منذ ساعة" : hours === 2 ? "منذ ساعتين" : hours <= 10 ? `منذ ${hours} ساعات` : `منذ ${hours} ساعة`;
   const days = Math.floor(hours / 24);
   if (days === 1) return "أمس";
-  if (days === 2) return "قبل يومين";
-  if (days <= 10) return `قبل ${days} أيام`;
+  if (days === 2) return "منذ يومين";
+  if (days <= 10) return `منذ ${days} أيام`;
   return formatDate(d, { weekday: false });
 }
 

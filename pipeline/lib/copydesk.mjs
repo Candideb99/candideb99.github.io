@@ -9,6 +9,7 @@
  */
 import { chat } from "./llm.mjs";
 import { arabicRatio, normalizeDigits } from "./util.mjs";
+import { BANNED, styleIssues } from "./style.mjs";
 
 export const DESK_SYSTEM = `You are the Arabic copy desk (محرر الصياغة) of خازندار, an Arabic economics daily for educated readers across the Arab world. A correspondent who thinks in English wrote the draft; you make it read as if a native Arabic newspaper editor wrote it, in clear Modern Standard Arabic (فصحى معاصرة) in the register of الشرق الأوسط and الاقتصادية.
 
@@ -16,6 +17,9 @@ WHAT YOU CHANGE
 - Calques of English syntax and idiom. Indefinite subjects where Arabic uses the definite or the name: "إدارة أمريكية" → "الإدارة الأمريكية" or better "واشنطن" / "البيت الأبيض" / "إدارة ترامب". "يعلن عن" + verbal noun where a strong verb serves: "تعلن عن مستردات" → "تعيد" / "تصرف شيكات". English financial jargon rendered word for word: "مستردات" → "استرداد" or "شيكات بقيمة"; "مستخدمو أوباماكير" → "المشتركون في «أوباماكير»"; "المعدل العقاري" → "فائدة الرهن العقاري"; "استئناف بيع السندات" → "موجة بيع جديدة في السندات"; "يعيد كذا للأضواء" → "يعيد كذا إلى الواجهة"; "في زيارة دولة" → "خلال زيارة الدولة". Passive-agent calques ("من قبل"), "يقوم بـ" + verbal noun, and paragraphs that open with "و" as English opens with "And".
 - Grammar. Case endings on numbers and duals ("ألفي رحلة" not "ألفين رحلة"; "تعلن حلاً جزئياً" not "تعلن حل جزئي"), agreement, and prepositions ("تصل إلى 50%", "إلى أعلى مستوى").
 - Headline discipline. ONE idea carrying the key fact or number, 35 to 80 characters, verb-led where natural, no two developments chained with "و", no colon teaser, no question. When a headline chains two stories, keep the more important one and let the dek carry the other, without dropping any fact from the pair.
+- Fillers, calques and clichés the desks cut: «في هذا السياق»، «تجدر الإشارة»، «من الجدير بالذكر»، «يُذكر أن»، «بالإضافة إلى ذلك»، «علاوة على ذلك»، «من ناحية أخرى» (→ «وفي المقابل»)، «على الرغم من ذلك» (→ «لكن»)، «تم + مصدر» (→ the verb)، «من قبل» (→ active)، «يقوم بـ» (→ the verb)، «يلعب دوراً» (→ «يؤدي دوراً»)، «بشكل كبير/ملحوظ/رئيسي» (→ the figure or «أساساً»)، «على صعيد» (→ «في»)، «يعتبر» / «بمثابة» (→ state the fact)، «يسلط الضوء» (→ «يبيّن»)، «يمهد الطريق»، «نقطة تحول»، «مما يعكس» (→ «ما يعكس»)، «حوالي» (→ «نحو»)، «في نفس الوقت» (→ «في الوقت نفسه»)، «هناك ارتفاع في» / «شهد ارتفاعاً» (→ «ارتفع»). After «قال» comes «إن», never «أن»; «أكد» takes an object.
+- Texture. Split any sentence over 35 words into two; keep paragraphs to one to three sentences; vary paragraph joints («و»، «وكان»، «وفي المقابل»، «ويأتي»، «ورغم»، «وقال»); prefer the desks' market vocabulary (الجلسة، الإغلاق، المكاسب الأسبوعية، نقطة أساس، العقود الآجلة، المعاملات الفورية).
+- Headline forms of the desks are welcome: the two-dot hinge («النفط يشتعل.. برنت يتجاوز 100 دولار») and the colon for a quoted speaker («صندوق النقد: …»).
 - Names and marks. Foreign names transliterated the way Arab business media write them; foreign programme and brand names in «» (e.g. «أوباماكير», «ناتس»); the Arabic comma (،) and «» quotation marks; Western digits; pan-Arab month names.
 
 WHAT YOU NEVER CHANGE
@@ -103,11 +107,22 @@ function validateDeskAnswer(includeBody) {
  * Runs the desk over a draft. Returns { draft, changed, applied, rejected, changes, model }.
  * `draft` has title, subtitle, lede and body (Markdown); only the fields the guard accepts change.
  */
-export async function copyEdit({ draft, includeBody = false, role = "critic", log = () => {} }) {
+/** Which of the banned phrases a draft still carries (title, dek, lede, body). */
+export function bannedIn(draft) {
+  const prose = [draft.title, draft.subtitle, draft.lede, draft.body].map((x) => String(x ?? "")).join("\n");
+  return BANNED.flatMap((r) => (prose.match(r.re) ?? []).map((h) => h.trim()));
+}
+
+export async function copyEdit({ draft, includeBody = false, role = "desk", log = () => {} }) {
   const fields = includeBody ? ["title", "subtitle", "lede", "body"] : ["title", "subtitle", "lede"];
   const input = Object.fromEntries(fields.map((f) => [f, draft[f] ?? ""]));
+  const found = styleIssues(input);
+  const problems = [...found.issues, ...found.warnings].slice(0, 10);
   const user = `${EXAMPLES}
-
+${problems.length ? `
+PROBLEMS THE CHECKER FOUND IN THIS DRAFT (fix every one):
+${problems.map((x, i) => `${i + 1}. ${x}`).join("\n")}
+` : ""}
 DRAFT (JSON)
 ${JSON.stringify(input, null, 2)}
 

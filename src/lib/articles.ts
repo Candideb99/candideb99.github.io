@@ -48,6 +48,26 @@ export function related(article: Article, all: Article[], count = 4): Article[] 
     .map((x) => x.a);
 }
 
+const GENERIC_TAGS = new Set(["عالمي", "العالم", "الشرق الأوسط", "الخليج", "الخليج العربي", "أوروبا", "آسيا", "أفريقيا", "الاقتصاد", "الأسواق", "الطاقة", "الشركات", "التكنولوجيا", "الدفاع", "الاقتصاد العالمي"]);
+let regionNames: Set<string> | null = null;
+let tagCounts: Map<string, number> | null = null;
+
+/**
+ * The topic a story is filed under, printed above its headline the way the Arabic desks do
+ * (الذهب، مضيق هرمز، التضخم): its most-shared non-region tag, so the kicker names a thread the
+ * reader can follow, never a place. Undefined when the story has only regions for tags.
+ */
+export function topicOf(article: Article): string | undefined {
+  if (!cache) return article.data.tags.find((t) => !GENERIC_TAGS.has(t));
+  if (!regionNames || !tagCounts) {
+    regionNames = new Set(cache.flatMap((a) => a.data.regions));
+    tagCounts = new Map();
+    for (const a of cache) for (const t of a.data.tags) tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1);
+  }
+  const candidates = article.data.tags.filter((t) => !regionNames!.has(t) && !GENERIC_TAGS.has(t) && t.length <= 28);
+  return [...candidates].sort((x, y) => (tagCounts!.get(y) ?? 0) - (tagCounts!.get(x) ?? 0))[0];
+}
+
 export function articleHref(article: Article): string {
   return `/articles/${article.data.slug}/`;
 }

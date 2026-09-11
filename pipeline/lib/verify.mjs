@@ -1,5 +1,6 @@
 import { chat } from "./llm.mjs";
 import { arabicRatio, phraseOverlap, suspiciousLatinWords, ungroundedNumbers, wordCount } from "./util.mjs";
+import { styleIssues } from "./style.mjs";
 
 /** The four sections every house analysis must carry, matched loosely against its "## " subheads. */
 const ANALYSIS_SECTIONS = [
@@ -38,6 +39,11 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
   if (headlineLatinInBody.length > 2) issues.push(`المقدمة تحتوي كلمات لاتينية غير مترجمة: ${headlineLatinInBody.slice(0, 6).join(", ")}.`);
 
   if (/https?:\/\/|www\./i.test(prose)) issues.push("النص يحتوي على روابط؛ احذفها.");
+
+  // The house's Arabic: banned calques and fillers force a revision; texture faults are warnings the desk reads.
+  const style = styleIssues(draft, { kind: explainer ? "explainer" : analysis ? "analysis" : "news" });
+  issues.push(...style.issues);
+  warnings.push(...style.warnings);
 
   const words = wordCount(`${draft.lede}\n${draft.body}`);
   if (analysis) {

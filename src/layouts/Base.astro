@@ -116,13 +116,13 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
           if (!isFinite(diff)) return null;
           if (diff < 60) return "الآن";
           var m = Math.floor(diff / 60);
-          if (m < 60) return m === 1 ? "قبل دقيقة" : m === 2 ? "قبل دقيقتين" : m <= 10 ? "قبل " + m + " دقائق" : "قبل " + m + " دقيقة";
+          if (m < 60) return m === 1 ? "منذ دقيقة" : m === 2 ? "منذ دقيقتين" : m <= 10 ? "منذ " + m + " دقائق" : "منذ " + m + " دقيقة";
           var h = Math.floor(m / 60);
-          if (h < 24) return h === 1 ? "قبل ساعة" : h === 2 ? "قبل ساعتين" : h <= 10 ? "قبل " + h + " ساعات" : "قبل " + h + " ساعة";
+          if (h < 24) return h === 1 ? "منذ ساعة" : h === 2 ? "منذ ساعتين" : h <= 10 ? "منذ " + h + " ساعات" : "منذ " + h + " ساعة";
           var d = Math.floor(h / 24);
           if (d === 1) return "أمس";
-          if (d === 2) return "قبل يومين";
-          if (d <= 10) return "قبل " + d + " أيام";
+          if (d === 2) return "منذ يومين";
+          if (d <= 10) return "منذ " + d + " أيام";
           var t = new Date(iso);
           return t.getDate() + " " + MONTHS[t.getMonth()] + " " + t.getFullYear();
         }

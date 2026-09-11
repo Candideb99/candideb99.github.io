@@ -137,7 +137,7 @@ const jsonLd = {
         ) : (
         <div class={`row__body${briefs.length ? "" : " row__body--solo"}`}>
           <div class="row__feature">
-            <StoryCard article={feature.a} variant="card" showSection={false} showExcerpt showPhoto={!feature.repeat && photoIds.has(feature.a.id)} />
+            <StoryCard article={feature.a} variant="card" showSection={false} showExcerpt showTopic showPhoto={!feature.repeat && photoIds.has(feature.a.id)} />
           </div>
           {briefs.length > 0 && (
             <div class="row__briefs">

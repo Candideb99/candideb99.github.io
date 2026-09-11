@@ -55,7 +55,7 @@ const title = first ? section.name : `${section.name} — صفحة ${page.curren
         {first && lead && (
           <div class={`section-page__top${beside.length ? "" : " section-page__top--solo"}`}>
             <div class="section-page__lead">
-              <StoryCard article={lead} variant="lead" level={2} showSection={false} eager />
+              <StoryCard article={lead} variant="lead" level={2} showSection={false} showTopic eager />
             </div>
             {beside.length > 0 && (
               <div class="section-page__beside">

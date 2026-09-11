@@ -1,6 +1,6 @@
 ---
 import type { Article } from "@lib/articles";
-import { articleHref } from "@lib/articles";
+import { articleHref, topicOf } from "@lib/articles";
 import { kindLabel, sectionHref } from "@lib/sections";
 import { excerpt, timeAgo } from "@lib/format";
 import { isolateNumbers } from "@lib/bidi";
@@ -19,11 +19,14 @@ interface Props {
   showTime?: boolean;
   /** Heading level for the title, so lists stay a valid outline. */
   level?: 2 | 3;
+  /** The topic kicker above the headline (the cover, secondaries and features carry it). */
+  showTopic?: boolean;
   /** False when the same picture already appears higher on the page. */
   showPhoto?: boolean;
   class?: string;
 }
-const { article, variant = "card", eager = false, showSection = true, showExcerpt = variant === "lead", showTime = true, level = 3, showPhoto = true, class: className = "" } = Astro.props;
+const { article, variant = "card", eager = false, showSection = true, showExcerpt = variant === "lead", showTime = true, level = 3, showPhoto = true, showTopic = false, class: className = "" } = Astro.props;
+const topic = showTopic ? topicOf(article) : undefined;
 const { title, subtitle, section, publishedAt, kind, image } = article.data;
 const href = articleHref(article);
 const summary = excerpt(subtitle || article.data.lede, variant === "lead" ? 200 : 120);
@@ -38,6 +41,7 @@ const hasPhoto = Boolean(image) && showPhoto && variant !== "text";
     </a>
   )}
   <div class="card__body">
+    {topic && <span class="kicker"><a href={`/tags/${encodeURIComponent(topic)}/`}>{topic}</a></span>}
     <Heading class="card__title"><a href={href} set:html={isolateNumbers(title)} /></Heading>
     {showExcerpt && summary && <p class="card__summary" set:html={isolateNumbers(summary)} />}
     {(showSection || showTime) && (

@@ -1,6 +1,6 @@
 # خازندار — notes for agents
 
-Arabic-first (RTL) economics publication written by an automated newsroom. Read `README.md` first, then `PRODUCT.md` (product truth) and `DESIGN.md` (visual system).
+Arabic-first (RTL) economics publication written by an automated newsroom. Read `README.md` first, then `PRODUCT.md` (product truth), `DESIGN.md` (visual system) and `STYLE.md` (how the Arabic is written and how the pages are organised, from the practice of the Arabic economics desks).
 
 - The site is static Astro in `src/`; articles are Markdown in `content/articles/` written only by `pipeline/run.mjs`. Never hand-write news articles; run the pipeline.
 - Keep `lang="ar" dir="rtl"`, logical CSS properties, Western digits, pan-Arab month names. Body font Noto Naskh (justified), headlines and wordmark Amiri, Tajawal only for dates and small furniture. One house colour, banknote green `--green` (ink, plus the section bar and the logo plate); no section colours, no colour-washed photos, no generated cover art.

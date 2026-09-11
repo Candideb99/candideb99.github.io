@@ -10,7 +10,7 @@
  * and the tabs are plain links.
  */
 import type { Article } from "@lib/articles";
-import { articleHref } from "@lib/articles";
+import { articleHref, topicOf } from "@lib/articles";
 import { kindLabel, sectionHref } from "@lib/sections";
 import { excerpt, timeAgo } from "@lib/format";
 import { isolateNumbers } from "@lib/bidi";
@@ -33,9 +33,11 @@ const { stories, photoIds, interval = 7000 } = Astro.props;
       const summary = excerpt(d.subtitle || d.lede, 200);
       const href = articleHref(a);
       const withPhoto = Boolean(d.image) && photoIds.has(a.id);
+      const topic = topicOf(a);
       return (
         <article class={`cover__slide${withPhoto ? "" : " cover__slide--text"}`} id={`cover-slide-${i}`} role="tabpanel" aria-labelledby={`cover-tab-${i}`} data-index={i} hidden={i !== 0} data-section={d.section}>
           <div class="cover__body">
+            {topic && <span class="kicker"><a href={`/tags/${encodeURIComponent(topic)}/`}>{topic}</a></span>}
             <h2 class="cover__title"><a href={href} set:html={isolateNumbers(d.title)} /></h2>
             {summary && <p class="cover__dek" set:html={isolateNumbers(summary)} />}
             <p class="meta cover__meta">
