@@ -165,6 +165,7 @@ const { lead, secondary, top, picks, figures, explainer, ticker, photoIds } = As
     .front__top { padding-inline-end: 0; border-inline-end: 0; }
     .front__side { padding-inline-start: 0; margin-top: 1.5rem; }
     .front__secondary { grid-template-columns: 1fr; }
-    .ticker__label { font-size: 0.72rem; }
+    /* 0.78rem is the floor: below 12px this label stops being comfortably readable on a phone. */
+    .ticker__label { font-size: 0.78rem; padding-inline: 0.5rem; }
   }
 </style>
