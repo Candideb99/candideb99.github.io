@@ -1,5 +1,9 @@
 ---
-/** The latest-headlines strip under the section bar: newest first, scrollable, never the cover stories. */
+/**
+ * The latest-headlines bar under the section bar: a moving strip, as the news channels run it,
+ * that pauses under the pointer. The list is printed twice so the loop is seamless; without
+ * JavaScript, or for a reader who asked for reduced motion, it stands still and scrolls by hand.
+ */
 import type { Article } from "@lib/articles";
 import { articleHref } from "@lib/articles";
 import { timeAgo } from "@lib/format";
@@ -12,33 +16,62 @@ const { items } = Astro.props;
 ---
 
 {items.length > 0 && (
-  <div class="ticker-wrap">
+  <div class="ticker-wrap" data-ticker>
     <div class="wrap ticker" aria-label="آخر الأخبار">
       <span class="ticker__label ui">الأحدث</span>
-      <ul class="ticker__list">
-        {items.map((a) => (
-          <li class="ticker__item">
-            <time class="ticker__time" datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time>
-            <a href={articleHref(a)} set:html={isolateNumbers(a.data.title)} />
-          </li>
-        ))}
-      </ul>
+      <div class="ticker__viewport">
+        <ul class="ticker__list">
+          {items.map((a) => (
+            <li class="ticker__item">
+              <time class="ticker__time" datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time>
+              <a href={articleHref(a)} set:html={isolateNumbers(a.data.title)} />
+            </li>
+          ))}
+          {items.map((a) => (
+            <li class="ticker__item" aria-hidden="true">
+              <time class="ticker__time" datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time>
+              <a href={articleHref(a)} tabindex="-1" set:html={isolateNumbers(a.data.title)} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   </div>
 )}
 
+<script is:inline>
+  (function () {
+    var wrap = document.querySelector("[data-ticker]");
+    if (!wrap) return;
+    var list = wrap.querySelector(".ticker__list");
+    if (!list || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Sixty pixels a second, whatever the length of the headlines.
+    var half = list.scrollWidth / 2;
+    if (half < 200) return;
+    list.style.setProperty("--ticker-duration", Math.round(half / 60) + "s");
+    wrap.classList.add("ticker--moving");
+  })();
+</script>
+
 <style>
   .ticker-wrap { border-bottom: 1px solid var(--rule); background: var(--paper-2); }
-  .ticker { display: flex; align-items: center; gap: 0.9rem; min-height: 2.4rem; overflow: hidden; }
+  .ticker { display: flex; align-items: center; gap: 0.9rem; min-height: 2.4rem; }
   .ticker__label { flex: none; font-weight: 800; font-size: 0.78rem; color: var(--paper); background: var(--green); padding: 0.3rem 0.6rem 0.2rem; }
-  .ticker__list { display: flex; gap: 1.75rem; white-space: nowrap; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-block: 0.4rem; }
-  .ticker__list::-webkit-scrollbar { display: none; }
-  .ticker__item { display: inline-flex; align-items: baseline; gap: 0.5rem; font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; scroll-snap-align: start; }
+  .ticker__viewport { flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .ticker__viewport::-webkit-scrollbar { display: none; }
+  .ticker__list { display: flex; gap: 1.75rem; white-space: nowrap; width: max-content; padding-block: 0.4rem; }
+  .ticker__item { display: inline-flex; align-items: baseline; gap: 0.5rem; font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; }
   .ticker__item a { text-decoration: none; }
   .ticker__item a:hover { color: var(--green); }
   .ticker__time { font-size: 0.75rem; color: var(--green); font-weight: 700; }
+
+  /* In a right-to-left page the strip travels rightwards; hovering holds it. */
+  .ticker--moving .ticker__viewport { overflow: hidden; }
+  .ticker--moving .ticker__list { animation: ticker var(--ticker-duration, 40s) linear infinite; }
+  .ticker--moving .ticker__viewport:hover .ticker__list, .ticker--moving .ticker__viewport:focus-within .ticker__list { animation-play-state: paused; }
+  @keyframes ticker { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
   @media (max-width: 719px) {
-    /* 0.78rem is the floor: below 12px this label stops being comfortably readable on a phone. */
     .ticker__label { font-size: 0.78rem; padding-inline: 0.5rem; }
   }
 </style>
