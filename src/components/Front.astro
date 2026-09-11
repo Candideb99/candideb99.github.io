@@ -19,6 +19,7 @@ interface Figure {
 interface Props {
   lead: Article;
   secondary: Article[];
+  midBriefs: Article[];
   top: Article[];
   picks: Article[];
   figures: Figure[];
@@ -27,7 +28,7 @@ interface Props {
   /** Ids of the stories allowed to show their picture here (the first appearance of each picture). */
   photoIds: Set<string>;
 }
-const { lead, secondary, top, picks, figures, explainer, ticker, photoIds } = Astro.props;
+const { lead, secondary, midBriefs, top, picks, figures, explainer, ticker, photoIds } = Astro.props;
 ---
 
 {ticker.length > 0 && (
@@ -46,6 +47,13 @@ const { lead, secondary, top, picks, figures, explainer, ticker, photoIds } = As
   </div>
 )}
 
+{/* The lead takes the full measure on its own. Inside the old three-column grid it sat in the
+    middle, so in right-to-left the reader's eye met a list of seven thumbnails before the day's
+    main story, and the headline never won the page. */}
+<section class="wrap front-lead" aria-label="خبر الغلاف">
+  <StoryCard article={lead} variant="lead" level={2} eager showPhoto={photoIds.has(lead.id)} />
+</section>
+
 <section class="wrap front" aria-label="أبرز ما في العدد">
   <div class="front__top">
     <h2 class="module__head">أبرز الأخبار</h2>
@@ -56,12 +64,18 @@ const { lead, secondary, top, picks, figures, explainer, ticker, photoIds } = As
     </div>
   </div>
 
-  <div class="front__lead">
-    <StoryCard article={lead} variant="lead" level={2} eager showPhoto={photoIds.has(lead.id)} />
+  <div class="front__mid">
     {secondary.length > 0 && (
       <div class="front__secondary">
         {secondary.map((a) => (
           <StoryCard article={a} variant="card" showExcerpt showPhoto={photoIds.has(a.id)} />
+        ))}
+      </div>
+    )}
+    {midBriefs.length > 0 && (
+      <div class="front__briefs">
+        {midBriefs.map((a) => (
+          <StoryCard article={a} variant="text" showExcerpt={false} />
         ))}
       </div>
     )}
@@ -119,15 +133,21 @@ const { lead, secondary, top, picks, figures, explainer, ticker, photoIds } = As
   .ticker__item a:hover { color: var(--green); }
   .ticker__time { font-size: 0.75rem; color: var(--green); font-weight: 700; }
 
+  /* The cover story: headline first in the reading direction, photograph beside it. */
+  .front-lead { padding-block: clamp(1.1rem, 2.5vw, 1.75rem) clamp(1.5rem, 3vw, 2.25rem); border-bottom: 3px solid var(--ink); }
+  .front-lead :global(.card--lead) { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: clamp(1.25rem, 3vw, 2.5rem); align-items: center; gap: 0 clamp(1.25rem, 3vw, 2.5rem); }
+  .front-lead :global(.card--lead .card__photo) { order: 2; margin-bottom: 0; }
+  .front-lead :global(.card--lead .card__body) { order: 1; }
+
   .front {
     display: grid;
-    grid-template-columns: minmax(0, 3fr) minmax(0, 6fr) minmax(0, 3fr);
+    grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 3fr);
     column-gap: 0;
-    padding-top: clamp(1rem, 2.5vw, 1.5rem);
+    padding-top: clamp(1.25rem, 3vw, 2rem);
     align-items: start;
   }
   .front__top { padding-inline-end: var(--col-gap); }
-  .front__lead { padding-inline: var(--col-gap); border-inline: 1px solid var(--rule); }
+  .front__mid { padding-inline: var(--col-gap); border-inline: 1px solid var(--rule); }
   .front__side { padding-inline-start: var(--col-gap); display: grid; gap: 1.5rem; }
 
   .module__head { font-family: var(--font-title); font-weight: 700; font-size: 1.15rem; line-height: 1.3; color: var(--green); border-bottom: 1px solid var(--rule); padding-bottom: 0.35rem; margin-bottom: 0.6rem; position: relative; }
@@ -137,7 +157,11 @@ const { lead, secondary, top, picks, figures, explainer, ticker, photoIds } = As
   .front__list > :global(.card) { padding-block: 0.7rem; border-top: 1px solid var(--rule); }
   .front__list > :global(.card:first-child) { border-top: 0; padding-top: 0.1rem; }
 
-  .front__secondary { display: grid; grid-template-columns: 1fr 1fr; gap: var(--col-gap); margin-top: 1.25rem; padding-top: 1.1rem; border-top: 1px solid var(--rule); }
+  /* No longer sits under the lead, so it no longer needs a rule separating it from one. */
+  .front__secondary { display: grid; grid-template-columns: 1fr 1fr; gap: var(--col-gap); }
+  .front__briefs { display: grid; margin-top: 1.1rem; border-top: 1px solid var(--ink); padding-top: 0.5rem; }
+  .front__briefs > :global(.card) { padding-block: 0.6rem; border-top: 1px solid var(--rule); }
+  .front__briefs > :global(.card:first-child) { border-top: 0; }
 
   .figures__list { display: grid; }
   .figures__item { border-top: 1px solid var(--rule); }
@@ -157,11 +181,14 @@ const { lead, secondary, top, picks, figures, explainer, ticker, photoIds } = As
 
   @media (max-width: 1023px) {
     .front { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
-    .front__lead { order: -1; grid-column: 1 / -1; padding-inline: 0; border-inline: 0; padding-bottom: 1.25rem; margin-bottom: 1.25rem; border-bottom: 3px solid var(--ink); }
+    .front__mid { grid-column: 1 / -1; order: -1; padding-inline: 0; border-inline: 0; padding-bottom: 1.1rem; margin-bottom: 1.1rem; border-bottom: 1px solid var(--rule); }
     .front__top { padding-inline-end: var(--col-gap); border-inline-end: 1px solid var(--rule); }
   }
   @media (max-width: 719px) {
     .front { grid-template-columns: 1fr; }
+    .front-lead :global(.card--lead) { grid-template-columns: 1fr; }
+    .front-lead :global(.card--lead .card__photo) { order: 1; margin-bottom: 0.55rem; }
+    .front-lead :global(.card--lead .card__body) { order: 2; }
     .front__top { padding-inline-end: 0; border-inline-end: 0; }
     .front__side { padding-inline-start: 0; margin-top: 1.5rem; }
     .front__secondary { grid-template-columns: 1fr; }

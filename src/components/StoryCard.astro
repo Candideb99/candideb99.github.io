@@ -56,8 +56,11 @@ const hasPhoto = Boolean(image) && showPhoto && variant !== "text";
   .card__summary { font-family: var(--font-body); font-size: 0.98rem; line-height: 1.65; color: var(--ink-2); margin-top: 0.25rem; }
   .card__meta { margin-top: 0.3rem; font-size: 0.8rem; }
 
-  .card--lead .card__title { font-size: clamp(1.5rem, 1.15rem + 1.3vw, 2.1rem); line-height: 1.35; }
-  .card--lead .card__summary { font-size: 1.05rem; line-height: 1.7; margin-top: 0.4rem; }
+  /* The lead must win the page. At 2.1rem it was only 1.9x a card headline and the squint test
+     showed no primary element at all; at 3.1rem it is roughly 2.8x, the ratio a front page needs. */
+  .card--lead .card__title { font-size: clamp(1.85rem, 1.2rem + 2.5vw, 3.1rem); line-height: 1.26; }
+  .card--lead .card__summary { font-size: clamp(1.05rem, 1rem + 0.25vw, 1.18rem); line-height: 1.7; margin-top: 0.55rem; max-width: 34em; }
+  .card--lead .card__meta { margin-top: 0.6rem; }
   .card--lead .card__photo { margin-bottom: 0.3rem; }
 
   .card--list { flex-direction: row; align-items: flex-start; gap: 0.75rem; }

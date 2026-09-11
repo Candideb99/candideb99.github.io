@@ -24,6 +24,16 @@ typography:
     fontSize: "clamp(1.85rem, 1.3rem + 2vw, 2.75rem)"
     fontWeight: 700
     lineHeight: 1.3
+  cover:
+    fontFamily: "Amiri, Naskh, Noto Naskh Arabic, Times New Roman, serif"
+    fontSize: "clamp(1.85rem, 1.2rem + 2.5vw, 3.1rem)"
+    fontWeight: 700
+    lineHeight: 1.26
+  feature:
+    fontFamily: "Amiri, Naskh, Noto Naskh Arabic, Times New Roman, serif"
+    fontSize: "clamp(1.28rem, 1.05rem + 0.8vw, 1.7rem)"
+    fontWeight: 700
+    lineHeight: 1.36
   title:
     fontFamily: "Amiri, Naskh, Noto Naskh Arabic, Times New Roman, serif"
     fontSize: "1.12rem"
@@ -94,6 +104,8 @@ As built on 2026-09-09 from `src/styles/global.css`, `src/components`, `src/page
 **The Contrast Floor.** On paper: ink ≈17.9:1, ink-2 ≈9.5:1, ink-3 ≈5.3:1, green ≈7.8:1 (paper on green the same); in dark, ink-3 ≈6.3:1 and green ≈8.2:1. Nothing lighter than ink-3 carries text.
 
 ## Typography
+
+The page has four headline steps, and the gaps between them are what make the front page readable: cover 3.1rem, feature 1.7rem, card 1.12rem, brief 1.02rem. The cover is about 2.8x a card, the ratio a front page needs; at 2.1rem it was 1.9x and the squint test found no primary element at all. Below the headline steps sits a furniture micro-scale in Tajawal and Naskh (0.75, 0.78, 0.8, 0.82, 0.86, 0.95, 0.98, 1.02, 1.05rem) for meta lines, summaries, ticker items and module labels.
 **Display/Title Font:** Amiri 400 and 700 (fallback Naskh, Times New Roman, serif)
 **Body Font:** "Naskh" = Noto Naskh Arabic variable 400–700 (fallback Amiri, serif)
 **Label Font:** Tajawal 400/500/700/800 (fallback IBM Plex Sans Arabic, Segoe UI, system-ui)
@@ -104,7 +116,8 @@ As built on 2026-09-09 from `src/styles/global.css`, `src/components`, `src/page
 |---|---|---|---|
 | Page title (`.page-title`) | Amiri 700 | `clamp(2rem, 1.6rem + 1.6vw, 2.9rem)` | 1.3 |
 | Article title | Amiri 700 | `clamp(1.85rem, 1.3rem + 2vw, 2.75rem)` | 1.3 |
-| Lead card title | Amiri 700 | `clamp(1.5rem, 1.15rem + 1.3vw, 2.1rem)` | 1.35 |
+| Cover story title | Amiri 700 | `clamp(1.85rem, 1.2rem + 2.5vw, 3.1rem)` | 1.26 |
+| Section feature title | Amiri 700 | `clamp(1.28rem, 1.05rem + 0.8vw, 1.7rem)` | 1.36 |
 | Section head / module head / rail heads (الأرقام, اقرأ أيضاً, المصادر, لماذا يهمّ) | Amiri 700, green for the first two | 1.35 / 1.15 / 1.2–1.3rem | 1.3 |
 | Card / list / text / picks titles | Amiri 700 | 1.12 / 1.02 / 1.05 / 1.02rem | 1.45 |
 | Dek / page intro | Naskh 400, ink-2 | `clamp(1.1rem, 1rem + 0.4vw, 1.3rem)` / 1.12rem | 1.7 / 1.75 |
@@ -122,7 +135,7 @@ Measure: `--measure` 40rem for prose, lede, facts, chart, table, why box and sou
 ## Layout
 Containers: `.wrap` = `min(1240px, 100% − 2 × gutter)`, `.wrap--article` 68rem; page blocks `padding-block: clamp(1.5rem, 3.5vw, 2.75rem)`. Columns never use gaps: `column-gap: 0`, each column padded by `--col-gap` and divided by a 1px `--rule` (`.cols`, the front, the article rail). Breakpoints, all `max-width`: 1023px (tablet), 719px (phone), plus 599px (`.cols` to one column); at 719px `.cards` becomes one ruled column of thumbnail rows.
 
-- **Front page** (`Front.astro`): ticker strip → `3fr | 6fr | 3fr`: the top-stories list (7 list cards) at the start, the lead with two secondary cards in the centre column ruled on both sides, the modules (أرقام اليوم 4 figures, مختارات المحرر 5 numbered titles, شرح مفاهيم) at the end → one `.section-head` + `.cards` row (4 across) per news section with stories, up to 4 cards → an explainers row when there are two or more. ≤1023px: `7fr | 5fr` with the lead first across both columns and closed by a 3px ink rule; ≤719px one column, secondaries stacked. A photograph prints once per page: the first card carrying it shows it, later cards run as text with an excerpt. Every story is placed once: section rows show the stories not yet on the page with their pictures and repeat already-placed ones as text; a row with fewer than three stories runs as a thumbnail list (`.cards--list`, `--n` columns); on phones every row becomes a ruled list of 7.5rem thumbnails.
+- **Front page** (`Front.astro`, `index.astro`): ticker strip → the cover story full width, its headline first in the reading direction with the photograph beside it (`5fr | 7fr`), closed by a 3px ink rule → `4fr | 5fr | 3fr`: the top-stories list (5 list cards) at the start, two secondary cards over three text briefs in the centre column ruled on both sides, the modules (أرقام اليوم 4 figures, مختارات المحرر 4 numbered titles, شرح مفاهيم) at the end → one section block per news section: a `.section-head`, then `7fr | 5fr`, the section's own feature laid out horizontally (text `5fr`, photograph `6fr`) beside up to three thumbnail briefs on a ruled list → an explainers block when there are two or more. Sections are separated by `clamp(2.25rem, 4.5vw, 3.75rem)` against roughly 0.7rem inside a group, the contrast that lets the eye find the boundaries. ≤1023px the blocks stack and the briefs sit under their feature; ≤719px the cover story and every feature put the photograph back on top. A photograph prints once per page: the first card carrying it shows it, later cards run as text. Every story is placed once, and the ticker excludes the cover story and its secondaries so no headline is printed twice.
 - **Section page**: page head → `8fr | 4fr`: the lead (16/9 photo, `lead` card) beside a ruled list of the next three stories → 3px ink rule → `.cards` rows for the rest (a list when fewer than three remain).
 - **Article**: head max 52rem (title, dek, meta on a hairline, share row) → figure at story width, 2/1 crop (3/2 ≤719px) → `1fr | 17rem`: main (lede, inline facts ≤1023px, chart, prose, table, why box, tags, sources) and a rail with a 1px start rule (side facts, اقرأ أيضاً); ≤1023px the rail stacks beneath.
 - **Footer**: double rule → `2fr 1fr 1fr` (brand, sections, about) → hairline → licence lines; ≤719px two columns with the brand across both.

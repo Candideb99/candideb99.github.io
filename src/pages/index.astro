@@ -23,13 +23,19 @@ const secondary = news
   .sort((x, y) => importance(y) - importance(x))
   .slice(0, 2);
 place(secondary);
-const top = news.filter((a) => !placed.has(a.id)).slice(0, 7);
+const top = news.filter((a) => !placed.has(a.id)).slice(0, 5);
 place(top);
-const ticker = news.slice(0, 5);
+// Three text briefs finish the centre column, which otherwise held two cards and a tall void while
+// the columns either side ran on for hundreds of pixels.
+const midBriefs = news.filter((a) => !placed.has(a.id)).slice(0, 3);
+place(midBriefs);
+// The strip carries what is newest but not already shouting from the top of the page; it used to
+// repeat the lead headline a few hundred pixels above the lead itself.
+const ticker = news.filter((a) => a.id !== lead?.id && !secondary.some((s) => s.id === a.id)).slice(0, 5);
 const picks = articles
   .filter((a) => !placed.has(a.id))
   .sort((x, y) => importance(y) - importance(x))
-  .slice(0, 5);
+  .slice(0, 4);
 place(picks);
 // A lone explainer sits in the front's side column; two or more get their own row below instead.
 const asideExplainer = explainers.length === 1 ? explainers[0] : undefined;
@@ -68,7 +74,7 @@ const explainerSection = getSection("explainers");
 const photoIds = new Set<string>();
 {
   const seenUrls = new Set<string>();
-  const order = [lead, ...secondary, ...top, asideExplainer, ...rows.flatMap((r) => r.items.filter((i) => !i.repeat).map((i) => i.a)), ...explainerRow];
+  const order = [lead, ...secondary, ...midBriefs, ...top, asideExplainer, ...rows.flatMap((r) => r.items.filter((i) => !i.repeat).map((i) => i.a)), ...explainerRow];
   for (const a of order) {
     const url = a?.data.image?.url;
     if (!a || !url || seenUrls.has(url)) continue;
@@ -76,8 +82,6 @@ const photoIds = new Set<string>();
     photoIds.add(a.id);
   }
 }
-const rowLayout = (count: number) => (count < 3 ? `cards cards--list` : `cards`);
-
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "NewsMediaOrganization",
@@ -92,7 +96,7 @@ const jsonLd = {
 
 <Base jsonLd={jsonLd}>
   {lead ? (
-    <Front lead={lead} secondary={secondary} top={top} picks={picks} figures={figures} explainer={asideExplainer} ticker={ticker} photoIds={photoIds} />
+    <Front lead={lead} secondary={secondary} midBriefs={midBriefs} top={top} picks={picks} figures={figures} explainer={asideExplainer} ticker={ticker} photoIds={photoIds} />
   ) : (
     <section class="wrap block">
       <h1 class="page-title">العدد الأول قيد الطباعة</h1>
@@ -100,25 +104,29 @@ const jsonLd = {
     </section>
   )}
 
-  {rows.map((r) => (
-    <section class="wrap row" data-section={r.section.id} aria-labelledby={`sec-${r.section.id}`}>
-      <div class="section-head">
-        <h2 id={`sec-${r.section.id}`}><a href={sectionHref(r.section.id)}>{r.section.name}</a></h2>
-        <a class="more" href={sectionHref(r.section.id)}>المزيد من {r.section.name}</a>
-      </div>
-      <div class={rowLayout(r.items.length)} style={`--n:${r.items.length}`}>
-        {r.items.map(({ a, repeat }) => (
-          <StoryCard
-            article={a}
-            variant={r.items.length < 3 ? "list" : repeat ? "text" : "card"}
-            showSection={false}
-            showExcerpt={repeat || !a.data.image || !photoIds.has(a.id)}
-            showPhoto={!repeat && photoIds.has(a.id)}
-          />
-        ))}
-      </div>
-    </section>
-  ))}
+  {rows.map((r) => {
+    const [feature, ...briefs] = r.items;
+    return (
+      <section class="wrap row" data-section={r.section.id} aria-labelledby={`sec-${r.section.id}`}>
+        <div class="section-head">
+          <h2 id={`sec-${r.section.id}`}><a href={sectionHref(r.section.id)}>{r.section.name}</a></h2>
+          <a class="more" href={sectionHref(r.section.id)}>المزيد من {r.section.name}</a>
+        </div>
+        <div class={`row__body${briefs.length ? "" : " row__body--solo"}`}>
+          <div class="row__feature">
+            <StoryCard article={feature.a} variant="card" showSection={false} showExcerpt showPhoto={!feature.repeat && photoIds.has(feature.a.id)} />
+          </div>
+          {briefs.length > 0 && (
+            <div class="row__briefs">
+              {briefs.map(({ a, repeat }) => (
+                <StoryCard article={a} variant="list" showSection={false} showExcerpt={false} showPhoto={!repeat && photoIds.has(a.id)} />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+    );
+  })}
 
   {explainerRow.length > 0 && (
     <section class="wrap row" data-section="explainers" aria-labelledby="sec-explainers">
@@ -126,15 +134,53 @@ const jsonLd = {
         <h2 id="sec-explainers"><a href={sectionHref("explainers")}>{explainerSection.name}</a></h2>
         <a class="more" href={sectionHref("explainers")}>كل الشروح</a>
       </div>
-      <div class={rowLayout(explainerRow.length)} style={`--n:${explainerRow.length}`}>
-        {explainerRow.map((a) => (
-          <StoryCard article={a} variant={explainerRow.length < 3 ? "list" : "card"} showSection={false} showExcerpt showPhoto={photoIds.has(a.id)} />
-        ))}
+      <div class={`row__body${explainerRow.length > 1 ? "" : " row__body--solo"}`}>
+        <div class="row__feature">
+          <StoryCard article={explainerRow[0]} variant="card" showSection={false} showExcerpt showPhoto={photoIds.has(explainerRow[0].id)} />
+        </div>
+        {explainerRow.length > 1 && (
+          <div class="row__briefs">
+            {explainerRow.slice(1).map((a) => (
+              <StoryCard article={a} variant="list" showSection={false} showExcerpt={false} showPhoto={photoIds.has(a.id)} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   )}
 </Base>
 
 <style>
-  .row { padding-top: clamp(1.5rem, 3vw, 2.25rem); }
+  /* Rhythm. Before, the gap between sections (2.25rem) barely exceeded the gap inside one
+     (1.25rem), so the page read as a single even field. Air between, tight within. */
+  .row { padding-top: clamp(2.25rem, 4.5vw, 3.75rem); }
+
+  /* One story leads each section, the rest sit beside it as briefs. Four equal cards per section
+     produced six identical bands down the page with nothing to tell the reader where to look. */
+  .row__body { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: 0; align-items: start; }
+  .row__body--solo { grid-template-columns: 1fr; }
+  .row__feature { padding-inline-end: var(--col-gap); }
+  .row__body--solo .row__feature { padding-inline-end: 0; max-width: 56rem; }
+  .row__briefs { border-inline-start: 1px solid var(--rule); padding-inline-start: var(--col-gap); display: grid; align-content: start; }
+  .row__briefs > :global(.card) { padding-block: 0.7rem; border-top: 1px solid var(--rule); }
+  .row__briefs > :global(.card:first-child) { border-top: 0; padding-top: 0; }
+
+  /* The section's own lead sits a clear step above the briefs beside it, and runs horizontally like
+     the cover story: stacked, its photograph was 394px tall and six of them made the page 5900px. */
+  .row__feature :global(.card__title) { font-size: clamp(1.28rem, 1.05rem + 0.8vw, 1.7rem); line-height: 1.36; }
+  .row__feature :global(.card__summary) { font-size: 1.02rem; margin-top: 0.35rem; }
+  .row__feature :global(.card--photo) { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); column-gap: var(--col-gap); align-items: start; gap: 0 var(--col-gap); }
+  .row__feature :global(.card--photo .card__photo) { order: 2; }
+  .row__feature :global(.card--photo .card__body) { order: 1; }
+
+  @media (max-width: 1023px) {
+    .row__body { grid-template-columns: 1fr; row-gap: 1.1rem; }
+    .row__feature { padding-inline-end: 0; }
+    .row__briefs { border-inline-start: 0; padding-inline-start: 0; border-top: 1px solid var(--rule); padding-top: 0.4rem; }
+  }
+  @media (max-width: 719px) {
+    .row__feature :global(.card--photo) { grid-template-columns: 1fr; }
+    .row__feature :global(.card--photo .card__photo) { order: 1; }
+    .row__feature :global(.card--photo .card__body) { order: 2; }
+  }
 </style>
