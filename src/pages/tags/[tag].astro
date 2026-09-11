@@ -1,7 +1,12 @@
 ---
+/**
+ * A file: everything the paper has published on one topic, newest first, with the date in the
+ * margin so the reader can follow how the story moved.
+ */
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
 import { getArticles, allTags } from "@lib/articles";
+import { formatShortDate, formatTime, timeAgo } from "@lib/format";
 
 export async function getStaticPaths() {
   const articles = await getArticles();
@@ -10,19 +15,51 @@ export async function getStaticPaths() {
 
 const { tag, items } = Astro.props;
 const n = items.length;
-const countWord = n === 1 ? "مادة" : n === 2 ? "مادتان" : n <= 10 ? "مواد" : "مادة";
+const countWord = n === 2 ? "مادتان" : n <= 10 ? "مواد" : "مادة";
+const latest = items[0];
 ---
 
-<Base title={`وسم: ${tag}`} description={`كل مواد خازندار الموسومة بـ ${tag}`} path={`/tags/${encodeURIComponent(tag)}/`}>
+<Base title={`ملف: ${tag}`} description={`ملف خازندار عن ${tag}: ${n} ${countWord} من الأحدث إلى الأقدم`} path={`/tags/${encodeURIComponent(tag)}/`}>
   <section class="wrap block">
     <header class="page-head">
       <h1 class="page-title">{tag}</h1>
-      <p class="page-intro"><bdi>{n}</bdi> {countWord} في خازندار</p>
+      <p class="page-intro">
+        {n === 1 ? <span>مادة واحدة عن {tag} حتى الآن.</span> : <span>ملف يجمع <bdi>{n}</bdi> {countWord} عن {tag}، من الأحدث إلى الأقدم.</span>}
+        {latest && <span> آخر تحديث <time datetime={latest.data.publishedAt} data-relative>{timeAgo(latest.data.publishedAt)}</time>.</span>}
+        <a class="thread__intro-link" href="/tags/">كل الملفات</a>
+      </p>
     </header>
-    <div class="cols" style={`--n:${Math.max(2, Math.min(n, 3))}`}>
+
+    <ol class="thread" aria-label={`مواد الملف: ${tag}`}>
       {items.map((a, i) => (
-        <StoryCard article={a} variant="card" eager={i < 3} />
+        <li class="thread__item">
+          <div class="thread__when ui">
+            <time datetime={a.data.publishedAt}>{formatShortDate(a.data.publishedAt)}</time>
+            <span class="thread__time">{formatTime(a.data.publishedAt)}</span>
+          </div>
+          <div class="thread__body">
+            <StoryCard article={a} variant="list" level={2} showExcerpt showTime={false} eager={i < 2} />
+          </div>
+        </li>
       ))}
-    </div>
+    </ol>
   </section>
 </Base>
+
+<style>
+  .thread { display: grid; max-width: 56rem; }
+  .thread__item { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); column-gap: var(--col-gap); padding-block: 1rem; border-top: 1px solid var(--rule); }
+  .thread__item:first-child { border-top: 0; padding-top: 0.25rem; }
+  .thread__when { display: grid; align-content: start; gap: 0.1rem; padding-top: 0.25rem; font-size: 0.82rem; font-weight: 700; color: var(--ink-2); border-inline-end: 1px solid var(--rule); }
+  .thread__time { font-weight: 400; color: var(--ink-3); }
+  .thread__body { min-width: 0; }
+  .thread__item:first-child .thread__body :global(.card__title) { font-size: clamp(1.28rem, 1.05rem + 0.8vw, 1.7rem); line-height: 1.36; }
+  .thread__item:first-child .thread__body :global(.card--list .card__photo) { flex-basis: 10rem; width: 10rem; }
+  .thread__intro-link { font-family: var(--font-ui); font-weight: 700; font-size: 0.86rem; color: var(--green); text-decoration: none; }
+  .thread__intro-link:hover { text-decoration: underline; }
+
+  @media (max-width: 719px) {
+    .thread__item { grid-template-columns: 1fr; row-gap: 0.4rem; }
+    .thread__when { grid-auto-flow: column; justify-content: start; gap: 0.5rem; border-inline-end: 0; padding-top: 0; }
+  }
+</style>

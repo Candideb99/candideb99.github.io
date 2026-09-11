@@ -1,0 +1,86 @@
+---
+/**
+ * The files: every topic the paper has covered more than once, and the regions, so a reader can
+ * follow a story or a place instead of hunting through sections. Topic files come first, ranked by
+ * size and freshness, exactly as the front page ranks them.
+ */
+import Base from "@layouts/Base.astro";
+import { getArticles, allTags, dossiers, articleHref } from "@lib/articles";
+import { formatShortDate, timeAgo } from "@lib/format";
+import { isolateNumbers } from "@lib/bidi";
+
+const articles = await getArticles();
+const topics = dossiers(articles, { min: 2, max: 200 });
+const regionNames = new Set(articles.flatMap((a) => a.data.regions));
+const regions = [...allTags(articles)]
+  .filter(([tag]) => regionNames.has(tag))
+  .map(([tag, items]) => ({ tag, count: items.length, latest: items[0] }))
+  .sort((x, y) => y.count - x.count);
+const countWord = (n: number) => (n === 1 ? "مادة واحدة" : n === 2 ? "مادتان" : n <= 10 ? `${n} مواد` : `${n} مادة`);
+---
+
+<Base title="الملفات" description="ملفات خازندار: القصص التي تتطور عبر أكثر من مادة، والمناطق التي نغطيها" path="/tags/">
+  <section class="wrap block">
+    <header class="page-head">
+      <h1 class="page-title">الملفات</h1>
+      <p class="page-intro">كل موضوع كتبنا عنه أكثر من مرة، من الأكبر والأحدث إلى الأقدم؛ ثم المناطق.</p>
+    </header>
+
+    {topics.length > 0 ? (
+      <div class="files-index" style={`--n:${Math.min(3, topics.length)}`}>
+        {topics.map((t) => (
+          <article class="files-index__item">
+            <h2 class="files-index__name"><a href={`/tags/${encodeURIComponent(t.tag)}/`}>{t.tag}</a></h2>
+            <p class="files-index__count ui">
+              <bdi>{countWord(t.items.length)}</bdi> · آخر تحديث <time datetime={t.latest.data.publishedAt} data-relative>{timeAgo(t.latest.data.publishedAt)}</time>
+            </p>
+            <p class="files-index__latest">
+              <a href={articleHref(t.latest)} set:html={isolateNumbers(t.latest.data.title)} />
+              <time class="ui" datetime={t.latest.data.publishedAt}>{formatShortDate(t.latest.data.publishedAt)}</time>
+            </p>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <p class="files-index__empty">لا ملفات بعد؛ يتكوّن الملف حين تتناول مادتان الموضوع نفسه.</p>
+    )}
+
+    {regions.length > 0 && (
+      <section class="regions" aria-labelledby="regions-head">
+        <h2 id="regions-head" class="module__head">بحسب المنطقة</h2>
+        <ul class="regions__list">
+          {regions.map((r) => (
+            <li>
+              <a href={`/tags/${encodeURIComponent(r.tag)}/`}>{r.tag}</a>
+              <span class="ui"><bdi>{countWord(r.count)}</bdi></span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+  </section>
+</Base>
+
+<style>
+  .files-index { display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); column-gap: var(--col-gap); }
+  .files-index__item { padding-block: 0.9rem; border-top: 1px solid var(--rule); min-width: 0; }
+  .files-index__name { font-family: var(--font-title); font-weight: 700; font-size: 1.3rem; line-height: 1.3; color: var(--green); }
+  .files-index__name a { text-decoration: none; }
+  .files-index__name a:hover { color: var(--green-deep); text-decoration: underline; }
+  .files-index__count { font-size: 0.78rem; color: var(--ink-3); margin-top: 0.1rem; }
+  .files-index__latest { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 0.75rem; align-items: baseline; margin-top: 0.5rem; font-family: var(--font-title); font-weight: 700; font-size: 1.02rem; line-height: 1.45; }
+  .files-index__latest a { text-decoration: none; }
+  .files-index__latest a:hover { color: var(--green); }
+  .files-index__latest time { font-size: 0.75rem; color: var(--ink-3); white-space: nowrap; }
+  .files-index__empty { font-family: var(--font-ui); color: var(--ink-3); }
+
+  .regions { margin-top: clamp(2.25rem, 4.5vw, 3.75rem); max-width: 56rem; }
+  .regions__list { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+  .regions__list li { display: inline-flex; align-items: baseline; gap: 0.4rem; font-family: var(--font-title); font-weight: 700; font-size: 1.05rem; }
+  .regions__list a { text-decoration: none; }
+  .regions__list a:hover { color: var(--green); }
+  .regions__list span { font-size: 0.78rem; color: var(--ink-3); }
+
+  @media (max-width: 1023px) { .files-index { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 599px) { .files-index { grid-template-columns: 1fr; } }
+</style>

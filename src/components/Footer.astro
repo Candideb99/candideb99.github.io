@@ -19,7 +19,7 @@ const year = new Date().getUTCFullYear();
         </p>
       </div>
       <nav class="footer__col" aria-label="الأقسام">
-        <h2 class="footer__head">الأقسام</h2>
+        <h2 class="module__head">الأقسام</h2>
         <ul>
           {sections.map((s) => (
             <li><a href={sectionHref(s.id)}>{s.name}</a></li>
@@ -27,7 +27,7 @@ const year = new Date().getUTCFullYear();
         </ul>
       </nav>
       <nav class="footer__col" aria-label="عن الموقع">
-        <h2 class="footer__head">خازندار</h2>
+        <h2 class="module__head">خازندار</h2>
         <ul>
           <li><a href="/about/">عن خازندار</a></li>
           <li><a href="/methodology/">المصادر والمنهجية</a></li>
@@ -63,7 +63,6 @@ const year = new Date().getUTCFullYear();
      site-wide user, so it now loads solely on the rare article that carries a blockquote. */
   .footer__tagline { font-family: var(--font-title); font-weight: 700; font-size: 1.02rem; margin-top: 0.4rem; color: var(--ink-2); }
   .footer__note { margin-top: 0.75rem; font-size: 0.98rem; line-height: 1.8; max-width: 34rem; color: var(--ink-2); }
-  .footer__head { font-family: var(--font-title); font-weight: 700; font-size: 1.1rem; border-bottom: 1px solid var(--ink); padding-bottom: 0.3rem; margin-bottom: 0.6rem; }
   .footer__col li { margin-block: 0.25rem; }
   .footer__col a { font-family: var(--font-body); font-size: 1rem; text-decoration: none; color: var(--ink-2); }
   .footer__col a:hover { color: var(--green); text-decoration: underline; }

@@ -12,7 +12,7 @@ const headingId = `facts-${placement}`;
 
 {facts.length > 0 && (
   <aside class={`facts facts--${placement}`} aria-labelledby={headingId}>
-    <h2 id={headingId} class="facts__head">الأرقام</h2>
+    <h2 id={headingId} class="module__head">الأرقام</h2>
     <dl class="facts__list">
       {facts.map((f) => (
         <div class="facts__item">
@@ -25,8 +25,7 @@ const headingId = `facts-${placement}`;
 )}
 
 <style>
-  .facts { border-top: 3px solid var(--ink); border-bottom: 1px solid var(--ink); padding: 0.6rem 0 0.9rem; }
-  .facts__head { font-family: var(--font-title); font-weight: 700; font-size: 1.2rem; line-height: 1.3; margin-bottom: 0.4rem; }
+  .facts { border-bottom: 1px solid var(--rule); padding: 0 0 0.9rem; }
   .facts__list { margin: 0; display: grid; }
   .facts__item { display: flex; flex-direction: column; gap: 0.05rem; padding-block: 0.55rem; border-top: 1px solid var(--rule); }
   .facts__value {

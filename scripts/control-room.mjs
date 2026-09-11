@@ -160,6 +160,7 @@ ${dirty ? '<p class="warn">Local changes exist (new articles or edits). Click <b
  <label>Stories <select id="limit"><option>2</option><option>4</option><option selected>6</option><option>8</option></select></label>
  <button onclick="run('news')">Run newsroom now</button>
  <button onclick="run('explainer')">Write an explainer</button>
+ <button onclick="run('analysis')">Write an analysis</button>
  <button class="secondary" onclick="run('dry')">Dry run (no publishing)</button>
  <button class="secondary" onclick="run('build')">Build &amp; preview locally</button>
  <button class="secondary" onclick="run('pull')">Sync from GitHub</button>
@@ -203,6 +204,7 @@ const server = http.createServer(async (req, res) => {
       const plans = {
         news: ["newsroom", "node", ["pipeline/run.mjs", `--limit=${limit}`]],
         explainer: ["explainer", "node", ["pipeline/run.mjs", "--mode=explainer"]],
+        analysis: ["analysis", "node", ["pipeline/run.mjs", "--mode=analysis"]],
         dry: ["dry run", "node", ["pipeline/run.mjs", "--dry-run", `--limit=${limit}`]],
         build: ["build & preview", "npm", ["run", "build", "&&", "npx", "astro", "preview", "--port", "4325", "--host", "127.0.0.1"]],
         pull: ["sync", "git", ["pull", "--rebase", "pages", "main"]],

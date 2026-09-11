@@ -1,0 +1,44 @@
+---
+/** The latest-headlines strip under the section bar: newest first, scrollable, never the cover stories. */
+import type { Article } from "@lib/articles";
+import { articleHref } from "@lib/articles";
+import { timeAgo } from "@lib/format";
+import { isolateNumbers } from "@lib/bidi";
+
+interface Props {
+  items: Article[];
+}
+const { items } = Astro.props;
+---
+
+{items.length > 0 && (
+  <div class="ticker-wrap">
+    <div class="wrap ticker" aria-label="آخر الأخبار">
+      <span class="ticker__label ui">الأحدث</span>
+      <ul class="ticker__list">
+        {items.map((a) => (
+          <li class="ticker__item">
+            <time class="ticker__time" datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time>
+            <a href={articleHref(a)} set:html={isolateNumbers(a.data.title)} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+)}
+
+<style>
+  .ticker-wrap { border-bottom: 1px solid var(--rule); background: var(--paper-2); }
+  .ticker { display: flex; align-items: center; gap: 0.9rem; min-height: 2.4rem; overflow: hidden; }
+  .ticker__label { flex: none; font-weight: 800; font-size: 0.78rem; color: var(--paper); background: var(--green); padding: 0.3rem 0.6rem 0.2rem; }
+  .ticker__list { display: flex; gap: 1.75rem; white-space: nowrap; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-block: 0.4rem; }
+  .ticker__list::-webkit-scrollbar { display: none; }
+  .ticker__item { display: inline-flex; align-items: baseline; gap: 0.5rem; font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; scroll-snap-align: start; }
+  .ticker__item a { text-decoration: none; }
+  .ticker__item a:hover { color: var(--green); }
+  .ticker__time { font-size: 0.75rem; color: var(--green); font-weight: 700; }
+  @media (max-width: 719px) {
+    /* 0.78rem is the floor: below 12px this label stops being comfortably readable on a phone. */
+    .ticker__label { font-size: 0.78rem; padding-inline: 0.5rem; }
+  }
+</style>

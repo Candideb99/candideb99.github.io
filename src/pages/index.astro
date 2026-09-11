@@ -1,45 +1,36 @@
 ---
 import Base from "@layouts/Base.astro";
+import Cover from "@components/Cover.astro";
 import Front from "@components/Front.astro";
+import Ticker from "@components/Ticker.astro";
+import Dossiers from "@components/Dossiers.astro";
 import StoryCard from "@components/StoryCard.astro";
-import { getArticles, pickLead, type Article } from "@lib/articles";
+import { getArticles, pickLead, dossiers, chartOfTheDay, allTags, type Article } from "@lib/articles";
 import { newsSections, getSection, sectionHref } from "@lib/sections";
 import site from "@data/site.json";
 
 const articles = await getArticles();
 const news = articles.filter((a) => a.data.kind === "news");
-const explainers = articles.filter((a) => a.data.kind === "explainer");
 const importance = (a: Article) => (a.data.quality?.importance ?? 5) + (a.data.image ? 0.5 : 0);
+const byImportance = (list: Article[]) => [...list].sort((x, y) => importance(y) - importance(x));
 
 // Every story is placed once with its own module; anything shown again further down runs as text.
 const placed = new Set<string>();
 const place = (list: Article[]) => list.forEach((a) => placed.add(a.id));
+const unplaced = (list: Article[]) => list.filter((a) => !placed.has(a.id));
 
+// The cover: the lead, then the four strongest of the freshest dozen.
 const lead = pickLead(articles);
-if (lead) placed.add(lead.id);
-const secondary = news
-  .filter((a) => !placed.has(a.id))
-  .slice(0, 8)
-  .sort((x, y) => importance(y) - importance(x))
-  .slice(0, 2);
+const cover = lead ? [lead, ...byImportance(unplaced(news).filter((a) => a.id !== lead.id).slice(0, 12)).slice(0, 4)] : [];
+place(cover);
+const secondary = byImportance(unplaced(news).slice(0, 8)).slice(0, 2);
 place(secondary);
-const top = news.filter((a) => !placed.has(a.id)).slice(0, 5);
+const top = unplaced(news).slice(0, 5);
 place(top);
-// Three text briefs finish the centre column, which otherwise held two cards and a tall void while
-// the columns either side ran on for hundreds of pixels.
-const midBriefs = news.filter((a) => !placed.has(a.id)).slice(0, 3);
-place(midBriefs);
-// The strip carries what is newest but not already shouting from the top of the page; it used to
-// repeat the lead headline a few hundred pixels above the lead itself.
-const ticker = news.filter((a) => a.id !== lead?.id && !secondary.some((s) => s.id === a.id)).slice(0, 5);
-const picks = articles
-  .filter((a) => !placed.has(a.id))
-  .sort((x, y) => importance(y) - importance(x))
-  .slice(0, 4);
+const picks = byImportance(unplaced(articles)).slice(0, 4);
 place(picks);
-// A lone explainer sits in the front's side column; two or more get their own row below instead.
-const asideExplainer = explainers.length === 1 ? explainers[0] : undefined;
-if (asideExplainer) placed.add(asideExplainer.id);
+// The strip carries the newest stories not already on the first screen, so no headline prints twice above the fold.
+const ticker = unplaced(news).slice(0, 5);
 
 // Today's figures: one telling number per recent story, never a bare year or a sprawling value.
 const figureScore = (value: string) => {
@@ -54,9 +45,17 @@ const figures = articles
     return best ? [best] : [];
   })
   .slice(0, 4);
+const chart = chartOfTheDay(articles);
+const files = dossiers(articles);
+const regionNames = new Set(articles.flatMap((a) => a.data.regions));
+const regions = [...allTags(articles)]
+  .filter(([tag, items]) => regionNames.has(tag) && items.length >= 2)
+  .map(([tag, items]) => ({ tag, count: items.length }))
+  .sort((x, y) => y.count - x.count)
+  .slice(0, 7);
 
-// Section rows: up to four stories, the ones not yet on the page first (with their pictures),
-// then stories already placed above, as text. Rows with fewer than three stories run as a list.
+// Section blocks: one feature and up to three briefs, the stories not yet on the page first (with
+// their pictures), then stories already placed above, as text.
 const rows = newsSections
   .map((s) => {
     const inSection = news.filter((a) => a.data.section === s.id);
@@ -67,14 +66,21 @@ const rows = newsSections
     return { section: s, items };
   })
   .filter((r) => r.items.length > 0);
-const explainerRow = explainers.length > 1 ? explainers.slice(0, 4) : [];
-const explainerSection = getSection("explainers");
+
+// The hubs: analyses and explainers run as text in ruled columns, which also tells the reader at a
+// glance that these are argument and concept pieces, not news reports.
+const hubs = [
+  { id: "analysis", kind: "analysis", more: "كل التحليلات" },
+  { id: "explainers", kind: "explainer", more: "كل الشروح" },
+]
+  .map((h) => ({ ...h, section: getSection(h.id), items: articles.filter((a) => a.data.kind === h.kind).slice(0, 4) }))
+  .filter((h) => h.items.length > 0);
 
 // A picture is printed once per page even when two stories share it.
 const photoIds = new Set<string>();
 {
   const seenUrls = new Set<string>();
-  const order = [lead, ...secondary, ...midBriefs, ...top, asideExplainer, ...rows.flatMap((r) => r.items.filter((i) => !i.repeat).map((i) => i.a)), ...explainerRow];
+  const order = [...cover, ...secondary, ...top, ...rows.flatMap((r) => r.items.filter((i) => !i.repeat).map((i) => i.a)), ...hubs.flatMap((h) => h.items)];
   for (const a of order) {
     const url = a?.data.image?.url;
     if (!a || !url || seenUrls.has(url)) continue;
@@ -82,6 +88,7 @@ const photoIds = new Set<string>();
     photoIds.add(a.id);
   }
 }
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "NewsMediaOrganization",
@@ -94,9 +101,13 @@ const jsonLd = {
 };
 ---
 
-<Base jsonLd={jsonLd}>
-  {lead ? (
-    <Front lead={lead} secondary={secondary} midBriefs={midBriefs} top={top} picks={picks} figures={figures} explainer={asideExplainer} ticker={ticker} photoIds={photoIds} />
+<Base jsonLd={jsonLd} section="home">
+  {cover.length > 0 ? (
+    <>
+      <Ticker items={ticker} />
+      <Cover stories={cover} photoIds={photoIds} />
+      <Front secondary={secondary} top={top} picks={picks} figures={figures} chart={chart} photoIds={photoIds} />
+    </>
   ) : (
     <section class="wrap block">
       <h1 class="page-title">العدد الأول قيد الطباعة</h1>
@@ -104,14 +115,26 @@ const jsonLd = {
     </section>
   )}
 
-  {rows.map((r) => {
+  <Dossiers files={files} regions={regions} />
+
+  {rows.map((r, i) => {
     const [feature, ...briefs] = r.items;
+    // Blocks alternate between two shapes so no block repeats its neighbour: a feature beside
+    // briefs, then a row of picture cards. A block with fewer than three stories keeps the first.
+    const cardsRow = i % 2 === 1 && r.items.length >= 3;
     return (
       <section class="wrap row" data-section={r.section.id} aria-labelledby={`sec-${r.section.id}`}>
         <div class="section-head">
           <h2 id={`sec-${r.section.id}`}><a href={sectionHref(r.section.id)}>{r.section.name}</a></h2>
           <a class="more" href={sectionHref(r.section.id)}>المزيد من {r.section.name}</a>
         </div>
+        {cardsRow ? (
+          <div class="cards" style={`--n:${r.items.length}`}>
+            {r.items.map(({ a, repeat }) => (
+              <StoryCard article={a} variant={repeat ? "text" : "card"} showSection={false} showExcerpt={repeat || !photoIds.has(a.id)} showPhoto={!repeat && photoIds.has(a.id)} />
+            ))}
+          </div>
+        ) : (
         <div class={`row__body${briefs.length ? "" : " row__body--solo"}`}>
           <div class="row__feature">
             <StoryCard article={feature.a} variant="card" showSection={false} showExcerpt showPhoto={!feature.repeat && photoIds.has(feature.a.id)} />
@@ -124,39 +147,32 @@ const jsonLd = {
             </div>
           )}
         </div>
+        )}
       </section>
     );
   })}
 
-  {explainerRow.length > 0 && (
-    <section class="wrap row" data-section="explainers" aria-labelledby="sec-explainers">
+  {hubs.map((h) => (
+    <section class="wrap row hub" data-section={h.id} aria-labelledby={`sec-${h.id}`}>
       <div class="section-head">
-        <h2 id="sec-explainers"><a href={sectionHref("explainers")}>{explainerSection.name}</a></h2>
-        <a class="more" href={sectionHref("explainers")}>كل الشروح</a>
+        <h2 id={`sec-${h.id}`}><a href={sectionHref(h.id)}>{h.section.name}</a></h2>
+        <a class="more" href={sectionHref(h.id)}>{h.more}</a>
       </div>
-      <div class={`row__body${explainerRow.length > 1 ? "" : " row__body--solo"}`}>
-        <div class="row__feature">
-          <StoryCard article={explainerRow[0]} variant="card" showSection={false} showExcerpt showPhoto={photoIds.has(explainerRow[0].id)} />
-        </div>
-        {explainerRow.length > 1 && (
-          <div class="row__briefs">
-            {explainerRow.slice(1).map((a) => (
-              <StoryCard article={a} variant="list" showSection={false} showExcerpt={false} showPhoto={photoIds.has(a.id)} />
-            ))}
-          </div>
-        )}
+      <div class="cols" style={`--n:${Math.min(h.items.length, 4)}`}>
+        {h.items.map((a) => (
+          <StoryCard article={a} variant="text" showSection={false} showExcerpt />
+        ))}
       </div>
     </section>
-  )}
+  ))}
 </Base>
 
 <style>
-  /* Rhythm. Before, the gap between sections (2.25rem) barely exceeded the gap inside one
-     (1.25rem), so the page read as a single even field. Air between, tight within. */
+  /* Rhythm. The gap between blocks is several times the gap inside one, so the eye reads the
+     boundaries: air between, tight within. */
   .row { padding-top: clamp(2.25rem, 4.5vw, 3.75rem); }
 
-  /* One story leads each section, the rest sit beside it as briefs. Four equal cards per section
-     produced six identical bands down the page with nothing to tell the reader where to look. */
+  /* One story leads each block, the rest sit beside it as briefs. */
   .row__body { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: 0; align-items: start; }
   .row__body--solo { grid-template-columns: 1fr; }
   .row__feature { padding-inline-end: var(--col-gap); }
@@ -165,10 +181,13 @@ const jsonLd = {
   .row__briefs > :global(.card) { padding-block: 0.7rem; border-top: 1px solid var(--rule); }
   .row__briefs > :global(.card:first-child) { border-top: 0; padding-top: 0; }
 
-  /* The section's own lead sits a clear step above the briefs beside it, and runs horizontally like
-     the cover story: stacked, its photograph was 394px tall and six of them made the page 5900px. */
-  .row__feature :global(.card__title) { font-size: clamp(1.28rem, 1.05rem + 0.8vw, 1.7rem); line-height: 1.36; }
+  /* The block's own lead sits a clear step above the briefs beside it and runs horizontally like
+     the cover story, so six blocks do not become six tall photographs. */
+  .row__feature :global(.card__title) { font-size: clamp(1.22rem, 1rem + 0.7vw, 1.5rem); line-height: 1.36; }
   .row__feature :global(.card__summary) { font-size: 1.02rem; margin-top: 0.35rem; }
+
+  .hub .cols :global(.card__title) { font-size: 1.28rem; line-height: 1.38; }
+  .hub .cols :global(.card__summary) { font-size: 1.02rem; line-height: 1.7; margin-top: 0.4rem; }
   .row__feature :global(.card--photo) { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); column-gap: var(--col-gap); align-items: start; gap: 0 var(--col-gap); }
   .row__feature :global(.card--photo .card__photo) { order: 2; }
   .row__feature :global(.card--photo .card__body) { order: 1; }
@@ -179,8 +198,12 @@ const jsonLd = {
     .row__briefs { border-inline-start: 0; padding-inline-start: 0; border-top: 1px solid var(--rule); padding-top: 0.4rem; }
   }
   @media (max-width: 719px) {
-    .row__feature :global(.card--photo) { grid-template-columns: 1fr; }
+    /* On a phone the feature keeps its larger headline but runs as a thumbnail row: a full-width
+       photograph for every block made the page ten thousand pixels long. */
+    .row__feature :global(.card--photo) { grid-template-columns: 7.5rem minmax(0, 1fr); column-gap: 0.75rem; gap: 0 0.75rem; }
     .row__feature :global(.card--photo .card__photo) { order: 1; }
     .row__feature :global(.card--photo .card__body) { order: 2; }
+    .row__feature :global(.card__title) { font-size: 1.2rem; line-height: 1.4; }
+    .row__feature :global(.card__summary) { display: none; }
   }
 </style>

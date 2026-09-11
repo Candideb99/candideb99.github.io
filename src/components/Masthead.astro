@@ -35,7 +35,7 @@ const issue = issueNumber(now);
   <nav class="masthead__nav" aria-label="أقسام خازندار">
     <div class="wrap">
       <ul class="nav">
-        <li><a href="/" class="nav__link" aria-current={active ? undefined : "page"}>الرئيسية</a></li>
+        <li><a href="/" class="nav__link" aria-current={active === "home" ? "page" : undefined}>الرئيسية</a></li>
         {sections.map((s) => (
           <li>
             <a href={sectionHref(s.id)} class="nav__link" aria-current={active === s.id ? "page" : undefined}>{s.name}</a>

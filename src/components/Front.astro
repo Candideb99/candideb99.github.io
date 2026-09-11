@@ -1,15 +1,14 @@
 ---
 /**
- * The front page above the fold, laid out like a newsroom's site: the latest-headlines strip,
- * the top-stories list in the right column, the lead and two secondary stories in the centre,
- * and the reference modules (today's figures, editor's picks, explainer) in the left column.
+ * The front page under the cover, laid out like a newsroom's site: three ruled columns: the top-stories list at the start, two secondary stories over the
+ * editor's picks in the centre, and the day's chart and figures at the end.
  */
 import type { Article } from "@lib/articles";
 import { articleHref } from "@lib/articles";
-import { getSection, sectionHref } from "@lib/sections";
-import { timeAgo } from "@lib/format";
+import { kindLabel, sectionHref } from "@lib/sections";
 import { isolateNumbers } from "@lib/bidi";
 import StoryCard from "./StoryCard.astro";
+import Chart from "./Chart.astro";
 
 interface Figure {
   label: string;
@@ -17,46 +16,20 @@ interface Figure {
   article: Article;
 }
 interface Props {
-  lead: Article;
   secondary: Article[];
-  midBriefs: Article[];
   top: Article[];
   picks: Article[];
   figures: Figure[];
-  explainer?: Article;
-  ticker: Article[];
+  chart?: Article;
   /** Ids of the stories allowed to show their picture here (the first appearance of each picture). */
   photoIds: Set<string>;
 }
-const { lead, secondary, midBriefs, top, picks, figures, explainer, ticker, photoIds } = Astro.props;
+const { secondary, top, picks, figures, chart, photoIds } = Astro.props;
 ---
-
-{ticker.length > 0 && (
-  <div class="ticker-wrap">
-    <div class="wrap ticker" aria-label="آخر الأخبار">
-      <span class="ticker__label ui">الأحدث</span>
-      <ul class="ticker__list">
-        {ticker.map((a) => (
-          <li class="ticker__item">
-            <time class="ticker__time" datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time>
-            <a href={articleHref(a)} set:html={isolateNumbers(a.data.title)} />
-          </li>
-        ))}
-      </ul>
-    </div>
-  </div>
-)}
-
-{/* The lead takes the full measure on its own. Inside the old three-column grid it sat in the
-    middle, so in right-to-left the reader's eye met a list of seven thumbnails before the day's
-    main story, and the headline never won the page. */}
-<section class="wrap front-lead" aria-label="خبر الغلاف">
-  <StoryCard article={lead} variant="lead" level={2} eager showPhoto={photoIds.has(lead.id)} />
-</section>
 
 <section class="wrap front" aria-label="أبرز ما في العدد">
   <div class="front__top">
-    <h2 class="module__head">أبرز الأخبار</h2>
+    <h2 class="module__head">أيضاً في الأخبار</h2>
     <div class="front__list">
       {top.map((a) => (
         <StoryCard article={a} variant="list" showSection={false} showPhoto={photoIds.has(a.id)} />
@@ -72,16 +45,28 @@ const { lead, secondary, midBriefs, top, picks, figures, explainer, ticker, phot
         ))}
       </div>
     )}
-    {midBriefs.length > 0 && (
-      <div class="front__briefs">
-        {midBriefs.map((a) => (
-          <StoryCard article={a} variant="text" showExcerpt={false} />
-        ))}
-      </div>
+    {picks.length > 0 && (
+      <section class="module front__picks" aria-labelledby="picks-head">
+        <h2 id="picks-head" class="module__head">مختارات المحرر</h2>
+        <ol class="picks">
+          {picks.map((a) => (
+            <li class="picks__item">
+              <a class="picks__title" href={articleHref(a)} set:html={isolateNumbers(a.data.title)} />
+              <p class="meta"><a href={sectionHref(a.data.section)}>{kindLabel(a.data.kind, a.data.section)}</a></p>
+            </li>
+          ))}
+        </ol>
+      </section>
     )}
   </div>
 
   <aside class="front__side">
+    {chart?.data.chart && (
+      <section class="module" aria-labelledby="chart-head">
+        <h2 id="chart-head" class="module__head">رسم اليوم</h2>
+        <Chart chart={chart.data.chart} id="front-chart" compact href={articleHref(chart)} />
+      </section>
+    )}
     {figures.length > 0 && (
       <section class="module figures" aria-labelledby="figures-head">
         <h2 id="figures-head" class="module__head">أرقام اليوم</h2>
@@ -97,48 +82,10 @@ const { lead, secondary, midBriefs, top, picks, figures, explainer, ticker, phot
         </ul>
       </section>
     )}
-    {picks.length > 0 && (
-      <section class="module" aria-labelledby="picks-head">
-        <h2 id="picks-head" class="module__head">مختارات المحرر</h2>
-        <ol class="picks">
-          {picks.map((a, i) => (
-            <li class="picks__item">
-              <span class="picks__no ui" aria-hidden="true">{i + 1}</span>
-              <div>
-                <a class="picks__title" href={articleHref(a)} set:html={isolateNumbers(a.data.title)} />
-                <p class="meta"><a href={sectionHref(a.data.section)}>{a.data.kind === "explainer" ? "شرح" : getSection(a.data.section).name}</a></p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </section>
-    )}
-    {explainer && (
-      <section class="module" aria-labelledby="explainer-head">
-        <h2 id="explainer-head" class="module__head">شرح مفاهيم</h2>
-        <StoryCard article={explainer} variant="card" showSection={false} showExcerpt showPhoto={photoIds.has(explainer.id)} />
-      </section>
-    )}
   </aside>
 </section>
 
 <style>
-  .ticker-wrap { border-bottom: 1px solid var(--rule); background: var(--paper-2); }
-  .ticker { display: flex; align-items: center; gap: 0.9rem; min-height: 2.4rem; overflow: hidden; }
-  .ticker__label { flex: none; font-weight: 800; font-size: 0.78rem; color: var(--paper); background: var(--green); padding: 0.3rem 0.6rem 0.2rem; }
-  .ticker__list { display: flex; gap: 1.75rem; white-space: nowrap; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-block: 0.4rem; }
-  .ticker__list::-webkit-scrollbar { display: none; }
-  .ticker__item { display: inline-flex; align-items: baseline; gap: 0.5rem; font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; scroll-snap-align: start; }
-  .ticker__item a { text-decoration: none; }
-  .ticker__item a:hover { color: var(--green); }
-  .ticker__time { font-size: 0.75rem; color: var(--green); font-weight: 700; }
-
-  /* The cover story: headline first in the reading direction, photograph beside it. */
-  .front-lead { padding-block: clamp(1.1rem, 2.5vw, 1.75rem) clamp(1.5rem, 3vw, 2.25rem); border-bottom: 3px solid var(--ink); }
-  .front-lead :global(.card--lead) { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: clamp(1.25rem, 3vw, 2.5rem); align-items: center; gap: 0 clamp(1.25rem, 3vw, 2.5rem); }
-  .front-lead :global(.card--lead .card__photo) { order: 2; margin-bottom: 0; }
-  .front-lead :global(.card--lead .card__body) { order: 1; }
-
   .front {
     display: grid;
     grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 3fr);
@@ -150,18 +97,20 @@ const { lead, secondary, midBriefs, top, picks, figures, explainer, ticker, phot
   .front__mid { padding-inline: var(--col-gap); border-inline: 1px solid var(--rule); }
   .front__side { padding-inline-start: var(--col-gap); display: grid; gap: 1.5rem; }
 
-  .module__head { font-family: var(--font-title); font-weight: 700; font-size: 1.15rem; line-height: 1.3; color: var(--green); border-bottom: 1px solid var(--rule); padding-bottom: 0.35rem; margin-bottom: 0.6rem; position: relative; }
-  .module__head::after { content: ""; position: absolute; inset-inline-start: 0; bottom: -1px; width: 3.5rem; border-bottom: 3px solid var(--green); }
-
   .front__list { display: grid; }
   .front__list > :global(.card) { padding-block: 0.7rem; border-top: 1px solid var(--rule); }
   .front__list > :global(.card:first-child) { border-top: 0; padding-top: 0.1rem; }
 
-  /* No longer sits under the lead, so it no longer needs a rule separating it from one. */
-  .front__secondary { display: grid; grid-template-columns: 1fr 1fr; gap: var(--col-gap); }
-  .front__briefs { display: grid; margin-top: 1.1rem; border-top: 1px solid var(--ink); padding-top: 0.5rem; }
-  .front__briefs > :global(.card) { padding-block: 0.6rem; border-top: 1px solid var(--rule); }
-  .front__briefs > :global(.card:first-child) { border-top: 0; }
+  /* The two secondaries run at feature scale, photograph beside the text like every feature on the
+     page, so the hierarchy keeps descending down the page instead of inverting under the cover. */
+  .front__secondary { display: grid; }
+  .front__secondary > :global(.card) { padding-block: 0.85rem; border-top: 1px solid var(--rule); }
+  .front__secondary > :global(.card:first-child) { border-top: 0; padding-top: 0; }
+  .front__secondary > :global(.card--photo) { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 0 var(--col-gap); align-items: start; }
+  .front__secondary :global(.card--photo .card__photo) { order: 2; }
+  .front__secondary :global(.card--photo .card__body) { order: 1; }
+  .front__secondary :global(.card__title) { font-size: clamp(1.2rem, 1rem + 0.6vw, 1.42rem); line-height: 1.38; }
+  .front__picks { margin-top: 1.4rem; }
 
   .figures__list { display: grid; }
   .figures__item { border-top: 1px solid var(--rule); }
@@ -172,27 +121,30 @@ const { lead, secondary, midBriefs, top, picks, figures, explainer, ticker, phot
   .figures__label { display: block; font-family: var(--font-ui); font-size: 0.82rem; color: var(--ink-3); line-height: 1.4; }
 
   .picks { display: grid; }
-  .picks__item { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr); gap: 0.5rem; padding-block: 0.55rem; border-top: 1px solid var(--rule); }
+  .picks__item { padding-block: 0.55rem; border-top: 1px solid var(--rule); }
   .picks__item:first-child { border-top: 0; }
-  .picks__no { font-weight: 800; font-size: 1.3rem; line-height: 1; color: var(--green); padding-top: 0.15rem; }
   .picks__title { font-family: var(--font-title); font-weight: 700; font-size: 1.02rem; line-height: 1.45; text-decoration: none; display: block; }
   .picks__title:hover { color: var(--green); }
   .picks .meta { margin-top: 0.1rem; font-size: 0.78rem; }
 
   @media (max-width: 1023px) {
     .front { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+    .front__secondary { grid-template-columns: 1fr 1fr; column-gap: var(--col-gap); }
+    .front__secondary > :global(.card) { border-top: 0; padding-block: 0; }
     .front__mid { grid-column: 1 / -1; order: -1; padding-inline: 0; border-inline: 0; padding-bottom: 1.1rem; margin-bottom: 1.1rem; border-bottom: 1px solid var(--rule); }
     .front__top { padding-inline-end: var(--col-gap); border-inline-end: 1px solid var(--rule); }
   }
   @media (max-width: 719px) {
     .front { grid-template-columns: 1fr; }
-    .front-lead :global(.card--lead) { grid-template-columns: 1fr; }
-    .front-lead :global(.card--lead .card__photo) { order: 1; margin-bottom: 0.55rem; }
-    .front-lead :global(.card--lead .card__body) { order: 2; }
     .front__top { padding-inline-end: 0; border-inline-end: 0; }
     .front__side { padding-inline-start: 0; margin-top: 1.5rem; }
     .front__secondary { grid-template-columns: 1fr; }
-    /* 0.78rem is the floor: below 12px this label stops being comfortably readable on a phone. */
-    .ticker__label { font-size: 0.78rem; padding-inline: 0.5rem; }
+    .front__secondary > :global(.card) { padding-block: 0.7rem; border-top: 1px solid var(--rule); }
+    .front__secondary > :global(.card:first-child) { border-top: 0; padding-top: 0; }
+    .front__secondary > :global(.card--photo) { grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0 0.75rem; }
+    .front__secondary :global(.card--photo .card__photo) { order: 1; }
+    .front__secondary :global(.card--photo .card__body) { order: 2; }
+    .front__secondary :global(.card__title) { font-size: 1.2rem; line-height: 1.4; }
+    .front__secondary :global(.card__summary) { display: none; }
   }
 </style>

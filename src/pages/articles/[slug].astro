@@ -9,7 +9,7 @@ import Chart from "@components/Chart.astro";
 import DataTable from "@components/DataTable.astro";
 import Share from "@components/Share.astro";
 import { getArticles, related, articleHref } from "@lib/articles";
-import { getSection, sectionHref } from "@lib/sections";
+import { getSection, sectionHref, kindLabel } from "@lib/sections";
 import { formatDate, formatTime, readingLabel, excerpt } from "@lib/format";
 import { isolateNumbers } from "@lib/bidi";
 import site from "@data/site.json";
@@ -24,15 +24,18 @@ const all = await getArticles();
 const { Content } = await render(article);
 const d = article.data;
 const sec = getSection(d.section);
-const isExplainer = d.kind === "explainer";
+const isHub = d.kind !== "news";
 const description = d.subtitle || excerpt(d.lede, 160);
 const ogImage = d.image?.url ?? `/og/${d.slug}.png`;
 const more = related(article, all, 4);
+// The paper does not end at the sources: the newest of the same section close the page.
+const sectionName = getSection(d.section).name;
+const moreFromSection = all.filter((a) => a.data.section === d.section && a.id !== article.id && !more.includes(a)).slice(0, 4);
 const path = articleHref(article);
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": isExplainer ? "Article" : "NewsArticle",
+  "@type": isHub ? "Article" : "NewsArticle",
   headline: d.title,
   description,
   inLanguage: "ar",
@@ -54,7 +57,7 @@ const jsonLd = {
       <h1 class="article__title" data-pagefind-meta={`title:${d.title}`} set:html={isolateNumbers(d.title)} />
       {d.subtitle && <p class="article__dek" set:html={isolateNumbers(d.subtitle)} />}
       <p class="meta article__meta">
-        <a href={sectionHref(d.section)}>{isExplainer ? "شرح مفاهيم" : sec.name}</a>
+        <a href={sectionHref(d.section)}>{kindLabel(d.kind, d.section)}</a>
         <span class="article__byline">{site.name}</span>
         <time datetime={d.publishedAt}>{formatDate(d.publishedAt)} · {formatTime(d.publishedAt)} بتوقيت الرياض</time>
         <span>{readingLabel(d.readingMinutes)}</span>
@@ -87,7 +90,7 @@ const jsonLd = {
         {d.table && <DataTable table={d.table} />}
         {d.whyItMatters && (
           <section class="why" aria-labelledby="why-title">
-            <h2 id="why-title" class="why__head">لماذا يهمّ</h2>
+            <h2 id="why-title" class="module__head">لماذا يهمّ</h2>
             <p class="why__text" set:html={isolateNumbers(d.whyItMatters)} />
           </section>
         )}
@@ -98,13 +101,13 @@ const jsonLd = {
             ))}
           </p>
         )}
-        <Sources sources={d.sources} models={d.models} explainer={isExplainer} />
+        <Sources sources={d.sources} models={d.models} explainer={isHub} />
       </div>
       <aside class="article__side">
         <KeyFacts facts={d.keyFacts} placement="side" />
         {more.length > 0 && (
           <section class="side-related" aria-labelledby="side-related-title">
-            <h2 id="side-related-title" class="side-related__head">اقرأ أيضاً</h2>
+            <h2 id="side-related-title" class="module__head">اقرأ أيضاً</h2>
             <div class="side-related__list">
               {more.map((a) => (
                 <StoryCard article={a} variant="text" showExcerpt={false} />
@@ -115,10 +118,25 @@ const jsonLd = {
       </aside>
     </div>
   </article>
+
+  {moreFromSection.length >= 2 && (
+    <section class="wrap--article article__more" aria-labelledby="more-head">
+      <div class="section-head">
+        <h2 id="more-head"><a href={sectionHref(d.section)}>المزيد من {sectionName}</a></h2>
+        <a class="more" href={sectionHref(d.section)}>كل {sectionName}</a>
+      </div>
+      <div class={moreFromSection.length >= 3 ? "cards" : "cards cards--list"} style={`--n:${moreFromSection.length}`}>
+        {moreFromSection.map((a) => (
+          <StoryCard article={a} variant={moreFromSection.length >= 3 ? "card" : "list"} showSection={false} />
+        ))}
+      </div>
+    </section>
+  )}
 </Base>
 
 <style>
   .article__head { padding-top: clamp(1.5rem, 3.5vw, 2.5rem); max-width: 52rem; }
+  .article__more { padding-top: clamp(2.25rem, 4.5vw, 3.75rem); }
   .article__title {
     font-family: var(--font-title);
     font-weight: 700;
@@ -161,13 +179,12 @@ const jsonLd = {
     text-align: justify;
     text-align-last: start;
   }
-  .why { margin-top: 1.75rem; max-width: var(--measure); border: 1px solid var(--ink); padding: 1rem 1.25rem 1.15rem; }
-  .why__head { font-family: var(--font-title); font-weight: 700; font-size: 1.2rem; line-height: 1.3; margin-bottom: 0.5rem; }
+  /* A rule-topped block like the figures, not a box: the site draws rules, never frames. */
+  .why { margin-top: 1.75rem; max-width: var(--measure); border-bottom: 1px solid var(--rule); padding-bottom: 1rem; }
   .why__text { font-family: var(--font-body); font-size: 1.08rem; line-height: 1.85; text-align: justify; text-align-last: start; }
   .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.5rem; }
 
   .article__side { border-inline-start: 1px solid var(--rule); padding-inline-start: clamp(1.5rem, 3vw, 2.5rem); display: grid; gap: 2rem; align-content: start; align-self: stretch; }
-  .side-related__head { font-family: var(--font-title); font-weight: 700; font-size: 1.2rem; line-height: 1.3; border-top: 3px solid var(--ink); padding-top: 0.5rem; margin-bottom: 0.6rem; }
   .side-related__list { display: grid; }
   .side-related__list > :global(.card--text) { border-top: 1px solid var(--rule); padding-block: 0.7rem; }
   .side-related__list > :global(.card--text:first-child) { border-top: 0; padding-top: 0; }

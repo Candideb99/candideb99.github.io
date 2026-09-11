@@ -32,7 +32,8 @@ Every article is an original Arabic synthesis of multiple cited primary and repu
 ## Capabilities and Constraints
 
 - Static site, no client-side framework; search via Pagefind; RSS and sitemap.
-- Sections: الاقتصاد (economy), الأسواق (markets), الطاقة (energy), الشركات (companies), التكنولوجيا (technology), شروح (explainers).
+- Sections: الاقتصاد (economy), الأسواق (markets), الطاقة (energy), الشركات (companies), التكنولوجيا (technology), الدفاع (defense: budgets, procurement, arms trade and the defence industry, judged by what they mean for Arab economies), plus two hubs: تحليلات (analysis: a daily signed-house piece that connects two or more recent stories and answers "what does this mean", with scenarios rather than forecasts, every figure traceable to the stories it draws on) and شروح (explainers).
+- The front page must let a reader see in one glance what matters (one cover story, a clear step down to everything else) and follow running stories over time (ملفات نتابعها: topic files built from tags). It may rotate the cover automatically but must stop the moment the reader touches it and must never rotate for a reader who asked for reduced motion.
 - Every article records: sources with URLs, the models used, a quality score, and an AI-assistance disclosure.
 - Western digits (0-9) and pan-Arab month names (يناير, فبراير ...). Arabic MSA throughout; Latin only for tickers, acronyms and proper names where needed.
 - No fabricated figures: every number must be grounded in the cited sources, verified programmatically and by a critic model.

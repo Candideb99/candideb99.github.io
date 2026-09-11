@@ -49,7 +49,7 @@ import Base from "@layouts/Base.astro";
               '<li class="search__item" data-section="' + escape(meta.section) + '">' +
               '<a class="search__title" href="' + escape(d.url) + '">' + escape(meta.title) + "</a>" +
               '<p class="search__excerpt">' + d.excerpt + "</p>" +
-              '<p class="meta">' + (meta.sectionName ? "<span>" + escape(meta.sectionName) + "</span>" : "") + (meta.date ? "<time>" + escape(meta.date) + "</time>" : "") + "</p>" +
+              '<p class="meta">' + (meta.sectionName ? '<a href="/' + escape(meta.section) + '/">' + escape(meta.sectionName) + "</a>" : "") + (meta.date ? "<time>" + escape(meta.date) + "</time>" : "") + "</p>" +
               "</li>"
             );
           })

@@ -57,3 +57,34 @@ export function allTags(articles: Article[]): Map<string, Article[]> {
   for (const a of articles) for (const t of a.data.tags) map.set(t, [...(map.get(t) ?? []), a]);
   return map;
 }
+
+export interface Dossier {
+  tag: string;
+  items: Article[];
+  latest: Article;
+}
+
+/**
+ * Running stories: topic tags carried by at least `min` articles, ranked by size and freshness.
+ * Region names are left out (a country is a place, not a story), as are the section names.
+ */
+export function dossiers(articles: Article[], { min = 3, max = 4, now = Date.now() } = {}): Dossier[] {
+  const regions = new Set(articles.flatMap((a) => a.data.regions));
+  const generic = new Set(["عالمي", "العالم", "الشرق الأوسط", "الخليج", "الخليج العربي", "أوروبا", "آسيا", "أفريقيا", "الاقتصاد", "الأسواق", "الطاقة", "الشركات", "التكنولوجيا", "الدفاع", "الاقتصاد العالمي"]);
+  const out: Dossier[] = [];
+  for (const [tag, items] of allTags(articles)) {
+    if (items.length < min || regions.has(tag) || generic.has(tag)) continue;
+    const sorted = [...items].sort((a, b) => Date.parse(b.data.publishedAt) - Date.parse(a.data.publishedAt));
+    out.push({ tag, items: sorted, latest: sorted[0] });
+  }
+  const score = (d: Dossier) => d.items.length + Math.max(0, 3 - hoursOld(d.latest, now) / 24);
+  return out.sort((x, y) => score(y) - score(x)).slice(0, max);
+}
+
+/** The freshest story of the last three days that carries a chart small enough for a column. */
+export function chartOfTheDay(articles: Article[], now = Date.now()): Article | undefined {
+  return articles.find((a) => {
+    const c = a.data.chart;
+    return c && c.title && c.categories.length <= 8 && c.series.length <= 2 && hoursOld(a, now) < 72;
+  });
+}

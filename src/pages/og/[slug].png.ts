@@ -2,7 +2,7 @@ import type { APIContext } from "astro";
 import path from "node:path";
 import sharp from "sharp";
 import { getArticles } from "@lib/articles";
-import { getSection } from "@lib/sections";
+import { getSection, kindLabel } from "@lib/sections";
 import { formatDate } from "@lib/format";
 import { LOGO } from "@lib/brand";
 import { openFont, lineToPath, wrapText } from "@lib/textpath.mjs";
@@ -42,7 +42,7 @@ export async function GET({ props }: APIContext) {
   const lineHeight = headSize * 1.5;
   const blockTop = 292;
   const headline = lines.map((line, i) => lineToPath(bold, line, headSize, { right, y: blockTop + i * lineHeight }).d).join("");
-  const sectionName = article.data.kind === "explainer" ? "شرح مفاهيم" : sec.name;
+  const sectionName = kindLabel(article.data.kind, article.data.section);
   const sectionPath = lineToPath(regular, sectionName, 30, { right: MARGIN + 260, y: 150 });
   // The section name sits at the left margin: shift its right edge so its left edge lands on the margin.
   const section = lineToPath(regular, sectionName, 30, { right: MARGIN + sectionPath.width, y: 150 }).d;

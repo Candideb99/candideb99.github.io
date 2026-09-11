@@ -21,13 +21,45 @@ interface ChartSpec {
 interface Props {
   chart: ChartSpec;
   id?: string;
+  /** A front-page module: smaller canvas, no data table, the title linking to the story. */
+  compact?: boolean;
+  href?: string;
 }
-const { chart, id = "chart" } = Astro.props;
+const { chart, id = "chart", compact = false, href } = Astro.props;
 
-const W = 720;
-const H = 380;
-const PAD = { top: 28, right: 24, bottom: 56, left: 64 };
+const W = compact ? 400 : 720;
+const H = compact ? 250 : 380;
+const PAD = compact ? { top: 22, right: 16, bottom: 0, left: 48 } : { top: 28, right: 24, bottom: 0, left: 64 };
 const plotW = W - PAD.left - PAD.right;
+
+const n = chart.categories.length;
+const slot = plotW / n;
+const x = (i: number) => PAD.left + slot * i;
+
+/** Category labels wrap by word onto lines that fit their slot (three lines when there are few
+ *  categories, two otherwise); anything longer is elided. The bottom padding follows the deepest label. */
+const catChars = Math.max(7, Math.floor(slot / 7));
+const catLines = n <= 4 ? 3 : 2;
+function wrapLabel(text: string, maxChars: number, maxLines: number): string[] {
+  const words = text.split(/\s+/).filter(Boolean);
+  const lines: string[] = [];
+  let cur = "";
+  for (const w of words) {
+    const next = cur ? `${cur} ${w}` : w;
+    if (next.length <= maxChars || !cur) cur = next;
+    else {
+      lines.push(cur);
+      cur = w;
+    }
+  }
+  if (cur) lines.push(cur);
+  const kept = lines.slice(0, maxLines).map((l) => (l.length > maxChars + 1 ? `${l.slice(0, maxChars - 1)}…` : l));
+  if (lines.length > maxLines && !kept[maxLines - 1].endsWith("…")) kept[maxLines - 1] = `${kept[maxLines - 1].slice(0, Math.max(1, maxChars - 1))}…`;
+  return kept;
+}
+const catLabels = chart.categories.map((c) => wrapLabel(c, catChars, catLines));
+const deepest = Math.max(1, ...catLabels.map((l) => l.length));
+PAD.bottom = 26 + 15 * deepest;
 const plotH = H - PAD.top - PAD.bottom;
 
 const all = chart.series.flatMap((s) => s.values);
@@ -48,10 +80,6 @@ for (let v = yMin; v <= yMax + 1e-9; v += niceStep) ticks.push(Number(v.toFixed(
 const y = (v: number) => PAD.top + plotH - ((v - yMin) / (yMax - yMin)) * plotH;
 const zeroY = y(0);
 
-const n = chart.categories.length;
-const slot = plotW / n;
-const x = (i: number) => PAD.left + slot * i;
-
 function fmt(v: number): string {
   const abs = Math.abs(v);
   const decimals = abs >= 100 ? 0 : abs >= 10 ? 1 : 2;
@@ -68,11 +96,16 @@ const lineEndLabel = chart.series.length <= 3;
 const colors = ["var(--chart-1)", "var(--chart-2)", "var(--chart-3)"];
 
 const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as const);
+
 ---
 
-<figure class="chart" role="group" aria-labelledby={`${id}-title`}>
+<figure class={`chart${compact ? " chart--compact" : ""}`} role="group" aria-labelledby={`${id}-title`}>
   <figcaption class="chart__head">
-    {chart.title && <h3 id={`${id}-title`} class="chart__title" set:html={isolateNumbers(chart.title)} />}
+    {chart.title && (
+      <h3 id={`${id}-title`} class="chart__title">
+        {href ? <a href={href} set:html={isolateNumbers(chart.title)} /> : <Fragment set:html={isolateNumbers(chart.title)} />}
+      </h3>
+    )}
     {unit && <p class="chart__unit ui">الوحدة: <bdi>{unit}</bdi></p>}
   </figcaption>
 
@@ -135,12 +168,16 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
 
     <g class="chart__axis">
       {chart.categories.map((c, i) => (
-        <text x={x(i) + slot / 2} y={H - PAD.bottom + 22} text-anchor="middle" class="chart__cat">{c.length > 14 && n > 6 ? `${c.slice(0, 13)}…` : c}</text>
+        <text x={x(i) + slot / 2} y={H - PAD.bottom + 20} text-anchor="middle" class="chart__cat">
+          {catLabels[i].map((line, li) => (
+            <tspan x={x(i) + slot / 2} dy={li === 0 ? 0 : 15}>{line}</tspan>
+          ))}
+        </text>
       ))}
     </g>
   </svg>
 
-  <details class="chart__data">
+  {!compact && <details class="chart__data">
     <summary class="ui">عرض البيانات كجدول</summary>
     <table>
       <thead>
@@ -158,7 +195,7 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
         ))}
       </tbody>
     </table>
-  </details>
+  </details>}
 
   <p class="chart__source ui">
     {chart.source ? `المصدر: ${chart.source}. ` : ""}الرسم من إعداد خازندار اعتماداً على أرقام المصدر.
@@ -187,6 +224,14 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
   .chart__data th, .chart__data td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--rule); text-align: start; }
   .chart__data thead th { font-weight: 700; color: var(--ink-2); border-bottom-color: var(--ink); }
   .chart__source { margin-top: 0.6rem; font-size: 0.78rem; color: var(--ink-3); }
+
+  .chart--compact { margin: 0; max-width: none; border-top: 0; border-bottom: 0; padding: 0; }
+  .chart--compact .chart__title { font-size: 1.05rem; line-height: 1.4; }
+  .chart--compact .chart__title a { text-decoration: none; }
+  .chart--compact .chart__title a:hover { color: var(--green); }
+  .chart--compact .chart__svg { margin-top: 0.4rem; }
+  .chart--compact .chart__tick, .chart--compact .chart__cat, .chart--compact .chart__value { font-size: 13.5px; }
+  .chart--compact .chart__source { margin-top: 0.4rem; }
   @media (max-width: 719px) {
     .chart__tick, .chart__cat, .chart__value { font-size: 21px; }
   }

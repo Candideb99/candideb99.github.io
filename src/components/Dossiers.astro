@@ -1,0 +1,99 @@
+---
+/**
+ * "Files we follow": the running stories, each a topic that several articles have built up.
+ * A reader who missed a week can pick up a thread here instead of hunting through sections.
+ */
+import type { Dossier } from "@lib/articles";
+import { articleHref } from "@lib/articles";
+import { formatShortDate, timeAgo } from "@lib/format";
+import { isolateNumbers } from "@lib/bidi";
+
+interface Props {
+  files: Dossier[];
+  /** Region tags with their counts, for the "by region" line under the band. */
+  regions?: { tag: string; count: number }[];
+}
+const { files, regions = [] } = Astro.props;
+// Three headlines per file, preferring ones no other file on the band already shows; a story that
+// carries two topic tags would otherwise print twice, side by side.
+const shown = new Set<string>();
+const lists = files.map((f) => {
+  const chosen = [...f.items.filter((a) => !shown.has(a.id)), ...f.items.filter((a) => shown.has(a.id))].slice(0, 3);
+  chosen.forEach((a) => shown.add(a.id));
+  return chosen.sort((a, b) => Date.parse(b.data.publishedAt) - Date.parse(a.data.publishedAt));
+});
+const countWord = (n: number) => (n === 1 ? "مادة" : n === 2 ? "مادتان" : n <= 10 ? "مواد" : "مادة");
+---
+
+{files.length > 0 && (
+  <section class="wrap files" aria-labelledby="files-head">
+    <div class="section-head">
+      <h2 id="files-head">ملفات نتابعها</h2>
+      <a class="more" href="/tags/">كل الملفات</a>
+    </div>
+    <div class="files__grid" style={`--n:${files.length}`}>
+      {files.map((f, fi) => (
+        <article class="file">
+          <h3 class="file__name"><a href={`/tags/${encodeURIComponent(f.tag)}/`}>{f.tag}</a></h3>
+          <p class="file__count ui">
+            <bdi>{f.items.length}</bdi> {countWord(f.items.length)} · آخر تحديث <time datetime={f.latest.data.publishedAt} data-relative>{timeAgo(f.latest.data.publishedAt)}</time>
+          </p>
+          <ol class="file__list">
+            {lists[fi].map((a) => (
+              <li>
+                <a href={articleHref(a)} set:html={isolateNumbers(a.data.title)} />
+                <time class="ui" datetime={a.data.publishedAt}>{formatShortDate(a.data.publishedAt)}</time>
+              </li>
+            ))}
+          </ol>
+          <a class="file__all ui" href={`/tags/${encodeURIComponent(f.tag)}/`}>الملف كاملاً</a>
+        </article>
+      ))}
+    </div>
+    {regions.length > 0 && (
+      <p class="files__regions ui">
+        <span class="files__regions-label">بحسب المنطقة:</span>
+        {regions.map((r) => (
+          <a href={`/tags/${encodeURIComponent(r.tag)}/`}>{r.tag} <bdi>{r.count}</bdi></a>
+        ))}
+      </p>
+    )}
+  </section>
+)}
+
+<style>
+  .files { padding-top: clamp(2.25rem, 4.5vw, 3.75rem); }
+  .files__regions { display: flex; flex-wrap: wrap; gap: 0.35rem 1.1rem; margin-top: 1rem; padding-top: 0.6rem; border-top: 1px solid var(--rule); font-size: 0.82rem; color: var(--ink-3); }
+  .files__regions-label { font-weight: 700; color: var(--ink-2); }
+  .files__regions a { color: var(--ink-2); text-decoration: none; font-weight: 700; }
+  .files__regions a bdi { color: var(--ink-3); font-weight: 400; }
+  .files__regions a:hover { color: var(--green); text-decoration: underline; }
+  .files__grid { display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); column-gap: 0; }
+  .file { min-width: 0; padding-inline: var(--col-gap); }
+  .file:first-child { padding-inline-start: 0; }
+  .file:last-child { padding-inline-end: 0; }
+  .file + .file { border-inline-start: 1px solid var(--rule); }
+  .file__name { font-family: var(--font-title); font-weight: 700; font-size: 1.3rem; line-height: 1.3; color: var(--green); }
+  .file__name a { text-decoration: none; }
+  .file__name a:hover { color: var(--green-deep); text-decoration: underline; }
+  .file__count { font-size: 0.78rem; color: var(--ink-3); margin-top: 0.15rem; }
+  .file__list { margin-top: 0.6rem; }
+  .file__list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 0.75rem; align-items: baseline; padding-block: 0.5rem; border-top: 1px solid var(--rule); font-family: var(--font-title); font-weight: 700; font-size: 1.02rem; line-height: 1.45; }
+  .file__list a { text-decoration: none; }
+  .file__list a:hover { color: var(--green); }
+  .file__list time { font-size: 0.75rem; color: var(--ink-3); white-space: nowrap; }
+  .file__all { display: inline-block; margin-top: 0.5rem; font-size: 0.82rem; font-weight: 700; color: var(--ink-2); text-decoration: none; }
+  .file__all:hover { color: var(--green); text-decoration: underline; }
+
+  @media (max-width: 1023px) {
+    .files__grid { grid-template-columns: 1fr 1fr; row-gap: 1.5rem; }
+    .file:nth-child(odd) { padding-inline-start: 0; border-inline-start: 0; }
+    .file:nth-child(even) { padding-inline-end: 0; }
+  }
+  @media (max-width: 719px) {
+    .file__list li:nth-child(n + 3) { display: none; }
+    .files__grid { grid-template-columns: 1fr; row-gap: 0; }
+    .file { padding-inline: 0; border-inline-start: 0; padding-block: 1rem; border-top: 1px solid var(--rule); }
+    .file:first-child { border-top: 0; padding-top: 0.25rem; }
+  }
+</style>
