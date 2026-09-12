@@ -40,7 +40,8 @@ STORIES PUBLISHED PER SECTION IN THE LAST 24 HOURS: ${coverageLine}${quiet.lengt
 
 TASK
 1. Group candidate items that report the same underlying story into one cluster (items from different outlets about the same event belong together).
-2. Choose the ${limit} most important stories for our readers. Judge by: material economic significance; relevance to Arab economies (Gulf, Egypt, Levant, Maghreb) or to the global forces that shape them (oil, the dollar, the Fed, the ECB, China, trade, technology); primary or official sourcing; freshness; and novelty versus the recently published list.
+2. Choose at most ${limit} stories, and fewer when the day is thin: a paper is edited, not filled. Score each candidate on the news values an Arabic desk edits by (قيم الخبر): التأثير (does it change money, prices, jobs or policy for our readers?), الأهمية (a central bank, a government, a market, a major company), الآنية (it happened or was decided now; a figure already reported is news again only if the change is material), القرب (the Gulf, Egypt, the Levant, the Maghreb, or the global forces that move them: oil, the dollar, the Fed, the ECB, China, trade, technology), الضخامة (the size of the number), الصراع والنتائج (winners, losers, what follows). A story must carry at least three of these to be selected; importance below 6 is not published. State the values it carries in "news_value".
+   Development over repetition: when a candidate advances a story the paper already ran (a running file), prefer the development to an unrelated marginal item, and say what is new in the angle; when it only repeats, skip it.
    Defence economics is part of our beat: defence budgets, procurement and contract awards (an official award with a stated value is news, not fluff), arms exports and imports, the defence industry and its suppliers, and what each of these means for Arab economies (Gulf procurement, offsets, local industry, public budgets). File such stories in the defense section.
 3. Skip: opinion columns, listicles, personal finance tips, celebrity and lifestyle, sports business, product reviews, minor local items, press-release fluff, stock-picking, crypto hype, and anything already covered.
 4. Prefer official statistics and central-bank decisions when they are new. Prefer clusters with at least one tier A source.
@@ -49,7 +50,7 @@ TASK
 7. The angle and headline_hint must state only what the candidate items themselves report; a neutral factual working title, no dramatisation, no ".." ellipses, no inferred events.
 
 Return JSON:
-{"stories":[{"ids":["<candidate id>", "..."],"section":"<section id>","importance":<1-10>,"angle":"<one Arabic sentence stating the story and the angle for Arab readers>","headline_hint":"<short Arabic working headline>","regions":["<Arabic region tags such as الخليج, مصر, أوروبا, الولايات المتحدة, الصين, عالمي>"]}]}
+{"stories":[{"ids":["<candidate id>", "..."],"section":"<section id>","importance":<1-10>,"news_value":"<the values it carries, e.g. تأثير، آنية، قرب>","angle":"<one Arabic sentence stating the story and the angle for Arab readers>","headline_hint":"<short Arabic working headline>","regions":["<Arabic region tags such as الخليج, مصر, أوروبا, الولايات المتحدة, الصين, عالمي>"]}]}
 Order stories by importance, highest first. Use only candidate ids that exist. Return at most ${limit + 2} stories.`;
 
   const { data, model } = await chat({
@@ -88,6 +89,7 @@ Order stories by importance, highest first. Use only candidate ids that exist. R
       importance: Number(s.importance) || 0,
       angle: String(s.angle ?? "").trim(),
       headlineHint: String(s.headline_hint ?? "").trim(),
+      newsValue: String(s.news_value ?? "").trim(),
       regions: Array.isArray(s.regions) ? s.regions.map(String).slice(0, 4) : [],
     }))
     .filter((s) => s.ids.length && s.section)

@@ -53,10 +53,36 @@ verbal noun. No "!", no teaser, no تعرف على, no question headline for new
 **Marks.** Western digits; pan-Arab month names; % after the figure; the Arabic comma (،); «» for
 quotations and foreign brand names; tanween on the alef (اً).
 
-## 2. The organisation
+## 2. The editing (فن التحرير الصحفي)
+
+A paper is edited, not filled. The editor model scores every candidate on the news values an
+Arabic desk edits by: التأثير (does it change money, prices, jobs or policy for our readers),
+الأهمية (a central bank, a government, a market, a major company), الآنية (decided or happened now;
+a figure already reported is news again only if the change is material), القرب (the Gulf, Egypt,
+the Levant, the Maghreb, or the global forces that move them), الضخامة (the size of the number),
+الصراع والنتائج (winners, losers, what follows). A story needs three of them; importance below 6
+is not published; the editor states the values in its answer. Development beats repetition: a
+candidate that advances a running file is preferred to an unrelated marginal item, and the angle
+must say what is new. Hard limits in `pipeline/run.mjs`: at most four stories a run and ten news
+stories in any 24 hours (`KHAZENDAR_DAILY_CAP`); `pipeline/lib/verify.mjs` rejects a story whose
+headline shares half its content words with one published in the last four days, so the same rate
+rise cannot run twice under two headlines. Explainers and analyses are one a day each.
+
+## 3. The register of media Arabic (لغة وسائل الإعلام)
+
+The formulas readers of Arabic news expect, compiled into the writer's brief as a phrasebook, in
+the spirit of the media-Arabic coursebooks: reporting (أفادت … بأن، نقلت … عن … قوله، أوضح، أشار
+إلى أن، شدّد على، نفى، حذّر من، من جانبه / من جهته / بدوره for a second speaker, في تصريحات لـ،
+في بيان صدر اليوم، على هامش), time and cause (عقب، إثر، غداة، على خلفية، في ظل، وسط، بعدما، فيما،
+من المقرر أن، في غضون), and the economic lexicon (سجّل، بلغ، على أساس سنوي، مقارنة بـ، أعلى مستوى
+منذ، نقطة أساس، العائد، سعر الصرف، الاحتياطي، العجز والفائض، الميزان التجاري، الدين العام،
+التضخم الأساسي، العقود الآجلة، المعاملات الفورية، الصكوك، الاكتتاب، الاستحواذ، الموازنة، التقشف،
+الدعم). Formulas carry the news; they never pad it, and the banned list above still applies.
+
+## 4. The organisation
 
 - **Sections** as the desks name them: الاقتصاد، الأسواق، الطاقة، الشركات، التكنولوجيا، الدفاع, with
-  تحليلات and شروح as hubs. Cards and articles are labelled by section, never by form; only a real
+  تحليلات and مفاهيم (explainers of economic concepts) as hubs. Cards and articles are labelled by section, never by form; only a real
   exclusive would earn a badge.
 - **The kicker** (العنوان التمهيدي): the topic above the headline (الذهب، مضيق هرمز، التضخم) on
   the cover, the secondaries, the features, the section-page lead and the article page, linking to

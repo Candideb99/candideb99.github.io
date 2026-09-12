@@ -38,9 +38,11 @@ const option = (name, fallback) => {
 };
 const DRY_RUN = flag("dry-run");
 const MODE = option("mode", "news");
-const LIMIT = Math.max(1, Math.min(Number(option("limit", 6)) || 6, 10));
+const LIMIT = Math.max(1, Math.min(Number(option("limit", 4)) || 4, 10));
+/** A day's paper is edited, not filled: at most this many news stories in any 24 hours. */
+const DAILY_CAP = Number(process.env.KHAZENDAR_DAILY_CAP) || 10;
 const ONLY_SOURCE = option("source", null);
-const MIN_IMPORTANCE = Number(option("min-importance", 5));
+const MIN_IMPORTANCE = Number(option("min-importance", 6));
 
 const logLines = [];
 function log(message) {
@@ -266,9 +268,16 @@ async function runNews() {
     return { report, published: 0 };
   }
 
-  const { stories, model: editorModel } = await selectStories({ candidates, recentTitles, sections, coverage24h, limit: LIMIT, log });
+  const publishedToday = Object.values(coverage24h).reduce((n, v) => n + v, 0);
+  const room = Math.max(0, DAILY_CAP - publishedToday);
+  if (room === 0) {
+    log(`daily budget spent: ${publishedToday} news stories in the last 24 hours (cap ${DAILY_CAP}); nothing more today`);
+    return { report: [], published: 0 };
+  }
+  const runLimit = Math.min(LIMIT, room);
+  const { stories, model: editorModel } = await selectStories({ candidates, recentTitles, sections, coverage24h, limit: runLimit, log });
   log(`editor (${editorModel}) selected ${stories.length} stories`);
-  const chosen = stories.filter((s) => s.importance >= MIN_IMPORTANCE).slice(0, LIMIT);
+  const chosen = stories.filter((s) => s.importance >= MIN_IMPORTANCE).slice(0, runLimit);
   for (const s of stories) log(`  [${s.importance}] ${s.section} — ${s.headlineHint} (${s.ids.join(",")})${chosen.includes(s) ? "" : s.importance < MIN_IMPORTANCE ? " (below threshold)" : " (deferred: over limit)"}`);
 
   let published = 0;

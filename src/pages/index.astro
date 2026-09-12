@@ -71,7 +71,7 @@ const rows = newsSections
 // glance that these are argument and concept pieces, not news reports.
 const hubs = [
   { id: "analysis", kind: "analysis", more: "كل التحليلات" },
-  { id: "explainers", kind: "explainer", more: "كل الشروح" },
+  { id: "explainers", kind: "explainer", more: "كل المفاهيم" },
 ]
   .map((h) => ({ ...h, section: getSection(h.id), items: articles.filter((a) => a.data.kind === h.kind).slice(0, 4) }))
   .filter((h) => h.items.length > 0);

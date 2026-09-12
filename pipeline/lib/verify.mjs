@@ -90,6 +90,24 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
 
   const titleNorm = draft.title.replace(/\s+/g, " ").trim();
   if (recentTitles.some((t) => t.replace(/\s+/g, " ").trim() === titleNorm)) issues.push("العنوان مكرر لمقال منشور.");
+  // The same story under a new headline is still the same story: a title sharing most of its content
+  // words with a recent one is a repeat unless the editor named a material development.
+  const stemLite = (w) => w.replace(/^(و|ف|ب|ك|ل)?(ال)?/, "").replace(/(ات|ون|ين|ة|ه|ها|هم)$/, "");
+  const titleWords = (t) => new Set(String(t ?? "").replace(/[\p{P}\p{S}]/gu, " ").split(/\s+/).filter((w) => w.length >= 4).map(stemLite).filter((w) => w.length >= 3));
+  const mine = titleWords(draft.title);
+  if (mine.size >= 4) {
+    for (const t of recentTitles) {
+      const theirs = titleWords(t);
+      if (theirs.size < 4) continue;
+      let shared = 0;
+      for (const w of mine) if (theirs.has(w)) shared += 1;
+      const jaccard = shared / (mine.size + theirs.size - shared);
+      if (jaccard >= 0.5) {
+        issues.push(`القصة تكرر مقالاً منشوراً («${t}»)؛ لا يُنشر خبر ثانٍ عن الواقعة نفسها إلا إذا حمل تطوراً جوهرياً يُذكر في العنوان.`);
+        break;
+      }
+    }
+  }
 
   // The dek must belong to this story: most of its content words should appear somewhere in the article.
   const stem = (w) => w.replace(/^(و|ف|ب|ك|ل)?(ال)?/, "").replace(/(ات|ون|ين|ة|ه|ها|هم)$/, "");

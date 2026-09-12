@@ -15,7 +15,7 @@ on:
         options: [news, explainer, analysis]
       limit:
         description: maximum stories to publish
-        default: "6"
+        default: "4"
         type: string
 
 concurrency:
@@ -56,7 +56,7 @@ jobs:
             else mode=news; fi
           fi
           echo "mode=$mode" >> "$GITHUB_OUTPUT"
-          echo "limit=${{ inputs.limit || '6' }}" >> "$GITHUB_OUTPUT"
+          echo "limit=${{ inputs.limit || '4' }}" >> "$GITHUB_OUTPUT"
 
       - name: Install Claude Code (only when the owner's subscription is the provider)
         if: vars.KHAZENDAR_PROVIDER == 'claude'

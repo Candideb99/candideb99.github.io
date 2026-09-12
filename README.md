@@ -20,6 +20,13 @@ Setting the variable `KHAZENDAR_PROVIDER=claude` additionally routes the newsroo
 critic calls to the subscription instead of the free OpenRouter models (`pipeline/lib/llm.mjs`,
 `callClaudeCli`); vision stays on OpenRouter.
 
+## The editing
+
+A paper is edited, not filled: `pipeline/lib/select.mjs` scores candidates on the desks' news
+values and states them, `pipeline/run.mjs` caps a run at four stories and a day at ten news stories
+(`KHAZENDAR_DAILY_CAP`), and `pipeline/lib/verify.mjs` rejects a story whose headline shares half its
+content words with one published in the last four days. STYLE.md §2 explains the rules.
+
 ## The house style
 
 `STYLE.md` records how the paper writes and organises news, taken from the practice of the Arabic
