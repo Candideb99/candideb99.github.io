@@ -1,73 +1,55 @@
 ---
 /**
- * The market board in two sizes: `box`, the seven-row table beside the cover (the numbers an Arab
- * reader looks up first), and `full`, the grouped board at the head of the الأسواق section with
- * last price, change, move and time for every instrument the paper follows.
+ * A compact quote table under a module head: name (with its country or unit as a note), last,
+ * and the move on the day. The `box` beside the cover lists five instruments and links to the
+ * data page; the data page prints one `group` per market group.
  */
-import { board, quotes, grouped, BOX_IDS, formatPrice, formatMove, formatPct, formatChange, direction, DIRECTION_LABEL, type Quote } from "@lib/markets";
-import { formatShortDate, formatTime, timeAgo } from "@lib/format";
+import { board, quotes, BOX_IDS, formatPrice, formatMove, direction, DIRECTION_LABEL, whenLabel, type Quote } from "@lib/markets";
+import { timeAgo } from "@lib/format";
 
 interface Props {
-  variant?: "box" | "full";
+  variant?: "box" | "group";
+  ids?: string[];
+  title?: string;
   id?: string;
+  level?: 2 | 3;
 }
-const { variant = "box", id } = Astro.props;
-const groups = variant === "full" ? grouped() : [{ group: "box", name: "", items: quotes(BOX_IDS) }];
-const today = formatShortDate(new Date());
-const when = (q: Quote) => (formatShortDate(q.time) === today ? formatTime(q.time) : formatShortDate(q.time));
+const { variant = "box", ids = BOX_IDS, title = "الأسواق", id, level = 2 } = Astro.props;
+const items = quotes(ids);
+const Head = `h${level}` as "h2" | "h3";
+const headId = `${id ?? "board"}-head`;
 const arrow = (d: string) => (d === "up" ? "▲" : d === "down" ? "▼" : "•");
+const tip = (q: Quote) => `${q.name}${q.note ? ` (${q.note})` : ""}${q.unit && q.unit !== "%" ? `، ${q.unit}` : ""} · ${whenLabel(q)}`;
 ---
 
-{board.quotes.length > 0 && (
-  <section class={`board board--${variant}`} id={id} aria-labelledby={`${id ?? "board"}-head`}>
-    <h2 id={`${id ?? "board"}-head`} class="module__head">{variant === "full" ? "لوحة الأسواق" : "الأسواق"}</h2>
-    <div class="board__groups">
-    {groups.map((g) => (
-      <div class="board__group">
-        {g.name && <h3 class="board__group-name ui">{g.name}</h3>}
-        <table class="board__table">
-          {variant === "full" && (
-            <thead class="ui">
-              <tr>
-                <th scope="col">الأداة</th>
-                <th scope="col" class="board__num">آخر</th>
-                <th scope="col" class="board__num board__change">التغير</th>
-                <th scope="col" class="board__num">%</th>
-                <th scope="col" class="board__when">الوقت</th>
-              </tr>
-            </thead>
-          )}
-          <tbody>
-            {g.items.map((q) => {
-              const dir = direction(q);
-              return (
-                <tr class={q.stale ? "is-stale" : undefined}>
-                  <th scope="row" class="board__name">
-                    <span class="board__label">{q.name}</span>
-                    {variant === "full" && (q.note || q.unit) && <span class="board__note ui">{[q.note, q.unit && q.unit !== "%" ? q.unit : null].filter(Boolean).join(" · ")}</span>}
-                  </th>
-                  <td class="board__num ui"><bdi>{formatPrice(q)}</bdi></td>
-                  {variant === "full" && <td class={`board__num board__change ui board__move--${dir}`}><bdi>{formatChange(q)}</bdi></td>}
-                  <td class={`board__num ui board__move--${dir}`}>
-                    {dir === "none" ? (
-                      <span class="board__na" title="لا يتوفر تغير اليوم">—</span>
-                    ) : (
-                      <bdi aria-label={DIRECTION_LABEL[dir]}><span class="board__arrow" aria-hidden="true">{arrow(dir)}</span>{variant === "full" ? formatPct(q) : formatMove(q)}</bdi>
-                    )}
-                  </td>
-                  {variant === "full" && <td class="board__when ui"><bdi>{when(q)}</bdi></td>}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    ))}
-    </div>
-    {variant === "box" ? (
-      <p class="board__foot ui"><a href="/markets/#board">لوحة الأسواق كاملة</a>{board.updatedAt && <span> · حُدّثت <time datetime={board.updatedAt} data-relative>{timeAgo(board.updatedAt)}</time></span>}</p>
-    ) : (
-      <p class="board__foot ui">أسعار مؤجّلة للاطلاع لا للتداول، من بيانات {board.source}{board.updatedAt && <span>؛ آخر تحديث <time datetime={board.updatedAt} data-relative>{timeAgo(board.updatedAt)}</time></span>}. العقود الآجلة للسلع هي أقرب عقد؛ التغير محسوب من إغلاق الجلسة السابقة.</p>
+{items.length > 0 && (
+  <section class={`board board--${variant}`} id={id} aria-labelledby={headId}>
+    <Head id={headId} class="module__head">{title}</Head>
+    <table class="board__table">
+      <tbody>
+        {items.map((q) => {
+          const dir = direction(q);
+          return (
+            <tr class={q.stale ? "is-stale" : undefined} title={tip(q)}>
+              <th scope="row" class="board__name">
+                <span class="board__label">{q.name}</span>
+                {variant === "group" && (q.note || (q.unit && q.unit !== "%")) && <span class="board__note ui">{[q.note, q.unit && q.unit !== "%" ? q.unit : null].filter(Boolean).join(" · ")}</span>}
+              </th>
+              <td class="board__num ui"><bdi>{formatPrice(q)}</bdi></td>
+              <td class={`board__num ui board__move--${dir}`}>
+                {dir === "none" ? (
+                  <span class="board__na" title="لا يتوفر تغير اليوم">—</span>
+                ) : (
+                  <bdi aria-label={DIRECTION_LABEL[dir]}><span class="board__arrow" aria-hidden="true">{arrow(dir)}</span>{formatMove(q)}</bdi>
+                )}
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+    {variant === "box" && (
+      <p class="board__foot ui"><a href="/markets/data/">لوحة الأسواق كاملة</a>{board.updatedAt && <span> · حُدّثت <time datetime={board.updatedAt} data-relative>{timeAgo(board.updatedAt)}</time></span>}</p>
     )}
   </section>
 )}
@@ -77,6 +59,7 @@ const arrow = (d: string) => (d === "up" ? "▲" : d === "down" ? "▼" : "•")
   .board__table th, .board__table td { padding: 0.3rem 0; border-top: 1px solid var(--rule); vertical-align: baseline; text-align: start; }
   .board__table tbody tr:first-child > * { border-top: 0; }
   .board__name { font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; line-height: 1.45; color: var(--ink); }
+  .board__note { display: block; font-size: 0.72rem; font-weight: 500; color: var(--ink-3); line-height: 1.35; }
   .board__num { text-align: end; font-size: 0.86rem; white-space: nowrap; padding-inline-start: 0.6rem !important; }
   .board__num bdi { direction: ltr; unicode-bidi: isolate; }
   .board__move--up { color: var(--up); font-weight: 700; }
@@ -88,24 +71,5 @@ const arrow = (d: string) => (d === "up" ? "▲" : d === "down" ? "▼" : "•")
   .board__foot a { font-weight: 700; color: var(--ink-2); text-decoration: none; }
   .board__foot a:hover { color: var(--green); text-decoration: underline; }
   .board__foot time { color: inherit; }
-
-  /* The full board: one ruled table per group, two groups across on a wide screen. */
-  .board--full { margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
-  .board--full .board__groups { display: grid; grid-template-columns: 1fr; row-gap: 1.25rem; }
-  .board__group-name { font-weight: 800; font-size: 0.8rem; color: var(--green); margin-bottom: 0.25rem; }
-  .board--full thead th { font-size: 0.74rem; font-weight: 700; color: var(--ink-3); border-top: 0; border-bottom: 1px solid var(--ink); padding-bottom: 0.25rem; }
-  .board--full .board__table tbody tr:first-child > * { border-top: 0; }
-  .board--full .board__name { font-size: 1rem; }
-  .board__note { display: block; font-size: 0.74rem; font-weight: 500; color: var(--ink-3); line-height: 1.4; }
-  .board__when { text-align: end; font-size: 0.78rem; color: var(--ink-3); white-space: nowrap; padding-inline-start: 0.6rem !important; }
-  /* On a phone the absolute change gives way so the names keep their room. */
-  @media (max-width: 599px) {
-    .board__change { display: none; }
-  }
-  @media (min-width: 720px) {
-    .board--full .board__groups { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 0; row-gap: 1.5rem; }
-    .board--full .board__group { padding-inline: var(--col-gap); }
-    .board--full .board__group:nth-child(odd) { padding-inline-start: 0; }
-    .board--full .board__group:nth-child(even) { padding-inline-end: 0; border-inline-start: 1px solid var(--rule); }
-  }
+  .board--group .module__head { font-size: 1.05rem; }
 </style>

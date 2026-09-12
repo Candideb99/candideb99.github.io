@@ -1,0 +1,94 @@
+---
+/**
+ * لوحة الأسواق: the market-data page, organised as the business dailies organise theirs: the
+ * headline numbers as cards with a month's line, then one compact table per market group in
+ * ruled columns, then the latest market news so the page leads back into the paper.
+ */
+import Base from "@layouts/Base.astro";
+import QuoteCard from "@components/QuoteCard.astro";
+import MarketBoard from "@components/MarketBoard.astro";
+import StoryCard from "@components/StoryCard.astro";
+import { board, quotes, grouped, FEATURED_IDS } from "@lib/markets";
+import { getArticlesBySection } from "@lib/articles";
+import { formatDate, formatTime, timeAgo } from "@lib/format";
+
+const featured = quotes(FEATURED_IDS);
+const groups = grouped();
+const news = (await getArticlesBySection("markets")).slice(0, 4);
+const updated = board.updatedAt ? `${formatDate(board.updatedAt)}، ${formatTime(board.updatedAt)}` : "";
+---
+
+<Base title="لوحة الأسواق" description="أسعار المؤشرات والعملات والسلع والسندات التي تتابعها خازندار، مؤجّلة وللاطلاع." path="/markets/data/" section="markets">
+  <section class="wrap block" id="board">
+    <header class="page-head">
+      <h1 class="page-title">لوحة الأسواق</h1>
+      <p class="page-intro">المؤشرات والعملات والسلع والسندات التي تتابعها الصحيفة. الأسعار مؤجّلة وللاطلاع لا للتداول{board.updatedAt && <span>؛ آخر تحديث <time datetime={board.updatedAt} data-relative title={updated}>{timeAgo(board.updatedAt)}</time></span>}.</p>
+    </header>
+
+    {featured.length > 0 && (
+      <section class="featured" aria-label="أبرز الأرقام">
+        {featured.map((q) => (
+          <div class="featured__cell"><QuoteCard quote={q} href={`#${q.group}`} /></div>
+        ))}
+      </section>
+    )}
+
+    <div class="groups">
+      {groups.map((g) => (
+        <div class="groups__cell">
+          <MarketBoard variant="group" ids={g.items.map((q) => q.id)} title={g.name} id={g.group} />
+        </div>
+      ))}
+    </div>
+
+    <p class="note ui">المصدر: {board.source}؛ أسعار مؤجّلة. التغير محسوب من إغلاق الجلسة السابقة؛ عقود السلع هي أقرب عقد آجل؛ الخط الصغير هو مسار الإغلاق اليومي في الشهر الأخير. القيم التي لم يصلها تحديث تظهر بلون باهت.</p>
+
+    {news.length > 0 && (
+      <section class="news" aria-labelledby="news-head">
+        <h2 id="news-head" class="module__head"><a href="/markets/">من أخبار الأسواق</a></h2>
+        <div class="cards" style={`--n:${news.length}`}>
+          {news.map((a) => (
+            <StoryCard article={a} variant="card" showSection={false} showExcerpt={!a.data.image} />
+          ))}
+        </div>
+      </section>
+    )}
+  </section>
+</Base>
+
+<style>
+  .page-intro time { color: inherit; }
+  /* The headline numbers: a ruled row of cards, like the cover's columns. */
+  .featured { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: 0; border-top: 3px solid var(--ink); border-bottom: 1px solid var(--rule); padding-block: 0.9rem; }
+  .featured__cell { min-width: 0; padding-inline: var(--col-gap); }
+  .featured__cell:first-child { padding-inline-start: 0; }
+  .featured__cell:last-child { padding-inline-end: 0; }
+  .featured__cell + .featured__cell { border-inline-start: 1px solid var(--rule); }
+  /* One compact table per group, three across, ruled between. */
+  .groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 0; row-gap: 2rem; margin-top: clamp(1.5rem, 3vw, 2.25rem); }
+  .groups__cell { min-width: 0; padding-inline: var(--col-gap); }
+  .groups__cell:nth-child(3n + 1) { padding-inline-start: 0; }
+  .groups__cell:nth-child(3n) { padding-inline-end: 0; }
+  .groups__cell:not(:nth-child(3n + 1)) { border-inline-start: 1px solid var(--rule); }
+  .note { margin-top: 1.5rem; font-size: 0.78rem; line-height: 1.6; color: var(--ink-3); max-width: 60rem; }
+  .news { margin-top: clamp(2rem, 4vw, 3rem); }
+  @media (max-width: 1023px) {
+    .featured { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 1rem; }
+    .featured__cell:nth-child(4) { border-inline-start: 0; padding-inline-start: 0; }
+    .featured__cell:nth-child(3) { padding-inline-end: 0; }
+    .groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .groups__cell { padding-inline: var(--col-gap) !important; border-inline-start: 0 !important; }
+    .groups__cell:nth-child(odd) { padding-inline-start: 0 !important; }
+    .groups__cell:nth-child(even) { padding-inline-end: 0 !important; border-inline-start: 1px solid var(--rule) !important; }
+  }
+  @media (max-width: 599px) {
+    .featured { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .featured__cell { padding-inline: 0.75rem; }
+    .featured__cell:nth-child(odd) { padding-inline-start: 0; border-inline-start: 0; }
+    .featured__cell:nth-child(even) { padding-inline-end: 0; }
+    .featured__cell:nth-child(3), .featured__cell:nth-child(4) { border-inline-start: 0; }
+    .featured__cell:nth-child(even) { border-inline-start: 1px solid var(--rule); }
+    .groups { grid-template-columns: 1fr; row-gap: 1.5rem; }
+    .groups__cell { padding-inline: 0 !important; border-inline-start: 0 !important; }
+  }
+</style>

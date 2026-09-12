@@ -1,0 +1,54 @@
+---
+/**
+ * One instrument as a card: name, the level large, the move on the day, and a month of closes as
+ * a small line, the way the Journal's market-data widget prints its indices. Used in the
+ * الأسواق في لمحة band on the markets section and for the headline numbers of the data page.
+ */
+import { formatPrice, formatMove, direction, DIRECTION_LABEL, sparkline, whenLabel, type Quote } from "@lib/markets";
+
+interface Props {
+  quote: Quote;
+  href?: string;
+}
+const { quote: q, href = "/markets/data/" } = Astro.props;
+const dir = direction(q);
+const spark = sparkline(q, 96, 28);
+const arrow = dir === "up" ? "▲" : dir === "down" ? "▼" : "•";
+const stroke = dir === "up" ? "var(--up)" : dir === "down" ? "var(--down)" : "var(--ink-3)";
+---
+
+<a class={`quote quote--${dir}${q.stale ? " is-stale" : ""}`} href={href} title={`${q.name}${q.note ? ` (${q.note})` : ""} · ${whenLabel(q)}`}>
+  <span class="quote__name">{q.name}</span>
+  {q.note && <span class="quote__note ui">{q.unit && q.unit !== "%" ? `${q.note} · ${q.unit}` : q.note}</span>}
+  {!q.note && q.unit && q.unit !== "%" && <span class="quote__note ui">{q.unit}</span>}
+  <span class="quote__row">
+    <bdi class="quote__price ui">{formatPrice(q)}</bdi>
+    {dir !== "none" ? (
+      <bdi class="quote__move ui" aria-label={DIRECTION_LABEL[dir]}><span class="quote__arrow" aria-hidden="true">{arrow}</span>{formatMove(q)}</bdi>
+    ) : (
+      <span class="quote__move quote__move--na ui">—</span>
+    )}
+  </span>
+  {spark && (
+    <svg class="quote__spark" viewBox="0 0 96 28" width="96" height="28" aria-label={`مسار ${spark.days} يوماً`} role="img">
+      <polyline points={spark.points} fill="none" stroke={stroke} stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+    </svg>
+  )}
+</a>
+
+<style>
+  .quote { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "name spark" "note spark" "row spark"; column-gap: 0.75rem; align-items: end; text-decoration: none; color: var(--ink); min-width: 0; }
+  .quote__name { grid-area: name; font-family: var(--font-body); font-weight: 700; font-size: 1rem; line-height: 1.4; }
+  .quote:hover .quote__name { color: var(--green); }
+  .quote__note { grid-area: note; font-size: 0.72rem; color: var(--ink-3); line-height: 1.35; }
+  .quote__row { grid-area: row; display: flex; align-items: baseline; gap: 0.55rem; margin-top: 0.15rem; }
+  .quote__price { font-size: 1.28rem; font-weight: 700; line-height: 1.2; direction: ltr; unicode-bidi: isolate; }
+  .quote__move { font-size: 0.86rem; font-weight: 700; direction: ltr; unicode-bidi: isolate; }
+  .quote--up .quote__move { color: var(--up); }
+  .quote--down .quote__move { color: var(--down); }
+  .quote--flat .quote__move, .quote__move--na { color: var(--ink-3); }
+  .quote__arrow { font-size: 0.6em; vertical-align: 0.15em; margin-inline-end: 0.15em; }
+  .quote__spark { grid-area: spark; display: block; align-self: end; margin-bottom: 0.2rem; width: 5.5rem; height: auto; flex: none; }
+  @media (max-width: 599px) { .quote__spark { width: 4rem; } }
+  .is-stale .quote__price { color: var(--ink-3); }
+</style>

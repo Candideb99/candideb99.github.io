@@ -3,8 +3,9 @@
  * before every build), and the formatting the strip and the board share.
  */
 import data from "@data/markets.json";
+import { formatShortDate, formatTime } from "./format";
 
-export type Group = "indices" | "fx" | "commodities" | "rates";
+export type Group = "arab" | "world" | "fx" | "commodities" | "rates";
 
 export interface Quote {
   id: string;
@@ -24,6 +25,8 @@ export interface Quote {
   currency: string | null;
   source: string;
   stale: boolean;
+  /** Daily closes, oldest first, up to thirty trading days. */
+  history: { d: string; c: number }[];
 }
 
 export interface Board {
@@ -35,7 +38,8 @@ export interface Board {
 export const board = data as Board;
 
 export const GROUP_NAMES: Record<Group, string> = {
-  indices: "المؤشرات",
+  arab: "الأسواق العربية",
+  world: "الأسواق العالمية",
   fx: "العملات",
   commodities: "السلع",
   rates: "السندات والأصول الرقمية",
@@ -46,6 +50,12 @@ export const STRIP_IDS = ["tasi", "egx30", "spx", "ndq", "brent", "gold", "eurus
 
 /** The box beside the cover: what an Arab reader looks up first, five rows so the cover keeps its height. */
 export const BOX_IDS = ["tasi", "egx30", "brent", "gold", "usdegp"];
+
+/** The الأسواق في لمحة band on the markets section: six cards with a month's line each. */
+export const GLANCE_IDS = ["tasi", "egx30", "spx", "brent", "gold", "usdegp"];
+
+/** The headline numbers of the data page. */
+export const FEATURED_IDS = ["tasi", "egx30", "spx", "brent", "gold", "usdegp"];
 
 const byId = new Map(board.quotes.map((q) => [q.id, q]));
 
@@ -105,3 +115,22 @@ export function formatChange(q: Quote): string {
 }
 
 export const DIRECTION_LABEL: Record<Direction, string> = { up: "ارتفاع", down: "انخفاض", flat: "دون تغيير", none: "" };
+
+/** "اليوم 14:05" or "11 سبتمبر" for the quote's own time, in the site's zone. */
+export function whenLabel(q: Quote): string {
+  const today = formatShortDate(new Date());
+  const day = formatShortDate(q.time);
+  return day === today ? `اليوم ${formatTime(q.time)}` : day;
+}
+
+/** Points for a small line of the instrument's closes, or null when there are too few to draw. */
+export function sparkline(q: Quote, width = 96, height = 28, pad = 1.5): { points: string; days: number } | null {
+  const values = (q.history ?? []).map((p) => p.c).filter((v) => Number.isFinite(v));
+  if (values.length < 5) return null;
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const span = max - min || Math.abs(max) * 0.001 || 1;
+  const stepX = (width - 2 * pad) / (values.length - 1);
+  const points = values.map((v, i) => `${(pad + i * stepX).toFixed(1)},${(height - pad - ((v - min) / span) * (height - 2 * pad)).toFixed(1)}`).join(" ");
+  return { points, days: values.length };
+}

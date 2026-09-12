@@ -12,13 +12,13 @@ const items = quotes(STRIP_IDS);
 {items.length > 0 && (
   <div class="markets-wrap">
     <div class="wrap markets ui" aria-label="الأسواق">
-      <a class="markets__label" href="/markets/#board">الأسواق</a>
+      <a class="markets__label" href="/markets/data/">الأسواق</a>
       <ul class="markets__list">
         {items.map((q) => {
           const dir = direction(q);
           return (
             <li class="markets__item">
-              <a class="q" href="/markets/#board" title={`${q.name}${q.note ? ` (${q.note})` : ""}: ${formatPrice(q)}`}>
+              <a class="q" href="/markets/data/" title={`${q.name}${q.note ? ` (${q.note})` : ""}: ${formatPrice(q)}`}>
                 <span class="q__name">{q.short}</span>
                 {(q.changeMode === "abs" || dir === "none") && <bdi class="q__price">{formatPrice(q)}</bdi>}
                 {dir !== "none" && (

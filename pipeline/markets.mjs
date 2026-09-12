@@ -25,16 +25,16 @@ const CHECK = process.argv.includes("--check");
  * largest daily move the feed may report before the change is treated as a data error and dropped.
  */
 export const INSTRUMENTS = [
-  // المؤشرات
-  { id: "tasi", group: "indices", symbol: "^TASI.SR", name: "تاسي", short: "تاسي", note: "السعودية", decimals: 2, limit: 15 },
-  { id: "egx30", group: "indices", symbol: "^CASE30", name: "إيجي إكس 30", short: "مصر 30", note: "مصر", decimals: 2, limit: 15 },
-  { id: "spx", group: "indices", symbol: "^GSPC", name: "ستاندرد آند بورز 500", short: "S&P 500", note: "الولايات المتحدة", decimals: 2, limit: 15 },
-  { id: "ndq", group: "indices", symbol: "^IXIC", name: "ناسداك المركب", short: "ناسداك", note: "الولايات المتحدة", decimals: 2, limit: 15 },
-  { id: "dji", group: "indices", symbol: "^DJI", name: "داو جونز", short: "داو جونز", note: "الولايات المتحدة", decimals: 2, limit: 15 },
-  { id: "sx5e", group: "indices", symbol: "^STOXX50E", name: "يورو ستوكس 50", short: "ستوكس 50", note: "منطقة اليورو", decimals: 2, limit: 15 },
-  { id: "ftse", group: "indices", symbol: "^FTSE", name: "فوتسي 100", short: "فوتسي 100", note: "بريطانيا", decimals: 2, limit: 15 },
-  { id: "n225", group: "indices", symbol: "^N225", name: "نيكاي 225", short: "نيكاي", note: "اليابان", decimals: 2, limit: 15 },
-  { id: "sse", group: "indices", symbol: "000001.SS", name: "شنغهاي المركب", short: "شنغهاي", note: "الصين", decimals: 2, limit: 15 },
+  // الأسواق العربية ثم العالمية
+  { id: "tasi", group: "arab", symbol: "^TASI.SR", name: "تاسي", short: "تاسي", note: "السعودية", decimals: 2, limit: 15 },
+  { id: "egx30", group: "arab", symbol: "^CASE30", name: "إيجي إكس 30", short: "مصر 30", note: "مصر", decimals: 2, limit: 15 },
+  { id: "spx", group: "world", symbol: "^GSPC", name: "ستاندرد آند بورز 500", short: "S&P 500", note: "الولايات المتحدة", decimals: 2, limit: 15 },
+  { id: "ndq", group: "world", symbol: "^IXIC", name: "ناسداك المركب", short: "ناسداك", note: "الولايات المتحدة", decimals: 2, limit: 15 },
+  { id: "dji", group: "world", symbol: "^DJI", name: "داو جونز", short: "داو جونز", note: "الولايات المتحدة", decimals: 2, limit: 15 },
+  { id: "sx5e", group: "world", symbol: "^STOXX50E", name: "يورو ستوكس 50", short: "ستوكس 50", note: "منطقة اليورو", decimals: 2, limit: 15 },
+  { id: "ftse", group: "world", symbol: "^FTSE", name: "فوتسي 100", short: "فوتسي 100", note: "بريطانيا", decimals: 2, limit: 15 },
+  { id: "n225", group: "world", symbol: "^N225", name: "نيكاي 225", short: "نيكاي", note: "اليابان", decimals: 2, limit: 15 },
+  { id: "sse", group: "world", symbol: "000001.SS", name: "شنغهاي المركب", short: "شنغهاي", note: "الصين", decimals: 2, limit: 15 },
   // العملات
   { id: "eurusd", group: "fx", symbol: "EURUSD=X", name: "يورو / دولار", short: "يورو/دولار", decimals: 4, limit: 8, fallback: ["EUR", "USD"] },
   { id: "gbpusd", group: "fx", symbol: "GBPUSD=X", name: "جنيه إسترليني / دولار", short: "إسترليني/دولار", decimals: 4, limit: 8, fallback: ["GBP", "USD"] },
@@ -63,29 +63,15 @@ async function fetchJson(url, headers = {}) {
   return res.json();
 }
 
-/** One Yahoo chart call: last price, the previous session's close, the quote time. */
-async function yahooQuote(symbol) {
+async function yahooChart(symbol, range) {
   let lastError;
   for (const host of ["query2", "query1"]) {
     for (let attempt = 0; attempt < 2; attempt++) {
       try {
-        const json = await fetchJson(`https://${host}.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?range=1mo&interval=1d&includePrePost=false`);
+        const json = await fetchJson(`https://${host}.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?range=${range}&interval=1d&includePrePost=false`);
         const result = json?.chart?.result?.[0];
         if (!result?.meta) throw new Error(json?.chart?.error?.description || "no result");
-        const meta = result.meta;
-        const price = Number(meta.regularMarketPrice);
-        const time = Number(meta.regularMarketTime);
-        if (!Number.isFinite(price) || !Number.isFinite(time)) throw new Error("no price");
-        // The previous close comes from the daily bars, not `chartPreviousClose`, which Yahoo fills
-        // with stale values for thinly traded pairs (it reported a 3% move on the pegged riyal).
-        const stamps = result.timestamp || [];
-        const closes = result.indicators?.quote?.[0]?.close || [];
-        const bars = stamps.map((t, i) => ({ t, c: closes[i] })).filter((b) => Number.isFinite(b.c));
-        const day = (t) => new Date(t * 1000).toISOString().slice(0, 10);
-        const earlier = bars.filter((b) => day(b.t) < day(time));
-        let prev = earlier.length ? earlier[earlier.length - 1].c : Number(meta.chartPreviousClose);
-        if (!Number.isFinite(prev) || prev <= 0) prev = null;
-        return { price, prev, time: new Date(time * 1000).toISOString(), currency: meta.currency || null };
+        return result;
       } catch (error) {
         lastError = error;
         if (!/HTTP (429|5\d\d)/.test(String(error.message))) break;
@@ -94,6 +80,43 @@ async function yahooQuote(symbol) {
     }
   }
   throw lastError || new Error("unreachable");
+}
+
+function barsOf(result) {
+  const stamps = result.timestamp || [];
+  const closes = result.indicators?.quote?.[0]?.close || [];
+  return stamps.map((t, i) => ({ d: new Date(t * 1000).toISOString().slice(0, 10), c: closes[i] })).filter((b) => Number.isFinite(b.c));
+}
+
+/**
+ * Two chart calls: a one-day range, whose `chartPreviousClose` is the close before that session
+ * (over a longer range it is the close before the range's first bar, which misled the first
+ * version by a week), and a three-month range for the line of daily closes, best effort.
+ */
+async function yahooQuote(symbol) {
+  const today = await yahooChart(symbol, "1d");
+  const meta = today.meta;
+  const price = Number(meta.regularMarketPrice);
+  const time = Number(meta.regularMarketTime);
+  if (!Number.isFinite(price) || !Number.isFinite(time)) throw new Error("no price");
+  let prev = Number(meta.chartPreviousClose);
+  if (!Number.isFinite(prev) || prev <= 0) prev = null;
+  let history = barsOf(today);
+  try {
+    history = barsOf(await yahooChart(symbol, "3mo"));
+  } catch {}
+  return { price, prev, time: new Date(time * 1000).toISOString(), currency: meta.currency || null, history };
+}
+
+/** The stored closes merged with the fresh bars, by date, the last thirty trading days. */
+function mergeHistory(inst, old = [], fresh = [], quote) {
+  const byDate = new Map();
+  for (const p of old) if (p && Number.isFinite(p.c)) byDate.set(p.d, p.c);
+  for (const p of fresh) if (p && Number.isFinite(p.c)) byDate.set(p.d, p.c);
+  // A feed that answers with the price alone still adds today's point.
+  if (quote && Number.isFinite(quote.price) && quote.time) byDate.set(quote.time.slice(0, 10), quote.price);
+  const round = (v) => Number(v.toFixed(inst.decimals + 2));
+  return [...byDate.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1)).slice(-30).map(([d, c]) => ({ d, c: round(c) }));
 }
 
 /** Daily reference rates as a fallback for currencies (no change figure; the board prints the rate alone). */
@@ -161,14 +184,16 @@ async function main() {
       const rate = base === "USD" ? rates.rates[target] : rates.rates[base] ? 1 / rates.rates[base] : null;
       if (Number.isFinite(rate)) quote = { price: rate, prev: null, change: null, pct: null, time: rates.time, currency: target, source: "er-api", stale: false };
     }
+    const old = previousById.get(inst.id);
     if (!quote) {
-      const old = previousById.get(inst.id);
       failures.push(`${inst.symbol}: ${r.error}`);
       if (!old) continue;
       quote = { ...old, stale: true };
       delete quote.id; delete quote.symbol; delete quote.name; delete quote.short; delete quote.note; delete quote.group; delete quote.unit; delete quote.decimals; delete quote.changeMode;
     }
-    quotes.push({ id: inst.id, symbol: inst.symbol, name: inst.name, short: inst.short ?? inst.name, note: inst.note ?? null, group: inst.group, unit: inst.unit ?? null, decimals: inst.decimals, changeMode: inst.changeMode ?? "pct", ...quote });
+    const history = mergeHistory(inst, old?.history, quote.history, quote.stale ? null : quote);
+    delete quote.history;
+    quotes.push({ id: inst.id, symbol: inst.symbol, name: inst.name, short: inst.short ?? inst.name, note: inst.note ?? null, group: inst.group, unit: inst.unit ?? null, decimals: inst.decimals, changeMode: inst.changeMode ?? "pct", ...quote, history });
   }
 
   const fresh = quotes.filter((q) => !q.stale).length;

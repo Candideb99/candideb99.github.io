@@ -2,7 +2,8 @@
 import type { GetStaticPaths, Page } from "astro";
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
-import MarketBoard from "@components/MarketBoard.astro";
+import QuoteCard from "@components/QuoteCard.astro";
+import { quotes, GLANCE_IDS } from "@lib/markets";
 import type { Article } from "@lib/articles";
 import { getArticlesBySection } from "@lib/articles";
 import { sections, type Section } from "@lib/sections";
@@ -40,6 +41,8 @@ const besideCount = others.length <= 5 ? others.length : 3;
 const beside = first ? others.slice(0, besideCount) : [];
 const rest = first ? others.slice(besideCount) : page.data;
 const title = first ? section.name : `${section.name} — صفحة ${page.currentPage}`;
+// The markets section carries a glance at the data under its lead block, as the business dailies do.
+const glance = first && section.id === "markets" ? quotes(GLANCE_IDS) : [];
 ---
 
 <Base title={title} description={`${section.name} في خازندار: ${section.description}`} path={page.url.current} section={section.id}>
@@ -47,9 +50,8 @@ const title = first ? section.name : `${section.name} — صفحة ${page.curren
     <header class="page-head">
       <h1 class="page-title">{section.name}</h1>
       <p class="page-intro">{section.description}</p>
+      {section.id === "markets" && <a class="page-head__link ui" href="/markets/data/">لوحة الأسواق: المؤشرات والعملات والسلع</a>}
     </header>
-
-    {first && section.id === "markets" && <MarketBoard variant="full" id="board" />}
 
     {page.total === 0 ? (
       <p class="section-page__empty">لم تُنشر مواد في هذا القسم بعد. غرفة الأخبار تعمل على مدار الساعة.</p>
@@ -68,6 +70,19 @@ const title = first ? section.name : `${section.name} — صفحة ${page.curren
               </div>
             )}
           </div>
+        )}
+        {glance.length > 0 && (
+          <section class="glance" aria-labelledby="glance-head">
+            <div class="glance__head">
+              <h2 id="glance-head" class="module__head">الأسواق في لمحة</h2>
+              <a class="glance__more ui" href="/markets/data/">لوحة الأسواق كاملة</a>
+            </div>
+            <div class="glance__row">
+              {glance.map((q) => (
+                <div class="glance__cell"><QuoteCard quote={q} /></div>
+              ))}
+            </div>
+          </section>
         )}
         {rest.length > 0 && (
           <div class={`section-page__rest ${rest.length < 3 ? "cards cards--list" : "cards"}`} style={`--n:${Math.min(rest.length, 4)}`}>
@@ -107,6 +122,31 @@ const title = first ? section.name : `${section.name} — صفحة ${page.curren
   .section-page__beside > :global(.card) { padding-block: 0.8rem; border-top: 1px solid var(--rule); }
   .section-page__beside > :global(.card:first-child) { border-top: 0; padding-top: 0.1rem; }
   .section-page__rest { margin-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--ink); padding-top: 1.25rem; }
+  .page-head__link { display: inline-block; margin-top: 0.6rem; font-weight: 700; font-size: 0.86rem; color: var(--green); text-decoration: none; }
+  .page-head__link:hover { text-decoration: underline; }
+  /* The glance band: six quote cards in ruled columns between the lead block and the rest. */
+  .glance { margin-top: clamp(1.5rem, 3vw, 2.5rem); }
+  .glance__head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+  .glance__head .module__head { flex: 1 1 auto; }
+  .glance__more { font-weight: 700; font-size: 0.82rem; color: var(--ink-2); text-decoration: none; white-space: nowrap; }
+  .glance__more:hover { color: var(--green); text-decoration: underline; }
+  .glance__row { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: 0; }
+  .glance__cell { min-width: 0; padding-inline: var(--col-gap); }
+  .glance__cell:first-child { padding-inline-start: 0; }
+  .glance__cell:last-child { padding-inline-end: 0; }
+  .glance__cell + .glance__cell { border-inline-start: 1px solid var(--rule); }
+  @media (max-width: 1023px) {
+    .glance__row { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 1rem; }
+    .glance__cell:nth-child(3) { padding-inline-end: 0; }
+    .glance__cell:nth-child(4) { padding-inline-start: 0; border-inline-start: 0; }
+  }
+  @media (max-width: 599px) {
+    .glance__row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .glance__cell { padding-inline: 0.75rem; }
+    .glance__cell:nth-child(odd) { padding-inline-start: 0; border-inline-start: 0; }
+    .glance__cell:nth-child(even) { padding-inline-end: 0; border-inline-start: 1px solid var(--rule); }
+    .glance__cell:nth-child(3) { padding-inline-end: 0.75rem; }
+  }
   /* The lead runs like the cover: headline first in the reading direction, photograph beside it. */
   .section-page__lead :global(.card--lead) { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 0 clamp(1.25rem, 3vw, 2.5rem); align-items: center; }
   /* The section lead has two thirds of the cover's measure, so its headline steps down a size. */
