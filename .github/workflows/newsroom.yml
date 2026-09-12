@@ -7,13 +7,14 @@ on:
     - cron: "41 5 * * *"
     - cron: "7 14 * * *"
     - cron: "31 9 * * 2,5"
+    - cron: "37 15 * * 5"
   workflow_dispatch:
     inputs:
       mode:
         description: news, explainer, analysis or paper
         default: news
         type: choice
-        options: [news, explainer, analysis, paper]
+        options: [news, explainer, analysis, paper, weekly]
       limit:
         description: maximum stories to publish
         default: "4"
@@ -55,9 +56,10 @@ jobs:
             if [ "${{ github.event.schedule }}" = "41 5 * * *" ]; then mode=explainer;
             elif [ "${{ github.event.schedule }}" = "7 14 * * *" ]; then mode=analysis;
             elif [ "${{ github.event.schedule }}" = "31 9 * * 2,5" ]; then mode=paper;
+            elif [ "${{ github.event.schedule }}" = "37 15 * * 5" ]; then mode=weekly;
             else mode=news; fi
           fi
-          case "$mode" in news|explainer|analysis|paper) ;; *) echo "invalid mode: $mode"; exit 2;; esac
+          case "$mode" in news|explainer|analysis|paper|weekly) ;; *) echo "invalid mode: $mode"; exit 2;; esac
           echo "mode=$mode" >> "$GITHUB_OUTPUT"
           echo "limit=${{ inputs.limit || '4' }}" >> "$GITHUB_OUTPUT"
 
@@ -74,9 +76,11 @@ jobs:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
         run: node pipeline/run.mjs --mode=${{ steps.mode.outputs.mode }} --limit=${{ steps.mode.outputs.limit }}
 
-      - name: Refresh market quotes
+      - name: Refresh market quotes and the calendar
         if: steps.newsroom.outputs.published != '0'
-        run: node pipeline/markets.mjs
+        run: |
+          node pipeline/markets.mjs
+          node pipeline/calendar.mjs
 
       - name: Commit new articles
         if: steps.newsroom.outputs.published != '0'
@@ -84,7 +88,7 @@ jobs:
         run: |
           git config user.name "khazendar-newsroom"
           git config user.email "newsroom@users.noreply.github.com"
-          git add content/articles pipeline/state pipeline/runs src/data/markets.json
+          git add content/articles pipeline/state pipeline/runs src/data/markets.json src/data/calendar.json
           if git diff --cached --quiet; then
             echo "nothing to commit"
             exit 0

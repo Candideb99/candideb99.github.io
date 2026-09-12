@@ -30,11 +30,15 @@ const cover = lead ? [lead, ...byImportance(unplaced(news).filter((a) => a.id !=
 place(cover.slice(0, 1));
 // The column beside the cover is the paper's own voice: one reading of each kind, so the column
 // never shows three items of the same shape under the same label.
-const readings = (["analysis", "explainer", "paper"] as const).flatMap((kind) => articles.filter((a) => a.data.kind === kind).slice(0, 1));
+// The week's review leads the column in the days after it appears; otherwise the latest analysis does.
+const readings = [
+  ...articles.filter((a) => a.data.kind === "weekly" || a.data.kind === "analysis").slice(0, 1),
+  ...(["explainer", "paper"] as const).flatMap((kind) => articles.filter((a) => a.data.kind === kind).slice(0, 1)),
+];
 const secondary = byImportance(unplaced(news).slice(0, 8)).slice(0, 2);
 place(secondary);
-// The digest: the next six stories, each its headline and one sentence, newest first.
-const digest = unplaced(news).slice(0, 6);
+// The digest: the next seven stories, each its headline and one sentence, newest first.
+const digest = unplaced(news).slice(0, 7);
 place(digest);
 const picks = byImportance(unplaced(articles)).slice(0, 4);
 place(picks);
@@ -53,7 +57,7 @@ const figures = articles
     const best = [...a.data.keyFacts].map((f) => ({ ...f, article: a, score: figureScore(f.value) })).filter((f) => f.score >= 0 && (f.label ?? "").length <= 48).sort((x, y) => y.score - x.score)[0];
     return best ? [best] : [];
   })
-  .slice(0, 4);
+  .slice(0, 3);
 const chart = chartOfTheDay(articles);
 const files = dossiers(articles);
 // The charts band (the Economist's graphic detail): the three freshest charts after the chart of the day.
@@ -92,7 +96,7 @@ const hubs = [
   { id: "analysis", kind: "analysis", more: "كل التحليلات" },
   { id: "explainers", kind: "explainer", more: "كل المواد" },
 ]
-  .map((h) => ({ ...h, section: getSection(h.id), items: articles.filter((a) => a.data.kind === h.kind || (h.id === "explainers" && a.data.kind === "paper")).slice(0, 4) }))
+  .map((h) => ({ ...h, section: getSection(h.id), items: articles.filter((a) => a.data.kind === h.kind || (h.id === "explainers" && a.data.kind === "paper") || (h.id === "analysis" && a.data.kind === "weekly")).slice(0, 4) }))
   .filter((h) => h.items.length > 0);
 
 // A picture is printed once per page even when two stories share it.

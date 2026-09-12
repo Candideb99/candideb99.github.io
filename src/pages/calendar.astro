@@ -1,0 +1,73 @@
+---
+/**
+ * الأجندة الاقتصادية: the coming two months of rate decisions and data releases, grouped by day,
+ * read from the institutions' own schedules. Every line names its institution and links to the
+ * schedule it came from.
+ */
+import Base from "@layouts/Base.astro";
+import { byDay, localTime, calendar } from "@lib/calendar";
+import { formatDate, formatTime, timeAgo } from "@lib/format";
+
+const days = byDay(75);
+const updated = calendar.updatedAt ? `${formatDate(calendar.updatedAt)}، ${formatTime(calendar.updatedAt)}` : "";
+const KIND = { rates: "قرار فائدة", data: "بيانات" } as const;
+---
+
+<Base title="الأجندة الاقتصادية" description="مواعيد قرارات الفائدة والبيانات الاقتصادية التي تتابعها خازندار، من جداول المؤسسات نفسها." path="/calendar/" section="economy">
+  <section class="wrap block">
+    <header class="page-head">
+      <h1 class="page-title">الأجندة الاقتصادية</h1>
+      <p class="page-intro">ما ينتظره الاقتصاد في الأسابيع المقبلة: قرارات الفائدة في الاحتياطي الفيدرالي والمركزي الأوروبي وبنك إنجلترا، وبيانات التضخم والوظائف الأمريكية. المواعيد من جداول المؤسسات نفسها{calendar.updatedAt && <span>، حُدّثت <time datetime={calendar.updatedAt} data-relative title={updated}>{timeAgo(calendar.updatedAt)}</time></span>}. الأوقات بتوقيت الرياض.</p>
+    </header>
+
+    {days.length === 0 ? (
+      <p class="empty ui">لا مواعيد مسجّلة في الفترة المقبلة.</p>
+    ) : (
+      <ol class="agenda">
+        {days.map((d) => (
+          <li class="agenda__day">
+            <h2 class="agenda__date ui"><time datetime={d.date}>{d.label}</time></h2>
+            <ul class="agenda__events">
+              {d.events.map((e) => {
+                const at = localTime(e);
+                return (
+                  <li class="agenda__event">
+                    <span class={`agenda__kind agenda__kind--${e.kind} ui`}>{KIND[e.kind]}</span>
+                    <div class="agenda__body">
+                      <p class="agenda__title"><a href={e.url} rel="noopener">{e.title}</a></p>
+                      <p class="agenda__meta ui">{e.org}{at && <span> · <bdi>{at}</bdi></span>}{e.note && <span> · {e.note}</span>}</p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </li>
+        ))}
+      </ol>
+    )}
+
+    <p class="note ui">المصادر: الاحتياطي الفيدرالي (جدول اجتماعات لجنة السوق المفتوحة)، البنك المركزي الأوروبي (جدول اجتماعات مجلس المحافظين)، بنك إنجلترا (مواعيد لجنة السياسة النقدية)، مكتب إحصاءات العمل الأمريكي (جداول إصدار مؤشر أسعار المستهلكين وتقرير الوظائف). تُقرأ الجداول آلياً قبل كل بناء؛ ما لا يُقرأ يبقى على آخر نسخة.</p>
+  </section>
+</Base>
+
+<style>
+  .page-intro time { color: inherit; }
+  .empty { color: var(--ink-3); }
+  .agenda { display: grid; }
+  .agenda__day { display: grid; grid-template-columns: 14rem minmax(0, 1fr); column-gap: var(--col-gap); padding-block: 1rem; border-top: 1px solid var(--rule); }
+  .agenda__day:first-child { border-top: 3px solid var(--ink); }
+  .agenda__date { font-size: 0.92rem; font-weight: 700; color: var(--green); line-height: 1.5; }
+  .agenda__events { display: grid; row-gap: 0.7rem; }
+  .agenda__event { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); column-gap: 0.75rem; align-items: baseline; }
+  .agenda__kind { font-size: 0.72rem; font-weight: 700; color: var(--ink-3); white-space: nowrap; }
+  .agenda__kind--rates { color: var(--green); }
+  .agenda__title { font-family: var(--font-title); font-weight: 700; font-size: 1.15rem; line-height: 1.4; }
+  .agenda__title a { text-decoration: none; }
+  .agenda__title a:hover { color: var(--green); }
+  .agenda__meta { font-size: 0.8rem; color: var(--ink-3); line-height: 1.5; margin-top: 0.1rem; }
+  .note { margin-top: 2rem; font-size: 0.78rem; line-height: 1.6; color: var(--ink-3); max-width: 60rem; }
+  @media (max-width: 719px) {
+    .agenda__day { grid-template-columns: 1fr; row-gap: 0.4rem; }
+    .agenda__event { grid-template-columns: 1fr; row-gap: 0.1rem; }
+  }
+</style>

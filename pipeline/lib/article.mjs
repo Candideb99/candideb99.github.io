@@ -17,7 +17,7 @@ export function readingMinutes(draft) {
 }
 
 /** The kinds of piece the newsroom files: news stories, explainers, house analyses and readings of research papers. */
-export const KINDS = new Set(["news", "explainer", "analysis", "paper"]);
+export const KINDS = new Set(["news", "explainer", "analysis", "paper", "weekly"]);
 
 /** Serializes an article as Markdown with YAML frontmatter. `kind` is "news" (default), "explainer", "analysis" or "paper". */
 export function serializeArticle({ draft, slug, section, sources, image, models, quality, kind = "news", publishedAt }) {

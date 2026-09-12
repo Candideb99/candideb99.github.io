@@ -18,6 +18,7 @@ export function kindLabel(kind: string, section: string): string {
   if (kind === "explainer") return "شرح مبسّط";
   if (kind === "analysis") return "تحليل";
   if (kind === "paper") return "قراءة في ورقة بحثية";
+  if (kind === "weekly") return "حصاد الأسبوع";
   return getSection(section).name;
 }
 

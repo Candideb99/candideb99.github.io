@@ -29,6 +29,9 @@ four first. They bind every agent, Codex included.
   the news values in STYLE.md §2; one story is one event.
 - **No literal translations, ever.** The copy desk and the banned list in `pipeline/lib/style.mjs`
   enforce it; fix the rule, never the article by hand.
+- **The calendar** (`/calendar/`, the front's الأجندة module) is read from the institutions' own
+  schedule pages by `pipeline/calendar.mjs`; never add a date from memory. The weekly review
+  (`--mode=weekly`, Fridays) is written only from the paper's own stories and that calendar.
 - **The market data** (strip, box beside the cover, glance band on الأسواق, the board at /markets/data/) comes only from
   `pipeline/markets.mjs`; the JSON is generated, never edited. Quotes are delayed and say so. Do not
   add a paid or keyed data source without the owner's yes.

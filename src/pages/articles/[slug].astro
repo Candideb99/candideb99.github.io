@@ -24,7 +24,7 @@ const all = await getArticles();
 const { Content } = await render(article);
 const d = article.data;
 const sec = getSection(d.section);
-const isHub = d.kind === "explainer" || d.kind === "analysis";
+const isHub = d.kind === "explainer" || d.kind === "analysis" || d.kind === "paper" || d.kind === "weekly";
 const description = d.subtitle || excerpt(d.lede, 160);
 const ogImage = d.image?.url ?? `/og/${d.slug}.png`;
 const more = related(article, all, 4);

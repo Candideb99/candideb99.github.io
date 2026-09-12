@@ -12,6 +12,7 @@ import { isolateNumbers } from "@lib/bidi";
 import { excerpt, timeAgo } from "@lib/format";
 import StoryCard from "./StoryCard.astro";
 import Chart from "./Chart.astro";
+import Agenda from "./Agenda.astro";
 
 interface Figure {
   label: string;
@@ -94,6 +95,7 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
         </ul>
       </section>
     )}
+    <Agenda limit={5} />
   </aside>
 </section>
 

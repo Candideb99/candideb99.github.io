@@ -9,6 +9,7 @@
  *   node pipeline/run.mjs --mode=explainer  # one evergreen explainer tied to recent coverage
  *   node pipeline/run.mjs --mode=analysis   # one house analysis connecting recent stories
  *   node pipeline/run.mjs --mode=paper      # one plain-Arabic reading of a recent open-access research paper
+ *   node pipeline/run.mjs --mode=weekly     # the week's review from the paper's own stories (Fridays)
  *
  * Reads OPENROUTER_API_KEY from the environment or from .env (see lib/env.mjs).
  */
@@ -19,7 +20,7 @@ import process from "node:process";
 import { fetchFeed } from "./lib/feeds.mjs";
 import { extractArticle } from "./lib/extract.mjs";
 import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectPaper, selectStories } from "./lib/select.mjs";
-import { ANALYSIS_WORDS, PAPER_WORDS, reviseArticle, writeAnalysis, writeArticle, writeExplainer, writePaperReading } from "./lib/write.mjs";
+import { ANALYSIS_WORDS, PAPER_WORDS, WEEKLY_WORDS, reviseArticle, writeAnalysis, writeArticle, writeExplainer, writePaperReading, writeWeekly } from "./lib/write.mjs";
 import { critique, programmaticChecks } from "./lib/verify.mjs";
 import { copyEdit } from "./lib/copydesk.mjs";
 import { pickImage } from "./lib/images.mjs";
@@ -346,7 +347,9 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   log(`critic ${kind}: ${review.verdict} score=${review.score} issues=${review.issues.length}`);
   for (const issue of [...checks.issues, ...review.issues].slice(0, 4)) log(`  · ${String(issue).slice(0, 160)}`);
   const entry = { headline, section, outcome: "" };
-  if (review.verdict === "reject" || review.score < 5) {
+  // A first pass under 5 is not worth a revision, except for the week's review, whose length and
+  // many sources draw a 4 with a "revise" list from the free critic; it gets its round like any piece.
+  if (review.verdict === "reject" || (review.score < 5 && kind !== "weekly")) {
     entry.outcome = `rejected (${review.score}): ${review.summary}`;
     report.push(entry);
     return { report, published: 0 };
@@ -679,7 +682,64 @@ function markdownSummary(summary) {
   return `## خازندار newsroom — ${summary.mode} (${summary.published} published)\n\n| section | story | score | image | outcome |\n|---|---|---|---|---|\n${rows || "| | (nothing) | | | |"}\n\nLLM calls: ${summary.llm.calls} ok, ${summary.llm.failures} failed; models: ${Object.entries(summary.llm.byModel).map(([m, n]) => `${m}×${n}`).join(", ") || "none"}\n`;
 }
 
-const RUNNERS = { news: runNews, explainer: runExplainer, analysis: runAnalysis, paper: runPaper };
+/** The week's stories, strongest first: news and analyses of the last seven days, the top fourteen. */
+function weekStories(existing) {
+  const importance = (a) => (a.quality?.importance ?? 5) + (a.kind === "analysis" ? 0.5 : 0);
+  return existing
+    .filter((a) => (a.kind === "news" || a.kind === "analysis") && hoursSince(a.publishedAt) < 24 * 7)
+    .sort((x, y) => importance(y) - importance(x))
+    .slice(0, 14);
+}
+
+/** The coming ten days of the calendar as plain text, and as a source the checks can ground dates against. */
+async function calendarForWeek() {
+  try {
+    const { events } = JSON.parse(await readFile(path.join(process.cwd(), "src", "data", "calendar.json"), "utf8"));
+    const today = new Date().toISOString().slice(0, 10);
+    const end = new Date(Date.now() + 10 * 86400000).toISOString().slice(0, 10);
+    const coming = events.filter((e) => e.date >= today && e.date <= end);
+    const text = coming.map((e) => `${e.date}: ${e.title} (${e.org})${e.note ? `؛ ${e.note}` : ""}`).join("\n");
+    return { text, source: { sourceName: "الأجندة الاقتصادية", sourceNameEn: "Khazendar calendar", title: "الأجندة الاقتصادية", url: "/calendar/", lang: "ar", publishedAt: new Date().toISOString(), text, summary: text } };
+  } catch {
+    return { text: "", source: null };
+  }
+}
+
+function runWeekly() {
+  return runHub("weekly", "analysis", async (report) => {
+    const existing = await loadExistingArticles();
+    const stories = weekStories(existing);
+    const past = existing.filter((a) => a.kind === "weekly").map((a) => a.title);
+    if (stories.length < 5) {
+      log("not enough coverage this week for a review");
+      return { report, published: 0 };
+    }
+    const date = new Date().toISOString().slice(0, 10);
+    const calendar = await calendarForWeek();
+    log(`weekly: ${stories.length} stories of the week, ${calendar.text ? calendar.text.split("\n").length : 0} calendar events`);
+    for (const a of stories.slice(0, 8)) log(`  story: ${a.title}`);
+    const sources = internalSources(stories, { withText: true });
+    const checkSources = calendar.source ? [...sources, calendar.source] : sources;
+    const { draft, model: writerModel } = await writeWeekly({ articles: stories, calendarText: calendar.text, date, log });
+    return finishHubPiece({
+      kind: "weekly",
+      section: "analysis",
+      draft,
+      sources: internalSources(stories),
+      checkSources,
+      recentTitles: past,
+      wordLimits: WEEKLY_WORDS,
+      story: { angle: "حصاد الأسبوع: ما يعنيه أسبوع الأخبار للقارئ العربي" },
+      headlineHint: `week-in-review-${date}`,
+      headline: draft.title,
+      models: { editor: writerModel, writer: writerModel },
+      existing,
+      report,
+    });
+  });
+}
+
+const RUNNERS = { news: runNews, explainer: runExplainer, analysis: runAnalysis, paper: runPaper, weekly: runWeekly };
 
 async function main() {
   const started = Date.now();

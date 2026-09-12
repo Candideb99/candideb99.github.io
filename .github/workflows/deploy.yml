@@ -32,8 +32,10 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci --no-audit --no-fund
-      - name: Refresh market quotes (best effort; the committed file is the fallback)
-        run: node pipeline/markets.mjs
+      - name: Refresh market quotes and the calendar (best effort; the committed files are the fallback)
+        run: |
+          node pipeline/markets.mjs
+          node pipeline/calendar.mjs
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
