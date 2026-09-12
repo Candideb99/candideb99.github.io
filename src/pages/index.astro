@@ -24,7 +24,7 @@ const lead = pickLead(articles);
 const cover = lead ? [lead, ...byImportance(unplaced(news).filter((a) => a.id !== lead.id).slice(0, 12)).slice(0, 4)] : [];
 place(cover.slice(0, 1));
 // The column beside the cover is the paper's own voice: the latest analysis, then explainers.
-const readings = [...articles.filter((a) => a.data.kind === "analysis").slice(0, 1), ...articles.filter((a) => a.data.kind === "explainer").slice(0, 3)];
+const readings = [...articles.filter((a) => a.data.kind === "analysis").slice(0, 1), ...articles.filter((a) => a.data.kind === "explainer" || a.data.kind === "paper").slice(0, 3)];
 const secondary = byImportance(unplaced(news).slice(0, 8)).slice(0, 2);
 place(secondary);
 const top = unplaced(news).slice(0, 5);
@@ -75,7 +75,7 @@ const hubs = [
   { id: "analysis", kind: "analysis", more: "كل التحليلات" },
   { id: "explainers", kind: "explainer", more: "كل المواد" },
 ]
-  .map((h) => ({ ...h, section: getSection(h.id), items: articles.filter((a) => a.data.kind === h.kind).slice(0, 4) }))
+  .map((h) => ({ ...h, section: getSection(h.id), items: articles.filter((a) => a.data.kind === h.kind || (h.id === "explainers" && a.data.kind === "paper")).slice(0, 4) }))
   .filter((h) => h.items.length > 0);
 
 // A picture is printed once per page even when two stories share it.

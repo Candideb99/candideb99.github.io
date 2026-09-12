@@ -82,7 +82,7 @@ the spirit of the media-Arabic coursebooks: reporting (أفادت … بأن، �
 ## 4. The organisation
 
 - **Sections** as the desks name them: الاقتصاد، الأسواق، الطاقة، الشركات، التكنولوجيا، الدفاع, with
-  تحليلات and مدخل إلى الاقتصاد (explainers of economic concepts) as hubs. Cards and articles are labelled by section, never by form; only a real
+  تحليلات and مدخل إلى الاقتصاد (explainers of economic concepts and readings of open-access research papers, labelled شرح مبسّط and قراءة في ورقة بحثية) as hubs; beside the cover, قراءات خازندار carries the latest analysis and the latest explainers or paper readings, the paper's own voice in the place a daily keeps its columns. Cards and articles are labelled by section, never by form; only a real
   exclusive would earn a badge.
 - **The kicker** (العنوان التمهيدي): the topic above the headline (الذهب، مضيق هرمز، التضخم) on
   the cover, the secondaries, the features, the section-page lead and the article page, linking to

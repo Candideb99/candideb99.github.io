@@ -58,7 +58,7 @@ const articles = defineCollection({
     subtitle: z.string().default(""),
     slug: z.string(),
     section: z.enum(["economy", "markets", "energy", "companies", "technology", "defense", "analysis", "explainers"]),
-    kind: z.enum(["news", "explainer", "analysis"]).default("news"),
+    kind: z.enum(["news", "explainer", "analysis", "paper"]).default("news"),
     publishedAt: isoString,
     updatedAt: isoString.optional(),
     lede: z.string().default(""),

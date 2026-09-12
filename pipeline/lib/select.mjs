@@ -202,3 +202,69 @@ Return JSON:
   };
   return { topic, related, model };
 }
+
+const PAPER_SYSTEM = `You are the research editor of خازندار, an Arabic economics publication. Twice a week you choose ONE recently published, freely available economics research paper for the paper's plain-Arabic reading (قراءة في ورقة بحثية): the papers that matter to an educated Arab reader, explained without jargon. You answer with one JSON object only.`;
+
+function formatPaper(c) {
+  const age = Number.isFinite(hoursSince(c.publishedAt)) ? `${Math.round(hoursSince(c.publishedAt) / 24)}d ago` : "date not given";
+  const access = c.abstractOnly ? "abstract only" : "abstract + free page text";
+  return `[${c.id}] (${c.sourceNameEn}; ${age}; ${access}; ${c.summary.length} chars of abstract) ${truncate(c.title, 160)} — ${truncate(c.summary, 600)} — ${c.url}`;
+}
+
+/**
+ * Picks one open-access research paper worth a reading. Returns { choice, model } with
+ * `choice` = { id, title_en, why_it_matters_ar, reading_angle_ar, open_access: { ok, url } }.
+ * The caller asks again, without the passed-over paper, when the chosen paper's free text is too thin.
+ */
+export async function selectPaper({ candidates, existingPapers, log }) {
+  const idSet = new Set(candidates.map((c) => c.id));
+  const user = `Today is ${new Date().toISOString().slice(0, 10)} (UTC).
+
+RECENT RESEARCH PAPERS (one per line: id, series, age, what free text exists, title, abstract, link):
+${candidates.map(formatPaper).join("\n")}
+
+PAPERS ALREADY READ BY خازندار (do not choose these or a paper on the same finding):
+${existingPapers.length ? existingPapers.map((t) => `- ${t}`).join("\n") : "- (none)"}
+
+TASK
+Choose ONE paper that is
+(a) open access: a free full text, or at least a free full abstract, at the link shown (all the series listed are free to read; note the ones marked "abstract only");
+(b) impactful for Arab readers: oil and energy markets, fiscal policy and public debt, labour markets and migration, inflation and monetary policy, trade and tariffs, development, banking and finance, the energy transition, remittances, sovereign wealth and reserves, AI and productivity; prefer findings a reader in the Gulf, Egypt, the Levant or the Maghreb can use, and findings with concrete numbers;
+(c) not already covered in the list above;
+(d) recent: prefer the last 60 days.
+Skip papers that are purely methodological, about a single rich-country programme with no wider lesson, or too technical to explain in plain words. The writer needs at least 3,000 characters of the paper's own text to explain it without inventing: strongly prefer series whose pages carry the full text or a long summary (the Federal Reserve series and notes, the Bank of England working papers, arXiv papers with an HTML version, World Bank abstracts of several paragraphs); choose an "abstract only" paper only when no full-text candidate fits.
+
+Return JSON:
+{"id":"<candidate id>","title_en":"<the paper's title in English, exactly as listed>","why_it_matters_ar":"<one Arabic sentence: why this paper matters to Arab readers>","reading_angle_ar":"<one Arabic sentence: the angle the reading should take>","open_access":{"ok":true,"url":"<the link shown for the paper>"}}`;
+
+  const normalizeId = (value) => {
+    const text = String(value ?? "").trim().replace(/[[\]\s]/g, "");
+    if (idSet.has(text)) return text;
+    const digits = text.match(/\d+/)?.[0];
+    return digits && idSet.has(`p${digits}`) ? `p${digits}` : null;
+  };
+  const { data, model } = await chat({
+    role: "editor",
+    system: PAPER_SYSTEM,
+    user,
+    temperature: 0.3,
+    maxTokens: 4000,
+    log,
+    validate: (d) => {
+      if (!d || typeof d !== "object") throw new Error("answer is not an object");
+      if (!normalizeId(d.id)) throw new Error(`unknown candidate id "${d.id}"`);
+      if (!d.why_it_matters_ar || !d.reading_angle_ar) throw new Error("why_it_matters_ar or reading_angle_ar missing");
+    },
+  });
+  const id = normalizeId(data.id);
+  const chosen = candidates.find((c) => c.id === id);
+  const openAccess = data.open_access && typeof data.open_access === "object" ? data.open_access : { ok: true, url: chosen.url };
+  const choice = {
+    id,
+    title_en: String(data.title_en ?? chosen.title).trim() || chosen.title,
+    why_it_matters_ar: String(data.why_it_matters_ar).trim(),
+    reading_angle_ar: String(data.reading_angle_ar).trim(),
+    open_access: { ok: openAccess.ok !== false, url: String(openAccess.url ?? "").trim() || chosen.url },
+  };
+  return { choice, model };
+}

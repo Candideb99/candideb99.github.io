@@ -15,6 +15,7 @@
     "newsroom:dry": "node pipeline/run.mjs --dry-run",
     "newsroom:explainer": "node pipeline/run.mjs --mode=explainer",
     "newsroom:analysis": "node pipeline/run.mjs --mode=analysis",
+    "newsroom:paper": "node pipeline/run.mjs --mode=paper",
     "control": "node scripts/control-room.mjs",
     "fonts": "node scripts/copy-fonts.mjs",
     "predev": "node scripts/copy-fonts.mjs",

@@ -7,7 +7,7 @@ the house rules and they bind you exactly as they bind any other agent on this p
 ## What publishes the paper (and it is not you)
 
 A GitHub Actions job called **Newsroom** runs in the cloud every three hours, plus one explainer and
-one analysis a day. It reads 47 feeds, picks the stories, writes original Arabic reporting, checks every number
+one analysis a day and one reading of a research paper on Tuesdays and Fridays. It reads 47 feeds, picks the stories, writes original Arabic reporting, checks every number
 against the sources, has an independent critic model score the draft, finds a licensed photograph,
 and commits. That pipeline carries the quality of this paper. **Never write an article yourself and
 never edit a published article's text by hand.** When more stories are wanted, you run the pipeline.
@@ -24,6 +24,7 @@ Run these from the project root, `C:\Users\ahmed\Documents\Khazendar`.
 | Write and publish stories now | `npm run newsroom -- --limit=3` |
 | Write one explainer | `npm run newsroom:explainer` |
 | Write one analysis | `npm run newsroom:analysis` |
+| Read one research paper | `npm run newsroom:paper` |
 | Test the pipeline without publishing | `npm run newsroom:dry` |
 | Find pictures for stories that have none | `node pipeline/backfill-images.mjs` |
 | Replace one story's picture | `node pipeline/backfill-images.mjs --redo=<slug>` |

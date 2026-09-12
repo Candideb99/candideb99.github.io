@@ -2,17 +2,18 @@ name: Newsroom
 
 on:
   schedule:
-    # News every three hours; one explainer and one analysis a day.
+    # News every three hours; one explainer and one analysis a day; one research-paper reading on Tuesdays and Fridays.
     - cron: "23 */3 * * *"
     - cron: "41 5 * * *"
     - cron: "7 14 * * *"
+    - cron: "31 9 * * 2,5"
   workflow_dispatch:
     inputs:
       mode:
-        description: news, explainer or analysis
+        description: news, explainer, analysis or paper
         default: news
         type: choice
-        options: [news, explainer, analysis]
+        options: [news, explainer, analysis, paper]
       limit:
         description: maximum stories to publish
         default: "4"
@@ -53,6 +54,7 @@ jobs:
           if [ -z "$mode" ]; then
             if [ "${{ github.event.schedule }}" = "41 5 * * *" ]; then mode=explainer;
             elif [ "${{ github.event.schedule }}" = "7 14 * * *" ]; then mode=analysis;
+            elif [ "${{ github.event.schedule }}" = "31 9 * * 2,5" ]; then mode=paper;
             else mode=news; fi
           fi
           echo "mode=$mode" >> "$GITHUB_OUTPUT"

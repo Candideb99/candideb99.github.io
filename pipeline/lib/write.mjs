@@ -133,8 +133,11 @@ ${SCHEMA_TEXT}`;
   return { draft: normalizeDraft(data), model };
 }
 
-/** Sends critic findings back to the writer for one revision. `wordLimits` (analyses) overrides the news word bounds. */
-export async function reviseArticle({ draft, sources, issues, log, wordLimits }) {
+/**
+ * Sends critic findings back to the writer for one revision. `wordLimits` (analyses, paper readings) overrides the
+ * news word bounds; `kind` picks the brief the revision is written under ("paper" for a reading of a research paper).
+ */
+export async function reviseArticle({ draft, sources, issues, log, wordLimits, kind = "" }) {
   const user = `You previously wrote this article for خازندار:
 ${JSON.stringify(draft, null, 2)}
 
@@ -148,7 +151,7 @@ ${issues.map((i, n) => `${n + 1}. ${i}`).join("\n")}
 Return the complete corrected article as one JSON object with the same keys as before (title, subtitle, slug, lede, body, key_facts, why_it_matters, tags, regions, image_queries${draft.chart || draft.table ? ", chart, table" : ""}).`;
   const { data, model } = await chat({
     role: "writer",
-    system: wordLimits ? ANALYST_SYSTEM : WRITER_SYSTEM,
+    system: kind === "paper" ? PAPER_SYSTEM : wordLimits ? ANALYST_SYSTEM : WRITER_SYSTEM,
     user,
     temperature: 0.25,
     maxTokens: wordLimits ? ANALYSIS_MAX_TOKENS : NEWS_MAX_TOKENS,
@@ -309,6 +312,70 @@ ${ANALYSIS_SCHEMA}`;
     validate: (d) => {
       if (d && typeof d === "object" && !(Array.isArray(d.tags) && d.tags.length) && fallbackTags.length) d.tags = fallbackTags;
       validateDraft(d, ANALYSIS_WORDS);
+    },
+  });
+  return { draft: normalizeDraft(data), model };
+}
+
+const PAPER_SYSTEM = `You are the senior economics writer of خازندار (Khazendar), an Arabic-language economics and business publication for educated readers across the Arab world. You write the paper's readings of research (قراءة في ورقة بحثية): you take ONE recently published, freely available economics paper and explain it to educated non-economists in plain Arabic: what it asks, how it finds out, what it finds, what it cannot claim, and what an Arab reader can take from it. You are a careful reader, not a promoter: the paper's findings are reported exactly as the paper states them, with their magnitudes, units, samples and periods; its caveats are kept; nothing is added from memory; and no finding is ever described as proven (never «تثبت الدراسة»; write «تجد الورقة»، «تقدّر»، «تخلص إلى»). Every term of art is followed by a gloss in plain words the first time it appears. The implications for Arab economies are the paper's reading, hedged (يرجّح، قد يعني، من المحتمل), never asserted.
+
+${HOUSE_STYLE}`;
+
+/** Word bounds of a paper reading (lede + body) for validateDraft: the brief asks for 600-900; the validator tolerates a margin. */
+export const PAPER_WORDS = { minWords: 480, maxWords: 1300, target: 650 };
+
+const PAPER_SCHEMA = `{
+  "title": "Arabic title, 35-85 characters, stating the paper's central finding or question in plain words (e.g. ورقة من الفيدرالي: الإيجارات المرتفعة تدفع المستأجرين إلى المدن الأرخص), ONE idea, no clickbait; a colon only to name the institution",
+  "subtitle": "Arabic dek: one sentence (max 160 chars) carrying the main result with its figure, as the paper states it",
+  "slug": "english-kebab-case-slug-4-to-7-words",
+  "lede": "Opening paragraph, 2-3 sentences, under 60 words: what the paper finds, naming the authors, the institution and the year of publication",
+  "body": "Markdown, 600-900 words together with the lede, with exactly these five '## ' subheads in this order: '## السؤال' (what the paper asks and why it matters), '## البيانات والطريقة' (the data and the method in plain words; every technical term glossed), '## النتائج' (the findings with their numbers exactly as the paper states them, attributed to the paper), '## الحدود' (what the paper cannot claim; its own caveats and limits), '## ماذا يعني للقارئ العربي' (implications for Arab economies, hedged as readings). Paragraphs of one to three sentences separated by blank lines; no bullet lists.",
+  "key_facts": [{"label": "short Arabic label (2-5 words)", "value": "a figure exactly as it appears in the paper's text, e.g. 75% or 3,058 أسرة"}],
+  "why_it_matters": "One Arabic paragraph (60-120 words): the bottom line for Arab readers, policymakers or businesses, hedged as a reading",
+  "tags": ["3-5 Arabic tags: the topic, the institution, the country or region studied, and always the tag أوراق بحثية"],
+  "regions": ["1-3 Arabic region tags"],
+  "image_queries": ["2-3 short English search terms (2-4 words each) naming a concrete subject of the paper's topic that exists as a photo on Wikimedia Commons: a port, a central bank building, a trading floor, a factory, an oil field, a city skyline, a market; never 'research', 'paper', 'chart' or any abstract concept"],
+  "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit", "source": "the paper (authors, institution, year)", "categories": ["Arabic labels, 3-12 items"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the paper's text]}]},
+  "table": null or {"title": "Arabic table title", "source": "the paper", "columns": ["2-5 Arabic column headers"], "rows": [["cells exactly as in the paper's text"]]}
+}
+Data visuals: include "chart" or "table" only when the paper's text itself gives at least three comparable figures of the same kind; every number must appear in the text; otherwise set them to null.`;
+
+/**
+ * Writes a plain-Arabic reading of one open-access research paper. `paper` carries the editor's choice
+ * (title_en, institutionEn/institutionAr, publishedAt, why_it_matters_ar, reading_angle_ar); `text` is the
+ * paper's own text (abstract and whatever free full text its page gave), the only material allowed.
+ */
+export async function writePaperReading({ paper, text, log }) {
+  const user = `PAPER BRIEF FROM THE EDITOR
+Paper: ${paper.title_en}
+Institution / series: ${paper.institutionEn}${paper.institutionAr ? ` (${paper.institutionAr})` : ""}
+Published: ${paper.publishedAt ? String(paper.publishedAt).slice(0, 10) : "date not given by the feed; take the year from the text if it states one"}
+Why it matters to Arab readers (editor): ${paper.why_it_matters_ar}
+Reading angle (editor): ${paper.reading_angle_ar}
+Today (UTC): ${new Date().toISOString().slice(0, 10)}
+
+THE PAPER'S TEXT (the only material you may use; every figure, name, date and claim must come from it)
+${text}
+
+TASK
+Write the reading for خازندار. Name the authors (transliterated, with the Latin original in parentheses once), the institution and the year in the lede. Report the findings exactly as the paper states them: the same numbers, units, directions, samples and periods, attributed to the paper («تجد الورقة»، «يقدّر الباحثون»); if the text gives no number for something, say the paper does not state it rather than supplying one. Gloss every technical term in plain words the first time it appears (e.g. «المرونة، أي مقدار استجابة الطلب لتغير السعر»). Keep the paper's own caveats under الحدود. Under ماذا يعني للقارئ العربي, connect the finding to Arab economies only as a hedged reading (يرجّح، قد يعني، من المحتمل), and never generalise a result from one country to the region as fact. The editor's angle is direction only: where the text does not support it, drop it. Never write «تثبت الدراسة» or claim proof. No first person.
+LENGTH: 600-900 words in the lede and body together, under the five required subheads. A draft under 550 words is rejected automatically.
+Return one JSON object exactly in this shape:
+${PAPER_SCHEMA}`;
+  const { data, model } = await chat({
+    role: "writer",
+    system: PAPER_SYSTEM,
+    user,
+    temperature: 0.35,
+    maxTokens: ANALYSIS_MAX_TOKENS,
+    log,
+    validate: (d) => {
+      // The reading always carries the hub tag, whatever the model chose.
+      if (d && typeof d === "object") {
+        const tags = Array.isArray(d.tags) ? d.tags.map(String) : [];
+        if (!tags.some((t) => /أوراق بحثية/.test(t))) d.tags = [...tags, "أوراق بحثية"];
+      }
+      validateDraft(d, PAPER_WORDS);
     },
   });
   return { draft: normalizeDraft(data), model };

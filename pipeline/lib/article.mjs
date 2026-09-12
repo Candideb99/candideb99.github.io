@@ -16,12 +16,12 @@ export function readingMinutes(draft) {
   return Math.max(1, Math.round(words / 180));
 }
 
-/** The kinds of piece the newsroom files: news stories, explainers and house analyses. */
-export const KINDS = new Set(["news", "explainer", "analysis"]);
+/** The kinds of piece the newsroom files: news stories, explainers, house analyses and readings of research papers. */
+export const KINDS = new Set(["news", "explainer", "analysis", "paper"]);
 
-/** Serializes an article as Markdown with YAML frontmatter. `kind` is "news" (default), "explainer" or "analysis". */
+/** Serializes an article as Markdown with YAML frontmatter. `kind` is "news" (default), "explainer", "analysis" or "paper". */
 export function serializeArticle({ draft, slug, section, sources, image, models, quality, kind = "news", publishedAt }) {
-  if (!KINDS.has(kind)) throw new Error(`unknown article kind "${kind}" (news, explainer or analysis)`);
+  if (!KINDS.has(kind)) throw new Error(`unknown article kind "${kind}" (${[...KINDS].join(", ")})`);
   const frontmatter = {
     title: draft.title,
     subtitle: draft.subtitle,
@@ -67,7 +67,7 @@ export function serializeArticle({ draft, slug, section, sources, image, models,
 
 /**
  * Loads the metadata and text of existing articles (for dedup, recency, related pieces, and as the
- * material an analysis draws on). `kind` is news, explainer or analysis; `body` is the Markdown text.
+ * material an analysis draws on). `kind` is news, explainer, analysis or paper; `body` is the Markdown text.
  */
 export async function loadExistingArticles() {
   let files = [];

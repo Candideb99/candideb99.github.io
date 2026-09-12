@@ -17,6 +17,7 @@ export const newsSections = sections.filter((s) => !HUB_SECTIONS.has(s.id));
 export function kindLabel(kind: string, section: string): string {
   if (kind === "explainer") return "شرح مبسّط";
   if (kind === "analysis") return "تحليل";
+  if (kind === "paper") return "قراءة في ورقة بحثية";
   return getSection(section).name;
 }
 

@@ -8,6 +8,7 @@
  *   node pipeline/run.mjs --source=ecb    # restrict to one feed
  *   node pipeline/run.mjs --mode=explainer  # one evergreen explainer tied to recent coverage
  *   node pipeline/run.mjs --mode=analysis   # one house analysis connecting recent stories
+ *   node pipeline/run.mjs --mode=paper      # one plain-Arabic reading of a recent open-access research paper
  *
  * Reads OPENROUTER_API_KEY from the environment or from .env (see lib/env.mjs).
  */
@@ -17,8 +18,8 @@ import path from "node:path";
 import process from "node:process";
 import { fetchFeed } from "./lib/feeds.mjs";
 import { extractArticle } from "./lib/extract.mjs";
-import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectStories } from "./lib/select.mjs";
-import { ANALYSIS_WORDS, reviseArticle, writeAnalysis, writeArticle, writeExplainer } from "./lib/write.mjs";
+import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectPaper, selectStories } from "./lib/select.mjs";
+import { ANALYSIS_WORDS, PAPER_WORDS, reviseArticle, writeAnalysis, writeArticle, writeExplainer, writePaperReading } from "./lib/write.mjs";
 import { critique, programmaticChecks } from "./lib/verify.mjs";
 import { copyEdit } from "./lib/copydesk.mjs";
 import { pickImage } from "./lib/images.mjs";
@@ -329,9 +330,10 @@ function internalSources(articles, { withText = false } = {}) {
 }
 
 /**
- * Shared tail of the explainer and analysis modes: programmatic checks, the critic, one revision round
+ * Shared tail of the explainer, analysis and paper modes: programmatic checks, the critic, one revision round
  * with a second critic pass, the photo, and the file. `checkSources` is what the draft is checked
- * against (nothing for an explainer, the related stories for an analysis); `sources` is what is filed.
+ * against (nothing for an explainer, the related stories for an analysis, the research paper's text for a
+ * paper reading); `sources` is what is filed.
  */
 async function finishHubPiece({ kind, section, draft: firstDraft, sources, checkSources, recentTitles, wordLimits, story, headlineHint, headline, models, existing, report }) {
   const desk = await copyDeskPass(firstDraft);
@@ -354,7 +356,7 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   let writerModel = models.writer;
   const issues = [...checks.issues, ...(review.verdict === "revise" ? review.issues : [])];
   if (issues.length) {
-    const revision = await reviseArticle({ draft, sources: checkSources, issues, log, wordLimits });
+    const revision = await reviseArticle({ draft, sources: checkSources, issues, log, wordLimits, kind });
     draft = (await copyDeskPass(revision.draft, { includeBody: false })).draft;
     writerModel = `${writerModel} → ${revision.model}`;
     revised = true;
@@ -478,6 +480,186 @@ function runAnalysis() {
   });
 }
 
+/** The paper mode reads research up to this old (the editor is told to prefer the last 60 days). */
+const PAPER_MAX_AGE_HOURS = 24 * 90;
+/** A reading needs at least this much of the paper's own text (abstract plus free page text). */
+const PAPER_MIN_CHARS = 3000;
+/** How much of a free full text is read: enough for the abstract, the introduction and the main results. */
+const PAPER_MAX_CHARS = 24000;
+
+/**
+ * Recent items of the research feeds (`papers` in sources.json), newest first, minus what the paper already read
+ * or the state already judged. The news editor never sees these; the research editor sees only these.
+ */
+async function gatherPapers(sources, state, existing) {
+  const enabled = sources.filter((s) => !s.disabled && (!ONLY_SOURCE || s.id === ONLY_SOURCE));
+  const all = [];
+  await Promise.all(
+    enabled.map(async (source) => {
+      const items = await fetchFeed(source, { maxAgeHours: PAPER_MAX_AGE_HOURS, log });
+      for (const item of items) {
+        all.push({
+          ...item,
+          sourceName: source.name,
+          sourceNameEn: source.nameEn,
+          reliability: source.reliability,
+          kind: source.kind,
+          lang: source.lang,
+          abstractOnly: Boolean(source.abstractOnly),
+          note: source.note ?? "",
+        });
+      }
+    }),
+  );
+  const usedUrls = new Set(existing.flatMap((a) => a.sourceUrls).map((u) => fingerprint(u)));
+  const seenTitles = new Set();
+  const candidates = [];
+  for (const item of all) {
+    const fp = fingerprint(item.url);
+    if (state.items[fp] || usedUrls.has(fp)) continue;
+    // The World Bank repository lists items still being catalogued under a placeholder title.
+    if (/^notitle$/i.test(item.title.trim()) || !item.summary) continue;
+    const titleKey = item.title.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim().slice(0, 90);
+    if (seenTitles.has(titleKey)) continue;
+    seenTitles.add(titleKey);
+    candidates.push(item);
+  }
+  candidates.sort((a, b) => hoursSince(a.publishedAt) - hoursSince(b.publishedAt));
+  const capped = candidates.slice(0, 120);
+  capped.forEach((c, i) => {
+    c.id = `p${i + 1}`;
+  });
+  return capped;
+}
+
+/** Whether a fetched page is about this paper: a repository page that yields only "related items" is not. */
+function looksLikeThePaper(text, item) {
+  const lower = text.toLowerCase();
+  const head = String(item.summary ?? "").replace(/^\s*dc\.[\w.]+:\s*/gm, "").trim().slice(0, 80).toLowerCase();
+  if (head.length >= 40 && lower.includes(head)) return true;
+  const words = [...new Set(item.title.toLowerCase().match(/[\p{L}\p{N}]{5,}/gu) ?? [])];
+  if (!words.length) return false;
+  const hits = words.filter((w) => lower.includes(w)).length;
+  return hits / words.length >= 0.5;
+}
+
+/**
+ * Reads one paper: the abstract the feed carried, plus the free text of its page (and, for arXiv, of the HTML
+ * version of the paper) when the series offers one. Returns { text, pageUrl, ogImage }.
+ */
+async function readPaper(item) {
+  const abstract = String(item.summary ?? "").replace(/^\s*dc\.[\w.]+:\s*/gm, "").trim();
+  const pages = [item.url];
+  // arXiv renders an HTML full text for most recent papers, sometimes only under the unversioned id.
+  const arxiv = item.url.match(/arxiv\.org\/abs\/([\w./-]+?)(v\d+)?$/i);
+  if (arxiv) pages.unshift(`https://arxiv.org/html/${arxiv[1]}${arxiv[2] ?? ""}`, `https://arxiv.org/html/${arxiv[1]}`);
+  let pageText = "";
+  let pageUrl = "";
+  let ogImage = "";
+  if (!item.abstractOnly) {
+    for (const url of pages) {
+      const fetched = await extractArticle(url, { maxChars: PAPER_MAX_CHARS, log });
+      if (!fetched.ok) {
+        log(`paper page ${url}: ${fetched.reason}`);
+        continue;
+      }
+      if (!looksLikeThePaper(fetched.text, item)) {
+        log(`paper page ${url}: text is not this paper's; ignored`);
+        continue;
+      }
+      pageText = fetched.text;
+      pageUrl = url;
+      ogImage = fetched.ogImage;
+      break;
+    }
+  }
+  // The page text stands alone when it already carries the abstract; otherwise the abstract leads it.
+  const text = pageText && pageText.includes(abstract.slice(0, 100)) ? pageText : [abstract, pageText].filter(Boolean).join("\n\n");
+  return { text, pageUrl, ogImage };
+}
+
+/**
+ * Twice a week: one plain-Arabic reading of a recent open-access research paper (kind "paper", filed in the
+ * explainers hub). The research editor picks the paper; the paper's own text is the only material and the
+ * only source the reading is checked against; a paper whose free text is too thin is passed over, up to three times.
+ */
+function runPaper() {
+  return runHub("paper", "explainers", async (report) => {
+    const config = await readJson(path.join(root, "pipeline", "sources.json"), { papers: [] });
+    const state = await loadState();
+    const existing = await loadExistingArticles();
+    const existingPapers = existing.filter((a) => a.kind === "paper").map((a) => a.title);
+    let candidates = await gatherPapers(config.papers ?? [], state, existing);
+    log(`paper candidates: ${candidates.length} recent research items`);
+    if (candidates.length < 3) {
+      log("too few paper candidates; nothing to do");
+      return { report, published: 0 };
+    }
+
+    let chosen = null;
+    for (let attempt = 1; attempt <= 3 && candidates.length; attempt += 1) {
+      const { choice, model: editorModel } = await selectPaper({ candidates, existingPapers, log });
+      const item = candidates.find((c) => c.id === choice.id);
+      log(`research editor (${editorModel}) chose [${choice.id}] ${item.sourceId}: ${choice.title_en}${choice.open_access.ok ? "" : " (editor doubts open access)"}`);
+      log(`  why: ${choice.why_it_matters_ar}`);
+      const read = await readPaper(item);
+      log(`paper [${choice.id}]: ${read.text.length} chars of text${read.pageUrl ? ` (abstract + ${read.pageUrl})` : " (abstract only)"}`);
+      if (read.text.length >= PAPER_MIN_CHARS) {
+        chosen = { item, choice, editorModel, ...read };
+        break;
+      }
+      log(`  too little text (${read.text.length} < ${PAPER_MIN_CHARS}); passing over this paper${attempt < 3 ? " and asking the editor again" : ""}`);
+      markItems(state, [item], "skipped");
+      candidates = candidates.filter((c) => c.id !== item.id);
+    }
+    if (!chosen) {
+      report.push({ headline: "", section: "explainers", outcome: "skipped: too little free text in three candidates" });
+      await saveState(state);
+      return { report, published: 0 };
+    }
+
+    const { item, choice, editorModel, text } = chosen;
+    // The paper itself is the single source: filed as read, and checked against as text.
+    const source = {
+      sourceId: item.sourceId,
+      sourceName: item.sourceName,
+      sourceNameEn: item.sourceNameEn,
+      title: item.title,
+      url: item.url,
+      lang: "en",
+      publishedAt: item.publishedAt ?? undefined,
+      summary: item.summary,
+      text,
+    };
+    const brief = {
+      ...choice,
+      title_en: item.title,
+      institutionEn: item.sourceNameEn,
+      institutionAr: item.sourceName,
+      publishedAt: item.publishedAt,
+    };
+    const { draft, model: writerModel } = await writePaperReading({ paper: brief, text, log });
+    const result = await finishHubPiece({
+      kind: "paper",
+      section: "explainers",
+      draft,
+      sources: [source],
+      checkSources: [source],
+      recentTitles: existingPapers,
+      wordLimits: PAPER_WORDS,
+      story: { angle: choice.reading_angle_ar },
+      headlineHint: item.title,
+      headline: item.title,
+      models: { editor: editorModel, writer: writerModel },
+      existing,
+      report,
+    });
+    markItems(state, [item], result.published ? "published" : "rejected", report.at(-1)?.slug);
+    await saveState(state);
+    return result;
+  });
+}
+
 async function writeRunReport(summary) {
   if (DRY_RUN) return;
   await mkdir(RUNS_DIR, { recursive: true });
@@ -497,12 +679,12 @@ function markdownSummary(summary) {
   return `## خازندار newsroom — ${summary.mode} (${summary.published} published)\n\n| section | story | score | image | outcome |\n|---|---|---|---|---|\n${rows || "| | (nothing) | | | |"}\n\nLLM calls: ${summary.llm.calls} ok, ${summary.llm.failures} failed; models: ${Object.entries(summary.llm.byModel).map(([m, n]) => `${m}×${n}`).join(", ") || "none"}\n`;
 }
 
-const RUNNERS = { news: runNews, explainer: runExplainer, analysis: runAnalysis };
+const RUNNERS = { news: runNews, explainer: runExplainer, analysis: runAnalysis, paper: runPaper };
 
 async function main() {
   const started = Date.now();
   const run = RUNNERS[MODE];
-  if (!run) throw new Error(`unknown mode "${MODE}" (news, explainer or analysis)`);
+  if (!run) throw new Error(`unknown mode "${MODE}" (${Object.keys(RUNNERS).join(", ")})`);
   log(`newsroom start mode=${MODE} limit=${LIMIT} dry-run=${DRY_RUN}`);
   const outcome = await run();
   const summary = {

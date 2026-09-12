@@ -10,12 +10,22 @@ const ANALYSIS_SECTIONS = [
   { name: "ما الذي نراقبه", test: /نراقب|المراقبة|نرصد/ },
 ];
 
+/** The five sections of a reading of a research paper, matched loosely against its "## " subheads. */
+const PAPER_SECTIONS = [
+  { name: "السؤال", test: /السؤال/ },
+  { name: "البيانات والطريقة", test: /البيانات|الطريقة|المنهج/ },
+  { name: "النتائج", test: /النتائج|النتيجة/ },
+  { name: "الحدود", test: /الحدود|القيود|حدود/ },
+  { name: "ماذا يعني للقارئ العربي", test: /القارئ العربي|للقارئ|يعني/ },
+];
+
 /**
  * Deterministic checks. Returns { ok, issues[], warnings[], metrics }.
- * News and analyses are grounded: every figure must trace to `sources` (for an analysis, the paper's own
- * related stories). Explainers carry only illustrative numbers, so their figures and visuals are not checked.
+ * News, analyses and paper readings are grounded: every figure must trace to `sources` (for an analysis, the
+ * paper's own related stories; for a paper reading, the research paper's text as the single source).
+ * Explainers carry only illustrative numbers, so their figures and visuals are not checked.
  */
-export function programmaticChecks(draft, sources, { recentTitles = [], explainer = false, analysis = false } = {}) {
+export function programmaticChecks(draft, sources, { recentTitles = [], explainer = false, analysis = false, paper = false } = {}) {
   const issues = [];
   const warnings = [];
   const grounded = !explainer;
@@ -41,7 +51,7 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
   if (/https?:\/\/|www\./i.test(prose)) issues.push("النص يحتوي على روابط؛ احذفها.");
 
   // The house's Arabic: banned calques and fillers force a revision; texture faults are warnings the desk reads.
-  const style = styleIssues(draft, { kind: explainer ? "explainer" : analysis ? "analysis" : "news" });
+  const style = styleIssues(draft, { kind: explainer ? "explainer" : analysis ? "analysis" : paper ? "paper" : "news" });
   issues.push(...style.issues);
   warnings.push(...style.warnings);
 
@@ -52,6 +62,13 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
     const subheads = (draft.body.match(/^##\s+.+$/gm) ?? []).join("\n");
     const missing = ANALYSIS_SECTIONS.filter((s) => !s.test.test(subheads)).map((s) => s.name);
     if (missing.length) issues.push(`بنية التحليل ناقصة؛ العناوين الفرعية المطلوبة (بصيغة "## ") غير موجودة: ${missing.join("، ")}. أضفها بهذا الترتيب: ما الذي تغيّر، من يربح ومن يخسر، السيناريوهات، ما الذي نراقبه.`);
+  } else if (paper) {
+    if (words < 550) issues.push(`القراءة قصيرة جداً (${words} كلمة)؛ يجب ألا تقل عن 600 كلمة. وسّع الشرح من نص الورقة نفسه دون اختراع أرقام.`);
+    else if (words > 1000) warnings.push(`long paper reading: ${words} words`);
+    const subheads = (draft.body.match(/^##\s+.+$/gm) ?? []).join("\n");
+    const missing = PAPER_SECTIONS.filter((s) => !s.test.test(subheads)).map((s) => s.name);
+    if (missing.length) issues.push(`بنية القراءة ناقصة؛ العناوين الفرعية المطلوبة (بصيغة "## ") غير موجودة: ${missing.join("، ")}. أضفها بهذا الترتيب: السؤال، البيانات والطريقة، النتائج، الحدود، ماذا يعني للقارئ العربي.`);
+    if (/تثبت (?:الدراسة|الورقة)|يثبت البحث|تبرهن/.test(prose)) issues.push("القراءة تصف النتائج بأنها «تثبت»؛ الورقة تجد وتقدّر وتخلص، ولا تثبت. أعد الصياغة (تجد الورقة، يقدّر الباحثون).");
   } else if (words < 200) issues.push(`المقال قصير جداً (${words} كلمة). وسّع السياق من المصادر دون اختراع معلومات، بحيث لا يقل عن 260 كلمة.`);
 
   // Data visuals must be built only from figures in the sources; a visual with invented numbers is dropped, not the article.
@@ -138,6 +155,12 @@ const CRITIC_RUBRIC = {
     facts: FACTS_CHECK,
     check: "Are definitions standard and correct? Are all worked-example numbers clearly labelled as illustrative?",
   },
+  paper: {
+    material:
+      "(reading of a research paper: the single source below is the paper's own text, abstract and whatever free full text its page offers. The reading explains that paper to educated non-economists; it may add nothing the text does not contain, and its implications for Arab readers are legitimate only as hedged readings.)",
+    facts: "Every number, name, date and finding in the draft: does it trace to the paper's text, with the same magnitude, unit, direction, sample and period? Is each finding reported as the paper reports it (an estimate stays an estimate, an association is not made a cause, nothing is described as proven)? List each unsupported, altered or overstated item.",
+    check: "Does the reading carry the five sections (السؤال، البيانات والطريقة، النتائج، الحدود، ماذا يعني للقارئ العربي) with substance in each? Are the paper's own caveats and limits kept under الحدود rather than dropped? Is every implication for Arab economies hedged as a reading, never asserted, and never a one-country result generalised to the region? Is every technical term glossed in plain words? Does the Arabic read as the economics desks write it (الشرق الأوسط، الاقتصادية): short sentences, concrete nouns, the desks' attribution forms, no translationese?",
+  },
   analysis: {
     material:
       "(analysis: the sources below are خازندار's own published stories; every figure, date, name and quotation in the draft must trace to them. Interpretation is the genre: the paper's own reading of consequences is legitimate when it is clearly framed as a reading (يرجّح، قد، من المحتمل) and stays within what the stories support; it is a fault when asserted as fact or when it contradicts the stories.)",
@@ -147,8 +170,8 @@ const CRITIC_RUBRIC = {
 };
 
 /** Critic pass. Returns { verdict: "publish"|"revise"|"reject", score, issues[], model }. */
-export async function critique({ draft, sources, explainer = false, analysis = false, log }) {
-  const rubric = CRITIC_RUBRIC[explainer ? "explainer" : analysis ? "analysis" : "news"];
+export async function critique({ draft, sources, explainer = false, analysis = false, paper = false, log }) {
+  const rubric = CRITIC_RUBRIC[explainer ? "explainer" : analysis ? "analysis" : paper ? "paper" : "news"];
   const material = sources.map((s, i) => `SOURCE ${i + 1}: ${s.sourceNameEn} (${s.lang}) — "${s.title}"\n${s.text || s.summary || ""}`).join("\n\n");
   const user = `SOURCE MATERIAL
 ${[rubric.material, material || (explainer ? "" : "(no sources supplied)")].filter(Boolean).join("\n\n")}

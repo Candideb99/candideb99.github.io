@@ -100,12 +100,14 @@ export async function fetchFeed(source, { maxAgeHours = 36, log = () => {} } = {
       .map((item) => ({
         ...item,
         url: canonicalUrl(item.url),
-        summary: truncate(item.summary, 1200),
+        // Research feeds carry a whole abstract in the summary; `summaryChars` lets them keep it.
+        summary: truncate(item.summary, source.summaryChars ?? 1200),
         sourceId: source.id,
       }))
       .filter((item) => !pathFilter || pathFilter.test(item.url) || pathFilter.test(item.categories.join(" ")))
       .filter((item) => !excludePath || !excludePath.test(item.url))
-      .filter((item) => !item.url.toLowerCase().endsWith(".pdf"))
+      // A PDF cannot be read as a page; a working-paper series that links only to PDFs sets `allowPdf` and is read from its abstract.
+      .filter((item) => source.allowPdf || !item.url.toLowerCase().endsWith(".pdf"))
       .filter((item) => item.publishedAt == null || hoursSince(item.publishedAt) <= limitHours)
       .slice(0, source.maxItems ?? 40);
     log(`feed ${source.id}: ${items.length} fresh items`);
