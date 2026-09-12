@@ -27,7 +27,6 @@ tags:
   - الحركة الجوية
   - هييدي ألكسندر
 regions:
-  - المملكة المتحدة
   - أوروبا
 readingMinutes: 3
 chart: null

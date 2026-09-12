@@ -27,8 +27,7 @@ tags:
   - جوجل
   - بنية تحتية رقمية
 regions:
-  - أوروبا الشمالية
-  - الاتحاد الأوروبي
+  - أوروبا
 readingMinutes: 2
 chart: null
 table: null

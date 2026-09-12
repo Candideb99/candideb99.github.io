@@ -5,8 +5,13 @@ import Front from "@components/Front.astro";
 import Ticker from "@components/Ticker.astro";
 import Dossiers from "@components/Dossiers.astro";
 import StoryCard from "@components/StoryCard.astro";
-import { getArticles, pickLead, dossiers, chartOfTheDay, allTags, type Article } from "@lib/articles";
+import Chart from "@components/Chart.astro";
+import { DESKS, desksOf } from "@lib/regions";
+import { getArticles, pickLead, dossiers, chartOfTheDay, type Article } from "@lib/articles";
 import { newsSections, getSection, sectionHref } from "@lib/sections";
+import { articleHref } from "@lib/articles";
+import { isolateNumbers } from "@lib/bidi";
+import { timeAgo } from "@lib/format";
 import site from "@data/site.json";
 
 const articles = await getArticles();
@@ -28,8 +33,9 @@ place(cover.slice(0, 1));
 const readings = (["analysis", "explainer", "paper"] as const).flatMap((kind) => articles.filter((a) => a.data.kind === kind).slice(0, 1));
 const secondary = byImportance(unplaced(news).slice(0, 8)).slice(0, 2);
 place(secondary);
-const top = unplaced(news).slice(0, 5);
-place(top);
+// The digest: the next six stories, each its headline and one sentence, newest first.
+const digest = unplaced(news).slice(0, 6);
+place(digest);
 const picks = byImportance(unplaced(articles)).slice(0, 4);
 place(picks);
 // The strip carries the newest stories not already on the first screen, so no headline prints twice above the fold.
@@ -50,12 +56,22 @@ const figures = articles
   .slice(0, 4);
 const chart = chartOfTheDay(articles);
 const files = dossiers(articles);
-const regionNames = new Set(articles.flatMap((a) => a.data.regions));
-const regions = [...allTags(articles)]
-  .filter(([tag, items]) => regionNames.has(tag) && items.length >= 2)
-  .map(([tag, items]) => ({ tag, count: items.length }))
-  .sort((x, y) => y.count - x.count)
-  .slice(0, 7);
+// The charts band (the Economist's graphic detail): the three freshest charts after the chart of the day.
+const chartsBand = articles
+  .filter((a) => a.id !== chart?.id && a.data.chart && a.data.chart.title && a.data.chart.categories.length <= 8 && a.data.chart.series.length <= 2)
+  .slice(0, 3);
+// The desks: the four regions with the freshest news, three headlines each, a story printed in
+// one desk only even when it carries two regions (as the files band does).
+const deskShown = new Set<string>();
+const desks = DESKS.map((d) => ({ ...d, pool: news.filter((a) => desksOf(a).some((x) => x.id === d.id)).slice(0, 8) }))
+  .filter((d) => d.pool.length >= 2)
+  .sort((x, y) => Date.parse(y.pool[0].data.publishedAt) - Date.parse(x.pool[0].data.publishedAt))
+  .slice(0, 4)
+  .map((d) => {
+    const items = [...d.pool.filter((a) => !deskShown.has(a.id)), ...d.pool.filter((a) => deskShown.has(a.id))].slice(0, 3);
+    items.forEach((a) => deskShown.add(a.id));
+    return { ...d, items: items.sort((x, y) => Date.parse(y.data.publishedAt) - Date.parse(x.data.publishedAt)) };
+  });
 
 // Section blocks: one feature and up to three briefs, the stories not yet on the page first (with
 // their pictures), then stories already placed above, as text.
@@ -83,7 +99,7 @@ const hubs = [
 const photoIds = new Set<string>();
 {
   const seenUrls = new Set<string>();
-  const order = [...cover, ...secondary, ...top, ...rows.flatMap((r) => r.items.filter((i) => !i.repeat).map((i) => i.a)), ...hubs.flatMap((h) => h.items)];
+  const order = [...cover, ...secondary, ...rows.flatMap((r) => r.items.filter((i) => !i.repeat).map((i) => i.a)), ...hubs.flatMap((h) => h.items)];
   for (const a of order) {
     const url = a?.data.image?.url;
     if (!a || !url || seenUrls.has(url)) continue;
@@ -109,7 +125,7 @@ const jsonLd = {
     <>
       <Ticker items={ticker} />
       <Cover stories={cover} readings={readings} photoIds={photoIds} />
-      <Front secondary={secondary} top={top} picks={picks} figures={figures} chart={chart} photoIds={photoIds} />
+      <Front secondary={secondary} digest={digest} picks={picks} figures={figures} chart={chart} photoIds={photoIds} />
     </>
   ) : (
     <section class="wrap block">
@@ -118,7 +134,23 @@ const jsonLd = {
     </section>
   )}
 
-  <Dossiers files={files} regions={regions} />
+  <Dossiers files={files} />
+
+  {chartsBand.length > 0 && (
+    <section class="wrap row charts" aria-labelledby="charts-head">
+      <div class="section-head">
+        <h2 id="charts-head">بالرسوم البيانية</h2>
+      </div>
+      <div class="cols" style={`--n:${chartsBand.length}`}>
+        {chartsBand.map((a, i) => (
+          <div class="charts__cell">
+            <Chart chart={a.data.chart!} id={`band-chart-${i}`} compact href={articleHref(a)} />
+            <p class="module__from ui">من مادة: <a href={articleHref(a)} set:html={isolateNumbers(a.data.title)} /></p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
 
   {rows.map((r, i) => {
     const [feature, ...briefs] = r.items;
@@ -155,6 +187,30 @@ const jsonLd = {
     );
   })}
 
+  {desks.length > 0 && (
+    <section class="wrap row desks" aria-labelledby="desks-head">
+      <div class="section-head">
+        <h2 id="desks-head"><a href="/tags/">الأخبار بحسب المنطقة</a></h2>
+        <a class="more" href="/tags/">كل الملفات والمناطق</a>
+      </div>
+      <div class="cols" style={`--n:${desks.length}`}>
+        {desks.map((d) => (
+          <div class="desk">
+            <h3 class="desk__name"><a href={`/tags/${encodeURIComponent(d.name)}/`}>{d.name}</a></h3>
+            <ul class="desk__list">
+              {d.items.map((a) => (
+                <li>
+                  <a href={articleHref(a)} set:html={isolateNumbers(a.data.title)} />
+                  <time class="ui" datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
   {hubs.map((h) => (
     <section class="wrap row hub" data-section={h.id} aria-labelledby={`sec-${h.id}`}>
       <div class="section-head">
@@ -188,6 +244,22 @@ const jsonLd = {
      the cover story, so six blocks do not become six tall photographs. */
   .row__feature :global(.card__title) { font-size: clamp(1.22rem, 1rem + 0.7vw, 1.5rem); line-height: 1.36; }
   .row__feature :global(.card__summary) { font-size: 1.02rem; margin-top: 0.35rem; }
+
+  /* The charts band: three compact charts in ruled columns, each naming its story. */
+  .charts .section-head h2 { color: var(--green); }
+  .charts .module__from { margin-top: 0.5rem; font-size: 0.8rem; color: var(--ink-3); line-height: 1.5; }
+  .charts .module__from a { color: var(--ink-2); text-decoration: none; font-weight: 700; }
+  .charts .module__from a:hover { color: var(--green); text-decoration: underline; }
+
+  /* The desks: a region's name in green Amiri over three dated headlines, as the files band. */
+  .desk__name { font-family: var(--font-title); font-weight: 700; font-size: 1.3rem; line-height: 1.3; color: var(--green); }
+  .desk__name a { text-decoration: none; }
+  .desk__name a:hover { color: var(--green-deep); text-decoration: underline; }
+  .desk__list { margin-top: 0.5rem; }
+  .desk__list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 0.75rem; align-items: baseline; padding-block: 0.5rem; border-top: 1px solid var(--rule); font-family: var(--font-title); font-weight: 700; font-size: 1.02rem; line-height: 1.45; }
+  .desk__list a { text-decoration: none; }
+  .desk__list a:hover { color: var(--green); }
+  .desk__list time { font-size: 0.75rem; color: var(--ink-3); white-space: nowrap; }
 
   .hub .cols :global(.card__title) { font-size: 1.28rem; line-height: 1.38; }
   .hub .cols :global(.card__summary) { font-size: 1.02rem; line-height: 1.7; margin-top: 0.4rem; }

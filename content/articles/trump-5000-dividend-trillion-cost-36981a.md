@@ -25,7 +25,7 @@ tags:
   - سوق السندات
   - الانتخابات النصفية
 regions:
-  - الولايات المتحدة
+  - الأمريكتان
 readingMinutes: 3
 chart: null
 table:

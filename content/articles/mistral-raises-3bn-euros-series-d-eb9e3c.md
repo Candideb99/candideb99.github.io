@@ -26,8 +26,7 @@ tags:
   - رأس المال المخاطر
 regions:
   - أوروبا
-  - فرنسا
-  - كوريا الجنوبية
+  - آسيا
 readingMinutes: 2
 chart: null
 table: null

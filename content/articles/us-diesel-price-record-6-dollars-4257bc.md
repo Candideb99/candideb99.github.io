@@ -27,7 +27,7 @@ tags:
   - النفط الخام
   - مضيق هرمز
 regions:
-  - الولايات المتحدة
+  - الأمريكتان
 readingMinutes: 2
 chart:
   type: bar

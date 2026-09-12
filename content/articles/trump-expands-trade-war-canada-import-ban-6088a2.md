@@ -23,7 +23,7 @@ tags:
   - رسوم جمركية
   - طاقة
 regions:
-  - أميركا الشمالية
+  - الأمريكتان
 readingMinutes: 3
 chart:
   type: line

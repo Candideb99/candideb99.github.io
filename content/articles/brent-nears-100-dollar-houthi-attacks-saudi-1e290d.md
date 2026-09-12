@@ -30,7 +30,7 @@ tags:
 regions:
   - الخليج
   - الشرق الأوسط
-  - أميركا الشمالية
+  - الأمريكتان
 readingMinutes: 3
 chart: null
 table: null

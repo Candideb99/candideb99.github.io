@@ -27,8 +27,7 @@ tags:
   - سندات حكومية
   - بنك إنكلترا
 regions:
-  - المملكة المتحدة
-  - أوروبا الغربية
+  - أوروبا
 readingMinutes: 4
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/City_of_London_skyline_from_London_City_Hall_-_Sept_2015_-_Crop_Aligned.jpg/1280px-City_of_London_skyline_from_London_City_Hall_-_Sept_2015_-_Crop_Aligned.jpg

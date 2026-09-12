@@ -23,8 +23,8 @@ tags:
   - جون تيرنوس
   - سلسلة التوريد
 regions:
-  - أمريكا الشمالية
-  - آسيا والمحيط الهادئ
+  - الأمريكتان
+  - آسيا
 readingMinutes: 3
 chart: null
 table: null

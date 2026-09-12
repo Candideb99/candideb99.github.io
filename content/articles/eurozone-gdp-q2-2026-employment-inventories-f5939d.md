@@ -29,7 +29,6 @@ tags:
   - الاستثمار
 regions:
   - أوروبا
-  - منطقة اليورو
 readingMinutes: 3
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Container_Terminal_Tollerort%2C_Vorhafen%2C_Hamburg_%28P1080405%29.jpg/1280px-Container_Terminal_Tollerort%2C_Vorhafen%2C_Hamburg_%28P1080405%29.jpg

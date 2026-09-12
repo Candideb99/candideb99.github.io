@@ -25,8 +25,8 @@ tags:
   - الاستثمار الأجنبي
   - هاينان
 regions:
-  - الخليج العربي
-  - شرق آسيا
+  - الخليج
+  - آسيا
 readingMinutes: 3
 image:
   url: https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/%D9%85%D9%8A%D9%86%D8%A7%D8%A1_%D8%A7%D9%84%D8%AF%D9%82%D9%85_%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.jpg/1280px-%D9%85%D9%8A%D9%86%D8%A7%D8%A1_%D8%A7%D9%84%D8%AF%D9%82%D9%85_%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail

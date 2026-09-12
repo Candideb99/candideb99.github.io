@@ -1,12 +1,15 @@
 ---
 /**
- * The front page under the cover, laid out like a newsroom's site: three ruled columns: the top-stories list at the start, two secondary stories over the
- * editor's picks in the centre, and the day's chart and figures at the end.
+ * The front page under the cover, laid out like a newsroom's site: three ruled columns: the day's
+ * digest at the start (الأخبار في سطور: one sentence per story, the way the Journal's What's News
+ * runs), two secondary stories over the editor's picks in the centre, and the day's chart and
+ * figures at the end.
  */
 import type { Article } from "@lib/articles";
 import { articleHref } from "@lib/articles";
 import { kindLabel, sectionHref } from "@lib/sections";
 import { isolateNumbers } from "@lib/bidi";
+import { excerpt, timeAgo } from "@lib/format";
 import StoryCard from "./StoryCard.astro";
 import Chart from "./Chart.astro";
 
@@ -17,24 +20,31 @@ interface Figure {
 }
 interface Props {
   secondary: Article[];
-  top: Article[];
+  /** The digest: one sentence per story, newest first. */
+  digest: Article[];
   picks: Article[];
   figures: Figure[];
   chart?: Article;
   /** Ids of the stories allowed to show their picture here (the first appearance of each picture). */
   photoIds: Set<string>;
 }
-const { secondary, top, picks, figures, chart, photoIds } = Astro.props;
+const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
 ---
 
 <section class="wrap front" aria-label="أبرز ما في العدد">
   <div class="front__top">
-    <h2 class="module__head">أيضاً في الأخبار</h2>
-    <div class="front__list">
-      {top.map((a) => (
-        <StoryCard article={a} variant="list" showSection={false} showPhoto={photoIds.has(a.id)} />
+    <h2 class="module__head">الأخبار في سطور</h2>
+    <ul class="digest">
+      {digest.map((a) => (
+        <li class="digest__item">
+          <a class="digest__text" href={articleHref(a)}><strong class="digest__head" set:html={isolateNumbers(a.data.title)} /> <span set:html={isolateNumbers(excerpt(a.data.subtitle || a.data.lede, 140))} /></a>
+          <p class="meta digest__meta">
+            <a href={sectionHref(a.data.section)}>{kindLabel(a.data.kind, a.data.section)}</a>
+            <time datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time>
+          </p>
+        </li>
       ))}
-    </div>
+    </ul>
   </div>
 
   <div class="front__mid">
@@ -99,9 +109,14 @@ const { secondary, top, picks, figures, chart, photoIds } = Astro.props;
   .front__mid { padding-inline: var(--col-gap); border-inline: 1px solid var(--rule); }
   .front__side { padding-inline-start: var(--col-gap); display: grid; gap: 1.5rem; }
 
-  .front__list { display: grid; }
-  .front__list > :global(.card) { padding-block: 0.7rem; border-top: 1px solid var(--rule); }
-  .front__list > :global(.card:first-child) { border-top: 0; padding-top: 0.1rem; }
+  /* The digest: a sentence a story on hairlines, Naskh at text size, the section and time beneath. */
+  .digest { display: grid; }
+  .digest__item { padding-block: 0.6rem; border-top: 1px solid var(--rule); }
+  .digest__item:first-child { border-top: 0; padding-top: 0.1rem; }
+  .digest__text { display: block; font-family: var(--font-body); font-size: 1.02rem; line-height: 1.7; color: var(--ink); text-decoration: none; }
+  .digest__text:hover .digest__head { color: var(--green); }
+  .digest__head { font-family: var(--font-title); font-weight: 700; }
+  .digest__meta { margin-top: 0.15rem; font-size: 0.78rem; }
 
   /* The two secondaries run at feature scale, photograph beside the text like every feature on the
      page, so the hierarchy keeps descending down the page instead of inverting under the cover. */

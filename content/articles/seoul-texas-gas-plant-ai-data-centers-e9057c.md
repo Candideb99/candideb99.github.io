@@ -25,8 +25,8 @@ tags:
   - مراكز بيانات
   - الذكاء الاصطناعي
 regions:
-  - شرق آسيا
-  - أمريكا الشمالية
+  - الأمريكتان
+  - آسيا
 readingMinutes: 2
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Skyline_view_from_Seoul_City_%28South_Korea%29.jpg/1280px-Skyline_view_from_Seoul_City_%28South_Korea%29.jpg

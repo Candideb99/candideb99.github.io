@@ -25,7 +25,7 @@ tags:
   - إيران
   - الولايات المتحدة
 regions:
-  - الخليج العربي
+  - الخليج
   - الشرق الأوسط
 readingMinutes: 2
 chart: null

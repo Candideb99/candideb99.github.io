@@ -28,8 +28,8 @@ tags:
   - أسعار الطاقة
 regions:
   - الشرق الأوسط
+  - الأمريكتان
   - آسيا
-  - أمريكا الشمالية
 readingMinutes: 2
 chart: null
 table: null

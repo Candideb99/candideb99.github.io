@@ -19,8 +19,8 @@ tags:
   - البطاريات
   - العلاقات الأميركية الصينية
 regions:
-  - أميركا الشمالية
-  - الصين
+  - الأمريكتان
+  - آسيا
 readingMinutes: 1
 chart: null
 table: null

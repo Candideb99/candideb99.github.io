@@ -29,7 +29,7 @@ tags:
 regions:
   - الشرق الأوسط
   - أوروبا
-  - الولايات المتحدة
+  - الأمريكتان
 readingMinutes: 2
 chart: null
 table: null

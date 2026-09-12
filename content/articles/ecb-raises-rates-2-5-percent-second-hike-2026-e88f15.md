@@ -25,8 +25,8 @@ tags:
   - أزمة الطاقة
   - حرب الشرق الأوسط
 regions:
-  - أوروبا
   - الشرق الأوسط
+  - أوروبا
 readingMinutes: 2
 chart:
   type: line

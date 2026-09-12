@@ -25,7 +25,7 @@ tags:
 regions:
   - الخليج
   - أوروبا
-  - الصين
+  - آسيا
 readingMinutes: 2
 chart:
   type: line

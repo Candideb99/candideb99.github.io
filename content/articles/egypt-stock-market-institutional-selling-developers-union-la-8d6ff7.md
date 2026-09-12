@@ -27,7 +27,7 @@ tags:
   - وزارة الإسكان
   - سيتي سكيب 2026
 regions:
-  - مصر
+  - مصر والمغرب العربي
 readingMinutes: 3
 chart: null
 table: null

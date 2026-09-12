@@ -27,8 +27,7 @@ tags:
   - الشمول المالي
   - فودافون كاش
 regions:
-  - مصر
-  - شمال إفريقيا
+  - مصر والمغرب العربي
 readingMinutes: 2
 chart:
   type: bar

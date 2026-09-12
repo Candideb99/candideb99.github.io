@@ -23,8 +23,8 @@ tags:
   - الأسعار العالمية
   - الطاقة
 regions:
+  - الخليج
   - الشرق الأوسط
-  - الخليج العربي
 readingMinutes: 2
 chart: null
 table: null

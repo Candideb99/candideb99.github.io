@@ -25,7 +25,7 @@ tags:
   - النفط الخام
   - التضخم العالمي
 regions:
-  - الخليج العربي
+  - الخليج
   - الشرق الأوسط
 readingMinutes: 4
 chart: null

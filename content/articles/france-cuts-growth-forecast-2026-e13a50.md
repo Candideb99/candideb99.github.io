@@ -28,7 +28,6 @@ tags:
   - أوروبا
 regions:
   - أوروبا
-  - الاتحاد الأوروبي
 readingMinutes: 2
 chart:
   type: bar

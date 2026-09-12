@@ -25,7 +25,7 @@ tags:
   - الرعاية الصحية
   - البيت الأبيض
 regions:
-  - الولايات المتحدة
+  - الأمريكتان
 readingMinutes: 2
 chart: null
 table:

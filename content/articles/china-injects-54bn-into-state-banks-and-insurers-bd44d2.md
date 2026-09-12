@@ -27,8 +27,8 @@ tags:
   - الناتج المحلي الإجمالي
   - تحفيز اقتصادي
 regions:
-  - شرق آسيا
-  - العالم العربي
+  - الشرق الأوسط
+  - آسيا
 readingMinutes: 4
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Beijing_CBD_Skyline_%2820190104160952%29.jpg/1280px-Beijing_CBD_Skyline_%2820190104160952%29.jpg

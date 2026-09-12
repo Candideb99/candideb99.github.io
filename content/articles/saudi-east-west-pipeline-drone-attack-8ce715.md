@@ -21,8 +21,8 @@ tags:
   - أسعار النفط
   - مجلس التعاون الخليجي
 regions:
-  - الشرق الأوسط
   - الخليج
+  - الشرق الأوسط
 readingMinutes: 2
 chart: null
 table: null

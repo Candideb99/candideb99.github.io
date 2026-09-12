@@ -27,7 +27,7 @@ tags:
   - بومباردييه
   - الرسوم الجمركية
 regions:
-  - أميركا الشمالية
+  - الأمريكتان
 readingMinutes: 2
 chart:
   type: bar

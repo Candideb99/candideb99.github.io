@@ -24,7 +24,7 @@ tags:
   - الممر الاقتصادي الهندي-الشرق أوسطي-الأوروبي
 regions:
   - الشرق الأوسط
-  - جنوب آسيا
+  - آسيا
 readingMinutes: 2
 chart: null
 table:

@@ -28,7 +28,6 @@ tags:
   - الحرب في الشرق الأوسط
 regions:
   - الشرق الأوسط
-  - تركيا
 readingMinutes: 2
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Historical_peninsula_and_modern_skyline_of_Istanbul.jpg/1280px-Historical_peninsula_and_modern_skyline_of_Istanbul.jpg

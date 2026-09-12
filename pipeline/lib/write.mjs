@@ -1,3 +1,4 @@
+import { canonicalRegions } from "./regions.mjs";
 import { chat } from "./llm.mjs";
 import { arabicRatio, truncate, wordCount } from "./util.mjs";
 
@@ -43,7 +44,7 @@ const SCHEMA_TEXT = `{
   "key_facts": [{"label": "short Arabic label (2-5 words)", "value": "the figure exactly as sourced, e.g. 4,000 or 1.7 مليار جنيه or 2.25%"}],
   "why_it_matters": "One Arabic paragraph (60-120 words) explaining concretely what this means for Arab economies, businesses or readers. Grounded in the sources; no speculation presented as fact.",
   "tags": ["3-5 Arabic tags: institutions, countries, sectors, indicators"],
-  "regions": ["1-3 Arabic region tags"],
+  "regions": ["1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي"],
   "image_queries": ["2-3 short English search terms (2-4 words each) naming a concrete subject that exists as a photo on Wikimedia Commons: an institution's headquarters, a city, a port, a plant, a product, a commodity (e.g. 'Bundesbank Frankfurt', 'Ras Laffan', 'oil tanker', 'Riyadh skyline'); no adjectives, no abstract concepts"],
   "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit, e.g. % or مليار دولار", "source": "publisher name", "categories": ["Arabic x-axis labels, 3-12 items, in the sources' order"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the sources]}]},
   "table": null or {"title": "Arabic table title", "source": "publisher name", "columns": ["2-5 Arabic column headers"], "rows": [["cells as Arabic text or numbers exactly as in the sources"]]}
@@ -175,7 +176,7 @@ export function normalizeDraft(d) {
     keyFacts,
     whyItMatters: String(d.why_it_matters ?? "").trim(),
     tags: [...new Set((Array.isArray(d.tags) ? d.tags : []).map((t) => String(t).trim()).filter(Boolean))].slice(0, 6),
-    regions: [...new Set((Array.isArray(d.regions) ? d.regions : []).map((t) => String(t).trim()).filter(Boolean))].slice(0, 3),
+    regions: canonicalRegions(d.regions),
     imageQueries: (Array.isArray(d.image_queries) ? d.image_queries : []).map((q) => String(q).trim()).filter(Boolean).slice(0, 3),
     chart: normalizeChart(d.chart),
     table: normalizeTable(d.table),
@@ -267,7 +268,7 @@ const ANALYSIS_SCHEMA = `{
   "key_facts": [{"label": "short Arabic label (2-5 words)", "value": "a figure exactly as it appears in the supplied material, e.g. 108 دولاراً or 2.5%"}],
   "why_it_matters": "One Arabic paragraph (60-120 words): the bottom line for Arab economies, businesses or readers",
   "tags": ["3-5 Arabic tags: institutions, countries, sectors, indicators"],
-  "regions": ["1-3 Arabic region tags"],
+  "regions": ["1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي"],
   "image_queries": ["2-3 short English search terms (2-4 words each) naming a concrete subject that exists as a photo on Wikimedia Commons: a city skyline, a port, a refinery, an institution's headquarters, a commodity; no adjectives, no abstract concepts"],
   "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit, e.g. % or مليار دولار", "source": "the publisher named in the material", "categories": ["Arabic labels, 3-12 items"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the supplied material]}]},
   "table": null or {"title": "Arabic table title", "source": "the publisher named in the material", "columns": ["2-5 Arabic column headers"], "rows": [["cells exactly as in the supplied material"]]}
@@ -333,7 +334,7 @@ const PAPER_SCHEMA = `{
   "key_facts": [{"label": "short Arabic label (2-5 words)", "value": "a figure exactly as it appears in the paper's text, e.g. 75% or 3,058 أسرة"}],
   "why_it_matters": "One Arabic paragraph (60-120 words): the bottom line for Arab readers, policymakers or businesses, hedged as a reading",
   "tags": ["3-5 Arabic tags: the topic, the institution, the country or region studied, and always the tag أوراق بحثية"],
-  "regions": ["1-3 Arabic region tags"],
+  "regions": ["1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي"],
   "image_queries": ["2-3 short English search terms (2-4 words each) naming a concrete subject of the paper's topic that exists as a photo on Wikimedia Commons: a port, a central bank building, a trading floor, a factory, an oil field, a city skyline, a market; never 'research', 'paper', 'chart' or any abstract concept"],
   "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit", "source": "the paper (authors, institution, year)", "categories": ["Arabic labels, 3-12 items"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the paper's text]}]},
   "table": null or {"title": "Arabic table title", "source": "the paper", "columns": ["2-5 Arabic column headers"], "rows": [["cells exactly as in the paper's text"]]}

@@ -28,7 +28,7 @@ tags:
   - اتفاقية USMCA
   - صناعة السيارات
 regions:
-  - أمريكا الشمالية
+  - الأمريكتان
 readingMinutes: 3
 chart: null
 table: null

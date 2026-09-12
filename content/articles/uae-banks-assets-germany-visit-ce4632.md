@@ -25,8 +25,8 @@ tags:
   - القطاع المصرفي
   - الطاقة والصناعة
 regions:
-  - الإمارات
-  - ألمانيا
+  - الخليج
+  - أوروبا
 readingMinutes: 2
 chart:
   type: bar
