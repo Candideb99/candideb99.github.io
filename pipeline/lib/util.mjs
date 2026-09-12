@@ -12,16 +12,13 @@ export function sleep(ms) {
 }
 
 export async function fetchWithTimeout(url, options = {}, timeoutMs = 20000) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
-  try {
-    return await fetch(url, { ...options, signal: controller.signal });
-  } finally {
-    clearTimeout(timer);
-  }
+  // The deadline stays armed while the caller reads the body, not only until the headers arrive.
+  const timeout = AbortSignal.timeout(timeoutMs);
+  const signal = options.signal ? AbortSignal.any([options.signal, timeout]) : timeout;
+  return fetch(url, { ...options, signal });
 }
 
-const TRACKING_PARAMS = /^(utm_|at_|fbclid|gclid|mc_|ref$|source$|cmpid|ocid|ns_|_ga)/i;
+const TRACKING_PARAMS = /^(utm_|at_|fbclid|gclid|mc_|ref$|source$|traffic_source$|cmpid|ocid|ns_|_ga)/i;
 
 export function canonicalUrl(raw) {
   try {

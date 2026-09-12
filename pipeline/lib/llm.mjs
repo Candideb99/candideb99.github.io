@@ -5,7 +5,9 @@ const BASE_URL = process.env.OPENROUTER_BASE_URL ?? "https://openrouter.ai/api/v
 
 function chain(envName, fallback) {
   const value = process.env[envName];
-  return value ? value.split(",").map((s) => s.trim()).filter(Boolean) : fallback;
+  const models = value ? value.split(",").map((s) => s.trim()).filter(Boolean) : fallback;
+  if (models.some((model) => !model.endsWith(":free"))) throw new Error(`${envName}: only free OpenRouter models (":free") are allowed`);
+  return models;
 }
 
 /** Ordered fallback chains per newsroom role. Only free OpenRouter models. */

@@ -80,7 +80,7 @@ export async function loadExistingArticles() {
   for (const file of files) {
     try {
       const raw = await readFile(path.join(ARTICLES_DIR, file), "utf8");
-      const match = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+      const match = raw.replace(/\r\n/g, "\n").match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
       if (!match) continue;
       const data = YAML.parse(match[1]);
       out.push({

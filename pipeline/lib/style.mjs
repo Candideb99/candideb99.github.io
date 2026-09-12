@@ -10,6 +10,7 @@
 
 /** Phrases the desks cut, each with the fix a sub-editor would make. `hard` forces a revision. */
 export const BANNED = [
+  { re: /يفهم القارئ|من خلال هذا المقال|في هذا المقال (?:سوف|سن)|دعونا نستكشف/g, fix: "اذكر المعلومة مباشرة بدلاً من وصف المقال أو مخاطبة القارئ", hard: true },
   // fillers and machine connectors
   { re: /في هذا السياق/g, fix: "احذفها أو ابدأ بـ«و»", hard: true },
   { re: /تجدر الإشارة(?: إلى)?|من الجدير بالذكر|جدير بالذكر|يُذكر أن|يذكر أن|هذا وقد|لا يخفى على أحد|لا يمكن إنكار/g, fix: "احذفها؛ ابدأ الفقرة بـ«وكان» أو بالواقعة نفسها", hard: true },

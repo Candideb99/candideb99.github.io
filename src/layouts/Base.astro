@@ -69,7 +69,7 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
     <meta name="twitter:title" content={title ?? site.name} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, "\\u003c")} />}
     {site.googleSiteVerification && <meta name="google-site-verification" content={site.googleSiteVerification} />}
     {site.adsenseClient && !noindex && (
       <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${site.adsenseClient}`} crossorigin="anonymous" is:inline />
