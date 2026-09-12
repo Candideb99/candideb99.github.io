@@ -1,7 +1,7 @@
 ---
 /**
- * The cover: the day's five strongest stories on a rotating stage, with the same five listed beside
- * it, the current one highlighted.
+ * The cover: the day's five strongest stories on a rotating stage, with the four not on the stage
+ * listed beside it.
  *
  * The owner chose rotation after seeing the carousel research, so it is built to that research's
  * fallback rules: an eight-second interval, a 400ms fade, small dots on the photograph, pause
@@ -23,7 +23,7 @@ interface Props {
   /** Milliseconds a story stays on the stage. */
   interval?: number;
 }
-const { stories, photoIds, interval = 8000 } = Astro.props;
+const { stories, photoIds, interval = 6000 } = Astro.props;
 ---
 
 <section class="wrap cover" data-cover data-interval={interval} aria-roledescription="carousel" aria-label="أبرز أخبار العدد">
@@ -105,7 +105,7 @@ const { stories, photoIds, interval = 8000 } = Astro.props;
       var phone = window.matchMedia("(max-width: 719px)").matches;
       var current = 0;
       var timer = null;
-      var auto = !reduce && !phone;
+      var auto = !phone;
       root.classList.add("cover--js");
       if (controls) controls.hidden = false;
 
@@ -164,13 +164,6 @@ const { stories, photoIds, interval = 8000 } = Astro.props;
           dots[current].focus();
         });
       }
-      // Hovering a headline in the list brings its story to the stage; clicking opens it.
-      for (var m = 0; m < items.length; m++) {
-        items[m].addEventListener("mouseenter", function () {
-          var i = Number(this.getAttribute("data-index"));
-          if (i !== current) show(i);
-        });
-      }
       function resume() { if (auto && Date.now() >= resumeAt && !root.matches(":hover")) start(); }
       root.addEventListener("mouseenter", stop);
       root.addEventListener("mouseleave", resume);
@@ -188,8 +181,11 @@ const { stories, photoIds, interval = 8000 } = Astro.props;
 <style>
   .cover { display: grid; grid-template-columns: minmax(0, 9fr) minmax(0, 3fr); column-gap: 0; padding-top: clamp(1.1rem, 2.5vw, 1.75rem); padding-bottom: clamp(1.25rem, 2.5vw, 1.75rem); border-bottom: 3px solid var(--ink); align-items: start; }
 
-  .cover__stage { position: relative; padding-inline-end: var(--col-gap); display: grid; align-content: center; min-height: 100%; }
-  .cover__slide { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 0 clamp(1.25rem, 3vw, 2.5rem); align-items: center; grid-area: 1 / 1; }
+  .cover__stage { position: relative; padding-inline-end: var(--col-gap); display: grid; align-content: stretch; min-height: 100%; }
+  .cover__slide { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 0 clamp(1.25rem, 3vw, 2.5rem); align-items: stretch; grid-area: 1 / 1; min-height: 100%; }
+  /* The photograph fills the stage's height whatever the headline's length, so no paper is left bare. */
+  .cover__photo :global(.photo) { aspect-ratio: auto !important; height: 100%; min-height: 20rem; }
+  .cover__body { align-self: center; }
   .cover__slide[hidden] { display: none; }
   .cover--js .cover__slide:not([hidden]) { animation: cover-in 0.4s var(--ease-out); }
   @keyframes cover-in { from { opacity: 0; } }
@@ -204,11 +200,13 @@ const { stories, photoIds, interval = 8000 } = Astro.props;
   .cover__meta { margin-top: 0.6rem; }
 
   /* The dots sit on the photograph's bottom corner on a paper plate, with the pause control beside them. */
-  .cover__controls { position: absolute; bottom: 0.6rem; inset-inline-end: calc(var(--col-gap) + 0.6rem); display: flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.5rem; background: var(--paper); border: 1px solid var(--rule); }
-  .cover__dot { width: 0.6rem; height: 0.6rem; padding: 0; border: 1px solid var(--green); border-radius: 50%; background: transparent; cursor: pointer; }
-  .cover__dot[aria-selected="true"] { background: var(--green); }
-  .cover__dot:hover { background: var(--green-deep); }
-  .cover__dots { display: flex; align-items: center; gap: 0.4rem; padding-inline: 0.15rem; }
+  /* The dots sit inside the photograph at its top corner, small and quiet: white rings on a faint
+     dark wash, the current one filled. */
+  .cover__controls { position: absolute; top: 0.6rem; inset-inline-end: calc(var(--col-gap) + 0.6rem); display: flex; align-items: center; padding: 0.3rem 0.45rem; background: rgba(20, 20, 20, 0.28); border-radius: 999px; }
+  .cover__dots { display: flex; align-items: center; gap: 0.38rem; }
+  .cover__dot { width: 0.5rem; height: 0.5rem; padding: 0; border: 1.5px solid rgba(252, 252, 249, 0.9); border-radius: 50%; background: transparent; cursor: pointer; }
+  .cover__dot[aria-selected="true"] { background: #fcfcf9; }
+  .cover__dot:hover { background: rgba(252, 252, 249, 0.6); }
 
   /* The five beside: a ruled list of thumbnails, the current story marked with the green bar. */
   .cover__beside { display: grid; align-content: start; border-inline-start: 1px solid var(--rule); padding-inline-start: var(--col-gap); }
@@ -216,8 +214,8 @@ const { stories, photoIds, interval = 8000 } = Astro.props;
   .cover__item:first-child { border-top: 0; padding-top: 0; }
   .cover__item::before { content: ""; position: absolute; inset-inline-start: calc(-1 * var(--col-gap) - 1px); top: 0.55rem; bottom: 0.55rem; width: 3px; background: transparent; }
   .cover__item:first-child::before { top: 0; }
-  .cover--js .cover__item.is-current::before { background: var(--green); }
-  .cover--js .cover__item.is-current .cover__item-title { color: var(--green); }
+  .cover--js .cover__item.is-current { display: none; }
+  .cover--js .cover__item:not(.is-current):first-child, .cover--js .cover__item.is-current + .cover__item { border-top: 0; padding-top: 0; }
   .cover__thumb { flex: 0 0 4.25rem; width: 4.25rem; display: block; }
   .cover__item-body { min-width: 0; }
   .cover__item-title { font-family: var(--font-title); font-weight: 700; font-size: 0.98rem; line-height: 1.42; }
@@ -240,8 +238,7 @@ const { stories, photoIds, interval = 8000 } = Astro.props;
     .cover__body { order: 2; }
     .cover__controls { display: none; }
     .cover__beside { grid-template-columns: 1fr; }
-    .cover__item:nth-child(2) { border-top: 1px solid var(--rule); padding-top: 0.7rem; }
-    .cover--js .cover__item.is-current .cover__item-title { color: inherit; }
+    .cover__photo :global(.photo) { aspect-ratio: 3 / 2 !important; height: auto; min-height: 0; }
   }
   @media (prefers-reduced-motion: reduce) {
     .cover--js .cover__slide:not([hidden]) { animation: none; }
