@@ -131,7 +131,7 @@ const CRITIC_RUBRIC = {
   news: {
     material: "",
     facts: FACTS_CHECK,
-    check: "Does the article add anything not in the sources beyond neutral, well-known context?",
+    check: "Is this ONE story? An article that stitches unrelated developments together (different countries' data releases, a decision plus an unrelated market move, a sanctions remark beside a confidence survey) is a roundup, not a news story, and must be rejected: say which developments do not belong. Then: does the article add anything not in the sources beyond neutral, well-known context?",
   },
   explainer: {
     material: "(explainer: no external sources; judge internal consistency, standard definitions, and that every number is labelled as an illustrative example)",
