@@ -22,7 +22,9 @@ const unplaced = (list: Article[]) => list.filter((a) => !placed.has(a.id));
 // The cover: the lead, still, with the four strongest of the freshest dozen listed beside it.
 const lead = pickLead(articles);
 const cover = lead ? [lead, ...byImportance(unplaced(news).filter((a) => a.id !== lead.id).slice(0, 12)).slice(0, 4)] : [];
-place(cover);
+place(cover.slice(0, 1));
+// The column beside the cover is the paper's own voice: the latest analysis, then explainers.
+const readings = [...articles.filter((a) => a.data.kind === "analysis").slice(0, 1), ...articles.filter((a) => a.data.kind === "explainer").slice(0, 3)];
 const secondary = byImportance(unplaced(news).slice(0, 8)).slice(0, 2);
 place(secondary);
 const top = unplaced(news).slice(0, 5);
@@ -105,7 +107,7 @@ const jsonLd = {
   {cover.length > 0 ? (
     <>
       <Ticker items={ticker} />
-      <Cover stories={cover} photoIds={photoIds} />
+      <Cover stories={cover} readings={readings} photoIds={photoIds} />
       <Front secondary={secondary} top={top} picks={picks} figures={figures} chart={chart} photoIds={photoIds} />
     </>
   ) : (
