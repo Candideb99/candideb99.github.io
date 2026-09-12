@@ -3,6 +3,7 @@ import "../styles/global.css";
 import site from "@data/site.json";
 import Masthead from "@components/Masthead.astro";
 import Footer from "@components/Footer.astro";
+import MarketStrip from "@components/MarketStrip.astro";
 
 interface Props {
   title?: string;
@@ -102,6 +103,7 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
     -->
     <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
     <Masthead active={section} />
+    <MarketStrip />
     <main id="main">
       <slot />
     </main>

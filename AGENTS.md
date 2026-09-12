@@ -29,6 +29,9 @@ four first. They bind every agent, Codex included.
   the news values in STYLE.md §2; one story is one event.
 - **No literal translations, ever.** The copy desk and the banned list in `pipeline/lib/style.mjs`
   enforce it; fix the rule, never the article by hand.
+- **The market data** (strip, box beside the cover, board on الأسواق) comes only from
+  `pipeline/markets.mjs`; the JSON is generated, never edited. Quotes are delayed and say so. Do not
+  add a paid or keyed data source without the owner's yes.
 
 ## What you may do without asking
 

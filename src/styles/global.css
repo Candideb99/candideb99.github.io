@@ -74,6 +74,9 @@
   --green: #0f5c3c;
   --green-deep: #0a4530;
   /* Chart series: green, slate, ochre; separable for colour-blind readers and ≥3:1 on paper. */
+  /* The market board's rise and fall: green is the house ink, the red is functional and appears nowhere else. */
+  --up: #0f5c3c;
+  --down: #a3271f;
   --chart-1: #0f5c3c;
   --chart-2: #2f4f8f;
   --chart-3: #b07a12;
@@ -101,6 +104,8 @@
     --rule: #353532;
     --green: #67c096;
     --green-deep: #8ad3b0;
+    --up: #67c096;
+    --down: #e2796d;
     --chart-1: #5dbb8d;
     --chart-2: #7f9ee6;
     --chart-3: #dcaa3d;

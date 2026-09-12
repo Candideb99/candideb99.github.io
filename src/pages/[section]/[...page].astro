@@ -2,6 +2,7 @@
 import type { GetStaticPaths, Page } from "astro";
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
+import MarketBoard from "@components/MarketBoard.astro";
 import type { Article } from "@lib/articles";
 import { getArticlesBySection } from "@lib/articles";
 import { sections, type Section } from "@lib/sections";
@@ -47,6 +48,8 @@ const title = first ? section.name : `${section.name} — صفحة ${page.curren
       <h1 class="page-title">{section.name}</h1>
       <p class="page-intro">{section.description}</p>
     </header>
+
+    {first && section.id === "markets" && <MarketBoard variant="full" id="board" />}
 
     {page.total === 0 ? (
       <p class="section-page__empty">لم تُنشر مواد في هذا القسم بعد. غرفة الأخبار تعمل على مدار الساعة.</p>

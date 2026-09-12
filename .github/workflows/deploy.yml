@@ -3,6 +3,9 @@ name: Deploy
 on:
   push:
     branches: [main]
+  schedule:
+    # The market strip: rebuild with fresh quotes every two hours (the newsroom's own runs also rebuild).
+    - cron: "19 */2 * * *"
   workflow_dispatch:
   workflow_call:
 
@@ -29,6 +32,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci --no-audit --no-fund
+      - name: Refresh market quotes (best effort; the committed file is the fallback)
+        run: node pipeline/markets.mjs
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
