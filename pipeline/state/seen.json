@@ -4026,9 +4026,10 @@
       "title": "Why So Many AI Researchers Think the Machines Could Kill Everyone"
     },
     "da4fd8c83d029c29": {
-      "at": "2026-09-11T23:30:11.264Z",
+      "at": "2026-09-13T23:22:34.365Z",
       "decision": "rejected",
-      "title": "Why are European banks moving gold out of United States?"
+      "title": "Why are European banks moving gold out of United States?",
+      "strikes": 2
     },
     "bf635551bc3f1f39": {
       "at": "2026-09-11T23:30:11.264Z",
@@ -4494,6 +4495,90 @@
       "at": "2026-09-13T21:09:46.256Z",
       "decision": "rejected",
       "title": "Anthropic's Amodei says China presents 'toughest dilemma' for his proposed AI slowdown",
+      "strikes": 1
+    },
+    "0a8870608f73021c": {
+      "at": "2026-09-13T23:17:52.758Z",
+      "decision": "rejected",
+      "title": "Oil Prices Jump on Energy Supply Worries",
+      "strikes": 1
+    },
+    "dfea78922ec02ca3": {
+      "at": "2026-09-13T23:17:52.758Z",
+      "decision": "rejected",
+      "title": "StanChart Warns Oil Is Now Built for Sharper, More Frequent Spikes",
+      "strikes": 1
+    },
+    "23dd6b387aab3653": {
+      "at": "2026-09-13T23:17:52.758Z",
+      "decision": "rejected",
+      "title": "Oil prices rise after Saudi Arabia shut down critical pipeline that bypasses Strait of Hormuz",
+      "strikes": 1
+    },
+    "422f95a4dc43653a": {
+      "at": "2026-09-13T23:17:52.758Z",
+      "decision": "rejected",
+      "title": "Stock Futures Slide, Oil Rises Ahead of Fed Rate Decision",
+      "strikes": 1
+    },
+    "32c73ea0faaedb39": {
+      "at": "2026-09-13T23:17:52.758Z",
+      "decision": "rejected",
+      "title": "Further Oil Price Spikes Could Rekindle Recession Fears",
+      "strikes": 1
+    },
+    "40ae80140ac423c4": {
+      "at": "2026-09-13T23:21:40.651Z",
+      "decision": "published",
+      "slug": "ai-leaders-warn-openai-ipo-delay-b7d3e6",
+      "title": "Questions mount over what an AI 'slowdown' would look like"
+    },
+    "701d87d895510b1d": {
+      "at": "2026-09-13T23:21:40.651Z",
+      "decision": "published",
+      "slug": "ai-leaders-warn-openai-ipo-delay-b7d3e6",
+      "title": "Dramatic insider warnings over AI fall flat with some in Silicon Valley"
+    },
+    "22dd684033cbc7eb": {
+      "at": "2026-09-13T23:21:40.651Z",
+      "decision": "published",
+      "slug": "ai-leaders-warn-openai-ipo-delay-b7d3e6",
+      "title": "ألتمان: «أوبن إيه آي» لن تطرح أسهمها للاكتتاب العام في 2026"
+    },
+    "6330808811ea0b69": {
+      "at": "2026-09-13T23:21:40.651Z",
+      "decision": "published",
+      "slug": "ai-leaders-warn-openai-ipo-delay-b7d3e6",
+      "title": "OpenAI rules out IPO this year as Altman, Musk & Amodei warn AI is moving too fast"
+    },
+    "e82b8a9af4fda703": {
+      "at": "2026-09-13T23:21:40.651Z",
+      "decision": "published",
+      "slug": "ai-leaders-warn-openai-ipo-delay-b7d3e6",
+      "title": "OpenAI’s Sam Altman says it would be ‘ill-advised’ to go public in 2026"
+    },
+    "df7c9ed124ecb72f": {
+      "at": "2026-09-13T23:22:34.365Z",
+      "decision": "rejected",
+      "title": "كوريا الجنوبية تستهدف إنهاء خطة استثمار بـ350 مليار دولار في أميركا",
+      "strikes": 1
+    },
+    "5616e56024cf62eb": {
+      "at": "2026-09-13T23:22:34.365Z",
+      "decision": "rejected",
+      "title": "العراق يوقّع اتفاقاً مدته 25 عاماً لتطوير حقل عجيل النفطي",
+      "strikes": 1
+    },
+    "291bba1878252f7d": {
+      "at": "2026-09-13T23:22:34.365Z",
+      "decision": "rejected",
+      "title": "Christopher Harborne matches £36m Reform donation of Ben Delo",
+      "strikes": 1
+    },
+    "1d615e0aeed4b7d0": {
+      "at": "2026-09-13T23:22:34.365Z",
+      "decision": "rejected",
+      "title": "Trump's tough talk accelerates Greenland investment push",
       "strikes": 1
     }
   }
