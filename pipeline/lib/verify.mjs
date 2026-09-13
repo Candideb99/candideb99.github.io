@@ -10,6 +10,13 @@ const ANALYSIS_SECTIONS = [
   { name: "ما الذي نراقبه", test: /نراقب|المراقبة|نرصد/ },
 ];
 
+/** The three sections of the week's review, matched loosely against its "## " subheads. */
+const WEEKLY_SECTIONS = [
+  { name: "أبرز ما جرى", test: /أبرز ما جرى|أبرز الأحداث|أبرز التطورات/ },
+  { name: "ما يعنيه للمنطقة", test: /ما يعنيه للمنطقة|ماذا يعني للمنطقة|للاقتصادات العربية/ },
+  { name: "ما ننتظره الأسبوع المقبل", test: /ما ننتظره|الأسبوع المقبل|ما نراقبه/ },
+];
+
 /** The five sections of a reading of a research paper, matched loosely against its "## " subheads. */
 const PAPER_SECTIONS = [
   { name: "السؤال", test: /السؤال/ },
@@ -25,7 +32,7 @@ const PAPER_SECTIONS = [
  * paper's own related stories; for a paper reading, the research paper's text as the single source).
  * Explainers carry only illustrative numbers, so their figures and visuals are not checked.
  */
-export function programmaticChecks(draft, sources, { recentTitles = [], explainer = false, analysis = false, paper = false } = {}) {
+export function programmaticChecks(draft, sources, { recentTitles = [], explainer = false, analysis = false, paper = false, weekly = false } = {}) {
   const issues = [];
   const warnings = [];
   const grounded = !explainer;
@@ -51,7 +58,7 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
   if (/https?:\/\/|www\./i.test(prose)) issues.push("النص يحتوي على روابط؛ احذفها.");
 
   // The house's Arabic: banned calques and fillers force a revision; texture faults are warnings the desk reads.
-  const style = styleIssues(draft, { kind: explainer ? "explainer" : analysis ? "analysis" : paper ? "paper" : "news" });
+  const style = styleIssues(draft, { kind: explainer ? "explainer" : analysis || weekly ? "analysis" : paper ? "paper" : "news" });
   issues.push(...style.issues);
   warnings.push(...style.warnings);
 
@@ -62,6 +69,12 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
     const subheads = (draft.body.match(/^##\s+.+$/gm) ?? []).join("\n");
     const missing = ANALYSIS_SECTIONS.filter((s) => !s.test.test(subheads)).map((s) => s.name);
     if (missing.length) issues.push(`بنية التحليل ناقصة؛ العناوين الفرعية المطلوبة (بصيغة "## ") غير موجودة: ${missing.join("، ")}. أضفها بهذا الترتيب: ما الذي تغيّر، من يربح ومن يخسر، السيناريوهات، ما الذي نراقبه.`);
+  } else if (weekly) {
+    if (words < 600) issues.push(`حصاد الأسبوع قصير جداً (${words} كلمة)؛ يجب ألا يقل عن 750 كلمة. وسّع الفقرات من المواد المرفقة دون اختراع أرقام.`);
+    else if (words > 1200) warnings.push(`long weekly review: ${words} words`);
+    const subheads = (draft.body.match(/^##\s+.+$/gm) ?? []).join("\n");
+    const missing = WEEKLY_SECTIONS.filter((s) => !s.test.test(subheads)).map((s) => s.name);
+    if (missing.length) issues.push(`بنية حصاد الأسبوع ناقصة؛ العناوين الفرعية المطلوبة (بصيغة "## ") غير موجودة: ${missing.join("، ")}. أضفها بهذا الترتيب: أبرز ما جرى، ما يعنيه للمنطقة، ما ننتظره الأسبوع المقبل.`);
   } else if (paper) {
     if (words < 550) issues.push(`القراءة قصيرة جداً (${words} كلمة)؛ يجب ألا تقل عن 600 كلمة. وسّع الشرح من نص الورقة نفسه دون اختراع أرقام.`);
     else if (words > 1000) warnings.push(`long paper reading: ${words} words`);
@@ -96,7 +109,7 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
       issues.push(`أرقام لا تظهر في المصادر: ${missing.join(", ")}. احذف كل رقم غير مذكور في المصادر أو صحّحه.`);
     }
     // Verbatim reuse of an Arabic source is plagiarism; an analysis restating the paper's own stories gets a little more room.
-    const overlapLimit = analysis ? 0.2 : 0.12;
+    const overlapLimit = analysis || weekly ? 0.2 : 0.12;
     for (const source of sources) {
       if (source.lang !== "ar") continue;
       const overlap = phraseOverlap(`${draft.lede}\n${draft.body}`, source.text || source.summary || "");
@@ -160,6 +173,12 @@ const CRITIC_RUBRIC = {
     facts: "Every number, name, date and finding in the draft: does it trace to the paper's text, with the same magnitude, unit, direction, sample and period? Is each finding reported as the paper reports it (an estimate stays an estimate, an association is not made a cause, nothing is described as proven)? List each unsupported, altered or overstated item.",
     check: "Does the reading carry the five sections (السؤال، البيانات والطريقة، النتائج، الحدود، ماذا يعني للقارئ العربي) with substance in each? Are the paper's own caveats and limits kept under الحدود rather than dropped? Is every implication for Arab economies hedged as a reading, never asserted, and never a one-country result generalised to the region? Is every technical term glossed in plain words? Does the Arabic read as the economics desks write it (الشرق الأوسط، الاقتصادية): short sentences, concrete nouns, the desks' attribution forms, no translationese?",
   },
+  weekly: {
+    material:
+      "(the week's review, حصاد الأسبوع: the sources below are خازندار's own stories of the last seven days, plus the paper's economic calendar of the coming days. A roundup of the week's SEPARATE developments is this piece's form: do not fault it for covering unrelated developments, and do not ask for a link between them. Judge each paragraph against its own story: every figure, date, name and quotation must trace to a story, with that story's own verb and direction; the section ما ننتظره الأسبوع المقبل must use only the calendar's dates and events.)",
+    facts: "Every number, date, name and quotation in the draft: does it trace to one of the supplied stories or to the calendar, with the same magnitude, unit, direction and period, and attributed to the institution that story names? A figure rounded as its own story's headline rounds it (108 for 108.44) is not an error, and neither is a faithful paraphrase (مليوني برميل for 2 مليون برميل; أكثر من 6 دولارات when the story says 6.06 dollars, above 6 for the first time); an error is a changed magnitude, direction, period, unit, actor or attribution, or a claim no story makes. Is every row of the table a figure that appears in one story? List only real errors, each with the story that contradicts it.",
+    check: "Does each development read as its own story reports it, with no cause, motive or consequence the story does not state? Is the piece ranked by weight rather than by date, with the heaviest development first? Is the coming-week section limited to the calendar's dated events? Does the Arabic read as the economics desks write it: short sentences, one idea each, the desks' attribution forms, no translationese? SCORING for this kind: the score follows the real errors found under point 1 and the unsupported claims under this point: none means 8 or more; one or two, corrected by the revision, means 6 or 7; style points alone never take a review below 6; three or more real errors mean revise, and invented facts mean reject.",
+  },
   analysis: {
     material:
       "(analysis: the sources below are خازندار's own published stories; every figure, date, name and quotation in the draft must trace to them. Interpretation is the genre: the paper's own reading of consequences is legitimate when it is clearly framed as a reading (يرجّح، قد، من المحتمل) and stays within what the stories support; it is a fault when asserted as fact or when it contradicts the stories.)",
@@ -169,8 +188,8 @@ const CRITIC_RUBRIC = {
 };
 
 /** Critic pass. Returns { verdict: "publish"|"revise"|"reject", score, issues[], model }. */
-export async function critique({ draft, sources, explainer = false, analysis = false, paper = false, log }) {
-  const rubric = CRITIC_RUBRIC[explainer ? "explainer" : analysis ? "analysis" : paper ? "paper" : "news"];
+export async function critique({ draft, sources, explainer = false, analysis = false, paper = false, weekly = false, log }) {
+  const rubric = CRITIC_RUBRIC[explainer ? "explainer" : analysis ? "analysis" : paper ? "paper" : weekly ? "weekly" : "news"];
   const material = sources.map((s, i) => `SOURCE ${i + 1}: ${s.sourceNameEn} (${s.lang}) — "${s.title}"\n${s.text || s.summary || ""}`).join("\n\n");
   const user = `SOURCE MATERIAL
 ${[rubric.material, material || (explainer ? "" : "(no sources supplied)")].filter(Boolean).join("\n\n")}

@@ -1,6 +1,8 @@
 import { canonicalRegions } from "./regions.mjs";
 import { chat } from "./llm.mjs";
-import { arabicRatio, truncate, wordCount } from "./util.mjs";
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import { arabicRatio, domainOf, truncate, ungroundedNumbers, wordCount } from "./util.mjs";
 
 const HOUSE_STYLE = `HOUSE STYLE (the practice of the Arabic economics desks: الشرق الأوسط، الاقتصادية، الشرق بلومبرغ، CNBC عربية، الجزيرة)
 - Write original journalism in clear Modern Standard Arabic (فصحى معاصرة). Never translate a source sentence by sentence; report the facts in your own structure and words. The reader must never feel English under the Arabic.
@@ -321,66 +323,150 @@ ${ANALYSIS_SCHEMA}`;
 /** Word bounds of the week's review (lede + body): the brief asks for 750-1100; the validator tolerates a margin. */
 export const WEEKLY_WORDS = { minWords: 550, maxWords: 1600, target: 850 };
 
-const WEEKLY_SCHEMA = `{
-  "title": "Arabic title, 40-90 characters, beginning with 'حصاد الأسبوع:' followed by the two or three developments that defined the week, each stated with the verb and figure its own story uses (e.g. حصاد الأسبوع: برنت عند 108 دولارات والفيدرالي يرفع الفائدة), never a stronger verb than the story's, no clickbait",
-  "subtitle": "Arabic dek: one sentence (max 170 chars) saying what the week changed for Arab economies",
-  "slug": "week-in-review-YYYY-MM-DD (the date supplied)",
-  "lede": "Opening paragraph, 2-3 sentences: the week's thread stated plainly, anchored in its two or three biggest facts",
-  "body": "Markdown. One or two paragraphs (no subhead) completing the opening; then exactly these subheads in this order: '## أبرز ما جرى' (four to six paragraphs, one per development, each with its figures and the institution behind them, in order of weight, not of date), '## ما يعنيه للمنطقة' (two or three paragraphs: the consequences for Gulf, Egyptian and wider Arab economies, hedged where the material does not itself report them), '## ما ننتظره الأسبوع المقبل' (the dated decisions and releases from the CALENDAR supplied, with their dates, and what each could change). Lede and body together 750-1100 words. Paragraphs separated by blank lines; no bullet lists.",
-  "key_facts": [{"label": "short Arabic label (2-5 words)", "value": "a figure exactly as it appears in the material"}],
-  "why_it_matters": "One Arabic paragraph (60-120 words): the week's bottom line for Arab readers",
-  "tags": ["حصاد الأسبوع", "then 3-4 Arabic tags: institutions, countries, sectors"],
-  "regions": ["1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي"],
-  "image_queries": ["2-3 short English search terms (2-4 words each) naming a concrete subject that exists as a photo on Wikimedia Commons"],
-  "chart": null,
-  "table": {"title": "أرقام الأسبوع", "source": "خازندار", "columns": ["المؤشر", "القيمة", "المصدر"], "rows": [["the indicator in Arabic, with its period (e.g. برنت، إغلاق الجمعة)", "the figure exactly as in the material, with its unit", "the institution or outlet that story names for it"]]} with five to eight rows, each row from ONE story and its own source, or null if the material gives fewer than five such figures
-}`;
-
-/** A story in brief for the weekly's material: title, lede, facts and bottom line, without the body. */
-function briefBlock(article, index) {
-  const facts = (article.keyFacts ?? []).map((f) => [f.label, f.value].filter(Boolean).join(": ")).join("؛ ");
-  return `ARTICLE ${index + 1} (in brief): "${article.title}" (section ${article.section}; published ${String(article.publishedAt ?? "").slice(0, 10)})
-${article.lede ?? ""}${facts ? `\nKey facts: ${facts}` : ""}${article.whyItMatters ? `\nWhy it matters: ${article.whyItMatters}` : ""}`;
+/** The Arabic name of the feed a story's first source came from (sources.json), else its domain. */
+const FEED_NAMES = (() => {
+  try {
+    const { sources } = JSON.parse(readFileSync(path.join(process.cwd(), "pipeline", "sources.json"), "utf8"));
+    return new Map(sources.map((s) => [domainOf(s.url), s.name]));
+  } catch {
+    return new Map();
+  }
+})();
+function sourceLabel(a) {
+  const domain = domainOf(a.sourceUrls?.[0] ?? "");
+  if (!domain) return "خازندار";
+  for (const [d, name] of FEED_NAMES) if (d && (domain === d || domain.endsWith("." + d) || d.endsWith("." + domain))) return name;
+  return domain;
 }
 
-/** Writes the week's review from the paper's own stories of the last seven days and the calendar of the coming week. */
+/** The full text of a story, as the material one weekly paragraph is written from and checked against. */
+function storyText(a) {
+  const facts = (a.keyFacts ?? []).map((f) => `${f.label} ${f.value}`).join("\n");
+  return [a.title, a.subtitle, a.lede, a.body, facts, a.whyItMatters].filter(Boolean).join("\n\n");
+}
+
+/**
+ * Writes the week's review in two stages, so no figure can wander between stories: first one
+ * paragraph per story, each written with that story alone in view and checked against it; then
+ * the frame (title, lede, opening, the regional reading, the week ahead from the calendar) written
+ * over those paragraphs, whose numbers are the only numbers it may use. The body is assembled here,
+ * and the table of the week's figures is built from the paragraphs' own figures.
+ */
 export async function writeWeekly({ articles, calendarText, date, log }) {
-  // The eight strongest stories in full, the rest in brief: a writer given twenty full texts mixed
-  // their attributions in the first dry run.
-  const material = articles.map((a, i) => (i < 8 ? relatedBlock(a, i) : briefBlock(a, i)));
-  const user = `WEEKLY REVIEW BRIEF FROM THE EDITOR
-Today (UTC): ${date}. This is خازندار's review of the week (حصاد الأسبوع), published every Friday: what the paper's own reporting of the last seven days adds up to, for an educated Arab reader who may have missed the week.
+  const top = articles.slice(0, 8);
+  const parts = [];
+  let model = null;
+  for (const [i, a] of top.entries()) {
+    const text = storyText(a);
+    const user = `STORY ${i + 1} of the week (خازندار's own reporting; use only this text)
+"${a.title}" (section ${a.section}; published ${String(a.publishedAt ?? "").slice(0, 10)})
+${text}
 
-MATERIAL: خازندار's own stories of the last seven days, strongest first (use only this material; every figure, date, name and quotation must come from it; a figure belongs to the story it appears in and to no other)
-${material.join("\n\n")}
+TASK
+Write ONE Arabic paragraph of 60-110 words for the paper's weekly review (حصاد الأسبوع): what happened, its key figures with their units and exactly the precision the story prints (108.44 stays 108.44), and the institution or outlet this story names for them, in the story's own verbs and direction. No cause, motive or consequence the story does not state. Short sentences, one idea each, none over 30 words; the paper's calm register. Restate in fresh sentences; do not copy the story's sentences. Then name the story's single most telling figure.
+Return JSON: {"paragraph": "<the paragraph>", "figure": {"label": "<Arabic label naming the indicator, its place and its period, 3-7 words, e.g. برنت، إغلاق الجمعة or توقعات النمو الفرنسي لعام 2026>", "value": "<the figure exactly as in the story, with its unit>"}}`;
+    const { data, model: m } = await chat({
+      role: "desk",
+      system: ANALYST_SYSTEM,
+      user,
+      temperature: 0.3,
+      maxTokens: 2500,
+      log,
+      validate: (d) => {
+        const para = String(d?.paragraph ?? "").trim();
+        const words = wordCount(para);
+        if (words < 45 || words > 140) throw new Error(`paragraph ${words} words (45-140)`);
+        if (arabicRatio(para) < 0.85) throw new Error("paragraph is not Arabic enough");
+        const missing = ungroundedNumbers(para, [text]);
+        if (missing.length) throw new Error(`paragraph numbers not in the story: ${missing.join(", ")}`);
+        const fig = d?.figure;
+        const value = String((typeof fig === "string" ? fig : fig?.value) ?? d?.value ?? "").trim();
+        if (value && /\d/.test(value) && ungroundedNumbers(value, [text]).length) throw new Error("figure.value not in the story");
+      },
+    });
+    model = m;
+    const fig = data.figure;
+    const value = String((typeof fig === "string" ? fig : fig?.value) ?? data.value ?? "").trim();
+    const label = String((typeof fig === "object" && fig ? fig.label : data.label) ?? "").trim();
+    parts.push({ article: a, paragraph: String(data.paragraph).trim(), figure: value && /\d/.test(value) && label ? { label, value, source: sourceLabel(a) } : null });
+    log(`weekly paragraph ${i + 1}/${top.length}: ${wordCount(parts[i].paragraph)} words (${m})`);
+  }
 
-CALENDAR: the dated decisions and releases of the coming days, from the institutions' own schedules (use only these dates for the last section)
+  const paragraphs = parts.map((p) => p.paragraph);
+  const material = parts.map((p, i) => `PARAGRAPH ${i + 1} (from "${p.article.title}", ${p.article.section}):\n${p.paragraph}`).join("\n\n");
+  const frameUser = `WEEKLY REVIEW: THE FRAME
+Today (UTC): ${date}. خازندار publishes its review of the week (حصاد الأسبوع) every Friday. The developments below are already written, one paragraph each, strongest first; they will be printed as they are under the subhead "أبرز ما جرى". You write everything around them.
+
+THE WEEK'S DEVELOPMENTS (use only these; every figure, name and date you use must appear in them)
+${material}
+
+CALENDAR: the dated decisions and releases of the coming days, from the institutions' own schedules (the only source for the week-ahead section)
 ${calendarText || "(none)"}
 
 TASK
-Write the review. Rank the week's developments by weight and lead with the heaviest; do not march through the days. Each development gets its own paragraph with its figures and the institution behind them, attributed as the material attributes them, never to vague "reports". Where two stories are one development, treat them as one. Do not add facts, figures or quotations from memory; if the material lacks a number, leave it out. Restate the facts in fresh sentences of your own; do not copy sentences from the material. A consequence the material does not itself report is the paper's reading: state it hedged (يرجّح، قد يعني، من المحتمل) and in proportion, never as fact, and never generalise one country's figure to a region. The last section uses only the CALENDAR's dates and events. The title begins with 'حصاد الأسبوع:' and names the two or three developments that defined the week.
-The lede is at most 45 words. No sentence runs past 35 words: one idea per sentence; a sentence carrying two figures is two sentences. Every figure is attributed to the institution or outlet named in its own story. Report what the stories report and no more: no cause, motive or consequence the material does not itself state, no linking of two developments the material does not link, and a figure's direction (rose, fell, exceeded) only as its story gives it.
-LENGTH: 750-1100 words in the lede and body together. A draft under 750 words is rejected automatically.
-Return one JSON object exactly in this shape:
-${WEEKLY_SCHEMA}`;
-  const fallbackTags = ["حصاد الأسبوع", ...new Set(articles.flatMap((a) => a.tags ?? []))].slice(0, 5);
-  const { data, model } = await chat({
-    // The desk chain (Nemotron Super first): the review needs the model that keeps attributions straight.
+Return one JSON object:
+{
+  "title": "Arabic, 40-90 characters, beginning with 'حصاد الأسبوع:' then the two or three developments that defined the week, each with the verb and figure its paragraph uses, never a stronger verb",
+  "subtitle": "one Arabic sentence (max 170 chars): what the week changed for Arab economies, hedged where it is a reading",
+  "slug": "week-in-review-${date}",
+  "lede": "the opening paragraph, at most 45 words: the week's thread, anchored in its two biggest facts from the paragraphs",
+  "opening": "one or two more Arabic paragraphs (120-200 words) that complete the opening and say how the developments rank; no new figures",
+  "region": "two or three Arabic paragraphs (180-280 words) under 'ما يعنيه للمنطقة': what the week's developments mean for Gulf, Egyptian and wider Arab economies; a consequence the paragraphs do not state is the paper's reading, hedged (يرجّح، قد يعني، من المحتمل), never asserted, never a one-country figure generalised; no new figures",
+  "ahead": "one or two Arabic paragraphs (90-160 words) under 'ما ننتظره الأسبوع المقبل': the calendar's dated events, each with its date as the calendar gives it, and what each could change for the developments above; only the calendar's events and dates",
+  "why_it_matters": "one Arabic paragraph (60-120 words): the week's bottom line for Arab readers",
+  "tags": ["حصاد الأسبوع", "then 3-4 Arabic tags: institutions, countries, sectors"],
+  "regions": ["1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي"],
+  "image_queries": ["2-3 short English search terms (2-4 words each) naming a concrete subject that exists as a photo on Wikimedia Commons"]
+}
+Short sentences, one idea each, none over 30 words. Paragraphs separated by blank lines. No bullet lists, no subheads (they are added by the desk).`;
+  const grounding = [...paragraphs, calendarText || ""];
+  const { data: frame, model: frameModel } = await chat({
     role: "desk",
     system: ANALYST_SYSTEM,
-    user,
+    user: frameUser,
     temperature: 0.35,
-    maxTokens: ANALYSIS_MAX_TOKENS,
+    maxTokens: 6000,
     log,
     validate: (d) => {
-      if (d && typeof d === "object") {
-        if (!(Array.isArray(d.tags) && d.tags.length)) d.tags = fallbackTags;
-        if (typeof d.title === "string" && !/^حصاد الأسبوع/.test(d.title.trim())) d.title = `حصاد الأسبوع: ${d.title.trim()}`;
+      for (const key of ["title", "subtitle", "lede", "opening", "region", "ahead", "why_it_matters"]) {
+        if (!d?.[key] || typeof d[key] !== "string" || !d[key].trim()) throw new Error(`${key} missing`);
       }
-      validateDraft(d, WEEKLY_WORDS);
+      if (wordCount(d.lede) > 60) throw new Error(`lede ${wordCount(d.lede)} words (max 45)`);
+      const title = String(d.title).trim();
+      if (title.length < 20 || title.length > 92) throw new Error(`title ${title.length} chars (40-90): name two or three developments, briefly`);
+      if (String(d.subtitle).trim().length > 200) throw new Error("subtitle over 170 chars");
+      const free = [d.lede, d.opening, d.region, d.ahead, d.why_it_matters, d.subtitle, d.title].join("\n");
+      const missing = ungroundedNumbers(free, grounding);
+      if (missing.length) throw new Error(`frame numbers not in the paragraphs or calendar: ${missing.join(", ")}`);
     },
   });
-  return { draft: normalizeDraft(data), model };
+
+  const body = [
+    String(frame.opening).trim(),
+    "## أبرز ما جرى",
+    ...paragraphs,
+    "## ما يعنيه للمنطقة",
+    String(frame.region).trim(),
+    "## ما ننتظره الأسبوع المقبل",
+    String(frame.ahead).trim(),
+  ].join("\n\n");
+  const figures = parts.filter((p) => p.figure);
+  const draft = {
+    title: /^حصاد الأسبوع/.test(String(frame.title).trim()) ? String(frame.title).trim() : `حصاد الأسبوع: ${String(frame.title).trim()}`,
+    subtitle: String(frame.subtitle).trim(),
+    slug: `week-in-review-${date}`,
+    lede: String(frame.lede).trim(),
+    body,
+    key_facts: figures.slice(0, 6).map((p) => ({ label: p.figure.label, value: p.figure.value })),
+    why_it_matters: String(frame.why_it_matters).trim(),
+    tags: Array.isArray(frame.tags) && frame.tags.length ? frame.tags : ["حصاد الأسبوع", ...new Set(top.flatMap((a) => a.tags ?? []))].slice(0, 5),
+    regions: frame.regions,
+    image_queries: frame.image_queries,
+    chart: null,
+    table: figures.length >= 5 ? { title: "أرقام الأسبوع", source: "من تغطية خازندار هذا الأسبوع", columns: ["المؤشر", "القيمة"], rows: figures.map((p) => [p.figure.label, p.figure.value]) } : null,
+  };
+  validateDraft(draft, WEEKLY_WORDS);
+  return { draft: normalizeDraft(draft), model: frameModel || model };
 }
 
 const PAPER_SYSTEM = `You are the senior economics writer of خازندار (Khazendar), an Arabic-language economics and business publication for educated readers across the Arab world. You write the paper's readings of research (قراءة في ورقة بحثية): you take ONE recently published, freely available economics paper and explain it to educated non-economists in plain Arabic: what it asks, how it finds out, what it finds, what it cannot claim, and what an Arab reader can take from it. You are a careful reader, not a promoter: the paper's findings are reported exactly as the paper states them, with their magnitudes, units, samples and periods; its caveats are kept; nothing is added from memory; and no finding is ever described as proven (never «تثبت الدراسة»; write «تجد الورقة»، «تقدّر»، «تخلص إلى»). Every term of art is followed by a gloss in plain words the first time it appears. The implications for Arab economies are the paper's reading, hedged (يرجّح، قد يعني، من المحتمل), never asserted.
