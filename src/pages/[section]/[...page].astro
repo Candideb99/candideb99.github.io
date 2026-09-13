@@ -5,6 +5,7 @@ import StoryCard from "@components/StoryCard.astro";
 import QuoteCard from "@components/QuoteCard.astro";
 import { quotes, GLANCE_IDS } from "@lib/markets";
 import { analysisLabel } from "@lib/analysis";
+import { topicCounts, topicHref } from "@lib/topics";
 import type { Article } from "@lib/articles";
 import { getArticles, getArticlesBySection } from "@lib/articles";
 import { sections, type Section } from "@lib/sections";
@@ -45,6 +46,7 @@ const rest = first ? others.slice(besideCount) : page.data;
 const title = first ? section.name : `${section.name} — صفحة ${page.currentPage}`;
 // The markets section carries a glance at the data under its lead block, as the business dailies do.
 const glance = first && section.id === "markets" ? quotes(GLANCE_IDS) : [];
+const topics = first ? topicCounts(await getArticles(), section.id).filter((t) => t.count > 0) : [];
 ---
 
 <Base title={title} description={`${section.name} في خازندار: ${section.description}`} path={page.url.current} section={section.id}>
@@ -53,6 +55,12 @@ const glance = first && section.id === "markets" ? quotes(GLANCE_IDS) : [];
       <h1 class="page-title">{section.name}</h1>
       <p class="page-intro">{section.description}</p>
       {section.id === "markets" && <a class="page-head__link ui" href="/markets/data/">لوحة الأسواق: المؤشرات والعملات والسلع</a>}
+      {topics.length > 0 && (
+        <p class="page-head__topics ui">
+          <span class="page-head__topics-label">المواضيع:</span>
+          {topics.map((t) => <a href={topicHref(section.id, t.topic.id)}>{t.topic.name} <bdi>{t.count}</bdi></a>)}
+        </p>
+      )}
     </header>
 
     {page.total === 0 ? (
@@ -125,6 +133,11 @@ const glance = first && section.id === "markets" ? quotes(GLANCE_IDS) : [];
   .section-page__beside > :global(.card:first-child) { border-top: 0; padding-top: 0.1rem; }
   .section-page__rest { margin-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--ink); padding-top: 1.25rem; }
   .page-head__link { display: inline-block; margin-top: 0.6rem; font-weight: 700; font-size: 0.86rem; color: var(--green); text-decoration: none; }
+  .page-head__topics { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; margin-top: 0.8rem; font-size: 0.82rem; color: var(--ink-3); }
+  .page-head__topics-label { font-weight: 700; color: var(--ink-2); }
+  .page-head__topics a { color: var(--ink-2); text-decoration: none; font-weight: 700; }
+  .page-head__topics a bdi { color: var(--ink-3); font-weight: 400; }
+  .page-head__topics a:hover { color: var(--green); text-decoration: underline; }
   .page-head__link:hover { text-decoration: underline; }
   /* The glance band: six quote cards in ruled columns between the lead block and the rest. */
   .glance { margin-top: clamp(1.5rem, 3vw, 2.5rem); }

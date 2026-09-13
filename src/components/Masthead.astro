@@ -2,14 +2,16 @@
 /**
  * The masthead: the date line with the paper's standing tools (الأحدث، لوحة الأسواق، الأجندة، بحث),
  * the logo, and the green section bar. On a wide screen each section opens a panel under the bar,
- * as the business dailies' bars do: the section's running topics, its latest analyses, and the
- * data and pages that belong to it. The panel opens on hover or keyboard focus and needs no script.
+ * as the business dailies' bars do: the section's standing sub-topics (a curated taxonomy in
+ * `src/data/topics.json`, not the writers' tags), its analyses by desk, and the data and pages that
+ * belong to it. The panel is sized to its content, opens on hover or keyboard focus, and needs no script.
  */
 import site from "@data/site.json";
 import { sections, sectionHref, newsSections } from "@lib/sections";
 import { formatDate, issueNumber } from "@lib/format";
-import { getArticles, sectionTopics, articleHref } from "@lib/articles";
-import { analysisDesk } from "@lib/analysis";
+import { getArticles, articleHref } from "@lib/articles";
+import { analysisDesk, ANALYSIS_DESKS } from "@lib/analysis";
+import { topicsOf, topicHref } from "@lib/topics";
 import { isolateNumbers } from "@lib/bidi";
 import Logo from "./Logo.astro";
 
@@ -28,32 +30,39 @@ const newsIds = new Set(newsSections.map((s) => s.id));
 interface Link {
   href: string;
   text: string;
+  title?: boolean;
 }
-interface Panel {
-  topics: Link[];
-  pieces: Link[];
-  piecesHead: string;
-  more: Link[];
+interface Column {
+  head: string;
+  links: Link[];
+  wide?: boolean;
 }
 const DATA_LINKS: Record<string, Link[]> = {
-  markets: [{ href: "/markets/data/", text: "لوحة الأسواق: المؤشرات والعملات والسلع" }, { href: "/calendar/", text: "الأجندة الاقتصادية" }],
+  markets: [{ href: "/markets/data/", text: "لوحة الأسواق" }, { href: "/calendar/", text: "الأجندة الاقتصادية" }],
   economy: [{ href: "/calendar/", text: "الأجندة الاقتصادية" }],
   energy: [{ href: "/markets/data/#commodities", text: "أسعار النفط والغاز والمعادن" }],
+  defense: [{ href: "/analysis/desk/defense/", text: "التحليل الدفاعي والجيوسياسي" }],
 };
-const panels = new Map<string, Panel>();
+const panels = new Map<string, Column[]>();
 for (const s of sections) {
+  const columns: Column[] = [];
   if (newsIds.has(s.id)) {
-    const topics = sectionTopics(articles, s.id, 8).map((t) => ({ href: `/tags/${encodeURIComponent(t)}/`, text: t }));
-    const pieces = analyses.filter((a) => analysisDesk(a, articles)?.id === s.id).slice(0, 4).map((a) => ({ href: articleHref(a), text: a.data.title }));
-    const more = [{ href: sectionHref(s.id), text: `كل مواد ${s.name}` }, ...(DATA_LINKS[s.id] ?? [])];
-    panels.set(s.id, { topics, pieces, piecesHead: "تحليلات القسم", more });
+    columns.push({ head: "المواضيع", links: topicsOf(s.id).map((t) => ({ href: topicHref(s.id, t.id), text: t.name })) });
+    const pieces = analyses.filter((a) => analysisDesk(a, articles)?.id === s.id).slice(0, 3).map((a) => ({ href: articleHref(a), text: a.data.title, title: true }));
+    if (pieces.length) columns.push({ head: "تحليلات القسم", links: [...pieces, { href: `/analysis/desk/${s.id}/`, text: "كل تحليلات القسم" }], wide: true });
+    columns.push({ head: "المزيد", links: [{ href: sectionHref(s.id), text: `كل مواد ${s.name}` }, ...(DATA_LINKS[s.id] ?? [])] });
   } else if (s.id === "analysis") {
-    const pieces = analyses.slice(0, 6).map((a) => ({ href: articleHref(a), text: a.data.title }));
-    panels.set(s.id, { topics: [], pieces, piecesHead: "أحدث التحليلات", more: [{ href: sectionHref(s.id), text: "كل التحليلات" }] });
+    columns.push({ head: "بحسب المجال", links: Object.entries(ANALYSIS_DESKS).map(([id, name]) => ({ href: `/analysis/desk/${id}/`, text: name })) });
+    const pieces = analyses.slice(0, 4).map((a) => ({ href: articleHref(a), text: a.data.title, title: true }));
+    if (pieces.length) columns.push({ head: "أحدث التحليلات", links: pieces, wide: true });
+    columns.push({ head: "المزيد", links: [{ href: sectionHref(s.id), text: "كل التحليلات" }, { href: "/tags/", text: "الملفات التي نتابعها" }] });
   } else if (s.id === "explainers") {
-    const pieces = articles.filter((a) => a.data.kind === "explainer" || a.data.kind === "paper").slice(0, 6).map((a) => ({ href: articleHref(a), text: a.data.title }));
-    panels.set(s.id, { topics: [], pieces, piecesHead: "أحدث المواد", more: [{ href: sectionHref(s.id), text: "كل المواد" }] });
+    columns.push({ head: "الأنواع", links: [{ href: "/explainers/kind/concepts/", text: "شروح مبسّطة" }, { href: "/explainers/kind/papers/", text: "قراءات في أوراق بحثية" }] });
+    const pieces = articles.filter((a) => a.data.kind === "explainer" || a.data.kind === "paper").slice(0, 4).map((a) => ({ href: articleHref(a), text: a.data.title, title: true }));
+    if (pieces.length) columns.push({ head: "أحدث المواد", links: pieces, wide: true });
+    columns.push({ head: "المزيد", links: [{ href: sectionHref(s.id), text: "كل المواد" }] });
   }
+  if (columns.length) panels.set(s.id, columns);
 }
 ---
 
@@ -82,35 +91,26 @@ for (const s of sections) {
   </div>
 
   <nav class="masthead__nav" aria-label="أقسام خازندار">
-    <div class="wrap">
+    <div class="wrap masthead__nav-wrap">
       <ul class="nav">
         <li class="nav__item"><a href="/" class="nav__link" aria-current={active === "home" ? "page" : undefined}>الرئيسية</a></li>
         {sections.map((s) => {
-          const p = panels.get(s.id);
-          const hasPanel = p && (p.topics.length > 0 || p.pieces.length > 0);
+          const columns = panels.get(s.id);
           return (
-            <li class={`nav__item${hasPanel ? " nav__item--panel" : ""}`}>
+            <li class={`nav__item${columns ? " nav__item--panel" : ""}`}>
               <a href={sectionHref(s.id)} class="nav__link" aria-current={active === s.id ? "page" : undefined}>{s.name}</a>
-              {hasPanel && (
-                <div class="nav__panel">
-                  <div class="wrap nav__panel-inner">
-                    {p.topics.length > 0 && (
-                      <div class="nav__col">
-                        <h3 class="nav__head ui">المواضيع</h3>
-                        <ul>{p.topics.map((l) => <li><a href={l.href}>{l.text}</a></li>)}</ul>
-                      </div>
-                    )}
-                    {p.pieces.length > 0 && (
-                      <div class="nav__col nav__col--wide">
-                        <h3 class="nav__head ui">{p.piecesHead}</h3>
-                        <ul>{p.pieces.map((l) => <li><a href={l.href} set:html={isolateNumbers(l.text)} /></li>)}</ul>
-                      </div>
-                    )}
-                    <div class="nav__col">
-                      <h3 class="nav__head ui">المزيد</h3>
-                      <ul>{p.more.map((l) => <li><a href={l.href}>{l.text}</a></li>)}</ul>
+              {columns && (
+                <div class="nav__panel" role="group" aria-label={`قسم ${s.name}`}>
+                  {columns.map((c) => (
+                    <div class={`nav__col${c.wide ? " nav__col--wide" : ""}${c.links.length > 5 && !c.wide ? " nav__col--two" : ""}`}>
+                      <h3 class="nav__head ui">{c.head}</h3>
+                      <ul>
+                        {c.links.map((l) => (
+                          <li class={l.title ? "nav__title" : undefined}><a href={l.href} set:html={isolateNumbers(l.text)} /></li>
+                        ))}
+                      </ul>
                     </div>
-                  </div>
+                  ))}
                 </div>
               )}
             </li>
@@ -148,7 +148,8 @@ for (const s of sections) {
   .brand:focus-visible { outline-offset: 4px; }
 
   /* The section bar: the one green field on the page. */
-  .masthead__nav { background: #0f5c3c; position: relative; }
+  .masthead__nav { background: #0f5c3c; }
+  .masthead__nav-wrap { position: relative; }
   .nav {
     display: flex;
     justify-content: center;
@@ -173,23 +174,26 @@ for (const s of sections) {
   .nav__link:hover, .nav__link:focus-visible { background: rgba(255, 255, 255, 0.12); }
   .nav__link:focus-visible { outline-color: #fcfcf9; outline-offset: -3px; }
   .nav__link[aria-current="page"] { border-bottom-color: #fcfcf9; background: rgba(255, 255, 255, 0.08); }
+  .nav__item--panel:hover > .nav__link, .nav__item--panel:focus-within > .nav__link { background: var(--paper); color: var(--green); }
 
-  /* The section panels: paper under the bar, three ruled columns, only on a wide screen where the
-     pointer can hover; on smaller screens the bar scrolls and the sections are plain links. */
-  .nav__panel { display: none; position: absolute; inset-inline: 0; top: 100%; z-index: 30; background: var(--paper); border-bottom: 1px solid var(--ink); padding-block: 1.1rem 1.4rem; }
-  .nav__panel-inner { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 6fr) minmax(0, 3fr); column-gap: 0; }
-  .nav__col { min-width: 0; padding-inline: var(--col-gap); }
-  .nav__col:first-child { padding-inline-start: 0; }
-  .nav__col:last-child { padding-inline-end: 0; }
+  /* The section panel: a paper box the size of its content, hung from the bar's start edge, ruled
+     between its columns and closed by a 2px ink rule; only on a wide screen where the pointer can
+     hover. On smaller screens the bar scrolls and the sections are plain links. */
+  .nav__panel { display: none; position: absolute; top: 100%; inset-inline-start: 0; z-index: 30; width: max-content; max-width: 100%; background: var(--paper); border: 1px solid var(--rule); border-top: 0; border-bottom: 2px solid var(--ink); padding: 1rem 0 1.1rem; }
+  .nav__panel { display: none; }
+  .nav__col { min-width: 11rem; padding-inline: 1.4rem; }
   .nav__col + .nav__col { border-inline-start: 1px solid var(--rule); }
-  .nav__head { font-weight: 800; font-size: 0.78rem; color: var(--green); margin-bottom: 0.4rem; }
-  .nav__col li { margin-block: 0.22rem; }
-  .nav__col a { font-family: var(--font-body); font-size: 0.98rem; line-height: 1.5; color: var(--ink-2); text-decoration: none; }
-  .nav__col--wide a { font-family: var(--font-title); font-weight: 700; color: var(--ink); }
+  .nav__col--wide { max-width: 22rem; }
+  .nav__col--two ul { columns: 2; column-gap: 1.4rem; }
+  .nav__col--two li { break-inside: avoid; }
+  .nav__head { font-weight: 800; font-size: 0.76rem; color: var(--green); margin-bottom: 0.45rem; }
+  .nav__col li { padding-block: 0.16rem; }
+  .nav__col a { font-family: var(--font-body); font-size: 0.96rem; line-height: 1.45; color: var(--ink-2); text-decoration: none; white-space: nowrap; }
+  .nav__col .nav__title a { font-family: var(--font-title); font-weight: 700; font-size: 0.98rem; color: var(--ink); white-space: normal; display: block; padding-block: 0.1rem; }
   .nav__col a:hover, .nav__col a:focus-visible { color: var(--green); text-decoration: underline; }
   @media (min-width: 1024px) {
     .nav { overflow: visible; }
-    .nav__item--panel:hover .nav__panel, .nav__item--panel:focus-within .nav__panel { display: block; }
+    .nav__item--panel:hover .nav__panel, .nav__item--panel:focus-within .nav__panel { display: flex; align-items: flex-start; }
   }
 
   @media (max-width: 719px) {

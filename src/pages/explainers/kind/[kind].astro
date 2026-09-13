@@ -1,0 +1,58 @@
+---
+/**
+ * The two kinds of مدخل إلى الاقتصاد on their own pages: the plain explainers of concepts, and the
+ * readings of open-access research papers.
+ */
+import Base from "@layouts/Base.astro";
+import StoryCard from "@components/StoryCard.astro";
+import { getArticles } from "@lib/articles";
+
+export const KINDS = {
+  concepts: { kind: "explainer", name: "شروح مبسّطة", intro: "مفاهيم الاقتصاد من أولها: ما هي، وكيف تُقاس، ولماذا تهمّك." },
+  papers: { kind: "paper", name: "قراءات في أوراق بحثية", intro: "أوراق بحثية متاحة مجاناً، مشروحة بالعربية الواضحة: ماذا تسأل، وماذا تجد، وما حدودها." },
+} as const;
+
+export async function getStaticPaths() {
+  const articles = await getArticles();
+  return Object.entries(KINDS).map(([id, k]) => ({ params: { kind: id }, props: { id, ...k, items: articles.filter((a) => a.data.kind === k.kind) } }));
+}
+
+interface Props {
+  id: string;
+  kind: string;
+  name: string;
+  intro: string;
+  items: Awaited<ReturnType<typeof getArticles>>;
+}
+const { id, name, intro, items } = Astro.props;
+const other = Object.entries(KINDS).find(([k]) => k !== id)!;
+const n = items.length;
+---
+
+<Base title={name} description={intro} path={`/explainers/kind/${id}/`} section="explainers">
+  <section class="wrap block" data-section="explainers">
+    <header class="page-head">
+      <p class="page-head__section ui"><a href="/explainers/">مدخل إلى الاقتصاد</a></p>
+      <h1 class="page-title">{name}</h1>
+      <p class="page-intro">{intro} {n === 0 && <span>لم تُنشر مواد من هذا النوع بعد.</span>}</p>
+      <p class="page-head__topics ui"><span class="page-head__topics-label">أيضاً:</span> <a href={`/explainers/kind/${other[0]}/`}>{other[1].name}</a></p>
+    </header>
+    {n > 0 && (
+      <div class="cols" style={`--n:${Math.min(n, 3)}`}>
+        {items.map((a) => (
+          <StoryCard article={a} variant="text" showSection showExcerpt />
+        ))}
+      </div>
+    )}
+  </section>
+</Base>
+
+<style>
+  .page-head__section { font-weight: 700; font-size: 0.82rem; margin-bottom: 0.3rem; }
+  .page-head__section a { color: var(--green); text-decoration: none; }
+  .page-head__section a:hover { text-decoration: underline; }
+  .page-head__topics { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; margin-top: 0.8rem; font-size: 0.82rem; color: var(--ink-3); }
+  .page-head__topics-label { font-weight: 700; color: var(--ink-2); }
+  .page-head__topics a { color: var(--ink-2); text-decoration: none; font-weight: 700; }
+  .page-head__topics a:hover { color: var(--green); text-decoration: underline; }
+</style>

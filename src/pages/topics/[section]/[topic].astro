@@ -1,0 +1,64 @@
+---
+/**
+ * A sub-topic page: everything the section has published under one of its standing sub-topics
+ * (النفط under الطاقة, العملات under الأسواق), newest first; when the sub-topic has nothing yet,
+ * the page says so and offers the section's latest stories instead of an empty screen.
+ */
+import Base from "@layouts/Base.astro";
+import StoryCard from "@components/StoryCard.astro";
+import { getArticles } from "@lib/articles";
+import { getSection, sectionHref, newsSections } from "@lib/sections";
+import { topicsOf, topicArticles, topicHref, type Topic } from "@lib/topics";
+
+export async function getStaticPaths() {
+  const articles = await getArticles();
+  const paths = [];
+  for (const s of newsSections) {
+    for (const topic of topicsOf(s.id)) {
+      paths.push({ params: { section: s.id, topic: topic.id }, props: { section: s.id, topic, items: topicArticles(articles, s.id, topic), fallback: articles.filter((a) => a.data.section === s.id).slice(0, 6) } });
+    }
+  }
+  return paths;
+}
+
+interface Props {
+  section: string;
+  topic: Topic;
+  items: Awaited<ReturnType<typeof getArticles>>;
+  fallback: Awaited<ReturnType<typeof getArticles>>;
+}
+const { section, topic, items, fallback } = Astro.props;
+const sec = getSection(section);
+const n = items.length;
+const countWord = n === 1 ? "مادة واحدة" : n === 2 ? "مادتان" : n <= 10 ? `${n} مواد` : `${n} مادة`;
+const siblings = topicsOf(section).filter((t) => t.id !== topic.id);
+---
+
+<Base title={`${topic.name} — ${sec.name}`} description={`${topic.name} في قسم ${sec.name} من خازندار.`} path={topicHref(section, topic.id)} section={section}>
+  <section class="wrap block" data-section={section}>
+    <header class="page-head">
+      <p class="page-head__section ui"><a href={sectionHref(section)}>{sec.name}</a></p>
+      <h1 class="page-title">{topic.name}</h1>
+      <p class="page-intro">{n > 0 ? <span>{countWord} من تغطية خازندار، من الأحدث إلى الأقدم.</span> : <span>لم تُنشر مواد تحت هذا الموضوع بعد؛ تعمل غرفة الأخبار على مدار الساعة. في الأثناء، أحدث ما نشرناه في {sec.name}.</span>}</p>
+      <p class="page-head__topics ui">
+        <span class="page-head__topics-label">مواضيع {sec.name}:</span>
+        {siblings.map((t) => <a href={topicHref(section, t.id)}>{t.name}</a>)}
+      </p>
+    </header>
+    <div class={`${(n > 0 ? items : fallback).length < 3 ? "cards cards--list" : "cards"}`} style={`--n:${Math.min((n > 0 ? items : fallback).length, 4)}`}>
+      {(n > 0 ? items : fallback).map((a, i) => (
+        <StoryCard article={a} variant={(n > 0 ? items : fallback).length < 3 ? "list" : "card"} showSection={false} showExcerpt={!a.data.image} eager={i < 4} />
+      ))}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-head__section { font-weight: 700; font-size: 0.82rem; margin-bottom: 0.3rem; }
+  .page-head__section a { color: var(--green); text-decoration: none; }
+  .page-head__section a:hover { text-decoration: underline; }
+  .page-head__topics { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; margin-top: 0.8rem; font-size: 0.82rem; color: var(--ink-3); }
+  .page-head__topics-label { font-weight: 700; color: var(--ink-2); }
+  .page-head__topics a { color: var(--ink-2); text-decoration: none; font-weight: 700; }
+  .page-head__topics a:hover { color: var(--green); text-decoration: underline; }
+</style>

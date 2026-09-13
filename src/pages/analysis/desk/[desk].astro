@@ -1,0 +1,59 @@
+---
+/**
+ * The analyses of one desk (economic, markets, energy, companies, technology, defence and
+ * geopolitics), newest first, so a reader can follow the paper's readings on one field without
+ * the others in between.
+ */
+import Base from "@layouts/Base.astro";
+import StoryCard from "@components/StoryCard.astro";
+import { getArticles } from "@lib/articles";
+import { ANALYSIS_DESKS, analysisDesk, analysisLabel } from "@lib/analysis";
+
+export async function getStaticPaths() {
+  const articles = await getArticles();
+  return Object.keys(ANALYSIS_DESKS).map((desk) => ({
+    params: { desk },
+    props: { desk, label: ANALYSIS_DESKS[desk], items: articles.filter((a) => analysisDesk(a, articles)?.id === desk) },
+  }));
+}
+
+interface Props {
+  desk: string;
+  label: string;
+  items: Awaited<ReturnType<typeof getArticles>>;
+}
+const { desk, label, items } = Astro.props;
+const all = await getArticles();
+const n = items.length;
+---
+
+<Base title={label} description={`${label}: قراءات خازندار في هذا المجال.`} path={`/analysis/desk/${desk}/`} section="analysis">
+  <section class="wrap block" data-section="analysis">
+    <header class="page-head">
+      <p class="page-head__section ui"><a href="/analysis/">تحليلات</a></p>
+      <h1 class="page-title">{label}</h1>
+      <p class="page-intro">{n > 0 ? <span>قراءات الصحيفة في هذا المجال، من الأحدث إلى الأقدم.</span> : <span>لم تُنشر قراءات في هذا المجال بعد؛ تُكتب التحليلات من تغطية الصحيفة نفسها حين تتراكم.</span>}</p>
+      <p class="page-head__topics ui">
+        <span class="page-head__topics-label">المجالات:</span>
+        {Object.entries(ANALYSIS_DESKS).filter(([id]) => id !== desk).map(([id, name]) => <a href={`/analysis/desk/${id}/`}>{name}</a>)}
+      </p>
+    </header>
+    {n > 0 && (
+      <div class="cols" style={`--n:${Math.min(n, 3)}`}>
+        {items.map((a) => (
+          <StoryCard article={a} variant="text" showSection label={analysisLabel(a, all)} showExcerpt />
+        ))}
+      </div>
+    )}
+  </section>
+</Base>
+
+<style>
+  .page-head__section { font-weight: 700; font-size: 0.82rem; margin-bottom: 0.3rem; }
+  .page-head__section a { color: var(--green); text-decoration: none; }
+  .page-head__section a:hover { text-decoration: underline; }
+  .page-head__topics { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; margin-top: 0.8rem; font-size: 0.82rem; color: var(--ink-3); }
+  .page-head__topics-label { font-weight: 700; color: var(--ink-2); }
+  .page-head__topics a { color: var(--ink-2); text-decoration: none; font-weight: 700; }
+  .page-head__topics a:hover { color: var(--green); text-decoration: underline; }
+</style>
