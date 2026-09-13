@@ -72,7 +72,7 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
     <meta name="twitter:image" content={ogImage} />
     {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, "\\u003c")} />}
     {site.googleSiteVerification && <meta name="google-site-verification" content={site.googleSiteVerification} />}
-    {site.adsenseClient && !noindex && (
+    {site.adsenseClient && !noindex && !site.private && (
       <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${site.adsenseClient}`} crossorigin="anonymous" is:inline />
     )}
   </head>
@@ -109,10 +109,20 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
     </main>
     <Footer />
     <script is:inline>
-      // Relative times and the masthead date are rendered at build time; keep them honest between builds.
+      // Relative times and the masthead date are rendered at build time; keep them honest between
+      // builds, in the paper's own zone (the masthead carries it), not the reader's.
       (function () {
         var MONTHS = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
         var DAYS = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+        var issueDate = document.querySelector("[data-issue-date]");
+        var ZONE = (issueDate && issueDate.getAttribute("data-zone")) || "Asia/Riyadh";
+        function partsIn(d) {
+          var parts = new Intl.DateTimeFormat("en-US", { timeZone: ZONE, year: "numeric", month: "numeric", day: "numeric", weekday: "short" }).formatToParts(d);
+          var map = {};
+          parts.forEach(function (p) { map[p.type] = p.value; });
+          return map;
+        }
+        function pad(n) { return (n < 10 ? "0" : "") + n; }
         function ago(iso) {
           var diff = (Date.now() - Date.parse(iso)) / 1000;
           if (!isFinite(diff)) return null;
@@ -125,8 +135,8 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
           if (d === 1) return "منذ يوم";
           if (d === 2) return "منذ يومين";
           if (d <= 10) return "منذ " + d + " أيام";
-          var t = new Date(iso);
-          return t.getDate() + " " + MONTHS[t.getMonth()] + " " + t.getFullYear();
+          var p = partsIn(new Date(iso));
+          return Number(p.day) + " " + MONTHS[Number(p.month) - 1] + " " + p.year;
         }
         function tick() {
           var nodes = document.querySelectorAll("time[data-relative][datetime]");
@@ -136,17 +146,17 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
           }
         }
         function masthead() {
-          var date = document.querySelector("[data-issue-date]");
+          var date = issueDate;
           var no = document.querySelector("[data-issue-no]");
           var launch = date && date.getAttribute("data-launch");
           if (!date || !launch) return;
           var now = new Date();
-          var parts = new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Riyadh", year: "numeric", month: "numeric", day: "numeric", weekday: "short" }).formatToParts(now);
-          var map = {};
-          parts.forEach(function (p) { map[p.type] = p.value; });
+          var map = partsIn(now);
           var wd = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(map.weekday);
           var text = DAYS[wd] + " " + Number(map.day) + " " + MONTHS[Number(map.month) - 1] + " " + map.year;
+          var iso = map.year + "-" + pad(Number(map.month)) + "-" + pad(Number(map.day));
           if (date.textContent !== text) date.textContent = text;
+          if (date.getAttribute("datetime") !== iso) date.setAttribute("datetime", iso);
           if (no) {
             var issue = Math.max(1, Math.floor((now - new Date(launch + "T00:00:00Z")) / 86400000) + 1);
             no.textContent = String(issue);

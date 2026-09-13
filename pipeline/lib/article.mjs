@@ -1,3 +1,4 @@
+import { existsSync } from "node:fs";
 import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import YAML from "yaml";
@@ -8,7 +9,11 @@ export const ARTICLES_DIR = path.join(process.cwd(), "content", "articles");
 export function buildSlug(draft, story) {
   const base = slugifyLatin(draft.slug) || slugifyLatin(story?.headlineHint) || "story";
   const suffix = sha1(`${draft.title}|${new Date().toISOString().slice(0, 10)}`).slice(0, 6);
-  return `${base}-${suffix}`;
+  const slug = `${base}-${suffix}`;
+  // Never overwrite a published file: two pieces with one title on one day get numbered.
+  let out = slug;
+  for (let n = 2; existsSync(path.join(ARTICLES_DIR, `${out}.md`)); n += 1) out = `${slug}-${n}`;
+  return out;
 }
 
 export function readingMinutes(draft) {
@@ -99,6 +104,7 @@ export async function loadExistingArticles() {
         regions: data.regions ?? [],
         imageUrl: data.image?.url ?? null,
         sourceUrls: (data.sources ?? []).map((s) => s.url).filter(Boolean),
+        quality: data.quality && typeof data.quality === "object" ? data.quality : null,
       });
     } catch {
       /* ignore malformed file */

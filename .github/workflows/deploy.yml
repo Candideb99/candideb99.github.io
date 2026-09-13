@@ -33,9 +33,18 @@ jobs:
           cache: npm
       - run: npm ci --no-audit --no-fund
       - name: Refresh market quotes and the calendar (best effort; the committed files are the fallback)
+        timeout-minutes: 5
+        continue-on-error: true
+        shell: bash
         run: |
-          node pipeline/markets.mjs
-          node pipeline/calendar.mjs
+          node pipeline/markets.mjs | tee "$RUNNER_TEMP/markets.log"
+          node pipeline/calendar.mjs | tee "$RUNNER_TEMP/calendar.log"
+          {
+            echo "### Data refresh"
+            echo ""
+            echo "- $(grep '^markets:' "$RUNNER_TEMP/markets.log" | tail -1)"
+            echo "- $(grep '^calendar:' "$RUNNER_TEMP/calendar.log" | tail -1)"
+          } >> "$GITHUB_STEP_SUMMARY"
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:

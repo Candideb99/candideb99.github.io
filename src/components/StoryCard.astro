@@ -25,9 +25,11 @@ interface Props {
   showTopic?: boolean;
   /** False when the same picture already appears higher on the page. */
   showPhoto?: boolean;
+  /** The picture's `sizes` for placements the variant default does not describe (a block feature, a three-column row). */
+  sizes?: string;
   class?: string;
 }
-const { article, variant = "card", eager = false, showSection = true, showExcerpt = variant === "lead", showTime = true, level = 3, showPhoto = true, showTopic = false, label, class: className = "" } = Astro.props;
+const { article, variant = "card", eager = false, showSection = true, showExcerpt = variant === "lead", showTime = true, level = 3, showPhoto = true, showTopic = false, label, sizes, class: className = "" } = Astro.props;
 const topic = showTopic ? topicOf(article) : undefined;
 const { title, subtitle, section, publishedAt, kind, image } = article.data;
 const href = articleHref(article);
@@ -39,7 +41,7 @@ const hasPhoto = Boolean(image) && showPhoto && variant !== "text";
 <article class={`card card--${variant}${hasPhoto ? " card--photo" : ""} ${className}`} data-section={section}>
   {hasPhoto && (
     <a class="card__photo" href={href} tabindex="-1" aria-hidden="true">
-      <Photo image={image} ratio={variant === "list" ? "1/1" : "16/9"} eager={eager} sizes={variant === "list" ? "88px" : variant === "lead" ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 25vw, (min-width: 720px) 50vw, 120px"} />
+      <Photo image={image} ratio={variant === "list" ? "1/1" : "16/9"} eager={eager} sizes={sizes ?? (variant === "list" ? "88px" : variant === "lead" ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 25vw, (min-width: 720px) 50vw, 120px")} />
     </a>
   )}
   <div class="card__body">

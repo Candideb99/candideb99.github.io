@@ -2,7 +2,9 @@ name: Newsroom
 
 on:
   schedule:
-    # News every three hours; one explainer and one analysis a day; one research-paper reading on Tuesdays and Fridays.
+    # News every three hours; one explainer and one analysis a day; one research-paper reading on Tuesdays and Fridays;
+    # the week's review on Fridays; the defence-and-geopolitics reading on Saturdays.
+    # GitHub fires these crons 1.5-5 hours late and drops some slots; README "How it runs" records the cadence it keeps.
     - cron: "23 */3 * * *"
     - cron: "41 5 * * *"
     - cron: "7 14 * * *"
@@ -12,13 +14,17 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: news, explainer, analysis or paper
+        description: news, explainer, analysis, paper or weekly
         default: news
         type: choice
         options: [news, explainer, analysis, paper, weekly]
       limit:
         description: maximum stories to publish
         default: "4"
+        type: string
+      sections:
+        description: "analysis only: draw on these sections alone, comma-separated (e.g. defense)"
+        default: ""
         type: string
 
 concurrency:
@@ -51,21 +57,30 @@ jobs:
       - name: Decide mode
         id: mode
         shell: bash
+        # The dispatch inputs reach the shell through the environment, never by expansion into the script.
+        env:
+          INPUT_MODE: ${{ inputs.mode }}
+          INPUT_LIMIT: ${{ inputs.limit }}
+          INPUT_SECTIONS: ${{ inputs.sections }}
+          SCHEDULE: ${{ github.event.schedule }}
         run: |
-          mode="${{ inputs.mode }}"
-          sections=""
+          mode="$INPUT_MODE"
+          limit="${INPUT_LIMIT:-4}"
+          sections="$INPUT_SECTIONS"
           if [ -z "$mode" ]; then
-            if [ "${{ github.event.schedule }}" = "41 5 * * *" ]; then mode=explainer;
-            elif [ "${{ github.event.schedule }}" = "7 14 * * *" ]; then mode=analysis;
-            elif [ "${{ github.event.schedule }}" = "31 9 * * 2,5" ]; then mode=paper;
-            elif [ "${{ github.event.schedule }}" = "37 15 * * 5" ]; then mode=weekly;
-            elif [ "${{ github.event.schedule }}" = "7 10 * * 6" ]; then mode=analysis; sections=defense;
+            if [ "$SCHEDULE" = "41 5 * * *" ]; then mode=explainer;
+            elif [ "$SCHEDULE" = "7 14 * * *" ]; then mode=analysis;
+            elif [ "$SCHEDULE" = "31 9 * * 2,5" ]; then mode=paper;
+            elif [ "$SCHEDULE" = "37 15 * * 5" ]; then mode=weekly;
+            elif [ "$SCHEDULE" = "7 10 * * 6" ]; then mode=analysis; sections=defense;
             else mode=news; fi
           fi
           case "$mode" in news|explainer|analysis|paper|weekly) ;; *) echo "invalid mode: $mode"; exit 2;; esac
+          if ! [[ "$limit" =~ ^[0-9]+$ ]]; then echo "invalid limit: $limit"; exit 2; fi
+          if ! [[ "$sections" =~ ^[a-z,]*$ ]]; then echo "invalid sections: $sections"; exit 2; fi
           echo "mode=$mode" >> "$GITHUB_OUTPUT"
-          echo "sections=${sections:-}" >> "$GITHUB_OUTPUT"
-          echo "limit=${{ inputs.limit || '4' }}" >> "$GITHUB_OUTPUT"
+          echo "sections=$sections" >> "$GITHUB_OUTPUT"
+          echo "limit=$limit" >> "$GITHUB_OUTPUT"
 
       - name: Install Claude Code (only when the owner's subscription is the provider)
         if: vars.KHAZENDAR_PROVIDER == 'claude'
@@ -78,17 +93,32 @@ jobs:
           KHAZENDAR_PROVIDER: ${{ vars.KHAZENDAR_PROVIDER || 'openrouter' }}
           KHAZENDAR_CLAUDE_MODEL: ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'sonnet' }}
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-        run: node pipeline/run.mjs --mode=${{ steps.mode.outputs.mode }} --limit=${{ steps.mode.outputs.limit }} --sections=${{ steps.mode.outputs.sections }}
+          MODE: ${{ steps.mode.outputs.mode }}
+          LIMIT: ${{ steps.mode.outputs.limit }}
+          SECTIONS: ${{ steps.mode.outputs.sections }}
+        run: node pipeline/run.mjs --mode="$MODE" --limit="$LIMIT" --sections="$SECTIONS"
 
-      - name: Refresh market quotes and the calendar
-        if: steps.newsroom.outputs.published != '0'
-        run: |
-          node pipeline/markets.mjs
-          node pipeline/calendar.mjs
-
-      - name: Commit new articles
-        if: steps.newsroom.outputs.published != '0'
+      - name: Refresh market quotes and the calendar (best effort; the committed files are the fallback)
+        timeout-minutes: 5
+        continue-on-error: true
         shell: bash
+        run: |
+          node pipeline/markets.mjs | tee "$RUNNER_TEMP/markets.log"
+          node pipeline/calendar.mjs | tee "$RUNNER_TEMP/calendar.log"
+          {
+            echo "### Data refresh"
+            echo ""
+            echo "- $(grep '^markets:' "$RUNNER_TEMP/markets.log" | tail -1)"
+            echo "- $(grep '^calendar:' "$RUNNER_TEMP/calendar.log" | tail -1)"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # Runs after every newsroom run, published or not: the state (what was rejected or skipped), the
+      # run report and the refreshed data are worth keeping even when no story made it.
+      - name: Commit the run (articles, state, report, data)
+        shell: bash
+        env:
+          PUBLISHED: ${{ steps.newsroom.outputs.published }}
+          MODE: ${{ steps.mode.outputs.mode }}
         run: |
           git config user.name "khazendar-newsroom"
           git config user.email "newsroom@users.noreply.github.com"
@@ -97,17 +127,30 @@ jobs:
             echo "nothing to commit"
             exit 0
           fi
-          git commit -m "newsroom: ${{ steps.newsroom.outputs.published }} new ${{ steps.mode.outputs.mode }} item(s)"
+          if [ "${PUBLISHED:-0}" = "0" ]; then
+            git commit -m "newsroom: state after a $MODE run (0 published)"
+          else
+            git commit -m "newsroom: $PUBLISHED new $MODE item(s)"
+          fi
+          # Never a silent green: a rebase that cannot apply is aborted and fails the step. In a rebase
+          # "theirs" is the commit being replayed, so this run's fresh markets.json and calendar.json
+          # win a hunk an owner commit also changed; new article files never conflict.
           for attempt in 1 2 3; do
             if git push origin HEAD:main; then exit 0; fi
-            git pull --rebase origin main || true
+            git pull --rebase -X theirs origin main || { git rebase --abort; exit 1; }
           done
-          git push origin HEAD:main
+          echo "push rejected three times"
+          exit 1
 
   deploy:
     name: Build and deploy
     needs: run
     if: needs.run.outputs.published != '0' && needs.run.outputs.published != ''
+    # The same group as deploy.yml's own runs, declared on the caller job so that a push or scheduled
+    # deploy and this one can never publish out of order.
+    concurrency:
+      group: pages
+      cancel-in-progress: true
     uses: ./.github/workflows/deploy.yml
     permissions:
       contents: read

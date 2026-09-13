@@ -108,7 +108,8 @@ export async function fetchFeed(source, { maxAgeHours = 36, log = () => {} } = {
       .filter((item) => !excludePath || !excludePath.test(item.url))
       // A PDF cannot be read as a page; a working-paper series that links only to PDFs sets `allowPdf` and is read from its abstract.
       .filter((item) => source.allowPdf || !item.url.toLowerCase().endsWith(".pdf"))
-      .filter((item) => item.publishedAt == null || hoursSince(item.publishedAt) <= limitHours)
+      // An undated item has no age and cannot be "fresh": it is dropped (hoursSince(null) is Infinity).
+      .filter((item) => hoursSince(item.publishedAt) <= limitHours)
       .slice(0, source.maxItems ?? 40);
     log(`feed ${source.id}: ${items.length} fresh items`);
     return items;

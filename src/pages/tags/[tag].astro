@@ -6,25 +6,36 @@
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
 import { getArticles, allTags } from "@lib/articles";
+import { DESKS, desksOf } from "@lib/regions";
 import { formatShortDate, formatTime, timeAgo } from "@lib/format";
 
 export async function getStaticPaths() {
   const articles = await getArticles();
-  return [...allTags(articles).entries()].map(([tag, items]) => ({ params: { tag }, props: { tag, items } }));
+  const files = allTags(articles);
+  // Every regional desk has a file too, gathered from the stories' regions (a story tagged
+  // الولايات المتحدة files under الأمريكتان), so the front's desk links always resolve.
+  for (const desk of DESKS) {
+    const pool = articles.filter((a) => desksOf(a).some((d) => d.id === desk.id));
+    const merged = new Map([...pool, ...(files.get(desk.name) ?? [])].map((a) => [a.id, a]));
+    if (merged.size) files.set(desk.name, [...merged.values()].sort((a, b) => Date.parse(b.data.publishedAt) - Date.parse(a.data.publishedAt)));
+  }
+  return [...files.entries()].map(([tag, items]) => ({ params: { tag }, props: { tag, items } }));
 }
 
 const { tag, items } = Astro.props;
 const n = items.length;
-const countWord = n === 2 ? "مادتان" : n <= 10 ? "مواد" : "مادة";
+/** "مادة واحدة", "مادتان", "5 مواد", "12 مادة"; after يجمع the pair reads مادتين. */
+const countLabel = n === 1 ? "مادة واحدة" : n === 2 ? "مادتان" : n <= 10 ? `${n} مواد` : `${n} مادة`;
+const countObject = n === 2 ? "مادتين" : countLabel;
 const latest = items[0];
 ---
 
-<Base title={`ملف: ${tag}`} description={`ملف خازندار عن ${tag}: ${n} ${countWord} من الأحدث إلى الأقدم`} path={`/tags/${encodeURIComponent(tag)}/`}>
+<Base title={`ملف: ${tag}`} description={n === 1 ? `ملف خازندار عن ${tag}: مادة واحدة حتى الآن` : `ملف خازندار عن ${tag}: ${countLabel} من الأحدث إلى الأقدم`} path={`/tags/${encodeURIComponent(tag)}/`}>
   <section class="wrap block">
     <header class="page-head">
       <h1 class="page-title">{tag}</h1>
       <p class="page-intro">
-        {n === 1 ? <span>مادة واحدة عن {tag} حتى الآن.</span> : <span>ملف يجمع <bdi>{n}</bdi> {countWord} عن {tag}، من الأحدث إلى الأقدم.</span>}
+        {n === 1 ? <span>مادة واحدة عن {tag} حتى الآن.</span> : <span>ملف يجمع <bdi>{countObject}</bdi> عن {tag}، من الأحدث إلى الأقدم.</span>}
         {latest && <span> آخر تحديث <time datetime={latest.data.publishedAt} data-relative>{timeAgo(latest.data.publishedAt)}</time>.</span>}
         <a class="thread__intro-link" href="/tags/">كل الملفات</a>
       </p>
@@ -38,7 +49,7 @@ const latest = items[0];
             <span class="thread__time">{formatTime(a.data.publishedAt)}</span>
           </div>
           <div class="thread__body">
-            <StoryCard article={a} variant="list" level={2} showExcerpt showTime={false} eager={i < 2} />
+            <StoryCard article={a} variant="list" level={2} showExcerpt showTime={false} eager={i < 2} sizes={i === 0 ? "160px" : undefined} />
           </div>
         </li>
       ))}

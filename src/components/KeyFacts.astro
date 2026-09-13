@@ -16,8 +16,8 @@ const headingId = `facts-${placement}`;
     <dl class="facts__list">
       {facts.map((f) => (
         <div class="facts__item">
+          <dt class="facts__label">{f.label}</dt>
           <dd class="facts__value" set:html={isolateNumbers(f.value)} />
-          {f.label && <dt class="facts__label">{f.label}</dt>}
         </div>
       ))}
     </dl>
@@ -27,7 +27,9 @@ const headingId = `facts-${placement}`;
 <style>
   .facts { border-bottom: 1px solid var(--rule); padding: 0 0 0.9rem; }
   .facts__list { margin: 0; display: grid; }
-  .facts__item { display: flex; flex-direction: column; gap: 0.05rem; padding-block: 0.55rem; border-top: 1px solid var(--rule); }
+  /* The term (label) comes first in the markup, as a definition list requires, and prints under its value. */
+  .facts__item { display: flex; flex-direction: column-reverse; gap: 0.05rem; padding-block: 0.55rem; border-top: 1px solid var(--rule); }
+  .facts__label:empty { display: none; }
   .facts__value {
     margin: 0;
     font-family: var(--font-title);

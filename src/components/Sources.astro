@@ -2,6 +2,7 @@
 import { formatShortDate } from "@lib/format";
 
 interface Props {
+  /** `url` is empty for an internal source whose article has since been retired: it is named, not linked. */
   sources: { name: string; nameEn?: string; title: string; url: string; publishedAt?: string | null; lang?: string }[];
   models?: Record<string, string | null> | undefined;
   explainer?: boolean;
@@ -28,9 +29,13 @@ const modelList = Object.values(models ?? {})
       {sources.map((s) => (
         <li class="sources__item">
           <span class="sources__name ui">{s.name}</span>
-          <a class="sources__title" href={s.url} rel={s.url.startsWith("/") ? undefined : "noopener nofollow"} target={s.url.startsWith("/") ? undefined : "_blank"}>
-            <bdi>{s.title}</bdi>
-          </a>
+          {s.url ? (
+            <a class="sources__title" href={s.url} rel={s.url.startsWith("/") ? undefined : "noopener nofollow"} target={s.url.startsWith("/") ? undefined : "_blank"}>
+              <bdi>{s.title}</bdi>
+            </a>
+          ) : (
+            <span class="sources__title"><bdi>{s.title}</bdi></span>
+          )}
           <span class="sources__host ui">
             {host(s.url) && <bdi dir="ltr">{host(s.url)}</bdi>}
             {s.publishedAt && <time datetime={s.publishedAt}>{formatShortDate(s.publishedAt)}</time>}

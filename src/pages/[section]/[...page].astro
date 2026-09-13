@@ -8,7 +8,8 @@ import { analysisLabel } from "@lib/analysis";
 import { topicCounts, topicHref } from "@lib/topics";
 import type { Article } from "@lib/articles";
 import { getArticles, getArticlesBySection } from "@lib/articles";
-import { sections, type Section } from "@lib/sections";
+import { sections, HUB_SECTIONS, type Section } from "@lib/sections";
+import { cardSizes } from "@lib/wikimedia";
 
 /**
  * A section, newest first, in pages of twelve. The first page keeps the front-page shape (a lead
@@ -37,6 +38,8 @@ interface Props {
 const { section, page } = Astro.props;
 const all = section.id === "analysis" ? await getArticles() : [];
 const first = page.currentPage === 1;
+// News sections are their own label; the hubs print each story's kind (analysis desk, explainer, paper reading).
+const showKind = HUB_SECTIONS.has(section.id);
 const [lead, ...others] = page.data;
 // Up to three stories beside the lead; when the section is small the ruled list takes them all,
 // so a page never ends with one orphan card under a rule.
@@ -70,12 +73,12 @@ const topics = first ? topicCounts(await getArticles(), section.id).filter((t) =
         {first && lead && (
           <div class={`section-page__top${beside.length ? "" : " section-page__top--solo"}`}>
             <div class="section-page__lead">
-              <StoryCard article={lead} variant="lead" level={2} showSection={section.id === "analysis"} label={analysisLabel(lead, all)} showTopic eager />
+              <StoryCard article={lead} variant="lead" level={2} showSection={showKind} label={analysisLabel(lead, all)} showTopic eager />
             </div>
             {beside.length > 0 && (
               <div class="section-page__beside">
                 {beside.map((a) => (
-                  <StoryCard article={a} variant="list" showSection={section.id === "analysis"} label={analysisLabel(a, all)} showExcerpt />
+                  <StoryCard article={a} variant="list" showSection={showKind} label={analysisLabel(a, all)} showExcerpt />
                 ))}
               </div>
             )}
@@ -97,7 +100,7 @@ const topics = first ? topicCounts(await getArticles(), section.id).filter((t) =
         {rest.length > 0 && (
           <div class={`section-page__rest ${rest.length < 3 ? "cards cards--list" : "cards"}`} style={`--n:${Math.min(rest.length, 4)}`}>
             {rest.map((a, i) => (
-              <StoryCard article={a} variant={rest.length < 3 ? "list" : "card"} showSection={section.id === "analysis"} label={analysisLabel(a, all)} showExcerpt={!a.data.image} eager={!first && i < 4} />
+              <StoryCard article={a} variant={rest.length < 3 ? "list" : "card"} showSection={showKind} label={analysisLabel(a, all)} showExcerpt={!a.data.image} eager={!first && i < 4} sizes={rest.length < 3 ? undefined : cardSizes(Math.min(rest.length, 4))} />
             ))}
           </div>
         )}

@@ -19,10 +19,12 @@ export const ROLES = {
     "nex-agi/nex-n2.5-mini:free",
     "nvidia/nemotron-3-super-120b-a12b:free",
   ]),
+  // Nemotron Super first for the writer since 2026-09-13: in side-by-side dry runs its drafts drew half the
+  // critic's real errors of Ling's (5/10 with four issues against 4/10 with ten) and no calqued titles.
   writer: chain("KHAZENDAR_MODELS_WRITER", [
-    "inclusionai/ling-3.0-flash-fin:free",
-    "nvidia/nemotron-3-ultra-550b-a55b:free",
     "nvidia/nemotron-3-super-120b-a12b:free",
+    "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "inclusionai/ling-3.0-flash-fin:free",
     "nex-agi/nex-n2.5-mini:free",
   ]),
   // The copy desk rewrites Arabic idiom; the Nemotron models produce the most natural Arabic.
@@ -300,6 +302,9 @@ export async function chat({
           timeoutMs,
           jsonMode,
         });
+        // An answer cut off at max_tokens is not an answer: jsonrepair would close the broken JSON and a
+        // truncated body or issue list would pass as complete. It is retried, then the next model tries.
+        if (result.finish === "length") throw new LlmError("Model answer was cut off at max_tokens", { retryable: true, sample: String(result.content ?? "").slice(-140) });
         let data = result.content;
         if (json) data = parseJsonLoose(result.content);
         if (validate) validate(data);

@@ -23,7 +23,7 @@ const all = await getArticles();
 const title = page.currentPage === 1 ? "الأحدث" : `الأحدث — صفحة ${page.currentPage}`;
 ---
 
-<Base title={title} description="كل ما نشرته خازندار، الأحدث أولاً." path={page.url.current} section="home">
+<Base title={title} description="كل ما نشرته خازندار، الأحدث أولاً." path={page.url.current}>
   <section class="wrap block">
     <header class="page-head">
       <h1 class="page-title">الأحدث</h1>

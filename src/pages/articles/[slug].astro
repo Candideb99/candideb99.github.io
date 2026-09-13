@@ -13,6 +13,7 @@ import { getSection, sectionHref, kindLabel } from "@lib/sections";
 import { analysisLabel } from "@lib/analysis";
 import { formatDate, formatTime, readingLabel, excerpt } from "@lib/format";
 import { isolateNumbers } from "@lib/bidi";
+import { cardSizes } from "@lib/wikimedia";
 import site from "@data/site.json";
 
 export async function getStaticPaths() {
@@ -34,6 +35,13 @@ const topic = topicOf(article);
 const sectionName = getSection(d.section).name;
 const moreFromSection = all.filter((a) => a.data.section === d.section && a.id !== article.id && !more.includes(a)).slice(0, 4);
 const path = articleHref(article);
+// Internal sources point at the paper's own stories; one that has since been retired is named, not linked.
+const known = new Set(all.map(articleHref));
+const sources = d.sources.map((s) => {
+  if (!s.url.startsWith("/")) return s;
+  const href = s.url.replace(/\/?$/, "/");
+  return known.has(href) ? { ...s, url: href } : { ...s, url: "" };
+});
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -54,15 +62,15 @@ const jsonLd = {
 ---
 
 <Base title={d.title} description={description} path={path} image={ogImage} imageAlt={d.image?.alt} type="article" section={d.section} jsonLd={jsonLd} publishedAt={d.publishedAt} updatedAt={d.updatedAt}>
-  <article class="article wrap--article" data-section={d.section} data-pagefind-body data-pagefind-meta={`section:${d.section}, sectionName:${sec.name}, date:${formatDate(d.publishedAt, { weekday: false })}`}>
+  <article class="article wrap--article" data-section={d.section} data-pagefind-body data-pagefind-meta={`section:${d.section}`}>
     <header class="article__head">
       {topic && <span class="kicker"><a href={`/tags/${encodeURIComponent(topic)}/`}>{topic}</a></span>}
       <h1 class="article__title" data-pagefind-meta={`title:${d.title}`} set:html={isolateNumbers(d.title)} />
       {d.subtitle && <p class="article__dek" set:html={isolateNumbers(d.subtitle)} />}
       <p class="meta article__meta">
-        <a href={sectionHref(d.section)}>{analysisLabel(article, all) ?? kindLabel(d.kind, d.section)}</a>
+        <a href={sectionHref(d.section)} data-pagefind-meta={`sectionName:${sec.name}`}>{analysisLabel(article, all) ?? kindLabel(d.kind, d.section)}</a>
         <span class="article__byline">{site.name}</span>
-        <time datetime={d.publishedAt}>نُشر {formatDate(d.publishedAt)} · {formatTime(d.publishedAt)} بتوقيت الرياض</time>
+        <time datetime={d.publishedAt} data-pagefind-meta={`date:${formatDate(d.publishedAt, { weekday: false })}`}>نُشر {formatDate(d.publishedAt)} · {formatTime(d.publishedAt)} بتوقيت الرياض</time>
         <span>{readingLabel(d.readingMinutes)}</span>
       </p>
       <Share url={new URL(path, site.url).toString()} title={d.title} />
@@ -110,7 +118,7 @@ const jsonLd = {
             ))}
           </p>
         )}
-        <Sources sources={d.sources} models={d.models} explainer={isHub} />
+        <Sources sources={sources} models={d.models} explainer={isHub} />
       </div>
       <aside class="article__side">
         <KeyFacts facts={d.keyFacts} placement="side" />
@@ -136,7 +144,7 @@ const jsonLd = {
       </div>
       <div class={moreFromSection.length >= 3 ? "cards" : "cards cards--list"} style={`--n:${moreFromSection.length}`}>
         {moreFromSection.map((a) => (
-          <StoryCard article={a} variant={moreFromSection.length >= 3 ? "card" : "list"} showSection={false} />
+          <StoryCard article={a} variant={moreFromSection.length >= 3 ? "card" : "list"} showSection={false} sizes={moreFromSection.length >= 3 ? cardSizes(moreFromSection.length) : undefined} />
         ))}
       </div>
     </section>

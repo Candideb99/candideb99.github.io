@@ -40,7 +40,7 @@ const tip = (q: Quote) => `${q.name}${q.note ? ` (${q.note})` : ""}${q.unit && q
                 {dir === "none" ? (
                   <span class="board__na" title="لا يتوفر تغير اليوم">—</span>
                 ) : (
-                  <bdi aria-label={DIRECTION_LABEL[dir]}><span class="board__arrow" aria-hidden="true">{arrow(dir)}</span>{formatMove(q)}</bdi>
+                  <Fragment><span class="visually-hidden">{DIRECTION_LABEL[dir]}</span><bdi><span class="board__arrow" aria-hidden="true">{arrow(dir)}</span>{formatMove(q)}</bdi></Fragment>
                 )}
               </td>
             </tr>

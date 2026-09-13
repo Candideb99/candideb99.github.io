@@ -34,11 +34,36 @@ async function get(url) {
   return res.text();
 }
 
-/** The sources: each returns events { date, title, org, kind, region, url, time? }. */
+/** The wall clock of an instant in an IANA zone, expressed as a UTC millisecond value. */
+function wallClock(ms, zone) {
+  const parts = new Intl.DateTimeFormat("en-US", { timeZone: zone, hourCycle: "h23", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" }).formatToParts(new Date(ms));
+  const get = (type) => Number(parts.find((p) => p.type === type)?.value);
+  return Date.UTC(get("year"), get("month") - 1, get("day"), get("hour") % 24, get("minute"));
+}
+
+/**
+ * "HH:MM UTC" of a local time ("14:00" in an IANA zone) on a given date, so summer time is honoured per event:
+ * 14:00 in New York is 18:00 UTC in September and 19:00 UTC in December. The stored `time` keeps the
+ * "HH:MM UTC" form the site reads.
+ */
+function utcTime(date, local, zone) {
+  const [y, mo, d] = date.split("-").map(Number);
+  const [h, mi] = local.split(":").map(Number);
+  const wanted = Date.UTC(y, mo - 1, d, h, mi);
+  let instant = wanted;
+  // Two corrections settle the offset even on a day the clocks change.
+  for (let i = 0; i < 2; i += 1) instant += wanted - wallClock(instant, zone);
+  const t = new Date(instant);
+  return `${String(t.getUTCHours()).padStart(2, "0")}:${String(t.getUTCMinutes()).padStart(2, "0")} UTC`;
+}
+
+/** The sources: each returns events { date, title, org, kind, region, url, time }; `local` and `zone` are the institution's own clock. */
 const SOURCES = [
   {
     id: "fed",
     url: "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+    local: "14:00",
+    zone: "America/New_York",
     async parse(html) {
       const events = [];
       for (const year of html.matchAll(/(\d{4}) FOMC Meetings([\s\S]*?)(?=\d{4} FOMC Meetings|<\/main|$)/g)) {
@@ -50,7 +75,8 @@ const SOURCES = [
           if (!days || months.some((m) => m < 0)) continue;
           const lastDay = Number(days[days.length - 1]);
           const m = months[months.length - 1];
-          events.push({ date: iso(y, m, lastDay), title: "قرار الفائدة: الاحتياطي الفيدرالي الأمريكي", short: "الفيدرالي: قرار الفائدة", org: "الاحتياطي الفيدرالي", kind: "rates", region: "الأمريكتان", note: "يليه مؤتمر صحفي؛ البنوك المركزية الخليجية المرتبطة بالدولار تتبعه عادة في اليوم نفسه", time: "18:00 UTC", url: this.url });
+          const date = iso(y, m, lastDay);
+          events.push({ date, title: "قرار الفائدة: الاحتياطي الفيدرالي الأمريكي", short: "الفيدرالي: قرار الفائدة", org: "الاحتياطي الفيدرالي", kind: "rates", region: "الأمريكتان", note: "يليه مؤتمر صحفي؛ البنوك المركزية الخليجية المرتبطة بالدولار تتبعه عادة في اليوم نفسه", time: utcTime(date, this.local, this.zone), url: this.url });
         }
       }
       return events;
@@ -59,13 +85,16 @@ const SOURCES = [
   {
     id: "ecb",
     url: "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
+    local: "14:15",
+    zone: "Europe/Berlin",
     async parse(html) {
       const events = [];
       for (const m of html.matchAll(/<dt>\s*(\d{2})\/(\d{2})\/(\d{4})\s*<\/dt>\s*<dd>([\s\S]*?)<\/dd>/g)) {
         const what = text(m[4]);
         if (!/monetary policy meeting/i.test(what) || /non-monetary/i.test(what)) continue;
         if (/Day 1\b/i.test(what) && !/press conference/i.test(what)) continue;
-        events.push({ date: iso(Number(m[3]), Number(m[2]) - 1, Number(m[1])), title: "قرار الفائدة: البنك المركزي الأوروبي", short: "المركزي الأوروبي: قرار الفائدة", org: "البنك المركزي الأوروبي", kind: "rates", region: "أوروبا", note: "يليه مؤتمر صحفي", time: "12:15 UTC", url: this.url });
+        const date = iso(Number(m[3]), Number(m[2]) - 1, Number(m[1]));
+        events.push({ date, title: "قرار الفائدة: البنك المركزي الأوروبي", short: "المركزي الأوروبي: قرار الفائدة", org: "البنك المركزي الأوروبي", kind: "rates", region: "أوروبا", note: "يليه مؤتمر صحفي", time: utcTime(date, this.local, this.zone), url: this.url });
       }
       return events;
     },
@@ -73,6 +102,8 @@ const SOURCES = [
   {
     id: "boe",
     url: "https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates",
+    local: "12:00",
+    zone: "Europe/London",
     async parse(html) {
       const events = [];
       const body = text(html);
@@ -81,7 +112,8 @@ const SOURCES = [
         for (const d of block[2].matchAll(/(?:Monday|Tuesday|Wednesday|Thursday|Friday) (\d{1,2}) ([A-Z][a-z]+)/g)) {
           const m = monthIndex(d[2]);
           if (m < 0) continue;
-          events.push({ date: iso(y, m, Number(d[1])), title: "قرار الفائدة: بنك إنجلترا", short: "بنك إنجلترا: قرار الفائدة", org: "بنك إنجلترا", kind: "rates", region: "أوروبا", time: "11:00 UTC", url: this.url });
+          const date = iso(y, m, Number(d[1]));
+          events.push({ date, title: "قرار الفائدة: بنك إنجلترا", short: "بنك إنجلترا: قرار الفائدة", org: "بنك إنجلترا", kind: "rates", region: "أوروبا", time: utcTime(date, this.local, this.zone), url: this.url });
         }
       }
       return events;
@@ -90,21 +122,25 @@ const SOURCES = [
   {
     id: "bls-cpi",
     url: "https://www.bls.gov/schedule/news_release/cpi.htm",
+    local: "08:30",
+    zone: "America/New_York",
     async parse(html) {
-      return blsTable(html, (ref) => `التضخم الأمريكي (مؤشر أسعار المستهلكين) عن ${ref}`, this.url, (ref) => `التضخم الأمريكي عن ${ref}`);
+      return blsTable(html, this, (ref) => `التضخم الأمريكي (مؤشر أسعار المستهلكين) عن ${ref}`, (ref) => `التضخم الأمريكي عن ${ref}`);
     },
   },
   {
     id: "bls-jobs",
     url: "https://www.bls.gov/schedule/news_release/empsit.htm",
+    local: "08:30",
+    zone: "America/New_York",
     async parse(html) {
-      return blsTable(html, (ref) => `تقرير الوظائف الأمريكي عن ${ref}`, this.url, (ref) => `الوظائف الأمريكية عن ${ref}`);
+      return blsTable(html, this, (ref) => `تقرير الوظائف الأمريكي عن ${ref}`, (ref) => `الوظائف الأمريكية عن ${ref}`);
     },
   },
 ];
 
 /** BLS release tables: reference month | "Sep. 11, 2026" | 08:30 AM (Eastern). */
-function blsTable(html, title, url, short = title) {
+function blsTable(html, source, title, short = title) {
   const events = [];
   const table = html.match(/<table class="release-list">[\s\S]*?<\/table>/);
   if (!table) return events;
@@ -115,7 +151,8 @@ function blsTable(html, title, url, short = title) {
     const refM = monthIndex(ref[1]);
     const relM = monthIndex(rel[1]);
     if (refM < 0 || relM < 0) continue;
-    events.push({ date: iso(Number(rel[3]), relM, Number(rel[2])), title: title(MONTHS_AR[refM]), short: short(MONTHS_AR[refM]), org: "مكتب إحصاءات العمل الأمريكي", kind: "data", region: "الأمريكتان", time: "12:30 UTC", url });
+    const date = iso(Number(rel[3]), relM, Number(rel[2]));
+    events.push({ date, title: title(MONTHS_AR[refM]), short: short(MONTHS_AR[refM]), org: "مكتب إحصاءات العمل الأمريكي", kind: "data", region: "الأمريكتان", time: utcTime(date, source.local, source.zone), url: source.url });
   }
   return events;
 }

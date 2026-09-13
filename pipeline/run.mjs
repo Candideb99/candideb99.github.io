@@ -20,7 +20,7 @@ import process from "node:process";
 import { fetchFeed } from "./lib/feeds.mjs";
 import { extractArticle } from "./lib/extract.mjs";
 import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectPaper, selectStories } from "./lib/select.mjs";
-import { ANALYSIS_WORDS, PAPER_WORDS, WEEKLY_WORDS, reviseArticle, writeAnalysis, writeArticle, writeExplainer, writePaperReading, writeWeekly } from "./lib/write.mjs";
+import { ANALYSIS_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, reviseArticle, writeAnalysis, writeArticle, writeExplainer, writePaperReading, writeWeekly } from "./lib/write.mjs";
 import { critique, programmaticChecks } from "./lib/verify.mjs";
 import { copyEdit } from "./lib/copydesk.mjs";
 import { pickImage } from "./lib/images.mjs";
@@ -44,7 +44,15 @@ const LIMIT = Math.max(1, Math.min(Number(option("limit", 4)) || 4, 10));
 /** A day's paper is edited, not filled: at most this many news stories in any 24 hours. */
 const DAILY_CAP = Number(process.env.KHAZENDAR_DAILY_CAP) || 10;
 const ONLY_SOURCE = option("source", null);
-const MIN_IMPORTANCE = Number(option("min-importance", 6));
+const MIN_IMPORTANCE = (() => {
+  const n = Number(option("min-importance", 6));
+  return Number.isFinite(n) ? n : 6;
+})();
+/** A news run stops taking new stories after this long, so the job's own timeout never discards finished work. */
+const RUN_STARTED = Date.now();
+const RUN_BUDGET_MS = 35 * 60 * 1000;
+/** A first rejection expires after this long (the item may be tried once more); a second one is final for the state's 21 days. */
+const REJECT_RETRY_HOURS = 12;
 /** `--sections=defense,energy`: an analysis drawn only from these sections' stories (the defence and geopolitics reading). */
 const SECTIONS = (option("sections", "") || "").split(",").map((s) => s.trim()).filter(Boolean);
 
@@ -78,8 +86,21 @@ async function saveState(state) {
   await writeFile(STATE_PATH, `${JSON.stringify(state, null, 2)}\n`);
 }
 
+/** Records a decision on each item; a repeated rejection counts its strikes, and two strikes are final. */
 function markItems(state, items, decision, slug) {
-  for (const item of items) state.items[fingerprint(item.url)] = { at: isoNow(), decision, slug, title: item.title };
+  for (const item of items) {
+    const fp = fingerprint(item.url);
+    const prior = state.items[fp];
+    const strikes = decision === "rejected" ? (prior?.decision === "rejected" ? (prior.strikes ?? 1) + 1 : 1) : 0;
+    state.items[fp] = { at: isoNow(), decision, slug, title: item.title, ...(strikes ? { strikes } : {}) };
+  }
+}
+
+/** Whether a state entry still keeps its item out of the candidates: everything does, except a single rejection older than REJECT_RETRY_HOURS. */
+function blocks(entry) {
+  if (!entry) return false;
+  if (entry.decision !== "rejected" || (entry.strikes ?? 1) >= 2) return true;
+  return hoursSince(entry.at) < REJECT_RETRY_HOURS;
 }
 
 async function gatherCandidates(sources, state, existing) {
@@ -111,7 +132,7 @@ async function gatherCandidates(sources, state, existing) {
   const candidates = [];
   for (const item of all) {
     const fp = fingerprint(item.url);
-    if (state.items[fp] || usedUrls.has(fp)) continue;
+    if (blocks(state.items[fp]) || usedUrls.has(fp)) continue;
     const titleKey = item.title.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim().slice(0, 90);
     if (seenTitles.has(titleKey)) continue;
     seenTitles.add(titleKey);
@@ -179,14 +200,21 @@ async function copyDeskPass(draft, { includeBody = true } = {}) {
 async function produceStory({ story, candidates, existing, recentTitles, models, report }) {
   const { items, sources, evidenceChars } = await collectEvidence(story, candidates);
   const entry = { headline: story.headlineHint, section: story.section, importance: story.importance, sources: sources.map((s) => s.url) };
-  if (!sources.some((s) => s.text) && evidenceChars < 700) {
-    entry.outcome = "skipped: insufficient evidence";
+  // A story is written from at least one fetched article body, never from feed summaries alone: a writer asked
+  // for 300 words out of 100 invents the rest. The items take the short "rejected" mark, so a page that was
+  // down is tried once more next run.
+  if (!sources.some((s) => s.text)) {
+    entry.outcome = `skipped: no source body could be fetched (${evidenceChars} chars of feed summaries only)`;
     report.push(entry);
-    log(`skip "${story.headlineHint}": insufficient evidence (${evidenceChars} chars)`);
-    return null;
+    log(`skip "${story.headlineHint}": no source body could be fetched (${evidenceChars} chars of summaries); items marked for one retry`);
+    return { rejected: true, items };
   }
 
-  let { draft, model: writerModel } = await writeArticle({ story, sources, log });
+  // Stage one: the desk notes, the checked facts of the one event; stage two: the story written from them.
+  const notesResult = await deskNotes({ story, sources, log });
+  const notes = notesResult?.notes ?? null;
+  if (notes) log(`desk notes: ${notes.facts.length} facts, ${notes.quotes.length} quotes (${notesResult.model})`);
+  let { draft, model: writerModel } = await writeArticle({ story, sources, notes, log });
   const desk = await copyDeskPass(draft);
   draft = desk.draft;
   const deskModel = desk.model;
@@ -196,11 +224,15 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   for (const issue of [...checks.issues, ...review.issues].slice(0, 4)) log(`  · ${String(issue).slice(0, 160)}`);
 
   let revised = false;
-  const issues = [...checks.issues, ...(review.verdict !== "publish" ? review.issues : [])];
-  if (issues.length) {
-    // One revision round. A rejected draft gets a second critic pass; a "revise" verdict is trusted after the fix.
-    const revision = await reviseArticle({ draft, sources, issues, log });
-    draft = (await copyDeskPass(revision.draft, { includeBody: false })).draft;
+  // The gate: a draft goes out untouched only on a "publish" verdict with a score of 6 or more and clean
+  // programmatic checks. Anything else takes the one revision round against the critic's list and faces the
+  // critic again; the post-revision threshold (not "reject", 6 or more) is the owner's and does not change.
+  const straightOut = review.verdict === "publish" && review.score >= 6 && checks.ok;
+  if (!straightOut) {
+    const issues = [...checks.issues, ...review.issues];
+    if (!issues.length) issues.push(`المحرر أعطى المسودة ${review.score}/10 (${review.verdict})${review.summary ? `: ${review.summary}` : ""}؛ راجع الدقة والعزو والعربية.`);
+    const revision = await reviseArticle({ draft, sources, issues, log, notes });
+    draft = (await copyDeskPass(revision.draft, { includeBody: true })).draft;
     writerModel = `${writerModel} → ${revision.model}`;
     revised = true;
     checks = programmaticChecks(draft, sources, { recentTitles });
@@ -212,7 +244,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     }
     // Every revised draft faces the critic again and is published only with a second-pass score of 6 or more.
     const floor = 6;
-    review = await critique({ draft, sources, log });
+    review = await critique({ draft, sources, previousIssues: issues, log });
     log(`critic (second pass) "${draft.title}": ${review.verdict} score=${review.score} issues=${review.issues.length}`);
     if (review.verdict === "reject" || review.score < floor) {
       entry.outcome = `rejected by critic after revision (${review.score}): ${review.summary}`;
@@ -253,7 +285,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   return { slug, items, title: draft.title };
 }
 
-async function runNews() {
+async function runNews(report) {
   const config = await readJson(path.join(root, "pipeline", "sources.json"), { sources: [] });
   // News is filed only into the news sections; the analysis and explainers hubs hold the paper's own pieces.
   const sections = newsSectionsOf(await readJson(path.join(root, "src", "data", "sections.json"), []));
@@ -263,7 +295,6 @@ async function runNews() {
   // Stories per section in the last 24 hours, so the editor can favour a quiet section over a crowded one.
   const coverage24h = {};
   for (const a of existing) if (a.kind === "news" && hoursSince(a.publishedAt) < 24) coverage24h[a.section] = (coverage24h[a.section] ?? 0) + 1;
-  const report = [];
 
   const candidates = await gatherCandidates(config.sources, state, existing);
   log(`candidates: ${candidates.length} fresh unseen items`);
@@ -276,7 +307,7 @@ async function runNews() {
   const room = Math.max(0, DAILY_CAP - publishedToday);
   if (room === 0) {
     log(`daily budget spent: ${publishedToday} news stories in the last 24 hours (cap ${DAILY_CAP}); nothing more today`);
-    return { report: [], published: 0 };
+    return { report, published: 0 };
   }
   const runLimit = Math.min(LIMIT, room);
   const { stories, model: editorModel } = await selectStories({ candidates, recentTitles, sections, coverage24h, limit: runLimit, log });
@@ -305,6 +336,11 @@ async function runNews() {
   let published = 0;
   const publishedTitles = [...recentTitles];
   for (const story of chosen) {
+    if (Date.now() - RUN_STARTED > RUN_BUDGET_MS) {
+      log(`run budget of ${RUN_BUDGET_MS / 60000} minutes spent; "${story.headlineHint}" waits for the next run`);
+      report.push({ headline: story.headlineHint, section: story.section, importance: story.importance, outcome: "deferred: run budget spent" });
+      continue;
+    }
     try {
       const result = await produceStory({ story, candidates, existing, recentTitles: publishedTitles, models: { editor: editorModel }, report });
       if (!result) continue;
@@ -377,8 +413,11 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   let revised = false;
   let finalReview = review;
   let writerModel = models.writer;
-  const issues = [...checks.issues, ...(review.verdict === "revise" ? review.issues : [])];
-  if (issues.length) {
+  // The same gate as a news story: out untouched only on "publish" at 6 or more with clean checks.
+  const straightOut = review.verdict === "publish" && review.score >= 6 && checks.ok;
+  if (!straightOut) {
+    const issues = [...checks.issues, ...review.issues];
+    if (!issues.length) issues.push(`المحرر أعطى المسودة ${review.score}/10 (${review.verdict})${review.summary ? `: ${review.summary}` : ""}؛ راجع الدقة والعزو والعربية.`);
     const revision = await reviseArticle({ draft, sources: checkSources, issues, log, wordLimits, kind });
     draft = (await copyDeskPass(revision.draft, { includeBody: false })).draft;
     writerModel = `${writerModel} → ${revision.model}`;
@@ -390,7 +429,7 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
       log(`reject ${kind} "${draft.title}" after revision: ${checks.issues.join(" | ")}`);
       return { report, published: 0 };
     }
-    finalReview = await critique({ draft, sources: checkSources, ...flags, log });
+    finalReview = await critique({ draft, sources: checkSources, ...flags, previousIssues: issues, log });
     log(`critic (second pass) ${kind}: ${finalReview.verdict} score=${finalReview.score}`);
     if (finalReview.verdict === "reject" || finalReview.score < 6) {
       entry.outcome = `rejected by critic after revision (${finalReview.score}): ${finalReview.summary}`;
@@ -544,7 +583,7 @@ async function gatherPapers(sources, state, existing) {
   const candidates = [];
   for (const item of all) {
     const fp = fingerprint(item.url);
-    if (state.items[fp] || usedUrls.has(fp)) continue;
+    if (blocks(state.items[fp]) || usedUrls.has(fp)) continue;
     // The World Bank repository lists items still being catalogued under a placeholder title.
     if (/^notitle$/i.test(item.title.trim()) || !item.summary) continue;
     const titleKey = item.title.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim().slice(0, 90);
@@ -694,10 +733,13 @@ async function writeRunReport(summary) {
   const stamp = new Date().toISOString().replace(/[:.]/g, "-");
   await writeFile(path.join(RUNS_DIR, `${stamp}.json`), `${JSON.stringify(summary, null, 2)}\n`);
   await writeFile(path.join(RUNS_DIR, "latest.json"), `${JSON.stringify(summary, null, 2)}\n`);
-  // Keep the repository small: only the most recent run reports survive.
+  // Keep the repository small: only the most recent run reports survive, and the copy desk's reports likewise.
   const { readdir, unlink } = await import("node:fs/promises");
-  const files = (await readdir(RUNS_DIR)).filter((f) => /^\d{4}-.*\.json$/.test(f)).sort();
-  for (const stale of files.slice(0, Math.max(0, files.length - 24))) await unlink(path.join(RUNS_DIR, stale));
+  const all = await readdir(RUNS_DIR);
+  for (const prefix of ["", "copydesk-"]) {
+    const files = all.filter((f) => new RegExp(`^${prefix}\\d{4}-.*\\.json$`).test(f)).sort();
+    for (const stale of files.slice(0, Math.max(0, files.length - 24))) await unlink(path.join(RUNS_DIR, stale));
+  }
 }
 
 function markdownSummary(summary) {
@@ -764,7 +806,8 @@ function runWeekly() {
   });
 }
 
-const RUNNERS = { news: runNews, explainer: runExplainer, analysis: runAnalysis, paper: runPaper, weekly: runWeekly };
+/** News runs through runHub like the hub modes: an editor that fails outright still leaves a report and the outputs. */
+const RUNNERS = { news: () => runHub("news", "news", runNews), explainer: runExplainer, analysis: runAnalysis, paper: runPaper, weekly: runWeekly };
 
 async function main() {
   const started = Date.now();

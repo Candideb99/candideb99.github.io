@@ -2,7 +2,7 @@ import type { APIContext } from "astro";
 import path from "node:path";
 import sharp from "sharp";
 import { getArticles } from "@lib/articles";
-import { getSection, kindLabel } from "@lib/sections";
+import { kindLabel } from "@lib/sections";
 import { formatDate } from "@lib/format";
 import { LOGO } from "@lib/brand";
 import { openFont, lineToPath, wrapText } from "@lib/textpath.mjs";
@@ -27,7 +27,6 @@ const FONTS = path.join(process.cwd(), "node_modules/@fontsource/amiri/files");
 
 export async function GET({ props }: APIContext) {
   const { article } = props;
-  const sec = getSection(article.data.section);
   const bold = { arabic: openFont(path.join(FONTS, "amiri-arabic-700-normal.woff2")), latin: openFont(path.join(FONTS, "amiri-latin-700-normal.woff2")) };
   const regular = { arabic: openFont(path.join(FONTS, "amiri-arabic-400-normal.woff2")), latin: openFont(path.join(FONTS, "amiri-latin-400-normal.woff2")) };
 

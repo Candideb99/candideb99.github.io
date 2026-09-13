@@ -87,7 +87,7 @@ Set `adsenseClient` (and optionally `googleSiteVerification`) in `src/data/site.
 
 | Piece | Where | What it does |
 | --- | --- | --- |
-| `pipeline/` | GitHub Actions, every 3 hours (`.github/workflows/newsroom.yml`) | Fetch feeds → editor selects and clusters stories → writer drafts Arabic → programmatic checks + critic review → licensed photo pick → Markdown article committed to `content/articles/` |
+| `pipeline/` | GitHub Actions, a cron every 3 hours (`.github/workflows/newsroom.yml`; about five runs a day in practice, see the cadence note below) | Fetch feeds → editor selects and clusters stories → writer drafts Arabic → programmatic checks + critic review → licensed photo pick → Markdown article committed to `content/articles/` |
 | `--mode=explainer`, `--mode=analysis` | same workflow, once a day each (05:41 and 14:07 UTC) | An explainer teaches one concept behind the week's coverage. An analysis (`kind: analysis`, section `analysis`) picks a theme where at least two recent stories connect, argues what it means and for whom, lays out scenarios and what to watch, and may cite figures only from the related stories, which it links as its sources. |
 | `--mode=paper` | same workflow, Tuesdays and Fridays (09:31 UTC) | A reading of a research paper (`kind: paper`, filed in the explainers hub as قراءة في ورقة بحثية): the research editor picks one recent open-access economics paper from the `papers` feeds in `pipeline/sources.json` (Federal Reserve, Bank of England, ECB, World Bank, NBER, arXiv), and the writer explains it in plain Arabic under five fixed subheads (the question, the data and method, the findings, the limits, what it means for Arab readers). Every figure is checked against the paper's own text, which is the single source filed; the mode passes over a paper whose free text is too thin. |
 | `src/` | Astro static site (`.github/workflows/deploy.yml`) | Builds the site, Pagefind search, RSS, sitemap, OG images; deploys to GitHub Pages on every push to `main` |
@@ -95,12 +95,14 @@ Set `adsenseClient` (and optionally `googleSiteVerification`) in `src/data/site.
 | `pipeline/state/seen.json` | repo | Fingerprints of items already used or rejected (auto-pruned after 21 days) |
 | `pipeline/runs/latest.json` | repo | Report of the last run: what was selected, published, rejected and why |
 
+**The cadence GitHub actually keeps.** The crons are what the workflows ask for, not what they get. Over 7–13 September 2026 GitHub fired the three-hourly news cron 1.5–2.5 hours late and never fired its 00:23, 06:23 and 12:23 slots, so the paper gets about five news runs a day, not eight; the 05:41 explainer ran between 09:33 and 10:35, the daily editor (07:17) between 11:35 and 12:13, and the two-hourly deploy fired once in five slots. Expect the Friday review (15:37) and the Tuesday/Friday paper reading (09:31) two to four hours late. The mode is decided from the cron string, so a late run still does the right thing; only the timing is the platform's, and nothing in this repository can promise more than that. A run that publishes nothing still commits its state and report, so `pipeline/runs/latest.json` is always the last run.
+
 Models (all free tier on OpenRouter, with automatic fallback): MiniMax M3 and Nvidia Nemotron 3 Ultra for editing and writing, Nemotron / Ling Flash Fin / MiniMax for the critic, MiniMax / Gemma 4 for photo selection. Override any chain with `KHAZENDAR_MODELS_EDITOR|WRITER|CRITIC|VISION` (comma-separated ids).
 
 ## Operating it
 
 - **Secrets:** the repository needs one Actions secret, `OPENROUTER_API_KEY`. Nothing else.
-- **Manual run:** Actions → Newsroom → Run workflow (choose `news`, `explainer`, `analysis` or `paper`, and a limit).
+- **Manual run:** Actions → Newsroom → Run workflow (choose `news`, `explainer`, `analysis`, `paper` or `weekly`, a limit, and for an analysis optionally the sections it may draw on, e.g. `defense` for the defence-and-geopolitics reading).
 - **Unpublish:** delete the Markdown file in `content/articles/` and push; the next deploy removes the page.
 - **Quality signal:** every article's frontmatter carries `quality.score` (critic score 0-10), the models used, and the sources. The Actions run summary shows a table per run.
 - **Tune:** editorial rules live in `pipeline/lib/write.mjs` (house style), `pipeline/lib/select.mjs` (what counts as important) and `pipeline/lib/verify.mjs` (what blocks publication).

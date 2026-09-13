@@ -8,7 +8,7 @@ import Base from "@layouts/Base.astro";
       <h1 class="page-title">بحث</h1>
       <p class="page-intro">ابحث في كل ما نشره خازندار: العناوين والنصوص والوسوم.</p>
     </header>
-    <form class="search__form" role="search" action="/search/" method="get" onsubmit="return false">
+    <form class="search__form" role="search" action="/search/" method="get">
       <label class="visually-hidden" for="q">عبارة البحث</label>
       <input id="q" class="search__input" type="search" name="q" placeholder="مثال: التضخم في منطقة اليورو" autocomplete="off" autofocus />
     </form>
@@ -20,6 +20,7 @@ import Base from "@layouts/Base.astro";
   // Plain script on purpose: the Pagefind bundle is generated after the build and must not be touched by the bundler.
   (function () {
     var input = document.getElementById("q");
+    var form = input && input.form;
     var results = document.getElementById("results");
     var pagefind = null;
     var timer;
@@ -58,6 +59,8 @@ import Base from "@layouts/Base.astro";
     }
     function run() {
       var q = input.value.trim();
+      // The query lives in the address so a search can be shared or bookmarked.
+      if (history.replaceState) history.replaceState(null, "", q ? "?q=" + encodeURIComponent(q) : location.pathname);
       if (!q) {
         results.innerHTML = "";
         return;
@@ -79,6 +82,7 @@ import Base from "@layouts/Base.astro";
       clearTimeout(timer);
       timer = setTimeout(run, 180);
     });
+    if (form) form.addEventListener("submit", function (e) { e.preventDefault(); clearTimeout(timer); run(); });
     var initial = new URLSearchParams(location.search).get("q");
     if (initial) {
       input.value = initial;

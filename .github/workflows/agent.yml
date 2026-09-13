@@ -18,17 +18,24 @@ permissions:
   pull-requests: write
   issues: write
   actions: read
+  id-token: write
 
 jobs:
   claude:
     name: Answer the request
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    # Only the owner may drive the agent: this repository is public.
+    # Only the owner may drive the agent: this repository is public. The issue itself must be the
+    # owner's (a stranger's issue text is never the request), the actor must be the owner, and the
+    # mention is looked for in the text that triggered the event and nowhere else.
     if: >-
       vars.KHAZENDAR_EDITOR == '1' &&
+      github.event.issue.user.login == github.repository_owner &&
       github.event.sender.login == github.repository_owner &&
-      (contains(github.event.issue.body, '@claude') || contains(github.event.comment.body, '@claude'))
+      (
+        (github.event_name == 'issues' && contains(github.event.issue.body, '@claude')) ||
+        (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude'))
+      )
     steps:
       - uses: actions/checkout@v4
         with:
@@ -44,13 +51,15 @@ jobs:
       - name: Check for the subscription token
         id: token
         shell: bash
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
         run: |
-          if [ -n "${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}" ]; then
+          if [ -n "$CLAUDE_CODE_OAUTH_TOKEN" ]; then
             echo "present=1" >> "$GITHUB_OUTPUT"
           else
             echo "present=0" >> "$GITHUB_OUTPUT"
             {
-              echo "### Editor skipped"
+              echo "### Agent skipped"
               echo ""
               echo "\`KHAZENDAR_EDITOR\` is set to 1 but the secret \`CLAUDE_CODE_OAUTH_TOKEN\` is missing,"
               echo "so there is no subscription to run Claude on. Add it under Settings → Secrets and"

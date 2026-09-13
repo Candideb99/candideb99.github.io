@@ -38,8 +38,10 @@ const x = (i: number) => PAD.left + slot * i;
 
 /** Category labels wrap by word onto lines that fit their slot (three lines when there are few
  *  categories, two otherwise); anything longer is elided. The bottom padding follows the deepest label. */
-const catChars = Math.max(7, Math.floor(slot / 7));
-const catLines = n <= 4 ? 3 : 2;
+// A compact chart's slots are narrow, so its labels keep more characters and a third line rather than
+// being cut to six letters; a word wider than its slot is the pipeline's problem, not the reader's.
+const catChars = Math.max(compact ? 10 : 7, Math.floor(slot / 7));
+const catLines = n <= 4 || compact ? 3 : 2;
 function wrapLabel(text: string, maxChars: number, maxLines: number): string[] {
   const words = text.split(/\s+/).filter(Boolean);
   const lines: string[] = [];
@@ -167,9 +169,9 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
       })}
 
     <g class="chart__axis">
-      {chart.categories.map((c, i) => (
+      {catLabels.map((lines, i) => (
         <text x={x(i) + slot / 2} y={H - PAD.bottom + 20} text-anchor="middle" class="chart__cat">
-          {catLabels[i].map((line, li) => (
+          {lines.map((line, li) => (
             <tspan x={x(i) + slot / 2} dy={li === 0 ? 0 : 15}>{line}</tspan>
           ))}
         </text>

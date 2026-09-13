@@ -5,10 +5,10 @@
  * dek) over the market box, the way a business daily runs its readings and its numbers beside the lead.
  *
  * The owner chose rotation after seeing the carousel research, so it is built to that research's
- * fallback rules: an eight-second interval, a 400ms fade, small dots on the photograph, pause
- * under the pointer and keyboard focus, a minute's rest after any dot click, no rotation on phones or for readers who asked for reduced motion, and the list of
- * headlines beside the stage as the real indicator. Without JavaScript the first story stands
- * alone and the list is plain links. The script is embedded so a cached page cannot lose it.
+ * fallback rules: a six-second interval, a 400ms fade (dropped under reduced motion; the stage still
+ * turns, the owner's decision), small dots inside the photograph, pause under the pointer and keyboard
+ * focus, a minute's rest after any dot click, no button, and no rotation on phones. Without JavaScript
+ * the first story stands alone. The script is embedded so a cached page cannot lose it.
  */
 import type { Article } from "@lib/articles";
 import { articleHref, topicOf } from "@lib/articles";
@@ -42,7 +42,7 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
       const withPhoto = Boolean(d.image) && photoIds.has(a.id);
       const topic = topicOf(a);
       return (
-        <article class={`cover__slide${withPhoto ? "" : " cover__slide--text"}`} id={`cover-slide-${i}`} role="group" aria-roledescription="slide" aria-label={`${i + 1} من ${stories.length}`} data-index={i} hidden={i !== 0} data-section={d.section}>
+        <article class={`cover__slide${withPhoto ? "" : " cover__slide--text"}`} id={`cover-slide-${i}`} role="tabpanel" aria-roledescription="slide" aria-label={`${i + 1} من ${stories.length}`} data-index={i} hidden={i !== 0} data-section={d.section}>
           <div class="cover__body">
             {topic && <span class="kicker"><a href={`/tags/${encodeURIComponent(topic)}/`}>{topic}</a></span>}
             <h2 class="cover__title"><a href={href} set:html={isolateNumbers(d.title)} /></h2>
@@ -104,8 +104,7 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
       var dots = root.querySelectorAll(".cover__dot");
       var controls = root.querySelector("[data-cover-controls]");
       if (slides.length < 2 || dots.length !== slides.length) return;
-      var interval = Number(root.getAttribute("data-interval")) || 8000;
-      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var interval = Number(root.getAttribute("data-interval")) || 6000;
       var phone = window.matchMedia("(max-width: 719px)").matches;
       var current = 0;
       var timer = null;
@@ -202,9 +201,8 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
   .cover__dek { font-family: var(--font-body); font-size: clamp(1.05rem, 1rem + 0.25vw, 1.18rem); line-height: 1.7; color: var(--ink-2); margin-top: 0.55rem; max-width: 34em; }
   .cover__meta { margin-top: 0.6rem; }
 
-  /* The dots sit on the photograph's bottom corner on a paper plate, with the pause control beside them. */
   /* The dots sit inside the photograph at its top corner, small and quiet: white rings on a faint
-     dark wash, the current one filled. */
+     dark wash, the current one filled. There is no button: the pointer and keyboard focus pause it. */
   .cover__controls { position: absolute; top: 0.6rem; inset-inline-end: calc(var(--col-gap) + 0.6rem); display: flex; align-items: center; padding: 0.3rem 0.45rem; background: rgba(20, 20, 20, 0.28); border-radius: 999px; }
   .cover__dots { display: flex; align-items: center; gap: 0.38rem; }
   .cover__dot { width: 0.5rem; height: 0.5rem; padding: 0; border: 1.5px solid rgba(252, 252, 249, 0.9); border-radius: 50%; background: transparent; cursor: pointer; }

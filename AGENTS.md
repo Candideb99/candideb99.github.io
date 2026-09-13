@@ -16,6 +16,13 @@ four first. They bind every agent, Codex included.
   prints twice above the fold), and holds under the pointer. Do not make it static or chronological.
 - **The publication gate** is: programmatic checks, the Arabic copy desk, the critic; one revision
   round; a second critic pass; publish when the verdict is not "reject" and the score is 6 or more.
+  A first pass goes straight out only with a "publish" verdict, a score of 6 or more and no
+  programmatic issue; anything else takes the revision round. A rejected story may be reselected
+  once after 12 hours; a second rejection holds it for three weeks. A story is one event and cites
+  at most five source items; it needs at least one fetched source body, not feed blurbs alone.
+  A story is written from desk notes (checked facts, one event) and the critic scores real errors,
+  not paraphrase; do not remove either stage, and do not let a menu, a story or a headline be
+  assembled from a roundup of separate events.
   With the free models the critic returns "revise" with a list on nearly every first pass; a gate
   that demands a "publish" verdict with zero issues publishes nothing, which defeats the owner's
   purpose (a fully automated paper). Raising the bar is the owner's call, not an agent's.

@@ -24,7 +24,7 @@ const stroke = dir === "up" ? "var(--up)" : dir === "down" ? "var(--down)" : "va
   <span class="quote__row">
     <bdi class="quote__price ui">{formatPrice(q)}</bdi>
     {dir !== "none" ? (
-      <bdi class="quote__move ui" aria-label={DIRECTION_LABEL[dir]}><span class="quote__arrow" aria-hidden="true">{arrow}</span>{formatMove(q)}</bdi>
+      <Fragment><span class="visually-hidden">{DIRECTION_LABEL[dir]}</span><bdi class="quote__move ui"><span class="quote__arrow" aria-hidden="true">{arrow}</span>{formatMove(q)}</bdi></Fragment>
     ) : (
       <span class="quote__move quote__move--na ui">—</span>
     )}

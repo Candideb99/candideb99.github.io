@@ -14,13 +14,17 @@ for (const d of DESKS) {
 
 export const DESK_NAMES = DESKS.map((d) => d.name);
 
-/** Canonical desk names for a list of region tags, in the desks' order, each once; unknown tags are dropped. */
+/** An alias must stand as a whole word in the tag (a nisba ending is allowed: المصرية, الإماراتي); "مصرف" is not "مصر". */
+const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const wholeWord = new Map(DESKS.flatMap((d) => d.match.map((m) => [m, new RegExp(`(?<!\\p{L})${escapeRe(m)}(?:ي|ية)?(?!\\p{L})`, "u")])));
+
+/** Canonical desk names for a list of region tags, in the writer's order (the first is the story's main region), each once; unknown tags are dropped. */
 export function canonicalRegions(tags) {
-  const found = new Set();
+  const out = [];
   for (const raw of Array.isArray(tags) ? tags : []) {
     const tag = String(raw).trim();
-    const d = byTag.get(tag) || DESKS.find((x) => x.match.some((m) => tag.includes(m)));
-    if (d) found.add(d.name);
+    const d = byTag.get(tag) || DESKS.find((x) => x.match.some((m) => wholeWord.get(m).test(tag)));
+    if (d && !out.includes(d.name)) out.push(d.name);
   }
-  return DESK_NAMES.filter((n) => found.has(n)).slice(0, 3);
+  return out.slice(0, 3);
 }

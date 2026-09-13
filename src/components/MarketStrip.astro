@@ -11,7 +11,7 @@ const items = quotes(STRIP_IDS);
 
 {items.length > 0 && (
   <div class="markets-wrap">
-    <div class="wrap markets ui" aria-label="الأسواق">
+    <div class="wrap markets ui" role="region" aria-label="الأسواق">
       <a class="markets__label" href="/markets/data/">الأسواق</a>
       <ul class="markets__list">
         {items.map((q) => {
@@ -22,7 +22,10 @@ const items = quotes(STRIP_IDS);
                 <span class="q__name">{q.short}</span>
                 {(q.changeMode === "abs" || dir === "none") && <bdi class="q__price">{formatPrice(q)}</bdi>}
                 {dir !== "none" && (
-                  <bdi class={`q__move q__move--${dir}`} aria-label={DIRECTION_LABEL[dir]}>
+                  <span class="visually-hidden">{DIRECTION_LABEL[dir]}</span>
+                )}
+                {dir !== "none" && (
+                  <bdi class={`q__move q__move--${dir}`}>
                     <span class="q__arrow" aria-hidden="true">{dir === "up" ? "▲" : dir === "down" ? "▼" : "•"}</span>
                     {formatMove(q)}
                   </bdi>

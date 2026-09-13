@@ -17,7 +17,7 @@ const { items } = Astro.props;
 
 {items.length > 0 && (
   <div class="ticker-wrap" data-ticker>
-    <div class="wrap ticker" aria-label="آخر الأخبار">
+    <div class="wrap ticker" role="region" aria-label="آخر الأخبار">
       <span class="ticker__label ui">الأحدث</span>
       <div class="ticker__viewport">
         <ul class="ticker__list">
@@ -46,11 +46,20 @@ const { items } = Astro.props;
     var vp = wrap.querySelector(".ticker__viewport");
     var list = wrap.querySelector(".ticker__list");
     if (!vp || !list || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    var half = list.scrollWidth / 2;
+    // The list is printed twice; one period is the distance from the first headline to its
+    // duplicate (the items' widths plus their gaps), measured again once the web fonts are in,
+    // since the fallback face sets a different width.
+    var items = list.children;
+    var n = items.length / 2;
+    function period() {
+      return n >= 1 && items[n] ? Math.abs(items[n].getBoundingClientRect().left - items[0].getBoundingClientRect().left) : list.scrollWidth / 2;
+    }
+    var half = period();
     if (half < 200) return;
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { half = period(); });
     // The strip is scrolled by whole pixels, not transformed: text on a moving compositing layer
-    // blurs at fractional positions. Sixty pixels a second; the list is printed twice, so at half
-    // way the scroll position jumps back to the start and the loop is seamless. In a right-to-left
+    // blurs at fractional positions. Sixty pixels a second; at the end of one period the scroll
+    // position jumps back by exactly that period and the loop is seamless. In a right-to-left
     // page the content overflows leftwards, so the scroll position runs negative.
     var speed = 60;
     var pos = 0;

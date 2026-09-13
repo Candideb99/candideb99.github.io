@@ -35,25 +35,78 @@ const EXAMPLES = `EXAMPLES (before → after)
 - وظائف أميركا القوية تعيد رفع الفائدة للأضواء وسيتي تعدل مسار الخفض إلى 2027 → قوة سوق العمل الأمريكية تعيد رفع الفائدة إلى الواجهة (the dek then carries: «سيتي» ترجّح تأجيل خفض الفائدة إلى 2027)
 - أسعار الغاز الأوروبي ترتفع إلى 93 دولاراً والمعدل العقاري الأميركي يتجاوز 6.85% → أسعار الغاز في أوروبا ترتفع إلى 93 دولاراً (the dek then carries: فائدة الرهن العقاري في أمريكا تتجاوز 6.85%)`;
 
-/** Quantities written in letters: a rewrite that turns "جزأين من أربعة" into "جزئي" has changed a fact. */
-const NUMBER_WORDS = /(?<![؀-ۿ])(?:ال)?(?:واحد|واحدة|اثنان|اثنين|اثنتان|اثنتين|ثلاث|ثلاثة|أربع|أربعة|خمس|خمسة|ست|ستة|سبع|سبعة|ثماني|ثمانية|تسع|تسعة|عشر|عشرة|عشرون|عشرين|ثلاثون|ثلاثين|أربعون|أربعين|خمسون|خمسين|ستون|ستين|سبعون|سبعين|ثمانون|ثمانين|تسعون|تسعين|مئة|مائة|مئتان|مئتين|ألف|ألفا|ألفي|ألفان|ألفين|آلاف|مليون|مليونا|مليوني|مليونان|مليونين|ملايين|مليار|مليارا|ملياري|ملياران|مليارين|مليارات|تريليون|تريليونا|تريليوني|تريليونات|نصف|ربع|ثلث|ثلثي|ثلثين|ضعف|ضعفي|ضعفين|أضعاف)(?![؀-ۿ])/g;
-/** Count-bearing duals (جزأين، شركتين، عامين): a curated list, because the plural suffix ين looks the same. */
-const DUALS = /(?<![؀-ۿ])(?:ال)?(?:جزأين|جزءان|جزءين|شركتين|شركتان|عامين|عامان|يومين|يومان|شهرين|شهران|أسبوعين|أسبوعان|ساعتين|ساعتان|سنتين|سنتان|مرتين|مرتان|ضعفين|ضعفان|نقطتين|نقطتان|بلدين|بلدان|دولتين|دولتان|ولايتين|ولايتان|مدينتين|مدينتان|قطاعين|قطاعان|مصنعين|مصنعان|بنكين|بنكان|طرفين|طرفان|جانبين|جانبان|مرحلتين|مرحلتان|جولتين|جولتان|صفقتين|صفقتان|اتفاقيتين|اتفاقيتان|خطوتين|خطوتان|حزمتين|حزمتان|سفينتين|سفينتان|ناقلتين|ناقلتان|محطتين|محطتان|مشروعين|مشروعان|عقدين|عقدان|فصلين|فصلان|ربعين|ربعان|نصفين|نصفان|ثلثين|ثلثان|رقمين|رقمان|سهمين|سهمان|منتجين|منتجان|مصدرين|مصدران|وزيرين|وزيران|رئيسين|رئيسان|قرارين|قراران|تقريرين|تقريران|حالتين|حالتان|سيناريوهين|سيناريوهان)(?![؀-ۿ])/g;
+/** The clitic a count word, a dual or a hedge may carry attached (وثلاث، بألفي، لعامين، وقد): the guard reads through it. */
+const CLITIC = "(?:و|ف|ب|ل|ك)?";
+/** Quantities written in letters: a rewrite that turns "جزأين من أربعة" into "جزئي" has changed a fact. The word itself is group 1. */
+const NUMBER_WORDS = new RegExp(`(?<![؀-ۿ])${CLITIC}(?:ال)?(واحد|واحدة|اثنان|اثنين|اثني|اثنتان|اثنتين|اثنتي|ثلاث|ثلاثة|أربع|أربعة|خمس|خمسة|ست|ستة|سبع|سبعة|ثماني|ثمانية|تسع|تسعة|عشر|عشرة|عشرون|عشرين|ثلاثون|ثلاثين|أربعون|أربعين|خمسون|خمسين|ستون|ستين|سبعون|سبعين|ثمانون|ثمانين|تسعون|تسعين|مئة|مائة|مئتان|مئتين|مئتي|مائتان|مائتين|مائتي|ألف|ألفا|ألفي|ألفان|ألفين|آلاف|مليون|مليونا|مليوني|مليونان|مليونين|ملايين|مليار|مليارا|ملياري|ملياران|مليارين|مليارات|تريليون|تريليونا|تريليوني|تريليونان|تريليونين|تريليونات|نصف|ربع|ثلث|ثلثي|ثلثين|ثلثان|ضعف|ضعفي|ضعفين|ضعفان|أضعاف)(?![؀-ۿ])`, "g");
+/** Count-bearing duals (جزأين، شركتين، عامين): a curated list, because the plural suffix ين looks the same. The word itself is group 1. */
+const DUALS = new RegExp(`(?<![؀-ۿ])${CLITIC}(?:ال)?(جزأين|جزءان|جزءين|شركتين|شركتان|عامين|عامان|يومين|يومان|شهرين|شهران|أسبوعين|أسبوعان|ساعتين|ساعتان|سنتين|سنتان|مرتين|مرتان|ضعفين|ضعفان|نقطتين|نقطتان|بلدين|بلدان|دولتين|دولتان|ولايتين|ولايتان|مدينتين|مدينتان|قطاعين|قطاعان|مصنعين|مصنعان|بنكين|بنكان|طرفين|طرفان|جانبين|جانبان|مرحلتين|مرحلتان|جولتين|جولتان|صفقتين|صفقتان|اتفاقيتين|اتفاقيتان|خطوتين|خطوتان|حزمتين|حزمتان|سفينتين|سفينتان|ناقلتين|ناقلتان|محطتين|محطتان|مشروعين|مشروعان|عقدين|عقدان|فصلين|فصلان|ربعين|ربعان|نصفين|نصفان|ثلثين|ثلثان|رقمين|رقمان|سهمين|سهمان|منتجين|منتجان|مصدرين|مصدران|وزيرين|وزيران|رئيسين|رئيسان|قرارين|قراران|تقريرين|تقريران|حالتين|حالتان|سيناريوهين|سيناريوهان)(?![؀-ۿ])`, "g");
+
+/**
+ * One stem per quantity, whatever its case or gender: the desk's own grammar fixes (ألفين رحلة → ألفي رحلة,
+ * ثلاثة شركات → ثلاث شركات) change no fact and must pass the guard; ألفين → ألف (a different count) must not.
+ */
+const NUMBER_STEMS = [
+  [/^(?:واحد|واحدة)$/, "واحد"],
+  [/^(?:اثنان|اثنين|اثني|اثنتان|اثنتين|اثنتي)$/, "اثنان"],
+  [/^(?:ثلاث|ثلاثة)$/, "ثلاثة"],
+  [/^(?:أربع|أربعة)$/, "أربعة"],
+  [/^(?:خمس|خمسة)$/, "خمسة"],
+  [/^(?:ست|ستة)$/, "ستة"],
+  [/^(?:سبع|سبعة)$/, "سبعة"],
+  [/^(?:ثماني|ثمانية)$/, "ثمانية"],
+  [/^(?:تسع|تسعة)$/, "تسعة"],
+  [/^(?:عشر|عشرة)$/, "عشرة"],
+  [/^(?:عشرون|عشرين)$/, "عشرون"],
+  [/^(?:ثلاثون|ثلاثين)$/, "ثلاثون"],
+  [/^(?:أربعون|أربعين)$/, "أربعون"],
+  [/^(?:خمسون|خمسين)$/, "خمسون"],
+  [/^(?:ستون|ستين)$/, "ستون"],
+  [/^(?:سبعون|سبعين)$/, "سبعون"],
+  [/^(?:ثمانون|ثمانين)$/, "ثمانون"],
+  [/^(?:تسعون|تسعين)$/, "تسعون"],
+  [/^(?:مئة|مائة)$/, "مئة"],
+  [/^(?:مئتان|مئتين|مئتي|مائتان|مائتين|مائتي)$/, "مئتان"],
+  [/^(?:ألف|ألفا)$/, "ألف"],
+  [/^(?:ألفان|ألفين|ألفي)$/, "ألفان"],
+  [/^(?:مليون|مليونا)$/, "مليون"],
+  [/^(?:مليونان|مليونين|مليوني)$/, "مليونان"],
+  [/^(?:مليار|مليارا)$/, "مليار"],
+  [/^(?:ملياران|مليارين|ملياري)$/, "ملياران"],
+  [/^(?:تريليون|تريليونا)$/, "تريليون"],
+  [/^(?:تريليونان|تريليونين|تريليوني)$/, "تريليونان"],
+  [/^(?:ثلثان|ثلثين|ثلثي)$/, "ثلثان"],
+  [/^(?:ضعفان|ضعفين|ضعفي)$/, "ضعفان"],
+];
+function numberStem(word) {
+  for (const [re, stem] of NUMBER_STEMS) if (re.test(word)) return stem;
+  return word;
+}
 
 /** Digits, number words and Latin tokens of a text, as sortable fingerprints; a rewrite must reproduce them. */
 function numberFingerprint(text, { unique = false } = {}) {
-  const t = normalizeDigits(String(text ?? ""));
-  const digits = (t.match(/\d[\d.,]*\d|\d/g) ?? []).map((n) => n.replace(/[.,]+$/, ""));
-  const words = (t.match(NUMBER_WORDS) ?? []).map((w) => w.replace(/^ال/, ""));
+  const t = normalizeDigits(String(text ?? "")).replace(/٬/g, ",").replace(/٫/g, ".");
+  // A thousands separator is formatting, not fact: "4,000" and "4000" are one figure.
+  const digits = (t.match(/\d[\d.,]*\d|\d/g) ?? []).map((n) => n.replace(/[.,]+$/, "").replace(/,(?=\d{3}(?!\d))/g, ""));
+  const words = [...t.matchAll(NUMBER_WORDS)].map((m) => numberStem(m[1]));
   const all = [...digits, ...words].sort();
   return (unique ? [...new Set(all)] : all).join("|");
 }
 /** Every count-bearing dual of the original must still be in the rewrite (it may add, never drop). */
 function dualsKept(before, after) {
-  const had = (String(before ?? "").match(DUALS) ?? []).map((w) => w.replace(/^ال/, ""));
-  const has = new Set((String(after ?? "").match(DUALS) ?? []).map((w) => w.replace(/^ال/, "")));
+  const had = [...String(before ?? "").matchAll(DUALS)].map((m) => m[1]);
+  const has = new Set([...String(after ?? "").matchAll(DUALS)].map((m) => m[1]));
   return had.every((w) => has.has(w));
 }
+/** The same word twice in a row (the back-reference is the point: "يتوسعون يتوسعون"). */
+const STUTTER = /(?<![؀-ۿ])([؀-ۿ]{3,})\s+\1(?![؀-ۿ])/;
+/**
+ * The hedges an expectation is written with, read through an attached clitic (وقد، ومن المتوقع); the hedge
+ * itself is group 1. "يعد" counts only in its promise sense (يعد بخفض), never as "is considered"; "لقد" is
+ * emphasis, not "قد".
+ */
+const HEDGES = new RegExp(`(?<![؀-ۿ])${CLITIC}(يتجه|تتجه|قد(?<!لقد)|من المتوقع|المتوقع|متوقع|مرشح|مرشحة|محتمل|يُرجَّح|يرجح|ترجح|ربما|يتوقع|تتوقع|توقعات|توقع|تعهد|تعهدت|يعد(?=(?: [؀-ۿ]+){0,2} ب[؀-ۿ])|تعد(?=(?: [؀-ۿ]+){0,2} ب[؀-ۿ])|وعد|وعدت|يعتزم|تعتزم|يخطط|تخطط|قريباً|قريبا)(?![؀-ۿ])`, "g");
+
 /** The house writes tanween on the alef (اً), not before it (ًا); models mix the two. */
 function houseTanween(text) {
   return String(text ?? "").replace(/ًا/g, "اً");
@@ -78,11 +131,11 @@ export function fieldGuard(field, before, after) {
   if (latinFingerprint(a) !== latinFingerprint(b)) return { ok: false, reason: "latin tokens changed" };
   if (/https?:\/\/|\]\(/.test(b)) return { ok: false, reason: "link introduced" };
   // A word repeated back to back ("يتوسعون يتوسعون") is a model stutter, never Arabic.
-  if (/(?<![؀-ۿ])([؀-ۿ]{3,})\s+(?![؀-ۿ])/.test(b) && !/(?<![؀-ۿ])([؀-ۿ]{3,})\s+(?![؀-ۿ])/.test(a)) return { ok: false, reason: "a word was doubled" };
+  if (STUTTER.test(b) && !STUTTER.test(a)) return { ok: false, reason: "a word was doubled" };
   // An expectation must stay an expectation: the hedges of the original must survive the rewrite.
-  const HEDGES = /(?<![؀-ۿ])(?:يتجه|تتجه|قد|من المتوقع|المتوقع|متوقع|مرشح|مرشحة|محتمل|يُرجَّح|يرجح|ترجح|ربما|يتوقع|تتوقع|توقعات|توقع|تعهد|تعهدت|يعد|تعد|وعد|وعدت|يعتزم|تعتزم|يخطط|تخطط|قريباً|قريبا)(?![؀-ۿ])/g;
-  const hedgesBefore = new Set((a.match(HEDGES) ?? []));
-  const hedgesAfter = new Set((b.match(HEDGES) ?? []));
+  const hedgesOf = (t) => new Set([...t.matchAll(HEDGES)].map((m) => m[1]));
+  const hedgesBefore = hedgesOf(a);
+  const hedgesAfter = hedgesOf(b);
   if ([...hedgesBefore].some((h) => !hedgesAfter.has(h))) return { ok: false, reason: `a hedge was dropped (${[...hedgesBefore].filter((h) => !hedgesAfter.has(h)).join("، ")})` };
   const [lo, hi] = field === "title" ? [0.45, 1.6] : field === "body" ? [0.8, 1.25] : field === "pair" ? [0.7, 1.4] : [0.6, 1.5];
   const ratio = b.length / Math.max(1, a.length);

@@ -39,7 +39,7 @@ ${recentTitles.length ? recentTitles.map((t) => `- ${t}`).join("\n") : "- (none)
 STORIES PUBLISHED PER SECTION IN THE LAST 24 HOURS: ${coverageLine}${quiet.length ? ` (no story yet in: ${quiet.join(", ")})` : ""}
 
 TASK
-1. Group candidate items that report the same underlying story into one cluster (items from different outlets about the same event belong together). A story is ONE event: one decision, one data release, one deal, one market move. Never merge different events into a cluster because they happened the same day or touch the same theme; a US confidence survey and a British rate outlook are two stories, not one, and a roundup is not a story. If two events are related, pick the more important and mention the other only if the writer needs it as context.
+1. Group candidate items that report the same underlying story into one cluster (items from different outlets about the same event belong together). A story is ONE event: one decision, one data release, one deal, one market move. Never merge different events into a cluster because they happened the same day or touch the same theme; a US confidence survey and a British rate outlook are two stories, not one, and a roundup is not a story. If two events are related, pick the more important and mention the other only if the writer needs it as context. A story cites at most FIVE candidate items (the outlets reporting that one event); a list of more than five ids means events have been merged, and the desk cuts it to the first five. "A week of central bank decisions", "markets await…", "X and Y" framings are roundups, not events: the story is the decision, the release, the deal or the move itself.
 2. Choose at most ${limit} stories, and fewer when the day is thin: a paper is edited, not filled. Score each candidate on the news values an Arabic desk edits by (قيم الخبر): التأثير (does it change money, prices, jobs or policy for our readers?), الأهمية (a central bank, a government, a market, a major company), الآنية (it happened or was decided now; a figure already reported is news again only if the change is material), القرب (the Gulf, Egypt, the Levant, the Maghreb, or the global forces that move them: oil, the dollar, the Fed, the ECB, China, trade, technology), الضخامة (the size of the number), الصراع والنتائج (winners, losers, what follows). A story must carry at least three of these to be selected; importance below 6 is not published. State the values it carries in "news_value".
    Development over repetition: when a candidate advances a story the paper already ran (a running file), prefer the development to an unrelated marginal item, and say what is new in the angle; when it only repeats, skip it.
    Defence economics is part of our beat: defence budgets, procurement and contract awards (an official award with a stated value is news, not fluff), arms exports and imports, the defence industry and its suppliers, and what each of these means for Arab economies (Gulf procurement, offsets, local industry, public budgets). File such stories in the defense section.
@@ -50,7 +50,7 @@ TASK
 7. The angle and headline_hint must state only what the candidate items themselves report; a neutral factual working title, no dramatisation, no ".." ellipses, no inferred events.
 
 Return JSON:
-{"stories":[{"ids":["<candidate id>", "..."],"section":"<section id>","importance":<1-10>,"news_value":"<the values it carries, e.g. تأثير، آنية، قرب>","angle":"<one Arabic sentence stating the story and the angle for Arab readers>","headline_hint":"<short Arabic working headline>","regions":["<Arabic region tags such as الخليج, مصر, أوروبا, الولايات المتحدة, الصين, عالمي>"]}]}
+{"stories":[{"ids":["<candidate id>", "..."],"section":"<section id>","importance":<1-10>,"news_value":"<the values it carries, e.g. تأثير، آنية، قرب>","angle":"<one Arabic sentence stating the story and the angle for Arab readers>","headline_hint":"<short Arabic working headline>","regions":["<1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي>"]}]}
 Order stories by importance, highest first. Use only candidate ids that exist. Return at most ${limit + 2} stories.`;
 
   const { data, model } = await chat({
@@ -93,6 +93,20 @@ Order stories by importance, highest first. Use only candidate ids that exist. R
       regions: Array.isArray(s.regions) ? s.regions.map(String).slice(0, 4) : [],
     }))
     .filter((s) => s.ids.length && s.section)
+    .filter((s) => {
+      const roundup = /أسبوع (?:حافل|حاسم|المصارف|البنوك|المركزيات|التقارير)|المركزيات|تترقب|بين .{3,40} و|من .{3,30} إلى .{3,30}(?:،| و)|\.\.\.|\.\./.test(s.headlineHint);
+      if (roundup) log?.(`editor framed a roundup, dropped: "${s.headlineHint}"`);
+      return !roundup;
+    })
+    .map((s) => {
+      // One story is one event: the editor was seen citing eighteen items for a "story" that was
+      // a roundup, which the writer then wrote as one. Five sources at most; the first are the strongest.
+      if (s.ids.length > 5) {
+        log?.(`editor stitched ${s.ids.length} items into "${s.headlineHint}"; cut to the first five`);
+        return { ...s, ids: s.ids.slice(0, 5) };
+      }
+      return s;
+    })
     .sort((a, b) => b.importance - a.importance);
 
   // Never let two selected stories share a candidate item.

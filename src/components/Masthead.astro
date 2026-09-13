@@ -4,11 +4,15 @@
  * the logo, and the green section bar. On a wide screen each section opens a panel under the bar,
  * as the business dailies' bars do: the section's standing sub-topics (a curated taxonomy in
  * `src/data/topics.json`, not the writers' tags), its analyses by desk, and the data and pages that
- * belong to it. The panel is sized to its content, opens on hover or keyboard focus, and needs no script.
+ * belong to it. The panel is sized to its content, never wider than the bar, hung from the bar's start
+ * edge, and opens on hover only (a panel held open by keyboard focus used to sit over the section under
+ * the pointer); it needs no script. Keyboard and touch readers get plain links and the same taxonomy on
+ * the section pages.
  */
 import site from "@data/site.json";
 import { sections, sectionHref, newsSections } from "@lib/sections";
 import { formatDate, issueNumber } from "@lib/format";
+import { todayIso } from "@lib/calendar";
 import { getArticles, articleHref } from "@lib/articles";
 import { analysisDesk, ANALYSIS_DESKS } from "@lib/analysis";
 import { topicsOf, topicHref } from "@lib/topics";
@@ -69,7 +73,7 @@ for (const s of sections) {
 <header class="masthead">
   <div class="wrap masthead__top ui">
     <p class="masthead__issue">
-      <time datetime={now.toISOString().slice(0, 10)} data-issue-date data-launch={site.launchDate}>{today}</time>
+      <time datetime={todayIso(now)} data-issue-date data-launch={site.launchDate} data-zone={site.timeZone}>{today}</time>
       <span class="masthead__sep" aria-hidden="true">·</span>
       <span>العدد <bdi data-issue-no>{issue}</bdi></span>
     </p>
@@ -94,18 +98,16 @@ for (const s of sections) {
     <div class="wrap masthead__nav-wrap">
       <ul class="nav">
         <li class="nav__item"><a href="/" class="nav__link" aria-current={active === "home" ? "page" : undefined}>الرئيسية</a></li>
-        {sections.map((s, i) => {
+        {sections.map((s) => {
           const columns = panels.get(s.id);
-          // Items in the far half of the bar hang their panel from their end edge so it stays inside the viewport.
-          const end = i >= sections.length / 2;
           return (
-            <li class={`nav__item${columns ? " nav__item--panel" : ""}${end ? " nav__item--end" : ""}`}>
+            <li class={`nav__item${columns ? " nav__item--panel" : ""}`}>
               <a href={sectionHref(s.id)} class="nav__link" aria-current={active === s.id ? "page" : undefined}>{s.name}</a>
               {columns && (
                 <div class="nav__panel" role="group" aria-label={`قسم ${s.name}`}>
                   {columns.map((c) => (
                     <div class={`nav__col${c.wide ? " nav__col--wide" : ""}${c.links.length > 5 && !c.wide ? " nav__col--two" : ""}`}>
-                      <h3 class="nav__head ui">{c.head}</h3>
+                      <p class="nav__head ui">{c.head}</p>
                       <ul>
                         {c.links.map((l) => (
                           <li class={l.title ? "nav__title" : undefined}><a href={l.href} set:html={isolateNumbers(l.text)} /></li>
@@ -151,7 +153,7 @@ for (const s of sections) {
 
   /* The section bar: the one green field on the page. */
   .masthead__nav { background: #0f5c3c; }
-  .nav__item { position: relative; }
+  .masthead__nav-wrap { position: relative; }
   .nav {
     display: flex;
     justify-content: center;
@@ -176,17 +178,12 @@ for (const s of sections) {
   .nav__link:hover, .nav__link:focus-visible { background: rgba(255, 255, 255, 0.12); }
   .nav__link:focus-visible { outline-color: #fcfcf9; outline-offset: -3px; }
   .nav__link[aria-current="page"] { border-bottom-color: #fcfcf9; background: rgba(255, 255, 255, 0.08); }
-  .nav__item--panel:hover > .nav__link, .nav__item--panel:focus-within > .nav__link { background: var(--paper); color: var(--green); }
 
-  /* The section panel: a paper box the size of its content hung under its own section link (from
-     the link's end edge for the far half of the bar), ruled between its columns and closed by a 2px
-     ink rule; only on a wide screen where the pointer can hover. The hovered item is raised above
-     any panel a keyboard focus keeps open, so the panel always matches the link under the pointer.
-     On smaller screens the bar scrolls and the sections are plain links. */
-  .nav__panel { display: none; position: absolute; top: 100%; inset-inline-start: 0; z-index: 30; width: max-content; max-width: min(60rem, 100vw - 2rem); background: var(--paper); border: 1px solid var(--rule); border-top: 0; border-bottom: 2px solid var(--ink); padding: 1rem 0 1.1rem; }
-  .nav__item--end .nav__panel { inset-inline-start: auto; inset-inline-end: 0; }
-  .nav__item--panel:focus-within { z-index: 35; }
-  .nav__item--panel:hover { z-index: 40; }
+  /* The section panel: a paper box the size of its content, never wider than the bar, hung from the
+     bar's start edge, ruled between its columns and closed by a 2px ink rule; only on a wide screen
+     with a pointer that can hover, and on hover alone: a panel held open by keyboard focus used to sit
+     over the section under the pointer. Elsewhere the bar scrolls and the sections are plain links. */
+  .nav__panel { display: none; position: absolute; top: 100%; inset-inline-start: 0; z-index: 30; width: max-content; max-width: 100%; background: var(--paper); border: 1px solid var(--rule); border-top: 0; border-bottom: 2px solid var(--ink); padding: 1rem 0 1.1rem; }
   .nav__col { min-width: 11rem; padding-inline: 1.4rem; }
   .nav__col + .nav__col { border-inline-start: 1px solid var(--rule); }
   .nav__col--wide { max-width: 22rem; }
@@ -197,9 +194,12 @@ for (const s of sections) {
   .nav__col a { font-family: var(--font-body); font-size: 0.96rem; line-height: 1.45; color: var(--ink-2); text-decoration: none; white-space: nowrap; }
   .nav__col .nav__title a { font-family: var(--font-title); font-weight: 700; font-size: 0.98rem; color: var(--ink); white-space: normal; display: block; padding-block: 0.1rem; }
   .nav__col a:hover, .nav__col a:focus-visible { color: var(--green); text-decoration: underline; }
-  @media (min-width: 1024px) {
+  /* A two-column topic list may wrap its names when the panel is held to the bar's width. */
+  .nav__col--two a { white-space: normal; }
+  @media (min-width: 1024px) and (hover: hover) {
     .nav { overflow: visible; }
-    .nav__item--panel:hover .nav__panel, .nav__item--panel:focus-within .nav__panel { display: flex; align-items: flex-start; }
+    .nav__item--panel:hover > .nav__link { background: var(--paper); color: var(--green); }
+    .nav__item--panel:hover .nav__panel { display: flex; align-items: flex-start; }
   }
 
   @media (max-width: 719px) {

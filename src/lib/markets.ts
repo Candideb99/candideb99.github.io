@@ -116,11 +116,9 @@ export function formatChange(q: Quote): string {
 
 export const DIRECTION_LABEL: Record<Direction, string> = { up: "ارتفاع", down: "انخفاض", flat: "دون تغيير", none: "" };
 
-/** "اليوم 14:05" or "11 سبتمبر" for the quote's own time, in the site's zone. */
+/** "11 سبتمبر 14:05": the quote's own time in the site's zone. Never "today": the page may be read days after it was built. */
 export function whenLabel(q: Quote): string {
-  const today = formatShortDate(new Date());
-  const day = formatShortDate(q.time);
-  return day === today ? `اليوم ${formatTime(q.time)}` : day;
+  return `${formatShortDate(q.time)} ${formatTime(q.time)}`;
 }
 
 /** Points for a small line of the instrument's closes, or null when there are too few to draw. */

@@ -1,5 +1,5 @@
 import { chat } from "./llm.mjs";
-import { arabicRatio, phraseOverlap, suspiciousLatinWords, ungroundedNumbers, wordCount } from "./util.mjs";
+import { arabicRatio, overlappingPhrases, phraseOverlap, suspiciousLatinWords, ungroundedNumbers, wordCount } from "./util.mjs";
 import { styleIssues } from "./style.mjs";
 
 /** The four sections every house analysis must carry, matched loosely against its "## " subheads. */
@@ -112,8 +112,13 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
     const overlapLimit = analysis || weekly ? 0.2 : 0.12;
     for (const source of sources) {
       if (source.lang !== "ar") continue;
-      const overlap = phraseOverlap(`${draft.lede}\n${draft.body}`, source.text || source.summary || "");
-      if (overlap > overlapLimit) issues.push(`نسبة النقل الحرفي من مصدر عربي مرتفعة (${(overlap * 100).toFixed(0)}%). أعد الصياغة بأسلوبك.`);
+      // A verbatim Arabic quotation inside «» is allowed to match its source; the prose around it is not.
+      const quoteFree = `${draft.lede}\n${draft.body}`.replace(/«[^»]{0,400}»/g, " ");
+      const overlap = phraseOverlap(quoteFree, source.text || source.summary || "");
+      if (overlap > overlapLimit) {
+        const phrases = overlappingPhrases(quoteFree, source.text || source.summary || "");
+        issues.push(`نسبة النقل الحرفي من مصدر عربي مرتفعة (${(overlap * 100).toFixed(0)}%). أعد صياغة كل جملة منقولة بكلماتك وبنيتك أنت، وبخاصة: ${phrases.map((p) => `«${p}»`).join("، ") || "الجمل المطابقة للمصدر"}.`);
+      }
     }
   }
 
@@ -163,9 +168,10 @@ const CRITIC_RUBRIC = {
     check: "Is this ONE story? An article that stitches unrelated developments together (different countries' data releases, a decision plus an unrelated market move, a sanctions remark beside a confidence survey) is a roundup, not a news story, and must be rejected: say which developments do not belong. Then: does the article add anything not in the sources beyond neutral, well-known context?",
   },
   explainer: {
-    material: "(explainer: no external sources; judge internal consistency, standard definitions, and that every number is labelled as an illustrative example)",
-    facts: FACTS_CHECK,
-    check: "Are definitions standard and correct? Are all worked-example numbers clearly labelled as illustrative?",
+    material:
+      "(explainer: no external sources by design, so it may state NO current events: no dated fact, current price, statistic, decision, attack or deal of recent days; only definitions, mechanisms and worked examples labelled مثال توضيحي. Judge internal consistency and standard definitions.)",
+    facts: "Every claim in the draft: is it a definition or a mechanism, not a report of something that happened? Every number: is it labelled as an illustrative example (مثال توضيحي)? List each current-events claim (a dated event, a current price or figure, a decision or attack of recent days, a named recent deal) and each unlabelled number: with no sources they are unsupported by construction.",
+    check: "Are definitions standard and correct? Are all worked-example numbers clearly labelled as illustrative? Any current-events claim at all means the verdict \"reject\", never \"revise\"; the paper's news pages, not an explainer, report events.",
   },
   paper: {
     material:
@@ -188,7 +194,7 @@ const CRITIC_RUBRIC = {
 };
 
 /** Critic pass. Returns { verdict: "publish"|"revise"|"reject", score, issues[], model }. */
-export async function critique({ draft, sources, explainer = false, analysis = false, paper = false, weekly = false, log }) {
+export async function critique({ draft, sources, explainer = false, analysis = false, paper = false, weekly = false, previousIssues = null, log }) {
   const rubric = CRITIC_RUBRIC[explainer ? "explainer" : analysis ? "analysis" : paper ? "paper" : weekly ? "weekly" : "news"];
   const material = sources.map((s, i) => `SOURCE ${i + 1}: ${s.sourceNameEn} (${s.lang}) — "${s.title}"\n${s.text || s.summary || ""}`).join("\n\n");
   const user = `SOURCE MATERIAL
@@ -205,9 +211,14 @@ CHECK
 5. Headline: accurate, specific, not misleading.
 6. Charts and tables: check every cell against its entity, period, unit and direction in the sources; a number that occurs somewhere in a source is not evidence for a different claim. Reject unsupported superlatives and claims of breakthroughs.
 
+${previousIssues?.length ? `\nA REVISION WAS MADE. These problems were reported on the previous draft; say which of them remain and judge the draft as it now stands, not the old one:\n${previousIssues.map((i, n) => `${n + 1}. ${i}`).join("\n")}\n` : ""}
+SCORING (apply exactly)
+A real error is: a figure with a changed magnitude, direction, period, unit or actor; a claim, cause or consequence no source makes; a wrong attribution; a quotation that is not verbatim from an Arabic source; a headline that says more than the sources. A faithful paraphrase, a synonym, a rounding the source's own headline makes (108 for 108.44), a shorter attribution form, or the omission of a detail is NOT an error.
+Start from 10. Subtract 1 for each real error and 1 for each translationese fault (point 4). A draft with no real error scores 8 or more whatever its style points. Verdict: "publish" at 7 or more with no real error; "revise" for one to three real errors or translationese; "reject" only for a fabricated key fact, a misrepresented story, or a draft that cannot be fixed from the sources.
+List at most six issues, the real errors first, each quoting the offending text and naming the source that contradicts it; do not pad the list with style remarks once the real errors are listed.
+
 Return JSON:
-{"score": <0-10 overall publishability>, "verdict": "publish" | "revise" | "reject", "issues": ["<one concrete, actionable problem in Arabic, quoting the offending text>", "..."], "summary": "<one sentence in Arabic>"}
-Use "publish" only when there are no factual problems (score >= 7). Use "reject" when the draft misrepresents the story, fabricates key facts, or cannot be fixed from the sources.`;
+{"score": <0-10 as scored above>, "verdict": "publish" | "revise" | "reject", "issues": ["<one concrete, actionable problem in Arabic, quoting the offending text>", "..."], "summary": "<one sentence in Arabic>"}`;
 
   // Some models wrap the answer ({"review": {...}}) or rename keys; find the object that carries the verdict.
   const unwrap = (d) => {

@@ -10,8 +10,11 @@
  */
 const ALLOWED_WIDTHS = [120, 250, 330, 500, 960, 1280] as const;
 
-const THUMB = /^(https:\/\/upload\.wikimedia\.org\/wikipedia\/commons)\/thumb\/([0-9a-f])\/([0-9a-f]{2})\/([^/]+)\/\d+px-[^/]+$/;
-const ORIGINAL = /^(https:\/\/upload\.wikimedia\.org\/wikipedia\/commons)\/([0-9a-f])\/([0-9a-f]{2})\/([^/]+)$/;
+// Commons hands out the same files under upload.wikimedia.org and its alias thumb.wikimedia.org,
+// sometimes with a tracking query; the srcset is always built on the canonical host.
+const THUMB = /^https:\/\/(?:upload|thumb)\.wikimedia\.org\/wikipedia\/commons\/thumb\/([0-9a-f])\/([0-9a-f]{2})\/([^/]+)\/\d+px-[^/]+$/;
+const ORIGINAL = /^https:\/\/(?:upload|thumb)\.wikimedia\.org\/wikipedia\/commons\/([0-9a-f])\/([0-9a-f]{2})\/([^/]+)$/;
+const ROOT = "https://upload.wikimedia.org/wikipedia/commons";
 
 export interface ResponsiveImage {
   /** Fallback for browsers that ignore srcset, and the URL the width/height describe. */
@@ -25,10 +28,11 @@ export interface ResponsiveImage {
  * never offered an upscale. Returns the original URL untouched for anything not on Commons.
  */
 export function responsiveImage(url: string, naturalWidth?: number | null): ResponsiveImage {
-  const match = THUMB.exec(url) ?? ORIGINAL.exec(url);
+  const clean = url.split("#")[0].split("?")[0];
+  const match = THUMB.exec(clean) ?? ORIGINAL.exec(clean);
   if (!match) return { src: url };
-  const [, root, a, ab, file] = match;
-  const base = `${root}/thumb/${a}/${ab}/${file}`;
+  const [, a, ab, file] = match;
+  const base = `${ROOT}/thumb/${a}/${ab}/${file}`;
   const cap = naturalWidth && naturalWidth > 0 ? naturalWidth : 1280;
   const widths = ALLOWED_WIDTHS.filter((w) => w <= cap);
   if (widths.length === 0) return { src: url };
@@ -39,3 +43,9 @@ export function responsiveImage(url: string, naturalWidth?: number | null): Resp
 }
 
 export const WIKIMEDIA_WIDTHS = ALLOWED_WIDTHS;
+
+/** `sizes` for a picture card in a row of `n` across the 1240px wrap (two on tablets, a 120px thumbnail on phones). */
+export function cardSizes(n: number): string {
+  const cols = Math.max(1, Math.min(4, n));
+  return `(min-width: 1320px) ${Math.round(1240 / cols)}px, (min-width: 1024px) ${Math.round(100 / cols)}vw, (min-width: 720px) 50vw, 120px`;
+}

@@ -103,14 +103,15 @@ Return JSON: {"choice": <1-${list.length} or 0 for none>, "alt": "<Arabic alt te
       user,
       images: inlined,
       temperature: 0.1,
-      maxTokens: 1500,
+      // Nex N2.5 Pro reasons before it answers and the reasoning counts against the cap: at 1500 it answered with nothing.
+      maxTokens: 4000,
       timeoutMs: 120000,
       log,
       validate: (d) => {
-        if (!d || typeof d.choice !== "number") throw new Error("choice missing");
+        if (!d || !Number.isFinite(Number(d.choice))) throw new Error("choice missing");
       },
     });
-    const index = Math.round(data.choice) - 1;
+    const index = Math.round(Number(data.choice)) - 1;
     if (index < 0 || index >= list.length) {
       log(`image: vision rejected all candidates${relaxed ? " (fallback pass)" : ""} (${data.reason ?? ""})`);
       return null;
@@ -162,10 +163,10 @@ Return JSON: {"choice": <1-${list.length} or 0 for none>, "alt": "<Arabic alt te
     timeoutMs: 90000,
     log,
     validate: (d) => {
-      if (!d || typeof d.choice !== "number") throw new Error("choice missing");
+      if (!d || !Number.isFinite(Number(d.choice))) throw new Error("choice missing");
     },
   });
-  const index = Math.round(data.choice) - 1;
+  const index = Math.round(Number(data.choice)) - 1;
   if (index < 0 || index >= list.length) {
     log(`image: metadata judge rejected all candidates (${data.reason ?? ""})`);
     return null;

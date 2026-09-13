@@ -101,6 +101,21 @@ export function extractNumbers(text) {
   return out;
 }
 
+/** A figure followed by one of these is a figure, never a day, an ordinal or a year: "12%", "25 نقطة أساس", "2,000 دولار". */
+const UNIT_AFTER = /(\d[\d,]*(?:\.\d+)?)\s*(?:%|٪|في المئة|في المائة|بالمئة|بالمائة|نقطة|نقاط|مليار|مليون|ألف|آلاف|دولار|ريال|جنيه|يورو|درهم|دينار)/g;
+
+/** The numeric tokens of `text` that carry a unit, normalized as extractNumbers normalizes them. */
+function unitBoundNumbers(text) {
+  const normalized = normalizeDigits(text).replace(/٫/g, ".").replace(/٬/g, ",");
+  const out = new Set();
+  for (const m of normalized.matchAll(UNIT_AFTER)) {
+    const token = m[1].replace(/,/g, "");
+    out.add(token);
+    if (token.includes(".")) out.add(token.replace(/\.?0+$/, ""));
+  }
+  return out;
+}
+
 /** Numbers in `text` that do not appear in any of the `sources` texts, ignoring trivial values. */
 export function ungroundedNumbers(text, sources, { ignoreYears = true } = {}) {
   const pool = new Set();
@@ -115,19 +130,24 @@ export function ungroundedNumbers(text, sources, { ignoreYears = true } = {}) {
       if (scaled >= 1 && Number.isInteger(scaled * 100)) expanded.add(String(Number(scaled.toFixed(2))));
     }
     if (Number.isInteger(value * 10)) expanded.add(String(value));
+    // Rounding to a whole or to one decimal is reporting, not alteration (108.44 -> 108 or 108.4).
     expanded.add(String(Math.round(value)));
+    expanded.add(String(Number(value.toFixed(1))));
   }
+  const unitBound = unitBoundNumbers(text);
   const missing = [];
   for (const n of extractNumbers(text)) {
     const value = Number(n);
     if (!Number.isFinite(value)) continue;
-    if (ignoreYears && value >= 1900 && value <= 2100 && Number.isInteger(value)) continue;
-    if (value >= 0 && value <= 31 && Number.isInteger(value)) continue; // days, small counts, ordinals
+    const yearLike = ignoreYears && value >= 1900 && value <= 2100 && Number.isInteger(value);
+    const small = value >= 0 && value <= 31 && Number.isInteger(value); // days, small counts, ordinals
+    // A year or a small count is trivial only when no unit follows it: "12%" and "2,000 دولار" are figures.
+    if ((yearLike || small) && !unitBound.has(n)) continue;
     if (expanded.has(n) || expanded.has(String(value))) continue;
-    // tolerate rounding of one decimal (e.g. 0.63 -> 0.6)
+    // Half a percent of drift covers a source's own rounding; anything more is a different number.
     const tolerant = [...expanded].some((p) => {
       const pv = Number(p);
-      return Number.isFinite(pv) && pv !== 0 && Math.abs(pv - value) / Math.abs(pv) < 0.02;
+      return Number.isFinite(pv) && pv !== 0 && Math.abs(pv - value) / Math.abs(pv) < 0.005;
     });
     if (!tolerant) missing.push(n);
   }
@@ -155,6 +175,29 @@ export function phraseOverlap(text, source, size = 6) {
   return total ? hits / total : 0;
 }
 
+/** The longest runs of the text that appear verbatim in the source (six-word shingles merged), in the text's own words, for the reviser to rewrite. */
+export function overlappingPhrases(text, source, size = 6, max = 3) {
+  const norm = (w) => normalizeDigits(w).toLowerCase().replace(/[\p{P}\p{S}]/gu, "");
+  const words = (t) => String(t).split(/\s+/).filter(Boolean).map((raw) => ({ raw, key: norm(raw) })).filter((w) => w.key);
+  const a = words(text);
+  const b = words(source);
+  if (a.length < size || b.length < size) return [];
+  const shingles = new Set();
+  for (let i = 0; i + size <= b.length; i += 1) shingles.add(b.slice(i, i + size).map((w) => w.key).join(" "));
+  const runs = [];
+  let start = -1;
+  for (let i = 0; i + size <= a.length; i += 1) {
+    const hit = shingles.has(a.slice(i, i + size).map((w) => w.key).join(" "));
+    if (hit && start < 0) start = i;
+    if (!hit && start >= 0) {
+      runs.push(a.slice(start, i - 1 + size).map((w) => w.raw).join(" "));
+      start = -1;
+    }
+  }
+  if (start >= 0) runs.push(a.slice(start).map((w) => w.raw).join(" "));
+  return runs.sort((x, y) => y.length - x.length).slice(0, max).map((r) => (r.length > 120 ? r.slice(0, 117) + "…" : r));
+}
+
 export function slugifyLatin(input) {
   return String(input ?? "")
     .toLowerCase()
@@ -172,6 +215,7 @@ export function isoNow() {
 }
 
 export function hoursSince(dateLike) {
+  if (dateLike == null || dateLike === "") return Infinity;
   const t = new Date(dateLike).getTime();
   if (!Number.isFinite(t)) return Infinity;
   return (Date.now() - t) / 36e5;

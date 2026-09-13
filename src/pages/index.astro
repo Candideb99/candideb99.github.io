@@ -12,6 +12,7 @@ import { getArticles, pickLead, dossiers, chartOfTheDay, type Article } from "@l
 import { newsSections, getSection, sectionHref } from "@lib/sections";
 import { articleHref } from "@lib/articles";
 import { isolateNumbers } from "@lib/bidi";
+import { cardSizes } from "@lib/wikimedia";
 import { timeAgo } from "@lib/format";
 import site from "@data/site.json";
 
@@ -25,10 +26,11 @@ const placed = new Set<string>();
 const place = (list: Article[]) => list.forEach((a) => placed.add(a.id));
 const unplaced = (list: Article[]) => list.filter((a) => !placed.has(a.id));
 
-// The cover: the lead, still, with the four strongest of the freshest dozen listed beside it.
+// The cover: the lead on the stage with the four strongest of the freshest dozen turning behind it;
+// all five are placed, so none of them comes back as a secondary or a digest line.
 const lead = pickLead(articles);
 const cover = lead ? [lead, ...byImportance(unplaced(news).filter((a) => a.id !== lead.id).slice(0, 12)).slice(0, 4)] : [];
-place(cover.slice(0, 1));
+place(cover);
 // The column beside the cover is the paper's own voice: one reading of each kind, so the column
 // never shows three items of the same shape under the same label.
 // The week's review leads the column in the days after it appears; otherwise the latest analysis does.
@@ -41,7 +43,8 @@ place(secondary);
 // The digest: the next seven stories, each its headline and one sentence, newest first.
 const digest = unplaced(news).slice(0, 7);
 place(digest);
-const picks = byImportance(unplaced(articles)).slice(0, 4);
+// The readings beside the cover are not picked again.
+const picks = byImportance(unplaced(articles).filter((a) => !readings.includes(a))).slice(0, 4);
 place(picks);
 // The strip carries the newest stories not already on the first screen, so no headline prints twice above the fold.
 const ticker = unplaced(news).slice(0, 5);
@@ -126,6 +129,7 @@ const jsonLd = {
 ---
 
 <Base jsonLd={jsonLd} section="home">
+  <h1 class="visually-hidden">{site.name} — {site.tagline}</h1>
   {cover.length > 0 ? (
     <>
       <Ticker items={ticker} />
@@ -171,13 +175,13 @@ const jsonLd = {
         {cardsRow ? (
           <div class="cards" style={`--n:${r.items.length}`}>
             {r.items.map(({ a, repeat }) => (
-              <StoryCard article={a} variant={repeat ? "text" : "card"} showSection={false} showExcerpt={repeat || !photoIds.has(a.id)} showPhoto={!repeat && photoIds.has(a.id)} />
+              <StoryCard article={a} variant={repeat ? "text" : "card"} showSection={false} showExcerpt={repeat || !photoIds.has(a.id)} showPhoto={!repeat && photoIds.has(a.id)} sizes={cardSizes(r.items.length)} />
             ))}
           </div>
         ) : (
         <div class={`row__body${briefs.length ? "" : " row__body--solo"}`}>
           <div class="row__feature">
-            <StoryCard article={feature.a} variant="card" showSection={false} showExcerpt showTopic showPhoto={!feature.repeat && photoIds.has(feature.a.id)} />
+            <StoryCard article={feature.a} variant="card" showSection={false} showExcerpt showTopic showPhoto={!feature.repeat && photoIds.has(feature.a.id)} sizes="(min-width: 1320px) 380px, (min-width: 1024px) 30vw, (min-width: 720px) 52vw, 120px" />
           </div>
           {briefs.length > 0 && (
             <div class="row__briefs">
@@ -224,7 +228,7 @@ const jsonLd = {
       </div>
       <div class="cols" style={`--n:${Math.min(h.items.length, 4)}`}>
         {h.items.map((a) => (
-          <StoryCard article={a} variant="text" showSection={h.id === "analysis"} showExcerpt label={analysisLabel(a, articles)} />
+          <StoryCard article={a} variant="text" showSection showExcerpt label={analysisLabel(a, articles)} />
         ))}
       </div>
     </section>

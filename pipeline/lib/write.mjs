@@ -2,7 +2,7 @@ import { canonicalRegions } from "./regions.mjs";
 import { chat } from "./llm.mjs";
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { arabicRatio, domainOf, truncate, ungroundedNumbers, wordCount } from "./util.mjs";
+import { arabicRatio, domainOf, overlappingPhrases, truncate, ungroundedNumbers, wordCount } from "./util.mjs";
 
 const HOUSE_STYLE = `HOUSE STYLE (the practice of the Arabic economics desks: الشرق الأوسط، الاقتصادية، الشرق بلومبرغ، CNBC عربية، الجزيرة)
 - Write original journalism in clear Modern Standard Arabic (فصحى معاصرة). Never translate a source sentence by sentence; report the facts in your own structure and words. The reader must never feel English under the Arabic.
@@ -20,6 +20,7 @@ const HOUSE_STYLE = `HOUSE STYLE (the practice of the Arabic economics desks: ا
 - THE REGISTER OF MEDIA ARABIC (لغة وسائل الإعلام), the formulas readers of Arabic news expect. Reporting: أفادت وكالة/صحيفة … بأن، ذكرت مصادر، نقلت … عن … قوله، أعلن/أعلنت، كشف، أوضح، أشار إلى أن، لفت إلى، أكد، شدّد على، نفى، حذّر من، دعا إلى، من جانبه/من جهته/بدوره (a second speaker), في تصريحات لـ، في بيان صدر اليوم، في مؤتمر صحفي، على هامش. Time and cause: عقب، إثر، غداة، على خلفية، في ظل، وسط، مع، بعدما، فيما، في وقت لاحق، من المقرر أن، في غضون، خلال. Economy: سجّل، بلغ، ارتفع/تراجع/قفز/هبط بنسبة … ليصل إلى، على أساس سنوي/شهري، مقارنة بـ، مقابل، أعلى/أدنى مستوى منذ، نقطة أساس، سعر الفائدة، العائد، سعر الصرف، الاحتياطي، العجز/الفائض، الميزان التجاري، الدين العام، التضخم الأساسي، الناتج المحلي الإجمالي، الطلب/المعروض، العقود الآجلة، المعاملات الفورية، الجلسة، الإغلاق، المكاسب/الخسائر الأسبوعية، الصكوك، الإدراج، الاكتتاب، الاستحواذ، الاندماج، الموازنة، التقشف، الخصخصة، الدعم. Use them as a native desk does: formulas carry the news, they never pad it.
 - CLOSE with one of the desks' endings: a sweep of related instruments, the next date to watch, the concrete why-it-matters, or an attributed quote. Never a summary, never a moral.
 - Use Western digits (0-9), the pan-Arab month names (يناير… ديسمبر), and Arabic units (مليار، مليون، نقطة أساس، %). The Arabic comma (،) and «» for quotations and foreign brand names.
+- QUOTATIONS: words spoken or written in another language are reported indirectly («قال إن»، «وأضاف أن»), never inside quotation marks, because a translation in «» claims words nobody said. «» holds only a verbatim Arabic quotation taken from an Arabic source, at most one sentence, and never a number the source gives elsewhere.
 - Write foreign names in Arabic transliteration as Arab business media write them; for lesser-known people or companies add the Latin original in parentheses once. Keep well-known tickers and acronyms in Latin (S&P 500, OPEC+, IMF).
 - HEADLINES: a nominal sentence, actor first, present-tense verb, the figure: «الذهب يتجه لثالث خسارة أسبوعية مع تصاعد رهانات رفع الفائدة»، «المركزي التركي يثبّت الفائدة عند 37% للمرة الخامسة». ONE idea, at most 12 words, never two developments chained with «و». A quote headline uses the colon: «صندوق النقد: الاقتصاد العالمي يتجه إلى نمو 3%». Never ".." or "!" or a teaser; no "تعرف على"، no question headlines for news. Definite references for institutions («الإدارة الأمريكية» or «واشنطن», never «إدارة أمريكية»); a strong verb instead of «يعلن عن» + verbal noun.
 - Tone: calm, precise, authoritative. No sensationalism, no clichés, no rhetorical questions, no first person, no moralising.
@@ -89,7 +90,7 @@ function coerceBody(body) {
 }
 
 /** Structural validation of a writer's answer. `minWords`/`maxWords` bound the lede plus body (news defaults; analyses are longer). */
-export function validateDraft(draft, { minWords = 170, maxWords = 1100 } = {}) {
+export function validateDraft(draft, { minWords = 200, maxWords = 1100 } = {}) {
   if (!draft || typeof draft !== "object") throw new Error("draft is not an object");
   // Tolerate renamed keys and reshaped bodies from different models.
   draft.key_facts = draft.key_facts ?? draft.keyFacts ?? draft.key_figures ?? draft.facts ?? draft.numbers ?? [];
@@ -99,6 +100,8 @@ export function validateDraft(draft, { minWords = 170, maxWords = 1100 } = {}) {
   draft.body = coerceBody(draft.body);
   const required = ["title", "subtitle", "slug", "lede", "body", "tags"];
   for (const key of required) if (draft[key] == null || draft[key] === "") throw new Error(`draft.${key} missing`);
+  // The floor of the programmatic checks (200 words) is enforced here, where a retry costs one call, not the revision round.
+  if (!Array.isArray(draft.tags) || !draft.tags.some((t) => String(t ?? "").trim())) throw new Error("draft.tags missing (a non-empty array)");
   if (String(draft.title).length < 15 || String(draft.title).length > 95) throw new Error("title length out of range (15-95 chars); write one idea per headline");
   if (!Array.isArray(draft.key_facts)) throw new Error("key_facts must be an array");
   if (!draft.why_it_matters) throw new Error("why_it_matters missing");
@@ -109,19 +112,106 @@ export function validateDraft(draft, { minWords = 170, maxWords = 1100 } = {}) {
   if (/https?:\/\//i.test(prose)) throw new Error("draft contains a URL");
 }
 
+/** A draft without tags is still a story: before the validator looks, fill them from what the brief already knows. */
+export function ensureTags(d, fallback) {
+  if (!d || typeof d !== "object") return;
+  const tags = d.tags ?? d.keywords ?? d.topics;
+  const clean = (Array.isArray(fallback) ? fallback : []).map((t) => String(t ?? "").trim()).filter(Boolean);
+  if (!(Array.isArray(tags) && tags.some((t) => String(t ?? "").trim())) && clean.length) d.tags = clean;
+}
+
 /** Writes an original Arabic article from a story cluster. */
-export async function writeArticle({ story, sources, log }) {
+const NOTES_SYSTEM = `You are the chief sub-editor of خازندار, an Arabic economics publication. Before a story is written you extract its desk notes: the facts of ONE event, each as a single Arabic sentence carrying its figure, unit, date and actor exactly as its source states them, tied to that source's number. You never interpret, never infer, never add from memory, and you leave out anything that belongs to a different event. You answer with one JSON object only.`;
+
+/**
+ * Stage one of a news story: the desk notes, 8-20 atomic facts of the one event, each tied to its
+ * source and checked against it (a fact whose figures are not in its source is dropped). The writer
+ * then writes from these notes, so nothing enters the story that the sources do not carry.
+ * Returns null when no usable notes can be made, and the writer works from the sources alone.
+ */
+export async function deskNotes({ story, sources, log }) {
+  const texts = sources.map((s) => s.text || s.summary || "");
+  const user = `STORY BRIEF FROM THE EDITOR
+Working headline: ${story.headlineHint}
+Angle: ${story.angle}
+Today (UTC): ${new Date().toISOString().slice(0, 10)}
+
+SOURCE MATERIAL
+${sources.map(sourceBlock).join("\n\n")}
+
+TASK
+Extract the desk notes for this ONE event (the working headline). 8 to 20 facts, each one Arabic sentence of at most 30 words in your own words (never a sentence copied from an Arabic source), with the figure, its unit, the date and the actor exactly as the source gives them, and the number of the source it comes from; a figure appears only with its own period and unit. Attribution words belong in the fact («قال المصرف في بيان إن…», «بحسب بيانات المكتب…»). Leave out everything that is a different event, a background fact from memory, or an interpretation. Then list up to three verbatim quotations only if the source is Arabic (Arabic text copied exactly); for other languages, no quotations.
+Return: {"event":"<one Arabic sentence naming the one event>","facts":[{"fact":"<sentence>","source":<source number>}],"quotes":[{"text":"<verbatim Arabic>","source":<source number>}]}`;
+  try {
+    const { data, model } = await chat({
+      role: "desk",
+      system: NOTES_SYSTEM,
+      user,
+      temperature: 0.2,
+      maxTokens: 4000,
+      log,
+      validate: (d) => {
+        if (!d || !Array.isArray(d.facts) || d.facts.length < 5) throw new Error("fewer than five facts");
+        // A fact whose figures its own source does not carry is dropped; too many dropped means the notes are unreliable.
+        const kept = d.facts.filter((f) => {
+          const n = Number(f?.source);
+          const text = String(f?.fact ?? "").trim();
+          if (!text || !Number.isInteger(n) || n < 1 || n > texts.length) return false;
+          if (ungroundedNumbers(text, [texts[n - 1]]).length || arabicRatio(text) < 0.7) return false;
+          // A fact lifted from an Arabic source would carry its sentence into the story.
+          return sources[n - 1].lang !== "ar" || overlappingPhrases(text, texts[n - 1], 8, 1).length === 0;
+        });
+        if (kept.length < 5) throw new Error(`${d.facts.length - kept.length} of ${d.facts.length} facts are not in their sources`);
+        if (kept.length < d.facts.length) log?.(`desk notes: ${d.facts.length - kept.length} of ${d.facts.length} facts dropped (not in their source or copied from it)`);
+        d.facts = kept.slice(0, 20);
+        d.quotes = (Array.isArray(d.quotes) ? d.quotes : []).filter((q) => {
+          const n = Number(q?.source);
+          const text = String(q?.text ?? "").trim();
+          return text && Number.isInteger(n) && n >= 1 && n <= texts.length && sources[n - 1].lang === "ar" && texts[n - 1].includes(text.slice(0, 40));
+        }).slice(0, 3);
+      },
+    });
+    return { notes: { event: String(data.event ?? "").trim(), facts: data.facts, quotes: data.quotes }, model };
+  } catch (error) {
+    log?.(`desk notes failed: ${String(error.message).split("\n")[0]}; the writer works from the sources alone`);
+    return null;
+  }
+}
+
+/** For the writer: an Arabic source's text is withheld once the desk notes carry its facts, so the story cannot be assembled from its sentences. */
+function writerSourceBlock(notes) {
+  return (source, index) => {
+    if (notes && source.lang === "ar") {
+      return `SOURCE ${index + 1}: ${source.sourceNameEn} (${source.lang}) — "${source.title}" — published ${source.publishedAt ?? "unknown"}
+[Arabic text withheld: its facts are in the DESK NOTES above; attribute them to this source by name and write them in your own sentences.]`;
+    }
+    return sourceBlock(source, index);
+  };
+}
+
+function notesBlock(notes) {
+  if (!notes) return "";
+  const facts = notes.facts.map((f, i) => `${i + 1}. ${f.fact} [SOURCE ${f.source}]`).join("\n");
+  const quotes = notes.quotes?.length ? `\nVERBATIM ARABIC QUOTATIONS (the only text that may stand inside «»):\n${notes.quotes.map((q) => `- «${q.text}» [SOURCE ${q.source}]`).join("\n")}` : "";
+  return `DESK NOTES: the facts of this one event, each checked against its source. The article states these facts and nothing else: every figure, date, name and attribution in the article must appear in the notes; the source material below is for phrasing and attribution only. Facts that are not in the notes do not enter the article.
+Event: ${notes.event}
+${facts}${quotes}
+
+`;
+}
+
+export async function writeArticle({ story, sources, notes = null, log }) {
   const user = `STORY BRIEF FROM THE EDITOR
 Angle: ${story.angle}
 Working headline: ${story.headlineHint}
 Section: ${story.section}
 Today (UTC): ${new Date().toISOString().slice(0, 10)}
 
-SOURCE MATERIAL (use only this material; do not add facts from memory)
-${sources.map(sourceBlock).join("\n\n")}
+${notesBlock(notes)}SOURCE MATERIAL (use only this material; do not add facts from memory)
+${sources.map(writerSourceBlock(notes)).join("\n\n")}
 
 TASK
-Write the article for خازندار following the house style. Return one JSON object exactly in this shape:
+Write the article for خازندار following the house style: ONE event, the working headline's, told in the desks' order (the fact, the figure, who said it, the context the sources give, why it matters), at most 12 words in the title stating that one idea with no evaluative adjective (no حاسم، حافل، مصيري، صادم). Return one JSON object exactly in this shape:
 ${SCHEMA_TEXT}`;
 
   const { data, model } = await chat({
@@ -131,7 +221,11 @@ ${SCHEMA_TEXT}`;
     temperature: 0.35,
     maxTokens: NEWS_MAX_TOKENS,
     log,
-    validate: validateDraft,
+    validate: (d) => {
+      // The editor's region tags stand in for tags the model forgot.
+      ensureTags(d, story.regions);
+      validateDraft(d);
+    },
   });
   return { draft: normalizeDraft(data), model };
 }
@@ -140,12 +234,12 @@ ${SCHEMA_TEXT}`;
  * Sends critic findings back to the writer for one revision. `wordLimits` (analyses, paper readings) overrides the
  * news word bounds; `kind` picks the brief the revision is written under ("paper" for a reading of a research paper).
  */
-export async function reviseArticle({ draft, sources, issues, log, wordLimits, kind = "" }) {
+export async function reviseArticle({ draft, sources, issues, log, wordLimits, kind = "", notes = null }) {
   const user = `You previously wrote this article for خازندار:
 ${JSON.stringify(draft, null, 2)}
 
-SOURCE MATERIAL
-${sources.map(sourceBlock).join("\n\n")}
+${notesBlock(notes)}SOURCE MATERIAL
+${sources.map(writerSourceBlock(notes)).join("\n\n")}
 
 An editor found the following problems. Fix every one of them strictly using the source material. Remove any claim or number that the sources do not support. Keep everything else intact, and keep the article at least ${wordLimits?.target ?? 260} words (lede + body) when the sources allow it; never pad with unsupported material.
 PROBLEMS
@@ -159,7 +253,10 @@ Return the complete corrected article as one JSON object with the same keys as b
     temperature: 0.25,
     maxTokens: wordLimits ? ANALYSIS_MAX_TOKENS : NEWS_MAX_TOKENS,
     log,
-    validate: (d) => validateDraft(d, wordLimits),
+    validate: (d) => {
+      ensureTags(d, draft.tags);
+      validateDraft(d, wordLimits);
+    },
   });
   return { draft: normalizeDraft(data), model };
 }
@@ -226,7 +323,7 @@ const EXPLAINER_SCHEMA = `{
   "title": "Arabic title in the form of a clear question or statement (35-80 chars), e.g. ما هو منحنى العائد ولماذا يخيف الأسواق عندما ينقلب؟",
   "subtitle": "One Arabic sentence stating what the reader will understand",
   "slug": "english-kebab-case-slug",
-  "lede": "2-3 sentences: the concept in plain words and why it is in the news now",
+  "lede": "2-3 sentences: the concept in plain words and why readers meet it now, named in general terms only (a rate decision, an oil-price move), with no date, price, figure or event of the week",
   "body": "500-800 words in Markdown with 2-4 '## ' subheads: definition, mechanism, a worked example with illustrative numbers explicitly labelled as an example (مثال توضيحي), common misunderstandings, and what to watch. No bullet lists.",
   "key_facts": [{"label": "term or rule of thumb", "value": "short definition or formula"}],
   "why_it_matters": "One paragraph on why Arab readers, businesses or policymakers should care",
@@ -240,7 +337,7 @@ export async function writeExplainer({ topic, relatedArticles, log }) {
 Current hook: ${topic.hook}
 Related خازندار coverage you may reference by title (no links): ${relatedArticles.map((a) => a.title).join(" | ") || "none"}
 
-Rules: explain like a patient, precise teacher; use standard economic definitions; every number in the worked example must be explicitly introduced as an illustrative example (مثال توضيحي), never as a real current statistic; do not cite specific current statistics unless they appear in the related coverage titles.
+Rules: explain like a patient, precise teacher; use standard economic definitions. An explainer states NO current events at all: no dated fact, no current price or statistic, no decision, attack, deal or figure of the week, whatever the related coverage says; it carries only definitions, mechanisms and worked examples, and every number in a worked example is explicitly introduced as an illustrative example (مثال توضيحي), never as a real current figure. The hook may name the kind of news the reader meets (a rate decision, an oil-price move) in general terms only.
 Return one JSON object exactly in this shape:
 ${EXPLAINER_SCHEMA}`;
   const { data, model } = await chat({
@@ -251,7 +348,10 @@ ${EXPLAINER_SCHEMA}`;
     // 500-800 Arabic words with worked examples: Ling's answers were cut off at 6000 tokens.
     maxTokens: 9000,
     log,
-    validate: validateDraft,
+    validate: (d) => {
+      ensureTags(d, [topic.concept_ar]);
+      validateDraft(d);
+    },
   });
   return { draft: normalizeDraft(data), model };
 }
