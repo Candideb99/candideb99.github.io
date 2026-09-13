@@ -25,6 +25,9 @@ four first. They bind every agent, Codex included.
 - **Explainers** are written from standard definitions with illustrative numbers labelled as such;
   they carry no external sources by design. **Analyses** draw on the paper's own recent stories.
   **Paper readings** cite the open-access paper. Do not require external sources for explainers.
+- **Analyses are labelled by desk** (economic, markets, energy, companies, technology, defence and
+  geopolitics) from the stories they cite; keep the labels so readers never mistake a geopolitical
+  reading for an economic one. There are still no outside authors.
 - **The daily budget** is at most four stories a run and ten a day; the editor scores candidates on
   the news values in STYLE.md §2; one story is one event.
 - **No literal translations, ever.** The copy desk and the banned list in `pipeline/lib/style.mjs`

@@ -8,6 +8,7 @@ on:
     - cron: "7 14 * * *"
     - cron: "31 9 * * 2,5"
     - cron: "37 15 * * 5"
+    - cron: "7 10 * * 6"
   workflow_dispatch:
     inputs:
       mode:
@@ -52,15 +53,18 @@ jobs:
         shell: bash
         run: |
           mode="${{ inputs.mode }}"
+          sections=""
           if [ -z "$mode" ]; then
             if [ "${{ github.event.schedule }}" = "41 5 * * *" ]; then mode=explainer;
             elif [ "${{ github.event.schedule }}" = "7 14 * * *" ]; then mode=analysis;
             elif [ "${{ github.event.schedule }}" = "31 9 * * 2,5" ]; then mode=paper;
             elif [ "${{ github.event.schedule }}" = "37 15 * * 5" ]; then mode=weekly;
+            elif [ "${{ github.event.schedule }}" = "7 10 * * 6" ]; then mode=analysis; sections=defense;
             else mode=news; fi
           fi
           case "$mode" in news|explainer|analysis|paper|weekly) ;; *) echo "invalid mode: $mode"; exit 2;; esac
           echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          echo "sections=${sections:-}" >> "$GITHUB_OUTPUT"
           echo "limit=${{ inputs.limit || '4' }}" >> "$GITHUB_OUTPUT"
 
       - name: Install Claude Code (only when the owner's subscription is the provider)
@@ -74,7 +78,7 @@ jobs:
           KHAZENDAR_PROVIDER: ${{ vars.KHAZENDAR_PROVIDER || 'openrouter' }}
           KHAZENDAR_CLAUDE_MODEL: ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'sonnet' }}
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-        run: node pipeline/run.mjs --mode=${{ steps.mode.outputs.mode }} --limit=${{ steps.mode.outputs.limit }}
+        run: node pipeline/run.mjs --mode=${{ steps.mode.outputs.mode }} --limit=${{ steps.mode.outputs.limit }} --sections=${{ steps.mode.outputs.sections }}
 
       - name: Refresh market quotes and the calendar
         if: steps.newsroom.outputs.published != '0'

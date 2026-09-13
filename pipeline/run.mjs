@@ -45,6 +45,8 @@ const LIMIT = Math.max(1, Math.min(Number(option("limit", 4)) || 4, 10));
 const DAILY_CAP = Number(process.env.KHAZENDAR_DAILY_CAP) || 10;
 const ONLY_SOURCE = option("source", null);
 const MIN_IMPORTANCE = Number(option("min-importance", 6));
+/** `--sections=defense,energy`: an analysis drawn only from these sections' stories (the defence and geopolitics reading). */
+const SECTIONS = (option("sections", "") || "").split(",").map((s) => s.trim()).filter(Boolean);
 
 const logLines = [];
 function log(message) {
@@ -280,6 +282,24 @@ async function runNews() {
   const { stories, model: editorModel } = await selectStories({ candidates, recentTitles, sections, coverage24h, limit: runLimit, log });
   log(`editor (${editorModel}) selected ${stories.length} stories`);
   const chosen = stories.filter((s) => s.importance >= MIN_IMPORTANCE).slice(0, runLimit);
+  // Section balance: a section with nothing in three days takes its best candidate (one point under
+  // the threshold is enough) in place of the weakest chosen story from a section already served, so
+  // no section runs empty while another fills up: الدفاع stayed empty for a week this way, its
+  // stories scoring 6 and deferred behind the economy's every run.
+  const sectionIds = sections.map((x) => (typeof x === "string" ? x : x.id));
+  const starved = sectionIds.filter((sec) => !existing.some((a) => a.kind === "news" && a.section === sec && hoursSince(a.publishedAt) < 72) && !chosen.some((x) => x.section === sec));
+  for (const sec of starved) {
+    const pick = stories.find((x) => x.section === sec && !chosen.includes(x) && x.importance >= MIN_IMPORTANCE - 1);
+    if (!pick) continue;
+    if (chosen.length >= runLimit) {
+      const served = chosen.filter((x) => chosen.filter((y) => y.section === x.section).length > 1 || (coverage24h[x.section] ?? 0) > 0).sort((x, y) => x.importance - y.importance)[0];
+      if (!served || served.importance > pick.importance + 1) continue;
+      chosen.splice(chosen.indexOf(served), 1);
+      log(`section balance: "${served.headlineHint}" (${served.section}, ${served.importance}) gives way`);
+    }
+    chosen.push(pick);
+    log(`section balance: ${sec} has had nothing for three days; "${pick.headlineHint}" [${pick.importance}] added`);
+  }
   for (const s of stories) log(`  [${s.importance}] ${s.section} — ${s.headlineHint} (${s.ids.join(",")})${chosen.includes(s) ? "" : s.importance < MIN_IMPORTANCE ? " (below threshold)" : " (deferred: over limit)"}`);
 
   let published = 0;
@@ -454,7 +474,12 @@ function runExplainer() {
 function runAnalysis() {
   return runHub("analysis", "analysis", async (report) => {
     const existing = await loadExistingArticles();
-    const recent = recentNews(existing, 40);
+    // With `--sections`, the reading draws on those sections alone and looks back a week, since a
+    // section like الدفاع does not fill in three days.
+    const recent = SECTIONS.length
+      ? existing.filter((a) => a.kind === "news" && SECTIONS.includes(a.section) && hoursSince(a.publishedAt) < 24 * 7).slice(0, 40)
+      : recentNews(existing, 40);
+    if (SECTIONS.length) log(`analysis restricted to ${SECTIONS.join(", ")}: ${recent.length} stories of the week`);
     const analyses = existing.filter((a) => a.kind === "analysis").map((a) => a.title);
     if (recent.length < 3) {
       log("not enough recent coverage to anchor an analysis");

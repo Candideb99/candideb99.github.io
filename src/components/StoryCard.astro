@@ -17,6 +17,8 @@ interface Props {
   showSection?: boolean;
   showExcerpt?: boolean;
   showTime?: boolean;
+  /** Replaces the kind or section name in the meta line (the analysis desk, e.g. تحليل دفاعي وجيوسياسي). */
+  label?: string;
   /** Heading level for the title, so lists stay a valid outline. */
   level?: 2 | 3;
   /** The topic kicker above the headline (the cover, secondaries and features carry it). */
@@ -25,7 +27,7 @@ interface Props {
   showPhoto?: boolean;
   class?: string;
 }
-const { article, variant = "card", eager = false, showSection = true, showExcerpt = variant === "lead", showTime = true, level = 3, showPhoto = true, showTopic = false, class: className = "" } = Astro.props;
+const { article, variant = "card", eager = false, showSection = true, showExcerpt = variant === "lead", showTime = true, level = 3, showPhoto = true, showTopic = false, label, class: className = "" } = Astro.props;
 const topic = showTopic ? topicOf(article) : undefined;
 const { title, subtitle, section, publishedAt, kind, image } = article.data;
 const href = articleHref(article);
@@ -46,7 +48,7 @@ const hasPhoto = Boolean(image) && showPhoto && variant !== "text";
     {showExcerpt && summary && <p class="card__summary" set:html={isolateNumbers(summary)} />}
     {(showSection || showTime) && (
       <p class="meta card__meta">
-        {showSection && <a href={sectionHref(section)}>{kindLabel(kind, section)}</a>}
+        {showSection && <a href={sectionHref(section)}>{label ?? kindLabel(kind, section)}</a>}
         {showTime && <time datetime={publishedAt} data-relative>{timeAgo(publishedAt)}</time>}
       </p>
     )}

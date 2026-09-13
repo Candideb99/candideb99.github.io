@@ -72,6 +72,17 @@ export function articleHref(article: Article): string {
   return `/articles/${article.data.slug}/`;
 }
 
+/** A section's running topics: its most-used tags that are neither regions nor section names. */
+export function sectionTopics(articles: Article[], section: string, n = 8): string[] {
+  const regions = new Set(articles.flatMap((a) => a.data.regions));
+  const counts = new Map<string, number>();
+  for (const a of articles) {
+    if (a.data.section !== section) continue;
+    for (const t of a.data.tags) if (!regions.has(t) && !GENERIC_TAGS.has(t) && t.length <= 28) counts.set(t, (counts.get(t) ?? 0) + 1);
+  }
+  return [...counts.entries()].sort((x, y) => y[1] - x[1] || x[0].localeCompare(y[0], "ar")).slice(0, n).map(([t]) => t);
+}
+
 export function allTags(articles: Article[]): Map<string, Article[]> {
   const map = new Map<string, Article[]>();
   for (const a of articles) for (const t of a.data.tags) map.set(t, [...(map.get(t) ?? []), a]);

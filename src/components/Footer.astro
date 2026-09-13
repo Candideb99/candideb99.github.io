@@ -26,14 +26,13 @@ const year = new Date().getUTCFullYear();
           ))}
         </ul>
       </nav>
-      <nav class="footer__col" aria-label="عن الموقع">
-        <h2 class="module__head">خازندار</h2>
+      <nav class="footer__col" aria-label="الأدوات والبيانات">
+        <h2 class="module__head">الأدوات والبيانات</h2>
         <ul>
+          <li><a href="/latest/">الأحدث</a></li>
           <li><a href="/markets/data/">لوحة الأسواق</a></li>
           <li><a href="/calendar/">الأجندة الاقتصادية</a></li>
-          <li><a href="/about/">عن خازندار</a></li>
-          <li><a href="/methodology/">المصادر والمنهجية</a></li>
-          <li><a href="/privacy/">سياسة الخصوصية</a></li>
+          <li><a href="/tags/">الملفات والمناطق</a></li>
           <li><a href="/search/">بحث</a></li>
           <li>
             <a href="/rss.xml" class="footer__rss">
@@ -41,6 +40,14 @@ const year = new Date().getUTCFullYear();
               خلاصة RSS
             </a>
           </li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-label="عن الصحيفة">
+        <h2 class="module__head">عن الصحيفة</h2>
+        <ul>
+          <li><a href="/about/">عن خازندار</a></li>
+          <li><a href="/methodology/">المصادر والمنهجية</a></li>
+          <li><a href="/privacy/">سياسة الخصوصية</a></li>
           {site.contactEmail && <li><a href={`mailto:${site.contactEmail}`}>تواصل معنا</a></li>}
         </ul>
       </nav>
@@ -56,7 +63,7 @@ const year = new Date().getUTCFullYear();
   .footer { margin-top: clamp(2.5rem, 6vw, 4.5rem); padding-bottom: 1.5rem; color: var(--ink); }
   .footer__grid {
     display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
     gap: clamp(1.5rem, 4vw, 3rem);
     padding-block: clamp(1.5rem, 3.5vw, 2.5rem) 1.5rem;
   }
@@ -70,7 +77,11 @@ const year = new Date().getUTCFullYear();
   .footer__col a:hover { color: var(--green); text-decoration: underline; }
   .footer__rss { display: inline-flex; align-items: center; gap: 0.35rem; }
   .footer__bottom { border-top: 1px solid var(--rule); padding-top: 0.9rem; font-size: 0.8rem; line-height: 1.6; color: var(--ink-3); display: grid; gap: 0.2rem; }
-  @media (max-width: 719px) {
+  @media (max-width: 1023px) {
+    .footer__grid { grid-template-columns: 1fr 1fr 1fr; }
+    .footer__brand { grid-column: 1 / -1; }
+  }
+  @media (max-width: 599px) {
     .footer__grid { grid-template-columns: 1fr 1fr; }
     .footer__brand { grid-column: 1 / -1; }
   }

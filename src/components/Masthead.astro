@@ -1,7 +1,16 @@
 ---
+/**
+ * The masthead: the date line with the paper's standing tools (الأحدث، لوحة الأسواق، الأجندة، بحث),
+ * the logo, and the green section bar. On a wide screen each section opens a panel under the bar,
+ * as the business dailies' bars do: the section's running topics, its latest analyses, and the
+ * data and pages that belong to it. The panel opens on hover or keyboard focus and needs no script.
+ */
 import site from "@data/site.json";
-import { sections, sectionHref } from "@lib/sections";
+import { sections, sectionHref, newsSections } from "@lib/sections";
 import { formatDate, issueNumber } from "@lib/format";
+import { getArticles, sectionTopics, articleHref } from "@lib/articles";
+import { analysisDesk } from "@lib/analysis";
+import { isolateNumbers } from "@lib/bidi";
 import Logo from "./Logo.astro";
 
 interface Props {
@@ -11,6 +20,41 @@ const { active } = Astro.props;
 const now = new Date();
 const today = formatDate(now);
 const issue = issueNumber(now);
+
+const articles = await getArticles();
+const analyses = articles.filter((a) => a.data.kind === "analysis" || a.data.kind === "weekly");
+const newsIds = new Set(newsSections.map((s) => s.id));
+
+interface Link {
+  href: string;
+  text: string;
+}
+interface Panel {
+  topics: Link[];
+  pieces: Link[];
+  piecesHead: string;
+  more: Link[];
+}
+const DATA_LINKS: Record<string, Link[]> = {
+  markets: [{ href: "/markets/data/", text: "لوحة الأسواق: المؤشرات والعملات والسلع" }, { href: "/calendar/", text: "الأجندة الاقتصادية" }],
+  economy: [{ href: "/calendar/", text: "الأجندة الاقتصادية" }],
+  energy: [{ href: "/markets/data/#commodities", text: "أسعار النفط والغاز والمعادن" }],
+};
+const panels = new Map<string, Panel>();
+for (const s of sections) {
+  if (newsIds.has(s.id)) {
+    const topics = sectionTopics(articles, s.id, 8).map((t) => ({ href: `/tags/${encodeURIComponent(t)}/`, text: t }));
+    const pieces = analyses.filter((a) => analysisDesk(a, articles)?.id === s.id).slice(0, 4).map((a) => ({ href: articleHref(a), text: a.data.title }));
+    const more = [{ href: sectionHref(s.id), text: `كل مواد ${s.name}` }, ...(DATA_LINKS[s.id] ?? [])];
+    panels.set(s.id, { topics, pieces, piecesHead: "تحليلات القسم", more });
+  } else if (s.id === "analysis") {
+    const pieces = analyses.slice(0, 6).map((a) => ({ href: articleHref(a), text: a.data.title }));
+    panels.set(s.id, { topics: [], pieces, piecesHead: "أحدث التحليلات", more: [{ href: sectionHref(s.id), text: "كل التحليلات" }] });
+  } else if (s.id === "explainers") {
+    const pieces = articles.filter((a) => a.data.kind === "explainer" || a.data.kind === "paper").slice(0, 6).map((a) => ({ href: articleHref(a), text: a.data.title }));
+    panels.set(s.id, { topics: [], pieces, piecesHead: "أحدث المواد", more: [{ href: sectionHref(s.id), text: "كل المواد" }] });
+  }
+}
 ---
 
 <header class="masthead">
@@ -20,10 +64,15 @@ const issue = issueNumber(now);
       <span class="masthead__sep" aria-hidden="true">·</span>
       <span>العدد <bdi data-issue-no>{issue}</bdi></span>
     </p>
-    <a class="masthead__search" href="/search/">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.6-3.6" /></svg>
-      <span>بحث</span>
-    </a>
+    <nav class="masthead__tools" aria-label="أدوات الصحيفة">
+      <a href="/latest/">الأحدث</a>
+      <a href="/markets/data/">لوحة الأسواق</a>
+      <a href="/calendar/">الأجندة</a>
+      <a class="masthead__search" href="/search/">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.6-3.6" /></svg>
+        <span>بحث</span>
+      </a>
+    </nav>
   </div>
 
   <div class="wrap masthead__brand">
@@ -35,12 +84,38 @@ const issue = issueNumber(now);
   <nav class="masthead__nav" aria-label="أقسام خازندار">
     <div class="wrap">
       <ul class="nav">
-        <li><a href="/" class="nav__link" aria-current={active === "home" ? "page" : undefined}>الرئيسية</a></li>
-        {sections.map((s) => (
-          <li>
-            <a href={sectionHref(s.id)} class="nav__link" aria-current={active === s.id ? "page" : undefined}>{s.name}</a>
-          </li>
-        ))}
+        <li class="nav__item"><a href="/" class="nav__link" aria-current={active === "home" ? "page" : undefined}>الرئيسية</a></li>
+        {sections.map((s) => {
+          const p = panels.get(s.id);
+          const hasPanel = p && (p.topics.length > 0 || p.pieces.length > 0);
+          return (
+            <li class={`nav__item${hasPanel ? " nav__item--panel" : ""}`}>
+              <a href={sectionHref(s.id)} class="nav__link" aria-current={active === s.id ? "page" : undefined}>{s.name}</a>
+              {hasPanel && (
+                <div class="nav__panel">
+                  <div class="wrap nav__panel-inner">
+                    {p.topics.length > 0 && (
+                      <div class="nav__col">
+                        <h3 class="nav__head ui">المواضيع</h3>
+                        <ul>{p.topics.map((l) => <li><a href={l.href}>{l.text}</a></li>)}</ul>
+                      </div>
+                    )}
+                    {p.pieces.length > 0 && (
+                      <div class="nav__col nav__col--wide">
+                        <h3 class="nav__head ui">{p.piecesHead}</h3>
+                        <ul>{p.pieces.map((l) => <li><a href={l.href} set:html={isolateNumbers(l.text)} /></li>)}</ul>
+                      </div>
+                    )}
+                    <div class="nav__col">
+                      <h3 class="nav__head ui">المزيد</h3>
+                      <ul>{p.more.map((l) => <li><a href={l.href}>{l.text}</a></li>)}</ul>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </div>
   </nav>
@@ -62,15 +137,18 @@ const issue = issueNumber(now);
   .masthead__issue { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: baseline; }
   .masthead__issue time { color: inherit; }
   .masthead__sep { color: var(--ink-3); }
-  .masthead__search { display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 700; color: var(--ink); text-decoration: none; }
-  .masthead__search:hover, .masthead__search:focus-visible { color: var(--green); }
+  .masthead__tools { display: flex; align-items: center; gap: 1.1rem; }
+  .masthead__tools a { font-weight: 700; color: var(--ink-2); text-decoration: none; white-space: nowrap; }
+  .masthead__tools a:hover, .masthead__tools a:focus-visible { color: var(--green); }
+  .masthead__search { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--ink) !important; }
+  .masthead__search:hover, .masthead__search:focus-visible { color: var(--green) !important; }
 
   .masthead__brand { display: flex; justify-content: center; padding-block: clamp(0.8rem, 2vw, 1.15rem); }
   .brand { display: block; min-width: 0; line-height: 0; }
   .brand:focus-visible { outline-offset: 4px; }
 
   /* The section bar: the one green field on the page. */
-  .masthead__nav { background: #0f5c3c; }
+  .masthead__nav { background: #0f5c3c; position: relative; }
   .nav {
     display: flex;
     justify-content: center;
@@ -96,8 +174,28 @@ const issue = issueNumber(now);
   .nav__link:focus-visible { outline-color: #fcfcf9; outline-offset: -3px; }
   .nav__link[aria-current="page"] { border-bottom-color: #fcfcf9; background: rgba(255, 255, 255, 0.08); }
 
+  /* The section panels: paper under the bar, three ruled columns, only on a wide screen where the
+     pointer can hover; on smaller screens the bar scrolls and the sections are plain links. */
+  .nav__panel { display: none; position: absolute; inset-inline: 0; top: 100%; z-index: 30; background: var(--paper); border-bottom: 1px solid var(--ink); padding-block: 1.1rem 1.4rem; }
+  .nav__panel-inner { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 6fr) minmax(0, 3fr); column-gap: 0; }
+  .nav__col { min-width: 0; padding-inline: var(--col-gap); }
+  .nav__col:first-child { padding-inline-start: 0; }
+  .nav__col:last-child { padding-inline-end: 0; }
+  .nav__col + .nav__col { border-inline-start: 1px solid var(--rule); }
+  .nav__head { font-weight: 800; font-size: 0.78rem; color: var(--green); margin-bottom: 0.4rem; }
+  .nav__col li { margin-block: 0.22rem; }
+  .nav__col a { font-family: var(--font-body); font-size: 0.98rem; line-height: 1.5; color: var(--ink-2); text-decoration: none; }
+  .nav__col--wide a { font-family: var(--font-title); font-weight: 700; color: var(--ink); }
+  .nav__col a:hover, .nav__col a:focus-visible { color: var(--green); text-decoration: underline; }
+  @media (min-width: 1024px) {
+    .nav { overflow: visible; }
+    .nav__item--panel:hover .nav__panel, .nav__item--panel:focus-within .nav__panel { display: block; }
+  }
+
   @media (max-width: 719px) {
     .masthead__top { font-size: 0.78rem; }
+    .masthead__tools { gap: 0.8rem; }
+    .masthead__tools a:not(.masthead__search) { display: none; }
     .masthead__brand { padding-block: 0.7rem; }
     .brand :global(.brand__lockup img) { height: 72px; width: auto; }
     .nav { justify-content: flex-start; padding-inline-end: 1rem; }

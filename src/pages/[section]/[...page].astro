@@ -4,8 +4,9 @@ import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
 import QuoteCard from "@components/QuoteCard.astro";
 import { quotes, GLANCE_IDS } from "@lib/markets";
+import { analysisLabel } from "@lib/analysis";
 import type { Article } from "@lib/articles";
-import { getArticlesBySection } from "@lib/articles";
+import { getArticles, getArticlesBySection } from "@lib/articles";
 import { sections, type Section } from "@lib/sections";
 
 /**
@@ -33,6 +34,7 @@ interface Props {
   page: Page<Article>;
 }
 const { section, page } = Astro.props;
+const all = section.id === "analysis" ? await getArticles() : [];
 const first = page.currentPage === 1;
 const [lead, ...others] = page.data;
 // Up to three stories beside the lead; when the section is small the ruled list takes them all,
@@ -60,12 +62,12 @@ const glance = first && section.id === "markets" ? quotes(GLANCE_IDS) : [];
         {first && lead && (
           <div class={`section-page__top${beside.length ? "" : " section-page__top--solo"}`}>
             <div class="section-page__lead">
-              <StoryCard article={lead} variant="lead" level={2} showSection={false} showTopic eager />
+              <StoryCard article={lead} variant="lead" level={2} showSection={section.id === "analysis"} label={analysisLabel(lead, all)} showTopic eager />
             </div>
             {beside.length > 0 && (
               <div class="section-page__beside">
                 {beside.map((a) => (
-                  <StoryCard article={a} variant="list" showSection={false} showExcerpt />
+                  <StoryCard article={a} variant="list" showSection={section.id === "analysis"} label={analysisLabel(a, all)} showExcerpt />
                 ))}
               </div>
             )}
@@ -87,7 +89,7 @@ const glance = first && section.id === "markets" ? quotes(GLANCE_IDS) : [];
         {rest.length > 0 && (
           <div class={`section-page__rest ${rest.length < 3 ? "cards cards--list" : "cards"}`} style={`--n:${Math.min(rest.length, 4)}`}>
             {rest.map((a, i) => (
-              <StoryCard article={a} variant={rest.length < 3 ? "list" : "card"} showSection={false} showExcerpt={!a.data.image} eager={!first && i < 4} />
+              <StoryCard article={a} variant={rest.length < 3 ? "list" : "card"} showSection={section.id === "analysis"} label={analysisLabel(a, all)} showExcerpt={!a.data.image} eager={!first && i < 4} />
             ))}
           </div>
         )}

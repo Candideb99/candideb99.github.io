@@ -10,6 +10,7 @@ import DataTable from "@components/DataTable.astro";
 import Share from "@components/Share.astro";
 import { getArticles, related, articleHref, topicOf } from "@lib/articles";
 import { getSection, sectionHref, kindLabel } from "@lib/sections";
+import { analysisLabel } from "@lib/analysis";
 import { formatDate, formatTime, readingLabel, excerpt } from "@lib/format";
 import { isolateNumbers } from "@lib/bidi";
 import site from "@data/site.json";
@@ -59,7 +60,7 @@ const jsonLd = {
       <h1 class="article__title" data-pagefind-meta={`title:${d.title}`} set:html={isolateNumbers(d.title)} />
       {d.subtitle && <p class="article__dek" set:html={isolateNumbers(d.subtitle)} />}
       <p class="meta article__meta">
-        <a href={sectionHref(d.section)}>{kindLabel(d.kind, d.section)}</a>
+        <a href={sectionHref(d.section)}>{analysisLabel(article, all) ?? kindLabel(d.kind, d.section)}</a>
         <span class="article__byline">{site.name}</span>
         <time datetime={d.publishedAt}>نُشر {formatDate(d.publishedAt)} · {formatTime(d.publishedAt)} بتوقيت الرياض</time>
         <span>{readingLabel(d.readingMinutes)}</span>

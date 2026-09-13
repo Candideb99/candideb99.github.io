@@ -7,6 +7,7 @@ import Dossiers from "@components/Dossiers.astro";
 import StoryCard from "@components/StoryCard.astro";
 import Chart from "@components/Chart.astro";
 import { DESKS, desksOf } from "@lib/regions";
+import { analysisLabel } from "@lib/analysis";
 import { getArticles, pickLead, dossiers, chartOfTheDay, type Article } from "@lib/articles";
 import { newsSections, getSection, sectionHref } from "@lib/sections";
 import { articleHref } from "@lib/articles";
@@ -128,7 +129,7 @@ const jsonLd = {
   {cover.length > 0 ? (
     <>
       <Ticker items={ticker} />
-      <Cover stories={cover} readings={readings} photoIds={photoIds} />
+      <Cover stories={cover} readings={readings} photoIds={photoIds} all={articles} />
       <Front secondary={secondary} digest={digest} picks={picks} figures={figures} chart={chart} photoIds={photoIds} />
     </>
   ) : (
@@ -223,7 +224,7 @@ const jsonLd = {
       </div>
       <div class="cols" style={`--n:${Math.min(h.items.length, 4)}`}>
         {h.items.map((a) => (
-          <StoryCard article={a} variant="text" showSection={false} showExcerpt />
+          <StoryCard article={a} variant="text" showSection={h.id === "analysis"} showExcerpt label={analysisLabel(a, articles)} />
         ))}
       </div>
     </section>

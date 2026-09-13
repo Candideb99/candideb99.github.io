@@ -13,6 +13,7 @@
 import type { Article } from "@lib/articles";
 import { articleHref, topicOf } from "@lib/articles";
 import { kindLabel, sectionHref } from "@lib/sections";
+import { analysisLabel } from "@lib/analysis";
 import { excerpt, timeAgo } from "@lib/format";
 import { isolateNumbers } from "@lib/bidi";
 import Photo from "./Photo.astro";
@@ -24,10 +25,12 @@ interface Props {
   readings?: Article[];
   /** Ids of the stories allowed to show their picture here (the first appearance of each picture). */
   photoIds: Set<string>;
+  /** Every article, for the analysis desk labels. */
+  all?: Article[];
   /** Milliseconds a story stays on the stage. */
   interval?: number;
 }
-const { stories, readings = [], photoIds, interval = 6000 } = Astro.props;
+const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.props;
 ---
 
 <section class="wrap cover" data-cover data-interval={interval} aria-roledescription="carousel" aria-label="أبرز أخبار العدد">
@@ -78,7 +81,7 @@ const { stories, readings = [], photoIds, interval = 6000 } = Astro.props;
           const dek = excerpt(a.data.subtitle || a.data.lede, analysis ? 100 : 70);
           return (
             <article class={`cover__reading${analysis ? " cover__reading--lead" : ""}`} data-section={a.data.section}>
-              <span class="kicker">{kindLabel(a.data.kind, a.data.section)}</span>
+              <span class="kicker">{analysisLabel(a, all) ?? kindLabel(a.data.kind, a.data.section)}</span>
               <h3 class="cover__reading-title"><a href={articleHref(a)} set:html={isolateNumbers(a.data.title)} /></h3>
               {dek && <p class="cover__reading-dek" set:html={isolateNumbers(dek)} />}
               {analysis && <p class="meta"><time datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time></p>}
