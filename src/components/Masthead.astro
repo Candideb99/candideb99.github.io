@@ -94,10 +94,12 @@ for (const s of sections) {
     <div class="wrap masthead__nav-wrap">
       <ul class="nav">
         <li class="nav__item"><a href="/" class="nav__link" aria-current={active === "home" ? "page" : undefined}>الرئيسية</a></li>
-        {sections.map((s) => {
+        {sections.map((s, i) => {
           const columns = panels.get(s.id);
+          // Items in the far half of the bar hang their panel from their end edge so it stays inside the viewport.
+          const end = i >= sections.length / 2;
           return (
-            <li class={`nav__item${columns ? " nav__item--panel" : ""}`}>
+            <li class={`nav__item${columns ? " nav__item--panel" : ""}${end ? " nav__item--end" : ""}`}>
               <a href={sectionHref(s.id)} class="nav__link" aria-current={active === s.id ? "page" : undefined}>{s.name}</a>
               {columns && (
                 <div class="nav__panel" role="group" aria-label={`قسم ${s.name}`}>
@@ -149,7 +151,7 @@ for (const s of sections) {
 
   /* The section bar: the one green field on the page. */
   .masthead__nav { background: #0f5c3c; }
-  .masthead__nav-wrap { position: relative; }
+  .nav__item { position: relative; }
   .nav {
     display: flex;
     justify-content: center;
@@ -176,11 +178,15 @@ for (const s of sections) {
   .nav__link[aria-current="page"] { border-bottom-color: #fcfcf9; background: rgba(255, 255, 255, 0.08); }
   .nav__item--panel:hover > .nav__link, .nav__item--panel:focus-within > .nav__link { background: var(--paper); color: var(--green); }
 
-  /* The section panel: a paper box the size of its content, hung from the bar's start edge, ruled
-     between its columns and closed by a 2px ink rule; only on a wide screen where the pointer can
-     hover. On smaller screens the bar scrolls and the sections are plain links. */
-  .nav__panel { display: none; position: absolute; top: 100%; inset-inline-start: 0; z-index: 30; width: max-content; max-width: 100%; background: var(--paper); border: 1px solid var(--rule); border-top: 0; border-bottom: 2px solid var(--ink); padding: 1rem 0 1.1rem; }
-  .nav__panel { display: none; }
+  /* The section panel: a paper box the size of its content hung under its own section link (from
+     the link's end edge for the far half of the bar), ruled between its columns and closed by a 2px
+     ink rule; only on a wide screen where the pointer can hover. The hovered item is raised above
+     any panel a keyboard focus keeps open, so the panel always matches the link under the pointer.
+     On smaller screens the bar scrolls and the sections are plain links. */
+  .nav__panel { display: none; position: absolute; top: 100%; inset-inline-start: 0; z-index: 30; width: max-content; max-width: min(60rem, 100vw - 2rem); background: var(--paper); border: 1px solid var(--rule); border-top: 0; border-bottom: 2px solid var(--ink); padding: 1rem 0 1.1rem; }
+  .nav__item--end .nav__panel { inset-inline-start: auto; inset-inline-end: 0; }
+  .nav__item--panel:focus-within { z-index: 35; }
+  .nav__item--panel:hover { z-index: 40; }
   .nav__col { min-width: 11rem; padding-inline: 1.4rem; }
   .nav__col + .nav__col { border-inline-start: 1px solid var(--rule); }
   .nav__col--wide { max-width: 22rem; }
