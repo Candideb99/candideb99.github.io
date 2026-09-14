@@ -4495,10 +4495,10 @@
       "strikes": 1
     },
     "5a84f4505f06fb75": {
-      "at": "2026-09-13T21:09:46.256Z",
-      "decision": "rejected",
-      "title": "Anthropic's Amodei says China presents 'toughest dilemma' for his proposed AI slowdown",
-      "strikes": 1
+      "at": "2026-09-14T13:13:56.615Z",
+      "decision": "published",
+      "slug": "amodei-ai-slowdown-call-tech-stocks-fall-7936b1",
+      "title": "Anthropic's Amodei says China presents 'toughest dilemma' for his proposed AI slowdown"
     },
     "0a8870608f73021c": {
       "at": "2026-09-13T23:17:52.758Z",
@@ -4513,10 +4513,10 @@
       "strikes": 1
     },
     "23dd6b387aab3653": {
-      "at": "2026-09-13T23:17:52.758Z",
-      "decision": "rejected",
-      "title": "Oil prices rise after Saudi Arabia shut down critical pipeline that bypasses Strait of Hormuz",
-      "strikes": 1
+      "at": "2026-09-14T13:08:40.100Z",
+      "decision": "published",
+      "slug": "brent-oil-surges-saudi-pipeline-closure-0b4217",
+      "title": "Brent crude tops $109 after Saudi Arabia shuts down critical pipeline that bypasses Strait of Hormuz"
     },
     "422f95a4dc43653a": {
       "at": "2026-09-13T23:17:52.758Z",
@@ -4673,6 +4673,84 @@
       "decision": "rejected",
       "title": "XRG وأدنوك وسيفي تستكشف فرص تعزيز إمدادات الغاز لأوروبا",
       "strikes": 1
+    },
+    "d85187b311c3dd64": {
+      "at": "2026-09-14T13:08:40.100Z",
+      "decision": "published",
+      "slug": "brent-oil-surges-saudi-pipeline-closure-0b4217",
+      "title": "Oil prices soar above $108 as Houthis strike Saudi infrastructure"
+    },
+    "7ab00f8e4e97bba3": {
+      "at": "2026-09-14T13:08:40.100Z",
+      "decision": "published",
+      "slug": "brent-oil-surges-saudi-pipeline-closure-0b4217",
+      "title": "US says it’s clearing Hormuz traffic: Why are oil futures beyond $100?"
+    },
+    "b0ab90109812af3e": {
+      "at": "2026-09-14T13:08:40.100Z",
+      "decision": "published",
+      "slug": "brent-oil-surges-saudi-pipeline-closure-0b4217",
+      "title": "Oil surges past $108 as Hormuz attack and Saudi pipeline shutdown rattle markets"
+    },
+    "7afac216604f475d": {
+      "at": "2026-09-14T13:08:40.100Z",
+      "decision": "published",
+      "slug": "brent-oil-surges-saudi-pipeline-closure-0b4217",
+      "title": "Brent Hits $108 as Saudi Pipeline Shutdown Deepens Supply Fears"
+    },
+    "fffd5542eb16e163": {
+      "at": "2026-09-14T13:13:56.615Z",
+      "decision": "published",
+      "slug": "amodei-ai-slowdown-call-tech-stocks-fall-7936b1",
+      "title": "AI stocks slide after major CEOs unite to urge slowdown"
+    },
+    "0bd956013b1f5980": {
+      "at": "2026-09-14T13:13:56.615Z",
+      "decision": "published",
+      "slug": "amodei-ai-slowdown-call-tech-stocks-fall-7936b1",
+      "title": "SoftBank shares plunge as calls grow to slow AI development"
+    },
+    "f37c4e69641a32a2": {
+      "at": "2026-09-14T13:13:56.615Z",
+      "decision": "published",
+      "slug": "amodei-ai-slowdown-call-tech-stocks-fall-7936b1",
+      "title": "AI stocks get drilled because of Anthropic CEO Dario Amodei's 3,800-word warning"
+    },
+    "10a0b3499662ff18": {
+      "at": "2026-09-14T13:13:56.615Z",
+      "decision": "published",
+      "slug": "amodei-ai-slowdown-call-tech-stocks-fall-7936b1",
+      "title": "How investors are reacting to the AI pause calls from Anthropic and other frontier labs"
+    },
+    "64b612f07a933e7e": {
+      "at": "2026-09-14T13:19:15.554Z",
+      "decision": "published",
+      "slug": "saudi-arabia-vision-2030-finance-phase-03014e",
+      "title": "السعودية تكشف ملامح مرحلة جديدة لتوسيع الفرص وتعزيز كفاءة السوق المالية"
+    },
+    "60ed3f03fb43f26e": {
+      "at": "2026-09-14T13:19:15.554Z",
+      "decision": "published",
+      "slug": "saudi-arabia-vision-2030-finance-phase-03014e",
+      "title": "الجدعان: السعودية تنتقل إلى سوق مالية أكثر استدامة"
+    },
+    "a10e9c02566cb8e7": {
+      "at": "2026-09-14T13:19:15.554Z",
+      "decision": "published",
+      "slug": "saudi-arabia-vision-2030-finance-phase-03014e",
+      "title": "السعودية ترسم 3 مسارات لاستكشاف موارد اليورانيوم محلياً"
+    },
+    "49fec309b8a9f5dc": {
+      "at": "2026-09-14T13:19:15.554Z",
+      "decision": "published",
+      "slug": "saudi-arabia-vision-2030-finance-phase-03014e",
+      "title": "أسهم الذكاء الاصطناعي تتراجع بعد دعوات لإبطاء وتيرة التطوير"
+    },
+    "f904de497dd41c20": {
+      "at": "2026-09-14T13:19:15.554Z",
+      "decision": "published",
+      "slug": "saudi-arabia-vision-2030-finance-phase-03014e",
+      "title": "خسائر التكنولوجيا الحادة تضغط على «نيكي» والسندات تستقر"
     }
   }
 }
