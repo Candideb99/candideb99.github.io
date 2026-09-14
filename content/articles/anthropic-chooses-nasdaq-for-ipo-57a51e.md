@@ -1,0 +1,87 @@
+---
+title: أنثروبيك تختار ناسداك لطرحها الأولي وتستهدف تقييماً بـ2 تريليون دولار
+subtitle: الشركة حجزت ملف الاكتتاب بشكل سري في يونيو وتخطط للإدراج خلال أكتوبر 2026
+slug: anthropic-chooses-nasdaq-for-ipo-57a51e
+section: technology
+kind: news
+publishedAt: 2026-09-14T05:14:48.182Z
+lede: أنثروبيك اختارت بورصة ناسداك لإجراء طرحها العام الأولي، حسبما أكد موقع بزنس إنسايدر. الشركة تستهدف الإدراج خلال أكتوبر 2026، بعد أن حجزت ملف الاكتتاب بشكل سري في يونيو 2026، وفق سي إن بي سي. وتخطط لتحقيق تقييم قدره 2 تريليون دولار في طرحها الأولي.
+keyFacts:
+  - label: التقييم المستهدف
+    value: 2 تريليون دولار
+  - label: الإيرادات السنوية
+    value: 65 مليار دولار
+  - label: إنفاق الحوسبة المستهدف لأوبن إيه آي
+    value: 600 مليار دولار
+whyItMatters: قرار أنثروبيك بالإدراج في ناسداك وسعيها لتحقيق تقييم بقيمة 2 تريليون دولار يعكس حجم الاستثمارات الضخمة في قطاع الذكاء الاصطناعي، والذي قد يؤثر على تدفق رؤوس الأموال نحو التكنولوجيا المتقدمة في المنطقة. مع دعوة الشركة لبطء تطوير الذكاء الاصطناعي، قد يواجه المستثمرون في الأسواق العربية إعادة تقييم لمخاطر الاستثمار في شركات التقنية العالية، خاصة مع تزايد المخاوف من تأثير هذه التقنيات على الاستقرار والأمن. كما أن الشراكات المعلنة مع شركات مثل سبيس إكس وجوجل قد تشجع على نقل المعرفة وتعزيز التعاون التقني مع الشركات العالمية، مما قد يفيد الاقتصادات العربية التي تسعى لتطوير قطاعها التكنولوجي.
+tags:
+  - أنثروبيك
+  - ناسداك
+  - الذكاء الاصطناعي
+  - الاكتتاب العام
+  - التكنولوجيا
+regions:
+  - عالمي
+readingMinutes: 2
+chart: null
+table: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Dario_Amodei_at_TechCrunch_Disrupt_2023_03.jpg/1280px-Dario_Amodei_at_TechCrunch_Disrupt_2023_03.jpg
+  width: 1280
+  height: 853
+  alt: داريو أمودي، رئيس أنثروبيك، يتحدث خلال فعالية تقنية في مؤتمر تك كرانش ديسربت
+  credit: TechCrunch · CC BY 2.0 · ويكيميديا كومنز
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ADario_Amodei_at_TechCrunch_Disrupt_2023_03.jpg
+sources:
+  - name: بي بي سي
+    nameEn: BBC News
+    title: Anthropic boss Dario Amodei calls for AI development to slow down
+    url: https://www.bbc.co.uk/news/articles/c14dpgm0rg4o
+    publishedAt: 2026-09-12T21:16:47.000Z
+    lang: en
+  - name: سكاي نيوز عربية
+    nameEn: Sky News Arabia
+    title: أنثروبيك تختار بورصة ناسداك لإجراء طرحها العام الأولي
+    url: https://www.skynewsarabia.com/business/1891784-%D8%A3%D9%86%D8%AB%D8%B1%D9%88%D8%A8%D9%8A%D9%83-%D8%AA%D8%AE%D8%AA%D8%A7%D8%B1-%D8%A8%D9%88%D8%B1%D8%B5%D8%A9-%D9%86%D8%A7%D8%B3%D8%AF%D8%A7%D9%83-%D9%84%D8%A5%D8%AC%D8%B1%D8%A7%D8%A1-%D8%B7%D8%B1%D8%AD%D9%87%D8%A7-%D8%A7%D9%84%D8%B9%D8%A7%D9%85-%D8%A7%D9%84%D8%A3%D9%88%D9%84%D9%8A
+    publishedAt: 2026-09-14T04:40:25.000Z
+    lang: ar
+  - name: سي إن بي سي
+    nameEn: CNBC
+    title: Anthropic walks tightrope to Nasdaq, pushing for a slowdown while pursuing $2 trillion valuation
+    url: https://www.cnbc.com/2026/09/14/anthropic-walks-tightrope-to-nasdaq-pushing-slowdown-and-pursuing-ipo.html
+    publishedAt: 2026-09-14T04:01:01.000Z
+    lang: en
+  - name: سي إن بي سي
+    nameEn: CNBC
+    title: Jim Cramer questions Anthropic CEO's slowdown manifesto and puts forth an action plan
+    url: https://www.cnbc.com/2026/09/13/cramer-questions-anthropic-ceos-slowdown-manifesto-puts-forth-an-action-plan.html
+    publishedAt: 2026-09-13T23:47:14.000Z
+    lang: en
+models:
+  editor: inclusionai/ling-3.0-flash-fin:free
+  writer: nvidia/nemotron-3-super-120b-a12b:free → nvidia/nemotron-3-super-120b-a12b:free
+  critic: nvidia/nemotron-3-super-120b-a12b:free
+  vision: nex-agi/nex-n2.5-pro:free
+  desk: nvidia/nemotron-3-super-120b-a12b:free
+quality:
+  score: 7
+  verdict: publish
+  revised: true
+  importance: 7
+  warnings:
+    - "latin words: xAI, Nscale"
+  criticSummary: المقال يحتوي على أخطاء في الأسماء، وتواريخ غير محددة صراحةً، وادعاءات سببية غير مدعومة، لكنه يبقى ضمن حدود التوضيح المقبول مع بعض التوضيح المطلوب.
+ai: true
+---
+
+داريو أمودي، الرئيس التنفيذي لأنثروبيك، دعا لبطء تطوير نماذج الذكاء الاصطناعي ومراقبتها عن كثب في مقالة نشرت يوم السبت 2026-09-12، وفق بي بي سي نيوز. واقترح خطة من ثلاث نقاط تشمل المراقبة المستقلة لنماذج الذكاء الاصطناعي أثناء تطويرها، والتنظيم الصناعي والعالمي.
+
+وأيد دعوة أمودي لبطء تطوير الذكاء الاصطناعي كل من سام ألتمان، الرئيس التنفيذي لـ أوبن إيه آي، وإيلون ماسك، مؤسس xAI، ووصف ألتمان المقيمين المستقلين بالفكرة العظيمة، وقال ماسك إنه على حق، حسبما ورد في نفس المصدر.
+
+وذكرت سي إن بي سي أن أنثروبيك حققت إيرادات سنوية مُعَدَّلة بقيمة 65 مليار دولار في يوليو 2026، أي زيادة سبعة أضعاف مقارنة بالسنة السابقة. كما أخبرت بعض المساهمين بأنها ستحقق ربحاً تشغيلياً للربع الثاني على التوالي في الفترة الحالية، حسبما نقلت فاينانشال تايمز عبر سي إن بي سي.
+
+وأوضحت سي إن بي سي أن أنثروبيك وفتحت آفاقاً للتعاون مع شركات مثل Nscale، وآي دي إم، وسبيس إكس، وجوجل في صفقات حاسوبية بقيمة مليارات الدولارات هذا العام. وأكدت أن أوبن إيه آي تستهدف إنفاقاً إجمالياً على الحوسبة بقيمة 600 مليار دولار بحلول عام 2030.
+
+وأشارت سي إن بي سي إلى أن أنثروبيك وأوبن إيه آي هما الشركتان المسؤولتان عن نصيب غير متناسب من إنفاق البنية التحتية للذكاء الاصطناعي، وهما من أكبر مستخدمي وحدات معالجة الرسومات من نفيديا.

@@ -4216,8 +4216,9 @@
       "title": "HIVE brings in enterprise veteran to scale BUZZ HPC's AI cloud business"
     },
     "322448b3a5947480": {
-      "at": "2026-09-13T12:07:27.934Z",
-      "decision": "rejected",
+      "at": "2026-09-14T05:12:44.578Z",
+      "decision": "published",
+      "slug": "federal-reserve-rate-hike-expectations-september-2026-c63230",
       "title": "أسبوع المصارف المركزية الحاسم... النفط فوق 100 دولار يعيد التضخم إلى الواجهة"
     },
     "4c13f9219c39c546": {
@@ -4226,9 +4227,10 @@
       "title": "التضخم والنفط يرفعان رهانات أول زيادة للفائدة الأميركية منذ 2023"
     },
     "7c89be67f068c7fe": {
-      "at": "2026-09-13T12:08:44.991Z",
+      "at": "2026-09-14T05:18:41.522Z",
       "decision": "rejected",
-      "title": "قمة «بريكس» تدفع باتجاه توسيع تعاونها الاقتصادي"
+      "title": "قمة «بريكس» تدفع باتجاه توسيع تعاونها الاقتصادي",
+      "strikes": 2
     },
     "ee4737ce5ca16096": {
       "at": "2026-09-13T12:08:44.991Z",
@@ -4246,9 +4248,10 @@
       "title": "Xi says China will take lead to foster AI, tech cooperation among BRICS countries"
     },
     "cf15b4a2b87424e0": {
-      "at": "2026-09-13T12:08:44.991Z",
+      "at": "2026-09-14T05:18:41.522Z",
       "decision": "rejected",
-      "title": "China's Xi urges BRICS nations to work towards peace in the Middle East"
+      "title": "China's Xi urges BRICS nations to work towards peace in the Middle East",
+      "strikes": 2
     },
     "fc316dea0251cb00": {
       "at": "2026-09-13T12:08:44.991Z",
@@ -4348,10 +4351,10 @@
       "title": "Iran’s Security Crackdown Runs Into Resistance From Within"
     },
     "d4e724e82e7de102": {
-      "at": "2026-09-13T16:40:12.866Z",
-      "decision": "rejected",
-      "title": "Anthropic boss Dario Amodei calls for AI development to slow down",
-      "strikes": 1
+      "at": "2026-09-14T05:14:48.184Z",
+      "decision": "published",
+      "slug": "anthropic-chooses-nasdaq-for-ipo-57a51e",
+      "title": "Anthropic boss Dario Amodei calls for AI development to slow down"
     },
     "fe9d508504e55624": {
       "at": "2026-09-13T16:40:12.866Z",
@@ -4360,10 +4363,10 @@
       "strikes": 1
     },
     "7658eb64cf663b96": {
-      "at": "2026-09-13T16:40:12.866Z",
-      "decision": "rejected",
-      "title": "Anthropic CEO outlines plan to slow AI development",
-      "strikes": 1
+      "at": "2026-09-14T05:14:48.185Z",
+      "decision": "published",
+      "slug": "anthropic-chooses-nasdaq-for-ipo-57a51e",
+      "title": "Anthropic CEO outlines plan to slow AI development"
     },
     "0cf785a6a48ec384": {
       "at": "2026-09-13T16:40:12.866Z",
@@ -4579,6 +4582,96 @@
       "at": "2026-09-13T23:22:34.365Z",
       "decision": "rejected",
       "title": "Trump's tough talk accelerates Greenland investment push",
+      "strikes": 1
+    },
+    "8c31feb7ce7ac582": {
+      "at": "2026-09-14T05:10:21.727Z",
+      "decision": "published",
+      "slug": "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d",
+      "title": "النفط يقفز فوق 107 دولارات مع تصاعد الهجمات في الخليج"
+    },
+    "73c8ec35bc9cace1": {
+      "at": "2026-09-14T05:10:21.727Z",
+      "decision": "published",
+      "slug": "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d",
+      "title": "السوق السعودية تتراجع في بداية تعاملات الأحد"
+    },
+    "e4eecb74eb5a4248": {
+      "at": "2026-09-14T05:10:21.727Z",
+      "decision": "published",
+      "slug": "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d",
+      "title": "Oil nears $108 after Saudi Arabia shuts pipeline amid attacks"
+    },
+    "292783f46370e124": {
+      "at": "2026-09-14T05:10:21.727Z",
+      "decision": "published",
+      "slug": "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d",
+      "title": "Oil prices surge over 3 percent to $107.8 as Hormuz strikes deepen global supply fears"
+    },
+    "98a9791366caaf6e": {
+      "at": "2026-09-14T05:10:21.727Z",
+      "decision": "published",
+      "slug": "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d",
+      "title": "Oil Prices Surge as Middle East Attacks Continue and Diplomacy Stumbles"
+    },
+    "9f2d7cf60328e328": {
+      "at": "2026-09-14T05:12:44.578Z",
+      "decision": "published",
+      "slug": "federal-reserve-rate-hike-expectations-september-2026-c63230",
+      "title": "«غولدمان ساكس» و«جي بي مورغان» يرجحان رفع الفائدة الأميركية هذا الأسبوع"
+    },
+    "e39d6a73a23ce8ea": {
+      "at": "2026-09-14T05:12:44.578Z",
+      "decision": "published",
+      "slug": "federal-reserve-rate-hike-expectations-september-2026-c63230",
+      "title": "US Fed on 'knife edge' as oil prices heap pressure on inflation risk"
+    },
+    "b15ba3dfd9b18910": {
+      "at": "2026-09-14T05:12:44.578Z",
+      "decision": "published",
+      "slug": "federal-reserve-rate-hike-expectations-september-2026-c63230",
+      "title": "Further Oil Price Spikes Could Rekindle Recession Fears"
+    },
+    "64ffec6b2bad6854": {
+      "at": "2026-09-14T05:12:44.578Z",
+      "decision": "published",
+      "slug": "federal-reserve-rate-hike-expectations-september-2026-c63230",
+      "title": "Fed rate hikes won’t bring down gas prices. Why the bond market is pushing for them anyway."
+    },
+    "ef5356d7e0375d78": {
+      "at": "2026-09-14T05:14:48.185Z",
+      "decision": "published",
+      "slug": "anthropic-chooses-nasdaq-for-ipo-57a51e",
+      "title": "أنثروبيك تختار بورصة ناسداك لإجراء طرحها العام الأولي"
+    },
+    "6f0a4262dc53dff7": {
+      "at": "2026-09-14T05:14:48.185Z",
+      "decision": "published",
+      "slug": "anthropic-chooses-nasdaq-for-ipo-57a51e",
+      "title": "Anthropic walks tightrope to Nasdaq, pushing for a slowdown while pursuing $2 trillion valuation"
+    },
+    "59f87303892bd9d8": {
+      "at": "2026-09-14T05:14:48.185Z",
+      "decision": "published",
+      "slug": "anthropic-chooses-nasdaq-for-ipo-57a51e",
+      "title": "Jim Cramer questions Anthropic CEO's slowdown manifesto and puts forth an action plan"
+    },
+    "3dbd19601fee4450": {
+      "at": "2026-09-14T05:18:41.522Z",
+      "decision": "rejected",
+      "title": "الإمارات والهند: شراكة اقتصادية تتوسع من التجارة للوجستيات",
+      "strikes": 1
+    },
+    "75f20b985682d2ba": {
+      "at": "2026-09-14T05:18:41.522Z",
+      "decision": "rejected",
+      "title": "\"أدنوك\" و\"XRG\" و\"مصدر\" تعزز شراكاتها في ألمانيا",
+      "strikes": 1
+    },
+    "8e316c13ea754206": {
+      "at": "2026-09-14T05:18:41.522Z",
+      "decision": "rejected",
+      "title": "XRG وأدنوك وسيفي تستكشف فرص تعزيز إمدادات الغاز لأوروبا",
       "strikes": 1
     }
   }
