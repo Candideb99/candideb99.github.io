@@ -4753,16 +4753,16 @@
       "title": "خسائر التكنولوجيا الحادة تضغط على «نيكي» والسندات تستقر"
     },
     "b0fb0e138f6da06c": {
-      "at": "2026-09-14T19:56:40.894Z",
+      "at": "2026-09-15T11:56:53.288Z",
       "decision": "rejected",
       "title": "10-Year Treasury Yield Touches 5%, Highest Level in Years",
-      "strikes": 1
+      "strikes": 2
     },
     "80c124f640d9b858": {
-      "at": "2026-09-14T19:56:40.894Z",
+      "at": "2026-09-15T11:56:09.563Z",
       "decision": "rejected",
       "title": "Oil Prices Jump as Attacks Choke Off Saudi Energy Supply",
-      "strikes": 1
+      "strikes": 2
     },
     "8dee964619e9f298": {
       "at": "2026-09-14T19:56:40.894Z",
@@ -4961,6 +4961,78 @@
       "decision": "published",
       "slug": "china-retail-sales-slowdown-august-2026-cb2bb7",
       "title": "التضخم في الهند يرتفع إلى 4.82% في أغسطس"
+    },
+    "3253dfe356de574c": {
+      "at": "2026-09-15T11:56:09.563Z",
+      "decision": "rejected",
+      "title": "تراجع حركة المرور بمضيق «هرمز» عقب تصاعد هجمات الشرق الأوسط",
+      "strikes": 1
+    },
+    "709e2e23e5c15e65": {
+      "at": "2026-09-15T11:56:09.563Z",
+      "decision": "rejected",
+      "title": "Oil climbs as Saudi pipeline outage, fresh attacks heighten supply concerns",
+      "strikes": 1
+    },
+    "82990efd9d6b47ec": {
+      "at": "2026-09-15T11:56:09.563Z",
+      "decision": "rejected",
+      "title": "Saudi Oil Pipeline Repairs Could Take Weeks After Drone Attack",
+      "strikes": 1
+    },
+    "14e3f57a47c06547": {
+      "at": "2026-09-15T11:56:09.563Z",
+      "decision": "rejected",
+      "title": "Oil Prices Rise on Saudi Pipeline Outage and Rising Red Sea Risks",
+      "strikes": 1
+    },
+    "f68b4b94e58797fb": {
+      "at": "2026-09-15T11:56:53.288Z",
+      "decision": "rejected",
+      "title": "Warsh Set for Showdown With Trump as Fed Faces Pressure to Raise Rates",
+      "strikes": 1
+    },
+    "4caa879f3860553e": {
+      "at": "2026-09-15T11:56:53.288Z",
+      "decision": "rejected",
+      "title": "Morgan Stanley joins Goldman Sachs in 11th-hour switch to predict a Fed hike",
+      "strikes": 1
+    },
+    "383b03a01cccd609": {
+      "at": "2026-09-15T11:56:53.288Z",
+      "decision": "rejected",
+      "title": "What to watch as Treasury Secretary Scott Bessent testifies before Congress",
+      "strikes": 1
+    },
+    "d7730f4e2a0ad621": {
+      "at": "2026-09-15T11:56:53.288Z",
+      "decision": "rejected",
+      "title": "مأزق \"وارش\".. هل أصبح رفع الفائدة الخيار الوحيد؟",
+      "strikes": 1
+    },
+    "8a8c99de31359acf": {
+      "at": "2026-09-15T11:58:31.896Z",
+      "decision": "published",
+      "slug": "saudi-uranium-discovery-madinah-630462",
+      "title": "Saudi Arabia discovers 110 million tonnes of uranium-concentrated ore in Madinah region"
+    },
+    "86f3e0c5acd2789a": {
+      "at": "2026-09-15T11:58:31.896Z",
+      "decision": "published",
+      "slug": "saudi-uranium-discovery-madinah-630462",
+      "title": "Saudi Arabia Discovers 110 Million Tonnes of Uranium-Bearing Ore"
+    },
+    "97eb27d45ac031a1": {
+      "at": "2026-09-15T12:00:22.992Z",
+      "decision": "rejected",
+      "title": "PIF accelerates Saudi AI push as HUMAIN scales 6 GW data-center plan, Arabic models and full-stack AI ecosystem",
+      "strikes": 1
+    },
+    "c3776c7c005c0146": {
+      "at": "2026-09-15T12:00:22.992Z",
+      "decision": "rejected",
+      "title": "AI start-up Mal carries Middle East FinTech in H1 with mega-funding round",
+      "strikes": 1
     }
   }
 }
