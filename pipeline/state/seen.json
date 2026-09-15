@@ -4909,10 +4909,10 @@
       "strikes": 1
     },
     "b79c7a696bedd7dd": {
-      "at": "2026-09-15T05:04:31.583Z",
-      "decision": "rejected",
-      "title": "Oil extends gains following Houthi strikes on Saudi Arabia",
-      "strikes": 1
+      "at": "2026-09-15T17:24:18.260Z",
+      "decision": "published",
+      "slug": "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c",
+      "title": "U.S. crude oil tops $106 as market awaits updates on Saudi pipeline outage"
     },
     "38bcb69a713eecef": {
       "at": "2026-09-15T05:04:31.583Z",
@@ -5044,6 +5044,120 @@
       "decision": "rejected",
       "title": "FEDS Note: Why Gold Didn't Actually Overtake Treasury Securities as the World's \"Favorite\" Reserve Asset",
       "strikes": 1
+    },
+    "bfbd5f05e08687b4": {
+      "at": "2026-09-15T17:13:27.788Z",
+      "decision": "rejected",
+      "title": "Key U.S. Borrowing Rate Nears 20-Year High as Oil Prices Jump",
+      "strikes": 1
+    },
+    "ce3b7dc629ccca17": {
+      "at": "2026-09-15T17:13:27.788Z",
+      "decision": "rejected",
+      "title": "10-year Treasury yield hits highest level since 2007 as traders bet a Fed rate hike is coming",
+      "strikes": 1
+    },
+    "e71549702ed21900": {
+      "at": "2026-09-15T17:13:27.788Z",
+      "decision": "rejected",
+      "title": "Treasury yields are hovering above a critical threshold. Here's what it means for stocks",
+      "strikes": 1
+    },
+    "f7a4d1542744ec7b": {
+      "at": "2026-09-15T17:13:27.788Z",
+      "decision": "rejected",
+      "title": "US 10-year Treasury yield breaches 5% as global bond sell-off deepens",
+      "strikes": 1
+    },
+    "809f8609e19c456f": {
+      "at": "2026-09-15T17:13:27.788Z",
+      "decision": "rejected",
+      "title": "عائد السندات الأميركية لأجل 10 سنوات عند أعلى مستوى منذ 2007",
+      "strikes": 1
+    },
+    "c1d5999e12c67910": {
+      "at": "2026-09-15T17:24:18.260Z",
+      "decision": "published",
+      "slug": "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c",
+      "title": "Saudi pipeline closure is a brief interruption that will last days, U.S. Energy Secretary tells CNBC"
+    },
+    "0fa7c7eea7cc78be": {
+      "at": "2026-09-15T17:24:18.260Z",
+      "decision": "published",
+      "slug": "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c",
+      "title": "Saudi Oil Crisis Deepens as Aramco Suspends Yanbu Loadings"
+    },
+    "8f3f8c76c96dfb05": {
+      "at": "2026-09-15T17:24:18.260Z",
+      "decision": "published",
+      "slug": "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c",
+      "title": "Saudi Aramco Cancels European Crude Cargoes as Key Pipeline Stays Shut"
+    },
+    "3ac801265aa0d1a0": {
+      "at": "2026-09-15T17:24:18.260Z",
+      "decision": "published",
+      "slug": "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c",
+      "title": "Oil’s safety net is fraying as Saudi Arabia races to restart a key pipeline"
+    },
+    "56370a9f9a6d7e5a": {
+      "at": "2026-09-15T17:32:00.688Z",
+      "decision": "published",
+      "slug": "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6",
+      "title": "Saudi Arabia faces high-stakes choices as war with Houthis escalates"
+    },
+    "4e1baffa78dde242": {
+      "at": "2026-09-15T17:32:00.688Z",
+      "decision": "published",
+      "slug": "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6",
+      "title": "Can the Houthis hold on to Yemen’s strategic western coast?"
+    },
+    "391e2ac12901050f": {
+      "at": "2026-09-15T17:32:00.688Z",
+      "decision": "published",
+      "slug": "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6",
+      "title": "ليبيا تحذر من القوة القاهرة بعد توقف الإنتاج في 3 مواقع نفطية"
+    },
+    "5b26c62d29d36937": {
+      "at": "2026-09-15T17:32:00.688Z",
+      "decision": "published",
+      "slug": "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6",
+      "title": "Thousands flee to Djibouti amid renewed Yemen fighting"
+    },
+    "ad1254307ad57698": {
+      "at": "2026-09-15T17:32:00.688Z",
+      "decision": "published",
+      "slug": "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6",
+      "title": "Houthis seize strategic Red Sea islands as analysts warn of impending oil crunch"
+    },
+    "668274299137f0c9": {
+      "at": "2026-09-15T17:40:35.451Z",
+      "decision": "published",
+      "slug": "wto-warns-gdp-loss-2050-trade-fragmentation-8471db",
+      "title": "تأخيرات بنهر الدانوب تطيل زمن نقل الحبوب من أوكرانيا إلى مصر"
+    },
+    "a7ad900ae653fb77": {
+      "at": "2026-09-15T17:40:35.451Z",
+      "decision": "published",
+      "slug": "wto-warns-gdp-loss-2050-trade-fragmentation-8471db",
+      "title": "«منظمة التجارة العالمية» تدعو لإصلاح النظام وتحذر من تكلفة الانقسام"
+    },
+    "2c32486e01f78fc7": {
+      "at": "2026-09-15T17:40:35.451Z",
+      "decision": "published",
+      "slug": "wto-warns-gdp-loss-2050-trade-fragmentation-8471db",
+      "title": "Egypt-BRICS trade jumps 25.5 percent to $36.7 billion in H1 2026 as imports, investment and remittance ties deepen"
+    },
+    "b0cbd32e99f9b931": {
+      "at": "2026-09-15T17:40:35.451Z",
+      "decision": "published",
+      "slug": "wto-warns-gdp-loss-2050-trade-fragmentation-8471db",
+      "title": "WTO warns global trading system at critical juncture as fragmentation could cut GDP 6.9 percent, exports 26.9 percent"
+    },
+    "8275f4a93933088e": {
+      "at": "2026-09-15T17:40:35.451Z",
+      "decision": "published",
+      "slug": "wto-warns-gdp-loss-2050-trade-fragmentation-8471db",
+      "title": "Failure to reform WTO could cost global economy 10% of output by 2050"
     }
   }
 }
