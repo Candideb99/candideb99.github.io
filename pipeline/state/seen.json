@@ -5500,6 +5500,66 @@
       "decision": "published",
       "slug": "us-fed-rate-hike-september-2026-c89704",
       "title": "Mortgage demand from homebuyers drops 19% from a year ago, as interest rates surge abruptly higher"
+    },
+    "e25a288f9103c380": {
+      "at": "2026-09-16T21:27:56.278Z",
+      "decision": "rejected",
+      "title": "US interest rates raised for first time in three years",
+      "strikes": 1
+    },
+    "5375d8cc40c81e8d": {
+      "at": "2026-09-16T21:27:56.278Z",
+      "decision": "rejected",
+      "title": "US Federal Reserve raises interest rates for the first time since 2023",
+      "strikes": 1
+    },
+    "b64357b980dd9dd8": {
+      "at": "2026-09-16T21:27:56.278Z",
+      "decision": "rejected",
+      "title": "US Fed raises interest rates for first time in three years",
+      "strikes": 1
+    },
+    "10285f3ad92a9fc2": {
+      "at": "2026-09-16T21:27:56.278Z",
+      "decision": "rejected",
+      "title": "الفدرالي الأمريكي يرفع الفائدة لأول مرة منذ 2023 لمواجهة صدمة التضخم",
+      "strikes": 1
+    },
+    "611a77c4fc61b632": {
+      "at": "2026-09-16T21:27:56.278Z",
+      "decision": "rejected",
+      "title": "Fed raises rates for the first time since 2023 in unanimous vote defying Trump",
+      "strikes": 1
+    },
+    "655bc4ed7aa1b4b7": {
+      "at": "2026-09-16T21:34:04.426Z",
+      "decision": "rejected",
+      "title": "تماشياً مع قرار «الفيدرالي»... «المركزي القطري» يرفع الفائدة 25 نقطة أساس",
+      "strikes": 1
+    },
+    "a3742ed929bb5af4": {
+      "at": "2026-09-16T21:34:04.426Z",
+      "decision": "rejected",
+      "title": "عُمان ترفع الفائدة 25 نقطة أساس بعد قرار «الفيدرالي»",
+      "strikes": 1
+    },
+    "d963e7b9fcdebeab": {
+      "at": "2026-09-16T21:34:04.426Z",
+      "decision": "rejected",
+      "title": "السعودية ترفع أسعار الفائدة 25 نقطة أساس عقب قرار «الفيدرالي»",
+      "strikes": 1
+    },
+    "392ca86144177547": {
+      "at": "2026-09-16T21:34:04.426Z",
+      "decision": "rejected",
+      "title": "الإمارات ترفع سعر الفائدة الأساسي 25 نقطة أساس",
+      "strikes": 1
+    },
+    "999557497bf7e534": {
+      "at": "2026-09-16T21:34:04.426Z",
+      "decision": "rejected",
+      "title": "تزامناً مع قرار «الفيدرالي»... مصرف البحرين المركزي يرفع سعر الفائدة 25 نقطة أساس",
+      "strikes": 1
     }
   }
 }
