@@ -5220,10 +5220,10 @@
       "title": "Iran strikes exposed gaps in medical evacuation ops across Middle East: IG"
     },
     "3df5d3deb39b3a4c": {
-      "at": "2026-09-15T21:41:51.862Z",
-      "decision": "rejected",
-      "title": "US borrowing costs hit highest level since 2007",
-      "strikes": 1
+      "at": "2026-09-16T11:55:57.511Z",
+      "decision": "published",
+      "slug": "us-bond-yield-5-04-percent-ce6ccd",
+      "title": "US borrowing costs hit highest level since 2007"
     },
     "7f248e7ae84d0998": {
       "at": "2026-09-15T21:41:51.862Z",
@@ -5244,10 +5244,10 @@
       "strikes": 1
     },
     "7e2bafcf5222c8bc": {
-      "at": "2026-09-15T21:41:51.862Z",
-      "decision": "rejected",
-      "title": "Investors see surge in US Treasuries emerging as new market risk",
-      "strikes": 1
+      "at": "2026-09-16T11:55:57.511Z",
+      "decision": "published",
+      "slug": "us-bond-yield-5-04-percent-ce6ccd",
+      "title": "Investors see surge in US Treasury yields emerging as new market risk"
     },
     "a85847d55e474906": {
       "at": "2026-09-15T21:48:19.891Z",
@@ -5362,6 +5362,84 @@
       "decision": "rejected",
       "title": "الديزل يسجل سعرا قياسيا جديدا في الولايات المتحدة",
       "strikes": 1
+    },
+    "7ae96604ca68b7d7": {
+      "at": "2026-09-16T11:53:05.482Z",
+      "decision": "rejected",
+      "title": "Global Oil Prices Could Hit Highest Levels in Months After Saudi Pipeline Attacks",
+      "strikes": 1
+    },
+    "4f2ae3bceea5600b": {
+      "at": "2026-09-16T11:53:05.482Z",
+      "decision": "rejected",
+      "title": "مصافي اليابان تسارع لشراء نفط الشرق الأوسط بعد تعطل مسار إمدادات سعودي",
+      "strikes": 1
+    },
+    "1b8ae7fe02b6dc65": {
+      "at": "2026-09-16T11:53:05.482Z",
+      "decision": "rejected",
+      "title": "Japanese Refiners Rush for Oman Crude After Saudi Pipeline Shutdown",
+      "strikes": 1
+    },
+    "40869866c19002f9": {
+      "at": "2026-09-16T11:53:05.482Z",
+      "decision": "rejected",
+      "title": "السعودية تتجه لشحن مزيد من النفط عبر هرمز بعد وقف خط “شرق غرب”",
+      "strikes": 1
+    },
+    "da713d5989324fce": {
+      "at": "2026-09-16T11:53:05.482Z",
+      "decision": "rejected",
+      "title": "Hormuz Shipping Traffic Remains Stuck in Single Digits",
+      "strikes": 1
+    },
+    "818e323f3397e362": {
+      "at": "2026-09-16T11:54:51.134Z",
+      "decision": "published",
+      "slug": "uk-inflation-rises-to-3-1-percent-august-7dcf61",
+      "title": "UK inflation rises to 3.1% as motor fuel prices jump by almost a quarter"
+    },
+    "072763dac95ce9e3": {
+      "at": "2026-09-16T11:54:51.134Z",
+      "decision": "published",
+      "slug": "uk-inflation-rises-to-3-1-percent-august-7dcf61",
+      "title": "What is happening to UK prices?"
+    },
+    "bad8826e3e241c93": {
+      "at": "2026-09-16T11:54:51.134Z",
+      "decision": "published",
+      "slug": "uk-inflation-rises-to-3-1-percent-august-7dcf61",
+      "title": "التضخم البريطاني يرتفع لأعلى مستوى في 5 أشهر"
+    },
+    "6f182b566a3f15be": {
+      "at": "2026-09-16T11:54:51.134Z",
+      "decision": "published",
+      "slug": "uk-inflation-rises-to-3-1-percent-august-7dcf61",
+      "title": "UK inflation jumps to 3.1% as energy costs soar"
+    },
+    "187f00b88c660323": {
+      "at": "2026-09-16T11:54:51.134Z",
+      "decision": "published",
+      "slug": "uk-inflation-rises-to-3-1-percent-august-7dcf61",
+      "title": "NGA official takes top AI job at Cyber Command"
+    },
+    "8b1194c8a67f80bf": {
+      "at": "2026-09-16T11:55:57.511Z",
+      "decision": "published",
+      "slug": "us-bond-yield-5-04-percent-ce6ccd",
+      "title": "Fed Meeting Will Test Central Bank’s Credibility With Bond Investors"
+    },
+    "40b24e2383c24d1d": {
+      "at": "2026-09-16T11:55:57.511Z",
+      "decision": "published",
+      "slug": "us-bond-yield-5-04-percent-ce6ccd",
+      "title": "Fed Readies for Momentous Rate Decision"
+    },
+    "75900ae5f8fe9f62": {
+      "at": "2026-09-16T11:55:57.511Z",
+      "decision": "published",
+      "slug": "us-bond-yield-5-04-percent-ce6ccd",
+      "title": "Why the Fed Might Raise Interest Rates When Borrowing Costs Are Surging"
     }
   }
 }
