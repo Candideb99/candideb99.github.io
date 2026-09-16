@@ -4987,10 +4987,10 @@
       "strikes": 1
     },
     "f68b4b94e58797fb": {
-      "at": "2026-09-15T11:56:53.288Z",
+      "at": "2026-09-16T05:02:02.451Z",
       "decision": "rejected",
       "title": "Warsh Set for Showdown With Trump as Fed Faces Pressure to Raise Rates",
-      "strikes": 1
+      "strikes": 2
     },
     "4caa879f3860553e": {
       "at": "2026-09-15T11:56:53.288Z",
@@ -5277,6 +5277,90 @@
       "at": "2026-09-15T21:48:19.891Z",
       "decision": "rejected",
       "title": "Saudi Arabia discovers 114 million tons of rare earth, uranium-bearing ore in Madinah, advancing Kingdom’s critical-minerals strategy",
+      "strikes": 1
+    },
+    "4dd0662ad0424949": {
+      "at": "2026-09-16T05:00:48.630Z",
+      "decision": "published",
+      "slug": "openai-seeks-1-5-trillion-funding-a2d732",
+      "title": "OpenAI Considers New Financing at a $1.5 Trillion Valuation"
+    },
+    "298e8187a1247d57": {
+      "at": "2026-09-16T05:00:48.630Z",
+      "decision": "published",
+      "slug": "openai-seeks-1-5-trillion-funding-a2d732",
+      "title": "OpenAI CFO Sarah Friar tells CNBC she isn't worried about slowing AI development"
+    },
+    "2ed1ca54eaa6d2cb": {
+      "at": "2026-09-16T05:00:48.630Z",
+      "decision": "published",
+      "slug": "openai-seeks-1-5-trillion-funding-a2d732",
+      "title": "Two camps have emerged in the debate over AI safety and regulation"
+    },
+    "91651a9a63f95c7b": {
+      "at": "2026-09-16T05:00:48.630Z",
+      "decision": "published",
+      "slug": "openai-seeks-1-5-trillion-funding-a2d732",
+      "title": "OpenAI, Google, Anthropic discussing collaboration on AI safety issues"
+    },
+    "9b1c20e23292fee7": {
+      "at": "2026-09-16T05:00:48.630Z",
+      "decision": "published",
+      "slug": "openai-seeks-1-5-trillion-funding-a2d732",
+      "title": "OpenAI, Anthropic, Google have been in talks on AI safety for weeks"
+    },
+    "50db4c45cd15e7e5": {
+      "at": "2026-09-16T05:02:02.451Z",
+      "decision": "rejected",
+      "title": "صعود الين يواجه اختبار بنك اليابان",
+      "strikes": 1
+    },
+    "b9ea1f3e97c7d04a": {
+      "at": "2026-09-16T05:02:02.451Z",
+      "decision": "rejected",
+      "title": "BOJ expected to hike rates by 25 basis points to fresh three-decade high: CNBC survey",
+      "strikes": 1
+    },
+    "9ddcebd6d46768aa": {
+      "at": "2026-09-16T05:02:02.451Z",
+      "decision": "rejected",
+      "title": "كيف تعصف صدمة أسعار الطاقة بخطط البنوك المركزية؟",
+      "strikes": 1
+    },
+    "a8ebc7778748a665": {
+      "at": "2026-09-16T05:02:02.451Z",
+      "decision": "rejected",
+      "title": "توقعات بتوقف ارتفاع عائد السندات الأوروبية بفعل ضعف النمو",
+      "strikes": 1
+    },
+    "375400556a2175b1": {
+      "at": "2026-09-16T05:03:05.358Z",
+      "decision": "rejected",
+      "title": "Saudi Pipeline Outage Hits an Oil Market Running Out of Buffers",
+      "strikes": 1
+    },
+    "d723bb971456b9be": {
+      "at": "2026-09-16T05:03:05.358Z",
+      "decision": "rejected",
+      "title": "U.S. Oil Inventories Jump as Cushing Stocks Keep Falling",
+      "strikes": 1
+    },
+    "201ebf99a7606f58": {
+      "at": "2026-09-16T05:03:05.358Z",
+      "decision": "rejected",
+      "title": "The New ‘Mecca Alliance’ Warns Iran Over Houthi Attacks on Saudi Arabia",
+      "strikes": 1
+    },
+    "525495c7e2a23009": {
+      "at": "2026-09-16T05:03:05.358Z",
+      "decision": "rejected",
+      "title": "U.S. Diesel Prices on Track for Record Year",
+      "strikes": 1
+    },
+    "5e94b9f678b795be": {
+      "at": "2026-09-16T05:03:05.358Z",
+      "decision": "rejected",
+      "title": "الديزل يسجل سعرا قياسيا جديدا في الولايات المتحدة",
       "strikes": 1
     }
   }
