@@ -5502,10 +5502,10 @@
       "title": "Mortgage demand from homebuyers drops 19% from a year ago, as interest rates surge abruptly higher"
     },
     "e25a288f9103c380": {
-      "at": "2026-09-16T21:27:56.278Z",
-      "decision": "rejected",
-      "title": "US interest rates raised for first time in three years",
-      "strikes": 1
+      "at": "2026-09-17T11:57:49.260Z",
+      "decision": "published",
+      "slug": "fed-raises-rates-first-time-2023-61bb8a",
+      "title": "US interest rates raised for first time in three years"
     },
     "5375d8cc40c81e8d": {
       "at": "2026-09-16T21:27:56.278Z",
@@ -5674,6 +5674,120 @@
       "decision": "rejected",
       "title": "OpenAI investors have approached the company about a new funding round",
       "strikes": 1
+    },
+    "0d5503098ad68ac8": {
+      "at": "2026-09-17T11:55:22.251Z",
+      "decision": "published",
+      "slug": "bank-of-england-holds-rate-warns-inflation-48f465",
+      "title": "Interest rates held but Bank signals rise if energy prices stay high"
+    },
+    "72b1a3166d294bfb": {
+      "at": "2026-09-17T11:55:22.251Z",
+      "decision": "published",
+      "slug": "bank-of-england-holds-rate-warns-inflation-48f465",
+      "title": "بنك إنجلترا يبقي الفائدة دون تغيير ويحذر من تجاوز التضخم 4 %"
+    },
+    "0d49d293ed2edbd8": {
+      "at": "2026-09-17T11:55:22.251Z",
+      "decision": "published",
+      "slug": "bank-of-england-holds-rate-warns-inflation-48f465",
+      "title": "Bank of England holds interest rates at 3.75% but warns war could force future rises"
+    },
+    "280ec1a85ed050fb": {
+      "at": "2026-09-17T11:55:22.251Z",
+      "decision": "published",
+      "slug": "bank-of-england-holds-rate-warns-inflation-48f465",
+      "title": "Bank of England defies Fed’s rate-hike lead, leaving rates unchanged"
+    },
+    "b0835af9631e58fc": {
+      "at": "2026-09-17T11:55:22.252Z",
+      "decision": "published",
+      "slug": "bank-of-england-holds-rate-warns-inflation-48f465",
+      "title": "Bank of England holds rates at 3.75% in 6-3 split vote as inflation hits five-month high"
+    },
+    "84a5c03a78cc7848": {
+      "at": "2026-09-17T11:57:49.260Z",
+      "decision": "published",
+      "slug": "fed-raises-rates-first-time-2023-61bb8a",
+      "title": "The Fed Raised Rates. What Comes Next?"
+    },
+    "3a925ce70bdc0996": {
+      "at": "2026-09-17T11:57:49.260Z",
+      "decision": "published",
+      "slug": "fed-raises-rates-first-time-2023-61bb8a",
+      "title": "وارش يقود «الفيدرالي» إلى التشدد رغم ضغوط ترمب"
+    },
+    "c423975060d831ad": {
+      "at": "2026-09-17T11:57:49.260Z",
+      "decision": "published",
+      "slug": "fed-raises-rates-first-time-2023-61bb8a",
+      "title": "Why Trump's hand-picked Fed chair defied him by raising interest rates"
+    },
+    "4502f2d3bf60e26e": {
+      "at": "2026-09-17T11:57:49.260Z",
+      "decision": "published",
+      "slug": "fed-raises-rates-first-time-2023-61bb8a",
+      "title": "Analysis: How Trump could reignite the Fed independence fight after Warsh's rate hike"
+    },
+    "b17ab4133569c504": {
+      "at": "2026-09-17T11:59:55.681Z",
+      "decision": "rejected",
+      "title": "LNG Prices Could Jump Further as Hormuz Supply Crunch Persists",
+      "strikes": 1
+    },
+    "d9ffe04fab306bf7": {
+      "at": "2026-09-17T11:59:55.681Z",
+      "decision": "rejected",
+      "title": "تراجع أسعار النفط وبرنت يتداول دون 104 دولارات",
+      "strikes": 1
+    },
+    "66d3adf55d2b1347": {
+      "at": "2026-09-17T11:59:55.681Z",
+      "decision": "rejected",
+      "title": "Oil extends losses as Saudi Arabia reportedly offers ship-to-ship crude transfers after pipeline hit",
+      "strikes": 1
+    },
+    "784f514e38de7382": {
+      "at": "2026-09-17T11:59:55.681Z",
+      "decision": "rejected",
+      "title": "Oil Prices Slide as Saudi Arabia Reroutes Crude via Oman",
+      "strikes": 1
+    },
+    "05e1b2b545edfa5a": {
+      "at": "2026-09-17T11:59:55.681Z",
+      "decision": "rejected",
+      "title": "Tanker Rates Smash $1 Million a Day as Oil Shipping Crisis Deepens",
+      "strikes": 1
+    },
+    "74d092567e0715c3": {
+      "at": "2026-09-17T12:01:18.999Z",
+      "decision": "published",
+      "slug": "openai-six-concerning-behaviors-disclosure-framework-2d2a2b",
+      "title": "OpenAI reports more incidents of models acting deceptively"
+    },
+    "5f8a48b166463ddc": {
+      "at": "2026-09-17T12:01:18.999Z",
+      "decision": "published",
+      "slug": "openai-six-concerning-behaviors-disclosure-framework-2d2a2b",
+      "title": "OpenAI reveals six more safety issues and unveils plan to disclose incidents"
+    },
+    "e5e6087e01b8d0ab": {
+      "at": "2026-09-17T12:01:18.999Z",
+      "decision": "published",
+      "slug": "openai-six-concerning-behaviors-disclosure-framework-2d2a2b",
+      "title": "OpenAI and Anthropic are making 10 times more revenue than all Chinese AI models combined, research group Rhodium says"
+    },
+    "6666f68a00620c76": {
+      "at": "2026-09-17T12:01:18.999Z",
+      "decision": "published",
+      "slug": "openai-six-concerning-behaviors-disclosure-framework-2d2a2b",
+      "title": "OpenAI reports 6 new instances of 'concerning model behavior' since March"
+    },
+    "b9a016c3af9f46ae": {
+      "at": "2026-09-17T12:01:18.999Z",
+      "decision": "published",
+      "slug": "openai-six-concerning-behaviors-disclosure-framework-2d2a2b",
+      "title": "OpenAI Creates a New Framework to Disclose Bad AI Behavior"
     }
   }
 }
