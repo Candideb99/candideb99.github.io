@@ -5364,10 +5364,10 @@
       "strikes": 1
     },
     "7ae96604ca68b7d7": {
-      "at": "2026-09-16T11:53:05.482Z",
+      "at": "2026-09-17T05:07:27.840Z",
       "decision": "rejected",
       "title": "Global Oil Prices Could Hit Highest Levels in Months After Saudi Pipeline Attacks",
-      "strikes": 1
+      "strikes": 2
     },
     "4f2ae3bceea5600b": {
       "at": "2026-09-16T11:53:05.482Z",
@@ -5559,6 +5559,120 @@
       "at": "2026-09-16T21:34:04.426Z",
       "decision": "rejected",
       "title": "تزامناً مع قرار «الفيدرالي»... مصرف البحرين المركزي يرفع سعر الفائدة 25 نقطة أساس",
+      "strikes": 1
+    },
+    "689fe394d7fdba70": {
+      "at": "2026-09-17T05:03:10.561Z",
+      "decision": "rejected",
+      "title": "وارش: التضخم لا يزال مرتفعاً جداً... والاقتصاد الأميركي مرن",
+      "strikes": 1
+    },
+    "d978e9a8d995ef4f": {
+      "at": "2026-09-17T05:03:10.561Z",
+      "decision": "rejected",
+      "title": "«الفيدرالي» يلمح إلى رفع إضافي للفائدة خلال العام",
+      "strikes": 1
+    },
+    "950f58f420b9468a": {
+      "at": "2026-09-17T05:03:10.561Z",
+      "decision": "rejected",
+      "title": "«الفيدرالي» يرفع الفائدة لأول مرة منذ 2023 في اختبار صعب بين وارش وترمب",
+      "strikes": 1
+    },
+    "fe283a4d738a52f3": {
+      "at": "2026-09-17T05:03:10.561Z",
+      "decision": "rejected",
+      "title": "Federal Reserve issues FOMC statement",
+      "strikes": 1
+    },
+    "96bceaa064dff215": {
+      "at": "2026-09-17T05:03:10.561Z",
+      "decision": "rejected",
+      "title": "Federal Reserve Board and Federal Open Market Committee release economic projections from the September 15-16 FOMC meeting",
+      "strikes": 1
+    },
+    "5d51b494951d16b8": {
+      "at": "2026-09-17T05:04:56.599Z",
+      "decision": "published",
+      "slug": "gulf-oil-flows-return-pre-war-levels-6a0da7",
+      "title": "وزير الطاقة الأمريكي: تدفقات نفط الخليج تسجل 18 مليون برميل في يوم واحد"
+    },
+    "1f44e2c187af41fe": {
+      "at": "2026-09-17T05:04:56.599Z",
+      "decision": "published",
+      "slug": "gulf-oil-flows-return-pre-war-levels-6a0da7",
+      "title": "المركزي الإماراتي يرفع سعر الأساس بواقع 0.25%"
+    },
+    "a7d5dc6fe8a36cd6": {
+      "at": "2026-09-17T05:04:56.599Z",
+      "decision": "published",
+      "slug": "gulf-oil-flows-return-pre-war-levels-6a0da7",
+      "title": "UAE central bank raises Base Rate to 3.90 percent following Fed’s first hike since 2023"
+    },
+    "fe2f1fc003ae5bd8": {
+      "at": "2026-09-17T05:04:56.599Z",
+      "decision": "published",
+      "slug": "gulf-oil-flows-return-pre-war-levels-6a0da7",
+      "title": "US Fed raises interest rates: What does it mean for the UAE?"
+    },
+    "b9fc9fec94f98786": {
+      "at": "2026-09-17T05:04:56.599Z",
+      "decision": "published",
+      "slug": "gulf-oil-flows-return-pre-war-levels-6a0da7",
+      "title": "US Fed raises interest rates and signals one more this year as inflation risks mount"
+    },
+    "5638b24eeefd42fc": {
+      "at": "2026-09-17T05:07:27.840Z",
+      "decision": "rejected",
+      "title": "Saudi Oil Crisis Is About to Hit Europe",
+      "strikes": 1
+    },
+    "5fad5071184f8388": {
+      "at": "2026-09-17T05:07:27.840Z",
+      "decision": "rejected",
+      "title": "Export Constraints Curb Kazakhstan’s Ability to Offset the Global Oil Shortage",
+      "strikes": 1
+    },
+    "b2ad13fd8ab8e702": {
+      "at": "2026-09-17T05:07:27.840Z",
+      "decision": "rejected",
+      "title": "Equinor Targets 15 Million Tons of LNG as Qatar Exports Stay Blocked",
+      "strikes": 1
+    },
+    "5a53bf85bf489303": {
+      "at": "2026-09-17T05:07:27.840Z",
+      "decision": "rejected",
+      "title": "Hormuz crisis adds over $100 billion to EU fossil-fuel import costs, von der Leyen says",
+      "strikes": 1
+    },
+    "ffa6cd36bbea9acd": {
+      "at": "2026-09-17T05:08:39.106Z",
+      "decision": "rejected",
+      "title": "Your AI agents can now control your Google Home devices",
+      "strikes": 1
+    },
+    "debd6d7d11d1cb7a": {
+      "at": "2026-09-17T05:08:39.106Z",
+      "decision": "rejected",
+      "title": "Global gender equality will take 120 years, says WEF",
+      "strikes": 1
+    },
+    "057313c7569ba3e0": {
+      "at": "2026-09-17T05:08:39.106Z",
+      "decision": "rejected",
+      "title": "How Fortell is using AI (and $163M) to crack a hearing aid monopoly",
+      "strikes": 1
+    },
+    "86e01e41feb33adf": {
+      "at": "2026-09-17T05:08:39.106Z",
+      "decision": "rejected",
+      "title": "May Mobility is going public in a $1.4B SPAC deal",
+      "strikes": 1
+    },
+    "b255907facdcada1": {
+      "at": "2026-09-17T05:08:39.106Z",
+      "decision": "rejected",
+      "title": "OpenAI investors have approached the company about a new funding round",
       "strikes": 1
     }
   }
