@@ -6030,10 +6030,10 @@
       "strikes": 1
     },
     "135229aac1a1343a": {
-      "at": "2026-09-18T04:55:44.978Z",
-      "decision": "rejected",
-      "title": "Japan raises interest rate to new 31-year high to curb rising prices",
-      "strikes": 1
+      "at": "2026-09-18T21:06:16.313Z",
+      "decision": "published",
+      "slug": "bank-of-japan-raises-rates-to-31-year-high-d62cc8",
+      "title": "Japan raises interest rate to new 31-year high to curb rising prices"
     },
     "e8e99c4cca73ea6e": {
       "at": "2026-09-18T04:55:44.978Z",
@@ -6048,16 +6048,16 @@
       "strikes": 1
     },
     "60fef873c39126c9": {
-      "at": "2026-09-18T04:55:44.978Z",
-      "decision": "rejected",
-      "title": "بنك اليابان يرفع الفائدة لأعلى مستوى منذ 31 عاما",
-      "strikes": 1
+      "at": "2026-09-18T21:06:16.313Z",
+      "decision": "published",
+      "slug": "bank-of-japan-raises-rates-to-31-year-high-d62cc8",
+      "title": "بنك اليابان يرفع الفائدة لأعلى مستوى منذ 31 عاما"
     },
     "b5e66f7651d78f32": {
-      "at": "2026-09-18T04:57:43.963Z",
+      "at": "2026-09-18T21:07:28.290Z",
       "decision": "rejected",
       "title": "China Stockpiled Oil, and Now It Could Dominate the Energy Landscape",
-      "strikes": 1
+      "strikes": 2
     },
     "0737368d5bc80767": {
       "at": "2026-09-18T04:57:43.963Z",
@@ -6078,10 +6078,10 @@
       "strikes": 1
     },
     "2ade842def97a118": {
-      "at": "2026-09-18T04:59:03.757Z",
-      "decision": "rejected",
-      "title": "Japan Raises Interest Rates to 31-Year High Under U.S. Pressure",
-      "strikes": 1
+      "at": "2026-09-18T21:06:16.313Z",
+      "decision": "published",
+      "slug": "bank-of-japan-raises-rates-to-31-year-high-d62cc8",
+      "title": "Japan Raises Interest Rates to 31-Year High Under U.S. Pressure"
     },
     "52129b02a43cb42b": {
       "at": "2026-09-18T04:59:03.757Z",
@@ -6309,6 +6309,102 @@
       "decision": "published",
       "slug": "us-approves-f35-saudi-arms-deal-915064",
       "title": "Trump administration advances $24.3 billion fighter jet deal to Saudi Arabia as Houthis escalate attacks"
+    },
+    "fa54a5d96de3eb5b": {
+      "at": "2026-09-18T21:02:14.218Z",
+      "decision": "rejected",
+      "title": "Warren Buffett steps down as Berkshire Hathaway chairman",
+      "strikes": 1
+    },
+    "b3987e53edbafc6b": {
+      "at": "2026-09-18T21:02:14.218Z",
+      "decision": "rejected",
+      "title": "'We simply don't know' - JP Morgan struggling to forecast oil prices due to Trump's war with Iran",
+      "strikes": 1
+    },
+    "572de9a4d38b4760": {
+      "at": "2026-09-18T21:02:14.218Z",
+      "decision": "rejected",
+      "title": "Warren Buffett steps down after six decades at Berkshire - 'Father Time always wins'",
+      "strikes": 1
+    },
+    "e19683692d9b8d56": {
+      "at": "2026-09-18T21:02:14.218Z",
+      "decision": "rejected",
+      "title": "As Warren Buffett’s reign ends, fans should sell Berkshire — and buy these stocks instead",
+      "strikes": 1
+    },
+    "ac95a6c63b111f67": {
+      "at": "2026-09-18T21:02:14.218Z",
+      "decision": "rejected",
+      "title": "Buffett steps down, Wall Street bounces back, 2027 'truck wars' and more in Morning Squawk",
+      "strikes": 1
+    },
+    "68b690d601090e3e": {
+      "at": "2026-09-18T21:04:33.018Z",
+      "decision": "rejected",
+      "title": "Anthropic Pursues IPO Despite Its A.I. Safety Warnings",
+      "strikes": 1
+    },
+    "5ce756b5125143ae": {
+      "at": "2026-09-18T21:04:33.018Z",
+      "decision": "rejected",
+      "title": "Amodei, Anthropic’s Leader, Exposed A.I.’s Dangers. It’s Time to Act.",
+      "strikes": 1
+    },
+    "9666e41735667cf7": {
+      "at": "2026-09-18T21:04:33.018Z",
+      "decision": "rejected",
+      "title": "Dario Amodei and other AI leaders want to ‘Pace the Frontier’ but…how?",
+      "strikes": 1
+    },
+    "def6731f39da0a09": {
+      "at": "2026-09-18T21:04:33.018Z",
+      "decision": "rejected",
+      "title": "Anthropic and OpenAI need truly independent safety evaluators, experts say in public letter",
+      "strikes": 1
+    },
+    "68b12fa7143d1dbf": {
+      "at": "2026-09-18T21:04:33.018Z",
+      "decision": "rejected",
+      "title": "If the AI Industry Followed Its Own Research, It Might Have Paused Already",
+      "strikes": 1
+    },
+    "9bdecde9d0ec6ec5": {
+      "at": "2026-09-18T21:06:16.313Z",
+      "decision": "published",
+      "slug": "bank-of-japan-raises-rates-to-31-year-high-d62cc8",
+      "title": "Elon Musk talks up AI safety while fighting regulation in wild week of strange alliances"
+    },
+    "fdb9b09e1fb8432b": {
+      "at": "2026-09-18T21:06:16.313Z",
+      "decision": "published",
+      "slug": "bank-of-japan-raises-rates-to-31-year-high-d62cc8",
+      "title": "تباين أداء الأسهم اليابانية عقب قرار رفع الفائدة"
+    },
+    "160421f5cc94d771": {
+      "at": "2026-09-18T21:07:28.290Z",
+      "decision": "rejected",
+      "title": "Saudi Arabia Cuts Europe Off From October Crude as Gulf Exports Surge",
+      "strikes": 1
+    },
+    "8509e0490ef4ee56": {
+      "at": "2026-09-18T21:07:28.290Z",
+      "decision": "rejected",
+      "title": "The Oil Market’s Backup Plan Is Breaking Down",
+      "strikes": 1
+    },
+    "71d29fa9d72426ea": {
+      "at": "2026-09-18T21:07:28.290Z",
+      "decision": "rejected",
+      "title": "Trump's new tariff threat risks cutting off Asia’s Russian oil lifeline as Gulf supply falls",
+      "strikes": 1
+    },
+    "0be802e9b54f119e": {
+      "at": "2026-09-18T21:07:28.291Z",
+      "decision": "rejected",
+      "title": "The Race to Build a World Beyond Hormuz",
+      "strikes": 1
     }
   }
 }
