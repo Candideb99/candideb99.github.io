@@ -1,0 +1,93 @@
+---
+title: وارن بافيت يتنحى عن رئاسة بركشاير هاثاواي ويخلفه ابنه هوارد يخلفه
+subtitle: بافيت (96 عاماً) يبقى رئيساً فخرياً في مجلس الإدارة بعد 60 عاماً حول فيها الشركة إلى تكتل تريليوني
+slug: warren-buffett-steps-down-berkshire-chairman-457ee7
+section: companies
+kind: news
+publishedAt: 2026-09-18T16:36:35.540Z
+lede: أعلن وارن بافيت تنحيه عن رئاسة مجلس إدارة بركشاير هاثاواي في رسالة للمساهمين بتاريخ 18 سبتمبر 2026، على أن يخلفه ابنه هوارد بافيت (71 عاماً) في المنصب اعتباراً من التاريخ نفسه، بينما يبقى الوالد رئيساً فخرياً وعضواً في المجلس.
+keyFacts:
+  - label: عمر وارن بافيت
+    value: 96 عاماً
+  - label: عمر هوارد بافيت
+    value: 71 عاماً
+  - label: سنوات قيادة بافيت
+    value: 60 عاماً
+  - label: قيمة بركشاير هاثاواي
+    value: تريليون دولار
+  - label: الأرباح التشغيلية 2025
+    value: 44.5 مليار دولار
+  - label: الاحتياطي النقدي
+    value: 365.5 مليار دولار
+whyItMatters: يمثل تنحي بافيت نهاية حقبة استثنائية في تاريخ الشركات الأمريكية، حيث بنى نموذجاً للاستثمار القيمي وإدارة التكتلات لا يزال المرجع للمستثمرين عالمياً. انتقال الرئاسة إلى ابنه هوارد مع احتفاظ غريغ أبيل بالمسؤولية التنفيذية يختبر خطة الخلافة التي صاغها بافيت بنفسه، ويراقبها المستثمرون في الخليج والأسواق الناشئة ممن يقلدون استراتيجيته في تخصيص رأس المال طويل الأجل. كما أن حجم احتياطيات بركشاير النقدية (365.5 مليار دولار) يجعل قرارات توزيعها تحت الإدارة الجديدة مؤثرة في أسواق الأسهم العالمية.
+tags:
+  - بركشاير هاثاواي
+  - وارن بافيت
+  - هوارد بافيت
+  - غريغ أبيل
+  - التخطيط للخلافة
+regions:
+  - الأمريكتان
+  - عالمي
+readingMinutes: 2
+chart: null
+table: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Berkshire_Hathaway_Annual_Meeting_2025.jpg/1280px-Berkshire_Hathaway_Annual_Meeting_2025.jpg
+  width: 1280
+  height: 721
+  alt: حشد كبير خلال الاجتماع السنوي لشركة بيركشاير هاثاواي داخل قاعة واسعة
+  credit: Good-investing · CC0 · ويكيميديا كومنز
+  license: CC0
+  licenseUrl: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ABerkshire_Hathaway_Annual_Meeting_2025.jpg
+sources:
+  - name: نيويورك تايمز
+    nameEn: The New York Times
+    title: Warren Buffett Steps Down as Berkshire Hathaway Chairman
+    url: https://www.nytimes.com/2026/09/18/business/warren-buffett-berkshire-chairman.html
+    publishedAt: 2026-09-18T16:28:43.000Z
+    lang: en
+  - name: نيويورك تايمز
+    nameEn: The New York Times
+    title: Who Is Howard Buffett, the New Berkshire Hathaway Chairman?
+    url: https://www.nytimes.com/2026/09/18/business/warren-buffett-son-howard-berkshire-hathaway.html
+    publishedAt: 2026-09-18T16:16:43.000Z
+    lang: en
+  - name: الغارديان
+    nameEn: The Guardian
+    title: Warren Buffett steps down as chair of Berkshire Hathaway after over 50 years
+    url: https://www.theguardian.com/business/2026/sep/18/warren-buffett-steps-down-berkshire-hathaway
+    publishedAt: 2026-09-18T14:48:56.000Z
+    lang: en
+  - name: سي إن بي سي
+    nameEn: CNBC
+    title: "Warren Buffett steps down as chairman of Berkshire Hathaway: 'Father Time always wins'"
+    url: https://www.cnbc.com/2026/09/18/buffett-stepping-down-as-berkshire-chairman.html
+    publishedAt: 2026-09-18T12:04:02.000Z
+    lang: en
+models:
+  editor: inclusionai/ling-3.0-flash-fin:free
+  writer: nvidia/nemotron-3-ultra-550b-a55b:free
+  critic: nvidia/nemotron-3-super-120b-a12b:free
+  vision: nex-agi/nex-n2.5-pro:free
+  desk: nvidia/nemotron-3-super-120b-a12b:free
+quality:
+  score: 7
+  verdict: publish
+  revised: false
+  importance: 10
+  warnings: []
+  criticSummary: المقال يحتوي على أخطاء في التواريخ (سنة استثمار ألفابت وتاريخ الإعلان) وتكرار غير مبرر في العنوان، لكنه يبقى مخلصًا بشكل عام للمصادر في الحقائق الرئيسية.
+ai: true
+---
+
+وقال بافيت في رسالته: "الوقت ينتصر دائماً.. لقد كان كريماً معي ومنحني فرصة رؤية بركشاير تصل إلى مرحلة أنا فيها أكثر ثقة من أي وقت مضى بما ينتظرها". وأضاف أن ابنه هوارد سيحمي ثقافة الشركة وقيمها، في حين يتولى غريغ أبيل الإدارة اليومية بصفته الرئيس التنفيذي منذ مايو 2025.
+
+وكان بافيت قد استلم الشركة عام 1965 وهي مصنع نسيج متعثر في نيو إنجلاند، وحولها على مدى ستة عقود إلى تكتل تبلغ قيمته تريليون دولار ويوظف نحو 400 ألف شخص، محققاً عائداً سنوياً مركباً قدره 19.7% أي ما يقارب ضعف عائد مؤشر S&P 500.
+
+وبلغت أرباح بركشاير التشغيلية 44.5 مليار دولار في عام 2025، فيما بلغ احتياطيها النقدي 365.5 مليار دولار. واشترت الشركة أسهماً في ألفابت بقيمة 10 مليارات دولار في يونيو 2026، وأعادت شراء أسهمها الخاصة بقيمة 4.5 مليار دولار في الربع الثاني من العام نفسه.
+
+من جهتها، قالت سوزان ديكر إنها ستستمر في منصب المدير المستقل الرئيسي في بركشاير هاثاواي. ووصف غريغ أبيل تأثير بافيت بأنه "بلا نظير في تاريخ الأعمال الأمريكية"، مؤكداً أن الثقافة التي بناها ستبقى في قلب الشركة وسيكون هوارد حارساً لها.
+
+وكان هوارد بافيت الملقب بـ "هاوي" هو الابن الثاني لوارن من بين ثلاثة أبناء، وعضو في مجلس الإدارة منذ عام 1993. وبلغ صافي ثروة وارن بافيت 145 مليار دولار وفقاً لبلومبرغ، مما يجعله عاشر أغنى شخص في العالم. أما سهم بركشاير فقد صعد 1% فقط في عام 2026 بينما ارتفع مؤشر S&P 500 بأكثر من 11%.
