@@ -6405,6 +6405,72 @@
       "decision": "rejected",
       "title": "The Race to Build a World Beyond Hormuz",
       "strikes": 1
+    },
+    "2e6aa56e0a96dbe9": {
+      "at": "2026-09-18T23:24:24.083Z",
+      "decision": "rejected",
+      "title": "Trump claims deal with Denmark gives US ‘permanent control’ over Greenland",
+      "strikes": 1
+    },
+    "e264c125b4e8830f": {
+      "at": "2026-09-18T23:24:24.083Z",
+      "decision": "rejected",
+      "title": "Trump says U.S. to build a 'large Military presence' in Greenland as part of a security deal with it and Denmark",
+      "strikes": 1
+    },
+    "450940319d1dc85c": {
+      "at": "2026-09-18T23:25:50.748Z",
+      "decision": "rejected",
+      "title": "AI Hallucination Nearly Triggers US Military Operation",
+      "strikes": 1
+    },
+    "43501305884e0eba": {
+      "at": "2026-09-18T23:25:50.748Z",
+      "decision": "rejected",
+      "title": "Global Shipping Costs Explode as Hormuz Disruptions Hit Key Trade Routes",
+      "strikes": 1
+    },
+    "9cac06eb6876c377": {
+      "at": "2026-09-18T23:25:50.748Z",
+      "decision": "rejected",
+      "title": "Macron Calls for Another Emergency Oil Release as Europe Loses Supply",
+      "strikes": 1
+    },
+    "ff2dfcde092e3d20": {
+      "at": "2026-09-18T23:27:11.444Z",
+      "decision": "published",
+      "slug": "global-markets-close-volatile-week-045574",
+      "title": "وول ستريت تغلق متباينة مع تجاوز عائد السندات 5% وبقاء النفط فوق 100 دولار"
+    },
+    "c4d669fb8696fced": {
+      "at": "2026-09-18T23:27:11.444Z",
+      "decision": "published",
+      "slug": "global-markets-close-volatile-week-045574",
+      "title": "«وول ستريت» تتجه إلى إنهاء أسبوع متقلب مع تباين أداء الأسهم"
+    },
+    "753fab179229fb6f": {
+      "at": "2026-09-18T23:27:11.444Z",
+      "decision": "published",
+      "slug": "global-markets-close-volatile-week-045574",
+      "title": "خام برنت يعمق خسائره ويهبط 2%"
+    },
+    "e3dfee618168039c": {
+      "at": "2026-09-18T23:28:17.436Z",
+      "decision": "rejected",
+      "title": "UAE reveals V7 AI malware detection model with 94.7 percent accuracy after training on more than 200,000 records",
+      "strikes": 1
+    },
+    "4e7617165735145d": {
+      "at": "2026-09-18T23:28:17.436Z",
+      "decision": "rejected",
+      "title": "Saudi Arabia advances AI infrastructure push in talks with Amazon, Microsoft",
+      "strikes": 1
+    },
+    "8b02c080588b13f8": {
+      "at": "2026-09-18T23:28:17.436Z",
+      "decision": "rejected",
+      "title": "UAE launches homegrown cybersecurity AI model to strengthen national cyber resilience",
+      "strikes": 1
     }
   }
 }
