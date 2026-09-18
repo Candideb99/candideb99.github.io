@@ -5790,16 +5790,16 @@
       "title": "OpenAI Creates a New Framework to Disclose Bad AI Behavior"
     },
     "7c5056408779ea4f": {
-      "at": "2026-09-17T17:12:11.613Z",
+      "at": "2026-09-18T11:34:56.734Z",
       "decision": "rejected",
       "title": "Bank of England Holds Rates Steady but Warns of Higher Inflation",
-      "strikes": 1
+      "strikes": 2
     },
     "70c4eac5fdaf329d": {
-      "at": "2026-09-17T17:12:11.613Z",
+      "at": "2026-09-18T11:34:56.734Z",
       "decision": "rejected",
       "title": "Burnham’s talk of ‘breathing space’ at odds with reality of future Bank rate rises",
-      "strikes": 1
+      "strikes": 2
     },
     "9fb8842ed3f3e9ce": {
       "at": "2026-09-17T17:12:11.613Z",
@@ -5814,10 +5814,10 @@
       "strikes": 1
     },
     "7151327daca9c92b": {
-      "at": "2026-09-17T17:12:11.613Z",
+      "at": "2026-09-18T11:34:56.734Z",
       "decision": "rejected",
       "title": "بنك إنجلترا يبقي الفائدة عند 3.75%",
-      "strikes": 1
+      "strikes": 2
     },
     "dfa28d76156eb0cb": {
       "at": "2026-09-17T17:13:45.903Z",
@@ -5898,10 +5898,10 @@
       "strikes": 1
     },
     "672a57f80dbc9877": {
-      "at": "2026-09-17T17:17:29.183Z",
-      "decision": "rejected",
-      "title": "Trump says U.S. ‘hopefully’ nearing end of Iran war as Saudi Arabia, Houthis trade strikes",
-      "strikes": 1
+      "at": "2026-09-18T11:38:39.523Z",
+      "decision": "published",
+      "slug": "fed-rate-hike-september-2026-oil-yields-87319e",
+      "title": "Trump says U.S. ‘hopefully’ nearing end of Iran war as Saudi Arabia, Houthis trade strikes"
     },
     "746345aed32e9e50": {
       "at": "2026-09-17T21:32:14.903Z",
@@ -5910,10 +5910,10 @@
       "strikes": 1
     },
     "fa3f95fda199b6f3": {
-      "at": "2026-09-17T21:32:14.903Z",
+      "at": "2026-09-18T11:34:56.734Z",
       "decision": "rejected",
       "title": "Transcript of the Governor's pooled broadcast interview given on 17 September 2026",
-      "strikes": 1
+      "strikes": 2
     },
     "5d6d3fae5b3e1171": {
       "at": "2026-09-17T21:32:14.903Z",
@@ -5940,10 +5940,10 @@
       "strikes": 1
     },
     "c6302f0d1ce88d61": {
-      "at": "2026-09-17T21:33:18.473Z",
-      "decision": "rejected",
-      "title": "Trump Looks Isolated on Interest Rates",
-      "strikes": 1
+      "at": "2026-09-18T11:38:39.523Z",
+      "decision": "published",
+      "slug": "fed-rate-hike-september-2026-oil-yields-87319e",
+      "title": "Trump Looks Isolated on Interest Rates"
     },
     "faa93dfc3feec8b4": {
       "at": "2026-09-17T21:33:18.473Z",
@@ -6106,6 +6106,90 @@
       "decision": "rejected",
       "title": "Carney says Canada will decide its own partnerships after Trump calls EU proposal ‘laughable’",
       "strikes": 1
+    },
+    "df082b5480aac52b": {
+      "at": "2026-09-18T11:33:37.128Z",
+      "decision": "rejected",
+      "title": "بنك اليابان يرفع الفائدة ويغير بوصلة سياسته",
+      "strikes": 1
+    },
+    "aa079d2937cfd1d8": {
+      "at": "2026-09-18T11:33:37.128Z",
+      "decision": "rejected",
+      "title": "Japan raises interest rates to 31-year high to curb impact of rising prices",
+      "strikes": 1
+    },
+    "941b6a9f47955e78": {
+      "at": "2026-09-18T11:33:37.128Z",
+      "decision": "rejected",
+      "title": "بنك اليابان يرفع الفائدة والين يواصل التراجع",
+      "strikes": 1
+    },
+    "cd5a1076e3df5222": {
+      "at": "2026-09-18T11:33:37.128Z",
+      "decision": "rejected",
+      "title": "Bank of Japan hikes rates to 31-year high to battle inflation",
+      "strikes": 1
+    },
+    "00db32dce99ec873": {
+      "at": "2026-09-18T11:33:37.128Z",
+      "decision": "rejected",
+      "title": "الين يتراجع رغم رفع أسعار الفائدة اليابانية",
+      "strikes": 1
+    },
+    "4abdc927c893f199": {
+      "at": "2026-09-18T11:34:56.734Z",
+      "decision": "rejected",
+      "title": "بنك إنجلترا ينقذ أسواق السندات بإصلاح جذري لـ\"التشديد الكمي\"",
+      "strikes": 1
+    },
+    "34b53caa11cf163a": {
+      "at": "2026-09-18T11:38:39.522Z",
+      "decision": "published",
+      "slug": "fed-rate-hike-september-2026-oil-yields-87319e",
+      "title": "«وول ستريت» ترتفع مع تراجع أسعار النفط وعوائد السندات"
+    },
+    "40d16ca90bd03ef0": {
+      "at": "2026-09-18T11:38:39.522Z",
+      "decision": "published",
+      "slug": "fed-rate-hike-september-2026-oil-yields-87319e",
+      "title": "Money in people’s pockets is the key to economic recovery | Letter"
+    },
+    "ca04020c08316858": {
+      "at": "2026-09-18T11:38:39.522Z",
+      "decision": "published",
+      "slug": "fed-rate-hike-september-2026-oil-yields-87319e",
+      "title": "أسواق الخليج تتماسك رغم التوترات ورفع الفائدة الأميركية"
+    },
+    "4c7e2d4826d8ee66": {
+      "at": "2026-09-18T11:40:09.117Z",
+      "decision": "published",
+      "slug": "russia-temporary-management-western-assets-1dadf4",
+      "title": "الأسهم الأوروبية تتراجع قليلاً مع تصدر شركات الاتصالات الخسائر"
+    },
+    "cd026b63581ba87d": {
+      "at": "2026-09-18T11:40:09.117Z",
+      "decision": "published",
+      "slug": "russia-temporary-management-western-assets-1dadf4",
+      "title": "Putin targets Nestle's Russian business as Kremlin tightens grip on Western assets"
+    },
+    "71ce2f18b3f88b44": {
+      "at": "2026-09-18T11:40:09.117Z",
+      "decision": "published",
+      "slug": "russia-temporary-management-western-assets-1dadf4",
+      "title": "Russia seizes control over assets of Nestle, French firms"
+    },
+    "cb060fddf74d0f53": {
+      "at": "2026-09-18T11:40:09.117Z",
+      "decision": "published",
+      "slug": "russia-temporary-management-western-assets-1dadf4",
+      "title": "نستله ترد على قرار وضع أعمالها في روسيا تحت سيطرة السلطات"
+    },
+    "c7573a46b5d3616d": {
+      "at": "2026-09-18T11:40:09.117Z",
+      "decision": "published",
+      "slug": "russia-temporary-management-western-assets-1dadf4",
+      "title": "Why Japan’s markets flipped the usual script after central bank rate hike"
     }
   }
 }
