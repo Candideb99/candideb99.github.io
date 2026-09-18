@@ -5742,10 +5742,10 @@
       "strikes": 1
     },
     "66d3adf55d2b1347": {
-      "at": "2026-09-17T11:59:55.681Z",
+      "at": "2026-09-18T04:57:43.963Z",
       "decision": "rejected",
-      "title": "Oil extends losses as Saudi Arabia reportedly offers ship-to-ship crude transfers after pipeline hit",
-      "strikes": 1
+      "title": "Oil prices fall as Saudi Arabia reportedly offers more crude via Hormuz after pipeline attack",
+      "strikes": 2
     },
     "784f514e38de7382": {
       "at": "2026-09-17T11:59:55.681Z",
@@ -6022,6 +6022,90 @@
       "decision": "published",
       "slug": "oil-prices-decline-china-iran-pressure-41b59d",
       "title": "Ukraine Hits Refinery as Moscow Prepares to Extend Diesel Export Ban"
+    },
+    "d945f76a0861a510": {
+      "at": "2026-09-18T04:55:44.978Z",
+      "decision": "rejected",
+      "title": "Bank of Japan raises rates to 31-year high of 1.25% as inflation rises",
+      "strikes": 1
+    },
+    "135229aac1a1343a": {
+      "at": "2026-09-18T04:55:44.978Z",
+      "decision": "rejected",
+      "title": "Japan raises interest rate to new 31-year high to curb rising prices",
+      "strikes": 1
+    },
+    "e8e99c4cca73ea6e": {
+      "at": "2026-09-18T04:55:44.978Z",
+      "decision": "rejected",
+      "title": "Trump Blasts the Fed But Spares Kevin Warsh After Interest Rate Hike",
+      "strikes": 1
+    },
+    "57c533b9db021234": {
+      "at": "2026-09-18T04:55:44.978Z",
+      "decision": "rejected",
+      "title": "Bank of Japan raises interest rates to 31-year high, flags concerns over inflation",
+      "strikes": 1
+    },
+    "60fef873c39126c9": {
+      "at": "2026-09-18T04:55:44.978Z",
+      "decision": "rejected",
+      "title": "بنك اليابان يرفع الفائدة لأعلى مستوى منذ 31 عاما",
+      "strikes": 1
+    },
+    "b5e66f7651d78f32": {
+      "at": "2026-09-18T04:57:43.963Z",
+      "decision": "rejected",
+      "title": "China Stockpiled Oil, and Now It Could Dominate the Energy Landscape",
+      "strikes": 1
+    },
+    "0737368d5bc80767": {
+      "at": "2026-09-18T04:57:43.963Z",
+      "decision": "rejected",
+      "title": "Oil prices fall as Saudi supply hopes outweigh fresh Houthi strikes",
+      "strikes": 1
+    },
+    "41c67884b517e244": {
+      "at": "2026-09-18T04:57:43.963Z",
+      "decision": "rejected",
+      "title": "تراجع أسعار النفط مع زيادة صادرات السعودية عبر هرمز",
+      "strikes": 1
+    },
+    "89bb414de0c5e4f0": {
+      "at": "2026-09-18T04:57:43.963Z",
+      "decision": "rejected",
+      "title": "Saudi Arabia is now pushing to export more oil through the Strait of Hormuz",
+      "strikes": 1
+    },
+    "2ade842def97a118": {
+      "at": "2026-09-18T04:59:03.757Z",
+      "decision": "rejected",
+      "title": "Japan Raises Interest Rates to 31-Year High Under U.S. Pressure",
+      "strikes": 1
+    },
+    "52129b02a43cb42b": {
+      "at": "2026-09-18T04:59:03.757Z",
+      "decision": "rejected",
+      "title": "Canada’s Carney embraces EU associate membership proposal",
+      "strikes": 1
+    },
+    "7f9405e3d154ddf2": {
+      "at": "2026-09-18T04:59:03.757Z",
+      "decision": "rejected",
+      "title": "EU chief backs plan for Canada to become 'associate member'",
+      "strikes": 1
+    },
+    "959673d7a9316bf0": {
+      "at": "2026-09-18T04:59:03.757Z",
+      "decision": "rejected",
+      "title": "'Hostile act': Trump threatens EU with tariffs over Canada associate membership proposal",
+      "strikes": 1
+    },
+    "5ffc613410479cd3": {
+      "at": "2026-09-18T04:59:03.757Z",
+      "decision": "rejected",
+      "title": "Carney says Canada will decide its own partnerships after Trump calls EU proposal ‘laughable’",
+      "strikes": 1
     }
   }
 }
