@@ -6269,10 +6269,10 @@
       "strikes": 2
     },
     "17b895a839f051ba": {
-      "at": "2026-09-18T16:43:44.374Z",
+      "at": "2026-09-19T20:54:17.580Z",
       "decision": "rejected",
       "title": "LNG Tankers Push Through Hormuz Again as Qatar, UAE Fight Supply Crunch",
-      "strikes": 1
+      "strikes": 2
     },
     "9f17d0314569e354": {
       "at": "2026-09-19T16:03:37.951Z",
@@ -6323,10 +6323,10 @@
       "strikes": 1
     },
     "572de9a4d38b4760": {
-      "at": "2026-09-18T21:02:14.218Z",
+      "at": "2026-09-19T20:55:34.379Z",
       "decision": "rejected",
       "title": "Warren Buffett steps down after six decades at Berkshire - 'Father Time always wins'",
-      "strikes": 1
+      "strikes": 2
     },
     "e19683692d9b8d56": {
       "at": "2026-09-18T21:02:14.218Z",
@@ -6335,10 +6335,10 @@
       "strikes": 1
     },
     "ac95a6c63b111f67": {
-      "at": "2026-09-18T21:02:14.218Z",
+      "at": "2026-09-19T20:55:34.380Z",
       "decision": "rejected",
       "title": "Buffett steps down, Wall Street bounces back, 2027 'truck wars' and more in Morning Squawk",
-      "strikes": 1
+      "strikes": 2
     },
     "68b690d601090e3e": {
       "at": "2026-09-19T16:00:36.694Z",
@@ -6383,10 +6383,10 @@
       "title": "تباين أداء الأسهم اليابانية عقب قرار رفع الفائدة"
     },
     "160421f5cc94d771": {
-      "at": "2026-09-18T21:07:28.290Z",
+      "at": "2026-09-19T20:54:17.580Z",
       "decision": "rejected",
       "title": "Saudi Arabia Cuts Europe Off From October Crude as Gulf Exports Surge",
-      "strikes": 1
+      "strikes": 2
     },
     "8509e0490ef4ee56": {
       "at": "2026-09-19T16:03:37.951Z",
@@ -6413,10 +6413,10 @@
       "strikes": 1
     },
     "e264c125b4e8830f": {
-      "at": "2026-09-18T23:24:24.083Z",
-      "decision": "rejected",
-      "title": "Trump says U.S. to build a 'large Military presence' in Greenland as part of a security deal with it and Denmark",
-      "strikes": 1
+      "at": "2026-09-19T20:52:52.459Z",
+      "decision": "published",
+      "slug": "us-denmark-greenland-security-deal-eac792",
+      "title": "Trump says U.S. to build a 'large Military presence' in Greenland as part of a security deal with it and Denmark"
     },
     "450940319d1dc85c": {
       "at": "2026-09-18T23:25:50.748Z",
@@ -6425,10 +6425,10 @@
       "strikes": 1
     },
     "43501305884e0eba": {
-      "at": "2026-09-18T23:25:50.748Z",
+      "at": "2026-09-19T20:54:17.580Z",
       "decision": "rejected",
       "title": "Global Shipping Costs Explode as Hormuz Disruptions Hit Key Trade Routes",
-      "strikes": 1
+      "strikes": 2
     },
     "9cac06eb6876c377": {
       "at": "2026-09-19T16:03:37.951Z",
@@ -6639,6 +6639,54 @@
       "decision": "published",
       "slug": "eu-fuel-prices-record-iran-saudi-supply-8376ff",
       "title": "EU fuel prices hit records as ECB experts see diesel margins peak in October"
+    },
+    "e58a1bb612fe4627": {
+      "at": "2026-09-19T20:51:52.688Z",
+      "decision": "rejected",
+      "title": "CNN, MS NOW and Politico Barred From White House After Trump’s Ban",
+      "strikes": 1
+    },
+    "8a0a65b517186856": {
+      "at": "2026-09-19T20:51:52.688Z",
+      "decision": "rejected",
+      "title": "Here’s the latest.",
+      "strikes": 1
+    },
+    "4cf1fd59c3cdcbba": {
+      "at": "2026-09-19T20:51:52.688Z",
+      "decision": "rejected",
+      "title": "A ‘ban on the free press’: White House bars journalists from three outlets",
+      "strikes": 1
+    },
+    "2b529715051032b5": {
+      "at": "2026-09-19T20:51:52.688Z",
+      "decision": "rejected",
+      "title": "Trump treads further on free speech with new journalist bans",
+      "strikes": 1
+    },
+    "ae137a2b621ba7a2": {
+      "at": "2026-09-19T20:52:52.459Z",
+      "decision": "published",
+      "slug": "us-denmark-greenland-security-deal-eac792",
+      "title": "Denmark says ‘binding’ US deal on Greenland won’t compromise sovereignty"
+    },
+    "976dccab066fbfc2": {
+      "at": "2026-09-19T20:54:17.580Z",
+      "decision": "rejected",
+      "title": "Iran says conditions to re-engage in talks, end war sent to US via Qatar",
+      "strikes": 1
+    },
+    "4a224a5252344d8b": {
+      "at": "2026-09-19T20:54:17.580Z",
+      "decision": "rejected",
+      "title": "إغلاق مضيق هرمز يعيد طرح ضريبة الأرباح الاستثنائية على شركات الطاقة في أوروبا",
+      "strikes": 1
+    },
+    "fa4e957b87eea45f": {
+      "at": "2026-09-19T20:55:34.380Z",
+      "decision": "rejected",
+      "title": "Buffett takes next step in plan to keep Berkshire from straying",
+      "strikes": 1
     }
   }
 }
