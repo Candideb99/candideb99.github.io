@@ -6251,10 +6251,10 @@
       "strikes": 1
     },
     "b282a0442ac42841": {
-      "at": "2026-09-18T16:39:16.894Z",
-      "decision": "rejected",
-      "title": "تشديد السياسة النقدية يخيّم على البنوك المركزية الكبرى وسط صدمات الطاقة",
-      "strikes": 1
+      "at": "2026-09-19T11:14:50.305Z",
+      "decision": "published",
+      "slug": "us-fed-raises-rates-quarter-point-3913bf",
+      "title": "تشديد السياسة النقدية يخيّم على البنوك المركزية الكبرى وسط صدمات الطاقة"
     },
     "39e40bd634944af3": {
       "at": "2026-09-18T16:39:16.894Z",
@@ -6395,10 +6395,10 @@
       "strikes": 1
     },
     "71d29fa9d72426ea": {
-      "at": "2026-09-18T21:07:28.290Z",
-      "decision": "rejected",
-      "title": "Trump's new tariff threat risks cutting off Asia’s Russian oil lifeline as Gulf supply falls",
-      "strikes": 1
+      "at": "2026-09-19T11:16:54.015Z",
+      "decision": "published",
+      "slug": "trump-signs-russia-sanctions-oil-tariffs-law-ad758a",
+      "title": "Trump tariff law targets Asian buyers of Russian oil as Gulf supply falls"
     },
     "0be802e9b54f119e": {
       "at": "2026-09-18T21:07:28.291Z",
@@ -6542,6 +6542,54 @@
       "at": "2026-09-19T04:58:02.211Z",
       "decision": "rejected",
       "title": "Security researchers used Claude to help them hack into OpenAI",
+      "strikes": 1
+    },
+    "838fa98a1ae2e496": {
+      "at": "2026-09-19T11:14:50.305Z",
+      "decision": "published",
+      "slug": "us-fed-raises-rates-quarter-point-3913bf",
+      "title": "Kevin Warsh may be the adult in the room. But can he calm the US economy?"
+    },
+    "838879f6880418f8": {
+      "at": "2026-09-19T11:14:50.305Z",
+      "decision": "published",
+      "slug": "us-fed-raises-rates-quarter-point-3913bf",
+      "title": "الاحتياطي الفيدرالي الأمريكي يقترب من تعديل اختبارات الضغط للبنوك الكبرى"
+    },
+    "600d27b58761de8e": {
+      "at": "2026-09-19T11:14:50.305Z",
+      "decision": "published",
+      "slug": "us-fed-raises-rates-quarter-point-3913bf",
+      "title": "عضو بـ”الفيدرالي الأمريكي”: الضغوط التضخمية لا تقتصر على أسعار الطاقة"
+    },
+    "7805b683c26b004a": {
+      "at": "2026-09-19T11:14:50.305Z",
+      "decision": "published",
+      "slug": "us-fed-raises-rates-quarter-point-3913bf",
+      "title": "Three words from Kevin Warsh have Wall Street wondering how far the Fed will go with rate hikes"
+    },
+    "ca6229b82c0f89b3": {
+      "at": "2026-09-19T11:16:54.015Z",
+      "decision": "published",
+      "slug": "trump-signs-russia-sanctions-oil-tariffs-law-ad758a",
+      "title": "Trump signs bill imposing sanctions on Russia and giving him more power to levy tariffs"
+    },
+    "eca05d6dae8966f6": {
+      "at": "2026-09-19T11:16:54.015Z",
+      "decision": "published",
+      "slug": "trump-signs-russia-sanctions-oil-tariffs-law-ad758a",
+      "title": "ترامب يوقع قانوناً لفرض رسوم على مشتري نفط روسيا"
+    },
+    "01a9702a04887921": {
+      "at": "2026-09-19T11:18:10.298Z",
+      "decision": "rejected",
+      "title": "توتال تجذب 1.8 مليار دولار من بلاك روك لأصولها بأفريقيا",
+      "strikes": 1
+    },
+    "e014c47e2c17df68": {
+      "at": "2026-09-19T11:18:10.298Z",
+      "decision": "rejected",
+      "title": "TotalEnergies and BlackRock Sign $1.8B Deal for African Oil and Gas Assets",
       "strikes": 1
     }
   }
