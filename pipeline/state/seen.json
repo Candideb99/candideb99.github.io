@@ -6239,10 +6239,10 @@
       "title": "What Set Off the Rise in Interest Rates? Mainly, the Iran War."
     },
     "7e5ae8171acb6f13": {
-      "at": "2026-09-18T16:39:16.894Z",
+      "at": "2026-09-19T23:19:50.760Z",
       "decision": "rejected",
       "title": "وزراء مالية منطقة اليورو: ارتفاع عوائد السندات يثير القلق وليس الذعر",
-      "strikes": 1
+      "strikes": 2
     },
     "05557da094d1466f": {
       "at": "2026-09-18T16:39:16.894Z",
@@ -6317,10 +6317,10 @@
       "strikes": 1
     },
     "b3987e53edbafc6b": {
-      "at": "2026-09-18T21:02:14.218Z",
+      "at": "2026-09-19T23:16:24.580Z",
       "decision": "rejected",
       "title": "'We simply don't know' - JP Morgan struggling to forecast oil prices due to Trump's war with Iran",
-      "strikes": 1
+      "strikes": 2
     },
     "572de9a4d38b4760": {
       "at": "2026-09-19T20:55:34.379Z",
@@ -6686,6 +6686,90 @@
       "at": "2026-09-19T20:55:34.380Z",
       "decision": "rejected",
       "title": "Buffett takes next step in plan to keep Berkshire from straying",
+      "strikes": 1
+    },
+    "99f9a481692c1934": {
+      "at": "2026-09-19T23:16:24.580Z",
+      "decision": "rejected",
+      "title": "Saudi-led coalition says defences intercept Houthi missile fired at Riyadh",
+      "strikes": 1
+    },
+    "d8111971e9d67be0": {
+      "at": "2026-09-19T23:16:24.580Z",
+      "decision": "rejected",
+      "title": "Flames reported near Saudi capital airport as Pakistan presses Iran over energy supplies",
+      "strikes": 1
+    },
+    "76b6b88ea3061fc2": {
+      "at": "2026-09-19T23:17:13.871Z",
+      "decision": "published",
+      "slug": "trump-announces-ai-force-and-czar-f4c7aa",
+      "title": "Trump to create ‘AI Force’ to monitor technology as fears over out-of-control agents grow"
+    },
+    "cff9b860cd167ab4": {
+      "at": "2026-09-19T23:17:13.871Z",
+      "decision": "published",
+      "slug": "trump-announces-ai-force-and-czar-f4c7aa",
+      "title": "Trump says he will create ‘AI Force’ with new ‘AI czar’"
+    },
+    "4ab5a3583f10efe2": {
+      "at": "2026-09-19T23:17:13.871Z",
+      "decision": "published",
+      "slug": "trump-announces-ai-force-and-czar-f4c7aa",
+      "title": "Why Europe has been absent from the great AI safety debate"
+    },
+    "589c5060cfaa1e08": {
+      "at": "2026-09-19T23:17:13.871Z",
+      "decision": "published",
+      "slug": "trump-announces-ai-force-and-czar-f4c7aa",
+      "title": "Trump says it’s time to rebrand AI with a new name — and he’s also creating an AI Force"
+    },
+    "de27a018ff8da5eb": {
+      "at": "2026-09-19T23:17:13.871Z",
+      "decision": "published",
+      "slug": "trump-announces-ai-force-and-czar-f4c7aa",
+      "title": "California Gov. Newsom issues executive order to rein in AI 'before it's too late'"
+    },
+    "56948d2e99855476": {
+      "at": "2026-09-19T23:18:07.623Z",
+      "decision": "published",
+      "slug": "trump-xi-summit-washington-2026-4e439e",
+      "title": "عمالقة التكنولوجيا يلتقون الرئيس الصيني بالبيت الأبيض وسط سباق الذكاء الاصطناعي"
+    },
+    "71c816140ee99491": {
+      "at": "2026-09-19T23:18:07.623Z",
+      "decision": "published",
+      "slug": "trump-xi-summit-washington-2026-4e439e",
+      "title": "JPMorgan, Citigroup CEOs attending Trump's state dinner for China's Xi: Sources"
+    },
+    "25b8efcc79f855de": {
+      "at": "2026-09-19T23:18:07.623Z",
+      "decision": "published",
+      "slug": "trump-xi-summit-washington-2026-4e439e",
+      "title": "What to expect from the Trump-Xi summit, from tariffs to a possible $30 billion deal"
+    },
+    "3007d996e21e62cf": {
+      "at": "2026-09-19T23:19:50.760Z",
+      "decision": "rejected",
+      "title": "صناديق الأسهم العالمية تسجل أكبر نزوح أسبوعي في 2026",
+      "strikes": 1
+    },
+    "9442389831dfb705": {
+      "at": "2026-09-19T23:19:50.760Z",
+      "decision": "rejected",
+      "title": "أسبوع حافل يختبر قدرة الاقتصاد العالمي على تحمّل تشدد نقدي جديد",
+      "strikes": 1
+    },
+    "25bafd55318978fd": {
+      "at": "2026-09-19T23:19:50.760Z",
+      "decision": "rejected",
+      "title": "العقود الآجلة لمؤشر «ناسداك» تقود مكاسب «وول ستريت»",
+      "strikes": 1
+    },
+    "cf17b9e5ba1286bd": {
+      "at": "2026-09-19T23:19:50.760Z",
+      "decision": "rejected",
+      "title": "ارتفاع تكاليف الطاقة والفائدة يهدد الأسواق بركود تضخمي وشيك",
       "strikes": 1
     }
   }
