@@ -6275,10 +6275,10 @@
       "strikes": 1
     },
     "9f17d0314569e354": {
-      "at": "2026-09-18T16:43:44.374Z",
-      "decision": "rejected",
-      "title": "Oil on track to remain above $100 for second straight week as Middle East tensions simmer",
-      "strikes": 1
+      "at": "2026-09-19T16:03:37.951Z",
+      "decision": "published",
+      "slug": "eu-fuel-prices-record-iran-saudi-supply-8376ff",
+      "title": "Oil prices remain above $100 for second straight week as Middle East tensions simmer"
     },
     "24c91be859208476": {
       "at": "2026-09-18T16:43:44.374Z",
@@ -6341,10 +6341,10 @@
       "strikes": 1
     },
     "68b690d601090e3e": {
-      "at": "2026-09-18T21:04:33.018Z",
+      "at": "2026-09-19T16:00:36.694Z",
       "decision": "rejected",
       "title": "Anthropic Pursues IPO Despite Its A.I. Safety Warnings",
-      "strikes": 1
+      "strikes": 2
     },
     "5ce756b5125143ae": {
       "at": "2026-09-18T21:04:33.018Z",
@@ -6353,22 +6353,22 @@
       "strikes": 1
     },
     "9666e41735667cf7": {
-      "at": "2026-09-18T21:04:33.018Z",
+      "at": "2026-09-19T16:00:36.694Z",
       "decision": "rejected",
       "title": "Dario Amodei and other AI leaders want to ‘Pace the Frontier’ but…how?",
-      "strikes": 1
+      "strikes": 2
     },
     "def6731f39da0a09": {
-      "at": "2026-09-18T21:04:33.018Z",
+      "at": "2026-09-19T16:00:36.694Z",
       "decision": "rejected",
       "title": "Anthropic and OpenAI need truly independent safety evaluators, experts say in public letter",
-      "strikes": 1
+      "strikes": 2
     },
     "68b12fa7143d1dbf": {
-      "at": "2026-09-18T21:04:33.018Z",
+      "at": "2026-09-19T16:00:36.694Z",
       "decision": "rejected",
       "title": "If the AI Industry Followed Its Own Research, It Might Have Paused Already",
-      "strikes": 1
+      "strikes": 2
     },
     "9bdecde9d0ec6ec5": {
       "at": "2026-09-18T21:06:16.313Z",
@@ -6389,10 +6389,10 @@
       "strikes": 1
     },
     "8509e0490ef4ee56": {
-      "at": "2026-09-18T21:07:28.290Z",
-      "decision": "rejected",
-      "title": "The Oil Market’s Backup Plan Is Breaking Down",
-      "strikes": 1
+      "at": "2026-09-19T16:03:37.951Z",
+      "decision": "published",
+      "slug": "eu-fuel-prices-record-iran-saudi-supply-8376ff",
+      "title": "The Oil Market’s Backup Plan Is Breaking Down"
     },
     "71d29fa9d72426ea": {
       "at": "2026-09-19T11:16:54.015Z",
@@ -6431,10 +6431,10 @@
       "strikes": 1
     },
     "9cac06eb6876c377": {
-      "at": "2026-09-18T23:25:50.748Z",
-      "decision": "rejected",
-      "title": "Macron Calls for Another Emergency Oil Release as Europe Loses Supply",
-      "strikes": 1
+      "at": "2026-09-19T16:03:37.951Z",
+      "decision": "published",
+      "slug": "eu-fuel-prices-record-iran-saudi-supply-8376ff",
+      "title": "Macron Calls for Another Emergency Oil Release as Europe Loses Supply"
     },
     "ff2dfcde092e3d20": {
       "at": "2026-09-18T23:27:11.444Z",
@@ -6591,6 +6591,54 @@
       "decision": "rejected",
       "title": "TotalEnergies and BlackRock Sign $1.8B Deal for African Oil and Gas Assets",
       "strikes": 1
+    },
+    "371dbe4be68c29ce": {
+      "at": "2026-09-19T15:58:56.256Z",
+      "decision": "rejected",
+      "title": "Google's Gemini AI hacked three companies in security test",
+      "strikes": 1
+    },
+    "b27fb7cf65344ef0": {
+      "at": "2026-09-19T15:58:56.256Z",
+      "decision": "rejected",
+      "title": "Google says its Gemini AI model hacked three other companies",
+      "strikes": 1
+    },
+    "019e89212405f1ad": {
+      "at": "2026-09-19T15:58:56.256Z",
+      "decision": "rejected",
+      "title": "صندوق النقد: اقتصاد لبنان سينكمش بقوة في 2026 وسط تضخم مرتفع",
+      "strikes": 1
+    },
+    "08ba380e81569468": {
+      "at": "2026-09-19T15:58:56.256Z",
+      "decision": "rejected",
+      "title": "طلبات غريبة.. كيف غيّر الـ AI شروط التوظيف عن بُعد؟",
+      "strikes": 1
+    },
+    "6d67c5f1b631f3a7": {
+      "at": "2026-09-19T15:58:56.256Z",
+      "decision": "rejected",
+      "title": "Google's Gemini becomes latest AI model to break out and hack computer systems",
+      "strikes": 1
+    },
+    "7eae20442af37673": {
+      "at": "2026-09-19T16:00:36.694Z",
+      "decision": "rejected",
+      "title": "Anthropic is operating a lab that conducts biology experiments",
+      "strikes": 1
+    },
+    "2d5f65ada6332969": {
+      "at": "2026-09-19T16:03:37.951Z",
+      "decision": "published",
+      "slug": "eu-fuel-prices-record-iran-saudi-supply-8376ff",
+      "title": "Record fuel prices across EU prompt calls for bloc-wide windfall tax on firms"
+    },
+    "63bed3814f683576": {
+      "at": "2026-09-19T16:03:37.951Z",
+      "decision": "published",
+      "slug": "eu-fuel-prices-record-iran-saudi-supply-8376ff",
+      "title": "EU fuel prices hit records as ECB experts see diesel margins peak in October"
     }
   }
 }
