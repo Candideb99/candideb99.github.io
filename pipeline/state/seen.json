@@ -6108,16 +6108,16 @@
       "strikes": 1
     },
     "df082b5480aac52b": {
-      "at": "2026-09-18T11:33:37.128Z",
+      "at": "2026-09-19T04:47:24.919Z",
       "decision": "rejected",
       "title": "بنك اليابان يرفع الفائدة ويغير بوصلة سياسته",
-      "strikes": 1
+      "strikes": 2
     },
     "aa079d2937cfd1d8": {
-      "at": "2026-09-18T11:33:37.128Z",
+      "at": "2026-09-19T04:47:24.919Z",
       "decision": "rejected",
       "title": "Japan raises interest rates to 31-year high to curb impact of rising prices",
-      "strikes": 1
+      "strikes": 2
     },
     "941b6a9f47955e78": {
       "at": "2026-09-18T11:33:37.128Z",
@@ -6126,16 +6126,16 @@
       "strikes": 1
     },
     "cd5a1076e3df5222": {
-      "at": "2026-09-18T11:33:37.128Z",
+      "at": "2026-09-19T04:47:24.919Z",
       "decision": "rejected",
       "title": "Bank of Japan hikes rates to 31-year high to battle inflation",
-      "strikes": 1
+      "strikes": 2
     },
     "00db32dce99ec873": {
-      "at": "2026-09-18T11:33:37.128Z",
+      "at": "2026-09-19T04:47:24.919Z",
       "decision": "rejected",
       "title": "الين يتراجع رغم رفع أسعار الفائدة اليابانية",
-      "strikes": 1
+      "strikes": 2
     },
     "4abdc927c893f199": {
       "at": "2026-09-18T11:34:56.734Z",
@@ -6233,10 +6233,10 @@
       "title": "Warren Buffett steps down as Berkshire chairman after six decades"
     },
     "d64cf48c93b94eae": {
-      "at": "2026-09-18T16:39:16.894Z",
-      "decision": "rejected",
-      "title": "What Set Off the Rise in Interest Rates? Mainly, the Iran War.",
-      "strikes": 1
+      "at": "2026-09-19T04:49:34.361Z",
+      "decision": "published",
+      "slug": "trump-announces-ban-cnn-msn-politico-white-house-fd6870",
+      "title": "What Set Off the Rise in Interest Rates? Mainly, the Iran War."
     },
     "7e5ae8171acb6f13": {
       "at": "2026-09-18T16:39:16.894Z",
@@ -6263,10 +6263,10 @@
       "strikes": 1
     },
     "e20e8caa1cc3a36e": {
-      "at": "2026-09-18T16:43:44.374Z",
+      "at": "2026-09-19T04:55:40.495Z",
       "decision": "rejected",
       "title": "Saudi Export Pivot Sends Brent Below $105",
-      "strikes": 1
+      "strikes": 2
     },
     "17b895a839f051ba": {
       "at": "2026-09-18T16:43:44.374Z",
@@ -6470,6 +6470,78 @@
       "at": "2026-09-18T23:28:17.436Z",
       "decision": "rejected",
       "title": "UAE launches homegrown cybersecurity AI model to strengthen national cyber resilience",
+      "strikes": 1
+    },
+    "8d3327cd487aaccb": {
+      "at": "2026-09-19T04:47:24.919Z",
+      "decision": "rejected",
+      "title": "الين يهبط و«نيكي» يقفز بعد قرار بنك اليابان",
+      "strikes": 1
+    },
+    "a19c159fa7ce930d": {
+      "at": "2026-09-19T04:49:34.361Z",
+      "decision": "published",
+      "slug": "trump-announces-ban-cnn-msn-politico-white-house-fd6870",
+      "title": "Trump signs sweeping Russia sanctions over Ukraine war"
+    },
+    "e99841410f3b5b7e": {
+      "at": "2026-09-19T04:49:34.361Z",
+      "decision": "published",
+      "slug": "trump-announces-ban-cnn-msn-politico-white-house-fd6870",
+      "title": "Trump Says He Has Banned CNN, MS NOW and Politico From White House"
+    },
+    "79e2997169f0ac3b": {
+      "at": "2026-09-19T04:49:34.361Z",
+      "decision": "published",
+      "slug": "trump-announces-ban-cnn-msn-politico-white-house-fd6870",
+      "title": "Trump bans CNN, MS NOW, Politico from White House for ‘fake news’"
+    },
+    "564d7fe37656953a": {
+      "at": "2026-09-19T04:49:34.361Z",
+      "decision": "published",
+      "slug": "trump-announces-ban-cnn-msn-politico-white-house-fd6870",
+      "title": "Trump says he's banning MS NOW, CNN and Politico from White House"
+    },
+    "128fabd50ae3dae8": {
+      "at": "2026-09-19T04:55:40.495Z",
+      "decision": "rejected",
+      "title": "Disney names CTO for the first time as media giant expands tech push",
+      "strikes": 1
+    },
+    "b6e59af19dc50bab": {
+      "at": "2026-09-19T04:55:40.495Z",
+      "decision": "rejected",
+      "title": "“إنفيديا” تتوقع مضاعفة مبيعات رقائقها العام المقبل مدفوعة بطفرة الذكاء الاصطناعي",
+      "strikes": 1
+    },
+    "b571173de9d9d885": {
+      "at": "2026-09-19T04:55:40.495Z",
+      "decision": "rejected",
+      "title": "إنفيديا تتوقع زيادة مبيعاتها إلى الضعف خلال العام المقبل",
+      "strikes": 1
+    },
+    "50c802e9ffe479ed": {
+      "at": "2026-09-19T04:58:02.211Z",
+      "decision": "rejected",
+      "title": "OpenAI ‘ethically hacked’ with help of Anthropic’s Claude chatbot",
+      "strikes": 1
+    },
+    "823c2887a6a1150b": {
+      "at": "2026-09-19T04:58:02.211Z",
+      "decision": "rejected",
+      "title": "Anthropic selects Accenture as first embedded evaluator to help implement Amodei's slowdown proposal",
+      "strikes": 1
+    },
+    "0b7e126f0c1aedac": {
+      "at": "2026-09-19T04:58:02.211Z",
+      "decision": "rejected",
+      "title": "OpenAI's latest AI revelation is a 'serious situation,' Microsoft's Suleyman tells CNBC",
+      "strikes": 1
+    },
+    "907e9d5308761968": {
+      "at": "2026-09-19T04:58:02.211Z",
+      "decision": "rejected",
+      "title": "Security researchers used Claude to help them hack into OpenAI",
       "strikes": 1
     }
   }
