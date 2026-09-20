@@ -6060,10 +6060,10 @@
       "strikes": 2
     },
     "0737368d5bc80767": {
-      "at": "2026-09-18T04:57:43.963Z",
+      "at": "2026-09-20T05:04:01.818Z",
       "decision": "rejected",
-      "title": "Oil prices fall as Saudi supply hopes outweigh fresh Houthi strikes",
-      "strikes": 1
+      "title": "Oil finishes the week flat as the market sees Saudi pipeline outage as less disruptive than feared",
+      "strikes": 2
     },
     "41c67884b517e244": {
       "at": "2026-09-18T04:57:43.963Z",
@@ -6770,6 +6770,66 @@
       "at": "2026-09-19T23:19:50.760Z",
       "decision": "rejected",
       "title": "ارتفاع تكاليف الطاقة والفائدة يهدد الأسواق بركود تضخمي وشيك",
+      "strikes": 1
+    },
+    "77d46f8041107ecd": {
+      "at": "2026-09-20T05:04:01.818Z",
+      "decision": "rejected",
+      "title": "Are global stock markets heading for a crash?",
+      "strikes": 1
+    },
+    "9dd2b92daff9bea2": {
+      "at": "2026-09-20T05:04:01.818Z",
+      "decision": "rejected",
+      "title": "أبعد من ساحة القتال.. حرب إيران تستنزف الأسواق والقدرات الأمريكية",
+      "strikes": 1
+    },
+    "c28d4a3630e31e1f": {
+      "at": "2026-09-20T05:04:01.818Z",
+      "decision": "rejected",
+      "title": "India Is Again Squeezed Between the Threat of Trump Tariffs and Russian Oil",
+      "strikes": 1
+    },
+    "262403cdc1dfdcfc": {
+      "at": "2026-09-20T05:04:01.818Z",
+      "decision": "rejected",
+      "title": "Higher interest rates and AI safety fears put the stock market to the test last week",
+      "strikes": 1
+    },
+    "8e13e062cf8fb42d": {
+      "at": "2026-09-20T05:06:06.365Z",
+      "decision": "rejected",
+      "title": "تدهور الجنيه وشح السيولة يشلّان أسواق السودان",
+      "strikes": 1
+    },
+    "9a09e032c4588466": {
+      "at": "2026-09-20T05:06:06.365Z",
+      "decision": "rejected",
+      "title": "اقتصاد الحرب يدفع الجنيه السوداني إلى الهاوية",
+      "strikes": 1
+    },
+    "79b0bdbc98517c91": {
+      "at": "2026-09-20T05:06:06.365Z",
+      "decision": "rejected",
+      "title": "شركات التعدين تهدد بوقف إنتاج الذهب في السودان",
+      "strikes": 1
+    },
+    "5b566b742e36d393": {
+      "at": "2026-09-20T05:07:31.237Z",
+      "decision": "rejected",
+      "title": "Europe Outbids Asia for LNG as Prices Surge 150%",
+      "strikes": 1
+    },
+    "4f042196230d8808": {
+      "at": "2026-09-20T05:07:31.237Z",
+      "decision": "rejected",
+      "title": "Britain Faces £150 Billion Grid Overhaul to Power Renewable Energy Boom",
+      "strikes": 1
+    },
+    "c60760fcf41eb153": {
+      "at": "2026-09-20T05:07:31.237Z",
+      "decision": "rejected",
+      "title": "Space-Based Solar Power Could Reach the Grid by 2028",
       "strikes": 1
     }
   }
