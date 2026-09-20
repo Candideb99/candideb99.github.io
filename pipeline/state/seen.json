@@ -6773,10 +6773,10 @@
       "strikes": 1
     },
     "77d46f8041107ecd": {
-      "at": "2026-09-20T05:04:01.818Z",
+      "at": "2026-09-20T23:20:17.124Z",
       "decision": "rejected",
       "title": "Are global stock markets heading for a crash?",
-      "strikes": 1
+      "strikes": 2
     },
     "9dd2b92daff9bea2": {
       "at": "2026-09-20T05:04:01.818Z",
@@ -6785,16 +6785,16 @@
       "strikes": 1
     },
     "c28d4a3630e31e1f": {
-      "at": "2026-09-20T05:04:01.818Z",
-      "decision": "rejected",
-      "title": "India Is Again Squeezed Between the Threat of Trump Tariffs and Russian Oil",
-      "strikes": 1
+      "at": "2026-09-20T23:22:29.026Z",
+      "decision": "published",
+      "slug": "global-markets-test-interest-rates-ai-concerns-1c0036",
+      "title": "India Is Again Squeezed Between the Threat of Trump Tariffs and Russian Oil"
     },
     "262403cdc1dfdcfc": {
-      "at": "2026-09-20T05:04:01.818Z",
-      "decision": "rejected",
-      "title": "Higher interest rates and AI safety fears put the stock market to the test last week",
-      "strikes": 1
+      "at": "2026-09-20T23:22:29.027Z",
+      "decision": "published",
+      "slug": "global-markets-test-interest-rates-ai-concerns-1c0036",
+      "title": "Higher interest rates and AI safety fears put the stock market to the test last week"
     },
     "8e13e062cf8fb42d": {
       "at": "2026-09-20T05:06:06.365Z",
@@ -6821,10 +6821,10 @@
       "strikes": 2
     },
     "4f042196230d8808": {
-      "at": "2026-09-20T05:07:31.237Z",
-      "decision": "rejected",
-      "title": "Britain Faces £150 Billion Grid Overhaul to Power Renewable Energy Boom",
-      "strikes": 1
+      "at": "2026-09-20T23:23:38.623Z",
+      "decision": "published",
+      "slug": "uk-grid-investment-france-wine-production-low-ae0b26",
+      "title": "Britain Faces £150 Billion Grid Overhaul to Power Renewable Energy Boom"
     },
     "c60760fcf41eb153": {
       "at": "2026-09-20T05:07:31.237Z",
@@ -7106,6 +7106,30 @@
       "at": "2026-09-20T21:09:01.692Z",
       "decision": "rejected",
       "title": "PIF launches Tawrid platform to expand supply-chain financing",
+      "strikes": 1
+    },
+    "765d5647743fd80b": {
+      "at": "2026-09-20T23:20:17.124Z",
+      "decision": "rejected",
+      "title": "AI slowdown calls justified but collapse of bubble may be more immediate threat | Heather Stewart",
+      "strikes": 1
+    },
+    "3ee086e3422f6159": {
+      "at": "2026-09-20T23:23:38.623Z",
+      "decision": "published",
+      "slug": "uk-grid-investment-france-wine-production-low-ae0b26",
+      "title": "France’s wine production nears a 70-year low, leaving winemakers with tough choices"
+    },
+    "915746d8f3582b0a": {
+      "at": "2026-09-20T23:24:28.363Z",
+      "decision": "rejected",
+      "title": "China Will Dominate Global Nuclear Energy Through 2035, Analyst Says",
+      "strikes": 1
+    },
+    "c05fcf000cfa0d9f": {
+      "at": "2026-09-20T23:24:28.363Z",
+      "decision": "rejected",
+      "title": "IAEA Triples Nuclear Power Forecast as Small Reactors Finally Take Off",
       "strikes": 1
     }
   }
