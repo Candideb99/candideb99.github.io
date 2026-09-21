@@ -6,7 +6,7 @@ You own an automated Arabic economics newspaper. This page is the whole operatin
 
 | What | Where | Why you go there |
 | --- | --- | --- |
-| The live website | https://candideb99.github.io | What readers see. Updates itself every 3 hours. |
+| The live website | https://khazendar.pages.dev | What readers see, served by Cloudflare Pages (since 2026-09-21). It rebuilds itself from GitHub on every publish and every automatic run. The old address https://candideb99.github.io still works as a mirror. |
 | **The control room (on this laptop)** | double-click `OPEN_CONTROL_ROOM.cmd` → http://127.0.0.1:7777 | **Where you do everything.** See what was published, *talk to the paper in plain words and have it change the site*, run the newsroom, remove a story, and publish when you are ready. |
 | The cloud runs | https://github.com/Candideb99/candideb99.github.io/actions | Every automatic run with a table of what it published or rejected and why. |
 | Hermes, the local editor | double-click `TALK_TO_HERMES.cmd` | The older way to talk to an agent, from a black terminal window. The control room's **Chat** tab replaces it and is easier. |
