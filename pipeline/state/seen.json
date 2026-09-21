@@ -7157,10 +7157,10 @@
       "strikes": 1
     },
     "ce8a66992267f9eb": {
-      "at": "2026-09-21T05:13:06.274Z",
-      "decision": "rejected",
-      "title": "Iran vows 'painful' retaliation as Trump piles on pressure ahead of UN General Assembly meeting",
-      "strikes": 1
+      "at": "2026-09-21T21:28:02.434Z",
+      "decision": "published",
+      "slug": "trump-approval-32-percent-iran-war-bd2925",
+      "title": "Iranian President Pezeshkian to head to New York for UN meeting as Trump warns of no-deal consequences"
     },
     "c75846d7f0ad1726": {
       "at": "2026-09-21T05:13:06.274Z",
@@ -7413,6 +7413,60 @@
       "decision": "rejected",
       "title": "Saudi crown prince launches Ceer’s first EVs to boost Kingdom’s automotive industry",
       "strikes": 1
+    },
+    "16c20dc5e60b3c44": {
+      "at": "2026-09-21T21:23:50.620Z",
+      "decision": "published",
+      "slug": "faa-halts-east-coast-flights-equipment-outage-d180ab",
+      "title": "Airlines urge action after UK flights delayed and cancelled again"
+    },
+    "0c8479798e875efb": {
+      "at": "2026-09-21T21:23:50.620Z",
+      "decision": "published",
+      "slug": "faa-halts-east-coast-flights-equipment-outage-d180ab",
+      "title": "What Is the White House Press Pool, and Why Did It Suspend TV Coverage of Trump?"
+    },
+    "5d9a48bcddbb845b": {
+      "at": "2026-09-21T21:23:50.621Z",
+      "decision": "published",
+      "slug": "faa-halts-east-coast-flights-equipment-outage-d180ab",
+      "title": "Airlines criticise air traffic control as second glitch causes more disruption"
+    },
+    "29a50bf4d3863df3": {
+      "at": "2026-09-21T21:23:50.621Z",
+      "decision": "published",
+      "slug": "faa-halts-east-coast-flights-equipment-outage-d180ab",
+      "title": "FAA halts flights to major US East Coast airports amid outage"
+    },
+    "8d143dfce3bfcad6": {
+      "at": "2026-09-21T21:23:50.621Z",
+      "decision": "published",
+      "slug": "faa-halts-east-coast-flights-equipment-outage-d180ab",
+      "title": "Repeated air traffic control failures leave us in worrying territory"
+    },
+    "ba24676d02904889": {
+      "at": "2026-09-21T21:28:02.433Z",
+      "decision": "published",
+      "slug": "trump-approval-32-percent-iran-war-bd2925",
+      "title": "Putin’s party wins supermajority in Russia’s parliamentary election"
+    },
+    "014df8afc6311952": {
+      "at": "2026-09-21T21:28:02.434Z",
+      "decision": "published",
+      "slug": "trump-approval-32-percent-iran-war-bd2925",
+      "title": "Trump approval rating hits career low of 32% amid Iran war, high costs"
+    },
+    "25ee67170284c43e": {
+      "at": "2026-09-21T21:28:02.434Z",
+      "decision": "published",
+      "slug": "trump-approval-32-percent-iran-war-bd2925",
+      "title": "US threatens to ground Iranian airlines worldwide from Wednesday"
+    },
+    "ed3e066d744234d2": {
+      "at": "2026-09-21T21:28:02.434Z",
+      "decision": "published",
+      "slug": "trump-approval-32-percent-iran-war-bd2925",
+      "title": "Russia’s pro-Putin party set to win election as Ukraine exposes war’s growing reach into Moscow"
     }
   }
 }
