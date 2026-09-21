@@ -2,19 +2,19 @@
 /**
  * خازندار Control Room — the editor's desk.
  *
- * Built around one workflow and nothing else:
+ * THESIS: the newsroom runs itself, and the desk says so first. The owner's few decisions — approve a
+ * draft he asked for, take a story down, put one on top, re-file one — sit one click away; everything
+ * else is a fact he can read, not a control he must work. It refuses the dashboard-of-buttons.
+ * OWN-WORLD: the paper's own materials. Paper and ink, hairline rules instead of boxes, one banknote
+ * green for the primary action and the live "automatic" mark, the wordmark in Amiri, headlines in the
+ * paper's naskh, everything else in the system sans. A left rail with four destinations.
+ * STORY: he opens the desk, reads that the paper is running (next run, last run, every section's
+ * freshness, the deploy light), and closes it — unless something waits for him.
+ * FIRST VIEWPORT: rail on the left; a ruled status band across the top; the coverage strip; then
+ * what waits for approval, then "need something now". Primary action = Publish, green, on the draft.
+ * FORM: app shell with a left rail; ruled newspaper furniture. Operate mode; the paper's world inherited.
  *
- *   get material  →  read it  →  approve or discard  →  it goes live  →  (unpublish later if needed)
- *
- * Every run from this desk writes DRAFTS (`draft: true`), which the site ignores. Nothing reaches
- * readers until the editor presses Publish on that article. Owner's words, 2026-09-21: "i just
- * want to click grab news/articles/reportage/research etc then view before publish, approve
- * publish, view sources, unpublish."
- *
- * Tabs: Desk (default) · Settings · Change the site (a chat for design/rule changes, kept apart
- * from running the paper). Binds to 127.0.0.1 only. No dependencies beyond the project's own.
- *
- *   npm run control      →  http://127.0.0.1:7777
+ *   node scripts/control-room.mjs   →  http://127.0.0.1:7777   (binds to 127.0.0.1 only)
  */
 import http from "node:http";
 import { spawn, spawnSync } from "node:child_process";
@@ -29,11 +29,24 @@ const PORT = Number(process.env.KHAZENDAR_CONTROL_PORT ?? 7777);
 const SITE_FILE = path.join(root, "src", "data", "site.json");
 const ARTICLES = path.join(root, "content", "articles");
 const SEEN = path.join(root, "pipeline", "state", "seen.json");
+const FONTS = path.join(root, "public", "fonts");
 const site = JSON.parse(readFileSync(SITE_FILE, "utf8"));
 const LIVE = site.url;
 const REPO = "Candideb99/candideb99.github.io";
 const REPO_URL = `https://github.com/${REPO}`;
 const GIT_ID = ["-c", "user.name=khazendar-control", "-c", "user.email=newsroom@users.noreply.github.com"];
+const NEWS_SECTIONS = ["economy", "markets", "energy", "companies", "technology", "defense"];
+const SECTION_NAME = { economy: "الاقتصاد", markets: "الأسواق", energy: "الطاقة", companies: "الشركات", technology: "التكنولوجيا", defense: "الدفاع", analysis: "تحليلات", explainers: "مدخل إلى الاقتصاد" };
+/** What the cloud runs on its own (newsroom.yml). UTC; the page shows it in the owner's local time. */
+const SCHEDULE = [
+  { what: "News stories", when: "every 3 hours, at :23", utc: null },
+  { what: "An explainer", when: "daily", utc: "05:41" },
+  { what: "An analysis", when: "daily", utc: "14:07" },
+  { what: "A research paper", when: "Tuesdays and Fridays", utc: "09:31" },
+  { what: "The week's review", when: "Fridays", utc: "15:37" },
+  { what: "Defence and geopolitics reading", when: "Saturdays", utc: "10:07" },
+  { what: "Market quotes and the calendar", when: "on every build, and every 2 hours", utc: null },
+];
 
 // ------------------------------------------------------------------ env / keys
 function loadEnv() {
@@ -66,7 +79,7 @@ async function setEnvKey(name, value) {
   kept.push("");
   await writeFile(file, kept.join("\n"), "utf8");
 }
-/** A secret goes to GitHub over stdin, never as an argument, so it is never visible in a process list. */
+/** A secret goes to GitHub over stdin, never as an argument, so it never shows in a process list. */
 function ghSecret(name, value) {
   const r = spawnSync("gh", ["secret", "set", name, "--repo", REPO], { input: value, encoding: "utf8", shell: process.platform === "win32", windowsHide: true });
   return r.status === 0 ? "ok" : (r.stderr || r.stdout || "gh failed").slice(0, 200);
@@ -101,7 +114,7 @@ async function porcelain() {
   }
   return map;
 }
-/** Kill a job and everything it spawned. `child.kill()` alone leaves node→shell→node grandchildren alive on Windows. */
+/** Kill a job and everything it spawned; `child.kill()` alone leaves node→shell→node grandchildren alive on Windows. */
 function killTree(child) {
   if (!child) return;
   if (process.platform === "win32") spawnSync("taskkill", ["/PID", String(child.pid), "/T", "/F"], { windowsHide: true });
@@ -144,85 +157,6 @@ function jobProgress() {
   return { written, refused, target: m ? Number(m[1]) : null };
 }
 
-/**
- * Where each live story sits, by the same arithmetic as src/pages/index.astro and src/lib/articles.ts:
- * the lead is the strongest fresh news story (importance − hours/12 + 1.5 for a photo, or the newest
- * featured one within 48 hours); the cover is the lead plus the four strongest of the freshest twelve;
- * the next five are the ticker; everything else lives on its section page and in الأحدث.
- */
-function placeOnFront(live) {
-  const now = Date.now();
-  const hours = (a) => (now - Date.parse(a.publishedAt)) / 36e5;
-  const news = live.filter((a) => a.kind === "news").sort((x, y) => Date.parse(y.publishedAt) - Date.parse(x.publishedAt));
-  for (const a of live) a.where = a.kind === "news" ? "section page" : "its hub";
-  if (!news.length) return live;
-  const featured = news.filter((a) => a.featured && hours(a) < 48);
-  const lead = featured[0] ?? [...news].sort((x, y) => ((y.importance ?? 5) - hours(y) / 12 + (y.image ? 1.5 : 0)) - ((x.importance ?? 5) - hours(x) / 12 + (x.image ? 1.5 : 0)))[0];
-  const imp = (a) => (a.importance ?? 5) + (a.image ? 0.5 : 0);
-  const cover = [lead, ...news.filter((a) => a !== lead).slice(0, 12).sort((x, y) => imp(y) - imp(x)).slice(0, 4)];
-  const ticker = news.filter((a) => !cover.includes(a)).slice(0, 5);
-  cover.forEach((a, i) => (a.where = i === 0 ? "front page · THE LEAD" : `front page · cover ${i + 1}`));
-  ticker.forEach((a) => (a.where = "front page · ticker"));
-  return live;
-}
-/** Set or clear `featured` in a story's frontmatter; only one story is featured at a time. */
-async function setFeatured(file, on) {
-  const files = (await readdir(ARTICLES)).filter((f) => f.endsWith(".md"));
-  const touched = [];
-  for (const f of files) {
-    const full = path.join(ARTICLES, f);
-    let raw = await readFile(full, "utf8");
-    const had = /^featured:\s*true\r?\n/m.test(raw);
-    const want = on && f === file;
-    if (had === want) continue;
-    raw = raw.replace(/^featured:\s*true\r?\n/m, "");
-    if (want) raw = raw.replace(/^(---\r?\n[\s\S]*?)(\r?\n---)/, (m, head, tail) => `${head}\nfeatured: true${tail}`);
-    await writeFile(full, raw, "utf8");
-    touched.push(`content/articles/${f}`);
-  }
-  return touched;
-}
-
-// ------------------------------------------------------------------- models
-// The chains live in pipeline/lib/llm.mjs (defaults) and may be overridden per role by
-// KHAZENDAR_MODELS_<ROLE> — in .env for this laptop, as a repository variable for the cloud.
-// Only ":free" ids are ever accepted, so a model that turns paid cannot be chosen by anyone.
-const MODEL_ROLES = ["editor", "writer", "desk", "critic", "vision"];
-function modelDefaults() {
-  const src = readFileSync(path.join(root, "pipeline", "lib", "llm.mjs"), "utf8");
-  const out = {};
-  for (const role of MODEL_ROLES) {
-    const m = src.match(new RegExp(`${role}:\\s*chain\\("KHAZENDAR_MODELS_[A-Z]+",\\s*\\[([^\\]]*)\\]`));
-    out[role] = m ? [...m[1].matchAll(/"([^"]+)"/g)].map((x) => x[1]) : [];
-  }
-  return out;
-}
-let orCache = { at: 0, list: [] };
-async function openrouterModels() {
-  if (Date.now() - orCache.at < 10 * 60 * 1000 && orCache.list.length) return orCache.list;
-  try {
-    const r = await fetch("https://openrouter.ai/api/v1/models", { signal: AbortSignal.timeout(20000) });
-    const j = await r.json();
-    orCache = { at: Date.now(), list: (j.data ?? []).map((m) => ({ id: m.id, ctx: m.context_length ?? 0, free: m.id.endsWith(":free") && String(m.pricing?.prompt) === "0" })) };
-  } catch {
-    /* keep whatever we had; the page says "could not reach OpenRouter" */
-  }
-  return orCache.list;
-}
-async function modelReport() {
-  const live = await openrouterModels();
-  const byId = new Map(live.map((m) => [m.id, m]));
-  const defaults = modelDefaults();
-  const env = envFileKeys();
-  const roles = {};
-  for (const role of MODEL_ROLES) {
-    const override = env[`KHAZENDAR_MODELS_${role.toUpperCase()}`];
-    const chain = override ? override.split(",").map((s) => s.trim()).filter(Boolean) : defaults[role];
-    roles[role] = { override: Boolean(override), models: chain.map((id) => ({ id, ok: byId.has(id) && byId.get(id).free, ctx: byId.get(id)?.ctx ?? null })) };
-  }
-  return { reachable: live.length > 0, checkedAt: orCache.at, roles, free: live.filter((m) => m.free).sort((a, b) => b.ctx - a.ctx) };
-}
-
 // ------------------------------------------------------------------- articles
 function parseArticle(file, raw) {
   const fm = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
@@ -243,8 +177,7 @@ async function allArticles() {
     const parsed = parseArticle(file, await readFile(path.join(ARTICLES, file), "utf8"));
     if (!parsed) continue;
     const d = parsed.data;
-    const gitCode = status.get(`content/articles/${file}`) ?? "";
-    const untracked = gitCode.includes("?");
+    const untracked = (status.get(`content/articles/${file}`) ?? "").includes("?");
     out.push({
       file,
       slug: d.slug,
@@ -255,18 +188,13 @@ async function allArticles() {
       publishedAt: String(d.publishedAt ?? ""),
       score: d.quality?.score ?? null,
       verdict: d.quality?.verdict ?? "",
-      warnings: d.quality?.warnings ?? [],
-      critic: d.quality?.criticSummary ?? "",
       image: d.image?.url ?? null,
-      imageAlt: d.image?.alt ?? "",
       sources: (d.sources ?? []).map((s) => ({ name: s.name, nameEn: s.nameEn, title: s.title, url: s.url })),
       hasChart: Boolean(d.chart),
       hasTable: Boolean(d.table),
-      models: d.models ?? {},
       importance: d.quality?.importance ?? null,
       featured: d.featured === true,
-      // A draft is what the pipeline flagged as one, or a brand-new file git has never seen (the
-      // desk's own runs, and older local runs from before the flag existed).
+      // A draft is what the pipeline flagged as one, or a brand-new file git has never seen.
       isDraft: d.draft === true || untracked,
       committed: !untracked,
     });
@@ -288,7 +216,44 @@ function nextCloudRun() {
   }
   return null;
 }
-/** Flip a draft to live in place: drop the `draft: true` line and stamp the moment it went out. */
+/**
+ * Where each live story sits, by the same arithmetic as src/pages/index.astro and src/lib/articles.ts:
+ * lead = strongest fresh news story (importance − hours/12 + 1.5 for a photo; or the newest featured one
+ * within 48 h); cover = lead + the four strongest of the freshest twelve; next five = ticker.
+ */
+function placeOnFront(live) {
+  const now = Date.now();
+  const hours = (a) => (now - Date.parse(a.publishedAt)) / 36e5;
+  const news = live.filter((a) => a.kind === "news").sort((x, y) => Date.parse(y.publishedAt) - Date.parse(x.publishedAt));
+  for (const a of live) a.where = a.kind === "news" ? "section" : "hub";
+  if (!news.length) return live;
+  const featured = news.filter((a) => a.featured && hours(a) < 48);
+  const lead = featured[0] ?? [...news].sort((x, y) => ((y.importance ?? 5) - hours(y) / 12 + (y.image ? 1.5 : 0)) - ((x.importance ?? 5) - hours(x) / 12 + (x.image ? 1.5 : 0)))[0];
+  const imp = (a) => (a.importance ?? 5) + (a.image ? 0.5 : 0);
+  const cover = [lead, ...news.filter((a) => a !== lead).slice(0, 12).sort((x, y) => imp(y) - imp(x)).slice(0, 4)];
+  const ticker = news.filter((a) => !cover.includes(a)).slice(0, 5);
+  cover.forEach((a, i) => (a.where = i === 0 ? "lead" : `cover ${i + 1}`));
+  ticker.forEach((a) => (a.where = "ticker"));
+  return live;
+}
+/** Per section: stories in the last 24 h and 7 days, and the newest one — the answer to "is the whole paper alive?". */
+function coverage(live) {
+  const now = Date.now();
+  const rows = {};
+  for (const id of NEWS_SECTIONS) rows[id] = { id, name: SECTION_NAME[id], day: 0, week: 0, last: null };
+  for (const k of ["explainer", "analysis", "paper", "weekly"]) rows[k] = { id: k, name: { explainer: "Explainers", analysis: "Analyses", paper: "Paper readings", weekly: "Week's review" }[k], day: 0, week: 0, last: null };
+  for (const a of live) {
+    const key = a.kind === "news" ? a.section : a.kind;
+    const r = rows[key];
+    if (!r) continue;
+    const h = (now - Date.parse(a.publishedAt)) / 36e5;
+    if (h < 24) r.day += 1;
+    if (h < 168) r.week += 1;
+    if (!r.last || a.publishedAt > r.last) r.last = a.publishedAt;
+  }
+  return Object.values(rows);
+}
+/** Flip a draft to live in place. */
 async function markPublished(file) {
   const full = path.join(ARTICLES, file);
   let raw = await readFile(full, "utf8");
@@ -296,7 +261,7 @@ async function markPublished(file) {
   raw = raw.replace(/^(---\r?\n[\s\S]*?)(\r?\n---)/, (m, head, tail) => `${head}\nupdatedAt: ${new Date().toISOString()}${tail}`);
   await writeFile(full, raw, "utf8");
 }
-/** A discarded story must not come back on the next run: mark its items as a final decision. */
+/** A discarded story must not come back on the next run. */
 async function markDiscarded(slug) {
   try {
     const state = JSON.parse(await readFile(SEEN, "utf8"));
@@ -310,8 +275,25 @@ async function markDiscarded(slug) {
     }
     if (n) await writeFile(SEEN, `${JSON.stringify(state, null, 2)}\n`, "utf8");
   } catch {
-    /* the state file is optional for this */
+    /* optional */
   }
+}
+/** Set or clear `featured`; only one story is featured at a time. */
+async function setFeatured(file, on) {
+  const files = (await readdir(ARTICLES)).filter((f) => f.endsWith(".md"));
+  const touched = [];
+  for (const f of files) {
+    const full = path.join(ARTICLES, f);
+    let raw = await readFile(full, "utf8");
+    const had = /^featured:\s*true\r?\n/m.test(raw);
+    const want = on && f === file;
+    if (had === want) continue;
+    raw = raw.replace(/^featured:\s*true\r?\n/m, "");
+    if (want) raw = raw.replace(/^(---\r?\n[\s\S]*?)(\r?\n---)/, (m, head, tail) => `${head}\nfeatured: true${tail}`);
+    await writeFile(full, raw, "utf8");
+    touched.push(`content/articles/${f}`);
+  }
+  return touched;
 }
 function esc(s) {
   return String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -325,10 +307,48 @@ function bodyHtml(md) {
     .filter(Boolean)
     .map((p) => {
       if (/^#{2,3}\s/.test(p)) return `<h3>${esc(p.replace(/^#+\s*/, ""))}</h3>`;
-      const inner = esc(p).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/\r?\n/g, "<br>");
-      return `<p>${inner}</p>`;
+      return `<p>${esc(p).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/\r?\n/g, "<br>")}</p>`;
     })
     .join("\n");
+}
+
+// ---------------------------------------------------------------------- models
+// Chains live in pipeline/lib/llm.mjs (defaults), overridable per role by KHAZENDAR_MODELS_<ROLE> —
+// in .env here, as a repository variable in the cloud. Only ":free" ids are ever accepted.
+const MODEL_ROLES = ["editor", "writer", "desk", "critic", "vision"];
+function modelDefaults() {
+  const src = readFileSync(path.join(root, "pipeline", "lib", "llm.mjs"), "utf8");
+  const out = {};
+  for (const role of MODEL_ROLES) {
+    const m = src.match(new RegExp(`${role}:\\s*chain\\("KHAZENDAR_MODELS_[A-Z]+",\\s*\\[([^\\]]*)\\]`));
+    out[role] = m ? [...m[1].matchAll(/"([^"]+)"/g)].map((x) => x[1]) : [];
+  }
+  return out;
+}
+let orCache = { at: 0, list: [] };
+async function openrouterModels() {
+  if (Date.now() - orCache.at < 10 * 60 * 1000 && orCache.list.length) return orCache.list;
+  try {
+    const r = await fetch("https://openrouter.ai/api/v1/models", { signal: AbortSignal.timeout(20000) });
+    const j = await r.json();
+    orCache = { at: Date.now(), list: (j.data ?? []).map((m) => ({ id: m.id, ctx: m.context_length ?? 0, free: m.id.endsWith(":free") && String(m.pricing?.prompt) === "0" })) };
+  } catch {
+    /* keep whatever we had */
+  }
+  return orCache.list;
+}
+async function modelReport() {
+  const live = await openrouterModels();
+  const byId = new Map(live.map((m) => [m.id, m]));
+  const defaults = modelDefaults();
+  const env = envFileKeys();
+  const roles = {};
+  for (const role of MODEL_ROLES) {
+    const override = env[`KHAZENDAR_MODELS_${role.toUpperCase()}`];
+    const chain = override ? override.split(",").map((s) => s.trim()).filter(Boolean) : defaults[role];
+    roles[role] = { override: Boolean(override), models: chain.map((id) => ({ id, ok: byId.has(id) && byId.get(id).free, ctx: byId.get(id)?.ctx ?? null })) };
+  }
+  return { reachable: live.length > 0, checkedAt: orCache.at, roles, free: live.filter((m) => m.free).sort((a, b) => b.ctx - a.ctx) };
 }
 
 // --------------------------------------------------------------------- health
@@ -338,8 +358,6 @@ async function health() {
   const ghOk = !/not logged|not recognized|command not found|could not|error/i.test(secrets);
   const local = envFileKeys();
   let editorReal = null;
-  // The site's last deploy. From 2026-09-20 16:07 to 2026-09-21 21:09 every deploy failed on one
-  // article and the paper sat frozen on Sunday's edition; nothing on this page said so. Now it does.
   let deploy = null;
   if (ghOk) {
     const d = await sh(`gh run list --repo ${REPO} --workflow deploy.yml -L 1 --json conclusion,createdAt,headSha,url 2>&1`);
@@ -347,7 +365,7 @@ async function health() {
       const [r] = JSON.parse(d);
       if (r) deploy = { ok: r.conclusion === "success", when: r.createdAt, sha: (r.headSha ?? "").slice(0, 7), url: r.url };
     } catch {
-      /* no deploys yet */
+      /* none yet */
     }
     const last = await sh(`gh run list --repo ${REPO} --workflow editor.yml -L 1 --json startedAt,updatedAt,conclusion 2>&1`);
     try {
@@ -357,7 +375,7 @@ async function health() {
         editorReal = { seconds: Math.round(s), working: s > 90 };
       }
     } catch {
-      /* no runs */
+      /* none */
     }
   }
   return {
@@ -369,12 +387,10 @@ async function health() {
       editorOn: /KHAZENDAR_EDITOR\s+1/.test(vars),
       provider: (vars.match(/KHAZENDAR_PROVIDER\s+(\S+)/) ?? [])[1] ?? "openrouter",
       review: /KHAZENDAR_REVIEW\s+1/.test(vars),
+      newsroomModel: (vars.match(/KHAZENDAR_CLAUDE_MODEL\s+(\S+)/) ?? [])[1] ?? "sonnet",
     },
-    local: {
-      openrouter: Boolean(local.OPENROUTER_API_KEY),
-      anthropic: Boolean(local.ANTHROPIC_API_KEY),
-      oauth: Boolean(local.CLAUDE_CODE_OAUTH_TOKEN),
-    },
+    local: { openrouter: Boolean(local.OPENROUTER_API_KEY), anthropic: Boolean(local.ANTHROPIC_API_KEY), oauth: Boolean(local.CLAUDE_CODE_OAUTH_TOKEN) },
+    chatModel: local.KHAZENDAR_CHAT_MODEL || "default",
     editorReal,
     deploy,
     chatReady: Boolean(CLI_JS) && Boolean(local.CLAUDE_CODE_OAUTH_TOKEN || local.ANTHROPIC_API_KEY),
@@ -382,8 +398,6 @@ async function health() {
 }
 
 // ------------------------------------------------- the chat ("Change the site")
-// Claude Code itself, spawned through node + cli.js so no shell can mangle an Arabic message.
-// It may change anything and may never publish: git write commands are blocked at the tool level.
 const CLI_JS = [
   path.join(process.env.APPDATA ?? "", "npm", "node_modules", "@anthropic-ai", "claude-code", "cli.js"),
   path.join(process.env.HOME ?? "", ".npm-global", "lib", "node_modules", "@anthropic-ai", "claude-code", "cli.js"),
@@ -404,7 +418,7 @@ function chatEnv() {
 const CHAT_RULES = `You are the site assistant for خازندار, an automated Arabic economics newspaper owned by Ahmed.
 You are being driven from the paper's control room, not a terminal. Ahmed is not a programmer.
 This chat is for CHANGING THE SITE — its design, its pages, the newsroom's rules and sources. Running
-the newsroom, reviewing and publishing stories are done from the Desk tab, not here; if he asks for
+the newsroom, reviewing and publishing stories are done from the Desk, not here; if he asks for
 those, tell him in one line to use the Desk.
 
 READ FIRST: CLAUDE.md, START_HERE.md, DESIGN.md and STYLE.md. They bind you like every other agent here.
@@ -446,6 +460,7 @@ async function startChat(message) {
   chat.turns.push({ role: "you", text: message });
   chatSend({ t: "you", text: message });
   const args = [CLI_JS, "-p", "--output-format", "stream-json", "--verbose", "--permission-mode", "acceptEdits", "--append-system-prompt", CHAT_RULES];
+  if (keys.KHAZENDAR_CHAT_MODEL) args.push("--model", keys.KHAZENDAR_CHAT_MODEL);
   if (chat.sessionId) args.push("--resume", chat.sessionId);
   else {
     chat.sessionId = randomUUID();
@@ -510,7 +525,6 @@ function describe(file) {
   if (/\.md$/.test(file)) return "a notes page";
   return "a project file";
 }
-/** Site changes waiting to go out — articles are handled on the Desk, so they are left out here. */
 async function siteChanges() {
   const map = await porcelain();
   const files = [...map.entries()]
@@ -520,395 +534,433 @@ async function siteChanges() {
 }
 
 // ------------------------------------------------------------------------ page
+const ICON = {
+  desk: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3.5" width="15" height="13" rx="1.5"/><path d="M6 8h8M6 11.5h5"/></svg>',
+  stories: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 5h14M3 10h14M3 15h9"/></svg>',
+  settings: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h9M15 6h2M3 14h2M8 14h9"/><circle cx="13" cy="6" r="2"/><circle cx="6" cy="14" r="2"/></svg>',
+  change: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5h14v9H8l-4 3v-3H3z"/></svg>',
+  out: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H4v12h12v-4M11 4h5v5M16 4l-7 7"/></svg>',
+  dots: '<svg viewBox="0 0 20 20" fill="currentColor"><circle cx="5" cy="10" r="1.6"/><circle cx="10" cy="10" r="1.6"/><circle cx="15" cy="10" r="1.6"/></svg>',
+  spin: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 3a7 7 0 1 1-6.3 4"/></svg>',
+};
+
 function page() {
   const current = JSON.parse(readFileSync(SITE_FILE, "utf8"));
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>خازندار — Control Room</title>
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>خازندار — Control room</title>
 <style>
-:root{--ink:#171512;--paper:#f6f4ee;--gold:#e5a52b;--green:#0a5248;--red:#8c2a14;--line:#ddd;--muted:#777}
+@font-face{font-family:"Amiri";font-weight:700;font-display:swap;src:url("/fonts/amiri-arabic-700.woff2") format("woff2")}
+@font-face{font-family:"Naskh";font-weight:400;font-display:swap;src:url("/fonts/naskh-arabic.woff2") format("woff2")}
+:root{
+  --paper:#fcfcf9;--paper-2:#f3f3ee;--paper-3:#ebebe4;--ink:#141414;--ink-2:#454442;--ink-3:#6a6965;--rule:#d6d5ce;--rule-2:#e6e5df;
+  --green:#0f5c3c;--green-deep:#0a4530;--green-tint:#e6f0ea;--red:#8c2a14;--red-tint:#f6e7e2;--amber:#8a6a12;--amber-tint:#f7efd6;
+  --sans:"Segoe UI",system-ui,-apple-system,sans-serif;--ar:"Naskh","Noto Naskh Arabic","Sakkal Majalla","Traditional Arabic",serif;
+  --rail:248px;--gutter:40px;--t:160ms cubic-bezier(.2,.7,.2,1)
+}
 *{box-sizing:border-box}
-body{font:15px/1.55 system-ui,"Segoe UI",sans-serif;margin:0;background:var(--paper);color:var(--ink)}
-header{background:var(--gold);padding:12px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-header h1{margin:0;font-size:20px} header nav a{color:var(--ink);font-weight:600;margin-inline-start:14px;text-decoration:none;border-bottom:1px solid rgba(0,0,0,.25)}
-nav.tabs{background:var(--ink);padding:0 24px;display:flex;gap:2px}
-nav.tabs button{background:none;border:0;color:#bdb8ad;font:600 14px/1 system-ui;padding:13px 20px;cursor:pointer;border-bottom:3px solid transparent;margin:0}
-nav.tabs button.on{color:#fff;border-bottom-color:var(--gold)}
-main{max-width:1100px;margin:0 auto;padding:18px 24px}
-.pane{display:none} .pane.on{display:grid;gap:16px}
-section{background:#fff;border:1px solid var(--line);padding:14px 16px}
-h2{font-size:13px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.06em;color:#555}
-h2 .n{background:var(--ink);color:#fff;border-radius:10px;padding:1px 8px;font-size:12px;margin-inline-start:6px}
-button{font:inherit;padding:8px 14px;border:1px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer;margin:0 6px 6px 0;border-radius:3px}
-button.secondary{background:#fff;color:var(--ink)} button.go{background:var(--green);border-color:var(--green);font-weight:600}
-button.danger{background:#fff;color:var(--red);border-color:var(--red)} button.small{padding:4px 10px;font-size:13px}
-button:disabled{opacity:.4;cursor:not-allowed}
-select,input[type=text],input[type=email],input[type=password],textarea{font:inherit;padding:7px;border:1px solid #bbb;background:#fff;border-radius:3px}
-.m{color:var(--muted);font-size:12.5px}
-.status{display:flex;gap:26px;flex-wrap:wrap} .status b{display:block;font-size:22px;line-height:1.1} .status span{font-size:12.5px;color:var(--muted)}
-.get{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.get button{font-size:15px;padding:12px 18px} .get label{margin-inline-start:auto;font-size:13px;color:var(--muted)}
-.running{background:#fff8e6;border-color:var(--gold)}
-.running .lines{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;white-space:pre-wrap;color:#444;margin:6px 0}
-.spin{display:inline-block;width:12px;height:12px;border:2px solid var(--gold);border-top-color:transparent;border-radius:50%;animation:s .8s linear infinite;vertical-align:-2px;margin-inline-end:6px}
-@keyframes s{to{transform:rotate(360deg)}}
-pre{background:var(--ink);color:#e6e2d8;padding:12px;max-height:300px;overflow:auto;font-size:12px;white-space:pre-wrap;margin:8px 0 0}
-.cards{display:grid;gap:12px}
-.card{display:grid;grid-template-columns:140px 1fr auto;gap:14px;border:1px solid var(--line);padding:12px;background:#fff}
-.card img{width:140px;height:94px;object-fit:cover;background:#eee} .card .noimg{width:140px;height:94px;background:#eee;display:flex;align-items:center;justify-content:center;color:#999;font-size:12px}
-.card .t{direction:rtl;text-align:right} .card .t h3{margin:0 0 4px;font-size:17px;line-height:1.35} .card .t p{margin:0 0 6px;color:#444;font-size:14px}
-.card .k{font-size:12px;color:var(--muted);direction:ltr;text-align:left}
-.card .acts{display:flex;flex-direction:column;gap:4px;align-items:stretch} .card .acts button{margin:0}
-.score{display:inline-block;min-width:26px;text-align:center;padding:1px 6px;border-radius:3px;font-weight:700;font-size:12.5px;background:#eee}
-.score.hi{background:#dff2ea;color:var(--green)} .score.lo{background:#f7e3dd;color:var(--red)}
-.empty{color:var(--muted);padding:14px 0;text-align:center}
-table{width:100%;border-collapse:collapse} td,th{padding:7px 8px;border-bottom:1px solid #eee;vertical-align:top;text-align:left;font-size:14px}
-td.t a{color:#122a70;text-decoration:none;font-weight:600;direction:rtl;display:block;text-align:right}
-details summary{cursor:pointer;color:#122a70;font-size:13px} .src{font-size:13px;margin:4px 0 0 0;padding-inline-start:18px} .src a{color:#122a70}
-.rej td{font-size:13px;color:#444} .rej .why{color:var(--red);direction:rtl;text-align:right}
-/* preview */
-#overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:9}
-#overlay.on{display:block}
-#preview{position:fixed;top:0;right:0;bottom:0;width:min(760px,96vw);background:#fff;overflow:auto;padding:24px 28px;box-shadow:-8px 0 30px rgba(0,0,0,.25)}
-#preview .bar{display:flex;gap:8px;align-items:center;margin-bottom:14px;position:sticky;top:-24px;background:#fff;padding:10px 0;border-bottom:1px solid var(--line)}
-#preview .bar .x{margin-inline-start:auto}
-#preview article{direction:rtl;text-align:right;font-family:"Noto Naskh Arabic","Amiri",serif;font-size:17px;line-height:1.9}
-#preview article h1{font-size:26px;line-height:1.35;margin:0 0 6px} #preview article .sub{font-size:18px;color:#444;margin:0 0 12px}
-#preview article img{width:100%;height:auto;margin:8px 0 2px} #preview article .credit{font-size:12px;color:var(--muted);font-family:system-ui}
-#preview article .lede{font-weight:600} #preview article .facts{background:#f6f4ee;padding:10px 14px;margin:12px 0} #preview article .facts li{margin:2px 0}
-#preview article .why{border-top:2px solid var(--green);border-bottom:1px solid var(--line);padding:10px 0;margin:14px 0}
-#preview .meta{direction:ltr;text-align:left;font-family:system-ui;font-size:13px;color:#444;border-top:1px solid var(--line);margin-top:18px;padding-top:12px}
+html{background:var(--paper)}
+body{margin:0;font:15px/1.5 var(--sans);color:var(--ink);background:var(--paper);display:grid;grid-template-columns:var(--rail) 1fr;min-height:100vh}
+a{color:var(--green);text-decoration:none}a:hover{text-decoration:underline}
+button{font:inherit;cursor:pointer;border:1px solid var(--ink);background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:2px;transition:background var(--t),border-color var(--t),color var(--t),box-shadow var(--t)}
+button:hover{background:#000}button:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+button:disabled{opacity:.45;cursor:not-allowed}
+button.go{background:var(--green);border-color:var(--green);font-weight:600}button.go:hover{background:var(--green-deep)}
+button.quiet{background:transparent;color:var(--ink);border-color:var(--rule)}button.quiet:hover{background:var(--paper-2);border-color:var(--ink-3)}
+button.danger{background:transparent;color:var(--red);border-color:var(--rule)}button.danger:hover{background:var(--red-tint);border-color:var(--red)}
+button.sm{padding:5px 10px;font-size:13.5px}
+select,input[type=text],input[type=email],input[type=password],textarea{font:inherit;color:var(--ink);padding:7px 9px;border:1px solid var(--rule);background:#fff;border-radius:2px;transition:border-color var(--t),box-shadow var(--t)}
+select:focus,input:focus,textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px var(--green-tint)}
+h1,h2,h3{margin:0;font-weight:600}
+h2{font-size:17px;line-height:1.3;padding:0 0 10px;border-bottom:1px solid var(--rule);margin:36px 0 16px}
+h2:first-child{margin-top:0}
+h2 .n{font-size:12.5px;font-weight:600;color:var(--paper);background:var(--ink);border-radius:9px;padding:1px 8px;vertical-align:2px;margin-inline-start:8px}
+.m{color:var(--ink-3);font-size:13px}.ok{color:var(--green)}.no{color:var(--red)}
+.ar{font-family:var(--ar);direction:rtl;text-align:right;unicode-bidi:plaintext}
+/* rail */
+.rail{background:var(--paper-2);border-inline-end:1px solid var(--rule);padding:28px 20px;display:flex;flex-direction:column;gap:4px;position:sticky;top:0;height:100vh}
+.rail .mark{font-family:"Amiri",var(--ar);font-size:34px;line-height:1;color:var(--green-deep);direction:rtl;text-align:left;margin-bottom:2px}
+.rail .sub{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:26px}
+.rail a.nav{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:3px;color:var(--ink-2);text-decoration:none;transition:background var(--t),color var(--t)}
+.rail a.nav svg{width:18px;height:18px;flex:none}
+.rail a.nav:hover{background:var(--paper-3);color:var(--ink)}
+.rail a.nav.on{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(20,20,20,.06);font-weight:600}
+.rail .foot{margin-top:auto;padding-top:18px;border-top:1px solid var(--rule);display:grid;gap:8px;font-size:13px}
+.rail .foot a{display:flex;align-items:center;gap:8px;color:var(--ink-2)}.rail .foot a svg{width:15px;height:15px}
+.light{display:flex;align-items:flex-start;gap:8px;color:var(--ink-2);line-height:1.35}.light i{flex:none;width:9px;height:9px;border-radius:50%;margin-top:5px;background:var(--rule)}
+.light.ok i{background:var(--green)}.light.no i{background:var(--red)}
+/* content */
+main{padding:32px var(--gutter) 64px;max-width:1520px;width:100%}
+.pane{display:none}.pane.on{display:block}
+/* status band */
+.band{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule)}
+.band > div{padding:16px 18px 16px 0;border-inline-end:1px solid var(--rule-2);margin-inline-end:18px}
+.band > div:last-child{border:0;margin:0}
+.band .k{font-size:12.5px;color:var(--ink-3);margin-bottom:4px}
+.band .v{font-size:20px;line-height:1.25;font-weight:600}
+.band .v small{font-size:13.5px;font-weight:400;color:var(--ink-2)}
+.band .auto{display:flex;align-items:center;gap:8px;color:var(--green);font-weight:600;font-size:15px}
+.band .auto i{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px var(--green-tint)}
+.band .auto.off{color:var(--amber)}.band .auto.off i{background:var(--amber);box-shadow:0 0 0 3px var(--amber-tint)}
+/* running */
+.running{margin-top:14px;padding:12px 16px;background:var(--amber-tint);border:1px solid #e6d7a3;border-radius:3px;display:grid;gap:6px}
+.running .h{display:flex;align-items:center;gap:10px;font-weight:600}
+.running .h svg{width:16px;height:16px;animation:spin 1s linear infinite;color:var(--amber)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.running pre{margin:0;background:transparent;color:var(--ink-2);font:12.5px/1.5 ui-monospace,Consolas,monospace;white-space:pre-wrap}
+.running details pre{background:var(--ink);color:#e6e2d8;padding:12px;max-height:280px;overflow:auto;margin-top:8px}
+.running summary{cursor:pointer;color:var(--green);font-size:13px}
+/* coverage */
+.cov{display:grid;grid-template-columns:repeat(6,1fr);border-bottom:1px solid var(--rule)}
+.cov > div{padding:12px 14px 14px 0;border-inline-end:1px solid var(--rule-2);margin-inline-end:14px}
+.cov > div:last-child{border:0;margin:0}
+.cov .s{font-family:var(--ar);font-size:18px;direction:rtl;text-align:left;line-height:1.2}
+.cov .c{font-size:13px;color:var(--ink-2);margin-top:6px}.cov .c b{color:var(--ink);font-weight:600}
+.cov .quiet .c{color:var(--amber)}
+.hubs{display:flex;gap:26px;flex-wrap:wrap;padding:12px 0 0;font-size:13px;color:var(--ink-2)}.hubs b{color:var(--ink);font-weight:600}
+/* two-column desk */
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:56px;align-items:start;margin-top:36px}
+@media (max-width:1180px){.cols{grid-template-columns:1fr}}
+/* drafts */
+.draft{display:grid;grid-template-columns:132px minmax(0,1fr);gap:18px;padding:16px 0;border-bottom:1px solid var(--rule-2)}
+.draft img,.draft .noimg{width:132px;height:88px;object-fit:cover;background:var(--paper-3);border:1px solid var(--rule)}
+.draft .noimg{display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-size:12px}
+.draft h3{font-family:var(--ar);font-weight:400;font-size:21px;line-height:1.35;direction:rtl;text-align:right}
+.draft p{font-family:var(--ar);margin:4px 0 6px;color:var(--ink-2);font-size:16px;direction:rtl;text-align:right;line-height:1.5}
+.draft .meta{font-size:12.5px;color:var(--ink-3)}
+.draft .acts{display:flex;gap:8px;align-items:center;margin-top:10px}
+.empty{padding:22px 0;color:var(--ink-3)}
+/* get material */
+.get{display:grid;gap:10px}
+.get .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.get .row label{display:flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink-2)}
+.sched{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:13.5px}
+.sched li{display:grid;grid-template-columns:1fr auto;gap:12px;padding:6px 0;border-bottom:1px solid var(--rule-2)}
+.sched li span:last-child{color:var(--ink-3);white-space:nowrap}
+/* stories */
+.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.bar input[type=text]{min-width:280px;flex:1}
+table.list{width:100%;border-collapse:collapse}
+table.list th{font-size:12.5px;font-weight:600;color:var(--ink-3);text-align:left;padding:8px 10px;border-bottom:1px solid var(--ink)}
+table.list td{padding:11px 10px;border-bottom:1px solid var(--rule-2);vertical-align:middle}
+table.list tr:hover td{background:#fff}
+td.t a{font-family:var(--ar);font-size:18px;line-height:1.35;color:var(--ink);display:block;direction:rtl;text-align:right;unicode-bidi:plaintext}
+td.t .meta{font-size:12.5px;color:var(--ink-3);margin-top:2px}
+.chip{display:inline-block;font-size:12px;padding:2px 8px;border-radius:10px;background:var(--paper-3);color:var(--ink-2);white-space:nowrap}
+.chip.front{background:var(--green-tint);color:var(--green-deep);font-weight:600}
+.score{display:inline-block;min-width:26px;text-align:center;padding:1px 6px;border-radius:3px;font-weight:600;font-size:12.5px;background:var(--paper-3)}
+.score.hi{background:var(--green-tint);color:var(--green-deep)}.score.lo{background:var(--red-tint);color:var(--red)}
+td.src details summary{cursor:pointer;font-size:13px;color:var(--green);list-style:none}
+td.src ul{margin:6px 0 0;padding-inline-start:16px;font-size:12.5px;max-width:420px}
+/* actions menu */
+.menu{position:relative}
+.menu summary{list-style:none;cursor:pointer;width:32px;height:30px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--rule);border-radius:2px;color:var(--ink-2);background:#fff}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary svg{width:18px;height:18px}.menu[open] summary{border-color:var(--ink)}
+.menu .pop{position:absolute;right:0;top:34px;z-index:20;min-width:230px;background:#fff;border:1px solid var(--rule);border-radius:3px;box-shadow:0 8px 24px -8px rgba(20,20,20,.25),0 2px 6px rgba(20,20,20,.08);padding:6px}
+.menu .pop button,.menu .pop a{display:block;width:100%;text-align:left;background:none;border:0;color:var(--ink);padding:8px 10px;border-radius:2px;font-size:14px;margin:0}
+.menu .pop button:hover,.menu .pop a:hover{background:var(--paper-2);text-decoration:none}
+.menu .pop .sep{border-top:1px solid var(--rule-2);margin:6px 0}
+.menu .pop .lbl{font-size:12px;color:var(--ink-3);padding:6px 10px 2px}
+.menu .pop button.d{color:var(--red)}.menu .pop button.d:hover{background:var(--red-tint)}
+.menu .pop .secs{display:grid;grid-template-columns:1fr 1fr}
+.menu .pop .secs button{font-family:var(--ar);font-size:15px;text-align:right;direction:rtl}
 /* settings */
-.set label{display:block;margin:0 0 12px} .set label span{display:block;font-weight:600;margin-bottom:3px} .set .m{font-weight:400}
-.set input{width:100%} .set select{width:100%}
-.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-inline-end:7px} .dot.y{background:var(--green)} .dot.n{background:var(--red)} .dot.q{background:#c9a227}
-.keyrow{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end}
-code{background:#f0ede6;padding:2px 6px;font-size:13px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+@media (max-width:1100px){.grid2{grid-template-columns:1fr}}
+.set label{display:block;margin:0 0 12px}.set label > span{display:block;font-weight:600;margin-bottom:4px}
+.set label .m{font-weight:400}.set input,.set select{width:100%}
+.keyrow{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end;margin-bottom:12px}
+.keyrow label{margin:0}
+code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
+.dots p{margin:6px 0}
 /* chat */
-#thread{display:flex;flex-direction:column;gap:12px;min-height:200px;max-height:50vh;overflow:auto;padding:4px 2px}
-.bub{max-width:82%;padding:10px 13px;border:1px solid var(--line);white-space:pre-wrap;word-wrap:break-word}
-.bub.you{align-self:flex-end;background:#eef2f6;border-color:#c9d6e2} .bub.paper{align-self:flex-start;background:#fff} .bub.rtl{direction:rtl;text-align:right}
-.step{align-self:flex-start;color:#8a857c;font-size:12.5px;font-family:ui-monospace,Consolas,monospace}
-.ask{display:flex;gap:8px;align-items:flex-end;margin-top:12px} .ask textarea{flex:1;resize:vertical;min-height:52px}
-.chg{background:#f3f7f4;border-color:var(--green)}
+#thread{display:flex;flex-direction:column;gap:12px;min-height:220px;max-height:56vh;overflow:auto;padding:4px 2px}
+.bub{max-width:78%;padding:10px 14px;border:1px solid var(--rule);border-radius:3px;white-space:pre-wrap;word-wrap:break-word;line-height:1.55}
+.bub.you{align-self:flex-end;background:var(--green-tint);border-color:#cfe0d6}.bub.paper{align-self:flex-start;background:#fff}
+.bub.rtl{direction:rtl;text-align:right;font-family:var(--ar);font-size:16px}
+.step{align-self:flex-start;color:var(--ink-3);font-size:12.5px;font-family:ui-monospace,Consolas,monospace}
+.ask{display:flex;gap:10px;align-items:flex-end;margin-top:14px}.ask textarea{flex:1;resize:vertical;min-height:56px}
+.chg{margin-top:20px;padding:14px 16px;background:var(--green-tint);border:1px solid #cfe0d6;border-radius:3px}
+/* preview */
+#overlay{position:fixed;inset:0;background:rgba(20,20,20,.42);display:none;z-index:40}#overlay.on{display:block}
+#preview{position:fixed;top:0;right:0;bottom:0;width:min(780px,96vw);background:var(--paper);overflow:auto;padding:22px 30px 40px;box-shadow:-12px 0 40px rgba(20,20,20,.28)}
+#preview .bar{position:sticky;top:-22px;background:var(--paper);padding:10px 0;border-bottom:1px solid var(--rule);margin-bottom:16px;display:flex;gap:8px}
+#preview .bar .x{margin-inline-start:auto}
+#preview article{direction:rtl;text-align:right;font-family:var(--ar);font-size:17.5px;line-height:1.9}
+#preview article h1{font-family:"Amiri",var(--ar);font-size:28px;line-height:1.3;font-weight:700;margin:0 0 6px}
+#preview article .sub{font-size:18px;color:var(--ink-2);margin:0 0 12px}
+#preview article img{width:100%;height:auto;margin:8px 0 2px}#preview article .credit{font-size:12px;color:var(--ink-3);font-family:var(--sans)}
+#preview article .lede{font-weight:600}#preview article .facts{background:var(--paper-2);padding:10px 14px;margin:12px 0}#preview article .facts ul{margin:0;padding-inline-start:18px}
+#preview article .why{border-top:2px solid var(--green);border-bottom:1px solid var(--rule);padding:10px 0;margin:14px 0}
+#preview .meta{direction:ltr;text-align:left;font-family:var(--sans);font-size:13px;color:var(--ink-2);border-top:1px solid var(--rule);margin-top:18px;padding-top:12px}
+#preview .meta ul{padding-inline-start:16px}
+/* narrow */
+@media (max-width:900px){
+  body{grid-template-columns:1fr}
+  .rail{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center;gap:6px;padding:14px 16px;border-inline-end:0;border-bottom:1px solid var(--rule)}
+  .rail .mark{font-size:26px;margin:0 8px 0 0}.rail .sub{display:none}.rail .foot{display:none}
+  main{padding:20px 16px 48px}
+  .band{grid-template-columns:1fr 1fr}.band > div{border:0;margin:0;padding:12px 0}
+  .cov{grid-template-columns:1fr 1fr 1fr}
+  .draft{grid-template-columns:1fr}.draft img,.draft .noimg{width:100%;height:160px}
+  table.list th:nth-child(3),table.list td:nth-child(3),table.list th:nth-child(4),table.list td:nth-child(4){display:none}
+  .bar input[type=text]{min-width:0;width:100%}
+}
 </style></head><body>
-<header><h1>خازندار · Control Room</h1><nav><a href="${LIVE}" target="_blank">Live site ↗</a><a href="${REPO_URL}/actions" target="_blank">Cloud runs ↗</a><a href="http://127.0.0.1:4325/" target="_blank">Local preview ↗</a></nav></header>
-<nav class="tabs">
-  <button class="on" data-tab="desk">Desk</button>
-  <button data-tab="set">Settings</button>
-  <button data-tab="chat">Change the site</button>
+<nav class="rail">
+  <div class="mark">خازندار</div>
+  <div class="sub">Control room</div>
+  <a class="nav on" data-tab="desk" href="#desk">${ICON.desk}<span>Desk</span></a>
+  <a class="nav" data-tab="stories" href="#stories">${ICON.stories}<span>Stories</span></a>
+  <a class="nav" data-tab="set" href="#set">${ICON.settings}<span>Settings</span></a>
+  <a class="nav" data-tab="chat" href="#chat">${ICON.change}<span>Change the site</span></a>
+  <div class="foot">
+    <div class="light" id="deploy-light"><i></i><span>Checking the last deploy…</span></div>
+    <a href="${LIVE}" target="_blank">${ICON.out}<span>Open the live site</span></a>
+    <a href="${REPO_URL}/actions" target="_blank">${ICON.out}<span>Cloud runs on GitHub</span></a>
+  </div>
 </nav>
 <main>
 
 <!-- ================================ DESK ================================ -->
-<div class="pane on" id="pane-desk">
-<section><div class="status" id="status">loading…</div><div id="deploy-note" class="m" style="margin-top:8px"></div></section>
+<section class="pane on" id="pane-desk">
+  <div class="band" id="band">
+    <div><div class="k">The newsroom</div><div class="auto" id="auto"><i></i><span>Checking…</span></div><div class="m" id="auto-note" style="margin-top:4px"></div></div>
+    <div><div class="k">Next automatic run</div><div class="v" id="b-next">–</div></div>
+    <div><div class="k">Last run</div><div class="v" id="b-last">–</div></div>
+    <div><div class="k">Live on the site</div><div class="v" id="b-live">–</div></div>
+    <div><div class="k">Waiting for you</div><div class="v" id="b-wait">–</div></div>
+  </div>
+  <div class="running" id="running" style="display:none">
+    <div class="h">${ICON.spin}<span id="running-name">Working</span><span class="m" id="running-time"></span><span class="ok" id="running-count"></span><button class="danger sm" style="margin-inline-start:auto" onclick="stopJob()">Stop</button></div>
+    <pre id="running-lines"></pre>
+    <details><summary>Show every line</summary><pre id="log"></pre></details>
+  </div>
 
-<section>
- <h2>Get new material</h2>
- <div class="get">
-  <button onclick="run('news')">📰 News stories</button>
-  <label>in <select id="newsSection"><option value="">the whole paper</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option><option value="defense">دفاع وجيوسياسة</option></select></label>
-  <label>how many <select id="limit"><option>2</option><option selected>4</option><option>6</option><option>8</option></select></label>
- </div>
- <div class="get" style="margin-top:6px">
-  <button onclick="run('explainer')">📘 An explainer</button>
-  <button onclick="run('analysis')">📈 An analysis</button>
-  <label>of <select id="analysisSection"><option value="">the week's news</option><option value="defense">defence and geopolitics only</option><option value="economy">الاقتصاد only</option><option value="markets">الأسواق only</option><option value="energy">الطاقة only</option></select></label>
-  <button onclick="run('paper')">🔬 A research paper</button>
-  <button onclick="run('weekly')">🗓 The week's review</button>
- </div>
- <p class="m">Each button writes <b>drafts</b>. Nothing goes on the site until you press Publish on it below. A news run takes about 8–10 minutes for four stories; the others take 3–5 minutes.</p>
+  <h2>Every part of the paper</h2>
+  <div class="cov" id="cov"></div>
+  <div class="hubs" id="hubs"></div>
+
+  <div class="cols">
+    <div>
+      <h2>Waiting for your approval <span class="n" id="n-drafts">0</span></h2>
+      <div id="drafts"><div class="empty">Nothing waits for you. The newsroom is publishing on its own; anything you ask for below will appear here for approval first.</div></div>
+      <div id="drafts-all" style="display:none;margin-top:12px"><button class="go" onclick="publishAll()">Publish everything above</button></div>
+    </div>
+    <div>
+      <h2>Need something now?</h2>
+      <div class="get">
+        <div class="row"><button class="quiet" onclick="run('news')">News stories</button><label>in <select id="newsSection"><option value="">all sections</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option><option value="defense">الدفاع</option></select></label><label><select id="limit"><option>2</option><option selected>4</option><option>6</option><option>8</option></select> stories</label></div>
+        <div class="row"><button class="quiet" onclick="run('explainer')">An explainer</button><button class="quiet" onclick="run('analysis')">An analysis</button><label>of <select id="analysisSection"><option value="">the week</option><option value="defense">defence only</option><option value="economy">الاقتصاد only</option><option value="markets">الأسواق only</option><option value="energy">الطاقة only</option></select></label></div>
+        <div class="row"><button class="quiet" onclick="run('paper')">A research paper</button><button class="quiet" onclick="run('weekly')">The week's review</button><button class="quiet" onclick="run('pull')">Sync from GitHub</button></div>
+        <p class="m" style="margin:2px 0 0">These write drafts for your approval. News takes 8–10 minutes for four stories; the others 3–5.</p>
+      </div>
+      <h2>What runs on its own</h2>
+      <ul class="sched" id="sched"></ul>
+      <p class="m" style="margin-top:10px">All of it in the cloud, whether this laptop is on or not. The paper's sections are balanced by rule: a section with nothing for three days takes the next good story.</p>
+      <div id="rejected-box" style="display:none"><h2>Refused by the copy desk, last run</h2><div id="rejected" class="m"></div></div>
+    </div>
+  </div>
 </section>
 
-<section class="running" id="running" style="display:none">
- <h2><span class="spin"></span><span id="running-name">Working</span> <span class="m" id="running-time"></span> <span id="running-count" style="text-transform:none;letter-spacing:0;color:var(--green)"></span></h2>
- <div class="lines" id="running-lines"></div>
- <button class="danger small" onclick="stopJob()">Stop</button>
- <details><summary>Show every line</summary><pre id="log"></pre></details>
+<!-- ================================ STORIES ================================ -->
+<section class="pane" id="pane-stories">
+  <div class="bar">
+    <input type="text" id="f-q" placeholder="Search a headline…" oninput="renderLive()">
+    <select id="f-section" onchange="renderLive()"><option value="">every section</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option><option value="defense">الدفاع</option><option value="analysis">تحليلات</option><option value="explainers">مدخل</option></select>
+    <select id="f-kind" onchange="renderLive()"><option value="">every kind</option><option value="news">news</option><option value="analysis">analysis</option><option value="explainer">explainer</option><option value="paper">paper</option><option value="weekly">weekly</option></select>
+    <select id="f-month" onchange="renderLive()"><option value="">any month</option></select>
+    <select id="f-where" onchange="renderLive()"><option value="">anywhere</option><option value="front">on the front page</option><option value="section">section pages only</option></select>
+    <span class="m" id="f-count"></span>
+  </div>
+  <table class="list"><thead><tr><th>Story</th><th>Where</th><th>Score</th><th>Sources</th><th></th></tr></thead><tbody id="live"></tbody></table>
+  <p class="m" style="margin-top:14px"><b>Where</b> is the story's place right now: the front page's lead, one of the four cover stories, the ticker, or its section page (and الأحدث). Nothing is ever archived away — every story keeps its page, its section's older pages and its topic page for good, as the big dailies do.</p>
 </section>
 
-<section>
- <h2>Waiting for your approval <span class="n" id="n-drafts">0</span></h2>
- <div id="drafts" class="cards"><div class="empty">Nothing is waiting. Press a button above to get new material.</div></div>
- <div id="drafts-all" style="display:none;margin-top:10px"><button class="go" onclick="publishAll()">Publish everything above</button></div>
-</section>
+<!-- ================================ SETTINGS ================================ -->
+<section class="pane" id="pane-set">
+  <div class="grid2">
+    <div class="set">
+      <h2>Who decides what goes live</h2>
+      <label><span>The automatic runs in the cloud</span>
+        <select id="reviewSel"><option value="0">Publish on their own — the paper never waits for me</option><option value="1">Write drafts and wait — I approve every story from the desk</option></select></label>
+      <button class="go" onclick="saveReview()">Apply</button> <span class="m" id="reviewsaved"></span>
+      <p class="m">Runs you start from the desk always wait for you. This is only about the cloud.</p>
 
-<section id="rejected-box" style="display:none">
- <details><summary id="rejected-sum">Refused by the copy desk in the last run</summary>
- <table class="rej" id="rejected"></table>
- <p class="m">These were written, then refused by the checks or the critic, and were not saved. The reason is what the desk found. A source that keeps failing is worth telling the chat about.</p>
- </details>
-</section>
+      <h2>Who writes</h2>
+      <label><span>Model provider for the articles</span>
+        <select id="providerSel"><option value="openrouter">Free models on OpenRouter — costs nothing</option><option value="claude">Claude, on your subscription — the biggest quality gain available</option></select></label>
+      <label><span>Claude model for the newsroom <span class="m">— when the provider is Claude</span></span>
+        <select id="newsroomModel"><option value="sonnet">Sonnet — fast, uses little of your plan</option><option value="opus">Opus — strongest, uses much more of your plan</option><option value="haiku">Haiku — cheapest, weakest</option></select></label>
+      <label><span>Claude model for the "Change the site" chat</span>
+        <select id="chatModel"><option value="">Claude Code's default</option><option value="sonnet">Sonnet</option><option value="opus">Opus</option><option value="haiku">Haiku</option></select></label>
+      <button class="go" onclick="saveWriters()">Apply</button> <span class="m" id="writersaved"></span>
+      <p class="m">The provider and the newsroom model apply in the cloud from the next run; the chat model applies here at once.</p>
 
-<section>
- <h2>Live on the site <span class="n" id="n-live">0</span></h2>
- <div class="get" style="margin-bottom:8px">
-  <select id="f-section" onchange="renderLive()"><option value="">every section</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option><option value="defense">دفاع</option><option value="analysis">تحليلات</option><option value="explainers">مدخل</option></select>
-  <select id="f-kind" onchange="renderLive()"><option value="">every kind</option><option value="news">news</option><option value="analysis">analysis</option><option value="explainer">explainer</option><option value="paper">paper</option><option value="weekly">weekly</option></select>
-  <select id="f-month" onchange="renderLive()"><option value="">any date</option></select>
-  <select id="f-where" onchange="renderLive()"><option value="">anywhere</option><option value="front">on the front page</option><option value="section">section pages only</option></select>
-  <input type="text" id="f-q" placeholder="search a headline…" oninput="renderLive()" style="min-width:220px">
-  <span class="m" id="f-count"></span>
- </div>
- <table id="live"><tr><th>Story</th><th>Where</th><th>Score</th><th>Sources</th><th></th></tr></table>
- <p class="m">"Where" is where the story sits right now: the front page's lead, one of the four cover stories, the ticker, or its section page (and الأحدث). Nothing is ever archived away: every story keeps its page and its place in its section's older pages for good.</p>
-</section>
-</div>
+      <h2>Keys</h2>
+      <div id="keystatus" class="m dots" style="margin-bottom:10px">checking…</div>
+      <div class="keyrow"><label><span>OpenRouter key <span class="m">— free models; starts with <code>sk-or-</code></span></span><input type="password" id="k_or" placeholder="paste to replace the saved one" autocomplete="off"></label><button class="quiet" onclick="saveKey('OPENROUTER_API_KEY','k_or')">Save</button></div>
+      <div class="keyrow"><label><span>Claude subscription token <span class="m">— from <code>claude setup-token</code>; starts with <code>sk-ant-oat</code></span></span><input type="password" id="k_oauth" placeholder="paste here" autocomplete="off"></label><button class="quiet" onclick="saveKey('CLAUDE_CODE_OAUTH_TOKEN','k_oauth')">Save</button></div>
+      <div class="keyrow"><label><span>Claude API key <span class="m">— pay per use; starts with <code>sk-ant-api</code></span></span><input type="password" id="k_ant" placeholder="paste here" autocomplete="off"></label><button class="quiet" onclick="saveKey('ANTHROPIC_API_KEY','k_ant')">Save</button></div>
+      <p><label style="font-weight:400;display:flex;gap:8px;align-items:center"><input type="checkbox" id="k_gh" checked style="width:auto;margin:0"> Also send it to GitHub, so the cloud can use it</label> <span class="m" id="k_note"></span></p>
+    </div>
+    <div class="set">
+      <h2>The newspaper</h2>
+      <label><span>Contact email <span class="m">— AdSense will not approve the site without one</span></span><input type="email" id="contactEmail" value="${esc(current.contactEmail)}"></label>
+      <label><span>Publisher name</span><input type="text" id="publisher" value="${esc(current.publisher)}"></label>
+      <label><span>AdSense publisher id <span class="m">— looks like ca-pub-1234567890</span></span><input type="text" id="adsenseClient" value="${esc(current.adsenseClient)}"></label>
+      <label><span>Google verification code</span><input type="text" id="googleSiteVerification" value="${esc(current.googleSiteVerification)}"></label>
+      <label><span>Visible to search engines?</span>
+        <select id="private"><option value="true"${current.private ? " selected" : ""}>No — keep it unlisted (before launch)</option><option value="false"${current.private ? "" : " selected"}>Yes — ask Google and Bing to list it (launch)</option></select></label>
+      <button class="go" onclick="saveSettings()">Save and publish</button> <span class="m" id="saved"></span>
 
-<!-- ============================== SETTINGS ============================== -->
-<div class="pane" id="pane-set">
-<section class="set">
- <h2>Who writes, and with which key</h2>
- <p class="m">There are three different kinds of key and they are not interchangeable. You need <b>one</b> of the Claude ones, or none at all if you are happy with the free models.</p>
- <div id="keystatus" class="m" style="margin-bottom:10px">checking…</div>
- <div class="keyrow"><label><span>OpenRouter key <span class="m">— free models; starts with <code>sk-or-</code></span></span><input type="password" id="k_or" placeholder="paste to replace the saved one" autocomplete="off"></label><button class="secondary" onclick="saveKey('OPENROUTER_API_KEY','k_or')">Save</button></div>
- <div class="keyrow"><label><span>Claude API key <span class="m">— pay-per-use from console.anthropic.com; starts with <code>sk-ant-</code></span></span><input type="password" id="k_ant" placeholder="paste here" autocomplete="off"></label><button class="secondary" onclick="saveKey('ANTHROPIC_API_KEY','k_ant')">Save</button></div>
- <div class="keyrow"><label><span>Claude subscription token <span class="m">— uses your Claude plan, no per-message cost; the long string printed by <code>claude setup-token</code></span></span><input type="password" id="k_oauth" placeholder="paste here" autocomplete="off"></label><button class="secondary" onclick="saveKey('CLAUDE_CODE_OAUTH_TOKEN','k_oauth')">Save</button></div>
- <p><label style="font-weight:400"><input type="checkbox" id="k_gh" checked style="width:auto"> Also send it to GitHub, so the cloud runs and the daily editor can use it</label> <span class="m" id="k_note"></span></p>
- <label><span>Model provider for the articles</span>
-  <select id="providerSel"><option value="openrouter">Free models on OpenRouter — costs nothing, lower quality</option><option value="claude">Claude — the single biggest quality gain available</option></select></label>
- <button class="go" onclick="saveProvider()">Apply in the cloud</button> <span class="m" id="provsaved"></span>
-</section>
+      <h2>The free models, checked against OpenRouter</h2>
+      <p class="m">Each job has a chain; the first model that answers is used. Only names ending in <code>:free</code> are ever accepted, so you cannot be charged even when OpenRouter changes its offer. A red dot means "replace me".</p>
+      <div id="models" class="m">checking OpenRouter…</div>
+      <details><summary class="m" style="cursor:pointer;color:var(--green)">Free models available right now, biggest context first</summary><div id="freelist" class="m"></div></details>
+      <p><label style="font-weight:400;display:flex;gap:8px;align-items:center"><input type="checkbox" id="m_gh" checked style="width:auto;margin:0"> Apply in the cloud too</label> <span class="m" id="m_note"></span></p>
 
-<section class="set">
- <h2>Who decides what goes live</h2>
- <label><span>The automatic runs in the cloud (every 3 hours)</span>
-  <select id="reviewSel">
-   <option value="0">Publish on their own, as now — the paper never waits for me</option>
-   <option value="1">Write drafts and wait for me — I approve every story from this desk</option>
-  </select></label>
- <button class="go" onclick="saveReview()">Apply in the cloud</button> <span class="m" id="reviewsaved"></span>
- <p class="m">Runs from this desk always wait for you. This switch is only about the cloud. If you choose "wait for me", press <b>Sync from GitHub</b> on the Desk to fetch the cloud's drafts.</p>
+      <h2>Is everything switched on?</h2>
+      <div id="switches" class="m dots">checking…</div>
+    </div>
+  </div>
 </section>
-
-<section class="set">
- <h2>The newspaper</h2>
- <label><span>Contact email <span class="m">— AdSense will not approve the site without one</span></span><input type="email" id="contactEmail" value="${esc(current.contactEmail)}"></label>
- <label><span>Publisher name</span><input type="text" id="publisher" value="${esc(current.publisher)}"></label>
- <label><span>AdSense publisher id <span class="m">— looks like ca-pub-1234567890</span></span><input type="text" id="adsenseClient" value="${esc(current.adsenseClient)}"></label>
- <label><span>Google verification code</span><input type="text" id="googleSiteVerification" value="${esc(current.googleSiteVerification)}"></label>
- <label><span>Visible to search engines?</span>
-  <select id="private"><option value="true"${current.private ? " selected" : ""}>No — keep it unlisted (before launch)</option><option value="false"${current.private ? "" : " selected"}>Yes — ask Google and Bing to list it (launch)</option></select></label>
- <button class="go" onclick="saveSettings()">Save and publish</button> <span class="m" id="saved"></span>
-</section>
-
-<section class="set">
- <h2>The models — checked against OpenRouter's live list</h2>
- <p class="m">Each job in the newsroom has a chain of models: the first one that answers is used. Only models whose name ends in <code>:free</code> are ever accepted, so you cannot be charged even if OpenRouter changes its offer. A red dot means a model has vanished or stopped being free — pick a replacement from the list below and save.</p>
- <div id="models">checking OpenRouter…</div>
- <details><summary>Free models available right now, biggest context first</summary><div id="freelist" class="m"></div></details>
- <p><label style="font-weight:400"><input type="checkbox" id="m_gh" checked style="width:auto"> Apply in the cloud too</label> <span class="m" id="m_note"></span></p>
-</section>
-<section><h2>Is everything switched on?</h2><div id="switches" class="m">checking…</div></section>
-</div>
 
 <!-- ================================ CHAT ================================ -->
-<div class="pane" id="pane-chat">
-<section>
- <h2>Change the site</h2>
- <p class="m">This is for changing how the paper <b>looks and works</b> — the design, a page, the newsroom's rules, its sources. Running the paper is done on the Desk. Type in Arabic or English: <i>"الخط صغير في الموبايل"</i>, <i>"add the Saudi central bank feed"</i>, <i>"why does the copy desk keep refusing Al Jazeera stories?"</i></p>
- <div id="thread"></div>
- <div class="ask"><textarea id="msg" placeholder="Type here, then press Enter…"></textarea><button class="go" id="send" onclick="ask()">Send</button></div>
+<section class="pane" id="pane-chat">
+  <h2>Change the site</h2>
+  <p class="m" style="margin:0 0 12px">For changing how the paper <b>looks and works</b> — the design, a page, the newsroom's rules, its sources. Running the paper is done on the Desk. Arabic or English: <i>"الخط صغير في الموبايل"</i>, <i>"add the Saudi central bank feed"</i>, <i>"why does the copy desk keep refusing Al Jazeera stories?"</i></p>
+  <div id="thread"></div>
+  <div class="ask"><textarea id="msg" placeholder="Type here, then press Enter…"></textarea><button class="go" id="send" onclick="ask()">Send</button></div>
+  <div class="chg" id="changes" style="display:none">
+    <b>Site changes not live yet — your call</b>
+    <div id="changes-body"></div>
+    <button class="go" onclick="publishChanges()">Publish to the live site</button>
+    <button class="quiet" onclick="run('build')">Preview locally first</button>
+    <button class="danger" onclick="undoChanges()">Undo the last change</button>
+  </div>
 </section>
-<section class="chg" id="changes" style="display:none">
- <h2>Site changes not live yet — your call</h2>
- <div id="changes-body"></div>
- <button class="go" onclick="publishChanges()">Publish to the live site</button>
- <button class="secondary" onclick="run('build')">Preview locally first</button>
- <button class="danger" onclick="undoChanges()">Undo the last change</button>
-</section>
-</div>
 </main>
-
 <div id="overlay" onclick="if(event.target===this)closePreview()"><div id="preview"></div></div>
 
 <script>
-// ---- tabs
-document.querySelectorAll('nav.tabs button').forEach(function(b){b.onclick=function(){
-  document.querySelectorAll('nav.tabs button').forEach(function(x){x.classList.toggle('on',x===b)});
-  document.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('on',p.id==='pane-'+b.dataset.tab)});
-  location.hash=b.dataset.tab;
-  if(b.dataset.tab==='chat')document.getElementById('msg').focus();
-}});
-if(location.hash){var tb=document.querySelector('nav.tabs button[data-tab="'+location.hash.slice(1)+'"]');if(tb)tb.click();}
-
-var rtl=function(s){return /[\\u0600-\\u06FF]/.test(s)};
-var esc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
-var post=function(url,body){return fetch(url,{method:'POST',headers:{'content-type':'application/json'},body:body?JSON.stringify(body):undefined})};
+var LIVE_URL=${JSON.stringify(LIVE)};
+var SECTION=${JSON.stringify(SECTION_NAME)};
+var DOTS=${JSON.stringify(ICON.dots)};
 var KIND={news:'news',explainer:'explainer',analysis:'analysis',paper:'paper reading',weekly:'weekly review'};
-var SECTION={economy:'الاقتصاد',markets:'الأسواق',energy:'الطاقة',companies:'الشركات',technology:'التكنولوجيا',defense:'دفاع',analysis:'تحليل',explainers:'مدخل'};
+var WHERE={lead:'Front page · the lead','cover 2':'Front page · cover 2','cover 3':'Front page · cover 3','cover 4':'Front page · cover 4','cover 5':'Front page · cover 5',ticker:'Front page · ticker',section:'Section page',hub:'Its hub'};
+var esc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+var rtl=function(s){return /[\\u0600-\\u06FF]/.test(s)};
+var post=function(url,body){return fetch(url,{method:'POST',headers:{'content-type':'application/json'},body:body?JSON.stringify(body):undefined})};
+var fmtWhen=function(iso){if(!iso)return '–';var d=new Date(iso);return d.toLocaleString([], {weekday:'short',hour:'2-digit',minute:'2-digit'})};
+var ago=function(iso){if(!iso)return 'never';var h=(Date.now()-Date.parse(iso))/36e5;if(h<1)return Math.round(h*60)+' min ago';if(h<48)return Math.round(h)+' h ago';return Math.round(h/24)+' days ago'};
+var utcToLocal=function(hhmm){if(!hhmm)return '';var p=hhmm.split(':');var d=new Date();d.setUTCHours(+p[0],+p[1],0,0);return d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})};
 
-// ---- desk: state polling
-var wasRunning=false;
-function fmtTime(iso){if(!iso)return '-';var d=new Date(iso);return d.toLocaleString([], {weekday:'short',hour:'2-digit',minute:'2-digit'})}
+// ---- navigation
+function show(tab){document.querySelectorAll('.rail a.nav').forEach(function(a){a.classList.toggle('on',a.dataset.tab===tab)});document.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('on',p.id==='pane-'+tab)});if(tab==='chat')document.getElementById('msg').focus()}
+document.querySelectorAll('.rail a.nav').forEach(function(a){a.onclick=function(e){e.preventDefault();location.hash=a.dataset.tab;show(a.dataset.tab)}});
+show((location.hash||'#desk').slice(1));
+window.addEventListener('hashchange',function(){show((location.hash||'#desk').slice(1))});
+
+// ---- state
+var LIVE=[],wasRunning=false,timer=null;
+function refresh(){fetch('/api/state').then(function(r){return r.json()}).then(function(s){render(s);clearTimeout(timer);timer=setTimeout(refresh,s.job.running?3000:20000)}).catch(function(){timer=setTimeout(refresh,5000)})}
 function scoreTag(s){if(s==null||s==='')return '<span class="score">–</span>';var c=s>=8?'hi':(s<=5?'lo':'');return '<span class="score '+c+'">'+s+'</span>'}
-function srcList(list){return '<details><summary>'+list.length+' source'+(list.length===1?'':'s')+'</summary><ul class="src">'+list.map(function(s){return '<li><a href="'+esc(s.url)+'" target="_blank">'+esc(s.nameEn||s.name)+'</a> — '+esc(s.title)+'</li>'}).join('')+'</ul></details>'}
-function card(a){
-  return '<div class="card">'+
-    (a.image?'<img src="'+esc(a.image)+'" alt="">':'<div class="noimg">no photo</div>')+
-    '<div><div class="t"><h3>'+esc(a.title)+'</h3><p>'+esc(a.subtitle)+'</p></div>'+
-    '<div class="k">'+esc(SECTION[a.section]||a.section)+' · '+esc(KIND[a.kind]||a.kind)+' · '+scoreTag(a.score)+' '+esc(a.verdict)+
-    (a.hasChart?' · chart':'')+(a.hasTable?' · table':'')+(a.committed?' · <span title="written by a cloud run">from the cloud</span>':'')+'</div>'+
-    srcList(a.sources)+'</div>'+
-    '<div class="acts"><button class="secondary small" onclick="openPreview(\\''+esc(a.file)+'\\')">Read it</button>'+
-    '<button class="go small" onclick="publish(\\''+esc(a.file)+'\\')">Publish</button>'+
-    '<button class="danger small" onclick="discard(\\''+esc(a.file)+'\\',\\''+esc(a.slug)+'\\')">Discard</button></div></div>';
-}
+function srcList(list){return '<details><summary>'+list.length+' source'+(list.length===1?'':'s')+'</summary><ul>'+list.map(function(s){return '<li><a href="'+esc(s.url)+'" target="_blank">'+esc(s.nameEn||s.name)+'</a> — '+esc(s.title)+'</li>'}).join('')+'</ul></details>'}
 function render(s){
-  var st=document.getElementById('status');
-  st.innerHTML='<div><b>'+s.live.length+'</b><span>stories live</span></div>'+
-    '<div><b>'+s.drafts.length+'</b><span>waiting for you</span></div>'+
-    '<div><b>'+fmtTime(s.nextCloudRun)+'</b><span>next automatic run</span></div>'+
-    '<div><b>'+(s.lastRun?esc(s.lastRun.mode)+' · '+s.lastRun.published+' written':'–')+'</b><span>last run · '+(s.lastRun?fmtTime(s.lastRun.startedAt):'')+'</span></div>'+
-    '<div style="margin-inline-start:auto"><button class="secondary small" onclick="run(\\'pull\\')">Sync from GitHub</button></div>';
-  var r=document.getElementById('running'); r.style.display=s.job.running?'block':'none';
-  if(s.job.running){
-    document.getElementById('running-name').textContent='Working: '+s.job.name;
-    var secs=Math.round((Date.now()-s.job.startedAt)/1000);
-    document.getElementById('running-time').textContent=Math.floor(secs/60)+'m '+(secs%60)+'s';
-    var c=s.job.counts;document.getElementById('running-count').textContent=c&&s.job.kind==='news'?'· '+c.written+(c.target?' of '+c.target:'')+' written'+(c.refused?' · '+c.refused+' refused':'')+(c.target&&c.written<c.target?' · a story takes ~2 min':''):'';
-    document.getElementById('running-lines').textContent=s.job.progress.join('\\n')||'starting…';
-    document.getElementById('log').textContent=s.job.log.join('\\n');
-  } else if(wasRunning){ /* a job just ended: say so once, in the status area */
-    var note=s.job.exitCode===0?'Finished: '+s.job.name+'.':'Stopped or failed: '+s.job.name+' (see Cloud runs for cloud jobs, or press Show every line).';
-    st.insertAdjacentHTML('beforeend','<div style="flex-basis:100%"><span class="m">'+esc(note)+'</span></div>');
-  }
+  document.getElementById('b-next').innerHTML=esc(fmtWhen(s.nextCloudRun));
+  document.getElementById('b-last').innerHTML=s.lastRun?esc(KIND[s.lastRun.mode]||s.lastRun.mode)+' <small>· '+s.lastRun.published+' written · '+esc(ago(s.lastRun.startedAt))+'</small>':'–';
+  document.getElementById('b-live').textContent=s.live.length+' stories';
+  document.getElementById('b-wait').innerHTML=s.drafts.length?'<span class="ok">'+s.drafts.length+' draft'+(s.drafts.length>1?'s':'')+'</span>':'<span style="font-weight:400;color:var(--ink-3)">nothing</span>';
+  var quietCut=Date.now()-72*36e5;
+  var NEWS=['economy','markets','energy','companies','technology','defense'];
+  document.getElementById('cov').innerHTML=s.coverage.filter(function(c){return NEWS.indexOf(c.id)>=0}).map(function(c){var q=!c.last||Date.parse(c.last)<quietCut;return '<div class="'+(q?'quiet':'')+'"><div class="s">'+esc(c.name)+'</div><div class="c"><b>'+c.day+'</b> today · <b>'+c.week+'</b> this week<br>'+(c.last?'last '+esc(ago(c.last)):'nothing yet')+(q&&c.last?' · due for one':'')+'</div></div>'}).join('');
+  document.getElementById('hubs').innerHTML=s.coverage.filter(function(c){return NEWS.indexOf(c.id)<0}).map(function(c){return '<span><b>'+esc(c.name)+'</b> · '+c.week+' this week · last '+esc(ago(c.last))+'</span>'}).join('');
+  document.getElementById('sched').innerHTML=s.schedule.map(function(x){return '<li><span>'+esc(x.what)+'</span><span>'+esc(x.when)+(x.utc?' at '+utcToLocal(x.utc):'')+'</span></li>'}).join('');
+  var r=document.getElementById('running');r.style.display=s.job.running?'grid':'none';
+  if(s.job.running){document.getElementById('running-name').textContent='Working: '+s.job.name;var secs=Math.round((Date.now()-s.job.startedAt)/1000);document.getElementById('running-time').textContent=Math.floor(secs/60)+'m '+(secs%60)+'s';var c=s.job.counts;document.getElementById('running-count').textContent=c&&s.job.kind==='news'?'· '+c.written+(c.target?' of '+c.target:'')+' written'+(c.refused?' · '+c.refused+' refused':''):'';document.getElementById('running-lines').textContent=s.job.progress.join('\\n')||'starting…';document.getElementById('log').textContent=s.job.log.join('\\n')}
+  else if(wasRunning){document.getElementById('auto-note').textContent=s.job.exitCode===0?'Finished: '+s.job.name+'.':'Stopped or failed: '+s.job.name+'.'}
   wasRunning=Boolean(s.job.running);
   document.getElementById('n-drafts').textContent=s.drafts.length;
-  document.getElementById('drafts').innerHTML=s.drafts.length?s.drafts.map(card).join(''):'<div class="empty">Nothing is waiting. Press a button above to get new material.</div>';
+  document.getElementById('drafts').innerHTML=s.drafts.length?s.drafts.map(draft).join(''):'<div class="empty">Nothing waits for you. The newsroom is publishing on its own; anything you ask for on the right appears here for approval first.</div>';
   document.getElementById('drafts-all').style.display=s.drafts.length>1?'block':'none';
   var rej=(s.lastRun&&s.lastRun.report||[]).filter(function(x){return /^rejected|^skip/.test(x.outcome||'')});
   document.getElementById('rejected-box').style.display=rej.length?'block':'none';
-  document.getElementById('rejected-sum').textContent='Refused by the copy desk in the last run ('+rej.length+')';
-  document.getElementById('rejected').innerHTML=rej.map(function(x){return '<tr><td>'+esc(x.section||'')+'</td><td class="why">'+esc(x.title||x.headline||'')+'</td><td>'+esc((x.outcome||'').replace(/^rejected (after revision|by critic after revision \\(\\d+\\)): /,'').slice(0,240))+'</td></tr>'}).join('');
-  document.getElementById('n-live').textContent=s.live.length;
-  LIVE=s.live;
-  var months=[];LIVE.forEach(function(a){var m=a.publishedAt.slice(0,7);if(months.indexOf(m)<0)months.push(m)});
-  var msel=document.getElementById('f-month');var cur=msel.value;
-  msel.innerHTML='<option value="">any date</option>'+months.map(function(m){return '<option value="'+m+'"'+(m===cur?' selected':'')+'>'+m+'</option>'}).join('');
+  document.getElementById('rejected').innerHTML=rej.map(function(x){return '<p><span class="ar" style="display:block;font-size:15px;color:var(--ink)">'+esc(x.title||x.headline||'')+'</span>'+esc((x.outcome||'').replace(/^rejected (after revision|by critic after revision \\(\\d+\\)): /,'').slice(0,200))+'</p>'}).join('');
+  LIVE=s.live;var months=[];LIVE.forEach(function(a){var m=a.publishedAt.slice(0,7);if(months.indexOf(m)<0)months.push(m)});
+  var msel=document.getElementById('f-month');var cur=msel.value;msel.innerHTML='<option value="">any month</option>'+months.map(function(m){return '<option value="'+m+'"'+(m===cur?' selected':'')+'>'+m+'</option>'}).join('');
   renderLive();
 }
-var LIVE_URL=${JSON.stringify(LIVE)};
-var timer=null;
-function refresh(){fetch('/api/state').then(function(r){return r.json()}).then(function(s){render(s);clearTimeout(timer);timer=setTimeout(refresh,s.job.running?3000:20000)}).catch(function(){timer=setTimeout(refresh,5000)})}
-refresh();
-
-// ---- desk: actions
-function run(kind){var limit=document.getElementById('limit').value;var sec=kind==='news'?document.getElementById('newsSection').value:kind==='analysis'?document.getElementById('analysisSection').value:'';post('/run?kind='+kind+'&limit='+limit+(sec?'&sections='+sec:'')).then(function(r){return r.text()}).then(function(t){if(!/^started/.test(t))alert(t);refresh()})}
-function feature(file,on){post('/feature?file='+encodeURIComponent(file)+'&on='+(on?1:0)).then(function(r){return r.text()}).then(function(t){alert(t);refresh()})}
-function moveTo(file,section){post('/move?file='+encodeURIComponent(file)+'&section='+section).then(function(r){return r.text()}).then(function(t){alert(t);refresh()})}
-var LIVE=[];
+function draft(a){return '<div class="draft">'+(a.image?'<img src="'+esc(a.image)+'" alt="">':'<div class="noimg">no photo</div>')+'<div><h3>'+esc(a.title)+'</h3><p>'+esc(a.subtitle)+'</p><div class="meta">'+esc(SECTION[a.section]||a.section)+' · '+esc(KIND[a.kind]||a.kind)+' · '+scoreTag(a.score)+' '+esc(a.verdict)+(a.hasChart?' · chart':'')+(a.hasTable?' · table':'')+' · '+a.sources.length+' sources'+(a.committed?' · from the cloud':'')+'</div><div class="acts"><button class="quiet sm" onclick="openPreview(\\''+esc(a.file)+'\\')">Read it</button><button class="go sm" onclick="publish(\\''+esc(a.file)+'\\')">Publish</button><button class="danger sm" onclick="discard(\\''+esc(a.file)+'\\',\\''+esc(a.slug)+'\\')">Discard</button></div></div></div>'}
 function renderLive(){
   var sec=document.getElementById('f-section').value,kind=document.getElementById('f-kind').value,month=document.getElementById('f-month').value,where=document.getElementById('f-where').value,q=document.getElementById('f-q').value.trim().toLowerCase();
-  var rows=LIVE.filter(function(a){return (!sec||a.section===sec)&&(!kind||a.kind===kind)&&(!month||a.publishedAt.slice(0,7)===month)&&(!where||(where==='front'?/front page/.test(a.where):!/front page/.test(a.where)))&&(!q||(a.title+' '+a.subtitle).toLowerCase().indexOf(q)>=0)});
-  document.getElementById('f-count').textContent=rows.length===LIVE.length?'':rows.length+' of '+LIVE.length;
-  document.getElementById('live').innerHTML='<tr><th>Story</th><th>Where</th><th>Score</th><th>Sources</th><th></th></tr>'+rows.slice(0,150).map(function(a){
-    var front=/front page/.test(a.where);
-    return '<tr><td class="t"><a href="'+LIVE_URL+'/articles/'+esc(a.slug)+'/" target="_blank">'+esc(a.title)+'</a><div class="m" style="direction:ltr;text-align:left">'+esc(SECTION[a.section]||a.section)+' · '+esc(KIND[a.kind]||a.kind)+' · '+esc(a.publishedAt.slice(0,16).replace('T',' '))+' UTC</div></td>'+
-      '<td style="font-size:12.5px;white-space:nowrap;'+(front?'color:var(--green);font-weight:600':'color:var(--muted)')+'">'+esc(a.where||'')+(a.featured?' ★':'')+'</td>'+
-      '<td>'+scoreTag(a.score)+'</td><td>'+srcList(a.sources)+'</td>'+
-      '<td style="white-space:nowrap">'+(a.kind==='news'?(a.featured?'<button class="secondary small" onclick="feature(\\''+esc(a.file)+'\\',false)">Unfeature</button>':'<button class="secondary small" onclick="feature(\\''+esc(a.file)+'\\',true)">Make it the lead</button>'):'')+
-      (a.kind==='news'?'<select class="small" style="margin:0 6px 6px 0;padding:4px" onchange="if(this.value){moveTo(\\''+esc(a.file)+'\\',this.value)}"><option value="">Move to…</option>'+['economy','markets','energy','companies','technology','defense'].filter(function(s){return s!==a.section}).map(function(s){return '<option value="'+s+'">'+esc(SECTION[s])+'</option>'}).join('')+'</select>':'')+
-      '<button class="danger small" onclick="unpublish(\\''+esc(a.file)+'\\',\\''+esc(a.title).replace(/'/g,'’')+'\\')">Unpublish</button></td></tr>'}).join('');
+  var rows=LIVE.filter(function(a){var front=a.where!=='section'&&a.where!=='hub';return (!sec||a.section===sec)&&(!kind||a.kind===kind)&&(!month||a.publishedAt.slice(0,7)===month)&&(!where||(where==='front'?front:!front))&&(!q||(a.title+' '+a.subtitle).toLowerCase().indexOf(q)>=0)});
+  document.getElementById('f-count').textContent=rows.length===LIVE.length?LIVE.length+' stories':rows.length+' of '+LIVE.length;
+  document.getElementById('live').innerHTML=rows.slice(0,200).map(function(a){var front=a.where!=='section'&&a.where!=='hub';
+    return '<tr><td class="t"><a href="'+LIVE_URL+'/articles/'+esc(a.slug)+'/" target="_blank">'+esc(a.title)+'</a><div class="meta">'+esc(SECTION[a.section]||a.section)+' · '+esc(KIND[a.kind]||a.kind)+' · '+esc(fmtWhen(a.publishedAt))+(a.featured?' · ★ featured':'')+'</div></td>'+
+      '<td><span class="chip'+(front?' front':'')+'">'+esc(WHERE[a.where]||a.where)+'</span></td><td>'+scoreTag(a.score)+'</td><td class="src">'+srcList(a.sources)+'</td>'+
+      '<td><details class="menu"><summary aria-label="Actions">'+DOTS+'</summary><div class="pop">'+
+      '<a href="'+LIVE_URL+'/articles/'+esc(a.slug)+'/" target="_blank">Open on the site</a>'+
+      (a.kind==='news'?(a.featured?'<button onclick="feature(\\''+esc(a.file)+'\\',false)">Take it off the lead</button>':'<button onclick="feature(\\''+esc(a.file)+'\\',true)">Make it the lead (48 h)</button>')+'<div class="sep"></div><div class="lbl">Move to</div><div class="secs">'+['economy','markets','energy','companies','technology','defense'].filter(function(s){return s!==a.section}).map(function(s){return '<button onclick="moveTo(\\''+esc(a.file)+'\\',\\''+s+'\\')">'+esc(SECTION[s])+'</button>'}).join('')+'</div>':'')+
+      '<div class="sep"></div><button class="d" onclick="unpublish(\\''+esc(a.file)+'\\',\\''+esc(a.title).replace(/'/g,'’')+'\\')">Unpublish</button></div></details></td></tr>'}).join('');
 }
+document.addEventListener('click',function(e){document.querySelectorAll('details.menu[open]').forEach(function(d){if(!d.contains(e.target))d.removeAttribute('open')})});
+refresh();
+
+// ---- actions
+function run(kind){var limit=document.getElementById('limit').value;var sec=kind==='news'?document.getElementById('newsSection').value:kind==='analysis'?document.getElementById('analysisSection').value:'';post('/run?kind='+kind+'&limit='+limit+(sec?'&sections='+sec:'')).then(function(r){return r.text()}).then(function(t){if(!/^started/.test(t))alert(t);refresh()})}
 function stopJob(){post('/stop').then(refresh)}
 function publish(file){post('/publish?file='+encodeURIComponent(file)).then(function(r){return r.text()}).then(function(t){if(!/^Publishing/.test(t))alert(t);closePreview();refresh()})}
 function publishAll(){if(!confirm('Publish every waiting story to the live site?'))return;post('/publish-all').then(function(r){return r.text()}).then(function(t){if(!/^Publishing/.test(t))alert(t);refresh()})}
-function discard(file,slug){if(!confirm('Throw this draft away? It will not come back on the next run.'))return;post('/discard?file='+encodeURIComponent(file)+'&slug='+encodeURIComponent(slug)).then(function(r){return r.text()}).then(function(t){closePreview();refresh()})}
+function discard(file,slug){if(!confirm('Throw this draft away? It will not come back on the next run.'))return;post('/discard?file='+encodeURIComponent(file)+'&slug='+encodeURIComponent(slug)).then(function(){closePreview();refresh()})}
 function unpublish(file,title){if(!confirm('Remove this story from the live site?\\n\\n'+title))return;post('/unpublish?file='+encodeURIComponent(file)).then(function(r){return r.text()}).then(function(t){alert(t);refresh()})}
+function feature(file,on){post('/feature?file='+encodeURIComponent(file)+'&on='+(on?1:0)).then(function(r){return r.text()}).then(function(t){alert(t);refresh()})}
+function moveTo(file,section){post('/move?file='+encodeURIComponent(file)+'&section='+section).then(function(r){return r.text()}).then(function(t){alert(t);refresh()})}
 
 // ---- preview
-function openPreview(file){
-  var box=document.getElementById('preview');box.innerHTML='<p class="m">loading…</p>';document.getElementById('overlay').classList.add('on');
-  fetch('/draft?file='+encodeURIComponent(file)).then(function(r){return r.json()}).then(function(a){
-    var d=a.data;
-    box.innerHTML='<div class="bar"><button class="go" onclick="publish(\\''+esc(file)+'\\')">Publish this</button><button class="danger" onclick="discard(\\''+esc(file)+'\\',\\''+esc(d.slug)+'\\')">Discard</button><button class="secondary x" onclick="closePreview()">Close ✕</button></div>'+
-      '<article><h1>'+esc(d.title)+'</h1><p class="sub">'+esc(d.subtitle)+'</p>'+
-      (d.image?'<img src="'+esc(d.image.url)+'" alt="'+esc(d.image.alt)+'"><div class="credit">'+esc(d.image.credit||'')+'</div>':'')+
-      '<p class="lede">'+esc(d.lede)+'</p>'+
-      ((d.keyFacts||[]).length?'<div class="facts"><ul>'+d.keyFacts.map(function(f){return '<li>'+(f.label?'<b>'+esc(f.label)+':</b> ':'')+esc(f.value)+'</li>'}).join('')+'</ul></div>':'')+
-      a.bodyHtml+
-      (d.whyItMatters?'<div class="why"><b>لماذا يهم؟</b> '+esc(d.whyItMatters)+'</div>':'')+
-      (d.chart?'<p class="m" style="direction:ltr;text-align:left">This story carries a chart ('+esc(d.chart.title||d.chart.type)+'); it renders on the site.</p>':'')+
-      (d.table?'<p class="m" style="direction:ltr;text-align:left">This story carries a table ('+esc(d.table.title||'')+'); it renders on the site.</p>':'')+
-      '</article>'+
-      '<div class="meta"><b>Sources</b><ul class="src">'+(d.sources||[]).map(function(s){return '<li><a href="'+esc(s.url)+'" target="_blank">'+esc(s.nameEn||s.name)+'</a> — '+esc(s.title)+'</li>'}).join('')+'</ul>'+
-      '<b>Quality</b> '+scoreTag(d.quality&&d.quality.score)+' '+esc(d.quality&&d.quality.verdict||'')+(d.quality&&d.quality.criticSummary?'<div class="m" style="direction:rtl;text-align:right">'+esc(d.quality.criticSummary)+'</div>':'')+
-      ((d.quality&&d.quality.warnings||[]).length?'<div class="m">Warnings: '+esc(d.quality.warnings.join(' | '))+'</div>':'')+
-      '<div class="m" style="margin-top:6px">Written by '+esc((d.models&&d.models.writer)||'?')+' · checked by '+esc((d.models&&d.models.critic)||'?')+'</div></div>';
-  });
-}
+function openPreview(file){var box=document.getElementById('preview');box.innerHTML='<p class="m">loading…</p>';document.getElementById('overlay').classList.add('on');
+  fetch('/draft?file='+encodeURIComponent(file)).then(function(r){return r.json()}).then(function(a){var d=a.data;
+    box.innerHTML='<div class="bar"><button class="go" onclick="publish(\\''+esc(file)+'\\')">Publish this</button><button class="danger" onclick="discard(\\''+esc(file)+'\\',\\''+esc(d.slug)+'\\')">Discard</button><button class="quiet x" onclick="closePreview()">Close</button></div>'+
+      '<article><h1>'+esc(d.title)+'</h1><p class="sub">'+esc(d.subtitle)+'</p>'+(d.image?'<img src="'+esc(d.image.url)+'" alt="'+esc(d.image.alt)+'"><div class="credit">'+esc(d.image.credit||'')+'</div>':'')+'<p class="lede">'+esc(d.lede)+'</p>'+
+      ((d.keyFacts||[]).length?'<div class="facts"><ul>'+d.keyFacts.map(function(f){return '<li>'+(f.label?'<b>'+esc(f.label)+':</b> ':'')+esc(f.value)+'</li>'}).join('')+'</ul></div>':'')+a.bodyHtml+(d.whyItMatters?'<div class="why"><b>لماذا يهم؟</b> '+esc(d.whyItMatters)+'</div>':'')+
+      (d.chart?'<p class="m" style="direction:ltr;text-align:left">Carries a chart ('+esc(d.chart.title||d.chart.type)+'); it renders on the site.</p>':'')+(d.table?'<p class="m" style="direction:ltr;text-align:left">Carries a table; it renders on the site.</p>':'')+'</article>'+
+      '<div class="meta"><b>Sources</b><ul>'+(d.sources||[]).map(function(s){return '<li><a href="'+esc(s.url)+'" target="_blank">'+esc(s.nameEn||s.name)+'</a> — '+esc(s.title)+'</li>'}).join('')+'</ul><b>Quality</b> '+scoreTag(d.quality&&d.quality.score)+' '+esc(d.quality&&d.quality.verdict||'')+(d.quality&&d.quality.criticSummary?'<div class="ar m" style="margin-top:4px">'+esc(d.quality.criticSummary)+'</div>':'')+'<div class="m" style="margin-top:6px">Written by '+esc((d.models&&d.models.writer)||'?')+' · checked by '+esc((d.models&&d.models.critic)||'?')+'</div></div>'})}
 function closePreview(){document.getElementById('overlay').classList.remove('on')}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closePreview()});
 
-// ---- settings
-function dot(ok,label,note){return '<p><span class="dot '+(ok===null?'q':ok?'y':'n')+'"></span><b>'+label+'</b>'+(note?' <span class="m">— '+note+'</span>':'')+'</p>'}
-function loadHealth(){
-  fetch('/health').then(function(r){return r.json()}).then(function(h){
-    var inUse=h.cloud.provider==='claude'?(h.cloud.oauth?'Claude, on your subscription token':h.cloud.anthropic?'Claude, on your pay-per-use API key':'Claude is selected but NO Claude key is on GitHub — runs will fall back or fail'):'the free OpenRouter models';
-    document.getElementById('keystatus').innerHTML=
-      dot(h.local.openrouter,'OpenRouter key on this laptop',h.local.openrouter?'saved':'missing')+
-      dot(h.local.anthropic||h.local.oauth,'A Claude key on this laptop',h.local.oauth?'subscription token saved':h.local.anthropic?'API key saved':'none saved')+
-      dot(h.cloud.anthropic||h.cloud.oauth||h.cloud.provider!=='claude','A Claude key on GitHub',h.cloud.oauth?'subscription token':h.cloud.anthropic?'API key':'none')+
-      '<p><b>The cloud is writing articles with:</b> '+inUse+'</p>';
-    document.getElementById('providerSel').value=h.cloud.provider;
-    document.getElementById('reviewSel').value=h.cloud.review?'1':'0';
-    var dep=h.deploy?(h.deploy.ok?'<span class="ok">Site deploy OK</span> · '+fmtTime(h.deploy.when):'<span class="no"><b>THE SITE IS NOT UPDATING</b> — the last deploy failed ('+fmtTime(h.deploy.when)+'). Readers see an older edition. <a href="'+esc(h.deploy.url)+'" target="_blank">See why ↗</a></span>'):'';
-    var depBox=document.getElementById('deploy-note');if(depBox)depBox.innerHTML=dep;
-    document.getElementById('switches').innerHTML=
-      (h.deploy?dot(h.deploy.ok,'The site\\'s last deploy',h.deploy.ok?'succeeded · '+fmtTime(h.deploy.when):'FAILED · '+fmtTime(h.deploy.when)+' — readers see an older edition until this is fixed'):'')+
-      dot(h.ghOk,'This laptop can talk to GitHub',h.ghOk?'gh is signed in':'run: gh auth login')+
-      dot(h.cloud.editorOn&&(h.cloud.anthropic||h.cloud.oauth),'The daily editor',!h.cloud.editorOn?'switched off (KHAZENDAR_EDITOR is not 1)':(h.cloud.anthropic||h.cloud.oauth)?'switched on with a key':'switched on but has no key, so it skips every morning')+
-      (h.editorReal?dot(h.editorReal.working,'The daily editor is actually doing work','its last run took '+h.editorReal.seconds+'s'+(h.editorReal.working?'':' — a real round takes minutes; it is skipping')):'')+
-      dot(h.chatReady,'The "Change the site" tab',h.chatReady?'ready':'needs a Claude key above');
-  });
-}
+// ---- health / settings
+function dot(ok,label,note){return '<p><span style="display:inline-block;width:9px;height:9px;border-radius:50%;margin-inline-end:8px;background:'+(ok===null?'#c9a227':ok?'var(--green)':'var(--red)')+'"></span><b>'+label+'</b>'+(note?' <span class="m">— '+note+'</span>':'')+'</p>'}
+function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(function(h){
+  var auto=document.getElementById('auto');auto.className='auto'+(h.cloud.review?' off':'');auto.innerHTML='<i></i><span>'+(h.cloud.review?'Waits for your approval':'Publishes on its own')+'</span>';
+  document.getElementById('auto-note').textContent=h.cloud.provider==='claude'?'written by Claude ('+h.cloud.newsroomModel+')':'written by the free OpenRouter models';
+  var dl=document.getElementById('deploy-light');if(h.deploy){dl.className='light '+(h.deploy.ok?'ok':'no');dl.innerHTML='<i></i><span>'+(h.deploy.ok?'Site deploy OK · '+esc(fmtWhen(h.deploy.when)):'<b>THE SITE IS NOT UPDATING</b> — last deploy failed. <a href="'+esc(h.deploy.url)+'" target="_blank">See why</a>')+'</span>'}
+  var inUse=h.cloud.provider==='claude'?(h.cloud.oauth?'Claude on your subscription token':h.cloud.anthropic?'Claude on your pay-per-use key':'Claude is selected but NO Claude key is on GitHub'):'the free OpenRouter models';
+  document.getElementById('keystatus').innerHTML=dot(h.local.openrouter,'OpenRouter key on this laptop',h.local.openrouter?'saved':'missing')+dot(h.local.oauth||h.local.anthropic,'A Claude key on this laptop',h.local.oauth?'subscription token':h.local.anthropic?'API key':'none')+dot(h.cloud.oauth||h.cloud.anthropic||h.cloud.provider!=='claude','A Claude key on GitHub',h.cloud.oauth?'subscription token':h.cloud.anthropic?'API key':'none')+'<p><b>The cloud writes with:</b> '+inUse+'</p>';
+  document.getElementById('providerSel').value=h.cloud.provider;document.getElementById('newsroomModel').value=h.cloud.newsroomModel;document.getElementById('chatModel').value=h.chatModel==='default'?'':h.chatModel;document.getElementById('reviewSel').value=h.cloud.review?'1':'0';
+  document.getElementById('switches').innerHTML=(h.deploy?dot(h.deploy.ok,'The site\\'s last deploy',h.deploy.ok?'succeeded · '+fmtWhen(h.deploy.when):'FAILED — readers see an older edition'):'')+dot(h.ghOk,'This laptop can talk to GitHub',h.ghOk?'gh is signed in':'run: gh auth login')+dot(h.cloud.editorOn&&(h.cloud.oauth||h.cloud.anthropic),'The daily editor',!h.cloud.editorOn?'switched off':(h.cloud.oauth||h.cloud.anthropic)?'switched on with a key':'switched on but has no key, so it skips')+(h.editorReal?dot(h.editorReal.working,'The daily editor is actually doing work','its last run took '+h.editorReal.seconds+'s'+(h.editorReal.working?'':' — a real round takes minutes')):'')+dot(h.chatReady,'The "Change the site" tab',h.chatReady?'ready':'needs a Claude key');
+})}
 loadHealth();
 var ROLE_WHAT={editor:'picks the stories and their sections',writer:'writes the article',desk:'the Arabic copy desk',critic:'checks facts and scores it',vision:'confirms the photo shows the subject'};
-function loadModels(){
-  fetch('/models').then(function(r){return r.json()}).then(function(m){
-    if(!m.reachable){document.getElementById('models').innerHTML='<p class="no">Could not reach openrouter.ai just now; the chains are unchanged. Try again in a minute.</p>';return}
-    document.getElementById('models').innerHTML=Object.keys(m.roles).map(function(role){var r=m.roles[role];
-      return '<div style="border-top:1px solid var(--line);padding:8px 0"><b>'+role+'</b> <span class="m">— '+ROLE_WHAT[role]+(r.override?' · changed by you':' · built-in defaults')+'</span>'+
-        '<div style="margin:4px 0">'+r.models.map(function(x){return '<div><span class="dot '+(x.ok?'y':'n')+'"></span><code>'+esc(x.id)+'</code> <span class="m">'+(x.ok?(x.ctx?Math.round(x.ctx/1000)+'k context':''):'NOT FREE OR GONE — replace it')+'</span></div>'}).join('')+'</div>'+
-        '<div class="keyrow"><input type="text" id="m_'+role+'" value="'+esc(r.models.map(function(x){return x.id}).join(', '))+'"><span><button class="secondary small" onclick="saveModels(\\''+role+'\\')">Save</button><button class="secondary small" onclick="resetModels(\\''+role+'\\')">Reset</button></span></div></div>'}).join('');
-    document.getElementById('freelist').innerHTML=m.free.map(function(x){return '<div><code>'+esc(x.id)+'</code> '+Math.round(x.ctx/1000)+'k</div>'}).join('')||'none listed';
-  });
-}
+function loadModels(){fetch('/models').then(function(r){return r.json()}).then(function(m){
+  if(!m.reachable){document.getElementById('models').innerHTML='<p class="no">Could not reach openrouter.ai just now; the chains are unchanged.</p>';return}
+  document.getElementById('models').innerHTML=Object.keys(m.roles).map(function(role){var r=m.roles[role];return '<div style="border-top:1px solid var(--rule-2);padding:10px 0"><b style="color:var(--ink)">'+role+'</b> <span class="m">— '+ROLE_WHAT[role]+(r.override?' · changed by you':' · built-in defaults')+'</span><div style="margin:4px 0">'+r.models.map(function(x){return '<div><span style="display:inline-block;width:8px;height:8px;border-radius:50%;margin-inline-end:7px;background:'+(x.ok?'var(--green)':'var(--red)')+'"></span><code>'+esc(x.id)+'</code> <span class="m">'+(x.ok?(x.ctx?Math.round(x.ctx/1000)+'k context':''):'NOT FREE OR GONE — replace it')+'</span></div>'}).join('')+'</div><div class="keyrow"><input type="text" id="m_'+role+'" value="'+esc(r.models.map(function(x){return x.id}).join(', '))+'"><span><button class="quiet sm" onclick="saveModels(\\''+role+'\\')">Save</button> <button class="quiet sm" onclick="resetModels(\\''+role+'\\')">Reset</button></span></div></div>'}).join('');
+  document.getElementById('freelist').innerHTML=m.free.map(function(x){return '<div><code>'+esc(x.id)+'</code> '+Math.round(x.ctx/1000)+'k</div>'}).join('')||'none listed'})}
 loadModels();
-function saveModels(role){var note=document.getElementById('m_note');note.textContent='checking with OpenRouter…';post('/models',{role:role,models:document.getElementById('m_'+role).value,github:document.getElementById('m_gh').checked}).then(function(r){return r.text()}).then(function(t){note.textContent=t;loadModels()})}
+function saveModels(role){var n=document.getElementById('m_note');n.textContent='checking with OpenRouter…';post('/models',{role:role,models:document.getElementById('m_'+role).value,github:document.getElementById('m_gh').checked}).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadModels()})}
 function resetModels(role){post('/models/reset',{role:role}).then(function(r){return r.text()}).then(function(t){document.getElementById('m_note').textContent=t;loadModels()})}
-function saveKey(name,inputId){
-  var v=document.getElementById(inputId).value.trim();if(!v)return;
-  var note=document.getElementById('k_note');note.textContent='saving…';
-  post('/keys',{name:name,value:v,github:document.getElementById('k_gh').checked}).then(function(r){return r.text()}).then(function(t){note.textContent=t;document.getElementById(inputId).value='';loadHealth()});
-}
-function saveProvider(){document.getElementById('provsaved').textContent='applying…';post('/provider?value='+document.getElementById('providerSel').value).then(function(r){return r.text()}).then(function(t){document.getElementById('provsaved').textContent=t;loadHealth()})}
-function saveReview(){document.getElementById('reviewsaved').textContent='applying…';post('/review?value='+document.getElementById('reviewSel').value).then(function(r){return r.text()}).then(function(t){document.getElementById('reviewsaved').textContent=t;loadHealth()})}
-function saveSettings(){
-  var body={contactEmail:contactEmail.value,publisher:publisher.value,adsenseClient:adsenseClient.value,googleSiteVerification:googleSiteVerification.value,private:document.getElementById('private').value==='true'};
-  post('/settings',body).then(function(r){return r.text()}).then(function(t){document.getElementById('saved').textContent=t});
-}
+function saveKey(name,id){var v=document.getElementById(id).value.trim();if(!v)return;var n=document.getElementById('k_note');n.textContent='saving…';post('/keys',{name:name,value:v,github:document.getElementById('k_gh').checked}).then(function(r){return r.text()}).then(function(t){n.textContent=t;document.getElementById(id).value='';loadHealth()})}
+function saveWriters(){var n=document.getElementById('writersaved');n.textContent='applying…';post('/writers',{provider:document.getElementById('providerSel').value,newsroomModel:document.getElementById('newsroomModel').value,chatModel:document.getElementById('chatModel').value}).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
+function saveReview(){var n=document.getElementById('reviewsaved');n.textContent='applying…';post('/review?value='+document.getElementById('reviewSel').value).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
+function saveSettings(){var body={contactEmail:contactEmail.value,publisher:publisher.value,adsenseClient:adsenseClient.value,googleSiteVerification:googleSiteVerification.value,private:document.getElementById('private').value==='true'};post('/settings',body).then(function(r){return r.text()}).then(function(t){document.getElementById('saved').textContent=t})}
 
 // ---- chat
 var thread=document.getElementById('thread');
 function bubble(cls,text){var d=document.createElement('div');d.className='bub '+cls+(rtl(text)?' rtl':'');d.textContent=text;thread.appendChild(d);thread.scrollTop=thread.scrollHeight;return d}
 function step(text){var d=document.createElement('div');d.className='step';d.textContent='· '+text;thread.appendChild(d);thread.scrollTop=thread.scrollHeight}
-var busy=null;
-var ce=new EventSource('/chat/events');
-ce.onmessage=function(e){var ev=JSON.parse(e.data);
-  if(ev.t==='you')bubble('you',ev.text);
-  if(ev.t==='paper'){if(busy){busy.remove();busy=null}bubble('paper',ev.text)}
-  if(ev.t==='step')step(ev.text);
-  if(ev.t==='busy')busy=bubble('paper','…');
-  if(ev.t==='error'){if(busy){busy.remove();busy=null}bubble('paper',ev.text)}
-  if(ev.t==='done'){if(busy){busy.remove();busy=null}document.getElementById('send').disabled=false;document.getElementById('msg').disabled=false;step('finished in '+ev.seconds+'s')}
-  if(ev.t==='changes')renderChanges(ev.changes)};
-function ask(){var box=document.getElementById('msg');var text=box.value.trim();if(!text)return;box.value='';box.disabled=true;document.getElementById('send').disabled=true;
-  post('/chat',{message:text}).then(function(r){if(!r.ok){r.text().then(alert);box.disabled=false;document.getElementById('send').disabled=false}})}
+var busy=null;var ce=new EventSource('/chat/events');
+ce.onmessage=function(e){var ev=JSON.parse(e.data);if(ev.t==='you')bubble('you',ev.text);if(ev.t==='paper'){if(busy){busy.remove();busy=null}bubble('paper',ev.text)}if(ev.t==='step')step(ev.text);if(ev.t==='busy')busy=bubble('paper','…');if(ev.t==='error'){if(busy){busy.remove();busy=null}bubble('paper',ev.text)}if(ev.t==='done'){if(busy){busy.remove();busy=null}document.getElementById('send').disabled=false;document.getElementById('msg').disabled=false;step('finished in '+ev.seconds+'s')}if(ev.t==='changes')renderChanges(ev.changes)};
+function ask(){var box=document.getElementById('msg');var text=box.value.trim();if(!text)return;box.value='';box.disabled=true;document.getElementById('send').disabled=true;post('/chat',{message:text}).then(function(r){if(!r.ok){r.text().then(alert);box.disabled=false;document.getElementById('send').disabled=false}})}
 document.getElementById('msg').addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();ask()}});
-function renderChanges(c){var box=document.getElementById('changes');if(!c||!c.count){box.style.display='none';return}box.style.display='block';
-  var seen={};c.files.forEach(function(f){var k=f.what+' — '+f.how;seen[k]=(seen[k]||0)+1});
-  document.getElementById('changes-body').innerHTML='<p>'+c.count+' file'+(c.count>1?'s':'')+' changed.</p><ul>'+Object.keys(seen).map(function(k){return '<li>'+esc(k)+(seen[k]>1?' ('+seen[k]+' files)':'')+'</li>'}).join('')+'</ul>'}
+function renderChanges(c){var box=document.getElementById('changes');if(!c||!c.count){box.style.display='none';return}box.style.display='block';var seen={};c.files.forEach(function(f){var k=f.what+' — '+f.how;seen[k]=(seen[k]||0)+1});document.getElementById('changes-body').innerHTML='<ul>'+Object.keys(seen).map(function(k){return '<li>'+esc(k)+(seen[k]>1?' ('+seen[k]+' files)':'')+'</li>'}).join('')+'</ul>'}
 function publishChanges(){if(!confirm('Publish these site changes?'))return;post('/publish-changes').then(function(r){return r.text()}).then(function(t){alert(t);refresh()})}
 function undoChanges(){if(!confirm('Undo the last change the chat made?'))return;post('/undo').then(function(r){return r.text()}).then(function(t){alert(t);location.reload()})}
 fetch('/changes').then(function(r){return r.json()}).then(renderChanges);
@@ -929,10 +981,8 @@ function body(req) {
     });
   });
 }
-// --autostash: the "Change the site" tab leaves edits uncommitted on purpose, and a plain rebase refuses
-// to run over them ("Please commit or stash them" — the first publish from this desk failed exactly so).
-// -X theirs: the cloud commits pipeline/state on every run; when both sides touched it, keep the local
-// hunk, as newsroom.yml itself does, instead of stopping on a conflict nobody is there to resolve.
+// --autostash: the chat leaves edits uncommitted on purpose and a plain rebase refuses to run over them.
+// -X theirs: the cloud commits pipeline/state every run; keep the local hunk, as newsroom.yml does.
 const PUSH = ["&&", "git", "pull", "--rebase", "--autostash", "-X", "theirs", "pages", "main", "&&", "git", "push", "pages", "HEAD:main"];
 function commitAndPush(name, paths, message) {
   return runJob(name, "publish", "git", ["add", ...paths, "&&", "git", ...GIT_ID, "commit", "-q", "-m", `"${message}"`, ...PUSH]);
@@ -953,12 +1003,21 @@ const server = http.createServer(async (req, res) => {
       res.writeHead(200, { "content-type": "text/html; charset=utf-8" });
       return res.end(page());
     }
+    if (url.pathname.startsWith("/fonts/")) {
+      const file = path.join(FONTS, path.basename(url.pathname));
+      if (!file.endsWith(".woff2") || !existsSync(file)) return text(404, "not found");
+      res.writeHead(200, { "content-type": "font/woff2", "cache-control": "public, max-age=604800" });
+      return res.end(await readFile(file));
+    }
     if (url.pathname === "/api/state") {
       const arts = await allArticles();
+      const live = placeOnFront(arts.filter((a) => !a.isDraft));
       return json({
         job: { running: Boolean(job.running), name: job.name, kind: job.kind, startedAt: job.startedAt, exitCode: job.exitCode, finishedAt: job.finishedAt, progress: job.running ? progressLines() : [], counts: job.running ? jobProgress() : null, log: job.log.slice(-400) },
         drafts: arts.filter((a) => a.isDraft),
-        live: placeOnFront(arts.filter((a) => !a.isDraft)),
+        live,
+        coverage: coverage(live),
+        schedule: SCHEDULE,
         lastRun: await latestRun(),
         nextCloudRun: nextCloudRun(),
       });
@@ -980,11 +1039,10 @@ const server = http.createServer(async (req, res) => {
         paper: ["a research paper", "node", ["pipeline/run.mjs", "--draft", "--mode=paper"]],
         weekly: ["the week's review", "node", ["pipeline/run.mjs", "--draft", "--mode=weekly"]],
         build: ["build & local preview", "npm", ["run", "build", "&&", "npx", "astro", "preview", "--port", "4325", "--host", "127.0.0.1"], { env: { KHAZENDAR_SHOW_DRAFTS: "1" } }],
-        pull: ["sync from GitHub", "git", ["pull", "--rebase", "pages", "main"]],
+        pull: ["sync from GitHub", "git", ["pull", "--rebase", "--autostash", "-X", "theirs", "pages", "main"]],
       };
       const plan = plans[kind];
       if (!plan) return text(400, "unknown action");
-      // "News stories — in الطاقة": one part of the paper only. run.mjs filters the editor's picks to it.
       const sections = (url.searchParams.get("sections") ?? "").replace(/[^a-z,]/g, "");
       if (sections && (kind === "news" || kind === "analysis")) {
         plan[2].push(`--sections=${sections}`);
@@ -1022,7 +1080,6 @@ const server = http.createServer(async (req, res) => {
       const tracked = !(status.get(`content/articles/${file}`) ?? "").includes("?");
       await unlink(full);
       await markDiscarded(url.searchParams.get("slug") ?? "");
-      // A draft the cloud already committed has to be removed from the repository too, not just from this disk.
       if (tracked && !job.running) commitAndPush("discard a cloud draft", ["-A", `content/articles/${file}`, "pipeline/state"], `newsroom: discard ${file.replace(/\.md$/, "")}`);
       return text(200, "discarded");
     }
@@ -1036,21 +1093,19 @@ const server = http.createServer(async (req, res) => {
       commitAndPush(on ? "feature a story" : "unfeature a story", touched, `front page: ${on ? "feature" : "unfeature"} ${file.replace(/\.md$/, "")}`);
       return text(200, on ? "Done — it leads the front page for the next 48 hours, live in about a minute." : "Done — the front page goes back to the formula, live in about a minute.");
     }
-    // "Move to الاقتصاد": re-file a story. The section is the one editorial field that is not prose,
-    // and the editor model gets it wrong now and then (an air-traffic outage filed under energy).
     if (url.pathname === "/move" && req.method === "POST") {
       const file = path.basename(url.searchParams.get("file") ?? "");
       const section = url.searchParams.get("section") ?? "";
       const full = path.join(ARTICLES, file);
       if (!file.endsWith(".md") || !existsSync(full)) return text(404, "not found");
-      if (!["economy", "markets", "energy", "companies", "technology", "defense"].includes(section)) return text(400, "unknown section");
+      if (!NEWS_SECTIONS.includes(section)) return text(400, "unknown section");
       if (job.running) return text(409, `Still busy with "${job.name}". Wait for it to finish first.`);
       const raw = await readFile(full, "utf8");
       const next = raw.replace(/^section:\s*\S+/m, `section: ${section}`);
       if (next === raw) return text(200, "It is already there.");
       await writeFile(full, next, "utf8");
       commitAndPush("move a story", [`content/articles/${file}`], `section: move ${file.replace(/\.md$/, "")} to ${section}`);
-      return text(200, "Moved — live in about a minute.");
+      return text(200, `Moved to ${SECTION_NAME[section]} — live in about a minute.`);
     }
     if (url.pathname === "/unpublish" && req.method === "POST") {
       const file = path.basename(url.searchParams.get("file") ?? "");
@@ -1088,15 +1143,28 @@ const server = http.createServer(async (req, res) => {
       await sh(`gh variable delete ${name} --repo ${REPO} 2>&1`);
       return text(200, `Back to the built-in defaults for ${role}, here and in the cloud.`);
     }
+    if (url.pathname === "/writers" && req.method === "POST") {
+      const { provider, newsroomModel, chatModel } = await body(req);
+      const prov = provider === "claude" ? "claude" : "openrouter";
+      const nm = ["sonnet", "opus", "haiku"].includes(newsroomModel) ? newsroomModel : "sonnet";
+      const cm = ["", "sonnet", "opus", "haiku"].includes(chatModel) ? chatModel : "";
+      await setEnvKey("KHAZENDAR_PROVIDER", prov);
+      await setEnvKey("KHAZENDAR_CLAUDE_MODEL", nm);
+      await setEnvKey("KHAZENDAR_CHAT_MODEL", cm);
+      const a = await sh(`gh variable set KHAZENDAR_PROVIDER --repo ${REPO} --body ${prov} 2>&1`);
+      const b = await sh(`gh variable set KHAZENDAR_CLAUDE_MODEL --repo ${REPO} --body ${nm} 2>&1`);
+      const bad = [a, b].find((o) => /error|not logged|could not/i.test(o));
+      return text(200, bad ? `Saved here; the cloud refused: ${bad.slice(0, 120)}` : `Done — the cloud writes with ${prov === "claude" ? `Claude (${nm})` : "the free models"} from the next run; the chat uses ${cm || "Claude Code's default"}.`);
+    }
     if (url.pathname === "/keys" && req.method === "POST") {
       const { name, value, github } = await body(req);
       const v = String(value ?? "").trim();
       if (!["OPENROUTER_API_KEY", "ANTHROPIC_API_KEY", "CLAUDE_CODE_OAUTH_TOKEN"].includes(name)) return text(400, "unknown key");
       if (!v || /\s/.test(v)) return text(400, "That does not look like a key — it should be one unbroken string.");
-      const looks = { OPENROUTER_API_KEY: /^sk-or-/, ANTHROPIC_API_KEY: /^sk-ant-/, CLAUDE_CODE_OAUTH_TOKEN: /^(sk-ant-oat|eyJ|[A-Za-z0-9_-]{40,})/ };
-      if (name === "ANTHROPIC_API_KEY" && /^sk-ant-oat/.test(v)) return text(400, "That is a subscription token, not an API key — paste it in the box below instead.");
-      if (name === "OPENROUTER_API_KEY" && !looks.OPENROUTER_API_KEY.test(v)) return text(400, "An OpenRouter key starts with sk-or-. This one does not.");
-      if (name === "ANTHROPIC_API_KEY" && !looks.ANTHROPIC_API_KEY.test(v)) return text(400, "A Claude API key starts with sk-ant-. This one does not.");
+      if (name === "ANTHROPIC_API_KEY" && /^sk-ant-oat/.test(v)) return text(400, "That is a subscription token (sk-ant-oat…), not an API key — paste it in the token box instead.");
+      if (name === "CLAUDE_CODE_OAUTH_TOKEN" && /^sk-ant-api/.test(v)) return text(400, "That is an API key (sk-ant-api…), not a subscription token — paste it in the API key box instead.");
+      if (name === "OPENROUTER_API_KEY" && !/^sk-or-/.test(v)) return text(400, "An OpenRouter key starts with sk-or-. This one does not.");
+      if (name === "ANTHROPIC_API_KEY" && !/^sk-ant-/.test(v)) return text(400, "A Claude API key starts with sk-ant-. This one does not.");
       await setEnvKey(name, v);
       let note = "Saved on this laptop.";
       if (github) {
@@ -1105,15 +1173,10 @@ const server = http.createServer(async (req, res) => {
       }
       return text(200, note);
     }
-    if (url.pathname === "/provider" && req.method === "POST") {
-      const value = url.searchParams.get("value") === "claude" ? "claude" : "openrouter";
-      const out = await sh(`gh variable set KHAZENDAR_PROVIDER --repo ${REPO} --body ${value} 2>&1`);
-      return text(200, /error|not logged|could not/i.test(out) ? `Could not: ${out.slice(0, 160)}` : `Done — the cloud now writes with ${value}, from the next run.`);
-    }
     if (url.pathname === "/review" && req.method === "POST") {
       const value = url.searchParams.get("value") === "1" ? "1" : "0";
       const out = await sh(`gh variable set KHAZENDAR_REVIEW --repo ${REPO} --body ${value} 2>&1`);
-      return text(200, /error|not logged|could not/i.test(out) ? `Could not: ${out.slice(0, 160)}` : value === "1" ? "Done — from the next run the cloud writes drafts and waits for you." : "Done — the cloud publishes on its own again.");
+      return text(200, /error|not logged|could not/i.test(out) ? `Could not: ${out.slice(0, 160)}` : value === "1" ? "Done — from the next run the cloud writes drafts and waits for you." : "Done — the cloud publishes on its own.");
     }
     if (url.pathname === "/settings" && req.method === "POST") {
       const patch = await body(req);

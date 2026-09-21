@@ -53,9 +53,16 @@ you ever need it.
 
 ## 2d. The control room — the editor's desk
 
-Double-click **`OPEN_CONTROL_ROOM.cmd`**. It opens on the **Desk**, and the desk does one thing:
+Double-click **`OPEN_CONTROL_ROOM.cmd`**. Four places in the left rail — **Desk**, **Stories**,
+**Settings**, **Change the site** — and the Desk opens first. It says, before anything else, that the
+newsroom is running on its own: the next automatic run, the last one, how many stories are live, and
+whether anything waits for you. Under that, **every part of the paper**: each section with today's
+and this week's count and its last story, so you can see at a glance that nothing is being neglected
+(a section quiet for three days is marked *due for one*, and the balancing rule feeds it next).
 
-> **get material → read it → Publish or Discard → it is live → Unpublish later if you must**
+You do not have to check anything. The desk exists for the few decisions that are yours:
+
+> **read a draft you asked for → Publish or Discard · find a story → open, make it the lead, move it, or unpublish**
 
 **Get new material.** 📰 News stories — for the whole paper or for one section (الاقتصاد, الأسواق,
 الطاقة, الشركات, التكنولوجيا, دفاع) and how many; 📘 An explainer; 📈 An analysis (of the week, or of one
@@ -95,7 +102,9 @@ will not come back on the next run). **Publish everything above** does them all.
 written and then refused, with the reason in Arabic. A source that keeps being refused is worth
 telling the *Change the site* tab about.
 
-**Live on the site.** Every published story with its score and sources, and an **Unpublish** button.
+**Stories.** Every published story with where it sits, its score and its sources. The **⋯** menu on a
+row holds everything you can do to it: open it on the site, make it the lead, move it to another
+section, unpublish. The bar above filters by headline, section, kind, month and placement.
 
 **Settings.** Three key boxes that are *not* interchangeable, each labelled with what it is and what
 its value starts with: OpenRouter (`sk-or-`, free models), Claude API key (`sk-ant-`, pay per use),
