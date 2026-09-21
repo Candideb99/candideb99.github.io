@@ -250,7 +250,17 @@ async function health() {
   const ghOk = !/not logged|not recognized|command not found|could not|error/i.test(secrets);
   const local = envFileKeys();
   let editorReal = null;
+  // The site's last deploy. From 2026-09-20 16:07 to 2026-09-21 21:09 every deploy failed on one
+  // article and the paper sat frozen on Sunday's edition; nothing on this page said so. Now it does.
+  let deploy = null;
   if (ghOk) {
+    const d = await sh(`gh run list --repo ${REPO} --workflow deploy.yml -L 1 --json conclusion,createdAt,headSha,url 2>&1`);
+    try {
+      const [r] = JSON.parse(d);
+      if (r) deploy = { ok: r.conclusion === "success", when: r.createdAt, sha: (r.headSha ?? "").slice(0, 7), url: r.url };
+    } catch {
+      /* no deploys yet */
+    }
     const last = await sh(`gh run list --repo ${REPO} --workflow editor.yml -L 1 --json startedAt,updatedAt,conclusion 2>&1`);
     try {
       const [r] = JSON.parse(last);
@@ -278,6 +288,7 @@ async function health() {
       oauth: Boolean(local.CLAUDE_CODE_OAUTH_TOKEN),
     },
     editorReal,
+    deploy,
     chatReady: Boolean(CLI_JS) && Boolean(local.CLAUDE_CODE_OAUTH_TOKEN || local.ANTHROPIC_API_KEY),
   };
 }
@@ -501,7 +512,7 @@ code{background:#f0ede6;padding:2px 6px;font-size:13px}
 
 <!-- ================================ DESK ================================ -->
 <div class="pane on" id="pane-desk">
-<section><div class="status" id="status">loading…</div></section>
+<section><div class="status" id="status">loading…</div><div id="deploy-note" class="m" style="margin-top:8px"></div></section>
 
 <section>
  <h2>Get new material</h2>
@@ -713,7 +724,10 @@ function loadHealth(){
       '<p><b>The cloud is writing articles with:</b> '+inUse+'</p>';
     document.getElementById('providerSel').value=h.cloud.provider;
     document.getElementById('reviewSel').value=h.cloud.review?'1':'0';
+    var dep=h.deploy?(h.deploy.ok?'<span class="ok">Site deploy OK</span> · '+fmtTime(h.deploy.when):'<span class="no"><b>THE SITE IS NOT UPDATING</b> — the last deploy failed ('+fmtTime(h.deploy.when)+'). Readers see an older edition. <a href="'+esc(h.deploy.url)+'" target="_blank">See why ↗</a></span>'):'';
+    var depBox=document.getElementById('deploy-note');if(depBox)depBox.innerHTML=dep;
     document.getElementById('switches').innerHTML=
+      (h.deploy?dot(h.deploy.ok,'The site\\'s last deploy',h.deploy.ok?'succeeded · '+fmtTime(h.deploy.when):'FAILED · '+fmtTime(h.deploy.when)+' — readers see an older edition until this is fixed'):'')+
       dot(h.ghOk,'This laptop can talk to GitHub',h.ghOk?'gh is signed in':'run: gh auth login')+
       dot(h.cloud.editorOn&&(h.cloud.anthropic||h.cloud.oauth),'The daily editor',!h.cloud.editorOn?'switched off (KHAZENDAR_EDITOR is not 1)':(h.cloud.anthropic||h.cloud.oauth)?'switched on with a key':'switched on but has no key, so it skips every morning')+
       (h.editorReal?dot(h.editorReal.working,'The daily editor is actually doing work','its last run took '+h.editorReal.seconds+'s'+(h.editorReal.working?'':' — a real round takes minutes; it is skipping')):'')+
