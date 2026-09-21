@@ -94,6 +94,8 @@ const articles = defineCollection({
       .optional(),
     ai: z.boolean().default(true),
     draft: z.boolean().default(false),
+    /** Set from the control room: this story leads the front page while it is fresh (48 hours). */
+    featured: z.boolean().default(false),
   }),
 });
 

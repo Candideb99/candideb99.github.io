@@ -92,6 +92,13 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           KHAZENDAR_PROVIDER: ${{ vars.KHAZENDAR_PROVIDER || 'openrouter' }}
           KHAZENDAR_CLAUDE_MODEL: ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'sonnet' }}
+          # The model chains, when the owner has changed them from the control room (Settings → Models).
+          # Empty means the defaults in pipeline/lib/llm.mjs; only ":free" models are ever accepted.
+          KHAZENDAR_MODELS_EDITOR: ${{ vars.KHAZENDAR_MODELS_EDITOR }}
+          KHAZENDAR_MODELS_WRITER: ${{ vars.KHAZENDAR_MODELS_WRITER }}
+          KHAZENDAR_MODELS_DESK: ${{ vars.KHAZENDAR_MODELS_DESK }}
+          KHAZENDAR_MODELS_CRITIC: ${{ vars.KHAZENDAR_MODELS_CRITIC }}
+          KHAZENDAR_MODELS_VISION: ${{ vars.KHAZENDAR_MODELS_VISION }}
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           # KHAZENDAR_REVIEW=1 makes the cloud write drafts instead of publishing: they are committed with

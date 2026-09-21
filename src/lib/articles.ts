@@ -30,6 +30,10 @@ export function hoursOld(article: Article, now = Date.now()): number {
 export function pickLead(articles: Article[], now = Date.now()): Article | undefined {
   const news = articles.filter((a) => a.data.kind === "news");
   if (!news.length) return articles[0];
+  // The editor's own choice comes first: a story featured from the control room leads for 48 hours
+  // (the newest featured one, if several), after which the formula below takes over again.
+  const featured = news.filter((a) => a.data.featured && hoursOld(a, now) < 48).sort((x, y) => Date.parse(y.data.publishedAt) - Date.parse(x.data.publishedAt));
+  if (featured.length) return featured[0];
   const scored = news.map((a) => ({
     a,
     score: (a.data.quality?.importance ?? 5) - hoursOld(a, now) / 12 + (a.data.image ? 1.5 : 0),

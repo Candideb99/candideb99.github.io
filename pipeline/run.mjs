@@ -315,13 +315,20 @@ async function runNews(report) {
   const runLimit = Math.min(LIMIT, room);
   const { stories, model: editorModel } = await selectStories({ candidates, recentTitles, sections, coverage24h, limit: runLimit, log });
   log(`editor (${editorModel}) selected ${stories.length} stories`);
-  const chosen = stories.filter((s) => s.importance >= MIN_IMPORTANCE).slice(0, runLimit);
+  let chosen = stories.filter((s) => s.importance >= MIN_IMPORTANCE).slice(0, runLimit);
+  // `--sections=energy,markets` on a news run: the desk asked for one part of the paper. Keep only those
+  // stories (a point under the threshold is allowed, as for a starved section) and skip the balancing,
+  // which exists to spread a general run across sections, not to override a deliberate choice.
+  if (SECTIONS.length) {
+    chosen = stories.filter((s) => SECTIONS.includes(s.section) && s.importance >= MIN_IMPORTANCE - 1).slice(0, runLimit);
+    log(`news restricted to ${SECTIONS.join(", ")}: ${chosen.length} of ${stories.length} selected stories qualify`);
+  }
   // Section balance: a section with nothing in three days takes its best candidate (one point under
   // the threshold is enough) in place of the weakest chosen story from a section already served, so
   // no section runs empty while another fills up: الدفاع stayed empty for a week this way, its
   // stories scoring 6 and deferred behind the economy's every run.
   const sectionIds = sections.map((x) => (typeof x === "string" ? x : x.id));
-  const starved = sectionIds.filter((sec) => !existing.some((a) => a.kind === "news" && a.section === sec && hoursSince(a.publishedAt) < 72) && !chosen.some((x) => x.section === sec));
+  const starved = SECTIONS.length ? [] : sectionIds.filter((sec) => !existing.some((a) => a.kind === "news" && a.section === sec && hoursSince(a.publishedAt) < 72) && !chosen.some((x) => x.section === sec));
   for (const sec of starved) {
     const pick = stories.find((x) => x.section === sec && !chosen.includes(x) && x.importance >= MIN_IMPORTANCE - 1);
     if (!pick) continue;
