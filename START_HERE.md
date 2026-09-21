@@ -68,8 +68,13 @@ strongest fresh news story (the editor's importance score, minus a point per 12 
 for a photo); the **cover** is the lead plus the four strongest of the freshest twelve; the next five
 run in the **ticker**; everything else sits on its section page and in الأحدث. The live list shows
 each story's place in a *Where* column, and **Make it the lead** overrides the formula for 48 hours
-when you want a story on top. The section itself is chosen by the editor model when it selects the
-story; if it gets one wrong, tell the *Change the site* tab and it becomes a rule.
+when you want a story on top. The section is chosen by the editor model from the filing guide in
+`src/data/sections.json` (what belongs where, and the confusable cases); when it still gets one
+wrong, **Move to…** on the story's row re-files it in one click, live in a minute. If the same
+mistake keeps coming back, tell the *Change the site* tab and the guide gets a line.
+
+**Visitors.** Cloudflare → Workers & Pages → khazendar → Metrics → *View Web Analytics*: visits, pages,
+countries, referrers — free, no cookies, nothing installed on readers.
 
 **Finding a story.** The live list filters by section, kind, month, placement (front page or not) and
 headline. Nothing is ever archived away: a story keeps its page, its section's older pages and its
