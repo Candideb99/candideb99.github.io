@@ -6845,10 +6845,10 @@
       "strikes": 1
     },
     "fb22242a26ba36dc": {
-      "at": "2026-09-20T11:38:51.013Z",
+      "at": "2026-09-21T05:13:06.274Z",
       "decision": "rejected",
       "title": "UK minister warns of impact of Trump’s Iran war on next month’s budget",
-      "strikes": 1
+      "strikes": 2
     },
     "23d5d2b392f064be": {
       "at": "2026-09-20T11:42:03.238Z",
@@ -6887,10 +6887,10 @@
       "title": "China bogeyman looms large over American firms’ AI doomsday scenario"
     },
     "099040eead7eef16": {
-      "at": "2026-09-20T16:19:48.084Z",
+      "at": "2026-09-21T05:20:03.870Z",
       "decision": "rejected",
       "title": "«المركزي الأردني» يرفع الفائدة 25 نقطة أساس لتعزيز جاذبية الدينار",
-      "strikes": 1
+      "strikes": 2
     },
     "335024447e35f812": {
       "at": "2026-09-20T16:19:48.084Z",
@@ -6917,10 +6917,10 @@
       "strikes": 1
     },
     "fe026eb826e7316e": {
-      "at": "2026-09-20T16:22:15.877Z",
+      "at": "2026-09-21T05:15:50.412Z",
       "decision": "rejected",
       "title": "الكعبي: قطر تستأنف عمليات الغاز الطبيعية خلال أسابيع من فتح «هرمز»",
-      "strikes": 1
+      "strikes": 2
     },
     "70249241427dc0d4": {
       "at": "2026-09-20T16:22:15.877Z",
@@ -6947,16 +6947,16 @@
       "strikes": 1
     },
     "fbea76a25d727a89": {
-      "at": "2026-09-20T16:23:15.850Z",
+      "at": "2026-09-21T05:11:42.019Z",
       "decision": "rejected",
       "title": "As White House shields the AI gold rush, Trump family and other allies strike it rich – with few guardrails",
-      "strikes": 1
+      "strikes": 2
     },
     "93b65b76c0e7d444": {
-      "at": "2026-09-20T16:23:15.850Z",
+      "at": "2026-09-21T05:11:42.019Z",
       "decision": "rejected",
       "title": "In China, A.I. Is Moving Forward While the Economy Lags Behind",
-      "strikes": 1
+      "strikes": 2
     },
     "c6edbb432ed0b580": {
       "at": "2026-09-20T16:23:15.850Z",
@@ -7130,6 +7130,96 @@
       "at": "2026-09-20T23:24:28.363Z",
       "decision": "rejected",
       "title": "IAEA Triples Nuclear Power Forecast as Small Reactors Finally Take Off",
+      "strikes": 1
+    },
+    "f92126e7c1011094": {
+      "at": "2026-09-21T05:11:42.019Z",
+      "decision": "rejected",
+      "title": "قبل قمة ترمب وشي... واشنطن تقترح آلية لمخاطر الذكاء الاصطناعي",
+      "strikes": 1
+    },
+    "f2661cd57338ce4c": {
+      "at": "2026-09-21T05:11:42.019Z",
+      "decision": "rejected",
+      "title": "U.S. and China Discuss System to Warn of A.I. National Security Issues",
+      "strikes": 1
+    },
+    "0576e2730a7f0705": {
+      "at": "2026-09-21T05:11:42.019Z",
+      "decision": "rejected",
+      "title": "Bessent calls meeting with China Vice Premier He Lifeng 'successful' ahead of Trump-Xi summit",
+      "strikes": 1
+    },
+    "2c22ac3b0682efaf": {
+      "at": "2026-09-21T05:13:06.274Z",
+      "decision": "rejected",
+      "title": "Ed Davey calls for immediate 10p cut to fuel duty",
+      "strikes": 1
+    },
+    "ce8a66992267f9eb": {
+      "at": "2026-09-21T05:13:06.274Z",
+      "decision": "rejected",
+      "title": "Iran vows 'painful' retaliation as Trump piles on pressure ahead of UN General Assembly meeting",
+      "strikes": 1
+    },
+    "c75846d7f0ad1726": {
+      "at": "2026-09-21T05:13:06.274Z",
+      "decision": "rejected",
+      "title": "U.S. urges Americans to reconsider Middle East travel as Iran tensions rise",
+      "strikes": 1
+    },
+    "35b003da4f5d5e6a": {
+      "at": "2026-09-21T05:13:06.274Z",
+      "decision": "rejected",
+      "title": "‘It's awful’: How tariffs, soaring fuel costs and higher interest rates are squeezing American companies",
+      "strikes": 1
+    },
+    "ba01bbc5a4fe5e49": {
+      "at": "2026-09-21T05:15:50.412Z",
+      "decision": "rejected",
+      "title": "آمال التهدئة تدفع النفط دون 102 دولار... الأدنى في أكثر من أسبوع",
+      "strikes": 1
+    },
+    "9a770a2e9eb09a5c": {
+      "at": "2026-09-21T05:15:50.412Z",
+      "decision": "rejected",
+      "title": "Oil falls as crude flows remain 'surprisingly strong'",
+      "strikes": 1
+    },
+    "9d85044ad5d9da6b": {
+      "at": "2026-09-21T05:15:50.412Z",
+      "decision": "rejected",
+      "title": "Oil prices fall over 2 percent to one-week low, Brent hits $101.69 as supply fears ease",
+      "strikes": 1
+    },
+    "79337fc9f1d7b9b9": {
+      "at": "2026-09-21T05:15:50.412Z",
+      "decision": "rejected",
+      "title": "Hormuz Crisis to Push Global Coal Demand to Record High",
+      "strikes": 1
+    },
+    "2a74f5a4a335c207": {
+      "at": "2026-09-21T05:20:03.870Z",
+      "decision": "rejected",
+      "title": "رئيس «فيدرالي» مينيابوليس: التضخم لا يزال مرتفعاً... والاقتصاد متماسك",
+      "strikes": 1
+    },
+    "19e5af774b4ff32e": {
+      "at": "2026-09-21T05:20:03.870Z",
+      "decision": "rejected",
+      "title": "الصين تثبّت أسعار الإقراض للشهر الـ16 على التوالي",
+      "strikes": 1
+    },
+    "77ffeef91ea023bf": {
+      "at": "2026-09-21T05:20:03.870Z",
+      "decision": "rejected",
+      "title": "Billionaire Man United owner loses moral high ground after tax exile, Labour chair says",
+      "strikes": 1
+    },
+    "86ed2b98bc3796fd": {
+      "at": "2026-09-21T05:20:03.870Z",
+      "decision": "rejected",
+      "title": "إيرادات الأنشطة التشغيلية السعودية ترتفع 4.9 % في يوليو",
       "strikes": 1
     }
   }
