@@ -773,7 +773,11 @@ function body(req) {
     });
   });
 }
-const PUSH = ["&&", "git", "pull", "--rebase", "pages", "main", "&&", "git", "push", "pages", "HEAD:main"];
+// --autostash: the "Change the site" tab leaves edits uncommitted on purpose, and a plain rebase refuses
+// to run over them ("Please commit or stash them" — the first publish from this desk failed exactly so).
+// -X theirs: the cloud commits pipeline/state on every run; when both sides touched it, keep the local
+// hunk, as newsroom.yml itself does, instead of stopping on a conflict nobody is there to resolve.
+const PUSH = ["&&", "git", "pull", "--rebase", "--autostash", "-X", "theirs", "pages", "main", "&&", "git", "push", "pages", "HEAD:main"];
 function commitAndPush(name, paths, message) {
   return runJob(name, "publish", "git", ["add", ...paths, "&&", "git", ...GIT_ID, "commit", "-q", "-m", `"${message}"`, ...PUSH]);
 }

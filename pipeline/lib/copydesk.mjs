@@ -24,7 +24,7 @@ WHAT YOU CHANGE
 
 WHAT YOU NEVER CHANGE
 - Facts. Every number, date, name, attribution ("بحسب", "وفقاً لـ", "قال"), quotation and causal claim stays exactly as it is; an expectation stays an expectation ("يتجه لرفع" never becomes "يرفع"; "يعد بـ" never becomes "يعلن"; "قد" and "من المتوقع" stay), and so does every count written in letters ("جزأين من أربعة" means two of four and must stay two of four; "ثلاث شركات" stays three). You add no context, no adjectives, no interpretation. A sentence that is already idiomatic stays as it is.
-- Latin tokens (tickers, acronyms, Latin names in parentheses) stay verbatim.
+- Latin tokens (tickers, acronyms, Latin names in parentheses) stay verbatim. The one exception is a lowercase English word left inside an Arabic sentence (outlook, total, know-how, shares): that is a translation the writer forgot, not a name; write its meaning in Arabic (التوقعات، الإجمالي، الخبرة الفنية، الأسهم) and never leave it in Latin letters.
 - Length and structure. Roughly the same length; the lede stays two or three sentences; the body keeps its paragraphs, blank lines and any "## " subheads; no markdown links, no URLs.
 
 You answer with one JSON object and nothing else.`;
@@ -111,8 +111,19 @@ const HEDGES = new RegExp(`(?<![؀-ۿ])${CLITIC}(يتجه|تتجه|قد(?<!لق�
 function houseTanween(text) {
   return String(text ?? "").replace(/ًا/g, "اً");
 }
+/**
+ * A Latin token the guard protects is a name, a ticker, an acronym or a unit: it carries a capital
+ * letter or a digit, or it is short. An all-lowercase English word of four letters or more (outlook,
+ * total, know-how) is never a fact — it is a word the writer failed to translate — so the desk is
+ * allowed to turn it into Arabic. 2026-09-21: ten of 68 articles carried one, and the guard was the
+ * reason the copy desk could not fix them.
+ */
 function latinFingerprint(text) {
-  return (String(text ?? "").match(/[A-Za-z][A-Za-z0-9&+.-]*[A-Za-z0-9]|[A-Za-z]/g) ?? []).map((w) => w.toLowerCase()).sort().join("|");
+  return (String(text ?? "").match(/[A-Za-z][A-Za-z0-9&+.-]*[A-Za-z0-9]|[A-Za-z]/g) ?? [])
+    .filter((w) => !/^[a-z][a-z-]{3,}$/.test(w))
+    .map((w) => w.toLowerCase())
+    .sort()
+    .join("|");
 }
 
 /**

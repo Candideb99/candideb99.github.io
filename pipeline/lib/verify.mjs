@@ -50,6 +50,11 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
   const latin = suspiciousLatinWords(outsideParens).filter((w) => !ALLOWED_LATIN.test(w));
   if (latinAll.length > 5 || latin.length > 3) issues.push(`كلمات لاتينية غير مترجمة في النص: ${latinAll.slice(0, 8).join(", ")}. انقلها إلى العربية (الأشهر والأسماء والوحدات) أو احذفها.`);
   else if (latinAll.length) warnings.push(`latin words: ${latinAll.join(", ")}`);
+  // A lowercase English word is never a name, a ticker or an acronym: it is a word the writer forgot to
+  // translate (outlook, total, know-how, sektors). One is enough to block; the threshold above never
+  // caught these because they come one or two at a time. 2026-09-21: found in 10 of 68 articles.
+  const leaked = [...new Set((outsideParens.match(/\b[a-z][a-z-]{3,}\b/g) ?? []).filter((w) => !ALLOWED_LATIN.test(w)))];
+  if (leaked.length) issues.push(`كلمات إنجليزية تُركت بلا ترجمة داخل النص العربي: ${leaked.slice(0, 6).join(", ")}. اكتب معناها بالعربية (التوقعات، الإجمالي، الخبرة الفنية) ولا تترك كلمة لاتينية صغيرة في الجملة.`);
   const titleLatin = (draft.title.match(/[A-Za-z][A-Za-z&+.'-]*/g) ?? []).filter((w) => !ALLOWED_LATIN.test(w));
   if (titleLatin.length) issues.push(`العنوان يحتوي كلمات لاتينية (${titleLatin.join(", ")}). اكتب العنوان بالعربية كاملاً.`);
   const headlineLatinInBody = (`${draft.subtitle}\n${draft.lede}`.replace(/\([^)]*\)/g, " ").match(/\b[A-Za-z]{3,}\b/g) ?? []).filter((w) => !ALLOWED_LATIN.test(w));
