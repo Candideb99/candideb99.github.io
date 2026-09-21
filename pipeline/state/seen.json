@@ -7139,16 +7139,16 @@
       "strikes": 1
     },
     "f2661cd57338ce4c": {
-      "at": "2026-09-21T05:11:42.019Z",
-      "decision": "rejected",
-      "title": "U.S. and China Discuss System to Warn of A.I. National Security Issues",
-      "strikes": 1
+      "at": "2026-09-21T20:07:15.261Z",
+      "decision": "published",
+      "slug": "us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac",
+      "title": "U.S. and China Discuss System to Warn of A.I. National Security Issues"
     },
     "0576e2730a7f0705": {
-      "at": "2026-09-21T05:11:42.019Z",
-      "decision": "rejected",
-      "title": "Bessent calls meeting with China Vice Premier He Lifeng 'successful' ahead of Trump-Xi summit",
-      "strikes": 1
+      "at": "2026-09-21T20:07:15.261Z",
+      "decision": "published",
+      "slug": "us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac",
+      "title": "Bessent calls meeting with China Vice Premier He Lifeng 'successful' ahead of Trump-Xi summit"
     },
     "2c22ac3b0682efaf": {
       "at": "2026-09-21T05:13:06.274Z",
@@ -7181,10 +7181,10 @@
       "strikes": 1
     },
     "9a770a2e9eb09a5c": {
-      "at": "2026-09-21T05:15:50.412Z",
-      "decision": "rejected",
-      "title": "Oil falls as crude flows remain 'surprisingly strong'",
-      "strikes": 1
+      "at": "2026-09-21T20:05:54.810Z",
+      "decision": "published",
+      "slug": "oil-below-100-us-iran-diplomacy-8ddbd8",
+      "title": "U.S. crude oil tumbles back below $100 after Trump says he's open to talking to Iran at UN"
     },
     "9d85044ad5d9da6b": {
       "at": "2026-09-21T05:15:50.412Z",
@@ -7310,6 +7310,108 @@
       "at": "2026-09-21T13:14:03.652Z",
       "decision": "rejected",
       "title": "Volvo Cars names Škoda boss Klaus Zellmer as next CEO for a turnaround",
+      "strikes": 1
+    },
+    "e44f1d23a0824c63": {
+      "at": "2026-09-21T20:05:54.809Z",
+      "decision": "published",
+      "slug": "oil-below-100-us-iran-diplomacy-8ddbd8",
+      "title": "النفط يهبط دون 100 دولار وسط آمال التهدئة الأميركية - الإيرانية"
+    },
+    "c12e79c8a4082f28": {
+      "at": "2026-09-21T20:05:54.810Z",
+      "decision": "published",
+      "slug": "oil-below-100-us-iran-diplomacy-8ddbd8",
+      "title": "اقتصاد إيران ينكمش 10% تحت وطأة الحرب والعقوبات وتراجع صادرات النفط"
+    },
+    "6044eee2ddc20069": {
+      "at": "2026-09-21T20:05:54.810Z",
+      "decision": "published",
+      "slug": "oil-below-100-us-iran-diplomacy-8ddbd8",
+      "title": "Kind Snacks founder Daniel Lubetzky: The No.1 piece of advice I give my kids about failure"
+    },
+    "d0461d32ed702af7": {
+      "at": "2026-09-21T20:05:54.810Z",
+      "decision": "published",
+      "slug": "oil-below-100-us-iran-diplomacy-8ddbd8",
+      "title": "Oil prices slide on hopes diplomacy at UN will help end Iran conflict"
+    },
+    "136f92420cc487a9": {
+      "at": "2026-09-21T20:07:15.261Z",
+      "decision": "published",
+      "slug": "us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac",
+      "title": "Trump and Xi Meet Amid an Uneasy U.S.-China Trade Truce"
+    },
+    "43b79c1268be3eb3": {
+      "at": "2026-09-21T20:07:15.261Z",
+      "decision": "published",
+      "slug": "us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac",
+      "title": "Bessent and China Hail Progress on A.I. Talks. Now Comes the Hard Part."
+    },
+    "d038b146ea0d2807": {
+      "at": "2026-09-21T20:07:15.261Z",
+      "decision": "published",
+      "slug": "us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac",
+      "title": "US and China discuss AI safety plan ahead of Trump-Xi summit"
+    },
+    "54c32db6d9bdcb19": {
+      "at": "2026-09-21T20:08:49.473Z",
+      "decision": "published",
+      "slug": "paramount-settles-with-us-states-e71142",
+      "title": "Paramount to Settle States’ Lawsuit, Clearing Way for Warner Bros. Merger"
+    },
+    "e96f309fadd5224d": {
+      "at": "2026-09-21T20:08:49.473Z",
+      "decision": "published",
+      "slug": "paramount-settles-with-us-states-e71142",
+      "title": "Paramount settles lawsuit with US states, helping clear way for $110bn merger with Warner Bros"
+    },
+    "96d58c402efbaf5b": {
+      "at": "2026-09-21T20:08:49.473Z",
+      "decision": "published",
+      "slug": "paramount-settles-with-us-states-e71142",
+      "title": "Paramount settles with US states in step towards merger with Warner Bros"
+    },
+    "06a8f708c28c2e1c": {
+      "at": "2026-09-21T20:08:49.473Z",
+      "decision": "published",
+      "slug": "paramount-settles-with-us-states-e71142",
+      "title": "Paramount settles lawsuits with 12 US states, clearing way for Warner merger"
+    },
+    "c49469caf7c21806": {
+      "at": "2026-09-21T20:08:49.473Z",
+      "decision": "published",
+      "slug": "paramount-settles-with-us-states-e71142",
+      "title": "Paramount settles lawsuit blocking $110 billion Warner Bros. merger"
+    },
+    "64941c14dd81bf26": {
+      "at": "2026-09-21T20:10:52.096Z",
+      "decision": "rejected",
+      "title": "«سير» تراهن على بناء صناعة سيارات سعودية متكاملة",
+      "strikes": 1
+    },
+    "608187f4348185ff": {
+      "at": "2026-09-21T20:10:52.096Z",
+      "decision": "rejected",
+      "title": "ولي العهد السعودي يُطلق أولى سيارات شركة «سير» الوطنية",
+      "strikes": 1
+    },
+    "5d090d5889c50649": {
+      "at": "2026-09-21T20:10:52.096Z",
+      "decision": "rejected",
+      "title": "Saudi Arabia leads globally as a destination for project investment",
+      "strikes": 1
+    },
+    "5f623c253496cd99": {
+      "at": "2026-09-21T20:10:52.096Z",
+      "decision": "rejected",
+      "title": "Saudi Crown Prince launches CEER’s first EXOBOT EVs as seven-model rollout begins, localization targets 45 percent",
+      "strikes": 1
+    },
+    "73aae868a1a60b3e": {
+      "at": "2026-09-21T20:10:52.096Z",
+      "decision": "rejected",
+      "title": "Saudi crown prince launches Ceer’s first EVs to boost Kingdom’s automotive industry",
       "strikes": 1
     }
   }
