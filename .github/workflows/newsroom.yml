@@ -36,6 +36,8 @@ permissions:
 
 jobs:
   run:
+    # "Pause everything" on the control room sets KHAZENDAR_PAUSED=1; nothing is written or published until it is cleared.
+    if: vars.KHAZENDAR_PAUSED != '1'
     name: Write and publish
     runs-on: ubuntu-latest
     timeout-minutes: 50

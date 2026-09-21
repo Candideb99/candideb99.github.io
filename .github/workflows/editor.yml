@@ -33,7 +33,7 @@ jobs:
     name: Daily editor's round
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    if: vars.KHAZENDAR_EDITOR == '1'
+    if: vars.KHAZENDAR_EDITOR == '1' && vars.KHAZENDAR_PAUSED != '1'
     steps:
       - uses: actions/checkout@v4
         with:

@@ -388,6 +388,7 @@ async function health() {
       editorOn: /KHAZENDAR_EDITOR\s+1/.test(vars),
       provider: (vars.match(/KHAZENDAR_PROVIDER\s+(\S+)/) ?? [])[1] ?? "openrouter",
       review: /KHAZENDAR_REVIEW\s+1/.test(vars),
+      paused: /KHAZENDAR_PAUSED\s+1/.test(vars),
       newsroomModel: (vars.match(/KHAZENDAR_CLAUDE_MODEL\s+(\S+)/) ?? [])[1] ?? "sonnet",
     },
     local: { openrouter: Boolean(local.OPENROUTER_API_KEY), anthropic: Boolean(local.ANTHROPIC_API_KEY), oauth: Boolean(local.CLAUDE_CODE_OAUTH_TOKEN) },
@@ -725,7 +726,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
 <!-- ================================ DESK ================================ -->
 <section class="pane on" id="pane-desk">
   <div class="band" id="band">
-    <div><div class="k">The newsroom</div><div class="auto" id="auto"><i></i><span>Checking…</span></div><div class="m" id="auto-note" style="margin-top:4px"></div></div>
+    <div><div class="k">The newsroom</div><div class="auto" id="auto"><i></i><span>Checking…</span></div><div class="m" id="auto-note" style="margin-top:4px"></div><div style="margin-top:10px"><button class="danger sm" id="pauseBtn" onclick="togglePause()" style="display:none">Pause everything</button></div></div>
     <div><div class="k">Next automatic run</div><div class="v" id="b-next">–</div></div>
     <div><div class="k">Last run</div><div class="v" id="b-last">–</div></div>
     <div><div class="k">Live on the site</div><div class="v" id="b-live">–</div></div>
@@ -741,6 +742,9 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
   <h2>Every part of the paper</h2>
   <div class="cov" id="cov"></div>
   <div class="hubs" id="hubs"></div>
+
+  <h2>Latest on the site <a href="#stories" class="m" style="font-weight:400;margin-inline-start:10px">all 126 stories, with search →</a></h2>
+  <table class="list"><thead><tr><th>Story</th><th>Where</th><th>Score</th><th>Sources</th><th></th></tr></thead><tbody id="latest"></tbody></table>
 
   <div class="cols">
     <div>
@@ -780,6 +784,8 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
 
 <!-- ================================ SETTINGS ================================ -->
 <section class="pane" id="pane-set">
+  <h2>Right now</h2>
+  <div id="now" class="dots" style="font-size:15px;margin-bottom:8px">checking…</div>
   <div class="grid2">
     <div class="set">
       <h2>Who decides what goes live</h2>
@@ -800,10 +806,13 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
       <p class="m">The provider and the newsroom model apply in the cloud from the next run; the chat model applies here at once.</p>
 
       <h2>Keys</h2>
-      <div id="keystatus" class="m dots" style="margin-bottom:10px">checking…</div>
-      <div class="keyrow"><label><span>OpenRouter key <span class="m">— free models; starts with <code>sk-or-</code></span></span><input type="password" id="k_or" placeholder="paste to replace the saved one" autocomplete="off"></label><button class="quiet" onclick="saveKey('OPENROUTER_API_KEY','k_or')">Save</button></div>
-      <div class="keyrow"><label><span>Claude subscription token <span class="m">— from <code>claude setup-token</code>; starts with <code>sk-ant-oat</code></span></span><input type="password" id="k_oauth" placeholder="paste here" autocomplete="off"></label><button class="quiet" onclick="saveKey('CLAUDE_CODE_OAUTH_TOKEN','k_oauth')">Save</button></div>
-      <div class="keyrow"><label><span>Claude API key <span class="m">— pay per use; starts with <code>sk-ant-api</code></span></span><input type="password" id="k_ant" placeholder="paste here" autocomplete="off"></label><button class="quiet" onclick="saveKey('ANTHROPIC_API_KEY','k_ant')">Save</button></div>
+      <div id="keystatus" style="display:none"></div>
+      <p style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 6px"><span><b>OpenRouter key</b> <span class="m">— the free models · starts with <code>sk-or-</code></span><br><span id="ks_or">checking…</span></span><button class="quiet sm" onclick="reveal('k_or')">Replace</button></p>
+      <div class="keyrow" id="w_k_or" style="display:none"><label><input type="password" id="k_or" placeholder="paste the new key" autocomplete="off"></label><button class="quiet" onclick="saveKey('OPENROUTER_API_KEY','k_or')">Save</button></div>
+      <p style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 6px"><span><b>Claude subscription token</b> <span class="m">— from <code>claude setup-token</code> · starts with <code>sk-ant-oat</code></span><br><span id="ks_oauth">checking…</span></span><button class="quiet sm" onclick="reveal('k_oauth')">Replace</button></p>
+      <div class="keyrow" id="w_k_oauth" style="display:none"><label><input type="password" id="k_oauth" placeholder="paste the new token" autocomplete="off"></label><button class="quiet" onclick="saveKey('CLAUDE_CODE_OAUTH_TOKEN','k_oauth')">Save</button></div>
+      <p style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 6px"><span><b>Claude API key</b> <span class="m">— pay per use · starts with <code>sk-ant-api</code></span><br><span id="ks_ant">checking…</span></span><button class="quiet sm" onclick="reveal('k_ant')">Add</button></p>
+      <div class="keyrow" id="w_k_ant" style="display:none"><label><input type="password" id="k_ant" placeholder="paste the key" autocomplete="off"></label><button class="quiet" onclick="saveKey('ANTHROPIC_API_KEY','k_ant')">Save</button></div>
       <p><label style="font-weight:400;display:flex;gap:8px;align-items:center"><input type="checkbox" id="k_gh" checked style="width:auto;margin:0"> Also send it to GitHub, so the cloud can use it</label> <span class="m" id="k_note"></span></p>
     </div>
     <div class="set">
@@ -816,11 +825,14 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
         <select id="private"><option value="true"${current.private ? " selected" : ""}>No — keep it unlisted (before launch)</option><option value="false"${current.private ? "" : " selected"}>Yes — ask Google and Bing to list it (launch)</option></select></label>
       <button class="go" onclick="saveSettings()">Save and publish</button> <span class="m" id="saved"></span>
 
-      <h2>The free models, checked against OpenRouter</h2>
-      <p class="m">Each job has a chain; the first model that answers is used. Only names ending in <code>:free</code> are ever accepted, so you cannot be charged even when OpenRouter changes its offer. A red dot means "replace me".</p>
+      <h2>The free models <span class="m" style="text-transform:none;letter-spacing:0;font-weight:400">— nothing to do here unless a red dot appears</span></h2>
+      <div id="models-summary" class="m">checking OpenRouter…</div>
+      <details style="margin-top:8px"><summary class="m" style="cursor:pointer;color:var(--green)">Show the chains and change them (advanced)</summary>
+      <p class="m">Each job has a chain; the first model that answers is used. Only names ending in <code>:free</code> are ever accepted, so you cannot be charged even when OpenRouter changes its offer.</p>
       <div id="models" class="m">checking OpenRouter…</div>
       <details><summary class="m" style="cursor:pointer;color:var(--green)">Free models available right now, biggest context first</summary><div id="freelist" class="m"></div></details>
       <p><label style="font-weight:400;display:flex;gap:8px;align-items:center"><input type="checkbox" id="m_gh" checked style="width:auto;margin:0"> Apply in the cloud too</label> <span class="m" id="m_note"></span></p>
+      </details>
 
       <h2>Is everything switched on?</h2>
       <div id="switches" class="m dots">checking…</div>
@@ -832,7 +844,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
 <section class="pane" id="pane-chat">
   <h2>Change the site</h2>
   <p class="m" style="margin:0 0 12px">For changing how the paper <b>looks and works</b> — the design, a page, the newsroom's rules, its sources. Running the paper is done on the Desk. Arabic or English: <i>"الخط صغير في الموبايل"</i>, <i>"add the Saudi central bank feed"</i>, <i>"why does the copy desk keep refusing Al Jazeera stories?"</i></p>
-  <div id="thread"></div>
+  <div id="thread"><div class="empty" id="thread-empty">Ask below. The answer appears right here, in this thread, usually within a minute — with a line for each thing it does on the way.</div></div>
   <div class="ask"><textarea id="msg" placeholder="Type here, then press Enter…"></textarea><button class="go" id="send" onclick="ask()">Send</button></div>
   <div class="chg" id="changes" style="display:none">
     <b>Site changes not live yet — your call</b>
@@ -892,6 +904,9 @@ function render(s){
   document.getElementById('rejected').innerHTML=rej.map(function(x){return '<p><span class="ar" style="display:block;font-size:15px;color:var(--ink)">'+esc(x.title||x.headline||'')+'</span>'+esc((x.outcome||'').replace(/^rejected (after revision|by critic after revision \\(\\d+\\)): /,'').slice(0,200))+'</p>'}).join('');
   LIVE=s.live;var months=[];LIVE.forEach(function(a){var m=a.publishedAt.slice(0,7);if(months.indexOf(m)<0)months.push(m)});
   var msel=document.getElementById('f-month');var cur=msel.value;msel.innerHTML='<option value="">any month</option>'+months.map(function(m){return '<option value="'+m+'"'+(m===cur?' selected':'')+'>'+m+'</option>'}).join('');
+  document.getElementById('latest').innerHTML=LIVE.slice(0,10).map(rowHtml).join('');
+  var cl=s.modelsUsed.filter(function(m){return /^claude/.test(m.id)}).reduce(function(n,m){return n+m.n},0);
+  var mu=document.getElementById('models-used');if(mu&&cl)mu.innerHTML+=' · <b>Claude wrote '+cl+' of them</b> — how much of your plan is left is shown only in the Claude app (Settings → Usage, or /usage in Claude Code); no script can read it.';
   renderLive();
 }
 function draft(a){return '<div class="draft">'+(a.image?'<img src="'+esc(a.image)+'" alt="">':'<div class="noimg">no photo</div>')+'<div><h3>'+esc(a.title)+'</h3><p>'+esc(a.subtitle)+'</p><div class="meta">'+esc(SECTION[a.section]||a.section)+' · '+esc(KIND[a.kind]||a.kind)+' · '+scoreTag(a.score)+' '+esc(a.verdict)+(a.hasChart?' · chart':'')+(a.hasTable?' · table':'')+' · '+a.sources.length+' sources'+(a.committed?' · from the cloud':'')+'</div><div class="acts"><button class="quiet sm" onclick="openPreview(\\''+esc(a.file)+'\\')">Read it</button><button class="go sm" onclick="publish(\\''+esc(a.file)+'\\')">Publish</button><button class="danger sm" onclick="discard(\\''+esc(a.file)+'\\',\\''+esc(a.slug)+'\\')">Discard</button></div></div></div>'}
@@ -899,14 +914,15 @@ function renderLive(){
   var sec=document.getElementById('f-section').value,kind=document.getElementById('f-kind').value,month=document.getElementById('f-month').value,where=document.getElementById('f-where').value,q=document.getElementById('f-q').value.trim().toLowerCase();
   var rows=LIVE.filter(function(a){var front=a.where!=='section'&&a.where!=='hub';return (!sec||a.section===sec)&&(!kind||a.kind===kind)&&(!month||a.publishedAt.slice(0,7)===month)&&(!where||(where==='front'?front:!front))&&(!q||(a.title+' '+a.subtitle).toLowerCase().indexOf(q)>=0)});
   document.getElementById('f-count').textContent=rows.length===LIVE.length?LIVE.length+' stories':rows.length+' of '+LIVE.length;
-  document.getElementById('live').innerHTML=rows.slice(0,200).map(function(a){var front=a.where!=='section'&&a.where!=='hub';
+  document.getElementById('live').innerHTML=rows.slice(0,200).map(rowHtml).join('');
+}
+function rowHtml(a){var front=a.where!=='section'&&a.where!=='hub';
     return '<tr><td class="t"><a href="'+LIVE_URL+'/articles/'+esc(a.slug)+'/" target="_blank">'+esc(a.title)+'</a><div class="meta">'+esc(SECTION[a.section]||a.section)+' · '+esc(KIND[a.kind]||a.kind)+' · '+esc(fmtWhen(a.publishedAt))+(a.featured?' · ★ featured':'')+'</div></td>'+
       '<td><span class="chip'+(front?' front':'')+'">'+esc(WHERE[a.where]||a.where)+'</span></td><td>'+scoreTag(a.score)+'</td><td class="src">'+srcList(a.sources)+'</td>'+
       '<td><details class="menu"><summary aria-label="Actions">'+DOTS+'</summary><div class="pop">'+
       '<a href="'+LIVE_URL+'/articles/'+esc(a.slug)+'/" target="_blank">Open on the site</a>'+
       (a.kind==='news'?(a.featured?'<button onclick="feature(\\''+esc(a.file)+'\\',false)">Take it off the lead</button>':'<button onclick="feature(\\''+esc(a.file)+'\\',true)">Make it the lead (48 h)</button>')+'<div class="sep"></div><div class="lbl">Move to</div><div class="secs">'+['economy','markets','energy','companies','technology','defense'].filter(function(s){return s!==a.section}).map(function(s){return '<button onclick="moveTo(\\''+esc(a.file)+'\\',\\''+s+'\\')">'+esc(SECTION[s])+'</button>'}).join('')+'</div>':'')+
-      '<div class="sep"></div><button class="d" onclick="unpublish(\\''+esc(a.file)+'\\',\\''+esc(a.title).replace(/'/g,'’')+'\\')">Unpublish</button></div></details></td></tr>'}).join('');
-}
+      '<div class="sep"></div><button class="d" onclick="unpublish(\\''+esc(a.file)+'\\',\\''+esc(a.title).replace(/'/g,'’')+'\\')">Unpublish</button></div></details></td></tr>'}
 document.addEventListener('click',function(e){document.querySelectorAll('details.menu[open]').forEach(function(d){if(!d.contains(e.target))d.removeAttribute('open')})});
 refresh();
 
@@ -934,8 +950,18 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closePreview
 // ---- health / settings
 function dot(ok,label,note){return '<p><span style="display:inline-block;width:9px;height:9px;border-radius:50%;margin-inline-end:8px;background:'+(ok===null?'#c9a227':ok?'var(--green)':'var(--red)')+'"></span><b>'+label+'</b>'+(note?' <span class="m">— '+note+'</span>':'')+'</p>'}
 function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(function(h){
-  var auto=document.getElementById('auto');auto.className='auto'+(h.cloud.review?' off':'');auto.innerHTML='<i></i><span>'+(h.cloud.review?'Waits for your approval':'Publishes on its own')+'</span>';
-  document.getElementById('auto-note').textContent=h.cloud.provider==='claude'?'written by Claude ('+h.cloud.newsroomModel+')':'written by the free OpenRouter models';
+  PAUSED=Boolean(h.cloud.paused);
+  var auto=document.getElementById('auto');auto.className='auto'+((h.cloud.review||PAUSED)?' off':'');auto.innerHTML='<i></i><span>'+(PAUSED?'PAUSED — nothing is being written or published':h.cloud.review?'Waits for your approval':'Publishes on its own')+'</span>';
+  document.getElementById('auto-note').textContent=h.cloud.provider==='claude'?'written by Claude ('+h.cloud.newsroomModel+'), free models as backup':'written by the free OpenRouter models';
+  var pb=document.getElementById('pauseBtn');pb.style.display='inline-block';pb.textContent=PAUSED?'Resume':'Pause everything';pb.className=PAUSED?'go sm':'danger sm';
+  document.getElementById('now').innerHTML=
+    '<p><b>Articles are written by</b> '+(h.cloud.provider==='claude'?'Claude ('+h.cloud.newsroomModel+'), with the free OpenRouter models as backup':'the free OpenRouter models')+'.</p>'+
+    '<p><b>The cloud runs</b> '+(PAUSED?'are <span class="no">paused</span>':h.cloud.review?'write drafts and wait for you':'publish on their own')+'.</p>'+
+    '<p><b>The chat</b> uses '+(h.chatModel==='default'?'Claude Code\\'s default model':'Claude '+h.chatModel)+'.</p>'+
+    '<p><b>Keys saved:</b> OpenRouter '+(h.local.openrouter?'✓':'✗')+' · Claude subscription token '+(h.local.oauth?'✓'+(h.cloud.oauth?' (laptop and GitHub)':' (laptop only)'):'✗')+' · Claude API key '+(h.local.anthropic?'✓':'not set (not needed)')+'.</p>';
+  document.getElementById('ks_or').innerHTML=h.local.openrouter?'<span class="ok">Saved</span>':'<span class="no">Not saved</span>';
+  document.getElementById('ks_oauth').innerHTML=h.local.oauth?'<span class="ok">Saved'+(h.cloud.oauth?', and on GitHub':'')+'</span>':'<span class="no">Not saved</span>';
+  document.getElementById('ks_ant').innerHTML=h.local.anthropic?'<span class="ok">Saved</span>':'<span class="m">Not set — only needed if you have no subscription</span>';
   var dl=document.getElementById('deploy-light');if(h.deploy){dl.className='light '+(h.deploy.ok?'ok':'no');dl.innerHTML='<i></i><span>'+(h.deploy.ok?'Site deploy OK · '+esc(fmtWhen(h.deploy.when)):'<b>THE SITE IS NOT UPDATING</b> — last deploy failed. <a href="'+esc(h.deploy.url)+'" target="_blank">See why</a>')+'</span>'}
   var inUse=h.cloud.provider==='claude'?(h.cloud.oauth?'Claude on your subscription token':h.cloud.anthropic?'Claude on your pay-per-use key':'Claude is selected but NO Claude key is on GitHub'):'the free OpenRouter models';
   document.getElementById('keystatus').innerHTML=dot(h.local.openrouter,'OpenRouter key on this laptop',h.local.openrouter?'saved':'missing')+dot(h.local.oauth||h.local.anthropic,'A Claude key on this laptop',h.local.oauth?'subscription token':h.local.anthropic?'API key':'none')+dot(h.cloud.oauth||h.cloud.anthropic||h.cloud.provider!=='claude','A Claude key on GitHub',h.cloud.oauth?'subscription token':h.cloud.anthropic?'API key':'none')+'<p><b>The cloud writes with:</b> '+inUse+'</p>';
@@ -945,7 +971,9 @@ function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(f
 loadHealth();
 var ROLE_WHAT={editor:'picks the stories and their sections',writer:'writes the article',desk:'the Arabic copy desk',critic:'checks facts and scores it',vision:'confirms the photo shows the subject'};
 function loadModels(){fetch('/models').then(function(r){return r.json()}).then(function(m){
-  if(!m.reachable){document.getElementById('models').innerHTML='<p class="no">Could not reach openrouter.ai just now; the chains are unchanged.</p>';return}
+  if(!m.reachable){document.getElementById('models').innerHTML='<p class="no">Could not reach openrouter.ai just now; the chains are unchanged.</p>';document.getElementById('models-summary').textContent='Could not reach OpenRouter just now.';return}
+  var total=0,bad=0;Object.keys(m.roles).forEach(function(r){m.roles[r].models.forEach(function(x){total++;if(!x.ok)bad++})});
+  document.getElementById('models-summary').innerHTML=bad?'<span class="no">'+bad+' of '+total+' models in the chains are no longer free or have vanished — open the chains below and replace them.</span>':'<span class="ok">All '+total+' models in the chains are free and available right now</span> · '+m.free.length+' free models exist on OpenRouter today.';
   document.getElementById('models').innerHTML=Object.keys(m.roles).map(function(role){var r=m.roles[role];return '<div style="border-top:1px solid var(--rule-2);padding:10px 0"><b style="color:var(--ink)">'+role+'</b> <span class="m">— '+ROLE_WHAT[role]+(r.override?' · changed by you':' · built-in defaults')+'</span><div style="margin:4px 0">'+r.models.map(function(x){return '<div><span style="display:inline-block;width:8px;height:8px;border-radius:50%;margin-inline-end:7px;background:'+(x.ok?'var(--green)':'var(--red)')+'"></span><code>'+esc(x.id)+'</code> <span class="m">'+(x.ok?(x.ctx?Math.round(x.ctx/1000)+'k context':''):'NOT FREE OR GONE — replace it')+'</span></div>'}).join('')+'</div><div class="keyrow"><input type="text" id="m_'+role+'" value="'+esc(r.models.map(function(x){return x.id}).join(', '))+'"><span><button class="quiet sm" onclick="saveModels(\\''+role+'\\')">Save</button> <button class="quiet sm" onclick="resetModels(\\''+role+'\\')">Reset</button></span></div></div>'}).join('');
   document.getElementById('freelist').innerHTML=m.free.map(function(x){return '<div><code>'+esc(x.id)+'</code> '+Math.round(x.ctx/1000)+'k</div>'}).join('')||'none listed'})}
 loadModels();
@@ -953,12 +981,15 @@ function saveModels(role){var n=document.getElementById('m_note');n.textContent=
 function resetModels(role){post('/models/reset',{role:role}).then(function(r){return r.text()}).then(function(t){document.getElementById('m_note').textContent=t;loadModels()})}
 function saveKey(name,id){var v=document.getElementById(id).value.trim();if(!v)return;var n=document.getElementById('k_note');n.textContent='saving…';post('/keys',{name:name,value:v,github:document.getElementById('k_gh').checked}).then(function(r){return r.text()}).then(function(t){n.textContent=t;document.getElementById(id).value='';loadHealth()})}
 function saveWriters(){var n=document.getElementById('writersaved');n.textContent='applying…';post('/writers',{provider:document.getElementById('providerSel').value,newsroomModel:document.getElementById('newsroomModel').value,chatModel:document.getElementById('chatModel').value}).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
+var PAUSED=false;
+function togglePause(){if(!PAUSED&&!confirm('Pause everything? The cloud will stop writing and publishing until you press Resume. Stories already live stay live.'))return;post('/pause?value='+(PAUSED?0:1)).then(function(r){return r.text()}).then(function(t){alert(t);loadHealth()})}
+function reveal(id){var w=document.getElementById('w_'+id);w.style.display=w.style.display==='none'?'grid':'none';if(w.style.display==='grid')document.getElementById(id).focus()}
 function saveReview(){var n=document.getElementById('reviewsaved');n.textContent='applying…';post('/review?value='+document.getElementById('reviewSel').value).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
 function saveSettings(){var body={contactEmail:contactEmail.value,publisher:publisher.value,adsenseClient:adsenseClient.value,googleSiteVerification:googleSiteVerification.value,private:document.getElementById('private').value==='true'};post('/settings',body).then(function(r){return r.text()}).then(function(t){document.getElementById('saved').textContent=t})}
 
 // ---- chat
 var thread=document.getElementById('thread');
-function bubble(cls,text){var d=document.createElement('div');d.className='bub '+cls+(rtl(text)?' rtl':'');d.textContent=text;thread.appendChild(d);thread.scrollTop=thread.scrollHeight;return d}
+function bubble(cls,text){var e=document.getElementById('thread-empty');if(e)e.remove();var d=document.createElement('div');d.className='bub '+cls+(rtl(text)?' rtl':'');d.textContent=text;thread.appendChild(d);thread.scrollTop=thread.scrollHeight;return d}
 function step(text){var d=document.createElement('div');d.className='step';d.textContent='· '+text;thread.appendChild(d);thread.scrollTop=thread.scrollHeight}
 var busy=null;var ce=new EventSource('/chat/events');
 ce.onmessage=function(e){var ev=JSON.parse(e.data);if(ev.t==='you')bubble('you',ev.text);if(ev.t==='paper'){if(busy){busy.remove();busy=null}bubble('paper',ev.text)}if(ev.t==='step')step(ev.text);if(ev.t==='busy')busy=bubble('paper','…');if(ev.t==='error'){if(busy){busy.remove();busy=null}bubble('paper',ev.text)}if(ev.t==='done'){if(busy){busy.remove();busy=null}document.getElementById('send').disabled=false;document.getElementById('msg').disabled=false;step('finished in '+ev.seconds+'s')}if(ev.t==='changes')renderChanges(ev.changes)};
@@ -1188,6 +1219,13 @@ const server = http.createServer(async (req, res) => {
         note += r === "ok" ? " Sent to GitHub too." : ` GitHub refused it: ${r}`;
       }
       return text(200, note);
+    }
+    // "Pause everything": the cloud newsroom and the daily editor skip every scheduled run until resumed.
+    if (url.pathname === "/pause" && req.method === "POST") {
+      const value = url.searchParams.get("value") === "1" ? "1" : "0";
+      const out = await sh(`gh variable set KHAZENDAR_PAUSED --repo ${REPO} --body ${value} 2>&1`);
+      if (/error|not logged|could not/i.test(out)) return text(200, `Could not: ${out.slice(0, 160)}`);
+      return text(200, value === "1" ? "Paused — nothing will be written or published until you press Resume. Stories already live stay live." : "Resumed — the next scheduled run goes ahead.");
     }
     if (url.pathname === "/review" && req.method === "POST") {
       const value = url.searchParams.get("value") === "1" ? "1" : "0";

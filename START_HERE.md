@@ -60,6 +60,10 @@ whether anything waits for you. Under that, **every part of the paper**: each se
 and this week's count and its last story, so you can see at a glance that nothing is being neglected
 (a section quiet for three days is marked *due for one*, and the balancing rule feeds it next).
 
+**Pause everything** sits in that first band: it stops the cloud from writing and publishing until you
+press Resume (stories already live stay live). Under the coverage strip, **Latest on the site** lists
+the ten newest stories with the same ⋯ menu as the Stories page.
+
 You do not have to check anything. The desk exists for the few decisions that are yours:
 
 > **read a draft you asked for → Publish or Discard · find a story → open, make it the lead, move it, or unpublish**
@@ -106,11 +110,15 @@ telling the *Change the site* tab about.
 row holds everything you can do to it: open it on the site, make it the lead, move it to another
 section, unpublish. The bar above filters by headline, section, kind, month and placement.
 
-**Settings.** Three key boxes that are *not* interchangeable, each labelled with what it is and what
-its value starts with: OpenRouter (`sk-or-`, free models), Claude API key (`sk-ant-`, pay per use),
-Claude subscription token (from `claude setup-token`, no per-message cost). A line tells you which
-one the cloud is actually writing with. Below that: whether the cloud publishes on its own or writes
-drafts and waits for you, and the newspaper's own fields (contact email, AdSense id, visibility).
+**Settings** opens with **Right now** — four plain sentences: who writes the articles (and with which
+Claude model), whether the cloud publishes on its own, what the chat uses, and which keys are saved.
+Each key shows *Saved* or *Not saved* with a **Replace** button; you never have to wonder whether a
+paste took. The free-model chains are folded away under "advanced" with one line above them saying
+whether every model is still free and available — nothing to do there unless it turns red.
+
+**How much of your Claude plan is left** cannot be read by any script; the Claude app shows it
+(Settings → Usage, or `/usage` inside Claude Code). The desk shows the other half: how many of
+today's stories Claude wrote.
 
 **Change the site.** A chat for changing how the paper *looks and works* — a font size, a new source,
 a rule the copy desk keeps applying wrongly. It is not for running the paper; the Desk is. It can
