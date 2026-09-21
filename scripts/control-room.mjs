@@ -136,6 +136,92 @@ function progressLines() {
   const meaningful = job.log.filter((l) => /^(drafted|published|skip|desk|rejected|reading|fetched|selected|writing|critic|image|photo|candidates|stories|—)/i.test(l) || /"/.test(l));
   return meaningful.slice(-4).map((l) => l.replace(/^\$ .*/, "").slice(0, 180));
 }
+/** "2 of 4 written · 1 refused" — counted from the run's own log lines, so it is never a guess. */
+function jobProgress() {
+  const written = job.log.filter((l) => /\] (drafted|published) "/.test(l)).length;
+  const refused = job.log.filter((l) => /\] (reject|skip) /.test(l)).length;
+  const m = job.log[0]?.match(/--limit=(\d+)/);
+  return { written, refused, target: m ? Number(m[1]) : null };
+}
+
+/**
+ * Where each live story sits, by the same arithmetic as src/pages/index.astro and src/lib/articles.ts:
+ * the lead is the strongest fresh news story (importance − hours/12 + 1.5 for a photo, or the newest
+ * featured one within 48 hours); the cover is the lead plus the four strongest of the freshest twelve;
+ * the next five are the ticker; everything else lives on its section page and in الأحدث.
+ */
+function placeOnFront(live) {
+  const now = Date.now();
+  const hours = (a) => (now - Date.parse(a.publishedAt)) / 36e5;
+  const news = live.filter((a) => a.kind === "news").sort((x, y) => Date.parse(y.publishedAt) - Date.parse(x.publishedAt));
+  for (const a of live) a.where = a.kind === "news" ? "section page" : "its hub";
+  if (!news.length) return live;
+  const featured = news.filter((a) => a.featured && hours(a) < 48);
+  const lead = featured[0] ?? [...news].sort((x, y) => ((y.importance ?? 5) - hours(y) / 12 + (y.image ? 1.5 : 0)) - ((x.importance ?? 5) - hours(x) / 12 + (x.image ? 1.5 : 0)))[0];
+  const imp = (a) => (a.importance ?? 5) + (a.image ? 0.5 : 0);
+  const cover = [lead, ...news.filter((a) => a !== lead).slice(0, 12).sort((x, y) => imp(y) - imp(x)).slice(0, 4)];
+  const ticker = news.filter((a) => !cover.includes(a)).slice(0, 5);
+  cover.forEach((a, i) => (a.where = i === 0 ? "front page · THE LEAD" : `front page · cover ${i + 1}`));
+  ticker.forEach((a) => (a.where = "front page · ticker"));
+  return live;
+}
+/** Set or clear `featured` in a story's frontmatter; only one story is featured at a time. */
+async function setFeatured(file, on) {
+  const files = (await readdir(ARTICLES)).filter((f) => f.endsWith(".md"));
+  const touched = [];
+  for (const f of files) {
+    const full = path.join(ARTICLES, f);
+    let raw = await readFile(full, "utf8");
+    const had = /^featured:\s*true\r?\n/m.test(raw);
+    const want = on && f === file;
+    if (had === want) continue;
+    raw = raw.replace(/^featured:\s*true\r?\n/m, "");
+    if (want) raw = raw.replace(/^(---\r?\n[\s\S]*?)(\r?\n---)/, (m, head, tail) => `${head}\nfeatured: true${tail}`);
+    await writeFile(full, raw, "utf8");
+    touched.push(`content/articles/${f}`);
+  }
+  return touched;
+}
+
+// ------------------------------------------------------------------- models
+// The chains live in pipeline/lib/llm.mjs (defaults) and may be overridden per role by
+// KHAZENDAR_MODELS_<ROLE> — in .env for this laptop, as a repository variable for the cloud.
+// Only ":free" ids are ever accepted, so a model that turns paid cannot be chosen by anyone.
+const MODEL_ROLES = ["editor", "writer", "desk", "critic", "vision"];
+function modelDefaults() {
+  const src = readFileSync(path.join(root, "pipeline", "lib", "llm.mjs"), "utf8");
+  const out = {};
+  for (const role of MODEL_ROLES) {
+    const m = src.match(new RegExp(`${role}:\\s*chain\\("KHAZENDAR_MODELS_[A-Z]+",\\s*\\[([^\\]]*)\\]`));
+    out[role] = m ? [...m[1].matchAll(/"([^"]+)"/g)].map((x) => x[1]) : [];
+  }
+  return out;
+}
+let orCache = { at: 0, list: [] };
+async function openrouterModels() {
+  if (Date.now() - orCache.at < 10 * 60 * 1000 && orCache.list.length) return orCache.list;
+  try {
+    const r = await fetch("https://openrouter.ai/api/v1/models", { signal: AbortSignal.timeout(20000) });
+    const j = await r.json();
+    orCache = { at: Date.now(), list: (j.data ?? []).map((m) => ({ id: m.id, ctx: m.context_length ?? 0, free: m.id.endsWith(":free") && String(m.pricing?.prompt) === "0" })) };
+  } catch {
+    /* keep whatever we had; the page says "could not reach OpenRouter" */
+  }
+  return orCache.list;
+}
+async function modelReport() {
+  const live = await openrouterModels();
+  const byId = new Map(live.map((m) => [m.id, m]));
+  const defaults = modelDefaults();
+  const env = envFileKeys();
+  const roles = {};
+  for (const role of MODEL_ROLES) {
+    const override = env[`KHAZENDAR_MODELS_${role.toUpperCase()}`];
+    const chain = override ? override.split(",").map((s) => s.trim()).filter(Boolean) : defaults[role];
+    roles[role] = { override: Boolean(override), models: chain.map((id) => ({ id, ok: byId.has(id) && byId.get(id).free, ctx: byId.get(id)?.ctx ?? null })) };
+  }
+  return { reachable: live.length > 0, checkedAt: orCache.at, roles, free: live.filter((m) => m.free).sort((a, b) => b.ctx - a.ctx) };
+}
 
 // ------------------------------------------------------------------- articles
 function parseArticle(file, raw) {
@@ -177,6 +263,8 @@ async function allArticles() {
       hasChart: Boolean(d.chart),
       hasTable: Boolean(d.table),
       models: d.models ?? {},
+      importance: d.quality?.importance ?? null,
+      featured: d.featured === true,
       // A draft is what the pipeline flagged as one, or a brand-new file git has never seen (the
       // desk's own runs, and older local runs from before the flag existed).
       isDraft: d.draft === true || untracked,
@@ -518,17 +606,21 @@ code{background:#f0ede6;padding:2px 6px;font-size:13px}
  <h2>Get new material</h2>
  <div class="get">
   <button onclick="run('news')">📰 News stories</button>
+  <label>in <select id="newsSection"><option value="">the whole paper</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option><option value="defense">دفاع وجيوسياسة</option></select></label>
+  <label>how many <select id="limit"><option>2</option><option selected>4</option><option>6</option><option>8</option></select></label>
+ </div>
+ <div class="get" style="margin-top:6px">
   <button onclick="run('explainer')">📘 An explainer</button>
   <button onclick="run('analysis')">📈 An analysis</button>
+  <label>of <select id="analysisSection"><option value="">the week's news</option><option value="defense">defence and geopolitics only</option><option value="economy">الاقتصاد only</option><option value="markets">الأسواق only</option><option value="energy">الطاقة only</option></select></label>
   <button onclick="run('paper')">🔬 A research paper</button>
   <button onclick="run('weekly')">🗓 The week's review</button>
-  <label>How many news stories <select id="limit"><option>2</option><option selected>4</option><option>6</option><option>8</option></select></label>
  </div>
  <p class="m">Each button writes <b>drafts</b>. Nothing goes on the site until you press Publish on it below. A news run takes about 8–10 minutes for four stories; the others take 3–5 minutes.</p>
 </section>
 
 <section class="running" id="running" style="display:none">
- <h2><span class="spin"></span><span id="running-name">Working</span> <span class="m" id="running-time"></span></h2>
+ <h2><span class="spin"></span><span id="running-name">Working</span> <span class="m" id="running-time"></span> <span id="running-count" style="text-transform:none;letter-spacing:0;color:var(--green)"></span></h2>
  <div class="lines" id="running-lines"></div>
  <button class="danger small" onclick="stopJob()">Stop</button>
  <details><summary>Show every line</summary><pre id="log"></pre></details>
@@ -549,7 +641,16 @@ code{background:#f0ede6;padding:2px 6px;font-size:13px}
 
 <section>
  <h2>Live on the site <span class="n" id="n-live">0</span></h2>
- <table id="live"><tr><th>Story</th><th>Score</th><th>Sources</th><th></th></tr></table>
+ <div class="get" style="margin-bottom:8px">
+  <select id="f-section" onchange="renderLive()"><option value="">every section</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option><option value="defense">دفاع</option><option value="analysis">تحليلات</option><option value="explainers">مدخل</option></select>
+  <select id="f-kind" onchange="renderLive()"><option value="">every kind</option><option value="news">news</option><option value="analysis">analysis</option><option value="explainer">explainer</option><option value="paper">paper</option><option value="weekly">weekly</option></select>
+  <select id="f-month" onchange="renderLive()"><option value="">any date</option></select>
+  <select id="f-where" onchange="renderLive()"><option value="">anywhere</option><option value="front">on the front page</option><option value="section">section pages only</option></select>
+  <input type="text" id="f-q" placeholder="search a headline…" oninput="renderLive()" style="min-width:220px">
+  <span class="m" id="f-count"></span>
+ </div>
+ <table id="live"><tr><th>Story</th><th>Where</th><th>Score</th><th>Sources</th><th></th></tr></table>
+ <p class="m">"Where" is where the story sits right now: the front page's lead, one of the four cover stories, the ticker, or its section page (and الأحدث). Nothing is ever archived away: every story keeps its page and its place in its section's older pages for good.</p>
 </section>
 </div>
 
@@ -590,6 +691,13 @@ code{background:#f0ede6;padding:2px 6px;font-size:13px}
  <button class="go" onclick="saveSettings()">Save and publish</button> <span class="m" id="saved"></span>
 </section>
 
+<section class="set">
+ <h2>The models — checked against OpenRouter's live list</h2>
+ <p class="m">Each job in the newsroom has a chain of models: the first one that answers is used. Only models whose name ends in <code>:free</code> are ever accepted, so you cannot be charged even if OpenRouter changes its offer. A red dot means a model has vanished or stopped being free — pick a replacement from the list below and save.</p>
+ <div id="models">checking OpenRouter…</div>
+ <details><summary>Free models available right now, biggest context first</summary><div id="freelist" class="m"></div></details>
+ <p><label style="font-weight:400"><input type="checkbox" id="m_gh" checked style="width:auto"> Apply in the cloud too</label> <span class="m" id="m_note"></span></p>
+</section>
 <section><h2>Is everything switched on?</h2><div id="switches" class="m">checking…</div></section>
 </div>
 
@@ -655,7 +763,9 @@ function render(s){
   var r=document.getElementById('running'); r.style.display=s.job.running?'block':'none';
   if(s.job.running){
     document.getElementById('running-name').textContent='Working: '+s.job.name;
-    document.getElementById('running-time').textContent=Math.round((Date.now()-s.job.startedAt)/1000)+'s';
+    var secs=Math.round((Date.now()-s.job.startedAt)/1000);
+    document.getElementById('running-time').textContent=Math.floor(secs/60)+'m '+(secs%60)+'s';
+    var c=s.job.counts;document.getElementById('running-count').textContent=c&&s.job.kind==='news'?'· '+c.written+(c.target?' of '+c.target:'')+' written'+(c.refused?' · '+c.refused+' refused':'')+(c.target&&c.written<c.target?' · a story takes ~2 min':''):'';
     document.getElementById('running-lines').textContent=s.job.progress.join('\\n')||'starting…';
     document.getElementById('log').textContent=s.job.log.join('\\n');
   } else if(wasRunning){ /* a job just ended: say so once, in the status area */
@@ -671,9 +781,11 @@ function render(s){
   document.getElementById('rejected-sum').textContent='Refused by the copy desk in the last run ('+rej.length+')';
   document.getElementById('rejected').innerHTML=rej.map(function(x){return '<tr><td>'+esc(x.section||'')+'</td><td class="why">'+esc(x.title||x.headline||'')+'</td><td>'+esc((x.outcome||'').replace(/^rejected (after revision|by critic after revision \\(\\d+\\)): /,'').slice(0,240))+'</td></tr>'}).join('');
   document.getElementById('n-live').textContent=s.live.length;
-  document.getElementById('live').innerHTML='<tr><th>Story</th><th>Score</th><th>Sources</th><th></th></tr>'+s.live.slice(0,60).map(function(a){
-    return '<tr><td class="t"><a href="'+LIVE_URL+'/articles/'+esc(a.slug)+'/" target="_blank">'+esc(a.title)+'</a><div class="m" style="direction:ltr;text-align:left">'+esc(SECTION[a.section]||a.section)+' · '+esc(KIND[a.kind]||a.kind)+' · '+esc(a.publishedAt.slice(0,16).replace('T',' '))+' UTC</div></td>'+
-      '<td>'+scoreTag(a.score)+'</td><td>'+srcList(a.sources)+'</td><td><button class="danger small" onclick="unpublish(\\''+esc(a.file)+'\\',\\''+esc(a.title).replace(/'/g,'’')+'\\')">Unpublish</button></td></tr>'}).join('');
+  LIVE=s.live;
+  var months=[];LIVE.forEach(function(a){var m=a.publishedAt.slice(0,7);if(months.indexOf(m)<0)months.push(m)});
+  var msel=document.getElementById('f-month');var cur=msel.value;
+  msel.innerHTML='<option value="">any date</option>'+months.map(function(m){return '<option value="'+m+'"'+(m===cur?' selected':'')+'>'+m+'</option>'}).join('');
+  renderLive();
 }
 var LIVE_URL=${JSON.stringify(LIVE)};
 var timer=null;
@@ -681,7 +793,21 @@ function refresh(){fetch('/api/state').then(function(r){return r.json()}).then(f
 refresh();
 
 // ---- desk: actions
-function run(kind){var limit=document.getElementById('limit').value;post('/run?kind='+kind+'&limit='+limit).then(function(r){return r.text()}).then(function(t){if(!/^started/.test(t))alert(t);refresh()})}
+function run(kind){var limit=document.getElementById('limit').value;var sec=kind==='news'?document.getElementById('newsSection').value:kind==='analysis'?document.getElementById('analysisSection').value:'';post('/run?kind='+kind+'&limit='+limit+(sec?'&sections='+sec:'')).then(function(r){return r.text()}).then(function(t){if(!/^started/.test(t))alert(t);refresh()})}
+function feature(file,on){post('/feature?file='+encodeURIComponent(file)+'&on='+(on?1:0)).then(function(r){return r.text()}).then(function(t){alert(t);refresh()})}
+var LIVE=[];
+function renderLive(){
+  var sec=document.getElementById('f-section').value,kind=document.getElementById('f-kind').value,month=document.getElementById('f-month').value,where=document.getElementById('f-where').value,q=document.getElementById('f-q').value.trim().toLowerCase();
+  var rows=LIVE.filter(function(a){return (!sec||a.section===sec)&&(!kind||a.kind===kind)&&(!month||a.publishedAt.slice(0,7)===month)&&(!where||(where==='front'?/front page/.test(a.where):!/front page/.test(a.where)))&&(!q||(a.title+' '+a.subtitle).toLowerCase().indexOf(q)>=0)});
+  document.getElementById('f-count').textContent=rows.length===LIVE.length?'':rows.length+' of '+LIVE.length;
+  document.getElementById('live').innerHTML='<tr><th>Story</th><th>Where</th><th>Score</th><th>Sources</th><th></th></tr>'+rows.slice(0,150).map(function(a){
+    var front=/front page/.test(a.where);
+    return '<tr><td class="t"><a href="'+LIVE_URL+'/articles/'+esc(a.slug)+'/" target="_blank">'+esc(a.title)+'</a><div class="m" style="direction:ltr;text-align:left">'+esc(SECTION[a.section]||a.section)+' · '+esc(KIND[a.kind]||a.kind)+' · '+esc(a.publishedAt.slice(0,16).replace('T',' '))+' UTC</div></td>'+
+      '<td style="font-size:12.5px;white-space:nowrap;'+(front?'color:var(--green);font-weight:600':'color:var(--muted)')+'">'+esc(a.where||'')+(a.featured?' ★':'')+'</td>'+
+      '<td>'+scoreTag(a.score)+'</td><td>'+srcList(a.sources)+'</td>'+
+      '<td style="white-space:nowrap">'+(a.kind==='news'?(a.featured?'<button class="secondary small" onclick="feature(\\''+esc(a.file)+'\\',false)">Unfeature</button>':'<button class="secondary small" onclick="feature(\\''+esc(a.file)+'\\',true)">Make it the lead</button>'):'')+
+      '<button class="danger small" onclick="unpublish(\\''+esc(a.file)+'\\',\\''+esc(a.title).replace(/'/g,'’')+'\\')">Unpublish</button></td></tr>'}).join('');
+}
 function stopJob(){post('/stop').then(refresh)}
 function publish(file){post('/publish?file='+encodeURIComponent(file)).then(function(r){return r.text()}).then(function(t){if(!/^Publishing/.test(t))alert(t);closePreview();refresh()})}
 function publishAll(){if(!confirm('Publish every waiting story to the live site?'))return;post('/publish-all').then(function(r){return r.text()}).then(function(t){if(!/^Publishing/.test(t))alert(t);refresh()})}
@@ -735,6 +861,20 @@ function loadHealth(){
   });
 }
 loadHealth();
+var ROLE_WHAT={editor:'picks the stories and their sections',writer:'writes the article',desk:'the Arabic copy desk',critic:'checks facts and scores it',vision:'confirms the photo shows the subject'};
+function loadModels(){
+  fetch('/models').then(function(r){return r.json()}).then(function(m){
+    if(!m.reachable){document.getElementById('models').innerHTML='<p class="no">Could not reach openrouter.ai just now; the chains are unchanged. Try again in a minute.</p>';return}
+    document.getElementById('models').innerHTML=Object.keys(m.roles).map(function(role){var r=m.roles[role];
+      return '<div style="border-top:1px solid var(--line);padding:8px 0"><b>'+role+'</b> <span class="m">— '+ROLE_WHAT[role]+(r.override?' · changed by you':' · built-in defaults')+'</span>'+
+        '<div style="margin:4px 0">'+r.models.map(function(x){return '<div><span class="dot '+(x.ok?'y':'n')+'"></span><code>'+esc(x.id)+'</code> <span class="m">'+(x.ok?(x.ctx?Math.round(x.ctx/1000)+'k context':''):'NOT FREE OR GONE — replace it')+'</span></div>'}).join('')+'</div>'+
+        '<div class="keyrow"><input type="text" id="m_'+role+'" value="'+esc(r.models.map(function(x){return x.id}).join(', '))+'"><span><button class="secondary small" onclick="saveModels(\\''+role+'\\')">Save</button><button class="secondary small" onclick="resetModels(\\''+role+'\\')">Reset</button></span></div></div>'}).join('');
+    document.getElementById('freelist').innerHTML=m.free.map(function(x){return '<div><code>'+esc(x.id)+'</code> '+Math.round(x.ctx/1000)+'k</div>'}).join('')||'none listed';
+  });
+}
+loadModels();
+function saveModels(role){var note=document.getElementById('m_note');note.textContent='checking with OpenRouter…';post('/models',{role:role,models:document.getElementById('m_'+role).value,github:document.getElementById('m_gh').checked}).then(function(r){return r.text()}).then(function(t){note.textContent=t;loadModels()})}
+function resetModels(role){post('/models/reset',{role:role}).then(function(r){return r.text()}).then(function(t){document.getElementById('m_note').textContent=t;loadModels()})}
 function saveKey(name,inputId){
   var v=document.getElementById(inputId).value.trim();if(!v)return;
   var note=document.getElementById('k_note');note.textContent='saving…';
@@ -814,9 +954,9 @@ const server = http.createServer(async (req, res) => {
     if (url.pathname === "/api/state") {
       const arts = await allArticles();
       return json({
-        job: { running: Boolean(job.running), name: job.name, kind: job.kind, startedAt: job.startedAt, exitCode: job.exitCode, finishedAt: job.finishedAt, progress: job.running ? progressLines() : [], log: job.log.slice(-400) },
+        job: { running: Boolean(job.running), name: job.name, kind: job.kind, startedAt: job.startedAt, exitCode: job.exitCode, finishedAt: job.finishedAt, progress: job.running ? progressLines() : [], counts: job.running ? jobProgress() : null, log: job.log.slice(-400) },
         drafts: arts.filter((a) => a.isDraft),
-        live: arts.filter((a) => !a.isDraft),
+        live: placeOnFront(arts.filter((a) => !a.isDraft)),
         lastRun: await latestRun(),
         nextCloudRun: nextCloudRun(),
       });
@@ -842,6 +982,12 @@ const server = http.createServer(async (req, res) => {
       };
       const plan = plans[kind];
       if (!plan) return text(400, "unknown action");
+      // "News stories — in الطاقة": one part of the paper only. run.mjs filters the editor's picks to it.
+      const sections = (url.searchParams.get("sections") ?? "").replace(/[^a-z,]/g, "");
+      if (sections && (kind === "news" || kind === "analysis")) {
+        plan[2].push(`--sections=${sections}`);
+        plan[0] += ` (${sections})`;
+      }
       if (!runJob(plan[0], kind, plan[1], plan[2], plan[3])) return text(409, `Still busy with "${job.name}". Wait for it to finish, or press Stop.`);
       return text(200, "started");
     }
@@ -878,6 +1024,16 @@ const server = http.createServer(async (req, res) => {
       if (tracked && !job.running) commitAndPush("discard a cloud draft", ["-A", `content/articles/${file}`, "pipeline/state"], `newsroom: discard ${file.replace(/\.md$/, "")}`);
       return text(200, "discarded");
     }
+    if (url.pathname === "/feature" && req.method === "POST") {
+      const file = path.basename(url.searchParams.get("file") ?? "");
+      const on = url.searchParams.get("on") === "1";
+      if (!file.endsWith(".md") || !existsSync(path.join(ARTICLES, file))) return text(404, "not found");
+      if (job.running) return text(409, `Still busy with "${job.name}". Wait for it to finish first.`);
+      const touched = await setFeatured(file, on);
+      if (!touched.length) return text(200, on ? "It already leads." : "It was not featured.");
+      commitAndPush(on ? "feature a story" : "unfeature a story", touched, `front page: ${on ? "feature" : "unfeature"} ${file.replace(/\.md$/, "")}`);
+      return text(200, on ? "Done — it leads the front page for the next 48 hours, live in about a minute." : "Done — the front page goes back to the formula, live in about a minute.");
+    }
     if (url.pathname === "/unpublish" && req.method === "POST") {
       const file = path.basename(url.searchParams.get("file") ?? "");
       const full = path.join(ARTICLES, file);
@@ -888,6 +1044,32 @@ const server = http.createServer(async (req, res) => {
       return text(200, "Removed. The site updates in about a minute.");
     }
     if (url.pathname === "/health") return json(await health());
+    if (url.pathname === "/models" && req.method === "GET") return json(await modelReport());
+    if (url.pathname === "/models" && req.method === "POST") {
+      const { role, models, github } = await body(req);
+      if (!MODEL_ROLES.includes(role)) return text(400, "unknown role");
+      const ids = String(models ?? "").split(/[,\n]/).map((s) => s.trim()).filter(Boolean);
+      if (!ids.length) return text(400, "Give at least one model, or press Reset to go back to the defaults.");
+      const live = new Map((await openrouterModels()).map((m) => [m.id, m]));
+      const bad = ids.filter((id) => !id.endsWith(":free") || !live.get(id)?.free);
+      if (bad.length) return text(400, `Refused — not free on OpenRouter right now: ${bad.join(", ")}. Only ":free" models are ever used, so you can never be charged.`);
+      const name = `KHAZENDAR_MODELS_${role.toUpperCase()}`;
+      await setEnvKey(name, ids.join(","));
+      let note = `Saved for this laptop: ${role} → ${ids.length} model(s).`;
+      if (github) {
+        const out = await sh(`gh variable set ${name} --repo ${REPO} --body "${ids.join(",")}" 2>&1`);
+        note += /error|not logged|could not/i.test(out) ? ` Cloud refused: ${out.slice(0, 120)}` : " Applied in the cloud too, from the next run.";
+      }
+      return text(200, note);
+    }
+    if (url.pathname === "/models/reset" && req.method === "POST") {
+      const { role } = await body(req);
+      if (!MODEL_ROLES.includes(role)) return text(400, "unknown role");
+      const name = `KHAZENDAR_MODELS_${role.toUpperCase()}`;
+      await setEnvKey(name, "");
+      await sh(`gh variable delete ${name} --repo ${REPO} 2>&1`);
+      return text(200, `Back to the built-in defaults for ${role}, here and in the cloud.`);
+    }
     if (url.pathname === "/keys" && req.method === "POST") {
       const { name, value, github } = await body(req);
       const v = String(value ?? "").trim();
