@@ -7049,10 +7049,10 @@
       "strikes": 1
     },
     "7c704da0770dec52": {
-      "at": "2026-09-20T21:02:37.411Z",
+      "at": "2026-09-21T13:06:56.601Z",
       "decision": "rejected",
       "title": "Value of goods through Sharjah-Oman logistics corridor jumps 66% in three months",
-      "strikes": 1
+      "strikes": 2
     },
     "2ff985f81dbe3e97": {
       "at": "2026-09-20T21:02:37.411Z",
@@ -7220,6 +7220,96 @@
       "at": "2026-09-21T05:20:03.870Z",
       "decision": "rejected",
       "title": "إيرادات الأنشطة التشغيلية السعودية ترتفع 4.9 % في يوليو",
+      "strikes": 1
+    },
+    "10722332659cdd90": {
+      "at": "2026-09-21T13:04:25.135Z",
+      "decision": "published",
+      "slug": "oil-decline-diplomacy-hope-d15314",
+      "title": "عمال السيارات في ألمانيا يحتجون لحماية الوظائف والمصانع"
+    },
+    "4d1e4a24fddcda6b": {
+      "at": "2026-09-21T13:04:25.135Z",
+      "decision": "published",
+      "slug": "oil-decline-diplomacy-hope-d15314",
+      "title": "Germany's car crisis: Can the 35-hour workweek survive?"
+    },
+    "af0782d42890e61a": {
+      "at": "2026-09-21T13:04:25.135Z",
+      "decision": "published",
+      "slug": "oil-decline-diplomacy-hope-d15314",
+      "title": "Strait of Hormuz Shipping Traffic Falls Further as Saudi Oil Flows Rise"
+    },
+    "a4b3cbbbc0c5c10a": {
+      "at": "2026-09-21T13:04:25.135Z",
+      "decision": "published",
+      "slug": "oil-decline-diplomacy-hope-d15314",
+      "title": "Oil hits over 1-week low on hopes of boost to diplomacy in Iran war"
+    },
+    "1ecdccd17e33c8e1": {
+      "at": "2026-09-21T13:04:25.135Z",
+      "decision": "published",
+      "slug": "oil-decline-diplomacy-hope-d15314",
+      "title": "Oil Prices Slide as Traders Bet on Iran Diplomacy"
+    },
+    "4daa6cba5c76e4a0": {
+      "at": "2026-09-21T13:06:56.601Z",
+      "decision": "rejected",
+      "title": "الكعبي: إصلاح أضرار رأس لفان يستغرق 3 سنوات",
+      "strikes": 1
+    },
+    "62bdab73c9373a08": {
+      "at": "2026-09-21T13:06:56.601Z",
+      "decision": "rejected",
+      "title": "قطر تطرق باب سوق السندات الدولية مع ضغط حرب إيران على اقتصادها",
+      "strikes": 1
+    },
+    "595f5163b9be0185": {
+      "at": "2026-09-21T13:06:56.601Z",
+      "decision": "rejected",
+      "title": "Qatar rules out Hormuz pipeline bypass and reshapes its sovereign wealth strategy",
+      "strikes": 1
+    },
+    "4df9c1d598171bca": {
+      "at": "2026-09-21T13:06:56.601Z",
+      "decision": "rejected",
+      "title": "Pakistan Secures Second Qatari LNG Cargo Through Hormuz After Iran Deal",
+      "strikes": 1
+    },
+    "6345d9869ac437a5": {
+      "at": "2026-09-21T13:11:18.632Z",
+      "decision": "published",
+      "slug": "iran-gdp-contracts-10-percent-post-war-a88253",
+      "title": "How oil, gas losses have shrunk Iran’s GDP by 10 percent during war"
+    },
+    "5ccdaa1b65928fec": {
+      "at": "2026-09-21T13:11:18.632Z",
+      "decision": "published",
+      "slug": "iran-gdp-contracts-10-percent-post-war-a88253",
+      "title": "تراجع الناتج المحلي الإجمالي في إيران بأكثر من 10% بعد الحرب"
+    },
+    "9ec19a9f0c9b610c": {
+      "at": "2026-09-21T13:11:18.632Z",
+      "decision": "published",
+      "slug": "iran-gdp-contracts-10-percent-post-war-a88253",
+      "title": "Iran’s military says US preparing to resume strikes"
+    },
+    "43013f7c36e37380": {
+      "at": "2026-09-21T13:14:03.652Z",
+      "decision": "rejected",
+      "title": "استبعاد سهم فولكس فاجن من مؤشر رئيسي في منطقة اليورو",
+      "strikes": 1
+    },
+    "62b5c8d90919cf8b": {
+      "at": "2026-09-21T13:14:03.652Z",
+      "decision": "rejected",
+      "title": "Volkswagen exits Euro Stoxx 50 as index removal adds to pressure on troubled firm",
+      "strikes": 1
+    },
+    "1619eb1355e6584a": {
+      "at": "2026-09-21T13:14:03.652Z",
+      "decision": "rejected",
+      "title": "Volvo Cars names Škoda boss Klaus Zellmer as next CEO for a turnaround",
       "strikes": 1
     }
   }
