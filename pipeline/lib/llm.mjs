@@ -202,8 +202,9 @@ async function callClaudeCli(model, { system, user, timeoutMs }) {
 
 const PROVIDER = process.env.KHAZENDAR_PROVIDER ?? "openrouter";
 
+/** Routed by the model's name, not by the provider setting, so one chain can hold Claude first and the free models after it. */
 async function callModel(model, options) {
-  if (PROVIDER === "claude" && !options.images?.length) return callClaudeCli(model, options);
+  if (model === "claude-cli" && !options.images?.length) return callClaudeCli(model, options);
   return callOpenRouter(model, options);
 }
 
@@ -279,7 +280,10 @@ export async function chat({
   timeoutMs = 240000,
   log = () => {},
 }) {
-  const models = PROVIDER === "claude" && role !== "vision" ? ["claude-cli"] : ROLES[role];
+  // Claude first, the free chain behind it: a lapsed subscription or a hit limit fails the Claude
+  // call (401, exit code, timeout), the loop below moves to the next model, and the paper keeps
+  // publishing. Every article records which model actually wrote it.
+  const models = PROVIDER === "claude" && role !== "vision" ? ["claude-cli", ...ROLES[role]] : ROLES[role];
   if (!models?.length) throw new LlmError(`Unknown role ${role}`);
   const errors = [];
   for (const model of models) {

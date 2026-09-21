@@ -16,6 +16,7 @@ Disallow: /admin/
 Disallow: /api/
 
 Sitemap: ${new URL("/sitemap-index.xml", site.url)}
+Sitemap: ${new URL("/news-sitemap.xml", site.url)}
 `;
   return new Response(body, { headers: { "Content-Type": "text/plain; charset=utf-8" } });
 }

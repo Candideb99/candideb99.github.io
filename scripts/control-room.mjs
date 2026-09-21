@@ -194,6 +194,7 @@ async function allArticles() {
       hasTable: Boolean(d.table),
       importance: d.quality?.importance ?? null,
       featured: d.featured === true,
+      models: d.models ?? {},
       // A draft is what the pipeline flagged as one, or a brand-new file git has never seen.
       isDraft: d.draft === true || untracked,
       committed: !untracked,
@@ -736,6 +737,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
     <details><summary>Show every line</summary><pre id="log"></pre></details>
   </div>
 
+  <p class="m" id="models-used" style="margin:10px 0 0"></p>
   <h2>Every part of the paper</h2>
   <div class="cov" id="cov"></div>
   <div class="hubs" id="hubs"></div>
@@ -788,7 +790,8 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
 
       <h2>Who writes</h2>
       <label><span>Model provider for the articles</span>
-        <select id="providerSel"><option value="openrouter">Free models on OpenRouter — costs nothing</option><option value="claude">Claude, on your subscription — the biggest quality gain available</option></select></label>
+        <select id="providerSel"><option value="openrouter">Free models on OpenRouter — costs nothing</option><option value="claude">Claude on your subscription, with the free models as backup — the biggest quality gain available</option></select></label>
+      <p class="m">With Claude chosen, every job is tried on Claude first; if your subscription lapses or a limit is hit, that job falls back to the free chain by itself and the paper keeps publishing. Each story records which model actually wrote it.</p>
       <label><span>Claude model for the newsroom <span class="m">— when the provider is Claude</span></span>
         <select id="newsroomModel"><option value="sonnet">Sonnet — fast, uses little of your plan</option><option value="opus">Opus — strongest, uses much more of your plan</option><option value="haiku">Haiku — cheapest, weakest</option></select></label>
       <label><span>Claude model for the "Change the site" chat</span>
@@ -871,6 +874,7 @@ function render(s){
   document.getElementById('b-last').innerHTML=s.lastRun?esc(KIND[s.lastRun.mode]||s.lastRun.mode)+' <small>· '+s.lastRun.published+' written · '+esc(ago(s.lastRun.startedAt))+'</small>':'–';
   document.getElementById('b-live').textContent=s.live.length+' stories';
   document.getElementById('b-wait').innerHTML=s.drafts.length?'<span class="ok">'+s.drafts.length+' draft'+(s.drafts.length>1?'s':'')+'</span>':'<span style="font-weight:400;color:var(--ink-3)">nothing</span>';
+  var used=document.getElementById('models-used');if(used)used.innerHTML=s.modelsUsed.length?'Wrote the last 24 h: '+s.modelsUsed.map(function(m){return '<code>'+esc(m.id.replace(/^claude-cli\\//,'Claude ').replace(/:free$/,''))+'</code> ×'+m.n}).join(' · '):'';
   var quietCut=Date.now()-72*36e5;
   var NEWS=['economy','markets','energy','companies','technology','defense'];
   document.getElementById('cov').innerHTML=s.coverage.filter(function(c){return NEWS.indexOf(c.id)>=0}).map(function(c){var q=!c.last||Date.parse(c.last)<quietCut;return '<div class="'+(q?'quiet':'')+'"><div class="s">'+esc(c.name)+'</div><div class="c"><b>'+c.day+'</b> today · <b>'+c.week+'</b> this week<br>'+(c.last?'last '+esc(ago(c.last)):'nothing yet')+(q&&c.last?' · due for one':'')+'</div></div>'}).join('');
@@ -1017,6 +1021,18 @@ const server = http.createServer(async (req, res) => {
         drafts: arts.filter((a) => a.isDraft),
         live,
         coverage: coverage(live),
+        // Which models actually wrote the last 24 hours' stories — read from the articles themselves,
+        // so it is true whatever the provider setting says.
+        modelsUsed: (() => {
+          const cut = Date.now() - 24 * 36e5;
+          const count = {};
+          for (const a of live) {
+            if (Date.parse(a.publishedAt) < cut) continue;
+            const w = String(a.models?.writer ?? "").split("→").pop().trim();
+            if (w) count[w] = (count[w] ?? 0) + 1;
+          }
+          return Object.entries(count).sort((x, y) => y[1] - x[1]).map(([id, n]) => ({ id, n }));
+        })(),
         schedule: SCHEDULE,
         lastRun: await latestRun(),
         nextCloudRun: nextCloudRun(),

@@ -211,6 +211,17 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     log(`skip "${story.headlineHint}": no source body could be fetched (${evidenceChars} chars of summaries); items marked for one retry`);
     return { rejected: true, items };
   }
+  // Two independent outlets, or one official institution speaking for itself. A story told by a single
+  // news outlet cannot be cross-checked and would be that outlet's report in Arabic, which is the one
+  // thing this paper must never publish (copyright, and Google's "scaled, unoriginal content"). The items
+  // take the short mark, so the story is tried again when a second outlet has picked it up.
+  const outlets = new Set(sources.map((s) => s.sourceNameEn ?? s.sourceName));
+  if (outlets.size < 2 && !sources.some((s) => Number(s.reliability) === 3 && s.kind === "official")) {
+    entry.outcome = "skipped: a single non-official source (needs a second outlet, or an official primary source)";
+    report.push(entry);
+    log(`skip "${story.headlineHint}": one non-official source only; items marked for one retry`);
+    return { rejected: true, items };
+  }
 
   // Stage one: the desk notes, the checked facts of the one event; stage two: the story written from them.
   const notesResult = await deskNotes({ story, sources, log });
