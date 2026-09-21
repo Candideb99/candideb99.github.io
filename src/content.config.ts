@@ -2,10 +2,19 @@ import { defineCollection } from "astro:content";
 import { z } from "astro/zod";
 import { glob } from "astro/loaders";
 
-const keyFact = z.object({ label: z.string().default(""), value: z.string() });
-
 /** YAML parses bare ISO timestamps as Date objects; normalise both forms to ISO strings. */
 const isoString = z.union([z.string(), z.date()]).transform((v) => (v instanceof Date ? v.toISOString() : v));
+
+/**
+ * A key fact's value is printed text, but the writer may hand back a bare date or a number and YAML
+ * then types it (2026-09-17 → Date, 42 → number). Every deploy from 2026-09-20 16:07 to 2026-09-21
+ * 21:09 failed on one such value and the site froze on Sunday's paper; the schema, not the article,
+ * is the right place to absorb it.
+ */
+const factText = z
+  .union([z.string(), z.number(), z.date()])
+  .transform((v) => (v instanceof Date ? v.toISOString().slice(0, 10) : String(v)));
+const keyFact = z.object({ label: factText.default(""), value: factText });
 
 const source = z.object({
   name: z.string(),
