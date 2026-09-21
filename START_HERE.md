@@ -57,10 +57,28 @@ Double-click **`OPEN_CONTROL_ROOM.cmd`**. It opens on the **Desk**, and the desk
 
 > **get material → read it → Publish or Discard → it is live → Unpublish later if you must**
 
-**Get new material.** Five buttons: 📰 News stories (choose how many), 📘 An explainer, 📈 An analysis,
-🔬 A research paper, 🗓 The week's review. Each writes **drafts**. Nothing reaches the site until you
-approve it. While it works you see a short progress line (which story it is on, what the copy desk
-refused) and a Stop button; "Show every line" has the full log if you ever want it.
+**Get new material.** 📰 News stories — for the whole paper or for one section (الاقتصاد, الأسواق,
+الطاقة, الشركات, التكنولوجيا, دفاع) and how many; 📘 An explainer; 📈 An analysis (of the week, or of one
+section, e.g. defence only); 🔬 A research paper; 🗓 The week's review. Each writes **drafts**. Nothing
+reaches the site until you approve it. A news run takes 8–10 minutes for four stories and the panel
+shows *"2 of 4 written · 1 refused"* while it works, with a Stop button; the others take 3–5 minutes.
+
+**Where a story goes, and who decides.** The front page is picked by a formula: the **lead** is the
+strongest fresh news story (the editor's importance score, minus a point per 12 hours of age, plus 1.5
+for a photo); the **cover** is the lead plus the four strongest of the freshest twelve; the next five
+run in the **ticker**; everything else sits on its section page and in الأحدث. The live list shows
+each story's place in a *Where* column, and **Make it the lead** overrides the formula for 48 hours
+when you want a story on top. The section itself is chosen by the editor model when it selects the
+story; if it gets one wrong, tell the *Change the site* tab and it becomes a rule.
+
+**Finding a story.** The live list filters by section, kind, month, placement (front page or not) and
+headline. Nothing is ever archived away: a story keeps its page, its section's older pages and its
+topic page for good.
+
+**Models.** Settings → *The models* lists every job's chain of free OpenRouter models with a green or
+red dot from OpenRouter's live list. Only `:free` models are ever accepted, so a model that turns paid
+cannot be used and you cannot be charged; a red dot means "replace me", and the list below it shows
+what is free right now.
 
 **Waiting for your approval.** One card per draft: the photo, the headline and standfirst, the
 section, the critic's score, and the sources. **Read it** opens the whole article as it will look —
