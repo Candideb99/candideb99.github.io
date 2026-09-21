@@ -115,7 +115,7 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
         var MONTHS = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
         var DAYS = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
         var issueDate = document.querySelector("[data-issue-date]");
-        var ZONE = (issueDate && issueDate.getAttribute("data-zone")) || "Asia/Riyadh";
+        var ZONE = (issueDate && issueDate.getAttribute("data-zone")) || "Africa/Cairo";
         function partsIn(d) {
           var parts = new Intl.DateTimeFormat("en-US", { timeZone: ZONE, year: "numeric", month: "numeric", day: "numeric", weekday: "short" }).formatToParts(d);
           var map = {};

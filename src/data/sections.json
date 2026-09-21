@@ -2,32 +2,38 @@
   {
     "id": "economy",
     "name": "الاقتصاد",
-    "description": "النمو والتضخم والسياسة النقدية والمالية العامة والعمل والتجارة."
+    "description": "النمو والتضخم والسياسة النقدية والمالية العامة والعمل والتجارة.",
+    "guide": "Macro and public life: growth, inflation, central banks and rates, budgets and taxes, jobs, trade and tariffs, government policy and regulation, public infrastructure and transport systems (airports, air-traffic control, ports, railways, roads) when the story is about the system or the public, not one company. A flight ban or an air-traffic outage is economy. NOT: a single company's results (companies), asset prices (markets)."
   },
   {
     "id": "markets",
     "name": "الأسواق",
-    "description": "الأسهم والسندات والعملات والسلع وحركة رؤوس الأموال."
+    "description": "الأسهم والسندات والعملات والسلع وحركة رؤوس الأموال.",
+    "guide": "Price moves and flows: stock indices, bonds and yields, currencies, gold and commodities as traded assets, IPO markets, fund flows, exchanges. NOT: the oil market itself when the story is supply, OPEC or fuel (energy); one company's shares on its own news (companies)."
   },
   {
     "id": "energy",
     "name": "الطاقة",
-    "description": "النفط والغاز والكهرباء والتحول في الطاقة."
+    "description": "النفط والغاز والكهرباء والتحول في الطاقة.",
+    "guide": "Oil, gas, fuel prices, OPEC+, pipelines and tankers, electricity grids and power supply, nuclear, renewables, energy policy. ONLY when energy itself is the subject. NOT: aviation, airlines, airports or flight disruptions (economy or companies), shipping in general (economy), a mining or metals story (companies or markets)."
   },
   {
     "id": "companies",
     "name": "الشركات",
-    "description": "نتائج الشركات والصفقات والقيادات والصناعات."
+    "description": "نتائج الشركات والصفقات والقيادات والصناعات.",
+    "guide": "One or a few named companies: results and guidance, deals and mergers, leadership, strikes, lawsuits and fines, product launches, an airline's or automaker's or bank's own story, sector news told through its companies. NOT: a technology or AI company story whose point is the technology (technology); a defence contractor's award (defense)."
   },
   {
     "id": "technology",
     "name": "التكنولوجيا",
-    "description": "اقتصاد التكنولوجيا والذكاء الاصطناعي والرقائق والمنصات."
+    "description": "اقتصاد التكنولوجيا والذكاء الاصطناعي والرقائق والمنصات.",
+    "guide": "The technology economy: AI models and labs, chips and data centres, platforms and apps, software, telecoms, tech regulation, digital finance and crypto infrastructure. NOT: an ordinary company story that merely mentions software (companies); an IT failure at a public agency (economy)."
   },
   {
     "id": "defense",
     "name": "الدفاع",
-    "description": "اقتصاد الدفاع: الموازنات والصفقات وصادرات السلاح والصناعات العسكرية وما تعنيه للمنطقة."
+    "description": "اقتصاد الدفاع: الموازنات والصفقات وصادرات السلاح والصناعات العسكرية وما تعنيه للمنطقة.",
+    "guide": "Defence economics only: defence budgets, procurement and contract awards, arms exports and imports, military industry and its suppliers, and the economics of conflict (war costs, sanctions on defence). NOT: a war's effect on oil (energy) or on markets (markets); general geopolitics with no defence-economy content."
   },
   {
     "id": "analysis",

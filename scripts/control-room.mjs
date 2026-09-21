@@ -795,6 +795,7 @@ refresh();
 // ---- desk: actions
 function run(kind){var limit=document.getElementById('limit').value;var sec=kind==='news'?document.getElementById('newsSection').value:kind==='analysis'?document.getElementById('analysisSection').value:'';post('/run?kind='+kind+'&limit='+limit+(sec?'&sections='+sec:'')).then(function(r){return r.text()}).then(function(t){if(!/^started/.test(t))alert(t);refresh()})}
 function feature(file,on){post('/feature?file='+encodeURIComponent(file)+'&on='+(on?1:0)).then(function(r){return r.text()}).then(function(t){alert(t);refresh()})}
+function moveTo(file,section){post('/move?file='+encodeURIComponent(file)+'&section='+section).then(function(r){return r.text()}).then(function(t){alert(t);refresh()})}
 var LIVE=[];
 function renderLive(){
   var sec=document.getElementById('f-section').value,kind=document.getElementById('f-kind').value,month=document.getElementById('f-month').value,where=document.getElementById('f-where').value,q=document.getElementById('f-q').value.trim().toLowerCase();
@@ -806,6 +807,7 @@ function renderLive(){
       '<td style="font-size:12.5px;white-space:nowrap;'+(front?'color:var(--green);font-weight:600':'color:var(--muted)')+'">'+esc(a.where||'')+(a.featured?' ★':'')+'</td>'+
       '<td>'+scoreTag(a.score)+'</td><td>'+srcList(a.sources)+'</td>'+
       '<td style="white-space:nowrap">'+(a.kind==='news'?(a.featured?'<button class="secondary small" onclick="feature(\\''+esc(a.file)+'\\',false)">Unfeature</button>':'<button class="secondary small" onclick="feature(\\''+esc(a.file)+'\\',true)">Make it the lead</button>'):'')+
+      (a.kind==='news'?'<select class="small" style="margin:0 6px 6px 0;padding:4px" onchange="if(this.value){moveTo(\\''+esc(a.file)+'\\',this.value)}"><option value="">Move to…</option>'+['economy','markets','energy','companies','technology','defense'].filter(function(s){return s!==a.section}).map(function(s){return '<option value="'+s+'">'+esc(SECTION[s])+'</option>'}).join('')+'</select>':'')+
       '<button class="danger small" onclick="unpublish(\\''+esc(a.file)+'\\',\\''+esc(a.title).replace(/'/g,'’')+'\\')">Unpublish</button></td></tr>'}).join('');
 }
 function stopJob(){post('/stop').then(refresh)}
@@ -1033,6 +1035,22 @@ const server = http.createServer(async (req, res) => {
       if (!touched.length) return text(200, on ? "It already leads." : "It was not featured.");
       commitAndPush(on ? "feature a story" : "unfeature a story", touched, `front page: ${on ? "feature" : "unfeature"} ${file.replace(/\.md$/, "")}`);
       return text(200, on ? "Done — it leads the front page for the next 48 hours, live in about a minute." : "Done — the front page goes back to the formula, live in about a minute.");
+    }
+    // "Move to الاقتصاد": re-file a story. The section is the one editorial field that is not prose,
+    // and the editor model gets it wrong now and then (an air-traffic outage filed under energy).
+    if (url.pathname === "/move" && req.method === "POST") {
+      const file = path.basename(url.searchParams.get("file") ?? "");
+      const section = url.searchParams.get("section") ?? "";
+      const full = path.join(ARTICLES, file);
+      if (!file.endsWith(".md") || !existsSync(full)) return text(404, "not found");
+      if (!["economy", "markets", "energy", "companies", "technology", "defense"].includes(section)) return text(400, "unknown section");
+      if (job.running) return text(409, `Still busy with "${job.name}". Wait for it to finish first.`);
+      const raw = await readFile(full, "utf8");
+      const next = raw.replace(/^section:\s*\S+/m, `section: ${section}`);
+      if (next === raw) return text(200, "It is already there.");
+      await writeFile(full, next, "utf8");
+      commitAndPush("move a story", [`content/articles/${file}`], `section: move ${file.replace(/\.md$/, "")} to ${section}`);
+      return text(200, "Moved — live in about a minute.");
     }
     if (url.pathname === "/unpublish" && req.method === "POST") {
       const file = path.basename(url.searchParams.get("file") ?? "");

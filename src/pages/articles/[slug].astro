@@ -70,7 +70,7 @@ const jsonLd = {
       <p class="meta article__meta">
         <a href={sectionHref(d.section)} data-pagefind-meta={`sectionName:${sec.name}`}>{analysisLabel(article, all) ?? kindLabel(d.kind, d.section)}</a>
         <span class="article__byline">{site.name}</span>
-        <time datetime={d.publishedAt} data-pagefind-meta={`date:${formatDate(d.publishedAt, { weekday: false })}`}>نُشر {formatDate(d.publishedAt)} · {formatTime(d.publishedAt)} بتوقيت الرياض</time>
+        <time datetime={d.publishedAt} data-pagefind-meta={`date:${formatDate(d.publishedAt, { weekday: false })}`}>نُشر {formatDate(d.publishedAt)} · {formatTime(d.publishedAt)} {site.timeZoneLabel}</time>
         <span>{readingLabel(d.readingMinutes)}</span>
       </p>
       <Share url={new URL(path, site.url).toString()} title={d.title} />

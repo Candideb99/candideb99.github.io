@@ -25,6 +25,10 @@ function formatCandidate(c) {
 export async function selectStories({ candidates, recentTitles, sections, coverage24h = {}, limit, log }) {
   const newsSections = newsSectionsOf(sections);
   const sectionIds = newsSections.map((s) => `${s.id} (${s.name})`).join(", ");
+  // The filing guide per section: what belongs, and the cases that keep going wrong (2026-09-22: an
+  // air-traffic-control outage that grounded flights was filed under energy). Lives in sections.json
+  // beside the public description, so the guide and the paper's sections cannot drift apart.
+  const sectionGuide = newsSections.map((s) => `- ${s.id} (${s.name}): ${s.description}${s.guide ? ` ${s.guide}` : ""}`).join("\n");
   const coverageLine = newsSections.map((s) => `${s.id} ${coverage24h[s.id] ?? 0}`).join(", ");
   const quiet = newsSections.filter((s) => !(coverage24h[s.id] > 0)).map((s) => s.id);
   const idSet = new Set(candidates.map((c) => c.id));
@@ -46,7 +50,8 @@ TASK
 3. Skip: opinion columns, listicles, personal finance tips, celebrity and lifestyle, sports business, product reviews, minor local items, press-release fluff, stock-picking, crypto hype, and anything already covered.
 4. Prefer official statistics and central-bank decisions when they are new. Prefer clusters with at least one tier A source.
 5. Balance, applied mildly: when a worthy candidate exists in a section that has had no story in the last 24 hours, prefer it over a marginal extra story in an already-covered section. Never promote a weak item just to fill a section.
-6. Assign each story to exactly one section from: ${sectionIds}.
+6. Assign each story to exactly one section from: ${sectionIds}. File it where a reader would look for it, by the SUBJECT of the story, not by a word in it; a story that touches two sections goes to the one whose readers it changes most. The filing guide, with the cases that are often confused:
+${sectionGuide}
 7. The angle and headline_hint must state only what the candidate items themselves report; a neutral factual working title, no dramatisation, no ".." ellipses, no inferred events.
 
 Return JSON:

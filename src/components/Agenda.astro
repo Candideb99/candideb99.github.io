@@ -6,6 +6,7 @@
  */
 import { upcoming, relativeDay, localTime, calendar } from "@lib/calendar";
 import { timeAgo } from "@lib/format";
+import site from "@data/site.json";
 
 interface Props {
   limit?: number;
@@ -21,7 +22,7 @@ const events = upcoming(limit);
       {events.map((e) => {
         const at = localTime(e);
         return (
-          <li class="agenda__item" title={`${e.org}${at ? ` · ${at} بتوقيت الرياض` : ""}${e.note ? ` · ${e.note}` : ""}`}>
+          <li class="agenda__item" title={`${e.org}${at ? ` · ${at} ${site.timeZoneLabel}` : ""}${e.note ? ` · ${e.note}` : ""}`}>
             <span class="agenda__day ui">{relativeDay(e.date)}</span>
             <a class="agenda__title" href="/calendar/">{e.short ?? e.title}</a>
           </li>

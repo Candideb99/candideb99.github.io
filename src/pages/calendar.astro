@@ -7,6 +7,7 @@
 import Base from "@layouts/Base.astro";
 import { byDay, localTime, calendar } from "@lib/calendar";
 import { formatDate, formatTime, timeAgo } from "@lib/format";
+import site from "@data/site.json";
 
 const days = byDay(75);
 const updated = calendar.updatedAt ? `${formatDate(calendar.updatedAt)}، ${formatTime(calendar.updatedAt)}` : "";
@@ -17,7 +18,7 @@ const KIND = { rates: "قرار فائدة", data: "بيانات" } as const;
   <section class="wrap block">
     <header class="page-head">
       <h1 class="page-title">الأجندة الاقتصادية</h1>
-      <p class="page-intro">ما ينتظره الاقتصاد في الأسابيع المقبلة: قرارات الفائدة في الاحتياطي الفيدرالي والمركزي الأوروبي وبنك إنجلترا، وبيانات التضخم والوظائف الأمريكية. المواعيد من جداول المؤسسات نفسها{calendar.updatedAt && <span>، حُدّثت <time datetime={calendar.updatedAt} data-relative title={updated}>{timeAgo(calendar.updatedAt)}</time></span>}. الأوقات بتوقيت الرياض.</p>
+      <p class="page-intro">ما ينتظره الاقتصاد في الأسابيع المقبلة: قرارات الفائدة في الاحتياطي الفيدرالي والمركزي الأوروبي وبنك إنجلترا، وبيانات التضخم والوظائف الأمريكية. المواعيد من جداول المؤسسات نفسها{calendar.updatedAt && <span>، حُدّثت <time datetime={calendar.updatedAt} data-relative title={updated}>{timeAgo(calendar.updatedAt)}</time></span>}. الأوقات {site.timeZoneLabel}.</p>
     </header>
 
     {days.length === 0 ? (
