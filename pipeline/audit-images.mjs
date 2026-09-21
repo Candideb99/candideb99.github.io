@@ -13,12 +13,19 @@
  * story does not mention is WRONG, however well the room matches.
  */
 import { readFile, readdir, writeFile, mkdir } from "node:fs/promises";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import YAML from "yaml";
-import { chat } from "./lib/llm.mjs";
 
 const root = process.cwd();
+// The judge runs on the free chain whatever the paper's provider is: 125 small verdicts are not worth
+// the owner's Claude allowance, and the audit must run the same from a plain shell as from the desk.
+for (const line of existsSync(path.join(root, ".env")) ? readFileSync(path.join(root, ".env"), "utf8").split(/\r?\n/) : []) {
+  const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/);
+  if (m && !line.trim().startsWith("#") && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^["']|["']$/g, "");
+}
+process.env.KHAZENDAR_PROVIDER = "openrouter";
+const { chat } = await import("./lib/llm.mjs");
 const ARTICLES = path.join(root, "content", "articles");
 const CACHE = path.join(root, "pipeline", ".cache", "commons-meta.json");
 const OUT = path.join(root, "pipeline", "runs", "image-audit.json");

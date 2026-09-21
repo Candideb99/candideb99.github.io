@@ -177,8 +177,32 @@ export function bannedIn(draft) {
   return BANNED.flatMap((r) => (prose.match(r.re) ?? []).map((h) => h.trim()));
 }
 
+/**
+ * Deterministic transliteration repairs, applied to every field before the model sees the draft.
+ * A wire-agency spelling is not a matter of taste, and a model asked nicely still wrote «هي لفيفنغ»
+ * twice on 2026-09-22; a table cannot forget. Each entry: the wrong form, the house form.
+ */
+const NAME_FIXES = [
+  [/هي (?:لفيفنغ|لي فنغ|ليفنغ|لي فينغ)/g, "خه لي فنغ"],
+  [/خه لفيفنغ/g, "خه لي فنغ"],
+];
+function fixNames(text) {
+  let out = String(text ?? "");
+  for (const [re, to] of NAME_FIXES) out = out.replace(re, to);
+  return out;
+}
+
 export async function copyEdit({ draft, includeBody = false, role = "desk", log = () => {} }) {
   const fields = includeBody ? ["title", "subtitle", "lede", "body"] : ["title", "subtitle", "lede"];
+  const mechanical = [];
+  for (const f of ["title", "subtitle", "lede", "body"]) {
+    const after = fixNames(draft[f]);
+    if (after !== String(draft[f] ?? "")) mechanical.push(f);
+  }
+  if (mechanical.length) {
+    draft = { ...draft, ...Object.fromEntries(mechanical.map((f) => [f, fixNames(draft[f])])) };
+    log(`desk: transliteration table fixed ${mechanical.join(", ")}`);
+  }
   const input = Object.fromEntries(fields.map((f) => [f, draft[f] ?? ""]));
   const found = styleIssues(input);
   const problems = [...found.issues, ...found.warnings].slice(0, 10);
@@ -241,6 +265,8 @@ ${data.subtitle}`;
       rejected.push({ field: f, reason: guard.reason, proposal: f === "body" ? undefined : data[f] });
     }
   }
+  // A field the table repaired counts as changed even when the model left it alone, so the caller writes it.
+  for (const f of mechanical) if (!applied.includes(f)) applied.push(f);
   const changes = Array.isArray(data.changes) ? data.changes.filter((c) => typeof c === "string").slice(0, 8) : [];
   log(`desk model=${model} applied=[${applied.join(",")}] rejected=[${rejected.map((r) => `${r.field}:${r.reason}`).join(",")}]`);
   return { draft: out, changed: applied.length > 0, applied, rejected, changes, model };
