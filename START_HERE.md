@@ -201,9 +201,12 @@ https://github.com/Candideb99/candideb99.github.io/settings/secrets/actions and 
   runs, repairs a broken pipeline, finds any missing picture, checks the site still builds, and
   leaves a short report. It commits its own fixes. Anything that would change how the paper looks
   comes to you as a pull request instead. Nobody types a prompt; it is in `.github/workflows/editor.yml`.
-- **`KHAZENDAR_PROVIDER = claude`** makes Claude write the articles themselves, instead of the free
-  models, on every three-hourly run. This is the single biggest quality change available to you.
-  Photo choice still uses a free vision model.
+- **`KHAZENDAR_PROVIDER = claude`** (Settings → *Who writes* on the desk) makes Claude write the
+  articles on every three-hourly run — the single biggest quality change available to you — **with
+  the free models as the automatic backup**: if the subscription lapses or a limit is hit, that job
+  falls back to the free chain by itself and the paper keeps publishing. Every story records which
+  model actually wrote it, and the desk shows the last 24 hours' writers. Photo choice always uses a
+  free vision model.
 - **Asking for something from anywhere.** With the same setup, open an issue on the repository from
   your phone and write `@claude` with your request. Claude answers and opens a pull request. You
   never open the project folder.
