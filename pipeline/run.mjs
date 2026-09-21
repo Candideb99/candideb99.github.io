@@ -39,6 +39,8 @@ const option = (name, fallback) => {
   return hit ? hit.slice(name.length + 3) : fallback;
 };
 const DRY_RUN = flag("dry-run");
+/** `--draft`: write every article with `draft: true`, so nothing reaches the site until the editor publishes it from the desk. */
+const DRAFT = flag("draft");
 const MODE = option("mode", "news");
 const LIMIT = Math.max(1, Math.min(Number(option("limit", 4)) || 4, 10));
 /** A day's paper is edited, not filled: at most this many news stories in any 24 hours. */
@@ -256,6 +258,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   const image = await pickImage({ draft, story, log, exclude: usedImages(existing) });
   const slug = buildSlug(draft, story);
   const markdown = serializeArticle({
+    pending: DRAFT,
     draft,
     slug,
     section: story.section,
@@ -281,7 +284,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     await mkdir(ARTICLES_DIR, { recursive: true });
     await writeFile(path.join(ARTICLES_DIR, `${slug}.md`), markdown);
   }
-  log(`published "${draft.title}" -> ${slug}${DRY_RUN ? " (dry-run)" : ""}`);
+  log(`${DRAFT ? "drafted" : "published"} "${draft.title}" -> ${slug}${DRY_RUN ? " (dry-run)" : ""}`);
   return { slug, items, title: draft.title };
 }
 
@@ -440,6 +443,7 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   const image = await pickImage({ draft, story, log, exclude: usedImages(existing) });
   const slug = buildSlug(draft, { headlineHint });
   const markdown = serializeArticle({
+    pending: DRAFT,
     draft,
     slug,
     section,

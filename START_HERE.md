@@ -7,9 +7,9 @@ You own an automated Arabic economics newspaper. This page is the whole operatin
 | What | Where | Why you go there |
 | --- | --- | --- |
 | The live website | https://candideb99.github.io | What readers see. Updates itself every 3 hours. |
-| The control room (on this laptop) | double-click `OPEN_CONTROL_ROOM.cmd` → http://127.0.0.1:7777 | See what was published, run the newsroom by hand, remove a story, preview locally. |
+| **The control room (on this laptop)** | double-click `OPEN_CONTROL_ROOM.cmd` → http://127.0.0.1:7777 | **Where you do everything.** See what was published, *talk to the paper in plain words and have it change the site*, run the newsroom, remove a story, and publish when you are ready. |
 | The cloud runs | https://github.com/Candideb99/candideb99.github.io/actions | Every automatic run with a table of what it published or rejected and why. |
-| Hermes, the local editor | double-click `TALK_TO_HERMES.cmd` | Talk to an agent that runs the newsroom, fixes pictures, diagnoses failures and reports back. |
+| Hermes, the local editor | double-click `TALK_TO_HERMES.cmd` | The older way to talk to an agent, from a black terminal window. The control room's **Chat** tab replaces it and is easier. |
 
 Nothing here uses your GPU. Writing happens on OpenRouter's servers (or on your Claude subscription, see section 5); the site is built and served by GitHub.
 
@@ -50,6 +50,47 @@ people. Anyone you give the address to can read it, and the address is guessable
 GitHub account. It is the right setting for "not ready for readers yet"; it is not a lock. A real
 lock means moving the site behind a login, which needs a different host, and I can set that up if
 you ever need it.
+
+## 2d. The control room — the editor's desk
+
+Double-click **`OPEN_CONTROL_ROOM.cmd`**. It opens on the **Desk**, and the desk does one thing:
+
+> **get material → read it → Publish or Discard → it is live → Unpublish later if you must**
+
+**Get new material.** Five buttons: 📰 News stories (choose how many), 📘 An explainer, 📈 An analysis,
+🔬 A research paper, 🗓 The week's review. Each writes **drafts**. Nothing reaches the site until you
+approve it. While it works you see a short progress line (which story it is on, what the copy desk
+refused) and a Stop button; "Show every line" has the full log if you ever want it.
+
+**Waiting for your approval.** One card per draft: the photo, the headline and standfirst, the
+section, the critic's score, and the sources. **Read it** opens the whole article as it will look —
+lede, key facts, body, "why it matters", sources with links, the critic's note, which models wrote
+and checked it. Then **Publish** (live in about a minute) or **Discard** (thrown away, and the story
+will not come back on the next run). **Publish everything above** does them all.
+
+**Refused by the copy desk in the last run.** Folded away under the drafts: the stories that were
+written and then refused, with the reason in Arabic. A source that keeps being refused is worth
+telling the *Change the site* tab about.
+
+**Live on the site.** Every published story with its score and sources, and an **Unpublish** button.
+
+**Settings.** Three key boxes that are *not* interchangeable, each labelled with what it is and what
+its value starts with: OpenRouter (`sk-or-`, free models), Claude API key (`sk-ant-`, pay per use),
+Claude subscription token (from `claude setup-token`, no per-message cost). A line tells you which
+one the cloud is actually writing with. Below that: whether the cloud publishes on its own or writes
+drafts and waits for you, and the newspaper's own fields (contact email, AdSense id, visibility).
+
+**Change the site.** A chat for changing how the paper *looks and works* — a font size, a new source,
+a rule the copy desk keeps applying wrongly. It is not for running the paper; the Desk is. It can
+change anything and cannot publish: what it changed is listed underneath with Publish / Preview / Undo.
+
+### Two ways to run the paper
+
+- **As now**: the cloud publishes on its own every three hours, and the desk is for extra material
+  and for taking things down. Settings → "Publish on their own".
+- **Editor-gated**: the cloud writes drafts and waits. You open the desk, press **Sync from GitHub**,
+  read, publish. Settings → "Write drafts and wait for me". Choose this if you want to see every
+  story before a reader does.
 
 ## 2c. Hermes, your local editor
 
@@ -107,6 +148,10 @@ claude setup-token
 
 It prints one long token. Copy it.
 
+**Step 2 — the easy way.** Open the control room → **Settings** and paste the token into the box at
+the top with the GitHub option ticked. It writes both places for you, and you can skip the table
+below. The manual way, if you would rather:
+
 **Step 2, on GitHub.** Open
 https://github.com/Candideb99/candideb99.github.io/settings/secrets/actions and add:
 
@@ -145,7 +190,9 @@ cloud without copying your login file. Claude is the better route here.
 
 ## 6. Changing things
 
-Tell the agent what you want in plain language; these are the files it will touch:
+Open the control room → **Chat** and say what you want in plain language. You do not need to know
+which file anything lives in; that is the point of the tab. The list below is only so you recognise
+a name when the chat mentions one:
 
 - Sources: `pipeline/sources.json` (add a feed, disable one).
 - House style and what counts as news: `pipeline/lib/write.mjs`, `pipeline/lib/select.mjs`.

@@ -25,7 +25,8 @@ export function readingMinutes(draft) {
 export const KINDS = new Set(["news", "explainer", "analysis", "paper", "weekly"]);
 
 /** Serializes an article as Markdown with YAML frontmatter. `kind` is "news" (default), "explainer", "analysis" or "paper". */
-export function serializeArticle({ draft, slug, section, sources, image, models, quality, kind = "news", publishedAt }) {
+/** `pending: true` writes the article as a draft: it stays out of the built site until the editor publishes it. */
+export function serializeArticle({ draft, slug, section, sources, image, models, quality, kind = "news", publishedAt, pending = false }) {
   if (!KINDS.has(kind)) throw new Error(`unknown article kind "${kind}" (${[...KINDS].join(", ")})`);
   const frontmatter = {
     title: draft.title,
@@ -66,6 +67,7 @@ export function serializeArticle({ draft, slug, section, sources, image, models,
     quality,
     ai: true,
   };
+  if (pending) frontmatter.draft = true;
   const yaml = YAML.stringify(frontmatter, { lineWidth: 0 }).trimEnd();
   return `---\n${yaml}\n---\n\n${draft.body.trim()}\n`;
 }

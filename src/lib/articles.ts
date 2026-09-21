@@ -7,7 +7,10 @@ let cache: Article[] | null = null;
 /** All published articles, newest first. */
 export async function getArticles(): Promise<Article[]> {
   if (cache) return cache;
-  const all = await getCollection("articles", ({ data }) => !data.draft);
+  // Drafts never reach the published site. The control room's local preview sets
+  // KHAZENDAR_SHOW_DRAFTS=1 so the editor can read a draft as it will look before approving it.
+  const showDrafts = process.env.KHAZENDAR_SHOW_DRAFTS === "1";
+  const all = await getCollection("articles", ({ data }) => showDrafts || !data.draft);
   cache = all.sort((a, b) => Date.parse(b.data.publishedAt) - Date.parse(a.data.publishedAt));
   return cache;
 }

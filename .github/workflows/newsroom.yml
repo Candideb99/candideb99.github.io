@@ -93,10 +93,14 @@ jobs:
           KHAZENDAR_PROVIDER: ${{ vars.KHAZENDAR_PROVIDER || 'openrouter' }}
           KHAZENDAR_CLAUDE_MODEL: ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'sonnet' }}
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # KHAZENDAR_REVIEW=1 makes the cloud write drafts instead of publishing: they are committed with
+          # draft: true, the site ignores them, and the owner approves each one from the control room.
+          REVIEW: ${{ vars.KHAZENDAR_REVIEW }}
           MODE: ${{ steps.mode.outputs.mode }}
           LIMIT: ${{ steps.mode.outputs.limit }}
           SECTIONS: ${{ steps.mode.outputs.sections }}
-        run: node pipeline/run.mjs --mode="$MODE" --limit="$LIMIT" --sections="$SECTIONS"
+        run: node pipeline/run.mjs --mode="$MODE" --limit="$LIMIT" --sections="$SECTIONS" ${REVIEW:+--draft}
 
       - name: Refresh market quotes and the calendar (best effort; the committed files are the fallback)
         timeout-minutes: 5
