@@ -44,8 +44,27 @@ function recencyScore(image) {
   return -2;
 }
 
-/** Searches Commons for every query (with simpler fallbacks) and ranks the unique results. */
-async function collect(queries, log, { perQuery = 6, max = 8, exclude = new Set() } = {}) {
+/**
+ * The name a Commons file gives to the person it shows, when it gives one: "Secretary Kerry", "Vice
+ * Premier Liu", "President Macron", "Minister Schallenberg", "CEO Altman". Returns the surnames found.
+ * 2026-09-22: a story about Bessent and He Lifeng ran "Secretary Kerry, Chinese Vice Premier Liu…"
+ * because the room matched; no model should have had to be trusted with that call.
+ */
+const RANK = /\b(?:Secretary|President|Vice[- ]President|Prime Minister|Premier|Vice[- ]Premier|Chancellor|Minister|Governor|Senator|Congressman|Ambassador|King|Queen|Prince|Princess|Sheikh|Emir|Crown Prince|Chairman|Chairwoman|CEO|Director|Commissioner|Mayor|General|Admiral|Pope|Sultan)\s+(?:of\s+[A-Z][\w-]+\s+)?([A-Z][\w'’-]+(?:\s+[A-Z][\w'’-]+)?)/g;
+function namedPeople(image) {
+  const text = `${image.title ?? ""} ${image.description ?? ""}`;
+  const names = new Set();
+  for (const m of text.matchAll(RANK)) names.add(m[1].split(/\s+/).pop().toLowerCase());
+  return [...names];
+}
+
+/**
+ * Searches Commons for every query (with simpler fallbacks) and ranks the unique results.
+ * `people`: "by-query" keeps a photo of a named person only when the query itself asked for that
+ * surname (the writer's specific subject); "none" drops every photo of a named person — a generic
+ * illustration is a place or a thing, never somebody else's summit.
+ */
+async function collect(queries, log, { perQuery = 6, max = 8, exclude = new Set(), people = "by-query" } = {}) {
   const seen = new Set(exclude);
   const candidates = [];
   for (const query of queries) {
@@ -54,9 +73,15 @@ async function collect(queries, log, { perQuery = 6, max = 8, exclude = new Set(
       if (results.length) break;
       results = await searchCommons(alternative, { limit: perQuery, log });
     }
+    const asked = query.toLowerCase();
     for (const image of results) {
       if (seen.has(image.url)) continue;
       seen.add(image.url);
+      const names = namedPeople(image);
+      if (names.length && (people === "none" || !names.every((n) => asked.includes(n)))) {
+        log(`image: dropped "${String(image.title).slice(0, 70)}" — shows ${names.join(", ")}, not the story's people`);
+        continue;
+      }
       candidates.push({ ...image, query, score: recencyScore(image) + (image.width >= 1600 ? 1 : 0) });
     }
     if (candidates.length >= max) break;
@@ -82,8 +107,9 @@ async function shortlist(candidates, log) {
 /** Asks the vision model to choose one photograph, or none. `relaxed` accepts a generic illustration. */
 async function judge({ list, inlined, draft, story, log, relaxed }) {
   const rules = relaxed
-    ? `This is the fallback pass: a generic but appropriate newspaper illustration is acceptable, such as the skyline or a landmark of the city or country in the story, the headquarters of the institution, or a typical scene of the sector (port, refinery, trading floor, factory, bank branch, oil field). Reject only: visible text overlays or watermarks; logos, maps, charts, diagrams, infographics, screenshots, documents, banknotes or coins as the subject; a product or appliance close-up unrelated to the story; an archival, black-and-white or pre-2005 look; a close-up of a private individual; a different country or city than the story's; anything misleading or embarrassing next to the headline.`
-    : `Requirements: clearly relevant to the story's subject (institution, place, industry, product); looks like a contemporary editorial news photo; landscape composition; no visible text overlays, watermarks, logos as the main subject, charts, maps, diagrams, infographics, screenshots, product close-ups, or historical/archival look; no close-up of a private individual; nothing embarrassing or misleading if paired with the headline.`;
+    ? `This is the fallback pass: a generic but appropriate newspaper illustration is acceptable, such as the skyline or a landmark of the city or country in the story, the headquarters of the institution, or a typical scene of the sector (port, refinery, trading floor, factory, bank branch, oil field). Reject: any photograph of identifiable people — officials, politicians, executives, a named meeting, summit, ceremony or visit (a generic illustration shows places and things, never someone else's event); visible text overlays or watermarks; logos, maps, charts, diagrams, infographics, screenshots, documents, banknotes or coins as the subject; a product or appliance close-up unrelated to the story; military vessels, aircraft or weapons for a story that is not about the military; an archival, black-and-white or pre-2005 look; a close-up of a private individual; a different country or city than the story's; anything misleading or embarrassing next to the headline.`
+    : `Requirements: clearly relevant to the story's subject (institution, place, industry, product); looks like a contemporary editorial news photo; landscape composition; no visible text overlays, watermarks, logos as the main subject, charts, maps, diagrams, infographics, screenshots, product close-ups, or historical/archival look; no close-up of a private individual; nothing embarrassing or misleading if paired with the headline.
+PEOPLE — the gravest error: a photograph showing an identifiable person (a politician, official, executive, anyone a caption would name) who is NOT one of the people this story is about is WRONG, however well the room, flag or setting matches. Read each candidate's file name and description for names of people and compare them with the headline: a story about Treasury Secretary Bessent must never run a photo of Secretary Kerry; a story about He Lifeng must never run one of Liu Yandong. When no candidate shows the story's own people, choose 0 and let the fallback find a building, skyline or sector scene instead.`;
   const user = `We are illustrating an Arabic economics article.
 Headline: ${draft.title}
 Summary: ${draft.subtitle ?? ""}
@@ -242,7 +268,7 @@ export async function pickImage({ draft, story, log, fallback = true, exclude = 
   }
   if (!queries.length) return null;
   log(`image: fallback queries: ${queries.join(" | ")}`);
-  const candidates = await collect(queries, log, { perQuery: 8, max: 12, exclude });
+  const candidates = await collect(queries, log, { perQuery: 8, max: 12, exclude, people: "none" });
   if (!candidates.length) {
     log("image: no candidates for the fallback queries");
     return null;

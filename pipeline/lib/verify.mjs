@@ -55,6 +55,8 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
   // caught these because they come one or two at a time. 2026-09-21: found in 10 of 68 articles.
   const leaked = [...new Set((outsideParens.match(/\b[a-z][a-z-]{3,}\b/g) ?? []).filter((w) => !ALLOWED_LATIN.test(w)))];
   if (leaked.length) issues.push(`كلمات إنجليزية تُركت بلا ترجمة داخل النص العربي: ${leaked.slice(0, 6).join(", ")}. اكتب معناها بالعربية (التوقعات، الإجمالي، الخبرة الفنية) ولا تترك كلمة لاتينية صغيرة في الجملة.`);
+  // House headlines carry one idea, without «..» teasers; a «..» in a headline is almost always two stories.
+  if (/\.\.|…/.test(draft.title)) issues.push(`العنوان يحتوي نقاط حذف («..»): اكتب عنواناً واحداً بفكرة واحدة بلا تعليق أو خبرين متتابعين.`);
   const titleLatin = (draft.title.match(/[A-Za-z][A-Za-z&+.'-]*/g) ?? []).filter((w) => !ALLOWED_LATIN.test(w));
   if (titleLatin.length) issues.push(`العنوان يحتوي كلمات لاتينية (${titleLatin.join(", ")}). اكتب العنوان بالعربية كاملاً.`);
   const headlineLatinInBody = (`${draft.subtitle}\n${draft.lede}`.replace(/\([^)]*\)/g, " ").match(/\b[A-Za-z]{3,}\b/g) ?? []).filter((w) => !ALLOWED_LATIN.test(w));
@@ -213,7 +215,7 @@ CHECK
 2. Attribution: are claims attributed to the right source? Is anything presented as fact that the source presents as an estimate, forecast or opinion?
 3. ${rubric.check}
 4. Arabic quality. Translationese is a fault that requires "revise", never "publish": English syntax under Arabic words (an indefinite subject such as "إدارة أمريكية" where Arabic uses the definite or the name; "يعلن عن" + verbal noun; jargon rendered word for word such as "مستردات", "المعدل العقاري", "استئناف بيع", "للأضواء", "في زيارة دولة"; "من قبل"; "يقوم بـ"), wrong case endings on numbers and duals ("ألفين رحلة", "حل جزئي" as an object), a headline chaining two developments with "و", untranslated foreign words, sensational tone, repetition. Quote each offending phrase and give the idiomatic Arabic.
-5. Headline: accurate, specific, not misleading.
+5. Headline: accurate, specific, not misleading. One event per story: a draft that reports two unrelated events (Britain's grid investment and France's wine harvest; copper prices and Uganda's first crude cargo; a Dubai silver product and an Abu Dhabi skills card) is a roundup, not a story — verdict "reject", with the issue «قصتان في مقال واحد» naming both.
 6. Charts and tables: check every cell against its entity, period, unit and direction in the sources; a number that occurs somewhere in a source is not evidence for a different claim. Reject unsupported superlatives and claims of breakthroughs.
 
 ${previousIssues?.length ? `\nA REVISION WAS MADE. These problems were reported on the previous draft; say which of them remain and judge the draft as it now stands, not the old one:\n${previousIssues.map((i, n) => `${n + 1}. ${i}`).join("\n")}\n` : ""}

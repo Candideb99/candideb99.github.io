@@ -55,6 +55,8 @@ const RUN_STARTED = Date.now();
 const RUN_BUDGET_MS = 35 * 60 * 1000;
 /** A first rejection expires after this long (the item may be tried once more); a second one is final for the state's 21 days. */
 const REJECT_RETRY_HOURS = 12;
+/** Words too common in this paper's headlines to tell two stories apart. */
+const TITLE_STOPWORDS = new Set(["على", "إلى", "بعد", "قبل", "خلال", "بسبب", "بنسبة", "مليار", "مليون", "دولار", "دولارات", "الولايات", "المتحدة", "أسعار", "الاقتصاد", "الأسواق", "النفط", "الفائدة", "ارتفاع", "تراجع", "2026", "سبتمبر", "أغسطس", "أكتوبر", "الأول", "الثاني", "الأمريكي", "الأمريكية", "الأميركي", "الأميركية", "العالمي", "العالمية", "الشرق", "الأوسط", "نقطة", "أساس", "مستوى", "أعلى", "أدنى", "منذ"]);
 /** `--sections=defense,energy`: an analysis drawn only from these sections' stories (the defence and geopolitics reading). */
 const SECTIONS = (option("sections", "") || "").split(",").map((s) => s.trim()).filter(Boolean);
 
@@ -221,6 +223,22 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     report.push(entry);
     log(`skip "${story.headlineHint}": one non-official source only; items marked for one retry`);
     return { rejected: true, items };
+  }
+  // The same event twice: the editor is told not to repeat a recent story, yet "oil above 107" and
+  // "Brent above 108" ran on the same day and the Fed's hike ran three times. When the working headline
+  // shares most of its distinctive words with a story of the last four days, the story is not written.
+  const distinctive = (t) => new Set(String(t).replace(/[^\p{L}\p{N}\s]/gu, " ").split(/\s+/).filter((w) => w.length > 3 && !TITLE_STOPWORDS.has(w)));
+  const mine = distinctive(story.headlineHint);
+  for (const title of recentTitles) {
+    const theirs = distinctive(title);
+    let shared = 0;
+    for (const w of mine) if (theirs.has(w)) shared += 1;
+    if (mine.size >= 3 && shared >= 3 && shared / Math.min(mine.size, theirs.size) >= 0.5) {
+      entry.outcome = `skipped: repeats a recent story («${title}»)`;
+      report.push(entry);
+      log(`skip "${story.headlineHint}": repeats "${title}"; items marked as seen`);
+      return { rejected: true, items };
+    }
   }
 
   // Stage one: the desk notes, the checked facts of the one event; stage two: the story written from them.
