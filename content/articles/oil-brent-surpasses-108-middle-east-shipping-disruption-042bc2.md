@@ -34,13 +34,14 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/120812-N-XO436-114_USS_Porter_after_collision.jpg/1280px-120812-N-XO436-114_USS_Porter_after_collision.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Duqm_Refinery.jpg/1280px-Duqm_Refinery.jpg
   width: 1280
-  height: 852
-  alt: سفينة حربية متضررة ليلًا بعد حادث بحري في مضيق هرمز
-  credit: U.S. Navy photo by Mass Communication Specialist 3rd Class Jonathan Sunderman · Public domain · ويكيميديا كومنز
-  license: Public domain
-  pageUrl: https://commons.wikimedia.org/wiki/File%3A120812-N-XO436-114_USS_Porter_after_collision.jpg
+  height: 853
+  alt: منشأة تكرير نفطي واسعة في صحراء عُمان مع خزانات ومعدات صناعية
+  credit: AbdullahAlMaani · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ADuqm_Refinery.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat

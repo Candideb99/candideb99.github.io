@@ -57,14 +57,14 @@ table:
       - "2.73"
       - "2.78"
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/5/58/%D8%AA%D8%A7%D8%A8%D8%B4_%D8%A2%D9%81%D8%AA%D8%A7%D8%A8_%D8%A7%D8%B2_%D8%A8%DB%8C%D9%86_%D8%A7%D8%A8%D8%B1%D9%87%D8%A7_-_panoramio.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Schwechat_refinery_20251018.jpg/1280px-Schwechat_refinery_20251018.jpg
   width: 1280
-  height: 960
-  alt: منظر بحري لمضيق هرمز قرب بندر عباس وسفينة تحت سماء غائمة
-  credit: Ali khodabakhsh · CC BY 3.0 · ويكيميديا كومنز
-  license: CC BY 3.0
-  licenseUrl: https://creativecommons.org/licenses/by/3.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3A%D8%AA%D8%A7%D8%A8%D8%B4_%D8%A2%D9%81%D8%AA%D8%A7%D8%A8_%D8%A7%D8%B2_%D8%A8%DB%8C%D9%86_%D8%A7%D8%A8%D8%B1%D9%87%D8%A7_-_panoramio.jpg
+  height: 777
+  alt: مصفاة نفط أوروبية مع صهاريج سكك حديدية تحت سماء صافية
+  credit: VynedJ · CC BY 4.0 · ويكيميديا كومنز
+  license: CC BY 4.0
+  licenseUrl: https://creativecommons.org/licenses/by/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ASchwechat_refinery_20251018.jpg
 sources:
   - name: الغارديان
     nameEn: The Guardian

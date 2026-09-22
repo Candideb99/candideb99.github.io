@@ -27,13 +27,14 @@ readingMinutes: 1
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/White_House_Press_Briefing_%2840387058473%29.jpg/1280px-White_House_Press_Briefing_%2840387058473%29.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/2025-12-17_White_House_east_construction_Washington_DC_11-24-27.jpg/1280px-2025-12-17_White_House_east_construction_Washington_DC_11-24-27.jpg
   width: 1280
   height: 853
-  alt: صحفيون يرفعون أيديهم أثناء إحاطة صحفية داخل غرفة الإيجاز بالبيت الأبيض
-  credit: The White House from Washington, DC · Public domain · ويكيميديا كومنز
-  license: Public domain
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AWhite_House_Press_Briefing_(40387058473).jpg
+  alt: منظر جوي للبيت الأبيض في واشنطن مع أعمال بناء واسعة في الجوار
+  credit: G. Edward Johnson · CC BY 4.0 · ويكيميديا كومنز
+  license: CC BY 4.0
+  licenseUrl: https://creativecommons.org/licenses/by/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3A2025-12-17_White_House_east_construction_Washington_DC_11-24-27.jpg
 sources:
   - name: الجزيرة الإنجليزية
     nameEn: Al Jazeera English

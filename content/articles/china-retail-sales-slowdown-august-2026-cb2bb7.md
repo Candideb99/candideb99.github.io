@@ -45,14 +45,14 @@ chart:
         - 0.4
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/AD7460_in_service_at_Tian%27anmen_Square_%2820151016155329%29.jpg/1280px-AD7460_in_service_at_Tian%27anmen_Square_%2820151016155329%29.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Shanghai_skyline_waterfront_pudong_5166168_69_70.jpg/1280px-Shanghai_skyline_waterfront_pudong_5166168_69_70.jpg
   width: 1280
   height: 960
-  alt: حافلة بيع متنقلة مفتوحة تعرض سلعًا في ساحة تيانانمن ببكين
-  credit: N509FZ · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AAD7460_in_service_at_Tian'anmen_Square_(20151016155329).jpg
+  alt: أفق مدينة شنغهاي الحديث يمتد فوق نهر هوانغبو في يوم غائم
+  credit: Ermell · CC0 · ويكيميديا كومنز
+  license: CC0
+  licenseUrl: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AShanghai_skyline_waterfront_pudong_5166168_69_70.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat

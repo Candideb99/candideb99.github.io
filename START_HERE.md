@@ -87,6 +87,15 @@ mistake keeps coming back, tell the *Change the site* tab and the guide gets a l
 **Visitors.** Cloudflare → Workers & Pages → khazendar → Metrics → *View Web Analytics*: visits, pages,
 countries, referrers — free, no cookies, nothing installed on readers.
 
+**Photographs.** Two locks stand between a story and a wrong picture. Any Commons file whose name or
+description names a person by rank ("Secretary Kerry", "Minister Schallenberg") is dropped before
+a model sees it unless the writer asked for that surname, and a generic illustration never shows
+named people, named events or warships. Then a second, independent model re-reads the story against
+the chosen file's own name and description and must answer *right* or *a neutral view of the story's
+own place or institution*; anything else refuses the photo and the story runs as text — a missing
+photo is allowed, a wrong one is not. `node pipeline/audit-images.mjs` re-judges every live photo the
+same way whenever you want a sweep.
+
 **Finding a story.** The live list filters by section, kind, month, placement (front page or not) and
 headline. Nothing is ever archived away: a story keeps its page, its section's older pages and its
 topic page for good.
@@ -214,7 +223,9 @@ https://github.com/Candideb99/candideb99.github.io/settings/secrets/actions and 
   the free models as the automatic backup**: if the subscription lapses or a limit is hit, that job
   falls back to the free chain by itself and the paper keeps publishing. Every story records which
   model actually wrote it, and the desk shows the last 24 hours' writers. Photo choice always uses a
-  free vision model.
+  free vision model. (Since 22 September Claude receives the paper's full rule sheet on this laptop
+  too; before that a Windows quirk cut it to its first word on every run started from the desk, which
+  is one reason older stories read stiffly. The cloud runs were never affected.)
 - **Asking for something from anywhere.** With the same setup, open an issue on the repository from
   your phone and write `@claude` with your request. Claude answers and opens a pull request. You
   never open the project folder.

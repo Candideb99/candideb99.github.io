@@ -49,14 +49,14 @@ chart:
         - 54
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Dubai_Marina_Skyline.jpg/1280px-Dubai_Marina_Skyline.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/King_Abdulaziz_International_Airport_-_North_Terminal_3.jpg/1280px-King_Abdulaziz_International_Airport_-_North_Terminal_3.jpg
   width: 1280
-  height: 853
-  alt: أفق دبي مارينا وناطحات السحاب المطلة على المياه في غروب اليوم
-  credit: Norlando Pobre · CC BY 2.0 · ويكيميديا كومنز
-  license: CC BY 2.0
-  licenseUrl: https://creativecommons.org/licenses/by/2.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ADubai_Marina_Skyline.jpg
+  height: 720
+  alt: واجهة مطار الملك عبد العزيز الدولي ليلاً مع سيارات ومسافرين عند المدخل
+  credit: Tahir mq · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AKing_Abdulaziz_International_Airport_-_North_Terminal_3.jpg
 sources:
   - name: إيكونومي ميدل إيست
     nameEn: Economy Middle East

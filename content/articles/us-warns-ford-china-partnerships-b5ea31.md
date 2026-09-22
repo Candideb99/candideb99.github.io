@@ -25,14 +25,14 @@ readingMinutes: 1
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Ford_Lio_Ho_Motor_HQ_view_from_TRA_Local_Train_20230909.jpg/1280px-Ford_Lio_Ho_Motor_HQ_view_from_TRA_Local_Train_20230909.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Ford_Dearborn_Development_Center_Aerial_%2845574998845%29.jpg/1280px-Ford_Dearborn_Development_Center_Aerial_%2845574998845%29.jpg
   width: 1280
-  height: 720
-  alt: Ford Lio Ho Motor Company entrance with flags and guard booth
-  credit: Solomon203 · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AFord_Lio_Ho_Motor_HQ_view_from_TRA_Local_Train_20230909.jpg
+  height: 853
+  alt: لقطة جوية لمجمع فورد للتطوير في ديربورن بولاية ميشيغان
+  credit: formulanone · CC BY-SA 2.0 · ويكيميديا كومنز
+  license: CC BY-SA 2.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/2.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AFord_Dearborn_Development_Center_Aerial_(45574998845).jpg
 sources:
   - name: الجزيرة الإنجليزية
     nameEn: Al Jazeera English
@@ -50,7 +50,7 @@ models:
   editor: nvidia/nemotron-3-ultra-550b-a55b:free
   writer: nvidia/nemotron-3-ultra-550b-a55b:free → nvidia/nemotron-3-ultra-550b-a55b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
+  vision: nex-agi/nex-n2.5-pro:free
 quality:
   score: 6
   verdict: revise

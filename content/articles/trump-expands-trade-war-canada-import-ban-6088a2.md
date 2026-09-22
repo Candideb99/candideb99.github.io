@@ -42,14 +42,14 @@ chart:
         - 337
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Manhattan_skyline_from_Upper_New_York_Bay%2C_20231001_1040_0878.jpg/1280px-Manhattan_skyline_from_Upper_New_York_Bay%2C_20231001_1040_0878.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Parliament_Hill_Ottawa_by_Louie_Luo.jpg/1280px-Parliament_Hill_Ottawa_by_Louie_Luo.jpg
   width: 1280
-  height: 630
-  alt: أفق مانهاتن وميناء نيويورك من خليج نيويورك العلوي تحت سماء صافية
-  credit: Jakub Hałun · CC BY-SA 4.0 · ويكيميديا كومنز
+  height: 864
+  alt: مبنى البرلمان الكندي على تلة في أوتاوا وسط أشجار الخريف
+  credit: Louie Luo · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AManhattan_skyline_from_Upper_New_York_Bay%2C_20231001_1040_0878.jpg
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AParliament_Hill_Ottawa_by_Louie_Luo.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat

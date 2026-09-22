@@ -82,13 +82,19 @@ function numberStem(word) {
   for (const [re, stem] of NUMBER_STEMS) if (re.test(word)) return stem;
   return word;
 }
+/** A quantity in letters and the same quantity in digits are one fact (سبع سفن / 7 سفن); fractions and multiples stay words. */
+const NUMBER_VALUES = { واحد: "1", اثنان: "2", ثلاثة: "3", أربعة: "4", خمسة: "5", ستة: "6", سبعة: "7", ثمانية: "8", تسعة: "9", عشرة: "10", عشرون: "20", ثلاثون: "30", أربعون: "40", خمسون: "50", ستون: "60", سبعون: "70", ثمانون: "80", تسعون: "90", مئة: "100", مئتان: "200", ألف: "1000", ألفان: "2000", مليون: "1000000", مليونان: "2000000", مليار: "1000000000", ملياران: "2000000000", تريليون: "1000000000000", تريليونان: "2000000000000" };
 
 /** Digits, number words and Latin tokens of a text, as sortable fingerprints; a rewrite must reproduce them. */
 function numberFingerprint(text, { unique = false } = {}) {
-  const t = normalizeDigits(String(text ?? "")).replace(/٬/g, ",").replace(/٫/g, ".");
+  // "13 بالمئة" and "13%" are one figure: the percent phrase is a unit, not the quantity مئة.
+  const t = normalizeDigits(String(text ?? ""))
+    .replace(/٬/g, ",")
+    .replace(/٫/g, ".")
+    .replace(/\s*(?:بالمئة|بالمائة|في المئة|في المائة)(?![؀-ۿ])/g, "%");
   // A thousands separator is formatting, not fact: "4,000" and "4000" are one figure.
   const digits = (t.match(/\d[\d.,]*\d|\d/g) ?? []).map((n) => n.replace(/[.,]+$/, "").replace(/,(?=\d{3}(?!\d))/g, ""));
-  const words = [...t.matchAll(NUMBER_WORDS)].map((m) => numberStem(m[1]));
+  const words = [...t.matchAll(NUMBER_WORDS)].map((m) => NUMBER_VALUES[numberStem(m[1])] ?? numberStem(m[1]));
   const all = [...digits, ...words].sort();
   return (unique ? [...new Set(all)] : all).join("|");
 }
@@ -263,6 +269,43 @@ ${data.subtitle}`;
       applied.push(f);
     } else if (guard.reason !== "unchanged") {
       rejected.push({ field: f, reason: guard.reason, proposal: f === "body" ? undefined : data[f] });
+    }
+  }
+  // A body the guard refused gets one second try, with the desk told exactly what it broke. The model is
+  // stochastic and the guard is exact: on 2026-09-22 four bodies in ten were refused for a figure moved or
+  // reworded, and the same story passed on the next call.
+  const bodyRefusal = includeBody ? rejected.find((r) => r.field === "body" && /numbers|hedge|dual|latin|doubled/.test(r.reason)) : null;
+  if (bodyRefusal) {
+    try {
+      const { data: again } = await chat({
+        role,
+        system: DESK_SYSTEM,
+        user: `Your rewrite of the BODY below was refused by the desk's guard: ${bodyRefusal.reason}. Rewrite the body once more, changing phrasing only: every digit, figure, percentage, date, unit, currency, count written in words, dual, hedge (قد، من المتوقع، يرجح…) and Latin token of the ORIGINAL must appear in the rewrite exactly as it does there, and the subheadings stay as they are. Return one JSON object: {"body": "..."}
+
+ORIGINAL BODY
+${draft.body}
+
+REFUSED REWRITE
+${data.body}`,
+        temperature: 0.1,
+        maxTokens: 7000,
+        log,
+        validate: (d) => {
+          if (typeof d?.body !== "string") throw new Error("desk answer lacks body");
+        },
+      });
+      const body = houseTanween(again.body);
+      const guard = fieldGuard("body", draft.body, body);
+      if (guard.ok) {
+        out.body = body.trim();
+        applied.push("body");
+        rejected.splice(rejected.indexOf(bodyRefusal), 1);
+        log("desk: body accepted on the second try");
+      } else {
+        log(`desk: body refused again (${guard.reason})`);
+      }
+    } catch (error) {
+      log(`desk: second try failed (${error.message.split("\n")[0]})`);
     }
   }
   // A field the table repaired counts as changed even when the model left it alone, so the caller writes it.

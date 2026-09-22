@@ -30,14 +30,14 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Dubai_Marina_04.jpg/1280px-Dubai_Marina_04.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Oil_tanker_approaching_FPSO.jpg/1280px-Oil_tanker_approaching_FPSO.jpg
   width: 1280
-  height: 960
-  alt: أفق دبي مارينا بأبراجه الشاهقة وقواربه راسية على الميناء تحت سماء صافية
-  credit: Davide Mauro · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ADubai_Marina_04.jpg
+  height: 696
+  alt: ناقلة نفط تقترب من منصة إنتاج عائمة في عرض البحر تحت سماء صافية
+  credit: Jon Olav Eikenes · CC BY 2.0 · ويكيميديا كومنز
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AOil_tanker_approaching_FPSO.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat

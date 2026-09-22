@@ -23,14 +23,13 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/7/72/Fragments_of_the_ATACMS_missile_and_the_Pantsir_air_defense_system_in_the_background_%28official_photo_of_the_Russian_Ministry_of_Defense%29.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/PentagonAerial2005.jpg/1280px-PentagonAerial2005.jpg
   width: 1280
-  height: 960
-  alt: بقايا صاروخ ATACMS أمام منظومة دفاع جوي Pantsir في حقل مفتوح
-  credit: Russian Ministry of Defense · CC BY 4.0 · ويكيميديا كومنز
-  license: CC BY 4.0
-  licenseUrl: https://creativecommons.org/licenses/by/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AFragments_of_the_ATACMS_missile_and_the_Pantsir_air_defense_system_in_the_background_(official_photo_of_the_Russian_Ministry_of_Defense).jpg
+  height: 760
+  alt: مشهد جوي لمقر وزارة الدفاع الأميركية البنتاغون قرب واشنطن
+  credit: Chief Photographer's Mate Johnny Bivera · Public domain · ويكيميديا كومنز
+  license: Public domain
+  pageUrl: https://commons.wikimedia.org/wiki/File%3APentagonAerial2005.jpg
 sources:
   - name: سي إن بي سي
     nameEn: CNBC

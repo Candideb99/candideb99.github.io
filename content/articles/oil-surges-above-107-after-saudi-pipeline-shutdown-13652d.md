@@ -25,14 +25,14 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Alexander_Schallenberg_in_Saudi_Arabia_on_23_May_2024_-_14.jpg/1280px-Alexander_Schallenberg_in_Saudi_Arabia_on_23_May_2024_-_14.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/El_Faleh_%28221650625%29.jpeg/1280px-El_Faleh_%28221650625%29.jpeg
   width: 1280
-  height: 853
-  alt: وزير الاقتصاد السعودي يلتقي وزير الخارجية النمساوي في الرياض تحت صور القادة
-  credit: Österreichisches Außenministerium · CC BY 2.0 · ويكيميديا كومنز
-  license: CC BY 2.0
-  licenseUrl: https://creativecommons.org/licenses/by/2.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AAlexander_Schallenberg_in_Saudi_Arabia_on_23_May_2024_-_14.jpg
+  height: 1059
+  alt: أفق الرياض وبرج المملكة عند الغروب مع حركة المرور في الشارع
+  credit: Francisco Anzola · CC BY 3.0 · ويكيميديا كومنز
+  license: CC BY 3.0
+  licenseUrl: https://creativecommons.org/licenses/by/3.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AEl_Faleh_(221650625).jpeg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat

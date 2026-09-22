@@ -53,14 +53,14 @@ table:
     - - النقل
       - "+0.2"
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/File%2C_Asu%C3%A1n%2C_Egipto%2C_2022-04-01%2C_DD_142.jpg/1280px-File%2C_Asu%C3%A1n%2C_Egipto%2C_2022-04-01%2C_DD_142.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Flickr_-_Bakar_88_-_Cairo%2C_Egypt_%28HDR%29.jpg/1280px-Flickr_-_Bakar_88_-_Cairo%2C_Egypt_%28HDR%29.jpg
   width: 1280
-  height: 1280
-  alt: معبد فيلة الأثري على ضفاف النيل في أسوان جنوب مصر
-  credit: Diego Delso · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AFile%2C_Asu%C3%A1n%2C_Egipto%2C_2022-04-01%2C_DD_142.jpg
+  height: 853
+  alt: مشهد لنهر النيل ووسط القاهرة من جزيرة الزمالك تحت سماء صافية
+  credit: Andrew A. Shenouda from Cairo, Egypt · CC BY 2.0 · ويكيميديا كومنز
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AFlickr_-_Bakar_88_-_Cairo%2C_Egypt_(HDR).jpg
 sources:
   - name: البورصة
     nameEn: Alborsa News

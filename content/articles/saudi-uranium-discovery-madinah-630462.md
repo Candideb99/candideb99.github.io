@@ -21,7 +21,14 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Maaden_Gold_Jeddah.JPG/1280px-Maaden_Gold_Jeddah.JPG
+  width: 1280
+  height: 960
+  alt: مبنى شركة سعودية للتعدين في جدة يمثل قطاع استخراج المعادن
+  credit: Ammar shaker · Public domain · ويكيميديا كومنز
+  license: Public domain
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AMaaden_Gold_Jeddah.JPG
 sources:
   - name: ذا ناشيونال
     nameEn: The National
@@ -39,7 +46,7 @@ models:
   editor: inclusionai/ling-3.0-flash-fin:free
   writer: nvidia/nemotron-3-super-120b-a12b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: null
+  vision: nex-agi/nex-n2.5-pro:free
   desk: nvidia/nemotron-3-super-120b-a12b:free
 quality:
   score: 10

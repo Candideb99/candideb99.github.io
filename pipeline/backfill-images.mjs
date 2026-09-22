@@ -45,7 +45,12 @@ let found = 0;
 for (const file of files) {
   if (tried >= LIMIT) break;
   const full = path.join(ARTICLES_DIR, file);
-  const raw = await readFile(full, "utf8");
+  let raw;
+  try {
+    raw = await readFile(full, "utf8");
+  } catch {
+    continue; // unpublished while this run was going
+  }
   const match = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
   if (!match) continue;
   const data = YAML.parse(match[1]);

@@ -1,3 +1,6 @@
+import os from "node:os";
+import path from "node:path";
+import { existsSync } from "node:fs";
 import { jsonrepair } from "jsonrepair";
 import { sleep } from "./util.mjs";
 
@@ -160,15 +163,41 @@ function buildUserContent(user, images) {
  * Provider "claude": runs the prompt through the Claude Code command line, which uses the
  * owner's Claude subscription (after `claude login` or `claude setup-token`) instead of an API key.
  * Vision requests fall back to OpenRouter because the CLI takes text only here.
+ *
+ * The command line is never handed to a shell. On Windows the `claude` on PATH is a .cmd shim that
+ * only cmd.exe can start, and cmd.exe cuts an argument at every newline, `&` and `%`: measured on
+ * 2026-09-22, the multi-line house-style system prompt reached the model as the single word "You",
+ * the rest of its first line became the prompt, and a `%PATH%` inside a prompt was expanded. So the
+ * CLI's own entry file runs under this node. The call is also made from a bare temporary directory
+ * with settings switched off, so that neither the owner's other projects' CLAUDE.md files nor this
+ * repository's agent notes and memories are pasted into the writer's context.
  */
+const CLI_JS = [
+  path.join(process.env.APPDATA ?? "", "npm", "node_modules", "@anthropic-ai", "claude-code", "cli.js"),
+  path.join(process.env.HOME ?? "", ".npm-global", "lib", "node_modules", "@anthropic-ai", "claude-code", "cli.js"),
+  "/usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js",
+  "/usr/lib/node_modules/@anthropic-ai/claude-code/cli.js",
+].find((p) => p && existsSync(p));
+
+/** A nested Claude Code session poisons its children ("Not logged in"); only the owner's token and API key pass through. */
+function claudeCliEnv() {
+  const env = { ...process.env };
+  const oauth = env.CLAUDE_CODE_OAUTH_TOKEN;
+  for (const key of Object.keys(env)) {
+    if (/^CLAUDECODE$|^CLAUDE_/.test(key) || key === "ANTHROPIC_BASE_URL" || key === "ANTHROPIC_AUTH_TOKEN") delete env[key];
+  }
+  if (oauth) env.CLAUDE_CODE_OAUTH_TOKEN = oauth;
+  return env;
+}
+
 async function callClaudeCli(model, { system, user, timeoutMs }) {
   const { spawn } = await import("node:child_process");
   const cliModel = process.env.KHAZENDAR_CLAUDE_MODEL ?? "sonnet";
-  const args = ["-p", "--output-format", "json", "--tools", "", "--no-session-persistence", "--model", cliModel];
+  const args = ["-p", "--output-format", "json", "--tools", "", "--no-session-persistence", "--setting-sources", "", "--model", cliModel];
   if (system) args.push("--system-prompt", system);
   const started = Date.now();
   const result = await new Promise((resolve, reject) => {
-    const child = spawn("claude", args, { shell: process.platform === "win32", windowsHide: true });
+    const child = spawn(CLI_JS ? process.execPath : "claude", CLI_JS ? [CLI_JS, ...args] : args, { shell: false, windowsHide: true, env: claudeCliEnv(), cwd: os.tmpdir() });
     let out = "";
     let err = "";
     const timer = setTimeout(() => {
@@ -179,7 +208,7 @@ async function callClaudeCli(model, { system, user, timeoutMs }) {
     child.stderr.on("data", (d) => (err += d));
     child.on("error", (e) => {
       clearTimeout(timer);
-      reject(new LlmError(`claude cli failed to start: ${e.message}`));
+      reject(new LlmError(`claude cli failed to start (${e.message}); install it with npm i -g @anthropic-ai/claude-code`));
     });
     child.on("close", (code) => {
       clearTimeout(timer);

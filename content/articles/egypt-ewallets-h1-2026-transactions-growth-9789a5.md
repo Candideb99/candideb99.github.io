@@ -70,14 +70,14 @@ table:
       - "7.5"
       - 13%
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Main_Bank_of_Egypt.jpg/1280px-Main_Bank_of_Egypt.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Nile_in_Cairo.jpg/1280px-Nile_in_Cairo.jpg
   width: 1280
-  height: 854
-  alt: قاعة داخلية تاريخية بفرع بنك في القاهرة تضم أعمدة رخامية ومكاتب ورواداً
-  credit: Ahmed Yousry Mahfouz · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AMain_Bank_of_Egypt.jpg
+  height: 960
+  alt: مشهد عام لنهر النيل وأبراج وسط القاهرة في ضوء نهاري هادئ
+  credit: Ghaly · CC BY-SA 3.0 · ويكيميديا كومنز
+  license: CC BY-SA 3.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/3.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ANile_in_Cairo.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat

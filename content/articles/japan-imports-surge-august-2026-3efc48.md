@@ -33,14 +33,14 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Empelde_Gasspeicher_6785.jpg/1280px-Empelde_Gasspeicher_6785.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/20250103_Osanbashi_Pier_103019.jpg/1280px-20250103_Osanbashi_Pier_103019.jpg
   width: 1280
-  height: 749
-  alt: منشأة تخزين غاز طبيعي تحت الأرض في ألمانيا مع أنابيب ومعدات صناعية
-  credit: Gerd Fahrenhorst · CC BY 3.0 · ويكيميديا كومنز
-  license: CC BY 3.0
-  licenseUrl: https://creativecommons.org/licenses/by/3.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AEmpelde_Gasspeicher_6785.jpg
+  height: 960
+  alt: رصيف ميناء يوكوهاما وسفن وبواخر في الخلفية تحت سماء ملبدة بالغيوم
+  credit: Matthide127 · CC0 · ويكيميديا كومنز
+  license: CC0
+  licenseUrl: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+  pageUrl: https://commons.wikimedia.org/wiki/File%3A20250103_Osanbashi_Pier_103019.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat

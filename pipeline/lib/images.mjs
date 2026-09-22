@@ -51,11 +51,25 @@ function recencyScore(image) {
  * because the room matched; no model should have had to be trusted with that call.
  */
 const RANK = /\b(?:Secretary|President|Vice[- ]President|Prime Minister|Premier|Vice[- ]Premier|Chancellor|Minister|Governor|Senator|Congressman|Ambassador|King|Queen|Prince|Princess|Sheikh|Emir|Crown Prince|Chairman|Chairwoman|CEO|Director|Commissioner|Mayor|General|Admiral|Pope|Sultan)\s+(?:of\s+[A-Z][\w-]+\s+)?([A-Z][\w'’-]+(?:\s+[A-Z][\w'’-]+)?)/g;
+/** Words that make a rank-plus-name a place or an institution, not a person: "King Abdulaziz International Airport", "General Motors", "Prince Sultan Air Base". */
+const NOT_A_PERSON = new Set(["international", "airport", "university", "hospital", "stadium", "bridge", "street", "road", "avenue", "boulevard", "highway", "causeway", "center", "centre", "city", "port", "base", "district", "foundation", "medical", "park", "square", "tower", "towers", "mosque", "library", "museum", "school", "college", "institute", "financial", "economic", "cup", "trophy", "league", "motors", "electric", "mills", "hotel", "terminal", "station", "line", "dam", "canal", "complex", "hall", "building", "plaza", "mall", "gardens", "memorial", "academy", "company", "corporation", "bank", "fund", "award", "prize", "air", "naval", "military", "sports", "convention", "exhibition", "expo", "industrial", "village", "island", "islands", "bay", "beach", "harbour", "harbor", "refinery", "oil", "gas", "petroleum", "energy", "campus", "palace", "monument", "statue"]);
+
+/**
+ * The people a file names by rank ("Secretary Kerry Poses…", "Vice Premier He Lifeng"): one entry per
+ * person, the capitalised words after the rank in lower case. Commons titles are in Title Case, so the
+ * word after a surname is often a verb ("Kerry Poses", "Bessent Meets"); a person counts as wanted when
+ * ANY of the words is in the search, so a wanted person is not lost to the verb beside the name.
+ */
 function namedPeople(image) {
   const text = `${image.title ?? ""} ${image.description ?? ""}`;
-  const names = new Set();
-  for (const m of text.matchAll(RANK)) names.add(m[1].split(/\s+/).pop().toLowerCase());
-  return [...names];
+  const people = [];
+  for (const m of text.matchAll(RANK)) {
+    const words = m[1].split(/\s+/).map((w) => w.toLowerCase());
+    const next = text.slice(m.index + m[0].length).match(/^\s+([A-Za-z][\w-]*)/)?.[1]?.toLowerCase();
+    if (words.some((w) => NOT_A_PERSON.has(w)) || (next && NOT_A_PERSON.has(next))) continue;
+    people.push(words);
+  }
+  return people;
 }
 
 /**
@@ -73,13 +87,14 @@ async function collect(queries, log, { perQuery = 6, max = 8, exclude = new Set(
       if (results.length) break;
       results = await searchCommons(alternative, { limit: perQuery, log });
     }
-    const asked = query.toLowerCase();
+    const asked = new Set(query.toLowerCase().split(/[^\p{L}\p{N}'’-]+/u));
     for (const image of results) {
-      if (seen.has(image.url)) continue;
+      if (seen.has(image.url) || seen.has(`title:${image.title}`)) continue;
       seen.add(image.url);
-      const names = namedPeople(image);
-      if (names.length && (people === "none" || !names.every((n) => asked.includes(n)))) {
-        log(`image: dropped "${String(image.title).slice(0, 70)}" — shows ${names.join(", ")}, not the story's people`);
+      const named = namedPeople(image);
+      const unwanted = people === "none" ? named : named.filter((words) => !words.some((w) => asked.has(w)));
+      if (unwanted.length) {
+        log(`image: dropped "${String(image.title).slice(0, 70)}" — shows ${unwanted.map((w) => w[0]).join(", ")}, not the story's people`);
         continue;
       }
       candidates.push({ ...image, query, score: recencyScore(image) + (image.width >= 1600 ? 1 : 0) });
@@ -120,7 +135,7 @@ Candidate photographs (numbered in the same order as the attached images):
 ${list.map((c, i) => `${i + 1}. "${c.title}" — ${c.description || "no description"} — dated ${c.date || "unknown"} — search: ${c.query}`).join("\n")}
 
 Choose the single best photograph for this article, or none. ${rules}
-Return JSON: {"choice": <1-${list.length} or 0 for none>, "alt": "<Arabic alt text of 8-16 words describing what the chosen photo shows>", "reason": "<short English reason>"}`;
+Return JSON: {"choice": <1-${list.length} or 0 for none>, "alt": "<Arabic alt text of 8-16 words describing what the chosen photo shows; for a generic illustration describe only what is seen and name no place, company or person the story does not mention>", "reason": "<short English reason>"}`;
 
   try {
     const { data, model } = await chat({
@@ -265,12 +280,13 @@ File name: ${image.title ?? ""}
 Description: ${image.description || "(none)"}
 Categories: ${image.categories || "(none)"}
 Date: ${image.date || "(unknown)"}
+Caption the paper would print: ${image.alt || "(none yet)"}
 
-Judge as a strict picture editor:
+Judge as a strict picture editor of a paper read across the Arab world. The test is what is IN THE FRAME and what the CAPTION says; readers never see the file name:
 - WRONG_PERSON: an identifiable person (official, politician, executive) who is not one of the story's own people, whatever the setting.
-- WRONG_SUBJECT: a different country or city than the story's, a different company or institution, a different sector, a military vessel or weapon for a non-military story, an object unrelated to the story.
+- WRONG_SUBJECT: a different country or city than the story's; a different company or institution; a different sector; a military vessel or weapon for a non-military story; a scene that merely lies NEAR the subject (a beach, a park, a street, a metro station, a hillside or a coastline beside a refinery, port or pipeline; a satellite view of a whole country); a landmark, flag, sign or building in the frame that identifies a country the story does not mention; a caption that names a place, company or person the story does not mention (a tanker depot captioned "at Eilat" is WRONG_SUBJECT on a Gulf oil story, however good a tanker depot it is). If your reason would contain "loosely", "broadly", "tangentially", "not specifically", "though it shows" or "reasonably", the verdict is WRONG_SUBJECT.
 - STALE_EVENT: a specific past event (a summit, a ceremony, a visit) that the story is not about.
-- GENERIC_OK: a neutral illustration of the story's OWN country, city, institution or sector (its capital's skyline, the named company's building, the sector's typical scene).
+- GENERIC_OK: a neutral illustration whose frame shows the story's OWN country, city, institution or sector itself: the named capital's skyline, the named company's building, the sector's own object (a refinery, a tanker, a pipeline, a pumpjack, a trading floor, a port crane, a factory line, a branch of the named bank). For a story about the WORLD market (oil prices, global trade, shipping, a world body such as the WTO or the IMF) an anonymous scene of the sector taken anywhere is acceptable — a refinery, a tanker at sea, a container port, a trading floor — when nothing in the frame identifies the country and the caption names no place.
 - RIGHT: the story's own people, place or event.
 Return JSON: {"verdict":"RIGHT|GENERIC_OK|STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON","reason":"<one short English sentence>"}`;
   const { data, model } = await chat({
@@ -287,7 +303,7 @@ Return JSON: {"verdict":"RIGHT|GENERIC_OK|STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON
   });
   const verdict = String(data.verdict).toUpperCase();
   const ok = verdict === "RIGHT" || verdict === "GENERIC_OK";
-  log(`image: second check (${model}) ${verdict}${ok ? "" : " — refused"}: ${String(data.reason ?? "").slice(0, 120)}`);
+  log(`image: second check (${model}) ${verdict}${ok ? "" : " — refused"} "${String(image.title ?? "").slice(0, 60)}": ${String(data.reason ?? "").slice(0, 120)}`);
   return ok;
 }
 
@@ -298,18 +314,22 @@ async function chooseVerified({ list, inlined, draft, story, log, relaxed, exclu
   const chosen = list.find((c) => c.url === image.url) ?? {};
   let verified = false;
   try {
-    verified = await verifyImage({ image: { ...chosen, title: chosen.title ?? image.title, query: chosen.query }, draft, story, log });
+    verified = await verifyImage({ image: { ...chosen, title: chosen.title ?? image.title, query: chosen.query, alt: image.alt }, draft, story, log });
   } catch (error) {
     // No second opinion available: fail closed. A story without a photo is allowed; a wrong photo is not.
     log(`image: second check failed (${error.message.split("\n")[0]}); photo refused`);
     verified = false;
   }
   if (!verified) {
+    // Excluded by URL and by file title: Commons serves one file under several URLs and widths.
     exclude.add(image.url);
+    if (chosen.title) exclude.add(`title:${chosen.title}`);
     return null;
   }
   return image;
 }
+
+const excluded = (exclude, c) => exclude.has(c.url) || exclude.has(`title:${c.title}`);
 
 export async function pickImage({ draft, story, log, fallback = true, exclude = new Set() }) {
   const specific = (draft.imageQueries?.length ? draft.imageQueries : []).slice(0, 3);
@@ -344,10 +364,63 @@ export async function pickImage({ draft, story, log, fallback = true, exclude = 
   if (!s.list.length) return null;
   const image = await chooseVerified({ ...s, draft, story, log, relaxed: true, exclude });
   if (image) return image;
-  // One more try with the refused photo excluded; after that the story runs as text.
-  const rest = candidates.filter((c) => !exclude.has(c.url));
-  if (!rest.length) return null;
-  const again = await shortlist(rest, log);
-  if (!again.list.length) return null;
-  return chooseVerified({ ...again, draft, story, log, relaxed: true, exclude });
+  // One more try with the refused photo excluded.
+  const rest = candidates.filter((c) => !excluded(exclude, c));
+  if (rest.length) {
+    const again = await shortlist(rest, log);
+    if (again.list.length) {
+      const second = await chooseVerified({ ...again, draft, story, log, relaxed: true, exclude });
+      if (second) return second;
+    }
+  }
+  return lastResort({ draft, story, log, exclude });
+}
+
+/**
+ * Last resort: the skyline of the story's own capital, which the second check accepts by rule. A story
+ * about the world market, a region or several countries has no one capital and runs as text.
+ */
+async function lastResort({ draft, story, log, exclude }) {
+  let queries = [];
+  try {
+    const { data } = await chat({
+      role: "writer",
+      system: "You name places for a newspaper photo desk. Reply with one JSON object only.",
+      user: `Story headline: ${draft.title}
+Summary: ${draft.subtitle ?? ""}
+Regions: ${(draft.regions ?? []).join(", ") || "unknown"}
+Tags: ${(draft.tags ?? []).join(", ")}
+
+Name, in English, the capital or main financial city of the ONE country this story is about (for example "Riyadh", "Cairo", "Frankfurt"); null if the story is about the world, a region or several countries at once. Separately name the institution at the centre of the story if it is a world body, central bank, ministry or company with a known headquarters (for example "World Trade Organization", "European Central Bank", "Saudi Aramco"); null otherwise.
+Return JSON: {"city": "<name or null>", "institution": "<name or null>"}`,
+      temperature: 0,
+      maxTokens: 1000,
+      timeoutMs: 60000,
+      log,
+    });
+    const clean = (v) => (typeof v === "string" && v.trim().length > 1 && v.trim().toLowerCase() !== "null" ? v.trim() : null);
+    const city = clean(data?.city);
+    const institution = clean(data?.institution);
+    if (institution) queries.push(`${institution} headquarters`, `${institution} building`);
+    if (city) queries.push(`${city} skyline`, `${city} city panorama`);
+  } catch (error) {
+    log(`image: last resort failed (${error.message.split("\n")[0]})`);
+    return null;
+  }
+  if (!queries.length) {
+    log("image: no single country or institution to fall back on; the story runs as text");
+    return null;
+  }
+  log(`image: last resort: ${queries.join(" | ")}`);
+  const candidates = await collect(queries, log, { perQuery: 8, max: 12, exclude, people: "none" });
+  // Two chances, the refused photo excluded in between: the vision model tends to repeat a choice.
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    const rest = candidates.filter((c) => !excluded(exclude, c));
+    if (!rest.length) return null;
+    const s = await shortlist(rest, log);
+    if (!s.list.length) return null;
+    const image = await chooseVerified({ ...s, draft, story, log, relaxed: true, exclude });
+    if (image) return image;
+  }
+  return null;
 }

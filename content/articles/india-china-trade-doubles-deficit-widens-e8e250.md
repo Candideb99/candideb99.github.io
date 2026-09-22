@@ -48,13 +48,14 @@ table:
       - الصين
       - الولايات المتحدة، الاتحاد الأوروبي، الإمارات، السعودية، فرنسا، ألمانيا، إيطاليا
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Containerb%C3%BCcken_f%C3%BCr_Eurogate_009.jpg/1280px-Containerb%C3%BCcken_f%C3%BCr_Eurogate_009.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Pudong_Shanghai_November_2017.jpg/1280px-Pudong_Shanghai_November_2017.jpg
   width: 1280
-  height: 960
-  alt: نقل رافعات حاويات ضخمة على سفينة في ميناء عالمي
-  credit: GeorgHH · Public domain · ويكيميديا كومنز
-  license: Public domain
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AContainerb%C3%BCcken_f%C3%BCr_Eurogate_009.jpg
+  height: 768
+  alt: أفق مدينة شنغهاي الصيني مع برج اللؤلؤة الشرقية ونهر هوانغبو
+  credit: King of Hearts · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3APudong_Shanghai_November_2017.jpg
 sources:
   - name: نيويورك تايمز
     nameEn: The New York Times
@@ -72,7 +73,7 @@ models:
   editor: inclusionai/ling-3.0-flash-fin:free
   writer: inclusionai/ling-3.0-flash-fin:free → inclusionai/ling-3.0-flash-fin:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
+  vision: nex-agi/nex-n2.5-pro:free
   desk: nvidia/nemotron-3-super-120b-a12b:free
 quality:
   score: 6

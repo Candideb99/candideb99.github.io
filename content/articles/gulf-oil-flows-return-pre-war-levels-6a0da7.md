@@ -28,14 +28,13 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Dubai_Marina_near_Marina_mall.jpg/1280px-Dubai_Marina_near_Marina_mall.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/US_Navy_051111-N-8163B-032_An_oil_tanker_docked_to_the_Al_Basrah_Oil_Terminal_%28ABOT%29_takes_on_crude_oil_in_the_Persian_Gulf.jpg/1280px-US_Navy_051111-N-8163B-032_An_oil_tanker_docked_to_the_Al_Basrah_Oil_Terminal_%28ABOT%29_takes_on_crude_oil_in_the_Persian_Gulf.jpg
   width: 1280
-  height: 622
-  alt: أفق دبي مارينا ومبانيها الشاهقة على ضفاف القناة في غروب الشمس
-  credit: InPaBa · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ADubai_Marina_near_Marina_mall.jpg
+  height: 851
+  alt: ناقلة نفط راسية عند محطة البصرة لتحميل الخام في الخليج العربي
+  credit: U.S. Navy photo by Photographer's Mate Airman Eben Boothby · Public domain · ويكيميديا كومنز
+  license: Public domain
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AUS_Navy_051111-N-8163B-032_An_oil_tanker_docked_to_the_Al_Basrah_Oil_Terminal_(ABOT)_takes_on_crude_oil_in_the_Persian_Gulf.jpg
 sources:
   - name: الجزيرة نت
     nameEn: Al Jazeera Arabic

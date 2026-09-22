@@ -29,15 +29,7 @@ regions:
 readingMinutes: 1
 chart: null
 table: null
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/International_Conference_on_Intellectual_Property_%28IP%29_and_Development_%E2%80%93_Panel_on_IP_as_an_Incentive_for_Sustainable_Agriculture_%2852842209275%29.jpg/1280px-International_Conference_on_Intellectual_Property_%28IP%29_and_Development_%E2%80%93_Panel_on_IP_as_an_Incentive_for_Sustainable_Agriculture_%2852842209275%29.jpg
-  width: 1280
-  height: 853
-  alt: سفيرة تشيلي في منظمة التجارة العالمية تتحدث في مؤتمر حول الملكية الفكرية والزراعة المستدامة
-  credit: World Intellectual Property Organization · CC BY 2.0 · ويكيميديا كومنز
-  license: CC BY 2.0
-  licenseUrl: https://creativecommons.org/licenses/by/2.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AInternational_Conference_on_Intellectual_Property_(IP)_and_Development_%E2%80%93_Panel_on_IP_as_an_Incentive_for_Sustainable_Agriculture_(52842209275).jpg
+image: null
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
