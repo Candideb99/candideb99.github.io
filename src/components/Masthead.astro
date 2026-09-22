@@ -4,10 +4,12 @@
  * the logo, and the green section bar. On a wide screen each section opens a panel under the bar,
  * as the business dailies' bars do: the section's standing sub-topics (a curated taxonomy in
  * `src/data/topics.json`, not the writers' tags), its analyses by desk, and the data and pages that
- * belong to it. The panel is sized to its content, never wider than the bar, hung from the bar's start
- * edge, and opens on hover only (a panel held open by keyboard focus used to sit over the section under
- * the pointer); it needs no script. Keyboard and touch readers get plain links and the same taxonomy on
- * the section pages.
+ * belong to it. The panel is sized to its content, never wider than the bar, hung under the section
+ * that opened it (slid back inside the bar when it would overrun the bar's end — the one thing the
+ * script below does; until 2026-09-22 every panel hung from the bar's start edge, which put the
+ * explainers panel half a screen away from its section), and opens on hover only (a panel held open by
+ * keyboard focus used to sit over the section under the pointer). Keyboard and touch readers get plain
+ * links and the same taxonomy on the section pages.
  */
 import site from "@data/site.json";
 import { sections, sectionHref, newsSections } from "@lib/sections";
@@ -125,6 +127,33 @@ for (const s of sections) {
   </nav>
 </header>
 
+<script>
+  // Hang each panel from its own section's start edge; if it would overrun the bar's end edge, slide
+  // it back so it stays inside the bar. The panel's containing block stays the bar, so it is never
+  // wider than the bar. Measured on hover, when the panel is displayed and has a width.
+  const wrap = document.querySelector<HTMLElement>(".masthead__nav-wrap");
+  const rtl = getComputedStyle(document.documentElement).direction === "rtl";
+  if (wrap) {
+    for (const item of document.querySelectorAll<HTMLElement>(".nav__item--panel")) {
+      const panel = item.querySelector<HTMLElement>(".nav__panel");
+      if (!panel) continue;
+      item.addEventListener("mouseenter", () => {
+        const bar = wrap.getBoundingClientRect();
+        const link = item.getBoundingClientRect();
+        let width = panel.getBoundingClientRect().width;
+        if (!width) {
+          panel.style.display = "flex";
+          width = panel.getBoundingClientRect().width;
+          panel.style.display = "";
+        }
+        const wanted = rtl ? bar.right - link.right : link.left - bar.left;
+        const start = Math.max(0, Math.min(wanted, bar.width - width));
+        panel.style.insetInlineStart = `${Math.round(start)}px`;
+      });
+    }
+  }
+</script>
+
 <style>
   .masthead { position: relative; z-index: 2; background: var(--paper); }
   .masthead__top {
@@ -179,10 +208,11 @@ for (const s of sections) {
   .nav__link:focus-visible { outline-color: #fcfcf9; outline-offset: -3px; }
   .nav__link[aria-current="page"] { border-bottom-color: #fcfcf9; background: rgba(255, 255, 255, 0.08); }
 
-  /* The section panel: a paper box the size of its content, never wider than the bar, hung from the
-     bar's start edge, ruled between its columns and closed by a 2px ink rule; only on a wide screen
-     with a pointer that can hover, and on hover alone: a panel held open by keyboard focus used to sit
-     over the section under the pointer. Elsewhere the bar scrolls and the sections are plain links. */
+  /* The section panel: a paper box the size of its content, never wider than the bar, hung under its
+     own section (the script above sets inset-inline-start on hover), ruled between its columns and
+     closed by a 2px ink rule; only on a wide screen with a pointer that can hover, and on hover alone:
+     a panel held open by keyboard focus used to sit over the section under the pointer. Elsewhere the
+     bar scrolls and the sections are plain links. */
   .nav__panel { display: none; position: absolute; top: 100%; inset-inline-start: 0; z-index: 30; width: max-content; max-width: 100%; background: var(--paper); border: 1px solid var(--rule); border-top: 0; border-bottom: 2px solid var(--ink); padding: 1rem 0 1.1rem; }
   .nav__col { min-width: 11rem; padding-inline: 1.4rem; }
   .nav__col + .nav__col { border-inline-start: 1px solid var(--rule); }
