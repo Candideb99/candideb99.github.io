@@ -244,6 +244,73 @@ Return JSON: {"queries": ["...", "...", "...", "..."]}`,
  * writer's specific subjects, then, as a newspaper would, a generic illustration of the place,
  * institution or sector. Returns null when nothing suitable exists (the story runs as text).
  */
+/**
+ * The second lock. The chooser's answer is one model's opinion on four thumbnails; before a photo is
+ * attached, a different model re-reads the story against the file's own name, description and
+ * categories and must say RIGHT or GENERIC_OK. Wrong person, wrong country, wrong company, wrong
+ * event → the photo is refused and the story runs as text. This is the audit rubric of 2026-09-22
+ * (37 flagged of 125) made a gate, so it cannot be skipped.
+ */
+async function verifyImage({ image, draft, story, log }) {
+  const user = `STORY (Arabic economics newspaper):
+Headline: ${draft.title}
+Standfirst: ${draft.subtitle ?? ""}
+Lede: ${draft.lede ?? ""}
+Editor's angle: ${story?.angle ?? ""}
+Regions: ${(draft.regions ?? []).join(", ") || "unknown"}
+Search that found the photo: ${image.query ?? ""}
+
+PHOTOGRAPH proposed for it:
+File name: ${image.title ?? ""}
+Description: ${image.description || "(none)"}
+Categories: ${image.categories || "(none)"}
+Date: ${image.date || "(unknown)"}
+
+Judge as a strict picture editor:
+- WRONG_PERSON: an identifiable person (official, politician, executive) who is not one of the story's own people, whatever the setting.
+- WRONG_SUBJECT: a different country or city than the story's, a different company or institution, a different sector, a military vessel or weapon for a non-military story, an object unrelated to the story.
+- STALE_EVENT: a specific past event (a summit, a ceremony, a visit) that the story is not about.
+- GENERIC_OK: a neutral illustration of the story's OWN country, city, institution or sector (its capital's skyline, the named company's building, the sector's typical scene).
+- RIGHT: the story's own people, place or event.
+Return JSON: {"verdict":"RIGHT|GENERIC_OK|STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON","reason":"<one short English sentence>"}`;
+  const { data, model } = await chat({
+    role: "critic",
+    system: "You are a strict newspaper picture editor. Answer with one JSON object only.",
+    user,
+    temperature: 0,
+    maxTokens: 300,
+    timeoutMs: 90000,
+    log,
+    validate: (d) => {
+      if (!d || typeof d.verdict !== "string") throw new Error("verdict missing");
+    },
+  });
+  const verdict = String(data.verdict).toUpperCase();
+  const ok = verdict === "RIGHT" || verdict === "GENERIC_OK";
+  log(`image: second check (${model}) ${verdict}${ok ? "" : " — refused"}: ${String(data.reason ?? "").slice(0, 120)}`);
+  return ok;
+}
+
+/** Chooser plus second lock; a refused photo is excluded and the story goes on without it. */
+async function chooseVerified({ list, inlined, draft, story, log, relaxed, exclude }) {
+  const image = await judge({ list, inlined, draft, story, log, relaxed });
+  if (!image) return null;
+  const chosen = list.find((c) => c.url === image.url) ?? {};
+  let verified = false;
+  try {
+    verified = await verifyImage({ image: { ...chosen, title: chosen.title ?? image.title, query: chosen.query }, draft, story, log });
+  } catch (error) {
+    // No second opinion available: fail closed. A story without a photo is allowed; a wrong photo is not.
+    log(`image: second check failed (${error.message.split("\n")[0]}); photo refused`);
+    verified = false;
+  }
+  if (!verified) {
+    exclude.add(image.url);
+    return null;
+  }
+  return image;
+}
+
 export async function pickImage({ draft, story, log, fallback = true, exclude = new Set() }) {
   const specific = (draft.imageQueries?.length ? draft.imageQueries : []).slice(0, 3);
   if (specific.length) {
@@ -251,7 +318,7 @@ export async function pickImage({ draft, story, log, fallback = true, exclude = 
     if (candidates.length) {
       const s = await shortlist(candidates, log);
       if (s.list.length) {
-        const image = await judge({ ...s, draft, story, log, relaxed: false });
+        const image = await chooseVerified({ ...s, draft, story, log, relaxed: false, exclude });
         if (image) return image;
       }
     } else {
@@ -275,5 +342,12 @@ export async function pickImage({ draft, story, log, fallback = true, exclude = 
   }
   const s = await shortlist(candidates, log);
   if (!s.list.length) return null;
-  return judge({ ...s, draft, story, log, relaxed: true });
+  const image = await chooseVerified({ ...s, draft, story, log, relaxed: true, exclude });
+  if (image) return image;
+  // One more try with the refused photo excluded; after that the story runs as text.
+  const rest = candidates.filter((c) => !exclude.has(c.url));
+  if (!rest.length) return null;
+  const again = await shortlist(rest, log);
+  if (!again.list.length) return null;
+  return chooseVerified({ ...again, draft, story, log, relaxed: true, exclude });
 }

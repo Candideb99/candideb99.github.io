@@ -98,7 +98,7 @@ Judge whether this photograph belongs with this story, as a strict picture edito
 - WRONG_PERSON: the photo shows an identifiable person (a politician, official, executive) who is NOT one of the people the story is about, even if the setting is similar. This is the gravest error.
 - WRONG_SUBJECT: the photo shows a different event, place, company, product or country than the story.
 - STALE_EVENT: the photo depicts a specific past event that the story is not about (an old summit, an old ceremony), not just an old photo of a place.
-- GENERIC_OK: a neutral photo of the right place, institution, sector or object (a skyline, a headquarters, a refinery, an oil tanker, a trading floor) — acceptable.
+- GENERIC_OK: a neutral photo of the right place, institution, sector or object (a skyline, a headquarters, a refinery, an oil tanker, a trading floor) — acceptable. This paper's policy is that a story with no photo of its own event runs a neutral illustration of ITS OWN country, city, institution or sector: the skyline of the story's capital, the headquarters of the company or ministry named, the sector's typical scene. That is GENERIC_OK even when the story is about one specific project, deal or figure. It becomes WRONG_SUBJECT only when the place, company or sector shown is a DIFFERENT one (another country's city, another company's building, a warship on an oil story, a temple on an inflation story).
 - RIGHT: shows the actual people, place or event of the story.
 Return JSON: {"verdict":"RIGHT|GENERIC_OK|STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON","people_in_photo":"<names the file/description implies, or none>","reason":"<one short English sentence>"}`;
   try {
