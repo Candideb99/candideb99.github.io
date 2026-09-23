@@ -124,10 +124,13 @@ export function ungroundedNumbers(text, sources, { ignoreYears = true } = {}) {
   for (const n of pool) {
     const value = Number(n);
     if (!Number.isFinite(value)) continue;
-    // Allow common unit conversions: 4,000 -> "4" (آلاف), 1,700,000,000 -> 1.7 (مليار)
+    // Allow common unit conversions: 4,000 -> "4" (آلاف), 1,700,000,000 -> 1.7 (مليار); and, for a count of
+    // 10,000 or more, the desks' own rounding in thousands or millions (455,758 -> «نحو 456 ألف», 455.8 ألف).
     for (const divisor of [1e3, 1e6, 1e9, 1e12]) {
       const scaled = value / divisor;
-      if (scaled >= 1 && Number.isInteger(scaled * 100)) expanded.add(String(Number(scaled.toFixed(2))));
+      if (scaled < 1) continue;
+      if (Number.isInteger(scaled * 100)) expanded.add(String(Number(scaled.toFixed(2))));
+      if (Math.abs(value) >= 10000) for (const digits of [0, 1, 2]) expanded.add(String(Number(scaled.toFixed(digits))));
     }
     if (Number.isInteger(value * 10)) expanded.add(String(value));
     // Rounding to a whole or to one decimal is reporting, not alteration (108.44 -> 108 or 108.4).

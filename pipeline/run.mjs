@@ -39,6 +39,8 @@ const option = (name, fallback) => {
   return hit ? hit.slice(name.length + 3) : fallback;
 };
 const DRY_RUN = flag("dry-run");
+/** `--dry-run --preview=DIR`: what the run would publish is written to DIR instead, to be read first. */
+const PREVIEW_DIR = DRY_RUN ? option("preview", null) : null;
 /** `--draft`: write every article with `draft: true`, so nothing reaches the site until the editor publishes it from the desk. */
 const DRAFT = flag("draft");
 const MODE = option("mode", "news");
@@ -190,17 +192,37 @@ const usedImages = (existing) => new Set(existing.map((a) => a.imageUrl).filter(
  * (the owner's rule: no literal translations) and its guard keeps every figure and name intact. A
  * desk failure never blocks a story; the draft simply goes on as written.
  */
-async function copyDeskPass(draft, { includeBody = true, kind = "news", sources = [] } = {}) {
+async function copyDeskPass(draft, { includeBody = true, kind = "news", sources = [], problems = [] } = {}) {
   try {
     // The names the sources go by, so the checker can count a source named in sentence after sentence.
     const names = sources.flatMap((s) => [s.sourceName ?? s.name, s.sourceNameEn ?? s.nameEn]).filter(Boolean);
-    const desk = await copyEdit({ draft, includeBody, role: "desk", kind, sources: names, log });
+    const desk = await copyEdit({ draft, includeBody, role: "desk", kind, sources: names, problems, log });
     if (desk.changed) log(`desk "${desk.draft.title}": rewrote ${desk.applied.join(", ")}${desk.rejected.length ? `; refused ${desk.rejected.map((r) => `${r.field} (${r.reason})`).join(", ")}` : ""}`);
     return desk;
   } catch (error) {
     log(`desk skipped: ${String(error.message).slice(0, 140)}`);
     return { draft, changed: false, model: null };
   }
+}
+
+/**
+ * What only a writer can mend: a figure the sources do not carry, a missing structure, too little story, a
+ * repeat of a published one. Every other fault still blocking a finished draft is the copy desk's trade (a
+ * stock phrase, a lede over 45 words, an English word left behind, a passage too close to its Arabic source),
+ * and a desk mends the sentence; it does not throw the story away. In the 24 runs before 2026-09-24, 19
+ * drafts were rejected at this point against 30 published, most for one phrase («من قبل»، «يُعتبر») or a
+ * lede a few words too long, each after the writer, the desk and the critic had already been paid for.
+ */
+const WRITERS_FAULT = /أرقام لا تظهر في المصادر|نسبة النص العربي منخفضة|قصير جداً|ناقصة؛ العناوين الفرعية|العنوان مكرر لمقال|تكرر مقالاً منشوراً|يقارن بين ما أوردته المصادر/;
+
+/** One more desk pass on a revised draft whose remaining faults are all the desk's trade; the checks run again after it. */
+async function lastDeskPass(draft, checks, { sources, kind = "news", recheck }) {
+  if (checks.ok || checks.issues.some((i) => WRITERS_FAULT.test(i))) return { draft, checks };
+  log(`last desk pass for ${checks.issues.length} fault(s): ${checks.issues.map((i) => i.slice(0, 60)).join(" | ")}`);
+  const desk = await copyDeskPass(draft, { includeBody: true, kind, sources, problems: checks.issues });
+  const again = recheck(desk.draft);
+  log(`last desk pass: ${again.ok ? "clean" : `still ${again.issues.length} fault(s)`}`);
+  return { draft: desk.draft, checks: again };
 }
 
 async function produceStory({ story, candidates, existing, recentTitles, models, report }) {
@@ -269,6 +291,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     writerModel = `${writerModel} → ${revision.model}`;
     revised = true;
     checks = programmaticChecks(draft, sources, { recentTitles });
+    ({ draft, checks } = await lastDeskPass(draft, checks, { sources, recheck: (d) => programmaticChecks(d, sources, { recentTitles }) }));
     if (!checks.ok) {
       entry.outcome = `rejected after revision: ${checks.issues.join(" | ")}`;
       report.push(entry);
@@ -313,9 +336,10 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   entry.score = review.score;
   entry.image = image ? "photo" : "cover-art";
   report.push(entry);
-  if (!DRY_RUN) {
-    await mkdir(ARTICLES_DIR, { recursive: true });
-    await writeFile(path.join(ARTICLES_DIR, `${slug}.md`), markdown);
+  if (!DRY_RUN || PREVIEW_DIR) {
+    const dir = PREVIEW_DIR ?? ARTICLES_DIR;
+    await mkdir(dir, { recursive: true });
+    await writeFile(path.join(dir, `${slug}.md`), markdown);
   }
   log(`${DRAFT ? "drafted" : "published"} "${draft.title}" -> ${slug}${DRY_RUN ? " (dry-run)" : ""}`);
   return { slug, items, title: draft.title };
@@ -467,6 +491,7 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
     writerModel = `${writerModel} → ${revision.model}`;
     revised = true;
     checks = programmaticChecks(draft, checkSources, { ...flags, recentTitles });
+    ({ draft, checks } = await lastDeskPass(draft, checks, { sources: checkSources ?? [], kind: deskKind, recheck: (d) => programmaticChecks(d, checkSources, { ...flags, recentTitles }) }));
     if (!checks.ok) {
       entry.outcome = `rejected after revision: ${checks.issues.join(" | ")}`;
       report.push(entry);
@@ -495,9 +520,10 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
     models: { editor: models.editor, writer: writerModel, critic: finalReview.model, vision: image?.model ?? null, desk: deskModel },
     quality: { score: finalReview.score, verdict: finalReview.verdict, revised, warnings: checks.warnings, criticSummary: finalReview.summary },
   });
-  if (!DRY_RUN) {
-    await mkdir(ARTICLES_DIR, { recursive: true });
-    await writeFile(path.join(ARTICLES_DIR, `${slug}.md`), markdown);
+  if (!DRY_RUN || PREVIEW_DIR) {
+    const dir = PREVIEW_DIR ?? ARTICLES_DIR;
+    await mkdir(dir, { recursive: true });
+    await writeFile(path.join(dir, `${slug}.md`), markdown);
   }
   entry.outcome = "published";
   entry.slug = slug;

@@ -14,7 +14,10 @@ const HOUSE_STYLE = `HOUSE STYLE (the practice of the Arabic economics desks: ا
 - ATTRIBUTION in the desks' forms: «قال X في بيان/مقابلة إن» (always إن after قال), «وأضاف»، «وأوضح»، «وأشار إلى أن»، «وفق بيانات صدرت الخميس»، «بحسب رويترز»، «نقلاً عن». Name each source once, where its information first enters; after that the reporting verb («وأضاف») or one attribution at the head of the paragraph carries it. At most one attribution in a paragraph, never twice for the same source, never two sentences in a row tagged «وفقاً لـ/بحسب», never «وفقاً للمصدر نفسه», never one outlet more than three times in a story; a market price needs its source once. «أكد» takes an object, never «أكد على». «كشف» only for something that was hidden.
 - EXPECTATIONS are always someone's: «يتوقع المجلس أن»، «ترجّح الأسواق»، «مرشح لـ»، «من المرجح بحسب». Never a floating forecast.
 - ATTRIBUTE every claim to its source; never present a source's claim as your own knowledge.
-- Keep every number, date and name exactly as in the sources. Never invent, estimate, round differently, or extrapolate. If a figure is missing, say the source did not disclose it.
+- SOURCES THE WAY A WIRE DESK USES THEM. A fact is attributed to where it comes from: the institution, company or official that announced it, the body that published the data, or the news agency that reported it (رويترز، بلومبرغ، فرانس برس، أسوشيتد برس، الأناضول). A newspaper, channel or website is named only for what it alone reports (its interview, its own sources, its exclusive, its own tally or analysis), never as the source of a public fact such as a decision, a published figure or a market price. An Arab outlet (الشرق الأوسط، الجزيرة، العربية، سكاي نيوز عربية، اندبندنت عربية، البورصة، بي بي سي عربي) is not cited at all except for its own exclusive: the Arab desks do not quote one another for public facts. Give the institution or agency behind the report, or no tag when the fact is public («رفع الاحتياطي الفيدرالي الفائدة الأسبوع الماضي»).
+- WHEN SOURCES DISAGREE on a figure (prices and yields are quoted at different times of the session): report one figure, the latest-timed or the one the institution itself published, with its time when the source gives it («في أواخر التعاملات»). Never tell the reader that sources differ, and never compare what outlets reported («أوردت … أرقاماً أدنى»).
+- Keep every number, date and name exactly as in the sources. Never invent, estimate, round differently, or extrapolate; the one rounding allowed is the desks' own for large counts in the headline, dek and lede (below). If a figure is missing, say the source did not disclose it.
+- LARGE COUNTS as the desks write them: in the headline, the dek and the lede a count or amount of 10,000 or more is written in thousands, millions or billions («نحو 456 ألف مستثمر» for 455,758; «1.5 مليون برميل يومياً»; «18.3 مليار دولار»), never as a long run of digits; the exact figure, when it matters, appears once in the body. Index levels keep their digits («51721 نقطة»).
 - TEXTURE: one idea per sentence, no sentence over 35 words; paragraphs of one to three sentences; concrete nouns (البرميل، الأونصة، العقود الآجلة، نقطة أساس، الجلسة، الإغلاق، المكاسب الأسبوعية؛ «المعاملات الفورية» only for spot prices, never for futures); active voice unless the agent is unknown.
 - ARABIC SENTENCES, NOT ENGLISH ONES IN ARABIC WORDS. Open with the verb. Never chain more than three nouns in an إضافة; turn the rest into a verb clause. "Whether" is «هل», never «ما إذا كان»; "in terms of" becomes a verb, never «من حيث»; "was set to" is «كان مقرراً أن», never «كان سيـ»; "as a" is «بوصفه» or a rephrase, never «كـ» + noun; «بشكل/بصورة» + adjective becomes the adverb or the figure; «يتم/تم» + verbal noun becomes the verb. An abstract noun never judges (never «ويرجّح التباين أن»): name who judges.
 - IDIOMS AND TRADE TERMS: translate what they mean, never their words (industrial-scale, crown jewels, at the pump, guardrails, choke point, ground stop, term contracts, lagged effects, surprisingly strong, intraday, grounded, "Senator X of Alaska" = «السيناتور عن ألاسكا»). Use the term the Arab business desks use, or say plainly what happened; if a phrase needs a sentence to explain it, the phrase is wrong.
@@ -46,7 +49,7 @@ const ANALYST_SYSTEM = `You are the senior analyst of خازندار (Khazendar)
 ${HOUSE_STYLE}`;
 
 const SCHEMA_TEXT = `{
-  "title": "Arabic headline, 35-80 characters, ONE idea (never chain two or three developments with و), specific, contains the key fact or number, no colon-tricks, no clickbait",
+  "title": "Arabic headline, 35-80 characters, ONE idea (never chain two or three developments with و), specific, contains the key fact or number (a large count in thousands or millions, «456 ألف مستثمر», never a run of digits such as 455758), no colon-tricks, no clickbait",
   "subtitle": "Arabic dek: one statement (max 160 chars) carrying the second most important fact, a detail in neither the headline nor the lede; never a figure the lede gives, never a second development added with فيما/بينما, never a how/why/what list",
   "slug": "english-kebab-case-slug-4-to-7-words",
   "lede": "Opening paragraph: 2-3 sentences with the core news, the who/what/when, and the main number",
@@ -147,7 +150,7 @@ SOURCE MATERIAL
 ${sources.map(sourceBlock).join("\n\n")}
 
 TASK
-Extract the desk notes for this ONE event (the working headline). 8 to 20 facts, each one Arabic sentence of at most 30 words in your own words (never a sentence copied from an Arabic source), with the figure, its unit, the date and the actor exactly as the source gives them, and the number of the source it comes from; a figure appears only with its own period and unit. Attribution words belong in the fact («قال المصرف في بيان إن…», «بحسب بيانات المكتب…»). Leave out everything that is a different event, a background fact from memory, or an interpretation. Then list up to three verbatim quotations only if the source is Arabic (Arabic text copied exactly); for other languages, no quotations.
+Extract the desk notes for this ONE event (the working headline). 8 to 20 facts, each one Arabic sentence of at most 30 words in your own words (never a sentence copied from an Arabic source), with the figure, its unit, the date and the actor exactly as the source gives them, and the number of the source it comes from; a figure appears only with its own period and unit. Attribution words belong in the fact («قال المصرف في بيان إن…», «بحسب بيانات المكتب…»): a public fact (a decision, a published figure, a price) names the institution, company or news agency behind it, never the outlet that relayed it; an outlet is named only for what it alone reports (its own sources, interview or exclusive). When two sources give different figures for the same measure, keep ONE fact: the latest-timed, or the one the institution itself published, with its time if the source gives it; never both. Leave out everything that is a different event, a background fact from memory, or an interpretation. Then list up to three verbatim quotations only if the source is Arabic (Arabic text copied exactly); for other languages, no quotations.
 Return: {"event":"<one Arabic sentence naming the one event>","facts":[{"fact":"<sentence>","source":<source number>}],"quotes":[{"text":"<verbatim Arabic>","source":<source number>}]}`;
   try {
     const { data, model } = await chat({
@@ -269,9 +272,11 @@ Return the complete corrected article as one JSON object with the same keys as b
 }
 
 export function normalizeDraft(d) {
+  // A figure without a label says nothing in the box, and the checker refused the whole story for one
+  // (2026-09-23: a gas-supply story scored 8 was thrown away after its revision); the figure is dropped instead.
   const keyFacts = (Array.isArray(d.key_facts) ? d.key_facts : [])
     .map((f) => (typeof f === "string" ? { label: "", value: f } : { label: String(f.label ?? "").trim(), value: String(f.value ?? "").trim() }))
-    .filter((f) => f.value)
+    .filter((f) => f.value && f.label)
     .slice(0, 6);
   return {
     title: String(d.title).trim(),

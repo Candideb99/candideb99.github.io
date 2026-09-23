@@ -93,6 +93,19 @@ verbal noun. No "!", no teaser, no تعرف على, no question headline for new
 **Marks.** Western digits; pan-Arab month names; % after the figure; the Arabic comma (،); «» for
 quotations and foreign brand names; tanween on the alef (اً).
 
+**Sources, the way a wire desk uses them** (added 2026-09-24, from the same day's stories read beside
+الشرق الأوسط's economy desk; the owner asked whether an automated site can reach its level). A fact is
+attributed to where it comes from: the institution, company or official that announced it, the body that
+published the data, or the agency that reported it (رويترز، بلومبرغ، الأناضول). A newspaper, channel or
+website is named only for what it alone reports (its interview, its sources, its exclusive, its own tally).
+The Arab desks do not cite one another for public facts: «بحسب «الشرق الأوسط»» on the Fed's own hike or the
+OECD's own forecast is gone (12 of 133 stories carried one). When sources disagree on a figure, the story
+prints one, the latest or the institution's own, never the disagreement («أما «الشرق الأوسط» فأوردت أرقاماً
+أدنى» ran once). **Large counts** in the headline, dek and lede are written as the desks write them:
+«نحو 456 ألف مستثمر», never «455758 مستثمراً»; the exact figure goes once in the body, and index levels keep
+their digits. The checks are in `pipeline/lib/style.mjs`; the copy desk's guard accepts the rounding
+(`roundingsOf()`) and lets an Arab outlet's tag leave the story (`ARAB_OUTLET_NAMES`).
+
 **Captions** (added 2026-09-23, the owner: "a human writer would not describe the sky"). A photo caption
 names; it does not paint. Three to ten words, a noun phrase: what the photograph shows and, when the file
 itself says so, where (مصفاة نفط في هيوستن بولاية تكساس الأميركية؛ مقر بورصة نيويورك في وول ستريت؛
@@ -116,6 +129,15 @@ must say what is new. Hard limits in `pipeline/run.mjs`: at most four stories a 
 stories in any 24 hours (`KHAZENDAR_DAILY_CAP`); `pipeline/lib/verify.mjs` rejects a story whose
 headline shares half its content words with one published in the last four days, so the same rate
 rise cannot run twice under two headlines. Explainers and analyses are one a day each.
+
+A finished story is mended, not thrown away (2026-09-24). In the 24 runs before that day, 19 drafts were
+rejected after their revision against 30 published, most for one stock phrase or a lede a few words long,
+after the writer, the desk and the critic had been paid for. Now a revised draft whose remaining faults are
+all the desk's trade (a phrase, a long sentence, an English word left behind, a passage too close to its
+Arabic source) takes one more desk pass with those faults named, and the checks run again; only what a
+writer must mend (a figure the sources lack, a missing structure, too little story, a repeat) still rejects
+it (`WRITERS_FAULT` and `lastDeskPass()` in `pipeline/run.mjs`). A key figure without a label is dropped
+from the box instead of costing the story.
 
 ## 3. The register of media Arabic (لغة وسائل الإعلام)
 

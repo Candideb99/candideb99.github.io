@@ -90,6 +90,19 @@ export const BANNED = [
   { re: /(?<![؀-ۿ])(?:و|ف)?بتاريخ(?![؀-ۿ])/g, fix: "اليوم أو الشهر مباشرة («الجمعة»، «في 19 سبتمبر»)", hard: true },
 ];
 
+/**
+ * Arab news outlets as a story names them between «». The desks do not cite one another for public facts, so
+ * the checker flags such a tag and the copy desk's guard lets it leave the story: a tag is not a fact.
+ */
+export const ARAB_OUTLET_NAMES = ["الشرق الأوسط", "الجزيرة", "الجزيرة نت", "العربية", "العربية نت", "سكاي نيوز عربية", "اندبندنت عربية", "البورصة", "بي بي سي عربي", "الشرق بلومبرغ", "العربي الجديد"];
+
+/**
+ * Faults only a writer with the sources in hand can mend. Asked to stop comparing two outlets' figures, the copy
+ * desk (which sees the draft, not the sources, and must keep every figure) kept both and invented a time for the
+ * second set («وعند التسوية»، 2026-09-24). Choosing between sources is the writer's job; the desk is never asked.
+ */
+export const WRITER_ONLY = /يقارن بين ما أوردته المصادر/;
+
 /** What «لماذا يهمّ» must never say: the region as a formula, the reader addressed, a chain of maybes. */
 const BOX_BANNED = /القارئ العربي|للقارئ العربي|للمواطنين العرب|(?<![؀-ۿ])يجب على|بما في ذلك الشرق الأوسط|المنطقة العربية الأوسع|ما قد يعيد تشكيل/g;
 const BOX_OPENER = /^(?:و|ف)?(?:يعكس|تعكس|يمثل|تمثل|يُمثّل|يُعدّ|يعد|تعد|تُعد|يُعد)(?![؀-ۿ])/;
@@ -203,6 +216,33 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
     const count = storyText.split(name).length - 1;
     if (count > 3) issues.push(`المصدر «${name}» مذكور ${count} مرات؛ اذكره مرة حيث تدخل معلومته، ولا يُذكر مصدر واحد أكثر من ثلاث مرات.`);
   }
+
+  // --- beside الشرق الأوسط's economy desk, 2026-09-24 (the owner: "can we reach its sophistication level and
+  // high quality editorial output?"): the same day's stories read side by side. Three habits no desk has. ---
+
+  // Sources that disagree are the desk's problem, never the reader's. The Treasury-yields story printed «أما
+  // «الشرق الأوسط» فأوردت أرقاماً أدنى للجلسة نفسها»: one figure, the latest-timed or the institution's own.
+  const compared = prose.match(/(?:أوردت|أورد|رصدت|رصد|ذكرت|ذكر|نقلت|نشرت|أعطت|قدمت|قدّمت)\s+[^.؟!\n]{0,60}?(?:أرقاماً|أرقام|رقماً|تقديرات|قراءات|أسعاراً)\s+(?:أدنى|أعلى|أقل|أكبر|مختلفة|مغايرة)|(?:تباينت|تختلف|اختلفت|تتباين|تفاوتت)\s+(?:الأرقام|التقديرات|المصادر|القراءات|البيانات)\s+(?:بين|في)/g) ?? [];
+  if (compared.length) issues.push(`المقال يقارن بين ما أوردته المصادر («${compared[0].slice(0, 50)}…»)؛ الصحف لا تعرض اختلاف المصادر على القارئ: رقم واحد، الأحدث توقيتاً أو الصادر عن الجهة نفسها، مع توقيته إن ذكره المصدر.`);
+
+  // The Arab desks do not quote one another for public facts: a rate decision, a published figure or a price is
+  // the institution's or the agency's, and an Arab outlet is named only for its own exclusive (its sources, its
+  // interview). The same story tagged the Fed's own hike «بحسب «الشرق الأوسط»».
+  if (news) {
+    const ARAB_OUTLET = new RegExp(`«(?:${ARAB_OUTLET_NAMES.join("|")})»|(?<![؀-ۿ])(?:سكاي نيوز عربية|اندبندنت عربية|بي بي سي عربي|الجزيرة نت|قناة الجزيرة|قناة العربية|العربية نت)(?![؀-ۿ])`);
+    const EXCLUSIVE = /مصادر|مقابلة|حوار|تصريحات|علمت|اطلعت|حصلت|انفردت|لـ\s?«|(?<![؀-ۿ])ل«/;
+    const cited = sentencesOf(`${lede}\n${body}\n${box}`).filter((s) => ARAB_OUTLET.test(s) && !EXCLUSIVE.test(s));
+    if (cited.length) issues.push(`وسيلة إعلام عربية مذكورة مصدراً لواقعة عامة («${cited[0].slice(0, 60)}…»)؛ الصحف العربية لا ينقل بعضها عن بعض الوقائع العامة: احذف اسم الوسيلة وانسب الواقعة إلى الجهة التي أعلنتها أو إلى الوكالة إن ذكرها المقال أو المصدر، أو اتركها بلا إسناد إن كانت علنية، ولا تخترع مصدراً؛ ولا تُسمّى الوسيلة إلا لما انفردت به (مصادرها، مقابلتها).`);
+  }
+
+  // Large counts the way the desks write them in the headline, the dek and the lede: «نحو 456 ألف مستثمر», never
+  // «455758 مستثمراً» (the Turkish-funds story, beside الشرق الأوسط's «… يمتد إلى 456 ألف مستثمر»). Index levels keep their digits.
+  const longCounts = (text) =>
+    [...normalizeDigits(String(text ?? "")).matchAll(/(?<![\d.,])(\d{1,3}(?:,\d{3})+|\d{5,})(?![\d.,])(?!\s*(?:نقطة|نقاط))/g)]
+      .map((m) => m[1])
+      .filter((n) => Number(n.replace(/,/g, "")) >= 10000);
+  const headCounts = [...new Set([title, dek, lede].flatMap(longCounts))];
+  if (headCounts.length) issues.push(`رقم كبير بخاناته كاملة في العنوان أو الوصف أو المقدمة («${headCounts[0]}»)؛ الصحف تكتبه بالآلاف أو الملايين («نحو 456 ألف مستثمر»، «1.5 مليون برميل»)، والرقم الكامل مرة واحدة في المتن إن لزم.`);
 
   // Straight quotation marks carry translated speech; the house reports it.
   const straight = prose.match(/"[^"\n]{2,}"|'[^'\n]{2,}'/g) ?? [];

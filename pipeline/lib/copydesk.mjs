@@ -16,7 +16,7 @@
  */
 import { chat } from "./llm.mjs";
 import { arabicRatio, normalizeDigits } from "./util.mjs";
-import { BANNED, contentWords, styleIssues } from "./style.mjs";
+import { ARAB_OUTLET_NAMES, BANNED, WRITER_ONLY, contentWords, styleIssues } from "./style.mjs";
 
 export const DESK_SYSTEM = `You are the Arabic copy desk (محرر الصياغة) of خازندار, an Arabic economics news website (online only, never a newspaper) for educated readers across the Arab world. A correspondent who thinks in English wrote the draft; you make it read as if a native Arabic news editor wrote it, in clear Modern Standard Arabic (فصحى معاصرة) in the register of الشرق الأوسط and الاقتصادية. Translated words are half of what gives a draft away; the other half is structure, repetition and rhythm.
 
@@ -121,6 +121,32 @@ function numberTokens(text) {
   return [...digits, ...words];
 }
 /**
+ * The desks' rounding of a large count: «نحو 456 ألف مستثمر» for 455758 (beside الشرق الأوسط's economy desk,
+ * 2026-09-24). For every figure of 10,000 or more a story has, its value in thousands, millions or billions to
+ * at most two decimals, each mapped to the figure it rounds. A rewrite may write one with its scale word
+ * (ألف، مليون، مليار), and the rounding carries its figure: that is reporting, not a changed fact.
+ */
+function roundingsOf(numbers) {
+  const out = new Map();
+  for (const n of numbers) {
+    const v = Number(n);
+    // A scale word's own token («مليار» is "1000000000") is not a figure to round: it would make "1000" known.
+    if (!Number.isFinite(v) || v < 10000 || SCALE_TOKENS.has(n)) continue;
+    for (const d of [1e3, 1e6, 1e9]) {
+      const s = v / d;
+      if (s < 1) continue;
+      for (const k of [0, 1, 2]) {
+        const r = String(Number(s.toFixed(k)));
+        if (!out.has(r)) out.set(r, n);
+      }
+    }
+  }
+  return out;
+}
+/** The tokens a scale word leaves (ألف is "1000"; the plurals have no single value). */
+const SCALE_TOKENS = new Set(["1000", "1000000", "1000000000", "1000000000000", "آلاف", "ملايين", "مليارات", "تريليونات"]);
+
+/**
  * A Latin token the guard protects is a name, a ticker, an acronym or a unit: it carries a capital
  * letter or a digit, or it is short. An all-lowercase English word of four letters or more (outlook,
  * total, know-how) is never a fact — it is a word the writer failed to translate — so the desk is
@@ -132,11 +158,14 @@ function latinTokens(text) {
     .filter((w) => !/^[a-z][a-z-]{3,}$/.test(w))
     .map((w) => w.toLowerCase());
 }
-/** The short «…» spans of a text: company, brand and programme names the story must keep. */
+/**
+ * The short «…» spans of a text: company, brand and programme names the story must keep. An Arab outlet's name
+ * is a source tag, not a fact, and may leave (the desks do not cite one another for public facts, 2026-09-24).
+ */
 function quotedNames(text) {
   return [...String(text ?? "").matchAll(/«([^«»\n]{1,40})»/g)]
     .map((m) => m[1].trim())
-    .filter((n) => n && n.split(/\s+/).length <= 4 && !BANNED.some((r) => r.hard && n.match(r.re)));
+    .filter((n) => n && n.split(/\s+/).length <= 4 && !BANNED.some((r) => r.hard && n.match(r.re)) && !ARAB_OUTLET_NAMES.includes(n));
 }
 const dualsOf = (text) => [...String(text ?? "").matchAll(DUALS)].map((m) => m[1]);
 
@@ -250,6 +279,10 @@ export function judgeRewrite(draft, proposal, fields, { year = new Date().getUTC
   // The body may shrink by what repeats, never below 55% of itself unless the caller lowers that floor for a
   // story that is nearly all repetition (pipeline/copydesk.mjs --floor=…, reviewed by hand).
   const floor = minFloor < 0.55 ? minFloor : Math.max(0.55, Math.min(0.8, 1 - repeatedShare(draft) - 0.05));
+  // A large count rounded the desks' way (455758 → «نحو 456 ألف») is the same fact; a scale word comes with it.
+  const rounded = roundingsOf(had.numbers);
+  // (a rounding may coincide with a figure the story has: «50 ألفاً في المئة» for 50000% beside «نحو 50 من أسهمه»)
+  const known = (t, tokens) => had.numbers.has(t) || rounded.has(t) || (SCALE_TOKENS.has(t) && tokens.some((x) => rounded.has(x)));
   const accepted = {};
   const rejected = [];
   for (const f of fields) {
@@ -260,7 +293,8 @@ export function judgeRewrite(draft, proposal, fields, { year = new Date().getUTC
       if (local.reason !== "unchanged") rejected.push({ field: f, reason: local.reason, proposal: f === "body" ? undefined : after });
       continue;
     }
-    const invented = [...numberTokens(after).filter((t) => !had.numbers.has(t)), ...latinTokens(after).filter((t) => !had.latin.has(t)), ...dualsOf(after).filter((t) => !had.duals.has(t))];
+    const tokens = numberTokens(after);
+    const invented = [...tokens.filter((t) => !known(t, tokens)), ...latinTokens(after).filter((t) => !had.latin.has(t)), ...dualsOf(after).filter((t) => !had.duals.has(t))];
     if (invented.length) {
       rejected.push({ field: f, reason: `numbers changed (${[...new Set(invented)].slice(0, 4).join("، ")})`, proposal: f === "body" ? undefined : after });
       continue;
@@ -274,8 +308,9 @@ export function judgeRewrite(draft, proposal, fields, { year = new Date().getUTC
     const nums = new Set(numberTokens(now));
     const latin = new Set(latinTokens(now));
     const duals = new Set(dualsOf(now));
+    const roundedNow = new Set([...rounded].filter(([r]) => nums.has(r)).map(([, n]) => n));
     const lost = [
-      ...[...had.numbers].filter((t) => !nums.has(t) && t !== String(year)).map((t) => ["number", t]),
+      ...[...had.numbers].filter((t) => !nums.has(t) && t !== String(year) && !roundedNow.has(t)).map((t) => ["number", t]),
       ...[...had.latin].filter((t) => !latin.has(t)).map((t) => ["latin", t]),
       ...[...had.duals].filter((t) => !duals.has(t)).map((t) => ["dual", t]),
       ...had.names.filter((n) => !now.includes(n)).map((n) => ["name", n]),
@@ -338,8 +373,10 @@ export function fixNames(text) {
  * Runs the desk over a draft. Returns { draft, changed, applied, rejected, changes, model }.
  * `draft` has title, subtitle, lede, whyItMatters and body (Markdown); only the fields the guard accepts change.
  * `sources`: the names the story's sources go by, so the checker can count how often each is named.
+ * `problems`: faults found by checks the desk's own checker does not run (the newsroom's last pass hands over
+ * what still blocks a finished story: a passage copied from an Arabic source, an English word left behind).
  */
-export async function copyEdit({ draft, includeBody = false, role = "desk", kind = "news", sources = [], publishedAt = null, minFloor = 0.55, log = () => {} }) {
+export async function copyEdit({ draft, includeBody = false, role = "desk", kind = "news", sources = [], problems: handed = [], publishedAt = null, minFloor = 0.55, log = () => {} }) {
   const year = new Date(publishedAt ?? Date.now()).getUTCFullYear();
   const fields = ["title", "subtitle", "lede", ...(String(draft.whyItMatters ?? "").trim() ? ["whyItMatters"] : []), ...(includeBody ? ["body"] : [])];
   const mechanical = [];
@@ -355,7 +392,8 @@ export async function copyEdit({ draft, includeBody = false, role = "desk", kind
   const input = Object.fromEntries(fields.map((f) => [f, draft[f] ?? ""]));
   // Without the body in hand the desk cannot act on the body's faults, so the checker reads only what it may rewrite.
   const found = styleIssues(input, { kind, sources });
-  const problems = [...found.issues, ...found.warnings].slice(0, 14);
+  // A fault that needs the sources (which outlet's figure stands) is the writer's; the desk would invent a way round it.
+  const problems = [...new Set([...handed.map(String), ...found.issues, ...found.warnings])].filter((p) => !WRITER_ONLY.test(p)).slice(0, 14);
   const user = `${EXAMPLES}
 ${problems.length ? `
 PROBLEMS THE CHECKER FOUND IN THIS DRAFT (fix every one):
