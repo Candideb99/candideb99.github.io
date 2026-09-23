@@ -1,13 +1,17 @@
 ---
+/**
+ * The sources under an article, and the note that it was written by machine from them alone. The
+ * models that wrote it stay in the article's data but are not printed: the owner, 2026-09-23,
+ * «remove such things from the news "النماذج: claude-cli, nex-agi/nex-n2.5-pro"».
+ */
 import { formatShortDate } from "@lib/format";
 
 interface Props {
   /** `url` is empty for an internal source whose article has since been retired: it is named, not linked. */
   sources: { name: string; nameEn?: string; title: string; url: string; publishedAt?: string | null; lang?: string }[];
-  models?: Record<string, string | null> | undefined;
   explainer?: boolean;
 }
-const { sources, models, explainer = false } = Astro.props;
+const { sources, explainer = false } = Astro.props;
 function host(url: string) {
   try {
     return new URL(url).hostname.replace(/^www\./, "");
@@ -15,11 +19,6 @@ function host(url: string) {
     return "";
   }
 }
-const modelList = Object.values(models ?? {})
-  .filter((m): m is string => Boolean(m))
-  .flatMap((m) => m.split("→").map((s) => s.trim()))
-  .map((m) => m.replace(/:free$/, ""))
-  .filter((m, i, arr) => arr.indexOf(m) === i);
 ---
 
 <section class="sources" aria-labelledby="sources-title">
@@ -51,9 +50,6 @@ const modelList = Object.values(models ?? {})
       ? "كُتب هذا الشرح آلياً بنماذج لغوية ثم رُوجع ببرنامج تدقيق مستقل. "
       : "كُتب هذا المقال آلياً استناداً إلى المصادر أعلاه حصراً، ورُوجعت وقائعه وأرقامه ببرنامج تدقيق مستقل قبل النشر. "}
     عند أي تعارض يُعتدّ بالمصدر الأصلي.
-    {modelList.length > 0 && (
-      <span class="sources__models"> النماذج: <bdi dir="ltr">{modelList.join(", ")}</bdi></span>
-    )}
   </p>
 </section>
 
@@ -69,9 +65,8 @@ const modelList = Object.values(models ?? {})
     border-top: 1px solid var(--rule);
   }
   .sources__item:first-child { border-top: 0; }
-  .sources__name { font-weight: 700; font-size: 0.86rem; color: var(--green); white-space: nowrap; }
+  .sources__name { font-weight: 700; font-size: var(--fs-sm); color: var(--green); white-space: nowrap; }
   .sources__title { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--ink); overflow-wrap: anywhere; }
-  .sources__host { grid-column: 2; display: flex; gap: 0.6rem; font-size: 0.78rem; color: var(--ink-3); }
-  .sources__none, .sources__note { font-family: var(--font-ui); font-size: 0.86rem; line-height: 1.6; color: var(--ink-3); margin-top: 0.9rem; }
-  .sources__models { display: block; margin-top: 0.2rem; }
+  .sources__host { grid-column: 2; display: flex; gap: 0.6rem; font-size: var(--fs-xs); color: var(--ink-3); }
+  .sources__none, .sources__note { font-family: var(--font-ui); font-size: var(--fs-sm); line-height: 1.6; color: var(--ink-3); margin-top: 0.9rem; }
 </style>

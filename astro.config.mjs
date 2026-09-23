@@ -2,11 +2,13 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import site from "./src/data/site.json" with { type: "json" };
 import rehypeIsolateNumbers from "./src/lib/rehype-isolate-numbers.mjs";
+import rehypeTopicLinks from "./src/lib/rehype-topic-links.mjs";
 
 export default defineConfig({
   site: site.url,
   markdown: {
-    rehypePlugins: [rehypeIsolateNumbers],
+    // Topic links first: the figure isolation leaves the inside of a link alone.
+    rehypePlugins: [rehypeTopicLinks, rehypeIsolateNumbers],
   },
   output: "static",
   trailingSlash: "always",

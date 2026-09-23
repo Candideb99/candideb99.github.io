@@ -29,3 +29,16 @@ export function getSection(id: string): Section {
 export function sectionHref(id: string): string {
   return `/${id}/`;
 }
+
+/** "المزيد من …" and "كل …" as a reader says them: تحليلات is not a definite noun, so the hubs
+ *  cannot take the pattern the news sections take («المزيد من تحليلات» read as a slip). */
+const HUB_PHRASES: Record<string, { more: string; all: string }> = {
+  analysis: { more: "المزيد من التحليلات", all: "كل التحليلات" },
+  explainers: { more: "المزيد من مدخل إلى الاقتصاد", all: "كل مواد مدخل إلى الاقتصاد" },
+};
+export function moreLabel(id: string): string {
+  return HUB_PHRASES[id]?.more ?? `المزيد من ${getSection(id).name}`;
+}
+export function allLabel(id: string): string {
+  return HUB_PHRASES[id]?.all ?? `كل أخبار ${getSection(id).name}`;
+}

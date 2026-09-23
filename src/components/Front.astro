@@ -2,8 +2,8 @@
 /**
  * The front page under the cover, laid out like a newsroom's site: three ruled columns: the day's
  * digest at the start (الأخبار في سطور: one sentence per story, the way the Journal's What's News
- * runs), two secondary stories over the editor's picks in the centre, and the day's chart and
- * figures at the end.
+ * runs), two secondary stories over the editor's picks in the centre, and the numbers at the end:
+ * the market box, the day's chart, its figures and the agenda.
  */
 import type { Article } from "@lib/articles";
 import { articleHref } from "@lib/articles";
@@ -13,6 +13,7 @@ import { excerpt, timeAgo } from "@lib/format";
 import StoryCard from "./StoryCard.astro";
 import Chart from "./Chart.astro";
 import Agenda from "./Agenda.astro";
+import MarketBoard from "./MarketBoard.astro";
 
 interface Figure {
   label: string;
@@ -32,13 +33,14 @@ interface Props {
 const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
 ---
 
-<section class="wrap front" aria-label="أبرز ما في العدد">
+<section class="wrap front" aria-label="آخر الأخبار والأرقام">
   <div class="front__top">
     <h2 class="module__head">الأخبار في سطور</h2>
     <ul class="digest">
       {digest.map((a) => (
         <li class="digest__item">
-          <a class="digest__text" href={articleHref(a)}><strong class="digest__head" set:html={isolateNumbers(a.data.title)} /> <span set:html={isolateNumbers(excerpt(a.data.subtitle || a.data.lede, 140))} /></a>
+          <a class="digest__head" href={articleHref(a)} set:html={isolateNumbers(a.data.title)} />
+          <p class="digest__text" set:html={isolateNumbers(excerpt(a.data.subtitle || a.data.lede, 140))} />
           <p class="meta digest__meta">
             <a href={sectionHref(a.data.section)}>{kindLabel(a.data.kind, a.data.section)}</a>
             <time datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time>
@@ -63,7 +65,10 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
           {picks.map((a) => (
             <li class="picks__item">
               <a class="picks__title" href={articleHref(a)} set:html={isolateNumbers(a.data.title)} />
-              <p class="meta"><a href={sectionHref(a.data.section)}>{kindLabel(a.data.kind, a.data.section)}</a></p>
+              <p class="meta">
+                <a href={sectionHref(a.data.section)}>{kindLabel(a.data.kind, a.data.section)}</a>
+                <time datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time>
+              </p>
             </li>
           ))}
         </ol>
@@ -72,6 +77,7 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
   </div>
 
   <aside class="front__side">
+    <MarketBoard variant="box" id="front-board" />
     {chart?.data.chart && (
       <section class="module" aria-labelledby="chart-head">
         <h2 id="chart-head" class="module__head">أحدث الرسوم البيانية</h2>
@@ -111,14 +117,20 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
   .front__mid { padding-inline: var(--col-gap); border-inline: 1px solid var(--rule); }
   .front__side { padding-inline-start: var(--col-gap); display: grid; gap: 1.5rem; }
 
-  /* The digest: a sentence a story on hairlines, Naskh at text size, the section and time beneath. */
+  /* The digest: a story to a line on hairlines, its Amiri headline on a line of its own and its one
+     sentence under it in Naskh, the section and time beneath. The owner, 2026-09-23: the sentence ran
+     on after the bold headline («…للمرة الأولى قفز السهم») and should start its own row. The headline is
+     the link (a screen reader hears the headline, not two hundred characters), and its hit area covers
+     the whole item, so the sentence can be tapped as well. */
   .digest { display: grid; }
-  .digest__item { padding-block: 0.6rem; border-top: 1px solid var(--rule); }
+  .digest__item { position: relative; padding-block: 0.65rem; border-top: 1px solid var(--rule); }
   .digest__item:first-child { border-top: 0; padding-top: 0.1rem; }
-  .digest__text { display: block; font-family: var(--font-body); font-size: 1.02rem; line-height: 1.7; color: var(--ink); text-decoration: none; }
-  .digest__text:hover .digest__head { color: var(--green); }
-  .digest__head { font-family: var(--font-title); font-weight: 700; }
-  .digest__meta { margin-top: 0.15rem; font-size: 0.78rem; }
+  .digest__head { display: block; font-family: var(--font-title); font-weight: 700; font-size: 1.05rem; line-height: 1.45; color: var(--ink); text-decoration: none; }
+  .digest__head::after { content: ""; position: absolute; inset: 0; }
+  .digest__text { margin-top: 0.2rem; font-family: var(--font-body); font-size: 0.98rem; line-height: 1.7; color: var(--ink-2); }
+  .digest__item:hover .digest__head { color: var(--green); }
+  .digest__meta { margin-top: 0.15rem; font-size: var(--fs-xs); }
+  .digest__meta a { position: relative; z-index: 1; }
 
   /* The two secondaries run at feature scale, photograph beside the text like every feature on the
      page, so the hierarchy keeps descending down the page instead of inverting under the cover. */
@@ -137,11 +149,11 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
   .figures__item a { display: block; padding-block: 0.5rem; text-decoration: none; }
   .figures__item a:hover .figures__value { color: var(--green); }
   .figures__value { display: block; font-family: var(--font-title); font-weight: 700; font-size: 1.25rem; line-height: 1.3; font-variant-numeric: tabular-nums lining-nums; }
-  .figures__label { display: block; font-family: var(--font-ui); font-size: 0.82rem; color: var(--ink-3); line-height: 1.4; }
+  .figures__label { display: block; font-family: var(--font-ui); font-size: var(--fs-sm); color: var(--ink-3); line-height: 1.4; }
   /* A number without its story is a riddle: the headline it comes from follows, small. */
   .figures__story { display: block; margin-top: 0.2rem; font-family: var(--font-title); font-weight: 700; font-size: 0.9rem; line-height: 1.4; color: var(--ink-2); }
   .figures__item a:hover .figures__story { color: var(--green); }
-  .module__from { margin-top: 0.45rem; font-size: 0.8rem; color: var(--ink-3); line-height: 1.5; }
+  .module__from { margin-top: 0.45rem; font-size: var(--fs-xs); color: var(--ink-3); line-height: 1.5; }
   .module__from a { color: var(--ink-2); text-decoration: none; font-weight: 700; }
   .module__from a:hover { color: var(--green); text-decoration: underline; }
 
@@ -150,7 +162,7 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
   .picks__item:first-child { border-top: 0; }
   .picks__title { font-family: var(--font-title); font-weight: 700; font-size: 1.02rem; line-height: 1.45; text-decoration: none; display: block; }
   .picks__title:hover { color: var(--green); }
-  .picks .meta { margin-top: 0.1rem; font-size: 0.78rem; }
+  .picks .meta { margin-top: 0.1rem; font-size: var(--fs-xs); }
 
   @media (max-width: 1023px) {
     .front { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }

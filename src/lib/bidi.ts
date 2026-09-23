@@ -5,8 +5,13 @@
  * signs stay attached to digits, ranges read the way they were typed, and Latin
  * names never split across lines with their brackets on the wrong side; hyphenated
  * words inside a Latin run are held together with a nowrap span.
+ *
+ * A figure is one run however many groups it has: a fiscal year «2026/27», a date «2026-09-19», a
+ * time «14:30», a range «2020–2025». Split into separate runs, the right-to-left line laid the groups
+ * out in reverse («27/2026», «19-2026-09»), which the reader took for the figure itself (2026-09-22).
+ * rehype-isolate-numbers.mjs carries the same pattern for the article body.
  */
-const NUMBER_SRC = String.raw`(?:(?<=^|[\s(\[«"'،])[+\-−])?\d[\d.,]*(?:[-–]\d[\d.,]*)?(?:\s?[%٪])?`;
+const NUMBER_SRC = String.raw`(?:(?<=^|[\s(\[«"'،])[+\-−])?\d[\d.,]*(?:[\/:\-–]\d[\d.,]*)*(?:\s?[%٪])?`;
 const LATIN_SRC = String.raw`(?<![&A-Za-z0-9])\(?[A-Za-z][A-Za-z0-9'’.\-]*(?:\s+[A-Za-z0-9'’.\-]+)*\)?`;
 const RUN = new RegExp(`(${LATIN_SRC})|(${NUMBER_SRC})`, "g");
 

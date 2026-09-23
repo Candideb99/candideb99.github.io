@@ -63,7 +63,7 @@ const countWord = (n: number) => (n === 1 ? "مادة" : n === 2 ? "مادتان
 
 <style>
   .files { padding-top: clamp(2.25rem, 4.5vw, 3.75rem); }
-  .files__regions { display: flex; flex-wrap: wrap; gap: 0.35rem 1.1rem; margin-top: 1rem; padding-top: 0.6rem; border-top: 1px solid var(--rule); font-size: 0.82rem; color: var(--ink-3); }
+  .files__regions { display: flex; flex-wrap: wrap; gap: 0.35rem 1.1rem; margin-top: 1rem; padding-top: 0.6rem; border-top: 1px solid var(--rule); font-size: var(--fs-sm); color: var(--ink-3); }
   .files__regions-label { font-weight: 700; color: var(--ink-2); }
   .files__regions a { color: var(--ink-2); text-decoration: none; font-weight: 700; }
   .files__regions a bdi { color: var(--ink-3); font-weight: 400; }
@@ -76,13 +76,13 @@ const countWord = (n: number) => (n === 1 ? "مادة" : n === 2 ? "مادتان
   .file__name { font-family: var(--font-title); font-weight: 700; font-size: 1.3rem; line-height: 1.3; color: var(--green); }
   .file__name a { text-decoration: none; }
   .file__name a:hover { color: var(--green-deep); text-decoration: underline; }
-  .file__count { font-size: 0.78rem; color: var(--ink-3); margin-top: 0.15rem; }
+  .file__count { font-size: var(--fs-xs); color: var(--ink-3); margin-top: 0.15rem; }
   .file__list { margin-top: 0.6rem; }
   .file__list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 0.75rem; align-items: baseline; padding-block: 0.5rem; border-top: 1px solid var(--rule); font-family: var(--font-title); font-weight: 700; font-size: 1.02rem; line-height: 1.45; }
   .file__list a { text-decoration: none; }
   .file__list a:hover { color: var(--green); }
-  .file__list time { font-size: 0.75rem; color: var(--ink-3); white-space: nowrap; }
-  .file__all { display: inline-block; margin-top: 0.5rem; font-size: 0.82rem; font-weight: 700; color: var(--ink-2); text-decoration: none; }
+  .file__list time { font-size: var(--fs-xs); color: var(--ink-3); white-space: nowrap; }
+  .file__all { display: inline-block; margin-top: 0.5rem; font-size: var(--fs-sm); font-weight: 700; color: var(--ink-2); text-decoration: none; }
   .file__all:hover { color: var(--green); text-decoration: underline; }
 
   @media (max-width: 1023px) {

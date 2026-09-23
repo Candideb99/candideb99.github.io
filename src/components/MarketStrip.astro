@@ -45,13 +45,15 @@ const items = quotes(STRIP_IDS);
 <style>
   .markets-wrap { border-bottom: 1px solid var(--rule); background: var(--paper); }
   .markets { display: flex; align-items: center; gap: 0.75rem; min-height: 2.1rem; }
-  .markets__label { flex: none; font-weight: 800; font-size: 0.78rem; color: var(--green); text-decoration: none; padding-inline-end: 0.75rem; border-inline-end: 1px solid var(--rule); }
+  .markets__label { flex: none; font-weight: 800; font-size: var(--fs-xs); color: var(--green); text-decoration: none; padding-block: 0.45rem; padding-inline-end: 0.75rem; border-inline-end: 1px solid var(--rule); }
   .markets__label:hover { text-decoration: underline; }
-  .markets__list { display: flex; align-items: center; flex: 1 1 auto; min-width: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  /* position: relative keeps the hidden ارتفاع/انخفاض words inside the scrolling list; without it
+     they are placed against the page and pushed every phone page 505px wide (found 2026-09-22). */
+  .markets__list { position: relative; display: flex; align-items: center; flex: 1 1 auto; min-width: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   .markets__list::-webkit-scrollbar { display: none; }
   .markets__item { flex: none; padding-inline: 0.55rem; border-inline-start: 1px solid var(--rule); }
   .markets__item:first-child { padding-inline-start: 0; border-inline-start: 0; }
-  .q { display: inline-flex; align-items: baseline; gap: 0.35rem; font-size: 0.78rem; line-height: 1.4; text-decoration: none; color: var(--ink-2); white-space: nowrap; }
+  .q { display: inline-flex; align-items: baseline; gap: 0.35rem; padding-block: 0.4rem; font-size: var(--fs-xs); line-height: 1.4; text-decoration: none; color: var(--ink-2); white-space: nowrap; }
   .q:hover .q__name { color: var(--green); text-decoration: underline; }
   .q__name { font-weight: 700; color: var(--ink); }
   .q__price { font-weight: 500; direction: ltr; unicode-bidi: isolate; }
@@ -60,7 +62,7 @@ const items = quotes(STRIP_IDS);
   .q__move--down { color: var(--down); }
   .q__move--flat { color: var(--ink-3); }
   .q__arrow { font-size: 0.6em; vertical-align: 0.15em; margin-inline-end: 0.1em; }
-  .markets__time { flex: none; font-size: 0.74rem; color: var(--ink-3); white-space: nowrap; padding-inline-start: 0.75rem; border-inline-start: 1px solid var(--rule); }
+  .markets__time { flex: none; font-size: var(--fs-xs); color: var(--ink-3); white-space: nowrap; padding-inline-start: 0.75rem; border-inline-start: 1px solid var(--rule); }
   .markets__time time { color: inherit; }
   @media (max-width: 719px) {
     .markets { gap: 0.6rem; min-height: 2rem; }

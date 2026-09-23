@@ -22,7 +22,7 @@ const updated = board.updatedAt ? `${formatDate(board.updatedAt)}، ${formatTime
   <section class="wrap block" id="board">
     <header class="page-head">
       <h1 class="page-title">لوحة الأسواق</h1>
-      <p class="page-intro">المؤشرات والعملات والسلع والسندات التي تتابعها الصحيفة. الأسعار مؤجّلة وللاطلاع لا للتداول{board.updatedAt && <span>؛ آخر تحديث <time datetime={board.updatedAt} data-relative title={updated}>{timeAgo(board.updatedAt)}</time></span>}.</p>
+      <p class="page-intro">المؤشرات والعملات والسلع والسندات التي يتابعها خازندار. الأسعار مؤجّلة وللاطلاع لا للتداول{board.updatedAt && <span>؛ آخر تحديث <time datetime={board.updatedAt} data-relative title={updated}>{timeAgo(board.updatedAt)}</time></span>}.</p>
     </header>
 
     {featured.length > 0 && (
@@ -70,7 +70,7 @@ const updated = board.updatedAt ? `${formatDate(board.updatedAt)}، ${formatTime
   .groups__cell:nth-child(3n + 1) { padding-inline-start: 0; }
   .groups__cell:nth-child(3n) { padding-inline-end: 0; }
   .groups__cell:not(:nth-child(3n + 1)) { border-inline-start: 1px solid var(--rule); }
-  .note { margin-top: 1.5rem; font-size: 0.78rem; line-height: 1.6; color: var(--ink-3); max-width: 60rem; }
+  .note { margin-top: 1.5rem; font-size: var(--fs-xs); line-height: 1.6; color: var(--ink-3); max-width: 60rem; }
   .news { margin-top: clamp(2rem, 4vw, 3rem); }
   @media (max-width: 1023px) {
     .featured { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 1rem; }

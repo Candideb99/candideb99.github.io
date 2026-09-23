@@ -8,8 +8,8 @@ import StoryCard from "@components/StoryCard.astro";
 import Chart from "@components/Chart.astro";
 import { DESKS, desksOf } from "@lib/regions";
 import { analysisLabel } from "@lib/analysis";
-import { getArticles, pickLead, dossiers, chartOfTheDay, type Article } from "@lib/articles";
-import { newsSections, getSection, sectionHref } from "@lib/sections";
+import { getArticles, pickLead, dossiers, chartOfTheDay, hoursOld, repeatedEvents, onTheSameTopic, type Article } from "@lib/articles";
+import { newsSections, getSection, sectionHref, moreLabel } from "@lib/sections";
 import { articleHref } from "@lib/articles";
 import { isolateNumbers } from "@lib/bidi";
 import { cardSizes } from "@lib/wikimedia";
@@ -17,7 +17,14 @@ import { timeAgo } from "@lib/format";
 import site from "@data/site.json";
 
 const articles = await getArticles();
-const news = articles.filter((a) => a.data.kind === "news");
+// The lead: the editor's featured story, else the strongest of the last day (lib/articles.ts).
+const lead = pickLead(articles);
+// One event, one story on the front: when the newsroom has filed an event twice (two oil stories on
+// one day's talks, two on one White House announcement, 2026-09-21), the older telling is left to
+// its section page. The lead is looked at first, so its telling is the one that stays.
+const allNews = articles.filter((a) => a.data.kind === "news");
+const repeats = repeatedEvents(lead ? [lead, ...allNews.filter((a) => a.id !== lead.id)] : allNews);
+const news = allNews.filter((a) => !repeats.has(a.id));
 const importance = (a: Article) => (a.data.quality?.importance ?? 5) + (a.data.image ? 0.5 : 0);
 const byImportance = (list: Article[]) => [...list].sort((x, y) => importance(y) - importance(x));
 
@@ -28,7 +35,6 @@ const unplaced = (list: Article[]) => list.filter((a) => !placed.has(a.id));
 
 // The cover: the lead on the stage with the four strongest of the freshest dozen turning behind it;
 // all five are placed, so none of them comes back as a secondary or a digest line.
-const lead = pickLead(articles);
 const cover = lead ? [lead, ...byImportance(unplaced(news).filter((a) => a.id !== lead.id).slice(0, 12)).slice(0, 4)] : [];
 place(cover);
 // The column beside the cover is the paper's own voice: one reading of each kind, so the column
@@ -43,11 +49,18 @@ place(secondary);
 // The digest: the next seven stories, each its headline and one sentence, newest first.
 const digest = unplaced(news).slice(0, 7);
 place(digest);
-// The readings beside the cover are not picked again.
-const picks = byImportance(unplaced(articles).filter((a) => !readings.includes(a))).slice(0, 4);
+// The readings beside the cover are not picked again. Picks are the strongest of the last three days:
+// ranked by importance alone they reached back a week, and one said the Saudi pipeline had closed
+// beside a lead saying it had reopened.
+const picks = byImportance(unplaced(articles).filter((a) => !readings.includes(a) && !repeats.has(a.id) && hoursOld(a) < 72)).slice(0, 4);
 place(picks);
-// The strip carries the newest stories not already on the first screen, so no headline prints twice above the fold.
+// The strip (أيضاً على خازندار) carries the newest stories not already on the first screen, so no
+// headline prints twice above the fold; it names each story's section, not its age.
 const ticker = unplaced(news).slice(0, 5);
+// Under each cover story, up to two headlines on its running topic (ذات صلة), none of them already on
+// the first screen; they fill the text column beside the photograph with the story's own context.
+const onFirstScreen = new Set([...placed, ...ticker.map((a) => a.id)]);
+const coverRelated = new Map(cover.map((s) => [s.id, onTheSameTopic(s, articles.filter((a) => !repeats.has(a.id)), { exclude: onFirstScreen })]));
 
 // Today's figures: one telling number per recent story, never a bare year or a sprawling value.
 const figureScore = (value: string) => {
@@ -63,7 +76,7 @@ const figures = articles
   })
   .slice(0, 3);
 const chart = chartOfTheDay(articles);
-const files = dossiers(articles);
+const files = dossiers(articles.filter((a) => !repeats.has(a.id)));
 // The charts band (the Economist's graphic detail): the three freshest charts after the chart of the day.
 const chartsBand = articles
   .filter((a) => a.id !== chart?.id && a.data.chart && a.data.chart.title && a.data.chart.categories.length <= 8 && a.data.chart.series.length <= 2)
@@ -133,12 +146,14 @@ const jsonLd = {
   {cover.length > 0 ? (
     <>
       <Ticker items={ticker} />
-      <Cover stories={cover} readings={readings} photoIds={photoIds} all={articles} />
-      <Front secondary={secondary} digest={digest} picks={picks} figures={figures} chart={chart} photoIds={photoIds} />
+      <div class="first">
+        <Cover stories={cover} readings={readings} photoIds={photoIds} all={articles} related={coverRelated} />
+        <Front secondary={secondary} digest={digest} picks={picks} figures={figures} chart={chart} photoIds={photoIds} />
+      </div>
     </>
   ) : (
     <section class="wrap block">
-      <h1 class="page-title">العدد الأول قيد الطباعة</h1>
+      <h1 class="page-title">أولى الأخبار قيد الإعداد</h1>
       <p class="page-intro">تعمل غرفة الأخبار الآن على أولى المواد. عد بعد قليل.</p>
     </section>
   )}
@@ -170,7 +185,7 @@ const jsonLd = {
       <section class="wrap row" data-section={r.section.id} aria-labelledby={`sec-${r.section.id}`}>
         <div class="section-head">
           <h2 id={`sec-${r.section.id}`}><a href={sectionHref(r.section.id)}>{r.section.name}</a></h2>
-          <a class="more" href={sectionHref(r.section.id)}>المزيد من {r.section.name}</a>
+          <a class="more" href={sectionHref(r.section.id)}>{moreLabel(r.section.id)}</a>
         </div>
         {cardsRow ? (
           <div class="cards" style={`--n:${r.items.length}`}>
@@ -240,6 +255,22 @@ const jsonLd = {
      boundaries: air between, tight within. */
   .row { padding-top: clamp(2.25rem, 4.5vw, 3.75rem); }
 
+  /* The first screen on a phone is one column in reading order, not in the desktop's column order:
+     the lead with the day's other top stories, the secondaries, the digest, then the paper's readings,
+     the picks and the numbers. Until 2026-09-22 the readings and the market box came before the news,
+     and الأخبار في سطور began three screens down. The cover and the columns under it give up their own
+     boxes (display: contents) so their parts can be ordered as one list. */
+  @media (max-width: 719px) {
+    .first { display: flex; flex-direction: column; gap: 1.5rem; width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; padding-top: 1.1rem; }
+    .first > :global(.cover), .first > :global(.front), .first :global(.front__mid) { display: contents; }
+    .first :global(.cover__stage) { order: 1; padding-bottom: 1.25rem; border-bottom: 3px solid var(--ink); }
+    .first :global(.front__secondary) { order: 2; }
+    .first :global(.front__top) { order: 3; }
+    .first :global(.cover__beside) { order: 4; padding-top: 0; }
+    .first :global(.front__picks) { order: 5; margin-top: 0; }
+    .first :global(.front__side) { order: 6; margin-top: 0; }
+  }
+
   /* One story leads each block, the rest sit beside it as briefs. */
   .row__body { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: 0; align-items: start; }
   .row__body--solo { grid-template-columns: 1fr; }
@@ -256,7 +287,7 @@ const jsonLd = {
 
   /* The charts band: three compact charts in ruled columns, each naming its story. */
   .charts .section-head h2 { color: var(--green); }
-  .charts .module__from { margin-top: 0.5rem; font-size: 0.8rem; color: var(--ink-3); line-height: 1.5; }
+  .charts .module__from { margin-top: 0.5rem; font-size: var(--fs-xs); color: var(--ink-3); line-height: 1.5; }
   .charts .module__from a { color: var(--ink-2); text-decoration: none; font-weight: 700; }
   .charts .module__from a:hover { color: var(--green); text-decoration: underline; }
 
@@ -268,7 +299,7 @@ const jsonLd = {
   .desk__list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 0.75rem; align-items: baseline; padding-block: 0.5rem; border-top: 1px solid var(--rule); font-family: var(--font-title); font-weight: 700; font-size: 1.02rem; line-height: 1.45; }
   .desk__list a { text-decoration: none; }
   .desk__list a:hover { color: var(--green); }
-  .desk__list time { font-size: 0.75rem; color: var(--ink-3); white-space: nowrap; }
+  .desk__list time { font-size: var(--fs-xs); color: var(--ink-3); white-space: nowrap; }
 
   .hub .cols :global(.card__title) { font-size: 1.28rem; line-height: 1.38; }
   .hub .cols :global(.card__summary) { font-size: 1.02rem; line-height: 1.7; margin-top: 0.4rem; }

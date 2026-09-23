@@ -135,8 +135,8 @@ const topics = first ? topicCounts(await getArticles(), section.id).filter((t) =
   .section-page__beside > :global(.card) { padding-block: 0.8rem; border-top: 1px solid var(--rule); }
   .section-page__beside > :global(.card:first-child) { border-top: 0; padding-top: 0.1rem; }
   .section-page__rest { margin-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--ink); padding-top: 1.25rem; }
-  .page-head__link { display: inline-block; margin-top: 0.6rem; font-weight: 700; font-size: 0.86rem; color: var(--green); text-decoration: none; }
-  .page-head__topics { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; margin-top: 0.8rem; font-size: 0.82rem; color: var(--ink-3); }
+  .page-head__link { display: inline-block; margin-top: 0.6rem; font-weight: 700; font-size: var(--fs-sm); color: var(--green); text-decoration: none; }
+  .page-head__topics { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; margin-top: 0.8rem; font-size: var(--fs-sm); color: var(--ink-3); }
   .page-head__topics-label { font-weight: 700; color: var(--ink-2); }
   .page-head__topics a { color: var(--ink-2); text-decoration: none; font-weight: 700; }
   .page-head__topics a bdi { color: var(--ink-3); font-weight: 400; }
@@ -146,7 +146,7 @@ const topics = first ? topicCounts(await getArticles(), section.id).filter((t) =
   .glance { margin-top: clamp(1.5rem, 3vw, 2.5rem); }
   .glance__head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
   .glance__head .module__head { flex: 1 1 auto; }
-  .glance__more { font-weight: 700; font-size: 0.82rem; color: var(--ink-2); text-decoration: none; white-space: nowrap; }
+  .glance__more { font-weight: 700; font-size: var(--fs-sm); color: var(--ink-2); text-decoration: none; white-space: nowrap; }
   .glance__more:hover { color: var(--green); text-decoration: underline; }
   .glance__row { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: 0; }
   .glance__cell { min-width: 0; padding-inline: var(--col-gap); }
@@ -176,7 +176,7 @@ const topics = first ? topicCounts(await getArticles(), section.id).filter((t) =
   .pager__step { font-family: var(--font-ui); font-weight: 700; font-size: 0.92rem; color: var(--green); text-decoration: none; padding: 0.4rem 0.8rem 0.3rem; border: 1px solid var(--rule); }
   .pager__step:hover { border-color: var(--green); }
   .pager__step--off { color: var(--ink-3); border-color: var(--rule); opacity: 0.5; }
-  .pager__count { font-size: 0.86rem; color: var(--ink-3); }
+  .pager__count { font-size: var(--fs-sm); color: var(--ink-3); }
 
   @media (max-width: 719px) {
     .section-page__lead :global(.card--lead) { grid-template-columns: 1fr; gap: 0.6rem 0; align-items: start; }

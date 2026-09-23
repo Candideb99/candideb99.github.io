@@ -36,13 +36,22 @@ import Base from "@layouts/Base.astro";
           return pf.options({ excerptLength: 30 }).then(function () { return pf.init(); }).then(function () { pagefind = pf; return pf; });
         })
         .catch(function () {
-          results.innerHTML = '<p class="search__hint">تعذّر تحميل فهرس البحث. أعد تحميل الصفحة.</p>';
+          results.innerHTML = '<p class="search__hint">تعذّر تحميل البحث. تحقّق من اتصالك بالإنترنت ثم أعد تحميل الصفحة.</p>';
           return null;
         });
     }
+    // The count agrees with its number, as Arabic counts do: نتيجة واحدة، نتيجتان، 3 نتائج، 11 نتيجة.
+    function counted(n) {
+      if (n === 1) return "نتيجة واحدة";
+      if (n === 2) return "نتيجتان";
+      var mod = n % 100;
+      return "<bdi>" + n + "</bdi> " + (mod >= 3 && mod <= 10 ? "نتائج" : "نتيجة");
+    }
     function render(search, items) {
+      var n = search.results.length;
+      var shown = items.length < n ? "، تُعرض أول <bdi>" + items.length + "</bdi>" : "";
       results.innerHTML =
-        '<p class="search__count ui"><bdi>' + search.results.length + '</bdi> نتيجة</p><ol class="search__list">' +
+        '<p class="search__count ui">' + counted(n) + shown + '</p><ol class="search__list">' +
         items
           .map(function (d) {
             var meta = d.meta || {};
@@ -104,7 +113,8 @@ import Base from "@layouts/Base.astro";
     background: var(--paper);
     color: var(--ink);
   }
-  .search__input:focus { outline: none; border-bottom-color: var(--green); }
+  /* Focus thickens the rule as well as turning it green, so it shows without relying on colour alone. */
+  .search__input:focus { outline: none; border-bottom: 3px solid var(--green); padding-bottom: calc(0.6rem - 1px); }
   .search__results { margin-top: 1.5rem; max-width: 46rem; }
   .search :global(.search__hint), .search :global(.search__count) { font-family: var(--font-ui); color: var(--ink-3); }
   .search :global(.search__list) { display: grid; gap: 1rem; margin-top: 0.75rem; }

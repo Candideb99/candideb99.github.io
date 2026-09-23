@@ -1,7 +1,8 @@
 ---
 /**
  * الأحدث: everything the paper published, newest first, in pages of twenty, the way the dailies'
- * "latest headlines" pages run: a ruled list with the section and time on every line.
+ * "latest headlines" pages run: a ruled list with the section and time on every line, under a dated
+ * head for each day, so a reader sees where yesterday ends.
  */
 import type { GetStaticPaths, Page } from "astro";
 import Base from "@layouts/Base.astro";
@@ -9,6 +10,7 @@ import StoryCard from "@components/StoryCard.astro";
 import type { Article } from "@lib/articles";
 import { getArticles } from "@lib/articles";
 import { analysisLabel } from "@lib/analysis";
+import { formatDate } from "@lib/format";
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const articles = await getArticles();
@@ -21,17 +23,30 @@ interface Props {
 const { page } = Astro.props;
 const all = await getArticles();
 const title = page.currentPage === 1 ? "الأحدث" : `الأحدث — صفحة ${page.currentPage}`;
+// Consecutive stories of one day (in the paper's own zone) share a dated head.
+const days: { label: string; items: Article[] }[] = [];
+for (const a of page.data) {
+  const label = formatDate(a.data.publishedAt);
+  const last = days[days.length - 1];
+  if (last && last.label === label) last.items.push(a);
+  else days.push({ label, items: [a] });
+}
 ---
 
 <Base title={title} description="كل ما نشرته خازندار، الأحدث أولاً." path={page.url.current}>
   <section class="wrap block">
     <header class="page-head">
       <h1 class="page-title">الأحدث</h1>
-      <p class="page-intro">كل ما نشرته الصحيفة، الأحدث أولاً: الأخبار والتحليلات والشروح وقراءات الأوراق البحثية.</p>
+      <p class="page-intro">كل ما نشره خازندار، الأحدث أولاً: الأخبار والتحليلات والشروح وقراءات الأوراق البحثية.</p>
     </header>
     <div class="latest">
-      {page.data.map((a) => (
-        <StoryCard article={a} variant="list" showExcerpt label={analysisLabel(a, all)} eager={false} />
+      {days.map((day) => (
+        <section class="latest__day" aria-label={day.label}>
+          <h2 class="latest__date ui">{day.label}</h2>
+          {day.items.map((a) => (
+            <StoryCard article={a} variant="list" showExcerpt label={analysisLabel(a, all)} eager={false} />
+          ))}
+        </section>
       ))}
     </div>
     {page.lastPage > 1 && (
@@ -46,11 +61,14 @@ const title = page.currentPage === 1 ? "الأحدث" : `الأحدث — صفح
 
 <style>
   .latest { display: grid; max-width: 56rem; }
-  .latest > :global(.card) { padding-block: 0.85rem; border-top: 1px solid var(--rule); }
-  .latest > :global(.card:first-child) { border-top: 0; padding-top: 0.1rem; }
+  .latest__day { display: grid; }
+  .latest__day + .latest__day { margin-top: 1.5rem; }
+  .latest__date { font-weight: 700; font-size: var(--fs-sm); line-height: 1.5; color: var(--ink-2); padding-bottom: 0.4rem; border-bottom: 1px solid var(--ink); }
+  .latest__day > :global(.card) { padding-block: 0.85rem; border-top: 1px solid var(--rule); }
+  .latest__day > :global(.latest__date + .card) { border-top: 0; }
   .pager { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--rule); padding-top: 0.9rem; max-width: 56rem; }
   .pager__step { font-family: var(--font-ui); font-weight: 700; font-size: 0.92rem; color: var(--green); text-decoration: none; padding: 0.4rem 0.8rem 0.3rem; border: 1px solid var(--rule); }
   .pager__step:hover { border-color: var(--green); }
   .pager__step--off { color: var(--ink-3); border-color: var(--rule); opacity: 0.5; }
-  .pager__count { font-size: 0.86rem; color: var(--ink-3); }
+  .pager__count { font-size: var(--fs-sm); color: var(--ink-3); }
 </style>

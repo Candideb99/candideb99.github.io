@@ -52,6 +52,23 @@ export function topicArticles(articles: Article[], section: string, topic: Topic
   return articles.filter((a) => a.data.section === section && matches(a, topic));
 }
 
+/**
+ * The one sub-topic a story sits under in its section's taxonomy, for the trail on its page (الطاقة ›
+ * النفط والغاز): a term in the headline outranks a term in the tags; ties go to the taxonomy's order.
+ */
+export function subTopicOf(article: Article): Topic | undefined {
+  const title = normalizeArabic(article.data.title);
+  const tags = article.data.tags.map(normalizeArabic);
+  let best: Topic | undefined;
+  let score = 0;
+  for (const topic of topicsOf(article.data.section)) {
+    const terms = topic.match.map(normalizeArabic).filter((t) => t.length > 1);
+    const s = terms.some((t) => title.includes(t)) ? 2 : terms.some((t) => tags.some((h) => h.includes(t))) ? 1 : 0;
+    if (s > score) [best, score] = [topic, s];
+  }
+  return best;
+}
+
 /** The sub-topics of a section with their story counts, in the taxonomy's order. */
 export function topicCounts(articles: Article[], section: string): { topic: Topic; count: number }[] {
   return topicsOf(section).map((topic) => ({ topic, count: topicArticles(articles, section, topic).length }));

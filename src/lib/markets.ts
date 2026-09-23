@@ -92,26 +92,29 @@ export function direction(q: Quote): Direction {
   return v > 0 ? "up" : "down";
 }
 
+/** A signed figure as printed: "+0.35", "−1.20"; a move that rounds to zero prints bare ("0.00", never "−0.00"). */
+function signed(v: number, text: string): string {
+  if (/^[0.,]+$/.test(text)) return text;
+  return (v > 0 ? "+" : v < 0 ? "−" : "") + text;
+}
+
 /** "+0.35%" for prices, "+0.19" (points) for yields. */
 export function formatMove(q: Quote): string {
   if (q.change === null || q.pct === null) return "";
   const v = q.changeMode === "abs" ? q.change : q.pct;
-  const sign = v > 0 ? "+" : v < 0 ? "−" : "";
-  return sign + Math.abs(v).toFixed(2) + (q.changeMode === "abs" ? "" : "%");
+  return signed(v, Math.abs(v).toFixed(2)) + (q.changeMode === "abs" ? "" : "%");
 }
 
 /** The move as a percentage whatever the instrument, for the full board's % column. */
 export function formatPct(q: Quote): string {
   if (q.pct === null) return "";
-  const sign = q.pct > 0 ? "+" : q.pct < 0 ? "−" : "";
-  return sign + Math.abs(q.pct).toFixed(2) + "%";
+  return signed(q.pct, Math.abs(q.pct).toFixed(2)) + "%";
 }
 
 /** The absolute change in the instrument's own unit, for the full board's التغير column. */
 export function formatChange(q: Quote): string {
   if (q.change === null) return "";
-  const sign = q.change > 0 ? "+" : q.change < 0 ? "−" : "";
-  return sign + nf(q.decimals).format(Math.abs(q.change));
+  return signed(q.change, nf(q.decimals).format(Math.abs(q.change)));
 }
 
 export const DIRECTION_LABEL: Record<Direction, string> = { up: "ارتفاع", down: "انخفاض", flat: "دون تغيير", none: "" };

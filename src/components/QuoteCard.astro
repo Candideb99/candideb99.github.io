@@ -40,10 +40,10 @@ const stroke = dir === "up" ? "var(--up)" : dir === "down" ? "var(--down)" : "va
   .quote { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "name spark" "note spark" "row spark"; column-gap: 0.75rem; align-items: end; text-decoration: none; color: var(--ink); min-width: 0; }
   .quote__name { grid-area: name; font-family: var(--font-body); font-weight: 700; font-size: 1rem; line-height: 1.4; }
   .quote:hover .quote__name { color: var(--green); }
-  .quote__note { grid-area: note; font-size: 0.72rem; color: var(--ink-3); line-height: 1.35; }
+  .quote__note { grid-area: note; font-size: var(--fs-xs); color: var(--ink-3); line-height: 1.35; }
   .quote__row { grid-area: row; display: flex; align-items: baseline; gap: 0.55rem; margin-top: 0.15rem; }
   .quote__price { font-size: 1.28rem; font-weight: 700; line-height: 1.2; direction: ltr; unicode-bidi: isolate; }
-  .quote__move { font-size: 0.86rem; font-weight: 700; direction: ltr; unicode-bidi: isolate; }
+  .quote__move { font-size: var(--fs-sm); font-weight: 700; direction: ltr; unicode-bidi: isolate; }
   .quote--up .quote__move { color: var(--up); }
   .quote--down .quote__move { color: var(--down); }
   .quote--flat .quote__move, .quote__move--na { color: var(--ink-3); }

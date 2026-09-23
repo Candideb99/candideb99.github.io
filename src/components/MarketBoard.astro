@@ -59,15 +59,15 @@ const tip = (q: Quote) => `${q.name}${q.note ? ` (${q.note})` : ""}${q.unit && q
   .board__table th, .board__table td { padding: 0.3rem 0; border-top: 1px solid var(--rule); vertical-align: baseline; text-align: start; }
   .board__table tbody tr:first-child > * { border-top: 0; }
   .board__name { font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; line-height: 1.45; color: var(--ink); }
-  .board__note { display: block; font-size: 0.72rem; font-weight: 500; color: var(--ink-3); line-height: 1.35; }
-  .board__num { text-align: end; font-size: 0.86rem; white-space: nowrap; padding-inline-start: 0.6rem !important; }
+  .board__note { display: block; font-size: var(--fs-xs); font-weight: 500; color: var(--ink-3); line-height: 1.35; }
+  .board__num { text-align: end; font-size: var(--fs-sm); white-space: nowrap; padding-inline-start: 0.6rem !important; }
   .board__num bdi { direction: ltr; unicode-bidi: isolate; }
   .board__move--up { color: var(--up); font-weight: 700; }
   .board__move--down { color: var(--down); font-weight: 700; }
   .board__move--flat, .board__na { color: var(--ink-3); }
   .board__arrow { font-size: 0.6em; vertical-align: 0.15em; margin-inline-end: 0.15em; }
   .is-stale .board__num { color: var(--ink-3); }
-  .board__foot { margin-top: 0.5rem; font-size: 0.78rem; line-height: 1.55; color: var(--ink-3); }
+  .board__foot { margin-top: 0.5rem; font-size: var(--fs-xs); line-height: 1.55; color: var(--ink-3); }
   .board__foot a { font-weight: 700; color: var(--ink-2); text-decoration: none; }
   .board__foot a:hover { color: var(--green); text-decoration: underline; }
   .board__foot time { color: inherit; }

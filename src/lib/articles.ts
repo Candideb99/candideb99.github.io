@@ -79,6 +79,79 @@ export function articleHref(article: Article): string {
   return `/articles/${article.data.slug}/`;
 }
 
+// Words a headline shares with any other and that say nothing about the event.
+const STOP_WORDS = new Set(["علي", "بعد", "قبل", "حول", "دون", "منذ", "بين", "عبر", "خلال", "وسط", "امام", "عند", "حتي", "التي", "الذي", "هذا", "هذه", "اول", "اكثر", "اقل", "مع"]);
+
+/** The content words of a headline, normalised so spelling variants of one word meet. */
+function headlineWords(title: string): Set<string> {
+  const text = title
+    .replace(/[ً-ٰٟـ]/g, "")
+    .replace(/[أإآ]/g, "ا")
+    .replace(/ة/g, "ه")
+    .replace(/ى/g, "ي")
+    .replace(/ترامب/g, "ترمب")
+    .replace(/اميرك/g, "امريك");
+  const words = text.split(/[^\p{L}\p{N}]+/u).map((w) => {
+    let word = w.replace(/^(وال|بال|فال|كال|لل|ال)/, "");
+    // A clinging و or ل and a nisba ending: «وتعيين» meets «تعيين», «الإيرانية» meets «الإيراني».
+    if (word.length > 4) word = word.replace(/^[ول]/, "");
+    return word.replace(/يه$/, "ي");
+  });
+  return new Set(words.filter((w) => w.length > 2 && !STOP_WORDS.has(w)));
+}
+
+/**
+ * Two stories on one event: headlines published within two days of each other that share at least
+ * four content words, and at least 60% of the shorter one's. The newsroom should never file an event
+ * twice; when it does, the front page prints it once.
+ */
+export function sameEvent(a: Article, b: Article): boolean {
+  if (Math.abs(Date.parse(a.data.publishedAt) - Date.parse(b.data.publishedAt)) > 48 * 36e5) return false;
+  const x = headlineWords(a.data.title);
+  const y = headlineWords(b.data.title);
+  let shared = 0;
+  for (const w of x) if (y.has(w)) shared++;
+  return shared >= 4 && shared / Math.min(x.size, y.size) >= 0.6;
+}
+
+/**
+ * Stories on the same running topic as `article`: they share a narrow topic (a tag carried by at most
+ * one story in twenty, such as الديزل or أرامكو) or two topics at once (النفط and إيران). One broad tag
+ * alone (الصين, النفط, a country) does not make stories related: it put Chinese retail sales under
+ * the Bessent talks. Region and section tags never count. The closest come first, then the newest.
+ * Used under the cover story, where the lead's text column stood 175px short of its photograph (the
+ * owner, 2026-09-23: "too much space").
+ */
+export function onTheSameTopic(article: Article, all: Article[], { exclude = new Set<string>(), n = 2, days = 14, now = Date.now() } = {}): Article[] {
+  const regions = new Set(all.flatMap((a) => a.data.regions));
+  const counts = new Map<string, number>();
+  for (const a of all) for (const t of a.data.tags) counts.set(t, (counts.get(t) ?? 0) + 1);
+  const count = (t: string) => counts.get(t) ?? 0;
+  const narrow = Math.max(3, Math.floor(all.length / 20));
+  const broad = Math.max(3, Math.floor(all.length / 8));
+  const topics = new Set(article.data.tags.filter((t) => !regions.has(t) && !GENERIC_TAGS.has(t) && count(t) <= broad));
+  if (!topics.size) return [];
+  return all
+    .filter((a) => a.id !== article.id && !exclude.has(a.id) && hoursOld(a, now) < days * 24)
+    .map((a) => ({ a, shared: a.data.tags.filter((t) => topics.has(t)) }))
+    .filter(({ shared }) => shared.some((t) => count(t) <= narrow) || shared.length >= 2)
+    .map(({ a, shared }) => ({ a, score: shared.reduce((sum, t) => sum + 1 / Math.max(1, count(t)), 0) }))
+    .sort((x, y) => y.score - x.score)
+    .slice(0, n)
+    .map(({ a }) => a);
+}
+
+/** The stories that repeat an event already told by a newer story in the list (the list is newest first). */
+export function repeatedEvents(list: Article[]): Set<string> {
+  const kept: Article[] = [];
+  const repeats = new Set<string>();
+  for (const a of list) {
+    if (kept.some((k) => sameEvent(k, a))) repeats.add(a.id);
+    else kept.push(a);
+  }
+  return repeats;
+}
+
 /** A section's running topics: its most-used tags that are neither regions nor section names. */
 export function sectionTopics(articles: Article[], section: string, n = 8): string[] {
   const regions = new Set(articles.flatMap((a) => a.data.regions));

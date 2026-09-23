@@ -3,7 +3,8 @@
  * <bdi dir="ltr">, so signs and percent marks stay attached to their digits and
  * Latin names keep their brackets and never split across lines inside Arabic text.
  */
-const NUMBER_SRC = String.raw`(?:(?<=^|[\s(\[«"'،])[+\-−])?\d[\d.,]*(?:[-–]\d[\d.,]*)?(?:\s?[%٪])?`;
+// One run per figure however many groups it has (2026/27, 2026-09-19, 14:30, 2020–2025); see src/lib/bidi.ts.
+const NUMBER_SRC = String.raw`(?:(?<=^|[\s(\[«"'،])[+\-−])?\d[\d.,]*(?:[\/:\-–]\d[\d.,]*)*(?:\s?[%٪])?`;
 const LATIN_SRC = String.raw`(?<![&A-Za-z0-9])\(?[A-Za-z][A-Za-z0-9'’.\-]*(?:\s+[A-Za-z0-9'’.\-]+)*\)?`;
 const RUN = new RegExp(`(${LATIN_SRC})|(${NUMBER_SRC})`, "g");
 const SKIP = new Set(["code", "pre", "bdi", "script", "style", "svg", "a"]);

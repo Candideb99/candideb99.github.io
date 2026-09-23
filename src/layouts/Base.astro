@@ -88,9 +88,12 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
       خازندار over the treasurer's gold key, used as delivered; Amiri heads, Noto
       Naskh text justified in ruled columns, Tajawal for dates and small furniture;
       true-colour photographs sized to their column on every story.
-      STORY: the reader opens today's paper, scans the headline strip and the top
+      STORY: the reader opens the site, scans the headline strip and the top
       stories, reads the lead, moves through the sections, and trusts every story
       because its sources are printed.
+      WORDING (the owner, 2026-09-23): an online news website, not an online
+      newspaper. The look keeps the printed register; the words never make it a
+      paper: no issue number, no العدد, الطبعة or صحيفة about itself.
       FIRST VIEWPORT: date line; the logo centred; green section bar; latest-
       headlines strip; the cover (the day's strongest story on the stage, the
       other four as numbered tabs beneath, rotating until the reader touches it);
@@ -114,8 +117,8 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
       (function () {
         var MONTHS = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
         var DAYS = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
-        var issueDate = document.querySelector("[data-issue-date]");
-        var ZONE = (issueDate && issueDate.getAttribute("data-zone")) || "Africa/Cairo";
+        var today = document.querySelector("[data-today]");
+        var ZONE = (today && today.getAttribute("data-zone")) || "Africa/Cairo";
         function partsIn(d) {
           var parts = new Intl.DateTimeFormat("en-US", { timeZone: ZONE, year: "numeric", month: "numeric", day: "numeric", weekday: "short" }).formatToParts(d);
           var map = {};
@@ -146,10 +149,8 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
           }
         }
         function masthead() {
-          var date = issueDate;
-          var no = document.querySelector("[data-issue-no]");
-          var launch = date && date.getAttribute("data-launch");
-          if (!date || !launch) return;
+          var date = today;
+          if (!date) return;
           var now = new Date();
           var map = partsIn(now);
           var wd = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(map.weekday);
@@ -157,9 +158,15 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
           var iso = map.year + "-" + pad(Number(map.month)) + "-" + pad(Number(map.day));
           if (date.textContent !== text) date.textContent = text;
           if (date.getAttribute("datetime") !== iso) date.setAttribute("datetime", iso);
-          if (no) {
-            var issue = Math.max(1, Math.floor((now - new Date(launch + "T00:00:00Z")) / 86400000) + 1);
-            no.textContent = String(issue);
+          // The Hijri date beside it, by the Umm al-Qura calendar, in Western digits.
+          var hijri = document.querySelector("[data-hijri]");
+          if (hijri) {
+            try {
+              var h = new Intl.DateTimeFormat("ar-SA-u-ca-islamic-umalqura-nu-latn", { day: "numeric", month: "long", year: "numeric", timeZone: ZONE }).format(now);
+              if (hijri.textContent !== h) hijri.textContent = h;
+            } catch (e) {
+              /* a browser without the calendar keeps the date the page was built with */
+            }
           }
         }
         tick();

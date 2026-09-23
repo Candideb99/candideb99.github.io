@@ -1,5 +1,9 @@
 ---
-/** Share row: the services Arab readers actually use, as plain links, plus a copy-link button. */
+/**
+ * Share row: the services Arab readers actually use, as plain links, plus a copy-link button. On a
+ * touch screen that has a share sheet, the row is WhatsApp and the device's own sheet (which lists
+ * every app the reader has), one line instead of five chips wrapping over two above the photograph.
+ */
 interface Props {
   url: string;
   title: string;
@@ -8,48 +12,64 @@ const { url, title } = Astro.props;
 const text = encodeURIComponent(title);
 const link = encodeURIComponent(url);
 const targets = [
-  { name: "واتساب", href: `https://wa.me/?text=${text}%20${link}` },
+  { name: "واتساب", href: `https://wa.me/?text=${text}%20${link}`, keep: true },
   { name: "إكس", href: `https://x.com/intent/post?text=${text}&url=${link}` },
   { name: "تيليغرام", href: `https://t.me/share/url?url=${link}&text=${text}` },
   { name: "فيسبوك", href: `https://www.facebook.com/sharer/sharer.php?u=${link}` },
 ];
 ---
 
-<div class="share" data-share-url={url}>
+<div class="share" data-share-url={url} data-share-title={title}>
   <span class="share__label ui">شارك</span>
   <ul class="share__list">
     {targets.map((t) => (
-      <li><a class="share__link ui" href={t.href} rel="noopener" target="_blank">{t.name}</a></li>
+      <li class={t.keep ? undefined : "share__more"}><a class="share__link ui" href={t.href} rel="noopener" target="_blank">{t.name}</a></li>
     ))}
-    <li><button class="share__link ui" type="button" data-copy>نسخ الرابط</button></li>
+    <li class="share__more"><button class="share__link ui" type="button" data-copy>نسخ الرابط</button></li>
+    <li hidden data-native-item><button class="share__link ui" type="button" data-native>تطبيقات أخرى</button></li>
   </ul>
+  <span class="visually-hidden" aria-live="polite" data-share-status></span>
 </div>
 
 <script is:inline>
   (function () {
     var root = document.querySelector("[data-share-url]");
-    var button = root && root.querySelector("[data-copy]");
-    if (!button || !navigator.clipboard) return;
-    button.addEventListener("click", function () {
-      navigator.clipboard.writeText(root.getAttribute("data-share-url")).then(function () {
-        var old = button.textContent;
-        button.textContent = "تم النسخ";
-        setTimeout(function () { button.textContent = old; }, 2000);
+    if (!root) return;
+    var url = root.getAttribute("data-share-url");
+    var status = root.querySelector("[data-share-status]");
+    var copy = root.querySelector("[data-copy]");
+    if (copy && navigator.clipboard) {
+      copy.addEventListener("click", function () {
+        navigator.clipboard.writeText(url).then(function () {
+          var old = copy.textContent;
+          copy.textContent = "تم النسخ";
+          if (status) status.textContent = "تم نسخ الرابط";
+          setTimeout(function () { copy.textContent = old; if (status) status.textContent = ""; }, 2000);
+        });
       });
-    });
+    }
+    var native = root.querySelector("[data-native]");
+    if (native && navigator.share && window.matchMedia("(pointer: coarse)").matches) {
+      root.classList.add("share--native");
+      native.parentElement.hidden = false;
+      native.addEventListener("click", function () {
+        navigator.share({ title: root.getAttribute("data-share-title") || document.title, url: url }).catch(function () {});
+      });
+    }
   })();
 </script>
 
 <style>
-  .share { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.7rem; margin-top: 0.8rem; }
-  .share__label { font-weight: 700; font-size: 0.82rem; color: var(--ink-3); }
-  .share__list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .share { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.7rem; margin-top: 0.8rem; }
+  .share__label { font-weight: 700; font-size: var(--fs-sm); color: var(--ink-3); }
+  /* The chips wrap beside the label, not on a line of their own under it. */
+  .share__list { flex: 1 1 12rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .share__link {
     display: inline-block;
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: var(--fs-xs);
     line-height: 1;
-    padding: 0.42rem 0.65rem 0.32rem;
+    padding: 0.55rem 0.7rem 0.45rem;
     border: 1px solid var(--rule);
     color: var(--ink-2);
     text-decoration: none;
@@ -57,4 +77,5 @@ const targets = [
     transition: border-color 0.15s var(--ease-out), color 0.15s var(--ease-out);
   }
   .share__link:hover, .share__link:focus-visible { border-color: var(--green); color: var(--green); }
+  .share--native .share__more { display: none; }
 </style>

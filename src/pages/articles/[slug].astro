@@ -9,7 +9,8 @@ import Chart from "@components/Chart.astro";
 import DataTable from "@components/DataTable.astro";
 import Share from "@components/Share.astro";
 import { getArticles, related, articleHref, topicOf } from "@lib/articles";
-import { getSection, sectionHref, kindLabel } from "@lib/sections";
+import { getSection, sectionHref, kindLabel, moreLabel, allLabel } from "@lib/sections";
+import { subTopicOf, topicHref } from "@lib/topics";
 import { analysisLabel } from "@lib/analysis";
 import { formatDate, formatTime, readingLabel, excerpt } from "@lib/format";
 import { isolateNumbers } from "@lib/bidi";
@@ -32,8 +33,10 @@ const ogImage = d.image?.url ?? `/og/${d.slug}.png`;
 const more = related(article, all, 4);
 const topic = topicOf(article);
 // The paper does not end at the sources: the newest of the same section close the page.
-const sectionName = getSection(d.section).name;
 const moreFromSection = all.filter((a) => a.data.section === d.section && a.id !== article.id && !more.includes(a)).slice(0, 4);
+// The newest stories beside the text on a wide screen, as the news sites keep a latest-news column on
+// their article pages; a reader who has finished the story has somewhere to go next.
+const latestBeside = all.filter((a) => a.id !== article.id && !more.includes(a)).slice(0, 5);
 const path = articleHref(article);
 // Internal sources point at the paper's own stories; one that has since been retired is named, not linked.
 const known = new Set(all.map(articleHref));
@@ -43,7 +46,17 @@ const sources = d.sources.map((s) => {
   return known.has(href) ? { ...s, url: href } : { ...s, url: "" };
 });
 
-const jsonLd = {
+// Where the story sits: its section and, for news, the standing sub-topic it falls under (الطاقة ›
+// النفط والغاز), as the Arab news sites print a trail above or beside the headline.
+const sub = isHub ? undefined : subTopicOf(article);
+const sectionLabel = analysisLabel(article, all) ?? kindLabel(d.kind, d.section);
+const trail = [
+  { name: "الرئيسية", url: "/" },
+  { name: sec.name, url: sectionHref(d.section) },
+  ...(sub ? [{ name: sub.name, url: topicHref(d.section, sub.id) }] : []),
+];
+
+const articleLd = {
   "@context": "https://schema.org",
   "@type": isHub ? "Article" : "NewsArticle",
   headline: d.title,
@@ -59,6 +72,12 @@ const jsonLd = {
   mainEntityOfPage: new URL(path, site.url).toString(),
   isBasedOn: d.sources.filter((s) => !s.url.startsWith("/")).map((s) => s.url),
 };
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [...trail, { name: d.title, url: path }].map((c, i) => ({ "@type": "ListItem", position: i + 1, name: c.name, item: new URL(c.url, site.url).toString() })),
+};
+const jsonLd = [articleLd, breadcrumbLd];
 ---
 
 <Base title={d.title} description={description} path={path} image={ogImage} imageAlt={d.image?.alt} type="article" section={d.section} jsonLd={jsonLd} publishedAt={d.publishedAt} updatedAt={d.updatedAt}>
@@ -68,7 +87,11 @@ const jsonLd = {
       <h1 class="article__title" data-pagefind-meta={`title:${d.title}`} set:html={isolateNumbers(d.title)} />
       {d.subtitle && <p class="article__dek" set:html={isolateNumbers(d.subtitle)} />}
       <p class="meta article__meta">
-        <a href={sectionHref(d.section)} data-pagefind-meta={`sectionName:${sec.name}`}>{analysisLabel(article, all) ?? kindLabel(d.kind, d.section)}</a>
+        <span class="crumbs">
+          <a href={sectionHref(d.section)} data-pagefind-meta={`sectionName:${sec.name}`}>{sectionLabel}</a>
+          {sub && <span class="crumbs__sep" aria-hidden="true">›</span>}
+          {sub && <a href={topicHref(d.section, sub.id)}>{sub.name}</a>}
+        </span>
         <span class="article__byline">{site.name}</span>
         <time datetime={d.publishedAt} data-pagefind-meta={`date:${formatDate(d.publishedAt, { weekday: false })}`}>نُشر {formatDate(d.publishedAt)} · {formatTime(d.publishedAt)} {site.timeZoneLabel}</time>
         <span>{readingLabel(d.readingMinutes)}</span>
@@ -94,6 +117,14 @@ const jsonLd = {
       <div class="article__main">
         {d.lede && <p class="article__lede" set:html={isolateNumbers(d.lede)} />}
         <KeyFacts facts={d.keyFacts} placement="inline" />
+        {/* What happened, the numbers, why it matters: the paper's promise, read in that order before
+            the full story. It stood after the whole text until 2026-09-22, four screens down on a phone. */}
+        {d.whyItMatters && (
+          <section class="why" aria-labelledby="why-title">
+            <h2 id="why-title" class="module__head">لماذا يهمّ</h2>
+            <p class="why__text" set:html={isolateNumbers(d.whyItMatters)} />
+          </section>
+        )}
         {d.chart && <Chart chart={d.chart} id={`chart-${d.slug}`} />}
         <div class="prose" data-body>
           <Content />
@@ -105,12 +136,6 @@ const jsonLd = {
           </aside>
         )}
         {d.table && <DataTable table={d.table} />}
-        {d.whyItMatters && (
-          <section class="why" aria-labelledby="why-title">
-            <h2 id="why-title" class="module__head">لماذا يهمّ</h2>
-            <p class="why__text" set:html={isolateNumbers(d.whyItMatters)} />
-          </section>
-        )}
         {d.tags.length > 0 && (
           <p class="tags">
             {d.tags.map((t) => (
@@ -118,7 +143,7 @@ const jsonLd = {
             ))}
           </p>
         )}
-        <Sources sources={sources} models={d.models} explainer={isHub} />
+        <Sources sources={sources} explainer={isHub} />
       </div>
       <aside class="article__side">
         <KeyFacts facts={d.keyFacts} placement="side" />
@@ -132,6 +157,16 @@ const jsonLd = {
             </div>
           </section>
         )}
+        {latestBeside.length > 0 && (
+          <section class="side-latest" aria-labelledby="side-latest-title">
+            <h2 id="side-latest-title" class="module__head"><a href="/latest/">الأحدث</a></h2>
+            <div class="side-related__list">
+              {latestBeside.map((a) => (
+                <StoryCard article={a} variant="text" showExcerpt={false} />
+              ))}
+            </div>
+          </section>
+        )}
       </aside>
     </div>
   </article>
@@ -139,8 +174,8 @@ const jsonLd = {
   {moreFromSection.length >= 2 && (
     <section class="wrap--article article__more" aria-labelledby="more-head">
       <div class="section-head">
-        <h2 id="more-head"><a href={sectionHref(d.section)}>المزيد من {sectionName}</a></h2>
-        <a class="more" href={sectionHref(d.section)}>كل {sectionName}</a>
+        <h2 id="more-head"><a href={sectionHref(d.section)}>{moreLabel(d.section)}</a></h2>
+        <a class="more" href={sectionHref(d.section)}>{allLabel(d.section)}</a>
       </div>
       <div class={moreFromSection.length >= 3 ? "cards" : "cards cards--list"} style={`--n:${moreFromSection.length}`}>
         {moreFromSection.map((a) => (
@@ -167,7 +202,7 @@ const jsonLd = {
   .article__more { padding-top: clamp(2.25rem, 4.5vw, 3.75rem); }
   /* اقرأ أيضاً inside the text, after the third paragraph, as the desks place it: a ruled line, not a box. */
   .also { max-width: var(--measure); margin: 1.25rem 0 1.5rem; padding: 0.55rem 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.75rem; }
-  .also__head { font-weight: 700; font-size: 0.78rem; color: var(--green); white-space: nowrap; }
+  .also__head { font-weight: 700; font-size: var(--fs-xs); color: var(--green); white-space: nowrap; }
   .also__link { font-family: var(--font-title); font-weight: 700; font-size: 1.05rem; line-height: 1.45; text-decoration: none; }
   .also__link:hover { color: var(--green); }
   .article__title {
@@ -187,11 +222,13 @@ const jsonLd = {
   }
   .article__meta { margin-top: 0.9rem; padding-top: 0.6rem; border-top: 1px solid var(--rule); }
   .article__byline { font-weight: 700; color: var(--ink-2); }
+  .crumbs { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 0 0.35rem; }
+  .crumbs__sep { color: var(--ink-3); }
 
   /* The photograph runs at the width of the story, cropped to a panoramic frame so it never costs a whole screen. */
   .article__figure { margin: clamp(1.25rem, 3vw, 2rem) 0 0; }
   .article__figure :global(.article__photo) { aspect-ratio: 2 / 1 !important; }
-  .article__caption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 1.5rem; margin-top: 0.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule); font-size: 0.82rem; color: var(--ink-3); line-height: 1.5; }
+  .article__caption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 1.5rem; margin-top: 0.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule); font-size: var(--fs-sm); color: var(--ink-3); line-height: 1.5; }
   .article__credit a { color: var(--ink-3); }
 
   .article__layout {
@@ -212,9 +249,10 @@ const jsonLd = {
     text-align: justify;
     text-align-last: start;
   }
-  /* A rule-topped block like the figures, not a box: the site draws rules, never frames. */
-  .why { margin-top: 1.75rem; max-width: var(--measure); border-bottom: 1px solid var(--rule); padding-bottom: 1rem; }
-  .why__text { font-family: var(--font-body); font-size: 1.08rem; line-height: 1.85; text-align: justify; text-align-last: start; }
+  /* A rule-bottomed block like the figures, not a box: the site draws rules, never frames. It sits
+     under the lede and the figures, set at the text's own size (it was a step smaller than the text). */
+  .why { margin: 0.25rem 0 1.75rem; max-width: var(--measure); border-bottom: 1px solid var(--rule); padding-bottom: 1rem; }
+  .why__text { font-family: var(--font-body); font-size: clamp(1.12rem, 1.02rem + 0.35vw, 1.25rem); line-height: 1.9; text-align: justify; text-align-last: start; }
   .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.5rem; }
 
   .article__side { border-inline-start: 1px solid var(--rule); padding-inline-start: clamp(1.5rem, 3vw, 2.5rem); display: grid; gap: 2rem; align-content: start; align-self: stretch; }
@@ -222,12 +260,20 @@ const jsonLd = {
   .side-related__list > :global(.card--text) { border-top: 1px solid var(--rule); padding-block: 0.7rem; }
   .side-related__list > :global(.card--text:first-child) { border-top: 0; padding-top: 0; }
 
+  .side-latest .module__head a { color: inherit; text-decoration: none; }
+  .side-latest .module__head a:hover { color: var(--green); }
+
   @media (max-width: 1023px) {
+    /* Under the story on a narrow screen the page already ends with the section's newest. */
+    .side-latest { display: none; }
     .article__layout { grid-template-columns: 1fr; }
     .article__main { padding-inline-end: 0; }
     .article__side { border-inline-start: 0; padding-inline-start: 0; margin-top: 2rem; }
   }
   @media (max-width: 719px) {
     .article__figure :global(.article__photo) { aspect-ratio: 3 / 2 !important; }
+    /* In a 343px column a bold lede a size above the text justified with word gaps nearly four
+       spaces wide; at the text's size it keeps the column even. */
+    .article__lede { font-size: 1.12rem; line-height: 1.85; }
   }
 </style>

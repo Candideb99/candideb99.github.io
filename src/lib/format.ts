@@ -77,13 +77,6 @@ export function readingLabel(minutes: number): string {
   return `${m} دقيقة قراءة`;
 }
 
-/** Issue number counted in days since launch (issue 1 on launch day). */
-export function issueNumber(date = new Date()): number {
-  const launch = new Date(`${site.launchDate}T00:00:00Z`);
-  const days = Math.floor((date.getTime() - launch.getTime()) / 86_400_000);
-  return Math.max(1, days + 1);
-}
-
 export function isoDate(iso: string | Date): string {
   const d = new Date(iso);
   return Number.isNaN(d.getTime()) ? "" : d.toISOString();

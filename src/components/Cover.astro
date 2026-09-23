@@ -2,13 +2,17 @@
 /**
  * The cover: the day's five strongest stories on a rotating stage, and beside it the paper's own
  * voice (one reading of each kind: the latest analysis, explainer and paper reading, each with its
- * dek) over the market box, the way a business daily runs its readings and its numbers beside the lead.
+ * dek), the way a business daily runs its readings beside the lead. The market box that used to sit
+ * under the readings now heads the numbers column under the cover (Front.astro): stacked here it made
+ * the column 740px tall, and the photograph stretched to match it was cropped to a portrait strip.
  *
  * The owner chose rotation after seeing the carousel research, so it is built to that research's
  * fallback rules: a six-second interval, a 400ms fade (dropped under reduced motion; the stage still
- * turns, the owner's decision), small dots inside the photograph, pause under the pointer and keyboard
- * focus, a minute's rest after any dot click, no button, and no rotation on phones. Without JavaScript
- * the first story stands alone. The script is embedded so a cached page cannot lose it.
+ * turns, the owner's decision), small dots inside the photograph, pause under the pointer and while
+ * keyboard focus is inside, a minute's rest after any dot click, no button, and no rotation on phones.
+ * On a phone the four stories behind the lead are listed under it instead, so none of the day's five
+ * is lost. Without JavaScript the first story stands alone. The script is embedded so a cached page
+ * cannot lose it.
  */
 import type { Article } from "@lib/articles";
 import { articleHref, topicOf } from "@lib/articles";
@@ -17,7 +21,7 @@ import { analysisLabel } from "@lib/analysis";
 import { excerpt, timeAgo } from "@lib/format";
 import { isolateNumbers } from "@lib/bidi";
 import Photo from "./Photo.astro";
-import MarketBoard from "./MarketBoard.astro";
+import StoryCard from "./StoryCard.astro";
 
 interface Props {
   stories: Article[];
@@ -29,15 +33,17 @@ interface Props {
   all?: Article[];
   /** Milliseconds a story stays on the stage. */
   interval?: number;
+  /** Up to two headlines on each story's running topic, by story id, printed under its meta line. */
+  related?: Map<string, Article[]>;
 }
-const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.props;
+const { stories, readings = [], photoIds, interval = 6000, all = [], related = new Map<string, Article[]>() } = Astro.props;
 ---
 
-<section class="wrap cover" data-cover data-interval={interval} aria-roledescription="carousel" aria-label="أبرز أخبار العدد">
+<section class="wrap cover" data-cover data-interval={interval} aria-roledescription="carousel" aria-label="أبرز الأخبار">
   <div class="cover__stage">
     {stories.map((a, i) => {
       const d = a.data;
-      const summary = excerpt(d.subtitle || d.lede, 200);
+      const summary = excerpt(d.subtitle || d.lede, 160);
       const href = articleHref(a);
       const withPhoto = Boolean(d.image) && photoIds.has(a.id);
       const topic = topicOf(a);
@@ -51,10 +57,20 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
               <a href={sectionHref(d.section)}>{kindLabel(d.kind, d.section)}</a>
               <time datetime={d.publishedAt} data-relative>{timeAgo(d.publishedAt)}</time>
             </p>
+            {(related.get(a.id) ?? []).length > 0 && (
+              <div class="cover__related">
+                <p class="cover__related-head ui">ذات صلة</p>
+                <ul>
+                  {(related.get(a.id) ?? []).map((r) => (
+                    <li><a href={articleHref(r)} set:html={isolateNumbers(r.data.title)} /></li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
           {withPhoto && (
             <a class="cover__photo" href={href} tabindex="-1" aria-hidden="true">
-              <Photo image={d.image} ratio="3/2" eager={i === 0} sizes="(min-width: 1320px) 600px, (min-width: 1024px) 48vw, 100vw" />
+              <Photo image={d.image} ratio="3/2" eager={i === 0} sizes="(min-width: 1320px) 680px, (min-width: 1200px) 50vw, (min-width: 720px) 62vw, 100vw" />
             </a>
           )}
         </article>
@@ -62,10 +78,18 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
     })}
 
     {stories.length > 1 && (
+      <div class="cover__more" aria-label="أبرز الأخبار أيضاً" role="group">
+        {stories.slice(1).map((a) => (
+          <StoryCard article={a} variant="list" showSection showPhoto={photoIds.has(a.id)} />
+        ))}
+      </div>
+    )}
+
+    {stories.length > 1 && (
       <div class="cover__controls" hidden data-cover-controls>
         <div class="cover__dots" role="tablist" aria-label="اختر الخبر">
           {stories.map((a, i) => (
-            <button type="button" class="cover__dot" role="tab" aria-selected={i === 0 ? "true" : "false"} aria-controls={`cover-slide-${i}`} aria-label={a.data.title} data-index={i}></button>
+            <button type="button" class="cover__dot" role="tab" aria-selected={i === 0 ? "true" : "false"} tabindex={i === 0 ? "0" : "-1"} aria-controls={`cover-slide-${i}`} aria-label={a.data.title} data-index={i}></button>
           ))}
         </div>
       </div>
@@ -77,7 +101,7 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
       <h2 id="readings-head" class="module__head">قراءات خازندار</h2>
       <div class="cover__readings">
         {readings.map((a) => {
-          const analysis = a.data.kind === "analysis";
+          const analysis = a.data.kind === "analysis" || a.data.kind === "weekly";
           const dek = excerpt(a.data.subtitle || a.data.lede, analysis ? 100 : 70);
           return (
             <article class={`cover__reading${analysis ? " cover__reading--lead" : ""}`} data-section={a.data.section}>
@@ -89,7 +113,6 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
           );
         })}
       </div>
-      <MarketBoard variant="box" id="front-board" />
     </aside>
   )}
 </section>
@@ -100,6 +123,7 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
     for (var r = 0; r < roots.length; r++) init(roots[r]);
 
     function init(root) {
+      var stage = root.querySelector(".cover__stage");
       var slides = root.querySelectorAll(".cover__slide");
       var dots = root.querySelectorAll(".cover__dot");
       var controls = root.querySelector("[data-cover-controls]");
@@ -118,11 +142,15 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
           var on = k === i;
           slides[k].hidden = !on;
           dots[k].setAttribute("aria-selected", on ? "true" : "false");
+          // One tab stop for the five dots; the arrow keys move between them.
+          dots[k].setAttribute("tabindex", on ? "0" : "-1");
         }
         current = i;
         warm((i + 1) % slides.length);
       }
+      // The next story's picture is fetched a turn ahead, never on a phone, where the stage does not turn.
       function warm(i) {
+        if (phone) return;
         var img = slides[i].querySelector("img");
         if (!img || img.getAttribute("data-warm")) return;
         img.setAttribute("data-warm", "1");
@@ -131,9 +159,33 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
         if (img.srcset) pre.srcset = img.srcset;
         pre.src = img.currentSrc || img.src;
       }
+      // The stage keeps the height of its tallest story, so nothing under the cover moves when it turns.
+      // Each hidden story is laid out for a moment (unseen, its picture not fetched) to be measured.
+      function fit() {
+        if (phone || !stage) return;
+        stage.style.minHeight = "";
+        var tallest = 0;
+        for (var k = 0; k < slides.length; k++) {
+          var s = slides[k];
+          var was = s.hidden;
+          if (was) { s.style.visibility = "hidden"; s.hidden = false; }
+          tallest = Math.max(tallest, s.getBoundingClientRect().height);
+          if (was) { s.hidden = true; s.style.visibility = ""; }
+        }
+        // Still at least the row's height, so the photograph fills the stage beside a tall readings column.
+        if (tallest) stage.style.minHeight = "max(100%, " + Math.ceil(tallest) + "px)";
+      }
+      // The reader is on the cover: the pointer is over it, keyboard focus is inside it (focus left by a
+      // mouse click on a dot does not count, so the minute's rest after a click still ends), or the tab
+      // is not being looked at. Every turn checks it, so the cover never changes under the reader even
+      // where a focus event never arrives.
+      function reading() {
+        if (document.hidden || root.matches(":hover")) return true;
+        try { return Boolean(root.querySelector(":focus-visible")); } catch (e) { return root.contains(document.activeElement); }
+      }
       function start() {
         if (!auto || timer) return;
-        timer = setInterval(function () { show(current + 1); }, interval);
+        timer = setInterval(function () { if (!reading()) show(current + 1); }, interval);
         root.classList.add("is-running");
       }
       function stop() {
@@ -166,7 +218,13 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
           dots[current].focus();
         });
       }
-      function resume() { if (auto && Date.now() >= resumeAt && !root.matches(":hover")) start(); }
+      // Never turn under the reader: not under the pointer, not while keyboard focus is inside the
+      // cover, not in a tab nobody is looking at. (Until 2026-09-22 the five-second check below
+      // restarted it with focus inside, and it turned in background tabs.)
+      function resume() {
+        if (!auto || Date.now() < resumeAt || reading()) return;
+        start();
+      }
       root.addEventListener("mouseenter", stop);
       root.addEventListener("mouseleave", resume);
       root.addEventListener("focusin", stop);
@@ -175,6 +233,10 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
       setInterval(resume, 5000);
 
       show(0);
+      fit();
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+      var resizing;
+      window.addEventListener("resize", function () { clearTimeout(resizing); resizing = setTimeout(fit, 150); });
       start();
     }
   })();
@@ -184,35 +246,53 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
   .cover { display: grid; grid-template-columns: minmax(0, 9fr) minmax(0, 3fr); column-gap: 0; padding-top: clamp(1.1rem, 2.5vw, 1.75rem); padding-bottom: clamp(1.25rem, 2.5vw, 1.75rem); border-bottom: 3px solid var(--ink); align-items: start; }
 
   .cover__stage { position: relative; padding-inline-end: var(--col-gap); display: grid; align-content: stretch; min-height: 100%; }
-  .cover__slide { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 0 clamp(1.25rem, 3vw, 2.5rem); align-items: stretch; grid-area: 1 / 1; min-height: 100%; }
-  /* The photograph fills the stage's height whatever the headline's length, so no paper is left bare. */
-  .cover__photo :global(.photo) { aspect-ratio: auto !important; height: 100%; min-height: 20rem; }
-  .cover__body { align-self: center; }
+  /* Headline and photograph share the stage 5 to 7: at 4 to 8 the 40px headline wrapped five lines deep in a 286px column. */
+  .cover__slide { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 0 clamp(1.25rem, 3vw, 2.5rem); align-items: stretch; grid-area: 1 / 1; }
+  /* The photograph fills the stage's height, so no paper is left bare beside a short headline, but it
+     never turns portrait: between 3:2 and square, measured on its own width. Stretched to the old
+     740px column it showed half of every picture (the airport slide was mostly ceiling). */
+  .cover__photo { order: 2; display: block; text-decoration: none; container-type: inline-size; }
+  .cover__photo :global(.photo) { aspect-ratio: auto !important; height: 100%; min-height: 66.667cqi; max-height: 100cqi; }
+  /* The headline hangs from the photograph's top edge, as it does on the printed page; centred beside
+     a tall picture it started 80px lower and its dek fell under a laptop's fold. */
+  .cover__body { order: 1; align-self: start; }
   .cover__slide[hidden] { display: none; }
   .cover--js .cover__slide:not([hidden]) { animation: cover-in 0.4s var(--ease-out); }
   @keyframes cover-in { from { opacity: 0; } }
   .cover__slide--text { grid-template-columns: 1fr; }
   .cover__slide--text .cover__body { max-width: 56rem; padding-block: 1.5rem; }
-  .cover__body { order: 1; }
-  .cover__photo { order: 2; display: block; text-decoration: none; }
   .cover__title { font-family: var(--font-title); font-weight: 700; font-size: clamp(1.7rem, 1.1rem + 1.9vw, 2.5rem); line-height: 1.28; }
   .cover__title a { text-decoration: none; }
   .cover__title a:hover { color: var(--green); }
   .cover__dek { font-family: var(--font-body); font-size: clamp(1.05rem, 1rem + 0.25vw, 1.18rem); line-height: 1.7; color: var(--ink-2); margin-top: 0.55rem; max-width: 34em; }
   .cover__meta { margin-top: 0.6rem; }
+  /* ذات صلة: two headlines on the story's running topic under a hairline, filling the text column that
+     otherwise stood short of the photograph beside it. */
+  .cover__related { margin-top: 1rem; border-top: 1px solid var(--rule); padding-top: 0.55rem; max-width: 34em; }
+  .cover__related-head { font-weight: 700; font-size: var(--fs-xs); color: var(--green); margin-bottom: 0.15rem; }
+  .cover__related li { padding-block: 0.35rem; }
+  .cover__related li + li { border-top: 1px solid var(--rule); }
+  .cover__related a { font-family: var(--font-title); font-weight: 700; font-size: 1.02rem; line-height: 1.45; text-decoration: none; }
+  .cover__related a:hover { color: var(--green); }
+
+  /* The four stories behind the lead, listed under it on a phone, where the stage does not turn. */
+  .cover__more { display: none; }
 
   /* The dots sit inside the photograph at its top corner, small and quiet: white rings on a faint
-     dark wash, the current one filled. There is no button: the pointer and keyboard focus pause it. */
-  .cover__controls { position: absolute; top: 0.6rem; inset-inline-end: calc(var(--col-gap) + 0.6rem); display: flex; align-items: center; padding: 0.3rem 0.45rem; background: rgba(20, 20, 20, 0.28); border-radius: 999px; }
-  .cover__dots { display: flex; align-items: center; gap: 0.38rem; }
-  .cover__dot { width: 0.5rem; height: 0.5rem; padding: 0; border: 1.5px solid rgba(252, 252, 249, 0.9); border-radius: 50%; background: transparent; cursor: pointer; }
-  .cover__dot[aria-selected="true"] { background: #fcfcf9; }
-  .cover__dot:hover { background: rgba(252, 252, 249, 0.6); }
+     dark wash, the current one filled. Each ring is drawn at 8px inside a 24px target, so a finger
+     or a pointer can hit it. There is no button: the pointer and keyboard focus pause it. */
+  .cover__controls { position: absolute; top: 0.5rem; inset-inline-end: calc(var(--col-gap) + 0.5rem); display: flex; align-items: center; padding: 0.05rem 0.2rem; background: rgba(20, 20, 20, 0.28); border-radius: 999px; }
+  .cover__dots { display: flex; align-items: center; }
+  .cover__dot { position: relative; width: 1.5rem; height: 1.5rem; padding: 0; border: 0; border-radius: 50%; background: none; cursor: pointer; }
+  .cover__dot::before { content: ""; position: absolute; inset: 0; margin: auto; width: 0.5rem; height: 0.5rem; border: 1.5px solid rgba(252, 252, 249, 0.9); border-radius: 50%; }
+  .cover__dot[aria-selected="true"]::before { background: #fcfcf9; }
+  .cover__dot:hover::before { background: rgba(252, 252, 249, 0.6); }
+  .cover__dot:focus-visible { outline: 2px solid #fcfcf9; outline-offset: -2px; }
 
   /* The paper's readings beside the stage: one of each kind, the analysis a step larger, each
-     with its dek so the column reads as three different things, not a list; the market box under them. */
+     with its dek so the column reads as three different things, not a list. */
   .cover__beside { display: grid; align-content: start; border-inline-start: 1px solid var(--rule); padding-inline-start: var(--col-gap); }
-  .cover__readings { display: grid; align-content: start; margin-bottom: 1.1rem; }
+  .cover__readings { display: grid; align-content: start; }
   .cover__reading { padding-block: 0.65rem; border-top: 1px solid var(--rule); }
   .cover__reading:first-child { border-top: 0; padding-top: 0; }
   .cover__reading-title { font-family: var(--font-title); font-weight: 700; font-size: 1.05rem; line-height: 1.42; }
@@ -220,27 +300,36 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
   .cover__reading-title a { text-decoration: none; }
   .cover__reading-title a:hover { color: var(--green); }
   .cover__reading-dek { font-family: var(--font-body); font-size: 0.95rem; line-height: 1.65; color: var(--ink-2); margin-top: 0.25rem; }
-  .cover__reading .meta { margin-top: 0.15rem; font-size: 0.75rem; }
-  .cover__reading .kicker { margin-bottom: 0.1rem; font-size: 0.72rem; }
+  .cover__reading .meta { margin-top: 0.15rem; font-size: var(--fs-xs); }
+  .cover__reading .kicker { margin-bottom: 0.1rem; }
 
-  @media (max-width: 1023px) {
+  /* Below 1200px the beside column would be too narrow to sit level with the stage, so the cover
+     runs in one column and the readings become a ruled band of three under it. */
+  @media (max-width: 1199px) {
     .cover { grid-template-columns: 1fr; row-gap: 1.25rem; }
     .cover__stage { padding-inline-end: 0; }
-    .cover__controls { inset-inline-end: 0.6rem; }
-    .cover__beside { border-inline-start: 0; padding-inline-start: 0; padding-top: 0.25rem; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: 0; }
-    .cover__beside > #readings-head { grid-column: 1 / -1; }
-    .cover__readings { margin-bottom: 0; padding-inline-end: var(--col-gap); }
-    .cover__beside :global(.board--box) { border-inline-start: 1px solid var(--rule); padding-inline-start: var(--col-gap); }
+    .cover__controls { inset-inline-end: 0.5rem; }
+    .cover__beside { border-inline-start: 0; padding-inline-start: 0; padding-top: 0.25rem; }
+    .cover__readings { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 0; }
+    .cover__reading { padding: 0 var(--col-gap); border-top: 0; }
+    .cover__reading:first-child { padding-inline-start: 0; }
+    .cover__reading:last-child { padding-inline-end: 0; }
+    .cover__reading + .cover__reading { border-inline-start: 1px solid var(--rule); }
   }
   @media (max-width: 719px) {
     .cover__slide { grid-template-columns: 1fr; gap: 0.6rem 0; align-items: start; }
-    .cover__photo { order: 1; }
+    .cover__photo { order: 1; container-type: normal; }
     .cover__body { order: 2; }
     .cover__controls { display: none; }
-    .cover__beside { grid-template-columns: 1fr; }
-    .cover__readings { padding-inline-end: 0; margin-bottom: 1.25rem; }
-    .cover__beside :global(.board--box) { border-inline-start: 0; padding-inline-start: 0; }
-    .cover__photo :global(.photo) { aspect-ratio: 3 / 2 !important; height: auto; min-height: 0; }
+    .cover__related { display: none; }
+    .cover__photo :global(.photo) { aspect-ratio: 3 / 2 !important; height: auto; min-height: 0; max-height: none; }
+    .cover__more { display: grid; margin-top: 1rem; border-top: 1px solid var(--ink); }
+    .cover__more > :global(.card) { padding-block: 0.75rem; border-top: 1px solid var(--rule); }
+    .cover__more > :global(.card:first-child) { border-top: 0; }
+    .cover__readings { grid-template-columns: 1fr; }
+    .cover__reading { padding: 0.65rem 0; }
+    .cover__reading + .cover__reading { border-inline-start: 0; border-top: 1px solid var(--rule); }
+    .cover__reading:first-child { padding-top: 0; }
   }
   @media (prefers-reduced-motion: reduce) {
     .cover--js .cover__slide:not([hidden]) { animation: none; }

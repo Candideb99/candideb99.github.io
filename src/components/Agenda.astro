@@ -37,10 +37,10 @@ const events = upcoming(limit);
   .agenda__list { display: grid; }
   .agenda__item { display: grid; grid-template-columns: 6.2rem minmax(0, 1fr); column-gap: 0.6rem; align-items: baseline; padding-block: 0.42rem; border-top: 1px solid var(--rule); }
   .agenda__item:first-child { border-top: 0; padding-top: 0; }
-  .agenda__day { font-size: 0.76rem; font-weight: 700; color: var(--green); line-height: 1.5; }
+  .agenda__day { font-size: var(--fs-xs); font-weight: 700; color: var(--green); line-height: 1.5; }
   .agenda__title { font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; line-height: 1.5; text-decoration: none; color: var(--ink); }
   .agenda__title:hover { color: var(--green); }
-  .agenda__foot { margin-top: 0.5rem; font-size: 0.78rem; line-height: 1.55; color: var(--ink-3); }
+  .agenda__foot { margin-top: 0.5rem; font-size: var(--fs-xs); line-height: 1.55; color: var(--ink-3); }
   .agenda__foot a { font-weight: 700; color: var(--ink-2); text-decoration: none; }
   .agenda__foot a:hover { color: var(--green); text-decoration: underline; }
   .agenda__foot time { color: inherit; }

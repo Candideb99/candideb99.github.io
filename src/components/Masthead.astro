@@ -1,24 +1,34 @@
 ---
 /**
- * The masthead: the date line with the paper's standing tools (الأحدث، لوحة الأسواق، الأجندة، بحث),
- * the logo, and the green section bar. On a wide screen each section opens a panel under the bar,
- * as the business dailies' bars do: the section's standing sub-topics (a curated taxonomy in
- * `src/data/topics.json`, not the writers' tags), its analyses by desk, and the data and pages that
- * belong to it. The panel is sized to its content, never wider than the bar, hung under the section
- * that opened it (slid back inside the bar when it would overrun the bar's end — the one thing the
- * script below does; until 2026-09-22 every panel hung from the bar's start edge, which put the
- * explainers panel half a screen away from its section), and opens on hover only (a panel held open by
- * keyboard focus used to sit over the section under the pointer). Keyboard and touch readers get plain
- * links and the same taxonomy on the section pages.
+ * The masthead: the date line (the Gregorian and the Hijri date, as the Gulf and Egyptian news sites
+ * print them) with the site's standing tools (الأحدث، لوحة الأسواق، الأجندة، بحث), the logo, and the
+ * green section bar. No issue number: خازندار is an online news website, not a newspaper (the owner,
+ * 2026-09-23: "avoid using wordings that hint that my website is a paper newspaper like العدد").
+ *
+ * The section bar stands outside the header so it can stay pinned to the top of the screen for the
+ * whole page, as the section bars of Al Jazeera, Asharq Business and the BBC do; once the date line
+ * and the logo have scrolled away it takes a small logo at its start (in place of الرئيسية) and the
+ * search at its end. On a phone the search and the menu live at the end of the bar at all times, so a
+ * reader deep in a story is one tap from every section and tool.
+ *
+ * On a wide screen each section opens a panel under the bar, as the business sites' bars do: the
+ * section's standing sub-topics (a curated taxonomy in `src/data/topics.json`, not the writers' tags),
+ * its analyses by desk, and the data and pages that belong to it. The panel is sized to its content,
+ * never wider than the bar, hung under the section that opened it (slid back inside the bar when it
+ * would overrun the bar's end; until 2026-09-22 every panel hung from the bar's start edge, which put
+ * the explainers panel half a screen away from its section), and opens on hover only (a panel held
+ * open by keyboard focus used to sit over the section under the pointer). Keyboard and touch readers
+ * get plain links and the same taxonomy on the section pages.
  */
 import site from "@data/site.json";
 import { sections, sectionHref, newsSections } from "@lib/sections";
-import { formatDate, issueNumber } from "@lib/format";
+import { formatDate } from "@lib/format";
 import { todayIso } from "@lib/calendar";
 import { getArticles, articleHref } from "@lib/articles";
 import { analysisDesk, ANALYSIS_DESKS } from "@lib/analysis";
 import { topicsOf, topicHref } from "@lib/topics";
 import { isolateNumbers } from "@lib/bidi";
+import { LOGO } from "@lib/brand";
 import Logo from "./Logo.astro";
 
 interface Props {
@@ -27,7 +37,10 @@ interface Props {
 const { active } = Astro.props;
 const now = new Date();
 const today = formatDate(now);
-const issue = issueNumber(now);
+/** The Hijri date by the Umm al-Qura calendar, in Western digits like every figure on the site. */
+const hijri = new Intl.DateTimeFormat("ar-SA-u-ca-islamic-umalqura-nu-latn", { day: "numeric", month: "long", year: "numeric", timeZone: site.timeZone }).format(now);
+const MINI = 30;
+const miniWidth = Math.round((LOGO.width / LOGO.height) * MINI);
 
 const articles = await getArticles();
 const analyses = articles.filter((a) => a.data.kind === "analysis" || a.data.kind === "weekly");
@@ -72,14 +85,14 @@ for (const s of sections) {
 }
 ---
 
-<header class="masthead">
+<header class="masthead" data-masthead>
   <div class="wrap masthead__top ui">
-    <p class="masthead__issue">
-      <time datetime={todayIso(now)} data-issue-date data-launch={site.launchDate} data-zone={site.timeZone}>{today}</time>
+    <p class="masthead__date">
+      <time datetime={todayIso(now)} data-today data-zone={site.timeZone}>{today}</time>
       <span class="masthead__sep" aria-hidden="true">·</span>
-      <span>العدد <bdi data-issue-no>{issue}</bdi></span>
+      <span data-hijri>{hijri}</span>
     </p>
-    <nav class="masthead__tools" aria-label="أدوات الصحيفة">
+    <nav class="masthead__tools" aria-label="أدوات الموقع">
       <a href="/latest/">الأحدث</a>
       <a href="/markets/data/">لوحة الأسواق</a>
       <a href="/calendar/">الأجندة</a>
@@ -95,39 +108,78 @@ for (const s of sections) {
       <Logo part="lockup" height={118} class="brand__lockup" eager />
     </a>
   </div>
-
-  <nav class="masthead__nav" aria-label="أقسام خازندار">
-    <div class="wrap masthead__nav-wrap">
-      <ul class="nav">
-        <li class="nav__item"><a href="/" class="nav__link" aria-current={active === "home" ? "page" : undefined}>الرئيسية</a></li>
-        {sections.map((s) => {
-          const columns = panels.get(s.id);
-          return (
-            <li class={`nav__item${columns ? " nav__item--panel" : ""}`}>
-              <a href={sectionHref(s.id)} class="nav__link" aria-current={active === s.id ? "page" : undefined}>{s.name}</a>
-              {columns && (
-                <div class="nav__panel" role="group" aria-label={`قسم ${s.name}`}>
-                  {columns.map((c) => (
-                    <div class={`nav__col${c.wide ? " nav__col--wide" : ""}${c.links.length > 5 && !c.wide ? " nav__col--two" : ""}`}>
-                      <p class="nav__head ui">{c.head}</p>
-                      <ul>
-                        {c.links.map((l) => (
-                          <li class={l.title ? "nav__title" : undefined}><a href={l.href} set:html={isolateNumbers(l.text)} /></li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  </nav>
 </header>
 
+<nav class="masthead__nav" aria-label="أقسام خازندار" data-bar>
+  <div class="wrap masthead__nav-wrap">
+    <a class="bar__brand" href="/" aria-label={`${site.name} — الصفحة الرئيسية`}>
+      <img src="/logo-dark.svg" width={miniWidth} height={MINI} alt="" decoding="async" />
+    </a>
+    <ul class="nav">
+      <li class="nav__item nav__item--home"><a href="/" class="nav__link" aria-current={active === "home" ? "page" : undefined}>الرئيسية</a></li>
+      {sections.map((s) => {
+        const columns = panels.get(s.id);
+        return (
+          <li class={`nav__item${columns ? " nav__item--panel" : ""}`}>
+            <a href={sectionHref(s.id)} class="nav__link" aria-current={active === s.id ? "page" : undefined}>{s.name}</a>
+            {columns && (
+              <div class="nav__panel" role="group" aria-label={`قسم ${s.name}`}>
+                {columns.map((c) => (
+                  <div class={`nav__col${c.wide ? " nav__col--wide" : ""}${c.links.length > 5 && !c.wide ? " nav__col--two" : ""}`}>
+                    <p class="nav__head ui">{c.head}</p>
+                    <ul>
+                      {c.links.map((l) => (
+                        <li class={l.title ? "nav__title" : undefined}><a href={l.href} set:html={isolateNumbers(l.text)} /></li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+    <div class="bar__tools">
+      <a class="bar__search" href="/search/" aria-label="بحث">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.6-3.6" /></svg>
+      </a>
+      {/* On a phone the bar shows four or five of its ten names, so the menu lists everything: every
+          section and every tool, a finger's height apart. */}
+      <details class="menu" data-menu>
+        <summary class="menu__button" aria-label="القائمة">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+        </summary>
+        <div class="menu__panel">
+          <p class="menu__head">الأقسام</p>
+          <ul class="menu__list">
+            <li><a href="/" aria-current={active === "home" ? "page" : undefined}>الرئيسية</a></li>
+            {sections.map((s) => (
+              <li><a href={sectionHref(s.id)} aria-current={active === s.id ? "page" : undefined}>{s.name}</a></li>
+            ))}
+          </ul>
+          <p class="menu__head">الأدوات والبيانات</p>
+          <ul class="menu__list">
+            <li><a href="/latest/">الأحدث</a></li>
+            <li><a href="/markets/data/">لوحة الأسواق</a></li>
+            <li><a href="/calendar/">الأجندة الاقتصادية</a></li>
+            <li><a href="/tags/">الملفات والمناطق</a></li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+</nav>
+
 <script>
+  // The bar is pinned by CSS alone; once the header above it has left the screen it is marked stuck,
+  // which brings in the small logo and the search.
+  const bar = document.querySelector<HTMLElement>("[data-bar]");
+  const head = document.querySelector<HTMLElement>("[data-masthead]");
+  if (bar && head && "IntersectionObserver" in window) {
+    new IntersectionObserver(([entry]) => bar.classList.toggle("is-stuck", !entry.isIntersecting)).observe(head);
+  }
+
   // Hang each panel from its own section's start edge; if it would overrun the bar's end edge, slide
   // it back so it stays inside the bar. The panel's containing block stays the bar, so it is never
   // wider than the bar. Measured on hover, when the panel is displayed and has a width.
@@ -138,7 +190,7 @@ for (const s of sections) {
       const panel = item.querySelector<HTMLElement>(".nav__panel");
       if (!panel) continue;
       item.addEventListener("mouseenter", () => {
-        const bar = wrap.getBoundingClientRect();
+        const box = wrap.getBoundingClientRect();
         const link = item.getBoundingClientRect();
         let width = panel.getBoundingClientRect().width;
         if (!width) {
@@ -146,33 +198,49 @@ for (const s of sections) {
           width = panel.getBoundingClientRect().width;
           panel.style.display = "";
         }
-        const wanted = rtl ? bar.right - link.right : link.left - bar.left;
-        const start = Math.max(0, Math.min(wanted, bar.width - width));
+        const wanted = rtl ? box.right - link.right : link.left - box.left;
+        const start = Math.max(0, Math.min(wanted, box.width - width));
         panel.style.insetInlineStart = `${Math.round(start)}px`;
       });
     }
+  }
+
+  // The phone menu is a native disclosure; it also closes on Escape (focus back on its button) and on
+  // a tap anywhere outside it.
+  const menu = document.querySelector<HTMLDetailsElement>("[data-menu]");
+  if (menu) {
+    document.addEventListener("click", (event) => {
+      if (menu.open && !menu.contains(event.target as Node)) menu.open = false;
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || !menu.open) return;
+      menu.open = false;
+      menu.querySelector("summary")?.focus();
+    });
   }
 </script>
 
 <style>
   .masthead { position: relative; z-index: 2; background: var(--paper); }
   .masthead__top {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
     padding-block: 0.5rem 0.4rem;
     border-bottom: 1px solid var(--rule);
-    font-size: 0.84rem;
+    font-size: var(--fs-sm);
     font-weight: 500;
     color: var(--ink-2);
   }
-  .masthead__issue { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: baseline; }
-  .masthead__issue time { color: inherit; }
+  .masthead__date { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: baseline; }
+  .masthead__date time { color: inherit; }
   .masthead__sep { color: var(--ink-3); }
   .masthead__tools { display: flex; align-items: center; gap: 1.1rem; }
-  .masthead__tools a { font-weight: 700; color: var(--ink-2); text-decoration: none; white-space: nowrap; }
-  .masthead__tools a:hover, .masthead__tools a:focus-visible { color: var(--green); }
+  /* The tools keep the line's height but take a finger-sized target (22px of text became a 44px target). */
+  .masthead__tools > a { font-weight: 700; color: var(--ink-2); text-decoration: none; white-space: nowrap; padding-block: 0.7rem; margin-block: -0.7rem; }
+  .masthead__tools > a:hover, .masthead__tools > a:focus-visible { color: var(--green); }
   .masthead__search { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--ink) !important; }
   .masthead__search:hover, .masthead__search:focus-visible { color: var(--green) !important; }
 
@@ -180,10 +248,14 @@ for (const s of sections) {
   .brand { display: block; min-width: 0; line-height: 0; }
   .brand:focus-visible { outline-offset: 4px; }
 
-  /* The section bar: the one green field on the page. */
-  .masthead__nav { background: #0f5c3c; }
-  .masthead__nav-wrap { position: relative; }
+  /* The section bar: the one green field on the page, pinned to the top of the screen for the whole
+     page. It is a sibling of the header, not its child, because a pinned element stays pinned only
+     inside its own parent. */
+  .masthead__nav { position: sticky; top: 0; z-index: 40; background: #0f5c3c; }
+  .masthead__nav-wrap { position: relative; display: flex; align-items: center; }
   .nav {
+    flex: 1 1 auto;
+    min-width: 0;
     display: flex;
     justify-content: center;
     overflow-x: auto;
@@ -208,6 +280,37 @@ for (const s of sections) {
   .nav__link:focus-visible { outline-color: #fcfcf9; outline-offset: -3px; }
   .nav__link[aria-current="page"] { border-bottom-color: #fcfcf9; background: rgba(255, 255, 255, 0.08); }
 
+  /* The small logo and the search: in the bar only once it is pinned (on a phone the search, with the
+     menu, is always there). The logo takes the place of الرئيسية, which links to the same page. */
+  .bar__brand { display: none; flex: none; align-items: center; padding-inline: 0.2rem 0.9rem; line-height: 0; }
+  .bar__brand img { display: block; height: 30px; width: auto; }
+  .bar__brand:focus-visible { outline-color: #fcfcf9; outline-offset: 2px; }
+  .bar__tools { display: flex; flex: none; align-items: center; }
+  .bar__search, .menu__button { display: none; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; color: #fcfcf9; text-decoration: none; }
+  .bar__search:hover, .bar__search:focus-visible, .menu__button:hover, .menu[open] .menu__button { background: rgba(255, 255, 255, 0.12); }
+  .bar__search:focus-visible, .menu__button:focus-visible { outline-color: #fcfcf9; outline-offset: -3px; }
+  .masthead__nav.is-stuck .bar__brand { display: flex; }
+  .masthead__nav.is-stuck .bar__search { display: flex; }
+  .masthead__nav.is-stuck .nav__item--home { display: none; }
+  @media (prefers-reduced-motion: no-preference) {
+    .masthead__nav.is-stuck .bar__brand, .masthead__nav.is-stuck .bar__search { animation: bar-in 0.18s var(--ease-out); }
+  }
+  @keyframes bar-in {
+    from { opacity: 0; transform: translateY(-3px); }
+  }
+
+  /* The phone menu: a native disclosure at the end of the bar; its panel hangs under the bar across the
+     column, paper on a hairline, closed by the 2px ink rule the section panels use. */
+  .menu { display: none; }
+  .menu__button { list-style: none; cursor: pointer; }
+  .menu__button::-webkit-details-marker { display: none; }
+  .menu__panel { position: absolute; inset-inline: 0; top: 100%; z-index: 40; display: grid; background: var(--paper); border: 1px solid var(--rule); border-top: 0; border-bottom: 2px solid var(--ink); padding: 0.2rem 1rem 0.8rem; }
+  .menu__head { font-weight: 800; font-size: var(--fs-xs); color: var(--green); padding-block: 0.7rem 0.3rem; }
+  .menu__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1rem; }
+  .menu__list a { display: block; padding-block: 0.62rem; border-top: 1px solid var(--rule); font-family: var(--font-body); font-weight: 700; font-size: 1.02rem; line-height: 1.5; color: var(--ink); text-decoration: none; }
+  .menu__list a:hover, .menu__list a:focus-visible { color: var(--green); }
+  .menu__list a[aria-current="page"] { color: var(--green); }
+
   /* The section panel: a paper box the size of its content, never wider than the bar, hung under its
      own section (the script above sets inset-inline-start on hover), ruled between its columns and
      closed by a 2px ink rule; only on a wide screen with a pointer that can hover, and on hover alone:
@@ -219,26 +322,34 @@ for (const s of sections) {
   .nav__col--wide { max-width: 22rem; }
   .nav__col--two ul { columns: 2; column-gap: 1.4rem; }
   .nav__col--two li { break-inside: avoid; }
-  .nav__head { font-weight: 800; font-size: 0.76rem; color: var(--green); margin-bottom: 0.45rem; }
+  .nav__head { font-weight: 800; font-size: var(--fs-xs); color: var(--green); margin-bottom: 0.45rem; }
   .nav__col li { padding-block: 0.16rem; }
   .nav__col a { font-family: var(--font-body); font-size: 0.96rem; line-height: 1.45; color: var(--ink-2); text-decoration: none; white-space: nowrap; }
   .nav__col .nav__title a { font-family: var(--font-title); font-weight: 700; font-size: 0.98rem; color: var(--ink); white-space: normal; display: block; padding-block: 0.1rem; }
   .nav__col a:hover, .nav__col a:focus-visible { color: var(--green); text-decoration: underline; }
   /* A two-column topic list may wrap its names when the panel is held to the bar's width. */
   .nav__col--two a { white-space: normal; }
+  /* A panel opens after the pointer has rested on its section for 150ms, so a pointer crossing the bar
+     on its way to the cover no longer flashes panels open one after another. */
   @media (min-width: 1024px) and (hover: hover) {
     .nav { overflow: visible; }
+    .nav__panel { display: flex; align-items: flex-start; visibility: hidden; transition: visibility 0s linear 0.1s; }
     .nav__item--panel:hover > .nav__link { background: var(--paper); color: var(--green); }
-    .nav__item--panel:hover .nav__panel { display: flex; align-items: flex-start; }
+    .nav__item--panel:hover .nav__panel { visibility: visible; transition-delay: 0.15s; }
   }
 
   @media (max-width: 719px) {
-    .masthead__top { font-size: 0.78rem; }
-    .masthead__tools { gap: 0.8rem; }
-    .masthead__tools a:not(.masthead__search) { display: none; }
+    .masthead__top { font-size: var(--fs-xs); }
+    /* The tools of the date line move into the bar on a phone: the search and the menu. */
+    .masthead__tools { display: none; }
     .masthead__brand { padding-block: 0.7rem; }
     .brand :global(.brand__lockup img) { height: 72px; width: auto; }
-    .nav { justify-content: flex-start; padding-inline-end: 1rem; }
+    .nav { justify-content: flex-start; }
     .nav__link { padding: 0.55rem 0.8rem 0.42rem; font-size: 0.92rem; }
+    .bar__brand { padding-inline: 0 0.6rem; }
+    .bar__brand img { height: 26px; }
+    .bar__search { display: flex; min-width: 40px; }
+    .menu { display: block; }
+    .menu__button { display: flex; min-width: 40px; }
   }
 </style>

@@ -41,7 +41,8 @@ const hasPhoto = Boolean(image) && showPhoto && variant !== "text";
 <article class={`card card--${variant}${hasPhoto ? " card--photo" : ""} ${className}`} data-section={section}>
   {hasPhoto && (
     <a class="card__photo" href={href} tabindex="-1" aria-hidden="true">
-      <Photo image={image} ratio={variant === "list" ? "1/1" : "16/9"} eager={eager} sizes={sizes ?? (variant === "list" ? "88px" : variant === "lead" ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 25vw, (min-width: 720px) 50vw, 120px")} />
+      {/* A list thumbnail is an 88px square cut from a landscape frame, so it needs a copy about 160px wide. */}
+      <Photo image={image} ratio={variant === "list" ? "1/1" : "16/9"} eager={eager} sizes={sizes ?? (variant === "list" ? "160px" : variant === "lead" ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 25vw, (min-width: 720px) 50vw, 120px")} />
     </a>
   )}
   <div class="card__body">
@@ -64,7 +65,7 @@ const hasPhoto = Boolean(image) && showPhoto && variant !== "text";
   .card__title a { text-decoration: none; }
   .card__title a:hover { color: var(--green); }
   .card__summary { font-family: var(--font-body); font-size: 0.98rem; line-height: 1.65; color: var(--ink-2); margin-top: 0.25rem; }
-  .card__meta { margin-top: 0.3rem; font-size: 0.8rem; }
+  .card__meta { margin-top: 0.3rem; font-size: var(--fs-xs); }
 
   /* The lead must win the page. At 2.1rem it was only 1.9x a card headline and the squint test
      showed no primary element at all; at 3.1rem it is roughly 2.8x, the ratio a front page needs. */

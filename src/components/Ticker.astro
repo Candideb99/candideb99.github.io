@@ -1,12 +1,19 @@
 ---
 /**
- * The latest-headlines bar under the section bar: a moving strip, as the news channels run it,
- * scrolled by whole pixels so the text stays sharp, that pauses under the pointer. The list is printed twice so the loop is seamless; without
- * JavaScript, or for a reader who asked for reduced motion, it stands still and scrolls by hand.
+ * The strip under the section bar: a moving line of headlines, as the news channels run it, scrolled
+ * by whole pixels so the text stays sharp. It carries the newest stories not already on the first
+ * screen (the owner's rule: no headline prints twice above the fold), so it can never hold the day's
+ * newest; since 2026-09-22 it says so, «أيضاً في العدد» (until 2026-09-23, when the owner ruled out paper words: «أيضاً على خازندار»), and names each story's section instead of an
+ * age that always read «منذ 3 أيام» under the old label الأحدث (the owner's choice).
+ *
+ * It holds under the pointer and under keyboard focus, and under a finger: a touch stops it, a swipe
+ * scrolls it by hand, and it moves on a few seconds after the finger lifts. The list is printed twice
+ * so the loop is seamless; without JavaScript, or for a reader who asked for reduced motion, it stands
+ * still and scrolls by hand.
  */
 import type { Article } from "@lib/articles";
 import { articleHref } from "@lib/articles";
-import { timeAgo } from "@lib/format";
+import { kindLabel } from "@lib/sections";
 import { isolateNumbers } from "@lib/bidi";
 
 interface Props {
@@ -17,19 +24,19 @@ const { items } = Astro.props;
 
 {items.length > 0 && (
   <div class="ticker-wrap" data-ticker>
-    <div class="wrap ticker" role="region" aria-label="آخر الأخبار">
-      <span class="ticker__label ui">الأحدث</span>
+    <div class="wrap ticker" role="region" aria-label="أيضاً على خازندار">
+      <span class="ticker__label ui">أيضاً على خازندار</span>
       <div class="ticker__viewport">
         <ul class="ticker__list">
           {items.map((a) => (
             <li class="ticker__item">
-              <time class="ticker__time" datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time>
+              <span class="ticker__section ui">{kindLabel(a.data.kind, a.data.section)}</span>
               <a href={articleHref(a)} set:html={isolateNumbers(a.data.title)} />
             </li>
           ))}
           {items.map((a) => (
             <li class="ticker__item" aria-hidden="true">
-              <time class="ticker__time" datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time>
+              <span class="ticker__section ui">{kindLabel(a.data.kind, a.data.section)}</span>
               <a href={articleHref(a)} tabindex="-1" set:html={isolateNumbers(a.data.title)} />
             </li>
           ))}
@@ -63,15 +70,29 @@ const { items } = Astro.props;
     // page the content overflows leftwards, so the scroll position runs negative.
     var speed = 60;
     var pos = 0;
-    var paused = false;
+    var hover = false;
+    var focus = false;
+    var touch = false;
+    var touchTimer = null;
     var last = null;
-    vp.addEventListener("mouseenter", function () { paused = true; });
-    vp.addEventListener("mouseleave", function () { paused = false; last = null; });
-    vp.addEventListener("focusin", function () { paused = true; });
-    vp.addEventListener("focusout", function () { paused = false; last = null; });
+    function held() { return hover || focus || touch; }
+    // Wherever the reader left it by hand is where it moves on from.
+    function adopt() {
+      pos = Math.abs(vp.scrollLeft) % half;
+      last = null;
+    }
+    vp.addEventListener("mouseenter", function () { hover = true; });
+    vp.addEventListener("mouseleave", function () { hover = false; adopt(); });
+    vp.addEventListener("focusin", function () { focus = true; });
+    vp.addEventListener("focusout", function () { focus = false; adopt(); });
+    vp.addEventListener("touchstart", function () { touch = true; clearTimeout(touchTimer); }, { passive: true });
+    vp.addEventListener("touchend", function () {
+      clearTimeout(touchTimer);
+      touchTimer = setTimeout(function () { touch = false; adopt(); }, 3000);
+    }, { passive: true });
     wrap.classList.add("ticker--moving");
     function frame(now) {
-      if (!paused && !document.hidden) {
+      if (!held() && !document.hidden) {
         if (last !== null) pos += ((now - last) / 1000) * speed;
         last = now;
         if (pos >= half) pos -= half;
@@ -88,18 +109,17 @@ const { items } = Astro.props;
 <style>
   .ticker-wrap { border-bottom: 1px solid var(--rule); background: var(--paper-2); }
   .ticker { display: flex; align-items: center; gap: 0.9rem; min-height: 2.4rem; }
-  .ticker__label { flex: none; font-weight: 800; font-size: 0.78rem; color: var(--paper); background: var(--green); padding: 0.3rem 0.6rem 0.2rem; }
+  .ticker__label { flex: none; font-weight: 800; font-size: var(--fs-xs); color: var(--paper); background: var(--green); padding: 0.3rem 0.6rem 0.2rem; }
+  /* It stays a scroll box while it moves, so a finger can take it by hand. */
   .ticker__viewport { flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   .ticker__viewport::-webkit-scrollbar { display: none; }
-  .ticker__list { display: flex; gap: 1.75rem; white-space: nowrap; width: max-content; padding-block: 0.4rem; }
+  .ticker__list { display: flex; gap: 1.75rem; white-space: nowrap; width: max-content; }
   .ticker__item { display: inline-flex; align-items: baseline; gap: 0.5rem; font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; }
-  .ticker__item a { text-decoration: none; }
+  .ticker__item a { text-decoration: none; padding-block: 0.4rem; }
   .ticker__item a:hover { color: var(--green); }
-  .ticker__time { font-size: 0.75rem; color: var(--green); font-weight: 700; }
-
-  .ticker--moving .ticker__viewport { overflow: hidden; }
+  .ticker__section { font-size: var(--fs-xs); color: var(--green); font-weight: 700; }
 
   @media (max-width: 719px) {
-    .ticker__label { font-size: 0.78rem; padding-inline: 0.5rem; }
+    .ticker__label { padding-inline: 0.5rem; }
   }
 </style>
