@@ -1,0 +1,923 @@
+{
+  "startedAt": "2026-09-23T09:08:28.661Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "ineos-halts-three-hull-chemical-plants-f78c2a",
+      "before": "مجمع تكرير صناعي بمداخن وأنابيب تحت سماء ملبدة بالغيوم (صورة تعبيرية)",
+      "after": "منشأة تكرير نفط بمداخن وأنابيب صناعية (صورة تعبيرية)",
+      "flawsBefore": [
+        "سماء",
+        "ملبدة",
+        "بالغيوم"
+      ]
+    },
+    {
+      "slug": "china-rare-earth-shipments-us-fall-b43cb1",
+      "before": "منجم معادن نادرة محاط بالتلال الخضراء ومنشآت استخراج في الصين",
+      "after": "منجم معادن أرضية نادرة في الصين",
+      "flawsBefore": [
+        "الخضراء"
+      ]
+    },
+    {
+      "slug": "trump-backs-us-diesel-export-ban-79317b",
+      "before": "مصفاة نفط أمريكية بأبراج وخزانات تحت سماء ملبدة بالغيوم",
+      "after": "مصفاة نفط في هيوستن بولاية تكساس الأميركية",
+      "flawsBefore": [
+        "سماء",
+        "ملبدة",
+        "بالغيوم"
+      ]
+    },
+    {
+      "slug": "hormuz-alternatives-saudi-oil-qatar-lng-747dc8",
+      "before": "ناقلة غاز طبيعي مسال ضخمة تبحر في البحر تحت سماء صافية",
+      "after": "ناقلة الغاز المسال ليجميلية التابعة لشركة قطر غاز",
+      "flawsBefore": [
+        "ضخمة",
+        "سماء",
+        "صافية"
+      ]
+    },
+    {
+      "slug": "imf-egypt-economy-resilient-regional-shock-768a7e",
+      "before": "أفق مدينة القاهرة ومبانيها المزدحمة ومساجدها التاريخية في الخلفية",
+      "after": "أفق مدينة القاهرة",
+      "flawsBefore": [
+        "الخلفية"
+      ]
+    },
+    {
+      "slug": "saudi-restarts-east-west-oil-pipeline-698775",
+      "before": "منظر جوي من الفضاء لمنشآت نفطية وميناء على ساحل البحر الأحمر في السعودية",
+      "after": "صورة فضائية للسعودية من محطة الفضاء الدولية",
+      "flawsBefore": [
+        "منظر"
+      ]
+    },
+    {
+      "slug": "gold-treasuries-reserve-asset-feds-note-f4b014",
+      "before": "مبنى الاحتياطي الفيدرالي في واشنطن تحت سماء زرقاء وقت الغروب",
+      "after": "مبنى الاحتياطي الفيدرالي في واشنطن",
+      "flawsBefore": [
+        "سماء",
+        "زرقاء",
+        "الغروب"
+      ]
+    },
+    {
+      "slug": "what-is-market-capitalization-b75636",
+      "before": "واجهة بورصة نيويورك بأعمدتها الرخامية وأعلام الولايات المتحدة",
+      "after": "مقر بورصة نيويورك في وول ستريت",
+      "flawsBefore": []
+    },
+    {
+      "slug": "amd-tops-one-trillion-market-cap-0231c5",
+      "before": "مقر شركة إيه إم دي في سانتا كلارا بولاية كاليفورنيا",
+      "after": "مقر شركة إيه إم دي في سانتا كلارا بولاية كاليفورنيا",
+      "flawsBefore": []
+    },
+    {
+      "slug": "qatarenergy-hormuz-north-field-delay-f6a1c3",
+      "before": "ناقلة غاز مسال حمراء راسية قرب منصة تحميل بحرية تحت سماء صافية",
+      "after": "ناقلة الغاز المسال فوجي إل إن جي",
+      "flawsBefore": [
+        "حمراء",
+        "سماء",
+        "صافية"
+      ]
+    },
+    {
+      "slug": "trump-approval-32-percent-iran-war-bd2925",
+      "before": "البيت الأبيض في واشنطن محاطاً بالأشجار والنوافير تحت سماء صافية",
+      "after": "البيت الأبيض في واشنطن العاصمة",
+      "flawsBefore": [
+        "سماء",
+        "صافية"
+      ]
+    },
+    {
+      "slug": "faa-halts-east-coast-flights-equipment-outage-d180ab",
+      "before": "داخل محطة إيرترين في مطار نيوارك، تظهر شاشات معلومات الرحلات الجوية",
+      "after": "محطة إيرترين في مطار نيوارك ليبرتي الدولي",
+      "flawsBefore": [
+        "تظهر"
+      ]
+    },
+    {
+      "slug": "ecb-launches-pontes-tokenised-securities-b5dc9b",
+      "before": "مقر البنك المركزي الأوروبي وناطحات سحاب فرانكفورت على ضفة النهر",
+      "after": "مقر البنك المركزي الأوروبي في فرانكفورت بألمانيا",
+      "flawsBefore": []
+    },
+    {
+      "slug": "paramount-settles-with-us-states-e71142",
+      "before": "بوابة استوديوهات بارامونت بيكتشرز في هوليوود تحت سماء صافية",
+      "after": "بوابة استوديوهات بارامونت بيكتشرز في هوليوود",
+      "flawsBefore": [
+        "سماء",
+        "صافية"
+      ]
+    },
+    {
+      "slug": "us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac",
+      "before": "أفق واشنطن ومبانيها الحديثة وجسر فوق نهر بوتوماك عند الغروب",
+      "after": "جسر فرانسيس سكوت كي فوق نهر بوتوماك في واشنطن",
+      "flawsBefore": [
+        "الغروب"
+      ]
+    },
+    {
+      "slug": "oil-below-100-us-iran-diplomacy-8ddbd8",
+      "before": "ناقلة نفط تقترب من منصة إنتاج عائمة في عرض البحر تحت سماء صافية",
+      "after": "ناقلة نفط تقترب من منصة إنتاج عائمة في بحر الشمال",
+      "flawsBefore": [
+        "سماء",
+        "صافية"
+      ]
+    },
+    {
+      "slug": "iran-gdp-contracts-10-percent-post-war-a88253",
+      "before": "مشهد واسع لأفق طهران مع جبال البرز في الخلفية",
+      "after": "أبراج سكنية وتجارية في شمال طهران",
+      "flawsBefore": [
+        "مشهد",
+        "الخلفية"
+      ]
+    },
+    {
+      "slug": "oil-decline-diplomacy-hope-d15314",
+      "before": "ناقلة نفط ضخمة تبحر في مياه مفتوحة تحت سماء غائمة",
+      "after": "ناقلة النفط الخام في مضيق البوسفور بإسطنبول",
+      "flawsBefore": [
+        "ضخمة",
+        "سماء",
+        "غائمة"
+      ]
+    },
+    {
+      "slug": "what-are-interest-rates-0ab0c7",
+      "before": "مقر البنك المركزي الأوروبي وخط أفق فرانكفورت عند شروق الشمس",
+      "after": "مقر البنك المركزي الأوروبي في فرانكفورت",
+      "flawsBefore": [
+        "شروق"
+      ]
+    },
+    {
+      "slug": "global-markets-test-interest-rates-ai-concerns-1c0036",
+      "before": "مبنى بورصة نيويورك من زاوية منخفضة في وول ستريت",
+      "after": "لافتة بورصة نيويورك في شارع برود ستريت",
+      "flawsBefore": []
+    },
+    {
+      "slug": "france-diesel-record-price-september-2026-4df468",
+      "before": "شاحنة صهريج وقود تملأ خزانات محطة خدمات في فرنسا",
+      "after": "شاحنة صهريج وقود تملأ خزانات محطة خدمات في فرنسا",
+      "flawsBefore": []
+    },
+    {
+      "slug": "trump-announces-ai-force-september-2026-66d8dd",
+      "before": "ترامب يلقي كلمة أمام ميكروفونات وأعلام في تجمع سياسي",
+      "after": "ترمب يتحدث في تجمع انتخابي في مانشستر بولاية نيوهامشير",
+      "flawsBefore": []
+    },
+    {
+      "slug": "china-increases-russian-oil-imports-august-2026-ac1178",
+      "before": "ناقلة نفط خام راسية قرب رصيف مصفاة في ميناء صناعي",
+      "after": null,
+      "note": "no clean caption came back; kept the old one"
+    },
+    {
+      "slug": "trump-xi-summit-washington-2026-4e439e",
+      "before": "الواجهة الشمالية للبيت الأبيض في واشنطن محاطة بأغصان الأشجار الخضراء",
+      "after": null,
+      "note": "no clean caption came back; kept the old one"
+    },
+    {
+      "slug": "trump-announces-ai-force-and-czar-f4c7aa",
+      "before": "الواجهة الشمالية للبيت الأبيض في واشنطن تظهر بين أغصان الأشجار الخضراء",
+      "after": "مقر الرئاسة الأميركية في واشنطن",
+      "flawsBefore": [
+        "الأبيض",
+        "تظهر",
+        "الخضراء"
+      ]
+    },
+    {
+      "slug": "us-denmark-greenland-security-deal-eac792",
+      "before": "لقطة جوية لجليد بحري متكدس قرب ساحل جرينلاند في القطب الشمالي",
+      "after": "نهر جاكوبشافن الجليدي في خليج ديسكو بجرينلاند",
+      "flawsBefore": [
+        "لقطة"
+      ]
+    },
+    {
+      "slug": "eu-fuel-prices-record-iran-saudi-supply-8376ff",
+      "before": "مصفاة نفط أوروبية مع صهاريج سكك حديدية تحت سماء صافية",
+      "after": "مصفاة شفيشات النفطية وعربات صهاريج على سكك حديدية في النمسا",
+      "flawsBefore": [
+        "سماء",
+        "صافية"
+      ]
+    },
+    {
+      "slug": "trump-signs-russia-sanctions-oil-tariffs-law-ad758a",
+      "before": "ناقلة نفط عملاقة راسية عند رصيف مصفاة بحرية في يوم صافٍ",
+      "after": "ناقلة منتجات نفطية راسية عند رصيف مصفاة بي بي في كوينانا بأستراليا",
+      "flawsBefore": [
+        "عملاقة",
+        "صاف"
+      ]
+    },
+    {
+      "slug": "trump-announces-ban-cnn-msn-politico-white-house-fd6870",
+      "before": "منظر جوي للبيت الأبيض في واشنطن مع أعمال بناء واسعة في الجوار",
+      "after": "أعمال بناء في البيت الأبيض في واشنطن",
+      "flawsBefore": [
+        "منظر",
+        "الأبيض"
+      ]
+    },
+    {
+      "slug": "global-markets-close-volatile-week-045574",
+      "before": "واجهة بورصة نيويورك من زاوية منخفضة بين الأعمدة والمباني المحيطة",
+      "after": "واجهة بورصة نيويورك في شارع برود ستريت",
+      "flawsBefore": []
+    },
+    {
+      "slug": "bank-of-japan-raises-rates-to-31-year-high-d62cc8",
+      "before": "مبنى بنك اليابان في طوكيو وسط شوارع ومباني العاصمة اليابانية",
+      "after": "مقر بنك اليابان في طوكيو",
+      "flawsBefore": []
+    },
+    {
+      "slug": "us-approves-f35-saudi-arms-deal-915064",
+      "before": "طائرة إف-35 تحلق في السماء خلال عرض جوي",
+      "after": "طائرة إف-35 خلال عرض جوي في فورت وورث بولاية تكساس",
+      "flawsBefore": [
+        "السماء"
+      ]
+    },
+    {
+      "slug": "warren-buffett-steps-down-berkshire-chairman-457ee7",
+      "before": "حشد كبير خلال الاجتماع السنوي لشركة بيركشاير هاثاواي داخل قاعة واسعة",
+      "after": "الاجتماع السنوي لشركة بيركشاير هاثاواي",
+      "flawsBefore": []
+    },
+    {
+      "slug": "russia-temporary-management-western-assets-1dadf4",
+      "before": "مقر شركة نستله في فيفي بسويسرا مطلاً على بحيرة جنيف",
+      "after": "مقر شركة نستله في فيفي بسويسرا",
+      "flawsBefore": []
+    },
+    {
+      "slug": "oil-prices-decline-china-iran-pressure-41b59d",
+      "before": "مصفاة نفط ومنشآت صناعية وأبراج تبريد خلف أشجار خضراء (صورة تعبيرية)",
+      "after": "أبراج تبريد في مصفاة نفط (صورة تعبيرية)",
+      "flawsBefore": [
+        "خضراء"
+      ]
+    },
+    {
+      "slug": "eurozone-inflation-rises-august-2026-51467a",
+      "before": "مقر البنك المركزي الأوروبي في فرانكفورت مع أفق المدينة ونهر ماين",
+      "after": "مقر البنك المركزي الأوروبي في فرانكفورت بألمانيا",
+      "flawsBefore": []
+    },
+    {
+      "slug": "fed-rate-hike-oil-109-gulf-economies-a07bff",
+      "before": "صورة ليلية من الفضاء لساحل السعودية ومدنه المضاءة على البحر الأحمر",
+      "after": "الأراضي السعودية من محطة الفضاء الدولية",
+      "flawsBefore": []
+    },
+    {
+      "slug": "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb",
+      "before": "مبنى بورصة تاريخي يتوسط شارعاً مالياً مزدحماً بالمارة",
+      "after": "مقر بورصة نيويورك في وول ستريت",
+      "flawsBefore": []
+    },
+    {
+      "slug": "openai-six-concerning-behaviors-disclosure-framework-2d2a2b",
+      "before": "مبنى كان مقراً لشركة أوبن إيه آي في سان فرانسيسكو",
+      "after": "مقر شركة أوبن إيه آي في سان فرانسيسكو",
+      "flawsBefore": []
+    },
+    {
+      "slug": "fed-raises-rates-first-time-2023-61bb8a",
+      "before": "مقر الاحتياطي الفيدرالي في واشنطن أثناء أعمال البناء والتجديد",
+      "after": "أعمال بناء في مبنى الاحتياطي الفيدرالي في واشنطن",
+      "flawsBefore": []
+    },
+    {
+      "slug": "bank-of-england-holds-rate-warns-inflation-48f465",
+      "before": "مدخل مبنى بنك إنجلترا في لندن بأعمدته الحجرية وأبوابه المعدنية السوداء",
+      "after": "مدخل مبنى بنك إنجلترا في لندن",
+      "flawsBefore": [
+        "السوداء"
+      ]
+    },
+    {
+      "slug": "real-interest-rate-explainer-7a98cf",
+      "before": "مقر فرع بنك الاحتياطي الفيدرالي في سياتل بولاية واشنطن وسط تقاطع مروري",
+      "after": "مقر فرع سياتل لبنك الاحتياطي الفيدرالي في رينتون بولاية واشنطن",
+      "flawsBefore": []
+    },
+    {
+      "slug": "gulf-oil-flows-return-pre-war-levels-6a0da7",
+      "before": "ناقلة نفط راسية عند محطة البصرة لتحميل الخام في الخليج العربي",
+      "after": "ناقلة نفط راسية عند محطة البصرة النفطية في الخليج",
+      "flawsBefore": []
+    },
+    {
+      "slug": "japan-imports-surge-august-2026-3efc48",
+      "before": "رصيف ميناء يوكوهاما وسفن وبواخر في الخلفية تحت سماء ملبدة بالغيوم",
+      "after": "رصيف أوسانباشي في ميناء يوكوهاما",
+      "flawsBefore": [
+        "الخلفية",
+        "سماء",
+        "ملبدة",
+        "بالغيوم"
+      ]
+    },
+    {
+      "slug": "us-bond-yield-5-04-percent-ce6ccd",
+      "before": "مقر الاحتياطي الفيدرالي في واشنطن أثناء أعمال التجديد والبناء",
+      "after": "أعمال تجديد مبنى الاحتياطي الفيدرالي في واشنطن",
+      "flawsBefore": []
+    },
+    {
+      "slug": "uk-inflation-rises-to-3-1-percent-august-7dcf61",
+      "before": "مبنى بنك إنجلترا في لندن تحت سماء صافية مع حركة مرور وحافلات حمراء",
+      "after": "مبنى بنك إنجلترا في لندن",
+      "flawsBefore": [
+        "سماء",
+        "صافية",
+        "حمراء"
+      ]
+    },
+    {
+      "slug": "openai-seeks-1-5-trillion-funding-a2d732",
+      "before": "مبنى بايونير في سان فرانسيسكو، مقر شركة أوبن إيه آي",
+      "after": "مبنى بايونير في سان فرانسيسكو مقر شركة أوبن إيه آي",
+      "flawsBefore": []
+    },
+    {
+      "slug": "us-iran-war-cost-38-1-billion-7017c2",
+      "before": "مشهد جوي لمقر وزارة الدفاع الأميركية البنتاغون قرب واشنطن",
+      "after": "مقر وزارة الدفاع الأميركية (البنتاغون) قرب واشنطن",
+      "flawsBefore": [
+        "مشهد"
+      ]
+    },
+    {
+      "slug": "wto-warns-gdp-loss-2050-trade-fragmentation-8471db",
+      "before": "رافعات وحاويات في ميناء بحري عند الغروب تعكس حركة التجارة العالمية",
+      "after": "رافعات حاويات في محطة MPET بميناء أنتويرب في بلجيكا",
+      "flawsBefore": [
+        "الغروب"
+      ]
+    },
+    {
+      "slug": "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6",
+      "before": "الصورة تظهر جنديًا على سفينة في مضيق باب المندب، مع خلفية البحر والغروب",
+      "after": "جندي أميركي على متن مدمرة في مضيق باب المندب",
+      "flawsBefore": [
+        "تظهر",
+        "والغروب"
+      ]
+    },
+    {
+      "slug": "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c",
+      "before": "منظر من الفضاء لخط الشرق-الغرب السعودي مع إضاءة المدن",
+      "after": "شبه الجزيرة العربية من محطة الفضاء الدولية",
+      "flawsBefore": [
+        "منظر",
+        "إضاءة"
+      ]
+    },
+    {
+      "slug": "saudi-uranium-discovery-madinah-630462",
+      "before": "مبنى شركة سعودية للتعدين في جدة يمثل قطاع استخراج المعادن",
+      "after": "مقر شركة معادن للذهب في جدة",
+      "flawsBefore": []
+    },
+    {
+      "slug": "east-west-oil-pipeline-explainer-ba1bfa",
+      "before": "محطة ضخ نفطية في منطقة صحراوية تحت سماء صافية",
+      "after": "محطة ضخ على خط أنابيب نفطي في شمال شرق كولورادو",
+      "flawsBefore": [
+        "سماء",
+        "صافية"
+      ]
+    },
+    {
+      "slug": "china-retail-sales-slowdown-august-2026-cb2bb7",
+      "before": "أفق مدينة شنغهاي الحديث يمتد فوق نهر هوانغبو في يوم غائم",
+      "after": "أفق منطقة بودونغ المالية في شنغهاي",
+      "flawsBefore": [
+        "غائم"
+      ]
+    },
+    {
+      "slug": "tech-stocks-fall-ai-slowdown-calls-8c019b",
+      "before": "NVIDIA headquarters building with modern architecture and green landscaping",
+      "after": "مقر شركة إنفيديا في سانتا كلارا بولاية كاليفورنيا",
+      "flawsBefore": []
+    },
+    {
+      "slug": "saudi-arabia-vision-2030-finance-phase-03014e",
+      "before": "مشهد بانورامي لمركز الملك عبد الله المالي والطرق المحيطة به في الرياض",
+      "after": "مركز الملك عبد الله المالي في الرياض",
+      "flawsBefore": [
+        "مشهد"
+      ]
+    },
+    {
+      "slug": "anthropic-chooses-nasdaq-for-ipo-57a51e",
+      "before": "داريو أمودي، رئيس أنثروبيك، يتحدث خلال فعالية تقنية في مؤتمر تك كرانش ديسربت",
+      "after": "داريو أمودي الرئيس التنفيذي لأنثروبيك خلال مؤتمر تك كرانش ديسربت",
+      "flawsBefore": []
+    },
+    {
+      "slug": "federal-reserve-rate-hike-expectations-september-2026-c63230",
+      "before": "مبنى بنك الاحتياطي الفيدرالي في بوسطن مطل على نهر في وسط المدينة",
+      "after": "مبنى بنك الاحتياطي الفيدرالي في بوسطن",
+      "flawsBefore": []
+    },
+    {
+      "slug": "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d",
+      "before": "خطوط أنابيب نفط تمتد عبر الصحراء قرب منشآت صناعية في السعودية",
+      "after": "خطوط أنابيب نفط في صحراء الجبيل بالسعودية",
+      "flawsBefore": []
+    },
+    {
+      "slug": "ai-leaders-warn-openai-ipo-delay-b7d3e6",
+      "before": "ممر طويل داخل مركز بيانات حديث تصطف على جانبيه خزانات خوادم بيضاء مغلقة",
+      "after": "خزانات خوادم في مركز بيانات",
+      "flawsBefore": [
+        "بيضاء"
+      ]
+    },
+    {
+      "slug": "trump-ukraine-russia-diesel-855f75",
+      "before": "مضخة وقود في محطة بنزين تعرض خيار وقود الديزل",
+      "after": "مضخة وقود في محطة ثورنتونز للبنزين",
+      "flawsBefore": []
+    },
+    {
+      "slug": "hormuz-strait-oil-tanker-rates-record-high-86c98b",
+      "before": "ناقلة نفط تبحر في البحر مع خط ساحلي في الخلفية",
+      "after": "ناقلة نفط تغادر ميناء دار السلام",
+      "flawsBefore": [
+        "الخلفية"
+      ]
+    },
+    {
+      "slug": "sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730",
+      "before": "أفق مدينة الرياض مع برج المملكة ومباني العاصمة السعودية عند الغروب",
+      "after": "مبانٍ في مدينة الرياض العاصمة السعودية",
+      "flawsBefore": [
+        "الغروب"
+      ]
+    },
+    {
+      "slug": "m-stiq-hormuz-akhad-rabbi-fi-alam-al-taqa-dc252f",
+      "before": "صورة فضائية لمضيق هرمز الضيق بين إيران وشبه الجزيرة العربية",
+      "after": "مضيق هرمز بين الخليج العربي وخليج عُمان",
+      "flawsBefore": []
+    },
+    {
+      "slug": "saudi-east-west-pipeline-drone-attack-8ce715",
+      "before": "منظر من الفضاء لخط الشرق-الغرب النفطي السعودي عند خليج العقبة",
+      "after": "السعودية من محطة الفضاء الدولية",
+      "flawsBefore": [
+        "منظر"
+      ]
+    },
+    {
+      "slug": "strait-of-hormuz-oil-prices-global-economy-65f23c",
+      "before": "ناقلة نفط عملاقة تبحر في ممر بحري تحت سماء صافية",
+      "after": "ناقلة منتجات نفطية في ممر بحري",
+      "flawsBefore": [
+        "عملاقة",
+        "سماء",
+        "صافية"
+      ]
+    },
+    {
+      "slug": "india-china-trade-doubles-deficit-widens-e8e250",
+      "before": "أفق مدينة شنغهاي الصيني مع برج اللؤلؤة الشرقية ونهر هوانغبو",
+      "after": "منطقة بودونغ المالية في شنغهاي بالصين",
+      "flawsBefore": []
+    },
+    {
+      "slug": "france-cuts-growth-forecast-2026-e13a50",
+      "before": "مبنى وزارة الاقتصاد الفرنسية على ضفاف نهر السين في باريس",
+      "after": "مبنى وزارة المالية الفرنسية قرب جسر بيرسي في باريس",
+      "flawsBefore": []
+    },
+    {
+      "slug": "us-inflation-august-gasoline-fed-rate-hike-16ce27",
+      "before": "مقر مجلس الاحتياطي الاتحادي في واشنطن أثناء أعمال البناء والترميم",
+      "after": "مبنى الاحتياطي الفيدرالي في واشنطن خلال أعمال ترميم",
+      "flawsBefore": []
+    },
+    {
+      "slug": "saudi-east-west-pipeline-closure-brent-d9de59",
+      "before": "منظر جوي لمجمع نفطي واسع يضم خزانات وأنابيب ومنشآت تكرير (صورة تعبيرية)",
+      "after": "مصفاة نفط تضم خزانات ومنشآت تكرير (صورة تعبيرية)",
+      "flawsBefore": [
+        "منظر"
+      ]
+    },
+    {
+      "slug": "oil-above-100-and-its-implications-for-gulf-budgets-and-ship-2b4f3c",
+      "before": "صورة فضائية لمضيق هرمز وسواحل الإمارات توضح شريان صادرات النفط الخليجي",
+      "after": "مضيق هرمز وسواحل الإمارات العربية المتحدة من محطة الفضاء الدولية",
+      "flawsBefore": []
+    },
+    {
+      "slug": "us-diesel-price-record-6-dollars-4257bc",
+      "before": "مصفاة نفط أمريكية وخزانات تخزين وأبراج تكرير تحت سماء صافية",
+      "after": "مصفاة نفط في هيوستن بولاية تكساس الأميركية",
+      "flawsBefore": [
+        "سماء",
+        "صافية"
+      ]
+    },
+    {
+      "slug": "oracle-cloud-infrastructure-revenue-ai-growth-fc2b80",
+      "before": "لقطة جوية لسقف مركز بيانات حديث يضم وحدات تبريد ومولدات احتياطية",
+      "after": "أبراج تبريد ومولدات احتياطية فوق سطح مركز بيانات",
+      "flawsBefore": [
+        "لقطة"
+      ]
+    },
+    {
+      "slug": "hormuz-shipping-traffic-plunges-tensions-5c1d93",
+      "before": "ناقلة نفط عملاقة تبحر في البحر برفقة قارب سحب صغير",
+      "after": "ناقلة النفط سولومون سي في مضيق سولنت بإنجلترا برفقة قاطرة",
+      "flawsBefore": [
+        "عملاقة"
+      ]
+    },
+    {
+      "slug": "uk-economy-grows-july-ai-0a6a4e",
+      "before": "واجهة مبنى مصرفي في ساتن بجنوب لندن تحت سماء صافية",
+      "after": "فرع مصرف باركليز في شارع ساتن الرئيسي بجنوب لندن",
+      "flawsBefore": [
+        "سماء",
+        "صافية"
+      ]
+    },
+    {
+      "slug": "inflation-explainer-what-it-is-and-why-it-matters-77f9bd",
+      "before": "مبنى البنك المركزي في روستوف على نهر الدون تحت سماء صافية",
+      "after": "مبنى فرع البنك المركزي الروسي في روستوف على نهر الدون",
+      "flawsBefore": [
+        "سماء",
+        "صافية"
+      ]
+    },
+    {
+      "slug": "oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2",
+      "before": "منشأة تكرير نفطي واسعة في صحراء عُمان مع خزانات ومعدات صناعية",
+      "after": "مصفاة الدقم في سلطنة عُمان",
+      "flawsBefore": []
+    },
+    {
+      "slug": "global-bond-selloff-oil-prices-ecb-rate-hike-93d47b",
+      "before": "مقر البنك المركزي الأوروبي في فرانكفورت على ضفة النهر وسط المدينة",
+      "after": "مقر البنك المركزي الأوروبي في فرانكفورت بألمانيا",
+      "flawsBefore": []
+    },
+    {
+      "slug": "opec-oil-demand-growth-2027-forecast-2e88df",
+      "before": "مقر منظمة أوبك في فيينا بواجهة زجاجية وشعارها على المبنى",
+      "after": "مقر منظمة أوبك في فيينا",
+      "flawsBefore": []
+    },
+    {
+      "slug": "trump-obamacare-500-rebates-33c345",
+      "before": "أفق مانهاتن في نيويورك كما يظهر من خليج نيويورك العلوي",
+      "after": "أفق مانهاتن في نيويورك",
+      "flawsBefore": [
+        "يظهر"
+      ]
+    },
+    {
+      "slug": "apple-foldable-iphone-duo-release-cycle-change-d6b45a",
+      "before": "مقر أبل الرئيسي آبل بارك في كوبيرتينو كما يظهر من الجو",
+      "after": "مقر أبل بارك في كوبيرتينو بولاية كاليفورنيا",
+      "flawsBefore": [
+        "يظهر"
+      ]
+    },
+    {
+      "slug": "egypt-inflation-eases-12-7-august-7557fb",
+      "before": "مشهد لنهر النيل ووسط القاهرة من جزيرة الزمالك تحت سماء صافية",
+      "after": "نهر النيل ووسط القاهرة وجزيرة الجزيرة",
+      "flawsBefore": [
+        "مشهد",
+        "سماء",
+        "صافية"
+      ]
+    },
+    {
+      "slug": "trump-5000-dividend-trillion-cost-36981a",
+      "before": "مبنى الكابيتول الأمريكي مضاء في سماء مسائية زرقاء في واشنطن",
+      "after": "مبنى الكابيتول في واشنطن",
+      "flawsBefore": [
+        "سماء",
+        "زرقاء"
+      ]
+    },
+    {
+      "slug": "ecb-raises-rates-2-5-percent-second-hike-2026-e88f15",
+      "before": "مقر البنك المركزي الأوروبي في فرانكفورت وسط ساحة مغطاة بالثلج",
+      "after": "مقر البنك المركزي الأوروبي في فرانكفورت",
+      "flawsBefore": []
+    },
+    {
+      "slug": "uae-germany-45-agreements-state-visit-9774e1",
+      "before": "المستشارية الاتحادية في برلين مع علمي ألمانيا والاتحاد الأوروبي تحت سماء صافية",
+      "after": "مبنى المستشارية الاتحادية في برلين",
+      "flawsBefore": [
+        "سماء",
+        "صافية"
+      ]
+    },
+    {
+      "slug": "liquidity-risk-explainer-oil-prices-e61d37",
+      "before": "ناقلة نفط بحرية تبحر في عرض البحر تحت سماء ملبدة بالغيوم",
+      "after": "ناقلة نفط ومنتجات كيميائية قرب ميناء سانت جونز في كندا",
+      "flawsBefore": [
+        "سماء",
+        "ملبدة",
+        "بالغيوم"
+      ]
+    },
+    {
+      "slug": "nats-air-traffic-control-failure-uk-2026-f8f562",
+      "before": "صالة مغادرة واسعة في مطار هيثرو بلندن يظهر فيها مسافرون ومقاعد الانتظار",
+      "after": "صالة المغادرات في مبنى الركاب الثاني بمطار هيثرو في لندن",
+      "flawsBefore": [
+        "يظهر"
+      ]
+    },
+    {
+      "slug": "anthropic-researcher-ai-human-extinction-risk-8aa7a2",
+      "before": "صفوف من خوادم مراكز البيانات موصولة بالكابلات داخل قاعة تقنية",
+      "after": "خوادم في أحد مراكز البيانات",
+      "flawsBefore": []
+    },
+    {
+      "slug": "saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2",
+      "before": "صورة فضائية لمضيق هرمز بين إيران والإمارات وطرق الشحن البحرية",
+      "after": "مضيق هرمز الفاصل بين إيران والإمارات",
+      "flawsBefore": []
+    },
+    {
+      "slug": "uae-banks-assets-germany-visit-ce4632",
+      "before": "مبنى مطار برلين براندنبورغ نهاراً يرمز إلى بوابة الوصول إلى ألمانيا",
+      "after": "مبنى الركاب الأول في مطار برلين براندنبورغ",
+      "flawsBefore": []
+    },
+    {
+      "slug": "trump-expands-trade-war-canada-import-ban-6088a2",
+      "before": "مبنى البرلمان الكندي على تلة في أوتاوا وسط أشجار الخريف",
+      "after": "مبنى البرلمان الكندي في أوتاوا",
+      "flawsBefore": []
+    },
+    {
+      "slug": "saudi-travelers-ai-flexible-booking-skyscanner-2026-6a6a86",
+      "before": "واجهة مطار الملك عبد العزيز الدولي ليلاً مع سيارات ومسافرين عند المدخل",
+      "after": "صالة الركاب الشمالية في مطار الملك عبدالعزيز الدولي",
+      "flawsBefore": []
+    },
+    {
+      "slug": "google-finland-13-billion-ai-nuclear-54b058",
+      "before": "محطة لوفيسا النووية في فنلندا محاطة بالأشجار وخطوط الكهرباء تحت سماء صافية",
+      "after": "محطة لوفيسا للطاقة النووية في فنلندا",
+      "flawsBefore": [
+        "سماء",
+        "صافية"
+      ]
+    },
+    {
+      "slug": "egypt-ewallets-h1-2026-transactions-growth-9789a5",
+      "before": "مشهد عام لنهر النيل وأبراج وسط القاهرة في ضوء نهاري هادئ",
+      "after": "نهر النيل وأبراج وسط القاهرة",
+      "flawsBefore": [
+        "مشهد",
+        "هادئ"
+      ]
+    },
+    {
+      "slug": "egypt-ai-data-center-nvidia-billion-dollar-b0fc50",
+      "before": "ممر داخل مركز بيانات تظهر فيه أرفف الخوادم والكابلات والإضاءة (صورة تعبيرية)",
+      "after": "ممر داخل مركز بيانات بين صفوف الخوادم (صورة تعبيرية)",
+      "flawsBefore": [
+        "تظهر",
+        "والإضاءة"
+      ]
+    },
+    {
+      "slug": "brent-above-100-dollars-gulf-escalation-8281ef",
+      "before": "ناقلة نفط راسية ليلاً أمام خزانات تخزين في مرفأ صناعي",
+      "after": "ناقلات في محطة المنتجات بمصفاة بريمراف ليسيشيل في السويد",
+      "flawsBefore": []
+    },
+    {
+      "slug": "global-supply-chains-geopolitics-ec8d1c",
+      "before": "مؤتمر حول سلاسل التوريد العالمية في منظمة التجارة العالمية",
+      "after": "جلسة نقاشية في منظمة التجارة العالمية حول تحديات صناعة السيارات",
+      "flawsBefore": []
+    },
+    {
+      "slug": "saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3",
+      "before": "رؤية لسماء الرياض من حي الدبلوماسي مع مباني عالية في الخلفية",
+      "after": "أفق مدينة الرياض من الحي الدبلوماسي",
+      "flawsBefore": [
+        "الخلفية"
+      ]
+    },
+    {
+      "slug": "south-korea-gdp-q2-2026-ai-chips-4e5373",
+      "before": "أفق مدينة سيول ليلاً مع أنوار المباني والجسور فوق نهر هان",
+      "after": "أفق مدينة سيول عاصمة كوريا الجنوبية",
+      "flawsBefore": []
+    },
+    {
+      "slug": "us-warns-ford-china-partnerships-b5ea31",
+      "before": "لقطة جوية لمجمع فورد للتطوير في ديربورن بولاية ميشيغان",
+      "after": "مجمع فورد للتطوير في ديربورن بولاية ميشيغان",
+      "flawsBefore": [
+        "لقطة"
+      ]
+    },
+    {
+      "slug": "openai-navier-stokes-breakthrough-88-hours-a0e062",
+      "before": "خوادم مضاءة بأضواء زرقاء وخضراء داخل مركز بيانات حديث",
+      "after": "خوادم في أحد مراكز البيانات",
+      "flawsBefore": [
+        "بأضواء",
+        "زرقاء",
+        "وخضراء"
+      ]
+    },
+    {
+      "slug": "mistral-raises-3bn-euros-series-d-eb9e3c",
+      "before": "صفوف من رفوف الخوادم الفارغة داخل قاعة مظلمة مخصصة لمركز بيانات",
+      "after": "رفوف خوادم فارغة في مركز بيانات",
+      "flawsBefore": []
+    },
+    {
+      "slug": "saudi-renewables-tourism-growth-2026-93f77e",
+      "before": "السعودية في الليل مع أضواء المدن",
+      "after": "صورة فضائية لجنوب غرب السعودية من محطة الفضاء الدولية",
+      "flawsBefore": [
+        "أضواء"
+      ]
+    },
+    {
+      "slug": "canada-us-retaliatory-tariffs-bombardier-trade-war-a97f20",
+      "before": "الكندا ترفض رسوماً انتقامية على منتجات أميركية في نقطة حدود سان برنارد دي لاقول",
+      "after": "معبر سان برنارد دي لاكول الحدودي بين كندا والولايات المتحدة",
+      "flawsBefore": []
+    },
+    {
+      "slug": "china-exports-surge-august-ai-trump-xi-223add",
+      "before": "منظر جوي لميناء شانغهاي مع سفن الشحن",
+      "after": "ميناء شانغهاي",
+      "flawsBefore": [
+        "منظر"
+      ]
+    },
+    {
+      "slug": "brent-nears-100-dollar-houthi-attacks-saudi-1e290d",
+      "before": "ناقلة نفط خام برتقالية تبحر قرب منشأة صناعية ساحلية تحت سماء ملبدة بالغيوم (صورة تعبيرية)",
+      "after": "ناقلة نفط خام تمر قرب منشأة للغاز المسال (صورة تعبيرية)",
+      "flawsBefore": [
+        "برتقالية",
+        "سماء",
+        "ملبدة",
+        "بالغيوم"
+      ]
+    },
+    {
+      "slug": "real-interest-rate-explainer-551977",
+      "before": "اجتماع مجلس محافظي الاحتياطي الفيدرالي الأمريكي لمناقشة السياسات النقدية وأسعار الفائدة",
+      "after": "اجتماع مجلس محافظي الاحتياطي الفيدرالي الأميركي",
+      "flawsBefore": []
+    },
+    {
+      "slug": "egypt-stock-market-institutional-selling-developers-union-la-8d6ff7",
+      "before": "بانوراما لمدينة القاهرة تظهر أحياء كثيفة ومباني حديثة تحت سماء صافية",
+      "after": "أفق القاهرة",
+      "flawsBefore": [
+        "تظهر",
+        "سماء",
+        "صافية"
+      ]
+    },
+    {
+      "slug": "us-jobs-report-rate-hike-citi-2027-31dcfc",
+      "before": "واجهة مشرق للبنك المركزي الأمريكي في يوم صافي",
+      "after": "مبنى الاحتياطي الفيدرالي الأميركي في واشنطن",
+      "flawsBefore": []
+    },
+    {
+      "slug": "hormuz-escalation-oil-six-week-high-605cff",
+      "before": "صورة ليلية من الفضاء لمدينة ومنشآت منطقة جازان على ساحل البحر الأحمر",
+      "after": "منطقة جازان ليلاً من محطة الفضاء الدولية",
+      "flawsBefore": []
+    },
+    {
+      "slug": "egypt-uae-gov-partnership-extension-ee1f1d",
+      "before": "المنطقة الحكومية في العاصمة الإدارية الجديدة مع مباني حكومية حديثة",
+      "after": "الحي الحكومي في العاصمة الإدارية الجديدة في مصر",
+      "flawsBefore": []
+    },
+    {
+      "slug": "oman-trade-surplus-june-2026-b70599",
+      "before": "ميناء الفحل من البحر مع ناقلة نفطية",
+      "after": "ناقلة نفط أمام ميناء الفحل في سلطنة عمان",
+      "flawsBefore": []
+    },
+    {
+      "slug": "seoul-texas-gas-plant-ai-data-centers-e9057c",
+      "before": "منشأة غاز صناعية في تكساس تظهر من طريق ريفي تحيط به الأشجار",
+      "after": "محطة ويلكوكس للغاز قرب بلدة سبيكس في تكساس",
+      "flawsBefore": [
+        "تظهر"
+      ]
+    },
+    {
+      "slug": "turkey-inflation-forecast-2026-284-baaef7",
+      "before": "لقطة جوية لإسطنبول تظهر المساجد التاريخية ومضيق البوسفور والأفق العمراني الحديث",
+      "after": "شبه الجزيرة التاريخية وأفق إسطنبول الحديث",
+      "flawsBefore": [
+        "لقطة",
+        "تظهر"
+      ]
+    },
+    {
+      "slug": "oman-hainan-economic-zone-investments-278630",
+      "before": "منظر جوي لميناء الدقم في سلطنة عُمان ورسو السفن والحاويات",
+      "after": "ميناء الدقم في سلطنة عُمان",
+      "flawsBefore": [
+        "منظر"
+      ]
+    },
+    {
+      "slug": "egypt-sczone-factories-investments-5309ca",
+      "before": "كوبرى قناة السويس يعبر المجرى المائى فى منطقة القنطرة",
+      "after": "جسر قناة السويس عند القنطرة",
+      "flawsBefore": []
+    },
+    {
+      "slug": "opec-plus-meetings-oil-prices-explainer-06a727",
+      "before": "ناقلة نفط تبحر في البحر تحت سماء ملبدة بالغيوم",
+      "after": "ناقلة نفط خام قبالة ميناء ديربان في جنوب أفريقيا",
+      "flawsBefore": [
+        "سماء",
+        "ملبدة",
+        "بالغيوم"
+      ]
+    },
+    {
+      "slug": "china-injects-54bn-into-state-banks-and-insurers-bd44d2",
+      "before": "منظر لأفق بكين المالي وناطحات السحاب والطرق السريعة في النهار",
+      "after": "الحي المالي المركزي في بكين",
+      "flawsBefore": [
+        "منظر"
+      ]
+    },
+    {
+      "slug": "healey-october-budget-growth-discipline-7ec41b",
+      "before": "أفق مدينة لندن ومنطقتها المالية على ضفاف نهر التايمز في بريطانيا",
+      "after": "الحي المالي في مدينة لندن على ضفاف نهر التايمز",
+      "flawsBefore": []
+    },
+    {
+      "slug": "gcc-listed-companies-record-q2-2026-profits-af1b5f",
+      "before": "أفق الرياض عند الغروب ويظهر فيه برج المملكة ومنطقة الملك عبد الله المالية",
+      "after": "مركز الملك عبدالله المالي وبرج المملكة في الرياض",
+      "flawsBefore": [
+        "الغروب",
+        "ويظهر"
+      ]
+    },
+    {
+      "slug": "eurozone-gdp-q2-2026-employment-inventories-f5939d",
+      "before": "ميناء هامبورغ في ألمانيا مع سفينة حاويات ورافعات تحت سماء صافية",
+      "after": "محطة حاويات في ميناء هامبورغ",
+      "flawsBefore": [
+        "سماء",
+        "صافية"
+      ]
+    }
+  ]
+}

@@ -1,11 +1,15 @@
 ---
 title: ترامب يؤيد حظر صادرات الديزل مع بلوغ سعره 6.53 دولار للغالون
-subtitle: صناعة النفط تقول إن الحظر لن يخفض الأسعار، فيما يضغط مشرعون جمهوريون لتقييد الصادرات قبل انتخابات التجديد النصفي
+subtitle: صناعة النفط تقول إن الحظر لن يخفض الأسعار، فيما يضغط مشرعون جمهوريون
+  لتقييد الصادرات قبل انتخابات التجديد النصفي
 slug: trump-backs-us-diesel-export-ban-79317b
 section: energy
 kind: news
 publishedAt: 2026-09-22T21:33:25.011Z
-lede: أعلن الرئيس الأمريكي دونالد ترامب الثلاثاء تأييده حظر صادرات الديزل الأمريكية، بعدما سجّل متوسط سعر الديزل في الولايات المتحدة مستوى قياسياً بلغ 6.53 دولار للغالون، بحسب بيانات رابطة السيارات الأمريكية (AAA). ويسعى ترامب إلى تخفيف الأسعار على السائقين في محطات الوقود، فيما تدرس إدارته جدوى القرار.
+lede: أعلن الرئيس الأمريكي دونالد ترامب الثلاثاء تأييده حظر صادرات الديزل
+  الأمريكية، بعدما سجّل متوسط سعر الديزل في الولايات المتحدة مستوى قياسياً بلغ
+  6.53 دولار للغالون، بحسب بيانات رابطة السيارات الأمريكية (AAA). ويسعى ترامب
+  إلى تخفيف الأسعار على السائقين في محطات الوقود، فيما تدرس إدارته جدوى القرار.
 keyFacts:
   - label: متوسط سعر الديزل الأمريكي
     value: 6.53 دولار للغالون
@@ -19,7 +23,12 @@ keyFacts:
     value: نحو 1.3 مليون برميل يومياً
   - label: موعد الانتخابات النصفية
     value: 3 نوفمبر
-whyItMatters: سارعت المصافي الأمريكية إلى زيادة شحنات الديزل لتلبية الطلب العالمي، وفق سي إن بي سي، ما يجعل أي قرار بوقفها شأناً يتجاوز السوق المحلية. وترى بي بي سي أن الحظر قد يرفع الأسعار دولياً، ويضغط على إمدادات حلفاء غربيين يعتمدون على الوقود الأمريكي، بينهم بريطانيا وهولندا. وفي المقابل، تقول صناعة النفط، بحسب نيويورك تايمز، إن الخطوة لن تجعل الديزل أرخص داخل الولايات المتحدة.
+whyItMatters: سارعت المصافي الأمريكية إلى زيادة شحنات الديزل لتلبية الطلب
+  العالمي، وفق سي إن بي سي، ما يجعل أي قرار بوقفها شأناً يتجاوز السوق المحلية.
+  وترى بي بي سي أن الحظر قد يرفع الأسعار دولياً، ويضغط على إمدادات حلفاء غربيين
+  يعتمدون على الوقود الأمريكي، بينهم بريطانيا وهولندا. وفي المقابل، تقول صناعة
+  النفط، بحسب نيويورك تايمز، إن الخطوة لن تجعل الديزل أرخص داخل الولايات
+  المتحدة.
 tags:
   - الديزل
   - الولايات المتحدة
@@ -33,14 +42,14 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Diesel_pump_20160819.jpg/1280px-Diesel_pump_20160819.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Oil_refinery_in_Houston_2018a.jpg/1280px-Oil_refinery_in_Houston_2018a.jpg
   width: 1280
   height: 960
-  alt: مضخات وقود الديزل في محطة خدمة تحت السماء بين الأشجار
-  credit: Santeri Viinamäki · CC BY-SA 4.0 · ويكيميديا كومنز
+  alt: مصفاة نفط في هيوستن بولاية تكساس الأميركية
+  credit: Antony-22 · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ADiesel_pump_20160819.jpg
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AOil_refinery_in_Houston_2018a.jpg
 sources:
   - name: نيويورك تايمز
     nameEn: The New York Times
@@ -56,13 +65,15 @@ sources:
     lang: en
   - name: سي إن بي سي
     nameEn: CNBC
-    title: Trump administration is examining whether a diesel export ban is feasible, Treasury Secretary says
+    title: Trump administration is examining whether a diesel export ban is
+      feasible, Treasury Secretary says
     url: https://www.cnbc.com/2026/09/22/trump-diesel-export-ban-urkaine-russia-iran.html
     publishedAt: 2026-09-22T19:59:05.000Z
     lang: en
   - name: ماركت ووتش
     nameEn: MarketWatch
-    title: Trump endorses diesel export ban. A decision is coming ‘fast, one way or the other.’
+    title: Trump endorses diesel export ban. A decision is coming ‘fast, one way or
+      the other.’
     url: https://www.marketwatch.com/story/trump-endorses-diesel-export-ban-a-decision-is-coming-fast-one-way-or-the-other-a49055bc?mod=mw_rss_topstories
     publishedAt: 2026-09-22T19:30:00.000Z
     lang: en
@@ -79,7 +90,10 @@ quality:
   importance: 8
   warnings:
     - "latin words: AAA"
-  criticSummary: عولجت المشكلات الأربع السابقة، إذ حُذف الادعاءان عن المنطقة العربية والمصافي الخليجية وضُبطت درجة اليقين والصياغة، والأرقام والاقتباسات كلها مسندة بدقة إلى مصادرها، ولم يبقَ سوى تكرار بين المتن وفقرة «لماذا يهم» وملاحظات أسلوبية طفيفة لا تمنع النشر.
+  criticSummary: عولجت المشكلات الأربع السابقة، إذ حُذف الادعاءان عن المنطقة
+    العربية والمصافي الخليجية وضُبطت درجة اليقين والصياغة، والأرقام والاقتباسات
+    كلها مسندة بدقة إلى مصادرها، ولم يبقَ سوى تكرار بين المتن وفقرة «لماذا يهم»
+    وملاحظات أسلوبية طفيفة لا تمنع النشر.
 ai: true
 ---
 

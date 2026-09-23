@@ -1,11 +1,16 @@
 ---
 title: برنت يقترب من 100 دولار بعد هجمات حوثية على السعودية وتهديدات إيرانية
-subtitle: مخاوف تعطيل إمدادات الخليج ترفع خام برنت إلى 99 دولاراً للبرميل، وغولدمان ساكس ترى سيناريو بـ120 دولاراً
+subtitle: مخاوف تعطيل إمدادات الخليج ترفع خام برنت إلى 99 دولاراً للبرميل،
+  وغولدمان ساكس ترى سيناريو بـ120 دولاراً
 slug: brent-nears-100-dollar-houthi-attacks-saudi-1e290d
 section: energy
 kind: news
 publishedAt: 2026-09-08T11:34:28.406Z
-lede: قفز خام برنت فوق 99 دولاراً للبرميل في التعاملات المبكرة الثلاثاء 8 سبتمبر 2026، مسجلاً أعلى مستوى في ستة أسابيع، بعد أن أعلن التحالف العربي بقيادة السعودية إصابة 73 شخصاً في هجمات للحوثيين، وسط تهديدات إيرانية بـ"الحرب الاقتصادية" وإمكانية إنشاء منطقة استبعاد بحري في الخليج، وفقاً لتقارير إعلامية.
+lede: قفز خام برنت فوق 99 دولاراً للبرميل في التعاملات المبكرة الثلاثاء 8 سبتمبر
+  2026، مسجلاً أعلى مستوى في ستة أسابيع، بعد أن أعلن التحالف العربي بقيادة
+  السعودية إصابة 73 شخصاً في هجمات للحوثيين، وسط تهديدات إيرانية بـ"الحرب
+  الاقتصادية" وإمكانية إنشاء منطقة استبعاد بحري في الخليج، وفقاً لتقارير
+  إعلامية.
 keyFacts:
   - label: سعر برنت (08:00 بتوقيت غرينتش)
     value: 99 دولاراً للبرميل
@@ -19,7 +24,12 @@ keyFacts:
     value: 11 مليون برميل يومياً
   - label: الشحن عبر هرمز حالياً
     value: 4-5 ملايين برميل يومياً
-whyItMatters: اقتراب برنت من 100 دولار يعيد ضغوط التضخم على الاقتصادات العربية المستوردة للطاقة، ويرفع تكاليف النقل والإنتاج والاستهلاك. احتمال رفع الفيدرالي الفائدة مجدداً سيزيد تكلفة الاقتراض بالعملات المربوطة بالدولار في الخليج، ويضغط على موازنات الدول المصدرة للنفط التي تستفيد من الأسعار المرتفعة لكن تواجه مخاطر تصعيد عسكري يهدد منشآتها الحيوية. شح الديزل عالمياً يهدد سلاسل التوريد والقطاع الزراعي والنقل البري في المنطقة.
+whyItMatters: اقتراب برنت من 100 دولار يعيد ضغوط التضخم على الاقتصادات العربية
+  المستوردة للطاقة، ويرفع تكاليف النقل والإنتاج والاستهلاك. احتمال رفع الفيدرالي
+  الفائدة مجدداً سيزيد تكلفة الاقتراض بالعملات المربوطة بالدولار في الخليج،
+  ويضغط على موازنات الدول المصدرة للنفط التي تستفيد من الأسعار المرتفعة لكن
+  تواجه مخاطر تصعيد عسكري يهدد منشآتها الحيوية. شح الديزل عالمياً يهدد سلاسل
+  التوريد والقطاع الزراعي والنقل البري في المنطقة.
 tags:
   - نفط
   - برنت
@@ -35,14 +45,14 @@ readingMinutes: 3
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Riyadh_North_Skyline_.jpg/1280px-Riyadh_North_Skyline_.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Crude_Oil_Tanker_in_Port_Arthur%2C_Texas.jpg/1280px-Crude_Oil_Tanker_in_Port_Arthur%2C_Texas.jpg
   width: 1280
-  height: 854
-  alt: أفق مدينة الرياض عند الغروب مع برج المملكة ومركز الملك عبد الله المالي
-  credit: B.alotaby · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ARiyadh_North_Skyline_.jpg
+  height: 930
+  alt: ناقلة نفط خام تمر قرب منشأة للغاز المسال (صورة تعبيرية)
+  credit: Quintin Soloviev · CC0 · ويكيميديا كومنز
+  license: CC0
+  licenseUrl: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ACrude_Oil_Tanker_in_Port_Arthur%2C_Texas.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -52,25 +62,29 @@ sources:
     lang: ar
   - name: ياهو فاينانس
     nameEn: Yahoo Finance
-    title: "Gold prices today, Tuesday, September 8, 2026: Gold moves lower following fresh escalations with Iran"
+    title: "Gold prices today, Tuesday, September 8, 2026: Gold moves lower
+      following fresh escalations with Iran"
     url: https://finance.yahoo.com/personal-finance/investing/article/gold-prices-today-tuesday-september-8-2026-gold-moves-lower-following-fresh-escalations-with-iran-111035525.html
     publishedAt: 2026-09-08T11:10:35.000Z
     lang: en
   - name: ماركت ووتش
     nameEn: MarketWatch
-    title: U.S. oil prices reach highest level in over three months after Saudi Arabia says civilian and energy sites struck
+    title: U.S. oil prices reach highest level in over three months after Saudi
+      Arabia says civilian and energy sites struck
     url: https://www.marketwatch.com/story/u-s-oil-prices-reach-highest-level-in-over-three-months-after-saudi-arabia-says-civilian-and-energy-sites-struck-b28ae417?mod=mw_rss_topstories
     publishedAt: 2026-09-08T10:54:00.000Z
     lang: en
   - name: إيكونومي ميدل إيست
     nameEn: Economy Middle East
-    title: Oil hits $99, nears $100 as Fed hike and supply disruption fears pressure global markets
+    title: Oil hits $99, nears $100 as Fed hike and supply disruption fears pressure
+      global markets
     url: https://economymiddleeast.com/news/oil-hits-99-nears-100-as-fed-hike-and-supply-disruption-fears-pressure-global-markets/
     publishedAt: 2026-09-08T09:25:43.000Z
     lang: en
 models:
   editor: nvidia/nemotron-3-ultra-550b-a55b:free
-  writer: nvidia/nemotron-3-ultra-550b-a55b:free → nvidia/nemotron-3-ultra-550b-a55b:free
+  writer: nvidia/nemotron-3-ultra-550b-a55b:free →
+    nvidia/nemotron-3-ultra-550b-a55b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
   vision: nex-agi/nex-n2.5-pro:free
 quality:
@@ -79,7 +93,9 @@ quality:
   revised: true
   importance: 9
   warnings: []
-  criticSummary: المقال يحتوي على تبسيطات سببية غير مدعومة بالكامل من المصادر ويعزو بعض الادعاءات إلى مصادر دون تأكيد نصي كافٍ، مع ضرورة توثيق أكثر دقة للعلاقات السببية وتجنب التعميم.
+  criticSummary: المقال يحتوي على تبسيطات سببية غير مدعومة بالكامل من المصادر
+    ويعزو بعض الادعاءات إلى مصادر دون تأكيد نصي كافٍ، مع ضرورة توثيق أكثر دقة
+    للعلاقات السببية وتجنب التعميم.
 ai: true
 ---
 

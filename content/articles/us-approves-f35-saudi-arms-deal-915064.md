@@ -1,11 +1,14 @@
 ---
 title: واشنطن توافق على صفقة إف-35 للسعودية بـ 24.3 مليار دولار
-subtitle: الحزمة تشمل 48 طائرة و49 محركاً وأنظمة اتصالات آمنة، والكونغرس أمامه 30 يوماً للتدقيق
+subtitle: الحزمة تشمل 48 طائرة و49 محركاً وأنظمة اتصالات آمنة، والكونغرس أمامه
+  30 يوماً للتدقيق
 slug: us-approves-f35-saudi-arms-deal-915064
 section: defense
 kind: news
 publishedAt: 2026-09-18T16:45:53.864Z
-lede: أعلنت وزارة الخارجية الأميركية في 18 سبتمبر 2026 موافقتها على صفقة بيع عسكري أجنبي محتملة للسعودية تشمل 48 طائرة إف-35 لايتنينغ 2 ذات قدرة إقلاع وهبوط تقليدية، بتكلفة إجمالية تقدر بـ 24.3 مليار دولار.
+lede: أعلنت وزارة الخارجية الأميركية في 18 سبتمبر 2026 موافقتها على صفقة بيع
+  عسكري أجنبي محتملة للسعودية تشمل 48 طائرة إف-35 لايتنينغ 2 ذات قدرة إقلاع
+  وهبوط تقليدية، بتكلفة إجمالية تقدر بـ 24.3 مليار دولار.
 keyFacts:
   - label: قيمة الصفقة
     value: 24.3 مليار دولار
@@ -17,7 +20,10 @@ keyFacts:
     value: لوكهيد مارتن وبرات آند ويتني
   - label: مهلة الكونغرس
     value: 30 يوماً
-whyItMatters: تمثل الصفقة أكبر بيع لطائرات إف-35 لدولة عربية، وتعزز قدرات الدفاع الجوي السعودي في مواجهة تصعيد الحوثيين المدعومين من إيران. كما تعكس عمق العلاقات الدفاعية بين واشنطن والرياض رغم اعتراضات برلمانية، وتختبر سياسة التوازن العسكري الإقليمي التي تحفظ التفوق النوعي لإسرائيل.
+whyItMatters: تمثل الصفقة أكبر بيع لطائرات إف-35 لدولة عربية، وتعزز قدرات الدفاع
+  الجوي السعودي في مواجهة تصعيد الحوثيين المدعومين من إيران. كما تعكس عمق
+  العلاقات الدفاعية بين واشنطن والرياض رغم اعتراضات برلمانية، وتختبر سياسة
+  التوازن العسكري الإقليمي التي تحفظ التفوق النوعي لإسرائيل.
 tags:
   - وزارة الخارجية الأميركية
   - السعودية
@@ -35,7 +41,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/F-35_Heritage_Flight_Team_performs_in_Bell_Fort_Worth_Alliance_AirShow.jpg/1280px-F-35_Heritage_Flight_Team_performs_in_Bell_Fort_Worth_Alliance_AirShow.jpg
   width: 1280
   height: 989
-  alt: طائرة إف-35 تحلق في السماء خلال عرض جوي
+  alt: طائرة إف-35 خلال عرض جوي في فورت وورث بولاية تكساس
   credit: Airman 1st Class Alexander Cook · Public domain · ويكيميديا كومنز
   license: Public domain
   pageUrl: https://commons.wikimedia.org/wiki/File%3AF-35_Heritage_Flight_Team_performs_in_Bell_Fort_Worth_Alliance_AirShow.jpg
@@ -54,7 +60,8 @@ sources:
     lang: en
   - name: سي إن بي سي
     nameEn: CNBC
-    title: Trump administration advances $24.3 billion fighter jet deal to Saudi Arabia as Houthis escalate attacks
+    title: Trump administration advances $24.3 billion fighter jet deal to Saudi
+      Arabia as Houthis escalate attacks
     url: https://www.cnbc.com/2026/09/18/trump-saudi-arabia-f-35-houthis-iran-war.html
     publishedAt: 2026-09-18T08:02:20.000Z
     lang: en

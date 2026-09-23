@@ -1,11 +1,15 @@
 ---
-title: ترامب يوقع قانون عقوبات روسيا ويمنح نفسه صلاحية فرض رسوم على مشتري المنتجات النفطية الروسية
-subtitle: القانون يسمح برسوم تصل إلى 100% على أكبر خمسة مستوردين للطاقة الروسية وينتهي مفعول الصلاحية بعد خمس سنوات
+title: ترامب يوقع قانون عقوبات روسيا ويمنح نفسه صلاحية فرض رسوم على مشتري
+  المنتجات النفطية الروسية
+subtitle: القانون يسمح برسوم تصل إلى 100% على أكبر خمسة مستوردين للطاقة الروسية
+  وينتهي مفعول الصلاحية بعد خمس سنوات
 slug: trump-signs-russia-sanctions-oil-tariffs-law-ad758a
 section: energy
 kind: news
 publishedAt: 2026-09-19T11:16:54.013Z
-lede: وقع الرئيس الأمريكي دونالد ترامب قانون العقوبات على روسيا يوم الجمعة، وفقاً لمصدر Alborsa News، في خطوة تستهدف استنزاف قدرة موسكو على تمويل الحرب في أوكرانيا.
+lede: وقع الرئيس الأمريكي دونالد ترامب قانون العقوبات على روسيا يوم الجمعة،
+  وفقاً لمصدر Alborsa News، في خطوة تستهدف استنزاف قدرة موسكو على تمويل الحرب في
+  أوكرانيا.
 keyFacts:
   - label: تاريخ التوقيع
     value: يوم الجمعة
@@ -15,7 +19,12 @@ keyFacts:
     value: خمس سنوات
   - label: تصويت مجلس النواب
     value: 262-159
-whyItMatters: القانون يعيد تشكيل تدفقات الطاقة العالمية عبر الضغط على كبار مشتري النفط الروسي في آسيا، خصوصاً الهند والصين، اللتين زادتا اعتمادهما على الخام الروسي بديلاً عن إمدادات الخليج المتقلبة. أي رسوم على المشتريات قد تشدد السوق وترفع الأسعار، ما ينعكس على موازنات دول الخليج المستفيدة من ارتفاع الأسعار، وعلى تكاليف الاستيراد في الدول العربية المستوردة للطاقة. كما أن تمديد عقوبات إيران يضيق المعروض العالمي أكثر.
+whyItMatters: القانون يعيد تشكيل تدفقات الطاقة العالمية عبر الضغط على كبار مشتري
+  النفط الروسي في آسيا، خصوصاً الهند والصين، اللتين زادتا اعتمادهما على الخام
+  الروسي بديلاً عن إمدادات الخليج المتقلبة. أي رسوم على المشتريات قد تشدد السوق
+  وترفع الأسعار، ما ينعكس على موازنات دول الخليج المستفيدة من ارتفاع الأسعار،
+  وعلى تكاليف الاستيراد في الدول العربية المستوردة للطاقة. كما أن تمديد عقوبات
+  إيران يضيق المعروض العالمي أكثر.
 tags:
   - الولايات المتحدة
   - روسيا
@@ -33,7 +42,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Oil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_02.jpg/1280px-Oil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_02.jpg
   width: 1280
   height: 960
-  alt: ناقلة نفط عملاقة راسية عند رصيف مصفاة بحرية في يوم صافٍ
+  alt: ناقلة منتجات نفطية راسية عند رصيف مصفاة (صورة تعبيرية)
   credit: Calistemon · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
@@ -41,7 +50,8 @@ image:
 sources:
   - name: الغارديان
     nameEn: The Guardian
-    title: Trump signs bill imposing sanctions on Russia and giving him more power to levy tariffs
+    title: Trump signs bill imposing sanctions on Russia and giving him more power
+      to levy tariffs
     url: https://www.theguardian.com/us-news/2026/sep/18/trump-signs-russia-sanctions-bill
     publishedAt: 2026-09-18T22:10:44.000Z
     lang: en
@@ -59,7 +69,8 @@ sources:
     lang: en
 models:
   editor: inclusionai/ling-3.0-flash-fin:free
-  writer: nvidia/nemotron-3-ultra-550b-a55b:free → nvidia/nemotron-3-super-120b-a12b:free
+  writer: nvidia/nemotron-3-ultra-550b-a55b:free →
+    nvidia/nemotron-3-super-120b-a12b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
   vision: nex-agi/nex-n2.5-pro:free
   desk: nvidia/nemotron-3-super-120b-a12b:free
@@ -70,7 +81,8 @@ quality:
   importance: 8
   warnings:
     - "latin words: Alborsa, News, The, Guardian, National"
-  criticSummary: المسودة الحالية تحسن من الدقة لكنها ما زالت تحتوي على أخطاء في التسمية والتعميم والتفسير السياقي للتصويت.
+  criticSummary: المسودة الحالية تحسن من الدقة لكنها ما زالت تحتوي على أخطاء في
+    التسمية والتعميم والتفسير السياقي للتصويت.
 ai: true
 ---
 

@@ -1,11 +1,16 @@
 ---
 title: «إنيوس» توقف ثلاثة مصانع كيماويات في بريطانيا بسبب أسعار الغاز
-subtitle: راتكليف يقول إن الغاز في بريطانيا أغلى 12 مرة منه في الولايات المتحدة، والشركة تقدّر الوظائف المتأثرة بـ4000 إذا تحوّل الإغلاق إلى دائم
+subtitle: راتكليف يقول إن الغاز في بريطانيا أغلى 12 مرة منه في الولايات المتحدة،
+  والشركة تقدّر الوظائف المتأثرة بـ4000 إذا تحوّل الإغلاق إلى دائم
 slug: ineos-halts-three-hull-chemical-plants-f78c2a
 section: companies
 kind: news
 publishedAt: 2026-09-22T21:42:35.285Z
-lede: أعلنت مجموعة «إنيوس» (Ineos) للكيماويات، المملوكة لجيم راتكليف، الثلاثاء وقف الإنتاج في ثلاثة مصانع تابعة لها في مدينة هال البريطانية. وعزت المجموعة قرارها إلى أسعار الغاز في بريطانيا، التي قالت إنها تفوق نظيرتها في الولايات المتحدة 12 مرة. وتوقف الإنتاج فعلاً في مصنعين، على أن يتوقف الثالث خلال أيام قليلة، بحسب الشركة.
+lede: أعلنت مجموعة «إنيوس» (Ineos) للكيماويات، المملوكة لجيم راتكليف، الثلاثاء
+  وقف الإنتاج في ثلاثة مصانع تابعة لها في مدينة هال البريطانية. وعزت المجموعة
+  قرارها إلى أسعار الغاز في بريطانيا، التي قالت إنها تفوق نظيرتها في الولايات
+  المتحدة 12 مرة. وتوقف الإنتاج فعلاً في مصنعين، على أن يتوقف الثالث خلال أيام
+  قليلة، بحسب الشركة.
 keyFacts:
   - label: المصانع المتوقفة
     value: 3 (توقف اثنان والثالث خلال أيام)
@@ -19,7 +24,13 @@ keyFacts:
     value: نحو 240
   - label: وظائف متأثرة عند الإغلاق الدائم
     value: "4000"
-whyItMatters: يأتي القرار في ظل ارتفاع أسعار الغاز، التي تضاعفت تقريباً في بريطانيا وأوروبا منذ يوليو، بحسب «بي بي سي». ويقول راتكليف إن الشركة لم تعد قادرة على المنافسة، إذ إن الغاز في بريطانيا أغلى 12 مرة منه في الولايات المتحدة. وتسعى «إنيوس» إلى شراء الغاز المسال مباشرة من الولايات المتحدة بأسعار أقل، بحسب ما علمته «بي بي سي». وتقول المجموعة إن المصانع الثلاثة هي آخر وحدات الأسيتيلات ذات الحجم العالمي في أوروبا، وإن الوظائف المتأثرة في هامبرسايد سترتفع إلى 4000 إذا تحوّل الإغلاق إلى دائم.
+whyItMatters: يأتي القرار في ظل ارتفاع أسعار الغاز، التي تضاعفت تقريباً في
+  بريطانيا وأوروبا منذ يوليو، بحسب «بي بي سي». ويقول راتكليف إن الشركة لم تعد
+  قادرة على المنافسة، إذ إن الغاز في بريطانيا أغلى 12 مرة منه في الولايات
+  المتحدة. وتسعى «إنيوس» إلى شراء الغاز المسال مباشرة من الولايات المتحدة بأسعار
+  أقل، بحسب ما علمته «بي بي سي». وتقول المجموعة إن المصانع الثلاثة هي آخر وحدات
+  الأسيتيلات ذات الحجم العالمي في أوروبا، وإن الوظائف المتأثرة في هامبرسايد
+  سترتفع إلى 4000 إذا تحوّل الإغلاق إلى دائم.
 tags:
   - إنيوس
   - بريطانيا
@@ -32,17 +43,27 @@ regions:
 readingMinutes: 3
 chart: null
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Bayway_Refinery_td_%282022-01-18%29_20.jpg/1280px-Bayway_Refinery_td_%282022-01-18%29_20.jpg
+  width: 1280
+  height: 853
+  alt: منشأة تكرير نفط بمداخن وأنابيب صناعية (صورة تعبيرية)
+  credit: Tdorante10 · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ABayway_Refinery_td_(2022-01-18)_20.jpg
 sources:
   - name: الغارديان
     nameEn: The Guardian
-    title: Jim Ratcliffe halts production at Hull chemical plants over ‘ridiculous’ gas prices
+    title: Jim Ratcliffe halts production at Hull chemical plants over ‘ridiculous’
+      gas prices
     url: https://www.theguardian.com/business/2026/sep/22/jim-ratcliffe-halts-production-hull-chemical-plants-gas-prices-ineos-uk
     publishedAt: 2026-09-22T16:18:13.000Z
     lang: en
   - name: بي بي سي
     nameEn: BBC News
-    title: Sir Jim Ratcliffe suspends production at key UK plants blaming high gas prices
+    title: Sir Jim Ratcliffe suspends production at key UK plants blaming high gas
+      prices
     url: https://www.bbc.co.uk/news/articles/cw305ynd69n6o
     publishedAt: 2026-09-22T15:43:14.000Z
     lang: en
@@ -56,7 +77,7 @@ models:
   editor: claude-cli
   writer: claude-cli → claude-cli
   critic: claude-cli
-  vision: null
+  vision: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
   desk: claude-cli
 quality:
   score: 9
@@ -64,7 +85,8 @@ quality:
   revised: true
   importance: 7
   warnings: []
-  criticSummary: عالجت المسودة المعدّلة كل الملاحظات السابقة، وأرقامها ونسبتها مطابقة للمصادر، ولم يبق إلا تدقيق لفظي طفيف لا يمنع النشر.
+  criticSummary: عالجت المسودة المعدّلة كل الملاحظات السابقة، وأرقامها ونسبتها
+    مطابقة للمصادر، ولم يبق إلا تدقيق لفظي طفيف لا يمنع النشر.
 ai: true
 ---
 

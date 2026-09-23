@@ -1,11 +1,15 @@
 ---
 title: النفط يقفز فوق 107 دولارات مع إغلاق خط الشرق-الغرب السعودي
-subtitle: ارتفاع العقود الآجلة لخام برنت 3.19 في المائة إلى 107.95 دولار للبرميل بعد هجمات في الرياض والمدينة المنورة
+subtitle: ارتفاع العقود الآجلة لخام برنت 3.19 في المائة إلى 107.95 دولار للبرميل
+  بعد هجمات في الرياض والمدينة المنورة
 slug: oil-surges-above-107-after-saudi-pipeline-shutdown-13652d
 section: energy
 kind: news
 publishedAt: 2026-09-14T05:10:21.720Z
-lede: ارتفعت أسعار النفط فوق 107 دولارات للبرميل يوم الاثنين 14 سبتمبر 2026 بعد إغلاق السعودية لخط أنابيب النفط الشرق-الغرب كإجراء احترازي. جاء ذلك عقب هجمات متعددة في منطقتي الرياض والمدينة المنورة يوم الخميس، وفقاً لبيان وزارة الطاقة السعودية. وبلغ إجمالي قدرة الضخ عبر الخط سبعة ملايين برميل يومياً.
+lede: ارتفعت أسعار النفط فوق 107 دولارات للبرميل يوم الاثنين 14 سبتمبر 2026 بعد
+  إغلاق السعودية لخط أنابيب النفط الشرق-الغرب كإجراء احترازي. جاء ذلك عقب هجمات
+  متعددة في منطقتي الرياض والمدينة المنورة يوم الخميس، وفقاً لبيان وزارة الطاقة
+  السعودية. وبلغ إجمالي قدرة الضخ عبر الخط سبعة ملايين برميل يومياً.
 keyFacts:
   - label: سعر خام برنت
     value: 107.95 دولار
@@ -13,7 +17,13 @@ keyFacts:
     value: 3.19 في المائة
   - label: قدرة خط الشرق-الغرب
     value: سبعة ملايين برميل يوميًا
-whyItMatters: إغلاق خط أنابيب الشرق-الغرب السعودي يقلل من قدرة المملكة على تصدير النفط دون المرور عبر مضيق هرمز، مما يزيد الاعتماد على مسار ملاحي معرض للتوترات. مع تصاعد الهجمات في الخليج وتأجيل المحادثات الدبلوماسية حول إعادة فتح المضيق، يواجه السوق خطر نقص مستمر في الإمدادات. هذا الوضع قد يبقي أسعار النفط مرتفعة لفترة طويلة، مما يؤثر على تكاليف النقل والإنتاج في الاقتصادات العربية التي تعتمد على الوقود المستورد، ويزيد الضغوط التضخمية على المستهلكين والشركات في المنطقة.
+whyItMatters: إغلاق خط أنابيب الشرق-الغرب السعودي يقلل من قدرة المملكة على تصدير
+  النفط دون المرور عبر مضيق هرمز، مما يزيد الاعتماد على مسار ملاحي معرض
+  للتوترات. مع تصاعد الهجمات في الخليج وتأجيل المحادثات الدبلوماسية حول إعادة
+  فتح المضيق، يواجه السوق خطر نقص مستمر في الإمدادات. هذا الوضع قد يبقي أسعار
+  النفط مرتفعة لفترة طويلة، مما يؤثر على تكاليف النقل والإنتاج في الاقتصادات
+  العربية التي تعتمد على الوقود المستورد، ويزيد الضغوط التضخمية على المستهلكين
+  والشركات في المنطقة.
 tags:
   - السعودية
   - النفط
@@ -25,14 +35,14 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/El_Faleh_%28221650625%29.jpeg/1280px-El_Faleh_%28221650625%29.jpeg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Oil_pipelines%2C_jubail_desert%2C_Saudi_Arabia_-_panoramio.jpg/1280px-Oil_pipelines%2C_jubail_desert%2C_Saudi_Arabia_-_panoramio.jpg
   width: 1280
-  height: 1059
-  alt: أفق الرياض وبرج المملكة عند الغروب مع حركة المرور في الشارع
-  credit: Francisco Anzola · CC BY 3.0 · ويكيميديا كومنز
+  height: 960
+  alt: خطوط أنابيب نفط في صحراء الجبيل بالسعودية
+  credit: Suresh Babunair · CC BY 3.0 · ويكيميديا كومنز
   license: CC BY 3.0
   licenseUrl: https://creativecommons.org/licenses/by/3.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AEl_Faleh_(221650625).jpeg
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AOil_pipelines%2C_jubail_desert%2C_Saudi_Arabia_-_panoramio.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -54,7 +64,8 @@ sources:
     lang: en
   - name: إيكونومي ميدل إيست
     nameEn: Economy Middle East
-    title: Oil prices surge over 3 percent to $107.8 as Hormuz strikes deepen global supply fears
+    title: Oil prices surge over 3 percent to $107.8 as Hormuz strikes deepen global
+      supply fears
     url: https://economymiddleeast.com/news/oil-prices-surge-over-3-percent-to-107-8-as-hormuz-strikes-deepen-global-supply-fears/
     publishedAt: 2026-09-14T04:22:03.000Z
     lang: en
@@ -71,7 +82,8 @@ quality:
   importance: 10
   warnings:
     - "latin words: diplomatic"
-  criticSummary: المقال يلتزم بالمصادر بدقة مع تحسين طفيف مطلوب في العنصر العنواني لتجنب الإيحاء بأن الإغلاق كان نتيجة مباشرة للهجمات فقط.
+  criticSummary: المقال يلتزم بالمصادر بدقة مع تحسين طفيف مطلوب في العنصر العنواني
+    لتجنب الإيحاء بأن الإغلاق كان نتيجة مباشرة للهجمات فقط.
 ai: true
 ---
 

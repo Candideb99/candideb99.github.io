@@ -1,11 +1,15 @@
 ---
 title: مصر تطلق مركز بيانات ذكاء اصطناعي بقيمة مليار دولار بتقنية إنفيديا
-subtitle: المرحلة الأولى بقدرة 20 ميغاواط وتكلفة 200 مليون دولار خلال ثلاث سنوات بشراكة فودافون وإلسيويدي وكاسافا
+subtitle: المرحلة الأولى بقدرة 20 ميغاواط وتكلفة 200 مليون دولار خلال ثلاث سنوات
+  بشراكة فودافون وإلسيويدي وكاسافا
 slug: egypt-ai-data-center-nvidia-billion-dollar-b0fc50
 section: technology
 kind: news
 publishedAt: 2026-09-09T11:51:39.467Z
-lede: أعلنت مصر في التاسع من سبتمبر 2026 عن خطة لإنشاء أول مركز بيانات واسع النطاق للذكاء الاصطناعي بقدرة 200 ميغاواط وتكلفة إجمالية تبلغ مليار دولار، باستخدام تقنيات شركة إنفيديا، وذلك في إطار مساعي القاهرة لتصبح مركزاً إقليمياً للبيانات.
+lede: أعلنت مصر في التاسع من سبتمبر 2026 عن خطة لإنشاء أول مركز بيانات واسع
+  النطاق للذكاء الاصطناعي بقدرة 200 ميغاواط وتكلفة إجمالية تبلغ مليار دولار،
+  باستخدام تقنيات شركة إنفيديا، وذلك في إطار مساعي القاهرة لتصبح مركزاً إقليمياً
+  للبيانات.
 keyFacts:
   - label: تكلفة المشروع المصري الإجمالية
     value: 1 مليار دولار
@@ -19,7 +23,12 @@ keyFacts:
     value: 13 مليار يورو (نحو 15 مليار دولار)
   - label: الوظائف المدعومة في فنلندا
     value: أكثر من 37 ألف وظيفة
-whyItMatters: يمثل المشروع المصري خطوة استراتيجية لتوطين البنية التحتية للذكاء الاصطناعي في أكبر دولة عربية من حيث السكان وثاني اقتصاد في أفريقيا، ما قد يجذب استثمارات تقنية إقليمية ويقلل الاعتماد على مراكز بيانات خارجية. في المقابل، يعكس استثمار جوجل الضخم في فنلندا كيف أصبحت الطاقة النظيفة والمناخ البارد ميزة تنافسية حاسمة لجذب استثمارات مراكز البيانات عالمياً، وهو نموذج قد تحتذي به دول عربية تمتلك موارد طاقة متجددة.
+whyItMatters: يمثل المشروع المصري خطوة استراتيجية لتوطين البنية التحتية للذكاء
+  الاصطناعي في أكبر دولة عربية من حيث السكان وثاني اقتصاد في أفريقيا، ما قد يجذب
+  استثمارات تقنية إقليمية ويقلل الاعتماد على مراكز بيانات خارجية. في المقابل،
+  يعكس استثمار جوجل الضخم في فنلندا كيف أصبحت الطاقة النظيفة والمناخ البارد ميزة
+  تنافسية حاسمة لجذب استثمارات مراكز البيانات عالمياً، وهو نموذج قد تحتذي به دول
+  عربية تمتلك موارد طاقة متجددة.
 tags:
   - مصر
   - إنفيديا
@@ -35,14 +44,14 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/2788-2888_San_Tomas_Expressway.jpg/1280px-2788-2888_San_Tomas_Expressway.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/2/2e/123Net_Data_Center_%28DC2%29.jpg
   width: 1280
-  height: 791
-  alt: المبنى الرئيسي لشركة إنفيديا في سان كليميتو، كاليفورنيا، مع لافتة العنوان.
-  credit: Coolcaesar · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3A2788-2888_San_Tomas_Expressway.jpg
+  height: 850
+  alt: ممر داخل مركز بيانات بين صفوف الخوادم (صورة تعبيرية)
+  credit: 123net · CC BY-SA 3.0 · ويكيميديا كومنز
+  license: CC BY-SA 3.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/3.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3A123Net_Data_Center_(DC2).jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -58,7 +67,8 @@ sources:
     lang: en
   - name: يورونيوز
     nameEn: Euronews
-    title: Google to invest €13bn in Finnish AI data centres, its biggest European push yet
+    title: Google to invest €13bn in Finnish AI data centres, its biggest European
+      push yet
     url: http://www.euronews.com/business/2026/09/09/google-to-invest-13bn-in-finnish-ai-data-centres-its-biggest-european-push-yet
     publishedAt: 2026-09-09T10:16:43.000Z
     lang: en
@@ -70,16 +80,18 @@ sources:
     lang: en
 models:
   editor: nvidia/nemotron-3-ultra-550b-a55b:free
-  writer: nvidia/nemotron-3-ultra-550b-a55b:free → nvidia/nemotron-3-ultra-550b-a55b:free
+  writer: nvidia/nemotron-3-ultra-550b-a55b:free →
+    nvidia/nemotron-3-ultra-550b-a55b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
+  vision: nex-agi/nex-n2.5-pro:free
 quality:
   score: 6
   verdict: revise
   revised: true
   importance: 8
   warnings: []
-  criticSummary: المقال يحتوي على عدة أخطاء في التواريخ، والAttribution، وتعميم غير مدعوم، مما يتطلب تصحيحاً قبل النشر.
+  criticSummary: المقال يحتوي على عدة أخطاء في التواريخ، والAttribution، وتعميم
+    غير مدعوم، مما يتطلب تصحيحاً قبل النشر.
 ai: true
 ---
 

@@ -1,11 +1,15 @@
 ---
 title: ارتفاع النفط نحو 13% أسبوعياً مع تجاوز برنت 108 دولارات
-subtitle: تصاعد الهجمات على مضيق هرمز والبحر الأحمر يعرقل تدفقات النفط العالمية ويُعيد مخاوف التضخم
+subtitle: تصاعد الهجمات على مضيق هرمز والبحر الأحمر يعرقل تدفقات النفط العالمية
+  ويُعيد مخاوف التضخم
 slug: oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2
 section: energy
 kind: news
 publishedAt: 2026-09-11T04:55:28.108Z
-lede: سجلت أسعار النفط الخام مكاسب أسبوعية بنحو 13%، وهي الأقوى منذ منتصف يوليو، مع تجاوز خام برنت مستوى 108 دولارات للبرميل يوم الجمعة، وسط تصاعد الهجمات على مسارات الشحن البحرية في الشرق الأوسط التي عطّلت تدفقات النفط الخام عالمياً وأعادت مخاوف التضخم إلى الأسواق المالية.
+lede: سجلت أسعار النفط الخام مكاسب أسبوعية بنحو 13%، وهي الأقوى منذ منتصف يوليو،
+  مع تجاوز خام برنت مستوى 108 دولارات للبرميل يوم الجمعة، وسط تصاعد الهجمات على
+  مسارات الشحن البحرية في الشرق الأوسط التي عطّلت تدفقات النفط الخام عالمياً
+  وأعادت مخاوف التضخم إلى الأسواق المالية.
 keyFacts:
   - label: أسعار برنت الأسبوعية
     value: 108.44 دولار للبرميل يوم الجمعة، بارتفاع أسبوعي نحو 13%
@@ -19,7 +23,13 @@ keyFacts:
     value: فوق 6 دولارات للغالون لأول مرة يوم الخميس
   - label: تكلفة وقود الطيران
     value: 171 دولاراً للبرميل للأسبوع المنتهي في 4 سبتمبر، بارتفاع 90% سنوياً
-whyItMatters: يمثل ارتفاع أسعار النفط فوق 108 دولارات ضغوطاً مباشرة على المستوردين العرب الذين يعتمدون على الطاقة المستوردة، حيث ترتفع تكاليف النقل والصناعة والكهرباء بشكل متتالي. بالنسبة لدول الخليج المنتجة، قد تعوّض الأسعار المرتفعة بعض خسائر الإنتاج الناجمة عن تعطيل مسارات التصدير، لكن استمرار الحرب يهدد الاستقرار المالي على المدى الطويل. كما أن تصاعد مخاوف التضخم يُقيّد قدرة البنوك المركزية على خفض الفائدة، ما يرفع تكلفة الاقتراض على الشركات والمستهلكين في المنطقة.
+whyItMatters: يمثل ارتفاع أسعار النفط فوق 108 دولارات ضغوطاً مباشرة على
+  المستوردين العرب الذين يعتمدون على الطاقة المستوردة، حيث ترتفع تكاليف النقل
+  والصناعة والكهرباء بشكل متتالي. بالنسبة لدول الخليج المنتجة، قد تعوّض الأسعار
+  المرتفعة بعض خسائر الإنتاج الناجمة عن تعطيل مسارات التصدير، لكن استمرار الحرب
+  يهدد الاستقرار المالي على المدى الطويل. كما أن تصاعد مخاوف التضخم يُقيّد قدرة
+  البنوك المركزية على خفض الفائدة، ما يرفع تكلفة الاقتراض على الشركات
+  والمستهلكين في المنطقة.
 tags:
   - أسعار النفط
   - مضيق هرمز
@@ -37,7 +47,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Duqm_Refinery.jpg/1280px-Duqm_Refinery.jpg
   width: 1280
   height: 853
-  alt: منشأة تكرير نفطي واسعة في صحراء عُمان مع خزانات ومعدات صناعية
+  alt: مصفاة الدقم في سلطنة عُمان
   credit: AbdullahAlMaani · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
@@ -57,13 +67,15 @@ sources:
     lang: en
   - name: ماركت ووتش
     nameEn: MarketWatch
-    title: All the ways record-high diesel and rising gas prices are about to make your life more expensive — from commuting to grocery shopping
+    title: All the ways record-high diesel and rising gas prices are about to make
+      your life more expensive — from commuting to grocery shopping
     url: https://www.marketwatch.com/story/all-the-ways-record-high-diesel-and-rising-gas-prices-are-about-to-make-your-life-more-expensive-from-commuting-to-grocery-shopping-2083fec3?mod=mw_rss_topstories
     publishedAt: 2026-09-10T22:54:00.000Z
     lang: en
   - name: سي إن بي سي
     nameEn: CNBC
-    title: Ryanair CEO says to brace for a 'significant uplift' in airfares as oil prices soar
+    title: Ryanair CEO says to brace for a 'significant uplift' in airfares as oil
+      prices soar
     url: https://www.cnbc.com/2026/09/10/ryanair-airfare-prices-oil-iran-war.html
     publishedAt: 2026-09-10T09:35:14.000Z
     lang: en
@@ -79,7 +91,9 @@ quality:
   importance: 10
   warnings:
     - "latin words: cha"
-  criticSummary: المقال يحتوي على أخطاء في الأسماء (فورتكسا بدلاً من Vortexa)، وسوء إسناد لبعض البيانات، وخلط بين الوقائع والتوقعات، مما يؤثر على الدقة ويحتاج إلى تصحيح قبل النشر.
+  criticSummary: المقال يحتوي على أخطاء في الأسماء (فورتكسا بدلاً من Vortexa)،
+    وسوء إسناد لبعض البيانات، وخلط بين الوقائع والتوقعات، مما يؤثر على الدقة
+    ويحتاج إلى تصحيح قبل النشر.
 ai: true
 ---
 

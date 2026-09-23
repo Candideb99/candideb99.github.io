@@ -5,13 +5,21 @@ slug: ai-leaders-warn-openai-ipo-delay-b7d3e6
 section: technology
 kind: news
 publishedAt: 2026-09-13T23:21:40.645Z
-lede: حذر داريو أمودي الرئيس التنفيذي لشركة أنثروبيك من ضرورة إبطاء وتيرة تطوير قدرات نماذج الذكاء الاصطناعي. وقال سام ألتمان في مقابلة مع مجلة فورتن إن طرح أوبن إيه آي للاكتتاب العام في 2026 سيكون قراراً غير مناسب نظراً لمخاوف السلامة.
+lede: حذر داريو أمودي الرئيس التنفيذي لشركة أنثروبيك من ضرورة إبطاء وتيرة تطوير
+  قدرات نماذج الذكاء الاصطناعي. وقال سام ألتمان في مقابلة مع مجلة فورتن إن طرح
+  أوبن إيه آي للاكتتاب العام في 2026 سيكون قراراً غير مناسب نظراً لمخاوف
+  السلامة.
 keyFacts:
   - label: قيمة أنثروبيك
     value: 965 مليار دولار
   - label: قيمة أوبن إيه آي
     value: 852 مليار دولار
-whyItMatters: يعكس تأجيل طرح أوبن إيه آي للاكتتاب العام وتحذيرات القادة من التطور غير المنضبط للذكاء الاصطناعي مخاوف متزايدة من مخاطر السلامة التي قد تؤثر على استثمارات الشركات التكنولوجية في المنطقة. مع وصول قيمتي الشركتين إلى مستويات قياسية، قد يتردد المستثمرون في الخليج والشرق الأوسط في دعم مشاريع الذكاء الاصطناعي دون ضمانات سلامة واضحة، مما قد يبطئ تدفق رؤوس الأموال إلى القطاع التكنولوجي العربي المتنامي.
+whyItMatters: يعكس تأجيل طرح أوبن إيه آي للاكتتاب العام وتحذيرات القادة من
+  التطور غير المنضبط للذكاء الاصطناعي مخاوف متزايدة من مخاطر السلامة التي قد
+  تؤثر على استثمارات الشركات التكنولوجية في المنطقة. مع وصول قيمتي الشركتين إلى
+  مستويات قياسية، قد يتردد المستثمرون في الخليج والشرق الأوسط في دعم مشاريع
+  الذكاء الاصطناعي دون ضمانات سلامة واضحة، مما قد يبطئ تدفق رؤوس الأموال إلى
+  القطاع التكنولوجي العربي المتنامي.
 tags:
   - الذكاء الاصطناعي
   - الولايات المتحدة
@@ -24,14 +32,14 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/View_of_the_Ferry_Building_from_Treasure_Island%2C_San_Francisco_dllu.jpg/1280px-View_of_the_Ferry_Building_from_Treasure_Island%2C_San_Francisco_dllu.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Racks_Amravati_Data_Center.jpg/1280px-Racks_Amravati_Data_Center.jpg
   width: 1280
-  height: 954
-  alt: أفق سان فرانسيسكو ليلاً مع مبنى فيري ومركز المدينة المضاء
-  credit: Dllu · CC BY-SA 4.0 · ويكيميديا كومنز
+  height: 854
+  alt: خزانات خوادم في مركز بيانات
+  credit: PiDatacenters · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AView_of_the_Ferry_Building_from_Treasure_Island%2C_San_Francisco_dllu.jpg
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ARacks_Amravati_Data_Center.jpg
 sources:
   - name: بي بي سي
     nameEn: BBC News
@@ -53,13 +61,15 @@ sources:
     lang: ar
   - name: سي إن بي سي
     nameEn: CNBC
-    title: OpenAI rules out IPO this year as Altman, Musk & Amodei warn AI is moving too fast
+    title: OpenAI rules out IPO this year as Altman, Musk & Amodei warn AI is moving
+      too fast
     url: https://www.cnbc.com/2026/09/12/anthropics-amodei-proposes-plan-to-slow-the-pace-of-advancing-ai-capabilities.html
     publishedAt: 2026-09-13T22:21:33.000Z
     lang: en
 models:
   editor: inclusionai/ling-3.0-flash-fin:free
-  writer: nvidia/nemotron-3-super-120b-a12b:free → nvidia/nemotron-3-super-120b-a12b:free
+  writer: nvidia/nemotron-3-super-120b-a12b:free →
+    nvidia/nemotron-3-super-120b-a12b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
   vision: nex-agi/nex-n2.5-pro:free
   desk: nvidia/nemotron-3-super-120b-a12b:free
@@ -69,7 +79,9 @@ quality:
   revised: true
   importance: 8
   warnings: []
-  criticSummary: المقال يدمج بدقة تصريحات قادة الذكاء الاصطناعي حول إبطاء التطور وتأجيل الاكتتاب العام، لكنه يحتوي على أخطاء زمنية وإملائية وعلاقات سببية غير مدعومة.
+  criticSummary: المقال يدمج بدقة تصريحات قادة الذكاء الاصطناعي حول إبطاء التطور
+    وتأجيل الاكتتاب العام، لكنه يحتوي على أخطاء زمنية وإملائية وعلاقات سببية غير
+    مدعومة.
 ai: true
 ---
 

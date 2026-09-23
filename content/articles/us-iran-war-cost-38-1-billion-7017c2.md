@@ -1,15 +1,25 @@
 ---
 title: الحرب الأميركية-الإيرانية تكلف 38.1 مليار دولار في خمسة أشهر
-subtitle: التكلفة شملت 7.4 مليار دولار تكاليف تشغيلية و22.3 مليار دولار لاستبدال الذخائر و3.7 مليار دولار خسائر معدات
+subtitle: التكلفة شملت 7.4 مليار دولار تكاليف تشغيلية و22.3 مليار دولار لاستبدال
+  الذخائر و3.7 مليار دولار خسائر معدات
 slug: us-iran-war-cost-38-1-billion-7017c2
 section: defense
 kind: news
 publishedAt: 2026-09-15T21:38:31.535Z
-lede: أفاد مكتب الميزانية بالكونغرس بأن الحرب الأميركية-الإيرانية كلفت 38.1 مليار دولار حتى أغسطس 2026، بعد خمسة أشهر من القتال. وقال إن أكثر من نصف التكلفة جاء من استبدال الصواريخ والذخائر المستخدمة في الصراع. وأضاف أن الحرب استهلكت ما يصل إلى ثلثي مخزون الولايات المتحدة من صواريخ الاعتراض منذ يونيو 2025.
+lede: أفاد مكتب الميزانية بالكونغرس بأن الحرب الأميركية-الإيرانية كلفت 38.1
+  مليار دولار حتى أغسطس 2026، بعد خمسة أشهر من القتال. وقال إن أكثر من نصف
+  التكلفة جاء من استبدال الصواريخ والذخائر المستخدمة في الصراع. وأضاف أن الحرب
+  استهلكت ما يصل إلى ثلثي مخزون الولايات المتحدة من صواريخ الاعتراض منذ يونيو
+  2025.
 keyFacts:
   - label: إجمالي التكلفة
     value: 38.1 مليار دولار
-whyItMatters: الحرب ترفع تكاليف التشغيل العسكري وتستهلك مخزونات الذخيرة الاستراتيجية، ما قد يحد من قدرة الولايات المتحدة على الرد في أزمات مستقبلية، خاصة مع تصاعد التوترات في تايوان. كما أن تأثيرها على أسعار الوقود والنقل يرفع تكلفة الاستيراد والنقل في المنطقة، مما يضغط على ميزانيات الأسر والشركات في دول الخليج والشرق الأوسط، ويزيد من الضغوط التضخمية التي تواجهها الاقتصادات العربية بالفعل.
+whyItMatters: الحرب ترفع تكاليف التشغيل العسكري وتستهلك مخزونات الذخيرة
+  الاستراتيجية، ما قد يحد من قدرة الولايات المتحدة على الرد في أزمات مستقبلية،
+  خاصة مع تصاعد التوترات في تايوان. كما أن تأثيرها على أسعار الوقود والنقل يرفع
+  تكلفة الاستيراد والنقل في المنطقة، مما يضغط على ميزانيات الأسر والشركات في دول
+  الخليج والشرق الأوسط، ويزيد من الضغوط التضخمية التي تواجهها الاقتصادات العربية
+  بالفعل.
 tags:
   - الكونغرس
   - الولايات المتحدة
@@ -26,14 +36,15 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/PentagonAerial2005.jpg/1280px-PentagonAerial2005.jpg
   width: 1280
   height: 760
-  alt: مشهد جوي لمقر وزارة الدفاع الأميركية البنتاغون قرب واشنطن
+  alt: مقر وزارة الدفاع الأميركية (البنتاغون) قرب واشنطن
   credit: Chief Photographer's Mate Johnny Bivera · Public domain · ويكيميديا كومنز
   license: Public domain
   pageUrl: https://commons.wikimedia.org/wiki/File%3APentagonAerial2005.jpg
 sources:
   - name: سي إن بي سي
     nameEn: CNBC
-    title: Iran war has cost on average $246 million per day in its first five months, CBO finds
+    title: Iran war has cost on average $246 million per day in its first five
+      months, CBO finds
     url: https://www.cnbc.com/2026/09/15/cbo-iran-war-cost-pentagon-weapons.html
     publishedAt: 2026-09-15T20:08:00.000Z
     lang: en
@@ -45,7 +56,8 @@ sources:
     lang: en
   - name: بريكينغ ديفنس
     nameEn: Breaking Defense
-    title: "‘Hundreds’ of buildings, ‘dozens’ of aircraft destroyed or damaged during Iran ops: DoD IG"
+    title: "‘Hundreds’ of buildings, ‘dozens’ of aircraft destroyed or damaged
+      during Iran ops: DoD IG"
     url: https://breakingdefense.com/2026/09/iran-war-costs-airplanes-buildings-stockpile-concerns-ig-report/
     publishedAt: 2026-09-15T15:08:22.000Z
     lang: en
@@ -57,7 +69,8 @@ sources:
     lang: en
 models:
   editor: inclusionai/ling-3.0-flash-fin:free
-  writer: nvidia/nemotron-3-super-120b-a12b:free → nvidia/nemotron-3-super-120b-a12b:free
+  writer: nvidia/nemotron-3-super-120b-a12b:free →
+    nvidia/nemotron-3-super-120b-a12b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
   vision: nex-agi/nex-n2.5-pro:free
   desk: nvidia/nemotron-3-super-120b-a12b:free
@@ -67,7 +80,8 @@ quality:
   revised: true
   importance: 9
   warnings: []
-  criticSummary: المقال دقيق في الأرقام والاقتباسات، ومتوافق مع المصادر، وخالٍ من الأخطاء الجوهرية أو الترجمة الحرفية.
+  criticSummary: المقال دقيق في الأرقام والاقتباسات، ومتوافق مع المصادر، وخالٍ من
+    الأخطاء الجوهرية أو الترجمة الحرفية.
 ai: true
 ---
 

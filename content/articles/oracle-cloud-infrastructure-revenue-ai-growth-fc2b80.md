@@ -1,11 +1,18 @@
 ---
-title: أوراكل ترتفع 6.2% في تداولات ما قبل الافتتاح بعد نمو إيرادات البنية التحتية السحابية 121%
-subtitle: الإيرادات الإجمالية للربع المالي الأول بلغت 19.35 مليار دولار متجاوزة توقعات السوق، مدفوعة بطلب قوي على خدمات السحابة وتوسع مراكز البيانات
+title: أوراكل ترتفع 6.2% في تداولات ما قبل الافتتاح بعد نمو إيرادات البنية
+  التحتية السحابية 121%
+subtitle: الإيرادات الإجمالية للربع المالي الأول بلغت 19.35 مليار دولار متجاوزة
+  توقعات السوق، مدفوعة بطلب قوي على خدمات السحابة وتوسع مراكز البيانات
 slug: oracle-cloud-infrastructure-revenue-ai-growth-fc2b80
 section: companies
 kind: news
 publishedAt: 2026-09-11T11:44:07.765Z
-lede: أعلنت شركة أوراكل الأمريكية عن نمو إيرادات البنية التحتية السحابية بنسبة 121% على أساس سنوي في الربع المالي الأول من عام 2027، مدفوعة بطلب قوي على خدمات السحابة وتوسع مراكز البيانات، مما دفع سهمها للارتفاع 6.2% في تداولات ما قبل الافتتاح يوم الجمعة. بلغت الإيرادات الإجمالية للشركة 19.35 مليار دولار، متجاوزة توقعات LSEG البالغة 19.14 مليار دولار، في حين ارتفع صافي الدخل إلى 4.7 مليار دولار بنسبة 60% مقارنة بالعام السابق.
+lede: أعلنت شركة أوراكل الأمريكية عن نمو إيرادات البنية التحتية السحابية بنسبة
+  121% على أساس سنوي في الربع المالي الأول من عام 2027، مدفوعة بطلب قوي على
+  خدمات السحابة وتوسع مراكز البيانات، مما دفع سهمها للارتفاع 6.2% في تداولات ما
+  قبل الافتتاح يوم الجمعة. بلغت الإيرادات الإجمالية للشركة 19.35 مليار دولار،
+  متجاوزة توقعات LSEG البالغة 19.14 مليار دولار، في حين ارتفع صافي الدخل إلى 4.7
+  مليار دولار بنسبة 60% مقارنة بالعام السابق.
 keyFacts:
   - label: نمو إيرادات البنية التحتية السحابية
     value: 121% على أساس سنوي
@@ -19,7 +26,12 @@ keyFacts:
     value: 125 مليار دولار
   - label: النفقات الرأسمالية في الربع
     value: 28.50 مليار دولار
-whyItMatters: يعكس هذا الأداء القوي حجم التحول العالمي نحو البنية التحتية الرقمية المدعومة بالذكاء الاصطناعي، وهو تحول تؤثر آثاره على اقتصادات المنطقة العربية التي تسعى إلى تطوير قطاعاتها الرقمية وجذب الاستثمارات التكنولوجية. الطلب المتصاعد على خدمات السحابة يفتح آفاقاً أمام الشركات العربية لتعزيز قدراتها الرقمية، كما يبرز الحاجة المتزايدة إلى مراكز بيانات محلية تدعم طموحات التحول الرقمي في المنطقة.
+whyItMatters: يعكس هذا الأداء القوي حجم التحول العالمي نحو البنية التحتية
+  الرقمية المدعومة بالذكاء الاصطناعي، وهو تحول تؤثر آثاره على اقتصادات المنطقة
+  العربية التي تسعى إلى تطوير قطاعاتها الرقمية وجذب الاستثمارات التكنولوجية.
+  الطلب المتصاعد على خدمات السحابة يفتح آفاقاً أمام الشركات العربية لتعزيز
+  قدراتها الرقمية، كما يبرز الحاجة المتزايدة إلى مراكز بيانات محلية تدعم طموحات
+  التحول الرقمي في المنطقة.
 tags:
   - أوراكل
   - الذكاء الاصطناعي
@@ -36,7 +48,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Data_center_roof.jpg/1280px-Data_center_roof.jpg
   width: 1280
   height: 960
-  alt: لقطة جوية لسقف مركز بيانات حديث يضم وحدات تبريد ومولدات احتياطية
+  alt: أبراج تبريد ومولدات احتياطية فوق سطح مركز بيانات
   credit: Rsparks3 · CC0 · ويكيميديا كومنز
   license: CC0
   licenseUrl: http://creativecommons.org/publicdomain/zero/1.0/deed.en
@@ -44,13 +56,15 @@ image:
 sources:
   - name: سي إن بي سي
     nameEn: CNBC
-    title: Oracle jumps 6% after reporting 30% revenue growth fueled by AI cloud demand
+    title: Oracle jumps 6% after reporting 30% revenue growth fueled by AI cloud
+      demand
     url: https://www.cnbc.com/2026/09/11/oracle-stock-q1-earnings-ai-cloud.html
     publishedAt: 2026-09-11T11:22:05.000Z
     lang: en
   - name: ماركت ووتش
     nameEn: MarketWatch
-    title: Oracle shares are climbing after results. What Wall Street analysts are saying now.
+    title: Oracle shares are climbing after results. What Wall Street analysts are
+      saying now.
     url: https://www.marketwatch.com/story/oracle-shares-are-climbing-after-results-what-wall-street-analysts-are-saying-now-0d4517ae?mod=mw_rss_topstories
     publishedAt: 2026-09-11T10:05:00.000Z
     lang: en
@@ -62,7 +76,8 @@ sources:
     lang: en
   - name: سي إن بي سي
     nameEn: CNBC
-    title: Oracle's stock edges up on earnings beat as cloud infrastructure revenue more than doubles
+    title: Oracle's stock edges up on earnings beat as cloud infrastructure revenue
+      more than doubles
     url: https://www.cnbc.com/2026/09/10/oracle-orcl-q1-earnings-report-2027.html
     publishedAt: 2026-09-10T21:42:47.000Z
     lang: en
@@ -78,7 +93,9 @@ quality:
   importance: 7
   warnings:
     - "latin words: LSEG, AMD, xAI"
-  criticSummary: المقال يحتوي على أخطاء زمنية وتفسيرية خطيرة تتعلق بعام التقرير وتحويل التوقعات إلى حقائق مؤكدة، مما يؤثر على مصداقيته رغم جودة اللغة العربية العامة.
+  criticSummary: المقال يحتوي على أخطاء زمنية وتفسيرية خطيرة تتعلق بعام التقرير
+    وتحويل التوقعات إلى حقائق مؤكدة، مما يؤثر على مصداقيته رغم جودة اللغة
+    العربية العامة.
 ai: true
 ---
 

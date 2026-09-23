@@ -1,11 +1,16 @@
 ---
 title: أبل تكشف عن هاتف قابل للطي وتغيّر نهج إصدار الآيفون
-subtitle: جون تيرنوس يقدم آيفون ديو بسعر 1999 دولاراً ومحللون يتوقعون إطلاق الطراز الأساسي في الربيع
+subtitle: جون تيرنوس يقدم آيفون ديو بسعر 1999 دولاراً ومحللون يتوقعون إطلاق
+  الطراز الأساسي في الربيع
 slug: apple-foldable-iphone-duo-release-cycle-change-d6b45a
 section: companies
 kind: news
 publishedAt: 2026-09-10T21:06:30.841Z
-lede: أعلنت أبل في حدث "مفاجأة وتميّز" في كوبرتينو يوم 9 سبتمبر 2026 عن هاتف قابل للطي يحمل اسم آيفون ديو بسعر يبدأ من 1999 دولاراً، في أول عرض لجون تيرنوس بصفته الرئيس التنفيذي الجديد منذ توليه المنصب في 1 سبتمبر. كما كشفت الشركة عن آيفون 18 برو وبرو ماكس بشاشات أكبر، مع غياب ملحوظ للطراز الأساسي آيفون 18 الذي كان يباع سابقاً بسعر 799 دولاراً.
+lede: أعلنت أبل في حدث "مفاجأة وتميّز" في كوبرتينو يوم 9 سبتمبر 2026 عن هاتف
+  قابل للطي يحمل اسم آيفون ديو بسعر يبدأ من 1999 دولاراً، في أول عرض لجون تيرنوس
+  بصفته الرئيس التنفيذي الجديد منذ توليه المنصب في 1 سبتمبر. كما كشفت الشركة عن
+  آيفون 18 برو وبرو ماكس بشاشات أكبر، مع غياب ملحوظ للطراز الأساسي آيفون 18 الذي
+  كان يباع سابقاً بسعر 799 دولاراً.
 keyFacts:
   - label: سعر آيفون ديو
     value: 1999 دولاراً
@@ -15,7 +20,11 @@ keyFacts:
     value: 54%
   - label: سعر آيفون 17 بعد الحدث
     value: 899 دولاراً (كان 799 دولاراً قبل الحدث)
-whyItMatters: تغيير نهج إصدار آيفون بعد سبع سنوات يعكس تحول أبل نحو استراتيجية تركز على الهوامش العالية وتخفيف ضغوط سلسلة التوريد، وهو ما قد يرفع متوسط أسعار البيع لكن يخاطر بفقدان شريحة المستهلكين الحساسين للسعر. دخول أبل سوق الهواتف القابلة للطي بمودم داخلي خاص يعزز استقلاليتها عن كوالكوم، بينما يمنح التوقيت الربيعي للطراز الأساسي فرصة لتنشيط المبيعات في الفصول البطيئة تقليدياً.
+whyItMatters: تغيير نهج إصدار آيفون بعد سبع سنوات يعكس تحول أبل نحو استراتيجية
+  تركز على الهوامش العالية وتخفيف ضغوط سلسلة التوريد، وهو ما قد يرفع متوسط أسعار
+  البيع لكن يخاطر بفقدان شريحة المستهلكين الحساسين للسعر. دخول أبل سوق الهواتف
+  القابلة للطي بمودم داخلي خاص يعزز استقلاليتها عن كوالكوم، بينما يمنح التوقيت
+  الربيعي للطراز الأساسي فرصة لتنشيط المبيعات في الفصول البطيئة تقليدياً.
 tags:
   - أبل
   - آيفون
@@ -32,7 +41,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Apple_Park_2022.jpg/1280px-Apple_Park_2022.jpg
   width: 1280
   height: 720
-  alt: مقر أبل الرئيسي آبل بارك في كوبيرتينو كما يظهر من الجو
+  alt: مقر أبل بارك في كوبيرتينو بولاية كاليفورنيا
   credit: InvadingInvader · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
@@ -40,13 +49,15 @@ image:
 sources:
   - name: سي إن بي سي
     nameEn: CNBC
-    title: Apple makes biggest change to iPhone release cadence in 7 years in Ternus' first showcase as CEO
+    title: Apple makes biggest change to iPhone release cadence in 7 years in
+      Ternus' first showcase as CEO
     url: https://www.cnbc.com/2026/09/10/apple-makes-biggest-change-to-iphone-release-cadence-in-7-years.html
     publishedAt: 2026-09-10T14:45:52.000Z
     lang: en
   - name: إيكونومي ميدل إيست
     nameEn: Economy Middle East
-    title: UAE Crown Prince to lead delegation at 18th BRICS Summit as $312 billion trade ties deepen across finance, energy and investment
+    title: UAE Crown Prince to lead delegation at 18th BRICS Summit as $312 billion
+      trade ties deepen across finance, energy and investment
     url: https://economymiddleeast.com/news/uae-crown-prince-to-lead-delegation-at-18th-brics-summit-as-312-billion-trade-ties-deepen-across-finance-energy-and-investment/
     publishedAt: 2026-09-10T14:42:42.000Z
     lang: en
@@ -62,7 +73,9 @@ quality:
   importance: 8
   warnings:
     - "latin words: iOS, IDC"
-  criticSummary: المسودة تحتوي على أخطاء جوهرية في attribution والحقائق، بما في ذلك خلط بين تصريحات المحللين وقرارات أبل، وتعميم غير دقيق لحصص المبيعات، وخطأ في تسلسل الرؤساء التنفيذيين، مما يتطلب مراجعة دقيقة قبل النشر.
+  criticSummary: المسودة تحتوي على أخطاء جوهرية في attribution والحقائق، بما في
+    ذلك خلط بين تصريحات المحللين وقرارات أبل، وتعميم غير دقيق لحصص المبيعات،
+    وخطأ في تسلسل الرؤساء التنفيذيين، مما يتطلب مراجعة دقيقة قبل النشر.
 ai: true
 ---
 

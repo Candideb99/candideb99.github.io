@@ -5,7 +5,10 @@ slug: trump-approval-32-percent-iran-war-bd2925
 section: economy
 kind: news
 publishedAt: 2026-09-21T21:28:02.430Z
-lede: انخفض معدل تأييد الرئيس الأمريكي دونالد ترامب إلى 32%، وهو أدنى مستوى يسجله في مسيرته السياسية، وفقاً لاستطلاع أجرته رويترز/إبسوس وأُعلنت نتائجه الأحد. وشمل الاستطلاع 1277 بالغاً أمريكياً بهامش خطأ ثلاث نقاط مئوية، وأظهر تراجع تأييد الجمهوريين لترامب من 82% إلى 73% خلال أسبوع واحد.
+lede: انخفض معدل تأييد الرئيس الأمريكي دونالد ترامب إلى 32%، وهو أدنى مستوى
+  يسجله في مسيرته السياسية، وفقاً لاستطلاع أجرته رويترز/إبسوس وأُعلنت نتائجه
+  الأحد. وشمل الاستطلاع 1277 بالغاً أمريكياً بهامش خطأ ثلاث نقاط مئوية، وأظهر
+  تراجع تأييد الجمهوريين لترامب من 82% إلى 73% خلال أسبوع واحد.
 keyFacts:
   - label: معدل تأييد ترامب
     value: 32%
@@ -19,7 +22,11 @@ keyFacts:
     value: ثلاث نقاط مئوية
   - label: تاريخ بدء الحرب على إيران
     value: فبراير 2026
-whyItMatters: يهدد انهيار التأييد الشعبي لترامب، خاصة داخل قاعدته الجمهورية، بزعزعة الأغلبية الضيقة للحزب في الكونغرس قبل انتخابات التجديد النصفي في نوفمبر 2026. وتصعيد العقوبات على الطيران الإيراني يعمّق العزلة المالية لطهران، ويضغط على شركائها التجاريين وفي مقدمتهم الصين، ما قد يعيد تشكيل تدفقات الطاقة والتجارة في الخليج والمنطقة العربية الأوسع.
+whyItMatters: يهدد انهيار التأييد الشعبي لترامب، خاصة داخل قاعدته الجمهورية،
+  بزعزعة الأغلبية الضيقة للحزب في الكونغرس قبل انتخابات التجديد النصفي في نوفمبر
+  2026. وتصعيد العقوبات على الطيران الإيراني يعمّق العزلة المالية لطهران، ويضغط
+  على شركائها التجاريين وفي مقدمتهم الصين، ما قد يعيد تشكيل تدفقات الطاقة
+  والتجارة في الخليج والمنطقة العربية الأوسع.
 tags:
   - دونالد ترامب
   - إيران
@@ -51,7 +58,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/The_White_House%2C_Washington%2C_D.C._USA2.jpg/1280px-The_White_House%2C_Washington%2C_D.C._USA2.jpg
   width: 1280
   height: 763
-  alt: البيت الأبيض في واشنطن محاطاً بالأشجار والنوافير تحت سماء صافية
+  alt: البيت الأبيض في واشنطن العاصمة
   credit: Diego Delso · CC BY-SA 3.0 · ويكيميديا كومنز
   license: CC BY-SA 3.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/3.0
@@ -77,13 +84,15 @@ sources:
     lang: en
   - name: سي إن بي سي
     nameEn: CNBC
-    title: Iranian President Pezeshkian to head to New York for UN meeting as Trump warns of no-deal consequences
+    title: Iranian President Pezeshkian to head to New York for UN meeting as Trump
+      warns of no-deal consequences
     url: https://www.cnbc.com/2026/09/21/us-iran-war-trump-hormuz.html
     publishedAt: 2026-09-21T14:20:48.000Z
     lang: en
 models:
   editor: inclusionai/ling-3.0-flash-fin:free
-  writer: nvidia/nemotron-3-ultra-550b-a55b:free → nvidia/nemotron-3-ultra-550b-a55b:free
+  writer: nvidia/nemotron-3-ultra-550b-a55b:free →
+    nvidia/nemotron-3-ultra-550b-a55b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
   vision: nex-agi/nex-n2.5-pro:free
   desk: nvidia/nemotron-3-super-120b-a12b:free
@@ -93,7 +102,8 @@ quality:
   revised: true
   importance: 8
   warnings: []
-  criticSummary: المقال يلتزم بالمصادر في الأرقام والوقائع لكنه يحتوي على أخطاء في الترجمة الحرفية وتواريخ غير مدعومة، ويمكن نشره بعد تعديل طفيف.
+  criticSummary: المقال يلتزم بالمصادر في الأرقام والوقائع لكنه يحتوي على أخطاء في
+    الترجمة الحرفية وتواريخ غير مدعومة، ويمكن نشره بعد تعديل طفيف.
 ai: true
 updatedAt: 2026-09-21T21:29:57.877Z
 ---

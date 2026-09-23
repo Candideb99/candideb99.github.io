@@ -5,11 +5,19 @@ slug: openai-seeks-1-5-trillion-funding-a2d732
 section: technology
 kind: news
 publishedAt: 2026-09-16T05:00:48.625Z
-lede: أعلنت أوبن إيه آي أنها تبحث عن جولة تمويل جديدة، وفقاً لصحيفة نيويورك تايمز، في مؤشر على ثقة المستثمرين في هيمنة الشركة على سوق الذكاء الاصطناعي التوليدي.
+lede: أعلنت أوبن إيه آي أنها تبحث عن جولة تمويل جديدة، وفقاً لصحيفة نيويورك
+  تايمز، في مؤشر على ثقة المستثمرين في هيمنة الشركة على سوق الذكاء الاصطناعي
+  التوليدي.
 keyFacts:
   - label: التمويل الجديد
     value: يضاعف قيمة الشركة لتصل إلى 1.5 تريليون دولار
-whyItMatters: يعكس اهتمام المستثمرين بأوبن إيه آي ثقة في هيمنة الشركة على سوق الذكاء الاصطناعي التوليدي، مما قد يجذب رؤوس أموال عربية إلى sektors التكنولوجيا العالية ويدفع الحكومات في الخليج والمغرب العربي إلى تسريع استراتيجيات الذكاء الاصطناعي الوطنية. كما أن التركيز على معايير السلامة الطوعية قد يخلق إطارًا تنظيميًا مرنًا يمكن للشركات العربية اعتماده لموازنة الابتكار مع المسؤولية الاجتماعية، خاصة مع زيادة استخدام الذكاء الاصطناعي في الخدمات المالية والرعاية الصحية.
+whyItMatters: يعكس اهتمام المستثمرين بأوبن إيه آي ثقة في هيمنة الشركة على سوق
+  الذكاء الاصطناعي التوليدي، مما قد يجذب رؤوس أموال عربية إلى sektors
+  التكنولوجيا العالية ويدفع الحكومات في الخليج والمغرب العربي إلى تسريع
+  استراتيجيات الذكاء الاصطناعي الوطنية. كما أن التركيز على معايير السلامة
+  الطوعية قد يخلق إطارًا تنظيميًا مرنًا يمكن للشركات العربية اعتماده لموازنة
+  الابتكار مع المسؤولية الاجتماعية، خاصة مع زيادة استخدام الذكاء الاصطناعي في
+  الخدمات المالية والرعاية الصحية.
 tags:
   - أوبن إيه آي
   - الذكاء الاصطناعي
@@ -25,7 +33,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Pioneer_Building%2C_San_Francisco_%282019%29_-1.jpg/1280px-Pioneer_Building%2C_San_Francisco_%282019%29_-1.jpg
   width: 1280
   height: 643
-  alt: مبنى بايونير في سان فرانسيسكو، مقر شركة أوبن إيه آي
+  alt: مبنى بايونير في سان فرانسيسكو مقر شركة أوبن إيه آي
   credit: HaeB · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
@@ -39,7 +47,8 @@ sources:
     lang: en
   - name: سي إن بي سي
     nameEn: CNBC
-    title: OpenAI CFO Sarah Friar tells CNBC she isn't worried about slowing AI development
+    title: OpenAI CFO Sarah Friar tells CNBC she isn't worried about slowing AI
+      development
     url: https://www.cnbc.com/2026/09/15/open-ai-sarah-friar-safety.html
     publishedAt: 2026-09-16T00:12:29.000Z
     lang: en
@@ -57,7 +66,8 @@ sources:
     lang: en
 models:
   editor: inclusionai/ling-3.0-flash-fin:free
-  writer: nvidia/nemotron-3-super-120b-a12b:free → nvidia/nemotron-3-super-120b-a12b:free
+  writer: nvidia/nemotron-3-super-120b-a12b:free →
+    nvidia/nemotron-3-super-120b-a12b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
   vision: nex-agi/nex-n2.5-pro:free
   desk: nvidia/nemotron-3-super-120b-a12b:free
@@ -68,7 +78,8 @@ quality:
   importance: 9
   warnings:
     - "latin words: sektors"
-  criticSummary: المقال يحتوي على أخطاء في attribution والتوقيت وتعبيرات غير idiomatic في العربية، رغم أن معظم الحقائق مستمدة من المصادر مع بعض التأويل.
+  criticSummary: المقال يحتوي على أخطاء في attribution والتوقيت وتعبيرات غير
+    idiomatic في العربية، رغم أن معظم الحقائق مستمدة من المصادر مع بعض التأويل.
 ai: true
 ---
 

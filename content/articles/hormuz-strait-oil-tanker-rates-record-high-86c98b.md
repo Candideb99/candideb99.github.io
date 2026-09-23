@@ -1,11 +1,14 @@
 ---
 title: "مضيق هرمز: تكلفة استئجار الناقلات العملاقة تتجاوز 800 ألف دولار يومياً"
-subtitle: علاوات التأمين تقفز إلى 12.5% من قيمة السفينة وكميات النفط المارة تتراجع إلى 45% من مستويات ما قبل الحرب
+subtitle: علاوات التأمين تقفز إلى 12.5% من قيمة السفينة وكميات النفط المارة
+  تتراجع إلى 45% من مستويات ما قبل الحرب
 slug: hormuz-strait-oil-tanker-rates-record-high-86c98b
 section: energy
 kind: news
 publishedAt: 2026-09-13T16:36:56.628Z
-lede: قفزت تكلفة استئجار ناقلات النفط العملاقة عبر مضيق هرمز إلى أكثر من 800 ألف دولار يومياً، وفق ما أوردته الجزيرة نقلاً عن محللة الشحن ميشيل بوكمان. وبلغت تكلفة الرحلة الواحدة نحو 29 مليون دولار، ما يعادل 15 دولاراً للبرميل.
+lede: قفزت تكلفة استئجار ناقلات النفط العملاقة عبر مضيق هرمز إلى أكثر من 800 ألف
+  دولار يومياً، وفق ما أوردته الجزيرة نقلاً عن محللة الشحن ميشيل بوكمان. وبلغت
+  تكلفة الرحلة الواحدة نحو 29 مليون دولار، ما يعادل 15 دولاراً للبرميل.
 keyFacts:
   - label: تكلفة استئجار الناقلة العملاقة
     value: أكثر من 800 ألف دولار يومياً
@@ -17,7 +20,12 @@ keyFacts:
     value: نحو 45% من مستويات ما قبل الحرب
   - label: مؤشر عوائد الناقلات
     value: ارتفاع بأكثر من 40% منذ بداية الشهر
-whyItMatters: يرفع التصعيد في هرمز كلفة الطاقة عالمياً وينعكس مباشرة على موازنات الدول المصدرة والمستوردة في المنطقة؛ فارتفاع تكلفة البرميل المنقول 15 دولاراً يضغط على هوامش المصفاة ويزيد فاتورة الاستيراد، بينما تراجع التدفقات إلى 45% يهدد أمن الإمدادات لآسيا وأوروبا. وتكاليف التأمين المرتفعة (حتى 12.5%) تجعل بعض المسارات غير مجدية تجارياً، ما قد يعيد رسم خرائط تجارة النفط الخام والمنتجات المكررة.
+whyItMatters: يرفع التصعيد في هرمز كلفة الطاقة عالمياً وينعكس مباشرة على موازنات
+  الدول المصدرة والمستوردة في المنطقة؛ فارتفاع تكلفة البرميل المنقول 15 دولاراً
+  يضغط على هوامش المصفاة ويزيد فاتورة الاستيراد، بينما تراجع التدفقات إلى 45%
+  يهدد أمن الإمدادات لآسيا وأوروبا. وتكاليف التأمين المرتفعة (حتى 12.5%) تجعل
+  بعض المسارات غير مجدية تجارياً، ما قد يعيد رسم خرائط تجارة النفط الخام
+  والمنتجات المكررة.
 tags:
   - مضيق هرمز
   - ناقلات النفط
@@ -36,7 +44,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Petroleum_tanker_leaving_Dar_es_Salaam.jpg/1280px-Petroleum_tanker_leaving_Dar_es_Salaam.jpg
   width: 1280
   height: 960
-  alt: ناقلة نفط تبحر في البحر مع خط ساحلي في الخلفية
+  alt: ناقلة نفط تغادر ميناء دار السلام
   credit: Sarvesh Lutchmun · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
@@ -56,19 +64,22 @@ sources:
     lang: ar
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
-    title: كوريا الجنوبية قد تلجأ إلى مقايضة احتياطي النفط الاستراتيجي بعد ارتفاع الأسعار
+    title: كوريا الجنوبية قد تلجأ إلى مقايضة احتياطي النفط الاستراتيجي بعد ارتفاع
+      الأسعار
     url: https://aawsat.com/node/5317449
     publishedAt: 2026-09-12T12:20:50.000Z
     lang: ar
   - name: سي إن بي سي
     nameEn: CNBC
-    title: Vessel struck in Strait of Hormuz, UKMTO says, as prospects for U.S.-Iran diplomacy appear elusive
+    title: Vessel struck in Strait of Hormuz, UKMTO says, as prospects for U.S.-Iran
+      diplomacy appear elusive
     url: https://www.cnbc.com/2026/09/13/vessel-struck-strait-of-hormuz-ukmto.html
     publishedAt: 2026-09-13T13:38:23.000Z
     lang: en
 models:
   editor: inclusionai/ling-3.0-flash-fin:free
-  writer: nvidia/nemotron-3-ultra-550b-a55b:free → nvidia/nemotron-3-super-120b-a12b:free
+  writer: nvidia/nemotron-3-ultra-550b-a55b:free →
+    nvidia/nemotron-3-super-120b-a12b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
   vision: nex-agi/nex-n2.5-pro:free
   desk: nvidia/nemotron-3-super-120b-a12b:free
@@ -78,7 +89,8 @@ quality:
   revised: true
   importance: 9
   warnings: []
-  criticSummary: العنوان يعمم رقماً خاصاً بمسار واحد على أنه متوسط عام، والمقدمة طويلة وتحتاج إلى اختصار.
+  criticSummary: العنوان يعمم رقماً خاصاً بمسار واحد على أنه متوسط عام، والمقدمة
+    طويلة وتحتاج إلى اختصار.
 ai: true
 ---
 

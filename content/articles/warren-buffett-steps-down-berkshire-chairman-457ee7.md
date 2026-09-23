@@ -1,11 +1,15 @@
 ---
 title: وارن بافيت يتنحى عن رئاسة بركشاير هاثاواي ويخلفه ابنه هوارد يخلفه
-subtitle: بافيت (96 عاماً) يبقى رئيساً فخرياً في مجلس الإدارة بعد 60 عاماً حول فيها الشركة إلى تكتل تريليوني
+subtitle: بافيت (96 عاماً) يبقى رئيساً فخرياً في مجلس الإدارة بعد 60 عاماً حول
+  فيها الشركة إلى تكتل تريليوني
 slug: warren-buffett-steps-down-berkshire-chairman-457ee7
 section: companies
 kind: news
 publishedAt: 2026-09-18T16:36:35.540Z
-lede: أعلن وارن بافيت تنحيه عن رئاسة مجلس إدارة بركشاير هاثاواي في رسالة للمساهمين بتاريخ 18 سبتمبر 2026، على أن يخلفه ابنه هوارد بافيت (71 عاماً) في المنصب اعتباراً من التاريخ نفسه، بينما يبقى الوالد رئيساً فخرياً وعضواً في المجلس.
+lede: أعلن وارن بافيت تنحيه عن رئاسة مجلس إدارة بركشاير هاثاواي في رسالة
+  للمساهمين بتاريخ 18 سبتمبر 2026، على أن يخلفه ابنه هوارد بافيت (71 عاماً) في
+  المنصب اعتباراً من التاريخ نفسه، بينما يبقى الوالد رئيساً فخرياً وعضواً في
+  المجلس.
 keyFacts:
   - label: عمر وارن بافيت
     value: 96 عاماً
@@ -19,7 +23,13 @@ keyFacts:
     value: 44.5 مليار دولار
   - label: الاحتياطي النقدي
     value: 365.5 مليار دولار
-whyItMatters: يمثل تنحي بافيت نهاية حقبة استثنائية في تاريخ الشركات الأمريكية، حيث بنى نموذجاً للاستثمار القيمي وإدارة التكتلات لا يزال المرجع للمستثمرين عالمياً. انتقال الرئاسة إلى ابنه هوارد مع احتفاظ غريغ أبيل بالمسؤولية التنفيذية يختبر خطة الخلافة التي صاغها بافيت بنفسه، ويراقبها المستثمرون في الخليج والأسواق الناشئة ممن يقلدون استراتيجيته في تخصيص رأس المال طويل الأجل. كما أن حجم احتياطيات بركشاير النقدية (365.5 مليار دولار) يجعل قرارات توزيعها تحت الإدارة الجديدة مؤثرة في أسواق الأسهم العالمية.
+whyItMatters: يمثل تنحي بافيت نهاية حقبة استثنائية في تاريخ الشركات الأمريكية،
+  حيث بنى نموذجاً للاستثمار القيمي وإدارة التكتلات لا يزال المرجع للمستثمرين
+  عالمياً. انتقال الرئاسة إلى ابنه هوارد مع احتفاظ غريغ أبيل بالمسؤولية
+  التنفيذية يختبر خطة الخلافة التي صاغها بافيت بنفسه، ويراقبها المستثمرون في
+  الخليج والأسواق الناشئة ممن يقلدون استراتيجيته في تخصيص رأس المال طويل الأجل.
+  كما أن حجم احتياطيات بركشاير النقدية (365.5 مليار دولار) يجعل قرارات توزيعها
+  تحت الإدارة الجديدة مؤثرة في أسواق الأسهم العالمية.
 tags:
   - بركشاير هاثاواي
   - وارن بافيت
@@ -36,7 +46,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Berkshire_Hathaway_Annual_Meeting_2025.jpg/1280px-Berkshire_Hathaway_Annual_Meeting_2025.jpg
   width: 1280
   height: 721
-  alt: حشد كبير خلال الاجتماع السنوي لشركة بيركشاير هاثاواي داخل قاعة واسعة
+  alt: الاجتماع السنوي لشركة بيركشاير هاثاواي
   credit: Good-investing · CC0 · ويكيميديا كومنز
   license: CC0
   licenseUrl: http://creativecommons.org/publicdomain/zero/1.0/deed.en
@@ -56,13 +66,15 @@ sources:
     lang: en
   - name: الغارديان
     nameEn: The Guardian
-    title: Warren Buffett steps down as chair of Berkshire Hathaway after over 50 years
+    title: Warren Buffett steps down as chair of Berkshire Hathaway after over 50
+      years
     url: https://www.theguardian.com/business/2026/sep/18/warren-buffett-steps-down-berkshire-hathaway
     publishedAt: 2026-09-18T14:48:56.000Z
     lang: en
   - name: سي إن بي سي
     nameEn: CNBC
-    title: "Warren Buffett steps down as chairman of Berkshire Hathaway: 'Father Time always wins'"
+    title: "Warren Buffett steps down as chairman of Berkshire Hathaway: 'Father
+      Time always wins'"
     url: https://www.cnbc.com/2026/09/18/buffett-stepping-down-as-berkshire-chairman.html
     publishedAt: 2026-09-18T12:04:02.000Z
     lang: en
@@ -78,7 +90,9 @@ quality:
   revised: false
   importance: 10
   warnings: []
-  criticSummary: المقال يحتوي على أخطاء في التواريخ (سنة استثمار ألفابت وتاريخ الإعلان) وتكرار غير مبرر في العنوان، لكنه يبقى مخلصًا بشكل عام للمصادر في الحقائق الرئيسية.
+  criticSummary: المقال يحتوي على أخطاء في التواريخ (سنة استثمار ألفابت وتاريخ
+    الإعلان) وتكرار غير مبرر في العنوان، لكنه يبقى مخلصًا بشكل عام للمصادر في
+    الحقائق الرئيسية.
 ai: true
 ---
 

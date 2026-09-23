@@ -1,0 +1,36 @@
+{
+  "startedAt": "2026-09-23T09:29:45.268Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "oil-decline-diplomacy-hope-d15314",
+      "before": "ناقلة النفط الخام في مضيق البوسفور بإسطنبول",
+      "after": "ناقلة نفط خام تبحر في مياه مفتوحة (صورة تعبيرية)",
+      "flawsBefore": []
+    },
+    {
+      "slug": "china-increases-russian-oil-imports-august-2026-ac1178",
+      "before": "ناقلة نفط خام عند رصيف مصفاة في كوينانا بأستراليا",
+      "after": "ناقلة نفط خام راسية عند رصيف مصفاة (صورة تعبيرية)",
+      "flawsBefore": []
+    },
+    {
+      "slug": "trump-signs-russia-sanctions-oil-tariffs-law-ad758a",
+      "before": "ناقلة منتجات نفطية راسية عند رصيف مصفاة بي بي في كوينانا بأستراليا",
+      "after": "ناقلة منتجات نفطية راسية عند رصيف مصفاة (صورة تعبيرية)",
+      "flawsBefore": []
+    },
+    {
+      "slug": "hormuz-shipping-traffic-plunges-tensions-5c1d93",
+      "before": "ناقلة النفط سولومون سي في مضيق سولنت بإنجلترا برفقة قاطرة",
+      "after": "ناقلة نفط برفقة قاطرة بحرية (صورة تعبيرية)",
+      "flawsBefore": []
+    },
+    {
+      "slug": "brent-above-100-dollars-gulf-escalation-8281ef",
+      "before": "ناقلات في محطة المنتجات بمصفاة بريمراف ليسيشيل في السويد",
+      "after": "ناقلات نفطية راسية قرب محطة منتجات بتروكيماوية (صورة تعبيرية)",
+      "flawsBefore": []
+    }
+  ]
+}

@@ -1,11 +1,14 @@
 ---
 title: منظمة التجارة العالمية تحذر من خسارة 6.9% من الناتج العالمي بحلول 2050
-subtitle: التقرير السنوي يحذر من انهيار التعاون متعدد الأطراف وتقلص الصادرات 27% في أسوأ السيناريوهات
+subtitle: التقرير السنوي يحذر من انهيار التعاون متعدد الأطراف وتقلص الصادرات 27%
+  في أسوأ السيناريوهات
 slug: wto-warns-gdp-loss-2050-trade-fragmentation-8471db
 section: economy
 kind: news
 publishedAt: 2026-09-15T17:40:35.440Z
-lede: حذرت منظمة التجارة العالمية الثلاثاء من أن انهيار التعاون متعدد الأطراف قد يخفض الناتج المحلي الإجمالي العالمي 6.9% بحلول 2050، داعية أعضاءها الـ166 إلى إصلاح عاجل لقواعد التجارة العالمية لتجنب انقسام النظام إلى كتل متنافسة.
+lede: حذرت منظمة التجارة العالمية الثلاثاء من أن انهيار التعاون متعدد الأطراف قد
+  يخفض الناتج المحلي الإجمالي العالمي 6.9% بحلول 2050، داعية أعضاءها الـ166 إلى
+  إصلاح عاجل لقواعد التجارة العالمية لتجنب انقسام النظام إلى كتل متنافسة.
 keyFacts:
   - label: خسارة الناتج (سيناريو الانهيار)
     value: 6.9%
@@ -17,7 +20,10 @@ keyFacts:
     value: 18.6%
   - label: أعضاء المنظمة
     value: "166"
-whyItMatters: العرب من أكثر المناطق انكشافاً على التجارة العالمية، وتآكل النظام متعدد الأطراف يهدد سلاسل التوريد الغذائية والطاقة وتدفقات الاستثمار. انقسام الكتل قد يضاعف تكلفة الواردات ويقلص أسواق الصادرات العربية، بينما يحرم الإصلاح المؤجل الاقتصادات الناشئة من قواعد تحميها من الإجراءات الأحادية للدول الكبرى.
+whyItMatters: العرب من أكثر المناطق انكشافاً على التجارة العالمية، وتآكل النظام
+  متعدد الأطراف يهدد سلاسل التوريد الغذائية والطاقة وتدفقات الاستثمار. انقسام
+  الكتل قد يضاعف تكلفة الواردات ويقلص أسواق الصادرات العربية، بينما يحرم الإصلاح
+  المؤجل الاقتصادات الناشئة من قواعد تحميها من الإجراءات الأحادية للدول الكبرى.
 tags:
   - منظمة التجارة العالمية
   - التجارة العالمية
@@ -29,7 +35,15 @@ regions:
 readingMinutes: 1
 chart: null
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Container_cranes_at_the_MPET-_MSC_PSA_European_Terminal_in_Port_of_Antwerp_%28Kieldrecht%2C_Belgium%29_during_the_sunset_civil_twilight_%28DSCF3901%29.jpg/1280px-Container_cranes_at_the_MPET-_MSC_PSA_European_Terminal_in_Port_of_Antwerp_%28Kieldrecht%2C_Belgium%29_during_the_sunset_civil_twilight_%28DSCF3901%29.jpg
+  width: 1280
+  height: 766
+  alt: رافعات حاويات في محطة MPET بميناء أنتويرب في بلجيكا
+  credit: Trougnouf · CC BY 4.0 · ويكيميديا كومنز
+  license: CC BY 4.0
+  licenseUrl: https://creativecommons.org/licenses/by/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AContainer_cranes_at_the_MPET-_MSC_PSA_European_Terminal_in_Port_of_Antwerp_(Kieldrecht%2C_Belgium)_during_the_sunset_civil_twilight_(DSCF3901).jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -45,13 +59,15 @@ sources:
     lang: ar
   - name: إيكونومي ميدل إيست
     nameEn: Economy Middle East
-    title: Egypt-BRICS trade jumps 25.5 percent to $36.7 billion in H1 2026 as imports, investment and remittance ties deepen
+    title: Egypt-BRICS trade jumps 25.5 percent to $36.7 billion in H1 2026 as
+      imports, investment and remittance ties deepen
     url: https://economymiddleeast.com/news/egypt-brics-trade-jumps-25-5-percent-to-36-7-billion-in-h1-2026-as-imports-investment-and-remittance-ties-deepen/
     publishedAt: 2026-09-15T13:11:55.000Z
     lang: en
   - name: إيكونومي ميدل إيست
     nameEn: Economy Middle East
-    title: WTO warns global trading system at critical juncture as fragmentation could cut GDP 6.9 percent, exports 26.9 percent
+    title: WTO warns global trading system at critical juncture as fragmentation
+      could cut GDP 6.9 percent, exports 26.9 percent
     url: https://economymiddleeast.com/news/wto-warns-global-trading-system-at-critical-juncture-as-fragmentation-could-cut-gdp-6-9-percent-exports-26-9-percent/
     publishedAt: 2026-09-15T12:22:15.000Z
     lang: en
@@ -59,7 +75,7 @@ models:
   editor: inclusionai/ling-3.0-flash-fin:free
   writer: nvidia/nemotron-3-ultra-550b-a55b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
+  vision: nex-agi/nex-n2.5-pro:free
   desk: nvidia/nemotron-3-super-120b-a12b:free
 quality:
   score: 10

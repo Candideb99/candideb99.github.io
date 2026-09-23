@@ -27,15 +27,7 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Old_Cairo_Skyline_%282348646742%29.jpg/1280px-Old_Cairo_Skyline_%282348646742%29.jpg
-  width: 1280
-  height: 960
-  alt: لقطة بانورامية لسماء القاهرة القديمة ومآذنها ومبانيها الكثيفة في مصر
-  credit: Francisco Anzola · CC BY 2.0 · ويكيميديا كومنز
-  license: CC BY 2.0
-  licenseUrl: https://creativecommons.org/licenses/by/2.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AOld_Cairo_Skyline_(2348646742).jpg
+image: null
 sources:
   - name: عرب نيوز
     nameEn: Arab News

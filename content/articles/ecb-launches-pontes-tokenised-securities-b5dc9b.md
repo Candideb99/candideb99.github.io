@@ -1,15 +1,25 @@
 ---
 title: البنك المركزي الأوروبي يطلق نظام بونتس لتسوية الأصول المُرمّزة
-subtitle: سيستثمر البنك جزءاً من أمواله الخاصة في الأوراق المالية المُرمّزة باليورو عبر النظام الجديد
+subtitle: سيستثمر البنك جزءاً من أمواله الخاصة في الأوراق المالية المُرمّزة
+  باليورو عبر النظام الجديد
 slug: ecb-launches-pontes-tokenised-securities-b5dc9b
 section: technology
 kind: news
 publishedAt: 2026-09-21T20:38:23.297Z
-lede: أعلن البنك المركزي الأوروبي عن إطلاق نظام بونتس لتسوية المعاملات في الأصول المُرمّزة باستخدام النقود المصرفية المركزية، في 21 سبتمبر 2026. سيستثمر البنك جزءاً من أمواله الخاصة في الأوراق المالية المُرمّزة باليورو عبر النظام، وفقاً للبيان الصادر اليوم.
+lede: أعلن البنك المركزي الأوروبي عن إطلاق نظام بونتس لتسوية المعاملات في الأصول
+  المُرمّزة باستخدام النقود المصرفية المركزية، في 21 سبتمبر 2026. سيستثمر البنك
+  جزءاً من أمواله الخاصة في الأوراق المالية المُرمّزة باليورو عبر النظام، وفقاً
+  للبيان الصادر اليوم.
 keyFacts:
   - label: تاريخ الإطلاق
     value: 21 سبتمبر 2026
-whyItMatters: يُعد إطلاق نظام بونتس خطوة عملية نحو دمج التكنولوجيا المالية في الأنظمة المصرفية التقليدية، ما قد يُسرّع اعتماد الأصول المُرمّزة في منطقة اليورو ويخلق فرصًا للتعاون مع المؤسسات المالية في العالم العربي التي تستكشف حلولًا مشابهة. من خلال استثماره المباشر في الأوراق المالية المُرمّزة، يكتسب البنك المركزي الأوروبي خبرة عملية قد تُستخدم كمرجع للبنوك المركزية الأخرى، بما في ذلك تلك في الخليج وشمال إفريقيا، لتقييم جدوى استخدام العملات الرقمية للبنوك المركزية في تسوية الأصول المُرمّزة دون مخاطر ائتمانية.
+whyItMatters: يُعد إطلاق نظام بونتس خطوة عملية نحو دمج التكنولوجيا المالية في
+  الأنظمة المصرفية التقليدية، ما قد يُسرّع اعتماد الأصول المُرمّزة في منطقة
+  اليورو ويخلق فرصًا للتعاون مع المؤسسات المالية في العالم العربي التي تستكشف
+  حلولًا مشابهة. من خلال استثماره المباشر في الأوراق المالية المُرمّزة، يكتسب
+  البنك المركزي الأوروبي خبرة عملية قد تُستخدم كمرجع للبنوك المركزية الأخرى، بما
+  في ذلك تلك في الخليج وشمال إفريقيا، لتقييم جدوى استخدام العملات الرقمية للبنوك
+  المركزية في تسوية الأصول المُرمّزة دون مخاطر ائتمانية.
 tags:
   - البنك المركزي الأوروبي
   - منطقة اليورو
@@ -24,7 +34,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/European_Central_Bank_Frankfurt_Germany_18_Feb_2023.jpg/1280px-European_Central_Bank_Frankfurt_Germany_18_Feb_2023.jpg
   width: 1280
   height: 854
-  alt: مقر البنك المركزي الأوروبي وناطحات سحاب فرانكفورت على ضفة النهر
+  alt: مقر البنك المركزي الأوروبي في فرانكفورت بألمانيا
   credit: Norbert Nagel · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
@@ -32,7 +42,8 @@ image:
 sources:
   - name: البنك المركزي الأوروبي
     nameEn: European Central Bank
-    title: ECB to invest part of own funds in tokenised securities, with settlement via Pontes
+    title: ECB to invest part of own funds in tokenised securities, with settlement
+      via Pontes
     url: https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260921_1~5a011ecbea.en.html
     publishedAt: 2026-09-21T10:00:00.000Z
     lang: en
@@ -56,7 +67,8 @@ sources:
     lang: en
 models:
   editor: inclusionai/ling-3.0-flash-fin:free
-  writer: nvidia/nemotron-3-super-120b-a12b:free → nvidia/nemotron-3-super-120b-a12b:free
+  writer: nvidia/nemotron-3-super-120b-a12b:free →
+    nvidia/nemotron-3-super-120b-a12b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
   vision: nex-agi/nex-n2.5-pro:free
   desk: nvidia/nemotron-3-super-120b-a12b:free
@@ -66,7 +78,8 @@ quality:
   revised: true
   importance: 8
   warnings: []
-  criticSummary: المقال يعكس بدقة مصادره مع تحسينات طفيفة مطلوبة في العنوان والمقدمة لتجنب التعميم المفرط والطول الزائد.
+  criticSummary: المقال يعكس بدقة مصادره مع تحسينات طفيفة مطلوبة في العنوان
+    والمقدمة لتجنب التعميم المفرط والطول الزائد.
 ai: true
 updatedAt: 2026-09-21T21:04:24.660Z
 ---

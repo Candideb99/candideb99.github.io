@@ -5,7 +5,9 @@ slug: trump-announces-ban-cnn-msn-politico-white-house-fd6870
 section: economy
 kind: news
 publishedAt: 2026-09-19T04:49:34.355Z
-lede: أعلن الرئيس الأمريكي دونالد ترامب في منشور على تروث سوشيال حظر سي إن إن وإم إس إن بي سي وبوليتيكو من البيت الأبيض فوراً، مبرراً ذلك بتغطية وصفها بأنها "أخبار كاذبة" و"أكاذيب".
+lede: أعلن الرئيس الأمريكي دونالد ترامب في منشور على تروث سوشيال حظر سي إن إن
+  وإم إس إن بي سي وبوليتيكو من البيت الأبيض فوراً، مبرراً ذلك بتغطية وصفها بأنها
+  "أخبار كاذبة" و"أكاذيب".
 keyFacts:
   - label: المنافذ المحظورة
     value: سي إن إن، إم إس إن أو، بوليتيكو
@@ -13,7 +15,10 @@ keyFacts:
     value: تروث سوشيال
   - label: المنافذ المرشحة للحظر لاحقاً
     value: نيويورك تايمز، واشنطن بوست
-whyItMatters: القرار يثير معركة دستورية حول التعديل الأول وحق الوصول إلى البيت الأبيض، وقد تفتح سابقة لأي إدارة قادمة لمعاقبة التغطية النقدية. المنظمات الحقوقية ووسائل الإعلام تستعد للطعن القانوني، ما قد يحيل الملف إلى المحاكم لأسابيع أو أشهر.
+whyItMatters: القرار يثير معركة دستورية حول التعديل الأول وحق الوصول إلى البيت
+  الأبيض، وقد تفتح سابقة لأي إدارة قادمة لمعاقبة التغطية النقدية. المنظمات
+  الحقوقية ووسائل الإعلام تستعد للطعن القانوني، ما قد يحيل الملف إلى المحاكم
+  لأسابيع أو أشهر.
 tags:
   - البيت الأبيض
   - سي إن إن
@@ -30,7 +35,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/2025-12-17_White_House_east_construction_Washington_DC_11-24-27.jpg/1280px-2025-12-17_White_House_east_construction_Washington_DC_11-24-27.jpg
   width: 1280
   height: 853
-  alt: منظر جوي للبيت الأبيض في واشنطن مع أعمال بناء واسعة في الجوار
+  alt: أعمال بناء في البيت الأبيض في واشنطن
   credit: G. Edward Johnson · CC BY 4.0 · ويكيميديا كومنز
   license: CC BY 4.0
   licenseUrl: https://creativecommons.org/licenses/by/4.0
@@ -62,7 +67,8 @@ sources:
     lang: en
 models:
   editor: inclusionai/ling-3.0-flash-fin:free
-  writer: nvidia/nemotron-3-super-120b-a12b:free → nvidia/nemotron-3-ultra-550b-a55b:free
+  writer: nvidia/nemotron-3-super-120b-a12b:free →
+    nvidia/nemotron-3-ultra-550b-a55b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
   vision: nex-agi/nex-n2.5-pro:free
   desk: nvidia/nemotron-3-super-120b-a12b:free
@@ -72,7 +78,8 @@ quality:
   revised: true
   importance: 8
   warnings: []
-  criticSummary: المقال يركز على حظر ترامب لمنافذ إعلامية، لكنه يحتوي على ادعاءات غير مدعومة حول التنفيذ الفوري وتزامن الحدثين، مما يتطلب تصحيحًا بسيطًا.
+  criticSummary: المقال يركز على حظر ترامب لمنافذ إعلامية، لكنه يحتوي على ادعاءات
+    غير مدعومة حول التنفيذ الفوري وتزامن الحدثين، مما يتطلب تصحيحًا بسيطًا.
 ai: true
 ---
 

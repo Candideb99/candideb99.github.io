@@ -1,11 +1,15 @@
 ---
 title: «أوبن أيه آي» تحرز تقدماً في مسألة نافييه-ستوكس خلال 88 ساعة
-subtitle: الشركة تقول إن نموذجاً داخلياً جديداً و10 آلاف وكيل ذكاء اصطناعي توصلا إلى حل جزأين من أربعة في برهان جائزة الألفية
+subtitle: الشركة تقول إن نموذجاً داخلياً جديداً و10 آلاف وكيل ذكاء اصطناعي توصلا
+  إلى حل جزأين من أربعة في برهان جائزة الألفية
 slug: openai-navier-stokes-breakthrough-88-hours-a0e062
 section: technology
 kind: news
 publishedAt: 2026-09-08T21:24:10.272Z
-lede: أعلنت شركة «أوبن أيه آي» (OpenAI) أنها توصلت إلى حل جزئي لإحدى أشهر المسائل الرياضية غير المحلولة منذ 90 عاماً، وهي مسألة وجود ونعومة معادلات نافييه-ستوكس، وذلك باستخدام نموذج ذكاء اصطناعي داخلي جديد ونحو 10 آلاف وكيل آلي يعملون بالتزامن خلال 88 ساعة فقط.
+lede: أعلنت شركة «أوبن أيه آي» (OpenAI) أنها توصلت إلى حل جزئي لإحدى أشهر
+  المسائل الرياضية غير المحلولة منذ 90 عاماً، وهي مسألة وجود ونعومة معادلات
+  نافييه-ستوكس، وذلك باستخدام نموذج ذكاء اصطناعي داخلي جديد ونحو 10 آلاف وكيل
+  آلي يعملون بالتزامن خلال 88 ساعة فقط.
 keyFacts:
   - label: زمن الحل
     value: 88 ساعة
@@ -19,7 +23,12 @@ keyFacts:
     value: 10 ملايين دولار
   - label: الأجزاء المحلولة
     value: جزآن من أربعة
-whyItMatters: إذا صحت نتائج أوبن أيه آي بعد التحقق المستقل، فستكون مساهمة بارزة من ذكاء اصطناعي في حل جزئي لإحدى مسائل جائزة الألفية السبع، ما يفتح الباب أمام تسريع الأبحاث الرياضية والعلمية المعقدة. الجدل المصاحب حول مصدر بيانات التدريب يسلط الضوء على مخاوف الباحثين بشأن الملكية الفكرية وتسرب البيانات في سباق النماذج المتقدمة، بينما حوادث سرقة توكنات كلود تكشف ثغرات أمنية تؤثر على ثقة الشركات والمطورين الذين يعتمدون على هذه المنصات في بناء تطبيقاتهم وخدماتهم.
+whyItMatters: إذا صحت نتائج أوبن أيه آي بعد التحقق المستقل، فستكون مساهمة بارزة
+  من ذكاء اصطناعي في حل جزئي لإحدى مسائل جائزة الألفية السبع، ما يفتح الباب أمام
+  تسريع الأبحاث الرياضية والعلمية المعقدة. الجدل المصاحب حول مصدر بيانات التدريب
+  يسلط الضوء على مخاوف الباحثين بشأن الملكية الفكرية وتسرب البيانات في سباق
+  النماذج المتقدمة، بينما حوادث سرقة توكنات كلود تكشف ثغرات أمنية تؤثر على ثقة
+  الشركات والمطورين الذين يعتمدون على هذه المنصات في بناء تطبيقاتهم وخدماتهم.
 tags:
   - أوبن أيه آي
   - أنثروبيك
@@ -32,14 +41,14 @@ readingMinutes: 3
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/San_Francisco_skyline_of_April_2017_seen_from_Treasure_Island.jpg/1280px-San_Francisco_skyline_of_April_2017_seen_from_Treasure_Island.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Wikimedia_Foundation_Servers-8055_13.jpg/1280px-Wikimedia_Foundation_Servers-8055_13.jpg
   width: 1280
-  height: 692
-  alt: منظر ليلي لأفق سان فرانسيسكو من جزيرة تريجر مع ناطحات السحاب
-  credit: Dllu · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ASan_Francisco_skyline_of_April_2017_seen_from_Treasure_Island.jpg
+  height: 545
+  alt: خوادم في أحد مراكز البيانات
+  credit: Victorgrigas · CC BY-SA 3.0 · ويكيميديا كومنز
+  license: CC BY-SA 3.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/3.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AWikimedia_Foundation_Servers-8055_13.jpg
 sources:
   - name: بي بي سي
     nameEn: BBC News
@@ -67,7 +76,8 @@ sources:
     lang: en
 models:
   editor: nvidia/nemotron-3-ultra-550b-a55b:free
-  writer: nvidia/nemotron-3-ultra-550b-a55b:free → nvidia/nemotron-3-ultra-550b-a55b:free
+  writer: nvidia/nemotron-3-ultra-550b-a55b:free →
+    nvidia/nemotron-3-ultra-550b-a55b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
   vision: nex-agi/nex-n2.5-pro:free
 quality:
@@ -76,7 +86,8 @@ quality:
   revised: true
   importance: 7
   warnings: []
-  criticSummary: المسودة تحتوي على أخطاء جوهرية في الأرقام، التواريخ، والاقتباسات، وتضيف تفسيرات غير موجودة في المصادر، مما يتطلب مراجعة شاملة قبل النشر.
+  criticSummary: المسودة تحتوي على أخطاء جوهرية في الأرقام، التواريخ، والاقتباسات،
+    وتضيف تفسيرات غير موجودة في المصادر، مما يتطلب مراجعة شاملة قبل النشر.
 ai: true
 ---
 

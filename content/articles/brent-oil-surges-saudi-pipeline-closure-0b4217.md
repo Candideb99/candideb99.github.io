@@ -29,14 +29,7 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/ISS055-E-112097_-_View_of_Saudi_Arabia.jpg/1280px-ISS055-E-112097_-_View_of_Saudi_Arabia.jpg
-  width: 1280
-  height: 853
-  alt: منظر من الفضاء لخط الأنابيب السعودي في الليل
-  credit: Earth Science and Remote Sensing Unit, NASA Johnson Space Center · Public domain · ويكيميديا كومنز
-  license: Public domain
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AISS055-E-112097_-_View_of_Saudi_Arabia.jpg
+image: null
 sources:
   - name: الغارديان
     nameEn: The Guardian

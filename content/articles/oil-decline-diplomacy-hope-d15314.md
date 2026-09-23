@@ -1,11 +1,17 @@
 ---
-title: تراجع أسعار النفط مع ترقّب الأسواق لفرص دبلوماسية لتهدئة الصراع الأمريكي الإيراني
-subtitle: انخفضت عقود برنت 2.08% إلى 101.71 دولاراً للبرميل، في ظل ترقّب الأسواق لفرص دبلوماسية لتهدئة الصراع الأمريكي الإيراني مع اجتماع الأمم المتحدة المزمع عقده هذا الأسبوع
+title: تراجع أسعار النفط مع ترقّب الأسواق لفرص دبلوماسية لتهدئة الصراع الأمريكي
+  الإيراني
+subtitle: انخفضت عقود برنت 2.08% إلى 101.71 دولاراً للبرميل، في ظل ترقّب الأسواق
+  لفرص دبلوماسية لتهدئة الصراع الأمريكي الإيراني مع اجتماع الأمم المتحدة المزمع
+  عقده هذا الأسبوع
 slug: oil-decline-diplomacy-hope-d15314
 section: energy
 kind: news
 publishedAt: 2026-09-21T13:04:25.119Z
-lede: تراجعت أسعار النفط الخام إلى أدنى مستوى في أكثر من أسبوع، حيث بلغت عقود برنت 101.71 دولاراً للبرميل بحلول 05:13 صباحاً بتوقيت السعودية يوم 2026-09-21، في ظل ترقّب الأسواق لفرص دبلوماسية لتهدئة الصراع الأمريكي الإيراني مع اجتماع الأمم المتحدة المزمع عقده هذا الأسبوع
+lede: تراجعت أسعار النفط الخام إلى أدنى مستوى في أكثر من أسبوع، حيث بلغت عقود
+  برنت 101.71 دولاراً للبرميل بحلول 05:13 صباحاً بتوقيت السعودية يوم 2026-09-21،
+  في ظل ترقّب الأسواق لفرص دبلوماسية لتهدئة الصراع الأمريكي الإيراني مع اجتماع
+  الأمم المتحدة المزمع عقده هذا الأسبوع
 keyFacts:
   - label: سعر برنت
     value: 101.71 دولاراً للبرميل
@@ -15,7 +21,12 @@ keyFacts:
     value: 12 سفينة مقابل 35 قبل أسبوع
   - label: صادرات السعودية عبر هرمز
     value: 2.9 مليون برميل يومياً
-whyItMatters: يُعدّ تراجع أسعار النفط مؤشراً على حساسية الأسواق للتطورات الجيوسياسية، وهو ما يؤثر مباشرة على اقتصادات الخليج المعتمدة على صادرات النفط. فانخفاض الأسعار يُقلّص إيرادات الميزانيات الوطنية، في حين أن تضرر منافذ التصدير السعودية كميناء ينبع يُهدد تدفقات النفط الخام إلى الأسواق العالمية. وتُبرز الأحداث الحاجة الملحّة لتنويع مصادر الدخل وتعزيز البنية التحتية للطاقة في المنطقة.
+whyItMatters: يُعدّ تراجع أسعار النفط مؤشراً على حساسية الأسواق للتطورات
+  الجيوسياسية، وهو ما يؤثر مباشرة على اقتصادات الخليج المعتمدة على صادرات النفط.
+  فانخفاض الأسعار يُقلّص إيرادات الميزانيات الوطنية، في حين أن تضرر منافذ
+  التصدير السعودية كميناء ينبع يُهدد تدفقات النفط الخام إلى الأسواق العالمية.
+  وتُبرز الأحداث الحاجة الملحّة لتنويع مصادر الدخل وتعزيز البنية التحتية للطاقة
+  في المنطقة.
 tags:
   - أسعار النفط
   - مضيق هرمز
@@ -45,14 +56,14 @@ chart:
         - 16
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Oil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_01.jpg/1280px-Oil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_01.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/WHITE_TRADER_Crude_Oil_Tanker%2C_Bosphorus_Strait%2C_Istanbul%2C_Turkiye_%28Ank_Kumar%2C_Infosys_Limited%29_01.jpg/1280px-WHITE_TRADER_Crude_Oil_Tanker%2C_Bosphorus_Strait%2C_Istanbul%2C_Turkiye_%28Ank_Kumar%2C_Infosys_Limited%29_01.jpg
   width: 1280
-  height: 960
-  alt: ناقلة نفط راسية عند رصيف ميناء وتربطها خطوط تحميل في عرض البحر
-  credit: Calistemon · CC BY-SA 4.0 · ويكيميديا كومنز
+  height: 854
+  alt: ناقلة نفط خام (صورة تعبيرية)
+  credit: Ank Kumar · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AOil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_01.jpg
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AWHITE_TRADER_Crude_Oil_Tanker%2C_Bosphorus_Strait%2C_Istanbul%2C_Turkiye_(Ank_Kumar%2C_Infosys_Limited)_01.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -91,7 +102,9 @@ quality:
   importance: 9
   warnings:
     - "latin words: Arab, News, OilPrice.com, Kpler, Morgan"
-  criticSummary: المقال يخلط بين سبب تراجع أسعار النفط (الدبلوماسية) وحركة الملاحة عبر هرمز دون دليل سببي، ويحتوي على أخطاء في attribution وتسلسل زمني في البيانات.
+  criticSummary: المقال يخلط بين سبب تراجع أسعار النفط (الدبلوماسية) وحركة الملاحة
+    عبر هرمز دون دليل سببي، ويحتوي على أخطاء في attribution وتسلسل زمني في
+    البيانات.
 ai: true
 ---
 

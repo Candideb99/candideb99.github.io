@@ -44,15 +44,7 @@ table:
       - 3 مليارات دولار
     - - تقييم شركة بورينغ كومباني بعد الجولة
       - 23 مليار دولار
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Boring_Stargate_%2831499797447%29.jpg/1280px-Boring_Stargate_%2831499797447%29.jpg
-  width: 1280
-  height: 886
-  alt: آلة حفر ضخمة خاصة بشركة بورينغ كومباني خلال فعالية في كاليفورنيا
-  credit: Steve Jurvetson from Menlo Park, USA · CC BY 2.0 · ويكيميديا كومنز
-  license: CC BY 2.0
-  licenseUrl: https://creativecommons.org/licenses/by/2.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ABoring_Stargate_(31499797447).jpg
+image: null
 sources:
   - name: إيكونومي ميدل إيست
     nameEn: Economy Middle East

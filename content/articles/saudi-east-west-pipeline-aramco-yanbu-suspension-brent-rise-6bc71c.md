@@ -1,11 +1,14 @@
 ---
 title: أرامكو تعلق تحميلات ينبع بعد إغلاق خط الشرق-الغرب.. برنت يرتفع 3%
-subtitle: "وزير الطاقة الأمريكي: الانقطاع يُقاس بأيام.. والسوق قد يفقد 120 مليون برميل شهرياً"
+subtitle: "وزير الطاقة الأمريكي: الانقطاع يُقاس بأيام.. والسوق قد يفقد 120 مليون
+  برميل شهرياً"
 slug: saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c
 section: energy
 kind: news
 publishedAt: 2026-09-15T17:24:18.254Z
-lede: أعلنت أرامكو السعودية تعليق تحميلات النفط من ميناء ينبع بعد إغلاق خط الشرق-الغرب النفطي، وارتفعت عقود برنت الآجلة 3% إلى 108.88 دولار للبرميل بحلول الساعة 1:00 ظهراً بتوقيت شرق الولايات المتحدة يوم الثلاثاء 15 سبتمبر 2026.
+lede: أعلنت أرامكو السعودية تعليق تحميلات النفط من ميناء ينبع بعد إغلاق خط
+  الشرق-الغرب النفطي، وارتفعت عقود برنت الآجلة 3% إلى 108.88 دولار للبرميل بحلول
+  الساعة 1:00 ظهراً بتوقيت شرق الولايات المتحدة يوم الثلاثاء 15 سبتمبر 2026.
 keyFacts:
   - label: ارتفاع برنت
     value: 3% إلى 108.88 دولار للبرميل
@@ -13,7 +16,10 @@ keyFacts:
     value: 4.7% إلى 106.12 دولار للبرميل
   - label: خسارة محتملة شهريًا
     value: 120 مليون برميل (تقدير Kpler)
-whyItMatters: تعليق تحميلات ينبع وإلغاء شحنات أوروبية يظهران الأثر المباشر لإغلاق خط الشرق-الغرب على تدفقات النفط السعودية، بينما يعكس ارتفاع برنت وخام غرب تكساس تقييم السوق لمخاطر انقطاع الإمدادات وإعادة توجيه الصادرات عبر مضيق هرمز وسط توترات جيوسياسية مستمرة.
+whyItMatters: تعليق تحميلات ينبع وإلغاء شحنات أوروبية يظهران الأثر المباشر
+  لإغلاق خط الشرق-الغرب على تدفقات النفط السعودية، بينما يعكس ارتفاع برنت وخام
+  غرب تكساس تقييم السوق لمخاطر انقطاع الإمدادات وإعادة توجيه الصادرات عبر مضيق
+  هرمز وسط توترات جيوسياسية مستمرة.
 tags:
   - السعودية
   - النفط
@@ -31,14 +37,16 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/ISS055-E-112116_-_View_of_Saudi_Arabia.jpg/1280px-ISS055-E-112116_-_View_of_Saudi_Arabia.jpg
   width: 1280
   height: 853
-  alt: منظر من الفضاء لخط الشرق-الغرب السعودي مع إضاءة المدن
-  credit: Earth Science and Remote Sensing Unit, NASA Johnson Space Center · Public domain · ويكيميديا كومنز
+  alt: شبه الجزيرة العربية من محطة الفضاء الدولية
+  credit: Earth Science and Remote Sensing Unit, NASA Johnson Space Center ·
+    Public domain · ويكيميديا كومنز
   license: Public domain
   pageUrl: https://commons.wikimedia.org/wiki/File%3AISS055-E-112116_-_View_of_Saudi_Arabia.jpg
 sources:
   - name: سي إن بي سي
     nameEn: CNBC
-    title: Saudi pipeline closure is a brief interruption that will last days, U.S. Energy Secretary tells CNBC
+    title: Saudi pipeline closure is a brief interruption that will last days, U.S.
+      Energy Secretary tells CNBC
     url: https://www.cnbc.com/2026/09/15/saud-arabia-east-west-pipeline-iran-war-chris-wright.html
     publishedAt: 2026-09-15T17:03:32.000Z
     lang: en
@@ -62,7 +70,8 @@ sources:
     lang: en
 models:
   editor: inclusionai/ling-3.0-flash-fin:free
-  writer: nvidia/nemotron-3-super-120b-a12b:free → nvidia/nemotron-3-ultra-550b-a55b:free
+  writer: nvidia/nemotron-3-super-120b-a12b:free →
+    nvidia/nemotron-3-ultra-550b-a55b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
   vision: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
   desk: nvidia/nemotron-3-ultra-550b-a55b:free
@@ -73,7 +82,9 @@ quality:
   importance: 9
   warnings:
     - "latin words: Kpler"
-  criticSummary: المقال يحتوي على مبالغات في السبب والنسب وتوسعات تحليلية غير مدعومة، لكنه يبقى ضمن إطار القصة الواحدة ويحتاج إلى تعديل طفيف في الصياغة والنسب.
+  criticSummary: المقال يحتوي على مبالغات في السبب والنسب وتوسعات تحليلية غير
+    مدعومة، لكنه يبقى ضمن إطار القصة الواحدة ويحتاج إلى تعديل طفيف في الصياغة
+    والنسب.
 ai: true
 ---
 

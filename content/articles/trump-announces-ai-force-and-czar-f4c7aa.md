@@ -5,11 +5,22 @@ slug: trump-announces-ai-force-and-czar-f4c7aa
 section: technology
 kind: news
 publishedAt: 2026-09-19T23:17:13.865Z
-lede: أعلن الرئيس الأمريكي دونالد ترامب يوم السبت 2026-09-19 عن إنشاء 'قوة الذكاء الاصطناعي' وتعيين مسؤول للذكاء الاصطناعي، حسبما نشر في منشور على وسائل التواصل الاجتماعي. وقال إنه سيُعلن عن 'القيصر للذكاء الاصطناعي' في المستقبل القريب، وأن فقط الأفراد ذوي الذكاء العالي يمكنهم التقديم. لم يُفصح عن تفاصيل عن المجموعة أو موعد التعيين.
+lede: أعلن الرئيس الأمريكي دونالد ترامب يوم السبت 2026-09-19 عن إنشاء 'قوة
+  الذكاء الاصطناعي' وتعيين مسؤول للذكاء الاصطناعي، حسبما نشر في منشور على وسائل
+  التواصل الاجتماعي. وقال إنه سيُعلن عن 'القيصر للذكاء الاصطناعي' في المستقبل
+  القريب، وأن فقط الأفراد ذوي الذكاء العالي يمكنهم التقديم. لم يُفصح عن تفاصيل
+  عن المجموعة أو موعد التعيين.
 keyFacts:
   - label: نسبة الذكاء الاصطناعي من الناتج
     value: 25%
-whyItMatters: إعلان ترامب عن 'قوة الذكاء الاصطناعي' يعكس تصاعد التوترات التكنولوجية بين الولايات المتحدة والصين، وهو ما قد يؤثر على سلاسل الإمداد العالمية والاستثمارات في البنية التحتية الرقمية. بالنسبة للقراء العرب، قد يعني هذا الاتجاه زيادة في الضغوط على الدول العربية لاختيار جانب في المنافسة التكنولوجية، خاصة مع اعتماد العديد من الدول على التكنولوجيا الأمريكية أو الصينية. كما أن التركيز على تعزيز الذكاء الاصطناعي دون تنظيم قد يثير مخاوف حول سلامة البيانات والأتمتة في القطاعات الحيوية مثل الطاقة والمالية، والتي تشهد نموًا سريعًا في المنطقة.
+whyItMatters: إعلان ترامب عن 'قوة الذكاء الاصطناعي' يعكس تصاعد التوترات
+  التكنولوجية بين الولايات المتحدة والصين، وهو ما قد يؤثر على سلاسل الإمداد
+  العالمية والاستثمارات في البنية التحتية الرقمية. بالنسبة للقراء العرب، قد يعني
+  هذا الاتجاه زيادة في الضغوط على الدول العربية لاختيار جانب في المنافسة
+  التكنولوجية، خاصة مع اعتماد العديد من الدول على التكنولوجيا الأمريكية أو
+  الصينية. كما أن التركيز على تعزيز الذكاء الاصطناعي دون تنظيم قد يثير مخاوف حول
+  سلامة البيانات والأتمتة في القطاعات الحيوية مثل الطاقة والمالية، والتي تشهد
+  نموًا سريعًا في المنطقة.
 tags:
   - الولايات المتحدة
   - الصين
@@ -25,7 +36,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/The_White_House_North_Portico_in_Washington%2C_D.C.jpg/1280px-The_White_House_North_Portico_in_Washington%2C_D.C.jpg
   width: 1280
   height: 960
-  alt: الواجهة الشمالية للبيت الأبيض في واشنطن تظهر بين أغصان الأشجار الخضراء
+  alt: مقر الرئاسة الأميركية في واشنطن
   credit: Harrison Keely · CC BY 4.0 · ويكيميديا كومنز
   license: CC BY 4.0
   licenseUrl: https://creativecommons.org/licenses/by/4.0
@@ -33,7 +44,8 @@ image:
 sources:
   - name: الغارديان
     nameEn: The Guardian
-    title: Trump to create ‘AI Force’ to monitor technology as fears over out-of-control agents grow
+    title: Trump to create ‘AI Force’ to monitor technology as fears over
+      out-of-control agents grow
     url: https://www.theguardian.com/us-news/2026/sep/19/donald-trump-ai-force
     publishedAt: 2026-09-19T19:57:17.000Z
     lang: en
@@ -51,7 +63,8 @@ sources:
     lang: en
   - name: تك كرانش
     nameEn: TechCrunch
-    title: Trump says it’s time to rebrand AI with a new name — and he’s also creating an AI Force
+    title: Trump says it’s time to rebrand AI with a new name — and he’s also
+      creating an AI Force
     url: https://techcrunch.com/2026/09/19/trump-suggests-rebranding-ai-with-a-new-name-says-hes-also-creating-an-ai-force/
     publishedAt: 2026-09-19T19:57:47.000Z
     lang: en
@@ -68,7 +81,9 @@ quality:
   importance: 8
   warnings:
     - "latin words: tremendously, All-In"
-  criticSummary: المقال يعكس بدقة إعلان ترامب عن 'قوة الذكاء الاصطناعي' و'القيصر للذكاء الاصطناعي'، لكنه يحتوي على أخطاء طفيفة في الترجمة والتمثيل للحقائق التي لا تؤثر على الجوهر العام للقصة.
+  criticSummary: المقال يعكس بدقة إعلان ترامب عن 'قوة الذكاء الاصطناعي' و'القيصر
+    للذكاء الاصطناعي'، لكنه يحتوي على أخطاء طفيفة في الترجمة والتمثيل للحقائق
+    التي لا تؤثر على الجوهر العام للقصة.
 ai: true
 ---
 

@@ -1,11 +1,15 @@
 ---
 title: نفط دون 100 دولار مع ترقّب الأسواق لفرص التهدئة الأميركية-الإيرانية
-subtitle: خام غرب تكساس يهبط 4.5% إلى 95.78 دولاراً وبرنت يفقد 3.4% بعد هبوطه إلى 98.98 دولاراً
+subtitle: خام غرب تكساس يهبط 4.5% إلى 95.78 دولاراً وبرنت يفقد 3.4% بعد هبوطه
+  إلى 98.98 دولاراً
 slug: oil-below-100-us-iran-diplomacy-8ddbd8
 section: energy
 kind: news
 publishedAt: 2026-09-21T20:05:54.803Z
-lede: تراجعت أسعار النفط دون حاجز 100 دولار للبرميل في تعاملات الاثنين، بعدما ألمح الرئيس الأميركي دونالد ترامب إلى انفتاحه على لقاء نظيره الإيراني مسعود بزشكيان في الجمعية العامة للأمم المتحدة، وقرر إرجاء ضرب الحوثيين المتحالفين مع طهران رغم طلبات سعودية.
+lede: تراجعت أسعار النفط دون حاجز 100 دولار للبرميل في تعاملات الاثنين، بعدما
+  ألمح الرئيس الأميركي دونالد ترامب إلى انفتاحه على لقاء نظيره الإيراني مسعود
+  بزشكيان في الجمعية العامة للأمم المتحدة، وقرر إرجاء ضرب الحوثيين المتحالفين مع
+  طهران رغم طلبات سعودية.
 keyFacts:
   - label: خام غرب تكساس
     value: 95.78 دولار للبرميل (-4.5%)
@@ -15,7 +19,10 @@ keyFacts:
     value: 80% من مستويات ما قبل الحرب
   - label: انكماش اقتصاد إيران
     value: 10% على أساس سنوي
-whyItMatters: كسر حاجز 100 دولار يعكس تراجع علاوة المخاطر الجيوسياسية مع بروز مسار دبلوماسي محتمل، ما يخفف الضغط على موازنات الدول المستوردة في المنطقة ويمنح «أوبك+» هامشاً أوسع لإدارة الإمدادات. غير أن استمرار الهجمات على الناقلات والتهديدات المتبادلة يبقي السوق عرضة لانعكاسات حادة وسريعة.
+whyItMatters: كسر حاجز 100 دولار يعكس تراجع علاوة المخاطر الجيوسياسية مع بروز
+  مسار دبلوماسي محتمل، ما يخفف الضغط على موازنات الدول المستوردة في المنطقة
+  ويمنح «أوبك+» هامشاً أوسع لإدارة الإمدادات. غير أن استمرار الهجمات على
+  الناقلات والتهديدات المتبادلة يبقي السوق عرضة لانعكاسات حادة وسريعة.
 tags:
   - النفط
   - أوبك+
@@ -33,7 +40,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Oil_tanker_approaching_FPSO.jpg/1280px-Oil_tanker_approaching_FPSO.jpg
   width: 1280
   height: 696
-  alt: ناقلة نفط تقترب من منصة إنتاج عائمة في عرض البحر تحت سماء صافية
+  alt: ناقلة نفط تقترب من منصة إنتاج عائمة في بحر الشمال
   credit: Jon Olav Eikenes · CC BY 2.0 · ويكيميديا كومنز
   license: CC BY 2.0
   licenseUrl: https://creativecommons.org/licenses/by/2.0
@@ -47,7 +54,8 @@ sources:
     lang: ar
   - name: سي إن بي سي
     nameEn: CNBC
-    title: U.S. crude oil tumbles back below $100 after Trump says he's open to talking to Iran at UN
+    title: U.S. crude oil tumbles back below $100 after Trump says he's open to
+      talking to Iran at UN
     url: https://www.cnbc.com/2026/09/21/iran-us-oil-prices-crude-saudi-arabia-.html
     publishedAt: 2026-09-21T19:28:03.000Z
     lang: en
@@ -59,13 +67,15 @@ sources:
     lang: ar
   - name: سي إن بي سي
     nameEn: CNBC
-    title: "Kind Snacks founder Daniel Lubetzky: The No.1 piece of advice I give my kids about failure"
+    title: "Kind Snacks founder Daniel Lubetzky: The No.1 piece of advice I give my
+      kids about failure"
     url: https://www.cnbc.com/2026/09/21/kind-snacks-founder-daniel-lubetzky-the-advice-i-give-my-kids-about-failure.html
     publishedAt: 2026-09-21T14:30:02.000Z
     lang: en
 models:
   editor: inclusionai/ling-3.0-flash-fin:free
-  writer: nvidia/nemotron-3-ultra-550b-a55b:free → nvidia/nemotron-3-super-120b-a12b:free
+  writer: nvidia/nemotron-3-ultra-550b-a55b:free →
+    nvidia/nemotron-3-super-120b-a12b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
   vision: nex-agi/nex-n2.5-pro:free
   desk: nvidia/nemotron-3-super-120b-a12b:free
@@ -75,7 +85,8 @@ quality:
   revised: true
   importance: 9
   warnings: []
-  criticSummary: المقال يلتزم بالمصادر في الأرقام والوقائع الأساسية، لكنه يحتوي على أخطاء في الإسناد والتفاصيل السياقية وأسلوب ترجمي يتطلب تعديلاً.
+  criticSummary: المقال يلتزم بالمصادر في الأرقام والوقائع الأساسية، لكنه يحتوي
+    على أخطاء في الإسناد والتفاصيل السياقية وأسلوب ترجمي يتطلب تعديلاً.
 ai: true
 ---
 

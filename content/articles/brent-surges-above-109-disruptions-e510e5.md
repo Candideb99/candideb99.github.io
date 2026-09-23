@@ -28,14 +28,7 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/ISS055-E-112094_-_View_of_Saudi_Arabia.jpg/1280px-ISS055-E-112094_-_View_of_Saudi_Arabia.jpg
-  width: 1280
-  height: 853
-  alt: منظر من الفضاء يبين خطوط الإضاءة في شبه الجزيرة العربية
-  credit: Earth Science and Remote Sensing Unit, NASA Johnson Space Center · Public domain · ويكيميديا كومنز
-  license: Public domain
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AISS055-E-112094_-_View_of_Saudi_Arabia.jpg
+image: null
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat

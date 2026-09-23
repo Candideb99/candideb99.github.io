@@ -1,11 +1,14 @@
 ---
 title: انخفاض أسعار النفط مع تقارير عن ضغط صيني على إيران لكبح الحوثيين
-subtitle: انخفاض أسعار العقود الآجلة للنفط الأمريكي إلى ما دون 100 دولار للبرميل بعد تقارير عن ضغط الصين على إيران لمساعدة كبح الحوثيين بطلب من السعودية
+subtitle: انخفاض أسعار العقود الآجلة للنفط الأمريكي إلى ما دون 100 دولار للبرميل
+  بعد تقارير عن ضغط الصين على إيران لمساعدة كبح الحوثيين بطلب من السعودية
 slug: oil-prices-decline-china-iran-pressure-41b59d
 section: energy
 kind: news
 publishedAt: 2026-09-17T21:37:34.800Z
-lede: انخفضت أسعار العقود الآجلة للنفط الأمريكي إلى ما دون 100 دولار للبرميل بعد تقارير عن ضغط الصين على إيران لمساعدة كبح الحوثيين بطلب من السعودية، بحسب تقرير رويترز بتاريخ 17 سبتمبر 2026.
+lede: انخفضت أسعار العقود الآجلة للنفط الأمريكي إلى ما دون 100 دولار للبرميل بعد
+  تقارير عن ضغط الصين على إيران لمساعدة كبح الحوثيين بطلب من السعودية، بحسب
+  تقرير رويترز بتاريخ 17 سبتمبر 2026.
 keyFacts:
   - label: سعر خام برنت
     value: 102.72 دولار للبرميل
@@ -17,7 +20,12 @@ keyFacts:
     value: 100 إلى 120 مليون برميل
   - label: عدد السفن العابرة لمضيق هرمز يوم الأربعاء
     value: 3 سفن
-whyItMatters: انخفاض أسعار النفط يعكس تحسنًا في توقعات الإمدادات بعد جهود دبلوماسية صينية لتخفيف التوترات في المنطقة، مما قد يخفف من تكاليف الطاقة على الاقتصادات العربية التي تعتمد على استيراد الوقود. استعادة نصف قدرة خط أنابيب السعودية الشرقي-الغربي خلال أيام تقلل من خطر انقطاع الإمدادات طويل الأمد، مما يدعم استقرار أسواق الوقود في الخليج ويقلل الضغوط على موازنات الدول المستوردة للنفط.
+whyItMatters: انخفاض أسعار النفط يعكس تحسنًا في توقعات الإمدادات بعد جهود
+  دبلوماسية صينية لتخفيف التوترات في المنطقة، مما قد يخفف من تكاليف الطاقة على
+  الاقتصادات العربية التي تعتمد على استيراد الوقود. استعادة نصف قدرة خط أنابيب
+  السعودية الشرقي-الغربي خلال أيام تقلل من خطر انقطاع الإمدادات طويل الأمد، مما
+  يدعم استقرار أسواق الوقود في الخليج ويقلل الضغوط على موازنات الدول المستوردة
+  للنفط.
 tags:
   - النفط
   - السعودية
@@ -31,14 +39,14 @@ readingMinutes: 1
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Oil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_03.jpg/1280px-Oil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_03.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Godorf_Cologne_Rhineland-Refinery-03.jpg/1280px-Godorf_Cologne_Rhineland-Refinery-03.jpg
   width: 1280
-  height: 720
-  alt: ناقلة منتجات نفطية راسية قرب رصيف تكرير في أستراليا
-  credit: Calistemon · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AOil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_03.jpg
+  height: 853
+  alt: أبراج تبريد في مصفاة نفط (صورة تعبيرية)
+  credit: CEphoto, Uwe Aranas · CC BY-SA 3.0 · ويكيميديا كومنز
+  license: CC BY-SA 3.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/3.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AGodorf_Cologne_Rhineland-Refinery-03.jpg
 sources:
   - name: أويل برايس
     nameEn: OilPrice.com
@@ -66,7 +74,8 @@ sources:
     lang: en
 models:
   editor: inclusionai/ling-3.0-flash-fin:free
-  writer: nvidia/nemotron-3-super-120b-a12b:free → nvidia/nemotron-3-super-120b-a12b:free
+  writer: nvidia/nemotron-3-super-120b-a12b:free →
+    nvidia/nemotron-3-super-120b-a12b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
   vision: nex-agi/nex-n2.5-pro:free
   desk: nvidia/nemotron-3-super-120b-a12b:free
@@ -76,8 +85,10 @@ quality:
   revised: true
   importance: 8
   warnings:
-    - فقرات طويلة (1) من خمس جمل أو أكثر؛ الفقرة في الصحافة العربية جملة إلى ثلاث.
-  criticSummary: المقال يحتوي على أخطاء في attribution وربط أسباب غير مدعومة، ويحتاج إلى تصحيح لتتوافق مع المصادر.
+    - فقرات طويلة (1) من خمس جمل أو أكثر؛ الفقرة في الصحافة العربية جملة إلى
+      ثلاث.
+  criticSummary: المقال يحتوي على أخطاء في attribution وربط أسباب غير مدعومة،
+    ويحتاج إلى تصحيح لتتوافق مع المصادر.
 ai: true
 ---
 

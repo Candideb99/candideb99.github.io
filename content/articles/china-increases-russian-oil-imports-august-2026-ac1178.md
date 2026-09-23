@@ -1,11 +1,14 @@
 ---
 title: الصين تزيد واردات النفط الروسي 41% في أغسطس
-subtitle: وصلت تكلفة استئجار ناقلة نفط من الخليج إلى الصين أكثر من مليون دولار يومياً في سبتمبر 2026 لأول مرة على الإطلاق
+subtitle: وصلت تكلفة استئجار ناقلة نفط من الخليج إلى الصين أكثر من مليون دولار
+  يومياً في سبتمبر 2026 لأول مرة على الإطلاق
 slug: china-increases-russian-oil-imports-august-2026-ac1178
 section: energy
 kind: news
 publishedAt: 2026-09-20T11:42:03.232Z
-lede: زادت الصين وارداتها من النفط الخام من روسيا بنسبة 41% في أغسطس مقارنة بالشهر نفسه من العام الماضي، لتصل إلى 11.2 مليون طن، أي ما يعادل 2.64 مليون برميل يومياً، بحسب بيانات الجمارك الصينية.
+lede: زادت الصين وارداتها من النفط الخام من روسيا بنسبة 41% في أغسطس مقارنة
+  بالشهر نفسه من العام الماضي، لتصل إلى 11.2 مليون طن، أي ما يعادل 2.64 مليون
+  برميل يومياً، بحسب بيانات الجمارك الصينية.
 keyFacts:
   - label: نسبة الزيادة
     value: 41%
@@ -17,7 +20,13 @@ keyFacts:
     value: أكثر من مليون دولار
   - label: حجم دفتر الطلبات
     value: 130 مليون طن ساكنة
-whyItMatters: يعكس ارتفاع واردات الصين من النفط الروسي وتكاليف الشحن القياسية إعادة تشكيل مسارات تجارة الطاقة العالمية بسبب اضطرابات الممرات المائية مثل هرمز والبحر الأحمر، مما يزيد تكلفة الإمداد لآسيا ويحفز استثمارات ضخمة في ناقلات النفط والبنية التحتية للغاز المسال. بالنسبة للاقتصادات العربية المصدرة للنفط، قد يعني ذلك طلباً مستمراً على الخام رغم التحديات اللوجستية، بينما تواجه الدول المستوردة ضغوطاً تضخمية من ارتفاع كلف النقل، مما يستدعي تنويع مصادر الطاقة وتعزيز الكفاءة اللوجستية.
+whyItMatters: يعكس ارتفاع واردات الصين من النفط الروسي وتكاليف الشحن القياسية
+  إعادة تشكيل مسارات تجارة الطاقة العالمية بسبب اضطرابات الممرات المائية مثل
+  هرمز والبحر الأحمر، مما يزيد تكلفة الإمداد لآسيا ويحفز استثمارات ضخمة في
+  ناقلات النفط والبنية التحتية للغاز المسال. بالنسبة للاقتصادات العربية المصدرة
+  للنفط، قد يعني ذلك طلباً مستمراً على الخام رغم التحديات اللوجستية، بينما تواجه
+  الدول المستوردة ضغوطاً تضخمية من ارتفاع كلف النقل، مما يستدعي تنويع مصادر
+  الطاقة وتعزيز الكفاءة اللوجستية.
 tags:
   - الصين
   - روسيا
@@ -32,14 +41,14 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Crude_Oil_Tanker_in_Port_Arthur%2C_Texas.jpg/1280px-Crude_Oil_Tanker_in_Port_Arthur%2C_Texas.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Crude_Oil_Tanker_Njord_DF_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_03.jpg/1280px-Crude_Oil_Tanker_Njord_DF_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_03.jpg
   width: 1280
-  height: 930
-  alt: ناقلة نفط خام عملاقة تبحر قرب منشأة مينائية في ميناء آرثر بتكساس
-  credit: Quintin Soloviev · CC0 · ويكيميديا كومنز
-  license: CC0
-  licenseUrl: http://creativecommons.org/publicdomain/zero/1.0/deed.en
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ACrude_Oil_Tanker_in_Port_Arthur%2C_Texas.jpg
+  height: 960
+  alt: ناقلة نفط خام راسية عند رصيف مصفاة (صورة تعبيرية)
+  credit: Calistemon · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ACrude_Oil_Tanker_Njord_DF_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_03.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -61,7 +70,8 @@ sources:
     lang: en
 models:
   editor: inclusionai/ling-3.0-flash-fin:free
-  writer: nvidia/nemotron-3-super-120b-a12b:free → nvidia/nemotron-3-super-120b-a12b:free
+  writer: nvidia/nemotron-3-super-120b-a12b:free →
+    nvidia/nemotron-3-super-120b-a12b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
   vision: nex-agi/nex-n2.5-pro:free
   desk: nvidia/nemotron-3-super-120b-a12b:free
@@ -72,7 +82,8 @@ quality:
   importance: 8
   warnings:
     - "latin words: VLCC, OilPrice.com"
-  criticSummary: المقال يحتوي على تواريخ وتفاصيل غير مدعومة صراحةً من المصادر، ويحتاج إلى تقصير المقدمة وتعديل الادعاءات غير المؤكدة.
+  criticSummary: المقال يحتوي على تواريخ وتفاصيل غير مدعومة صراحةً من المصادر،
+    ويحتاج إلى تقصير المقدمة وتعديل الادعاءات غير المؤكدة.
 ai: true
 ---
 

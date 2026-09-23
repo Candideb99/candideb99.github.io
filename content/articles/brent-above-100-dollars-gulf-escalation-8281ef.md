@@ -5,7 +5,10 @@ slug: brent-above-100-dollars-gulf-escalation-8281ef
 section: energy
 kind: news
 publishedAt: 2026-09-09T11:39:30.016Z
-lede: قفز سعر خام برنت فوق 100 دولار للبرميل للمرة الأولى منذ يوليو الماضي، وسط تصعيد عسكري أمريكي-إيراني في الخليج، حيث ضربت القوات الأمريكية خمس ناقلات إيرانية بعد استهداف طهران لسفينة حربية أمريكية، بينما هاجمت جماعة الحوثي المدعومة من إيران منشآت نفطية في السعودية.
+lede: قفز سعر خام برنت فوق 100 دولار للبرميل للمرة الأولى منذ يوليو الماضي، وسط
+  تصعيد عسكري أمريكي-إيراني في الخليج، حيث ضربت القوات الأمريكية خمس ناقلات
+  إيرانية بعد استهداف طهران لسفينة حربية أمريكية، بينما هاجمت جماعة الحوثي
+  المدعومة من إيران منشآت نفطية في السعودية.
 keyFacts:
   - label: سعر برنت
     value: 100.6 دولار للبرميل
@@ -15,7 +18,11 @@ keyFacts:
     value: 78.73 يورو/ميغاواط ساعة
   - label: تراجع الطلب الصيني المتوقع
     value: 600 ألف برميل يومياً (8.9%)
-whyItMatters: تجاوز برنت حاجز 100 دولار يعيد ضغوط التضخم على اقتصادات المنطقة المستوردة للطاقة، ويرفع كلفة النقل والصناعة، بينما يعطل التصعيد في الخليج تدفقات النفط والغاز إلى آسيا وأوروبا. تحذير بنك إنجلترا من مخاطر "على الجانب الصعودي" يعكس قلقاً من تأثير أسعار الطاقة على قرارات الفائدة، وتراجع الطلب الصيني المتوقع قد يخفف الضغوط مستقبلاً لكن ليس قبل 2026.
+whyItMatters: تجاوز برنت حاجز 100 دولار يعيد ضغوط التضخم على اقتصادات المنطقة
+  المستوردة للطاقة، ويرفع كلفة النقل والصناعة، بينما يعطل التصعيد في الخليج
+  تدفقات النفط والغاز إلى آسيا وأوروبا. تحذير بنك إنجلترا من مخاطر "على الجانب
+  الصعودي" يعكس قلقاً من تأثير أسعار الطاقة على قرارات الفائدة، وتراجع الطلب
+  الصيني المتوقع قد يخفف الضغوط مستقبلاً لكن ليس قبل 2026.
 tags:
   - برنت
   - الخليج
@@ -46,14 +53,14 @@ chart:
         - 100.6
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Dubai_skyline_2015_%28crop%29.jpg/1280px-Dubai_skyline_2015_%28crop%29.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Product_terminal_at_Preemraff_Lysekil_with_tankers.jpg/1280px-Product_terminal_at_Preemraff_Lysekil_with_tankers.jpg
   width: 1280
-  height: 969
-  alt: أفق دبي النهاري يبرز برج خليفة وسط ناطحات السحاب والمدينة
-  credit: Tim.Reckmann · CC BY-SA 3.0 · ويكيميديا كومنز
-  license: CC BY-SA 3.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/3.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ADubai_skyline_2015_(crop).jpg
+  height: 843
+  alt: ناقلات نفطية راسية قرب محطة منتجات بتروكيماوية (صورة تعبيرية)
+  credit: W.carter · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AProduct_terminal_at_Preemraff_Lysekil_with_tankers.jpg
 sources:
   - name: بي بي سي
     nameEn: BBC News
@@ -69,7 +76,8 @@ sources:
     lang: ar
   - name: الغارديان
     nameEn: The Guardian
-    title: Oil prices rise above $100 a barrel for first time since July as Iran war escalates
+    title: Oil prices rise above $100 a barrel for first time since July as Iran war
+      escalates
     url: https://www.theguardian.com/business/2026/sep/09/oil-prices-rise-iran-war-brent-crude-inflation-higher-interest-rates
     publishedAt: 2026-09-09T09:27:07.000Z
     lang: en
@@ -81,7 +89,8 @@ sources:
     lang: ar
 models:
   editor: nvidia/nemotron-3-ultra-550b-a55b:free
-  writer: nvidia/nemotron-3-ultra-550b-a55b:free → nvidia/nemotron-3-ultra-550b-a55b:free
+  writer: nvidia/nemotron-3-ultra-550b-a55b:free →
+    nvidia/nemotron-3-ultra-550b-a55b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
   vision: nex-agi/nex-n2.5-pro:free
 quality:
@@ -92,7 +101,9 @@ quality:
   warnings:
     - "latin words: RAC, UBS"
     - "ungrounded numbers (tolerated): 29.3"
-  criticSummary: المقال يحتوي على خلط بين مصادر مختلفة دون تمييز واضح، وتفسيرات غير مدعومة، وأخطاء في الترجمة واللغة العربية، مما يتطلب مراجعة دقيقة قبل النشر.
+  criticSummary: المقال يحتوي على خلط بين مصادر مختلفة دون تمييز واضح، وتفسيرات
+    غير مدعومة، وأخطاء في الترجمة واللغة العربية، مما يتطلب مراجعة دقيقة قبل
+    النشر.
 ai: true
 ---
 

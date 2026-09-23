@@ -1,0 +1,14 @@
+{
+  "startedAt": "2026-09-23T09:30:35.710Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "oil-decline-diplomacy-hope-d15314",
+      "before": "ناقلة نفط خام تبحر في مياه مفتوحة (صورة تعبيرية)",
+      "after": "ناقلة نفط خام (صورة تعبيرية)",
+      "flawsBefore": [
+        "مفتوحة"
+      ]
+    }
+  ]
+}

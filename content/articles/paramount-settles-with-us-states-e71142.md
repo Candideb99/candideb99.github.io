@@ -1,11 +1,16 @@
 ---
 title: بارامونت يتسوى مع كاليفورنيا و11 ولاية أخرى
-subtitle: التسوية تزيل عقبة كبرى أمام اندماج قيمته 110 مليار دولار مع وارنر براذرز ديسكفري
+subtitle: التسوية تزيل عقبة كبرى أمام اندماج قيمته 110 مليار دولار مع وارنر
+  براذرز ديسكفري
 slug: paramount-settles-with-us-states-e71142
 section: companies
 kind: news
 publishedAt: 2026-09-21T20:08:49.463Z
-lede: بارامونت سكاي دانس تسوى دعوى قضائية مع كاليفورنيا و11 ولاية أخرى، وفقاً لـ الجزيرة الإنجليزية. التسوية تزيل عقبة كبرى أمام اندماج بقيمة 110 مليار دولار مع وارنر براذرز ديسكفري، وفقاً لـ بي بي سي نيوز. بارامونت سيتجنب دفع رسوم يومية قدرها 7 ملايين دولار إذا أكمل الاندماج قبل 30 سبتمبر، وفقاً لـ الجزيرة الإنجليزية.
+lede: بارامونت سكاي دانس تسوى دعوى قضائية مع كاليفورنيا و11 ولاية أخرى، وفقاً لـ
+  الجزيرة الإنجليزية. التسوية تزيل عقبة كبرى أمام اندماج بقيمة 110 مليار دولار
+  مع وارنر براذرز ديسكفري، وفقاً لـ بي بي سي نيوز. بارامونت سيتجنب دفع رسوم
+  يومية قدرها 7 ملايين دولار إذا أكمل الاندماج قبل 30 سبتمبر، وفقاً لـ الجزيرة
+  الإنجليزية.
 keyFacts:
   - label: قيمة الاندماج
     value: 110 مليار دولار
@@ -13,7 +18,13 @@ keyFacts:
     value: 7 ملايين دولار
   - label: الموعد النهائي لتجنب الرسوم
     value: 30 سبتمبر
-whyItMatters: يزيل التسوية عقبة قانونية أمام أحد أكبر الصفقات في قطاع الإعلام العالمي، مما قد يعيد تشكيل خريطة الإنتاج والتوزيع للأفلام والمحتوى المرئي في الأسواق الدولية. مع التزامات بزيادة الإنتاج في الولايات المتحدة وحماية استقلالية التحرير، قد يؤثر الاتفاق على تدفق المحتوى العالمي المتاح للمنصات العربية والشراكات الإنتاجية الإقليمية. كما أن تجنب الرسوم اليومية بقيمة 7 ملايين دولار يوفر على بارامونت تكاليف كبيرة، مما قد يعزز سيولته المالية لاستثمار أكبر في الأسواق الناشئة، بما في ذلك الشرق الأوسط وشمال إفريقيا.
+whyItMatters: يزيل التسوية عقبة قانونية أمام أحد أكبر الصفقات في قطاع الإعلام
+  العالمي، مما قد يعيد تشكيل خريطة الإنتاج والتوزيع للأفلام والمحتوى المرئي في
+  الأسواق الدولية. مع التزامات بزيادة الإنتاج في الولايات المتحدة وحماية
+  استقلالية التحرير، قد يؤثر الاتفاق على تدفق المحتوى العالمي المتاح للمنصات
+  العربية والشراكات الإنتاجية الإقليمية. كما أن تجنب الرسوم اليومية بقيمة 7
+  ملايين دولار يوفر على بارامونت تكاليف كبيرة، مما قد يعزز سيولته المالية
+  لاستثمار أكبر في الأسواق الناشئة، بما في ذلك الشرق الأوسط وشمال إفريقيا.
 tags:
   - الإعلام
   - الولايات المتحدة
@@ -26,14 +37,14 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Warner_Bros_Television_Studios_Headquarters.jpg/1280px-Warner_Bros_Television_Studios_Headquarters.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Paramount_Pictures_Studio_4.jpg/1280px-Paramount_Pictures_Studio_4.jpg
   width: 1280
-  height: 882
-  alt: مقر وارنر براذرز تليفزيون في بربانك بولاية كاليفورنيا وسط أشجار خضراء
-  credit: Coolcaesar · CC BY 4.0 · ويكيميديا كومنز
-  license: CC BY 4.0
-  licenseUrl: https://creativecommons.org/licenses/by/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AWarner_Bros_Television_Studios_Headquarters.jpg
+  height: 956
+  alt: بوابة استوديوهات بارامونت بيكتشرز في هوليوود
+  credit: Antoine Taveneaux · CC BY-SA 3.0 · ويكيميديا كومنز
+  license: CC BY-SA 3.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/3.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AParamount_Pictures_Studio_4.jpg
 sources:
   - name: نيويورك تايمز
     nameEn: The New York Times
@@ -43,7 +54,8 @@ sources:
     lang: en
   - name: بي بي سي
     nameEn: BBC News
-    title: Paramount settles lawsuit with US states, helping clear way for $110bn merger with Warner Bros
+    title: Paramount settles lawsuit with US states, helping clear way for $110bn
+      merger with Warner Bros
     url: https://www.bbc.co.uk/news/articles/cm4gjr1qepr8o
     publishedAt: 2026-09-21T18:42:44.000Z
     lang: en
@@ -55,13 +67,15 @@ sources:
     lang: en
   - name: الغارديان
     nameEn: The Guardian
-    title: Paramount settles lawsuits with 12 US states, clearing way for Warner merger
+    title: Paramount settles lawsuits with 12 US states, clearing way for Warner
+      merger
     url: https://www.theguardian.com/business/2026/sep/21/paramount-settles-lawsuits-warner-bros-merger
     publishedAt: 2026-09-21T16:52:49.000Z
     lang: en
 models:
   editor: inclusionai/ling-3.0-flash-fin:free
-  writer: nvidia/nemotron-3-super-120b-a12b:free → nvidia/nemotron-3-super-120b-a12b:free
+  writer: nvidia/nemotron-3-super-120b-a12b:free →
+    nvidia/nemotron-3-super-120b-a12b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
   vision: nex-agi/nex-n2.5-pro:free
   desk: nvidia/nemotron-3-super-120b-a12b:free
@@ -71,7 +85,8 @@ quality:
   revised: true
   importance: 8
   warnings: []
-  criticSummary: المسودة تحتوي على أخطاء في الإسناد وتضخيم للادعاءات غير المدعومة بالمصادر، مما يتطلب مراجعة قبل النشر.
+  criticSummary: المسودة تحتوي على أخطاء في الإسناد وتضخيم للادعاءات غير المدعومة
+    بالمصادر، مما يتطلب مراجعة قبل النشر.
 ai: true
 ---
 
