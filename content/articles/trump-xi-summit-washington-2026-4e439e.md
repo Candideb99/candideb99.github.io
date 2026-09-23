@@ -1,23 +1,15 @@
 ---
-title: قمة ترامب وشي الأسبوع المقبل تناقش تجارة بقيمة 30 مليار دولار
-subtitle: الرئيس الصيني سيصل إلى واشنطن يوم الأربعاء المقبل لحضور عشاء دولة
-  بدعوة من ترامب
+title: قمة ترامب وشي تبحث اتفاقاً تجارياً بـ30 مليار دولار
+subtitle: كوك وألتمان وديمون بين ضيوف عشاء الدولة في البيت الأبيض
 slug: trump-xi-summit-washington-2026-4e439e
 section: economy
 kind: news
 publishedAt: 2026-09-19T23:18:07.621Z
-lede: الرئيس الصيني شي جين بينغ سيصل إلى واشنطن يوم الأربعاء المقبل ويغادر يوم
-  الجمعة برفقة زوجته بينغ ليوان، متخطياً اجتماع الجمعية العامة للأمم المتحدة
-  بالكامل، وفقاً لمصدر من Euronews بتاريخ 2026-09-18.
+lede: يصل الرئيس الصيني شي جين بينغ إلى واشنطن الأربعاء المقبل برفقة زوجته بينغ ليوان لحضور عشاء دولة بدعوة من ترامب، ويغادر الجمعة متجاوزاً اجتماعات الجمعية العامة للأمم المتحدة بالكامل. وهي أول زيارة للرئيس الصيني إلى واشنطن منذ 2015، بحسب «يورونيوز».
 keyFacts:
   - label: قيمة الاتفاق المتوقع
     value: 30 مليار دولار
-whyItMatters: القمة تأتي في وقت يواجه فيه ترامب انتخابات منتصف المدة في نوفمبر
-  2026 مع تكلفة معيشة مرتفعة ووقود فوق 6 دولارات للغالون وتضخم عند 3.4٪، بينما
-  الصين حققت نموًا في مبيعات التجزئة بنسبة 0.4٪ في أغسطس 2026 وانكماشًا في
-  الاستثمار الثابت للأصول بنسبة 7.2٪ في أول ثمانية أشهر من 2026 مقارنة بنفس
-  الفترة من 2025، مما يجعل الاتفاق التجاري المحتمل مهماً لاستقرار سلاسل الإمداد
-  العالمية وثقة الأسواق في أكبر اقتصادين.
+whyItMatters: يدخل ترامب القمة والتضخم عند 3.4٪ وأسعار الوقود فوق 6 دولارات للغالون، قبل انتخابات منتصف المدة في نوفمبر. أما الصين فلم يتجاوز نمو مبيعات التجزئة فيها 0.4٪ في أغسطس، وانكمش الاستثمار في الأصول الثابتة 7.2٪ في أول ثمانية أشهر من العام مقارنة بالفترة نفسها من 2025.
 tags:
   - الولايات المتحدة
   - الصين
@@ -41,29 +33,25 @@ image:
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
-    title: عمالقة التكنولوجيا يلتقون الرئيس الصيني بالبيت الأبيض وسط سباق الذكاء
-      الاصطناعي
+    title: عمالقة التكنولوجيا يلتقون الرئيس الصيني بالبيت الأبيض وسط سباق الذكاء الاصطناعي
     url: https://aawsat.com/node/5320114
     publishedAt: 2026-09-19T11:53:39.000Z
     lang: ar
   - name: سي إن بي سي
     nameEn: CNBC
-    title: "JPMorgan, Citigroup CEOs attending Trump's state dinner for China's Xi:
-      Sources"
+    title: "JPMorgan, Citigroup CEOs attending Trump's state dinner for China's Xi: Sources"
     url: https://www.cnbc.com/2026/09/18/trump-xi-state-dinner-jpmorgan-jamie-dimon.html
     publishedAt: 2026-09-18T17:34:49.000Z
     lang: en
   - name: يورونيوز
     nameEn: Euronews
-    title: What to expect from the Trump-Xi summit, from tariffs to a possible $30
-      billion deal
+    title: What to expect from the Trump-Xi summit, from tariffs to a possible $30 billion deal
     url: https://www.euronews.com/business/2026/09/18/what-to-expect-from-the-trump-xi-summit-from-tariffs-to-a-possible-30-billion-deal
     publishedAt: 2026-09-18T15:03:30.000Z
     lang: en
 models:
   editor: inclusionai/ling-3.0-flash-fin:free
-  writer: nvidia/nemotron-3-super-120b-a12b:free →
-    nvidia/nemotron-3-super-120b-a12b:free
+  writer: nvidia/nemotron-3-super-120b-a12b:free → nvidia/nemotron-3-super-120b-a12b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
   vision: nex-agi/nex-n2.5-pro:free
   desk: nvidia/nemotron-3-super-120b-a12b:free
@@ -74,9 +62,7 @@ quality:
   importance: 8
   warnings:
     - "latin words: Euronews, JPMorgan, Qualcomm"
-  criticSummary: "المقالة تحتوي على خطأين واقعيين: تاريخ زيارة ترامب لبكين (2025
-    وليس 2026) وتحديد تواريخ زيارة شي إلى واشنطن كأربعاء مقبل ويوم الجمعة دون
-    دعم من المصدر، مما يخالف الدقة المطلوبة."
+  criticSummary: "المقالة تحتوي على خطأين واقعيين: تاريخ زيارة ترامب لبكين (2025 وليس 2026) وتحديد تواريخ زيارة شي إلى واشنطن كأربعاء مقبل ويوم الجمعة دون دعم من المصدر، مما يخالف الدقة المطلوبة."
 ai: true
 ---
 
