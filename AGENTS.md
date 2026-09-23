@@ -13,7 +13,28 @@ four first. They bind every agent, Codex included.
   reduced motion (the fade alone is dropped). Do not make it static.
 - **The news bar moves.** The owner asked for a moving strip. It scrolls by whole pixels so the
   text stays sharp, carries the newest stories not already on the first screen (so no headline
-  prints twice above the fold), and holds under the pointer. Do not make it static or chronological.
+  prints twice above the fold), and holds under the pointer, keyboard focus and a finger. Do not
+  make it static or chronological. **Its label is «أيضاً على خازندار» and each headline carries its
+  section, not its age** (the owner's choice, 2026-09-22, «أيضاً في العدد», reworded 2026-09-23 when he
+  ruled out paper words; under the older label الأحدث its own rule made it read «منذ 3 أيام»). Do not
+  rename it back.
+- **An online news website, not an online newspaper** (the owner, 2026-09-23: "avoid using wordings
+  that hint that my website is a paper newspaper like العدد/issue"). The look keeps its printed
+  register; the words never make it a paper: no issue number, no العدد، الطبعة، صحيفة/جريدة about
+  itself, no "in this issue". The site names itself خازندار (or الموقع). The date line carries the
+  Gregorian and the Hijri date instead of an issue number. `style.mjs` refuses صحيفتنا/هذا العدد in copy.
+- **The AI disclosure stays at the end of the article**, after the sources, and the byline reads
+  خازندار. On 2026-09-22 the owner declined a «تحرير آلي» label beside the date. Do not move it up
+  without his yes. **The model names are not printed** (2026-09-23: «remove such things from the
+  news»); they stay in the article's data.
+- **Photographs match the story's geography** whenever the file says where it was taken (2026-09-23,
+  a Finnish filling station on a US diesel story). The rule is `PLACE_RULE` and the code check
+  `placedAbroad()` in `pipeline/lib/images.mjs`; do not relax either to fill a story with a picture.
+  "If possible" is a tier, not a ban: when nothing from the story's country passes, a neutral frame
+  (no signs, flags, landmarks or skyline) runs captioned «صورة تعبيرية» with no place in its caption;
+  a story with neither runs as text. Never a photo that visibly shows another country.
+- **The digest's headline stands on its own line** with its sentence beneath (2026-09-23: the
+  sentence run on after the bold headline read as one confused line).
 - **The publication gate** is: programmatic checks, the Arabic copy desk, the critic; one revision
   round; a second critic pass; publish when the verdict is not "reject" and the score is 6 or more.
   A first pass goes straight out only with a "publish" verdict, a score of 6 or more and no

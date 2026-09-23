@@ -15,3 +15,9 @@ public/fonts/
 # Stray scratch files an agent may drop in the project root
 wm*.json
 *AppDataLocalTemp*
+
+# Design-review notes (local only; the site repository is public)
+.impeccable/
+
+# The site gate's record of the last passing run (scripts/gate.mjs)
+.gate/
