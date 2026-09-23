@@ -1,14 +1,11 @@
 ---
 title: تدفقات نفط الخليج تعود إلى 18 مليون برميل يومياً
-subtitle: أكد وزير الطاقة الأمريكي أن التدفقات عادت إلى مستويات ما قبل اندلاع الحرب
+subtitle: المركزي الإماراتي يرفع سعر الأساس 25 نقطة مواكبةً للفيدرالي
 slug: gulf-oil-flows-return-pre-war-levels-6a0da7
 section: energy
 kind: news
 publishedAt: 2026-09-17T05:04:56.594Z
-lede: أكد وزير الطاقة الأمريكي كريس رايت أن نحو 18 مليون برميل من النفط تدفقت من
-  الخليج في يوم واحد، مؤكداً عودة التدفقات إلى مستويات ما قبل اندلاع الحرب. جاء
-  ذلك في تصريحات نشرتها قناة الجزيرة الإنجليزية يوم الثلاثاء 16 سبتمبر 2026.
-  ورفع المركزي الإماراتي سعر الأساس إلى 3.90% بعد قرار الفيدرالي برفع الفائدة.
+lede: أكد وزير الطاقة الأمريكي كريس رايت أن نحو 18 مليون برميل من النفط تدفقت من الخليج في يوم واحد، عائدةً إلى مستويات ما قبل الحرب، بحسب ما نقلته قناة الجزيرة الإنجليزية الثلاثاء 16 سبتمبر. ورفع المركزي الإماراتي سعر الأساس إلى 3.90% بعد قرار الاحتياطي الفيدرالي رفع الفائدة.
 keyFacts:
   - label: تدفقات النفط اليومية
     value: 18 مليون برميل
@@ -18,12 +15,7 @@ keyFacts:
     value: 25 نقطة أساس
   - label: سعر الفائدة الفيدرالي
     value: 4.00%
-whyItMatters: عودة تدفقات النفط إلى مستويات ما قبل الحرب تشير إلى استقرار
-  إمدادات الطاقة في الخليج، مما يدعم أسواق النفط العالمية ويقلل الضغوط التضخمية
-  المرتبطة بانقطاع الإمدادات. ورفع المركزي الإماراتي لسعر الأساس يتماشى مع سياسة
-  ربط الدرهم بالدولار، مما ينقل تأثير تشديد السياسة النقدية الأمريكية إلى
-  الاقتصاد المحلي، ويؤثر على تكاليف الاقتراض للقطاعين العقاري والتجاري، بينما قد
-  يعزز جاذبية الودائع المصرفية للمدخرين.
+whyItMatters: عودة تدفقات الخليج إلى مستوياتها تخفف ضغوط الإمدادات على أسعار النفط العالمية. ورفع سعر الأساس الإماراتي بحكم ربط الدرهم بالدولار يزيد تكاليف الاقتراض للقطاعين العقاري والتجاري، وقد يعزز جاذبية الودائع المصرفية للمدخرين.
 tags:
   - السعودية
   - الإمارات
@@ -40,8 +32,7 @@ image:
   width: 1280
   height: 851
   alt: ناقلة نفط راسية عند محطة البصرة النفطية في الخليج
-  credit: U.S. Navy photo by Photographer's Mate Airman Eben Boothby · Public
-    domain · ويكيميديا كومنز
+  credit: U.S. Navy photo by Photographer's Mate Airman Eben Boothby · Public domain · ويكيميديا كومنز
   license: Public domain
   pageUrl: https://commons.wikimedia.org/wiki/File%3AUS_Navy_051111-N-8163B-032_An_oil_tanker_docked_to_the_Al_Basrah_Oil_Terminal_(ABOT)_takes_on_crude_oil_in_the_Persian_Gulf.jpg
 sources:
@@ -59,8 +50,7 @@ sources:
     lang: ar
   - name: إيكونومي ميدل إيست
     nameEn: Economy Middle East
-    title: UAE central bank raises Base Rate to 3.90 percent following Fed’s first
-      hike since 2023
+    title: UAE central bank raises Base Rate to 3.90 percent following Fed’s first hike since 2023
     url: https://economymiddleeast.com/news/uae-central-bank-raises-base-rate-to-3-90-percent-following-feds-first-hike-since-2023/
     publishedAt: 2026-09-16T18:25:11.000Z
     lang: en
@@ -82,9 +72,7 @@ quality:
   revised: false
   importance: 9
   warnings: []
-  criticSummary: المقال يدمج معلومات صحيحة عن تدفقات النفط ورفع الفائدة، لكنه
-    يحتوي على أخطاء في التواريخ والنسب والAttribution التي لا يمكن تجاهلها، مما
-    يتطلب تصحيحاً قبل النشر.
+  criticSummary: المقال يدمج معلومات صحيحة عن تدفقات النفط ورفع الفائدة، لكنه يحتوي على أخطاء في التواريخ والنسب والAttribution التي لا يمكن تجاهلها، مما يتطلب تصحيحاً قبل النشر.
 ai: true
 ---
 
