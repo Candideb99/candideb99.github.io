@@ -26,6 +26,9 @@ for (const line of existsSync(path.join(root, ".env")) ? readFileSync(path.join(
 }
 process.env.KHAZENDAR_PROVIDER = "openrouter";
 const { chat } = await import("./lib/llm.mjs");
+// The same geography rule the newsroom's picture checks read (2026-09-23): one rule, not two copies,
+// and the same check in code, which overrides a model that passes a photo its own file places abroad.
+const { PLACE_RULE, placedAbroad, ILLUSTRATIVE } = await import("./lib/images.mjs");
 const ARTICLES = path.join(root, "content", "articles");
 const CACHE = path.join(root, "pipeline", ".cache", "commons-meta.json");
 const OUT = path.join(root, "pipeline", "runs", "image-audit.json");
@@ -65,7 +68,7 @@ for (const f of files) {
   if (!m) continue;
   const d = YAML.parse(m[1]);
   if (d.draft || !d.image?.url) continue;
-  articles.push({ file: f, slug: d.slug, title: d.title, subtitle: d.subtitle ?? "", lede: d.lede ?? "", tags: d.tags ?? [], sources: (d.sources ?? []).map((s) => s.title).slice(0, 5), url: d.image.url, alt: d.image.alt ?? "", publishedAt: String(d.publishedAt) });
+  articles.push({ file: f, slug: d.slug, title: d.title, subtitle: d.subtitle ?? "", lede: d.lede ?? "", tags: d.tags ?? [], regions: d.regions ?? [], sources: (d.sources ?? []).map((s) => s.title).slice(0, 5), url: d.image.url, alt: d.image.alt ?? "", publishedAt: String(d.publishedAt) });
 }
 articles.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 const todo = LIMIT ? articles.slice(0, LIMIT) : articles;
@@ -96,14 +99,20 @@ Caption the paper printed: ${a.alt}
 
 Judge whether this photograph belongs with this story, as a strict picture editor would:
 - WRONG_PERSON: the photo shows an identifiable person (a politician, official, executive) who is NOT one of the people the story is about, even if the setting is similar. This is the gravest error.
-- WRONG_SUBJECT: a different country or city than the story's; a different company or institution; a different sector; a military vessel or weapon for a non-military story; a scene that merely lies NEAR the subject (a beach, a park, a street, a metro station, a coastline beside a refinery or port; a satellite view of a whole country); a landmark, flag, sign or building in the frame that identifies a country the story does not mention; a caption that names a place, company or person the story does not mention. If your reason would contain "loosely", "broadly", "tangentially", "not specifically" or "reasonably", the verdict is WRONG_SUBJECT.
+- WRONG_SUBJECT: a different country or city than the story's; a different company or institution; a different sector, including a neighbouring one (electricity pylons on a gas story, a highway on a port story); a military vessel or weapon for a non-military story; a scene that merely lies NEAR the subject (a beach, a park, a street, a metro station, a coastline beside a refinery or port; a satellite view of a whole country); a landmark, flag, sign or building in the frame that identifies a country the story does not mention; a caption that names a place, company or person the story does not mention; a city skyline, panorama or street scene on a story about ONE company, plant, project, product, deal, commodity or technology (a Cairo panorama on a battery-plant story, a San Francisco skyline on an AI-company story). If your reason would contain "loosely", "broadly", "tangentially", "not specifically" or "reasonably", the verdict is WRONG_SUBJECT.
 - STALE_EVENT: the photo depicts a specific past event that the story is not about (an old summit, an old ceremony), not just an old photo of a place.
-- GENERIC_OK: a neutral illustration whose frame shows the story's OWN country, city, institution or sector itself: the named capital's skyline, the named company's building, the sector's own object (a refinery, a tanker, a pipeline, a trading floor, a port crane, a factory line, a branch of the named bank). This paper's policy is that a story with no photo of its own event runs such an illustration, and that is GENERIC_OK even when the story is about one specific project, deal or figure. For a story about the WORLD market (oil prices, global trade, shipping, a world body such as the WTO or the IMF) an anonymous scene of the sector taken anywhere is acceptable when nothing in the frame identifies the country and the caption names no place.
+- GENERIC_OK: a neutral illustration whose frame shows the story's OWN institution or sector itself: the named company's or ministry's building, the sector's own object (a battery production line, a data-centre hall, an LNG tanker, a refinery, a pipeline, a trading floor, a port crane, a factory line, a branch of the named bank). The named capital's skyline or central bank is acceptable ONLY for a story about the country's economy as a whole (inflation, growth, budget, currency, rates, sovereign rating, trade balance, jobs). An anonymous scene of the story's sector — a production line, a refinery, a tanker at sea, a container port, a trading floor, a server hall — is acceptable as a stock photograph is, under the rule below: for a story about one country, only when nothing (the file name, description, categories or caption) places it in another country.
 - RIGHT: shows the actual people, place or event of the story.
+${a.alt.includes(ILLUSTRATIVE) ? `The paper captions this photograph «${ILLUSTRATIVE}» (illustrative): it was chosen because no photograph from the story's own country passed. Judge it by what readers see (the frame as the file describes it, and the caption), not by where the file says it was taken: WRONG_SUBJECT only if the frame shows readable signs, lettering, a landmark, a flag, a skyline or a street, or the caption names a place.` : PLACE_RULE}
 Return JSON: {"verdict":"RIGHT|GENERIC_OK|STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON","people_in_photo":"<names the file/description implies, or none>","reason":"<one short English sentence>"}`;
   try {
     const { data, model } = await chat({ role: "critic", system: "You are a strict newspaper picture editor. Answer with one JSON object only.", user, json: true, maxTokens: 300, temperature: 0, log: () => {} });
-    const verdict = String(data.verdict ?? "").toUpperCase();
+    let verdict = String(data.verdict ?? "").toUpperCase();
+    const abroad = a.alt.includes(ILLUSTRATIVE) ? null : placedAbroad({ title: fileTitle, description: meta.description, categories: meta.categories }, { title: a.title, tags: a.tags, regions: a.regions });
+    if (abroad && (verdict === "GENERIC_OK" || verdict === "RIGHT")) {
+      verdict = "WRONG_SUBJECT";
+      data.reason = `The file places the photo in ${abroad}, a country the story does not name (checked in code; the model said ${String(data.verdict)}).`;
+    }
     results.push({ slug: a.slug, file: a.file, title: a.title, image: a.url, fileTitle, verdict, people: data.people_in_photo ?? "", reason: data.reason ?? "", model });
     log(`${verdict.padEnd(13)} ${a.slug.slice(0, 48).padEnd(50)} ${String(data.reason ?? "").slice(0, 90)}`);
   } catch (e) {

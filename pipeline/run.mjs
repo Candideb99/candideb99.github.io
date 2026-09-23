@@ -190,9 +190,11 @@ const usedImages = (existing) => new Set(existing.map((a) => a.imageUrl).filter(
  * (the owner's rule: no literal translations) and its guard keeps every figure and name intact. A
  * desk failure never blocks a story; the draft simply goes on as written.
  */
-async function copyDeskPass(draft, { includeBody = true } = {}) {
+async function copyDeskPass(draft, { includeBody = true, kind = "news", sources = [] } = {}) {
   try {
-    const desk = await copyEdit({ draft, includeBody, role: "desk", log });
+    // The names the sources go by, so the checker can count a source named in sentence after sentence.
+    const names = sources.flatMap((s) => [s.sourceName ?? s.name, s.sourceNameEn ?? s.nameEn]).filter(Boolean);
+    const desk = await copyEdit({ draft, includeBody, role: "desk", kind, sources: names, log });
     if (desk.changed) log(`desk "${desk.draft.title}": rewrote ${desk.applied.join(", ")}${desk.rejected.length ? `; refused ${desk.rejected.map((r) => `${r.field} (${r.reason})`).join(", ")}` : ""}`);
     return desk;
   } catch (error) {
@@ -246,7 +248,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   const notes = notesResult?.notes ?? null;
   if (notes) log(`desk notes: ${notes.facts.length} facts, ${notes.quotes.length} quotes (${notesResult.model})`);
   let { draft, model: writerModel } = await writeArticle({ story, sources, notes, log });
-  const desk = await copyDeskPass(draft);
+  const desk = await copyDeskPass(draft, { sources });
   draft = desk.draft;
   const deskModel = desk.model;
   let checks = programmaticChecks(draft, sources, { recentTitles });
@@ -263,7 +265,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     const issues = [...checks.issues, ...review.issues];
     if (!issues.length) issues.push(`المحرر أعطى المسودة ${review.score}/10 (${review.verdict})${review.summary ? `: ${review.summary}` : ""}؛ راجع الدقة والعزو والعربية.`);
     const revision = await reviseArticle({ draft, sources, issues, log, notes });
-    draft = (await copyDeskPass(revision.draft, { includeBody: true })).draft;
+    draft = (await copyDeskPass(revision.draft, { includeBody: true, sources })).draft;
     writerModel = `${writerModel} → ${revision.model}`;
     revised = true;
     checks = programmaticChecks(draft, sources, { recentTitles });
@@ -432,7 +434,8 @@ function internalSources(articles, { withText = false } = {}) {
  * paper reading); `sources` is what is filed.
  */
 async function finishHubPiece({ kind, section, draft: firstDraft, sources, checkSources, recentTitles, wordLimits, story, headlineHint, headline, models, existing, report }) {
-  const desk = await copyDeskPass(firstDraft);
+  const deskKind = kind === "explainer" ? "explainer" : kind === "paper" ? "paper" : "analysis";
+  const desk = await copyDeskPass(firstDraft, { kind: deskKind, sources: checkSources ?? [] });
   let draft = desk.draft;
   const deskModel = desk.model;
   const flags = { [kind]: true };
@@ -458,7 +461,7 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
     const issues = [...checks.issues, ...review.issues];
     if (!issues.length) issues.push(`المحرر أعطى المسودة ${review.score}/10 (${review.verdict})${review.summary ? `: ${review.summary}` : ""}؛ راجع الدقة والعزو والعربية.`);
     const revision = await reviseArticle({ draft, sources: checkSources, issues, log, wordLimits, kind });
-    draft = (await copyDeskPass(revision.draft, { includeBody: false })).draft;
+    draft = (await copyDeskPass(revision.draft, { includeBody: false, kind: deskKind, sources: checkSources ?? [] })).draft;
     writerModel = `${writerModel} → ${revision.model}`;
     revised = true;
     checks = programmaticChecks(draft, checkSources, { ...flags, recentTitles });

@@ -57,7 +57,7 @@ export async function searchCommons(query, { limit = 10, log = () => {} } = {}) 
         artist: artist.slice(0, 80),
         description: stripHtml(meta.ImageDescription?.value ?? "").slice(0, 200),
         date: (meta.DateTimeOriginal?.value ?? "").slice(0, 10),
-        categories: stripHtml(meta.Categories?.value ?? "").slice(0, 200),
+        categories: stripHtml(meta.Categories?.value ?? "").slice(0, 500),
       });
     }
     log(`commons "${query}": ${out.length} usable of ${pages.length}`);

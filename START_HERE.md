@@ -91,9 +91,14 @@ countries, referrers — free, no cookies, nothing installed on readers.
 description names a person by rank ("Secretary Kerry", "Minister Schallenberg") is dropped before
 a model sees it unless the writer asked for that surname, and a generic illustration never shows
 named people, named events or warships. Then a second, independent model re-reads the story against
-the chosen file's own name and description and must answer *right* or *a neutral view of the story's
-own place or institution*; anything else refuses the photo and the story runs as text — a missing
-photo is allowed, a wrong one is not. `node pipeline/audit-images.mjs` re-judges every live photo the
+the chosen file's own name, description and the caption we would print, and must answer *right* or
+*a neutral view of the story's own institution or sector*; anything else refuses the photo and the
+story runs as text — a missing photo is allowed, a wrong one is not. A story about one company,
+plant, project, commodity or technology gets its sector's own object (a battery line, a data-centre
+hall, a tanker, a refinery); the capital's skyline is reserved for stories about a country's economy
+as a whole (inflation, growth, the budget, the currency), and a world-market story may use an
+anonymous scene of its sector from anywhere, as long as nothing in the frame or the caption names a
+place the story does not mention. `node pipeline/audit-images.mjs` re-judges every live photo the
 same way whenever you want a sweep.
 
 **Finding a story.** The live list filters by section, kind, month, placement (front page or not) and

@@ -65,7 +65,9 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
   if (/https?:\/\/|www\./i.test(prose)) issues.push("النص يحتوي على روابط؛ احذفها.");
 
   // The house's Arabic: banned calques and fillers force a revision; texture faults are warnings the desk reads.
-  const style = styleIssues(draft, { kind: explainer ? "explainer" : analysis || weekly ? "analysis" : paper ? "paper" : "news" });
+  // The names each source goes by, so a story that names one outlet in sentence after sentence is sent back.
+  const sourceNames = sources.flatMap((s) => [s.sourceName ?? s.name, s.sourceNameEn ?? s.nameEn]).filter(Boolean);
+  const style = styleIssues(draft, { kind: explainer ? "explainer" : analysis || weekly ? "analysis" : paper ? "paper" : "news", sources: sourceNames, latin: false });
   issues.push(...style.issues);
   warnings.push(...style.warnings);
 
@@ -178,7 +180,7 @@ const CRITIC_RUBRIC = {
     material:
       "(explainer: no external sources by design, so it may state NO current events: no dated fact, current price, statistic, decision, attack or deal of recent days; only definitions, mechanisms and worked examples labelled مثال توضيحي. Judge internal consistency and standard definitions.)",
     facts: "Every claim in the draft: is it a definition or a mechanism, not a report of something that happened? Every number: is it labelled as an illustrative example (مثال توضيحي)? List each current-events claim (a dated event, a current price or figure, a decision or attack of recent days, a named recent deal) and each unlabelled number: with no sources they are unsupported by construction.",
-    check: "Are definitions standard and correct? Are all worked-example numbers clearly labelled as illustrative? Any current-events claim at all means the verdict \"reject\", never \"revise\"; the paper's news pages, not an explainer, report events.",
+    check: "Are definitions standard and correct? Are all worked-example numbers clearly labelled as illustrative? Any current-events claim at all means the verdict \"reject\", never \"revise\"; Khazendar's news pages, not an explainer, report events.",
   },
   paper: {
     material:
@@ -188,15 +190,15 @@ const CRITIC_RUBRIC = {
   },
   weekly: {
     material:
-      "(the week's review, حصاد الأسبوع: the sources below are خازندار's own stories of the last seven days, plus the paper's economic calendar of the coming days. A roundup of the week's SEPARATE developments is this piece's form: do not fault it for covering unrelated developments, and do not ask for a link between them. Judge each paragraph against its own story: every figure, date, name and quotation must trace to a story, with that story's own verb and direction; the section ما ننتظره الأسبوع المقبل must use only the calendar's dates and events.)",
+      "(the week's review, حصاد الأسبوع: the sources below are خازندار's own stories of the last seven days, plus Khazendar's economic calendar of the coming days. A roundup of the week's SEPARATE developments is this piece's form: do not fault it for covering unrelated developments, and do not ask for a link between them. Judge each paragraph against its own story: every figure, date, name and quotation must trace to a story, with that story's own verb and direction; the section ما ننتظره الأسبوع المقبل must use only the calendar's dates and events.)",
     facts: "Every number, date, name and quotation in the draft: does it trace to one of the supplied stories or to the calendar, with the same magnitude, unit, direction and period, and attributed to the institution that story names? A figure rounded as its own story's headline rounds it (108 for 108.44) is not an error, and neither is a faithful paraphrase (مليوني برميل for 2 مليون برميل; أكثر من 6 دولارات when the story says 6.06 dollars, above 6 for the first time); an error is a changed magnitude, direction, period, unit, actor or attribution, or a claim no story makes. Is every row of the table a figure that appears in one story? List only real errors, each with the story that contradicts it.",
     check: "Does each development read as its own story reports it, with no cause, motive or consequence the story does not state? Is the piece ranked by weight rather than by date, with the heaviest development first? Is the coming-week section limited to the calendar's dated events? Does the Arabic read as the economics desks write it: short sentences, one idea each, the desks' attribution forms, no translationese? SCORING for this kind: the score follows the real errors found under point 1 and the unsupported claims under this point: none means 8 or more; one or two, corrected by the revision, means 6 or 7; style points alone never take a review below 6; three or more real errors mean revise, and invented facts mean reject.",
   },
   analysis: {
     material:
-      "(analysis: the sources below are خازندار's own published stories; every figure, date, name and quotation in the draft must trace to them. Interpretation is the genre: the paper's own reading of consequences is legitimate when it is clearly framed as a reading (يرجّح، قد، من المحتمل) and stays within what the stories support; it is a fault when asserted as fact or when it contradicts the stories.)",
+      "(analysis: the sources below are خازندار's own published stories; every figure, date, name and quotation in the draft must trace to them. Interpretation is the genre: Khazendar's own reading of consequences is legitimate when it is clearly framed as a reading (يرجّح، قد، من المحتمل) and stays within what the stories support; it is a fault when asserted as fact or when it contradicts the stories.)",
     facts: "Every number, date, name and quotation in the draft: does it trace to the supplied stories? List each unsupported or altered item. Causal reasoning is judged under point 3.",
-    check: "Is the argument coherent from the opening to the scenarios, and does the piece answer its own question? Is every causal claim either reported by the stories or clearly framed as the paper's hedged reading, never asserted as fact? Is every forecast framed as a scenario with a stated trigger?",
+    check: "Is the argument coherent from the opening to the scenarios, and does the piece answer its own question? Is every causal claim either reported by the stories or clearly framed as Khazendar's hedged reading, never asserted as fact? Is every forecast framed as a scenario with a stated trigger?",
   },
 };
 

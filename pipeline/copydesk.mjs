@@ -46,7 +46,7 @@ for (const file of files) {
 }
 articles.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 const wanted = FLAGGED
-  ? articles.filter((a) => bannedIn({ title: a.doc.get("title"), subtitle: a.doc.get("subtitle"), lede: a.doc.get("lede"), body: a.body }).length > 0)
+  ? articles.filter((a) => bannedIn({ title: a.doc.get("title"), subtitle: a.doc.get("subtitle"), lede: a.doc.get("lede"), whyItMatters: a.doc.get("whyItMatters"), body: a.body }).length > 0)
   : articles;
 const queue = LIMIT ? wanted.slice(0, LIMIT) : wanted;
 log(`${queue.length} article(s) to read${DRY ? " (dry run)" : ""}${BODY ? ", body included" : ""}`);
@@ -58,11 +58,15 @@ for (const a of queue) {
     title: String(a.doc.get("title") ?? ""),
     subtitle: String(a.doc.get("subtitle") ?? ""),
     lede: String(a.doc.get("lede") ?? ""),
+    whyItMatters: String(a.doc.get("whyItMatters") ?? ""),
     body: a.body,
   };
+  const data = a.doc.toJS();
+  const kind = data.kind === "explainer" ? "explainer" : data.kind === "paper" ? "paper" : data.kind === "analysis" || data.kind === "weekly" ? "analysis" : "news";
+  const sources = (data.sources ?? []).flatMap((s) => [s.name, s.nameEn]).filter(Boolean);
   let result;
   try {
-    result = await copyEdit({ draft, includeBody: BODY, log });
+    result = await copyEdit({ draft, includeBody: BODY, kind, sources, publishedAt: data.publishedAt ?? null, log });
   } catch (error) {
     log(`${a.slug}: desk failed: ${String(error.message).slice(0, 160)}`);
     report.items.push({ slug: a.slug, error: String(error.message).slice(0, 300) });

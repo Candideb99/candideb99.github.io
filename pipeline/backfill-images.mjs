@@ -3,7 +3,7 @@
  * now does for new stories (specific subjects first, then a generic illustration of the place,
  * institution or sector), and writes it into the article's frontmatter.
  *
- * Usage: node pipeline/backfill-images.mjs [--dry-run] [--limit=N] [--redo=slug,slug]
+ * Usage: node pipeline/backfill-images.mjs [--dry-run] [--limit=N] [--redo=slug,slug] [--only=slug,slug]
  * Reads OPENROUTER_API_KEY from the environment or from .env.
  */
 import { readFile, readdir, writeFile } from "node:fs/promises";
@@ -31,6 +31,9 @@ const LIMIT = limitArg ? Number(limitArg.split("=")[1]) : Infinity;
 const redoArg = args.find((a) => a.startsWith("--redo="));
 /** Slugs whose current picture should be replaced (comma-separated). */
 const REDO = new Set(redoArg ? redoArg.slice(7).split(",").map((s) => s.trim()).filter(Boolean) : []);
+/** `--only=slug,slug`: work on these stories alone, instead of every story that has no picture. */
+const onlyArg = args.find((a) => a.startsWith("--only="));
+const ONLY = new Set(onlyArg ? onlyArg.slice(7).split(",").map((s) => s.trim()).filter(Boolean) : []);
 const log = (message) => console.log(`[backfill ${new Date().toISOString().slice(11, 19)}] ${message}`);
 
 const files = (await readdir(ARTICLES_DIR)).filter((f) => f.endsWith(".md")).sort();
@@ -54,6 +57,7 @@ for (const file of files) {
   const match = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
   if (!match) continue;
   const data = YAML.parse(match[1]);
+  if (ONLY.size && !ONLY.has(data.slug)) continue;
   const redo = REDO.has(data.slug);
   if (data.image && !redo) continue;
   if (redo && data.image) {

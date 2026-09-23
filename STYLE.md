@@ -18,30 +18,70 @@ the cause clause (بعدما، مع، وسط، في ظل). Under 45 words. No sc
 > مؤشر على استمرار تأثير الحرب.
 
 **The second paragraph** does one of three things: the source's own words (وقال البنك في بيان
-إن…), the hard figure behind the lede, or the contrast (وفي المقابل…). **The third** gives context
-with وكان… or وجاء….
+إن…), the hard figure behind the lede, or the contrast (وفي المقابل…, only for a real opposite).
+**The third** gives the background in its own sentence with وكان … قد.
 
 **Every figure** in this order: value, unit, direction, benchmark, time, source. Adjectives only
 when quantified (أكبر زيادة منذ مايو); never "بشكل كبير".
 
-**Attribution** once per paragraph, in the desks' forms: قال X في بيان إن (always إن after قال),
-وأضاف، وأوضح، وأشار إلى أن، وفق بيانات صدرت الخميس، بحسب رويترز، نقلاً عن. أكد takes an object,
-never أكد على. كشف only for what was hidden. **Expectations** belong to someone: يتوقع المجلس أن،
-ترجّح الأسواق، مرشح لـ. Never a floating forecast.
+**Attribution** in the desks' forms: قال X في بيان إن (always إن after قال), وأضاف، وأوضح، وأشار
+إلى أن، وفق بيانات صدرت الخميس، بحسب رويترز، نقلاً عن. Each source is named once, where its
+information first enters; after that the reporting verb or one attribution at the head of the
+paragraph carries it. Never two sentences in a row tagged وفقاً لـ/بحسب, never وفقاً للمصدر نفسه,
+never one outlet more than three times in a story (the checker sends back a story that tags more
+than a third of its sentences). أكد takes an object, never أكد على. كشف only for what was hidden.
+**Expectations** belong to someone: يتوقع المجلس أن، ترجّح الأسواق، مرشح لـ. Never a floating
+forecast.
 
 **Texture.** One idea per sentence, no sentence over 35 words; paragraphs of one to three
 sentences; concrete nouns (البرميل، الأونصة، العقود الآجلة، نقطة أساس، الجلسة، الإغلاق، المكاسب
-الأسبوعية، المعاملات الفورية); active voice. Paragraph joints vary: و، وكان، وفي المقابل، ويأتي،
-ورغم، وقال.
+الأسبوعية; المعاملات الفورية only for spot prices, never futures); active voice.
+
+**Joints with a job** (added 2026-09-23, from an audit of the published paper that found the machine
+now shows in structure more than in words). Arabic's own joints: و، فـ، فقد، ثم، لكن، أما … فـ،
+وكان … قد، ورغم، وقال. Background in its own sentence with وكان … قد, never ويأتي/وجاء + noun + في
+وقت/في ظل/وسط, never يأتي ذلك. «، إذ» only when the clause explains the one before, never before a
+reporting verb. فيما/بينما only for two things at once, never to slip a second development into the
+dek. وفي المقابل only for a real opposite; حيث only for a place; مما at most once.
+
+**Arabic sentences, not English ones in Arabic words.** Open with the verb; no chain of more than three
+nouns in an إضافة. "Whether" is هل, never ما إذا كان; "in terms of" is a verb, never من حيث; "was set
+to" is كان مقرراً أن, never كان سيـ; "as a" is بوصفه or a rephrase, never كـ + noun; بشكل/بصورة +
+adjective becomes the adverb or the figure; يتم/تم + verbal noun becomes the verb. An abstract noun
+never judges: name who does. **Idioms and trade terms** are translated by meaning, never word for
+word (industrial-scale, crown jewels, guardrails, ground stop, term contracts, lagged effects,
+intraday, grounded, "Senator X of Alaska" = السيناتور عن ألاسكا); a phrase that needs a sentence to
+explain it is the wrong phrase.
+
+**Each field adds something.** The dek carries the second most important fact, never a figure from the
+lede; the first body paragraph moves the story on and never retells the lede; لماذا يهمّ states one
+concrete consequence that a source reports or that follows from the story's own figures, names an Arab
+country, company or price only when a source makes the link, and never recaps, speculates in chains
+(قد يؤدي… مما قد…), addresses the reader or opens with يعكس/يمثل/يُعدّ. A sentence whose facts already
+appear higher up is deleted. The copy desk may cut a repeat because its guard counts facts over the
+whole story: a figure, a name or a hedged claim may leave a place where it repeats, never the story.
+
+**Hedges** are said once and plainly: at most one per paragraph, varied, never two sentences in a row
+opening with one; يرجّح أن with no subject becomes والأرجح أن or names who judges. An analysis marks
+its reading once where the reading begins and then writes plainly.
+
+**Dates** as the desks write them: the weekday for this week, the month for this year, the year only when
+it is not the current one; never an ISO date, never بتاريخ, never اليوم or أمس in stored copy. A key
+fact names what is measured, where and when; a weekday or a date is not a key fact. **Names** keep one
+spelling across the paper (أمريكي، ترامب، وارش، خه لي فنغ), applied mechanically by the copy desk.
 
 **Closings** are one of the desks' four: a sweep of related instruments, the next date to watch,
 the concrete why-it-matters, or an attributed quote. Never a summary, never a moral.
 
 **Banned** (the checker forces a revision; the desk rewrites): fillers في هذا السياق، تجدر
 الإشارة، من الجدير بالذكر، يُذكر أن، لا يخفى، في نهاية المطاف، بالإضافة إلى ذلك، علاوة على ذلك،
-من ناحية أخرى، على الرغم من ذلك؛ calques تم + مصدر، من قبل، يقوم بـ، يلعب دوراً، بشكل
-كبير/ملحوظ/رئيسي، على صعيد، يعتبر، هناك ارتفاع في، شهد ارتفاعاً؛ clichés بمثابة، يسلط الضوء،
-يمهد الطريق، نقطة تحول، مما يعكس. Preferred: نحو not حوالي، في الوقت نفسه، مديرو، أسهم، مهم.
+من ناحية أخرى، على الرغم من ذلك؛ calques تم/يتم + مصدر، من قبل، يقوم بـ، يلعب دوراً،
+بشكل/بصورة + صفة، على صعيد، يعتبر، ما إذا كان، هناك ارتفاع في، شهد ارتفاعاً؛ clichés بمثابة،
+يسلط الضوء، يمهد الطريق، نقطة تحول، مما يعكس، في خطوة، يأتي ذلك، السؤال الحقيقي، ليس مجرد؛
+machine leftovers (Latin, Chinese or Cyrillic letters, straight quotes "…", the prompt's own words
+المادة/الملاحظات, a word said twice in a headline, an ISO date). Warnings: في إطار، على مستوى، من
+حيث، ما يعكس، the intensifiers حاد/انهيار/تاريخي/جداً without a number, a number that does not agree
+with its noun. Preferred: نحو not حوالي، في الوقت نفسه، مديرو، أسهم، مهم.
 
 **Headlines.** A nominal sentence: actor first, present-tense verb, the figure (الذهب يتجه لثالث
 خسارة أسبوعية مع تصاعد رهانات رفع الفائدة). One idea, at most 12 words, never two developments
@@ -52,6 +92,15 @@ verbal noun. No "!", no teaser, no تعرف على, no question headline for new
 
 **Marks.** Western digits; pan-Arab month names; % after the figure; the Arabic comma (،); «» for
 quotations and foreign brand names; tanween on the alef (اً).
+
+**Captions** (added 2026-09-23, the owner: "a human writer would not describe the sky"). A photo caption
+names; it does not paint. Three to ten words, a noun phrase: what the photograph shows and, when the file
+itself says so, where (مصفاة نفط في هيوستن بولاية تكساس الأميركية؛ مقر بورصة نيويورك في وول ستريت؛
+أفق القاهرة). Never the weather, the sky, clouds, light, time of day, colours, mood, size impressions,
+the camera or the composition (تحت سماء…، منظر، مشهد، لقطة، في الخلفية، صورة تظهر، ضخمة، حمراء). A stock
+illustration names no place and carries «(صورة تعبيرية)». The rule is `CAPTION_RULE` and the check
+`captionFlaws()` in `pipeline/lib/images.mjs`; `node pipeline/recaption-images.mjs` rewrites published
+captions by it.
 
 ## 2. The editing (فن التحرير الصحفي)
 
@@ -92,7 +141,7 @@ the spirit of the media-Arabic coursebooks: reporting (أفادت … بأن، �
 - **Latest / most read / picks.** The strip under the section bar is الأحدث; مختارات المحرر stands
   in for the desks' اختيارات المحررين; there is no الأكثر قراءة because the site keeps no readership
   data and will not fake one.
-- **Inside the article:** اقرأ أيضاً after the third paragraph as a ruled line; tags; المصادر with
+- **Inside the article:** the trail in the meta line (القسم › الموضوع, as the Arab news sites print it); the first mention of up to four of the story's tags linked to their files, as Al Jazeera and the BBC link people, places and topics in their copy; اقرأ أيضاً after the third paragraph as a ruled line; tags; المصادر with
   the wire or publisher named; المزيد من القسم after the sources. Every story states its sources.
 - **Running stories** live in ملفات (topic files) and the front's ملفات نتابعها band, the way the
   desks keep dossiers; regions are a second axis (بحسب المنطقة).
