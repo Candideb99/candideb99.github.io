@@ -86,7 +86,11 @@ jobs:
           branch_prefix: "editor/"
           base_branch: "main"
           additional_permissions: "actions: read"
-          claude_args: "--max-turns 40"
+          # The commands the round below names, and nothing else: on 2026-09-23 the first round that ran
+          # spent its forty turns on 21 refused tool calls (the action allows no shell command by default).
+          claude_args: >-
+            --max-turns 60
+            --allowedTools "Bash(gh run list:*),Bash(gh run view:*),Bash(gh pr create:*),Bash(npm ci),Bash(npm run check),Bash(npm run build),Bash(node pipeline/backfill-images.mjs:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(git pull:*),Bash(git checkout:*),Bash(git switch:*),Bash(echo:*),Bash(cat:*),Read,Edit,Write,Glob,Grep"
           prompt: |
             You are the editor-in-chief of خازندار, an automated Arabic economics newspaper. You are
             running unattended on a schedule. The owner, Ahmed, is not watching and cannot answer
