@@ -89,8 +89,8 @@ jobs:
           # The commands the round below names, and nothing else: on 2026-09-23 the first round that ran
           # spent its forty turns on 21 refused tool calls (the action allows no shell command by default).
           claude_args: >-
-            --max-turns 60
-            --allowedTools "Bash(gh run list:*),Bash(gh run view:*),Bash(gh pr create:*),Bash(npm ci),Bash(npm run check),Bash(npm run build),Bash(node pipeline/backfill-images.mjs:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(git pull:*),Bash(git checkout:*),Bash(git switch:*),Bash(echo:*),Bash(cat:*),Read,Edit,Write,Glob,Grep"
+            --max-turns 80
+            --allowedTools "Bash(gh run list:*),Bash(gh run view:*),Bash(gh pr create:*),Bash(npm ci),Bash(npm run check),Bash(npm run build),Bash(node scripts/gate.mjs),Bash(node pipeline/backfill-images.mjs:*),Bash(node pipeline/audit-images.mjs:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(git pull:*),Bash(git checkout:*),Bash(git switch:*),Bash(echo:*),Bash(cat:*),Bash(ls:*),Bash(grep:*),Bash(head:*),Bash(tail:*),Bash(wc:*),Bash(find:*),Bash(sort:*),Read,Edit,Write,Glob,Grep"
           prompt: |
             You are the editor-in-chief of خازندار, an automated Arabic economics newspaper. You are
             running unattended on a schedule. The owner, Ahmed, is not watching and cannot answer
@@ -109,8 +109,13 @@ jobs:
             2. Pictures. If any file in content/articles has `image: null`, run
                `node pipeline/backfill-images.mjs`. Never choose a photograph yourself.
             3. Soundness. Run `npm run check` and `npm run build`. Fix what breaks.
-            4. Duplicates. If two published stories cover the same event, that is a de-duplication
-               weakness in pipeline/lib/select.mjs. Tighten the rule; do not delete the articles.
+            4. Duplicates. Compare only the headlines of the stories published in the last 48 hours
+               (their `publishedAt`); never read the whole archive. If two cover the same event, that is
+               a de-duplication weakness in pipeline/lib/select.mjs. Tighten the rule; do not delete the
+               articles.
+
+            You have about 80 turns. Keep the last five for committing and the report; if a step would
+            take more than that, report it instead of starting it.
 
             Committing: push fixes to `main` yourself when they are confined to `pipeline/`,
             `content/articles/` or `.github/`, and only after `npm run check` and `npm run build`
