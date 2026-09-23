@@ -21,3 +21,6 @@ wm*.json
 
 # The site gate's record of the last passing run (scripts/gate.mjs)
 .gate/
+
+# The editor round's report, published as its run summary (.github/workflows/editor.yml)
+editor-report.md

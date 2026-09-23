@@ -125,6 +125,17 @@ jobs:
             Never invent a fact, never hand-write an article, never generate a picture, never commit a
             secret, never force-push.
 
-            Finish by writing a short plain-language report to $GITHUB_STEP_SUMMARY: what the paper
-            published in the last day, what failed and why, and what you fixed. If nothing needed
-            doing, say that in one line.
+            Finish by writing a short plain-language report with the Write tool to the file
+            editor-report.md at the root of the repository (never commit it; the next step of the
+            workflow publishes it as the run's summary): what the site published in the last day, what
+            failed and why, and what you fixed. If nothing needed doing, say that in one line.
+
+      # The round's report, published as the run's summary (Claude cannot write outside the repository).
+      - name: Publish the editor's report
+        if: always() && steps.token.outputs.present == '1'
+        run: |
+          if [ -f editor-report.md ]; then
+            cat editor-report.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "The editor's round wrote no report." >> "$GITHUB_STEP_SUMMARY"
+          fi
