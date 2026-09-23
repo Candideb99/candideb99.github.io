@@ -32,7 +32,15 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Istanbul-stock.jpg/1280px-Istanbul-stock.jpg
+  width: 1280
+  height: 853
+  alt: مقر بورصة إسطنبول
+  credit: Thomas Steiner · CC BY-SA 2.5 · ويكيميديا كومنز
+  license: CC BY-SA 2.5
+  licenseUrl: https://creativecommons.org/licenses/by-sa/2.5
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AIstanbul-stock.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -50,7 +58,7 @@ models:
   editor: claude-cli
   writer: claude-cli → claude-cli
   critic: claude-cli
-  vision: null
+  vision: nex-agi/nex-n2.5-pro:free
   desk: claude-cli
 quality:
   score: 9

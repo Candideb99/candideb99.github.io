@@ -23,7 +23,15 @@ tags:
 regions:
   - الخليج
 readingMinutes: 2
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/KAFD_46.jpg/1280px-KAFD_46.jpg
+  width: 1280
+  height: 962
+  alt: مقر صندوق الاستثمارات العامة في الرياض
+  credit: Kolaiel · CC0 · ويكيميديا كومنز
+  license: CC0
+  licenseUrl: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AKAFD_46.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -53,7 +61,7 @@ models:
   editor: minimax/minimax-m3:free
   writer: minimax/minimax-m3:free → minimax/minimax-m3:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: nex-agi/nex-n2.5-pro:free
+  vision: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
 quality:
   score: 5
   verdict: revise

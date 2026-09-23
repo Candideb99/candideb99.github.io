@@ -44,7 +44,14 @@ table:
       - 3 مليارات دولار
     - - تقييم شركة بورينغ كومباني بعد الجولة
       - 23 مليار دولار
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Factory_Automation_Robotics_Palettizing_Bread.jpg/1280px-Factory_Automation_Robotics_Palettizing_Bread.jpg
+  width: 1280
+  height: 960
+  alt: روبوتات صناعية في مصنع بألمانيا
+  credit: KUKA Roboter GmbH, Bachmann · Public domain · ويكيميديا كومنز
+  license: Public domain
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AFactory_Automation_Robotics_Palettizing_Bread.jpg
 sources:
   - name: إيكونومي ميدل إيست
     nameEn: Economy Middle East

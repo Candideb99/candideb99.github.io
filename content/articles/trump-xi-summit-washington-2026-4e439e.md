@@ -22,14 +22,13 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/The_White_House_North_Portico_in_Washington%2C_D.C.jpg/1280px-The_White_House_North_Portico_in_Washington%2C_D.C.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Donald_Trump_and_Xi_Jinping_at_the_Temple_of_Heaven_%282%29-20260514.jpg/1280px-Donald_Trump_and_Xi_Jinping_at_the_Temple_of_Heaven_%282%29-20260514.jpg
   width: 1280
-  height: 960
-  alt: الواجهة الشمالية للبيت الأبيض في واشنطن
-  credit: Harrison Keely · CC BY 4.0 · ويكيميديا كومنز
-  license: CC BY 4.0
-  licenseUrl: https://creativecommons.org/licenses/by/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AThe_White_House_North_Portico_in_Washington%2C_D.C.jpg
+  height: 853
+  alt: ترامب وشي خلال زيارة بكين في مايو 2026
+  credit: The White House · Public domain · ويكيميديا كومنز
+  license: Public domain
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ADonald_Trump_and_Xi_Jinping_at_the_Temple_of_Heaven_(2)-20260514.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
