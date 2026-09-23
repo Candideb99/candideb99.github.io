@@ -79,6 +79,10 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # The workflow's own token (permissions above), so the action does not depend on the Claude
+          # GitHub App: since 2026-09-22 its token exchange answered "Claude Code is not installed on this
+          # repository" and every round failed before it began.
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch_prefix: "editor/"
           base_branch: "main"
           additional_permissions: "actions: read"
