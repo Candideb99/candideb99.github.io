@@ -7,6 +7,8 @@
  *   node pipeline/copydesk.mjs --slugs=a,b           named articles only
  *   node pipeline/copydesk.mjs --body                the body text too (slower; guarded the same way)
  *   node pipeline/copydesk.mjs --flagged             only articles still carrying a banned phrase
+ *   node pipeline/copydesk.mjs --body --floor=0.25 --slugs=a   let a body that is nearly all repetition shrink
+ *                                                     below the usual 55% (read the result before publishing)
  *
  * Nothing is edited by hand: the desk model proposes, the guard in pipeline/lib/copydesk.mjs keeps
  * every number, date and Latin token intact or throws the proposal away, and the file is rewritten
@@ -30,6 +32,7 @@ const BODY = flag("body");
 const FLAGGED = flag("flagged");
 const LIMIT = Number(option("limit", "0")) || 0;
 const SLUGS = option("slugs", "").split(",").map((s) => s.trim()).filter(Boolean);
+const FLOOR = Math.max(0.2, Number(option("floor", "0.55")) || 0.55);
 
 const log = (line) => console.log(`[desk] ${line}`);
 
@@ -66,7 +69,7 @@ for (const a of queue) {
   const sources = (data.sources ?? []).flatMap((s) => [s.name, s.nameEn]).filter(Boolean);
   let result;
   try {
-    result = await copyEdit({ draft, includeBody: BODY, kind, sources, publishedAt: data.publishedAt ?? null, log });
+    result = await copyEdit({ draft, includeBody: BODY, kind, sources, publishedAt: data.publishedAt ?? null, minFloor: FLOOR, log });
   } catch (error) {
     log(`${a.slug}: desk failed: ${String(error.message).slice(0, 160)}`);
     report.items.push({ slug: a.slug, error: String(error.message).slice(0, 300) });

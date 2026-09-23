@@ -136,6 +136,19 @@ const jsonLd = [articleLd, breadcrumbLd];
           </aside>
         )}
         {d.table && <DataTable table={d.table} />}
+        {/* A corrected story says so at its foot, with the date and what changed (/methodology/: «نصحّح
+            المقال نفسه ونثبّت في أسفله تاريخ التصحيح وما تغيّر»), as the desks print تصحيح. */}
+        {d.corrections.length > 0 && (
+          <aside class="corrections" aria-labelledby="corrections-head">
+            <h2 id="corrections-head" class="corrections__head ui">تصحيح</h2>
+            {d.corrections.map((c) => (
+              <p class="corrections__item">
+                <time class="ui" datetime={c.date}>{formatDate(c.date, { weekday: false })}</time>
+                <span set:html={isolateNumbers(c.note)} />
+              </p>
+            ))}
+          </aside>
+        )}
         {d.tags.length > 0 && (
           <p class="tags">
             {d.tags.map((t) => (
@@ -254,6 +267,11 @@ const jsonLd = [articleLd, breadcrumbLd];
   .why { margin: 0.25rem 0 1.75rem; max-width: var(--measure); border-bottom: 1px solid var(--rule); padding-bottom: 1rem; }
   .why__text { font-family: var(--font-body); font-size: clamp(1.12rem, 1.02rem + 0.35vw, 1.25rem); line-height: 1.9; text-align: justify; text-align-last: start; }
   .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.5rem; }
+  /* The correction note: a ruled line under the text, like اقرأ أيضاً, never a box. */
+  .corrections { max-width: var(--measure); margin-top: 1.5rem; padding-block: 0.6rem; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); }
+  .corrections__head { font-weight: 800; font-size: var(--fs-xs); color: var(--green); margin-bottom: 0.25rem; }
+  .corrections__item { font-size: var(--fs-sm); line-height: 1.8; color: var(--ink-2); }
+  .corrections__item time { font-weight: 700; color: var(--ink-3); margin-inline-end: 0.5rem; }
 
   .article__side { border-inline-start: 1px solid var(--rule); padding-inline-start: clamp(1.5rem, 3vw, 2.5rem); display: grid; gap: 2rem; align-content: start; align-self: stretch; }
   .side-related__list { display: grid; }

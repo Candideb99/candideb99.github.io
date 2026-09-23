@@ -242,12 +242,14 @@ function repeatedShare(draft) {
  * must still be hedged; a field that broke that goes back to its original, until the story holds.
  * Returns { accepted: {field: text}, rejected: [{field, reason, proposal}] }.
  */
-export function judgeRewrite(draft, proposal, fields, { year = new Date().getUTCFullYear() } = {}) {
+export function judgeRewrite(draft, proposal, fields, { year = new Date().getUTCFullYear(), minFloor = 0.55 } = {}) {
   const before = storyText(draft);
   // The current year is the one figure a rewrite may drop (the desks print the year only when it is not this
   // one); it is exempt from the loss check below, never from the invention check.
   const had = { numbers: new Set(numberTokens(before)), latin: new Set(latinTokens(before)), duals: new Set(dualsOf(before)), names: [...new Set(quotedNames(before))] };
-  const floor = Math.max(0.55, Math.min(0.8, 1 - repeatedShare(draft) - 0.05));
+  // The body may shrink by what repeats, never below 55% of itself unless the caller lowers that floor for a
+  // story that is nearly all repetition (pipeline/copydesk.mjs --floor=…, reviewed by hand).
+  const floor = minFloor < 0.55 ? minFloor : Math.max(0.55, Math.min(0.8, 1 - repeatedShare(draft) - 0.05));
   const accepted = {};
   const rejected = [];
   for (const f of fields) {
@@ -326,7 +328,7 @@ const NAME_FIXES = [
   [/(?<![؀-ۿ])([وفبل]?)ترمب(?![؀-ۿ])/g, "$1ترامب"],
   [/(?<![؀-ۿ])([وفبل]?)وورش(?![؀-ۿ])/g, "$1وارش"],
 ];
-function fixNames(text) {
+export function fixNames(text) {
   let out = String(text ?? "");
   for (const [re, to] of NAME_FIXES) out = out.replace(re, to);
   return out;
@@ -337,7 +339,7 @@ function fixNames(text) {
  * `draft` has title, subtitle, lede, whyItMatters and body (Markdown); only the fields the guard accepts change.
  * `sources`: the names the story's sources go by, so the checker can count how often each is named.
  */
-export async function copyEdit({ draft, includeBody = false, role = "desk", kind = "news", sources = [], publishedAt = null, log = () => {} }) {
+export async function copyEdit({ draft, includeBody = false, role = "desk", kind = "news", sources = [], publishedAt = null, minFloor = 0.55, log = () => {} }) {
   const year = new Date(publishedAt ?? Date.now()).getUTCFullYear();
   const fields = ["title", "subtitle", "lede", ...(String(draft.whyItMatters ?? "").trim() ? ["whyItMatters"] : []), ...(includeBody ? ["body"] : [])];
   const mechanical = [];
@@ -379,7 +381,7 @@ If nothing needs changing, return the fields unchanged and an empty "changes" li
     validate: validateDeskAnswer(fields),
   });
 
-  let { accepted, rejected } = judgeRewrite(draft, data, fields, { year });
+  let { accepted, rejected } = judgeRewrite(draft, data, fields, { year, minFloor });
 
   // A body the guard refused gets one second try, with the desk told exactly what it broke. The model is
   // stochastic and the guard is exact: on 2026-09-22 four bodies in ten were refused for a figure moved or
@@ -390,7 +392,7 @@ If nothing needs changing, return the fields unchanged and an empty "changes" li
       const { data: again } = await chat({
         role,
         system: DESK_SYSTEM,
-        user: `Your rewrite of the BODY below was refused by the desk's guard: ${bodyRefusal.reason}. Rewrite the body once more. Change phrasing, and delete only sentences whose facts appear higher up in the story (headline, dek, lede). Every digit, figure, percentage, date, unit, currency, count written in words, dual, «» name and Latin token of the ORIGINAL must remain somewhere in the story; every hedged claim (قد، من المتوقع، يرجّح…) that you keep stays hedged; the subheadings stay as they are; the body keeps at least ${Math.round(Math.max(0.55, Math.min(0.8, 1 - repeatedShare(draft) - 0.05)) * 100)}% of its length. Fix, as before, what the checker found:
+        user: `Your rewrite of the BODY below was refused by the desk's guard: ${bodyRefusal.reason}. Rewrite the body once more. Change phrasing, and delete only sentences whose facts appear higher up in the story (headline, dek, lede). Every digit, figure, percentage, date, unit, currency, count written in words, dual, «» name and Latin token of the ORIGINAL must remain somewhere in the story; every hedged claim (قد، من المتوقع، يرجّح…) that you keep stays hedged; the subheadings stay as they are; the body keeps at least ${Math.round((minFloor < 0.55 ? minFloor : Math.max(0.55, Math.min(0.8, 1 - repeatedShare(draft) - 0.05))) * 100)}% of its length. Fix, as before, what the checker found:
 ${problems.map((x, i) => `${i + 1}. ${x}`).join("\n") || "(nothing)"}
 Return one JSON object: {"body": "..."}
 
@@ -410,7 +412,7 @@ ${data.body}`,
         log,
         validate: validateDeskAnswer(["body"]),
       });
-      const second = judgeRewrite(draft, { ...accepted, body: again.body }, [...Object.keys(accepted), "body"], { year });
+      const second = judgeRewrite(draft, { ...accepted, body: again.body }, [...Object.keys(accepted), "body"], { year, minFloor });
       if (second.accepted.body) {
         accepted = second.accepted;
         rejected = [...rejected.filter((r) => r !== bodyRefusal && !(r.field === "body")), ...second.rejected];
