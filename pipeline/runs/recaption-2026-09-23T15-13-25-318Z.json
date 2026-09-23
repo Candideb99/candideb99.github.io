@@ -1,0 +1,29 @@
+{
+  "startedAt": "2026-09-23T15:13:25.318Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "refining-margin-crack-spread-explained-e87135",
+      "before": "مصفاة نفط مضاءة ليلاً على ضفة ماء مع انعكاس أضواء المنشأة",
+      "after": "مصفاة بريمرَف ليسشيل للنفط في السويد",
+      "flawsBefore": [
+        "أضواء"
+      ]
+    },
+    {
+      "slug": "openai-anthropic-launch-cheaper-ai-models-979a5b",
+      "before": "صفوف من خوادم مراكز البيانات مضاءة بأضواء زرقاء في غرفة تقنية",
+      "after": "خوادم في أحد مراكز البيانات",
+      "flawsBefore": [
+        "بأضواء",
+        "زرقاء"
+      ]
+    },
+    {
+      "slug": "us-sanctions-iran-aviation-take-effect-5095ea",
+      "before": "طائرة إيرباص A300 تابعة لشركة الخطوط الجوية الإيرانية أثناء اقترابها من الهبوط في مطار",
+      "after": "طائرة إيرباص A300 تابعة لشركة إيران إير في مطار فرانكفورت",
+      "flawsBefore": []
+    }
+  ]
+}

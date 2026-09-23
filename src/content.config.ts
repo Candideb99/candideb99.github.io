@@ -81,6 +81,9 @@ const articles = defineCollection({
     table,
     image,
     sources: z.array(source).default([]),
+    /** When the copy desk edited the story. A story that carries it is never sent to the desk again (the owner,
+        2026-09-23: no Claude tokens spent editing an already edited article); `copydesk.mjs --redo` overrides. */
+    deskedAt: isoString.optional(),
     /** Corrections printed at the foot of the story, as /methodology/ promises (pipeline/correct.mjs writes them). */
     corrections: z.array(z.object({ date: isoString, note: z.string() })).default([]),
     models: z.record(z.string(), z.string().nullable()).optional(),

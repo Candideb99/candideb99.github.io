@@ -24,3 +24,4 @@ wm*.json
 
 # The editor round's report, published as its run summary (.github/workflows/editor.yml)
 editor-report.md
+editor-findings.md

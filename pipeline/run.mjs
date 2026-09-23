@@ -295,6 +295,8 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     section: story.section,
     sources,
     image,
+    // The copy desk edited the story on its way in; later sweeps skip it (no tokens spent twice).
+    deskedAt: deskModel ? isoNow() : null,
     models: { editor: models.editor, writer: writerModel, critic: review.model, vision: image?.model ?? null, desk: deskModel },
     quality: {
       score: review.score,
@@ -489,6 +491,7 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
     kind,
     sources,
     image,
+    deskedAt: deskModel ? isoNow() : null,
     models: { editor: models.editor, writer: writerModel, critic: finalReview.model, vision: image?.model ?? null, desk: deskModel },
     quality: { score: finalReview.score, verdict: finalReview.verdict, revised, warnings: checks.warnings, criticSummary: finalReview.summary },
   });

@@ -73,8 +73,18 @@ for (const file of files) {
   queue.push({ file, match, doc, slug, url: String(url), alt: String(doc.getIn(["image", "alt"]) ?? ""), title: String(doc.get("title") ?? ""), tags: data.tags ?? [], regions: data.regions ?? [], publishedAt: String(doc.get("publishedAt") ?? "") });
 }
 queue.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
-const todo = LIMIT ? queue.slice(0, LIMIT) : queue;
+// A caption that already keeps the rule is not written again (the owner, 2026-09-23: no tokens spent
+// editing what is already edited). Code decides which ones break it, for free; --all or --slugs overrides.
+const ALL = args.includes("--all");
+function breaksTheRule(alt) {
+  const core = alt.replace(`(${ILLUSTRATIVE})`, "").trim();
+  return !core || core.split(/\s+/).filter(Boolean).length > 12 || captionFlaws(core).length > 0 || !/[؀-ۿ]/.test(core);
+}
+const pending = ALL || SLUGS.length ? queue : queue.filter((a) => breaksTheRule(a.alt));
+if (pending.length < queue.length) log(`${queue.length - pending.length} caption(s) already keep the rule and are left as they are (--all to write them again)`);
+const todo = LIMIT ? pending.slice(0, LIMIT) : pending;
 log(`${todo.length} caption(s) to write${DRY ? " (dry run)" : ""}`);
+if (!todo.length) process.exit(0);
 
 const report = { startedAt: new Date().toISOString(), dryRun: DRY, items: [] };
 let changed = 0;

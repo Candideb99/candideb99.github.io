@@ -1,14 +1,21 @@
 /**
  * Runs the Arabic copy desk over published articles.
  *
- *   node pipeline/copydesk.mjs                       every article, headline + dek + lede
+ *   node pipeline/copydesk.mjs                       every article not yet edited, headline + dek + lede
  *   node pipeline/copydesk.mjs --dry-run             show what would change, write nothing
  *   node pipeline/copydesk.mjs --limit=10            the ten newest only
  *   node pipeline/copydesk.mjs --slugs=a,b           named articles only
  *   node pipeline/copydesk.mjs --body                the body text too (slower; guarded the same way)
  *   node pipeline/copydesk.mjs --flagged             only articles still carrying a banned phrase
+ *   node pipeline/copydesk.mjs --redo --slugs=a      edit again an article the desk has already edited
+ *   node pipeline/copydesk.mjs --mark-done --slugs=a record articles as edited without calling a model
  *   node pipeline/copydesk.mjs --body --floor=0.25 --slugs=a   let a body that is nearly all repetition shrink
  *                                                     below the usual 55% (read the result before publishing)
+ *
+ * An article is edited once. Every article the desk has read carries `deskedAt` (the newsroom stamps its
+ * own stories as they are written), and the desk skips it from then on: the owner, 2026-09-23, "make sure
+ * the editor does not ... edit already edited articles so that my claude tokens do not get wasted". Only
+ * `--redo` sends one back, by name.
  *
  * Nothing is edited by hand: the desk model proposes, the guard in pipeline/lib/copydesk.mjs keeps
  * every number, date and Latin token intact or throws the proposal away, and the file is rewritten
@@ -30,31 +37,54 @@ const option = (name, fallback) => {
 const DRY = flag("dry-run");
 const BODY = flag("body");
 const FLAGGED = flag("flagged");
+const REDO = flag("redo");
+const MARK_DONE = flag("mark-done");
 const LIMIT = Number(option("limit", "0")) || 0;
 const SLUGS = option("slugs", "").split(",").map((s) => s.trim()).filter(Boolean);
 const FLOOR = Math.max(0.2, Number(option("floor", "0.55")) || 0.55);
+if (REDO && !SLUGS.length) {
+  console.error("--redo edits already edited articles again and spends tokens on them: name them with --slugs=a,b");
+  process.exit(2);
+}
 
 const log = (line) => console.log(`[desk] ${line}`);
+const write = (a, body) => writeFile(path.join(ARTICLES_DIR, a.file), `---\n${a.doc.toString({ lineWidth: 0 }).trimEnd()}\n---\n\n${body}\n`);
 
 const files = (await readdir(ARTICLES_DIR)).filter((f) => f.endsWith(".md"));
 const articles = [];
 for (const file of files) {
-  const raw = await readFile(path.join(ARTICLES_DIR, file), "utf8");
+  const raw = (await readFile(path.join(ARTICLES_DIR, file), "utf8")).replace(/\r\n/g, "\n");
   const match = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
   if (!match) continue;
   const doc = YAML.parseDocument(match[1]);
   const slug = String(doc.get("slug") ?? file.replace(/\.md$/, ""));
   if (SLUGS.length && !SLUGS.includes(slug)) continue;
-  articles.push({ file, raw, doc, slug, body: match[2].trim(), publishedAt: String(doc.get("publishedAt") ?? "") });
+  articles.push({ file, raw, doc, slug, body: match[2].trim(), publishedAt: String(doc.get("publishedAt") ?? ""), deskedAt: doc.get("deskedAt") ? String(doc.get("deskedAt")) : "" });
 }
 articles.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+
+// Already edited: skipped, unless named with --redo.
+const fresh = REDO ? articles : articles.filter((a) => !a.deskedAt);
+const skipped = articles.length - fresh.length;
+if (skipped) log(`${skipped} article(s) already edited by the desk are skipped (--redo --slugs=… to edit one again)`);
+
+if (MARK_DONE) {
+  const at = option("at", new Date().toISOString());
+  for (const a of fresh) {
+    a.doc.set("deskedAt", at);
+    if (!DRY) await write(a, a.body);
+  }
+  log(`${fresh.length} article(s) recorded as edited at ${at}${DRY ? " (dry run, nothing written)" : ""}`);
+  process.exit(0);
+}
+
 const wanted = FLAGGED
-  ? articles.filter((a) => bannedIn({ title: a.doc.get("title"), subtitle: a.doc.get("subtitle"), lede: a.doc.get("lede"), whyItMatters: a.doc.get("whyItMatters"), body: a.body }).length > 0)
-  : articles;
+  ? fresh.filter((a) => bannedIn({ title: a.doc.get("title"), subtitle: a.doc.get("subtitle"), lede: a.doc.get("lede"), whyItMatters: a.doc.get("whyItMatters"), body: a.body }).length > 0)
+  : fresh;
 const queue = LIMIT ? wanted.slice(0, LIMIT) : wanted;
 log(`${queue.length} article(s) to read${DRY ? " (dry run)" : ""}${BODY ? ", body included" : ""}`);
 
-const report = { startedAt: new Date().toISOString(), dryRun: DRY, body: BODY, items: [] };
+const report = { startedAt: new Date().toISOString(), dryRun: DRY, body: BODY, skippedAlreadyEdited: skipped, items: [] };
 let changedCount = 0;
 for (const a of queue) {
   const draft = {
@@ -71,6 +101,7 @@ for (const a of queue) {
   try {
     result = await copyEdit({ draft, includeBody: BODY, kind, sources, publishedAt: data.publishedAt ?? null, minFloor: FLOOR, log });
   } catch (error) {
+    // A failed desk leaves the article unstamped, so a later run may try it once more.
     log(`${a.slug}: desk failed: ${String(error.message).slice(0, 160)}`);
     report.items.push({ slug: a.slug, error: String(error.message).slice(0, 300) });
     continue;
@@ -78,8 +109,11 @@ for (const a of queue) {
   const item = { slug: a.slug, applied: result.applied, rejected: result.rejected, changes: result.changes, model: result.model };
   for (const f of result.applied) if (f !== "body") item[f] = { before: draft[f], after: result.draft[f] };
   report.items.push(item);
+  // Read by the desk: stamped whether it changed or came back clean, so it is never read again.
+  a.doc.set("deskedAt", new Date().toISOString());
   if (!result.changed) {
     log(`${a.slug}: clean`);
+    if (!DRY) await write(a, a.body);
     continue;
   }
   changedCount += 1;
@@ -90,11 +124,10 @@ for (const a of queue) {
   for (const r of result.rejected) log(`${a.slug}: ${r.field} rejected (${r.reason})`);
   if (DRY) continue;
   for (const f of result.applied) if (f !== "body") a.doc.set(f, result.draft[f]);
-  const body = result.applied.includes("body") ? result.draft.body : a.body;
-  const front = a.doc.toString({ lineWidth: 0 }).trimEnd();
-  await writeFile(path.join(ARTICLES_DIR, a.file), `---\n${front}\n---\n\n${body}\n`);
+  await write(a, result.applied.includes("body") ? result.draft.body : a.body);
 }
 
+if (!queue.length) process.exit(0);
 report.finishedAt = new Date().toISOString();
 report.changed = changedCount;
 await mkdir(path.join(process.cwd(), "pipeline", "runs"), { recursive: true });

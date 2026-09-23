@@ -68,6 +68,7 @@ quality:
     - "latin words: BME, CATL, MCV, Auto"
   criticSummary: المقال دقيق ومدعوم بالمصادر، ولا يحتوي على أخطاء حقيقية أو ترجمة حرفية.
 ai: true
+deskedAt: 2026-09-23T13:42:36.880Z
 ---
 
 ## تفاصيل المشروع
