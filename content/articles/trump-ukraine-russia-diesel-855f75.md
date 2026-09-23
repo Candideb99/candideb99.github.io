@@ -22,14 +22,13 @@ readingMinutes: 1
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/A_gas_pump_at_a_Thorntons.jpg/1280px-A_gas_pump_at_a_Thorntons.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/President_Donald_J._Trump_participates_in_a_bilateral_meeting_with_Ukraine%E2%80%99s_President_Volodymyr_Zelenskyy_%2855546438678%29.jpg/1280px-President_Donald_J._Trump_participates_in_a_bilateral_meeting_with_Ukraine%E2%80%99s_President_Volodymyr_Zelenskyy_%2855546438678%29.jpg
   width: 1280
-  height: 848
-  alt: مضخة وقود في محطة ثورنتونز للبنزين
-  credit: Goose Green Photography · CC BY 4.0 · ويكيميديا كومنز
-  license: CC BY 4.0
-  licenseUrl: https://creativecommons.org/licenses/by/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AA_gas_pump_at_a_Thorntons.jpg
+  height: 853
+  alt: ترامب وزيلينسكي خلال لقائهما في مقر الأمم المتحدة بنيويورك
+  credit: The White House · Public domain · ويكيميديا كومنز
+  license: Public domain
+  pageUrl: https://commons.wikimedia.org/wiki/File%3APresident_Donald_J._Trump_participates_in_a_bilateral_meeting_with_Ukraine%E2%80%99s_President_Volodymyr_Zelenskyy_(55546438678).jpg
 sources:
   - name: نيويورك تايمز
     nameEn: The New York Times

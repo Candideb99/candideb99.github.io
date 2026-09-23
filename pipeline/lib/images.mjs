@@ -37,13 +37,29 @@ function simplerQueries(query) {
   return [...new Set(out)].filter((q) => q.length >= 3);
 }
 
+/**
+ * The year a photograph was taken: its record's date, else a date in its file name («…-20260515.jpg»,
+ * «2018 G20»), else (`upload`) the year it was uploaded. Null when nothing says.
+ */
+function photoYear(image, { upload = true } = {}) {
+  const fromDate = String(image.date ?? "").match(/(?<!\d)((?:19|20)\d\d)(?!\d)/)?.[1];
+  const fromTitle = String(image.title ?? "").match(/(?<!\d)((?:19|20)\d\d)(?:[01]\d[0-3]\d)?(?!\d)/)?.[1];
+  const fromUpload = upload ? String(image.uploaded ?? "").match(/^((?:19|20)\d\d)/)?.[1] : undefined;
+  const year = Number(fromDate ?? fromTitle ?? fromUpload);
+  return Number.isFinite(year) && year > 1900 ? year : null;
+}
+
+/**
+ * Newer is better, by the year the photograph was taken: this year's first, then last year's, and so on
+ * down to ten years back (the owner, 2026-09-23: "check if we can still get up to date images that are
+ * relevant"). The flat bonus it replaced, the same for every year from 2015, put a 2017 handshake level
+ * with May 2026's.
+ */
 function recencyScore(image) {
-  const year = Number(String(image.date ?? "").slice(0, 4));
-  if (!Number.isFinite(year) || year < 1900) return 0;
-  if (year >= 2015) return 3;
-  if (year >= 2005) return 2;
-  if (year >= 1995) return 1;
-  return -2;
+  const year = photoYear(image);
+  if (!year) return 0;
+  const age = new Date().getUTCFullYear() - year;
+  return age <= 0 ? 6 : age === 1 ? 4 : age === 2 ? 3 : age <= 5 ? 2 : age <= 10 ? 1 : -2;
 }
 
 /**
@@ -273,7 +289,9 @@ async function collect(queries, log, { perQuery = 6, max = 8, exclude = new Set(
       seen.add(image.url);
       // An archival picture is refused in code: the judges were told "no pre-2005 look" and still
       // put a 1963 Library of Congress trading floor on a 2026 tokenized-stocks story (2026-09-23).
-      const year = Number(String(image.date ?? "").match(/\b(1[89]\d\d|20\d\d)\b/)?.[1]);
+      // When it was taken, from its record or its file name, never from its upload: a 1963 photo uploaded in
+      // 2020 is still a 1963 photo.
+      const year = photoYear(image, { upload: false });
       if (year && year < 2005) {
         log(`image: dropped "${String(image.title).slice(0, 70)}" — dated ${year}, an archival picture`);
         continue;
@@ -394,12 +412,12 @@ async function judge({ list, inlined, draft, story, log, relaxed, neutral = fals
   // on the White House's facade under a Trump–Xi summit story: "i would search for uncopyrighted pictures
   // from older summits maybe for trump and xi together … makes the news look less appealing and boring".
   const theirs = people.length
-    ? `\nTHE STORY'S PEOPLE: ${people.join(", ")}. A photograph of them (together, when the story is about their meeting or talks) is the first choice, even from an earlier occasion such as a previous summit, visit or press conference: that is how the news desks illustrate a story about people, and it is livelier than any building. It must be a contemporary news photograph (2015 or later, sharp, their faces visible), never a painting, poster, screen, cartoon or a crowd in which they are hard to find, and nothing unflattering or embarrassing. Its caption names them and, for an earlier occasion, that occasion and its year as the file gives them («ترامب وشي خلال لقائهما في أوساكا عام 2019»).`
+    ? `\nTHE STORY'S PEOPLE: ${people.join(", ")}. A photograph of them (together, when the story is about their meeting or talks) is the first choice, even from an earlier occasion such as a previous summit, visit or press conference: that is how the news desks illustrate a story about people, and it is livelier than any building. Of the photographs that show them, choose the MOST RECENT (the dates are given): the event itself when its photograph exists, otherwise their latest occasion; an older one only when nothing newer shows them well. It must be a contemporary news photograph (sharp, their faces visible), never a painting, poster, screen, cartoon or a crowd in which they are hard to find, and nothing unflattering or embarrassing. Its caption names them and, for an earlier occasion, that occasion and its year as the file gives them («ترامب وشي خلال لقائهما في أوساكا عام 2019»).`
     : "\nA photograph of the story's own people taken at an earlier occasion (a previous summit, visit or press conference) is how the desks illustrate a story about them; its caption then names that occasion and its year.";
   const placed = relaxed
-    ? `This is the fallback pass: a generic but appropriate newspaper illustration is acceptable: the headquarters of the institution named, or a typical scene of the story's OWN sector (port, refinery, trading floor, factory line, data-centre hall, LNG tanker, bank branch, oil field). The skyline or a landmark of the capital is acceptable only for a story about a country's economy as a whole (inflation, growth, budget, currency, rates, rating); a story about one company, plant, project, product, deal, commodity or technology needs its sector's own object, never a cityscape. Reject: any photograph of identifiable people — officials, politicians, executives, a named meeting, summit, ceremony or visit (a generic illustration shows places and things, never someone else's event); visible text overlays or watermarks; logos, maps, charts, diagrams, infographics, screenshots, documents, banknotes or coins as the subject; a product or appliance close-up unrelated to the story; military vessels, aircraft or weapons for a story that is not about the military; an archival, black-and-white or pre-2005 look; a close-up of a private individual; a recognisable place (a skyline, a landmark, a sign, a flag) in a different country or city than the story's; anything misleading or embarrassing next to the headline. Of two fitting scenes, choose the one taken in the story's own country.
+    ? `This is the fallback pass: a generic but appropriate newspaper illustration is acceptable: the headquarters of the institution named, or a typical scene of the story's OWN sector (port, refinery, trading floor, factory line, data-centre hall, LNG tanker, bank branch, oil field). The skyline or a landmark of the capital is acceptable only for a story about a country's economy as a whole (inflation, growth, budget, currency, rates, rating); a story about one company, plant, project, product, deal, commodity or technology needs its sector's own object, never a cityscape. Reject: any photograph of identifiable people — officials, politicians, executives, a named meeting, summit, ceremony or visit (a generic illustration shows places and things, never someone else's event); visible text overlays or watermarks; logos, maps, charts, diagrams, infographics, screenshots, documents, banknotes or coins as the subject; a product or appliance close-up unrelated to the story; military vessels, aircraft or weapons for a story that is not about the military; an archival, black-and-white or pre-2005 look; a close-up of a private individual; a recognisable place (a skyline, a landmark, a sign, a flag) in a different country or city than the story's; anything misleading or embarrassing next to the headline. Of two fitting scenes, choose the one taken in the story's own country, and then the more recent one.
 ${PLACE_RULE}`
-    : `Requirements: clearly relevant to the story's subject (institution, place, industry, product); looks like a contemporary editorial news photo; landscape composition; no visible text overlays, watermarks, logos as the main subject, charts, maps, diagrams, infographics, screenshots, product close-ups, or historical/archival look; no close-up of a private individual; nothing embarrassing or misleading if paired with the headline.
+    : `Requirements: clearly relevant to the story's subject (institution, place, industry, product); looks like a contemporary editorial news photo, and of two fitting photographs the more recent one (the dates are given); landscape composition; no visible text overlays, watermarks, logos as the main subject, charts, maps, diagrams, infographics, screenshots, product close-ups, or historical/archival look; no close-up of a private individual; nothing embarrassing or misleading if paired with the headline.
 PEOPLE — the gravest error: a photograph showing an identifiable person (a politician, official, executive, anyone a caption would name) who is NOT one of the people this story is about is WRONG, however well the room, flag or setting matches. Read each candidate's file name and description for names of people and compare them with the headline: a story about Treasury Secretary Bessent must never run a photo of Secretary Kerry; a story about He Lifeng must never run one of Liu Yandong. When no candidate shows the story's own people, choose 0 and let the fallback find a building, skyline or sector scene instead.${theirs}
 ${people.length ? "" : PLACE_RULE}`;
   // The last pass swaps the geography rule for the neutral-frame rule; everything else stands.
@@ -731,13 +749,18 @@ export async function pickImage({ draft, story, log, fallback = true, exclude = 
  * the subject. Wrong people stay the gravest error, for both checks.
  */
 async function peoplePhoto({ people, draft, story, log, exclude }) {
-  const queries = people.length >= 2 ? [`${people[0]} ${people[1]}`, `${people[0]} and ${people[1]}`] : [people[0]];
+  // This year's photographs first: the year in the search finds files dated in their names or descriptions
+  // («…-20260515.jpg»), and the ranking puts the newest of the fitting ones on the shortlist.
+  const year = new Date().getUTCFullYear();
+  const names = people.length >= 2 ? `${people[0]} ${people[1]}` : people[0];
+  const queries = people.length >= 2 ? [`${names} ${year}`, names, `${people[0]} and ${people[1]}`] : [`${names} ${year}`, names];
   log(`image: the story's people first: ${queries.join(" | ")}`);
-  const candidates = (await collect(queries, log, { perQuery: 8, max: 12, exclude, people: "by-query", together: people })).filter((c) => !excluded(exclude, c));
+  const candidates = (await collect(queries, log, { perQuery: 10, max: 20, exclude, people: "by-query", together: people })).filter((c) => !excluded(exclude, c));
   if (!candidates.length) {
     log("image: no photograph of the story's people");
     return null;
   }
+  log(`image: people shortlist: ${candidates.slice(0, 4).map((c) => `${photoYear(c) ?? "?"} ${String(c.title).slice(0, 50)}`).join(" | ")}`);
   const s = await shortlist(candidates, log);
   if (!s.list.length) return null;
   return chooseVerified({ ...s, draft, story, log, relaxed: false, exclude, people });

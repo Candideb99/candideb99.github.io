@@ -20,14 +20,13 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Washington%2C_D.C.%2C_September_20%2C_2024_-_23.jpg/1280px-Washington%2C_D.C.%2C_September_20%2C_2024_-_23.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Scott_Bessent_meets_He_Lifeng_in_Geneva_%282025%29.jpg/1280px-Scott_Bessent_meets_He_Lifeng_in_Geneva_%282025%29.jpg
   width: 1280
-  height: 960
-  alt: جسر فرانسيس سكوت كي فوق نهر بوتوماك في واشنطن
-  credit: Another Believer · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AWashington%2C_D.C.%2C_September_20%2C_2024_-_23.jpg
+  height: 1006
+  alt: بيسنت وخه لي فنغ خلال محادثات تجارية في جنيف (أرشيفية)
+  credit: US Department of Treasury · Public domain · ويكيميديا كومنز
+  license: Public domain
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AScott_Bessent_meets_He_Lifeng_in_Geneva_(2025).jpg
 sources:
   - name: نيويورك تايمز
     nameEn: The New York Times

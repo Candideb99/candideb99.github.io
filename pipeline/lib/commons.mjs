@@ -11,6 +11,19 @@ const BAD_TITLE = /(logo|map|diagram|screenshot|chart|graph|flag|coat of arms|se
  * Searches Wikimedia Commons for editorial photographs matching `query`.
  * Only permissively licensed bitmap photos with attribution metadata are returned.
  */
+/**
+ * When the photograph was taken, as far as its record says: "2026-05-14", or the year alone when the field
+ * is prose ("Taken on 28 June 2019" → "2019"); "" when it says nothing. It was cut to ten characters,
+ * which turned prose into "Taken on 2".
+ */
+function takenOn(value) {
+  const text = stripHtml(String(value ?? ""));
+  const iso = text.match(/(?<!\d)((?:19|20)\d\d-[01]\d-[0-3]\d)(?!\d)/);
+  if (iso) return iso[1];
+  const year = text.match(/(?<!\d)((?:19|20)\d\d)(?!\d)/);
+  return year ? year[1] : "";
+}
+
 export async function searchCommons(query, { limit = 10, log = () => {} } = {}) {
   const params = new URLSearchParams({
     action: "query",
@@ -20,7 +33,7 @@ export async function searchCommons(query, { limit = 10, log = () => {} } = {}) 
     gsrnamespace: "6",
     gsrlimit: String(Math.min(limit * 2, 30)),
     prop: "imageinfo",
-    iiprop: "url|size|mime|extmetadata",
+    iiprop: "url|size|mime|extmetadata|timestamp",
     iiurlwidth: "1280",
     iiextmetadatafilter: "LicenseShortName|LicenseUrl|Artist|Credit|ImageDescription|DateTimeOriginal|Categories",
   });
@@ -28,7 +41,10 @@ export async function searchCommons(query, { limit = 10, log = () => {} } = {}) 
     const response = await fetchWithTimeout(`${API}?${params}`, { headers: { "user-agent": USER_AGENT } }, 20000);
     if (!response.ok) return [];
     const payload = await response.json();
-    const pages = Object.values(payload?.query?.pages ?? {});
+    // The search's own order, which the API returns as `index`: the pages come back keyed by page id, and
+    // taking them in that order kept the oldest uploads (the lowest ids) and dropped the newest (2026-09-23:
+    // for "Donald Trump Xi Jinping" the 2017 and 2018 files came first and May 2026's were cut).
+    const pages = Object.values(payload?.query?.pages ?? {}).sort((a, b) => (a.index ?? 0) - (b.index ?? 0));
     const out = [];
     for (const page of pages) {
       const info = page.imageinfo?.[0];
@@ -56,7 +72,8 @@ export async function searchCommons(query, { limit = 10, log = () => {} } = {}) 
         licenseUrl: meta.LicenseUrl?.value ?? "",
         artist: artist.slice(0, 80),
         description: stripHtml(meta.ImageDescription?.value ?? "").slice(0, 200),
-        date: (meta.DateTimeOriginal?.value ?? "").slice(0, 10),
+        date: takenOn(meta.DateTimeOriginal?.value),
+        uploaded: String(info.timestamp ?? "").slice(0, 10),
         categories: stripHtml(meta.Categories?.value ?? "").slice(0, 500),
       });
     }
