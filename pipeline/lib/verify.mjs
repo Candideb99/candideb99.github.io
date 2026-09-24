@@ -40,7 +40,7 @@ const FEATURE_SECTIONS = [
  * paper's own related stories; for a paper reading, the research paper's text as the single source).
  * Explainers carry only illustrative numbers, so their figures and visuals are not checked.
  */
-export function programmaticChecks(draft, sources, { recentTitles = [], explainer = false, analysis = false, paper = false, weekly = false, feature = false, minWords = 200 } = {}) {
+export function programmaticChecks(draft, sources, { recentTitles = [], newsTitles = [], explainer = false, analysis = false, paper = false, weekly = false, feature = false, minWords = 200 } = {}) {
   const issues = [];
   const warnings = [];
   const grounded = !explainer;
@@ -166,6 +166,19 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
       const jaccard = shared / (mine.size + theirs.size - shared);
       if (jaccard >= 0.5) {
         issues.push(`القصة تكرر مقالاً منشوراً («${t}»)؛ لا يُنشر خبر ثانٍ عن الواقعة نفسها إلا إذا حمل تطوراً جوهرياً يُذكر في العنوان.`);
+        break;
+      }
+    }
+    // A reading (analysis, week, في العمق…) is compared with the news too: its headline says the argument or the
+    // question it answers, never the news it reads. On 2026-09-24 an analysis ran as «المركزي المصري يثبّت الفائدة عند
+    // 19% للاجتماع الخامس على التوالي», an hour after the news story «…عند 19% و20% للمرة الخامسة على التوالي».
+    for (const t of newsTitles) {
+      const theirs = titleWords(t);
+      if (theirs.size < 4) continue;
+      let shared = 0;
+      for (const w of mine) if (theirs.has(w)) shared += 1;
+      if (shared / (mine.size + theirs.size - shared) >= 0.5) {
+        issues.push(`العنوان يكرر عنوان خبر منشور («${t}»)؛ عنوان القراءة يقول حجتها أو السؤال الذي تجيب عنه، لا الخبر نفسه.`);
         break;
       }
     }

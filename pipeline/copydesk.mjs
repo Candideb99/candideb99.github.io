@@ -9,6 +9,8 @@
  *   node pipeline/copydesk.mjs --flagged             only articles still carrying a banned phrase
  *   node pipeline/copydesk.mjs --redo --slugs=a      edit again an article the desk has already edited
  *   node pipeline/copydesk.mjs --mark-done --slugs=a record articles as edited without calling a model
+ *   node pipeline/copydesk.mjs --redo --slugs=a --problem="…"   hand the desk a fault its own checker cannot see
+ *                                                     (a headline that repeats a news story's, 2026-09-24)
  *   node pipeline/copydesk.mjs --body --floor=0.25 --slugs=a   let a body that is nearly all repetition shrink
  *                                                     below the usual 55% (read the result before publishing)
  *
@@ -42,6 +44,7 @@ const MARK_DONE = flag("mark-done");
 const LIMIT = Number(option("limit", "0")) || 0;
 const SLUGS = option("slugs", "").split(",").map((s) => s.trim()).filter(Boolean);
 const FLOOR = Math.max(0.2, Number(option("floor", "0.55")) || 0.55);
+const PROBLEM = option("problem", "").trim();
 if (REDO && !SLUGS.length) {
   console.error("--redo edits already edited articles again and spends tokens on them: name them with --slugs=a,b");
   process.exit(2);
@@ -99,7 +102,7 @@ for (const a of queue) {
   const sources = (data.sources ?? []).flatMap((s) => [s.name, s.nameEn]).filter(Boolean);
   let result;
   try {
-    result = await copyEdit({ draft, includeBody: BODY, kind, sources, publishedAt: data.publishedAt ?? null, minFloor: FLOOR, log });
+    result = await copyEdit({ draft, includeBody: BODY, kind, sources, problems: PROBLEM ? [PROBLEM] : [], publishedAt: data.publishedAt ?? null, minFloor: FLOOR, log });
   } catch (error) {
     // A failed desk leaves the article unstamped, so a later run may try it once more.
     log(`${a.slug}: desk failed: ${String(error.message).slice(0, 160)}`);

@@ -524,7 +524,9 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   const desk = await copyDeskPass(firstDraft, { kind: deskKind, sources: checkSources ?? [] });
   let draft = desk.draft;
   const deskModel = desk.model;
-  const flags = { [kind]: true };
+  // A reading's headline is held against the last four days' news too, never only against its own kind's.
+  const newsTitles = (existing ?? []).filter((a) => a.kind === "news" && hoursSince(a.publishedAt) < 96).map((a) => a.title);
+  const flags = { [kind]: true, newsTitles };
   let checks = programmaticChecks(draft, checkSources, { ...flags, recentTitles });
   log(`checks ${kind} "${draft.title}": ${checks.metrics.words} words, ${checks.issues.length} issues, ${checks.warnings.length} warnings`);
   const review = await critique({ draft, sources: checkSources, ...flags, log });
