@@ -48,14 +48,13 @@ chart:
         - 32
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/A_voter_walks_towards_Aitkin_Public_Library_for_the_Special_Election_held_on_April_14%2C_2026_in_Aitkin%2C_Minnesota.jpg/1280px-A_voter_walks_towards_Aitkin_Public_Library_for_the_Special_Election_held_on_April_14%2C_2026_in_Aitkin%2C_Minnesota.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Donald_Trump_with_Republican_House_Leadership_%28March_9%2C_2026%29_01.jpg/1280px-Donald_Trump_with_Republican_House_Leadership_%28March_9%2C_2026%29_01.jpg
   width: 1280
-  height: 853
-  alt: مركز اقتراع في ولاية مينيسوتا الأمريكية
-  credit: Lorie Shaull · CC BY 4.0 · ويكيميديا كومنز
-  license: CC BY 4.0
-  licenseUrl: https://creativecommons.org/licenses/by/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AA_voter_walks_towards_Aitkin_Public_Library_for_the_Special_Election_held_on_April_14%2C_2026_in_Aitkin%2C_Minnesota.jpg
+  height: 854
+  alt: ترامب مع قادة الجمهوريين في مجلس النواب في مارس 2026
+  credit: Office of Speaker Mike Johnson · Public domain · ويكيميديا كومنز
+  license: Public domain
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ADonald_Trump_with_Republican_House_Leadership_(March_9%2C_2026)_01.jpg
 sources:
   - name: الجزيرة الإنجليزية
     nameEn: Al Jazeera English

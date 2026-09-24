@@ -58,14 +58,14 @@ table:
       - -1.75%
       - "88.94"
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Shore_of_the_East_River_with_Headquarters_of_the_United_Nations%2C_New_York_City%2C_20231005_1132_2230.jpg/1280px-Shore_of_the_East_River_with_Headquarters_of_the_United_Nations%2C_New_York_City%2C_20231005_1132_2230.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Meeting_with_Foreign_Minister_of_Iran_Abbas_Araghchi_%281%29.jpg/1280px-Meeting_with_Foreign_Minister_of_Iran_Abbas_Araghchi_%281%29.jpg
   width: 1280
-  height: 622
-  alt: مقر الأمم المتحدة على ضفة النهر وسط أفق حضري واسع
-  credit: Jakub Hałun · CC BY 4.0 · ويكيميديا كومنز
+  height: 790
+  alt: وزير الخارجية الإيراني عباس عراقجي يتحدث إلى الصحفيين في أبريل 2026
+  credit: kremlin.ru · CC BY 4.0 · ويكيميديا كومنز
   license: CC BY 4.0
   licenseUrl: https://creativecommons.org/licenses/by/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AShore_of_the_East_River_with_Headquarters_of_the_United_Nations%2C_New_York_City%2C_20231005_1132_2230.jpg
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AMeeting_with_Foreign_Minister_of_Iran_Abbas_Araghchi_(1).jpg
 sources:
   - name: الجزيرة الإنجليزية
     nameEn: Al Jazeera English
@@ -89,7 +89,7 @@ models:
   editor: claude-cli
   writer: claude-cli → claude-cli
   critic: claude-cli
-  vision: nex-agi/nex-n2.5-pro:free
+  vision: claude-cli
   desk: claude-cli
 quality:
   score: 9

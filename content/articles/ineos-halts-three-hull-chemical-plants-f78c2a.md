@@ -33,14 +33,14 @@ readingMinutes: 3
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Bayway_Refinery_td_%282022-01-18%29_20.jpg/1280px-Bayway_Refinery_td_%282022-01-18%29_20.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Singur_Plant_%28Chemical_factory%29_of_Himadri_Speciality_Chemicals_Limited_in_Hooghly_district_%2818_June_2022%29.jpg/1280px-Singur_Plant_%28Chemical_factory%29_of_Himadri_Speciality_Chemicals_Limited_in_Hooghly_district_%2818_June_2022%29.jpg
   width: 1280
-  height: 853
-  alt: منشأة تكرير نفط بمداخن وأنابيب صناعية (صورة تعبيرية)
-  credit: Tdorante10 · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ABayway_Refinery_td_(2022-01-18)_20.jpg
+  height: 720
+  alt: مصنع للكيماويات (صورة تعبيرية)
+  credit: This photograph is created by Sbb1413 . All photographs created by him are relea · CC BY 4.0 · ويكيميديا كومنز
+  license: CC BY 4.0
+  licenseUrl: https://creativecommons.org/licenses/by/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ASingur_Plant_(Chemical_factory)_of_Himadri_Speciality_Chemicals_Limited_in_Hooghly_district_(18_June_2022).jpg
 sources:
   - name: الغارديان
     nameEn: The Guardian
@@ -64,7 +64,7 @@ models:
   editor: claude-cli
   writer: claude-cli → claude-cli
   critic: claude-cli
-  vision: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
+  vision: claude-cli
   desk: claude-cli
 quality:
   score: 9

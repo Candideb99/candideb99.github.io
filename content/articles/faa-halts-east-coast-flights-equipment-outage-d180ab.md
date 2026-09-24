@@ -28,14 +28,14 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/5/5b/Newark-liberty-international-airport-airtrain-station-p3_21205144516_o.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Jandakot_Airport_Air_Traffic_Control_Tower%2C_August_2023_02.jpg/1280px-Jandakot_Airport_Air_Traffic_Control_Tower%2C_August_2023_02.jpg
   width: 1280
-  height: 720
-  alt: محطة إيرترين في مطار نيوارك ليبرتي الدولي
-  credit: Yonikasz · CC BY-SA 4.0 · ويكيميديا كومنز
+  height: 960
+  alt: برج مراقبة الحركة الجوية في أحد المطارات (صورة تعبيرية)
+  credit: Calistemon · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ANewark-liberty-international-airport-airtrain-station-p3_21205144516_o.jpg
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AJandakot_Airport_Air_Traffic_Control_Tower%2C_August_2023_02.jpg
 sources:
   - name: الغارديان
     nameEn: The Guardian
@@ -65,7 +65,7 @@ models:
   editor: inclusionai/ling-3.0-flash-fin:free
   writer: nvidia/nemotron-3-super-120b-a12b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: nex-agi/nex-n2.5-pro:free
+  vision: claude-cli
   desk: nvidia/nemotron-3-super-120b-a12b:free
 quality:
   score: 10
