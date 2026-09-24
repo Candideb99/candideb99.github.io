@@ -11,13 +11,15 @@ on:
     - cron: "31 9 * * 2,5"
     - cron: "37 15 * * 5"
     - cron: "7 10 * * 6"
+    # «في العمق», the weekly in-depth piece: Sundays, the first working day of the Gulf week (2026-09-24).
+    - cron: "47 7 * * 0"
   workflow_dispatch:
     inputs:
       mode:
-        description: news, explainer, analysis, paper or weekly
+        description: news, explainer, analysis, paper, weekly or feature (في العمق)
         default: news
         type: choice
-        options: [news, explainer, analysis, paper, weekly]
+        options: [news, explainer, analysis, paper, weekly, feature]
       limit:
         description: maximum stories to publish
         default: "4"
@@ -40,7 +42,9 @@ jobs:
     if: vars.KHAZENDAR_PAUSED != '1'
     name: Write and publish
     runs-on: ubuntu-latest
-    timeout-minutes: 50
+    # «في العمق» runs longer than a news round: the first one took 32 minutes on its own, and one desk call on a
+    # 1,500-word body may take fifteen.
+    timeout-minutes: ${{ (github.event.schedule == '47 7 * * 0' || inputs.mode == 'feature') && 100 || 50 }}
     outputs:
       published: ${{ steps.newsroom.outputs.published }}
     steps:
@@ -75,9 +79,10 @@ jobs:
             elif [ "$SCHEDULE" = "31 9 * * 2,5" ]; then mode=paper;
             elif [ "$SCHEDULE" = "37 15 * * 5" ]; then mode=weekly;
             elif [ "$SCHEDULE" = "7 10 * * 6" ]; then mode=analysis; sections=defense;
+            elif [ "$SCHEDULE" = "47 7 * * 0" ]; then mode=feature;
             else mode=news; fi
           fi
-          case "$mode" in news|explainer|analysis|paper|weekly) ;; *) echo "invalid mode: $mode"; exit 2;; esac
+          case "$mode" in news|explainer|analysis|paper|weekly|feature) ;; *) echo "invalid mode: $mode"; exit 2;; esac
           if ! [[ "$limit" =~ ^[0-9]+$ ]]; then echo "invalid limit: $limit"; exit 2; fi
           if ! [[ "$sections" =~ ^[a-z,]*$ ]]; then echo "invalid sections: $sections"; exit 2; fi
           echo "mode=$mode" >> "$GITHUB_OUTPUT"

@@ -26,13 +26,21 @@ const PAPER_SECTIONS = [
   { name: "ماذا يعني للقارئ العربي", test: /القارئ العربي|للقارئ|يعني/ },
 ];
 
+/** The four sections of «في العمق», the weekly in-depth piece (2026-09-24), matched loosely against its "## " subheads. */
+const FEATURE_SECTIONS = [
+  { name: "كيف وصلنا إلى هنا", test: /كيف وصلنا|كيف بدأ|البداية/ },
+  { name: "بالأرقام", test: /بالأرقام|الأرقام/ },
+  { name: "ما الذي يعنيه للمنطقة", test: /للمنطقة|للاقتصادات العربية|العربية/ },
+  { name: "الأسئلة المفتوحة", test: /الأسئلة|المفتوحة|ما التالي|ما ينتظر/ },
+];
+
 /**
  * Deterministic checks. Returns { ok, issues[], warnings[], metrics }.
  * News, analyses and paper readings are grounded: every figure must trace to `sources` (for an analysis, the
  * paper's own related stories; for a paper reading, the research paper's text as the single source).
  * Explainers carry only illustrative numbers, so their figures and visuals are not checked.
  */
-export function programmaticChecks(draft, sources, { recentTitles = [], explainer = false, analysis = false, paper = false, weekly = false, minWords = 200 } = {}) {
+export function programmaticChecks(draft, sources, { recentTitles = [], explainer = false, analysis = false, paper = false, weekly = false, feature = false, minWords = 200 } = {}) {
   const issues = [];
   const warnings = [];
   const grounded = !explainer;
@@ -56,7 +64,9 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
   const leaked = [...new Set((outsideParens.match(/\b[a-z][a-z-]{3,}\b/g) ?? []).filter((w) => !ALLOWED_LATIN.test(w)))];
   if (leaked.length) issues.push(`كلمات إنجليزية تُركت بلا ترجمة داخل النص العربي: ${leaked.slice(0, 6).join(", ")}. اكتب معناها بالعربية (التوقعات، الإجمالي، الخبرة الفنية) ولا تترك كلمة لاتينية صغيرة في الجملة.`);
   // House headlines carry one idea, without «..» teasers; a «..» in a headline is almost always two stories.
-  if (/\.\.|…/.test(draft.title)) issues.push(`العنوان يحتوي نقاط حذف («..»): اكتب عنواناً واحداً بفكرة واحدة بلا تعليق أو خبرين متتابعين.`);
+  // «في العمق» may take الشرق الأوسط's in-depth hinge, a subject then «...» then what the file shows
+  // («الاقتصاد التونسي... صمود تحت ثقل الديون»): that is one idea, and the form those pages use.
+  if (!feature && /\.\.|…/.test(draft.title)) issues.push(`العنوان يحتوي نقاط حذف («..»): اكتب عنواناً واحداً بفكرة واحدة بلا تعليق أو خبرين متتابعين.`);
   const titleLatin = (draft.title.match(/[A-Za-z][A-Za-z&+.'-]*/g) ?? []).filter((w) => !ALLOWED_LATIN.test(w));
   if (titleLatin.length) issues.push(`العنوان يحتوي كلمات لاتينية (${titleLatin.join(", ")}). اكتب العنوان بالعربية كاملاً.`);
   const headlineLatinInBody = (`${draft.subtitle}\n${draft.lede}`.replace(/\([^)]*\)/g, " ").match(/\b[A-Za-z]{3,}\b/g) ?? []).filter((w) => !ALLOWED_LATIN.test(w));
@@ -67,7 +77,7 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
   // The house's Arabic: banned calques and fillers force a revision; texture faults are warnings the desk reads.
   // The names each source goes by, so a story that names one outlet in sentence after sentence is sent back.
   const sourceNames = sources.flatMap((s) => [s.sourceName ?? s.name, s.sourceNameEn ?? s.nameEn]).filter(Boolean);
-  const style = styleIssues(draft, { kind: explainer ? "explainer" : analysis || weekly ? "analysis" : paper ? "paper" : "news", sources: sourceNames, latin: false });
+  const style = styleIssues(draft, { kind: explainer ? "explainer" : analysis || weekly || feature ? "analysis" : paper ? "paper" : "news", sources: sourceNames, latin: false });
   issues.push(...style.issues);
   warnings.push(...style.warnings);
 
@@ -78,6 +88,12 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
     const subheads = (draft.body.match(/^##\s+.+$/gm) ?? []).join("\n");
     const missing = ANALYSIS_SECTIONS.filter((s) => !s.test.test(subheads)).map((s) => s.name);
     if (missing.length) issues.push(`بنية التحليل ناقصة؛ العناوين الفرعية المطلوبة (بصيغة "## ") غير موجودة: ${missing.join("، ")}. أضفها بهذا الترتيب: ما الذي تغيّر، من يربح ومن يخسر، السيناريوهات، ما الذي نراقبه.`);
+  } else if (feature) {
+    if (words < 950) issues.push(`«في العمق» قصير جداً (${words} كلمة)؛ يجب ألا يقل عن 1200 كلمة. وسّع كل قسم بما في قصص الملف دون اختراع أرقام.`);
+    else if (words > 2300) warnings.push(`long feature: ${words} words`);
+    const subheads = (draft.body.match(/^##\s+.+$/gm) ?? []).join("\n");
+    const missing = FEATURE_SECTIONS.filter((s) => !s.test.test(subheads)).map((s) => s.name);
+    if (missing.length) issues.push(`بنية «في العمق» ناقصة؛ العناوين الفرعية المطلوبة (بصيغة "## ") غير موجودة: ${missing.join("، ")}. أضفها بهذا الترتيب: كيف وصلنا إلى هنا، بالأرقام، ما الذي يعنيه للمنطقة، الأسئلة المفتوحة.`);
   } else if (weekly) {
     if (words < 600) issues.push(`حصاد الأسبوع قصير جداً (${words} كلمة)؛ يجب ألا يقل عن 750 كلمة. وسّع الفقرات من المواد المرفقة دون اختراع أرقام.`);
     else if (words > 1200) warnings.push(`long weekly review: ${words} words`);
@@ -110,6 +126,9 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
       draft.table = null;
     }
   }
+  // «في العمق» carries its timeline, the piece's signature: a dated row for each step of the file. Checked after
+  // the grounding above, so a timeline dropped for a figure its stories do not carry is sent back, not lost.
+  if (feature && (!draft.table || (draft.table.rows ?? []).length < 4)) issues.push(`«في العمق» بلا جدول زمني صالح؛ أضف جدول «الجدول الزمني» (التاريخ، الحدث) بصف لكل قصة من قصص الملف، من الأقدم إلى الأحدث، بتاريخ نشرها، وكل رقم فيه كما في قصته.`);
 
   if (grounded) {
     const missing = ungroundedNumbers(`${prose}\n${factsText}`, sourceTexts);
@@ -194,6 +213,12 @@ const CRITIC_RUBRIC = {
     facts: "Every number, date, name and quotation in the draft: does it trace to one of the supplied stories or to the calendar, with the same magnitude, unit, direction and period, and attributed to the institution that story names? A figure rounded as its own story's headline rounds it (108 for 108.44) is not an error, and neither is a faithful paraphrase (مليوني برميل for 2 مليون برميل; أكثر من 6 دولارات when the story says 6.06 dollars, above 6 for the first time); an error is a changed magnitude, direction, period, unit, actor or attribution, or a claim no story makes. Is every row of the table a figure that appears in one story? List only real errors, each with the story that contradicts it.",
     check: "Does each development read as its own story reports it, with no cause, motive or consequence the story does not state? Is the piece ranked by weight rather than by date, with the heaviest development first? Is the coming-week section limited to the calendar's dated events? Does the Arabic read as the economics desks write it: short sentences, one idea each, the desks' attribution forms, no translationese? SCORING for this kind: the score follows the real errors found under point 1 and the unsupported claims under this point: none means 8 or more; one or two, corrected by the revision, means 6 or 7; style points alone never take a review below 6; three or more real errors mean revise, and invented facts mean reject.",
   },
+  feature: {
+    material:
+      "(«في العمق», Khazendar's weekly in-depth piece: the sources below are خازندار's own published stories on one running file, each with its publication date; the piece tells the whole file from them. Every figure, date, name and quotation in the draft must trace to one of them. Its timeline table dates each row by the publication date of the story it comes from. Khazendar's own reading of what the file means for Arab economies is legitimate when it is clearly framed as a reading and stays within what the stories support.)",
+    facts: "Every number, date, name and quotation in the draft, and every row of the timeline: does it trace to one of the supplied stories, with the same magnitude, unit, direction and period, attributed to the institution or outlet that story names? Is each timeline row dated with the publication date of the story it summarises? A figure rounded as its own story rounds it is not an error. List only real errors, each with the story that contradicts it.",
+    check: "Is the file told in order, each step as its story reports it, with no cause, motive or consequence the stories do not state (outside passages clearly marked as Khazendar's reading)? Does the title claim only what the stories support? Is every forecast framed as a possibility with its trigger, never asserted? Does the Arabic read as the economics desks write their long pieces: short sentences, one idea each, the desks' attribution forms, no translationese?",
+  },
   analysis: {
     material:
       "(analysis: the sources below are خازندار's own published stories; every figure, date, name and quotation in the draft must trace to them. Interpretation is the genre: Khazendar's own reading of consequences is legitimate when it is clearly framed as a reading (يرجّح، قد، من المحتمل) and stays within what the stories support; it is a fault when asserted as fact or when it contradicts the stories.)",
@@ -203,9 +228,10 @@ const CRITIC_RUBRIC = {
 };
 
 /** Critic pass. Returns { verdict: "publish"|"revise"|"reject", score, issues[], model }. */
-export async function critique({ draft, sources, explainer = false, analysis = false, paper = false, weekly = false, previousIssues = null, log }) {
-  const rubric = CRITIC_RUBRIC[explainer ? "explainer" : analysis ? "analysis" : paper ? "paper" : weekly ? "weekly" : "news"];
-  const material = sources.map((s, i) => `SOURCE ${i + 1}: ${s.sourceNameEn} (${s.lang}) — "${s.title}"\n${s.text || s.summary || ""}`).join("\n\n");
+export async function critique({ draft, sources, explainer = false, analysis = false, paper = false, weekly = false, feature = false, previousIssues = null, log }) {
+  const rubric = CRITIC_RUBRIC[explainer ? "explainer" : analysis ? "analysis" : paper ? "paper" : weekly ? "weekly" : feature ? "feature" : "news"];
+  // Each source with its date: a timeline («في العمق») is checked row by row against its stories' dates.
+  const material = sources.map((s, i) => `SOURCE ${i + 1}: ${s.sourceNameEn} (${s.lang}) — "${s.title}"${s.publishedAt ? ` — published ${String(s.publishedAt).slice(0, 10)}` : ""}\n${s.text || s.summary || ""}`).join("\n\n");
   const user = `SOURCE MATERIAL
 ${[rubric.material, material || (explainer ? "" : "(no sources supplied)")].filter(Boolean).join("\n\n")}
 

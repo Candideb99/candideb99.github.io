@@ -664,9 +664,16 @@ function markFilePhoto(image, chosen, people = []) {
 
 /** Chooser plus second lock; a refused photo is excluded and the story goes on without it. */
 async function chooseVerified({ list, inlined, draft, story, log, relaxed, neutral = false, exclude, people = [] }) {
-  const image = await judge({ list, inlined, draft, story, log, relaxed, neutral, people });
+  let image = await judge({ list, inlined, draft, story, log, relaxed, neutral, people });
   if (!image) return null;
   const chosen = list.find((c) => c.url === image.url) ?? {};
+  // The last pass's caption names no place, and the judge does not always keep to that (the Hormuz feature's
+  // tanker came captioned with the Norwegian port it was photographed in and was refused for it, 2026-09-24):
+  // the illustration's own caption writer writes it before the second check reads it.
+  if (neutral) {
+    const caption = await writeCaption({ file: chosen, story: draft.title, current: image.alt, illustrative: true, log });
+    if (caption) image = { ...image, alt: caption };
+  }
   let verified = false;
   try {
     verified = await verifyImage({ image: { ...chosen, title: chosen.title ?? image.title, query: chosen.query, alt: image.alt }, draft, story, log, neutral, people });
@@ -816,14 +823,22 @@ async function neutralScene({ draft, story, log, exclude, queries, place }) {
   const neutral = [...new Set(queries.map((q) => words.reduce((s, re) => s.replace(re, " "), q).replace(/\s+/g, " ").trim()).filter((q) => q.length >= 3))];
   if (!neutral.length) return null;
   log(`image: last pass, a neutral illustration: ${neutral.join(" | ")}`);
-  const candidates = (await collect(neutral, log, { perQuery: 8, max: 12, exclude, people: "none" })).filter((c) => !excluded(exclude, c));
-  if (!candidates.length) return null;
-  const s = await shortlist(candidates, log);
-  if (!s.list.length) return null;
-  const image = await chooseVerified({ ...s, draft, story, log, relaxed: true, neutral: true, exclude });
-  if (!image) return null;
-  const alt = String(image.alt ?? "").replace(/[\s.،]+$/, "");
-  return { ...image, alt: alt.includes(ILLUSTRATIVE) ? alt : `${alt} (${ILLUSTRATIVE})` };
+  const candidates = await collect(neutral, log, { perQuery: 8, max: 12, exclude, people: "none" });
+  // Two chances, as the passes before it have, the refused photo excluded in between.
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    const rest = candidates.filter((c) => !excluded(exclude, c));
+    if (!rest.length) return null;
+    const s = await shortlist(rest, log);
+    if (!s.list.length) return null;
+    const refused = exclude.size;
+    const image = await chooseVerified({ ...s, draft, story, log, relaxed: true, neutral: true, exclude });
+    // Nothing newly excluded means the judge turned the whole shortlist down: asking again repeats it.
+    if (!image && exclude.size === refused) return null;
+    if (!image) continue;
+    const alt = String(image.alt ?? "").replace(/[\s.،]+$/, "");
+    return { ...image, alt: alt.includes(ILLUSTRATIVE) ? alt : `${alt} (${ILLUSTRATIVE})` };
+  }
+  return null;
 }
 
 /**

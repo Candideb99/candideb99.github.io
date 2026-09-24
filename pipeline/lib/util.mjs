@@ -138,6 +138,20 @@ export function ungroundedNumbers(text, sources, { ignoreYears = true } = {}) {
     expanded.add(String(Number(value.toFixed(1))));
   }
   const unitBound = unitBoundNumbers(text);
+  // A threshold the desks write, «فوق 108 دولارات» for 108.68, «دون 100 دولار» for 97.5: the figure after "above"
+  // may sit up to 15% under a source's value, the one after "below" up to 15% over it. Rounding alone accepted
+  // «فوق 109» (false, the peak was 108.68) and refused the true «فوق 108» that replaced it («في العمق», 2026-09-24).
+  const values = [...pool].map(Number).filter((v) => Number.isFinite(v) && v > 0);
+  const thresholds = new Set();
+  const normalized = normalizeDigits(String(text ?? "")).replace(/٫/g, ".").replace(/٬/g, ",");
+  for (const m of normalized.matchAll(/(?<![؀-ۿ])(?:و|ف)?(?:فوق|أكثر من|أعلى من|يتجاوز|تتجاوز|تجاوز|تجاوزت|متجاوز[اًة]*|يتخطى|تتخطى|تخطى|تخطت|يفوق|تفوق|يزيد على|تزيد على)\s+(?:مستوى\s+|حاجز\s+|عتبة\s+)?(\d[\d,]*(?:\.\d+)?)/g)) {
+    const t = Number(m[1].replace(/,/g, ""));
+    if (values.some((v) => t < v && v <= t * 1.15)) thresholds.add(m[1].replace(/,/g, ""));
+  }
+  for (const m of normalized.matchAll(/(?<![؀-ۿ])(?:و|ف)?(?:دون|أقل من|أدنى من|تحت|ما دون)\s+(?:مستوى\s+|حاجز\s+|عتبة\s+)?(\d[\d,]*(?:\.\d+)?)/g)) {
+    const t = Number(m[1].replace(/,/g, ""));
+    if (values.some((v) => t > v && t <= v * 1.15)) thresholds.add(m[1].replace(/,/g, ""));
+  }
   const missing = [];
   for (const n of extractNumbers(text)) {
     const value = Number(n);
@@ -146,7 +160,7 @@ export function ungroundedNumbers(text, sources, { ignoreYears = true } = {}) {
     const small = value >= 0 && value <= 31 && Number.isInteger(value); // days, small counts, ordinals
     // A year or a small count is trivial only when no unit follows it: "12%" and "2,000 دولار" are figures.
     if ((yearLike || small) && !unitBound.has(n)) continue;
-    if (expanded.has(n) || expanded.has(String(value))) continue;
+    if (expanded.has(n) || expanded.has(String(value)) || thresholds.has(n)) continue;
     // Half a percent of drift covers a source's own rounding; anything more is a different number.
     const tolerant = [...expanded].some((p) => {
       const pv = Number(p);

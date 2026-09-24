@@ -79,7 +79,7 @@ the concrete why-it-matters, or an attributed quote. Never a summary, never a mo
 بشكل/بصورة + صفة، على صعيد، يعتبر، ما إذا كان، هناك ارتفاع في، شهد ارتفاعاً؛ clichés بمثابة،
 يسلط الضوء، يمهد الطريق، نقطة تحول، مما يعكس، في خطوة، يأتي ذلك، السؤال الحقيقي، ليس مجرد؛
 machine leftovers (Latin, Chinese or Cyrillic letters, straight quotes "…", the prompt's own words
-المادة/الملاحظات, a word said twice in a headline, an ISO date). Warnings: في إطار، على مستوى، من
+المادة/الملاحظات, also as a place: «أدنى مستوى في المادة», a word said twice in a headline, an ISO date). Warnings: في إطار، على مستوى، من
 حيث، ما يعكس، the intensifiers حاد/انهيار/تاريخي/جداً without a number, a number that does not agree
 with its noun. Preferred: نحو not حوالي، في الوقت نفسه، مديرو، أسهم، مهم.
 
@@ -139,6 +139,16 @@ result or deal goes ahead of a comparable foreign story, aiming at about half th
 one worthy story from الخليج or مصر والمغرب العربي until the day holds eight (`ARAB_DAILY`); every feed gets its
 turn in the editor's list of 300 (`CANDIDATE_CAP`) instead of the busiest filling it; and the day's gold,
 dollar and share price tables are left out before the editor reads (`SERVICE_ITEM`).
+
+**«في العمق», the week's in-depth piece** (Sundays, 2026-09-24; the owner's Task 5 after reading الشرق الأوسط's
+in-depth pages). Their investigations and profiles need reporters; the form an automated newsroom can do
+honestly is their weekend feature on one subject («الاقتصاد التونسي... صمود تحت ثقل الديون»): the whole story of
+one running file, told from Khazendar's own stories of the past six weeks, oldest first, 1200-1700 words under
+كيف وصلنا إلى هنا، بالأرقام، ما الذي يعنيه للمنطقة، الأسئلة المفتوحة, with a timeline table (each story's date
+and what it reported). Every figure and date traces to a story; the region section may carry Khazendar's
+reading, hedged. The headline may take the in-depth hinge «الموضوع... ما يظهره الملف» or the question the piece
+answers. A threshold is a fact the desks print: «فوق 108 دولارات» for a peak of 108.68 passes the number check,
+«عند 108» does not (a rounding to 109 would pass, and the critic judges whether «فوق 109» is true).
 
 **A small event runs as a brief.** The shortest news story accepted is 120 words, 100 when the desk notes
 hold fewer than ten facts (`newsFloor()` in `pipeline/lib/write.mjs`; 200 until 2026-09-24). It is a safety

@@ -15,7 +15,7 @@ Nothing here uses your GPU. Writing happens on your Claude subscription (see sec
 
 ## 2. What happens automatically
 
-Every 3 hours (and once a day each for an explainer and an analysis) a cloud job:
+Every 3 hours (and once a day each for an explainer and an analysis, and on Sundays «في العمق», the week's in-depth piece on one running story) a cloud job:
 
 1. reads 57 feeds (central banks, statistics offices, BBC, CNBC, Guardian, Al Jazeera, Asharq Al-Awsat, Sky News Arabia, and since 24 September the Gulf, Egyptian and Moroccan press: Al Khaleej, Al Riyadh, Youm7, Masrawy, Hespress, AGBI, Gulf Times, Saudi Gazette, Daily News Egypt, Arabian Business; the defence press …),
 2. picks the stories that matter to Arab readers and groups sources covering the same story,

@@ -12,6 +12,10 @@ interface Props {
 }
 const { table } = Astro.props;
 const numeric = (cell: string) => /^[+\-−]?\d[\d.,]*\s?[%٪]?$/.test(cell.trim());
+// Short row heads (a date, a year, a ticker) stay on one line: on a phone «7 سبتمبر» broke into two (2026-09-24).
+const shortHeads = table.rows.every((row) => String(row[0] ?? "").trim().length <= 14);
+// A table compiled from Khazendar's own stories («في العمق»'s timeline) says so once, not "Khazendar, from its source".
+const own = /^خازندار/.test(String(table.source ?? "").trim());
 ---
 
 <figure class="dtable">
@@ -27,14 +31,14 @@ const numeric = (cell: string) => /^[+\-−]?\d[\d.,]*\s?[%٪]?$/.test(cell.trim
         {table.rows.map((row) => (
           <tr>
             {row.map((cell, ci) =>
-              ci === 0 ? <th scope="row" set:html={isolateNumbers(cell)} /> : <td class={numeric(cell) ? "num" : ""} set:html={isolateNumbers(cell)} />,
+              ci === 0 ? <th scope="row" class={shortHeads ? "short" : undefined} set:html={isolateNumbers(cell)} /> : <td class={numeric(cell) ? "num" : ""} set:html={isolateNumbers(cell)} />,
             )}
           </tr>
         ))}
       </tbody>
     </table>
   </div>
-  <p class="dtable__source ui">{table.source ? `المصدر: ${table.source}. ` : ""}الجدول من إعداد خازندار اعتماداً على أرقام المصدر.</p>
+  <p class="dtable__source ui">{own ? "المصدر: تقارير خازندار المنشورة." : `${table.source ? `المصدر: ${table.source}. ` : ""}الجدول من إعداد خازندار اعتماداً على أرقام المصدر.`}</p>
 </figure>
 
 <style>
@@ -45,6 +49,7 @@ const numeric = (cell: string) => /^[+\-−]?\d[\d.,]*\s?[%٪]?$/.test(cell.trim
   th, td { padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--rule); text-align: start; vertical-align: top; }
   thead th { font-weight: 700; color: var(--ink); border-bottom: 1px solid var(--ink); }
   tbody th { font-weight: 700; }
+  tbody th.short { white-space: nowrap; }
   td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   .dtable__source { margin-top: 0.5rem; font-size: var(--fs-xs); color: var(--ink-3); }
 </style>

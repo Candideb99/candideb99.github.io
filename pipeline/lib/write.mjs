@@ -269,7 +269,9 @@ ${issues.map((i, n) => `${n + 1}. ${i}`).join("\n")}
 Return the complete corrected article as one JSON object with the same keys as before (title, subtitle, slug, lede, body, key_facts, why_it_matters, tags, regions, image_queries${draft.chart || draft.table ? ", chart, table" : ""}).`;
   const { data, model } = await chat({
     role: "writer",
-    system: kind === "paper" ? PAPER_SYSTEM : wordLimits ? ANALYST_SYSTEM : WRITER_SYSTEM,
+    system: kind === "paper" ? PAPER_SYSTEM : kind === "feature" ? FEATURE_SYSTEM : wordLimits ? ANALYST_SYSTEM : WRITER_SYSTEM,
+    // A long piece (analysis, week's review, «في العمق») comes back whole: the CLI needs minutes for it.
+    timeoutMs: wordLimits ? 600000 : 240000,
     user,
     temperature: 0.25,
     maxTokens: wordLimits ? ANALYSIS_MAX_TOKENS : NEWS_MAX_TOKENS,
@@ -438,6 +440,69 @@ ${ANALYSIS_SCHEMA}`;
     validate: (d) => {
       if (d && typeof d === "object" && !(Array.isArray(d.tags) && d.tags.length) && fallbackTags.length) d.tags = fallbackTags;
       validateDraft(d, ANALYSIS_WORDS);
+    },
+  });
+  return { draft: normalizeDraft(data), model };
+}
+
+/**
+ * «في العمق», the weekly in-depth piece (2026-09-24, the owner's Task 5 after reading الشرق الأوسط beside
+ * Khazendar): the whole story of ONE running file, told from Khazendar's own reporting over the past weeks, the
+ * way الشرق الأوسط's in-depth pages tell a subject («الاقتصاد التونسي... صمود تحت ثقل الديون»). Their
+ * investigations and profiles need reporters and are not attempted; this is the form a newsroom that reads and
+ * writes can do honestly, with every figure traceable to a published story.
+ */
+const FEATURE_SYSTEM = `You are the senior features writer of خازندار (Khazendar), an Arabic-language economics and business publication for educated readers across the Arab world. Once a week you write «في العمق», its in-depth piece: the whole story of ONE running file (a war's toll on energy markets, a trade truce, one Arab economy under strain), told from Khazendar's own published reporting of the past weeks: how it began, how it moved, what the numbers show, what it has meant for Arab economies, and what is still open. It is neither a news report nor the daily analysis: it is the long read a reader keeps for the weekend. You use only the facts, figures, dates and quotations in the material supplied; you never invent or recall; every reading beyond the material is marked as Khazendar's own and hedged. No first person.
+
+${HOUSE_STYLE}`;
+
+/** Word bounds of «في العمق» (lede + body): the brief asks for 1200-1700; the validator tolerates a margin. */
+export const FEATURE_WORDS = { minWords: 900, maxWords: 2300, target: 1300 };
+
+const FEATURE_SCHEMA = `{
+  "title": "Arabic title, 30-90 characters, in one of the two forms الشرق الأوسط's in-depth pages use: the subject, then '...' and what the file shows (e.g. الاقتصاد التونسي... صمود تحت ثقل الديون), or the question the piece answers (e.g. مَن يدفع ثمن القطيعة الأميركية الكندية؟). It claims only what the material supports.",
+  "subtitle": "Arabic dek: one sentence (max 170 chars) saying what the whole file shows now",
+  "slug": "english-kebab-case-slug-4-to-7-words",
+  "lede": "Opening paragraph, 2-3 sentences, at most 60 words: where the file stands now, anchored in its two defining facts",
+  "body": "Markdown. First one or two paragraphs (no subhead) saying why the file matters now; then exactly these four '## ' subheads in this order: '## كيف وصلنا إلى هنا' (the file from its first story in the material to its latest, in order, each step with its date as the material dates it, attributed as its story attributes it), '## بالأرقام' (the figures that tell the story, compared across the dates the material gives them), '## ما الذي يعنيه للمنطقة' (what the file has meant and may mean for Gulf, Egyptian and wider Arab economies; a consequence the material does not state is Khazendar's reading, hedged once where it begins and then written plainly, never a one-country figure generalised to a region), '## الأسئلة المفتوحة' (what is still unresolved, and the dated decisions or releases ahead that the material names). Lede and body together 1200-1700 words; each section three or four full paragraphs. Paragraphs separated by blank lines; no bullet lists.",
+  "key_facts": [{"label": "short Arabic label (2-5 words) naming the indicator, its place and its date", "value": "a figure exactly as it appears in the material"}],
+  "why_it_matters": "One Arabic paragraph (40-90 words): the one consequence the whole file leads to, stated as Khazendar's reading; not a summary, never the region as a formula, never open with «يعكس/يمثل/يُعدّ»",
+  "tags": ["3-5 Arabic tags, the file's own tag first"],
+  "regions": ["1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي"],
+  "image_queries": ["2-3 short English search terms (2-4 words each) naming a concrete subject that exists as a photo on Wikimedia Commons, the file's people or its sector at work first; no adjectives, no abstract concepts"],
+  "table": {"title": "الجدول الزمني", "source": "خازندار", "columns": ["التاريخ", "الحدث"], "rows": [["<the day and month the story was published, e.g. 13 سبتمبر>", "<one line, at most 18 words: what that story reported, with its main figure exactly as the story gives it>"]]},
+  "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit", "source": "the publisher named in the material", "categories": ["Arabic labels, 3-12 items, in date order"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the material]}]}
+}
+The timeline table is REQUIRED: 5-10 rows, oldest first, one per story of the material (the most telling ones when there are more), each dated with that story's own publication date. Include "chart" only when the material gives at least three comparable figures of the same measure on different dates (a price, a rate, a count); every value must appear in the material; otherwise null.`;
+
+/** Writes «في العمق» from the file's stories, oldest first; every figure, date and name must come from them. */
+export async function writeFeature({ topic, stories, log }) {
+  const user = `«في العمق» BRIEF FROM THE FEATURES EDITOR
+The file: ${topic.file}
+Theme: ${topic.theme_ar}
+The question this piece answers: ${topic.question_ar}
+Angle: ${topic.angle}
+Today (UTC): ${new Date().toISOString().slice(0, 10)}
+
+MATERIAL: خازندار's own reporting on this file, OLDEST FIRST (use only this material; every figure, date, name and quotation must come from it; each story carries its publication date)
+${stories.map(relatedBlock).join("\n\n")}
+
+TASK
+Write «في العمق» for خازندار: the whole file in order, then its numbers, what it means for the region, and what is still open, under the four required subheads, with the timeline table. The editor's theme and angle are direction only: where the material does not support a part of them, drop that part rather than inventing support. Tell each step as its story reports it, with its date and the institution or outlet its story names; never a cause, motive or consequence the story does not state, except where you mark Khazendar's own reading (hedged once where it begins, then plainly; at most one hedge in a paragraph; never two sentences in a row opening with one). Restate in fresh sentences; never copy a sentence from the material. Do not add facts, figures, dates or quotations from memory. Every forecast is a possibility with its trigger, never an assertion.
+LENGTH: 1200-1700 words in the lede and body together; each of the four sections needs three or four full paragraphs. A draft under 1000 words is rejected automatically.
+Return one JSON object exactly in this shape:
+${FEATURE_SCHEMA}`;
+  const fallbackTags = [topic.file, ...new Set(stories.flatMap((a) => a.tags ?? []))].filter(Boolean).slice(0, 5);
+  const { data, model } = await chat({
+    role: "writer",
+    system: FEATURE_SYSTEM,
+    user,
+    // Seventeen hundred words of Arabic in JSON take the CLI several minutes.
+    timeoutMs: 600000,
+    log,
+    validate: (d) => {
+      if (d && typeof d === "object" && !(Array.isArray(d.tags) && d.tags.length) && fallbackTags.length) d.tags = fallbackTags;
+      validateDraft(d, FEATURE_WORDS);
     },
   });
   return { draft: normalizeDraft(data), model };

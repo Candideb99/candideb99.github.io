@@ -43,7 +43,7 @@ const MINI = 30;
 const miniWidth = Math.round((LOGO.width / LOGO.height) * MINI);
 
 const articles = await getArticles();
-const analyses = articles.filter((a) => a.data.kind === "analysis" || a.data.kind === "weekly");
+const analyses = articles.filter((a) => a.data.kind === "analysis" || a.data.kind === "weekly" || a.data.kind === "feature");
 const newsIds = new Set(newsSections.map((s) => s.id));
 
 interface Link {

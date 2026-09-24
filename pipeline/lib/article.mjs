@@ -22,7 +22,8 @@ export function readingMinutes(draft) {
 }
 
 /** The kinds of piece the newsroom files: news stories, explainers, house analyses and readings of research papers. */
-export const KINDS = new Set(["news", "explainer", "analysis", "paper", "weekly"]);
+// «في العمق» (feature) joined on 2026-09-24; its first test run was lost at this very line, after passing every check.
+export const KINDS = new Set(["news", "explainer", "analysis", "paper", "weekly", "feature"]);
 
 /** Serializes an article as Markdown with YAML frontmatter. `kind` is "news" (default), "explainer", "analysis" or "paper". */
 /** `pending: true` writes the article as a draft: it stays out of the built site until the editor publishes it. */

@@ -40,9 +40,13 @@ place(cover);
 // The column beside the cover is the paper's own voice: one reading of each kind, so the column
 // never shows three items of the same shape under the same label.
 // The week's review leads the column in the days after it appears; otherwise the latest analysis does.
+// «في العمق» (the weekly in-depth piece, 2026-09-24) takes the research reading's place for its first three
+// days: the column is three readings wide by design (three columns on a tablet).
+const freshFeature = articles.find((a) => a.data.kind === "feature" && Date.now() - Date.parse(a.data.publishedAt) < 3 * 864e5);
 const readings = [
   ...articles.filter((a) => a.data.kind === "weekly" || a.data.kind === "analysis").slice(0, 1),
-  ...(["explainer", "paper"] as const).flatMap((kind) => articles.filter((a) => a.data.kind === kind).slice(0, 1)),
+  ...articles.filter((a) => a.data.kind === "explainer").slice(0, 1),
+  ...(freshFeature ? [freshFeature] : articles.filter((a) => a.data.kind === "paper").slice(0, 1)),
 ];
 const secondary = byImportance(unplaced(news).slice(0, 8)).slice(0, 2);
 place(secondary);
@@ -113,7 +117,7 @@ const hubs = [
   { id: "analysis", kind: "analysis", more: "كل التحليلات" },
   { id: "explainers", kind: "explainer", more: "كل المواد" },
 ]
-  .map((h) => ({ ...h, section: getSection(h.id), items: articles.filter((a) => a.data.kind === h.kind || (h.id === "explainers" && a.data.kind === "paper") || (h.id === "analysis" && a.data.kind === "weekly")).slice(0, 4) }))
+  .map((h) => ({ ...h, section: getSection(h.id), items: articles.filter((a) => a.data.kind === h.kind || (h.id === "explainers" && a.data.kind === "paper") || (h.id === "analysis" && (a.data.kind === "weekly" || a.data.kind === "feature"))).slice(0, 4) }))
   .filter((h) => h.items.length > 0);
 
 // A picture is printed once per page even when two stories share it.

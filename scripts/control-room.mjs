@@ -242,7 +242,7 @@ function coverage(live) {
   const now = Date.now();
   const rows = {};
   for (const id of NEWS_SECTIONS) rows[id] = { id, name: SECTION_NAME[id], day: 0, week: 0, last: null };
-  for (const k of ["explainer", "analysis", "paper", "weekly"]) rows[k] = { id: k, name: { explainer: "Explainers", analysis: "Analyses", paper: "Paper readings", weekly: "Week's review" }[k], day: 0, week: 0, last: null };
+  for (const k of ["explainer", "analysis", "paper", "weekly", "feature"]) rows[k] = { id: k, name: { explainer: "Explainers", analysis: "Analyses", paper: "Paper readings", weekly: "Week's review", feature: "In depth (في العمق)" }[k], day: 0, week: 0, last: null };
   for (const a of live) {
     const key = a.kind === "news" ? a.section : a.kind;
     const r = rows[key];
@@ -716,7 +716,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
       <div class="get">
         <div class="row"><button class="quiet" onclick="run('news')">News stories</button><label>in <select id="newsSection"><option value="">all sections</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option><option value="defense">الدفاع</option></select></label><label><select id="limit"><option>2</option><option selected>4</option><option>6</option><option>8</option></select> stories</label></div>
         <div class="row"><button class="quiet" onclick="run('explainer')">An explainer</button><button class="quiet" onclick="run('analysis')">An analysis</button><label>of <select id="analysisSection"><option value="">the week</option><option value="defense">defence only</option><option value="economy">الاقتصاد only</option><option value="markets">الأسواق only</option><option value="energy">الطاقة only</option></select></label></div>
-        <div class="row"><button class="quiet" onclick="run('paper')">A research paper</button><button class="quiet" onclick="run('weekly')">The week's review</button><button class="quiet" onclick="run('pull')">Sync from GitHub</button></div>
+        <div class="row"><button class="quiet" onclick="run('paper')">A research paper</button><button class="quiet" onclick="run('weekly')">The week's review</button><button class="quiet" onclick="run('feature')">In depth (في العمق)</button><button class="quiet" onclick="run('pull')">Sync from GitHub</button></div>
         <p class="m" style="margin:2px 0 0">These write drafts for your approval. News takes 8–10 minutes for four stories; the others 3–5.</p>
       </div>
       <h2>What runs on its own</h2>
@@ -732,7 +732,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
   <div class="bar">
     <input type="text" id="f-q" placeholder="Search a headline…" oninput="renderLive()">
     <select id="f-section" onchange="renderLive()"><option value="">every section</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option><option value="defense">الدفاع</option><option value="analysis">تحليلات</option><option value="explainers">مدخل</option></select>
-    <select id="f-kind" onchange="renderLive()"><option value="">every kind</option><option value="news">news</option><option value="analysis">analysis</option><option value="explainer">explainer</option><option value="paper">paper</option><option value="weekly">weekly</option></select>
+    <select id="f-kind" onchange="renderLive()"><option value="">every kind</option><option value="news">news</option><option value="analysis">analysis</option><option value="explainer">explainer</option><option value="paper">paper</option><option value="weekly">weekly</option><option value="feature">in depth</option></select>
     <select id="f-month" onchange="renderLive()"><option value="">any month</option></select>
     <select id="f-where" onchange="renderLive()"><option value="">anywhere</option><option value="front">on the front page</option><option value="section">section pages only</option></select>
     <span class="m" id="f-count"></span>
@@ -807,7 +807,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
 var LIVE_URL=${JSON.stringify(LIVE)};
 var SECTION=${JSON.stringify(SECTION_NAME)};
 var DOTS=${JSON.stringify(ICON.dots)};
-var KIND={news:'news',explainer:'explainer',analysis:'analysis',paper:'paper reading',weekly:'weekly review'};
+var KIND={news:'news',explainer:'explainer',analysis:'analysis',paper:'paper reading',weekly:'weekly review',feature:'in depth'};
 var WHERE={lead:'Front page · the lead','cover 2':'Front page · cover 2','cover 3':'Front page · cover 3','cover 4':'Front page · cover 4','cover 5':'Front page · cover 5',ticker:'Front page · ticker',section:'Section page',hub:'Its hub'};
 var esc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
 var rtl=function(s){return /[\\u0600-\\u06FF]/.test(s)};
@@ -1020,6 +1020,7 @@ const server = http.createServer(async (req, res) => {
         analysis: ["an analysis", "node", ["pipeline/run.mjs", "--draft", "--mode=analysis"]],
         paper: ["a research paper", "node", ["pipeline/run.mjs", "--draft", "--mode=paper"]],
         weekly: ["the week's review", "node", ["pipeline/run.mjs", "--draft", "--mode=weekly"]],
+        feature: ["an in-depth piece (في العمق)", "node", ["pipeline/run.mjs", "--draft", "--mode=feature"]],
         build: ["build & local preview", "npm", ["run", "build", "&&", "npx", "astro", "preview", "--port", "4325", "--host", "127.0.0.1"], { env: { KHAZENDAR_SHOW_DRAFTS: "1" } }],
         pull: ["sync from GitHub", "git", ["pull", "--rebase", "--autostash", "-X", "theirs", "pages", "main"]],
       };

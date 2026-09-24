@@ -26,6 +26,7 @@ const bySlug = new WeakMap<Article[], Map<string, Article>>();
 export function analysisDesk(article: Article, all: Article[]): Desk | null {
   const kind = article.data.kind;
   if (kind === "weekly") return { id: "weekly", label: "حصاد الأسبوع" };
+  if (kind === "feature") return { id: "feature", label: "في العمق" };
   if (kind !== "analysis") return null;
   let index = bySlug.get(all);
   if (!index) {

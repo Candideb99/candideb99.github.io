@@ -175,18 +175,22 @@ const STUTTER = /(?<![؀-ۿ])([؀-ۿ]{3,})\s+\1(?![؀-ۿ])/;
  * The hedges an expectation is written with, read through an attached clitic (وقد، ومن المتوقع), in two
  * kinds (see hedgeKind): what is uncertain and what is promised. A rewrite may say a hedge another way of
  * the same kind («يرجّح أن» → «والأرجح أن»), never drop it from its claim. "يعد" counts only in its promise
- * sense (يعد بخفض), never as "is considered". "قد" is a hedge only before a present-tense verb («قد يرفع»);
- * before a past verb it is emphasis («وقد ارتفع»، «فقد قفز»), and "لقد" never hedges.
+ * sense (يعد بخفض), never as "is considered". "قد" is a hedge only before a present-tense verb («قد يرفع»،
+ * «قد تتراجع»); before a past verb it is emphasis («وقد ارتفع»، «فقد قفز»), and "لقد" never hedges. A verb in
+ * «ن» after it is past in these stories («فقد نقلت»، and «فقد نحو 3%» is the verb "lost"), and so is one in
+ * «ت» that ends in «ت» («وقد تراجعت»): on 2026-09-24 «فقد نقلت «ذا ناشونال»» read as a hedge refused every
+ * desk rewrite of the first في العمق body. "يقدّر" and "تقديرات" leave a figure an estimate. Marks are
+ * read through («يُتوقع» is «يتوقع»).
  */
 // Word edges are letters and marks, not the Arabic block: «،» and «؛» sit inside it, and «والأرجح،» must count.
-const HEDGES = new RegExp(`(?<![\\p{L}\\p{M}])${CLITIC}(?:ال)?(يتجه|تتجه|قد(?<!لقد)(?= [يتن])|من المتوقع|متوقع|متوقعة|مرشح|مرشحة|محتمل|محتملة|من المحتمل|أرجح|مرجح|يُرجَّح|يُرجّح|يرجّح|يرجح|ترجح|ترجّح|ربما|يبدو|تبدو|يُستبعد|يستبعد|يتوقع|تتوقع|توقعات|توقع|تعهد|تعهدت|يعد(?=(?: [؀-ۿ]+){0,2} ب[؀-ۿ])|تعد(?=(?: [؀-ۿ]+){0,2} ب[؀-ۿ])|وعد|وعدت|يعتزم|تعتزم|يخطط|تخطط|قريباً|قريبا)(?![\\p{L}\\p{M}])`, "gu");
+const HEDGES = new RegExp(`(?<![\\p{L}\\p{M}])${CLITIC}(?:ال)?(يتجه|تتجه|قد(?<!لقد)(?= (?:ي|ت(?![\\p{L}\\p{M}]*ت(?![\\p{L}\\p{M}]))))|من المتوقع|متوقع|متوقعة|مرشح|مرشحة|محتمل|محتملة|من المحتمل|أرجح|مرجح|يرجح|ترجح|ربما|يبدو|تبدو|يستبعد|يتوقع|تتوقع|توقعات|توقع|يقدر|تقدر|يقدرون|تقديرات|تعهد|تعهدت|يعد(?=(?: [؀-ۿ]+){0,2} ب[؀-ۿ])|تعد(?=(?: [؀-ۿ]+){0,2} ب[؀-ۿ])|وعد|وعدت|يعتزم|تعتزم|يخطط|تخطط|قريبا)(?![\\p{L}\\p{M}])`, "gu");
 // Two kinds: what is uncertain (a forecast or a possibility: «تتوقع المنظمة» may become «ترجّح المنظمة», both
 // leave the claim open) and what is promised (a pledge or a plan is not a likelihood).
 function hedgeKind(word) {
-  if (/^(?:تعهد|تعهدت|يعد|تعد|وعد|وعدت|يعتزم|تعتزم|يخطط|تخطط|قريباً|قريبا)$/.test(word)) return "promised";
+  if (/^(?:تعهد|تعهدت|يعد|تعد|وعد|وعدت|يعتزم|تعتزم|يخطط|تخطط|قريبا)$/.test(word)) return "promised";
   return "uncertain";
 }
-const hedgeKinds = (text) => new Set([...String(text ?? "").matchAll(HEDGES)].map((m) => hedgeKind(m[1])));
+const hedgeKinds = (text) => new Set([...String(text ?? "").replace(/\p{M}/gu, "").matchAll(HEDGES)].map((m) => hedgeKind(m[1])));
 const sentencesOf = (text) => String(text ?? "").split(/(?<=[.؟!])\s+|\n+/).map((s) => s.trim()).filter((s) => s.split(/\s+/).length >= 3);
 
 /**
@@ -196,7 +200,11 @@ const sentencesOf = (text) => String(text ?? "").split(/(?<=[.؟!])\s+|\n+/).map
  * nothing. Returns the first claim that came back as an assertion, or null.
  */
 function assertedClaim(before, after) {
-  const target = sentencesOf(after).map((s) => ({ s, words: new Set(contentWords(s)) }));
+  // The sentence after is read with it only inside the same paragraph: a split sentence stays in its paragraph,
+  // and the next paragraph's own «قد» must not cover a forecast turned into a fact.
+  const target = String(after ?? "")
+    .split(/\n\s*\n/)
+    .flatMap((para, p) => sentencesOf(para).map((s) => ({ s, p, words: new Set(contentWords(s)) })));
   for (const sentence of sentencesOf(before)) {
     const kinds = hedgeKinds(sentence);
     if (!kinds.size) continue;
@@ -209,7 +217,8 @@ function assertedClaim(before, after) {
       if (share > score) [best, score] = [i, share];
     });
     if (best < 0 || score < 0.34) continue;
-    const kept = hedgeKinds(`${target[best].s} ${target[best + 1]?.s ?? ""}`);
+    const next = target[best + 1]?.p === target[best].p ? target[best + 1].s : "";
+    const kept = hedgeKinds(`${target[best].s} ${next}`);
     if ([...kinds].some((k) => !kept.has(k))) return sentence;
   }
   return null;
@@ -407,14 +416,17 @@ Rewrite what reads as translation, what repeats and what the problems above name
 {${fields.map((f) => `"${f}": "..."`).join(", ")}, "changes": ["<one short note in Arabic per change: what was wrong and what you did>"]}
 If nothing needs changing, return the fields unchanged and an empty "changes" list.`;
 
+  const bodyWords = includeBody ? String(draft.body ?? "").split(/\s+/).filter(Boolean).length : 0;
+  const deskTimeout = !includeBody ? 240000 : bodyWords > 900 ? 900000 : 480000;
   const { data, model } = await chat({
     role,
     system: DESK_SYSTEM,
     user,
     temperature: 0.2,
     maxTokens: includeBody ? 8000 : 2400,
-    // A whole story comes back in one answer; four minutes was not always enough for the body (2026-09-23).
-    timeoutMs: includeBody ? 480000 : 240000,
+    // A whole story comes back in one answer; four minutes was not always enough for the body (2026-09-23), and
+    // eight ran out on the 1,400-word body of «في العمق» (2026-09-24), whose retry took seven minutes fifty.
+    timeoutMs: deskTimeout,
     log,
     validate: validateDeskAnswer(fields),
   });
@@ -446,7 +458,7 @@ REFUSED REWRITE
 ${data.body}`,
         temperature: 0.1,
         maxTokens: 8000,
-        timeoutMs: 480000,
+        timeoutMs: deskTimeout,
         log,
         validate: validateDeskAnswer(["body"]),
       });

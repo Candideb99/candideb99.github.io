@@ -10,6 +10,7 @@
  *   node pipeline/run.mjs --mode=analysis   # one house analysis connecting recent stories
  *   node pipeline/run.mjs --mode=paper      # one plain-Arabic reading of a recent open-access research paper
  *   node pipeline/run.mjs --mode=weekly     # the week's review from the paper's own stories (Fridays)
+ *   node pipeline/run.mjs --mode=feature    # «في العمق», the in-depth piece on one running file (Sundays)
  *
  * Every model call goes to Claude on the owner's subscription: CLAUDE_CODE_OAUTH_TOKEN from the environment
  * or from .env (see lib/env.mjs and lib/llm.mjs).
@@ -20,8 +21,8 @@ import path from "node:path";
 import process from "node:process";
 import { fetchFeed } from "./lib/feeds.mjs";
 import { extractArticle } from "./lib/extract.mjs";
-import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectPaper, selectStories } from "./lib/select.mjs";
-import { ANALYSIS_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, newsFloor, reviseArticle, writeAnalysis, writeArticle, writeExplainer, writePaperReading, writeWeekly } from "./lib/write.mjs";
+import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectFeatureTopic, selectPaper, selectStories } from "./lib/select.mjs";
+import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, newsFloor, reviseArticle, writeAnalysis, writeArticle, writeExplainer, writeFeature, writePaperReading, writeWeekly } from "./lib/write.mjs";
 import { critique, programmaticChecks } from "./lib/verify.mjs";
 import { copyEdit } from "./lib/copydesk.mjs";
 import { pickImage } from "./lib/images.mjs";
@@ -247,7 +248,7 @@ async function copyDeskPass(draft, { includeBody = true, kind = "news", sources 
  * drafts were rejected at this point against 30 published, most for one phrase («من قبل»، «يُعتبر») or a
  * lede a few words too long, each after the writer, the desk and the critic had already been paid for.
  */
-const WRITERS_FAULT = /أرقام لا تظهر في المصادر|نسبة النص العربي منخفضة|قصير جداً|ناقصة؛ العناوين الفرعية|العنوان مكرر لمقال|تكرر مقالاً منشوراً|يقارن بين ما أوردته المصادر/;
+const WRITERS_FAULT = /أرقام لا تظهر في المصادر|نسبة النص العربي منخفضة|قصير جداً|ناقصة؛ العناوين الفرعية|العنوان مكرر لمقال|تكرر مقالاً منشوراً|يقارن بين ما أوردته المصادر|بلا جدول زمني/;
 
 /** One more desk pass on a revised draft whose remaining faults are all the desk's trade; the checks run again after it. */
 async function lastDeskPass(draft, checks, { sources, kind = "news", recheck }) {
@@ -532,7 +533,8 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   const entry = { headline, section, outcome: "" };
   // A first pass under 5 is not worth a revision, except for the week's review, whose length and
   // many sources draw a 4 with a "revise" list from the free critic; it gets its round like any piece.
-  if (review.verdict === "reject" || (review.score < 5 && kind !== "weekly")) {
+  // The long pieces (the week's review, «في العمق») draw a low first score from a few fixable slips; they get their revision.
+  if (review.verdict === "reject" || (review.score < 5 && kind !== "weekly" && kind !== "feature")) {
     entry.outcome = `rejected (${review.score}): ${review.summary}`;
     report.push(entry);
     return { report, published: 0 };
@@ -937,8 +939,69 @@ function runWeekly() {
   });
 }
 
+/** «في العمق» reads a file's stories of this many days; a file it told in the last three weeks waits. */
+const FEATURE_DAYS = 45;
+const FEATURE_REST_DAYS = 21;
+/** The regional desks are shelves, not files: too broad to tell as one story. */
+const REGION_TAGS = new Set(["الخليج", "مصر والمغرب العربي", "الشرق الأوسط", "أوروبا", "الأمريكتان", "آسيا", "أفريقيا", "عالمي"]);
+
+/**
+ * «في العمق», the weekly in-depth piece (the owner's Task 5, 2026-09-24, after reading الشرق الأوسط beside
+ * Khazendar): the running files are the tags of the last 45 days' news with five stories or more, less the regional
+ * desks and any file told in the last three weeks; the features editor picks one and the question it answers,
+ * and the piece is written from the file's own stories, oldest first, every figure traceable to them.
+ */
+function runFeature() {
+  return runHub("feature", "analysis", async (report) => {
+    const existing = await loadExistingArticles();
+    const news = existing.filter((a) => a.kind === "news" && hoursSince(a.publishedAt) < 24 * FEATURE_DAYS);
+    const features = existing.filter((a) => a.kind === "feature");
+    const told = new Set(features.filter((a) => hoursSince(a.publishedAt) < 24 * FEATURE_REST_DAYS).flatMap((a) => (a.tags ?? []).slice(0, 1)));
+    const byTag = new Map();
+    for (const a of news) for (const t of a.tags ?? []) {
+      if (REGION_TAGS.has(t) || told.has(t)) continue;
+      if (!byTag.has(t)) byTag.set(t, []);
+      byTag.get(t).push(a);
+    }
+    const files = [...byTag.entries()]
+      .filter(([, list]) => list.length >= 5)
+      .map(([tag, list]) => ({ tag, stories: list.slice(0, 14) }))
+      .sort((a, b) => b.stories.length - a.stories.length || String(b.stories[0].publishedAt).localeCompare(String(a.stories[0].publishedAt)))
+      .slice(0, 8);
+    if (!files.length) {
+      log("no running file with five stories or more in the last 45 days");
+      return { report, published: 0 };
+    }
+    log(`feature: ${files.length} running files: ${files.map((f) => `${f.tag} (${f.stories.length})`).join(", ")}`);
+    const { topic, stories, model: editorModel } = await selectFeatureTopic({ files, existingFeatures: features.map((a) => a.title), log });
+    // The file told in order: its stories oldest first.
+    const ordered = [...stories].sort((a, b) => String(a.publishedAt).localeCompare(String(b.publishedAt)));
+    log(`feature file: ${topic.file}; theme: ${topic.theme_ar}; question: ${topic.question_ar}; ${ordered.length} stories`);
+    for (const a of ordered) log(`  story: ${String(a.publishedAt).slice(0, 10)} ${a.title}`);
+    const sources = internalSources(ordered, { withText: true });
+    const { draft, model: writerModel } = await writeFeature({ topic, stories: ordered, log });
+    // The file's own tag leads the piece's tags, so the rest period above can find it.
+    draft.tags = [topic.file, ...(draft.tags ?? []).filter((t) => t !== topic.file)].slice(0, 6);
+    return finishHubPiece({
+      kind: "feature",
+      section: "analysis",
+      draft,
+      sources,
+      checkSources: sources,
+      recentTitles: features.map((a) => a.title),
+      wordLimits: FEATURE_WORDS,
+      story: { angle: topic.angle || topic.question_ar },
+      headlineHint: topic.theme_ar,
+      headline: topic.theme_ar,
+      models: { editor: editorModel, writer: writerModel },
+      existing,
+      report,
+    });
+  });
+}
+
 /** News runs through runHub like the hub modes: an editor that fails outright still leaves a report and the outputs. */
-const RUNNERS = { news: () => runHub("news", "news", runNews), explainer: runExplainer, analysis: runAnalysis, paper: runPaper, weekly: runWeekly };
+const RUNNERS = { news: () => runHub("news", "news", runNews), explainer: runExplainer, analysis: runAnalysis, paper: runPaper, weekly: runWeekly, feature: runFeature };
 
 async function main() {
   const started = Date.now();

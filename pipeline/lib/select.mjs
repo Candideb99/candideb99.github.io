@@ -166,7 +166,7 @@ const looseTitle = (t) =>
     .trim()
     .toLowerCase();
 
-function matchTitles(titles, articles) {
+function matchTitles(titles, articles, max = 5) {
   const byLoose = new Map(articles.map((a) => [looseTitle(a.title), a]));
   const matched = [];
   for (const raw of Array.isArray(titles) ? titles : []) {
@@ -175,7 +175,7 @@ function matchTitles(titles, articles) {
     const hit = byLoose.get(key) ?? articles.find((a) => looseTitle(a.title).startsWith(key.slice(0, 40)) || key.startsWith(looseTitle(a.title).slice(0, 40)));
     if (hit && !matched.includes(hit)) matched.push(hit);
   }
-  return matched.slice(0, 5);
+  return matched.slice(0, max);
 }
 
 /**
@@ -224,6 +224,49 @@ Return JSON:
     angle: String(data.angle ?? "").trim(),
   };
   return { topic, related, model };
+}
+
+const FEATURE_EDITOR_SYSTEM = `You are the features editor of خازندار, an Arabic economics publication. Once a week you commission «في العمق», its in-depth piece: the whole story of ONE running file told from Khazendar's own reporting of the past weeks, the way الشرق الأوسط's in-depth pages tell one subject. You answer with one JSON object only.`;
+
+/**
+ * Picks the file for «في العمق» (2026-09-24): among the running files (tags with several stories in the last
+ * weeks), the one whose story has moved the most and matters most to Arab readers, with the question the piece
+ * answers. `files` is [{ tag, stories: [{title, publishedAt, section, lede}] }], busiest first.
+ * Returns { topic: { file, theme_ar, question_ar, angle }, stories: [articles], model }.
+ */
+export async function selectFeatureTopic({ files, existingFeatures, log }) {
+  const lines = files.map((f, i) => `${i + 1}. FILE «${f.tag}» — ${f.stories.length} stories:\n${f.stories.map((a) => `   - ${String(a.publishedAt ?? "").slice(0, 10)} [${a.section}] "${a.title}" — ${truncate(a.lede ?? "", 160)}`).join("\n")}`);
+  const user = `Today is ${new Date().toISOString().slice(0, 10)} (UTC).
+
+خازندار'S RUNNING FILES OF THE PAST WEEKS (tag, then its stories: date, section, exact title, lede)
+${lines.join("\n\n")}
+
+«في العمق» PIECES ALREADY PUBLISHED (do not choose a file one of these already told)
+${existingFeatures.map((t) => `- ${t}`).join("\n") || "- (none)"}
+
+TASK
+Choose ONE file for this week's «في العمق». Prefer the file whose story has MOVED over the weeks (several dated steps, figures that changed, a turn or a reversal), that matters most to Arab readers (the Gulf, Egypt and the region's economies, energy, trade, their currencies and budgets), and whose stories carry enough facts for 1,200 words without padding. The theme and the question must be answerable from the listed stories alone: no framing the stories do not support, no dramatic metaphor, a question the stories can answer.
+Return JSON:
+{"file": "<the tag exactly as listed>", "theme_ar": "<the subject in Arabic, one line>", "question_ar": "<the single question the piece answers, in Arabic>", "angle": "<one Arabic sentence: the story the file tells and for whom it matters>", "stories": ["<5 to 12 titles copied EXACTLY from that file's list, the ones the piece needs>"]}`;
+  let chosen = null;
+  let picked = [];
+  const { data, model } = await chat({
+    role: "editor",
+    system: FEATURE_EDITOR_SYSTEM,
+    user,
+    timeoutMs: 300000,
+    log,
+    validate: (d) => {
+      chosen = files.find((f) => looseTitle(f.tag) === looseTitle(d?.file));
+      if (!chosen) throw new Error(`file "${d?.file}" is not one of the listed tags`);
+      if (!d?.theme_ar || !d?.question_ar) throw new Error("theme_ar or question_ar missing");
+      picked = matchTitles(d.stories, chosen.stories, 12);
+    },
+  });
+  // The editor's own choice of stories when it names at least five of them; otherwise the file's stories.
+  const stories = picked.length >= 5 ? picked : chosen.stories.slice(0, 12);
+  const topic = { file: chosen.tag, theme_ar: String(data.theme_ar).trim(), question_ar: String(data.question_ar).trim(), angle: String(data.angle ?? "").trim() };
+  return { topic, stories, model };
 }
 
 const PAPER_SYSTEM = `You are the research editor of خازندار, an Arabic economics publication. Twice a week you choose ONE recently published, freely available economics research paper for the paper's plain-Arabic reading (قراءة في ورقة بحثية): the papers that matter to an educated Arab reader, explained without jargon. You answer with one JSON object only.`;

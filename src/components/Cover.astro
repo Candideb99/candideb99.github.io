@@ -102,13 +102,15 @@ const { stories, readings = [], photoIds, interval = 6000, all = [], related = n
       <div class="cover__readings">
         {readings.map((a) => {
           const analysis = a.data.kind === "analysis" || a.data.kind === "weekly";
-          const dek = excerpt(a.data.subtitle || a.data.lede, analysis ? 100 : 70);
+          // «في العمق» keeps the longer dek and its date like the analysis, without taking the lead's size.
+          const dated = analysis || a.data.kind === "feature";
+          const dek = excerpt(a.data.subtitle || a.data.lede, dated ? 100 : 70);
           return (
             <article class={`cover__reading${analysis ? " cover__reading--lead" : ""}`} data-section={a.data.section}>
               <span class="kicker">{analysisLabel(a, all) ?? kindLabel(a.data.kind, a.data.section)}</span>
               <h3 class="cover__reading-title"><a href={articleHref(a)} set:html={isolateNumbers(a.data.title)} /></h3>
               {dek && <p class="cover__reading-dek" set:html={isolateNumbers(dek)} />}
-              {analysis && <p class="meta"><time datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time></p>}
+              {dated && <p class="meta"><time datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time></p>}
             </article>
           );
         })}
