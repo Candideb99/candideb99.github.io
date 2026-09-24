@@ -29,6 +29,7 @@ import { pickImage } from "./lib/images.mjs";
 import { ARTICLES_DIR, buildSlug, loadExistingArticles, serializeArticle } from "./lib/article.mjs";
 import { usage as llmUsage } from "./lib/llm.mjs";
 import { fingerprint, hoursSince, isoNow, sleep } from "./lib/util.mjs";
+import { pickDataChart } from "./lib/datacharts.mjs";
 
 const root = process.cwd();
 const STATE_PATH = path.join(root, "pipeline", "state", "seen.json");
@@ -628,6 +629,10 @@ function runExplainer() {
     log(`explainer topic: ${topic.concept_ar} (${topic.concept_en})`);
     const related = recent.filter((a) => (topic.related_titles ?? []).includes(a.title)).slice(0, 4);
     const { draft, model: writerModel } = await writeExplainer({ topic, relatedArticles: related, log });
+    // A chart of official data when one shows what the piece explains (the owner, 2026-09-24: "explainers usually add
+    // graphs"); Claude chooses from a menu, code fetches the figures from the IMF or the World Bank.
+    const { chart: dataChart } = await pickDataChart({ draft, log });
+    if (dataChart) Object.assign(draft, { chart: dataChart, dataChart: true });
     return finishHubPiece({
       kind: "explainer",
       section: "explainers",

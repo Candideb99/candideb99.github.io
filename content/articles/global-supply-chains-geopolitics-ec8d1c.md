@@ -20,7 +20,25 @@ tags:
 regions:
   - عالمي
 readingMinutes: 3
-chart: null
+chart:
+  type: bar
+  title: التجارة الخارجية في 2025
+  unit: "% من الناتج المحلي"
+  source: البنك الدولي، مؤشرات التنمية العالمية
+  categories:
+    - السعودية
+    - مصر
+    - المغرب
+    - الصين
+    - ألمانيا
+  series:
+    - name: التجارة الخارجية (2025)
+      values:
+        - 57.9
+        - 51.3
+        - 93.1
+        - 38
+        - 78.5
 table: null
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/World_Trade_Organization_-_Session_132_Auto_Industry_climate%2C_tech_and_geopolitical_challenges%2C_13_September_2024_%2853999928679%29.jpg/1280px-World_Trade_Organization_-_Session_132_Auto_Industry_climate%2C_tech_and_geopolitical_challenges%2C_13_September_2024_%2853999928679%29.jpg

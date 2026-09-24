@@ -110,7 +110,9 @@ export function programmaticChecks(draft, sources, { recentTitles = [], newsTitl
   } else if (words < minWords) issues.push(`المقال قصير جداً (${words} كلمة). وسّع السياق من المصادر دون اختراع معلومات، بحيث لا يقل عن ${minWords < 120 ? 120 : minWords < 200 ? 160 : 260} كلمة.`);
 
   // Data visuals must be built only from figures in the sources; a visual with invented numbers is dropped, not the article.
-  if (draft.chart) {
+  // A chart of official data (pipeline/lib/datacharts.mjs) was filled by code from the IMF or the World Bank, never
+  // from the sources or a model: it is not held to the sources.
+  if (draft.chart && !draft.dataChart) {
     const chartNumbers = [draft.chart.title, draft.chart.unit, ...draft.chart.categories, ...draft.chart.series.flatMap((s) => [s.name, ...s.values])].join(" ");
     const bad = grounded ? ungroundedNumbers(chartNumbers, sourceTexts, { ignoreYears: false }) : [];
     if (bad.length || !grounded) {
@@ -258,7 +260,7 @@ export async function critique({ draft, sources, explainer = false, analysis = f
 ${[rubric.material, material || (explainer ? "" : "(no sources supplied)")].filter(Boolean).join("\n\n")}
 
 DRAFT ARTICLE (JSON)
-${JSON.stringify({ title: draft.title, subtitle: draft.subtitle, lede: draft.lede, body: draft.body, key_facts: draft.keyFacts, why_it_matters: draft.whyItMatters, chart: draft.chart, table: draft.table }, null, 2)}
+${JSON.stringify({ title: draft.title, subtitle: draft.subtitle, lede: draft.lede, body: draft.body, key_facts: draft.keyFacts, why_it_matters: draft.whyItMatters, chart: draft.dataChart ? `(a chart of official data, filled by code from ${draft.chart?.source ?? "the IMF or the World Bank"}; not in the sources, and not to be judged against them)` : draft.chart, table: draft.table }, null, 2)}
 
 CHECK
 1. ${rubric.facts}

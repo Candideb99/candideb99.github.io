@@ -25,7 +25,29 @@ tags:
 regions:
   - عالمي
 readingMinutes: 3
-chart: null
+chart:
+  type: line
+  title: سعر فائدة الإقراض في مصر والولايات المتحدة
+  unit: "%"
+  source: البنك الدولي، مؤشرات التنمية العالمية
+  categories:
+    - "2018"
+    - "2019"
+    - "2020"
+    - "2021"
+  series:
+    - name: مصر
+      values:
+        - 18.3
+        - 16.1
+        - 11.4
+        - 9.4
+    - name: الولايات المتحدة
+      values:
+        - 4.9
+        - 5.3
+        - 3.5
+        - 3.3
 table: null
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Seat_of_the_European_Central_Bank_and_Frankfurt_Skyline_at_dawn_20150422_1.jpg/1280px-Seat_of_the_European_Central_Bank_and_Frankfurt_Skyline_at_dawn_20150422_1.jpg

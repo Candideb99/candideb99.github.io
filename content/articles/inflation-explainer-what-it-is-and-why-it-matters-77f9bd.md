@@ -23,7 +23,31 @@ tags:
 regions:
   - عالمي
 readingMinutes: 3
-chart: null
+chart:
+  type: bar
+  title: معدل التضخم السنوي في 2025
+  unit: "%"
+  source: صندوق النقد الدولي، آفاق الاقتصاد العالمي
+  categories:
+    - مصر
+    - السعودية
+    - الإمارات
+    - الكويت
+    - الأردن
+    - المغرب
+    - تونس
+    - العراق
+  series:
+    - name: معدل التضخم السنوي (2025)
+      values:
+        - 20.4
+        - 2
+        - 1.3
+        - 2.4
+        - 1.8
+        - 0.8
+        - 5.3
+        - 0.3
 table: null
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Rostov-on-Don%2C_State_Bank_Building%2C_Central_Bank%2C_Russia.jpg/1280px-Rostov-on-Don%2C_State_Bank_Building%2C_Central_Bank%2C_Russia.jpg

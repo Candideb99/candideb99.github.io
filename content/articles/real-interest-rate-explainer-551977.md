@@ -25,7 +25,38 @@ tags:
 regions:
   - عالمي
 readingMinutes: 3
-chart: null
+chart:
+  type: line
+  title: سعر الفائدة الحقيقي في مصر والأردن
+  unit: "%"
+  source: البنك الدولي، مؤشرات التنمية العالمية
+  categories:
+    - "2018"
+    - "2019"
+    - "2020"
+    - "2021"
+    - "2022"
+    - "2023"
+    - "2024"
+  series:
+    - name: مصر
+      values:
+        - -2.4
+        - 2.2
+        - 4.9
+        - 4.4
+        - 0.1
+        - -5.6
+        - -7
+    - name: الأردن
+      values:
+        - 6.2
+        - 7.9
+        - 7.8
+        - 5
+        - 4.5
+        - 7.2
+        - 6.5
 table: null
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/9/99/Federal_Reserve_Board_%28Board_of_Governors_of_the_Federal_Reserve_System%29_open_meeting%2C_April_2019.jpg

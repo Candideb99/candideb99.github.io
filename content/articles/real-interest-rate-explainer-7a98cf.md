@@ -23,7 +23,21 @@ tags:
 regions:
   - عالمي
 readingMinutes: 2
-chart: null
+chart:
+  type: bar
+  title: سعر الفائدة الحقيقي في 2025
+  unit: "%"
+  source: البنك الدولي، مؤشرات التنمية العالمية
+  categories:
+    - الكويت
+    - قطر
+    - الأردن
+  series:
+    - name: سعر الفائدة الحقيقي (2025)
+      values:
+        - 10.5
+        - 8.2
+        - 5.8
 table: null
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Federal_Reserve_Seattle_Branch_in_Renton%2C_WA_-_2021.jpg/1280px-Federal_Reserve_Seattle_Branch_in_Renton%2C_WA_-_2021.jpg

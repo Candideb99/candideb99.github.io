@@ -21,7 +21,21 @@ tags:
 regions:
   - عالمي
 readingMinutes: 2
-chart: null
+chart:
+  type: bar
+  title: صادرات الوقود في 2024
+  unit: "% من صادرات السلع"
+  source: البنك الدولي، مؤشرات التنمية العالمية
+  categories:
+    - الكويت
+    - السعودية
+    - قطر
+  series:
+    - name: صادرات الوقود (2024)
+      values:
+        - 90.7
+        - 79.4
+        - 83.8
 table: null
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Strait_of_Hormuz_%28MODIS_2020-12-04%29.jpg/1280px-Strait_of_Hormuz_%28MODIS_2020-12-04%29.jpg

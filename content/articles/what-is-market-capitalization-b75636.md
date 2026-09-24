@@ -29,7 +29,29 @@ tags:
 regions:
   - عالمي
 readingMinutes: 4
-chart: null
+chart:
+  type: bar
+  title: القيمة السوقية للشركات المدرجة في 2025
+  unit: "% من الناتج المحلي"
+  source: البنك الدولي، مؤشرات التنمية العالمية
+  categories:
+    - السعودية
+    - قطر
+    - الكويت
+    - عُمان
+    - مصر
+    - المغرب
+    - الأردن
+  series:
+    - name: القيمة السوقية للشركات المدرجة (2025)
+      values:
+        - 184.7
+        - 82.1
+        - 109.5
+        - 37.7
+        - 17.2
+        - 62.5
+        - 60.7
 table: null
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/7/78/Market_centre_in_Tokyo_stock_exchange.jpg
