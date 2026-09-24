@@ -128,8 +128,11 @@ jobs:
           base_branch: "main"
           additional_permissions: "actions: read"
           # The commands a fix needs, and nothing else (the action allows no shell command by default).
+          # Opus 5.5 by name, like the newsroom (the owner, 2026-09-24: "use claude opus 5.5"; the action installs
+          # Claude Code 2.1.281, which runs it). Without --model the action ran its own default.
           claude_args: >-
             --max-turns 40
+            --model ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'claude-opus-5-5' }}
             --allowedTools "Bash(gh run list:*),Bash(gh run view:*),Bash(gh pr create:*),Bash(npm ci),Bash(npm run check),Bash(npm run build),Bash(node scripts/gate.mjs),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(git pull:*),Bash(git checkout:*),Bash(git switch:*),Bash(echo:*),Bash(cat:*),Bash(ls:*),Bash(grep:*),Bash(head:*),Bash(tail:*),Bash(wc:*),Bash(find:*),Bash(sort:*),Read,Edit,Write,Glob,Grep"
           prompt: |
             You are the editor-in-chief of خازندار, an automated Arabic economics news website. You are

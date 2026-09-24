@@ -83,7 +83,8 @@ jobs:
           branch_prefix: "claude/"
           base_branch: "main"
           additional_permissions: "actions: read"
-          claude_args: "--max-turns 40"
+          # Opus 5.5 by name, like the newsroom (the owner, 2026-09-24: "use claude opus 5.5").
+          claude_args: "--max-turns 40 --model ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'claude-opus-5-5' }}"
           prompt: |
             You are the site agent of خازندار, an automated Arabic economics newspaper. Read
             CLAUDE.md, HERMES.md and README.md first; they explain where everything lives and the
