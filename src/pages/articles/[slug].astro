@@ -84,8 +84,10 @@ const jsonLd = [articleLd, breadcrumbLd];
   <article class="article wrap--article" data-section={d.section} data-pagefind-body data-pagefind-meta={`section:${d.section}`}>
     <header class="article__head">
       {topic && <span class="kicker"><a href={`/tags/${encodeURIComponent(topic)}/`}>{topic}</a></span>}
-      <h1 class="article__title" data-pagefind-meta={`title:${d.title}`} set:html={isolateNumbers(d.title)} />
-      {d.subtitle && <p class="article__dek" set:html={isolateNumbers(d.subtitle)} />}
+      {/* The headline outweighs the body in search, and the dek comes next (2026-09-24: «التضخم في مصر» ranked a US
+          story above «التضخم في مصر يتباطأ إلى 12.7%»). */}
+      <h1 class="article__title" data-pagefind-meta={`title:${d.title}`} data-pagefind-weight="10" set:html={isolateNumbers(d.title)} />
+      {d.subtitle && <p class="article__dek" data-pagefind-weight="4" set:html={isolateNumbers(d.subtitle)} />}
       <p class="meta article__meta">
         <span class="crumbs">
           <a href={sectionHref(d.section)} data-pagefind-meta={`sectionName:${sec.name}`}>{sectionLabel}</a>
@@ -131,7 +133,7 @@ const jsonLd = [articleLd, breadcrumbLd];
           <Content />
         </div>
         {more.length > 0 && (
-          <aside class="also" data-also aria-labelledby="also-head">
+          <aside class="also" data-also data-pagefind-ignore aria-labelledby="also-head">
             <span id="also-head" class="also__head ui">اقرأ أيضاً</span>
             <a class="also__link" href={articleHref(more[0])} set:html={isolateNumbers(more[0].data.title)} />
           </aside>
@@ -159,10 +161,12 @@ const jsonLd = [articleLd, breadcrumbLd];
         )}
         <Sources sources={sources} explainer={isHub} />
       </div>
+      {/* Other stories' headlines stay out of this story's search entry (data-pagefind-ignore below): the «الأحدث» rail
+          put the five newest headlines in every article, so «مضيق هرمز» matched all 147 (2026-09-24). */}
       <aside class="article__side">
         <KeyFacts facts={d.keyFacts} placement="side" />
         {more.length > 0 && (
-          <section class="side-related" aria-labelledby="side-related-title">
+          <section class="side-related" data-pagefind-ignore aria-labelledby="side-related-title">
             <h2 id="side-related-title" class="module__head">اقرأ أيضاً</h2>
             <div class="side-related__list">
               {more.map((a) => (
@@ -172,7 +176,7 @@ const jsonLd = [articleLd, breadcrumbLd];
           </section>
         )}
         {latestBeside.length > 0 && (
-          <section class="side-latest" aria-labelledby="side-latest-title">
+          <section class="side-latest" data-pagefind-ignore aria-labelledby="side-latest-title">
             <h2 id="side-latest-title" class="module__head"><a href="/latest/">الأحدث</a></h2>
             <div class="side-related__list">
               {latestBeside.map((a) => (

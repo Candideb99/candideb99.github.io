@@ -47,6 +47,32 @@ import Base from "@layouts/Base.astro";
       var mod = n % 100;
       return "<bdi>" + n + "</bdi> " + (mod >= 3 && mod <= 10 ? "نتائج" : "نتيجة");
     }
+    // A story whose headline carries every word of the search comes first, in the index's own order after that
+    // (2026-09-24: «التضخم في مصر» listed a US inflation story above «التضخم في مصر يتباطأ إلى 12.7%»). Words are
+    // compared without marks, tatweel or the variant alef, yaa and taa marbuta, and the small words are left out.
+    function norm(text) {
+      return String(text == null ? "" : text)
+        .replace(/[ً-ٰٟـ]/g, "")
+        .replace(/[أإآ]/g, "ا")
+        .replace(/ى/g, "ي")
+        .replace(/ة/g, "ه")
+        .toLowerCase();
+    }
+    var SMALL = ["في", "من", "على", "إلى", "عن", "مع", "و", "أو", "ما", "هل", "بين", "بعد", "قبل"].map(norm);
+    function words(q) {
+      return norm(q).split(/[^\p{L}\p{N}.%]+/u).filter(function (w) { return w && SMALL.indexOf(w) === -1; });
+    }
+    function headlinesFirst(items, q) {
+      var ws = words(q);
+      if (!ws.length) return items;
+      return items
+        .map(function (d, i) {
+          var title = norm((d.meta || {}).title);
+          return { d: d, i: i, all: ws.every(function (w) { return title.indexOf(w) !== -1; }) ? 1 : 0 };
+        })
+        .sort(function (a, b) { return b.all - a.all || a.i - b.i; })
+        .map(function (s) { return s.d; });
+    }
     function render(search, items) {
       var n = search.results.length;
       var shown = items.length < n ? "، تُعرض أول <bdi>" + items.length + "</bdi>" : "";
@@ -81,8 +107,9 @@ import Base from "@layouts/Base.astro";
             results.innerHTML = '<p class="search__hint">لا نتائج. جرّب كلمة أخرى أو اسم مؤسسة.</p>';
             return;
           }
-          return Promise.all(search.results.slice(0, 20).map(function (r) { return r.data(); })).then(function (items) {
-            render(search, items);
+          // Forty read, twenty shown: a headline match further down the index's list still reaches the top.
+          return Promise.all(search.results.slice(0, 40).map(function (r) { return r.data(); })).then(function (items) {
+            render(search, headlinesFirst(items, q).slice(0, 20));
           });
         });
       });
