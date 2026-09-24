@@ -29,14 +29,14 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Petroleum_sample.jpg/1280px-Petroleum_sample.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Oil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_01.jpg/1280px-Oil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_01.jpg
   width: 1280
-  height: 1279
-  alt: عينة من النفط الخام في أوعية مختبرية
-  credit: Nefronus · CC0 · ويكيميديا كومنز
-  license: CC0
-  licenseUrl: http://creativecommons.org/publicdomain/zero/1.0/deed.en
-  pageUrl: https://commons.wikimedia.org/wiki/File%3APetroleum_sample.jpg
+  height: 960
+  alt: ناقلة منتجات نفطية (صورة تعبيرية)
+  credit: Calistemon · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AOil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_01.jpg
 sources:
   - name: أويل برايس
     nameEn: OilPrice.com
