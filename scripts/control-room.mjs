@@ -45,6 +45,9 @@ const SCHEDULE = [
   { what: "A research paper", when: "Tuesdays and Fridays", utc: "09:31" },
   { what: "The week's review", when: "Fridays", utc: "15:37" },
   { what: "Defence and geopolitics reading", when: "Saturdays", utc: "10:07" },
+  { what: "In depth (في العمق)", when: "Sundays", utc: "07:47" },
+  { what: "Second look: stories re-read against their sources", when: "twice a day", utc: "03:53" },
+  { what: "Editor's round: photos, freshness, the week's numbers", when: "daily", utc: "07:17" },
   { what: "Market quotes and the calendar", when: "on every build, and every 2 hours", utc: null },
 ];
 
@@ -201,6 +204,14 @@ async function allArticles() {
     });
   }
   return out.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+}
+/** The daily checks' own records (the editor round writes them, 2026-09-25): photos and freshness, and the week's numbers. */
+async function stateFile(name) {
+  try {
+    return JSON.parse(await readFile(path.join(root, "pipeline", "state", name), "utf8"));
+  } catch {
+    return null;
+  }
 }
 async function latestRun() {
   try {
@@ -702,12 +713,13 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
     <details><summary>Show every line</summary><pre id="log"></pre></details>
   </div>
 
+  <p class="m" id="checks" style="margin:10px 0 0"></p>
   <p class="m" id="models-used" style="margin:10px 0 0"></p>
   <h2>Every part of the paper</h2>
   <div class="cov" id="cov"></div>
   <div class="hubs" id="hubs"></div>
 
-  <h2>Latest on the site <a href="#stories" class="m" style="font-weight:400;margin-inline-start:10px">all 126 stories, with search →</a></h2>
+  <h2>Latest on the site <a href="#stories" class="m" style="font-weight:400;margin-inline-start:10px">every story, with search →</a></h2>
   <table class="list"><thead><tr><th>Story</th><th>Where</th><th>Score</th><th>Sources</th><th></th></tr></thead><tbody id="latest"></tbody></table>
 
   <div class="cols">
@@ -858,7 +870,16 @@ function render(s){
   document.getElementById('latest').innerHTML=LIVE.slice(0,10).map(rowHtml).join('');
   var cl=s.modelsUsed.filter(function(m){return /^claude/.test(m.id)}).reduce(function(n,m){return n+m.n},0);
   var mu=document.getElementById('models-used');if(mu&&cl)mu.innerHTML+=' · <b>Claude wrote '+cl+' of them</b> — how much of your plan is left is shown only in the Claude app (Settings → Usage, or /usage in Claude Code); no script can read it.';
+  renderChecks(s);
   renderLive();
+}
+function renderChecks(s){
+  var q=s.quality&&s.quality.week,b=s.quality&&s.quality.weekBefore,h=s.health&&s.health.last,parts=[];
+  if(q){var sl=q.secondLook;parts.push('<b>Second look</b> '+sl.read+' stor'+(sl.read===1?'y':'ies')+' read again this week'+(sl.corrected?', '+sl.corrected+' corrected':'')+(sl.listed?', '+sl.listed+' with an error listed':''));
+    if(q.styleFaultsPerStory!=null)parts.push('<b>Style faults</b> '+q.styleFaultsPerStory+' a story'+(b&&b.styleFaultsPerStory!=null?' (last week '+b.styleFaultsPerStory+')':''))}
+  if(h){var ph=h.photos||{};parts.push('<b>Photos</b> '+(ph.pending||(ph.redo&&ph.redo.length)?(ph.pending||0)+' being checked'+(ph.redo&&ph.redo.length?', '+ph.redo.length+' replaced':''):'all in place'));
+    if(h.owner&&h.owner.length)parts.push('<b style="color:var(--amber)">Needs you: '+h.owner.map(esc).join('; ')+'</b>')}
+  document.getElementById('checks').innerHTML=parts.length?'Daily checks, no Claude unless something is wrong: '+parts.join(' · '):'';
 }
 function draft(a){return '<div class="draft">'+(a.image?'<img src="'+esc(a.image)+'" alt="">':'<div class="noimg">no photo</div>')+'<div><h3>'+esc(a.title)+'</h3><p>'+esc(a.subtitle)+'</p><div class="meta">'+esc(SECTION[a.section]||a.section)+' · '+esc(KIND[a.kind]||a.kind)+' · '+scoreTag(a.score)+' '+esc(a.verdict)+(a.hasChart?' · chart':'')+(a.hasTable?' · table':'')+' · '+a.sources.length+' sources'+(a.committed?' · from the cloud':'')+'</div><div class="acts"><button class="quiet sm" onclick="openPreview(\\''+esc(a.file)+'\\')">Read it</button><button class="go sm" onclick="publish(\\''+esc(a.file)+'\\')">Publish</button><button class="danger sm" onclick="discard(\\''+esc(a.file)+'\\',\\''+esc(a.slug)+'\\')">Discard</button></div></div></div>'}
 function renderLive(){
@@ -1006,6 +1027,8 @@ const server = http.createServer(async (req, res) => {
         })(),
         schedule: SCHEDULE,
         lastRun: await latestRun(),
+        quality: await stateFile("quality.json"),
+        health: await stateFile("health.json"),
         nextCloudRun: nextCloudRun(),
       });
     }

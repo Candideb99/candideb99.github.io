@@ -1,0 +1,150 @@
+{
+  "version": 1,
+  "days": [
+    {
+      "date": "2026-09-24",
+      "published": 13,
+      "news": 10,
+      "styleFaultsPerStory": 0,
+      "corrections": 1,
+      "read": 1,
+      "confirmedPerStory": 2,
+      "photosPending": 0
+    }
+  ],
+  "updatedAt": "2026-09-24T22:37:23.103Z",
+  "week": {
+    "published": 55,
+    "news": 47,
+    "revisedShare": 0.66,
+    "styleFaultsPerStory": 0.89,
+    "styleWarningsPerStory": 0.83,
+    "corrections": 12,
+    "secondLook": {
+      "read": 1,
+      "clean": 0,
+      "corrected": 1,
+      "stands": 0,
+      "refused": 0,
+      "listed": 0,
+      "unverifiable": 0,
+      "confirmedPerStory": 2
+    },
+    "runs": {
+      "count": 24,
+      "written": 36,
+      "refused": 10,
+      "callsPerStory": 13.1,
+      "note": "from the run reports kept (the newest 24)"
+    },
+    "recurring": [
+      {
+        "what": "style: الإسناد في كل جملة تقريباً (# من # جملة فيها «وفقاً/بحسب»)",
+        "stories": 11,
+        "examples": [
+          "bank-of-japan-raises-rates-to-31-year-high-d62cc8",
+          "china-increases-russian-oil-imports-august-2026-ac1178",
+          "global-markets-close-volatile-week-045574"
+        ]
+      },
+      {
+        "what": "style: عبارة مترجمة أو حشو: «#-#-#»",
+        "stories": 4,
+        "examples": [
+          "oil-decline-diplomacy-hope-d15314",
+          "trump-announces-ai-force-and-czar-f4c7aa",
+          "trump-xi-summit-washington-2026-4e439e"
+        ]
+      },
+      {
+        "what": "style: «لماذا يهمّ» تبدأ بـ«يعكس/يمثل/يُعدّ»",
+        "stories": 3,
+        "examples": [
+          "china-increases-russian-oil-imports-august-2026-ac1178",
+          "iran-gdp-contracts-10-percent-post-war-a88253",
+          "us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac"
+        ]
+      },
+      {
+        "what": "style: عبارة مترجمة أو حشو: «بتاريخ»",
+        "stories": 2,
+        "examples": [
+          "trump-xi-summit-washington-2026-4e439e",
+          "us-denmark-greenland-security-deal-eac792"
+        ]
+      },
+      {
+        "what": "newsroom: rejected after revision: عبارة مترجمة أو حشو",
+        "stories": 2,
+        "examples": []
+      },
+      {
+        "what": "newsroom: skipped: repeats a recent story («…»)",
+        "stories": 2,
+        "examples": []
+      }
+    ]
+  },
+  "weekBefore": {
+    "published": 48,
+    "news": 41,
+    "revisedShare": 0.73,
+    "styleFaultsPerStory": 1.32,
+    "styleWarningsPerStory": 0.9,
+    "corrections": 0,
+    "secondLook": {
+      "read": 0,
+      "clean": 0,
+      "corrected": 0,
+      "stands": 0,
+      "refused": 0,
+      "listed": 0,
+      "unverifiable": 0,
+      "confirmedPerStory": null
+    },
+    "runs": {
+      "count": 0,
+      "written": 0,
+      "refused": 0,
+      "callsPerStory": null,
+      "note": "from the run reports kept (the newest 24)"
+    },
+    "recurring": [
+      {
+        "what": "style: الإسناد في كل جملة تقريباً (# من # جملة فيها «وفقاً/بحسب»)",
+        "stories": 10,
+        "examples": [
+          "china-retail-sales-slowdown-august-2026-cb2bb7",
+          "federal-reserve-rate-hike-expectations-september-2026-c63230",
+          "gulf-oil-flows-return-pre-war-levels-6a0da7"
+        ]
+      },
+      {
+        "what": "style: «لماذا يهمّ» تبدأ بـ«يعكس/يمثل/يُعدّ»",
+        "stories": 5,
+        "examples": [
+          "ai-leaders-warn-openai-ipo-delay-b7d3e6",
+          "hormuz-shipping-traffic-plunges-tensions-5c1d93",
+          "openai-seeks-1-5-trillion-funding-a2d732"
+        ]
+      },
+      {
+        "what": "style: المقدمة طويلة (# كلمة)",
+        "stories": 3,
+        "examples": [
+          "global-bond-selloff-oil-prices-ecb-rate-hike-93d47b",
+          "hormuz-shipping-traffic-plunges-tensions-5c1d93",
+          "uk-economy-grows-july-ai-0a6a4e"
+        ]
+      },
+      {
+        "what": "style: عبارة مترجمة أو حشو: «ما بين # إلى #»",
+        "stories": 2,
+        "examples": [
+          "brent-surges-above-109-disruptions-e510e5",
+          "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d"
+        ]
+      }
+    ]
+  }
+}
