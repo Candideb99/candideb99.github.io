@@ -354,16 +354,21 @@ async function health() {
     chatModel: local.KHAZENDAR_CHAT_MODEL || "default",
     editorReal,
     deploy,
-    chatReady: Boolean(CLI_JS) && Boolean(local.CLAUDE_CODE_OAUTH_TOKEN || local.ANTHROPIC_API_KEY),
+    chatReady: Boolean(CLI) && Boolean(local.CLAUDE_CODE_OAUTH_TOKEN || local.ANTHROPIC_API_KEY),
   };
 }
 
 // ------------------------------------------------- the chat ("Change the site")
-const CLI_JS = [
-  path.join(process.env.APPDATA ?? "", "npm", "node_modules", "@anthropic-ai", "claude-code", "cli.js"),
-  path.join(process.env.HOME ?? "", ".npm-global", "lib", "node_modules", "@anthropic-ai", "claude-code", "cli.js"),
-  "/usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js",
-].find((p) => p && existsSync(p));
+// Claude Code 2.1.2xx ships a native bin/claude.exe and no cli.js (2026-09-24, updated for Opus 5.5); older
+// installs keep the node route. Either way the process starts without a shell. `CLI` is [command, ...leading args].
+const CLI_ROOTS = [
+  path.join(process.env.APPDATA ?? "", "npm", "node_modules", "@anthropic-ai", "claude-code"),
+  path.join(process.env.HOME ?? "", ".npm-global", "lib", "node_modules", "@anthropic-ai", "claude-code"),
+  "/usr/local/lib/node_modules/@anthropic-ai/claude-code",
+];
+const CLI_BIN = CLI_ROOTS.map((root) => path.join(root, "bin", "claude.exe")).find((p) => existsSync(p));
+const CLI_JS = CLI_ROOTS.map((root) => path.join(root, "cli.js")).find((p) => existsSync(p));
+const CLI = CLI_BIN ? [CLI_BIN] : CLI_JS ? [process.execPath, CLI_JS] : null;
 
 function chatEnv() {
   const env = loadEnv();
@@ -407,7 +412,7 @@ function chatSend(event) {
 }
 async function startChat(message) {
   if (chat.running) return false;
-  if (!CLI_JS) {
+  if (!CLI) {
     chatSend({ t: "error", text: "Claude Code is not installed on this laptop, so this tab cannot run. Install it with: npm install -g @anthropic-ai/claude-code" });
     return true;
   }
@@ -420,7 +425,7 @@ async function startChat(message) {
   chat.touched = [];
   chat.turns.push({ role: "you", text: message });
   chatSend({ t: "you", text: message });
-  const args = [CLI_JS, "-p", "--output-format", "stream-json", "--verbose", "--permission-mode", "acceptEdits", "--append-system-prompt", CHAT_RULES];
+  const args = [...CLI.slice(1), "-p", "--output-format", "stream-json", "--verbose", "--permission-mode", "acceptEdits", "--append-system-prompt", CHAT_RULES];
   if (keys.KHAZENDAR_CHAT_MODEL) args.push("--model", keys.KHAZENDAR_CHAT_MODEL);
   if (chat.sessionId) args.push("--resume", chat.sessionId);
   else {
@@ -428,7 +433,7 @@ async function startChat(message) {
     args.push("--session-id", chat.sessionId);
   }
   args.push("--disallowed-tools", ...BLOCKED_TOOLS);
-  const child = spawn(process.execPath, args, { cwd: root, env: chatEnv(), windowsHide: true });
+  const child = spawn(CLI[0], args, { cwd: root, env: chatEnv(), windowsHide: true, shell: false });
   chat.running = child;
   chatSend({ t: "busy" });
   child.stdin.write(message);
