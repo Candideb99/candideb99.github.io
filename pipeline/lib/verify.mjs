@@ -91,7 +91,7 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
     const missing = PAPER_SECTIONS.filter((s) => !s.test.test(subheads)).map((s) => s.name);
     if (missing.length) issues.push(`بنية القراءة ناقصة؛ العناوين الفرعية المطلوبة (بصيغة "## ") غير موجودة: ${missing.join("، ")}. أضفها بهذا الترتيب: السؤال، البيانات والطريقة، النتائج، الحدود، ماذا يعني للقارئ العربي.`);
     if (/تثبت (?:الدراسة|الورقة)|يثبت البحث|تبرهن/.test(prose)) issues.push("القراءة تصف النتائج بأنها «تثبت»؛ الورقة تجد وتقدّر وتخلص، ولا تثبت. أعد الصياغة (تجد الورقة، يقدّر الباحثون).");
-  } else if (words < minWords) issues.push(`المقال قصير جداً (${words} كلمة). وسّع السياق من المصادر دون اختراع معلومات، بحيث لا يقل عن ${minWords < 200 ? 120 : 260} كلمة.`);
+  } else if (words < minWords) issues.push(`المقال قصير جداً (${words} كلمة). وسّع السياق من المصادر دون اختراع معلومات، بحيث لا يقل عن ${minWords < 120 ? 120 : minWords < 200 ? 160 : 260} كلمة.`);
 
   // Data visuals must be built only from figures in the sources; a visual with invented numbers is dropped, not the article.
   if (draft.chart) {

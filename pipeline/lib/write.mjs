@@ -100,13 +100,15 @@ function coerceBody(body) {
 }
 
 /**
- * The shortest news story the material allows: 200 words, or 100 when the desk notes hold fewer than ten facts.
- * The desks run a thin event as a brief (الشرق الأوسط's US crude-stocks story ran about 200 words, the wires'
- * briefs a hundred); a writer made to reach 200 words from six facts pads or fails. On 2026-09-24 a Gulf story
- * from two short items failed seven attempts at 172 to 199 words against the old floor, then, told to write a
- * brief, came back three times at 119 to 129 words against a floor of 140: six facts make about 120 words.
+ * The shortest news story accepted: 120 words, or 100 when the desk notes hold fewer than ten facts. It is a
+ * safety net against a broken answer, not a target (the brief asks for 300-550 words when the material carries
+ * them). The desks run a small event as a brief (الشرق الأوسط's US crude-stocks story ran about 200 words, the
+ * wires' briefs a hundred), and a writer pushed past what the material holds pads or fails. On 2026-09-24,
+ * against the old floor of 200, a Gulf story from two short items failed seven attempts at 172 to 199 words;
+ * against 140 it came back three times at 119 to 129; and in the first cloud run on Claude alone an Abu Dhabi
+ * regulation with fourteen small facts came back three times at 140 to 152 words and was lost.
  */
-export const newsFloor = (notes) => (notes && Array.isArray(notes.facts) && notes.facts.length < 10 ? 100 : 200);
+export const newsFloor = (notes) => (notes && Array.isArray(notes.facts) && notes.facts.length < 10 ? 100 : 120);
 
 /** Structural validation of a writer's answer. `minWords`/`maxWords` bound the lede plus body (news defaults; analyses are longer). */
 export function validateDraft(draft, { minWords = 200, maxWords = 1100 } = {}) {
@@ -260,7 +262,7 @@ ${JSON.stringify(draft, null, 2)}
 ${notesBlock(notes)}SOURCE MATERIAL
 ${sources.map(writerSourceBlock(notes)).join("\n\n")}
 
-An editor found the following problems. Fix every one of them strictly using the source material. Remove any claim or number that the sources do not support. Keep everything else intact, and keep the article at least ${wordLimits?.target ?? (newsFloor(notes) < 200 ? 120 : 260)} words (lede + body) when the sources allow it; never pad with unsupported material.
+An editor found the following problems. Fix every one of them strictly using the source material. Remove any claim or number that the sources do not support. Keep everything else intact, and keep the article at least ${wordLimits?.target ?? (newsFloor(notes) < 120 ? 120 : 160)} words (lede + body) when the sources allow it; never pad with unsupported material.
 PROBLEMS
 ${issues.map((i, n) => `${n + 1}. ${i}`).join("\n")}
 

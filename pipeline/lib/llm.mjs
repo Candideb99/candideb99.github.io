@@ -206,14 +206,23 @@ const ATTEMPTS = 3;
  */
 export async function chat({ role, system, user, images = [], json = true, validate, timeoutMs = 240000, log = () => {} }) {
   const errors = [];
+  // Why the last answer was refused, told to the next try: three identical requests came back three times at the
+  // same length (a story refused at 140, 149 and 152 words against a floor of 200, 2026-09-24).
+  let refusal = "";
   for (let attempt = 1; attempt <= ATTEMPTS; attempt += 1) {
     await acquire();
     try {
+      const told = attempt > 1 && refusal ? `\n\nYour previous answer was refused: ${refusal}. Correct exactly that in this answer.` : "";
       const nudge = attempt > 1 && json ? "\n\nIMPORTANT: Reply with ONE valid JSON value only. No prose, no markdown fences, no comments." : "";
-      const result = await callClaudeCli({ system, user: user + nudge, images, timeoutMs });
+      const result = await callClaudeCli({ system, user: user + told + nudge, images, timeoutMs });
       let data = result.content;
-      if (json) data = parseJsonLoose(result.content);
-      if (validate) validate(data);
+      try {
+        if (json) data = parseJsonLoose(result.content);
+        if (validate) validate(data);
+      } catch (error) {
+        refusal = String(error.message).split("\n")[0].slice(0, 300);
+        throw error;
+      }
       log(`llm ok role=${role} model=claude-cli attempt=${attempt} ms=${result.ms}`);
       return { data, text: result.content, model: "claude-cli", ms: result.ms, usage: result.usage };
     } catch (error) {

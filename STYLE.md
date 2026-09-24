@@ -140,11 +140,14 @@ one worthy story from الخليج or مصر والمغرب العربي until t
 turn in the editor's list of 300 (`CANDIDATE_CAP`) instead of the busiest filling it; and the day's gold,
 dollar and share price tables are left out before the editor reads (`SERVICE_ITEM`).
 
-**A thin event runs as a brief.** When the desk notes hold fewer than ten facts, the floor is 100 words
-instead of 200 (`newsFloor()` in `pipeline/lib/write.mjs`): six facts make about 120 words, and a writer
-pushed past that pads. The first Gulf test story failed seven attempts at 172 to 199 words against the old
-floor before this (2026-09-24). A story that fails outright takes the rejection mark, so the editor does not
-choose it again in the next run.
+**A small event runs as a brief.** The shortest news story accepted is 120 words, 100 when the desk notes
+hold fewer than ten facts (`newsFloor()` in `pipeline/lib/write.mjs`; 200 until 2026-09-24). It is a safety
+net, not a target: the brief still asks for 300-550 words when the material carries them, and a writer pushed
+past what the material holds pads or fails. That day a Gulf story failed ten attempts at 119 to 199 words and
+an Abu Dhabi regulation with fourteen small facts three at 140 to 152; Claude judged both brief-sized, as the
+desks would. A retry is now told why the last answer was refused (`chat()` in `pipeline/lib/llm.mjs`), where
+three identical requests had come back the same. A story that fails outright takes the rejection mark, so the
+editor does not choose it again in the next run.
 
 A finished story is mended, not thrown away (2026-09-24). In the 24 runs before that day, 19 drafts were
 rejected after their revision against 30 published, most for one stock phrase or a lede a few words long,
