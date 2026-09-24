@@ -106,6 +106,15 @@ export function excerpt(text: string, max = 180): string {
   const clean = stripMarkdown(text);
   if (clean.length <= max) return clean;
   const cut = clean.slice(0, max);
+  // A whole clause when one ends in the second half of the room: «… طريقاً نحو البحر الأحمر…», not «… فيما يربط
+  // الكعبي توسعة…»; otherwise a whole word, never a dangling «في» or «و» before the ellipsis (2026-09-24).
+  const clause = Math.max(cut.lastIndexOf("،"), cut.lastIndexOf("؛"), cut.lastIndexOf(". "), cut.lastIndexOf(": "));
   const at = cut.lastIndexOf(" ");
-  return `${cut.slice(0, at > 60 ? at : max)}…`;
+  let kept = clause >= max * 0.55 ? cut.slice(0, clause) : cut.slice(0, at > 60 ? at : max);
+  // Never stop inside «…» with its closing mark cut off: step back to before the open one.
+  if ((kept.match(/«/g) ?? []).length > (kept.match(/»/g) ?? []).length && kept.lastIndexOf("«") > 40) kept = kept.slice(0, kept.lastIndexOf("«"));
+  const tidy = kept
+    .replace(/[\s،؛,.:«(-]+$/u, "")
+    .replace(/\s+(?:و|ف|في|من|على|إلى|عن|أن|إن|مع|بعد|قبل|التي|الذي|بين|حتى|أو|ثم|لكن|بل|كلما|عندما|حين|حيث|لأن|إذ|إذا|بينما|فيما|مما|كما|بعدما)$/u, "");
+  return `${tidy}…`;
 }

@@ -19,6 +19,8 @@ function host(url: string) {
     return "";
   }
 }
+/** A headline written in Latin letters (an English source's own title). */
+const latin = (t: string) => /[A-Za-z]/.test(t) && !/[؀-ۿ]/.test(t);
 ---
 
 <section class="sources" aria-labelledby="sources-title">
@@ -30,10 +32,10 @@ function host(url: string) {
           <span class="sources__name ui">{s.name}</span>
           {s.url ? (
             <a class="sources__title" href={s.url} rel={s.url.startsWith("/") ? undefined : "noopener nofollow"} target={s.url.startsWith("/") ? undefined : "_blank"}>
-              <bdi>{s.title}</bdi>
+              <bdi lang={latin(s.title) ? "en" : undefined}>{s.title}</bdi>
             </a>
           ) : (
-            <span class="sources__title"><bdi>{s.title}</bdi></span>
+            <span class="sources__title"><bdi lang={latin(s.title) ? "en" : undefined}>{s.title}</bdi></span>
           )}
           <span class="sources__host ui">
             {host(s.url) && <bdi dir="ltr">{host(s.url)}</bdi>}
@@ -67,6 +69,9 @@ function host(url: string) {
   .sources__item:first-child { border-top: 0; }
   .sources__name { font-weight: 700; font-size: var(--fs-sm); color: var(--green); white-space: nowrap; }
   .sources__title { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--ink); overflow-wrap: anywhere; }
+  /* An English headline takes the site's Latin face at the Arabic titles' size: the Arabic faces fell back to
+     Amiri's Latin, which ran visibly larger than the Arabic around it (2026-09-24). */
+  .sources__title bdi:lang(en) { font-family: var(--font-ui); font-size: 0.94rem; }
   .sources__host { grid-column: 2; display: flex; gap: 0.6rem; font-size: var(--fs-xs); color: var(--ink-3); }
   .sources__none, .sources__note { font-family: var(--font-ui); font-size: var(--fs-sm); line-height: 1.6; color: var(--ink-3); margin-top: 0.9rem; }
 </style>

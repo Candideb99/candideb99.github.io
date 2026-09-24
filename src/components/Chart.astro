@@ -40,7 +40,10 @@ const x = (i: number) => PAD.left + slot * i;
  *  categories, two otherwise); anything longer is elided. The bottom padding follows the deepest label. */
 // A compact chart's slots are narrow, so its labels keep more characters and a third line rather than
 // being cut to six letters; a word wider than its slot is the pipeline's problem, not the reader's.
-const catChars = Math.max(compact ? 10 : 7, Math.floor(slot / 7));
+// Wrapped for the phone's labels, which are drawn at 21 units so they stay readable once the drawing shrinks
+// (about 11.5 units a letter): wrapped for the desktop's 12.5, three long labels ran into each other on a phone
+// (2026-09-24, «سعر عائد الإيداع لليلة واحدة» beside «التضخم العام السنوي في المدن»).
+const catChars = Math.max(compact ? 8 : 6, Math.floor(slot / 11.5));
 const catLines = n <= 4 || compact ? 3 : 2;
 function wrapLabel(text: string, maxChars: number, maxLines: number): string[] {
   const words = text.split(/\s+/).filter(Boolean);
@@ -61,7 +64,7 @@ function wrapLabel(text: string, maxChars: number, maxLines: number): string[] {
 }
 const catLabels = chart.categories.map((c) => wrapLabel(c, catChars, catLines));
 const deepest = Math.max(1, ...catLabels.map((l) => l.length));
-PAD.bottom = 26 + 15 * deepest;
+PAD.bottom = 26 + 27 * deepest;
 const plotH = H - PAD.top - PAD.bottom;
 
 const all = chart.series.flatMap((s) => s.values);
@@ -172,7 +175,7 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
       {catLabels.map((lines, i) => (
         <text x={x(i) + slot / 2} y={H - PAD.bottom + 20} text-anchor="middle" class="chart__cat">
           {lines.map((line, li) => (
-            <tspan x={x(i) + slot / 2} dy={li === 0 ? 0 : 15}>{line}</tspan>
+            <tspan x={x(i) + slot / 2} dy={li === 0 ? 0 : "1.25em"}>{line}</tspan>
           ))}
         </text>
       ))}

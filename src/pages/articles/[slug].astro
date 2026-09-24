@@ -88,17 +88,24 @@ const jsonLd = [articleLd, breadcrumbLd];
           story above «التضخم في مصر يتباطأ إلى 12.7%»). */}
       <h1 class="article__title" data-pagefind-meta={`title:${d.title}`} data-pagefind-weight="10" set:html={isolateNumbers(d.title)} />
       {d.subtitle && <p class="article__dek" data-pagefind-weight="4" set:html={isolateNumbers(d.subtitle)} />}
-      <p class="meta article__meta">
-        <span class="crumbs">
-          <a href={sectionHref(d.section)} data-pagefind-meta={`sectionName:${sec.name}`}>{sectionLabel}</a>
-          {sub && <span class="crumbs__sep" aria-hidden="true">›</span>}
-          {sub && <a href={topicHref(d.section, sub.id)}>{sub.name}</a>}
-        </span>
-        <span class="article__byline">{site.name}</span>
-        {/* Both calendars, as الشرق الأوسط prints them on every story (Task 4, 2026-09-24). */}
-        <time datetime={d.publishedAt} data-pagefind-meta={`date:${formatDate(d.publishedAt, { weekday: false })}`}>نُشر {formatDate(d.publishedAt)} م، {formatHijri(d.publishedAt)} · {formatTime(d.publishedAt)} {site.timeZoneLabel}</time>
-        <span>{readingLabel(d.readingMinutes)}</span>
-      </p>
+      {/* Two lines on purpose: where the story sits and who wrote it, then when. The hour and the reading time are
+          each kept whole, so a phone never leaves «بتوقيت القاهرة» or «دقيقتا قراءة» alone on a line (2026-09-24). */}
+      <div class="article__meta">
+        <p class="meta">
+          <span class="crumbs">
+            <a href={sectionHref(d.section)} data-pagefind-meta={`sectionName:${sec.name}`}>{sectionLabel}</a>
+            {sub && <span class="crumbs__sep" aria-hidden="true">›</span>}
+            {sub && <a href={topicHref(d.section, sub.id)}>{sub.name}</a>}
+          </span>
+          <span class="article__byline">{site.name}</span>
+        </p>
+        <p class="meta article__when">
+          {/* Both calendars, as الشرق الأوسط prints them on every story (Task 4, 2026-09-24). */}
+          <time datetime={d.publishedAt} data-pagefind-meta={`date:${formatDate(d.publishedAt, { weekday: false })}`}>نُشر {formatDate(d.publishedAt)} م، {formatHijri(d.publishedAt)}</time>
+          <span class="article__whole">{formatTime(d.publishedAt)} {site.timeZoneLabel}</span>
+          <span class="article__whole">{readingLabel(d.readingMinutes)}</span>
+        </p>
+      </div>
       <Share url={new URL(path, site.url).toString()} title={d.title} />
     </header>
 
@@ -238,7 +245,8 @@ const jsonLd = [articleLd, breadcrumbLd];
     margin-top: 0.7rem;
     max-width: 44rem;
   }
-  .article__meta { margin-top: 0.9rem; padding-top: 0.6rem; border-top: 1px solid var(--rule); }
+  .article__meta { margin-top: 0.9rem; padding-top: 0.6rem; border-top: 1px solid var(--rule); display: grid; gap: 0.2rem; }
+  .article__whole { white-space: nowrap; }
   .article__byline { font-weight: 700; color: var(--ink-2); }
   .crumbs { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 0 0.35rem; }
   .crumbs__sep { color: var(--ink-3); }
