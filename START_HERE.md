@@ -7,17 +7,17 @@ You own an automated Arabic economics newspaper. This page is the whole operatin
 | What | Where | Why you go there |
 | --- | --- | --- |
 | The live website | https://khazendar.pages.dev | What readers see, served by Cloudflare Pages (since 2026-09-21). It rebuilds itself from GitHub on every publish and every automatic run. The old address https://candideb99.github.io still works as a mirror. |
-| **The control room (on this laptop)** | double-click `OPEN_CONTROL_ROOM.cmd` → http://127.0.0.1:7777 | **Where you do everything.** See what was published, *talk to the paper in plain words and have it change the site*, run the newsroom, remove a story, and publish when you are ready. |
+| **The control room (on this laptop)** | double-click `OPEN_CONTROL_ROOM.cmd` (your browser opens at its address, usually http://127.0.0.1:7777; when Windows has reserved that port it moves to 4777 or another) | **Where you do everything.** See what was published, *talk to the paper in plain words and have it change the site*, run the newsroom, remove a story, and publish when you are ready. |
 | The cloud runs | https://github.com/Candideb99/candideb99.github.io/actions | Every automatic run with a table of what it published or rejected and why. |
 | Hermes, the local editor | double-click `TALK_TO_HERMES.cmd` | The older way to talk to an agent, from a black terminal window. The control room's **Chat** tab replaces it and is easier. |
 
-Nothing here uses your GPU. Writing happens on OpenRouter's servers (or on your Claude subscription, see section 5); the site is built and served by GitHub.
+Nothing here uses your GPU. Writing happens on your Claude subscription (see section 5); the site is built and served by GitHub.
 
 ## 2. What happens automatically
 
 Every 3 hours (and once a day each for an explainer and an analysis) a cloud job:
 
-1. reads 47 feeds (central banks, statistics offices, BBC, CNBC, Guardian, Al Jazeera, Asharq Al-Awsat, Sky News Arabia, the defence press …),
+1. reads 57 feeds (central banks, statistics offices, BBC, CNBC, Guardian, Al Jazeera, Asharq Al-Awsat, Sky News Arabia, and since 24 September the Gulf, Egyptian and Moroccan press: Al Khaleej, Al Riyadh, Youm7, Masrawy, Hespress, AGBI, Gulf Times, Saudi Gazette, Daily News Egypt, Arabian Business; the defence press …),
 2. picks the stories that matter to Arab readers and groups sources covering the same story,
 3. writes an original Arabic article with the key figures, a "why it matters" paragraph and, when the sources contain comparable numbers, an Arabic chart or table,
 4. passes the draft through an Arabic copy desk that rewrites anything reading like a translation ("إدارة أمريكية تعلن عن مستردات" becomes "واشنطن تعيد 500 دولار للمشتركين"), under a guard that keeps every figure and name exactly as sourced,
@@ -71,7 +71,7 @@ You do not have to check anything. The desk exists for the few decisions that ar
 **Get new material.** 📰 News stories — for the whole paper or for one section (الاقتصاد, الأسواق,
 الطاقة, الشركات, التكنولوجيا, دفاع) and how many; 📘 An explainer; 📈 An analysis (of the week, or of one
 section, e.g. defence only); 🔬 A research paper; 🗓 The week's review. Each writes **drafts**. Nothing
-reaches the site until you approve it. A news run takes 8–10 minutes for four stories and the panel
+reaches the site until you approve it. A news run takes 20–40 minutes for four stories and the panel
 shows *"2 of 4 written · 1 refused"* while it works, with a Stop button; the others take 3–5 minutes.
 
 **Where a story goes, and who decides.** The front page is picked by a formula: the **lead** is the
@@ -105,10 +105,9 @@ same way whenever you want a sweep.
 headline. Nothing is ever archived away: a story keeps its page, its section's older pages and its
 topic page for good.
 
-**Models.** Settings → *The models* lists every job's chain of free OpenRouter models with a green or
-red dot from OpenRouter's live list. Only `:free` models are ever accepted, so a model that turns paid
-cannot be used and you cannot be charged; a red dot means "replace me", and the list below it shows
-what is free right now.
+**Models.** Every job runs on Claude, on your subscription (you dropped the free models on
+24 September 2026). Settings → *Who writes* chooses which Claude model the newsroom uses (Opus by
+default).
 
 **Waiting for your approval.** One card per draft: the photo, the headline and standfirst, the
 section, the critic's score, and the sources. **Read it** opens the whole article as it will look —
@@ -223,24 +222,25 @@ https://github.com/Candideb99/candideb99.github.io/settings/secrets/actions and 
   runs, repairs a broken pipeline, finds any missing picture, checks the site still builds, and
   leaves a short report. It commits its own fixes. Anything that would change how the paper looks
   comes to you as a pull request instead. Nobody types a prompt; it is in `.github/workflows/editor.yml`.
-- **`KHAZENDAR_PROVIDER = claude`** (Settings → *Who writes* on the desk) makes Claude write the
-  articles on every three-hourly run — the single biggest quality change available to you — **with
-  the free models as the automatic backup**: if the subscription lapses or a limit is hit, that job
-  falls back to the free chain by itself and the paper keeps publishing. Every story records which
-  model actually wrote it, and the desk shows the last 24 hours' writers. Photo choice always uses a
-  free vision model. (Since 22 September Claude receives the paper's full rule sheet on this laptop
-  too; before that a Windows quirk cut it to its first word on every run started from the desk, which
-  is one reason older stories read stiffly. The cloud runs were never affected.)
+- **Claude writes everything.** Since 24 September 2026, at your request, every job on every run
+  (choosing the stories, writing, the copy desk, the fact check, the photo check) runs on Claude,
+  on your subscription. There is no free backup any more: if the subscription lapses or a limit is
+  hit, the newsroom publishes nothing until Claude answers again. Every story records which model
+  wrote it, and the desk shows the last 24 hours' writers. (Since 22 September Claude receives the
+  paper's full rule sheet on this laptop too; before that a Windows quirk cut it to its first word on
+  every run started from the desk, which is one reason older stories read stiffly. The cloud runs
+  were never affected.)
 - **Asking for something from anywhere.** With the same setup, open an issue on the repository from
   your phone and write `@claude` with your request. Claude answers and opens a pull request. You
   never open the project folder.
 
-**Turning it off** is one edit: set `KHAZENDAR_EDITOR` to `0`. The newsroom keeps publishing on free
-models regardless, so nothing breaks.
+**Turning it off** is one edit: set `KHAZENDAR_EDITOR` to `0`. The newsroom keeps publishing
+regardless, so nothing breaks.
 
 **The cost.** No money. It draws on your subscription's usage limits: the daily editor is one
-session, and a full newsroom run is roughly 25 to 40 model calls. If you hit your limit, set
-`KHAZENDAR_PROVIDER` back to `openrouter` and the free models take over again.
+session, and a full newsroom run is roughly 40 to 60 model calls (up to twenty stories a day since
+24 September). If you hit your limit, the newsroom waits until the limit resets; to use less, choose
+Sonnet instead of Opus under Settings → *Who writes*.
 
 ### Codex
 
@@ -263,10 +263,10 @@ a name when the chat mentions one:
 
 ## 7. If something breaks
 
-- Cloud run failed: open the Actions page, click the red run, read the last lines. Most failures are free models being unavailable for an hour; the next run recovers.
+- Cloud run failed: open the Actions page, click the red run, read the last lines. A run that ends with "Claude failed" usually means the subscription token expired or a usage limit was hit; the next run recovers once Claude answers again (a new token goes in the desk under Settings → *Keys*).
 - Site not updating: check the latest "Deploy" run on the Actions page.
 - Everything else: open Claude Code in this folder and paste what you see.
 
 ## 8. Costs
 
-Hosting, builds, the newsroom and the free models cost nothing. A domain is about $10 a year. Using your Claude subscription for writing costs nothing extra beyond the subscription.
+Hosting and builds cost nothing. A domain is about $10 a year. The newsroom runs on your Claude subscription and costs nothing extra beyond it.

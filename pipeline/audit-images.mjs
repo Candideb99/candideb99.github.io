@@ -18,13 +18,12 @@ import path from "node:path";
 import YAML from "yaml";
 
 const root = process.cwd();
-// The judge runs on the free chain whatever the paper's provider is: 125 small verdicts are not worth
-// the owner's Claude allowance, and the audit must run the same from a plain shell as from the desk.
+// The judge is Claude, like every model call since 2026-09-24 (the owner: «abandon free models and use claude
+// only»); the audit reads .env itself so it runs the same from a plain shell as from the desk.
 for (const line of existsSync(path.join(root, ".env")) ? readFileSync(path.join(root, ".env"), "utf8").split(/\r?\n/) : []) {
   const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/);
   if (m && !line.trim().startsWith("#") && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^["']|["']$/g, "");
 }
-process.env.KHAZENDAR_PROVIDER = "openrouter";
 const { chat } = await import("./lib/llm.mjs");
 // The same geography rule the newsroom's picture checks read (2026-09-23): one rule, not two copies,
 // and the same check in code, which overrides a model that passes a photo its own file places abroad.

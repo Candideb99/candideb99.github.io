@@ -4,7 +4,7 @@
  * institution or sector), and writes it into the article's frontmatter.
  *
  * Usage: node pipeline/backfill-images.mjs [--dry-run] [--limit=N] [--redo=slug,slug] [--only=slug,slug]
- * Reads OPENROUTER_API_KEY from the environment or from .env.
+ * Its model calls go to Claude (CLAUDE_CODE_OAUTH_TOKEN, from the environment or from .env).
  */
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";

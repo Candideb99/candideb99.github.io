@@ -94,7 +94,7 @@ export const BANNED = [
  * Arab news outlets as a story names them between «». The desks do not cite one another for public facts, so
  * the checker flags such a tag and the copy desk's guard lets it leave the story: a tag is not a fact.
  */
-export const ARAB_OUTLET_NAMES = ["الشرق الأوسط", "الجزيرة", "الجزيرة نت", "العربية", "العربية نت", "سكاي نيوز عربية", "اندبندنت عربية", "البورصة", "بي بي سي عربي", "الشرق بلومبرغ", "العربي الجديد"];
+export const ARAB_OUTLET_NAMES = ["الشرق الأوسط", "الجزيرة", "الجزيرة نت", "العربية", "العربية نت", "سكاي نيوز عربية", "اندبندنت عربية", "البورصة", "بي بي سي عربي", "الشرق بلومبرغ", "العربي الجديد", "الخليج", "الرياض", "جريدة الرياض", "اليوم السابع", "مصراوي", "هسبريس"];
 
 /**
  * Faults only a writer with the sources in hand can mend. Asked to stop comparing two outlets' figures, the copy
@@ -229,7 +229,7 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
   // the institution's or the agency's, and an Arab outlet is named only for its own exclusive (its sources, its
   // interview). The same story tagged the Fed's own hike «بحسب «الشرق الأوسط»».
   if (news) {
-    const ARAB_OUTLET = new RegExp(`«(?:${ARAB_OUTLET_NAMES.join("|")})»|(?<![؀-ۿ])(?:سكاي نيوز عربية|اندبندنت عربية|بي بي سي عربي|الجزيرة نت|قناة الجزيرة|قناة العربية|العربية نت)(?![؀-ۿ])`);
+    const ARAB_OUTLET = new RegExp(`«(?:${ARAB_OUTLET_NAMES.join("|")})»|(?<![؀-ۿ])(?:سكاي نيوز عربية|اندبندنت عربية|بي بي سي عربي|الجزيرة نت|قناة الجزيرة|قناة العربية|العربية نت|(?:جريدة|صحيفة) (?:الرياض|الخليج|الشرق الأوسط)|اليوم السابع|مصراوي|هسبريس)(?![؀-ۿ])`);
     const EXCLUSIVE = /مصادر|مقابلة|حوار|تصريحات|علمت|اطلعت|حصلت|انفردت|لـ\s?«|(?<![؀-ۿ])ل«/;
     const cited = sentencesOf(`${lede}\n${body}\n${box}`).filter((s) => ARAB_OUTLET.test(s) && !EXCLUSIVE.test(s));
     if (cited.length) issues.push(`وسيلة إعلام عربية مذكورة مصدراً لواقعة عامة («${cited[0].slice(0, 60)}…»)؛ الصحف العربية لا ينقل بعضها عن بعض الوقائع العامة: احذف اسم الوسيلة وانسب الواقعة إلى الجهة التي أعلنتها أو إلى الوكالة إن ذكرها المقال أو المصدر، أو اتركها بلا إسناد إن كانت علنية، ولا تخترع مصدراً؛ ولا تُسمّى الوسيلة إلا لما انفردت به (مصادرها، مقابلتها).`);

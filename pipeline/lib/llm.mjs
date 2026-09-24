@@ -2,71 +2,17 @@ import os from "node:os";
 import path from "node:path";
 import { existsSync } from "node:fs";
 import { jsonrepair } from "jsonrepair";
-import { sleep } from "./util.mjs";
+import { USER_AGENT, fetchWithTimeout, sleep } from "./util.mjs";
 
-const BASE_URL = process.env.OPENROUTER_BASE_URL ?? "https://openrouter.ai/api/v1";
-
-function chain(envName, fallback) {
-  const value = process.env[envName];
-  const models = value ? value.split(",").map((s) => s.trim()).filter(Boolean) : fallback;
-  if (models.some((model) => !model.endsWith(":free"))) throw new Error(`${envName}: only free OpenRouter models (":free") are allowed`);
-  return models;
-}
-
-/** Ordered fallback chains per newsroom role. Only free OpenRouter models. */
-export const ROLES = {
-  // Re-benchmarked 2026-09-09 after MiniMax M3 left the free tier: Ling Flash Fin is fast and writes
-  // clean Arabic, the Nemotron 3 models are the strongest but slow, Nex N2.5 Mini is a sound reserve.
-  editor: chain("KHAZENDAR_MODELS_EDITOR", [
-    "inclusionai/ling-3.0-flash-fin:free",
-    "nex-agi/nex-n2.5-mini:free",
-    "nvidia/nemotron-3-super-120b-a12b:free",
-  ]),
-  // Nemotron Super first for the writer since 2026-09-13: in side-by-side dry runs its drafts drew half the
-  // critic's real errors of Ling's (5/10 with four issues against 4/10 with ten) and no calqued titles.
-  writer: chain("KHAZENDAR_MODELS_WRITER", [
-    "nvidia/nemotron-3-super-120b-a12b:free",
-    "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "inclusionai/ling-3.0-flash-fin:free",
-    "nex-agi/nex-n2.5-mini:free",
-  ]),
-  // The copy desk rewrites Arabic idiom; the Nemotron models produce the most natural Arabic.
-  desk: chain("KHAZENDAR_MODELS_DESK", [
-    "nvidia/nemotron-3-super-120b-a12b:free",
-    "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "inclusionai/ling-3.0-flash-fin:free",
-    "nex-agi/nex-n2.5-mini:free",
-  ]),
-  critic: chain("KHAZENDAR_MODELS_CRITIC", [
-    "nvidia/nemotron-3-super-120b-a12b:free",
-    "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "nex-agi/nex-n2.5-mini:free",
-  ]),
-  // Gemma is often rate-limited upstream; Nex N2.5 Pro and Nemotron Nano Omni answered reliably.
-  vision: chain("KHAZENDAR_MODELS_VISION", [
-    "nex-agi/nex-n2.5-pro:free",
-    "google/gemma-4-31b-it:free",
-    "google/gemma-4-26b-a4b-it:free",
-    "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-  ]),
-};
-
-/** Models whose provider rejects response_format; they get the JSON instruction in the prompt only. */
-const NO_JSON_MODE = ["inclusionai/", "cohere/"];
-/** Models whose chain-of-thought spills into the content field and truncates the JSON answer. */
-const NO_REASONING = ["nvidia/"];
 /**
- * Per role, models told to answer without reasoning. Ling reasons by default on OpenRouter and the reasoning
- * counts against max_tokens: over the 260-item candidate list it alone outran the editor's 8000-token cap and
- * every news run lost two attempts before falling through to Nemotron (probe, 2026-09-11: 819 of 1095 tokens
- * were reasoning; 238 tokens with reasoning off). Writing keeps its reasoning. Nex N2.5 Mini answers with
- * nothing when reasoning is off, so it is never listed here.
+ * Every model call of the newsroom, the copy desk, the picture desk and the tools goes to Claude, on the
+ * owner's subscription, through the Claude Code command line. Nothing else: the owner, 2026-09-24, «abandon
+ * free models and use claude only». Until then the free OpenRouter models were the backup behind Claude and
+ * the only eyes of the picture desk; in that day's test run the free vision models spent fifteen minutes on
+ * one story's photograph and answered with nothing half the time, and a free writer padded a story Claude
+ * had declined to pad. A call that fails is retried on Claude; there is no other model to fall back to.
+ * `role` (editor, writer, desk, critic, vision) only labels the call in the logs.
  */
-const NO_REASONING_BY_ROLE = { editor: ["inclusionai/"] };
-
-function reasoningDisabled(role, model) {
-  return [...NO_REASONING, ...(NO_REASONING_BY_ROLE[role] ?? [])].some((prefix) => model.startsWith(prefix));
-}
 
 export const usage = { calls: 0, failures: 0, promptTokens: 0, completionTokens: 0, byModel: {} };
 
@@ -129,8 +75,7 @@ function balancedSlice(text, open, close) {
 
 export function parseJsonLoose(text) {
   const cleaned = stripNoise(text);
-  // A reasoning model that spends its whole token budget thinking answers with nothing at all.
-  if (!cleaned) throw new LlmError("Model returned an empty answer (raise maxTokens if it reasons at length)", { sample: "" });
+  if (!cleaned) throw new LlmError("Model returned an empty answer", { sample: "" });
   const candidates = [cleaned];
   const obj = balancedSlice(cleaned, "{", "}");
   const arr = balancedSlice(cleaned, "[", "]");
@@ -151,18 +96,9 @@ export function parseJsonLoose(text) {
   throw new LlmError("Model output was not valid JSON", { sample: cleaned.slice(0, 300) });
 }
 
-function buildUserContent(user, images) {
-  if (!images?.length) return user;
-  return [
-    { type: "text", text: user },
-    ...images.map((url) => ({ type: "image_url", image_url: { url } })),
-  ];
-}
-
 /**
- * Provider "claude": runs the prompt through the Claude Code command line, which uses the
- * owner's Claude subscription (after `claude login` or `claude setup-token`) instead of an API key.
- * Vision requests fall back to OpenRouter because the CLI takes text only here.
+ * The Claude Code command line, which uses the owner's Claude subscription (a `claude setup-token` token in
+ * CLAUDE_CODE_OAUTH_TOKEN) instead of an API key.
  *
  * The command line is never handed to a shell. On Windows the `claude` on PATH is a .cmd shim that
  * only cmd.exe can start, and cmd.exe cuts an argument at every newline, `&` and `%`: measured on
@@ -190,11 +126,32 @@ function claudeCliEnv() {
   return env;
 }
 
-async function callClaudeCli(model, { system, user, timeoutMs }) {
+/**
+ * An image for Claude, always as its bytes. The picture desk inlines its thumbnails as data URLs; a plain URL is
+ * fetched here, because Claude's servers could not download a Wikimedia thumbnail themselves ("Unable to download
+ * the file", 2026-09-24) while this client, with its own user agent, can.
+ */
+async function imageBlock(url) {
+  const m = String(url).match(/^data:([^;,]+);base64,(.*)$/s);
+  if (m) return { type: "image", source: { type: "base64", media_type: m[1], data: m[2] } };
+  const response = await fetchWithTimeout(String(url), { headers: { "user-agent": USER_AGENT } }, 30000);
+  if (!response.ok) throw new LlmError(`image ${response.status}: ${String(url).slice(0, 100)}`, { retryable: true });
+  const type = (response.headers.get("content-type") ?? "image/jpeg").split(";")[0].trim();
+  return { type: "image", source: { type: "base64", media_type: type, data: Buffer.from(await response.arrayBuffer()).toString("base64") } };
+}
+
+/**
+ * One call. Text goes in on stdin as it is; a call with images goes in as one stream-json user message carrying
+ * the text and the image blocks (tested 2026-09-24 on a Commons thumbnail: the CLI described the photograph in
+ * three seconds), and its answer is the stream's closing "result" line.
+ */
+async function callClaudeCli({ system, user, images = [], timeoutMs }) {
   const { spawn } = await import("node:child_process");
-  const cliModel = process.env.KHAZENDAR_CLAUDE_MODEL ?? "sonnet";
-  const args = ["-p", "--output-format", "json", "--tools", "", "--no-session-persistence", "--setting-sources", "", "--model", cliModel];
+  const cliModel = process.env.KHAZENDAR_CLAUDE_MODEL ?? "opus";
+  const seeing = images.length > 0;
+  const args = ["-p", "--output-format", seeing ? "stream-json" : "json", ...(seeing ? ["--input-format", "stream-json", "--verbose"] : []), "--tools", "", "--no-session-persistence", "--setting-sources", "", "--model", cliModel];
   if (system) args.push("--system-prompt", system);
+  const input = seeing ? `${JSON.stringify({ type: "user", message: { role: "user", content: [{ type: "text", text: user }, ...(await Promise.all(images.map(imageBlock)))] } })}\n` : user;
   const started = Date.now();
   const result = await new Promise((resolve, reject) => {
     const child = spawn(CLI_JS ? process.execPath : "claude", CLI_JS ? [CLI_JS, ...args] : args, { shell: false, windowsHide: true, env: claudeCliEnv(), cwd: os.tmpdir() });
@@ -215,157 +172,61 @@ async function callClaudeCli(model, { system, user, timeoutMs }) {
       if (code !== 0 && !out) return reject(new LlmError(`claude cli exit ${code}: ${err.slice(0, 200)}`, { retryable: true }));
       resolve(out);
     });
-    child.stdin.end(user);
+    child.stdin.end(input);
   });
   let payload;
   try {
-    payload = JSON.parse(result);
+    payload = seeing
+      ? result.split("\n").filter(Boolean).map((line) => { try { return JSON.parse(line); } catch { return null; } }).find((line) => line?.type === "result")
+      : JSON.parse(result);
   } catch {
-    throw new LlmError("claude cli returned non-JSON output", { sample: result.slice(0, 200) });
+    payload = null;
   }
-  if (payload.is_error) throw new LlmError(`claude cli: ${String(payload.result).slice(0, 200)}`, { status: 401 });
+  if (!payload) throw new LlmError("claude cli returned non-JSON output", { sample: result.slice(0, 200), retryable: true });
+  // Only a refused login stops the retries; any other error the CLI reports (an API 400, an overloaded server) may pass on the next try.
+  if (payload.is_error) {
+    const message = String(payload.result ?? "");
+    const login = /not logged in|\b401\b|authenticat|oauth|invalid (?:x-)?api[- ]key|credit balance/i.test(message);
+    throw new LlmError(`claude cli: ${message.slice(0, 200)}`, login ? { status: 401 } : { retryable: true });
+  }
+  const used = payload.usage ?? {};
   usage.calls += 1;
+  usage.promptTokens += used.input_tokens ?? 0;
+  usage.completionTokens += used.output_tokens ?? 0;
   usage.byModel[`claude-cli/${cliModel}`] = (usage.byModel[`claude-cli/${cliModel}`] ?? 0) + 1;
-  return { content: String(payload.result ?? ""), finish: "stop", ms: Date.now() - started, usage: payload.usage ?? {}, provider: "claude-cli" };
+  return { content: String(payload.result ?? ""), ms: Date.now() - started, usage: { completion_tokens: used.output_tokens } };
 }
 
-const PROVIDER = process.env.KHAZENDAR_PROVIDER ?? "openrouter";
-
-/** Routed by the model's name, not by the provider setting, so one chain can hold Claude first and the free models after it. */
-async function callModel(model, options) {
-  if (model === "claude-cli" && !options.images?.length) return callClaudeCli(model, options);
-  return callOpenRouter(model, options);
-}
-
-async function callOpenRouter(model, { role, system, user, images, temperature, maxTokens, timeoutMs, jsonMode }) {
-  const key = process.env.OPENROUTER_API_KEY;
-  if (!key) throw new LlmError("OPENROUTER_API_KEY is not set");
-  const body = {
-    model,
-    messages: [
-      ...(system ? [{ role: "system", content: system }] : []),
-      { role: "user", content: buildUserContent(user, images) },
-    ],
-    temperature,
-    max_tokens: maxTokens,
-  };
-  if (jsonMode) body.response_format = { type: "json_object" };
-  // Reasoning models that leak their thinking into the answer, or spend the whole cap on it, are told to answer directly.
-  if (reasoningDisabled(role, model)) body.reasoning = { enabled: false };
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
-  const started = Date.now();
-  try {
-    const response = await fetch(`${BASE_URL}/chat/completions`, {
-      method: "POST",
-      signal: controller.signal,
-      headers: {
-        Authorization: `Bearer ${key}`,
-        "Content-Type": "application/json",
-        "HTTP-Referer": "https://candideb99.github.io",
-        "X-Title": "Khazendar newsroom",
-      },
-      body: JSON.stringify(body),
-    });
-    const payload = await response.json().catch(() => ({}));
-    const ms = Date.now() - started;
-    if (!response.ok || payload.error) {
-      const code = payload?.error?.code ?? response.status;
-      const message = payload?.error?.message ?? response.statusText;
-      const raw = payload?.error?.metadata?.raw;
-      throw new LlmError(`${model}: ${code} ${message}${raw ? ` (${String(raw).slice(0, 160)})` : ""}`, {
-        status: Number(code) || response.status,
-        retryable: [408, 409, 425, 429, 500, 502, 503, 504].includes(Number(code) || response.status),
-        unsupportedJsonMode: /structured|json|response_format/i.test(String(raw ?? message)),
-      });
-    }
-    const choice = payload.choices?.[0];
-    const content = choice?.message?.content ?? "";
-    const finish = choice?.finish_reason;
-    const used = payload.usage ?? {};
-    usage.calls += 1;
-    usage.promptTokens += used.prompt_tokens ?? 0;
-    usage.completionTokens += used.completion_tokens ?? 0;
-    usage.byModel[model] = (usage.byModel[model] ?? 0) + 1;
-    return { content, finish, ms, usage: used, provider: payload.provider };
-  } finally {
-    clearTimeout(timer);
-  }
-}
+/** Three tries on Claude: with no other model behind it, a third try costs less than a lost story. */
+const ATTEMPTS = 3;
 
 /**
- * Runs a chat completion through the role's fallback chain.
- * `validate(data)` may throw to reject a parsed answer (triggers one retry, then the next model).
+ * Runs one model call on Claude. `validate(data)` may throw to reject a parsed answer, which is then asked
+ * again, up to three times in all. The returned `model` ("claude-cli") is what the article records.
  */
-export async function chat({
-  role,
-  system,
-  user,
-  images = [],
-  json = true,
-  validate,
-  temperature = 0.35,
-  maxTokens = 4500,
-  timeoutMs = 240000,
-  log = () => {},
-}) {
-  // Claude first, the free chain behind it: a lapsed subscription or a hit limit fails the Claude
-  // call (401, exit code, timeout), the loop below moves to the next model, and the paper keeps
-  // publishing. Every article records which model actually wrote it.
-  const models = PROVIDER === "claude" && role !== "vision" ? ["claude-cli", ...ROLES[role]] : ROLES[role];
-  if (!models?.length) throw new LlmError(`Unknown role ${role}`);
+export async function chat({ role, system, user, images = [], json = true, validate, timeoutMs = 240000, log = () => {} }) {
   const errors = [];
-  for (const model of models) {
-    let jsonMode = json && !NO_JSON_MODE.some((prefix) => model.startsWith(prefix));
-    for (let attempt = 1; attempt <= 2; attempt += 1) {
-      await acquire();
-      let result = null;
-      try {
-        const nudge =
-          attempt === 2 && json
-            ? "\n\nIMPORTANT: Reply with ONE valid JSON value only. No prose, no markdown fences, no comments."
-            : "";
-        result = await callModel(model, {
-          role,
-          system,
-          user: user + nudge,
-          images,
-          temperature,
-          maxTokens,
-          timeoutMs,
-          jsonMode,
-        });
-        // An answer cut off at max_tokens is not an answer: jsonrepair would close the broken JSON and a
-        // truncated body or issue list would pass as complete. It is retried, then the next model tries.
-        if (result.finish === "length") throw new LlmError("Model answer was cut off at max_tokens", { retryable: true, sample: String(result.content ?? "").slice(-140) });
-        let data = result.content;
-        if (json) data = parseJsonLoose(result.content);
-        if (validate) validate(data);
-        log(`llm ok role=${role} model=${model} attempt=${attempt} ms=${result.ms} tokens=${result.usage?.completion_tokens ?? "?"}`);
-        return { data, text: result.content, model, ms: result.ms, usage: result.usage };
-      } catch (error) {
-        usage.failures += 1;
-        errors.push(`${model}#${attempt}: ${error.message}`);
-        const sample = error.meta?.sample ? ` sample=${JSON.stringify(String(error.meta.sample).slice(0, 140))}` : "";
-        // A "length" finish with a validation error means the answer was cut off: the fix is a higher maxTokens.
-        const shape = result ? ` (finish=${result.finish ?? "?"} tokens=${result.usage?.completion_tokens ?? "?"})` : "";
-        log(`llm fail role=${role} model=${model} attempt=${attempt}: ${String(error.message).slice(0, 200)}${shape}${sample}`);
-        const meta = error.meta ?? {};
-        if (meta.unsupportedJsonMode && jsonMode) {
-          jsonMode = false; // retry this model without response_format
-          continue;
-        }
-        if (error.name === "AbortError") {
-          break; // slow model: move on to the next
-        }
-        if (meta.status && !meta.retryable && !(error instanceof LlmError && !meta.status)) {
-          break; // hard provider error: next model
-        }
-        if (attempt === 1) await sleep(meta.status === 429 ? 6000 : 2500);
-      } finally {
-        release();
-      }
+  for (let attempt = 1; attempt <= ATTEMPTS; attempt += 1) {
+    await acquire();
+    try {
+      const nudge = attempt > 1 && json ? "\n\nIMPORTANT: Reply with ONE valid JSON value only. No prose, no markdown fences, no comments." : "";
+      const result = await callClaudeCli({ system, user: user + nudge, images, timeoutMs });
+      let data = result.content;
+      if (json) data = parseJsonLoose(result.content);
+      if (validate) validate(data);
+      log(`llm ok role=${role} model=claude-cli attempt=${attempt} ms=${result.ms}`);
+      return { data, text: result.content, model: "claude-cli", ms: result.ms, usage: result.usage };
+    } catch (error) {
+      usage.failures += 1;
+      errors.push(`claude-cli#${attempt}: ${error.message}`);
+      const sample = error.meta?.sample ? ` sample=${JSON.stringify(String(error.meta.sample).slice(0, 140))}` : "";
+      log(`llm fail role=${role} model=claude-cli attempt=${attempt}: ${String(error.message).slice(0, 200)}${sample}`);
+      // A refused login is not cured by asking again.
+      if (error.meta?.status === 401) break;
+      if (attempt < ATTEMPTS) await sleep(3000);
+    } finally {
+      release();
     }
   }
-  throw new LlmError(`All models failed for role ${role}:\n${errors.join("\n")}`);
+  throw new LlmError(`Claude failed for role ${role}:\n${errors.join("\n")}`);
 }

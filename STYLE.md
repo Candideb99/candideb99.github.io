@@ -117,7 +117,7 @@ captions by it.
 
 ## 2. The editing (فن التحرير الصحفي)
 
-A paper is edited, not filled. The editor model scores every candidate on the news values an
+News is edited, not filled. The editor model scores every candidate on the news values an
 Arabic desk edits by: التأثير (does it change money, prices, jobs or policy for our readers),
 الأهمية (a central bank, a government, a market, a major company), الآنية (decided or happened now;
 a figure already reported is news again only if the change is material), القرب (the Gulf, Egypt,
@@ -125,10 +125,26 @@ the Levant, the Maghreb, or the global forces that move them), الضخامة (t
 الصراع والنتائج (winners, losers, what follows). A story needs three of them; importance below 6
 is not published; the editor states the values in its answer. Development beats repetition: a
 candidate that advances a running file is preferred to an unrelated marginal item, and the angle
-must say what is new. Hard limits in `pipeline/run.mjs`: at most four stories a run and ten news
-stories in any 24 hours (`KHAZENDAR_DAILY_CAP`); `pipeline/lib/verify.mjs` rejects a story whose
+must say what is new. Hard limits in `pipeline/run.mjs`: at most four stories a run and twenty news
+stories in any 24 hours (`KHAZENDAR_DAILY_CAP`; ten until 2026-09-24); `pipeline/lib/verify.mjs` rejects a story whose
 headline shares half its content words with one published in the last four days, so the same rate
 rise cannot run twice under two headlines. Explainers and analyses are one a day each.
+
+**Our readers' own economies first** (2026-09-24, the owner's go after reading الشرق الأوسط beside Khazendar:
+their economy file ran about 30 stories a day, some 40% Saudi, Gulf and Egyptian, while ours carried 8% from
+Egypt and the Maghreb). Ten Gulf, Egyptian and Moroccan feeds joined the newsroom (الخليج، جريدة الرياض، اليوم
+السابع، مصراوي، هسبريس، AGBI، Arabian Business، Gulf Times، Saudi Gazette، Daily News Egypt; `regionalNotes` in
+`pipeline/sources.json` lists the ones that failed). The editor is told a weighty Arab decision, release,
+result or deal goes ahead of a comparable foreign story, aiming at about half the day; each run takes at least
+one worthy story from الخليج or مصر والمغرب العربي until the day holds eight (`ARAB_DAILY`); every feed gets its
+turn in the editor's list of 300 (`CANDIDATE_CAP`) instead of the busiest filling it; and the day's gold,
+dollar and share price tables are left out before the editor reads (`SERVICE_ITEM`).
+
+**A thin event runs as a brief.** When the desk notes hold fewer than ten facts, the floor is 100 words
+instead of 200 (`newsFloor()` in `pipeline/lib/write.mjs`): six facts make about 120 words, and a writer
+pushed past that pads. The first Gulf test story failed seven attempts at 172 to 199 words against the old
+floor before this (2026-09-24). A story that fails outright takes the rejection mark, so the editor does not
+choose it again in the next run.
 
 A finished story is mended, not thrown away (2026-09-24). In the 24 runs before that day, 19 drafts were
 rejected after their revision against 30 published, most for one stock phrase or a lede a few words long,

@@ -11,7 +11,8 @@
  *   node pipeline/run.mjs --mode=paper      # one plain-Arabic reading of a recent open-access research paper
  *   node pipeline/run.mjs --mode=weekly     # the week's review from the paper's own stories (Fridays)
  *
- * Reads OPENROUTER_API_KEY from the environment or from .env (see lib/env.mjs).
+ * Every model call goes to Claude on the owner's subscription: CLAUDE_CODE_OAUTH_TOKEN from the environment
+ * or from .env (see lib/env.mjs and lib/llm.mjs).
  */
 import "./lib/env.mjs";
 import { mkdir, readFile, writeFile, appendFile } from "node:fs/promises";
@@ -20,7 +21,7 @@ import process from "node:process";
 import { fetchFeed } from "./lib/feeds.mjs";
 import { extractArticle } from "./lib/extract.mjs";
 import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectPaper, selectStories } from "./lib/select.mjs";
-import { ANALYSIS_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, reviseArticle, writeAnalysis, writeArticle, writeExplainer, writePaperReading, writeWeekly } from "./lib/write.mjs";
+import { ANALYSIS_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, newsFloor, reviseArticle, writeAnalysis, writeArticle, writeExplainer, writePaperReading, writeWeekly } from "./lib/write.mjs";
 import { critique, programmaticChecks } from "./lib/verify.mjs";
 import { copyEdit } from "./lib/copydesk.mjs";
 import { pickImage } from "./lib/images.mjs";
@@ -45,8 +46,12 @@ const PREVIEW_DIR = DRY_RUN ? option("preview", null) : null;
 const DRAFT = flag("draft");
 const MODE = option("mode", "news");
 const LIMIT = Math.max(1, Math.min(Number(option("limit", 4)) || 4, 10));
-/** A day's paper is edited, not filled: at most this many news stories in any 24 hours. */
-const DAILY_CAP = Number(process.env.KHAZENDAR_DAILY_CAP) || 10;
+/**
+ * A day's news is edited, not filled: at most this many news stories in any 24 hours. Raised from 10 to 20 on
+ * 2026-09-24 with the owner's yes, after الشرق الأوسط's economy desk filed about 30 stories on a day Khazendar
+ * filed 7 in all sections; he accepted the larger use of his Claude subscription that it costs.
+ */
+const DAILY_CAP = Number(process.env.KHAZENDAR_DAILY_CAP) || 20;
 const ONLY_SOURCE = option("source", null);
 const MIN_IMPORTANCE = (() => {
   const n = Number(option("min-importance", 6));
@@ -57,6 +62,17 @@ const RUN_STARTED = Date.now();
 const RUN_BUDGET_MS = 35 * 60 * 1000;
 /** A first rejection expires after this long (the item may be tried once more); a second one is final for the state's 21 days. */
 const REJECT_RETRY_HOURS = 12;
+/** The editor reads at most this many candidates a run (260 until 2026-09-24, when ten Gulf and Egyptian feeds joined). */
+const CANDIDATE_CAP = 300;
+/** The regional desks that are our readers' own economies (src/data/regions.json), and how many of their stories a day the region balance aims for. */
+const ARAB_REGIONS = ["الخليج", "مصر والمغرب العربي"];
+const ARAB_DAILY = 8;
+/**
+ * Price-service items: the Egyptian and Gulf sites post the day's gold, dollar and share prices many times a
+ * day («تحديث لحظى.. ثبات سعر الدولار مقابل الجنيه اليوم»، «أسعار الذهب فى مصر اليوم الأربعاء»). They are
+ * tables, not news, and would fill the editor's list; the market pages carry the prices.
+ */
+const SERVICE_ITEM = /(?:سعر|أسعار)\s+(?:الذهب|الدولار|اليورو|الريال|الدرهم|الجنيه|العملات|الحديد|الأسمنت|الفضة|الخضروات|الخضار|الفاكهة|الدواجن|الفراخ|اللحوم|الأسماك|الأسهم|البنزين)[^.؟]{0,70}?(?:اليوم|الآن|لحظ|مساء|صباح)|تحديث لحظ[يى]|حصاد الـ?\s?\d+ دقيقة|آخر تحديث لسعر|(?:التعاملات|تعاملات) (?:الصباحية|المسائية)/;
 /** Words too common in this paper's headlines to tell two stories apart. */
 const TITLE_STOPWORDS = new Set(["على", "إلى", "بعد", "قبل", "خلال", "بسبب", "بنسبة", "مليار", "مليون", "دولار", "دولارات", "الولايات", "المتحدة", "أسعار", "الاقتصاد", "الأسواق", "النفط", "الفائدة", "ارتفاع", "تراجع", "2026", "سبتمبر", "أغسطس", "أكتوبر", "الأول", "الثاني", "الأمريكي", "الأمريكية", "الأميركي", "الأميركية", "العالمي", "العالمية", "الشرق", "الأوسط", "نقطة", "أساس", "مستوى", "أعلى", "أدنى", "منذ"]);
 /** `--sections=defense,energy`: an analysis drawn only from these sections' stories (the defence and geopolitics reading). */
@@ -136,16 +152,34 @@ async function gatherCandidates(sources, state, existing) {
   const usedUrls = new Set(existing.flatMap((a) => a.sourceUrls).map((u) => fingerprint(u)));
   const seenTitles = new Set();
   const candidates = [];
+  let service = 0;
   for (const item of all) {
     const fp = fingerprint(item.url);
     if (blocks(state.items[fp]) || usedUrls.has(fp)) continue;
+    if (SERVICE_ITEM.test(item.title)) {
+      service += 1;
+      continue;
+    }
     const titleKey = item.title.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim().slice(0, 90);
     if (seenTitles.has(titleKey)) continue;
     seenTitles.add(titleKey);
     candidates.push(item);
   }
-  candidates.sort((a, b) => hoursSince(a.publishedAt) - hoursSince(b.publishedAt));
-  const capped = candidates.slice(0, 260);
+  if (service) log(`candidates: ${service} price-service items left out (gold, dollar and share price tables)`);
+  // Every feed takes its turn: the freshest item of each first, then each one's second, and so on up to the cap.
+  // By freshness alone the busiest feeds (five CNBC feeds, forty Sky News items) filled the list, and a quiet
+  // Gulf or Egyptian source's one story of the day could be cut before the editor saw it.
+  const fresher = (a, b) => hoursSince(a.publishedAt) - hoursSince(b.publishedAt);
+  const byFeed = new Map();
+  for (const c of candidates.sort(fresher)) {
+    if (!byFeed.has(c.sourceId)) byFeed.set(c.sourceId, []);
+    byFeed.get(c.sourceId).push(c);
+  }
+  const capped = [];
+  for (let round = 0; capped.length < CANDIDATE_CAP && [...byFeed.values()].some((list) => list.length > round); round++) {
+    for (const list of byFeed.values()) if (list[round] && capped.length < CANDIDATE_CAP) capped.push(list[round]);
+  }
+  capped.sort(fresher);
   capped.forEach((c, i) => {
     c.id = `c${i + 1}`;
   });
@@ -273,7 +307,9 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   const desk = await copyDeskPass(draft, { sources });
   draft = desk.draft;
   const deskModel = desk.model;
-  let checks = programmaticChecks(draft, sources, { recentTitles });
+  // A thin event runs as a brief: the floor follows the desk notes (newsFloor in write.mjs).
+  const minWords = newsFloor(notes);
+  let checks = programmaticChecks(draft, sources, { recentTitles, minWords });
   let review = await critique({ draft, sources, log });
   log(`critic "${draft.title}": ${review.verdict} score=${review.score} issues=${review.issues.length}`);
   for (const issue of [...checks.issues, ...review.issues].slice(0, 4)) log(`  · ${String(issue).slice(0, 160)}`);
@@ -290,8 +326,8 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     draft = (await copyDeskPass(revision.draft, { includeBody: true, sources })).draft;
     writerModel = `${writerModel} → ${revision.model}`;
     revised = true;
-    checks = programmaticChecks(draft, sources, { recentTitles });
-    ({ draft, checks } = await lastDeskPass(draft, checks, { sources, recheck: (d) => programmaticChecks(d, sources, { recentTitles }) }));
+    checks = programmaticChecks(draft, sources, { recentTitles, minWords });
+    ({ draft, checks } = await lastDeskPass(draft, checks, { sources, recheck: (d) => programmaticChecks(d, sources, { recentTitles, minWords }) }));
     if (!checks.ok) {
       entry.outcome = `rejected after revision: ${checks.issues.join(" | ")}`;
       report.push(entry);
@@ -398,6 +434,25 @@ async function runNews(report) {
     chosen.push(pick);
     log(`section balance: ${sec} has had nothing for three days; "${pick.headlineHint}" [${pick.importance}] added`);
   }
+  // Region balance: our readers live in the Gulf, Egypt and the Maghreb, and their own economies come first
+  // (2026-09-24: beside الشرق الأوسط, whose economy file ran about 40% Saudi, Gulf and Egyptian stories, ours
+  // carried 8% from Egypt and the Maghreb). Each run takes at least one worthy story from there, one point under
+  // the threshold being enough, until the last 24 hours hold ARAB_DAILY of them; it replaces the weakest chosen
+  // story from elsewhere only when that one is not clearly stronger.
+  const arabWorld = (regions) => (regions ?? []).some((r) => ARAB_REGIONS.includes(r));
+  const arabToday = existing.filter((a) => a.kind === "news" && hoursSince(a.publishedAt) < 24 && arabWorld(a.regions)).length;
+  if (!SECTIONS.length && arabToday < ARAB_DAILY && !chosen.some((s) => arabWorld(s.regions))) {
+    const pick = stories.find((s) => arabWorld(s.regions) && !chosen.includes(s) && s.importance >= MIN_IMPORTANCE - 1);
+    if (pick) {
+      const elsewhere = chosen.filter((s) => !arabWorld(s.regions)).sort((x, y) => x.importance - y.importance)[0];
+      if (chosen.length < runLimit) chosen.push(pick);
+      else if (elsewhere && elsewhere.importance <= pick.importance + 1) {
+        chosen.splice(chosen.indexOf(elsewhere), 1, pick);
+        log(`region balance: "${elsewhere.headlineHint}" (${elsewhere.importance}) gives way`);
+      }
+      if (chosen.includes(pick)) log(`region balance: ${arabToday} Gulf, Egyptian or Maghreb stories in 24 hours; "${pick.headlineHint}" [${pick.importance}] added`);
+    }
+  }
   for (const s of stories) log(`  [${s.importance}] ${s.section} — ${s.headlineHint} (${s.ids.join(",")})${chosen.includes(s) ? "" : s.importance < MIN_IMPORTANCE ? " (below threshold)" : " (deferred: over limit)"}`);
 
   let published = 0;
@@ -422,6 +477,10 @@ async function runNews(report) {
     } catch (error) {
       log(`story failed "${story.headlineHint}": ${String(error.message).split("\n")[0]}`);
       report.push({ headline: story.headlineHint, section: story.section, outcome: `error: ${String(error.message).split("\n")[0]}` });
+      // A story that failed outright takes the rejection mark like a rejected one (another try after twelve
+      // hours, then no more): unmarked, the editor chose the same failing story run after run (2026-09-24).
+      markItems(state, story.ids.map((id) => candidates.find((c) => c.id === id)).filter(Boolean), "rejected");
+      await saveState(state);
       await sleep(3000);
     }
   }

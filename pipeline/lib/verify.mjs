@@ -32,7 +32,7 @@ const PAPER_SECTIONS = [
  * paper's own related stories; for a paper reading, the research paper's text as the single source).
  * Explainers carry only illustrative numbers, so their figures and visuals are not checked.
  */
-export function programmaticChecks(draft, sources, { recentTitles = [], explainer = false, analysis = false, paper = false, weekly = false } = {}) {
+export function programmaticChecks(draft, sources, { recentTitles = [], explainer = false, analysis = false, paper = false, weekly = false, minWords = 200 } = {}) {
   const issues = [];
   const warnings = [];
   const grounded = !explainer;
@@ -91,7 +91,7 @@ export function programmaticChecks(draft, sources, { recentTitles = [], explaine
     const missing = PAPER_SECTIONS.filter((s) => !s.test.test(subheads)).map((s) => s.name);
     if (missing.length) issues.push(`بنية القراءة ناقصة؛ العناوين الفرعية المطلوبة (بصيغة "## ") غير موجودة: ${missing.join("، ")}. أضفها بهذا الترتيب: السؤال، البيانات والطريقة، النتائج، الحدود، ماذا يعني للقارئ العربي.`);
     if (/تثبت (?:الدراسة|الورقة)|يثبت البحث|تبرهن/.test(prose)) issues.push("القراءة تصف النتائج بأنها «تثبت»؛ الورقة تجد وتقدّر وتخلص، ولا تثبت. أعد الصياغة (تجد الورقة، يقدّر الباحثون).");
-  } else if (words < 200) issues.push(`المقال قصير جداً (${words} كلمة). وسّع السياق من المصادر دون اختراع معلومات، بحيث لا يقل عن 260 كلمة.`);
+  } else if (words < minWords) issues.push(`المقال قصير جداً (${words} كلمة). وسّع السياق من المصادر دون اختراع معلومات، بحيث لا يقل عن ${minWords < 200 ? 120 : 260} كلمة.`);
 
   // Data visuals must be built only from figures in the sources; a visual with invented numbers is dropped, not the article.
   if (draft.chart) {

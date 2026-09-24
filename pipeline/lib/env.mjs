@@ -1,6 +1,6 @@
 /**
  * Loads `.env` from the project root into process.env (variables already set win), so local
- * runs find OPENROUTER_API_KEY without exporting it by hand. Import this module before any
+ * runs find CLAUDE_CODE_OAUTH_TOKEN without exporting it by hand. Import this module before any
  * module that reads the environment at load time. Values are never logged.
  */
 import { readFileSync } from "node:fs";

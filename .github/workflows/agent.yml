@@ -70,8 +70,9 @@ jobs:
 
       - uses: anthropics/claude-code-action@v1
         if: steps.token.outputs.present == '1'
+        # The pipeline's own tools, when the agent runs one, call Claude with the same subscription token.
         env:
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}

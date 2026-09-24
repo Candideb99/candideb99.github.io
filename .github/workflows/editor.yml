@@ -3,11 +3,12 @@ name: Editor
 # The daily editor's round. It is smart about the owner's Claude tokens (the owner, 2026-09-23: "make
 # sure the editor does not run continuously and edit already edited articles so that my claude tokens
 # do not get wasted. It should be smart editor"):
-#   1. Free checks first (scripts/editor-precheck.mjs, no Claude): failed newsroom or deploy runs, a
+#   1. Checks that call no model first (scripts/editor-precheck.mjs): failed newsroom or deploy runs, a
 #      broken build, the same event filed twice, a new story without a picture.
-#   2. A missing picture is filled by the pipeline's own search on the free models, never by Claude.
-#   3. Claude (on the owner's subscription) is woken only when the free checks found something only an
-#      editor can fix, and then only for that, in at most 40 turns. On a quiet day it is not called.
+#   2. A missing picture is filled by the pipeline's own picture search (a few short Claude calls, like
+#      every model call since 2026-09-24), never by the editor round.
+#   3. The Claude editor (on the owner's subscription) is woken only when those checks found something
+#      only an editor can fix, and then only for that, in at most 40 turns. On a quiet day it is not called.
 #   4. The editor never writes or edits articles, so an article is never edited twice by it.
 # Once a day; it cannot run continuously (a new round waits for the previous one to finish).
 #
@@ -65,20 +66,25 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: node scripts/editor-precheck.mjs
 
-      # A new story without a picture is mechanical: the pipeline's own search, on the free models,
-      # finds one or the story runs as text. Claude is never woken for it.
-      - name: Fill missing pictures (free models, no Claude)
+      # A new story without a picture is mechanical: the pipeline's own picture search finds one or the story
+      # runs as text, and the editor round is not woken for it. Its model calls are Claude's, like every
+      # model call since 2026-09-24 (the owner: «abandon free models and use claude only»).
+      - name: Install Claude Code (for the picture search)
+        if: steps.precheck.outputs.pictures != ''
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Fill missing pictures (the pipeline's own search)
         if: steps.precheck.outputs.pictures != ''
         env:
           SLUGS: ${{ steps.precheck.outputs.pictures }}
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          KHAZENDAR_PROVIDER: openrouter
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          KHAZENDAR_CLAUDE_MODEL: ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'opus' }}
         run: |
           node pipeline/backfill-images.mjs --only="$SLUGS" || echo "The picture search failed; the stories run as text."
           if [ -n "$(git status --porcelain content/articles)" ]; then
             npm run build
             git add content/articles
-            git commit -m "editor: pictures for the newest stories (the pipeline's search, no Claude)"
+            git commit -m "editor: pictures for the newest stories (the pipeline's search)"
             # GitHub sometimes answers a push with a passing 500 (the first run of this step, 2026-09-23).
             for attempt in 1 2 3; do
               git pull --rebase --autostash origin main && git push origin HEAD:main && break
@@ -111,8 +117,6 @@ jobs:
 
       - uses: anthropics/claude-code-action@v1
         if: steps.precheck.outputs.work == '1' && steps.token.outputs.present == '1'
-        env:
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -140,10 +144,11 @@ jobs:
 
             How each kind of finding is fixed:
             - A failed newsroom or deploy run: read it with `gh run view <id> --log-failed` and fix the
-              cause in the pipeline. The causes seen in production: a model that left the OpenRouter free
-              tier (fix the chain in pipeline/lib/llm.mjs, only `:free` models are allowed), a token cap
-              too low for a model that reasons before answering, a feed that changed address, a story
-              whose frontmatter breaks the build. A story rejected by the critic is NOT a bug; leave it.
+              cause in the pipeline. The causes seen in production: a feed that changed address, a story
+              whose frontmatter breaks the build, a timeout too short for a long call. Every model call is
+              Claude's (pipeline/lib/llm.mjs; the owner ruled out the free models on 2026-09-24): an
+              expired subscription token or a usage limit cannot be fixed from here, so report it. A story
+              rejected by the critic is NOT a bug; leave it.
             - `npm run check` or `npm run build` failing: fix what breaks.
             - The same event filed twice: a de-duplication weakness in pipeline/lib/select.mjs. Tighten
               the rule; do not delete or edit the articles.

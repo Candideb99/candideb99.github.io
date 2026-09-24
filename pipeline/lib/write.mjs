@@ -53,7 +53,7 @@ const SCHEMA_TEXT = `{
   "subtitle": "Arabic dek: one statement (max 160 chars) carrying the second most important fact, a detail in neither the headline nor the lede; never a figure the lede gives, never a second development added with فيما/بينما, never a how/why/what list",
   "slug": "english-kebab-case-slug-4-to-7-words",
   "lede": "Opening paragraph: 2-3 sentences with the core news, the who/what/when, and the main number",
-  "body": "The rest of the article in Markdown: 4-7 paragraphs separated by blank lines, 300-550 words total, with attribution and context. May include one or two '## ' subheads if the piece is long.",
+  "body": "The rest of the article in Markdown: 4-7 paragraphs separated by blank lines, 300-550 words total when the material carries that much, with attribution and context; when the desk notes hold fewer than ten facts, a brief of 120-250 words in 3-4 paragraphs. Never pad. May include one or two '## ' subheads if the piece is long.",
   "key_facts": [{"label": "short Arabic label (2-5 words) naming what is measured, where and when, e.g. الوظائف المباشرة في المصانع الثلاثة; no source in brackets; a date or a weekday is not a key fact", "value": "the figure exactly as sourced, e.g. 4,000 or 1.7 مليار جنيه or 2.25%"}],
   "why_it_matters": "Two or three Arabic sentences (40-90 words) stating ONE concrete consequence of this event that a source reports or that follows from the story's own figures; it may reuse a body figure only as the premise of that consequence. Name an Arab country, company or price only when a source makes the link; otherwise say what the event changes in its own market. Never a recap of the body, never a chain of «قد يؤدي… مما قد…», never tell the reader what to understand, never open with «يعكس/يمثل/يُعدّ».",
   "tags": ["3-5 Arabic tags: institutions, countries, sectors, indicators"],
@@ -98,6 +98,15 @@ function coerceBody(body) {
   }
   return body;
 }
+
+/**
+ * The shortest news story the material allows: 200 words, or 100 when the desk notes hold fewer than ten facts.
+ * The desks run a thin event as a brief (الشرق الأوسط's US crude-stocks story ran about 200 words, the wires'
+ * briefs a hundred); a writer made to reach 200 words from six facts pads or fails. On 2026-09-24 a Gulf story
+ * from two short items failed seven attempts at 172 to 199 words against the old floor, then, told to write a
+ * brief, came back three times at 119 to 129 words against a floor of 140: six facts make about 120 words.
+ */
+export const newsFloor = (notes) => (notes && Array.isArray(notes.facts) && notes.facts.length < 10 ? 100 : 200);
 
 /** Structural validation of a writer's answer. `minWords`/`maxWords` bound the lede plus body (news defaults; analyses are longer). */
 export function validateDraft(draft, { minWords = 200, maxWords = 1100 } = {}) {
@@ -234,7 +243,7 @@ ${SCHEMA_TEXT}`;
     validate: (d) => {
       // The editor's region tags stand in for tags the model forgot.
       ensureTags(d, story.regions);
-      validateDraft(d);
+      validateDraft(d, { minWords: newsFloor(notes) });
     },
   });
   return { draft: normalizeDraft(data), model };
@@ -251,7 +260,7 @@ ${JSON.stringify(draft, null, 2)}
 ${notesBlock(notes)}SOURCE MATERIAL
 ${sources.map(writerSourceBlock(notes)).join("\n\n")}
 
-An editor found the following problems. Fix every one of them strictly using the source material. Remove any claim or number that the sources do not support. Keep everything else intact, and keep the article at least ${wordLimits?.target ?? 260} words (lede + body) when the sources allow it; never pad with unsupported material.
+An editor found the following problems. Fix every one of them strictly using the source material. Remove any claim or number that the sources do not support. Keep everything else intact, and keep the article at least ${wordLimits?.target ?? (newsFloor(notes) < 200 ? 120 : 260)} words (lede + body) when the sources allow it; never pad with unsupported material.
 PROBLEMS
 ${issues.map((i, n) => `${n + 1}. ${i}`).join("\n")}
 
@@ -265,7 +274,7 @@ Return the complete corrected article as one JSON object with the same keys as b
     log,
     validate: (d) => {
       ensureTags(d, draft.tags);
-      validateDraft(d, wordLimits);
+      validateDraft(d, wordLimits ?? { minWords: newsFloor(notes) });
     },
   });
   return { draft: normalizeDraft(data), model };

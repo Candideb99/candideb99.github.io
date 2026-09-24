@@ -33,13 +33,36 @@ function asArray(value) {
   return Array.isArray(value) ? value : [value];
 }
 
+const AR_MONTHS = { يناير: 1, فبراير: 2, مارس: 3, أبريل: 4, ابريل: 4, إبريل: 4, مايو: 5, يونيو: 6, يوليو: 7, أغسطس: 8, اغسطس: 8, سبتمبر: 9, أكتوبر: 10, اكتوبر: 10, نوفمبر: 11, ديسمبر: 12 };
+
+/**
+ * A feed date, in the standard forms or in Arabic as اليوم السابع writes it («الخميس، 24 سبتمبر 2026 12:00 ص»),
+ * read at +03:00 (the Gulf, and Cairo in summer); an hour either way does not move an item across the 36-hour
+ * freshness line. Undated items are dropped by the reader, so a date it cannot read costs the whole feed.
+ */
+function feedDate(value) {
+  const standard = safeIsoDate(value);
+  if (standard || !value) return standard;
+  const m = String(value).match(/(\d{1,2})\s+([^\s\d،,]+)\s+(\d{4})(?:\s+(\d{1,2}):(\d{2})\s*([صم])?)?/);
+  const month = m && AR_MONTHS[m[2]];
+  if (!month) return null;
+  let hour = Number(m[4] ?? 0);
+  if (m[6] === "م" && hour < 12) hour += 12;
+  if (m[6] === "ص" && hour === 12) hour = 0;
+  const pad = (n) => String(n).padStart(2, "0");
+  return safeIsoDate(`${m[3]}-${pad(month)}-${pad(m[1])}T${pad(hour)}:${m[5] ?? "00"}:00+03:00`);
+}
+
+/** A link as some feeds print it: «>http://www.alriyadh.com/2207847» (الرياض, 2026-09-24), with the tag's «>» doubled. */
+const cleanLink = (url) => String(url ?? "").trim().replace(/^[>\s]+/, "");
+
 function normalizeItems(doc) {
   if (doc?.rss?.channel) {
     return asArray(doc.rss.channel.item).map((item) => ({
       title: stripHtml(textOf(item.title)),
-      url: textOf(item.link) || textOf(item.guid),
+      url: cleanLink(textOf(item.link) || textOf(item.guid)),
       summary: stripHtml(textOf(item["content:encoded"]) || textOf(item.description)),
-      publishedAt: safeIsoDate(textOf(item.pubDate) || textOf(item["dc:date"])),
+      publishedAt: feedDate(textOf(item.pubDate) || textOf(item["dc:date"])),
       categories: asArray(item.category).map(textOf).filter(Boolean),
     }));
   }

@@ -16,15 +16,16 @@ commits fixes confined to `pipeline/`, `content/articles/` and `.github/` itself
 request for anything touching `src/` or the product documents. `.github/workflows/agent.yml` answers
 an issue that mentions `@claude`, restricted to the repository owner.
 
-Setting the variable `KHAZENDAR_PROVIDER=claude` additionally routes the newsroom's own writing and
-critic calls to the subscription instead of the free OpenRouter models (`pipeline/lib/llm.mjs`,
-`callClaudeCli`); vision stays on OpenRouter.
+Every model call of the newsroom, the copy desk and the picture desk also runs on the subscription,
+through Claude Code (`pipeline/lib/llm.mjs`, `callClaudeCli`). The free OpenRouter models were dropped
+on 2026-09-24 at the owner's request.
 
 ## The editing
 
-A paper is edited, not filled: `pipeline/lib/select.mjs` scores candidates on the desks' news
-values and states them, `pipeline/run.mjs` caps a run at four stories and a day at ten news stories
-(`KHAZENDAR_DAILY_CAP`), and `pipeline/lib/verify.mjs` rejects a story whose headline shares half its
+News is edited, not filled: `pipeline/lib/select.mjs` scores candidates on the desks' news
+values and states them, `pipeline/run.mjs` caps a run at four stories and a day at twenty news stories
+(`KHAZENDAR_DAILY_CAP`; ten until 2026-09-24) and takes at least one Gulf, Egyptian or Maghreb story a run
+while the day has fewer than eight, and `pipeline/lib/verify.mjs` rejects a story whose headline shares half its
 content words with one published in the last four days. STYLE.md §2 explains the rules.
 
 ## The house style
@@ -61,7 +62,7 @@ Windows and fires it. `TALK_TO_HERMES.cmd` opens an interactive session.
 
 ## Control room
 
-Double-click `OPEN_CONTROL_ROOM.cmd` (or `npm run control`) and open http://127.0.0.1:7777. It shows the last run's report, the next scheduled cloud run, every article with its critic score, and buttons to run the newsroom, write an explainer, dry-run, build a local preview, sync, publish local changes, or unpublish a story. It binds to localhost only and uses no GPU.
+Double-click `OPEN_CONTROL_ROOM.cmd` (or `npm run control`); it opens the browser itself at the port it got: 7777, or 4777 and then any free port when Windows has reserved 7777 (it did on 2026-09-24, in the block 7722-7821). It shows the last run's report, the next scheduled cloud run, every article with its critic score, and buttons to run the newsroom, write an explainer, dry-run, build a local preview, sync, publish local changes, or unpublish a story. It binds to localhost only and uses no GPU.
 
 ## Design and brand
 
@@ -77,7 +78,7 @@ When the sources contain at least three comparable figures, the writer emits a c
 
 ## Model providers
 
-Default: free OpenRouter models. Alternative: the owner's Claude subscription through Claude Code (`KHAZENDAR_PROVIDER=claude`, after `claude login` locally or a `CLAUDE_CODE_OAUTH_TOKEN` secret plus the `KHAZENDAR_PROVIDER` repository variable in the cloud). Photo selection always uses the free vision model.
+Claude only (the owner, 2026-09-24: «abandon free models and use claude only»). Every model call goes through Claude Code on the owner's subscription: the token from `claude setup-token` in `CLAUDE_CODE_OAUTH_TOKEN` (a git-ignored `.env` locally, an Actions secret in the cloud) and the model in `KHAZENDAR_CLAUDE_MODEL` (opus by default). The picture desk sends its thumbnails to the same command line. There is no backup model: a call is tried three times, and a run whose calls fail publishes nothing until Claude answers again.
 
 ## Advertising
 
@@ -97,11 +98,11 @@ Set `adsenseClient` (and optionally `googleSiteVerification`) in `src/data/site.
 
 **The cadence GitHub actually keeps.** The crons are what the workflows ask for, not what they get. Over 7–13 September 2026 GitHub fired the three-hourly news cron 1.5–2.5 hours late and never fired its 00:23, 06:23 and 12:23 slots, so the paper gets about five news runs a day, not eight; the 05:41 explainer ran between 09:33 and 10:35, the daily editor (07:17) between 11:35 and 12:13, and the two-hourly deploy fired once in five slots. Expect the Friday review (15:37) and the Tuesday/Friday paper reading (09:31) two to four hours late. The mode is decided from the cron string, so a late run still does the right thing; only the timing is the platform's, and nothing in this repository can promise more than that. A run that publishes nothing still commits its state and report, so `pipeline/runs/latest.json` is always the last run.
 
-Models (all free tier on OpenRouter, with automatic fallback): MiniMax M3 and Nvidia Nemotron 3 Ultra for editing and writing, Nemotron / Ling Flash Fin / MiniMax for the critic, MiniMax / Gemma 4 for photo selection. Override any chain with `KHAZENDAR_MODELS_EDITOR|WRITER|CRITIC|VISION` (comma-separated ids).
+Models: Claude for every job (see "Model providers" above).
 
 ## Operating it
 
-- **Secrets:** the repository needs one Actions secret, `OPENROUTER_API_KEY`. Nothing else.
+- **Secrets:** the repository needs one Actions secret, `CLAUDE_CODE_OAUTH_TOKEN` (from `claude setup-token`). Nothing else.
 - **Manual run:** Actions → Newsroom → Run workflow (choose `news`, `explainer`, `analysis`, `paper` or `weekly`, a limit, and for an analysis optionally the sections it may draw on, e.g. `defense` for the defence-and-geopolitics reading).
 - **Unpublish:** delete the Markdown file in `content/articles/` and push; the next deploy removes the page.
 - **Quality signal:** every article's frontmatter carries `quality.score` (critic score 0-10), the models used, and the sources. The Actions run summary shows a table per run.
@@ -113,14 +114,14 @@ Models (all free tier on OpenRouter, with automatic fallback): MiniMax M3 and Nv
 npm ci
 npm run dev            # site at http://localhost:4321
 npm run build          # static build in dist/ (includes Pagefind index)
-OPENROUTER_API_KEY=... npm run newsroom:dry     # full pipeline without writing files
-OPENROUTER_API_KEY=... npm run newsroom -- --limit=3
-OPENROUTER_API_KEY=... npm run newsroom:explainer
-OPENROUTER_API_KEY=... npm run newsroom:analysis
-OPENROUTER_API_KEY=... npm run newsroom:paper
+npm run newsroom:dry     # full pipeline without writing files (add -- --preview=DIR to read what it would publish)
+npm run newsroom -- --limit=3
+npm run newsroom:explainer
+npm run newsroom:analysis
+npm run newsroom:paper
 ```
 
-Node 22 or newer. The key is read from the environment or from a git-ignored `.env` in the project root; never commit it.
+Node 22 or newer, and Claude Code installed (`npm i -g @anthropic-ai/claude-code`). The token (`CLAUDE_CODE_OAUTH_TOKEN`) is read from the environment or from a git-ignored `.env` in the project root; never commit it.
 
 ## Editorial policy in one paragraph
 

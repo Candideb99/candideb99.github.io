@@ -14,7 +14,7 @@
  * what waits for approval, then "need something now". Primary action = Publish, green, on the draft.
  * FORM: app shell with a left rail; ruled newspaper furniture. Operate mode; the paper's world inherited.
  *
- *   node scripts/control-room.mjs   →  http://127.0.0.1:7777   (binds to 127.0.0.1 only)
+ *   node scripts/control-room.mjs   →  http://127.0.0.1:7777, or the next free port (binds to 127.0.0.1 only)
  */
 import http from "node:http";
 import { spawn, spawnSync } from "node:child_process";
@@ -313,45 +313,6 @@ function bodyHtml(md) {
     .join("\n");
 }
 
-// ---------------------------------------------------------------------- models
-// Chains live in pipeline/lib/llm.mjs (defaults), overridable per role by KHAZENDAR_MODELS_<ROLE> —
-// in .env here, as a repository variable in the cloud. Only ":free" ids are ever accepted.
-const MODEL_ROLES = ["editor", "writer", "desk", "critic", "vision"];
-function modelDefaults() {
-  const src = readFileSync(path.join(root, "pipeline", "lib", "llm.mjs"), "utf8");
-  const out = {};
-  for (const role of MODEL_ROLES) {
-    const m = src.match(new RegExp(`${role}:\\s*chain\\("KHAZENDAR_MODELS_[A-Z]+",\\s*\\[([^\\]]*)\\]`));
-    out[role] = m ? [...m[1].matchAll(/"([^"]+)"/g)].map((x) => x[1]) : [];
-  }
-  return out;
-}
-let orCache = { at: 0, list: [] };
-async function openrouterModels() {
-  if (Date.now() - orCache.at < 10 * 60 * 1000 && orCache.list.length) return orCache.list;
-  try {
-    const r = await fetch("https://openrouter.ai/api/v1/models", { signal: AbortSignal.timeout(20000) });
-    const j = await r.json();
-    orCache = { at: Date.now(), list: (j.data ?? []).map((m) => ({ id: m.id, ctx: m.context_length ?? 0, free: m.id.endsWith(":free") && String(m.pricing?.prompt) === "0" })) };
-  } catch {
-    /* keep whatever we had */
-  }
-  return orCache.list;
-}
-async function modelReport() {
-  const live = await openrouterModels();
-  const byId = new Map(live.map((m) => [m.id, m]));
-  const defaults = modelDefaults();
-  const env = envFileKeys();
-  const roles = {};
-  for (const role of MODEL_ROLES) {
-    const override = env[`KHAZENDAR_MODELS_${role.toUpperCase()}`];
-    const chain = override ? override.split(",").map((s) => s.trim()).filter(Boolean) : defaults[role];
-    roles[role] = { override: Boolean(override), models: chain.map((id) => ({ id, ok: byId.has(id) && byId.get(id).free, ctx: byId.get(id)?.ctx ?? null })) };
-  }
-  return { reachable: live.length > 0, checkedAt: orCache.at, roles, free: live.filter((m) => m.free).sort((a, b) => b.ctx - a.ctx) };
-}
-
 // --------------------------------------------------------------------- health
 async function health() {
   const secrets = await sh(`gh secret list --repo ${REPO} 2>&1`);
@@ -382,16 +343,14 @@ async function health() {
   return {
     ghOk,
     cloud: {
-      openrouter: /OPENROUTER_API_KEY/.test(secrets),
       anthropic: /ANTHROPIC_API_KEY/.test(secrets),
       oauth: /CLAUDE_CODE_OAUTH_TOKEN/.test(secrets),
       editorOn: /KHAZENDAR_EDITOR\s+1/.test(vars),
-      provider: (vars.match(/KHAZENDAR_PROVIDER\s+(\S+)/) ?? [])[1] ?? "openrouter",
       review: /KHAZENDAR_REVIEW\s+1/.test(vars),
       paused: /KHAZENDAR_PAUSED\s+1/.test(vars),
-      newsroomModel: (vars.match(/KHAZENDAR_CLAUDE_MODEL\s+(\S+)/) ?? [])[1] ?? "sonnet",
+      newsroomModel: (vars.match(/KHAZENDAR_CLAUDE_MODEL\s+(\S+)/) ?? [])[1] ?? "opus",
     },
-    local: { openrouter: Boolean(local.OPENROUTER_API_KEY), anthropic: Boolean(local.ANTHROPIC_API_KEY), oauth: Boolean(local.CLAUDE_CODE_OAUTH_TOKEN) },
+    local: { anthropic: Boolean(local.ANTHROPIC_API_KEY), oauth: Boolean(local.CLAUDE_CODE_OAUTH_TOKEN) },
     chatModel: local.KHAZENDAR_CHAT_MODEL || "default",
     editorReal,
     deploy,
@@ -795,20 +754,16 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
       <p class="m">Runs you start from the desk always wait for you. This is only about the cloud.</p>
 
       <h2>Who writes</h2>
-      <label><span>Model provider for the articles</span>
-        <select id="providerSel"><option value="openrouter">Free models on OpenRouter — costs nothing</option><option value="claude">Claude on your subscription, with the free models as backup — the biggest quality gain available</option></select></label>
-      <p class="m">With Claude chosen, every job is tried on Claude first; if your subscription lapses or a limit is hit, that job falls back to the free chain by itself and the paper keeps publishing. Each story records which model actually wrote it.</p>
-      <label><span>Claude model for the newsroom <span class="m">— when the provider is Claude</span></span>
+      <p class="m">Every job (choosing the stories, writing, the copy desk, the fact check and the photo check) runs on Claude, on your subscription. The free models were dropped on 24 September 2026 at your request, so there is no backup: if your subscription lapses or a limit is hit, the newsroom waits until Claude answers again.</p>
+      <label><span>Claude model for the newsroom</span>
         <select id="newsroomModel"><option value="sonnet">Sonnet — fast, uses little of your plan</option><option value="opus">Opus — strongest, uses much more of your plan</option><option value="haiku">Haiku — cheapest, weakest</option></select></label>
       <label><span>Claude model for the "Change the site" chat</span>
         <select id="chatModel"><option value="">Claude Code's default</option><option value="sonnet">Sonnet</option><option value="opus">Opus</option><option value="haiku">Haiku</option></select></label>
       <button class="go" onclick="saveWriters()">Apply</button> <span class="m" id="writersaved"></span>
-      <p class="m">The provider and the newsroom model apply in the cloud from the next run; the chat model applies here at once.</p>
+      <p class="m">The newsroom model applies in the cloud from the next run; the chat model applies here at once.</p>
 
       <h2>Keys</h2>
       <div id="keystatus" style="display:none"></div>
-      <p style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 6px"><span><b>OpenRouter key</b> <span class="m">— the free models · starts with <code>sk-or-</code></span><br><span id="ks_or">checking…</span></span><button class="quiet sm" onclick="reveal('k_or')">Replace</button></p>
-      <div class="keyrow" id="w_k_or" style="display:none"><label><input type="password" id="k_or" placeholder="paste the new key" autocomplete="off"></label><button class="quiet" onclick="saveKey('OPENROUTER_API_KEY','k_or')">Save</button></div>
       <p style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 6px"><span><b>Claude subscription token</b> <span class="m">— from <code>claude setup-token</code> · starts with <code>sk-ant-oat</code></span><br><span id="ks_oauth">checking…</span></span><button class="quiet sm" onclick="reveal('k_oauth')">Replace</button></p>
       <div class="keyrow" id="w_k_oauth" style="display:none"><label><input type="password" id="k_oauth" placeholder="paste the new token" autocomplete="off"></label><button class="quiet" onclick="saveKey('CLAUDE_CODE_OAUTH_TOKEN','k_oauth')">Save</button></div>
       <p style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 6px"><span><b>Claude API key</b> <span class="m">— pay per use · starts with <code>sk-ant-api</code></span><br><span id="ks_ant">checking…</span></span><button class="quiet sm" onclick="reveal('k_ant')">Add</button></p>
@@ -824,15 +779,6 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
       <label><span>Visible to search engines?</span>
         <select id="private"><option value="true"${current.private ? " selected" : ""}>No — keep it unlisted (before launch)</option><option value="false"${current.private ? "" : " selected"}>Yes — ask Google and Bing to list it (launch)</option></select></label>
       <button class="go" onclick="saveSettings()">Save and publish</button> <span class="m" id="saved"></span>
-
-      <h2>The free models <span class="m" style="text-transform:none;letter-spacing:0;font-weight:400">— nothing to do here unless a red dot appears</span></h2>
-      <div id="models-summary" class="m">checking OpenRouter…</div>
-      <details style="margin-top:8px"><summary class="m" style="cursor:pointer;color:var(--green)">Show the chains and change them (advanced)</summary>
-      <p class="m">Each job has a chain; the first model that answers is used. Only names ending in <code>:free</code> are ever accepted, so you cannot be charged even when OpenRouter changes its offer.</p>
-      <div id="models" class="m">checking OpenRouter…</div>
-      <details><summary class="m" style="cursor:pointer;color:var(--green)">Free models available right now, biggest context first</summary><div id="freelist" class="m"></div></details>
-      <p><label style="font-weight:400;display:flex;gap:8px;align-items:center"><input type="checkbox" id="m_gh" checked style="width:auto;margin:0"> Apply in the cloud too</label> <span class="m" id="m_note"></span></p>
-      </details>
 
       <h2>Is everything switched on?</h2>
       <div id="switches" class="m dots">checking…</div>
@@ -952,35 +898,24 @@ function dot(ok,label,note){return '<p><span style="display:inline-block;width:9
 function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(function(h){
   PAUSED=Boolean(h.cloud.paused);
   var auto=document.getElementById('auto');auto.className='auto'+((h.cloud.review||PAUSED)?' off':'');auto.innerHTML='<i></i><span>'+(PAUSED?'PAUSED — nothing is being written or published':h.cloud.review?'Waits for your approval':'Publishes on its own')+'</span>';
-  document.getElementById('auto-note').textContent=h.cloud.provider==='claude'?'written by Claude ('+h.cloud.newsroomModel+'), free models as backup':'written by the free OpenRouter models';
+  document.getElementById('auto-note').textContent='written by Claude ('+h.cloud.newsroomModel+')';
   var pb=document.getElementById('pauseBtn');pb.style.display='inline-block';pb.textContent=PAUSED?'Resume':'Pause everything';pb.className=PAUSED?'go sm':'danger sm';
   document.getElementById('now').innerHTML=
-    '<p><b>Articles are written by</b> '+(h.cloud.provider==='claude'?'Claude ('+h.cloud.newsroomModel+'), with the free OpenRouter models as backup':'the free OpenRouter models')+'.</p>'+
+    '<p><b>Articles are written by</b> Claude ('+h.cloud.newsroomModel+'), on your subscription.</p>'+
     '<p><b>The cloud runs</b> '+(PAUSED?'are <span class="no">paused</span>':h.cloud.review?'write drafts and wait for you':'publish on their own')+'.</p>'+
     '<p><b>The chat</b> uses '+(h.chatModel==='default'?'Claude Code\\'s default model':'Claude '+h.chatModel)+'.</p>'+
-    '<p><b>Keys saved:</b> OpenRouter '+(h.local.openrouter?'✓':'✗')+' · Claude subscription token '+(h.local.oauth?'✓'+(h.cloud.oauth?' (laptop and GitHub)':' (laptop only)'):'✗')+' · Claude API key '+(h.local.anthropic?'✓':'not set (not needed)')+'.</p>';
-  document.getElementById('ks_or').innerHTML=h.local.openrouter?'<span class="ok">Saved</span>':'<span class="no">Not saved</span>';
+    '<p><b>Keys saved:</b> Claude subscription token '+(h.local.oauth?'✓'+(h.cloud.oauth?' (laptop and GitHub)':' (laptop only)'):'✗')+' · Claude API key '+(h.local.anthropic?'✓':'not set (not needed)')+'.</p>';
   document.getElementById('ks_oauth').innerHTML=h.local.oauth?'<span class="ok">Saved'+(h.cloud.oauth?', and on GitHub':'')+'</span>':'<span class="no">Not saved</span>';
   document.getElementById('ks_ant').innerHTML=h.local.anthropic?'<span class="ok">Saved</span>':'<span class="m">Not set — only needed if you have no subscription</span>';
   var dl=document.getElementById('deploy-light');if(h.deploy){dl.className='light '+(h.deploy.ok?'ok':'no');dl.innerHTML='<i></i><span>'+(h.deploy.ok?'Site deploy OK · '+esc(fmtWhen(h.deploy.when)):'<b>THE SITE IS NOT UPDATING</b> — last deploy failed. <a href="'+esc(h.deploy.url)+'" target="_blank">See why</a>')+'</span>'}
-  var inUse=h.cloud.provider==='claude'?(h.cloud.oauth?'Claude on your subscription token':h.cloud.anthropic?'Claude on your pay-per-use key':'Claude is selected but NO Claude key is on GitHub'):'the free OpenRouter models';
-  document.getElementById('keystatus').innerHTML=dot(h.local.openrouter,'OpenRouter key on this laptop',h.local.openrouter?'saved':'missing')+dot(h.local.oauth||h.local.anthropic,'A Claude key on this laptop',h.local.oauth?'subscription token':h.local.anthropic?'API key':'none')+dot(h.cloud.oauth||h.cloud.anthropic||h.cloud.provider!=='claude','A Claude key on GitHub',h.cloud.oauth?'subscription token':h.cloud.anthropic?'API key':'none')+'<p><b>The cloud writes with:</b> '+inUse+'</p>';
-  document.getElementById('providerSel').value=h.cloud.provider;document.getElementById('newsroomModel').value=h.cloud.newsroomModel;document.getElementById('chatModel').value=h.chatModel==='default'?'':h.chatModel;document.getElementById('reviewSel').value=h.cloud.review?'1':'0';
+  var inUse=h.cloud.oauth?'Claude on your subscription token':h.cloud.anthropic?'Claude on your pay-per-use key':'nothing: NO Claude key is on GitHub, so the cloud cannot write';
+  document.getElementById('keystatus').innerHTML=dot(h.local.oauth||h.local.anthropic,'A Claude key on this laptop',h.local.oauth?'subscription token':h.local.anthropic?'API key':'none')+dot(h.cloud.oauth||h.cloud.anthropic,'A Claude key on GitHub',h.cloud.oauth?'subscription token':h.cloud.anthropic?'API key':'none')+'<p><b>The cloud writes with:</b> '+inUse+'</p>';
+  document.getElementById('newsroomModel').value=h.cloud.newsroomModel;document.getElementById('chatModel').value=h.chatModel==='default'?'':h.chatModel;document.getElementById('reviewSel').value=h.cloud.review?'1':'0';
   document.getElementById('switches').innerHTML=(h.deploy?dot(h.deploy.ok,'The site\\'s last deploy',h.deploy.ok?'succeeded · '+fmtWhen(h.deploy.when):'FAILED — readers see an older edition'):'')+dot(h.ghOk,'This laptop can talk to GitHub',h.ghOk?'gh is signed in':'run: gh auth login')+dot(h.cloud.editorOn&&(h.cloud.oauth||h.cloud.anthropic),'The daily editor',!h.cloud.editorOn?'switched off':(h.cloud.oauth||h.cloud.anthropic)?'switched on with a key':'switched on but has no key, so it skips')+(h.editorReal?dot(h.editorReal.working,'The daily editor is actually doing work','its last run took '+h.editorReal.seconds+'s'+(h.editorReal.working?'':' — a real round takes minutes')):'')+dot(h.chatReady,'The "Change the site" tab',h.chatReady?'ready':'needs a Claude key');
 })}
 loadHealth();
-var ROLE_WHAT={editor:'picks the stories and their sections',writer:'writes the article',desk:'the Arabic copy desk',critic:'checks facts and scores it',vision:'confirms the photo shows the subject'};
-function loadModels(){fetch('/models').then(function(r){return r.json()}).then(function(m){
-  if(!m.reachable){document.getElementById('models').innerHTML='<p class="no">Could not reach openrouter.ai just now; the chains are unchanged.</p>';document.getElementById('models-summary').textContent='Could not reach OpenRouter just now.';return}
-  var total=0,bad=0;Object.keys(m.roles).forEach(function(r){m.roles[r].models.forEach(function(x){total++;if(!x.ok)bad++})});
-  document.getElementById('models-summary').innerHTML=bad?'<span class="no">'+bad+' of '+total+' models in the chains are no longer free or have vanished — open the chains below and replace them.</span>':'<span class="ok">All '+total+' models in the chains are free and available right now</span> · '+m.free.length+' free models exist on OpenRouter today.';
-  document.getElementById('models').innerHTML=Object.keys(m.roles).map(function(role){var r=m.roles[role];return '<div style="border-top:1px solid var(--rule-2);padding:10px 0"><b style="color:var(--ink)">'+role+'</b> <span class="m">— '+ROLE_WHAT[role]+(r.override?' · changed by you':' · built-in defaults')+'</span><div style="margin:4px 0">'+r.models.map(function(x){return '<div><span style="display:inline-block;width:8px;height:8px;border-radius:50%;margin-inline-end:7px;background:'+(x.ok?'var(--green)':'var(--red)')+'"></span><code>'+esc(x.id)+'</code> <span class="m">'+(x.ok?(x.ctx?Math.round(x.ctx/1000)+'k context':''):'NOT FREE OR GONE — replace it')+'</span></div>'}).join('')+'</div><div class="keyrow"><input type="text" id="m_'+role+'" value="'+esc(r.models.map(function(x){return x.id}).join(', '))+'"><span><button class="quiet sm" onclick="saveModels(\\''+role+'\\')">Save</button> <button class="quiet sm" onclick="resetModels(\\''+role+'\\')">Reset</button></span></div></div>'}).join('');
-  document.getElementById('freelist').innerHTML=m.free.map(function(x){return '<div><code>'+esc(x.id)+'</code> '+Math.round(x.ctx/1000)+'k</div>'}).join('')||'none listed'})}
-loadModels();
-function saveModels(role){var n=document.getElementById('m_note');n.textContent='checking with OpenRouter…';post('/models',{role:role,models:document.getElementById('m_'+role).value,github:document.getElementById('m_gh').checked}).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadModels()})}
-function resetModels(role){post('/models/reset',{role:role}).then(function(r){return r.text()}).then(function(t){document.getElementById('m_note').textContent=t;loadModels()})}
 function saveKey(name,id){var v=document.getElementById(id).value.trim();if(!v)return;var n=document.getElementById('k_note');n.textContent='saving…';post('/keys',{name:name,value:v,github:document.getElementById('k_gh').checked}).then(function(r){return r.text()}).then(function(t){n.textContent=t;document.getElementById(id).value='';loadHealth()})}
-function saveWriters(){var n=document.getElementById('writersaved');n.textContent='applying…';post('/writers',{provider:document.getElementById('providerSel').value,newsroomModel:document.getElementById('newsroomModel').value,chatModel:document.getElementById('chatModel').value}).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
+function saveWriters(){var n=document.getElementById('writersaved');n.textContent='applying…';post('/writers',{newsroomModel:document.getElementById('newsroomModel').value,chatModel:document.getElementById('chatModel').value}).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
 var PAUSED=false;
 function togglePause(){if(!PAUSED&&!confirm('Pause everything? The cloud will stop writing and publishing until you press Resume. Stories already live stay live.'))return;post('/pause?value='+(PAUSED?0:1)).then(function(r){return r.text()}).then(function(t){alert(t);loadHealth()})}
 function reveal(id){var w=document.getElementById('w_'+id);w.style.display=w.style.display==='none'?'grid':'none';if(w.style.display==='grid')document.getElementById(id).focus()}
@@ -1053,7 +988,7 @@ const server = http.createServer(async (req, res) => {
         live,
         coverage: coverage(live),
         // Which models actually wrote the last 24 hours' stories — read from the articles themselves,
-        // so it is true whatever the provider setting says.
+        // so it is true whatever the settings say.
         modelsUsed: (() => {
           const cut = Date.now() - 24 * 36e5;
           const count = {};
@@ -1164,53 +1099,24 @@ const server = http.createServer(async (req, res) => {
       return text(200, "Removed. The site updates in about a minute.");
     }
     if (url.pathname === "/health") return json(await health());
-    if (url.pathname === "/models" && req.method === "GET") return json(await modelReport());
-    if (url.pathname === "/models" && req.method === "POST") {
-      const { role, models, github } = await body(req);
-      if (!MODEL_ROLES.includes(role)) return text(400, "unknown role");
-      const ids = String(models ?? "").split(/[,\n]/).map((s) => s.trim()).filter(Boolean);
-      if (!ids.length) return text(400, "Give at least one model, or press Reset to go back to the defaults.");
-      const live = new Map((await openrouterModels()).map((m) => [m.id, m]));
-      const bad = ids.filter((id) => !id.endsWith(":free") || !live.get(id)?.free);
-      if (bad.length) return text(400, `Refused — not free on OpenRouter right now: ${bad.join(", ")}. Only ":free" models are ever used, so you can never be charged.`);
-      const name = `KHAZENDAR_MODELS_${role.toUpperCase()}`;
-      await setEnvKey(name, ids.join(","));
-      let note = `Saved for this laptop: ${role} → ${ids.length} model(s).`;
-      if (github) {
-        const out = await sh(`gh variable set ${name} --repo ${REPO} --body "${ids.join(",")}" 2>&1`);
-        note += /error|not logged|could not/i.test(out) ? ` Cloud refused: ${out.slice(0, 120)}` : " Applied in the cloud too, from the next run.";
-      }
-      return text(200, note);
-    }
-    if (url.pathname === "/models/reset" && req.method === "POST") {
-      const { role } = await body(req);
-      if (!MODEL_ROLES.includes(role)) return text(400, "unknown role");
-      const name = `KHAZENDAR_MODELS_${role.toUpperCase()}`;
-      await setEnvKey(name, "");
-      await sh(`gh variable delete ${name} --repo ${REPO} 2>&1`);
-      return text(200, `Back to the built-in defaults for ${role}, here and in the cloud.`);
-    }
     if (url.pathname === "/writers" && req.method === "POST") {
-      const { provider, newsroomModel, chatModel } = await body(req);
-      const prov = provider === "claude" ? "claude" : "openrouter";
-      const nm = ["sonnet", "opus", "haiku"].includes(newsroomModel) ? newsroomModel : "sonnet";
+      // Claude is the only provider since 2026-09-24 (the owner: «abandon free models and use claude only»); only the model is chosen.
+      const { newsroomModel, chatModel } = await body(req);
+      const nm = ["sonnet", "opus", "haiku"].includes(newsroomModel) ? newsroomModel : "opus";
       const cm = ["", "sonnet", "opus", "haiku"].includes(chatModel) ? chatModel : "";
-      await setEnvKey("KHAZENDAR_PROVIDER", prov);
       await setEnvKey("KHAZENDAR_CLAUDE_MODEL", nm);
       await setEnvKey("KHAZENDAR_CHAT_MODEL", cm);
-      const a = await sh(`gh variable set KHAZENDAR_PROVIDER --repo ${REPO} --body ${prov} 2>&1`);
       const b = await sh(`gh variable set KHAZENDAR_CLAUDE_MODEL --repo ${REPO} --body ${nm} 2>&1`);
-      const bad = [a, b].find((o) => /error|not logged|could not/i.test(o));
-      return text(200, bad ? `Saved here; the cloud refused: ${bad.slice(0, 120)}` : `Done — the cloud writes with ${prov === "claude" ? `Claude (${nm})` : "the free models"} from the next run; the chat uses ${cm || "Claude Code's default"}.`);
+      const bad = /error|not logged|could not/i.test(b) ? b : null;
+      return text(200, bad ? `Saved here; the cloud refused: ${bad.slice(0, 120)}` : `Done — the cloud writes with Claude (${nm}) from the next run; the chat uses ${cm || "Claude Code's default"}.`);
     }
     if (url.pathname === "/keys" && req.method === "POST") {
       const { name, value, github } = await body(req);
       const v = String(value ?? "").trim();
-      if (!["OPENROUTER_API_KEY", "ANTHROPIC_API_KEY", "CLAUDE_CODE_OAUTH_TOKEN"].includes(name)) return text(400, "unknown key");
+      if (!["ANTHROPIC_API_KEY", "CLAUDE_CODE_OAUTH_TOKEN"].includes(name)) return text(400, "unknown key");
       if (!v || /\s/.test(v)) return text(400, "That does not look like a key — it should be one unbroken string.");
       if (name === "ANTHROPIC_API_KEY" && /^sk-ant-oat/.test(v)) return text(400, "That is a subscription token (sk-ant-oat…), not an API key — paste it in the token box instead.");
       if (name === "CLAUDE_CODE_OAUTH_TOKEN" && /^sk-ant-api/.test(v)) return text(400, "That is an API key (sk-ant-api…), not a subscription token — paste it in the API key box instead.");
-      if (name === "OPENROUTER_API_KEY" && !/^sk-or-/.test(v)) return text(400, "An OpenRouter key starts with sk-or-. This one does not.");
       if (name === "ANTHROPIC_API_KEY" && !/^sk-ant-/.test(v)) return text(400, "A Claude API key starts with sk-ant-. This one does not.");
       await setEnvKey(name, v);
       let note = "Saved on this laptop.";
@@ -1288,6 +1194,27 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, "127.0.0.1", () => {
-  console.log(`خازندار control room: http://127.0.0.1:${PORT}`);
-});
+// Windows reserves blocks of ports for Hyper-V and WSL, and the blocks move at each restart: on 2026-09-24 the
+// range 7722-7821 held 7777, so the control room could not start at all. It tries the usual port, then a few
+// others, then any free one, and opens the browser at whichever it got (OPEN_CONTROL_ROOM.cmd no longer guesses).
+const TRY_PORTS = [PORT, 4777, 17777, 27777, 0];
+function listenOn(i = 0) {
+  // One pair of handlers per attempt, each removing the other: a failed attempt's "listening" handler left in
+  // place fired again on the next port's success and would open the browser twice.
+  const onError = (error) => {
+    server.off("listening", onListening);
+    if (i + 1 < TRY_PORTS.length && ["EACCES", "EADDRINUSE"].includes(error.code)) return listenOn(i + 1);
+    console.error(`The control room could not start: ${error.message}`);
+    process.exit(1);
+  };
+  const onListening = () => {
+    server.off("error", onError);
+    const url = `http://127.0.0.1:${server.address().port}/`;
+    console.log(`خازندار control room: ${url}`);
+    if (process.env.KHAZENDAR_OPEN_BROWSER === "1") spawn("cmd", ["/c", "start", "", url], { shell: false, windowsHide: true, stdio: "ignore", detached: true }).unref();
+  };
+  server.once("error", onError);
+  server.once("listening", onListening);
+  server.listen(TRY_PORTS[i], "127.0.0.1");
+}
+listenOn();
