@@ -1,0 +1,81 @@
+---
+title: الخطوط التركية تطلب ما يصل إلى 150 طائرة بوينغ 737 ماكس
+subtitle: الاتفاق يمنح الناقلة حق استبدال الطائرات المطلوبة بطراز 737-10، أكبر نسخ عائلة ماكس
+slug: turkish-airlines-orders-150-boeing-737-max-e89a62
+section: companies
+kind: news
+publishedAt: 2026-09-24T13:00:26.559Z
+lede: طلبت الخطوط الجوية التركية ما يصل إلى 150 طائرة بوينغ 737 ماكس تتسلمها بين 2033 و2037، خلال وجود الرئيس رجب طيب أردوغان في نيويورك. وأوضحت الناقلة في بيان الأربعاء أن الصفقة تضم طلبية مؤكدة لـ100 طائرة وخياراً لشراء 50 طائرة إضافية.
+keyFacts:
+  - label: الطلبية المؤكدة من 737-8 ماكس
+    value: 100 طائرة
+  - label: خيار الشراء الإضافي
+    value: 50 طائرة
+  - label: أسطول الخطوط التركية بحسب موقعها
+    value: 514 طائرة
+  - label: طائرات بوينغ في أسطول الناقلة
+    value: أكثر من 200 طائرة
+  - label: مسافرو الخطوط التركية في 2025
+    value: 92.6 مليون
+whyItMatters: حين تتسلم الناقلة الطائرات بين 2033 و2037، يتيح لها حق التحويل إلى طراز 737-10 نقل عدد أكبر من الركاب على مسارات أكثر، بحسب بوينغ.
+tags:
+  - الخطوط الجوية التركية
+  - بوينغ
+  - تركيا
+  - الطيران
+regions:
+  - الشرق الأوسط
+  - الأمريكتان
+readingMinutes: 1
+chart: null
+table: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/THY_plane_at_Istanbul_Airport.jpg/1280px-THY_plane_at_Istanbul_Airport.jpg
+  width: 1280
+  height: 960
+  alt: طائرة للخطوط الجوية التركية في مطار إسطنبول
+  credit: Kadı · CC BY 4.0 · ويكيميديا كومنز
+  license: CC BY 4.0
+  licenseUrl: https://creativecommons.org/licenses/by/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ATHY_plane_at_Istanbul_Airport.jpg
+sources:
+  - name: أرابيان غلف بزنس إنسايت
+    nameEn: AGBI (Arabian Gulf Business Insight)
+    title: Turkish Airlines orders 150 Boeing Max jets
+    url: https://www.agbi.com/aviation/2026/09/turkish-airlines-orders-150-boeing-max-jets/
+    publishedAt: 2026-09-24T06:21:00.000Z
+    lang: en
+  - name: يورونيوز
+    nameEn: Euronews
+    title: Turkish Airlines orders 150 Boeing 737 MAX jets in major new deal
+    url: https://www.euronews.com/2026/09/24/turkish-airlines-orders-150-boeing-737-max-jets-in-major-new-deal
+    publishedAt: 2026-09-24T04:47:50.000Z
+    lang: en
+models:
+  editor: claude-cli
+  writer: claude-cli → claude-cli
+  critic: claude-cli
+  vision: claude-cli
+  desk: claude-cli
+quality:
+  score: 9
+  verdict: publish
+  revised: true
+  importance: 6
+  warnings: []
+  criticSummary: المسودة المعدلة دقيقة ومنسوبة إلى مصادرها وعالجت الملاحظات السابقة كلها، ولا يبقى فيها إلا تحسينات طفيفة في إسناد موعد التسليم وصيغته وفي تجنب التكرار.
+ai: true
+deskedAt: 2026-09-24T13:00:26.559Z
+---
+
+وقالت بوينغ في بيان إن الطائرات المؤكدة من طراز 737-8 ماكس، وإنها أكبر طلبية تبرمها الناقلة التركية على الإطلاق من الطائرات ذات الممر الواحد. وأضافت أن حق التحويل إلى الطراز الأكبر 737-10 يسمح للشركة بخدمة عدد أكبر من الركاب على مسارات أكثر.
+
+وقال رئيس مجلس إدارة الخطوط الجوية التركية مراد شكر إن الطائرات الجديدة سترفع كفاءة عمليات الشركة ومرونتها. ولم تُفصح الشركتان عن قيمة الصفقة أو أي تفاصيل مالية أخرى.
+
+ووُقّع الاتفاق بحضور أردوغان، بعد يوم من لقائه الرئيس الأمريكي دونالد ترامب مع قادة من الشرق الأوسط على هامش الجمعية العامة للأمم المتحدة. وكتب ترامب على منصته «تروث سوشيال» أنه يوم كبير لبوينغ وللصناعة الأمريكية.
+
+وأشار ترامب في المنشور نفسه إلى خطة بنغلاديش لشراء مزيد من طائرات بوينغ، وقال إن هذه المبيعات ستبلغ عشرات المليارات من الدولارات، وستدعم عشرات الآلاف من الوظائف في الولايات المتحدة.
+
+وكانت الشركتان قد بدأتا التفاوض على الصفقة في 2025، قبل أن تتعطل بسبب خلافات على المحركات، بحسب موقع «أرابيان غلف بزنس إنسايت».
+
+وتتخذ الخطوط الجوية التركية من مطار إسطنبول مقراً لها، ويضم أسطولها 514 طائرة تطير إلى أكثر من 130 دولة، وفق بيانات منشورة على موقعها. ونقلت الناقلة 92.6 مليون مسافر في 2025، وتشغّل أكثر من 200 طائرة من إنتاج بوينغ.
