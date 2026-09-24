@@ -29,7 +29,15 @@ regions:
 readingMinutes: 3
 chart: null
 table: null
-image: null
+image:
+  url: https://images.rawpixel.com/editor_1024/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvcHg4ODI5ODktaW1hZ2Uta3oyZHptNXUuanBn.jpg
+  width: 1920
+  height: 1284
+  alt: قاعة التداول في بورصة نيويورك
+  credit: rawpixel · CC0 · أوبن فيرس
+  license: CC0
+  licenseUrl: https://creativecommons.org/publicdomain/zero/1.0/
+  pageUrl: https://www.rawpixel.com/image/6111464/new-york-stock-exchange-usa-02282017
 sources:
   - name: خازندار
     nameEn: Khazendar
@@ -53,7 +61,7 @@ models:
   editor: claude-cli
   writer: claude-cli → claude-cli
   critic: claude-cli
-  vision: nex-agi/nex-n2.5-pro:free
+  vision: claude-cli
   desk: claude-cli
 quality:
   score: 9

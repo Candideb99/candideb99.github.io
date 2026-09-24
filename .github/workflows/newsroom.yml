@@ -99,6 +99,9 @@ jobs:
           KHAZENDAR_CLAUDE_MODEL: ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'claude-opus-5-5' }}
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Photo libraries beside Commons (pipeline/lib/photolibs.mjs); each is used only when its free key is set.
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
           # KHAZENDAR_REVIEW=1 makes the cloud write drafts instead of publishing: they are committed with
           # draft: true, the site ignores them, and the owner approves each one from the control room.
           REVIEW: ${{ vars.KHAZENDAR_REVIEW }}

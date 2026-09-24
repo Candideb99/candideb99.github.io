@@ -109,6 +109,12 @@ let changed = 0;
 for (const a of todo) {
   const current = a.alt.replace(`(${ILLUSTRATIVE})`, "").trim();
   const title = fileTitle(a.url);
+  // A photo from another library (Flickr, Pexels, Unsplash) has no Commons record to write from: its caption stays.
+  if (!title) {
+    report.items.push({ slug: a.slug, before: a.alt, after: null, note: "not a Commons file; kept the caption" });
+    log(`KEPT  ${a.slug.slice(0, 50)}: not a Commons file`);
+    continue;
+  }
   const meta = await commonsMeta(title);
   // A photo from outside the countries the story names runs as an illustration: no place in its caption.
   const elsewhere = placedAbroad({ title, description: meta.description, categories: meta.categories }, { title: a.title, tags: a.tags, regions: a.regions });

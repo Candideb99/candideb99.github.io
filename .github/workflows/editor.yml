@@ -78,6 +78,8 @@ jobs:
         env:
           SLUGS: ${{ steps.precheck.outputs.pictures }}
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
           KHAZENDAR_CLAUDE_MODEL: ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'claude-opus-5-5' }}
         run: |
           node pipeline/backfill-images.mjs --only="$SLUGS" || echo "The picture search failed; the stories run as text."

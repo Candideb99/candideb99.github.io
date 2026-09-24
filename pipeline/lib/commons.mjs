@@ -5,7 +5,7 @@ const API = "https://commons.wikimedia.org/w/api.php";
 const ALLOWED_LICENSE = /^(cc0(?:\s[\d.]+)?|public domain|pd(?:[\s-][\w. -]*)?|cc by(?:-sa)?(?:\s[\d.]+)?(?:\s\w+)?|no restrictions)$/i;
 /** Non-commercial and no-derivatives terms never run on a paper that carries advertising, whatever the rest of the name says. */
 const FORBIDDEN_LICENSE = /[\s-](nc|nd)\b|non-?commercial|no ?derivative/i;
-const BAD_TITLE = /(logo|map|diagram|screenshot|chart|graph|flag|coat of arms|seal|icon|cover|poster|banner|table|infographic|meme|cartoon|drawing|sketch|painting|stamp|coin\b|banknote|passport|document|scan|text|book|page|plot|\.svg|\.tif|\.gif|\.pdf)/i;
+export const BAD_TITLE = /(logo|map|diagram|screenshot|chart|graph|flag|coat of arms|seal|icon|cover|poster|banner|table|infographic|meme|cartoon|drawing|sketch|painting|stamp|coin\b|banknote|passport|document|scan|text|book|page|plot|\.svg|\.tif|\.gif|\.pdf)/i;
 
 /**
  * Searches Wikimedia Commons for editorial photographs matching `query`.
@@ -85,7 +85,13 @@ export async function searchCommons(query, { limit = 10, log = () => {} } = {}) 
   }
 }
 
+/** Where a photo came from, as the credit line names it (pipeline/lib/photolibs.mjs gives each candidate its `library`). */
+const LIBRARIES = { flickr: "فليكر", pexels: "بيكسلز", unsplash: "أنسبلاش" };
+
 export function attributionLine(image) {
-  const author = image.artist || "Wikimedia Commons";
-  return `${author} · ${image.license} · ويكيميديا كومنز`;
+  const library = String(image.library ?? "");
+  const where = LIBRARIES[library] ?? (library.startsWith("openverse:") ? "أوبن فيرس" : "ويكيميديا كومنز");
+  const author = image.artist || (where === "ويكيميديا كومنز" ? "Wikimedia Commons" : where);
+  // Pexels and Unsplash name no licence of the CC kind; their own licence is linked from the credit.
+  return library === "pexels" || library === "unsplash" ? `${author} · ${where}` : `${author} · ${image.license} · ${where}`;
 }

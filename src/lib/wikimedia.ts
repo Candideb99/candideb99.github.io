@@ -28,6 +28,8 @@ export interface ResponsiveImage {
  * never offered an upscale. Returns the original URL untouched for anything not on Commons.
  */
 export function responsiveImage(url: string, naturalWidth?: number | null): ResponsiveImage {
+  const other = otherLibrary(url, naturalWidth);
+  if (other) return other;
   const clean = url.split("#")[0].split("?")[0];
   const match = THUMB.exec(clean) ?? ORIGINAL.exec(clean);
   if (!match) return { src: url };
@@ -43,6 +45,38 @@ export function responsiveImage(url: string, naturalWidth?: number | null): Resp
 }
 
 export const WIKIMEDIA_WIDTHS = ALLOWED_WIDTHS;
+
+/**
+ * The other photo libraries the picture desk draws on since 2026-09-24 (pipeline/lib/photolibs.mjs): Flickr by
+ * way of Openverse, whose copies come in fixed sizes named by a letter, and Pexels and Unsplash, whose servers
+ * resize to any width asked in the address. Null for an address none of them serves.
+ */
+const FLICKR = /^(https:\/\/live\.staticflickr\.com\/\d+\/\d+_[0-9a-f]+)(?:_[a-z])?\.jpg$/;
+const FLICKR_SIZES: [string, number][] = [["w", 400], ["z", 640], ["c", 800], ["b", 1024]];
+const RESIZABLE = /^https:\/\/images\.(?:pexels|unsplash)\.com\//;
+const RESIZE_WIDTHS = [330, 500, 960, 1280];
+
+function otherLibrary(url: string, naturalWidth?: number | null): ResponsiveImage | null {
+  const flickr = FLICKR.exec(url.split("?")[0]);
+  if (flickr) {
+    const cap = naturalWidth && naturalWidth > 0 ? naturalWidth : 1024;
+    const sizes = FLICKR_SIZES.filter(([, w]) => w <= Math.max(cap, 400));
+    return { src: `${flickr[1]}_${sizes[sizes.length - 1][0]}.jpg`, srcset: sizes.map(([s, w]) => `${flickr[1]}_${s}.jpg ${w}w`).join(", ") };
+  }
+  if (RESIZABLE.test(url)) {
+    const [base, query = ""] = url.split("?");
+    const params = new URLSearchParams(query);
+    const at = (w: number) => {
+      params.set("w", String(w));
+      return `${base}?${params.toString()}`;
+    };
+    const cap = naturalWidth && naturalWidth > 0 ? naturalWidth : 1280;
+    const widths = RESIZE_WIDTHS.filter((w) => w <= cap);
+    if (!widths.length) return { src: url };
+    return { src: at(widths[widths.length - 1]), srcset: widths.map((w) => `${at(w)} ${w}w`).join(", ") };
+  }
+  return null;
+}
 
 /** `sizes` for a picture card in a row of `n` across the 1240px wrap (two on tablets, a 120px thumbnail on phones). */
 export function cardSizes(n: number): string {
