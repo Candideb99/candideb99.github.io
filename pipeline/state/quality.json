@@ -3,8 +3,8 @@
   "days": [
     {
       "date": "2026-09-24",
-      "published": 13,
-      "news": 10,
+      "published": 17,
+      "news": 14,
       "styleFaultsPerStory": 0,
       "corrections": 1,
       "read": 1,
@@ -12,13 +12,13 @@
       "photosPending": 0
     }
   ],
-  "updatedAt": "2026-09-24T22:37:23.103Z",
+  "updatedAt": "2026-09-24T22:41:37.046Z",
   "week": {
-    "published": 55,
-    "news": 47,
-    "revisedShare": 0.66,
-    "styleFaultsPerStory": 0.89,
-    "styleWarningsPerStory": 0.83,
+    "published": 59,
+    "news": 51,
+    "revisedShare": 0.65,
+    "styleFaultsPerStory": 0.82,
+    "styleWarningsPerStory": 0.76,
     "corrections": 12,
     "secondLook": {
       "read": 1,
@@ -32,9 +32,9 @@
     },
     "runs": {
       "count": 24,
-      "written": 36,
-      "refused": 10,
-      "callsPerStory": 13.1,
+      "written": 37,
+      "refused": 7,
+      "callsPerStory": 12.4,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": [
@@ -72,11 +72,6 @@
           "trump-xi-summit-washington-2026-4e439e",
           "us-denmark-greenland-security-deal-eac792"
         ]
-      },
-      {
-        "what": "newsroom: rejected after revision: عبارة مترجمة أو حشو",
-        "stories": 2,
-        "examples": []
       },
       {
         "what": "newsroom: skipped: repeats a recent story («…»)",
