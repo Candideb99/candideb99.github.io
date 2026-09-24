@@ -48,14 +48,14 @@ chart:
         - 32
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/The_White_House%2C_Washington%2C_D.C._USA2.jpg/1280px-The_White_House%2C_Washington%2C_D.C._USA2.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/A_voter_walks_towards_Aitkin_Public_Library_for_the_Special_Election_held_on_April_14%2C_2026_in_Aitkin%2C_Minnesota.jpg/1280px-A_voter_walks_towards_Aitkin_Public_Library_for_the_Special_Election_held_on_April_14%2C_2026_in_Aitkin%2C_Minnesota.jpg
   width: 1280
-  height: 763
-  alt: البيت الأبيض في واشنطن العاصمة
-  credit: Diego Delso · CC BY-SA 3.0 · ويكيميديا كومنز
-  license: CC BY-SA 3.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/3.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AThe_White_House%2C_Washington%2C_D.C._USA2.jpg
+  height: 853
+  alt: مركز اقتراع في ولاية مينيسوتا الأميركية
+  credit: Lorie Shaull · CC BY 4.0 · ويكيميديا كومنز
+  license: CC BY 4.0
+  licenseUrl: https://creativecommons.org/licenses/by/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AA_voter_walks_towards_Aitkin_Public_Library_for_the_Special_Election_held_on_April_14%2C_2026_in_Aitkin%2C_Minnesota.jpg
 sources:
   - name: الجزيرة الإنجليزية
     nameEn: Al Jazeera English
@@ -85,7 +85,7 @@ models:
   editor: inclusionai/ling-3.0-flash-fin:free
   writer: nvidia/nemotron-3-ultra-550b-a55b:free → nvidia/nemotron-3-ultra-550b-a55b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: nex-agi/nex-n2.5-pro:free
+  vision: claude-cli
   desk: nvidia/nemotron-3-super-120b-a12b:free
 quality:
   score: 8

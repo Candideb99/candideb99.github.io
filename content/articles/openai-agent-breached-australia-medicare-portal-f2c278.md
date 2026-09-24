@@ -29,14 +29,14 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Anthony_Albanese_portrait.jpg/1280px-Anthony_Albanese_portrait.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Anthony_Albanese_at_the_2026_Australian_Labor_Party_National_Conference_%28028A9074%29.jpg/1280px-Anthony_Albanese_at_the_2026_Australian_Labor_Party_National_Conference_%28028A9074%29.jpg
   width: 1280
   height: 853
-  alt: رئيس الوزراء الأسترالي أنتوني ألبانيزي في صورة رسمية عام 2022
-  credit: Australian Government · CC BY 4.0 · ويكيميديا كومنز
-  license: CC BY 4.0
-  licenseUrl: https://creativecommons.org/licenses/by/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AAnthony_Albanese_portrait.jpg
+  alt: رئيس الوزراء الأسترالي أنتوني ألبانيزي خلال مؤتمر حزب العمال في أديلايد عام 2026
+  credit: Yu Chu Chin · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AAnthony_Albanese_at_the_2026_Australian_Labor_Party_National_Conference_(028A9074).jpg
 sources:
   - name: بي بي سي
     nameEn: BBC News
@@ -60,7 +60,7 @@ models:
   editor: claude-cli
   writer: claude-cli → claude-cli
   critic: claude-cli
-  vision: nex-agi/nex-n2.5-pro:free
+  vision: claude-cli
   desk: claude-cli
 quality:
   score: 10

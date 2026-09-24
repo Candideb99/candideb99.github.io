@@ -31,14 +31,14 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Federal_Reserve_Bank_of_New_York_Building_003.jpg/1280px-Federal_Reserve_Bank_of_New_York_Building_003.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Federal_Reserve_Bank_of_New_York_%2855312936457%29.jpg/1280px-Federal_Reserve_Bank_of_New_York_%2855312936457%29.jpg
   width: 1280
-  height: 720
-  alt: مبنى مصرف نيويورك الاحتياطي في مانهاتن
-  credit: Kidfly182 · CC BY 4.0 · ويكيميديا كومنز
+  height: 853
+  alt: مقر بنك الاحتياطي الفيدرالي في نيويورك
+  credit: Ajay Suresh · CC BY 4.0 · ويكيميديا كومنز
   license: CC BY 4.0
   licenseUrl: https://creativecommons.org/licenses/by/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AFederal_Reserve_Bank_of_New_York_Building_003.jpg
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AFederal_Reserve_Bank_of_New_York_(55312936457).jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -62,7 +62,7 @@ models:
   editor: claude-cli
   writer: claude-cli
   critic: claude-cli
-  vision: nex-agi/nex-n2.5-pro:free
+  vision: claude-cli
   desk: claude-cli
 quality:
   score: 9

@@ -21,14 +21,14 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/European_Central_Bank_Frankfurt_Germany_18_Feb_2023.jpg/1280px-European_Central_Bank_Frankfurt_Germany_18_Feb_2023.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/AC_SO_Karlspreisverleihung_2026_14._Mai_Dom_Christine_Lagarde_I.jpg/1280px-AC_SO_Karlspreisverleihung_2026_14._Mai_Dom_Christine_Lagarde_I.jpg
   width: 1280
-  height: 854
-  alt: مقر البنك المركزي الأوروبي في فرانكفورت بألمانيا
-  credit: Norbert Nagel · CC BY-SA 4.0 · ويكيميديا كومنز
+  height: 853
+  alt: كريستين لاغارد خلال حفل جائزة شارلمان في آخن عام 2026
+  credit: Grunpfnul · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AEuropean_Central_Bank_Frankfurt_Germany_18_Feb_2023.jpg
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AAC_SO_Karlspreisverleihung_2026_14._Mai_Dom_Christine_Lagarde_I.jpg
 sources:
   - name: البنك المركزي الأوروبي
     nameEn: European Central Bank
@@ -58,7 +58,7 @@ models:
   editor: inclusionai/ling-3.0-flash-fin:free
   writer: nvidia/nemotron-3-super-120b-a12b:free → nvidia/nemotron-3-super-120b-a12b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: nex-agi/nex-n2.5-pro:free
+  vision: claude-cli
   desk: nvidia/nemotron-3-super-120b-a12b:free
 quality:
   score: 8

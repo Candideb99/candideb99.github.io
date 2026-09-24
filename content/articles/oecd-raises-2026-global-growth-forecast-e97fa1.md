@@ -46,14 +46,14 @@ chart:
         - 3
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Ch%C3%A2teau_de_la_Muette%2C_Paris_19_March_2019_001.jpg/1280px-Ch%C3%A2teau_de_la_Muette%2C_Paris_19_March_2019_001.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Container_cranes_at_the_Port_of_Oakland-.jpg/1280px-Container_cranes_at_the_Port_of_Oakland-.jpg
   width: 1280
-  height: 720
-  alt: مقر منظمة التعاون الاقتصادي والتنمية في باريس
-  credit: MySociety · CC BY 2.0 · ويكيميديا كومنز
-  license: CC BY 2.0
-  licenseUrl: https://creativecommons.org/licenses/by/2.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ACh%C3%A2teau_de_la_Muette%2C_Paris_19_March_2019_001.jpg
+  height: 960
+  alt: رافعات حاويات في ميناء أوكلاند بولاية كاليفورنيا الأميركية
+  credit: Yair-haklai · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AContainer_cranes_at_the_Port_of_Oakland-.jpg
 sources:
   - name: الغارديان
     nameEn: The Guardian
@@ -83,7 +83,7 @@ models:
   editor: claude-cli
   writer: claude-cli → claude-cli
   critic: claude-cli
-  vision: nex-agi/nex-n2.5-pro:free
+  vision: claude-cli
   desk: claude-cli
 quality:
   score: 9

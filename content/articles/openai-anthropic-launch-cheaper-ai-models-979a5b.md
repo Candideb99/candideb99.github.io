@@ -1,15 +1,11 @@
 ---
 title: «أوبن إيه آي» و«أنثروبيك» تطرحان نماذج أرخص بعد دعوة أمودي للإبطاء
-subtitle: أسعار واجهة «جي بي تي-6» البرمجية أقل 50%، وتكلفة تشغيل «أوبس 5.5» أقل
-  بنحو 40% من سلفه
+subtitle: أسعار واجهة «جي بي تي-6» البرمجية أقل 50%، وتكلفة تشغيل «أوبس 5.5» أقل بنحو 40% من سلفه
 slug: openai-anthropic-launch-cheaper-ai-models-979a5b
 section: technology
 kind: news
 publishedAt: 2026-09-23T05:08:43.890Z
-lede: أطلقت «أوبن إيه آي» و«أنثروبيك» الثلاثاء، كلٌّ على حدة، نماذج ذكاء اصطناعي
-  جديدة أقل كلفة، في أول إصدار للمختبرَين منذ دعوة داريو أمودي، الرئيس التنفيذي
-  لـ«أنثروبيك»، إلى إبطاء تطوير الذكاء الاصطناعي المتقدم في القطاع، بحسب «سي إن
-  بي سي».
+lede: أطلقت «أوبن إيه آي» و«أنثروبيك» الثلاثاء، كلٌّ على حدة، نماذج ذكاء اصطناعي جديدة أقل كلفة، في أول إصدار للمختبرَين منذ دعوة داريو أمودي، الرئيس التنفيذي لـ«أنثروبيك»، إلى إبطاء تطوير الذكاء الاصطناعي المتقدم في القطاع، بحسب «سي إن بي سي».
 keyFacts:
   - label: خفض أسعار واجهة «أوبن إيه آي»
     value: 50%
@@ -21,9 +17,7 @@ keyFacts:
     value: 25 دولاراً لكل مليون رمز
   - label: الفارق بين الإطلاقين
     value: 90 دقيقة
-whyItMatters: يسعى عملاء المختبرَين إلى نماذج أقل كلفة وإلى كبح إنفاقهم على
-  الذكاء الاصطناعي. ويواجه المختبران ضغطاً من شركات تقدّم نماذج مفتوحة الأوزان
-  أرخص، منها «علي بابا» و«مونشوت إيه آي» و«ديب سيك» الصينية.
+whyItMatters: يسعى عملاء المختبرَين إلى نماذج أقل كلفة وإلى كبح إنفاقهم على الذكاء الاصطناعي. ويواجه المختبران ضغطاً من شركات تقدّم نماذج مفتوحة الأوزان أرخص، منها «علي بابا» و«مونشوت إيه آي» و«ديب سيك» الصينية.
 tags:
   - أوبن إيه آي
   - أنثروبيك
@@ -57,19 +51,18 @@ table:
       - نحو 40% في تكلفة التشغيل
       - أوبس 5
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/BalticServers_data_center.jpg/1280px-BalticServers_data_center.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Dario_Amodei_at_TechCrunch_Disrupt_2023_06.jpg/1280px-Dario_Amodei_at_TechCrunch_Disrupt_2023_06.jpg
   width: 1280
-  height: 850
-  alt: خوادم في أحد مراكز البيانات
-  credit: BalticServers.com · CC BY-SA 3.0 · ويكيميديا كومنز
-  license: CC BY-SA 3.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/3.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ABalticServers_data_center.jpg
+  height: 853
+  alt: داريو أمودي خلال مؤتمر تك كرانش ديسربت عام 2023 (أرشيفية)
+  credit: TechCrunch · CC BY 2.0 · ويكيميديا كومنز
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ADario_Amodei_at_TechCrunch_Disrupt_2023_06.jpg
 sources:
   - name: سي إن بي سي
     nameEn: CNBC
-    title: Anthropic and OpenAI roll out cheaper models in first release since call
-      for slowdown
+    title: Anthropic and OpenAI roll out cheaper models in first release since call for slowdown
     url: https://www.cnbc.com/2026/09/22/anthropic-openai-cheaper-ai-models.html
     publishedAt: 2026-09-22T19:43:21.000Z
     lang: en
@@ -89,7 +82,7 @@ models:
   editor: claude-cli
   writer: claude-cli → claude-cli
   critic: claude-cli
-  vision: nex-agi/nex-n2.5-pro:free
+  vision: claude-cli
   desk: claude-cli
 quality:
   score: 9
@@ -97,9 +90,7 @@ quality:
   revised: true
   importance: 6
   warnings: []
-  criticSummary: عولجت الملاحظات السابقة كلها تقريباً، ولم يبقَ خطأ في الوقائع أو
-    الأرقام أو الإسناد، لكن بقاء اسم لاتيني غير مترجم وعبارة مترجمة حرفياً
-    يستوجبان تنقيحاً لغوياً قبل النشر.
+  criticSummary: عولجت الملاحظات السابقة كلها تقريباً، ولم يبقَ خطأ في الوقائع أو الأرقام أو الإسناد، لكن بقاء اسم لاتيني غير مترجم وعبارة مترجمة حرفياً يستوجبان تنقيحاً لغوياً قبل النشر.
 ai: true
 deskedAt: 2026-09-23T12:36:21.335Z
 ---

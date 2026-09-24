@@ -273,16 +273,25 @@ export function placedAbroad(image, story) {
  * `together`: the story's people (English full names); a photo whose record names two of them is ranked
  * first, one that names one of them next, so a summit story starts with the two leaders side by side.
  */
-async function collect(queries, log, { perQuery = 6, max = 8, exclude = new Set(), people = "by-query", place = [], together = [] } = {}) {
+async function collect(queries, log, { perQuery = 6, max = 8, exclude = new Set(), people = "by-query", place = [], together = [], fresh: freshFirst = false } = {}) {
   const surnames = together.map((name) => String(name).trim().split(/\s+/).pop().toLowerCase()).filter((s) => s.length >= 2);
   const seen = new Set(exclude);
   const candidates = [];
+  const year = String(new Date().getUTCFullYear());
   for (const query of queries) {
+    // `fresh`: this year's photographs of the subject first (the owner, 2026-09-24, Task 3: "fresher, livelier
+    // news photos"; of the newest 24 stories, 12 ran photographs taken 2007-2018, and one ran Albanese's 2022
+    // portrait while Commons held nine 2026 photographs of him). The year in the search finds files dated in
+    // their names, descriptions or "taken on" categories. Only for the writer's own subjects: on generic sector
+    // scenes the year fetched fresh but unrelated files ("oil pipeline 2026" → fishing boats) that crowded the
+    // four-photo shortlist, and a pipeline from 2015 looks like one from 2026.
+    const fresh = !freshFirst || query.includes(year) ? [] : await searchCommons(`${query} ${year}`, { limit: perQuery, log });
     let results = await searchCommons(query, { limit: perQuery, log });
     for (const alternative of simplerQueries(query)) {
-      if (results.length) break;
+      if (results.length || fresh.length) break;
       results = await searchCommons(alternative, { limit: perQuery, log });
     }
+    results = [...fresh, ...results];
     const asked = new Set(query.toLowerCase().split(/[^\p{L}\p{N}'’-]+/u));
     for (const image of results) {
       if (seen.has(image.url) || seen.has(`title:${image.title}`)) continue;
@@ -306,12 +315,27 @@ async function collect(queries, log, { perQuery = 6, max = 8, exclude = new Set(
       const home = place.some((word) => word && said.includes(String(word).toLowerCase()));
       const ofTheirs = surnames.filter((s) => new RegExp(`(?<![a-z])${escapeRe(s)}(?![a-z])`).test(said)).length;
       const withPeople = ofTheirs >= 2 ? 6 : ofTheirs === 1 ? 2 : 0;
-      candidates.push({ ...image, query, score: recencyScore(image) + (image.width >= 1600 ? 1 : 0) + (home ? 4 : 0) + withPeople });
+      candidates.push({ ...image, query, score: recencyScore(image) + (image.width >= 1600 ? 1 : 0) + (home ? 4 : 0) + withPeople + liveliness(image) });
     }
     if (candidates.length >= max) break;
   }
   candidates.sort((a, b) => b.score - a.score);
   return candidates;
+}
+
+/**
+ * Life in a photograph, read from its record: the agencies' pictures show people at work and a sector in
+ * action, and of the newest 24 stories on 2026-09-24 most ran a headquarters front, a skyline, a satellite view
+ * or a studio portrait. A mild weight, so relevance still leads: it moves a livelier fitting frame onto the
+ * four-photo shortlist ahead of an empty facade; the judge makes the choice.
+ */
+/** What the photo editor is told about life in a picture, beside the ranking below. */
+const LIVELY_RULE = `LIFE AND FRESHNESS. Among photographs that fit the story, choose the one with life in it, the way the news agencies' pictures look: the story's own people at work (speaking, meeting, signing, visiting) or its sector in action (ships loading at a port, cranes working, traders at their screens, workers on a line, shoppers in a market, tankers under way). An empty building front, a skyline, an aerial or satellite view, a logo or a studio portrait is the last choice, taken only when nothing livelier fits. Life never makes a photograph of another subject fit: an oil tanker does not illustrate a growth forecast because the forecast mentions energy. Of two fitting and equally lively photographs, the more recent one (the dates are given).`;
+const LIVELY = /\b(?:meets?|meeting|speaks?|speaking|speech|press conference|remarks|interview|visit(?:s|ing)?|talks|summit|signing|signs|ceremony|inaugurat\w*|opens?|workers?|employees|traders?|trading floor|dealers?|shoppers?|customers|market(?:place)?|bazaar|souq|souk|port|harbou?r|loading|unloading|ship|vessel|tanker|carrier|crane|cranes|train|trucks?|traffic|construction|assembly line|production line|factory floor|harvest|drilling|rig|queue|crowd)\b/i;
+const STATIC = /\b(?:headquarters|head office|building|exterior|facade|façade|skyline|aerial view|satellite|from space|ISS\d*|portrait|official photo|headshot|logo|plaque|nameplate|entrance sign)\b/i;
+function liveliness(image) {
+  const said = `${image.title ?? ""} ${image.description ?? ""}`;
+  return (LIVELY.test(said) ? 2 : 0) - (STATIC.test(said) ? 2 : 0);
 }
 
 /**
@@ -415,13 +439,14 @@ async function judge({ list, inlined, draft, story, log, relaxed, neutral = fals
     ? `\nTHE STORY'S PEOPLE: ${people.join(", ")}. A photograph of them (together, when the story is about their meeting or talks) is the first choice, even from an earlier occasion such as a previous summit, visit or press conference: that is how the news desks illustrate a story about people, and it is livelier than any building. Of the photographs that show them, choose the MOST RECENT (the dates are given): the event itself when its photograph exists, otherwise their latest occasion; an older one only when nothing newer shows them well. It must be a contemporary news photograph (sharp, their faces visible), never a painting, poster, screen, cartoon or a crowd in which they are hard to find, and nothing unflattering or embarrassing. Its caption names them and, for an earlier occasion, that occasion and its year as the file gives them («ترامب وشي خلال لقائهما في أوساكا عام 2019»).`
     : "\nA photograph of the story's own people taken at an earlier occasion (a previous summit, visit or press conference) is how the desks illustrate a story about them; its caption then names that occasion and its year.";
   const placed = relaxed
-    ? `This is the fallback pass: a generic but appropriate newspaper illustration is acceptable: the headquarters of the institution named, or a typical scene of the story's OWN sector (port, refinery, trading floor, factory line, data-centre hall, LNG tanker, bank branch, oil field). The skyline or a landmark of the capital is acceptable only for a story about a country's economy as a whole (inflation, growth, budget, currency, rates, rating); a story about one company, plant, project, product, deal, commodity or technology needs its sector's own object, never a cityscape. Reject: any photograph of identifiable people — officials, politicians, executives, a named meeting, summit, ceremony or visit (a generic illustration shows places and things, never someone else's event); visible text overlays or watermarks; logos, maps, charts, diagrams, infographics, screenshots, documents, banknotes or coins as the subject; a product or appliance close-up unrelated to the story; military vessels, aircraft or weapons for a story that is not about the military; an archival, black-and-white or pre-2005 look; a close-up of a private individual; a recognisable place (a skyline, a landmark, a sign, a flag) in a different country or city than the story's; anything misleading or embarrassing next to the headline. Of two fitting scenes, choose the one taken in the story's own country, and then the more recent one.
+    ? `This is the fallback pass: a generic but appropriate newspaper illustration is acceptable: a typical scene of the story's OWN sector at work (port, refinery, trading floor, factory line, data-centre hall, LNG tanker, bank branch, oil field), or, when nothing livelier fits, the headquarters of the institution named. The skyline or a landmark of the capital is acceptable only for a story about a country's economy as a whole (inflation, growth, budget, currency, rates, rating); a story about one company, plant, project, product, deal, commodity or technology needs its sector's own object, never a cityscape. Reject: any photograph of identifiable people — officials, politicians, executives, a named meeting, summit, ceremony or visit (a generic illustration shows places and things, never someone else's event); visible text overlays or watermarks; logos, maps, charts, diagrams, infographics, screenshots, documents, banknotes or coins as the subject; a product or appliance close-up unrelated to the story; military vessels, aircraft or weapons for a story that is not about the military; an archival, black-and-white or pre-2005 look; a close-up of a private individual; a recognisable place (a skyline, a landmark, a sign, a flag) in a different country or city than the story's; anything misleading or embarrassing next to the headline. Of two fitting scenes, choose the one taken in the story's own country, and then the more recent one.
 ${PLACE_RULE}`
     : `Requirements: clearly relevant to the story's subject (institution, place, industry, product); looks like a contemporary editorial news photo, and of two fitting photographs the more recent one (the dates are given); landscape composition; no visible text overlays, watermarks, logos as the main subject, charts, maps, diagrams, infographics, screenshots, product close-ups, or historical/archival look; no close-up of a private individual; nothing embarrassing or misleading if paired with the headline.
 PEOPLE — the gravest error: a photograph showing an identifiable person (a politician, official, executive, anyone a caption would name) who is NOT one of the people this story is about is WRONG, however well the room, flag or setting matches. Read each candidate's file name and description for names of people and compare them with the headline: a story about Treasury Secretary Bessent must never run a photo of Secretary Kerry; a story about He Lifeng must never run one of Liu Yandong. When no candidate shows the story's own people, choose 0 and let the fallback find a building, skyline or sector scene instead.${theirs}
 ${people.length ? "" : PLACE_RULE}`;
-  // The last pass swaps the geography rule for the neutral-frame rule; everything else stands.
-  const rules = neutral ? placed.replace(PLACE_RULE, NEUTRAL_RULE) : placed;
+  // The last pass swaps the geography rule for the neutral-frame rule; everything else stands. Every pass but
+  // the neutral one prefers life (Task 3, 2026-09-24): the agencies show people and sectors at work.
+  const rules = neutral ? placed.replace(PLACE_RULE, NEUTRAL_RULE) : `${placed}\n${LIVELY_RULE}`;
   const user = `We are illustrating an Arabic economics article.
 Headline: ${draft.title}
 Summary: ${draft.subtitle ?? ""}
@@ -540,9 +565,9 @@ Angle: ${story?.angle ?? ""}
 Regions: ${(draft.regions ?? []).join(", ") || "unknown"}
 Tags: ${(draft.tags ?? []).join(", ")}
 
-Give 4 English search phrases (2-4 words each, concrete nouns only) for generic photographs that this newspaper could run with the story. First the concrete object of the story's OWN sector (a lithium battery production line, an LNG carrier ship, a data-centre server hall, a container terminal, an oil pipeline in the desert, a wheat harvest), then the headquarters building of the institution named. The skyline or a landmark of the capital ONLY when the story is about a country's economy as a whole (inflation, growth, budget, currency, rates, rating); a story about one company, plant, project, product, deal, commodity or technology gets its sector's object, never a cityscape. Prefer subjects that certainly exist as photos on Wikimedia Commons (e.g. "lithium battery factory", "LNG carrier ship", "data center server racks", "Ras Tanura refinery", "container terminal cranes", "Central Bank of Egypt", "Riyadh skyline").
+Give 4 English search phrases (2-4 words each, concrete nouns only) for generic photographs that this newspaper could run with the story. First the story's OWN sector at work, the way the news agencies picture it (a lithium battery production line, an LNG carrier ship, container ship loading, traders on a trading floor, a data-centre server hall, an oil pipeline in the desert, a wheat harvest, shoppers in a market), then the headquarters building of the institution named, as the last phrase only. A story about the economy as a whole (growth, a forecast, inflation, a budget, trade figures) is pictured by economic life in its own place (a container port, a factory floor, shoppers in a market, a busy commercial street), never by one commodity it mentions in passing. The skyline or a landmark of the capital ONLY when the story is about a country's economy as a whole (inflation, growth, budget, currency, rates, rating); a story about one company, plant, project, product, deal, commodity or technology gets its sector's object, never a cityscape. Prefer subjects that certainly exist as photos on Wikimedia Commons (e.g. "lithium battery factory", "LNG carrier ship", "data center server racks", "Ras Tanura refinery", "container terminal cranes", "Central Bank of Egypt", "Riyadh skyline").
 The photograph should be from the story's own place. When the story is about ONE country, the first two phrases name it with the object ("diesel pump United States", "gas station Texas", "LNG carrier Qatar", "wheat harvest Egypt"); the last two may leave it out. Also give "place": 2-6 English words a Wikimedia Commons title, description or category of a photo taken in that country would contain (the country's name and demonym, its main cities or states, e.g. ["United States", "USA", "American", "Texas", "California"]); [] when the story is about the world, a region or several countries.
-Also give "people": the English full names, as Wikipedia writes them, of at most three people the story is about when it is about what named people did, said or agreed (heads of state or government, ministers, central bank governors, chief executives), for example ["Donald Trump", "Xi Jinping"] for a story about their summit; [] when the story is about markets, prices, data, a company's results or a sector.
+Also give "people": the English full names, as Wikipedia writes them, of at most three people the story is about when it is about what named people did, said or agreed (heads of state or government, ministers, central bank governors, chief executives), for example ["Donald Trump", "Xi Jinping"] for a story about their summit. When the story reports what ONE institution decided, forecast or announced (a central bank, a ministry, the IMF, the OECD, OPEC, one company), give the person who leads it and speaks for it, for example ["Mathias Cormann"] for an OECD forecast or ["Amin H. Nasser"] for a Saudi Aramco result: the agencies illustrate such a story with that person at work, captioned as a file photo. [] when the story is about markets, prices, data or a sector as a whole.
 Return JSON: {"queries": ["...", "...", "...", "..."], "place": ["..."], "people": ["..."]}`,
     // Models that think before answering spend their first tokens on reasoning; leave room for it.
     temperature: 0.2,
@@ -692,7 +717,7 @@ function atHome(candidates, draft, log) {
 export async function pickImage({ draft, story, log, fallback = true, exclude = new Set() }) {
   const specific = (draft.imageQueries?.length ? draft.imageQueries : []).slice(0, 3);
   if (specific.length) {
-    const candidates = atHome(await collect(specific, log, { exclude }), draft, log);
+    const candidates = atHome(await collect(specific, log, { exclude, fresh: true }), draft, log);
     if (candidates.length) {
       const s = await shortlist(candidates, log);
       if (s.list.length) {
@@ -753,9 +778,23 @@ async function peoplePhoto({ people, draft, story, log, exclude }) {
   // («…-20260515.jpg»), and the ranking puts the newest of the fitting ones on the shortlist.
   const year = new Date().getUTCFullYear();
   const names = people.length >= 2 ? `${people[0]} ${people[1]}` : people[0];
-  const queries = people.length >= 2 ? [`${names} ${year}`, names, `${people[0]} and ${people[1]}`] : [`${names} ${year}`, names];
+  // Two people: together first, then each of them alone this year. A story quoting Albanese about an OpenAI
+  // agent searched only "Albanese Altman", found no file naming both, and fell back to his 2022 portrait.
+  const queries = people.length >= 2 ? [`${names} ${year}`, names, `${people[0]} and ${people[1]}`, ...people.slice(0, 2).map((p) => `${p} ${year}`)] : [`${names} ${year}`, names];
   log(`image: the story's people first: ${queries.join(" | ")}`);
-  const candidates = (await collect(queries, log, { perQuery: 10, max: 20, exclude, people: "by-query", together: people })).filter((c) => !excluded(exclude, c));
+  // A face from more than eight years ago is no longer the face the reader knows (Commons' newest photograph of
+  // the New York Fed's John C. Williams was taken in 2008): such a file is dropped and the story falls back to a
+  // scene of its sector.
+  const oldest = year - 8;
+  const candidates = (await collect(queries, log, { perQuery: 10, max: 20, exclude, people: "by-query", together: people })).filter((c) => {
+    if (excluded(exclude, c)) return false;
+    const taken = photoYear(c);
+    if (taken && taken < oldest) {
+      log(`image: dropped "${String(c.title).slice(0, 60)}" — a ${taken} photograph of a person, older than ${oldest}`);
+      return false;
+    }
+    return true;
+  });
   if (!candidates.length) {
     log("image: no photograph of the story's people");
     return null;

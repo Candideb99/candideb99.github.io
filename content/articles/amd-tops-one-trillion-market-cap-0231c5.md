@@ -47,14 +47,14 @@ chart:
         - 180
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/2485_Augustine_Drive_headquarters_in_Santa_Clara%2C_California.jpg/1280px-2485_Augustine_Drive_headquarters_in_Santa_Clara%2C_California.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/AMD_CEO_Lisa_Su_speaking_at_ORNL_2019-05-07.jpg/1280px-AMD_CEO_Lisa_Su_speaking_at_ORNL_2019-05-07.jpg
   width: 1280
-  height: 946
-  alt: مقر شركة إيه إم دي في سانتا كلارا بولاية كاليفورنيا
-  credit: Coolcaesar · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3A2485_Augustine_Drive_headquarters_in_Santa_Clara%2C_California.jpg
+  height: 853
+  alt: الرئيسة التنفيذية لشركة «إيه إم دي» ليزا سو خلال فعالية في مختبر أوك ريدج الوطني عام 2019
+  credit: Genevieve Martin, OLCF at ORNL · CC BY 2.0 · ويكيميديا كومنز
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AAMD_CEO_Lisa_Su_speaking_at_ORNL_2019-05-07.jpg
 sources:
   - name: ماركت ووتش
     nameEn: MarketWatch
@@ -72,7 +72,7 @@ models:
   editor: claude-cli
   writer: claude-cli → claude-cli
   critic: claude-cli
-  vision: nex-agi/nex-n2.5-pro:free
+  vision: claude-cli
   desk: claude-cli
 quality:
   score: 9

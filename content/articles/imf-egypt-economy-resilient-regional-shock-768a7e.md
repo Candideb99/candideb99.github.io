@@ -33,14 +33,14 @@ readingMinutes: 3
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Cairo_Skyline_%282347103621%29.jpg/1280px-Cairo_Skyline_%282347103621%29.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Visit_of_Kristalina_Georgieva%2C_Managing_Director_of_the_International_Monetary_Fund_%28IMF%29%2C_to_the_European_Commission_%28P-070421-00-07%29.jpg/1280px-Visit_of_Kristalina_Georgieva%2C_Managing_Director_of_the_International_Monetary_Fund_%28IMF%29%2C_to_the_European_Commission_%28P-070421-00-07%29.jpg
   width: 1280
-  height: 846
-  alt: أفق مدينة القاهرة
-  credit: Francisco Anzola · CC BY 2.0 · ويكيميديا كومنز
-  license: CC BY 2.0
-  licenseUrl: https://creativecommons.org/licenses/by/2.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ACairo_Skyline_(2347103621).jpg
+  height: 853
+  alt: مديرة صندوق النقد الدولي كريستالينا غورغييفا خلال زيارتها للمفوضية الأوروبية في بروكسل عام 2026
+  credit: Europäische Kommission - Audiovisueller Dienst, Xavier Lejeune, Yügen, CE - Serv · CC BY 4.0 · ويكيميديا كومنز
+  license: CC BY 4.0
+  licenseUrl: https://creativecommons.org/licenses/by/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AVisit_of_Kristalina_Georgieva%2C_Managing_Director_of_the_International_Monetary_Fund_(IMF)%2C_to_the_European_Commission_(P-070421-00-07).jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -58,7 +58,7 @@ models:
   editor: claude-cli
   writer: claude-cli → claude-cli
   critic: claude-cli
-  vision: nex-agi/nex-n2.5-pro:free
+  vision: claude-cli
   desk: claude-cli
 quality:
   score: 9
