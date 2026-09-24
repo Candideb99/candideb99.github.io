@@ -283,6 +283,9 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
   const rootTwice = roots.filter((w, i) => roots.indexOf(w) !== i);
   if (twice.length) issues.push(`كلمة مكررة في العنوان («${twice[0]}»)؛ العنوان يقول الكلمة مرة.`);
   else if (rootTwice.length) warnings.push(`الكلمة نفسها مرتين في العنوان («${rootTwice[0]}»)؛ أعد صياغته بلا تكرار إن أمكن.`);
+  // An explainer is titled with the question it answers (the owner, 2026-09-24, on «عائد السند يرتفع كلما انخفض
+  // سعره والعكس صحيح»: "i would opt in giving the headline as question").
+  if (kind === "explainer" && !/؟\s*$/.test(title.trim())) issues.push(`عنوان الشرح سؤال واحد واضح ينتهي بـ«؟» يجيب عنه النص (مثل «لماذا يرتفع عائد السند كلما انخفض سعره؟»)، لا جملة خبرية ولا عنوان بنقطتين.`);
 
   // Dates the desks write: the weekday this week, the month this year, the year only when it is not this one.
   const year = new Date().getUTCFullYear();

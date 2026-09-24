@@ -48,6 +48,12 @@ const ANALYST_SYSTEM = `You are the senior analyst of خازندار (Khazendar)
 
 ${HOUSE_STYLE}`;
 
+/**
+ * What a chart shows (the owner, 2026-09-24, on a chart of Egypt's monthly inflation at -0.4, 0 and 0.1: "people
+ * usually accustomed to 10%, not 0.1"). Shared by every writer that may draw one.
+ */
+const CHART_RULE = "A chart shows the measure readers know, in the unit the text uses: the annual inflation rate (14.5%), never the month-on-month change (0.1%) unless the story is about that change; a rate's or a price's level (19%, 105 دولارات), not its change in basis points or cents; a percentage as a percentage (14.5, not 0.145). A few figures that make the story's point beat a long series of a side indicator: a central bank's policy rate beside annual and core inflation shows its real rate at a glance.";
+
 const SCHEMA_TEXT = `{
   "title": "Arabic headline, 35-80 characters, ONE idea (never chain two or three developments with و), specific, contains the key fact or number (a large count in thousands or millions, «456 ألف مستثمر», never a run of digits such as 455758), no colon-tricks, no clickbait",
   "subtitle": "Arabic dek: one statement (max 160 chars) carrying the second most important fact, a detail in neither the headline nor the lede; never a figure the lede gives, never a second development added with فيما/بينما, never a how/why/what list",
@@ -62,7 +68,7 @@ const SCHEMA_TEXT = `{
   "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit, e.g. % or مليار دولار", "source": "publisher name", "categories": ["Arabic x-axis labels, 3-12 items, in the sources' order"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the sources]}]},
   "table": null or {"title": "Arabic table title", "source": "publisher name", "columns": ["2-5 Arabic column headers"], "rows": [["cells as Arabic text or numbers exactly as in the sources"]]}
 }
-Data visuals: include "chart" only when the sources give at least three comparable figures of the same kind (a time series, or the same indicator across countries/companies); use "line" for time series and "bar" for comparisons; at most 3 series. Include "table" only when the sources list comparable figures for several entities (max 12 rows). Every number in a chart or table must appear in the sources; translate all labels to Arabic; otherwise set them to null.`;
+Data visuals: include "chart" only when the sources give at least three comparable figures of the same kind (a time series, or the same indicator across countries/companies); use "line" for time series and "bar" for comparisons; at most 3 series. Include "table" only when the sources list comparable figures for several entities (max 12 rows). Every number in a chart or table must appear in the sources; translate all labels to Arabic; otherwise set them to null. ${CHART_RULE}`;
 
 /**
  * Arabic JSON is token-hungry and Ling's reasoning counts against the cap: at the old cap of 5000 the writer's
@@ -349,10 +355,10 @@ export function normalizeTable(table) {
  * work, recognised at a glance. The owner, 2026-09-24, on the Treasury's front under an explainer of bond
  * yields: the schemas had asked for "an institution's headquarters" and "a city skyline".
  */
-const HUB_IMAGE_QUERIES = `"image_queries": ["2-3 short English search terms (2-4 words each) for a photograph that exists on Wikimedia Commons and that a reader recognises at a glance as the subject at work, the way the news agencies picture it: traders at their screens or a trading floor for bonds, rates and markets; shoppers in a supermarket for prices and inflation; a container port for trade; a factory floor for industry; an oil tanker, pumpjacks or a refinery for oil; the named people at work. An institution's building only when the piece is about that institution's own decision, never a skyline; no adjectives, no abstract concepts, never 'research', 'paper' or 'chart'"]`;
+const HUB_IMAGE_QUERIES = `"image_queries": ["2-3 short English search terms (2-4 words each) for a photograph that exists on Wikimedia Commons and that a reader recognises at a glance as the subject at work, the way the news agencies picture it: traders at their screens or a trading floor for bonds, rates and markets; shoppers at an everyday popular food market or a supermarket for prices and inflation (never a tourist bazaar); a container port for trade; a factory floor for industry; an oil tanker, pumpjacks or a refinery for oil; the named people at work. An institution's building only when the piece is about that institution's own decision, never a skyline; no adjectives, no abstract concepts, never 'research', 'paper' or 'chart'"]`;
 
 const EXPLAINER_SCHEMA = `{
-  "title": "Arabic title in the form of a clear question or statement (35-80 chars), e.g. ما هو منحنى العائد ولماذا يخيف الأسواق عندما ينقلب؟",
+  "title": "Arabic title: ONE clear question the explainer answers, ending with «؟» (35-80 chars), the way the explainer desks title them: لماذا يرتفع عائد السند كلما انخفض سعره؟ / ما هو منحنى العائد ولماذا يخيف الأسواق عندما ينقلب؟ / كيف يحرّك مضيق هرمز أسعار النفط؟ Never a statement and never a two-dot hinge (the owner, 2026-09-24)",
   "subtitle": "One Arabic sentence stating what the reader will understand",
   "slug": "english-kebab-case-slug",
   "lede": "2-3 sentences: the concept in plain words and why readers meet it now, named in general terms only (a rate decision, an oil-price move), with no date, price, figure or event of the week",
@@ -407,7 +413,7 @@ const ANALYSIS_SCHEMA = `{
   "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit, e.g. % or مليار دولار", "source": "the publisher named in the material", "categories": ["Arabic labels, 3-12 items"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the supplied material]}]},
   "table": null or {"title": "Arabic table title", "source": "the publisher named in the material", "columns": ["2-5 Arabic column headers"], "rows": [["cells exactly as in the supplied material"]]}
 }
-Data visuals: include "chart" or "table" only when the supplied material gives at least three comparable figures of the same kind; every number must appear in the material; otherwise set them to null.`;
+Data visuals: include "chart" or "table" only when the supplied material gives at least three comparable figures of the same kind; every number must appear in the material; otherwise set them to null. ${CHART_RULE}`;
 
 function relatedBlock(article, index) {
   const facts = (article.keyFacts ?? []).map((f) => [f.label, f.value].filter(Boolean).join(": ")).join("؛ ");
@@ -480,7 +486,7 @@ const FEATURE_SCHEMA = `{
   "table": {"title": "الجدول الزمني", "source": "خازندار", "columns": ["التاريخ", "الحدث"], "rows": [["<the day and month the story was published, e.g. 13 سبتمبر>", "<one line, at most 18 words: what that story reported, with its main figure exactly as the story gives it>"]]},
   "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit", "source": "the publisher named in the material", "categories": ["Arabic labels, 3-12 items, in date order"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the material]}]}
 }
-The timeline table is REQUIRED: 5-10 rows, oldest first, one per story of the material (the most telling ones when there are more), each dated with that story's own publication date. Include "chart" only when the material gives at least three comparable figures of the same measure on different dates (a price, a rate, a count); every value must appear in the material; otherwise null.`;
+The timeline table is REQUIRED: 5-10 rows, oldest first, one per story of the material (the most telling ones when there are more), each dated with that story's own publication date. Include "chart" only when the material gives at least three comparable figures of the same measure on different dates (a price, a rate, a count); every value must appear in the material; otherwise null. ${CHART_RULE}`;
 
 /** Writes «في العمق» from the file's stories, oldest first; every figure, date and name must come from them. */
 export async function writeFeature({ topic, stories, log }) {
@@ -685,7 +691,7 @@ const PAPER_SCHEMA = `{
   "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit", "source": "the paper (authors, institution, year)", "categories": ["Arabic labels, 3-12 items"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the paper's text]}]},
   "table": null or {"title": "Arabic table title", "source": "the paper", "columns": ["2-5 Arabic column headers"], "rows": [["cells exactly as in the paper's text"]]}
 }
-Data visuals: include "chart" or "table" only when the paper's text itself gives at least three comparable figures of the same kind; every number must appear in the text; otherwise set them to null.`;
+Data visuals: include "chart" or "table" only when the paper's text itself gives at least three comparable figures of the same kind; every number must appear in the text; otherwise set them to null. ${CHART_RULE}`;
 
 /**
  * Writes a plain-Arabic reading of one open-access research paper. `paper` carries the editor's choice

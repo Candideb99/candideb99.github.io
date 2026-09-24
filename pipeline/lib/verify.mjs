@@ -118,6 +118,15 @@ export function programmaticChecks(draft, sources, { recentTitles = [], newsTitl
       draft.chart = null;
     }
   }
+  // An inflation chart whose every value sits within a point of zero is the monthly change, not the rate readers
+  // know (the owner, 2026-09-24, on Egypt at -0.4, 0 and 0.1 beside an annual rate of 14.5%).
+  if (draft.chart) {
+    const about = `${draft.chart.title} ${draft.chart.series.map((s) => s.name).join(" ")}`;
+    const values = draft.chart.series.flatMap((s) => s.values).filter((v) => Number.isFinite(v));
+    if (/تضخم/.test(about) && values.length && values.every((v) => Math.abs(v) < 1.5)) {
+      issues.push("الرسم البياني يعرض التغير الشهري للتضخم (أرقام حول الصفر)؛ اعرض المعدل السنوي الذي يعرفه القارئ، أو سعر الفائدة إلى جانب التضخم السنوي والأساسي، من أرقام المصادر.");
+    }
+  }
   if (draft.table) {
     const tableNumbers = [draft.table.title, ...draft.table.columns, ...draft.table.rows.flat()].join(" ");
     const bad = grounded ? ungroundedNumbers(tableNumbers, sourceTexts, { ignoreYears: false }) : [];
