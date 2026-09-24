@@ -10,33 +10,46 @@
  * scrolls it by hand, and it moves on a few seconds after the finger lifts. The list is printed twice
  * so the loop is seamless; without JavaScript, or for a reader who asked for reduced motion, it stands
  * still and scrolls by hand.
+ *
+ * Inside the site (2026-09-24, the owner's Task 4 after reading الشرق الأوسط beside Khazendar) the same strip
+ * runs under every page's market strip as «آخر الأخبار»: the newest stories, each with its age, which there is
+ * hours, not days (`lead="time"`; the base layout builds it, the front page keeps its own).
  */
 import type { Article } from "@lib/articles";
 import { articleHref } from "@lib/articles";
 import { kindLabel } from "@lib/sections";
 import { isolateNumbers } from "@lib/bidi";
+import { timeAgo } from "@lib/format";
 
 interface Props {
   items: Article[];
+  /** The strip's name, printed on its green label and read out as its region. */
+  label?: string;
+  /** What stands before each headline: its section, or its age (kept current in the browser). */
+  lead?: "section" | "time";
 }
-const { items } = Astro.props;
+const { items, label = "أيضاً على خازندار", lead = "section" } = Astro.props;
 ---
 
 {items.length > 0 && (
   <div class="ticker-wrap" data-ticker>
-    <div class="wrap ticker" role="region" aria-label="أيضاً على خازندار">
-      <span class="ticker__label ui">أيضاً على خازندار</span>
+    <div class="wrap ticker" role="region" aria-label={label}>
+      <span class="ticker__label ui">{label}</span>
       <div class="ticker__viewport">
         <ul class="ticker__list">
           {items.map((a) => (
             <li class="ticker__item">
-              <span class="ticker__section ui">{kindLabel(a.data.kind, a.data.section)}</span>
+              {lead === "time"
+                ? <time class="ticker__section ui" datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time>
+                : <span class="ticker__section ui">{kindLabel(a.data.kind, a.data.section)}</span>}
               <a href={articleHref(a)} set:html={isolateNumbers(a.data.title)} />
             </li>
           ))}
           {items.map((a) => (
             <li class="ticker__item" aria-hidden="true">
-              <span class="ticker__section ui">{kindLabel(a.data.kind, a.data.section)}</span>
+              {lead === "time"
+                ? <time class="ticker__section ui" datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time>
+                : <span class="ticker__section ui">{kindLabel(a.data.kind, a.data.section)}</span>}
               <a href={articleHref(a)} tabindex="-1" set:html={isolateNumbers(a.data.title)} />
             </li>
           ))}

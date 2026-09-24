@@ -27,6 +27,16 @@ function partsIn(date: Date, timeZone = site.timeZone) {
   };
 }
 
+/**
+ * "12 ربيع الآخر 1448 هـ": the Hijri date by the Umm al-Qura calendar, in the paper's zone and Western digits,
+ * as the masthead prints it and as الشرق الأوسط prints it on every story beside the Gregorian date.
+ */
+export function formatHijri(iso: string | Date): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+  return new Intl.DateTimeFormat("ar-SA-u-ca-islamic-umalqura-nu-latn", { day: "numeric", month: "long", year: "numeric", timeZone: site.timeZone }).format(d);
+}
+
 /** "الأحد 7 سبتمبر 2026" */
 export function formatDate(iso: string | Date, { weekday = true } = {}): string {
   const d = new Date(iso);

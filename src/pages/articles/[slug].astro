@@ -12,7 +12,7 @@ import { getArticles, related, articleHref, topicOf } from "@lib/articles";
 import { getSection, sectionHref, kindLabel, moreLabel, allLabel } from "@lib/sections";
 import { subTopicOf, topicHref } from "@lib/topics";
 import { analysisLabel } from "@lib/analysis";
-import { formatDate, formatTime, readingLabel, excerpt } from "@lib/format";
+import { formatDate, formatHijri, formatTime, readingLabel, excerpt } from "@lib/format";
 import { isolateNumbers } from "@lib/bidi";
 import { cardSizes } from "@lib/wikimedia";
 import site from "@data/site.json";
@@ -93,7 +93,8 @@ const jsonLd = [articleLd, breadcrumbLd];
           {sub && <a href={topicHref(d.section, sub.id)}>{sub.name}</a>}
         </span>
         <span class="article__byline">{site.name}</span>
-        <time datetime={d.publishedAt} data-pagefind-meta={`date:${formatDate(d.publishedAt, { weekday: false })}`}>نُشر {formatDate(d.publishedAt)} · {formatTime(d.publishedAt)} {site.timeZoneLabel}</time>
+        {/* Both calendars, as الشرق الأوسط prints them on every story (Task 4, 2026-09-24). */}
+        <time datetime={d.publishedAt} data-pagefind-meta={`date:${formatDate(d.publishedAt, { weekday: false })}`}>نُشر {formatDate(d.publishedAt)} م، {formatHijri(d.publishedAt)} · {formatTime(d.publishedAt)} {site.timeZoneLabel}</time>
         <span>{readingLabel(d.readingMinutes)}</span>
       </p>
       <Share url={new URL(path, site.url).toString()} title={d.title} />

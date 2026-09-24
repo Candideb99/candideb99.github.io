@@ -4,6 +4,8 @@ import site from "@data/site.json";
 import Masthead from "@components/Masthead.astro";
 import Footer from "@components/Footer.astro";
 import MarketStrip from "@components/MarketStrip.astro";
+import Ticker from "@components/Ticker.astro";
+import { getArticles, articleHref } from "@lib/articles";
 
 interface Props {
   title?: string;
@@ -34,6 +36,11 @@ const {
 } = Astro.props;
 
 const fullTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
+// آخر الأخبار under the market strip, as الشرق الأوسط runs its latest-news line on every page (Task 4,
+// 2026-09-24): the eight newest news stories, the page's own story left out. Not on the front page, which runs
+// its own strip, nor on the latest list, which is the same list at full length.
+const withLatest = path !== "/" && !path.startsWith("/latest") && path !== "/404";
+const latestNews = withLatest ? (await getArticles()).filter((a) => a.data.kind === "news" && articleHref(a) !== path).slice(0, 8) : [];
 const canonical = new URL(path, site.url).toString();
 const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
 ---
@@ -107,6 +114,7 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
     <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
     <Masthead active={section} />
     <MarketStrip />
+    {latestNews.length > 0 && <Ticker items={latestNews} label="آخر الأخبار" lead="time" />}
     <main id="main">
       <slot />
     </main>
