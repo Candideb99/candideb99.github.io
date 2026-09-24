@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "stories": {
+    "us-approves-f35-saudi-arms-deal-915064": {
+      "at": "2026-09-24T22:34:30.696Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "publishedAt": "2026-09-18T16:45:53.864Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 18,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 3,
+          "field": "lede",
+          "sentence": "أعلنت وزارة الخارجية الأمريكية في 18 سبتمبر موافقتها على صفقة بيع عسكري محتملة للسعودية تشمل 48 طائرة إف-35 لايتنينغ 2 ذات قدرة إقلاع وهبوط تقليدية، بتكلفة إجمالية تُقدَّر بـ 24.3 مليار دولار.",
+          "claim": "On 18 September the US State Department announced its approval of a possible military sale to Saudi Arabia of 48 conventional take-off and landing F-35 Lightning II aircraft, at an estimated total cost of $24.3 billion.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "CNBC",
+          "quote": "The package, which was announced on Thursday, includes the sale of 48 of Lockheed Martin's F-35 jets, the world's most advanced fighter aircraft, and 49 Pratt & Whitney engines and other parts.",
+          "correction": "The sources say the package was announced on Thursday, which is 17 September 2026, the day before the articles were published, not 18 September.",
+          "class": "period"
+        },
+        {
+          "id": 19,
+          "field": "body",
+          "sentence": "أكد البيت الأبيض في 18 سبتمبر موافقة إدارة ترامب على الصفقة المحتملة.",
+          "claim": "On 18 September the White House confirmed that the Trump administration had approved the potential deal.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "CNBC",
+          "quote": "U.S. President Donald Trump's administration has approved the potential $24.3 billion sale of nearly 50 F-35 warplanes to Saudi Arabia in what is seen as a major boost for the kingdom as it faces intensifying attacks from the Iran-backed Houthis in Yemen.",
+          "correction": "CNBC itself reports that the Trump administration approved the sale; the approval was announced by the State Department on Thursday, and no source reports a White House confirmation on 18 September.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "الصفقة أكبر بيع لطائرات إف-35 لدولة عربية، وتعزز قدرات الدفاع الجوي السعودي في مواجهة تصعيد الحوثيين المدعومين من إيران.",
+        "لكنها تختبر سياسة التوازن العسكري الإقليمي التي تحفظ التفوق النوعي لإسرائيل."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن وزارة الخارجية الأمريكية أعلنت موافقتها على الصفقة في 18 سبتمبر، والصحيح أنها أعلنتها في 17 سبتمبر. كما نسبت النسخة السابقة إلى البيت الأبيض تأكيداً للموافقة في 18 سبتمبر لم يرد في أي مصدر، فحُذفت تلك الجملة."
+    }
+  }
+}

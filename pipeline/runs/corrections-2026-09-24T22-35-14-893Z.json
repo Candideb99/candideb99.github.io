@@ -1,0 +1,31 @@
+{
+  "startedAt": "2026-09-24T22:35:15.127Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "us-approves-f35-saudi-arms-deal-915064",
+      "issue": "1. The lede says «أعلنت وزارة الخارجية الأمريكية في 18 سبتمبر موافقتها على صفقة بيع عسكري محتملة للسعودية تشمل 48 طائرة إف-35 لايتنينغ 2 ذات قدرة إقلاع وهبوط تقليدية، بتكلفة إجمالية تُقدَّر بـ 24.3 مليار دولار.» (On 18 September the US State Department announced its approval of a possible military sale to Saudi Arabia of 48 conventional take-off and landing F-35 Lightning II aircraft, at an estimated total cost of $24.3 billion.). Source CNBC says: \"The package, which was announced on Thursday, includes the sale of 48 of Lockheed Martin's F-35 jets, the world's most advanced fighter aircraft, and 49 Pratt & Whitney engines and other parts.\". The sources say the package was announced on Thursday, which is 17 September 2026, the day before the articles were published, not 18 September.\n2. The body says «أكد البيت الأبيض في 18 سبتمبر موافقة إدارة ترامب على الصفقة المحتملة.» (On 18 September the White House confirmed that the Trump administration had approved the potential deal.). Source CNBC says: \"U.S. President Donald Trump's administration has approved the potential $24.3 billion sale of nearly 50 F-35 warplanes to Saudi Arabia in what is seen as a major boost for the kingdom as it faces intensifying attacks from the Iran-backed Houthis in Yemen.\". CNBC itself reports that the Trump administration approved the sale; the approval was announced by the State Department on Thursday, and no source reports a White House confirmation on 18 September.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "lede",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن وزارة الخارجية الأمريكية أعلنت موافقتها على الصفقة في 18 سبتمبر، والصحيح أنها أعلنتها في 17 سبتمبر. كما نسبت النسخة السابقة إلى البيت الأبيض تأكيداً للموافقة في 18 سبتمبر لم يرد في أي مصدر، فحُذفت تلك الجملة.",
+      "model": "claude-cli",
+      "before": {
+        "lede": "أعلنت وزارة الخارجية الأمريكية في 18 سبتمبر موافقتها على صفقة بيع عسكري محتملة للسعودية تشمل 48 طائرة إف-35 لايتنينغ 2 ذات قدرة إقلاع وهبوط تقليدية، بتكلفة إجمالية تُقدَّر بـ 24.3 مليار دولار."
+      },
+      "after": {
+        "lede": "أعلنت وزارة الخارجية الأمريكية في 17 سبتمبر موافقتها على صفقة بيع عسكري محتملة للسعودية تشمل 48 طائرة إف-35 لايتنينغ 2 ذات قدرة إقلاع وهبوط تقليدية، بتكلفة إجمالية تُقدَّر بـ 24.3 مليار دولار."
+      },
+      "changedSentences": [
+        "أعلنت وزارة الخارجية الأمريكية في 18 سبتمبر موافقتها على صفقة بيع عسكري محتملة للسعودية تشمل 48 طائرة إف-35 لايتنينغ 2 ذات قدرة إقلاع وهبوط تقليدية، بتكلفة إجمالية تُقدَّر بـ 24.3 مليار دولار.",
+        "أكد البيت الأبيض في 18 سبتمبر موافقة إدارة ترامب على الصفقة المحتملة."
+      ],
+      "newSentences": [
+        "أعلنت وزارة الخارجية الأمريكية في 17 سبتمبر موافقتها على صفقة بيع عسكري محتملة للسعودية تشمل 48 طائرة إف-35 لايتنينغ 2 ذات قدرة إقلاع وهبوط تقليدية، بتكلفة إجمالية تُقدَّر بـ 24.3 مليار دولار."
+      ]
+    }
+  ]
+}

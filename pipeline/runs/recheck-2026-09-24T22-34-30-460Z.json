@@ -1,0 +1,67 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-09-24T22:34:30.460Z",
+  "durationSec": 68,
+  "read": 1,
+  "corrected": 1,
+  "report": [
+    {
+      "slug": "us-approves-f35-saudi-arms-deal-915064",
+      "title": "واشنطن توافق على صفقة إف-35 للسعودية بـ 24.3 مليار دولار",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 18,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "period",
+          "sentence": "أعلنت وزارة الخارجية الأمريكية في 18 سبتمبر موافقتها على صفقة بيع عسكري محتملة للسعودية تشمل 48 طائرة إف-35 لايتنينغ 2 ذات قدرة إقلاع وهبوط تقليدية، بتكلفة إجمالية تُقدَّر بـ 24.3 مليار دولار.",
+          "quote": "The package, which was announced on Thursday, includes the sale of 48 of Lockheed Martin's F-35 jets, the world's most advanced fighter aircraft, and 49 Pratt & Whitney engines and other parts.",
+          "source": "CNBC",
+          "correction": "The sources say the package was announced on Thursday, which is 17 September 2026, the day before the articles were published, not 18 September."
+        },
+        {
+          "class": "attribution",
+          "sentence": "أكد البيت الأبيض في 18 سبتمبر موافقة إدارة ترامب على الصفقة المحتملة.",
+          "quote": "U.S. President Donald Trump's administration has approved the potential $24.3 billion sale of nearly 50 F-35 warplanes to Saudi Arabia in what is seen as a major boost for the kingdom as it faces intensifying attacks from the Iran-backed Houthis in Yemen.",
+          "source": "CNBC",
+          "correction": "CNBC itself reports that the Trump administration approved the sale; the approval was announced by the State Department on Thursday, and no source reports a White House confirmation on 18 September."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 2,
+    "completionTokens": 5132,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "correctionsEditorCalls": 1
+  },
+  "log": [
+    "[22:34:30] second look: 1 to read now (133 published pieces not yet read)",
+    "[22:35:14] llm ok role=checker model=claude-cli attempt=1 ms=41842",
+    "[22:35:14] us-approves-f35-saudi-arms-deal-915064: 22 of 22 sentences checked · 18 supported · 2 without a source · 2 confirmed error(s)",
+    "[22:35:14]   ✗ [period] أعلنت وزارة الخارجية الأمريكية في 18 سبتمبر موافقتها على صفقة بيع عسكري محتملة للسعودية تشمل 48 طائرة إف-35 لا — The sources say the package was announced on Thursday, which is 17 September 2026, the day before the articles were published, not 18 September.",
+    "[22:35:14]   ✗ [attribution] أكد البيت الأبيض في 18 سبتمبر موافقة إدارة ترامب على الصفقة المحتملة. — CNBC itself reports that the Trump administration approved the sale; the approval was announced by the State Department on Thursday, and no source reports a Whi",
+    "[22:35:14] corrections: 1 story to the corrections editor",
+    "[22:35:15] [correct] us-approves-f35-saudi-arms-deal-915064: fetching 3 source(s)",
+    "[22:35:38] [correct] llm ok role=writer model=claude-cli attempt=1 ms=18632",
+    "[22:35:38] [correct] us-approves-f35-saudi-arms-deal-915064: corrected; fields lede, body",
+    "[22:35:38]     note: ذكرت نسخة سابقة من هذا الخبر أن وزارة الخارجية الأمريكية أعلنت موافقتها على الصفقة في 18 سبتمبر، والصحيح أنها أعلنتها في 17 سبتمبر. كما نسبت النسخة السابقة إلى البيت الأبيض تأكيداً للموافقة في 18 سبتمبر لم يرد في أي مصدر، فحُذفت تلك الجملة.",
+    "[22:35:38] [correct] done: 1 corrected, 0 stand, 0 refused or failed; report pipeline\\runs\\corrections-2026-09-24T22-35-14-893Z.json"
+  ]
+}
