@@ -58,6 +58,1185 @@
       "weak": [],
       "outcome": "corrected",
       "note": "ذكرت نسخة سابقة من هذا الخبر أن وزارة الخارجية الأمريكية أعلنت موافقتها على الصفقة في 18 سبتمبر، والصحيح أنها أعلنتها في 17 سبتمبر. كما نسبت النسخة السابقة إلى البيت الأبيض تأكيداً للموافقة في 18 سبتمبر لم يرد في أي مصدر، فحُذفت تلك الجملة."
+    },
+    "russia-temporary-management-western-assets-1dadf4": {
+      "at": "2026-09-24T22:41:12.228Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "publishedAt": "2026-09-18T11:40:09.114Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 20,
+        "checked": 18,
+        "supported": 12,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 2,
+        "confirmed": 3,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 2,
+          "field": "subtitle",
+          "sentence": "المرسوم الرئاسي يستهدف حماية الحقوق وضمان استمرارية العمليات لصالح الأطراف المعنية",
+          "claim": "The presidential decree itself aims to protect rights and ensure continuity of operations for the stakeholders involved.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Euronews",
+          "quote": "“Nestlé is committed to taking all necessary steps to protect its rights and ensure continuity of business operations in the interests of all stakeholders, particularly its employees,” it said.",
+          "correction": "Protecting rights and ensuring business continuity is Nestlé's stated response to the decree, not the decree's purpose.",
+          "class": "attribution"
+        },
+        {
+          "id": 13,
+          "field": "body",
+          "sentence": "لدى «نستله» نحو 7000 موظف وستة مصانع في روسيا بحسب بيانات شركة Vontobel السويسرية للاستثمار، وأوقفت معظم مبيعاتها غير الأساسية والاستيراد والتصدير والإعلان والاستثمار الرأسمالي مع استمرارها في توريد المنتجات الأساسية.",
+          "claim": "According to data from Swiss investment firm Vontobel, Nestlé has about 7,000 employees and six factories in Russia. It has suspended most non-essential sales, imports, exports, advertising and capital investment while continuing to supply essential products.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Euronews",
+          "quote": "Nestlé has around 7,000 employees and six factories in Russia. It has suspended most non-essential sales, imports and exports, as well as advertising and capital investment, while continuing to supply products it considers essential.",
+          "correction": "The employee and factory figures are Euronews's own reporting, not Vontobel data; Vontobel's analyst only commented that the financial impact would be limited, with Russia at about 1% of group sales.",
+          "class": "attribution"
+        },
+        {
+          "id": 19,
+          "field": "body",
+          "sentence": "نُشر المرسوم على البوابة القانونية الرسمية لروسيا الخميس بحسب بيان «نستله»، وانخفضت أسهم الشركة 2.2% في تداولات صباح الجمعة.",
+          "claim": "According to Nestlé's statement, the decree was published on Russia's official legal portal on Thursday. Nestlé shares fell 2.2% in Friday morning trading.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "Sky News Arabia",
+          "quote": "وفي مستهل التداولات اليوم، سجل سهم شركة \"نستله\" تراجعا بنسبة 1.2%.",
+          "correction": "At the start of Friday trading Nestlé shares were down 1.2%; the 2.2% fall reported by CNBC is for Friday without a time of day.",
+          "class": "period"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "يؤكد هذا الإجراء على تصاعد التوترات الاقتصادية بين روسيا والغرب، مما قد يؤثر على سلاسل التوريد والاستثمارات الأجنبية في المنطقة.",
+        "بالنسبة للشركات العربية التي تعتمد على الشراكات مع الشركات الغربية في روسيا، قد يضطرها هذا التطور إلى إعادة تقييم مخاطرها التشغيلية والمالية.",
+        "توظف «أوشان» في روسيا نحو 30000 شخص وتدير نحو 230 متجراً ونشاطاً للتجارة الإلكترونية، وطلبت من السلطات توضيح المرسوم وقالت إنها ستعلّق بعد تلقي مزيد من المعلومات."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن المرسوم الرئاسي يستهدف حماية الحقوق وضمان استمرارية العمليات، والصحيح أن ذلك تعهّد أعلنته «نستله» رداً على المرسوم. كما نسبت النسخة السابقة عدد موظفي الشركة ومصانعها في روسيا إلى بيانات «فونتوبل» وحدّدت تراجع السهم 2.2% بتداولات صباح الجمعة، والصحيح أن الرقمين لم يصدرا عن «فونتوبل» وأن التراجع سُجّل في تداولات الجمعة دون تحديد توقيته."
+    },
+    "warren-buffett-steps-down-berkshire-chairman-457ee7": {
+      "at": "2026-09-24T22:41:12.250Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "publishedAt": "2026-09-18T16:36:35.540Z",
+      "sourcesRead": 2,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 21,
+        "checked": 21,
+        "supported": 14,
+        "weak": 4,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 13,
+          "field": "body",
+          "sentence": "وأضاف أن ابنه هوارد سيحمي ثقافة الشركة وقيمها، في حين يتولى غريغ أبيل الإدارة اليومية بوصفه الرئيس التنفيذي منذ مايو 2025.",
+          "claim": "Buffett added that Howard will guard the company's culture and values, while Greg Abel runs day-to-day management as CEO, a post the story says he has held since May 2025.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "CNBC",
+          "quote": "His decision comes a little more than nine months after Greg Abel took over as CEO while Buffett retained the chairmanship. Buffett first announced his exit as CEO at Berkshire's annual meeting in May 2025, shocking the crowd of thousands at the time despite his advanced age.",
+          "correction": "Buffett only announced his exit as CEO in May 2025; Abel took over as CEO a little more than nine months before September 2026, i.e. around the start of 2026.",
+          "class": "period"
+        },
+        {
+          "id": 17,
+          "field": "body",
+          "sentence": "من جهتها، قالت سوزان ديكر إنها ستستمر في منصب المدير المستقل الرئيسي في بركشاير هاثاواي.",
+          "claim": "Susan Decker said she will continue as lead independent director at Berkshire Hathaway.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "CNBC",
+          "quote": "Susan Decker will continue as lead independent director.",
+          "correction": "The source reports, as part of Berkshire's announcement, that Decker will continue as lead independent director; it does not quote Decker saying so.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "وكان بافيت قد تسلّم الشركة عام 1965 وهي مصنع نسيج متعثر في نيو إنجلاند، وحوّلها على مدى ستة عقود إلى تكتل تبلغ قيمته تريليون دولار ويوظف نحو 400 ألف شخص، محققاً عائداً سنوياً مركباً قدره 19.7%، أي نحو ضعف عائد مؤشر S&P 500."
+      ],
+      "weak": [
+        {
+          "sentence": "بافيت (96 عاماً) يبقى رئيساً فخرياً في مجلس الإدارة بعد 60 عاماً حول فيها الشركة إلى تكتل تريليوني",
+          "quote": "Buffett will become chairman emeritus, effective immediately, while remaining a director on the board, the company said in a separate announcement."
+        },
+        {
+          "sentence": "أعلن وارن بافيت تنحيه عن رئاسة مجلس إدارة بركشاير هاثاواي في رسالة للمساهمين في 18 سبتمبر، على أن يخلفه ابنه هوارد بافيت (71 عاماً) في المنصب اعتباراً من التاريخ نفسه، ويبقى الوالد رئيساً فخرياً وعضواً في المجلس.",
+          "quote": "The 96-year-old legendary investor announced the move in a letter to shareholders Friday. Buffett will become chairman emeritus, effective immediately, while remaining a director on the board, the company said in a separate announcement."
+        },
+        {
+          "sentence": "وبلغت أرباح بركشاير التشغيلية 44.5 مليار دولار في 2025، فيما بلغ احتياطيها النقدي 365.5 مليار دولار.",
+          "quote": "He took over a failed New England textiles mill at the tender age of 34 and transformed it over the next six decades into a financial and industrial juggernaut with $44.5 billion in operating earnings last year and nearly 400,000 employees."
+        },
+        {
+          "sentence": "واشترت الشركة أسهماً في ألفابت بقيمة 10 مليارات دولار في يونيو، وأعادت شراء أسهمها الخاصة بقيمة 4.5 مليار دولار في الربع الثاني.",
+          "quote": "The Google parent is now Berkshire's third-biggest stock holding, behind Apple and American Express, after a $10 billion private stock purchase in June."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن غريغ أبيل يتولى منصب الرئيس التنفيذي منذ مايو 2025، والصحيح أن بافيت أعلن في ذلك الشهر تخليه عن المنصب، وأن أبيل تسلّمه قبل ما يزيد قليلاً على تسعة أشهر من إعلان التنحي. كما نسبت النسخة السابقة إلى سوزان ديكر تصريحاً باستمرارها في منصب المدير المستقل الرئيسي، والصحيح أن الشركة هي التي أعلنت ذلك."
+    },
+    "bank-of-japan-raises-rates-to-31-year-high-d62cc8": {
+      "at": "2026-09-24T22:41:51.595Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "publishedAt": "2026-09-18T21:06:16.300Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 13,
+        "weak": 1,
+        "noEvidence": 4,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "بنك اليابان يرفع الفائدة إلى 1.25%.. أعلى مستوى منذ 31 عاماً",
+        "رفع بنك اليابان سعر الفائدة الرئيسي من 1% إلى 1.25% في 18 سبتمبر، ليبلغ أعلى مستوى منذ عام 1995، بحسب بي بي سي.",
+        "سعر الفائدة الرئيسي: 1.25%",
+        "وكان وزير الخزانة الأمريكي سكوت بيسنت قد حث بنك اليابان على رفع الفائدة لدعم الين، بحسب «نيويورك تايمز».",
+        "وقال البنك إنه مستعد لمواصلة رفع تكلفة الاقتراض لمواجهة التضخم، لكن اعتراض عضوين فيه على القرار خفّف توقعات تشديد السياسة النقدية بسرعة، بحسب «البورصة نيوز»."
+      ],
+      "weak": [
+        {
+          "sentence": "التضخم الأساسي المستقر عند 1.9% وضغوط أسعار الطاقة الناتجة عن حرب إيران يبقيان الضغط على بنك اليابان لمواصلة رفع الفائدة، رغم اعتراض عضوين في مجلسه على القرار الأخير.",
+          "quote": "ورغم القرار، فإن الين واصل تراجعه أمام الدولار، مع تركيز المستثمرين على غياب توجيهات أكثر تشدداً، واعتراض عضوين في البنك على الرفع، مما قلص توقعات تشديد السياسة بوتيرة أسرع."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "global-markets-close-volatile-week-045574": {
+      "at": "2026-09-24T22:41:55.649Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "publishedAt": "2026-09-18T23:27:11.433Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 13,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 5,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "عائد سندات 10 سنوات: 4.98%",
+          "quote": "واقترب عائد سندات الخزانة لأجل 10 سنوات لفترة وجيزة من مستوى 5.15 في المائة صباح الخميس، قبل أن يتراجع إلى 5.09 في المائة، مقارنة بـ5.11 في المائة في نهاية تعاملات الأربعاء.",
+          "source": "Asharq Al-Awsat",
+          "correction": "The 10-year yield was 5.09% on Thursday, after briefly nearing 5.15%, versus 5.11% at Wednesday's close; the source gives no 4.98% figure."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "خام برنت: 104.07 دولار",
+          "quote": "وانخفضت عقود خام برنت (تسليم نوفمبر) بمقدار 2.21 دولار، ليتراجع سعر البرميل بنسبة 2.10% ويستقر عند مستوى 102.53 دولار.",
+          "source": "Alborsa News",
+          "correction": "Brent (November delivery) settled at $102.53 per barrel, not $104.07."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "body",
+          "sentence": "بحسب «الشرق الأوسط»، تراجعت أسعار النفط عن مكاسب مبكرة لكنها ظلت فوق 100 دولار للبرميل، واستقر خام برنت عند 104.07 دولار بتراجع 0.3% عن جلسة الخميس.",
+          "quote": "وانخفضت عقود خام برنت (تسليم نوفمبر) بمقدار 2.21 دولار، ليتراجع سعر البرميل بنسبة 2.10% ويستقر عند مستوى 102.53 دولار.",
+          "source": "Alborsa News",
+          "correction": "Brent fell 2.10% ($2.21) to settle at $102.53, according to Alborsa; the pullback from early gains is reported by Al Jazeera, while Asharq Al-Awsat reports Brent rising 1.8% to $99.88 on Thursday."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "body",
+          "sentence": "وأوضحت «الشرق الأوسط» أن العائد على سندات الخزانة لأجل 10 سنوات أغلق عند 4.98%، ارتفاعاً من 4.94% يوم الخميس، بعد تجاوزه 5% في وقت سابق من الأسبوع.",
+          "quote": "واقترب عائد سندات الخزانة لأجل 10 سنوات لفترة وجيزة من مستوى 5.15 في المائة صباح الخميس، قبل أن يتراجع إلى 5.09 في المائة، مقارنة بـ5.11 في المائة في نهاية تعاملات الأربعاء.",
+          "source": "Asharq Al-Awsat",
+          "correction": "Asharq Al-Awsat reports the 10-year yield at 5.09% on Thursday (briefly near 5.15%), down from 5.11% at Wednesday's close; it gives neither 4.98% nor 4.94%."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "body",
+          "sentence": "وفي الأسواق الآسيوية، قفز «كوسبي» الكوري الجنوبي 2.7%، وارتفع «نيكي» الياباني 1.4%.",
+          "quote": "أما في أسواق الأسهم الخارجية، فتباين أداء المؤشرات وسط تحركات طفيفة في الغالب؛ إذ انخفض المؤشر في شنغهاي بنسبة 1.2 في المائة، بينما ارتفع في طوكيو بنسبة 0.8 في المائة، مسجلين بذلك اثنين من أبرز التحركات السعرية في الأسواق العالمية.",
+          "source": "Asharq Al-Awsat",
+          "correction": "The Tokyo index rose 0.8%, not 1.4%, and Shanghai fell 1.2%; no source mentions the KOSPI."
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "تجاوز عوائد سندات الخزانة الأمريكية 5% يرفع تكلفة الاقتراض بالدولار على الحكومات والشركات.",
+          "quote": "وتباطأ أداء الأسهم تحت وطأة ارتفاع العوائد في سوق السندات، ما يزيد تكلفة الاقتراض على الجميع، بما في ذلك الأفراد الذين يحاولون مواجهة معدلات التضخم المرتفعة، والشركات التي تسعى إلى إنشاء مراكز بيانات لتقنيات الذكاء الاصطناعي، والحكومة الأميركية التي تحاول سد الفجوة الهائلة بين إنفاقها وإيراداتها."
+        }
+      ],
+      "outcome": "listed"
+    },
+    "trump-announces-ban-cnn-msn-politico-white-house-fd6870": {
+      "at": "2026-09-24T22:42:44.374Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "publishedAt": "2026-09-19T04:49:34.355Z",
+      "sourcesRead": 2,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 8,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 7,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 1,
+          "field": "title",
+          "sentence": "ترامب يحظر سي إن إن وإم إس إن بي سي وبوليتيكو من البيت الأبيض",
+          "claim": "Headline: Trump bans CNN, MSNBC and Politico from the White House.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Al Jazeera English",
+          "quote": "United States President Donald Trump has announced that, effective immediately, CNN, MS NOW and Politico are banned from the White House.",
+          "correction": "The source names the banned outlet as MS NOW, not MSNBC.",
+          "class": "actor"
+        },
+        {
+          "id": 2,
+          "field": "subtitle",
+          "sentence": "«سي إن إن» تصف القرار بالاعتداء غير القانوني..",
+          "claim": "CNN describes the decision as an illegal assault.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Al Jazeera English",
+          "quote": "“Should the ban, which President Trump threatened, go ahead, it would be an illegal assault on that fundamental and constitutionally protected right.”",
+          "correction": "CNN's statement was conditional: it said the ban, which it called a threat, would be an illegal assault if it went ahead.",
+          "class": "hedge"
+        },
+        {
+          "id": 4,
+          "field": "lede",
+          "sentence": "حظر الرئيس الأمريكي دونالد ترامب «سي إن إن» و«إم إس إن بي سي» و«بوليتيكو» من البيت الأبيض فوراً، في منشور على «تروث سوشيال»، مبرراً ذلك بأن تغطيتها تنشر أخباراً كاذبة وأكاذيب متواصلة.",
+          "claim": "Trump banned CNN, MSNBC and Politico from the White House with immediate effect, in a Truth Social post, justifying it by their fake news and lies.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Al Jazeera English",
+          "quote": "United States President Donald Trump has announced that, effective immediately, CNN, MS NOW and Politico are banned from the White House.On Friday, Trump posted on Truth Social his displeasure with the media outlets’ coverage of his administration.",
+          "correction": "The source names the banned outlet as MS NOW, not MSNBC.",
+          "class": "actor"
+        },
+        {
+          "id": 10,
+          "field": "body",
+          "sentence": "كتب ترامب على «تروث سوشيال» إنه فخور بالإعلان عن الحظر الفوري على «سي إن إن» و«إم إس إن بي سي» و«بوليتيكو» نتيجة تقاريرها المستمرة التي وصفها بالأخبار الكاذبة.",
+          "claim": "Trump wrote on Truth Social that he was proud to announce the immediate ban on CNN, MSNBC and Politico because of their constant reporting, which he called fake news.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Al Jazeera English",
+          "quote": "“I am proud to announce that, effective immediately, I am banning Fake News CNN, MSNOW … and Politico … from the White House as a result of their constant ‘reporting’ FAKE NEWS!” Trump wrote.",
+          "correction": "Trump's post names MSNOW, not MSNBC.",
+          "class": "actor"
+        },
+        {
+          "id": 11,
+          "field": "body",
+          "sentence": "وأضاف أن وسائل الإعلام لا ينبغي أن تكتب الأكاذيب باستمرار عند تغطية رئيس الولايات المتحدة أو إدارته، مشيراً إلى أن «نيويورك تايمز» و«واشنطن بوست» قد تكونان التاليتين للحظر.",
+          "claim": "In the same post, Trump added that media should not constantly write lies when covering the president or his administration, and indicated that The New York Times and The Washington Post could be next.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Al Jazeera English",
+          "quote": "Asked by reporters later on Friday what he meant by other outlets “to follow”, Trump named The New York Times and The Washington Post as what he called “fake news”.",
+          "correction": "The post only said other outlets would follow; Trump named The New York Times and The Washington Post later, when reporters asked him, and he called them fake news.",
+          "class": "attribution"
+        },
+        {
+          "id": 13,
+          "field": "body",
+          "sentence": "من جانبها، قالت «سي إن إن» إنها ستواصل التغطية من البيت الأبيض دون عائق، ووصفت الحظر بأنه اعتداء غير قانوني على حقها الدستوري في التغطية الصحفية.",
+          "claim": "CNN said it would keep covering the White House without hindrance and called the ban an illegal assault on its constitutional right to report.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Al Jazeera English",
+          "quote": "“We have a right under the US Constitution to do that reporting without hindrance or interference from the government,” a CNN spokesperson told Al Jazeera. “Should the ban, which President Trump threatened, go ahead, it would be an illegal assault on that fundamental and constitutionally protected right.”",
+          "correction": "CNN said it has a constitutional right to report without hindrance, not that it would keep covering. It also said the ban would be an illegal assault only if it went ahead.",
+          "class": "hedge"
+        },
+        {
+          "id": 15,
+          "field": "body",
+          "sentence": "وبحسب إذاعة «سوا»، قد يواجه الحظر طعناً قانونياً قريباً استناداً إلى التعديل الأول للدستور الأمريكي.",
+          "claim": "According to Radio Sawa, the ban may soon face a legal challenge under the First Amendment.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Al Jazeera English",
+          "quote": "Al Jazeera’s Alan Fisher reported from Washington, DC, that Trump’s ban will likely be challenged soon.",
+          "correction": "This assessment came from Al Jazeera correspondent Alan Fisher, not from Radio Sawa.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "يفتح القرار معركة دستورية حول التعديل الأول وحق الوصول الصحفي إلى البيت الأبيض، وقد يرسي سابقة تتيح لأي إدارة مقبلة معاقبة التغطية النقدية.",
+        "وتستعد المنظمات الحقوقية ووسائل الإعلام المعنية للطعن قضائياً، فقد يبقى الملف أمام المحاكم أسابيع أو أشهراً."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن الحظر شمل «إم إس إن بي سي»، وأن ترامب سمّى «نيويورك تايمز» و«واشنطن بوست» في منشوره، وأن «سي إن إن» وصفت الحظر بالاعتداء غير القانوني دون شرط، ونسبت ترجيح الطعن القانوني إلى إذاعة «سوا». والصحيح أن الحظر شمل «إم إس ناو»، وأن ترامب سمّى الصحيفتين لاحقاً رداً على أسئلة الصحفيين، وأن «سي إن إن» قالت إن الحظر سيكون اعتداءً غير قانوني إذا مضى قدماً، وأن ترجيح الطعن جاء على لسان مراسل الجزيرة آلان فيشر."
+    },
+    "trump-signs-russia-sanctions-oil-tariffs-law-ad758a": {
+      "at": "2026-09-24T22:42:53.824Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "publishedAt": "2026-09-19T11:16:54.013Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 16,
+        "checked": 16,
+        "supported": 12,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 3,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 10,
+          "field": "body",
+          "sentence": "قال البيت الأبيض في بيان، بحسب The Guardian، إن القانون المسمى «قانون ليندسي غراهام لمعاقبة روسيا وإيران» يستهدف عائدات النفط والغاز الروسية، وأسطول «الناقلات الظلية» التي تساعد موسكو على التهرب من العقوبات الحالية على صادرات الطاقة.",
+          "claim": "The White House said in a statement, per The Guardian, that the Lindsey Graham Sanctioning Russia and Iran Act targets Russian oil and gas revenues and the 'shadow tanker' fleet that helps Moscow evade existing energy sanctions.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "The Guardian",
+          "quote": "The bill named after the hawkish Republican senator, Lindsey Graham, who died in July, is aimed at depleting Russia’s ability to continue funding the war by targeting its natural gas and oil revenues, as well as countries that continue to buy Russian energy.",
+          "correction": "This is The Guardian's own description of the bill, not a White House statement; no White House statement is cited.",
+          "class": "attribution"
+        },
+        {
+          "id": 11,
+          "field": "body",
+          "sentence": "وأوضحت مصادر مطلعة أن القانون يمنح ترامب سلطة تقديرية واسعة في تنفيذه، تشمل تحديد الدول التي قد تواجه رسوماً ومعدلات تلك الرسوم، وإعفاء بعض الدول وفق تقديره الخاص.",
+          "claim": "Informed sources explained that the law gives Trump wide discretion over implementation, including which countries face tariffs, the rates, and exempting some countries at his discretion.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "The Guardian",
+          "quote": "But it also gives Trump wide leeway over its implementation, including which countries could face tariffs, and which tariff rates could be imposed. It also gives the president sweeping discretion over whether sanctions provisions can be waived against certain countries.",
+          "correction": "The Guardian states this in its own reporting; it does not attribute it to informed sources.",
+          "class": "attribution"
+        },
+        {
+          "id": 13,
+          "field": "body",
+          "sentence": "وكان مجلس النواب قد وافق على القانون بأغلبية 262 صوتاً مقابل 159، وصوّت 58 ديمقراطياً لصالحه في حين عارضه 7 جمهوريين، في تصويت وُصف بأنه ذو طابع حزبي.",
+          "claim": "The House passed the bill 262-159, with 58 Democrats in favour and 7 Republicans against, in a vote described as partisan.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "The Guardian",
+          "quote": "The US president signed the Lindsey O Graham Sanctioning Russia and Iran Act into law two days after it passed the House of Representatives in a bipartisan 262-159 vote, amid concerns the legislation gives him too much power.",
+          "correction": "The Guardian describes the 262-159 House vote as bipartisan, not partisan.",
+          "class": "term"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "كما أن تمديد عقوبات إيران يضيّق المعروض العالمي أكثر."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "نسبت نسخة سابقة من هذا الخبر وصف أهداف القانون إلى بيان للبيت الأبيض، ونسبت الصلاحيات التقديرية التي يمنحها لترامب إلى مصادر مطلعة، والصحيح أنهما من مضمون القانون ولم يصدر بشأنهما بيان أو تصريح من مصادر. وذكرت النسخة نفسها أن تصويت مجلس النواب كان ذا طابع حزبي، والصحيح أنه حظي بدعم من الحزبين."
+    },
+    "eu-fuel-prices-record-iran-saudi-supply-8376ff": {
+      "at": "2026-09-24T22:43:21.629Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "publishedAt": "2026-09-19T16:03:37.939Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 26,
+        "checked": 26,
+        "supported": 22,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 3,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 12,
+          "field": "body",
+          "sentence": "أظهرت بيانات جمعية ADAC أن البنزين في ألمانيا بلغ 2.31 يورو للتر الأربعاء، وتجاوز الديزل في هولندا 2.78 يورو.",
+          "claim": "ADAC data showed German petrol at €2.31/litre on Wednesday, and Dutch diesel exceeded €2.78/litre.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "The Guardian",
+          "quote": "Prices are even higher in the Netherlands, where petrol eclipsed last week’s record high to reach €2.73 a litre on Wednesday, with diesel at an average €2.78 a litre.",
+          "correction": "Dutch diesel was at an average of €2.78 a litre, not above it, and the source does not attribute the Dutch figure to ADAC.",
+          "class": "figure"
+        },
+        {
+          "id": 14,
+          "field": "body",
+          "sentence": "وارتفع البنزين في التكتل 24% والديزل 38% على أساس سنوي، وقفز وقود الطائرات أكثر من 100%، وفق بيانات ADAC.",
+          "claim": "Year on year across the EU, petrol is up 24%, diesel 38% and jet fuel more than 100%, according to ADAC data.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "The Guardian",
+          "quote": "Across the EU, petrol prices are 24% higher than a year earlier, while diesel is up 38% and jet fuel costs more than 100% more.",
+          "correction": "The source gives these EU-wide figures without attributing them to ADAC, which it cites only for German pump prices.",
+          "class": "attribution"
+        },
+        {
+          "id": 18,
+          "field": "body",
+          "sentence": "وأعلنت «أرامكو» السعودية أنها لن تورّد النفط لمصفاتين أوروبيتين على الأقل بموجب عقود طويلة الأجل في أكتوبر، إثر هجوم على خط أنابيبها بين الساحل الشرقي والبحر الأحمر.",
+          "claim": "Aramco announced it will not supply at least two European refiners under long-term contracts in October, after an attack on its pipeline to the Red Sea.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Euronews",
+          "quote": "European crude supplies face further disruption after Saudi Aramco told at least two European refiners that they would receive no oil under long-term contracts in October following an attack on the kingdom’s key pipeline to the Red Sea, Bloomberg reported, citing people informed of the decision who said it applied to all European buyers.",
+          "correction": "Aramco made no public announcement: it privately told the refiners, and this was reported by Bloomberg citing people informed of the decision.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "سجلت أسعار الوقود في أوروبا مستويات قياسية الأربعاء، فبلغ الديزل في ألمانيا 2.45 يورو للتر والبنزين في هولندا 2.73 يورو، مع تعطل الإمدادات جراء الحرب مع إيران وهجوم على خط أنابيب سعودي رئيسي، وفق بيانات جمعيات السيارات والمفوضية الأوروبية.",
+          "quote": "In Germany, diesel prices surged to a record average of €2.45 a litre on Wednesday, while petrol hit a fresh high of €2.31 a litre, according to Europe’s largest motoring association, ADAC."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن سعر الديزل في هولندا تجاوز 2.78 يورو للتر وفق بيانات جمعية ADAC، ونسبت إلى الجمعية نسب الارتفاع السنوي للوقود في الاتحاد الأوروبي، والصحيح أن 2.78 يورو هو متوسط سعر الديزل الهولندي وأن الجمعية لم تكن مصدر هذه الأرقام. كما ذكرت أن «أرامكو» أعلنت وقف توريد النفط لمصفاتين أوروبيتين، والصحيح أن الشركة أبلغت المصفاتين بذلك، ونقلت بلومبرغ النبأ عن مصادر مطلعة على القرار."
+    },
+    "us-denmark-greenland-security-deal-eac792": {
+      "at": "2026-09-24T22:43:44.435Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "publishedAt": "2026-09-19T20:52:52.444Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 14,
+        "checked": 14,
+        "supported": 9,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 4,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 3,
+          "field": "lede",
+          "sentence": "أعلن الرئيس الأمريكي دونالد ترامب السبت أن الاتفاق مع الدنمارك يمنح الولايات المتحدة سيطرة دائمة على أمن جرينلاند.",
+          "claim": "On Saturday, US President Donald Trump announced that the deal with Denmark gives the US permanent control over Greenland's security.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "CNBC",
+          "quote": "President Donald Trump on Friday announced an agreement with Greenland and Denmark that gives the U.S. what he described as \"permanent control over security, and all other needs\" in the Danish island territory.",
+          "correction": "Trump made the announcement on Friday, not Saturday; it was Denmark and Greenland that spoke on Saturday.",
+          "class": "period"
+        },
+        {
+          "id": 5,
+          "field": "keyFacts",
+          "sentence": "التكلفة على الولايات المتحدة: صفر",
+          "claim": "The cost of the deal to the US is zero, stated as an established fact without attribution.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "CNBC",
+          "quote": "\"There will be NO COST to the United States,\" he wrote.",
+          "correction": "Zero cost is Trump's own claim about the future, not an established fact; the official text of the deal was not available.",
+          "class": "hedge"
+        },
+        {
+          "id": 7,
+          "field": "whyItMatters",
+          "sentence": "ويوسّع نطاق الانتشار العسكري الأمريكي إلى القطب الشمالي دون تكلفة إضافية على واشنطن.",
+          "claim": "Website analysis: the deal expands US military deployment into the Arctic at no additional cost to Washington, stated as fact.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "CNBC",
+          "quote": "\"There will be NO COST to the United States,\" he wrote.",
+          "correction": "No additional cost is only Trump's claim, not a fact, and the sources note the US already has a military presence in Greenland under a decades-old agreement.",
+          "class": "hedge"
+        },
+        {
+          "id": 11,
+          "field": "body",
+          "sentence": "الوزير الدنماركي لارس لوكه راسموسن قال إن الاتفاق سيحل فترة عدم اليقين ويعزز الأمن في القطب الشمالي والأطلسي مع احترام خطوط حمراء للمملكة الدنماركية، وفق ما ذكره في منشور على وسائل التواصل الاجتماعي بتاريخ 2026-09-19.",
+          "claim": "Danish minister Lars Lokke Rasmussen said, in a social media post, that the deal will end the period of uncertainty and strengthen Arctic and Atlantic security while respecting the Danish Kingdom's red lines (stated as certain).",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Al Jazeera English",
+          "quote": "“A long period of uncertainty will hopefully be replaced by a binding agreement that strengthens security in the Arctic and North Atlantic, and thereby our shared security within NATO and Europe – while respecting the [Danish] Kingdom’s red lines,” Danish Foreign Minister Lars Lokke Rasmussen said in a social media post.",
+          "correction": "Rasmussen said the period of uncertainty will \"hopefully\" be replaced by a binding agreement; he expressed a hope, not a certainty.",
+          "class": "hedge"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "ترامب: الاتفاق يمنح أمريكا سيطرة دائمة على أمن الجزيرة دون أي تكلفة"
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن ترامب أعلن الاتفاق السبت، والصحيح أنه أعلنه الجمعة، وأن خلوّ الاتفاق من أي تكلفة على واشنطن أمر ثابت، والصحيح أنه قول ترامب في ظل عدم نشر النص الرسمي. كما نسبت النسخة السابقة إلى وزير الخارجية الدنماركي جزمه بأن الاتفاق سينهي فترة عدم اليقين، والصحيح أنه عبّر عن أمله في ذلك."
+    },
+    "trump-announces-ai-force-and-czar-f4c7aa": {
+      "at": "2026-09-24T22:44:16.550Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "publishedAt": "2026-09-19T23:17:13.865Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 9,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 3,
+        "confirmed": 4,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 1,
+          "field": "title",
+          "sentence": "ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها",
+          "claim": "Trump announced the founding of an AI Force and the appointment of an official to lead that force.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Al Jazeera English",
+          "quote": "United States President Donald Trump has announced he’s creating an “AI Force” and will appoint a new “AI czar” to oversee development of the nation’s artificial intelligence industry.",
+          "correction": "The AI czar is described as overseeing development of the US AI industry, not as leading the AI Force; Trump did not say what either role will entail.",
+          "class": "scope"
+        },
+        {
+          "id": 6,
+          "field": "keyFacts",
+          "sentence": "نسبة الذكاء الاصطناعي من الناتج: 25%",
+          "claim": "Key fact: AI's share of GDP is 25%, stated as a figure without attribution or hedge.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "The Guardian",
+          "quote": "“AI is the next Industrial Revolution, or Internet, but will be even larger and more impactful, possibly as much as 25% of our Country’s GDP,” Trump predicted, concluding that the US is “leading China, and the rest of the World, and I intend to keep it that way”.",
+          "correction": "25% is Trump's forecast that AI could possibly reach as much as 25% of US GDP, not a current measured share.",
+          "class": "hedge"
+        },
+        {
+          "id": 13,
+          "field": "body",
+          "sentence": "وذكر أنه كان لديه سابقاً 'قيصر للذكاء الاصطناعي' وهو ديفيد ساكس، الذي استقال وأصبح مستشاراً خارجياً للرئيس.",
+          "claim": "Trump stated that he previously had an AI czar, David Sacks, who resigned and became an external adviser to the president.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Al Jazeera English",
+          "quote": "Trump already had one “AI czar”, venture capitalist David Sacks. He resigned earlier this year and became an external adviser to the president.",
+          "correction": "The information about David Sacks is Al Jazeera's own reporting, not something Trump said.",
+          "class": "attribution"
+        },
+        {
+          "id": 15,
+          "field": "body",
+          "sentence": "وتوقع أن يكون الذكاء الاصطناعي مساوياً لـ 25% من ناتج البلاد الإجمالي، ووصفه بأنه الثورة الصناعية التالية أو الإنترنت لكنه سيكون أكبر وأكثر تأثيراً.",
+          "claim": "Trump forecast that AI will equal 25% of US GDP, and called it the next Industrial Revolution or Internet, but larger and more impactful.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "The Guardian",
+          "quote": "“AI is the next Industrial Revolution, or Internet, but will be even larger and more impactful, possibly as much as 25% of our Country’s GDP,” Trump predicted, concluding that the US is “leading China, and the rest of the World, and I intend to keep it that way”.",
+          "correction": "Trump said AI could possibly be as much as 25% of US GDP, which is an upper-bound possibility, not a prediction that it will equal 25%.",
+          "class": "hedge"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "إعلان ترامب عن 'قوة الذكاء الاصطناعي' يعكس تصاعد التوترات التكنولوجية بين الولايات المتحدة والصين، وهو ما قد يؤثر على سلاسل الإمداد العالمية والاستثمارات في البنية التحتية الرقمية.",
+        "بالنسبة للقراء العرب، قد يعني هذا الاتجاه زيادة في الضغوط على الدول العربية لاختيار جانب في المنافسة التكنولوجية، خاصة مع اعتماد العديد من الدول على التكنولوجيا الأمريكية أو الصينية.",
+        "كما أن التركيز على تعزيز الذكاء الاصطناعي دون تنظيم قد يثير مخاوف حول سلامة البيانات والأتمتة في القطاعات الحيوية مثل الطاقة والمالية، والتي تشهد نموًا سريعًا في المنطقة.",
+        "وصف ترامب المخاوف المحيطة بالذكاء الاصطناعي بأنها 'خدعة' و'مؤامرة مريضة' تهدف إلى إفادة الصين، وفقاً لمصدر 1."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن المسؤول المرتقب سيقود قوة الذكاء الاصطناعي، وأن الذكاء الاصطناعي سيعادل 25% من الناتج الأمريكي، وأن ترامب هو من تحدث عن ديفيد ساكس. والصحيح أن المسؤول سيشرف على تطوير قطاع الذكاء الاصطناعي، وأن ترامب قال إن حصة القطاع قد تصل إلى 25% من الناتج، وأن المعلومة عن ساكس ليست من تصريحات ترامب."
+    },
+    "trump-xi-summit-washington-2026-4e439e": {
+      "at": "2026-09-24T22:44:35.774Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "publishedAt": "2026-09-19T23:18:07.621Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 14,
+        "checked": 14,
+        "supported": 10,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 4,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 3,
+          "field": "lede",
+          "sentence": "يصل الرئيس الصيني شي جين بينغ إلى واشنطن الأربعاء المقبل برفقة زوجته بينغ ليوان لحضور عشاء دولة بدعوة من ترامب، ويغادر الجمعة متجاوزاً اجتماعات الجمعية العامة للأمم المتحدة بالكامل.",
+          "claim": "Stated as fact: Xi Jinping arrives in Washington next Wednesday with his wife Peng Liyuan for a state dinner at Trump's invitation, and leaves on Friday, skipping the UN General Assembly entirely.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Euronews",
+          "quote": "US President Donald Trump went to Beijing in May, and Chinese President Xi Jinping is now expected to come to him, scheduled to arrive next Wednesday and depart on Friday with his wife, Peng Liyuan, skipping the UN General Assembly entirely.\nBeijing has not yet given the final confirmation, pending the meeting between US Treasury Secretary Scott Bessent and Chinese Vice Premier He Lifeng this weekend.",
+          "correction": "Xi is only expected and scheduled to arrive Wednesday and leave Friday; Beijing has not yet given final confirmation of the visit.",
+          "class": "hedge"
+        },
+        {
+          "id": 6,
+          "field": "whyItMatters",
+          "sentence": "يدخل ترامب القمة والتضخم عند 3.4٪ وأسعار الوقود فوق 6 دولارات للغالون، قبل انتخابات منتصف المدة في نوفمبر.",
+          "claim": "Trump enters the summit with inflation at 3.4% and fuel prices above $6 a gallon, ahead of the November midterm elections.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Euronews",
+          "quote": "Trump faces midterms in November that will be fought on the cost of living, with diesel above $6 a gallon and inflation stuck at 3.4%.",
+          "correction": "Only diesel is above $6 a gallon, not fuel prices in general; regular gasoline averages $4.48 a gallon according to source 1.",
+          "class": "scope"
+        },
+        {
+          "id": 9,
+          "field": "body",
+          "sentence": "الرئيس الأمريكي دونالد ترامب استضاف الرئيس الصيني شي جين بينغ في بكين في مايو 2026، وهذه الزيارة هي الأولى لشي إلى واشنطن منذ 2015، وفقاً لمصدر من Euronews بتاريخ 2026-09-18.",
+          "claim": "Trump hosted Xi Jinping in Beijing in May 2026, and this visit is Xi's first to Washington since 2015, according to Euronews.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Euronews",
+          "quote": "US President Donald Trump went to Beijing in May, and Chinese President Xi Jinping is now expected to come to him, scheduled to arrive next Wednesday and depart on Friday with his wife, Peng Liyuan, skipping the UN General Assembly entirely.",
+          "correction": "Trump was the visitor in Beijing in May, so Xi hosted Trump, not the reverse.",
+          "class": "actor"
+        },
+        {
+          "id": 13,
+          "field": "body",
+          "sentence": "الرئيس التنفيذي لـ Qualcomm كريستيان أمون ورئيس مجلس إدارة أبل تيم كوك سيحضرون عشاء الدولة لترامب وشي في واشنطن الأسبوع المقبل، وفقاً لمصدر من CNBC بتاريخ 2026-09-18.",
+          "claim": "Qualcomm CEO Cristiano Amon and Apple chairman Tim Cook will attend the Trump-Xi state dinner in Washington next week, according to CNBC.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Euronews",
+          "quote": "Sam Altman of OpenAI, Nvidia's Jensen Huang, Qualcomm's Cristiano Amon and Apple chairman Tim Cook are all expected, according to Politico, which cited four people familiar with the arrangements.",
+          "correction": "Amon's and Cook's expected attendance was reported by Politico, cited by Euronews, not by CNBC.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن شي جين بينغ سيصل إلى واشنطن الأربعاء ويغادرها الجمعة، وأن ترامب استضافه في بكين في مايو، وأن أسعار الوقود عامة تتجاوز 6 دولارات للغالون، ونسبت إلى CNBC حضور أمون وكوك العشاء. والصحيح أن الزيارة مقررة ولم تؤكدها بكين نهائياً بعد، وأن ترامب هو من زار بكين، وأن الديزل وحده يتجاوز 6 دولارات للغالون، وأن حضور أمون وكوك المتوقع أوردته Politico ونقلته عنها Euronews."
+    },
+    "oil-prices-decline-china-iran-pressure-41b59d": {
+      "at": "2026-09-24T22:44:49.314Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "publishedAt": "2026-09-17T21:37:34.800Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 16,
+        "checked": 16,
+        "supported": 13,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 3,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 6,
+          "field": "keyFacts",
+          "sentence": "خسارة الإنتاج اليومية: 8.5 مليون برميل يوميًا",
+          "claim": "Daily oil production lost is 8.5 million barrels per day, stated as an unattributed fact.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "OilPrice.com",
+          "quote": "Kpler estimates roughly 8.5 million barrels per day of oil production has been lost over the course of the conflict.",
+          "correction": "Roughly 8.5 million bpd is Kpler's estimate of production lost over the course of the conflict, not an established fact.",
+          "class": "hedge"
+        },
+        {
+          "id": 10,
+          "field": "whyItMatters",
+          "sentence": "لكن تراجع حركة الملاحة في مضيق هرمز إلى ثلاث سفن يومياً يُبقي الأسواق عرضة لقفزات سعرية جديدة.",
+          "claim": "The website's analysis: Hormuz shipping traffic has fallen to three ships per day, leaving markets exposed to new price spikes.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "OilPrice.com",
+          "quote": "Only three commercial vessels transited Hormuz Wednesday, compared with 12 Tuesday and a 10-day average of 17, according to ship-tracking data cited by Reuters.",
+          "correction": "Three vessels was a single day's count (Wednesday); Tuesday saw 12 and the 10-day average was 17, so it is not a daily rate.",
+          "class": "scope"
+        },
+        {
+          "id": 16,
+          "field": "body",
+          "sentence": "وانخفض عدد السفن التجارية العابرة لمضيق هرمز إلى ثلاث سفن الأربعاء، مقارنة بـ12 سفينة الثلاثاء ومتوسط 17 سفينة خلال عشرة أيام، وفقاً لبيانات تتبّع السفن التي أوردها «كبلر».",
+          "claim": "Commercial vessels transiting Hormuz fell to three on Wednesday, versus 12 on Tuesday and a 10-day average of 17, according to ship-tracking data cited by Kpler.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "OilPrice.com",
+          "quote": "Only three commercial vessels transited Hormuz Wednesday, compared with 12 Tuesday and a 10-day average of 17, according to ship-tracking data cited by Reuters.",
+          "correction": "The ship-tracking data was cited by Reuters, not Kpler.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن حركة الملاحة في مضيق هرمز تراجعت إلى ثلاث سفن يومياً، ونسبت بيانات تتبّع السفن إلى «كبلر»، وقدّمت فقدان 8.5 مليون برميل يومياً من الإنتاج على أنه حقيقة ثابتة. والصحيح أن عبور ثلاث سفن سُجّل الأربعاء وحده وأن رويترز هي التي أوردت بيانات التتبّع، أما رقم 8.5 مليون برميل يومياً فهو تقدير «كبلر» لما فُقد من الإنتاج خلال الصراع."
+    },
+    "eurozone-inflation-rises-august-2026-51467a": {
+      "at": "2026-09-24T22:45:17.905Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "publishedAt": "2026-09-17T21:35:47.700Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 9,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 8,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "مسؤول في المركزي الأوروبي يستبعد موجة تضخمية من الجولة الثانية",
+        "ارتفاع التضخم في منطقة اليورو إلى 3.2% يعيد تنشيط النقاش حول مسار السياسة النقدية للبنك المركزي الأوروبي، وقد يؤثر على قرارات الفائدة في الأشهر القادمة.",
+        "كما أن استبعاد المسؤولين في المركزي الأوروبي لموجة تضخمية من الجولة الثانية يشير إلى توقعهم بأن الضغوط الأسعارية الحالية ستكون مؤقتة، مما قد يقلل من احتمال تشديد نقدي إضافي.",
+        "ويبقى مسار التضخم عاملاً حاسماً في تقييم الاستقرار الاقتصادي الأوروبي وتأثيره على الأسواق العالمية.",
+        "وقال مسؤول في البنك المركزي الأوروبي إن المؤسسة تستبعد موجة تضخمية من الجولة الثانية، وفق ما نقلته «الشرق الأوسط» في 17 سبتمبر.",
+        "وكانت المؤسسات المالية العالمية قد كثّفت جهودها لتقييم مسار التضخم وتأثيره على قرارات السياسة النقدية في المناطق المختلفة.",
+        "ويركز المحللون على هل تكون الضغوط السعرية التي شهدتها منطقة اليورو مؤقتة أم تستمر في الأشهر المقبلة، فيؤثر ذلك على توقعات النمو والاستثمار.",
+        "ويبقى موقف المسؤولين من استبعاد الموجة التضخمية من الجولة الثانية عاملاً في تقييم الأسواق لاستجابة السياسة النقدية، خاصة مع تباين توقعات النمو عبر الاقتصادات المتقدمة."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb": {
+      "at": "2026-09-24T22:45:48.711Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "publishedAt": "2026-09-17T17:16:00.916Z",
+      "sourcesRead": 2,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 17,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 6,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 2,
+          "field": "subtitle",
+          "sentence": "لجنة الأوراق المالية الأمريكية تمنح إعفاءً مشروطاً لتداول الأسهم المُرمّزة، وأنثروبيك تتجه للطرح العام بتقييم سوقي ضمني 2.15 تريليون دولار",
+          "claim": "The SEC grants a conditional exemption for tokenized stock trading, and Anthropic is heading to an IPO at an implied market valuation of $2.15 trillion.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "Euronews",
+          "quote": "Perpetual futures contracts tracking Anthropic's pre-IPO valuation are currently trading on Hyperliquid, the largest decentralised derivatives venue, where the implied market capitalisation reached an all-time high of roughly $2.36 trillion (€2.05tn) and sits near $2.15 trillion (€1.86tn) at the time of writing.",
+          "correction": "The $2.15 trillion is the valuation implied by pre-IPO perpetual futures trading on Hyperliquid, not the valuation of the IPO itself, whose reported target is $2 trillion.",
+          "class": "scope"
+        },
+        {
+          "id": 3,
+          "field": "lede",
+          "sentence": "أصدرت لجنة الأوراق المالية الأمريكية الأربعاء إعفاءً ابتكارياً مؤقتاً ومشروطاً يتيح لمنصات التداول إصدار تمثيلات رمزية للأسهم الأمريكية المتداولة علناً وتداولها، نافذاً فور صدوره.",
+          "claim": "On Wednesday the SEC issued a temporary, conditional innovation exemption, effective immediately, that lets trading platforms issue and trade tokenized representations of publicly traded US stocks.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "CNBC",
+          "quote": "The Securities and Exchange Commission on Thursday issued an order creating a regulatory pathway for certain trading venues to issue tokenized representations of publicly traded U.S. stocks, effective immediately.",
+          "correction": "The SEC issued the order on Thursday, not Wednesday.",
+          "class": "period"
+        },
+        {
+          "id": 10,
+          "field": "keyFacts",
+          "sentence": "خسائر 2025: 42 مليار دولار",
+          "claim": "Anthropic's 2025 losses were $42 billion, stated as fact.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "Euronews",
+          "quote": "The losses are also enormous, reportedly reaching close to $42 billion (€36.4bn) in 2025, reflecting the cost of training frontier models.",
+          "correction": "The losses of close to $42 billion in 2025 are only reported, not confirmed.",
+          "class": "hedge"
+        },
+        {
+          "id": 15,
+          "field": "body",
+          "sentence": "اشترط الإعفاء أن يحتفظ حاملو رموز الأسهم بالحقوق نفسها التي يمتلكها حاملو الأسهم التقليدية، بما في ذلك حقوق التصويت والأرباح، وفقاً لمتحدث باسم اللجنة.",
+          "claim": "According to an SEC spokesperson, the exemption requires stock-token holders to keep the same rights as holders of traditional shares, including voting rights and dividends.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "CNBC",
+          "quote": "The new Innovation Exemption stipulates that stock tokens need to provide holders with the same rights and privileges as the traditional securities, including rights to receive dividends and exercise voting rights.",
+          "correction": "The rights requirement is stated in the source's own reporting of the exemption; the SEC spokesperson is cited only for the 30-day notice and objection procedure.",
+          "class": "attribution"
+        },
+        {
+          "id": 18,
+          "field": "body",
+          "sentence": "وبلغ حجم التداول على هذه العقود 6 ملايين دولار في 24 ساعة، والفائدة المفتوحة 31 مليون دولار.",
+          "claim": "Trading volume on these contracts was $6 million over 24 hours, and 'open interest' (rendered as 'الفائدة المفتوحة', literally open interest-rate) was $31 million.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "Euronews",
+          "quote": "\"Currently, the market isn't super deep, with just $6M in 24-hour volume and $31M in open interest on Hyperliquid,\" Lee said, adding that liquidity should improve as the listing approaches, given that more investors are likely to pile in.",
+          "correction": "The $31 million is open interest, meaning the value of outstanding open contracts (المراكز/العقود المفتوحة), not any kind of interest or yield.",
+          "class": "term"
+        },
+        {
+          "id": 20,
+          "field": "body",
+          "sentence": "وتجاوز معدل الإيرادات السنوي 65 مليار دولار بنهاية يوليو، مدفوعاً باعتماد المؤسسات على نموذج «كلود»، وبلغت الخسائر نحو 42 مليار دولار في 2025.",
+          "claim": "Anthropic's annual revenue run rate exceeded $65 billion by end of July, driven by enterprise adoption of Claude, and its losses were about $42 billion in 2025, stated as fact.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "Euronews",
+          "quote": "The losses are also enormous, reportedly reaching close to $42 billion (€36.4bn) in 2025, reflecting the cost of training frontier models.",
+          "correction": "The revenue part is supported, but the 2025 losses of close to $42 billion are only reported, not established fact.",
+          "class": "hedge"
+        }
+      ],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن اللجنة أصدرت الإعفاء الأربعاء، وأن «أنثروبيك» تتجه للطرح العام بتقييم ضمني 2.15 تريليون دولار، وأن خسائرها بلغت 42 مليار دولار في 2025، ونسبت شرط الحقوق إلى متحدث باسم اللجنة، ووصفت قيمة العقود المفتوحة بالفائدة المفتوحة. والصحيح أن الإعفاء صدر الخميس، وأن 2.15 تريليون دولار تقييم ضمني في عقود ما قبل الطرح، وأن الخسائر قاربت 42 مليار دولار بحسب تقارير، وأن المتحدث نُقل عنه إجراء الإخطار والانتظار 30 يوماً فقط، وأن 31 مليون دولار قيمة العقود المفتوحة."
+    },
+    "fed-rate-hike-oil-109-gulf-economies-a07bff": {
+      "at": "2026-09-24T22:45:23.701Z",
+      "kind": "analysis",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "publishedAt": "2026-09-17T18:16:18.832Z",
+      "sourcesRead": 5,
+      "sourcesAll": 5,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 43,
+        "checked": 39,
+        "supported": 25,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 6,
+        "confirmed": 4,
+        "listed": 2,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 1
+      },
+      "confirmed": [
+        {
+          "id": 11,
+          "field": "whyItMatters",
+          "sentence": "ومع بلوغ عائد السندات الأمريكية لأكثر من عشر سنوات مستوى 5.04%، تزداد كلفة إصدار السندات الدولارية التي تموّل مشاريع البنية التحتية في الخليج.",
+          "claim": "The yield on US bonds of 'more than ten years' has reached 5.04%, raising the cost of dollar bond issues that fund Gulf infrastructure.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 5,
+          "sourceName": "Khazendar",
+          "quote": "بلغ العائد على سندات الخزانة الأمريكية لأجل 10 سنوات 5.04%، مسجلاً أعلى مستوى منذ 2007، بحسب بي بي سي.",
+          "correction": "The 5.04% figure is the yield on the 10-year US Treasury note, not on bonds of more than ten years.",
+          "class": "term"
+        },
+        {
+          "id": 22,
+          "field": "body",
+          "sentence": "فقد رفعت بنوك أمريكية كبرى، بينها «جي بي مورغان» و«كي كورب» و«بي إن واي»، معدل الإقراض الرئيسي إلى 7% من 6.75%، فارتفعت تكلفة بطاقات الائتمان والقروض الشخصية في السوق الأمريكية، بحسب «أسواق الشرق».",
+          "claim": "Major US banks including JPMorgan, KeyCorp and BNY raised the prime lending rate to 7% from 6.75%, and the cost of credit cards and personal loans in the US has risen (stated as a realized fact), according to Asharq.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Khazendar",
+          "quote": "ورفعت بنوك كبرى، بينها «جي بي مورغان» و«كي كورب» و«بي إن واي»، معدل الإقراض الرئيسي إلى 7% من 6.75%، ما سيرفع تكلفة بطاقات الائتمان والقروض الشخصية.",
+          "correction": "The source says the prime-rate increase will raise the cost of credit cards and personal loans, a forecast rather than a rise that has already happened.",
+          "class": "hedge"
+        },
+        {
+          "id": 25,
+          "field": "body",
+          "sentence": "ويخسر كذلك حاملو السندات المقوّمة بالدولار مع ارتفاع العوائد؛ فقد بلغ العائد الفعلي على السندات الحكومية الأمريكية لأكثر من عشر سنوات 5.04%، وهو أعلى مستوى منذ 2007، بحسب بي بي سي.",
+          "claim": "Holders of dollar bonds lose as yields rise; the 'actual' yield on US government bonds of 'more than ten years' reached 5.04%, the highest since 2007, according to the BBC.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 5,
+          "sourceName": "Khazendar",
+          "quote": "بلغ العائد على سندات الخزانة الأمريكية لأجل 10 سنوات 5.04%، مسجلاً أعلى مستوى منذ 2007، بحسب بي بي سي.",
+          "correction": "The 5.04% figure is the nominal yield on the 10-year US Treasury note, not the 'actual' yield on bonds of more than ten years.",
+          "class": "term"
+        },
+        {
+          "id": 43,
+          "field": "table",
+          "sentence": "الأداة المالية: عائد سندات الخزينة لأكثر من 10 سنوات · المصدر: بي بي سي · السعر أو العائد: 5.04%",
+          "claim": "The yield on Treasury bonds of 'more than 10 years' is 5.04%, per the BBC.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 5,
+          "sourceName": "Khazendar",
+          "quote": "بلغ العائد على سندات الخزانة الأمريكية لأجل 10 سنوات 5.04%، مسجلاً أعلى مستوى منذ 2007، بحسب بي بي سي.",
+          "correction": "The 5.04% figure is the yield on the 10-year US Treasury note, not on bonds of more than 10 years.",
+          "class": "term"
+        }
+      ],
+      "listed": [
+        {
+          "status": "listed",
+          "class": "other",
+          "field": "lede",
+          "sentence": "وترفع المكاسب السعرية مداخيل دول الخليج النقدية، لكن تراجع أحجام الصادرات الفعلية وارتفاع تكلفة الاقتراض قد يقوّضان هذه المكاسب.",
+          "quote": "أكد وزير الطاقة الأمريكي كريس رايت أن نحو 18 مليون برميل من النفط تدفقت من الخليج في يوم واحد، عائدةً إلى مستويات ما قبل الحرب، بحسب ما نقلته قناة الجزيرة الإنجليزية الثلاثاء 16 سبتمبر.",
+          "source": "Khazendar",
+          "correction": "According to the US energy secretary, Gulf oil flows have returned to pre-war levels of about 18 million barrels a day, so the sources do not show Gulf export volumes declining."
+        },
+        {
+          "status": "listed",
+          "class": "other",
+          "field": "body",
+          "sentence": "فإذا تحقق ذلك، فالأرجح أن ترتفع تكلفة الاقتراض في الخليج أكثر مع استمرار الضرر في أحجام الصادرات.",
+          "quote": "أكد وزير الطاقة الأمريكي كريس رايت أن نحو 18 مليون برميل من النفط تدفقت من الخليج في يوم واحد، عائدةً إلى مستويات ما قبل الحرب، بحسب ما نقلته قناة الجزيرة الإنجليزية الثلاثاء 16 سبتمبر.",
+          "source": "Khazendar",
+          "correction": "According to the US energy secretary, Gulf oil flows have returned to pre-war levels of about 18 million barrels a day, so the sources do not show continuing damage to Gulf export volumes."
+        }
+      ],
+      "notFound": [
+        "ارتفاع الأسعار يعزز مداخيل المنتجين، لكن ربط العملات بالدولار ينقل عبء التشديد الأمريكي إلى اقتصادات الخليج",
+        "يستفيد المنتجان النفطيان اللذان لم تتأثر طاقتهما الإنتاجية.",
+        "ويتحمّل المقترضون في الاقتصادات المرتبطة بالدولار العبء الأكبر.",
+        "فإذا تعافى الخط فعلاً خلال أيام، فقد تستقر أسعار النفط دون 109 دولارات وتبقى أعباء الفائدة قائمة، فيميل الحساب الخليجي نحو الخسارة الصافية.",
+        "وقد ترتفع الأسعار أكثر، لكن خسارة السعودية لصادراتها قد تقوّض إيراداتها أكثر مما تعوّضه الأسعار المرتفعة.",
+        "نراقب مصير خط الشرق-الغرب ومدة إغلاقه الفعلية، إذ يتوقف عليها مستوى أسعار النفط وأحجام صادرات السعودية."
+      ],
+      "weak": [
+        {
+          "sentence": "رفع الاحتياطي الفيدرالي سعر الفائدة ربع نقطة مئوية إلى نطاق 3.75%-4% بأول قرار منذ يوليو 2023، وقفز خام برنت فوق 109 دولارات للبرميل بسبب تعطل خط الشرق-الغرب السعودي.",
+          "quote": "رفع الاحتياطي الفيدرالي سعر الفائدة ربع نقطة مئوية، من 3.5%-3.75% إلى 3.75%-4%، في قرار صدر الأربعاء بإجماع أعضاء لجنة السوق المفتوحة الاثني عشر، وهو أول رفع منذ يوليو 2023، بحسب بي بي سي وأسواق الشرق."
+        },
+        {
+          "sentence": "ورفع المركزي الإماراتي سعر الأساس 25 نقطة أساس إلى 3.90% اعتباراً من الخميس 17 سبتمبر، بحسب بيان نشرته «سكاي نيوز عربية».",
+          "quote": "وزيادة سعر الأساس جاءت بواقع 25 نقطة أساس، وذلك اعتباراً من يوم الخميس 17 سبتمبر 2026، كما أعلن مصرف الإمارات العربية المتحدة المركزي في بيان نشرته سكاي نيوز عربية."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن نسبة 5.04% هي العائد «الفعلي» على السندات الأمريكية لأجل يزيد على عشر سنوات، والصحيح أنها العائد على سندات الخزانة الأمريكية لأجل 10 سنوات. كما ذكرت أن تكلفة بطاقات الائتمان والقروض الشخصية ارتفعت بالفعل، والصحيح أن رفع معدل الإقراض الرئيسي سيرفع هذه التكلفة."
+    },
+    "openai-six-concerning-behaviors-disclosure-framework-2d2a2b": {
+      "at": "2026-09-24T22:46:51.049Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "publishedAt": "2026-09-17T12:01:18.996Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 12,
+        "checked": 12,
+        "supported": 11,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 11,
+          "field": "body",
+          "sentence": "وكانت دعوات قادة تقنيين بارزين إلى إبطاء تطوير الذكاء الاصطناعي المتقدم قد تصاعدت؛ فقد حذر داريو أمودي الرئيس التنفيذي لـ«أنثروبيك» من أن التسارع قد يتجاوز الرقابة البشرية، لكن الرئيس الأمريكي دونالد ترامب رفض هذه المخاوف ووصفها بأنها مبالغ فيها.",
+          "claim": "Calls from prominent tech leaders to slow frontier AI development have escalated. Anthropic CEO Dario Amodei warned that acceleration could outpace human oversight. US President Donald Trump rejected these concerns as exaggerated.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Al Jazeera English",
+          "quote": "“We must slow the pace at which we improve the capabilities of AI models,” Anthropic CEO Dario Amodei wrote in an essay published on Saturday. “Progress will still seem fast, and we must make wise use of the time we gain.”",
+          "correction": "Amodei called for slowing the pace of AI capability improvements; the concern that rapid scaling could outpace human oversight is attributed to the broader calls from technology leaders, not to Amodei.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن داريو أمودي، الرئيس التنفيذي لـ«أنثروبيك»، حذّر من أن تسارع تطوير الذكاء الاصطناعي قد يتجاوز الرقابة البشرية. والصحيح أن أمودي دعا في مقال إلى إبطاء وتيرة تحسين قدرات النماذج، أما الخشية من تجاوز الرقابة البشرية فهي ما استندت إليه دعوات قادة تقنيين آخرين إلى الإبطاء."
+    },
+    "fed-raises-rates-first-time-2023-61bb8a": {
+      "at": "2026-09-24T22:46:56.816Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "publishedAt": "2026-09-17T11:57:49.258Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 18,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "رفع الاحتياطي الفيدرالي سعر الفائدة ربع نقطة مئوية، من 3.5%-3.75% إلى 3.75%-4%، في قرار صدر الأربعاء بإجماع أعضاء لجنة السوق المفتوحة الاثني عشر، وهو أول رفع منذ يوليو 2023، بحسب بي بي سي وأسواق الشرق.",
+          "quote": "وبدا قرار «الفيدرالي» رفع سعر الفائدة ربع نقطة مئوية، بإجماع أعضاء لجنة السوق المفتوحة الاثني عشر، أكثر من مجرد تعديل لسعر الاقتراض؛ فقد حمل رسالة واضحة بشأن تحول موقف البنك المركزي تجاه التضخم، ولا سيما مع استمرار ارتفاع أسعار الطاقة وتداعيات الحرب في الشرق الأوسط."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }

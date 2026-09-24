@@ -1,0 +1,364 @@
+{
+  "startedAt": "2026-09-24T22:47:45.125Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "russia-temporary-management-western-assets-1dadf4",
+      "issue": "1. The dek says «المرسوم الرئاسي يستهدف حماية الحقوق وضمان استمرارية العمليات لصالح الأطراف المعنية» (The presidential decree itself aims to protect rights and ensure continuity of operations for the stakeholders involved.). Source Euronews says: \"“Nestlé is committed to taking all necessary steps to protect its rights and ensure continuity of business operations in the interests of all stakeholders, particularly its employees,” it said.\". Protecting rights and ensuring business continuity is Nestlé's stated response to the decree, not the decree's purpose.\n2. The body says «لدى «نستله» نحو 7000 موظف وستة مصانع في روسيا بحسب بيانات شركة Vontobel السويسرية للاستثمار، وأوقفت معظم مبيعاتها غير الأساسية والاستيراد والتصدير والإعلان والاستثمار الرأسمالي مع استمرارها في توريد المنتجات الأساسية.» (According to data from Swiss investment firm Vontobel, Nestlé has about 7,000 employees and six factories in Russia. It has suspended most non-essential sales, imports, exports, advertising and capital investment while continuing to supply essential products.). Source Euronews says: \"Nestlé has around 7,000 employees and six factories in Russia. It has suspended most non-essential sales, imports and exports, as well as advertising and capital investment, while continuing to supply products it considers essential.\". The employee and factory figures are Euronews's own reporting, not Vontobel data; Vontobel's analyst only commented that the financial impact would be limited, with Russia at about 1% of group sales.\n3. The body says «نُشر المرسوم على البوابة القانونية الرسمية لروسيا الخميس بحسب بيان «نستله»، وانخفضت أسهم الشركة 2.2% في تداولات صباح الجمعة.» (According to Nestlé's statement, the decree was published on Russia's official legal portal on Thursday. Nestlé shares fell 2.2% in Friday morning trading.). Source Sky News Arabia says: \"وفي مستهل التداولات اليوم، سجل سهم شركة \"نستله\" تراجعا بنسبة 1.2%.\". At the start of Friday trading Nestlé shares were down 1.2%; the 2.2% fall reported by CNBC is for Friday without a time of day.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "subtitle",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن المرسوم الرئاسي يستهدف حماية الحقوق وضمان استمرارية العمليات، والصحيح أن ذلك تعهّد أعلنته «نستله» رداً على المرسوم. كما نسبت النسخة السابقة عدد موظفي الشركة ومصانعها في روسيا إلى بيانات «فونتوبل» وحدّدت تراجع السهم 2.2% بتداولات صباح الجمعة، والصحيح أن الرقمين لم يصدرا عن «فونتوبل» وأن التراجع سُجّل في تداولات الجمعة دون تحديد توقيته.",
+      "model": "claude-cli",
+      "before": {
+        "subtitle": "المرسوم الرئاسي يستهدف حماية الحقوق وضمان استمرارية العمليات لصالح الأطراف المعنية"
+      },
+      "after": {
+        "subtitle": "«نستله» تتعهد باتخاذ الخطوات اللازمة لحماية حقوقها وضمان استمرارية عملياتها لصالح الأطراف المعنية"
+      },
+      "changedSentences": [
+        "المرسوم الرئاسي يستهدف حماية الحقوق وضمان استمرارية العمليات لصالح الأطراف المعنية",
+        "لدى «نستله» نحو 7000 موظف وستة مصانع في روسيا بحسب بيانات شركة Vontobel السويسرية للاستثمار، وأوقفت معظم مبيعاتها غير الأساسية والاستيراد والتصدير والإعلان والاستثمار الرأسمالي مع استمرارها في توريد المنتجات الأساسية.",
+        "نُشر المرسوم على البوابة القانونية الرسمية لروسيا الخميس بحسب بيان «نستله»، وانخفضت أسهم الشركة 2.2% في تداولات صباح الجمعة."
+      ],
+      "newSentences": [
+        "«نستله» تتعهد باتخاذ الخطوات اللازمة لحماية حقوقها وضمان استمرارية عملياتها لصالح الأطراف المعنية",
+        "لدى «نستله» نحو 7000 موظف وستة مصانع في روسيا، وأوقفت معظم مبيعاتها غير الأساسية والاستيراد والتصدير والإعلان والاستثمار الرأسمالي مع استمرارها في توريد المنتجات الأساسية.",
+        "نُشر المرسوم على البوابة القانونية الرسمية لروسيا الخميس بحسب بيان «نستله»، وانخفضت أسهم الشركة 2.2% في تداولات الجمعة."
+      ]
+    },
+    {
+      "slug": "warren-buffett-steps-down-berkshire-chairman-457ee7",
+      "issue": "1. The body says «وأضاف أن ابنه هوارد سيحمي ثقافة الشركة وقيمها، في حين يتولى غريغ أبيل الإدارة اليومية بوصفه الرئيس التنفيذي منذ مايو 2025.» (Buffett added that Howard will guard the company's culture and values, while Greg Abel runs day-to-day management as CEO, a post the story says he has held since May 2025.). Source CNBC says: \"His decision comes a little more than nine months after Greg Abel took over as CEO while Buffett retained the chairmanship. Buffett first announced his exit as CEO at Berkshire's annual meeting in May 2025, shocking the crowd of thousands at the time despite his advanced age.\". Buffett only announced his exit as CEO in May 2025; Abel took over as CEO a little more than nine months before September 2026, i.e. around the start of 2026.\n2. The body says «من جهتها، قالت سوزان ديكر إنها ستستمر في منصب المدير المستقل الرئيسي في بركشاير هاثاواي.» (Susan Decker said she will continue as lead independent director at Berkshire Hathaway.). Source CNBC says: \"Susan Decker will continue as lead independent director.\". The source reports, as part of Berkshire's announcement, that Decker will continue as lead independent director; it does not quote Decker saying so.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن غريغ أبيل يتولى منصب الرئيس التنفيذي منذ مايو 2025، والصحيح أن بافيت أعلن في ذلك الشهر تخليه عن المنصب، وأن أبيل تسلّمه قبل ما يزيد قليلاً على تسعة أشهر من إعلان التنحي. كما نسبت النسخة السابقة إلى سوزان ديكر تصريحاً باستمرارها في منصب المدير المستقل الرئيسي، والصحيح أن الشركة هي التي أعلنت ذلك.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وأضاف أن ابنه هوارد سيحمي ثقافة الشركة وقيمها، في حين يتولى غريغ أبيل الإدارة اليومية بوصفه الرئيس التنفيذي منذ مايو 2025.",
+        "من جهتها، قالت سوزان ديكر إنها ستستمر في منصب المدير المستقل الرئيسي في بركشاير هاثاواي."
+      ],
+      "newSentences": [
+        "وأضاف أن ابنه هوارد سيحمي ثقافة الشركة وقيمها، في حين يتولى غريغ أبيل الإدارة اليومية بوصفه الرئيس التنفيذي منذ ما يزيد قليلاً على تسعة أشهر، بعدما أعلن بافيت في مايو 2025 تخليه عن المنصب.",
+        "وأعلنت بركشاير هاثاواي أن سوزان ديكر ستستمر في منصب المدير المستقل الرئيسي."
+      ]
+    },
+    {
+      "slug": "trump-announces-ban-cnn-msn-politico-white-house-fd6870",
+      "issue": "1. The headline says «ترامب يحظر سي إن إن وإم إس إن بي سي وبوليتيكو من البيت الأبيض» (Headline: Trump bans CNN, MSNBC and Politico from the White House.). Source Al Jazeera English says: \"United States President Donald Trump has announced that, effective immediately, CNN, MS NOW and Politico are banned from the White House.\". The source names the banned outlet as MS NOW, not MSNBC.\n2. The dek says ««سي إن إن» تصف القرار بالاعتداء غير القانوني..» (CNN describes the decision as an illegal assault.). Source Al Jazeera English says: \"“Should the ban, which President Trump threatened, go ahead, it would be an illegal assault on that fundamental and constitutionally protected right.”\". CNN's statement was conditional: it said the ban, which it called a threat, would be an illegal assault if it went ahead.\n3. The lede says «حظر الرئيس الأمريكي دونالد ترامب «سي إن إن» و«إم إس إن بي سي» و«بوليتيكو» من البيت الأبيض فوراً، في منشور على «تروث سوشيال»، مبرراً ذلك بأن تغطيتها تنشر أخباراً كاذبة وأكاذيب متواصلة.» (Trump banned CNN, MSNBC and Politico from the White House with immediate effect, in a Truth Social post, justifying it by their fake news and lies.). Source Al Jazeera English says: \"United States President Donald Trump has announced that, effective immediately, CNN, MS NOW and Politico are banned from the White House.On Friday, Trump posted on Truth Social his displeasure with the media outlets’ coverage of his administration.\". The source names the banned outlet as MS NOW, not MSNBC.\n4. The body says «كتب ترامب على «تروث سوشيال» إنه فخور بالإعلان عن الحظر الفوري على «سي إن إن» و«إم إس إن بي سي» و«بوليتيكو» نتيجة تقاريرها المستمرة التي وصفها بالأخبار الكاذبة.» (Trump wrote on Truth Social that he was proud to announce the immediate ban on CNN, MSNBC and Politico because of their constant reporting, which he called fake news.). Source Al Jazeera English says: \"“I am proud to announce that, effective immediately, I am banning Fake News CNN, MSNOW … and Politico … from the White House as a result of their constant ‘reporting’ FAKE NEWS!” Trump wrote.\". Trump's post names MSNOW, not MSNBC.\n5. The body says «وأضاف أن وسائل الإعلام لا ينبغي أن تكتب الأكاذيب باستمرار عند تغطية رئيس الولايات المتحدة أو إدارته، مشيراً إلى أن «نيويورك تايمز» و«واشنطن بوست» قد تكونان التاليتين للحظر.» (In the same post, Trump added that media should not constantly write lies when covering the president or his administration, and indicated that The New York Times and The Washington Post could be next.). Source Al Jazeera English says: \"Asked by reporters later on Friday what he meant by other outlets “to follow”, Trump named The New York Times and The Washington Post as what he called “fake news”.\". The post only said other outlets would follow; Trump named The New York Times and The Washington Post later, when reporters asked him, and he called them fake news.\n6. The body says «من جانبها، قالت «سي إن إن» إنها ستواصل التغطية من البيت الأبيض دون عائق، ووصفت الحظر بأنه اعتداء غير قانوني على حقها الدستوري في التغطية الصحفية.» (CNN said it would keep covering the White House without hindrance and called the ban an illegal assault on its constitutional right to report.). Source Al Jazeera English says: \"“We have a right under the US Constitution to do that reporting without hindrance or interference from the government,” a CNN spokesperson told Al Jazeera. “Should the ban, which President Trump threatened, go ahead, it would be an illegal assault on that fundamental and constitutionally protected right.”\". CNN said it has a constitutional right to report without hindrance, not that it would keep covering. It also said the ban would be an illegal assault only if it went ahead.\n7. The body says «وبحسب إذاعة «سوا»، قد يواجه الحظر طعناً قانونياً قريباً استناداً إلى التعديل الأول للدستور الأمريكي.» (According to Radio Sawa, the ban may soon face a legal challenge under the First Amendment.). Source Al Jazeera English says: \"Al Jazeera’s Alan Fisher reported from Washington, DC, that Trump’s ban will likely be challenged soon.\". This assessment came from Al Jazeera correspondent Alan Fisher, not from Radio Sawa.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "title",
+        "subtitle",
+        "lede",
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن الحظر شمل «إم إس إن بي سي»، وأن ترامب سمّى «نيويورك تايمز» و«واشنطن بوست» في منشوره، وأن «سي إن إن» وصفت الحظر بالاعتداء غير القانوني دون شرط، ونسبت ترجيح الطعن القانوني إلى إذاعة «سوا». والصحيح أن الحظر شمل «إم إس ناو»، وأن ترامب سمّى الصحيفتين لاحقاً رداً على أسئلة الصحفيين، وأن «سي إن إن» قالت إن الحظر سيكون اعتداءً غير قانوني إذا مضى قدماً، وأن ترجيح الطعن جاء على لسان مراسل الجزيرة آلان فيشر.",
+      "model": "claude-cli",
+      "before": {
+        "title": "ترامب يحظر سي إن إن وإم إس إن بي سي وبوليتيكو من البيت الأبيض",
+        "subtitle": "«سي إن إن» تصف القرار بالاعتداء غير القانوني.. ومنظمات حقوقية تبحث الطعن أمام القضاء",
+        "lede": "حظر الرئيس الأمريكي دونالد ترامب «سي إن إن» و«إم إس إن بي سي» و«بوليتيكو» من البيت الأبيض فوراً، في منشور على «تروث سوشيال»، مبرراً ذلك بأن تغطيتها تنشر أخباراً كاذبة وأكاذيب متواصلة."
+      },
+      "after": {
+        "title": "ترامب يحظر سي إن إن وإم إس ناو وبوليتيكو من البيت الأبيض",
+        "subtitle": "«سي إن إن» تصف الحظر بالاعتداء غير القانوني إن مضى قدماً.. ومنظمات حقوقية تبحث الطعن أمام القضاء",
+        "lede": "حظر الرئيس الأمريكي دونالد ترامب «سي إن إن» و«إم إس ناو» و«بوليتيكو» من البيت الأبيض فوراً، في منشور على «تروث سوشيال»، مبرراً ذلك بأن تغطيتها تنشر أخباراً كاذبة وأكاذيب متواصلة."
+      },
+      "changedSentences": [
+        "ترامب يحظر سي إن إن وإم إس إن بي سي وبوليتيكو من البيت الأبيض",
+        "«سي إن إن» تصف القرار بالاعتداء غير القانوني..",
+        "حظر الرئيس الأمريكي دونالد ترامب «سي إن إن» و«إم إس إن بي سي» و«بوليتيكو» من البيت الأبيض فوراً، في منشور على «تروث سوشيال»، مبرراً ذلك بأن تغطيتها تنشر أخباراً كاذبة وأكاذيب متواصلة.",
+        "كتب ترامب على «تروث سوشيال» إنه فخور بالإعلان عن الحظر الفوري على «سي إن إن» و«إم إس إن بي سي» و«بوليتيكو» نتيجة تقاريرها المستمرة التي وصفها بالأخبار الكاذبة.",
+        "وأضاف أن وسائل الإعلام لا ينبغي أن تكتب الأكاذيب باستمرار عند تغطية رئيس الولايات المتحدة أو إدارته، مشيراً إلى أن «نيويورك تايمز» و«واشنطن بوست» قد تكونان التاليتين للحظر.",
+        "من جانبها، قالت «سي إن إن» إنها ستواصل التغطية من البيت الأبيض دون عائق، ووصفت الحظر بأنه اعتداء غير قانوني على حقها الدستوري في التغطية الصحفية.",
+        "وبحسب إذاعة «سوا»، قد يواجه الحظر طعناً قانونياً قريباً استناداً إلى التعديل الأول للدستور الأمريكي.",
+        "المنافذ المحظورة سي إن إن، إم إس إن أو، بوليتيكو"
+      ],
+      "newSentences": [
+        "ترامب يحظر سي إن إن وإم إس ناو وبوليتيكو من البيت الأبيض",
+        "«سي إن إن» تصف الحظر بالاعتداء غير القانوني إن مضى قدماً..",
+        "حظر الرئيس الأمريكي دونالد ترامب «سي إن إن» و«إم إس ناو» و«بوليتيكو» من البيت الأبيض فوراً، في منشور على «تروث سوشيال»، مبرراً ذلك بأن تغطيتها تنشر أخباراً كاذبة وأكاذيب متواصلة.",
+        "كتب ترامب على «تروث سوشيال» أنه فخور بالإعلان عن الحظر الفوري على «سي إن إن» و«إم إس ناو» و«بوليتيكو» نتيجة تقاريرها المستمرة التي وصفها بالأخبار الكاذبة.",
+        "وأضاف أن وسائل الإعلام لا ينبغي أن تكتب الأكاذيب باستمرار عند تغطية رئيس الولايات المتحدة أو إدارته، مشيراً إلى أن منافذ أخرى ستلحق بها.",
+        "ولما سأله الصحفيون لاحقاً عن المنافذ المقصودة، سمّى «نيويورك تايمز» و«واشنطن بوست» ووصفهما بالأخبار الكاذبة.",
+        "من جانبها، قالت «سي إن إن» إن الدستور الأمريكي يكفل لها حق التغطية الصحفية دون عائق أو تدخل من الحكومة، وإن الحظر الذي هدد به ترامب سيكون اعتداءً غير قانوني على هذا الحق إذا مضى قدماً.",
+        "ورجّح مراسل الجزيرة في واشنطن آلان فيشر أن يواجه الحظر طعناً قانونياً قريباً استناداً إلى التعديل الأول للدستور الأمريكي.",
+        "المنافذ المحظورة سي إن إن، إم إس ناو، بوليتيكو"
+      ]
+    },
+    {
+      "slug": "trump-signs-russia-sanctions-oil-tariffs-law-ad758a",
+      "issue": "1. The body says «قال البيت الأبيض في بيان، بحسب The Guardian، إن القانون المسمى «قانون ليندسي غراهام لمعاقبة روسيا وإيران» يستهدف عائدات النفط والغاز الروسية، وأسطول «الناقلات الظلية» التي تساعد موسكو على التهرب من العقوبات الحالية على صادرات الطاقة.» (The White House said in a statement, per The Guardian, that the Lindsey Graham Sanctioning Russia and Iran Act targets Russian oil and gas revenues and the 'shadow tanker' fleet that helps Moscow evade existing energy sanctions.). Source The Guardian says: \"The bill named after the hawkish Republican senator, Lindsey Graham, who died in July, is aimed at depleting Russia’s ability to continue funding the war by targeting its natural gas and oil revenues, as well as countries that continue to buy Russian energy.\". This is The Guardian's own description of the bill, not a White House statement; no White House statement is cited.\n2. The body says «وأوضحت مصادر مطلعة أن القانون يمنح ترامب سلطة تقديرية واسعة في تنفيذه، تشمل تحديد الدول التي قد تواجه رسوماً ومعدلات تلك الرسوم، وإعفاء بعض الدول وفق تقديره الخاص.» (Informed sources explained that the law gives Trump wide discretion over implementation, including which countries face tariffs, the rates, and exempting some countries at his discretion.). Source The Guardian says: \"But it also gives Trump wide leeway over its implementation, including which countries could face tariffs, and which tariff rates could be imposed. It also gives the president sweeping discretion over whether sanctions provisions can be waived against certain countries.\". The Guardian states this in its own reporting; it does not attribute it to informed sources.\n3. The body says «وكان مجلس النواب قد وافق على القانون بأغلبية 262 صوتاً مقابل 159، وصوّت 58 ديمقراطياً لصالحه في حين عارضه 7 جمهوريين، في تصويت وُصف بأنه ذو طابع حزبي.» (The House passed the bill 262-159, with 58 Democrats in favour and 7 Republicans against, in a vote described as partisan.). Source The Guardian says: \"The US president signed the Lindsey O Graham Sanctioning Russia and Iran Act into law two days after it passed the House of Representatives in a bipartisan 262-159 vote, amid concerns the legislation gives him too much power.\". The Guardian describes the 262-159 House vote as bipartisan, not partisan.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "نسبت نسخة سابقة من هذا الخبر وصف أهداف القانون إلى بيان للبيت الأبيض، ونسبت الصلاحيات التقديرية التي يمنحها لترامب إلى مصادر مطلعة، والصحيح أنهما من مضمون القانون ولم يصدر بشأنهما بيان أو تصريح من مصادر. وذكرت النسخة نفسها أن تصويت مجلس النواب كان ذا طابع حزبي، والصحيح أنه حظي بدعم من الحزبين.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "قال البيت الأبيض في بيان، بحسب The Guardian، إن القانون المسمى «قانون ليندسي غراهام لمعاقبة روسيا وإيران» يستهدف عائدات النفط والغاز الروسية، وأسطول «الناقلات الظلية» التي تساعد موسكو على التهرب من العقوبات الحالية على صادرات الطاقة.",
+        "وأوضحت مصادر مطلعة أن القانون يمنح ترامب سلطة تقديرية واسعة في تنفيذه، تشمل تحديد الدول التي قد تواجه رسوماً ومعدلات تلك الرسوم، وإعفاء بعض الدول وفق تقديره الخاص.",
+        "وكان مجلس النواب قد وافق على القانون بأغلبية 262 صوتاً مقابل 159، وصوّت 58 ديمقراطياً لصالحه في حين عارضه 7 جمهوريين، في تصويت وُصف بأنه ذو طابع حزبي."
+      ],
+      "newSentences": [
+        "يستهدف القانون المسمى «قانون ليندسي غراهام لمعاقبة روسيا وإيران» عائدات النفط والغاز الروسية، وأسطول «الناقلات الظلية» التي تساعد موسكو على التهرب من العقوبات الحالية على صادرات الطاقة.",
+        "ويمنح القانون ترامب سلطة تقديرية واسعة في تنفيذه، تشمل تحديد الدول التي قد تواجه رسوماً ومعدلات تلك الرسوم، وإعفاء بعض الدول وفق تقديره الخاص.",
+        "وكان مجلس النواب قد وافق على القانون بأغلبية 262 صوتاً مقابل 159، وصوّت 58 ديمقراطياً لصالحه في حين عارضه 7 جمهوريين، في تصويت حظي بدعم من الحزبين."
+      ]
+    },
+    {
+      "slug": "eu-fuel-prices-record-iran-saudi-supply-8376ff",
+      "issue": "1. The body says «أظهرت بيانات جمعية ADAC أن البنزين في ألمانيا بلغ 2.31 يورو للتر الأربعاء، وتجاوز الديزل في هولندا 2.78 يورو.» (ADAC data showed German petrol at €2.31/litre on Wednesday, and Dutch diesel exceeded €2.78/litre.). Source The Guardian says: \"Prices are even higher in the Netherlands, where petrol eclipsed last week’s record high to reach €2.73 a litre on Wednesday, with diesel at an average €2.78 a litre.\". Dutch diesel was at an average of €2.78 a litre, not above it, and the source does not attribute the Dutch figure to ADAC.\n2. The body says «وارتفع البنزين في التكتل 24% والديزل 38% على أساس سنوي، وقفز وقود الطائرات أكثر من 100%، وفق بيانات ADAC.» (Year on year across the EU, petrol is up 24%, diesel 38% and jet fuel more than 100%, according to ADAC data.). Source The Guardian says: \"Across the EU, petrol prices are 24% higher than a year earlier, while diesel is up 38% and jet fuel costs more than 100% more.\". The source gives these EU-wide figures without attributing them to ADAC, which it cites only for German pump prices.\n3. The body says «وأعلنت «أرامكو» السعودية أنها لن تورّد النفط لمصفاتين أوروبيتين على الأقل بموجب عقود طويلة الأجل في أكتوبر، إثر هجوم على خط أنابيبها بين الساحل الشرقي والبحر الأحمر.» (Aramco announced it will not supply at least two European refiners under long-term contracts in October, after an attack on its pipeline to the Red Sea.). Source Euronews says: \"European crude supplies face further disruption after Saudi Aramco told at least two European refiners that they would receive no oil under long-term contracts in October following an attack on the kingdom’s key pipeline to the Red Sea, Bloomberg reported, citing people informed of the decision who said it applied to all European buyers.\". Aramco made no public announcement: it privately told the refiners, and this was reported by Bloomberg citing people informed of the decision.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن سعر الديزل في هولندا تجاوز 2.78 يورو للتر وفق بيانات جمعية ADAC، ونسبت إلى الجمعية نسب الارتفاع السنوي للوقود في الاتحاد الأوروبي، والصحيح أن 2.78 يورو هو متوسط سعر الديزل الهولندي وأن الجمعية لم تكن مصدر هذه الأرقام. كما ذكرت أن «أرامكو» أعلنت وقف توريد النفط لمصفاتين أوروبيتين، والصحيح أن الشركة أبلغت المصفاتين بذلك، ونقلت بلومبرغ النبأ عن مصادر مطلعة على القرار.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "أظهرت بيانات جمعية ADAC أن البنزين في ألمانيا بلغ 2.31 يورو للتر الأربعاء، وتجاوز الديزل في هولندا 2.78 يورو.",
+        "وارتفع البنزين في التكتل 24% والديزل 38% على أساس سنوي، وقفز وقود الطائرات أكثر من 100%، وفق بيانات ADAC.",
+        "وأعلنت «أرامكو» السعودية أنها لن تورّد النفط لمصفاتين أوروبيتين على الأقل بموجب عقود طويلة الأجل في أكتوبر، إثر هجوم على خط أنابيبها بين الساحل الشرقي والبحر الأحمر."
+      ],
+      "newSentences": [
+        "أظهرت بيانات جمعية ADAC أن البنزين في ألمانيا بلغ 2.31 يورو للتر الأربعاء.",
+        "وبلغ متوسط سعر الديزل في هولندا 2.78 يورو للتر.",
+        "وارتفع البنزين في التكتل 24% والديزل 38% على أساس سنوي، وقفز وقود الطائرات أكثر من 100%.",
+        "وأبلغت «أرامكو» السعودية مصفاتين أوروبيتين على الأقل بأنها لن تورّد لهما النفط بموجب عقود طويلة الأجل في أكتوبر، إثر هجوم على خط أنابيبها بين الساحل الشرقي والبحر الأحمر، بحسب بلومبرغ نقلاً عن مصادر مطلعة على القرار."
+      ]
+    },
+    {
+      "slug": "us-denmark-greenland-security-deal-eac792",
+      "issue": "1. The lede says «أعلن الرئيس الأمريكي دونالد ترامب السبت أن الاتفاق مع الدنمارك يمنح الولايات المتحدة سيطرة دائمة على أمن جرينلاند.» (On Saturday, US President Donald Trump announced that the deal with Denmark gives the US permanent control over Greenland's security.). Source CNBC says: \"President Donald Trump on Friday announced an agreement with Greenland and Denmark that gives the U.S. what he described as \"permanent control over security, and all other needs\" in the Danish island territory.\". Trump made the announcement on Friday, not Saturday; it was Denmark and Greenland that spoke on Saturday.\n2. The key fact says «التكلفة على الولايات المتحدة: صفر» (The cost of the deal to the US is zero, stated as an established fact without attribution.). Source CNBC says: \"\"There will be NO COST to the United States,\" he wrote.\". Zero cost is Trump's own claim about the future, not an established fact; the official text of the deal was not available.\n3. The why it matters says «ويوسّع نطاق الانتشار العسكري الأمريكي إلى القطب الشمالي دون تكلفة إضافية على واشنطن.» (Website analysis: the deal expands US military deployment into the Arctic at no additional cost to Washington, stated as fact.). Source CNBC says: \"\"There will be NO COST to the United States,\" he wrote.\". No additional cost is only Trump's claim, not a fact, and the sources note the US already has a military presence in Greenland under a decades-old agreement.\n4. The body says «الوزير الدنماركي لارس لوكه راسموسن قال إن الاتفاق سيحل فترة عدم اليقين ويعزز الأمن في القطب الشمالي والأطلسي مع احترام خطوط حمراء للمملكة الدنماركية، وفق ما ذكره في منشور على وسائل التواصل الاجتماعي بتاريخ 2026-09-19.» (Danish minister Lars Lokke Rasmussen said, in a social media post, that the deal will end the period of uncertainty and strengthen Arctic and Atlantic security while respecting the Danish Kingdom's red lines (stated as certain).). Source Al Jazeera English says: \"“A long period of uncertainty will hopefully be replaced by a binding agreement that strengthens security in the Arctic and North Atlantic, and thereby our shared security within NATO and Europe – while respecting the [Danish] Kingdom’s red lines,” Danish Foreign Minister Lars Lokke Rasmussen said in a social media post.\". Rasmussen said the period of uncertainty will \"hopefully\" be replaced by a binding agreement; he expressed a hope, not a certainty.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "lede",
+        "whyItMatters",
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن ترامب أعلن الاتفاق السبت، والصحيح أنه أعلنه الجمعة، وأن خلوّ الاتفاق من أي تكلفة على واشنطن أمر ثابت، والصحيح أنه قول ترامب في ظل عدم نشر النص الرسمي. كما نسبت النسخة السابقة إلى وزير الخارجية الدنماركي جزمه بأن الاتفاق سينهي فترة عدم اليقين، والصحيح أنه عبّر عن أمله في ذلك.",
+      "model": "claude-cli",
+      "before": {
+        "lede": "أعلن الرئيس الأمريكي دونالد ترامب السبت أن الاتفاق مع الدنمارك يمنح الولايات المتحدة سيطرة دائمة على أمن جرينلاند. وقال في منشور على «تروث سوشيال» إن بلاده ستبدأ فوراً في تطوير وجود عسكري كبير في الجزء المناسب من الجزيرة، وإن الاتفاق لا يتضمن أي تكلفة على الولايات المتحدة.",
+        "whyItMatters": "يحدّ الاتفاق من قدرة الصين وروسيا على التمدد العسكري في القطب الشمالي، إذ يشترط موافقة واشنطن الكتابية على أي وجود عسكري أو استثمارات حساسة لخصومها في جرينلاند. ويوسّع نطاق الانتشار العسكري الأمريكي إلى القطب الشمالي دون تكلفة إضافية على واشنطن."
+      },
+      "after": {
+        "lede": "أعلن الرئيس الأمريكي دونالد ترامب الجمعة أن الاتفاق مع الدنمارك يمنح الولايات المتحدة سيطرة دائمة على أمن جرينلاند. وقال في منشور على «تروث سوشيال» إن بلاده ستبدأ فوراً في تطوير وجود عسكري كبير في الجزء المناسب من الجزيرة، وإن الاتفاق لا يتضمن أي تكلفة على الولايات المتحدة.",
+        "whyItMatters": "يحدّ الاتفاق من قدرة الصين وروسيا على التمدد العسكري في القطب الشمالي، إذ يشترط موافقة واشنطن الكتابية على أي وجود عسكري أو استثمارات حساسة لخصومها في جرينلاند. ويقول ترامب إن الاتفاق لا يرتّب أي تكلفة على الولايات المتحدة، في حين لم يُنشر نصه الرسمي، ولواشنطن أصلاً وجود عسكري في الجزيرة بموجب اتفاق دفاعي مع الدنمارك يعود إلى عقود."
+      },
+      "changedSentences": [
+        "أعلن الرئيس الأمريكي دونالد ترامب السبت أن الاتفاق مع الدنمارك يمنح الولايات المتحدة سيطرة دائمة على أمن جرينلاند.",
+        "ويوسّع نطاق الانتشار العسكري الأمريكي إلى القطب الشمالي دون تكلفة إضافية على واشنطن.",
+        "ترامب صرح أن الاتفاق يضمن أن لا يكون لأي خصم أمريكي وجود عسكري أو قاعدة أو استثمارات حساسة في جرينلاند دون موافقة كتابية صريحة من الولايات المتحدة، وفق ما ذكره في منشور على تروث سوشيال بتاريخ 2026-09-19.",
+        "الوزير الدنماركي لارس لوكه راسموسن قال إن الاتفاق سيحل فترة عدم اليقين ويعزز الأمن في القطب الشمالي والأطلسي مع احترام خطوط حمراء للمملكة الدنماركية، وفق ما ذكره في منشور على وسائل التواصل الاجتماعي بتاريخ 2026-09-19.",
+        "التكلفة على الولايات المتحدة صفر"
+      ],
+      "newSentences": [
+        "أعلن الرئيس الأمريكي دونالد ترامب الجمعة أن الاتفاق مع الدنمارك يمنح الولايات المتحدة سيطرة دائمة على أمن جرينلاند.",
+        "ويقول ترامب إن الاتفاق لا يرتّب أي تكلفة على الولايات المتحدة، في حين لم يُنشر نصه الرسمي، ولواشنطن أصلاً وجود عسكري في الجزيرة بموجب اتفاق دفاعي مع الدنمارك يعود إلى عقود.",
+        "ترامب صرح أن الاتفاق يضمن أن لا يكون لأي خصم أمريكي وجود عسكري أو قاعدة أو استثمارات حساسة في جرينلاند دون موافقة كتابية صريحة من الولايات المتحدة، وفق ما ذكره في منشور على تروث سوشيال بتاريخ 2026-09-18.",
+        "الوزير الدنماركي لارس لوكه راسموسن قال إنه يأمل أن يحل اتفاق ملزم محل فترة طويلة من عدم اليقين، وأن يعزز الأمن في القطب الشمالي والأطلسي مع احترام خطوط حمراء للمملكة الدنماركية، وفق ما ذكره في منشور على وسائل التواصل الاجتماعي بتاريخ 2026-09-19.",
+        "التكلفة على الولايات المتحدة بحسب ترامب لا تكلفة"
+      ]
+    },
+    {
+      "slug": "trump-announces-ai-force-and-czar-f4c7aa",
+      "issue": "1. The headline says «ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها» (Trump announced the founding of an AI Force and the appointment of an official to lead that force.). Source Al Jazeera English says: \"United States President Donald Trump has announced he’s creating an “AI Force” and will appoint a new “AI czar” to oversee development of the nation’s artificial intelligence industry.\". The AI czar is described as overseeing development of the US AI industry, not as leading the AI Force; Trump did not say what either role will entail.\n2. The key fact says «نسبة الذكاء الاصطناعي من الناتج: 25%» (Key fact: AI's share of GDP is 25%, stated as a figure without attribution or hedge.). Source The Guardian says: \"“AI is the next Industrial Revolution, or Internet, but will be even larger and more impactful, possibly as much as 25% of our Country’s GDP,” Trump predicted, concluding that the US is “leading China, and the rest of the World, and I intend to keep it that way”.\". 25% is Trump's forecast that AI could possibly reach as much as 25% of US GDP, not a current measured share.\n3. The body says «وذكر أنه كان لديه سابقاً 'قيصر للذكاء الاصطناعي' وهو ديفيد ساكس، الذي استقال وأصبح مستشاراً خارجياً للرئيس.» (Trump stated that he previously had an AI czar, David Sacks, who resigned and became an external adviser to the president.). Source Al Jazeera English says: \"Trump already had one “AI czar”, venture capitalist David Sacks. He resigned earlier this year and became an external adviser to the president.\". The information about David Sacks is Al Jazeera's own reporting, not something Trump said.\n4. The body says «وتوقع أن يكون الذكاء الاصطناعي مساوياً لـ 25% من ناتج البلاد الإجمالي، ووصفه بأنه الثورة الصناعية التالية أو الإنترنت لكنه سيكون أكبر وأكثر تأثيراً.» (Trump forecast that AI will equal 25% of US GDP, and called it the next Industrial Revolution or Internet, but larger and more impactful.). Source The Guardian says: \"“AI is the next Industrial Revolution, or Internet, but will be even larger and more impactful, possibly as much as 25% of our Country’s GDP,” Trump predicted, concluding that the US is “leading China, and the rest of the World, and I intend to keep it that way”.\". Trump said AI could possibly be as much as 25% of US GDP, which is an upper-bound possibility, not a prediction that it will equal 25%.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "title",
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن المسؤول المرتقب سيقود قوة الذكاء الاصطناعي، وأن الذكاء الاصطناعي سيعادل 25% من الناتج الأمريكي، وأن ترامب هو من تحدث عن ديفيد ساكس. والصحيح أن المسؤول سيشرف على تطوير قطاع الذكاء الاصطناعي، وأن ترامب قال إن حصة القطاع قد تصل إلى 25% من الناتج، وأن المعلومة عن ساكس ليست من تصريحات ترامب.",
+      "model": "claude-cli",
+      "before": {
+        "title": "ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها"
+      },
+      "after": {
+        "title": "ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول للإشراف على القطاع"
+      },
+      "changedSentences": [
+        "ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها",
+        "وذكر أنه كان لديه سابقاً 'قيصر للذكاء الاصطناعي' وهو ديفيد ساكس، الذي استقال وأصبح مستشاراً خارجياً للرئيس.",
+        "وتوقع أن يكون الذكاء الاصطناعي مساوياً لـ 25% من ناتج البلاد الإجمالي، ووصفه بأنه الثورة الصناعية التالية أو الإنترنت لكنه سيكون أكبر وأكثر تأثيراً.",
+        "نسبة الذكاء الاصطناعي من الناتج 25%"
+      ],
+      "newSentences": [
+        "ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول للإشراف على القطاع",
+        "وكان ديفيد ساكس قد شغل سابقاً منصب 'قيصر الذكاء الاصطناعي' لدى ترامب، قبل أن يستقيل ويصبح مستشاراً خارجياً للرئيس.",
+        "وتوقع أن تصل حصة الذكاء الاصطناعي من ناتج البلاد الإجمالي ربما إلى 25%، ووصفه بأنه الثورة الصناعية التالية أو الإنترنت لكنه سيكون أكبر وأكثر تأثيراً.",
+        "الحصة التي قد يبلغها الذكاء الاصطناعي من الناتج الأمريكي بحسب توقع ترامب حتى 25%"
+      ]
+    },
+    {
+      "slug": "trump-xi-summit-washington-2026-4e439e",
+      "issue": "1. The lede says «يصل الرئيس الصيني شي جين بينغ إلى واشنطن الأربعاء المقبل برفقة زوجته بينغ ليوان لحضور عشاء دولة بدعوة من ترامب، ويغادر الجمعة متجاوزاً اجتماعات الجمعية العامة للأمم المتحدة بالكامل.» (Stated as fact: Xi Jinping arrives in Washington next Wednesday with his wife Peng Liyuan for a state dinner at Trump's invitation, and leaves on Friday, skipping the UN General Assembly entirely.). Source Euronews says: \"US President Donald Trump went to Beijing in May, and Chinese President Xi Jinping is now expected to come to him, scheduled to arrive next Wednesday and depart on Friday with his wife, Peng Liyuan, skipping the UN General Assembly entirely.\nBeijing has not yet given the final confirmation, pending the meeting between US Treasury Secretary Scott Bessent and Chinese Vice Premier He Lifeng this weekend.\". Xi is only expected and scheduled to arrive Wednesday and leave Friday; Beijing has not yet given final confirmation of the visit.\n2. The why it matters says «يدخل ترامب القمة والتضخم عند 3.4٪ وأسعار الوقود فوق 6 دولارات للغالون، قبل انتخابات منتصف المدة في نوفمبر.» (Trump enters the summit with inflation at 3.4% and fuel prices above $6 a gallon, ahead of the November midterm elections.). Source Euronews says: \"Trump faces midterms in November that will be fought on the cost of living, with diesel above $6 a gallon and inflation stuck at 3.4%.\". Only diesel is above $6 a gallon, not fuel prices in general; regular gasoline averages $4.48 a gallon according to source 1.\n3. The body says «الرئيس الأمريكي دونالد ترامب استضاف الرئيس الصيني شي جين بينغ في بكين في مايو 2026، وهذه الزيارة هي الأولى لشي إلى واشنطن منذ 2015، وفقاً لمصدر من Euronews بتاريخ 2026-09-18.» (Trump hosted Xi Jinping in Beijing in May 2026, and this visit is Xi's first to Washington since 2015, according to Euronews.). Source Euronews says: \"US President Donald Trump went to Beijing in May, and Chinese President Xi Jinping is now expected to come to him, scheduled to arrive next Wednesday and depart on Friday with his wife, Peng Liyuan, skipping the UN General Assembly entirely.\". Trump was the visitor in Beijing in May, so Xi hosted Trump, not the reverse.\n4. The body says «الرئيس التنفيذي لـ Qualcomm كريستيان أمون ورئيس مجلس إدارة أبل تيم كوك سيحضرون عشاء الدولة لترامب وشي في واشنطن الأسبوع المقبل، وفقاً لمصدر من CNBC بتاريخ 2026-09-18.» (Qualcomm CEO Cristiano Amon and Apple chairman Tim Cook will attend the Trump-Xi state dinner in Washington next week, according to CNBC.). Source Euronews says: \"Sam Altman of OpenAI, Nvidia's Jensen Huang, Qualcomm's Cristiano Amon and Apple chairman Tim Cook are all expected, according to Politico, which cited four people familiar with the arrangements.\". Amon's and Cook's expected attendance was reported by Politico, cited by Euronews, not by CNBC.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "lede",
+        "whyItMatters",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن شي جين بينغ سيصل إلى واشنطن الأربعاء ويغادرها الجمعة، وأن ترامب استضافه في بكين في مايو، وأن أسعار الوقود عامة تتجاوز 6 دولارات للغالون، ونسبت إلى CNBC حضور أمون وكوك العشاء. والصحيح أن الزيارة مقررة ولم تؤكدها بكين نهائياً بعد، وأن ترامب هو من زار بكين، وأن الديزل وحده يتجاوز 6 دولارات للغالون، وأن حضور أمون وكوك المتوقع أوردته Politico ونقلته عنها Euronews.",
+      "model": "claude-cli",
+      "before": {
+        "lede": "يصل الرئيس الصيني شي جين بينغ إلى واشنطن الأربعاء المقبل برفقة زوجته بينغ ليوان لحضور عشاء دولة بدعوة من ترامب، ويغادر الجمعة متجاوزاً اجتماعات الجمعية العامة للأمم المتحدة بالكامل. وهي أول زيارة للرئيس الصيني إلى واشنطن منذ 2015، بحسب «يورونيوز».",
+        "whyItMatters": "يدخل ترامب القمة والتضخم عند 3.4٪ وأسعار الوقود فوق 6 دولارات للغالون، قبل انتخابات منتصف المدة في نوفمبر. أما الصين فلم يتجاوز نمو مبيعات التجزئة فيها 0.4٪ في أغسطس، وانكمش الاستثمار في الأصول الثابتة 7.2٪ في أول ثمانية أشهر من العام مقارنة بالفترة نفسها من 2025."
+      },
+      "after": {
+        "lede": "من المقرر أن يصل الرئيس الصيني شي جين بينغ إلى واشنطن الأربعاء المقبل برفقة زوجته بينغ ليوان لحضور عشاء دولة بدعوة من ترامب، على أن يغادر الجمعة متجاوزاً اجتماعات الجمعية العامة للأمم المتحدة بالكامل، ولم تمنح بكين تأكيدها النهائي للزيارة بعد. وهي أول زيارة للرئيس الصيني إلى واشنطن منذ 2015، بحسب «يورونيوز».",
+        "whyItMatters": "يدخل ترامب القمة والتضخم عند 3.4٪ وسعر الديزل فوق 6 دولارات للغالون، قبل انتخابات منتصف المدة في نوفمبر. أما الصين فلم يتجاوز نمو مبيعات التجزئة فيها 0.4٪ في أغسطس، وانكمش الاستثمار في الأصول الثابتة 7.2٪ في أول ثمانية أشهر من العام مقارنة بالفترة نفسها من 2025."
+      },
+      "changedSentences": [
+        "يصل الرئيس الصيني شي جين بينغ إلى واشنطن الأربعاء المقبل برفقة زوجته بينغ ليوان لحضور عشاء دولة بدعوة من ترامب، ويغادر الجمعة متجاوزاً اجتماعات الجمعية العامة للأمم المتحدة بالكامل.",
+        "يدخل ترامب القمة والتضخم عند 3.4٪ وأسعار الوقود فوق 6 دولارات للغالون، قبل انتخابات منتصف المدة في نوفمبر.",
+        "الرئيس الأمريكي دونالد ترامب استضاف الرئيس الصيني شي جين بينغ في بكين في مايو 2026، وهذه الزيارة هي الأولى لشي إلى واشنطن منذ 2015، وفقاً لمصدر من Euronews بتاريخ 2026-09-18.",
+        "الرئيس التنفيذي لـ Qualcomm كريستيان أمون ورئيس مجلس إدارة أبل تيم كوك سيحضرون عشاء الدولة لترامب وشي في واشنطن الأسبوع المقبل، وفقاً لمصدر من CNBC بتاريخ 2026-09-18."
+      ],
+      "newSentences": [
+        "من المقرر أن يصل الرئيس الصيني شي جين بينغ إلى واشنطن الأربعاء المقبل برفقة زوجته بينغ ليوان لحضور عشاء دولة بدعوة من ترامب، على أن يغادر الجمعة متجاوزاً اجتماعات الجمعية العامة للأمم المتحدة بالكامل، ولم تمنح بكين تأكيدها النهائي للزيارة بعد.",
+        "يدخل ترامب القمة والتضخم عند 3.4٪ وسعر الديزل فوق 6 دولارات للغالون، قبل انتخابات منتصف المدة في نوفمبر.",
+        "الرئيس الأمريكي دونالد ترامب زار الرئيس الصيني شي جين بينغ في بكين في مايو 2026، وهذه الزيارة المرتقبة هي الأولى لشي إلى واشنطن منذ 2015، وفقاً لمصدر من Euronews بتاريخ 2026-09-18.",
+        "الرئيس التنفيذي لـ Qualcomm كريستيان أمون ورئيس مجلس إدارة أبل تيم كوك من المتوقع أن يحضرا عشاء الدولة لترامب وشي في واشنطن الأسبوع المقبل، بحسب Politico التي نقلت عن أربعة أشخاص مطلعين على الترتيبات، وفقاً لمصدر من Euronews بتاريخ 2026-09-18."
+      ]
+    },
+    {
+      "slug": "oil-prices-decline-china-iran-pressure-41b59d",
+      "issue": "1. The key fact says «خسارة الإنتاج اليومية: 8.5 مليون برميل يوميًا» (Daily oil production lost is 8.5 million barrels per day, stated as an unattributed fact.). Source OilPrice.com says: \"Kpler estimates roughly 8.5 million barrels per day of oil production has been lost over the course of the conflict.\". Roughly 8.5 million bpd is Kpler's estimate of production lost over the course of the conflict, not an established fact.\n2. The why it matters says «لكن تراجع حركة الملاحة في مضيق هرمز إلى ثلاث سفن يومياً يُبقي الأسواق عرضة لقفزات سعرية جديدة.» (The website's analysis: Hormuz shipping traffic has fallen to three ships per day, leaving markets exposed to new price spikes.). Source OilPrice.com says: \"Only three commercial vessels transited Hormuz Wednesday, compared with 12 Tuesday and a 10-day average of 17, according to ship-tracking data cited by Reuters.\". Three vessels was a single day's count (Wednesday); Tuesday saw 12 and the 10-day average was 17, so it is not a daily rate.\n3. The body says «وانخفض عدد السفن التجارية العابرة لمضيق هرمز إلى ثلاث سفن الأربعاء، مقارنة بـ12 سفينة الثلاثاء ومتوسط 17 سفينة خلال عشرة أيام، وفقاً لبيانات تتبّع السفن التي أوردها «كبلر».» (Commercial vessels transiting Hormuz fell to three on Wednesday, versus 12 on Tuesday and a 10-day average of 17, according to ship-tracking data cited by Kpler.). Source OilPrice.com says: \"Only three commercial vessels transited Hormuz Wednesday, compared with 12 Tuesday and a 10-day average of 17, according to ship-tracking data cited by Reuters.\". The ship-tracking data was cited by Reuters, not Kpler.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "whyItMatters",
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن حركة الملاحة في مضيق هرمز تراجعت إلى ثلاث سفن يومياً، ونسبت بيانات تتبّع السفن إلى «كبلر»، وقدّمت فقدان 8.5 مليون برميل يومياً من الإنتاج على أنه حقيقة ثابتة. والصحيح أن عبور ثلاث سفن سُجّل الأربعاء وحده وأن رويترز هي التي أوردت بيانات التتبّع، أما رقم 8.5 مليون برميل يومياً فهو تقدير «كبلر» لما فُقد من الإنتاج خلال الصراع.",
+      "model": "claude-cli",
+      "before": {
+        "whyItMatters": "استعادة نصف قدرة خط الأنابيب السعودي خلال أيام تقلّل من خطر اضطراب طويل في الإمدادات. لكن تراجع حركة الملاحة في مضيق هرمز إلى ثلاث سفن يومياً يُبقي الأسواق عرضة لقفزات سعرية جديدة."
+      },
+      "after": {
+        "whyItMatters": "استعادة نصف قدرة خط الأنابيب السعودي خلال أيام تقلّل من خطر اضطراب طويل في الإمدادات. لكن تراجع حركة الملاحة في مضيق هرمز إلى ثلاث سفن الأربعاء، مقابل متوسط 17 سفينة خلال عشرة أيام، يُبقي الأسواق عرضة لقفزات سعرية جديدة."
+      },
+      "changedSentences": [
+        "لكن تراجع حركة الملاحة في مضيق هرمز إلى ثلاث سفن يومياً يُبقي الأسواق عرضة لقفزات سعرية جديدة.",
+        "وانخفض عدد السفن التجارية العابرة لمضيق هرمز إلى ثلاث سفن الأربعاء، مقارنة بـ12 سفينة الثلاثاء ومتوسط 17 سفينة خلال عشرة أيام، وفقاً لبيانات تتبّع السفن التي أوردها «كبلر».",
+        "خسارة الإنتاج اليومية 8.5 مليون برميل يوميًا"
+      ],
+      "newSentences": [
+        "لكن تراجع حركة الملاحة في مضيق هرمز إلى ثلاث سفن الأربعاء، مقابل متوسط 17 سفينة خلال عشرة أيام، يُبقي الأسواق عرضة لقفزات سعرية جديدة.",
+        "وانخفض عدد السفن التجارية العابرة لمضيق هرمز إلى ثلاث سفن الأربعاء، مقارنة بـ12 سفينة الثلاثاء ومتوسط 17 سفينة خلال عشرة أيام، وفقاً لبيانات تتبّع السفن التي أوردتها رويترز.",
+        "الإنتاج المفقود خلال الصراع بتقدير «كبلر» نحو 8.5 مليون برميل يوميًا"
+      ]
+    },
+    {
+      "slug": "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb",
+      "issue": "1. The dek says «لجنة الأوراق المالية الأمريكية تمنح إعفاءً مشروطاً لتداول الأسهم المُرمّزة، وأنثروبيك تتجه للطرح العام بتقييم سوقي ضمني 2.15 تريليون دولار» (The SEC grants a conditional exemption for tokenized stock trading, and Anthropic is heading to an IPO at an implied market valuation of $2.15 trillion.). Source Euronews says: \"Perpetual futures contracts tracking Anthropic's pre-IPO valuation are currently trading on Hyperliquid, the largest decentralised derivatives venue, where the implied market capitalisation reached an all-time high of roughly $2.36 trillion (€2.05tn) and sits near $2.15 trillion (€1.86tn) at the time of writing.\". The $2.15 trillion is the valuation implied by pre-IPO perpetual futures trading on Hyperliquid, not the valuation of the IPO itself, whose reported target is $2 trillion.\n2. The lede says «أصدرت لجنة الأوراق المالية الأمريكية الأربعاء إعفاءً ابتكارياً مؤقتاً ومشروطاً يتيح لمنصات التداول إصدار تمثيلات رمزية للأسهم الأمريكية المتداولة علناً وتداولها، نافذاً فور صدوره.» (On Wednesday the SEC issued a temporary, conditional innovation exemption, effective immediately, that lets trading platforms issue and trade tokenized representations of publicly traded US stocks.). Source CNBC says: \"The Securities and Exchange Commission on Thursday issued an order creating a regulatory pathway for certain trading venues to issue tokenized representations of publicly traded U.S. stocks, effective immediately.\". The SEC issued the order on Thursday, not Wednesday.\n3. The key fact says «خسائر 2025: 42 مليار دولار» (Anthropic's 2025 losses were $42 billion, stated as fact.). Source Euronews says: \"The losses are also enormous, reportedly reaching close to $42 billion (€36.4bn) in 2025, reflecting the cost of training frontier models.\". The losses of close to $42 billion in 2025 are only reported, not confirmed.\n4. The body says «اشترط الإعفاء أن يحتفظ حاملو رموز الأسهم بالحقوق نفسها التي يمتلكها حاملو الأسهم التقليدية، بما في ذلك حقوق التصويت والأرباح، وفقاً لمتحدث باسم اللجنة.» (According to an SEC spokesperson, the exemption requires stock-token holders to keep the same rights as holders of traditional shares, including voting rights and dividends.). Source CNBC says: \"The new Innovation Exemption stipulates that stock tokens need to provide holders with the same rights and privileges as the traditional securities, including rights to receive dividends and exercise voting rights.\". The rights requirement is stated in the source's own reporting of the exemption; the SEC spokesperson is cited only for the 30-day notice and objection procedure.\n5. The body says «وبلغ حجم التداول على هذه العقود 6 ملايين دولار في 24 ساعة، والفائدة المفتوحة 31 مليون دولار.» (Trading volume on these contracts was $6 million over 24 hours, and 'open interest' (rendered as 'الفائدة المفتوحة', literally open interest-rate) was $31 million.). Source Euronews says: \"\"Currently, the market isn't super deep, with just $6M in 24-hour volume and $31M in open interest on Hyperliquid,\" Lee said, adding that liquidity should improve as the listing approaches, given that more investors are likely to pile in.\". The $31 million is open interest, meaning the value of outstanding open contracts (المراكز/العقود المفتوحة), not any kind of interest or yield.\n6. The body says «وتجاوز معدل الإيرادات السنوي 65 مليار دولار بنهاية يوليو، مدفوعاً باعتماد المؤسسات على نموذج «كلود»، وبلغت الخسائر نحو 42 مليار دولار في 2025.» (Anthropic's annual revenue run rate exceeded $65 billion by end of July, driven by enterprise adoption of Claude, and its losses were about $42 billion in 2025, stated as fact.). Source Euronews says: \"The losses are also enormous, reportedly reaching close to $42 billion (€36.4bn) in 2025, reflecting the cost of training frontier models.\". The revenue part is supported, but the 2025 losses of close to $42 billion are only reported, not established fact.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "subtitle",
+        "lede",
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن اللجنة أصدرت الإعفاء الأربعاء، وأن «أنثروبيك» تتجه للطرح العام بتقييم ضمني 2.15 تريليون دولار، وأن خسائرها بلغت 42 مليار دولار في 2025، ونسبت شرط الحقوق إلى متحدث باسم اللجنة، ووصفت قيمة العقود المفتوحة بالفائدة المفتوحة. والصحيح أن الإعفاء صدر الخميس، وأن 2.15 تريليون دولار تقييم ضمني في عقود ما قبل الطرح، وأن الخسائر قاربت 42 مليار دولار بحسب تقارير، وأن المتحدث نُقل عنه إجراء الإخطار والانتظار 30 يوماً فقط، وأن 31 مليون دولار قيمة العقود المفتوحة.",
+      "model": "claude-cli",
+      "before": {
+        "subtitle": "لجنة الأوراق المالية الأمريكية تمنح إعفاءً مشروطاً لتداول الأسهم المُرمّزة، وأنثروبيك تتجه للطرح العام بتقييم سوقي ضمني 2.15 تريليون دولار",
+        "lede": "أصدرت لجنة الأوراق المالية الأمريكية الأربعاء إعفاءً ابتكارياً مؤقتاً ومشروطاً يتيح لمنصات التداول إصدار تمثيلات رمزية للأسهم الأمريكية المتداولة علناً وتداولها، نافذاً فور صدوره. ويشترط الإعفاء الحفاظ على حقوق المستثمرين ونزاهة السوق."
+      },
+      "after": {
+        "subtitle": "لجنة الأوراق المالية الأمريكية تمنح إعفاءً مشروطاً لتداول الأسهم المُرمّزة، وأنثروبيك تتجه للطرح العام وعقود ما قبل الطرح تقيّمها ضمنياً بنحو 2.15 تريليون دولار",
+        "lede": "أصدرت لجنة الأوراق المالية الأمريكية الخميس إعفاءً ابتكارياً مؤقتاً ومشروطاً يتيح لمنصات التداول إصدار تمثيلات رمزية للأسهم الأمريكية المتداولة علناً وتداولها، نافذاً فور صدوره. ويشترط الإعفاء الحفاظ على حقوق المستثمرين ونزاهة السوق."
+      },
+      "changedSentences": [
+        "لجنة الأوراق المالية الأمريكية تمنح إعفاءً مشروطاً لتداول الأسهم المُرمّزة، وأنثروبيك تتجه للطرح العام بتقييم سوقي ضمني 2.15 تريليون دولار",
+        "أصدرت لجنة الأوراق المالية الأمريكية الأربعاء إعفاءً ابتكارياً مؤقتاً ومشروطاً يتيح لمنصات التداول إصدار تمثيلات رمزية للأسهم الأمريكية المتداولة علناً وتداولها، نافذاً فور صدوره.",
+        "اشترط الإعفاء أن يحتفظ حاملو رموز الأسهم بالحقوق نفسها التي يمتلكها حاملو الأسهم التقليدية، بما في ذلك حقوق التصويت والأرباح، وفقاً لمتحدث باسم اللجنة.",
+        "كما ألزم المنصات بإخطار الشركة المُصدرة والانتظار 30 يوماً بعد استلام الإشعار قبل بدء التداول، مع حق الشركة في الاعتراض ومنع تداول أوراقها المالية بوصفها رموزاً.",
+        "وبلغ حجم التداول على هذه العقود 6 ملايين دولار في 24 ساعة، والفائدة المفتوحة 31 مليون دولار.",
+        "وتجاوز معدل الإيرادات السنوي 65 مليار دولار بنهاية يوليو، مدفوعاً باعتماد المؤسسات على نموذج «كلود»، وبلغت الخسائر نحو 42 مليار دولار في 2025.",
+        "خسائر 2025 42 مليار دولار"
+      ],
+      "newSentences": [
+        "لجنة الأوراق المالية الأمريكية تمنح إعفاءً مشروطاً لتداول الأسهم المُرمّزة، وأنثروبيك تتجه للطرح العام وعقود ما قبل الطرح تقيّمها ضمنياً بنحو 2.15 تريليون دولار",
+        "أصدرت لجنة الأوراق المالية الأمريكية الخميس إعفاءً ابتكارياً مؤقتاً ومشروطاً يتيح لمنصات التداول إصدار تمثيلات رمزية للأسهم الأمريكية المتداولة علناً وتداولها، نافذاً فور صدوره.",
+        "اشترط الإعفاء أن يحتفظ حاملو رموز الأسهم بالحقوق نفسها التي يمتلكها حاملو الأسهم التقليدية، بما في ذلك حقوق التصويت والأرباح.",
+        "كما ألزم المنصات، وفقاً لمتحدث باسم اللجنة، بإخطار الشركة المُصدرة والانتظار 30 يوماً بعد استلام الإشعار قبل بدء التداول، مع حق الشركة في الاعتراض ومنع تداول أوراقها المالية بوصفها رموزاً.",
+        "وبلغ حجم التداول على هذه العقود 6 ملايين دولار في 24 ساعة، وقيمة العقود المفتوحة 31 مليون دولار.",
+        "وتجاوز معدل الإيرادات السنوي 65 مليار دولار بنهاية يوليو، مدفوعاً باعتماد المؤسسات على نموذج «كلود»، وتشير تقارير إلى أن الخسائر قاربت 42 مليار دولار في 2025.",
+        "خسائر 2025 بحسب تقارير نحو 42 مليار دولار"
+      ]
+    },
+    {
+      "slug": "fed-rate-hike-oil-109-gulf-economies-a07bff",
+      "issue": "1. The why it matters says «ومع بلوغ عائد السندات الأمريكية لأكثر من عشر سنوات مستوى 5.04%، تزداد كلفة إصدار السندات الدولارية التي تموّل مشاريع البنية التحتية في الخليج.» (The yield on US bonds of 'more than ten years' has reached 5.04%, raising the cost of dollar bond issues that fund Gulf infrastructure.). Source Khazendar says: \"بلغ العائد على سندات الخزانة الأمريكية لأجل 10 سنوات 5.04%، مسجلاً أعلى مستوى منذ 2007، بحسب بي بي سي.\". The 5.04% figure is the yield on the 10-year US Treasury note, not on bonds of more than ten years.\n2. The body says «فقد رفعت بنوك أمريكية كبرى، بينها «جي بي مورغان» و«كي كورب» و«بي إن واي»، معدل الإقراض الرئيسي إلى 7% من 6.75%، فارتفعت تكلفة بطاقات الائتمان والقروض الشخصية في السوق الأمريكية، بحسب «أسواق الشرق».» (Major US banks including JPMorgan, KeyCorp and BNY raised the prime lending rate to 7% from 6.75%, and the cost of credit cards and personal loans in the US has risen (stated as a realized fact), according to Asharq.). Source Khazendar says: \"ورفعت بنوك كبرى، بينها «جي بي مورغان» و«كي كورب» و«بي إن واي»، معدل الإقراض الرئيسي إلى 7% من 6.75%، ما سيرفع تكلفة بطاقات الائتمان والقروض الشخصية.\". The source says the prime-rate increase will raise the cost of credit cards and personal loans, a forecast rather than a rise that has already happened.\n3. The body says «ويخسر كذلك حاملو السندات المقوّمة بالدولار مع ارتفاع العوائد؛ فقد بلغ العائد الفعلي على السندات الحكومية الأمريكية لأكثر من عشر سنوات 5.04%، وهو أعلى مستوى منذ 2007، بحسب بي بي سي.» (Holders of dollar bonds lose as yields rise; the 'actual' yield on US government bonds of 'more than ten years' reached 5.04%, the highest since 2007, according to the BBC.). Source Khazendar says: \"بلغ العائد على سندات الخزانة الأمريكية لأجل 10 سنوات 5.04%، مسجلاً أعلى مستوى منذ 2007، بحسب بي بي سي.\". The 5.04% figure is the nominal yield on the 10-year US Treasury note, not the 'actual' yield on bonds of more than ten years.\n4. The table says «الأداة المالية: عائد سندات الخزينة لأكثر من 10 سنوات · المصدر: بي بي سي · السعر أو العائد: 5.04%» (The yield on Treasury bonds of 'more than 10 years' is 5.04%, per the BBC.). Source Khazendar says: \"بلغ العائد على سندات الخزانة الأمريكية لأجل 10 سنوات 5.04%، مسجلاً أعلى مستوى منذ 2007، بحسب بي بي سي.\". The 5.04% figure is the yield on the 10-year US Treasury note, not on bonds of more than 10 years.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "whyItMatters",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن نسبة 5.04% هي العائد «الفعلي» على السندات الأمريكية لأجل يزيد على عشر سنوات، والصحيح أنها العائد على سندات الخزانة الأمريكية لأجل 10 سنوات. كما ذكرت أن تكلفة بطاقات الائتمان والقروض الشخصية ارتفعت بالفعل، والصحيح أن رفع معدل الإقراض الرئيسي سيرفع هذه التكلفة.",
+      "model": "claude-cli",
+      "before": {
+        "whyItMatters": "يُلزم ربطُ العملات الخليجية بالدولار بنوكَها المركزية برفع الفائدة كلما رفعها الفيدرالي، فتنتقل تكلفة التشديد إلى المقترضين في القطاع الخاص. ومع بلوغ عائد السندات الأمريكية لأكثر من عشر سنوات مستوى 5.04%، تزداد كلفة إصدار السندات الدولارية التي تموّل مشاريع البنية التحتية في الخليج."
+      },
+      "after": {
+        "whyItMatters": "يُلزم ربطُ العملات الخليجية بالدولار بنوكَها المركزية برفع الفائدة كلما رفعها الفيدرالي، فتنتقل تكلفة التشديد إلى المقترضين في القطاع الخاص. ومع بلوغ العائد على سندات الخزانة الأمريكية لأجل 10 سنوات مستوى 5.04%، تزداد كلفة إصدار السندات الدولارية التي تموّل مشاريع البنية التحتية في الخليج."
+      },
+      "changedSentences": [
+        "ومع بلوغ عائد السندات الأمريكية لأكثر من عشر سنوات مستوى 5.04%، تزداد كلفة إصدار السندات الدولارية التي تموّل مشاريع البنية التحتية في الخليج.",
+        "فقد رفعت بنوك أمريكية كبرى، بينها «جي بي مورغان» و«كي كورب» و«بي إن واي»، معدل الإقراض الرئيسي إلى 7% من 6.75%، فارتفعت تكلفة بطاقات الائتمان والقروض الشخصية في السوق الأمريكية، بحسب «أسواق الشرق».",
+        "ويخسر كذلك حاملو السندات المقوّمة بالدولار مع ارتفاع العوائد؛ فقد بلغ العائد الفعلي على السندات الحكومية الأمريكية لأكثر من عشر سنوات 5.04%، وهو أعلى مستوى منذ 2007، بحسب بي بي سي."
+      ],
+      "newSentences": [
+        "ومع بلوغ العائد على سندات الخزانة الأمريكية لأجل 10 سنوات مستوى 5.04%، تزداد كلفة إصدار السندات الدولارية التي تموّل مشاريع البنية التحتية في الخليج.",
+        "فقد رفعت بنوك أمريكية كبرى، بينها «جي بي مورغان» و«كي كورب» و«بي إن واي»، معدل الإقراض الرئيسي إلى 7% من 6.75%، ما سيرفع تكلفة بطاقات الائتمان والقروض الشخصية في السوق الأمريكية، بحسب «أسواق الشرق».",
+        "ويخسر كذلك حاملو السندات المقوّمة بالدولار مع ارتفاع العوائد؛ فقد بلغ العائد على سندات الخزانة الأمريكية لأجل 10 سنوات 5.04%، وهو أعلى مستوى منذ 2007، بحسب بي بي سي."
+      ]
+    },
+    {
+      "slug": "openai-six-concerning-behaviors-disclosure-framework-2d2a2b",
+      "issue": "The body says «وكانت دعوات قادة تقنيين بارزين إلى إبطاء تطوير الذكاء الاصطناعي المتقدم قد تصاعدت؛ فقد حذر داريو أمودي الرئيس التنفيذي لـ«أنثروبيك» من أن التسارع قد يتجاوز الرقابة البشرية، لكن الرئيس الأمريكي دونالد ترامب رفض هذه المخاوف ووصفها بأنها مبالغ فيها.» (Calls from prominent tech leaders to slow frontier AI development have escalated. Anthropic CEO Dario Amodei warned that acceleration could outpace human oversight. US President Donald Trump rejected these concerns as exaggerated.). Source Al Jazeera English says: \"“We must slow the pace at which we improve the capabilities of AI models,” Anthropic CEO Dario Amodei wrote in an essay published on Saturday. “Progress will still seem fast, and we must make wise use of the time we gain.”\". Amodei called for slowing the pace of AI capability improvements; the concern that rapid scaling could outpace human oversight is attributed to the broader calls from technology leaders, not to Amodei.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن داريو أمودي، الرئيس التنفيذي لـ«أنثروبيك»، حذّر من أن تسارع تطوير الذكاء الاصطناعي قد يتجاوز الرقابة البشرية. والصحيح أن أمودي دعا في مقال إلى إبطاء وتيرة تحسين قدرات النماذج، أما الخشية من تجاوز الرقابة البشرية فهي ما استندت إليه دعوات قادة تقنيين آخرين إلى الإبطاء.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وكانت دعوات قادة تقنيين بارزين إلى إبطاء تطوير الذكاء الاصطناعي المتقدم قد تصاعدت؛ فقد حذر داريو أمودي الرئيس التنفيذي لـ«أنثروبيك» من أن التسارع قد يتجاوز الرقابة البشرية، لكن الرئيس الأمريكي دونالد ترامب رفض هذه المخاوف ووصفها بأنها مبالغ فيها."
+      ],
+      "newSentences": [
+        "وكانت دعوات قادة تقنيين بارزين إلى إبطاء تطوير الذكاء الاصطناعي المتقدم قد تصاعدت خشية أن يتجاوز التوسع السريع الرقابة البشرية؛ فقد دعا داريو أمودي الرئيس التنفيذي لـ«أنثروبيك» في مقال إلى إبطاء وتيرة تحسين قدرات نماذج الذكاء الاصطناعي، لكن الرئيس الأمريكي دونالد ترامب رفض هذه المخاوف ووصفها بأنها مبالغ فيها."
+      ]
+    }
+  ]
+}
