@@ -21,9 +21,23 @@ Every 3 hours (and once a day each for an explainer and an analysis, and on Sund
 2. picks the stories that matter to Arab readers and groups sources covering the same story,
 3. writes an original Arabic article with the key figures, a "why it matters" paragraph and, when the sources contain comparable numbers, an Arabic chart or table,
 4. passes the draft through an Arabic copy desk that rewrites anything reading like a translation ("إدارة أمريكية تعلن عن مستردات" becomes "واشنطن تعيد 500 دولار للمشتركين"), under a guard that keeps every figure and name exactly as sourced,
-5. checks every number against the sources by code and sends the draft to an independent critic model; anything that fails is rejected and logged,
+5. checks every number against the sources by code and sends the draft to a critic (Claude again, in a separate session that never saw the writing); anything that fails is rejected and logged,
 6. finds a licensed photo on Wikimedia Commons (credited); a story with no suitable photo runs as text,
 7. commits the article and republishes the site.
+
+**What checks itself afterwards** (since 25 September 2026):
+
+- **The second look.** About a day after a story goes out, it is read again, sentence by sentence, against its
+  own sources. A mistake counts only when a sentence copied word for word from a source proves it; then the story
+  is corrected, with a dated note at its foot, as the methodology page promises. Twice a day, one Claude call per
+  story, never twice for the same story. The stories published before it existed are worked through a few a run.
+- **The morning round, free.** Every day, without Claude: are the photos still in place at Wikimedia and Flickr (a
+  renamed photo is re-addressed at once, a deleted one is replaced), is news still flowing, are the market quotes
+  fresh, does the live site carry the newest story? Claude is woken only if something is broken, and at most once
+  in three days for the same fault. What only you can mend (the Claude token, the host) arrives as an issue on the
+  repository, which GitHub emails to you, with what to do.
+- **The week's numbers.** Style faults per story, corrections, and what the second look found, this week against
+  last, on the control room's Desk under "Daily checks".
 
 You never have to touch it. If a story is wrong, either open the control room on this laptop
 (double-click `OPEN_CONTROL_ROOM.cmd`) and press **Unpublish**, or, from any device, open an issue on
@@ -174,7 +188,7 @@ only made web requests. Claude now does the scheduled work instead. To bring Her
 ## 3. Your weekly five minutes
 
 - Open the live site once; read one article; make sure it looks right.
-- Open the control room and glance at "Last run", or, once the Claude editor is switched on (section 5), read its morning note under the repository's Actions tab. Rejections that keep repeating mean a source or a rule needs adjusting; tell Claude what you see.
+- Open the control room and glance at "Last run" and the "Daily checks" line under it, or, once the Claude editor is switched on (section 5), read its morning note under the repository's Actions tab. Rejections that keep repeating mean a source or a rule needs adjusting; tell Claude what you see.
 - That is it.
 
 ## 4. Making money (ads)
@@ -265,6 +279,7 @@ a name when the chat mentions one:
 
 - Cloud run failed: open the Actions page, click the red run, read the last lines. A run that ends with "Claude failed" usually means the subscription token expired or a usage limit was hit; the next run recovers once Claude answers again (a new token goes in the desk under Settings → *Keys*).
 - Site not updating: check the latest "Deploy" run on the Actions page.
+- An email about a new issue titled «خازندار: …»: the morning round opened it because something only you can mend has broken; the issue says what to do. Close it once it is done.
 - Everything else: open Claude Code in this folder and paste what you see.
 
 ## 8. Costs

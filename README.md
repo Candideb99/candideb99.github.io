@@ -1,6 +1,6 @@
 # خازندار — Khazendar
 
-An Arabic economics publication that writes itself. A scheduled newsroom reads official releases and reputable outlets, picks the stories that matter to Arab readers, writes original Arabic reporting with the key figures isolated and every source cited, verifies it with an independent critic model, and publishes to a static site. No CMS, no accounts, no human in the loop.
+An Arabic economics publication that writes itself. A scheduled newsroom reads official releases and reputable outlets, picks the stories that matter to Arab readers, writes original Arabic reporting with the key figures isolated and every source cited, verifies it with a critic pass that never saw the writing, publishes to a static site, and reads every story again against its sources a day later. No CMS, no accounts, no human in the loop.
 
 Live: https://candideb99.github.io
 
@@ -10,10 +10,15 @@ New to this? Read **[START_HERE.md](START_HERE.md)** first: the three places to 
 
 `.github/workflows/editor.yml` runs Claude Code once a day on the owner's subscription
 (`claude setup-token` → secret `CLAUDE_CODE_OAUTH_TOKEN`, plus the Claude GitHub App), gated on the
-repository variable `KHAZENDAR_EDITOR=1`. It repairs failed newsroom runs, backfills missing
-pictures, keeps `npm run check` and `npm run build` green, and tightens de-duplication rules. It
-commits fixes confined to `pipeline/`, `content/articles/` and `.github/` itself, and opens a pull
-request for anything touching `src/` or the product documents. `.github/workflows/agent.yml` answers
+repository variable `KHAZENDAR_EDITOR=1`. Free checks run first (`scripts/editor-precheck.mjs`: failed runs,
+the build, repeated events, photos lost at their library through the Commons API, a day without news, stale
+quotes, a live site behind the repository) and Claude is woken only for what they find, at most once in three
+days for the same fault. It repairs failed newsroom runs, keeps `npm run check` and `npm run build` green, and
+tightens de-duplication rules. It commits its fixes but cannot push them: the next workflow step runs
+`scripts/gate.mjs` and publishes them only if it passes, straight to main for `pipeline/` and `scripts/`, as a
+pull request for anything else. What only the owner can mend (the Claude token, the host) is opened as an issue.
+The same round writes the week's numbers (`scripts/harvest.mjs`, free): style faults per story, corrections and
+the second look's findings, this week against last, in `pipeline/state/quality.json` for the control room. `.github/workflows/agent.yml` answers
 an issue that mentions `@claude`, restricted to the repository owner.
 
 Every model call of the newsroom, the copy desk and the picture desk also runs on the subscription,
@@ -90,6 +95,7 @@ Set `adsenseClient` (and optionally `googleSiteVerification`) in `src/data/site.
 | --- | --- | --- |
 | `pipeline/` | GitHub Actions, a cron every 3 hours (`.github/workflows/newsroom.yml`; about five runs a day in practice, see the cadence note below) | Fetch feeds → editor selects and clusters stories → writer drafts Arabic → programmatic checks + critic review → licensed photo pick → Markdown article committed to `content/articles/` |
 | `--mode=explainer`, `--mode=analysis` | same workflow, once a day each (05:41 and 14:07 UTC) | An explainer teaches one concept behind the week's coverage. An analysis (`kind: analysis`, section `analysis`) picks a theme where at least two recent stories connect, argues what it means and for whom, lays out scenarios and what to watch, and may cite figures only from the related stories, which it links as its sources. |
+| `--mode=recheck` | same workflow, twice a day (03:53 and 15:53 UTC) | The second look (`pipeline/recheck.mjs`, `pipeline/lib/factcheck.mjs`): each news story, analysis, week's review and في العمق piece is read again against its sources about a day after it went out, sentence by sentence, in a session that never saw the writing, and the backlog a few a run. A mistake counts only when code finds the quoted source sentence that proves it; then `pipeline/correct.mjs` corrects the story with a dated note (or finds that it stands). The site's own reasoning, a figure whose source page has since changed, and an unproved flag are listed in `pipeline/state/factcheck.json`, never corrected. One Claude call per story, never twice for the same story. |
 | `--mode=paper` | same workflow, Tuesdays and Fridays (09:31 UTC) | A reading of a research paper (`kind: paper`, filed in the explainers hub as قراءة في ورقة بحثية): the research editor picks one recent open-access economics paper from the `papers` feeds in `pipeline/sources.json` (Federal Reserve, Bank of England, ECB, World Bank, NBER, arXiv), and the writer explains it in plain Arabic under five fixed subheads (the question, the data and method, the findings, the limits, what it means for Arab readers). Every figure is checked against the paper's own text, which is the single source filed; the mode passes over a paper whose free text is too thin. |
 | `src/` | Astro static site (`.github/workflows/deploy.yml`) | Builds the site, Pagefind search, RSS, sitemap, OG images; deploys to GitHub Pages on every push to `main` |
 | `pipeline/sources.json` | repo | The only list of feeds the newsroom reads. Add or disable sources here. The `defense` section (الدفاع) is fed by the defence press (Breaking Defense, Defense One, the Army/Naval/Airforce Technology titles, War on the Rocks) and two official sources, the US Department of Defense contract announcements and the UK Ministry of Defence; the editor files defence budgets, procurement and contract awards, the arms trade and the defence industry there, judged by what they mean for Arab economies. |
@@ -125,4 +131,4 @@ Node 22 or newer, and Claude Code installed (`npm i -g @anthropic-ai/claude-code
 
 ## Editorial policy in one paragraph
 
-No story without a source; original Arabic, attributed, with numbers exactly as sourced; every number checked against the sources by code, every claim checked by a second model; paywalls and robots.txt respected; photos only under open licences with credit; corrections by deleting or replacing the file. See `/methodology` on the site.
+No story without a source; original Arabic, attributed, with numbers exactly as sourced; every number checked against the sources by code, every claim checked by a critic pass, and every story read again against its sources a day after publication; paywalls and robots.txt respected; photos only under open licences with credit; corrections by deleting or replacing the file. See `/methodology` on the site.
