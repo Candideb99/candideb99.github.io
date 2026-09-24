@@ -1,4 +1,5 @@
 import { getCollection, type CollectionEntry } from "astro:content";
+import { PLACE_TAGS } from "./regions";
 
 export type Article = CollectionEntry<"articles">;
 
@@ -65,13 +66,14 @@ let tagCounts: Map<string, number> | null = null;
  * reader can follow, never a place. Undefined when the story has only regions for tags.
  */
 export function topicOf(article: Article): string | undefined {
-  if (!cache) return article.data.tags.find((t) => !GENERIC_TAGS.has(t));
+  if (!cache) return article.data.tags.find((t) => !GENERIC_TAGS.has(t) && !PLACE_TAGS.has(t));
   if (!regionNames || !tagCounts) {
     regionNames = new Set(cache.flatMap((a) => a.data.regions));
     tagCounts = new Map();
     for (const a of cache) for (const t of a.data.tags) tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1);
   }
-  const candidates = article.data.tags.filter((t) => !regionNames!.has(t) && !GENERIC_TAGS.has(t) && t.length <= 28);
+  // Never a place: a country tag («السعودية»، «الولايات المتحدة») read as a section of its own (the owner, 2026-09-24).
+  const candidates = article.data.tags.filter((t) => !regionNames!.has(t) && !GENERIC_TAGS.has(t) && !PLACE_TAGS.has(t) && t.length <= 28);
   return [...candidates].sort((x, y) => (tagCounts!.get(y) ?? 0) - (tagCounts!.get(x) ?? 0))[0];
 }
 
@@ -184,7 +186,8 @@ export function dossiers(articles: Article[], { min = 3, max = 4, now = Date.now
   const generic = new Set(["عالمي", "العالم", "الشرق الأوسط", "الخليج", "الخليج العربي", "أوروبا", "آسيا", "أفريقيا", "الاقتصاد", "الأسواق", "الطاقة", "الشركات", "التكنولوجيا", "الدفاع", "الاقتصاد العالمي"]);
   const out: Dossier[] = [];
   for (const [tag, items] of allTags(articles)) {
-    if (items.length < min || regions.has(tag) || generic.has(tag)) continue;
+    // A file follows a story, never a country (a «الولايات المتحدة» file read as a US section, 2026-09-24).
+    if (items.length < min || regions.has(tag) || generic.has(tag) || PLACE_TAGS.has(tag)) continue;
     const sorted = [...items].sort((a, b) => Date.parse(b.data.publishedAt) - Date.parse(a.data.publishedAt));
     out.push({ tag, items: sorted, latest: sorted[0] });
   }

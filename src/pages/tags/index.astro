@@ -5,17 +5,15 @@
  * size and freshness, exactly as the front page ranks them.
  */
 import Base from "@layouts/Base.astro";
-import { getArticles, allTags, dossiers, articleHref } from "@lib/articles";
+import { getArticles, dossiers, articleHref } from "@lib/articles";
+import { DESKS, desksOf } from "@lib/regions";
 import { formatShortDate, timeAgo } from "@lib/format";
 import { isolateNumbers } from "@lib/bidi";
 
 const articles = await getArticles();
 const topics = dossiers(articles, { min: 2, max: 200 });
-const regionNames = new Set(articles.flatMap((a) => a.data.regions));
-const regions = [...allTags(articles)]
-  .filter(([tag]) => regionNames.has(tag))
-  .map(([tag, items]) => ({ tag, count: items.length, latest: items[0] }))
-  .sort((x, y) => y.count - x.count);
+// The four desks readers see (src/lib/regions.ts), in their order: three Arab desks, then the world.
+const regions = DESKS.map((d) => ({ tag: d.name, count: articles.filter((a) => desksOf(a).some((x) => x.id === d.id)).length })).filter((r) => r.count > 0);
 const countWord = (n: number) => (n === 1 ? "مادة واحدة" : n === 2 ? "مادتان" : n <= 10 ? `${n} مواد` : `${n} مادة`);
 ---
 

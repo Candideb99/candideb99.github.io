@@ -1,7 +1,11 @@
 /**
- * The paper's regional desks: every region tag a writer produces is mapped to one of eight desks
- * (`src/data/regions.json`, shared with the pipeline), so the front's "by region" block and the
- * tag pages never split one region across spellings (أمريكا / أميركا الشمالية / الولايات المتحدة).
+ * The paper's regional desks as readers see them: three Arab desks and one for the world. The writers file
+ * every story under the finer regions of `src/data/regions.json` (shared with the pipeline, whose photo desk
+ * reads them for geography), and this file folds them for the site, so the front's "by region" block and the
+ * desk pages never split one region across spellings (أمريكا / أميركا الشمالية / الولايات المتحدة).
+ *
+ * Four, not eight (the owner, 2026-09-24: an Americas desk is odd on an Arab economics site): الخليج،
+ * مصر والمغرب العربي، الشرق الأوسط، and العالم for Europe, the Americas, Asia, Africa and the world market.
  */
 import desks from "@data/regions.json";
 import type { Article } from "./articles";
@@ -12,12 +16,22 @@ export interface Desk {
   match: string[];
 }
 
-export const DESKS: Desk[] = desks as Desk[];
+const RAW: Desk[] = desks as Desk[];
+const ARAB = new Set(["gulf", "egypt-maghreb", "mena"]);
+const abroad = RAW.filter((d) => !ARAB.has(d.id));
 
+export const DESKS: Desk[] = [
+  ...RAW.filter((d) => ARAB.has(d.id)),
+  { id: "world", name: "العالم", match: [...new Set(abroad.flatMap((d) => [d.name, ...d.match]))] },
+];
+
+/** Every place a region tag can name, desks and countries alike: a label above a headline never shows one. */
+export const PLACE_TAGS: Set<string> = new Set(RAW.flatMap((d) => [d.name, ...d.match]).concat(["العالم"]));
+
+// The Arab desks come first and keep a name the world desk also lists.
 const byTag = new Map<string, Desk>();
 for (const d of DESKS) {
-  byTag.set(d.name, d);
-  for (const m of d.match) byTag.set(m, d);
+  for (const m of [d.name, ...d.match]) if (!byTag.has(m)) byTag.set(m, d);
 }
 
 /** The desk a region tag belongs to, if any. */
