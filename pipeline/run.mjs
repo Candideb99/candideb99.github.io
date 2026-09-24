@@ -567,7 +567,8 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
       return { report, published: 0 };
     }
   }
-  const image = await pickImage({ draft, story, log, exclude: usedImages(existing) });
+  // The piece's kind tells the picture desk it explains or analyses: its subject at work, never a facade.
+  const image = await pickImage({ draft: { ...draft, kind }, story, log, exclude: usedImages(existing) });
   const slug = buildSlug(draft, { headlineHint });
   const markdown = serializeArticle({
     pending: DRAFT,

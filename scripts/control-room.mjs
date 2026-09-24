@@ -348,7 +348,7 @@ async function health() {
       editorOn: /KHAZENDAR_EDITOR\s+1/.test(vars),
       review: /KHAZENDAR_REVIEW\s+1/.test(vars),
       paused: /KHAZENDAR_PAUSED\s+1/.test(vars),
-      newsroomModel: (vars.match(/KHAZENDAR_CLAUDE_MODEL\s+(\S+)/) ?? [])[1] ?? "opus",
+      newsroomModel: (vars.match(/KHAZENDAR_CLAUDE_MODEL\s+(\S+)/) ?? [])[1] ?? "claude-opus-5-5",
     },
     local: { anthropic: Boolean(local.ANTHROPIC_API_KEY), oauth: Boolean(local.CLAUDE_CODE_OAUTH_TOKEN) },
     chatModel: local.KHAZENDAR_CHAT_MODEL || "default",
@@ -756,7 +756,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
       <h2>Who writes</h2>
       <p class="m">Every job (choosing the stories, writing, the copy desk, the fact check and the photo check) runs on Claude, on your subscription. The free models were dropped on 24 September 2026 at your request, so there is no backup: if your subscription lapses or a limit is hit, the newsroom waits until Claude answers again.</p>
       <label><span>Claude model for the newsroom</span>
-        <select id="newsroomModel"><option value="sonnet">Sonnet — fast, uses little of your plan</option><option value="opus">Opus — strongest, uses much more of your plan</option><option value="haiku">Haiku — cheapest, weakest</option></select></label>
+        <select id="newsroomModel"><option value="claude-opus-5-5">Opus 5.5 — strongest, uses much more of your plan</option><option value="sonnet">Sonnet — fast, uses little of your plan</option><option value="haiku">Haiku — cheapest, weakest</option></select></label>
       <label><span>Claude model for the "Change the site" chat</span>
         <select id="chatModel"><option value="">Claude Code's default</option><option value="sonnet">Sonnet</option><option value="opus">Opus</option><option value="haiku">Haiku</option></select></label>
       <button class="go" onclick="saveWriters()">Apply</button> <span class="m" id="writersaved"></span>
@@ -1103,7 +1103,8 @@ const server = http.createServer(async (req, res) => {
     if (url.pathname === "/writers" && req.method === "POST") {
       // Claude is the only provider since 2026-09-24 (the owner: «abandon free models and use claude only»); only the model is chosen.
       const { newsroomModel, chatModel } = await body(req);
-      const nm = ["sonnet", "opus", "haiku"].includes(newsroomModel) ? newsroomModel : "opus";
+      // Opus 5.5 by name (the owner, 2026-09-24): the alias "opus" follows the installed Claude Code, and 2.1.81 gave Opus 4.6.
+      const nm = ["claude-opus-5-5", "sonnet", "opus", "haiku"].includes(newsroomModel) ? newsroomModel : "claude-opus-5-5";
       const cm = ["", "sonnet", "opus", "haiku"].includes(chatModel) ? chatModel : "";
       await setEnvKey("KHAZENDAR_CLAUDE_MODEL", nm);
       await setEnvKey("KHAZENDAR_CHAT_MODEL", cm);

@@ -29,15 +29,7 @@ regions:
 readingMinutes: 3
 chart: null
 table: null
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/United_States_Department_of_the_Treasury_%2855265815782%29.jpg/1280px-United_States_Department_of_the_Treasury_%2855265815782%29.jpg
-  width: 1280
-  height: 720
-  alt: مقر وزارة الخزانة الأميركية في واشنطن
-  credit: ajay_suresh · CC BY 4.0 · ويكيميديا كومنز
-  license: CC BY 4.0
-  licenseUrl: https://creativecommons.org/licenses/by/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AUnited_States_Department_of_the_Treasury_(55265815782).jpg
+image: null
 sources:
   - name: خازندار
     nameEn: Khazendar

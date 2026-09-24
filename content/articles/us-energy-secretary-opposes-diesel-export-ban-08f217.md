@@ -35,7 +35,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Anacortes_Refinery_31911.JPG/1280px-Anacortes_Refinery_31911.JPG
   width: 1280
   height: 950
-  alt: مصفاة نفط في أناكورتس بولاية واشنطن الأميركية
+  alt: مصفاة نفط في أناكورتس بولاية واشنطن الأمريكية
   credit: Walter Siegmund (talk) · CC BY 2.5 · ويكيميديا كومنز
   license: CC BY 2.5
   licenseUrl: https://creativecommons.org/licenses/by/2.5

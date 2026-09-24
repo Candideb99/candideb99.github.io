@@ -49,7 +49,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Container_cranes_at_the_Port_of_Oakland-.jpg/1280px-Container_cranes_at_the_Port_of_Oakland-.jpg
   width: 1280
   height: 960
-  alt: رافعات حاويات في ميناء أوكلاند بولاية كاليفورنيا الأميركية
+  alt: رافعات حاويات في ميناء أوكلاند بولاية كاليفورنيا الأمريكية
   credit: Yair-haklai · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0

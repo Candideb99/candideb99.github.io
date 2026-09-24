@@ -15,6 +15,8 @@ import { USER_AGENT, fetchWithTimeout, sleep } from "./util.mjs";
  */
 
 export const usage = { calls: 0, failures: 0, promptTokens: 0, completionTokens: 0, byModel: {} };
+/** The model every role runs on unless KHAZENDAR_CLAUDE_MODEL names another: Claude Opus 5.5 (the owner, 2026-09-24). */
+export const CLAUDE_MODEL = "claude-opus-5-5";
 
 let inFlight = 0;
 const MAX_CONCURRENCY = Number(process.env.KHAZENDAR_LLM_CONCURRENCY ?? 2);
@@ -108,12 +110,17 @@ export function parseJsonLoose(text) {
  * with settings switched off, so that neither the owner's other projects' CLAUDE.md files nor this
  * repository's agent notes and memories are pasted into the writer's context.
  */
-const CLI_JS = [
-  path.join(process.env.APPDATA ?? "", "npm", "node_modules", "@anthropic-ai", "claude-code", "cli.js"),
-  path.join(process.env.HOME ?? "", ".npm-global", "lib", "node_modules", "@anthropic-ai", "claude-code", "cli.js"),
-  "/usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js",
-  "/usr/lib/node_modules/@anthropic-ai/claude-code/cli.js",
-].find((p) => p && existsSync(p));
+const CLI_ROOTS = [
+  path.join(process.env.APPDATA ?? "", "npm", "node_modules", "@anthropic-ai", "claude-code"),
+  path.join(process.env.HOME ?? "", ".npm-global", "lib", "node_modules", "@anthropic-ai", "claude-code"),
+  "/usr/local/lib/node_modules/@anthropic-ai/claude-code",
+  "/usr/lib/node_modules/@anthropic-ai/claude-code",
+];
+// Since 2.1.2xx the package ships a native binary, bin/claude.exe on every platform, and no cli.js (found
+// 2026-09-24 when 2.1.81 was updated for Opus 5.5, which needs 2.1.280 or newer). An executable starts with no
+// shell, so its arguments arrive whole, as cli.js under node did; the node route stays for older installs.
+const CLI_BIN = CLI_ROOTS.map((root) => path.join(root, "bin", "claude.exe")).find((p) => existsSync(p));
+const CLI_JS = CLI_BIN ? undefined : CLI_ROOTS.map((root) => path.join(root, "cli.js")).find((p) => existsSync(p));
 
 /** A nested Claude Code session poisons its children ("Not logged in"); only the owner's token and API key pass through. */
 function claudeCliEnv() {
@@ -147,14 +154,16 @@ async function imageBlock(url) {
  */
 async function callClaudeCli({ system, user, images = [], timeoutMs }) {
   const { spawn } = await import("node:child_process");
-  const cliModel = process.env.KHAZENDAR_CLAUDE_MODEL ?? "opus";
+  // Opus 5.5 by name (the owner, 2026-09-24: "use claude opus 5.5"): the alias "opus" answered as Opus 4.6
+  // under Claude Code 2.1.81, and an alias follows whatever the installed version maps it to.
+  const cliModel = process.env.KHAZENDAR_CLAUDE_MODEL || CLAUDE_MODEL;
   const seeing = images.length > 0;
   const args = ["-p", "--output-format", seeing ? "stream-json" : "json", ...(seeing ? ["--input-format", "stream-json", "--verbose"] : []), "--tools", "", "--no-session-persistence", "--setting-sources", "", "--model", cliModel];
   if (system) args.push("--system-prompt", system);
   const input = seeing ? `${JSON.stringify({ type: "user", message: { role: "user", content: [{ type: "text", text: user }, ...(await Promise.all(images.map(imageBlock)))] } })}\n` : user;
   const started = Date.now();
   const result = await new Promise((resolve, reject) => {
-    const child = spawn(CLI_JS ? process.execPath : "claude", CLI_JS ? [CLI_JS, ...args] : args, { shell: false, windowsHide: true, env: claudeCliEnv(), cwd: os.tmpdir() });
+    const child = spawn(CLI_BIN ?? (CLI_JS ? process.execPath : "claude"), CLI_BIN ? args : CLI_JS ? [CLI_JS, ...args] : args, { shell: false, windowsHide: true, env: claudeCliEnv(), cwd: os.tmpdir() });
     let out = "";
     let err = "";
     const timer = setTimeout(() => {
@@ -193,7 +202,9 @@ async function callClaudeCli({ system, user, images = [], timeoutMs }) {
   usage.calls += 1;
   usage.promptTokens += used.input_tokens ?? 0;
   usage.completionTokens += used.output_tokens ?? 0;
-  usage.byModel[`claude-cli/${cliModel}`] = (usage.byModel[`claude-cli/${cliModel}`] ?? 0) + 1;
+  // The model that answered, as the CLI reports it, not the name asked for: an alias hid Opus 4.6 for days.
+  const answered = Object.keys(payload.modelUsage ?? {})[0] ?? cliModel;
+  usage.byModel[`claude-cli/${answered}`] = (usage.byModel[`claude-cli/${answered}`] ?? 0) + 1;
   return { content: String(payload.result ?? ""), ms: Date.now() - started, usage: { completion_tokens: used.output_tokens } };
 }
 

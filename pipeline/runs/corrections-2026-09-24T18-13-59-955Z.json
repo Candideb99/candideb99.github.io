@@ -1,0 +1,26 @@
+{
+  "startedAt": "2026-09-24T18:13:59.955Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "hormuz-crisis-escalation-to-stalled-talks-2dfd6a",
+      "issue": "خطأ في المطابقة: «واثنتان فقط من السفن السبع عبرت نحو الخارج». المثنى قبل فعله يُثنّى الفعل معه: «عبرتا».",
+      "language": true,
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "واثنتان فقط من السفن السبع عبرت نحو الخارج."
+      ],
+      "newSentences": [
+        "واثنتان فقط من السفن السبع عبرتا نحو الخارج."
+      ]
+    }
+  ]
+}

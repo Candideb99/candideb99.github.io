@@ -66,7 +66,7 @@ for (const file of files) {
   }
   tried += 1;
   log(`${file}: searching`);
-  const draft = { title: data.title, subtitle: data.subtitle, lede: data.lede, imageQueries: [], tags: data.tags ?? [], regions: data.regions ?? [] };
+  const draft = { title: data.title, subtitle: data.subtitle, lede: data.lede, imageQueries: [], tags: data.tags ?? [], regions: data.regions ?? [], kind: data.kind };
   const story = { angle: String(data.whyItMatters ?? "").slice(0, 300) };
   let image = null;
   try {

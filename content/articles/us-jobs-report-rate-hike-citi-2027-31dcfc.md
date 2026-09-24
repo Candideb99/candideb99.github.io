@@ -37,7 +37,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Eccles_Building_%2826088200676%29.jpg/1280px-Eccles_Building_%2826088200676%29.jpg
   width: 1280
   height: 871
-  alt: مبنى الاحتياطي الفيدرالي الأميركي في واشنطن
+  alt: مبنى الاحتياطي الفيدرالي الأمريكي في واشنطن
   credit: Federalreserve · Public domain · ويكيميديا كومنز
   license: Public domain
   pageUrl: https://commons.wikimedia.org/wiki/File%3AEccles_Building_(26088200676).jpg

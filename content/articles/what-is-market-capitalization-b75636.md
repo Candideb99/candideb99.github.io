@@ -32,14 +32,14 @@ readingMinutes: 4
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/NEW_YORK_STOCK_EXCHANGE_20240521.jpg/1280px-NEW_YORK_STOCK_EXCHANGE_20240521.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/7/78/Market_centre_in_Tokyo_stock_exchange.jpg
   width: 1280
-  height: 853
-  alt: مقر بورصة نيويورك في وول ستريت
-  credit: 颐园居 · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ANEW_YORK_STOCK_EXCHANGE_20240521.jpg
+  height: 960
+  alt: قاعة التداول في بورصة طوكيو وشريط الأسعار الإلكتروني
+  credit: ehnmark · CC BY 2.0 · ويكيميديا كومنز
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AMarket_centre_in_Tokyo_stock_exchange.jpg
 sources:
   - name: خازندار
     nameEn: Khazendar
@@ -69,7 +69,7 @@ models:
   editor: claude-cli
   writer: claude-cli → claude-cli
   critic: claude-cli
-  vision: nex-agi/nex-n2.5-pro:free
+  vision: claude-cli
   desk: claude-cli
 quality:
   score: 9

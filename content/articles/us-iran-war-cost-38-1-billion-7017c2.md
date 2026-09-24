@@ -26,7 +26,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/PentagonAerial2005.jpg/1280px-PentagonAerial2005.jpg
   width: 1280
   height: 760
-  alt: مقر وزارة الدفاع الأميركية (البنتاغون) قرب واشنطن
+  alt: مقر وزارة الدفاع الأمريكية (البنتاغون) قرب واشنطن
   credit: Chief Photographer's Mate Johnny Bivera · Public domain · ويكيميديا كومنز
   license: Public domain
   pageUrl: https://commons.wikimedia.org/wiki/File%3APentagonAerial2005.jpg

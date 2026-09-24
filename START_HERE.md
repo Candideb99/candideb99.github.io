@@ -106,8 +106,8 @@ headline. Nothing is ever archived away: a story keeps its page, its section's o
 topic page for good.
 
 **Models.** Every job runs on Claude, on your subscription (you dropped the free models on
-24 September 2026). Settings → *Who writes* chooses which Claude model the newsroom uses (Opus by
-default).
+24 September 2026). Settings → *Who writes* chooses which Claude model the newsroom uses (Claude Opus 5.5 by
+default, since 24 September 2026; it needs Claude Code 2.1.280 or newer on this computer).
 
 **Waiting for your approval.** One card per draft: the photo, the headline and standfirst, the
 section, the critic's score, and the sources. **Read it** opens the whole article as it will look —

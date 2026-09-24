@@ -28,7 +28,15 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Pacific_Sapphire%2C_Crude_Oil_Tanker%2C_IMO_9893058%2C_Port_of_Rotterdam_pic3.jpg/1280px-Pacific_Sapphire%2C_Crude_Oil_Tanker%2C_IMO_9893058%2C_Port_of_Rotterdam_pic3.jpg
+  width: 1280
+  height: 720
+  alt: ناقلة نفط خام (صورة تعبيرية)
+  credit: Alfvanbeem · CC0 · ويكيميديا كومنز
+  license: CC0
+  licenseUrl: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+  pageUrl: https://commons.wikimedia.org/wiki/File%3APacific_Sapphire%2C_Crude_Oil_Tanker%2C_IMO_9893058%2C_Port_of_Rotterdam_pic3.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -58,7 +66,7 @@ models:
   editor: inclusionai/ling-3.0-flash-fin:free
   writer: nvidia/nemotron-3-super-120b-a12b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
+  vision: claude-cli
   desk: nvidia/nemotron-3-super-120b-a12b:free
 quality:
   score: 8

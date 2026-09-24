@@ -28,7 +28,15 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Microsoft_Redmond_Campus_redevelopment_aerial_view%2C_Sept._2021.jpg/1280px-Microsoft_Redmond_Campus_redevelopment_aerial_view%2C_Sept._2021.jpg
+  width: 1280
+  height: 853
+  alt: مقر مايكروسوفت في ريدموند بولاية واشنطن الأمريكية
+  credit: Atomic Taco · CC BY-SA 2.0 · ويكيميديا كومنز
+  license: CC BY-SA 2.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/2.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AMicrosoft_Redmond_Campus_redevelopment_aerial_view%2C_Sept._2021.jpg
 sources:
   - name: عرب نيوز
     nameEn: Arab News
@@ -46,7 +54,7 @@ models:
   editor: claude-cli
   writer: claude-cli → claude-cli
   critic: claude-cli
-  vision: null
+  vision: claude-cli
   desk: claude-cli
 quality:
   score: 9

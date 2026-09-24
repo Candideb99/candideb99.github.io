@@ -159,6 +159,21 @@ function agreementSlips(text) {
 }
 
 /**
+ * A dual subject before its verb takes a dual verb: «اثنتان من السفن عبرتا»، «الشركتان أعلنتا». The first
+ * في العمق piece printed «واثنتان فقط من السفن السبع عبرت» (the owner caught it, 2026-09-24); a scan of
+ * every published story found no other. Read: the numeral (with «فقط» and a «من…» phrase of up to three
+ * words), or a dual noun in «ـتان» directly before the verb, then a feminine singular past verb (ending in
+ * «ت», not «ات» or «تا»).
+ */
+const DUAL_BEFORE_VERB = [
+  /(?<![\p{L}\p{M}])[وف]?(?:اثنتان|اثنان)(?: فقط)?(?: من(?: [\p{L}\p{M}]+){1,3}?)? ([\p{L}\p{M}]+(?<!ا)ت)(?![\p{L}\p{M}])/gu,
+  /(?<![\p{L}\p{M}])[وف]?(?:ال)?\p{L}{2,}تان ([\p{L}\p{M}]+(?<!ا)ت)(?![\p{L}\p{M}])/gu,
+];
+function dualSlips(text) {
+  return DUAL_BEFORE_VERB.flatMap((re) => [...String(text ?? "").matchAll(re)].map((m) => m[0].trim()));
+}
+
+/**
  * Checks a draft against the rulebook. Returns { issues[], warnings[] } in the newsroom's Arabic
  * issue style: each issue quotes the offending text and says what to do.
  * `sources`: the names the story's sources go by (Arabic and English), to count how often each is named.
@@ -295,6 +310,9 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
   // Numbers that do not agree with their noun («3 مليار»، «108.1 دولارات»).
   const slips = agreementSlips(`${title}\n${dek}\n${lede}\n${body}\n${box}`);
   if (slips.length) warnings.push(`العدد لا يطابق معدوده («${slips.slice(0, 3).join("»، «")}»)؛ من 3 إلى 10 جمع («5 مليارات»)، ومن 11 إلى 99 والكسور مفرد («50 مليار»، «108.1 دولار»).`);
+  // A dual subject before its verb takes a dual verb («اثنتان منها عبرتا»).
+  const duals = dualSlips(`${title}\n${dek}\n${lede}\n${body}\n${box}`);
+  if (duals.length) warnings.push(`المثنى قبل فعله يُثنّى الفعل معه («${duals.slice(0, 3).join("»، «")}»)؛ قل «اثنتان منها عبرتا»، «الشركتان أعلنتا».`);
 
   // Each field adds something: the dek, the first paragraph and the box never retell the lede.
   const ledeFigures = new Set(figuresOf(lede));

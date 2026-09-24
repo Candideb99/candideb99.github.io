@@ -31,7 +31,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/9/99/Federal_Reserve_Board_%28Board_of_Governors_of_the_Federal_Reserve_System%29_open_meeting%2C_April_2019.jpg
   width: 1280
   height: 719
-  alt: اجتماع مجلس محافظي الاحتياطي الفيدرالي الأميركي
+  alt: اجتماع مجلس محافظي الاحتياطي الفيدرالي الأمريكي
   credit: Federalreserve · Public domain · ويكيميديا كومنز
   license: Public domain
   pageUrl: https://commons.wikimedia.org/wiki/File%3AFederal_Reserve_Board_(Board_of_Governors_of_the_Federal_Reserve_System)_open_meeting%2C_April_2019.jpg

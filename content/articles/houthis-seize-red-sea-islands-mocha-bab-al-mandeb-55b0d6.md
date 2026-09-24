@@ -35,7 +35,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Bab_Al-Mandeb_Strait%2C_between_Djibouti_and_Yemen.jpg/1280px-Bab_Al-Mandeb_Strait%2C_between_Djibouti_and_Yemen.jpg
   width: 1280
   height: 853
-  alt: جندي أميركي على متن مدمرة في مضيق باب المندب
+  alt: جندي أمريكي على متن مدمرة في مضيق باب المندب
   credit: U.S. Department of Defense Current Photos · Public domain · ويكيميديا كومنز
   license: Public domain
   pageUrl: https://commons.wikimedia.org/wiki/File%3ABab_Al-Mandeb_Strait%2C_between_Djibouti_and_Yemen.jpg

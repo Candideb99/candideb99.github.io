@@ -29,7 +29,15 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/An_oil_tanker%2C_Cochin_Oil_Terminal.jpg/1280px-An_oil_tanker%2C_Cochin_Oil_Terminal.jpg
+  width: 1280
+  height: 848
+  alt: ناقلة نفط (صورة تعبيرية)
+  credit: Rangan Datta Wiki · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AAn_oil_tanker%2C_Cochin_Oil_Terminal.jpg
 sources:
   - name: الغارديان
     nameEn: The Guardian
@@ -59,7 +67,7 @@ models:
   editor: inclusionai/ling-3.0-flash-fin:free
   writer: nvidia/nemotron-3-super-120b-a12b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
+  vision: claude-cli
   desk: nvidia/nemotron-3-super-120b-a12b:free
 quality:
   score: 8

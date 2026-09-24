@@ -22,14 +22,13 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Trump_speaking_in_Manchester%2C_New_Hampshire.jpg/1280px-Trump_speaking_in_Manchester%2C_New_Hampshire.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Donald_Trump_with_Republican_House_Leadership_%28March_9%2C_2026%29_02.jpg/1280px-Donald_Trump_with_Republican_House_Leadership_%28March_9%2C_2026%29_02.jpg
   width: 1280
-  height: 720
-  alt: ترمب يتحدث في تجمع انتخابي في مانشستر بولاية نيوهامشير
-  credit: Marc Nozell from Merrimack, New Hampshire, USA · CC BY 2.0 · ويكيميديا كومنز
-  license: CC BY 2.0
-  licenseUrl: https://creativecommons.org/licenses/by/2.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ATrump_speaking_in_Manchester%2C_New_Hampshire.jpg
+  height: 854
+  alt: ترامب مع قيادة الجمهوريين في مجلس النواب في مارس 2026
+  credit: Office of Speaker Mike Johnson · Public domain · ويكيميديا كومنز
+  license: Public domain
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ADonald_Trump_with_Republican_House_Leadership_(March_9%2C_2026)_02.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -53,7 +52,7 @@ models:
   editor: inclusionai/ling-3.0-flash-fin:free
   writer: nvidia/nemotron-3-super-120b-a12b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: nex-agi/nex-n2.5-pro:free
+  vision: claude-cli
   desk: nvidia/nemotron-3-super-120b-a12b:free
 quality:
   score: 8

@@ -27,7 +27,15 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/18650_and_21700_lithium_ion_battery_cell.jpg/1280px-18650_and_21700_lithium_ion_battery_cell.jpg
+  width: 1280
+  height: 960
+  alt: خلايا بطاريات ليثيوم أيون
+  credit: Sevenethics · CC0 · ويكيميديا كومنز
+  license: CC0
+  licenseUrl: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+  pageUrl: https://commons.wikimedia.org/wiki/File%3A18650_and_21700_lithium_ion_battery_cell.jpg
 sources:
   - name: عرب نيوز
     nameEn: Arab News
@@ -57,7 +65,7 @@ models:
   editor: inclusionai/ling-3.0-flash-fin:free
   writer: inclusionai/ling-3.0-flash-fin:free → nvidia/nemotron-3-super-120b-a12b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: nex-agi/nex-n2.5-pro:free
+  vision: claude-cli
   desk: nvidia/nemotron-3-super-120b-a12b:free
 quality:
   score: 10

@@ -7,6 +7,9 @@
  *   node pipeline/correct.mjs --file=pipeline/corrections.json   a list of { "slug", "issue" }
  *   add --dry-run to see each correction without writing it
  *   add --max-change=0.8 when the correction itself removes a whole second story merged into this one
+ *   add --language for a slip of the language (grammar, agreement, spelling) that changes no fact: it is fixed
+ *   where it stands, nothing else moves, and no note is printed, as the desks fix a typo online without one
+ *   (the owner, 2026-09-24, on «واثنتان فقط من السفن السبع عبرت»: "fix the عبرتا grammar slip through the pipeline")
  *   node pipeline/correct.mjs --slug=a-b-c --drop-tags=الهند,طاقة   only takes away tags whose subject a
  *   correction removed from the story (no model, no note: a tag is filing, not content)
  *   (the default holds a correction to 45% of the sentences)
@@ -32,6 +35,7 @@ import { fixNames } from "./lib/copydesk.mjs";
 const args = process.argv.slice(2);
 const option = (name) => args.find((a) => a.startsWith(`--${name}=`))?.slice(name.length + 3) ?? "";
 const DRY = args.includes("--dry-run");
+const LANGUAGE = args.includes("--language");
 const MAX_CHANGE = Math.min(0.9, Number(option("max-change")) || 0.45);
 const log = (line) => console.log(`[correct] ${line}`);
 
@@ -111,7 +115,7 @@ ${issue}
 
 TASK
 Check the report against the source material. If the story is right after all, answer {"correct": true, "reason": "<one sentence>"}.
-Otherwise correct the error wherever it appears (title, subtitle, lede, keyFacts, whyItMatters, body) and change nothing else: every other sentence stays word for word, the body keeps its paragraphs and "## " subheads. Bring in no fact beyond what the correction needs; a figure you add must come from the source material or from the report. Then write the note printed at the foot of the story: one or two Arabic sentences in the desks' form, saying what an earlier version said and what is correct (for example «ذكرت نسخة سابقة من هذا الخبر أن … والصحيح أن …»).
+${LANGUAGE ? `This is a slip of the LANGUAGE (grammar, agreement, spelling), not of fact: fix it wherever it appears (title, subtitle, lede, keyFacts, whyItMatters, body) and change nothing else. Every other word stays exactly as it is: no fact, figure, name or attribution moves, no sentence is reworded for style, the body keeps its paragraphs and "## " subheads. No note is printed for a language fix; answer "note": "".` : `Otherwise correct the error wherever it appears (title, subtitle, lede, keyFacts, whyItMatters, body) and change nothing else: every other sentence stays word for word, the body keeps its paragraphs and "## " subheads. Bring in no fact beyond what the correction needs; a figure you add must come from the source material or from the report. Then write the note printed at the foot of the story: one or two Arabic sentences in the desks' form, saying what an earlier version said and what is correct (for example «ذكرت نسخة سابقة من هذا الخبر أن … والصحيح أن …»).`}
 Answer with one JSON object: {"correct": false, "title": "...", "subtitle": "...", "lede": "...", "whyItMatters": "...", "keyFacts": [{"label": "...", "value": "..."}], "body": "...", "note": "..."}`;
 
   let answer;
@@ -155,26 +159,35 @@ Answer with one JSON object: {"correct": false, "title": "...", "subtitle": "...
   if (ungrounded.length) problems.push(`figures neither in the sources nor in the report: ${ungrounded.join(", ")}`);
   const heads = (t) => (String(t).match(/^## .*$/gm) ?? []).length;
   if (heads(before.body) !== heads(after.body)) problems.push("the subheads changed");
-  if (!note || arabicRatio(note) < 0.6) problems.push("no Arabic correction note");
+  if (!LANGUAGE && (!note || arabicRatio(note) < 0.6)) problems.push("no Arabic correction note");
+  // A language fix moves no figure and touches only the sentences the slip stands in.
+  if (LANGUAGE) {
+    const kept = new Set(numbersOf(text(after)));
+    const lost = [...had].filter((n) => !kept.has(n));
+    if (added.length || lost.length) problems.push(`a language fix moved figures (${[...added, ...lost].slice(0, 4).join(", ")})`);
+  }
   if (arabicRatio(after.body) < 0.5) problems.push("the body is not Arabic");
   const was = sentencesOf(text(before));
   const now = new Set(sentencesOf(text(after)));
   const changed = was.filter((s) => !now.has(s)).length;
-  if (changed > Math.max(8, Math.ceil(was.length * MAX_CHANGE))) problems.push(`${changed} of ${was.length} sentences changed: more than a correction needs`);
+  if (changed > (LANGUAGE ? 3 : Math.max(8, Math.ceil(was.length * MAX_CHANGE)))) problems.push(`${changed} of ${was.length} sentences changed: more than a ${LANGUAGE ? "language fix" : "correction"} needs`);
 
   const diff = FIELDS.filter((f) => before[f].trim() !== after[f].trim());
   if (JSON.stringify(before.keyFacts) !== JSON.stringify(after.keyFacts)) diff.push("keyFacts");
-  const item = { slug, issue, outcome: problems.length ? "refused" : DRY ? "would correct" : "corrected", problems, fields: diff, note, model, before: Object.fromEntries(diff.filter((f) => f !== "body" && f !== "keyFacts").map((f) => [f, before[f]])), after: Object.fromEntries(diff.filter((f) => f !== "body" && f !== "keyFacts").map((f) => [f, after[f]])), changedSentences: was.filter((s) => !now.has(s)).slice(0, 12), newSentences: sentencesOf(text(after)).filter((s) => !new Set(was).has(s)).slice(0, 12) };
+  const item = { slug, issue, language: LANGUAGE || undefined, outcome: problems.length ? "refused" : DRY ? "would correct" : "corrected", problems, fields: diff, note, model, before: Object.fromEntries(diff.filter((f) => f !== "body" && f !== "keyFacts").map((f) => [f, before[f]])), after: Object.fromEntries(diff.filter((f) => f !== "body" && f !== "keyFacts").map((f) => [f, after[f]])), changedSentences: was.filter((s) => !now.has(s)).slice(0, 12), newSentences: sentencesOf(text(after)).filter((s) => !new Set(was).has(s)).slice(0, 12) };
   report.items.push(item);
   log(`${slug}: ${item.outcome}${problems.length ? ` (${problems.join("; ")})` : ""}; fields ${diff.join(", ") || "none"}\n    note: ${note}`);
   if (problems.length || DRY || !diff.length) continue;
 
   for (const f of ["title", "subtitle", "lede", "whyItMatters"]) if (diff.includes(f)) doc.set(f, after[f]);
   if (diff.includes("keyFacts")) doc.set("keyFacts", doc.createNode(after.keyFacts));
-  const stamp = new Date().toISOString();
-  const corrections = [...(data.corrections ?? []), { date: stamp, note }];
-  doc.set("corrections", doc.createNode(corrections));
-  doc.set("updatedAt", stamp);
+  // A language fix changes no fact: no note at the foot and no update stamp, as a typo fixed online.
+  if (!LANGUAGE) {
+    const stamp = new Date().toISOString();
+    const corrections = [...(data.corrections ?? []), { date: stamp, note }];
+    doc.set("corrections", doc.createNode(corrections));
+    doc.set("updatedAt", stamp);
+  }
   const front = doc.toString({ lineWidth: 0 }).trimEnd();
   await writeFile(file, `---\n${front}\n---\n\n${diff.includes("body") ? after.body : before.body}\n`);
 }

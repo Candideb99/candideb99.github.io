@@ -32,14 +32,14 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Risers_going_below_a_offshore_oil_platform.jpg/1280px-Risers_going_below_a_offshore_oil_platform.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Oil_%26_Chemical_Tanker_Atlantic_Prince_and_Crude_Oil_Tanker_STI_Guard_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_November_2023_02.jpg/1280px-Oil_%26_Chemical_Tanker_Atlantic_Prince_and_Crude_Oil_Tanker_STI_Guard_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_November_2023_02.jpg
   width: 1280
-  height: 960
-  alt: أعمدة منصة نفط بحرية
-  credit: FrogsLegs71 · CC BY-SA 3.0 · ويكيميديا كومنز
-  license: CC BY-SA 3.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/3.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ARisers_going_below_a_offshore_oil_platform.jpg
+  height: 720
+  alt: ناقلات نفط خام (صورة تعبيرية)
+  credit: Calistemon · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AOil_%26_Chemical_Tanker_Atlantic_Prince_and_Crude_Oil_Tanker_STI_Guard_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_November_2023_02.jpg
 sources:
   - name: نيويورك تايمز
     nameEn: The New York Times
@@ -69,7 +69,7 @@ models:
   editor: claude-cli
   writer: claude-cli
   critic: claude-cli
-  vision: nex-agi/nex-n2.5-pro:free
+  vision: claude-cli
   desk: claude-cli
 quality:
   score: 9

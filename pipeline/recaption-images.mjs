@@ -9,6 +9,7 @@
  *   node pipeline/recaption-images.mjs --dry-run    show old and new, write nothing
  *   node pipeline/recaption-images.mjs --limit=10   the ten newest
  *   node pipeline/recaption-images.mjs --slugs=a,b  named articles only
+ *   node pipeline/recaption-images.mjs --spellings  the house spellings («أمريكي»، «ترامب») in every caption, no model
  *
  * Nothing is edited by hand: the caption comes from the file's own record and the story, is checked in
  * code (Arabic, at most twelve words, nothing painted), and the frontmatter is rewritten through the YAML
@@ -22,6 +23,7 @@ import path from "node:path";
 import YAML from "yaml";
 import { writeCaption, captionFlaws, placedAbroad, ILLUSTRATIVE } from "./lib/images.mjs";
 import { ARTICLES_DIR } from "./lib/article.mjs";
+import { fixNames } from "./lib/copydesk.mjs";
 
 const args = process.argv.slice(2);
 const DRY = args.includes("--dry-run");
@@ -73,6 +75,22 @@ for (const file of files) {
   queue.push({ file, match, doc, slug, url: String(url), alt: String(doc.getIn(["image", "alt"]) ?? ""), title: String(doc.get("title") ?? ""), tags: data.tags ?? [], regions: data.regions ?? [], publishedAt: String(doc.get("publishedAt") ?? "") });
 }
 queue.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+// `--spellings`: the copy desk's spelling table («أمريكي»، «ترامب») over every caption, in code, no model. Captions
+// had never passed through it: eleven printed «الأميركية» or «ترمب» on 2026-09-24.
+if (args.includes("--spellings")) {
+  let fixed = 0;
+  for (const a of queue) {
+    const next = fixNames(a.alt);
+    if (next === a.alt) continue;
+    log(`${DRY ? "WOULD" : "FIXED"} ${a.slug.slice(0, 50)}: ${a.alt} → ${next}`);
+    fixed += 1;
+    if (DRY) continue;
+    a.doc.setIn(["image", "alt"], next);
+    await writeFile(path.join(ARTICLES_DIR, a.file), `---\n${a.doc.toString({ lineWidth: 0 }).trimEnd()}\n---\n${a.match[2]}`);
+  }
+  log(`done: ${fixed} caption(s) put in the house spelling${DRY ? " (dry run, nothing written)" : ""}`);
+  process.exit(0);
+}
 // A caption that already keeps the rule is not written again (the owner, 2026-09-23: no tokens spent
 // editing what is already edited). Code decides which ones break it, for free; --all or --slugs overrides.
 const ALL = args.includes("--all");
@@ -106,7 +124,7 @@ for (const a of todo) {
   log(`${a.alt === next ? "SAME " : "NEW  "} ${a.slug.slice(0, 50)}\n        was: ${a.alt}\n        now: ${next}`);
   if (a.alt === next || DRY) continue;
   a.doc.setIn(["image", "alt"], next);
-  await writeFile(path.join(ARTICLES_DIR, a.file), `---\n${String(a.doc).trimEnd()}\n---\n${a.match[2]}`);
+  await writeFile(path.join(ARTICLES_DIR, a.file), `---\n${a.doc.toString({ lineWidth: 0 }).trimEnd()}\n---\n${a.match[2]}`);
   changed += 1;
 }
 await mkdir(path.dirname(CACHE), { recursive: true });

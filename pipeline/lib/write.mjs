@@ -344,6 +344,13 @@ export function normalizeTable(table) {
   return { title: String(table.title ?? "").trim() || null, source: String(table.source ?? "").trim(), columns, rows };
 }
 
+/**
+ * The photo searches of the pieces that explain or analyse (explainer, analysis, weekly, paper): the subject at
+ * work, recognised at a glance. The owner, 2026-09-24, on the Treasury's front under an explainer of bond
+ * yields: the schemas had asked for "an institution's headquarters" and "a city skyline".
+ */
+const HUB_IMAGE_QUERIES = `"image_queries": ["2-3 short English search terms (2-4 words each) for a photograph that exists on Wikimedia Commons and that a reader recognises at a glance as the subject at work, the way the news agencies picture it: traders at their screens or a trading floor for bonds, rates and markets; shoppers in a supermarket for prices and inflation; a container port for trade; a factory floor for industry; an oil tanker, pumpjacks or a refinery for oil; the named people at work. An institution's building only when the piece is about that institution's own decision, never a skyline; no adjectives, no abstract concepts, never 'research', 'paper' or 'chart'"]`;
+
 const EXPLAINER_SCHEMA = `{
   "title": "Arabic title in the form of a clear question or statement (35-80 chars), e.g. ما هو منحنى العائد ولماذا يخيف الأسواق عندما ينقلب؟",
   "subtitle": "One Arabic sentence stating what the reader will understand",
@@ -354,7 +361,7 @@ const EXPLAINER_SCHEMA = `{
   "why_it_matters": "One Arabic paragraph (40-90 words): which prices, decisions or headlines this concept explains, stated plainly; never address the reader, never open with «يعكس/يمثل/يُعدّ»",
   "tags": ["3-5 Arabic tags"],
   "regions": ["عالمي"],
-  "image_queries": ["2 concrete English photo search phrases"]
+  ${HUB_IMAGE_QUERIES}
 }`;
 
 export async function writeExplainer({ topic, relatedArticles, log }) {
@@ -396,7 +403,7 @@ const ANALYSIS_SCHEMA = `{
   "why_it_matters": "One Arabic paragraph (40-90 words): the one consequence the argument leads to, stated plainly as Khazendar's reading; not a summary of the analysis, never the region as a formula, never open with «يعكس/يمثل/يُعدّ»",
   "tags": ["3-5 Arabic tags: institutions, countries, sectors, indicators"],
   "regions": ["1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي"],
-  "image_queries": ["2-3 short English search terms (2-4 words each) naming a concrete subject that exists as a photo on Wikimedia Commons: a city skyline, a port, a refinery, an institution's headquarters, a commodity; no adjectives, no abstract concepts"],
+  ${HUB_IMAGE_QUERIES},
   "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit, e.g. % or مليار دولار", "source": "the publisher named in the material", "categories": ["Arabic labels, 3-12 items"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the supplied material]}]},
   "table": null or {"title": "Arabic table title", "source": "the publisher named in the material", "columns": ["2-5 Arabic column headers"], "rows": [["cells exactly as in the supplied material"]]}
 }
@@ -604,7 +611,7 @@ Return one JSON object:
   "why_it_matters": "one Arabic paragraph (40-90 words): the one consequence of the week that matters most, stated plainly; not a summary of the week, never open with «يعكس/يمثل/يُعدّ»",
   "tags": ["حصاد الأسبوع", "then 3-4 Arabic tags: institutions, countries, sectors"],
   "regions": ["1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي"],
-  "image_queries": ["2-3 short English search terms (2-4 words each) naming a concrete subject that exists as a photo on Wikimedia Commons"]
+  ${HUB_IMAGE_QUERIES}
 }
 Short sentences, one idea each, none over 30 words. Paragraphs separated by blank lines. No bullet lists, no subheads (they are added by the desk).`;
   const grounding = [...paragraphs, calendarText || ""];
@@ -674,7 +681,7 @@ const PAPER_SCHEMA = `{
   "why_it_matters": "One Arabic paragraph (40-90 words): the one use this finding has for Arab policymakers, businesses or readers, marked once as Khazendar's reading; never a chain of «قد…», never open with «يعكس/يمثل/يُعدّ»",
   "tags": ["3-5 Arabic tags: the topic, the institution, the country or region studied, and always the tag أوراق بحثية"],
   "regions": ["1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي"],
-  "image_queries": ["2-3 short English search terms (2-4 words each) naming a concrete subject of the paper's topic that exists as a photo on Wikimedia Commons: a port, a central bank building, a trading floor, a factory, an oil field, a city skyline, a market; never 'research', 'paper', 'chart' or any abstract concept"],
+  ${HUB_IMAGE_QUERIES},
   "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit", "source": "the paper (authors, institution, year)", "categories": ["Arabic labels, 3-12 items"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the paper's text]}]},
   "table": null or {"title": "Arabic table title", "source": "the paper", "columns": ["2-5 Arabic column headers"], "rows": [["cells exactly as in the paper's text"]]}
 }

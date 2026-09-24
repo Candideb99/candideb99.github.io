@@ -30,6 +30,10 @@ information first enters; after that the reporting verb or one attribution at th
 paragraph carries it. Never two sentences in a row tagged وفقاً لـ/بحسب, never وفقاً للمصدر نفسه,
 never one outlet more than three times in a story (the checker sends back a story that tags more
 than a third of its sentences). أكد takes an object, never أكد على. كشف only for what was hidden.
+An unnamed source is one source only inside one report: «مسؤول إيراني كبير» of 23 September and of
+24 September are two people, never «وأضاف المسؤول»; and a speaker says only what the story had him
+say (the desk once turned the story's own comment into «ورأى أن…» in a banker's mouth, 2026-09-24).
+A dual subject before its verb takes a dual verb: «اثنتان منها عبرتا»، «الشركتان أعلنتا».
 **Expectations** belong to someone: يتوقع المجلس أن، ترجّح الأسواق، مرشح لـ. Never a floating
 forecast.
 

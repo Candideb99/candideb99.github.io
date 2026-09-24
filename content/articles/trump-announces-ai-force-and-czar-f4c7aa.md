@@ -25,7 +25,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/The_White_House_North_Portico_in_Washington%2C_D.C.jpg/1280px-The_White_House_North_Portico_in_Washington%2C_D.C.jpg
   width: 1280
   height: 960
-  alt: مقر الرئاسة الأميركية في واشنطن
+  alt: مقر الرئاسة الأمريكية في واشنطن
   credit: Harrison Keely · CC BY 4.0 · ويكيميديا كومنز
   license: CC BY 4.0
   licenseUrl: https://creativecommons.org/licenses/by/4.0

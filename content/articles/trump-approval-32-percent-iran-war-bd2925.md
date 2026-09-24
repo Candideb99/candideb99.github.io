@@ -51,7 +51,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/A_voter_walks_towards_Aitkin_Public_Library_for_the_Special_Election_held_on_April_14%2C_2026_in_Aitkin%2C_Minnesota.jpg/1280px-A_voter_walks_towards_Aitkin_Public_Library_for_the_Special_Election_held_on_April_14%2C_2026_in_Aitkin%2C_Minnesota.jpg
   width: 1280
   height: 853
-  alt: مركز اقتراع في ولاية مينيسوتا الأميركية
+  alt: مركز اقتراع في ولاية مينيسوتا الأمريكية
   credit: Lorie Shaull · CC BY 4.0 · ويكيميديا كومنز
   license: CC BY 4.0
   licenseUrl: https://creativecommons.org/licenses/by/4.0

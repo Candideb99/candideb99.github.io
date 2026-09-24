@@ -49,7 +49,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Oil_refinery_in_Houston_2018b.jpg/1280px-Oil_refinery_in_Houston_2018b.jpg
   width: 1280
   height: 960
-  alt: مصفاة نفط في هيوستن بولاية تكساس الأميركية
+  alt: مصفاة نفط في هيوستن بولاية تكساس الأمريكية
   credit: Antony-22 · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
