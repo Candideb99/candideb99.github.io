@@ -13,13 +13,16 @@ on:
     - cron: "7 10 * * 6"
     # «في العمق», the weekly in-depth piece: Sundays, the first working day of the Gulf week (2026-09-24).
     - cron: "47 7 * * 0"
+    # The second look: published stories read again against their sources a day after they went out, twice a day
+    # (pipeline/recheck.mjs, 2026-09-25). One Claude call per story, never twice for the same story.
+    - cron: "53 3,15 * * *"
   workflow_dispatch:
     inputs:
       mode:
-        description: news, explainer, analysis, paper, weekly or feature (في العمق)
+        description: news, explainer, analysis, paper, weekly, feature (في العمق) or recheck (the second look)
         default: news
         type: choice
-        options: [news, explainer, analysis, paper, weekly, feature]
+        options: [news, explainer, analysis, paper, weekly, feature, recheck]
       limit:
         description: maximum stories to publish
         default: "4"
@@ -80,9 +83,10 @@ jobs:
             elif [ "$SCHEDULE" = "37 15 * * 5" ]; then mode=weekly;
             elif [ "$SCHEDULE" = "7 10 * * 6" ]; then mode=analysis; sections=defense;
             elif [ "$SCHEDULE" = "47 7 * * 0" ]; then mode=feature;
+            elif [ "$SCHEDULE" = "53 3,15 * * *" ]; then mode=recheck;
             else mode=news; fi
           fi
-          case "$mode" in news|explainer|analysis|paper|weekly|feature) ;; *) echo "invalid mode: $mode"; exit 2;; esac
+          case "$mode" in news|explainer|analysis|paper|weekly|feature|recheck) ;; *) echo "invalid mode: $mode"; exit 2;; esac
           if ! [[ "$limit" =~ ^[0-9]+$ ]]; then echo "invalid limit: $limit"; exit 2; fi
           if ! [[ "$sections" =~ ^[a-z,]*$ ]]; then echo "invalid sections: $sections"; exit 2; fi
           echo "mode=$mode" >> "$GITHUB_OUTPUT"
@@ -108,7 +112,17 @@ jobs:
           MODE: ${{ steps.mode.outputs.mode }}
           LIMIT: ${{ steps.mode.outputs.limit }}
           SECTIONS: ${{ steps.mode.outputs.sections }}
-        run: node pipeline/run.mjs --mode="$MODE" --limit="$LIMIT" --sections="$SECTIONS" ${REVIEW:+--draft}
+        # The second look corrects published stories; while the owner reviews before publishing (KHAZENDAR_REVIEW=1)
+        # it only lists what it finds. Review is on only at "1": the control room switches it off by setting "0", and
+        # a test for a non-empty value read that "0" as on (found 2026-09-25: every story would have stayed a draft).
+        run: |
+          review=""
+          if [ "$REVIEW" = "1" ]; then review=1; fi
+          if [ "$MODE" = recheck ]; then
+            node pipeline/recheck.mjs ${review:+--no-correct}
+          else
+            node pipeline/run.mjs --mode="$MODE" --limit="$LIMIT" --sections="$SECTIONS" ${review:+--draft}
+          fi
 
       - name: Refresh market quotes and the calendar (best effort; the committed files are the fallback)
         timeout-minutes: 5
@@ -139,7 +153,9 @@ jobs:
             echo "nothing to commit"
             exit 0
           fi
-          if [ "${PUBLISHED:-0}" = "0" ]; then
+          if [ "$MODE" = recheck ]; then
+            git commit -m "second look: ${PUBLISHED:-0} stor$([ "${PUBLISHED:-0}" = 1 ] && echo y || echo ies) corrected"
+          elif [ "${PUBLISHED:-0}" = "0" ]; then
             git commit -m "newsroom: state after a $MODE run (0 published)"
           else
             git commit -m "newsroom: $PUBLISHED new $MODE item(s)"

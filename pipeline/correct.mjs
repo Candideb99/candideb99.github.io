@@ -5,7 +5,8 @@
  *
  *   node pipeline/correct.mjs --slug=a-b-c --issue="…"          one story
  *   node pipeline/correct.mjs --file=pipeline/corrections.json   a list of { "slug", "issue" }
- *   add --dry-run to see each correction without writing it
+ *   add --dry-run to see each correction without writing it; --report=<path> to name the report file
+ *   (the second look, pipeline/recheck.mjs, sends its confirmed errors here and reads each outcome back)
  *   add --max-change=0.8 when the correction itself removes a whole second story merged into this one
  *   add --language for a slip of the language (grammar, agreement, spelling) that changes no fact: it is fixed
  *   where it stands, nothing else moves, and no note is printed, as the desks fix a typo online without one
@@ -194,6 +195,7 @@ Answer with one JSON object: {"correct": false, "title": "...", "subtitle": "...
 
 const runs = path.join(process.cwd(), "pipeline", "runs");
 await mkdir(runs, { recursive: true });
-const out = path.join(runs, `corrections-${report.startedAt.replace(/[:.]/g, "-")}.json`);
+// `--report=<path>`: the second look (recheck.mjs) names the report so it can read each story's outcome back.
+const out = option("report") || path.join(runs, `corrections-${report.startedAt.replace(/[:.]/g, "-")}.json`);
 await writeFile(out, JSON.stringify(report, null, 2));
 log(`done: ${report.items.filter((i) => i.outcome === "corrected").length} corrected, ${report.items.filter((i) => i.outcome === "stands").length} stand, ${report.items.filter((i) => i.outcome === "refused" || i.outcome === "failed").length} refused or failed${DRY ? " (dry run)" : ""}; report ${path.relative(process.cwd(), out)}`);
