@@ -95,6 +95,8 @@ const articles = defineCollection({
         importance: z.number().optional(),
         warnings: z.array(z.string()).optional(),
         criticSummary: z.string().optional(),
+        /** The check before publication (pipeline/lib/precheck.mjs): the story passed as written, or after a repair. */
+        precheck: z.enum(["clean", "repaired"]).optional(),
       })
       .optional(),
     ai: z.boolean().default(true),

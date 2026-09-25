@@ -53,6 +53,10 @@ Every 3 hours (and once a day each for an explainer and an analysis, and on Sund
   alarm; the learner ignored a planted non-mistake and a hidden instruction; the lessons neither helped nor hurt
   measurably, because Claude's first drafts carry about one provable mistake in ten stories; a deliberately harmful
   rule would be caught in weeks to months, not days. Eight defects the test found were fixed the same night.
+- **Checked before publication.** Since 26 Sept every story is read against its own sources after the critic and
+  before it goes out. A mistake the sources prove is repaired and the story read again (three tries at most); a
+  story still wrong, or one that cannot be checked, is held back and tried again later, never published as it is.
+  The Desk shows how many were clean, repaired and held.
 - **The morning round, free.** Every day, without Claude: are the photos still in place at Wikimedia and Flickr (a
   renamed photo is re-addressed at once, a deleted one is replaced), is news still flowing, are the market quotes
   fresh, does the live site carry the newest story? Claude is woken only if something is broken, and at most once

@@ -27,6 +27,8 @@ import { critique, programmaticChecks } from "./lib/verify.mjs";
 import { copyEdit } from "./lib/copydesk.mjs";
 import { keptBlock, lessonsBlock, lessonsHash, loadLessons } from "./lib/lessons.mjs";
 import { JUDGE_VERSION, draftWith, judge } from "./lib/paired.mjs";
+import { precheck, writeJsonAtomic } from "./lib/precheck.mjs";
+import { repeatsRecent } from "./lib/events.mjs";
 import { pickImage } from "./lib/images.mjs";
 import { ARTICLES_DIR, buildSlug, loadExistingArticles, serializeArticle } from "./lib/article.mjs";
 import { usage as llmUsage } from "./lib/llm.mjs";
@@ -78,7 +80,7 @@ const ARAB_DAILY = 8;
  */
 const SERVICE_ITEM = /(?:سعر|أسعار)\s+(?:الذهب|الدولار|اليورو|الريال|الدرهم|الجنيه|العملات|الحديد|الأسمنت|الفضة|الخضروات|الخضار|الفاكهة|الدواجن|الفراخ|اللحوم|الأسماك|الأسهم|البنزين)[^.؟]{0,70}?(?:اليوم|الآن|لحظ|مساء|صباح)|تحديث لحظ[يى]|حصاد الـ?\s?\d+ دقيقة|آخر تحديث لسعر|(?:التعاملات|تعاملات) (?:الصباحية|المسائية)/;
 /** Words too common in this paper's headlines to tell two stories apart. */
-const TITLE_STOPWORDS = new Set(["على", "إلى", "بعد", "قبل", "خلال", "بسبب", "بنسبة", "مليار", "مليون", "دولار", "دولارات", "الولايات", "المتحدة", "أسعار", "الاقتصاد", "الأسواق", "النفط", "الفائدة", "ارتفاع", "تراجع", "2026", "سبتمبر", "أغسطس", "أكتوبر", "الأول", "الثاني", "الأمريكي", "الأمريكية", "الأميركي", "الأميركية", "العالمي", "العالمية", "الشرق", "الأوسط", "نقطة", "أساس", "مستوى", "أعلى", "أدنى", "منذ"]);
+// The same-event rule and its stopwords live in lib/events.mjs (shared with the learner since 2026-09-26).
 /** `--sections=defense,energy`: an analysis drawn only from these sections' stories (the defence and geopolitics reading). */
 const SECTIONS = (option("sections", "") || "").split(",").map((s) => s.trim()).filter(Boolean);
 
@@ -108,8 +110,7 @@ async function loadState() {
 
 async function saveState(state) {
   if (DRY_RUN) return;
-  await mkdir(path.dirname(STATE_PATH), { recursive: true });
-  await writeFile(STATE_PATH, `${JSON.stringify(state, null, 2)}\n`);
+  await writeJsonAtomic(STATE_PATH, state);
 }
 
 /** Records a decision on each item; a repeated rejection counts its strikes, and two strikes are final. */
@@ -294,6 +295,35 @@ let KEPT = "";
 let KEPT_VERSION = 0;
 const PAIRS_PER_DAY = 2;
 const PAIRS_PATH = path.join(root, "pipeline", "state", "pairs.json");
+const PRECHECK_PATH = path.join(root, "pipeline", "state", "precheck.json");
+
+/**
+ * What the check before publication found, story by story, and the stories it held (lib/precheck.mjs). The learner
+ * reads the repaired errors as the current writer's own proved mistakes; the second look reads which stories were
+ * checked clean; the week's numbers count all of it. A record that exists but cannot be read is left for a person.
+ */
+async function recordPrecheck({ slug, title, pre, writer, lessons, held }) {
+  if (DRY_RUN) return;
+  const raw = await readFile(PRECHECK_PATH, "utf8").catch(() => null);
+  let record = { version: 1, stories: {}, held: [] };
+  if (raw !== null) {
+    try {
+      record = JSON.parse(raw);
+    } catch {
+      log("pipeline/state/precheck.json cannot be read; this story's check is not recorded, and the file is left for a person");
+      return;
+    }
+  }
+  const entry = { at: isoNow(), title, writer, lessons, ok: pre.ok, repairs: pre.repairs, rounds: pre.rounds };
+  if (held) record.held = [...(record.held ?? []), { slug, ...entry, held: pre.held, unresolved: pre.unresolved ?? [] }].slice(-200);
+  else {
+    record.stories[slug] = entry;
+    const slugs = Object.keys(record.stories);
+    if (slugs.length > 600) for (const old of slugs.sort((a, b) => String(record.stories[a].at).localeCompare(String(record.stories[b].at))).slice(0, slugs.length - 600)) delete record.stories[old];
+  }
+  await mkdir(path.dirname(PRECHECK_PATH), { recursive: true });
+  await writeJsonAtomic(PRECHECK_PATH, record);
+}
 /** About one story in three is eligible, chosen by hash (not the day's first two, which would favour one hour's news). */
 const inPairSample = (story) => parseInt(fingerprint(`pair:${story.headlineHint ?? ""}`).slice(0, 8), 16) % 3 === 0;
 
@@ -323,18 +353,12 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   // The same event twice: the editor is told not to repeat a recent story, yet "oil above 107" and
   // "Brent above 108" ran on the same day and the Fed's hike ran three times. When the working headline
   // shares most of its distinctive words with a story of the last four days, the story is not written.
-  const distinctive = (t) => new Set(String(t).replace(/[^\p{L}\p{N}\s]/gu, " ").split(/\s+/).filter((w) => w.length > 3 && !TITLE_STOPWORDS.has(w)));
-  const mine = distinctive(story.headlineHint);
-  for (const title of recentTitles) {
-    const theirs = distinctive(title);
-    let shared = 0;
-    for (const w of mine) if (theirs.has(w)) shared += 1;
-    if (mine.size >= 3 && shared >= 3 && shared / Math.min(mine.size, theirs.size) >= 0.5) {
-      entry.outcome = `skipped: repeats a recent story («${title}»)`;
-      report.push(entry);
-      log(`skip "${story.headlineHint}": repeats "${title}"; items marked as seen`);
-      return { rejected: true, items };
-    }
+  const repeated = repeatsRecent(story.headlineHint, recentTitles);
+  if (repeated) {
+    entry.outcome = `skipped: repeats a recent story («${repeated}»)`;
+    report.push(entry);
+    log(`skip "${story.headlineHint}": repeats "${repeated}"; items marked as seen`);
+    return { rejected: true, items };
   }
 
   // Stage one: the desk notes, the checked facts of the one event; stage two: the story written from them.
@@ -388,6 +412,27 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     }
   }
 
+  // The check before publication (the owner, 2026-09-26: "check, repair, hold"; lib/precheck.mjs). The final text is
+  // read against its sources by the blind fact-check; what the sources disprove is repaired and read again, at most
+  // three times. A story still wrong, or one the check could not read, is held: not published, tried again later.
+  const lessonsTag = control ? "control" : LESSONS_VERSION ? `v${LESSONS_VERSION}` : null;
+  const pre = await precheck({ draft, sources, log, validate: (d) => programmaticChecks(d, sources, { recentTitles, minWords }) });
+  const found = pre.rounds.reduce((n, r) => n + r.found.length, 0);
+  entry.precheck = { ok: pre.ok, repairs: pre.repairs, rounds: pre.rounds.length, found };
+  if (!pre.ok) {
+    entry.outcome = `held by the check before publication: ${pre.held}`;
+    report.push(entry);
+    log(`held "${draft.title}": ${pre.held}`);
+    for (const f of pre.unresolved ?? []) log(`  ✗ [${f.class}] ${f.sentence.slice(0, 140)}`);
+    await recordPrecheck({ slug: buildSlug(draft, story), title: draft.title, pre, writer: writerModel, lessons: lessonsTag, held: true });
+    return { rejected: true, items };
+  }
+  if (pre.repairs) {
+    draft = pre.draft;
+    checks = programmaticChecks(draft, sources, { recentTitles, minWords });
+    log(`precheck "${draft.title}": ${found} proved error(s) repaired (${pre.repairs} repair(s)); the repaired text checked clean`);
+  } else log(`precheck "${draft.title}": clean`);
+
   const image = await pickImage({ draft, story, log, exclude: usedImages(existing) });
   const slug = buildSlug(draft, story);
   const markdown = serializeArticle({
@@ -399,11 +444,13 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     image,
     // The copy desk edited the story on its way in; later sweeps skip it (no tokens spent twice).
     deskedAt: deskModel ? isoNow() : null,
-    models: { editor: models.editor, writer: writerModel, critic: review.model, vision: image?.model ?? null, desk: deskModel, lessons: control ? "control" : LESSONS_VERSION ? `v${LESSONS_VERSION}` : null },
+    models: { editor: models.editor, writer: writerModel, critic: review.model, vision: image?.model ?? null, desk: deskModel, lessons: lessonsTag },
     quality: {
       score: review.score,
       verdict: review.verdict,
       revised,
+      // "clean" or "repaired": the second look audits a sample of the clean ones and every repaired one.
+      precheck: pre.repairs ? "repaired" : "clean",
       importance: story.importance,
       warnings: checks.warnings,
       criticSummary: review.summary,
@@ -421,6 +468,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     await writeFile(path.join(dir, `${slug}.md`), markdown);
   }
   log(`${DRAFT ? "drafted" : "published"} "${draft.title}" -> ${slug}${DRY_RUN ? " (dry-run)" : ""}`);
+  await recordPrecheck({ slug, title: draft.title, pre, writer: writerModel, lessons: lessonsTag, held: false });
   return { slug, items, title: draft.title, pairing: !control && LESSONS ? { story, sources, firstDraft, firstNotes: notes, slug, title: draft.title } : null };
 }
 
@@ -462,8 +510,7 @@ async function evidencePair(pairing) {
     if (!KEPT && out.kept) out.none = out.kept;
     record.pairs = [...record.pairs, out].slice(-1000);
     if (!DRY_RUN) {
-      await mkdir(path.dirname(PAIRS_PATH), { recursive: true });
-      await writeFile(PAIRS_PATH, `${JSON.stringify(record, null, 2)}\n`);
+      await writeJsonAtomic(PAIRS_PATH, record);
     }
     log(`evidence pair "${pairing.title}": ${out.live.errors} proved error(s) live (v${LESSONS_VERSION})${out.kept ? `, ${out.kept.errors} with the kept lessons (v${KEPT_VERSION})` : ""}${out.none && out.none !== out.kept ? `, ${out.none.errors} with none` : ""}; the private drafts are not published`);
   } catch (error) {

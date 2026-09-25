@@ -129,7 +129,13 @@ function claudeCliEnv() {
   for (const key of Object.keys(env)) {
     if (/^CLAUDECODE$|^CLAUDE_/.test(key) || key === "ANTHROPIC_BASE_URL" || key === "ANTHROPIC_AUTH_TOKEN") delete env[key];
   }
-  if (oauth) env.CLAUDE_CODE_OAUTH_TOKEN = oauth;
+  if (oauth) {
+    env.CLAUDE_CODE_OAUTH_TOKEN = oauth;
+    // The owner's subscription pays for every call (the owner, 2026-09-24: Claude on his plan, no API billing). With a
+    // subscription token present an API key is removed, so a key added later can never start pay-as-you-go billing
+    // unnoticed (2026-09-26: Anthropic bills API-key calls separately; subscription calls count against the plan).
+    delete env.ANTHROPIC_API_KEY;
+  }
   return env;
 }
 

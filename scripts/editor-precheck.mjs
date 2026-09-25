@@ -204,6 +204,14 @@ if (!process.argv.includes("--no-build")) {
       findings.push({ key: script, text: `\`npm run ${script}\` fails:\n\n\`\`\`\n${`${run.stdout ?? ""}${run.stderr ?? ""}`.trim().split("\n").slice(-15).join("\n")}\n\`\`\`` });
     } else fine.push(`\`npm run ${script}\` passes.`);
   }
+  // What a reader meets on the built site (scripts/site-check.mjs, 2026-09-26): links, Arabic right-to-left pages,
+  // alt text, dates and sources. A fault is the editor's to fix within the design, never a reason to stop publishing.
+  if (builds) {
+    const run = spawnSync(process.execPath, ["scripts/site-check.mjs"], { encoding: "utf8", maxBuffer: 1 << 26 });
+    const lines = String(run.stdout ?? "").trim().split(/\r?\n/).slice(0, 25).join("\n");
+    if (run.status !== 0) findings.push({ key: "site-check", text: `The built site has faults a reader meets (\`node scripts/site-check.mjs\`):\n\n\`\`\`\n${lines}\n\`\`\`\nFix each in the source (a component, a page, the pipeline that writes the field), never by editing dist/ or an article by hand.` });
+    else fine.push("The built site's pages, links, images, dates and sources check out.");
+  }
 }
 
 // The live site must carry the newest story within two hours; when the build passes here and the page is missing

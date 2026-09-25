@@ -1,4 +1,18 @@
 import { createHash } from "node:crypto";
+import { mkdir, rename, writeFile } from "node:fs/promises";
+import path from "node:path";
+
+/**
+ * A state file written whole or not at all: the text goes to a temporary file that then replaces the old one, so a
+ * crash or a cancelled job can never leave half a file for the next run to read (2026-09-26: a stress test showed a
+ * truncated lessons.json read as empty and overwritten, losing every lesson).
+ */
+export async function writeJsonAtomic(file, data) {
+  await mkdir(path.dirname(file), { recursive: true });
+  const tmp = `${file}.${process.pid}.${Date.now()}.tmp`;
+  await writeFile(tmp, `${JSON.stringify(data, null, 2)}\n`);
+  await rename(tmp, file);
+}
 
 export const USER_AGENT =
   "Mozilla/5.0 (compatible; KhazendarBot/1.0; +https://candideb99.github.io/about; editorial research)";

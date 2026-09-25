@@ -62,6 +62,8 @@ for (const file of readdirSync(path.join("content", "articles")).filter((f) => f
 /** A style fault's name without its counts, so the same fault in two stories is counted as one kind. */
 const faultKey = (text) => String(text).split("؛")[0].replace(/\d+/g, "#").replace(/«([^»]{0,40})[^»]*»/g, "«$1»").slice(0, 90).trim();
 const ledger = readJson(path.join("pipeline", "state", "factcheck.json"))?.stories ?? {};
+// The check before publication (pipeline/lib/precheck.mjs, 2026-09-26): what it found, repaired and held.
+const precheckState = readJson(path.join("pipeline", "state", "precheck.json")) ?? { stories: {}, held: [] };
 const reports = readdirSync(path.join("pipeline", "runs")).filter((f) => /^\d{4}-.*\.json$/.test(f)).map((f) => readJson(path.join("pipeline", "runs", f))).filter(Boolean);
 
 /** The numbers of one window, `from` to `to` days ago. */
@@ -126,6 +128,12 @@ function windowOf(from, to) {
       const control = claude.filter((s) => s.models?.lessons === "control");
       return { withLessons: { stories: withL.length, words: words(withL), keyFacts: facts(withL) }, control: { stories: control.length, words: words(control), keyFacts: facts(control) } };
     })(),
+    precheck: (() => {
+      const passed = Object.values(precheckState.stories ?? {}).filter((e) => within(e.at, from, to));
+      const held = (precheckState.held ?? []).filter((e) => within(e.at, from, to));
+      const errors = (list) => list.reduce((n, e) => n + (e.rounds?.[0]?.found?.length ?? 0), 0);
+      return { checked: passed.length + held.length, clean: passed.filter((e) => !e.repairs).length, repaired: passed.filter((e) => e.repairs).length, held: held.length, errorsFound: errors(passed) + errors(held), heldTitles: held.map((e) => e.title).slice(0, 5) };
+    })(),
     secondLook: { read: read.length, clean: outcome("clean"), corrected: outcome("corrected"), stands: outcome("stands"), refused: outcome("refused"), listed: outcome("listed") + outcome("flagged"), unverifiable: outcome("unverifiable"), confirmedPerStory: read.length ? Number((confirmed / read.length).toFixed(2)) : null, withLessons: { read: withLessons.length, confirmedPerStory: rate(withLessons) }, claudeWithout: { read: without.length, confirmedPerStory: rate(without) } },
     runs: { count: runs.length, written, refused: [...refusals.values()].reduce((a, b) => a + b, 0), callsPerStory: written ? Number((calls / written).toFixed(1)) : null, tokensPerStory: written && tokens ? Math.round(tokens / written) : null, costPerStory: written && cost ? Number((cost / written).toFixed(2)) : null, note: "from the run reports kept (the newest 24)" },
     recurring: [
@@ -167,6 +175,8 @@ const md = [
   `| stories published (news) | ${week.published} (${week.news}) | ${before.published} (${before.news}) |`,
   `| style faults per news story | ${week.styleFaultsPerStory ?? "–"}${arrow(week.styleFaultsPerStory, before.styleFaultsPerStory)} | ${before.styleFaultsPerStory ?? "–"} |`,
   `| news stories that needed the revision round | ${week.revisedShare == null ? "–" : `${Math.round(week.revisedShare * 100)}%`}${arrow(week.revisedShare, before.revisedShare)} | ${before.revisedShare == null ? "–" : `${Math.round(before.revisedShare * 100)}%`} |`,
+  `| checked before publication: stories · clean · repaired · held | ${week.precheck.checked} · ${week.precheck.clean} · ${week.precheck.repaired} · ${week.precheck.held} | ${before.precheck.checked} · ${before.precheck.clean} · ${before.precheck.repaired} · ${before.precheck.held} |`,
+  `| … proved errors caught before readers saw them | ${week.precheck.errorsFound} | ${before.precheck.errorsFound} |`,
   `| second look: stories read · clean · corrected · overruled | ${week.secondLook.read} · ${week.secondLook.clean} · ${week.secondLook.corrected} · ${week.secondLook.stands} | ${before.secondLook.read} · ${before.secondLook.clean} · ${before.secondLook.corrected} · ${before.secondLook.stands} |`,
   `| confirmed errors per story read | ${week.secondLook.confirmedPerStory ?? "–"}${arrow(week.secondLook.confirmedPerStory, before.secondLook.confirmedPerStory)} | ${before.secondLook.confirmedPerStory ?? "–"} |`,
   `| … Claude's stories written with the lessons (read) | ${week.secondLook.withLessons.confirmedPerStory ?? "–"} (${week.secondLook.withLessons.read}) | ${before.secondLook.withLessons.confirmedPerStory ?? "–"} (${before.secondLook.withLessons.read}) |`,

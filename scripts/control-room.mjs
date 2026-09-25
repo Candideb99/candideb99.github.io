@@ -877,6 +877,7 @@ function render(s){
 }
 function renderChecks(s){
   var q=s.quality&&s.quality.week,b=s.quality&&s.quality.weekBefore,h=s.health&&s.health.last,parts=[];
+  if(q&&q.precheck&&q.precheck.checked){var pc=q.precheck;parts.push('<b>Checked before publication</b> '+pc.checked+' this week: '+pc.clean+' clean, '+pc.repaired+' repaired'+(pc.errorsFound?' ('+pc.errorsFound+' proved error'+(pc.errorsFound===1?'':'s')+' caught before readers saw them)':'')+(pc.held?', <b>'+pc.held+' held</b>'+(pc.heldTitles&&pc.heldTitles.length?': '+pc.heldTitles.map(esc).join('; '):''):''))}
   if(q){var sl=q.secondLook;parts.push('<b>Second look</b> '+sl.read+' stor'+(sl.read===1?'y':'ies')+' read again this week'+(sl.corrected?', '+sl.corrected+' corrected':'')+(sl.listed?', '+sl.listed+' with an error listed':''));
     if(q.styleFaultsPerStory!=null)parts.push('<b>Style faults</b> '+q.styleFaultsPerStory+' a story'+(b&&b.styleFaultsPerStory!=null?' (last week '+b.styleFaultsPerStory+')':''))}
   if(h){var ph=h.photos||{};parts.push('<b>Photos</b> '+(ph.pending||(ph.redo&&ph.redo.length)?(ph.pending||0)+' being checked'+(ph.redo&&ph.redo.length?', '+ph.redo.length+' replaced':''):'all in place'));

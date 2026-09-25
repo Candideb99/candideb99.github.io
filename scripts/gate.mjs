@@ -7,7 +7,8 @@
  * 1. every pipeline and tool script parses (`node --check`), so a syntax slip cannot reach the cloud newsroom, and the
  *    lessons' decision rule decides its known cases correctly (scripts/evidence-selftest.mjs);
  * 2. `astro check` reports no errors;
- * 3. `npm run build` (the production build and its search index) succeeds.
+ * 3. `npm run build` (the production build and its search index) succeeds;
+ * 4. the built pages hold together for a reader (scripts/site-check.mjs: links, RTL, alt text, dates, sources).
  *
  * On success it records the fingerprint of every covered file (scripts/gate-files.mjs) in .gate/pass.json.
  * The Stop hook (scripts/gate-hook.mjs, registered in .claude/settings.json) holds a turn once when any of
@@ -47,6 +48,13 @@ const selftest = spawnSync(process.execPath, [path.join("scripts", "evidence-sel
 if (selftest.status !== 0) fail("the lessons' decision rule (scripts/evidence-selftest.mjs)", selftest.stdout + selftest.stderr);
 console.log(`[ok] the lessons' decision rule passes its known cases (${seconds(t)})`);
 
+// 1c. The newsroom's safeguards decide their known cases correctly (scripts/pipeline-selftest.mjs, 2026-09-26): the
+// check before publication, the duplicate rule, the lessons' lint, the state files.
+t = Date.now();
+const safeguards = spawnSync(process.execPath, [path.join("scripts", "pipeline-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });
+if (safeguards.status !== 0) fail("the newsroom's safeguards (scripts/pipeline-selftest.mjs)", safeguards.stdout + safeguards.stderr);
+console.log(`[ok] the newsroom's safeguards pass their known cases (${seconds(t)})`);
+
 // 2 and 3. The type check and the production build, as the project runs them.
 for (const [name, command] of [["astro check", "npm run check"], ["npm run build", "npm run build"]]) {
   t = Date.now();
@@ -58,6 +66,12 @@ for (const [name, command] of [["astro check", "npm run check"], ["npm run build
   if (name === "astro check" && errors && Number(errors[1]) > 0) fail(name, out);
   console.log(`[ok] ${name} (${seconds(t)})`);
 }
+
+// 4. What a reader meets on the built site: links, Arabic right-to-left pages, alt text, dates, sources (2026-09-26).
+t = Date.now();
+const site = spawnSync(process.execPath, [path.join("scripts", "site-check.mjs")], { cwd: ROOT, encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
+if (site.status !== 0) fail("the built site's check (scripts/site-check.mjs)", site.stdout + site.stderr);
+console.log(`[ok] the built site's pages, links, images, dates and sources (${seconds(t)})`);
 
 const files = fingerprints(ROOT);
 mkdirSync(path.join(ROOT, ".gate"), { recursive: true });

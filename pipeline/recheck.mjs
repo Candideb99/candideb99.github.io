@@ -30,7 +30,7 @@ import YAML from "yaml";
 import { ARTICLES_DIR } from "./lib/article.mjs";
 import { CHECKABLE_KINDS, CHECKER_VERSION, correctionIssue, loadSources, verifyStory } from "./lib/factcheck.mjs";
 import { usage as llmUsage } from "./lib/llm.mjs";
-import { hoursSince, isoNow } from "./lib/util.mjs";
+import { fingerprint, hoursSince, isoNow, writeJsonAtomic } from "./lib/util.mjs";
 
 const root = process.cwd();
 const LEDGER = path.join(root, "pipeline", "state", "factcheck.json");
@@ -93,10 +93,18 @@ async function stories() {
  * and the newest first. Newest first since 2026-09-25: oldest first had spent every round on the free models' archive
  * (all 33 stories of the first rounds), so the lessons learned nothing yet from the writer the newsroom has now.
  */
+/**
+ * A story the check before publication read clean (quality.precheck, lib/precheck.mjs) was read against these same
+ * sources hours ago: reading it again is the same call twice (the owner, 2026-09-23: never twice for nothing). One in
+ * three is read anyway, chosen by its slug, to catch what the first reading missed and pages corrected since; a story
+ * that needed a repair is always read again.
+ */
+const auditSample = (s) => s.quality?.precheck !== "clean" || parseInt(fingerprint(`audit:${s.slug}`).slice(0, 8), 16) % 3 === 0;
+
 function choose(all, ledger) {
   const open = (s) => REDO || !ledger.stories[s.slug] || (ledger.stories[s.slug].outcome === "failed" && (ledger.stories[s.slug].failures ?? 1) < MAX_FAILURES);
   if (SLUGS.size) return all.filter((s) => SLUGS.has(s.slug) && CHECKABLE_KINDS.has(s.kind) && open(s));
-  const checkable = all.filter((s) => CHECKABLE_KINDS.has(s.kind) && (s.sources ?? []).length && open(s));
+  const checkable = all.filter((s) => CHECKABLE_KINDS.has(s.kind) && (s.sources ?? []).length && open(s) && auditSample(s));
   const age = (s) => hoursSince(s.publishedAt);
   const due = checkable.filter((s) => age(s) >= MIN_AGE_H && age(s) <= MAX_AGE_H).sort((a, b) => age(a) - age(b)).slice(0, LIMIT);
   const free = (s) => !/claude/i.test(s.writer);
@@ -193,8 +201,9 @@ async function main() {
   const ledger = await readJson(LEDGER, { version: 1, stories: {} });
   const all = await stories();
   const chosen = choose(all, ledger);
-  const open = all.filter((s) => CHECKABLE_KINDS.has(s.kind) && (s.sources ?? []).length && !ledger.stories[s.slug]).length;
-  log(`second look: ${chosen.length} to read now (${open} published pieces not yet read)${DRY ? " — dry run" : ""}`);
+  const open = all.filter((s) => CHECKABLE_KINDS.has(s.kind) && (s.sources ?? []).length && !ledger.stories[s.slug] && auditSample(s)).length;
+  const prechecked = all.filter((s) => !auditSample(s)).length;
+  log(`second look: ${chosen.length} to read now (${open} published pieces not yet read; ${prechecked} read clean before publication and left out of the audit sample)${DRY ? " — dry run" : ""}`);
   const report = [];
   const corrections = [];
   const queue = [...chosen];
@@ -236,8 +245,7 @@ async function main() {
   };
   if (!DRY) {
     trim(ledger);
-    await mkdir(path.dirname(LEDGER), { recursive: true });
-    await writeFile(LEDGER, `${JSON.stringify(ledger, null, 2)}\n`);
+    await writeJsonAtomic(LEDGER, ledger);
     await mkdir(RUNS, { recursive: true });
     await writeFile(path.join(RUNS, `recheck-${summary.startedAt.replace(/[:.]/g, "-")}.json`), `${JSON.stringify(summary, null, 2)}\n`);
     const old = (await readdir(RUNS)).filter((f) => /^recheck-\d{4}-.*\.json$/.test(f)).sort();
