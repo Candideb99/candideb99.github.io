@@ -78,10 +78,15 @@
     "uk-inflation-rises-to-3-1-percent-august-7dcf61:156de0fc",
     "uk-inflation-rises-to-3-1-percent-august-7dcf61:fd363816",
     "uk-inflation-rises-to-3-1-percent-august-7dcf61:1ba6e848",
-    "openai-seeks-1-5-trillion-funding-a2d732:1c82c7fe"
+    "openai-seeks-1-5-trillion-funding-a2d732:1c82c7fe",
+    "saudi-tanker-war-risk-insurance-yanbu-triples-425bf1:e3d41006",
+    "us-mortgage-rates-top-7-percent-558e6b:227ebe27",
+    "us-iran-war-cost-38-1-billion-7017c2:2f51dda3",
+    "us-iran-war-cost-38-1-billion-7017c2:d8fc2175",
+    "brent-surges-above-109-disruptions-e510e5:e21bfaf6"
   ],
-  "version": 5,
-  "updatedAt": "2026-09-25T16:38:55.969Z",
+  "version": 6,
+  "updatedAt": "2026-09-25T17:25:01.821Z",
   "lessons": [
     {
       "id": "L1",
@@ -121,7 +126,7 @@
     {
       "id": "L2",
       "class": "attribution",
-      "rule": "Credit each sentence to whom the source credits it. An outlet's background, inference or own tally is not the official's statement; a data firm cited for one figure owns only that figure; a quoted analyst's forecast is not the outlet's view. Add no conclusion nobody drew.",
+      "rule": "Credit each sentence to whom the source credits it: an unattributed sentence is the outlet's own, never 'the sources said'; background is not an official's statement; a data firm owns only its figure; an analyst's forecast is not the outlet's view. Add no conclusion nobody drew.",
       "example": {
         "wrong": "وذكر أنه كان لديه سابقاً 'قيصر للذكاء الاصطناعي' وهو ديفيد ساكس، الذي استقال وأصبح مستشاراً خارجياً للرئيس.",
         "quote": "Trump already had one “AI czar”, venture capitalist David Sacks. He resigned earlier this year and became an external adviser to the president.",
@@ -151,17 +156,20 @@
         "faa-halts-east-coast-flights-equipment-outage-d180ab:d3c53036",
         "faa-halts-east-coast-flights-equipment-outage-d180ab:ba6a91f3",
         "trump-approval-32-percent-iran-war-bd2925:13ec3034",
-        "us-bond-yield-5-04-percent-ce6ccd:6bb1b8d0"
+        "us-bond-yield-5-04-percent-ce6ccd:6bb1b8d0",
+        "saudi-tanker-war-risk-insurance-yanbu-triples-425bf1:e3d41006",
+        "brent-surges-above-109-disruptions-e510e5:e21bfaf6"
       ],
-      "seen": 23,
+      "seen": 25,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T12:04:58.585Z",
+      "lastSeen": "2026-09-25T17:25:01.821Z",
       "status": "active",
       "previous": [
-        "Credit each fact to the party the source credits. Keep the outlet's own background separate from what the speaker said. Name the originating outlet in a chain, such as Politico via Euronews or Reuters data cited by OilPrice. Never invent a spokesperson or an agency.",
         "Credit each fact to whom the source credits; the outlet's own reporting is never 'informed sources', an official statement or analyst data. Name the originating outlet. Never make a reported line a quote, a private notice an announcement, or a reply the decree's aim.",
-        "Credit each fact to whom the source credits and name the originating outlet. An outlet's inference ('implying', 'suggesting') is not the official's own statement. An interview is not a statement. Add no conclusion the speaker did not draw."
-      ]
+        "Credit each fact to whom the source credits and name the originating outlet. An outlet's inference ('implying', 'suggesting') is not the official's own statement. An interview is not a statement. Add no conclusion the speaker did not draw.",
+        "Credit each sentence to whom the source credits it. An outlet's background, inference or own tally is not the official's statement; a data firm cited for one figure owns only that figure; a quoted analyst's forecast is not the outlet's view. Add no conclusion nobody drew."
+      ],
+      "sharpenedAt": "2026-09-25T17:25:01.821Z"
     },
     {
       "id": "L3",
@@ -183,11 +191,13 @@
         "ecb-launches-pontes-tokenised-securities-b5dc9b:63c909e2",
         "uk-inflation-rises-to-3-1-percent-august-7dcf61:156de0fc",
         "uk-inflation-rises-to-3-1-percent-august-7dcf61:1ba6e848",
-        "openai-seeks-1-5-trillion-funding-a2d732:1c82c7fe"
+        "openai-seeks-1-5-trillion-funding-a2d732:1c82c7fe",
+        "us-mortgage-rates-top-7-percent-558e6b:227ebe27",
+        "us-iran-war-cost-38-1-billion-7017c2:d8fc2175"
       ],
-      "seen": 10,
+      "seen": 12,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T16:38:55.969Z",
+      "lastSeen": "2026-09-25T17:25:01.821Z",
       "status": "active",
       "previous": [
         "Translate financial terms and tenors exactly. The 10-year Treasury is سندات الخزانة لأجل 10 سنوات, not 'more than ten years'. A nominal yield is not 'actual'. Open interest is العقود/المراكز المفتوحة, not interest. Add no descriptor the source lacks."
@@ -318,11 +328,12 @@
       },
       "evidence": [
         "faa-halts-east-coast-flights-equipment-outage-d180ab:f3397383",
-        "trump-approval-32-percent-iran-war-bd2925:7dacd8e4"
+        "trump-approval-32-percent-iran-war-bd2925:7dacd8e4",
+        "us-iran-war-cost-38-1-billion-7017c2:2f51dda3"
       ],
-      "seen": 2,
+      "seen": 3,
       "createdAt": "2026-09-25T12:04:58.585Z",
-      "lastSeen": "2026-09-25T12:04:58.585Z",
+      "lastSeen": "2026-09-25T17:25:01.821Z",
       "status": "active"
     },
     {
@@ -400,6 +411,15 @@
         "add L9 [cause] from 1 mistake(s)",
         "sharpen L3 (+3)",
         "reinforce L6 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-09-25T17:25:01.821Z",
+      "mistakes": 5,
+      "applied": [
+        "sharpen L2 (+2)",
+        "reinforce L3 (+2; reworded at most once a week)",
+        "reinforce L8 (+1)"
       ]
     }
   ]

@@ -1,0 +1,268 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-09-25T17:20:38.797Z",
+  "durationSec": 263,
+  "read": 8,
+  "corrected": 4,
+  "report": [
+    {
+      "slug": "brent-tops-106-houthi-aramco-attacks-a2e448",
+      "title": "برنت يتجاوز 106 دولارات بعدما أعلن الحوثيون استهداف منشآت لأرامكو",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 17,
+        "weak": 2,
+        "noEvidence": 3,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "saudi-tanker-war-risk-insurance-yanbu-triples-425bf1",
+      "title": "علاوة تأمين مخاطر الحرب في ينبع تقفز إلى 3% من قيمة الناقلة",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 24,
+        "checked": 24,
+        "supported": 22,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "attribution",
+          "sentence": "وأضافت المصادر أن الأسعار التي تتفق عليها شركات التأمين فعلاً مع عملائها تختلف عن العروض المعلنة، ولا تُنشر عنها بيانات عامة.",
+          "quote": "وتختلف الأسعار المتفق عليها فعليا بين شركات التأمين والعملاء عن العروض المعلنة، ولا تتوافر عنها بيانات عامة.",
+          "source": "Al Jazeera Arabic",
+          "correction": "This caveat is the report's own statement, not something attributed to the insurance sources."
+        }
+      ]
+    },
+    {
+      "slug": "egypt-petroleum-ministry-denies-fuel-price-hike-40ab37",
+      "title": "وزارة البترول المصرية تنفي زيادة أسعار البنزين والسولار",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 15,
+        "checked": 15,
+        "supported": 13,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "us-mortgage-rates-top-7-percent-558e6b",
+      "title": "فائدة الرهن العقاري الأمريكي تتجاوز 7% للمرة الأولى منذ يناير 2025",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 18,
+        "weak": 0,
+        "noEvidence": 4,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "term",
+          "sentence": "وقال أنتوني سميث، كبير الاقتصاديين في موقع «ريلتور دوت كوم» العقاري، إن مبيعات المنازل القائمة تراجعت في أغسطس إلى أدنى مستوى لها منذ بداية العام، وإن عقود بيع المنازل قيد الإتمام باتت أدنى من مستواها قبل عام.",
+          "quote": "The housing market has long been in a slowdown, said Anthony Smith, a senior economist at Realtor.com, with existing home sales hitting their 2026 low so far in August and pending sales that have turned negative year over year.",
+          "source": "The Guardian",
+          "correction": "Anthony Smith is a senior economist at Realtor.com, not its chief economist."
+        }
+      ]
+    },
+    {
+      "slug": "china-fuel-inventories-seven-year-low-exports-221e8e",
+      "title": "مخزونات البنزين والديزل في الصين تهبط إلى أدنى مستوى في سبع سنوات",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 21,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "us-iran-war-cost-38-1-billion-7017c2",
+      "title": "الحرب الأمريكية-الإيرانية تكلف 38.1 مليار دولار في خمسة أشهر",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 14,
+        "checked": 14,
+        "supported": 10,
+        "weak": 1,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "hedge",
+          "sentence": "21.7 مليار دولار لاستبدال الذخائر و10.4 مليار لساعات الطيران وتحذير من استنزاف ثلثي مخزون صواريخ الاعتراض",
+          "quote": "The war has also consumed as much as two-thirds of the nation's missile-defense interceptors since June 2025, largely as a result of the U.S. helping defend Israel against Iranian attacks, leaving the U.S. with reduced inventories for several years, CBO warned.",
+          "source": "CNBC",
+          "correction": "CBO said the war consumed as much as two-thirds of interceptors (between one-half and two-thirds of certain interceptors), not a flat two-thirds."
+        },
+        {
+          "class": "term",
+          "sentence": "ولفت إلى أن تقديرات مكتب الميزانية شملت 13.1 مليار دولار لصواريخ الاعتراض و7.3 مليار لصواريخ كروز أرض-أرض، و10.4 مليار لساعات الطيران الإضافية و2.7 مليار دولار لتكاليف الوقود الإضافية.",
+          "quote": "As the report lays out, the largest chunk of change was for the $21.7 billion it will cost the DoD to replace expended munitions — including $13.1 billion for interceptors, $7.3 billion for land-attack cruise missiles and $1.2 billion for “other munitions.”",
+          "source": "Breaking Defense",
+          "correction": "The $7.3 billion is for land-attack cruise missiles (such as Tomahawks), not ground-to-ground cruise missiles."
+        }
+      ]
+    },
+    {
+      "slug": "egypt-bp-four-wells-700-million-5a4448",
+      "title": "مصر تبحث مع «بي بي» حفر 4 آبار باستثمارات 700 مليون دولار",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 22,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "brent-surges-above-109-disruptions-e510e5",
+      "title": "برنت يقفز فوق 109 دولارات مع تعطل صادرات ينبع",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 14,
+        "weak": 1,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 1,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "attribution",
+          "sentence": "وأوضحت المصادر أن الخط كان ينقل ما بين 4 إلى 5 ملايين برميل يومياً قبل إغلاقه.",
+          "quote": "ويمتد خط شرق-غرب لمسافة 1200 كيلومتر عبر السعودية، وكان ينقل ما بين 4 و5 ملايين برميل يوميا، بما يعادل نحو 4% إلى 5% من الإمدادات العالمية، واكتسب أهمية متزايدة في الأشهر الستة الماضية مع تعطل حركة النفط عبر مضيق هرمز.",
+          "source": "Al Jazeera Arabic",
+          "correction": "The 4-5 million bpd figure is Al Jazeera's own reporting, not a statement by the Reuters sources."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 8,
+    "failures": 0,
+    "promptTokens": 16,
+    "completionTokens": 43918,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 8
+    },
+    "correctionsEditorCalls": 4
+  },
+  "log": [
+    "[17:20:39] second look: 8 to read now (108 published pieces not yet read)",
+    "[17:21:11] llm ok role=checker model=claude-cli attempt=1 ms=29752",
+    "[17:21:11] brent-tops-106-houthi-aramco-attacks-a2e448: 22 of 22 sentences checked · 17 supported · 3 without a source · 0 confirmed error(s)",
+    "[17:21:40] llm ok role=checker model=claude-cli attempt=1 ms=59807",
+    "[17:21:40] saudi-tanker-war-risk-insurance-yanbu-triples-425bf1: 24 of 24 sentences checked · 22 supported · 0 without a source · 1 confirmed error(s)",
+    "[17:21:40]   ✗ [attribution] وأضافت المصادر أن الأسعار التي تتفق عليها شركات التأمين فعلاً مع عملائها تختلف عن العروض المعلنة، ولا تُنشر عن — This caveat is the report's own statement, not something attributed to the insurance sources.",
+    "[17:21:49] llm ok role=checker model=claude-cli attempt=1 ms=35663",
+    "[17:21:49] egypt-petroleum-ministry-denies-fuel-price-hike-40ab37: 15 of 15 sentences checked · 13 supported · 2 without a source · 0 confirmed error(s)",
+    "[17:22:13] llm ok role=checker model=claude-cli attempt=1 ms=32531",
+    "[17:22:13] us-mortgage-rates-top-7-percent-558e6b: 23 of 23 sentences checked · 18 supported · 4 without a source · 1 confirmed error(s)",
+    "[17:22:13]   ✗ [term] وقال أنتوني سميث، كبير الاقتصاديين في موقع «ريلتور دوت كوم» العقاري، إن مبيعات المنازل القائمة تراجعت في أغسطس — Anthony Smith is a senior economist at Realtor.com, not its chief economist.",
+    "[17:22:24] llm ok role=checker model=claude-cli attempt=1 ms=32745",
+    "[17:22:24] china-fuel-inventories-seven-year-low-exports-221e8e: 22 of 22 sentences checked · 21 supported · 1 without a source · 0 confirmed error(s)",
+    "[17:23:08] llm ok role=checker model=claude-cli attempt=1 ms=41745",
+    "[17:23:08] us-iran-war-cost-38-1-billion-7017c2: 14 of 14 sentences checked · 10 supported · 1 without a source · 2 confirmed error(s)",
+    "[17:23:08]   ✗ [hedge] 21.7 مليار دولار لاستبدال الذخائر و10.4 مليار لساعات الطيران وتحذير من استنزاف ثلثي مخزون صواريخ الاعتراض — CBO said the war consumed as much as two-thirds of interceptors (between one-half and two-thirds of certain interceptors), not a flat two-thirds.",
+    "[17:23:08]   ✗ [term] ولفت إلى أن تقديرات مكتب الميزانية شملت 13.1 مليار دولار لصواريخ الاعتراض و7.3 مليار لصواريخ كروز أرض-أرض، و10 — The $7.3 billion is for land-attack cruise missiles (such as Tomahawks), not ground-to-ground cruise missiles.",
+    "[17:23:12] llm ok role=checker model=claude-cli attempt=1 ms=57601",
+    "[17:23:12] egypt-bp-four-wells-700-million-5a4448: 22 of 22 sentences checked · 22 supported · 0 without a source · 0 confirmed error(s)",
+    "[17:23:55] llm ok role=checker model=claude-cli attempt=1 ms=42311",
+    "[17:23:55] brent-surges-above-109-disruptions-e510e5: 18 of 18 sentences checked · 14 supported · 1 without a source · 1 confirmed error(s) · 1 listed for a person",
+    "[17:23:55]   ✗ [attribution] وأوضحت المصادر أن الخط كان ينقل ما بين 4 إلى 5 ملايين برميل يومياً قبل إغلاقه. — The 4-5 million bpd figure is Al Jazeera's own reporting, not a statement by the Reuters sources.",
+    "[17:23:55] corrections: 4 stories to the corrections editor",
+    "[17:23:55] [correct] saudi-tanker-war-risk-insurance-yanbu-triples-425bf1: fetching 2 source(s)",
+    "[17:24:12] [correct] llm ok role=writer model=claude-cli attempt=1 ms=16114",
+    "[17:24:12] [correct] saudi-tanker-war-risk-insurance-yanbu-triples-425bf1: corrected; fields body",
+    "[17:24:12]     note: نسبت نسخة سابقة من هذا الخبر إلى مصادر قطاع التأمين القول إن الأسعار المتفق عليها فعلاً بين شركات التأمين وعملائها تختلف عن العروض المعلنة. والصحيح أن هذا التحفظ ورد في التقرير نفسه ولم يُنسب إلى تلك المصادر.",
+    "[17:24:12] [correct] us-mortgage-rates-top-7-percent-558e6b: fetching 2 source(s)",
+    "[17:24:28] [correct] llm ok role=writer model=claude-cli attempt=1 ms=15164",
+    "[17:24:28] [correct] us-mortgage-rates-top-7-percent-558e6b: corrected; fields body",
+    "[17:24:28]     note: ذكرت نسخة سابقة من هذا الخبر أن أنتوني سميث يشغل منصب كبير الاقتصاديين في موقع «ريلتور دوت كوم» العقاري، والصحيح أنه خبير اقتصادي أول في الموقع.",
+    "[17:24:28] [correct] us-iran-war-cost-38-1-billion-7017c2: fetching 4 source(s)",
+    "[17:24:43] [correct] llm ok role=writer model=claude-cli attempt=1 ms=12851",
+    "[17:24:43] [correct] us-iran-war-cost-38-1-billion-7017c2: corrected; fields subtitle, body",
+    "[17:24:43]     note: ذكرت نسخة سابقة من هذا الخبر أن الحرب استنزفت ثلثي مخزون صواريخ الاعتراض، والصحيح أن مكتب الميزانية بالكونغرس قدّر ما استُهلك بما يصل إلى الثلثين. كما وصفت النسخة نفسها مبلغ 7.3 مليار دولار بأنه لصواريخ كروز أرض-أرض، والصحيح أنه لصواريخ كروز المخصصة لضرب أهداف برية.",
+    "[17:24:43] [correct] brent-surges-above-109-disruptions-e510e5: fetching 4 source(s)",
+    "[17:25:01] [correct] llm ok role=writer model=claude-cli attempt=1 ms=15962",
+    "[17:25:01] [correct] brent-surges-above-109-disruptions-e510e5: corrected; fields body",
+    "[17:25:01]     note: ذكرت نسخة سابقة من هذا الخبر أن مصادر لرويترز أوضحت أن خط الشرق-الغرب السعودي كان ينقل ما بين 4 و5 ملايين برميل يومياً قبل إغلاقه، والصحيح أن هذا الرقم لم يصدر عن تلك المصادر، التي تحدثت عن مدة الإصلاحات فقط.",
+    "[17:25:01] [correct] done: 4 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-09-25T17-23-55-350Z.json"
+  ]
+}

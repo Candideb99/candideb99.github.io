@@ -1,0 +1,89 @@
+{
+  "startedAt": "2026-09-25T17:23:55.500Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "saudi-tanker-war-risk-insurance-yanbu-triples-425bf1",
+      "issue": "The body says «وأضافت المصادر أن الأسعار التي تتفق عليها شركات التأمين فعلاً مع عملائها تختلف عن العروض المعلنة، ولا تُنشر عنها بيانات عامة.» (The insurance sources added that prices actually agreed between insurers and clients differ from published quotes and that no public data exist on them.). Source Al Jazeera Arabic says: \"وتختلف الأسعار المتفق عليها فعليا بين شركات التأمين والعملاء عن العروض المعلنة، ولا تتوافر عنها بيانات عامة.\". This caveat is the report's own statement, not something attributed to the insurance sources.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "نسبت نسخة سابقة من هذا الخبر إلى مصادر قطاع التأمين القول إن الأسعار المتفق عليها فعلاً بين شركات التأمين وعملائها تختلف عن العروض المعلنة. والصحيح أن هذا التحفظ ورد في التقرير نفسه ولم يُنسب إلى تلك المصادر.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وأضافت المصادر أن الأسعار التي تتفق عليها شركات التأمين فعلاً مع عملائها تختلف عن العروض المعلنة، ولا تُنشر عنها بيانات عامة."
+      ],
+      "newSentences": [
+        "وتختلف الأسعار التي تتفق عليها شركات التأمين فعلاً مع عملائها عن العروض المعلنة، ولا تُنشر عنها بيانات عامة."
+      ]
+    },
+    {
+      "slug": "us-mortgage-rates-top-7-percent-558e6b",
+      "issue": "The body says «وقال أنتوني سميث، كبير الاقتصاديين في موقع «ريلتور دوت كوم» العقاري، إن مبيعات المنازل القائمة تراجعت في أغسطس إلى أدنى مستوى لها منذ بداية العام، وإن عقود بيع المنازل قيد الإتمام باتت أدنى من مستواها قبل عام.» (Anthony Smith, described as the chief economist («كبير الاقتصاديين») at Realtor.com, said existing home sales fell in August to their lowest since the start of the year and pending sales are below their year-earlier level.). Source The Guardian says: \"The housing market has long been in a slowdown, said Anthony Smith, a senior economist at Realtor.com, with existing home sales hitting their 2026 low so far in August and pending sales that have turned negative year over year.\". Anthony Smith is a senior economist at Realtor.com, not its chief economist.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أنتوني سميث يشغل منصب كبير الاقتصاديين في موقع «ريلتور دوت كوم» العقاري، والصحيح أنه خبير اقتصادي أول في الموقع.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وقال أنتوني سميث، كبير الاقتصاديين في موقع «ريلتور دوت كوم» العقاري، إن مبيعات المنازل القائمة تراجعت في أغسطس إلى أدنى مستوى لها منذ بداية العام، وإن عقود بيع المنازل قيد الإتمام باتت أدنى من مستواها قبل عام."
+      ],
+      "newSentences": [
+        "وقال أنتوني سميث، الخبير الاقتصادي الأول في موقع «ريلتور دوت كوم» العقاري، إن مبيعات المنازل القائمة تراجعت في أغسطس إلى أدنى مستوى لها منذ بداية العام، وإن عقود بيع المنازل قيد الإتمام باتت أدنى من مستواها قبل عام."
+      ]
+    },
+    {
+      "slug": "us-iran-war-cost-38-1-billion-7017c2",
+      "issue": "1. The dek says «21.7 مليار دولار لاستبدال الذخائر و10.4 مليار لساعات الطيران وتحذير من استنزاف ثلثي مخزون صواريخ الاعتراض» ($21.7 billion to replace munitions and $10.4 billion for flying hours, plus a warning that two-thirds of the interceptor stockpile has been depleted (stated as a flat two-thirds).). Source CNBC says: \"The war has also consumed as much as two-thirds of the nation's missile-defense interceptors since June 2025, largely as a result of the U.S. helping defend Israel against Iranian attacks, leaving the U.S. with reduced inventories for several years, CBO warned.\". CBO said the war consumed as much as two-thirds of interceptors (between one-half and two-thirds of certain interceptors), not a flat two-thirds.\n2. The body says «ولفت إلى أن تقديرات مكتب الميزانية شملت 13.1 مليار دولار لصواريخ الاعتراض و7.3 مليار لصواريخ كروز أرض-أرض، و10.4 مليار لساعات الطيران الإضافية و2.7 مليار دولار لتكاليف الوقود الإضافية.» (CBO estimates included $13.1 billion for interceptors, $7.3 billion for surface-to-surface ('ground-to-ground') cruise missiles, $10.4 billion for extra flying hours and $2.7 billion for extra fuel costs.). Source Breaking Defense says: \"As the report lays out, the largest chunk of change was for the $21.7 billion it will cost the DoD to replace expended munitions — including $13.1 billion for interceptors, $7.3 billion for land-attack cruise missiles and $1.2 billion for “other munitions.”\". The $7.3 billion is for land-attack cruise missiles (such as Tomahawks), not ground-to-ground cruise missiles.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "subtitle",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن الحرب استنزفت ثلثي مخزون صواريخ الاعتراض، والصحيح أن مكتب الميزانية بالكونغرس قدّر ما استُهلك بما يصل إلى الثلثين. كما وصفت النسخة نفسها مبلغ 7.3 مليار دولار بأنه لصواريخ كروز أرض-أرض، والصحيح أنه لصواريخ كروز المخصصة لضرب أهداف برية.",
+      "model": "claude-cli",
+      "before": {
+        "subtitle": "21.7 مليار دولار لاستبدال الذخائر و10.4 مليار لساعات الطيران وتحذير من استنزاف ثلثي مخزون صواريخ الاعتراض"
+      },
+      "after": {
+        "subtitle": "21.7 مليار دولار لاستبدال الذخائر و10.4 مليار لساعات الطيران وتحذير من استنزاف ما يصل إلى ثلثي مخزون صواريخ الاعتراض"
+      },
+      "changedSentences": [
+        "21.7 مليار دولار لاستبدال الذخائر و10.4 مليار لساعات الطيران وتحذير من استنزاف ثلثي مخزون صواريخ الاعتراض",
+        "ولفت إلى أن تقديرات مكتب الميزانية شملت 13.1 مليار دولار لصواريخ الاعتراض و7.3 مليار لصواريخ كروز أرض-أرض، و10.4 مليار لساعات الطيران الإضافية و2.7 مليار دولار لتكاليف الوقود الإضافية."
+      ],
+      "newSentences": [
+        "21.7 مليار دولار لاستبدال الذخائر و10.4 مليار لساعات الطيران وتحذير من استنزاف ما يصل إلى ثلثي مخزون صواريخ الاعتراض",
+        "ولفت إلى أن تقديرات مكتب الميزانية شملت 13.1 مليار دولار لصواريخ الاعتراض و7.3 مليار لصواريخ كروز المخصصة لضرب أهداف برية، و10.4 مليار لساعات الطيران الإضافية و2.7 مليار دولار لتكاليف الوقود الإضافية."
+      ]
+    },
+    {
+      "slug": "brent-surges-above-109-disruptions-e510e5",
+      "issue": "The body says «وأوضحت المصادر أن الخط كان ينقل ما بين 4 إلى 5 ملايين برميل يومياً قبل إغلاقه.» (The (Reuters) sources said the line carried 4 to 5 million bpd before its closure.). Source Al Jazeera Arabic says: \"ويمتد خط شرق-غرب لمسافة 1200 كيلومتر عبر السعودية، وكان ينقل ما بين 4 و5 ملايين برميل يوميا، بما يعادل نحو 4% إلى 5% من الإمدادات العالمية، واكتسب أهمية متزايدة في الأشهر الستة الماضية مع تعطل حركة النفط عبر مضيق هرمز.\". The 4-5 million bpd figure is Al Jazeera's own reporting, not a statement by the Reuters sources.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن مصادر لرويترز أوضحت أن خط الشرق-الغرب السعودي كان ينقل ما بين 4 و5 ملايين برميل يومياً قبل إغلاقه، والصحيح أن هذا الرقم لم يصدر عن تلك المصادر، التي تحدثت عن مدة الإصلاحات فقط.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وأوضحت المصادر أن الخط كان ينقل ما بين 4 إلى 5 ملايين برميل يومياً قبل إغلاقه."
+      ],
+      "newSentences": [
+        "وكان الخط ينقل ما بين 4 إلى 5 ملايين برميل يومياً قبل إغلاقه."
+      ]
+    }
+  ]
+}

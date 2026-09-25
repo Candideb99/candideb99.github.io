@@ -2631,6 +2631,376 @@
       "weak": [],
       "outcome": "corrected",
       "note": "ذكرت نسخة سابقة من هذا الخبر أن ديميس هاسابيس اقترح إنشاء هيئة معايير أمريكية بقيادة القطاع الخاص، والصحيح أنه اقترح هيئة معايير بقيادة أمريكية تكون شراكة بين القطاعين العام والخاص أو منظمة ذاتية التنظيم تخضع لرقابة اتحادية."
+    },
+    "brent-tops-106-houthi-aramco-attacks-a2e448": {
+      "at": "2026-09-25T17:20:39.167Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-25T05:12:14.151Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 17,
+        "weak": 2,
+        "noEvidence": 3,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "إغلاق عقود برنت لنوفمبر الخميس: فوق 106.50 دولار للبرميل",
+        "أعلى مستوى لبرنت خلال الجلسة: فوق 108 دولارات للبرميل",
+        "وكانت العقود الآجلة لبرنت تسليم نوفمبر قد تخطت 108 دولارات في وقت سابق من جلسة الخميس، قبل أن تقلّص مكاسبها عند الإغلاق."
+      ],
+      "weak": [
+        {
+          "sentence": "ارتفع خام برنت بأكثر من 3% الخميس ليغلق فوق 106.50 دولار للبرميل، بعدما أعلن الحوثيون استهداف منشآت لشركة أرامكو في مدينة ينبع السعودية بالصواريخ والطائرات المسيّرة.",
+          "quote": "Brent crude, the key yardstick of global prices, rose more than 3 percent on Thursday as the attacks stoked fears of additional disruption to energy supplies already facing constraints due to the US-Israel war on Iran."
+        },
+        {
+          "sentence": "ويُعدّ برنت المؤشر الرئيسي لأسعار النفط في العالم، وتورّد أرامكو نحو 10% من الطلب العالمي على الخام.",
+          "quote": "Brent crude, the key yardstick of global prices, rose more than 3 percent on Thursday as the attacks stoked fears of additional disruption to energy supplies already facing constraints due to the US-Israel war on Iran."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "saudi-tanker-war-risk-insurance-yanbu-triples-425bf1": {
+      "at": "2026-09-25T17:20:39.139Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-25T05:17:03.037Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 24,
+        "checked": 24,
+        "supported": 22,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 15,
+          "field": "body",
+          "sentence": "وأضافت المصادر أن الأسعار التي تتفق عليها شركات التأمين فعلاً مع عملائها تختلف عن العروض المعلنة، ولا تُنشر عنها بيانات عامة.",
+          "claim": "The insurance sources added that prices actually agreed between insurers and clients differ from published quotes and that no public data exist on them.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Al Jazeera Arabic",
+          "sourceDate": "2026-09-24",
+          "quote": "وتختلف الأسعار المتفق عليها فعليا بين شركات التأمين والعملاء عن العروض المعلنة، ولا تتوافر عنها بيانات عامة.",
+          "correction": "This caveat is the report's own statement, not something attributed to the insurance sources.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "وبهذا المستوى تقترب كلفة التأمين في ينبع من كلفتها عند عبور مضيق هرمز، إذ تتراوح العلاوة المعروضة هناك بين 6% و9% من قيمة السفينة.",
+          "quote": "Saudi Arabia’s workaround for the Strait of Hormuz now carries a war-risk insurance bill nearly as expensive as sending tankers through Hormuz itself."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "نسبت نسخة سابقة من هذا الخبر إلى مصادر قطاع التأمين القول إن الأسعار المتفق عليها فعلاً بين شركات التأمين وعملائها تختلف عن العروض المعلنة. والصحيح أن هذا التحفظ ورد في التقرير نفسه ولم يُنسب إلى تلك المصادر."
+    },
+    "egypt-petroleum-ministry-denies-fuel-price-hike-40ab37": {
+      "at": "2026-09-25T17:21:11.475Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-24T21:49:55.165Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 15,
+        "checked": 15,
+        "supported": 13,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "يبقى سعر البنزين والسولار في محطات الوقود المصرية على حاله ما دامت لجنة التسعير التلقائي لم تجتمع ولم تصدر قراراً جديداً.",
+        "ولم تحدد الوزارة في بيانها موعداً لانعقاد اللجنة، ولم تُفصح عن أي تعديل مرتقب على أسعار البنزين والسولار."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "us-mortgage-rates-top-7-percent-558e6b": {
+      "at": "2026-09-25T17:21:40.145Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-24T21:47:04.206Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 18,
+        "weak": 0,
+        "noEvidence": 4,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 22,
+          "field": "body",
+          "sentence": "وقال أنتوني سميث، كبير الاقتصاديين في موقع «ريلتور دوت كوم» العقاري، إن مبيعات المنازل القائمة تراجعت في أغسطس إلى أدنى مستوى لها منذ بداية العام، وإن عقود بيع المنازل قيد الإتمام باتت أدنى من مستواها قبل عام.",
+          "claim": "Anthony Smith, described as the chief economist («كبير الاقتصاديين») at Realtor.com, said existing home sales fell in August to their lowest since the start of the year and pending sales are below their year-earlier level.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "The Guardian",
+          "sourceDate": "2026-09-24",
+          "quote": "The housing market has long been in a slowdown, said Anthony Smith, a senior economist at Realtor.com, with existing home sales hitting their 2026 low so far in August and pending sales that have turned negative year over year.",
+          "correction": "Anthony Smith is a senior economist at Realtor.com, not its chief economist.",
+          "class": "term"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "ذروة الفائدة أواخر 2023: 7.79%",
+        "سعر خام برنت: أكثر من 105 دولارات للبرميل",
+        "وتخطى خام برنت، المعيار الدولي للنفط، 105 دولارات للبرميل في وقت سابق من الخميس.",
+        "وكانت فائدة الرهن لأجل 30 عاماً قد تراجعت خلال العام الماضي من ذروة 7.79% بلغتها في أواخر 2023."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أنتوني سميث يشغل منصب كبير الاقتصاديين في موقع «ريلتور دوت كوم» العقاري، والصحيح أنه خبير اقتصادي أول في الموقع."
+    },
+    "china-fuel-inventories-seven-year-low-exports-221e8e": {
+      "at": "2026-09-25T17:21:49.064Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-24T21:43:14.394Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 21,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "ولم تعلن بكين حتى الآن خططها لتصدير الوقود في أكتوبر."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "us-iran-war-cost-38-1-billion-7017c2": {
+      "at": "2026-09-25T17:22:24.139Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-15T21:38:31.535Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 14,
+        "checked": 14,
+        "supported": 10,
+        "weak": 1,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 2,
+          "field": "subtitle",
+          "sentence": "21.7 مليار دولار لاستبدال الذخائر و10.4 مليار لساعات الطيران وتحذير من استنزاف ثلثي مخزون صواريخ الاعتراض",
+          "claim": "$21.7 billion to replace munitions and $10.4 billion for flying hours, plus a warning that two-thirds of the interceptor stockpile has been depleted (stated as a flat two-thirds).",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-15",
+          "quote": "The war has also consumed as much as two-thirds of the nation's missile-defense interceptors since June 2025, largely as a result of the U.S. helping defend Israel against Iranian attacks, leaving the U.S. with reduced inventories for several years, CBO warned.",
+          "correction": "CBO said the war consumed as much as two-thirds of interceptors (between one-half and two-thirds of certain interceptors), not a flat two-thirds.",
+          "class": "hedge"
+        },
+        {
+          "id": 13,
+          "field": "body",
+          "sentence": "ولفت إلى أن تقديرات مكتب الميزانية شملت 13.1 مليار دولار لصواريخ الاعتراض و7.3 مليار لصواريخ كروز أرض-أرض، و10.4 مليار لساعات الطيران الإضافية و2.7 مليار دولار لتكاليف الوقود الإضافية.",
+          "claim": "CBO estimates included $13.1 billion for interceptors, $7.3 billion for surface-to-surface ('ground-to-ground') cruise missiles, $10.4 billion for extra flying hours and $2.7 billion for extra fuel costs.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Breaking Defense",
+          "sourceDate": "2026-09-15",
+          "quote": "As the report lays out, the largest chunk of change was for the $21.7 billion it will cost the DoD to replace expended munitions — including $13.1 billion for interceptors, $7.3 billion for land-attack cruise missiles and $1.2 billion for “other munitions.”",
+          "correction": "The $7.3 billion is for land-attack cruise missiles (such as Tomahawks), not ground-to-ground cruise missiles.",
+          "class": "term"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "كما أن تأثيرها على أسعار الوقود والنقل يرفع تكلفة الاستيراد والنقل في المنطقة، مما يضغط على ميزانيات الأسر والشركات في دول الخليج والشرق الأوسط، ويزيد من الضغوط التضخمية التي تواجهها الاقتصادات العربية بالفعل."
+      ],
+      "weak": [
+        {
+          "sentence": "وأشار إلى أن الحرب قد ترفع التضخم السنوي بمقدار 0.5 نقطة مئوية بحلول الربع الأول من 2027، وأن البنزين سيشكل نحو 40% من تأثير الحرب على أسعار المستهلكين بحلول أوائل 2027.",
+          "quote": "CBO estimated that by the first quarter of 2027, the war will have raised year-over-year inflation, as measured by the personal consumption expenditures price index — which is the Federal Reserve's preferred inflation measure — by 0.5 percentage points."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن الحرب استنزفت ثلثي مخزون صواريخ الاعتراض، والصحيح أن مكتب الميزانية بالكونغرس قدّر ما استُهلك بما يصل إلى الثلثين. كما وصفت النسخة نفسها مبلغ 7.3 مليار دولار بأنه لصواريخ كروز أرض-أرض، والصحيح أنه لصواريخ كروز المخصصة لضرب أهداف برية."
+    },
+    "egypt-bp-four-wells-700-million-5a4448": {
+      "at": "2026-09-25T17:22:13.583Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-24T21:40:04.455Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 22,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "brent-surges-above-109-disruptions-e510e5": {
+      "at": "2026-09-25T17:23:08.006Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-15T21:36:49.755Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 14,
+        "weak": 1,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 1,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 13,
+          "field": "body",
+          "sentence": "وأوضحت المصادر أن الخط كان ينقل ما بين 4 إلى 5 ملايين برميل يومياً قبل إغلاقه.",
+          "claim": "The (Reuters) sources said the line carried 4 to 5 million bpd before its closure.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Al Jazeera Arabic",
+          "sourceDate": "2026-09-15",
+          "quote": "ويمتد خط شرق-غرب لمسافة 1200 كيلومتر عبر السعودية، وكان ينقل ما بين 4 و5 ملايين برميل يوميا، بما يعادل نحو 4% إلى 5% من الإمدادات العالمية، واكتسب أهمية متزايدة في الأشهر الستة الماضية مع تعطل حركة النفط عبر مضيق هرمز.",
+          "correction": "The 4-5 million bpd figure is Al Jazeera's own reporting, not a statement by the Reuters sources.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [
+        {
+          "status": "listed",
+          "class": "cause",
+          "field": "whyItMatters",
+          "sentence": "وتشير مشتريات «أدنوق» الكبيرة من الخام العراقي المخفّض إلى أن كبار المكررين بدأوا يبحثون عن بدائل لتعويض النقص.",
+          "quote": "ADNOC is buying tens of millions of barrels of deeply discounted Iraqi crude, processing much of it at home and freeing more of its own barrels for export through a route that avoids the Strait of Hormuz.",
+          "source": "OilPrice.com",
+          "correction": "According to the source, ADNOC is buying the Iraqi crude to exploit steep discounts, refining it at home so it can export more of its own crude, not to make up for a shortage."
+        }
+      ],
+      "notFound": [
+        "أظهرت بيانات من رويترز أن شركة أدنوق اشترت 32 مليون برميل من النفط العراقي لشهر أغسطس بخصم يتراوح بين 24.90 و27 دولاراً للبرميل، و40 مليون برميل لشهر سبتمبر، منها 10 ملايين برميل بخصم 18 دولاراً و30 مليون برميل بخصم 25 دولاراً للبرميل."
+      ],
+      "weak": [
+        {
+          "sentence": "قفز سعر خام برنت فوق 109 دولارات للبرميل الثلاثاء، متأثراً بتعطل صادرات النفط السعودي من ميناء ينبع وتوقف الإنتاج في حقول ليبية رئيسية.",
+          "quote": "قفزت أسعار النفط بأكثر من 3%، الثلاثاء، مع تصاعد المخاوف بشأن الإمدادات بعد تعليق تحميل الخام في ميناء ينبع السعودي وإلغاء بعض الشحنات إلى أوروبا، بالتزامن مع توقف الإنتاج في 3 مواقع نفطية ليبية واستمرار الاضطرابات في مسارات الشحن الرئيسية بالشرق الأوسط."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن مصادر لرويترز أوضحت أن خط الشرق-الغرب السعودي كان ينقل ما بين 4 و5 ملايين برميل يومياً قبل إغلاقه، والصحيح أن هذا الرقم لم يصدر عن تلك المصادر، التي تحدثت عن مدة الإصلاحات فقط."
     }
   }
 }
