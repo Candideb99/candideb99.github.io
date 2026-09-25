@@ -35,7 +35,15 @@ Every 3 hours (and once a day each for an explainer and an analysis, and on Sund
   reads before every story, so the same kind of mistake is not made again. No approval needed; the Desk lists them
   under "What the newsroom has learned". New sections and other changes to the site stay yours, by hand. One story
   in five is written without the lessons, on purpose, so the week's numbers can keep showing whether the learning
-  really helps (the first test: 7 proved errors in 16 stories without the lessons, 3 with them).
+  really helps (the first test: 7 proved errors in 16 stories without the lessons, 3 with them). From the day the
+  site goes public this stops: instead two stories a day are also written privately without the lessons and both
+  versions are fact-checked; the extra version is never published.
+- **Proving it.** Two stories a day are also written privately with the last approved lessons (and, after launch,
+  with none), from the same sources, and a fact-checker that does not know which is which counts the mistakes; the
+  extra versions are never published. Every Monday the evidence decides, by a rule fixed in advance: keep the
+  current lessons, promote them, or put back the approved ones. First it tests the fact-checker itself with a few
+  planted mistakes. Honest limits: whether the lessons help overall can be proven in weeks to a few months; whether
+  one week's small change helps cannot be, at this cost. The Desk shows where the evidence stands.
 - **The morning round, free.** Every day, without Claude: are the photos still in place at Wikimedia and Flickr (a
   renamed photo is re-addressed at once, a deleted one is replaced), is news still flowing, are the market quotes
   fresh, does the live site carry the newest story? Claude is woken only if something is broken, and at most once

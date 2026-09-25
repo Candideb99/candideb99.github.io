@@ -23,6 +23,8 @@ import { appendFileSync, mkdirSync, readFileSync, readdirSync, writeFileSync } f
 import path from "node:path";
 import YAML from "yaml";
 import { styleIssues } from "../pipeline/lib/style.mjs";
+import { canaryAlarm, tally } from "../pipeline/lib/evidence.mjs";
+import { CHECKER_VERSION } from "../pipeline/lib/factcheck.mjs";
 
 const DAY = 86_400_000;
 const now = Date.now();
@@ -130,7 +132,14 @@ function windowOf(from, to) {
 }
 
 const lessonsState = readJson(path.join("pipeline", "state", "lessons.json"));
-const lessonsNow = { version: lessonsState?.version ?? 0, active: (lessonsState?.lessons ?? []).filter((l) => l.status === "active").length, learnedFrom: (lessonsState?.used ?? []).length };
+const lessonsNow = { version: lessonsState?.version ?? 0, active: (lessonsState?.lessons ?? []).filter((l) => l.status === "active").length, learnedFrom: (lessonsState?.used ?? []).length, kept: lessonsState?.kept?.version ?? null, lastTest: (lessonsState?.tests ?? []).at(-1) ?? null };
+// The evidence on the lessons so far (lib/evidence.mjs): the pairs run.mjs records as it writes, judged by the current
+// fact-check only, since the kept version (live against kept) and in all (the lessons against none).
+const pairs = readJson(path.join("pipeline", "state", "pairs.json"))?.pairs ?? [];
+const keptV = lessonsState?.kept?.version ?? 0;
+const vsKept = tally(pairs.filter((p) => (p.keptVersion ?? 0) === keptV), "kept", { checker: CHECKER_VERSION, since: lessonsState?.kept?.at ?? null });
+const vsNone = tally(pairs, "none", { checker: CHECKER_VERSION });
+const canaryNow = canaryAlarm((lessonsState?.canary ?? []).filter((c) => c.checker === CHECKER_VERSION));
 const week = windowOf(7, 0);
 const before = windowOf(14, 7);
 const today = windowOf(1, 0);
@@ -140,6 +149,7 @@ const date = new Date(now).toISOString().slice(0, 10);
 quality.days = [...quality.days.filter((d) => d.date !== date), { date, published: today.published, news: today.news, styleFaultsPerStory: today.styleFaultsPerStory, corrections: today.corrections, read: today.secondLook.read, confirmedPerStory: today.secondLook.confirmedPerStory, photosPending: health?.last?.photos?.pending ?? null }].slice(-90);
 quality.updatedAt = new Date(now).toISOString();
 quality.lessons = lessonsNow;
+quality.evidence = { pairs: pairs.length, vsKept, vsNone, canary: canaryNow, lastDecision: lessonsNow.lastTest ? { at: lessonsNow.lastTest.at, decision: lessonsNow.lastTest.decision, reason: lessonsNow.lastTest.reason } : null };
 quality.week = week;
 quality.weekBefore = before;
 
@@ -158,6 +168,10 @@ const md = [
   `| … Claude's stories written without them: the control group and before (read) | ${week.secondLook.claudeWithout.confirmedPerStory ?? "–"} (${week.secondLook.claudeWithout.read}) | ${before.secondLook.claudeWithout.confirmedPerStory ?? "–"} (${before.secondLook.claudeWithout.read}) |`,
   `| words · key facts a story, with the lessons / control group (fewer errors must not mean saying less) | ${week.usefulness.withLessons.words ?? "–"} · ${week.usefulness.withLessons.keyFacts ?? "–"} / ${week.usefulness.control.words ?? "–"} · ${week.usefulness.control.keyFacts ?? "–"} | |`,
   `| lessons the writer reads (learned from proved mistakes) | ${lessonsNow.active} (${lessonsNow.learnedFrom}) | |`,
+  `| the lessons against none: better · worse · tied in paired drafts (evidence, 20 proves) | ${vsNone.better} · ${vsNone.worse} · ${vsNone.tied} (×${vsNone.e.toFixed(1)}) | |`,
+  `| live lessons against the kept version (evidence; harm reverts at 10) | ${vsKept.better} · ${vsKept.worse} · ${vsKept.tied} (×${vsKept.e.toFixed(1)}; harm ×${vsKept.harm.toFixed(1)}) | |`,
+  `| the fact-check's canary: planted errors found | ${canaryNow.found} of ${canaryNow.seeded}${canaryNow.alarm ? " — ALARM" : ""} | |`,
+  `| the last weekly decision | ${lessonsNow.lastTest ? `${lessonsNow.lastTest.decision}, ${lessonsNow.lastTest.at.slice(0, 10)}` : "none yet"} | |`,
   `| corrections printed | ${week.corrections} | ${before.corrections} |`,
   `| Claude calls per story written (runs kept) | ${week.runs.callsPerStory ?? "–"} | ${before.runs.callsPerStory ?? "–"} |`,
   "",

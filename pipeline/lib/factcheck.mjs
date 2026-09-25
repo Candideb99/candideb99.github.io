@@ -29,7 +29,8 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import YAML from "yaml";
-import { chat } from "./llm.mjs";
+import { createHash } from "node:crypto";
+import { CLAUDE_MODEL, chat } from "./llm.mjs";
 import { extractArticle } from "./extract.mjs";
 import { ARTICLES_DIR } from "./article.mjs";
 import { extractNumbers, normalizeDigits, ungroundedNumbers } from "./util.mjs";
@@ -200,6 +201,16 @@ Judge by the source material and the story alone. Your own knowledge of the worl
 Answer with one JSON object:
 {"checks": [{"id": <sentence number>, "claim": "...", "verdict": "supported" | "contradicted" | "conflict" | "not_found", "source": <source number, 0 for the story itself, null when not_found>, "quote": "...", "correction": "...", "class": "..."}]}`;
 }
+
+/**
+ * The fact-check's own version: its instructions, the code that judges its answers and the model, hashed. Every test,
+ * private pair and second-look record carries it, so results are pooled only while the judge stays the same (a
+ * review of the design, 2026-09-25: an evaluator the loop cannot touch, with its version recorded).
+ */
+export const CHECKER_VERSION = createHash("sha1")
+  .update([SYSTEM, prompt.toString(), quoteFound.toString(), process.env.KHAZENDAR_CLAUDE_MODEL || CLAUDE_MODEL].join(" | "))
+  .digest("hex")
+  .slice(0, 10);
 
 /**
  * Checks one story. `story` carries the article's fields (title, subtitle, lede, keyFacts, whyItMatters, body,

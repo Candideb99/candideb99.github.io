@@ -15,13 +15,15 @@ on:
     - cron: "47 7 * * 0"
     # Every news round first reads the earlier rounds' stories again against their sources (the second look) and learns
     # from what it proves (the lessons), then writes (2026-09-25; the separate twice-daily second-look run was folded in).
+    # The weekly test of the lessons: keep the current ones or put back the last version that passed (Mondays).
+    - cron: "13 6 * * 1"
   workflow_dispatch:
     inputs:
       mode:
-        description: news, explainer, analysis, paper, weekly, feature (في العمق) or recheck (the second look)
+        description: news, explainer, analysis, paper, weekly, feature (في العمق), recheck (the second look) or lessons-test
         default: news
         type: choice
-        options: [news, explainer, analysis, paper, weekly, feature, recheck]
+        options: [news, explainer, analysis, paper, weekly, feature, recheck, lessons-test]
       limit:
         description: maximum stories to publish
         default: "4"
@@ -87,9 +89,10 @@ jobs:
             elif [ "$SCHEDULE" = "37 15 * * 5" ]; then mode=weekly;
             elif [ "$SCHEDULE" = "7 10 * * 6" ]; then mode=analysis; sections=defense;
             elif [ "$SCHEDULE" = "47 7 * * 0" ]; then mode=feature;
+            elif [ "$SCHEDULE" = "13 6 * * 1" ]; then mode=lessons-test;
             else mode=news; fi
           fi
-          case "$mode" in news|explainer|analysis|paper|weekly|feature|recheck) ;; *) echo "invalid mode: $mode"; exit 2;; esac
+          case "$mode" in news|explainer|analysis|paper|weekly|feature|recheck|lessons-test) ;; *) echo "invalid mode: $mode"; exit 2;; esac
           review=""
           if [ "$REVIEW" = "1" ]; then review=1; fi
           echo "review=$review" >> "$GITHUB_OUTPUT"
@@ -149,7 +152,12 @@ jobs:
           MODE: ${{ steps.mode.outputs.mode }}
           LIMIT: ${{ steps.mode.outputs.limit }}
           SECTIONS: ${{ steps.mode.outputs.sections }}
-        run: node pipeline/run.mjs --mode="$MODE" --limit="$LIMIT" --sections="$SECTIONS" ${REVIEW:+--draft}
+        run: |
+          if [ "$MODE" = lessons-test ]; then
+            node pipeline/lessons-test.mjs
+          else
+            node pipeline/run.mjs --mode="$MODE" --limit="$LIMIT" --sections="$SECTIONS" ${REVIEW:+--draft}
+          fi
 
       - name: Refresh market quotes and the calendar (best effort; the committed files are the fallback)
         timeout-minutes: 5
@@ -172,6 +180,7 @@ jobs:
         env:
           PUBLISHED: ${{ steps.newsroom.outputs.published }}
           CORRECTED: ${{ steps.recheck.outputs.published }}
+          DECISION: ${{ steps.newsroom.outputs.decision }}
           MODE: ${{ steps.mode.outputs.mode }}
         run: |
           git config user.name "khazendar-newsroom"
@@ -183,7 +192,9 @@ jobs:
             echo "nothing to commit"
             exit 0
           fi
-          if [ "$MODE" = recheck ]; then
+          if [ "$MODE" = lessons-test ]; then
+            git commit -m "lessons: the weekly test (${DECISION:-not run})"
+          elif [ "$MODE" = recheck ]; then
             git commit -m "second look: ${CORRECTED:-0} stor$([ "${CORRECTED:-0}" = 1 ] && echo y || echo ies) corrected"
           elif [ "${PUBLISHED:-0}" = "0" ]; then
             git commit -m "newsroom: state after a $MODE run (0 published$fixed)"

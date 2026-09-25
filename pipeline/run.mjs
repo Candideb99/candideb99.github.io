@@ -25,7 +25,9 @@ import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectFeatur
 import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, newsFloor, reviseArticle, writeAnalysis, writeArticle, writeExplainer, writeFeature, writePaperReading, writeWeekly } from "./lib/write.mjs";
 import { critique, programmaticChecks } from "./lib/verify.mjs";
 import { copyEdit } from "./lib/copydesk.mjs";
-import { lessonsBlock, loadLessons } from "./lib/lessons.mjs";
+import { keptBlock, lessonsBlock, loadLessons } from "./lib/lessons.mjs";
+import { draftWith, judge } from "./lib/paired.mjs";
+import { CHECKER_VERSION } from "./lib/factcheck.mjs";
 import { pickImage } from "./lib/images.mjs";
 import { ARTICLES_DIR, buildSlug, loadExistingArticles, serializeArticle } from "./lib/article.mjs";
 import { usage as llmUsage } from "./lib/llm.mjs";
@@ -278,6 +280,23 @@ let LESSONS_VERSION = null;
  */
 const CONTROL_SHARE = 5;
 const inControlGroup = (story) => parseInt(fingerprint(String(story.headlineHint ?? "")).slice(0, 8), 16) % CONTROL_SHARE === 0;
+/**
+ * The evidence on the lessons (2026-09-25: the owner's yes to a weekly test of lesson changes and to private
+ * side-by-side drafts after the launch; the design is a statistics review's, simulated at this newsroom's error rates).
+ * Stories chosen by a hash of their working headline, two a day at most, are also written privately from the same
+ * sources and brief with the reference lessons, and every draft goes to the blind fact-check. The published first
+ * draft is the live side, so a pair costs four calls. Before the launch the reference is the kept version (no lessons
+ * until the first promotion); from the launch (site.json `private: false`), when the published control group stops,
+ * each chosen story is written three ways: live, kept and none. No reference draft is ever published. The record is
+ * pipeline/state/pairs.json; pipeline/lessons-test.mjs decides from it every Monday (lib/evidence.mjs).
+ */
+let LAUNCHED = false;
+let KEPT = "";
+let KEPT_VERSION = 0;
+const PAIRS_PER_DAY = 2;
+const PAIRS_PATH = path.join(root, "pipeline", "state", "pairs.json");
+/** About one story in three is eligible, chosen by hash (not the day's first two, which would favour one hour's news). */
+const inPairSample = (story) => parseInt(fingerprint(`pair:${story.headlineHint ?? ""}`).slice(0, 8), 16) % 3 === 0;
 
 async function produceStory({ story, candidates, existing, recentTitles, models, report }) {
   const { items, sources, evidenceChars } = await collectEvidence(story, candidates);
@@ -320,13 +339,15 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   }
 
   // Stage one: the desk notes, the checked facts of the one event; stage two: the story written from them.
-  const control = Boolean(LESSONS) && inControlGroup(story);
+  const control = !LAUNCHED && Boolean(LESSONS) && inControlGroup(story);
   const lessons = control ? "" : LESSONS;
   if (control) log(`control group: "${story.headlineHint}" is written without the lessons`);
   const notesResult = await deskNotes({ story, sources, log, lessons });
   const notes = notesResult?.notes ?? null;
   if (notes) log(`desk notes: ${notes.facts.length} facts, ${notes.quotes.length} quotes (${notesResult.model})`);
   let { draft, model: writerModel } = await writeArticle({ story, sources, notes, log, lessons });
+  // The writer's own draft, before the desk and the critic touch it: what a private pair compares.
+  const firstDraft = draft;
   const desk = await copyDeskPass(draft, { sources });
   draft = desk.draft;
   const deskModel = desk.model;
@@ -401,13 +422,50 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     await writeFile(path.join(dir, `${slug}.md`), markdown);
   }
   log(`${DRAFT ? "drafted" : "published"} "${draft.title}" -> ${slug}${DRY_RUN ? " (dry-run)" : ""}`);
-  return { slug, items, title: draft.title };
+  return { slug, items, title: draft.title, pairing: !control && LESSONS ? { story, sources, firstDraft, firstNotes: notes, slug, title: draft.title } : null };
+}
+
+/** One published story written again privately with the reference lessons; every draft judged blind; nothing published. */
+async function evidencePair(pairing) {
+  const record = await readJson(PAIRS_PATH, { version: 1, pairs: [] });
+  const today = new Date().toISOString().slice(0, 10);
+  if (record.pairs.filter((p) => String(p.at).startsWith(today)).length >= PAIRS_PER_DAY) return;
+  // The references: the kept version (no lessons until the first promotion), and from the launch no lessons as well.
+  // When the live lessons are the kept ones, a live-vs-kept pair says nothing about a change and is not paid for.
+  const refs = [];
+  if (KEPT !== LESSONS) refs.push({ key: "kept", lessons: KEPT });
+  if (LAUNCHED && KEPT) refs.push({ key: "none", lessons: "" });
+  const writer = pairing.sources.filter((s) => s.text);
+  if (!refs.length || !writer.length) return;
+  const check = writer.map((s, i) => ({ n: i + 1, name: s.sourceNameEn ?? s.sourceName ?? "", title: s.title ?? "", url: s.url, publishedAt: s.publishedAt ?? null, text: s.text, reason: "" }));
+  const stats = (j) => ({ errors: j.errors, severity: j.severity, supported: j.supported, notFound: j.notFound, checked: j.checked, words: j.words, keyFacts: j.keyFacts, classes: j.classes });
+  try {
+    const out = { at: new Date().toISOString(), slug: pairing.slug, checker: CHECKER_VERSION, lessons: `v${LESSONS_VERSION}`, keptVersion: KEPT_VERSION };
+    out.live = stats(await judge({ draft: pairing.firstDraft, notes: pairing.firstNotes, writerSources: writer, checkSources: check, log }));
+    for (const ref of refs) {
+      const { draft, notes } = await draftWith({ story: pairing.story, sources: writer, lessons: ref.lessons, log });
+      out[ref.key] = stats(await judge({ draft, notes, writerSources: writer, checkSources: check, log }));
+    }
+    // With no kept version yet, the kept version is no lessons: the same draft answers both questions.
+    if (!KEPT && out.kept) out.none = out.kept;
+    record.pairs = [...record.pairs, out].slice(-1000);
+    if (!DRY_RUN) {
+      await mkdir(path.dirname(PAIRS_PATH), { recursive: true });
+      await writeFile(PAIRS_PATH, `${JSON.stringify(record, null, 2)}\n`);
+    }
+    log(`evidence pair "${pairing.title}": ${out.live.errors} proved error(s) live (v${LESSONS_VERSION})${out.kept ? `, ${out.kept.errors} with the kept lessons (v${KEPT_VERSION})` : ""}${out.none && out.none !== out.kept ? `, ${out.none.errors} with none` : ""}; the private drafts are not published`);
+  } catch (error) {
+    log(`evidence pair failed: ${String(error.message).split("\n")[0].slice(0, 160)}`);
+  }
 }
 
 async function runNews(report) {
+  LAUNCHED = (await readJson(path.join(root, "src", "data", "site.json"), {})).private === false;
   const lessons = await loadLessons();
   LESSONS = lessonsBlock(lessons);
   LESSONS_VERSION = LESSONS ? lessons.version : null;
+  KEPT = keptBlock(lessons);
+  KEPT_VERSION = lessons.kept?.version ?? 0;
   if (LESSONS) log(`lessons: version ${lessons.version}, ${lessons.lessons.filter((l) => l.status === "active").length} active, read by the desk notes and the writer`);
   const config = await readJson(path.join(root, "pipeline", "sources.json"), { sources: [] });
   // News is filed only into the news sections; the analysis and explainers hubs hold the paper's own pieces.
@@ -499,6 +557,7 @@ async function runNews(report) {
         markItems(state, result.items, "published", result.slug);
         publishedTitles.push(result.title);
         published += 1;
+        if (result.pairing && inPairSample(result.pairing.story)) await evidencePair(result.pairing);
       }
       await saveState(state);
     } catch (error) {

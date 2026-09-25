@@ -28,7 +28,7 @@ import os from "node:os";
 import path from "node:path";
 import YAML from "yaml";
 import { ARTICLES_DIR } from "./lib/article.mjs";
-import { CHECKABLE_KINDS, correctionIssue, loadSources, verifyStory } from "./lib/factcheck.mjs";
+import { CHECKABLE_KINDS, CHECKER_VERSION, correctionIssue, loadSources, verifyStory } from "./lib/factcheck.mjs";
 import { usage as llmUsage } from "./lib/llm.mjs";
 import { hoursSince, isoNow } from "./lib/util.mjs";
 
@@ -121,7 +121,7 @@ function trim(ledger) {
 
 async function check(story, ledger, report, corrections) {
   // `lessons`: the version of the newsroom's lessons the story was written with, so the week's numbers can compare.
-  const entry = { at: isoNow(), kind: story.kind, writer: story.writer.split("→").pop().trim() || null, lessons: story.models?.lessons ?? null, publishedAt: story.publishedAt };
+  const entry = { at: isoNow(), kind: story.kind, writer: story.writer.split("→").pop().trim() || null, lessons: story.models?.lessons ?? null, checker: CHECKER_VERSION, publishedAt: story.publishedAt };
   const sources = await loadSources(story, { log: (m) => log(`${story.slug}: ${m}`) });
   entry.sourcesRead = sources.filter((s) => s.text).length;
   entry.sourcesAll = sources.length;

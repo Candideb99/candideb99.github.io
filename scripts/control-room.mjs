@@ -48,6 +48,7 @@ const SCHEDULE = [
   { what: "In depth (في العمق)", when: "Sundays", utc: "07:47" },
   { what: "Second look and learning: the earlier stories re-read against their sources, the proved mistakes corrected and learned", when: "every news round, before it writes", utc: null },
   { what: "Editor's round: photos, freshness, the week's numbers", when: "daily", utc: "07:17" },
+  { what: "Weekly lessons test: keep the new lessons or put back the last approved ones", when: "Mondays", utc: "06:13" },
   { what: "Market quotes and the calendar", when: "on every build, and every 2 hours", utc: null },
 ];
 
@@ -882,6 +883,8 @@ function renderChecks(s){
     if(h.owner&&h.owner.length)parts.push('<b style="color:var(--amber)">Needs you: '+h.owner.map(esc).join('; ')+'</b>')}
   document.getElementById('checks').innerHTML=parts.length?'Daily checks, no Claude unless something is wrong: '+parts.join(' · '):'';
   var L=s.lessons,act=L&&L.lessons?L.lessons.filter(function(l){return l.status==='active'}):[];
+  var E=s.quality&&s.quality.evidence;
+  if(E&&E.vsNone){var n=E.vsNone,d=E.lastDecision;document.getElementById('checks').innerHTML+=' · <b>Do the lessons help?</b> '+(n.e>=20?'<b>proven</b>':'not proven yet')+': better in '+n.better+' paired stories, worse in '+n.worse+' (evidence ×'+n.e.toFixed(1)+', 20 proves)'+(d?' · <b>Weekly decision</b> '+esc(d.at.slice(0,10))+': '+({promote:'the lessons were promoted',revert:'reverted to the last approved lessons',keep:'kept, unproven',frozen:'frozen, the fact-check is in doubt'}[d.decision]||esc(d.decision)):'')+(E.canary&&E.canary.alarm?' · <b style="color:var(--amber)">The fact-check missed planted errors</b>':'')}
   document.getElementById('lessons-box').style.display=act.length?'block':'none';
   if(act.length){document.getElementById('lessons-sum').innerHTML='<b>What the newsroom has learned</b>: '+act.length+' lessons from '+((L.used||[]).length)+' mistakes it printed and corrected; the writer reads them before every story';
     document.getElementById('lessons-list').innerHTML=act.sort(function(a,b){return b.seen-a.seen}).map(function(l){return '<li>'+esc(l.rule)+' <span style="color:var(--ink-3)">('+esc(l.class)+', seen '+l.seen+'×)</span></li>'}).join('')}
