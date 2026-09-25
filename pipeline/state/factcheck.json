@@ -3409,6 +3409,233 @@
       "weak": [],
       "outcome": "corrected",
       "note": "ذكرت نسخة سابقة من هذا الخبر أن تقرير الجزيرة الإنجليزية صدر الاثنين، وأن السيطرة الحوثية تقطع مساري التصدير السعوديين، وأن الباحث بارا شبان قال إن ثلث الاقتصاد النفطي العالمي يعبر الممر وحذّر من ارتفاع أسعار الوقود. والصحيح أن التقرير صدر في 15 سبتمبر عن سيطرة جرت خلال أيام، وأن المسارين مهددان بالتضييق لا مقطوعان، وأن شبان قال إن إيران تهدد عبر حلفائها نحو ثلث الاقتصاد النفطي العالمي، أما التحذير من أسعار الوقود فصدر عن محللين، ووصف الساحل من الحديدة إلى المخا يعود إلى سعيد ثابيت."
+    },
+    "oecd-raises-2026-global-growth-forecast-e97fa1": {
+      "at": "2026-09-25T22:55:59.075Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-23T11:58:17.574Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 26,
+        "checked": 26,
+        "supported": 21,
+        "weak": 1,
+        "noEvidence": 1,
+        "notFound": 2,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 20,
+          "field": "body",
+          "sentence": "وأشارت المنظمة إلى أن السحب من مخزونات النفط العالمية، والتراجع الشديد في واردات الصين من الطاقة، والتحول إلى أنواع وقود بديلة منها الفحم، خففت أثر شح إمدادات النفط الخليجية.",
+          "claim": "The OECD said drawdowns of global oil inventories, a sharp drop in China's energy imports, and a switch to alternative fuels including coal cushioned the shortage of Gulf oil supplies.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Economy Middle East",
+          "sourceDate": "2026-09-23",
+          "quote": "The impact of the oil shock has so far been moderated by several factors, including greater use of alternative supply routes, inventory drawdowns and the coordinated release of strategic reserves in OECD economies.",
+          "correction": "The OECD cites alternative supply routes, inventory drawdowns, coordinated strategic reserve releases, extra non-Gulf production and weaker oil demand (particularly from China); it does not mention a switch to alternative fuels such as coal or a sharp drop in China's energy imports.",
+          "class": "cause"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "تضخم مجموعة العشرين المتوقع 2027: 3.6%",
+        "ويشتد هذا الخطر إذا عادت اضطرابات إمدادات النفط أو طال أمدها.",
+        "وحذّرت من أن عودة الاضطرابات في الإمدادات أو طول أمدها قد يرفعان التضخم ويُضعفان النمو في آن واحد، وفق ما نقلته صحيفة «الغارديان» البريطانية."
+      ],
+      "weak": [
+        {
+          "sentence": "رفعت منظمة التعاون الاقتصادي والتنمية الأربعاء توقعها لنمو الاقتصاد العالمي في 2026 إلى 2.9%، بدعم من الإنفاق الاستثماري على الذكاء الاصطناعي.",
+          "quote": "قالت منظمة التعاون الاقتصادي والتنمية \"OECD\" الأربعاء، إن الاستثمارات المدفوعة بالذكاء الاصطناعي تساعد الاقتصاد العالمي على الصمود بشكل أفضل قليلا مما كان متوقعا هذا العام، لكن أزمة الطاقة تزداد ترسخا، مما يضغط على التوقعات لعام 2027."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن المنظمة عزت تخفيف صدمة النفط إلى تراجع شديد في واردات الصين من الطاقة وإلى التحول نحو وقود بديل منه الفحم. والصحيح أنها عزته إلى مسارات إمداد بديلة والسحب من المخزونات والإفراج المنسق عن الاحتياطيات الاستراتيجية، إلى جانب الإنتاج من خارج الخليج وضعف الطلب على النفط ولا سيما من الصين."
+    },
+    "saudi-restarts-east-west-oil-pipeline-698775": {
+      "at": "2026-09-25T22:55:59.112Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-22T17:09:09.501Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 25,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 8,
+          "field": "keyFacts",
+          "sentence": "مدة استعادة التدفق: من ستة إلى ثمانية أسابيع",
+          "claim": "The time needed to restore flow is six to eight weeks, stated flatly as a fact.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "OilPrice.com",
+          "sourceDate": "2026-09-22",
+          "quote": "Saudi Arabia’s 7 million b/d East-West Pipeline resumed pumping at a low rate after an 11-day shutdown, potentially allowing Yanbu exports to restart, but restoring the pre-attack flow of around 4 million b/d could take six to eight weeks.",
+          "correction": "OilPrice says restoring the pre-attack flow could take six to eight weeks, which is an estimate and not an established duration.",
+          "class": "hedge"
+        },
+        {
+          "id": 26,
+          "field": "body",
+          "sentence": "وبحلول الساعة 11:21 بتوقيت غرينتش، تراجع برنت 2.8% إلى 97.55 دولار للبرميل في العقود الآجلة، فيما نزل خام غرب تكساس الوسيط 3.1% إلى 89.30 دولار.",
+          "claim": "By 11:21 GMT, Brent fell 2.8% to $97.55 a barrel in futures trading, and WTI fell 3.1% to $89.30.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Asharq Al-Awsat",
+          "sourceDate": "2026-09-22",
+          "quote": "وتراجع خام برنت 2.8 في المائة ليصل إلى 97.55 دولار للبرميل، في التعاملات الفورية، بحلول الساعة 11:21 بتوقيت غرينتش، كما تراجع خام غرب تكساس الوسيط بنسبة 3.1 في المائة ليصل إلى 89.30 دولار للبرميل.",
+          "correction": "The source gives the 2.8% fall to $97.55 for Brent in spot trading, not in futures.",
+          "class": "term"
+        }
+      ],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "التدفق قبل الهجوم: نحو 4 ملايين برميل يومياً",
+          "quote": "وتبلغ الطاقة التصميمية للخط نحو 7 ملايين برميل يومياً، بينما أشارت تقديرات نقلتها «سي إن إن» عن شركة «إنرجي أسبيكتس» إلى أن متوسط الضخ عبره بلغ نحو 6 ملايين برميل يومياً خلال فترة الحرب.",
+          "source": "Asharq Al-Awsat"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "ورغم عودة الضخ، قد يحتاج رجوع التدفق إلى مستواه السابق للهجوم، البالغ نحو 4 ملايين برميل يومياً، إلى ما بين ستة وثمانية أسابيع، وفق موقع «أويل برايس» (OilPrice) المتخصص في أخبار الطاقة.",
+          "quote": "وتبلغ الطاقة التصميمية للخط نحو 7 ملايين برميل يومياً، بينما أشارت تقديرات نقلتها «سي إن إن» عن شركة «إنرجي أسبيكتس» إلى أن متوسط الضخ عبره بلغ نحو 6 ملايين برميل يومياً خلال فترة الحرب.",
+          "source": "Asharq Al-Awsat"
+        }
+      ],
+      "notFound": [],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر في الحقائق الرئيسية أن استعادة تدفق الخط تستغرق من ستة إلى ثمانية أسابيع، والصحيح أن هذه المدة تقدير أورده موقع «أويل برايس». كما نسبت النسخة السابقة سعر برنت البالغ 97.55 دولار للبرميل إلى العقود الآجلة، وهو ما لم يرد في المصدر الذي نقل الرقم."
+    },
+    "saudi-sells-100-million-barrels-asia-hormuz-b316ff": {
+      "at": "2026-09-25T22:56:52.510Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-24T17:29:07.140Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 20,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 8,
+          "field": "keyFacts",
+          "sentence": "تدفقات الخام السعودي إلى آسيا عبر هرمز: أكثر من ضعف مستوياتها الأخيرة",
+          "claim": "Saudi crude flows to Asia via Hormuz are more than double their recent levels, stated as a current fact.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "OilPrice.com",
+          "sourceDate": "2026-09-24",
+          "quote": "The sales flurry from Saudi oil giant Aramco would more than double the recent flows of Saudi crude from the Hormuz route to Asia, according to Bloomberg’s estimates.",
+          "correction": "The doubling is Bloomberg's estimate of what the sales, which are for October and November delivery, would do to flows; it is not an observed current level.",
+          "class": "hedge"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "وامتنعت أرامكو عن التعليق."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن تدفقات الخام السعودي إلى آسيا عبر مضيق هرمز بلغت أكثر من ضعف مستوياتها الأخيرة. والصحيح أن بلومبرغ تقدّر أن المبيعات، المخصصة للتسليم في أكتوبر ونوفمبر، سترفع هذه التدفقات إلى أكثر من الضعف."
+    },
+    "trump-backs-us-diesel-export-ban-79317b": {
+      "at": "2026-09-25T22:57:16.000Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-22T21:33:25.011Z",
+      "sourcesRead": 2,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 27,
+        "checked": 27,
+        "supported": 24,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 19,
+          "field": "body",
+          "sentence": "وتجاوز سعر البرميل 207 دولارات الثلاثاء، متقدماً على النفط الخام بأكثر من 100 دولار، بحسب «سي إن بي سي».",
+          "claim": "According to CNBC, the diesel price exceeded $207 per barrel on Tuesday, more than $100 above crude oil.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-22",
+          "quote": "Diesel cost around $207 a barrel Tuesday, more than $100 above the price of crude oil.",
+          "correction": "CNBC says diesel cost around $207 a barrel on Tuesday, not that it exceeded $207.",
+          "class": "figure"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "وتعزو «نيويورك تايمز» هذه المستويات إلى الحرب في إيران.",
+        "وفي المقابل، يقول قطاع النفط إن حظر الصادرات لن يجعل الديزل أرخص، بحسب «نيويورك تايمز»."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن سعر برميل الديزل تجاوز 207 دولارات الثلاثاء، والصحيح أنه بلغ نحو 207 دولارات."
     }
   }
 }
