@@ -41,6 +41,46 @@
           "hedge"
         ]
       }
+    },
+    {
+      "at": "2026-09-25T21:54:44.317Z",
+      "slug": "nscale-raises-3-36-billion-convertible-ahead-ipo-999fb3",
+      "checker": "f6d38e4947",
+      "lessons": "v7",
+      "lessonsHash": "c3849e4be5",
+      "keptVersion": 0,
+      "live": {
+        "errors": 1,
+        "severity": 3,
+        "supported": 17,
+        "notFound": 1,
+        "checked": 19,
+        "words": 187,
+        "keyFacts": 6,
+        "classes": [
+          "period"
+        ]
+      },
+      "kept": {
+        "errors": 0,
+        "severity": 0,
+        "supported": 20,
+        "notFound": 1,
+        "checked": 22,
+        "words": 207,
+        "keyFacts": 6,
+        "classes": []
+      },
+      "none": {
+        "errors": 0,
+        "severity": 0,
+        "supported": 20,
+        "notFound": 1,
+        "checked": 22,
+        "words": 207,
+        "keyFacts": 6,
+        "classes": []
+      }
     }
   ]
 }

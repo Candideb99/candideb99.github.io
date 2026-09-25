@@ -1,0 +1,67 @@
+{
+  "startedAt": "2026-09-25T21:44:57.751Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "wto-warns-gdp-loss-2050-trade-fragmentation-8471db",
+      "issue": "The why it matters says «إخفاق الأعضاء الـ166 في إصلاح قواعد المنظمة يتركها دون آليات فاعلة لتسوية النزاعات التجارية وضبط الدعم الحكومي، وهو ما قد يسرّع الانقسام إلى كتل متنافسة ويقرّب سيناريو تقلّص الصادرات 27%.» (Website analysis: the 166 members' failure to reform the rules could accelerate fragmentation into competing blocs. The box says this brings closer the scenario in which exports shrink 27%.). Source Asharq Al-Awsat says: \"وأظهرت نماذج أعدها اقتصاديون في «المنظمة» أن انقسام العالم إلى كتل جيوسياسية متنافسة قد يؤدي إلى تراجع الناتج المحلي الإجمالي العالمي بنسبة 5.1 في المائة، وانخفاض الصادرات العالمية بنسبة 18.6 في المائة، بحلول عام 2050، مقارنة بالمسار الأساسي.\". Fragmentation into competing geopolitical blocs corresponds to the scenario of an 18.6% drop in exports; the 27% drop belongs to the scenario in which multilateral cooperation collapses and is replaced by a patchwork of free trade agreements.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "whyItMatters"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن انقسام العالم إلى كتل متنافسة يقرّب سيناريو تقلّص الصادرات العالمية 27%، والصحيح أن سيناريو الكتل يقترن بتراجع الصادرات 18.6%، أما تراجعها 27% فيخص سيناريو تفكك التعاون متعدد الأطراف بالكامل وحلول شبكة من اتفاقيات التجارة الحرة محله.",
+      "model": "claude-cli",
+      "before": {
+        "whyItMatters": "إخفاق الأعضاء الـ166 في إصلاح قواعد المنظمة يتركها دون آليات فاعلة لتسوية النزاعات التجارية وضبط الدعم الحكومي، وهو ما قد يسرّع الانقسام إلى كتل متنافسة ويقرّب سيناريو تقلّص الصادرات 27%."
+      },
+      "after": {
+        "whyItMatters": "إخفاق الأعضاء الـ166 في إصلاح قواعد المنظمة يتركها دون آليات فاعلة لتسوية النزاعات التجارية وضبط الدعم الحكومي، وهو ما قد يسرّع الانقسام إلى كتل متنافسة ويقرّب سيناريو تقلّص الصادرات 18.6%."
+      },
+      "changedSentences": [
+        "إخفاق الأعضاء الـ166 في إصلاح قواعد المنظمة يتركها دون آليات فاعلة لتسوية النزاعات التجارية وضبط الدعم الحكومي، وهو ما قد يسرّع الانقسام إلى كتل متنافسة ويقرّب سيناريو تقلّص الصادرات 27%."
+      ],
+      "newSentences": [
+        "إخفاق الأعضاء الـ166 في إصلاح قواعد المنظمة يتركها دون آليات فاعلة لتسوية النزاعات التجارية وضبط الدعم الحكومي، وهو ما قد يسرّع الانقسام إلى كتل متنافسة ويقرّب سيناريو تقلّص الصادرات 18.6%."
+      ]
+    },
+    {
+      "slug": "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6",
+      "issue": "1. The lede says «سيطرت جماعة الحوثي على جزر حنيش الكبرى والصغرى وجزيرة ميون ومدينة المخا الساحلية في البحر الأحمر، في تقدم يكسر جمود الجبهات منذ 2022 ويفتح جبهة تهدد أحد أهم ممرات الطاقة البحرية في العالم، بحسب الجزيرة الإنجليزية الاثنين.» (The Houthis seized Greater and Lesser Hanish, Mayyun island and Mocha, breaking front lines frozen since 2022 and opening a front that threatens a key energy route. The story attributes this to Al Jazeera English and dates the report to Monday.). Source Al Jazeera English says: \"In the last few days, Iran-backed Houthi fighters have seized control of the Greater and Lesser Hanish islands and the Red Sea port city of Mocha, tightening the group’s grip on one of the world’s key energy routes in the face of resistance from Yemen’s government-aligned forces.\". Al Jazeera English published this report on Tuesday 15 September 2026, not Monday, and it describes the seizures as taking place over the last few days.\n2. The why it matters says «تقطع السيطرة الحوثية على ساحل البحر الأحمر والجزر المطلة على باب المندب على السعودية مسارين للتصدير: خط الأنابيب المعطل والممر البحري.» (Website analysis stated as fact: Houthi control of the Red Sea coast and the islands cuts off two Saudi export routes, the disabled pipeline and the sea route.). Source Al Jazeera English says: \"With that pipeline down and the Houthis tightening their hold on the Red Sea coast and islands near Bab al-Mandeb, Saudi Arabia’s two main alternative export routes around Hormuz risk being squeezed at once.\". The source says Saudi Arabia's two alternative export routes around Hormuz risk being squeezed; it does not say they have been cut off.\n3. The body says «وقال بارا شبان من معهد الخدمات الملكية المتحدة (RUSI) للجزيرة الإنجليزية إن السيطرة على الجزر والساحل من الحديدة إلى المخا وباب المندب تشدد قبضة الحوثيين على ممر يعبر منه نحو ثلث الاقتصاد النفطي العالمي.» (Baraa Shiban of RUSI told Al Jazeera English that control of the islands and of the coast from Hodeidah to Mocha and Bab al-Mandeb tightens the Houthi grip on a corridor through which about a third of the global oil economy passes.). Source Al Jazeera English says: \"Through its alliance with the Houthis, Iran is threatening almost a third of the global oil economy, said Baraa Shiban, a researcher and political analyst on Yemen and the Gulf at the Royal United Service Institute (RUSI).\". Shiban said Iran, through its alliance with the Houthis, is threatening almost a third of the global oil economy; the Hodeidah-to-Mocha description is Saeed Thabit's, and no source says a third of the oil economy passes through the corridor.\n4. The body says «وأضاف أن إيران تمارس عبر حلفائها حرباً اقتصادية على العالم بعد تعذر خوض حرب تقليدية، محذراً من ضغوط صعودية إضافية على أسعار الوقود.» (Shiban added that Iran is waging economic war on the world through its allies because it cannot fight a conventional war, and warned of further upward pressure on fuel prices.). Source Al Jazeera English says: \"The Bab al-Mandeb strait’s importance has only grown since Iran, responding to the US and Israeli attacks, proved itself able to significantly restrict shipping through the Strait of Hormuz, with some analysts warning this latest advance stands to add further upward pressure on fuel prices globally.\". The warning of further upward pressure on fuel prices comes from unnamed analysts cited by Al Jazeera, not from Shiban; Shiban made only the economic-warfare remark.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "lede",
+        "whyItMatters",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن تقرير الجزيرة الإنجليزية صدر الاثنين، وأن السيطرة الحوثية تقطع مساري التصدير السعوديين، وأن الباحث بارا شبان قال إن ثلث الاقتصاد النفطي العالمي يعبر الممر وحذّر من ارتفاع أسعار الوقود. والصحيح أن التقرير صدر في 15 سبتمبر عن سيطرة جرت خلال أيام، وأن المسارين مهددان بالتضييق لا مقطوعان، وأن شبان قال إن إيران تهدد عبر حلفائها نحو ثلث الاقتصاد النفطي العالمي، أما التحذير من أسعار الوقود فصدر عن محللين، ووصف الساحل من الحديدة إلى المخا يعود إلى سعيد ثابيت.",
+      "model": "claude-cli",
+      "before": {
+        "lede": "سيطرت جماعة الحوثي على جزر حنيش الكبرى والصغرى وجزيرة ميون ومدينة المخا الساحلية في البحر الأحمر، في تقدم يكسر جمود الجبهات منذ 2022 ويفتح جبهة تهدد أحد أهم ممرات الطاقة البحرية في العالم، بحسب الجزيرة الإنجليزية الاثنين. وكانت هجمات أمريكية وإسرائيلية قد طالت حلفاء الحوثيين في إيران في فبراير الماضي.",
+        "whyItMatters": "تقطع السيطرة الحوثية على ساحل البحر الأحمر والجزر المطلة على باب المندب على السعودية مسارين للتصدير: خط الأنابيب المعطل والممر البحري. ومع اضطراب مضيق هرمز أيضاً، ترتفع مخاطر تعطل نحو ثلث إمدادات النفط العالمية وتتصاعد الضغوط على الأسعار."
+      },
+      "after": {
+        "lede": "سيطرت جماعة الحوثي خلال أيام على جزر حنيش الكبرى والصغرى وجزيرة ميون ومدينة المخا الساحلية في البحر الأحمر، في تقدم يكسر جمود الجبهات منذ 2022 ويفتح جبهة تهدد أحد أهم ممرات الطاقة البحرية في العالم، بحسب الجزيرة الإنجليزية في 15 سبتمبر. وكانت هجمات أمريكية وإسرائيلية قد طالت حلفاء الحوثيين في إيران في فبراير الماضي.",
+        "whyItMatters": "يضع تعطل خط الأنابيب وتشديد الحوثيين قبضتهم على ساحل البحر الأحمر والجزر المطلة على باب المندب مساري التصدير البديلين للسعودية حول هرمز تحت خطر التضييق في آن واحد، بحسب تحليل للجزيرة الإنجليزية. ومع اضطراب مضيق هرمز أيضاً، يحذر محللون من ضغوط صعودية إضافية على أسعار الوقود عالمياً."
+      },
+      "changedSentences": [
+        "سيطرت جماعة الحوثي على جزر حنيش الكبرى والصغرى وجزيرة ميون ومدينة المخا الساحلية في البحر الأحمر، في تقدم يكسر جمود الجبهات منذ 2022 ويفتح جبهة تهدد أحد أهم ممرات الطاقة البحرية في العالم، بحسب الجزيرة الإنجليزية الاثنين.",
+        "تقطع السيطرة الحوثية على ساحل البحر الأحمر والجزر المطلة على باب المندب على السعودية مسارين للتصدير: خط الأنابيب المعطل والممر البحري.",
+        "ومع اضطراب مضيق هرمز أيضاً، ترتفع مخاطر تعطل نحو ثلث إمدادات النفط العالمية وتتصاعد الضغوط على الأسعار.",
+        "وقال بارا شبان من معهد الخدمات الملكية المتحدة (RUSI) للجزيرة الإنجليزية إن السيطرة على الجزر والساحل من الحديدة إلى المخا وباب المندب تشدد قبضة الحوثيين على ممر يعبر منه نحو ثلث الاقتصاد النفطي العالمي.",
+        "وأضاف أن إيران تمارس عبر حلفائها حرباً اقتصادية على العالم بعد تعذر خوض حرب تقليدية، محذراً من ضغوط صعودية إضافية على أسعار الوقود.",
+        "وقال سعيد ثابيت، رئيس مكتب الجزيرة في اليمن، إن تأمين هذا الامتداد الساحلي الواسع يتطلب قوات كبيرة وإمدادات مستمرة، لا سيما مع انكشاف الساحل أمام المراقبة الجوية والاستهداف."
+      ],
+      "newSentences": [
+        "سيطرت جماعة الحوثي خلال أيام على جزر حنيش الكبرى والصغرى وجزيرة ميون ومدينة المخا الساحلية في البحر الأحمر، في تقدم يكسر جمود الجبهات منذ 2022 ويفتح جبهة تهدد أحد أهم ممرات الطاقة البحرية في العالم، بحسب الجزيرة الإنجليزية في 15 سبتمبر.",
+        "يضع تعطل خط الأنابيب وتشديد الحوثيين قبضتهم على ساحل البحر الأحمر والجزر المطلة على باب المندب مساري التصدير البديلين للسعودية حول هرمز تحت خطر التضييق في آن واحد، بحسب تحليل للجزيرة الإنجليزية.",
+        "ومع اضطراب مضيق هرمز أيضاً، يحذر محللون من ضغوط صعودية إضافية على أسعار الوقود عالمياً.",
+        "وقال بارا شبان، الباحث في شؤون اليمن والخليج بمعهد الخدمات الملكية المتحدة (RUSI)، إن إيران تهدد عبر تحالفها مع الحوثيين نحو ثلث الاقتصاد النفطي العالمي.",
+        "وأضاف أن إيران تمارس عبر حلفائها حرباً اقتصادية على العالم بعد تعذر خوض حرب تقليدية.",
+        "ويحذر محللون من أن التقدم الحوثي الأخير قد يضيف ضغوطاً صعودية على أسعار الوقود عالمياً.",
+        "وقال سعيد ثابيت، رئيس مكتب الجزيرة في اليمن، إن تأمين الامتداد الساحلي من الحديدة إلى المخا وباب المندب، إضافة إلى جزر البحر الأحمر، يتطلب قوات كبيرة وإمدادات مستمرة، لا سيما مع انكشاف الساحل أمام المراقبة الجوية والاستهداف."
+      ]
+    }
+  ]
+}

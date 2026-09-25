@@ -1,0 +1,260 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-09-25T21:41:24.881Z",
+  "durationSec": 273,
+  "read": 8,
+  "corrected": 2,
+  "report": [
+    {
+      "slug": "airbus-a321neo-fuselage-flaw-shares-fall-317554",
+      "title": "سهم إيرباص يتراجع نحو 1.5% إثر خلل في هيكل «إيه321 نيو»",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 12,
+        "checked": 12,
+        "supported": 8,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 3,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "fincantieri-leonardo-ddx-destroyer-contract-d76a49",
+      "title": "مشروع «فينكانتيري» و«ليوناردو» يوقّع عقداً بـ3.7 مليار يورو لمدمّرتين",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 28,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "bailey-energy-prices-uk-rate-hold-d26b51",
+      "title": "بيلي: أسعار الطاقة المرتفعة تصعّب تثبيت الفائدة البريطانية",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 14,
+        "checked": 14,
+        "supported": 14,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "uae-stocks-fall-iran-aviation-warning-d89339",
+      "title": "بورصتا الإمارات تتراجعان بعد تحذير إيراني من تعطيل الطيران في المنطقة",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 20,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 3,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "us-china-preferential-trade-goods-deal-1da062",
+      "title": "غرير: اتفاق أمريكي صيني على شروط تفضيلية لسلع زراعية وطبية واستهلاكية",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 19,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "week-in-review-2026-09-25-8ceb5a",
+      "title": "برنت يقفز بأكثر من 3% بعد هجوم حوثي على ينبع",
+      "kind": "weekly",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 85,
+        "checked": 85,
+        "supported": 78,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 1,
+        "drift": 1,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "wto-warns-gdp-loss-2050-trade-fragmentation-8471db",
+      "title": "منظمة التجارة العالمية تحذر من خسارة 6.9% من الناتج العالمي بحلول 2050",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 15,
+        "checked": 15,
+        "supported": 13,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "scope",
+          "sentence": "إخفاق الأعضاء الـ166 في إصلاح قواعد المنظمة يتركها دون آليات فاعلة لتسوية النزاعات التجارية وضبط الدعم الحكومي، وهو ما قد يسرّع الانقسام إلى كتل متنافسة ويقرّب سيناريو تقلّص الصادرات 27%.",
+          "quote": "وأظهرت نماذج أعدها اقتصاديون في «المنظمة» أن انقسام العالم إلى كتل جيوسياسية متنافسة قد يؤدي إلى تراجع الناتج المحلي الإجمالي العالمي بنسبة 5.1 في المائة، وانخفاض الصادرات العالمية بنسبة 18.6 في المائة، بحلول عام 2050، مقارنة بالمسار الأساسي.",
+          "source": "Asharq Al-Awsat",
+          "correction": "Fragmentation into competing geopolitical blocs corresponds to the scenario of an 18.6% drop in exports; the 27% drop belongs to the scenario in which multilateral cooperation collapses and is replaced by a patchwork of free trade agreements."
+        }
+      ]
+    },
+    {
+      "slug": "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6",
+      "title": "الحوثيون يسيطرون على جزر حنيش وميون وميناء المخا في البحر الأحمر",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 24,
+        "checked": 24,
+        "supported": 20,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 4,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "period",
+          "sentence": "سيطرت جماعة الحوثي على جزر حنيش الكبرى والصغرى وجزيرة ميون ومدينة المخا الساحلية في البحر الأحمر، في تقدم يكسر جمود الجبهات منذ 2022 ويفتح جبهة تهدد أحد أهم ممرات الطاقة البحرية في العالم، بحسب الجزيرة الإنجليزية الاثنين.",
+          "quote": "In the last few days, Iran-backed Houthi fighters have seized control of the Greater and Lesser Hanish islands and the Red Sea port city of Mocha, tightening the group’s grip on one of the world’s key energy routes in the face of resistance from Yemen’s government-aligned forces.",
+          "source": "Al Jazeera English",
+          "correction": "Al Jazeera English published this report on Tuesday 15 September 2026, not Monday, and it describes the seizures as taking place over the last few days."
+        },
+        {
+          "class": "hedge",
+          "sentence": "تقطع السيطرة الحوثية على ساحل البحر الأحمر والجزر المطلة على باب المندب على السعودية مسارين للتصدير: خط الأنابيب المعطل والممر البحري.",
+          "quote": "With that pipeline down and the Houthis tightening their hold on the Red Sea coast and islands near Bab al-Mandeb, Saudi Arabia’s two main alternative export routes around Hormuz risk being squeezed at once.",
+          "source": "Al Jazeera English",
+          "correction": "The source says Saudi Arabia's two alternative export routes around Hormuz risk being squeezed; it does not say they have been cut off."
+        },
+        {
+          "class": "attribution",
+          "sentence": "وقال بارا شبان من معهد الخدمات الملكية المتحدة (RUSI) للجزيرة الإنجليزية إن السيطرة على الجزر والساحل من الحديدة إلى المخا وباب المندب تشدد قبضة الحوثيين على ممر يعبر منه نحو ثلث الاقتصاد النفطي العالمي.",
+          "quote": "Through its alliance with the Houthis, Iran is threatening almost a third of the global oil economy, said Baraa Shiban, a researcher and political analyst on Yemen and the Gulf at the Royal United Service Institute (RUSI).",
+          "source": "Al Jazeera English",
+          "correction": "Shiban said Iran, through its alliance with the Houthis, is threatening almost a third of the global oil economy; the Hodeidah-to-Mocha description is Saeed Thabit's, and no source says a third of the oil economy passes through the corridor."
+        },
+        {
+          "class": "attribution",
+          "sentence": "وأضاف أن إيران تمارس عبر حلفائها حرباً اقتصادية على العالم بعد تعذر خوض حرب تقليدية، محذراً من ضغوط صعودية إضافية على أسعار الوقود.",
+          "quote": "The Bab al-Mandeb strait’s importance has only grown since Iran, responding to the US and Israeli attacks, proved itself able to significantly restrict shipping through the Strait of Hormuz, with some analysts warning this latest advance stands to add further upward pressure on fuel prices globally.",
+          "source": "Al Jazeera English",
+          "correction": "The warning of further upward pressure on fuel prices comes from unnamed analysts cited by Al Jazeera, not from Shiban; Shiban made only the economic-warfare remark."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 8,
+    "failures": 0,
+    "promptTokens": 83979,
+    "completionTokens": 54313,
+    "cacheReadTokens": 0,
+    "costUsd": 1.758,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 8
+    },
+    "correctionsEditorCalls": 2
+  },
+  "log": [
+    "[21:41:25] second look: 8 to read now (102 published pieces not yet read)",
+    "[21:41:48] llm ok role=checker model=claude-cli attempt=1 ms=22554",
+    "[21:41:48] airbus-a321neo-fuselage-flaw-shares-fall-317554: 12 of 12 sentences checked · 8 supported · 1 without a source · 0 confirmed error(s) · 3 listed for a person",
+    "[21:42:28] llm ok role=checker model=claude-cli attempt=1 ms=39435",
+    "[21:42:28] fincantieri-leonardo-ddx-destroyer-contract-d76a49: 29 of 29 sentences checked · 28 supported · 0 without a source · 0 confirmed error(s)",
+    "[21:42:58] llm ok role=checker model=claude-cli attempt=1 ms=26690",
+    "[21:42:58] bailey-energy-prices-uk-rate-hold-d26b51: 14 of 14 sentences checked · 14 supported · 0 without a source · 0 confirmed error(s)",
+    "[21:43:41] llm ok role=checker model=claude-cli attempt=1 ms=42961",
+    "[21:43:41] uae-stocks-fall-iran-aviation-warning-d89339: 23 of 23 sentences checked · 20 supported · 0 without a source · 0 confirmed error(s) · 3 listed for a person",
+    "[21:44:07] llm ok role=checker model=claude-cli attempt=1 ms=24435",
+    "[21:44:07] us-china-preferential-trade-goods-deal-1da062: 19 of 19 sentences checked · 19 supported · 0 without a source · 0 confirmed error(s)",
+    "[21:44:10] llm ok role=checker model=claude-cli attempt=1 ms=165738",
+    "[21:44:11] week-in-review-2026-09-25-8ceb5a: 85 of 85 sentences checked · 78 supported · 1 without a source · 0 confirmed error(s) · 2 listed for a person",
+    "[21:44:53] llm ok role=checker model=claude-cli attempt=1 ms=37889",
+    "[21:44:53] wto-warns-gdp-loss-2050-trade-fragmentation-8471db: 15 of 15 sentences checked · 13 supported · 0 without a source · 1 confirmed error(s)",
+    "[21:44:53]   ✗ [scope] إخفاق الأعضاء الـ166 في إصلاح قواعد المنظمة يتركها دون آليات فاعلة لتسوية النزاعات التجارية وضبط الدعم الحكومي — Fragmentation into competing geopolitical blocs corresponds to the scenario of an 18.6% drop in exports; the 27% drop belongs to the scenario in which multilate",
+    "[21:44:57] llm ok role=checker model=claude-cli attempt=1 ms=44346",
+    "[21:44:57] houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6: 24 of 24 sentences checked · 20 supported · 0 without a source · 4 confirmed error(s)",
+    "[21:44:57]   ✗ [period] سيطرت جماعة الحوثي على جزر حنيش الكبرى والصغرى وجزيرة ميون ومدينة المخا الساحلية في البحر الأحمر، في تقدم يكسر — Al Jazeera English published this report on Tuesday 15 September 2026, not Monday, and it describes the seizures as taking place over the last few days.",
+    "[21:44:57]   ✗ [hedge] تقطع السيطرة الحوثية على ساحل البحر الأحمر والجزر المطلة على باب المندب على السعودية مسارين للتصدير: خط الأناب — The source says Saudi Arabia's two alternative export routes around Hormuz risk being squeezed; it does not say they have been cut off.",
+    "[21:44:57]   ✗ [attribution] وقال بارا شبان من معهد الخدمات الملكية المتحدة (RUSI) للجزيرة الإنجليزية إن السيطرة على الجزر والساحل من الحدي — Shiban said Iran, through its alliance with the Houthis, is threatening almost a third of the global oil economy; the Hodeidah-to-Mocha description is Saeed Tha",
+    "[21:44:57]   ✗ [attribution] وأضاف أن إيران تمارس عبر حلفائها حرباً اقتصادية على العالم بعد تعذر خوض حرب تقليدية، محذراً من ضغوط صعودية إضا — The warning of further upward pressure on fuel prices comes from unnamed analysts cited by Al Jazeera, not from Shiban; Shiban made only the economic-warfare re",
+    "[21:44:57] corrections: 2 stories to the corrections editor",
+    "[21:44:57] [correct] wto-warns-gdp-loss-2050-trade-fragmentation-8471db: fetching 4 source(s)",
+    "[21:45:17] [correct] llm ok role=writer model=claude-cli attempt=1 ms=16155",
+    "[21:45:17] [correct] wto-warns-gdp-loss-2050-trade-fragmentation-8471db: corrected; fields whyItMatters",
+    "[21:45:17]     note: ذكرت نسخة سابقة من هذا الخبر أن انقسام العالم إلى كتل متنافسة يقرّب سيناريو تقلّص الصادرات العالمية 27%، والصحيح أن سيناريو الكتل يقترن بتراجع الصادرات 18.6%، أما تراجعها 27% فيخص سيناريو تفكك التعاون متعدد الأطراف بالكامل وحلول شبكة من اتفاقيات التجارة الحرة محله.",
+    "[21:45:17] [correct] houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6: fetching 4 source(s)",
+    "[21:45:58] [correct] llm ok role=writer model=claude-cli attempt=1 ms=39728",
+    "[21:45:58] [correct] houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6: corrected; fields lede, whyItMatters, body",
+    "[21:45:58]     note: ذكرت نسخة سابقة من هذا الخبر أن تقرير الجزيرة الإنجليزية صدر الاثنين، وأن السيطرة الحوثية تقطع مساري التصدير السعوديين، وأن الباحث بارا شبان قال إن ثلث الاقتصاد النفطي العالمي يعبر الممر وحذّر من ارتفاع أسعار الوقود. والصحيح أن التقرير صدر في 15 سبتمبر عن سيطرة جرت خلال أيام، وأن المسارين مهددان بالتضييق لا مقطوعان، وأن شبان قال إن إيران تهدد عبر حلفائها نحو ثلث الاقتصاد النفطي العالمي، أما التحذير من أسعار الوقود فصدر عن محللين، ووصف الساحل من الحديدة إلى المخا يعود إلى سعيد ثابيت.",
+    "[21:45:58] [correct] done: 2 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-09-25T21-44-57-615Z.json"
+  ]
+}

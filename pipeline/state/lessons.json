@@ -83,10 +83,15 @@
     "us-mortgage-rates-top-7-percent-558e6b:227ebe27",
     "us-iran-war-cost-38-1-billion-7017c2:2f51dda3",
     "us-iran-war-cost-38-1-billion-7017c2:d8fc2175",
-    "brent-surges-above-109-disruptions-e510e5:e21bfaf6"
+    "brent-surges-above-109-disruptions-e510e5:e21bfaf6",
+    "wto-warns-gdp-loss-2050-trade-fragmentation-8471db:b1dece91",
+    "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6:00053898",
+    "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6:57989f20",
+    "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6:f6c4f0d4",
+    "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6:215fef37"
   ],
-  "version": 6,
-  "updatedAt": "2026-09-25T17:25:01.821Z",
+  "version": 7,
+  "updatedAt": "2026-09-25T21:45:58.243Z",
   "lessons": [
     {
       "id": "L1",
@@ -112,11 +117,12 @@
         "trump-announces-ban-cnn-msn-politico-white-house-fd6870:0dc7d7de",
         "us-denmark-greenland-security-deal-eac792:0149b974",
         "trump-announces-ai-force-september-2026-66d8dd:a377f1b8",
-        "bank-of-england-holds-rate-warns-inflation-48f465:4c623af0"
+        "bank-of-england-holds-rate-warns-inflation-48f465:4c623af0",
+        "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6:57989f20"
       ],
-      "seen": 14,
+      "seen": 15,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T08:25:25.678Z",
+      "lastSeen": "2026-09-25T21:45:58.243Z",
       "status": "active",
       "previous": [
         "Keep every qualifier in Arabic: could, possibly, as much as, hopefully, expected, scheduled, will, estimates, reportedly. Name who claims, forecasts or estimates it. Never turn a claim, hope, forecast or reported figure into a stated fact, a present result or a bare headline number.",
@@ -158,11 +164,13 @@
         "trump-approval-32-percent-iran-war-bd2925:13ec3034",
         "us-bond-yield-5-04-percent-ce6ccd:6bb1b8d0",
         "saudi-tanker-war-risk-insurance-yanbu-triples-425bf1:e3d41006",
-        "brent-surges-above-109-disruptions-e510e5:e21bfaf6"
+        "brent-surges-above-109-disruptions-e510e5:e21bfaf6",
+        "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6:f6c4f0d4",
+        "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6:215fef37"
       ],
-      "seen": 25,
+      "seen": 27,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T17:25:01.821Z",
+      "lastSeen": "2026-09-25T21:45:58.243Z",
       "status": "active",
       "previous": [
         "Credit each fact to whom the source credits; the outlet's own reporting is never 'informed sources', an official statement or analyst data. Name the originating outlet. Never make a reported line a quote, a private notice an announcement, or a reply the decree's aim.",
@@ -224,11 +232,12 @@
         "global-markets-test-interest-rates-ai-concerns-1c0036:16c27085",
         "gulf-oil-flows-return-pre-war-levels-6a0da7:c30159ef",
         "gulf-oil-flows-return-pre-war-levels-6a0da7:23fe98a8",
-        "oil-below-100-us-iran-diplomacy-8ddbd8:a6b0ea10"
+        "oil-below-100-us-iran-diplomacy-8ddbd8:a6b0ea10",
+        "wto-warns-gdp-loss-2050-trade-fragmentation-8471db:b1dece91"
       ],
-      "seen": 10,
+      "seen": 11,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T12:04:58.585Z",
+      "lastSeen": "2026-09-25T21:45:58.243Z",
       "status": "active",
       "previous": [
         "Keep a figure or role tied to the exact item, day and instrument the source names. Diesel is not all fuel. One day's count is not a daily rate. A futures-implied value is not the IPO valuation. An official does only what the source assigns.",
@@ -282,11 +291,12 @@
         "oil-decline-diplomacy-hope-d15314:53f2a805",
         "gulf-oil-flows-return-pre-war-levels-6a0da7:8a377fb5",
         "trump-approval-32-percent-iran-war-bd2925:13c8308c",
-        "uk-inflation-rises-to-3-1-percent-august-7dcf61:fd363816"
+        "uk-inflation-rises-to-3-1-percent-august-7dcf61:fd363816",
+        "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6:00053898"
       ],
-      "seen": 11,
+      "seen": 12,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T16:38:55.969Z",
+      "lastSeen": "2026-09-25T21:45:58.243Z",
       "status": "active",
       "previous": [
         "Copy the weekday or date of an event from the source's own sentence about that event, not from the publication date or another report. If sources disagree, follow the primary report and do not guess.",
@@ -420,6 +430,16 @@
         "sharpen L2 (+2)",
         "reinforce L3 (+2; reworded at most once a week)",
         "reinforce L8 (+1)"
+      ]
+    },
+    {
+      "at": "2026-09-25T21:45:58.243Z",
+      "mistakes": 5,
+      "applied": [
+        "reinforce L4 (+1; reworded at most once a week)",
+        "reinforce L6 (+1; reworded at most once a week)",
+        "reinforce L1 (+1; reworded at most once a week)",
+        "reinforce L2 (+2; reworded at most once a week)"
       ]
     }
   ]

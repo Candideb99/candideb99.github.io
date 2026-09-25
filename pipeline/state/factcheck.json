@@ -3001,6 +3001,414 @@
       ],
       "outcome": "corrected",
       "note": "ذكرت نسخة سابقة من هذا الخبر أن مصادر لرويترز أوضحت أن خط الشرق-الغرب السعودي كان ينقل ما بين 4 و5 ملايين برميل يومياً قبل إغلاقه، والصحيح أن هذا الرقم لم يصدر عن تلك المصادر، التي تحدثت عن مدة الإصلاحات فقط."
+    },
+    "airbus-a321neo-fuselage-flaw-shares-fall-317554": {
+      "at": "2026-09-25T21:41:25.192Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v6",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-25T17:30:02.702Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 12,
+        "checked": 12,
+        "supported": 8,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 3,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "title",
+          "sentence": "سهم إيرباص يتراجع نحو 1.5% إثر خلل في هيكل «إيه321 نيو»",
+          "quote": "وانخفض سهم إيرباص بنحو 1.3 بالمئة في التعاملات المبكرة، متخلفا عن أداء الأسهم القيادية الأخرى المدرجة على مؤشر كاك 40 الفرنسي.",
+          "source": "Sky News Arabia"
+        },
+        {
+          "status": "conflict",
+          "field": "lede",
+          "sentence": "تراجع سهم إيرباص نحو 1.5% في مستهل تعاملات الجمعة، بعدما أعلنت الشركة الأوروبية لصناعة الطائرات أنها رصدت خللاً في جودة هيكل مئات من طائرات «إيه321 نيو»، وهو أكثر طرازاتها مبيعاً.",
+          "quote": "وانخفض سهم إيرباص بنحو 1.3 بالمئة في التعاملات المبكرة، متخلفا عن أداء الأسهم القيادية الأخرى المدرجة على مؤشر كاك 40 الفرنسي.",
+          "source": "Sky News Arabia"
+        },
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "تراجع سهم إيرباص في التعاملات المبكرة: نحو 1.5%",
+          "quote": "وانخفض سهم إيرباص بنحو 1.3 بالمئة في التعاملات المبكرة، متخلفا عن أداء الأسهم القيادية الأخرى المدرجة على مؤشر كاك 40 الفرنسي.",
+          "source": "Sky News Arabia"
+        }
+      ],
+      "notFound": [
+        "وتجاوزت خسارة السهم 1% في جلسة الجمعة عقب إعلان الشركة، وجاء أداؤه في الساعات الأولى من التداول أضعف من أداء بقية الأسهم القيادية المدرجة على مؤشر «كاك 40» الفرنسي."
+      ],
+      "weak": [],
+      "outcome": "listed"
+    },
+    "fincantieri-leonardo-ddx-destroyer-contract-d76a49": {
+      "at": "2026-09-25T21:41:48.924Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v5",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-25T17:00:01.920Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 28,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "وقّع المشروع المشترك بين «فينكانتيري» و«ليوناردو» عقداً بقيمة نحو 3.7 مليار يورو (4.2 مليار دولار) مع منظمة التعاون المشترك في مجال التسلح (OCCAR) لبناء مدمّرتين من طراز «دي دي إكس» (DDX) للبحرية الإيطالية.",
+          "quote": "Orizzonte Sistemi Navali (OSN), the Fincantieri-Leonardo joint venture, has signed a contract with the Organisation Conjointe de Coopération en matière d’Armement (OCCAR) for two DDX destroyers for the Italian Navy."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "bailey-energy-prices-uk-rate-hold-d26b51": {
+      "at": "2026-09-25T21:42:28.963Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v5",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-25T16:55:21.386Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 14,
+        "checked": 14,
+        "supported": 14,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "uae-stocks-fall-iran-aviation-warning-d89339": {
+      "at": "2026-09-25T21:42:58.192Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v5",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-25T16:49:44.209Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 20,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 3,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "lede",
+          "sentence": "وتراجع مؤشر أبوظبي 0.1% ومؤشر دبي الرئيسي 0.05%، ليفقد السوقان المكاسب التي سجّلاها في مطلع الجلسة.",
+          "quote": "وتراجع مؤشر سوق أبوظبي للأوراق المالية بنسبة 0.05% إلى مستوى 10200.73 نقطة، فيما انخفض مؤشر سوق دبي المالي بنسبة 0.046% إلى 5980.27 نقطة.",
+          "source": "Al Khaleej"
+        },
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "تغير مؤشر سوق أبوظبي: -0.1%",
+          "quote": "وتراجع مؤشر سوق أبوظبي للأوراق المالية بنسبة 0.05% إلى مستوى 10200.73 نقطة، فيما انخفض مؤشر سوق دبي المالي بنسبة 0.046% إلى 5980.27 نقطة.",
+          "source": "Al Khaleej"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "كما خسر سهم «طلبات القابضة»، منصة توصيل الطعام، 2.6%.",
+          "quote": "في المقابل، تراجع سهم «دبي الإسلامي» بنسبة 0.14% إلى 7.29 درهم، و«طلبات» بنسبة 2.5% إلى 1.14 درهم، و«إعمار للتطوير» بنسبة 1% إلى 13.26 درهم، بينما استقر سهم «إعمار العقارية» عند مستوى إغلاقه السابق البالغ 11.68 درهم.",
+          "source": "Al Khaleej"
+        }
+      ],
+      "notFound": [],
+      "weak": [],
+      "outcome": "listed"
+    },
+    "us-china-preferential-trade-goods-deal-1da062": {
+      "at": "2026-09-25T21:43:41.592Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v5",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-25T16:44:05.141Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 19,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "week-in-review-2026-09-25-8ceb5a": {
+      "at": "2026-09-25T21:41:25.192Z",
+      "kind": "weekly",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-25T19:38:11.910Z",
+      "sourcesRead": 14,
+      "sourcesAll": 14,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 85,
+        "checked": 85,
+        "supported": 78,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 1,
+        "drift": 1,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "listed",
+          "class": "cause",
+          "field": "body",
+          "sentence": "أما مصر، فالقناة التي حدّدها بنكها المركزي لانتقال المخاطر إلى الأسعار المحلية تمر بأسعار الطاقة العالمية وطول بقائها مرتفعة.",
+          "quote": "وأوضح أن هذه المخاطر قد تنتقل إلى الأسعار المحلية عبر أثر إجراءات ضبط أوضاع المالية العامة، وارتفاع أسعار الغذاء العالمية بأكثر من المتوقع، لا سيما إذا ظلت أسعار الطاقة العالمية مرتفعة لفترة ممتدة.",
+          "source": "Khazendar",
+          "correction": "The CBE named fiscal consolidation measures and higher-than-expected global food prices as the transmission channels, with prolonged high energy prices only as an aggravating condition."
+        },
+        {
+          "status": "drift",
+          "class": "period",
+          "field": "body",
+          "sentence": "وقد أنهى برنت الأسبوع فوق 104 دولارات للبرميل، بعدما نزل الاثنين دون 100 دولار خلال الجلسة.",
+          "quote": "وانخفضت العقود الآجلة لخام برنت تسليم نوفمبر 1.61% إلى 104.88 دولار للبرميل بحلول الساعة 10:14 صباحاً بتوقيت شرق الولايات المتحدة، فيما هبطت عقود خام غرب تكساس الوسيط تسليم نوفمبر 2.03% إلى 92.69 دولار.",
+          "source": "Khazendar",
+          "correction": "The sources give no weekly close; the latest figure is Brent at $104.88 in Friday trading as of 10:14 a.m. US Eastern time."
+        }
+      ],
+      "notFound": [
+        "يصدر مكتب إحصاءات العمل الأمريكي في 2 أكتوبر تقرير الوظائف عن سبتمبر، ونراقب صدوره."
+      ],
+      "weak": [
+        {
+          "sentence": "وكانت عقود برنت الآجلة قد تراجعت في وقت مبكر من الاثنين 2.16 دولار، أو 2.08%، إلى 101.71 دولار للبرميل بحلول الساعة 05:13 بتوقيت السعودية، وهو أدنى مستوى في أكثر من أسبوع.",
+          "quote": "تراجعت أسعار النفط الخام إلى أدنى مستوى في أكثر من أسبوع، حيث بلغت عقود برنت 101.71 دولاراً للبرميل بحلول 05:13 صباحاً بتوقيت السعودية يوم 2026-09-21، في ظل ترقّب الأسواق لفرص دبلوماسية لتهدئة الصراع الأمريكي الإيراني مع اجتماع الأمم المتحدة المزمع عقده هذا الأسبوع"
+        },
+        {
+          "sentence": "وخفّ القلق بشأن الإمدادات بعدما استأنف خط أنابيب شرق-غرب السعودي الضخ الثلاثاء، وباعت المملكة قرابة 100 مليون برميل لمشترين آسيويين منذ منتصف الأسبوع السابق، بحسب متعاملين تحدثوا لبلومبرغ.",
+          "quote": "وخفّت المخاوف على الإمدادات بعد عودة خط أنابيب شرق-غرب السعودي إلى العمل الثلاثاء. وكان هجوم بطائرة مسيّرة قد ألحق بالخط أضراراً في وقت سابق من سبتمبر."
+        },
+        {
+          "sentence": "وتراجع التضخم العام الحضري على أساس سنوي إلى 14.5% في أغسطس من 14.9% في يوليو، وأرجع البنك ذلك إلى تباطؤ تضخم الغذاء.",
+          "quote": "وعزا البنك المركزي تراجع التضخم العام السنوي في المدن من 14.9% في يوليو إلى انخفاض تضخم السلع الغذائية، الذي خفّف أثر زيادة تعريفة الكهرباء والإيجارات."
+        },
+        {
+          "sentence": "علّقت هيئة الطيران الفيدرالية الأمريكية الاثنين الرحلات المتجهة إلى كبرى مطارات الساحل الشرقي إثر عطل فني، تزامناً مع وصول 130 من قادة العالم إلى نيويورك للجمعية العامة.",
+          "quote": "علّقت هيئة الطيران الفيدرالية الأمريكية الرحلات المتجهة إلى مطارات الساحل الشرقي الرئيسية في 21 سبتمبر بسبب عطل في المعدات."
+        }
+      ],
+      "outcome": "listed"
+    },
+    "wto-warns-gdp-loss-2050-trade-fragmentation-8471db": {
+      "at": "2026-09-25T21:44:07.284Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-15T17:40:35.440Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 15,
+        "checked": 15,
+        "supported": 13,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 9,
+          "field": "whyItMatters",
+          "sentence": "إخفاق الأعضاء الـ166 في إصلاح قواعد المنظمة يتركها دون آليات فاعلة لتسوية النزاعات التجارية وضبط الدعم الحكومي، وهو ما قد يسرّع الانقسام إلى كتل متنافسة ويقرّب سيناريو تقلّص الصادرات 27%.",
+          "claim": "Website analysis: the 166 members' failure to reform the rules could accelerate fragmentation into competing blocs. The box says this brings closer the scenario in which exports shrink 27%.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Asharq Al-Awsat",
+          "sourceDate": "2026-09-15",
+          "quote": "وأظهرت نماذج أعدها اقتصاديون في «المنظمة» أن انقسام العالم إلى كتل جيوسياسية متنافسة قد يؤدي إلى تراجع الناتج المحلي الإجمالي العالمي بنسبة 5.1 في المائة، وانخفاض الصادرات العالمية بنسبة 18.6 في المائة، بحلول عام 2050، مقارنة بالمسار الأساسي.",
+          "correction": "Fragmentation into competing geopolitical blocs corresponds to the scenario of an 18.6% drop in exports; the 27% drop belongs to the scenario in which multilateral cooperation collapses and is replaced by a patchwork of free trade agreements.",
+          "class": "scope"
+        }
+      ],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "حذرت منظمة التجارة العالمية الثلاثاء من أن تفكك التعاون متعدد الأطراف قد يخفض الناتج المحلي الإجمالي العالمي 6.9% بحلول 2050، داعية أعضاءها الـ166 إلى إصلاح عاجل لقواعد التجارة العالمية لتجنب انقسام النظام إلى كتل متنافسة.",
+          "quote": "دعت «منظمة التجارة العالمية»، الثلاثاء، أعضاءها إلى إصلاح قواعد التجارة العالمية، محذرة بأن الفشل في ذلك قد يدفع بالاقتصاد العالمي نحو مزيد من الانقسام والتشرذم، بما يهدد بخفض الإنتاج الاقتصادي العالمي وإلحاق أضرار جسيمة بالدول الأكبر فقراً."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن انقسام العالم إلى كتل متنافسة يقرّب سيناريو تقلّص الصادرات العالمية 27%، والصحيح أن سيناريو الكتل يقترن بتراجع الصادرات 18.6%، أما تراجعها 27% فيخص سيناريو تفكك التعاون متعدد الأطراف بالكامل وحلول شبكة من اتفاقيات التجارة الحرة محله."
+    },
+    "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6": {
+      "at": "2026-09-25T21:44:11.002Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-15T17:32:00.686Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 24,
+        "checked": 24,
+        "supported": 20,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 4,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 3,
+          "field": "lede",
+          "sentence": "سيطرت جماعة الحوثي على جزر حنيش الكبرى والصغرى وجزيرة ميون ومدينة المخا الساحلية في البحر الأحمر، في تقدم يكسر جمود الجبهات منذ 2022 ويفتح جبهة تهدد أحد أهم ممرات الطاقة البحرية في العالم، بحسب الجزيرة الإنجليزية الاثنين.",
+          "claim": "The Houthis seized Greater and Lesser Hanish, Mayyun island and Mocha, breaking front lines frozen since 2022 and opening a front that threatens a key energy route. The story attributes this to Al Jazeera English and dates the report to Monday.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Al Jazeera English",
+          "sourceDate": "2026-09-15",
+          "quote": "In the last few days, Iran-backed Houthi fighters have seized control of the Greater and Lesser Hanish islands and the Red Sea port city of Mocha, tightening the group’s grip on one of the world’s key energy routes in the face of resistance from Yemen’s government-aligned forces.",
+          "correction": "Al Jazeera English published this report on Tuesday 15 September 2026, not Monday, and it describes the seizures as taking place over the last few days.",
+          "class": "period"
+        },
+        {
+          "id": 10,
+          "field": "whyItMatters",
+          "sentence": "تقطع السيطرة الحوثية على ساحل البحر الأحمر والجزر المطلة على باب المندب على السعودية مسارين للتصدير: خط الأنابيب المعطل والممر البحري.",
+          "claim": "Website analysis stated as fact: Houthi control of the Red Sea coast and the islands cuts off two Saudi export routes, the disabled pipeline and the sea route.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Al Jazeera English",
+          "sourceDate": "2026-09-15",
+          "quote": "With that pipeline down and the Houthis tightening their hold on the Red Sea coast and islands near Bab al-Mandeb, Saudi Arabia’s two main alternative export routes around Hormuz risk being squeezed at once.",
+          "correction": "The source says Saudi Arabia's two alternative export routes around Hormuz risk being squeezed; it does not say they have been cut off.",
+          "class": "hedge"
+        },
+        {
+          "id": 12,
+          "field": "body",
+          "sentence": "وقال بارا شبان من معهد الخدمات الملكية المتحدة (RUSI) للجزيرة الإنجليزية إن السيطرة على الجزر والساحل من الحديدة إلى المخا وباب المندب تشدد قبضة الحوثيين على ممر يعبر منه نحو ثلث الاقتصاد النفطي العالمي.",
+          "claim": "Baraa Shiban of RUSI told Al Jazeera English that control of the islands and of the coast from Hodeidah to Mocha and Bab al-Mandeb tightens the Houthi grip on a corridor through which about a third of the global oil economy passes.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Al Jazeera English",
+          "sourceDate": "2026-09-15",
+          "quote": "Through its alliance with the Houthis, Iran is threatening almost a third of the global oil economy, said Baraa Shiban, a researcher and political analyst on Yemen and the Gulf at the Royal United Service Institute (RUSI).",
+          "correction": "Shiban said Iran, through its alliance with the Houthis, is threatening almost a third of the global oil economy; the Hodeidah-to-Mocha description is Saeed Thabit's, and no source says a third of the oil economy passes through the corridor.",
+          "class": "attribution"
+        },
+        {
+          "id": 13,
+          "field": "body",
+          "sentence": "وأضاف أن إيران تمارس عبر حلفائها حرباً اقتصادية على العالم بعد تعذر خوض حرب تقليدية، محذراً من ضغوط صعودية إضافية على أسعار الوقود.",
+          "claim": "Shiban added that Iran is waging economic war on the world through its allies because it cannot fight a conventional war, and warned of further upward pressure on fuel prices.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Al Jazeera English",
+          "sourceDate": "2026-09-15",
+          "quote": "The Bab al-Mandeb strait’s importance has only grown since Iran, responding to the US and Israeli attacks, proved itself able to significantly restrict shipping through the Strait of Hormuz, with some analysts warning this latest advance stands to add further upward pressure on fuel prices globally.",
+          "correction": "The warning of further upward pressure on fuel prices comes from unnamed analysts cited by Al Jazeera, not from Shiban; Shiban made only the economic-warfare remark.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن تقرير الجزيرة الإنجليزية صدر الاثنين، وأن السيطرة الحوثية تقطع مساري التصدير السعوديين، وأن الباحث بارا شبان قال إن ثلث الاقتصاد النفطي العالمي يعبر الممر وحذّر من ارتفاع أسعار الوقود. والصحيح أن التقرير صدر في 15 سبتمبر عن سيطرة جرت خلال أيام، وأن المسارين مهددان بالتضييق لا مقطوعان، وأن شبان قال إن إيران تهدد عبر حلفائها نحو ثلث الاقتصاد النفطي العالمي، أما التحذير من أسعار الوقود فصدر عن محللين، ووصف الساحل من الحديدة إلى المخا يعود إلى سعيد ثابيت."
     }
   }
 }
