@@ -8,7 +8,7 @@
  * desk and the critic, so the drafts differ by the lessons alone.
  */
 import { deskNotes, newsFloor, writeArticle } from "./write.mjs";
-import { verifyStory } from "./factcheck.mjs";
+import { CHECKER_VERSION, verifyStory } from "./factcheck.mjs";
 import { extractArticle } from "./extract.mjs";
 import { programmaticChecks } from "./verify.mjs";
 
@@ -35,12 +35,22 @@ export async function draftWith({ story, sources, lessons = "", log = () => {} }
   return { draft, notes };
 }
 
+/**
+ * The version of what a pair measures: the fact-check's own version, and the count below. Pairs are only ever pooled
+ * within one (".2" since the stress test of 2026-09-26 added the drafts' "drift" verdicts to the count).
+ */
+export const JUDGE_VERSION = `${CHECKER_VERSION}.2`;
+
 /** What the blind fact-check proves in a draft, and how much the draft says (fewer errors must not mean saying less). */
 export async function judge({ draft, notes = null, writerSources, checkSources, log = () => {} }) {
   const v = await verifyStory({ story: draft, sources: checkSources, log });
-  const confirmed = v.checks.filter((c) => c.status === "confirmed");
+  // A draft is judged against the very texts it was written from, so a contradicted figure that no source carries
+  // ("drift" in the second look, where a page may have changed since publication) is the writer's own: it counts. The
+  // stress test of 2026-09-26 planted wrong figures and every one came back as "drift", which the count had ignored.
+  const confirmed = v.checks.filter((c) => c.status === "confirmed" || c.status === "drift");
   return {
     errors: confirmed.length,
+    drift: confirmed.filter((c) => c.status === "drift").length,
     // Severity, the secondary measure (the statistics review, 2026-09-25): a wrong figure, period, scope or actor 3,
     // hedge, attribution, cause, term or superlative 2, anything else 1; in the headline or the lede, double.
     severity: confirmed.reduce((n, c) => n + (["figure", "period", "scope", "actor"].includes(c.class) ? 3 : ["hedge", "attribution", "cause", "term", "superlative"].includes(c.class) ? 2 : 1) * (["title", "lede"].includes(c.field) ? 2 : 1), 0),
@@ -85,11 +95,14 @@ const MUTATIONS = [
     const next = WEEKDAYS[(WEEKDAYS.indexOf(day) + 1) % 7];
     return { kind: "period", changed: sentence.replace(day, next), mark: next };
   },
-  // A hedge removed: a possibility stated as a fact.
+  // A hedge removed: a possibility stated as a fact. Only «قد» before a present-tense verb («قد يرتفع», may rise):
+  // before a past-tense one («كان برنت قد أغلق», had closed) it means "had", and taking it away changes nothing. The
+  // first version planted those too, and a stress test on 2026-09-26 saw the fact-check rightly pass all three as
+  // supported, which the canary would have counted as misses.
   (sentence) => {
-    const m = sentence.match(/(?<![\p{L}\p{M}])قد ([يتنأ][\p{L}\p{M}]+)/u);
+    const m = sentence.match(/(?<![\p{L}\p{M}])([وف]?)قد (ي[\p{L}\p{M}]{2,})/u);
     if (!m) return null;
-    return { kind: "hedge", changed: sentence.replace(m[0], m[1]), mark: m[1] };
+    return { kind: "hedge", changed: sentence.replace(m[0], `${m[1]}${m[2]}`), mark: m[2] };
   },
 ];
 

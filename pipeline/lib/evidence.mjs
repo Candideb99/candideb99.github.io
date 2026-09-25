@@ -15,6 +15,9 @@
  * With lessons that halve errors it promotes within a year 90% of the time (median week 18 at 7 pairs a week); lessons
  * that double errors are reverted 99% of the time (median week 9). A change of 10–20% between two versions cannot be
  * proven at this budget, and the report says so rather than pretending.
+ * Measured in the stress test of 2026-09-26, Claude's first drafts carry only about 0.12 proved errors each, and the
+ * same simulation at that rate is slower: a halving promoted in about 22 weeks (87% within a year), a doubling reverted
+ * in about 12, half again as many errors in about 20 (72% within a year); saying a quarter less still in the first.
  */
 
 /**
@@ -86,6 +89,13 @@ export function decide(pooled, own = pooled, { frozen = false } = {}) {
   if (pooled.harm >= HARM_AT) return { decision: "revert", reason: `the live lessons made more proved errors: worse in ${pooled.worse} pairs, better in ${pooled.better} (evidence of harm ×${pooled.harm.toFixed(1)}, ${HARM_AT} decides)` };
   if (own.harm >= PROMOTE_AT) return { decision: "revert", reason: `the newest lessons made more proved errors in their own pairs: worse in ${own.worse}, better in ${own.better} (evidence of harm ×${own.harm.toFixed(1)}, ${PROMOTE_AT} decides)` };
   if (frozen) return { decision: "frozen", reason: "the fact-check's canary is failing: nothing is promoted or learned until it is trusted again; a rollback would still act" };
+  // Fewer errors bought by saying less is not a better version (a stress test, 2026-09-26: a planted "keep it tight"
+  // rule cut stories by a fifth and had fewer errors than the lessons, while the says-less guard, built not to revert
+  // on noise, stayed far below its bar). So a version that writes fewer supported sentences more often than more is
+  // never promoted, however few its errors.
+  if (pooled.e >= PROMOTE_AT && (pooled.down > pooled.up || own.down > own.up)) {
+    return { decision: "keep", reason: `fewer proved errors (evidence ×${pooled.e.toFixed(1)}), but the live lessons wrote fewer supported sentences in ${pooled.down} pairs and more in ${pooled.up}: fewer errors from saying less is not promoted` };
+  }
   if (pooled.e >= PROMOTE_AT) {
     if (own.n >= OWN_PAIRS && own.worse <= own.better) return { decision: "promote", reason: `the live lessons made fewer proved errors: better in ${pooled.better} pairs, worse in ${pooled.worse} (evidence ×${pooled.e.toFixed(1)}, ${PROMOTE_AT} decides), and the newest text held up in its own ${own.n} pairs (${own.better} better, ${own.worse} worse)` };
     return { decision: "keep", reason: `the lessons' record is strong (evidence ×${pooled.e.toFixed(1)}), but the newest text has ${own.n} pair(s) of its own (${own.better} better, ${own.worse} worse); it is promoted once it has ${OWN_PAIRS} with no more worse than better` };

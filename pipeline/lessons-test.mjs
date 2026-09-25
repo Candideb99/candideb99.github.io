@@ -26,7 +26,7 @@ import path from "node:path";
 import YAML from "yaml";
 import { ARTICLES_DIR } from "./lib/article.mjs";
 import { activeLessons, lessonsBlock, lessonsHash, loadLessons, promote, revert, saveLessons } from "./lib/lessons.mjs";
-import { canary, plantErrors, sourcesOf } from "./lib/paired.mjs";
+import { JUDGE_VERSION, canary, plantErrors, sourcesOf } from "./lib/paired.mjs";
 import { CHECKER_VERSION } from "./lib/factcheck.mjs";
 import { GUARD_AT, HARM_AT, PROMOTE_AT, canaryAlarm, decide, tally } from "./lib/evidence.mjs";
 import { usage as llmUsage } from "./lib/llm.mjs";
@@ -71,6 +71,11 @@ async function canaryHost() {
 
 async function main() {
   const state = await loadLessons();
+  if (state.damaged) {
+    log(`${state.damaged} cannot be read: no decision this week, and the file is left for a person to look at`);
+    if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, "published=0\ndecision=none\n");
+    return;
+  }
   const pairs = (await readJson(path.join(process.cwd(), "pipeline", "state", "pairs.json"), { pairs: [] })).pairs;
 
   // 1. The canary: is the fact-check still finding what it should?
@@ -93,11 +98,11 @@ async function main() {
   const since = state.kept?.at ?? null;
   const keptVersion = state.kept?.version ?? 0;
   const sinceKept = pairs.filter((p) => (p.keptVersion ?? 0) === keptVersion);
-  const vsKept = tally(sinceKept, "kept", { checker: CHECKER_VERSION, since });
+  const vsKept = tally(sinceKept, "kept", { checker: JUDGE_VERSION, since });
   // The text the writer reads now, on its own pairs: the pooled record proves the process, not the newest version.
   const nowHash = lessonsHash(lessonsBlock(state));
-  const own = tally(sinceKept.filter((p) => p.lessonsHash === nowHash), "kept", { checker: CHECKER_VERSION, since });
-  const vsNone = tally(pairs, "none", { checker: CHECKER_VERSION });
+  const own = tally(sinceKept.filter((p) => p.lessonsHash === nowHash), "kept", { checker: JUDGE_VERSION, since });
+  const vsNone = tally(pairs, "none", { checker: JUDGE_VERSION });
   const { decision, reason } = decide(vsKept, own, { frozen: alarm.alarm });
   const live = state.version;
   log(`live lessons v${live} against the kept v${keptVersion}: ${decision} — ${reason}`);

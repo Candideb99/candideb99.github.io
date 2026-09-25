@@ -42,12 +42,17 @@ Every 3 hours (and once a day each for an explainer and an analysis, and on Sund
   with none), from the same sources, and a fact-checker that does not know which is which counts the mistakes; the
   extra versions are never published. Every Monday the evidence decides, by a rule fixed in advance: keep the
   current lessons, promote them, or put back the approved ones. The newest lessons must prove themselves on their
-  own stories before they are approved, and a sign of harm puts the approved ones back at once. First it tests the
+  own stories before they are approved, and proven harm puts the approved ones back. First it tests the
   fact-checker itself: three planted mistakes of different kinds it must find, in a story it must not flag
   otherwise; while that test fails nothing is approved or learned. You can also put the approved lessons back at
-  any moment: `node pipeline/learn.mjs --revert` (or ask the Desk's chat). Honest limits: whether the lessons help
-  overall can be proven in weeks to a few months; whether one week's small change helps cannot be, at this cost.
-  The Desk shows where the evidence stands.
+  any moment: `node pipeline/learn.mjs --revert` (or ask the Desk's chat). Honest limits: Claude makes few provable
+  mistakes, so proof is slow: lessons that halve them would be proven in about five months, a version that doubles
+  them caught in about three, one that makes stories say much less in a week; a small change is never provable at
+  this cost. The Desk shows where the evidence stands.
+  Stress-tested on 26 Sept (about 340 Claude calls): the fact-checker finds planted mistakes and raised no false
+  alarm; the learner ignored a planted non-mistake and a hidden instruction; the lessons neither helped nor hurt
+  measurably, because Claude's first drafts carry about one provable mistake in ten stories; a deliberately harmful
+  rule would be caught in weeks to months, not days. Eight defects the test found were fixed the same night.
 - **The morning round, free.** Every day, without Claude: are the photos still in place at Wikimedia and Flickr (a
   renamed photo is re-addressed at once, a deleted one is replaced), is news still flowing, are the market quotes
   fresh, does the live site carry the newest story? Claude is woken only if something is broken, and at most once

@@ -178,6 +178,18 @@ async function correct(items) {
 }
 
 async function main() {
+  // A ledger that exists but cannot be read is left for a person (a stress test, 2026-09-26): read as empty, it would
+  // send every published story to be read and paid for again, and then be overwritten.
+  const rawLedger = await readFile(LEDGER, "utf8").catch(() => null);
+  if (rawLedger !== null) {
+    try {
+      JSON.parse(rawLedger);
+    } catch {
+      log("pipeline/state/factcheck.json cannot be read: the second look stops, and the file is left for a person to look at");
+      process.exitCode = 1;
+      return;
+    }
+  }
   const ledger = await readJson(LEDGER, { version: 1, stories: {} });
   const all = await stories();
   const chosen = choose(all, ledger);

@@ -156,12 +156,12 @@ const NOTES_SYSTEM = `You are the chief sub-editor of خازندار, an Arabic 
  * then writes from these notes, so nothing enters the story that the sources do not carry.
  * Returns null when no usable notes can be made, and the writer works from the sources alone.
  */
-export async function deskNotes({ story, sources, log, lessons = "" }) {
+export async function deskNotes({ story, sources, log, lessons = "", today = new Date() }) {
   const texts = sources.map((s) => s.text || s.summary || "");
   const user = `STORY BRIEF FROM THE EDITOR
 Working headline: ${story.headlineHint}
 Angle: ${story.angle}
-Today (UTC): ${new Date().toISOString().slice(0, 10)}
+Today (UTC): ${new Date(today).toISOString().slice(0, 10)}
 
 SOURCE MATERIAL
 ${sources.map(sourceBlock).join("\n\n")}
@@ -227,12 +227,12 @@ ${facts}${quotes}
 `;
 }
 
-export async function writeArticle({ story, sources, notes = null, log, lessons = "" }) {
+export async function writeArticle({ story, sources, notes = null, log, lessons = "", today = new Date() }) {
   const user = `STORY BRIEF FROM THE EDITOR
 Angle: ${story.angle}
 Working headline: ${story.headlineHint}
 Section: ${story.section}
-Today (UTC): ${new Date().toISOString().slice(0, 10)}
+Today (UTC): ${new Date(today).toISOString().slice(0, 10)}
 
 ${notesBlock(notes)}SOURCE MATERIAL (use only this material; do not add facts from memory)
 ${sources.map(writerSourceBlock(notes)).join("\n\n")}

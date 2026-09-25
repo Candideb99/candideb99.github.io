@@ -19,6 +19,10 @@ const log = (m) => console.log(`[learn] ${m}`);
 
 if (args.includes("--revert")) {
   const state = await loadLessons();
+  if (state.damaged) {
+    log(`${state.damaged} cannot be read; nothing is put back until a person has looked at it`);
+    process.exit(1);
+  }
   const from = state.version;
   revert(state);
   state.tests = [...(state.tests ?? []), { at: new Date().toISOString(), live: from, kept: state.kept?.version ?? 0, decision: "revert", reason: "put back by hand" }].slice(-104);

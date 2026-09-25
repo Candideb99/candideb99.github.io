@@ -25,6 +25,7 @@ import YAML from "yaml";
 import { styleIssues } from "../pipeline/lib/style.mjs";
 import { canaryAlarm, tally } from "../pipeline/lib/evidence.mjs";
 import { CHECKER_VERSION } from "../pipeline/lib/factcheck.mjs";
+import { JUDGE_VERSION } from "../pipeline/lib/paired.mjs";
 
 const DAY = 86_400_000;
 const now = Date.now();
@@ -141,8 +142,8 @@ const lessonsNow = { version: lessonsState?.version ?? 0, active: (lessonsState?
 // fact-check only, since the kept version (live against kept) and in all (the lessons against none).
 const pairs = readJson(path.join("pipeline", "state", "pairs.json"))?.pairs ?? [];
 const keptV = lessonsState?.kept?.version ?? 0;
-const vsKept = tally(pairs.filter((p) => (p.keptVersion ?? 0) === keptV), "kept", { checker: CHECKER_VERSION, since: lessonsState?.kept?.at ?? null });
-const vsNone = tally(pairs, "none", { checker: CHECKER_VERSION });
+const vsKept = tally(pairs.filter((p) => (p.keptVersion ?? 0) === keptV), "kept", { checker: JUDGE_VERSION, since: lessonsState?.kept?.at ?? null });
+const vsNone = tally(pairs, "none", { checker: JUDGE_VERSION });
 const canaryNow = canaryAlarm((lessonsState?.canary ?? []).filter((c) => c.checker === CHECKER_VERSION));
 const week = windowOf(7, 0);
 const before = windowOf(14, 7);

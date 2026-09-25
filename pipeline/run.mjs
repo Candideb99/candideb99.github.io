@@ -26,8 +26,7 @@ import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, ne
 import { critique, programmaticChecks } from "./lib/verify.mjs";
 import { copyEdit } from "./lib/copydesk.mjs";
 import { keptBlock, lessonsBlock, lessonsHash, loadLessons } from "./lib/lessons.mjs";
-import { draftWith, judge } from "./lib/paired.mjs";
-import { CHECKER_VERSION } from "./lib/factcheck.mjs";
+import { JUDGE_VERSION, draftWith, judge } from "./lib/paired.mjs";
 import { pickImage } from "./lib/images.mjs";
 import { ARTICLES_DIR, buildSlug, loadExistingArticles, serializeArticle } from "./lib/article.mjs";
 import { usage as llmUsage } from "./lib/llm.mjs";
@@ -427,7 +426,17 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
 
 /** One published story written again privately with the reference lessons; every draft judged blind; nothing published. */
 async function evidencePair(pairing) {
-  const record = await readJson(PAIRS_PATH, { version: 1, pairs: [] });
+  // A record that exists but cannot be read is left for a person: rewriting it would lose the evidence gathered so far.
+  const raw = await readFile(PAIRS_PATH, "utf8").catch(() => null);
+  let record = { version: 1, pairs: [] };
+  if (raw !== null) {
+    try {
+      record = JSON.parse(raw);
+    } catch {
+      log("evidence pair skipped: pipeline/state/pairs.json cannot be read; it is left as it is for a person to look at");
+      return;
+    }
+  }
   const today = new Date().toISOString().slice(0, 10);
   if (record.pairs.filter((p) => String(p.at).startsWith(today)).length >= PAIRS_PER_DAY) return;
   // The references: the kept version (no lessons until the first promotion), and from the launch no lessons as well.
@@ -438,12 +447,15 @@ async function evidencePair(pairing) {
   const writer = pairing.sources.filter((s) => s.text);
   if (!refs.length || !writer.length) return;
   const check = writer.map((s, i) => ({ n: i + 1, name: s.sourceNameEn ?? s.sourceName ?? "", title: s.title ?? "", url: s.url, publishedAt: s.publishedAt ?? null, text: s.text, reason: "" }));
-  const stats = (j) => ({ errors: j.errors, severity: j.severity, supported: j.supported, notFound: j.notFound, checked: j.checked, words: j.words, keyFacts: j.keyFacts, classes: j.classes });
+  const stats = (j) => ({ errors: j.errors, drift: j.drift, severity: j.severity, supported: j.supported, notFound: j.notFound, checked: j.checked, words: j.words, keyFacts: j.keyFacts, classes: j.classes, programmatic: j.programmatic });
   try {
-    const out = { at: new Date().toISOString(), slug: pairing.slug, checker: CHECKER_VERSION, lessons: `v${LESSONS_VERSION}`, lessonsHash: lessonsHash(LESSONS), keptVersion: KEPT_VERSION };
+    const out = { at: new Date().toISOString(), slug: pairing.slug, checker: JUDGE_VERSION, lessons: `v${LESSONS_VERSION}`, lessonsHash: lessonsHash(LESSONS), keptVersion: KEPT_VERSION };
     out.live = stats(await judge({ draft: pairing.firstDraft, notes: pairing.firstNotes, writerSources: writer, checkSources: check, log }));
     for (const ref of refs) {
-      const { draft, notes } = await draftWith({ story: pairing.story, sources: writer, lessons: ref.lessons, log });
+      // The private drafts read exactly what the published first draft read, feed summaries included (a stress test,
+      // 2026-09-26: they had been given only the fetched texts, so the two sides of a pair differed by more than the
+      // lessons). The fact-check reads the fetched texts for both.
+      const { draft, notes } = await draftWith({ story: pairing.story, sources: pairing.sources, lessons: ref.lessons, log });
       out[ref.key] = stats(await judge({ draft, notes, writerSources: writer, checkSources: check, log }));
     }
     // With no kept version yet, the kept version is no lessons: the same draft answers both questions.
@@ -462,6 +474,7 @@ async function evidencePair(pairing) {
 async function runNews(report) {
   LAUNCHED = (await readJson(path.join(root, "src", "data", "site.json"), {})).private === false;
   const lessons = await loadLessons();
+  if (lessons.damaged) log(`lessons: ${lessons.damaged} cannot be read; this round writes without lessons, and the file is left for a person`);
   LESSONS = lessonsBlock(lessons);
   LESSONS_VERSION = LESSONS ? lessons.version : null;
   KEPT = keptBlock(lessons);

@@ -36,6 +36,14 @@ check("early help, newest harms in 4 pairs: not promoted", judgeOn([...early, ..
 // ... and with enough harm of its own, reverted even though the pooled record is positive.
 const lateMore = many(7, () => pair("v3", 1, 0));
 check("early help, newest harms in 7 pairs: revert", judgeOn([...early, ...lateMore], "v3"), "revert");
+// Fewer errors by saying less (the stress test's planted "keep it tight" rule, 2026-09-26): never promoted, even with
+// the evidence of fewer errors that alone would promote.
+// Less in 4 pairs, more in 1, alike in 9: too little to revert on, too much to crown.
+const tight = many(14, (_, i) => pair("v5", 0, 1, { supportedLive: i < 4 ? 16 : i === 4 ? 23 : 20, supportedKept: 20 }));
+check("fewer errors while saying a little less: not promoted", judgeOn(tight, "v5"), "keep");
+// Consistently less: reverted, whatever the errors.
+const tighter = many(14, (_, i) => pair("v5", 0, 1, { supportedLive: i % 3 ? 16 : 20, supportedKept: 20 }));
+check("fewer errors while saying much less: revert", judgeOn(tighter, "v5"), "revert");
 // Early help, newest too new to judge: wait, do not promote.
 check(`early help, newest with ${OWN_PAIRS - 1} tied pairs: keep`, judgeOn([...early, ...many(OWN_PAIRS - 1, () => pair("v4", 0, 0))], "v4"), "keep");
 check(`early help, newest with ${OWN_PAIRS} tied pairs: promote`, judgeOn([...early, ...many(OWN_PAIRS, () => pair("v4", 0, 0))], "v4"), "promote");
