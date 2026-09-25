@@ -10,34 +10,114 @@
       "read": 1,
       "confirmedPerStory": 2,
       "photosPending": 0
+    },
+    {
+      "date": "2026-09-25",
+      "published": 20,
+      "news": 17,
+      "styleFaultsPerStory": 0,
+      "corrections": 26,
+      "read": 33,
+      "confirmedPerStory": 2.24,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-09-24T22:41:37.046Z",
+  "updatedAt": "2026-09-25T12:45:48.229Z",
   "week": {
-    "published": 59,
-    "news": 51,
-    "revisedShare": 0.65,
-    "styleFaultsPerStory": 0.82,
-    "styleWarningsPerStory": 0.76,
-    "corrections": 12,
+    "published": 67,
+    "news": 58,
+    "revisedShare": 0.67,
+    "styleFaultsPerStory": 0.74,
+    "styleWarningsPerStory": 0.67,
+    "corrections": 37,
     "secondLook": {
-      "read": 1,
-      "clean": 0,
-      "corrected": 1,
+      "read": 33,
+      "clean": 5,
+      "corrected": 26,
       "stands": 0,
       "refused": 0,
-      "listed": 0,
+      "listed": 2,
       "unverifiable": 0,
-      "confirmedPerStory": 2
+      "confirmedPerStory": 2.24,
+      "withLessons": {
+        "read": 0,
+        "confirmedPerStory": null
+      },
+      "claudeWithout": {
+        "read": 0,
+        "confirmedPerStory": null
+      }
     },
     "runs": {
       "count": 24,
-      "written": 37,
-      "refused": 7,
-      "callsPerStory": 12.4,
+      "written": 42,
+      "refused": 8,
+      "callsPerStory": 12.9,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": [
+      {
+        "what": "second look: period errors",
+        "stories": 7,
+        "examples": [
+          "us-approves-f35-saudi-arms-deal-915064: أعلنت وزارة الخارجية الأمريكية في 18 سبتمبر موافقتها على صفقة بيع عسكري محتملة للسعودية تشمل 48 طائرة إف-35 لايتنينغ 2 ذ",
+          "russia-temporary-management-western-assets-1dadf4: نُشر المرسوم على البوابة القانونية الرسمية لروسيا الخميس بحسب بيان «نستله»، وانخفضت أسهم الشركة 2.2% في تداولات صباح الج",
+          "warren-buffett-steps-down-berkshire-chairman-457ee7: وأضاف أن ابنه هوارد سيحمي ثقافة الشركة وقيمها، في حين يتولى غريغ أبيل الإدارة اليومية بوصفه الرئيس التنفيذي منذ مايو 202"
+        ]
+      },
+      {
+        "what": "second look: attribution errors",
+        "stories": 18,
+        "examples": [
+          "us-approves-f35-saudi-arms-deal-915064: أكد البيت الأبيض في 18 سبتمبر موافقة إدارة ترامب على الصفقة المحتملة.",
+          "russia-temporary-management-western-assets-1dadf4: المرسوم الرئاسي يستهدف حماية الحقوق وضمان استمرارية العمليات لصالح الأطراف المعنية",
+          "russia-temporary-management-western-assets-1dadf4: لدى «نستله» نحو 7000 موظف وستة مصانع في روسيا بحسب بيانات شركة Vontobel السويسرية للاستثمار، وأوقفت معظم مبيعاتها غير ال"
+        ]
+      },
+      {
+        "what": "second look: actor errors",
+        "stories": 6,
+        "examples": [
+          "trump-announces-ban-cnn-msn-politico-white-house-fd6870: ترامب يحظر سي إن إن وإم إس إن بي سي وبوليتيكو من البيت الأبيض",
+          "trump-announces-ban-cnn-msn-politico-white-house-fd6870: حظر الرئيس الأمريكي دونالد ترامب «سي إن إن» و«إم إس إن بي سي» و«بوليتيكو» من البيت الأبيض فوراً، في منشور على «تروث سوشي",
+          "trump-announces-ban-cnn-msn-politico-white-house-fd6870: كتب ترامب على «تروث سوشيال» إنه فخور بالإعلان عن الحظر الفوري على «سي إن إن» و«إم إس إن بي سي» و«بوليتيكو» نتيجة تقاريره"
+        ]
+      },
+      {
+        "what": "second look: hedge errors",
+        "stories": 9,
+        "examples": [
+          "trump-announces-ban-cnn-msn-politico-white-house-fd6870: «سي إن إن» تصف القرار بالاعتداء غير القانوني..",
+          "trump-announces-ban-cnn-msn-politico-white-house-fd6870: من جانبها، قالت «سي إن إن» إنها ستواصل التغطية من البيت الأبيض دون عائق، ووصفت الحظر بأنه اعتداء غير قانوني على حقها الد",
+          "us-denmark-greenland-security-deal-eac792: التكلفة على الولايات المتحدة: صفر"
+        ]
+      },
+      {
+        "what": "second look: term errors",
+        "stories": 4,
+        "examples": [
+          "trump-signs-russia-sanctions-oil-tariffs-law-ad758a: وكان مجلس النواب قد وافق على القانون بأغلبية 262 صوتاً مقابل 159، وصوّت 58 ديمقراطياً لصالحه في حين عارضه 7 جمهوريين، في",
+          "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb: وبلغ حجم التداول على هذه العقود 6 ملايين دولار في 24 ساعة، والفائدة المفتوحة 31 مليون دولار.",
+          "fed-rate-hike-oil-109-gulf-economies-a07bff: ومع بلوغ عائد السندات الأمريكية لأكثر من عشر سنوات مستوى 5.04%، تزداد كلفة إصدار السندات الدولارية التي تموّل مشاريع الب"
+        ]
+      },
+      {
+        "what": "second look: figure errors",
+        "stories": 2,
+        "examples": [
+          "eu-fuel-prices-record-iran-saudi-supply-8376ff: أظهرت بيانات جمعية ADAC أن البنزين في ألمانيا بلغ 2.31 يورو للتر الأربعاء، وتجاوز الديزل في هولندا 2.78 يورو.",
+          "faa-halts-east-coast-flights-equipment-outage-d180ab: كما أن إلغاء أكثر من 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية"
+        ]
+      },
+      {
+        "what": "second look: scope errors",
+        "stories": 7,
+        "examples": [
+          "trump-announces-ai-force-and-czar-f4c7aa: ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها",
+          "trump-xi-summit-washington-2026-4e439e: يدخل ترامب القمة والتضخم عند 3.4٪ وأسعار الوقود فوق 6 دولارات للغالون، قبل انتخابات منتصف المدة في نوفمبر.",
+          "oil-prices-decline-china-iran-pressure-41b59d: لكن تراجع حركة الملاحة في مضيق هرمز إلى ثلاث سفن يومياً يُبقي الأسواق عرضة لقفزات سعرية جديدة."
+        ]
+      },
       {
         "what": "style: الإسناد في كل جملة تقريباً (# من # جملة فيها «وفقاً/بحسب»)",
         "stories": 11,
@@ -45,15 +125,6 @@
           "bank-of-japan-raises-rates-to-31-year-high-d62cc8",
           "china-increases-russian-oil-imports-august-2026-ac1178",
           "global-markets-close-volatile-week-045574"
-        ]
-      },
-      {
-        "what": "style: عبارة مترجمة أو حشو: «#-#-#»",
-        "stories": 4,
-        "examples": [
-          "oil-decline-diplomacy-hope-d15314",
-          "trump-announces-ai-force-and-czar-f4c7aa",
-          "trump-xi-summit-washington-2026-4e439e"
         ]
       },
       {
@@ -66,12 +137,26 @@
         ]
       },
       {
+        "what": "style: عبارة مترجمة أو حشو: «#-#-#»",
+        "stories": 3,
+        "examples": [
+          "oil-decline-diplomacy-hope-d15314",
+          "trump-announces-ai-force-and-czar-f4c7aa",
+          "trump-xi-summit-washington-2026-4e439e"
+        ]
+      },
+      {
         "what": "style: عبارة مترجمة أو حشو: «بتاريخ»",
         "stories": 2,
         "examples": [
           "trump-xi-summit-washington-2026-4e439e",
           "us-denmark-greenland-security-deal-eac792"
         ]
+      },
+      {
+        "what": "newsroom: skipped: a single non-official source (needs a second outlet, or an official primary sourc",
+        "stories": 2,
+        "examples": []
       },
       {
         "what": "newsroom: skipped: repeats a recent story («…»)",
@@ -81,11 +166,11 @@
     ]
   },
   "weekBefore": {
-    "published": 48,
-    "news": 41,
-    "revisedShare": 0.73,
-    "styleFaultsPerStory": 1.32,
-    "styleWarningsPerStory": 0.9,
+    "published": 42,
+    "news": 36,
+    "revisedShare": 0.67,
+    "styleFaultsPerStory": 1.19,
+    "styleWarningsPerStory": 0.81,
     "corrections": 0,
     "secondLook": {
       "read": 0,
@@ -95,7 +180,15 @@
       "refused": 0,
       "listed": 0,
       "unverifiable": 0,
-      "confirmedPerStory": null
+      "confirmedPerStory": null,
+      "withLessons": {
+        "read": 0,
+        "confirmedPerStory": null
+      },
+      "claudeWithout": {
+        "read": 0,
+        "confirmedPerStory": null
+      }
     },
     "runs": {
       "count": 0,
@@ -107,29 +200,19 @@
     "recurring": [
       {
         "what": "style: الإسناد في كل جملة تقريباً (# من # جملة فيها «وفقاً/بحسب»)",
-        "stories": 10,
+        "stories": 8,
         "examples": [
           "china-retail-sales-slowdown-august-2026-cb2bb7",
           "federal-reserve-rate-hike-expectations-september-2026-c63230",
-          "gulf-oil-flows-return-pre-war-levels-6a0da7"
+          "japan-imports-surge-august-2026-3efc48"
         ]
       },
       {
         "what": "style: «لماذا يهمّ» تبدأ بـ«يعكس/يمثل/يُعدّ»",
-        "stories": 5,
+        "stories": 2,
         "examples": [
           "ai-leaders-warn-openai-ipo-delay-b7d3e6",
-          "hormuz-shipping-traffic-plunges-tensions-5c1d93",
           "openai-seeks-1-5-trillion-funding-a2d732"
-        ]
-      },
-      {
-        "what": "style: المقدمة طويلة (# كلمة)",
-        "stories": 3,
-        "examples": [
-          "global-bond-selloff-oil-prices-ecb-rate-hike-93d47b",
-          "hormuz-shipping-traffic-plunges-tensions-5c1d93",
-          "uk-economy-grows-july-ai-0a6a4e"
         ]
       },
       {
@@ -141,5 +224,10 @@
         ]
       }
     ]
+  },
+  "lessons": {
+    "version": 4,
+    "active": 8,
+    "learnedFrom": 74
   }
 }
