@@ -191,12 +191,14 @@ For each sentence you check:
    - "not_found": no source sentence bears on it. Give no quote. This includes background and the website's own analysis that goes beyond the sources: that is not an error in itself.
    The «why it matters» box and the analytical sentences are the website's own reasoning: mark them "contradicted" only when they conflict with the sources (a wrong figure, a reversed direction, a wrong actor, a trend the sources show going the other way), never merely for drawing a consequence the sources do not draw.
    A claim the story attributes to a source whose text could not be read again is "not_found", whatever the other sources say.
+   Sources may disagree. When one source supports the claim and another conflicts with it, the verdict is "conflict", with the conflicting sentence as the quote: the story followed one of them, and that is not its error.
+   A claim that was right when the source was written and has since been overtaken by later events is not an error: judge what the sources say, not what happened afterwards.
    A sentence that contradicts ANOTHER SENTENCE OF THE STORY (the box against the body, the headline against the lede) is "contradicted" with "source": 0 and that other story sentence, verbatim, as the quote.
 4. For "contradicted" only: "correction", one English sentence saying what is right according to the quote, and "class", one of ${CLASSES.join(", ")}.
 Judge by the source material and the story alone. Your own knowledge of the world is not evidence, and a fact newer than what you know is not an error. Do not report style.
 
 Answer with one JSON object:
-{"checks": [{"id": <sentence number>, "claim": "...", "verdict": "supported" | "contradicted" | "not_found", "source": <source number, 0 for the story itself, null when not_found>, "quote": "...", "correction": "...", "class": "..."}]}`;
+{"checks": [{"id": <sentence number>, "claim": "...", "verdict": "supported" | "contradicted" | "conflict" | "not_found", "source": <source number, 0 for the story itself, null when not_found>, "quote": "...", "correction": "...", "class": "..."}]}`;
 }
 
 /**
@@ -227,7 +229,7 @@ export async function verifyStory({ story, sources, log = () => {} }) {
     const sentence = sentences[id - 1];
     if (!sentence || seen.has(id)) continue;
     seen.add(id);
-    const verdict = ["supported", "contradicted", "not_found"].includes(raw.verdict) ? raw.verdict : "not_found";
+    const verdict = ["supported", "contradicted", "conflict", "not_found"].includes(raw.verdict) ? raw.verdict : "not_found";
     const n = raw.source === null || raw.source === undefined || raw.source === "" ? null : Number(raw.source);
     const quote = String(raw.quote ?? "").trim();
     const source = n === 0 ? { name: "the story itself", all: storyText.replace(sentence.text, " ") } : readable.find((s) => s.n === n) ?? null;
@@ -245,7 +247,8 @@ export async function verifyStory({ story, sources, log = () => {} }) {
       // is not an error for drawing more than the sources do. A cause or superlative it puts in a source's mouth is.
       else if (HARD.has(kind) || ATTRIBUTED.test(sentence.text)) status = "confirmed";
       else status = "listed";
-    } else if (verdict === "supported") status = !found ? "no-evidence" : ungroundedNumbers(sentence.text, [quote]).length ? "weak" : "supported";
+    } else if (verdict === "conflict") status = found ? "conflict" : "unverified";
+    else if (verdict === "supported") status = !found ? "no-evidence" : ungroundedNumbers(sentence.text, [quote]).length ? "weak" : "supported";
     else status = "not_found";
     checks.push({
       id,
@@ -256,6 +259,7 @@ export async function verifyStory({ story, sources, log = () => {} }) {
       status,
       source: n,
       sourceName: source?.name ?? null,
+      sourceDate: source?.publishedAt ? String(source.publishedAt).slice(0, 10) : null,
       quote: quote.slice(0, 600),
       correction: verdict === "contradicted" ? String(raw.correction ?? "").slice(0, 400) : undefined,
       class: kind,
@@ -267,7 +271,7 @@ export async function verifyStory({ story, sources, log = () => {} }) {
     model,
     checks,
     unchecked,
-    counts: { sentences: sentences.length, checked: checks.length, supported: count("supported"), weak: count("weak"), noEvidence: count("no-evidence"), notFound: count("not_found"), confirmed: count("confirmed"), listed: count("listed"), drift: count("drift"), unverified: count("unverified"), unchecked: unchecked.length },
+    counts: { sentences: sentences.length, checked: checks.length, supported: count("supported"), weak: count("weak"), noEvidence: count("no-evidence"), notFound: count("not_found"), confirmed: count("confirmed"), listed: count("listed"), drift: count("drift"), conflict: count("conflict"), unverified: count("unverified"), unchecked: unchecked.length },
   };
 }
 

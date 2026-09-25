@@ -88,13 +88,17 @@ async function stories() {
   return out;
 }
 
-/** Which stories this run reads: the named ones; else the due ones, oldest first, then the backlog, the free models' first and the newest first. */
+/**
+ * Which stories this run reads: the named ones; else the due ones, newest first, then the backlog, the free models' first
+ * and the newest first. Newest first since 2026-09-25: oldest first had spent every round on the free models' archive
+ * (all 33 stories of the first rounds), so the lessons learned nothing yet from the writer the newsroom has now.
+ */
 function choose(all, ledger) {
   const open = (s) => REDO || !ledger.stories[s.slug] || (ledger.stories[s.slug].outcome === "failed" && (ledger.stories[s.slug].failures ?? 1) < MAX_FAILURES);
   if (SLUGS.size) return all.filter((s) => SLUGS.has(s.slug) && CHECKABLE_KINDS.has(s.kind) && open(s));
   const checkable = all.filter((s) => CHECKABLE_KINDS.has(s.kind) && (s.sources ?? []).length && open(s));
   const age = (s) => hoursSince(s.publishedAt);
-  const due = checkable.filter((s) => age(s) >= MIN_AGE_H && age(s) <= MAX_AGE_H).sort((a, b) => age(b) - age(a)).slice(0, LIMIT);
+  const due = checkable.filter((s) => age(s) >= MIN_AGE_H && age(s) <= MAX_AGE_H).sort((a, b) => age(a) - age(b)).slice(0, LIMIT);
   const free = (s) => !/claude/i.test(s.writer);
   const backlog = checkable
     .filter((s) => age(s) > MAX_AGE_H)
@@ -129,8 +133,8 @@ async function check(story, ledger, report, corrections) {
       const result = await verifyStory({ story, sources, log });
       const confirmed = result.checks.filter((c) => c.status === "confirmed");
       // For a person, never corrected: the website's own reasoning contradicted, a figure whose page has changed,
-      // and a contradiction whose quote code could not find.
-      const listed = result.checks.filter((c) => c.status === "listed" || c.status === "drift" || c.status === "unverified");
+      // sources that disagree with each other, and a contradiction whose quote code could not find.
+      const listed = result.checks.filter((c) => ["listed", "drift", "conflict", "unverified"].includes(c.status));
       Object.assign(entry, {
         model: result.model,
         counts: result.counts,

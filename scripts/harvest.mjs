@@ -111,6 +111,14 @@ function windowOf(from, to) {
     corrections: corrections.length,
     // "listed": stories left with something for a person (the website's own reasoning contradicted, a changed page, a
     // quote code could not find, or a confirmed error not corrected in a listing-only run).
+    usefulness: (() => {
+      const claude = news.filter((s) => /claude/.test(String(s.models?.writer ?? "")));
+      const words = (list) => (list.length ? Math.round(list.reduce((n, s) => n + `${s.lede ?? ""} ${s.body ?? ""}`.split(/\s+/).filter(Boolean).length, 0) / list.length) : null);
+      const facts = (list) => (list.length ? Number((list.reduce((n, s) => n + (s.keyFacts?.length ?? 0), 0) / list.length).toFixed(1)) : null);
+      const withL = claude.filter((s) => s.models?.lessons && s.models.lessons !== "control");
+      const control = claude.filter((s) => s.models?.lessons === "control");
+      return { withLessons: { stories: withL.length, words: words(withL), keyFacts: facts(withL) }, control: { stories: control.length, words: words(control), keyFacts: facts(control) } };
+    })(),
     secondLook: { read: read.length, clean: outcome("clean"), corrected: outcome("corrected"), stands: outcome("stands"), refused: outcome("refused"), listed: outcome("listed") + outcome("flagged"), unverifiable: outcome("unverifiable"), confirmedPerStory: read.length ? Number((confirmed / read.length).toFixed(2)) : null, withLessons: { read: withLessons.length, confirmedPerStory: rate(withLessons) }, claudeWithout: { read: without.length, confirmedPerStory: rate(without) } },
     runs: { count: runs.length, written, refused: [...refusals.values()].reduce((a, b) => a + b, 0), callsPerStory: written ? Number((calls / written).toFixed(1)) : null, note: "from the run reports kept (the newest 24)" },
     recurring: [
@@ -148,6 +156,7 @@ const md = [
   `| confirmed errors per story read | ${week.secondLook.confirmedPerStory ?? "–"}${arrow(week.secondLook.confirmedPerStory, before.secondLook.confirmedPerStory)} | ${before.secondLook.confirmedPerStory ?? "–"} |`,
   `| … Claude's stories written with the lessons (read) | ${week.secondLook.withLessons.confirmedPerStory ?? "–"} (${week.secondLook.withLessons.read}) | ${before.secondLook.withLessons.confirmedPerStory ?? "–"} (${before.secondLook.withLessons.read}) |`,
   `| … Claude's stories written without them: the control group and before (read) | ${week.secondLook.claudeWithout.confirmedPerStory ?? "–"} (${week.secondLook.claudeWithout.read}) | ${before.secondLook.claudeWithout.confirmedPerStory ?? "–"} (${before.secondLook.claudeWithout.read}) |`,
+  `| words · key facts a story, with the lessons / control group (fewer errors must not mean saying less) | ${week.usefulness.withLessons.words ?? "–"} · ${week.usefulness.withLessons.keyFacts ?? "–"} / ${week.usefulness.control.words ?? "–"} · ${week.usefulness.control.keyFacts ?? "–"} | |`,
   `| lessons the writer reads (learned from proved mistakes) | ${lessonsNow.active} (${lessonsNow.learnedFrom}) | |`,
   `| corrections printed | ${week.corrections} | ${before.corrections} |`,
   `| Claude calls per story written (runs kept) | ${week.runs.callsPerStory ?? "–"} | ${before.runs.callsPerStory ?? "–"} |`,
