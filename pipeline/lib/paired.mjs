@@ -58,39 +58,74 @@ export async function judge({ draft, notes = null, writerSources, checkSources, 
 }
 
 /**
- * The checker's canary (a review of the loop's statistics, 2026-09-25: a judge that drifts makes every comparison
- * worthless, and nothing else would notice). Plants up to three wrong figures in a copy of a draft whose sources are at
- * hand, by code, so the right answer is known: each changed figure stands in a sentence the sources contradict. The
- * fact-check then reads the copy; what share of the planted errors it calls contradicted is its recall this week.
+ * The checker's canary (the statistics review of the loop and a second review of the design, 2026-09-25: a judge that
+ * drifts makes every comparison worthless, and a canary of changed figures alone would pass a judge that flags every
+ * number). Plants, by code, up to three errors of different kinds in a copy of a published story whose sources are at
+ * hand, so the right answer is known: a changed figure, a weekday moved to the next day, a hedge removed («قد يرتفع»
+ * made «يرتفع»). The fact-check reads the copy without being told anything was changed; what share of the planted
+ * errors it calls contradicted is its recall, and what it calls contradicted among the sentences left alone (in a
+ * story the second look had found clean) is its false alarms.
  */
+const WEEKDAYS = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+const MUTATIONS = [
+  // A figure a reader would check: a decimal, or a whole number of 100 or more that is not a year.
+  (sentence) => {
+    const m = sentence.match(/(?<![\d.])(\d{1,3}(?:,\d{3})+|\d+\.\d+|\d{3,})(?![\d.])/);
+    if (!m) return null;
+    const value = Number(m[1].replace(/,/g, ""));
+    if (!Number.isFinite(value) || (Number.isInteger(value) && value >= 1900 && value <= 2100)) return null;
+    const decimals = m[1].includes(".") ? m[1].split(".")[1].length : 0;
+    const now = (value * 1.37 + 1).toFixed(decimals);
+    return { kind: "figure", changed: sentence.replace(m[1], now), mark: now };
+  },
+  // A weekday moved to the next one.
+  (sentence) => {
+    const day = WEEKDAYS.find((d) => new RegExp(`(?<![\\p{L}\\p{M}])(?:و|ف|ب|ل)?${d}(?![\\p{L}\\p{M}])`, "u").test(sentence));
+    if (!day) return null;
+    const next = WEEKDAYS[(WEEKDAYS.indexOf(day) + 1) % 7];
+    return { kind: "period", changed: sentence.replace(day, next), mark: next };
+  },
+  // A hedge removed: a possibility stated as a fact.
+  (sentence) => {
+    const m = sentence.match(/(?<![\p{L}\p{M}])قد ([يتنأ][\p{L}\p{M}]+)/u);
+    if (!m) return null;
+    return { kind: "hedge", changed: sentence.replace(m[0], m[1]), mark: m[1] };
+  },
+];
+
 export function plantErrors(draft, max = 3) {
   const sentences = String(draft.body ?? "").split(/(?<=[.؟!])\s+|\n+/).map((s) => s.trim()).filter(Boolean);
   const planted = [];
+  const used = new Set();
   let body = String(draft.body ?? "");
-  for (const sentence of sentences) {
+  // The rarer kinds first (a weekday, a hedge), then figures, each in its own sentence.
+  const order = [1, 2, 0, 0, 0];
+  for (const k of order) {
     if (planted.length >= max) break;
-    // A figure a reader would check: a decimal, or a whole number of 100 or more that is not a year.
-    const m = sentence.match(/(?<![\d.])(\d{1,3}(?:,\d{3})+|\d+\.\d+|\d{3,})(?![\d.])/);
-    if (!m) continue;
-    const raw = m[1];
-    const value = Number(raw.replace(/,/g, ""));
-    if (!Number.isFinite(value) || (Number.isInteger(value) && value >= 1900 && value <= 2100)) continue;
-    const decimals = raw.includes(".") ? raw.split(".")[1].length : 0;
-    const wrong = (value * 1.37 + 1).toFixed(decimals);
-    const changed = sentence.replace(raw, wrong);
-    if (changed === sentence || !body.includes(sentence)) continue;
-    body = body.replace(sentence, changed);
-    planted.push({ sentence: changed, was: raw, now: wrong });
+    for (const sentence of sentences) {
+      if (used.has(sentence) || !body.includes(sentence)) continue;
+      const hit = MUTATIONS[k](sentence);
+      if (!hit || hit.changed === sentence) continue;
+      body = body.replace(sentence, hit.changed);
+      used.add(sentence);
+      planted.push({ kind: hit.kind, sentence: hit.changed, was: sentence, mark: hit.mark });
+      break;
+    }
   }
   return { draft: { ...draft, body }, planted };
 }
 
-/** How many planted errors the fact-check called contradicted (confirmed, drift or unverified alike: it noticed). */
+/**
+ * The fact-check on the planted copy: `found` counts planted errors it called contradicted (confirmed, drift or
+ * unverified alike: it noticed), `falseFlags` its confirmed contradictions among the sentences left untouched.
+ */
 export async function canary({ draft, checkSources, log = () => {} }) {
   const { draft: seeded, planted } = plantErrors(draft);
   if (!planted.length) return null;
   const v = await verifyStory({ story: seeded, sources: checkSources, log });
-  const flagged = new Set(v.checks.filter((c) => c.verdict === "contradicted").map((c) => c.sentence));
-  const found = planted.filter((p) => [...flagged].some((s) => s.includes(p.now))).length;
-  return { seeded: planted.length, found };
+  const contradicted = v.checks.filter((c) => c.verdict === "contradicted");
+  const isPlanted = (sentence) => planted.some((p) => sentence.includes(p.mark) && (sentence === p.sentence || p.sentence.includes(sentence) || sentence.includes(p.sentence.slice(0, 40))));
+  const found = planted.filter((p) => contradicted.some((c) => c.sentence.includes(p.mark) && (c.sentence === p.sentence || p.sentence.includes(c.sentence) || c.sentence.includes(p.sentence.slice(0, 40))))).length;
+  const falseFlags = contradicted.filter((c) => c.status === "confirmed" && !isPlanted(c.sentence)).length;
+  return { seeded: planted.length, found, kinds: planted.map((p) => p.kind), falseFlags, checked: v.counts.checked };
 }

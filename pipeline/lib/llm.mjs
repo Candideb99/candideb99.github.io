@@ -14,7 +14,7 @@ import { USER_AGENT, fetchWithTimeout, sleep } from "./util.mjs";
  * `role` (editor, writer, desk, critic, vision) only labels the call in the logs.
  */
 
-export const usage = { calls: 0, failures: 0, promptTokens: 0, completionTokens: 0, byModel: {} };
+export const usage = { calls: 0, failures: 0, promptTokens: 0, completionTokens: 0, cacheReadTokens: 0, costUsd: 0, byModel: {} };
 /** The model every role runs on unless KHAZENDAR_CLAUDE_MODEL names another: Claude Opus 5.5 (the owner, 2026-09-24). */
 export const CLAUDE_MODEL = "claude-opus-5-5";
 
@@ -200,8 +200,13 @@ async function callClaudeCli({ system, user, images = [], timeoutMs }) {
   }
   const used = payload.usage ?? {};
   usage.calls += 1;
-  usage.promptTokens += used.input_tokens ?? 0;
+  // Every token read counts, cached or not: input_tokens alone is only the uncached remainder, and a 13-call run had
+  // reported 26 prompt tokens (a review of the design, 2026-09-25: judge the cost in tokens, not calls). The CLI also
+  // prices each call as the API would (total_cost_usd), which the subscription does not bill but which compares runs.
+  usage.promptTokens += (used.input_tokens ?? 0) + (used.cache_creation_input_tokens ?? 0) + (used.cache_read_input_tokens ?? 0);
+  usage.cacheReadTokens += used.cache_read_input_tokens ?? 0;
   usage.completionTokens += used.output_tokens ?? 0;
+  usage.costUsd = Number((usage.costUsd + (Number(payload.total_cost_usd) || 0)).toFixed(4));
   // The model that answered, as the CLI reports it, not the name asked for: an alias hid Opus 4.6 for days.
   const answered = Object.keys(payload.modelUsage ?? {})[0] ?? cliModel;
   usage.byModel[`claude-cli/${answered}`] = (usage.byModel[`claude-cli/${answered}`] ?? 0) + 1;

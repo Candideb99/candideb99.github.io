@@ -41,9 +41,13 @@ Every 3 hours (and once a day each for an explainer and an analysis, and on Sund
 - **Proving it.** Two stories a day are also written privately with the last approved lessons (and, after launch,
   with none), from the same sources, and a fact-checker that does not know which is which counts the mistakes; the
   extra versions are never published. Every Monday the evidence decides, by a rule fixed in advance: keep the
-  current lessons, promote them, or put back the approved ones. First it tests the fact-checker itself with a few
-  planted mistakes. Honest limits: whether the lessons help overall can be proven in weeks to a few months; whether
-  one week's small change helps cannot be, at this cost. The Desk shows where the evidence stands.
+  current lessons, promote them, or put back the approved ones. The newest lessons must prove themselves on their
+  own stories before they are approved, and a sign of harm puts the approved ones back at once. First it tests the
+  fact-checker itself: three planted mistakes of different kinds it must find, in a story it must not flag
+  otherwise; while that test fails nothing is approved or learned. You can also put the approved lessons back at
+  any moment: `node pipeline/learn.mjs --revert` (or ask the Desk's chat). Honest limits: whether the lessons help
+  overall can be proven in weeks to a few months; whether one week's small change helps cannot be, at this cost.
+  The Desk shows where the evidence stands.
 - **The morning round, free.** Every day, without Claude: are the photos still in place at Wikimedia and Flickr (a
   renamed photo is re-addressed at once, a deleted one is replaced), is news still flowing, are the market quotes
   fresh, does the live site carry the newest story? Claude is woken only if something is broken, and at most once

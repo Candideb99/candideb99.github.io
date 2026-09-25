@@ -4,7 +4,8 @@
  *
  *   node scripts/gate.mjs
  *
- * 1. every pipeline and tool script parses (`node --check`), so a syntax slip cannot reach the cloud newsroom;
+ * 1. every pipeline and tool script parses (`node --check`), so a syntax slip cannot reach the cloud newsroom, and the
+ *    lessons' decision rule decides its known cases correctly (scripts/evidence-selftest.mjs);
  * 2. `astro check` reports no errors;
  * 3. `npm run build` (the production build and its search index) succeeds.
  *
@@ -39,6 +40,12 @@ for (const f of scripts) {
   if (r.status !== 0) fail(`node --check ${f}`, r.stderr || r.stdout);
 }
 console.log(`[ok] ${scripts.length} scripts parse (${seconds(t)})`);
+
+// 1b. The lessons' decision rule decides its known cases correctly (scripts/evidence-selftest.mjs, 2026-09-25).
+t = Date.now();
+const selftest = spawnSync(process.execPath, [path.join("scripts", "evidence-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });
+if (selftest.status !== 0) fail("the lessons' decision rule (scripts/evidence-selftest.mjs)", selftest.stdout + selftest.stderr);
+console.log(`[ok] the lessons' decision rule passes its known cases (${seconds(t)})`);
 
 // 2 and 3. The type check and the production build, as the project runs them.
 for (const [name, command] of [["astro check", "npm run check"], ["npm run build", "npm run build"]]) {

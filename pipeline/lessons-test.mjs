@@ -5,11 +5,15 @@
  * from one week: the evidence pairs run.mjs records as it writes (two stories a day also written privately with the
  * reference lessons, pipeline/state/pairs.json), counted since the kept version was set, with the rule and thresholds
  * of lib/evidence.mjs fixed in advance:
- *   promote (the live lessons become the kept version) when the evidence that they make fewer proved errors reaches 20;
- *   revert (the kept version comes back) when the evidence of more errors reaches 10, or of stories that say less 20;
+ *   promote (the live lessons become the kept version) when the evidence that they make fewer proved errors reaches 20
+ *     and the text the writer reads now has held up in six pairs of its own or more;
+ *   revert (the kept version comes back) when the evidence of more errors reaches 10 over all pairs since the kept
+ *     version, or 20 in the newest text's own pairs, or the evidence of stories that say less reaches 20;
  *   otherwise keep the live lessons as "unproven", and the evidence carries into next week.
- * Before any decision the fact-check is tested itself: three wrong figures are planted in a published story by code and
- * it must find them (the canary). If it found 7 or fewer of the last 12, every decision is frozen until it is trusted.
+ * Before any decision the fact-check is tested itself (the canary): up to three errors of different kinds are planted
+ * by code in a published story it had found clean, and it must find them without flagging the rest. If it found 7 or
+ * fewer of the last 12, or raised 4 false alarms in the last three, nothing is promoted or learned until it is trusted
+ * again; a revert still acts.
  * The same report answers the owner's question in full: do the lessons beat no lessons at all?
  *
  *   node pipeline/lessons-test.mjs [--dry-run]
@@ -21,7 +25,7 @@ import { appendFile, mkdir, readFile, readdir, writeFile } from "node:fs/promise
 import path from "node:path";
 import YAML from "yaml";
 import { ARTICLES_DIR } from "./lib/article.mjs";
-import { activeLessons, loadLessons, promote, revert, saveLessons } from "./lib/lessons.mjs";
+import { activeLessons, lessonsBlock, lessonsHash, loadLessons, promote, revert, saveLessons } from "./lib/lessons.mjs";
 import { canary, plantErrors, sourcesOf } from "./lib/paired.mjs";
 import { CHECKER_VERSION } from "./lib/factcheck.mjs";
 import { GUARD_AT, HARM_AT, PROMOTE_AT, canaryAlarm, decide, tally } from "./lib/evidence.mjs";
@@ -53,11 +57,14 @@ async function canaryHost() {
     }
   }
   out.sort((a, b) => String(b.publishedAt).localeCompare(String(a.publishedAt)));
-  // A story with three figures to change gives the canary its full weight; one with fewer is a last resort.
-  const ranked = [...out.slice(0, 12)].sort((a, b) => plantErrors(b).planted.length - plantErrors(a).planted.length);
+  // A story the second look found clean first: its untouched sentences are then known good, so a contradiction the
+  // fact-check finds among them is a false alarm. Then the most errors to plant: three give the canary its full weight.
+  const ledger = (await readJson(path.join(process.cwd(), "pipeline", "state", "factcheck.json"), { stories: {} })).stories;
+  const clean = (a) => (ledger[a.slug]?.outcome === "clean" ? 1 : 0);
+  const ranked = [...out.slice(0, 30)].sort((a, b) => clean(b) - clean(a) || plantErrors(b).planted.length - plantErrors(a).planted.length);
   for (const article of ranked) {
     const sources = await sourcesOf(article);
-    if (sources.check.length) return { article, sources };
+    if (sources.check.length) return { article, sources, clean: clean(article) === 1 };
   }
   return null;
 }
@@ -73,8 +80,8 @@ async function main() {
     try {
       const c = await canary({ draft: host.article, checkSources: host.sources.check, log: () => {} });
       if (c) {
-        state.canary = [...state.canary, { at: new Date().toISOString(), checker: CHECKER_VERSION, slug: host.article.slug, ...c }].slice(-52);
-        log(`canary: the fact-check found ${c.found} of ${c.seeded} planted errors in "${host.article.title}"`);
+        state.canary = [...state.canary, { at: new Date().toISOString(), checker: CHECKER_VERSION, slug: host.article.slug, knownClean: host.clean, ...c }].slice(-52);
+        log(`canary: the fact-check found ${c.found} of ${c.seeded} planted errors (${c.kinds.join(", ")}) in "${host.article.title}"; ${c.falseFlags} contradiction(s) among the untouched sentences${host.clean ? " of a story it had found clean" : ""}`);
       }
     } catch (error) {
       log(`canary failed: ${String(error.message).split("\n")[0].slice(0, 160)}`);
@@ -85,14 +92,18 @@ async function main() {
   // 2. The evidence since the kept version, judged by this checker only.
   const since = state.kept?.at ?? null;
   const keptVersion = state.kept?.version ?? 0;
-  const vsKept = tally(pairs.filter((p) => (p.keptVersion ?? 0) === keptVersion), "kept", { checker: CHECKER_VERSION, since });
+  const sinceKept = pairs.filter((p) => (p.keptVersion ?? 0) === keptVersion);
+  const vsKept = tally(sinceKept, "kept", { checker: CHECKER_VERSION, since });
+  // The text the writer reads now, on its own pairs: the pooled record proves the process, not the newest version.
+  const nowHash = lessonsHash(lessonsBlock(state));
+  const own = tally(sinceKept.filter((p) => p.lessonsHash === nowHash), "kept", { checker: CHECKER_VERSION, since });
   const vsNone = tally(pairs, "none", { checker: CHECKER_VERSION });
-  const { decision, reason } = decide(vsKept, { frozen: alarm.alarm });
+  const { decision, reason } = decide(vsKept, own, { frozen: alarm.alarm });
   const live = state.version;
   log(`live lessons v${live} against the kept v${keptVersion}: ${decision} — ${reason}`);
   log(`lessons against none so far: better in ${vsNone.better} pairs, worse in ${vsNone.worse}, tied in ${vsNone.tied} (evidence ×${vsNone.e.toFixed(1)} of ${PROMOTE_AT}; harm ×${vsNone.harm.toFixed(1)})`);
 
-  const test = { at: new Date().toISOString(), checker: CHECKER_VERSION, live, kept: keptVersion, decision, reason, vsKept, vsNone, canary: alarm, calls: llmUsage.calls };
+  const test = { at: new Date().toISOString(), checker: CHECKER_VERSION, live, liveHash: nowHash, kept: keptVersion, decision, reason, vsKept, own, vsNone, canary: alarm, calls: llmUsage.calls };
   if (!DRY) {
     if (decision === "promote") promote(state);
     if (decision === "revert") revert(state);
@@ -113,7 +124,7 @@ ${t.reason}.
 | live v${t.live} against kept v${t.kept} | ${t.vsKept.better} | ${t.vsKept.worse} | ${t.vsKept.tied} | ×${t.vsKept.e.toFixed(1)} (${PROMOTE_AT}); harm ×${t.vsKept.harm.toFixed(1)} (${HARM_AT}); says less ×${t.vsKept.saysLess.toFixed(1)} (${GUARD_AT}) |
 | the lessons against none | ${t.vsNone.better} | ${t.vsNone.worse} | ${t.vsNone.tied} | ×${t.vsNone.e.toFixed(1)} (${PROMOTE_AT} proves they help); harm ×${t.vsNone.harm.toFixed(1)} |
 
-The fact-check's canary: ${t.canary.found} of the last ${t.canary.seeded} planted errors found${t.canary.alarm ? " — ALARM" : ""}. ${active} lessons active. Claude calls this week for the decision: ${t.calls}.
+The fact-check's canary: ${t.canary.found} of the last ${t.canary.seeded} planted errors found; ${t.canary.falseFlags} false alarm(s) in the last three${t.canary.alarm ? " — ALARM: nothing is promoted or learned until it is trusted again" : ""}. ${active} lessons active. Claude calls this week for the decision: ${t.calls}.
 `;
   console.log(`\n${md}`);
   if (!DRY) {

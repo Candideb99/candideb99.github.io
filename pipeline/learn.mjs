@@ -7,13 +7,25 @@
  *   node pipeline/learn.mjs              learn from what is new, and save
  *   node pipeline/learn.mjs --dry-run    print what would change, save nothing
  *   node pipeline/learn.mjs --print      print the lessons as the writer reads them
+ *   node pipeline/learn.mjs --revert     put back the kept version now, by hand (an emergency needs no statistics; a
+ *                                        second review of the design, 2026-09-25); no call
  */
 import "./lib/env.mjs";
 import { appendFile } from "node:fs/promises";
-import { activeLessons, learn, lessonsBlock, loadLessons } from "./lib/lessons.mjs";
+import { activeLessons, learn, lessonsBlock, loadLessons, revert, saveLessons } from "./lib/lessons.mjs";
 
 const args = process.argv.slice(2);
 const log = (m) => console.log(`[learn] ${m}`);
+
+if (args.includes("--revert")) {
+  const state = await loadLessons();
+  const from = state.version;
+  revert(state);
+  state.tests = [...(state.tests ?? []), { at: new Date().toISOString(), live: from, kept: state.kept?.version ?? 0, decision: "revert", reason: "put back by hand" }].slice(-104);
+  await saveLessons(state);
+  log(`put back the kept version (${state.kept ? `v${state.kept.version}` : "no lessons"}); ${activeLessons(state).length} lessons active now (version ${state.version})`);
+  process.exit(0);
+}
 
 if (args.includes("--print")) {
   const state = await loadLessons();

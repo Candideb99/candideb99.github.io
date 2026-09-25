@@ -104,6 +104,10 @@ function windowOf(from, to) {
   }
   const written = runs.reduce((n, r) => n + (r.published ?? 0), 0);
   const calls = runs.reduce((n, r) => n + (r.llm?.calls ?? 0), 0);
+  // Tokens and the API-equivalent price, counted in full since 2026-09-25 (cached reads included); older reports
+  // counted only the uncached remainder, so their weeks read low.
+  const tokens = runs.reduce((n, r) => n + (r.llm?.promptTokens ?? 0) + (r.llm?.completionTokens ?? 0), 0);
+  const cost = runs.reduce((n, r) => n + (Number(r.llm?.costUsd) || 0), 0);
   return {
     published: published.length,
     news: news.length,
@@ -122,7 +126,7 @@ function windowOf(from, to) {
       return { withLessons: { stories: withL.length, words: words(withL), keyFacts: facts(withL) }, control: { stories: control.length, words: words(control), keyFacts: facts(control) } };
     })(),
     secondLook: { read: read.length, clean: outcome("clean"), corrected: outcome("corrected"), stands: outcome("stands"), refused: outcome("refused"), listed: outcome("listed") + outcome("flagged"), unverifiable: outcome("unverifiable"), confirmedPerStory: read.length ? Number((confirmed / read.length).toFixed(2)) : null, withLessons: { read: withLessons.length, confirmedPerStory: rate(withLessons) }, claudeWithout: { read: without.length, confirmedPerStory: rate(without) } },
-    runs: { count: runs.length, written, refused: [...refusals.values()].reduce((a, b) => a + b, 0), callsPerStory: written ? Number((calls / written).toFixed(1)) : null, note: "from the run reports kept (the newest 24)" },
+    runs: { count: runs.length, written, refused: [...refusals.values()].reduce((a, b) => a + b, 0), callsPerStory: written ? Number((calls / written).toFixed(1)) : null, tokensPerStory: written && tokens ? Math.round(tokens / written) : null, costPerStory: written && cost ? Number((cost / written).toFixed(2)) : null, note: "from the run reports kept (the newest 24)" },
     recurring: [
       ...[...classes].filter(([, v]) => v.stories.size >= 2).map(([k, v]) => ({ what: `second look: ${k} errors`, stories: v.stories.size, examples: v.examples })),
       ...[...style.kinds].filter(([, v]) => v.size >= 2).sort((a, b) => b[1].size - a[1].size).slice(0, 8).map(([k, v]) => ({ what: `style: ${k}`, stories: v.size, examples: [...v].slice(0, 3) })),
@@ -174,6 +178,7 @@ const md = [
   `| the last weekly decision | ${lessonsNow.lastTest ? `${lessonsNow.lastTest.decision}, ${lessonsNow.lastTest.at.slice(0, 10)}` : "none yet"} | |`,
   `| corrections printed | ${week.corrections} | ${before.corrections} |`,
   `| Claude calls per story written (runs kept) | ${week.runs.callsPerStory ?? "–"} | ${before.runs.callsPerStory ?? "–"} |`,
+  `| tokens per story written, and its price at API rates (not billed on the subscription) | ${week.runs.tokensPerStory ?? "–"}${week.runs.costPerStory ? ` · $${week.runs.costPerStory}` : ""} | ${before.runs.tokensPerStory ?? "–"} |`,
   "",
   week.recurring.length ? "**Recurring this week (two stories or more): the work to turn into a rule**" : "Nothing recurred in two stories or more this week.",
   "",

@@ -25,7 +25,7 @@ import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectFeatur
 import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, newsFloor, reviseArticle, writeAnalysis, writeArticle, writeExplainer, writeFeature, writePaperReading, writeWeekly } from "./lib/write.mjs";
 import { critique, programmaticChecks } from "./lib/verify.mjs";
 import { copyEdit } from "./lib/copydesk.mjs";
-import { keptBlock, lessonsBlock, loadLessons } from "./lib/lessons.mjs";
+import { keptBlock, lessonsBlock, lessonsHash, loadLessons } from "./lib/lessons.mjs";
 import { draftWith, judge } from "./lib/paired.mjs";
 import { CHECKER_VERSION } from "./lib/factcheck.mjs";
 import { pickImage } from "./lib/images.mjs";
@@ -440,7 +440,7 @@ async function evidencePair(pairing) {
   const check = writer.map((s, i) => ({ n: i + 1, name: s.sourceNameEn ?? s.sourceName ?? "", title: s.title ?? "", url: s.url, publishedAt: s.publishedAt ?? null, text: s.text, reason: "" }));
   const stats = (j) => ({ errors: j.errors, severity: j.severity, supported: j.supported, notFound: j.notFound, checked: j.checked, words: j.words, keyFacts: j.keyFacts, classes: j.classes });
   try {
-    const out = { at: new Date().toISOString(), slug: pairing.slug, checker: CHECKER_VERSION, lessons: `v${LESSONS_VERSION}`, keptVersion: KEPT_VERSION };
+    const out = { at: new Date().toISOString(), slug: pairing.slug, checker: CHECKER_VERSION, lessons: `v${LESSONS_VERSION}`, lessonsHash: lessonsHash(LESSONS), keptVersion: KEPT_VERSION };
     out.live = stats(await judge({ draft: pairing.firstDraft, notes: pairing.firstNotes, writerSources: writer, checkSources: check, log }));
     for (const ref of refs) {
       const { draft, notes } = await draftWith({ story: pairing.story, sources: writer, lessons: ref.lessons, log });

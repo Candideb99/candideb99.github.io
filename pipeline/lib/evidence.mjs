@@ -65,19 +65,38 @@ export function tally(pairs, other, { checker = null, since = null } = {}) {
   return { n, better, worse, tied, down, up, e: eValue(better, worse), harm: eValue(worse, better), saysLess: eValue(down, up) };
 }
 
+/** The pairs a version must have on its own before it can be promoted: pooled evidence proves the process, not the latest text. */
+export const OWN_PAIRS = 6;
+
 /**
- * The decision on the live lessons, from the live-vs-kept pairs since the kept version was set. `frozen` (the checker's
- * canary failing) stops every decision: a judge that has drifted cannot promote or revert anything.
+ * The decision on the live lessons. `pooled` counts every live-vs-kept pair since the kept version was set; `own` only
+ * the pairs written with the text the writer reads now (a second review of the design, 2026-09-25: pooled wins of
+ * earlier versions must neither crown the newest one nor hide its harm).
+ *   - Rollback is never frozen: stories that say less, or harm in the pooled pairs (evidence 10) or in the newest
+ *     version's own pairs (evidence 20, the stricter bar for the second look at the same data), revert at once.
+ *   - `frozen` (the fact-check's canary failing) stops promotion only: a judge in doubt may not crown anything.
+ *   - Promotion needs the pooled evidence (20) and the newest text's own pairs: at least OWN_PAIRS of them, and no more
+ *     worse than better among them.
  */
-export function decide(t, { frozen = false } = {}) {
-  if (frozen) return { decision: "frozen", reason: "the fact-check's canary is failing: no decision until it is trusted again" };
-  if (t.saysLess >= GUARD_AT) return { decision: "revert", reason: `the live lessons wrote less: supported sentences fell in ${t.down} pairs and rose in ${t.up} (evidence ×${t.saysLess.toFixed(1)}, ${GUARD_AT} decides)` };
-  if (t.harm >= HARM_AT) return { decision: "revert", reason: `the live lessons made more proved errors: worse in ${t.worse} pairs, better in ${t.better} (evidence of harm ×${t.harm.toFixed(1)}, ${HARM_AT} decides)` };
-  if (t.e >= PROMOTE_AT) return { decision: "promote", reason: `the live lessons made fewer proved errors: better in ${t.better} pairs, worse in ${t.worse} (evidence ×${t.e.toFixed(1)}, ${PROMOTE_AT} decides)` };
-  return { decision: "keep", reason: `unproven so far: better in ${t.better} pairs, worse in ${t.worse}, tied in ${t.tied} (evidence ×${t.e.toFixed(1)} of ${PROMOTE_AT}; harm ×${t.harm.toFixed(1)} of ${HARM_AT})` };
+export function decide(pooled, own = pooled, { frozen = false } = {}) {
+  if (pooled.saysLess >= GUARD_AT || own.saysLess >= GUARD_AT) {
+    const t = pooled.saysLess >= GUARD_AT ? pooled : own;
+    return { decision: "revert", reason: `the live lessons wrote less: supported sentences fell in ${t.down} pairs and rose in ${t.up} (evidence ×${t.saysLess.toFixed(1)}, ${GUARD_AT} decides)` };
+  }
+  if (pooled.harm >= HARM_AT) return { decision: "revert", reason: `the live lessons made more proved errors: worse in ${pooled.worse} pairs, better in ${pooled.better} (evidence of harm ×${pooled.harm.toFixed(1)}, ${HARM_AT} decides)` };
+  if (own.harm >= PROMOTE_AT) return { decision: "revert", reason: `the newest lessons made more proved errors in their own pairs: worse in ${own.worse}, better in ${own.better} (evidence of harm ×${own.harm.toFixed(1)}, ${PROMOTE_AT} decides)` };
+  if (frozen) return { decision: "frozen", reason: "the fact-check's canary is failing: nothing is promoted or learned until it is trusted again; a rollback would still act" };
+  if (pooled.e >= PROMOTE_AT) {
+    if (own.n >= OWN_PAIRS && own.worse <= own.better) return { decision: "promote", reason: `the live lessons made fewer proved errors: better in ${pooled.better} pairs, worse in ${pooled.worse} (evidence ×${pooled.e.toFixed(1)}, ${PROMOTE_AT} decides), and the newest text held up in its own ${own.n} pairs (${own.better} better, ${own.worse} worse)` };
+    return { decision: "keep", reason: `the lessons' record is strong (evidence ×${pooled.e.toFixed(1)}), but the newest text has ${own.n} pair(s) of its own (${own.better} better, ${own.worse} worse); it is promoted once it has ${OWN_PAIRS} with no more worse than better` };
+  }
+  return { decision: "keep", reason: `unproven so far: better in ${pooled.better} pairs, worse in ${pooled.worse}, tied in ${pooled.tied} (evidence ×${pooled.e.toFixed(1)} of ${PROMOTE_AT}; harm ×${pooled.harm.toFixed(1)} of ${HARM_AT})` };
 }
 
-/** The planted-error canary: an alarm when the fact-check found 7 or fewer of the last 12 planted errors. */
+/**
+ * The planted-error canary: an alarm when the fact-check found 7 or fewer of the last 12 planted errors (it misses), or
+ * called 4 or more untouched sentences of clean stories contradicted in the last three canaries (it cries wolf).
+ */
 export function canaryAlarm(history) {
   let seeded = 0;
   let found = 0;
@@ -86,5 +105,6 @@ export function canaryAlarm(history) {
     seeded += c.seeded;
     found += c.found;
   }
-  return { seeded, found, alarm: seeded >= 12 && found <= 7 };
+  const falseFlags = history.slice(-3).reduce((n, c) => n + (c.falseFlags ?? 0), 0);
+  return { seeded, found, falseFlags, alarm: (seeded >= 12 && found <= 7) || falseFlags >= 4 };
 }
