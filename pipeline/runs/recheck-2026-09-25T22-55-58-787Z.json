@@ -1,0 +1,182 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-09-25T22:55:58.787Z",
+  "durationSec": 214,
+  "read": 4,
+  "corrected": 4,
+  "report": [
+    {
+      "slug": "oecd-raises-2026-global-growth-forecast-e97fa1",
+      "title": "«التعاون الاقتصادي» ترفع توقعات النمو العالمي لعام 2026 إلى 2.9%",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 26,
+        "checked": 26,
+        "supported": 21,
+        "weak": 1,
+        "noEvidence": 1,
+        "notFound": 2,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "cause",
+          "sentence": "وأشارت المنظمة إلى أن السحب من مخزونات النفط العالمية، والتراجع الشديد في واردات الصين من الطاقة، والتحول إلى أنواع وقود بديلة منها الفحم، خففت أثر شح إمدادات النفط الخليجية.",
+          "quote": "The impact of the oil shock has so far been moderated by several factors, including greater use of alternative supply routes, inventory drawdowns and the coordinated release of strategic reserves in OECD economies.",
+          "source": "Economy Middle East",
+          "correction": "The OECD cites alternative supply routes, inventory drawdowns, coordinated strategic reserve releases, extra non-Gulf production and weaker oil demand (particularly from China); it does not mention a switch to alternative fuels such as coal or a sharp drop in China's energy imports."
+        }
+      ]
+    },
+    {
+      "slug": "saudi-restarts-east-west-oil-pipeline-698775",
+      "title": "السعودية تعيد تشغيل خط «شرق - غرب» النفطي المتوقف منذ 13 سبتمبر",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 25,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "hedge",
+          "sentence": "مدة استعادة التدفق: من ستة إلى ثمانية أسابيع",
+          "quote": "Saudi Arabia’s 7 million b/d East-West Pipeline resumed pumping at a low rate after an 11-day shutdown, potentially allowing Yanbu exports to restart, but restoring the pre-attack flow of around 4 million b/d could take six to eight weeks.",
+          "source": "OilPrice.com",
+          "correction": "OilPrice says restoring the pre-attack flow could take six to eight weeks, which is an estimate and not an established duration."
+        },
+        {
+          "class": "term",
+          "sentence": "وبحلول الساعة 11:21 بتوقيت غرينتش، تراجع برنت 2.8% إلى 97.55 دولار للبرميل في العقود الآجلة، فيما نزل خام غرب تكساس الوسيط 3.1% إلى 89.30 دولار.",
+          "quote": "وتراجع خام برنت 2.8 في المائة ليصل إلى 97.55 دولار للبرميل، في التعاملات الفورية، بحلول الساعة 11:21 بتوقيت غرينتش، كما تراجع خام غرب تكساس الوسيط بنسبة 3.1 في المائة ليصل إلى 89.30 دولار للبرميل.",
+          "source": "Asharq Al-Awsat",
+          "correction": "The source gives the 2.8% fall to $97.55 for Brent in spot trading, not in futures."
+        }
+      ]
+    },
+    {
+      "slug": "saudi-sells-100-million-barrels-asia-hormuz-b316ff",
+      "title": "السعودية تبيع نحو 100 مليون برميل من الخام إلى آسيا عبر هرمز",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 20,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "hedge",
+          "sentence": "تدفقات الخام السعودي إلى آسيا عبر هرمز: أكثر من ضعف مستوياتها الأخيرة",
+          "quote": "The sales flurry from Saudi oil giant Aramco would more than double the recent flows of Saudi crude from the Hormuz route to Asia, according to Bloomberg’s estimates.",
+          "source": "OilPrice.com",
+          "correction": "The doubling is Bloomberg's estimate of what the sales, which are for October and November delivery, would do to flows; it is not an observed current level."
+        }
+      ]
+    },
+    {
+      "slug": "trump-backs-us-diesel-export-ban-79317b",
+      "title": "ترامب يؤيد حظر صادرات الديزل مع بلوغ سعره 6.53 دولار للغالون",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 27,
+        "checked": 27,
+        "supported": 24,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "figure",
+          "sentence": "وتجاوز سعر البرميل 207 دولارات الثلاثاء، متقدماً على النفط الخام بأكثر من 100 دولار، بحسب «سي إن بي سي».",
+          "quote": "Diesel cost around $207 a barrel Tuesday, more than $100 above the price of crude oil.",
+          "source": "CNBC",
+          "correction": "CNBC says diesel cost around $207 a barrel on Tuesday, not that it exceeded $207."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 4,
+    "failures": 0,
+    "promptTokens": 34376,
+    "completionTokens": 25869,
+    "cacheReadTokens": 0,
+    "costUsd": 0.7923,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 4
+    },
+    "correctionsEditorCalls": 4
+  },
+  "log": [
+    "[22:55:59] second look: 4 to read now (98 published pieces not yet read)",
+    "[22:56:52] llm ok role=checker model=claude-cli attempt=1 ms=49867",
+    "[22:56:52] oecd-raises-2026-global-growth-forecast-e97fa1: 26 of 26 sentences checked · 21 supported · 3 without a source · 1 confirmed error(s)",
+    "[22:56:52]   ✗ [cause] وأشارت المنظمة إلى أن السحب من مخزونات النفط العالمية، والتراجع الشديد في واردات الصين من الطاقة، والتحول إلى  — The OECD cites alternative supply routes, inventory drawdowns, coordinated strategic reserve releases, extra non-Gulf production and weaker oil demand (particul",
+    "[22:57:15] llm ok role=checker model=claude-cli attempt=1 ms=74337",
+    "[22:57:16] saudi-restarts-east-west-oil-pipeline-698775: 29 of 29 sentences checked · 25 supported · 0 without a source · 2 confirmed error(s) · 2 listed for a person",
+    "[22:57:16]   ✗ [hedge] مدة استعادة التدفق: من ستة إلى ثمانية أسابيع — OilPrice says restoring the pre-attack flow could take six to eight weeks, which is an estimate and not an established duration.",
+    "[22:57:16]   ✗ [term] وبحلول الساعة 11:21 بتوقيت غرينتش، تراجع برنت 2.8% إلى 97.55 دولار للبرميل في العقود الآجلة، فيما نزل خام غرب  — The source gives the 2.8% fall to $97.55 for Brent in spot trading, not in futures.",
+    "[22:57:16] trump-backs-us-diesel-export-ban-79317b:   source https://www.nytimes.com/2026/09/22/business/energy-environment/trump-diesel-expo: http-403",
+    "[22:57:17] trump-backs-us-diesel-export-ban-79317b:   source https://www.marketwatch.com/story/trump-endorses-diesel-export-ban-a-decision-is: robots-disallow",
+    "[22:57:30] llm ok role=checker model=claude-cli attempt=1 ms=36573",
+    "[22:57:30] saudi-sells-100-million-barrels-asia-hormuz-b316ff: 22 of 22 sentences checked · 20 supported · 1 without a source · 1 confirmed error(s)",
+    "[22:57:30]   ✗ [hedge] تدفقات الخام السعودي إلى آسيا عبر هرمز: أكثر من ضعف مستوياتها الأخيرة — The doubling is Bloomberg's estimate of what the sales, which are for October and November delivery, would do to flows; it is not an observed current level.",
+    "[22:57:56] llm ok role=checker model=claude-cli attempt=1 ms=39413",
+    "[22:57:56] trump-backs-us-diesel-export-ban-79317b: 27 of 27 sentences checked · 24 supported · 2 without a source · 1 confirmed error(s)",
+    "[22:57:56]   ✗ [figure] وتجاوز سعر البرميل 207 دولارات الثلاثاء، متقدماً على النفط الخام بأكثر من 100 دولار، بحسب «سي إن بي سي». — CNBC says diesel cost around $207 a barrel on Tuesday, not that it exceeded $207.",
+    "[22:57:56] corrections: 4 stories to the corrections editor",
+    "[22:57:57] [correct] oecd-raises-2026-global-growth-forecast-e97fa1: fetching 4 source(s)",
+    "[22:58:26] [correct] llm ok role=writer model=claude-cli attempt=1 ms=27164",
+    "[22:58:26] [correct] oecd-raises-2026-global-growth-forecast-e97fa1: corrected; fields body",
+    "[22:58:26]     note: ذكرت نسخة سابقة من هذا الخبر أن المنظمة عزت تخفيف صدمة النفط إلى تراجع شديد في واردات الصين من الطاقة وإلى التحول نحو وقود بديل منه الفحم. والصحيح أنها عزته إلى مسارات إمداد بديلة والسحب من المخزونات والإفراج المنسق عن الاحتياطيات الاستراتيجية، إلى جانب الإنتاج من خارج الخليج وضعف الطلب على النفط ولا سيما من الصين.",
+    "[22:58:26] [correct] saudi-restarts-east-west-oil-pipeline-698775: fetching 4 source(s)",
+    "[22:58:58] [correct] llm ok role=writer model=claude-cli attempt=1 ms=29848",
+    "[22:58:58] [correct] saudi-restarts-east-west-oil-pipeline-698775: corrected; fields body, keyFacts",
+    "[22:58:58]     note: ذكرت نسخة سابقة من هذا الخبر في الحقائق الرئيسية أن استعادة تدفق الخط تستغرق من ستة إلى ثمانية أسابيع، والصحيح أن هذه المدة تقدير أورده موقع «أويل برايس». كما نسبت النسخة السابقة سعر برنت البالغ 97.55 دولار للبرميل إلى العقود الآجلة، وهو ما لم يرد في المصدر الذي نقل الرقم.",
+    "[22:58:58] [correct] saudi-sells-100-million-barrels-asia-hormuz-b316ff: fetching 2 source(s)",
+    "[22:59:14] [correct] llm ok role=writer model=claude-cli attempt=1 ms=15684",
+    "[22:59:14] [correct] saudi-sells-100-million-barrels-asia-hormuz-b316ff: corrected; fields keyFacts",
+    "[22:59:14]     note: ذكرت نسخة سابقة من هذا الخبر أن تدفقات الخام السعودي إلى آسيا عبر مضيق هرمز بلغت أكثر من ضعف مستوياتها الأخيرة. والصحيح أن بلومبرغ تقدّر أن المبيعات، المخصصة للتسليم في أكتوبر ونوفمبر، سترفع هذه التدفقات إلى أكثر من الضعف.",
+    "[22:59:14] [correct] trump-backs-us-diesel-export-ban-79317b: fetching 4 source(s)",
+    "[22:59:15] [correct]   source https://www.nytimes.com/2026/09/22/business/energy-environment/trump-d: http-403",
+    "[22:59:16] [correct]   source https://www.marketwatch.com/story/trump-endorses-diesel-export-ban-a-d: robots-disallow",
+    "[22:59:32] [correct] llm ok role=writer model=claude-cli attempt=1 ms=16267",
+    "[22:59:32] [correct] trump-backs-us-diesel-export-ban-79317b: corrected; fields body",
+    "[22:59:32]     note: ذكرت نسخة سابقة من هذا الخبر أن سعر برميل الديزل تجاوز 207 دولارات الثلاثاء، والصحيح أنه بلغ نحو 207 دولارات.",
+    "[22:59:32] [correct] done: 4 corrected, 0 stand, 0 refused or failed; report pipeline\\runs\\corrections-2026-09-25T22-57-56-836Z.json"
+  ]
+}

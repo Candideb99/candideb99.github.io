@@ -1,0 +1,86 @@
+{
+  "startedAt": "2026-09-25T22:57:57.191Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "oecd-raises-2026-global-growth-forecast-e97fa1",
+      "issue": "The body says «وأشارت المنظمة إلى أن السحب من مخزونات النفط العالمية، والتراجع الشديد في واردات الصين من الطاقة، والتحول إلى أنواع وقود بديلة منها الفحم، خففت أثر شح إمدادات النفط الخليجية.» (The OECD said drawdowns of global oil inventories, a sharp drop in China's energy imports, and a switch to alternative fuels including coal cushioned the shortage of Gulf oil supplies.). Source Economy Middle East says: \"The impact of the oil shock has so far been moderated by several factors, including greater use of alternative supply routes, inventory drawdowns and the coordinated release of strategic reserves in OECD economies.\". The OECD cites alternative supply routes, inventory drawdowns, coordinated strategic reserve releases, extra non-Gulf production and weaker oil demand (particularly from China); it does not mention a switch to alternative fuels such as coal or a sharp drop in China's energy imports.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن المنظمة عزت تخفيف صدمة النفط إلى تراجع شديد في واردات الصين من الطاقة وإلى التحول نحو وقود بديل منه الفحم. والصحيح أنها عزته إلى مسارات إمداد بديلة والسحب من المخزونات والإفراج المنسق عن الاحتياطيات الاستراتيجية، إلى جانب الإنتاج من خارج الخليج وضعف الطلب على النفط ولا سيما من الصين.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وأشارت المنظمة إلى أن السحب من مخزونات النفط العالمية، والتراجع الشديد في واردات الصين من الطاقة، والتحول إلى أنواع وقود بديلة منها الفحم، خففت أثر شح إمدادات النفط الخليجية."
+      ],
+      "newSentences": [
+        "وأشارت المنظمة إلى أن اللجوء إلى مسارات إمداد بديلة، والسحب من المخزونات، والإفراج المنسق عن الاحتياطيات الاستراتيجية في اقتصاداتها، خففت حتى الآن أثر صدمة النفط.",
+        "وأضافت أن الإنتاج الإضافي من خارج الخليج وضعف الطلب على النفط، ولا سيما من الصين، أسهما في امتصاص الصدمة."
+      ]
+    },
+    {
+      "slug": "saudi-restarts-east-west-oil-pipeline-698775",
+      "issue": "1. The key fact says «مدة استعادة التدفق: من ستة إلى ثمانية أسابيع» (The time needed to restore flow is six to eight weeks, stated flatly as a fact.). Source OilPrice.com says: \"Saudi Arabia’s 7 million b/d East-West Pipeline resumed pumping at a low rate after an 11-day shutdown, potentially allowing Yanbu exports to restart, but restoring the pre-attack flow of around 4 million b/d could take six to eight weeks.\". OilPrice says restoring the pre-attack flow could take six to eight weeks, which is an estimate and not an established duration.\n2. The body says «وبحلول الساعة 11:21 بتوقيت غرينتش، تراجع برنت 2.8% إلى 97.55 دولار للبرميل في العقود الآجلة، فيما نزل خام غرب تكساس الوسيط 3.1% إلى 89.30 دولار.» (By 11:21 GMT, Brent fell 2.8% to $97.55 a barrel in futures trading, and WTI fell 3.1% to $89.30.). Source Asharq Al-Awsat says: \"وتراجع خام برنت 2.8 في المائة ليصل إلى 97.55 دولار للبرميل، في التعاملات الفورية، بحلول الساعة 11:21 بتوقيت غرينتش، كما تراجع خام غرب تكساس الوسيط بنسبة 3.1 في المائة ليصل إلى 89.30 دولار للبرميل.\". The source gives the 2.8% fall to $97.55 for Brent in spot trading, not in futures.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر في الحقائق الرئيسية أن استعادة تدفق الخط تستغرق من ستة إلى ثمانية أسابيع، والصحيح أن هذه المدة تقدير أورده موقع «أويل برايس». كما نسبت النسخة السابقة سعر برنت البالغ 97.55 دولار للبرميل إلى العقود الآجلة، وهو ما لم يرد في المصدر الذي نقل الرقم.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وبحلول الساعة 11:21 بتوقيت غرينتش، تراجع برنت 2.8% إلى 97.55 دولار للبرميل في العقود الآجلة، فيما نزل خام غرب تكساس الوسيط 3.1% إلى 89.30 دولار.",
+        "مدة استعادة التدفق من ستة إلى ثمانية أسابيع"
+      ],
+      "newSentences": [
+        "وبحلول الساعة 11:21 بتوقيت غرينتش، تراجع برنت 2.8% إلى 97.55 دولار للبرميل، فيما نزل خام غرب تكساس الوسيط 3.1% إلى 89.30 دولار.",
+        "المدة المقدّرة لاستعادة التدفق بحسب «أويل برايس» من ستة إلى ثمانية أسابيع"
+      ]
+    },
+    {
+      "slug": "saudi-sells-100-million-barrels-asia-hormuz-b316ff",
+      "issue": "The key fact says «تدفقات الخام السعودي إلى آسيا عبر هرمز: أكثر من ضعف مستوياتها الأخيرة» (Saudi crude flows to Asia via Hormuz are more than double their recent levels, stated as a current fact.). Source OilPrice.com says: \"The sales flurry from Saudi oil giant Aramco would more than double the recent flows of Saudi crude from the Hormuz route to Asia, according to Bloomberg’s estimates.\". The doubling is Bloomberg's estimate of what the sales, which are for October and November delivery, would do to flows; it is not an observed current level.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن تدفقات الخام السعودي إلى آسيا عبر مضيق هرمز بلغت أكثر من ضعف مستوياتها الأخيرة. والصحيح أن بلومبرغ تقدّر أن المبيعات، المخصصة للتسليم في أكتوبر ونوفمبر، سترفع هذه التدفقات إلى أكثر من الضعف.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "تدفقات الخام السعودي إلى آسيا عبر هرمز أكثر من ضعف مستوياتها الأخيرة"
+      ],
+      "newSentences": [
+        "أثر المبيعات على تدفقات الخام السعودي إلى آسيا عبر هرمز بحسب تقديرات بلومبرغ رفعها إلى أكثر من ضعف مستوياتها الأخيرة"
+      ]
+    },
+    {
+      "slug": "trump-backs-us-diesel-export-ban-79317b",
+      "issue": "The body says «وتجاوز سعر البرميل 207 دولارات الثلاثاء، متقدماً على النفط الخام بأكثر من 100 دولار، بحسب «سي إن بي سي».» (According to CNBC, the diesel price exceeded $207 per barrel on Tuesday, more than $100 above crude oil.). Source CNBC says: \"Diesel cost around $207 a barrel Tuesday, more than $100 above the price of crude oil.\". CNBC says diesel cost around $207 a barrel on Tuesday, not that it exceeded $207.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن سعر برميل الديزل تجاوز 207 دولارات الثلاثاء، والصحيح أنه بلغ نحو 207 دولارات.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وتجاوز سعر البرميل 207 دولارات الثلاثاء، متقدماً على النفط الخام بأكثر من 100 دولار، بحسب «سي إن بي سي»."
+      ],
+      "newSentences": [
+        "وبلغ سعر البرميل نحو 207 دولارات الثلاثاء، متقدماً على النفط الخام بأكثر من 100 دولار، بحسب «سي إن بي سي»."
+      ]
+    }
+  ]
+}
