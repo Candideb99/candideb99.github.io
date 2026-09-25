@@ -73,10 +73,15 @@
     "trump-approval-32-percent-iran-war-bd2925:13c8308c",
     "trump-approval-32-percent-iran-war-bd2925:13ec3034",
     "trump-approval-32-percent-iran-war-bd2925:7dacd8e4",
-    "us-bond-yield-5-04-percent-ce6ccd:6bb1b8d0"
+    "us-bond-yield-5-04-percent-ce6ccd:6bb1b8d0",
+    "iran-seven-day-plan-reopen-hormuz-a8836f:7f5f63c6",
+    "uk-inflation-rises-to-3-1-percent-august-7dcf61:156de0fc",
+    "uk-inflation-rises-to-3-1-percent-august-7dcf61:fd363816",
+    "uk-inflation-rises-to-3-1-percent-august-7dcf61:1ba6e848",
+    "openai-seeks-1-5-trillion-funding-a2d732:1c82c7fe"
   ],
-  "version": 4,
-  "updatedAt": "2026-09-25T12:04:58.585Z",
+  "version": 5,
+  "updatedAt": "2026-09-25T16:38:55.969Z",
   "lessons": [
     {
       "id": "L1",
@@ -161,7 +166,7 @@
     {
       "id": "L3",
       "class": "term",
-      "rule": "Translate financial terms and tenors exactly. The 10-year Treasury is سندات الخزانة لأجل 10 سنوات, not 'more than ten years'. A nominal yield is not 'actual'. Open interest is العقود/المراكز المفتوحة, not interest. Add no descriptor the source lacks.",
+      "rule": "Translate financial terms, measures and tenors exactly: the 10-year Treasury is سندات الخزانة لأجل 10 سنوات, real regular pay is not real income, and open interest is العقود المفتوحة. Add no descriptor the source lacks: 'U.S.-led' is not 'private-sector-led'.",
       "example": {
         "wrong": "ومع بلوغ عائد السندات الأمريكية لأكثر من عشر سنوات مستوى 5.04%، تزداد كلفة إصدار السندات الدولارية التي تموّل مشاريع البنية التحتية في الخليج.",
         "quote": "بلغ العائد على سندات الخزانة الأمريكية لأجل 10 سنوات 5.04%، مسجلاً أعلى مستوى منذ 2007، بحسب بي بي سي.",
@@ -175,12 +180,19 @@
         "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb:829861d2",
         "trump-signs-russia-sanctions-oil-tariffs-law-ad758a:fcf57be0",
         "eu-fuel-prices-record-iran-saudi-supply-8376ff:0c94c4a9",
-        "ecb-launches-pontes-tokenised-securities-b5dc9b:63c909e2"
+        "ecb-launches-pontes-tokenised-securities-b5dc9b:63c909e2",
+        "uk-inflation-rises-to-3-1-percent-august-7dcf61:156de0fc",
+        "uk-inflation-rises-to-3-1-percent-august-7dcf61:1ba6e848",
+        "openai-seeks-1-5-trillion-funding-a2d732:1c82c7fe"
       ],
-      "seen": 7,
+      "seen": 10,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T12:04:58.585Z",
-      "status": "active"
+      "lastSeen": "2026-09-25T16:38:55.969Z",
+      "status": "active",
+      "previous": [
+        "Translate financial terms and tenors exactly. The 10-year Treasury is سندات الخزانة لأجل 10 سنوات, not 'more than ten years'. A nominal yield is not 'actual'. Open interest is العقود/المراكز المفتوحة, not interest. Add no descriptor the source lacks."
+      ],
+      "sharpenedAt": "2026-09-25T16:38:55.969Z"
     },
     {
       "id": "L4",
@@ -259,11 +271,12 @@
         "oil-decline-diplomacy-hope-d15314:391adc5f",
         "oil-decline-diplomacy-hope-d15314:53f2a805",
         "gulf-oil-flows-return-pre-war-levels-6a0da7:8a377fb5",
-        "trump-approval-32-percent-iran-war-bd2925:13c8308c"
+        "trump-approval-32-percent-iran-war-bd2925:13c8308c",
+        "uk-inflation-rises-to-3-1-percent-august-7dcf61:fd363816"
       ],
-      "seen": 10,
+      "seen": 11,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T12:04:58.585Z",
+      "lastSeen": "2026-09-25T16:38:55.969Z",
       "status": "active",
       "previous": [
         "Copy the weekday or date of an event from the source's own sentence about that event, not from the publication date or another report. If sources disagree, follow the primary report and do not guess.",
@@ -311,6 +324,24 @@
       "createdAt": "2026-09-25T12:04:58.585Z",
       "lastSeen": "2026-09-25T12:04:58.585Z",
       "status": "active"
+    },
+    {
+      "id": "L9",
+      "class": "cause",
+      "rule": "Explain a price or market move only by the cause the source's own sentence gives it. Never make another report or development from the story the trigger, and add no cause the source does not state.",
+      "example": {
+        "wrong": "وتراجعت أسعار النفط الجمعة بعد تقرير أفاد بأن مفاوضين أمريكيين وإيرانيين يبحثون في نيويورك صفقة على مراحل لإنهاء المواجهة في الخليج.",
+        "quote": "Crude oil prices fell Friday after Iran asked the U.S. to return to the interim peace deal that failed to end the war over the summer.",
+        "source": "CNBC",
+        "slug": "iran-seven-day-plan-reopen-hormuz-a8836f"
+      },
+      "evidence": [
+        "iran-seven-day-plan-reopen-hormuz-a8836f:7f5f63c6"
+      ],
+      "seen": 1,
+      "createdAt": "2026-09-25T16:38:55.969Z",
+      "lastSeen": "2026-09-25T16:38:55.969Z",
+      "status": "pending"
     }
   ],
   "model": "claude-cli",
@@ -360,6 +391,15 @@
         "sharpen L6 (+1)",
         "add L8 [figure] from 2 mistake(s)",
         "reinforce L3 (+1)"
+      ]
+    },
+    {
+      "at": "2026-09-25T16:38:55.969Z",
+      "mistakes": 5,
+      "applied": [
+        "add L9 [cause] from 1 mistake(s)",
+        "sharpen L3 (+3)",
+        "reinforce L6 (+1; reworded at most once a week)"
       ]
     }
   ]

@@ -2232,6 +2232,405 @@
       "weak": [],
       "outcome": "corrected",
       "note": "نسبت نسخة سابقة من هذا الخبر إلى بي بي سي تقديراً بأن أسعار الفائدة قد تبقى مرتفعة إذا استمرت التوترات الجيوسياسية وارتفاع أسعار الطاقة، وأوردته فقرة «لماذا يهمّ» دون نسبة. والصحيح أن هذا التقدير لكبيرة استراتيجيي السوق في BMO لإدارة الثروات كارول شلييف، ونقلته بي بي سي عنها."
+    },
+    "allianz-heatwaves-cost-europe-113-billion-c824da": {
+      "at": "2026-09-25T16:35:18.288Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v3",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-25T08:41:43.529Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 17,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "iran-seven-day-plan-reopen-hormuz-a8836f": {
+      "at": "2026-09-25T16:35:18.252Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "control",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-25T12:10:11.414Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 14,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 4,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 22,
+          "field": "body",
+          "sentence": "وتراجعت أسعار النفط الجمعة بعد تقرير أفاد بأن مفاوضين أمريكيين وإيرانيين يبحثون في نيويورك صفقة على مراحل لإنهاء المواجهة في الخليج.",
+          "claim": "Oil prices fell on Friday after a report that US and Iranian negotiators were discussing a phased deal in New York to end the Gulf confrontation.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-25",
+          "quote": "Crude oil prices fell Friday after Iran asked the U.S. to return to the interim peace deal that failed to end the war over the summer.",
+          "correction": "The source attributes Friday's oil price fall to Iran asking the US to return to the failed interim peace deal, not to a report of phased-deal talks.",
+          "class": "cause"
+        }
+      ],
+      "listed": [
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "تراجع برنت تسليم نوفمبر: 1.61%",
+          "quote": "Brent crude futures, the international oil benchmark, declined 1.1% to $105.43 a barrel.",
+          "source": "CNBC",
+          "correction": "The source says Brent crude futures fell 1.1%, not 1.61%."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "سعر برنت تسليم نوفمبر: 104.88 دولار للبرميل",
+          "quote": "Brent crude futures, the international oil benchmark, declined 1.1% to $105.43 a barrel.",
+          "source": "CNBC",
+          "correction": "The source puts Brent crude futures at $105.43 a barrel."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "سعر غرب تكساس الوسيط تسليم نوفمبر: 92.69 دولار للبرميل",
+          "quote": "U.S. West Texas Intermediate dropped 1.3%, to $93.40 per barrel.",
+          "source": "CNBC",
+          "correction": "The source says WTI dropped 1.3% to $93.40 per barrel."
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "لكن الوزير الإيراني لم يحدد ما يتعين على واشنطن فعله قبل انطلاق المهلة، ولا الطريقة التي سيتحقق بها الطرفان من تنفيذ الخطوات، ولا القواعد التي ستنظم الملاحة بعد إعادة فتح المضيق.",
+          "quote": "Iran has asked the U.S. to meet the same conditions laid out in the June 17 memorandum of understanding, Araghchi said.",
+          "source": "CNBC"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وتعفي واشنطن بموجبها النفط الإيراني من العقوبات، على أن تبدأ المحادثات بشأن البرنامج النووي الإيراني فوراً.",
+          "quote": "After seven days, the Strait of Hormuz would reopen. After that, talks on Iran’s nuclear programme would begin.”",
+          "source": "Al Jazeera English"
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "body",
+          "sentence": "وانخفضت العقود الآجلة لخام برنت تسليم نوفمبر 1.61% إلى 104.88 دولار للبرميل بحلول الساعة 10:14 صباحاً بتوقيت شرق الولايات المتحدة، فيما هبطت عقود خام غرب تكساس الوسيط تسليم نوفمبر 2.03% إلى 92.69 دولار.",
+          "quote": "Brent crude futures, the international oil benchmark, declined 1.1% to $105.43 a barrel. U.S. West Texas Intermediate dropped 1.3%, to $93.40 per barrel.",
+          "source": "CNBC",
+          "correction": "The source says Brent fell 1.1% to $105.43 and WTI fell 1.3% to $93.40."
+        }
+      ],
+      "notFound": [
+        "ولم تعلن طهران القواعد التي ستحكم الملاحة بعد إعادة الفتح، فيبقى توقيت عودة الشحنات عبر المضيق مرهوناً بتفاصيل لم تُحسم.",
+        "وقال مسؤول إيراني كبير لرويترز إن المسار الأكثر واقعية أن تسمح طهران بالملاحة في هرمز مقابل إنهاء الولايات المتحدة حصارها البحري."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أسعار النفط تراجعت الجمعة بعد تقرير عن بحث مفاوضين أمريكيين وإيرانيين في نيويورك صفقة على مراحل لإنهاء المواجهة في الخليج، والصحيح أنها تراجعت بعدما طلبت إيران من الولايات المتحدة العودة إلى اتفاق السلام المؤقت الذي أخفق في إنهاء الحرب خلال الصيف."
+    },
+    "eu-urges-uk-raise-chinese-car-tariffs-a5e6ba": {
+      "at": "2026-09-25T16:35:51.026Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v3",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-25T08:38:20.162Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 15,
+        "checked": 15,
+        "supported": 14,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "وفي المقابل، يربط موردو المكونات البريطانيون وصولهم إلى سلاسل الإنتاج الأوروبية بمعاملة بلادهم شريكاً ضمن قواعد «صنع في الاتحاد الأوروبي» المقترحة."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "global-debt-record-365-trillion-iif-b4a84e": {
+      "at": "2026-09-25T16:36:12.239Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v3",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-25T08:36:13.283Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 33,
+        "checked": 33,
+        "supported": 31,
+        "weak": 1,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "تستحق على الاقتصادات الناشئة هذا العام ديون تزيد على 3.5 تريليون دولار، بحسب معهد التمويل الدولي."
+      ],
+      "weak": [
+        {
+          "sentence": "ارتفع الدين العالمي بأكثر من 10 تريليونات دولار في النصف الأول من هذا العام إلى مستوى قياسي بلغ 365.5 تريليون دولار، بحسب تقرير نشره معهد التمويل الدولي الأربعاء، وقاد الزيادةَ اقتراضُ الحكومات والشركات غير المالية.",
+          "quote": "Government and non-financial corporate borrowing represented the principal drivers of the increase, with debt in both sectors reaching new highs."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "france-offers-protect-saudi-yanbu-energy-sites-2ffcbb": {
+      "at": "2026-09-25T16:36:25.881Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "control",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-25T08:30:23.582Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 21,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "الخام: برنت · السعر صباح الجمعة (دولار للبرميل): 105.3 · التغير اليومي: 1.2%- · التغير الأسبوعي: نحو 2%+",
+          "quote": "Brent, the benchmark for two-thirds of the world's oil, was down 1.2 per cent to $105.3 a barrel at 10am UAE time."
+        },
+        {
+          "sentence": "الخام: غرب تكساس الوسيط · السعر صباح الجمعة (دولار للبرميل): 92.72 · التغير اليومي: 2%- · التغير الأسبوعي: نحو 7%-",
+          "quote": "West Texas Intermediate, the gauge that tracks US crude, was trading 2 per cent lower at $92.72 a barrel."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "xi-urges-us-ai-cooperation-trump-summit-ae81d8": {
+      "at": "2026-09-25T16:36:53.797Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-25T05:19:34.530Z",
+      "sourcesRead": 2,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 15,
+        "checked": 15,
+        "supported": 11,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 4,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "ملفات التجاذب بين البلدين: الرسوم الجمركية والتجارة والتنظيم المحتمل للذكاء الاصطناعي",
+        "طرح شي ملف الذكاء الاصطناعي على ترامب مباشرة في قمتهما، بعدما صار تنظيم التقنية أحد ملفات التجاذب بين البلدين.",
+        "وحضر عدد من كبار التنفيذيين عشاءً أقامه البيت الأبيض مساء الخميس، بحسب صحيفة «نيويورك تايمز».",
+        "ولفتت الصحيفة إلى أن التنظيم المحتمل للذكاء الاصطناعي بات بدوره ملفاً يتجاذب البلدان حوله."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "uk-inflation-rises-to-3-1-percent-august-7dcf61": {
+      "at": "2026-09-25T16:37:10.958Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-16T11:54:51.128Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 20,
+        "checked": 20,
+        "supported": 17,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 3,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 11,
+          "field": "whyItMatters",
+          "sentence": "ونمو الدخل الحقيقي بنسبة 0.6% فقط يضيّق هامش الإنفاق أمام الأسر البريطانية.",
+          "claim": "Website analysis: real income growth of only 0.6% narrows British households' spending room.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "BBC News",
+          "sourceDate": "2026-09-16",
+          "quote": "After taking inflation into account, it means regular pay grew by 0.6% between May and July.",
+          "correction": "The 0.6% figure is real growth in regular pay (wages excluding bonuses), not real income.",
+          "class": "term"
+        },
+        {
+          "id": 15,
+          "field": "body",
+          "sentence": "وبحسب مكتب الإحصاءات الوطني، ارتفعت أسعار الوقود نحو الربع (23%) بين يوليو وأغسطس، فيما بقي تضخم الخدمات عند 3.4%، وظل التضخم الأساسي الذي يستثني الطاقة والغذاء مستقراً عند 2.6%.",
+          "claim": "According to the ONS, motor fuel prices rose about a quarter (23%) between July and August (month-on-month). Services inflation stayed at 3.4%, and core inflation (excluding energy and food) was steady at 2.6%.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "BBC News",
+          "sourceDate": "2026-09-16",
+          "quote": "The higher figure for August was mostly caused by higher prices for motor fuel, which rose by 23% compared to August last year.",
+          "correction": "The 23% rise in motor fuel prices is year-on-year (August 2026 vs August 2025), not between July and August.",
+          "class": "period"
+        },
+        {
+          "id": 16,
+          "field": "body",
+          "sentence": "وأظهرت بيانات رسمية أن نمو الأجور العادية بلغ 3.5% سنوياً في الأشهر الثلاثة حتى يوليو، وبعد خصم التضخم لم ينمُ الدخل الحقيقي سوى 0.6%.",
+          "claim": "Official data show regular pay grew 3.5% a year in the three months to July; after inflation, real income grew only 0.6%.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "BBC News",
+          "sourceDate": "2026-09-16",
+          "quote": "After taking inflation into account, it means regular pay grew by 0.6% between May and July.",
+          "correction": "The 0.6% is real growth in regular pay, not real income.",
+          "class": "term"
+        }
+      ],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أسعار الوقود ارتفعت 23% بين يوليو وأغسطس، والصحيح أنها ارتفعت 23% مقارنة بأغسطس من العام الماضي. كما نسبت إلى الدخل الحقيقي نمواً بنسبة 0.6%، والصحيح أن هذه النسبة تخص الأجور العادية بعد خصم التضخم بين مايو ويوليو."
+    },
+    "openai-seeks-1-5-trillion-funding-a2d732": {
+      "at": "2026-09-25T16:37:26.509Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-16T05:00:48.625Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 13,
+        "checked": 13,
+        "supported": 7,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 5,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 9,
+          "field": "body",
+          "sentence": "وتجري «أوبن إيه آي» و«أنثروبيك» و«جوجل» محادثات حول التعاون في سلامة الذكاء الاصطناعي منذ يوليو، حين اقترح ديميس هاسابيس إنشاء هيئة معايير أمريكية بقيادة القطاع الخاص، بحسب CNBC.",
+          "claim": "According to CNBC, OpenAI, Anthropic and Google have been in talks on AI safety cooperation since July, when Demis Hassabis proposed a US standards body led by the private sector.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-15",
+          "quote": "Discussions have been ongoing since Demis Hassabis, the chair of Google DeepMind, released a proposal in July calling for a U.S.-led \"Standards Body,\" the spokesperson said. Hassabis published an essay on X where he suggested establishing a public-private partnership or self-regulatory organization with federal oversight, akin to the Financial Industry Regulatory Authority.",
+          "correction": "Hassabis proposed a U.S.-led standards body, structured as a public-private partnership or self-regulatory organization with federal oversight, not a body led by the private sector.",
+          "class": "term"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "«أوبن إيه آي» تسعى إلى تمويل بتقييم 1.5 تريليون دولار",
+        "تسعى «أوبن إيه آي» إلى جولة تمويل جديدة تضاعف قيمتها إلى نحو 1.5 تريليون دولار، بحسب «نيويورك تايمز»، في مؤشر على ثقة المستثمرين في هيمنتها على سوق الذكاء الاصطناعي التوليدي.",
+        "التمويل الجديد: يضاعف قيمة الشركة لتصل إلى 1.5 تريليون دولار",
+        "يعكس اهتمام المستثمرين بأوبن إيه آي ثقة في هيمنة الشركة على سوق الذكاء الاصطناعي التوليدي، مما قد يجذب رؤوس أموال عربية إلى sektors التكنولوجيا العالية ويدفع الحكومات في الخليج والمغرب العربي إلى تسريع استراتيجيات الذكاء الاصطناعي الوطنية.",
+        "كما أن التركيز على معايير السلامة الطوعية قد يخلق إطارًا تنظيميًا مرنًا يمكن للشركات العربية اعتماده لموازنة الابتكار مع المسؤولية الاجتماعية، خاصة مع زيادة استخدام الذكاء الاصطناعي في الخدمات المالية والرعاية الصحية."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن ديميس هاسابيس اقترح إنشاء هيئة معايير أمريكية بقيادة القطاع الخاص، والصحيح أنه اقترح هيئة معايير بقيادة أمريكية تكون شراكة بين القطاعين العام والخاص أو منظمة ذاتية التنظيم تخضع لرقابة اتحادية."
     }
   }
 }

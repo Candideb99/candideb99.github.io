@@ -1,0 +1,266 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-09-25T16:35:17.689Z",
+  "durationSec": 218,
+  "read": 8,
+  "corrected": 3,
+  "report": [
+    {
+      "slug": "allianz-heatwaves-cost-europe-113-billion-c824da",
+      "title": "«أليانز»: موجات الحر كبّدت الاقتصادات الأوروبية نحو 113 مليار يورو",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 17,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "iran-seven-day-plan-reopen-hormuz-a8836f",
+      "title": "إيران تعرض خطة من سبعة أيام لإعادة فتح مضيق هرمز",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 14,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 4,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "cause",
+          "sentence": "وتراجعت أسعار النفط الجمعة بعد تقرير أفاد بأن مفاوضين أمريكيين وإيرانيين يبحثون في نيويورك صفقة على مراحل لإنهاء المواجهة في الخليج.",
+          "quote": "Crude oil prices fell Friday after Iran asked the U.S. to return to the interim peace deal that failed to end the war over the summer.",
+          "source": "CNBC",
+          "correction": "The source attributes Friday's oil price fall to Iran asking the US to return to the failed interim peace deal, not to a report of phased-deal talks."
+        }
+      ]
+    },
+    {
+      "slug": "eu-urges-uk-raise-chinese-car-tariffs-a5e6ba",
+      "title": "فاينانشال تايمز: الاتحاد الأوروبي يحث لندن على رفع رسوم السيارات الصينية",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 15,
+        "checked": 15,
+        "supported": 14,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "global-debt-record-365-trillion-iif-b4a84e",
+      "title": "الدين العالمي يرتفع إلى مستوى قياسي عند 365.5 تريليون دولار",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 33,
+        "checked": 33,
+        "supported": 31,
+        "weak": 1,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "france-offers-protect-saudi-yanbu-energy-sites-2ffcbb",
+      "title": "فرنسا تعرض حماية منشآت الطاقة السعودية في ينبع بعد هجمات حوثية",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 21,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "xi-urges-us-ai-cooperation-trump-summit-ae81d8",
+      "title": "شي يدعو واشنطن إلى التعاون في الذكاء الاصطناعي خلال قمته مع ترامب",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 15,
+        "checked": 15,
+        "supported": 11,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 4,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "uk-inflation-rises-to-3-1-percent-august-7dcf61",
+      "title": "التضخم البريطاني يرتفع إلى 3.1% في أغسطس",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 20,
+        "checked": 20,
+        "supported": 17,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 3,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "term",
+          "sentence": "ونمو الدخل الحقيقي بنسبة 0.6% فقط يضيّق هامش الإنفاق أمام الأسر البريطانية.",
+          "quote": "After taking inflation into account, it means regular pay grew by 0.6% between May and July.",
+          "source": "BBC News",
+          "correction": "The 0.6% figure is real growth in regular pay (wages excluding bonuses), not real income."
+        },
+        {
+          "class": "period",
+          "sentence": "وبحسب مكتب الإحصاءات الوطني، ارتفعت أسعار الوقود نحو الربع (23%) بين يوليو وأغسطس، فيما بقي تضخم الخدمات عند 3.4%، وظل التضخم الأساسي الذي يستثني الطاقة والغذاء مستقراً عند 2.6%.",
+          "quote": "The higher figure for August was mostly caused by higher prices for motor fuel, which rose by 23% compared to August last year.",
+          "source": "BBC News",
+          "correction": "The 23% rise in motor fuel prices is year-on-year (August 2026 vs August 2025), not between July and August."
+        },
+        {
+          "class": "term",
+          "sentence": "وأظهرت بيانات رسمية أن نمو الأجور العادية بلغ 3.5% سنوياً في الأشهر الثلاثة حتى يوليو، وبعد خصم التضخم لم ينمُ الدخل الحقيقي سوى 0.6%.",
+          "quote": "After taking inflation into account, it means regular pay grew by 0.6% between May and July.",
+          "source": "BBC News",
+          "correction": "The 0.6% is real growth in regular pay, not real income."
+        }
+      ]
+    },
+    {
+      "slug": "openai-seeks-1-5-trillion-funding-a2d732",
+      "title": "«أوبن إيه آي» تسعى إلى تمويل بتقييم 1.5 تريليون دولار",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 13,
+        "checked": 13,
+        "supported": 7,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 5,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "term",
+          "sentence": "وتجري «أوبن إيه آي» و«أنثروبيك» و«جوجل» محادثات حول التعاون في سلامة الذكاء الاصطناعي منذ يوليو، حين اقترح ديميس هاسابيس إنشاء هيئة معايير أمريكية بقيادة القطاع الخاص، بحسب CNBC.",
+          "quote": "Discussions have been ongoing since Demis Hassabis, the chair of Google DeepMind, released a proposal in July calling for a U.S.-led \"Standards Body,\" the spokesperson said. Hassabis published an essay on X where he suggested establishing a public-private partnership or self-regulatory organization with federal oversight, akin to the Financial Industry Regulatory Authority.",
+          "source": "CNBC",
+          "correction": "Hassabis proposed a U.S.-led standards body, structured as a public-private partnership or self-regulatory organization with federal oversight, not a body led by the private sector."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 8,
+    "failures": 0,
+    "promptTokens": 16,
+    "completionTokens": 38618,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 8
+    },
+    "correctionsEditorCalls": 3
+  },
+  "log": [
+    "[16:35:18] second look: 8 to read now (112 published pieces not yet read)",
+    "[16:35:51] llm ok role=checker model=claude-cli attempt=1 ms=32062",
+    "[16:35:51] allianz-heatwaves-cost-europe-113-billion-c824da: 17 of 17 sentences checked · 17 supported · 0 without a source · 0 confirmed error(s)",
+    "[16:36:12] llm ok role=checker model=claude-cli attempt=1 ms=52843",
+    "[16:36:12] iran-seven-day-plan-reopen-hormuz-a8836f: 23 of 23 sentences checked · 14 supported · 2 without a source · 1 confirmed error(s) · 6 listed for a person",
+    "[16:36:12]   ✗ [cause] وتراجعت أسعار النفط الجمعة بعد تقرير أفاد بأن مفاوضين أمريكيين وإيرانيين يبحثون في نيويورك صفقة على مراحل لإنه — The source attributes Friday's oil price fall to Iran asking the US to return to the failed interim peace deal, not to a report of phased-deal talks.",
+    "[16:36:25] llm ok role=checker model=claude-cli attempt=1 ms=33584",
+    "[16:36:25] eu-urges-uk-raise-chinese-car-tariffs-a5e6ba: 15 of 15 sentences checked · 14 supported · 1 without a source · 0 confirmed error(s)",
+    "[16:36:53] llm ok role=checker model=claude-cli attempt=1 ms=39385",
+    "[16:36:53] global-debt-record-365-trillion-iif-b4a84e: 33 of 33 sentences checked · 31 supported · 1 without a source · 0 confirmed error(s)",
+    "[16:36:54] xi-urges-us-ai-cooperation-trump-summit-ae81d8:   source https://www.nytimes.com/2026/09/24/business/economy/tech-executives-state-dinner: http-403",
+    "[16:37:10] llm ok role=checker model=claude-cli attempt=1 ms=42992",
+    "[16:37:10] france-offers-protect-saudi-yanbu-energy-sites-2ffcbb: 23 of 23 sentences checked · 21 supported · 0 without a source · 0 confirmed error(s)",
+    "[16:37:26] llm ok role=checker model=claude-cli attempt=1 ms=31092",
+    "[16:37:26] xi-urges-us-ai-cooperation-trump-summit-ae81d8: 15 of 15 sentences checked · 11 supported · 4 without a source · 0 confirmed error(s)",
+    "[16:37:26] openai-seeks-1-5-trillion-funding-a2d732:   source https://www.nytimes.com/2026/09/16/business/dealbook/openai-new-funding-round.ht: http-403",
+    "[16:37:53] llm ok role=checker model=claude-cli attempt=1 ms=38697",
+    "[16:37:53] uk-inflation-rises-to-3-1-percent-august-7dcf61: 20 of 20 sentences checked · 17 supported · 0 without a source · 3 confirmed error(s)",
+    "[16:37:53]   ✗ [term] ونمو الدخل الحقيقي بنسبة 0.6% فقط يضيّق هامش الإنفاق أمام الأسر البريطانية. — The 0.6% figure is real growth in regular pay (wages excluding bonuses), not real income.",
+    "[16:37:53]   ✗ [period] وبحسب مكتب الإحصاءات الوطني، ارتفعت أسعار الوقود نحو الربع (23%) بين يوليو وأغسطس، فيما بقي تضخم الخدمات عند 3 — The 23% rise in motor fuel prices is year-on-year (August 2026 vs August 2025), not between July and August.",
+    "[16:37:53]   ✗ [term] وأظهرت بيانات رسمية أن نمو الأجور العادية بلغ 3.5% سنوياً في الأشهر الثلاثة حتى يوليو، وبعد خصم التضخم لم ينمُ — The 0.6% is real growth in regular pay, not real income.",
+    "[16:37:58] llm ok role=checker model=claude-cli attempt=1 ms=28432",
+    "[16:37:58] openai-seeks-1-5-trillion-funding-a2d732: 13 of 13 sentences checked · 7 supported · 5 without a source · 1 confirmed error(s)",
+    "[16:37:58]   ✗ [term] وتجري «أوبن إيه آي» و«أنثروبيك» و«جوجل» محادثات حول التعاون في سلامة الذكاء الاصطناعي منذ يوليو، حين اقترح ديم — Hassabis proposed a U.S.-led standards body, structured as a public-private partnership or self-regulatory organization with federal oversight, not a body led b",
+    "[16:37:58] corrections: 3 stories to the corrections editor",
+    "[16:37:58] [correct] iran-seven-day-plan-reopen-hormuz-a8836f: fetching 3 source(s)",
+    "[16:38:16] [correct] llm ok role=writer model=claude-cli attempt=1 ms=17607",
+    "[16:38:16] [correct] iran-seven-day-plan-reopen-hormuz-a8836f: corrected; fields body",
+    "[16:38:16]     note: ذكرت نسخة سابقة من هذا الخبر أن أسعار النفط تراجعت الجمعة بعد تقرير عن بحث مفاوضين أمريكيين وإيرانيين في نيويورك صفقة على مراحل لإنهاء المواجهة في الخليج، والصحيح أنها تراجعت بعدما طلبت إيران من الولايات المتحدة العودة إلى اتفاق السلام المؤقت الذي أخفق في إنهاء الحرب خلال الصيف.",
+    "[16:38:16] [correct] uk-inflation-rises-to-3-1-percent-august-7dcf61: fetching 4 source(s)",
+    "[16:38:38] [correct] llm ok role=writer model=claude-cli attempt=1 ms=15933",
+    "[16:38:38] [correct] uk-inflation-rises-to-3-1-percent-august-7dcf61: corrected; fields whyItMatters, body, keyFacts",
+    "[16:38:38]     note: ذكرت نسخة سابقة من هذا الخبر أن أسعار الوقود ارتفعت 23% بين يوليو وأغسطس، والصحيح أنها ارتفعت 23% مقارنة بأغسطس من العام الماضي. كما نسبت إلى الدخل الحقيقي نمواً بنسبة 0.6%، والصحيح أن هذه النسبة تخص الأجور العادية بعد خصم التضخم بين مايو ويوليو.",
+    "[16:38:38] [correct] openai-seeks-1-5-trillion-funding-a2d732: fetching 4 source(s)",
+    "[16:38:38] [correct]   source https://www.nytimes.com/2026/09/16/business/dealbook/openai-new-fundin: http-403",
+    "[16:38:55] [correct] llm ok role=writer model=claude-cli attempt=1 ms=16849",
+    "[16:38:55] [correct] openai-seeks-1-5-trillion-funding-a2d732: corrected; fields body",
+    "[16:38:55]     note: ذكرت نسخة سابقة من هذا الخبر أن ديميس هاسابيس اقترح إنشاء هيئة معايير أمريكية بقيادة القطاع الخاص، والصحيح أنه اقترح هيئة معايير بقيادة أمريكية تكون شراكة بين القطاعين العام والخاص أو منظمة ذاتية التنظيم تخضع لرقابة اتحادية.",
+    "[16:38:55] [correct] done: 3 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-09-25T16-37-58-034Z.json"
+  ]
+}

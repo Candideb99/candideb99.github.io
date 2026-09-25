@@ -1,0 +1,76 @@
+{
+  "startedAt": "2026-09-25T16:37:58.206Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "iran-seven-day-plan-reopen-hormuz-a8836f",
+      "issue": "The body says «وتراجعت أسعار النفط الجمعة بعد تقرير أفاد بأن مفاوضين أمريكيين وإيرانيين يبحثون في نيويورك صفقة على مراحل لإنهاء المواجهة في الخليج.» (Oil prices fell on Friday after a report that US and Iranian negotiators were discussing a phased deal in New York to end the Gulf confrontation.). Source CNBC says: \"Crude oil prices fell Friday after Iran asked the U.S. to return to the interim peace deal that failed to end the war over the summer.\". The source attributes Friday's oil price fall to Iran asking the US to return to the failed interim peace deal, not to a report of phased-deal talks.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أسعار النفط تراجعت الجمعة بعد تقرير عن بحث مفاوضين أمريكيين وإيرانيين في نيويورك صفقة على مراحل لإنهاء المواجهة في الخليج، والصحيح أنها تراجعت بعدما طلبت إيران من الولايات المتحدة العودة إلى اتفاق السلام المؤقت الذي أخفق في إنهاء الحرب خلال الصيف.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وتراجعت أسعار النفط الجمعة بعد تقرير أفاد بأن مفاوضين أمريكيين وإيرانيين يبحثون في نيويورك صفقة على مراحل لإنهاء المواجهة في الخليج."
+      ],
+      "newSentences": [
+        "وتراجعت أسعار النفط الجمعة بعدما طلبت إيران من الولايات المتحدة العودة إلى اتفاق السلام المؤقت الذي أخفق في إنهاء الحرب خلال الصيف."
+      ]
+    },
+    {
+      "slug": "uk-inflation-rises-to-3-1-percent-august-7dcf61",
+      "issue": "1. The why it matters says «ونمو الدخل الحقيقي بنسبة 0.6% فقط يضيّق هامش الإنفاق أمام الأسر البريطانية.» (Website analysis: real income growth of only 0.6% narrows British households' spending room.). Source BBC News says: \"After taking inflation into account, it means regular pay grew by 0.6% between May and July.\". The 0.6% figure is real growth in regular pay (wages excluding bonuses), not real income.\n2. The body says «وبحسب مكتب الإحصاءات الوطني، ارتفعت أسعار الوقود نحو الربع (23%) بين يوليو وأغسطس، فيما بقي تضخم الخدمات عند 3.4%، وظل التضخم الأساسي الذي يستثني الطاقة والغذاء مستقراً عند 2.6%.» (According to the ONS, motor fuel prices rose about a quarter (23%) between July and August (month-on-month). Services inflation stayed at 3.4%, and core inflation (excluding energy and food) was steady at 2.6%.). Source BBC News says: \"The higher figure for August was mostly caused by higher prices for motor fuel, which rose by 23% compared to August last year.\". The 23% rise in motor fuel prices is year-on-year (August 2026 vs August 2025), not between July and August.\n3. The body says «وأظهرت بيانات رسمية أن نمو الأجور العادية بلغ 3.5% سنوياً في الأشهر الثلاثة حتى يوليو، وبعد خصم التضخم لم ينمُ الدخل الحقيقي سوى 0.6%.» (Official data show regular pay grew 3.5% a year in the three months to July; after inflation, real income grew only 0.6%.). Source BBC News says: \"After taking inflation into account, it means regular pay grew by 0.6% between May and July.\". The 0.6% is real growth in regular pay, not real income.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "whyItMatters",
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أسعار الوقود ارتفعت 23% بين يوليو وأغسطس، والصحيح أنها ارتفعت 23% مقارنة بأغسطس من العام الماضي. كما نسبت إلى الدخل الحقيقي نمواً بنسبة 0.6%، والصحيح أن هذه النسبة تخص الأجور العادية بعد خصم التضخم بين مايو ويوليو.",
+      "model": "claude-cli",
+      "before": {
+        "whyItMatters": "ارتفاع التضخم قبيل قرار بنك إنجلترا يُبقي احتمال رفع الفائدة في وقت لاحق من العام قائماً. ونمو الدخل الحقيقي بنسبة 0.6% فقط يضيّق هامش الإنفاق أمام الأسر البريطانية."
+      },
+      "after": {
+        "whyItMatters": "ارتفاع التضخم قبيل قرار بنك إنجلترا يُبقي احتمال رفع الفائدة في وقت لاحق من العام قائماً. ونمو الأجور العادية بعد خصم التضخم بنسبة 0.6% فقط يضيّق هامش الإنفاق أمام الأسر البريطانية."
+      },
+      "changedSentences": [
+        "ونمو الدخل الحقيقي بنسبة 0.6% فقط يضيّق هامش الإنفاق أمام الأسر البريطانية.",
+        "وبحسب مكتب الإحصاءات الوطني، ارتفعت أسعار الوقود نحو الربع (23%) بين يوليو وأغسطس، فيما بقي تضخم الخدمات عند 3.4%، وظل التضخم الأساسي الذي يستثني الطاقة والغذاء مستقراً عند 2.6%.",
+        "وأظهرت بيانات رسمية أن نمو الأجور العادية بلغ 3.5% سنوياً في الأشهر الثلاثة حتى يوليو، وبعد خصم التضخم لم ينمُ الدخل الحقيقي سوى 0.6%.",
+        "زيادة أسعار الوقود الإجمالية 23%"
+      ],
+      "newSentences": [
+        "ونمو الأجور العادية بعد خصم التضخم بنسبة 0.6% فقط يضيّق هامش الإنفاق أمام الأسر البريطانية.",
+        "وبحسب مكتب الإحصاءات الوطني، ارتفعت أسعار الوقود نحو الربع (23%) في أغسطس مقارنة بالشهر نفسه من العام الماضي، فيما بقي تضخم الخدمات عند 3.4%، وظل التضخم الأساسي الذي يستثني الطاقة والغذاء مستقراً عند 2.6%.",
+        "وأظهرت بيانات رسمية أن نمو الأجور العادية بلغ 3.5% سنوياً في الأشهر الثلاثة حتى يوليو، وبعد خصم التضخم لم تنمُ الأجور العادية سوى 0.6% بين مايو ويوليو.",
+        "زيادة أسعار الوقود على أساس سنوي 23%"
+      ]
+    },
+    {
+      "slug": "openai-seeks-1-5-trillion-funding-a2d732",
+      "issue": "The body says «وتجري «أوبن إيه آي» و«أنثروبيك» و«جوجل» محادثات حول التعاون في سلامة الذكاء الاصطناعي منذ يوليو، حين اقترح ديميس هاسابيس إنشاء هيئة معايير أمريكية بقيادة القطاع الخاص، بحسب CNBC.» (According to CNBC, OpenAI, Anthropic and Google have been in talks on AI safety cooperation since July, when Demis Hassabis proposed a US standards body led by the private sector.). Source CNBC says: \"Discussions have been ongoing since Demis Hassabis, the chair of Google DeepMind, released a proposal in July calling for a U.S.-led \"Standards Body,\" the spokesperson said. Hassabis published an essay on X where he suggested establishing a public-private partnership or self-regulatory organization with federal oversight, akin to the Financial Industry Regulatory Authority.\". Hassabis proposed a U.S.-led standards body, structured as a public-private partnership or self-regulatory organization with federal oversight, not a body led by the private sector.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن ديميس هاسابيس اقترح إنشاء هيئة معايير أمريكية بقيادة القطاع الخاص، والصحيح أنه اقترح هيئة معايير بقيادة أمريكية تكون شراكة بين القطاعين العام والخاص أو منظمة ذاتية التنظيم تخضع لرقابة اتحادية.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وتجري «أوبن إيه آي» و«أنثروبيك» و«جوجل» محادثات حول التعاون في سلامة الذكاء الاصطناعي منذ يوليو، حين اقترح ديميس هاسابيس إنشاء هيئة معايير أمريكية بقيادة القطاع الخاص، بحسب CNBC."
+      ],
+      "newSentences": [
+        "وتجري «أوبن إيه آي» و«أنثروبيك» و«جوجل» محادثات حول التعاون في سلامة الذكاء الاصطناعي منذ يوليو، حين اقترح ديميس هاسابيس إنشاء هيئة معايير بقيادة أمريكية، بحسب CNBC.",
+        "واقترح هاسابيس أن تكون الهيئة شراكة بين القطاعين العام والخاص أو منظمة ذاتية التنظيم تخضع لرقابة اتحادية."
+      ]
+    }
+  ]
+}

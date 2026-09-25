@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "pairs": [
+    {
+      "at": "2026-09-25T16:44:05.149Z",
+      "slug": "us-china-preferential-trade-goods-deal-1da062",
+      "checker": "f6d38e4947",
+      "lessons": "v5",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "severity": 0,
+        "supported": 20,
+        "notFound": 0,
+        "checked": 20,
+        "words": 302,
+        "keyFacts": 2,
+        "classes": []
+      },
+      "kept": {
+        "errors": 1,
+        "severity": 2,
+        "supported": 21,
+        "notFound": 0,
+        "checked": 22,
+        "words": 300,
+        "keyFacts": 2,
+        "classes": [
+          "hedge"
+        ]
+      },
+      "none": {
+        "errors": 1,
+        "severity": 2,
+        "supported": 21,
+        "notFound": 0,
+        "checked": 22,
+        "words": 300,
+        "keyFacts": 2,
+        "classes": [
+          "hedge"
+        ]
+      }
+    }
+  ]
+}
