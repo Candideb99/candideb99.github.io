@@ -1,0 +1,32 @@
+{
+  "startedAt": "2026-09-25T23:23:58.453Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "oecd-raises-2026-global-growth-forecast-e97fa1",
+      "issue": "The body says «وحذّرت من أن عودة الاضطرابات في الإمدادات أو طول أمدها قد يرفعان التضخم ويُضعفان النمو في آن واحد، وفق ما نقلته صحيفة «الغارديان» البريطانية.». Source The Guardian says: \"In its quarterly forecast update, the OECD highlighted the better-than-expected growth performance of the global economy this year but warned that the recent resurgence in oil and gas prices posed risks for the coming months.\". The Guardian reports only that the OECD warned the recent resurgence in oil and gas prices posed risks for the coming months; it carries no warning that renewed or prolonged supply disruptions could simultaneously raise inflation and weaken growth.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "whyItMatters",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر، نقلاً عن صحيفة «الغارديان»، أن منظمة التعاون الاقتصادي والتنمية حذّرت من أن عودة اضطرابات الإمدادات أو طول أمدها قد يرفعان التضخم ويُضعفان النمو في آن واحد. والصحيح أن المنظمة حذّرت من أن عودة أسعار النفط والغاز إلى الارتفاع أخيراً تشكّل مخاطر على الأشهر المقبلة، ومن أن صدمة الطاقة تزداد رسوخاً وقد تُضعف النمو وترفع التضخم في العام المقبل.",
+      "model": "claude-cli",
+      "before": {
+        "whyItMatters": "خفضت المنظمة توقعها لنمو 2027 إلى 3%، ورفعت تقديرها للتضخم في مجموعة العشرين للعام نفسه إلى 3.6%، ما يعني نمواً أبطأ وأسعاراً أعلى معاً. ويشتد هذا الخطر إذا عادت اضطرابات إمدادات النفط أو طال أمدها."
+      },
+      "after": {
+        "whyItMatters": "خفضت المنظمة توقعها لنمو 2027 إلى 3%، ورفعت تقديرها للتضخم في مجموعة العشرين للعام نفسه إلى 3.6%، ما يعني نمواً أبطأ وأسعاراً أعلى معاً. وتحذّر المنظمة من أن صدمة الطاقة تزداد رسوخاً، وأنها قد تُضعف النمو وتدفع التضخم إلى الصعود في العام المقبل."
+      },
+      "changedSentences": [
+        "ويشتد هذا الخطر إذا عادت اضطرابات إمدادات النفط أو طال أمدها.",
+        "وحذّرت من أن عودة الاضطرابات في الإمدادات أو طول أمدها قد يرفعان التضخم ويُضعفان النمو في آن واحد، وفق ما نقلته صحيفة «الغارديان» البريطانية."
+      ],
+      "newSentences": [
+        "وتحذّر المنظمة من أن صدمة الطاقة تزداد رسوخاً، وأنها قد تُضعف النمو وتدفع التضخم إلى الصعود في العام المقبل.",
+        "وحذّرت من أن عودة أسعار النفط والغاز إلى الارتفاع أخيراً تشكّل مخاطر على الأشهر المقبلة."
+      ]
+    }
+  ]
+}

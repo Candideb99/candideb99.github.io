@@ -231,6 +231,41 @@ async function main() {
       if (row) row.outcome = entry.outcome;
       if (item.outcome === "corrected") corrected += 1;
     }
+    // A correction is read once more against its sources (2026-09-26, the owner's go to a review that asked whether a
+    // correction really resolved the problem). An error still standing in the sentences the correction wrote is
+    // recorded and shown for a person, never corrected again by another guess; an error in a sentence the correction
+    // did not touch is a new finding (the first reading missed it) and is corrected once, like any other.
+    const fixed = items.filter((i) => i.outcome === "corrected");
+    const again = [];
+    const brief = (c) => ({ class: c.class, field: c.field, sentence: c.sentence, quote: c.quote, correction: c.correction });
+    if (fixed.length) {
+      const now = (await stories()).filter((s) => fixed.some((i) => i.slug === s.slug));
+      for (const story of now) {
+        const entry = ledger.stories[story.slug];
+        const written = (fixed.find((i) => i.slug === story.slug)?.newSentences ?? []).map((s) => s.trim());
+        const inWritten = (c) => written.some((s) => s === c.sentence.trim() || s.includes(c.sentence.trim().slice(0, 40)) || c.sentence.includes(s.slice(0, 40)));
+        try {
+          const sources = await loadSources(story, { log: (m) => log(`${story.slug}: ${m}`) });
+          if (!sources.some((s) => s.text)) continue;
+          const v = await verifyStory({ story, sources, log });
+          const left = v.checks.filter((c) => c.status === "confirmed");
+          const standing = left.filter(inWritten);
+          const found = left.filter((c) => !inWritten(c));
+          entry.verified = { at: isoNow(), resolved: !standing.length, remaining: standing.map(brief), newFound: found.map(brief) };
+          log(`${story.slug}: the correction ${standing.length ? `left ${standing.length} error(s) in what it wrote: listed for a person` : "reads clean where it wrote"}${found.length ? `; ${found.length} other error(s) found, corrected once more` : ""}`);
+          if (found.length) again.push({ slug: story.slug, issue: correctionIssue(found) });
+        } catch (error) {
+          entry.verified = { at: isoNow(), error: String(error.message).split("\n")[0].slice(0, 200) };
+        }
+      }
+    }
+    if (again.length) {
+      for (const item of await correct(again)) {
+        const entry = ledger.stories[item.slug];
+        if (entry?.verified) entry.verified.secondCorrection = item.outcome;
+        if (item.outcome === "corrected") corrected += 1;
+      }
+    }
   } else if (corrections.length) log(`${corrections.length} confirmed error(s) listed, not corrected (${DRY ? "dry run" : "--no-correct"})`);
 
   const summary = {
