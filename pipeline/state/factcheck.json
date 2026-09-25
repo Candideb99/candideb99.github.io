@@ -1237,6 +1237,518 @@
         }
       ],
       "outcome": "clean"
+    },
+    "china-increases-russian-oil-imports-august-2026-ac1178": {
+      "at": "2026-09-25T08:20:19.981Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "publishedAt": "2026-09-20T11:42:03.232Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 10,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 7,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "زادت الصين وارداتها من الخام الروسي بنسبة 41% في أغسطس مقارنة بالشهر نفسه من العام الماضي، لتصل إلى 11.2 مليون طن أي نحو 2.64 مليون برميل يومياً، بحسب بيانات الجمارك الصينية.",
+        "الحجم الشهري: 11.2 مليون طن",
+        "المعدل اليومي: 2.64 مليون برميل",
+        "يعكس ارتفاع واردات الصين من النفط الروسي وتكاليف الشحن القياسية إعادة تشكيل مسارات تجارة الطاقة العالمية بسبب اضطرابات الممرات المائية مثل هرمز والبحر الأحمر، مما يزيد تكلفة الإمداد لآسيا ويحفز استثمارات ضخمة في ناقلات النفط والبنية التحتية للغاز المسال.",
+        "بالنسبة للاقتصادات العربية المصدرة للنفط، قد يعني ذلك طلباً مستمراً على الخام رغم التحديات اللوجستية، بينما تواجه الدول المستوردة ضغوطاً تضخمية من ارتفاع كلف النقل، مما يستدعي تنويع مصادر الطاقة وتعزيز الكفاءة اللوجستية.",
+        "وأظهرت البيانات الصادرة في 20 سبتمبر أن واردات الصين من العراق تراجعت إلى 1.4 مليون طن في أغسطس بانخفاض 75% عن أغسطس 2025.",
+        "كما انخفضت الواردات من سلطنة عمان إلى 900 ألف طن بانخفاض 71% على أساس سنوي، ولم تُسجَّل أي شحنات في يوليو."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "trump-announces-ai-force-september-2026-66d8dd": {
+      "at": "2026-09-25T08:20:20.116Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "publishedAt": "2026-09-20T11:44:36.264Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 15,
+        "checked": 15,
+        "supported": 11,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 2,
+        "listed": 1,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 6,
+          "field": "keyFacts",
+          "sentence": "نسبة تأثير الذكاء الاصطناعي: 25 في المائة",
+          "claim": "Key fact box: 'AI impact ratio: 25 percent', presented as a flat fact with no hedge, no attribution to Trump and no stated scope (GDP).",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Asharq Al-Awsat",
+          "quote": "فقد أكد أن إدارته «لن تعرقل أو تخنق» نمو قطاع الذكاء الاصطناعي، بل ستدعمه وتراقب تطوره، عادّاً أن الذكاء الاصطناعي يمثل «الثورة الصناعية المقبلة» أو ما هو أكبر من ذلك، وقد يصل تأثيره، بحسب تقديره، إلى نحو 25 في المائة من الناتج المحلي الأميركي.",
+          "correction": "The 25% is Trump's own estimate that AI's impact could reach about 25% of US GDP; it is not an established figure.",
+          "class": "hedge"
+        },
+        {
+          "id": 11,
+          "field": "body",
+          "sentence": "وفي بريطانيا، خلصت لجنة حقوق الإنسان المشتركة إلى أن القوانين الحالية لا تكفي لمواكبة سرعة تطور التكنولوجيا، ودعت إلى تشريع جديد.",
+          "claim": "In Britain, the Joint Committee on Human Rights concluded that current laws are inadequate for the pace of technological change, and the committee itself called for new legislation.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Asharq Al-Awsat",
+          "quote": "وفي بريطانيا، دعا نواب من أحزاب مختلفة إلى تشريع جديد بعدما خلصت لجنة حقوق الإنسان المشتركة في البرلمان إلى أن القوانين الحالية غير مجهَّزة بالكامل للتعامل مع سرعة تطور التكنولوجيا.",
+          "correction": "Cross-party MPs, not the committee, called for new legislation after the Joint Committee on Human Rights found current laws not fully equipped.",
+          "class": "actor"
+        }
+      ],
+      "listed": [
+        {
+          "status": "listed",
+          "class": "other",
+          "field": "whyItMatters",
+          "sentence": "إنشاء قوة عسكرية مخصصة للذكاء الاصطناعي قد يوسّع الإنفاق الحكومي الأمريكي على مراكز البيانات والشرائح الإلكترونية.",
+          "quote": "ولم يحدِّد الرئيس الأميركي موعد إنشاء القوة أو ميزانيتها أو الجهة التي ستتبع لها، كما لم يوضِّح ما إذا كانت ستكون كياناً مدنياً جديداً، أم جزءاً من هيكل حكومي قائم.",
+          "source": "Asharq Al-Awsat",
+          "correction": "Trump did not say whether the AI Force will be a new civilian entity or part of an existing government structure, so it cannot be described as a military force."
+        }
+      ],
+      "notFound": [
+        "وقد يعزّز القيود على تصدير التقنيات المتقدمة إلى الصين في ظل السباق الذي أشار إليه ترامب نفسه."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "أوردت نسخة سابقة من هذا الخبر نسبة 25 في المائة في الحقائق الرئيسية رقماً ثابتاً لتأثير الذكاء الاصطناعي، والصحيح أنها تقدير للرئيس ترامب لما قد يبلغه هذا التأثير من الناتج المحلي الأمريكي. وذكرت النسخة نفسها أن لجنة حقوق الإنسان المشتركة في بريطانيا دعت إلى تشريع جديد، والصحيح أن نواباً من عدة أحزاب هم من طالبوا به بعد استنتاج اللجنة."
+    },
+    "global-markets-test-interest-rates-ai-concerns-1c0036": {
+      "at": "2026-09-25T08:21:06.984Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "lessons": null,
+      "publishedAt": "2026-09-20T23:22:29.020Z",
+      "sourcesRead": 1,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 8,
+        "checked": 8,
+        "supported": 2,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 3,
+        "confirmed": 3,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 1,
+          "field": "title",
+          "sentence": "ضغط مزدوج من الفائدة والذكاء الاصطناعي يهزّ الأسهم العالمية",
+          "claim": "Headline: a double pressure from interest rates and artificial intelligence is shaking global stocks.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "CNBC",
+          "quote": "Higher interest rates and AI safety fears put the stock market to the test last week",
+          "correction": "The CNBC headline says higher rates and AI safety fears put 'the stock market' to the test last week; it does not describe global stocks.",
+          "class": "scope"
+        },
+        {
+          "id": 3,
+          "field": "lede",
+          "sentence": "ارتفعت أسعار الفائدة في الأسواق العالمية الأسبوع الماضي، وفرض تزامنها مع مخاوف المستثمرين من مخاطر الذكاء الاصطناعي وسلامته ضغوطاً على أسواق الأسهم، بحسب CNBC.",
+          "claim": "Per CNBC, interest rates rose in global markets last week. Together with investor fears about AI risks and safety, this put pressure on stock markets.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "CNBC",
+          "quote": "Higher interest rates and AI safety fears put the stock market to the test last week",
+          "correction": "CNBC speaks of higher interest rates and AI safety fears testing 'the stock market'; it does not say rates rose in global markets or refer to stock markets worldwide.",
+          "class": "scope"
+        },
+        {
+          "id": 6,
+          "field": "keyFacts",
+          "sentence": "وضع أسواق الأسهم العالمية تحت اختبار: بسبب ارتفاع الفائدة ومخاوف الذكاء الاصطناعي حسب CNBC",
+          "claim": "Per CNBC, global stock markets were put to the test because of higher rates and AI fears.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "CNBC",
+          "quote": "Higher interest rates and AI safety fears put the stock market to the test last week",
+          "correction": "CNBC says 'the stock market' was put to the test, not global stock markets.",
+          "class": "scope"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "مخاوف من تراجع نمو شركات التكنولوجيا الكبرى",
+        "قد يفضي استمرار هذا الضغط المزدوج إلى تقلبات أوسع في أسعار الأسهم والسندات، ويدفع المستثمرين إلى إعادة تقييم محافظهم والتحول نحو أدوات أقل مخاطرة.",
+        "وتخشى الأسواق أن تُبطئ تلك المخاطر نمو شركات التكنولوجيا الكبرى، في وقت تواجه فيه الأسهم العالمية ضغوطاً متزامنة من سياسات الفائدة المرتفعة ومن القلق إزاء سلامة تطبيقات الذكاء الاصطناعي."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أسعار الفائدة ارتفعت في الأسواق العالمية وأن الضغوط طالت الأسهم العالمية. والصحيح أن CNBC تحدثت عن ارتفاع الفائدة ومخاوف سلامة الذكاء الاصطناعي التي وضعت سوق الأسهم تحت الاختبار الأسبوع الماضي، من دون الإشارة إلى الأسواق العالمية."
+    },
+    "france-diesel-record-price-september-2026-4df468": {
+      "at": "2026-09-25T08:20:56.335Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "publishedAt": "2026-09-20T16:26:16.880Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 12,
+        "weak": 1,
+        "noEvidence": 2,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "واستمرار أسعار الديزل عند هذه المستويات يضغط على تكاليف النقل والخدمات اللوجستية وينعكس على أسعار السلع الاستهلاكية.",
+        "وبلغ متوسط سعر لتر بنزين 95 أوكتان الخالي من الرصاص أكثر من 2.17 يورو (نحو 2.48 دولار) في الأحد نفسه.",
+        "وقال تقرير الجزيرة إن سعر البنزين 95 أوكتان ظل أعلى من ذروة عام 2022 منذ أكثر من عشرة أيام.",
+        "ونقلت «الاقتصادية» عن تحليلات سوقية أن استمرار أسعار الديزل عند مستويات مرتفعة يمثّل خطراً رئيسياً على التضخم، إذ يضغط على تكاليف النقل والخدمات اللوجستية وينعكس على أسعار السلع الاستهلاكية."
+      ],
+      "weak": [
+        {
+          "sentence": "سجّل متوسط سعر الديزل في فرنسا مستوى قياسياً جديداً عند 2.41 يورو للتر الأحد 20 سبتمبر، مع تواصل اضطرابات إمدادات النفط العالمية، وفق بيانات وزارة الاقتصاد الفرنسية التي نقلتها الجزيرة.",
+          "quote": "وأظهر تحليل أجرته وكالة الصحافة الفرنسية، استنادا إلى الأسعار المعروضة في أكثر من 8700 محطة وقود على موقع وزارة الاقتصاد الفرنسية، أن سعر الديزل عند 10:30 صباحا بالتوقيت المحلي تجاوز الرقم القياسي المسجل أمس."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "oil-decline-diplomacy-hope-d15314": {
+      "at": "2026-09-25T08:21:24.705Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "publishedAt": "2026-09-21T13:04:25.119Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 16,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 2,
+        "listed": 1,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 6,
+          "field": "keyFacts",
+          "sentence": "السفن العابرة هذا الأسبوع: 12 سفينة مقابل 35 قبل أسبوع",
+          "claim": "12 vessels crossed Hormuz 'this week', against 35 a week earlier.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "OilPrice.com",
+          "quote": "Commodity vessels traversing the Strait of Hormuz declined further, with just a dozen commodity vessels in total making the passage this weekend, Reuters has reported. This compares to 35 tankers and other commodity carriers passing the chokepoint a week earlier.",
+          "correction": "The 12 commodity vessels crossed over this weekend, not over this week.",
+          "class": "period"
+        },
+        {
+          "id": 19,
+          "field": "body",
+          "sentence": "استهدفت غارات اليمنية هذا الأسبوع أهدافاً في الرياض وميناء ينبع، الذي أصبح المنفذ الأساسي للنفط السعودي بعد تجميد حركة الملاحة عبر هرمز.",
+          "claim": "Yemeni strikes 'this week' hit targets in Riyadh and Yanbu port, which became Saudi Arabia's primary oil outlet after the Hormuz freeze.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "OilPrice.com",
+          "quote": "This weekend saw a series of attacks, including on targets in Riyadh and another strike on the port of Yanbu, which became Saudi Arabia’s primary outlet for crude oil after the Hormuz freeze.",
+          "correction": "The attacks on Riyadh and Yanbu took place this weekend, not this week.",
+          "class": "period"
+        }
+      ],
+      "listed": [
+        {
+          "status": "listed",
+          "class": "other",
+          "field": "whyItMatters",
+          "sentence": "والضغط على منفذَي التصدير معاً قد يُقلّص إمدادات الخام من المنطقة.",
+          "quote": "That enabled exports from the OPEC kingpin ​to recover to over 4 million barrels per day (bpd) so far in September after slumping to ​2.4 million bpd ⁠in August, the lowest since at least 2013, according to provisional data from analytics firm Kpler.",
+          "source": "Arab News",
+          "correction": "The sources show Saudi exports recovering (to over 4 million bpd in September) and Saudi flows through Hormuz rising, so both outlets are not being squeezed together."
+        }
+      ],
+      "notFound": [],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن 12 سفينة سلعية عبرت مضيق هرمز هذا الأسبوع، وأن غارات الحوثيين على الرياض وميناء ينبع وقعت هذا الأسبوع. والصحيح أن عبور السفن الاثنتي عشرة والغارات على الرياض وينبع جرت كلها في نهاية الأسبوع."
+    },
+    "iran-gdp-contracts-10-percent-post-war-a88253": {
+      "at": "2026-09-25T08:21:43.233Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "publishedAt": "2026-09-21T13:11:18.629Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 14,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 1,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 16,
+          "field": "body",
+          "sentence": "وقال قائد القوات المسلحة الإيرانية خاتم الأنبياء في تصريح يوم الأحد إن الولايات المتحدة تستعد لاستئناف الضربات على إيران، مهدداً بالرد على القواعد والمصالح الأمريكية في المنطقة، ومحذراً الدول الإقليمية من تسهيل أي عمل عسكري أمريكي.",
+          "claim": "The commander of Iran's armed forces, 'Khatam al-Anbiya', said on Sunday that the US is preparing to resume strikes on Iran. He threatened retaliation against US bases and interests and warned regional states against facilitating US action.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Al Jazeera English",
+          "quote": "The warning, issued on Sunday by the Khatam al-Anbiya Central Headquarters, which oversees Iran’s armed forces, raises the prospect of a new round of fighting after months of reduced direct attacks.",
+          "correction": "The warning came from the Khatam al-Anbiya Central Headquarters, Iran's central military command, not from a commander named Khatam al-Anbiya.",
+          "class": "actor"
+        }
+      ],
+      "listed": [
+        {
+          "status": "unverified",
+          "class": "period",
+          "field": "lede",
+          "sentence": "انكمش الناتج المحلي الإجمالي لإيران بنسبة 10.1% على أساس سنوي في الربع الأول من التقويم الفارسي (21 مارس - 20 يونيو)، وهي الفترة التي شهدت اندلاع الحرب بين إيران من جهة وإسرائيل والولايات المتحدة من جهة أخرى، وفق بيانات مركز الإحصاء الإيراني.",
+          "quote": "The period covers the opening months of the US-Israel war on Iran, which began on February 28.",
+          "source": "Al Jazeera English",
+          "correction": "The war broke out on February 28, before the quarter began; the 21 March–20 June period covers the war's opening months, not its outbreak."
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "يعكس انكماش الاقتصاد الإيراني بأكثر من 10% في ربع واحد حجم الضربة التي تلقتها طهران من الحصار البحري والعقوبات والضربات العسكرية، ما يهدد استقرار العملة ويضاعف أعباء المعيشة على أكثر من 92 مليون إيراني، ويضعف قدرة الحكومة على تمويل الالتزامات الداخلية والخارجية، في وقت تتصاعد فيه مخاطر تجدّد المواجهة العسكرية التي قد تعطل إمدادات الطاقة عبر مضيق هرمز وتؤثر على أسواق النفط العالمية واقتصادات الخليج.",
+          "quote": "يُذكَر أن الناتج المحلي الإجمالي لإيران بلغ 362.7 مليار دولار عام 2025، وفق بيانات البنك الدولي، بينما بلغ عدد السكان أكثر من 92 مليون نسمة، وكان متوسط دخل الفرد في 2025 في حدود 3900 دولار سنويا."
+        },
+        {
+          "sentence": "وكان قطاع النفط والغاز الأشد تضرراً بتراجع 26.4% مقارنة بالفترة ذاتها من العام السابق، تلاه قطاع الصناعة والتعدين بنسبة 14.7%، ثم الخدمات بنسبة 4.8%، والتصنيع بنسبة 2.5%.",
+          "quote": "Industry and mining contracted by 14.7 percent, services declined by 4.8 percent, and manufacturing contracted by 2.5 percent."
+        },
+        {
+          "sentence": "وكان متوسط التضخم السنوي قد بلغ 69.9% في أغسطس، ووصل سعر صرف الدولار إلى 2.3 مليون ريال إيراني في سبتمبر، وفق تقارير إعلامية.",
+          "quote": "وأفاد مراسل الجزيرة نت في طهران بأن سعر صرف الدولار مقابل الريال الإيراني ارتفع إلى مستويات قياسية حتى بلغ 2.3 مليون ريال للدولار الواحد في الأسواق مؤخرا."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن التحذير من استئناف الضربات الأمريكية صدر عن قائد للقوات المسلحة الإيرانية يُدعى خاتم الأنبياء، والصحيح أنه صدر عن مقر خاتم الأنبياء المركزي، القيادة العسكرية التي تشرف على القوات المسلحة الإيرانية."
+    },
+    "bank-of-england-holds-rate-warns-inflation-48f465": {
+      "at": "2026-09-25T08:22:17.055Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "publishedAt": "2026-09-17T11:55:22.245Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 13,
+        "weak": 1,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 4,
+          "field": "lede",
+          "sentence": "وحذّر البنك من أن التضخم قد يتجاوز 4% إذا استمرت أسعار الطاقة في الارتفاع بسبب الصراع في الشرق الأوسط.",
+          "claim": "The Bank warned that inflation could exceed 4% if energy prices keep rising because of the Middle East conflict. The story presents the above-4% figure as a conditional risk.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "BBC News",
+          "quote": "On Thursday the Bank of England raised its forecast for inflation predicting it would be \"slightly above 4%\" at the start of next year.",
+          "correction": "Inflation slightly above 4% at the start of next year is the Bank's central forecast, not a risk conditional on energy prices continuing to rise; the conditional warning concerned future rate rises.",
+          "class": "hedge"
+        },
+        {
+          "id": 16,
+          "field": "body",
+          "sentence": "وأكد بنك إنجلترا أن قرار إيقاف بيع السندات الحكومية ليس مرتبطاً بالاضطرابات الحالية في السوق بل بدأ التخطيط له قبل عام، وفقاً لتصريحاته.",
+          "claim": "The Bank affirmed that its decision to stop government bond sales is not linked to current market turbulence and that planning for it began a year ago, per its statements.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "BBC News",
+          "quote": "The Bank said discussions to put in place a plan to reduce the current £488bn stockpile of bonds had started a year ago, implying the decision was not related to the recent rise in long term borrowing costs.",
+          "correction": "The Bank said only that discussions on the plan began a year ago; that the decision was unrelated to recent rises in borrowing costs is the BBC's inference, not something the Bank affirmed.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "البنك يعلّق بيع سنداته الحكومية ويتوقع بلوغ التضخم 4% مطلع العام المقبل"
+      ],
+      "weak": [
+        {
+          "sentence": "بنك إنجلترا يُبقي الفائدة عند 3.75%.. تحذير من تضخم فوق 4%",
+          "quote": "أبقى بنك إنجلترا أسعار الفائدة دون تغيير يوم الخميس، لكنه شدد لهجته بشأن مخاطر التضخم، متوقعاً أن يتجاوز معدل ارتفاع الأسعار 4 في المائة في مطلع العام المقبل، ومحذراً من أن استمرار الصراع في الشرق الأوسط واضطراب أسعار الطاقة لفترة طويلة قد يدفعه إلى تشديد السياسة النقدية مجدداً."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن البنك حذّر من تجاوز التضخم 4% إذا استمر ارتفاع أسعار الطاقة، والصحيح أن تجاوز التضخم 4% بقليل مطلع العام المقبل هو توقع البنك الأساسي، وأن تحذيره المشروط باستمرار ارتفاع أسعار الطاقة يخص رفع الفائدة. كما نسبت النسخة السابقة إلى البنك تأكيده أن قرار وقف بيع السندات لا يرتبط باضطرابات السوق، والصحيح أنه اكتفى بالقول إن المناقشات بشأن الخطة بدأت قبل عام."
+    },
+    "gulf-oil-flows-return-pre-war-levels-6a0da7": {
+      "at": "2026-09-25T08:22:20.510Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "publishedAt": "2026-09-17T05:04:56.594Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 10,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 5,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 1,
+          "field": "title",
+          "sentence": "تدفقات نفط الخليج تعود إلى 18 مليون برميل يومياً",
+          "claim": "Headline: Gulf oil flows have returned to about 18 million barrels per day, stated as a sustained daily rate.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Al Jazeera Arabic",
+          "quote": "قال وزير الطاقة الأمريكي كريس رايت إن نحو 18 مليون برميل من النفط تدفقت من الخليج في يوم واحد، مؤكدا عودة التدفقات إلى مستويات ما قبل اندلاع الحرب.",
+          "correction": "Energy Secretary Chris Wright said about 18 million barrels flowed from the Gulf in a single day; the source does not give this as a sustained daily rate.",
+          "class": "scope"
+        },
+        {
+          "id": 3,
+          "field": "lede",
+          "sentence": "أكد وزير الطاقة الأمريكي كريس رايت أن نحو 18 مليون برميل من النفط تدفقت من الخليج في يوم واحد، عائدةً إلى مستويات ما قبل الحرب، بحسب ما نقلته قناة الجزيرة الإنجليزية الثلاثاء 16 سبتمبر.",
+          "claim": "US Energy Secretary Chris Wright said about 18 million barrels of oil flowed from the Gulf in one day, a return to pre-war levels. The story attributes this to Al Jazeera English and dates it Tuesday 16 September.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Al Jazeera Arabic",
+          "quote": "قال وزير الطاقة الأمريكي كريس رايت إن نحو 18 مليون برميل من النفط تدفقت من الخليج في يوم واحد، مؤكدا عودة التدفقات إلى مستويات ما قبل اندلاع الحرب.",
+          "correction": "The report is from Al Jazeera Arabic, not Al Jazeera English; it was published 16–17 September, and Tuesday was the day of the flows, not the date of the report.",
+          "class": "attribution"
+        },
+        {
+          "id": 5,
+          "field": "keyFacts",
+          "sentence": "تدفقات النفط اليومية: 18 مليون برميل",
+          "claim": "Key fact: daily oil flows are 18 million barrels, stated as a daily rate.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Al Jazeera Arabic",
+          "quote": "قال وزير الطاقة الأمريكي كريس رايت إن نحو 18 مليون برميل من النفط تدفقت من الخليج في يوم واحد، مؤكدا عودة التدفقات إلى مستويات ما قبل اندلاع الحرب.",
+          "correction": "About 18 million barrels flowed in a single day (Tuesday), according to Wright; the source gives no daily average.",
+          "class": "scope"
+        },
+        {
+          "id": 11,
+          "field": "body",
+          "sentence": "وقال وزير الطاقة الأمريكي في بيان إن رفع تدفقات النفط من الخليج إلى مستويات قياسية حدث في الوقت الحالي، وفق ما نقلته قناة الجزيرة الإنجليزية.",
+          "claim": "Wright said in a statement that Gulf oil flows have now been raised to record levels, as reported by Al Jazeera English.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Al Jazeera Arabic",
+          "quote": "وقال رايت، في مقابلة مع شبكة فوكس نيوز، \"رفعنا تدفقات النفط من الخليج إلى مستويات قياسية في الوقت الحالي\"، مشيرا إلى مرور نحو 18 مليون برميل يوم الثلاثاء، بما يعادل تقريبا مستويات ما قبل الصراع.",
+          "correction": "",
+          "class": "other"
+        },
+        {
+          "id": 12,
+          "field": "body",
+          "sentence": "وأضاف أن مرور نحو 18 مليون برميل يوم الثلاثاء يعكس استعادة النشاط الطبيعي في المنطقة بعد فترة من الاضطرابات.",
+          "claim": "Wright added that about 18 million barrels passing on Tuesday reflects a restoration of normal activity in the region after a period of disruption.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Al Jazeera Arabic",
+          "quote": "وقال رايت، في مقابلة مع شبكة فوكس نيوز، \"رفعنا تدفقات النفط من الخليج إلى مستويات قياسية في الوقت الحالي\"، مشيرا إلى مرور نحو 18 مليون برميل يوم الثلاثاء، بما يعادل تقريبا مستويات ما قبل الصراع.",
+          "correction": "Wright only said the roughly 18 million barrels on Tuesday was about equal to pre-conflict levels; he did not say normal activity in the region had been restored, and the same report says Hormuz ship traffic fell.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "عودة تدفقات الخليج إلى مستوياتها تخفف ضغوط الإمدادات على أسعار النفط العالمية."
+      ],
+      "weak": [
+        {
+          "sentence": "وذكر المصدر الإنجليزي أن قرار المركزي الإماراتي برفع سعر الأساس جاء بعد قرار الفيدرالي برفع الفائدة بـ 25 نقطة أساس، وفق ما أوردته تقارير اقتصادية منشورة في 16 سبتمبر 2026.",
+          "quote": "The CBUAE increased the Base Rate applicable to its Overnight Deposit Facility from 3.65 percent, following the Fed's decision to raise the federal funds target range by a quarter percentage point to 3.75–4.00 percent."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن تدفقات نفط الخليج تبلغ 18 مليون برميل يومياً، ونسبت تصريحات وزير الطاقة الأمريكي إلى بيان نقلته قناة الجزيرة الإنجليزية في 16 سبتمبر، وأنه تحدث عن استعادة النشاط الطبيعي في المنطقة. والصحيح أن رايت قال في مقابلة مع شبكة فوكس نيوز إن نحو 18 مليون برميل عبرت يوم الثلاثاء وحده، وإن هذه الكمية تعادل تقريباً مستويات ما قبل الصراع."
     }
   }
 }

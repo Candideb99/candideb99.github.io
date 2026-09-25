@@ -45,15 +45,30 @@
     "eu-fuel-prices-record-iran-saudi-supply-8376ff:3ea81f7e",
     "eu-fuel-prices-record-iran-saudi-supply-8376ff:0340aab6",
     "us-denmark-greenland-security-deal-eac792:92f1aee9",
-    "us-denmark-greenland-security-deal-eac792:0149b974"
+    "us-denmark-greenland-security-deal-eac792:0149b974",
+    "trump-announces-ai-force-september-2026-66d8dd:a377f1b8",
+    "trump-announces-ai-force-september-2026-66d8dd:c91c7dd5",
+    "global-markets-test-interest-rates-ai-concerns-1c0036:a9bbf69d",
+    "global-markets-test-interest-rates-ai-concerns-1c0036:4c2f0fe2",
+    "global-markets-test-interest-rates-ai-concerns-1c0036:16c27085",
+    "oil-decline-diplomacy-hope-d15314:391adc5f",
+    "oil-decline-diplomacy-hope-d15314:53f2a805",
+    "iran-gdp-contracts-10-percent-post-war-a88253:df2a1ae0",
+    "bank-of-england-holds-rate-warns-inflation-48f465:4c623af0",
+    "bank-of-england-holds-rate-warns-inflation-48f465:458c6fc6",
+    "gulf-oil-flows-return-pre-war-levels-6a0da7:c30159ef",
+    "gulf-oil-flows-return-pre-war-levels-6a0da7:8a377fb5",
+    "gulf-oil-flows-return-pre-war-levels-6a0da7:23fe98a8",
+    "gulf-oil-flows-return-pre-war-levels-6a0da7:85fb4ddc",
+    "gulf-oil-flows-return-pre-war-levels-6a0da7:8db23002"
   ],
-  "version": 2,
-  "updatedAt": "2026-09-25T07:42:29.972Z",
+  "version": 3,
+  "updatedAt": "2026-09-25T08:25:25.678Z",
   "lessons": [
     {
       "id": "L1",
       "class": "hedge",
-      "rule": "Keep every qualifier in Arabic: could, possibly, expected, will, estimates, reportedly, if/should it go ahead. Name who claims or forecasts. Never turn a claim, conditional warning, forecast or promise ('no cost') into a stated fact, present result or bare headline.",
+      "rule": "Keep every qualifier (could, expected, estimates, reportedly, if) and name who claims or forecasts, including in headlines and data lines. Never turn a claim, estimate or forecast into a fact, and never move a condition from one statement onto another.",
       "example": {
         "wrong": "ويوسّع نطاق الانتشار العسكري الأمريكي إلى القطب الشمالي دون تكلفة إضافية على واشنطن.",
         "quote": "\"There will be NO COST to the United States,\" he wrote.",
@@ -72,20 +87,23 @@
         "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb:84c77935",
         "trump-announces-ban-cnn-msn-politico-white-house-fd6870:49ccea1e",
         "trump-announces-ban-cnn-msn-politico-white-house-fd6870:0dc7d7de",
-        "us-denmark-greenland-security-deal-eac792:0149b974"
+        "us-denmark-greenland-security-deal-eac792:0149b974",
+        "trump-announces-ai-force-september-2026-66d8dd:a377f1b8",
+        "bank-of-england-holds-rate-warns-inflation-48f465:4c623af0"
       ],
-      "seen": 12,
+      "seen": 14,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T07:42:29.972Z",
+      "lastSeen": "2026-09-25T08:25:25.678Z",
       "status": "active",
       "previous": [
-        "Keep every qualifier in Arabic: could, possibly, as much as, hopefully, expected, scheduled, will, estimates, reportedly. Name who claims, forecasts or estimates it. Never turn a claim, hope, forecast or reported figure into a stated fact, a present result or a bare headline number."
+        "Keep every qualifier in Arabic: could, possibly, as much as, hopefully, expected, scheduled, will, estimates, reportedly. Name who claims, forecasts or estimates it. Never turn a claim, hope, forecast or reported figure into a stated fact, a present result or a bare headline number.",
+        "Keep every qualifier in Arabic: could, possibly, expected, will, estimates, reportedly, if/should it go ahead. Name who claims or forecasts. Never turn a claim, conditional warning, forecast or promise ('no cost') into a stated fact, present result or bare headline."
       ]
     },
     {
       "id": "L2",
       "class": "attribution",
-      "rule": "Credit each fact to whom the source credits; the outlet's own reporting is never 'informed sources', an official statement or analyst data. Name the originating outlet. Never make a reported line a quote, a private notice an announcement, or a reply the decree's aim.",
+      "rule": "Credit each fact to whom the source credits and name the originating outlet. An outlet's inference ('implying', 'suggesting') is not the official's own statement. An interview is not a statement. Add no conclusion the speaker did not draw.",
       "example": {
         "wrong": "وذكر أنه كان لديه سابقاً 'قيصر للذكاء الاصطناعي' وهو ديفيد ساكس، الذي استقال وأصبح مستشاراً خارجياً للرئيس.",
         "quote": "Trump already had one “AI czar”, venture capitalist David Sacks. He resigned earlier this year and became an external adviser to the president.",
@@ -106,14 +124,18 @@
         "trump-signs-russia-sanctions-oil-tariffs-law-ad758a:9af5c393",
         "trump-signs-russia-sanctions-oil-tariffs-law-ad758a:d78a43e7",
         "eu-fuel-prices-record-iran-saudi-supply-8376ff:3ea81f7e",
-        "eu-fuel-prices-record-iran-saudi-supply-8376ff:0340aab6"
+        "eu-fuel-prices-record-iran-saudi-supply-8376ff:0340aab6",
+        "bank-of-england-holds-rate-warns-inflation-48f465:458c6fc6",
+        "gulf-oil-flows-return-pre-war-levels-6a0da7:8db23002",
+        "gulf-oil-flows-return-pre-war-levels-6a0da7:85fb4ddc"
       ],
-      "seen": 14,
+      "seen": 17,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T07:42:29.972Z",
+      "lastSeen": "2026-09-25T08:25:25.678Z",
       "status": "active",
       "previous": [
-        "Credit each fact to the party the source credits. Keep the outlet's own background separate from what the speaker said. Name the originating outlet in a chain, such as Politico via Euronews or Reuters data cited by OilPrice. Never invent a spokesperson or an agency."
+        "Credit each fact to the party the source credits. Keep the outlet's own background separate from what the speaker said. Name the originating outlet in a chain, such as Politico via Euronews or Reuters data cited by OilPrice. Never invent a spokesperson or an agency.",
+        "Credit each fact to whom the source credits; the outlet's own reporting is never 'informed sources', an official statement or analyst data. Name the originating outlet. Never make a reported line a quote, a private notice an announcement, or a reply the decree's aim."
       ]
     },
     {
@@ -142,7 +164,7 @@
     {
       "id": "L4",
       "class": "scope",
-      "rule": "Keep a figure or role tied to the exact item, day and instrument the source names. Diesel is not all fuel. One day's count is not a daily rate. A futures-implied value is not the IPO valuation. An official does only what the source assigns.",
+      "rule": "Keep a figure or claim tied to the exact item, place, day and instrument the source names. 'The stock market' is not global markets, one day's flow is not a daily rate, and diesel is not all fuel. An official does only what the source assigns.",
       "example": {
         "wrong": "ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها",
         "quote": "United States President Donald Trump has announced he’s creating an “AI Force” and will appoint a new “AI czar” to oversee development of the nation’s artificial intelligence industry.",
@@ -153,17 +175,25 @@
         "trump-announces-ai-force-and-czar-f4c7aa:5bb238a4",
         "trump-xi-summit-washington-2026-4e439e:2dc37535",
         "oil-prices-decline-china-iran-pressure-41b59d:b3de0b5e",
-        "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb:7be17575"
+        "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb:7be17575",
+        "global-markets-test-interest-rates-ai-concerns-1c0036:a9bbf69d",
+        "global-markets-test-interest-rates-ai-concerns-1c0036:4c2f0fe2",
+        "global-markets-test-interest-rates-ai-concerns-1c0036:16c27085",
+        "gulf-oil-flows-return-pre-war-levels-6a0da7:c30159ef",
+        "gulf-oil-flows-return-pre-war-levels-6a0da7:23fe98a8"
       ],
-      "seen": 4,
+      "seen": 9,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T07:41:52.105Z",
-      "status": "active"
+      "lastSeen": "2026-09-25T08:25:25.678Z",
+      "status": "active",
+      "previous": [
+        "Keep a figure or role tied to the exact item, day and instrument the source names. Diesel is not all fuel. One day's count is not a daily rate. A futures-implied value is not the IPO valuation. An official does only what the source assigns."
+      ]
     },
     {
       "id": "L5",
       "class": "actor",
-      "rule": "For visits, hosting, deals and transfers, reread the source's verb to see who acts on whom. 'Trump went to Beijing' means Xi hosted Trump. Check that subject and object have not been swapped before printing.",
+      "rule": "Give each action to the exact actor the source's verb names. If MPs called for a law after a committee's finding, the committee did not call for it. An institution such as a military headquarters is not a person. Never swap host and guest.",
       "example": {
         "wrong": "الرئيس الأمريكي دونالد ترامب استضاف الرئيس الصيني شي جين بينغ في بكين في مايو 2026، وهذه الزيارة هي الأولى لشي إلى واشنطن منذ 2015، وفقاً لمصدر من Euronews بتاريخ 2026-09-18.",
         "quote": "US President Donald Trump went to Beijing in May, and Chinese President Xi Jinping is now expected to come to him, scheduled to arrive next Wednesday and depart on Friday with his wife, Peng Liyuan, skipping the UN General Assembly entirely.",
@@ -171,17 +201,22 @@
         "slug": "trump-xi-summit-washington-2026-4e439e"
       },
       "evidence": [
-        "trump-xi-summit-washington-2026-4e439e:f4afe586"
+        "trump-xi-summit-washington-2026-4e439e:f4afe586",
+        "trump-announces-ai-force-september-2026-66d8dd:c91c7dd5",
+        "iran-gdp-contracts-10-percent-post-war-a88253:df2a1ae0"
       ],
-      "seen": 1,
+      "seen": 3,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T07:41:52.105Z",
-      "status": "active"
+      "lastSeen": "2026-09-25T08:25:25.678Z",
+      "status": "active",
+      "previous": [
+        "For visits, hosting, deals and transfers, reread the source's verb to see who acts on whom. 'Trump went to Beijing' means Xi hosted Trump. Check that subject and object have not been swapped before printing."
+      ]
     },
     {
       "id": "L6",
       "class": "period",
-      "rule": "Take each event's day from the source's sentence about that event; convert a weekday by counting back from the publication date. Keep an announcement, a takeover, a later remark and a reply on their own days, with any time of day given.",
+      "rule": "Take each event's day from the source's sentence about that event: 'this weekend' is not 'this week', and the event's day is not the report's publication date. Convert a weekday by counting back from publication. Keep announcements, remarks and replies on their own days.",
       "example": {
         "wrong": "أصدرت لجنة الأوراق المالية الأمريكية الأربعاء إعفاءً ابتكارياً مؤقتاً ومشروطاً يتيح لمنصات التداول إصدار تمثيلات رمزية للأسهم الأمريكية المتداولة علناً وتداولها، نافذاً فور صدوره.",
         "quote": "The Securities and Exchange Commission on Thursday issued an order creating a regulatory pathway for certain trading venues to issue tokenized representations of publicly traded U.S. stocks, effective immediately.",
@@ -194,14 +229,18 @@
         "russia-temporary-management-western-assets-1dadf4:c0d589ab",
         "warren-buffett-steps-down-berkshire-chairman-457ee7:908cde63",
         "trump-announces-ban-cnn-msn-politico-white-house-fd6870:047efb59",
-        "us-denmark-greenland-security-deal-eac792:92f1aee9"
+        "us-denmark-greenland-security-deal-eac792:92f1aee9",
+        "oil-decline-diplomacy-hope-d15314:391adc5f",
+        "oil-decline-diplomacy-hope-d15314:53f2a805",
+        "gulf-oil-flows-return-pre-war-levels-6a0da7:8a377fb5"
       ],
-      "seen": 6,
+      "seen": 9,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T07:42:29.972Z",
+      "lastSeen": "2026-09-25T08:25:25.678Z",
       "status": "active",
       "previous": [
-        "Copy the weekday or date of an event from the source's own sentence about that event, not from the publication date or another report. If sources disagree, follow the primary report and do not guess."
+        "Copy the weekday or date of an event from the source's own sentence about that event, not from the publication date or another report. If sources disagree, follow the primary report and do not guess.",
+        "Take each event's day from the source's sentence about that event; convert a weekday by counting back from the publication date. Keep an announcement, a takeover, a later remark and a reply on their own days, with any time of day given."
       ]
     },
     {
@@ -217,11 +256,13 @@
       "evidence": [
         "trump-announces-ban-cnn-msn-politico-white-house-fd6870:a78747a1",
         "trump-announces-ban-cnn-msn-politico-white-house-fd6870:6e11c2d0",
-        "trump-announces-ban-cnn-msn-politico-white-house-fd6870:21207823"
+        "trump-announces-ban-cnn-msn-politico-white-house-fd6870:21207823",
+        "gulf-oil-flows-return-pre-war-levels-6a0da7:8a377fb5",
+        "gulf-oil-flows-return-pre-war-levels-6a0da7:85fb4ddc"
       ],
-      "seen": 3,
+      "seen": 5,
       "createdAt": "2026-09-25T07:42:29.972Z",
-      "lastSeen": "2026-09-25T07:42:29.972Z",
+      "lastSeen": "2026-09-25T08:25:25.678Z",
       "status": "active"
     }
   ],
@@ -248,6 +289,18 @@
         "sharpen L1 (+3)",
         "add L7 [other] from 3 mistake(s)",
         "reinforce L3 (+2)"
+      ]
+    },
+    {
+      "at": "2026-09-25T08:25:25.678Z",
+      "mistakes": 15,
+      "applied": [
+        "sharpen L1 (+2)",
+        "sharpen L2 (+3)",
+        "sharpen L4 (+5)",
+        "sharpen L5 (+2)",
+        "sharpen L6 (+3)",
+        "reinforce L7 (+2)"
       ]
     }
   ]

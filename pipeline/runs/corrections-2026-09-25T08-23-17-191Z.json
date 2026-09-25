@@ -1,0 +1,170 @@
+{
+  "startedAt": "2026-09-25T08:23:17.326Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "trump-announces-ai-force-september-2026-66d8dd",
+      "issue": "1. The key fact says «نسبة تأثير الذكاء الاصطناعي: 25 في المائة» (Key fact box: 'AI impact ratio: 25 percent', presented as a flat fact with no hedge, no attribution to Trump and no stated scope (GDP).). Source Asharq Al-Awsat says: \"فقد أكد أن إدارته «لن تعرقل أو تخنق» نمو قطاع الذكاء الاصطناعي، بل ستدعمه وتراقب تطوره، عادّاً أن الذكاء الاصطناعي يمثل «الثورة الصناعية المقبلة» أو ما هو أكبر من ذلك، وقد يصل تأثيره، بحسب تقديره، إلى نحو 25 في المائة من الناتج المحلي الأميركي.\". The 25% is Trump's own estimate that AI's impact could reach about 25% of US GDP; it is not an established figure.\n2. The body says «وفي بريطانيا، خلصت لجنة حقوق الإنسان المشتركة إلى أن القوانين الحالية لا تكفي لمواكبة سرعة تطور التكنولوجيا، ودعت إلى تشريع جديد.» (In Britain, the Joint Committee on Human Rights concluded that current laws are inadequate for the pace of technological change, and the committee itself called for new legislation.). Source Asharq Al-Awsat says: \"وفي بريطانيا، دعا نواب من أحزاب مختلفة إلى تشريع جديد بعدما خلصت لجنة حقوق الإنسان المشتركة في البرلمان إلى أن القوانين الحالية غير مجهَّزة بالكامل للتعامل مع سرعة تطور التكنولوجيا.\". Cross-party MPs, not the committee, called for new legislation after the Joint Committee on Human Rights found current laws not fully equipped.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body",
+        "keyFacts"
+      ],
+      "note": "أوردت نسخة سابقة من هذا الخبر نسبة 25 في المائة في الحقائق الرئيسية رقماً ثابتاً لتأثير الذكاء الاصطناعي، والصحيح أنها تقدير للرئيس ترامب لما قد يبلغه هذا التأثير من الناتج المحلي الأمريكي. وذكرت النسخة نفسها أن لجنة حقوق الإنسان المشتركة في بريطانيا دعت إلى تشريع جديد، والصحيح أن نواباً من عدة أحزاب هم من طالبوا به بعد استنتاج اللجنة.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وفي بريطانيا، خلصت لجنة حقوق الإنسان المشتركة إلى أن القوانين الحالية لا تكفي لمواكبة سرعة تطور التكنولوجيا، ودعت إلى تشريع جديد.",
+        "نسبة تأثير الذكاء الاصطناعي 25 في المائة"
+      ],
+      "newSentences": [
+        "وفي بريطانيا، طالب برلمانيون من عدة أحزاب بتشريع جديد، إثر استنتاج لجنة حقوق الإنسان المشتركة أن القوانين الحالية غير مهيأة تماماً لمواكبة سرعة تطور التكنولوجيا.",
+        "تقدير ترامب لما قد يبلغه تأثير الذكاء الاصطناعي من الناتج المحلي الأمريكي نحو 25 في المائة"
+      ]
+    },
+    {
+      "slug": "global-markets-test-interest-rates-ai-concerns-1c0036",
+      "issue": "1. The headline says «ضغط مزدوج من الفائدة والذكاء الاصطناعي يهزّ الأسهم العالمية» (Headline: a double pressure from interest rates and artificial intelligence is shaking global stocks.). Source CNBC says: \"Higher interest rates and AI safety fears put the stock market to the test last week\". The CNBC headline says higher rates and AI safety fears put 'the stock market' to the test last week; it does not describe global stocks.\n2. The lede says «ارتفعت أسعار الفائدة في الأسواق العالمية الأسبوع الماضي، وفرض تزامنها مع مخاوف المستثمرين من مخاطر الذكاء الاصطناعي وسلامته ضغوطاً على أسواق الأسهم، بحسب CNBC.» (Per CNBC, interest rates rose in global markets last week. Together with investor fears about AI risks and safety, this put pressure on stock markets.). Source CNBC says: \"Higher interest rates and AI safety fears put the stock market to the test last week\". CNBC speaks of higher interest rates and AI safety fears testing 'the stock market'; it does not say rates rose in global markets or refer to stock markets worldwide.\n3. The key fact says «وضع أسواق الأسهم العالمية تحت اختبار: بسبب ارتفاع الفائدة ومخاوف الذكاء الاصطناعي حسب CNBC» (Per CNBC, global stock markets were put to the test because of higher rates and AI fears.). Source CNBC says: \"Higher interest rates and AI safety fears put the stock market to the test last week\". CNBC says 'the stock market' was put to the test, not global stock markets.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "title",
+        "lede",
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أسعار الفائدة ارتفعت في الأسواق العالمية وأن الضغوط طالت الأسهم العالمية. والصحيح أن CNBC تحدثت عن ارتفاع الفائدة ومخاوف سلامة الذكاء الاصطناعي التي وضعت سوق الأسهم تحت الاختبار الأسبوع الماضي، من دون الإشارة إلى الأسواق العالمية.",
+      "model": "claude-cli",
+      "before": {
+        "title": "ضغط مزدوج من الفائدة والذكاء الاصطناعي يهزّ الأسهم العالمية",
+        "lede": "ارتفعت أسعار الفائدة في الأسواق العالمية الأسبوع الماضي، وفرض تزامنها مع مخاوف المستثمرين من مخاطر الذكاء الاصطناعي وسلامته ضغوطاً على أسواق الأسهم، بحسب CNBC."
+      },
+      "after": {
+        "title": "ضغط مزدوج من الفائدة والذكاء الاصطناعي يهزّ سوق الأسهم",
+        "lede": "ارتفعت أسعار الفائدة الأسبوع الماضي، وفرض تزامنها مع مخاوف المستثمرين من مخاطر الذكاء الاصطناعي وسلامته ضغوطاً على سوق الأسهم، بحسب CNBC."
+      },
+      "changedSentences": [
+        "ضغط مزدوج من الفائدة والذكاء الاصطناعي يهزّ الأسهم العالمية",
+        "ارتفعت أسعار الفائدة في الأسواق العالمية الأسبوع الماضي، وفرض تزامنها مع مخاوف المستثمرين من مخاطر الذكاء الاصطناعي وسلامته ضغوطاً على أسواق الأسهم، بحسب CNBC.",
+        "وتخشى الأسواق أن تُبطئ تلك المخاطر نمو شركات التكنولوجيا الكبرى، في وقت تواجه فيه الأسهم العالمية ضغوطاً متزامنة من سياسات الفائدة المرتفعة ومن القلق إزاء سلامة تطبيقات الذكاء الاصطناعي.",
+        "وضع أسواق الأسهم العالمية تحت اختبار بسبب ارتفاع الفائدة ومخاوف الذكاء الاصطناعي حسب CNBC"
+      ],
+      "newSentences": [
+        "ضغط مزدوج من الفائدة والذكاء الاصطناعي يهزّ سوق الأسهم",
+        "ارتفعت أسعار الفائدة الأسبوع الماضي، وفرض تزامنها مع مخاوف المستثمرين من مخاطر الذكاء الاصطناعي وسلامته ضغوطاً على سوق الأسهم، بحسب CNBC.",
+        "وتخشى الأسواق أن تُبطئ تلك المخاطر نمو شركات التكنولوجيا الكبرى، في وقت تواجه فيه سوق الأسهم ضغوطاً متزامنة من سياسات الفائدة المرتفعة ومن القلق إزاء سلامة تطبيقات الذكاء الاصطناعي.",
+        "وضع سوق الأسهم تحت اختبار بسبب ارتفاع الفائدة ومخاوف الذكاء الاصطناعي حسب CNBC"
+      ]
+    },
+    {
+      "slug": "oil-decline-diplomacy-hope-d15314",
+      "issue": "1. The key fact says «السفن العابرة هذا الأسبوع: 12 سفينة مقابل 35 قبل أسبوع» (12 vessels crossed Hormuz 'this week', against 35 a week earlier.). Source OilPrice.com says: \"Commodity vessels traversing the Strait of Hormuz declined further, with just a dozen commodity vessels in total making the passage this weekend, Reuters has reported. This compares to 35 tankers and other commodity carriers passing the chokepoint a week earlier.\". The 12 commodity vessels crossed over this weekend, not over this week.\n2. The body says «استهدفت غارات اليمنية هذا الأسبوع أهدافاً في الرياض وميناء ينبع، الذي أصبح المنفذ الأساسي للنفط السعودي بعد تجميد حركة الملاحة عبر هرمز.» (Yemeni strikes 'this week' hit targets in Riyadh and Yanbu port, which became Saudi Arabia's primary oil outlet after the Hormuz freeze.). Source OilPrice.com says: \"This weekend saw a series of attacks, including on targets in Riyadh and another strike on the port of Yanbu, which became Saudi Arabia’s primary outlet for crude oil after the Hormuz freeze.\". The attacks on Riyadh and Yanbu took place this weekend, not this week.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن 12 سفينة سلعية عبرت مضيق هرمز هذا الأسبوع، وأن غارات الحوثيين على الرياض وميناء ينبع وقعت هذا الأسبوع. والصحيح أن عبور السفن الاثنتي عشرة والغارات على الرياض وينبع جرت كلها في نهاية الأسبوع.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "استهدفت غارات اليمنية هذا الأسبوع أهدافاً في الرياض وميناء ينبع، الذي أصبح المنفذ الأساسي للنفط السعودي بعد تجميد حركة الملاحة عبر هرمز.",
+        "السفن العابرة هذا الأسبوع 12 سفينة مقابل 35 قبل أسبوع"
+      ],
+      "newSentences": [
+        "استهدفت غارات اليمنية نهاية الأسبوع أهدافاً في الرياض وميناء ينبع، الذي أصبح المنفذ الأساسي للنفط السعودي بعد تجميد حركة الملاحة عبر هرمز.",
+        "السفن العابرة نهاية الأسبوع 12 سفينة مقابل 35 قبل أسبوع"
+      ]
+    },
+    {
+      "slug": "iran-gdp-contracts-10-percent-post-war-a88253",
+      "issue": "The body says «وقال قائد القوات المسلحة الإيرانية خاتم الأنبياء في تصريح يوم الأحد إن الولايات المتحدة تستعد لاستئناف الضربات على إيران، مهدداً بالرد على القواعد والمصالح الأمريكية في المنطقة، ومحذراً الدول الإقليمية من تسهيل أي عمل عسكري أمريكي.» (The commander of Iran's armed forces, 'Khatam al-Anbiya', said on Sunday that the US is preparing to resume strikes on Iran. He threatened retaliation against US bases and interests and warned regional states against facilitating US action.). Source Al Jazeera English says: \"The warning, issued on Sunday by the Khatam al-Anbiya Central Headquarters, which oversees Iran’s armed forces, raises the prospect of a new round of fighting after months of reduced direct attacks.\". The warning came from the Khatam al-Anbiya Central Headquarters, Iran's central military command, not from a commander named Khatam al-Anbiya.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن التحذير من استئناف الضربات الأمريكية صدر عن قائد للقوات المسلحة الإيرانية يُدعى خاتم الأنبياء، والصحيح أنه صدر عن مقر خاتم الأنبياء المركزي، القيادة العسكرية التي تشرف على القوات المسلحة الإيرانية.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وقال قائد القوات المسلحة الإيرانية خاتم الأنبياء في تصريح يوم الأحد إن الولايات المتحدة تستعد لاستئناف الضربات على إيران، مهدداً بالرد على القواعد والمصالح الأمريكية في المنطقة، ومحذراً الدول الإقليمية من تسهيل أي عمل عسكري أمريكي."
+      ],
+      "newSentences": [
+        "وقال مقر خاتم الأنبياء المركزي، الذي يشرف على القوات المسلحة الإيرانية، في بيان يوم الأحد إن الولايات المتحدة تستعد لاستئناف الضربات على إيران، مهدداً بالرد على القواعد والمصالح الأمريكية في المنطقة، ومحذراً الدول الإقليمية من تسهيل أي عمل عسكري أمريكي."
+      ]
+    },
+    {
+      "slug": "bank-of-england-holds-rate-warns-inflation-48f465",
+      "issue": "1. The lede says «وحذّر البنك من أن التضخم قد يتجاوز 4% إذا استمرت أسعار الطاقة في الارتفاع بسبب الصراع في الشرق الأوسط.» (The Bank warned that inflation could exceed 4% if energy prices keep rising because of the Middle East conflict. The story presents the above-4% figure as a conditional risk.). Source BBC News says: \"On Thursday the Bank of England raised its forecast for inflation predicting it would be \"slightly above 4%\" at the start of next year.\". Inflation slightly above 4% at the start of next year is the Bank's central forecast, not a risk conditional on energy prices continuing to rise; the conditional warning concerned future rate rises.\n2. The body says «وأكد بنك إنجلترا أن قرار إيقاف بيع السندات الحكومية ليس مرتبطاً بالاضطرابات الحالية في السوق بل بدأ التخطيط له قبل عام، وفقاً لتصريحاته.» (The Bank affirmed that its decision to stop government bond sales is not linked to current market turbulence and that planning for it began a year ago, per its statements.). Source BBC News says: \"The Bank said discussions to put in place a plan to reduce the current £488bn stockpile of bonds had started a year ago, implying the decision was not related to the recent rise in long term borrowing costs.\". The Bank said only that discussions on the plan began a year ago; that the decision was unrelated to recent rises in borrowing costs is the BBC's inference, not something the Bank affirmed.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "lede",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن البنك حذّر من تجاوز التضخم 4% إذا استمر ارتفاع أسعار الطاقة، والصحيح أن تجاوز التضخم 4% بقليل مطلع العام المقبل هو توقع البنك الأساسي، وأن تحذيره المشروط باستمرار ارتفاع أسعار الطاقة يخص رفع الفائدة. كما نسبت النسخة السابقة إلى البنك تأكيده أن قرار وقف بيع السندات لا يرتبط باضطرابات السوق، والصحيح أنه اكتفى بالقول إن المناقشات بشأن الخطة بدأت قبل عام.",
+      "model": "claude-cli",
+      "before": {
+        "lede": "أبقى بنك إنجلترا الفائدة عند 3.75% بتصويت 6 مقابل 3 في لجنة السياسة النقدية، بحسب بيان المصرف. وحذّر البنك من أن التضخم قد يتجاوز 4% إذا استمرت أسعار الطاقة في الارتفاع بسبب الصراع في الشرق الأوسط. وكان التضخم في المملكة المتحدة قد ارتفع إلى 3.1% في أغسطس من 2.9% في يوليو."
+      },
+      "after": {
+        "lede": "أبقى بنك إنجلترا الفائدة عند 3.75% بتصويت 6 مقابل 3 في لجنة السياسة النقدية، بحسب بيان المصرف. ورفع البنك توقعه للتضخم إلى ما يزيد قليلاً على 4% مطلع العام المقبل، وحذّر من أن بقاء أسعار الطاقة مرتفعة بسبب الصراع في الشرق الأوسط قد يدفعه إلى رفع الفائدة. وكان التضخم في المملكة المتحدة قد ارتفع إلى 3.1% في أغسطس من 2.9% في يوليو."
+      },
+      "changedSentences": [
+        "وحذّر البنك من أن التضخم قد يتجاوز 4% إذا استمرت أسعار الطاقة في الارتفاع بسبب الصراع في الشرق الأوسط.",
+        "وأكد بنك إنجلترا أن قرار إيقاف بيع السندات الحكومية ليس مرتبطاً بالاضطرابات الحالية في السوق بل بدأ التخطيط له قبل عام، وفقاً لتصريحاته."
+      ],
+      "newSentences": [
+        "ورفع البنك توقعه للتضخم إلى ما يزيد قليلاً على 4% مطلع العام المقبل، وحذّر من أن بقاء أسعار الطاقة مرتفعة بسبب الصراع في الشرق الأوسط قد يدفعه إلى رفع الفائدة.",
+        "وقال بنك إنجلترا إن المناقشات بشأن خطة لتقليص حيازاته من السندات الحكومية بدأت قبل عام."
+      ]
+    },
+    {
+      "slug": "gulf-oil-flows-return-pre-war-levels-6a0da7",
+      "issue": "1. The headline says «تدفقات نفط الخليج تعود إلى 18 مليون برميل يومياً» (Headline: Gulf oil flows have returned to about 18 million barrels per day, stated as a sustained daily rate.). Source Al Jazeera Arabic says: \"قال وزير الطاقة الأمريكي كريس رايت إن نحو 18 مليون برميل من النفط تدفقت من الخليج في يوم واحد، مؤكدا عودة التدفقات إلى مستويات ما قبل اندلاع الحرب.\". Energy Secretary Chris Wright said about 18 million barrels flowed from the Gulf in a single day; the source does not give this as a sustained daily rate.\n2. The lede says «أكد وزير الطاقة الأمريكي كريس رايت أن نحو 18 مليون برميل من النفط تدفقت من الخليج في يوم واحد، عائدةً إلى مستويات ما قبل الحرب، بحسب ما نقلته قناة الجزيرة الإنجليزية الثلاثاء 16 سبتمبر.» (US Energy Secretary Chris Wright said about 18 million barrels of oil flowed from the Gulf in one day, a return to pre-war levels. The story attributes this to Al Jazeera English and dates it Tuesday 16 September.). Source Al Jazeera Arabic says: \"قال وزير الطاقة الأمريكي كريس رايت إن نحو 18 مليون برميل من النفط تدفقت من الخليج في يوم واحد، مؤكدا عودة التدفقات إلى مستويات ما قبل اندلاع الحرب.\". The report is from Al Jazeera Arabic, not Al Jazeera English; it was published 16–17 September, and Tuesday was the day of the flows, not the date of the report.\n3. The key fact says «تدفقات النفط اليومية: 18 مليون برميل» (Key fact: daily oil flows are 18 million barrels, stated as a daily rate.). Source Al Jazeera Arabic says: \"قال وزير الطاقة الأمريكي كريس رايت إن نحو 18 مليون برميل من النفط تدفقت من الخليج في يوم واحد، مؤكدا عودة التدفقات إلى مستويات ما قبل اندلاع الحرب.\". About 18 million barrels flowed in a single day (Tuesday), according to Wright; the source gives no daily average.\n4. The body says «وقال وزير الطاقة الأمريكي في بيان إن رفع تدفقات النفط من الخليج إلى مستويات قياسية حدث في الوقت الحالي، وفق ما نقلته قناة الجزيرة الإنجليزية.» (Wright said in a statement that Gulf oil flows have now been raised to record levels, as reported by Al Jazeera English.). Source Al Jazeera Arabic says: \"وقال رايت، في مقابلة مع شبكة فوكس نيوز، \"رفعنا تدفقات النفط من الخليج إلى مستويات قياسية في الوقت الحالي\"، مشيرا إلى مرور نحو 18 مليون برميل يوم الثلاثاء، بما يعادل تقريبا مستويات ما قبل الصراع.\". \n5. The body says «وأضاف أن مرور نحو 18 مليون برميل يوم الثلاثاء يعكس استعادة النشاط الطبيعي في المنطقة بعد فترة من الاضطرابات.» (Wright added that about 18 million barrels passing on Tuesday reflects a restoration of normal activity in the region after a period of disruption.). Source Al Jazeera Arabic says: \"وقال رايت، في مقابلة مع شبكة فوكس نيوز، \"رفعنا تدفقات النفط من الخليج إلى مستويات قياسية في الوقت الحالي\"، مشيرا إلى مرور نحو 18 مليون برميل يوم الثلاثاء، بما يعادل تقريبا مستويات ما قبل الصراع.\". Wright only said the roughly 18 million barrels on Tuesday was about equal to pre-conflict levels; he did not say normal activity in the region had been restored, and the same report says Hormuz ship traffic fell.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "title",
+        "lede",
+        "whyItMatters",
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن تدفقات نفط الخليج تبلغ 18 مليون برميل يومياً، ونسبت تصريحات وزير الطاقة الأمريكي إلى بيان نقلته قناة الجزيرة الإنجليزية في 16 سبتمبر، وأنه تحدث عن استعادة النشاط الطبيعي في المنطقة. والصحيح أن رايت قال في مقابلة مع شبكة فوكس نيوز إن نحو 18 مليون برميل عبرت يوم الثلاثاء وحده، وإن هذه الكمية تعادل تقريباً مستويات ما قبل الصراع.",
+      "model": "claude-cli",
+      "before": {
+        "title": "تدفقات نفط الخليج تعود إلى 18 مليون برميل يومياً",
+        "lede": "أكد وزير الطاقة الأمريكي كريس رايت أن نحو 18 مليون برميل من النفط تدفقت من الخليج في يوم واحد، عائدةً إلى مستويات ما قبل الحرب، بحسب ما نقلته قناة الجزيرة الإنجليزية الثلاثاء 16 سبتمبر. ورفع المركزي الإماراتي سعر الأساس إلى 3.90% بعد قرار الاحتياطي الفيدرالي رفع الفائدة.",
+        "whyItMatters": "عودة تدفقات الخليج إلى مستوياتها تخفف ضغوط الإمدادات على أسعار النفط العالمية. ورفع سعر الأساس الإماراتي بحكم ربط الدرهم بالدولار يزيد تكاليف الاقتراض للقطاعين العقاري والتجاري، وقد يعزز جاذبية الودائع المصرفية للمدخرين."
+      },
+      "after": {
+        "title": "وزير الطاقة الأمريكي: عبور نحو 18 مليون برميل من نفط الخليج الثلاثاء",
+        "lede": "أكد وزير الطاقة الأمريكي كريس رايت أن نحو 18 مليون برميل من النفط تدفقت من الخليج يوم الثلاثاء، عائدةً إلى مستويات ما قبل الحرب، في مقابلة مع شبكة فوكس نيوز. ورفع المركزي الإماراتي سعر الأساس إلى 3.90% بعد قرار الاحتياطي الفيدرالي رفع الفائدة.",
+        "whyItMatters": "عودة تدفقات الخليج إلى مستويات ما قبل الحرب، لو استمرت، تخفف ضغوط الإمدادات على أسعار النفط العالمية. ورفع سعر الأساس الإماراتي بحكم ربط الدرهم بالدولار يزيد تكاليف الاقتراض للقطاعين العقاري والتجاري، وقد يعزز جاذبية الودائع المصرفية للمدخرين."
+      },
+      "changedSentences": [
+        "تدفقات نفط الخليج تعود إلى 18 مليون برميل يومياً",
+        "أكد وزير الطاقة الأمريكي كريس رايت أن نحو 18 مليون برميل من النفط تدفقت من الخليج في يوم واحد، عائدةً إلى مستويات ما قبل الحرب، بحسب ما نقلته قناة الجزيرة الإنجليزية الثلاثاء 16 سبتمبر.",
+        "عودة تدفقات الخليج إلى مستوياتها تخفف ضغوط الإمدادات على أسعار النفط العالمية.",
+        "وقال وزير الطاقة الأمريكي في بيان إن رفع تدفقات النفط من الخليج إلى مستويات قياسية حدث في الوقت الحالي، وفق ما نقلته قناة الجزيرة الإنجليزية.",
+        "وأضاف أن مرور نحو 18 مليون برميل يوم الثلاثاء يعكس استعادة النشاط الطبيعي في المنطقة بعد فترة من الاضطرابات.",
+        "تدفقات النفط اليومية 18 مليون برميل"
+      ],
+      "newSentences": [
+        "وزير الطاقة الأمريكي: عبور نحو 18 مليون برميل من نفط الخليج الثلاثاء",
+        "أكد وزير الطاقة الأمريكي كريس رايت أن نحو 18 مليون برميل من النفط تدفقت من الخليج يوم الثلاثاء، عائدةً إلى مستويات ما قبل الحرب، في مقابلة مع شبكة فوكس نيوز.",
+        "عودة تدفقات الخليج إلى مستويات ما قبل الحرب، لو استمرت، تخفف ضغوط الإمدادات على أسعار النفط العالمية.",
+        "وقال رايت إن تدفقات النفط من الخليج رُفعت حالياً إلى مستويات قياسية.",
+        "وأضاف أن الكمية التي عبرت الثلاثاء تعادل تقريباً ما كان يتدفق قبل الصراع.",
+        "تدفقات النفط من الخليج يوم الثلاثاء نحو 18 مليون برميل"
+      ]
+    }
+  ]
+}
