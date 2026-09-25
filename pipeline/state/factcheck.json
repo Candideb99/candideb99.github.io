@@ -1749,6 +1749,489 @@
       ],
       "outcome": "corrected",
       "note": "ذكرت نسخة سابقة من هذا الخبر أن تدفقات نفط الخليج تبلغ 18 مليون برميل يومياً، ونسبت تصريحات وزير الطاقة الأمريكي إلى بيان نقلته قناة الجزيرة الإنجليزية في 16 سبتمبر، وأنه تحدث عن استعادة النشاط الطبيعي في المنطقة. والصحيح أن رايت قال في مقابلة مع شبكة فوكس نيوز إن نحو 18 مليون برميل عبرت يوم الثلاثاء وحده، وإن هذه الكمية تعادل تقريباً مستويات ما قبل الصراع."
+    },
+    "us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac": {
+      "at": "2026-09-25T11:59:56.457Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "publishedAt": "2026-09-21T20:07:15.258Z",
+      "sourcesRead": 1,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 13,
+        "checked": 13,
+        "supported": 8,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 4,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 12,
+          "field": "body",
+          "sentence": "ورغم أن تفاصيل الآلية لم تُكشف، وصف مسؤولون محادثات الأحد بأنها ناجحة.",
+          "claim": "The mechanism's details were not disclosed, and officials (plural) described Sunday's talks as successful.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "BBC News",
+          "quote": "Bessent made the comments after what he called \"successful\" talks with Chinese Vice Premier He Lifeng in New York.",
+          "correction": "Only Bessent called the talks \"successful\"; the Chinese side, via Xinhua, described them as \"candid, in-depth and constructive\".",
+          "class": "actor"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "تعد هذه المحادثات مؤشرًا على محاولة إدارة ترامب والصين إدارة التوترات التكنولوجية والتجارية قبل القمة، ما قد يؤثر على سلاسل التوريد العالمية للتكنولوجيا والذكاء الاصطناعي.",
+        "بالنسبة للقراء العرب، قد يترتب على نتائج هذه المباحثات تأثيرات غير مباشرة على أسعار السلع التكنولوجية والاستثمارات في قطاع الذكاء الاصطناعي، خاصة مع تنافس واشنطن وبكين على الهيمنة في هذا المجال، وهو ما قد يفتح فرصًا أو يخلق مخاطر للأسواق الناشئة التي تعتمد على التكنولوجيا المتقدمة.",
+        "ونقلت «نيويورك تايمز» عن مسؤولين أن الجانبين بحثا إنشاء نظام للإبلاغ عن المسائل المتصلة بالأمن القومي في مجال الذكاء الاصطناعي.",
+        "ويُتوقع أن يتصدّر الملفّان قمة هذا الأسبوع بين ترامب وشي."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن مسؤولين وصفوا محادثات الأحد بأنها ناجحة، والصحيح أن وزير الخزانة الأمريكي سكوت بيسنت هو من وصفها بذلك. أما الجانب الصيني فوصفها عبر وكالة شينخوا بأنها صريحة ومعمّقة وبنّاءة."
+    },
+    "oil-below-100-us-iran-diplomacy-8ddbd8": {
+      "at": "2026-09-25T11:59:56.423Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "publishedAt": "2026-09-21T20:05:54.803Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 10,
+        "weak": 3,
+        "noEvidence": 2,
+        "notFound": 1,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 6,
+          "field": "keyFacts",
+          "sentence": "تدفقات هرمز: 80% من مستويات ما قبل الحرب",
+          "claim": "Flows through the Strait of Hormuz are at 80% of pre-war levels.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "CNBC",
+          "quote": "Exports through the Strait of Hormuz have steadily risen with flows from the broader Middle East reaching about 80% of pre-war levels, said Ryan McKay, director of commodity strategy at TD Securities.",
+          "correction": "The roughly 80% figure refers to flows from the broader Middle East, per TD Securities' Ryan McKay; the source only says Hormuz exports have steadily risen.",
+          "class": "scope"
+        },
+        {
+          "id": 16,
+          "field": "body",
+          "sentence": "وأضافوا أن هذا أقل بـ 6 ملايين برميل يومياً عن متوسط 2025، مشيرين إلى أن إغلاق خط أنابيب شرق-غرب السعودي كان أقل تأثيراً مما خشي السوق.",
+          "claim": "JPMorgan analysts added that this is 6 million bpd below the 2025 average. They also noted that the closure of the Saudi East-West pipeline was less disruptive than the market had feared.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "CNBC",
+          "quote": "Oil futures are on a four-day losing streak as the market sees the closure of Saudi Arabia's East-West pipeline as less disruptive than initially feared.",
+          "correction": "The 6 million bpd figure is JPMorgan's, but the view that the pipeline closure was less disruptive than feared is CNBC's description of market perception; JPMorgan said only that Middle East exports proved resilient after the closure.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "هبوط الخام الأمريكي دون 100 دولار وملامسة برنت هذا المستوى يعكسان تراجع علاوة المخاطر الجيوسياسية مع بروز مسار دبلوماسي محتمل، ما يخفف الضغط على موازنات الدول المستوردة في المنطقة ويمنح «أوبك+» هامشاً أوسع لإدارة الإمدادات.",
+        "وقال ترامب في مقابلة مع «فوكس نيوز» الأحد إنه «من المرجح» أن يكون منفتحاً على الاجتماع ببزشكيان هذا الأسبوع، مضيفاً أنه في طور اتخاذ القرار وأن «أشياء كبيرة جداً» ستحدث قريباً بشأن الحرب مع إيران.",
+        "في المقابل، لا يزال الوضع الأمني متقلباً؛ فقد أعلن مركز التجارة البحرية البريطاني تعرض ناقلتين على الأقل لهجوم أثناء عبورهما هرمز خلال اليوم الماضي، بينما هدد الحرس الثوري الإيراني بتوسيع «جغرافيا الصراع» إذا تعرضت إيران لضربات أمريكية جديدة، وفق وكالة «تسنيم»."
+      ],
+      "weak": [
+        {
+          "sentence": "تراجعت أسعار النفط في تعاملات الاثنين، مع إغلاق خام غرب تكساس دون حاجز 100 دولار وملامسة برنت هذا المستوى خلال الجلسة، بعدما ألمح الرئيس الأمريكي دونالد ترامب إلى انفتاحه على لقاء نظيره الإيراني مسعود بزشكيان في الجمعية العامة للأمم المتحدة، وقرر إرجاء ضرب الحوثيين المتحالفين مع طهران رغم طلبات سعودية.",
+          "quote": "Meanwhile, Trump told Fox News on Sunday that he would probably be open to meeting with Iranian President Masoud Pezeshkian at the United Nations General Assembly this week. And the U.S. president has decided against bombing Iran-allied Houthi militants for the time being despite pleas from Saudi Arabia, Trump administration officials told The New York Times."
+        },
+        {
+          "sentence": "انكماش اقتصاد إيران: 10% على أساس سنوي",
+          "quote": "انكمش الناتج المحلي الإجمالي لإيران بنسبة 10,1% على أساس سنوي خلال الربع الأول من التقويم الفارسي، وهي الفترة التي تعرضت فيها البلاد للقصف من إسرائيل والولايات المتحدة، وفق أرقام رسمية ."
+        },
+        {
+          "sentence": "في الاقتصاد الإيراني، أظهرت أرقام رسمية أن الناتج المحلي الإجمالي انكمش 10% على أساس سنوي في الربع الأول من التقويم الفارسي، وهي الفترة التي شهدت فيها البلاد قصفاً من إسرائيل والولايات المتحدة، وفق ما أوردته «البورصة نيوز».",
+          "quote": "انكمش الناتج المحلي الإجمالي لإيران بنسبة 10,1% على أساس سنوي خلال الربع الأول من التقويم الفارسي، وهي الفترة التي تعرضت فيها البلاد للقصف من إسرائيل والولايات المتحدة، وفق أرقام رسمية ."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن التدفقات عبر مضيق هرمز بلغت نحو 80% من مستويات ما قبل الحرب، والصحيح بحسب «تي دي للأوراق المالية» أن هذه النسبة تخص تدفقات الشرق الأوسط الأوسع، وأن صادرات هرمز ارتفعت باطراد. ونسبت النسخة نفسها إلى محللي «جيه بي مورغان» أن إغلاق خط أنابيب شرق-غرب السعودي كان أقل تأثيراً مما خشيت السوق، والصحيح أنهم قالوا إن صادرات المنطقة صمدت رغم الإغلاق."
+    },
+    "paramount-settles-with-us-states-e71142": {
+      "at": "2026-09-25T12:00:22.620Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "publishedAt": "2026-09-21T20:08:49.463Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 12,
+        "weak": 0,
+        "noEvidence": 4,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 15,
+          "field": "body",
+          "sentence": "وأوضح بونتا أن الاتفاق يُلزم الشركة بإنتاج 30 فيلماً سنوياً على الأقل، وتُفرض غرامة قدرها 30 مليون دولار عند الإخلال بالالتزامات، وفقاً لرويترز.",
+          "claim": "Bonta explained that the agreement obliges the company to produce at least 30 films a year and that a $30m fine applies for breaching the commitments (per Reuters).",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Al Jazeera English",
+          "quote": "The settlement also includes a $30m penalty if the media giant fails to produce 30 movies per year as it had promised, according to Reuters news agency.",
+          "correction": "The $30m penalty is reported by Reuters (cited by Al Jazeera), not stated by Bonta, and it applies specifically to failing to produce 30 movies per year.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "وتجنّب التسوية الشركة رسوماً يومية قدرها 7 ملايين دولار إن أُتمّ الاندماج قبل 30 سبتمبر.",
+        "الرسوم اليومية المتجنبة: 7 ملايين دولار",
+        "الموعد النهائي لتجنب الرسوم: 30 سبتمبر",
+        "كما أن تجنب الرسوم اليومية بقيمة 7 ملايين دولار يوفر على بارامونت تكاليف كبيرة، مما قد يعزز سيولته المالية لاستثمار أكبر في الأسواق الناشئة، بما في ذلك الشرق الأوسط وشمال إفريقيا."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن المدعي العام لولاية كاليفورنيا روب بونتا أوضح أن غرامة قدرها 30 مليون دولار تُفرض عند الإخلال بالالتزامات عموماً. والصحيح أن رويترز هي التي أوردت الغرامة، وأنها تُفرض إذا لم تنتج الشركة 30 فيلماً سنوياً."
+    },
+    "ecb-launches-pontes-tokenised-securities-b5dc9b": {
+      "at": "2026-09-25T12:00:42.440Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "publishedAt": "2026-09-21T20:38:23.297Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 15,
+        "checked": 15,
+        "supported": 11,
+        "weak": 0,
+        "noEvidence": 2,
+        "notFound": 0,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 8,
+          "field": "body",
+          "sentence": "نظام بونتس حل لتسوية المعاملات بالجملة في الأصول المُرمّزة بالنقود المصرفية المركزية، وأُطلق اليوم كجزء من استراتيجية اليوروسيم لجعل النقود المصرفية جاهزة للعصر الرقمي.",
+          "claim": "Pontes is a solution for settling wholesale transactions in tokenised assets in central bank money. It was launched that day as part of the Eurosystem's strategy to make 'bank money' fit for the digital age.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "European Central Bank",
+          "quote": "This step will also support the Eurosystem’s strategy to make central bank money fit for the digital age. Key elements of this strategy are Pontes, the Eurosystem’s solution for settling tokenised assets in central bank money, which was launched today, and the Appia initiative, which will deliver a blueprint for a tokenised financial ecosystem in Europe.",
+          "correction": "The Eurosystem's strategy is to make central bank money, not bank money in general, fit for the digital age.",
+          "class": "term"
+        },
+        {
+          "id": 12,
+          "field": "body",
+          "sentence": "أكد نظام اليوروسيم أن بنى تحتية للسوق ومشغلي تقنية السجل الموزع قد أكملوا عملية الانضمام إلى بونتس وهم جاهزون لبدء الاستخدام فوراً.",
+          "claim": "The Eurosystem said market infrastructures and DLT operators have completed onboarding to Pontes and are ready to start using it immediately.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "European Central Bank",
+          "quote": "An initial group of market participants and DLT operators[1] has completed onboarding and is ready to start using Pontes immediately.",
+          "correction": "The group that completed onboarding is made up of market participants (banks and institutions such as Deutsche Bank and Santander) and DLT operators, not market infrastructures.",
+          "class": "actor"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "سيستثمر البنك جزءاً من أمواله الخاصة في الأوراق المالية المُرمّزة باليورو عبر النظام الجديد",
+        "سيستثمر البنك جزءاً من أمواله الخاصة في الأوراق المالية المُرمّزة باليورو عبر النظام، وفقاً للبيان الصادر اليوم."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن استراتيجية اليوروسيم تهدف إلى جعل النقود المصرفية جاهزة للعصر الرقمي، والصحيح أنها تستهدف النقود المصرفية المركزية. كما ذكرت أن بنى تحتية للسوق أكملت الانضمام إلى بونتس، والصحيح أن المجموعة الأولى التي أكملت الانضمام تضم مشاركين في السوق ومشغلي تقنية السجل الموزع."
+    },
+    "faa-halts-east-coast-flights-equipment-outage-d180ab": {
+      "at": "2026-09-25T12:01:01.744Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "publishedAt": "2026-09-21T21:23:50.612Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 20,
+        "checked": 20,
+        "supported": 16,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 3,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 5,
+          "field": "lede",
+          "sentence": "وتأثرت أكثر من 1000 رحلة في مطار نيوارك وحده بحسب بيانات فلايت أوير.",
+          "claim": "More than 1,000 flights were affected at Newark airport alone, according to FlightAware data.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "Al Jazeera English",
+          "quote": "At Newark alone, more than 1,000 flights had been delayed or cancelled.",
+          "correction": "The source gives the figure of more than 1,000 delayed or cancelled Newark flights as its own reporting; it cites FlightAware only for the percentage figures.",
+          "class": "attribution"
+        },
+        {
+          "id": 12,
+          "field": "whyItMatters",
+          "sentence": "كما أن إلغاء أكثر من 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية البنية التحتية للنقل الجوي، وهو ما قد يترتب عليه إعادة تقييم لاستثمارات الصيانة والاحتياطي في أنظمة المراقبة الجوية.",
+          "claim": "More than 500 flights were cancelled and 4,000 were delayed; website analysis that this raises airline operating costs and dents traveller confidence, possibly prompting a reassessment of investment in maintenance and backup systems.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "Al Jazeera English",
+          "quote": "Throughout the US, there were nearly 4,000 delayed flights and 500 cancelled.",
+          "correction": "The source says 500 flights were cancelled, not more than 500.",
+          "class": "figure"
+        },
+        {
+          "id": 17,
+          "field": "body",
+          "sentence": "في مطار نيوارك وحده تأثرت أكثر من 1000 رحلة بالتأخير أو الإلغاء وفق بيانات فلايت أوير، وبلغت نسبة الرحلات المغادرة الملغاة من نيوارك 31% والرحلات القادمة الملغاة 29% اعتباراً من الساعة 3 مساءً بالتوقيت الشرقي.",
+          "claim": "At Newark alone more than 1,000 flights were delayed or cancelled according to FlightAware data; as of 3pm ET, 31% of departures and 29% of arrivals at Newark were cancelled.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "Al Jazeera English",
+          "quote": "At Newark alone, more than 1,000 flights had been delayed or cancelled.",
+          "correction": "The source gives the figure of more than 1,000 delayed or cancelled Newark flights as its own reporting, not as FlightAware data; FlightAware is cited only for the 31%/29% figures.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "تعطل حركة الطيران في المطارات الرئيسية على الساحل الشرقي للولايات المتحدة يؤثر على سلاسل الإمداد والسفر الدولي، بما في ذلك حركة المسافرين والبضائع بين الولايات المتحدة والشرق الأوسط."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "نسبت نسخة سابقة من هذا الخبر عدد الرحلات المتأثرة في مطار نيوارك، وهو أكثر من 1000 رحلة، إلى بيانات «فلايت أوير»، والصحيح أن بيانات الموقع تخص نسبتي الرحلات الملغاة فقط. وذكرت النسخة نفسها أن أكثر من 500 رحلة أُلغيت في الولايات المتحدة، والصحيح أن عددها 500 رحلة."
+    },
+    "japan-imports-surge-august-2026-3efc48": {
+      "at": "2026-09-25T12:01:39.154Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "publishedAt": "2026-09-16T17:11:15.236Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 8,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 10,
+        "confirmed": 0,
+        "listed": 1,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "listed",
+          "class": "other",
+          "field": "body",
+          "sentence": "وكانت مخاوف شح الإمدادات قد تصاعدت مع اتساع رقعة الصراع في الشرق الأوسط وتوقف خط أنابيب النفط السعودي «شرق-غرب» الذي يعبر مضيق هرمز.",
+          "quote": "Gas prices in Europe, fresh off five consecutive weeks of weekly gains, continued their rally this week, as risks to supply of oil and gas in the Middle East materially increased over the weekend after Saudi Arabia shut down its key East-West oil pipeline that helps it bypass the Strait of Hormuz.",
+          "source": "OilPrice.com",
+          "correction": "The Saudi East-West pipeline helps Saudi Arabia bypass the Strait of Hormuz; it does not cross it."
+        }
+      ],
+      "notFound": [
+        "واردات اليابان تقفز 28% في أغسطس",
+        "واردات النفط الخام ترتفع 58.7% على أساس سنوي",
+        "قفزت واردات اليابان خلال أغسطس بأسرع وتيرة في نحو أربع سنوات، إذ ارتفعت قيمتها 28 في المائة على أساس سنوي، بحسب بيانات وزارة المالية اليابانية.",
+        "وسجل الميزان التجاري عجزاً بلغ 1.106 تريليون ين، أي نحو 7.12 مليار دولار.",
+        "ارتفاع واردات اليابان: 28 في المائة",
+        "ارتفاع واردات النفط الخام: 58.7 في المائة",
+        "عجز الميزان التجاري الياباني: 1.106 تريليون ين",
+        "وقفزة أسعار النفط وسّعت عجز اليابان التجاري إلى 7.12 مليار دولار رغم نمو صادراتها بأكثر من المتوقع."
+      ],
+      "weak": [],
+      "outcome": "listed"
+    },
+    "trump-approval-32-percent-iran-war-bd2925": {
+      "at": "2026-09-25T12:01:28.866Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "publishedAt": "2026-09-21T21:28:02.430Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 16,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 3,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 1,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 3,
+          "field": "lede",
+          "sentence": "انخفض معدل تأييد الرئيس الأمريكي دونالد ترامب إلى 32%، وهو أدنى مستوى يسجله في مسيرته السياسية، وفقاً لاستطلاع أجرته رويترز/إبسوس ونُشرت نتائجه الأحد.",
+          "claim": "Trump's approval fell to 32%, the lowest of his political career, according to a Reuters/Ipsos poll whose results were published on Sunday.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Al Jazeera English",
+          "quote": "The four-day poll, which closed on Sunday, showed 73 percent of Republicans ‌approved of Trump’s job performance, down from 82 percent in a Reuters/Ipsos poll a week earlier.",
+          "correction": "The four-day poll closed on Sunday; the source does not say its results were published on Sunday.",
+          "class": "period"
+        },
+        {
+          "id": 19,
+          "field": "body",
+          "sentence": "وأوضح بيسنت أن العقوبات الثانوية ستطال أي شركة أجنبية تتعامل مع قطاع الطيران الإيراني، مشيراً إلى أن وزارة الخزانة فرضت أوائل هذا الشهر عقوبات على جميع شركات الطيران الإيرانية المتبقية التي لم تكن مستهدفة سابقاً، وعلى شركات خارج إيران متهمة بدعم القطاع.",
+          "claim": "Bessent explained that secondary sanctions would hit any foreign firm dealing with Iranian aviation, and pointed out that Treasury had earlier this month sanctioned all remaining untargeted Iranian airlines and companies outside Iran accused of supporting the sector.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Al Jazeera English",
+          "quote": "Earlier this month, the US Treasury imposed sanctions on all remaining Iranian airlines that had not already been targeted, as well as companies outside Iran accused of supporting the country’s aviation sector.",
+          "correction": "The earlier Treasury sanctions are Al Jazeera's own background reporting, not something Bessent said.",
+          "class": "attribution"
+        },
+        {
+          "id": 22,
+          "field": "body",
+          "sentence": "وأشار بيسنت إلى أن الصين، الشريك الاقتصادي الأهم لإيران، انخرطت بفاعلية في مناقشات العقوبات خلال محادثاته مع نائب رئيس الوزراء خه لي فنغ، سعياً من واشنطن لعزل طهران مالياً.",
+          "claim": "Bessent indicated that China, Iran's most important economic partner, engaged actively in sanctions discussions during his talks with Vice Premier He Lifeng, as Washington seeks to isolate Tehran financially.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Al Jazeera English",
+          "quote": "China is one of Iran’s most important economic partners and diplomatic backers, making Beijing’s cooperation potentially significant to Washington’s efforts to financially isolate Tehran.",
+          "correction": "Al Jazeera describes China as one of Iran's most important economic partners, not the most important, and this description is not attributed to Bessent.",
+          "class": "superlative"
+        }
+      ],
+      "listed": [
+        {
+          "status": "unverified",
+          "class": "attribution",
+          "field": "body",
+          "sentence": "من جهتها، قالت طهران إنها لم تؤكد استئناف المفاوضات المباشرة مع واشنطن، رغم قول ترامب الأربعاء إن واشنطن تأمل في الاقتراب من إنهاء الحرب مع إيران.",
+          "quote": "However, Tehran has not confirmed that direct negotiations with Washington have resumed.",
+          "source": "Al Jazeera English",
+          "correction": "The source reports that Tehran has not confirmed the resumption of talks; it does not say Tehran made a statement to that effect."
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "وشمل الاستطلاع 1277 بالغاً أمريكياً بهامش خطأ ثلاث نقاط مئوية، وأظهر تراجع تأييد الجمهوريين لترامب من 82% إلى 73% خلال أسبوع واحد.",
+          "quote": "The four-day poll, which closed on Sunday, showed 73 percent of Republicans ‌approved of Trump’s job performance, down from 82 percent in a Reuters/Ipsos poll a week earlier."
+        },
+        {
+          "sentence": "وكان تأييد ترامب العام قد سجل 35% في الاستطلاع السابق قبل أسبوع، و47% في الساعات التي أعقبت تنصيبه.",
+          "quote": "In a Reuters/Ipsos poll conducted in the hours after he was first sworn ⁠in, he enjoyed a 47 percent approval rating."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن نتائج الاستطلاع نُشرت الأحد، والصحيح أن الاستطلاع الذي استمر أربعة أيام اختُتم الأحد. ونسبت النسخة نفسها إلى وزير الخزانة سكوت بيسنت الإشارة إلى عقوبات أوائل الشهر ووصف الصين بأنها الشريك الاقتصادي الأهم لإيران، والصحيح أن العقوبات السابقة معلومات خلفية لم يذكرها بيسنت، وأن الصين من أهم شركاء إيران الاقتصاديين، وهو وصف لم يصدر عنه."
+    },
+    "us-bond-yield-5-04-percent-ce6ccd": {
+      "at": "2026-09-25T12:02:10.872Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "publishedAt": "2026-09-16T11:55:57.508Z",
+      "sourcesRead": 1,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 13,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 5,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 19,
+          "field": "body",
+          "sentence": "قد تبقى أسعار الفائدة مرتفعة إذا استمرت التوترات الجيوسياسية وارتفاع أسعار الطاقة في المقدمة وفقاً لبي بي سي.",
+          "claim": "Forecast attributed to the BBC: interest rates may remain elevated if geopolitical tensions and high energy prices stay at the forefront.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "BBC News",
+          "quote": "While the rise in borrowing costs has been \"orderly\" this year, rather than sudden, she said rates could remain elevated if geopolitical tensions and high energy prices remain \"front and center\".",
+          "correction": "The forecast that rates could remain elevated is BMO Wealth Management strategist Carol Schleif's view, reported by the BBC, not the BBC's own assessment.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "ويستعد الاحتياطي الفيدرالي لاتخاذ قرار بشأن أسعار الفائدة الأربعاء، قبل أقل من شهرين من انتخابات التجديد النصفي، وفقاً لنيويورك تايمز.",
+        "ارتفاع عائد سندات الخزانة الأمريكية لأجل 10 سنوات إلى 5.04% يزيد تكلفة الاقتراض للحكومات والشركات في العالم العربي، خاصة تلك التي تعتمد على السندات المقومة بالدولار لتمويل المشاريع، مما قد يبطئ الاستثمارات في البنية التحتية والتنمية.",
+        "يتوقع أن يرفع الاحتياطي الفيدرالي أسعار الفائدة يوم الأربعاء وفقاً لنيويورك تايمز، ويُتوقع أن يتخذ قراراً تاريخياً قبل أقل من شهرين من انتخابات التجديد النصفي وفقاً للمصدر نفسه.",
+        "إذا لم يرفع الاحتياطي الفيدرالي أسعار الفائدة، سيزيد المستثمرون توقعاتهم للتضخم وفقاً لنيويورك تايمز، وسيؤدي عدم رفع الفائدة إلى إدخال اضطرابات جديدة في سوق السندات الحكومية وفقاً للمصدر نفسه.",
+        "رفع أسعار الفائدة زاد تكلفة الرهون العقارية وقروض السيارات دون إنفاق المستهلك وفقاً لنيويورك تايمز."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "نسبت نسخة سابقة من هذا الخبر إلى بي بي سي تقديراً بأن أسعار الفائدة قد تبقى مرتفعة إذا استمرت التوترات الجيوسياسية وارتفاع أسعار الطاقة، وأوردته فقرة «لماذا يهمّ» دون نسبة. والصحيح أن هذا التقدير لكبيرة استراتيجيي السوق في BMO لإدارة الثروات كارول شلييف، ونقلته بي بي سي عنها."
     }
   }
 }

@@ -60,10 +60,23 @@
     "gulf-oil-flows-return-pre-war-levels-6a0da7:8a377fb5",
     "gulf-oil-flows-return-pre-war-levels-6a0da7:23fe98a8",
     "gulf-oil-flows-return-pre-war-levels-6a0da7:85fb4ddc",
-    "gulf-oil-flows-return-pre-war-levels-6a0da7:8db23002"
+    "gulf-oil-flows-return-pre-war-levels-6a0da7:8db23002",
+    "oil-below-100-us-iran-diplomacy-8ddbd8:a6b0ea10",
+    "oil-below-100-us-iran-diplomacy-8ddbd8:2aa4bee9",
+    "us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac:c8437999",
+    "paramount-settles-with-us-states-e71142:e9d1138c",
+    "ecb-launches-pontes-tokenised-securities-b5dc9b:63c909e2",
+    "ecb-launches-pontes-tokenised-securities-b5dc9b:fc0b9c96",
+    "faa-halts-east-coast-flights-equipment-outage-d180ab:d3c53036",
+    "faa-halts-east-coast-flights-equipment-outage-d180ab:f3397383",
+    "faa-halts-east-coast-flights-equipment-outage-d180ab:ba6a91f3",
+    "trump-approval-32-percent-iran-war-bd2925:13c8308c",
+    "trump-approval-32-percent-iran-war-bd2925:13ec3034",
+    "trump-approval-32-percent-iran-war-bd2925:7dacd8e4",
+    "us-bond-yield-5-04-percent-ce6ccd:6bb1b8d0"
   ],
-  "version": 3,
-  "updatedAt": "2026-09-25T08:25:25.678Z",
+  "version": 4,
+  "updatedAt": "2026-09-25T12:04:58.585Z",
   "lessons": [
     {
       "id": "L1",
@@ -103,7 +116,7 @@
     {
       "id": "L2",
       "class": "attribution",
-      "rule": "Credit each fact to whom the source credits and name the originating outlet. An outlet's inference ('implying', 'suggesting') is not the official's own statement. An interview is not a statement. Add no conclusion the speaker did not draw.",
+      "rule": "Credit each sentence to whom the source credits it. An outlet's background, inference or own tally is not the official's statement; a data firm cited for one figure owns only that figure; a quoted analyst's forecast is not the outlet's view. Add no conclusion nobody drew.",
       "example": {
         "wrong": "وذكر أنه كان لديه سابقاً 'قيصر للذكاء الاصطناعي' وهو ديفيد ساكس، الذي استقال وأصبح مستشاراً خارجياً للرئيس.",
         "quote": "Trump already had one “AI czar”, venture capitalist David Sacks. He resigned earlier this year and became an external adviser to the president.",
@@ -127,15 +140,22 @@
         "eu-fuel-prices-record-iran-saudi-supply-8376ff:0340aab6",
         "bank-of-england-holds-rate-warns-inflation-48f465:458c6fc6",
         "gulf-oil-flows-return-pre-war-levels-6a0da7:8db23002",
-        "gulf-oil-flows-return-pre-war-levels-6a0da7:85fb4ddc"
+        "gulf-oil-flows-return-pre-war-levels-6a0da7:85fb4ddc",
+        "oil-below-100-us-iran-diplomacy-8ddbd8:2aa4bee9",
+        "paramount-settles-with-us-states-e71142:e9d1138c",
+        "faa-halts-east-coast-flights-equipment-outage-d180ab:d3c53036",
+        "faa-halts-east-coast-flights-equipment-outage-d180ab:ba6a91f3",
+        "trump-approval-32-percent-iran-war-bd2925:13ec3034",
+        "us-bond-yield-5-04-percent-ce6ccd:6bb1b8d0"
       ],
-      "seen": 17,
+      "seen": 23,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T08:25:25.678Z",
+      "lastSeen": "2026-09-25T12:04:58.585Z",
       "status": "active",
       "previous": [
         "Credit each fact to the party the source credits. Keep the outlet's own background separate from what the speaker said. Name the originating outlet in a chain, such as Politico via Euronews or Reuters data cited by OilPrice. Never invent a spokesperson or an agency.",
-        "Credit each fact to whom the source credits; the outlet's own reporting is never 'informed sources', an official statement or analyst data. Name the originating outlet. Never make a reported line a quote, a private notice an announcement, or a reply the decree's aim."
+        "Credit each fact to whom the source credits; the outlet's own reporting is never 'informed sources', an official statement or analyst data. Name the originating outlet. Never make a reported line a quote, a private notice an announcement, or a reply the decree's aim.",
+        "Credit each fact to whom the source credits and name the originating outlet. An outlet's inference ('implying', 'suggesting') is not the official's own statement. An interview is not a statement. Add no conclusion the speaker did not draw."
       ]
     },
     {
@@ -154,17 +174,18 @@
         "fed-rate-hike-oil-109-gulf-economies-a07bff:6c71a34b",
         "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb:829861d2",
         "trump-signs-russia-sanctions-oil-tariffs-law-ad758a:fcf57be0",
-        "eu-fuel-prices-record-iran-saudi-supply-8376ff:0c94c4a9"
+        "eu-fuel-prices-record-iran-saudi-supply-8376ff:0c94c4a9",
+        "ecb-launches-pontes-tokenised-securities-b5dc9b:63c909e2"
       ],
-      "seen": 6,
+      "seen": 7,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T07:42:29.972Z",
+      "lastSeen": "2026-09-25T12:04:58.585Z",
       "status": "active"
     },
     {
       "id": "L4",
       "class": "scope",
-      "rule": "Keep a figure or claim tied to the exact item, place, day and instrument the source names. 'The stock market' is not global markets, one day's flow is not a daily rate, and diesel is not all fuel. An official does only what the source assigns.",
+      "rule": "Tie each figure to the exact item, place, day and instrument the source's sentence attaches it to. Flows from the broader Middle East are not Hormuz flows, one day's flow is not a daily rate, and diesel is not all fuel.",
       "example": {
         "wrong": "ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها",
         "quote": "United States President Donald Trump has announced he’s creating an “AI Force” and will appoint a new “AI czar” to oversee development of the nation’s artificial intelligence industry.",
@@ -180,20 +201,22 @@
         "global-markets-test-interest-rates-ai-concerns-1c0036:4c2f0fe2",
         "global-markets-test-interest-rates-ai-concerns-1c0036:16c27085",
         "gulf-oil-flows-return-pre-war-levels-6a0da7:c30159ef",
-        "gulf-oil-flows-return-pre-war-levels-6a0da7:23fe98a8"
+        "gulf-oil-flows-return-pre-war-levels-6a0da7:23fe98a8",
+        "oil-below-100-us-iran-diplomacy-8ddbd8:a6b0ea10"
       ],
-      "seen": 9,
+      "seen": 10,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T08:25:25.678Z",
+      "lastSeen": "2026-09-25T12:04:58.585Z",
       "status": "active",
       "previous": [
-        "Keep a figure or role tied to the exact item, day and instrument the source names. Diesel is not all fuel. One day's count is not a daily rate. A futures-implied value is not the IPO valuation. An official does only what the source assigns."
+        "Keep a figure or role tied to the exact item, day and instrument the source names. Diesel is not all fuel. One day's count is not a daily rate. A futures-implied value is not the IPO valuation. An official does only what the source assigns.",
+        "Keep a figure or claim tied to the exact item, place, day and instrument the source names. 'The stock market' is not global markets, one day's flow is not a daily rate, and diesel is not all fuel. An official does only what the source assigns."
       ]
     },
     {
       "id": "L5",
       "class": "actor",
-      "rule": "Give each action to the exact actor the source's verb names. If MPs called for a law after a committee's finding, the committee did not call for it. An institution such as a military headquarters is not a person. Never swap host and guest.",
+      "rule": "Give each action or description to the exact actor the source names. One side calling talks 'successful' is not 'officials' or both sides, market participants are not market infrastructures, and an institution is not a person. Never swap host and guest.",
       "example": {
         "wrong": "الرئيس الأمريكي دونالد ترامب استضاف الرئيس الصيني شي جين بينغ في بكين في مايو 2026، وهذه الزيارة هي الأولى لشي إلى واشنطن منذ 2015، وفقاً لمصدر من Euronews بتاريخ 2026-09-18.",
         "quote": "US President Donald Trump went to Beijing in May, and Chinese President Xi Jinping is now expected to come to him, scheduled to arrive next Wednesday and depart on Friday with his wife, Peng Liyuan, skipping the UN General Assembly entirely.",
@@ -203,20 +226,23 @@
       "evidence": [
         "trump-xi-summit-washington-2026-4e439e:f4afe586",
         "trump-announces-ai-force-september-2026-66d8dd:c91c7dd5",
-        "iran-gdp-contracts-10-percent-post-war-a88253:df2a1ae0"
+        "iran-gdp-contracts-10-percent-post-war-a88253:df2a1ae0",
+        "us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac:c8437999",
+        "ecb-launches-pontes-tokenised-securities-b5dc9b:fc0b9c96"
       ],
-      "seen": 3,
+      "seen": 5,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T08:25:25.678Z",
+      "lastSeen": "2026-09-25T12:04:58.585Z",
       "status": "active",
       "previous": [
-        "For visits, hosting, deals and transfers, reread the source's verb to see who acts on whom. 'Trump went to Beijing' means Xi hosted Trump. Check that subject and object have not been swapped before printing."
+        "For visits, hosting, deals and transfers, reread the source's verb to see who acts on whom. 'Trump went to Beijing' means Xi hosted Trump. Check that subject and object have not been swapped before printing.",
+        "Give each action to the exact actor the source's verb names. If MPs called for a law after a committee's finding, the committee did not call for it. An institution such as a military headquarters is not a person. Never swap host and guest."
       ]
     },
     {
       "id": "L6",
       "class": "period",
-      "rule": "Take each event's day from the source's sentence about that event: 'this weekend' is not 'this week', and the event's day is not the report's publication date. Convert a weekday by counting back from publication. Keep announcements, remarks and replies on their own days.",
+      "rule": "Take each event's day from the source's sentence about that event, and give that day only to that event. A poll that closed Sunday was not published Sunday, and 'this weekend' is not 'this week'. Convert a weekday by counting back from publication.",
       "example": {
         "wrong": "أصدرت لجنة الأوراق المالية الأمريكية الأربعاء إعفاءً ابتكارياً مؤقتاً ومشروطاً يتيح لمنصات التداول إصدار تمثيلات رمزية للأسهم الأمريكية المتداولة علناً وتداولها، نافذاً فور صدوره.",
         "quote": "The Securities and Exchange Commission on Thursday issued an order creating a regulatory pathway for certain trading venues to issue tokenized representations of publicly traded U.S. stocks, effective immediately.",
@@ -232,15 +258,17 @@
         "us-denmark-greenland-security-deal-eac792:92f1aee9",
         "oil-decline-diplomacy-hope-d15314:391adc5f",
         "oil-decline-diplomacy-hope-d15314:53f2a805",
-        "gulf-oil-flows-return-pre-war-levels-6a0da7:8a377fb5"
+        "gulf-oil-flows-return-pre-war-levels-6a0da7:8a377fb5",
+        "trump-approval-32-percent-iran-war-bd2925:13c8308c"
       ],
-      "seen": 9,
+      "seen": 10,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T08:25:25.678Z",
+      "lastSeen": "2026-09-25T12:04:58.585Z",
       "status": "active",
       "previous": [
         "Copy the weekday or date of an event from the source's own sentence about that event, not from the publication date or another report. If sources disagree, follow the primary report and do not guess.",
-        "Take each event's day from the source's sentence about that event; convert a weekday by counting back from the publication date. Keep an announcement, a takeover, a later remark and a reply on their own days, with any time of day given."
+        "Take each event's day from the source's sentence about that event; convert a weekday by counting back from the publication date. Keep an announcement, a takeover, a later remark and a reply on their own days, with any time of day given.",
+        "Take each event's day from the source's sentence about that event: 'this weekend' is not 'this week', and the event's day is not the report's publication date. Convert a weekday by counting back from publication. Keep announcements, remarks and replies on their own days."
       ]
     },
     {
@@ -263,6 +291,25 @@
       "seen": 5,
       "createdAt": "2026-09-25T07:42:29.972Z",
       "lastSeen": "2026-09-25T08:25:25.678Z",
+      "status": "active"
+    },
+    {
+      "id": "L8",
+      "class": "figure",
+      "rule": "Copy every number and ranking with its own qualifier. 500 is not 'more than 500', 'nearly 4,000' is not 4,000, and 'one of the most important' is not 'the most important'. Never move a qualifier from one figure onto its neighbour.",
+      "example": {
+        "wrong": "كما أن إلغاء أكثر من 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية البنية التحتية للنقل الجوي، وهو ما قد يترتب عليه إعادة تقييم لاستثمارات الصيانة والاحتياطي في أنظمة المراقبة الجوية.",
+        "quote": "Throughout the US, there were nearly 4,000 delayed flights and 500 cancelled.",
+        "source": "Al Jazeera English",
+        "slug": "faa-halts-east-coast-flights-equipment-outage-d180ab"
+      },
+      "evidence": [
+        "faa-halts-east-coast-flights-equipment-outage-d180ab:f3397383",
+        "trump-approval-32-percent-iran-war-bd2925:7dacd8e4"
+      ],
+      "seen": 2,
+      "createdAt": "2026-09-25T12:04:58.585Z",
+      "lastSeen": "2026-09-25T12:04:58.585Z",
       "status": "active"
     }
   ],
@@ -301,6 +348,18 @@
         "sharpen L5 (+2)",
         "sharpen L6 (+3)",
         "reinforce L7 (+2)"
+      ]
+    },
+    {
+      "at": "2026-09-25T12:04:58.585Z",
+      "mistakes": 13,
+      "applied": [
+        "sharpen L2 (+6)",
+        "sharpen L5 (+2)",
+        "sharpen L4 (+1)",
+        "sharpen L6 (+1)",
+        "add L8 [figure] from 2 mistake(s)",
+        "reinforce L3 (+1)"
       ]
     }
   ]

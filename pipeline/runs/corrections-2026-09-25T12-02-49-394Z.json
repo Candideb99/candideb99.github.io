@@ -1,0 +1,182 @@
+{
+  "startedAt": "2026-09-25T12:02:49.574Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac",
+      "issue": "The body says «ورغم أن تفاصيل الآلية لم تُكشف، وصف مسؤولون محادثات الأحد بأنها ناجحة.» (The mechanism's details were not disclosed, and officials (plural) described Sunday's talks as successful.). Source BBC News says: \"Bessent made the comments after what he called \"successful\" talks with Chinese Vice Premier He Lifeng in New York.\". Only Bessent called the talks \"successful\"; the Chinese side, via Xinhua, described them as \"candid, in-depth and constructive\".",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن مسؤولين وصفوا محادثات الأحد بأنها ناجحة، والصحيح أن وزير الخزانة الأمريكي سكوت بيسنت هو من وصفها بذلك. أما الجانب الصيني فوصفها عبر وكالة شينخوا بأنها صريحة ومعمّقة وبنّاءة.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "ورغم أن تفاصيل الآلية لم تُكشف، وصف مسؤولون محادثات الأحد بأنها ناجحة."
+      ],
+      "newSentences": [
+        "ورغم أن تفاصيل الآلية لم تُكشف، وصف بيسنت محادثات الأحد بأنها ناجحة."
+      ]
+    },
+    {
+      "slug": "oil-below-100-us-iran-diplomacy-8ddbd8",
+      "issue": "1. The key fact says «تدفقات هرمز: 80% من مستويات ما قبل الحرب» (Flows through the Strait of Hormuz are at 80% of pre-war levels.). Source CNBC says: \"Exports through the Strait of Hormuz have steadily risen with flows from the broader Middle East reaching about 80% of pre-war levels, said Ryan McKay, director of commodity strategy at TD Securities.\". The roughly 80% figure refers to flows from the broader Middle East, per TD Securities' Ryan McKay; the source only says Hormuz exports have steadily risen.\n2. The body says «وأضافوا أن هذا أقل بـ 6 ملايين برميل يومياً عن متوسط 2025، مشيرين إلى أن إغلاق خط أنابيب شرق-غرب السعودي كان أقل تأثيراً مما خشي السوق.» (JPMorgan analysts added that this is 6 million bpd below the 2025 average. They also noted that the closure of the Saudi East-West pipeline was less disruptive than the market had feared.). Source CNBC says: \"Oil futures are on a four-day losing streak as the market sees the closure of Saudi Arabia's East-West pipeline as less disruptive than initially feared.\". The 6 million bpd figure is JPMorgan's, but the view that the pipeline closure was less disruptive than feared is CNBC's description of market perception; JPMorgan said only that Middle East exports proved resilient after the closure.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن التدفقات عبر مضيق هرمز بلغت نحو 80% من مستويات ما قبل الحرب، والصحيح بحسب «تي دي للأوراق المالية» أن هذه النسبة تخص تدفقات الشرق الأوسط الأوسع، وأن صادرات هرمز ارتفعت باطراد. ونسبت النسخة نفسها إلى محللي «جيه بي مورغان» أن إغلاق خط أنابيب شرق-غرب السعودي كان أقل تأثيراً مما خشيت السوق، والصحيح أنهم قالوا إن صادرات المنطقة صمدت رغم الإغلاق.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "أوضح رايان ماكي، مدير استراتيجية السلع في «تي دي للأوراق المالية»، في مذكرة الاثنين، أن تدفقات الخام عبر مضيق هرمز من الشرق الأوسط الأوسع بلغت نحو 80% من مستويات ما قبل الحرب، مضيفاً: «يبدو أن إيران فقدت نفوذاً ملحوظاً في المضيق دون تصعيد كبير».",
+        "وأضافوا أن هذا أقل بـ 6 ملايين برميل يومياً عن متوسط 2025، مشيرين إلى أن إغلاق خط أنابيب شرق-غرب السعودي كان أقل تأثيراً مما خشي السوق.",
+        "تدفقات هرمز 80% من مستويات ما قبل الحرب"
+      ],
+      "newSentences": [
+        "أوضح رايان ماكي، مدير استراتيجية السلع في «تي دي للأوراق المالية»، في مذكرة الاثنين، أن الصادرات عبر مضيق هرمز ارتفعت باطراد، وأن تدفقات الخام من الشرق الأوسط الأوسع بلغت نحو 80% من مستويات ما قبل الحرب، مضيفاً: «يبدو أن إيران فقدت نفوذاً ملحوظاً في المضيق دون تصعيد كبير».",
+        "وأضافوا أن هذا أقل بـ 6 ملايين برميل يومياً عن متوسط 2025، مشيرين إلى أن صادرات المنطقة صمدت رغم إغلاق خط أنابيب شرق-غرب السعودي.",
+        "تدفقات الشرق الأوسط الأوسع نحو 80% من مستويات ما قبل الحرب"
+      ]
+    },
+    {
+      "slug": "paramount-settles-with-us-states-e71142",
+      "issue": "The body says «وأوضح بونتا أن الاتفاق يُلزم الشركة بإنتاج 30 فيلماً سنوياً على الأقل، وتُفرض غرامة قدرها 30 مليون دولار عند الإخلال بالالتزامات، وفقاً لرويترز.» (Bonta explained that the agreement obliges the company to produce at least 30 films a year and that a $30m fine applies for breaching the commitments (per Reuters).). Source Al Jazeera English says: \"The settlement also includes a $30m penalty if the media giant fails to produce 30 movies per year as it had promised, according to Reuters news agency.\". The $30m penalty is reported by Reuters (cited by Al Jazeera), not stated by Bonta, and it applies specifically to failing to produce 30 movies per year.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن المدعي العام لولاية كاليفورنيا روب بونتا أوضح أن غرامة قدرها 30 مليون دولار تُفرض عند الإخلال بالالتزامات عموماً. والصحيح أن رويترز هي التي أوردت الغرامة، وأنها تُفرض إذا لم تنتج الشركة 30 فيلماً سنوياً.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وأوضح بونتا أن الاتفاق يُلزم الشركة بإنتاج 30 فيلماً سنوياً على الأقل، وتُفرض غرامة قدرها 30 مليون دولار عند الإخلال بالالتزامات، وفقاً لرويترز."
+      ],
+      "newSentences": [
+        "وأوضح بونتا أن الاتفاق يُلزم الشركة بإنتاج 30 فيلماً سنوياً على الأقل.",
+        "وتتضمن التسوية غرامة قدرها 30 مليون دولار إذا لم تنتج الشركة 30 فيلماً سنوياً كما تعهدت، بحسب رويترز."
+      ]
+    },
+    {
+      "slug": "ecb-launches-pontes-tokenised-securities-b5dc9b",
+      "issue": "1. The body says «نظام بونتس حل لتسوية المعاملات بالجملة في الأصول المُرمّزة بالنقود المصرفية المركزية، وأُطلق اليوم كجزء من استراتيجية اليوروسيم لجعل النقود المصرفية جاهزة للعصر الرقمي.» (Pontes is a solution for settling wholesale transactions in tokenised assets in central bank money. It was launched that day as part of the Eurosystem's strategy to make 'bank money' fit for the digital age.). Source European Central Bank says: \"This step will also support the Eurosystem’s strategy to make central bank money fit for the digital age. Key elements of this strategy are Pontes, the Eurosystem’s solution for settling tokenised assets in central bank money, which was launched today, and the Appia initiative, which will deliver a blueprint for a tokenised financial ecosystem in Europe.\". The Eurosystem's strategy is to make central bank money, not bank money in general, fit for the digital age.\n2. The body says «أكد نظام اليوروسيم أن بنى تحتية للسوق ومشغلي تقنية السجل الموزع قد أكملوا عملية الانضمام إلى بونتس وهم جاهزون لبدء الاستخدام فوراً.» (The Eurosystem said market infrastructures and DLT operators have completed onboarding to Pontes and are ready to start using it immediately.). Source European Central Bank says: \"An initial group of market participants and DLT operators[1] has completed onboarding and is ready to start using Pontes immediately.\". The group that completed onboarding is made up of market participants (banks and institutions such as Deutsche Bank and Santander) and DLT operators, not market infrastructures.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن استراتيجية اليوروسيم تهدف إلى جعل النقود المصرفية جاهزة للعصر الرقمي، والصحيح أنها تستهدف النقود المصرفية المركزية. كما ذكرت أن بنى تحتية للسوق أكملت الانضمام إلى بونتس، والصحيح أن المجموعة الأولى التي أكملت الانضمام تضم مشاركين في السوق ومشغلي تقنية السجل الموزع.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "نظام بونتس حل لتسوية المعاملات بالجملة في الأصول المُرمّزة بالنقود المصرفية المركزية، وأُطلق اليوم كجزء من استراتيجية اليوروسيم لجعل النقود المصرفية جاهزة للعصر الرقمي.",
+        "أكد نظام اليوروسيم أن بنى تحتية للسوق ومشغلي تقنية السجل الموزع قد أكملوا عملية الانضمام إلى بونتس وهم جاهزون لبدء الاستخدام فوراً."
+      ],
+      "newSentences": [
+        "نظام بونتس حل لتسوية المعاملات بالجملة في الأصول المُرمّزة بالنقود المصرفية المركزية، وأُطلق اليوم كجزء من استراتيجية اليوروسيم لجعل النقود المصرفية المركزية جاهزة للعصر الرقمي.",
+        "أكد نظام اليوروسيم أن مجموعة أولى من المشاركين في السوق ومشغلي تقنية السجل الموزع قد أكملت عملية الانضمام إلى بونتس وهي جاهزة لبدء الاستخدام فوراً."
+      ]
+    },
+    {
+      "slug": "faa-halts-east-coast-flights-equipment-outage-d180ab",
+      "issue": "1. The lede says «وتأثرت أكثر من 1000 رحلة في مطار نيوارك وحده بحسب بيانات فلايت أوير.» (More than 1,000 flights were affected at Newark airport alone, according to FlightAware data.). Source Al Jazeera English says: \"At Newark alone, more than 1,000 flights had been delayed or cancelled.\". The source gives the figure of more than 1,000 delayed or cancelled Newark flights as its own reporting; it cites FlightAware only for the percentage figures.\n2. The why it matters says «كما أن إلغاء أكثر من 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية البنية التحتية للنقل الجوي، وهو ما قد يترتب عليه إعادة تقييم لاستثمارات الصيانة والاحتياطي في أنظمة المراقبة الجوية.» (More than 500 flights were cancelled and 4,000 were delayed; website analysis that this raises airline operating costs and dents traveller confidence, possibly prompting a reassessment of investment in maintenance and backup systems.). Source Al Jazeera English says: \"Throughout the US, there were nearly 4,000 delayed flights and 500 cancelled.\". The source says 500 flights were cancelled, not more than 500.\n3. The body says «في مطار نيوارك وحده تأثرت أكثر من 1000 رحلة بالتأخير أو الإلغاء وفق بيانات فلايت أوير، وبلغت نسبة الرحلات المغادرة الملغاة من نيوارك 31% والرحلات القادمة الملغاة 29% اعتباراً من الساعة 3 مساءً بالتوقيت الشرقي.» (At Newark alone more than 1,000 flights were delayed or cancelled according to FlightAware data; as of 3pm ET, 31% of departures and 29% of arrivals at Newark were cancelled.). Source Al Jazeera English says: \"At Newark alone, more than 1,000 flights had been delayed or cancelled.\". The source gives the figure of more than 1,000 delayed or cancelled Newark flights as its own reporting, not as FlightAware data; FlightAware is cited only for the 31%/29% figures.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "lede",
+        "whyItMatters",
+        "body"
+      ],
+      "note": "نسبت نسخة سابقة من هذا الخبر عدد الرحلات المتأثرة في مطار نيوارك، وهو أكثر من 1000 رحلة، إلى بيانات «فلايت أوير»، والصحيح أن بيانات الموقع تخص نسبتي الرحلات الملغاة فقط. وذكرت النسخة نفسها أن أكثر من 500 رحلة أُلغيت في الولايات المتحدة، والصحيح أن عددها 500 رحلة.",
+      "model": "claude-cli",
+      "before": {
+        "lede": "علّقت هيئة الطيران الفيدرالية الأمريكية الرحلات المتجهة إلى مطارات الساحل الشرقي الرئيسية في 21 سبتمبر بسبب عطل في المعدات. وشمل القرار مطارات جون إف كينيدي ولاغوارديا في نيويورك، ونيوارك ليبرتي في نيوجيرزي، وبوسطن لوغان، وفيلادلفيا الدولي. وتأثرت أكثر من 1000 رحلة في مطار نيوارك وحده بحسب بيانات فلايت أوير.",
+        "whyItMatters": "تعطل حركة الطيران في المطارات الرئيسية على الساحل الشرقي للولايات المتحدة يؤثر على سلاسل الإمداد والسفر الدولي، بما في ذلك حركة المسافرين والبضائع بين الولايات المتحدة والشرق الأوسط. مع تزامن العطل مع وصول قادة العالم إلى نيويورك للجمعية العامة للأمم المتحدة، قد يؤدي التأخير إلى تعطيل اجتماعات رسمية وفقدان فرص اقتصادية. كما أن إلغاء أكثر من 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية البنية التحتية للنقل الجوي، وهو ما قد يترتب عليه إعادة تقييم لاستثمارات الصيانة والاحتياطي في أنظمة المراقبة الجوية."
+      },
+      "after": {
+        "lede": "علّقت هيئة الطيران الفيدرالية الأمريكية الرحلات المتجهة إلى مطارات الساحل الشرقي الرئيسية في 21 سبتمبر بسبب عطل في المعدات. وشمل القرار مطارات جون إف كينيدي ولاغوارديا في نيويورك، ونيوارك ليبرتي في نيوجيرزي، وبوسطن لوغان، وفيلادلفيا الدولي. وتأثرت أكثر من 1000 رحلة في مطار نيوارك وحده.",
+        "whyItMatters": "تعطل حركة الطيران في المطارات الرئيسية على الساحل الشرقي للولايات المتحدة يؤثر على سلاسل الإمداد والسفر الدولي، بما في ذلك حركة المسافرين والبضائع بين الولايات المتحدة والشرق الأوسط. مع تزامن العطل مع وصول قادة العالم إلى نيويورك للجمعية العامة للأمم المتحدة، قد يؤدي التأخير إلى تعطيل اجتماعات رسمية وفقدان فرص اقتصادية. كما أن إلغاء 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية البنية التحتية للنقل الجوي، وهو ما قد يترتب عليه إعادة تقييم لاستثمارات الصيانة والاحتياطي في أنظمة المراقبة الجوية."
+      },
+      "changedSentences": [
+        "وتأثرت أكثر من 1000 رحلة في مطار نيوارك وحده بحسب بيانات فلايت أوير.",
+        "كما أن إلغاء أكثر من 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية البنية التحتية للنقل الجوي، وهو ما قد يترتب عليه إعادة تقييم لاستثمارات الصيانة والاحتياطي في أنظمة المراقبة الجوية.",
+        "في مطار نيوارك وحده تأثرت أكثر من 1000 رحلة بالتأخير أو الإلغاء وفق بيانات فلايت أوير، وبلغت نسبة الرحلات المغادرة الملغاة من نيوارك 31% والرحلات القادمة الملغاة 29% اعتباراً من الساعة 3 مساءً بالتوقيت الشرقي."
+      ],
+      "newSentences": [
+        "وتأثرت أكثر من 1000 رحلة في مطار نيوارك وحده.",
+        "كما أن إلغاء 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية البنية التحتية للنقل الجوي، وهو ما قد يترتب عليه إعادة تقييم لاستثمارات الصيانة والاحتياطي في أنظمة المراقبة الجوية.",
+        "في مطار نيوارك وحده تأثرت أكثر من 1000 رحلة بالتأخير أو الإلغاء، وبلغت نسبة الرحلات المغادرة الملغاة من نيوارك 31% والرحلات القادمة الملغاة 29% اعتباراً من الساعة 3 مساءً بالتوقيت الشرقي وفق بيانات فلايت أوير."
+      ]
+    },
+    {
+      "slug": "trump-approval-32-percent-iran-war-bd2925",
+      "issue": "1. The lede says «انخفض معدل تأييد الرئيس الأمريكي دونالد ترامب إلى 32%، وهو أدنى مستوى يسجله في مسيرته السياسية، وفقاً لاستطلاع أجرته رويترز/إبسوس ونُشرت نتائجه الأحد.» (Trump's approval fell to 32%, the lowest of his political career, according to a Reuters/Ipsos poll whose results were published on Sunday.). Source Al Jazeera English says: \"The four-day poll, which closed on Sunday, showed 73 percent of Republicans ‌approved of Trump’s job performance, down from 82 percent in a Reuters/Ipsos poll a week earlier.\". The four-day poll closed on Sunday; the source does not say its results were published on Sunday.\n2. The body says «وأوضح بيسنت أن العقوبات الثانوية ستطال أي شركة أجنبية تتعامل مع قطاع الطيران الإيراني، مشيراً إلى أن وزارة الخزانة فرضت أوائل هذا الشهر عقوبات على جميع شركات الطيران الإيرانية المتبقية التي لم تكن مستهدفة سابقاً، وعلى شركات خارج إيران متهمة بدعم القطاع.» (Bessent explained that secondary sanctions would hit any foreign firm dealing with Iranian aviation, and pointed out that Treasury had earlier this month sanctioned all remaining untargeted Iranian airlines and companies outside Iran accused of supporting the sector.). Source Al Jazeera English says: \"Earlier this month, the US Treasury imposed sanctions on all remaining Iranian airlines that had not already been targeted, as well as companies outside Iran accused of supporting the country’s aviation sector.\". The earlier Treasury sanctions are Al Jazeera's own background reporting, not something Bessent said.\n3. The body says «وأشار بيسنت إلى أن الصين، الشريك الاقتصادي الأهم لإيران، انخرطت بفاعلية في مناقشات العقوبات خلال محادثاته مع نائب رئيس الوزراء خه لي فنغ، سعياً من واشنطن لعزل طهران مالياً.» (Bessent indicated that China, Iran's most important economic partner, engaged actively in sanctions discussions during his talks with Vice Premier He Lifeng, as Washington seeks to isolate Tehran financially.). Source Al Jazeera English says: \"China is one of Iran’s most important economic partners and diplomatic backers, making Beijing’s cooperation potentially significant to Washington’s efforts to financially isolate Tehran.\". Al Jazeera describes China as one of Iran's most important economic partners, not the most important, and this description is not attributed to Bessent.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "lede",
+        "whyItMatters",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن نتائج الاستطلاع نُشرت الأحد، والصحيح أن الاستطلاع الذي استمر أربعة أيام اختُتم الأحد. ونسبت النسخة نفسها إلى وزير الخزانة سكوت بيسنت الإشارة إلى عقوبات أوائل الشهر ووصف الصين بأنها الشريك الاقتصادي الأهم لإيران، والصحيح أن العقوبات السابقة معلومات خلفية لم يذكرها بيسنت، وأن الصين من أهم شركاء إيران الاقتصاديين، وهو وصف لم يصدر عنه.",
+      "model": "claude-cli",
+      "before": {
+        "lede": "انخفض معدل تأييد الرئيس الأمريكي دونالد ترامب إلى 32%، وهو أدنى مستوى يسجله في مسيرته السياسية، وفقاً لاستطلاع أجرته رويترز/إبسوس ونُشرت نتائجه الأحد. وشمل الاستطلاع 1277 بالغاً أمريكياً بهامش خطأ ثلاث نقاط مئوية، وأظهر تراجع تأييد الجمهوريين لترامب من 82% إلى 73% خلال أسبوع واحد.",
+        "whyItMatters": "يهدد انهيار التأييد الشعبي لترامب، خاصة داخل قاعدته الجمهورية، بزعزعة الأغلبية الضيقة للحزب في الكونغرس قبل انتخابات التجديد النصفي في نوفمبر 2026. وتصعيد العقوبات على الطيران الإيراني يعمّق العزلة المالية لطهران، ويضغط على شركائها التجاريين وفي مقدمتهم الصين، ما قد يعيد تشكيل تدفقات الطاقة والتجارة في الخليج والمنطقة العربية الأوسع."
+      },
+      "after": {
+        "lede": "انخفض معدل تأييد الرئيس الأمريكي دونالد ترامب إلى 32%، وهو أدنى مستوى يسجله في مسيرته السياسية، وفقاً لاستطلاع أجرته رويترز/إبسوس على مدى أربعة أيام واختُتم الأحد. وشمل الاستطلاع 1277 بالغاً أمريكياً بهامش خطأ ثلاث نقاط مئوية، وأظهر تراجع تأييد الجمهوريين لترامب من 82% إلى 73% خلال أسبوع واحد.",
+        "whyItMatters": "يهدد انهيار التأييد الشعبي لترامب، خاصة داخل قاعدته الجمهورية، بزعزعة الأغلبية الضيقة للحزب في الكونغرس قبل انتخابات التجديد النصفي في نوفمبر 2026. وتصعيد العقوبات على الطيران الإيراني يعمّق العزلة المالية لطهران، ويضغط على شركائها التجاريين ومن أبرزهم الصين، ما قد يعيد تشكيل تدفقات الطاقة والتجارة في الخليج والمنطقة العربية الأوسع."
+      },
+      "changedSentences": [
+        "انخفض معدل تأييد الرئيس الأمريكي دونالد ترامب إلى 32%، وهو أدنى مستوى يسجله في مسيرته السياسية، وفقاً لاستطلاع أجرته رويترز/إبسوس ونُشرت نتائجه الأحد.",
+        "وتصعيد العقوبات على الطيران الإيراني يعمّق العزلة المالية لطهران، ويضغط على شركائها التجاريين وفي مقدمتهم الصين، ما قد يعيد تشكيل تدفقات الطاقة والتجارة في الخليج والمنطقة العربية الأوسع.",
+        "وأوضح بيسنت أن العقوبات الثانوية ستطال أي شركة أجنبية تتعامل مع قطاع الطيران الإيراني، مشيراً إلى أن وزارة الخزانة فرضت أوائل هذا الشهر عقوبات على جميع شركات الطيران الإيرانية المتبقية التي لم تكن مستهدفة سابقاً، وعلى شركات خارج إيران متهمة بدعم القطاع.",
+        "وأشار بيسنت إلى أن الصين، الشريك الاقتصادي الأهم لإيران، انخرطت بفاعلية في مناقشات العقوبات خلال محادثاته مع نائب رئيس الوزراء خه لي فنغ، سعياً من واشنطن لعزل طهران مالياً."
+      ],
+      "newSentences": [
+        "انخفض معدل تأييد الرئيس الأمريكي دونالد ترامب إلى 32%، وهو أدنى مستوى يسجله في مسيرته السياسية، وفقاً لاستطلاع أجرته رويترز/إبسوس على مدى أربعة أيام واختُتم الأحد.",
+        "وتصعيد العقوبات على الطيران الإيراني يعمّق العزلة المالية لطهران، ويضغط على شركائها التجاريين ومن أبرزهم الصين، ما قد يعيد تشكيل تدفقات الطاقة والتجارة في الخليج والمنطقة العربية الأوسع.",
+        "وأوضح بيسنت أن العقوبات الثانوية ستطال أي شركة أجنبية تتعامل مع قطاع الطيران الإيراني.",
+        "وكانت وزارة الخزانة قد فرضت أوائل هذا الشهر عقوبات على جميع شركات الطيران الإيرانية المتبقية التي لم تكن مستهدفة سابقاً، وعلى شركات خارج إيران متهمة بدعم القطاع.",
+        "وأشار بيسنت إلى أن المسؤولين الصينيين انخرطوا بفاعلية في حملة الضغط الأمريكية، بعد يوم من محادثاته مع نائب رئيس الوزراء خه لي فنغ.",
+        "وتُعد الصين من أهم الشركاء الاقتصاديين لإيران، ما يمنح تعاونها أهمية لمساعي واشنطن لعزل طهران مالياً."
+      ]
+    },
+    {
+      "slug": "us-bond-yield-5-04-percent-ce6ccd",
+      "issue": "The body says «قد تبقى أسعار الفائدة مرتفعة إذا استمرت التوترات الجيوسياسية وارتفاع أسعار الطاقة في المقدمة وفقاً لبي بي سي.» (Forecast attributed to the BBC: interest rates may remain elevated if geopolitical tensions and high energy prices stay at the forefront.). Source BBC News says: \"While the rise in borrowing costs has been \"orderly\" this year, rather than sudden, she said rates could remain elevated if geopolitical tensions and high energy prices remain \"front and center\".\". The forecast that rates could remain elevated is BMO Wealth Management strategist Carol Schleif's view, reported by the BBC, not the BBC's own assessment.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "whyItMatters",
+        "body"
+      ],
+      "note": "نسبت نسخة سابقة من هذا الخبر إلى بي بي سي تقديراً بأن أسعار الفائدة قد تبقى مرتفعة إذا استمرت التوترات الجيوسياسية وارتفاع أسعار الطاقة، وأوردته فقرة «لماذا يهمّ» دون نسبة. والصحيح أن هذا التقدير لكبيرة استراتيجيي السوق في BMO لإدارة الثروات كارول شلييف، ونقلته بي بي سي عنها.",
+      "model": "claude-cli",
+      "before": {
+        "whyItMatters": "ارتفاع عائد سندات الخزانة الأمريكية لأجل 10 سنوات إلى 5.04% يزيد تكلفة الاقتراض للحكومات والشركات في العالم العربي، خاصة تلك التي تعتمد على السندات المقومة بالدولار لتمويل المشاريع، مما قد يبطئ الاستثمارات في البنية التحتية والتنمية. كما أن ارتفاع تكلفة الرهون العقارية وقروض السيارات يؤثر على القدرة الشرائية للأسر في الدول المرتبطة بالاقتصاد العالمي، بينما قد يؤدي استمرار التوترات الجيوسياسية وارتفاع أسعار الطاقة إلى إبقاء الفائدة مرتفعة، مما يزيد الضغط على الموازنات العامة ويقلل جاذبية الأسهم والسندات في أسواق الدخل الثابت."
+      },
+      "after": {
+        "whyItMatters": "ارتفاع عائد سندات الخزانة الأمريكية لأجل 10 سنوات إلى 5.04% يزيد تكلفة الاقتراض للحكومات والشركات في العالم العربي، خاصة تلك التي تعتمد على السندات المقومة بالدولار لتمويل المشاريع، مما قد يبطئ الاستثمارات في البنية التحتية والتنمية. كما أن ارتفاع تكلفة الرهون العقارية وقروض السيارات يؤثر على القدرة الشرائية للأسر في الدول المرتبطة بالاقتصاد العالمي، بينما ترى كارول شلييف من BMO لإدارة الثروات أن استمرار التوترات الجيوسياسية وارتفاع أسعار الطاقة قد يبقي الفائدة مرتفعة، مما يزيد الضغط على الموازنات العامة ويقلل جاذبية الأسهم والسندات في أسواق الدخل الثابت."
+      },
+      "changedSentences": [
+        "كما أن ارتفاع تكلفة الرهون العقارية وقروض السيارات يؤثر على القدرة الشرائية للأسر في الدول المرتبطة بالاقتصاد العالمي، بينما قد يؤدي استمرار التوترات الجيوسياسية وارتفاع أسعار الطاقة إلى إبقاء الفائدة مرتفعة، مما يزيد الضغط على الموازنات العامة ويقلل جاذبية الأسهم والسندات في أسواق الدخل الثابت.",
+        "قد تبقى أسعار الفائدة مرتفعة إذا استمرت التوترات الجيوسياسية وارتفاع أسعار الطاقة في المقدمة وفقاً لبي بي سي."
+      ],
+      "newSentences": [
+        "كما أن ارتفاع تكلفة الرهون العقارية وقروض السيارات يؤثر على القدرة الشرائية للأسر في الدول المرتبطة بالاقتصاد العالمي، بينما ترى كارول شلييف من BMO لإدارة الثروات أن استمرار التوترات الجيوسياسية وارتفاع أسعار الطاقة قد يبقي الفائدة مرتفعة، مما يزيد الضغط على الموازنات العامة ويقلل جاذبية الأسهم والسندات في أسواق الدخل الثابت.",
+        "وقالت شلييف إن أسعار الفائدة قد تبقى مرتفعة إذا استمرت التوترات الجيوسياسية وارتفاع أسعار الطاقة في المقدمة."
+      ]
+    }
+  ]
+}

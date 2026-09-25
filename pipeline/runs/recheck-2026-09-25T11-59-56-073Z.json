@@ -1,0 +1,355 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-09-25T11:59:56.073Z",
+  "durationSec": 302,
+  "read": 8,
+  "corrected": 7,
+  "report": [
+    {
+      "slug": "us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac",
+      "title": "بيسنت وخه لي فنغ يبحثان الذكاء الاصطناعي والتجارة قبيل قمة ترامب وشي",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 13,
+        "checked": 13,
+        "supported": 8,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 4,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "actor",
+          "sentence": "ورغم أن تفاصيل الآلية لم تُكشف، وصف مسؤولون محادثات الأحد بأنها ناجحة.",
+          "quote": "Bessent made the comments after what he called \"successful\" talks with Chinese Vice Premier He Lifeng in New York.",
+          "source": "BBC News",
+          "correction": "Only Bessent called the talks \"successful\"; the Chinese side, via Xinhua, described them as \"candid, in-depth and constructive\"."
+        }
+      ]
+    },
+    {
+      "slug": "oil-below-100-us-iran-diplomacy-8ddbd8",
+      "title": "خام غرب تكساس يغلق دون 100 دولار مع ترقّب تهدئة أمريكية-إيرانية",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 10,
+        "weak": 3,
+        "noEvidence": 2,
+        "notFound": 1,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "scope",
+          "sentence": "تدفقات هرمز: 80% من مستويات ما قبل الحرب",
+          "quote": "Exports through the Strait of Hormuz have steadily risen with flows from the broader Middle East reaching about 80% of pre-war levels, said Ryan McKay, director of commodity strategy at TD Securities.",
+          "source": "CNBC",
+          "correction": "The roughly 80% figure refers to flows from the broader Middle East, per TD Securities' Ryan McKay; the source only says Hormuz exports have steadily risen."
+        },
+        {
+          "class": "attribution",
+          "sentence": "وأضافوا أن هذا أقل بـ 6 ملايين برميل يومياً عن متوسط 2025، مشيرين إلى أن إغلاق خط أنابيب شرق-غرب السعودي كان أقل تأثيراً مما خشي السوق.",
+          "quote": "Oil futures are on a four-day losing streak as the market sees the closure of Saudi Arabia's East-West pipeline as less disruptive than initially feared.",
+          "source": "CNBC",
+          "correction": "The 6 million bpd figure is JPMorgan's, but the view that the pipeline closure was less disruptive than feared is CNBC's description of market perception; JPMorgan said only that Middle East exports proved resilient after the closure."
+        }
+      ]
+    },
+    {
+      "slug": "paramount-settles-with-us-states-e71142",
+      "title": "«بارامونت» تتوصل إلى تسوية مع كاليفورنيا و11 ولاية",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 12,
+        "weak": 0,
+        "noEvidence": 4,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "attribution",
+          "sentence": "وأوضح بونتا أن الاتفاق يُلزم الشركة بإنتاج 30 فيلماً سنوياً على الأقل، وتُفرض غرامة قدرها 30 مليون دولار عند الإخلال بالالتزامات، وفقاً لرويترز.",
+          "quote": "The settlement also includes a $30m penalty if the media giant fails to produce 30 movies per year as it had promised, according to Reuters news agency.",
+          "source": "Al Jazeera English",
+          "correction": "The $30m penalty is reported by Reuters (cited by Al Jazeera), not stated by Bonta, and it applies specifically to failing to produce 30 movies per year."
+        }
+      ]
+    },
+    {
+      "slug": "ecb-launches-pontes-tokenised-securities-b5dc9b",
+      "title": "«المركزي الأوروبي» يطلق نظام «بونتس» لتسوية الأصول المرمّزة",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 15,
+        "checked": 15,
+        "supported": 11,
+        "weak": 0,
+        "noEvidence": 2,
+        "notFound": 0,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "term",
+          "sentence": "نظام بونتس حل لتسوية المعاملات بالجملة في الأصول المُرمّزة بالنقود المصرفية المركزية، وأُطلق اليوم كجزء من استراتيجية اليوروسيم لجعل النقود المصرفية جاهزة للعصر الرقمي.",
+          "quote": "This step will also support the Eurosystem’s strategy to make central bank money fit for the digital age. Key elements of this strategy are Pontes, the Eurosystem’s solution for settling tokenised assets in central bank money, which was launched today, and the Appia initiative, which will deliver a blueprint for a tokenised financial ecosystem in Europe.",
+          "source": "European Central Bank",
+          "correction": "The Eurosystem's strategy is to make central bank money, not bank money in general, fit for the digital age."
+        },
+        {
+          "class": "actor",
+          "sentence": "أكد نظام اليوروسيم أن بنى تحتية للسوق ومشغلي تقنية السجل الموزع قد أكملوا عملية الانضمام إلى بونتس وهم جاهزون لبدء الاستخدام فوراً.",
+          "quote": "An initial group of market participants and DLT operators[1] has completed onboarding and is ready to start using Pontes immediately.",
+          "source": "European Central Bank",
+          "correction": "The group that completed onboarding is made up of market participants (banks and institutions such as Deutsche Bank and Santander) and DLT operators, not market infrastructures."
+        }
+      ]
+    },
+    {
+      "slug": "faa-halts-east-coast-flights-equipment-outage-d180ab",
+      "title": "عطل فني يوقف الرحلات إلى مطارات الساحل الشرقي الأمريكي",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 20,
+        "checked": 20,
+        "supported": 16,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 3,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "attribution",
+          "sentence": "وتأثرت أكثر من 1000 رحلة في مطار نيوارك وحده بحسب بيانات فلايت أوير.",
+          "quote": "At Newark alone, more than 1,000 flights had been delayed or cancelled.",
+          "source": "Al Jazeera English",
+          "correction": "The source gives the figure of more than 1,000 delayed or cancelled Newark flights as its own reporting; it cites FlightAware only for the percentage figures."
+        },
+        {
+          "class": "figure",
+          "sentence": "كما أن إلغاء أكثر من 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية البنية التحتية للنقل الجوي، وهو ما قد يترتب عليه إعادة تقييم لاستثمارات الصيانة والاحتياطي في أنظمة المراقبة الجوية.",
+          "quote": "Throughout the US, there were nearly 4,000 delayed flights and 500 cancelled.",
+          "source": "Al Jazeera English",
+          "correction": "The source says 500 flights were cancelled, not more than 500."
+        },
+        {
+          "class": "attribution",
+          "sentence": "في مطار نيوارك وحده تأثرت أكثر من 1000 رحلة بالتأخير أو الإلغاء وفق بيانات فلايت أوير، وبلغت نسبة الرحلات المغادرة الملغاة من نيوارك 31% والرحلات القادمة الملغاة 29% اعتباراً من الساعة 3 مساءً بالتوقيت الشرقي.",
+          "quote": "At Newark alone, more than 1,000 flights had been delayed or cancelled.",
+          "source": "Al Jazeera English",
+          "correction": "The source gives the figure of more than 1,000 delayed or cancelled Newark flights as its own reporting, not as FlightAware data; FlightAware is cited only for the 31%/29% figures."
+        }
+      ]
+    },
+    {
+      "slug": "japan-imports-surge-august-2026-3efc48",
+      "title": "واردات اليابان تقفز 28% في أغسطس",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 8,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 10,
+        "confirmed": 0,
+        "listed": 1,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "trump-approval-32-percent-iran-war-bd2925",
+      "title": "تأييد ترامب يهبط إلى 32% مع تصاعد أزمة إيران",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 16,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 3,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 1,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "period",
+          "sentence": "انخفض معدل تأييد الرئيس الأمريكي دونالد ترامب إلى 32%، وهو أدنى مستوى يسجله في مسيرته السياسية، وفقاً لاستطلاع أجرته رويترز/إبسوس ونُشرت نتائجه الأحد.",
+          "quote": "The four-day poll, which closed on Sunday, showed 73 percent of Republicans ‌approved of Trump’s job performance, down from 82 percent in a Reuters/Ipsos poll a week earlier.",
+          "source": "Al Jazeera English",
+          "correction": "The four-day poll closed on Sunday; the source does not say its results were published on Sunday."
+        },
+        {
+          "class": "attribution",
+          "sentence": "وأوضح بيسنت أن العقوبات الثانوية ستطال أي شركة أجنبية تتعامل مع قطاع الطيران الإيراني، مشيراً إلى أن وزارة الخزانة فرضت أوائل هذا الشهر عقوبات على جميع شركات الطيران الإيرانية المتبقية التي لم تكن مستهدفة سابقاً، وعلى شركات خارج إيران متهمة بدعم القطاع.",
+          "quote": "Earlier this month, the US Treasury imposed sanctions on all remaining Iranian airlines that had not already been targeted, as well as companies outside Iran accused of supporting the country’s aviation sector.",
+          "source": "Al Jazeera English",
+          "correction": "The earlier Treasury sanctions are Al Jazeera's own background reporting, not something Bessent said."
+        },
+        {
+          "class": "superlative",
+          "sentence": "وأشار بيسنت إلى أن الصين، الشريك الاقتصادي الأهم لإيران، انخرطت بفاعلية في مناقشات العقوبات خلال محادثاته مع نائب رئيس الوزراء خه لي فنغ، سعياً من واشنطن لعزل طهران مالياً.",
+          "quote": "China is one of Iran’s most important economic partners and diplomatic backers, making Beijing’s cooperation potentially significant to Washington’s efforts to financially isolate Tehran.",
+          "source": "Al Jazeera English",
+          "correction": "Al Jazeera describes China as one of Iran's most important economic partners, not the most important, and this description is not attributed to Bessent."
+        }
+      ]
+    },
+    {
+      "slug": "us-bond-yield-5-04-percent-ce6ccd",
+      "title": "عائد سندات الخزانة الأمريكية لأجل 10 سنوات يبلغ 5.04%",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 13,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 5,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "attribution",
+          "sentence": "قد تبقى أسعار الفائدة مرتفعة إذا استمرت التوترات الجيوسياسية وارتفاع أسعار الطاقة في المقدمة وفقاً لبي بي سي.",
+          "quote": "While the rise in borrowing costs has been \"orderly\" this year, rather than sudden, she said rates could remain elevated if geopolitical tensions and high energy prices remain \"front and center\".",
+          "source": "BBC News",
+          "correction": "The forecast that rates could remain elevated is BMO Wealth Management strategist Carol Schleif's view, reported by the BBC, not the BBC's own assessment."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 8,
+    "failures": 0,
+    "promptTokens": 16,
+    "completionTokens": 38581,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 8
+    },
+    "correctionsEditorCalls": 7
+  },
+  "log": [
+    "[11:59:56] second look: 8 to read now (119 published pieces not yet read)",
+    "[11:59:56] us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac:   source https://www.nytimes.com/2026/09/21/business/economy/trump-xi-china-trade.html: http-403",
+    "[11:59:56] us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac:   source https://www.nytimes.com/2026/09/21/business/dealbook/bessent-china-ai-talks.html: http-403",
+    "[11:59:56] us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac:   source https://www.nytimes.com/2026/09/20/business/us-china-ai-warning-system-national-: http-403",
+    "[12:00:22] llm ok role=checker model=claude-cli attempt=1 ms=25361",
+    "[12:00:22] us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac: 13 of 13 sentences checked · 8 supported · 4 without a source · 1 confirmed error(s)",
+    "[12:00:22]   ✗ [actor] ورغم أن تفاصيل الآلية لم تُكشف، وصف مسؤولون محادثات الأحد بأنها ناجحة. — Only Bessent called the talks \"successful\"; the Chinese side, via Xinhua, described them as \"candid, in-depth and constructive\".",
+    "[12:00:22] paramount-settles-with-us-states-e71142:   source https://www.nytimes.com/2026/09/21/business/paramount-warner-bros-ellison.html: http-403",
+    "[12:00:42] llm ok role=checker model=claude-cli attempt=1 ms=41764",
+    "[12:00:42] oil-below-100-us-iran-diplomacy-8ddbd8: 18 of 18 sentences checked · 10 supported · 3 without a source · 2 confirmed error(s)",
+    "[12:00:42]   ✗ [scope] تدفقات هرمز: 80% من مستويات ما قبل الحرب — The roughly 80% figure refers to flows from the broader Middle East, per TD Securities' Ryan McKay; the source only says Hormuz exports have steadily risen.",
+    "[12:00:42]   ✗ [attribution] وأضافوا أن هذا أقل بـ 6 ملايين برميل يومياً عن متوسط 2025، مشيرين إلى أن إغلاق خط أنابيب شرق-غرب السعودي كان أ — The 6 million bpd figure is JPMorgan's, but the view that the pipeline closure was less disruptive than feared is CNBC's description of market perception; JPMor",
+    "[12:01:01] llm ok role=checker model=claude-cli attempt=1 ms=37941",
+    "[12:01:01] paramount-settles-with-us-states-e71142: 17 of 17 sentences checked · 12 supported · 4 without a source · 1 confirmed error(s)",
+    "[12:01:01]   ✗ [attribution] وأوضح بونتا أن الاتفاق يُلزم الشركة بإنتاج 30 فيلماً سنوياً على الأقل، وتُفرض غرامة قدرها 30 مليون دولار عند ا — The $30m penalty is reported by Reuters (cited by Al Jazeera), not stated by Bonta, and it applies specifically to failing to produce 30 movies per year.",
+    "[12:01:02] faa-halts-east-coast-flights-equipment-outage-d180ab:   source https://www.nytimes.com/2026/09/21/business/white-house-press-pool-trump.html: http-403",
+    "[12:01:28] llm ok role=checker model=claude-cli attempt=1 ms=44261",
+    "[12:01:28] ecb-launches-pontes-tokenised-securities-b5dc9b: 15 of 15 sentences checked · 11 supported · 2 without a source · 2 confirmed error(s)",
+    "[12:01:28]   ✗ [term] نظام بونتس حل لتسوية المعاملات بالجملة في الأصول المُرمّزة بالنقود المصرفية المركزية، وأُطلق اليوم كجزء من است — The Eurosystem's strategy is to make central bank money, not bank money in general, fit for the digital age.",
+    "[12:01:28]   ✗ [actor] أكد نظام اليوروسيم أن بنى تحتية للسوق ومشغلي تقنية السجل الموزع قد أكملوا عملية الانضمام إلى بونتس وهم جاهزون  — The group that completed onboarding is made up of market participants (banks and institutions such as Deutsche Bank and Santander) and DLT operators, not market",
+    "[12:01:39] llm ok role=checker model=claude-cli attempt=1 ms=36297",
+    "[12:01:39] faa-halts-east-coast-flights-equipment-outage-d180ab: 20 of 20 sentences checked · 16 supported · 1 without a source · 3 confirmed error(s)",
+    "[12:01:39]   ✗ [attribution] وتأثرت أكثر من 1000 رحلة في مطار نيوارك وحده بحسب بيانات فلايت أوير. — The source gives the figure of more than 1,000 delayed or cancelled Newark flights as its own reporting; it cites FlightAware only for the percentage figures.",
+    "[12:01:39]   ✗ [figure] كما أن إلغاء أكثر من 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين  — The source says 500 flights were cancelled, not more than 500.",
+    "[12:01:39]   ✗ [attribution] في مطار نيوارك وحده تأثرت أكثر من 1000 رحلة بالتأخير أو الإلغاء وفق بيانات فلايت أوير، وبلغت نسبة الرحلات المغ — The source gives the figure of more than 1,000 delayed or cancelled Newark flights as its own reporting, not as FlightAware data; FlightAware is cited only for ",
+    "[12:02:10] llm ok role=checker model=claude-cli attempt=1 ms=27740",
+    "[12:02:10] japan-imports-surge-august-2026-3efc48: 19 of 19 sentences checked · 8 supported · 10 without a source · 0 confirmed error(s) · 1 listed for a person",
+    "[12:02:11] us-bond-yield-5-04-percent-ce6ccd:   source https://www.nytimes.com/2026/09/16/business/fed-inflation-stocks-bonds.html: http-403",
+    "[12:02:11] us-bond-yield-5-04-percent-ce6ccd:   source https://www.nytimes.com/2026/09/16/business/economy/federal-reserve-interest-rat: http-403",
+    "[12:02:11] us-bond-yield-5-04-percent-ce6ccd:   source https://www.nytimes.com/2026/09/16/business/economy/fed-interest-rates-borrowing: http-403",
+    "[12:02:22] llm ok role=checker model=claude-cli attempt=1 ms=51559",
+    "[12:02:22] trump-approval-32-percent-iran-war-bd2925: 22 of 22 sentences checked · 16 supported · 0 without a source · 3 confirmed error(s) · 1 listed for a person",
+    "[12:02:22]   ✗ [period] انخفض معدل تأييد الرئيس الأمريكي دونالد ترامب إلى 32%، وهو أدنى مستوى يسجله في مسيرته السياسية، وفقاً لاستطلاع — The four-day poll closed on Sunday; the source does not say its results were published on Sunday.",
+    "[12:02:22]   ✗ [attribution] وأوضح بيسنت أن العقوبات الثانوية ستطال أي شركة أجنبية تتعامل مع قطاع الطيران الإيراني، مشيراً إلى أن وزارة الخ — The earlier Treasury sanctions are Al Jazeera's own background reporting, not something Bessent said.",
+    "[12:02:22]   ✗ [superlative] وأشار بيسنت إلى أن الصين، الشريك الاقتصادي الأهم لإيران، انخرطت بفاعلية في مناقشات العقوبات خلال محادثاته مع ن — Al Jazeera describes China as one of Iran's most important economic partners, not the most important, and this description is not attributed to Bessent.",
+    "[12:02:49] llm ok role=checker model=claude-cli attempt=1 ms=37960",
+    "[12:02:49] us-bond-yield-5-04-percent-ce6ccd: 19 of 19 sentences checked · 13 supported · 5 without a source · 1 confirmed error(s)",
+    "[12:02:49]   ✗ [attribution] قد تبقى أسعار الفائدة مرتفعة إذا استمرت التوترات الجيوسياسية وارتفاع أسعار الطاقة في المقدمة وفقاً لبي بي سي. — The forecast that rates could remain elevated is BMO Wealth Management strategist Carol Schleif's view, reported by the BBC, not the BBC's own assessment.",
+    "[12:02:49] corrections: 7 stories to the corrections editor",
+    "[12:02:49] [correct] us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac: fetching 4 source(s)",
+    "[12:02:49] [correct]   source https://www.nytimes.com/2026/09/21/business/economy/trump-xi-china-tra: http-403",
+    "[12:02:49] [correct]   source https://www.nytimes.com/2026/09/21/business/dealbook/bessent-china-ai-: http-403",
+    "[12:02:49] [correct]   source https://www.nytimes.com/2026/09/20/business/us-china-ai-warning-system: http-403",
+    "[12:03:06] [correct] llm ok role=writer model=claude-cli attempt=1 ms=16089",
+    "[12:03:06] [correct] us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac: corrected; fields body",
+    "[12:03:06]     note: ذكرت نسخة سابقة من هذا الخبر أن مسؤولين وصفوا محادثات الأحد بأنها ناجحة، والصحيح أن وزير الخزانة الأمريكي سكوت بيسنت هو من وصفها بذلك. أما الجانب الصيني فوصفها عبر وكالة شينخوا بأنها صريحة ومعمّقة وبنّاءة.",
+    "[12:03:06] [correct] oil-below-100-us-iran-diplomacy-8ddbd8: fetching 4 source(s)",
+    "[12:03:28] [correct] llm ok role=writer model=claude-cli attempt=1 ms=19917",
+    "[12:03:28] [correct] oil-below-100-us-iran-diplomacy-8ddbd8: corrected; fields body, keyFacts",
+    "[12:03:28]     note: ذكرت نسخة سابقة من هذا الخبر أن التدفقات عبر مضيق هرمز بلغت نحو 80% من مستويات ما قبل الحرب، والصحيح بحسب «تي دي للأوراق المالية» أن هذه النسبة تخص تدفقات الشرق الأوسط الأوسع، وأن صادرات هرمز ارتفعت باطراد. ونسبت النسخة نفسها إلى محللي «جيه بي مورغان» أن إغلاق خط أنابيب شرق-غرب السعودي كان أقل تأثيراً مما خشيت السوق، والصحيح أنهم قالوا إن صادرات المنطقة صمدت رغم الإغلاق.",
+    "[12:03:28] [correct] paramount-settles-with-us-states-e71142: fetching 4 source(s)",
+    "[12:03:28] [correct]   source https://www.nytimes.com/2026/09/21/business/paramount-warner-bros-elli: http-403",
+    "[12:03:42] [correct] llm ok role=writer model=claude-cli attempt=1 ms=14122",
+    "[12:03:42] [correct] paramount-settles-with-us-states-e71142: corrected; fields body",
+    "[12:03:42]     note: ذكرت نسخة سابقة من هذا الخبر أن المدعي العام لولاية كاليفورنيا روب بونتا أوضح أن غرامة قدرها 30 مليون دولار تُفرض عند الإخلال بالالتزامات عموماً. والصحيح أن رويترز هي التي أوردت الغرامة، وأنها تُفرض إذا لم تنتج الشركة 30 فيلماً سنوياً.",
+    "[12:03:42] [correct] ecb-launches-pontes-tokenised-securities-b5dc9b: fetching 4 source(s)",
+    "[12:03:56] [correct] llm ok role=writer model=claude-cli attempt=1 ms=12615",
+    "[12:03:56] [correct] ecb-launches-pontes-tokenised-securities-b5dc9b: corrected; fields body",
+    "[12:03:56]     note: ذكرت نسخة سابقة من هذا الخبر أن استراتيجية اليوروسيم تهدف إلى جعل النقود المصرفية جاهزة للعصر الرقمي، والصحيح أنها تستهدف النقود المصرفية المركزية. كما ذكرت أن بنى تحتية للسوق أكملت الانضمام إلى بونتس، والصحيح أن المجموعة الأولى التي أكملت الانضمام تضم مشاركين في السوق ومشغلي تقنية السجل الموزع.",
+    "[12:03:56] [correct] faa-halts-east-coast-flights-equipment-outage-d180ab: fetching 4 source(s)",
+    "[12:03:57] [correct]   source https://www.nytimes.com/2026/09/21/business/white-house-press-pool-tru: http-403",
+    "[12:04:15] [correct] llm ok role=writer model=claude-cli attempt=1 ms=18023",
+    "[12:04:15] [correct] faa-halts-east-coast-flights-equipment-outage-d180ab: corrected; fields lede, whyItMatters, body",
+    "[12:04:15]     note: نسبت نسخة سابقة من هذا الخبر عدد الرحلات المتأثرة في مطار نيوارك، وهو أكثر من 1000 رحلة، إلى بيانات «فلايت أوير»، والصحيح أن بيانات الموقع تخص نسبتي الرحلات الملغاة فقط. وذكرت النسخة نفسها أن أكثر من 500 رحلة أُلغيت في الولايات المتحدة، والصحيح أن عددها 500 رحلة.",
+    "[12:04:15] [correct] trump-approval-32-percent-iran-war-bd2925: fetching 4 source(s)",
+    "[12:04:38] [correct] llm ok role=writer model=claude-cli attempt=1 ms=21261",
+    "[12:04:38] [correct] trump-approval-32-percent-iran-war-bd2925: corrected; fields lede, whyItMatters, body",
+    "[12:04:38]     note: ذكرت نسخة سابقة من هذا الخبر أن نتائج الاستطلاع نُشرت الأحد، والصحيح أن الاستطلاع الذي استمر أربعة أيام اختُتم الأحد. ونسبت النسخة نفسها إلى وزير الخزانة سكوت بيسنت الإشارة إلى عقوبات أوائل الشهر ووصف الصين بأنها الشريك الاقتصادي الأهم لإيران، والصحيح أن العقوبات السابقة معلومات خلفية لم يذكرها بيسنت، وأن الصين من أهم شركاء إيران الاقتصاديين، وهو وصف لم يصدر عنه.",
+    "[12:04:38] [correct] us-bond-yield-5-04-percent-ce6ccd: fetching 4 source(s)",
+    "[12:04:38] [correct]   source https://www.nytimes.com/2026/09/16/business/fed-inflation-stocks-bonds: http-403",
+    "[12:04:38] [correct]   source https://www.nytimes.com/2026/09/16/business/economy/federal-reserve-in: http-403",
+    "[12:04:38] [correct]   source https://www.nytimes.com/2026/09/16/business/economy/fed-interest-rates: http-403",
+    "[12:04:58] [correct] llm ok role=writer model=claude-cli attempt=1 ms=20224",
+    "[12:04:58] [correct] us-bond-yield-5-04-percent-ce6ccd: corrected; fields whyItMatters, body",
+    "[12:04:58]     note: نسبت نسخة سابقة من هذا الخبر إلى بي بي سي تقديراً بأن أسعار الفائدة قد تبقى مرتفعة إذا استمرت التوترات الجيوسياسية وارتفاع أسعار الطاقة، وأوردته فقرة «لماذا يهمّ» دون نسبة. والصحيح أن هذا التقدير لكبيرة استراتيجيي السوق في BMO لإدارة الثروات كارول شلييف، ونقلته بي بي سي عنها.",
+    "[12:04:58] [correct] done: 7 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-09-25T12-02-49-394Z.json"
+  ]
+}
