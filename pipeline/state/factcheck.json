@@ -3664,12 +3664,680 @@
       ],
       "weak": [],
       "outcome": "corrected",
-      "note": "ذكرت نسخة سابقة من هذا الخبر أن سعر برميل الديزل تجاوز 207 دولارات الثلاثاء، والصحيح أنه بلغ نحو 207 دولارات.",
-      "verified": {
-        "at": "2026-09-25T23:21:01.426Z",
-        "resolved": true,
-        "remaining": []
-      }
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن سعر برميل الديزل تجاوز 207 دولارات الثلاثاء، والصحيح أنه بلغ نحو 207 دولارات."
+    },
+    "uae-suspends-iranian-airline-flights-42dce4": {
+      "at": "2026-09-25T23:18:52.061Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-24T17:32:41.486Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 21,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "ولم يتوفر تعليق فوري من المسؤولين في الإمارات."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "egypt-rate-hold-us-yields-fed-c04ed7": {
+      "at": "2026-09-25T23:18:52.060Z",
+      "kind": "analysis",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-24T18:30:54.449Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 53,
+        "checked": 53,
+        "supported": 30,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 21,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "عائد السندات الأمريكية العشرية: 5.104%",
+          "quote": "أما «الشرق الأوسط» فأوردت أرقاماً أدنى للجلسة نفسها؛ فقد رصدت صعود العائد لأجل 10 سنوات 8.7 نقطة أساس إلى 5.054%، وهو أيضاً الأعلى منذ 2007، وارتفاع العائد لأجل عامين 8.49 نقطة أساس إلى 4.862%، وهو الأعلى منذ يونيو 2024.",
+          "source": "Khazendar"
+        }
+      ],
+      "notFound": [
+        "صعود العائد الأمريكي يرفع ثمن أي خفض للفائدة في مصر",
+        "تباطؤ التضخم في المدن يتيح التيسير نظرياً، لكن رهانات تشديد الفيدرالي قد تجعل أي خفض أشدّ ضرراً بجاذبية الدين المحلي للمستثمرين الأجانب",
+        "ويبدو، في قراءة خازندار، أن هذا التزامن يرفع ثمن أي خفض مصري قريب للفائدة، حتى لو واصلت الأسعار المحلية تباطؤها.",
+        "ترى خازندار أن موعد أول خفض للفائدة في مصر مرهون بقدرة البلاد على الاحتفاظ بأموال الأجانب في دينها المحلي بقدر ما هو مرهون بمسار التضخم، في وقت تقترب فيه الفائدة الأمريكية من زيادة جديدة.",
+        "ولذلك قد ينتظر المقترضون والشركات التيسير مدة أطول من تلك التي يوحي بها تباطؤ التضخم في المدن، ما دام العائد الأمريكي العشري قرب أعلى قراءاته منذ 2007.",
+        "لكن قرار الفائدة في القاهرة قد لا ينفصل عن كلفة المال في واشنطن.",
+        "وتُظهر أشهر الحرب الإقليمية مدى حساسية أموال الأجانب في الدين المحلي للصدمات الخارجية.",
+        "والأرجح أن المدخرين أقرب الرابحين من التثبيت، ما دام سعر الإيداع لدى المركزي يتقدم على التضخم العام."
+      ],
+      "weak": [
+        {
+          "sentence": "المؤشر: التضخم العام السنوي في المدن · يوليو: 14.9% · أغسطس: 14.5%",
+          "quote": "وعزا البنك المركزي تراجع التضخم العام السنوي في المدن من 14.9% في يوليو إلى انخفاض تضخم السلع الغذائية، الذي خفّف أثر زيادة تعريفة الكهرباء والإيجارات."
+        }
+      ],
+      "outcome": "listed"
+    },
+    "egypt-central-bank-holds-rates-fifth-time-b263dc": {
+      "at": "2026-09-25T23:19:24.719Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-24T17:25:58.939Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 18,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "يُبقي القرار عائد الإيداع لليلة واحدة، البالغ 19%، فوق التضخم العام السنوي في المدن البالغ 14.5%."
+      ],
+      "weak": [
+        {
+          "sentence": "المركزي المصري يثبّت الفائدة عند 19% و20% للمرة الخامسة على التوالي",
+          "quote": "The September decision follows a series of previous rate holds, with the central bank having maintained the same levels at its meetings in April, May, July and August."
+        },
+        {
+          "sentence": "أبقى البنك المركزي المصري الخميس سعري عائد الإيداع والإقراض لليلة واحدة عند 19% و20% للاجتماع الخامس على التوالي، بعدما تباطأ التضخم العام السنوي في المدن إلى 14.5% في أغسطس.",
+          "quote": "According to the CBE’s official August inflation data, annual urban headline inflation declined to 14.5 percent in August, compared with 14.9 percent in July."
+        },
+        {
+          "sentence": "وعزا البنك المركزي تراجع التضخم العام السنوي في المدن من 14.9% في يوليو إلى انخفاض تضخم السلع الغذائية، الذي خفّف أثر زيادة تعريفة الكهرباء والإيجارات.",
+          "quote": "وقال البنك المركزي إن معدل التضخم العام السنوي تراجع بشكل طفيف إلى 14.5% في أغسطس 2026، مدفوعا بانخفاض تضخم السلع الغذائية، الذي حد من أثر الزيادة في تعريفة الكهرباء والإيجارات."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "turkish-airlines-orders-150-boeing-737-max-e89a62": {
+      "at": "2026-09-25T23:20:12.348Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-24T13:00:26.559Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 20,
+        "checked": 20,
+        "supported": 14,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 18,
+          "field": "body",
+          "sentence": "وكانت الشركتان قد بدأتا التفاوض على الصفقة في 2025، قبل أن تتعطل بسبب خلافات على المحركات، بحسب موقع «أرابيان غلف بزنس إنسايت».",
+          "claim": "According to AGBI, the two companies began negotiating the deal in 2025, and the deal was then held up by engine disputes.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "AGBI (Arabian Gulf Business Insight)",
+          "sourceDate": "2026-09-24",
+          "quote": "The two companies have been discussing the deal since 2025, after it was delayed by engine disputes.",
+          "correction": "AGBI says the companies have been discussing the deal since 2025, after it had been delayed by engine disputes; the delay came before those talks, not after them.",
+          "class": "period"
+        }
+      ],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "أسطول الخطوط التركية بحسب موقعها: 514 طائرة",
+          "quote": "As of June, Turkish Airlines flew to 305 destinations across 132 countries with 28 freighters and 524 passenger aircraft.",
+          "source": "AGBI (Arabian Gulf Business Insight)"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وتتخذ الخطوط الجوية التركية من مطار إسطنبول مقراً لها، ويضم أسطولها 514 طائرة تطير إلى أكثر من 130 دولة، وفق بيانات منشورة على موقعها.",
+          "quote": "As of June, Turkish Airlines flew to 305 destinations across 132 countries with 28 freighters and 524 passenger aircraft.",
+          "source": "AGBI (Arabian Gulf Business Insight)"
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "طلبت الخطوط الجوية التركية ما يصل إلى 150 طائرة بوينغ 737 ماكس تتسلمها بين 2033 و2037، خلال وجود الرئيس رجب طيب أردوغان في نيويورك.",
+          "quote": "Turkish Airlines said on Wednesday it was to buy 150 jets from Boeing that would be scheduled for delivery between 2033 and 2037."
+        },
+        {
+          "sentence": "وقالت بوينغ في بيان إن الطائرات المؤكدة من طراز 737-8 ماكس، وإنها أكبر طلبية تبرمها الناقلة التركية على الإطلاق من الطائرات ذات الممر الواحد.",
+          "quote": "This is the airline’s largest single-aisle order, the US planemaker said."
+        },
+        {
+          "sentence": "ونقلت الناقلة 92.6 مليون مسافر في 2025، وتشغّل أكثر من 200 طائرة من إنتاج بوينغ.",
+          "quote": "Based at Istanbul Airport, the carrier has a fleet of 514 aircraft and flies to over 130 countries, carrying 92.6 million passengers in 2025, according to figures on its website."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن الصفقة تعطلت بسبب خلافات على المحركات بعد بدء التفاوض عليها في 2025، والصحيح أن تأجيلها بسبب هذه الخلافات سبق المفاوضات الجارية بين الشركتين منذ 2025."
+    },
+    "microsoft-10-billion-gulf-investment-2030-1cf016": {
+      "at": "2026-09-25T23:20:44.589Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-24T12:47:55.047Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 21,
+        "checked": 21,
+        "supported": 17,
+        "weak": 0,
+        "noEvidence": 4,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "تخطط الشركة لإنفاق أكثر من 400 مليون دولار على خطوط الربط البحرية والبرية في الشرق الأوسط بحلول 2030",
+        "الربط البحري والبري في الشرق الأوسط: أكثر من 400 مليون دولار",
+        "وكان سميث قد صرّح لوكالة رويترز بأن مايكروسوفت قدّمت لشركائها في المنطقة تقييمات للمرونة الرقمية في الأسبوع الأول من النزاع الذي بدأ في 28 فبراير.",
+        "وكانت قد تعهدت بتدريب أكثر من 4.2 مليون شخص في هذه الدول بحلول عام 2030."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c": {
+      "at": "2026-09-25T23:21:32.161Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-15T17:24:18.254Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 15,
+        "checked": 15,
+        "supported": 7,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 3,
+        "listed": 0,
+        "drift": 4,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 3,
+          "field": "subtitle",
+          "sentence": "والسوق قد يفقد 120 مليون برميل شهرياً",
+          "claim": "The market could lose 120 million barrels per month, a recurring monthly rate.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-15",
+          "quote": "The market could lose 120 million barrels if the pipeline is closed for a month, said Matt Smith, director of commodity research at Kpler.",
+          "correction": "Kpler's 120 million barrels is the loss if the pipeline stays closed for one month, net of 15 million barrels stored at Yanbu; it is not a recurring monthly rate.",
+          "class": "period"
+        },
+        {
+          "id": 7,
+          "field": "keyFacts",
+          "sentence": "خسارة محتملة شهريًا: 120 مليون برميل (تقدير Kpler)",
+          "claim": "Kpler estimates a potential loss of 120 million barrels per month.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-15",
+          "quote": "The market could lose 120 million barrels if the pipeline is closed for a month, said Matt Smith, director of commodity research at Kpler.",
+          "correction": "Kpler's 120 million barrels is the loss for a one-month closure, net of Yanbu storage; it is not a per-month rate.",
+          "class": "period"
+        },
+        {
+          "id": 8,
+          "field": "whyItMatters",
+          "sentence": "إغلاق الخط يُجبر الرياض على تصدير نفطها كله عبر مضيق هرمز وسط توترات مع إيران، ويحرم أوروبا من شحنات أُلغيت أو أُجّلت فعلاً.",
+          "claim": "The pipeline closure forces Riyadh to export all of its oil via Hormuz, and European cargoes have already been cancelled or delayed (website analysis).",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-15",
+          "quote": "The Saudis are now shifting some exports back through Hormuz with U.S. military support while the pipeline is down, Wright said.",
+          "correction": "Saudi Arabia is shifting only some of its exports back through Hormuz, not all of them.",
+          "class": "scope"
+        }
+      ],
+      "listed": [
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "lede",
+          "sentence": "أعلنت أرامكو السعودية تعليق تحميلات النفط من ميناء ينبع بعد إغلاق خط الشرق-الغرب النفطي، وارتفعت عقود برنت الآجلة 3% إلى 108.88 دولار للبرميل بحلول الساعة 1:00 ظهراً بتوقيت شرق الولايات المتحدة الثلاثاء 15 سبتمبر.",
+          "quote": "Brent crude futures, the international benchmark, advanced 2.9% to settle at $108.75.",
+          "source": "CNBC",
+          "correction": "The source gives Brent up 2.9% to settle at $108.75; the $108.88 figure at 1:00 pm ET does not appear in the sources."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "ارتفاع برنت: 3% إلى 108.88 دولار للبرميل",
+          "quote": "Brent crude futures, the international benchmark, advanced 2.9% to settle at $108.75.",
+          "source": "CNBC",
+          "correction": "Brent rose 2.9% to settle at $108.75 a barrel."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "ارتفاع خام غرب تكساس: 4.7% إلى 106.12 دولار للبرميل",
+          "quote": "U.S. West Texas Intermediate gained 4.4% to $105.83 per barrel, its highest closing price since May 19.",
+          "source": "CNBC",
+          "correction": "WTI gained 4.4% to $105.83 a barrel."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "body",
+          "sentence": "وارتفع خام غرب تكساس الوسيط 4.7% إلى 106.12 دولار للبرميل مع ترقّب السوق مدة الإغلاق.",
+          "quote": "U.S. West Texas Intermediate gained 4.4% to $105.83 per barrel, its highest closing price since May 19.",
+          "source": "CNBC",
+          "correction": "WTI gained 4.4% to $105.83 a barrel."
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "أرامكو تعلّق تحميلات ينبع بعد إغلاق خط الشرق-الغرب.. برنت يرتفع 3%",
+          "quote": "The vicious cycle of bad news from Saudi Arabia reached its apex today, as Saudi Aramco confirmed that loadings from the Red Sea port of Yanbu have been suspended, lifting ICE Brent back to $108 per barrel."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن السوق قد يفقد 120 مليون برميل شهرياً، وأن إغلاق الخط يجبر السعودية على تصدير نفطها كله عبر مضيق هرمز. والصحيح أن تقدير Kpler البالغ 120 مليون برميل يخص إغلاقاً يستمر شهراً واحداً وليس معدلاً شهرياً متكرراً، وأن السعودية تعيد توجيه بعض صادراتها لا كلها عبر المضيق."
+    },
+    "saudi-uranium-discovery-madinah-630462": {
+      "at": "2026-09-25T23:22:14.900Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-15T11:58:31.890Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 13,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 3,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 13,
+          "field": "body",
+          "sentence": "وأشار إلى أن السعودية تبني قدرات في المجال النووي محلياً وعبر شراكات دولية فعالة، حسب المصدر.",
+          "claim": "The minister said Saudi Arabia is building capacities in the nuclear field, domestically and through effective international partnerships.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "The National",
+          "sourceDate": "2026-09-15",
+          "quote": "The kingdom, the biggest Arab economy, has also continued to invest in diversifying its energy and mineral resources. It is building capacities within the kingdom, as well as through effective international partnerships, he was quoted as saying by Al Arabiya TV.",
+          "correction": "The minister spoke of building capacities in diversifying the kingdom's energy and mineral resources, not specifically in the nuclear field.",
+          "class": "scope"
+        },
+        {
+          "id": 14,
+          "field": "body",
+          "sentence": "ولفت إلى أن الاكتشاف يأتي بعد توقيع اتفاق نووي مدني بين السعودية والولايات المتحدة في يوليو، وفقاً للمصدر.",
+          "claim": "The minister noted that the discovery follows the civil nuclear agreement signed by Saudi Arabia and the US in July.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "The National",
+          "sourceDate": "2026-09-15",
+          "quote": "The discovery of natural ore with a concentration of uranium is significant, as it follows a US-Saudi deal for a civilian nuclear programme in the kingdom.",
+          "correction": "The link between the discovery and the July US-Saudi nuclear deal is The National's own observation, not a statement by the minister.",
+          "class": "attribution"
+        },
+        {
+          "id": 15,
+          "field": "body",
+          "sentence": "وأكد أن الاتفاق يُؤسس لشراكة تمتد لعقود وتبلغ قيمتها مليارات الدولارات، بما في ذلك مرافق محتملة لتخصيب اليورانيوم، حسب المصدر.",
+          "claim": "The minister affirmed that the agreement lays the foundation for a decades-long, multibillion-dollar partnership, including potential uranium enrichment facilities.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "OilPrice.com",
+          "sourceDate": "2026-09-14",
+          "quote": "The U.S. Department of Energy described the agreement as laying the foundation for a decades-long, multibillion-dollar nuclear partnership.",
+          "correction": "The 'decades-long, multibillion-dollar partnership' description came from the US Department of Energy, and the possible enrichment plant was reported by the Wall Street Journal, not stated by the Saudi minister.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وصرح الأمير عبد العزيز بن سلمان بذلك في المؤتمر العام للوكالة الدولية للطاقة الذرية في فيينا يوم الثلاثاء، وفقاً للمصدر.",
+          "quote": "Saudi Energy Minister Prince Abdulaziz bin Salman announced the discovery on Monday at the International Atomic Energy Agency’s General Conference in Vienna, according to Saudi state television.",
+          "source": "OilPrice.com"
+        }
+      ],
+      "notFound": [],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن وزير الطاقة السعودي تحدث عن بناء قدرات في المجال النووي، وربط الاكتشاف بالاتفاق النووي مع واشنطن، ووصف الاتفاق بأنه شراكة تمتد لعقود بقيمة مليارات الدولارات تشمل مرافق للتخصيب. والصحيح أن الوزير تحدث عن بناء قدرات لتنويع موارد الطاقة والمعادن، وأن ذلك الوصف صدر عن وزارة الطاقة الأمريكية، فيما أوردت صحيفة وول ستريت جورنال احتمال بناء محطة للتخصيب."
+    },
+    "hormuz-crisis-escalation-to-stalled-talks-2dfd6a": {
+      "at": "2026-09-25T23:19:55.584Z",
+      "kind": "feature",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-24T16:47:45.278Z",
+      "sourcesRead": 8,
+      "sourcesAll": 8,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 80,
+        "checked": 76,
+        "supported": 53,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 4,
+        "confirmed": 11,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 4,
+        "unverified": 0,
+        "unchecked": 1
+      },
+      "confirmed": [
+        {
+          "id": 13,
+          "field": "body",
+          "sentence": "يمرّ عبر مضيق هرمز عادةً نحو 20% من إمدادات النفط والغاز المسال في العالم، أي نحو عشرة ملايين برميل يومياً من الخام والمنتجات البترولية، بحسب «سي إن بي سي».",
+          "claim": "Normally about 20% of world oil and LNG passes through Hormuz, i.e. about 10 million bpd of crude and products, according to CNBC.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Khazendar",
+          "sourceDate": "2026-09-11",
+          "quote": "يمر عبر المضيق نحو عشرين بالمئة من إمدادات النفط العالمية، أي نحو عشرة ملايين برميل يومياً من الخام والمنتجات البترولية، منها تسعة ملايين من الخام وحده. لكن هذه الأحجام لم تعد تمثل سوى نصف مستويات ما قبل الحرب، فتفاقم شحّ أسواق الوسائط الحرارية.",
+          "correction": "The ~10 million bpd is the current, wartime volume, which is only half of pre-war levels, and it is not attributed to CNBC; the normal flow would be about twice that.",
+          "class": "period"
+        },
+        {
+          "id": 15,
+          "field": "body",
+          "sentence": "وخلال ثلاثة أسابيع فقط، تقلّصت تدفقات النفط عبر المضيق إلى نحو 45% من مستوياتها قبل الحرب بحسب الجزيرة، وقفزت كلفة استئجار الناقلات العملاقة فوق 800 ألف دولار يومياً، وتوقف خط أنابيب شرق-غرب السعودي تسعة أيام، وعُطّلت 17% من قدرات قطر على إنتاج الغاز المسال.",
+          "claim": "Within just three weeks: flows fell to 45% of pre-war (per Al Jazeera), VLCC charter rates topped $800k/day, the East-West line stopped for nine days, and 17% of Qatar's LNG capacity was knocked out.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 5,
+          "sourceName": "Khazendar",
+          "sourceDate": "2026-09-22",
+          "quote": "وكانت الضربة الصاروخية الإيرانية في 18 مارس على مدينة رأس لفان الصناعية قد عطّلت خطين من أصل 14 خطَّ إنتاج للغاز المسال في قطر، وأزالت 17% من القدرة التصديرية ونحو 20 مليار دولار من الإيرادات السنوية، وفق تقديرات «أويل برايس».",
+          "correction": "The 17% of Qatari LNG capacity was knocked out by the 18 March strike, not during the three weeks in September.",
+          "class": "period"
+        },
+        {
+          "id": 17,
+          "field": "body",
+          "sentence": "بدأت الأزمة بتصعيد عسكري مباشر.",
+          "claim": "The crisis began with the direct military escalation of early September.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 8,
+          "sourceName": "Khazendar",
+          "sourceDate": "2026-09-24",
+          "quote": "وكانت الأسعار قد هبطت الثلاثاء، مع رهان المتعاملين على أن توضّح المحادثات في نيويورك مسار الصراع المستمر منذ قرابة سبعة أشهر.",
+          "correction": "The sources describe a conflict that had already lasted nearly seven months (including the March strike on Ras Laffan), so it did not begin with the September escalation.",
+          "class": "period"
+        },
+        {
+          "id": 18,
+          "field": "body",
+          "sentence": "ففي 7 سبتمبر، شنّت القوات الأمريكية ضربات على ثلاث ناقلات نفط إيرانية، رداً على إطلاق إيران صواريخ باليستية على سفينتين حربيتين تابعتين للبحرية الأمريكية، بحسب القيادة المركزية الأمريكية.",
+          "claim": "On 7 September, US forces struck three Iranian oil tankers in response to Iran firing ballistic missiles at two US Navy warships, per CENTCOM.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Khazendar",
+          "sourceDate": "2026-09-07",
+          "quote": "وكانت القوات الأمريكية قد شنت السبت ضربات على ثلاث ناقلات نفط إيرانية، رداً على إطلاق إيران صواريخ باليستية على سفينتين حربيتين تابعتين للبحرية الأمريكية، بحسب القيادة المركزية الأمريكية (سنتكوم).",
+          "correction": "The strikes took place on Saturday (5 September), before Monday 7 September.",
+          "class": "period"
+        },
+        {
+          "id": 44,
+          "field": "body",
+          "sentence": "وأنهى الخميس 24 سبتمبر عند 105.09 دولاراً، مرتفعاً 5.5% منذ بداية الأسبوع.",
+          "claim": "Brent ended (closed) Thursday 24 September at $105.09, up 5.5% since the start of the week.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 8,
+          "sourceName": "Khazendar",
+          "sourceDate": "2026-09-24",
+          "quote": "ارتفعت العقود الآجلة لخام برنت 1.95% إلى 105.09 دولار للبرميل خلال جلسة الخميس، مع تعثر المحادثات الأمريكية الإيرانية على هامش الجمعية العامة للأمم المتحدة.",
+          "correction": "$105.09 was an intraday level during Thursday's session, not the day's close.",
+          "class": "term"
+        },
+        {
+          "id": 51,
+          "field": "body",
+          "sentence": "ويتوقع الموقع بقاءهما خارج الخدمة بين ثلاث وخمس سنوات.",
+          "claim": "OilPrice (the site) itself expects the two trains to stay offline for three to five years.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 5,
+          "sourceName": "Khazendar",
+          "sourceDate": "2026-09-22",
+          "quote": "ويمثّل الخطان المتضرران 12.8 مليون طن من الطاقة السنوية، فيما ذكر موقع «أويل برايس» أن «قطر للطاقة» تتوقع بقاءهما خارج الخدمة من ثلاث إلى خمس سنوات، أي مدة أطول من التقدير الذي أعلنه الوزير لأعمال الإصلاح.",
+          "correction": "The three-to-five-year expectation is QatarEnergy's, as reported by OilPrice, not OilPrice's own forecast.",
+          "class": "attribution"
+        },
+        {
+          "id": 57,
+          "field": "body",
+          "sentence": "لكن هذه الشحنات حُمّلت من محطات الخليج لا من ينبع، أي أنها عبرت المضيق ذاته الذي تشتد فيه المخاطر.",
+          "claim": "Those 100 million barrels were loaded from Gulf terminals, not Yanbu, and so passed through Hormuz.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 6,
+          "sourceName": "Khazendar",
+          "sourceDate": "2026-09-22",
+          "quote": "وفي المقابل، حمّلت السعودية خلال عطلة نهاية الأسبوع سبع ناقلات عملاقة بسعة 14 مليون برميل من محطاتها في الخليج، وفق ما قاله نور الدين الحموري من شركة «إكويتي غروب» (Equiti Group) لصحيفة «ذا ناشونال».",
+          "correction": "The sources say only that seven VLCCs carrying 14 million barrels loaded from Gulf terminals; the 100 million barrels were sales for October-November delivery with no loading point given.",
+          "class": "scope"
+        },
+        {
+          "id": 60,
+          "field": "body",
+          "sentence": "فقد حذّرت المنظمة البحرية الدولية من أن تعطيل حركة الأسمدة عبر المضيق يثير مخاوف بشأن الأمن الغذائي في الدول النامية التي تعتمد على هذه الواردات.",
+          "claim": "The IMO warned that disruption of fertilizer shipments through the strait raises food-security concerns in developing countries.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Khazendar",
+          "sourceDate": "2026-09-11",
+          "quote": "ويُثير تعطيل حركة الأسمدة عبر المضيق مخاوف بشأن الأمن الغذائي العالمي، لأن الدول النامية تعتمد على هذه الواردات.",
+          "correction": "The fertilizer and food-security concern is the source article's own statement, not a warning attributed to the IMO.",
+          "class": "attribution"
+        },
+        {
+          "id": 69,
+          "field": "body",
+          "sentence": "وربط الكعبي تشغيل خطوط الإنتاج الإضافية ضمن توسعة حقل الشمال بتطورات أزمة المضيق وببدء إنتاج حقل الشمال الجنوبي في موعده عام 2028.",
+          "claim": "Kaabi tied additional North Field production lines to the strait crisis and to North Field South starting on schedule in 2028.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 5,
+          "sourceName": "Khazendar",
+          "sourceDate": "2026-09-22",
+          "quote": "وذكر «أويل برايس»، نقلاً عن رويترز الاثنين، أن الخطوط الإضافية تتوقف على استئناف الحركة في هرمز وعلى بدء إنتاج حقل الشمال الجنوبي في موعده عام 2028.",
+          "correction": "Kaabi linked the extra lines to the strait crisis; the North Field South 2028 condition is reported by OilPrice citing Reuters, not attributed to Kaabi.",
+          "class": "attribution"
+        },
+        {
+          "id": 73,
+          "field": "table",
+          "sentence": "التاريخ: 7 سبتمبر · الحدث: ضربات أمريكية على ثلاث ناقلات إيرانية وبرنت يرتفع 1.5% إلى 97.73 دولاراً",
+          "claim": "Table: 7 September, US strikes on three Iranian tankers and Brent up 1.5% to $97.73.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Khazendar",
+          "sourceDate": "2026-09-07",
+          "quote": "وكانت القوات الأمريكية قد شنت السبت ضربات على ثلاث ناقلات نفط إيرانية، رداً على إطلاق إيران صواريخ باليستية على سفينتين حربيتين تابعتين للبحرية الأمريكية، بحسب القيادة المركزية الأمريكية (سنتكوم).",
+          "correction": "The strikes were on Saturday (5 September); only Brent's rise to $97.73 was on Monday 7 September.",
+          "class": "period"
+        },
+        {
+          "id": 78,
+          "field": "table",
+          "sentence": "التاريخ: 22 سبتمبر · الحدث: الكعبي: أزمة هرمز قد تؤخّر توسعة حقل الشمال والهجمات عطّلت 17% من إنتاج الغاز",
+          "claim": "Table: 22 September, Kaabi says the Hormuz crisis may delay the North Field expansion and the attacks knocked out 17% of gas output.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 5,
+          "sourceName": "Khazendar",
+          "sourceDate": "2026-09-22",
+          "quote": "قال سعد الكعبي، وزير الطاقة القطري والرئيس التنفيذي لـ«قطر للطاقة»، الأحد إن أزمة مضيق هرمز قد تؤخّر مشروعات توسعة حقل الشمال لأن المعدات الأساسية لا تصل إلى البلاد.",
+          "correction": "Kaabi spoke on Sunday (20 September), not 22 September.",
+          "class": "period"
+        }
+      ],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "توقف خط شرق-غرب السعودي: 9 أيام (13-22 سبتمبر)",
+          "quote": "أعلنت وزارة الطاقة السعودية يوم الجمعة إغلاق خط الشرق-الغرب النفطي كإجراء احترازي بعد تعرّضه لهجمات متعددة استهدفت محطات في منطقتي الرياض والمدينة.",
+          "source": "Khazendar"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وفي 13 سبتمبر، أوقفت السعودية خط الشرق-الغرب النفطي بعد هجمات بطائرات مسيّرة ألحقت أضراراً بمحطاته وعطّلت تحميل النفط في ينبع.",
+          "quote": "أعلنت وزارة الطاقة السعودية يوم الجمعة إغلاق خط الشرق-الغرب النفطي كإجراء احترازي بعد تعرّضه لهجمات متعددة استهدفت محطات في منطقتي الرياض والمدينة. وأُرسلت فرق طوارئ لتأمين الخط وتقييم سلامته، وفق ما أفادت الوزارة في بيان.",
+          "source": "Khazendar"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "جاءت أول إشارة انفراج في 22 سبتمبر، حين أعادت السعودية تشغيل الخط بعد توقف دام تسعة أيام، وفق ثلاثة مصادر مطلعة تحدثت لرويترز.",
+          "quote": "أعلنت وزارة الطاقة السعودية يوم الجمعة إغلاق خط الشرق-الغرب النفطي كإجراء احترازي بعد تعرّضه لهجمات متعددة استهدفت محطات في منطقتي الرياض والمدينة.",
+          "source": "Khazendar"
+        },
+        {
+          "status": "conflict",
+          "field": "table",
+          "sentence": "التاريخ: 13 سبتمبر · الحدث: السعودية توقف خط شرق-غرب النفطي إثر هجمات مسيّرة على محطاته",
+          "quote": "أعلنت وزارة الطاقة السعودية يوم الجمعة إغلاق خط الشرق-الغرب النفطي كإجراء احترازي بعد تعرّضه لهجمات متعددة استهدفت محطات في منطقتي الرياض والمدينة.",
+          "source": "Khazendar"
+        }
+      ],
+      "notFound": [
+        "وكل واحد من هذه التطورات كان كافياً وحده لتحريك الأسواق، لكنها وقعت متزامنة فضاعفت الأثر.",
+        "أما الخسائر القطرية فتتجاوز الأرقام اليومية.",
+        "وهذا الموقف يحصر قطر في المضيق ممرّاً وحيداً لصادراتها الغازية.",
+        "ويظل الغموض قائماً حول قدرة المملكة على تعويض الكميات التي كان يحملها الخط إلى أوروبا عبر سوميد."
+      ],
+      "weak": [
+        {
+          "sentence": "وتختزل هذه الجلسة مساراً امتدّ ثلاثة أسابيع، صعد فيه البرميل من 97 دولاراً إلى ذروة فوق 108 دولارات، ثم هبط مع انفراجة جزئية، قبل أن يعاود الارتفاع حين تبدّد الأمل الدبلوماسي.",
+          "quote": "خام برنت يرفع مكاسبه منذ بداية الأسبوع إلى 5.5% بعد هبوطه الثلاثاء على أمل انفراجة دبلوماسية"
+        },
+        {
+          "sentence": "وقفز برنت إلى 108.68 دولاراً للبرميل، مسجلاً مكاسب أسبوعية بلغت نحو 13%، وهي الأكبر منذ الأسبوع المنتهي في 17 يوليو، بحسب رويترز.",
+          "quote": "وخلال الأسبوع، زادت الأسعار نحو 13 بالمئة، وهي أكبر مكاسب أسبوعية منذ الأسبوع المنتهي في 17 يوليو، بحسب رويترز."
+        },
+        {
+          "sentence": "سجّل برنت أدنى مستوى خلال هذه الفترة عند 97.55 دولاراً يوم 22 سبتمبر مع عودة الخط السعودي، وأعلاه عند 108.68 دولاراً في 11 سبتمبر حين انخفض العبور إلى سبع سفن.",
+          "quote": "وهبطت العقود الآجلة لخام برنت يوم الثلاثاء بأكثر من دولارين للبرميل إلى أدنى مستوى منذ 8 سبتمبر، وعزا متعاملون تحدثوا لرويترز تزايد البيع إلى عودة الإمدادات السعودية."
+        },
+        {
+          "sentence": "التاريخ: 22 سبتمبر · الحدث: السعودية تعيد تشغيل الخط بمعدل ضخ منخفض وبرنت يتراجع إلى 97.55 دولاراً",
+          "quote": "وقال مصدران تجاريان لرويترز إن الخط عاد إلى الضخ بمعدل منخفض عقب إعادة تشغيله."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن نحو عشرة ملايين برميل يومياً هي التدفق المعتاد عبر هرمز بحسب «سي إن بي سي»، وأن تعطيل 17% من قدرات الغاز القطري وقع خلال أسابيع سبتمبر وأن الأزمة بدأت بتصعيد سبتمبر، وأن الضربات الأمريكية على الناقلات وقعت في 7 سبتمبر وتصريحات الكعبي في 22 سبتمبر، وأن 105.09 دولارات سعر إغلاق، وأن الـ100 مليون برميل المبيعة لآسيا حُمّلت من الخليج. والصحيح أن هذه الأحجام هي المستوى الحالي ويعادل نصف مستويات ما قبل الحرب، وأن التعطيل القطري نجم عن هجمات 18 مارس في صراع مستمر منذ نحو سبعة أشهر، وأن الضربات وقعت في 5 سبتمبر والتصريحات في 20 سبتمبر، وأن السعر سُجّل خلال الجلسة، وأن ما حُمّل من الخليج سبع ناقلات بسعة 14 مليون برميل، وأن توقع بقاء خطي رأس لفان خارج الخدمة صادر عن «قطر للطاقة»، وأن مخاوف الأسمدة لم تصدر عن المنظمة البحرية الدولية، وأن شرط حقل الشمال الجنوبي أوردته رويترز ولم يقله الكعبي."
     }
   }
 }

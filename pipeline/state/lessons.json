@@ -88,10 +88,33 @@
     "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6:00053898",
     "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6:57989f20",
     "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6:f6c4f0d4",
-    "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6:215fef37"
+    "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6:215fef37",
+    "oecd-raises-2026-global-growth-forecast-e97fa1:a946a910",
+    "saudi-restarts-east-west-oil-pipeline-698775:1b97bfbc",
+    "saudi-restarts-east-west-oil-pipeline-698775:c35fd652",
+    "saudi-sells-100-million-barrels-asia-hormuz-b316ff:59844993",
+    "trump-backs-us-diesel-export-ban-79317b:2d2702db",
+    "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:ad12a6ea",
+    "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:92de4d14",
+    "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:a849efbd",
+    "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:b8b017f3",
+    "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:b39d549d",
+    "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:ab29e7db",
+    "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:60421100",
+    "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:dc3aa781",
+    "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:4fa40b26",
+    "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:4aed2427",
+    "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:04bf5426",
+    "turkish-airlines-orders-150-boeing-737-max-e89a62:60ba7800",
+    "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c:a3bb75d3",
+    "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c:f9c962b8",
+    "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c:6dd12e26",
+    "saudi-uranium-discovery-madinah-630462:31a74894",
+    "saudi-uranium-discovery-madinah-630462:bd012b79",
+    "saudi-uranium-discovery-madinah-630462:d1a1c6a9"
   ],
-  "version": 7,
-  "updatedAt": "2026-09-25T21:45:58.243Z",
+  "version": 8,
+  "updatedAt": "2026-09-25T23:25:28.192Z",
   "lessons": [
     {
       "id": "L1",
@@ -166,11 +189,16 @@
         "saudi-tanker-war-risk-insurance-yanbu-triples-425bf1:e3d41006",
         "brent-surges-above-109-disruptions-e510e5:e21bfaf6",
         "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6:f6c4f0d4",
-        "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6:215fef37"
+        "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6:215fef37",
+        "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:ab29e7db",
+        "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:dc3aa781",
+        "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:4fa40b26",
+        "saudi-uranium-discovery-madinah-630462:bd012b79",
+        "saudi-uranium-discovery-madinah-630462:d1a1c6a9"
       ],
-      "seen": 27,
+      "seen": 32,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T21:45:58.243Z",
+      "lastSeen": "2026-09-25T23:25:28.192Z",
       "status": "active",
       "previous": [
         "Credit each fact to whom the source credits; the outlet's own reporting is never 'informed sources', an official statement or analyst data. Name the originating outlet. Never make a reported line a quote, a private notice an announcement, or a reply the decree's aim.",
@@ -201,11 +229,13 @@
         "uk-inflation-rises-to-3-1-percent-august-7dcf61:1ba6e848",
         "openai-seeks-1-5-trillion-funding-a2d732:1c82c7fe",
         "us-mortgage-rates-top-7-percent-558e6b:227ebe27",
-        "us-iran-war-cost-38-1-billion-7017c2:d8fc2175"
+        "us-iran-war-cost-38-1-billion-7017c2:d8fc2175",
+        "saudi-restarts-east-west-oil-pipeline-698775:c35fd652",
+        "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:b39d549d"
       ],
-      "seen": 12,
+      "seen": 14,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T17:25:01.821Z",
+      "lastSeen": "2026-09-25T23:25:28.192Z",
       "status": "active",
       "previous": [
         "Translate financial terms and tenors exactly. The 10-year Treasury is سندات الخزانة لأجل 10 سنوات, not 'more than ten years'. A nominal yield is not 'actual'. Open interest is العقود/المراكز المفتوحة, not interest. Add no descriptor the source lacks."
@@ -215,7 +245,7 @@
     {
       "id": "L4",
       "class": "scope",
-      "rule": "Tie each figure to the exact item, place, day and instrument the source's sentence attaches it to. Flows from the broader Middle East are not Hormuz flows, one day's flow is not a daily rate, and diesel is not all fuel.",
+      "rule": "Tie each figure and claim to the exact item, place, day and instrument the source attaches it to. 'Some exports' is not all, energy diversification is not nuclear, one cargo's loading point is not another's, and Middle East flows are not Hormuz flows.",
       "example": {
         "wrong": "ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها",
         "quote": "United States President Donald Trump has announced he’s creating an “AI Force” and will appoint a new “AI czar” to oversee development of the nation’s artificial intelligence industry.",
@@ -233,16 +263,21 @@
         "gulf-oil-flows-return-pre-war-levels-6a0da7:c30159ef",
         "gulf-oil-flows-return-pre-war-levels-6a0da7:23fe98a8",
         "oil-below-100-us-iran-diplomacy-8ddbd8:a6b0ea10",
-        "wto-warns-gdp-loss-2050-trade-fragmentation-8471db:b1dece91"
+        "wto-warns-gdp-loss-2050-trade-fragmentation-8471db:b1dece91",
+        "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:60421100",
+        "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c:6dd12e26",
+        "saudi-uranium-discovery-madinah-630462:31a74894"
       ],
-      "seen": 11,
+      "seen": 14,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T21:45:58.243Z",
+      "lastSeen": "2026-09-25T23:25:28.192Z",
       "status": "active",
       "previous": [
         "Keep a figure or role tied to the exact item, day and instrument the source names. Diesel is not all fuel. One day's count is not a daily rate. A futures-implied value is not the IPO valuation. An official does only what the source assigns.",
-        "Keep a figure or claim tied to the exact item, place, day and instrument the source names. 'The stock market' is not global markets, one day's flow is not a daily rate, and diesel is not all fuel. An official does only what the source assigns."
-      ]
+        "Keep a figure or claim tied to the exact item, place, day and instrument the source names. 'The stock market' is not global markets, one day's flow is not a daily rate, and diesel is not all fuel. An official does only what the source assigns.",
+        "Tie each figure to the exact item, place, day and instrument the source's sentence attaches it to. Flows from the broader Middle East are not Hormuz flows, one day's flow is not a daily rate, and diesel is not all fuel."
+      ],
+      "sharpenedAt": "2026-09-25T23:25:28.192Z"
     },
     {
       "id": "L5",
@@ -273,7 +308,7 @@
     {
       "id": "L6",
       "class": "period",
-      "rule": "Take each event's day from the source's sentence about that event, and give that day only to that event. A poll that closed Sunday was not published Sunday, and 'this weekend' is not 'this week'. Convert a weekday by counting back from publication.",
+      "rule": "Date each event from the source's own sentence about it, and never give that date to neighbouring events. A March strike is not part of September's weeks, current volume is not normal volume, and 'since 2025, after a delay' keeps its order. Convert a weekday by counting back from publication.",
       "example": {
         "wrong": "أصدرت لجنة الأوراق المالية الأمريكية الأربعاء إعفاءً ابتكارياً مؤقتاً ومشروطاً يتيح لمنصات التداول إصدار تمثيلات رمزية للأسهم الأمريكية المتداولة علناً وتداولها، نافذاً فور صدوره.",
         "quote": "The Securities and Exchange Commission on Thursday issued an order creating a regulatory pathway for certain trading venues to issue tokenized representations of publicly traded U.S. stocks, effective immediately.",
@@ -292,17 +327,25 @@
         "gulf-oil-flows-return-pre-war-levels-6a0da7:8a377fb5",
         "trump-approval-32-percent-iran-war-bd2925:13c8308c",
         "uk-inflation-rises-to-3-1-percent-august-7dcf61:fd363816",
-        "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6:00053898"
+        "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6:00053898",
+        "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:ad12a6ea",
+        "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:92de4d14",
+        "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:a849efbd",
+        "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:b8b017f3",
+        "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:4aed2427",
+        "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:04bf5426",
+        "turkish-airlines-orders-150-boeing-737-max-e89a62:60ba7800"
       ],
-      "seen": 12,
+      "seen": 19,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T21:45:58.243Z",
+      "lastSeen": "2026-09-25T23:25:28.192Z",
       "status": "active",
       "previous": [
-        "Copy the weekday or date of an event from the source's own sentence about that event, not from the publication date or another report. If sources disagree, follow the primary report and do not guess.",
         "Take each event's day from the source's sentence about that event; convert a weekday by counting back from the publication date. Keep an announcement, a takeover, a later remark and a reply on their own days, with any time of day given.",
-        "Take each event's day from the source's sentence about that event: 'this weekend' is not 'this week', and the event's day is not the report's publication date. Convert a weekday by counting back from publication. Keep announcements, remarks and replies on their own days."
-      ]
+        "Take each event's day from the source's sentence about that event: 'this weekend' is not 'this week', and the event's day is not the report's publication date. Convert a weekday by counting back from publication. Keep announcements, remarks and replies on their own days.",
+        "Take each event's day from the source's sentence about that event, and give that day only to that event. A poll that closed Sunday was not published Sunday, and 'this weekend' is not 'this week'. Convert a weekday by counting back from publication."
+      ],
+      "sharpenedAt": "2026-09-25T23:25:28.192Z"
     },
     {
       "id": "L7",
@@ -329,7 +372,7 @@
     {
       "id": "L8",
       "class": "figure",
-      "rule": "Copy every number and ranking with its own qualifier. 500 is not 'more than 500', 'nearly 4,000' is not 4,000, and 'one of the most important' is not 'the most important'. Never move a qualifier from one figure onto its neighbour.",
+      "rule": "Copy every number with its own qualifier, hedge and condition, in data lines too. 'Around $207' is not 'over $207', 'could take six to eight weeks' is not a set duration, and '120 million barrels if closed a month' is not '120 million a month'.",
       "example": {
         "wrong": "كما أن إلغاء أكثر من 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية البنية التحتية للنقل الجوي، وهو ما قد يترتب عليه إعادة تقييم لاستثمارات الصيانة والاحتياطي في أنظمة المراقبة الجوية.",
         "quote": "Throughout the US, there were nearly 4,000 delayed flights and 500 cancelled.",
@@ -339,12 +382,21 @@
       "evidence": [
         "faa-halts-east-coast-flights-equipment-outage-d180ab:f3397383",
         "trump-approval-32-percent-iran-war-bd2925:7dacd8e4",
-        "us-iran-war-cost-38-1-billion-7017c2:2f51dda3"
+        "us-iran-war-cost-38-1-billion-7017c2:2f51dda3",
+        "saudi-restarts-east-west-oil-pipeline-698775:1b97bfbc",
+        "saudi-sells-100-million-barrels-asia-hormuz-b316ff:59844993",
+        "trump-backs-us-diesel-export-ban-79317b:2d2702db",
+        "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c:a3bb75d3",
+        "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c:f9c962b8"
       ],
-      "seen": 3,
+      "seen": 8,
       "createdAt": "2026-09-25T12:04:58.585Z",
-      "lastSeen": "2026-09-25T17:25:01.821Z",
-      "status": "active"
+      "lastSeen": "2026-09-25T23:25:28.192Z",
+      "status": "active",
+      "previous": [
+        "Copy every number and ranking with its own qualifier. 500 is not 'more than 500', 'nearly 4,000' is not 4,000, and 'one of the most important' is not 'the most important'. Never move a qualifier from one figure onto its neighbour."
+      ],
+      "sharpenedAt": "2026-09-25T23:25:28.192Z"
     },
     {
       "id": "L9",
@@ -357,12 +409,14 @@
         "slug": "iran-seven-day-plan-reopen-hormuz-a8836f"
       },
       "evidence": [
-        "iran-seven-day-plan-reopen-hormuz-a8836f:7f5f63c6"
+        "iran-seven-day-plan-reopen-hormuz-a8836f:7f5f63c6",
+        "oecd-raises-2026-global-growth-forecast-e97fa1:a946a910"
       ],
-      "seen": 1,
+      "seen": 2,
       "createdAt": "2026-09-25T16:38:55.969Z",
-      "lastSeen": "2026-09-25T16:38:55.969Z",
-      "status": "pending"
+      "lastSeen": "2026-09-25T23:25:28.192Z",
+      "status": "active",
+      "activatedAt": "2026-09-25T23:25:28.192Z"
     }
   ],
   "model": "claude-cli",
@@ -440,6 +494,19 @@
         "reinforce L6 (+1; reworded at most once a week)",
         "reinforce L1 (+1; reworded at most once a week)",
         "reinforce L2 (+2; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-09-25T23:25:28.192Z",
+      "mistakes": 23,
+      "applied": [
+        "reinforce L2 (+5; reworded at most once a week)",
+        "reinforce L3 (+2; reworded at most once a week)",
+        "sharpen L4 (+3)",
+        "sharpen L6 (+7)",
+        "sharpen L8 (+5)",
+        "reinforce L9 (+1)",
+        "L9 now read by the writer (proved in 2 unrelated stories)"
       ]
     }
   ]

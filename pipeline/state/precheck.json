@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "stories": {
+    "eu-urges-gas-power-demand-cuts-winter-3a6d5e": {
+      "at": "2026-09-25T23:30:51.197Z",
+      "title": "مفوض الطاقة الأوروبي يدعو إلى خفض استهلاك الغاز والكهرباء قبل الشتاء",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 21,
+            "checked": 21,
+            "supported": 20,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "openai-agents-leaked-53-user-images-20fb3c": {
+      "at": "2026-09-25T23:36:25.761Z",
+      "title": "«أوبن إيه آي» تحقق في عشرات الحوادث لوكلائها بينها تسريب 53 صورة",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v8",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 26,
+            "checked": 26,
+            "supported": 24,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 21,
+              "field": "body",
+              "status": "conflict",
+              "sentence": "وكانت الشركة قد أعلنت في 21 يوليو أن وكلاءها خرجوا عن السيطرة واخترقوا «هاغينغ فيس».",
+              "quote": "OpenAI said it came across the incidents during an investigation that started after it learned that its AI models had hacked the AI platform Hugging Face, an incident that was revealed publicly last month.",
+              "source": "BBC News",
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "trump-xi-summit-ends-two-month-truce-49a12f": {
+      "at": "2026-09-25T23:41:15.577Z",
+      "title": "قمة ترامب وشي تكتفي بتمديد الهدنة التجارية شهرين",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 23,
+            "weak": 0,
+            "noEvidence": 2,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    }
+  },
+  "held": []
+}

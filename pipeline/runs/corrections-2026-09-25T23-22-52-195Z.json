@@ -1,0 +1,124 @@
+{
+  "startedAt": "2026-09-25T23:22:52.365Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "turkish-airlines-orders-150-boeing-737-max-e89a62",
+      "issue": "The body says «وكانت الشركتان قد بدأتا التفاوض على الصفقة في 2025، قبل أن تتعطل بسبب خلافات على المحركات، بحسب موقع «أرابيان غلف بزنس إنسايت».» (According to AGBI, the two companies began negotiating the deal in 2025, and the deal was then held up by engine disputes.). Source AGBI (Arabian Gulf Business Insight) says: \"The two companies have been discussing the deal since 2025, after it was delayed by engine disputes.\". AGBI says the companies have been discussing the deal since 2025, after it had been delayed by engine disputes; the delay came before those talks, not after them.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن الصفقة تعطلت بسبب خلافات على المحركات بعد بدء التفاوض عليها في 2025، والصحيح أن تأجيلها بسبب هذه الخلافات سبق المفاوضات الجارية بين الشركتين منذ 2025.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وكانت الشركتان قد بدأتا التفاوض على الصفقة في 2025، قبل أن تتعطل بسبب خلافات على المحركات، بحسب موقع «أرابيان غلف بزنس إنسايت»."
+      ],
+      "newSentences": [
+        "وكانت الشركتان تتفاوضان على الصفقة منذ 2025، بعدما تأجلت بسبب خلافات على المحركات، بحسب موقع «أرابيان غلف بزنس إنسايت»."
+      ]
+    },
+    {
+      "slug": "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c",
+      "issue": "1. The dek says «والسوق قد يفقد 120 مليون برميل شهرياً» (The market could lose 120 million barrels per month, a recurring monthly rate.). Source CNBC says: \"The market could lose 120 million barrels if the pipeline is closed for a month, said Matt Smith, director of commodity research at Kpler.\". Kpler's 120 million barrels is the loss if the pipeline stays closed for one month, net of 15 million barrels stored at Yanbu; it is not a recurring monthly rate.\n2. The key fact says «خسارة محتملة شهريًا: 120 مليون برميل (تقدير Kpler)» (Kpler estimates a potential loss of 120 million barrels per month.). Source CNBC says: \"The market could lose 120 million barrels if the pipeline is closed for a month, said Matt Smith, director of commodity research at Kpler.\". Kpler's 120 million barrels is the loss for a one-month closure, net of Yanbu storage; it is not a per-month rate.\n3. The why it matters says «إغلاق الخط يُجبر الرياض على تصدير نفطها كله عبر مضيق هرمز وسط توترات مع إيران، ويحرم أوروبا من شحنات أُلغيت أو أُجّلت فعلاً.» (The pipeline closure forces Riyadh to export all of its oil via Hormuz, and European cargoes have already been cancelled or delayed (website analysis).). Source CNBC says: \"The Saudis are now shifting some exports back through Hormuz with U.S. military support while the pipeline is down, Wright said.\". Saudi Arabia is shifting only some of its exports back through Hormuz, not all of them.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "subtitle",
+        "whyItMatters",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن السوق قد يفقد 120 مليون برميل شهرياً، وأن إغلاق الخط يجبر السعودية على تصدير نفطها كله عبر مضيق هرمز. والصحيح أن تقدير Kpler البالغ 120 مليون برميل يخص إغلاقاً يستمر شهراً واحداً وليس معدلاً شهرياً متكرراً، وأن السعودية تعيد توجيه بعض صادراتها لا كلها عبر المضيق.",
+      "model": "claude-cli",
+      "before": {
+        "subtitle": "وزير الطاقة الأمريكي: الانقطاع يُقاس بأيام.. والسوق قد يفقد 120 مليون برميل شهرياً",
+        "whyItMatters": "إغلاق الخط يُجبر الرياض على تصدير نفطها كله عبر مضيق هرمز وسط توترات مع إيران، ويحرم أوروبا من شحنات أُلغيت أو أُجّلت فعلاً."
+      },
+      "after": {
+        "subtitle": "وزير الطاقة الأمريكي: الانقطاع يُقاس بأيام.. والسوق قد يفقد 120 مليون برميل إذا استمر الإغلاق شهراً",
+        "whyItMatters": "إغلاق الخط يُجبر الرياض على تصدير جزء من نفطها عبر مضيق هرمز وسط توترات مع إيران، ويحرم أوروبا من شحنات أُلغيت أو أُجّلت فعلاً."
+      },
+      "changedSentences": [
+        "والسوق قد يفقد 120 مليون برميل شهرياً",
+        "إغلاق الخط يُجبر الرياض على تصدير نفطها كله عبر مضيق هرمز وسط توترات مع إيران، ويحرم أوروبا من شحنات أُلغيت أو أُجّلت فعلاً.",
+        "خسارة محتملة شهريًا 120 مليون برميل (تقدير Kpler)"
+      ],
+      "newSentences": [
+        "والسوق قد يفقد 120 مليون برميل إذا استمر الإغلاق شهراً",
+        "إغلاق الخط يُجبر الرياض على تصدير جزء من نفطها عبر مضيق هرمز وسط توترات مع إيران، ويحرم أوروبا من شحنات أُلغيت أو أُجّلت فعلاً.",
+        "خسارة محتملة إذا استمر الإغلاق شهراً 120 مليون برميل (تقدير Kpler)"
+      ]
+    },
+    {
+      "slug": "saudi-uranium-discovery-madinah-630462",
+      "issue": "1. The body says «وأشار إلى أن السعودية تبني قدرات في المجال النووي محلياً وعبر شراكات دولية فعالة، حسب المصدر.» (The minister said Saudi Arabia is building capacities in the nuclear field, domestically and through effective international partnerships.). Source The National says: \"The kingdom, the biggest Arab economy, has also continued to invest in diversifying its energy and mineral resources. It is building capacities within the kingdom, as well as through effective international partnerships, he was quoted as saying by Al Arabiya TV.\". The minister spoke of building capacities in diversifying the kingdom's energy and mineral resources, not specifically in the nuclear field.\n2. The body says «ولفت إلى أن الاكتشاف يأتي بعد توقيع اتفاق نووي مدني بين السعودية والولايات المتحدة في يوليو، وفقاً للمصدر.» (The minister noted that the discovery follows the civil nuclear agreement signed by Saudi Arabia and the US in July.). Source The National says: \"The discovery of natural ore with a concentration of uranium is significant, as it follows a US-Saudi deal for a civilian nuclear programme in the kingdom.\". The link between the discovery and the July US-Saudi nuclear deal is The National's own observation, not a statement by the minister.\n3. The body says «وأكد أن الاتفاق يُؤسس لشراكة تمتد لعقود وتبلغ قيمتها مليارات الدولارات، بما في ذلك مرافق محتملة لتخصيب اليورانيوم، حسب المصدر.» (The minister affirmed that the agreement lays the foundation for a decades-long, multibillion-dollar partnership, including potential uranium enrichment facilities.). Source OilPrice.com says: \"The U.S. Department of Energy described the agreement as laying the foundation for a decades-long, multibillion-dollar nuclear partnership.\". The 'decades-long, multibillion-dollar partnership' description came from the US Department of Energy, and the possible enrichment plant was reported by the Wall Street Journal, not stated by the Saudi minister.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن وزير الطاقة السعودي تحدث عن بناء قدرات في المجال النووي، وربط الاكتشاف بالاتفاق النووي مع واشنطن، ووصف الاتفاق بأنه شراكة تمتد لعقود بقيمة مليارات الدولارات تشمل مرافق للتخصيب. والصحيح أن الوزير تحدث عن بناء قدرات لتنويع موارد الطاقة والمعادن، وأن ذلك الوصف صدر عن وزارة الطاقة الأمريكية، فيما أوردت صحيفة وول ستريت جورنال احتمال بناء محطة للتخصيب.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وأشار إلى أن السعودية تبني قدرات في المجال النووي محلياً وعبر شراكات دولية فعالة، حسب المصدر.",
+        "ولفت إلى أن الاكتشاف يأتي بعد توقيع اتفاق نووي مدني بين السعودية والولايات المتحدة في يوليو، وفقاً للمصدر.",
+        "وأكد أن الاتفاق يُؤسس لشراكة تمتد لعقود وتبلغ قيمتها مليارات الدولارات، بما في ذلك مرافق محتملة لتخصيب اليورانيوم، حسب المصدر.",
+        "وذكر أن شركة التعدين السعودية معادن شاركت مع شركة MP Materials الأمريكية لتطوير معالجة المعادن النادرة وإنتاج اليورانيوم، وفقاً للمصدر."
+      ],
+      "newSentences": [
+        "وأشار إلى أن السعودية تبني قدرات لتنويع مواردها من الطاقة والمعادن محلياً وعبر شراكات دولية فعالة، حسب المصدر.",
+        "وكانت السعودية والولايات المتحدة قد وقّعتا اتفاقاً نووياً مدنياً في يوليو.",
+        "ووصفت وزارة الطاقة الأمريكية الاتفاق بأنه يؤسس لشراكة نووية تمتد لعقود وتبلغ قيمتها مليارات الدولارات.",
+        "وأفادت صحيفة وول ستريت جورنال بأن أحد بنوده الرئيسية ينص على دراسة قد تفضي إلى بناء شركات أمريكية محطة لتخصيب اليورانيوم في السعودية.",
+        "وذكر الوزير أن شركة التعدين السعودية معادن شاركت مع شركة MP Materials الأمريكية لتطوير معالجة المعادن النادرة وإنتاج اليورانيوم، وفقاً للمصدر."
+      ]
+    },
+    {
+      "slug": "hormuz-crisis-escalation-to-stalled-talks-2dfd6a",
+      "issue": "1. The body says «يمرّ عبر مضيق هرمز عادةً نحو 20% من إمدادات النفط والغاز المسال في العالم، أي نحو عشرة ملايين برميل يومياً من الخام والمنتجات البترولية، بحسب «سي إن بي سي».» (Normally about 20% of world oil and LNG passes through Hormuz, i.e. about 10 million bpd of crude and products, according to CNBC.). Source Khazendar says: \"يمر عبر المضيق نحو عشرين بالمئة من إمدادات النفط العالمية، أي نحو عشرة ملايين برميل يومياً من الخام والمنتجات البترولية، منها تسعة ملايين من الخام وحده. لكن هذه الأحجام لم تعد تمثل سوى نصف مستويات ما قبل الحرب، فتفاقم شحّ أسواق الوسائط الحرارية.\". The ~10 million bpd is the current, wartime volume, which is only half of pre-war levels, and it is not attributed to CNBC; the normal flow would be about twice that.\n2. The body says «وخلال ثلاثة أسابيع فقط، تقلّصت تدفقات النفط عبر المضيق إلى نحو 45% من مستوياتها قبل الحرب بحسب الجزيرة، وقفزت كلفة استئجار الناقلات العملاقة فوق 800 ألف دولار يومياً، وتوقف خط أنابيب شرق-غرب السعودي تسعة أيام، وعُطّلت 17% من قدرات قطر على إنتاج الغاز المسال.» (Within just three weeks: flows fell to 45% of pre-war (per Al Jazeera), VLCC charter rates topped $800k/day, the East-West line stopped for nine days, and 17% of Qatar's LNG capacity was knocked out.). Source Khazendar says: \"وكانت الضربة الصاروخية الإيرانية في 18 مارس على مدينة رأس لفان الصناعية قد عطّلت خطين من أصل 14 خطَّ إنتاج للغاز المسال في قطر، وأزالت 17% من القدرة التصديرية ونحو 20 مليار دولار من الإيرادات السنوية، وفق تقديرات «أويل برايس».\". The 17% of Qatari LNG capacity was knocked out by the 18 March strike, not during the three weeks in September.\n3. The body says «بدأت الأزمة بتصعيد عسكري مباشر.» (The crisis began with the direct military escalation of early September.). Source Khazendar says: \"وكانت الأسعار قد هبطت الثلاثاء، مع رهان المتعاملين على أن توضّح المحادثات في نيويورك مسار الصراع المستمر منذ قرابة سبعة أشهر.\". The sources describe a conflict that had already lasted nearly seven months (including the March strike on Ras Laffan), so it did not begin with the September escalation.\n4. The body says «ففي 7 سبتمبر، شنّت القوات الأمريكية ضربات على ثلاث ناقلات نفط إيرانية، رداً على إطلاق إيران صواريخ باليستية على سفينتين حربيتين تابعتين للبحرية الأمريكية، بحسب القيادة المركزية الأمريكية.» (On 7 September, US forces struck three Iranian oil tankers in response to Iran firing ballistic missiles at two US Navy warships, per CENTCOM.). Source Khazendar says: \"وكانت القوات الأمريكية قد شنت السبت ضربات على ثلاث ناقلات نفط إيرانية، رداً على إطلاق إيران صواريخ باليستية على سفينتين حربيتين تابعتين للبحرية الأمريكية، بحسب القيادة المركزية الأمريكية (سنتكوم).\". The strikes took place on Saturday (5 September), before Monday 7 September.\n5. The body says «وأنهى الخميس 24 سبتمبر عند 105.09 دولاراً، مرتفعاً 5.5% منذ بداية الأسبوع.» (Brent ended (closed) Thursday 24 September at $105.09, up 5.5% since the start of the week.). Source Khazendar says: \"ارتفعت العقود الآجلة لخام برنت 1.95% إلى 105.09 دولار للبرميل خلال جلسة الخميس، مع تعثر المحادثات الأمريكية الإيرانية على هامش الجمعية العامة للأمم المتحدة.\". $105.09 was an intraday level during Thursday's session, not the day's close.\n6. The body says «ويتوقع الموقع بقاءهما خارج الخدمة بين ثلاث وخمس سنوات.» (OilPrice (the site) itself expects the two trains to stay offline for three to five years.). Source Khazendar says: \"ويمثّل الخطان المتضرران 12.8 مليون طن من الطاقة السنوية، فيما ذكر موقع «أويل برايس» أن «قطر للطاقة» تتوقع بقاءهما خارج الخدمة من ثلاث إلى خمس سنوات، أي مدة أطول من التقدير الذي أعلنه الوزير لأعمال الإصلاح.\". The three-to-five-year expectation is QatarEnergy's, as reported by OilPrice, not OilPrice's own forecast.\n7. The body says «لكن هذه الشحنات حُمّلت من محطات الخليج لا من ينبع، أي أنها عبرت المضيق ذاته الذي تشتد فيه المخاطر.» (Those 100 million barrels were loaded from Gulf terminals, not Yanbu, and so passed through Hormuz.). Source Khazendar says: \"وفي المقابل، حمّلت السعودية خلال عطلة نهاية الأسبوع سبع ناقلات عملاقة بسعة 14 مليون برميل من محطاتها في الخليج، وفق ما قاله نور الدين الحموري من شركة «إكويتي غروب» (Equiti Group) لصحيفة «ذا ناشونال».\". The sources say only that seven VLCCs carrying 14 million barrels loaded from Gulf terminals; the 100 million barrels were sales for October-November delivery with no loading point given.\n8. The body says «فقد حذّرت المنظمة البحرية الدولية من أن تعطيل حركة الأسمدة عبر المضيق يثير مخاوف بشأن الأمن الغذائي في الدول النامية التي تعتمد على هذه الواردات.» (The IMO warned that disruption of fertilizer shipments through the strait raises food-security concerns in developing countries.). Source Khazendar says: \"ويُثير تعطيل حركة الأسمدة عبر المضيق مخاوف بشأن الأمن الغذائي العالمي، لأن الدول النامية تعتمد على هذه الواردات.\". The fertilizer and food-security concern is the source article's own statement, not a warning attributed to the IMO.\n9. The body says «وربط الكعبي تشغيل خطوط الإنتاج الإضافية ضمن توسعة حقل الشمال بتطورات أزمة المضيق وببدء إنتاج حقل الشمال الجنوبي في موعده عام 2028.» (Kaabi tied additional North Field production lines to the strait crisis and to North Field South starting on schedule in 2028.). Source Khazendar says: \"وذكر «أويل برايس»، نقلاً عن رويترز الاثنين، أن الخطوط الإضافية تتوقف على استئناف الحركة في هرمز وعلى بدء إنتاج حقل الشمال الجنوبي في موعده عام 2028.\". Kaabi linked the extra lines to the strait crisis; the North Field South 2028 condition is reported by OilPrice citing Reuters, not attributed to Kaabi.\n10. The table says «التاريخ: 7 سبتمبر · الحدث: ضربات أمريكية على ثلاث ناقلات إيرانية وبرنت يرتفع 1.5% إلى 97.73 دولاراً» (Table: 7 September, US strikes on three Iranian tankers and Brent up 1.5% to $97.73.). Source Khazendar says: \"وكانت القوات الأمريكية قد شنت السبت ضربات على ثلاث ناقلات نفط إيرانية، رداً على إطلاق إيران صواريخ باليستية على سفينتين حربيتين تابعتين للبحرية الأمريكية، بحسب القيادة المركزية الأمريكية (سنتكوم).\". The strikes were on Saturday (5 September); only Brent's rise to $97.73 was on Monday 7 September.\n11. The table says «التاريخ: 22 سبتمبر · الحدث: الكعبي: أزمة هرمز قد تؤخّر توسعة حقل الشمال والهجمات عطّلت 17% من إنتاج الغاز» (Table: 22 September, Kaabi says the Hormuz crisis may delay the North Field expansion and the attacks knocked out 17% of gas output.). Source Khazendar says: \"قال سعد الكعبي، وزير الطاقة القطري والرئيس التنفيذي لـ«قطر للطاقة»، الأحد إن أزمة مضيق هرمز قد تؤخّر مشروعات توسعة حقل الشمال لأن المعدات الأساسية لا تصل إلى البلاد.\". Kaabi spoke on Sunday (20 September), not 22 September.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن نحو عشرة ملايين برميل يومياً هي التدفق المعتاد عبر هرمز بحسب «سي إن بي سي»، وأن تعطيل 17% من قدرات الغاز القطري وقع خلال أسابيع سبتمبر وأن الأزمة بدأت بتصعيد سبتمبر، وأن الضربات الأمريكية على الناقلات وقعت في 7 سبتمبر وتصريحات الكعبي في 22 سبتمبر، وأن 105.09 دولارات سعر إغلاق، وأن الـ100 مليون برميل المبيعة لآسيا حُمّلت من الخليج. والصحيح أن هذه الأحجام هي المستوى الحالي ويعادل نصف مستويات ما قبل الحرب، وأن التعطيل القطري نجم عن هجمات 18 مارس في صراع مستمر منذ نحو سبعة أشهر، وأن الضربات وقعت في 5 سبتمبر والتصريحات في 20 سبتمبر، وأن السعر سُجّل خلال الجلسة، وأن ما حُمّل من الخليج سبع ناقلات بسعة 14 مليون برميل، وأن توقع بقاء خطي رأس لفان خارج الخدمة صادر عن «قطر للطاقة»، وأن مخاوف الأسمدة لم تصدر عن المنظمة البحرية الدولية، وأن شرط حقل الشمال الجنوبي أوردته رويترز ولم يقله الكعبي.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "يمرّ عبر مضيق هرمز عادةً نحو 20% من إمدادات النفط والغاز المسال في العالم، أي نحو عشرة ملايين برميل يومياً من الخام والمنتجات البترولية، بحسب «سي إن بي سي».",
+        "وخلال ثلاثة أسابيع فقط، تقلّصت تدفقات النفط عبر المضيق إلى نحو 45% من مستوياتها قبل الحرب بحسب الجزيرة، وقفزت كلفة استئجار الناقلات العملاقة فوق 800 ألف دولار يومياً، وتوقف خط أنابيب شرق-غرب السعودي تسعة أيام، وعُطّلت 17% من قدرات قطر على إنتاج الغاز المسال.",
+        "بدأت الأزمة بتصعيد عسكري مباشر.",
+        "ففي 7 سبتمبر، شنّت القوات الأمريكية ضربات على ثلاث ناقلات نفط إيرانية، رداً على إطلاق إيران صواريخ باليستية على سفينتين حربيتين تابعتين للبحرية الأمريكية، بحسب القيادة المركزية الأمريكية.",
+        "وارتفع برنت 1.5% إلى 97.73 دولاراً للبرميل، وهو أعلى إغلاق في ستة أسابيع.",
+        "وقال وزير الطاقة القطري سعد الكعبي خلال منتدى قطر الاقتصادي في نيويورك إن أزمة المضيق قد تؤخّر مشروعات توسعة حقل الشمال، وإن الهجمات على رأس لفان في 18 مارس عطّلت 17% من قدرات قطر على إنتاج الغاز المسال.",
+        "وأنهى الخميس 24 سبتمبر عند 105.09 دولاراً، مرتفعاً 5.5% منذ بداية الأسبوع.",
+        "ويتوقع الموقع بقاءهما خارج الخدمة بين ثلاث وخمس سنوات.",
+        "لكن هذه الشحنات حُمّلت من محطات الخليج لا من ينبع، أي أنها عبرت المضيق ذاته الذي تشتد فيه المخاطر.",
+        "فقد حذّرت المنظمة البحرية الدولية من أن تعطيل حركة الأسمدة عبر المضيق يثير مخاوف بشأن الأمن الغذائي في الدول النامية التي تعتمد على هذه الواردات.",
+        "وربط الكعبي تشغيل خطوط الإنتاج الإضافية ضمن توسعة حقل الشمال بتطورات أزمة المضيق وببدء إنتاج حقل الشمال الجنوبي في موعده عام 2028.",
+        "برنت 24 سبتمبر 105.09 دولاراً للبرميل"
+      ],
+      "newSentences": [
+        "يمرّ عبر مضيق هرمز عادةً نحو 20% من إمدادات النفط والغاز المسال في العالم.",
+        "لكن ما يعبره حالياً لا يتجاوز نحو عشرة ملايين برميل يومياً من الخام والمنتجات البترولية، أي نصف مستويات ما قبل الحرب.",
+        "وخلال ثلاثة أسابيع فقط، تقلّصت تدفقات النفط عبر المضيق إلى نحو 45% من مستوياتها قبل الحرب بحسب الجزيرة، وقفزت كلفة استئجار الناقلات العملاقة فوق 800 ألف دولار يومياً، وتوقف خط أنابيب شرق-غرب السعودي تسعة أيام.",
+        "وكانت هجمات 18 مارس على رأس لفان قد عطّلت 17% من قدرات قطر على إنتاج الغاز المسال.",
+        "اشتدّت الأزمة مطلع سبتمبر بتصعيد عسكري مباشر.",
+        "ففي 5 سبتمبر، شنّت القوات الأمريكية ضربات على ثلاث ناقلات نفط إيرانية، رداً على إطلاق إيران صواريخ باليستية على سفينتين حربيتين تابعتين للبحرية الأمريكية، بحسب القيادة المركزية الأمريكية.",
+        "وارتفع برنت في 7 سبتمبر 1.5% إلى 97.73 دولاراً للبرميل، وهو أعلى إغلاق في ستة أسابيع.",
+        "وقال وزير الطاقة القطري سعد الكعبي في 20 سبتمبر خلال منتدى قطر الاقتصادي في نيويورك إن أزمة المضيق قد تؤخّر مشروعات توسعة حقل الشمال، وإن الهجمات على رأس لفان في 18 مارس عطّلت 17% من قدرات قطر على إنتاج الغاز المسال.",
+        "وبلغ خلال جلسة الخميس 24 سبتمبر 105.09 دولاراً، مرتفعاً 5.5% منذ بداية الأسبوع.",
+        "وتتوقع «قطر للطاقة» بقاءهما خارج الخدمة بين ثلاث وخمس سنوات.",
+        "لكن المملكة حمّلت خلال عطلة نهاية الأسبوع سبع ناقلات عملاقة بسعة 14 مليون برميل من محطاتها في الخليج لا من ينبع، بحسب نور الدين الحموري من شركة «إكويتي غروب» (Equiti Group)، أي أن هذه الشحنات تعبر المضيق ذاته الذي تشتد فيه المخاطر.",
+        "فتعطيل حركة الأسمدة عبر المضيق يثير مخاوف بشأن الأمن الغذائي في الدول النامية التي تعتمد على هذه الواردات."
+      ]
+    }
+  ]
+}
