@@ -1,0 +1,94 @@
+---
+title: علاوة تأمين مخاطر الحرب في ينبع تقفز إلى 3% من قيمة الناقلة
+subtitle: العلاوة المعروضة قد تبلغ 7% من قيمة السفينة في الموانئ السعودية الواقعة جنوب ينبع، ومنها جازان
+slug: saudi-tanker-war-risk-insurance-yanbu-triples-425bf1
+section: energy
+kind: news
+publishedAt: 2026-09-25T05:17:03.037Z
+lede: ارتفعت العلاوة المعروضة لتأمين مخاطر الحرب على ناقلة مرتبطة بالسعودية ترسو في ينبع إلى نحو 3% من قيمة السفينة، بحسب أربعة مصادر تأمينية تحدثت إلى رويترز، مع تهديد الحوثيين باستهداف هذه السفن قرب باب المندب. وكانت العلاوة دون 1% في مطلع يوليو، أي أنها صعدت إلى نحو ثلاثة أمثال مستواها خلال أسابيع.
+keyFacts:
+  - label: علاوة ناقلة ترسو في ينبع
+    value: نحو 3% من قيمة السفينة
+  - label: العلاوة في ينبع مطلع يوليو
+    value: دون 1%
+  - label: العلاوة في الموانئ جنوب ينبع
+    value: حتى 7%
+  - label: العلاوة المعروضة لعبور هرمز
+    value: 6% إلى 9%
+  - label: كلفة تأمين الرحلة جنوباً أو عبر هرمز
+    value: قرابة 7 ملايين دولار
+whyItMatters: لجأت السعودية إلى التصدير من ينبع بعد تقييد إيران الملاحة في مضيق هرمز، لكن الفارق في كلفة التأمين بين المسارين تقلّص. فالعلاوة في الموانئ الواقعة جنوب ينبع تصل إلى 7%، أي داخل نطاقها عند عبور هرمز.
+tags:
+  - السعودية
+  - أرامكو
+  - تأمين الشحن البحري
+  - البحر الأحمر
+  - مضيق هرمز
+regions:
+  - الخليج
+  - الشرق الأوسط
+readingMinutes: 1
+chart: null
+table:
+  title: العلاوات المعروضة لتأمين مخاطر الحرب على الناقلات (% من قيمة السفينة)
+  source: رويترز
+  columns:
+    - المسار
+    - العلاوة المعروضة
+  rows:
+    - - ناقلة مرتبطة بالسعودية ترسو في ينبع
+      - نحو 3%
+    - - ينبع في مطلع يوليو
+      - دون 1%
+    - - موانئ سعودية جنوب ينبع، ومنها جازان
+      - حتى 7%
+    - - عبور مضيق هرمز
+      - 6% إلى 9%
+    - - ناقلات في البحر الأحمر دون صلة بالسعودية
+      - 0.2% إلى 0.3%
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Oil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_03.jpg/1280px-Oil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_03.jpg
+  width: 1280
+  height: 720
+  alt: ناقلة منتجات نفطية (صورة تعبيرية)
+  credit: Calistemon · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AOil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_03.jpg
+sources:
+  - name: الجزيرة نت
+    nameEn: Al Jazeera Arabic
+    title: ارتفاع تأمين الناقلات تحدّ يواجه صادرات النفط السعودي عبر البحر الأحمر
+    url: https://www.aljazeera.net/ebusiness/2026/9/25/%d8%a7%d8%b1%d8%aa%d9%81%d8%a7%d8%b9-%d8%aa%d8%a3%d9%85%d9%8a%d9%86-%d8%a7%d9%84%d9%86%d8%a7%d9%82%d9%84%d8%a7%d8%aa-%d8%aa%d8%ad%d8%af-%d9%8a%d9%88%d8%a7%d8%ac%d9%87
+    publishedAt: 2026-09-24T18:59:33.000Z
+    lang: ar
+  - name: أويل برايس
+    nameEn: OilPrice.com
+    title: Saudi Oil Export Costs Surge as Red Sea Risks Mount
+    url: https://oilprice.com/Latest-Energy-News/World-News/Saudi-Oil-Export-Costs-Surge-as-Red-Sea-Risks-Mount.html
+    publishedAt: 2026-09-24T18:30:00.000Z
+    lang: en
+models:
+  editor: claude-cli
+  writer: claude-cli → claude-cli
+  critic: claude-cli
+  vision: claude-cli
+  desk: claude-cli
+quality:
+  score: 9
+  verdict: publish
+  revised: true
+  importance: 7
+  warnings: []
+  criticSummary: عالجت المسودة المعدلة الملاحظات الثلاث السابقة، وأرقامها وإسنادها إلى رويترز مطابقة للمصدرين، ولا يبقى سوى ضبط اختياري لصياغة مقارنة ينبع بهرمز قبل النشر.
+ai: true
+deskedAt: 2026-09-25T05:17:03.037Z
+---
+
+وبهذا المستوى تقترب كلفة التأمين في ينبع من كلفتها عند عبور مضيق هرمز، إذ تتراوح العلاوة المعروضة هناك بين 6% و9% من قيمة السفينة. أما الناقلات التي تعبر البحر الأحمر دون صلة بالسعودية فتدور علاواتها عادة بين 0.2% و0.3%.
+
+وتصل كلفة التأمين على الرحلة الواحدة إلى قرابة 7 ملايين دولار انطلاقاً من الموانئ الواقعة أبعد جنوباً أو عند العبور من هرمز، وفق تقديرات مصادر القطاع. وأضافت المصادر أن الأسعار التي تتفق عليها شركات التأمين فعلاً مع عملائها تختلف عن العروض المعلنة، ولا تُنشر عنها بيانات عامة.
+
+وقالت مصادر لرويترز إن القوات الأمريكية وفّرت بعض الدعم الجوي حول هرمز في الأشهر الأخيرة. ولا تتوافر حماية أمريكية مماثلة في البحر الأحمر.
+
+وكانت هجمات بطائرات مسيّرة قد أوقفت خط أنابيب شرق-غرب، الذي ينقل الخام السعودي إلى ينبع، في وقت سابق من سبتمبر. وأعادت أرامكو تشغيل الخط بمعدلات أقل، لكن تحميل الخام في ينبع لم يُستأنف حتى الخميس.
