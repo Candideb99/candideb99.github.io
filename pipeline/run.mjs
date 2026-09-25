@@ -269,6 +269,15 @@ async function lastDeskPass(draft, checks, { sources, kind = "news", recheck }) 
  */
 let LESSONS = "";
 let LESSONS_VERSION = null;
+/**
+ * The control group: one story in five is written without the lessons, chosen by its working headline, and named
+ * "control" in `models.lessons`. The first test (2026-09-25, 16 of Claude's stories written twice from the same
+ * sources, read by the blind fact-check) found 7 proved errors without the lessons and 3 with them, better on 3
+ * stories and worse on none: the right direction, too few errors to be sure. The control group keeps the answer
+ * coming from every day's news, and the second look corrects its stories like any other.
+ */
+const CONTROL_SHARE = 5;
+const inControlGroup = (story) => parseInt(fingerprint(String(story.headlineHint ?? "")).slice(0, 8), 16) % CONTROL_SHARE === 0;
 
 async function produceStory({ story, candidates, existing, recentTitles, models, report }) {
   const { items, sources, evidenceChars } = await collectEvidence(story, candidates);
@@ -311,10 +320,13 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   }
 
   // Stage one: the desk notes, the checked facts of the one event; stage two: the story written from them.
-  const notesResult = await deskNotes({ story, sources, log, lessons: LESSONS });
+  const control = Boolean(LESSONS) && inControlGroup(story);
+  const lessons = control ? "" : LESSONS;
+  if (control) log(`control group: "${story.headlineHint}" is written without the lessons`);
+  const notesResult = await deskNotes({ story, sources, log, lessons });
   const notes = notesResult?.notes ?? null;
   if (notes) log(`desk notes: ${notes.facts.length} facts, ${notes.quotes.length} quotes (${notesResult.model})`);
-  let { draft, model: writerModel } = await writeArticle({ story, sources, notes, log, lessons: LESSONS });
+  let { draft, model: writerModel } = await writeArticle({ story, sources, notes, log, lessons });
   const desk = await copyDeskPass(draft, { sources });
   draft = desk.draft;
   const deskModel = desk.model;
@@ -333,7 +345,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   if (!straightOut) {
     const issues = [...checks.issues, ...review.issues];
     if (!issues.length) issues.push(`المحرر أعطى المسودة ${review.score}/10 (${review.verdict})${review.summary ? `: ${review.summary}` : ""}؛ راجع الدقة والعزو والعربية.`);
-    const revision = await reviseArticle({ draft, sources, issues, log, notes, lessons: LESSONS });
+    const revision = await reviseArticle({ draft, sources, issues, log, notes, lessons });
     draft = (await copyDeskPass(revision.draft, { includeBody: true, sources })).draft;
     writerModel = `${writerModel} → ${revision.model}`;
     revised = true;
@@ -367,7 +379,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     image,
     // The copy desk edited the story on its way in; later sweeps skip it (no tokens spent twice).
     deskedAt: deskModel ? isoNow() : null,
-    models: { editor: models.editor, writer: writerModel, critic: review.model, vision: image?.model ?? null, desk: deskModel, lessons: LESSONS_VERSION ? `v${LESSONS_VERSION}` : null },
+    models: { editor: models.editor, writer: writerModel, critic: review.model, vision: image?.model ?? null, desk: deskModel, lessons: control ? "control" : LESSONS_VERSION ? `v${LESSONS_VERSION}` : null },
     quality: {
       score: review.score,
       verdict: review.verdict,

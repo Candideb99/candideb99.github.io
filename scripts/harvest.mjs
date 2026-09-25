@@ -89,8 +89,10 @@ function windowOf(from, to) {
   const confirmed = read.reduce((n, [, e]) => n + (e.confirmed?.length ?? 0), 0);
   // The live test of the lessons: proved errors per story read, for stories written with them and without them.
   const rate = (list) => (list.length ? Number((list.reduce((n, [, e]) => n + (e.confirmed?.length ?? 0), 0) / list.length).toFixed(2)) : null);
-  const withLessons = read.filter(([, e]) => e.lessons && e.outcome !== "unverifiable" && e.outcome !== "failed");
-  const without = read.filter(([, e]) => !e.lessons && e.outcome !== "unverifiable" && e.outcome !== "failed" && /claude/.test(String(e.writer ?? "")));
+  // "control": the one story in five run.mjs writes without the lessons; before the lessons existed, every Claude story was.
+  const judged = read.filter(([, e]) => e.outcome !== "unverifiable" && e.outcome !== "failed" && /claude/.test(String(e.writer ?? "")));
+  const withLessons = judged.filter(([, e]) => e.lessons && e.lessons !== "control");
+  const without = judged.filter(([, e]) => !e.lessons || e.lessons === "control");
   const runs = reports.filter((r) => within(r.startedAt, from, to));
   const refusals = new Map();
   for (const r of runs) for (const e of r.report ?? []) {
@@ -145,7 +147,7 @@ const md = [
   `| second look: stories read · clean · corrected · overruled | ${week.secondLook.read} · ${week.secondLook.clean} · ${week.secondLook.corrected} · ${week.secondLook.stands} | ${before.secondLook.read} · ${before.secondLook.clean} · ${before.secondLook.corrected} · ${before.secondLook.stands} |`,
   `| confirmed errors per story read | ${week.secondLook.confirmedPerStory ?? "–"}${arrow(week.secondLook.confirmedPerStory, before.secondLook.confirmedPerStory)} | ${before.secondLook.confirmedPerStory ?? "–"} |`,
   `| … Claude's stories written with the lessons (read) | ${week.secondLook.withLessons.confirmedPerStory ?? "–"} (${week.secondLook.withLessons.read}) | ${before.secondLook.withLessons.confirmedPerStory ?? "–"} (${before.secondLook.withLessons.read}) |`,
-  `| … Claude's stories written without them (read) | ${week.secondLook.claudeWithout.confirmedPerStory ?? "–"} (${week.secondLook.claudeWithout.read}) | ${before.secondLook.claudeWithout.confirmedPerStory ?? "–"} (${before.secondLook.claudeWithout.read}) |`,
+  `| … Claude's stories written without them: the control group and before (read) | ${week.secondLook.claudeWithout.confirmedPerStory ?? "–"} (${week.secondLook.claudeWithout.read}) | ${before.secondLook.claudeWithout.confirmedPerStory ?? "–"} (${before.secondLook.claudeWithout.read}) |`,
   `| lessons the writer reads (learned from proved mistakes) | ${lessonsNow.active} (${lessonsNow.learnedFrom}) | |`,
   `| corrections printed | ${week.corrections} | ${before.corrections} |`,
   `| Claude calls per story written (runs kept) | ${week.runs.callsPerStory ?? "–"} | ${before.runs.callsPerStory ?? "–"} |`,
