@@ -46,7 +46,7 @@ const SCHEDULE = [
   { what: "The week's review", when: "Fridays", utc: "15:37" },
   { what: "Defence and geopolitics reading", when: "Saturdays", utc: "10:07" },
   { what: "In depth (في العمق)", when: "Sundays", utc: "07:47" },
-  { what: "Second look: stories re-read against their sources", when: "twice a day", utc: "03:53" },
+  { what: "Second look and learning: the earlier stories re-read against their sources, the proved mistakes corrected and learned", when: "every news round, before it writes", utc: null },
   { what: "Editor's round: photos, freshness, the week's numbers", when: "daily", utc: "07:17" },
   { what: "Market quotes and the calendar", when: "on every build, and every 2 hours", utc: null },
 ];
@@ -714,6 +714,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
   </div>
 
   <p class="m" id="checks" style="margin:10px 0 0"></p>
+  <details id="lessons-box" style="display:none;margin:6px 0 0"><summary class="m" id="lessons-sum"></summary><ol class="m" id="lessons-list" style="margin:6px 0 0;padding-inline-start:20px"></ol></details>
   <p class="m" id="models-used" style="margin:10px 0 0"></p>
   <h2>Every part of the paper</h2>
   <div class="cov" id="cov"></div>
@@ -880,6 +881,10 @@ function renderChecks(s){
   if(h){var ph=h.photos||{};parts.push('<b>Photos</b> '+(ph.pending||(ph.redo&&ph.redo.length)?(ph.pending||0)+' being checked'+(ph.redo&&ph.redo.length?', '+ph.redo.length+' replaced':''):'all in place'));
     if(h.owner&&h.owner.length)parts.push('<b style="color:var(--amber)">Needs you: '+h.owner.map(esc).join('; ')+'</b>')}
   document.getElementById('checks').innerHTML=parts.length?'Daily checks, no Claude unless something is wrong: '+parts.join(' · '):'';
+  var L=s.lessons,act=L&&L.lessons?L.lessons.filter(function(l){return l.status==='active'}):[];
+  document.getElementById('lessons-box').style.display=act.length?'block':'none';
+  if(act.length){document.getElementById('lessons-sum').innerHTML='<b>What the newsroom has learned</b>: '+act.length+' lessons from '+((L.used||[]).length)+' mistakes it printed and corrected; the writer reads them before every story';
+    document.getElementById('lessons-list').innerHTML=act.sort(function(a,b){return b.seen-a.seen}).map(function(l){return '<li>'+esc(l.rule)+' <span style="color:var(--ink-3)">('+esc(l.class)+', seen '+l.seen+'×)</span></li>'}).join('')}
 }
 function draft(a){return '<div class="draft">'+(a.image?'<img src="'+esc(a.image)+'" alt="">':'<div class="noimg">no photo</div>')+'<div><h3>'+esc(a.title)+'</h3><p>'+esc(a.subtitle)+'</p><div class="meta">'+esc(SECTION[a.section]||a.section)+' · '+esc(KIND[a.kind]||a.kind)+' · '+scoreTag(a.score)+' '+esc(a.verdict)+(a.hasChart?' · chart':'')+(a.hasTable?' · table':'')+' · '+a.sources.length+' sources'+(a.committed?' · from the cloud':'')+'</div><div class="acts"><button class="quiet sm" onclick="openPreview(\\''+esc(a.file)+'\\')">Read it</button><button class="go sm" onclick="publish(\\''+esc(a.file)+'\\')">Publish</button><button class="danger sm" onclick="discard(\\''+esc(a.file)+'\\',\\''+esc(a.slug)+'\\')">Discard</button></div></div></div>'}
 function renderLive(){
@@ -1029,6 +1034,7 @@ const server = http.createServer(async (req, res) => {
         lastRun: await latestRun(),
         quality: await stateFile("quality.json"),
         health: await stateFile("health.json"),
+        lessons: await stateFile("lessons.json"),
         nextCloudRun: nextCloudRun(),
       });
     }

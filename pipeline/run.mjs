@@ -25,6 +25,7 @@ import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectFeatur
 import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, newsFloor, reviseArticle, writeAnalysis, writeArticle, writeExplainer, writeFeature, writePaperReading, writeWeekly } from "./lib/write.mjs";
 import { critique, programmaticChecks } from "./lib/verify.mjs";
 import { copyEdit } from "./lib/copydesk.mjs";
+import { lessonsBlock, loadLessons } from "./lib/lessons.mjs";
 import { pickImage } from "./lib/images.mjs";
 import { ARTICLES_DIR, buildSlug, loadExistingArticles, serializeArticle } from "./lib/article.mjs";
 import { usage as llmUsage } from "./lib/llm.mjs";
@@ -261,6 +262,14 @@ async function lastDeskPass(draft, checks, { sources, kind = "news", recheck }) 
   return { draft: desk.draft, checks: again };
 }
 
+/**
+ * The newsroom's lessons (lib/lessons.mjs), learned from the mistakes the second look proved and the corrections editor
+ * corrected: read once a news run, handed to the desk notes, the writer and the reviser, and named in each story's
+ * `models.lessons`, so the second look can tell the stories written with them from the rest (2026-09-25).
+ */
+let LESSONS = "";
+let LESSONS_VERSION = null;
+
 async function produceStory({ story, candidates, existing, recentTitles, models, report }) {
   const { items, sources, evidenceChars } = await collectEvidence(story, candidates);
   const entry = { headline: story.headlineHint, section: story.section, importance: story.importance, sources: sources.map((s) => s.url) };
@@ -302,10 +311,10 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   }
 
   // Stage one: the desk notes, the checked facts of the one event; stage two: the story written from them.
-  const notesResult = await deskNotes({ story, sources, log });
+  const notesResult = await deskNotes({ story, sources, log, lessons: LESSONS });
   const notes = notesResult?.notes ?? null;
   if (notes) log(`desk notes: ${notes.facts.length} facts, ${notes.quotes.length} quotes (${notesResult.model})`);
-  let { draft, model: writerModel } = await writeArticle({ story, sources, notes, log });
+  let { draft, model: writerModel } = await writeArticle({ story, sources, notes, log, lessons: LESSONS });
   const desk = await copyDeskPass(draft, { sources });
   draft = desk.draft;
   const deskModel = desk.model;
@@ -324,7 +333,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   if (!straightOut) {
     const issues = [...checks.issues, ...review.issues];
     if (!issues.length) issues.push(`المحرر أعطى المسودة ${review.score}/10 (${review.verdict})${review.summary ? `: ${review.summary}` : ""}؛ راجع الدقة والعزو والعربية.`);
-    const revision = await reviseArticle({ draft, sources, issues, log, notes });
+    const revision = await reviseArticle({ draft, sources, issues, log, notes, lessons: LESSONS });
     draft = (await copyDeskPass(revision.draft, { includeBody: true, sources })).draft;
     writerModel = `${writerModel} → ${revision.model}`;
     revised = true;
@@ -358,7 +367,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     image,
     // The copy desk edited the story on its way in; later sweeps skip it (no tokens spent twice).
     deskedAt: deskModel ? isoNow() : null,
-    models: { editor: models.editor, writer: writerModel, critic: review.model, vision: image?.model ?? null, desk: deskModel },
+    models: { editor: models.editor, writer: writerModel, critic: review.model, vision: image?.model ?? null, desk: deskModel, lessons: LESSONS_VERSION ? `v${LESSONS_VERSION}` : null },
     quality: {
       score: review.score,
       verdict: review.verdict,
@@ -384,6 +393,10 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
 }
 
 async function runNews(report) {
+  const lessons = await loadLessons();
+  LESSONS = lessonsBlock(lessons);
+  LESSONS_VERSION = LESSONS ? lessons.version : null;
+  if (LESSONS) log(`lessons: version ${lessons.version}, ${lessons.lessons.filter((l) => l.status === "active").length} active, read by the desk notes and the writer`);
   const config = await readJson(path.join(root, "pipeline", "sources.json"), { sources: [] });
   // News is filed only into the news sections; the analysis and explainers hubs hold the paper's own pieces.
   const sections = newsSectionsOf(await readJson(path.join(root, "src", "data", "sections.json"), []));

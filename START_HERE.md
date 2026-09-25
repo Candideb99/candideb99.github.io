@@ -27,10 +27,13 @@ Every 3 hours (and once a day each for an explainer and an analysis, and on Sund
 
 **What checks itself afterwards** (since 25 September 2026):
 
-- **The second look.** About a day after a story goes out, it is read again, sentence by sentence, against its
-  own sources. A mistake counts only when a sentence copied word for word from a source proves it; then the story
-  is corrected, with a dated note at its foot, as the methodology page promises. Twice a day, one Claude call per
-  story, never twice for the same story. The stories published before it existed are worked through a few a run.
+- **The second look.** Every news round first reads the earlier rounds' stories again, sentence by sentence,
+  against their own sources. A mistake counts only when a sentence copied word for word from a source proves it;
+  then the story is corrected, with a dated note at its foot, as the methodology page promises. One Claude call per
+  story, never twice for the same story. The stories published before it existed are worked through two a round.
+- **It learns.** The mistakes the second look proves become lessons (at most ten, a short page) that the writer
+  reads before every story, so the same kind of mistake is not made again. No approval needed; the Desk lists them
+  under "What the newsroom has learned". New sections and other changes to the site stay yours, by hand.
 - **The morning round, free.** Every day, without Claude: are the photos still in place at Wikimedia and Flickr (a
   renamed photo is re-addressed at once, a deleted one is replaced), is news still flowing, are the market quotes
   fresh, does the live site carry the newest story? Claude is woken only if something is broken, and at most once

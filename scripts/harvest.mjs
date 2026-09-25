@@ -87,6 +87,10 @@ function windowOf(from, to) {
     if (classes.get(c.class).examples.length < 3 && c.sentence) classes.get(c.class).examples.push(`${slug}: ${c.sentence.slice(0, 120)}`);
   }
   const confirmed = read.reduce((n, [, e]) => n + (e.confirmed?.length ?? 0), 0);
+  // The live test of the lessons: proved errors per story read, for stories written with them and without them.
+  const rate = (list) => (list.length ? Number((list.reduce((n, [, e]) => n + (e.confirmed?.length ?? 0), 0) / list.length).toFixed(2)) : null);
+  const withLessons = read.filter(([, e]) => e.lessons && e.outcome !== "unverifiable" && e.outcome !== "failed");
+  const without = read.filter(([, e]) => !e.lessons && e.outcome !== "unverifiable" && e.outcome !== "failed" && /claude/.test(String(e.writer ?? "")));
   const runs = reports.filter((r) => within(r.startedAt, from, to));
   const refusals = new Map();
   for (const r of runs) for (const e of r.report ?? []) {
@@ -105,7 +109,7 @@ function windowOf(from, to) {
     corrections: corrections.length,
     // "listed": stories left with something for a person (the website's own reasoning contradicted, a changed page, a
     // quote code could not find, or a confirmed error not corrected in a listing-only run).
-    secondLook: { read: read.length, clean: outcome("clean"), corrected: outcome("corrected"), stands: outcome("stands"), refused: outcome("refused"), listed: outcome("listed") + outcome("flagged"), unverifiable: outcome("unverifiable"), confirmedPerStory: read.length ? Number((confirmed / read.length).toFixed(2)) : null },
+    secondLook: { read: read.length, clean: outcome("clean"), corrected: outcome("corrected"), stands: outcome("stands"), refused: outcome("refused"), listed: outcome("listed") + outcome("flagged"), unverifiable: outcome("unverifiable"), confirmedPerStory: read.length ? Number((confirmed / read.length).toFixed(2)) : null, withLessons: { read: withLessons.length, confirmedPerStory: rate(withLessons) }, claudeWithout: { read: without.length, confirmedPerStory: rate(without) } },
     runs: { count: runs.length, written, refused: [...refusals.values()].reduce((a, b) => a + b, 0), callsPerStory: written ? Number((calls / written).toFixed(1)) : null, note: "from the run reports kept (the newest 24)" },
     recurring: [
       ...[...classes].filter(([, v]) => v.stories.size >= 2).map(([k, v]) => ({ what: `second look: ${k} errors`, stories: v.stories.size, examples: v.examples })),
@@ -115,6 +119,8 @@ function windowOf(from, to) {
   };
 }
 
+const lessonsState = readJson(path.join("pipeline", "state", "lessons.json"));
+const lessonsNow = { version: lessonsState?.version ?? 0, active: (lessonsState?.lessons ?? []).filter((l) => l.status === "active").length, learnedFrom: (lessonsState?.used ?? []).length };
 const week = windowOf(7, 0);
 const before = windowOf(14, 7);
 const today = windowOf(1, 0);
@@ -123,6 +129,7 @@ const quality = readJson(OUT) ?? { version: 1, days: [] };
 const date = new Date(now).toISOString().slice(0, 10);
 quality.days = [...quality.days.filter((d) => d.date !== date), { date, published: today.published, news: today.news, styleFaultsPerStory: today.styleFaultsPerStory, corrections: today.corrections, read: today.secondLook.read, confirmedPerStory: today.secondLook.confirmedPerStory, photosPending: health?.last?.photos?.pending ?? null }].slice(-90);
 quality.updatedAt = new Date(now).toISOString();
+quality.lessons = lessonsNow;
 quality.week = week;
 quality.weekBefore = before;
 
@@ -137,6 +144,9 @@ const md = [
   `| news stories that needed the revision round | ${week.revisedShare == null ? "–" : `${Math.round(week.revisedShare * 100)}%`}${arrow(week.revisedShare, before.revisedShare)} | ${before.revisedShare == null ? "–" : `${Math.round(before.revisedShare * 100)}%`} |`,
   `| second look: stories read · clean · corrected · overruled | ${week.secondLook.read} · ${week.secondLook.clean} · ${week.secondLook.corrected} · ${week.secondLook.stands} | ${before.secondLook.read} · ${before.secondLook.clean} · ${before.secondLook.corrected} · ${before.secondLook.stands} |`,
   `| confirmed errors per story read | ${week.secondLook.confirmedPerStory ?? "–"}${arrow(week.secondLook.confirmedPerStory, before.secondLook.confirmedPerStory)} | ${before.secondLook.confirmedPerStory ?? "–"} |`,
+  `| … Claude's stories written with the lessons (read) | ${week.secondLook.withLessons.confirmedPerStory ?? "–"} (${week.secondLook.withLessons.read}) | ${before.secondLook.withLessons.confirmedPerStory ?? "–"} (${before.secondLook.withLessons.read}) |`,
+  `| … Claude's stories written without them (read) | ${week.secondLook.claudeWithout.confirmedPerStory ?? "–"} (${week.secondLook.claudeWithout.read}) | ${before.secondLook.claudeWithout.confirmedPerStory ?? "–"} (${before.secondLook.claudeWithout.read}) |`,
+  `| lessons the writer reads (learned from proved mistakes) | ${lessonsNow.active} (${lessonsNow.learnedFrom}) | |`,
   `| corrections printed | ${week.corrections} | ${before.corrections} |`,
   `| Claude calls per story written (runs kept) | ${week.runs.callsPerStory ?? "–"} | ${before.runs.callsPerStory ?? "–"} |`,
   "",

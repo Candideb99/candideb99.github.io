@@ -156,7 +156,7 @@ const NOTES_SYSTEM = `You are the chief sub-editor of خازندار, an Arabic 
  * then writes from these notes, so nothing enters the story that the sources do not carry.
  * Returns null when no usable notes can be made, and the writer works from the sources alone.
  */
-export async function deskNotes({ story, sources, log }) {
+export async function deskNotes({ story, sources, log, lessons = "" }) {
   const texts = sources.map((s) => s.text || s.summary || "");
   const user = `STORY BRIEF FROM THE EDITOR
 Working headline: ${story.headlineHint}
@@ -166,7 +166,7 @@ Today (UTC): ${new Date().toISOString().slice(0, 10)}
 SOURCE MATERIAL
 ${sources.map(sourceBlock).join("\n\n")}
 
-TASK
+${lessons}TASK
 Extract the desk notes for this ONE event (the working headline). 8 to 20 facts, each one Arabic sentence of at most 30 words in your own words (never a sentence copied from an Arabic source), with the figure, its unit, the date and the actor exactly as the source gives them, and the number of the source it comes from; a figure appears only with its own period and unit. Attribution words belong in the fact («قال المصرف في بيان إن…», «بحسب بيانات المكتب…»): a public fact (a decision, a published figure, a price) names the institution, company or news agency behind it, never the outlet that relayed it; an outlet is named only for what it alone reports (its own sources, interview or exclusive). When two sources give different figures for the same measure, keep ONE fact: the latest-timed, or the one the institution itself published, with its time if the source gives it; never both. Leave out everything that is a different event, a background fact from memory, or an interpretation. Then list up to three verbatim quotations only if the source is Arabic (Arabic text copied exactly); for other languages, no quotations.
 Return: {"event":"<one Arabic sentence naming the one event>","facts":[{"fact":"<sentence>","source":<source number>}],"quotes":[{"text":"<verbatim Arabic>","source":<source number>}]}`;
   try {
@@ -227,7 +227,7 @@ ${facts}${quotes}
 `;
 }
 
-export async function writeArticle({ story, sources, notes = null, log }) {
+export async function writeArticle({ story, sources, notes = null, log, lessons = "" }) {
   const user = `STORY BRIEF FROM THE EDITOR
 Angle: ${story.angle}
 Working headline: ${story.headlineHint}
@@ -237,7 +237,7 @@ Today (UTC): ${new Date().toISOString().slice(0, 10)}
 ${notesBlock(notes)}SOURCE MATERIAL (use only this material; do not add facts from memory)
 ${sources.map(writerSourceBlock(notes)).join("\n\n")}
 
-TASK
+${lessons}TASK
 Write the article for خازندار following the house style: ONE event, the working headline's, told in the desks' order (the fact, the figure, who said it, the context the sources give, why it matters), at most 12 words in the title stating that one idea with no evaluative adjective (no حاسم، حافل، مصيري، صادم). Return one JSON object exactly in this shape:
 ${SCHEMA_TEXT}`;
 
@@ -261,14 +261,14 @@ ${SCHEMA_TEXT}`;
  * Sends critic findings back to the writer for one revision. `wordLimits` (analyses, paper readings) overrides the
  * news word bounds; `kind` picks the brief the revision is written under ("paper" for a reading of a research paper).
  */
-export async function reviseArticle({ draft, sources, issues, log, wordLimits, kind = "", notes = null }) {
+export async function reviseArticle({ draft, sources, issues, log, wordLimits, kind = "", notes = null, lessons = "" }) {
   const user = `You previously wrote this article for خازندار:
 ${JSON.stringify(draft, null, 2)}
 
 ${notesBlock(notes)}SOURCE MATERIAL
 ${sources.map(writerSourceBlock(notes)).join("\n\n")}
 
-An editor found the following problems. Fix every one of them strictly using the source material. Remove any claim or number that the sources do not support. Keep everything else intact, and keep the article at least ${wordLimits?.target ?? (newsFloor(notes) < 120 ? 120 : 160)} words (lede + body) when the sources allow it; never pad with unsupported material.
+${lessons}An editor found the following problems. Fix every one of them strictly using the source material. Remove any claim or number that the sources do not support. Keep everything else intact, and keep the article at least ${wordLimits?.target ?? (newsFloor(notes) < 120 ? 120 : 160)} words (lede + body) when the sources allow it; never pad with unsupported material.
 PROBLEMS
 ${issues.map((i, n) => `${n + 1}. ${i}`).join("\n")}
 

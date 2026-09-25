@@ -1,0 +1,254 @@
+{
+  "used": [
+    "us-denmark-greenland-security-deal-eac792:8d3b80cc",
+    "us-denmark-greenland-security-deal-eac792:2b7b8107",
+    "trump-announces-ai-force-and-czar-f4c7aa:5bb238a4",
+    "trump-announces-ai-force-and-czar-f4c7aa:fad6a71b",
+    "trump-announces-ai-force-and-czar-f4c7aa:dbff6a75",
+    "trump-announces-ai-force-and-czar-f4c7aa:dbfb3671",
+    "trump-xi-summit-washington-2026-4e439e:ebdd36c5",
+    "trump-xi-summit-washington-2026-4e439e:2dc37535",
+    "trump-xi-summit-washington-2026-4e439e:f4afe586",
+    "trump-xi-summit-washington-2026-4e439e:d1caf959",
+    "oil-prices-decline-china-iran-pressure-41b59d:05f659ac",
+    "oil-prices-decline-china-iran-pressure-41b59d:b3de0b5e",
+    "oil-prices-decline-china-iran-pressure-41b59d:78767b10",
+    "fed-rate-hike-oil-109-gulf-economies-a07bff:1f15bb62",
+    "fed-rate-hike-oil-109-gulf-economies-a07bff:48f164d1",
+    "fed-rate-hike-oil-109-gulf-economies-a07bff:c99e3581",
+    "fed-rate-hike-oil-109-gulf-economies-a07bff:6c71a34b",
+    "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb:7be17575",
+    "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb:fb8d52d9",
+    "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb:a6143123",
+    "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb:9e05ab9a",
+    "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb:829861d2",
+    "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb:84c77935",
+    "openai-six-concerning-behaviors-disclosure-framework-2d2a2b:2b9cadfc",
+    "us-approves-f35-saudi-arms-deal-915064:903d68d2",
+    "us-approves-f35-saudi-arms-deal-915064:6056baad",
+    "russia-temporary-management-western-assets-1dadf4:51f30498",
+    "russia-temporary-management-western-assets-1dadf4:32d6f00c",
+    "russia-temporary-management-western-assets-1dadf4:c0d589ab",
+    "warren-buffett-steps-down-berkshire-chairman-457ee7:908cde63",
+    "warren-buffett-steps-down-berkshire-chairman-457ee7:fdc71c4d",
+    "trump-announces-ban-cnn-msn-politico-white-house-fd6870:a78747a1",
+    "trump-announces-ban-cnn-msn-politico-white-house-fd6870:49ccea1e",
+    "trump-announces-ban-cnn-msn-politico-white-house-fd6870:6e11c2d0",
+    "trump-announces-ban-cnn-msn-politico-white-house-fd6870:21207823",
+    "trump-announces-ban-cnn-msn-politico-white-house-fd6870:047efb59",
+    "trump-announces-ban-cnn-msn-politico-white-house-fd6870:0dc7d7de",
+    "trump-announces-ban-cnn-msn-politico-white-house-fd6870:9b17d7e2",
+    "trump-signs-russia-sanctions-oil-tariffs-law-ad758a:9af5c393",
+    "trump-signs-russia-sanctions-oil-tariffs-law-ad758a:d78a43e7",
+    "trump-signs-russia-sanctions-oil-tariffs-law-ad758a:fcf57be0",
+    "eu-fuel-prices-record-iran-saudi-supply-8376ff:0c94c4a9",
+    "eu-fuel-prices-record-iran-saudi-supply-8376ff:3ea81f7e",
+    "eu-fuel-prices-record-iran-saudi-supply-8376ff:0340aab6",
+    "us-denmark-greenland-security-deal-eac792:92f1aee9",
+    "us-denmark-greenland-security-deal-eac792:0149b974"
+  ],
+  "version": 2,
+  "updatedAt": "2026-09-25T07:42:29.972Z",
+  "lessons": [
+    {
+      "id": "L1",
+      "class": "hedge",
+      "rule": "Keep every qualifier in Arabic: could, possibly, expected, will, estimates, reportedly, if/should it go ahead. Name who claims or forecasts. Never turn a claim, conditional warning, forecast or promise ('no cost') into a stated fact, present result or bare headline.",
+      "example": {
+        "wrong": "ويوسّع نطاق الانتشار العسكري الأمريكي إلى القطب الشمالي دون تكلفة إضافية على واشنطن.",
+        "quote": "\"There will be NO COST to the United States,\" he wrote.",
+        "source": "CNBC",
+        "slug": "us-denmark-greenland-security-deal-eac792"
+      },
+      "evidence": [
+        "us-denmark-greenland-security-deal-eac792:8d3b80cc",
+        "us-denmark-greenland-security-deal-eac792:2b7b8107",
+        "trump-announces-ai-force-and-czar-f4c7aa:fad6a71b",
+        "trump-announces-ai-force-and-czar-f4c7aa:dbfb3671",
+        "trump-xi-summit-washington-2026-4e439e:ebdd36c5",
+        "oil-prices-decline-china-iran-pressure-41b59d:05f659ac",
+        "fed-rate-hike-oil-109-gulf-economies-a07bff:48f164d1",
+        "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb:a6143123",
+        "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb:84c77935",
+        "trump-announces-ban-cnn-msn-politico-white-house-fd6870:49ccea1e",
+        "trump-announces-ban-cnn-msn-politico-white-house-fd6870:0dc7d7de",
+        "us-denmark-greenland-security-deal-eac792:0149b974"
+      ],
+      "seen": 12,
+      "createdAt": "2026-09-25T07:41:52.105Z",
+      "lastSeen": "2026-09-25T07:42:29.972Z",
+      "status": "active",
+      "previous": [
+        "Keep every qualifier in Arabic: could, possibly, as much as, hopefully, expected, scheduled, will, estimates, reportedly. Name who claims, forecasts or estimates it. Never turn a claim, hope, forecast or reported figure into a stated fact, a present result or a bare headline number."
+      ]
+    },
+    {
+      "id": "L2",
+      "class": "attribution",
+      "rule": "Credit each fact to whom the source credits; the outlet's own reporting is never 'informed sources', an official statement or analyst data. Name the originating outlet. Never make a reported line a quote, a private notice an announcement, or a reply the decree's aim.",
+      "example": {
+        "wrong": "وذكر أنه كان لديه سابقاً 'قيصر للذكاء الاصطناعي' وهو ديفيد ساكس، الذي استقال وأصبح مستشاراً خارجياً للرئيس.",
+        "quote": "Trump already had one “AI czar”, venture capitalist David Sacks. He resigned earlier this year and became an external adviser to the president.",
+        "source": "Al Jazeera English",
+        "slug": "trump-announces-ai-force-and-czar-f4c7aa"
+      },
+      "evidence": [
+        "trump-announces-ai-force-and-czar-f4c7aa:dbff6a75",
+        "trump-xi-summit-washington-2026-4e439e:d1caf959",
+        "oil-prices-decline-china-iran-pressure-41b59d:78767b10",
+        "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb:9e05ab9a",
+        "openai-six-concerning-behaviors-disclosure-framework-2d2a2b:2b9cadfc",
+        "us-approves-f35-saudi-arms-deal-915064:6056baad",
+        "russia-temporary-management-western-assets-1dadf4:51f30498",
+        "russia-temporary-management-western-assets-1dadf4:32d6f00c",
+        "warren-buffett-steps-down-berkshire-chairman-457ee7:fdc71c4d",
+        "trump-announces-ban-cnn-msn-politico-white-house-fd6870:9b17d7e2",
+        "trump-signs-russia-sanctions-oil-tariffs-law-ad758a:9af5c393",
+        "trump-signs-russia-sanctions-oil-tariffs-law-ad758a:d78a43e7",
+        "eu-fuel-prices-record-iran-saudi-supply-8376ff:3ea81f7e",
+        "eu-fuel-prices-record-iran-saudi-supply-8376ff:0340aab6"
+      ],
+      "seen": 14,
+      "createdAt": "2026-09-25T07:41:52.105Z",
+      "lastSeen": "2026-09-25T07:42:29.972Z",
+      "status": "active",
+      "previous": [
+        "Credit each fact to the party the source credits. Keep the outlet's own background separate from what the speaker said. Name the originating outlet in a chain, such as Politico via Euronews or Reuters data cited by OilPrice. Never invent a spokesperson or an agency."
+      ]
+    },
+    {
+      "id": "L3",
+      "class": "term",
+      "rule": "Translate financial terms and tenors exactly. The 10-year Treasury is سندات الخزانة لأجل 10 سنوات, not 'more than ten years'. A nominal yield is not 'actual'. Open interest is العقود/المراكز المفتوحة, not interest. Add no descriptor the source lacks.",
+      "example": {
+        "wrong": "ومع بلوغ عائد السندات الأمريكية لأكثر من عشر سنوات مستوى 5.04%، تزداد كلفة إصدار السندات الدولارية التي تموّل مشاريع البنية التحتية في الخليج.",
+        "quote": "بلغ العائد على سندات الخزانة الأمريكية لأجل 10 سنوات 5.04%، مسجلاً أعلى مستوى منذ 2007، بحسب بي بي سي.",
+        "source": "Khazendar",
+        "slug": "fed-rate-hike-oil-109-gulf-economies-a07bff"
+      },
+      "evidence": [
+        "fed-rate-hike-oil-109-gulf-economies-a07bff:1f15bb62",
+        "fed-rate-hike-oil-109-gulf-economies-a07bff:c99e3581",
+        "fed-rate-hike-oil-109-gulf-economies-a07bff:6c71a34b",
+        "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb:829861d2",
+        "trump-signs-russia-sanctions-oil-tariffs-law-ad758a:fcf57be0",
+        "eu-fuel-prices-record-iran-saudi-supply-8376ff:0c94c4a9"
+      ],
+      "seen": 6,
+      "createdAt": "2026-09-25T07:41:52.105Z",
+      "lastSeen": "2026-09-25T07:42:29.972Z",
+      "status": "active"
+    },
+    {
+      "id": "L4",
+      "class": "scope",
+      "rule": "Keep a figure or role tied to the exact item, day and instrument the source names. Diesel is not all fuel. One day's count is not a daily rate. A futures-implied value is not the IPO valuation. An official does only what the source assigns.",
+      "example": {
+        "wrong": "ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها",
+        "quote": "United States President Donald Trump has announced he’s creating an “AI Force” and will appoint a new “AI czar” to oversee development of the nation’s artificial intelligence industry.",
+        "source": "Al Jazeera English",
+        "slug": "trump-announces-ai-force-and-czar-f4c7aa"
+      },
+      "evidence": [
+        "trump-announces-ai-force-and-czar-f4c7aa:5bb238a4",
+        "trump-xi-summit-washington-2026-4e439e:2dc37535",
+        "oil-prices-decline-china-iran-pressure-41b59d:b3de0b5e",
+        "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb:7be17575"
+      ],
+      "seen": 4,
+      "createdAt": "2026-09-25T07:41:52.105Z",
+      "lastSeen": "2026-09-25T07:41:52.105Z",
+      "status": "active"
+    },
+    {
+      "id": "L5",
+      "class": "actor",
+      "rule": "For visits, hosting, deals and transfers, reread the source's verb to see who acts on whom. 'Trump went to Beijing' means Xi hosted Trump. Check that subject and object have not been swapped before printing.",
+      "example": {
+        "wrong": "الرئيس الأمريكي دونالد ترامب استضاف الرئيس الصيني شي جين بينغ في بكين في مايو 2026، وهذه الزيارة هي الأولى لشي إلى واشنطن منذ 2015، وفقاً لمصدر من Euronews بتاريخ 2026-09-18.",
+        "quote": "US President Donald Trump went to Beijing in May, and Chinese President Xi Jinping is now expected to come to him, scheduled to arrive next Wednesday and depart on Friday with his wife, Peng Liyuan, skipping the UN General Assembly entirely.",
+        "source": "Euronews",
+        "slug": "trump-xi-summit-washington-2026-4e439e"
+      },
+      "evidence": [
+        "trump-xi-summit-washington-2026-4e439e:f4afe586"
+      ],
+      "seen": 1,
+      "createdAt": "2026-09-25T07:41:52.105Z",
+      "lastSeen": "2026-09-25T07:41:52.105Z",
+      "status": "active"
+    },
+    {
+      "id": "L6",
+      "class": "period",
+      "rule": "Take each event's day from the source's sentence about that event; convert a weekday by counting back from the publication date. Keep an announcement, a takeover, a later remark and a reply on their own days, with any time of day given.",
+      "example": {
+        "wrong": "أصدرت لجنة الأوراق المالية الأمريكية الأربعاء إعفاءً ابتكارياً مؤقتاً ومشروطاً يتيح لمنصات التداول إصدار تمثيلات رمزية للأسهم الأمريكية المتداولة علناً وتداولها، نافذاً فور صدوره.",
+        "quote": "The Securities and Exchange Commission on Thursday issued an order creating a regulatory pathway for certain trading venues to issue tokenized representations of publicly traded U.S. stocks, effective immediately.",
+        "source": "CNBC",
+        "slug": "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb"
+      },
+      "evidence": [
+        "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb:fb8d52d9",
+        "us-approves-f35-saudi-arms-deal-915064:903d68d2",
+        "russia-temporary-management-western-assets-1dadf4:c0d589ab",
+        "warren-buffett-steps-down-berkshire-chairman-457ee7:908cde63",
+        "trump-announces-ban-cnn-msn-politico-white-house-fd6870:047efb59",
+        "us-denmark-greenland-security-deal-eac792:92f1aee9"
+      ],
+      "seen": 6,
+      "createdAt": "2026-09-25T07:41:52.105Z",
+      "lastSeen": "2026-09-25T07:42:29.972Z",
+      "status": "active",
+      "previous": [
+        "Copy the weekday or date of an event from the source's own sentence about that event, not from the publication date or another report. If sources disagree, follow the primary report and do not guess."
+      ]
+    },
+    {
+      "id": "L7",
+      "class": "other",
+      "rule": "Copy the names of outlets, companies, people and laws exactly as the source gives them; never swap in an older or more familiar name (MS NOW is not MSNBC). Recheck the name in the headline and at every repetition in the body.",
+      "example": {
+        "wrong": "ترامب يحظر سي إن إن وإم إس إن بي سي وبوليتيكو من البيت الأبيض",
+        "quote": "United States President Donald Trump has announced that, effective immediately, CNN, MS NOW and Politico are banned from the White House.",
+        "source": "Al Jazeera English",
+        "slug": "trump-announces-ban-cnn-msn-politico-white-house-fd6870"
+      },
+      "evidence": [
+        "trump-announces-ban-cnn-msn-politico-white-house-fd6870:a78747a1",
+        "trump-announces-ban-cnn-msn-politico-white-house-fd6870:6e11c2d0",
+        "trump-announces-ban-cnn-msn-politico-white-house-fd6870:21207823"
+      ],
+      "seen": 3,
+      "createdAt": "2026-09-25T07:42:29.972Z",
+      "lastSeen": "2026-09-25T07:42:29.972Z",
+      "status": "active"
+    }
+  ],
+  "model": "claude-cli",
+  "history": [
+    {
+      "at": "2026-09-25T07:41:52.105Z",
+      "mistakes": 24,
+      "applied": [
+        "add L1 [hedge] from 9 mistake(s)",
+        "add L2 [attribution] from 5 mistake(s)",
+        "add L3 [term] from 4 mistake(s)",
+        "add L4 [scope] from 4 mistake(s)",
+        "add L5 [actor] from 1 mistake(s)",
+        "add L6 [period] from 1 mistake(s)"
+      ]
+    },
+    {
+      "at": "2026-09-25T07:42:29.972Z",
+      "mistakes": 22,
+      "applied": [
+        "sharpen L2 (+9)",
+        "sharpen L6 (+5)",
+        "sharpen L1 (+3)",
+        "add L7 [other] from 3 mistake(s)",
+        "reinforce L3 (+2)"
+      ]
+    }
+  ]
+}

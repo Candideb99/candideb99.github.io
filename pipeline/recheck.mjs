@@ -10,6 +10,8 @@
  *
  *   node pipeline/recheck.mjs                    stories 18 hours to 7 days old, then a few from the backlog
  *   node pipeline/recheck.mjs --limit=10 --backlog=6
+ *   node pipeline/recheck.mjs --min-age=2 --limit=6 --backlog=2 --budget=12
+ *                                                what every news round runs first: the rounds before it
  *   node pipeline/recheck.mjs --slugs=a,b        these stories only (add --redo for one already checked)
  *   node pipeline/recheck.mjs --dry-run          check and print; correct nothing, record nothing
  *   node pipeline/recheck.mjs --no-correct       check and record; list the confirmed errors, correct none
@@ -41,11 +43,15 @@ const REDO = args.includes("--redo");
 const LIMIT = Math.max(0, Number(option("limit", 10)) || 0);
 const BACKLOG = Math.max(0, Number(option("backlog", 6)) || 0);
 const SLUGS = new Set(option("slugs", "").split(",").map((s) => s.trim()).filter(Boolean));
-/** A story is due a day after it went out: its sources have settled, and the reader's first day is past. */
-const MIN_AGE_H = 18;
+/**
+ * A story is due this many hours after it went out. Every news round reads the stories of the rounds before it
+ * (`--min-age=2`, 2026-09-25: the owner wants the newsroom to learn each round, and it learns only from what the
+ * second look has proved); run by hand without it, a story waits a day.
+ */
+const MIN_AGE_H = Math.max(0, Number(option("min-age", 18)) || 0);
 const MAX_AGE_H = 7 * 24;
-/** No new check starts after this long, so the job's own limit never cuts a correction short. */
-const BUDGET_MS = 28 * 60 * 1000;
+/** No new check starts after this many minutes, so the job's own limit never cuts a correction short. */
+const BUDGET_MS = (Number(option("budget", 28)) || 28) * 60 * 1000;
 /** A check that failed (Claude down, a limit reached) is tried again in a later run, twice at most. */
 const MAX_FAILURES = 2;
 const started = Date.now();
@@ -110,7 +116,8 @@ function trim(ledger) {
 }
 
 async function check(story, ledger, report, corrections) {
-  const entry = { at: isoNow(), kind: story.kind, writer: story.writer.split("→").pop().trim() || null, publishedAt: story.publishedAt };
+  // `lessons`: the version of the newsroom's lessons the story was written with, so the week's numbers can compare.
+  const entry = { at: isoNow(), kind: story.kind, writer: story.writer.split("→").pop().trim() || null, lessons: story.models?.lessons ?? null, publishedAt: story.publishedAt };
   const sources = await loadSources(story, { log: (m) => log(`${story.slug}: ${m}`) });
   entry.sourcesRead = sources.filter((s) => s.text).length;
   entry.sourcesAll = sources.length;
