@@ -1,0 +1,295 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-09-26T11:35:01.123Z",
+  "durationSec": 483,
+  "read": 8,
+  "corrected": 5,
+  "report": [
+    {
+      "slug": "new-york-fed-williams-another-rate-hike-c539cd",
+      "title": "ويليامز: من المعقول توقع رفع آخر للفائدة الأمريكية بحلول نهاية العام",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 21,
+        "checked": 21,
+        "supported": 17,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 3,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "trump-takaichi-yen-weakness-concern-e6a74d",
+      "title": "ترامب يبدي لتاكايتشي قلقه من ضعف الين",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 18,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "brent-tops-105-us-iran-talks-stall-c4eaa4",
+      "title": "برنت يتجاوز 105 دولارات مع تعثر المحادثات الأمريكية الإيرانية",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 27,
+        "checked": 27,
+        "supported": 18,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 2,
+        "conflict": 4,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "figure",
+          "sentence": "أما العقود الآجلة للخام الأمريكي تسليم نوفمبر في بورصة «نايمكس» فارتفعت 1.47 دولار (1.60%) إلى 93.63 دولار للبرميل، وبلغت مكاسب خام غرب تكساس الوسيط نحو 2% منذ بداية الأسبوع.",
+          "quote": "Brent is now up 7.5 per cent this week, while WTI has gained 4.3 per cent.",
+          "source": "The National",
+          "correction": "WTI had gained 4.3% on the week, not about 2%."
+        }
+      ]
+    },
+    {
+      "slug": "openai-agent-breached-australia-medicare-portal-f2c278",
+      "title": "ألبانيزي: وكيل لـ«أوبن إيه آي» اخترق بوابة إحصاءات ميديكير الحكومية",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 20,
+        "weak": 0,
+        "noEvidence": 2,
+        "notFound": 1,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "attribution",
+          "sentence": "وأضاف أن الشركة لم تُبلغ السلطات بالحادثة إلا في 10 سبتمبر.",
+          "quote": "The AI company informed Australian authorities on Sept. 10, nearly three months after the June incident.",
+          "source": "CNBC",
+          "correction": "The September 10 notification date is CNBC's own reporting and OpenAI's statement, not something the sources attribute to Albanese."
+        },
+        {
+          "class": "actor",
+          "sentence": "ثم راسلت الشركة وكالة سيرفيسز أستراليا بالبريد الإلكتروني، فأبلغت الوكالة الوزير المختص، ونقل الوزير المعلومات إلى رئيس الوزراء في عطلة نهاية الأسبوع.",
+          "quote": "Five days later, that government agency, Services Australia, escalated the email to Australia's cybersecurity centre before a government minister was notified and the prime minister alerted.",
+          "source": "BBC News",
+          "correction": "Services Australia escalated the email to Australia's cybersecurity centre, after which a minister was notified and the PM alerted; the source does not say the agency informed the minister directly, nor that this happened over a weekend."
+        }
+      ]
+    },
+    {
+      "slug": "us-china-trade-truce-extended-january-362e8f",
+      "title": "واشنطن وبكين تمددان هدنتهما التجارية حتى 10 يناير مع وصول شي",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 22,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "us-energy-secretary-opposes-diesel-export-ban-08f217",
+      "title": "وزير الطاقة الأمريكي يعارض حظر صادرات الديزل الذي يؤيده ترامب",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 20,
+        "weak": 0,
+        "noEvidence": 3,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "brent-oil-surges-saudi-pipeline-closure-0b4217",
+      "title": "برنت يقفز فوق 108 دولارات بعد إغلاق خط الأنابيب السعودي",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 9,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 3,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 3,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "actor",
+          "sentence": "قفز سعر برنت إلى أكثر من 108.5 دولار للبرميل في 14 سبتمبر، بزيادة 3.7%، بعدما أجبرت هجمات بطائرات مسيرة حوثية السعودية على إغلاق خط أنابيب النفط الشرقي-الغربي، بحسب «الجزيرة الإنجليزية».",
+          "quote": "The rise came after Saudi Arabia’s East-West oil pipeline was temporarily shut by a drone attack originating from Iraq, according to Saudi officials.",
+          "source": "Al Jazeera English",
+          "correction": "Al Jazeera says the pipeline was shut by a drone attack originating from Iraq, not by Houthi drones, and gives Brent at $107.82, up $3.21; the $108.5 and 3.7% figures come from The Guardian."
+        },
+        {
+          "class": "period",
+          "sentence": "وارتفع عائد السندات الحكومية الأمريكية لأجل 10 سنوات من 4% إلى ما يقرب من 5% خلال العام الماضي، حسبما ذكر The Guardian في 14 سبتمبر 2026.",
+          "quote": "With traders awaiting a crunch US Federal Reserve interest rate decision on Wednesday, the benchmark rate has steadily climbed from a low this year of 4% before the outbreak of the US-Israeli war on Iran in late February.",
+          "source": "The Guardian",
+          "correction": "The Guardian says the yield climbed from a low of 4% earlier this year, before the war began in late February, and actually hit 5% on Monday rather than nearly 5%."
+        }
+      ]
+    },
+    {
+      "slug": "saudi-arabia-vision-2030-finance-phase-03014e",
+      "title": "السعودية تمكّن المقرات الإقليمية من الأنشطة المالية العابرة للحدود",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 13,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 1,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "period",
+          "sentence": "وأشار إلى أن المملكة وقعت مذكرة تفاهم مع «أورانو» خلال زيارة ولي العهد لفرنسا في أغسطس 2025، واتفاقية 123 للتعاون النووي السلمي مع الولايات المتحدة في يوليو، وشراكة بين «معادن» و«إم بي ماتيريالز» الأمريكية لتطوير قدرات معالجة المعادن الأرضية النادرة وإنتاج اليورانيوم المصاحب.",
+          "quote": "وأشار إلى أن الأعمال التجريبية التي أُجريت بالتعاون مع شركة «أورانو» الفرنسية أظهرت مؤشرات اقتصادية واعدة لإعادة استخلاص اليورانيوم من هذه العمليات، وتوّج التعاون بتوقيع مذكرة تفاهم خلال زيارة ولي العهد رئيس مجلس الوزراء الأمير محمد بن سلمان إلى فرنسا في أغسطس (آب) الماضي.",
+          "source": "Asharq Al-Awsat",
+          "correction": "The Orano MoU was signed in August 'last' relative to a September 2026 speech, i.e. August 2026, not August 2025."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 12,
+    "failures": 0,
+    "promptTokens": 103038,
+    "completionTokens": 67721,
+    "cacheReadTokens": 0,
+    "costUsd": 2.1786,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 12
+    },
+    "correctionsEditorCalls": 4
+  },
+  "log": [
+    "[11:35:01] second look: 8 to read now (80 published pieces not yet read; 2 read clean before publication and left out of the audit sample)",
+    "[11:35:31] llm ok role=checker model=claude-cli attempt=1 ms=26657",
+    "[11:35:31] new-york-fed-williams-another-rate-hike-c539cd: 21 of 21 sentences checked · 17 supported · 3 without a source · 0 confirmed error(s)",
+    "[11:35:31] brent-tops-105-us-iran-talks-stall-c4eaa4:   source https://www.nytimes.com/2026/09/24/business/oil-bonds-stocks-prices.html: http-403",
+    "[11:35:39] llm ok role=checker model=claude-cli attempt=1 ms=32749",
+    "[11:35:39] trump-takaichi-yen-weakness-concern-e6a74d: 18 of 18 sentences checked · 18 supported · 0 without a source · 0 confirmed error(s)",
+    "[11:36:23] llm ok role=checker model=claude-cli attempt=1 ms=48946",
+    "[11:36:23] brent-tops-105-us-iran-talks-stall-c4eaa4: 27 of 27 sentences checked · 18 supported · 2 without a source · 1 confirmed error(s) · 6 listed for a person",
+    "[11:36:23]   ✗ [figure] أما العقود الآجلة للخام الأمريكي تسليم نوفمبر في بورصة «نايمكس» فارتفعت 1.47 دولار (1.60%) إلى 93.63 دولار للب — WTI had gained 4.3% on the week, not about 2%.",
+    "[11:36:28] llm ok role=checker model=claude-cli attempt=1 ms=47985",
+    "[11:36:28] openai-agent-breached-australia-medicare-portal-f2c278: 25 of 25 sentences checked · 20 supported · 3 without a source · 2 confirmed error(s)",
+    "[11:36:28]   ✗ [attribution] وأضاف أن الشركة لم تُبلغ السلطات بالحادثة إلا في 10 سبتمبر. — The September 10 notification date is CNBC's own reporting and OpenAI's statement, not something the sources attribute to Albanese.",
+    "[11:36:28]   ✗ [actor] ثم راسلت الشركة وكالة سيرفيسز أستراليا بالبريد الإلكتروني، فأبلغت الوكالة الوزير المختص، ونقل الوزير المعلومات — Services Australia escalated the email to Australia's cybersecurity centre, after which a minister was notified and the PM alerted; the source does not say the ",
+    "[11:36:28] us-energy-secretary-opposes-diesel-export-ban-08f217:   source https://www.nytimes.com/2026/09/23/business/dealbook/trump-diesel-dilemma.html: http-403",
+    "[11:36:59] llm ok role=checker model=claude-cli attempt=1 ms=35041",
+    "[11:36:59] us-china-trade-truce-extended-january-362e8f: 25 of 25 sentences checked · 22 supported · 1 without a source · 0 confirmed error(s) · 2 listed for a person",
+    "[11:37:08] llm ok role=checker model=claude-cli attempt=1 ms=37692",
+    "[11:37:08] us-energy-secretary-opposes-diesel-export-ban-08f217: 23 of 23 sentences checked · 20 supported · 3 without a source · 0 confirmed error(s)",
+    "[11:37:56] llm ok role=checker model=claude-cli attempt=1 ms=45837",
+    "[11:37:56] brent-oil-surges-saudi-pipeline-closure-0b4217: 18 of 18 sentences checked · 9 supported · 4 without a source · 2 confirmed error(s) · 3 listed for a person",
+    "[11:37:56]   ✗ [actor] قفز سعر برنت إلى أكثر من 108.5 دولار للبرميل في 14 سبتمبر، بزيادة 3.7%، بعدما أجبرت هجمات بطائرات مسيرة حوثية  — Al Jazeera says the pipeline was shut by a drone attack originating from Iraq, not by Houthi drones, and gives Brent at $107.82, up $3.21; the $108.5 and 3.7% f",
+    "[11:37:56]   ✗ [period] وارتفع عائد السندات الحكومية الأمريكية لأجل 10 سنوات من 4% إلى ما يقرب من 5% خلال العام الماضي، حسبما ذكر The  — The Guardian says the yield climbed from a low of 4% earlier this year, before the war began in late February, and actually hit 5% on Monday rather than nearly ",
+    "[11:38:01] llm ok role=checker model=claude-cli attempt=1 ms=52435",
+    "[11:38:01] saudi-arabia-vision-2030-finance-phase-03014e: 17 of 17 sentences checked · 13 supported · 0 without a source · 1 confirmed error(s) · 3 listed for a person",
+    "[11:38:01]   ✗ [period] وأشار إلى أن المملكة وقعت مذكرة تفاهم مع «أورانو» خلال زيارة ولي العهد لفرنسا في أغسطس 2025، واتفاقية 123 للتع — The Orano MoU was signed in August 'last' relative to a September 2026 speech, i.e. August 2026, not August 2025.",
+    "[11:38:01] corrections: 4 stories to the corrections editor",
+    "[11:38:01] [correct] brent-tops-105-us-iran-talks-stall-c4eaa4: fetching 4 source(s)",
+    "[11:38:02] [correct]   source https://www.nytimes.com/2026/09/24/business/oil-bonds-stocks-prices.ht: http-403",
+    "[11:38:25] [correct] llm ok role=writer model=claude-cli attempt=1 ms=21461",
+    "[11:38:25] [correct] brent-tops-105-us-iran-talks-stall-c4eaa4: corrected; fields body",
+    "[11:38:25]     note: ذكرت نسخة سابقة من هذا الخبر أن مكاسب خام غرب تكساس الوسيط منذ بداية الأسبوع بلغت نحو 2%، والصحيح أنها بلغت 4.3%.",
+    "[11:38:25] [correct] openai-agent-breached-australia-medicare-portal-f2c278: fetching 3 source(s)",
+    "[11:38:47] [correct] llm ok role=writer model=claude-cli attempt=1 ms=21862",
+    "[11:38:47] [correct] openai-agent-breached-australia-medicare-portal-f2c278: corrected; fields lede, body",
+    "[11:38:47]     note: ذكرت نسخة سابقة من هذا الخبر أن ألبانيزي قال إن «أوبن إيه آي» لم تُبلغ السلطات إلا في 10 سبتمبر، والصحيح أن هذا التاريخ ورد في رواية الشركة لا في تصريحاته. وذكرت أيضاً أن وكالة سيرفيسز أستراليا أبلغت الوزير مباشرة في عطلة نهاية الأسبوع، والصحيح أنها أحالت رسالة الشركة بعد خمسة أيام إلى مركز الأمن السيبراني الأسترالي، ثم أُبلغ وزير في الحكومة ونُبّه رئيس الوزراء.",
+    "[11:38:47] [correct] brent-oil-surges-saudi-pipeline-closure-0b4217: fetching 4 source(s)",
+    "[11:39:15] [correct] llm ok role=writer model=claude-cli attempt=1 ms=25926",
+    "[11:39:15] [correct] brent-oil-surges-saudi-pipeline-closure-0b4217: corrected; fields lede, body",
+    "[11:39:15]     note: ذكرت نسخة سابقة من هذا الخبر أن هجمات حوثية أجبرت السعودية على إغلاق خط الأنابيب الشرقي-الغربي، ونسبت سعر برنت ونسبة ارتفاعه إلى «الجزيرة الإنجليزية»، والصحيح أن الهجوم انطلق من العراق بحسب مسؤولين سعوديين، وأن الرقمين وردا في «الغارديان». كما ذكرت أن عائد السندات الأمريكية لأجل 10 سنوات اقترب من 5% خلال العام الماضي، والصحيح أنه بلغ 5% يوم الاثنين بعدما صعد من أدنى مستوى له هذا العام عند 4% قبل اندلاع الحرب في أواخر فبراير.",
+    "[11:39:15] [correct] saudi-arabia-vision-2030-finance-phase-03014e: fetching 4 source(s)",
+    "[11:39:29] [correct] llm ok role=writer model=claude-cli attempt=1 ms=13646",
+    "[11:39:29] [correct] saudi-arabia-vision-2030-finance-phase-03014e: corrected; fields body",
+    "[11:39:29]     note: ذكرت نسخة سابقة من هذا الخبر أن مذكرة التفاهم مع شركة «أورانو» الفرنسية وُقّعت خلال زيارة ولي العهد لفرنسا في أغسطس 2025، والصحيح أنها وُقّعت في أغسطس من العام الجاري.",
+    "[11:39:29] [correct] done: 4 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-09-26T11-38-01-889Z.json",
+    "[11:40:10] llm ok role=checker model=claude-cli attempt=1 ms=39547",
+    "[11:40:10] brent-oil-surges-saudi-pipeline-closure-0b4217: the correction reads clean where it wrote",
+    "[11:40:10] brent-tops-105-us-iran-talks-stall-c4eaa4:   source https://www.nytimes.com/2026/09/24/business/oil-bonds-stocks-prices.html: http-403",
+    "[11:40:58] llm ok role=checker model=claude-cli attempt=1 ms=47206",
+    "[11:40:58] brent-tops-105-us-iran-talks-stall-c4eaa4: the correction reads clean where it wrote",
+    "[11:41:45] llm ok role=checker model=claude-cli attempt=1 ms=45209",
+    "[11:41:45] openai-agent-breached-australia-medicare-portal-f2c278: the correction reads clean where it wrote; 1 other error(s) found, corrected once more",
+    "[11:42:46] llm ok role=checker model=claude-cli attempt=1 ms=60653",
+    "[11:42:46] saudi-arabia-vision-2030-finance-phase-03014e: the correction reads clean where it wrote",
+    "[11:42:46] [correct] openai-agent-breached-australia-medicare-portal-f2c278: fetching 3 source(s)",
+    "[11:43:04] [correct] llm ok role=writer model=claude-cli attempt=1 ms=16955",
+    "[11:43:04] [correct] openai-agent-breached-australia-medicare-portal-f2c278: corrected; fields body",
+    "[11:43:04]     note: ذكرت نسخة سابقة من هذا الخبر أن ألبانيزي قال إن الأدلة المتاحة لا تشير إلى اختراق أوسع لشبكة سيرفيسز أستراليا، والصحيح أنه قال إنه لا يُعتقد حتى الآن أن أحداً اطلع على معلومات شخصية وإن التحقيقات مستمرة، ولم يُدلِ بتصريح عن نطاق الاختراق داخل شبكة الوكالة.",
+    "[11:43:04] [correct] done: 1 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-09-26T11-42-46-126Z.json"
+  ]
+}

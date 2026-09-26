@@ -1,0 +1,25 @@
+{
+  "startedAt": "2026-09-26T11:42:46.223Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "openai-agent-breached-australia-medicare-portal-f2c278",
+      "issue": "The body says «وقال ألبانيزي إنه لا يُعتقد حتى الآن أن أحداً اطلع على معلومات شخصية، وإن الأدلة المتاحة لا تشير إلى اختراق أوسع لشبكة سيرفيسز أستراليا.» (Albanese said no personal information is believed to have been accessed so far, and that available evidence does not indicate a wider breach of Services Australia's network.). Source BBC News says: \"\"No personal information is believed to have been accessed at this stage, but investigations are ongoing,\" Albanese said.\". Albanese said only that no personal information is believed accessed at this stage but that investigations are ongoing (and that three other systems may have been affected); the sources report no statement from him that the evidence does not point to a wider breach of Services Australia's network.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن ألبانيزي قال إن الأدلة المتاحة لا تشير إلى اختراق أوسع لشبكة سيرفيسز أستراليا، والصحيح أنه قال إنه لا يُعتقد حتى الآن أن أحداً اطلع على معلومات شخصية وإن التحقيقات مستمرة، ولم يُدلِ بتصريح عن نطاق الاختراق داخل شبكة الوكالة.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وقال ألبانيزي إنه لا يُعتقد حتى الآن أن أحداً اطلع على معلومات شخصية، وإن الأدلة المتاحة لا تشير إلى اختراق أوسع لشبكة سيرفيسز أستراليا."
+      ],
+      "newSentences": [
+        "وقال ألبانيزي إنه لا يُعتقد حتى الآن أن أحداً اطلع على معلومات شخصية، وإن التحقيقات مستمرة."
+      ]
+    }
+  ]
+}

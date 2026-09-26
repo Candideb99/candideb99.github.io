@@ -113,10 +113,16 @@
     "saudi-uranium-discovery-madinah-630462:bd012b79",
     "saudi-uranium-discovery-madinah-630462:d1a1c6a9",
     "tech-stocks-fall-ai-slowdown-calls-8c019b:b302f6d1",
-    "tech-stocks-fall-ai-slowdown-calls-8c019b:4cf09b48"
+    "tech-stocks-fall-ai-slowdown-calls-8c019b:4cf09b48",
+    "brent-tops-105-us-iran-talks-stall-c4eaa4:67f95103",
+    "openai-agent-breached-australia-medicare-portal-f2c278:39ba80b3",
+    "openai-agent-breached-australia-medicare-portal-f2c278:a6f7f3dd",
+    "saudi-arabia-vision-2030-finance-phase-03014e:1ca2a773",
+    "brent-oil-surges-saudi-pipeline-closure-0b4217:668e4e71",
+    "brent-oil-surges-saudi-pipeline-closure-0b4217:dd216224"
   ],
-  "version": 9,
-  "updatedAt": "2026-09-26T05:14:12.401Z",
+  "version": 10,
+  "updatedAt": "2026-09-26T11:43:04.129Z",
   "lessons": [
     {
       "id": "L1",
@@ -196,11 +202,12 @@
         "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:dc3aa781",
         "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:4fa40b26",
         "saudi-uranium-discovery-madinah-630462:bd012b79",
-        "saudi-uranium-discovery-madinah-630462:d1a1c6a9"
+        "saudi-uranium-discovery-madinah-630462:d1a1c6a9",
+        "openai-agent-breached-australia-medicare-portal-f2c278:39ba80b3"
       ],
-      "seen": 32,
+      "seen": 33,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T23:25:28.192Z",
+      "lastSeen": "2026-09-26T11:43:04.129Z",
       "status": "active",
       "previous": [
         "Credit each fact to whom the source credits; the outlet's own reporting is never 'informed sources', an official statement or analyst data. Name the originating outlet. Never make a reported line a quote, a private notice an announcement, or a reply the decree's aim.",
@@ -284,7 +291,7 @@
     {
       "id": "L5",
       "class": "actor",
-      "rule": "Give each action or description to the exact actor the source names. One side calling talks 'successful' is not 'officials' or both sides, market participants are not market infrastructures, and an institution is not a person. Never swap host and guest.",
+      "rule": "Give each action to the exact actor the source names and keep every step of a chain in its order: never skip a link, name a culprit the source doesn't ('Houthi drones' for 'a drone from Iraq'), or swap host and guest.",
       "example": {
         "wrong": "الرئيس الأمريكي دونالد ترامب استضاف الرئيس الصيني شي جين بينغ في بكين في مايو 2026، وهذه الزيارة هي الأولى لشي إلى واشنطن منذ 2015، وفقاً لمصدر من Euronews بتاريخ 2026-09-18.",
         "quote": "US President Donald Trump went to Beijing in May, and Chinese President Xi Jinping is now expected to come to him, scheduled to arrive next Wednesday and depart on Friday with his wife, Peng Liyuan, skipping the UN General Assembly entirely.",
@@ -296,16 +303,20 @@
         "trump-announces-ai-force-september-2026-66d8dd:c91c7dd5",
         "iran-gdp-contracts-10-percent-post-war-a88253:df2a1ae0",
         "us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac:c8437999",
-        "ecb-launches-pontes-tokenised-securities-b5dc9b:fc0b9c96"
+        "ecb-launches-pontes-tokenised-securities-b5dc9b:fc0b9c96",
+        "openai-agent-breached-australia-medicare-portal-f2c278:a6f7f3dd",
+        "brent-oil-surges-saudi-pipeline-closure-0b4217:668e4e71"
       ],
-      "seen": 5,
+      "seen": 7,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T12:04:58.585Z",
+      "lastSeen": "2026-09-26T11:43:04.129Z",
       "status": "active",
       "previous": [
         "For visits, hosting, deals and transfers, reread the source's verb to see who acts on whom. 'Trump went to Beijing' means Xi hosted Trump. Check that subject and object have not been swapped before printing.",
-        "Give each action to the exact actor the source's verb names. If MPs called for a law after a committee's finding, the committee did not call for it. An institution such as a military headquarters is not a person. Never swap host and guest."
-      ]
+        "Give each action to the exact actor the source's verb names. If MPs called for a law after a committee's finding, the committee did not call for it. An institution such as a military headquarters is not a person. Never swap host and guest.",
+        "Give each action or description to the exact actor the source names. One side calling talks 'successful' is not 'officials' or both sides, market participants are not market infrastructures, and an institution is not a person. Never swap host and guest."
+      ],
+      "sharpenedAt": "2026-09-26T11:43:04.129Z"
     },
     {
       "id": "L6",
@@ -337,11 +348,13 @@
         "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:4aed2427",
         "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:04bf5426",
         "turkish-airlines-orders-150-boeing-737-max-e89a62:60ba7800",
-        "tech-stocks-fall-ai-slowdown-calls-8c019b:b302f6d1"
+        "tech-stocks-fall-ai-slowdown-calls-8c019b:b302f6d1",
+        "saudi-arabia-vision-2030-finance-phase-03014e:1ca2a773",
+        "brent-oil-surges-saudi-pipeline-closure-0b4217:dd216224"
       ],
-      "seen": 20,
+      "seen": 22,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-26T05:14:12.401Z",
+      "lastSeen": "2026-09-26T11:43:04.129Z",
       "status": "active",
       "previous": [
         "Take each event's day from the source's sentence about that event; convert a weekday by counting back from the publication date. Keep an announcement, a takeover, a later remark and a reply on their own days, with any time of day given.",
@@ -391,11 +404,13 @@
         "saudi-sells-100-million-barrels-asia-hormuz-b316ff:59844993",
         "trump-backs-us-diesel-export-ban-79317b:2d2702db",
         "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c:a3bb75d3",
-        "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c:f9c962b8"
+        "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c:f9c962b8",
+        "brent-tops-105-us-iran-talks-stall-c4eaa4:67f95103",
+        "brent-oil-surges-saudi-pipeline-closure-0b4217:dd216224"
       ],
-      "seen": 8,
+      "seen": 10,
       "createdAt": "2026-09-25T12:04:58.585Z",
-      "lastSeen": "2026-09-25T23:25:28.192Z",
+      "lastSeen": "2026-09-26T11:43:04.129Z",
       "status": "active",
       "previous": [
         "Copy every number and ranking with its own qualifier. 500 is not 'more than 500', 'nearly 4,000' is not 4,000, and 'one of the most important' is not 'the most important'. Never move a qualifier from one figure onto its neighbour."
@@ -421,6 +436,25 @@
       "lastSeen": "2026-09-25T23:25:28.192Z",
       "status": "active",
       "activatedAt": "2026-09-25T23:25:28.192Z"
+    },
+    {
+      "id": "L10",
+      "class": "attribution",
+      "rule": "When a story uses several outlets, keep each figure and account with the outlet that printed it. Never credit one outlet's price to another, or blend two outlets' numbers and causes into one attributed sentence; give each version its own source.",
+      "example": {
+        "wrong": "قفز سعر برنت إلى أكثر من 108.5 دولار للبرميل في 14 سبتمبر، بزيادة 3.7%، بعدما أجبرت هجمات بطائرات مسيرة حوثية السعودية على إغلاق خط أنابيب النفط الشرقي-الغربي، بحسب «الجزيرة الإنجليزية».",
+        "quote": "The rise came after Saudi Arabia’s East-West oil pipeline was temporarily shut by a drone attack originating from Iraq, according to Saudi officials.",
+        "source": "Al Jazeera English",
+        "slug": "brent-oil-surges-saudi-pipeline-closure-0b4217"
+      },
+      "evidence": [
+        "brent-oil-surges-saudi-pipeline-closure-0b4217:668e4e71"
+      ],
+      "seen": 1,
+      "createdAt": "2026-09-26T11:43:04.129Z",
+      "lastSeen": "2026-09-26T11:43:04.129Z",
+      "status": "active",
+      "activatedAt": "2026-09-26T11:43:04.129Z"
     }
   ],
   "model": "claude-cli",
@@ -519,6 +553,18 @@
       "applied": [
         "reinforce L6 (+1; reworded at most once a week)",
         "reinforce L7 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-09-26T11:43:04.129Z",
+      "mistakes": 6,
+      "applied": [
+        "reinforce L2 (+1)",
+        "sharpen L5 (+2)",
+        "reinforce L6 (+2; reworded at most once a week)",
+        "reinforce L8 (+2; reworded at most once a week)",
+        "add L10 [attribution] from 1 mistake(s)",
+        "L10 now read by the writer (one serious mistake in a headline or lede)"
       ]
     }
   ]

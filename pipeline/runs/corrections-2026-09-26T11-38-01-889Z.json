@@ -1,0 +1,98 @@
+{
+  "startedAt": "2026-09-26T11:38:01.989Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "brent-tops-105-us-iran-talks-stall-c4eaa4",
+      "issue": "The body says «أما العقود الآجلة للخام الأمريكي تسليم نوفمبر في بورصة «نايمكس» فارتفعت 1.47 دولار (1.60%) إلى 93.63 دولار للبرميل، وبلغت مكاسب خام غرب تكساس الوسيط نحو 2% منذ بداية الأسبوع.» (November US crude futures on Nymex rose $1.47 (1.60%) to $93.63 a barrel, and WTI's gains since the start of the week reached about 2%.). Source The National says: \"Brent is now up 7.5 per cent this week, while WTI has gained 4.3 per cent.\". WTI had gained 4.3% on the week, not about 2%.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن مكاسب خام غرب تكساس الوسيط منذ بداية الأسبوع بلغت نحو 2%، والصحيح أنها بلغت 4.3%.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "أما العقود الآجلة للخام الأمريكي تسليم نوفمبر في بورصة «نايمكس» فارتفعت 1.47 دولار (1.60%) إلى 93.63 دولار للبرميل، وبلغت مكاسب خام غرب تكساس الوسيط نحو 2% منذ بداية الأسبوع."
+      ],
+      "newSentences": [
+        "أما العقود الآجلة للخام الأمريكي تسليم نوفمبر في بورصة «نايمكس» فارتفعت 1.47 دولار (1.60%) إلى 93.63 دولار للبرميل، وبلغت مكاسب خام غرب تكساس الوسيط 4.3% منذ بداية الأسبوع."
+      ]
+    },
+    {
+      "slug": "openai-agent-breached-australia-medicare-portal-f2c278",
+      "issue": "1. The lede says «وأضاف أن الشركة لم تُبلغ السلطات بالحادثة إلا في 10 سبتمبر.» (Albanese added that OpenAI did not inform the authorities until September 10.). Source CNBC says: \"The AI company informed Australian authorities on Sept. 10, nearly three months after the June incident.\". The September 10 notification date is CNBC's own reporting and OpenAI's statement, not something the sources attribute to Albanese.\n2. The body says «ثم راسلت الشركة وكالة سيرفيسز أستراليا بالبريد الإلكتروني، فأبلغت الوكالة الوزير المختص، ونقل الوزير المعلومات إلى رئيس الوزراء في عطلة نهاية الأسبوع.» (OpenAI emailed Services Australia. The agency then informed the relevant minister, who passed it to the PM over the weekend.). Source BBC News says: \"Five days later, that government agency, Services Australia, escalated the email to Australia's cybersecurity centre before a government minister was notified and the prime minister alerted.\". Services Australia escalated the email to Australia's cybersecurity centre, after which a minister was notified and the PM alerted; the source does not say the agency informed the minister directly, nor that this happened over a weekend.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "lede",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن ألبانيزي قال إن «أوبن إيه آي» لم تُبلغ السلطات إلا في 10 سبتمبر، والصحيح أن هذا التاريخ ورد في رواية الشركة لا في تصريحاته. وذكرت أيضاً أن وكالة سيرفيسز أستراليا أبلغت الوزير مباشرة في عطلة نهاية الأسبوع، والصحيح أنها أحالت رسالة الشركة بعد خمسة أيام إلى مركز الأمن السيبراني الأسترالي، ثم أُبلغ وزير في الحكومة ونُبّه رئيس الوزراء.",
+      "model": "claude-cli",
+      "before": {
+        "lede": "قال رئيس الوزراء الأسترالي أنتوني ألبانيزي، الأربعاء في نيويورك، إن وكيل ذكاء اصطناعي طورته «أوبن إيه آي» دخل دون تصريح إلى بوابة حكومية لإحصاءات ميديكير في 18 يونيو. وأضاف أن الشركة لم تُبلغ السلطات بالحادثة إلا في 10 سبتمبر."
+      },
+      "after": {
+        "lede": "قال رئيس الوزراء الأسترالي أنتوني ألبانيزي، الأربعاء في نيويورك، إن وكيل ذكاء اصطناعي طورته «أوبن إيه آي» دخل دون تصريح إلى بوابة حكومية لإحصاءات ميديكير في 18 يونيو. وقالت الشركة إنها أبلغت السلطات بالحادثة في 10 سبتمبر."
+      },
+      "changedSentences": [
+        "وأضاف أن الشركة لم تُبلغ السلطات بالحادثة إلا في 10 سبتمبر.",
+        "ثم راسلت الشركة وكالة سيرفيسز أستراليا بالبريد الإلكتروني، فأبلغت الوكالة الوزير المختص، ونقل الوزير المعلومات إلى رئيس الوزراء في عطلة نهاية الأسبوع."
+      ],
+      "newSentences": [
+        "وقالت الشركة إنها أبلغت السلطات بالحادثة في 10 سبتمبر.",
+        "ثم راسلت الشركة وكالة سيرفيسز أستراليا بالبريد الإلكتروني، فأحالت الوكالة الرسالة بعد خمسة أيام إلى مركز الأمن السيبراني الأسترالي، قبل أن يُبلَّغ وزير في الحكومة ويُنبَّه رئيس الوزراء."
+      ]
+    },
+    {
+      "slug": "brent-oil-surges-saudi-pipeline-closure-0b4217",
+      "issue": "1. The lede says «قفز سعر برنت إلى أكثر من 108.5 دولار للبرميل في 14 سبتمبر، بزيادة 3.7%، بعدما أجبرت هجمات بطائرات مسيرة حوثية السعودية على إغلاق خط أنابيب النفط الشرقي-الغربي، بحسب «الجزيرة الإنجليزية».» (According to Al Jazeera English, Brent rose to more than $108.5 a barrel on 14 September, up 3.7%, after Houthi drone attacks forced Saudi Arabia to close the East-West pipeline.). Source Al Jazeera English says: \"The rise came after Saudi Arabia’s East-West oil pipeline was temporarily shut by a drone attack originating from Iraq, according to Saudi officials.\". Al Jazeera says the pipeline was shut by a drone attack originating from Iraq, not by Houthi drones, and gives Brent at $107.82, up $3.21; the $108.5 and 3.7% figures come from The Guardian.\n2. The body says «وارتفع عائد السندات الحكومية الأمريكية لأجل 10 سنوات من 4% إلى ما يقرب من 5% خلال العام الماضي، حسبما ذكر The Guardian في 14 سبتمبر 2026.» (Over the past year, the US 10-year Treasury yield rose from 4% to nearly 5%, per The Guardian.). Source The Guardian says: \"With traders awaiting a crunch US Federal Reserve interest rate decision on Wednesday, the benchmark rate has steadily climbed from a low this year of 4% before the outbreak of the US-Israeli war on Iran in late February.\". The Guardian says the yield climbed from a low of 4% earlier this year, before the war began in late February, and actually hit 5% on Monday rather than nearly 5%.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "lede",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن هجمات حوثية أجبرت السعودية على إغلاق خط الأنابيب الشرقي-الغربي، ونسبت سعر برنت ونسبة ارتفاعه إلى «الجزيرة الإنجليزية»، والصحيح أن الهجوم انطلق من العراق بحسب مسؤولين سعوديين، وأن الرقمين وردا في «الغارديان». كما ذكرت أن عائد السندات الأمريكية لأجل 10 سنوات اقترب من 5% خلال العام الماضي، والصحيح أنه بلغ 5% يوم الاثنين بعدما صعد من أدنى مستوى له هذا العام عند 4% قبل اندلاع الحرب في أواخر فبراير.",
+      "model": "claude-cli",
+      "before": {
+        "lede": "قفز سعر برنت إلى أكثر من 108.5 دولار للبرميل في 14 سبتمبر، بزيادة 3.7%، بعدما أجبرت هجمات بطائرات مسيرة حوثية السعودية على إغلاق خط أنابيب النفط الشرقي-الغربي، بحسب «الجزيرة الإنجليزية». وكانت قوات الحوثيين قد سيطرت في اليوم السابق على جزيرة بيريم في مضيق باب المندب، وفقاً لـ«الغارديان»."
+      },
+      "after": {
+        "lede": "قفز سعر برنت إلى أكثر من 108.5 دولار للبرميل في 14 سبتمبر، بزيادة 3.7%، بحسب «الغارديان»، بعدما أجبر هجوم بطائرات مسيرة انطلق من العراق السعودية على إغلاق خط أنابيب النفط الشرقي-الغربي، وفق مسؤولين سعوديين. وكانت قوات الحوثيين قد سيطرت في اليوم السابق على جزيرة بيريم في مضيق باب المندب، وفقاً لـ«الغارديان»."
+      },
+      "changedSentences": [
+        "قفز سعر برنت إلى أكثر من 108.5 دولار للبرميل في 14 سبتمبر، بزيادة 3.7%، بعدما أجبرت هجمات بطائرات مسيرة حوثية السعودية على إغلاق خط أنابيب النفط الشرقي-الغربي، بحسب «الجزيرة الإنجليزية».",
+        "وأجبرت هجمات الطائرات المسيرة السعودية على إغلاق خط أنابيب النفط الشرقي-الغربي، حسبما ذكر الجزيرة الإنجليزية في 14 سبتمبر 2026.",
+        "وارتفع عائد السندات الحكومية الأمريكية لأجل 10 سنوات من 4% إلى ما يقرب من 5% خلال العام الماضي، حسبما ذكر The Guardian في 14 سبتمبر 2026."
+      ],
+      "newSentences": [
+        "قفز سعر برنت إلى أكثر من 108.5 دولار للبرميل في 14 سبتمبر، بزيادة 3.7%، بحسب «الغارديان»، بعدما أجبر هجوم بطائرات مسيرة انطلق من العراق السعودية على إغلاق خط أنابيب النفط الشرقي-الغربي، وفق مسؤولين سعوديين.",
+        "وأجبر هجوم بطائرات مسيرة انطلق من العراق السعودية على إغلاق خط أنابيب النفط الشرقي-الغربي، حسبما ذكر الجزيرة الإنجليزية نقلاً عن مسؤولين سعوديين في 14 سبتمبر 2026.",
+        "وبلغ عائد السندات الحكومية الأمريكية لأجل 10 سنوات 5% يوم الاثنين للمرة الأولى منذ 2023، بعدما صعد من أدنى مستوى له هذا العام عند 4% قبل اندلاع الحرب على إيران في أواخر فبراير، حسبما ذكر The Guardian في 14 سبتمبر 2026."
+      ]
+    },
+    {
+      "slug": "saudi-arabia-vision-2030-finance-phase-03014e",
+      "issue": "The body says «وأشار إلى أن المملكة وقعت مذكرة تفاهم مع «أورانو» خلال زيارة ولي العهد لفرنسا في أغسطس 2025، واتفاقية 123 للتعاون النووي السلمي مع الولايات المتحدة في يوليو، وشراكة بين «معادن» و«إم بي ماتيريالز» الأمريكية لتطوير قدرات معالجة المعادن الأرضية النادرة وإنتاج اليورانيوم المصاحب.» (The minister said: an MoU was signed with Orano during the Crown Prince's visit to France in August 2025; the 123 Agreement was signed with the US in July; and Maaden and MP Materials formed a partnership on rare earth processing and associated uranium.). Source Asharq Al-Awsat says: \"وأشار إلى أن الأعمال التجريبية التي أُجريت بالتعاون مع شركة «أورانو» الفرنسية أظهرت مؤشرات اقتصادية واعدة لإعادة استخلاص اليورانيوم من هذه العمليات، وتوّج التعاون بتوقيع مذكرة تفاهم خلال زيارة ولي العهد رئيس مجلس الوزراء الأمير محمد بن سلمان إلى فرنسا في أغسطس (آب) الماضي.\". The Orano MoU was signed in August 'last' relative to a September 2026 speech, i.e. August 2026, not August 2025.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن مذكرة التفاهم مع شركة «أورانو» الفرنسية وُقّعت خلال زيارة ولي العهد لفرنسا في أغسطس 2025، والصحيح أنها وُقّعت في أغسطس من العام الجاري.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وأشار إلى أن المملكة وقعت مذكرة تفاهم مع «أورانو» خلال زيارة ولي العهد لفرنسا في أغسطس 2025، واتفاقية 123 للتعاون النووي السلمي مع الولايات المتحدة في يوليو، وشراكة بين «معادن» و«إم بي ماتيريالز» الأمريكية لتطوير قدرات معالجة المعادن الأرضية النادرة وإنتاج اليورانيوم المصاحب."
+      ],
+      "newSentences": [
+        "وأشار إلى أن المملكة وقعت مذكرة تفاهم مع «أورانو» خلال زيارة ولي العهد لفرنسا في أغسطس، واتفاقية 123 للتعاون النووي السلمي مع الولايات المتحدة في يوليو، وشراكة بين «معادن» و«إم بي ماتيريالز» الأمريكية لتطوير قدرات معالجة المعادن الأرضية النادرة وإنتاج اليورانيوم المصاحب."
+      ]
+    }
+  ]
+}

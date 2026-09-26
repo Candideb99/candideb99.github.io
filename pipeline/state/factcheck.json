@@ -4714,6 +4714,506 @@
         "remaining": [],
         "newFound": []
       }
+    },
+    "new-york-fed-williams-another-rate-hike-c539cd": {
+      "at": "2026-09-26T11:35:01.390Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-24T12:13:55.374Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 21,
+        "checked": 21,
+        "supported": 17,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 3,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "مؤشر الدولار: 101.15 نقطة",
+        "دفع تزايد توقعات رفع الفائدة الأمريكية في الأجل القريب مؤشر الدولار إلى 101.15 نقطة، وهو أعلى مستوى له في نحو شهرين.",
+        "ويترك هذا النهج للمستثمرين مهمة استقراء الخطوة التالية من تصريحات المسؤولين والبيانات الصادرة."
+      ],
+      "weak": [
+        {
+          "sentence": "ومع اقتراب احتمال الزيادة في اجتماع أكتوبر من 77.5%، تتجه الأسواق إلى تسعير فائدة أمريكية تتجاوز نطاقها الحالي البالغ بين 3.75% و4%.",
+          "quote": "CME Group's FedWatch tool put the probability of an October raise at 77.5% on Thursday, up from around 53% on Wednesday."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "trump-takaichi-yen-weakness-concern-e6a74d": {
+      "at": "2026-09-26T11:35:01.367Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "control",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-26T05:19:16.042Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 18,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "brent-tops-105-us-iran-talks-stall-c4eaa4": {
+      "at": "2026-09-26T11:35:31.329Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-24T12:08:22.875Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 27,
+        "checked": 27,
+        "supported": 18,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 2,
+        "conflict": 4,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 13,
+          "field": "body",
+          "sentence": "أما العقود الآجلة للخام الأمريكي تسليم نوفمبر في بورصة «نايمكس» فارتفعت 1.47 دولار (1.60%) إلى 93.63 دولار للبرميل، وبلغت مكاسب خام غرب تكساس الوسيط نحو 2% منذ بداية الأسبوع.",
+          "claim": "November US crude futures on Nymex rose $1.47 (1.60%) to $93.63 a barrel, and WTI's gains since the start of the week reached about 2%.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "The National",
+          "sourceDate": "2026-09-24",
+          "quote": "Brent is now up 7.5 per cent this week, while WTI has gained 4.3 per cent.",
+          "correction": "WTI had gained 4.3% on the week, not about 2%.",
+          "class": "figure"
+        }
+      ],
+      "listed": [
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "subtitle",
+          "sentence": "خام برنت يرفع مكاسبه منذ بداية الأسبوع إلى 5.5% بعد هبوطه الثلاثاء على أمل انفراجة دبلوماسية",
+          "quote": "Brent is now up 7.5 per cent this week, while WTI has gained 4.3 per cent.",
+          "source": "The National",
+          "correction": "According to The National, Brent was up 7.5% on the week, not 5.5%."
+        },
+        {
+          "status": "conflict",
+          "field": "lede",
+          "sentence": "ارتفعت العقود الآجلة لخام برنت 1.95% إلى 105.09 دولار للبرميل خلال جلسة الخميس، مع تعثر المحادثات الأمريكية الإيرانية على هامش الجمعية العامة للأمم المتحدة.",
+          "quote": "Brent, the benchmark for two-thirds of the world's oil, jumped 4.71 per cent to $107.93 a barrel at 7.42pm UAE time.",
+          "source": "The National"
+        },
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "سعر عقود برنت تسليم نوفمبر: 105.09 دولار للبرميل",
+          "quote": "Brent, the benchmark for two-thirds of the world's oil, jumped 4.71 per cent to $107.93 a barrel at 7.42pm UAE time.",
+          "source": "The National"
+        },
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "ارتفاع برنت في جلسة الخميس: 1.95%",
+          "quote": "Brent, the benchmark for two-thirds of the world's oil, jumped 4.71 per cent to $107.93 a barrel at 7.42pm UAE time.",
+          "source": "The National"
+        },
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "سعر الخام الأمريكي في نايمكس: 93.63 دولار للبرميل",
+          "quote": "West Texas Intermediate, the gauge that tracks US crude, added 4.58 per cent to $96.38 per barrel.",
+          "source": "The National"
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "مكاسب برنت منذ بداية الأسبوع: 5.5%",
+          "quote": "Brent is now up 7.5 per cent this week, while WTI has gained 4.3 per cent.",
+          "source": "The National",
+          "correction": "Brent was up 7.5% on the week, not 5.5%."
+        }
+      ],
+      "notFound": [
+        "وتخطى الخام 106 دولارات للبرميل لفترة وجيزة، بعد قفزة تجاوزت 3%.",
+        "ويبقي ذلك سعر البرميل حساساً لكل إشارة تصدر عن طهران وواشنطن، حتى بعد عودة الضخ عبر الخط السعودي الذي يلتفّ على مضيق هرمز."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن مكاسب خام غرب تكساس الوسيط منذ بداية الأسبوع بلغت نحو 2%، والصحيح أنها بلغت 4.3%.",
+      "verified": {
+        "at": "2026-09-26T11:40:58.904Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
+    },
+    "openai-agent-breached-australia-medicare-portal-f2c278": {
+      "at": "2026-09-26T11:35:39.181Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-24T05:24:17.493Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 20,
+        "weak": 0,
+        "noEvidence": 2,
+        "notFound": 1,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 4,
+          "field": "lede",
+          "sentence": "وأضاف أن الشركة لم تُبلغ السلطات بالحادثة إلا في 10 سبتمبر.",
+          "claim": "Albanese added that OpenAI did not inform the authorities until September 10.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-24",
+          "quote": "The AI company informed Australian authorities on Sept. 10, nearly three months after the June incident.",
+          "correction": "The September 10 notification date is CNBC's own reporting and OpenAI's statement, not something the sources attribute to Albanese.",
+          "class": "attribution"
+        },
+        {
+          "id": 14,
+          "field": "body",
+          "sentence": "ثم راسلت الشركة وكالة سيرفيسز أستراليا بالبريد الإلكتروني، فأبلغت الوكالة الوزير المختص، ونقل الوزير المعلومات إلى رئيس الوزراء في عطلة نهاية الأسبوع.",
+          "claim": "OpenAI emailed Services Australia. The agency then informed the relevant minister, who passed it to the PM over the weekend.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "BBC News",
+          "sourceDate": "2026-09-24",
+          "quote": "Five days later, that government agency, Services Australia, escalated the email to Australia's cybersecurity centre before a government minister was notified and the prime minister alerted.",
+          "correction": "Services Australia escalated the email to Australia's cybersecurity centre, after which a minister was notified and the PM alerted; the source does not say the agency informed the minister directly, nor that this happened over a weekend.",
+          "class": "actor"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "وأوضح ألبانيزي أن البوابة تتبع وكالة سيرفيسز أستراليا (Services Australia)، وتضم بيانات غير حساسة من ميديكير، نظام الرعاية الصحية الشامل في البلاد، منها إحصاءات عن الإنفاق.",
+        "وذكرت الشركة أن مراجعتها لم تعثر على دليل يثبت الوصول إلى سجلات المرضى، وأن المراجعة الشاملة مستمرة.",
+        "وقال ألبانيزي إنه لا يُعتقد حتى الآن أن أحداً اطلع على معلومات شخصية، وإن الأدلة المتاحة لا تشير إلى اختراق أوسع لشبكة سيرفيسز أستراليا."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن ألبانيزي قال إن «أوبن إيه آي» لم تُبلغ السلطات إلا في 10 سبتمبر، والصحيح أن هذا التاريخ ورد في رواية الشركة لا في تصريحاته. وذكرت أيضاً أن وكالة سيرفيسز أستراليا أبلغت الوزير مباشرة في عطلة نهاية الأسبوع، والصحيح أنها أحالت رسالة الشركة بعد خمسة أيام إلى مركز الأمن السيبراني الأسترالي، ثم أُبلغ وزير في الحكومة ونُبّه رئيس الوزراء.",
+      "verified": {
+        "at": "2026-09-26T11:41:45.108Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": [
+          {
+            "class": "attribution",
+            "field": "body",
+            "sentence": "وقال ألبانيزي إنه لا يُعتقد حتى الآن أن أحداً اطلع على معلومات شخصية، وإن الأدلة المتاحة لا تشير إلى اختراق أوسع لشبكة سيرفيسز أستراليا.",
+            "quote": "\"No personal information is believed to have been accessed at this stage, but investigations are ongoing,\" Albanese said.",
+            "correction": "Albanese said only that no personal information is believed accessed at this stage but that investigations are ongoing (and that three other systems may have been affected); the sources report no statement from him that the evidence does not point to a wider breach of Services Australia's network."
+          }
+        ],
+        "secondCorrection": "corrected"
+      }
+    },
+    "us-china-trade-truce-extended-january-362e8f": {
+      "at": "2026-09-26T11:36:23.716Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-24T05:12:09.933Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 22,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "مدة الهدنة الأصلية: عام واحد",
+          "quote": "Xi’s landed at Joint Base Andrews, outside the US capital, on Wednesday as the Trump administration announced that the two countries have agreed to extend an 11-month trade deal that offered temporary relief from punishing tariffs.",
+          "source": "Al Jazeera English"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وكان الرئيسان شي ودونالد ترامب قد اتفقا على هدنة تجارية مدتها عام واحد خلال لقائهما في كوريا الجنوبية في أكتوبر الماضي.",
+          "quote": "Xi’s landed at Joint Base Andrews, outside the US capital, on Wednesday as the Trump administration announced that the two countries have agreed to extend an 11-month trade deal that offered temporary relief from punishing tariffs.",
+          "source": "Al Jazeera English"
+        }
+      ],
+      "notFound": [
+        "ولم تتطرق وسائل الإعلام الرسمية الصينية فوراً إلى تصريحات بيسنت، كما خلا البيان الرسمي لوصول شي من أي إشارة إلى الرسوم الجمركية أو المعادن النادرة."
+      ],
+      "weak": [],
+      "outcome": "listed"
+    },
+    "us-energy-secretary-opposes-diesel-export-ban-08f217": {
+      "at": "2026-09-26T11:36:28.806Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-23T21:44:46.060Z",
+      "sourcesRead": 2,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 20,
+        "weak": 0,
+        "noEvidence": 3,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "وزير الطاقة الأمريكي يعارض حظر صادرات الديزل الذي يؤيده ترامب",
+        "علاوة الديزل الأوروبي على برنت: أكثر من 95 دولاراً للبرميل",
+        "وفي أوروبا، قفزت علاوة الديزل على خام برنت الأربعاء إلى أكثر من 95 دولاراً للبرميل، مسجلة أعلى مستوى في بيانات «بلومبرغ» التي تعود إلى عام 2011."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "brent-oil-surges-saudi-pipeline-closure-0b4217": {
+      "at": "2026-09-26T11:37:08.601Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-14T13:08:40.093Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 9,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 3,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 3,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 3,
+          "field": "lede",
+          "sentence": "قفز سعر برنت إلى أكثر من 108.5 دولار للبرميل في 14 سبتمبر، بزيادة 3.7%، بعدما أجبرت هجمات بطائرات مسيرة حوثية السعودية على إغلاق خط أنابيب النفط الشرقي-الغربي، بحسب «الجزيرة الإنجليزية».",
+          "claim": "According to Al Jazeera English, Brent rose to more than $108.5 a barrel on 14 September, up 3.7%, after Houthi drone attacks forced Saudi Arabia to close the East-West pipeline.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Al Jazeera English",
+          "sourceDate": "2026-09-14",
+          "quote": "The rise came after Saudi Arabia’s East-West oil pipeline was temporarily shut by a drone attack originating from Iraq, according to Saudi officials.",
+          "correction": "Al Jazeera says the pipeline was shut by a drone attack originating from Iraq, not by Houthi drones, and gives Brent at $107.82, up $3.21; the $108.5 and 3.7% figures come from The Guardian.",
+          "class": "actor"
+        },
+        {
+          "id": 18,
+          "field": "body",
+          "sentence": "وارتفع عائد السندات الحكومية الأمريكية لأجل 10 سنوات من 4% إلى ما يقرب من 5% خلال العام الماضي، حسبما ذكر The Guardian في 14 سبتمبر 2026.",
+          "claim": "Over the past year, the US 10-year Treasury yield rose from 4% to nearly 5%, per The Guardian.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "The Guardian",
+          "sourceDate": "2026-09-14",
+          "quote": "With traders awaiting a crunch US Federal Reserve interest rate decision on Wednesday, the benchmark rate has steadily climbed from a low this year of 4% before the outbreak of the US-Israeli war on Iran in late February.",
+          "correction": "The Guardian says the yield climbed from a low of 4% earlier this year, before the war began in late February, and actually hit 5% on Monday rather than nearly 5%.",
+          "class": "period"
+        }
+      ],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "subtitle",
+          "sentence": "دول الخليج تؤجل محادثات هرمز مع طهران عقب هجمات الحوثيين",
+          "quote": "A diplomatic meeting between Iran and the Gulf Arab states to discuss the situation in Hormuz, originally scheduled to take place Monday in Oman, was abruptly postponed after the pipeline attack.",
+          "source": "CNBC"
+        },
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "سعر برنت: 108.5 دولار للبرميل",
+          "quote": "Brent futures, the international benchmark, gained 1% to close at $105.68 per barrel after nearly hitting $110 earlier in the session.",
+          "source": "CNBC"
+        },
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "الزيادة اليومية: 3.7%",
+          "quote": "Brent futures, the international benchmark, gained 1% to close at $105.68 per barrel after nearly hitting $110 earlier in the session.",
+          "source": "CNBC"
+        }
+      ],
+      "notFound": [
+        "متوسط التصدير من ينبع: 2.6 مليون برميل يوميًا",
+        "إغلاق خط الأنابيب السعودي الشرقي-الغربي يهدد بإزالة مسار تصدير حيوي ينقل ما يعادل ثلث إنتاج السعودية اليومي، مما يضغط على إمدادات النفط العالمية ويزيد التكاليف على المصافي في آسيا وأوروبا التي تعتمد على الخام السعودي عبر البحر الأحمر.",
+        "ومتوسط تحميل النفط الخام للتصدير من ميناء ينبع السعودي بلغ 2.6 مليون برميل يومياً خلال آخر سبعة أيام، حسبما ذكر رستاد ونقله سي إن بي سي في 14 سبتمبر 2026.",
+        "ارتفعت أسعار الغاز في المملكة المتحدة إلى 208.73 بنس للثرم، وهو أعلى مستوى منذ ديسمبر 2022، حسبما ذكر The Guardian في 14 سبتمبر 2026."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن هجمات حوثية أجبرت السعودية على إغلاق خط الأنابيب الشرقي-الغربي، ونسبت سعر برنت ونسبة ارتفاعه إلى «الجزيرة الإنجليزية»، والصحيح أن الهجوم انطلق من العراق بحسب مسؤولين سعوديين، وأن الرقمين وردا في «الغارديان». كما ذكرت أن عائد السندات الأمريكية لأجل 10 سنوات اقترب من 5% خلال العام الماضي، والصحيح أنه بلغ 5% يوم الاثنين بعدما صعد من أدنى مستوى له هذا العام عند 4% قبل اندلاع الحرب في أواخر فبراير.",
+      "verified": {
+        "at": "2026-09-26T11:40:10.564Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
+    },
+    "saudi-arabia-vision-2030-finance-phase-03014e": {
+      "at": "2026-09-26T11:36:59.655Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-14T13:19:15.551Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 13,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 1,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 15,
+          "field": "body",
+          "sentence": "وأشار إلى أن المملكة وقعت مذكرة تفاهم مع «أورانو» خلال زيارة ولي العهد لفرنسا في أغسطس 2025، واتفاقية 123 للتعاون النووي السلمي مع الولايات المتحدة في يوليو، وشراكة بين «معادن» و«إم بي ماتيريالز» الأمريكية لتطوير قدرات معالجة المعادن الأرضية النادرة وإنتاج اليورانيوم المصاحب.",
+          "claim": "The minister said: an MoU was signed with Orano during the Crown Prince's visit to France in August 2025; the 123 Agreement was signed with the US in July; and Maaden and MP Materials formed a partnership on rare earth processing and associated uranium.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Asharq Al-Awsat",
+          "sourceDate": "2026-09-14",
+          "quote": "وأشار إلى أن الأعمال التجريبية التي أُجريت بالتعاون مع شركة «أورانو» الفرنسية أظهرت مؤشرات اقتصادية واعدة لإعادة استخلاص اليورانيوم من هذه العمليات، وتوّج التعاون بتوقيع مذكرة تفاهم خلال زيارة ولي العهد رئيس مجلس الوزراء الأمير محمد بن سلمان إلى فرنسا في أغسطس (آب) الماضي.",
+          "correction": "The Orano MoU was signed in August 'last' relative to a September 2026 speech, i.e. August 2026, not August 2025.",
+          "class": "period"
+        }
+      ],
+      "listed": [
+        {
+          "status": "listed",
+          "class": "cause",
+          "field": "subtitle",
+          "sentence": "الجدعان: القرار يدمج السوق المالية في النظام العالمي",
+          "quote": "ووفق الجدعان، يأتي قرار مجلس الوزراء بتمكين المقرات الإقليمية للمؤسسات المالية المرخَّصة من وزارة الاستثمار ومنظمي القطاع المعني لمزاولة الأنشطة المالية العابرة للحدود التي تعتمدها لجنة برنامج تطوير القطاع المالي، ليعزز تنافسية البيئة المالية، ويوسَع نطاق الأعمال التي يمكن إدارتها من المملكة، ويرسخ حضورها مركزاً إقليمياً للمؤسسات المالية العالمية.",
+          "source": "Asharq Al-Awsat",
+          "correction": "Al-Jadaan said the decision strengthens the competitiveness of the financial environment, widens the business that can be run from the Kingdom and establishes it as a regional hub for global financial institutions; he did not say it integrates the market into the global system."
+        },
+        {
+          "status": "conflict",
+          "field": "lede",
+          "sentence": "وكان الجدعان قد تحدث خلال مؤتمر «موني 20/20» الذي استضاف أكثر من 38 ألف زائر من 14 إلى 16 سبتمبر.",
+          "quote": "ومن المتوقع أن تستقطب نسخة عام 2026 أكثر من 38 ألف مشارك، إلى جانب 350 علامة تجارية عارضة، وأكثر من 350 متحدثاً، وما يزيد على 600 مستثمر، و150 شركة ناشئة.",
+          "source": "Asharq Al-Awsat"
+        },
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "عدد زوار مؤتمر موني 20/20: 38 ألف",
+          "quote": "ومن المتوقع أن تستقطب نسخة عام 2026 أكثر من 38 ألف مشارك، إلى جانب 350 علامة تجارية عارضة، وأكثر من 350 متحدثاً، وما يزيد على 600 مستثمر، و150 شركة ناشئة.",
+          "source": "Asharq Al-Awsat"
+        }
+      ],
+      "notFound": [],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن مذكرة التفاهم مع شركة «أورانو» الفرنسية وُقّعت خلال زيارة ولي العهد لفرنسا في أغسطس 2025، والصحيح أنها وُقّعت في أغسطس من العام الجاري.",
+      "verified": {
+        "at": "2026-09-26T11:42:46.126Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
     }
   }
 }

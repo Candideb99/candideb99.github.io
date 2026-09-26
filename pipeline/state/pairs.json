@@ -81,6 +81,94 @@
         "keyFacts": 6,
         "classes": []
       }
+    },
+    {
+      "at": "2026-09-26T11:57:44.528Z",
+      "slug": "sp-raises-oman-growth-forecast-2026-94f282",
+      "checker": "f6d38e4947.2",
+      "lessons": "v10",
+      "lessonsHash": "585ad1cb1a",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 18,
+        "notFound": 0,
+        "checked": 18,
+        "words": 173,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 20,
+        "notFound": 0,
+        "checked": 22,
+        "words": 295,
+        "keyFacts": 5,
+        "classes": [],
+        "programmatic": 2
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 20,
+        "notFound": 0,
+        "checked": 22,
+        "words": 295,
+        "keyFacts": 5,
+        "classes": [],
+        "programmatic": 2
+      }
+    },
+    {
+      "at": "2026-09-26T12:04:09.222Z",
+      "slug": "xrg-absheron-final-investment-decision-azerbaijan-58c717",
+      "checker": "f6d38e4947.2",
+      "lessons": "v10",
+      "lessonsHash": "585ad1cb1a",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 17,
+        "notFound": 0,
+        "checked": 18,
+        "words": 185,
+        "keyFacts": 4,
+        "classes": [],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 14,
+        "notFound": 0,
+        "checked": 14,
+        "words": 163,
+        "keyFacts": 3,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 14,
+        "notFound": 0,
+        "checked": 14,
+        "words": 163,
+        "keyFacts": 3,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }
