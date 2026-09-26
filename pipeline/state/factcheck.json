@@ -5829,6 +5829,547 @@
         ],
         "secondCorrection": "corrected"
       }
+    },
+    "egypt-gdp-growth-5-1-percent-2025-2026-f2e096": {
+      "at": "2026-09-26T20:20:31.755Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v11",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-26T16:45:16.712Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 17,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "ويضع الهدف الحكومي للعام المالي المقبل النمو فوق معدل 5.1% المسجل في 2025/2026.",
+          "quote": "مشيرًا إلى أن الدولة تستهدف تحقيق معدل نمو يتراوح بين 5.2% و5.4% خلال العام المالي المقبل، اعتمادًا على تمكين القطاع الخاص، وتحسين بيئة الاستثمار، وتعزيز قدرة الاقتصاد المصري على توفير فرص العمل."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "brent-egypt-fuel-pricing-inflation-rates-e5f94b": {
+      "at": "2026-09-26T20:20:31.751Z",
+      "kind": "analysis",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-26T17:50:27.093Z",
+      "sourcesRead": 5,
+      "sourcesAll": 5,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 50,
+        "checked": 47,
+        "supported": 35,
+        "weak": 6,
+        "noEvidence": 0,
+        "notFound": 6,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 1
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "إن بقي الخام مرتفعاً فقد يتحول قرار لجنة التسعير المقبل بشأن البنزين والسولار إلى عقبة أمام تباطؤ التضخم الذي بنى عليه المركزي تثبيت الفائدة",
+        "في قراءة خازندار، قد يكون المقترضون المصريون أول من يدفع ثمن بقاء برنت فوق 105 دولارات.",
+        "وبذلك يبتعد خفض فائدة الإقراض عن 20% حتى لو واصل تضخم الغذاء تراجعه.",
+        "والأرجح أن برنامج الحفر الذي تبحثه مصر مع «بي بي» يتعلق بأمد أبعد من قرار اللجنة المقبل، ولا يغيّر حسابات الأشهر القريبة.",
+        "وفي قراءة خازندار، قد يضاف أي رفع للبنزين والسولار إلى هذه الأعباء، من دون ضمان أن يواصل الغذاء دور التخفيف.",
+        "أما على المدى الأبعد، فنتائج حفر «غراب» والبئرين في المياه العميقة مؤشر على ما قد يضيفه الإنتاج المحلي بعيداً عن تقلبات الخام."
+      ],
+      "weak": [
+        {
+          "sentence": "فائدة الإيداع والإقراض لليلة واحدة: 19% و20%",
+          "quote": "سعر عائد الإيداع لليلة واحدة: 19%"
+        },
+        {
+          "sentence": "لكن التضخم الأساسي السنوي صعد إلى 14.9% من 14.7%، وتباطأ النمو الحقيقي للنشاط إلى 4.7% في الربع الثاني مقابل 5% في الربع الأول.",
+          "quote": "وأظهرت بيانات البنك أن نمو النشاط الاقتصادي الحقيقي تباطأ إلى 4.7% في الربع الثاني من العام، مقابل 5% في الربع الأول."
+        },
+        {
+          "sentence": "وقالت الوزارة إن برنامج الحفر مع «بي بي» يضم 4 آبار مؤكدة باستثمارات 700 مليون دولار، وانطلق في أبريل.",
+          "quote": "وقالت وزارة البترول في بيان صدر الخميس إن برنامج الحفر انطلق في أبريل ويضم 4 آبار مؤكدة."
+        },
+        {
+          "sentence": "وقد يثقل غلاء الوقود نشاطاً تباطأ إلى 4.7%، بينما تستهدف الحكومة نمواً بين 5.2% و5.4% للعام المالي المقبل.",
+          "quote": "النمو المستهدف للعام المالي المقبل: بين 5.2% و5.4%"
+        },
+        {
+          "sentence": "وفي السوق، يبقى معلّقاً هل يحافظ برنت على مستواه فوق 105 دولارات، وهل تؤكد السلطات السعودية أضراراً في منشآت ينبع.",
+          "quote": "ولم تؤكد السلطات السعودية هل أسفرت الهجمات عن أضرار أو إصابات، ولم ترد أرامكو على استفسارات الجزيرة خارج ساعات العمل الرسمية."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "ineos-halts-three-hull-chemical-plants-f78c2a": {
+      "at": "2026-09-26T20:21:05.733Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-22T21:42:35.285Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 31,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "china-rare-earth-shipments-us-fall-b43cb1": {
+      "at": "2026-09-26T20:21:41.118Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-22T21:36:18.323Z",
+      "sourcesRead": 1,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 27,
+        "checked": 27,
+        "supported": 24,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 3,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "وتسيطر الصين على أكثر من 95% من تكرير المواد الحرجة وفق «باركليز»، فيما تقول «نيويورك تايمز» إن لقيود التصدير التي يتفاوض عليها الطرفان تبعات على الصناعة العالمية.",
+        "أفادت «نيويورك تايمز» بأن المصنّعين يواجهون قيوداً على الإمدادات، فيما يتفاوض مسؤولون أمريكيون وصينيون على قيود التصدير.",
+        "ولفتت الصحيفة إلى أن لهذه القيود تبعات على الصناعة العالمية."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "imf-egypt-economy-resilient-regional-shock-768a7e": {
+      "at": "2026-09-26T20:22:20.617Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-22T17:13:06.969Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 27,
+        "checked": 27,
+        "supported": 25,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "يرصد تقييم الصندوق تراجع حيازات غير المقيمين من الدين الحكومي المصري المقوم بالجنيه من 39.1 إلى 22.2 مليار دولار بين فبراير ومطلع أبريل، ثم اقترابها من مستوياتها قبل الحرب، ونزول علاوة المخاطر على السندات السيادية في أغسطس إلى أدنى مستوى منذ 2014.",
+          "quote": "ومع انحسار الضغوط، عادت تدفقات المحافظ الاستثمارية، واقتربت حيازات غير المقيمين من مستويات ما قبل الصراع، كما استعاد الجنيه جانباً كبيراً من خسائره الأولية."
+        },
+        {
+          "sentence": "وفي المقابل يرجّح الصندوق تباطؤ النمو إلى 4.4% في 2026/27، ويقدّر أن الصدمة أرجأت بلوغ مستهدف التضخم نحو عام، ويربط إفساح المجال أمام القطاع الخاص بتسريع برنامج التخارج من الشركات الحكومية.",
+          "quote": "أما التضخم، فارتفع بفعل انخفاض قيمة العملة وتعديلات أسعار الطاقة، لكن الزيادة جاءت أقل حدة مما كان متوقعاً. وفي المقابل، أدى أثر الصدمة إلى تأخير مسار عودة التضخم إلى مستهدفه بنحو عام."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "hormuz-alternatives-saudi-oil-qatar-lng-747dc8": {
+      "at": "2026-09-26T20:21:54.297Z",
+      "kind": "analysis",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-22T18:10:04.010Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 74,
+        "checked": 67,
+        "supported": 52,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 9,
+        "confirmed": 5,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 1
+      },
+      "confirmed": [
+        {
+          "id": 7,
+          "field": "keyFacts",
+          "sentence": "مدة استعادة التدفق: من ستة إلى ثمانية أسابيع",
+          "claim": "Restoring the flow takes six to eight weeks, stated as a fact.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Khazendar",
+          "sourceDate": "2026-09-22",
+          "quote": "المدة المقدّرة لاستعادة التدفق بحسب «أويل برايس»: من ستة إلى ثمانية أسابيع",
+          "correction": "Six to eight weeks is OilPrice's estimate of how long restoring the flow may take, not an established duration.",
+          "class": "hedge"
+        },
+        {
+          "id": 11,
+          "field": "keyFacts",
+          "sentence": "تدفقات هرمز من مستويات ما قبل الحرب: نحو 80%",
+          "claim": "Flows through Hormuz stand at about 80% of pre-war levels.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "Khazendar",
+          "sourceDate": "2026-09-21",
+          "quote": "أوضح رايان ماكي، مدير استراتيجية السلع في «تي دي للأوراق المالية»، في مذكرة الاثنين، أن الصادرات عبر مضيق هرمز ارتفعت باطراد، وأن تدفقات الخام من الشرق الأوسط الأوسع بلغت نحو 80% من مستويات ما قبل الحرب، مضيفاً: «يبدو أن إيران فقدت نفوذاً ملحوظاً في المضيق دون تصعيد كبير».",
+          "correction": "The roughly 80% of pre-war levels refers to crude flows from the wider Middle East, not to flows through Hormuz specifically.",
+          "class": "scope"
+        },
+        {
+          "id": 16,
+          "field": "whyItMatters",
+          "sentence": "وتخسر قطر نحو 20 مليار دولار من الإيرادات السنوية وفق تقديرات «أويل برايس فاينانس»، بسبب خطين للغاز المسال أصابتهما ضربة مارس وقد يغيبان سنوات.",
+          "claim": "Qatar loses about $20 billion in annual revenue according to estimates by 'OilPrice Finance', because two LNG trains hit in March may be out for years.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Khazendar",
+          "sourceDate": "2026-09-22",
+          "quote": "وكانت الضربة الصاروخية الإيرانية في 18 مارس على مدينة رأس لفان الصناعية قد عطّلت خطين من أصل 14 خطَّ إنتاج للغاز المسال في قطر، وأزالت 17% من القدرة التصديرية ونحو 20 مليار دولار من الإيرادات السنوية، وفق تقديرات «أويل برايس».",
+          "correction": "",
+          "class": "other"
+        },
+        {
+          "id": 43,
+          "field": "body",
+          "sentence": "ورأى محللو البنك في مذكرة 18 سبتمبر أن أثر الإغلاق جاء أخف مما خشيته السوق.",
+          "claim": "JP Morgan analysts, in an 18 September note, judged the closure's impact lighter than the market had feared.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "Khazendar",
+          "sourceDate": "2026-09-21",
+          "quote": "وأضافوا أن هذا أقل بـ 6 ملايين برميل يومياً عن متوسط 2025، مشيرين إلى أن صادرات المنطقة صمدت رغم إغلاق خط أنابيب شرق-غرب السعودي.",
+          "correction": "The 18 September note says regional exports held up despite the closure; it makes no comparison with what the market had feared.",
+          "class": "attribution"
+        },
+        {
+          "id": 58,
+          "field": "body",
+          "sentence": "في هذه الحال تستقر التدفقات عبر هرمز عند نحو 80% من مستويات ما قبل الحرب، كما قدّرها رايان ماكي من «تي دي للأوراق المالية».",
+          "claim": "In this scenario flows through Hormuz settle at about 80% of pre-war levels, as estimated by Ryan McKay of TD Securities.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "Khazendar",
+          "sourceDate": "2026-09-21",
+          "quote": "أوضح رايان ماكي، مدير استراتيجية السلع في «تي دي للأوراق المالية»، في مذكرة الاثنين، أن الصادرات عبر مضيق هرمز ارتفعت باطراد، وأن تدفقات الخام من الشرق الأوسط الأوسع بلغت نحو 80% من مستويات ما قبل الحرب، مضيفاً: «يبدو أن إيران فقدت نفوذاً ملحوظاً في المضيق دون تصعيد كبير».",
+          "correction": "McKay's roughly 80% figure refers to crude flows from the wider Middle East, not to flows through Hormuz.",
+          "class": "scope"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "اضطراب هرمز يثقل التوسعة القطرية أكثر من الخام السعودي",
+        "ويرجّح التباين أن المنفذ البديل من محددات تفاوت وقع الاضطراب على صادرات الخليج.",
+        "لا تتلقى الاقتصادات الخليجية صدمة هرمز بالقدر نفسه.",
+        "ويُرجَّح أن تستفيد مصر من عودة الشحنات عبر «سوميد».",
+        "ويتحمل المشترون في أوروبا وآسيا كلفة أعلى في الإمداد والشحن ما دامت الملاحة في المضيق مضطربة.",
+        "تبدو السعودية الأقل تضرراً بين المنتجَين.",
+        "والخاسر الأوضح قطر وشركاؤها.",
+        "وتمتد الخسارة إلى ما وراء الخليج."
+      ],
+      "weak": [
+        {
+          "sentence": "التوقيت: 21 سبتمبر، 05:13 بتوقيت السعودية · السعر: 101.71 دولاراً · التغير: تراجع 2.08%",
+          "quote": "تراجعت أسعار النفط الخام إلى أدنى مستوى في أكثر من أسبوع، حيث بلغت عقود برنت 101.71 دولاراً للبرميل بحلول 05:13 صباحاً بتوقيت السعودية يوم 2026-09-21، في ظل ترقّب الأسواق لفرص دبلوماسية لتهدئة الصراع الأمريكي الإيراني مع اجتماع الأمم المتحدة المزمع عقده هذا الأسبوع"
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن نسبة 80% من مستويات ما قبل الحرب تخص التدفقات عبر مضيق هرمز، والصحيح أنها تخص تدفقات الخام من الشرق الأوسط الأوسع، ونسبت تقدير خسارة قطر إلى «أويل برايس فاينانس» والصحيح «أويل برايس». وقدّمت النسخة مدة استعادة تدفق الخط السعودي أمراً ثابتاً وهي تقدير للموقع، وذكرت أن «جيه بي مورغان» رأى أثر الإغلاق أخف مما خشيته السوق، والصحيح أن البنك قال إن صادرات المنطقة صمدت رغم إغلاق الخط.",
+      "verified": {
+        "at": "2026-09-26T20:28:57.866Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": [
+          {
+            "class": "period",
+            "field": "body",
+            "sentence": "واستهدفت غارات حوثية هذا الأسبوع الرياض وميناء ينبع، وأرجأ ترامب ضرب الحوثيين رغم طلبات سعودية، وفق «نيويورك تايمز».",
+            "quote": "استهدفت غارات اليمنية نهاية الأسبوع أهدافاً في الرياض وميناء ينبع، الذي أصبح المنفذ الأساسي للنفط السعودي بعد تجميد حركة الملاحة عبر هرمز.",
+            "correction": "The Houthi raids on Riyadh and Yanbu happened over the weekend before 21 September, not this week; they were reported by source 3, not by the New York Times, which is cited only for Trump's decision."
+          }
+        ],
+        "secondCorrection": "corrected"
+      }
+    },
+    "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d": {
+      "at": "2026-09-26T20:23:19.543Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-14T05:10:21.720Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 8,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 3,
+        "listed": 1,
+        "drift": 4,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 12,
+          "field": "body",
+          "sentence": "وأغلقت السعودية خط أنابيب الشرق-الغرب بعد هجمات في منطقتي الرياض والمدينة المنورة يوم الخميس، وفقاً لبيان وزارة الطاقة السعودية في 13 سبتمبر 2026.",
+          "claim": "Saudi Arabia shut the East-West pipeline after Thursday attacks in the Riyadh and Madinah regions, per a Saudi Energy Ministry statement dated 13 September 2026.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "The National",
+          "sourceDate": "2026-09-14",
+          "quote": "Saudi Arabia’s Energy Ministry said late on Friday that it had suspended operations on the pipeline as a precaution after “multiple” attacks in the Riyadh and Madinah regions on Thursday, which caused a number of injuries.",
+          "correction": "The Energy Ministry made its statement late on Friday (11 September), not on 13 September.",
+          "class": "period"
+        },
+        {
+          "id": 13,
+          "field": "body",
+          "sentence": "ويبلغ إجمالي قدرة الضخ عبر الخط سبعة ملايين برميل يومياً، وفقاً لتصريحات الوزارة نفسها.",
+          "claim": "The pipeline's total pumping capacity is seven million barrels per day, according to statements by the Energy Ministry.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "The National",
+          "sourceDate": "2026-09-14",
+          "quote": "The full pumping capacity through the East–West pipeline amounts to about seven million barrels per day.",
+          "correction": "The seven million bpd capacity figure is The National's own reporting, not a statement by the Saudi Energy Ministry.",
+          "class": "attribution"
+        },
+        {
+          "id": 16,
+          "field": "body",
+          "sentence": "وكان من المقرر عقد اجتماع في عمان يوم الاثنين 14 سبتمبر 2026 بين إيران ودول خليجية عربية لبحث إعادة فتح مضيق هرمز، لكنه تأجل، وفقاً لبيانات diplomatic في 14 سبتمبر 2026.",
+          "claim": "A meeting in Oman on Monday 14 September 2026 between Iran and Gulf Arab states to discuss reopening the Strait of Hormuz was postponed.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Asharq Al-Awsat",
+          "sourceDate": "2026-09-14",
+          "quote": "وفي الوقت نفسه، قال وزير الخارجية العُماني بدر البوسعيدي، في منشور على منصة «إكس» الأحد، إن اجتماعاً كان مقرراً عقده اليوم الاثنين في عُمان بين دول الخليج وإيران لبحث وضع مضيق هرمز قد تأجل.",
+          "correction": "The meeting was to discuss the situation of the Strait of Hormuz, not its reopening; the strait is described as disrupted, not closed.",
+          "class": "other"
+        }
+      ],
+      "listed": [
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "سعر خام برنت: 107.95 دولار",
+          "quote": "وارتفعت العقود الآجلة لخام برنت 3.21 دولار، أو 3.1 في المائة، إلى 107.82 دولار للبرميل بحلول الساعة 03:40 بتوقيت غرينتش، فيما صعدت العقود الآجلة لخام غرب تكساس الوسيط 3.17 دولار، أو 3.2 في المائة، إلى 103.22 دولار.",
+          "source": "Asharq Al-Awsat",
+          "correction": "Brent futures rose to $107.82 a barrel by 03:40 GMT; no source gives $107.95."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "ارتفاع خام برنت: 3.19 في المائة",
+          "quote": "وارتفعت العقود الآجلة لخام برنت 3.21 دولار، أو 3.1 في المائة، إلى 107.82 دولار للبرميل بحلول الساعة 03:40 بتوقيت غرينتش، فيما صعدت العقود الآجلة لخام غرب تكساس الوسيط 3.17 دولار، أو 3.2 في المائة، إلى 103.22 دولار.",
+          "source": "Asharq Al-Awsat",
+          "correction": "Brent futures rose 3.1 percent; no source gives 3.19 percent."
+        },
+        {
+          "status": "listed",
+          "class": "other",
+          "field": "whyItMatters",
+          "sentence": "ومع تأجيل محادثات إعادة فتح المضيق، قد تبقى الأسعار مرتفعة لفترة طويلة، فترتفع تكاليف النقل والإنتاج في الاقتصادات العربية المستوردة للوقود.",
+          "quote": "وفي الوقت نفسه، قال وزير الخارجية العُماني بدر البوسعيدي، في منشور على منصة «إكس» الأحد، إن اجتماعاً كان مقرراً عقده اليوم الاثنين في عُمان بين دول الخليج وإيران لبحث وضع مضيق هرمز قد تأجل.",
+          "source": "Asharq Al-Awsat",
+          "correction": "The postponed meeting was to discuss the situation of the Strait of Hormuz, not its reopening; the sources describe traffic as severely disrupted, not closed."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "body",
+          "sentence": "ارتفعت العقود الآجلة لخام برنت 3.19 في المائة لتصل إلى 107.95 دولار للبرميل في الساعة 8:05 صباحاً بتوقيت الإمارات في 14 سبتمبر 2026، وفقاً لبيانات رويترز.",
+          "quote": "وارتفعت العقود الآجلة لخام برنت 3.21 دولار، أو 3.1 في المائة، إلى 107.82 دولار للبرميل بحلول الساعة 03:40 بتوقيت غرينتش، فيما صعدت العقود الآجلة لخام غرب تكساس الوسيط 3.17 دولار، أو 3.2 في المائة، إلى 103.22 دولار.",
+          "source": "Asharq Al-Awsat",
+          "correction": "Brent futures rose 3.1 percent to $107.82 a barrel by 03:40 GMT."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "body",
+          "sentence": "وارتفع خام غرب تكساس الوسيط 3.14 في المائة إلى 103.19 دولار للبرميل في نفس اليوم، وفقاً لبيانات التداول الأمريكية.",
+          "quote": "وارتفعت العقود الآجلة لخام برنت 3.21 دولار، أو 3.1 في المائة، إلى 107.82 دولار للبرميل بحلول الساعة 03:40 بتوقيت غرينتش، فيما صعدت العقود الآجلة لخام غرب تكساس الوسيط 3.17 دولار، أو 3.2 في المائة، إلى 103.22 دولار.",
+          "source": "Asharq Al-Awsat",
+          "correction": "WTI futures rose 3.2 percent to $103.22 a barrel."
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "ارتفعت أسعار النفط فوق 107 دولارات للبرميل الاثنين بعد إغلاق السعودية خط أنابيب الشرق-الغرب احترازياً إثر هجمات في منطقتي الرياض والمدينة المنورة الخميس، بحسب بيان وزارة الطاقة السعودية.",
+          "quote": "Saudi Arabia’s Energy Ministry said late on Friday that it had suspended operations on the pipeline as a precaution after “multiple” attacks in the Riyadh and Madinah regions on Thursday, which caused a number of injuries."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن بيان وزارة الطاقة السعودية صدر في 13 سبتمبر وأنه حدد طاقة الخط بسبعة ملايين برميل يومياً، والصحيح أن البيان صدر مساء الجمعة 11 سبتمبر وأن رقم الطاقة أوردته صحيفة «ذا ناشيونال». كما ذكرت النسخة السابقة أن الاجتماع المؤجل في عُمان كان لبحث إعادة فتح مضيق هرمز، والصحيح أنه كان لبحث وضع المضيق.",
+      "verified": {
+        "at": "2026-09-26T20:29:46.733Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
+    },
+    "ai-leaders-warn-openai-ipo-delay-b7d3e6": {
+      "at": "2026-09-26T20:23:49.663Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-13T23:21:40.645Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 21,
+        "checked": 21,
+        "supported": 16,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 3,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 12,
+          "field": "body",
+          "sentence": "بلغت قيمة أنثروبيك 965 مليار دولار في أحدث جولة تمويلية مطلع العام، وقيمة «أوبن إيه آي» 852 مليار دولار في آخر تقييم لها.",
+          "claim": "Anthropic was valued at $965bn in its latest funding round at the start of the year. OpenAI was valued at $852bn in its latest valuation.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "BBC News",
+          "sourceDate": "2026-09-13",
+          "quote": "Anthropic was valued at $965bn (£713bn) in its most recent fundraising round earlier this year.",
+          "correction": "The source says Anthropic's round was 'earlier this year', not at the start of the year.",
+          "class": "period"
+        },
+        {
+          "id": 18,
+          "field": "body",
+          "sentence": "وقال جنسن هوانغ الرئيس التنفيذي لشركة «إنفيديا» في مؤتمر «غولدمان ساكس» إن فكرة أن الذكاء الاصطناعي سينهي البشرية هراء تام.",
+          "claim": "Nvidia CEO Jensen Huang said at the Goldman Sachs conference that the idea AI will end humanity is complete nonsense.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "BBC News",
+          "sourceDate": "2026-09-13",
+          "quote": "Huang has previously said the notion that AI \"is going to be the end of humanity\" is \"complete nonsense\".",
+          "correction": "Huang made the 'complete nonsense' remark on an earlier occasion; at the conference, attendees said only that he dismissed Coxon's comments as untrue.",
+          "class": "attribution"
+        },
+        {
+          "id": 19,
+          "field": "body",
+          "sentence": "ووصف جورج أريسون الرئيس التنفيذي لشركة «غرايندر» تحذيرات كوكسون بأنها رؤية معادية للحضارة سائدة في أنثروبيك، وأمر مهندسيه بالتوقف عن استخدام تقنيتها.",
+          "claim": "Grindr CEO George Arison called Coxon's warnings indicative of an anti-civilisational worldview at Anthropic, and ordered his engineers to stop using Anthropic's technology.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "BBC News",
+          "sourceDate": "2026-09-13",
+          "quote": "He called them \"dangerous\" and said they had prompted him to instruct some engineers at the LGBTQ+ dating app to stop using Anthropic's technology.",
+          "correction": "Arison instructed only some of the app's engineers, not all of them, to stop using Anthropic's technology.",
+          "class": "scope"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "يعكس تأجيل طرح أوبن إيه آي للاكتتاب العام وتحذيرات القادة من التطور غير المنضبط للذكاء الاصطناعي مخاوف متزايدة من مخاطر السلامة التي قد تؤثر على استثمارات الشركات التكنولوجية في المنطقة.",
+        "مع وصول قيمتي الشركتين إلى مستويات قياسية، قد يتردد المستثمرون في الخليج والشرق الأوسط في دعم مشاريع الذكاء الاصطناعي دون ضمانات سلامة واضحة، مما قد يبطئ تدفق رؤوس الأموال إلى القطاع التكنولوجي العربي المتنامي."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن جولة تمويل أنثروبيك جرت مطلع العام، وأن جنسن هوانغ وصف فكرة إنهاء الذكاء الاصطناعي للبشرية بالهراء في مؤتمر «غولدمان ساكس»، وأن جورج أريسون أمر مهندسيه بالتوقف عن استخدام تقنية أنثروبيك. والصحيح أن الجولة جرت في وقت سابق من العام، وأن هوانغ أدلى بذلك الوصف في مناسبة سابقة، وأن أريسون أمر بعض مهندسيه فقط.",
+      "verified": {
+        "at": "2026-09-26T20:26:58.772Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
     }
   }
 }

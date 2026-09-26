@@ -1,0 +1,93 @@
+{
+  "startedAt": "2026-09-26T20:24:34.976Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "hormuz-alternatives-saudi-oil-qatar-lng-747dc8",
+      "issue": "1. The key fact says «مدة استعادة التدفق: من ستة إلى ثمانية أسابيع» (Restoring the flow takes six to eight weeks, stated as a fact.). Source Khazendar says: \"المدة المقدّرة لاستعادة التدفق بحسب «أويل برايس»: من ستة إلى ثمانية أسابيع\". Six to eight weeks is OilPrice's estimate of how long restoring the flow may take, not an established duration.\n2. The key fact says «تدفقات هرمز من مستويات ما قبل الحرب: نحو 80%» (Flows through Hormuz stand at about 80% of pre-war levels.). Source Khazendar says: \"أوضح رايان ماكي، مدير استراتيجية السلع في «تي دي للأوراق المالية»، في مذكرة الاثنين، أن الصادرات عبر مضيق هرمز ارتفعت باطراد، وأن تدفقات الخام من الشرق الأوسط الأوسع بلغت نحو 80% من مستويات ما قبل الحرب، مضيفاً: «يبدو أن إيران فقدت نفوذاً ملحوظاً في المضيق دون تصعيد كبير».\". The roughly 80% of pre-war levels refers to crude flows from the wider Middle East, not to flows through Hormuz specifically.\n3. The why it matters says «وتخسر قطر نحو 20 مليار دولار من الإيرادات السنوية وفق تقديرات «أويل برايس فاينانس»، بسبب خطين للغاز المسال أصابتهما ضربة مارس وقد يغيبان سنوات.» (Qatar loses about $20 billion in annual revenue according to estimates by 'OilPrice Finance', because two LNG trains hit in March may be out for years.). Source Khazendar says: \"وكانت الضربة الصاروخية الإيرانية في 18 مارس على مدينة رأس لفان الصناعية قد عطّلت خطين من أصل 14 خطَّ إنتاج للغاز المسال في قطر، وأزالت 17% من القدرة التصديرية ونحو 20 مليار دولار من الإيرادات السنوية، وفق تقديرات «أويل برايس».\". \n4. The body says «ورأى محللو البنك في مذكرة 18 سبتمبر أن أثر الإغلاق جاء أخف مما خشيته السوق.» (JP Morgan analysts, in an 18 September note, judged the closure's impact lighter than the market had feared.). Source Khazendar says: \"وأضافوا أن هذا أقل بـ 6 ملايين برميل يومياً عن متوسط 2025، مشيرين إلى أن صادرات المنطقة صمدت رغم إغلاق خط أنابيب شرق-غرب السعودي.\". The 18 September note says regional exports held up despite the closure; it makes no comparison with what the market had feared.\n5. The body says «في هذه الحال تستقر التدفقات عبر هرمز عند نحو 80% من مستويات ما قبل الحرب، كما قدّرها رايان ماكي من «تي دي للأوراق المالية».» (In this scenario flows through Hormuz settle at about 80% of pre-war levels, as estimated by Ryan McKay of TD Securities.). Source Khazendar says: \"أوضح رايان ماكي، مدير استراتيجية السلع في «تي دي للأوراق المالية»، في مذكرة الاثنين، أن الصادرات عبر مضيق هرمز ارتفعت باطراد، وأن تدفقات الخام من الشرق الأوسط الأوسع بلغت نحو 80% من مستويات ما قبل الحرب، مضيفاً: «يبدو أن إيران فقدت نفوذاً ملحوظاً في المضيق دون تصعيد كبير».\". McKay's roughly 80% figure refers to crude flows from the wider Middle East, not to flows through Hormuz.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "whyItMatters",
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن نسبة 80% من مستويات ما قبل الحرب تخص التدفقات عبر مضيق هرمز، والصحيح أنها تخص تدفقات الخام من الشرق الأوسط الأوسع، ونسبت تقدير خسارة قطر إلى «أويل برايس فاينانس» والصحيح «أويل برايس». وقدّمت النسخة مدة استعادة تدفق الخط السعودي أمراً ثابتاً وهي تقدير للموقع، وذكرت أن «جيه بي مورغان» رأى أثر الإغلاق أخف مما خشيته السوق، والصحيح أن البنك قال إن صادرات المنطقة صمدت رغم إغلاق الخط.",
+      "model": "claude-cli",
+      "before": {
+        "whyItMatters": "لا تتلقى الاقتصادات الخليجية صدمة هرمز بالقدر نفسه. تملك السعودية منفذاً إلى البحر الأحمر قد يستعيد نحو 4 ملايين برميل يومياً خلال ستة إلى ثمانية أسابيع بحسب «أويل برايس». أما قطر فاينانس». أما قطر فرفضت خيار الأنابيب عبر الدول المجاورة لأسباب تجارية وفنية، وقد تتأخر توسعة حقل الشمال لتعذّر وصول المعدات عبر المضيق. وتخسر قطر نحو 20 مليار دولار من الإيرادات السنوية وفق تقديرات «أويل برايس فاينانس»، بسبب خطين للغاز المسال أصابتهما ضربة مارس وقد يغيبان سنوات. ويُرجَّح أن تستفيد مصر من عودة الشحنات عبر «سوميد». ويتحمل المشترون في أوروبا وآسيا كلفة أعلى في الإمداد والشحن ما دامت الملاحة في المضيق مضطربة."
+      },
+      "after": {
+        "whyItMatters": "لا تتلقى الاقتصادات الخليجية صدمة هرمز بالقدر نفسه. تملك السعودية منفذاً إلى البحر الأحمر قد يستعيد نحو 4 ملايين برميل يومياً خلال ستة إلى ثمانية أسابيع بحسب «أويل برايس». أما قطر فرفضت خيار الأنابيب عبر الدول المجاورة لأسباب تجارية وفنية، وقد تتأخر توسعة حقل الشمال لتعذّر وصول المعدات عبر المضيق. وتخسر قطر نحو 20 مليار دولار من الإيرادات السنوية وفق تقديرات «أويل برايس»، بسبب خطين للغاز المسال أصابتهما ضربة مارس وقد يغيبان سنوات. ويُرجَّح أن تستفيد مصر من عودة الشحنات عبر «سوميد». ويتحمل المشترون في أوروبا وآسيا كلفة أعلى في الإمداد والشحن ما دامت الملاحة في المضيق مضطربة."
+      },
+      "changedSentences": [
+        "أما قطر فاينانس».",
+        "وتخسر قطر نحو 20 مليار دولار من الإيرادات السنوية وفق تقديرات «أويل برايس فاينانس»، بسبب خطين للغاز المسال أصابتهما ضربة مارس وقد يغيبان سنوات.",
+        "ورأى محللو البنك في مذكرة 18 سبتمبر أن أثر الإغلاق جاء أخف مما خشيته السوق.",
+        "في هذه الحال تستقر التدفقات عبر هرمز عند نحو 80% من مستويات ما قبل الحرب، كما قدّرها رايان ماكي من «تي دي للأوراق المالية».",
+        "مدة استعادة التدفق من ستة إلى ثمانية أسابيع",
+        "تدفقات هرمز من مستويات ما قبل الحرب نحو 80%"
+      ],
+      "newSentences": [
+        "وتخسر قطر نحو 20 مليار دولار من الإيرادات السنوية وفق تقديرات «أويل برايس»، بسبب خطين للغاز المسال أصابتهما ضربة مارس وقد يغيبان سنوات.",
+        "ورأى محللو البنك في مذكرة 18 سبتمبر أن صادرات المنطقة صمدت رغم إغلاق خط «شرق - غرب».",
+        "في هذه الحال تستقر تدفقات الخام من الشرق الأوسط الأوسع عند نحو 80% من مستويات ما قبل الحرب، كما قدّرها رايان ماكي من «تي دي للأوراق المالية».",
+        "المدة المقدّرة لاستعادة التدفق (تقدير أويل برايس) من ستة إلى ثمانية أسابيع",
+        "تدفقات الخام من الشرق الأوسط الأوسع من مستويات ما قبل الحرب نحو 80%"
+      ]
+    },
+    {
+      "slug": "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d",
+      "issue": "1. The body says «وأغلقت السعودية خط أنابيب الشرق-الغرب بعد هجمات في منطقتي الرياض والمدينة المنورة يوم الخميس، وفقاً لبيان وزارة الطاقة السعودية في 13 سبتمبر 2026.» (Saudi Arabia shut the East-West pipeline after Thursday attacks in the Riyadh and Madinah regions, per a Saudi Energy Ministry statement dated 13 September 2026.). Source The National says: \"Saudi Arabia’s Energy Ministry said late on Friday that it had suspended operations on the pipeline as a precaution after “multiple” attacks in the Riyadh and Madinah regions on Thursday, which caused a number of injuries.\". The Energy Ministry made its statement late on Friday (11 September), not on 13 September.\n2. The body says «ويبلغ إجمالي قدرة الضخ عبر الخط سبعة ملايين برميل يومياً، وفقاً لتصريحات الوزارة نفسها.» (The pipeline's total pumping capacity is seven million barrels per day, according to statements by the Energy Ministry.). Source The National says: \"The full pumping capacity through the East–West pipeline amounts to about seven million barrels per day.\". The seven million bpd capacity figure is The National's own reporting, not a statement by the Saudi Energy Ministry.\n3. The body says «وكان من المقرر عقد اجتماع في عمان يوم الاثنين 14 سبتمبر 2026 بين إيران ودول خليجية عربية لبحث إعادة فتح مضيق هرمز، لكنه تأجل، وفقاً لبيانات diplomatic في 14 سبتمبر 2026.» (A meeting in Oman on Monday 14 September 2026 between Iran and Gulf Arab states to discuss reopening the Strait of Hormuz was postponed.). Source Asharq Al-Awsat says: \"وفي الوقت نفسه، قال وزير الخارجية العُماني بدر البوسعيدي، في منشور على منصة «إكس» الأحد، إن اجتماعاً كان مقرراً عقده اليوم الاثنين في عُمان بين دول الخليج وإيران لبحث وضع مضيق هرمز قد تأجل.\". The meeting was to discuss the situation of the Strait of Hormuz, not its reopening; the strait is described as disrupted, not closed.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "whyItMatters",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن بيان وزارة الطاقة السعودية صدر في 13 سبتمبر وأنه حدد طاقة الخط بسبعة ملايين برميل يومياً، والصحيح أن البيان صدر مساء الجمعة 11 سبتمبر وأن رقم الطاقة أوردته صحيفة «ذا ناشيونال». كما ذكرت النسخة السابقة أن الاجتماع المؤجل في عُمان كان لبحث إعادة فتح مضيق هرمز، والصحيح أنه كان لبحث وضع المضيق.",
+      "model": "claude-cli",
+      "before": {
+        "whyItMatters": "إغلاق الخط يحرم المملكة من مسار لتصدير النفط دون المرور عبر مضيق هرمز، فيزيد الاعتماد على ممر ملاحي معرّض للتوترات. ومع تأجيل محادثات إعادة فتح المضيق، قد تبقى الأسعار مرتفعة لفترة طويلة، فترتفع تكاليف النقل والإنتاج في الاقتصادات العربية المستوردة للوقود."
+      },
+      "after": {
+        "whyItMatters": "إغلاق الخط يحرم المملكة من مسار لتصدير النفط دون المرور عبر مضيق هرمز، فيزيد الاعتماد على ممر ملاحي معرّض للتوترات. ومع تأجيل محادثات بحث الوضع في المضيق، قد تبقى الأسعار مرتفعة لفترة طويلة، فترتفع تكاليف النقل والإنتاج في الاقتصادات العربية المستوردة للوقود."
+      },
+      "changedSentences": [
+        "ومع تأجيل محادثات إعادة فتح المضيق، قد تبقى الأسعار مرتفعة لفترة طويلة، فترتفع تكاليف النقل والإنتاج في الاقتصادات العربية المستوردة للوقود.",
+        "وأغلقت السعودية خط أنابيب الشرق-الغرب بعد هجمات في منطقتي الرياض والمدينة المنورة يوم الخميس، وفقاً لبيان وزارة الطاقة السعودية في 13 سبتمبر 2026.",
+        "ويبلغ إجمالي قدرة الضخ عبر الخط سبعة ملايين برميل يومياً، وفقاً لتصريحات الوزارة نفسها.",
+        "وكان من المقرر عقد اجتماع في عمان يوم الاثنين 14 سبتمبر 2026 بين إيران ودول خليجية عربية لبحث إعادة فتح مضيق هرمز، لكنه تأجل، وفقاً لبيانات diplomatic في 14 سبتمبر 2026."
+      ],
+      "newSentences": [
+        "ومع تأجيل محادثات بحث الوضع في المضيق، قد تبقى الأسعار مرتفعة لفترة طويلة، فترتفع تكاليف النقل والإنتاج في الاقتصادات العربية المستوردة للوقود.",
+        "وأغلقت السعودية خط أنابيب الشرق-الغرب بعد هجمات في منطقتي الرياض والمدينة المنورة يوم الخميس، وفقاً لبيان أصدرته وزارة الطاقة السعودية في وقت متأخر من مساء الجمعة 11 سبتمبر 2026.",
+        "ويبلغ إجمالي قدرة الضخ عبر الخط نحو سبعة ملايين برميل يومياً، بحسب صحيفة «ذا ناشيونال».",
+        "وكان من المقرر عقد اجتماع في عمان يوم الاثنين 14 سبتمبر 2026 بين إيران ودول خليجية عربية لبحث وضع مضيق هرمز، لكنه تأجل، بحسب ما أعلنه وزير الخارجية العُماني بدر البوسعيدي الأحد."
+      ]
+    },
+    {
+      "slug": "ai-leaders-warn-openai-ipo-delay-b7d3e6",
+      "issue": "1. The body says «بلغت قيمة أنثروبيك 965 مليار دولار في أحدث جولة تمويلية مطلع العام، وقيمة «أوبن إيه آي» 852 مليار دولار في آخر تقييم لها.» (Anthropic was valued at $965bn in its latest funding round at the start of the year. OpenAI was valued at $852bn in its latest valuation.). Source BBC News says: \"Anthropic was valued at $965bn (£713bn) in its most recent fundraising round earlier this year.\". The source says Anthropic's round was 'earlier this year', not at the start of the year.\n2. The body says «وقال جنسن هوانغ الرئيس التنفيذي لشركة «إنفيديا» في مؤتمر «غولدمان ساكس» إن فكرة أن الذكاء الاصطناعي سينهي البشرية هراء تام.» (Nvidia CEO Jensen Huang said at the Goldman Sachs conference that the idea AI will end humanity is complete nonsense.). Source BBC News says: \"Huang has previously said the notion that AI \"is going to be the end of humanity\" is \"complete nonsense\".\". Huang made the 'complete nonsense' remark on an earlier occasion; at the conference, attendees said only that he dismissed Coxon's comments as untrue.\n3. The body says «ووصف جورج أريسون الرئيس التنفيذي لشركة «غرايندر» تحذيرات كوكسون بأنها رؤية معادية للحضارة سائدة في أنثروبيك، وأمر مهندسيه بالتوقف عن استخدام تقنيتها.» (Grindr CEO George Arison called Coxon's warnings indicative of an anti-civilisational worldview at Anthropic, and ordered his engineers to stop using Anthropic's technology.). Source BBC News says: \"He called them \"dangerous\" and said they had prompted him to instruct some engineers at the LGBTQ+ dating app to stop using Anthropic's technology.\". Arison instructed only some of the app's engineers, not all of them, to stop using Anthropic's technology.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن جولة تمويل أنثروبيك جرت مطلع العام، وأن جنسن هوانغ وصف فكرة إنهاء الذكاء الاصطناعي للبشرية بالهراء في مؤتمر «غولدمان ساكس»، وأن جورج أريسون أمر مهندسيه بالتوقف عن استخدام تقنية أنثروبيك. والصحيح أن الجولة جرت في وقت سابق من العام، وأن هوانغ أدلى بذلك الوصف في مناسبة سابقة، وأن أريسون أمر بعض مهندسيه فقط.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "بلغت قيمة أنثروبيك 965 مليار دولار في أحدث جولة تمويلية مطلع العام، وقيمة «أوبن إيه آي» 852 مليار دولار في آخر تقييم لها.",
+        "وقال جنسن هوانغ الرئيس التنفيذي لشركة «إنفيديا» في مؤتمر «غولدمان ساكس» إن فكرة أن الذكاء الاصطناعي سينهي البشرية هراء تام.",
+        "ووصف جورج أريسون الرئيس التنفيذي لشركة «غرايندر» تحذيرات كوكسون بأنها رؤية معادية للحضارة سائدة في أنثروبيك، وأمر مهندسيه بالتوقف عن استخدام تقنيتها."
+      ],
+      "newSentences": [
+        "بلغت قيمة أنثروبيك 965 مليار دولار في أحدث جولة تمويلية في وقت سابق من العام، وقيمة «أوبن إيه آي» 852 مليار دولار في آخر تقييم لها.",
+        "وكان جنسن هوانغ الرئيس التنفيذي لشركة «إنفيديا» قد قال في وقت سابق إن فكرة أن الذكاء الاصطناعي سينهي البشرية هراء تام.",
+        "ووصف جورج أريسون الرئيس التنفيذي لشركة «غرايندر» تحذيرات كوكسون بأنها رؤية معادية للحضارة سائدة في أنثروبيك، وأمر بعض مهندسيه بالتوقف عن استخدام تقنيتها."
+      ]
+    }
+  ]
+}

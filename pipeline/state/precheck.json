@@ -337,6 +337,111 @@
           "noted": []
         }
       ]
+    },
+    "oil-falls-us-iran-hormuz-talks-fe867b": {
+      "at": "2026-09-26T20:35:27.891Z",
+      "title": "النفط يتراجع نحو 3% مع آمال بمفاوضات أمريكية إيرانية بشأن هرمز",
+      "writer": "claude-cli",
+      "lessons": "v12",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 20,
+            "checked": 20,
+            "supported": 17,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 10,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تغيّر غرب تكساس على أساس أسبوعي: -7.84%",
+              "quote": "For the week, Brent rose 0.4% while WTI fell 9.7%.",
+              "source": "Gulf Times",
+              "correction": ""
+            },
+            {
+              "id": 15,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "أما خام غرب تكساس الوسيط الأمريكي فتعرّض لضغوط أشد، وسجّل 92.4 دولار للبرميل، منخفضاً 7.84% على أساس أسبوعي.",
+              "quote": "For the week, Brent rose 0.4% while WTI fell 9.7%.",
+              "source": "Gulf Times",
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "tiktok-alabama-settlement-teen-limits-320e2c": {
+      "at": "2026-09-26T20:39:44.448Z",
+      "title": "«تيك توك» تدفع 100 مليون دولار على الأقل لتسوية دعوى ألاباما",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v12",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 22,
+            "checked": 22,
+            "supported": 22,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "navy-shipyard-program-could-cost-200-billion-e8fbb1": {
+      "at": "2026-09-26T20:44:30.231Z",
+      "title": "مكتب المحاسبة الأمريكي: كلفة تحديث أحواض البحرية قد تبلغ 200 مليار دولار",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v12",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 26,
+            "checked": 26,
+            "supported": 24,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

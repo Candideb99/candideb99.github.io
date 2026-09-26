@@ -1,0 +1,26 @@
+{
+  "startedAt": "2026-09-26T20:29:46.896Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "hormuz-alternatives-saudi-oil-qatar-lng-747dc8",
+      "issue": "The body says «واستهدفت غارات حوثية هذا الأسبوع الرياض وميناء ينبع، وأرجأ ترامب ضرب الحوثيين رغم طلبات سعودية، وفق «نيويورك تايمز».» (Houthi raids targeted Riyadh and Yanbu this week, and Trump deferred striking the Houthis despite Saudi requests, according to the New York Times.). Source Khazendar says: \"استهدفت غارات اليمنية نهاية الأسبوع أهدافاً في الرياض وميناء ينبع، الذي أصبح المنفذ الأساسي للنفط السعودي بعد تجميد حركة الملاحة عبر هرمز.\". The Houthi raids on Riyadh and Yanbu happened over the weekend before 21 September, not this week; they were reported by source 3, not by the New York Times, which is cited only for Trump's decision.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن غارات حوثية استهدفت الرياض وميناء ينبع هذا الأسبوع، ونسبت ذلك إلى صحيفة «نيويورك تايمز». والصحيح أن الغارات وقعت في عطلة نهاية الأسبوع السابقة لـ21 سبتمبر، وأن الصحيفة مصدر خبر إرجاء ترامب ضرب الحوثيين وحده.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "واستهدفت غارات حوثية هذا الأسبوع الرياض وميناء ينبع، وأرجأ ترامب ضرب الحوثيين رغم طلبات سعودية، وفق «نيويورك تايمز»."
+      ],
+      "newSentences": [
+        "واستهدفت غارات حوثية في عطلة نهاية الأسبوع الرياض وميناء ينبع.",
+        "وأرجأ ترامب ضرب الحوثيين رغم طلبات سعودية، وفق «نيويورك تايمز»."
+      ]
+    }
+  ]
+}
