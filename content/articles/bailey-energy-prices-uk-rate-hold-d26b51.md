@@ -25,7 +25,15 @@ regions:
 readingMinutes: 1
 chart: null
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Bank_of_England_from_Horizon_22.jpg/1280px-Bank_of_England_from_Horizon_22.jpg
+  width: 1280
+  height: 960
+  alt: مبنى بنك إنجلترا في حي المال بلندن
+  credit: The wub · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ABank_of_England_from_Horizon_22.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -49,7 +57,7 @@ models:
   editor: claude-cli
   writer: claude-cli → claude-cli
   critic: claude-cli
-  vision: null
+  vision: claude-cli
   desk: claude-cli
   lessons: v5
 quality:

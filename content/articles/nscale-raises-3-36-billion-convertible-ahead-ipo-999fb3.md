@@ -33,7 +33,15 @@ regions:
 readingMinutes: 1
 chart: null
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/NEW_YORK_STOCK_EXCHANGE_20240521.jpg/1280px-NEW_YORK_STOCK_EXCHANGE_20240521.jpg
+  width: 1280
+  height: 853
+  alt: مقر بورصة نيويورك في شارع برود ستريت بمانهاتن
+  credit: 颐园居 · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ANEW_YORK_STOCK_EXCHANGE_20240521.jpg
 sources:
   - name: تك كرانش
     nameEn: TechCrunch
@@ -51,7 +59,7 @@ models:
   editor: claude-cli
   writer: claude-cli → claude-cli
   critic: claude-cli
-  vision: null
+  vision: claude-cli
   desk: claude-cli
   lessons: v7
 quality:

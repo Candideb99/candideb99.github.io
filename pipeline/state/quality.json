@@ -20,45 +20,77 @@
       "read": 33,
       "confirmedPerStory": 2.24,
       "photosPending": 0
+    },
+    {
+      "date": "2026-09-26",
+      "published": 20,
+      "news": 17,
+      "styleFaultsPerStory": 0,
+      "corrections": 24,
+      "read": 52,
+      "confirmedPerStory": 0.88,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-09-25T12:45:48.229Z",
+  "updatedAt": "2026-09-26T12:13:53.424Z",
   "week": {
-    "published": 67,
-    "news": 58,
-    "revisedShare": 0.67,
-    "styleFaultsPerStory": 0.74,
-    "styleWarningsPerStory": 0.67,
-    "corrections": 37,
+    "published": 81,
+    "news": 69,
+    "revisedShare": 0.75,
+    "styleFaultsPerStory": 0.52,
+    "styleWarningsPerStory": 0.61,
+    "corrections": 61,
+    "usefulness": {
+      "withLessons": {
+        "stories": 17,
+        "words": 231,
+        "keyFacts": 4.3
+      },
+      "control": {
+        "stories": 5,
+        "words": 280,
+        "keyFacts": 4.6
+      }
+    },
+    "precheck": {
+      "checked": 8,
+      "clean": 8,
+      "repaired": 0,
+      "held": 0,
+      "errorsFound": 0,
+      "heldTitles": []
+    },
     "secondLook": {
-      "read": 33,
-      "clean": 5,
-      "corrected": 26,
+      "read": 85,
+      "clean": 28,
+      "corrected": 48,
       "stands": 0,
       "refused": 0,
-      "listed": 2,
+      "listed": 9,
       "unverifiable": 0,
-      "confirmedPerStory": 2.24,
+      "confirmedPerStory": 1.41,
       "withLessons": {
-        "read": 0,
-        "confirmedPerStory": null
+        "read": 12,
+        "confirmedPerStory": 0
       },
       "claudeWithout": {
-        "read": 0,
-        "confirmedPerStory": null
+        "read": 28,
+        "confirmedPerStory": 0.82
       }
     },
     "runs": {
       "count": 24,
-      "written": 42,
-      "refused": 8,
-      "callsPerStory": 12.9,
+      "written": 47,
+      "refused": 7,
+      "callsPerStory": 13.7,
+      "tokensPerStory": 56196,
+      "costPerStory": 0.36,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": [
       {
         "what": "second look: period errors",
-        "stories": 7,
+        "stories": 15,
         "examples": [
           "us-approves-f35-saudi-arms-deal-915064: أعلنت وزارة الخارجية الأمريكية في 18 سبتمبر موافقتها على صفقة بيع عسكري محتملة للسعودية تشمل 48 طائرة إف-35 لايتنينغ 2 ذ",
           "russia-temporary-management-western-assets-1dadf4: نُشر المرسوم على البوابة القانونية الرسمية لروسيا الخميس بحسب بيان «نستله»، وانخفضت أسهم الشركة 2.2% في تداولات صباح الج",
@@ -67,7 +99,7 @@
       },
       {
         "what": "second look: attribution errors",
-        "stories": 18,
+        "stories": 24,
         "examples": [
           "us-approves-f35-saudi-arms-deal-915064: أكد البيت الأبيض في 18 سبتمبر موافقة إدارة ترامب على الصفقة المحتملة.",
           "russia-temporary-management-western-assets-1dadf4: المرسوم الرئاسي يستهدف حماية الحقوق وضمان استمرارية العمليات لصالح الأطراف المعنية",
@@ -76,7 +108,7 @@
       },
       {
         "what": "second look: actor errors",
-        "stories": 6,
+        "stories": 9,
         "examples": [
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: ترامب يحظر سي إن إن وإم إس إن بي سي وبوليتيكو من البيت الأبيض",
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: حظر الرئيس الأمريكي دونالد ترامب «سي إن إن» و«إم إس إن بي سي» و«بوليتيكو» من البيت الأبيض فوراً، في منشور على «تروث سوشي",
@@ -85,7 +117,7 @@
       },
       {
         "what": "second look: hedge errors",
-        "stories": 9,
+        "stories": 13,
         "examples": [
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: «سي إن إن» تصف القرار بالاعتداء غير القانوني..",
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: من جانبها، قالت «سي إن إن» إنها ستواصل التغطية من البيت الأبيض دون عائق، ووصفت الحظر بأنه اعتداء غير قانوني على حقها الد",
@@ -94,7 +126,7 @@
       },
       {
         "what": "second look: term errors",
-        "stories": 4,
+        "stories": 10,
         "examples": [
           "trump-signs-russia-sanctions-oil-tariffs-law-ad758a: وكان مجلس النواب قد وافق على القانون بأغلبية 262 صوتاً مقابل 159، وصوّت 58 ديمقراطياً لصالحه في حين عارضه 7 جمهوريين، في",
           "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb: وبلغ حجم التداول على هذه العقود 6 ملايين دولار في 24 ساعة، والفائدة المفتوحة 31 مليون دولار.",
@@ -103,15 +135,16 @@
       },
       {
         "what": "second look: figure errors",
-        "stories": 2,
+        "stories": 4,
         "examples": [
           "eu-fuel-prices-record-iran-saudi-supply-8376ff: أظهرت بيانات جمعية ADAC أن البنزين في ألمانيا بلغ 2.31 يورو للتر الأربعاء، وتجاوز الديزل في هولندا 2.78 يورو.",
-          "faa-halts-east-coast-flights-equipment-outage-d180ab: كما أن إلغاء أكثر من 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية"
+          "faa-halts-east-coast-flights-equipment-outage-d180ab: كما أن إلغاء أكثر من 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية",
+          "trump-backs-us-diesel-export-ban-79317b: وتجاوز سعر البرميل 207 دولارات الثلاثاء، متقدماً على النفط الخام بأكثر من 100 دولار، بحسب «سي إن بي سي»."
         ]
       },
       {
         "what": "second look: scope errors",
-        "stories": 7,
+        "stories": 11,
         "examples": [
           "trump-announces-ai-force-and-czar-f4c7aa: ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها",
           "trump-xi-summit-washington-2026-4e439e: يدخل ترامب القمة والتضخم عند 3.4٪ وأسعار الوقود فوق 6 دولارات للغالون، قبل انتخابات منتصف المدة في نوفمبر.",
@@ -119,12 +152,20 @@
         ]
       },
       {
-        "what": "style: الإسناد في كل جملة تقريباً (# من # جملة فيها «وفقاً/بحسب»)",
-        "stories": 11,
+        "what": "second look: cause errors",
+        "stories": 2,
         "examples": [
-          "bank-of-japan-raises-rates-to-31-year-high-d62cc8",
+          "iran-seven-day-plan-reopen-hormuz-a8836f: وتراجعت أسعار النفط الجمعة بعد تقرير أفاد بأن مفاوضين أمريكيين وإيرانيين يبحثون في نيويورك صفقة على مراحل لإنهاء المواجه",
+          "oecd-raises-2026-global-growth-forecast-e97fa1: وأشارت المنظمة إلى أن السحب من مخزونات النفط العالمية، والتراجع الشديد في واردات الصين من الطاقة، والتحول إلى أنواع وقود"
+        ]
+      },
+      {
+        "what": "style: الإسناد في كل جملة تقريباً (# من # جملة فيها «وفقاً/بحسب»)",
+        "stories": 8,
+        "examples": [
           "china-increases-russian-oil-imports-august-2026-ac1178",
-          "global-markets-close-volatile-week-045574"
+          "oil-below-100-us-iran-diplomacy-8ddbd8",
+          "openai-anthropic-launch-cheaper-ai-models-979a5b"
         ]
       },
       {
@@ -154,11 +195,6 @@
         ]
       },
       {
-        "what": "newsroom: skipped: a single non-official source (needs a second outlet, or an official primary sourc",
-        "stories": 2,
-        "examples": []
-      },
-      {
         "what": "newsroom: skipped: repeats a recent story («…»)",
         "stories": 2,
         "examples": []
@@ -166,12 +202,32 @@
     ]
   },
   "weekBefore": {
-    "published": 42,
+    "published": 40,
     "news": 36,
-    "revisedShare": 0.67,
-    "styleFaultsPerStory": 1.19,
-    "styleWarningsPerStory": 0.81,
+    "revisedShare": 0.56,
+    "styleFaultsPerStory": 1.22,
+    "styleWarningsPerStory": 0.83,
     "corrections": 0,
+    "usefulness": {
+      "withLessons": {
+        "stories": 0,
+        "words": null,
+        "keyFacts": null
+      },
+      "control": {
+        "stories": 0,
+        "words": null,
+        "keyFacts": null
+      }
+    },
+    "precheck": {
+      "checked": 0,
+      "clean": 0,
+      "repaired": 0,
+      "held": 0,
+      "errorsFound": 0,
+      "heldTitles": []
+    },
     "secondLook": {
       "read": 0,
       "clean": 0,
@@ -195,16 +251,18 @@
       "written": 0,
       "refused": 0,
       "callsPerStory": null,
+      "tokensPerStory": null,
+      "costPerStory": null,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": [
       {
         "what": "style: الإسناد في كل جملة تقريباً (# من # جملة فيها «وفقاً/بحسب»)",
-        "stories": 8,
+        "stories": 10,
         "examples": [
+          "bank-of-japan-raises-rates-to-31-year-high-d62cc8",
           "china-retail-sales-slowdown-august-2026-cb2bb7",
-          "federal-reserve-rate-hike-expectations-september-2026-c63230",
-          "japan-imports-surge-august-2026-3efc48"
+          "federal-reserve-rate-hike-expectations-september-2026-c63230"
         ]
       },
       {
@@ -226,8 +284,42 @@
     ]
   },
   "lessons": {
-    "version": 4,
-    "active": 8,
-    "learnedFrom": 74
+    "version": 10,
+    "active": 10,
+    "learnedFrom": 120,
+    "kept": null,
+    "lastTest": null
+  },
+  "evidence": {
+    "pairs": 4,
+    "vsKept": {
+      "n": 2,
+      "better": 0,
+      "worse": 0,
+      "tied": 2,
+      "down": 0,
+      "up": 1,
+      "e": 1,
+      "harm": 1,
+      "saysLess": 0.5
+    },
+    "vsNone": {
+      "n": 2,
+      "better": 0,
+      "worse": 0,
+      "tied": 2,
+      "down": 0,
+      "up": 1,
+      "e": 1,
+      "harm": 1,
+      "saysLess": 0.5
+    },
+    "canary": {
+      "seeded": 0,
+      "found": 0,
+      "falseFlags": 0,
+      "alarm": false
+    },
+    "lastDecision": null
   }
 }
