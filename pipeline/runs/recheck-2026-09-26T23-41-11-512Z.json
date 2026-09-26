@@ -1,0 +1,145 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-09-26T23:41:11.512Z",
+  "durationSec": 197,
+  "read": 3,
+  "corrected": 3,
+  "report": [
+    {
+      "slug": "tiktok-alabama-settlement-teen-limits-320e2c",
+      "title": "«تيك توك» تدفع 100 مليون دولار على الأقل لتسوية دعوى ألاباما",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 22,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "saudi-east-west-pipeline-drone-attack-8ce715",
+      "title": "السعودية تعلّق خط الشرق-الغرب النفطي احترازياً بعد هجوم مسيّرات من العراق",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 13,
+        "weak": 0,
+        "noEvidence": 2,
+        "notFound": 2,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "term",
+          "sentence": "يربط خط الشرق-الغرب النفطي بين مدينة أبقاع قرب الخليج وميناء ينبع على ساحل البحر الأحمر، وزادت السعودية من استخدامه منذ بداية الحرب في المنطقة لتجاوز إغلاق مضيق هرمز الذي فرضته إيران.",
+          "quote": "The world’s largest ⁠crude oil exporter has increased its use of the 745-mile (1,200km) pipeline running across the Arabian peninsula, which links Abqaiq, near the Gulf, to the port of Yanbu, on the Red Sea, since the US-Israeli war against Iran began.",
+          "source": "The Guardian",
+          "correction": "The pipeline's eastern end is Abqaiq (بقيق in Arabic), not a place called 'أبقاع'."
+        },
+        {
+          "class": "actor",
+          "sentence": "لكنها أكدت أن الملك يحتفظ بحق اتخاذ جميع الإجراءات اللازمة لحماية سيادة المملكة وأمنها ومنشآتها.",
+          "quote": "It said the kingdom “reserves the right to take all necessary measures to protect its sovereignty, its security, its facilities” and its people.",
+          "source": "The Guardian",
+          "correction": "The statement says the kingdom, not the King, reserves the right to take all necessary measures."
+        }
+      ]
+    },
+    {
+      "slug": "india-china-trade-doubles-deficit-widens-e8e250",
+      "title": "تجارة الهند والصين تتضاعف تقريباً في خمس سنوات",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 13,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 8,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "scope",
+          "sentence": "تضمّ المبادرتان الإمارات والسعودية بوصفهما من الرعاة الأساسيين، وتتنافسان على تشكيل مستقبل التجارة واللوجستيات عبر المنطقة.",
+          "quote": "It has 155 members, including the UAE and Saudi Arabia.",
+          "source": "The National",
+          "correction": "The UAE and Saudi Arabia are among the BRI's 155 members, not its principal sponsors; the BRI is Beijing-led, and only for Imec are they described as backers."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 5,
+    "failures": 0,
+    "promptTokens": 24997,
+    "completionTokens": 25116,
+    "cacheReadTokens": 0,
+    "costUsd": 0.7022,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 5
+    },
+    "correctionsEditorCalls": 2
+  },
+  "log": [
+    "[23:41:11] second look: 3 to read now (54 published pieces not yet read; 11 read clean before publication and left out of the audit sample)",
+    "[23:41:12] saudi-east-west-pipeline-drone-attack-8ce715:   source https://www.aljazeera.com/news/2026/9/12/saudi-arabia-shuts-critical-oil-pipelin: robots-disallow",
+    "[23:41:50] llm ok role=checker model=claude-cli attempt=1 ms=37963",
+    "[23:41:50] tiktok-alabama-settlement-teen-limits-320e2c: 22 of 22 sentences checked · 22 supported · 0 without a source · 0 confirmed error(s)",
+    "[23:41:51] india-china-trade-doubles-deficit-widens-e8e250:   source https://www.nytimes.com/2026/09/12/business/india-china-trade.html: http-403",
+    "[23:42:03] llm ok role=checker model=claude-cli attempt=1 ms=51193",
+    "[23:42:03] saudi-east-west-pipeline-drone-attack-8ce715: 19 of 19 sentences checked · 13 supported · 4 without a source · 2 confirmed error(s)",
+    "[23:42:03]   ✗ [term] يربط خط الشرق-الغرب النفطي بين مدينة أبقاع قرب الخليج وميناء ينبع على ساحل البحر الأحمر، وزادت السعودية من است — The pipeline's eastern end is Abqaiq (بقيق in Arabic), not a place called 'أبقاع'.",
+    "[23:42:03]   ✗ [actor] لكنها أكدت أن الملك يحتفظ بحق اتخاذ جميع الإجراءات اللازمة لحماية سيادة المملكة وأمنها ومنشآتها. — The statement says the kingdom, not the King, reserves the right to take all necessary measures.",
+    "[23:42:28] llm ok role=checker model=claude-cli attempt=1 ms=36064",
+    "[23:42:28] india-china-trade-doubles-deficit-widens-e8e250: 23 of 23 sentences checked · 13 supported · 8 without a source · 1 confirmed error(s)",
+    "[23:42:28]   ✗ [scope] تضمّ المبادرتان الإمارات والسعودية بوصفهما من الرعاة الأساسيين، وتتنافسان على تشكيل مستقبل التجارة واللوجستيات — The UAE and Saudi Arabia are among the BRI's 155 members, not its principal sponsors; the BRI is Beijing-led, and only for Imec are they described as backers.",
+    "[23:42:28] corrections: 2 stories to the corrections editor",
+    "[23:42:29] [correct] saudi-east-west-pipeline-drone-attack-8ce715: fetching 2 source(s)",
+    "[23:42:29] [correct]   source https://www.aljazeera.com/news/2026/9/12/saudi-arabia-shuts-critical-o: robots-disallow",
+    "[23:42:42] [correct] llm ok role=writer model=claude-cli attempt=1 ms=13126",
+    "[23:42:42] [correct] saudi-east-west-pipeline-drone-attack-8ce715: corrected; fields body",
+    "[23:42:42]     note: ذكرت نسخة سابقة من هذا الخبر أن خط الشرق-الغرب يبدأ من مدينة «أبقاع»، والصحيح أنه يبدأ من مدينة بقيق قرب الخليج. كما نسبت النسخة السابقة إلى الملك الاحتفاظ بحق اتخاذ الإجراءات اللازمة، والصحيح أن بيان الخارجية السعودية نسب ذلك إلى المملكة.",
+    "[23:42:42] [correct] india-china-trade-doubles-deficit-widens-e8e250: fetching 2 source(s)",
+    "[23:42:42] [correct]   source https://www.nytimes.com/2026/09/12/business/india-china-trade.html: http-403",
+    "[23:43:02] [correct] llm ok role=writer model=claude-cli attempt=1 ms=18269",
+    "[23:43:02] [correct] india-china-trade-doubles-deficit-widens-e8e250: corrected; fields whyItMatters",
+    "[23:43:02]     note: ذكرت نسخة سابقة من هذا الخبر أن الإمارات والسعودية من الرعاة الأساسيين لمبادرة الحزام والطريق والممر الاقتصادي الهندي-الشرق أوسطي-الأوروبي. والصحيح أن البلدين عضوان ضمن 155 عضواً في مبادرة الحزام والطريق التي تقودها بكين، وأنهما من داعمي الممر الهندي وحده.",
+    "[23:43:02] [correct] done: 2 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-09-26T23-42-28-879Z.json",
+    "[23:43:02] india-china-trade-doubles-deficit-widens-e8e250:   source https://www.nytimes.com/2026/09/12/business/india-china-trade.html: http-403",
+    "[23:43:34] llm ok role=checker model=claude-cli attempt=1 ms=31259",
+    "[23:43:34] india-china-trade-doubles-deficit-widens-e8e250: the correction reads clean where it wrote",
+    "[23:43:34] saudi-east-west-pipeline-drone-attack-8ce715:   source https://www.aljazeera.com/news/2026/9/12/saudi-arabia-shuts-critical-oil-pipelin: robots-disallow",
+    "[23:44:14] llm ok role=checker model=claude-cli attempt=1 ms=40063",
+    "[23:44:14] saudi-east-west-pipeline-drone-attack-8ce715: the correction reads clean where it wrote; 1 other error(s) found, corrected once more",
+    "[23:44:14] [correct] saudi-east-west-pipeline-drone-attack-8ce715: fetching 2 source(s)",
+    "[23:44:14] [correct]   source https://www.aljazeera.com/news/2026/9/12/saudi-arabia-shuts-critical-o: robots-disallow",
+    "[23:44:28] [correct] llm ok role=writer model=claude-cli attempt=1 ms=13740",
+    "[23:44:28] [correct] saudi-east-west-pipeline-drone-attack-8ce715: corrected; fields body",
+    "[23:44:28]     note: ذكرت نسخة سابقة من هذا الخبر أن الحكومة العراقية قالت إن الهجمات انطلقت من موقع داخل محافظة ميسان، والصحيح أنها أكدت انطلاقها من الأراضي العراقية دون أن تحدد موقعاً داخل المحافظة.",
+    "[23:44:28] [correct] done: 1 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-09-26T23-44-14-347Z.json"
+  ]
+}

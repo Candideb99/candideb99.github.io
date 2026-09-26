@@ -1,0 +1,25 @@
+{
+  "startedAt": "2026-09-26T23:44:14.530Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "saudi-east-west-pipeline-drone-attack-8ce715",
+      "issue": "The body says «وأدانت الحكومة العراقية الهجمات التي وصفتها بأنها تستهدف أشقاءها في المملكة، وأنها انطلقت من موقع داخل المحافظة.» (The Iraqi government condemned the attacks as targeting its brethren in the Kingdom and said they were launched from a site inside the province (Maysan).). Source The Guardian says: \"On Saturday, Iraq’s government confirmed the attacks were launched from its territory and ordered an investigation. It condemned “the attacks targeting our brethren in the Kingdom of Saudi Arabia”, and the office of the Iraqi prime minister, Ali al-Zaidi, said the commander in charge of the southern province of Maysan had been dismissed.\". The Iraqi government said only that the attacks were launched from its territory; the source does not report it saying they came from a site inside Maysan province.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن الحكومة العراقية قالت إن الهجمات انطلقت من موقع داخل محافظة ميسان، والصحيح أنها أكدت انطلاقها من الأراضي العراقية دون أن تحدد موقعاً داخل المحافظة.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وأدانت الحكومة العراقية الهجمات التي وصفتها بأنها تستهدف أشقاءها في المملكة، وأنها انطلقت من موقع داخل المحافظة."
+      ],
+      "newSentences": [
+        "وأدانت الحكومة العراقية الهجمات التي وصفتها بأنها تستهدف أشقاءها في المملكة."
+      ]
+    }
+  ]
+}

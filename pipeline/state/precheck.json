@@ -498,6 +498,90 @@
           "noted": []
         }
       ]
+    },
+    "microsoft-merges-office-apps-into-copilot-fa6351": {
+      "at": "2026-09-26T23:50:00.491Z",
+      "title": "مايكروسوفت تدمج «وورد» و«إكسل» و«باوربوينت» في مساعدها «كوبايلوت»",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v15",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 29,
+            "checked": 29,
+            "supported": 28,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "apple-taction-haptics-patent-verdict-f37d49": {
+      "at": "2026-09-26T23:53:51.770Z",
+      "title": "هيئة محلفين في سان دييغو تلزم أبل بدفع أكثر من 5.7 مليار دولار في نزاع براءات",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v15",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 23,
+            "checked": 23,
+            "supported": 22,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "mexico-pledges-more-us-imports-trade-surplus-4c273f": {
+      "at": "2026-09-26T23:57:14.752Z",
+      "title": "المكسيك تتعهد بزيادة وارداتها الأمريكية لتقليص فائض بلغ 197 مليار دولار",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v15",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 15,
+            "checked": 15,
+            "supported": 14,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

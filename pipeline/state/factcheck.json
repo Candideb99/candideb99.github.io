@@ -6866,6 +6866,182 @@
       "problems": [
         "10 of 17 sentences changed: more than a correction needs"
       ]
+    },
+    "tiktok-alabama-settlement-teen-limits-320e2c": {
+      "at": "2026-09-26T23:41:11.905Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v12",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-26T20:39:44.445Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 22,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "saudi-east-west-pipeline-drone-attack-8ce715": {
+      "at": "2026-09-26T23:41:11.935Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-12T11:01:57.635Z",
+      "sourcesRead": 1,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 13,
+        "weak": 0,
+        "noEvidence": 2,
+        "notFound": 2,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 9,
+          "field": "body",
+          "sentence": "يربط خط الشرق-الغرب النفطي بين مدينة أبقاع قرب الخليج وميناء ينبع على ساحل البحر الأحمر، وزادت السعودية من استخدامه منذ بداية الحرب في المنطقة لتجاوز إغلاق مضيق هرمز الذي فرضته إيران.",
+          "claim": "The East-West pipeline links the town of 'أبقاع' near the Gulf to the port of Yanbu on the Red Sea. Saudi Arabia has increased its use of the pipeline since the war in the region began, to bypass the Iran-imposed closure of Hormuz.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "The Guardian",
+          "sourceDate": "2026-09-12",
+          "quote": "The world’s largest ⁠crude oil exporter has increased its use of the 745-mile (1,200km) pipeline running across the Arabian peninsula, which links Abqaiq, near the Gulf, to the port of Yanbu, on the Red Sea, since the US-Israeli war against Iran began.",
+          "correction": "The pipeline's eastern end is Abqaiq (بقيق in Arabic), not a place called 'أبقاع'.",
+          "class": "term"
+        },
+        {
+          "id": 15,
+          "field": "body",
+          "sentence": "لكنها أكدت أن الملك يحتفظ بحق اتخاذ جميع الإجراءات اللازمة لحماية سيادة المملكة وأمنها ومنشآتها.",
+          "claim": "The Saudi statement stressed that the King reserves the right to take all necessary measures to protect the kingdom's sovereignty, security and facilities.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "The Guardian",
+          "sourceDate": "2026-09-12",
+          "quote": "It said the kingdom “reserves the right to take all necessary measures to protect its sovereignty, its security, its facilities” and its people.",
+          "correction": "The statement says the kingdom, not the King, reserves the right to take all necessary measures.",
+          "class": "actor"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "السعودية تعلّق خط الشرق-الغرب النفطي احترازياً بعد هجوم مسيّرات من العراق",
+        "يُعيق التوقف المؤقت الطريق البديل الرئيسي لتجاوز إغلاق مضيق هرمز، مع تصاعد هجمات الطائرات بدون طيار وتقدّم الحوثيين في مضيق باب المندب.",
+        "وأدانت الحكومة العراقية الهجمات التي وصفتها بأنها تستهدف أشقاءها في المملكة، وأنها انطلقت من موقع داخل المحافظة.",
+        "وأضافت الخارجية السعودية أن المملكة اختارت عدم الرد في هذه المرحلة ودعم جهود الحكومة العراقية لمنع الهجمات التي تنطلق من أراضيها، بناءً على طلب رئيس الوزراء العراقي."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن خط الشرق-الغرب يبدأ من مدينة «أبقاع»، والصحيح أنه يبدأ من مدينة بقيق قرب الخليج. كما نسبت النسخة السابقة إلى الملك الاحتفاظ بحق اتخاذ الإجراءات اللازمة، والصحيح أن بيان الخارجية السعودية نسب ذلك إلى المملكة.",
+      "verified": {
+        "at": "2026-09-26T23:44:14.347Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": [
+          {
+            "class": "attribution",
+            "field": "body",
+            "sentence": "وأدانت الحكومة العراقية الهجمات التي وصفتها بأنها تستهدف أشقاءها في المملكة، وأنها انطلقت من موقع داخل المحافظة.",
+            "quote": "On Saturday, Iraq’s government confirmed the attacks were launched from its territory and ordered an investigation. It condemned “the attacks targeting our brethren in the Kingdom of Saudi Arabia”, and the office of the Iraqi prime minister, Ali al-Zaidi, said the commander in charge of the southern province of Maysan had been dismissed.",
+            "correction": "The Iraqi government said only that the attacks were launched from its territory; the source does not report it saying they came from a site inside Maysan province."
+          }
+        ],
+        "secondCorrection": "corrected"
+      }
+    },
+    "india-china-trade-doubles-deficit-widens-e8e250": {
+      "at": "2026-09-26T23:41:50.759Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-12T04:48:56.179Z",
+      "sourcesRead": 1,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 13,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 8,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 9,
+          "field": "whyItMatters",
+          "sentence": "تضمّ المبادرتان الإمارات والسعودية بوصفهما من الرعاة الأساسيين، وتتنافسان على تشكيل مستقبل التجارة واللوجستيات عبر المنطقة.",
+          "claim": "Both initiatives count the UAE and Saudi Arabia among their principal sponsors, and the two compete to shape the future of trade and logistics across the region.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "The National",
+          "sourceDate": "2026-09-11",
+          "quote": "It has 155 members, including the UAE and Saudi Arabia.",
+          "correction": "The UAE and Saudi Arabia are among the BRI's 155 members, not its principal sponsors; the BRI is Beijing-led, and only for Imec are they described as backers.",
+          "class": "scope"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "تجارة الهند والصين تتضاعف تقريباً في خمس سنوات",
+        "العجز التجاري لنيودلهي يتسع مع استمرار الاعتماد على الواردات الصينية رغم جهود تقليصها، في ظل تنافس الممرين الاقتصاديين الصيني والهندي على نفوذ المنطقة",
+        "تضاعف التبادل التجاري بين الهند والصين، أكبر اقتصادين في آسيا، تقريباً خلال خمس سنوات، بحسب صحيفة «نيويورك تايمز».",
+        "ويتّسع العجز التجاري الهندي مع تعقّد خيارات نيودلهي في بناء قاعدتها الصناعية.",
+        "نمو التبادل التجاري: تقريباً تضاعف خلال خمس سنوات",
+        "ومسار العلاقة التجارية بين الهند والصين ومصير الممرين يؤثران مباشرة على الاستثمارات والبنية التحتية المتدفقة إلى الخليج.",
+        "ارتفع حجم التجارة بين الهند والصين، أكبر اقتصادين في آسيا، إلى ما يقارب ضعفه خلال خمس سنوات فقط، تاركاً نيودلهي مع عجز تجاري متزايد وخيارات صعبة حول كيفية بناء قاعدتها الصناعية دون الاعتماد على الواردات الصينية.",
+        "وتواجه الهند مأزقاً هيكلياً: فهي تسعى لتقليل اعتمادها على السلع الصينية، لكنها في الوقت ذاته تحتاج إلى هذه الواردات لدعم قطاعاتها الصناعية النامية، ما يجعل أي محاولة لقطع العلاقات التجارية أمراً مكلفاً ومعقداً."
+      ],
+      "weak": [
+        {
+          "sentence": "وانطلقت المبادرة الصينية عام 2013، وضُخ ما يقارب 1.4 تريليون دولار كاستثمارات في إطارها، لتصبح أكبر مشروع بنية تحتية تضطلع به دولة واحدة، وفق بيانات معهد غرفيث لآسيا ومركز التمويل الأخضر والتنمية، وتضم 155 عضواً بينهم الإمارات والسعودية.",
+          "quote": "Launched in 2013, the BRI has poured in nearly $1.4 trillion of investments, making it the initiative largest infrastructure endeavour by a single country, according to the latest data from the Griffith Asia Institute and the Green Finance and Development Centre. The initiative aims to connect Asia, including the Middle East, with Africa, Europe and the South Pacific, using land and maritime corridors."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن الإمارات والسعودية من الرعاة الأساسيين لمبادرة الحزام والطريق والممر الاقتصادي الهندي-الشرق أوسطي-الأوروبي. والصحيح أن البلدين عضوان ضمن 155 عضواً في مبادرة الحزام والطريق التي تقودها بكين، وأنهما من داعمي الممر الهندي وحده.",
+      "verified": {
+        "at": "2026-09-26T23:43:34.088Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
     }
   }
 }

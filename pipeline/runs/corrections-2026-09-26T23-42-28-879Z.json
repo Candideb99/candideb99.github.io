@@ -1,0 +1,50 @@
+{
+  "startedAt": "2026-09-26T23:42:29.061Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "saudi-east-west-pipeline-drone-attack-8ce715",
+      "issue": "1. The body says «يربط خط الشرق-الغرب النفطي بين مدينة أبقاع قرب الخليج وميناء ينبع على ساحل البحر الأحمر، وزادت السعودية من استخدامه منذ بداية الحرب في المنطقة لتجاوز إغلاق مضيق هرمز الذي فرضته إيران.» (The East-West pipeline links the town of 'أبقاع' near the Gulf to the port of Yanbu on the Red Sea. Saudi Arabia has increased its use of the pipeline since the war in the region began, to bypass the Iran-imposed closure of Hormuz.). Source The Guardian says: \"The world’s largest ⁠crude oil exporter has increased its use of the 745-mile (1,200km) pipeline running across the Arabian peninsula, which links Abqaiq, near the Gulf, to the port of Yanbu, on the Red Sea, since the US-Israeli war against Iran began.\". The pipeline's eastern end is Abqaiq (بقيق in Arabic), not a place called 'أبقاع'.\n2. The body says «لكنها أكدت أن الملك يحتفظ بحق اتخاذ جميع الإجراءات اللازمة لحماية سيادة المملكة وأمنها ومنشآتها.» (The Saudi statement stressed that the King reserves the right to take all necessary measures to protect the kingdom's sovereignty, security and facilities.). Source The Guardian says: \"It said the kingdom “reserves the right to take all necessary measures to protect its sovereignty, its security, its facilities” and its people.\". The statement says the kingdom, not the King, reserves the right to take all necessary measures.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن خط الشرق-الغرب يبدأ من مدينة «أبقاع»، والصحيح أنه يبدأ من مدينة بقيق قرب الخليج. كما نسبت النسخة السابقة إلى الملك الاحتفاظ بحق اتخاذ الإجراءات اللازمة، والصحيح أن بيان الخارجية السعودية نسب ذلك إلى المملكة.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "يربط خط الشرق-الغرب النفطي بين مدينة أبقاع قرب الخليج وميناء ينبع على ساحل البحر الأحمر، وزادت السعودية من استخدامه منذ بداية الحرب في المنطقة لتجاوز إغلاق مضيق هرمز الذي فرضته إيران.",
+        "لكنها أكدت أن الملك يحتفظ بحق اتخاذ جميع الإجراءات اللازمة لحماية سيادة المملكة وأمنها ومنشآتها."
+      ],
+      "newSentences": [
+        "يربط خط الشرق-الغرب النفطي بين مدينة بقيق قرب الخليج وميناء ينبع على ساحل البحر الأحمر، وزادت السعودية من استخدامه منذ بداية الحرب في المنطقة لتجاوز إغلاق مضيق هرمز الذي فرضته إيران.",
+        "لكنها أكدت أن المملكة تحتفظ بحق اتخاذ جميع الإجراءات اللازمة لحماية سيادتها وأمنها ومنشآتها."
+      ]
+    },
+    {
+      "slug": "india-china-trade-doubles-deficit-widens-e8e250",
+      "issue": "The why it matters says «تضمّ المبادرتان الإمارات والسعودية بوصفهما من الرعاة الأساسيين، وتتنافسان على تشكيل مستقبل التجارة واللوجستيات عبر المنطقة.» (Both initiatives count the UAE and Saudi Arabia among their principal sponsors, and the two compete to shape the future of trade and logistics across the region.). Source The National says: \"It has 155 members, including the UAE and Saudi Arabia.\". The UAE and Saudi Arabia are among the BRI's 155 members, not its principal sponsors; the BRI is Beijing-led, and only for Imec are they described as backers.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "whyItMatters"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن الإمارات والسعودية من الرعاة الأساسيين لمبادرة الحزام والطريق والممر الاقتصادي الهندي-الشرق أوسطي-الأوروبي. والصحيح أن البلدين عضوان ضمن 155 عضواً في مبادرة الحزام والطريق التي تقودها بكين، وأنهما من داعمي الممر الهندي وحده.",
+      "model": "claude-cli",
+      "before": {
+        "whyItMatters": "تضمّ المبادرتان الإمارات والسعودية بوصفهما من الرعاة الأساسيين، وتتنافسان على تشكيل مستقبل التجارة واللوجستيات عبر المنطقة. ومسار العلاقة التجارية بين الهند والصين ومصير الممرين يؤثران مباشرة على الاستثمارات والبنية التحتية المتدفقة إلى الخليج."
+      },
+      "after": {
+        "whyItMatters": "الإمارات والسعودية عضوان في مبادرة الحزام والطريق التي تقودها بكين، وداعمتان للممر الاقتصادي الهندي-الشرق أوسطي-الأوروبي، والمبادرتان تتنافسان على تشكيل مستقبل التجارة واللوجستيات عبر المنطقة. ومسار العلاقة التجارية بين الهند والصين ومصير الممرين يؤثران مباشرة على الاستثمارات والبنية التحتية المتدفقة إلى الخليج."
+      },
+      "changedSentences": [
+        "تضمّ المبادرتان الإمارات والسعودية بوصفهما من الرعاة الأساسيين، وتتنافسان على تشكيل مستقبل التجارة واللوجستيات عبر المنطقة."
+      ],
+      "newSentences": [
+        "الإمارات والسعودية عضوان في مبادرة الحزام والطريق التي تقودها بكين، وداعمتان للممر الاقتصادي الهندي-الشرق أوسطي-الأوروبي، والمبادرتان تتنافسان على تشكيل مستقبل التجارة واللوجستيات عبر المنطقة."
+      ]
+    }
+  ]
+}
