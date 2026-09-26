@@ -66,13 +66,15 @@ const ticker = unplaced(news).slice(0, 5);
 const onFirstScreen = new Set([...placed, ...ticker.map((a) => a.id)]);
 const coverRelated = new Map(cover.map((s) => [s.id, onTheSameTopic(s, articles.filter((a) => !repeats.has(a.id)), { exclude: onFirstScreen })]));
 
-// Today's figures: one telling number per recent story, never a bare year or a sprawling value.
+// Today's figures: one telling number per recent story, never a bare year or a sprawling value. Never an explainer's:
+// its numbers are illustrative examples, and its box is a glossary (2026-09-27).
 const figureScore = (value: string) => {
   const v = value.trim();
   if (!/\d/.test(v) || /^(19|20)\d{2}$/.test(v) || v.length > 30) return -1;
   return (/[%٪]/.test(v) ? 2 : 0) + (/(مليار|مليون|ألف|دولار|ريال|يورو|جنيه|دينار|درهم|يوان|طن|برميل)/.test(v) ? 2 : 0) + (v.length <= 18 ? 1 : 0);
 };
 const figures = articles
+  .filter((a) => a.data.kind !== "explainer")
   .slice(0, 8)
   .flatMap((a) => {
     const best = [...a.data.keyFacts].map((f) => ({ ...f, article: a, score: figureScore(f.value) })).filter((f) => f.score >= 0 && (f.label ?? "").length <= 48).sort((x, y) => y.score - x.score)[0];

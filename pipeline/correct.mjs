@@ -31,6 +31,7 @@ import { extractArticle } from "./lib/extract.mjs";
 import { WRITER_SYSTEM } from "./lib/write.mjs";
 import { arabicRatio, normalizeDigits, ungroundedNumbers } from "./lib/util.mjs";
 import { ARTICLES_DIR } from "./lib/article.mjs";
+import { boxFacts } from "./lib/keyfacts.mjs";
 import { fixNames } from "./lib/copydesk.mjs";
 import { loadSnapshot, snapshotSource } from "./lib/snapshots.mjs";
 
@@ -154,7 +155,8 @@ Answer with one JSON object: {"correct": false, "title": "...", "subtitle": "...
   }
 
   // The house spelling table (أمريكي، ترامب، خه لي فنغ…) applies to a correction as to every rewrite.
-  const after = { ...before, ...Object.fromEntries(FIELDS.map((f) => [f, fixNames(String(answer[f]).trim())])), keyFacts: answer.keyFacts.map((k) => ({ label: String(k.label ?? "").trim(), value: String(k.value ?? "").trim() })).filter((k) => k.value) };
+  // The box keeps its rule through a correction: figures only under «الأرقام» (lib/keyfacts.mjs).
+  const after = { ...before, ...Object.fromEntries(FIELDS.map((f) => [f, fixNames(String(answer[f]).trim())])), keyFacts: boxFacts(answer.keyFacts.map((k) => ({ label: String(k.label ?? "").trim(), value: String(k.value ?? "").trim() })).filter((k) => k.value), data.kind ?? "news") };
   const note = fixNames(String(answer.note).trim());
   // Code holds the correction to what a correction is.
   const problems = [];

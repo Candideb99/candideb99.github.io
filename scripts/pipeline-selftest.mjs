@@ -17,6 +17,9 @@ import { lessonRuleOk, loadLessons } from "../pipeline/lib/lessons.mjs";
 import { writeJsonAtomic } from "../pipeline/lib/util.mjs";
 import { loadSnapshot, saveSnapshot } from "../pipeline/lib/snapshots.mjs";
 import { loadSources, settleDrift } from "../pipeline/lib/factcheck.mjs";
+import { boxFacts } from "../pipeline/lib/keyfacts.mjs";
+import { normalizeDraft } from "../pipeline/lib/write.mjs";
+import { serializeArticle } from "../pipeline/lib/article.mjs";
 
 let failed = 0;
 function check(name, got, want) {
@@ -219,6 +222,26 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("a page that changed is read as it is now, with its publication text alongside", [changed[0].text.includes("96.80"), changed[0].saved.includes("97.55")], [true, true]);
   const settled = settleDrift([{ status: "drift", class: "figure", sentence: "تراجع برنت إلى 97.55 دولار" }, { status: "drift", class: "figure", sentence: "تراجع برنت إلى 91.25 دولار" }], [changed[0].saved]);
   check("a figure the saved copy carries is a changed page; one it never carried is an error", settled.map((c) => c.status), ["drift", "confirmed"]);
+}
+
+// 7. The «الأرقام» box holds figures (the owner, 2026-09-27, on «بغداد ومسقط», «النجف» and «الإقصاء من نظام الدولار»
+// printed there): the story he found, the values the rule must keep though they carry no digit, the dates it must drop,
+// and an explainer's glossary, which it must leave alone.
+{
+  const box = (values, kind) => boxFacts(values.map((value, i) => ({ label: `l${i}`, value })), kind).map((f) => f.value);
+  check("the story he found keeps its one figure", box(["23 سبتمبر", "27", "بغداد ومسقط", "النجف", "الإقصاء من نظام الدولار"]), ["27"]);
+  check("names, outlets, verdicts and «not announced» leave the box", box(["CATL، جيلي، BYD", "تروث سوشيال", "تثبيت الفائدة", "لم تُعلن", "البنزين والسولار", "لا تكلفة"]), []);
+  check("weekdays, dates and years leave the box", box(["الخميس", "يوم الجمعة", "16 سبتمبر 2026", "من 14 إلى 16 سبتمبر 2026", "يناير 2005", "2018", "منذ عام 1972، واتفاقية شراكة استراتيجية منذ 2004"]), []);
+  check("figures in letters, fractions, duals and ratings stay", box(["شهران", "ربع نقطة مئوية", "نحو الثلث", "الخُمس", "سبعة أيام", "BBB-", "رفعان", "٢٧ شركة"]), ["شهران", "ربع نقطة مئوية", "نحو الثلث", "الخُمس", "سبعة أيام", "BBB-", "رفعان", "٢٧ شركة"]);
+  check("a figure with a date beside it stays", box(["9 أيام (13-22 سبتمبر)", "171 دولاراً للبرميل للأسبوع المنتهي في 4 سبتمبر"]), ["9 أيام (13-22 سبتمبر)", "171 دولاراً للبرميل للأسبوع المنتهي في 4 سبتمبر"]);
+  check("an explainer's glossary is left alone", box(["سعر السهم × عدد الأسهم القائمة", "ينخفض السعر فيرتفع العائد"], "explainer").length, 2);
+  // Every path to the file applies it: the writers' drafts, and the article as written (a repair or a revision included).
+  const drafted = normalizeDraft({ title: "t", body: "b", key_facts: [{ label: "وجهات أُلغيت رحلاتها", value: "بغداد ومسقط" }, { label: "شركات النقل الجوي", value: "27" }] });
+  check("a writer's draft keeps figures only", drafted.keyFacts.map((f) => f.value), ["27"]);
+  const glossary = normalizeDraft({ title: "t", body: "b", key_facts: [{ label: "القيمة السوقية", value: "سعر السهم × عدد الأسهم" }] }, { kind: "explainer" });
+  check("an explainer's draft keeps its terms", glossary.keyFacts.length, 1);
+  const file = serializeArticle({ draft: { ...drafted, keyFacts: [{ label: "مطار بديل", value: "النجف" }, { label: "شركات", value: "27" }] }, slug: "s", section: "economy", sources: [], image: null, models: {}, quality: {} });
+  check("the article as written keeps figures only", [file.includes("النجف"), file.includes('"27"')], [false, true]);
 }
 
 if (failed) {

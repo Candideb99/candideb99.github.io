@@ -5,14 +5,20 @@ interface Props {
   facts: { label: string; value: string }[];
   /** side: desktop rail only · inline: narrow screens only · always: no responsive hiding */
   placement?: "side" | "inline" | "always";
+  /**
+   * An explainer's box is its glossary: each term over its definition, under «مفاهيم أساسية». Every other piece's box
+   * holds figures under «الأرقام» (pipeline/lib/keyfacts.mjs keeps anything else out; the owner, 2026-09-27, on place
+   * names printed there).
+   */
+  terms?: boolean;
 }
-const { facts, placement = "always" } = Astro.props;
+const { facts, placement = "always", terms = false } = Astro.props;
 const headingId = `facts-${placement}`;
 ---
 
 {facts.length > 0 && (
-  <aside class={`facts facts--${placement}`} aria-labelledby={headingId}>
-    <h2 id={headingId} class="module__head">الأرقام</h2>
+  <aside class:list={["facts", `facts--${placement}`, { "facts--terms": terms }]} aria-labelledby={headingId}>
+    <h2 id={headingId} class="module__head">{terms ? "مفاهيم أساسية" : "الأرقام"}</h2>
     <dl class="facts__list">
       {facts.map((f) => (
         <div class="facts__item">
@@ -40,8 +46,13 @@ const headingId = `facts-${placement}`;
     font-variant-numeric: tabular-nums lining-nums;
   }
   .facts__label { font-family: var(--font-ui); font-weight: 500; font-size: var(--fs-sm); color: var(--ink-3); line-height: 1.4; }
+  /* A glossary reads term first, then its definition at reading size: a sentence set as a 1.4rem figure shouts. */
+  .facts--terms .facts__item { flex-direction: column; gap: 0.15rem; }
+  .facts--terms .facts__label { font-family: var(--font-title); font-weight: 700; font-size: 1.05rem; color: var(--ink); line-height: 1.35; }
+  .facts--terms .facts__value { font-family: var(--font-body); font-weight: 400; font-size: var(--fs-sm); line-height: 1.7; color: var(--ink-2); font-variant-numeric: normal; }
   .facts--inline { display: none; margin-bottom: 1.5rem; max-width: var(--measure); }
   .facts--inline .facts__list { grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); column-gap: 1rem; }
+  .facts--inline.facts--terms .facts__list { grid-template-columns: 1fr; }
   @media (max-width: 1023px) {
     .facts--inline { display: block; }
     .facts--side { display: none; }

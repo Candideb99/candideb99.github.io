@@ -2,7 +2,8 @@
 /**
  * What a reader meets, checked on the built site (dist/) without a browser: every page is Arabic and right to left,
  * titled and not empty; every link inside the site leads to a page or file that was built; every image says what it
- * shows; no "undefined", "NaN" or "[object Object]" reached the text; every story shows its date and its sources.
+ * shows; no "undefined", "NaN" or "[object Object]" reached the text; every story shows its date and its sources; and
+ * (2026-09-27) every «الأرقام» box holds figures, never a place, a name or a date (pipeline/lib/keyfacts.mjs).
  * Asked for on 2026-09-26 (the owner's go to a review that wanted the reader's experience checked, not only a build
  * that succeeds). The gate runs it after the build (scripts/gate.mjs); it can also run alone:
  *
@@ -12,6 +13,7 @@
  */
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
+import { isFigure } from "../pipeline/lib/keyfacts.mjs";
 
 const DIST = path.resolve(process.argv[2] ?? "dist");
 if (!existsSync(DIST)) {
@@ -53,6 +55,7 @@ const fault = (page, what) => faults.push(`${path.relative(DIST, page).replace(/
 let links = 0;
 let images = 0;
 let stories = 0;
+let facts = 0;
 const broken = new Map();
 
 for (const page of pages) {
@@ -90,15 +93,25 @@ for (const page of pages) {
     // written without outside sources (data-section="explainers") has none by design.
     const explainer = /data-section=["']explainers["']/.test(tag);
     if (!explainer && (!/id=["']sources-title["']/.test(html) || !/class=["'][^"']*sources__item/.test(html))) fault(page, "a story without its sources section");
+    // Under «الأرقام» a figure, never a place, a name or a date (the owner, 2026-09-27; pipeline/lib/keyfacts.mjs). The
+    // side and inline boxes print the same facts, so the first is read; an explainer's glossary (facts--terms) is not.
+    const box = html.match(/<aside class="facts\b[^"]*"[\s\S]*?<\/aside>/)?.[0] ?? "";
+    if (box && !/facts--terms/.test(box.slice(0, 200))) {
+      facts += 1;
+      const text = (s) => s.replace(/<[^>]+>/g, "").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").trim();
+      for (const m of box.matchAll(/<dt class="facts__label"[^>]*>([\s\S]*?)<\/dt>\s*<dd class="facts__value"[^>]*>([\s\S]*?)<\/dd>/g)) {
+        if (!isFigure(text(m[2]), text(m[1]))) fault(page, `«${text(m[1])}: ${text(m[2])}» under «الأرقام» is not a figure (node pipeline/keyfacts.mjs takes it out)`);
+      }
+    }
   }
 }
 for (const key of broken.keys()) faults.push(`broken link: ${key}`);
 
-console.log(`site-check: ${pages.length} pages (${stories} stories), ${links} links inside the site, ${images} images`);
+console.log(`site-check: ${pages.length} pages (${stories} stories, ${facts} «الأرقام» boxes), ${links} links inside the site, ${images} images`);
 if (faults.length) {
   console.log(`${faults.length} fault(s):`);
   for (const f of faults.slice(0, 60)) console.log(`  - ${f}`);
   if (faults.length > 60) console.log(`  … and ${faults.length - 60} more`);
   process.exit(1);
 }
-console.log("site-check: every page is Arabic right-to-left, titled and not empty; every link inside the site resolves; every image has alt text; every story shows its date and sources");
+console.log("site-check: every page is Arabic right-to-left, titled and not empty; every link inside the site resolves; every image has alt text; every story shows its date and sources; every «الأرقام» box holds figures");

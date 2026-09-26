@@ -65,6 +65,14 @@ country, company or price only when a source makes the link, and never recaps, s
 appear higher up is deleted. The copy desk may cut a repeat because its guard counts facts over the
 whole story: a figure, a name or a hedged claim may leave a place where it repeats, never the story.
 
+**The box holds what its heading says.** Under «الأرقام» every value is a figure with its unit (an
+amount, a rate, a price, a count, a share, a duration) or a credit rating; a name, a place, a company,
+a date, a weekday or a verdict is not a key fact however important, and stays in the text (the owner,
+2026-09-27, on «بغداد ومسقط» and «النجف» printed there). Code decides it, not the writer's obedience:
+`pipeline/lib/keyfacts.mjs` drops such a value wherever a draft is made, written or corrected, and the
+site-check refuses a published box that holds one. A story with no figures has no box. An explainer's
+box is its glossary, each key term over its one-line definition, headed «مفاهيم أساسية».
+
 **Hedges** are said once and plainly: at most one per paragraph, varied, never two sentences in a row
 opening with one; يرجّح أن with no subject becomes والأرجح أن or names who judges. An analysis marks
 its reading once where the reading begins and then writes plainly.

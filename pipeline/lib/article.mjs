@@ -2,6 +2,7 @@ import { existsSync } from "node:fs";
 import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import YAML from "yaml";
+import { boxFacts } from "./keyfacts.mjs";
 import { sha1, slugifyLatin, wordCount } from "./util.mjs";
 
 export const ARTICLES_DIR = path.join(process.cwd(), "content", "articles");
@@ -37,7 +38,8 @@ export function serializeArticle({ draft, slug, section, sources, image, models,
     kind,
     publishedAt: publishedAt ?? new Date().toISOString(),
     lede: draft.lede,
-    keyFacts: draft.keyFacts,
+    // The last word on the box, whatever path the draft came by (a repair, a revision): figures only under «الأرقام».
+    keyFacts: boxFacts(draft.keyFacts, kind),
     whyItMatters: draft.whyItMatters,
     tags: draft.tags,
     regions: draft.regions,

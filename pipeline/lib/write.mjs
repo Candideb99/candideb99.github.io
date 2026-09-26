@@ -1,5 +1,6 @@
 import { canonicalRegions } from "./regions.mjs";
 import { chat } from "./llm.mjs";
+import { boxFacts, FIGURES_RULE, isFigure } from "./keyfacts.mjs";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { arabicRatio, domainOf, overlappingPhrases, truncate, ungroundedNumbers, wordCount } from "./util.mjs";
@@ -60,7 +61,7 @@ const SCHEMA_TEXT = `{
   "slug": "english-kebab-case-slug-4-to-7-words",
   "lede": "Opening paragraph: 2-3 sentences with the core news, the who/what/when, and the main number",
   "body": "The rest of the article in Markdown: 4-7 paragraphs separated by blank lines, 300-550 words total when the material carries that much, with attribution and context; when the desk notes hold fewer than ten facts, a brief of 120-250 words in 3-4 paragraphs. Never pad. May include one or two '## ' subheads if the piece is long.",
-  "key_facts": [{"label": "short Arabic label (2-5 words) naming what is measured, where and when, e.g. الوظائف المباشرة في المصانع الثلاثة; no source in brackets; a date or a weekday is not a key fact", "value": "the figure exactly as sourced, e.g. 4,000 or 1.7 مليار جنيه or 2.25%"}],
+  "key_facts": [{"label": "short Arabic label (2-5 words) naming what is measured, where and when, e.g. الوظائف المباشرة في المصانع الثلاثة; no source in brackets", "value": "a FIGURE exactly as sourced, with its unit, e.g. 4,000 or 1.7 مليار جنيه or 2.25%; never a name, a place, a date or a weekday"}],
   "why_it_matters": "Two or three Arabic sentences (40-90 words) stating ONE concrete consequence of this event that a source reports or that follows from the story's own figures; it may reuse a body figure only as the premise of that consequence. Name an Arab country, company or price only when a source makes the link; otherwise say what the event changes in its own market. Never a recap of the body, never a chain of «قد يؤدي… مما قد…», never tell the reader what to understand, never open with «يعكس/يمثل/يُعدّ».",
   "tags": ["3-5 Arabic tags: institutions, countries, sectors, indicators"],
   "regions": ["1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي"],
@@ -68,6 +69,7 @@ const SCHEMA_TEXT = `{
   "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit, e.g. % or مليار دولار", "source": "publisher name", "categories": ["Arabic x-axis labels, 3-12 items, in the sources' order"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the sources]}]},
   "table": null or {"title": "Arabic table title", "source": "publisher name", "columns": ["2-5 Arabic column headers"], "rows": [["cells as Arabic text or numbers exactly as in the sources"]]}
 }
+${FIGURES_RULE}
 Data visuals: include "chart" only when the sources give at least three comparable figures of the same kind (a time series, or the same indicator across countries/companies); use "line" for time series and "bar" for comparisons; at most 3 series. Include "table" only when the sources list comparable figures for several entities (max 12 rows). Every number in a chart or table must appear in the sources; translate all labels to Arabic; otherwise set them to null. ${CHART_RULE}`;
 
 /**
@@ -287,16 +289,20 @@ Return the complete corrected article as one JSON object with the same keys as b
       validateDraft(d, wordLimits ?? { minWords: newsFloor(notes) });
     },
   });
-  return { draft: normalizeDraft(data), model };
+  return { draft: normalizeDraft(data, { kind: kind || "news" }), model };
 }
 
-export function normalizeDraft(d) {
+/** `kind` decides what the key-facts box keeps (lib/keyfacts.mjs): figures only, except an explainer's glossary. */
+export function normalizeDraft(d, { kind = "news" } = {}) {
   // A figure without a label says nothing in the box, and the checker refused the whole story for one
   // (2026-09-23: a gas-supply story scored 8 was thrown away after its revision); the figure is dropped instead.
-  const keyFacts = (Array.isArray(d.key_facts) ? d.key_facts : [])
-    .map((f) => (typeof f === "string" ? { label: "", value: f } : { label: String(f.label ?? "").trim(), value: String(f.value ?? "").trim() }))
-    .filter((f) => f.value && f.label)
-    .slice(0, 6);
+  // So is a value that is not a figure (a place, a name, a date) under «الأرقام» (the owner, 2026-09-27).
+  const keyFacts = boxFacts(
+    (Array.isArray(d.key_facts) ? d.key_facts : [])
+      .map((f) => (typeof f === "string" ? { label: "", value: f } : { label: String(f.label ?? "").trim(), value: String(f.value ?? "").trim() }))
+      .filter((f) => f.value && f.label),
+    kind,
+  ).slice(0, 6);
   return {
     title: String(d.title).trim(),
     subtitle: truncate(String(d.subtitle ?? "").trim(), 220),
@@ -363,12 +369,13 @@ const EXPLAINER_SCHEMA = `{
   "slug": "english-kebab-case-slug",
   "lede": "2-3 sentences: the concept in plain words and why readers meet it now, named in general terms only (a rate decision, an oil-price move), with no date, price, figure or event of the week",
   "body": "500-800 words in Markdown with 2-4 '## ' subheads: definition, mechanism, a worked example with illustrative numbers explicitly labelled as an example (مثال توضيحي), common misunderstandings, and what to watch. No bullet lists.",
-  "key_facts": [{"label": "term or rule of thumb", "value": "short definition or formula"}],
+  "key_facts": [{"label": "a key term or rule of thumb", "value": "its definition or formula in one short line"}],
   "why_it_matters": "One Arabic paragraph (40-90 words): which prices, decisions or headlines this concept explains, stated plainly; never address the reader, never open with «يعكس/يمثل/يُعدّ»",
   "tags": ["3-5 Arabic tags"],
   "regions": ["عالمي"],
   ${HUB_IMAGE_QUERIES}
-}`;
+}
+The key facts print under the heading «مفاهيم أساسية»: the piece's key terms, rules and formulas, each with its one-line definition; a worked example stays in the text.`;
 
 export async function writeExplainer({ topic, relatedArticles, log }) {
   const user = `Write an evergreen explainer for خازندار about: ${topic.concept_ar} (${topic.concept_en}).
@@ -391,7 +398,7 @@ ${EXPLAINER_SCHEMA}`;
       validateDraft(d);
     },
   });
-  return { draft: normalizeDraft(data), model };
+  return { draft: normalizeDraft(data, { kind: "explainer" }), model };
 }
 
 /** Word bounds of a house analysis (lede + body) for validateDraft: the brief asks for 700-1000; the validator tolerates a margin. */
@@ -413,7 +420,8 @@ const ANALYSIS_SCHEMA = `{
   "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit, e.g. % or مليار دولار", "source": "the publisher named in the material", "categories": ["Arabic labels, 3-12 items"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the supplied material]}]},
   "table": null or {"title": "Arabic table title", "source": "the publisher named in the material", "columns": ["2-5 Arabic column headers"], "rows": [["cells exactly as in the supplied material"]]}
 }
-Data visuals: include "chart" or "table" only when the supplied material gives at least three comparable figures of the same kind; every number must appear in the material; otherwise set them to null. ${CHART_RULE}`;
+Data visuals: include "chart" or "table" only when the supplied material gives at least three comparable figures of the same kind; every number must appear in the material; otherwise set them to null. ${CHART_RULE}
+${FIGURES_RULE}`;
 
 function relatedBlock(article, index) {
   const facts = (article.keyFacts ?? []).map((f) => [f.label, f.value].filter(Boolean).join(": ")).join("؛ ");
@@ -486,7 +494,8 @@ const FEATURE_SCHEMA = `{
   "table": {"title": "الجدول الزمني", "source": "خازندار", "columns": ["التاريخ", "الحدث"], "rows": [["<the day and month the story was published, e.g. 13 سبتمبر>", "<one line, at most 18 words: what that story reported, with its main figure exactly as the story gives it>"]]},
   "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit", "source": "the publisher named in the material", "categories": ["Arabic labels, 3-12 items, in date order"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the material]}]}
 }
-The timeline table is REQUIRED: 5-10 rows, oldest first, one per story of the material (the most telling ones when there are more), each dated with that story's own publication date. Include "chart" only when the material gives at least three comparable figures of the same measure on different dates (a price, a rate, a count); every value must appear in the material; otherwise null. ${CHART_RULE}`;
+The timeline table is REQUIRED: 5-10 rows, oldest first, one per story of the material (the most telling ones when there are more), each dated with that story's own publication date. Include "chart" only when the material gives at least three comparable figures of the same measure on different dates (a price, a rate, a count); every value must appear in the material; otherwise null. ${CHART_RULE}
+${FIGURES_RULE}`;
 
 /** Writes «في العمق» from the file's stories, oldest first; every figure, date and name must come from them. */
 export async function writeFeature({ topic, stories, log }) {
@@ -651,7 +660,8 @@ Short sentences, one idea each, none over 30 words. Paragraphs separated by blan
     "## ما ننتظره الأسبوع المقبل",
     String(frame.ahead).trim(),
   ].join("\n\n");
-  const figures = parts.filter((p) => p.figure);
+  // The box (and the week's table of figures) holds figures only: a date named as a story's figure stays out.
+  const figures = parts.filter((p) => p.figure && isFigure(p.figure.value, p.figure.label));
   const draft = {
     title: /^حصاد الأسبوع/.test(String(frame.title).trim()) ? String(frame.title).trim() : `حصاد الأسبوع: ${String(frame.title).trim()}`,
     subtitle: String(frame.subtitle).trim(),
@@ -691,7 +701,8 @@ const PAPER_SCHEMA = `{
   "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit", "source": "the paper (authors, institution, year)", "categories": ["Arabic labels, 3-12 items"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the paper's text]}]},
   "table": null or {"title": "Arabic table title", "source": "the paper", "columns": ["2-5 Arabic column headers"], "rows": [["cells exactly as in the paper's text"]]}
 }
-Data visuals: include "chart" or "table" only when the paper's text itself gives at least three comparable figures of the same kind; every number must appear in the text; otherwise set them to null. ${CHART_RULE}`;
+Data visuals: include "chart" or "table" only when the paper's text itself gives at least three comparable figures of the same kind; every number must appear in the text; otherwise set them to null. ${CHART_RULE}
+${FIGURES_RULE}`;
 
 /**
  * Writes a plain-Arabic reading of one open-access research paper. `paper` carries the editor's choice

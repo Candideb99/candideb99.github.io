@@ -126,7 +126,7 @@ const jsonLd = [articleLd, breadcrumbLd];
     <div class="article__layout">
       <div class="article__main">
         {d.lede && <p class="article__lede" set:html={isolateNumbers(d.lede)} />}
-        <KeyFacts facts={d.keyFacts} placement="inline" />
+        <KeyFacts facts={d.keyFacts} placement="inline" terms={d.kind === "explainer"} />
         {/* What happened, the numbers, why it matters: the paper's promise, read in that order before
             the full story. It stood after the whole text until 2026-09-22, four screens down on a phone. */}
         {d.whyItMatters && (
@@ -171,7 +171,7 @@ const jsonLd = [articleLd, breadcrumbLd];
       {/* Other stories' headlines stay out of this story's search entry (data-pagefind-ignore below): the «الأحدث» rail
           put the five newest headlines in every article, so «مضيق هرمز» matched all 147 (2026-09-24). */}
       <aside class="article__side">
-        <KeyFacts facts={d.keyFacts} placement="side" />
+        <KeyFacts facts={d.keyFacts} placement="side" terms={d.kind === "explainer"} />
         {more.length > 0 && (
           <section class="side-related" data-pagefind-ignore aria-labelledby="side-related-title">
             <h2 id="side-related-title" class="module__head">اقرأ أيضاً</h2>
