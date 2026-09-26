@@ -127,14 +127,6 @@ const jsonLd = [articleLd, breadcrumbLd];
       <div class="article__main">
         {d.lede && <p class="article__lede" set:html={isolateNumbers(d.lede)} />}
         <KeyFacts facts={d.keyFacts} placement="inline" terms={d.kind === "explainer"} />
-        {/* What happened, the numbers, why it matters: the paper's promise, read in that order before
-            the full story. It stood after the whole text until 2026-09-22, four screens down on a phone. */}
-        {d.whyItMatters && (
-          <section class="why" aria-labelledby="why-title">
-            <h2 id="why-title" class="module__head">لماذا يهمّ</h2>
-            <p class="why__text" set:html={isolateNumbers(d.whyItMatters)} />
-          </section>
-        )}
         {d.chart && <Chart chart={d.chart} id={`chart-${d.slug}`} />}
         <div class="prose" data-body>
           <Content />
@@ -146,6 +138,15 @@ const jsonLd = [articleLd, breadcrumbLd];
           </aside>
         )}
         {d.table && <DataTable table={d.table} />}
+        {/* «لماذا يهمّ» closes the story as a block of its own (the owner, 2026-09-27: it read as merged into the
+            article at its beginning; it should stand at the end and separate). From 2026-09-23 it had followed the
+            lede at the text's own size, and read as the story's second paragraph. */}
+        {d.whyItMatters && (
+          <section class="why" aria-labelledby="why-title">
+            <h2 id="why-title" class="module__head">لماذا يهمّ</h2>
+            <p class="why__text" set:html={isolateNumbers(d.whyItMatters)} />
+          </section>
+        )}
         {/* A corrected story says so at its foot, with the date and what changed (/methodology/: «نصحّح
             المقال نفسه ونثبّت في أسفله تاريخ التصحيح وما تغيّر»), as the desks print تصحيح. */}
         {d.corrections.length > 0 && (
@@ -277,8 +278,10 @@ const jsonLd = [articleLd, breadcrumbLd];
   }
   /* A rule-bottomed block like the figures, not a box: the site draws rules, never frames. It sits
      under the lede and the figures, set at the text's own size (it was a step smaller than the text). */
-  .why { margin: 0.25rem 0 1.75rem; max-width: var(--measure); border-bottom: 1px solid var(--rule); padding-bottom: 1rem; }
-  .why__text { font-family: var(--font-body); font-size: clamp(1.12rem, 1.02rem + 0.35vw, 1.25rem); line-height: 1.9; text-align: justify; text-align-last: start; }
+  /* «لماذا يهمّ» closes the story, ruled off from it (the owner, 2026-09-27): a 1px ink rule opens it as it opens the
+     corrections and the related line, and its text sits a step under the body's, so it never reads as a paragraph. */
+  .why { margin: 2.25rem 0 0.5rem; max-width: var(--measure); border-top: 1px solid var(--ink); padding-top: 0.85rem; border-bottom: 1px solid var(--rule); padding-bottom: 1rem; }
+  .why__text { margin: 0; font-family: var(--font-body); font-size: 1.08rem; line-height: 1.85; text-align: justify; text-align-last: start; }
   .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.5rem; }
   /* The correction note: a ruled line under the text, like اقرأ أيضاً, never a box. */
   .corrections { max-width: var(--measure); margin-top: 1.5rem; padding-block: 0.6rem; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); }
