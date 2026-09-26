@@ -65,6 +65,8 @@ jobs:
         run: |
           git config user.name "khazendar-editor"
           git config user.email "editor@users.noreply.github.com"
+          # The state files merge entry by entry when this round and the newsroom wrote them at once (.gitattributes).
+          git config merge.state-json.driver "node scripts/merge-state.mjs %O %A %B"
 
       - name: Look for work (free checks, no Claude)
         id: precheck
@@ -186,7 +188,8 @@ jobs:
             Committing: commit each fix with `git add` and `git commit`, after `npm run check` and
             `npm run build` pass. You cannot push: the next step of this workflow runs the site's gate
             (scripts/gate.mjs) and publishes your commits only if it passes, straight to main when they
-            touch only `pipeline/` and `scripts/`, as a pull request for anything else. A change to
+            touch only `pipeline/`, `scripts/` and the site's code in `src/`, as a pull request for anything
+            else. A change to
             `.github/workflows/` cannot be published from here at all: describe it in your report instead.
             Never invent a fact, never hand-write an article, never generate a picture, never commit a
             secret.
@@ -216,7 +219,10 @@ jobs:
             printf '\n### The gate refused the editor fixes\n\nNothing was published; the failing step is in this job log.\n' >> "$GITHUB_STEP_SUMMARY"
             exit 1
           fi
-          if echo "$changed" | grep -qv -e '^pipeline/' -e '^scripts/'; then
+          # The owner, 2026-09-26: the site's own code (src/) is published like the pipeline once the gate passes
+          # (build, type check, the site check), so a defect the morning round finds is fixed without waiting for him.
+          # Articles, public/ (the logo's traced files), the docs and anything else still go through a pull request.
+          if echo "$changed" | grep -qv -e '^pipeline/' -e '^scripts/' -e '^src/'; then
             branch="editor/$(date -u +%Y-%m-%d)-$GITHUB_RUN_ID"
             git push origin "HEAD:refs/heads/$branch"
             if [ -f editor-report.md ]; then body="$(cat editor-report.md)"; else body="The daily editor round changed files outside the pipeline."; fi

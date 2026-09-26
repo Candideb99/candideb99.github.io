@@ -46,7 +46,7 @@ const numbersOf = (t) => (normalizeDigits(String(t ?? "")).match(/\d[\d.,]*\d|\d
 const prose = (d) => [...FIELDS.map((f) => d[f] ?? ""), ...(d.keyFacts ?? []).map((k) => `${k.label} ${k.value}`)].join("\n");
 const heads = (t) => (String(t ?? "").match(/^## .*$/gm) ?? []).length;
 const short = (error) => String(error?.message ?? error).split("\n")[0].slice(0, 160);
-const compact = (c) => ({ id: c.id, field: c.field, class: c.class, status: c.status, sentence: String(c.sentence).slice(0, 400), quote: String(c.quote ?? "").slice(0, 400), source: c.sourceName ?? null, correction: String(c.correction ?? "").slice(0, 300) });
+const compact = (c) => ({ id: c.id, field: c.field, class: c.class, verdict: c.verdict, status: c.status, sentence: String(c.sentence).slice(0, 400), quote: String(c.quote ?? "").slice(0, 400), source: c.sourceName ?? null, correction: String(c.correction ?? "").slice(0, 300) });
 
 const REPAIR_SYSTEM = `${WRITER_SYSTEM}
 
@@ -127,7 +127,8 @@ export async function precheck({ draft, sources, log = () => {}, validate = null
     const found = v.checks.filter((c) => c.verdict === "contradicted" && STOPS.has(c.status));
     const round = { counts: v.counts, found: found.map(compact), noted: v.checks.filter((c) => c.verdict !== "supported" && !STOPS.has(c.status) && c.status !== "not_found").map(compact).slice(0, 8) };
     rounds.push(round);
-    if (!found.length) return { ok: true, draft: current, rounds, repairs };
+    // The final reading's verdict on every sentence, with the source sentence it quoted: the story's evidence map.
+    if (!found.length) return { ok: true, draft: current, rounds, repairs, checks: v.checks.map(compact) };
     let fixed = null;
     while (!fixed && repairs < maxRepairs) {
       repairs += 1;

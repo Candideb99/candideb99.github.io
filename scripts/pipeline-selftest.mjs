@@ -7,13 +7,16 @@
  *
  *   node scripts/pipeline-selftest.mjs
  */
-import { mkdtempSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
+import { mkdirSync, mkdtempSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { MAX_REPAIRS, precheck } from "../pipeline/lib/precheck.mjs";
 import { repeatsRecent } from "../pipeline/lib/events.mjs";
 import { lessonRuleOk, loadLessons } from "../pipeline/lib/lessons.mjs";
 import { writeJsonAtomic } from "../pipeline/lib/util.mjs";
+import { loadSnapshot, saveSnapshot } from "../pipeline/lib/snapshots.mjs";
+import { loadSources, settleDrift } from "../pipeline/lib/factcheck.mjs";
 
 let failed = 0;
 function check(name, got, want) {
@@ -108,6 +111,99 @@ check("a rule to remove unsupported claims is kept", lessonRuleOk("Omit any clai
   writeFileSync(broken, '{"lessons": [{"id": "L1"');
   const state = await loadLessons(broken);
   check("a damaged lessons file is read as damaged, not as empty", Boolean(state.damaged), true);
+}
+
+// 5. Two writers at once (the owner, 2026-09-26: "concurrent runs cannot silently lose fact-check, correction, or
+// learning records"): a cloud run and a run by hand change the same state files from the same starting point, each
+// adding its record where every writer adds one (at the end), and the hand run is replayed onto the cloud's as the
+// workflows' `git pull --rebase -X theirs` does. Run twice: without the merge driver a record must be lost (the test is
+// worthless on a layout git merges anyway), and with scripts/merge-state.mjs every record of both must survive.
+function overlappingRuns(withDriver) {
+  const repo = mkdtempSync(path.join(os.tmpdir(), "khazendar-merge-"));
+  const driver = path.resolve("scripts", "merge-state.mjs").replace(/\\/g, "/");
+  const git = (...args) => spawnSync("git", args, { cwd: repo, encoding: "utf8" });
+  const put = (rel, data) => {
+    mkdirSync(path.dirname(path.join(repo, rel)), { recursive: true });
+    writeFileSync(path.join(repo, rel), typeof data === "string" ? data : `${JSON.stringify(data, null, 2)}\n`);
+  };
+  const get = (rel) => JSON.parse(readFileSync(path.join(repo, rel), "utf8"));
+  git("init", "-q", "-b", "main");
+  git("config", "user.name", "selftest");
+  git("config", "user.email", "selftest@example.com");
+  git("config", "core.autocrlf", "false");
+  if (withDriver) {
+    git("config", "merge.state-json.driver", `"${process.execPath.replace(/\\/g, "/")}" "${driver}" %O %A %B`);
+    put(".gitattributes", "pipeline/state/*.json merge=state-json\n");
+  }
+  const L1 = { id: "L1", rule: "r", seen: 3, evidence: ["a:1"], status: "active" };
+  put("pipeline/state/factcheck.json", { version: 1, stories: { a: { at: "2026-09-25T10:00:00Z", outcome: "corrected" } } });
+  put("pipeline/state/lessons.json", { version: 7, used: ["a:1"], lessons: [L1] });
+  git("add", "-A");
+  git("commit", "-q", "-m", "base");
+  // The cloud run: reads story b, learns from it (L1 reinforced), publishes story B.
+  git("checkout", "-q", "-b", "cloud");
+  put("pipeline/state/factcheck.json", { version: 1, stories: { a: { at: "2026-09-25T10:00:00Z", outcome: "corrected" }, b: { at: "2026-09-26T01:00:00Z", outcome: "clean" } } });
+  put("pipeline/state/lessons.json", { version: 8, used: ["a:1", "b:1"], lessons: [{ ...L1, seen: 4, evidence: ["a:1", "b:1"] }] });
+  put("content/articles/story-b.md", "---\ntitle: B\n---\n");
+  git("add", "-A");
+  git("commit", "-q", "-m", "cloud run");
+  // The run by hand, from the same start: reads story c, learns a new lesson from it, publishes story C.
+  git("checkout", "-q", "main");
+  git("checkout", "-q", "-b", "local");
+  put("pipeline/state/factcheck.json", { version: 1, stories: { a: { at: "2026-09-25T10:00:00Z", outcome: "corrected" }, c: { at: "2026-09-26T01:05:00Z", outcome: "corrected" } } });
+  put("pipeline/state/lessons.json", { version: 8, used: ["a:1", "c:1"], lessons: [L1, { id: "L10", rule: "n", seen: 1, evidence: ["c:1"], status: "pending" }] });
+  put("content/articles/story-c.md", "---\ntitle: C\n---\n");
+  git("add", "-A");
+  git("commit", "-q", "-m", "hand run");
+  const rebase = git("rebase", "-q", "-X", "theirs", "cloud");
+  let fc = null;
+  let ls = null;
+  try {
+    fc = get("pipeline/state/factcheck.json");
+    ls = get("pipeline/state/lessons.json");
+  } catch {
+    /* a merge that broke the JSON */
+  }
+  const l1 = ls?.lessons?.find((l) => l.id === "L1");
+  return {
+    status: rebase.status,
+    stories: fc ? Object.keys(fc.stories).sort() : null,
+    used: ls ? [...ls.used].sort() : null,
+    l1: l1 ? [l1.seen, [...l1.evidence].sort()] : null,
+    l10: Boolean(ls?.lessons?.some((l) => l.id === "L10")),
+    articles: readdirSync(path.join(repo, "content", "articles")).sort(),
+  };
+}
+if (spawnSync("git", ["--version"]).status === 0) {
+  const without = overlappingRuns(false);
+  const lost = JSON.stringify(without.stories) !== JSON.stringify(["a", "b", "c"]) || JSON.stringify(without.used) !== JSON.stringify(["a:1", "b:1", "c:1"]);
+  check("overlapping runs without the merge driver lose a record (the case is real)", lost, true);
+  const withDriver = overlappingRuns(true);
+  check("overlapping runs: the replay applies without a conflict", withDriver.status, 0);
+  check("overlapping runs: every fact-check record survives", withDriver.stories, ["a", "b", "c"]);
+  check("overlapping runs: every learned mistake survives", withDriver.used, ["a:1", "b:1", "c:1"]);
+  check("overlapping runs: both lessons' changes survive (L1 reinforced, L10 added)", [withDriver.l1, withDriver.l10], [[4, ["a:1", "b:1"]], true]);
+  check("overlapping runs: both new stories are there, once each", withDriver.articles, ["story-b.md", "story-c.md"]);
+} else console.log("skip overlapping runs: git is not installed here");
+
+// 6. The saved evidence (the owner, 2026-09-26: "Verify that the evidence can still be retrieved when the original page
+// changes or is unavailable"): a page that no longer answers is read from the copy saved at publication; a page that
+// changed is read as it is now, its publication text alongside; a figure the saved copy carries is a changed page, one
+// it never carried an error; and the first copy is never replaced.
+{
+  const dir = mkdtempSync(path.join(os.tmpdir(), "khazendar-evidence-"));
+  const url = "https://example.com/brent";
+  await saveSnapshot({ slug: "s1", title: "t", sources: [{ url, sourceName: "رويترز", text: "Brent fell 2.8% to 97.55 dollars a barrel.", fetchedAt: "2026-09-26T00:00:00Z" }], dir });
+  await saveSnapshot({ slug: "s1", title: "t", sources: [{ url, sourceName: "رويترز", text: "rewritten later" }], dir });
+  const snap = loadSnapshot("s1", { dir });
+  check("the copy saved at publication is never replaced", snap?.sources?.[0]?.text?.includes("97.55"), true);
+  const story = { slug: "s1", sources: [{ url, name: "رويترز", nameEn: "Reuters" }] };
+  const gone = await loadSources(story, { fetcher: async () => ({ ok: false, reason: "http-403" }), snapshot: snap });
+  check("a page that no longer answers is read from its saved copy", [gone[0].text.includes("97.55"), Boolean(gone[0].snapshot)], [true, true]);
+  const changed = await loadSources(story, { fetcher: async () => ({ ok: true, text: "Brent fell 3.1% to 96.80 dollars a barrel." }), snapshot: snap });
+  check("a page that changed is read as it is now, with its publication text alongside", [changed[0].text.includes("96.80"), changed[0].saved.includes("97.55")], [true, true]);
+  const settled = settleDrift([{ status: "drift", class: "figure", sentence: "تراجع برنت إلى 97.55 دولار" }, { status: "drift", class: "figure", sentence: "تراجع برنت إلى 91.25 دولار" }], [changed[0].saved]);
+  check("a figure the saved copy carries is a changed page; one it never carried is an error", settled.map((c) => c.status), ["drift", "confirmed"]);
 }
 
 if (failed) {

@@ -34,6 +34,7 @@ import { CLAUDE_MODEL, chat } from "./llm.mjs";
 import { extractArticle } from "./extract.mjs";
 import { ARTICLES_DIR } from "./article.mjs";
 import { extractNumbers, normalizeDigits, ungroundedNumbers } from "./util.mjs";
+import { loadSnapshot, snapshotSource } from "./snapshots.mjs";
 
 /** The kinds a second look can check: each rests on sources it can read again. Explainers carry none by design,
  *  and a paper reading's one source is usually a PDF the extractor cannot read back. */
@@ -142,25 +143,40 @@ async function internalSource(url) {
   }
 }
 
-/** The story's sources, fetched again (or read from our own files); a page that no longer answers keeps its headline only. */
-export async function loadSources(story, { log = () => {} } = {}) {
+/**
+ * The story's sources, fetched again (or read from our own files). A page that no longer answers is read from the copy
+ * saved at publication (lib/snapshots.mjs, since 2026-09-26), marked `snapshot`; without a copy it keeps its headline
+ * only. Every source also carries `saved`, its text as it read at publication when a copy exists, so a figure the page
+ * no longer carries can be told from a figure it never carried. `fetcher` and `snapshot` stand in for the network and
+ * the saved copy in the self-test.
+ */
+export async function loadSources(story, { log = () => {}, fetcher = extractArticle, snapshot = undefined } = {}) {
   const internal = (story.sources ?? []).filter((s) => String(s.url ?? "").startsWith("/")).length;
   // A weekly review cites fourteen stories: each is cut shorter, so the whole stays within one call.
   const cap = internal > 6 ? 3500 : 9000;
+  const saved = snapshot === undefined ? (story.slug ? loadSnapshot(story.slug) : null) : snapshot;
   const out = [];
   for (const s of story.sources ?? []) {
     if (!s.url) continue;
     let text = "";
     let reason = "";
+    let fromCopy = false;
+    const copy = snapshotSource(saved, s.url);
     if (String(s.url).startsWith("/")) {
       text = (await internalSource(s.url)).slice(0, cap);
       if (!text) reason = "not found among our stories";
     } else {
-      const fetched = await extractArticle(s.url, { maxChars: cap, log });
+      const fetched = await fetcher(s.url, { maxChars: cap, log });
       text = fetched.ok ? fetched.text : "";
       if (!fetched.ok) reason = fetched.reason || "could not be fetched";
+      if (!text && copy?.text) {
+        log(`  source ${String(s.url).slice(0, 80)}: ${reason}; read from the copy saved at publication (fetched ${copy.fetchedAt ?? "then"})`);
+        text = copy.text.slice(0, cap);
+        reason = "";
+        fromCopy = true;
+      }
     }
-    out.push({ n: out.length + 1, name: s.nameEn || s.name || "", title: s.title ?? "", url: s.url, publishedAt: s.publishedAt ?? null, text, reason });
+    out.push({ n: out.length + 1, name: s.nameEn || s.name || "", title: s.title ?? "", url: s.url, publishedAt: s.publishedAt ?? null, text, reason, snapshot: fromCopy || undefined, saved: copy ? [copy.text, copy.summary].filter(Boolean).join("\n") : undefined });
     if (reason) log(`  source ${String(s.url).slice(0, 80)}: ${reason}`);
   }
   return out;
@@ -292,13 +308,29 @@ export async function verifyStory({ story, sources, log = () => {} }) {
  * of rounding: a figure that passed at publication by rounding now counts as missing, which only ever keeps a
  * verdict from being acted on.
  */
-function missingFigures(text, pool) {
+export function missingFigures(text, pool) {
   const have = new Set(pool.flatMap((t) => [...extractNumbers(t)]));
   return [...extractNumbers(text)].filter((n) => {
     const v = Number(n);
     if (!Number.isFinite(v)) return false;
     const significant = n.includes(".") || (v >= 100 && !(Number.isInteger(v) && v >= 1900 && v <= 2100));
     return significant && !have.has(n);
+  });
+}
+
+/**
+ * A "drift" verdict (a contradicted figure that no source carries now) read against the sources as they were at
+ * publication (lib/snapshots.mjs, 2026-09-26). A figure they carried then means the page changed after the story: the
+ * verdict stays drift, noted `atPublication: "carried"`, and nothing is corrected. A figure they never carried was never
+ * the source's: the verdict becomes what it would have been without the doubt (confirmed for a class the corrections
+ * desk acts on, or a sentence that names its source; listed otherwise), noted `atPublication: "absent"`.
+ */
+export function settleDrift(checks, savedPool) {
+  if (!savedPool.length) return checks;
+  return checks.map((c) => {
+    if (c.status !== "drift") return c;
+    if (!missingFigures(c.sentence, savedPool).length) return { ...c, atPublication: "carried" };
+    return { ...c, atPublication: "absent", status: HARD.has(c.class) || ATTRIBUTED.test(c.sentence) ? "confirmed" : "listed" };
   });
 }
 

@@ -29,6 +29,7 @@ import { keptBlock, lessonsBlock, lessonsHash, loadLessons } from "./lib/lessons
 import { JUDGE_VERSION, draftWith, judge } from "./lib/paired.mjs";
 import { precheck, writeJsonAtomic } from "./lib/precheck.mjs";
 import { repeatsRecent } from "./lib/events.mjs";
+import { saveSnapshot } from "./lib/snapshots.mjs";
 import { pickImage } from "./lib/images.mjs";
 import { ARTICLES_DIR, buildSlug, loadExistingArticles, serializeArticle } from "./lib/article.mjs";
 import { usage as llmUsage } from "./lib/llm.mjs";
@@ -215,6 +216,8 @@ async function collectEvidence(story, candidates) {
       publishedAt: item.publishedAt,
       summary: item.summary,
       text,
+      // When the page was read: the saved evidence says what the source said at that moment (lib/snapshots.mjs).
+      fetchedAt: text ? isoNow() : null,
       ogImage: fetched?.ogImage ?? "",
     });
     if (sources.length >= 4) break;
@@ -469,6 +472,9 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   }
   log(`${DRAFT ? "drafted" : "published"} "${draft.title}" -> ${slug}${DRY_RUN ? " (dry-run)" : ""}`);
   await recordPrecheck({ slug, title: draft.title, pre, writer: writerModel, lessons: lessonsTag, held: false });
+  // The evidence as it read at publication, kept apart from the site (lib/snapshots.mjs; the workflow pushes the folder
+  // to the repository's evidence branch). A failure to save never stops a story.
+  if (!DRY_RUN) await saveSnapshot({ slug, title: draft.title, publishedAt: isoNow(), sources, checks: pre.checks ?? [] }).catch((error) => log(`evidence for ${slug} not saved: ${String(error.message).slice(0, 120)}`));
   return { slug, items, title: draft.title, pairing: !control && LESSONS ? { story, sources, firstDraft, firstNotes: notes, slug, title: draft.title } : null };
 }
 

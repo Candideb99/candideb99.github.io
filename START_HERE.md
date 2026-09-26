@@ -57,6 +57,11 @@ Every 3 hours (and once a day each for an explainer and an analysis, and on Sund
   before it goes out. A mistake the sources prove is repaired and the story read again (three tries at most); a
   story still wrong, or one that cannot be checked, is held back and tried again later, never published as it is.
   The Desk shows how many were clean, repaired and held.
+- **Runs without you.** Two jobs saving at the same moment no longer overwrite each other's records. Every story's
+  sources are saved as they read at publication (on the repository's `evidence` branch), so a page that changes or
+  disappears can still be checked. Held stories, failed checks and failed corrections are retried on their own; what
+  still fails after that arrives as one GitHub issue, never repeated. The Desk separates what was fixed from what is
+  only flagged.
 - **The morning round, free.** Every day, without Claude: are the photos still in place at Wikimedia and Flickr (a
   renamed photo is re-addressed at once, a deleted one is replaced), is news still flowing, are the market quotes
   fresh, does the live site carry the newest story? Claude is woken only if something is broken, and at most once

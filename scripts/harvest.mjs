@@ -134,6 +134,22 @@ function windowOf(from, to) {
       const errors = (list) => list.reduce((n, e) => n + (e.rounds?.[0]?.found?.length ?? 0), 0);
       return { checked: passed.length + held.length, clean: passed.filter((e) => !e.repairs).length, repaired: passed.filter((e) => e.repairs).length, held: held.length, errorsFound: errors(passed) + errors(held), heldTitles: held.map((e) => e.title).slice(0, 5) };
     })(),
+    outcomes: (() => {
+      // Fixed and verified: an error repaired before publication and read clean again; a correction printed and, when
+      // the second look read it again, found clean. Flagged: held stories, corrections left unresolved, stories still
+      // carrying a proved error the desk could not fix (the owner, 2026-09-26: the Desk must "distinguish problems
+      // actually repaired from tasks merely created").
+      const verified = Object.values(ledger).filter((e) => e.verified && within(e.verified.at, from, to));
+      const stuck = Object.values(ledger).filter((e) => within(e.at, from, to) && ((["refused", "correction-failed"].includes(e.outcome) && (e.correctionAttempts ?? 1) >= 2) || e.verified?.resolved === false));
+      return {
+        repairedBeforePublication: Object.values(precheckState.stories ?? {}).filter((e) => within(e.at, from, to) && e.repairs).reduce((n, e) => n + (e.rounds?.[0]?.found?.length ?? 0), 0),
+        correctionsVerifiedClean: verified.filter((e) => e.verified.resolved && !e.verified.newFound?.length).length + verified.filter((e) => e.verified.secondCorrection === "corrected").length,
+        // Only corrections made since the second look began reading its corrections again (2026-09-26).
+        correctionsNotVerifiedYet: read.filter(([, e]) => e.outcome === "corrected" && !e.verified && String(e.at) >= "2026-09-26").length,
+        heldBeforePublication: (precheckState.held ?? []).filter((e) => within(e.at, from, to)).length,
+        correctionsStuck: stuck.length,
+      };
+    })(),
     secondLook: { read: read.length, clean: outcome("clean"), corrected: outcome("corrected"), stands: outcome("stands"), refused: outcome("refused"), listed: outcome("listed") + outcome("flagged"), unverifiable: outcome("unverifiable"), confirmedPerStory: read.length ? Number((confirmed / read.length).toFixed(2)) : null, withLessons: { read: withLessons.length, confirmedPerStory: rate(withLessons) }, claudeWithout: { read: without.length, confirmedPerStory: rate(without) } },
     runs: { count: runs.length, written, refused: [...refusals.values()].reduce((a, b) => a + b, 0), callsPerStory: written ? Number((calls / written).toFixed(1)) : null, tokensPerStory: written && tokens ? Math.round(tokens / written) : null, costPerStory: written && cost ? Number((cost / written).toFixed(2)) : null, note: "from the run reports kept (the newest 24)" },
     recurring: [
@@ -175,6 +191,8 @@ const md = [
   `| stories published (news) | ${week.published} (${week.news}) | ${before.published} (${before.news}) |`,
   `| style faults per news story | ${week.styleFaultsPerStory ?? "–"}${arrow(week.styleFaultsPerStory, before.styleFaultsPerStory)} | ${before.styleFaultsPerStory ?? "–"} |`,
   `| news stories that needed the revision round | ${week.revisedShare == null ? "–" : `${Math.round(week.revisedShare * 100)}%`}${arrow(week.revisedShare, before.revisedShare)} | ${before.revisedShare == null ? "–" : `${Math.round(before.revisedShare * 100)}%`} |`,
+  `| **fixed and verified**: proved errors repaired before publication · corrections read clean afterwards | ${week.outcomes.repairedBeforePublication} · ${week.outcomes.correctionsVerifiedClean} | ${before.outcomes.repairedBeforePublication} · ${before.outcomes.correctionsVerifiedClean} |`,
+  `| **flagged, not fixed**: stories held · corrections left unresolved · corrections not read again | ${week.outcomes.heldBeforePublication} · ${week.outcomes.correctionsStuck} · ${week.outcomes.correctionsNotVerifiedYet} | ${before.outcomes.heldBeforePublication} · ${before.outcomes.correctionsStuck} · ${before.outcomes.correctionsNotVerifiedYet} |`,
   `| checked before publication: stories · clean · repaired · held | ${week.precheck.checked} · ${week.precheck.clean} · ${week.precheck.repaired} · ${week.precheck.held} | ${before.precheck.checked} · ${before.precheck.clean} · ${before.precheck.repaired} · ${before.precheck.held} |`,
   `| … proved errors caught before readers saw them | ${week.precheck.errorsFound} | ${before.precheck.errorsFound} |`,
   `| second look: stories read · clean · corrected · overruled | ${week.secondLook.read} · ${week.secondLook.clean} · ${week.secondLook.corrected} · ${week.secondLook.stands} | ${before.secondLook.read} · ${before.secondLook.clean} · ${before.secondLook.corrected} · ${before.secondLook.stands} |`,

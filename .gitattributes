@@ -2,3 +2,6 @@
 *.png binary
 *.woff2 binary
 *.jpg binary
+# The newsroom state files are merged entry by entry, never line by line (scripts/merge-state.mjs; each workflow
+# names the driver with git config merge.state-json.driver): two writers at once both keep their records.
+pipeline/state/*.json merge=state-json

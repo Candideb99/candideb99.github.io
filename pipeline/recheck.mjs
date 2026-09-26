@@ -28,7 +28,7 @@ import os from "node:os";
 import path from "node:path";
 import YAML from "yaml";
 import { ARTICLES_DIR } from "./lib/article.mjs";
-import { CHECKABLE_KINDS, CHECKER_VERSION, correctionIssue, loadSources, verifyStory } from "./lib/factcheck.mjs";
+import { CHECKABLE_KINDS, CHECKER_VERSION, correctionIssue, loadSources, settleDrift, verifyStory } from "./lib/factcheck.mjs";
 import { usage as llmUsage } from "./lib/llm.mjs";
 import { fingerprint, hoursSince, isoNow, writeJsonAtomic } from "./lib/util.mjs";
 
@@ -102,7 +102,10 @@ async function stories() {
 const auditSample = (s) => s.quality?.precheck !== "clean" || parseInt(fingerprint(`audit:${s.slug}`).slice(0, 8), 16) % 3 === 0;
 
 function choose(all, ledger) {
-  const open = (s) => REDO || !ledger.stories[s.slug] || (ledger.stories[s.slug].outcome === "failed" && (ledger.stories[s.slug].failures ?? 1) < MAX_FAILURES);
+  // A check that failed is tried again (twice at most); so is a correction the corrections desk refused or failed, once,
+  // twelve hours later, with a fresh reading (2026-09-26: a refused correction had been left in print for good).
+  const retryCorrection = (e) => ["refused", "correction-failed"].includes(e.outcome) && (e.correctionAttempts ?? 1) < 2 && hoursSince(e.at) >= 12;
+  const open = (s) => REDO || !ledger.stories[s.slug] || (ledger.stories[s.slug].outcome === "failed" && (ledger.stories[s.slug].failures ?? 1) < MAX_FAILURES) || retryCorrection(ledger.stories[s.slug]);
   if (SLUGS.size) return all.filter((s) => SLUGS.has(s.slug) && CHECKABLE_KINDS.has(s.kind) && open(s));
   const checkable = all.filter((s) => CHECKABLE_KINDS.has(s.kind) && (s.sources ?? []).length && open(s) && auditSample(s));
   const age = (s) => hoursSince(s.publishedAt);
@@ -130,6 +133,8 @@ function trim(ledger) {
 async function check(story, ledger, report, corrections) {
   // `lessons`: the version of the newsroom's lessons the story was written with, so the week's numbers can compare.
   const entry = { at: isoNow(), kind: story.kind, writer: story.writer.split("→").pop().trim() || null, lessons: story.models?.lessons ?? null, checker: CHECKER_VERSION, publishedAt: story.publishedAt };
+  const prior = ledger.stories[story.slug];
+  if (prior && ["refused", "correction-failed"].includes(prior.outcome)) entry.correctionAttempts = (prior.correctionAttempts ?? 1) + 1;
   const sources = await loadSources(story, { log: (m) => log(`${story.slug}: ${m}`) });
   entry.sourcesRead = sources.filter((s) => s.text).length;
   entry.sourcesAll = sources.length;
@@ -139,6 +144,14 @@ async function check(story, ledger, report, corrections) {
   } else {
     try {
       const result = await verifyStory({ story, sources, log });
+      // A figure no page carries now is read against the copy saved at publication (lib/snapshots.mjs): changed page,
+      // or a figure the story never had a source for.
+      const saved = sources.map((s) => s.saved).filter(Boolean);
+      if (saved.length) {
+        result.checks = settleDrift(result.checks, saved);
+        result.counts = { ...result.counts, confirmed: result.checks.filter((c) => c.status === "confirmed").length, drift: result.checks.filter((c) => c.status === "drift").length };
+      }
+      entry.fromCopy = sources.filter((s) => s.snapshot).length || undefined;
       const confirmed = result.checks.filter((c) => c.status === "confirmed");
       // For a person, never corrected: the website's own reasoning contradicted, a figure whose page has changed,
       // sources that disagree with each other, and a contradiction whose quote code could not find.

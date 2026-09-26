@@ -233,9 +233,34 @@ if (!OFFLINE && builds && site?.url && newest) {
 }
 
 // Which findings wake the editor: each at most once in COOL_DOWN_H hours.
-const wake = findings.filter((f) => !state.woken[f.key] || hoursAgo(state.woken[f.key]) >= COOL_DOWN_H);
-const cooling = findings.filter((f) => !wake.includes(f));
-for (const f of wake) state.woken[f.key] = new Date().toISOString();
+// Published stories that still carry a proved error: the corrections desk refused or failed twice (the second look
+// retries once, twelve hours later), or its correction left an error in what it wrote. A known error in print is the
+// owner's to see: one issue lists them, opened once while it stays open (2026-09-26, the owner: "escalate only
+// unresolved consequential issues ... do not repeatedly notify me about the same unresolved item").
+const ledgerNow = readJson(path.join("pipeline", "state", "factcheck.json"))?.stories ?? {};
+const stuckCorrections = Object.entries(ledgerNow).filter(([, e]) => (["refused", "correction-failed"].includes(e.outcome) && (e.correctionAttempts ?? 1) >= 2) || e.verified?.resolved === false);
+if (stuckCorrections.length) {
+  owner.push({
+    key: "corrections",
+    title: "خازندار: published stories with a proved error the corrections desk could not fix",
+    text: `The second look proved an error in these published stories against their own sources, and the corrections desk could not correct it in two tries (or its correction left the error standing). Each is listed in pipeline/state/factcheck.json with the source sentence; correct it with \`node pipeline/correct.mjs --slug=… --issue="…"\`, or close this issue if the story stands:\n\n${stuckCorrections.map(([slug, e]) => `- ${slug}: ${e.problems?.join("; ") || e.reason || (e.verified?.remaining ?? []).map((r) => `[${r.class}] ${String(r.sentence).slice(0, 120)}`).join("; ") || e.outcome}`).join("\n")}`,
+  });
+}
+
+// A finding wakes the editor at most once in three days, and at most twice while it lasts: a fault still there after
+// two rounds of the editor's work goes to the owner as one issue, and the editor is not woken for it again (2026-09-26:
+// "after bounded unsuccessful attempts, leave the affected item safely held or flagged and continue other work").
+const MAX_TRIES = 2;
+state.tries ??= {};
+for (const key of Object.keys(state.tries)) if (!findings.some((f) => f.key === key)) delete state.tries[key];
+const exhausted = findings.filter((f) => (state.tries[f.key] ?? 0) >= MAX_TRIES);
+for (const f of exhausted) owner.push({ key: `stuck:${f.key}`, title: `خازندار: the daily editor could not fix "${f.key}" in ${MAX_TRIES} tries`, text: `${f.text}\n\nThe daily editor was given this ${MAX_TRIES} times and it is still there, so it is left to you; the rest of the newsroom goes on.` });
+const wake = findings.filter((f) => !exhausted.includes(f) && (!state.woken[f.key] || hoursAgo(state.woken[f.key]) >= COOL_DOWN_H));
+const cooling = findings.filter((f) => !wake.includes(f) && !exhausted.includes(f));
+for (const f of wake) {
+  state.woken[f.key] = new Date().toISOString();
+  state.tries[f.key] = (state.tries[f.key] ?? 0) + 1;
+}
 for (const [key, at] of Object.entries(state.woken)) if (hoursAgo(at) > 14 * 24) delete state.woken[key];
 
 // What only the owner can mend becomes an issue on the repository, once per problem while it stays open.

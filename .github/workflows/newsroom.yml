@@ -120,6 +120,9 @@ jobs:
           REVIEW: ${{ steps.mode.outputs.review }}
           MODE: ${{ steps.mode.outputs.mode }}
         run: |
+          # The sources as they read at publication (the evidence branch, pipeline/lib/snapshots.mjs): a page that no
+          # longer answers is read from its copy, and a figure no page carries now is told from one it never carried.
+          git fetch --depth=1 origin evidence:refs/remotes/origin/evidence 2>/dev/null || echo "no evidence branch yet"
           if [ "$MODE" = recheck ]; then
             node pipeline/recheck.mjs ${REVIEW:+--no-correct}
           else
@@ -173,6 +176,35 @@ jobs:
             echo "- $(grep '^calendar:' "$RUNNER_TEMP/calendar.log" | tail -1)"
           } >> "$GITHUB_STEP_SUMMARY"
 
+      # The evidence of the stories this run published, as their sources read at publication (pipeline/lib/snapshots.mjs):
+      # kept on the repository's own `evidence` branch, never in the site's branch, one compressed file a story, never
+      # replaced (the owner, 2026-09-26: "Persist the source evidence actually used"). Best effort: it never fails a run.
+      - name: Keep the source evidence (the evidence branch)
+        if: always()
+        continue-on-error: true
+        shell: bash
+        run: |
+          if [ ! -d evidence ] || [ -z "$(ls -A evidence 2>/dev/null)" ]; then echo "no new evidence"; exit 0; fi
+          dir="$RUNNER_TEMP/evidence-branch"
+          git fetch --depth=1 origin evidence:refs/remotes/origin/evidence 2>/dev/null || true
+          if git rev-parse --verify -q refs/remotes/origin/evidence >/dev/null; then
+            git worktree add -q --detach "$dir" refs/remotes/origin/evidence
+          else
+            git worktree add -q --detach "$dir"
+            (cd "$dir" && git checkout -q --orphan evidence && git rm -rqf --cached . && find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +)
+          fi
+          cp -n evidence/*.json.gz "$dir"/ 2>/dev/null || cp evidence/*.json.gz "$dir"/
+          cd "$dir"
+          git add -A
+          if git diff --cached --quiet; then echo "nothing new"; exit 0; fi
+          count="$(git diff --cached --name-only | wc -l | tr -d ' ')"
+          git -c user.name="khazendar-newsroom" -c user.email="newsroom@users.noreply.github.com" commit -q -m "evidence: ${count} stor$([ "$count" = 1 ] && echo y || echo ies), their sources as they read at publication"
+          for attempt in 1 2 3; do
+            if git push -q origin HEAD:refs/heads/evidence; then echo "kept the evidence of ${count} stor$([ "$count" = 1 ] && echo y || echo ies)"; exit 0; fi
+            git fetch -q --depth=1 origin evidence && git rebase -q FETCH_HEAD || { git rebase --abort 2>/dev/null; exit 1; }
+          done
+          exit 1
+
       # Runs after every newsroom run, published or not: the state (what was rejected or skipped), the
       # run report and the refreshed data are worth keeping even when no story made it.
       - name: Commit the run (articles, state, report, data)
@@ -185,6 +217,9 @@ jobs:
         run: |
           git config user.name "khazendar-newsroom"
           git config user.email "newsroom@users.noreply.github.com"
+          # The state files merge entry by entry, never line by line (.gitattributes, scripts/merge-state.mjs): a run
+          # that overlapped another writer keeps both sides' fact-check, correction and learning records.
+          git config merge.state-json.driver "node scripts/merge-state.mjs %O %A %B"
           git add content/articles pipeline/state pipeline/runs src/data/markets.json src/data/calendar.json
           fixed=""
           if [ "${CORRECTED:-0}" != "0" ]; then fixed=", ${CORRECTED} corrected"; fi

@@ -32,6 +32,7 @@ import { WRITER_SYSTEM } from "./lib/write.mjs";
 import { arabicRatio, normalizeDigits, ungroundedNumbers } from "./lib/util.mjs";
 import { ARTICLES_DIR } from "./lib/article.mjs";
 import { fixNames } from "./lib/copydesk.mjs";
+import { loadSnapshot, snapshotSource } from "./lib/snapshots.mjs";
 
 const args = process.argv.slice(2);
 const option = (name) => args.find((a) => a.startsWith(`--${name}=`))?.slice(name.length + 3) ?? "";
@@ -73,13 +74,17 @@ const FIELDS = ["title", "subtitle", "lede", "whyItMatters", "body"];
 const sentencesOf = (t) => String(t ?? "").split(/(?<=[.؟!])\s+|\n+/).map((s) => s.trim()).filter(Boolean);
 const numbersOf = (t) => (normalizeDigits(String(t ?? "")).match(/\d[\d.,]*\d|\d/g) ?? []).map((n) => n.replace(/[.,]+$/, "").replace(/,(?=\d{3}(?!\d))/g, ""));
 
-async function sourcesOf(story) {
+async function sourcesOf(story, slug) {
+  // A page that no longer answers is read from the copy saved at publication (lib/snapshots.mjs, 2026-09-26): the same
+  // night two sources of a story could not be read again here (a 403 and a robots refusal).
+  const saved = loadSnapshot(slug);
   const out = [];
   for (const s of story.sources ?? []) {
     if (!s.url || s.url.startsWith("/")) continue;
     const fetched = await extractArticle(s.url, { log });
-    out.push({ name: s.name ?? s.nameEn ?? "", title: s.title ?? "", url: s.url, text: fetched.ok ? fetched.text : "" });
-    if (!fetched.ok) log(`  source ${s.url.slice(0, 70)}: ${fetched.reason}`);
+    const copy = fetched.ok ? null : snapshotSource(saved, s.url);
+    out.push({ name: s.name ?? s.nameEn ?? "", title: s.title ?? "", url: s.url, text: fetched.ok ? fetched.text : copy?.text ?? "" });
+    if (!fetched.ok) log(`  source ${s.url.slice(0, 70)}: ${fetched.reason}${copy?.text ? "; read from the copy saved at publication" : ""}`);
   }
   return out;
 }
@@ -100,7 +105,7 @@ for (const { slug, issue } of items) {
   const data = doc.toJS();
   const before = { title: data.title ?? "", subtitle: data.subtitle ?? "", lede: data.lede ?? "", whyItMatters: data.whyItMatters ?? "", body: match[2].trim(), keyFacts: data.keyFacts ?? [] };
   log(`${slug}: fetching ${data.sources?.length ?? 0} source(s)`);
-  const sources = await sourcesOf(data);
+  const sources = await sourcesOf(data, slug);
   const material = sources.length
     ? sources.map((s, i) => `[${i + 1}] ${s.name} — ${s.title}\n${s.text ? s.text.slice(0, 7000) : "(the page could not be fetched again; its headline is above)"}`).join("\n\n")
     : "(this piece has no outside sources: it is an explainer; judge the report by the arithmetic or the established fact it states)";

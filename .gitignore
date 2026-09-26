@@ -25,3 +25,6 @@ wm*.json
 # The editor round's report, published as its run summary (.github/workflows/editor.yml)
 editor-report.md
 editor-findings.md
+
+# The source evidence as it read at publication (pipeline/lib/snapshots.mjs): pushed to the evidence branch, never main
+evidence/
