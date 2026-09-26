@@ -5214,6 +5214,621 @@
         "remaining": [],
         "newFound": []
       }
+    },
+    "xrg-absheron-final-investment-decision-azerbaijan-58c717": {
+      "at": "2026-09-26T16:31:56.903Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v10",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-26T12:04:09.219Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 18,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "us-10-year-treasury-yield-highest-since-2007-2a6e1d": {
+      "at": "2026-09-26T16:31:56.938Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-23T17:23:04.572Z",
+      "sourcesRead": 2,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 24,
+        "checked": 24,
+        "supported": 13,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 4,
+        "conflict": 4,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 20,
+          "field": "body",
+          "sentence": "وتستند احتمالات رفع الفائدة في أكتوبر إلى أداة «فيدووتش» التابعة لمجموعة «سي إم إي» (CME Group)، التي أظهرت أنها كانت 55% الثلاثاء.",
+          "claim": "The October hike odds cited (73%) come from CME Group's FedWatch tool, which showed 55% on Tuesday.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-23",
+          "quote": "Following the first Fed rate hike in more than years last week, odds of another quarter-point rate increase in October rose Wednesday to 66.4% from 55% a day before, per the CME Group's FedWatch tool.",
+          "correction": "FedWatch put the October hike odds at 66.4% (up from 55%); the 73% figure comes from Asharq Al-Awsat's reading of fed funds futures, not from FedWatch.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "subtitle",
+          "sentence": "احتمالات رفع الفيدرالي للفائدة ربع نقطة في أكتوبر تصعد إلى 73% بعدما كانت دون 10% قبل شهر",
+          "quote": "Following the first Fed rate hike in more than years last week, odds of another quarter-point rate increase in October rose Wednesday to 66.4% from 55% a day before, per the CME Group's FedWatch tool. Those chances stood at less than 10% a month ago.",
+          "source": "CNBC"
+        },
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "عائد السندات الأمريكية لأجل 10 سنوات: 5.104%",
+          "quote": "وارتفع عائد سندات الخزانة لأجل 10 سنوات 8.7 نقطة أساس إلى 5.054 في المائة، مسجلاً أعلى مستوى منذ عام 2007، بينما صعد عائد السندات لأجل عامين، الأكثر حساسية لتوقعات السياسة النقدية، 8.49 نقطة أساس إلى 4.862 في المائة، وهو أعلى مستوى له منذ يونيو (حزيران) 2024.",
+          "source": "Asharq Al-Awsat"
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "عائد السندات الأمريكية لأجل عامين: 4.914%",
+          "quote": "The 2-year Treasury note yield, which is most sensitive to expected changes in Fed policy, jumped more than 11 basis points to 4.889% and hit its highest level since May 2024 as traders increased their bet the Federal Reserve would need to hike again in October.",
+          "source": "CNBC",
+          "correction": "The 2-year yield rose to 4.889% according to CNBC (4.862% according to Asharq Al-Awsat), not 4.914%."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "عائد السندات الأمريكية لأجل 30 عاماً: 5.389%",
+          "quote": "The 30-year Treasury yield gained more than 9 basis points to 5.398%.",
+          "source": "CNBC",
+          "correction": "The 30-year yield rose to 5.398%, not 5.389%."
+        },
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "احتمال رفع الفائدة في أكتوبر: 73%",
+          "quote": "Following the first Fed rate hike in more than years last week, odds of another quarter-point rate increase in October rose Wednesday to 66.4% from 55% a day before, per the CME Group's FedWatch tool.",
+          "source": "CNBC"
+        },
+        {
+          "status": "conflict",
+          "field": "whyItMatters",
+          "sentence": "وبلوغ احتمالات رفعها مجدداً في أكتوبر 73% يعني أن المتعاملين يراهنون على زيادة ثانية متتالية.",
+          "quote": "Following the first Fed rate hike in more than years last week, odds of another quarter-point rate increase in October rose Wednesday to 66.4% from 55% a day before, per the CME Group's FedWatch tool.",
+          "source": "CNBC"
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "body",
+          "sentence": "امتدت الموجة إلى بقية آجال الدين الأمريكي؛ فقد صعد العائد لأجل عامين بأكثر من 13 نقطة أساس إلى 4.914%، مسجلاً أعلى قراءة منذ مايو 2024.",
+          "quote": "The 2-year Treasury note yield, which is most sensitive to expected changes in Fed policy, jumped more than 11 basis points to 4.889% and hit its highest level since May 2024 as traders increased their bet the Federal Reserve would need to hike again in October.",
+          "source": "CNBC",
+          "correction": "According to CNBC, the 2-year yield rose more than 11 basis points to 4.889%, not more than 13 basis points to 4.914%."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "body",
+          "sentence": "وزاد العائد لأجل 30 عاماً بأكثر من 8 نقاط أساس إلى 5.389%، علماً أن النقطة الأساس تساوي 0.01%.",
+          "quote": "The 30-year Treasury yield gained more than 9 basis points to 5.398%. It hit the highest level since June 2007.",
+          "source": "CNBC",
+          "correction": "The 30-year yield rose more than 9 basis points to 5.398%."
+        }
+      ],
+      "notFound": [
+        "وأوضح أن المخاطر التي تواجه بلوغ مستهدف التضخم قد تنامت.",
+        "وفي «وول ستريت»، تخلّى مؤشرا «ناسداك» و«ستاندرد آند بورز 500» عن مستوياتهما القياسية أمام الصعود المفاجئ للعوائد، بحسب «ماركت ووتش»."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أداة «فيدووتش» التابعة لمجموعة «سي إم إي» أظهرت احتمالاً بنسبة 73% لرفع الفائدة في أكتوبر. والصحيح أن الأداة أظهرت صعود هذا الاحتمال إلى 66.4% الأربعاء من 55% الثلاثاء.",
+      "verified": {
+        "at": "2026-09-26T16:39:53.600Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
+    },
+    "turkey-arrests-tera-founder-fund-liquidation-0bc275": {
+      "at": "2026-09-26T16:32:31.840Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-23T12:15:52.588Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 28,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "تركيا توقف مؤسس «تيرا» في أزمة صناديق تطال نحو 456 ألف مستثمر",
+          "quote": "The founder of Tera Yatırım, a Turkish brokerage whose fund-management subsidiary reported missed payments last week, will be held in custody pending trial. The arrest of Emre Tezmen, along with four other people, comes as investors in 131 Turkish funds face a wait of up to six months while their holdings are sold, with no certainty yet about how much money they will get back."
+        },
+        {
+          "sentence": "أوقفت السلطات التركية فجر الأربعاء إمره تزمن، مؤسس شركة الوساطة «تيرا ياتيريم»، وأربعة آخرين، بعدما أمر مجلس أسواق المال بتصفية 131 صندوقاً استثمارياً يملك حصصاً فيها نحو 456 ألف مستثمر.",
+          "quote": "Tezmen, first detained on 19 September, was formally arrested in the early hours of Wednesday alongside Tera board members Kerem Alkin and Emre Alkin, Tera Portföy general manager Alper Öztürk and Pusula Finans Holding chairman Serdar Turhan, Turkish broadcaster NTV reported."
+        },
+        {
+          "sentence": "قد ينتظر نحو 456 ألف مستثمر حتى ستة أشهر لاسترداد أموالهم، ريثما تُباع حيازات الصناديق الـ131 تحت إشراف «إيش بنك» و«بنك زراعات».",
+          "quote": "The arrest of Emre Tezmen, along with four other people, comes as investors in 131 Turkish funds face a wait of up to six months while their holdings are sold, with no certainty yet about how much money they will get back."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "openai-anthropic-launch-cheaper-ai-models-979a5b": {
+      "at": "2026-09-26T16:32:41.729Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-23T05:08:43.890Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 23,
+        "weak": 4,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 11,
+          "field": "body",
+          "sentence": "وبحسب «تك كرانش»، أضافت «أوبن إيه آي» فئتين جديدتين إلى عائلة «جي بي تي-6» هما «سول» و«لونا»، وخفّضت أسعار واجهتها البرمجية للنموذجين 50% مقارنة بالأسعار الترويجية لـ«جي بي تي-5.6»، وعزت ذلك إلى تحسينات في التخزين المؤقت والاستدلال.",
+          "claim": "Per TechCrunch, OpenAI added two new tiers, Sol and Luna, to the GPT-6 family. It cut their API prices by 50% compared with GPT-5.6 promotional pricing and attributed the cut to caching and inference improvements.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "TechCrunch",
+          "sourceDate": "2026-09-22",
+          "quote": "The 6 series models will be available at half the cost of the 5.6 series of Sol and Luna, a price drop that OpenAI attributes to improvements in caching and inference.",
+          "correction": "TechCrunch compares the new prices with the 5.6 series of Sol and Luna and describes the models as updated versions of existing Sol and Luna tiers; the 'new tiers' and 'promotional pricing' framing comes from CNBC, not TechCrunch.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "وقالت «أنثروبيك» إن النموذج سجّل مستوى قياسياً جديداً في البرمجة والأعمال المعرفية، وتفوّق على نموذجها الأكبر «فابل» في كثير من المقاييس."
+      ],
+      "weak": [
+        {
+          "sentence": "أسعار واجهة «جي بي تي-6» البرمجية أقل 50%، وتكلفة تشغيل «أوبس 5.5» أقل بنحو 40% من سلفه",
+          "quote": "OpenAI introduced additional tiers to its GPT-6 family, with GPT-6 Sol and GPT-6 Luna, slashing the API prices by 50% compared with GPT-5.6 promotional pricing. Sol, which is a tier below Astra, is meant for more complex workloads like coding, while the company's Luna offering is geared toward \"high-volume tasks\" such as extracting information or summarizing documents, the company wrote."
+        },
+        {
+          "sentence": "خفض تكلفة تشغيل «أوبس 5.5»: نحو 40%",
+          "quote": "The company described the latest release as a more token-efficient version that will cost around 40% less to run than the company's Opus 5."
+        },
+        {
+          "sentence": "وأضاف الموقع أن «أوبس 5.5» أسرع تشغيلاً، مع تراجع الحوسبة اللازمة لتقديمه عموماً.",
+          "quote": "The model is also faster to run, reflecting an overall drop in the compute required to serve it."
+        },
+        {
+          "sentence": "النموذج: كلود أوبس 5.5 · الشركة: أنثروبيك · خفض التكلفة: نحو 40% في تكلفة التشغيل · مقارنة بـ: أوبس 5",
+          "quote": "The company described the latest release as a more token-efficient version that will cost around 40% less to run than the company's Opus 5."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر، نقلاً عن «تك كرانش»، أن «أوبن إيه آي» أضافت فئتين جديدتين إلى عائلة «جي بي تي-6» وخفّضت أسعارهما 50% مقارنة بالأسعار الترويجية لـ«جي بي تي-5.6». والصحيح أن «تك كرانش» وصفت «سول» و«لونا» بأنهما نسختان محدّثتان من نموذجين قائمين، وقالت إنهما ستتاحان بنصف كلفة نسختيهما من سلسلة 5.6.",
+      "verified": {
+        "at": "2026-09-26T16:39:06.948Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
+    },
+    "us-sanctions-iran-aviation-take-effect-5095ea": {
+      "at": "2026-09-26T16:33:20.710Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-23T05:04:35.516Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 22,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 16,
+          "field": "body",
+          "sentence": "وأفادت وكالة تسنيم بأن الرحلات المغادرة من إيران إلى بغداد ومسقط ستتوقف اعتباراً من منتصف الليل، أي قبل سريان العقوبات الأربعاء.",
+          "claim": "Tasnim reported that flights from Iran to Baghdad and Muscat would stop from midnight, i.e. before the sanctions took effect on Wednesday.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Al Jazeera English",
+          "sourceDate": "2026-09-22",
+          "quote": "Majid Akhavan, a spokesman for Iran’s Civil Aviation Organization, told the semi-official Tasnim news agency on Tuesday that airports in Baghdad and Muscat would stop accepting Iranian flights from midnight local time on Wednesday.",
+          "correction": "The stop applies from midnight local time on Wednesday, the same day the sanctions take effect, not before they take effect.",
+          "class": "period"
+        }
+      ],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن الرحلات من إيران إلى بغداد ومسقط توقفت قبل سريان العقوبات الأمريكية، والصحيح أن مطاري بغداد ومسقط توقفا عن استقبال الرحلات الإيرانية اعتباراً من منتصف ليل الأربعاء بالتوقيت المحلي، وهو اليوم الذي دخلت فيه العقوبات حيز التنفيذ.",
+      "verified": {
+        "at": "2026-09-26T16:40:49.166Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
+    },
+    "iran-links-hormuz-reopening-to-blockade-lift-a3a968": {
+      "at": "2026-09-26T16:33:30.932Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-23T04:59:42.007Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 32,
+        "checked": 32,
+        "supported": 22,
+        "weak": 0,
+        "noEvidence": 4,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 4,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "برنت تسليم نوفمبر الأربعاء: 98.11 دولاراً للبرميل",
+          "quote": "Brent crude, the international benchmark, rose 3.9% to close at $103.08 per barrel. U.S. West Texas Intermediate advanced 1.8% to settle at $92.16.",
+          "source": "CNBC",
+          "correction": "On Wednesday Brent rose 3.9% to close at $103.08 per barrel; the $98.11 figure appears in no source."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "body",
+          "sentence": "وفي تقرير لاحق نشرته القناة الأربعاء، انخفضت الأسعار مجدداً في تعاملات ذلك اليوم؛ فقد نزلت عقود برنت تسليم نوفمبر 1.15% إلى 98.11 دولاراً للبرميل، وعقود غرب تكساس تسليم نوفمبر 1.75% إلى 88.94 دولاراً.",
+          "quote": "Brent crude, the international benchmark, rose 3.9% to close at $103.08 per barrel. U.S. West Texas Intermediate advanced 1.8% to settle at $92.16.",
+          "source": "CNBC",
+          "correction": "CNBC's Wednesday report says prices rose, with Brent up 3.9% to close at $103.08 and WTI up 1.8% to settle at $92.16."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "table",
+          "sentence": "العقد: برنت تسليم نوفمبر · التوقيت: الأربعاء (تقرير لاحق) · التغير: -1.15% · السعر (دولار للبرميل): 98.11",
+          "quote": "Brent crude, the international benchmark, rose 3.9% to close at $103.08 per barrel. U.S. West Texas Intermediate advanced 1.8% to settle at $92.16.",
+          "source": "CNBC",
+          "correction": "On Wednesday Brent rose 3.9% to close at $103.08 per barrel."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "table",
+          "sentence": "العقد: غرب تكساس تسليم نوفمبر · التوقيت: الأربعاء (تقرير لاحق) · التغير: -1.75% · السعر (دولار للبرميل): 88.94",
+          "quote": "Brent crude, the international benchmark, rose 3.9% to close at $103.08 per barrel. U.S. West Texas Intermediate advanced 1.8% to settle at $92.16.",
+          "source": "CNBC",
+          "correction": "On Wednesday WTI rose 1.8% to settle at $92.16."
+        }
+      ],
+      "notFound": [
+        "أي تقدم في ملف المضيق يؤثر في قدرة المنتجين الخليجيين على إيصال شحناتهم إلى الأسواق.",
+        "وقد تراجعت عقود برنت تسليم نوفمبر 2.6% إلى 97.73 دولاراً للبرميل فور صدور التقارير.",
+        "وتراجعت عقود برنت تسليم نوفمبر 2.6% إلى 97.73 دولاراً للبرميل عقب التقارير، وهبطت عقود خام غرب تكساس الوسيط تسليم أكتوبر 3.1% إلى 92.40 دولاراً، بحسب القناة.",
+        "ويعود الفارق بين المستويات إلى صدور الأرقام في تقريرين بتوقيتين مختلفين.",
+        "العقد: برنت تسليم نوفمبر · التوقيت: عقب التقارير · التغير: -2.6% · السعر (دولار للبرميل): 97.73",
+        "العقد: غرب تكساس تسليم أكتوبر · التوقيت: عقب التقارير · التغير: -3.1% · السعر (دولار للبرميل): 92.40"
+      ],
+      "weak": [],
+      "outcome": "listed"
+    },
+    "anthropic-chooses-nasdaq-for-ipo-57a51e": {
+      "at": "2026-09-26T16:34:05.507Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-14T05:14:48.182Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 12,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 6,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 1,
+          "field": "title",
+          "sentence": "«أنثروبيك» تختار ناسداك لطرح أولي بتقييم 2 تريليون دولار",
+          "claim": "Anthropic has chosen Nasdaq for an IPO at a $2 trillion valuation, stated as a settled fact.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-14",
+          "quote": "It's the latest challenge facing public market investors who are trying to determine what they're willing to pay for a piece of a five-year-old company that's already among the most valuable in the world and could seek a $2 trillion valuation in its IPO.",
+          "correction": "The $2 trillion valuation is only a possibility (the company 'could seek' it, and Source 2 calls it an estimate with the final value undecided), not the IPO's set valuation.",
+          "class": "hedge"
+        },
+        {
+          "id": 3,
+          "field": "lede",
+          "sentence": "أنثروبيك اختارت بورصة ناسداك لإجراء طرحها العام الأولي، حسبما أكد موقع بزنس إنسايدر.",
+          "claim": "Anthropic chose Nasdaq for its IPO, and Business Insider confirmed this.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-14",
+          "quote": "Anthropic has picked the Nasdaq as the exchange for its potential IPO, CNBC confirmed after Business Insider first reported the selection.",
+          "correction": "Business Insider first reported the choice, citing a source; it was CNBC that confirmed it.",
+          "class": "attribution"
+        },
+        {
+          "id": 5,
+          "field": "lede",
+          "sentence": "وتخطط لتحقيق تقييم قدره 2 تريليون دولار في طرحها الأولي.",
+          "claim": "Anthropic plans to reach a $2 trillion valuation in its IPO, stated as the company's plan.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-14",
+          "quote": "It's the latest challenge facing public market investors who are trying to determine what they're willing to pay for a piece of a five-year-old company that's already among the most valuable in the world and could seek a $2 trillion valuation in its IPO.",
+          "correction": "CNBC says only that Anthropic 'could seek' a $2 trillion valuation; it is a possibility and an estimate, not a stated plan.",
+          "class": "hedge"
+        },
+        {
+          "id": 6,
+          "field": "keyFacts",
+          "sentence": "التقييم المستهدف: 2 تريليون دولار",
+          "claim": "Anthropic's target IPO valuation is $2 trillion.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Sky News Arabia",
+          "sourceDate": "2026-09-14",
+          "quote": "وبحسب بزنس إنسايدر، تمكنت ناسداك في وقت سابق من هذا العام من حسم إدراج شركة سبيس إكس (SpaceX)، التي قُدّرت قيمتها بنحو 1.75 تريليون دولار، فيما تشير بعض التقديرات إلى إمكانية وصول تقييم أنثروبيك إلى نحو تريليوني دولار، رغم أن القيمة النهائية لم تُحسم بعد.",
+          "correction": "About $2 trillion is only some estimates of a possible valuation, and the final value has not been set; it is not a stated target.",
+          "class": "hedge"
+        },
+        {
+          "id": 7,
+          "field": "keyFacts",
+          "sentence": "الإيرادات السنوية: 65 مليار دولار",
+          "claim": "Anthropic's annual revenue is $65 billion.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-14",
+          "quote": "Anthropic hit $65 billion in annualized revenue in July, about a sevenfold increase from the prior year, as CNBC previously reported.",
+          "correction": "$65 billion is an annualized revenue run rate reached in July, not the company's annual revenue.",
+          "class": "term"
+        },
+        {
+          "id": 17,
+          "field": "body",
+          "sentence": "وأوضحت سي إن بي سي أن أنثروبيك وفتحت آفاقاً للتعاون مع شركات مثل Nscale، وآي دي إم، وسبيس إكس، وجوجل في صفقات حاسوبية بقيمة مليارات الدولارات هذا العام.",
+          "claim": "According to CNBC, Anthropic struck multibillion-dollar compute deals this year with Nscale, 'IDM' (آي دي إم), SpaceX and Google.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-14",
+          "quote": "Anthropic has inked a flurry of multibillion-dollar compute deals this year, including with Nscale, Advanced Micro Devices, SpaceX, and Google.",
+          "correction": "The second company named is Advanced Micro Devices (AMD), not 'IDM'.",
+          "class": "actor"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "وأشارت سي إن بي سي إلى أن أنثروبيك وأوبن إيه آي هما الشركتان المسؤولتان عن نصيب غير متناسب من إنفاق البنية التحتية للذكاء الاصطناعي، وهما من أكبر مستخدمي وحدات معالجة الرسومات من نفيديا."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أنثروبيك تخطط لطرح بتقييم 2 تريليون دولار، وأن بزنس إنسايدر أكد اختيارها ناسداك، وأن إيراداتها السنوية بلغت 65 مليار دولار، وأن من شركائها «آي دي إم». والصحيح أن الشركة قد تسعى إلى هذا التقييم وفق تقديرات لم تُحسم، وأن بزنس إنسايدر أول من نشر النبأ ثم أكدته سي إن بي سي، وأن الرقم يمثل إيرادات سنوية معدّلة بحسب وتيرة يوليو، وأن الشريك هو «إيه إم دي».",
+      "verified": {
+        "at": "2026-09-26T16:37:46.745Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": [
+          {
+            "class": "hedge",
+            "field": "lede",
+            "sentence": "الشركة تستهدف الإدراج خلال أكتوبر 2026، بعد أن حجزت ملف الاكتتاب بشكل سري في يونيو 2026، وفق سي إن بي سي.",
+            "quote": "Anthropic, valued at $965 billion earlier this year, confidentially filed its IPO prospectus in June, and has been widely expected to list its shares as soon as next month.",
+            "correction": "CNBC does not say Anthropic targets October; it says the company has been widely expected to list as soon as next month. The October target was reported by Business Insider via Sky News Arabia."
+          }
+        ],
+        "secondCorrection": "corrected"
+      }
+    },
+    "federal-reserve-rate-hike-expectations-september-2026-c63230": {
+      "at": "2026-09-26T16:34:25.151Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-14T05:12:44.576Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 9,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 6,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 1,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 13,
+          "field": "body",
+          "sentence": "استقر خام برنت عند 104.50 دولار للبرميل الجمعة، قبل أن تعلن السعودية إغلاق خط أنابيب النفط الشرقي الغربي، وهو أحد أهم مسارات تصدير النفط في المملكة بطاقة ضخ تصل إلى سبعة ملايين برميل يومياً، بحسب «الشرق الأوسط».",
+          "claim": "Brent settled at $104.50 on Friday before Saudi Arabia announced the closure of the East-West pipeline, one of the kingdom's key export routes with a pumping capacity of 7 million barrels per day, according to Asharq Al-Awsat.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "The National",
+          "sourceDate": "2026-09-14",
+          "quote": "Brent crude settled at $104.50 per barrel on Friday before Saudi Arabia's Energy Ministry announced it had shut down the East-West Pipeline after it sustained several attacks. The pipeline is one of the kingdom's most valuable crude export routes with a full pumping capacity of seven million barrels per day, official statistics show.",
+          "correction": "This was reported by The National, not Asharq Al-Awsat, and it attributes the capacity figure to official statistics.",
+          "class": "attribution"
+        },
+        {
+          "id": 14,
+          "field": "body",
+          "sentence": "وبلغ متوسط سعر البنزين في الولايات المتحدة 4.29 دولار للغالون مقابل 3.19 دولار العام الماضي، في حين تجاوز سعر الديزل 6 دولارات للغالون مقابل 3.70 دولار في الفترة نفسها من العام السابق، وفقاً لبيانات حكومية أمريكية.",
+          "claim": "US gasoline averages $4.29/gallon versus $3.19 last year, and diesel is above $6/gallon versus $3.70 a year earlier, according to US government data.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "The National",
+          "sourceDate": "2026-09-14",
+          "quote": "Prices at the pump in the US are also rising. The average driver is now paying $4.29 per gallon, compared with last year's average of $3.19.",
+          "correction": "The pump-price figures are The National's own reporting and are not attributed to US government data.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [
+        {
+          "status": "unverified",
+          "class": "period",
+          "field": "lede",
+          "sentence": "رجّح «غولدمان ساكس» و«جي بي مورغان» رفع الاحتياطي الفيدرالي أسعار الفائدة هذا الأسبوع، بحسب «الشرق الأوسط» الثلاثاء.",
+          "quote": "[1] Asharq Al-Awsat — \"«غولدمان ساكس» و«جي بي مورغان» يرجحان رفع الفائدة الأميركية هذا الأسبوع\" — published 2026-09-14",
+          "source": "Asharq Al-Awsat",
+          "correction": "Asharq Al-Awsat published the report on 14 September 2026, which was a Monday, not a Tuesday."
+        }
+      ],
+      "notFound": [
+        "عائد السندات لأجل 10 سنوات يقترب من 5% بعد موجة بيع قوية",
+        "عائد السندات لأجل 10 سنوات: 4.974 في المائة",
+        "كما أن ارتفاع أسعار الوقود والنقل قد ينقل إلى المستهلكين عبر زيادة تكاليف السلع الغذائية والمنتجات المستوردة، مما يضغط على ميزانيات الأسر ويهدد بتعافي الطلب في الاقتصادات العربية التي ما زالت تتعافى من صدمات التضخم السابقة.",
+        "ويعكس قرب عائد السندات لأجل 10 سنوات من 5% مخاوف المستثمرين منstagflation، مما قد يقلل جاذبية السندات الخليجية ويزيد كلف تمويل المشاريع التنموية في المنطقة.",
+        "واستقرت عوائد سندات الخزانة الأمريكية لأجل 10 سنوات عند 4.974 في المائة بعد موجة بيع قوية خلال الأسابيع الأخيرة، بحسب الصحيفة.",
+        "ويخشى محللون أن يفضي استمرار ارتفاع أسعار الطاقة والتضخم معاً إلى ركود تضخمي يُعقّد مهمة الاحتياطي الفيدرالي."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "نسبت نسخة سابقة من هذا الخبر طاقة ضخ خط أنابيب النفط الشرقي الغربي البالغة سبعة ملايين برميل يومياً إلى «الشرق الأوسط»، والصحيح أن الرقم مصدره إحصاءات رسمية. كما نسبت متوسطات أسعار البنزين والديزل في الولايات المتحدة إلى بيانات حكومية أمريكية، والصحيح أن هذه المتوسطات لا تصدر عن تلك البيانات.",
+      "verified": {
+        "at": "2026-09-26T16:38:24.072Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": [
+          {
+            "class": "period",
+            "field": "lede",
+            "sentence": "رجّح «غولدمان ساكس» و«جي بي مورغان» رفع الاحتياطي الفيدرالي أسعار الفائدة هذا الأسبوع، بحسب «الشرق الأوسط» الثلاثاء.",
+            "quote": "وستكون آفاق تشديد السياسة النقدية الأميركية موضع تركيز هذا الأسبوع، مع اختتام «الفيدرالي» اجتماعه الأربعاء، فيما تترقب الأسواق أيضاً إشارات السياسة النقدية من بنك اليابان.",
+            "correction": "The Asharq Al-Awsat report was published on 14 September 2026, a Monday, two days before the Fed meeting ended on Wednesday; it was not published on a Tuesday."
+          }
+        ],
+        "secondCorrection": "corrected"
+      }
     }
   }
 }

@@ -234,6 +234,109 @@
           "noted": []
         }
       ]
+    },
+    "egypt-gdp-growth-5-1-percent-2025-2026-f2e096": {
+      "at": "2026-09-26T16:45:16.720Z",
+      "title": "نمو الاقتصاد المصري يتسارع إلى 5.1% في العام المالي 2025/2026",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v11",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 18,
+            "checked": 18,
+            "supported": 17,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "mcdonalds-shares-worst-year-since-2002-bf4936": {
+      "at": "2026-09-26T16:50:06.814Z",
+      "title": "سهم ماكدونالدز يفقد نحو ثلث قيمته مع تباطؤ المبيعات الأمريكية",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 22,
+            "checked": 22,
+            "supported": 20,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 9,
+              "field": "keyFacts",
+              "status": "conflict",
+              "sentence": "قيمة خطة «نكست»: 8.5 مليار دولار",
+              "quote": "وردا على تراجع المبيعات والضغوط التنافسية، أعلنت ماكدونالدز خطة متعددة السنوات بقيمة 8.5 مليار دولار لتحسين جودة الطعام والخدمة، إلى جانب مبادرة \"نكست\" التي تشمل الاستثمار في التكنولوجيا وتحديث المطاعم والتوسع في الدجاج والمشروبات.",
+              "source": "Al Jazeera Arabic",
+              "correction": ""
+            },
+            {
+              "id": 21,
+              "field": "body",
+              "status": "conflict",
+              "sentence": "وكانت الشركة قد أعلنت خطة متعددة السنوات باسم «نكست» بقيمة 8.5 مليار دولار تعتزم تنفيذها، تشمل تحديث المطاعم والاستثمار في التكنولوجيا وتطوير مناطق ألعاب الأطفال، إلى جانب توسيع حصتها في سوقي الدجاج والمشروبات.",
+              "quote": "وردا على تراجع المبيعات والضغوط التنافسية، أعلنت ماكدونالدز خطة متعددة السنوات بقيمة 8.5 مليار دولار لتحسين جودة الطعام والخدمة، إلى جانب مبادرة \"نكست\" التي تشمل الاستثمار في التكنولوجيا وتحديث المطاعم والتوسع في الدجاج والمشروبات.",
+              "source": "Al Jazeera Arabic",
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "fed-plans-higher-bank-asset-thresholds-6426fc": {
+      "at": "2026-09-26T16:54:42.453Z",
+      "title": "مصادر: الفيدرالي يعدّ خطة لرفع حدود الأصول الموجبة لرقابة مشددة",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v11",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 21,
+            "checked": 21,
+            "supported": 21,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

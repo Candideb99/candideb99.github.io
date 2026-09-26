@@ -1,0 +1,149 @@
+{
+  "startedAt": "2026-09-26T16:35:03.862Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "us-10-year-treasury-yield-highest-since-2007-2a6e1d",
+      "issue": "The body says «وتستند احتمالات رفع الفائدة في أكتوبر إلى أداة «فيدووتش» التابعة لمجموعة «سي إم إي» (CME Group)، التي أظهرت أنها كانت 55% الثلاثاء.» (The October hike odds cited (73%) come from CME Group's FedWatch tool, which showed 55% on Tuesday.). Source CNBC says: \"Following the first Fed rate hike in more than years last week, odds of another quarter-point rate increase in October rose Wednesday to 66.4% from 55% a day before, per the CME Group's FedWatch tool.\". FedWatch put the October hike odds at 66.4% (up from 55%); the 73% figure comes from Asharq Al-Awsat's reading of fed funds futures, not from FedWatch.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "subtitle",
+        "whyItMatters",
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أداة «فيدووتش» التابعة لمجموعة «سي إم إي» أظهرت احتمالاً بنسبة 73% لرفع الفائدة في أكتوبر. والصحيح أن الأداة أظهرت صعود هذا الاحتمال إلى 66.4% الأربعاء من 55% الثلاثاء.",
+      "model": "claude-cli",
+      "before": {
+        "subtitle": "احتمالات رفع الفيدرالي للفائدة ربع نقطة في أكتوبر تصعد إلى 73% بعدما كانت دون 10% قبل شهر",
+        "whyItMatters": "رفع الفيدرالي الفائدة الأسبوع الماضي للمرة الأولى منذ يوليو 2023. وبلوغ احتمالات رفعها مجدداً في أكتوبر 73% يعني أن المتعاملين يراهنون على زيادة ثانية متتالية."
+      },
+      "after": {
+        "subtitle": "احتمالات رفع الفيدرالي للفائدة ربع نقطة في أكتوبر تصعد إلى 66.4% بعدما كانت دون 10% قبل شهر",
+        "whyItMatters": "رفع الفيدرالي الفائدة الأسبوع الماضي للمرة الأولى منذ يوليو 2023. وبلوغ احتمالات رفعها مجدداً في أكتوبر 66.4% يعني أن المتعاملين يراهنون على زيادة ثانية متتالية."
+      },
+      "changedSentences": [
+        "احتمالات رفع الفيدرالي للفائدة ربع نقطة في أكتوبر تصعد إلى 73% بعدما كانت دون 10% قبل شهر",
+        "وبلوغ احتمالات رفعها مجدداً في أكتوبر 73% يعني أن المتعاملين يراهنون على زيادة ثانية متتالية.",
+        "وتستند احتمالات رفع الفائدة في أكتوبر إلى أداة «فيدووتش» التابعة لمجموعة «سي إم إي» (CME Group)، التي أظهرت أنها كانت 55% الثلاثاء.",
+        "احتمال رفع الفائدة في أكتوبر 73%"
+      ],
+      "newSentences": [
+        "احتمالات رفع الفيدرالي للفائدة ربع نقطة في أكتوبر تصعد إلى 66.4% بعدما كانت دون 10% قبل شهر",
+        "وبلوغ احتمالات رفعها مجدداً في أكتوبر 66.4% يعني أن المتعاملين يراهنون على زيادة ثانية متتالية.",
+        "وتستند احتمالات رفع الفائدة في أكتوبر إلى أداة «فيدووتش» التابعة لمجموعة «سي إم إي» (CME Group)، التي أظهرت صعودها الأربعاء إلى 66.4% من 55% الثلاثاء.",
+        "احتمال رفع الفائدة في أكتوبر 66.4%"
+      ]
+    },
+    {
+      "slug": "openai-anthropic-launch-cheaper-ai-models-979a5b",
+      "issue": "The body says «وبحسب «تك كرانش»، أضافت «أوبن إيه آي» فئتين جديدتين إلى عائلة «جي بي تي-6» هما «سول» و«لونا»، وخفّضت أسعار واجهتها البرمجية للنموذجين 50% مقارنة بالأسعار الترويجية لـ«جي بي تي-5.6»، وعزت ذلك إلى تحسينات في التخزين المؤقت والاستدلال.» (Per TechCrunch, OpenAI added two new tiers, Sol and Luna, to the GPT-6 family. It cut their API prices by 50% compared with GPT-5.6 promotional pricing and attributed the cut to caching and inference improvements.). Source TechCrunch says: \"The 6 series models will be available at half the cost of the 5.6 series of Sol and Luna, a price drop that OpenAI attributes to improvements in caching and inference.\". TechCrunch compares the new prices with the 5.6 series of Sol and Luna and describes the models as updated versions of existing Sol and Luna tiers; the 'new tiers' and 'promotional pricing' framing comes from CNBC, not TechCrunch.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر، نقلاً عن «تك كرانش»، أن «أوبن إيه آي» أضافت فئتين جديدتين إلى عائلة «جي بي تي-6» وخفّضت أسعارهما 50% مقارنة بالأسعار الترويجية لـ«جي بي تي-5.6». والصحيح أن «تك كرانش» وصفت «سول» و«لونا» بأنهما نسختان محدّثتان من نموذجين قائمين، وقالت إنهما ستتاحان بنصف كلفة نسختيهما من سلسلة 5.6.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وبحسب «تك كرانش»، أضافت «أوبن إيه آي» فئتين جديدتين إلى عائلة «جي بي تي-6» هما «سول» و«لونا»، وخفّضت أسعار واجهتها البرمجية للنموذجين 50% مقارنة بالأسعار الترويجية لـ«جي بي تي-5.6»، وعزت ذلك إلى تحسينات في التخزين المؤقت والاستدلال."
+      ],
+      "newSentences": [
+        "وبحسب «تك كرانش»، طرحت «أوبن إيه آي» نسختين محدّثتين من نموذجيها الأصغر «سول» و«لونا» ضمن جيل «جي بي تي-6»، وستتاح النسختان الجديدتان بنصف كلفة نسختي «سول» و«لونا» من سلسلة 5.6، وعزت الشركة خفض الأسعار إلى تحسينات في التخزين المؤقت والاستدلال."
+      ]
+    },
+    {
+      "slug": "us-sanctions-iran-aviation-take-effect-5095ea",
+      "issue": "The body says «وأفادت وكالة تسنيم بأن الرحلات المغادرة من إيران إلى بغداد ومسقط ستتوقف اعتباراً من منتصف الليل، أي قبل سريان العقوبات الأربعاء.» (Tasnim reported that flights from Iran to Baghdad and Muscat would stop from midnight, i.e. before the sanctions took effect on Wednesday.). Source Al Jazeera English says: \"Majid Akhavan, a spokesman for Iran’s Civil Aviation Organization, told the semi-official Tasnim news agency on Tuesday that airports in Baghdad and Muscat would stop accepting Iranian flights from midnight local time on Wednesday.\". The stop applies from midnight local time on Wednesday, the same day the sanctions take effect, not before they take effect.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "lede",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن الرحلات من إيران إلى بغداد ومسقط توقفت قبل سريان العقوبات الأمريكية، والصحيح أن مطاري بغداد ومسقط توقفا عن استقبال الرحلات الإيرانية اعتباراً من منتصف ليل الأربعاء بالتوقيت المحلي، وهو اليوم الذي دخلت فيه العقوبات حيز التنفيذ.",
+      "model": "claude-cli",
+      "before": {
+        "lede": "دخلت حزمة عقوبات أمريكية جديدة ومشددة على قطاع الطيران الإيراني حيز التنفيذ الأربعاء، بحسب سكاي نيوز عربية. وكانت الرحلات من إيران إلى بغداد ومسقط قد أُلغيت قبل سريانها، فيما تتفاوض طهران مع العراق وسلطنة عمان."
+      },
+      "after": {
+        "lede": "دخلت حزمة عقوبات أمريكية جديدة ومشددة على قطاع الطيران الإيراني حيز التنفيذ الأربعاء، بحسب سكاي نيوز عربية. وكانت الرحلات من إيران إلى بغداد ومسقط قد أُلغيت اعتباراً من منتصف ليل الأربعاء، فيما تتفاوض طهران مع العراق وسلطنة عمان."
+      },
+      "changedSentences": [
+        "وكانت الرحلات من إيران إلى بغداد ومسقط قد أُلغيت قبل سريانها، فيما تتفاوض طهران مع العراق وسلطنة عمان.",
+        "وأفادت وكالة تسنيم بأن الرحلات المغادرة من إيران إلى بغداد ومسقط ستتوقف اعتباراً من منتصف الليل، أي قبل سريان العقوبات الأربعاء."
+      ],
+      "newSentences": [
+        "وكانت الرحلات من إيران إلى بغداد ومسقط قد أُلغيت اعتباراً من منتصف ليل الأربعاء، فيما تتفاوض طهران مع العراق وسلطنة عمان.",
+        "وأفادت وكالة تسنيم بأن الرحلات المغادرة من إيران إلى بغداد ومسقط ستتوقف اعتباراً من منتصف ليل الأربعاء بالتوقيت المحلي، وهو يوم سريان العقوبات."
+      ]
+    },
+    {
+      "slug": "anthropic-chooses-nasdaq-for-ipo-57a51e",
+      "issue": "1. The headline says ««أنثروبيك» تختار ناسداك لطرح أولي بتقييم 2 تريليون دولار» (Anthropic has chosen Nasdaq for an IPO at a $2 trillion valuation, stated as a settled fact.). Source CNBC says: \"It's the latest challenge facing public market investors who are trying to determine what they're willing to pay for a piece of a five-year-old company that's already among the most valuable in the world and could seek a $2 trillion valuation in its IPO.\". The $2 trillion valuation is only a possibility (the company 'could seek' it, and Source 2 calls it an estimate with the final value undecided), not the IPO's set valuation.\n2. The lede says «أنثروبيك اختارت بورصة ناسداك لإجراء طرحها العام الأولي، حسبما أكد موقع بزنس إنسايدر.» (Anthropic chose Nasdaq for its IPO, and Business Insider confirmed this.). Source CNBC says: \"Anthropic has picked the Nasdaq as the exchange for its potential IPO, CNBC confirmed after Business Insider first reported the selection.\". Business Insider first reported the choice, citing a source; it was CNBC that confirmed it.\n3. The lede says «وتخطط لتحقيق تقييم قدره 2 تريليون دولار في طرحها الأولي.» (Anthropic plans to reach a $2 trillion valuation in its IPO, stated as the company's plan.). Source CNBC says: \"It's the latest challenge facing public market investors who are trying to determine what they're willing to pay for a piece of a five-year-old company that's already among the most valuable in the world and could seek a $2 trillion valuation in its IPO.\". CNBC says only that Anthropic 'could seek' a $2 trillion valuation; it is a possibility and an estimate, not a stated plan.\n4. The key fact says «التقييم المستهدف: 2 تريليون دولار» (Anthropic's target IPO valuation is $2 trillion.). Source Sky News Arabia says: \"وبحسب بزنس إنسايدر، تمكنت ناسداك في وقت سابق من هذا العام من حسم إدراج شركة سبيس إكس (SpaceX)، التي قُدّرت قيمتها بنحو 1.75 تريليون دولار، فيما تشير بعض التقديرات إلى إمكانية وصول تقييم أنثروبيك إلى نحو تريليوني دولار، رغم أن القيمة النهائية لم تُحسم بعد.\". About $2 trillion is only some estimates of a possible valuation, and the final value has not been set; it is not a stated target.\n5. The key fact says «الإيرادات السنوية: 65 مليار دولار» (Anthropic's annual revenue is $65 billion.). Source CNBC says: \"Anthropic hit $65 billion in annualized revenue in July, about a sevenfold increase from the prior year, as CNBC previously reported.\". $65 billion is an annualized revenue run rate reached in July, not the company's annual revenue.\n6. The body says «وأوضحت سي إن بي سي أن أنثروبيك وفتحت آفاقاً للتعاون مع شركات مثل Nscale، وآي دي إم، وسبيس إكس، وجوجل في صفقات حاسوبية بقيمة مليارات الدولارات هذا العام.» (According to CNBC, Anthropic struck multibillion-dollar compute deals this year with Nscale, 'IDM' (آي دي إم), SpaceX and Google.). Source CNBC says: \"Anthropic has inked a flurry of multibillion-dollar compute deals this year, including with Nscale, Advanced Micro Devices, SpaceX, and Google.\". The second company named is Advanced Micro Devices (AMD), not 'IDM'.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "title",
+        "lede",
+        "whyItMatters",
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أنثروبيك تخطط لطرح بتقييم 2 تريليون دولار، وأن بزنس إنسايدر أكد اختيارها ناسداك، وأن إيراداتها السنوية بلغت 65 مليار دولار، وأن من شركائها «آي دي إم». والصحيح أن الشركة قد تسعى إلى هذا التقييم وفق تقديرات لم تُحسم، وأن بزنس إنسايدر أول من نشر النبأ ثم أكدته سي إن بي سي، وأن الرقم يمثل إيرادات سنوية معدّلة بحسب وتيرة يوليو، وأن الشريك هو «إيه إم دي».",
+      "model": "claude-cli",
+      "before": {
+        "title": "«أنثروبيك» تختار ناسداك لطرح أولي بتقييم 2 تريليون دولار",
+        "lede": "أنثروبيك اختارت بورصة ناسداك لإجراء طرحها العام الأولي، حسبما أكد موقع بزنس إنسايدر. الشركة تستهدف الإدراج خلال أكتوبر 2026، بعد أن حجزت ملف الاكتتاب بشكل سري في يونيو 2026، وفق سي إن بي سي. وتخطط لتحقيق تقييم قدره 2 تريليون دولار في طرحها الأولي.",
+        "whyItMatters": "قرار أنثروبيك بالإدراج في ناسداك وسعيها لتحقيق تقييم بقيمة 2 تريليون دولار يعكس حجم الاستثمارات الضخمة في قطاع الذكاء الاصطناعي، والذي قد يؤثر على تدفق رؤوس الأموال نحو التكنولوجيا المتقدمة في المنطقة. مع دعوة الشركة لبطء تطوير الذكاء الاصطناعي، قد يواجه المستثمرون في الأسواق العربية إعادة تقييم لمخاطر الاستثمار في شركات التقنية العالية، خاصة مع تزايد المخاوف من تأثير هذه التقنيات على الاستقرار والأمن. كما أن الشراكات المعلنة مع شركات مثل سبيس إكس وجوجل قد تشجع على نقل المعرفة وتعزيز التعاون التقني مع الشركات العالمية، مما قد يفيد الاقتصادات العربية التي تسعى لتطوير قطاعها التكنولوجي."
+      },
+      "after": {
+        "title": "«أنثروبيك» تختار ناسداك لطرح أولي قد تسعى فيه لتقييم 2 تريليون دولار",
+        "lede": "أنثروبيك اختارت بورصة ناسداك لإجراء طرحها العام الأولي، حسبما أكدت سي إن بي سي بعدما كان موقع بزنس إنسايدر أول من نشر النبأ. الشركة تستهدف الإدراج خلال أكتوبر 2026، بعد أن حجزت ملف الاكتتاب بشكل سري في يونيو 2026، وفق سي إن بي سي. وقد تسعى إلى تقييم قدره 2 تريليون دولار في طرحها الأولي، رغم أن القيمة النهائية لم تُحسم بعد.",
+        "whyItMatters": "قرار أنثروبيك بالإدراج في ناسداك واحتمال سعيها إلى تقييم بقيمة 2 تريليون دولار يعكس حجم الاستثمارات الضخمة في قطاع الذكاء الاصطناعي، والذي قد يؤثر على تدفق رؤوس الأموال نحو التكنولوجيا المتقدمة في المنطقة. مع دعوة الشركة لبطء تطوير الذكاء الاصطناعي، قد يواجه المستثمرون في الأسواق العربية إعادة تقييم لمخاطر الاستثمار في شركات التقنية العالية، خاصة مع تزايد المخاوف من تأثير هذه التقنيات على الاستقرار والأمن. كما أن الشراكات المعلنة مع شركات مثل سبيس إكس وجوجل قد تشجع على نقل المعرفة وتعزيز التعاون التقني مع الشركات العالمية، مما قد يفيد الاقتصادات العربية التي تسعى لتطوير قطاعها التكنولوجي."
+      },
+      "changedSentences": [
+        "«أنثروبيك» تختار ناسداك لطرح أولي بتقييم 2 تريليون دولار",
+        "أنثروبيك اختارت بورصة ناسداك لإجراء طرحها العام الأولي، حسبما أكد موقع بزنس إنسايدر.",
+        "وتخطط لتحقيق تقييم قدره 2 تريليون دولار في طرحها الأولي.",
+        "قرار أنثروبيك بالإدراج في ناسداك وسعيها لتحقيق تقييم بقيمة 2 تريليون دولار يعكس حجم الاستثمارات الضخمة في قطاع الذكاء الاصطناعي، والذي قد يؤثر على تدفق رؤوس الأموال نحو التكنولوجيا المتقدمة في المنطقة.",
+        "وأوضحت سي إن بي سي أن أنثروبيك وفتحت آفاقاً للتعاون مع شركات مثل Nscale، وآي دي إم، وسبيس إكس، وجوجل في صفقات حاسوبية بقيمة مليارات الدولارات هذا العام.",
+        "التقييم المستهدف 2 تريليون دولار",
+        "الإيرادات السنوية 65 مليار دولار"
+      ],
+      "newSentences": [
+        "«أنثروبيك» تختار ناسداك لطرح أولي قد تسعى فيه لتقييم 2 تريليون دولار",
+        "أنثروبيك اختارت بورصة ناسداك لإجراء طرحها العام الأولي، حسبما أكدت سي إن بي سي بعدما كان موقع بزنس إنسايدر أول من نشر النبأ.",
+        "وقد تسعى إلى تقييم قدره 2 تريليون دولار في طرحها الأولي، رغم أن القيمة النهائية لم تُحسم بعد.",
+        "قرار أنثروبيك بالإدراج في ناسداك واحتمال سعيها إلى تقييم بقيمة 2 تريليون دولار يعكس حجم الاستثمارات الضخمة في قطاع الذكاء الاصطناعي، والذي قد يؤثر على تدفق رؤوس الأموال نحو التكنولوجيا المتقدمة في المنطقة.",
+        "وأوضحت سي إن بي سي أن أنثروبيك وفتحت آفاقاً للتعاون مع شركات مثل Nscale، وإيه إم دي (AMD)، وسبيس إكس، وجوجل في صفقات حاسوبية بقيمة مليارات الدولارات هذا العام.",
+        "التقييم المحتمل في الطرح (تقديرات لم تُحسم) نحو 2 تريليون دولار",
+        "الإيرادات السنوية المعدّلة بحسب وتيرة يوليو 65 مليار دولار"
+      ]
+    },
+    {
+      "slug": "federal-reserve-rate-hike-expectations-september-2026-c63230",
+      "issue": "1. The body says «استقر خام برنت عند 104.50 دولار للبرميل الجمعة، قبل أن تعلن السعودية إغلاق خط أنابيب النفط الشرقي الغربي، وهو أحد أهم مسارات تصدير النفط في المملكة بطاقة ضخ تصل إلى سبعة ملايين برميل يومياً، بحسب «الشرق الأوسط».» (Brent settled at $104.50 on Friday before Saudi Arabia announced the closure of the East-West pipeline, one of the kingdom's key export routes with a pumping capacity of 7 million barrels per day, according to Asharq Al-Awsat.). Source The National says: \"Brent crude settled at $104.50 per barrel on Friday before Saudi Arabia's Energy Ministry announced it had shut down the East-West Pipeline after it sustained several attacks. The pipeline is one of the kingdom's most valuable crude export routes with a full pumping capacity of seven million barrels per day, official statistics show.\". This was reported by The National, not Asharq Al-Awsat, and it attributes the capacity figure to official statistics.\n2. The body says «وبلغ متوسط سعر البنزين في الولايات المتحدة 4.29 دولار للغالون مقابل 3.19 دولار العام الماضي، في حين تجاوز سعر الديزل 6 دولارات للغالون مقابل 3.70 دولار في الفترة نفسها من العام السابق، وفقاً لبيانات حكومية أمريكية.» (US gasoline averages $4.29/gallon versus $3.19 last year, and diesel is above $6/gallon versus $3.70 a year earlier, according to US government data.). Source The National says: \"Prices at the pump in the US are also rising. The average driver is now paying $4.29 per gallon, compared with last year's average of $3.19.\". The pump-price figures are The National's own reporting and are not attributed to US government data.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "نسبت نسخة سابقة من هذا الخبر طاقة ضخ خط أنابيب النفط الشرقي الغربي البالغة سبعة ملايين برميل يومياً إلى «الشرق الأوسط»، والصحيح أن الرقم مصدره إحصاءات رسمية. كما نسبت متوسطات أسعار البنزين والديزل في الولايات المتحدة إلى بيانات حكومية أمريكية، والصحيح أن هذه المتوسطات لا تصدر عن تلك البيانات.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "استقر خام برنت عند 104.50 دولار للبرميل الجمعة، قبل أن تعلن السعودية إغلاق خط أنابيب النفط الشرقي الغربي، وهو أحد أهم مسارات تصدير النفط في المملكة بطاقة ضخ تصل إلى سبعة ملايين برميل يومياً، بحسب «الشرق الأوسط».",
+        "وبلغ متوسط سعر البنزين في الولايات المتحدة 4.29 دولار للغالون مقابل 3.19 دولار العام الماضي، في حين تجاوز سعر الديزل 6 دولارات للغالون مقابل 3.70 دولار في الفترة نفسها من العام السابق، وفقاً لبيانات حكومية أمريكية."
+      ],
+      "newSentences": [
+        "استقر خام برنت عند 104.50 دولار للبرميل الجمعة، قبل أن تعلن السعودية إغلاق خط أنابيب النفط الشرقي الغربي، وهو أحد أهم مسارات تصدير النفط في المملكة بطاقة ضخ تصل إلى سبعة ملايين برميل يومياً، بحسب إحصاءات رسمية.",
+        "وبلغ متوسط سعر البنزين في الولايات المتحدة 4.29 دولار للغالون مقابل 3.19 دولار العام الماضي، في حين تجاوز سعر الديزل 6 دولارات للغالون مقابل 3.70 دولار في الفترة نفسها من العام السابق."
+      ]
+    }
+  ]
+}

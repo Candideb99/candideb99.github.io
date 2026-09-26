@@ -1,0 +1,348 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-09-26T16:31:56.505Z",
+  "durationSec": 573,
+  "read": 8,
+  "corrected": 7,
+  "report": [
+    {
+      "slug": "xrg-absheron-final-investment-decision-azerbaijan-58c717",
+      "title": "«إكس آر جي» تقرّ الاستثمار في المرحلة التالية من حقل أبشيرون للغاز",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 18,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "us-10-year-treasury-yield-highest-since-2007-2a6e1d",
+      "title": "عائد السندات الأمريكية لأجل 10 سنوات يقفز إلى أعلى مستوى منذ 2007",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 24,
+        "checked": 24,
+        "supported": 13,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 4,
+        "conflict": 4,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "attribution",
+          "sentence": "وتستند احتمالات رفع الفائدة في أكتوبر إلى أداة «فيدووتش» التابعة لمجموعة «سي إم إي» (CME Group)، التي أظهرت أنها كانت 55% الثلاثاء.",
+          "quote": "Following the first Fed rate hike in more than years last week, odds of another quarter-point rate increase in October rose Wednesday to 66.4% from 55% a day before, per the CME Group's FedWatch tool.",
+          "source": "CNBC",
+          "correction": "FedWatch put the October hike odds at 66.4% (up from 55%); the 73% figure comes from Asharq Al-Awsat's reading of fed funds futures, not from FedWatch."
+        }
+      ]
+    },
+    {
+      "slug": "turkey-arrests-tera-founder-fund-liquidation-0bc275",
+      "title": "تركيا توقف مؤسس «تيرا» في أزمة صناديق تطال نحو 456 ألف مستثمر",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 28,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "openai-anthropic-launch-cheaper-ai-models-979a5b",
+      "title": "«أوبن إيه آي» و«أنثروبيك» تطرحان نماذج أرخص بعد دعوة أمودي للإبطاء",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 23,
+        "weak": 4,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "attribution",
+          "sentence": "وبحسب «تك كرانش»، أضافت «أوبن إيه آي» فئتين جديدتين إلى عائلة «جي بي تي-6» هما «سول» و«لونا»، وخفّضت أسعار واجهتها البرمجية للنموذجين 50% مقارنة بالأسعار الترويجية لـ«جي بي تي-5.6»، وعزت ذلك إلى تحسينات في التخزين المؤقت والاستدلال.",
+          "quote": "The 6 series models will be available at half the cost of the 5.6 series of Sol and Luna, a price drop that OpenAI attributes to improvements in caching and inference.",
+          "source": "TechCrunch",
+          "correction": "TechCrunch compares the new prices with the 5.6 series of Sol and Luna and describes the models as updated versions of existing Sol and Luna tiers; the 'new tiers' and 'promotional pricing' framing comes from CNBC, not TechCrunch."
+        }
+      ]
+    },
+    {
+      "slug": "us-sanctions-iran-aviation-take-effect-5095ea",
+      "title": "العقوبات الأمريكية على الطيران الإيراني تدخل حيز التنفيذ",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 22,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "period",
+          "sentence": "وأفادت وكالة تسنيم بأن الرحلات المغادرة من إيران إلى بغداد ومسقط ستتوقف اعتباراً من منتصف الليل، أي قبل سريان العقوبات الأربعاء.",
+          "quote": "Majid Akhavan, a spokesman for Iran’s Civil Aviation Organization, told the semi-official Tasnim news agency on Tuesday that airports in Baghdad and Muscat would stop accepting Iranian flights from midnight local time on Wednesday.",
+          "source": "Al Jazeera English",
+          "correction": "The stop applies from midnight local time on Wednesday, the same day the sanctions take effect, not before they take effect."
+        }
+      ]
+    },
+    {
+      "slug": "iran-links-hormuz-reopening-to-blockade-lift-a3a968",
+      "title": "إيران تربط إعادة فتح هرمز برفع الحصار والإفراج عن أصولها المجمدة",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 32,
+        "checked": 32,
+        "supported": 22,
+        "weak": 0,
+        "noEvidence": 4,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 4,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "anthropic-chooses-nasdaq-for-ipo-57a51e",
+      "title": "«أنثروبيك» تختار ناسداك لطرح أولي بتقييم 2 تريليون دولار",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 12,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 6,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "hedge",
+          "sentence": "«أنثروبيك» تختار ناسداك لطرح أولي بتقييم 2 تريليون دولار",
+          "quote": "It's the latest challenge facing public market investors who are trying to determine what they're willing to pay for a piece of a five-year-old company that's already among the most valuable in the world and could seek a $2 trillion valuation in its IPO.",
+          "source": "CNBC",
+          "correction": "The $2 trillion valuation is only a possibility (the company 'could seek' it, and Source 2 calls it an estimate with the final value undecided), not the IPO's set valuation."
+        },
+        {
+          "class": "attribution",
+          "sentence": "أنثروبيك اختارت بورصة ناسداك لإجراء طرحها العام الأولي، حسبما أكد موقع بزنس إنسايدر.",
+          "quote": "Anthropic has picked the Nasdaq as the exchange for its potential IPO, CNBC confirmed after Business Insider first reported the selection.",
+          "source": "CNBC",
+          "correction": "Business Insider first reported the choice, citing a source; it was CNBC that confirmed it."
+        },
+        {
+          "class": "hedge",
+          "sentence": "وتخطط لتحقيق تقييم قدره 2 تريليون دولار في طرحها الأولي.",
+          "quote": "It's the latest challenge facing public market investors who are trying to determine what they're willing to pay for a piece of a five-year-old company that's already among the most valuable in the world and could seek a $2 trillion valuation in its IPO.",
+          "source": "CNBC",
+          "correction": "CNBC says only that Anthropic 'could seek' a $2 trillion valuation; it is a possibility and an estimate, not a stated plan."
+        },
+        {
+          "class": "hedge",
+          "sentence": "التقييم المستهدف: 2 تريليون دولار",
+          "quote": "وبحسب بزنس إنسايدر، تمكنت ناسداك في وقت سابق من هذا العام من حسم إدراج شركة سبيس إكس (SpaceX)، التي قُدّرت قيمتها بنحو 1.75 تريليون دولار، فيما تشير بعض التقديرات إلى إمكانية وصول تقييم أنثروبيك إلى نحو تريليوني دولار، رغم أن القيمة النهائية لم تُحسم بعد.",
+          "source": "Sky News Arabia",
+          "correction": "About $2 trillion is only some estimates of a possible valuation, and the final value has not been set; it is not a stated target."
+        },
+        {
+          "class": "term",
+          "sentence": "الإيرادات السنوية: 65 مليار دولار",
+          "quote": "Anthropic hit $65 billion in annualized revenue in July, about a sevenfold increase from the prior year, as CNBC previously reported.",
+          "source": "CNBC",
+          "correction": "$65 billion is an annualized revenue run rate reached in July, not the company's annual revenue."
+        },
+        {
+          "class": "actor",
+          "sentence": "وأوضحت سي إن بي سي أن أنثروبيك وفتحت آفاقاً للتعاون مع شركات مثل Nscale، وآي دي إم، وسبيس إكس، وجوجل في صفقات حاسوبية بقيمة مليارات الدولارات هذا العام.",
+          "quote": "Anthropic has inked a flurry of multibillion-dollar compute deals this year, including with Nscale, Advanced Micro Devices, SpaceX, and Google.",
+          "source": "CNBC",
+          "correction": "The second company named is Advanced Micro Devices (AMD), not 'IDM'."
+        }
+      ]
+    },
+    {
+      "slug": "federal-reserve-rate-hike-expectations-september-2026-c63230",
+      "title": "«غولدمان ساكس» و«جي بي مورغان» يرجّحان رفع الفائدة الأمريكية هذا الأسبوع",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 9,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 6,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 1,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "attribution",
+          "sentence": "استقر خام برنت عند 104.50 دولار للبرميل الجمعة، قبل أن تعلن السعودية إغلاق خط أنابيب النفط الشرقي الغربي، وهو أحد أهم مسارات تصدير النفط في المملكة بطاقة ضخ تصل إلى سبعة ملايين برميل يومياً، بحسب «الشرق الأوسط».",
+          "quote": "Brent crude settled at $104.50 per barrel on Friday before Saudi Arabia's Energy Ministry announced it had shut down the East-West Pipeline after it sustained several attacks. The pipeline is one of the kingdom's most valuable crude export routes with a full pumping capacity of seven million barrels per day, official statistics show.",
+          "source": "The National",
+          "correction": "This was reported by The National, not Asharq Al-Awsat, and it attributes the capacity figure to official statistics."
+        },
+        {
+          "class": "attribution",
+          "sentence": "وبلغ متوسط سعر البنزين في الولايات المتحدة 4.29 دولار للغالون مقابل 3.19 دولار العام الماضي، في حين تجاوز سعر الديزل 6 دولارات للغالون مقابل 3.70 دولار في الفترة نفسها من العام السابق، وفقاً لبيانات حكومية أمريكية.",
+          "quote": "Prices at the pump in the US are also rising. The average driver is now paying $4.29 per gallon, compared with last year's average of $3.19.",
+          "source": "The National",
+          "correction": "The pump-price figures are The National's own reporting and are not attributed to US government data."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 13,
+    "failures": 0,
+    "promptTokens": 106260,
+    "completionTokens": 74733,
+    "cacheReadTokens": 0,
+    "costUsd": 2.3448,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 13
+    },
+    "correctionsEditorCalls": 5
+  },
+  "log": [
+    "[16:31:56] second look: 8 to read now (73 published pieces not yet read; 5 read clean before publication and left out of the audit sample)",
+    "[16:32:00] us-10-year-treasury-yield-highest-since-2007-2a6e1d:   source https://www.investors.com/news/10-year-treasury-yield-federal-reserve-bessent-bu: robots-disallow",
+    "[16:32:00] us-10-year-treasury-yield-highest-since-2007-2a6e1d:   source https://www.marketwatch.com/story/bond-yields-surge-as-wall-street-fears-more-po: robots-disallow",
+    "[16:32:31] llm ok role=checker model=claude-cli attempt=1 ms=33861",
+    "[16:32:31] xrg-absheron-final-investment-decision-azerbaijan-58c717: 18 of 18 sentences checked · 18 supported · 0 without a source · 0 confirmed error(s)",
+    "[16:32:41] llm ok role=checker model=claude-cli attempt=1 ms=41440",
+    "[16:32:41] us-10-year-treasury-yield-highest-since-2007-2a6e1d: 24 of 24 sentences checked · 13 supported · 2 without a source · 1 confirmed error(s) · 8 listed for a person",
+    "[16:32:41]   ✗ [attribution] وتستند احتمالات رفع الفائدة في أكتوبر إلى أداة «فيدووتش» التابعة لمجموعة «سي إم إي» (CME Group)، التي أظهرت أن — FedWatch put the October hike odds at 66.4% (up from 55%); the 73% figure comes from Asharq Al-Awsat's reading of fed funds futures, not from FedWatch.",
+    "[16:33:20] llm ok role=checker model=claude-cli attempt=1 ms=46565",
+    "[16:33:20] turkey-arrests-tera-founder-fund-liquidation-0bc275: 31 of 31 sentences checked · 28 supported · 0 without a source · 0 confirmed error(s)",
+    "[16:33:30] llm ok role=checker model=claude-cli attempt=1 ms=48180",
+    "[16:33:30] openai-anthropic-launch-cheaper-ai-models-979a5b: 29 of 29 sentences checked · 23 supported · 1 without a source · 1 confirmed error(s)",
+    "[16:33:30]   ✗ [attribution] وبحسب «تك كرانش»، أضافت «أوبن إيه آي» فئتين جديدتين إلى عائلة «جي بي تي-6» هما «سول» و«لونا»، وخفّضت أسعار واج — TechCrunch compares the new prices with the 5.6 series of Sol and Luna and describes the models as updated versions of existing Sol and Luna tiers; the 'new tie",
+    "[16:34:05] llm ok role=checker model=claude-cli attempt=1 ms=43778",
+    "[16:34:05] us-sanctions-iran-aviation-take-effect-5095ea: 23 of 23 sentences checked · 22 supported · 0 without a source · 1 confirmed error(s)",
+    "[16:34:05]   ✗ [period] وأفادت وكالة تسنيم بأن الرحلات المغادرة من إيران إلى بغداد ومسقط ستتوقف اعتباراً من منتصف الليل، أي قبل سريان  — The stop applies from midnight local time on Wednesday, the same day the sanctions take effect, not before they take effect.",
+    "[16:34:25] llm ok role=checker model=claude-cli attempt=1 ms=52367",
+    "[16:34:25] iran-links-hormuz-reopening-to-blockade-lift-a3a968: 32 of 32 sentences checked · 22 supported · 6 without a source · 0 confirmed error(s) · 4 listed for a person",
+    "[16:34:57] llm ok role=checker model=claude-cli attempt=1 ms=48665",
+    "[16:34:57] anthropic-chooses-nasdaq-for-ipo-57a51e: 19 of 19 sentences checked · 12 supported · 1 without a source · 6 confirmed error(s)",
+    "[16:34:57]   ✗ [hedge] «أنثروبيك» تختار ناسداك لطرح أولي بتقييم 2 تريليون دولار — The $2 trillion valuation is only a possibility (the company 'could seek' it, and Source 2 calls it an estimate with the final value undecided), not the IPO's s",
+    "[16:34:57]   ✗ [attribution] أنثروبيك اختارت بورصة ناسداك لإجراء طرحها العام الأولي، حسبما أكد موقع بزنس إنسايدر. — Business Insider first reported the choice, citing a source; it was CNBC that confirmed it.",
+    "[16:34:57]   ✗ [hedge] وتخطط لتحقيق تقييم قدره 2 تريليون دولار في طرحها الأولي. — CNBC says only that Anthropic 'could seek' a $2 trillion valuation; it is a possibility and an estimate, not a stated plan.",
+    "[16:34:57]   ✗ [hedge] التقييم المستهدف: 2 تريليون دولار — About $2 trillion is only some estimates of a possible valuation, and the final value has not been set; it is not a stated target.",
+    "[16:34:57]   ✗ [term] الإيرادات السنوية: 65 مليار دولار — $65 billion is an annualized revenue run rate reached in July, not the company's annual revenue.",
+    "[16:34:57]   ✗ [actor] وأوضحت سي إن بي سي أن أنثروبيك وفتحت آفاقاً للتعاون مع شركات مثل Nscale، وآي دي إم، وسبيس إكس، وجوجل في صفقات  — The second company named is Advanced Micro Devices (AMD), not 'IDM'.",
+    "[16:35:03] llm ok role=checker model=claude-cli attempt=1 ms=32761",
+    "[16:35:03] federal-reserve-rate-hike-expectations-september-2026-c63230: 18 of 18 sentences checked · 9 supported · 6 without a source · 2 confirmed error(s) · 1 listed for a person",
+    "[16:35:03]   ✗ [attribution] استقر خام برنت عند 104.50 دولار للبرميل الجمعة، قبل أن تعلن السعودية إغلاق خط أنابيب النفط الشرقي الغربي، وهو  — This was reported by The National, not Asharq Al-Awsat, and it attributes the capacity figure to official statistics.",
+    "[16:35:03]   ✗ [attribution] وبلغ متوسط سعر البنزين في الولايات المتحدة 4.29 دولار للغالون مقابل 3.19 دولار العام الماضي، في حين تجاوز سعر  — The pump-price figures are The National's own reporting and are not attributed to US government data.",
+    "[16:35:03] corrections: 5 stories to the corrections editor",
+    "[16:35:03] [correct] us-10-year-treasury-yield-highest-since-2007-2a6e1d: fetching 4 source(s)",
+    "[16:35:06] [correct]   source https://www.investors.com/news/10-year-treasury-yield-federal-reserve-: robots-disallow",
+    "[16:35:06] [correct]   source https://www.marketwatch.com/story/bond-yields-surge-as-wall-street-fea: robots-disallow",
+    "[16:35:27] [correct] llm ok role=writer model=claude-cli attempt=1 ms=20815",
+    "[16:35:27] [correct] us-10-year-treasury-yield-highest-since-2007-2a6e1d: corrected; fields subtitle, whyItMatters, body, keyFacts",
+    "[16:35:27]     note: ذكرت نسخة سابقة من هذا الخبر أن أداة «فيدووتش» التابعة لمجموعة «سي إم إي» أظهرت احتمالاً بنسبة 73% لرفع الفائدة في أكتوبر. والصحيح أن الأداة أظهرت صعود هذا الاحتمال إلى 66.4% الأربعاء من 55% الثلاثاء.",
+    "[16:35:27] [correct] openai-anthropic-launch-cheaper-ai-models-979a5b: fetching 3 source(s)",
+    "[16:35:49] [correct] llm ok role=writer model=claude-cli attempt=1 ms=22034",
+    "[16:35:49] [correct] openai-anthropic-launch-cheaper-ai-models-979a5b: corrected; fields body",
+    "[16:35:49]     note: ذكرت نسخة سابقة من هذا الخبر، نقلاً عن «تك كرانش»، أن «أوبن إيه آي» أضافت فئتين جديدتين إلى عائلة «جي بي تي-6» وخفّضت أسعارهما 50% مقارنة بالأسعار الترويجية لـ«جي بي تي-5.6». والصحيح أن «تك كرانش» وصفت «سول» و«لونا» بأنهما نسختان محدّثتان من نموذجين قائمين، وقالت إنهما ستتاحان بنصف كلفة نسختيهما من سلسلة 5.6.",
+    "[16:35:49] [correct] us-sanctions-iran-aviation-take-effect-5095ea: fetching 2 source(s)",
+    "[16:36:11] [correct] llm ok role=writer model=claude-cli attempt=1 ms=21105",
+    "[16:36:11] [correct] us-sanctions-iran-aviation-take-effect-5095ea: corrected; fields lede, body",
+    "[16:36:11]     note: ذكرت نسخة سابقة من هذا الخبر أن الرحلات من إيران إلى بغداد ومسقط توقفت قبل سريان العقوبات الأمريكية، والصحيح أن مطاري بغداد ومسقط توقفا عن استقبال الرحلات الإيرانية اعتباراً من منتصف ليل الأربعاء بالتوقيت المحلي، وهو اليوم الذي دخلت فيه العقوبات حيز التنفيذ.",
+    "[16:36:11] [correct] anthropic-chooses-nasdaq-for-ipo-57a51e: fetching 4 source(s)",
+    "[16:36:38] [correct] llm ok role=writer model=claude-cli attempt=1 ms=23959",
+    "[16:36:38] [correct] anthropic-chooses-nasdaq-for-ipo-57a51e: corrected; fields title, lede, whyItMatters, body, keyFacts",
+    "[16:36:38]     note: ذكرت نسخة سابقة من هذا الخبر أن أنثروبيك تخطط لطرح بتقييم 2 تريليون دولار، وأن بزنس إنسايدر أكد اختيارها ناسداك، وأن إيراداتها السنوية بلغت 65 مليار دولار، وأن من شركائها «آي دي إم». والصحيح أن الشركة قد تسعى إلى هذا التقييم وفق تقديرات لم تُحسم، وأن بزنس إنسايدر أول من نشر النبأ ثم أكدته سي إن بي سي، وأن الرقم يمثل إيرادات سنوية معدّلة بحسب وتيرة يوليو، وأن الشريك هو «إيه إم دي».",
+    "[16:36:38] [correct] federal-reserve-rate-hike-expectations-september-2026-c63230: fetching 4 source(s)",
+    "[16:37:02] [correct] llm ok role=writer model=claude-cli attempt=1 ms=19967",
+    "[16:37:02] [correct] federal-reserve-rate-hike-expectations-september-2026-c63230: corrected; fields body",
+    "[16:37:02]     note: نسبت نسخة سابقة من هذا الخبر طاقة ضخ خط أنابيب النفط الشرقي الغربي البالغة سبعة ملايين برميل يومياً إلى «الشرق الأوسط»، والصحيح أن الرقم مصدره إحصاءات رسمية. كما نسبت متوسطات أسعار البنزين والديزل في الولايات المتحدة إلى بيانات حكومية أمريكية، والصحيح أن هذه المتوسطات لا تصدر عن تلك البيانات.",
+    "[16:37:02] [correct] done: 5 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-09-26T16-35-03-683Z.json",
+    "[16:37:46] llm ok role=checker model=claude-cli attempt=1 ms=43100",
+    "[16:37:46] anthropic-chooses-nasdaq-for-ipo-57a51e: the correction reads clean where it wrote; 1 other error(s) found, corrected once more",
+    "[16:38:24] llm ok role=checker model=claude-cli attempt=1 ms=33351",
+    "[16:38:24] federal-reserve-rate-hike-expectations-september-2026-c63230: the correction reads clean where it wrote; 1 other error(s) found, corrected once more",
+    "[16:39:06] llm ok role=checker model=claude-cli attempt=1 ms=42366",
+    "[16:39:06] openai-anthropic-launch-cheaper-ai-models-979a5b: the correction reads clean where it wrote",
+    "[16:39:09] us-10-year-treasury-yield-highest-since-2007-2a6e1d:   source https://www.investors.com/news/10-year-treasury-yield-federal-reserve-bessent-bu: robots-disallow",
+    "[16:39:09] us-10-year-treasury-yield-highest-since-2007-2a6e1d:   source https://www.marketwatch.com/story/bond-yields-surge-as-wall-street-fears-more-po: robots-disallow",
+    "[16:39:53] llm ok role=checker model=claude-cli attempt=1 ms=44520",
+    "[16:39:53] us-10-year-treasury-yield-highest-since-2007-2a6e1d: the correction reads clean where it wrote",
+    "[16:40:49] llm ok role=checker model=claude-cli attempt=1 ms=54724",
+    "[16:40:49] us-sanctions-iran-aviation-take-effect-5095ea: the correction reads clean where it wrote",
+    "[16:40:49] [correct] anthropic-chooses-nasdaq-for-ipo-57a51e: fetching 4 source(s)",
+    "[16:41:09] [correct] llm ok role=writer model=claude-cli attempt=1 ms=17435",
+    "[16:41:09] [correct] anthropic-chooses-nasdaq-for-ipo-57a51e: corrected; fields lede",
+    "[16:41:09]     note: نسبت نسخة سابقة من هذا الخبر إلى سي إن بي سي أن أنثروبيك تستهدف الإدراج في أكتوبر، والصحيح أن موعد أكتوبر أورده موقع بزنس إنسايدر، فيما ذكرت سي إن بي سي أن الشركة قدّمت ملف الاكتتاب سراً في يونيو وأن التوقعات ترجّح إدراج أسهمها اعتباراً من الشهر التالي.",
+    "[16:41:09] [correct] federal-reserve-rate-hike-expectations-september-2026-c63230: fetching 4 source(s)",
+    "[16:41:29] [correct] llm ok role=writer model=claude-cli attempt=1 ms=18444",
+    "[16:41:29] [correct] federal-reserve-rate-hike-expectations-september-2026-c63230: corrected; fields lede",
+    "[16:41:29]     note: ذكرت نسخة سابقة من هذا الخبر أن تقرير «الشرق الأوسط» عن توقعات البنكين نُشر الثلاثاء، والصحيح أنه نُشر الاثنين 14 سبتمبر، قبل يومين من اختتام اجتماع الاحتياطي الفيدرالي الأربعاء.",
+    "[16:41:29] [correct] done: 2 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-09-26T16-40-49-166Z.json"
+  ]
+}
