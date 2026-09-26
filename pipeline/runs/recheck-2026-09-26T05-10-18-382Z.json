@@ -1,0 +1,240 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-09-26T05:10:18.382Z",
+  "durationSec": 234,
+  "read": 8,
+  "corrected": 1,
+  "report": [
+    {
+      "slug": "eu-urges-gas-power-demand-cuts-winter-3a6d5e",
+      "title": "مفوض الطاقة الأوروبي يدعو إلى خفض استهلاك الغاز والكهرباء قبل الشتاء",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 21,
+        "checked": 21,
+        "supported": 20,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "appeals-court-upholds-pentagon-anthropic-designation-d3a100",
+      "title": "محكمة استئناف أمريكية تؤيد إدراج البنتاغون «أنثروبيك» على قائمة مخاطر التوريد",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 26,
+        "checked": 25,
+        "supported": 24,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "us-consumer-sentiment-four-month-low-september-e434a2",
+      "title": "ثقة المستهلكين الأمريكيين تتراجع إلى أدنى مستوى في 4 أشهر مع مخاوف غلاء الوقود",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 12,
+        "checked": 12,
+        "supported": 12,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "nscale-raises-3-36-billion-convertible-ahead-ipo-999fb3",
+      "title": "«إنسكايل» تجمع 3.36 مليار دولار بمشاركة مجلس أبوظبي للاستثمار قبل طرحها العام",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 20,
+        "checked": 20,
+        "supported": 19,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "un-expands-settlement-companies-list-214-baf9a8",
+      "title": "الأمم المتحدة توسّع قائمة الشركات المرتبطة بالمستوطنات إلى 214 شركة",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 19,
+        "weak": 1,
+        "noEvidence": 1,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "saudi-trade-surplus-falls-july-2026-ae7595",
+      "title": "فائض التجارة السعودية يتراجع 25% في يوليو إلى أدنى مستوى منذ مايو 2025",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 28,
+        "checked": 28,
+        "supported": 24,
+        "weak": 1,
+        "noEvidence": 2,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "china-retail-sales-slowdown-august-2026-cb2bb7",
+      "title": "نمو مبيعات التجزئة الصينية يتباطأ إلى 0.4% في أغسطس",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 7,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 4,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 5,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "tech-stocks-fall-ai-slowdown-calls-8c019b",
+      "title": "أسهم التكنولوجيا تتراجع عالمياً بعد دعوات إبطاء تطوير الذكاء الاصطناعي",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 24,
+        "checked": 24,
+        "supported": 16,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 4,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "period",
+          "sentence": "وصرّح رئيس مجلس النواب مايك جونسون بأن الكونغرس لن يقود تنظيم سلامة الذكاء الاصطناعي خلال العامين المقبلين، تاركاً المسؤولية للشركات.",
+          "quote": "House speaker Mike Johnson likewise said Congress would not lead the charge on regulating AI safety, laying the responsibility at the feet of AI companies.",
+          "source": "The Guardian",
+          "correction": "Johnson said Congress would not lead AI safety regulation, but the source gives no time frame; the 'next two years' period is not in the source."
+        },
+        {
+          "class": "actor",
+          "sentence": "وحذّر النائب السابق ديفيد ساكس ورئيس لجنة التجارة الفيدرالية السابق ألفارو بيدويا من أن الاقتراح قد يرقى إلى استحواذ تنظيمي يفيد القادة الحاليين.",
+          "quote": "Former officials, including Trump’s former “AI czar” David Sacks and Biden-era head of the Federal Trade Commission Alvaro Bedoya, suggested that the proposal amounted to an attempt at regulatory capture, which would benefit current industry leaders.",
+          "source": "The Guardian",
+          "correction": "David Sacks is described as Trump's former 'AI czar', not a former congressman."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 9,
+    "failures": 0,
+    "promptTokens": 61423,
+    "completionTokens": 45636,
+    "cacheReadTokens": 0,
+    "costUsd": 1.404,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 9
+    },
+    "correctionsEditorCalls": 1
+  },
+  "log": [
+    "[05:10:18] second look: 8 to read now (87 published pieces not yet read; 2 read clean before publication and left out of the audit sample)",
+    "[05:10:53] llm ok role=checker model=claude-cli attempt=1 ms=33968",
+    "[05:10:53] eu-urges-gas-power-demand-cuts-winter-3a6d5e: 21 of 21 sentences checked · 20 supported · 0 without a source · 0 confirmed error(s)",
+    "[05:11:02] llm ok role=checker model=claude-cli attempt=1 ms=43346",
+    "[05:11:02] appeals-court-upholds-pentagon-anthropic-designation-d3a100: 25 of 26 sentences checked · 24 supported · 1 without a source · 0 confirmed error(s)",
+    "[05:11:19] llm ok role=checker model=claude-cli attempt=1 ms=24156",
+    "[05:11:19] us-consumer-sentiment-four-month-low-september-e434a2: 12 of 12 sentences checked · 12 supported · 0 without a source · 0 confirmed error(s)",
+    "[05:11:19] un-expands-settlement-companies-list-214-baf9a8:   source https://www.nytimes.com/2026/09/25/world/middleeast/un-companies-westbank-settle: http-403",
+    "[05:11:34] llm ok role=checker model=claude-cli attempt=1 ms=31205",
+    "[05:11:34] nscale-raises-3-36-billion-convertible-ahead-ipo-999fb3: 20 of 20 sentences checked · 19 supported · 0 without a source · 0 confirmed error(s)",
+    "[05:11:45] llm ok role=checker model=claude-cli attempt=1 ms=25739",
+    "[05:11:45] un-expands-settlement-companies-list-214-baf9a8: 22 of 22 sentences checked · 19 supported · 2 without a source · 0 confirmed error(s)",
+    "[05:12:26] llm ok role=checker model=claude-cli attempt=1 ms=50546",
+    "[05:12:26] saudi-trade-surplus-falls-july-2026-ae7595: 28 of 28 sentences checked · 24 supported · 2 without a source · 0 confirmed error(s) · 1 listed for a person",
+    "[05:12:26] tech-stocks-fall-ai-slowdown-calls-8c019b:   source https://www.nytimes.com/2026/09/14/business/tech-stocks-ai.html: http-403",
+    "[05:12:28] tech-stocks-fall-ai-slowdown-calls-8c019b:   source https://www.nytimes.com/2026/09/14/business/dealbook/ai-slowdown-dc-beijing.html: http-403",
+    "[05:12:37] llm ok role=checker model=claude-cli attempt=1 ms=47350",
+    "[05:12:37] china-retail-sales-slowdown-august-2026-cb2bb7: 18 of 18 sentences checked · 7 supported · 4 without a source · 0 confirmed error(s) · 5 listed for a person",
+    "[05:13:09] llm ok role=checker model=claude-cli attempt=1 ms=40740",
+    "[05:13:09] tech-stocks-fall-ai-slowdown-calls-8c019b: 24 of 24 sentences checked · 16 supported · 4 without a source · 2 confirmed error(s)",
+    "[05:13:09]   ✗ [period] وصرّح رئيس مجلس النواب مايك جونسون بأن الكونغرس لن يقود تنظيم سلامة الذكاء الاصطناعي خلال العامين المقبلين، تا — Johnson said Congress would not lead AI safety regulation, but the source gives no time frame; the 'next two years' period is not in the source.",
+    "[05:13:09]   ✗ [actor] وحذّر النائب السابق ديفيد ساكس ورئيس لجنة التجارة الفيدرالية السابق ألفارو بيدويا من أن الاقتراح قد يرقى إلى ا — David Sacks is described as Trump's former 'AI czar', not a former congressman.",
+    "[05:13:09] corrections: 1 story to the corrections editor",
+    "[05:13:09] [correct] tech-stocks-fall-ai-slowdown-calls-8c019b: fetching 4 source(s)",
+    "[05:13:09] [correct]   source https://www.nytimes.com/2026/09/14/business/tech-stocks-ai.html: http-403",
+    "[05:13:09] [correct]   source https://www.nytimes.com/2026/09/14/business/dealbook/ai-slowdown-dc-be: http-403",
+    "[05:13:26] [correct] llm ok role=writer model=claude-cli attempt=1 ms=16417",
+    "[05:13:26] [correct] tech-stocks-fall-ai-slowdown-calls-8c019b: corrected; fields body",
+    "[05:13:26]     note: ذكرت نسخة سابقة من هذا الخبر أن رئيس مجلس النواب مايك جونسون قال إن الكونغرس لن يقود تنظيم سلامة الذكاء الاصطناعي خلال العامين المقبلين، والصحيح أنه لم يحدد إطاراً زمنياً. كما وصفت ديفيد ساكس بأنه نائب سابق، والصحيح أنه مستشار ترامب السابق لشؤون الذكاء الاصطناعي.",
+    "[05:13:26] [correct] done: 1 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-09-26T05-13-09-297Z.json",
+    "[05:13:26] tech-stocks-fall-ai-slowdown-calls-8c019b:   source https://www.nytimes.com/2026/09/14/business/tech-stocks-ai.html: http-403",
+    "[05:13:26] tech-stocks-fall-ai-slowdown-calls-8c019b:   source https://www.nytimes.com/2026/09/14/business/dealbook/ai-slowdown-dc-beijing.html: http-403",
+    "[05:14:12] llm ok role=checker model=claude-cli attempt=1 ms=45185",
+    "[05:14:12] tech-stocks-fall-ai-slowdown-calls-8c019b: the correction reads clean where it wrote"
+  ]
+}

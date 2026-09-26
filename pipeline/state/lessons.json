@@ -111,10 +111,12 @@
     "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c:6dd12e26",
     "saudi-uranium-discovery-madinah-630462:31a74894",
     "saudi-uranium-discovery-madinah-630462:bd012b79",
-    "saudi-uranium-discovery-madinah-630462:d1a1c6a9"
+    "saudi-uranium-discovery-madinah-630462:d1a1c6a9",
+    "tech-stocks-fall-ai-slowdown-calls-8c019b:b302f6d1",
+    "tech-stocks-fall-ai-slowdown-calls-8c019b:4cf09b48"
   ],
-  "version": 8,
-  "updatedAt": "2026-09-25T23:25:28.192Z",
+  "version": 9,
+  "updatedAt": "2026-09-26T05:14:12.401Z",
   "lessons": [
     {
       "id": "L1",
@@ -334,11 +336,12 @@
         "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:b8b017f3",
         "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:4aed2427",
         "hormuz-crisis-escalation-to-stalled-talks-2dfd6a:04bf5426",
-        "turkish-airlines-orders-150-boeing-737-max-e89a62:60ba7800"
+        "turkish-airlines-orders-150-boeing-737-max-e89a62:60ba7800",
+        "tech-stocks-fall-ai-slowdown-calls-8c019b:b302f6d1"
       ],
-      "seen": 19,
+      "seen": 20,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-25T23:25:28.192Z",
+      "lastSeen": "2026-09-26T05:14:12.401Z",
       "status": "active",
       "previous": [
         "Take each event's day from the source's sentence about that event; convert a weekday by counting back from the publication date. Keep an announcement, a takeover, a later remark and a reply on their own days, with any time of day given.",
@@ -362,11 +365,12 @@
         "trump-announces-ban-cnn-msn-politico-white-house-fd6870:6e11c2d0",
         "trump-announces-ban-cnn-msn-politico-white-house-fd6870:21207823",
         "gulf-oil-flows-return-pre-war-levels-6a0da7:8a377fb5",
-        "gulf-oil-flows-return-pre-war-levels-6a0da7:85fb4ddc"
+        "gulf-oil-flows-return-pre-war-levels-6a0da7:85fb4ddc",
+        "tech-stocks-fall-ai-slowdown-calls-8c019b:4cf09b48"
       ],
-      "seen": 5,
+      "seen": 6,
       "createdAt": "2026-09-25T07:42:29.972Z",
-      "lastSeen": "2026-09-25T08:25:25.678Z",
+      "lastSeen": "2026-09-26T05:14:12.401Z",
       "status": "active"
     },
     {
@@ -507,6 +511,14 @@
         "sharpen L8 (+5)",
         "reinforce L9 (+1)",
         "L9 now read by the writer (proved in 2 unrelated stories)"
+      ]
+    },
+    {
+      "at": "2026-09-26T05:14:12.401Z",
+      "mistakes": 2,
+      "applied": [
+        "reinforce L6 (+1; reworded at most once a week)",
+        "reinforce L7 (+1; reworded at most once a week)"
       ]
     }
   ]

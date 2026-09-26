@@ -4338,6 +4338,382 @@
       ],
       "outcome": "corrected",
       "note": "ذكرت نسخة سابقة من هذا الخبر أن نحو عشرة ملايين برميل يومياً هي التدفق المعتاد عبر هرمز بحسب «سي إن بي سي»، وأن تعطيل 17% من قدرات الغاز القطري وقع خلال أسابيع سبتمبر وأن الأزمة بدأت بتصعيد سبتمبر، وأن الضربات الأمريكية على الناقلات وقعت في 7 سبتمبر وتصريحات الكعبي في 22 سبتمبر، وأن 105.09 دولارات سعر إغلاق، وأن الـ100 مليون برميل المبيعة لآسيا حُمّلت من الخليج. والصحيح أن هذه الأحجام هي المستوى الحالي ويعادل نصف مستويات ما قبل الحرب، وأن التعطيل القطري نجم عن هجمات 18 مارس في صراع مستمر منذ نحو سبعة أشهر، وأن الضربات وقعت في 5 سبتمبر والتصريحات في 20 سبتمبر، وأن السعر سُجّل خلال الجلسة، وأن ما حُمّل من الخليج سبع ناقلات بسعة 14 مليون برميل، وأن توقع بقاء خطي رأس لفان خارج الخدمة صادر عن «قطر للطاقة»، وأن مخاوف الأسمدة لم تصدر عن المنظمة البحرية الدولية، وأن شرط حقل الشمال الجنوبي أوردته رويترز ولم يقله الكعبي."
+    },
+    "eu-urges-gas-power-demand-cuts-winter-3a6d5e": {
+      "at": "2026-09-26T05:10:18.800Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "control",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-25T23:30:51.190Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 21,
+        "checked": 21,
+        "supported": 20,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "تُلزم قواعد الاتحاد الدول المعنية ببلوغ 90% من طاقة التخزين بين 1 أكتوبر و1 ديسمبر، مع مرونة إضافية للدول المتعثرة، بعدما وقف الامتلاء عند 70% في 24 سبتمبر.",
+          "quote": "وتلزم قواعد الاتحاد الأوروبي الدول المعنية ببلوغ مستوى تخزين يعادل 90% من طاقة منشآتها، مع مرونة تتيح تحقيق الهدف في أي وقت بين 1 أكتوبر/تشرين الأول و1 ديسمبر/كانون الأول. وتسمح القواعد بهامش مرونة إضافي إذا واجهت الدول صعوبات في ملء المخزونات، لتجنب زيادة الضغط على الأسعار."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "appeals-court-upholds-pentagon-anthropic-designation-d3a100": {
+      "at": "2026-09-26T05:10:18.833Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v7",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-25T22:05:22.617Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 26,
+        "checked": 25,
+        "supported": 24,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "تصويت هيئة محكمة الاستئناف: 2 مقابل 1"
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "us-consumer-sentiment-four-month-low-september-e434a2": {
+      "at": "2026-09-26T05:10:53.364Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v7",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-25T22:01:11.934Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 12,
+        "checked": 12,
+        "supported": 12,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "nscale-raises-3-36-billion-convertible-ahead-ipo-999fb3": {
+      "at": "2026-09-26T05:11:02.946Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v7",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-25T21:54:44.311Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 20,
+        "checked": 20,
+        "supported": 19,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "وتسعى إلى جمع 3 مليارات دولار في الطرح، بحسب «بلومبيرغ» التي سبقت بيان الشركة إلى نشر نبأ جولة التمويل.",
+          "quote": "وقادت شركة «ثيرد بوينت» جولة التمويل، التي شاركت فيها أيضاً شركات «إنفيديا» و«أبولو» و«سيتادل» و«هدسون باي كابيتال» و«8090 إندستريز»، بحسب بيان أصدرته الشركة الجمعة، مؤكداً ما نشرته «بلومبيرغ» سابقاً."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "un-expands-settlement-companies-list-214-baf9a8": {
+      "at": "2026-09-26T05:11:19.476Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v7",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-25T21:49:13.247Z",
+      "sourcesRead": 1,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 19,
+        "weak": 1,
+        "noEvidence": 1,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "باتت 214 شركة في 11 دولة مصنّفة لدى الأمم المتحدة بأنها تمارس نشاطاً محظوراً واحداً على الأقل في الأرض المحتلة.",
+        "لكن إسرائيل نددت بقاعدة البيانات، ووصفتها بأنها أداة سياسية للدفع بحملة تشهير."
+      ],
+      "weak": [
+        {
+          "sentence": "أضاف مكتب حقوق الإنسان التابع للأمم المتحدة 61 شركة إلى قاعدة بياناته للشركات المنخرطة في أنشطة مرتبطة بالمستوطنات الإسرائيلية في الضفة الغربية والقدس الشرقية المحتلتين، ليبلغ عددها 214 شركة مقرها 11 دولة، بعدما قيّم 126 شركة.",
+          "quote": "The United Nations human rights office has added 61 more companies to its database of businesses engaging in activities linked to illegal Israeli settlements in the occupied West Bank and occupied East Jerusalem.The UN published an 18-page report on Friday, which includes the rationale behind the companies’ inclusion, adding that a total of 126 businesses were assessed."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "saudi-trade-surplus-falls-july-2026-ae7595": {
+      "at": "2026-09-26T05:11:34.279Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-24T12:17:29.359Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 28,
+        "checked": 28,
+        "supported": 24,
+        "weak": 1,
+        "noEvidence": 2,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وبلغ الفائض بذلك 14.36 مليار ريال (3.83 مليار دولار)، ونزل 13.6% عن مستواه في يونيو.",
+          "quote": "Saudi Arabia recorded a merchandise trade surplus of SAR14 billion ($3.7 billion) in July 2026, down 25 percent from the same month a year earlier, as both exports and imports declined, according to data from the General Authority for Statistics (GASTAT).",
+          "source": "Economy Middle East"
+        }
+      ],
+      "notFound": [
+        "وهبطت واردات معدات النقل وأجزائها 41.2% على أساس سنوي، وبلغت حصتها 10.2%.",
+        "الفئة: معدات النقل وأجزاؤها · الجانب: واردات · الحصة (%): 10.2 · التغير السنوي (%): -41.2"
+      ],
+      "weak": [
+        {
+          "sentence": "استعادت الصين صدارة وجهات الصادرات السلعية السعودية بحصة 13.4%، بعدما احتلت اليابان المركز الأول في يونيو.",
+          "quote": "على صعيد الشركاء التجاريين، استعادت الصين صدارة وجهات الصادرات السعودية في يوليو، بعدما تصدرت اليابان القائمة خلال يونيو، في حين سجلت الصادرات إلى الولايات المتحدة نمواً بنسبة 3.5% لتبلغ 4.7 مليار ريال، مسجلةً أعلى مستوى منذ بداية العام الجاري."
+        }
+      ],
+      "outcome": "listed"
+    },
+    "china-retail-sales-slowdown-august-2026-cb2bb7": {
+      "at": "2026-09-26T05:11:45.516Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-15T05:05:31.096Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 7,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 4,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 5,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "lede",
+          "sentence": "جاء ذلك بعد أن كان النمو 1 بالمئة في يونيو، ومقابل توقعات اقتصاديين بلغت 0.8 بالمئة وفقاً لاستطلاع بلومبرغ.",
+          "quote": "Retail sales grew 0.4% in August from a year earlier, data from National Bureau of Statistics showed on Tuesday, slowing from 0.6% in the prior month and missing economists' forecast for a 0.8% growth in a Reuters poll.",
+          "source": "CNBC"
+        },
+        {
+          "status": "conflict",
+          "field": "lede",
+          "sentence": "كما انكمش الاستثمار الثابت في الحضري بنسبة 7.2 بالمئة خلال الثمانية أشهر الأولى من العام.",
+          "quote": "كما كشفت البيانات عن تراجع الاستثمار في الأصول الثابتة بنسبة 7.2 بالمئة على أساس سنوي خلال أغسطس، وهو انخفاض جاء أكبر من المتوقع، ما يعكس استمرار الضغوط على النشاط الاقتصادي.",
+          "source": "Sky News Arabia"
+        },
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "توقعات بلومبرغ: 0.8%",
+          "quote": "Retail sales grew 0.4% in August from a year earlier, data from National Bureau of Statistics showed on Tuesday, slowing from 0.6% in the prior month and missing economists' forecast for a 0.8% growth in a Reuters poll.",
+          "source": "CNBC"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وكان نمو مبيعات التجزئة قد بلغ 0.6 بالمئة في يوليو قبل أن يتراجع في أغسطس إلى ما دون توقعات بلومبرغ عند 0.8 بالمئة.",
+          "quote": "Retail sales grew 0.4% in August from a year earlier, data from National Bureau of Statistics showed on Tuesday, slowing from 0.6% in the prior month and missing economists' forecast for a 0.8% growth in a Reuters poll.",
+          "source": "CNBC"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وتفاقم انكماش الاستثمار الثابت الحضري من 6.7 بالمئة في الفترة من يناير إلى يوليو إلى 7.2 بالمئة في الأشهر الثمانية الأولى من العام، وفقاً لبيانات المكتب الوطني للإحصاء.",
+          "quote": "كما كشفت البيانات عن تراجع الاستثمار في الأصول الثابتة بنسبة 7.2 بالمئة على أساس سنوي خلال أغسطس، وهو انخفاض جاء أكبر من المتوقع، ما يعكس استمرار الضغوط على النشاط الاقتصادي.",
+          "source": "Sky News Arabia"
+        }
+      ],
+      "notFound": [
+        "تباطؤ الطلب الاستهلاكي وانكماش الاستثمار في ثاني أكبر اقتصاد في العالم يضغطان على الطلب العالمي على السلع الأساسية.",
+        "وارتفاع البطالة في موسم التخرج يزيد الضغط على بكين لتقديم مزيد من الدعم المالي.",
+        "وارتفع التضخم في الهند فوق المستهدف للشهر الثالث على التوالي، بحسب تقرير أسعار التجزئة المنشور في «الشرق الأوسط».",
+        "ويواجه صنّاع القرار في آسيا تحدياً مشتركاً يجمع بين ضعف الطلب الداخلي في الصين وضغوط التضخم في الاقتصادات الناشئة، إذ يتوقف الانتعاش على التوازن بين الدعم المالي والقيود التضخمية."
+      ],
+      "weak": [
+        {
+          "sentence": "الاستثمار الحضري ينكمش 7.2% والبطالة ترتفع مع موسم التخرج",
+          "quote": "The urban survey-based unemployment rate in August ticked up to 5.3% from 5.2% in July, and unchanged from the same period last year. NBS spokesperson Fu Linghui attributed the uptick in unemployment to the graduation season, while highlighting stable employment in manufacturing, good prospects for tech jobs and growth in the hospitality and catering sectors."
+        },
+        {
+          "sentence": "وأوضح المتحدث باسم المكتب فو لينغ هوي (Fu Linghui) أن ارتفاع معدل البطالة إلى 5.3 بالمئة في أغسطس يعود إلى موسم التخرج، مع استقرار التوظيف في التصنيع ونموه في قطاع الضيافة.",
+          "quote": "NBS spokesperson Fu Linghui attributed the uptick in unemployment to the graduation season, while highlighting stable employment in manufacturing, good prospects for tech jobs and growth in the hospitality and catering sectors."
+        }
+      ],
+      "outcome": "listed"
+    },
+    "tech-stocks-fall-ai-slowdown-calls-8c019b": {
+      "at": "2026-09-26T05:12:26.835Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-14T23:58:00.671Z",
+      "sourcesRead": 2,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 24,
+        "checked": 24,
+        "supported": 16,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 4,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 21,
+          "field": "body",
+          "sentence": "وصرّح رئيس مجلس النواب مايك جونسون بأن الكونغرس لن يقود تنظيم سلامة الذكاء الاصطناعي خلال العامين المقبلين، تاركاً المسؤولية للشركات.",
+          "claim": "House Speaker Mike Johnson said Congress would not lead AI safety regulation over the next two years, leaving the responsibility to the companies.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "The Guardian",
+          "sourceDate": "2026-09-14",
+          "quote": "House speaker Mike Johnson likewise said Congress would not lead the charge on regulating AI safety, laying the responsibility at the feet of AI companies.",
+          "correction": "Johnson said Congress would not lead AI safety regulation, but the source gives no time frame; the 'next two years' period is not in the source.",
+          "class": "period"
+        },
+        {
+          "id": 23,
+          "field": "body",
+          "sentence": "وحذّر النائب السابق ديفيد ساكس ورئيس لجنة التجارة الفيدرالية السابق ألفارو بيدويا من أن الاقتراح قد يرقى إلى استحواذ تنظيمي يفيد القادة الحاليين.",
+          "claim": "The story calls David Sacks a former congressman. It says he and former FTC chair Alvaro Bedoya warned that the proposal may amount to regulatory capture benefiting current leaders.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "The Guardian",
+          "sourceDate": "2026-09-14",
+          "quote": "Former officials, including Trump’s former “AI czar” David Sacks and Biden-era head of the Federal Trade Commission Alvaro Bedoya, suggested that the proposal amounted to an attempt at regulatory capture, which would benefit current industry leaders.",
+          "correction": "David Sacks is described as Trump's former 'AI czar', not a former congressman.",
+          "class": "actor"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "تراجعت أسهم التكنولوجيا في الأسواق العالمية الاثنين، بعدما دعا قادة شركات الذكاء الاصطناعي الكبرى إلى إبطاء تطوير التقنيات المتقدمة لضمان السلامة العامة، لكن واشنطن وبكين رفضتا الاستجابة.",
+        "يضع التراجع الحاد لأسهم الرقائق والبرمجيات ضغوطاً على محافظ الاستثمار السيادية والصناديق السيادية في الخليج التي زادت انكشافها على قطاع الذكاء الاصطناعي خلال العامين الماضيين.",
+        "كما أن رفض واشنطن وبكين أي إبطاء يعني استمرار سباق التسلح التقني، ما يبقي مخاطر السلامة والتنظيم معلقة، وقد يدفع الهيئات التنظيمية في أوروبا والشرق الأوسط إلى فرض معايير محلية أكثر صرامة على نشر النماذج المتقدمة.",
+        "وذكرت «نيويورك تايمز» أن الدعوة أثارت اضطراباً في الأسواق واستدعت ردود فعل من واشنطن وبكين."
+      ],
+      "weak": [
+        {
+          "sentence": "«إنفيديا» تفقد 3.8% وموجة البيع تمتد من سيول إلى أوروبا",
+          "quote": "كما انخفض مؤشر كوسبي في كوريا الجنوبية -الذي يغلب عليه قطاع التكنولوجيا- بنسبة 3.3% في معاملات الاثنين. وفي أوروبا، انخفض المؤشر الفرعي لقطاع التكنولوجيا \"ستوكس-600\" بنسبة 2.4%، وانخفضت أسهم شركة \"إيه إس إم إل\" لتصنيع الرقائق الإلكترونية بنسبة 6.3%."
+        },
+        {
+          "sentence": "وهبط سهم «إنفيديا» 3.8%، وتراجع مؤشر «كوسبي» في كوريا الجنوبية 3.3%، والمؤشر الفرعي لقطاع التكنولوجيا «ستوكس-600» في أوروبا 2.4%، بحسب بيانات «فايننشال تايمز».",
+          "quote": "وانخفضت أسهم شركة إنفيديا للرقائق الإلكترونية -وهي أكبر شركة في العالم من حيث القيمة السوقية- بنسبة 3.8%، وفق الصحيفة، كما انخفضت أسهم شركات إنتل ومايكرون وسانديسك بأكثر من 6%."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن رئيس مجلس النواب مايك جونسون قال إن الكونغرس لن يقود تنظيم سلامة الذكاء الاصطناعي خلال العامين المقبلين، والصحيح أنه لم يحدد إطاراً زمنياً. كما وصفت ديفيد ساكس بأنه نائب سابق، والصحيح أنه مستشار ترامب السابق لشؤون الذكاء الاصطناعي.",
+      "verified": {
+        "at": "2026-09-26T05:14:12.177Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
     }
   }
 }
