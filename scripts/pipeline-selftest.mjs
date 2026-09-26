@@ -11,7 +11,7 @@ import { spawnSync } from "node:child_process";
 import { mkdirSync, mkdtempSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { MAX_REPAIRS, precheck } from "../pipeline/lib/precheck.mjs";
+import { MAX_REPAIRS, checkSourcesOf, precheck } from "../pipeline/lib/precheck.mjs";
 import { repeatsRecent } from "../pipeline/lib/events.mjs";
 import { lessonRuleOk, loadLessons } from "../pipeline/lib/lessons.mjs";
 import { writeJsonAtomic } from "../pipeline/lib/util.mjs";
@@ -200,6 +200,18 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("the copy saved at publication is never replaced", snap?.sources?.[0]?.passages?.includes("97.55"), true);
   // The passages, not the page (the repository is public): the quoted sentence with its neighbours, the figure's sentence.
   check("only the passages the story rests on are kept, never the whole page", [snap.sources[0].passages.includes("Analysts expect more volatility."), snap.sources[0].passages.includes("Gold was flat.")], [true, false]);
+  // The path a real story takes: the check before publication's own record of its verdicts, then the save (a live round
+  // on 2026-09-26 saved a story's claims but no passages, because the record named each quote's source by name while
+  // the save matched by number; this case failed before that was fixed).
+  const pre = await precheck({
+    draft,
+    sources: [{ sourceName: "رويترز", sourceNameEn: "Reuters", title: "t", url, text: page, fetchedAt: "2026-09-26T00:00:00Z" }],
+    verify: async () => ({ counts: { checked: 1 }, checks: [{ id: 1, field: "body", verdict: "supported", status: "supported", sentence: "تراجع برنت 2.8%", quote: "Brent fell 2.8% to 97.55 dollars a barrel, traders said.", source: 1, sourceName: "Reuters" }] }),
+    repairWith: repairer(true),
+  });
+  await saveSnapshot({ slug: "s2", title: "t", sources: checkSourcesOf([{ sourceName: "رويترز", sourceNameEn: "Reuters", title: "t", url, text: page, fetchedAt: "2026-09-26T00:00:00Z" }]), checks: pre.checks, storyText: "تراجع برنت 2.8%", dir });
+  const s2 = loadSnapshot("s2", { dir });
+  check("a real story's quoted passage reaches its saved evidence", [s2.sources[0].passages.includes("97.55"), s2.claims[0].source], [true, 1]);
   const story = { slug: "s1", sources: [{ url, name: "رويترز", nameEn: "Reuters" }] };
   const gone = await loadSources(story, { fetcher: async () => ({ ok: false, reason: "http-403" }), snapshot: snap });
   check("a page that no longer answers is read from its saved copy", [gone[0].text.includes("97.55"), Boolean(gone[0].snapshot)], [true, true]);

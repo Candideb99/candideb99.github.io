@@ -46,7 +46,9 @@ const numbersOf = (t) => (normalizeDigits(String(t ?? "")).match(/\d[\d.,]*\d|\d
 const prose = (d) => [...FIELDS.map((f) => d[f] ?? ""), ...(d.keyFacts ?? []).map((k) => `${k.label} ${k.value}`)].join("\n");
 const heads = (t) => (String(t ?? "").match(/^## .*$/gm) ?? []).length;
 const short = (error) => String(error?.message ?? error).split("\n")[0].slice(0, 160);
-const compact = (c) => ({ id: c.id, field: c.field, class: c.class, verdict: c.verdict, status: c.status, sentence: String(c.sentence).slice(0, 400), quote: String(c.quote ?? "").slice(0, 400), source: c.sourceName ?? null, correction: String(c.correction ?? "").slice(0, 300) });
+// `source` is the source's name (for people and the learner); `sourceN` its number in the list the check read, which
+// the saved evidence matches on (lib/snapshots.mjs).
+const compact = (c) => ({ id: c.id, field: c.field, class: c.class, verdict: c.verdict, status: c.status, sentence: String(c.sentence).slice(0, 400), quote: String(c.quote ?? "").slice(0, 400), source: c.sourceName ?? null, sourceN: typeof c.source === "number" ? c.source : null, correction: String(c.correction ?? "").slice(0, 300) });
 
 const REPAIR_SYSTEM = `${WRITER_SYSTEM}
 

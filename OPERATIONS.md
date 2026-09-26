@@ -65,7 +65,37 @@ An issue is never opened twice while it is open. Close it when mended.
 
 ## Evidence that this version is deployed
 
-See the end of this file (filled in from the cloud run that verified it).
+Commits on `main`:
+
+| commit | what |
+|---|---|
+| `bca1799` | the check before publication |
+| `4011d42` | corrections read again |
+| `fc238b9` | the merge driver, recovery and escalation, the Desk's fixed/flagged split |
+| `2c1b3ca`, `faedd79` | source evidence committed with each story |
+| the next commit after `eef02ee` | the passages fix below |
+
+Cloud rounds that ran them (GitHub Actions, Newsroom):
+
+- **36200493415** (25 Sept): the first round with the check. 3 stories checked clean and published.
+- **36269160116** (26 Sept, `fc238b9`):
+  - The second look left 7 stories checked clean before publication out of its audit sample.
+  - It corrected 3 stories and re-read each correction. All three read clean where they wrote; one showed a new error elsewhere, corrected once more.
+  - 3 stories were checked clean and published.
+  - The commit step registered the merge driver.
+- **36270707607** (26 Sept, `faedd79`): one story checked clean and published, with its evidence file committed beside it. This round revealed a saving bug: that file held the verdicts and quotes but no passages. It is fixed with a regression test, and the file was rebuilt from its recorded quotes.
+
+Live totals by the evening of 26 September:
+
+| measure | result |
+|---|---|
+| Stories checked before publication | 15 (all clean; 0 repaired, 0 held) |
+| Corrections read again | 18 (all clean where they wrote) |
+| New errors found in those re-readings | 7, each corrected once more |
+| Corrections left unresolved | 0 |
+| Stories with saved evidence | 75 |
+
+The gate passes all 18 decision cases and all 29 safeguard cases. The safeguard cases include the overlapping-runs case run with and without the merge driver, and the evidence cases.
 
 ## Limitations: what is not done, or not proven
 

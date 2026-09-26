@@ -42,20 +42,25 @@ function figuresOf(text) {
 export function passagesOf(text, quotes, storyFigures) {
   const sentences = sentencesOf(text);
   const keep = new Set();
+  // A quote the page's sentences do not contain as written (a quote across two sentences, a page cut differently) is
+  // kept as the check quoted it: it is the evidence either way.
+  const loose = [];
   for (const q of quotes) {
     const probe = squash(q).slice(0, 60);
     if (!probe) continue;
     const i = sentences.findIndex((s) => s.includes(probe) || probe.includes(s.slice(0, 60)));
     if (i >= 0) for (const j of [i - 1, i, i + 1]) if (j >= 0 && j < sentences.length) keep.add(j);
+    else loose.push(squash(q));
   }
   const wanted = new Set(storyFigures);
   sentences.forEach((s, i) => {
     if (figuresOf(s).some((f) => wanted.has(f))) keep.add(i);
   });
   let out = "";
-  for (const i of [...keep].sort((a, b) => a - b)) {
-    if (out.length + sentences[i].length > MAX_PASSAGES_CHARS) break;
-    out += `${out ? " " : ""}${sentences[i]}`;
+  for (const piece of [...[...keep].sort((a, b) => a - b).map((i) => sentences[i]), ...loose]) {
+    if (out.includes(piece)) continue;
+    if (out.length + piece.length > MAX_PASSAGES_CHARS) break;
+    out += `${out ? " " : ""}${piece}`;
   }
   return out;
 }
@@ -83,9 +88,9 @@ export async function saveSnapshot({ slug, title, publishedAt = null, sources, c
       publishedAt: s.publishedAt ?? null,
       fetchedAt: s.fetchedAt ?? null,
       lang: s.lang ?? null,
-      passages: passagesOf(s.text, checks.filter((c) => Number(c.source) === i + 1 && c.quote).map((c) => c.quote), storyFigures),
+      passages: passagesOf(s.text, checks.filter((c) => Number(c.sourceN ?? c.source) === i + 1 && c.quote).map((c) => c.quote), storyFigures),
     })),
-    claims: checks.map((c) => ({ field: c.field, sentence: c.sentence, verdict: c.verdict, status: c.status, source: c.source ?? null, quote: c.quote ?? "" })),
+    claims: checks.map((c) => ({ field: c.field, sentence: c.sentence, verdict: c.verdict, status: c.status, source: c.sourceN ?? c.source ?? null, quote: c.quote ?? "" })),
   };
   await mkdir(dir, { recursive: true });
   await writeFile(file, gzipSync(Buffer.from(JSON.stringify(record))));
