@@ -6370,6 +6370,267 @@
         "remaining": [],
         "newFound": []
       }
+    },
+    "amd-tops-one-trillion-market-cap-0231c5": {
+      "at": "2026-09-26T20:47:24.882Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-22T00:22:25.812Z",
+      "sourcesRead": 1,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 21,
+        "checked": 21,
+        "supported": 17,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 3,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "بلوغ «إيه إم دي» عتبة التريليون يجعلها واحدة من أربع عشرة شركة أمريكية فقط بلغت هذا الحجم خلال الجلسة، بحسب «ماركت ووتش»، في مؤشر على حجم رهان المستثمرين على منتج ثانٍ لرقائق الذكاء الاصطناعي إلى جانب «إنفيديا».",
+        "وبذلك صارت «إيه إم دي» الشركة الأمريكية الرابعة عشرة التي تتخطى قيمتها السوقية تريليون دولار خلال الجلسة، بحسب «ماركت ووتش».",
+        "وربط الموقع بلوغ هذه العتبة بموجة صعود أوسع تشهدها أسهم الذكاء الاصطناعي."
+      ],
+      "weak": [
+        {
+          "sentence": "بلغت القيمة السوقية لشركة «أدفانسد مايكرو ديفايسز» (إيه إم دي) ما يزيد قليلاً على تريليون دولار للمرة الأولى، بعدما قفز سهمها 10% في جلسة الاثنين إلى مستوى قياسي عند 615.52 دولار، بحسب «سي إن بي سي».",
+          "quote": "The chip giant's shares hit an intraday high of $615.52, which boosted the company's value just above $1 trillion."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "qatarenergy-hormuz-north-field-delay-f6a1c3": {
+      "at": "2026-09-26T20:47:24.919Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-22T00:17:57.575Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 26,
+        "checked": 26,
+        "supported": 22,
+        "weak": 1,
+        "noEvidence": 2,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "مدة التوقف المتوقعة: من ثلاث إلى خمس سنوات",
+          "quote": "وقال الكعبي إن الهجمات ألحقت أضراراً بخطَّي إنتاج للغاز الطبيعي المسال، وقد تستغرق أعمال إصلاحهما ثلاثة أعوام، إضافةً إلى منشأة لتحويل الغاز إلى سوائل، من المتوقع استكمال إصلاحها في الربع الأول من عام 2027.",
+          "source": "Asharq Al-Awsat"
+        }
+      ],
+      "notFound": [
+        "وأضاف أن تشغيل خطوط إنتاج إضافية ضمن التوسعة مرهون بتطورات أزمة المضيق، وأن الهجمات عطّلت 17% من قدرات قطر على إنتاج الغاز المسال.",
+        "وذكر «أويل برايس»، نقلاً عن رويترز الاثنين، أن الخطوط الإضافية تتوقف على استئناف الحركة في هرمز وعلى بدء إنتاج حقل الشمال الجنوبي في موعده عام 2028."
+      ],
+      "weak": [
+        {
+          "sentence": "وقدّر «أويل برايس» أن ضربة رأس لفان أزالت 12.8 مليون طن من الطاقة السنوية ونحو 20 مليار دولار من الإيرادات السنوية، في برنامج كان يتطلّب استثمارات مشتركة بنحو 83 مليار دولار من كبريات شركات الطاقة.",
+          "quote": "The Ras Laffan strike has since removed 12.8 million tons of that capacity before a single new train reached full output."
+        }
+      ],
+      "outcome": "listed"
+    },
+    "trump-ukraine-russia-diesel-855f75": {
+      "at": "2026-09-26T20:47:51.127Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-13T20:59:17.450Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 14,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 13,
+          "field": "body",
+          "sentence": "وأوضحت أن أسعار النفط الخام عالمياً تجاوزت 100 دولار للبرميل لأول مرة منذ يوليو 2026.",
+          "claim": "The IEA stated that global crude oil prices crossed $100 per barrel for the first time since July 2026.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Al Jazeera English",
+          "sourceDate": "2026-09-13",
+          "quote": "Crude oil prices crossed the $100-per-barrel mark last week for the first time since July.",
+          "correction": "The crossing of $100 per barrel for the first time since July is Al Jazeera's own reporting, not a statement by the International Energy Agency.",
+          "class": "attribution"
+        },
+        {
+          "id": 15,
+          "field": "body",
+          "sentence": "وبينت أن نحو خمس النفط العالمي يمر عبر مضيق هرمز في أوقات السلام.",
+          "claim": "The IEA stated that around one-fifth of world oil passes through the Strait of Hormuz in peacetime.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Al Jazeera English",
+          "sourceDate": "2026-09-13",
+          "quote": "Around one-fifth of the world’s oil passes through the strait in peacetime.",
+          "correction": "The one-fifth figure for the Strait of Hormuz is Al Jazeera's own background reporting, not a statement by the International Energy Agency.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "تقلّص إمدادات الديزل العالمية يرفع تكاليف الشحن والنقل، وبلوغ خام برنت مستويات فوق 100 دولار للبرميل يضغط على فواتير الطاقة في الدول المستوردة.",
+          "quote": "The fuel has a significant impact on the cost of transportation, and is used by ships, trains, and trucks to move international goods, many of which are now more expensive, as those costs are passed on to consumers."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "نسبت نسخة سابقة من هذا الخبر إلى وكالة الطاقة الدولية أن أسعار النفط الخام تجاوزت 100 دولار للبرميل لأول مرة منذ يوليو، وأن نحو خمس النفط العالمي يمر عبر مضيق هرمز في أوقات السلام. والصحيح أن هاتين المعلومتين لم تردا في تقرير الوكالة.",
+      "verified": {
+        "at": "2026-09-26T20:50:49.496Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": [
+          {
+            "class": "attribution",
+            "field": "body",
+            "sentence": "وأشارت إلى أن أوكرانيا تواجه هجمات روسية منتظمة على بنيتها التحتية للطاقة.",
+            "quote": "Ukraine, which faces regular Russian attacks on its own energy infrastructure, says refineries are legitimate military targets.",
+            "correction": "That Ukraine faces regular Russian attacks on its energy infrastructure is Al Jazeera's own description, not something Ukraine is reported as saying."
+          }
+        ],
+        "secondCorrection": "corrected"
+      }
+    },
+    "egypt-bme-catl-battery-plant-aa81f7": {
+      "at": "2026-09-26T20:48:24.067Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-13T16:47:07.271Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 16,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 3,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 1,
+          "field": "title",
+          "sentence": "مصر و«كاتل» الصينية تطلقان مصنع بطاريات باستثمار 39 مليون دولار",
+          "claim": "Egypt and China's CATL are launching a battery plant with a $39 million investment.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Arab News",
+          "sourceDate": "2026-09-13",
+          "quote": "A more than 2 billion Egyptian pound ($39 million) investment will be used to establish an electric-battery manufacturing plant in Egypt by local battery maker BME and China’s Contemporary Amperex Technology Co. Ltd., as the country seeks to develop its electric-vehicle industry and expand local manufacturing.",
+          "correction": "CATL's partner in the plant is the Egyptian battery maker BME, not the Egyptian state, and the investment is more than $39 million.",
+          "class": "actor"
+        },
+        {
+          "id": 11,
+          "field": "body",
+          "sentence": "حضر رئيس الوزراء مصطفى مدبولي توقيع عقد إنشاء المصنع، إلى جانب وزير الصناعة خالد هاشم ورئيس BME ماجد وهاب ومدير CATL للاستثمار الدولي لوهينغ.",
+          "claim": "PM Mostafa Madbouly witnessed the contract signing, along with Industry Minister Khaled Hashem, BME chairman 'Maged Wahab' and CATL international investment director 'Luoheng'.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Arab News",
+          "sourceDate": "2026-09-13",
+          "quote": "The agreement was signed by Maged Wahib, chairman of BME, and Luo Haining, CATL’s director of international investment. Egypt’s Industry Minister Khaled Hashem attended the signing, along with BME project manager Amin Karim Ghabbour and board member Lotfy Tadros.",
+          "correction": "The agreement was signed by BME chairman Maged Wahib and CATL's director of international investment Luo Haining; the story misrenders both names.",
+          "class": "actor"
+        },
+        {
+          "id": 14,
+          "field": "body",
+          "sentence": "وتسعى مصر لرفع حصة الطاقات المتجددة إلى 45% من توليد الكهرباء بحلول 2028، مع إضافة بطاريات تخزين بقدرة نحو 1.1 جيجاوات لتعزيز سعة الشبكة الكهربائية.",
+          "claim": "Egypt aims to raise renewables to 45% of electricity generation by 2028, while adding about 1.1 GW of battery storage to boost grid capacity.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Arab News",
+          "sourceDate": "2026-09-13",
+          "quote": "The government aims to raise renewable sources to 45 percent of electricity generation by 2028, while battery-storage additions are planned to increase grid capacity using the technology to about 1.1 GW.",
+          "correction": "About 1.1 GW is the planned total grid battery-storage capacity after the additions, not the size of the additions themselves.",
+          "class": "scope"
+        }
+      ],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن مصر شريكة «كاتل» في المصنع باستثمار 39 مليون دولار، وأخطأت في كتابة اسمَي موقّعَي العقد، ووصفت 1.1 جيجاوات بأنها حجم بطاريات التخزين المضافة. والصحيح أن الشريك هو شركة BME المصرية باستثمار يتجاوز 39 مليون دولار، وأن العقد وقّعه ماجد وهيب ولوه هاي نينغ، وأن 1.1 جيجاوات هي السعة الإجمالية المستهدفة للشبكة من بطاريات التخزين بعد الإضافات.",
+      "verified": {
+        "at": "2026-09-26T20:50:10.144Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": [
+          {
+            "class": "actor",
+            "field": "body",
+            "sentence": "وتأسست BME على يد شركة MCV المصرية لتصنيع المركبات التجارية وشركة Auto D للصناعة والتجارة والمستلزمات، لتصنيع أنظمة بطاريات تتوافق مع المعايير الدولية للجودة والإنتاج.",
+            "quote": "The companies aim to manufacture battery systems that meet international quality and production standards. Locally produced batteries are expected to be supplied to vehicle manufacturers in Egypt, reducing reliance on imports as well as shipping and logistics costs.",
+            "correction": "The aim of making battery systems to international standards belongs to the BME–CATL partnership; the source gives no purpose for BME's founding by MCV and Auto D."
+          },
+          {
+            "class": "hedge",
+            "field": "body",
+            "sentence": "يهدف المشروع إلى تلبية الطلب المحلي والعالمي على البطاريات الكهربائية، وتُورَّد البطاريات إلى مصنّعي المركبات في مصر لتقليل الاعتماد على الاستيراد وخفض تكاليف الشحن واللوجستيات.",
+            "quote": "Locally produced batteries are expected to be supplied to vehicle manufacturers in Egypt, reducing reliance on imports as well as shipping and logistics costs.",
+            "correction": "The source says the batteries are expected to be supplied to Egyptian vehicle makers; this is an expectation, not an established fact."
+          }
+        ],
+        "secondCorrection": "corrected"
+      }
     }
   }
 }

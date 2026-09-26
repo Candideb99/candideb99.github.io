@@ -1,0 +1,55 @@
+{
+  "startedAt": "2026-09-26T20:49:02.154Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "trump-ukraine-russia-diesel-855f75",
+      "issue": "1. The body says «وأوضحت أن أسعار النفط الخام عالمياً تجاوزت 100 دولار للبرميل لأول مرة منذ يوليو 2026.» (The IEA stated that global crude oil prices crossed $100 per barrel for the first time since July 2026.). Source Al Jazeera English says: \"Crude oil prices crossed the $100-per-barrel mark last week for the first time since July.\". The crossing of $100 per barrel for the first time since July is Al Jazeera's own reporting, not a statement by the International Energy Agency.\n2. The body says «وبينت أن نحو خمس النفط العالمي يمر عبر مضيق هرمز في أوقات السلام.» (The IEA stated that around one-fifth of world oil passes through the Strait of Hormuz in peacetime.). Source Al Jazeera English says: \"Around one-fifth of the world’s oil passes through the strait in peacetime.\". The one-fifth figure for the Strait of Hormuz is Al Jazeera's own background reporting, not a statement by the International Energy Agency.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "نسبت نسخة سابقة من هذا الخبر إلى وكالة الطاقة الدولية أن أسعار النفط الخام تجاوزت 100 دولار للبرميل لأول مرة منذ يوليو، وأن نحو خمس النفط العالمي يمر عبر مضيق هرمز في أوقات السلام. والصحيح أن هاتين المعلومتين لم تردا في تقرير الوكالة.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وأوضحت أن أسعار النفط الخام عالمياً تجاوزت 100 دولار للبرميل لأول مرة منذ يوليو 2026.",
+        "وبينت أن نحو خمس النفط العالمي يمر عبر مضيق هرمز في أوقات السلام."
+      ],
+      "newSentences": [
+        "وتجاوزت أسعار النفط الخام عالمياً 100 دولار للبرميل لأول مرة منذ يوليو 2026.",
+        "ويمر نحو خمس النفط العالمي عبر مضيق هرمز في أوقات السلام."
+      ]
+    },
+    {
+      "slug": "egypt-bme-catl-battery-plant-aa81f7",
+      "issue": "1. The headline says «مصر و«كاتل» الصينية تطلقان مصنع بطاريات باستثمار 39 مليون دولار» (Egypt and China's CATL are launching a battery plant with a $39 million investment.). Source Arab News says: \"A more than 2 billion Egyptian pound ($39 million) investment will be used to establish an electric-battery manufacturing plant in Egypt by local battery maker BME and China’s Contemporary Amperex Technology Co. Ltd., as the country seeks to develop its electric-vehicle industry and expand local manufacturing.\". CATL's partner in the plant is the Egyptian battery maker BME, not the Egyptian state, and the investment is more than $39 million.\n2. The body says «حضر رئيس الوزراء مصطفى مدبولي توقيع عقد إنشاء المصنع، إلى جانب وزير الصناعة خالد هاشم ورئيس BME ماجد وهاب ومدير CATL للاستثمار الدولي لوهينغ.» (PM Mostafa Madbouly witnessed the contract signing, along with Industry Minister Khaled Hashem, BME chairman 'Maged Wahab' and CATL international investment director 'Luoheng'.). Source Arab News says: \"The agreement was signed by Maged Wahib, chairman of BME, and Luo Haining, CATL’s director of international investment. Egypt’s Industry Minister Khaled Hashem attended the signing, along with BME project manager Amin Karim Ghabbour and board member Lotfy Tadros.\". The agreement was signed by BME chairman Maged Wahib and CATL's director of international investment Luo Haining; the story misrenders both names.\n3. The body says «وتسعى مصر لرفع حصة الطاقات المتجددة إلى 45% من توليد الكهرباء بحلول 2028، مع إضافة بطاريات تخزين بقدرة نحو 1.1 جيجاوات لتعزيز سعة الشبكة الكهربائية.» (Egypt aims to raise renewables to 45% of electricity generation by 2028, while adding about 1.1 GW of battery storage to boost grid capacity.). Source Arab News says: \"The government aims to raise renewable sources to 45 percent of electricity generation by 2028, while battery-storage additions are planned to increase grid capacity using the technology to about 1.1 GW.\". About 1.1 GW is the planned total grid battery-storage capacity after the additions, not the size of the additions themselves.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "title",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن مصر شريكة «كاتل» في المصنع باستثمار 39 مليون دولار، وأخطأت في كتابة اسمَي موقّعَي العقد، ووصفت 1.1 جيجاوات بأنها حجم بطاريات التخزين المضافة. والصحيح أن الشريك هو شركة BME المصرية باستثمار يتجاوز 39 مليون دولار، وأن العقد وقّعه ماجد وهيب ولوه هاي نينغ، وأن 1.1 جيجاوات هي السعة الإجمالية المستهدفة للشبكة من بطاريات التخزين بعد الإضافات.",
+      "model": "claude-cli",
+      "before": {
+        "title": "مصر و«كاتل» الصينية تطلقان مصنع بطاريات باستثمار 39 مليون دولار"
+      },
+      "after": {
+        "title": "«بي إم إي» المصرية و«كاتل» الصينية تطلقان مصنع بطاريات باستثمار يتجاوز 39 مليون دولار"
+      },
+      "changedSentences": [
+        "مصر و«كاتل» الصينية تطلقان مصنع بطاريات باستثمار 39 مليون دولار",
+        "حضر رئيس الوزراء مصطفى مدبولي توقيع عقد إنشاء المصنع، إلى جانب وزير الصناعة خالد هاشم ورئيس BME ماجد وهاب ومدير CATL للاستثمار الدولي لوهينغ.",
+        "وتسعى مصر لرفع حصة الطاقات المتجددة إلى 45% من توليد الكهرباء بحلول 2028، مع إضافة بطاريات تخزين بقدرة نحو 1.1 جيجاوات لتعزيز سعة الشبكة الكهربائية."
+      ],
+      "newSentences": [
+        "«بي إم إي» المصرية و«كاتل» الصينية تطلقان مصنع بطاريات باستثمار يتجاوز 39 مليون دولار",
+        "حضر رئيس الوزراء مصطفى مدبولي توقيع عقد إنشاء المصنع، الذي وقّعه رئيس BME ماجد وهيب ومدير CATL للاستثمار الدولي لوه هاي نينغ، بحضور وزير الصناعة خالد هاشم.",
+        "وتسعى مصر لرفع حصة الطاقات المتجددة إلى 45% من توليد الكهرباء بحلول 2028، مع خطط لإضافة بطاريات تخزين ترفع سعة الشبكة الكهربائية من هذه التقنية إلى نحو 1.1 جيجاوات."
+      ]
+    }
+  ]
+}

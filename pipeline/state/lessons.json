@@ -141,10 +141,15 @@
     "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d:2dfa8088",
     "ai-leaders-warn-openai-ipo-delay-b7d3e6:bba093b8",
     "ai-leaders-warn-openai-ipo-delay-b7d3e6:e9073376",
-    "ai-leaders-warn-openai-ipo-delay-b7d3e6:e7a16f74"
+    "ai-leaders-warn-openai-ipo-delay-b7d3e6:e7a16f74",
+    "trump-ukraine-russia-diesel-855f75:d0a92a95",
+    "trump-ukraine-russia-diesel-855f75:bb07774f",
+    "egypt-bme-catl-battery-plant-aa81f7:a32f8304",
+    "egypt-bme-catl-battery-plant-aa81f7:11ebce74",
+    "egypt-bme-catl-battery-plant-aa81f7:76b04c5d"
   ],
-  "version": 12,
-  "updatedAt": "2026-09-26T20:30:24.516Z",
+  "version": 13,
+  "updatedAt": "2026-09-26T20:51:26.192Z",
   "lessons": [
     {
       "id": "L1",
@@ -234,11 +239,13 @@
         "openai-agent-breached-australia-medicare-portal-f2c278:39ba80b3",
         "federal-reserve-rate-hike-expectations-september-2026-c63230:f24e6023",
         "hormuz-alternatives-saudi-oil-qatar-lng-747dc8:4716d925",
-        "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d:bf8ecfca"
+        "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d:bf8ecfca",
+        "trump-ukraine-russia-diesel-855f75:d0a92a95",
+        "trump-ukraine-russia-diesel-855f75:bb07774f"
       ],
-      "seen": 36,
+      "seen": 38,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-26T20:30:24.516Z",
+      "lastSeen": "2026-09-26T20:51:26.192Z",
       "status": "active",
       "previous": [
         "Credit each fact to whom the source credits; the outlet's own reporting is never 'informed sources', an official statement or analyst data. Name the originating outlet. Never make a reported line a quote, a private notice an announcement, or a reply the decree's aim.",
@@ -311,11 +318,12 @@
         "hormuz-alternatives-saudi-oil-qatar-lng-747dc8:54c2ba62",
         "hormuz-alternatives-saudi-oil-qatar-lng-747dc8:c0808492",
         "ai-leaders-warn-openai-ipo-delay-b7d3e6:e7a16f74",
-        "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d:2dfa8088"
+        "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d:2dfa8088",
+        "egypt-bme-catl-battery-plant-aa81f7:76b04c5d"
       ],
-      "seen": 18,
+      "seen": 19,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-26T20:30:24.516Z",
+      "lastSeen": "2026-09-26T20:51:26.192Z",
       "status": "active",
       "previous": [
         "Keep a figure or role tied to the exact item, day and instrument the source names. Diesel is not all fuel. One day's count is not a daily rate. A futures-implied value is not the IPO valuation. An official does only what the source assigns.",
@@ -341,11 +349,13 @@
         "us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac:c8437999",
         "ecb-launches-pontes-tokenised-securities-b5dc9b:fc0b9c96",
         "openai-agent-breached-australia-medicare-portal-f2c278:a6f7f3dd",
-        "brent-oil-surges-saudi-pipeline-closure-0b4217:668e4e71"
+        "brent-oil-surges-saudi-pipeline-closure-0b4217:668e4e71",
+        "egypt-bme-catl-battery-plant-aa81f7:a32f8304",
+        "egypt-bme-catl-battery-plant-aa81f7:11ebce74"
       ],
-      "seen": 7,
+      "seen": 9,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-26T11:43:04.129Z",
+      "lastSeen": "2026-09-26T20:51:26.192Z",
       "status": "active",
       "previous": [
         "For visits, hosting, deals and transfers, reread the source's verb to see who acts on whom. 'Trump went to Beijing' means Xi hosted Trump. Check that subject and object have not been swapped before printing.",
@@ -421,11 +431,12 @@
         "gulf-oil-flows-return-pre-war-levels-6a0da7:85fb4ddc",
         "tech-stocks-fall-ai-slowdown-calls-8c019b:4cf09b48",
         "anthropic-chooses-nasdaq-for-ipo-57a51e:131a4ff9",
-        "hormuz-alternatives-saudi-oil-qatar-lng-747dc8:3f7d88af"
+        "hormuz-alternatives-saudi-oil-qatar-lng-747dc8:3f7d88af",
+        "egypt-bme-catl-battery-plant-aa81f7:11ebce74"
       ],
-      "seen": 8,
+      "seen": 9,
       "createdAt": "2026-09-25T07:42:29.972Z",
-      "lastSeen": "2026-09-26T20:30:24.516Z",
+      "lastSeen": "2026-09-26T20:51:26.192Z",
       "status": "active"
     },
     {
@@ -448,11 +459,12 @@
         "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c:a3bb75d3",
         "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c:f9c962b8",
         "brent-tops-105-us-iran-talks-stall-c4eaa4:67f95103",
-        "brent-oil-surges-saudi-pipeline-closure-0b4217:dd216224"
+        "brent-oil-surges-saudi-pipeline-closure-0b4217:dd216224",
+        "egypt-bme-catl-battery-plant-aa81f7:a32f8304"
       ],
-      "seen": 10,
+      "seen": 11,
       "createdAt": "2026-09-25T12:04:58.585Z",
-      "lastSeen": "2026-09-26T11:43:04.129Z",
+      "lastSeen": "2026-09-26T20:51:26.192Z",
       "status": "active",
       "previous": [
         "Copy every number and ranking with its own qualifier. 500 is not 'more than 500', 'nearly 4,000' is not 4,000, and 'one of the most important' is not 'the most important'. Never move a qualifier from one figure onto its neighbour."
@@ -638,6 +650,17 @@
         "reinforce L2 (+2)",
         "reinforce L1 (+1)",
         "reinforce L7 (+1)"
+      ]
+    },
+    {
+      "at": "2026-09-26T20:51:26.192Z",
+      "mistakes": 5,
+      "applied": [
+        "reinforce L2 (+2; reworded at most once a week)",
+        "reinforce L5 (+2; reworded at most once a week)",
+        "reinforce L4 (+1; reworded at most once a week)",
+        "reinforce L7 (+1)",
+        "reinforce L8 (+1)"
       ]
     }
   ]

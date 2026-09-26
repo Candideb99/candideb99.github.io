@@ -1,0 +1,54 @@
+{
+  "startedAt": "2026-09-26T20:50:49.672Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "egypt-bme-catl-battery-plant-aa81f7",
+      "issue": "1. The body says «وتأسست BME على يد شركة MCV المصرية لتصنيع المركبات التجارية وشركة Auto D للصناعة والتجارة والمستلزمات، لتصنيع أنظمة بطاريات تتوافق مع المعايير الدولية للجودة والإنتاج.» (BME was founded by MCV and Auto D in order to manufacture battery systems meeting international quality and production standards.). Source Arab News says: \"The companies aim to manufacture battery systems that meet international quality and production standards. Locally produced batteries are expected to be supplied to vehicle manufacturers in Egypt, reducing reliance on imports as well as shipping and logistics costs.\". The aim of making battery systems to international standards belongs to the BME–CATL partnership; the source gives no purpose for BME's founding by MCV and Auto D.\n2. The body says «يهدف المشروع إلى تلبية الطلب المحلي والعالمي على البطاريات الكهربائية، وتُورَّد البطاريات إلى مصنّعي المركبات في مصر لتقليل الاعتماد على الاستيراد وخفض تكاليف الشحن واللوجستيات.» (The project aims to meet local and global battery demand, and its batteries are (stated as fact) supplied to Egyptian vehicle makers, cutting import reliance and shipping and logistics costs.). Source Arab News says: \"Locally produced batteries are expected to be supplied to vehicle manufacturers in Egypt, reducing reliance on imports as well as shipping and logistics costs.\". The source says the batteries are expected to be supplied to Egyptian vehicle makers; this is an expectation, not an established fact.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "whyItMatters",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن شركتي MCV وAuto D أسّستا BME لتصنيع أنظمة بطاريات وفق المعايير الدولية، والصحيح أن هذا الهدف تسعى إليه الشراكة بين BME و«كاتل». وأوردت النسخة نفسها توريد البطاريات إلى مصنّعي المركبات في مصر وخفض الاستيراد بوصفهما أمراً قائماً، والصحيح أنهما متوقعان.",
+      "model": "claude-cli",
+      "before": {
+        "whyItMatters": "يقلّل إنتاج البطاريات محلياً اعتماد مصنّعي المركبات في مصر على الاستيراد ويخفض تكاليف الشحن. وقرب المصنع من خطوط التجميع قد يتيح للمصنّعين الاستجابة أسرع لتغيرات الطلب في السوق."
+      },
+      "after": {
+        "whyItMatters": "من المتوقع أن يقلّل إنتاج البطاريات محلياً اعتماد مصنّعي المركبات في مصر على الاستيراد وأن يخفض تكاليف الشحن. وقرب المصنع من خطوط التجميع قد يتيح للمصنّعين الاستجابة أسرع لتغيرات الطلب في السوق."
+      },
+      "changedSentences": [
+        "يقلّل إنتاج البطاريات محلياً اعتماد مصنّعي المركبات في مصر على الاستيراد ويخفض تكاليف الشحن.",
+        "وتأسست BME على يد شركة MCV المصرية لتصنيع المركبات التجارية وشركة Auto D للصناعة والتجارة والمستلزمات، لتصنيع أنظمة بطاريات تتوافق مع المعايير الدولية للجودة والإنتاج.",
+        "يهدف المشروع إلى تلبية الطلب المحلي والعالمي على البطاريات الكهربائية، وتُورَّد البطاريات إلى مصنّعي المركبات في مصر لتقليل الاعتماد على الاستيراد وخفض تكاليف الشحن واللوجستيات."
+      ],
+      "newSentences": [
+        "من المتوقع أن يقلّل إنتاج البطاريات محلياً اعتماد مصنّعي المركبات في مصر على الاستيراد وأن يخفض تكاليف الشحن.",
+        "وتسعى الشركتان إلى تصنيع أنظمة بطاريات تتوافق مع المعايير الدولية للجودة والإنتاج.",
+        "وتأسست BME على يد شركة MCV المصرية لتصنيع المركبات التجارية وشركة Auto D للصناعة والتجارة والمستلزمات.",
+        "يهدف المشروع إلى تلبية الطلب المحلي والعالمي على البطاريات الكهربائية، ومن المتوقع أن تُورَّد البطاريات إلى مصنّعي المركبات في مصر لتقليل الاعتماد على الاستيراد وخفض تكاليف الشحن واللوجستيات."
+      ]
+    },
+    {
+      "slug": "trump-ukraine-russia-diesel-855f75",
+      "issue": "The body says «وأشارت إلى أن أوكرانيا تواجه هجمات روسية منتظمة على بنيتها التحتية للطاقة.» (Ukraine stated that it faces regular Russian attacks on its energy infrastructure.). Source Al Jazeera English says: \"Ukraine, which faces regular Russian attacks on its own energy infrastructure, says refineries are legitimate military targets.\". That Ukraine faces regular Russian attacks on its energy infrastructure is Al Jazeera's own description, not something Ukraine is reported as saying.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أوكرانيا أشارت إلى تعرّضها لهجمات روسية منتظمة على بنيتها التحتية للطاقة. والصحيح أن هذه المعلومة لم ترد على لسان كييف، وإنما وردت وصفاً لأوضاعها في التقرير الذي نقل موقفها من استهداف المصافي الروسية.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وأشارت إلى أن أوكرانيا تواجه هجمات روسية منتظمة على بنيتها التحتية للطاقة."
+      ],
+      "newSentences": [
+        "وتتعرض أوكرانيا بدورها لهجمات روسية منتظمة على بنيتها التحتية للطاقة."
+      ]
+    }
+  ]
+}

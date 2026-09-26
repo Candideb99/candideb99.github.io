@@ -442,6 +442,34 @@
           "noted": []
         }
       ]
+    },
+    "libya-resumes-sharara-oil-pumping-95-million-losses-f5ef80": {
+      "at": "2026-09-26T20:56:02.575Z",
+      "title": "ليبيا تستأنف الضخ من حقل الشرارة بعد توقف كلّف 95 مليون دولار",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v13",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 15,
+            "checked": 15,
+            "supported": 13,
+            "weak": 0,
+            "noEvidence": 2,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
