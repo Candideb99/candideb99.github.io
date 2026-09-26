@@ -26,5 +26,3 @@ wm*.json
 editor-report.md
 editor-findings.md
 
-# The source evidence as it read at publication (pipeline/lib/snapshots.mjs): pushed to the evidence branch, never main
-evidence/

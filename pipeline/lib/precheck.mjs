@@ -38,7 +38,7 @@ const STOPS = new Set(["confirmed", "drift"]);
 export const checkSourcesOf = (sources) =>
   sources
     .filter((s) => s.text || s.summary)
-    .map((s, i) => ({ n: i + 1, name: s.sourceNameEn || s.sourceName || s.name || "", title: s.title ?? "", url: s.url, publishedAt: s.publishedAt ?? null, text: s.text || s.summary || "", reason: "" }));
+    .map((s, i) => ({ n: i + 1, name: s.sourceNameEn || s.sourceName || s.name || "", sourceName: s.sourceName ?? null, sourceNameEn: s.sourceNameEn ?? null, title: s.title ?? "", url: s.url, publishedAt: s.publishedAt ?? null, fetchedAt: s.fetchedAt ?? null, lang: s.lang ?? null, text: s.text || s.summary || "", reason: "" }));
 
 const FIELDS = ["title", "subtitle", "lede", "whyItMatters", "body"];
 const sentencesOf = (t) => String(t ?? "").split(/(?<=[.؟!])\s+|\n+/).map((s) => s.trim()).filter(Boolean);

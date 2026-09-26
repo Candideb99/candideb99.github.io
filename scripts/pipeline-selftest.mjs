@@ -193,10 +193,13 @@ if (spawnSync("git", ["--version"]).status === 0) {
 {
   const dir = mkdtempSync(path.join(os.tmpdir(), "khazendar-evidence-"));
   const url = "https://example.com/brent";
-  await saveSnapshot({ slug: "s1", title: "t", sources: [{ url, sourceName: "رويترز", text: "Brent fell 2.8% to 97.55 dollars a barrel.", fetchedAt: "2026-09-26T00:00:00Z" }], dir });
+  const page = "Oil markets were busy on Friday. Brent fell 2.8% to 97.55 dollars a barrel, traders said. The dollar was steady. Analysts expect more volatility. Shipping costs rose sharply. Gold was flat.";
+  await saveSnapshot({ slug: "s1", title: "t", sources: [{ url, sourceName: "رويترز", text: page, fetchedAt: "2026-09-26T00:00:00Z" }], checks: [{ field: "body", sentence: "توقع محللون مزيداً من التقلب", verdict: "supported", status: "supported", source: 1, quote: "Analysts expect more volatility." }], storyText: "تراجع برنت 2.8% إلى 97.55 دولار", dir });
   await saveSnapshot({ slug: "s1", title: "t", sources: [{ url, sourceName: "رويترز", text: "rewritten later" }], dir });
   const snap = loadSnapshot("s1", { dir });
-  check("the copy saved at publication is never replaced", snap?.sources?.[0]?.text?.includes("97.55"), true);
+  check("the copy saved at publication is never replaced", snap?.sources?.[0]?.passages?.includes("97.55"), true);
+  // The passages, not the page (the repository is public): the quoted sentence with its neighbours, the figure's sentence.
+  check("only the passages the story rests on are kept, never the whole page", [snap.sources[0].passages.includes("Analysts expect more volatility."), snap.sources[0].passages.includes("Gold was flat.")], [true, false]);
   const story = { slug: "s1", sources: [{ url, name: "رويترز", nameEn: "Reuters" }] };
   const gone = await loadSources(story, { fetcher: async () => ({ ok: false, reason: "http-403" }), snapshot: snap });
   check("a page that no longer answers is read from its saved copy", [gone[0].text.includes("97.55"), Boolean(gone[0].snapshot)], [true, true]);

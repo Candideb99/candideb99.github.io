@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
- * Saves the source evidence of stories published before copies were kept at publication (lib/snapshots.mjs, from
- * 2026-09-26): each source fetched now, marked kind "backfill" with the time it was read, so the second look and the
- * corrections editor have a copy if a page later changes or disappears. No model call. A story that already has a copy
- * keeps it. The newsroom workflow pushes the evidence folder to the repository's `evidence` branch; run by hand, push it
- * the same way (see that workflow's step "Keep the source evidence").
+ * Saves the source evidence of stories published before it was kept at publication (lib/snapshots.mjs, from
+ * 2026-09-26): each source fetched now, marked kind "backfill" with the time it was read. A backfilled story had no
+ * check before publication, so no quoted sentences: the passages kept are the source sentences that carry the story's
+ * figures. The second look and the corrections editor read them if a page later changes or disappears. No model call.
+ * A story that already has its evidence keeps it. The files are committed with the stories (evidence/).
  *
  *   node pipeline/backfill-evidence.mjs [--days=7]
  */
@@ -23,7 +23,7 @@ let saved = 0;
 let skipped = 0;
 for (const file of (await readdir(ARTICLES_DIR)).filter((f) => f.endsWith(".md"))) {
   const raw = (await readFile(path.join(ARTICLES_DIR, file), "utf8")).replace(/\r\n/g, "\n");
-  const m = raw.match(/^---\n([\s\S]*?)\n---/);
+  const m = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
   if (!m) continue;
   let d;
   try {
@@ -44,7 +44,8 @@ for (const file of (await readdir(ARTICLES_DIR)).filter((f) => f.endsWith(".md")
     sources.push({ url: s.url, sourceName: s.name, sourceNameEn: s.nameEn, title: s.title, publishedAt: s.publishedAt ?? null, lang: s.lang ?? null, text: got.ok ? got.text : "", fetchedAt: got.ok ? new Date().toISOString() : null });
   }
   if (!sources.some((s) => s.text)) continue;
-  await saveSnapshot({ slug, title: d.title, publishedAt: d.publishedAt, sources, kind: "backfill" });
+  const storyText = [d.title, d.subtitle, d.lede, d.whyItMatters, ...(d.keyFacts ?? []).map((k) => `${k.label} ${k.value}`), m[2]].join("\n");
+  await saveSnapshot({ slug, title: d.title, publishedAt: d.publishedAt, sources, storyText, kind: "backfill" });
   saved += 1;
   console.log(`[evidence] ${slug}: ${sources.filter((s) => s.text).length} of ${sources.length} source(s) saved`);
 }
