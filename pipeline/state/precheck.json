@@ -470,6 +470,34 @@
           "noted": []
         }
       ]
+    },
+    "trump-rolls-back-biden-fuel-economy-standards-ad4148": {
+      "at": "2026-09-26T21:26:02.107Z",
+      "title": "ترامب يتراجع عن هدف بايدن لكفاءة الوقود البالغ نحو 50 ميلاً للغالون",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v14",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 18,
+            "checked": 18,
+            "supported": 15,
+            "weak": 2,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

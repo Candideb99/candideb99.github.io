@@ -6631,6 +6631,241 @@
         ],
         "secondCorrection": "corrected"
       }
+    },
+    "sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730": {
+      "at": "2026-09-26T21:18:21.650Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-13T12:13:52.593Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 12,
+        "weak": 0,
+        "noEvidence": 2,
+        "notFound": 1,
+        "confirmed": 4,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 6,
+          "field": "keyFacts",
+          "sentence": "نمو الناتج المحلي 2026: -0.9%",
+          "claim": "GDP growth in 2026 is -0.9%, presented as a figure in the key-facts box with no label saying it is S&P's forecast.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Arab News",
+          "sourceDate": "2026-09-13",
+          "quote": "S&P expects real gross domestic product to contract 0.9 percent in 2026, before rebounding 8.2 percent in 2027 on higher oil production.",
+          "correction": "The -0.9% for 2026 is S&P's forecast of real GDP growth, not a recorded outcome.",
+          "class": "hedge"
+        },
+        {
+          "id": 7,
+          "field": "keyFacts",
+          "sentence": "نمو الناتج المحلي 2027: 8.2%",
+          "claim": "GDP growth in 2027 is 8.2%, presented as a figure in the key-facts box with no label saying it is S&P's forecast.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Arab News",
+          "sourceDate": "2026-09-13",
+          "quote": "S&P expects real gross domestic product to contract 0.9 percent in 2026, before rebounding 8.2 percent in 2027 on higher oil production.",
+          "correction": "The 8.2% for 2027 is S&P's forecast of real GDP growth, not a recorded outcome.",
+          "class": "hedge"
+        },
+        {
+          "id": 16,
+          "field": "body",
+          "sentence": "وقال دانيال عل بنا، المحلل المالي في مجموعة «هيفار»، إن الاقتصاد السعودي أثبت مرونته وقدرته على صون نشاطه من دون الانخراط في الصراع مباشرة.",
+          "claim": "Daniel Al Banna (rendered 'دانيال عل بنا'), financial analyst at a group rendered «هيفار», said Saudi Arabia demonstrated resilience and the ability to protect its economic activity without becoming directly involved in the conflict.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Arab News",
+          "sourceDate": "2026-09-13",
+          "quote": "Daniel Al Banna, financial market analyst and wealth management specialist at Hewar Group, told Arab News the affirmation is a strong recognition of the Kingdom’s economic resilience and strategic strength.",
+          "correction": "The analyst is Daniel Al Banna (دانيال البنا) of Hewar Group (مجموعة «حوار»); the story misrenders both his name and the firm's name.",
+          "class": "actor"
+        },
+        {
+          "id": 19,
+          "field": "table",
+          "sentence": "المؤشر: العجز المالي (% من الناتج المحلي) · 2026: 5.8 · 2027: - · 2028-2029: 3.4",
+          "claim": "Table: fiscal deficit (% of GDP) of 5.8 in 2026, no figure for 2027, and a 3.4 average over 2028-2029.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Arab News",
+          "sourceDate": "2026-09-13",
+          "quote": "S&P forecasts a fiscal deficit of 5.8 percent of GDP in 2026, narrowing to an average of 3.4 percent of GDP in 2027-29.",
+          "correction": "The 3.4% average deficit covers 2027-2029, not 2028-2029, so 2027 falls inside that average.",
+          "class": "period"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "تشير الوكالة إلى أن القطاع غير النفطي يمثل نحو 70% من الناتج المحلي الإجمالي، ارتفاعاً من 65% في 2018، مع توقعات بانكماش 0.9% في 2026 قبل ارتداد بنسبة 8.2% في 2027",
+        "مساهمة غير النفطي في الناتج: نحو 70% (ارتفاعاً من 65% في 2018)",
+        "تثبيت التصنيف عند هذا المستوى يُبقي تكلفة الاقتراض السيادي مستقرة، وهو ما تحتاج إليه المملكة مع استمرار إصدارات الدين لتمويل مشاريع رؤية 2030."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر اسم المحلل «دانيال عل بنا» من مجموعة «هيفار»، والصحيح أنه دانيال البنا من مجموعة «حوار». كما عرضت النسخة السابقة في الأرقام الرئيسية نسبتي -0.9% لعام 2026 و8.2% لعام 2027 دون الإشارة إلى أنهما توقعات «ستاندرد آند بورز» لنمو الناتج المحلي، وقد صُحّح ذلك.",
+      "verified": {
+        "at": "2026-09-26T21:21:19.992Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": [
+          {
+            "class": "period",
+            "field": "table",
+            "sentence": "المؤشر: العجز المالي (% من الناتج المحلي) · 2026: 5.8 · 2027: - · 2028-2029: 3.4",
+            "quote": "S&P forecasts a fiscal deficit of 5.8 percent of GDP in 2026, narrowing to an average of 3.4 percent of GDP in 2027-29.",
+            "correction": "The 3.4% average deficit forecast covers 2027-2029, including 2027, not 2028-2029 only."
+          }
+        ],
+        "secondCorrection": "stands"
+      }
+    },
+    "hormuz-strait-oil-tanker-rates-record-high-86c98b": {
+      "at": "2026-09-26T21:18:21.620Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-13T16:36:56.628Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 9,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 6,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 3,
+          "field": "lede",
+          "sentence": "قفزت تكلفة استئجار ناقلات النفط العملاقة عبر مضيق هرمز إلى أكثر من 800 ألف دولار يومياً، بحسب الجزيرة نقلاً عن محللة الشحن ميشيل بوكمان.",
+          "claim": "VLCC chartering costs through Hormuz jumped to more than $800,000 per day. Al Jazeera reports this as quoting shipping analyst Michelle Bockmann.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Al Jazeera Arabic",
+          "sourceDate": "2026-09-13",
+          "quote": "ومع اندلاع الحرب الأمريكية الإسرائيلية الإيرانية في فبراير/شباط الماضي، قفزت تكلفة استئجار الناقلات العابرة لمضيق هرمز إلى مستويات قياسية، وسجل خط الخليج – الصين أعلى عائد في تاريخه، متجاوزا 800 ألف دولار.",
+          "correction": "The figure of more than $800,000 is Al Jazeera's own reporting of the Gulf–China route's record after the war broke out in February; Bockmann did not say it.",
+          "class": "attribution"
+        },
+        {
+          "id": 4,
+          "field": "lede",
+          "sentence": "وبلغت تكلفة الرحلة الواحدة نحو 29 مليون دولار، ما يعادل 15 دولاراً للبرميل.",
+          "claim": "In the lede about Hormuz chartering, a single voyage costs about $29 million, equivalent to $15 per barrel.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Al Jazeera Arabic",
+          "sourceDate": "2026-09-13",
+          "quote": "وارتفع المؤشر العالمي المركب لعوائد الناقلات العملاقة بأكثر من 40% منذ بداية الشهر، بينما بلغت عروض نقل النفط من خليج المكسيك إلى آسيا مستويات قياسية، مدفوعة بزيادة الطلب الآسيوي على مصادر بديلة للخام الخليجي. وتجاوزت تكلفة الرحلة الواحدة 29 مليون دولار، أي نحو 15 دولارا للبرميل.",
+          "correction": "The $29 million (about $15 per barrel) voyage cost applies to the Gulf of Mexico–Asia route, not to Hormuz transits.",
+          "class": "scope"
+        },
+        {
+          "id": 14,
+          "field": "body",
+          "sentence": "ونقلت القناة عن بوكمان قولها إن تكلفة استئجار ناقلات النفط العملاقة تشهد ارتفاعاً قياسياً مع استمرار أزمة مضيق هرمز وغياب مؤشرات على انفراج التوتر بين واشنطن وطهران.",
+          "claim": "Al Jazeera quoted Bockmann as saying VLCC chartering costs are seeing a record rise amid the continuing Hormuz crisis and no signs of easing tension between Washington and Tehran.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Al Jazeera Arabic",
+          "sourceDate": "2026-09-13",
+          "quote": "تشهد تكلفة استئجار ناقلات النفط العملاقة ارتفاعا قياسيا، في ظل استمرار أزمة مضيق هرمز وغياب مؤشرات على انفراج التوتر بين واشنطن وطهران، بالتزامن مع إجراءات أمريكية جديدة لتنظيم مواعيد مرور الناقلات عبر المضيق وتوفير الحماية العسكرية لها.",
+          "correction": "This is Al Jazeera's own opening reporting, not a statement by Bockmann.",
+          "class": "attribution"
+        },
+        {
+          "id": 15,
+          "field": "body",
+          "sentence": "وأوضحت أن سحب السفن إلى الأسواق الشرقية رفع تكلفة استئجار الناقلة بين غرب أفريقيا والصين إلى 350 ألف دولار يومياً، واقترب من 400 ألف دولار يومياً في بعض المسارات.",
+          "claim": "Bockmann explained that the withdrawal of ships to eastern markets raised the West Africa–China charter cost to $350,000 per day, and that rates approached $400,000 per day on some routes.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Al Jazeera Arabic",
+          "sourceDate": "2026-09-13",
+          "quote": "كما امتدت الزيادة إلى المحيط الأطلسي، إذ تجاوزت تكلفة استئجار الناقلة 350 ألف دولار يوميا على المسار بين غرب أفريقيا والصين، نتيجة سحب السفن إلى الأسواق الشرقية واعتماد آسيا على خامات تأتي من مسافات أبعد.",
+          "correction": "The $350,000-plus West Africa–China rate and its explanation (ships drawn to eastern markets) are Al Jazeera's own reporting, not Bockmann's statement.",
+          "class": "attribution"
+        },
+        {
+          "id": 16,
+          "field": "body",
+          "sentence": "وذكرت «سي إن بي سي» أن أحدث ضربة في المضيق وقعت قبل اجتماع متوقع بين مسؤولين إيرانيين وخليجيين في عُمان لتوقيع اتفاق لشحن النفط عبر الممر المائي، في مؤشر على صعوبة التوصل إلى تهدئة ميدانية.",
+          "claim": "CNBC reported that the latest strike in the Strait came ahead of an expected meeting in Oman between Iranian and Gulf officials to sign an agreement on shipping oil through the waterway.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-13",
+          "quote": "A senior Iranian government official and Gulf diplomat told MS NOW that officials from Iran and Gulf countries would meet in Oman's capital, Muscat, on Monday to sign an agreement establishing an Iran-Oman shipping route through the Strait of Hormuz.",
+          "correction": "The agreement is to establish an Iran-Oman shipping route through the Strait of Hormuz, not specifically an oil shipping deal.",
+          "class": "scope"
+        },
+        {
+          "id": 17,
+          "field": "body",
+          "sentence": "وقدّرت بوكمان أن كل مليون دولار يُضاف إلى تكلفة النقل اليومية يعني نحو 26 دولاراً إضافياً للبرميل، وأن تكلفة تشغيل الطائرات العسكرية المتقدمة تصل إلى 75 ألف دولار في الساعة.",
+          "claim": "Bockmann estimated that each additional $1 million in daily transport cost means about $26 more per barrel, and that operating advanced military aircraft costs up to $75,000 per hour.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Al Jazeera Arabic",
+          "sourceDate": "2026-09-13",
+          "quote": "ويأتي ذلك مع ارتفاع تكلفة تشغيل الطائرات العسكرية المتقدمة، التي قد تصل إلى 75 ألف دولار في الساعة، في حين يستغرق عبور المضيق نحو 7 ساعات للسفن التجارية.",
+          "correction": "The $26-per-barrel estimate is Bockmann's, but the $75,000-per-hour aircraft cost is Al Jazeera's own reporting, not hers.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "وعلاوات التأمين التي تبلغ 12.5% من قيمة السفينة قد تجعل بعض مسارات الشحن غير مجدية تجارياً، فيما يهدد تراجع التدفقات إلى 45% أمن الإمدادات لآسيا وأوروبا.",
+          "quote": "وتتراوح علاوات التأمين على السفن في المضيق بين 5% و12.5% من قيمة السفينة، مقابل نحو 0.75% في باب المندب، وهو فارق يعكس ارتفاع تقييم المخاطر في هرمز ووتيرة استهداف السفن فيه."
+        },
+        {
+          "sentence": "قالت الجزيرة إن المؤشر العالمي المركب لعوائد الناقلات العملاقة ارتفع بأكثر من 40% منذ بداية الشهر، في حين تراوحت علاوات التأمين على السفن العابرة للمضيق بين 5% و12.5% من قيمة السفينة.",
+          "quote": "وارتفع المؤشر العالمي المركب لعوائد الناقلات العملاقة بأكثر من 40% منذ بداية الشهر، بينما بلغت عروض نقل النفط من خليج المكسيك إلى آسيا مستويات قياسية، مدفوعة بزيادة الطلب الآسيوي على مصادر بديلة للخام الخليجي."
+        }
+      ],
+      "outcome": "refused",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن محللة الشحن ميشيل بوكمان قالت إن تكلفة استئجار الناقلات عبر هرمز تجاوزت 800 ألف دولار يومياً، وأن تكلفة الرحلة البالغة 29 مليون دولار تخص عبور المضيق، ونسبت إليها أرقام خط غرب أفريقيا – الصين والارتفاع القياسي في التكلفة وتكلفة تشغيل الطائرات العسكرية، ووصفت اتفاق مسقط بأنه اتفاق لشحن النفط. والصحيح أن هذه الأرقام أوردتها الجزيرة، وأن الـ800 ألف دولار عائد قياسي على خط الخليج – الصين، وأن تكلفة الرحلة تخص خط خليج المكسيك – آسيا، وأن بوكمان قالت إن أسعار خط غرب أفريقيا – الصين اقتربت من 400 ألف دولار يومياً، وأن الاتفاق المرتقب يقضي بإنشاء مسار شحن إيراني عُماني عبر المضيق.",
+      "problems": [
+        "10 of 17 sentences changed: more than a correction needs"
+      ]
     }
   }
 }

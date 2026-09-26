@@ -1,0 +1,168 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-09-26T21:18:21.214Z",
+  "durationSec": 183,
+  "read": 2,
+  "corrected": 1,
+  "report": [
+    {
+      "slug": "sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730",
+      "title": "«ستاندرد آند بورز» تثبّت تصنيف السعودية الائتماني مع نظرة مستقرة",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 12,
+        "weak": 0,
+        "noEvidence": 2,
+        "notFound": 1,
+        "confirmed": 4,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "hedge",
+          "sentence": "نمو الناتج المحلي 2026: -0.9%",
+          "quote": "S&P expects real gross domestic product to contract 0.9 percent in 2026, before rebounding 8.2 percent in 2027 on higher oil production.",
+          "source": "Arab News",
+          "correction": "The -0.9% for 2026 is S&P's forecast of real GDP growth, not a recorded outcome."
+        },
+        {
+          "class": "hedge",
+          "sentence": "نمو الناتج المحلي 2027: 8.2%",
+          "quote": "S&P expects real gross domestic product to contract 0.9 percent in 2026, before rebounding 8.2 percent in 2027 on higher oil production.",
+          "source": "Arab News",
+          "correction": "The 8.2% for 2027 is S&P's forecast of real GDP growth, not a recorded outcome."
+        },
+        {
+          "class": "actor",
+          "sentence": "وقال دانيال عل بنا، المحلل المالي في مجموعة «هيفار»، إن الاقتصاد السعودي أثبت مرونته وقدرته على صون نشاطه من دون الانخراط في الصراع مباشرة.",
+          "quote": "Daniel Al Banna, financial market analyst and wealth management specialist at Hewar Group, told Arab News the affirmation is a strong recognition of the Kingdom’s economic resilience and strategic strength.",
+          "source": "Arab News",
+          "correction": "The analyst is Daniel Al Banna (دانيال البنا) of Hewar Group (مجموعة «حوار»); the story misrenders both his name and the firm's name."
+        },
+        {
+          "class": "period",
+          "sentence": "المؤشر: العجز المالي (% من الناتج المحلي) · 2026: 5.8 · 2027: - · 2028-2029: 3.4",
+          "quote": "S&P forecasts a fiscal deficit of 5.8 percent of GDP in 2026, narrowing to an average of 3.4 percent of GDP in 2027-29.",
+          "source": "Arab News",
+          "correction": "The 3.4% average deficit covers 2027-2029, not 2028-2029, so 2027 falls inside that average."
+        }
+      ]
+    },
+    {
+      "slug": "hormuz-strait-oil-tanker-rates-record-high-86c98b",
+      "title": "استئجار الناقلات العملاقة عبر هرمز يتجاوز 800 ألف دولار يومياً",
+      "kind": "news",
+      "outcome": "refused",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 9,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 6,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "attribution",
+          "sentence": "قفزت تكلفة استئجار ناقلات النفط العملاقة عبر مضيق هرمز إلى أكثر من 800 ألف دولار يومياً، بحسب الجزيرة نقلاً عن محللة الشحن ميشيل بوكمان.",
+          "quote": "ومع اندلاع الحرب الأمريكية الإسرائيلية الإيرانية في فبراير/شباط الماضي، قفزت تكلفة استئجار الناقلات العابرة لمضيق هرمز إلى مستويات قياسية، وسجل خط الخليج – الصين أعلى عائد في تاريخه، متجاوزا 800 ألف دولار.",
+          "source": "Al Jazeera Arabic",
+          "correction": "The figure of more than $800,000 is Al Jazeera's own reporting of the Gulf–China route's record after the war broke out in February; Bockmann did not say it."
+        },
+        {
+          "class": "scope",
+          "sentence": "وبلغت تكلفة الرحلة الواحدة نحو 29 مليون دولار، ما يعادل 15 دولاراً للبرميل.",
+          "quote": "وارتفع المؤشر العالمي المركب لعوائد الناقلات العملاقة بأكثر من 40% منذ بداية الشهر، بينما بلغت عروض نقل النفط من خليج المكسيك إلى آسيا مستويات قياسية، مدفوعة بزيادة الطلب الآسيوي على مصادر بديلة للخام الخليجي. وتجاوزت تكلفة الرحلة الواحدة 29 مليون دولار، أي نحو 15 دولارا للبرميل.",
+          "source": "Al Jazeera Arabic",
+          "correction": "The $29 million (about $15 per barrel) voyage cost applies to the Gulf of Mexico–Asia route, not to Hormuz transits."
+        },
+        {
+          "class": "attribution",
+          "sentence": "ونقلت القناة عن بوكمان قولها إن تكلفة استئجار ناقلات النفط العملاقة تشهد ارتفاعاً قياسياً مع استمرار أزمة مضيق هرمز وغياب مؤشرات على انفراج التوتر بين واشنطن وطهران.",
+          "quote": "تشهد تكلفة استئجار ناقلات النفط العملاقة ارتفاعا قياسيا، في ظل استمرار أزمة مضيق هرمز وغياب مؤشرات على انفراج التوتر بين واشنطن وطهران، بالتزامن مع إجراءات أمريكية جديدة لتنظيم مواعيد مرور الناقلات عبر المضيق وتوفير الحماية العسكرية لها.",
+          "source": "Al Jazeera Arabic",
+          "correction": "This is Al Jazeera's own opening reporting, not a statement by Bockmann."
+        },
+        {
+          "class": "attribution",
+          "sentence": "وأوضحت أن سحب السفن إلى الأسواق الشرقية رفع تكلفة استئجار الناقلة بين غرب أفريقيا والصين إلى 350 ألف دولار يومياً، واقترب من 400 ألف دولار يومياً في بعض المسارات.",
+          "quote": "كما امتدت الزيادة إلى المحيط الأطلسي، إذ تجاوزت تكلفة استئجار الناقلة 350 ألف دولار يوميا على المسار بين غرب أفريقيا والصين، نتيجة سحب السفن إلى الأسواق الشرقية واعتماد آسيا على خامات تأتي من مسافات أبعد.",
+          "source": "Al Jazeera Arabic",
+          "correction": "The $350,000-plus West Africa–China rate and its explanation (ships drawn to eastern markets) are Al Jazeera's own reporting, not Bockmann's statement."
+        },
+        {
+          "class": "scope",
+          "sentence": "وذكرت «سي إن بي سي» أن أحدث ضربة في المضيق وقعت قبل اجتماع متوقع بين مسؤولين إيرانيين وخليجيين في عُمان لتوقيع اتفاق لشحن النفط عبر الممر المائي، في مؤشر على صعوبة التوصل إلى تهدئة ميدانية.",
+          "quote": "A senior Iranian government official and Gulf diplomat told MS NOW that officials from Iran and Gulf countries would meet in Oman's capital, Muscat, on Monday to sign an agreement establishing an Iran-Oman shipping route through the Strait of Hormuz.",
+          "source": "CNBC",
+          "correction": "The agreement is to establish an Iran-Oman shipping route through the Strait of Hormuz, not specifically an oil shipping deal."
+        },
+        {
+          "class": "attribution",
+          "sentence": "وقدّرت بوكمان أن كل مليون دولار يُضاف إلى تكلفة النقل اليومية يعني نحو 26 دولاراً إضافياً للبرميل، وأن تكلفة تشغيل الطائرات العسكرية المتقدمة تصل إلى 75 ألف دولار في الساعة.",
+          "quote": "ويأتي ذلك مع ارتفاع تكلفة تشغيل الطائرات العسكرية المتقدمة، التي قد تصل إلى 75 ألف دولار في الساعة، في حين يستغرق عبور المضيق نحو 7 ساعات للسفن التجارية.",
+          "source": "Al Jazeera Arabic",
+          "correction": "The $26-per-barrel estimate is Bockmann's, but the $75,000-per-hour aircraft cost is Al Jazeera's own reporting, not hers."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 3,
+    "failures": 0,
+    "promptTokens": 21728,
+    "completionTokens": 20040,
+    "cacheReadTokens": 0,
+    "costUsd": 0.5746,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 3
+    },
+    "correctionsEditorCalls": 2
+  },
+  "log": [
+    "[21:18:21] second look: 2 to read now (56 published pieces not yet read; 10 read clean before publication and left out of the audit sample)",
+    "[21:19:14] llm ok role=checker model=claude-cli attempt=1 ms=49243",
+    "[21:19:14] sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730: 19 of 19 sentences checked · 12 supported · 3 without a source · 4 confirmed error(s)",
+    "[21:19:14]   ✗ [hedge] نمو الناتج المحلي 2026: -0.9% — The -0.9% for 2026 is S&P's forecast of real GDP growth, not a recorded outcome.",
+    "[21:19:14]   ✗ [hedge] نمو الناتج المحلي 2027: 8.2% — The 8.2% for 2027 is S&P's forecast of real GDP growth, not a recorded outcome.",
+    "[21:19:14]   ✗ [actor] وقال دانيال عل بنا، المحلل المالي في مجموعة «هيفار»، إن الاقتصاد السعودي أثبت مرونته وقدرته على صون نشاطه من د — The analyst is Daniel Al Banna (دانيال البنا) of Hewar Group (مجموعة «حوار»); the story misrenders both his name and the firm's name.",
+    "[21:19:14]   ✗ [period] المؤشر: العجز المالي (% من الناتج المحلي) · 2026: 5.8 · 2027: - · 2028-2029: 3.4 — The 3.4% average deficit covers 2027-2029, not 2028-2029, so 2027 falls inside that average.",
+    "[21:19:29] llm ok role=checker model=claude-cli attempt=1 ms=62669",
+    "[21:19:29] hormuz-strait-oil-tanker-rates-record-high-86c98b: 17 of 17 sentences checked · 9 supported · 0 without a source · 6 confirmed error(s)",
+    "[21:19:29]   ✗ [attribution] قفزت تكلفة استئجار ناقلات النفط العملاقة عبر مضيق هرمز إلى أكثر من 800 ألف دولار يومياً، بحسب الجزيرة نقلاً عن — The figure of more than $800,000 is Al Jazeera's own reporting of the Gulf–China route's record after the war broke out in February; Bockmann did not say it.",
+    "[21:19:29]   ✗ [scope] وبلغت تكلفة الرحلة الواحدة نحو 29 مليون دولار، ما يعادل 15 دولاراً للبرميل. — The $29 million (about $15 per barrel) voyage cost applies to the Gulf of Mexico–Asia route, not to Hormuz transits.",
+    "[21:19:29]   ✗ [attribution] ونقلت القناة عن بوكمان قولها إن تكلفة استئجار ناقلات النفط العملاقة تشهد ارتفاعاً قياسياً مع استمرار أزمة مضيق — This is Al Jazeera's own opening reporting, not a statement by Bockmann.",
+    "[21:19:29]   ✗ [attribution] وأوضحت أن سحب السفن إلى الأسواق الشرقية رفع تكلفة استئجار الناقلة بين غرب أفريقيا والصين إلى 350 ألف دولار يوم — The $350,000-plus West Africa–China rate and its explanation (ships drawn to eastern markets) are Al Jazeera's own reporting, not Bockmann's statement.",
+    "[21:19:29]   ✗ [scope] وذكرت «سي إن بي سي» أن أحدث ضربة في المضيق وقعت قبل اجتماع متوقع بين مسؤولين إيرانيين وخليجيين في عُمان لتوقيع — The agreement is to establish an Iran-Oman shipping route through the Strait of Hormuz, not specifically an oil shipping deal.",
+    "[21:19:29]   ✗ [attribution] وقدّرت بوكمان أن كل مليون دولار يُضاف إلى تكلفة النقل اليومية يعني نحو 26 دولاراً إضافياً للبرميل، وأن تكلفة ت — The $26-per-barrel estimate is Bockmann's, but the $75,000-per-hour aircraft cost is Al Jazeera's own reporting, not hers.",
+    "[21:19:29] corrections: 2 stories to the corrections editor",
+    "[21:19:29] [correct] sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730: fetching 2 source(s)",
+    "[21:19:44] [correct] llm ok role=writer model=claude-cli attempt=1 ms=14744",
+    "[21:19:44] [correct] sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730: corrected; fields body, keyFacts",
+    "[21:19:44]     note: ذكرت نسخة سابقة من هذا الخبر اسم المحلل «دانيال عل بنا» من مجموعة «هيفار»، والصحيح أنه دانيال البنا من مجموعة «حوار». كما عرضت النسخة السابقة في الأرقام الرئيسية نسبتي -0.9% لعام 2026 و8.2% لعام 2027 دون الإشارة إلى أنهما توقعات «ستاندرد آند بورز» لنمو الناتج المحلي، وقد صُحّح ذلك.",
+    "[21:19:44] [correct] hormuz-strait-oil-tanker-rates-record-high-86c98b: fetching 4 source(s)",
+    "[21:20:34] [correct] llm ok role=writer model=claude-cli attempt=1 ms=48692",
+    "[21:20:34] [correct] hormuz-strait-oil-tanker-rates-record-high-86c98b: refused (10 of 17 sentences changed: more than a correction needs); fields title, lede, whyItMatters, body, keyFacts",
+    "[21:20:34]     note: ذكرت نسخة سابقة من هذا الخبر أن محللة الشحن ميشيل بوكمان قالت إن تكلفة استئجار الناقلات عبر هرمز تجاوزت 800 ألف دولار يومياً، وأن تكلفة الرحلة البالغة 29 مليون دولار تخص عبور المضيق، ونسبت إليها أرقام خط غرب أفريقيا – الصين والارتفاع القياسي في التكلفة وتكلفة تشغيل الطائرات العسكرية، ووصفت اتفاق مسقط بأنه اتفاق لشحن النفط. والصحيح أن هذه الأرقام أوردتها الجزيرة، وأن الـ800 ألف دولار عائد قياسي على خط الخليج – الصين، وأن تكلفة الرحلة تخص خط خليج المكسيك – آسيا، وأن بوكمان قالت إن أسعار خط غرب أفريقيا – الصين اقتربت من 400 ألف دولار يومياً، وأن الاتفاق المرتقب يقضي بإنشاء مسار شحن إيراني عُماني عبر المضيق.",
+    "[21:20:34] [correct] done: 1 corrected, 0 stand, 1 refused or failed; report pipeline/runs/corrections-2026-09-26T21-19-29-605Z.json",
+    "[21:21:19] llm ok role=checker model=claude-cli attempt=1 ms=45270",
+    "[21:21:19] sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730: the correction reads clean where it wrote; 1 other error(s) found, corrected once more",
+    "[21:21:20] [correct] sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730: fetching 2 source(s)",
+    "[21:21:24] [correct] llm ok role=writer model=claude-cli attempt=1 ms=3992",
+    "[21:21:24] [correct] sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730: the story stands (لا يتضمن الخبر المنشور أي جدول بالصيغة المذكورة في البلاغ، ويذكر النص أن العجز يتراجع إلى متوسط 3.4% بين 2027 و2029، وهو مطابق لما أوردته «عرب نيوز» نقلاً عن «ستاندرد آند بورز»، ولا تتضمن الحقائق الرئيسية رقم الـ3.4% أصلاً.)",
+    "[21:21:24] [correct] done: 0 corrected, 1 stand, 0 refused or failed; report pipeline/runs/corrections-2026-09-26T21-21-19-992Z.json"
+  ]
+}

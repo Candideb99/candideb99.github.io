@@ -1,0 +1,13 @@
+{
+  "startedAt": "2026-09-26T21:21:20.179Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730",
+      "issue": "The table says «المؤشر: العجز المالي (% من الناتج المحلي) · 2026: 5.8 · 2027: - · 2028-2029: 3.4» (Table: S&P's fiscal deficit forecasts are 5.8% of GDP for 2026, no figure for 2027, and an average of 3.4% for 2028-2029.). Source Arab News says: \"S&P forecasts a fiscal deficit of 5.8 percent of GDP in 2026, narrowing to an average of 3.4 percent of GDP in 2027-29.\". The 3.4% average deficit forecast covers 2027-2029, including 2027, not 2028-2029 only.",
+      "outcome": "stands",
+      "reason": "لا يتضمن الخبر المنشور أي جدول بالصيغة المذكورة في البلاغ، ويذكر النص أن العجز يتراجع إلى متوسط 3.4% بين 2027 و2029، وهو مطابق لما أوردته «عرب نيوز» نقلاً عن «ستاندرد آند بورز»، ولا تتضمن الحقائق الرئيسية رقم الـ3.4% أصلاً.",
+      "model": "claude-cli"
+    }
+  ]
+}

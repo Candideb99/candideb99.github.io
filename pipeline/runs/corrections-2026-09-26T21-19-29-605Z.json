@@ -1,0 +1,83 @@
+{
+  "startedAt": "2026-09-26T21:19:29.781Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730",
+      "issue": "1. The key fact says «نمو الناتج المحلي 2026: -0.9%» (GDP growth in 2026 is -0.9%, presented as a figure in the key-facts box with no label saying it is S&P's forecast.). Source Arab News says: \"S&P expects real gross domestic product to contract 0.9 percent in 2026, before rebounding 8.2 percent in 2027 on higher oil production.\". The -0.9% for 2026 is S&P's forecast of real GDP growth, not a recorded outcome.\n2. The key fact says «نمو الناتج المحلي 2027: 8.2%» (GDP growth in 2027 is 8.2%, presented as a figure in the key-facts box with no label saying it is S&P's forecast.). Source Arab News says: \"S&P expects real gross domestic product to contract 0.9 percent in 2026, before rebounding 8.2 percent in 2027 on higher oil production.\". The 8.2% for 2027 is S&P's forecast of real GDP growth, not a recorded outcome.\n3. The body says «وقال دانيال عل بنا، المحلل المالي في مجموعة «هيفار»، إن الاقتصاد السعودي أثبت مرونته وقدرته على صون نشاطه من دون الانخراط في الصراع مباشرة.» (Daniel Al Banna (rendered 'دانيال عل بنا'), financial analyst at a group rendered «هيفار», said Saudi Arabia demonstrated resilience and the ability to protect its economic activity without becoming directly involved in the conflict.). Source Arab News says: \"Daniel Al Banna, financial market analyst and wealth management specialist at Hewar Group, told Arab News the affirmation is a strong recognition of the Kingdom’s economic resilience and strategic strength.\". The analyst is Daniel Al Banna (دانيال البنا) of Hewar Group (مجموعة «حوار»); the story misrenders both his name and the firm's name.\n4. The table says «المؤشر: العجز المالي (% من الناتج المحلي) · 2026: 5.8 · 2027: - · 2028-2029: 3.4» (Table: fiscal deficit (% of GDP) of 5.8 in 2026, no figure for 2027, and a 3.4 average over 2028-2029.). Source Arab News says: \"S&P forecasts a fiscal deficit of 5.8 percent of GDP in 2026, narrowing to an average of 3.4 percent of GDP in 2027-29.\". The 3.4% average deficit covers 2027-2029, not 2028-2029, so 2027 falls inside that average.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر اسم المحلل «دانيال عل بنا» من مجموعة «هيفار»، والصحيح أنه دانيال البنا من مجموعة «حوار». كما عرضت النسخة السابقة في الأرقام الرئيسية نسبتي -0.9% لعام 2026 و8.2% لعام 2027 دون الإشارة إلى أنهما توقعات «ستاندرد آند بورز» لنمو الناتج المحلي، وقد صُحّح ذلك.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وقال دانيال عل بنا، المحلل المالي في مجموعة «هيفار»، إن الاقتصاد السعودي أثبت مرونته وقدرته على صون نشاطه من دون الانخراط في الصراع مباشرة.",
+        "نمو الناتج المحلي 2026 -0.9%",
+        "نمو الناتج المحلي 2027 8.2%"
+      ],
+      "newSentences": [
+        "وقال دانيال البنا، المحلل المالي في مجموعة «حوار» (Hewar Group)، إن الاقتصاد السعودي أثبت مرونته وقدرته على صون نشاطه من دون الانخراط في الصراع مباشرة.",
+        "توقعات الوكالة لنمو الناتج المحلي 2026 -0.9%",
+        "توقعات الوكالة لنمو الناتج المحلي 2027 8.2%"
+      ]
+    },
+    {
+      "slug": "hormuz-strait-oil-tanker-rates-record-high-86c98b",
+      "issue": "1. The lede says «قفزت تكلفة استئجار ناقلات النفط العملاقة عبر مضيق هرمز إلى أكثر من 800 ألف دولار يومياً، بحسب الجزيرة نقلاً عن محللة الشحن ميشيل بوكمان.» (VLCC chartering costs through Hormuz jumped to more than $800,000 per day. Al Jazeera reports this as quoting shipping analyst Michelle Bockmann.). Source Al Jazeera Arabic says: \"ومع اندلاع الحرب الأمريكية الإسرائيلية الإيرانية في فبراير/شباط الماضي، قفزت تكلفة استئجار الناقلات العابرة لمضيق هرمز إلى مستويات قياسية، وسجل خط الخليج – الصين أعلى عائد في تاريخه، متجاوزا 800 ألف دولار.\". The figure of more than $800,000 is Al Jazeera's own reporting of the Gulf–China route's record after the war broke out in February; Bockmann did not say it.\n2. The lede says «وبلغت تكلفة الرحلة الواحدة نحو 29 مليون دولار، ما يعادل 15 دولاراً للبرميل.» (In the lede about Hormuz chartering, a single voyage costs about $29 million, equivalent to $15 per barrel.). Source Al Jazeera Arabic says: \"وارتفع المؤشر العالمي المركب لعوائد الناقلات العملاقة بأكثر من 40% منذ بداية الشهر، بينما بلغت عروض نقل النفط من خليج المكسيك إلى آسيا مستويات قياسية، مدفوعة بزيادة الطلب الآسيوي على مصادر بديلة للخام الخليجي. وتجاوزت تكلفة الرحلة الواحدة 29 مليون دولار، أي نحو 15 دولارا للبرميل.\". The $29 million (about $15 per barrel) voyage cost applies to the Gulf of Mexico–Asia route, not to Hormuz transits.\n3. The body says «ونقلت القناة عن بوكمان قولها إن تكلفة استئجار ناقلات النفط العملاقة تشهد ارتفاعاً قياسياً مع استمرار أزمة مضيق هرمز وغياب مؤشرات على انفراج التوتر بين واشنطن وطهران.» (Al Jazeera quoted Bockmann as saying VLCC chartering costs are seeing a record rise amid the continuing Hormuz crisis and no signs of easing tension between Washington and Tehran.). Source Al Jazeera Arabic says: \"تشهد تكلفة استئجار ناقلات النفط العملاقة ارتفاعا قياسيا، في ظل استمرار أزمة مضيق هرمز وغياب مؤشرات على انفراج التوتر بين واشنطن وطهران، بالتزامن مع إجراءات أمريكية جديدة لتنظيم مواعيد مرور الناقلات عبر المضيق وتوفير الحماية العسكرية لها.\". This is Al Jazeera's own opening reporting, not a statement by Bockmann.\n4. The body says «وأوضحت أن سحب السفن إلى الأسواق الشرقية رفع تكلفة استئجار الناقلة بين غرب أفريقيا والصين إلى 350 ألف دولار يومياً، واقترب من 400 ألف دولار يومياً في بعض المسارات.» (Bockmann explained that the withdrawal of ships to eastern markets raised the West Africa–China charter cost to $350,000 per day, and that rates approached $400,000 per day on some routes.). Source Al Jazeera Arabic says: \"كما امتدت الزيادة إلى المحيط الأطلسي، إذ تجاوزت تكلفة استئجار الناقلة 350 ألف دولار يوميا على المسار بين غرب أفريقيا والصين، نتيجة سحب السفن إلى الأسواق الشرقية واعتماد آسيا على خامات تأتي من مسافات أبعد.\". The $350,000-plus West Africa–China rate and its explanation (ships drawn to eastern markets) are Al Jazeera's own reporting, not Bockmann's statement.\n5. The body says «وذكرت «سي إن بي سي» أن أحدث ضربة في المضيق وقعت قبل اجتماع متوقع بين مسؤولين إيرانيين وخليجيين في عُمان لتوقيع اتفاق لشحن النفط عبر الممر المائي، في مؤشر على صعوبة التوصل إلى تهدئة ميدانية.» (CNBC reported that the latest strike in the Strait came ahead of an expected meeting in Oman between Iranian and Gulf officials to sign an agreement on shipping oil through the waterway.). Source CNBC says: \"A senior Iranian government official and Gulf diplomat told MS NOW that officials from Iran and Gulf countries would meet in Oman's capital, Muscat, on Monday to sign an agreement establishing an Iran-Oman shipping route through the Strait of Hormuz.\". The agreement is to establish an Iran-Oman shipping route through the Strait of Hormuz, not specifically an oil shipping deal.\n6. The body says «وقدّرت بوكمان أن كل مليون دولار يُضاف إلى تكلفة النقل اليومية يعني نحو 26 دولاراً إضافياً للبرميل، وأن تكلفة تشغيل الطائرات العسكرية المتقدمة تصل إلى 75 ألف دولار في الساعة.» (Bockmann estimated that each additional $1 million in daily transport cost means about $26 more per barrel, and that operating advanced military aircraft costs up to $75,000 per hour.). Source Al Jazeera Arabic says: \"ويأتي ذلك مع ارتفاع تكلفة تشغيل الطائرات العسكرية المتقدمة، التي قد تصل إلى 75 ألف دولار في الساعة، في حين يستغرق عبور المضيق نحو 7 ساعات للسفن التجارية.\". The $26-per-barrel estimate is Bockmann's, but the $75,000-per-hour aircraft cost is Al Jazeera's own reporting, not hers.",
+      "outcome": "refused",
+      "problems": [
+        "10 of 17 sentences changed: more than a correction needs"
+      ],
+      "fields": [
+        "title",
+        "lede",
+        "whyItMatters",
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن محللة الشحن ميشيل بوكمان قالت إن تكلفة استئجار الناقلات عبر هرمز تجاوزت 800 ألف دولار يومياً، وأن تكلفة الرحلة البالغة 29 مليون دولار تخص عبور المضيق، ونسبت إليها أرقام خط غرب أفريقيا – الصين والارتفاع القياسي في التكلفة وتكلفة تشغيل الطائرات العسكرية، ووصفت اتفاق مسقط بأنه اتفاق لشحن النفط. والصحيح أن هذه الأرقام أوردتها الجزيرة، وأن الـ800 ألف دولار عائد قياسي على خط الخليج – الصين، وأن تكلفة الرحلة تخص خط خليج المكسيك – آسيا، وأن بوكمان قالت إن أسعار خط غرب أفريقيا – الصين اقتربت من 400 ألف دولار يومياً، وأن الاتفاق المرتقب يقضي بإنشاء مسار شحن إيراني عُماني عبر المضيق.",
+      "model": "claude-cli",
+      "before": {
+        "title": "استئجار الناقلات العملاقة عبر هرمز يتجاوز 800 ألف دولار يومياً",
+        "lede": "قفزت تكلفة استئجار ناقلات النفط العملاقة عبر مضيق هرمز إلى أكثر من 800 ألف دولار يومياً، بحسب الجزيرة نقلاً عن محللة الشحن ميشيل بوكمان. وبلغت تكلفة الرحلة الواحدة نحو 29 مليون دولار، ما يعادل 15 دولاراً للبرميل.",
+        "whyItMatters": "ارتفاع تكلفة نقل البرميل 15 دولاراً يضغط على هوامش المصافي ويزيد فاتورة استيراد الطاقة. وعلاوات التأمين التي تبلغ 12.5% من قيمة السفينة قد تجعل بعض مسارات الشحن غير مجدية تجارياً، فيما يهدد تراجع التدفقات إلى 45% أمن الإمدادات لآسيا وأوروبا."
+      },
+      "after": {
+        "title": "عوائد الناقلات العملاقة على خط الخليج – الصين تتجاوز 800 ألف دولار يومياً",
+        "lede": "قفزت تكلفة استئجار ناقلات النفط العملاقة العابرة لمضيق هرمز إلى مستويات قياسية منذ اندلاع الحرب في فبراير، وبلغت العوائد على خط الخليج – الصين أكثر من 800 ألف دولار يومياً، في أعلى مستوى له على الإطلاق، بحسب الجزيرة. أما الرحلة الواحدة من خليج المكسيك إلى آسيا فتتجاوز تكلفتها 29 مليون دولار، أي نحو 15 دولاراً للبرميل.",
+        "whyItMatters": "ارتفاع تكلفة نقل البرميل من خليج المكسيك إلى آسيا إلى نحو 15 دولاراً يضغط على هوامش المصافي ويزيد فاتورة استيراد الطاقة. وعلاوات التأمين التي تبلغ 12.5% من قيمة السفينة قد تجعل بعض مسارات الشحن غير مجدية تجارياً، فيما يهدد تراجع التدفقات إلى 45% أمن الإمدادات لآسيا وأوروبا."
+      },
+      "changedSentences": [
+        "استئجار الناقلات العملاقة عبر هرمز يتجاوز 800 ألف دولار يومياً",
+        "قفزت تكلفة استئجار ناقلات النفط العملاقة عبر مضيق هرمز إلى أكثر من 800 ألف دولار يومياً، بحسب الجزيرة نقلاً عن محللة الشحن ميشيل بوكمان.",
+        "وبلغت تكلفة الرحلة الواحدة نحو 29 مليون دولار، ما يعادل 15 دولاراً للبرميل.",
+        "ارتفاع تكلفة نقل البرميل 15 دولاراً يضغط على هوامش المصافي ويزيد فاتورة استيراد الطاقة.",
+        "ونقلت القناة عن بوكمان قولها إن تكلفة استئجار ناقلات النفط العملاقة تشهد ارتفاعاً قياسياً مع استمرار أزمة مضيق هرمز وغياب مؤشرات على انفراج التوتر بين واشنطن وطهران.",
+        "وأوضحت أن سحب السفن إلى الأسواق الشرقية رفع تكلفة استئجار الناقلة بين غرب أفريقيا والصين إلى 350 ألف دولار يومياً، واقترب من 400 ألف دولار يومياً في بعض المسارات.",
+        "وذكرت «سي إن بي سي» أن أحدث ضربة في المضيق وقعت قبل اجتماع متوقع بين مسؤولين إيرانيين وخليجيين في عُمان لتوقيع اتفاق لشحن النفط عبر الممر المائي، في مؤشر على صعوبة التوصل إلى تهدئة ميدانية.",
+        "وقدّرت بوكمان أن كل مليون دولار يُضاف إلى تكلفة النقل اليومية يعني نحو 26 دولاراً إضافياً للبرميل، وأن تكلفة تشغيل الطائرات العسكرية المتقدمة تصل إلى 75 ألف دولار في الساعة.",
+        "تكلفة استئجار الناقلة العملاقة أكثر من 800 ألف دولار يومياً",
+        "تكلفة الرحلة الواحدة 29 مليون دولار (نحو 15 دولاراً للبرميل)"
+      ],
+      "newSentences": [
+        "عوائد الناقلات العملاقة على خط الخليج – الصين تتجاوز 800 ألف دولار يومياً",
+        "قفزت تكلفة استئجار ناقلات النفط العملاقة العابرة لمضيق هرمز إلى مستويات قياسية منذ اندلاع الحرب في فبراير، وبلغت العوائد على خط الخليج – الصين أكثر من 800 ألف دولار يومياً، في أعلى مستوى له على الإطلاق، بحسب الجزيرة.",
+        "أما الرحلة الواحدة من خليج المكسيك إلى آسيا فتتجاوز تكلفتها 29 مليون دولار، أي نحو 15 دولاراً للبرميل.",
+        "ارتفاع تكلفة نقل البرميل من خليج المكسيك إلى آسيا إلى نحو 15 دولاراً يضغط على هوامش المصافي ويزيد فاتورة استيراد الطاقة.",
+        "وأشارت إلى أن تكلفة استئجار ناقلات النفط العملاقة ترتفع إلى مستويات قياسية مع تواصل أزمة هرمز وعدم ظهور بوادر لتهدئة التوتر بين واشنطن وطهران.",
+        "وأوضحت أن سحب السفن إلى الأسواق الشرقية رفع تكلفة استئجار الناقلة بين غرب أفريقيا والصين إلى أكثر من 350 ألف دولار يومياً.",
+        "وقالت محللة الشحن ميشيل بوكمان إن الأسعار على هذا الخط اقتربت من 400 ألف دولار يومياً.",
+        "وذكرت «سي إن بي سي» أن أحدث ضربة في المضيق وقعت قبل اجتماع متوقع بين مسؤولين إيرانيين وخليجيين في عُمان لتوقيع اتفاق لإنشاء مسار شحن إيراني عُماني عبر مضيق هرمز، في مؤشر على صعوبة التوصل إلى تهدئة ميدانية.",
+        "وقدّرت بوكمان أن كل مليون دولار يُضاف إلى تكلفة النقل اليومية يعني نحو 26 دولاراً إضافياً للبرميل.",
+        "وذكرت الجزيرة أن تكلفة تشغيل الطائرات العسكرية المتقدمة قد تصل إلى 75 ألف دولار في الساعة.",
+        "عوائد خط الخليج – الصين أكثر من 800 ألف دولار يومياً",
+        "تكلفة الرحلة من خليج المكسيك إلى آسيا أكثر من 29 مليون دولار (نحو 15 دولاراً للبرميل)"
+      ]
+    }
+  ]
+}
