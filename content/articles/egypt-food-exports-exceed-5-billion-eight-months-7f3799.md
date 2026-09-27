@@ -48,7 +48,15 @@ table:
       - نحو 101 مليون دولار
       - نحو 208 ملايين دولار
       - 107%
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Production_of_cheese_1.jpg/1280px-Production_of_cheese_1.jpg
+  width: 1280
+  height: 853
+  alt: تقطيع خثارة الحليب في حوض لصناعة الجبن (صورة تعبيرية)
+  credit: No machine-readable author provided. MatthiasKabel assumed (based on copyright c · CC BY-SA 3.0 · ويكيميديا كومنز
+  license: CC BY-SA 3.0
+  licenseUrl: http://creativecommons.org/licenses/by-sa/3.0/
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AProduction_of_cheese_1.jpg
 sources:
   - name: مصراوي
     nameEn: Masrawy
@@ -72,7 +80,7 @@ models:
   editor: claude-cli
   writer: claude-cli → claude-cli
   critic: claude-cli
-  vision: null
+  vision: claude-cli
   desk: claude-cli
   lessons: v17
 quality:

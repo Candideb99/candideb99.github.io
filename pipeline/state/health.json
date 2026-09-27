@@ -4,12 +4,15 @@
   "woken": {},
   "pagesCheckedAt": "2026-09-24T22:37:22.634Z",
   "last": {
-    "at": "2026-09-26T12:13:53.205Z",
+    "at": "2026-09-27T13:00:51.596Z",
     "findings": [],
-    "owner": [],
+    "owner": [
+      "خازندار: published stories with a proved error the corrections desk could not fix"
+    ],
     "photos": {
       "pending": 0,
       "redo": []
     }
-  }
+  },
+  "tries": {}
 }
