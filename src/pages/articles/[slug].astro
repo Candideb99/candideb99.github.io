@@ -10,7 +10,7 @@ import DataTable from "@components/DataTable.astro";
 import Share from "@components/Share.astro";
 import { getArticles, related, articleHref, topicOf } from "@lib/articles";
 import { getSection, sectionHref, kindLabel, moreLabel, allLabel } from "@lib/sections";
-import { subTopicOf, topicHref } from "@lib/topics";
+import { subTopicOf, topicHref, tagHref } from "@lib/topics";
 import { analysisLabel } from "@lib/analysis";
 import { formatDate, formatHijri, formatTime, readingLabel, excerpt } from "@lib/format";
 import { isolateNumbers } from "@lib/bidi";
@@ -32,6 +32,9 @@ const description = d.subtitle || excerpt(d.lede, 160);
 const ogImage = d.image?.url ?? `/og/${d.slug}.png`;
 const more = related(article, all, 4);
 const topic = topicOf(article);
+// The story's tags as links, each to its one page (lib/topics.ts); two tags of one subject («النفط», «أسعار النفط») would
+// be two chips to the same page, so only the first of them is printed.
+const pills = d.tags.map((tag) => ({ tag, href: tagHref(tag) })).filter((p, i, all) => all.findIndex((q) => q.href === p.href) === i);
 // The paper does not end at the sources: the newest of the same section close the page.
 const moreFromSection = all.filter((a) => a.data.section === d.section && a.id !== article.id && !more.includes(a)).slice(0, 4);
 // The newest stories beside the text on a wide screen, as the news sites keep a latest-news column on
@@ -83,7 +86,7 @@ const jsonLd = [articleLd, breadcrumbLd];
 <Base title={d.title} description={description} path={path} image={ogImage} imageAlt={d.image?.alt} type="article" section={d.section} jsonLd={jsonLd} publishedAt={d.publishedAt} updatedAt={d.updatedAt}>
   <article class="article wrap--article" data-section={d.section} data-pagefind-body data-pagefind-meta={`section:${d.section}`}>
     <header class="article__head">
-      {topic && <span class="kicker"><a href={`/tags/${encodeURIComponent(topic)}/`}>{topic}</a></span>}
+      {topic && <span class="kicker"><a href={tagHref(topic)}>{topic}</a></span>}
       {/* The headline outweighs the body in search, and the dek comes next (2026-09-24: «التضخم في مصر» ranked a US
           story above «التضخم في مصر يتباطأ إلى 12.7%»). */}
       <h1 class="article__title" data-pagefind-meta={`title:${d.title}`} data-pagefind-weight="10" set:html={isolateNumbers(d.title)} />
@@ -162,8 +165,8 @@ const jsonLd = [articleLd, breadcrumbLd];
         )}
         {d.tags.length > 0 && (
           <p class="tags">
-            {d.tags.map((t) => (
-              <a class="pill" href={`/tags/${encodeURIComponent(t)}/`}>{t}</a>
+            {pills.map((p) => (
+              <a class="pill" href={p.href}>{p.tag}</a>
             ))}
           </p>
         )}

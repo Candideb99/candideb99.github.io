@@ -3,12 +3,16 @@
  * A sub-topic page: everything the section has published under one of its standing sub-topics
  * (النفط under الطاقة, العملات under الأسواق), newest first; when the sub-topic has nothing yet,
  * the page says so and offers the section's latest stories instead of an empty screen.
+ *
+ * It is the subject's one page (2026-09-27): it also lists every story, from any section, carrying one of the tags that
+ * are its subject («النفط», «أسعار النفط», «خام برنت» on النفط's page), each such story naming its own section.
  */
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
 import { getArticles } from "@lib/articles";
 import { getSection, sectionHref, newsSections } from "@lib/sections";
 import { topicsOf, topicArticles, topicHref, type Topic } from "@lib/topics";
+import { countLabel } from "@lib/format";
 
 export async function getStaticPaths() {
   const articles = await getArticles();
@@ -30,7 +34,7 @@ interface Props {
 const { section, topic, items, fallback } = Astro.props;
 const sec = getSection(section);
 const n = items.length;
-const countWord = n === 1 ? "مادة واحدة" : n === 2 ? "مادتان" : n <= 10 ? `${n} مواد` : `${n} مادة`;
+const countWord = countLabel(n);
 const siblings = topicsOf(section).filter((t) => t.id !== topic.id);
 ---
 
@@ -47,7 +51,7 @@ const siblings = topicsOf(section).filter((t) => t.id !== topic.id);
     </header>
     <div class={`${(n > 0 ? items : fallback).length < 3 ? "cards cards--list" : "cards"}`} style={`--n:${Math.min((n > 0 ? items : fallback).length, 4)}`}>
       {(n > 0 ? items : fallback).map((a, i) => (
-        <StoryCard article={a} variant={(n > 0 ? items : fallback).length < 3 ? "list" : "card"} showSection={false} showExcerpt={!a.data.image} eager={i < 4} />
+        <StoryCard article={a} variant={(n > 0 ? items : fallback).length < 3 ? "list" : "card"} showSection={a.data.section !== section} showExcerpt={!a.data.image} eager={i < 4} />
       ))}
     </div>
   </section>

@@ -12,11 +12,21 @@
  * is not a fuel price).
  */
 import topicsData from "@data/topics.json";
+import { canonicalTag, normalizeArabic } from "./tag-map.mjs";
 import type { Article } from "./articles";
+
+// Where a tag leads (one page per subject, 2026-09-27) is decided in tag-map.mjs, shared with the links in story text
+// and the redirects of the old tag addresses.
+export { canonicalTag, isFileTag, normalizeArabic, subjectOfTag, tagHref } from "./tag-map.mjs";
 
 export interface Topic {
   id: string;
   name: string;
+  /** A shorter name for tight places (the front's files row) when the name is long. */
+  short?: string;
+  /** The writers' tags that are this same subject: their stories from every section are listed on this page, and
+   *  their tag pages lead here (one page per subject, below). */
+  tags?: string[];
   match: string[];
   titleMatch?: string[];
   exclude?: string[];
@@ -25,18 +35,6 @@ export interface Topic {
 }
 
 export const TOPICS = topicsData as Record<string, Topic[]>;
-
-/** Arabic normalisation for matching: no diacritics or tatweel, one alef, ta marbuta as ha, alef maqsura as ya. */
-export function normalizeArabic(s: string): string {
-  return s
-    .replace(/[ً-ْٰـ]/g, "")
-    .replace(/[أإآ]/g, "ا")
-    .replace(/ة/g, "ه")
-    .replace(/ى/g, "ي")
-    .replace(/\s+/g, " ")
-    .trim()
-    .toLowerCase();
-}
 
 export function topicsOf(section: string): Topic[] {
   return TOPICS[section] ?? [];
@@ -108,9 +106,11 @@ function hit(article: Article, topic: Topic): Hit | null {
   return best;
 }
 
-/** The section's stories filed under a sub-topic, newest first. */
+/** A sub-topic's stories, newest first: the section's stories filed under it, and every story, from any section, that
+ *  carries one of the tags that are its subject (one page per subject, tag-map.mjs). */
 export function topicArticles(articles: Article[], section: string, topic: Topic): Article[] {
-  return articles.filter((a) => a.data.section === section && hit(a, topic) !== null);
+  const own = new Set((topic.tags ?? []).map(normalizeArabic));
+  return articles.filter((a) => (a.data.section === section && hit(a, topic) !== null) || (own.size > 0 && a.data.tags.some((t) => own.has(normalizeArabic(canonicalTag(t))))));
 }
 
 /**

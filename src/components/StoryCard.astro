@@ -1,6 +1,7 @@
 ---
 import type { Article } from "@lib/articles";
 import { articleHref, topicOf } from "@lib/articles";
+import { tagHref } from "@lib/topics";
 import { kindLabel, sectionHref } from "@lib/sections";
 import { excerpt, timeAgo } from "@lib/format";
 import { isolateNumbers } from "@lib/bidi";
@@ -46,7 +47,7 @@ const hasPhoto = Boolean(image) && showPhoto && variant !== "text";
     </a>
   )}
   <div class="card__body">
-    {topic && <span class="kicker"><a href={`/tags/${encodeURIComponent(topic)}/`}>{topic}</a></span>}
+    {topic && <span class="kicker"><a href={tagHref(topic)}>{topic}</a></span>}
     <Heading class="card__title"><a href={href} set:html={isolateNumbers(title)} /></Heading>
     {showExcerpt && summary && <p class="card__summary" set:html={isolateNumbers(summary)} />}
     {(showSection || showTime) && (

@@ -9,10 +9,14 @@
  * heading, a quotation mark pair or a figure. Arabic joins و، ف، ب، ك، ل to a word, so the tag is found
  * behind them and the letter stays outside the link («وأوبك» links «أوبك»). The story's tags come from its
  * frontmatter, which Astro hands to the plugin.
+ *
+ * Each tag links to its one page (tag-map.mjs, 2026-09-27): «أسعار النفط» to the oil sub-topic's page, «هرمز» to the
+ * «مضيق هرمز» file; a section's name («الطاقة») is not linked, and two tags that lead to one page link once.
  */
 import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import YAML from "yaml";
+import { canonicalTag, isFileTag, subjectOfTag, tagHref } from "./tag-map.mjs";
 
 const MAX_LINKS = 4;
 const SKIP = new Set(["a", "h1", "h2", "h3", "h4", "h5", "h6", "code", "pre", "bdi", "script", "style", "svg", "blockquote", "figcaption", "table"]);
@@ -40,7 +44,7 @@ function tagCounts() {
       continue;
     }
     if (data?.draft) continue;
-    for (const tag of new Set((data?.tags ?? []).map((t) => String(t).trim()).filter(Boolean))) counts.set(tag, (counts.get(tag) ?? 0) + 1);
+    for (const tag of new Set((data?.tags ?? []).map((t) => canonicalTag(String(t).trim())).filter(Boolean))) counts.set(tag, (counts.get(tag) ?? 0) + 1);
   }
   return counts;
 }
@@ -53,12 +57,22 @@ export default function rehypeTopicLinks() {
   return (tree, file) => {
     const front = file?.data?.astro?.frontmatter ?? {};
     const all = tagCounts();
+    // A subject's page gathers every story of the subject; a file needs a second story; a section is never linked.
+    const linkable = (t) => Boolean(subjectOfTag(t)) || (isFileTag(t) && (all.get(canonicalTag(t)) ?? 0) >= 2);
     const tags = [...new Set((front.tags ?? []).map((t) => String(t).trim()))]
-      .filter((t) => t.length >= 3 && (all.get(t) ?? 0) >= 2)
+      .filter((t) => t.length >= 3 && linkable(t))
       // Longer tags first, so «النفط الخام» is linked before «النفط» can claim the same words.
       .sort((a, b) => b.length - a.length);
     if (!tags.length) return;
-    const pending = new Map(tags.map((t) => [t, tagPattern(t)]));
+    // One link per page: of two tags that lead to one page, the longer (earlier in this order) is the one looked for.
+    const hrefs = new Set();
+    const pending = new Map();
+    for (const t of tags) {
+      const href = tagHref(t);
+      if (hrefs.has(href)) continue;
+      hrefs.add(href);
+      pending.set(t, tagPattern(t));
+    }
     let linked = 0;
 
     function visit(node, inParagraph) {
@@ -84,7 +98,7 @@ export default function rehypeTopicLinks() {
           const { tag, m } = best;
           const start = m.index + m[1].length;
           out.push({ type: "text", value: text.slice(0, start) });
-          out.push({ type: "element", tagName: "a", properties: { href: `/tags/${encodeURIComponent(tag)}/`, className: ["topic-link"] }, children: [{ type: "text", value: m[2] }] });
+          out.push({ type: "element", tagName: "a", properties: { href: tagHref(tag), className: ["topic-link"] }, children: [{ type: "text", value: m[2] }] });
           text = text.slice(start + m[2].length);
           pending.delete(tag);
           linked += 1;

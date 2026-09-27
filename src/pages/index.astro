@@ -8,7 +8,7 @@ import StoryCard from "@components/StoryCard.astro";
 import Chart from "@components/Chart.astro";
 import { DESKS, desksOf } from "@lib/regions";
 import { analysisLabel } from "@lib/analysis";
-import { getArticles, pickLead, dossiers, chartOfTheDay, hoursOld, repeatedEvents, onTheSameTopic, type Article } from "@lib/articles";
+import { getArticles, pickLead, threads, chartOfTheDay, hoursOld, repeatedEvents, onTheSameTopic, type Article } from "@lib/articles";
 import { newsSections, getSection, sectionHref, moreLabel } from "@lib/sections";
 import { articleHref } from "@lib/articles";
 import { isolateNumbers } from "@lib/bidi";
@@ -93,9 +93,10 @@ const figures = articles
   })
   .slice(0, 3);
 const chart = chartOfTheDay(articles);
-// ملفات نتابعها runs as a row under the section bar: the running files touched in the last week, biggest and freshest
-// first. The band of four files it replaced printed three headlines each, 10 of 12 of them printed elsewhere.
-const files = dossiers(articles.filter((a) => !repeats.has(a.id)), { max: 8 }).filter((f) => hoursOld(f.latest) < 7 * 24);
+// ملفات نتابعها runs as a row under the section bar: what the paper is following this week, subjects and running
+// files alike, busiest first, each once under its one page (lib/articles.ts `threads`). The band of four files it
+// replaced printed three headlines each, 10 of 12 of them printed elsewhere.
+const files = threads(articles.filter((a) => !repeats.has(a.id)));
 // The charts band (the Economist's graphic detail): the three freshest charts after the chart of the day.
 const chartsBand = articles
   .filter((a) => a.id !== chart?.id && a.data.chart && a.data.chart.title && a.data.chart.categories.length <= 8 && a.data.chart.series.length <= 2)

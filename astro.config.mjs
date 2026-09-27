@@ -3,6 +3,7 @@ import sitemap from "@astrojs/sitemap";
 import site from "./src/data/site.json" with { type: "json" };
 import rehypeIsolateNumbers from "./src/lib/rehype-isolate-numbers.mjs";
 import rehypeTopicLinks from "./src/lib/rehype-topic-links.mjs";
+import { storyTags, tagRedirects } from "./src/lib/tag-map.mjs";
 
 export default defineConfig({
   site: site.url,
@@ -11,6 +12,9 @@ export default defineConfig({
     rehypePlugins: [rehypeTopicLinks, rehypeIsolateNumbers],
   },
   output: "static",
+  // One page per subject (2026-09-27): the old address of a tag that is now a sub-topic's subject, a section's name or
+  // a second spelling forwards to its one page (lib/tag-map.mjs); a tiny page each, not a copy of the site.
+  redirects: tagRedirects(storyTags()),
   trailingSlash: "always",
   compressHTML: true,
   devToolbar: { enabled: false },

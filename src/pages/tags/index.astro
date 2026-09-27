@@ -3,10 +3,14 @@
  * The files: every topic the paper has covered more than once, and the regions, so a reader can
  * follow a story or a place instead of hunting through sections. Topic files come first, ranked by
  * size and freshness, exactly as the front page ranks them.
+ *
+ * Since 2026-09-27 (one page per subject) the files are the running stories, companies, institutions and people; a
+ * standing subject («التضخم», «النفط») lives on its section's sub-topic page, listed here under المواضيع الثابتة.
  */
 import Base from "@layouts/Base.astro";
 import { getArticles, dossiers, articleHref } from "@lib/articles";
 import { DESKS, desksOf } from "@lib/regions";
+import { TOPICS, topicArticles, topicHref } from "@lib/topics";
 import { formatShortDate, timeAgo, countLabel as countWord } from "@lib/format";
 import { isolateNumbers } from "@lib/bidi";
 
@@ -14,13 +18,18 @@ const articles = await getArticles();
 const topics = dossiers(articles, { min: 2, max: 200 });
 // The four desks readers see (src/lib/regions.ts), in their order: three Arab desks, then the world.
 const regions = DESKS.map((d) => ({ tag: d.name, count: articles.filter((a) => desksOf(a).some((x) => x.id === d.id)).length })).filter((r) => r.count > 0);
+// The standing subjects that the writers also tag (the sub-topics with tags of their own), biggest first.
+const subjects = Object.entries(TOPICS)
+  .flatMap(([section, list]) => list.filter((t) => t.tags?.length).map((t) => ({ name: t.name, href: topicHref(section, t.id), count: topicArticles(articles, section, t).length })))
+  .filter((x) => x.count > 0)
+  .sort((a, b) => b.count - a.count);
 ---
 
 <Base title="الملفات" description="ملفات خازندار: القصص التي تتطور عبر أكثر من مادة، والمناطق التي نغطيها" path="/tags/">
   <section class="wrap block">
     <header class="page-head">
       <h1 class="page-title">الملفات</h1>
-      <p class="page-intro">كل موضوع كتبنا عنه أكثر من مرة، من الأكبر والأحدث إلى الأقدم؛ ثم المناطق.</p>
+      <p class="page-intro">كل قصة جارية وكل شركة أو مؤسسة كتبنا عنها أكثر من مرة، من الأكبر والأحدث إلى الأقدم؛ ثم المواضيع الثابتة والمناطق.</p>
     </header>
 
     {topics.length > 0 ? (
@@ -40,6 +49,20 @@ const regions = DESKS.map((d) => ({ tag: d.name, count: articles.filter((a) => d
       </div>
     ) : (
       <p class="files-index__empty">لا ملفات بعد؛ يتكوّن الملف حين تتناول مادتان الموضوع نفسه.</p>
+    )}
+
+    {subjects.length > 0 && (
+      <section class="regions" aria-labelledby="subjects-head">
+        <h2 id="subjects-head" class="module__head">المواضيع الثابتة</h2>
+        <ul class="regions__list">
+          {subjects.map((x) => (
+            <li>
+              <a href={x.href}>{x.name}</a>
+              <span class="ui"><bdi>{countWord(x.count)}</bdi></span>
+            </li>
+          ))}
+        </ul>
+      </section>
     )}
 
     {regions.length > 0 && (

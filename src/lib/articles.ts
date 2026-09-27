@@ -1,5 +1,6 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import { PLACE_TAGS } from "./regions";
+import { TOPICS, canonicalTag, isFileTag, topicArticles, topicHref } from "./topics";
 
 export type Article = CollectionEntry<"articles">;
 
@@ -192,9 +193,10 @@ export function sectionTopics(articles: Article[], section: string, n = 8): stri
   return [...counts.entries()].sort((x, y) => y[1] - x[1] || x[0].localeCompare(y[0], "ar")).slice(0, n).map(([t]) => t);
 }
 
+/** Every tag with its stories, each tag in its one spelling («هرمز» counts as «مضيق هرمز»; lib/topics.ts). */
 export function allTags(articles: Article[]): Map<string, Article[]> {
   const map = new Map<string, Article[]>();
-  for (const a of articles) for (const t of a.data.tags) map.set(t, [...(map.get(t) ?? []), a]);
+  for (const a of articles) for (const t of new Set(a.data.tags.map(canonicalTag))) map.set(t, [...(map.get(t) ?? []), a]);
   return map;
 }
 
@@ -206,7 +208,8 @@ export interface Dossier {
 
 /**
  * Running stories: topic tags carried by at least `min` articles, ranked by size and freshness.
- * Region names are left out (a country is a place, not a story), as are the section names.
+ * Region names are left out (a country is a place, not a story), as are the section names and the tags that are a
+ * curated sub-topic's subject, whose one page is the sub-topic's (lib/topics.ts).
  */
 export function dossiers(articles: Article[], { min = 3, max = 4, now = Date.now() } = {}): Dossier[] {
   const regions = new Set(articles.flatMap((a) => a.data.regions));
@@ -214,12 +217,39 @@ export function dossiers(articles: Article[], { min = 3, max = 4, now = Date.now
   const out: Dossier[] = [];
   for (const [tag, items] of allTags(articles)) {
     // A file follows a story, never a country (a «الولايات المتحدة» file read as a US section, 2026-09-24).
-    if (items.length < min || regions.has(tag) || generic.has(tag) || PLACE_TAGS.has(tag)) continue;
+    if (items.length < min || regions.has(tag) || generic.has(tag) || PLACE_TAGS.has(tag) || !isFileTag(tag)) continue;
     const sorted = [...items].sort((a, b) => Date.parse(b.data.publishedAt) - Date.parse(a.data.publishedAt));
     out.push({ tag, items: sorted, latest: sorted[0] });
   }
   const score = (d: Dossier) => d.items.length + Math.max(0, 3 - hoursOld(d.latest, now) / 24);
   return out.sort((x, y) => score(y) - score(x)).slice(0, max);
+}
+
+export interface Thread {
+  label: string;
+  href: string;
+  /** Stories in the last `days` days. */
+  recent: number;
+  total: number;
+}
+
+/**
+ * What the paper is following now, for the files row under the section bar: the curated subjects (a sub-topic with
+ * tags of its own, counted over every section) and the files (running stories, companies, institutions, people),
+ * each once under its one page, busiest in the last week first. A subject reads under its short name.
+ */
+export function threads(articles: Article[], { days = 7, max = 8, now = Date.now() } = {}): Thread[] {
+  const recentOf = (items: Article[]) => items.filter((a) => hoursOld(a, now) < days * 24).length;
+  const out: Thread[] = [];
+  for (const [section, list] of Object.entries(TOPICS)) {
+    for (const topic of list) {
+      if (!topic.tags?.length) continue;
+      const items = topicArticles(articles, section, topic);
+      if (items.length) out.push({ label: topic.short ?? topic.name, href: topicHref(section, topic.id), recent: recentOf(items), total: items.length });
+    }
+  }
+  for (const d of dossiers(articles, { max: 500, now })) out.push({ label: d.tag, href: `/tags/${encodeURIComponent(d.tag)}/`, recent: recentOf(d.items), total: d.items.length });
+  return out.filter((t) => t.recent >= 2).sort((x, y) => y.recent - x.recent || y.total - x.total).slice(0, max);
 }
 
 /** The freshest story of the last three days that carries a chart small enough for a column. */

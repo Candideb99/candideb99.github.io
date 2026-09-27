@@ -16,6 +16,7 @@
  */
 import type { Article } from "@lib/articles";
 import { articleHref, topicOf } from "@lib/articles";
+import { tagHref } from "@lib/topics";
 import { kindLabel, sectionHref } from "@lib/sections";
 import { analysisLabel } from "@lib/analysis";
 import { excerpt, timeAgo } from "@lib/format";
@@ -50,7 +51,7 @@ const { stories, readings = [], photoIds, interval = 6000, all = [], related = n
       return (
         <article class={`cover__slide${withPhoto ? "" : " cover__slide--text"}`} id={`cover-slide-${i}`} role="tabpanel" aria-roledescription="slide" aria-label={`${i + 1} من ${stories.length}`} data-index={i} hidden={i !== 0} data-section={d.section}>
           <div class="cover__body">
-            {topic && <span class="kicker"><a href={`/tags/${encodeURIComponent(topic)}/`}>{topic}</a></span>}
+            {topic && <span class="kicker"><a href={tagHref(topic)}>{topic}</a></span>}
             <h2 class="cover__title"><a href={href} set:html={isolateNumbers(d.title)} /></h2>
             {summary && <p class="cover__dek" set:html={isolateNumbers(summary)} />}
             <p class="meta cover__meta">
