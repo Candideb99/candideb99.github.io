@@ -846,6 +846,90 @@
           "noted": []
         }
       ]
+    },
+    "egypt-developers-federation-draft-project-accounts-09096d": {
+      "at": "2026-09-27T17:11:07.319Z",
+      "title": "مسودة قانون مصرية تُلزم المطورين العقاريين بحساب مصرفي منفصل لكل مشروع",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v17",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 12,
+            "checked": 12,
+            "supported": 12,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "savills-egypt-developers-bank-facilities-financing-18dfae": {
+      "at": "2026-09-27T17:14:34.587Z",
+      "title": "سافلز: 52.2 مليار جنيه تسهيلات مصرفية لستة مطورين عقاريين خلال 18 شهراً",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 18,
+            "checked": 18,
+            "supported": 18,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "egypt-oil-refining-growth-q3-fy2025-2026-a251e6": {
+      "at": "2026-09-27T17:19:03.045Z",
+      "title": "تكرير البترول في مصر ينمو 22.4% في الربع الثالث من العام المالي",
+      "writer": "claude-cli",
+      "lessons": "v17",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 19,
+            "checked": 19,
+            "supported": 19,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
