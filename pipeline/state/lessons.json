@@ -153,10 +153,15 @@
     "sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730:dceab7ec",
     "saudi-east-west-pipeline-drone-attack-8ce715:3700ddff",
     "saudi-east-west-pipeline-drone-attack-8ce715:f4215717",
-    "india-china-trade-doubles-deficit-widens-e8e250:ca9a2976"
+    "india-china-trade-doubles-deficit-widens-e8e250:ca9a2976",
+    "france-cuts-growth-forecast-2026-e13a50:2a61c85e",
+    "us-inflation-august-gasoline-fed-rate-hike-16ce27:1508e242",
+    "us-inflation-august-gasoline-fed-rate-hike-16ce27:1304970a",
+    "us-inflation-august-gasoline-fed-rate-hike-16ce27:3d0613b2",
+    "us-inflation-august-gasoline-fed-rate-hike-16ce27:17d480ff"
   ],
-  "version": 15,
-  "updatedAt": "2026-09-26T23:44:28.975Z",
+  "version": 16,
+  "updatedAt": "2026-09-27T05:31:23.592Z",
   "lessons": [
     {
       "id": "L1",
@@ -189,11 +194,13 @@
         "anthropic-chooses-nasdaq-for-ipo-57a51e:9f8d5fb9",
         "hormuz-alternatives-saudi-oil-qatar-lng-747dc8:1b97bfbc",
         "sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730:72c46cfc",
-        "sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730:33fcbc7c"
+        "sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730:33fcbc7c",
+        "france-cuts-growth-forecast-2026-e13a50:2a61c85e",
+        "us-inflation-august-gasoline-fed-rate-hike-16ce27:17d480ff"
       ],
-      "seen": 21,
+      "seen": 23,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-26T21:21:24.740Z",
+      "lastSeen": "2026-09-27T05:31:23.592Z",
       "status": "active",
       "previous": [
         "Keep every qualifier in Arabic: could, possibly, as much as, hopefully, expected, scheduled, will, estimates, reportedly. Name who claims, forecasts or estimates it. Never turn a claim, hope, forecast or reported figure into a stated fact, a present result or a bare headline number.",
@@ -446,11 +453,12 @@
         "hormuz-alternatives-saudi-oil-qatar-lng-747dc8:3f7d88af",
         "egypt-bme-catl-battery-plant-aa81f7:11ebce74",
         "sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730:12fa2360",
-        "saudi-east-west-pipeline-drone-attack-8ce715:3700ddff"
+        "saudi-east-west-pipeline-drone-attack-8ce715:3700ddff",
+        "france-cuts-growth-forecast-2026-e13a50:2a61c85e"
       ],
-      "seen": 11,
+      "seen": 12,
       "createdAt": "2026-09-25T07:42:29.972Z",
-      "lastSeen": "2026-09-26T23:44:28.975Z",
+      "lastSeen": "2026-09-27T05:31:23.592Z",
       "status": "active"
     },
     {
@@ -474,11 +482,14 @@
         "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c:f9c962b8",
         "brent-tops-105-us-iran-talks-stall-c4eaa4:67f95103",
         "brent-oil-surges-saudi-pipeline-closure-0b4217:dd216224",
-        "egypt-bme-catl-battery-plant-aa81f7:a32f8304"
+        "egypt-bme-catl-battery-plant-aa81f7:a32f8304",
+        "us-inflation-august-gasoline-fed-rate-hike-16ce27:1508e242",
+        "us-inflation-august-gasoline-fed-rate-hike-16ce27:1304970a",
+        "us-inflation-august-gasoline-fed-rate-hike-16ce27:3d0613b2"
       ],
-      "seen": 11,
+      "seen": 14,
       "createdAt": "2026-09-25T12:04:58.585Z",
-      "lastSeen": "2026-09-26T20:51:26.192Z",
+      "lastSeen": "2026-09-27T05:31:23.592Z",
       "status": "active",
       "previous": [
         "Copy every number and ranking with its own qualifier. 500 is not 'more than 500', 'nearly 4,000' is not 4,000, and 'one of the most important' is not 'the most important'. Never move a qualifier from one figure onto its neighbour."
@@ -520,11 +531,12 @@
         "us-10-year-treasury-yield-highest-since-2007-2a6e1d:95a6f3ac",
         "openai-anthropic-launch-cheaper-ai-models-979a5b:3f5a57d1",
         "anthropic-chooses-nasdaq-for-ipo-57a51e:bfd96cc3",
-        "federal-reserve-rate-hike-expectations-september-2026-c63230:2f8585f4"
+        "federal-reserve-rate-hike-expectations-september-2026-c63230:2f8585f4",
+        "us-inflation-august-gasoline-fed-rate-hike-16ce27:3d0613b2"
       ],
-      "seen": 5,
+      "seen": 6,
       "createdAt": "2026-09-26T11:43:04.129Z",
-      "lastSeen": "2026-09-26T16:41:29.649Z",
+      "lastSeen": "2026-09-27T05:31:23.592Z",
       "status": "active",
       "activatedAt": "2026-09-26T11:43:04.129Z",
       "previous": [
@@ -693,6 +705,16 @@
         "reinforce L7 (+1; reworded at most once a week)",
         "reinforce L5 (+1; reworded at most once a week)",
         "reinforce L4 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-09-27T05:31:23.592Z",
+      "mistakes": 5,
+      "applied": [
+        "reinforce L1 (+2; reworded at most once a week)",
+        "reinforce L8 (+3; reworded at most once a week)",
+        "reinforce L7 (+1)",
+        "reinforce L10 (+1)"
       ]
     }
   ]

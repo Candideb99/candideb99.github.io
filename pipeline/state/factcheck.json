@@ -7042,6 +7042,195 @@
         "remaining": [],
         "newFound": []
       }
+    },
+    "france-cuts-growth-forecast-2026-e13a50": {
+      "at": "2026-09-27T05:27:44.784Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-11T23:27:39.960Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 14,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 18,
+          "field": "body",
+          "sentence": "ويزيد ضعف النمو صعوبة خفض العجز إلى 5% من الناتج المحلي الإجمالي في 2026 مقابل 5.1% في 2025، وهو هدف أقرّ رئيس الوزراء سيباستيان لورنو بأنه غير متفائل بتحقيقه.",
+          "claim": "Weak growth makes it harder to cut the deficit to 5% of GDP in 2026 from 5.1% in 2025; Prime Minister 'Sébastien Lornu' admitted he is not optimistic about reaching it.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "Alborsa News",
+          "sourceDate": "2026-09-11",
+          "quote": "وكان رئيس الوزراء سيباستيان لوكورنو قد أقر بالفعل بأنه ليس «متفائلًا للغاية» بشأن تحقيق هذا الهدف.",
+          "correction": "The prime minister is Sébastien Lecornu (لوكورنو), not 'لورنو', and he said he was not 'very optimistic', not that he was not optimistic at all.",
+          "class": "actor"
+        }
+      ],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "يُضيّق التباطؤ هامش المناورة أمام الحكومة في سعيها لخفض العجز إلى 5% من الناتج المحلي الإجمالي، وهو هدف أقرّ رئيس الوزراء نفسه بصعوبة تحقيقه.",
+          "quote": "وكان رئيس الوزراء سيباستيان لوكورنو قد أقر بالفعل بأنه ليس «متفائلًا للغاية» بشأن تحقيق هذا الهدف."
+        },
+        {
+          "sentence": "ومع توقع بلوغ التضخم 2.9% بنهاية العام وانخفاض القوة الشرائية 0.4%، تتراجع قدرة الاستهلاك المحلي على دعم التعافي.",
+          "quote": "ومن الأخبار السلبية الأخرى للأسر الفرنسية أن التضخم من المتوقع أن يواصل ارتفاعه ليصل إلى 2.9% بنهاية العام، مقابل 2.4% في أغسطس الماضي."
+        },
+        {
+          "sentence": "وأبرز تأثير موجات الحر الشديدة على الزراعة، وتوقع بلوغ التضخم 2.9% بنهاية العام وانخفاض القوة الشرائية 0.4%، مع تراجع معدل الادخار من 17.8% إلى 17.3% من الدخل الإجمالي.",
+          "quote": "ومن المتوقع أن ينمو استهلاك الأسر، الذي يمثل عادة أحد المحركات الرئيسية للاقتصاد الفرنسي، بنسبة 0.3% فقط في 2026، بينما يُرجح أن تتراجع نسبة الادخار من 17.8% من إجمالي الدخل في 2025 إلى 17.3% هذا العام."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن اسم رئيس الوزراء الفرنسي سيباستيان لورنو، وأنه أقرّ بأنه غير متفائل بتحقيق هدف العجز، والصحيح أن اسمه سيباستيان لوكورنو، وأنه أقرّ بأنه ليس متفائلاً للغاية بتحقيقه.",
+      "verified": {
+        "at": "2026-09-27T05:30:28.604Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
+    },
+    "us-inflation-august-gasoline-fed-rate-hike-16ce27": {
+      "at": "2026-09-27T05:27:44.856Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-11T21:08:25.376Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 33,
+        "checked": 33,
+        "supported": 22,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 4,
+        "listed": 0,
+        "drift": 1,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 2,
+          "field": "subtitle",
+          "sentence": "مؤشر أسعار المستهلكين يرتفع 0.4% شهرياً و3.4% سنوياً مدفوعاً بارتفاع البنزين 3.9%، في وقت تزداد فيه توقعات رفع الفائدة الأسبوع المقبل إلى 86%",
+          "claim": "US CPI rose 0.4% month-on-month and 3.4% year-on-year in August, driven by a 3.9% gasoline rise. Market-implied odds of a Fed rate hike next week have risen to 86%.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Asharq Al-Awsat",
+          "sourceDate": "2026-09-11",
+          "quote": "وتشير تقديرات المتعاملين حالياً إلى احتمال يبلغ نحو 85 في المائة لرفع أسعار الفائدة بمقدار ربع نقطة مئوية خلال اجتماع «الاحتياطي الفيدرالي» المقرر يومَي 15 و16 سبتمبر (أيلول)، ارتفاعاً من نحو 70 في المائة قبل صدور بيانات التضخم.",
+          "correction": "Traders put the probability of a quarter-point Fed hike next week at about 85%, not 86%.",
+          "class": "figure"
+        },
+        {
+          "id": 8,
+          "field": "keyFacts",
+          "sentence": "احتمال رفع الفائدة: 86% حسب سي أم إي فيدووتش",
+          "claim": "Probability of a Fed rate hike is 86%, according to CME FedWatch.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "BBC News",
+          "sourceDate": "2026-09-11",
+          "quote": "According to data from CME Group, 85% of traders are now betting on rates being raised by a quarter percentage point next week.",
+          "correction": "CME Group data put the share betting on a quarter-point hike next week at 85%, not 86%.",
+          "class": "figure"
+        },
+        {
+          "id": 18,
+          "field": "body",
+          "sentence": "قفزت توقعات رفع أسعار الفائدة في اجتماع الاحتياطي الفيدرالي المقبل إلى 86% وفق أداة «سي أم إي فيدووتش»، مقارنة بنحو 70% قبل صدور تقرير التضخم، بحسب أسواق عربية.",
+          "claim": "Odds of a rate hike at the next Fed meeting jumped to 86% per CME FedWatch, up from about 70% before the inflation report, per Aswaq Arabia.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "Asharq Al-Awsat",
+          "sourceDate": "2026-09-11",
+          "quote": "وتشير تقديرات المتعاملين حالياً إلى احتمال يبلغ نحو 85 في المائة لرفع أسعار الفائدة بمقدار ربع نقطة مئوية خلال اجتماع «الاحتياطي الفيدرالي» المقرر يومَي 15 و16 سبتمبر (أيلول)، ارتفاعاً من نحو 70 في المائة قبل صدور بيانات التضخم.",
+          "correction": "The probability rose to about 85%, not 86%, from about 70% before the data.",
+          "class": "figure"
+        },
+        {
+          "id": 32,
+          "field": "table",
+          "sentence": "البنك المركزي: اليابان · سعر الفائدة: 1.25% · آخر تحرك: من المتوقع رفعها الأسبوع المقبل",
+          "claim": "The Bank of Japan's interest rate is 1.25% (shown as the current rate, like the other rows); it is expected to raise rates next week.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "Asharq Al-Awsat",
+          "sourceDate": "2026-09-11",
+          "quote": "من المتوقع أن يرفع بنك اليابان أسعار الفائدة إلى 1.25 في المائة خلال اجتماعه المرتقب بشدة الأسبوع المقبل، لكن المستثمرين سيركزون على مدى تشدد لهجة صناع السياسة النقدية في أعقاب الاجتماع.",
+          "correction": "1.25% is the level the Bank of Japan is expected to raise rates to next week, not its current rate.",
+          "class": "hedge"
+        }
+      ],
+      "listed": [
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "body",
+          "sentence": "ارتفعت أسعار النفط الخام جراء الصراع المستمر في الشرق الأوسط، وتراوحت عقود برنت فوق 104 دولارات للبرميل.",
+          "quote": "The price of benchmark Brent crude oil is hovering above $100 a barrel following recent escalations in the conflict.",
+          "source": "BBC News",
+          "correction": "The sources say Brent is hovering above $100 a barrel; no source gives a level above $104."
+        }
+      ],
+      "notFound": [
+        "يُشكّل ارتفاع التضخم الأمريكي واحتمال رفع الاحتياطي الفيدرالي أسعار الفائدة ضغطاً مباشراً على اقتصادات الخليج المرتبطة بالدولار، التي تتبع سياسات نقدية متوافقة مع تحركات المركزي الأمريكي.",
+        "ورأى سعيد حيدر مؤسس شركة «حيدر كابيتال مانجمنت» أن على الاحتياطي الفيدرالي الاستجابة لهذه المعطيات على المدى القريب، وإلا فإنه يخاطر بتكرار موجة التضخم المرتفع التي شهدتها حقبة السبعينيات، بحسب أسواق عربية."
+      ],
+      "weak": [
+        {
+          "sentence": "ارتفع مؤشر أسعار المستهلكين في الولايات المتحدة 0.4% في أغسطس، مدفوعاً بقفزة في أسعار البنزين بلغت 3.9%.",
+          "quote": "وقال مكتب إحصاءات العمل التابع لوزارة العمل يوم الجمعة إن مؤشر أسعار المستهلكين ارتفع بنسبة 0.4 في المائة الشهر الماضي، بعد زيادة طفيفة بلغت 0.1 في المائة في يوليو (تموز)."
+        },
+        {
+          "sentence": "وتأتي تحركات الاحتياطي الفيدرالي في سياق موجة تشديد نقدي عالمية، إذ رفع البنك المركزي الأوروبي أسعار الفائدة 25 نقطة أساس الخميس، في حين يُتوقع أن يرفع بنك اليابان أسعار الفائدة إلى 1.25% الأسبوع المقبل.",
+          "quote": "ورفع البنك المركزي الأوروبي أسعار الفائدة بمقدار 25 نقطة أساس يوم الخميس، فيما قد تمهد اجتماعات مجلس «الاحتياطي الفيدرالي» و«المركزي الياباني» المرتقبة الأسبوع المقبل الطريق أمام مزيد من التشديد النقدي، وفق «رويترز»."
+        },
+        {
+          "sentence": "البنك المركزي: منطقة اليورو · سعر الفائدة: لم يُحدد · آخر تحرك: رُفعت مرتين هذا العام، 25 نقطة الخميس",
+          "quote": "رفع البنك المركزي الأوروبي أسعار الفائدة للمرة الثانية هذا العام يوم الخميس، وتبنى لهجة أكثر تشدداً في ظل ارتفاع أسعار الطاقة."
+        },
+        {
+          "sentence": "البنك المركزي: سويسرا · سعر الفائدة: 0% · آخر تحرك: من المتوقع الإبقاء عليها حتى العام المقبل",
+          "quote": "تتوقع الأسواق أن يُبقي البنك الوطني السويسري سعر الفائدة الرئيسي عند صفر في المائة خلال اجتماعه في 24 سبتمبر، وأن يحافظ عليه عند هذا المستوى حتى العام المقبل."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن احتمال رفع الاحتياطي الفيدرالي الفائدة ربع نقطة مئوية الأسبوع المقبل بلغ 86%، والصحيح أنه بلغ نحو 85%. وأُزيل جدول أسعار الفائدة في البنوك المركزية الكبرى لأنه قدّم نسبة 1.25% سعراً حالياً لبنك اليابان، والصحيح أنها المستوى المتوقع أن يرفع البنك الفائدة إليه الأسبوع المقبل.",
+      "verified": {
+        "at": "2026-09-27T05:31:23.403Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
     }
   }
 }

@@ -1,0 +1,59 @@
+{
+  "startedAt": "2026-09-27T05:29:03.823Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "france-cuts-growth-forecast-2026-e13a50",
+      "issue": "The body says «ويزيد ضعف النمو صعوبة خفض العجز إلى 5% من الناتج المحلي الإجمالي في 2026 مقابل 5.1% في 2025، وهو هدف أقرّ رئيس الوزراء سيباستيان لورنو بأنه غير متفائل بتحقيقه.» (Weak growth makes it harder to cut the deficit to 5% of GDP in 2026 from 5.1% in 2025; Prime Minister 'Sébastien Lornu' admitted he is not optimistic about reaching it.). Source Alborsa News says: \"وكان رئيس الوزراء سيباستيان لوكورنو قد أقر بالفعل بأنه ليس «متفائلًا للغاية» بشأن تحقيق هذا الهدف.\". The prime minister is Sébastien Lecornu (لوكورنو), not 'لورنو', and he said he was not 'very optimistic', not that he was not optimistic at all.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن اسم رئيس الوزراء الفرنسي سيباستيان لورنو، وأنه أقرّ بأنه غير متفائل بتحقيق هدف العجز، والصحيح أن اسمه سيباستيان لوكورنو، وأنه أقرّ بأنه ليس متفائلاً للغاية بتحقيقه.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "ويزيد ضعف النمو صعوبة خفض العجز إلى 5% من الناتج المحلي الإجمالي في 2026 مقابل 5.1% في 2025، وهو هدف أقرّ رئيس الوزراء سيباستيان لورنو بأنه غير متفائل بتحقيقه."
+      ],
+      "newSentences": [
+        "ويزيد ضعف النمو صعوبة خفض العجز إلى 5% من الناتج المحلي الإجمالي في 2026 مقابل 5.1% في 2025، وهو هدف أقرّ رئيس الوزراء سيباستيان لوكورنو بأنه ليس متفائلاً للغاية بتحقيقه."
+      ]
+    },
+    {
+      "slug": "us-inflation-august-gasoline-fed-rate-hike-16ce27",
+      "issue": "1. The dek says «مؤشر أسعار المستهلكين يرتفع 0.4% شهرياً و3.4% سنوياً مدفوعاً بارتفاع البنزين 3.9%، في وقت تزداد فيه توقعات رفع الفائدة الأسبوع المقبل إلى 86%» (US CPI rose 0.4% month-on-month and 3.4% year-on-year in August, driven by a 3.9% gasoline rise. Market-implied odds of a Fed rate hike next week have risen to 86%.). Source Asharq Al-Awsat says: \"وتشير تقديرات المتعاملين حالياً إلى احتمال يبلغ نحو 85 في المائة لرفع أسعار الفائدة بمقدار ربع نقطة مئوية خلال اجتماع «الاحتياطي الفيدرالي» المقرر يومَي 15 و16 سبتمبر (أيلول)، ارتفاعاً من نحو 70 في المائة قبل صدور بيانات التضخم.\". Traders put the probability of a quarter-point Fed hike next week at about 85%, not 86%.\n2. The key fact says «احتمال رفع الفائدة: 86% حسب سي أم إي فيدووتش» (Probability of a Fed rate hike is 86%, according to CME FedWatch.). Source BBC News says: \"According to data from CME Group, 85% of traders are now betting on rates being raised by a quarter percentage point next week.\". CME Group data put the share betting on a quarter-point hike next week at 85%, not 86%.\n3. The body says «قفزت توقعات رفع أسعار الفائدة في اجتماع الاحتياطي الفيدرالي المقبل إلى 86% وفق أداة «سي أم إي فيدووتش»، مقارنة بنحو 70% قبل صدور تقرير التضخم، بحسب أسواق عربية.» (Odds of a rate hike at the next Fed meeting jumped to 86% per CME FedWatch, up from about 70% before the inflation report, per Aswaq Arabia.). Source Asharq Al-Awsat says: \"وتشير تقديرات المتعاملين حالياً إلى احتمال يبلغ نحو 85 في المائة لرفع أسعار الفائدة بمقدار ربع نقطة مئوية خلال اجتماع «الاحتياطي الفيدرالي» المقرر يومَي 15 و16 سبتمبر (أيلول)، ارتفاعاً من نحو 70 في المائة قبل صدور بيانات التضخم.\". The probability rose to about 85%, not 86%, from about 70% before the data.\n4. The table says «البنك المركزي: اليابان · سعر الفائدة: 1.25% · آخر تحرك: من المتوقع رفعها الأسبوع المقبل» (The Bank of Japan's interest rate is 1.25% (shown as the current rate, like the other rows); it is expected to raise rates next week.). Source Asharq Al-Awsat says: \"من المتوقع أن يرفع بنك اليابان أسعار الفائدة إلى 1.25 في المائة خلال اجتماعه المرتقب بشدة الأسبوع المقبل، لكن المستثمرين سيركزون على مدى تشدد لهجة صناع السياسة النقدية في أعقاب الاجتماع.\". 1.25% is the level the Bank of Japan is expected to raise rates to next week, not its current rate.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "subtitle",
+        "body",
+        "keyFacts",
+        "table"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن احتمال رفع الاحتياطي الفيدرالي الفائدة ربع نقطة مئوية الأسبوع المقبل بلغ 86%، والصحيح أنه بلغ نحو 85%. وأُزيل جدول أسعار الفائدة في البنوك المركزية الكبرى لأنه قدّم نسبة 1.25% سعراً حالياً لبنك اليابان، والصحيح أنها المستوى المتوقع أن يرفع البنك الفائدة إليه الأسبوع المقبل.",
+      "model": "claude-cli",
+      "before": {
+        "subtitle": "مؤشر أسعار المستهلكين يرتفع 0.4% شهرياً و3.4% سنوياً مدفوعاً بارتفاع البنزين 3.9%، في وقت تزداد فيه توقعات رفع الفائدة الأسبوع المقبل إلى 86%"
+      },
+      "after": {
+        "subtitle": "مؤشر أسعار المستهلكين يرتفع 0.4% شهرياً و3.4% سنوياً مدفوعاً بارتفاع البنزين 3.9%، في وقت تزداد فيه توقعات رفع الفائدة الأسبوع المقبل إلى 85%"
+      },
+      "visuals": {
+        "table": null,
+        "chart": null
+      },
+      "changedSentences": [
+        "مؤشر أسعار المستهلكين يرتفع 0.4% شهرياً و3.4% سنوياً مدفوعاً بارتفاع البنزين 3.9%، في وقت تزداد فيه توقعات رفع الفائدة الأسبوع المقبل إلى 86%",
+        "قفزت توقعات رفع أسعار الفائدة في اجتماع الاحتياطي الفيدرالي المقبل إلى 86% وفق أداة «سي أم إي فيدووتش»، مقارنة بنحو 70% قبل صدور تقرير التضخم، بحسب أسواق عربية.",
+        "احتمال رفع الفائدة 86% حسب سي أم إي فيدووتش"
+      ],
+      "newSentences": [
+        "مؤشر أسعار المستهلكين يرتفع 0.4% شهرياً و3.4% سنوياً مدفوعاً بارتفاع البنزين 3.9%، في وقت تزداد فيه توقعات رفع الفائدة الأسبوع المقبل إلى 85%",
+        "قفزت توقعات رفع أسعار الفائدة في اجتماع الاحتياطي الفيدرالي المقبل إلى نحو 85% وفق أداة «سي أم إي فيدووتش»، مقارنة بنحو 70% قبل صدور تقرير التضخم، بحسب أسواق عربية.",
+        "احتمال رفع الفائدة 85% حسب سي أم إي فيدووتش"
+      ]
+    }
+  ]
+}

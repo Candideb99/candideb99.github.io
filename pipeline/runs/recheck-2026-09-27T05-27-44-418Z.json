@@ -1,0 +1,129 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-09-27T05:27:44.418Z",
+  "durationSec": 219,
+  "read": 2,
+  "corrected": 2,
+  "report": [
+    {
+      "slug": "france-cuts-growth-forecast-2026-e13a50",
+      "title": "فرنسا تخفض توقعات نموها لعام 2026 إلى 0.5%",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 14,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "actor",
+          "sentence": "ويزيد ضعف النمو صعوبة خفض العجز إلى 5% من الناتج المحلي الإجمالي في 2026 مقابل 5.1% في 2025، وهو هدف أقرّ رئيس الوزراء سيباستيان لورنو بأنه غير متفائل بتحقيقه.",
+          "quote": "وكان رئيس الوزراء سيباستيان لوكورنو قد أقر بالفعل بأنه ليس «متفائلًا للغاية» بشأن تحقيق هذا الهدف.",
+          "source": "Alborsa News",
+          "correction": "The prime minister is Sébastien Lecornu (لوكورنو), not 'لورنو', and he said he was not 'very optimistic', not that he was not optimistic at all."
+        }
+      ]
+    },
+    {
+      "slug": "us-inflation-august-gasoline-fed-rate-hike-16ce27",
+      "title": "ارتفاع التضخم الأمريكي في أغسطس مع ارتفاع البنزين وتزايد توقعات رفع الاحتياطي الفيدرالي الفائدة",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 33,
+        "checked": 33,
+        "supported": 22,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 4,
+        "listed": 0,
+        "drift": 1,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "figure",
+          "sentence": "مؤشر أسعار المستهلكين يرتفع 0.4% شهرياً و3.4% سنوياً مدفوعاً بارتفاع البنزين 3.9%، في وقت تزداد فيه توقعات رفع الفائدة الأسبوع المقبل إلى 86%",
+          "quote": "وتشير تقديرات المتعاملين حالياً إلى احتمال يبلغ نحو 85 في المائة لرفع أسعار الفائدة بمقدار ربع نقطة مئوية خلال اجتماع «الاحتياطي الفيدرالي» المقرر يومَي 15 و16 سبتمبر (أيلول)، ارتفاعاً من نحو 70 في المائة قبل صدور بيانات التضخم.",
+          "source": "Asharq Al-Awsat",
+          "correction": "Traders put the probability of a quarter-point Fed hike next week at about 85%, not 86%."
+        },
+        {
+          "class": "figure",
+          "sentence": "احتمال رفع الفائدة: 86% حسب سي أم إي فيدووتش",
+          "quote": "According to data from CME Group, 85% of traders are now betting on rates being raised by a quarter percentage point next week.",
+          "source": "BBC News",
+          "correction": "CME Group data put the share betting on a quarter-point hike next week at 85%, not 86%."
+        },
+        {
+          "class": "figure",
+          "sentence": "قفزت توقعات رفع أسعار الفائدة في اجتماع الاحتياطي الفيدرالي المقبل إلى 86% وفق أداة «سي أم إي فيدووتش»، مقارنة بنحو 70% قبل صدور تقرير التضخم، بحسب أسواق عربية.",
+          "quote": "وتشير تقديرات المتعاملين حالياً إلى احتمال يبلغ نحو 85 في المائة لرفع أسعار الفائدة بمقدار ربع نقطة مئوية خلال اجتماع «الاحتياطي الفيدرالي» المقرر يومَي 15 و16 سبتمبر (أيلول)، ارتفاعاً من نحو 70 في المائة قبل صدور بيانات التضخم.",
+          "source": "Asharq Al-Awsat",
+          "correction": "The probability rose to about 85%, not 86%, from about 70% before the data."
+        },
+        {
+          "class": "hedge",
+          "sentence": "البنك المركزي: اليابان · سعر الفائدة: 1.25% · آخر تحرك: من المتوقع رفعها الأسبوع المقبل",
+          "quote": "من المتوقع أن يرفع بنك اليابان أسعار الفائدة إلى 1.25 في المائة خلال اجتماعه المرتقب بشدة الأسبوع المقبل، لكن المستثمرين سيركزون على مدى تشدد لهجة صناع السياسة النقدية في أعقاب الاجتماع.",
+          "source": "Asharq Al-Awsat",
+          "correction": "1.25% is the level the Bank of Japan is expected to raise rates to next week, not its current rate."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 4,
+    "failures": 0,
+    "promptTokens": 38920,
+    "completionTokens": 25428,
+    "cacheReadTokens": 0,
+    "costUsd": 0.8199,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 4
+    },
+    "correctionsEditorCalls": 2
+  },
+  "log": [
+    "[05:27:44] second look: 2 to read now (51 published pieces not yet read; 14 read clean before publication and left out of the audit sample)",
+    "[05:27:45] us-inflation-august-gasoline-fed-rate-hike-16ce27:   source https://www.aljazeera.com/economy/2026/9/11/rising-petrol-costs-drive-sharp-infl: robots-disallow",
+    "[05:28:33] llm ok role=checker model=claude-cli attempt=1 ms=34383",
+    "[05:28:33] france-cuts-growth-forecast-2026-e13a50: 18 of 18 sentences checked · 14 supported · 0 without a source · 1 confirmed error(s)",
+    "[05:28:33]   ✗ [actor] ويزيد ضعف النمو صعوبة خفض العجز إلى 5% من الناتج المحلي الإجمالي في 2026 مقابل 5.1% في 2025، وهو هدف أقرّ رئيس — The prime minister is Sébastien Lecornu (لوكورنو), not 'لورنو', and he said he was not 'very optimistic', not that he was not optimistic at all.",
+    "[05:29:03] llm ok role=checker model=claude-cli attempt=1 ms=64700",
+    "[05:29:03] us-inflation-august-gasoline-fed-rate-hike-16ce27: 33 of 33 sentences checked · 22 supported · 2 without a source · 4 confirmed error(s) · 1 listed for a person",
+    "[05:29:03]   ✗ [figure] مؤشر أسعار المستهلكين يرتفع 0.4% شهرياً و3.4% سنوياً مدفوعاً بارتفاع البنزين 3.9%، في وقت تزداد فيه توقعات رفع — Traders put the probability of a quarter-point Fed hike next week at about 85%, not 86%.",
+    "[05:29:03]   ✗ [figure] احتمال رفع الفائدة: 86% حسب سي أم إي فيدووتش — CME Group data put the share betting on a quarter-point hike next week at 85%, not 86%.",
+    "[05:29:03]   ✗ [figure] قفزت توقعات رفع أسعار الفائدة في اجتماع الاحتياطي الفيدرالي المقبل إلى 86% وفق أداة «سي أم إي فيدووتش»، مقارنة — The probability rose to about 85%, not 86%, from about 70% before the data.",
+    "[05:29:03]   ✗ [hedge] البنك المركزي: اليابان · سعر الفائدة: 1.25% · آخر تحرك: من المتوقع رفعها الأسبوع المقبل — 1.25% is the level the Bank of Japan is expected to raise rates to next week, not its current rate.",
+    "[05:29:03] corrections: 2 stories to the corrections editor",
+    "[05:29:03] [correct] france-cuts-growth-forecast-2026-e13a50: fetching 4 source(s)",
+    "[05:29:20] [correct] llm ok role=writer model=claude-cli attempt=1 ms=13606",
+    "[05:29:20] [correct] france-cuts-growth-forecast-2026-e13a50: corrected; fields body",
+    "[05:29:20]     note: ذكرت نسخة سابقة من هذا الخبر أن اسم رئيس الوزراء الفرنسي سيباستيان لورنو، وأنه أقرّ بأنه غير متفائل بتحقيق هدف العجز، والصحيح أن اسمه سيباستيان لوكورنو، وأنه أقرّ بأنه ليس متفائلاً للغاية بتحقيقه.",
+    "[05:29:20] [correct] us-inflation-august-gasoline-fed-rate-hike-16ce27: fetching 4 source(s)",
+    "[05:29:20] [correct]   source https://www.aljazeera.com/economy/2026/9/11/rising-petrol-costs-drive-: robots-disallow",
+    "[05:29:46] [correct] llm ok role=writer model=claude-cli attempt=1 ms=20805",
+    "[05:29:46] [correct] us-inflation-august-gasoline-fed-rate-hike-16ce27: corrected; fields subtitle, body, keyFacts, table",
+    "[05:29:46]     note: ذكرت نسخة سابقة من هذا الخبر أن احتمال رفع الاحتياطي الفيدرالي الفائدة ربع نقطة مئوية الأسبوع المقبل بلغ 86%، والصحيح أنه بلغ نحو 85%. وأُزيل جدول أسعار الفائدة في البنوك المركزية الكبرى لأنه قدّم نسبة 1.25% سعراً حالياً لبنك اليابان، والصحيح أنها المستوى المتوقع أن يرفع البنك الفائدة إليه الأسبوع المقبل.",
+    "[05:29:46] [correct] done: 2 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-09-27T05-29-03-666Z.json",
+    "[05:30:28] llm ok role=checker model=claude-cli attempt=1 ms=40645",
+    "[05:30:28] france-cuts-growth-forecast-2026-e13a50: the correction reads clean where it wrote",
+    "[05:30:28] us-inflation-august-gasoline-fed-rate-hike-16ce27:   source https://www.aljazeera.com/economy/2026/9/11/rising-petrol-costs-drive-sharp-infl: robots-disallow",
+    "[05:31:23] llm ok role=checker model=claude-cli attempt=1 ms=51787",
+    "[05:31:23] us-inflation-august-gasoline-fed-rate-hike-16ce27: the correction reads clean where it wrote"
+  ]
+}

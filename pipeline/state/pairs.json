@@ -169,6 +169,96 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-09-27T05:39:18.308Z",
+      "slug": "openai-pauses-training-most-capable-models-39ecd5",
+      "checker": "f6d38e4947.2",
+      "lessons": "v16",
+      "lessonsHash": "f5873a7267",
+      "keptVersion": 0,
+      "live": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 3,
+        "supported": 24,
+        "notFound": 1,
+        "checked": 28,
+        "words": 438,
+        "keyFacts": 4,
+        "classes": [
+          "scope"
+        ],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 20,
+        "notFound": 1,
+        "checked": 21,
+        "words": 311,
+        "keyFacts": 2,
+        "classes": [],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 20,
+        "notFound": 1,
+        "checked": 21,
+        "words": 311,
+        "keyFacts": 2,
+        "classes": [],
+        "programmatic": 0
+      }
+    },
+    {
+      "at": "2026-09-27T05:47:26.104Z",
+      "slug": "gold-drops-70-dollars-week-egypt-eebac2",
+      "checker": "f6d38e4947.2",
+      "lessons": "v16",
+      "lessonsHash": "f5873a7267",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 24,
+        "notFound": 0,
+        "checked": 28,
+        "words": 257,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 22,
+        "notFound": 0,
+        "checked": 29,
+        "words": 222,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 22,
+        "notFound": 0,
+        "checked": 29,
+        "words": 222,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      }
     }
   ]
 }
