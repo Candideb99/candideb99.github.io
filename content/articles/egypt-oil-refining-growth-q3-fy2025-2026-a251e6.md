@@ -27,7 +27,15 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/L.P.G_Station%2C_Belayim%2C_South_Sinai%2C_Egypt.jpg/1280px-L.P.G_Station%2C_Belayim%2C_South_Sinai%2C_Egypt.jpg
+  width: 1280
+  height: 857
+  alt: محطة غاز البترول المسال في بلاعيم بجنوب سيناء في مصر
+  credit: Mohamed Marzoook · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AL.P.G_Station%2C_Belayim%2C_South_Sinai%2C_Egypt.jpg
 sources:
   - name: ديلي نيوز إيجيبت
     nameEn: Daily News Egypt
@@ -45,7 +53,7 @@ models:
   editor: claude-cli
   writer: claude-cli
   critic: claude-cli
-  vision: null
+  vision: claude-cli
   desk: claude-cli
   lessons: v17
 quality:

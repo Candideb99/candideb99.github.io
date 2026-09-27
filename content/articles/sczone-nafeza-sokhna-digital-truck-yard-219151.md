@@ -27,7 +27,15 @@ regions:
 readingMinutes: 1
 chart: null
 table: null
-image: null
+image:
+  url: https://images.pexels.com/photos/37432646/pexels-photo-37432646.jpeg?auto=compress&cs=tinysrgb&w=1280
+  width: 1280
+  height: 853
+  alt: شاحنات ورافعات في ساحة بأحد الموانئ
+  credit: Sóc Năng Động · بيكسلز
+  license: Pexels License
+  licenseUrl: https://www.pexels.com/license/
+  pageUrl: https://www.pexels.com/photo/industrial-shipping-yard-with-cranes-and-trucks-37432646/
 sources:
   - name: البورصة
     nameEn: Alborsa News
@@ -45,7 +53,7 @@ models:
   editor: claude-cli
   writer: claude-cli
   critic: claude-cli
-  vision: null
+  vision: claude-cli
   desk: claude-cli
   lessons: v17
 quality:

@@ -19,14 +19,14 @@ readingMinutes: 1
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Mario_Kleff_Long_Span_Design_In_Residential_Construction.jpg/1280px-Mario_Kleff_Long_Span_Design_In_Residential_Construction.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Ministry_of_Housing_%28Egypt%29.jpg/1280px-Ministry_of_Housing_%28Egypt%29.jpg
   width: 1280
-  height: 720
-  alt: هيكل خرساني بعوارض طويلة لمبنى سكني (صورة تعبيرية)
-  credit: Designer Mario Kleff · CC BY-SA 4.0 · ويكيميديا كومنز
+  height: 768
+  alt: مبنى وزارة الإسكان في الحي الحكومي بالعاصمة الإدارية الجديدة في مصر
+  credit: Abdelrhman 1990 · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AMario_Kleff_Long_Span_Design_In_Residential_Construction.jpg
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AMinistry_of_Housing_(Egypt).jpg
 sources:
   - name: البورصة
     nameEn: Alborsa News

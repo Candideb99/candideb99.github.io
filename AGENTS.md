@@ -36,6 +36,11 @@ four first. They bind every agent, Codex included.
   "If possible" is a tier, not a ban: when nothing from the story's country passes, a neutral frame
   (no signs, flags, landmarks or skyline) runs captioned «صورة تعبيرية» with no place in its caption;
   a story with neither runs as text. Never a photo that visibly shows another country.
+  The desk's order is a cascade (2026-09-28, the owner: "same location of the news is priority"): the
+  story's people when they are the news, then its own place at its most specific (the New
+  Administrative Capital for Egypt's developers), then the subject of the sources' own photographs,
+  then the writer's searches, then the subject in its country, then a neutral frame. Every step reads
+  the whole story, not the headline, and the planner reads the sources' reports too.
 - **The digest's headline stands on its own line** with its sentence beneath (2026-09-23: the
   sentence run on after the bold headline read as one confused line).
 - **The publication gate** is: programmatic checks, the Arabic copy desk, the critic; one revision

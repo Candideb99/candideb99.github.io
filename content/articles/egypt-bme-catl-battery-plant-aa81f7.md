@@ -27,7 +27,15 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image: null
+image:
+  url: https://images.pexels.com/photos/36594160/pexels-photo-36594160.jpeg?auto=compress&cs=tinysrgb&w=1280
+  width: 1280
+  height: 828
+  alt: عامل يفحص بطاريات داخل منشأة صناعية
+  credit: Heru Dharma · بيكسلز
+  license: Pexels License
+  licenseUrl: https://www.pexels.com/license/
+  pageUrl: https://www.pexels.com/photo/industrial-worker-inspecting-batteries-in-warehouse-36594160/
 sources:
   - name: عرب نيوز
     nameEn: Arab News

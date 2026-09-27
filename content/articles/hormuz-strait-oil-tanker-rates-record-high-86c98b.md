@@ -31,7 +31,15 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image: null
+image:
+  url: https://live.staticflickr.com/7276/7645994030_a4678c7251_b.jpg
+  width: 1024
+  height: 768
+  alt: ناقلة نفط في مضيق هرمز
+  credit: Michael Gaylard · CC BY 2.0 · فليكر
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0/
+  pageUrl: https://www.flickr.com/photos/16564965@N04/7645994030
 sources:
   - name: الغارديان
     nameEn: The Guardian
@@ -61,7 +69,7 @@ models:
   editor: inclusionai/ling-3.0-flash-fin:free
   writer: nvidia/nemotron-3-ultra-550b-a55b:free → nvidia/nemotron-3-super-120b-a12b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: nex-agi/nex-n2.5-pro:free
+  vision: claude-cli
   desk: nvidia/nemotron-3-super-120b-a12b:free
 quality:
   score: 8

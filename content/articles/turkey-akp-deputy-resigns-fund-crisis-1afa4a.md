@@ -32,7 +32,15 @@ regions:
 readingMinutes: 1
 chart: null
 table: null
-image: null
+image:
+  url: https://live.staticflickr.com/2754/4483127291_ce4229d0d3_b.jpg
+  width: 1024
+  height: 768
+  alt: شاشات حواسيب في قاعة تداول (صورة تعبيرية)
+  credit: ralvin · CC BY 2.0 · فليكر
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0/
+  pageUrl: https://www.flickr.com/photos/33935253@N08/4483127291
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -50,7 +58,7 @@ models:
   editor: claude-cli
   writer: claude-cli → claude-cli
   critic: claude-cli
-  vision: null
+  vision: claude-cli
   desk: claude-cli
   lessons: control
 quality:

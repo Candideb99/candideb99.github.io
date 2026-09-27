@@ -436,7 +436,9 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     log(`precheck "${draft.title}": ${found} proved error(s) repaired (${pre.repairs} repair(s)); the repaired text checked clean`);
   } else log(`precheck "${draft.title}": clean`);
 
-  const image = await pickImage({ draft, story, log, exclude: usedImages(existing) });
+  // The whole story and its sources' own lead photographs go to the picture desk: the cascade's place and the
+  // subject of the sources' photographs come before the writer's searches (lib/images.mjs findImage()).
+  const image = await pickImage({ draft, story, log, exclude: usedImages(existing), sources });
   const slug = buildSlug(draft, story);
   const markdown = serializeArticle({
     pending: DRAFT,

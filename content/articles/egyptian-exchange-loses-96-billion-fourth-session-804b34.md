@@ -76,7 +76,15 @@ table:
     - - مؤشر الشريعة الإسلامية
       - "6398"
       - 1.73%
-image: null
+image:
+  url: https://images.pexels.com/photos/210607/pexels-photo-210607.jpeg?auto=compress&cs=tinysrgb&w=1280
+  width: 1280
+  height: 853
+  alt: شاشة لأسعار الأسهم في إحدى البورصات
+  credit: Pixabay · بيكسلز
+  license: Pexels License
+  licenseUrl: https://www.pexels.com/license/
+  pageUrl: https://www.pexels.com/photo/stock-exchange-board-210607/
 sources:
   - name: اليوم السابع
     nameEn: Youm7
@@ -100,7 +108,7 @@ models:
   editor: claude-cli
   writer: claude-cli → claude-cli
   critic: claude-cli
-  vision: null
+  vision: claude-cli
   desk: claude-cli
   lessons: v17
 quality:

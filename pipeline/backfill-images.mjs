@@ -1,9 +1,11 @@
 /**
  * Finds a licensed photograph for every published story that has none, the way the newsroom
- * now does for new stories (specific subjects first, then a generic illustration of the place,
- * institution or sector), and writes it into the article's frontmatter.
+ * now does for new stories (the cascade of lib/images.mjs findImage(): the story's people when they are
+ * the news, its own place, the subject of its sources' photographs, then the subject in its country and
+ * a neutral illustration), reading the whole story and its sources' pages again, and writes it into the
+ * article's frontmatter.
  *
- * Usage: node pipeline/backfill-images.mjs [--dry-run] [--limit=N] [--redo=slug,slug] [--only=slug,slug]
+ * Usage: node pipeline/backfill-images.mjs [--dry-run] [--limit=N] [--redo=slug,slug] [--only=slug,slug] [--no-sources]
  * Its model calls go to Claude (CLAUDE_CODE_OAUTH_TOKEN, from the environment or from .env).
  */
 import { readFile, readdir, writeFile } from "node:fs/promises";
@@ -23,9 +25,13 @@ try {
 }
 
 const { pickImage } = await import("./lib/images.mjs");
+const { extractArticle } = await import("./lib/extract.mjs");
 
 const args = process.argv.slice(2);
 const DRY_RUN = args.includes("--dry-run");
+/** `--no-sources`: pick without reading the sources' pages again (their text for the planner, their lead photographs for
+ *  lib/images.mjs sourceBrief(), the cascade's second tier). */
+const NO_SOURCES = args.includes("--no-sources");
 const limitArg = args.find((a) => a.startsWith("--limit="));
 const LIMIT = limitArg ? Number(limitArg.split("=")[1]) : Infinity;
 const redoArg = args.find((a) => a.startsWith("--redo="));
@@ -65,11 +71,20 @@ for (const file of files) {
   if (redo && data.image) data.image = null;
   tried += 1;
   log(`${file}: searching`);
-  const draft = { title: data.title, subtitle: data.subtitle, lede: data.lede, imageQueries: [], tags: data.tags ?? [], regions: data.regions ?? [], kind: data.kind };
+  // The whole story, as the newsroom hands it to the picture desk: its body, «لماذا يهمّ» and box, not the headline alone.
+  const draft = { title: data.title, subtitle: data.subtitle, lede: data.lede, body: match[2], whyItMatters: data.whyItMatters, keyFacts: data.keyFacts ?? [], imageQueries: [], tags: data.tags ?? [], regions: data.regions ?? [], kind: data.kind, section: data.section };
   const story = { angle: String(data.whyItMatters ?? "").slice(0, 300) };
+  // The sources' pages, read again: their text for the planner and their lead photographs for the cascade's second tier
+  // (never republished).
+  const sources = [];
+  for (const s of NO_SOURCES ? [] : (data.sources ?? []).slice(0, 4)) {
+    if (!/^https?:\/\//.test(String(s.url ?? ""))) continue;
+    const page = await extractArticle(s.url, { log });
+    if (page.ogImage || page.text) sources.push({ sourceName: s.name, sourceNameEn: s.nameEn, title: s.title, url: s.url, ogImage: page.ogImage ?? "", text: page.ok ? page.text : "" });
+  }
   let image = null;
   try {
-    image = await pickImage({ draft, story, log, exclude: used });
+    image = await pickImage({ draft, story, log, exclude: used, sources });
   } catch (error) {
     log(`${file}: failed (${error.message.split("\n")[0]})`);
   }
@@ -83,7 +98,7 @@ ${match[2]}`);
   }
   found += 1;
   used.add(image.url);
-  log(`${file}: "${image.title}" (${image.license})${DRY_RUN ? ` ${image.url}` : ""}`);
+  log(`${file}: "${image.title}" (${image.license})${DRY_RUN ? ` ${image.url}\n    caption: ${image.alt}\n    credit: ${image.credit}` : ""}`);
   if (DRY_RUN) continue;
   data.image = {
     url: image.url,
