@@ -7567,6 +7567,313 @@
         }
       ],
       "outcome": "listed"
+    },
+    "egypt-oil-refining-growth-q3-fy2025-2026-a251e6": {
+      "at": "2026-09-27T21:28:13.330Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v17",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-27T17:19:03.042Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 19,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "savills-egypt-developers-bank-facilities-financing-18dfae": {
+      "at": "2026-09-27T21:28:41.348Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "control",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-27T17:14:34.583Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 18,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "egypt-developers-separate-project-account-financing-069059": {
+      "at": "2026-09-27T21:28:13.329Z",
+      "kind": "analysis",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-27T18:23:08.607Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 48,
+        "checked": 47,
+        "supported": 32,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 15,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "ربط الدفعات بمشروعها يحمي العملاء، لكنه قد يزيد اعتماد المطورين المصريين على البنوك في سوق طالت فيها آجال السداد",
+        "وفي تقدير خازندار، إذا اجتمع المساران فسينتقل عبء تمويل البناء تدريجياً من أقساط المشترين إلى ميزانيات البنوك.",
+        "وفي قراءة خازندار، ستتوقف حينها قدرة المطورين على إطلاق مشروعات جديدة على استعداد البنوك لإقراضهم وعلى سرعة موافقات الجهات الرقابية على الصناديق، لا على حجم المبيعات وحده.",
+        "والأرجح أن يدفع الفصل بين الحسابات هذا الاتجاه خطوة أبعد، فيصبح الائتمان المصرفي وأموال الصناديق مصدراً أساسياً لتمويل البناء لا مكمّلاً له.",
+        "ولم يذكر التقرير المدى الذي بلغته آجال السداد حالياً.",
+        "يبدو مشتري الوحدة على الخريطة أكبر المستفيدين من النص المقترح.",
+        "وقد تواجه البنوك طلباً إضافياً على تمويل البناء، والأقرب أن يلائمها التمويل المرحلي الذي يُصرف مع كل مرحلة، لأنه يسير على إيقاع الصرف من حساب المشروع نفسه.",
+        "لكن الصيغتين لا تتطابقان."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "oracle-cloud-infrastructure-revenue-ai-growth-fc2b80": {
+      "at": "2026-09-27T21:29:14.033Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-11T11:44:07.765Z",
+      "sourcesRead": 2,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 23,
+        "checked": 22,
+        "supported": 17,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 1,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 1
+      },
+      "confirmed": [
+        {
+          "id": 20,
+          "field": "body",
+          "sentence": "وأبدى محللو «سيتي» تفاؤلاً حذراً، وقالوا إن النتائج استوفت المعايير كلها تقريباً وتهيئ ليوم المستثمرين المقبل.",
+          "claim": "Citi analysts showed cautious optimism, saying the results met nearly all criteria and set up the upcoming investor day.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-11",
+          "quote": "\"Oracle delivered a solid fiscal first quarter that checked nearly every box and reinforces the bull case,\" the analysts wrote.",
+          "correction": "Citi reiterated its buy rating and said the quarter was solid and reinforces the bull case; it did not express cautious optimism.",
+          "class": "hedge"
+        }
+      ],
+      "listed": [
+        {
+          "status": "drift",
+          "class": "period",
+          "field": "lede",
+          "sentence": "ارتفع سهم «أوراكل» 6.2% في تداولات ما قبل الافتتاح يوم الجمعة، بعدما أعلنت نمو إيرادات بنيتها التحتية السحابية 121% على أساس سنوي في الربع المالي الأول من عام 2027.",
+          "quote": "Oracle shares whipsawed on Friday after the software company reported 30% revenue growth for the latest quarter, topping estimates, with sales fueled by strong demand for cloud infrastructure. The stock popped after the open before later closing nearly 2% lower.",
+          "source": "CNBC",
+          "correction": "The stock jumped after the open on Friday, not in pre-market trading, and later closed nearly 2% lower."
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "سهم أوراكل يرتفع 6.2% بعد نمو إيرادات السحابة 121%",
+          "quote": "Oracle jumps 6% after reporting 30% revenue growth fueled by AI cloud demand"
+        },
+        {
+          "sentence": "ويعني ذلك أن جانباً من الطلب الجديد لن يُموَّل من ميزانية شركة تحمل ديوناً قدرها 125 مليار دولار، وهي الديون التي أفقدت سهمها نحو 20% منذ بداية العام بسبب قلق المستثمرين.",
+          "quote": "Even with Friday's rally, Oracle is down about 20% this year on concern about the hefty amount of debt the company has raised to fund its artificial intelligence infrastructure buildout."
+        },
+        {
+          "sentence": "وسجلت إيرادات التطبيقات السحابية نمواً نسبته 10%، فيما تراجعت إيرادات البرمجيات التقليدية نحو 3% إلى 5.55 مليار دولار.",
+          "quote": "The company's software category contributed $5.55 billion in revenue, down about 3% and lower than StreetAccount's $5.61 billion consensus."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن محللي «سيتي» أبدوا تفاؤلاً حذراً إزاء نتائج «أوراكل»، والصحيح أنهم جدّدوا توصيتهم بشراء السهم ووصفوا الربع بالقوي، وقالوا إنه يعزز رهانات الصعود.",
+      "verified": {
+        "at": "2026-09-27T21:32:59.935Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": [
+          {
+            "class": "figure",
+            "field": "body",
+            "sentence": "تجاوزت إيرادات البنية التحتية السحابية 7.4 مليار دولار، أي أكثر من ضعف الرقم المسجل في الفترة نفسها من العام الماضي، ونمت الإيرادات السحابية الإجمالية 62% إلى 11.6 مليار دولار.",
+            "quote": "Revenue from cloud infrastructure more than doubled to $7.4 billion, beating the $7.09 billion consensus estimate.",
+            "correction": "Cloud infrastructure revenue more than doubled to $7.4 billion; it did not exceed $7.4 billion."
+          }
+        ],
+        "secondCorrection": "corrected"
+      }
+    },
+    "hormuz-shipping-traffic-plunges-tensions-5c1d93": {
+      "at": "2026-09-27T21:29:17.161Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-11T11:41:59.757Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 22,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 4,
+        "listed": 2,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 4,
+          "field": "lede",
+          "sentence": "وتأتي هذه الأرقام، التي تستند إلى بيانات تتبع السفن الأولية التي جمعتها كبلر ونشرتها رويترز، مع قفز أسعار النفط الخام فوق حاجز مئة دولار للبرميل للمرة الأولى منذ منتصف مايو.",
+          "claim": "The figures come from preliminary Kpler vessel-tracking data published by Reuters. Crude oil prices jumped above $100 a barrel for the first time since mid-May.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "Sky News Arabia",
+          "sourceDate": "2026-09-11",
+          "quote": "ارتفعت أسعار النفط، خلال تعاملات الجمعة، وتتجه لإنهاء الأسبوع فوق مستوى مئة دولار للبرميل للمرة الأولى منذ منتصف مايو، إذ تفاقم الهجمات المتزايدة على طرق الشحن الرئيسية في الشرق الأوسط المخاوف من حدوث اضطرابات طويلة الأمد في الإمدادات.",
+          "correction": "The 'first time since mid-May' refers to prices being on track to end a trading week above $100, not to prices crossing $100.",
+          "class": "scope"
+        },
+        {
+          "id": 17,
+          "field": "body",
+          "sentence": "وقال محللا «إنغ» للطاقة وارن باترسون وإيفا مانتلي إن التدفقات لا تزال دون مستويات ما قبل الحرب.",
+          "claim": "ING analysts Warren Patterson and 'Eva Mantley' (مانتلي) said flows remain below pre-war levels.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "OilPrice.com",
+          "sourceDate": "2026-09-11",
+          "quote": "“Oil’s resilience reflects a market now repricing both the duration and severity of the conflict, along with a clearer recognition of the mounting threat to regional supply,” ING’s commodities strategists Warren Patterson and Ewa Manthey wrote in a note early on Friday.",
+          "correction": "The second ING strategist is Ewa Manthey, not 'Mantley'; the two are commodities strategists.",
+          "class": "other"
+        },
+        {
+          "id": 25,
+          "field": "body",
+          "sentence": "يمر عبر المضيق نحو عشرين بالمئة من إمدادات النفط العالمية، أي نحو عشرة ملايين برميل يومياً من الخام والمنتجات البترولية، منها تسعة ملايين من الخام وحده.",
+          "claim": "About 20% of global oil supplies pass through the strait, i.e. about 10 million bpd of crude and products, of which 9 million bpd is crude.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "OilPrice.com",
+          "sourceDate": "2026-09-11",
+          "quote": "Most estimates put crude oil and petroleum product volumes exiting the Strait at about 10 million barrels per day (bpd), of which 9 million bpd is crude.Yet, these volumes remain half of pre-war levels, while fuel supply remains severely limited, further weighing on the very tight middle distillate markets.",
+          "correction": "The 10 million bpd is the current wartime flow, only half of pre-war levels; it is not the equivalent of the strait's roughly 20% share of global oil supplies.",
+          "class": "scope"
+        },
+        {
+          "id": 26,
+          "field": "body",
+          "sentence": "لكن هذه الأحجام لم تعد تمثل سوى نصف مستويات ما قبل الحرب، فتفاقم شحّ أسواق الوسائط الحرارية.",
+          "claim": "These volumes are only half of pre-war levels, which worsens tightness in 'heat-media' (الوسائط الحرارية) markets.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "OilPrice.com",
+          "sourceDate": "2026-09-11",
+          "quote": "Yet, these volumes remain half of pre-war levels, while fuel supply remains severely limited, further weighing on the very tight middle distillate markets.",
+          "correction": "The tight markets are middle distillate markets (المقطرات الوسطى), and the source links their tightness to severely limited fuel supply.",
+          "class": "term"
+        }
+      ],
+      "listed": [
+        {
+          "status": "listed",
+          "class": "superlative",
+          "field": "lede",
+          "sentence": "وتصف المنظمة البحرية الدولية الوضع بأنه الأكثر خطورة الذي يشهده القطاع البحري عالمياً، مع تأثيره على نحو ألفين سفينة وعشرين ألف بحار.",
+          "quote": "The Strait of Hormuz crisis has emerged as the most significant in an unprecedented period of maritime insecurity, with around 2,000 vessels and 20,000 seafarers affected at the beginning of the conflict, according to the International Maritime Organization (IMO).",
+          "source": "Economy Middle East",
+          "correction": "The IMO calls the Hormuz crisis the most significant within the current unprecedented period of maritime insecurity, not the most serious ever faced globally; the 2,000 vessels and 20,000 seafarers were affected at the beginning of the conflict."
+        },
+        {
+          "status": "listed",
+          "class": "superlative",
+          "field": "body",
+          "sentence": "ووصفت المنظمة البحرية الدولية الوضع بأنه الأخطر على القطاع البحري عالمياً، مع تأثر نحو ألفي سفينة وعشرين ألف بحار منذ اندلاع الأزمة.",
+          "quote": "The Strait of Hormuz crisis has emerged as the most significant in an unprecedented period of maritime insecurity, with around 2,000 vessels and 20,000 seafarers affected at the beginning of the conflict, according to the International Maritime Organization (IMO).",
+          "source": "Economy Middle East",
+          "correction": "The IMO calls the Hormuz crisis the most significant within the current period of maritime insecurity, not the most dangerous ever, and the 2,000 vessels and 20,000 seafarers were affected at the beginning of the conflict, not cumulatively since then."
+        }
+      ],
+      "notFound": [
+        "وأفادت الجزيرة بتقدم سريع لقوة مدعومة من إيران تهدد مسار شحن بديلاً للمضيق، فتضاعَف القلق بين ملاك ناقلات النفط ومصدّري الطاقة في المنطقة."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أسعار النفط تجاوزت مئة دولار للبرميل للمرة الأولى منذ منتصف مايو، والصحيح أنها تتجه لإنهاء أسبوع تداول فوق هذا المستوى للمرة الأولى منذ منتصف مايو. كما أخطأت في كتابة اسم خبيرة «إنغ» إيفا مانثي، وقدّمت عشرة ملايين برميل يومياً على أنها حصة المضيق البالغة نحو 20% من الإمدادات العالمية، والصحيح أنها التدفقات الحالية التي لا تتجاوز نصف مستويات ما قبل الحرب، والأسواق المتأثرة بشحّ الوقود هي أسواق المقطرات الوسطى.",
+      "verified": {
+        "at": "2026-09-27T21:32:12.936Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": [
+          {
+            "class": "period",
+            "field": "body",
+            "sentence": "ووصفت المنظمة البحرية الدولية الوضع بأنه الأخطر على القطاع البحري عالمياً، مع تأثر نحو ألفي سفينة وعشرين ألف بحار منذ اندلاع الأزمة.",
+            "quote": "The Strait of Hormuz crisis has emerged as the most significant in an unprecedented period of maritime insecurity, with around 2,000 vessels and 20,000 seafarers affected at the beginning of the conflict, according to the International Maritime Organization (IMO).",
+            "correction": "The IMO says about 2,000 vessels and 20,000 seafarers were affected at the beginning of the conflict, not cumulatively since it broke out."
+          }
+        ],
+        "secondCorrection": "corrected"
+      }
     }
   }
 }

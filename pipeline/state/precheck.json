@@ -930,6 +930,57 @@
           "noted": []
         }
       ]
+    },
+    "turkey-akp-deputy-resigns-fund-crisis-1afa4a": {
+      "at": "2026-09-27T21:39:17.558Z",
+      "title": "نائبة رئيس حزب إردوغان تستقيل مع اتساع أزمة الصناديق التركية",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 18,
+            "checked": 18,
+            "supported": 16,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 3,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "استقالت فاطمة بتول صايان كايا، نائبة رئيس حزب العدالة والتنمية في تركيا، من جميع مناصبها السبت، مع اتساع التحقيقات في أزمة صناديق استثمار طالت أكثر من 455 ألف مستثمر فرد، بحسب مجلس أسواق المال التركي.",
+              "quote": "وبحسب أحدث المعطيات، ارتفع عدد المحتجزين على ذمة التحقيقات إلى 51 شخصاً، بينما تأثر نحو 355 ألف مستثمر بالأزمة المرتبطة بصناديق استثمارية شملتها إجراءات التصفية والرقابة.",
+              "source": "Al Khaleej",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 4,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "المستثمرون الأفراد المتضررون من الأزمة: أكثر من 455 ألف مستثمر",
+              "quote": "وبحسب أحدث المعطيات، ارتفع عدد المحتجزين على ذمة التحقيقات إلى 51 شخصاً، بينما تأثر نحو 355 ألف مستثمر بالأزمة المرتبطة بصناديق استثمارية شملتها إجراءات التصفية والرقابة.",
+              "source": "Al Khaleej",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []

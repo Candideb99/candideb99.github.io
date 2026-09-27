@@ -1,0 +1,56 @@
+{
+  "startedAt": "2026-09-27T21:30:25.167Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "oracle-cloud-infrastructure-revenue-ai-growth-fc2b80",
+      "issue": "The body says «وأبدى محللو «سيتي» تفاؤلاً حذراً، وقالوا إن النتائج استوفت المعايير كلها تقريباً وتهيئ ليوم المستثمرين المقبل.» (Citi analysts showed cautious optimism, saying the results met nearly all criteria and set up the upcoming investor day.). Source CNBC says: \"\"Oracle delivered a solid fiscal first quarter that checked nearly every box and reinforces the bull case,\" the analysts wrote.\". Citi reiterated its buy rating and said the quarter was solid and reinforces the bull case; it did not express cautious optimism.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن محللي «سيتي» أبدوا تفاؤلاً حذراً إزاء نتائج «أوراكل»، والصحيح أنهم جدّدوا توصيتهم بشراء السهم ووصفوا الربع بالقوي، وقالوا إنه يعزز رهانات الصعود.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وأبدى محللو «سيتي» تفاؤلاً حذراً، وقالوا إن النتائج استوفت المعايير كلها تقريباً وتهيئ ليوم المستثمرين المقبل."
+      ],
+      "newSentences": [
+        "وجدّد محللو «سيتي» توصيتهم بشراء السهم، وقالوا إن الشركة حققت ربعاً أول قوياً استوفى المعايير كلها تقريباً ويعزز رهانات الصعود، ويهيئ ليوم المستثمرين المقبل."
+      ]
+    },
+    {
+      "slug": "hormuz-shipping-traffic-plunges-tensions-5c1d93",
+      "issue": "1. The lede says «وتأتي هذه الأرقام، التي تستند إلى بيانات تتبع السفن الأولية التي جمعتها كبلر ونشرتها رويترز، مع قفز أسعار النفط الخام فوق حاجز مئة دولار للبرميل للمرة الأولى منذ منتصف مايو.» (The figures come from preliminary Kpler vessel-tracking data published by Reuters. Crude oil prices jumped above $100 a barrel for the first time since mid-May.). Source Sky News Arabia says: \"ارتفعت أسعار النفط، خلال تعاملات الجمعة، وتتجه لإنهاء الأسبوع فوق مستوى مئة دولار للبرميل للمرة الأولى منذ منتصف مايو، إذ تفاقم الهجمات المتزايدة على طرق الشحن الرئيسية في الشرق الأوسط المخاوف من حدوث اضطرابات طويلة الأمد في الإمدادات.\". The 'first time since mid-May' refers to prices being on track to end a trading week above $100, not to prices crossing $100.\n2. The body says «وقال محللا «إنغ» للطاقة وارن باترسون وإيفا مانتلي إن التدفقات لا تزال دون مستويات ما قبل الحرب.» (ING analysts Warren Patterson and 'Eva Mantley' (مانتلي) said flows remain below pre-war levels.). Source OilPrice.com says: \"“Oil’s resilience reflects a market now repricing both the duration and severity of the conflict, along with a clearer recognition of the mounting threat to regional supply,” ING’s commodities strategists Warren Patterson and Ewa Manthey wrote in a note early on Friday.\". The second ING strategist is Ewa Manthey, not 'Mantley'; the two are commodities strategists.\n3. The body says «يمر عبر المضيق نحو عشرين بالمئة من إمدادات النفط العالمية، أي نحو عشرة ملايين برميل يومياً من الخام والمنتجات البترولية، منها تسعة ملايين من الخام وحده.» (About 20% of global oil supplies pass through the strait, i.e. about 10 million bpd of crude and products, of which 9 million bpd is crude.). Source OilPrice.com says: \"Most estimates put crude oil and petroleum product volumes exiting the Strait at about 10 million barrels per day (bpd), of which 9 million bpd is crude.Yet, these volumes remain half of pre-war levels, while fuel supply remains severely limited, further weighing on the very tight middle distillate markets.\". The 10 million bpd is the current wartime flow, only half of pre-war levels; it is not the equivalent of the strait's roughly 20% share of global oil supplies.\n4. The body says «لكن هذه الأحجام لم تعد تمثل سوى نصف مستويات ما قبل الحرب، فتفاقم شحّ أسواق الوسائط الحرارية.» (These volumes are only half of pre-war levels, which worsens tightness in 'heat-media' (الوسائط الحرارية) markets.). Source OilPrice.com says: \"Yet, these volumes remain half of pre-war levels, while fuel supply remains severely limited, further weighing on the very tight middle distillate markets.\". The tight markets are middle distillate markets (المقطرات الوسطى), and the source links their tightness to severely limited fuel supply.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "lede",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أسعار النفط تجاوزت مئة دولار للبرميل للمرة الأولى منذ منتصف مايو، والصحيح أنها تتجه لإنهاء أسبوع تداول فوق هذا المستوى للمرة الأولى منذ منتصف مايو. كما أخطأت في كتابة اسم خبيرة «إنغ» إيفا مانثي، وقدّمت عشرة ملايين برميل يومياً على أنها حصة المضيق البالغة نحو 20% من الإمدادات العالمية، والصحيح أنها التدفقات الحالية التي لا تتجاوز نصف مستويات ما قبل الحرب، والأسواق المتأثرة بشحّ الوقود هي أسواق المقطرات الوسطى.",
+      "model": "claude-cli",
+      "before": {
+        "lede": "انخفضت حركة الشحن عبر مضيق هرمز الحيوي إلى سبع سفن فقط خلال الـ24 ساعة الماضية، مقابل متوسط 15 سفينة يومياً خلال الأيام العشرة الماضية، وسط تصاعد متسارع في التوترات العسكرية بالشرق الأوسط. وتأتي هذه الأرقام، التي تستند إلى بيانات تتبع السفن الأولية التي جمعتها كبلر ونشرتها رويترز، مع قفز أسعار النفط الخام فوق حاجز مئة دولار للبرميل للمرة الأولى منذ منتصف مايو. وتصف المنظمة البحرية الدولية الوضع بأنه الأكثر خطورة الذي يشهده القطاع البحري عالمياً، مع تأثيره على نحو ألفين سفينة وعشرين ألف بحار."
+      },
+      "after": {
+        "lede": "انخفضت حركة الشحن عبر مضيق هرمز الحيوي إلى سبع سفن فقط خلال الـ24 ساعة الماضية، مقابل متوسط 15 سفينة يومياً خلال الأيام العشرة الماضية، وسط تصاعد متسارع في التوترات العسكرية بالشرق الأوسط. وتأتي هذه الأرقام، التي تستند إلى بيانات تتبع السفن الأولية التي جمعتها كبلر ونشرتها رويترز، مع اتجاه أسعار النفط الخام لإنهاء الأسبوع فوق مئة دولار للبرميل للمرة الأولى منذ منتصف مايو. وتصف المنظمة البحرية الدولية الوضع بأنه الأكثر خطورة الذي يشهده القطاع البحري عالمياً، مع تأثيره على نحو ألفين سفينة وعشرين ألف بحار."
+      },
+      "changedSentences": [
+        "وتأتي هذه الأرقام، التي تستند إلى بيانات تتبع السفن الأولية التي جمعتها كبلر ونشرتها رويترز، مع قفز أسعار النفط الخام فوق حاجز مئة دولار للبرميل للمرة الأولى منذ منتصف مايو.",
+        "وقال محللا «إنغ» للطاقة وارن باترسون وإيفا مانتلي إن التدفقات لا تزال دون مستويات ما قبل الحرب.",
+        "يمر عبر المضيق نحو عشرين بالمئة من إمدادات النفط العالمية، أي نحو عشرة ملايين برميل يومياً من الخام والمنتجات البترولية، منها تسعة ملايين من الخام وحده.",
+        "لكن هذه الأحجام لم تعد تمثل سوى نصف مستويات ما قبل الحرب، فتفاقم شحّ أسواق الوسائط الحرارية."
+      ],
+      "newSentences": [
+        "وتأتي هذه الأرقام، التي تستند إلى بيانات تتبع السفن الأولية التي جمعتها كبلر ونشرتها رويترز، مع اتجاه أسعار النفط الخام لإنهاء الأسبوع فوق مئة دولار للبرميل للمرة الأولى منذ منتصف مايو.",
+        "وقال خبيرا استراتيجيات السلع الأولية في «إنغ» وارن باترسون وإيفا مانثي إن التدفقات لا تزال دون مستويات ما قبل الحرب.",
+        "يمر عبر المضيق نحو عشرين بالمئة من إمدادات النفط العالمية.",
+        "وتضع معظم التقديرات الأحجام الخارجة منه حالياً عند نحو عشرة ملايين برميل يومياً من الخام والمنتجات البترولية، منها تسعة ملايين من الخام وحده.",
+        "لكن هذه الأحجام لم تعد تمثل سوى نصف مستويات ما قبل الحرب، في حين تبقى إمدادات الوقود شحيحة، فيشتد الضغط على أسواق المقطرات الوسطى المتوترة أصلاً."
+      ]
+    }
+  ]
+}
