@@ -48,13 +48,14 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
         </li>
       ))}
     </ul>
+    <Agenda limit={5} />
   </div>
 
   <div class="front__mid">
     {secondary.length > 0 && (
       <div class="front__secondary">
         {secondary.map((a) => (
-          <StoryCard article={a} variant="card" showExcerpt showTopic showPhoto={photoIds.has(a.id)} sizes="(min-width: 1320px) 250px, (min-width: 1024px) 19vw, (min-width: 720px) 26vw, 120px" />
+          <StoryCard article={a} variant="card" showExcerpt showTopic showPhoto={photoIds.has(a.id)} sizes="(min-width: 1320px) 460px, (min-width: 1024px) 36vw, (min-width: 720px) 48vw, 120px" />
         ))}
       </div>
     )}
@@ -81,8 +82,8 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
     {chart?.data.chart && (
       <section class="module" aria-labelledby="chart-head">
         <h2 id="chart-head" class="module__head">أحدث الرسوم البيانية</h2>
-        <Chart chart={chart.data.chart} id="front-chart" compact href={articleHref(chart)} />
-        <p class="module__from ui">من مادة: <a href={articleHref(chart)} set:html={isolateNumbers(chart.data.title)} /></p>
+        <Chart chart={chart.data.chart} id="front-chart" narrow href={articleHref(chart)} />
+        <p class="module__from"><span class="module__from-label ui">من مادة</span><a href={articleHref(chart)} set:html={isolateNumbers(chart.data.title)} /></p>
       </section>
     )}
     {figures.length > 0 && (
@@ -101,7 +102,6 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
         </ul>
       </section>
     )}
-    <Agenda limit={5} />
   </aside>
 </section>
 
@@ -116,6 +116,9 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
   .front__top { padding-inline-end: var(--col-gap); }
   .front__mid { padding-inline: var(--col-gap); border-inline: 1px solid var(--rule); }
   .front__side { padding-inline-start: var(--col-gap); display: grid; gap: 1.5rem; }
+  /* The agenda closes the digest's column: at the foot of the numbers column it left that column 400px longer than
+     the other two, over blank paper (2026-09-27). */
+  .front__top :global(.agenda) { margin-top: 1.5rem; }
 
   /* The digest: a story to a line on hairlines, its Amiri headline on a line of its own and its one
      sentence under it in Naskh, the section and time beneath. The owner, 2026-09-23: the sentence ran
@@ -125,22 +128,20 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
   .digest { display: grid; }
   .digest__item { position: relative; padding-block: 0.65rem; border-top: 1px solid var(--rule); }
   .digest__item:first-child { border-top: 0; padding-top: 0.1rem; }
-  .digest__head { display: block; font-family: var(--font-title); font-weight: 700; font-size: 1.05rem; line-height: 1.45; color: var(--ink); text-decoration: none; }
+  .digest__head { display: block; font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; color: var(--ink); text-decoration: none; }
   .digest__head::after { content: ""; position: absolute; inset: 0; }
-  .digest__text { margin-top: 0.2rem; font-family: var(--font-body); font-size: 0.98rem; line-height: 1.7; color: var(--ink-2); }
+  .digest__text { margin-top: 0.2rem; font-family: var(--font-body); font-size: var(--n-text); line-height: 1.7; color: var(--ink-2); }
   .digest__item:hover .digest__head { color: var(--green); }
   .digest__meta { margin-top: 0.15rem; font-size: var(--fs-xs); }
   .digest__meta a { position: relative; z-index: 1; }
 
-  /* The two secondaries run at feature scale, photograph beside the text like every feature on the
-     page, so the hierarchy keeps descending down the page instead of inverting under the cover. */
+  /* The two secondaries run at feature scale with the photograph over the headline, the column's full width. Beside
+     it (until 2026-09-27) the headline had a 190px column and wrapped four lines deep, and the centre column ended
+     some 400px above its neighbours. */
   .front__secondary { display: grid; }
   .front__secondary > :global(.card) { padding-block: 0.85rem; border-top: 1px solid var(--rule); }
   .front__secondary > :global(.card:first-child) { border-top: 0; padding-top: 0; }
-  .front__secondary > :global(.card--photo) { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 0 var(--col-gap); align-items: start; }
-  .front__secondary :global(.card--photo .card__photo) { order: 2; }
-  .front__secondary :global(.card--photo .card__body) { order: 1; }
-  .front__secondary :global(.card__title) { font-size: clamp(1.2rem, 1rem + 0.6vw, 1.42rem); line-height: 1.38; }
+  .front__secondary :global(.card__title) { font-size: var(--t-feature); line-height: 1.38; }
   .front__picks { margin-top: 1.4rem; }
 
   .figures__list { display: grid; }
@@ -148,19 +149,16 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
   .figures__item:first-child { border-top: 0; }
   .figures__item a { display: block; padding-block: 0.5rem; text-decoration: none; }
   .figures__item a:hover .figures__value { color: var(--green); }
-  .figures__value { display: block; font-family: var(--font-title); font-weight: 700; font-size: 1.25rem; line-height: 1.3; font-variant-numeric: tabular-nums lining-nums; }
+  .figures__value { display: block; font-family: var(--font-title); font-weight: 700; font-size: var(--t-head); line-height: 1.3; font-variant-numeric: tabular-nums lining-nums; }
   .figures__label { display: block; font-family: var(--font-ui); font-size: var(--fs-sm); color: var(--ink-3); line-height: 1.4; }
   /* A number without its story is a riddle: the headline it comes from follows, small. */
-  .figures__story { display: block; margin-top: 0.2rem; font-family: var(--font-title); font-weight: 700; font-size: 0.9rem; line-height: 1.4; color: var(--ink-2); }
+  .figures__story { display: block; margin-top: 0.2rem; font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; color: var(--ink-2); }
   .figures__item a:hover .figures__story { color: var(--green); }
-  .module__from { margin-top: 0.45rem; font-size: var(--fs-xs); color: var(--ink-3); line-height: 1.5; }
-  .module__from a { color: var(--ink-2); text-decoration: none; font-weight: 700; }
-  .module__from a:hover { color: var(--green); text-decoration: underline; }
 
   .picks { display: grid; }
   .picks__item { padding-block: 0.55rem; border-top: 1px solid var(--rule); }
   .picks__item:first-child { border-top: 0; }
-  .picks__title { font-family: var(--font-title); font-weight: 700; font-size: 1.02rem; line-height: 1.45; text-decoration: none; display: block; }
+  .picks__title { font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; text-decoration: none; display: block; }
   .picks__title:hover { color: var(--green); }
   .picks .meta { margin-top: 0.1rem; font-size: var(--fs-xs); }
 
@@ -178,10 +176,9 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
     .front__secondary { grid-template-columns: 1fr; }
     .front__secondary > :global(.card) { padding-block: 0.7rem; border-top: 1px solid var(--rule); }
     .front__secondary > :global(.card:first-child) { border-top: 0; padding-top: 0; }
-    .front__secondary > :global(.card--photo) { grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0 0.75rem; }
+    .front__secondary > :global(.card--photo) { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0 0.75rem; align-items: start; }
     .front__secondary :global(.card--photo .card__photo) { order: 1; }
     .front__secondary :global(.card--photo .card__body) { order: 2; }
-    .front__secondary :global(.card__title) { font-size: 1.2rem; line-height: 1.4; }
     .front__secondary :global(.card__summary) { display: none; }
   }
 </style>

@@ -54,16 +54,16 @@
 }
 /* Tajawal sets only small furniture, so it never swaps in late (`optional`): each of its weights arriving on its
    own used to re-wrap lines such as a section's topic list and jump the whole page, up to four times on a slow
-   phone (layout shift 0.23-0.37 on /economy/, 2026-09-27). A reader on a slow first visit keeps the system face
-   for the labels; the next page has Tajawal from the cache. */
-@font-face { font-family: "Tajawal"; font-weight: 400; font-display: optional; src: url("/fonts/tajawal-arabic-400.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC, U+200C-200E; }
+   phone (layout shift 0.23-0.37 on /economy/, 2026-09-27). An optional face is used only if it is there at the first
+   paint, so every Tajawal file is preloaded (Base.astro) and cached for a year (public/_headers), and there are
+   only two weights, 500 and 700. The same evening a check of which fonts actually drew the text found Tajawal's
+   Latin half never drawing (it was not preloaded): every digit, space and % in a date, a meta line or the market
+   strip came from the system's Segoe UI beside Tajawal's letters, the labels set at 800 came out in Times New
+   Roman, and the minus sign was left out of the Latin range although the file carries it. */
 @font-face { font-family: "Tajawal"; font-weight: 500; font-display: optional; src: url("/fonts/tajawal-arabic-500.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC, U+200C-200E; }
 @font-face { font-family: "Tajawal"; font-weight: 700; font-display: optional; src: url("/fonts/tajawal-arabic-700.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC, U+200C-200E; }
-@font-face { font-family: "Tajawal"; font-weight: 800; font-display: optional; src: url("/fonts/tajawal-arabic-800.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC, U+200C-200E; }
-@font-face { font-family: "Tajawal"; font-weight: 400; font-display: optional; src: url("/fonts/tajawal-latin-400.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
-@font-face { font-family: "Tajawal"; font-weight: 500; font-display: optional; src: url("/fonts/tajawal-latin-500.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
-@font-face { font-family: "Tajawal"; font-weight: 700; font-display: optional; src: url("/fonts/tajawal-latin-700.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
-@font-face { font-family: "Tajawal"; font-weight: 800; font-display: optional; src: url("/fonts/tajawal-latin-800.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
+@font-face { font-family: "Tajawal"; font-weight: 500; font-display: optional; src: url("/fonts/tajawal-latin-500.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Tajawal"; font-weight: 700; font-display: optional; src: url("/fonts/tajawal-latin-700.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 
 :root {
   color-scheme: light dark;
@@ -105,6 +105,28 @@
      11.5px and 13.8px used to sit here; on a phone the smaller step never goes under 13px. */
   --fs-xs: 0.78rem;
   --fs-sm: 0.86rem;
+  /* Tajawal in data tables: a figure a step above the meta line. */
+  --fs-data: 0.92rem;
+  /* The labels of the three strips under the bar (ملفات نتابعها، الأسواق، أيضاً على خازندار) share one width, so
+     their rules and first items line up. */
+  --strip-label: 7.5rem;
+
+  /* The type scale: one size for each role, named by what it does. The components had drifted to 44 sizes of their
+     own, 22 of them Amiri headline sizes between 14 and 46px, several only 2-3% apart, so the same kind of line was
+     set a hair differently from module to module (the owner, 2026-09-27: "a circus of fonts"). Heads are Amiri 700,
+     reading is Naskh, furniture is Tajawal (--fs-xs, --fs-sm, --fs-data above). */
+  --t-display: clamp(1.85rem, 1.3rem + 2vw, 2.75rem); /* a page's title, a story's headline */
+  --t-cover: clamp(1.7rem, 1.1rem + 1.9vw, 2.5rem);   /* the cover: the one headline that must win the front */
+  --t-lead: clamp(1.6rem, 1.1rem + 1.6vw, 2.3rem);    /* a section page's lead */
+  --t-feature: clamp(1.22rem, 1rem + 0.7vw, 1.5rem);  /* block features, the front's secondaries, a file's newest, key figures */
+  --t-head: 1.25rem;    /* hub cards, the lead reading, search results, chart and table titles, today's figures */
+  --t-list: 1.05rem;    /* every other headline: cards, lists, briefs, picks, the digest, the cover's tabs, related lines */
+  --t-section: 1.35rem; /* green: a section's name over its block, a desk's or a file's name */
+  --t-module: 1.15rem;  /* green: a module's label */
+  --n-dek: clamp(1.25rem, 1.1rem + 0.5vw, 1.45rem);   /* the standfirst under a story's headline, a step above the text */
+  --n-body: clamp(1.12rem, 1.02rem + 0.35vw, 1.25rem); /* a story's text; its lede is the same size in bold */
+  --n-lead: 1.12rem;    /* the cover's and a lead's summary, a page's introduction */
+  --n-text: 1rem;       /* summaries and excerpts, لماذا يهمّ, notes, the footer; in bold the ticker, the files row, menus */
 }
 @media (max-width: 719px) {
   :root { --fs-xs: 0.8125rem; --fs-sm: 0.875rem; }
@@ -172,6 +194,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 input { font: inherit; }
 bdi { unicode-bidi: isolate; }
 .num, time, .ui { font-family: var(--font-ui); font-variant-numeric: tabular-nums lining-nums; }
+/* A time inside a sentence stays in the sentence's face: «آخر تحديث منذ 5 ساعات» switched to the furniture face
+   mid-line in the page introductions (2026-09-27). */
+.page-intro time, .prose time { font-family: inherit; }
 
 .wrap { width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; }
 .wrap--article { width: min(var(--wrap-article), 100% - 2 * var(--gutter)); margin-inline: auto; }
@@ -203,6 +228,17 @@ bdi { unicode-bidi: isolate; }
 .meta a:hover { text-decoration: underline; }
 .meta time { color: var(--ink-3); }
 
+/* ----- The market's rise and fall marks, drawn rather than typed: ▲ and ▼ are in none of the site's faces, so each
+   system drew its own (Segoe UI's on Windows, 900 of them over the site's pages, 2026-09-27). In the move's own
+   colour; a dot for a day without change. ----- */
+.mark-dir { display: inline-block; width: 0.5em; height: 0.44em; margin-inline-end: 0.3em; vertical-align: 0.06em; background: currentColor; }
+.mark-dir[data-dir="up"] { clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.mark-dir[data-dir="down"] { clip-path: polygon(0 0, 100% 0, 50% 100%); }
+/* A day without change prints its 0.00% alone: the dot read as a stray mark. */
+.mark-dir[data-dir="flat"], .mark-dir[data-dir="none"] { display: none; }
+/* A drawn mark is a box of its own, which a line may break after; the typed glyph was not. It stays with its figure. */
+bdi:has(> .mark-dir) { white-space: nowrap; }
+
 /* ----- Photographs: true colour, sized to their column, never washed ----- */
 .photo { position: relative; overflow: hidden; background: var(--paper-2); width: 100%; }
 .photo img { width: 100%; height: 100%; object-fit: cover; }
@@ -210,7 +246,7 @@ bdi { unicode-bidi: isolate; }
 /* ----- Prose (article body): justified naskh in a newspaper measure ----- */
 .prose {
   font-family: var(--font-body);
-  font-size: clamp(1.12rem, 1.02rem + 0.35vw, 1.25rem);
+  font-size: var(--n-body);
   line-height: 1.9;
   max-width: var(--measure);
 }
@@ -221,14 +257,16 @@ bdi { unicode-bidi: isolate; }
 @media (max-width: 719px) {
   .prose p { text-align: start; }
 }
+/* A subhead in the text is a feature-size head (1.2em of the text: 24px on a laptop), a minor one the text's size in
+   the head face; at 1.35em the subheads outranked the page's own features. */
 .prose h2 {
   font-family: var(--font-title);
-  font-size: 1.35em;
-  line-height: 1.35;
+  font-size: 1.2em;
+  line-height: 1.36;
   margin: 1.5em 0 0.5em;
   color: var(--ink);
 }
-.prose h3 { font-size: 1.15em; margin: 1.2em 0 0.4em; }
+.prose h3 { font-size: 1em; line-height: 1.45; margin: 1.2em 0 0.4em; }
 .prose strong { font-weight: 700; }
 .prose a { color: var(--green); text-decoration: underline; }
 /* A topic linked in the text (rehype-topic-links): the same green, with a lighter rule under it, so a
@@ -274,24 +312,45 @@ bdi { unicode-bidi: isolate; }
   border-bottom: 1px solid var(--rule);
   margin-bottom: 1.1rem;
 }
-.section-head h2 { font-family: var(--font-title); font-size: 1.35rem; line-height: 1.3; white-space: nowrap; color: var(--green); border-bottom: 3px solid var(--green); margin-bottom: -1px; padding: 0 0.1rem 0.3rem; }
+.section-head h2 { font-family: var(--font-title); font-size: var(--t-section); line-height: 1.3; white-space: nowrap; color: var(--green); border-bottom: 3px solid var(--green); margin-bottom: -1px; padding: 0 0.1rem 0.3rem; }
 .section-head h2 a { text-decoration: none; }
 .section-head h2 a:hover { color: var(--green-deep); }
 .section-head .more { font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-sm); color: var(--ink-2); text-decoration: none; white-space: nowrap; padding-block: 0.45rem; }
 .section-head .more:hover { color: var(--green); text-decoration: underline; }
 
 /* ----- The kicker (العنوان التمهيدي): the topic above a headline, as every Arabic desk sets it.
-   Tajawal 700, green, small; a link to the topic's file. Only on stories that lead: the cover,
-   secondaries, features and the article page, never on thumbnails or briefs. ----- */
-.kicker { display: block; font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-xs); line-height: 1.4; color: var(--green); margin-bottom: 0.3rem; letter-spacing: 0; }
+   Tajawal 700, green, at the meta line's size (at the smaller step it sat under the headline smaller than the
+   dateline below it); a link to the topic's page. Only on stories that lead: the cover, secondaries, features and
+   the article page, never on thumbnails or briefs. ----- */
+.kicker { display: block; font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-sm); line-height: 1.4; color: var(--green); margin-bottom: 0.3rem; letter-spacing: 0; }
 .kicker a { color: inherit; text-decoration: none; display: inline-block; padding-block: 0.3rem; margin-block: -0.3rem; }
 .kicker a:hover { text-decoration: underline; }
+
+/* ----- A page head's section label and its topics line (section, topic, desk and kind pages; one rule, it was
+   copied into four pages). The subjects are set in the reading face in bold, as the files row sets them, the
+   label and the counts in the furniture face. ----- */
+.page-head__section { font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-sm); margin-bottom: 0.3rem; }
+.page-head__section a { color: var(--green); text-decoration: none; }
+.page-head__section a:hover { text-decoration: underline; }
+.page-head__topics { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 1.1rem; margin-top: 0.8rem; font-size: var(--fs-sm); color: var(--ink-3); }
+.page-head__topics-label { font-family: var(--font-ui); font-weight: 700; color: var(--ink-2); }
+.page-head__topics a { font-family: var(--font-body); font-weight: 700; font-size: var(--n-text); color: var(--ink-2); text-decoration: none; }
+.page-head__topics a bdi { font-family: var(--font-ui); font-weight: 500; font-size: var(--fs-xs); color: var(--ink-3); }
+.page-head__topics a:hover { color: var(--green); text-decoration: underline; }
+
+/* ----- «من مادة»: the story a chart or a figure comes from, under it: the label in the furniture face, the
+   headline as a headline (until 2026-09-27 the chart's was set in the furniture face and the figure's in the head
+   face at a size of its own). ----- */
+.module__from { margin-top: 0.5rem; }
+.module__from-label { display: block; font-size: var(--fs-xs); line-height: 1.5; color: var(--ink-3); }
+.module__from a { display: block; font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; color: var(--ink-2); text-decoration: none; }
+.module__from a:hover { color: var(--green); }
 
 /* ----- Module headings: the section head's green word on a hairline, at module size, with a 3.5rem
    green tab at the start. One device for every labelled block on the site: the front's modules, an
    article's figures, sources and reading rail, the footer's columns. The 3px ink rule is reserved
    for page heads and the close of the cover. ----- */
-.module__head { font-family: var(--font-title); font-weight: 700; font-size: 1.15rem; line-height: 1.3; color: var(--green); border-bottom: 1px solid var(--rule); padding-bottom: 0.35rem; margin-bottom: 0.6rem; position: relative; }
+.module__head { font-family: var(--font-title); font-weight: 700; font-size: var(--t-module); line-height: 1.3; color: var(--green); border-bottom: 1px solid var(--rule); padding-bottom: 0.35rem; margin-bottom: 0.6rem; position: relative; }
 .module__head::after { content: ""; position: absolute; inset-inline-start: 0; bottom: -1px; width: 3.5rem; border-bottom: 3px solid var(--green); }
 .module__head a { text-decoration: none; }
 .module__head a:hover { color: var(--green-deep); }
@@ -326,6 +385,14 @@ bdi.latin--short, bdi.latin .nb { white-space: nowrap; }
   .cols > *:nth-child(even) { padding-inline-end: 0; }
   .cols > *:nth-child(n + 3) { border-top: 1px solid var(--rule); padding-top: 1.25rem; }
 }
+/* Ruled columns three to a row over several rows (the analysis desks, the explainer kinds): each row starts
+   without a rule and every row after the first opens with a hairline, as .cols does two to a row below 1024px. */
+@media (min-width: 1024px) {
+  .cols--rows > *:nth-child(3n + 1) { padding-inline-start: 0; border-inline-start: 0; }
+  .cols--rows > *:nth-child(3n) { padding-inline-end: 0; }
+  .cols--rows > *:last-child:not(:nth-child(3n)) { padding-inline-end: var(--col-gap); }
+  .cols--rows > *:nth-child(n + 4) { border-top: 1px solid var(--rule); padding-top: 1.25rem; }
+}
 @media (max-width: 599px) {
   .cols { grid-template-columns: 1fr; row-gap: 1.1rem; }
   .cols > * { padding-inline: 0 !important; border-inline-start: 0 !important; }
@@ -338,11 +405,11 @@ bdi.latin--short, bdi.latin .nb { white-space: nowrap; }
 .page-title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(2rem, 1.6rem + 1.6vw, 2.9rem);
+  font-size: var(--t-display);
   line-height: 1.3;
   color: var(--ink);
 }
-.page-intro { font-family: var(--font-body); font-size: 1.12rem; line-height: 1.75; color: var(--ink-2); max-width: 40rem; margin-top: 0.4rem; }
+.page-intro { font-family: var(--font-body); font-size: var(--n-lead); line-height: 1.75; color: var(--ink-2); max-width: 40rem; margin-top: 0.4rem; }
 
 /* ----- Motion: things settle, nothing travels -----
    The owner, 2026-09-27, after annahar.com's stories fading in on scroll: "i like annahar effects". Below the first

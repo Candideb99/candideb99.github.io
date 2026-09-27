@@ -7,7 +7,7 @@ import { quotes, GLANCE_IDS } from "@lib/markets";
 import { analysisLabel } from "@lib/analysis";
 import { topicCounts, topicHref } from "@lib/topics";
 import type { Article } from "@lib/articles";
-import { getArticles, getArticlesBySection } from "@lib/articles";
+import { getArticles, getArticlesBySection, firstPictures } from "@lib/articles";
 import { sections, HUB_SECTIONS, type Section } from "@lib/sections";
 import { cardSizes } from "@lib/wikimedia";
 
@@ -46,6 +46,7 @@ const [lead, ...others] = page.data;
 const besideCount = others.length <= 5 ? others.length : 3;
 const beside = first ? others.slice(0, besideCount) : [];
 const rest = first ? others.slice(besideCount) : page.data;
+const pics = firstPictures(first ? [lead, ...beside, ...rest] : rest);
 const title = first ? section.name : `${section.name} — صفحة ${page.currentPage}`;
 // The markets section carries a glance at the data under its lead block, as the business dailies do.
 const glance = first && section.id === "markets" ? quotes(GLANCE_IDS) : [];
@@ -78,7 +79,7 @@ const topics = first ? topicCounts(await getArticles(), section.id).filter((t) =
             {beside.length > 0 && (
               <div class="section-page__beside">
                 {beside.map((a) => (
-                  <StoryCard article={a} variant="list" showSection={showKind} label={analysisLabel(a, all)} showExcerpt />
+                  <StoryCard article={a} variant="list" showSection={showKind} label={analysisLabel(a, all)} showExcerpt showPhoto={pics.has(a.id)} />
                 ))}
               </div>
             )}
@@ -100,7 +101,7 @@ const topics = first ? topicCounts(await getArticles(), section.id).filter((t) =
         {rest.length > 0 && (
           <div class={`section-page__rest ${rest.length < 3 ? "cards cards--list" : "cards"}`} style={`--n:${Math.min(rest.length, 4)}`}>
             {rest.map((a, i) => (
-              <StoryCard article={a} variant={rest.length < 3 ? "list" : "card"} showSection={showKind} label={analysisLabel(a, all)} showExcerpt={!a.data.image} eager={!first && i < 4} sizes={rest.length < 3 ? undefined : cardSizes(Math.min(rest.length, 4))} />
+              <StoryCard article={a} variant={rest.length < 3 ? "list" : "card"} showSection={showKind} label={analysisLabel(a, all)} showPhoto={pics.has(a.id)} showExcerpt={!pics.has(a.id)} eager={!first && i < 4} sizes={rest.length < 3 ? undefined : cardSizes(Math.min(rest.length, 4))} />
             ))}
           </div>
         )}
@@ -136,11 +137,6 @@ const topics = first ? topicCounts(await getArticles(), section.id).filter((t) =
   .section-page__beside > :global(.card:first-child) { border-top: 0; padding-top: 0.1rem; }
   .section-page__rest { margin-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--ink); padding-top: 1.25rem; }
   .page-head__link { display: inline-block; margin-top: 0.6rem; font-weight: 700; font-size: var(--fs-sm); color: var(--green); text-decoration: none; }
-  .page-head__topics { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; margin-top: 0.8rem; font-size: var(--fs-sm); color: var(--ink-3); }
-  .page-head__topics-label { font-weight: 700; color: var(--ink-2); }
-  .page-head__topics a { color: var(--ink-2); text-decoration: none; font-weight: 700; }
-  .page-head__topics a bdi { color: var(--ink-3); font-weight: 400; }
-  .page-head__topics a:hover { color: var(--green); text-decoration: underline; }
   .page-head__link:hover { text-decoration: underline; }
   /* The glance band: six quote cards in ruled columns between the lead block and the rest. */
   .glance { margin-top: clamp(1.5rem, 3vw, 2.5rem); }
@@ -155,6 +151,8 @@ const topics = first ? topicCounts(await getArticles(), section.id).filter((t) =
   .glance__cell + .glance__cell { border-inline-start: 1px solid var(--rule); }
   @media (max-width: 1023px) {
     .glance__row { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 1rem; }
+  }
+  @media (min-width: 600px) and (max-width: 1023px) {
     .glance__cell:nth-child(3) { padding-inline-end: 0; }
     .glance__cell:nth-child(4) { padding-inline-start: 0; border-inline-start: 0; }
   }
@@ -166,20 +164,20 @@ const topics = first ? topicCounts(await getArticles(), section.id).filter((t) =
     .glance__cell:nth-child(3) { padding-inline-end: 0.75rem; }
   }
   /* The lead runs like the cover: headline first in the reading direction, photograph beside it. */
-  .section-page__lead :global(.card--lead) { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 0 clamp(1.25rem, 3vw, 2.5rem); align-items: center; }
-  /* The section lead has two thirds of the cover's measure, so its headline steps down a size. */
-  .section-page__lead :global(.card--lead .card__title) { font-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.3rem); line-height: 1.3; }
+  /* Text beside the photograph only when there is one: a lead without a photo kept the two columns and left half
+     its block blank (2026-09-27). */
+  .section-page__lead :global(.card--lead.card--photo) { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 0 clamp(1.25rem, 3vw, 2.5rem); align-items: start; }
   .section-page__lead :global(.card--lead .card__photo) { order: 2; margin-bottom: 0; }
   .section-page__lead :global(.card--lead .card__body) { order: 1; }
 
   .pager { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--rule); padding-top: 0.9rem; }
-  .pager__step { font-family: var(--font-ui); font-weight: 700; font-size: 0.92rem; color: var(--green); text-decoration: none; padding: 0.4rem 0.8rem 0.3rem; border: 1px solid var(--rule); }
+  .pager__step { font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-sm); color: var(--green); text-decoration: none; padding: 0.4rem 0.8rem 0.3rem; border: 1px solid var(--rule); }
   .pager__step:hover { border-color: var(--green); }
-  .pager__step--off { color: var(--ink-3); border-color: var(--rule); opacity: 0.5; }
+  .pager__step--off { color: var(--ink-3); border-color: var(--rule); }
   .pager__count { font-size: var(--fs-sm); color: var(--ink-3); }
 
   @media (max-width: 719px) {
-    .section-page__lead :global(.card--lead) { grid-template-columns: 1fr; gap: 0.6rem 0; align-items: start; }
+    .section-page__lead :global(.card--lead.card--photo) { grid-template-columns: 1fr; gap: 0.6rem 0; align-items: start; }
     .section-page__lead :global(.card--lead .card__photo) { order: 1; }
     .section-page__lead :global(.card--lead .card__body) { order: 2; }
   }

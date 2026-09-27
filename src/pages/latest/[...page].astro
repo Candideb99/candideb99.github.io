@@ -8,7 +8,7 @@ import type { GetStaticPaths, Page } from "astro";
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
 import type { Article } from "@lib/articles";
-import { getArticles } from "@lib/articles";
+import { getArticles, firstPictures } from "@lib/articles";
 import { analysisLabel } from "@lib/analysis";
 import { formatDate } from "@lib/format";
 
@@ -24,6 +24,7 @@ const { page } = Astro.props;
 const all = await getArticles();
 const title = page.currentPage === 1 ? "الأحدث" : `الأحدث — صفحة ${page.currentPage}`;
 // Consecutive stories of one day (in the paper's own zone) share a dated head.
+const pics = firstPictures(page.data);
 const days: { label: string; items: Article[] }[] = [];
 for (const a of page.data) {
   const label = formatDate(a.data.publishedAt);
@@ -44,7 +45,7 @@ for (const a of page.data) {
         <section class="latest__day" aria-label={day.label}>
           <h2 class="latest__date ui">{day.label}</h2>
           {day.items.map((a) => (
-            <StoryCard article={a} variant="list" showExcerpt label={analysisLabel(a, all)} eager={false} />
+            <StoryCard article={a} variant="list" showExcerpt showPhoto={pics.has(a.id)} label={analysisLabel(a, all)} eager={false} />
           ))}
         </section>
       ))}
@@ -67,8 +68,8 @@ for (const a of page.data) {
   .latest__day > :global(.card) { padding-block: 0.85rem; border-top: 1px solid var(--rule); }
   .latest__day > :global(.latest__date + .card) { border-top: 0; }
   .pager { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--rule); padding-top: 0.9rem; max-width: 56rem; }
-  .pager__step { font-family: var(--font-ui); font-weight: 700; font-size: 0.92rem; color: var(--green); text-decoration: none; padding: 0.4rem 0.8rem 0.3rem; border: 1px solid var(--rule); }
+  .pager__step { font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-sm); color: var(--green); text-decoration: none; padding: 0.4rem 0.8rem 0.3rem; border: 1px solid var(--rule); }
   .pager__step:hover { border-color: var(--green); }
-  .pager__step--off { color: var(--ink-3); border-color: var(--rule); opacity: 0.5; }
+  .pager__step--off { color: var(--ink-3); border-color: var(--rule); }
   .pager__count { font-size: var(--fs-sm); color: var(--ink-3); }
 </style>

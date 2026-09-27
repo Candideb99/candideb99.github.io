@@ -9,7 +9,7 @@
  */
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
-import { getArticles } from "@lib/articles";
+import { getArticles, firstPictures } from "@lib/articles";
 import { getSection, sectionHref, newsSections } from "@lib/sections";
 import { topicsOf, topicArticles, topicHref, type Topic } from "@lib/topics";
 import { countLabel } from "@lib/format";
@@ -34,6 +34,7 @@ interface Props {
 const { section, topic, items, fallback } = Astro.props;
 const sec = getSection(section);
 const n = items.length;
+const pics = firstPictures(n > 0 ? items : fallback);
 const countWord = countLabel(n);
 const siblings = topicsOf(section).filter((t) => t.id !== topic.id);
 ---
@@ -51,18 +52,11 @@ const siblings = topicsOf(section).filter((t) => t.id !== topic.id);
     </header>
     <div class={`${(n > 0 ? items : fallback).length < 3 ? "cards cards--list" : "cards"}`} style={`--n:${Math.min((n > 0 ? items : fallback).length, 4)}`}>
       {(n > 0 ? items : fallback).map((a, i) => (
-        <StoryCard article={a} variant={(n > 0 ? items : fallback).length < 3 ? "list" : "card"} showSection={a.data.section !== section} showExcerpt={!a.data.image} eager={i < 4} />
+        <StoryCard article={a} variant={(n > 0 ? items : fallback).length < 3 ? "list" : "card"} showSection={a.data.section !== section} showPhoto={pics.has(a.id)} showExcerpt={!pics.has(a.id)} eager={i < 4} />
       ))}
     </div>
   </section>
 </Base>
 
 <style>
-  .page-head__section { font-weight: 700; font-size: var(--fs-sm); margin-bottom: 0.3rem; }
-  .page-head__section a { color: var(--green); text-decoration: none; }
-  .page-head__section a:hover { text-decoration: underline; }
-  .page-head__topics { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; margin-top: 0.8rem; font-size: var(--fs-sm); color: var(--ink-3); }
-  .page-head__topics-label { font-weight: 700; color: var(--ink-2); }
-  .page-head__topics a { color: var(--ink-2); text-decoration: none; font-weight: 700; }
-  .page-head__topics a:hover { color: var(--green); text-decoration: underline; }
 </style>

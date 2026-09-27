@@ -70,10 +70,10 @@ const year = new Date().getUTCFullYear();
   .footer__logo { display: inline-flex; align-items: center; gap: 0.7rem; color: var(--green); text-decoration: none; }
   /* Amiri 700, not 400: the regular weight is a 125 kB download and the tagline was its only
      site-wide user, so it now loads solely on the rare article that carries a blockquote. */
-  .footer__tagline { font-family: var(--font-title); font-weight: 700; font-size: 1.02rem; margin-top: 0.4rem; color: var(--ink-2); }
-  .footer__note { margin-top: 0.75rem; font-size: 0.98rem; line-height: 1.8; max-width: 34rem; color: var(--ink-2); }
+  .footer__tagline { font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); margin-top: 0.4rem; color: var(--ink-2); }
+  .footer__note { margin-top: 0.75rem; font-size: var(--n-text); line-height: 1.8; max-width: 34rem; color: var(--ink-2); }
   .footer__col li { margin-block: 0.25rem; }
-  .footer__col a { font-family: var(--font-body); font-size: 1rem; text-decoration: none; color: var(--ink-2); }
+  .footer__col a { font-family: var(--font-body); font-size: var(--n-text); text-decoration: none; color: var(--ink-2); }
   .footer__col a:hover { color: var(--green); text-decoration: underline; }
   .footer__rss { display: inline-flex; align-items: center; gap: 0.35rem; }
   .footer__bottom { border-top: 1px solid var(--rule); padding-top: 0.9rem; font-size: var(--fs-xs); line-height: 1.6; color: var(--ink-3); display: grid; gap: 0.2rem; }
@@ -84,5 +84,7 @@ const year = new Date().getUTCFullYear();
   @media (max-width: 599px) {
     .footer__grid { grid-template-columns: 1fr 1fr; }
     .footer__brand { grid-column: 1 / -1; }
+    .footer__grid > .footer__col:last-child { grid-column: 1 / -1; }
+    .footer__grid > .footer__col:last-child ul { columns: 2; column-gap: clamp(1.5rem, 4vw, 3rem); }
   }
 </style>

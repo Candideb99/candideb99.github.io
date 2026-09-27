@@ -1,0 +1,7 @@
+# Cloudflare Pages response headers (https://developers.cloudflare.com/pages/configuration/headers/).
+# The fonts never change under their names, so a reader's browser keeps them for a year instead of asking again on
+# every page: Tajawal is `font-display: optional` and is used only when it is there at the first paint, and with the
+# default `max-age=0, must-revalidate` a slow round trip dropped it on the second page too (2026-09-27). A changed
+# font file must take a new name.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

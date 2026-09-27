@@ -34,13 +34,16 @@ const headingId = `facts-${placement}`;
   .facts { border-bottom: 1px solid var(--rule); padding: 0 0 0.9rem; }
   .facts__list { margin: 0; display: grid; }
   /* The term (label) comes first in the markup, as a definition list requires, and prints under its value. */
-  .facts__item { display: flex; flex-direction: column-reverse; gap: 0.05rem; padding-block: 0.55rem; border-top: 1px solid var(--rule); }
+  /* Value over label (the label comes first in the markup); pushed to the top of the cell, so the values of a row
+     start level, and no rule over the first row, which sits under the head's own hairline. */
+  .facts__item { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 0.05rem; padding-block: 0.55rem; border-top: 1px solid var(--rule); }
+  .facts__item:first-child { border-top: 0; }
   .facts__label:empty { display: none; }
   .facts__value {
     margin: 0;
     font-family: var(--font-title);
     font-weight: 700;
-    font-size: 1.4rem;
+    font-size: var(--t-feature);
     line-height: 1.25;
     color: var(--ink);
     font-variant-numeric: tabular-nums lining-nums;
@@ -48,11 +51,13 @@ const headingId = `facts-${placement}`;
   .facts__label { font-family: var(--font-ui); font-weight: 500; font-size: var(--fs-sm); color: var(--ink-3); line-height: 1.4; }
   /* A glossary reads term first, then its definition at reading size: a sentence set as a 1.4rem figure shouts. */
   .facts--terms .facts__item { flex-direction: column; gap: 0.15rem; }
-  .facts--terms .facts__label { font-family: var(--font-title); font-weight: 700; font-size: 1.05rem; color: var(--ink); line-height: 1.35; }
-  .facts--terms .facts__value { font-family: var(--font-body); font-weight: 400; font-size: var(--fs-sm); line-height: 1.7; color: var(--ink-2); font-variant-numeric: normal; }
+  .facts--terms .facts__label { font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); color: var(--ink); line-height: 1.35; }
+  .facts--terms .facts__value { font-family: var(--font-body); font-weight: 400; font-size: var(--n-text); line-height: 1.7; color: var(--ink-2); font-variant-numeric: normal; }
   .facts--inline { display: none; margin-bottom: 1.5rem; max-width: var(--measure); }
   .facts--inline .facts__list { grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); column-gap: 1rem; }
   .facts--inline.facts--terms .facts__list { grid-template-columns: 1fr; }
+  @media (min-width: 600px) { .facts--inline:not(.facts--terms) .facts__item:nth-child(-n + 4) { border-top: 0; } }
+  @media (max-width: 599px) { .facts--inline:not(.facts--terms) .facts__item:nth-child(-n + 2) { border-top: 0; } }
   @media (max-width: 1023px) {
     .facts--inline { display: block; }
     .facts--side { display: none; }

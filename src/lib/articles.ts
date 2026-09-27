@@ -109,6 +109,24 @@ export function articleHref(article: Article): string {
   return `/articles/${article.data.slug}/`;
 }
 
+/**
+ * A picture is printed once per page even when two stories share it (the picture desk falls back to the same
+ * Commons illustration of a sector): the ids of the stories that print theirs, the first in the page's order to carry
+ * each file. Later ones run as text. Until 2026-09-27 only the front page kept the rule, and a topic page printed
+ * one tanker twice.
+ */
+export function firstPictures(order: (Article | undefined)[]): Set<string> {
+  const seen = new Set<string>();
+  const ids = new Set<string>();
+  for (const a of order) {
+    const url = a?.data.image?.url;
+    if (!a || !url || seen.has(url)) continue;
+    seen.add(url);
+    ids.add(a.id);
+  }
+  return ids;
+}
+
 // Words a headline shares with any other and that say nothing about the event.
 const STOP_WORDS = new Set(["علي", "بعد", "قبل", "حول", "دون", "منذ", "بين", "عبر", "خلال", "وسط", "امام", "عند", "حتي", "التي", "الذي", "هذا", "هذه", "اول", "اكثر", "اقل", "مع"]);
 

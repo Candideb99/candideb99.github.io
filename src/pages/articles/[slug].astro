@@ -232,19 +232,19 @@ const jsonLd = [articleLd, breadcrumbLd];
   /* اقرأ أيضاً inside the text, after the third paragraph, as the desks place it: a ruled line, not a box. */
   .also { max-width: var(--measure); margin: 1.25rem 0 1.5rem; padding: 0.55rem 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.75rem; }
   .also__head { font-weight: 700; font-size: var(--fs-xs); color: var(--green); white-space: nowrap; }
-  .also__link { font-family: var(--font-title); font-weight: 700; font-size: 1.05rem; line-height: 1.45; text-decoration: none; }
+  .also__link { font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; color: var(--ink); text-decoration: none; }
   .also__link:hover { color: var(--green); }
   .article__title {
     font-family: var(--font-title);
     font-weight: 700;
-    font-size: clamp(1.85rem, 1.3rem + 2vw, 2.75rem);
+    font-size: var(--t-display);
     line-height: 1.3;
     color: var(--ink);
   }
   .article__dek {
     font-family: var(--font-body);
-    font-size: clamp(1.1rem, 1rem + 0.4vw, 1.3rem);
-    line-height: 1.7;
+    font-size: var(--n-dek);
+    line-height: 1.65;
     color: var(--ink-2);
     margin-top: 0.7rem;
     max-width: 44rem;
@@ -272,8 +272,8 @@ const jsonLd = [articleLd, breadcrumbLd];
   .article__lede {
     font-family: var(--font-body);
     font-weight: 700;
-    font-size: clamp(1.18rem, 1.08rem + 0.4vw, 1.35rem);
-    line-height: 1.8;
+    font-size: var(--n-body);
+    line-height: 1.85;
     margin-bottom: 1.25rem;
     max-width: var(--measure);
     text-align: justify;
@@ -284,13 +284,13 @@ const jsonLd = [articleLd, breadcrumbLd];
   /* «لماذا يهمّ» closes the story, ruled off from it (the owner, 2026-09-27): a 1px ink rule opens it as it opens the
      corrections and the related line, and its text sits a step under the body's, so it never reads as a paragraph. */
   .why { margin: 2.25rem 0 0.5rem; max-width: var(--measure); border-top: 1px solid var(--ink); padding-top: 0.85rem; border-bottom: 1px solid var(--rule); padding-bottom: 1rem; }
-  .why__text { margin: 0; font-family: var(--font-body); font-size: 1.08rem; line-height: 1.85; text-align: justify; text-align-last: start; }
+  .why__text { margin: 0; font-family: var(--font-body); font-size: var(--n-text); line-height: 1.85; text-align: justify; text-align-last: start; }
   .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.5rem; }
   /* The correction note: a ruled line under the text, like اقرأ أيضاً, never a box. */
   .corrections { max-width: var(--measure); margin-top: 1.5rem; padding-block: 0.6rem; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); }
-  .corrections__head { font-weight: 800; font-size: var(--fs-xs); color: var(--green); margin-bottom: 0.25rem; }
-  .corrections__item { font-size: var(--fs-sm); line-height: 1.8; color: var(--ink-2); }
-  .corrections__item time { font-weight: 700; color: var(--ink-3); margin-inline-end: 0.5rem; }
+  .corrections__head { font-weight: 700; font-size: var(--fs-xs); color: var(--green); margin-bottom: 0.25rem; }
+  .corrections__item { font-family: var(--font-body); font-size: var(--n-text); line-height: 1.8; color: var(--ink-2); }
+  .corrections__item time { font-size: var(--fs-sm); font-weight: 700; color: var(--ink-3); margin-inline-end: 0.5rem; }
 
   .article__side { border-inline-start: 1px solid var(--rule); padding-inline-start: clamp(1.5rem, 3vw, 2.5rem); display: grid; gap: 2rem; align-content: start; align-self: stretch; }
   .side-related__list { display: grid; }
@@ -313,7 +313,7 @@ const jsonLd = [articleLd, breadcrumbLd];
        spaces wide; at the text's size it keeps the column even. Even so the phone's column still opened
        gaps near four spaces wide, so on a phone the lede and لماذا يهمّ run flush to the start like the
        body (the owner, 2026-09-27). */
-    .article__lede { font-size: 1.12rem; line-height: 1.85; text-align: start; }
+    .article__lede { text-align: start; }
     .why__text { text-align: start; }
   }
 </style>

@@ -11,14 +11,12 @@ const files = [
   ["@fontsource/amiri/files/amiri-latin-700-normal.woff2", "amiri-latin-700.woff2"],
   ["@fontsource-variable/noto-naskh-arabic/files/noto-naskh-arabic-arabic-wght-normal.woff2", "naskh-arabic.woff2"],
   ["@fontsource-variable/noto-naskh-arabic/files/noto-naskh-arabic-latin-wght-normal.woff2", "naskh-latin.woff2"],
-  ["@fontsource/tajawal/files/tajawal-arabic-400-normal.woff2", "tajawal-arabic-400.woff2"],
+  // Two weights of the furniture face, 500 and 700 (400 and 800 were dropped on 2026-09-27: fewer voices, and every
+  // file is preloaded, which only pays with few of them).
   ["@fontsource/tajawal/files/tajawal-arabic-500-normal.woff2", "tajawal-arabic-500.woff2"],
   ["@fontsource/tajawal/files/tajawal-arabic-700-normal.woff2", "tajawal-arabic-700.woff2"],
-  ["@fontsource/tajawal/files/tajawal-arabic-800-normal.woff2", "tajawal-arabic-800.woff2"],
-  ["@fontsource/tajawal/files/tajawal-latin-400-normal.woff2", "tajawal-latin-400.woff2"],
   ["@fontsource/tajawal/files/tajawal-latin-500-normal.woff2", "tajawal-latin-500.woff2"],
   ["@fontsource/tajawal/files/tajawal-latin-700-normal.woff2", "tajawal-latin-700.woff2"],
-  ["@fontsource/tajawal/files/tajawal-latin-800-normal.woff2", "tajawal-latin-800.woff2"],
 ];
 
 await mkdir(out, { recursive: true });

@@ -35,10 +35,10 @@ const events = upcoming(limit);
 
 <style>
   .agenda__list { display: grid; }
-  .agenda__item { display: grid; grid-template-columns: 6.2rem minmax(0, 1fr); column-gap: 0.6rem; align-items: baseline; padding-block: 0.42rem; border-top: 1px solid var(--rule); }
+  .agenda__item { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); column-gap: 0.6rem; align-items: baseline; padding-block: 0.42rem; border-top: 1px solid var(--rule); }
   .agenda__item:first-child { border-top: 0; padding-top: 0; }
-  .agenda__day { font-size: var(--fs-xs); font-weight: 700; color: var(--green); line-height: 1.5; }
-  .agenda__title { font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; line-height: 1.5; text-decoration: none; color: var(--ink); }
+  .agenda__day { font-size: var(--fs-sm); font-weight: 700; color: var(--green); line-height: 1.5; white-space: nowrap; }
+  .agenda__title { font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; text-decoration: none; color: var(--ink); }
   .agenda__title:hover { color: var(--green); }
   .agenda__foot { margin-top: 0.5rem; font-size: var(--fs-xs); line-height: 1.55; color: var(--ink-3); }
   .agenda__foot a { font-weight: 700; color: var(--ink-2); text-decoration: none; }

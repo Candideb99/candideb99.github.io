@@ -273,7 +273,7 @@ for (const s of sections) {
     padding: 0.62rem 1.1rem 0.5rem;
     font-family: var(--font-body);
     font-weight: 700;
-    font-size: 1rem;
+    font-size: var(--n-text);
     line-height: 1.4;
     white-space: nowrap;
     color: #fcfcf9;
@@ -310,9 +310,9 @@ for (const s of sections) {
   .menu__button { list-style: none; cursor: pointer; }
   .menu__button::-webkit-details-marker { display: none; }
   .menu__panel { position: absolute; inset-inline: 0; top: 100%; z-index: 40; display: grid; background: var(--paper); border: 1px solid var(--rule); border-top: 0; border-bottom: 2px solid var(--ink); padding: 0.2rem 1rem 0.8rem; }
-  .menu__head { font-weight: 800; font-size: var(--fs-xs); color: var(--green); padding-block: 0.7rem 0.3rem; }
+  .menu__head { font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-xs); color: var(--green); padding-block: 0.7rem 0.3rem; }
   .menu__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1rem; }
-  .menu__list a { display: block; padding-block: 0.62rem; border-top: 1px solid var(--rule); font-family: var(--font-body); font-weight: 700; font-size: 1.02rem; line-height: 1.5; color: var(--ink); text-decoration: none; }
+  .menu__list a { display: block; padding-block: 0.62rem; border-top: 1px solid var(--rule); font-family: var(--font-body); font-weight: 700; font-size: var(--n-text); line-height: 1.5; color: var(--ink); text-decoration: none; }
   .menu__list a:hover, .menu__list a:focus-visible { color: var(--green); }
   .menu__list a[aria-current="page"] { color: var(--green); }
 
@@ -327,10 +327,10 @@ for (const s of sections) {
   .nav__col--wide { max-width: 22rem; }
   .nav__col--two ul { columns: 2; column-gap: 1.4rem; }
   .nav__col--two li { break-inside: avoid; }
-  .nav__head { font-weight: 800; font-size: var(--fs-xs); color: var(--green); margin-bottom: 0.45rem; }
+  .nav__head { font-weight: 700; font-size: var(--fs-xs); color: var(--green); margin-bottom: 0.45rem; }
   .nav__col li { padding-block: 0.16rem; }
-  .nav__col a { font-family: var(--font-body); font-size: 0.96rem; line-height: 1.45; color: var(--ink-2); text-decoration: none; white-space: nowrap; }
-  .nav__col .nav__title a { font-family: var(--font-title); font-weight: 700; font-size: 0.98rem; color: var(--ink); white-space: normal; display: block; padding-block: 0.1rem; }
+  .nav__col a { font-family: var(--font-body); font-size: var(--n-text); line-height: 1.45; color: var(--ink-2); text-decoration: none; white-space: nowrap; }
+  .nav__col .nav__title a { font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); color: var(--ink); white-space: normal; display: block; padding-block: 0.1rem; }
   .nav__col a:hover, .nav__col a:focus-visible { color: var(--green); text-decoration: underline; }
   /* A two-column topic list may wrap its names when the panel is held to the bar's width. */
   .nav__col--two a { white-space: normal; }

@@ -13,7 +13,6 @@ interface Props {
 const { quote: q, href = "/markets/data/" } = Astro.props;
 const dir = direction(q);
 const spark = sparkline(q, 96, 28);
-const arrow = dir === "up" ? "▲" : dir === "down" ? "▼" : "•";
 const stroke = dir === "up" ? "var(--up)" : dir === "down" ? "var(--down)" : "var(--ink-3)";
 ---
 
@@ -24,7 +23,7 @@ const stroke = dir === "up" ? "var(--up)" : dir === "down" ? "var(--down)" : "va
   <span class="quote__row">
     <bdi class="quote__price ui">{formatPrice(q)}</bdi>
     {dir !== "none" ? (
-      <Fragment><span class="visually-hidden">{DIRECTION_LABEL[dir]}</span><bdi class="quote__move ui"><span class="quote__arrow" aria-hidden="true">{arrow}</span>{formatMove(q)}</bdi></Fragment>
+      <Fragment><span class="visually-hidden">{DIRECTION_LABEL[dir]}</span><bdi class="quote__move ui"><span class="quote__arrow mark-dir" data-dir={dir} aria-hidden="true"></span>{formatMove(q)}</bdi></Fragment>
     ) : (
       <span class="quote__move quote__move--na ui">—</span>
     )}
@@ -37,18 +36,19 @@ const stroke = dir === "up" ? "var(--up)" : dir === "down" ? "var(--down)" : "va
 </a>
 
 <style>
-  .quote { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "name spark" "note spark" "row spark"; column-gap: 0.75rem; align-items: end; text-decoration: none; color: var(--ink); min-width: 0; }
-  .quote__name { grid-area: name; font-family: var(--font-body); font-weight: 700; font-size: 1rem; line-height: 1.4; }
+  .quote { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "name" "note" "row" "spark"; align-items: end; text-decoration: none; color: var(--ink); min-width: 0; }
+  .quote__name { grid-area: name; font-family: var(--font-body); font-weight: 700; font-size: var(--n-text); line-height: 1.4; }
   .quote:hover .quote__name { color: var(--green); }
   .quote__note { grid-area: note; font-size: var(--fs-xs); color: var(--ink-3); line-height: 1.35; }
-  .quote__row { grid-area: row; display: flex; align-items: baseline; gap: 0.55rem; margin-top: 0.15rem; }
-  .quote__price { font-size: 1.28rem; font-weight: 700; line-height: 1.2; direction: ltr; unicode-bidi: isolate; }
+  /* In a phone's narrow card the move goes under the level as a whole, never split from its mark. */
+  .quote__row { grid-area: row; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 0.55rem; margin-top: 0.15rem; }
+  .quote__price { font-size: 1.25rem; font-weight: 700; line-height: 1.2; direction: ltr; unicode-bidi: isolate; }
   .quote__move { font-size: var(--fs-sm); font-weight: 700; direction: ltr; unicode-bidi: isolate; }
   .quote--up .quote__move { color: var(--up); }
   .quote--down .quote__move { color: var(--down); }
   .quote--flat .quote__move, .quote__move--na { color: var(--ink-3); }
-  .quote__arrow { font-size: 0.6em; vertical-align: 0.15em; margin-inline-end: 0.15em; }
-  .quote__spark { grid-area: spark; display: block; align-self: end; margin-bottom: 0.2rem; width: 5.5rem; height: auto; flex: none; }
-  @media (max-width: 599px) { .quote__spark { width: 4rem; } }
+  /* The month's line under the level, the width of a short figure: squeezed beside it in a narrow card it shrank
+     to a dash (2026-09-27). */
+  .quote__spark { grid-area: spark; display: block; margin-top: 0.4rem; width: 100%; max-width: 7rem; height: auto; }
   .is-stale .quote__price { color: var(--ink-3); }
 </style>

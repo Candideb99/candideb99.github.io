@@ -60,18 +60,21 @@ const latin = (t: string) => /[A-Za-z]/.test(t) && !/[؀-ۿ]/.test(t);
   .sources__list { margin-top: 0.4rem; display: grid; }
   .sources__item {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-columns: 8rem minmax(0, 1fr);
     gap: 0.1rem 0.75rem;
     align-items: baseline;
     padding-block: 0.6rem;
     border-top: 1px solid var(--rule);
   }
   .sources__item:first-child { border-top: 0; }
-  .sources__name { font-weight: 700; font-size: var(--fs-sm); color: var(--green); white-space: nowrap; }
-  .sources__title { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--ink); overflow-wrap: anywhere; }
-  /* An English headline takes the site's Latin face at the Arabic titles' size: the Arabic faces fell back to
-     Amiri's Latin, which ran visibly larger than the Arabic around it (2026-09-24). */
-  .sources__title bdi:lang(en) { font-family: var(--font-ui); font-size: 0.94rem; }
+  .sources__name { font-weight: 700; font-size: var(--fs-sm); color: var(--green); }
+  @media (max-width: 599px) {
+    .sources__item { grid-template-columns: minmax(0, 1fr); }
+    .sources__host { grid-column: 1; }
+  }
+  .sources__title { font-family: var(--font-body); font-size: var(--n-text); line-height: 1.6; color: var(--ink); overflow-wrap: anywhere; }
+  /* An English headline is set in the reading face's own Latin, like the Arabic titles around it (until 2026-09-27
+     it took the furniture face, which the renderer was drawing in the system's Segoe UI). */
   .sources__host { grid-column: 2; display: flex; gap: 0.6rem; font-size: var(--fs-xs); color: var(--ink-3); }
-  .sources__none, .sources__note { font-family: var(--font-ui); font-size: var(--fs-sm); line-height: 1.6; color: var(--ink-3); margin-top: 0.9rem; }
+  .sources__none, .sources__note { font-family: var(--font-body); font-size: var(--n-text); line-height: 1.7; color: var(--ink-3); margin-top: 0.9rem; }
 </style>

@@ -62,33 +62,29 @@ const hasPhoto = Boolean(image) && showPhoto && variant !== "text";
 <style>
   .card { display: flex; flex-direction: column; gap: 0.55rem; min-width: 0; }
   .card__photo { display: block; text-decoration: none; }
-  .card__title { font-family: var(--font-title); font-weight: 700; font-size: 1.12rem; line-height: 1.45; }
+  .card__title { font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; }
   .card__title a { text-decoration: none; }
   .card__title a:hover { color: var(--green); }
-  .card__summary { font-family: var(--font-body); font-size: 0.98rem; line-height: 1.65; color: var(--ink-2); margin-top: 0.25rem; }
+  .card__summary { font-family: var(--font-body); font-size: var(--n-text); line-height: 1.65; color: var(--ink-2); margin-top: 0.25rem; }
   .card__meta { margin-top: 0.3rem; font-size: var(--fs-xs); }
 
-  /* The lead must win the page. At 2.1rem it was only 1.9x a card headline and the squint test
-     showed no primary element at all; at 3.1rem it is roughly 2.8x, the ratio a front page needs. */
-  .card--lead .card__title { font-size: clamp(1.85rem, 1.2rem + 2.5vw, 3.1rem); line-height: 1.26; }
-  .card--lead .card__summary { font-size: clamp(1.05rem, 1rem + 0.25vw, 1.18rem); line-height: 1.7; margin-top: 0.55rem; max-width: 34em; }
+  /* The lead must win its page: a section page's lead at 2.3rem is over twice a card's headline. */
+  .card--lead .card__title { font-size: var(--t-lead); line-height: 1.3; }
+  .card--lead .card__summary { font-size: var(--n-lead); line-height: 1.7; margin-top: 0.55rem; max-width: 34em; }
   .card--lead .card__meta { margin-top: 0.6rem; }
   .card--lead .card__photo { margin-bottom: 0.3rem; }
 
   .card--list { flex-direction: row; align-items: flex-start; gap: 0.75rem; }
   .card--list .card__photo { flex: 0 0 5.5rem; width: 5.5rem; }
-  .card--list .card__title { font-size: 1.02rem; line-height: 1.45; }
   .card--list .card__meta { margin-top: 0.15rem; }
 
   .card--text { gap: 0.25rem; }
-  .card--text .card__title { font-size: 1.05rem; }
   .card--text .card__meta { margin-top: 0.1rem; }
 
   /* On phones a row of picture cards becomes a ruled list of thumbnails, as the dailies' sites do. */
   @media (max-width: 719px) {
     :global(.cards) > .card--card, :global(.cols) > .card--card { flex-direction: row; align-items: flex-start; gap: 0.75rem; }
     :global(.cards) > .card--card .card__photo, :global(.cols) > .card--card .card__photo { flex: 0 0 7.5rem; width: 7.5rem; }
-    :global(.cards) > .card--card .card__title, :global(.cols) > .card--card .card__title { font-size: 1.02rem; }
     :global(.cards) > .card--card .card__summary, :global(.cols) > .card--card .card__summary { display: none; }
     :global(.cards) > .card--card .card__meta, :global(.cols) > .card--card .card__meta { margin-top: 0.15rem; }
   }

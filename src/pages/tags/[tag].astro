@@ -9,7 +9,7 @@
  */
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
-import { getArticles, allTags } from "@lib/articles";
+import { getArticles, allTags, firstPictures } from "@lib/articles";
 import { DESKS, desksOf } from "@lib/regions";
 import { isFileTag } from "@lib/topics";
 import { formatShortDate, formatTime, timeAgo } from "@lib/format";
@@ -30,6 +30,7 @@ export async function getStaticPaths() {
 
 const { tag, items } = Astro.props;
 const n = items.length;
+const pics = firstPictures(items);
 /** "مادة واحدة", "مادتان", "5 مواد", "12 مادة"; after يجمع the pair reads مادتين. */
 const countLabel = n === 1 ? "مادة واحدة" : n === 2 ? "مادتان" : n <= 10 ? `${n} مواد` : `${n} مادة`;
 const countObject = n === 2 ? "مادتين" : countLabel;
@@ -55,7 +56,7 @@ const latest = items[0];
             <span class="thread__time">{formatTime(a.data.publishedAt)}</span>
           </div>
           <div class="thread__body">
-            <StoryCard article={a} variant="list" level={2} showExcerpt showTime={false} eager={i < 2} sizes={i === 0 ? "160px" : undefined} />
+            <StoryCard article={a} variant="list" level={2} showExcerpt showTime={false} showPhoto={pics.has(a.id)} eager={i < 2} sizes={i === 0 ? "160px" : undefined} />
           </div>
         </li>
       ))}
@@ -68,9 +69,9 @@ const latest = items[0];
   .thread__item { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); column-gap: var(--col-gap); padding-block: 1rem; border-top: 1px solid var(--rule); }
   .thread__item:first-child { border-top: 0; padding-top: 0.25rem; }
   .thread__when { display: grid; align-content: start; gap: 0.1rem; padding-top: 0.25rem; font-size: var(--fs-sm); font-weight: 700; color: var(--ink-2); border-inline-end: 1px solid var(--rule); }
-  .thread__time { font-weight: 400; color: var(--ink-3); }
+  .thread__time { font-weight: 500; color: var(--ink-3); }
   .thread__body { min-width: 0; }
-  .thread__item:first-child .thread__body :global(.card__title) { font-size: clamp(1.28rem, 1.05rem + 0.8vw, 1.7rem); line-height: 1.36; }
+  .thread__item:first-child .thread__body :global(.card__title) { font-size: var(--t-feature); line-height: 1.36; }
   .thread__item:first-child .thread__body :global(.card--list .card__photo) { flex-basis: 10rem; width: 10rem; }
   .thread__intro-link { font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-sm); color: var(--green); text-decoration: none; }
   .thread__intro-link:hover { text-decoration: underline; }

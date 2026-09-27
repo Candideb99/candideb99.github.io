@@ -8,7 +8,7 @@ import StoryCard from "@components/StoryCard.astro";
 import Chart from "@components/Chart.astro";
 import { DESKS, desksOf } from "@lib/regions";
 import { analysisLabel } from "@lib/analysis";
-import { getArticles, pickLead, threads, chartOfTheDay, hoursOld, repeatedEvents, onTheSameTopic, type Article } from "@lib/articles";
+import { getArticles, pickLead, threads, chartOfTheDay, hoursOld, repeatedEvents, onTheSameTopic, firstPictures, type Article } from "@lib/articles";
 import { newsSections, getSection, sectionHref, moreLabel } from "@lib/sections";
 import { articleHref } from "@lib/articles";
 import { isolateNumbers } from "@lib/bidi";
@@ -138,17 +138,7 @@ const hubs = [
   .filter((h) => h.items.length > 0);
 
 // A picture is printed once per page even when two stories share it.
-const photoIds = new Set<string>();
-{
-  const seenUrls = new Set<string>();
-  const order = [...cover, ...secondary, ...rows.flatMap((r) => r.items), ...hubs.flatMap((h) => h.items)];
-  for (const a of order) {
-    const url = a?.data.image?.url;
-    if (!a || !url || seenUrls.has(url)) continue;
-    seenUrls.add(url);
-    photoIds.add(a.id);
-  }
-}
+const photoIds = firstPictures([...cover, ...secondary, ...rows.flatMap((r) => r.items), ...hubs.flatMap((h) => h.items)]);
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -189,7 +179,7 @@ const jsonLd = {
         {chartsBand.map((a, i) => (
           <div class="charts__cell">
             <Chart chart={a.data.chart!} id={`band-chart-${i}`} compact href={articleHref(a)} />
-            <p class="module__from ui">من مادة: <a href={articleHref(a)} set:html={isolateNumbers(a.data.title)} /></p>
+            <p class="module__from"><span class="module__from-label ui">من مادة</span><a href={articleHref(a)} set:html={isolateNumbers(a.data.title)} /></p>
           </div>
         ))}
       </div>
@@ -211,6 +201,12 @@ const jsonLd = {
           <div class="cards" style={`--n:${r.items.length}`}>
             {r.items.map((a) => (
               <StoryCard article={a} variant="card" showSection={false} showExcerpt={!photoIds.has(a.id)} showPhoto={photoIds.has(a.id)} sizes={cardSizes(r.items.length)} />
+            ))}
+          </div>
+        ) : briefs.length === 1 ? (
+          <div class="cols row__pair" style="--n:2">
+            {r.items.map((a) => (
+              <StoryCard article={a} variant="card" showSection={false} showExcerpt showTopic showPhoto={photoIds.has(a.id)} sizes="(min-width: 1320px) 600px, (min-width: 720px) 48vw, 120px" />
             ))}
           </div>
         ) : (
@@ -316,6 +312,11 @@ const jsonLd = {
     .first :global(.front__side) { order: 6; margin-top: 0; }
   }
 
+  /* Two stories make a pair of equal features in ruled columns: as a feature and one brief they left the brief
+     column three-fifths empty (2026-09-27). */
+  .row__pair :global(.card__title) { font-size: var(--t-feature); line-height: 1.36; }
+  .row__pair :global(.card__summary) { font-size: var(--n-text); margin-top: 0.35rem; }
+
   /* One story leads each block, the rest sit beside it as briefs. */
   .row__body { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: 0; align-items: start; }
   .row__body--solo { grid-template-columns: 1fr; }
@@ -327,23 +328,20 @@ const jsonLd = {
 
   /* The block's own lead sits a clear step above the briefs beside it and runs horizontally like
      the cover story, so six blocks do not become six tall photographs. */
-  .row__feature :global(.card__title) { font-size: clamp(1.22rem, 1rem + 0.7vw, 1.5rem); line-height: 1.36; }
-  .row__feature :global(.card__summary) { font-size: 1.02rem; margin-top: 0.35rem; }
+  .row__feature :global(.card__title) { font-size: var(--t-feature); line-height: 1.36; }
+  .row__feature :global(.card__summary) { font-size: var(--n-text); margin-top: 0.35rem; }
 
   /* The charts band: three compact charts in ruled columns, each naming its story. */
   .charts .section-head h2 { color: var(--green); }
-  .charts .module__from { margin-top: 0.5rem; font-size: var(--fs-xs); color: var(--ink-3); line-height: 1.5; }
-  .charts .module__from a { color: var(--ink-2); text-decoration: none; font-weight: 700; }
-  .charts .module__from a:hover { color: var(--green); text-decoration: underline; }
 
   /* من الأقسام: a section with too little fresh news for a block runs as one ruled line: its name in green Amiri,
      its newest story not yet on the page with the story's age, and the way into the section. */
   .lines__list { display: grid; }
   .lines__item { display: grid; grid-template-columns: 9rem minmax(0, 1fr) auto; column-gap: var(--col-gap); align-items: baseline; padding-block: 0.65rem; border-top: 1px solid var(--rule); }
   .lines__item:first-child { border-top: 0; padding-top: 0.2rem; }
-  .lines__section { font-family: var(--font-title); font-weight: 700; font-size: 1.15rem; line-height: 1.35; color: var(--green); text-decoration: none; }
+  .lines__section { font-family: var(--font-title); font-weight: 700; font-size: var(--t-module); line-height: 1.35; color: var(--green); text-decoration: none; }
   .lines__section:hover { color: var(--green-deep); text-decoration: underline; }
-  .lines__story { margin: 0; font-family: var(--font-title); font-weight: 700; font-size: 1.05rem; line-height: 1.45; }
+  .lines__story { margin: 0; font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; }
   .lines__story a { text-decoration: none; }
   .lines__story a:hover { color: var(--green); }
   .lines__story time { margin-inline-start: 0.6rem; font-size: var(--fs-xs); font-weight: 500; color: var(--ink-3); white-space: nowrap; }
@@ -352,17 +350,17 @@ const jsonLd = {
   .lines__more:hover { color: var(--green); text-decoration: underline; }
 
   /* The desks: a region's name in green Amiri, its count and last update, and at most one story not printed above. */
-  .desk__name { font-family: var(--font-title); font-weight: 700; font-size: 1.3rem; line-height: 1.3; color: var(--green); }
+  .desk__name { font-family: var(--font-title); font-weight: 700; font-size: var(--t-section); line-height: 1.3; color: var(--green); }
   .desk__name a { text-decoration: none; }
   .desk__name a:hover { color: var(--green-deep); text-decoration: underline; }
   .desk__count { margin-top: 0.15rem; font-size: var(--fs-xs); color: var(--ink-3); }
-  .desk__story { margin-top: 0.55rem; padding-top: 0.5rem; border-top: 1px solid var(--rule); font-family: var(--font-title); font-weight: 700; font-size: 1.02rem; line-height: 1.45; }
+  .desk__story { margin-top: 0.55rem; padding-top: 0.5rem; border-top: 1px solid var(--rule); font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; }
   .desk__story a { text-decoration: none; }
   .desk__story a:hover { color: var(--green); }
   .desk__story time { display: block; margin-top: 0.1rem; font-size: var(--fs-xs); font-weight: 500; color: var(--ink-3); }
 
-  .hub .cols :global(.card__title) { font-size: 1.28rem; line-height: 1.38; }
-  .hub .cols :global(.card__summary) { font-size: 1.02rem; line-height: 1.7; margin-top: 0.4rem; }
+  .hub .cols :global(.card__title) { font-size: var(--t-head); line-height: 1.38; }
+  .hub .cols :global(.card__summary) { font-size: var(--n-text); line-height: 1.7; margin-top: 0.4rem; }
   .row__feature :global(.card--photo) { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); column-gap: var(--col-gap); align-items: start; gap: 0 var(--col-gap); }
   .row__feature :global(.card--photo .card__photo) { order: 2; }
   .row__feature :global(.card--photo .card__body) { order: 1; }
@@ -378,7 +376,6 @@ const jsonLd = {
     .row__feature :global(.card--photo) { grid-template-columns: 7.5rem minmax(0, 1fr); column-gap: 0.75rem; gap: 0 0.75rem; }
     .row__feature :global(.card--photo .card__photo) { order: 1; }
     .row__feature :global(.card--photo .card__body) { order: 2; }
-    .row__feature :global(.card__title) { font-size: 1.2rem; line-height: 1.4; }
     .row__feature :global(.card__summary) { display: none; }
     /* One chart of the band on a phone: three full charts in a column took two screens. */
     .charts .charts__cell:nth-child(n + 2) { display: none; }
