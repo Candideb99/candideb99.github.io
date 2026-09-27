@@ -1,9 +1,14 @@
 ---
 /**
- * The masthead: the date line (the Gregorian and the Hijri date, as the Gulf and Egyptian news sites
- * print them) with the site's standing tools (الأحدث، لوحة الأسواق، الأجندة، بحث), the logo, and the
- * green section bar. No issue number: خازندار is an online news website, not a newspaper (the owner,
- * 2026-09-23: "avoid using wordings that hint that my website is a paper newspaper like العدد").
+ * The masthead: the logo centred between two ears, the date (the Gregorian and the Hijri date, as the Gulf and
+ * Egyptian news sites print them) on one side and the site's standing tools (الأحدث، لوحة الأسواق، الأجندة، بحث)
+ * on the other, then the green section bar. No issue number: خازندار is an online news website, not a newspaper
+ * (the owner, 2026-09-23: "avoid using wordings that hint that my website is a paper newspaper like العدد").
+ *
+ * The first screen (the owner, 2026-09-27): the date line used to be a row of its own over a 118px logo, and the
+ * header with the bar and the strips took 35-41% of a laptop's first screen. The date and the tools now stand in the
+ * logo's ears; the front keeps the full logo, the other pages (`compact`) carry it at 64px, and on a phone they open
+ * straight on the green bar with its small logo, so a story starts at the top of the screen.
  *
  * The section bar stands outside the header so it can stay pinned to the top of the screen for the
  * whole page, as the section bars of Al Jazeera, Asharq Business and the BBC do; once the date line
@@ -33,8 +38,10 @@ import Logo from "./Logo.astro";
 
 interface Props {
   active?: string;
+  /** Every page but the front: the logo at 64px in its ears, and none above the bar on a phone. */
+  compact?: boolean;
 }
-const { active } = Astro.props;
+const { active, compact = false } = Astro.props;
 const now = new Date();
 const today = formatDate(now);
 /** The Hijri date by the Umm al-Qura calendar, in Western digits like every figure on the site. */
@@ -85,14 +92,17 @@ for (const s of sections) {
 }
 ---
 
-<header class="masthead" data-masthead>
-  <div class="wrap masthead__top ui">
-    <p class="masthead__date">
+<header class={`masthead${compact ? " masthead--compact" : ""}`} data-masthead>
+  <div class="wrap masthead__row">
+    <p class="masthead__date ui">
       <time datetime={todayIso(now)} data-today data-zone={site.timeZone}>{today}</time>
       <span class="masthead__sep" aria-hidden="true">·</span>
       <span data-hijri>{hijri}</span>
     </p>
-    <nav class="masthead__tools" aria-label="أدوات الموقع">
+    <a class="brand" href="/" aria-label={`${site.name} — الصفحة الرئيسية`}>
+      <Logo part="lockup" height={compact ? 64 : 118} class="brand__lockup" eager />
+    </a>
+    <nav class="masthead__tools ui" aria-label="أدوات الموقع">
       <a href="/latest/">الأحدث</a>
       <a href="/markets/data/">لوحة الأسواق</a>
       <a href="/calendar/">الأجندة</a>
@@ -101,12 +111,6 @@ for (const s of sections) {
         <span>بحث</span>
       </a>
     </nav>
-  </div>
-
-  <div class="wrap masthead__brand">
-    <a class="brand" href="/" aria-label={`${site.name} — الصفحة الرئيسية`}>
-      <Logo part="lockup" height={118} class="brand__lockup" eager />
-    </a>
   </div>
 </header>
 
@@ -222,30 +226,31 @@ for (const s of sections) {
 
 <style>
   .masthead { position: relative; z-index: 2; background: var(--paper); }
-  .masthead__top {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
+  /* The logo centred between its ears, as a printed masthead carries its date and prices beside the nameplate: the
+     date at the start, the tools at the end. */
+  .masthead__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    grid-template-areas: "date brand tools";
     align-items: center;
-    gap: 1rem;
-    padding-block: 0.5rem 0.4rem;
-    border-bottom: 1px solid var(--rule);
+    column-gap: 1.5rem;
+    padding-block: clamp(0.8rem, 2vw, 1.15rem);
     font-size: var(--fs-sm);
     font-weight: 500;
     color: var(--ink-2);
   }
-  .masthead__date { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: baseline; }
+  .masthead--compact .masthead__row { padding-block: 0.55rem; }
+  .masthead__date { grid-area: date; justify-self: start; display: flex; flex-wrap: wrap; gap: 0.1rem 0.5rem; align-items: baseline; }
   .masthead__date time { color: inherit; }
   .masthead__sep { color: var(--ink-3); }
-  .masthead__tools { display: flex; align-items: center; gap: 1.1rem; }
+  .masthead__tools { grid-area: tools; justify-self: end; display: flex; align-items: center; gap: 1.1rem; }
   /* The tools keep the line's height but take a finger-sized target (22px of text became a 44px target). */
   .masthead__tools > a { font-weight: 700; color: var(--ink-2); text-decoration: none; white-space: nowrap; padding-block: 0.7rem; margin-block: -0.7rem; }
   .masthead__tools > a:hover, .masthead__tools > a:focus-visible { color: var(--green); }
   .masthead__search { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--ink) !important; }
   .masthead__search:hover, .masthead__search:focus-visible { color: var(--green) !important; }
 
-  .masthead__brand { display: flex; justify-content: center; padding-block: clamp(0.8rem, 2vw, 1.15rem); }
-  .brand { display: block; min-width: 0; line-height: 0; }
+  .brand { grid-area: brand; display: block; min-width: 0; line-height: 0; }
   .brand:focus-visible { outline-offset: 4px; }
 
   /* The section bar: the one green field on the page, pinned to the top of the screen for the whole
@@ -338,12 +343,28 @@ for (const s of sections) {
     .nav__item--panel:hover .nav__panel { visibility: visible; transition-delay: 0.15s; }
   }
 
+  /* Between a phone and a laptop the ears would squeeze the date into three lines: the date and the tools run as a
+     ruled line over the logo, as they did until 2026-09-27. */
+  @media (max-width: 1023px) {
+    .masthead__row { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "date tools" "brand brand"; column-gap: 0; row-gap: clamp(0.8rem, 2vw, 1.15rem); padding-top: 0.5rem; }
+    .masthead--compact .masthead__row { padding-top: 0.5rem; row-gap: 0.55rem; }
+    .masthead__date, .masthead__tools { justify-self: stretch; align-self: stretch; align-items: center; padding-bottom: 0.4rem; border-bottom: 1px solid var(--rule); }
+    .masthead__tools { justify-content: flex-end; }
+    .brand { justify-self: center; }
+  }
+
   @media (max-width: 719px) {
-    .masthead__top { font-size: var(--fs-xs); }
+    .masthead__row { grid-template-columns: 1fr; grid-template-areas: "date" "brand"; row-gap: 0.7rem; padding-block: 0.5rem 0.7rem; font-size: var(--fs-xs); }
     /* The tools of the date line move into the bar on a phone: the search and the menu. */
     .masthead__tools { display: none; }
-    .masthead__brand { padding-block: 0.7rem; }
     .brand :global(.brand__lockup img) { height: 72px; width: auto; }
+    /* Every other page opens on the bar itself, its small logo in place of الرئيسية: the 64px logo and the date
+       over a story pushed its headline half a screen down. */
+    .masthead--compact { display: none; }
+    .masthead--compact + .masthead__nav .bar__brand { display: flex; }
+    .masthead--compact + .masthead__nav .nav__item--home { display: none; }
+    /* …and is already in its pinned state, so nothing arrives when the hidden header is reported off screen. */
+    .masthead--compact + .masthead__nav .bar__brand, .masthead--compact + .masthead__nav .bar__search { animation: none; }
     .nav { justify-content: flex-start; }
     .nav__link { padding: 0.55rem 0.8rem 0.42rem; font-size: 0.92rem; }
     .bar__brand { padding-inline: 0 0.6rem; }

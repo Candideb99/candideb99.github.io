@@ -107,7 +107,8 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
       WORDING (the owner, 2026-09-23): an online news website, not an online
       newspaper. The look keeps the printed register; the words never make it a
       paper: no issue number, no العدد, الطبعة or صحيفة about itself.
-      FIRST VIEWPORT: date line; the logo centred; green section bar; latest-
+      FIRST VIEWPORT: the logo centred between its ears (the date, the tools;
+      64px on every other page, which on a phone opens on the bar); green bar; latest-
       headlines strip; the cover (the day's strongest story on the stage, the
       other four as numbered tabs beneath, rotating until the reader touches it);
       then three ruled columns: top stories, secondaries and picks, the day's
@@ -118,7 +119,7 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
       finish review, the verdict, and DESIGN.md
     -->
     <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
-    <Masthead active={section} />
+    <Masthead active={section} compact={path !== "/"} />
     <slot name="under-bar" />
     <MarketStrip />
     {latestNews.length > 0 && <Ticker items={latestNews} label="آخر الأخبار" lead="time" />}

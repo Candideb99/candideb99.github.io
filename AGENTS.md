@@ -9,8 +9,11 @@ four first. They bind every agent, Codex included.
 
 - **The cover rotates.** The owner saw the carousel research (fifteen of sixteen major sites use a
   still lead; NN/g and Baymard data) and chose rotation anyway, twice. It turns every six seconds,
-  the dots sit inside the photograph, the pointer is the pause, and it turns even for readers with
-  reduced motion (the fade alone is dropped). Do not make it static.
+  the pointer is the pause, and it turns even for readers with reduced motion (the fade alone is
+  dropped). Do not make it static. **Its tabs are the five headlines, numbered, in a row under the
+  stage** (the owner's yes, 2026-09-27, to the first-screen change: they replaced the small round
+  dots inside the photograph, his earlier choice, which showed one headline of the day's five). Do
+  not put the dots back.
 - **The news bar moves.** The owner asked for a moving strip. It scrolls by whole pixels so the
   text stays sharp, carries the newest stories not already on the first screen (so no headline
   prints twice above the fold), and holds under the pointer, keyboard focus and a finger. Do not
