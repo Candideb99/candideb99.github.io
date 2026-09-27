@@ -60,9 +60,15 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="alternate" type="application/rss+xml" title={`${site.name} RSS`} href="/rss.xml" />
     {!site.private && <link rel="sitemap" href="/sitemap-index.xml" />}
+    <!-- The faces every page sets from the first line: the Arabic and Latin halves of the headline and body
+         faces arrive together (a headline's figures arriving after its letters re-wrapped it and moved the
+         article's photo 57px), and the two Tajawal weights the furniture uses. -->
     <link rel="preload" href="/fonts/naskh-arabic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/naskh-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/amiri-arabic-700.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/amiri-latin-700.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/tajawal-arabic-500.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/tajawal-arabic-700.woff2" as="font" type="font/woff2" crossorigin />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:locale" content="ar_AR" />
     <meta property="og:type" content={type} />
@@ -180,6 +186,62 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
         tick();
         masthead();
         setInterval(tick, 60000);
+      })();
+    </script>
+    <script is:inline>
+      // Motion (the owner, 2026-09-27; the rules are in global.css under "Motion"). Only what lies below the
+      // first screen waits, and only until the reader reaches it: a photograph develops once it has arrived,
+      // a story settles in, a chart's bars rise. The text of the story being read never fades (nothing inside
+      // .article settles; its chart still rises), the pinned bar's panels are left alone, nothing moves twice,
+      // and a reader who asked for reduced motion, or a browser without IntersectionObserver, gets the page
+      // exactly as before.
+      (function () {
+        if (!("IntersectionObserver" in window) || !window.matchMedia || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        var fold = window.innerHeight * 0.92;
+        // The watch stops 6% above the screen's foot, so a thing the page cannot scroll that far up is left shown.
+        var reach = document.documentElement.scrollHeight - window.innerHeight * 0.06 - 8;
+        function below(el) {
+          var r = el.getBoundingClientRect();
+          return r.height > 0 && r.top > fold && r.top + window.scrollY < reach;
+        }
+        function settle(el) {
+          el.classList.add("is-settling");
+          el.classList.remove("will-settle");
+          setTimeout(function () { el.classList.remove("is-settling"); }, 1700);
+        }
+        var seen = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var el = entry.target;
+            seen.unobserve(el);
+            var go = function () { setTimeout(function () { settle(el); }, Number(el.getAttribute("data-settle-delay") || 0)); };
+            if (el.tagName === "IMG" && !(el.complete && el.naturalWidth)) {
+              el.addEventListener("load", go, { once: true });
+              el.addEventListener("error", go, { once: true });
+            } else go();
+          });
+        }, { rootMargin: "0px 0px -6% 0px" });
+        function wait(el, delay) {
+          if (delay) el.setAttribute("data-settle-delay", String(delay));
+          el.classList.add("will-settle");
+          seen.observe(el);
+        }
+        document.documentElement.classList.add("has-motion");
+        document.querySelectorAll(".photo img").forEach(function (img) { if (below(img)) wait(img, 0); });
+        // Stories side by side follow one another by 90 ms in reading order, three steps at most.
+        var rows = {};
+        document.querySelectorAll(".card, .digest__item, .picks__item, .figures__item, .agenda__item, .file, .desk, .module__head, .section-head").forEach(function (el) {
+          if (el.closest(".article, .masthead, .masthead__nav") || !below(el)) return;
+          var row = Math.round((el.getBoundingClientRect().top + window.scrollY) / 40);
+          rows[row] = (rows[row] || 0) + 1;
+          el.classList.add("settle");
+          wait(el, Math.min(rows[row] - 1, 3) * 90);
+        });
+        document.querySelectorAll(".chart").forEach(function (chart) {
+          if (!below(chart)) return;
+          chart.querySelectorAll(".chart__mark rect").forEach(function (bar, i) { bar.style.transitionDelay = Math.min(i, 8) * 55 + "ms"; });
+          wait(chart, 0);
+        });
       })();
     </script>
   </body>

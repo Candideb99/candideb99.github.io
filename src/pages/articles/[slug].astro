@@ -307,7 +307,10 @@ const jsonLd = [articleLd, breadcrumbLd];
   @media (max-width: 719px) {
     .article__figure :global(.article__photo) { aspect-ratio: 3 / 2 !important; }
     /* In a 343px column a bold lede a size above the text justified with word gaps nearly four
-       spaces wide; at the text's size it keeps the column even. */
-    .article__lede { font-size: 1.12rem; line-height: 1.85; }
+       spaces wide; at the text's size it keeps the column even. Even so the phone's column still opened
+       gaps near four spaces wide, so on a phone the lede and لماذا يهمّ run flush to the start like the
+       body (the owner, 2026-09-27). */
+    .article__lede { font-size: 1.12rem; line-height: 1.85; text-align: start; }
+    .why__text { text-align: start; }
   }
 </style>

@@ -15,42 +15,42 @@ colors:
   chart-3: "#b07a12"
 typography:
   display:
-    fontFamily: "Amiri, Naskh, Noto Naskh Arabic, Times New Roman, serif"
+    fontFamily: "Amiri, Noto Naskh Arabic, Times New Roman, serif"
     fontSize: "clamp(2rem, 1.6rem + 1.6vw, 2.9rem)"
     fontWeight: 700
     lineHeight: 1.3
   headline:
-    fontFamily: "Amiri, Naskh, Noto Naskh Arabic, Times New Roman, serif"
+    fontFamily: "Amiri, Noto Naskh Arabic, Times New Roman, serif"
     fontSize: "clamp(1.85rem, 1.3rem + 2vw, 2.75rem)"
     fontWeight: 700
     lineHeight: 1.3
   cover:
-    fontFamily: "Amiri, Naskh, Noto Naskh Arabic, Times New Roman, serif"
+    fontFamily: "Amiri, Noto Naskh Arabic, Times New Roman, serif"
     fontSize: "clamp(1.7rem, 1.1rem + 1.9vw, 2.5rem)"
     fontWeight: 700
     lineHeight: 1.28
   lead:
-    fontFamily: "Amiri, Naskh, Noto Naskh Arabic, Times New Roman, serif"
+    fontFamily: "Amiri, Noto Naskh Arabic, Times New Roman, serif"
     fontSize: "clamp(1.6rem, 1.1rem + 1.6vw, 2.3rem)"
     fontWeight: 700
     lineHeight: 1.3
   feature:
-    fontFamily: "Amiri, Naskh, Noto Naskh Arabic, Times New Roman, serif"
+    fontFamily: "Amiri, Noto Naskh Arabic, Times New Roman, serif"
     fontSize: "clamp(1.22rem, 1rem + 0.7vw, 1.5rem)"
     fontWeight: 700
     lineHeight: 1.36
   secondary:
-    fontFamily: "Amiri, Naskh, Noto Naskh Arabic, Times New Roman, serif"
+    fontFamily: "Amiri, Noto Naskh Arabic, Times New Roman, serif"
     fontSize: "clamp(1.2rem, 1rem + 0.6vw, 1.42rem)"
     fontWeight: 700
     lineHeight: 1.38
   title:
-    fontFamily: "Amiri, Naskh, Noto Naskh Arabic, Times New Roman, serif"
+    fontFamily: "Amiri, Noto Naskh Arabic, Times New Roman, serif"
     fontSize: "1.12rem"
     fontWeight: 700
     lineHeight: 1.45
   body:
-    fontFamily: "Naskh, Noto Naskh Arabic, Amiri, Times New Roman, serif"
+    fontFamily: "Naskh, Noto Naskh Arabic, Times New Roman, serif"
     fontSize: "clamp(1.12rem, 1.02rem + 0.35vw, 1.25rem)"
     fontWeight: 400
     lineHeight: 1.9
@@ -127,10 +127,10 @@ As built on 2026-09-09 from `src/styles/global.css`, `src/components`, `src/page
 
 The page has a descending headline scale, and the gaps between the steps are what make the front page readable: cover 2.5rem, section-page lead 2.3rem, block feature 1.5rem, secondary 1.42rem, hub title 1.28rem, card 1.12rem, brief 1.02rem. The cover is about 2.2x a card; at 2.1rem it was 1.9x and the squint test found no primary element at all, and at 3.1rem in a 286px column it wrapped five lines deep. Below the headline steps the furniture has exactly two Tajawal steps, `--fs-xs` (0.78rem; 0.8125rem = 13px ≤719px) for times, kickers, strips, notes and list dates, and `--fs-sm` (0.86rem; 0.875rem ≤719px) for meta lines, labels, captions and module foot links; six sizes between 11.5px and 13.8px sat there until 2026-09-22. Naskh summaries and list titles keep their own steps (0.95, 0.98, 1.02, 1.05rem).
 **Display/Title Font:** Amiri 400 and 700 (fallback Naskh, Times New Roman, serif)
-**Body Font:** "Naskh" = Noto Naskh Arabic variable 400–700 (fallback Amiri, serif)
+**Body Font:** "Naskh" = Noto Naskh Arabic variable 400–700 (fallback the system's Noto Naskh Arabic, then Times New Roman, serif)
 **Label Font:** Tajawal 400/500/700/800 (fallback IBM Plex Sans Arabic, Segoe UI, system-ui)
 
-**Character:** literary naskh for reading under a bold classical head, with a plain sans confined to the furniture. Self-hosted woff2 in `/fonts`, Arabic and Latin subsets by `unicode-range`, `font-display: swap`; Naskh, Amiri 700 and Tajawal 500 are preloaded. Root 16px, line-height 1.8, `kern liga calt`; every h1–h4 is Amiri 700, line-height 1.4, `text-wrap: balance`, `overflow-wrap: anywhere`.
+**Character:** literary naskh for reading under a bold classical head, with a plain sans confined to the furniture. Self-hosted woff2 in `/fonts`, Arabic and Latin subsets by `unicode-range`. Amiri and Naskh swap in (`font-display: swap`), and each falls back straight to a system face, never to the other web face: while Amiri loaded, headlines were drawn for a moment in Naskh (it arrives first and sets wider), wrapped a line deeper and snapped back. Tajawal is `font-display: optional`: its weights arriving one by one re-wrapped furniture such as a section's topic line and jumped the page up to four times on a slow phone; a slow first visit keeps the system face for the labels. Preloaded: both halves (Arabic and Latin) of Naskh and of Amiri 700, and Tajawal 500 and 700. Measured on "Slow 4G" (2026-09-27), layout shift fell from 0.23–0.37 to 0.05–0.07 on section pages, 0.18 to 0.05 on an article (desktop) and 0.05–0.06 to 0.02–0.04 on the front. Root 16px, line-height 1.8, `kern liga calt`; every h1–h4 is Amiri 700, line-height 1.4, `text-wrap: balance`, `overflow-wrap: anywhere`.
 ### Hierarchy
 | Role | Face | Size | Line-height |
 |---|---|---|---|
@@ -143,8 +143,8 @@ The page has a descending headline scale, and the gaps between the steps are wha
 | Section head / module head / rail heads (الأرقام, اقرأ أيضاً, المصادر, لماذا يهمّ) | Amiri 700, green for the first two | 1.35 / 1.15 / 1.2–1.3rem | 1.3 |
 | Card / list / text / picks titles | Amiri 700 | 1.12 / 1.02 / 1.05 / 1.02rem | 1.45 |
 | Dek / page intro | Naskh 400, ink-2 | `clamp(1.1rem, 1rem + 0.4vw, 1.3rem)` / 1.12rem | 1.7 / 1.75 |
-| Lede | Naskh 700, justified | `clamp(1.18rem, 1.08rem + 0.4vw, 1.35rem)` | 1.8 |
-| Prose | Naskh 400, justified, `text-align-last: start` | body size; h2 1.35em, h3 1.15em, blockquote Amiri 1.15em on a 1px ink start rule | 1.9 |
+| Lede | Naskh 700, justified (flush to the start ≤719px) | `clamp(1.18rem, 1.08rem + 0.4vw, 1.35rem)` | 1.8 |
+| Prose | Naskh 400, justified, `text-align-last: start` (flush to the start ≤719px) | body size; h2 1.35em, h3 1.15em, blockquote Amiri 1.15em on a 1px ink start rule | 1.9 |
 | Key figure value | Amiri 700, tabular | 1.4rem rail / 1.25rem front | 1.25 |
 | Section bar / ticker items | Naskh 700 | 1rem (0.92 ≤719px) / 0.95rem | 1.4 |
 | Meta, captions, labels, notes, chips | Tajawal 500 (chips 700–800), ink-3 | 0.86rem; card meta 0.8, captions 0.82, hosts 0.78, ticker label 0.78, picks numerals 1.3 | 1.5 |
@@ -159,11 +159,21 @@ Containers: `.wrap` = `min(1240px, 100% − 2 × gutter)`, `.wrap--article` 68re
 
 - **Front page** (`index.astro`): the market strip → the أيضاً على خازندار strip (`Ticker.astro`: the newest stories not already on the first screen, each with its section, not its age; the owner chose the label on 2026-09-22, because under الأحدث the rule made it read «منذ 3 أيام») → the cover (`Cover.astro`, `9fr | 3fr`, closed by a 3px ink rule): the day's five strongest stories on a turning stage, each slide the headline first in the reading direction, hanging from the photograph's top edge, kicker above, a 160-character dek, meta, beside a photograph (`5fr | 7fr`) that fills the stage's height between 3:2 and square of its own width (container units), never portrait (stretched to a 740px column it once showed half of every picture); under the meta line, ذات صلة: up to two headlines on the story's running topic (`onTheSameTopic()` in `lib/articles.ts`: a shared narrow tag, one story in twenty or fewer, or two shared tags; none already on the first screen), Amiri 1.02rem on hairlines, which fill the text column beside the photograph (hidden on phones); the script measures the tallest story once so the stage keeps its height and nothing under it moves when it turns. No event takes two places on the front: `repeatedEvents()` (`lib/articles.ts`: headlines within 48 hours sharing four content words and 60% of the shorter one's, spelling variants such as ترمب/ترامب folded) leaves the older telling to its section page. It turns every six seconds with a 0.4s fade (dropped under reduced motion, though the stage still turns: the owner chose rotation after seeing the carousel research, see AGENTS.md); five small dots inside the photograph's top corner (8px white rings drawn inside 24px targets on a faint dark wash, the current one filled; one tab stop, arrow keys, Home and End move between them) are the only control; every turn first checks that the pointer is not over it, keyboard focus (`:focus-visible`) is not inside it and the tab is being looked at, a dot click rests it for a minute, there is no button, and it does not turn on phones. Without JavaScript the first story stands alone. Beside the stage, ruled, قراءات خازندار: one reading of each kind, the latest analysis at 1.22rem with its dek and time, then the latest explainer and paper reading at 1. «في العمق» (kind `feature`, the weekly in-depth piece, 2026-09-24) takes the research reading's place for its first three days, with the analysis's longer dek and date but not its lead size; the column stays three readings wide.05rem each with a one-line dek and no time, so the column reads as three different things → `4fr | 5fr | 3fr`: الأخبار في سطور (the digest: seven stories on hairlines, each its Amiri headline on a line of its own, its one Naskh sentence under it in ink-2, the kind and time beneath; the owner, 2026-09-23, did not want the sentence run on after the bold headline; the headline is the link and its hit area covers the item) at the start; two secondaries at 1.42rem laid out like every feature (text `5fr`, photograph `6fr`, ruled between) over مختارات المحرر (up to four of the last 72 hours, each with its section and time) in the centre column ruled on both sides; the market box (`MarketBoard` box, five instruments; it sat under the readings until 2026-09-22) over أحدث الرسوم البيانية (the freshest chart of the last three days, compact, its title linking to the story and a من مادة line naming it) over أرقام اليوم (3 figures, each with its label and the headline it comes from) over الأجندة الاقتصادية (`Agenda.astro`: the next five dated decisions and releases, the day in green Tajawal with the Riyadh time, the event in Naskh 700, a link to /calendar/) at the end → ملفات نتابعها (`Dossiers.astro`): up to four running topics in ruled columns, each the topic name in green Amiri, a count and last-update line, three dated headlines (never the same headline in two files) and a link to the file, the head linking to /tags/, and a بحسب المنطقة line of region links with counts beneath → بالرسوم البيانية: the three freshest charts after the chart of the day, compact, in ruled `.cols`, each with a من مادة line (the Economist's graphic detail) → one block per news section with stories (economy, markets, energy, companies, technology, defense), alternating two shapes so no block repeats its neighbour: a `.section-head` then `7fr | 5fr`, the section's feature at 1.5rem laid out horizontally (text `5fr`, photograph `6fr`) beside up to three thumbnail briefs on a ruled list; then a `.cards` row of up to four picture cards → الأخبار بحسب المنطقة: the four desks with the freshest news (of eight in `regions.json`: الخليج, مصر والمغرب العربي, الشرق الأوسط, أوروبا, الأمريكتان, آسيا, أفريقيا, عالمي), each its name in green Amiri linking to its file over three dated headlines, in ruled `.cols` → تحليلات and شروح, when they have anything, as text bands: `.cols` of up to four `card--text` items (1.28rem Amiri title, Naskh excerpt), which tells the reader at a glance these are argument and concept pieces. Blocks are separated by `clamp(2.25rem, 4.5vw, 3.75rem)` against roughly 0.7rem inside a group. ≤1199px the cover runs in one column and قراءات خازندار becomes a ruled band of three under the stage; ≤1023px the columns become `7fr | 5fr` with the centre column first across both (secondaries two-up), the files band two columns, the blocks stacked; ≤719px the first screen is one column in reading order, not column order (`.first` in `index.astro`: the cover and the columns give up their boxes with `display: contents` and their parts are ordered): the lead with its photograph on top, then the four other cover stories as a ruled thumbnail list (the stage does not turn on a phone, and until 2026-09-22 those four simply vanished), the 3px rule, the secondaries, الأخبار في سطور, قراءات خازندار, مختارات المحرر, then the numbers column; secondaries and section features run as 7.5rem thumbnail rows, files show two headlines each. A photograph prints once per page: the first card carrying it shows it, later cards run as text. Every story is placed once; the front is the only page whose الرئيسية link is marked current.
 - **Section page**: page head → `8fr | 4fr`: the lead (16/9 photo, `lead` card) beside a ruled list of the next three stories → 3px ink rule → `.cards` rows for the rest (a list when fewer than three remain).
-- **Article**: head max 52rem (title, dek, meta on a hairline carrying both calendars, «نُشر الخميس 24 سبتمبر 2026 م، 13 ربيع الآخر 1448 هـ · 16:00 بتوقيت القاهرة», as الشرق الأوسط prints them (`formatHijri()`, 2026-09-24), share row) → figure at story width, 2/1 crop (3/2 ≤719px) → `1fr | 17rem`: main (lede, inline facts ≤1023px, chart, prose, table, لماذا يهمّ, tags, sources) and a rail with a 1px start rule (side facts, اقرأ أيضاً); ≤1023px the rail stacks beneath. لماذا يهمّ closes the story as a block of its own, opened by a 1px ink rule, its text a step under the body's (1.08rem): the owner, 2026-09-27, saw it read as merged into the article where it followed the lede at the text's own size (2026-09-23 to 27), and wants it at the end and separate. ≤719px the lede is set at the text's size (at a size above it, justified in 343px, its word gaps reached nearly four spaces).
+- **Article**: head max 52rem (title, dek, meta on a hairline carrying both calendars, «نُشر الخميس 24 سبتمبر 2026 م، 13 ربيع الآخر 1448 هـ · 16:00 بتوقيت القاهرة», as الشرق الأوسط prints them (`formatHijri()`, 2026-09-24), share row) → figure at story width, 2/1 crop (3/2 ≤719px) → `1fr | 17rem`: main (lede, inline facts ≤1023px, chart, prose, table, لماذا يهمّ, tags, sources) and a rail with a 1px start rule (side facts, اقرأ أيضاً); ≤1023px the rail stacks beneath. لماذا يهمّ closes the story as a block of its own, opened by a 1px ink rule, its text a step under the body's (1.08rem): the owner, 2026-09-27, saw it read as merged into the article where it followed the lede at the text's own size (2026-09-23 to 27), and wants it at the end and separate. ≤719px the lede is set at the text's size (at a size above it, justified in 343px, its word gaps reached nearly four spaces), and the lede, the prose and لماذا يهمّ run flush to the start instead of justified: even at the text's size a phone's column still opened word gaps up to 3.98 spaces wide (75 of 255 gaps twice a space or more), and browsers do not stretch Arabic with kashida (the owner, 2026-09-27: justified on wider screens, flush on phones).
 - **Footer**: double rule → `2fr 1fr 1fr` (brand, sections, about) → hairline → licence lines; ≤719px two columns with the brand across both.
 
 ## Elevation & Depth
-Flat paper. No `box-shadow`, no gradient (the ticker scrolls horizontally with a hidden scrollbar and snaps per headline), no tonal layering beyond `--paper-2` under the ticker and under a loading photograph. Depth is rule weight: hairline `--rule` between items and columns; 1px ink under module and footer heads and table headers; 3px ink to open a page head, a section grid, key figures, sources, the related rail and the stacked lead; the double rule (3px over 1px, 2px apart) for the footer and the social cards. Motion is 0.15–0.2s colour and border transitions on `--ease-out: cubic-bezier(0.16, 1, 0.3, 1)`; the one animation is the cover's 0.4s fade between slides, and `prefers-reduced-motion` drops that fade and collapses every transition to 0.01ms (the cover still turns).
+Flat paper. No `box-shadow`, no gradient (the ticker scrolls horizontally with a hidden scrollbar and snaps per headline), no tonal layering beyond `--paper-2` under the ticker and under a loading photograph. Depth is rule weight: hairline `--rule` between items and columns; 1px ink under module and footer heads and table headers; 3px ink to open a page head, a section grid, key figures, sources, the related rail and the stacked lead; the double rule (3px over 1px, 2px apart) for the footer and the social cards.
+
+## Motion
+**Things settle; nothing travels.** The owner, 2026-09-27, after comparing 22 news sites: "i like annahar effects" (annahar.com fades every story block in over about a second as it enters the screen; of the 17 sites whose code could be read it was the only one). He chose the demo version of it, which is what is built:
+- Below the first screen, a photograph develops out of the `--paper-2` ground once it has arrived and the reader reaches it: opacity 0→1 over 0.95s and a settle from 1.025 scale over 1.4s.
+- Below the first screen, each story unit settles in once as the reader reaches it: cards, digest, picks, figures and agenda items, files, desks, section and module heads; opacity only, 0.85s, units side by side following one another by 90 ms (three steps at most).
+- A chart's bars rise from the baseline (bars under zero hang from it), 0.8s staggered 55 ms, and its line draws itself over 1.2s (`pathLength="1"`); points and value labels fade in after.
+- On a pointer that hovers, a story's photograph leans in to 1.03 over 0.6s.
+- All on `--ease-out: cubic-bezier(0.16, 1, 0.3, 1)`. Colour and border transitions stay 0.15–0.2s. The cover's 0.4s fade between slides is unchanged.
+
+The rules are in `global.css` under "Motion", the setup in `Base.astro`'s second script. What they never do: hold back anything on the first screen (only what lies below 92% of the first viewport waits), fade the text of the story being read (nothing inside `.article` settles; its chart still rises), touch the pinned bar's panels, move anything twice, or hide anything without script, when printing, or for a reader who asked for reduced motion (the script adds `.has-motion` only when motion is allowed; `prefers-reduced-motion` also collapses every transition to 0.01ms; the cover still turns, the owner's decision). Checked 2026-09-27 on the front, a section page and two articles at 1440 and 390: nothing on the first screen waits, nothing is left waiting after a full scroll, no console errors.
 
 ## Shapes
 Every corner is square (`border-radius: 0`, explicit on the search input), except the cover's dots and their small plate inside the photograph, which the owner keeps round. Photographs are hard-edged rectangles at fixed ratios: 16/9 (cards, lead), 1/1 (list thumbnails, 5.5rem), 2/1 (article figure; 3/2 on phones), 3/2 (`Photo` default). Chips are 1px `--rule` rectangles; the only frame is the 1px ink box of لماذا يهمّ. The brand geometry is the owner's: the traced lettering (`#0c3c2a`) and the gold key (`#9b8044`) on its rule; the favicon and app icons clip the key's ornate bow onto a 100-unit `#0f5c3c` square.
@@ -190,7 +200,7 @@ Character: newsprint furniture, restrained; state is shown by turning text green
 ### Article furniture and data
 - **Key figures (`KeyFacts.astro`):** 3px ink top and 1px ink bottom rule, "الأرقام" Amiri 1.2rem, values Amiri 700 1.4rem tabular over Tajawal 0.86rem ink-3 labels, hairlines between; `side` shows in the rail ≥1024px, `inline` (auto-fit 9.5rem columns, 1rem column gap) below it. Figures only (`pipeline/lib/keyfacts.mjs`, 2026-09-27). An explainer's box (`terms`) is its glossary under "مفاهيم أساسية": each term in Amiri 700 1.05rem ink over its definition in Naskh `--fs-sm` ink-2, one column inline; «أرقام اليوم» on the front never draws on an explainer.
 - **Sources (`Sources.astro`):** 3px ink rule, "المصادر" Amiri 1.3rem; per item the source name Tajawal 700 0.86rem green, the linked title Naskh 1rem in `<bdi>` (1px underline, offset 0.2em), host `bdi dir="ltr"` + short date Tajawal 0.78rem ink-3; then the automation note Tajawal `--fs-sm` ink-3 (the model names stay in the article's data and are not printed: the owner, 2026-09-23). External links `noopener nofollow`.
-- **Why it matters (`.why`):** 1px ink frame, padding 1rem 1.25rem, Amiri 1.2rem head, Naskh 1.08rem justified.
+- **Why it matters (`.why`):** 1px ink frame, padding 1rem 1.25rem, Amiri 1.2rem head, Naskh 1.08rem justified (flush to the start ≤719px).
 - **Chart (`Chart.astro`):** static SVG 720×380 (`direction="ltr"`, padding 28/24/56/64), bar or line, in a figure with a 1px ink top and hairline bottom; Amiri 1.18rem title, Tajawal 0.82rem unit, legend with 0.8rem square swatches for two or more series; gridlines `--rule`, zero baseline ink-3, labels Tajawal 12px (21px ≤719px, where the SVG shrinks); bars fill 72% of a slot, lines 2px with 4.5px paper-stroked dots; value labels for a single series of ≤8 points, end labels for ≤3 series; every mark has a native `<title>` tooltip and darkens 15% on hover; a `<details>` "عرض البيانات كجدول" table and a Tajawal 0.78rem source line follow. Category labels wrap for the phone's 21-unit labels (about 11.5 units a letter), line spacing in em, so long labels never run into each other on a phone (2026-09-24).
 - **Table (`DataTable.astro`):** Amiri 1.18rem caption, horizontally scrollable box with a 3px ink top, Tajawal 0.92rem, 1px ink under the header row, hairlines between rows, numeric cells tabular and unwrapped, short row heads (dates, years) unwrapped, source line beneath («المصدر: تقارير خازندار المنشورة.» for a table built from the site's own stories, as the «في العمق» timeline is).
 ### Chips, heads and page furniture
@@ -211,14 +221,14 @@ Character: newsprint furniture, restrained; state is shown by turning text green
 ## Do's and Don'ts
 ### Do:
 - **Do** open every page region with a rule, not a box: 3px ink for a head or grid, a hairline between items, the double rule only for the footer and social cards.
-- **Do** set heads in Amiri 700, reading text in Naskh justified with `text-align-last: start` at 40rem, and furniture in Tajawal.
+- **Do** set heads in Amiri 700, reading text in Naskh justified with `text-align-last: start` at 40rem (flush to the start on phones, ≤719px), and furniture in Tajawal.
 - **Do** print photographs in true colour at their column's width and ratio, credit them in the caption, and print each picture once per page; a story without a licensed photo runs as text.
 - **Do** isolate every figure in `<bdi dir="ltr">` with Western tabular digits, pan-Arab months and Riyadh time.
 - **Do** show state by colour alone (green text on hover, ink or green border on chips, a `#fcfcf9` underline for the current section) and keep the section bar at `#0f5c3c` / `#fcfcf9` in both schemes; the logo swaps to paper lettering in dark.
 - **Do** keep the sources and the automation note under a 3px ink rule on every article; never print the model names.
 ### Don't:
 - **Don't** add a colour field beyond the section bar and the ticker label, or tint, wash or duotone a photograph.
-- **Don't** add shadows, radii, gradients or animation; transitions stay at 0.15–0.2s.
+- **Don't** add shadows, radii or gradients, or any motion beyond the Motion section's (things settle, nothing travels: no slides, parallax, bounces or loops); state transitions stay at 0.15–0.2s.
 - **Don't** use generated, stock or illustrative art; the typographic social card is the only substitute for a missing photo.
 - **Don't** set a headline, summary or prose in Tajawal, put a kicker above a headline, reintroduce hand-lettered or playful display faces, or redraw the logo; the logo is the owner's artwork.
 - **Don't** put text in `--chart-3` ochre or any colour lighter than ink-3.
@@ -228,7 +238,7 @@ Character: newsprint furniture, restrained; state is shown by turning text green
 - `color-scheme: light dark`, `theme-color #0f5c3c`. Focus: `:focus-visible` 2px green outline offset 3px (brand link 4px; inside the section bar a `#fcfcf9` outline inset 3px). Selection green on paper. Skip link to `#main`.
 - Keyboard: one tab stop per story (photo links `tabindex="-1" aria-hidden`); nav `aria-current="page"`; modules and rails `aria-labelledby`; charts `role="img"` with `aria-label`, native `<title>` tooltips and a table view; search results `aria-live="polite"`.
 - No page pans sideways: `html, body { overflow-x: clip }` backs up the rule that a strip or table scrolls inside its own box. Small standalone links (kickers, meta links, strip quotes, the date line's tools, the cover's dots) keep their place in the line but take a target of at least 24px, by block padding with a matching negative margin.
-- Reduced motion collapses transitions to 0.01ms and drops the cover's fade; the cover still turns (the owner's decision), never under the pointer, never while keyboard focus is inside it, never in a hidden tab (every turn checks all three), and rests for a minute after a dot click; its dots are a `tablist` over `tabpanel` slides with one tab stop. The market moves carry a visually-hidden ارتفاع/انخفاض word; the ticker and market strip are labelled regions.
+- Reduced motion switches off the Motion section entirely (nothing waits or settles), collapses transitions to 0.01ms and drops the cover's fade; the cover still turns (the owner's decision), never under the pointer, never while keyboard focus is inside it, never in a hidden tab (every turn checks all three), and rests for a minute after a dot click; its dots are a `tablist` over `tabpanel` slides with one tab stop. The market moves carry a visually-hidden ارتفاع/انخفاض word; the ticker and market strip are labelled regions.
 
 ## Deviations from the direction contract (Base.astro, 2026-09-09)
 1. **Green as field.** The `:root` comment in `global.css` still says green is "ink only"; the build fills the section bar and the ticker label with it, and the favicon is a green square.

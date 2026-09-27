@@ -141,7 +141,7 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
           return (
             <g class="chart__mark">
               <title>{`${chart.categories[i]} — ${s.name}: ${label(v)}`}</title>
-              <rect x={gx} y={top} width={barW} height={h} fill={colors[si]} />
+              <rect x={gx} y={top} width={barW} height={h} fill={colors[si]} class={v < 0 ? "is-below" : undefined} />
               {showValueLabels && (
                 <text x={gx + barW / 2} y={v >= 0 ? top - 6 : top + h + 14} text-anchor="middle" class="chart__value">{fmt(v)}</text>
               )}
@@ -157,7 +157,7 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
         const last = pts[pts.length - 1];
         return (
           <g class="chart__series">
-            <path d={d} fill="none" stroke={colors[si]} stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+            <path d={d} fill="none" stroke={colors[si]} stroke-width="2" stroke-linejoin="round" stroke-linecap="round" pathLength="1" class="chart__line" />
             {pts.map(([px, py], i) => (
               <g class="chart__mark">
                 <title>{`${chart.categories[i]} — ${s.name}: ${label(s.values[i])}`}</title>

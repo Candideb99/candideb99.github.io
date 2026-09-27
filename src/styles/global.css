@@ -52,14 +52,18 @@
   src: url("/fonts/naskh-latin.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-@font-face { font-family: "Tajawal"; font-weight: 400; font-display: swap; src: url("/fonts/tajawal-arabic-400.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC, U+200C-200E; }
-@font-face { font-family: "Tajawal"; font-weight: 500; font-display: swap; src: url("/fonts/tajawal-arabic-500.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC, U+200C-200E; }
-@font-face { font-family: "Tajawal"; font-weight: 700; font-display: swap; src: url("/fonts/tajawal-arabic-700.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC, U+200C-200E; }
-@font-face { font-family: "Tajawal"; font-weight: 800; font-display: swap; src: url("/fonts/tajawal-arabic-800.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC, U+200C-200E; }
-@font-face { font-family: "Tajawal"; font-weight: 400; font-display: swap; src: url("/fonts/tajawal-latin-400.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
-@font-face { font-family: "Tajawal"; font-weight: 500; font-display: swap; src: url("/fonts/tajawal-latin-500.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
-@font-face { font-family: "Tajawal"; font-weight: 700; font-display: swap; src: url("/fonts/tajawal-latin-700.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
-@font-face { font-family: "Tajawal"; font-weight: 800; font-display: swap; src: url("/fonts/tajawal-latin-800.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
+/* Tajawal sets only small furniture, so it never swaps in late (`optional`): each of its weights arriving on its
+   own used to re-wrap lines such as a section's topic list and jump the whole page, up to four times on a slow
+   phone (layout shift 0.23-0.37 on /economy/, 2026-09-27). A reader on a slow first visit keeps the system face
+   for the labels; the next page has Tajawal from the cache. */
+@font-face { font-family: "Tajawal"; font-weight: 400; font-display: optional; src: url("/fonts/tajawal-arabic-400.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC, U+200C-200E; }
+@font-face { font-family: "Tajawal"; font-weight: 500; font-display: optional; src: url("/fonts/tajawal-arabic-500.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC, U+200C-200E; }
+@font-face { font-family: "Tajawal"; font-weight: 700; font-display: optional; src: url("/fonts/tajawal-arabic-700.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC, U+200C-200E; }
+@font-face { font-family: "Tajawal"; font-weight: 800; font-display: optional; src: url("/fonts/tajawal-arabic-800.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC, U+200C-200E; }
+@font-face { font-family: "Tajawal"; font-weight: 400; font-display: optional; src: url("/fonts/tajawal-latin-400.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
+@font-face { font-family: "Tajawal"; font-weight: 500; font-display: optional; src: url("/fonts/tajawal-latin-500.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
+@font-face { font-family: "Tajawal"; font-weight: 700; font-display: optional; src: url("/fonts/tajawal-latin-700.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
+@font-face { font-family: "Tajawal"; font-weight: 800; font-display: optional; src: url("/fonts/tajawal-latin-800.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
 
 :root {
   color-scheme: light dark;
@@ -81,9 +85,12 @@
   --chart-2: #2f4f8f;
   --chart-3: #b07a12;
 
-  --font-display: "Amiri", "Naskh", "Noto Naskh Arabic", "Times New Roman", serif;
-  --font-title: "Amiri", "Naskh", "Noto Naskh Arabic", "Times New Roman", serif;
-  --font-body: "Naskh", "Noto Naskh Arabic", "Amiri", "Times New Roman", serif;
+  /* Each face falls back straight to the system's, never to the other web face: while Amiri was still loading a
+     headline was drawn for a moment in Naskh (which arrives first and sets wider), wrapped a line deeper and
+     snapped back, jumping the article's photo 57px (2026-09-27). */
+  --font-display: "Amiri", "Noto Naskh Arabic", "Times New Roman", serif;
+  --font-title: "Amiri", "Noto Naskh Arabic", "Times New Roman", serif;
+  --font-body: "Naskh", "Noto Naskh Arabic", "Times New Roman", serif;
   --font-ui: "Tajawal", "IBM Plex Sans Arabic", "Segoe UI", system-ui, sans-serif;
 
   --wrap: 1240px;
@@ -208,6 +215,12 @@ bdi { unicode-bidi: isolate; }
   max-width: var(--measure);
 }
 .prose p { margin-block: 0 1.15em; text-align: justify; text-align-last: start; }
+/* On a phone's narrow column justified naskh opened gaps between words of up to four times their width (browsers
+   do not stretch Arabic with kashida), so phones set the text flush to the start; wider screens stay justified
+   (the owner, 2026-09-27). */
+@media (max-width: 719px) {
+  .prose p { text-align: start; }
+}
 .prose h2 {
   font-family: var(--font-title);
   font-size: 1.35em;
@@ -330,6 +343,37 @@ bdi.latin--short, bdi.latin .nb { white-space: nowrap; }
   color: var(--ink);
 }
 .page-intro { font-family: var(--font-body); font-size: 1.12rem; line-height: 1.75; color: var(--ink-2); max-width: 40rem; margin-top: 0.4rem; }
+
+/* ----- Motion: things settle, nothing travels -----
+   The owner, 2026-09-27, after annahar.com's stories fading in on scroll: "i like annahar effects". Below the first
+   screen a photograph develops out of the paper tone and a story settles in, once, when the reader reaches it; a
+   chart's bars rise from their baseline and its line draws itself. Base.astro's script sets it up and adds
+   .has-motion only for a reader who has not asked for reduced motion; without the script nothing is ever hidden. */
+.has-motion .photo img.will-settle { opacity: 0; transform: scale(1.025); }
+.has-motion .photo img.is-settling { transition: opacity 0.95s var(--ease-out), transform 1.4s var(--ease-out); }
+.has-motion .settle.will-settle { opacity: 0; }
+.has-motion .settle.is-settling { transition: opacity 0.85s var(--ease-out); }
+.has-motion .chart__mark rect { transform-box: fill-box; transform-origin: 50% 100%; }
+.has-motion .chart__mark rect.is-below { transform-origin: 50% 0; }
+.has-motion .chart.will-settle .chart__mark rect { transform: scaleY(0); }
+.has-motion .chart.is-settling .chart__mark rect { transition: transform 0.8s var(--ease-out); }
+.has-motion .chart__line { stroke-dasharray: 1 2; }
+.has-motion .chart.will-settle .chart__line { stroke-dashoffset: 1; }
+.has-motion .chart.is-settling .chart__line { transition: stroke-dashoffset 1.2s var(--ease-out); }
+.has-motion .chart.will-settle .chart__mark circle,
+.has-motion .chart.will-settle .chart__value { opacity: 0; }
+.has-motion .chart.is-settling .chart__mark circle,
+.has-motion .chart.is-settling .chart__value { transition: opacity 0.5s var(--ease-out) 0.55s; }
+/* A story's photograph leans in a little under the pointer (chosen with the demo, 2026-09-27). */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .card .photo img { transition: transform 0.6s var(--ease-out); }
+  .card:hover .photo img:not(.will-settle):not(.is-settling) { transform: scale(1.03); }
+}
+@media print {
+  .has-motion .will-settle, .has-motion .will-settle .chart__mark circle, .has-motion .will-settle .chart__value { opacity: 1 !important; }
+  .has-motion .photo img.will-settle, .has-motion .will-settle .chart__mark rect { transform: none !important; }
+  .has-motion .will-settle .chart__line { stroke-dashoffset: 0 !important; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
