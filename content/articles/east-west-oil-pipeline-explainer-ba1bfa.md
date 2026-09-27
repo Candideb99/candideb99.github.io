@@ -24,18 +24,11 @@ tags:
 regions:
   - عالمي
   - الخليج
+  - الشرق الأوسط
 readingMinutes: 3
 chart: null
 table: null
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Oil_pipeline_pumping_station%2C_northeast_Colorado.jpg/1280px-Oil_pipeline_pumping_station%2C_northeast_Colorado.jpg
-  width: 1280
-  height: 981
-  alt: محطة ضخ على خط أنابيب نفطي في شمال شرق كولورادو
-  credit: Greg Goebel from Loveland CO, USA · CC BY-SA 2.0 · ويكيميديا كومنز
-  license: CC BY-SA 2.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/2.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AOil_pipeline_pumping_station%2C_northeast_Colorado.jpg
+image: null
 sources:
   - name: خازندار
     nameEn: Khazendar

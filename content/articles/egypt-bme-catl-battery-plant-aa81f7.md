@@ -27,15 +27,7 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/18650_and_21700_lithium_ion_battery_cell.jpg/1280px-18650_and_21700_lithium_ion_battery_cell.jpg
-  width: 1280
-  height: 960
-  alt: خلايا بطاريات ليثيوم أيون
-  credit: Sevenethics · CC0 · ويكيميديا كومنز
-  license: CC0
-  licenseUrl: http://creativecommons.org/publicdomain/zero/1.0/deed.en
-  pageUrl: https://commons.wikimedia.org/wiki/File%3A18650_and_21700_lithium_ion_battery_cell.jpg
+image: null
 sources:
   - name: عرب نيوز
     nameEn: Arab News

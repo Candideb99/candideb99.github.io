@@ -66,12 +66,16 @@ appear higher up is deleted. The copy desk may cut a repeat because its guard co
 whole story: a figure, a name or a hedged claim may leave a place where it repeats, never the story.
 
 **The box holds what its heading says.** Under «الأرقام» every value is a figure with its unit (an
-amount, a rate, a price, a count, a share, a duration) or a credit rating; a name, a place, a company,
-a date, a weekday or a verdict is not a key fact however important, and stays in the text (the owner,
-2026-09-27, on «بغداد ومسقط» and «النجف» printed there). Code decides it, not the writer's obedience:
-`pipeline/lib/keyfacts.mjs` drops such a value wherever a draft is made, written or corrected, and the
-site-check refuses a published box that holds one. A story with no figures has no box. An explainer's
-box is its glossary, each key term over its one-line definition, headed «مفاهيم أساسية».
+amount, a rate, a price, a count, a share, a duration) or a credit rating, opening with the number or
+its measure word («نحو 70%»، «حتى 7%»), in Arabic; a name, a place, a company, a date, a weekday, a
+verdict or a sentence about a figure is not a key fact however important, and stays in the text (the
+owner, 2026-09-27, on «بغداد ومسقط» and «النجف» printed there). Its label says exactly what the figure
+measures, and every figure belongs to the headline's event. Code decides the form, not the writer's
+obedience: `pipeline/lib/keyfacts.mjs` drops such a value wherever a draft is made, written or
+corrected, and the site-check refuses a published box that holds one. A story with no figures has no
+box. An explainer's box is its glossary, each key term over its one-line definition, headed «مفاهيم
+أساسية». The same day's audits held every other label to its story too: tags the text carries, desks
+where the event happens, the label above a headline named by the headline (CLAUDE.md has the rules).
 
 **Hedges** are said once and plainly: at most one per paragraph, varied, never two sentences in a row
 opening with one; يرجّح أن with no subject becomes والأرجح أن or names who judges. An analysis marks

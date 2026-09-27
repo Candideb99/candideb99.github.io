@@ -20,6 +20,8 @@ export interface Topic {
   match: string[];
   titleMatch?: string[];
   exclude?: string[];
+  /** Terms that list a story here but lose its trail to any other topic its headline names («تصعيد هرمز يرفع برنت» is oil). */
+  weak?: string[];
 }
 
 export const TOPICS = topicsData as Record<string, Topic[]>;
@@ -56,7 +58,8 @@ function termPattern(term: string): RegExp {
   let re = patterns.get(n);
   if (!re) {
     const forms = n.startsWith("ال") ? `[وفبك]?(?:${escapeRe(n)}|لل${escapeRe(n.slice(2))})` : `[وفبكل]?(?:ال|لل)?${escapeRe(n)}`;
-    re = new RegExp(`(?<![\\u0600-\\u06FFa-z0-9])${forms}(?![\\u0600-\\u06FFa-z0-9])`, "g");
+    // Arabic letters only as word edges: «،» «؛» «؟» sit in the same Unicode block and end a word («الفائدة،»).
+    re = new RegExp(`(?<![\\u0621-\\u065F\\u066E-\\u06D3\\u06FA-\\u06FFa-z0-9])${forms}(?![\\u0621-\\u065F\\u066E-\\u06D3\\u06FA-\\u06FFa-z0-9])`, "g");
     patterns.set(n, re);
   }
   re.lastIndex = 0;
@@ -85,19 +88,20 @@ function hit(article: Article, topic: Topic): Hit | null {
   let best: Hit | null = null;
   const better = (h: Hit) => !best || h.score > best.score || (h.score === best.score && (h.at < best.at || (h.at === best.at && h.length > best.length)));
   const title = readable(article.data.title, topic);
-  for (const term of [...topic.match, ...(topic.titleMatch ?? [])]) {
+  const weak = new Set(topic.weak ?? []);
+  for (const term of [...topic.match, ...(topic.titleMatch ?? []), ...weak]) {
     if (normalizeArabic(term).length < 2) continue;
     const m = termPattern(term).exec(title);
     if (m) {
-      const h = { score: 3, at: m.index, length: term.length };
+      const h = { score: weak.has(term) ? 2.5 : 3, at: m.index, length: term.length };
       if (better(h)) best = h;
     }
   }
   article.data.tags.forEach((tag, i) => {
     const text = readable(tag, topic);
-    for (const term of topic.match) {
+    for (const term of [...topic.match, ...weak]) {
       if (normalizeArabic(term).length < 2 || !termPattern(term).test(text)) continue;
-      const h = { score: 1 + (6 - Math.min(i, 5)) / 10, at: Infinity, length: term.length };
+      const h = { score: (weak.has(term) ? 0.5 : 1) + (6 - Math.min(i, 5)) / 10, at: Infinity, length: term.length };
       if (better(h)) best = h;
     }
   });

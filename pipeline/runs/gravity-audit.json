@@ -1,0 +1,1715 @@
+{
+  "at": "2026-09-27T00:16:20.660Z",
+  "results": [
+    {
+      "slug": "mexico-pledges-more-us-imports-trade-surplus-4c273f",
+      "kind": "news",
+      "title": "المكسيك تتعهد بزيادة وارداتها الأمريكية لتقليص فائض بلغ 197 مليار دولار",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Claudia_Sheinbaum_el_21_de_enero_de_2026.jpg/1280px-Claudia_Sheinbaum_el_21_de_enero_de_2026.jpg",
+      "caption": "الرئيسة المكسيكية كلوديا شينباوم خلال مؤتمرها الصحفي الصباحي في يناير 2026",
+      "verdict": "SERIOUS",
+      "reason": "A standard news photo of the Mexican president speaking at her official press conference podium, directly relevant to the trade pledge."
+    },
+    {
+      "slug": "apple-taction-haptics-patent-verdict-f37d49",
+      "kind": "news",
+      "title": "هيئة محلفين في سان دييغو تلزم أبل بدفع أكثر من 5.7 مليار دولار في نزاع براءات",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Apple-Park_Cupertino_1254.jpg",
+      "caption": "مقر شركة أبل «أبل بارك» في كوبرتينو",
+      "verdict": "SERIOUS",
+      "reason": "A plain aerial view of Apple's headquarters is an ordinary, sober illustration of a story about the company's patent verdict."
+    },
+    {
+      "slug": "microsoft-merges-office-apps-into-copilot-fa6351",
+      "kind": "news",
+      "title": "مايكروسوفت تدمج «وورد» و«إكسل» و«باوربوينت» في مساعدها «كوبايلوت»",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Satya_Nadella.jpg/1280px-Satya_Nadella.jpg",
+      "caption": "ساتيا ناديلا خلال مؤتمر «لوويب» عام 2013",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary conference photo of Microsoft's CEO speaking; it is dated but neither comic nor odd."
+    },
+    {
+      "slug": "trump-rolls-back-biden-fuel-economy-standards-ad4148",
+      "kind": "news",
+      "title": "ترامب يتراجع عن هدف بايدن لكفاءة الوقود البالغ نحو 50 ميلاً للغالون",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Sean_Duffy_2025.jpg/1280px-Sean_Duffy_2025.jpg",
+      "caption": "وزير النقل الأمريكي شون دافي متحدثاً خلال مؤتمر أمريكا فست في فينيكس عام 2025",
+      "verdict": "SERIOUS",
+      "reason": "A routine photo of the US transportation secretary speaking on stage, relevant to a fuel-efficiency policy story."
+    },
+    {
+      "slug": "libya-resumes-sharara-oil-pumping-95-million-losses-f5ef80",
+      "kind": "news",
+      "title": "ليبيا تستأنف الضخ من حقل الشرارة بعد توقف كلّف 95 مليون دولار",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/El_Saharara_oil_field%2C_Libya.jpg/1280px-El_Saharara_oil_field%2C_Libya.jpg",
+      "caption": "خزانات نفط وشعلة غاز في حقل الشرارة النفطي بليبيا",
+      "verdict": "SERIOUS",
+      "reason": "Oil storage tanks and a gas flare at the Sharara field show Libya's working oil industry, which matches the headline."
+    },
+    {
+      "slug": "navy-shipyard-program-could-cost-200-billion-e8fbb1",
+      "kind": "news",
+      "title": "مكتب المحاسبة الأمريكي: كلفة تحديث أحواض البحرية قد تبلغ 200 مليار دولار",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Bremerton%2C_WA_-_Puget_Sound_Naval_Shipyard_2022-07-28_01.jpg/1280px-Bremerton%2C_WA_-_Puget_Sound_Naval_Shipyard_2022-07-28_01.jpg",
+      "caption": "حوض بوجيت ساوند لبناء السفن التابع للبحرية الأمريكية في بريميرتون بولاية واشنطن",
+      "verdict": "SERIOUS",
+      "reason": "A plain view of the Puget Sound naval shipyard with its cranes directly illustrates a story on naval shipyard modernization costs."
+    },
+    {
+      "slug": "tiktok-alabama-settlement-teen-limits-320e2c",
+      "kind": "news",
+      "title": "«تيك توك» تدفع 100 مليون دولار على الأقل لتسوية دعوى ألاباما",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Alabama_State_Capitol_-_55441802109.jpg/1280px-Alabama_State_Capitol_-_55441802109.jpg",
+      "caption": "مبنى الكابيتول في مونتغمري بولاية ألاباما الأمريكية",
+      "verdict": "SERIOUS",
+      "reason": "A plain news photograph of the Alabama State Capitol suits a story about a settlement with the state."
+    },
+    {
+      "slug": "oil-falls-us-iran-hormuz-talks-fe867b",
+      "kind": "news",
+      "title": "النفط يتراجع نحو 3% مع آمال بمفاوضات أمريكية إيرانية بشأن هرمز",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Oil_Products_Tanker_MP_MR_Tanker_2_and_Crude_Oil_Tanker_Njord_DF_at_BP_Oil_Refinery_Jetty%2C_bulk_carrier_BLC_First_at_Kwinana_Bulk_Jetty%2C_October_2023_01.jpg/1280px-Oil_Products_Tanker_MP_MR_Tanker_2_and_Crude_Oil_Tanker_Njord_DF_at_BP_Oil_Refinery_Jetty%2C_bulk_carrier_BLC_First_at_Kwinana_Bulk_Jetty%2C_October_2023_01.jpg",
+      "caption": "ناقلة منتجات نفطية وناقلة نفط خام وسفينة بضائع سائبة (صورة تعبيرية)",
+      "verdict": "SERIOUS",
+      "reason": "Tankers and a bulk carrier moored off an industrial terminal are a sober, relevant image for an oil-price story."
+    },
+    {
+      "slug": "brent-egypt-fuel-pricing-inflation-rates-e5f94b",
+      "kind": "analysis",
+      "title": "برنت فوق 105 دولارات يعقّد حسابات المركزي المصري",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/CairoHorseDrawnFuelTransport.jpg/1280px-CairoHorseDrawnFuelTransport.jpg",
+      "caption": "عربة وقود يجرها حصان في محطة بنزين بالقاهرة",
+      "verdict": "UNSERIOUS",
+      "reason": "A horse-drawn fuel cart at a Cairo pump is a folkloric cliché that pictures Egypt's economy as quaint rather than modern."
+    },
+    {
+      "slug": "fed-plans-higher-bank-asset-thresholds-6426fc",
+      "kind": "news",
+      "title": "مصادر: الفيدرالي يعدّ خطة لرفع حدود الأصول الموجبة لرقابة مشددة",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Marriner_S._Eccles_Federal_Reserve_Board_Building.jpg/1280px-Marriner_S._Eccles_Federal_Reserve_Board_Building.jpg",
+      "caption": "مبنى مجلس الاحتياطي الفيدرالي «إكلس» في واشنطن",
+      "verdict": "SERIOUS",
+      "reason": "A straightforward shot of the Federal Reserve's Eccles Building matches a story about Fed supervision."
+    },
+    {
+      "slug": "mcdonalds-shares-worst-year-since-2002-bf4936",
+      "kind": "news",
+      "title": "سهم ماكدونالدز يفقد نحو ثلث قيمته مع تباطؤ المبيعات الأمريكية",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/McDonald%27s_restaurant_in_Blairsville%2C_Georgia.jpg/1280px-McDonald%27s_restaurant_in_Blairsville%2C_Georgia.jpg",
+      "caption": "مطعم ماكدونالدز في بليرزفيل بولاية جورجيا الأمريكية",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary photograph of a McDonald's restaurant plainly illustrates a story about the company's stock and sales."
+    },
+    {
+      "slug": "egypt-gdp-growth-5-1-percent-2025-2026-f2e096",
+      "kind": "news",
+      "title": "نمو الاقتصاد المصري يتسارع إلى 5.1% في العام المالي 2025/2026",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Cairo_Skyline_%282020%29.jpg",
+      "caption": "أبراج على ضفاف النيل في القاهرة",
+      "verdict": "SERIOUS",
+      "reason": "Modern office towers on the Nile present Cairo's economy the way a professional business outlet would."
+    },
+    {
+      "slug": "xrg-absheron-final-investment-decision-azerbaijan-58c717",
+      "kind": "news",
+      "title": "«إكس آر جي» تقرّ الاستثمار في المرحلة التالية من حقل أبشيرون للغاز",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Deep_sea_oil_drilling_in_the_Caspian._%283892498628%29.jpg",
+      "caption": "منصة حفر بحرية في بحر قزوين قبالة أذربيجان",
+      "verdict": "SERIOUS",
+      "reason": "A plain news photograph of an offshore drilling platform at sea fits a gas-field investment story."
+    },
+    {
+      "slug": "sp-raises-oman-growth-forecast-2026-94f282",
+      "kind": "news",
+      "title": "«ستاندرد آند بورز» ترفع توقع نمو اقتصاد عُمان في 2026 إلى 3.5%",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/OM-Salalah-hafen-zementwerk.jpg/1280px-OM-Salalah-hafen-zementwerk.jpg",
+      "caption": "سفينة حاويات في ميناء صلالة بسلطنة عُمان",
+      "verdict": "SERIOUS",
+      "reason": "A busy container port with cranes shows Oman's modern trade economy in a sober, ordinary way."
+    },
+    {
+      "slug": "trump-rejects-iran-hormuz-seven-day-proposal-e5cd3c",
+      "kind": "news",
+      "title": "تقارير: ترامب يرفض مقترحاً إيرانياً لإعادة فتح هرمز خلال سبعة أيام",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Donald_Trump_RNC_July_2016.jpg/1280px-Donald_Trump_RNC_July_2016.jpg",
+      "caption": "ترامب خلال خطابه أمام المؤتمر الوطني للحزب الجمهوري عام 2016",
+      "verdict": "SERIOUS",
+      "reason": "A standard photo of Trump speaking at a podium with flags is an ordinary, dignified news image."
+    },
+    {
+      "slug": "china-us-30-billion-tariff-cut-6ee1e4",
+      "kind": "news",
+      "title": "بكين وواشنطن تتفقان على خفض الرسوم عن سلع بقيمة 30 مليار دولار",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Donald_Trump_and_Xi_Jinping_at_Zhongnanhai_%281%29-20260515.jpg/1280px-Donald_Trump_and_Xi_Jinping_at_Zhongnanhai_%281%29-20260515.jpg",
+      "caption": "ترامب وشي في تشونغنانهاي خلال زيارة ترامب للصين في مايو 2026",
+      "verdict": "SERIOUS",
+      "reason": "The leaders walking together in a formal setting is a composed diplomatic news photograph."
+    },
+    {
+      "slug": "who-really-pays-tariffs-incidence-explained-2a5aa1",
+      "kind": "explainer",
+      "title": "من يتحمّل فعلاً عبء الرسوم الجمركية؟",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Container_Port%2C_DP_World_Southampton_10_%2855540085699%29.jpg/1280px-Container_Port%2C_DP_World_Southampton_10_%2855540085699%29.jpg",
+      "caption": "سفينة حاويات عند رافعات ميناء دي بي وورلد ساوثهامبتون في بريطانيا",
+      "verdict": "SERIOUS",
+      "reason": "A container ship at port cranes is a plain, relevant illustration for a tariffs analysis."
+    },
+    {
+      "slug": "trump-takaichi-yen-weakness-concern-e6a74d",
+      "kind": "news",
+      "title": "ترامب يبدي لتاكايتشي قلقه من ضعف الين",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/President_Donald_J._Trump_participates_in_a_pull-aside_meeting_with_Japanese_Prime_Minister_Sanae_Takaichi_%2855546330461%29.jpg/1280px-President_Donald_J._Trump_participates_in_a_pull-aside_meeting_with_Japanese_Prime_Minister_Sanae_Takaichi_%2855546330461%29.jpg",
+      "caption": "ترامب وتاكايتشي خلال لقائهما في مقر الأمم المتحدة بنيويورك (أرشيفية)",
+      "verdict": "SERIOUS",
+      "reason": "A formal bilateral meeting with flags and interpreters is a standard diplomatic news photograph."
+    },
+    {
+      "slug": "trump-xi-summit-ends-two-month-truce-49a12f",
+      "kind": "news",
+      "title": "قمة ترامب وشي تكتفي بتمديد الهدنة التجارية شهرين",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Donald_Trump_and_Xi_Jinping_at_the_Temple_of_Heaven_%283%29-20260514.jpg/1280px-Donald_Trump_and_Xi_Jinping_at_the_Temple_of_Heaven_%283%29-20260514.jpg",
+      "caption": " (أرشيفية)",
+      "verdict": "SERIOUS",
+      "reason": "A formal archive photograph of the two leaders standing together at an official visit suits a trade-summit story."
+    },
+    {
+      "slug": "openai-agents-leaked-53-user-images-20fb3c",
+      "kind": "news",
+      "title": "«أوبن إيه آي» تحقق في عشرات الحوادث لوكلائها بينها تسريب 53 صورة",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Sam_Altman_speaking_at_TED_%28cropped%29.jpg",
+      "caption": "سام ألتمان الرئيس التنفيذي لـ«أوبن إيه آي» خلال مؤتمر «تيد» عام 2025",
+      "verdict": "SERIOUS",
+      "reason": "A plain, composed portrait of OpenAI's chief executive on stage at a conference is an ordinary news photograph of the subject."
+    },
+    {
+      "slug": "eu-urges-gas-power-demand-cuts-winter-3a6d5e",
+      "kind": "news",
+      "title": "مفوض الطاقة الأوروبي يدعو إلى خفض استهلاك الغاز والكهرباء قبل الشتاء",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Visit_by_Dan_J%C3%B8rgensen%2C_European_Commissioner%2C_to_the_UK_%28P-070045-00-20%29.jpg/1280px-Visit_by_Dan_J%C3%B8rgensen%2C_European_Commissioner%2C_to_the_UK_%28P-070045-00-20%29.jpg",
+      "caption": "دان يورغنسن خلال زيارته المملكة المتحدة عام 2026",
+      "verdict": "SERIOUS",
+      "reason": "The energy commissioner speaking at a podium in front of an energy-transition backdrop matches the policy headline."
+    },
+    {
+      "slug": "appeals-court-upholds-pentagon-anthropic-designation-d3a100",
+      "kind": "news",
+      "title": "محكمة استئناف أمريكية تؤيد إدراج البنتاغون «أنثروبيك» على قائمة مخاطر التوريد",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/E_Barrett_Prettyman_court_house_front_Washington_DC_2026-07-31_11-10-38.jpg/1280px-E_Barrett_Prettyman_court_house_front_Washington_DC_2026-07-31_11-10-38.jpg",
+      "caption": "مبنى محكمة إي. باريت بريتيمان الاتحادية في واشنطن",
+      "verdict": "SERIOUS",
+      "reason": "A straightforward exterior of the federal courthouse is a dull but dignified image for a court ruling."
+    },
+    {
+      "slug": "us-consumer-sentiment-four-month-low-september-e434a2",
+      "kind": "news",
+      "title": "ثقة المستهلكين الأمريكيين تتراجع إلى أدنى مستوى في 4 أشهر مع مخاوف غلاء الوقود",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/A_modern_BP_gas_station_or_filling_station_in_the_United_States_04.jpg/1280px-A_modern_BP_gas_station_or_filling_station_in_the_United_States_04.jpg",
+      "caption": "سيارة تتزود بالوقود في محطة بي بي ببلو ريدج في ولاية جورجيا الأمريكية",
+      "verdict": "SERIOUS",
+      "reason": "A working filling station with a car refuelling at the pump illustrates fuel-price worries in a normal news manner."
+    },
+    {
+      "slug": "nscale-raises-3-36-billion-convertible-ahead-ipo-999fb3",
+      "kind": "news",
+      "title": "«إنسكايل» تجمع 3.36 مليار دولار بمشاركة مجلس أبوظبي للاستثمار قبل طرحها العام",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/NEW_YORK_STOCK_EXCHANGE_20240521.jpg/1280px-NEW_YORK_STOCK_EXCHANGE_20240521.jpg",
+      "caption": "مقر بورصة نيويورك في شارع برود ستريت بمانهاتن",
+      "verdict": "SERIOUS",
+      "reason": "The New York Stock Exchange facade is a standard, serious image for a pre-IPO funding story."
+    },
+    {
+      "slug": "un-expands-settlement-companies-list-214-baf9a8",
+      "kind": "news",
+      "title": "الأمم المتحدة توسّع قائمة الشركات المرتبطة بالمستوطنات إلى 214 شركة",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/20/Ebal_%28settlement%29.jpg",
+      "caption": "مستوطنة عيبال قرب جبل عيبال في الضفة الغربية",
+      "verdict": "SERIOUS",
+      "reason": "A plain documentary view of a hilltop settlement of prefabricated buildings directly depicts the subject of the settlements story."
+    },
+    {
+      "slug": "week-in-review-2026-09-25-8ceb5a",
+      "kind": "weekly",
+      "title": "برنت يقفز بأكثر من 3% بعد هجوم حوثي على ينبع",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/ISABELLA_%28IMO_1014096%29%2C_Crude_Oil_Tanker_pic2.jpg/1280px-ISABELLA_%28IMO_1014096%29%2C_Crude_Oil_Tanker_pic2.jpg",
+      "caption": "ناقلة النفط الخام إيزابيلا عند رصيف تحميل",
+      "verdict": "SERIOUS",
+      "reason": "A crude oil tanker at a loading berth is a standard, sober news image for an oil price story."
+    },
+    {
+      "slug": "airbus-a321neo-fuselage-flaw-shares-fall-317554",
+      "kind": "news",
+      "title": "سهم إيرباص يتراجع نحو 1.5% إثر خلل في هيكل «إيه321 نيو»",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/A321_final_assembly_%289351765668%29.jpg/1280px-A321_final_assembly_%289351765668%29.jpg",
+      "caption": "خط التجميع النهائي لطائرات إيه321 في مصنع إيرباص بمدينة هامبورغ الألمانية",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary industrial view of the A321 final assembly line fits the Airbus share story."
+    },
+    {
+      "slug": "fincantieri-leonardo-ddx-destroyer-contract-d76a49",
+      "kind": "news",
+      "title": "مشروع «فينكانتيري» و«ليوناردو» يوقّع عقداً بـ3.7 مليار يورو لمدمّرتين",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Cantiere_Fincantieri_di_Ancona.jpg/1280px-Cantiere_Fincantieri_di_Ancona.jpg",
+      "caption": "حوض بناء السفن التابع لشركة فينكانتيري في أنكونا بإيطاليا",
+      "verdict": "SERIOUS",
+      "reason": "An aerial view of the Fincantieri shipyard with its gantry crane is a plain, relevant industrial photograph."
+    },
+    {
+      "slug": "bailey-energy-prices-uk-rate-hold-d26b51",
+      "kind": "news",
+      "title": "بيلي: أسعار الطاقة المرتفعة تصعّب تثبيت الفائدة البريطانية",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Bank_of_England_from_Horizon_22.jpg/1280px-Bank_of_England_from_Horizon_22.jpg",
+      "caption": "مبنى بنك إنجلترا في حي المال بلندن",
+      "verdict": "SERIOUS",
+      "reason": "An aerial view of the Bank of England building is a conventional, serious image for a monetary policy story."
+    },
+    {
+      "slug": "uae-stocks-fall-iran-aviation-warning-d89339",
+      "kind": "news",
+      "title": "بورصتا الإمارات تتراجعان بعد تحذير إيراني من تعطيل الطيران في المنطقة",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Dubai_International_Airport_-_2024-10-24_-_Andy_Mabbett_-_56.jpg/1280px-Dubai_International_Airport_-_2024-10-24_-_Andy_Mabbett_-_56.jpg",
+      "caption": "طائرة إيرباص A380 تابعة لطيران الإمارات في مطار دبي الدولي",
+      "verdict": "SERIOUS",
+      "reason": "An Emirates A380 parked at Dubai airport is a straightforward depiction of the region's modern aviation sector."
+    },
+    {
+      "slug": "us-china-preferential-trade-goods-deal-1da062",
+      "kind": "news",
+      "title": "غرير: اتفاق أمريكي صيني على شروط تفضيلية لسلع زراعية وطبية واستهلاكية",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Donald_Trump_and_Xi_Jinping_at_the_Temple_of_Heaven_%281%29-20260514.jpg/1280px-Donald_Trump_and_Xi_Jinping_at_the_Temple_of_Heaven_%281%29-20260514.jpg",
+      "caption": "ترامب وشي في معبد تيانتان خلال زيارته للصين عام 2026",
+      "verdict": "SERIOUS",
+      "reason": "A formal, dignified news frame of the two leaders entering the Temple of Heaven during an official visit."
+    },
+    {
+      "slug": "iran-seven-day-plan-reopen-hormuz-a8836f",
+      "kind": "news",
+      "title": "إيران تعرض خطة من سبعة أيام لإعادة فتح مضيق هرمز",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/U_S_Forces_Start_Mine_Clearance_Mission_in_Strait_of_Hormuz_%289609002%29.jpg/1280px-U_S_Forces_Start_Mine_Clearance_Mission_in_Strait_of_Hormuz_%289609002%29.jpg",
+      "caption": "مدمرة أمريكية خلال مهمة لإزالة الألغام في مضيق هرمز",
+      "verdict": "SERIOUS",
+      "reason": "A plain news photograph of a US destroyer and helicopter at sea fits a story about reopening the strait."
+    },
+    {
+      "slug": "war-risk-insurance-premium-shipping-explained-129434",
+      "kind": "explainer",
+      "title": "كيف تنتقل علاوة مخاطر الحرب من تأمين السفن إلى أسعار الوقود؟",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Oil_Tanker_in_North_Sea_3928.jpg/1280px-Oil_Tanker_in_North_Sea_3928.jpg",
+      "caption": "سفينة ناقلة للنفط (صورة تعبيرية)",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary photograph of a tanker at sea illustrates shipping risk and fuel costs soberly."
+    },
+    {
+      "slug": "allianz-heatwaves-cost-europe-113-billion-c824da",
+      "kind": "news",
+      "title": "«أليانز»: موجات الحر كبّدت الاقتصادات الأوروبية نحو 113 مليار يورو",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Wzwz_schwabing_26_allianz_building.JPG/1280px-Wzwz_schwabing_26_allianz_building.JPG",
+      "caption": "مقر مجموعة أليانز في شارع كونيغين بمدينة ميونخ الألمانية",
+      "verdict": "SERIOUS",
+      "reason": "A plain photograph of the Allianz office building is dull but perfectly serious."
+    },
+    {
+      "slug": "eu-urges-uk-raise-chinese-car-tariffs-a5e6ba",
+      "kind": "news",
+      "title": "فاينانشال تايمز: الاتحاد الأوروبي يحث لندن على رفع رسوم السيارات الصينية",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Berlaymont_building_2022.jpg/1280px-Berlaymont_building_2022.jpg",
+      "caption": "مقر المفوضية الأوروبية في مبنى بيرلايمون ببروكسل",
+      "verdict": "SERIOUS",
+      "reason": "The Berlaymont with EU flags is a standard, serious illustration of EU policy news."
+    },
+    {
+      "slug": "france-offers-protect-saudi-yanbu-energy-sites-2ffcbb",
+      "kind": "news",
+      "title": "فرنسا تعرض حماية منشآت الطاقة السعودية في ينبع بعد هجمات حوثية",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Emmanuel_Macron%2C_President_of_France%2C_at_the_World_Economic_Forum_Annual_Meeting_2026.jpg/1280px-Emmanuel_Macron%2C_President_of_France%2C_at_the_World_Economic_Forum_Annual_Meeting_2026.jpg",
+      "caption": "الرئيس الفرنسي إيمانويل ماكرون خلال المنتدى الاقتصادي العالمي في دافوس عام 2026",
+      "verdict": "UNSERIOUS",
+      "reason": "Macron in aviator sunglasses at the podium became a widely shared meme moment, and it looks odd beside a grave security story."
+    },
+    {
+      "slug": "xi-urges-us-ai-cooperation-trump-summit-ae81d8",
+      "kind": "news",
+      "title": "شي يدعو واشنطن إلى التعاون في الذكاء الاصطناعي خلال قمته مع ترامب",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Donald_Trump_and_Xi_Jinping_at_Zhongnanhai_%283%29-20260515.jpg/1280px-Donald_Trump_and_Xi_Jinping_at_Zhongnanhai_%283%29-20260515.jpg",
+      "caption": "ترامب وشي في تشونغنانهاي خلال زيارة ترامب للصين في مايو 2026",
+      "verdict": "SERIOUS",
+      "reason": "A straightforward news photograph of the two leaders together during the visit, fitting a summit story."
+    },
+    {
+      "slug": "saudi-tanker-war-risk-insurance-yanbu-triples-425bf1",
+      "kind": "news",
+      "title": "علاوة تأمين مخاطر الحرب في ينبع تقفز إلى 3% من قيمة الناقلة",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Oil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_03.jpg/1280px-Oil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_03.jpg",
+      "caption": "ناقلة منتجات نفطية (صورة تعبيرية)",
+      "verdict": "SERIOUS",
+      "reason": "A plain photograph of an oil products tanker at a jetty suits a story on tanker war-risk insurance."
+    },
+    {
+      "slug": "brent-tops-106-houthi-aramco-attacks-a2e448",
+      "kind": "news",
+      "title": "برنت يتجاوز 106 دولارات بعدما أعلن الحوثيون استهداف منشآت لأرامكو",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Oil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_03.jpg/1280px-Oil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_03.jpg",
+      "caption": "ناقلة منتجات نفطية عند رصيف مصفاة (صورة تعبيرية)",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary photograph of a tanker at a refinery berth carries an oil price story soberly."
+    },
+    {
+      "slug": "egypt-petroleum-ministry-denies-fuel-price-hike-40ab37",
+      "kind": "news",
+      "title": "وزارة البترول المصرية تنفي زيادة أسعار البنزين والسولار",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Gas_station-Fourth_Residential_Area-Sadat_City.jpg/1280px-Gas_station-Fourth_Residential_Area-Sadat_City.jpg",
+      "caption": "محطة وقود التعاون في مدينة السادات بمصر",
+      "verdict": "SERIOUS",
+      "reason": "A working Egyptian filling station with pumps and a car is a plain, modern image of the fuel market."
+    },
+    {
+      "slug": "us-mortgage-rates-top-7-percent-558e6b",
+      "kind": "news",
+      "title": "فائدة الرهن العقاري الأمريكي تتجاوز 7% للمرة الأولى منذ يناير 2025",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Swanson_Gardner_House_Shawnee_Co_KS_north_and_east_elevations.jpg/1280px-Swanson_Gardner_House_Shawnee_Co_KS_north_and_east_elevations.jpg",
+      "caption": "منزل في حي كينوود بمدينة توبيكا في ولاية كانساس الأمريكية",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary American house is a conventional, sober illustration for a mortgage rate story."
+    },
+    {
+      "slug": "china-fuel-inventories-seven-year-low-exports-221e8e",
+      "kind": "news",
+      "title": "مخزونات البنزين والديزل في الصين تهبط إلى أدنى مستوى في سبع سنوات",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b9/%E5%85%B0%E5%B7%9E%E7%9F%B3%E5%8C%96%E7%82%BC%E6%B2%B9%E5%8E%82%E5%8E%82%E5%8C%BA%E5%A4%9C%E6%99%AF.jpg",
+      "caption": "مصفاة لانتشو للبتروكيماويات في مقاطعة قانسو الصينية",
+      "verdict": "SERIOUS",
+      "reason": "A refinery complex at dusk is a serious, relevant image for a story on Chinese fuel inventories."
+    },
+    {
+      "slug": "egypt-bp-four-wells-700-million-5a4448",
+      "kind": "news",
+      "title": "مصر تبحث مع «بي بي» حفر 4 آبار باستثمارات 700 مليون دولار",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/NORUS2.jpg/1280px-NORUS2.jpg",
+      "caption": "تركيب منصة غاز بحرية في البحر المتوسط قبالة مصر",
+      "verdict": "SERIOUS",
+      "reason": "A plain news photograph of an offshore gas platform being installed, which fits a story about drilling investment."
+    },
+    {
+      "slug": "egypt-rate-hold-us-yields-fed-c04ed7",
+      "kind": "analysis",
+      "title": "صعود العائد الأمريكي يرفع ثمن أي خفض للفائدة في مصر",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Shopping_in_the_spotlight_%28Cairo%29.jpg/1280px-Shopping_in_the_spotlight_%28Cairo%29.jpg",
+      "caption": "متسوقتان في سوق بجوار مجموعة الغوري في القاهرة",
+      "verdict": "UNSERIOUS",
+      "reason": "An arty, sun-shafted scene of veiled shoppers on rubble-strewn ground in historic Cairo reads as picturesque travel photography, not a serious picture of an interest-rate story."
+    },
+    {
+      "slug": "uae-suspends-iranian-airline-flights-42dce4",
+      "kind": "news",
+      "title": "إعلام طهران: الإمارات تعلّق رحلات الناقلات الإيرانية",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Dubai_International_Airport%2C_UAE_November_3%2C_2025_-_14.jpg/1280px-Dubai_International_Airport%2C_UAE_November_3%2C_2025_-_14.jpg",
+      "caption": "عمال يحمّلون طائرة ركاب في مطار دبي الدولي",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary working shot of an airliner being loaded at an airport, with nothing quaint or comic in it."
+    },
+    {
+      "slug": "saudi-sells-100-million-barrels-asia-hormuz-b316ff",
+      "kind": "news",
+      "title": "السعودية تبيع نحو 100 مليون برميل من الخام إلى آسيا عبر هرمز",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Oil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_01.jpg/1280px-Oil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_01.jpg",
+      "caption": "ناقلة منتجات نفطية (صورة تعبيرية)",
+      "verdict": "SERIOUS",
+      "reason": "A straightforward photograph of an oil tanker berthed at a jetty, which suits a crude export story."
+    },
+    {
+      "slug": "egypt-central-bank-holds-rates-fifth-time-b263dc",
+      "kind": "news",
+      "title": "المركزي المصري يثبّت الفائدة عند 19% و20% للمرة الخامسة على التوالي",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/The_Rhythm_of_the_Egyptian_Street_Market.jpg/1280px-The_Rhythm_of_the_Egyptian_Street_Market.jpg",
+      "caption": "سوق شعبية للخضراوات والفاكهة في مصر",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary, busy, modern street market with vendors and shoppers, the standard way news agencies illustrate prices and the economy."
+    },
+    {
+      "slug": "hormuz-crisis-escalation-to-stalled-talks-2dfd6a",
+      "kind": "feature",
+      "title": "مضيق هرمز.. ثلاثة أسابيع من التصعيد إلى دبلوماسية بلا تقدّم",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Rio_Arauca_at_the_oil_terminal_in_Lisboa_%282017%29.jpg/1280px-Rio_Arauca_at_the_oil_terminal_in_Lisboa_%282017%29.jpg",
+      "caption": "ناقلة نفط (صورة تعبيرية)",
+      "verdict": "SERIOUS",
+      "reason": "A plain photograph of a large tanker at sea with storage tanks behind it, suitable for a story about Hormuz shipping."
+    },
+    {
+      "slug": "turkish-airlines-orders-150-boeing-737-max-e89a62",
+      "kind": "news",
+      "title": "الخطوط التركية تطلب ما يصل إلى 150 طائرة بوينغ 737 ماكس",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/THY_plane_at_Istanbul_Airport.jpg/1280px-THY_plane_at_Istanbul_Airport.jpg",
+      "caption": "طائرة للخطوط الجوية التركية في مطار إسطنبول",
+      "verdict": "SERIOUS",
+      "reason": "A plain news photograph of a Turkish Airlines Boeing jet parked on the apron at night suits an aircraft-order story."
+    },
+    {
+      "slug": "microsoft-10-billion-gulf-investment-2030-1cf016",
+      "kind": "news",
+      "title": "مايكروسوفت تعتزم استثمار أكثر من 10 مليارات دولار في أربع دول خليجية",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Microsoft_Redmond_Campus_redevelopment_aerial_view%2C_Sept._2021.jpg/1280px-Microsoft_Redmond_Campus_redevelopment_aerial_view%2C_Sept._2021.jpg",
+      "caption": "مقر مايكروسوفت في ريدموند بولاية واشنطن الأمريكية",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary aerial view of Microsoft's Redmond campus is a sober corporate image for an investment story."
+    },
+    {
+      "slug": "saudi-trade-surplus-falls-july-2026-ae7595",
+      "kind": "news",
+      "title": "فائض التجارة السعودية يتراجع 25% في يوليو إلى أدنى مستوى منذ مايو 2025",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Jeddah_Islamic_Port.jpg/1280px-Jeddah_Islamic_Port.jpg",
+      "caption": "حاويات ورافعات في ميناء جدة الإسلامي",
+      "verdict": "SERIOUS",
+      "reason": "A modern container port with cranes and stacked containers depicts Saudi trade with dignity and no cliché."
+    },
+    {
+      "slug": "new-york-fed-williams-another-rate-hike-c539cd",
+      "kind": "news",
+      "title": "ويليامز: من المعقول توقع رفع آخر للفائدة الأمريكية بحلول نهاية العام",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Federal_Reserve_Bank_of_New_York_%2855312936457%29.jpg/1280px-Federal_Reserve_Bank_of_New_York_%2855312936457%29.jpg",
+      "caption": "مقر بنك الاحتياطي الفيدرالي في نيويورك",
+      "verdict": "SERIOUS",
+      "reason": "A straightforward street view of the New York Fed building carries the weight of a US interest-rate story."
+    },
+    {
+      "slug": "brent-tops-105-us-iran-talks-stall-c4eaa4",
+      "kind": "news",
+      "title": "برنت يتجاوز 105 دولارات مع تعثر المحادثات الأمريكية الإيرانية",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Oil_%26_Chemical_Tanker_Atlantic_Prince_and_Crude_Oil_Tanker_STI_Guard_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_November_2023_02.jpg/1280px-Oil_%26_Chemical_Tanker_Atlantic_Prince_and_Crude_Oil_Tanker_STI_Guard_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_November_2023_02.jpg",
+      "caption": "ناقلات نفط خام (صورة تعبيرية)",
+      "verdict": "SERIOUS",
+      "reason": "Crude tankers moored at an oil terminal are a standard, serious illustration for an oil-price story."
+    },
+    {
+      "slug": "bond-yield-inverse-relationship-with-price-explained-2a7672",
+      "kind": "explainer",
+      "title": "لماذا يرتفع عائد السند كلما انخفض سعره؟",
+      "image": "https://images.rawpixel.com/editor_1024/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvcHg4ODI5ODktaW1hZ2Uta3oyZHptNXUuanBn.jpg",
+      "caption": "قاعة التداول في بورصة نيويورك",
+      "verdict": "SERIOUS",
+      "reason": "The busy NYSE trading floor with traders and screens is a conventional, professional markets image for a bond explainer."
+    },
+    {
+      "slug": "openai-agent-breached-australia-medicare-portal-f2c278",
+      "kind": "news",
+      "title": "ألبانيزي: وكيل لـ«أوبن إيه آي» اخترق بوابة إحصاءات ميديكير الحكومية",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Anthony_Albanese_at_the_2026_Australian_Labor_Party_National_Conference_%28028A9074%29.jpg/1280px-Anthony_Albanese_at_the_2026_Australian_Labor_Party_National_Conference_%28028A9074%29.jpg",
+      "caption": "رئيس الوزراء الأسترالي أنتوني ألبانيزي خلال مؤتمر حزب العمال في أديلايد عام 2026",
+      "verdict": "SERIOUS",
+      "reason": "A plain news photograph of the prime minister speaking at a podium, a sober and fitting frame."
+    },
+    {
+      "slug": "us-china-trade-truce-extended-january-362e8f",
+      "kind": "news",
+      "title": "واشنطن وبكين تمددان هدنتهما التجارية حتى 10 يناير مع وصول شي",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Donald_Trump_and_Xi_Jinping_at_Zhongnanhai_%282%29-20260515.jpg/1280px-Donald_Trump_and_Xi_Jinping_at_Zhongnanhai_%282%29-20260515.jpg",
+      "caption": "ترامب وشي في تشونغنانهاي خلال زيارة ترامب إلى الصين في مايو 2026",
+      "verdict": "SERIOUS",
+      "reason": "The two leaders are shown walking in a formal diplomatic setting, which carries the weight of a trade-truce story."
+    },
+    {
+      "slug": "us-energy-secretary-opposes-diesel-export-ban-08f217",
+      "kind": "news",
+      "title": "وزير الطاقة الأمريكي يعارض حظر صادرات الديزل الذي يؤيده ترامب",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Anacortes_Refinery_31911.JPG/1280px-Anacortes_Refinery_31911.JPG",
+      "caption": "مصفاة نفط في أناكورتس بولاية واشنطن الأمريكية",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary industrial photograph of a working refinery suits a story about fuel exports."
+    },
+    {
+      "slug": "us-10-year-treasury-yield-highest-since-2007-2a6e1d",
+      "kind": "news",
+      "title": "عائد السندات الأمريكية لأجل 10 سنوات يقفز إلى أعلى مستوى منذ 2007",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/8/84/Washington_D.C._-_Federal_Reserve_0001-0003_HDR.jpg",
+      "caption": "مقر الاحتياطي الفيدرالي في واشنطن",
+      "verdict": "SERIOUS",
+      "reason": "A straightforward shot of the Federal Reserve building is a standard, serious image for a bond-yield story."
+    },
+    {
+      "slug": "turkey-arrests-tera-founder-fund-liquidation-0bc275",
+      "kind": "news",
+      "title": "تركيا توقف مؤسس «تيرا» في أزمة صناديق تطال نحو 456 ألف مستثمر",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Istanbul-stock.jpg/1280px-Istanbul-stock.jpg",
+      "caption": "مقر بورصة إسطنبول",
+      "verdict": "SERIOUS",
+      "reason": "A plain exterior of the Istanbul stock exchange headquarters is an unremarkable but serious financial image."
+    },
+    {
+      "slug": "oecd-raises-2026-global-growth-forecast-e97fa1",
+      "kind": "news",
+      "title": "«التعاون الاقتصادي» ترفع توقعات النمو العالمي لعام 2026 إلى 2.9%",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Container_cranes_at_the_Port_of_Oakland-.jpg/1280px-Container_cranes_at_the_Port_of_Oakland-.jpg",
+      "caption": "رافعات حاويات في ميناء أوكلاند بولاية كاليفورنيا الأمريكية",
+      "verdict": "SERIOUS",
+      "reason": "Container cranes at a working port are a conventional, serious illustration of global trade and growth."
+    },
+    {
+      "slug": "refining-margin-crack-spread-explained-e87135",
+      "kind": "explainer",
+      "title": "لماذا يبقى الديزل مرتفعاً أحياناً رغم تراجع النفط الخام؟",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Preemraff_Lysekil_oil_refinery_on_a_foggy_night.jpg/1280px-Preemraff_Lysekil_oil_refinery_on_a_foggy_night.jpg",
+      "caption": "مصفاة بريمرَف ليسشيل للنفط في السويد",
+      "verdict": "SERIOUS",
+      "reason": "A plain night view of a lit refinery across water is a sober industrial image that fits a fuel-price story."
+    },
+    {
+      "slug": "openai-anthropic-launch-cheaper-ai-models-979a5b",
+      "kind": "news",
+      "title": "«أوبن إيه آي» و«أنثروبيك» تطرحان نماذج أرخص بعد دعوة أمودي للإبطاء",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Dario_Amodei_at_TechCrunch_Disrupt_2023_06.jpg/1280px-Dario_Amodei_at_TechCrunch_Disrupt_2023_06.jpg",
+      "caption": "داريو أمودي خلال مؤتمر تك كرانش ديسربت عام 2023 (أرشيفية)",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary on-stage conference interview with a tech executive is a standard, dignified news photo."
+    },
+    {
+      "slug": "us-sanctions-iran-aviation-take-effect-5095ea",
+      "kind": "news",
+      "title": "العقوبات الأمريكية على الطيران الإيراني تدخل حيز التنفيذ",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Iran_Air_Airbus_A300-605R%3B_EP-IBD%40FRA%3B06.07.2011_603ks_%285915220574%29.jpg/1280px-Iran_Air_Airbus_A300-605R%3B_EP-IBD%40FRA%3B06.07.2011_603ks_%285915220574%29.jpg",
+      "caption": "طائرة إيرباص A300 تابعة لشركة إيران إير في مطار فرانكفورت",
+      "verdict": "SERIOUS",
+      "reason": "A clean shot of an Iran Air airliner in flight directly and soberly illustrates aviation sanctions."
+    },
+    {
+      "slug": "iran-links-hormuz-reopening-to-blockade-lift-a3a968",
+      "kind": "news",
+      "title": "إيران تربط إعادة فتح هرمز برفع الحصار والإفراج عن أصولها المجمدة",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Meeting_with_Foreign_Minister_of_Iran_Abbas_Araghchi_%281%29.jpg/1280px-Meeting_with_Foreign_Minister_of_Iran_Abbas_Araghchi_%281%29.jpg",
+      "caption": "وزير الخارجية الإيراني عباس عراقجي يتحدث إلى الصحفيين في أبريل 2026",
+      "verdict": "SERIOUS",
+      "reason": "The foreign minister speaking to press microphones and cameras is a conventional, weighty news frame."
+    },
+    {
+      "slug": "ineos-halts-three-hull-chemical-plants-f78c2a",
+      "kind": "news",
+      "title": "«إنيوس» توقف ثلاثة مصانع كيماويات في بريطانيا بسبب أسعار الغاز",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Singur_Plant_%28Chemical_factory%29_of_Himadri_Speciality_Chemicals_Limited_in_Hooghly_district_%2818_June_2022%29.jpg/1280px-Singur_Plant_%28Chemical_factory%29_of_Himadri_Speciality_Chemicals_Limited_in_Hooghly_district_%2818_June_2022%29.jpg",
+      "caption": "مصنع للكيماويات (صورة تعبيرية)",
+      "verdict": "SERIOUS",
+      "reason": "A plain view of a chemical plant's towers and piping is a dull but serious illustration of industrial shutdowns."
+    },
+    {
+      "slug": "china-rare-earth-shipments-us-fall-b43cb1",
+      "kind": "news",
+      "title": "شحنات المعادن النادرة الصينية إلى أمريكا تتراجع 21% قبيل قمة واشنطن",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/REE_deposits.jpg/1280px-REE_deposits.jpg",
+      "caption": "منجم معادن أرضية نادرة في الصين",
+      "verdict": "SERIOUS",
+      "reason": "An open-pit rare earth mine with processing ponds is a straightforward, non-quaint image of the industry."
+    },
+    {
+      "slug": "trump-backs-us-diesel-export-ban-79317b",
+      "kind": "news",
+      "title": "ترامب يؤيد حظر صادرات الديزل مع بلوغ سعره 6.53 دولار للغالون",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Oil_refinery_in_Houston_2018a.jpg/1280px-Oil_refinery_in_Houston_2018a.jpg",
+      "caption": "مصفاة نفط في هيوستن بولاية تكساس الأمريكية",
+      "verdict": "SERIOUS",
+      "reason": "A plain news photograph of an operating refinery suits a story about diesel prices and exports."
+    },
+    {
+      "slug": "hormuz-alternatives-saudi-oil-qatar-lng-747dc8",
+      "kind": "analysis",
+      "title": "اضطراب هرمز يثقل التوسعة القطرية أكثر من الخام السعودي",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Lijmiliya_LNG_carrier_QatarGas.jpg/1280px-Lijmiliya_LNG_carrier_QatarGas.jpg",
+      "caption": "ناقلة الغاز المسال ليجميلية التابعة لشركة قطر غاز",
+      "verdict": "SERIOUS",
+      "reason": "A clean shot of an LNG tanker at sea directly fits a story about Qatari gas and Hormuz disruption."
+    },
+    {
+      "slug": "imf-egypt-economy-resilient-regional-shock-768a7e",
+      "kind": "news",
+      "title": "صندوق النقد: الاقتصاد المصري تجاوز صدمة الحرب الإقليمية بأفضل من المتوقع",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Visit_of_Kristalina_Georgieva%2C_Managing_Director_of_the_International_Monetary_Fund_%28IMF%29%2C_to_the_European_Commission_%28P-070421-00-07%29.jpg/1280px-Visit_of_Kristalina_Georgieva%2C_Managing_Director_of_the_International_Monetary_Fund_%28IMF%29%2C_to_the_European_Commission_%28P-070421-00-07%29.jpg",
+      "caption": "مديرة صندوق النقد الدولي كريستالينا غورغييفا خلال زيارتها للمفوضية الأوروبية في بروكسل عام 2026",
+      "verdict": "SERIOUS",
+      "reason": "The IMF chief is shown speaking composedly in a formal meeting, an ordinary official news image."
+    },
+    {
+      "slug": "saudi-restarts-east-west-oil-pipeline-698775",
+      "kind": "news",
+      "title": "السعودية تعيد تشغيل خط «شرق - غرب» النفطي المتوقف منذ 13 سبتمبر",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/ISS015-E-18748_-_View_of_Saudi_Arabia.jpg/1280px-ISS015-E-18748_-_View_of_Saudi_Arabia.jpg",
+      "caption": "صورة فضائية للسعودية من محطة الفضاء الدولية",
+      "verdict": "SERIOUS",
+      "reason": "This sober aerial view of a Saudi coastal industrial site suits an oil pipeline story, with nothing quaint or comic in the frame."
+    },
+    {
+      "slug": "gold-treasuries-reserve-asset-feds-note-f4b014",
+      "kind": "paper",
+      "title": "ورقة من الفيدرالي: الذهب لم يُزِح سندات الخزانة عن صدارة الاحتياطيات",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/The_Federal_Reserve_Building_-_Washington_D.C..jpg/1280px-The_Federal_Reserve_Building_-_Washington_D.C..jpg",
+      "caption": "مبنى الاحتياطي الفيدرالي في واشنطن",
+      "verdict": "SERIOUS",
+      "reason": "A straightforward architectural photo of a Federal Reserve building fits a Fed research paper story."
+    },
+    {
+      "slug": "what-is-market-capitalization-b75636",
+      "kind": "explainer",
+      "title": "ماذا تقيس القيمة السوقية للشركة فعلاً؟",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/7/78/Market_centre_in_Tokyo_stock_exchange.jpg",
+      "caption": "قاعة التداول في بورصة طوكيو وشريط الأسعار الإلكتروني",
+      "verdict": "SERIOUS",
+      "reason": "The Tokyo exchange's trading hall and price ticker are a dignified, conventional image for a story on market capitalization."
+    },
+    {
+      "slug": "amd-tops-one-trillion-market-cap-0231c5",
+      "kind": "news",
+      "title": "«إيه إم دي» تبلغ تريليون دولار قيمة سوقية للمرة الأولى",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/AMD_CEO_Lisa_Su_speaking_at_ORNL_2019-05-07.jpg/1280px-AMD_CEO_Lisa_Su_speaking_at_ORNL_2019-05-07.jpg",
+      "caption": "الرئيسة التنفيذية لشركة «إيه إم دي» ليزا سو خلال فعالية في مختبر أوك ريدج الوطني عام 2019",
+      "verdict": "SERIOUS",
+      "reason": "A plain news photo of AMD's CEO speaking at a podium at an official event suits a market-value milestone story."
+    },
+    {
+      "slug": "qatarenergy-hormuz-north-field-delay-f6a1c3",
+      "kind": "news",
+      "title": "«قطر للطاقة»: أزمة هرمز قد تؤخّر خطوط توسعة حقل الشمال",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/LNG_Carrier_Fuji_Lng.jpg/1280px-LNG_Carrier_Fuji_Lng.jpg",
+      "caption": "ناقلة الغاز المسال فوجي إل إن جي",
+      "verdict": "SERIOUS",
+      "reason": "An LNG carrier moored at a loading jetty is a sober, relevant image for a gas-expansion story."
+    },
+    {
+      "slug": "trump-approval-32-percent-iran-war-bd2925",
+      "kind": "news",
+      "title": "تأييد ترامب يهبط إلى 32% مع تصاعد أزمة إيران",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Donald_Trump_with_Republican_House_Leadership_%28March_9%2C_2026%29_01.jpg/1280px-Donald_Trump_with_Republican_House_Leadership_%28March_9%2C_2026%29_01.jpg",
+      "caption": "ترامب مع قادة الجمهوريين في مجلس النواب في مارس 2026",
+      "verdict": "UNSERIOUS",
+      "reason": "A posed, grinning thumbs-up group shot next to a headline about collapsing approval amid a crisis makes a meme-like, ironic juxtaposition."
+    },
+    {
+      "slug": "faa-halts-east-coast-flights-equipment-outage-d180ab",
+      "kind": "news",
+      "title": "عطل فني يوقف الرحلات إلى مطارات الساحل الشرقي الأمريكي",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Jandakot_Airport_Air_Traffic_Control_Tower%2C_August_2023_02.jpg/1280px-Jandakot_Airport_Air_Traffic_Control_Tower%2C_August_2023_02.jpg",
+      "caption": "برج مراقبة الحركة الجوية في أحد المطارات (صورة تعبيرية)",
+      "verdict": "SERIOUS",
+      "reason": "A plain air-traffic control tower, labelled as illustrative, is a dull but serious image for an aviation outage story."
+    },
+    {
+      "slug": "ecb-launches-pontes-tokenised-securities-b5dc9b",
+      "kind": "news",
+      "title": "«المركزي الأوروبي» يطلق نظام «بونتس» لتسوية الأصول المرمّزة",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/AC_SO_Karlspreisverleihung_2026_14._Mai_Dom_Christine_Lagarde_I.jpg/1280px-AC_SO_Karlspreisverleihung_2026_14._Mai_Dom_Christine_Lagarde_I.jpg",
+      "caption": "كريستين لاغارد خلال حفل جائزة شارلمان في آخن عام 2026",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary candid news photo of Lagarde walking is dignified and neither comic nor embarrassing."
+    },
+    {
+      "slug": "paramount-settles-with-us-states-e71142",
+      "kind": "news",
+      "title": "«بارامونت» تتوصل إلى تسوية مع كاليفورنيا و11 ولاية",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Paramount_Pictures_Studio_4.jpg/1280px-Paramount_Pictures_Studio_4.jpg",
+      "caption": "بوابة استوديوهات بارامونت بيكتشرز في هوليوود",
+      "verdict": "SERIOUS",
+      "reason": "The Paramount Pictures studio gate is a standard corporate-identity image for a story about the company's legal settlement."
+    },
+    {
+      "slug": "us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac",
+      "kind": "news",
+      "title": "بيسنت وخه لي فنغ يبحثان الذكاء الاصطناعي والتجارة قبيل قمة ترامب وشي",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Scott_Bessent_meets_He_Lifeng_in_Geneva_%282025%29.jpg/1280px-Scott_Bessent_meets_He_Lifeng_in_Geneva_%282025%29.jpg",
+      "caption": "بيسنت وخه لي فنغ خلال محادثات تجارية في جنيف (أرشيفية)",
+      "verdict": "SERIOUS",
+      "reason": "A formal handshake between the two officials in front of US and Chinese flags is a standard news photograph that suits a trade-talks story."
+    },
+    {
+      "slug": "oil-below-100-us-iran-diplomacy-8ddbd8",
+      "kind": "news",
+      "title": "خام غرب تكساس يغلق دون 100 دولار مع ترقّب تهدئة أمريكية-إيرانية",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Oil_tanker_approaching_FPSO.jpg/1280px-Oil_tanker_approaching_FPSO.jpg",
+      "caption": "ناقلة نفط تقترب من منصة إنتاج عائمة في بحر الشمال",
+      "verdict": "SERIOUS",
+      "reason": "A tanker deck approaching an offshore production platform is a plain industry image that fits an oil-price story."
+    },
+    {
+      "slug": "iran-gdp-contracts-10-percent-post-war-a88253",
+      "kind": "news",
+      "title": "الناتج المحلي الإيراني ينكمش 10.1% في الربع الأول بعد الحرب",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Northern_Tehran_skyline.jpg/1280px-Northern_Tehran_skyline.jpg",
+      "caption": "أبراج سكنية وتجارية في شمال طهران",
+      "verdict": "SERIOUS",
+      "reason": "A skyline of modern residential and commercial towers in Tehran shows the economy soberly, with no cliché."
+    },
+    {
+      "slug": "oil-decline-diplomacy-hope-d15314",
+      "kind": "news",
+      "title": "النفط يتراجع مع ترقّب انفراجة دبلوماسية بين واشنطن وطهران",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/WHITE_TRADER_Crude_Oil_Tanker%2C_Bosphorus_Strait%2C_Istanbul%2C_Turkiye_%28Ank_Kumar%2C_Infosys_Limited%29_01.jpg/1280px-WHITE_TRADER_Crude_Oil_Tanker%2C_Bosphorus_Strait%2C_Istanbul%2C_Turkiye_%28Ank_Kumar%2C_Infosys_Limited%29_01.jpg",
+      "caption": "ناقلة نفط خام (صورة تعبيرية)",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary photograph of a crude oil tanker at sea is a fitting, neutral image for an oil-market story."
+    },
+    {
+      "slug": "what-are-interest-rates-0ab0c7",
+      "kind": "explainer",
+      "title": "كيف تتحكم أسعار الفائدة في الاقتراض والادخار والتضخم؟",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Seat_of_the_European_Central_Bank_and_Frankfurt_Skyline_at_dawn_20150422_1.jpg/1280px-Seat_of_the_European_Central_Bank_and_Frankfurt_Skyline_at_dawn_20150422_1.jpg",
+      "caption": "مقر البنك المركزي الأوروبي في فرانكفورت",
+      "verdict": "SERIOUS",
+      "reason": "The European Central Bank headquarters is a relevant institutional image for an explainer on interest rates."
+    },
+    {
+      "slug": "global-markets-test-interest-rates-ai-concerns-1c0036",
+      "kind": "news",
+      "title": "ضغط مزدوج من الفائدة والذكاء الاصطناعي يهزّ سوق الأسهم",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Sign_of_the_New_York_Stock_Exchange%2C_Broad_Street.jpg/1280px-Sign_of_the_New_York_Stock_Exchange%2C_Broad_Street.jpg",
+      "caption": "لافتة بورصة نيويورك في شارع برود ستريت",
+      "verdict": "SERIOUS",
+      "reason": "The New York Stock Exchange facade is a classic, serious image for a stock-market story."
+    },
+    {
+      "slug": "france-diesel-record-price-september-2026-4df468",
+      "kind": "news",
+      "title": "الديزل في فرنسا يسجل مستوى قياسياً عند 2.41 يورو للتر",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Renault_T_460%2C_fuel_tank_truck.jpg/1280px-Renault_T_460%2C_fuel_tank_truck.jpg",
+      "caption": "شاحنة صهريج وقود تملأ خزانات محطة خدمات في فرنسا",
+      "verdict": "SERIOUS",
+      "reason": "A plain news photo of a fuel tanker truck at a service station suits a story on diesel prices."
+    },
+    {
+      "slug": "trump-announces-ai-force-september-2026-66d8dd",
+      "kind": "news",
+      "title": "ترامب يعلن إنشاء «قوة للذكاء الاصطناعي» على غرار «قوة الفضاء»",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Donald_Trump_with_Republican_House_Leadership_%28March_9%2C_2026%29_02.jpg/1280px-Donald_Trump_with_Republican_House_Leadership_%28March_9%2C_2026%29_02.jpg",
+      "caption": "ترامب مع قيادة الجمهوريين في مجلس النواب في مارس 2026",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary news photo of Trump with House Republican leaders in front of flags fits a presidential policy announcement."
+    },
+    {
+      "slug": "china-increases-russian-oil-imports-august-2026-ac1178",
+      "kind": "news",
+      "title": "الصين تزيد واردات النفط الروسي 41% في أغسطس",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Crude_Oil_Tanker_Njord_DF_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_03.jpg/1280px-Crude_Oil_Tanker_Njord_DF_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_03.jpg",
+      "caption": "ناقلة نفط خام راسية عند رصيف مصفاة (صورة تعبيرية)",
+      "verdict": "SERIOUS",
+      "reason": "A tanker moored at a port pier is a sober, standard illustration for a story on oil imports."
+    },
+    {
+      "slug": "trump-xi-summit-washington-2026-4e439e",
+      "kind": "news",
+      "title": "قمة ترامب وشي تبحث اتفاقاً تجارياً بـ30 مليار دولار",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Donald_Trump_and_Xi_Jinping_at_the_Temple_of_Heaven_%282%29-20260514.jpg/1280px-Donald_Trump_and_Xi_Jinping_at_the_Temple_of_Heaven_%282%29-20260514.jpg",
+      "caption": "ترامب وشي خلال زيارة بكين في مايو 2026",
+      "verdict": "SERIOUS",
+      "reason": "This is a formal official photo of the two leaders during the Beijing visit, which suits a summit on a trade deal."
+    },
+    {
+      "slug": "trump-announces-ai-force-and-czar-f4c7aa",
+      "kind": "news",
+      "title": "ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول للإشراف على القطاع",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/The_White_House_North_Portico_in_Washington%2C_D.C.jpg/1280px-The_White_House_North_Portico_in_Washington%2C_D.C.jpg",
+      "caption": "مقر الرئاسة الأمريكية في واشنطن",
+      "verdict": "SERIOUS",
+      "reason": "A plain view of the White House is a dull but dignified illustration of a presidential announcement."
+    },
+    {
+      "slug": "us-denmark-greenland-security-deal-eac792",
+      "kind": "news",
+      "title": "واشنطن وكوبنهاغن تعلنان اتفاقاً أمنياً حول جرينلاند",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/023_Aerial_view_of_Jakobshavn_Glacier_at_Disko_Bay_%28Greenland%29_Photo_by_Giles_Laurent.jpg/1280px-023_Aerial_view_of_Jakobshavn_Glacier_at_Disko_Bay_%28Greenland%29_Photo_by_Giles_Laurent.jpg",
+      "caption": "نهر جاكوبشافن الجليدي في خليج ديسكو بجرينلاند",
+      "verdict": "SERIOUS",
+      "reason": "An aerial view of the Greenland ice fjord is a standard geographic illustration of the territory, not a curiosity or cliché."
+    },
+    {
+      "slug": "eu-fuel-prices-record-iran-saudi-supply-8376ff",
+      "kind": "news",
+      "title": "أسعار الوقود في أوروبا تسجل أعلى مستوياتها منذ 2005",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Schwechat_refinery_20251018.jpg/1280px-Schwechat_refinery_20251018.jpg",
+      "caption": "مصفاة شفيشات النفطية وعربات صهاريج على سكك حديدية في النمسا",
+      "verdict": "SERIOUS",
+      "reason": "A plain news photograph of a working refinery with rail tank cars suits a fuel-price story."
+    },
+    {
+      "slug": "trump-signs-russia-sanctions-oil-tariffs-law-ad758a",
+      "kind": "news",
+      "title": "ترامب يوقع قانون عقوبات روسيا ويمنح نفسه صلاحية فرض رسوم على مشتري نفطها",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Oil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_02.jpg/1280px-Oil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_02.jpg",
+      "caption": "ناقلة منتجات نفطية راسية عند رصيف مصفاة (صورة تعبيرية)",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary photograph of a product tanker at a refinery pier suits a story about Russian oil sanctions."
+    },
+    {
+      "slug": "trump-announces-ban-cnn-msn-politico-white-house-fd6870",
+      "kind": "news",
+      "title": "ترامب يحظر سي إن إن وإم إس ناو وبوليتيكو من البيت الأبيض",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/2025-12-17_White_House_east_construction_Washington_DC_11-24-27.jpg/1280px-2025-12-17_White_House_east_construction_Washington_DC_11-24-27.jpg",
+      "caption": "أعمال بناء في البيت الأبيض في واشنطن",
+      "verdict": "SERIOUS",
+      "reason": "A straightforward aerial view of the White House grounds is a dull but dignified news image."
+    },
+    {
+      "slug": "global-markets-close-volatile-week-045574",
+      "kind": "news",
+      "title": "عوائد السندات الأمريكية تتجاوز 5% في أسبوع متقلب للأسواق",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/New_York_Stock_Exchange_Broad_Street_facade%2C_20231002_1720_1842.jpg/1280px-New_York_Stock_Exchange_Broad_Street_facade%2C_20231002_1720_1842.jpg",
+      "caption": "واجهة بورصة نيويورك في شارع برود ستريت",
+      "verdict": "SERIOUS",
+      "reason": "The New York Stock Exchange facade is a standard, sober image for a markets story."
+    },
+    {
+      "slug": "bank-of-japan-raises-rates-to-31-year-high-d62cc8",
+      "kind": "news",
+      "title": "بنك اليابان يرفع الفائدة إلى 1.25%.. أعلى مستوى منذ 31 عاماً",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Bank_of_Japan_2010.jpg/1280px-Bank_of_Japan_2010.jpg",
+      "caption": "مقر بنك اليابان في طوكيو",
+      "verdict": "SERIOUS",
+      "reason": "The Bank of Japan headquarters is the standard, sober image for an interest-rate decision."
+    },
+    {
+      "slug": "us-approves-f35-saudi-arms-deal-915064",
+      "kind": "news",
+      "title": "واشنطن توافق على صفقة إف-35 للسعودية بـ 24.3 مليار دولار",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/F-35_Heritage_Flight_Team_performs_in_Bell_Fort_Worth_Alliance_AirShow.jpg/1280px-F-35_Heritage_Flight_Team_performs_in_Bell_Fort_Worth_Alliance_AirShow.jpg",
+      "caption": "طائرة إف-35 خلال عرض جوي في فورت وورث بولاية تكساس",
+      "verdict": "SERIOUS",
+      "reason": "A dramatic but ordinary flight shot of the F-35 directly depicts the aircraft in the deal and is not comic or odd."
+    },
+    {
+      "slug": "warren-buffett-steps-down-berkshire-chairman-457ee7",
+      "kind": "news",
+      "title": "بافيت يتنحى عن رئاسة بركشاير هاثاواي.. وابنه هوارد خلفاً له",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Berkshire_Hathaway_Annual_Meeting_2025.jpg/1280px-Berkshire_Hathaway_Annual_Meeting_2025.jpg",
+      "caption": "الاجتماع السنوي لشركة بيركشاير هاثاواي",
+      "verdict": "SERIOUS",
+      "reason": "A plain news photograph of Berkshire Hathaway's packed annual meeting arena, directly relevant to the succession story."
+    },
+    {
+      "slug": "russia-temporary-management-western-assets-1dadf4",
+      "kind": "news",
+      "title": "روسيا تضع أصول «نستله» وشركات غربية تحت إدارة مؤقتة",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Nestle_Vevey_2014.jpg/1280px-Nestle_Vevey_2014.jpg",
+      "caption": "مقر شركة نستله في فيفي بسويسرا",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary aerial view of Nestlé's headquarters in Vevey that suits a corporate-assets story."
+    },
+    {
+      "slug": "oil-prices-decline-china-iran-pressure-41b59d",
+      "kind": "news",
+      "title": "النفط يتراجع بعد تقارير عن ضغط صيني على إيران لكبح الحوثيين",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Godorf_Cologne_Rhineland-Refinery-03.jpg/1280px-Godorf_Cologne_Rhineland-Refinery-03.jpg",
+      "caption": "أبراج تبريد في مصفاة نفط (صورة تعبيرية)",
+      "verdict": "SERIOUS",
+      "reason": "A sober industrial shot of cooling towers and chimneys, a fitting illustrative image for an oil-market story."
+    },
+    {
+      "slug": "eurozone-inflation-rises-august-2026-51467a",
+      "kind": "news",
+      "title": "التضخم في منطقة اليورو يرتفع إلى 3.2% في أغسطس",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/European_Central_Bank_Frankfurt_Germany_18_Feb_2023.jpg/1280px-European_Central_Bank_Frankfurt_Germany_18_Feb_2023.jpg",
+      "caption": "مقر البنك المركزي الأوروبي في فرانكفورت بألمانيا",
+      "verdict": "SERIOUS",
+      "reason": "The European Central Bank tower in Frankfurt is the standard serious image for eurozone inflation."
+    },
+    {
+      "slug": "fed-rate-hike-oil-109-gulf-economies-a07bff",
+      "kind": "analysis",
+      "title": "النفط فوق 109 دولارات.. رفع الفائدة يُثقل حسابات الخليج",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/ISS055-E-112062_-_View_of_Saudi_Arabia.jpg/1280px-ISS055-E-112062_-_View_of_Saudi_Arabia.jpg",
+      "caption": "الأراضي السعودية من محطة الفضاء الدولية",
+      "verdict": "SERIOUS",
+      "reason": "A dignified night view from the International Space Station of the Gulf coast's city lights, free of any poverty or exotic cliché."
+    },
+    {
+      "slug": "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb",
+      "kind": "news",
+      "title": "الأوراق المالية الأمريكية تجيز تداول الأسهم المُرمّزة بإعفاء مشروط",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/New_York_Stock_Exchange_August_2017_02.jpg/1280px-New_York_Stock_Exchange_August_2017_02.jpg",
+      "caption": "مقر بورصة نيويورك في وول ستريت",
+      "verdict": "SERIOUS",
+      "reason": "A conventional street view of the New York Stock Exchange on Wall Street, appropriate for a US securities-regulation story."
+    },
+    {
+      "slug": "openai-six-concerning-behaviors-disclosure-framework-2d2a2b",
+      "kind": "news",
+      "title": "«أوبن إيه آي» تكشف ست حالات جديدة لسلوك نماذجها المقلق",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/1515_Third_Street.jpg/1280px-1515_Third_Street.jpg",
+      "caption": "مقر شركة أوبن إيه آي في سان فرانسيسكو",
+      "verdict": "SERIOUS",
+      "reason": "A plain news photograph of OpenAI's glass headquarters building suits the headline."
+    },
+    {
+      "slug": "fed-raises-rates-first-time-2023-61bb8a",
+      "kind": "news",
+      "title": "الفيدرالي يرفع الفائدة ربع نقطة لأول مرة منذ يوليو 2023",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2025_construction_Eccles_Federal_Reserve_Building_Washington_DC_2025-12-17_13-25-19.jpg/1280px-2025_construction_Eccles_Federal_Reserve_Building_Washington_DC_2025-12-17_13-25-19.jpg",
+      "caption": "أعمال بناء في مبنى الاحتياطي الفيدرالي في واشنطن",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary photograph of construction at the Federal Reserve building has nothing comic or quaint in it."
+    },
+    {
+      "slug": "bank-of-england-holds-rate-warns-inflation-48f465",
+      "kind": "news",
+      "title": "بنك إنجلترا يُبقي الفائدة عند 3.75%.. تحذير من تضخم فوق 4%",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Bank_of_England_entrance_2025-09-20_%282%29.jpg/1280px-Bank_of_England_entrance_2025-09-20_%282%29.jpg",
+      "caption": "مدخل مبنى بنك إنجلترا في لندن",
+      "verdict": "SERIOUS",
+      "reason": "The Bank of England's columned entrance is a dignified, standard image for a rate decision."
+    },
+    {
+      "slug": "real-interest-rate-explainer-7a98cf",
+      "kind": "explainer",
+      "title": "كيف يقيس سعر الفائدة الحقيقي العائد بعد التضخم؟",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Federal_Reserve_Seattle_Branch_in_Renton%2C_WA_-_2021.jpg/1280px-Federal_Reserve_Seattle_Branch_in_Renton%2C_WA_-_2021.jpg",
+      "caption": "مقر فرع سياتل لبنك الاحتياطي الفيدرالي في رينتون بولاية واشنطن",
+      "verdict": "SERIOUS",
+      "reason": "A dull but plain photograph of a Federal Reserve branch building carries no quaint or comic element."
+    },
+    {
+      "slug": "gulf-oil-flows-return-pre-war-levels-6a0da7",
+      "kind": "news",
+      "title": "وزير الطاقة الأمريكي: عبور نحو 18 مليون برميل من نفط الخليج الثلاثاء",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/US_Navy_051111-N-8163B-032_An_oil_tanker_docked_to_the_Al_Basrah_Oil_Terminal_%28ABOT%29_takes_on_crude_oil_in_the_Persian_Gulf.jpg/1280px-US_Navy_051111-N-8163B-032_An_oil_tanker_docked_to_the_Al_Basrah_Oil_Terminal_%28ABOT%29_takes_on_crude_oil_in_the_Persian_Gulf.jpg",
+      "caption": "ناقلة نفط راسية عند محطة البصرة النفطية في الخليج",
+      "verdict": "SERIOUS",
+      "reason": "A tanker moored at the Basra oil terminal shows the Gulf's modern oil industry without cliché."
+    },
+    {
+      "slug": "japan-imports-surge-august-2026-3efc48",
+      "kind": "news",
+      "title": "واردات اليابان تقفز 28% في أغسطس",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/20250103_Osanbashi_Pier_103019.jpg/1280px-20250103_Osanbashi_Pier_103019.jpg",
+      "caption": "رصيف أوسانباشي في ميناء يوكوهاما",
+      "verdict": "SERIOUS",
+      "reason": "An empty deck of Yokohama's Osanbashi pier is a plain port photograph, neither comic nor odd."
+    },
+    {
+      "slug": "us-bond-yield-5-04-percent-ce6ccd",
+      "kind": "news",
+      "title": "عائد سندات الخزانة الأمريكية لأجل 10 سنوات يبلغ 5.04%",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/2025_construction_Eccles_Federal_Reserve_Building_Washington_DC_2025-02-10_12-05-42.jpg/1280px-2025_construction_Eccles_Federal_Reserve_Building_Washington_DC_2025-02-10_12-05-42.jpg",
+      "caption": "أعمال تجديد مبنى الاحتياطي الفيدرالي في واشنطن",
+      "verdict": "SERIOUS",
+      "reason": "A plain news photograph of the Federal Reserve building under renovation, a sober fit for a Treasury yields story."
+    },
+    {
+      "slug": "uk-inflation-rises-to-3-1-percent-august-7dcf61",
+      "kind": "news",
+      "title": "التضخم البريطاني يرتفع إلى 3.1% في أغسطس",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Bank_of_England_Building%2C_London%2C_UK_-_Diliff.jpg/1280px-Bank_of_England_Building%2C_London%2C_UK_-_Diliff.jpg",
+      "caption": "مبنى بنك إنجلترا في لندن",
+      "verdict": "SERIOUS",
+      "reason": "A standard, dignified view of the Bank of England, appropriate for a UK inflation headline."
+    },
+    {
+      "slug": "openai-seeks-1-5-trillion-funding-a2d732",
+      "kind": "news",
+      "title": "«أوبن إيه آي» تسعى إلى تمويل بتقييم 1.5 تريليون دولار",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Pioneer_Building%2C_San_Francisco_%282019%29_-1.jpg/1280px-Pioneer_Building%2C_San_Francisco_%282019%29_-1.jpg",
+      "caption": "مبنى بايونير في سان فرانسيسكو مقر شركة أوبن إيه آي",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary street-level photograph of OpenAI's headquarters building, dull but serious."
+    },
+    {
+      "slug": "us-iran-war-cost-38-1-billion-7017c2",
+      "kind": "news",
+      "title": "الحرب الأمريكية-الإيرانية تكلف 38.1 مليار دولار في خمسة أشهر",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/PentagonAerial2005.jpg/1280px-PentagonAerial2005.jpg",
+      "caption": "مقر وزارة الدفاع الأمريكية (البنتاغون) قرب واشنطن",
+      "verdict": "SERIOUS",
+      "reason": "An aerial news photograph of the Pentagon that carries the weight of a war-cost story."
+    },
+    {
+      "slug": "brent-surges-above-109-disruptions-e510e5",
+      "kind": "news",
+      "title": "برنت يقفز فوق 109 دولارات مع تعطل صادرات ينبع",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Pacific_Sapphire%2C_Crude_Oil_Tanker%2C_IMO_9893058%2C_Port_of_Rotterdam_pic3.jpg/1280px-Pacific_Sapphire%2C_Crude_Oil_Tanker%2C_IMO_9893058%2C_Port_of_Rotterdam_pic3.jpg",
+      "caption": "ناقلة نفط خام (صورة تعبيرية)",
+      "verdict": "SERIOUS",
+      "reason": "A plain photograph of a tanker at an industrial terminal that suits an oil-price story."
+    },
+    {
+      "slug": "wto-warns-gdp-loss-2050-trade-fragmentation-8471db",
+      "kind": "news",
+      "title": "منظمة التجارة العالمية تحذر من خسارة 6.9% من الناتج العالمي بحلول 2050",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Container_cranes_at_the_MPET-_MSC_PSA_European_Terminal_in_Port_of_Antwerp_%28Kieldrecht%2C_Belgium%29_during_the_sunset_civil_twilight_%28DSCF3901%29.jpg/1280px-Container_cranes_at_the_MPET-_MSC_PSA_European_Terminal_in_Port_of_Antwerp_%28Kieldrecht%2C_Belgium%29_during_the_sunset_civil_twilight_%28DSCF3901%29.jpg",
+      "caption": "رافعات حاويات في محطة MPET بميناء أنتويرب في بلجيكا",
+      "verdict": "SERIOUS",
+      "reason": "A straightforward photograph of port container cranes at dusk that fits a global trade warning."
+    },
+    {
+      "slug": "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6",
+      "kind": "news",
+      "title": "الحوثيون يسيطرون على جزر حنيش وميون وميناء المخا في البحر الأحمر",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Bab_Al-Mandeb_Strait%2C_between_Djibouti_and_Yemen.jpg/1280px-Bab_Al-Mandeb_Strait%2C_between_Djibouti_and_Yemen.jpg",
+      "caption": "جندي أمريكي على متن مدمرة في مضيق باب المندب",
+      "verdict": "SERIOUS",
+      "reason": "A sailor manning a deck gun at sea is a sober military news image that fits a Red Sea security story."
+    },
+    {
+      "slug": "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c",
+      "kind": "news",
+      "title": "أرامكو تعلّق تحميلات ينبع بعد إغلاق خط الشرق-الغرب.. برنت يرتفع 3%",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/ISS055-E-112116_-_View_of_Saudi_Arabia.jpg/1280px-ISS055-E-112116_-_View_of_Saudi_Arabia.jpg",
+      "caption": "شبه الجزيرة العربية من محطة الفضاء الدولية",
+      "verdict": "SERIOUS",
+      "reason": "A night view of the Arabian Peninsula from orbit is a neutral, dignified illustration of the region's energy geography."
+    },
+    {
+      "slug": "saudi-uranium-discovery-madinah-630462",
+      "kind": "news",
+      "title": "السعودية تكتشف 110 مليون طن من خام اليورانيوم",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Maaden_Gold_Jeddah.JPG/1280px-Maaden_Gold_Jeddah.JPG",
+      "caption": "مقر شركة معادن للذهب في جدة",
+      "verdict": "SERIOUS",
+      "reason": "A plain, if dull, view of a modern glass office building is an ordinary corporate image with nothing laughable in it."
+    },
+    {
+      "slug": "east-west-oil-pipeline-explainer-ba1bfa",
+      "kind": "explainer",
+      "title": "كيف يتجاوز خط الشرق-الغرب السعودي مضيق هرمز؟",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Oil_pipeline_pumping_station%2C_northeast_Colorado.jpg/1280px-Oil_pipeline_pumping_station%2C_northeast_Colorado.jpg",
+      "caption": "محطة ضخ على خط أنابيب نفطي في شمال شرق كولورادو",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary photograph of pipeline pumping equipment is a plain industrial image suited to a pipeline explainer."
+    },
+    {
+      "slug": "china-retail-sales-slowdown-august-2026-cb2bb7",
+      "kind": "news",
+      "title": "نمو مبيعات التجزئة الصينية يتباطأ إلى 0.4% في أغسطس",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Shanghai_skyline_waterfront_pudong_5166168_69_70.jpg/1280px-Shanghai_skyline_waterfront_pudong_5166168_69_70.jpg",
+      "caption": "أفق منطقة بودونغ المالية في شنغهاي",
+      "verdict": "SERIOUS",
+      "reason": "The Pudong financial skyline is a standard, serious image of China's economy."
+    },
+    {
+      "slug": "tech-stocks-fall-ai-slowdown-calls-8c019b",
+      "kind": "news",
+      "title": "أسهم التكنولوجيا تتراجع عالمياً بعد دعوات إبطاء تطوير الذكاء الاصطناعي",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/NVIDIA_Headquarters.jpg/1280px-NVIDIA_Headquarters.jpg",
+      "caption": "مقر شركة إنفيديا في سانتا كلارا بولاية كاليفورنيا",
+      "verdict": "SERIOUS",
+      "reason": "A straightforward shot of Nvidia's headquarters is a plain corporate news photograph fitting a tech-stocks story."
+    },
+    {
+      "slug": "saudi-arabia-vision-2030-finance-phase-03014e",
+      "kind": "news",
+      "title": "السعودية تمكّن المقرات الإقليمية من الأنشطة المالية العابرة للحدود",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/King_Abdullah_Financial_District_184701.jpg/1280px-King_Abdullah_Financial_District_184701.jpg",
+      "caption": "مركز الملك عبد الله المالي في الرياض",
+      "verdict": "SERIOUS",
+      "reason": "A plain dusk skyline of Riyadh's financial district shows the modern business centre the story is about."
+    },
+    {
+      "slug": "brent-oil-surges-saudi-pipeline-closure-0b4217",
+      "kind": "news",
+      "title": "برنت يقفز فوق 108 دولارات بعد إغلاق خط الأنابيب السعودي",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/An_oil_tanker%2C_Cochin_Oil_Terminal.jpg/1280px-An_oil_tanker%2C_Cochin_Oil_Terminal.jpg",
+      "caption": "ناقلة نفط (صورة تعبيرية)",
+      "verdict": "SERIOUS",
+      "reason": "A straightforward photo of an oil tanker at sea is a sober illustration for an oil-price story."
+    },
+    {
+      "slug": "anthropic-chooses-nasdaq-for-ipo-57a51e",
+      "kind": "news",
+      "title": "«أنثروبيك» تختار ناسداك لطرح أولي قد تسعى فيه لتقييم 2 تريليون دولار",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Dario_Amodei_at_TechCrunch_Disrupt_2023_03.jpg/1280px-Dario_Amodei_at_TechCrunch_Disrupt_2023_03.jpg",
+      "caption": "داريو أمودي الرئيس التنفيذي لأنثروبيك خلال مؤتمر تك كرانش ديسربت",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary conference-stage photo of an executive speaking; the raised-arm gesture is a normal talking moment, not an embarrassing one."
+    },
+    {
+      "slug": "federal-reserve-rate-hike-expectations-september-2026-c63230",
+      "kind": "news",
+      "title": "«غولدمان ساكس» و«جي بي مورغان» يرجّحان رفع الفائدة الأمريكية هذا الأسبوع",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Federal_Reserve_Bank_Building_%2836344p%29.jpg/1280px-Federal_Reserve_Bank_Building_%2836344p%29.jpg",
+      "caption": "مبنى بنك الاحتياطي الفيدرالي في بوسطن",
+      "verdict": "SERIOUS",
+      "reason": "A plain architectural photo of the Federal Reserve Bank building suits an interest-rate story."
+    },
+    {
+      "slug": "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d",
+      "kind": "news",
+      "title": "النفط يقفز فوق 107 دولارات مع إغلاق خط الأنابيب السعودي",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Oil_pipelines%2C_jubail_desert%2C_Saudi_Arabia_-_panoramio.jpg/1280px-Oil_pipelines%2C_jubail_desert%2C_Saudi_Arabia_-_panoramio.jpg",
+      "caption": "خطوط أنابيب نفط في صحراء الجبيل بالسعودية",
+      "verdict": "SERIOUS",
+      "reason": "A plain documentary photo of pipeline infrastructure in the desert directly matches the pipeline-closure story."
+    },
+    {
+      "slug": "ai-leaders-warn-openai-ipo-delay-b7d3e6",
+      "kind": "news",
+      "title": "ألتمان: «أوبن إيه آي» لن تطرح أسهمها للاكتتاب العام في 2026",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Racks_Amravati_Data_Center.jpg/1280px-Racks_Amravati_Data_Center.jpg",
+      "caption": "خزانات خوادم في مركز بيانات",
+      "verdict": "SERIOUS",
+      "reason": "A clean, ordinary data-centre corridor is a sober visual for an AI company story."
+    },
+    {
+      "slug": "trump-ukraine-russia-diesel-855f75",
+      "kind": "news",
+      "title": "ترامب يطالب زيلينسكي بوقف ضرب منشآت الديزل الروسية",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/President_Donald_J._Trump_participates_in_a_bilateral_meeting_with_Ukraine%E2%80%99s_President_Volodymyr_Zelenskyy_%2855546438678%29.jpg/1280px-President_Donald_J._Trump_participates_in_a_bilateral_meeting_with_Ukraine%E2%80%99s_President_Volodymyr_Zelenskyy_%2855546438678%29.jpg",
+      "caption": "ترامب وزيلينسكي خلال لقائهما في مقر الأمم المتحدة بنيويورك",
+      "verdict": "SERIOUS",
+      "reason": "A formal news photograph of the two leaders meeting at the UN General Assembly fits the political weight of the headline."
+    },
+    {
+      "slug": "egypt-bme-catl-battery-plant-aa81f7",
+      "kind": "news",
+      "title": "«بي إم إي» المصرية و«كاتل» الصينية تطلقان مصنع بطاريات باستثمار يتجاوز 39 مليون دولار",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/18650_and_21700_lithium_ion_battery_cell.jpg/1280px-18650_and_21700_lithium_ion_battery_cell.jpg",
+      "caption": "خلايا بطاريات ليثيوم أيون",
+      "verdict": "UNSERIOUS",
+      "reason": "Two loose cells on toy-like yellow 3D-printed holders on a desk look like a hobbyist's DIY product snap, not a $39 million industrial battery plant."
+    },
+    {
+      "slug": "hormuz-strait-oil-tanker-rates-record-high-86c98b",
+      "kind": "news",
+      "title": "استئجار الناقلات العملاقة عبر هرمز يتجاوز 800 ألف دولار يومياً",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Petroleum_tanker_leaving_Dar_es_Salaam.jpg/1280px-Petroleum_tanker_leaving_Dar_es_Salaam.jpg",
+      "caption": "ناقلة نفط تغادر ميناء دار السلام",
+      "verdict": "SERIOUS",
+      "reason": "A plain news photograph of a tanker under way at sea is a sober frame for a shipping-rates story."
+    },
+    {
+      "slug": "sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730",
+      "kind": "news",
+      "title": "«ستاندرد آند بورز» تثبّت تصنيف السعودية الائتماني مع نظرة مستقرة",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Riyadh_Skyline_New.jpg",
+      "caption": "مبانٍ في مدينة الرياض العاصمة السعودية",
+      "verdict": "SERIOUS",
+      "reason": "A standard aerial view of Riyadh's modern skyline with Kingdom Centre is a conventional, dignified image for a sovereign-rating story."
+    },
+    {
+      "slug": "m-stiq-hormuz-akhad-rabbi-fi-alam-al-taqa-dc252f",
+      "kind": "explainer",
+      "title": "لماذا يتحكم مضيق هرمز في خُمس النفط العالمي؟",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Strait_of_Hormuz_%28MODIS_2020-12-04%29.jpg/1280px-Strait_of_Hormuz_%28MODIS_2020-12-04%29.jpg",
+      "caption": "مضيق هرمز بين الخليج العربي وخليج عُمان",
+      "verdict": "SERIOUS",
+      "reason": "A satellite image of the Strait of Hormuz is an informative, serious illustration for an explainer on its oil importance."
+    },
+    {
+      "slug": "saudi-east-west-pipeline-drone-attack-8ce715",
+      "kind": "news",
+      "title": "السعودية تعلّق خط الشرق-الغرب النفطي احترازياً بعد هجوم مسيّرات من العراق",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/ISS055-E-112079_-_View_of_Saudi_Arabia.jpg/1280px-ISS055-E-112079_-_View_of_Saudi_Arabia.jpg",
+      "caption": "السعودية من محطة الفضاء الدولية",
+      "verdict": "SERIOUS",
+      "reason": "A night view of Saudi Arabia's lit coastline from the International Space Station is a plain, sober image, not a curiosity."
+    },
+    {
+      "slug": "strait-of-hormuz-oil-prices-global-economy-65f23c",
+      "kind": "explainer",
+      "title": "لماذا يتحكم ممر عرضه 21 ميلاً بخُمس نفط العالم؟",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/00_0558_Oil_tankers.jpg/1280px-00_0558_Oil_tankers.jpg",
+      "caption": "ناقلة منتجات نفطية في ممر بحري",
+      "verdict": "SERIOUS",
+      "reason": "A plain photograph of an oil products tanker at sea suits a story about a strategic oil shipping corridor."
+    },
+    {
+      "slug": "india-china-trade-doubles-deficit-widens-e8e250",
+      "kind": "news",
+      "title": "تجارة الهند والصين تتضاعف تقريباً في خمس سنوات",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Pudong_Shanghai_November_2017.jpg/1280px-Pudong_Shanghai_November_2017.jpg",
+      "caption": "منطقة بودونغ المالية في شنغهاي بالصين",
+      "verdict": "SERIOUS",
+      "reason": "The Pudong financial skyline is a standard, dignified image of China's modern economy for a trade story."
+    },
+    {
+      "slug": "france-cuts-growth-forecast-2026-e13a50",
+      "kind": "news",
+      "title": "فرنسا تخفض توقعات نموها لعام 2026 إلى 0.5%",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Paris_Pont_de_Bercy_%26_Finanzminsterium_1.jpg/1280px-Paris_Pont_de_Bercy_%26_Finanzminsterium_1.jpg",
+      "caption": "مبنى وزارة المالية الفرنسية قرب جسر بيرسي في باريس",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary news view of the French finance ministry at Bercy fits a story about growth forecasts."
+    },
+    {
+      "slug": "us-inflation-august-gasoline-fed-rate-hike-16ce27",
+      "kind": "news",
+      "title": "ارتفاع التضخم الأمريكي في أغسطس مع ارتفاع البنزين وتزايد توقعات رفع الاحتياطي الفيدرالي الفائدة",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/2025_construction_Eccles_Federal_Reserve_Building_Washington_DC_2025-12-17_13-01-38_1.jpg/1280px-2025_construction_Eccles_Federal_Reserve_Building_Washington_DC_2025-12-17_13-01-38_1.jpg",
+      "caption": "مبنى الاحتياطي الفيدرالي في واشنطن خلال أعمال ترميم",
+      "verdict": "SERIOUS",
+      "reason": "The Federal Reserve building under renovation is a plain documentary image, not an embarrassing or comic one, and it fits a rate story."
+    },
+    {
+      "slug": "saudi-east-west-pipeline-closure-brent-d9de59",
+      "kind": "news",
+      "title": "السعودية تغلق خط الشرق-الغرب النفطي إثر هجمات على محطاته",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/%D0%A0%D0%B0%D1%84%D0%B8%D0%BD%D0%B5%D1%80%D0%B8%D1%98%D0%B0_%D0%BD%D0%B0%D1%84%D1%82%D0%B5_%D0%91%D1%80%D0%BE%D0%B4_%28Oil_refinery_Brod%2C_Republika_Srpska%29.jpg/1280px-%D0%A0%D0%B0%D1%84%D0%B8%D0%BD%D0%B5%D1%80%D0%B8%D1%98%D0%B0_%D0%BD%D0%B0%D1%84%D1%82%D0%B5_%D0%91%D1%80%D0%BE%D0%B4_%28Oil_refinery_Brod%2C_Republika_Srpska%29.jpg",
+      "caption": "مصفاة نفط تضم خزانات ومنشآت تكرير (صورة تعبيرية)",
+      "verdict": "SERIOUS",
+      "reason": "An aerial view of a refinery and tank farm is a sober illustrative image for a story about oil infrastructure."
+    },
+    {
+      "slug": "oil-above-100-and-its-implications-for-gulf-budgets-and-ship-2b4f3c",
+      "kind": "analysis",
+      "title": "الصادرات النفطية السعودية تهبط إلى أدنى مستوى في 13 عاماً رغم قفزة برنت",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/ISS059-E-85794_-_View_of_United_Arab_Emirates.jpg/1280px-ISS059-E-85794_-_View_of_United_Arab_Emirates.jpg",
+      "caption": "مضيق هرمز وسواحل الإمارات العربية المتحدة من محطة الفضاء الدولية",
+      "verdict": "SERIOUS",
+      "reason": "An astronaut photograph of the Gulf coastline is a sober geographic image suited to a story about Saudi oil exports."
+    },
+    {
+      "slug": "us-diesel-price-record-6-dollars-4257bc",
+      "kind": "news",
+      "title": "متوسط سعر الديزل الأمريكي يتجاوز 6 دولارات للغالون للمرة الأولى",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Oil_refinery_in_Houston_2018b.jpg/1280px-Oil_refinery_in_Houston_2018b.jpg",
+      "caption": "مصفاة نفط في هيوستن بولاية تكساس الأمريكية",
+      "verdict": "SERIOUS",
+      "reason": "A plain photograph of a working Houston refinery, taken from a passing car, is dull but a sober fit for a diesel price story."
+    },
+    {
+      "slug": "oracle-cloud-infrastructure-revenue-ai-growth-fc2b80",
+      "kind": "news",
+      "title": "سهم أوراكل يرتفع 6.2% بعد نمو إيرادات السحابة 121%",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Data_center_roof.jpg/1280px-Data_center_roof.jpg",
+      "caption": "أبراج تبريد ومولدات احتياطية فوق سطح مركز بيانات",
+      "verdict": "SERIOUS",
+      "reason": "An aerial view of data-centre cooling and generator infrastructure is a straightforward industrial image that suits a cloud revenue story."
+    },
+    {
+      "slug": "hormuz-shipping-traffic-plunges-tensions-5c1d93",
+      "kind": "news",
+      "title": "سبع سفن فقط تعبر مضيق هرمز في 24 ساعة",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Solomon_Sea_%28oil_tanker%29%2C_in_the_Solent%2C_England.jpg/1280px-Solomon_Sea_%28oil_tanker%29%2C_in_the_Solent%2C_England.jpg",
+      "caption": "ناقلة نفط برفقة قاطرة بحرية (صورة تعبيرية)",
+      "verdict": "SERIOUS",
+      "reason": "An oil tanker escorted by a tug is a standard, serious shipping illustration for a Strait of Hormuz transit story."
+    },
+    {
+      "slug": "uk-economy-grows-july-ai-0a6a4e",
+      "kind": "news",
+      "title": "الاقتصاد البريطاني ينمو 0.4% في يوليو متجاوزاً التوقعات",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Bank%2C_Sutton_High_Street%2C_SUTTON%2C_Surrey%2C_Greater_London_%282%29.jpg/1280px-Bank%2C_Sutton_High_Street%2C_SUTTON%2C_Surrey%2C_Greater_London_%282%29.jpg",
+      "caption": "فرع مصرف باركليز في شارع ساتن الرئيسي بجنوب لندن",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary photograph of a bank branch facade is dull but serious for a UK growth story."
+    },
+    {
+      "slug": "inflation-explainer-what-it-is-and-why-it-matters-77f9bd",
+      "kind": "explainer",
+      "title": "كيف يقلّص التضخم القوة الشرائية؟",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Rostov-on-Don%2C_State_Bank_Building%2C_Central_Bank%2C_Russia.jpg/1280px-Rostov-on-Don%2C_State_Bank_Building%2C_Central_Bank%2C_Russia.jpg",
+      "caption": "مبنى فرع البنك المركزي الروسي في روستوف على نهر الدون",
+      "verdict": "SERIOUS",
+      "reason": "A central bank branch building photographed plainly is a sober, conventional illustration for an inflation explainer."
+    },
+    {
+      "slug": "oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2",
+      "kind": "news",
+      "title": "النفط يقفز 13% في أسبوع.. برنت يتجاوز 108 دولارات",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Duqm_Refinery.jpg/1280px-Duqm_Refinery.jpg",
+      "caption": "مصفاة الدقم في سلطنة عُمان",
+      "verdict": "SERIOUS",
+      "reason": "An aerial view of Oman's modern Duqm refinery and storage tanks pictures an Arab economy the way its own agencies would."
+    },
+    {
+      "slug": "global-bond-selloff-oil-prices-ecb-rate-hike-93d47b",
+      "kind": "news",
+      "title": "موجة بيع في السندات العالمية مع صعود النفط فوق 107 دولار",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/European_Central_Bank_Headquarters_%28Ank_Kumar%2C_Infosys_Limited%29_03.jpg/1280px-European_Central_Bank_Headquarters_%28Ank_Kumar%2C_Infosys_Limited%29_03.jpg",
+      "caption": "مقر البنك المركزي الأوروبي في فرانكفورت بألمانيا",
+      "verdict": "SERIOUS",
+      "reason": "A plain news view of the European Central Bank tower in Frankfurt suits a story about a global bond sell-off."
+    },
+    {
+      "slug": "opec-oil-demand-growth-2027-forecast-2e88df",
+      "kind": "news",
+      "title": "أوبك تتوقع نمواً يفوق ستة أضعاف في الطلب على النفط عام 2027",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/OPEC_Headquarter_Vienna.JPG/1280px-OPEC_Headquarter_Vienna.JPG",
+      "caption": "مقر منظمة أوبك في فيينا",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary street-level photo of OPEC's Vienna headquarters with its logo directly fits an OPEC demand forecast."
+    },
+    {
+      "slug": "trump-obamacare-500-rebates-33c345",
+      "kind": "news",
+      "title": "واشنطن تعيد 500 دولار للمشتركين في «أوباماكير» قبل الانتخابات",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Manhattan_skyline_from_Upper_New_York_Bay%2C_20231001_1041_0889.jpg/1280px-Manhattan_skyline_from_Upper_New_York_Bay%2C_20231001_1041_0889.jpg",
+      "caption": "أفق مانهاتن في نيويورك",
+      "verdict": "SERIOUS",
+      "reason": "A plain Manhattan skyline is a generic but sober stand-in for a US economic policy story, with nothing comic or odd."
+    },
+    {
+      "slug": "uae-germany-boring-investment-916d36",
+      "kind": "news",
+      "title": "الإمارات تستثمر 40 مليار يورو في ألمانيا",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Factory_Automation_Robotics_Palettizing_Bread.jpg/1280px-Factory_Automation_Robotics_Palettizing_Bread.jpg",
+      "caption": "روبوتات صناعية في مصنع بألمانيا",
+      "verdict": "SERIOUS",
+      "reason": "Industrial robots on a German production line are a straightforward image of the German industrial economy receiving investment."
+    },
+    {
+      "slug": "apple-foldable-iphone-duo-release-cycle-change-d6b45a",
+      "kind": "news",
+      "title": "«أبل» تطرح «آيفون ديو» القابل للطي بـ1999 دولاراً",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Apple_Park_2022.jpg/1280px-Apple_Park_2022.jpg",
+      "caption": "مقر أبل بارك في كوبيرتينو بولاية كاليفورنيا",
+      "verdict": "SERIOUS",
+      "reason": "An aerial news view of Apple Park headquarters is a standard, serious illustration for an Apple product launch."
+    },
+    {
+      "slug": "egypt-inflation-eases-12-7-august-7557fb",
+      "kind": "news",
+      "title": "التضخم في مصر يتباطأ إلى 12.7% في أغسطس",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Flickr_-_Bakar_88_-_Cairo%2C_Egypt_%28HDR%29.jpg/1280px-Flickr_-_Bakar_88_-_Cairo%2C_Egypt_%28HDR%29.jpg",
+      "caption": "نهر النيل ووسط القاهرة وجزيرة الجزيرة",
+      "verdict": "SERIOUS",
+      "reason": "A view of central Cairo's modern towers along the Nile shows the city's contemporary skyline rather than a cliché of poverty or the exotic."
+    },
+    {
+      "slug": "trump-5000-dividend-trillion-cost-36981a",
+      "kind": "news",
+      "title": "ترامب يعد بمنح 5000 دولار لكل أمريكي بتكلفة تتجاوز 1.2 تريليون دولار",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Capitol_at_Dusk_2.jpg/1280px-Capitol_at_Dusk_2.jpg",
+      "caption": "مبنى الكابيتول في واشنطن",
+      "verdict": "SERIOUS",
+      "reason": "A plain, dignified night view of the US Capitol that suits a story about federal spending."
+    },
+    {
+      "slug": "ecb-raises-rates-2-5-percent-second-hike-2026-e88f15",
+      "kind": "news",
+      "title": "المركزي الأوروبي يرفع الفائدة إلى 2.5% لاحتواء التضخم",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Frankfurt_EZB.Nordwest-2.20141228.jpg/1280px-Frankfurt_EZB.Nordwest-2.20141228.jpg",
+      "caption": "مقر البنك المركزي الأوروبي في فرانكفورت",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary news photograph of the ECB headquarters in Frankfurt, directly relevant to the rate decision."
+    },
+    {
+      "slug": "uae-germany-45-agreements-state-visit-9774e1",
+      "kind": "news",
+      "title": "الإمارات وألمانيا تعتزمان إبرام بين 40 و45 اتفاقية خلال زيارة دولة",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/150515_Bundeskanzleramt_%28Berlin%29_Ostseite.jpg/1280px-150515_Bundeskanzleramt_%28Berlin%29_Ostseite.jpg",
+      "caption": "مبنى المستشارية الاتحادية في برلين",
+      "verdict": "SERIOUS",
+      "reason": "A straightforward view of the German Chancellery with flags, appropriate for a state-visit story."
+    },
+    {
+      "slug": "liquidity-risk-explainer-oil-prices-e61d37",
+      "kind": "explainer",
+      "title": "كيف تضخم السيولة الضعيفة تقلبات أسعار النفط عند تعطل مسارات الشحن؟",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/2022-09-04_01_ACADIAN_-_IMO_9298715_tanker_%E2%80%93_St._John%E2%80%99s_NL_Canada.jpg/1280px-2022-09-04_01_ACADIAN_-_IMO_9298715_tanker_%E2%80%93_St._John%E2%80%99s_NL_Canada.jpg",
+      "caption": "ناقلة نفط ومنتجات كيميائية قرب ميناء سانت جونز في كندا",
+      "verdict": "SERIOUS",
+      "reason": "A plain photograph of a tanker at sea that fits a story on oil shipping and price volatility."
+    },
+    {
+      "slug": "nats-air-traffic-control-failure-uk-2026-f8f562",
+      "kind": "news",
+      "title": "عطل في نظام «ناتس» يلغي أكثر من ألفي رحلة في بريطانيا",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Heathrow_Airport_Terminal_2%2C_London%2C_England_-_Diliff.jpg/1280px-Heathrow_Airport_Terminal_2%2C_London%2C_England_-_Diliff.jpg",
+      "caption": "صالة المغادرات في مبنى الركاب الثاني بمطار هيثرو في لندن",
+      "verdict": "SERIOUS",
+      "reason": "A sober interior of a Heathrow terminal that suits a story on UK flight disruption."
+    },
+    {
+      "slug": "anthropic-researcher-ai-human-extinction-risk-8aa7a2",
+      "kind": "news",
+      "title": "باحث في أنثروبيك يحذر من أن الذكاء الاصطناعي قد يقضي على البشرية بنسبة احتمال تتجاوز 10%",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Datacenter_Server_Racks_%2822370909788%29.jpg/1280px-Datacenter_Server_Racks_%2822370909788%29.jpg",
+      "caption": "خوادم في أحد مراكز البيانات",
+      "verdict": "SERIOUS",
+      "reason": "A plain data-centre server room that is a dull but serious illustration of an AI story."
+    },
+    {
+      "slug": "saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2",
+      "kind": "news",
+      "title": "صادرات النفط السعودية تهبط إلى أدنى مستوى في 13 عاماً مع إغلاق مسارات الشحن",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Iss064e046338.jpg/1280px-Iss064e046338.jpg",
+      "caption": "مضيق هرمز الفاصل بين إيران والإمارات",
+      "verdict": "SERIOUS",
+      "reason": "A sober satellite view of the Strait of Hormuz fits a story about oil shipping routes."
+    },
+    {
+      "slug": "uae-banks-assets-germany-visit-ce4632",
+      "kind": "news",
+      "title": "أصول البنوك الإماراتية تقفز إلى 1.54 تريليون دولار في يوليو",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Berlin_Brandenburg_Airport_Terminal_1.jpg/1280px-Berlin_Brandenburg_Airport_Terminal_1.jpg",
+      "caption": "مبنى الركاب الأول في مطار برلين براندنبورغ",
+      "verdict": "SERIOUS",
+      "reason": "A plain photograph of a modern airport terminal is dignified, though a Berlin airport has no link to UAE banks."
+    },
+    {
+      "slug": "trump-expands-trade-war-canada-import-ban-6088a2",
+      "kind": "news",
+      "title": "ترامب يوسع الحرب التجارية مع كندا بحظر واردات جديدة",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Parliament_Hill_Ottawa_by_Louie_Luo.jpg/1280px-Parliament_Hill_Ottawa_by_Louie_Luo.jpg",
+      "caption": "مبنى البرلمان الكندي في أوتاوا",
+      "verdict": "SERIOUS",
+      "reason": "A standard news view of Canada's Parliament; the autumn foliage in front does not make it frivolous."
+    },
+    {
+      "slug": "saudi-travelers-ai-flexible-booking-skyscanner-2026-6a6a86",
+      "kind": "news",
+      "title": "80% من المسافرين السعوديين يثقون بالذكاء الاصطناعي في حجز رحلاتهم",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/King_Abdulaziz_International_Airport_-_North_Terminal_3.jpg/1280px-King_Abdulaziz_International_Airport_-_North_Terminal_3.jpg",
+      "caption": "صالة الركاب الشمالية في مطار الملك عبدالعزيز الدولي",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary night photograph of a Saudi airport terminal with travellers and cars is a fitting, modern image."
+    },
+    {
+      "slug": "google-finland-13-billion-ai-nuclear-54b058",
+      "kind": "news",
+      "title": "«جوجل» تستثمر 13 مليار يورو في بنية الذكاء الاصطناعي بفنلندا",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Loviisa_Nuclear_Power_Plant_1.jpg/1280px-Loviisa_Nuclear_Power_Plant_1.jpg",
+      "caption": "محطة لوفيسا للطاقة النووية في فنلندا",
+      "verdict": "SERIOUS",
+      "reason": "A straightforward photograph of a Finnish power plant, relevant to AI infrastructure energy needs."
+    },
+    {
+      "slug": "egypt-ewallets-h1-2026-transactions-growth-9789a5",
+      "kind": "news",
+      "title": "المحافظ الإلكترونية في مصر تسجل معاملات بـ2.96 تريليون جنيه في النصف الأول",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Nile_in_Cairo.jpg/1280px-Nile_in_Cairo.jpg",
+      "caption": "نهر النيل وأبراج وسط القاهرة",
+      "verdict": "SERIOUS",
+      "reason": "A modern Cairo skyline of towers and traffic along the Nile shows Egypt's economy without cliché."
+    },
+    {
+      "slug": "egypt-ai-data-center-nvidia-billion-dollar-b0fc50",
+      "kind": "news",
+      "title": "مصر تنشئ مركز بيانات بتقنية «إنفيديا» بمليار دولار",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/2e/123Net_Data_Center_%28DC2%29.jpg",
+      "caption": "ممر داخل مركز بيانات بين صفوف الخوادم (صورة تعبيرية)",
+      "verdict": "SERIOUS",
+      "reason": "A plain view of a data-centre aisle between server cabinets matches the headline on a data-centre investment."
+    },
+    {
+      "slug": "brent-above-100-dollars-gulf-escalation-8281ef",
+      "kind": "news",
+      "title": "برنت يتجاوز 100 دولار لأول مرة منذ يوليو مع تصعيد عسكري في الخليج",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Product_terminal_at_Preemraff_Lysekil_with_tankers.jpg/1280px-Product_terminal_at_Preemraff_Lysekil_with_tankers.jpg",
+      "caption": "ناقلات نفطية راسية قرب محطة منتجات بتروكيماوية (صورة تعبيرية)",
+      "verdict": "SERIOUS",
+      "reason": "A tanker berthed at a lit industrial terminal at night is an ordinary, sober energy-market image."
+    },
+    {
+      "slug": "global-supply-chains-geopolitics-ec8d1c",
+      "kind": "explainer",
+      "title": "لماذا صارت سلاسل التوريد العالمية ساحة للتنافس الجيوسياسي؟",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/World_Trade_Organization_-_Session_132_Auto_Industry_climate%2C_tech_and_geopolitical_challenges%2C_13_September_2024_%2853999928679%29.jpg/1280px-World_Trade_Organization_-_Session_132_Auto_Industry_climate%2C_tech_and_geopolitical_challenges%2C_13_September_2024_%2853999928679%29.jpg",
+      "caption": "جلسة نقاشية في منظمة التجارة العالمية حول تحديات صناعة السيارات",
+      "verdict": "SERIOUS",
+      "reason": "An official speaking at a WTO panel session is a standard, serious news photograph for a trade and geopolitics story."
+    },
+    {
+      "slug": "saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3",
+      "kind": "news",
+      "title": "السياحة الترفيهية السعودية مرشحة للنمو 93% بين 2025 و2030",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Riyadh_skyline.jpg/1280px-Riyadh_skyline.jpg",
+      "caption": "أفق مدينة الرياض من الحي الدبلوماسي",
+      "verdict": "SERIOUS",
+      "reason": "The modern Riyadh skyline at dusk presents the Saudi economy plainly, without any exotic cliché."
+    },
+    {
+      "slug": "south-korea-gdp-q2-2026-ai-chips-4e5373",
+      "kind": "news",
+      "title": "كوريا الجنوبية تنمو بأسرع وتيرة منذ 47 عاماً بفضل رقائق الذكاء الاصطناعي",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Seoul_Night_Skyline_2022.jpg",
+      "caption": "أفق مدينة سيول عاصمة كوريا الجنوبية",
+      "verdict": "SERIOUS",
+      "reason": "A night panorama of Seoul's lit cityscape is a sober, conventional illustration of South Korea's economy."
+    },
+    {
+      "slug": "us-warns-ford-china-partnerships-b5ea31",
+      "kind": "news",
+      "title": "إدارة ترامب تنتقد علاقات فورد مع شركات صينية",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Ford_Dearborn_Development_Center_Aerial_%2845574998845%29.jpg/1280px-Ford_Dearborn_Development_Center_Aerial_%2845574998845%29.jpg",
+      "caption": "مجمع فورد للتطوير في ديربورن بولاية ميشيغان",
+      "verdict": "SERIOUS",
+      "reason": "An aerial view of Ford's Dearborn test track and facilities is a plain corporate news image for a story about Ford."
+    },
+    {
+      "slug": "openai-navier-stokes-breakthrough-88-hours-a0e062",
+      "kind": "news",
+      "title": "«أوبن أيه آي» تحرز تقدماً في مسألة نافييه-ستوكس خلال 88 ساعة",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Wikimedia_Foundation_Servers-8055_13.jpg/1280px-Wikimedia_Foundation_Servers-8055_13.jpg",
+      "caption": "خوادم في أحد مراكز البيانات",
+      "verdict": "SERIOUS",
+      "reason": "A plain close-up of server racks is an ordinary, sober illustration for an AI computing story."
+    },
+    {
+      "slug": "mistral-raises-3bn-euros-series-d-eb9e3c",
+      "kind": "news",
+      "title": "«ميسترال» تجمع 3 مليارات يورو بتقييم 21 مليار يورو في أكبر جولة تمويل أوروبية",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Duga-1_radar_data_center_inside_empty_server_racks_2018.jpg/1280px-Duga-1_radar_data_center_inside_empty_server_racks_2018.jpg",
+      "caption": "رفوف خوادم فارغة في مركز بيانات",
+      "verdict": "UNSERIOUS",
+      "reason": "The frame shows a dark, derelict interior rather than server racks, and beside a record-funding headline it reads as an odd, ironic juxtaposition."
+    },
+    {
+      "slug": "saudi-renewables-tourism-growth-2026-93f77e",
+      "kind": "news",
+      "title": "السعودية.. قفزة 88% في سعة الطاقة المتجددة المشغّلة خلال 2025",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Southwestern_Saudi_Arabia_at_Night_%289495028083%29.jpg/1280px-Southwestern_Saudi_Arabia_at_Night_%289495028083%29.jpg",
+      "caption": "صورة فضائية لجنوب غرب السعودية من محطة الفضاء الدولية",
+      "verdict": "SERIOUS",
+      "reason": "A night satellite view of lit Saudi cities presents the modern economy without cliché."
+    },
+    {
+      "slug": "canada-us-retaliatory-tariffs-bombardier-trade-war-a97f20",
+      "kind": "news",
+      "title": "كندا تفرض رسوماً تصل إلى 50% على منتجات أمريكية بـ28 مليار دولار",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/20170809-Saint-Bernard-de-Lacolle_US-Canada_%28NY-Quebec%29_border_crossing.jpg/1280px-20170809-Saint-Bernard-de-Lacolle_US-Canada_%28NY-Quebec%29_border_crossing.jpg",
+      "caption": "معبر سان برنارد دي لاكول الحدودي بين كندا والولايات المتحدة",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary news photo of a working Canada–US border crossing with traffic fits a trade-tariff story."
+    },
+    {
+      "slug": "china-exports-surge-august-ai-trump-xi-223add",
+      "kind": "news",
+      "title": "صادرات الصين تقفز 25% في أغسطس مدفوعة بالذكاء الاصطناعي",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Aerial_-_Shanghai_-_Port_-_P1040701.JPG/1280px-Aerial_-_Shanghai_-_Port_-_P1040701.JPG",
+      "caption": "ميناء شانغهاي",
+      "verdict": "SERIOUS",
+      "reason": "An aerial view of Shanghai's container port with ships is a plain, relevant trade image despite the visible wingtip."
+    },
+    {
+      "slug": "brent-nears-100-dollar-houthi-attacks-saudi-1e290d",
+      "kind": "news",
+      "title": "برنت يقترب من 100 دولار بعد هجمات حوثية على السعودية",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Crude_Oil_Tanker_in_Port_Arthur%2C_Texas.jpg/1280px-Crude_Oil_Tanker_in_Port_Arthur%2C_Texas.jpg",
+      "caption": "ناقلة نفط خام تمر قرب منشأة للغاز المسال (صورة تعبيرية)",
+      "verdict": "SERIOUS",
+      "reason": "A crude tanker passing an energy facility is a straightforward, weighty image for an oil-price story."
+    },
+    {
+      "slug": "real-interest-rate-explainer-551977",
+      "kind": "explainer",
+      "title": "لماذا لا تكشف الفائدة المعلنة تكلفة الاقتراض الفعلية؟",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/9/99/Federal_Reserve_Board_%28Board_of_Governors_of_the_Federal_Reserve_System%29_open_meeting%2C_April_2019.jpg",
+      "caption": "اجتماع مجلس محافظي الاحتياطي الفيدرالي الأمريكي",
+      "verdict": "SERIOUS",
+      "reason": "A formal Federal Reserve Board meeting of officials at the table is a sober news photograph fitting an interest-rate story."
+    },
+    {
+      "slug": "egypt-stock-market-institutional-selling-developers-union-la-8d6ff7",
+      "kind": "news",
+      "title": "البورصة المصرية تتراجع تحت ضغط مبيعات مؤسسية بـ5 مليارات جنيه",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Cairo_Skyline_-_2676086921.jpg/1280px-Cairo_Skyline_-_2676086921.jpg",
+      "caption": "أفق القاهرة",
+      "verdict": "SERIOUS",
+      "reason": "A plain Cairo skyline with office towers is an ordinary cityscape, neither comic nor exotic, though only loosely tied to the bourse."
+    },
+    {
+      "slug": "us-jobs-report-rate-hike-citi-2027-31dcfc",
+      "kind": "news",
+      "title": "قوة سوق العمل الأمريكية تعيد رفع الفائدة إلى الواجهة",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Eccles_Building_%2826088200676%29.jpg/1280px-Eccles_Building_%2826088200676%29.jpg",
+      "caption": "مبنى الاحتياطي الفيدرالي الأمريكي في واشنطن",
+      "verdict": "SERIOUS",
+      "reason": "A straightforward frontal shot of the Federal Reserve building is a standard, weighty image for a US rates story."
+    },
+    {
+      "slug": "hormuz-escalation-oil-six-week-high-605cff",
+      "kind": "news",
+      "title": "تصعيد هرمز يرفع برنت إلى 97.73 دولاراً أعلى مستوى في 6 أسابيع",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/ISS-42_Jazan_Region_at_night.jpg/1280px-ISS-42_Jazan_Region_at_night.jpg",
+      "caption": "منطقة جازان ليلاً من محطة الفضاء الدولية",
+      "verdict": "SERIOUS",
+      "reason": "A night view of city lights from the space station is a plain documentary image with nothing quaint or laughable, though its link to Hormuz is loose."
+    },
+    {
+      "slug": "egypt-uae-gov-partnership-extension-ee1f1d",
+      "kind": "news",
+      "title": "مصر والإمارات تمددان مذكرة تفاهم لتطوير العمل الحكومي",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/The_Government_District%2C_New_Capital_2.jpg/1280px-The_Government_District%2C_New_Capital_2.jpg",
+      "caption": "الحي الحكومي في العاصمة الإدارية الجديدة في مصر",
+      "verdict": "SERIOUS",
+      "reason": "The modern government district in Egypt's New Administrative Capital suits a story on government cooperation and looks dignified."
+    },
+    {
+      "slug": "oman-trade-surplus-june-2026-b70599",
+      "kind": "news",
+      "title": "الفائض التجاري العماني يقفز 51% إلى 12.2 مليار دولار",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Mina_Al_Fahal_from_sea.jpg/1280px-Mina_Al_Fahal_from_sea.jpg",
+      "caption": "ناقلة نفط أمام ميناء الفحل في سلطنة عمان",
+      "verdict": "SERIOUS",
+      "reason": "An oil tanker off Oman's Mina al Fahal terminal is a plain news image of the country's modern export economy."
+    },
+    {
+      "slug": "seoul-texas-gas-plant-ai-data-centers-e9057c",
+      "kind": "news",
+      "title": "اتفاق كوري أمريكي على استثمار 22.3 مليار دولار في محطة غاز بتكساس",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Speaks_TX_Gas_Plant.JPG/1280px-Speaks_TX_Gas_Plant.JPG",
+      "caption": "محطة ويلكوكس للغاز قرب بلدة سبيكس في تكساس",
+      "verdict": "SERIOUS",
+      "reason": "A plain news view of the gas plant's stacks and facilities at the end of a road is dull but fitting for an energy investment story."
+    },
+    {
+      "slug": "turkey-inflation-forecast-2026-284-baaef7",
+      "kind": "news",
+      "title": "تركيا ترفع توقعات التضخم إلى 28.4% بنهاية العام",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Historical_peninsula_and_modern_skyline_of_Istanbul.jpg/1280px-Historical_peninsula_and_modern_skyline_of_Istanbul.jpg",
+      "caption": "شبه الجزيرة التاريخية وأفق إسطنبول الحديث",
+      "verdict": "SERIOUS",
+      "reason": "An aerial Istanbul cityscape that includes the modern business district is a standard, dignified illustration for a Turkish economy story."
+    },
+    {
+      "slug": "oman-hainan-economic-zone-investments-278630",
+      "kind": "news",
+      "title": "مسقط وهاينان تبحثان استثمارات صينية في المناطق الاقتصادية العُمانية",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/%D9%85%D9%8A%D9%86%D8%A7%D8%A1_%D8%A7%D9%84%D8%AF%D9%82%D9%85_%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.jpg/1280px-%D9%85%D9%8A%D9%86%D8%A7%D8%A1_%D8%A7%D9%84%D8%AF%D9%82%D9%85_%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "caption": "ميناء الدقم في سلطنة عُمان",
+      "verdict": "SERIOUS",
+      "reason": "An aerial view of Duqm port with cranes, ships and storage tanks shows Oman's modern economic zone infrastructure."
+    },
+    {
+      "slug": "egypt-sczone-factories-investments-5309ca",
+      "kind": "news",
+      "title": "مصر تدشّن 9 مصانع في المنطقة الاقتصادية لقناة السويس باستثمارات 84.5 مليون دولار",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Suez_Canal_Bridge_%282008%29_04.jpg/1280px-Suez_Canal_Bridge_%282008%29_04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "caption": "جسر قناة السويس عند القنطرة",
+      "verdict": "SERIOUS",
+      "reason": "The Suez Canal bridge over the waterway is a sober infrastructure image that fits a story on the canal's economic zone."
+    },
+    {
+      "slug": "opec-plus-meetings-oil-prices-explainer-06a727",
+      "kind": "explainer",
+      "title": "كيف تحرّك قرارات «أوبك+» أسعار النفط العالمية؟",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Tanker_waiting_to_enter_Durban_harbour.jpg/1280px-Tanker_waiting_to_enter_Durban_harbour.jpg",
+      "caption": "ناقلة نفط خام قبالة ميناء ديربان في جنوب أفريقيا",
+      "verdict": "SERIOUS",
+      "reason": "A crude tanker at sea is a plain, relevant image for a story on oil prices and OPEC+ decisions."
+    },
+    {
+      "slug": "saudi-pif-khafji-coastal-development-3b17f7",
+      "kind": "news",
+      "title": "صندوق الاستثمارات العامة يطلق «ساحل الخليج للتطوير العقاري» في الخفجي",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/KAFD_46.jpg/1280px-KAFD_46.jpg",
+      "caption": "مقر صندوق الاستثمارات العامة في الرياض",
+      "verdict": "SERIOUS",
+      "reason": "The modern towers of Riyadh's financial district around the PIF headquarters are an appropriate, serious illustration."
+    },
+    {
+      "slug": "china-injects-54bn-into-state-banks-and-insurers-bd44d2",
+      "kind": "news",
+      "title": "بكين تضخ 360 مليار يوان في ثماني مؤسسات مالية حكومية",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Beijing_CBD_Skyline_%2820190104160952%29.jpg/1280px-Beijing_CBD_Skyline_%2820190104160952%29.jpg",
+      "caption": "الحي المالي المركزي في بكين",
+      "verdict": "SERIOUS",
+      "reason": "A plain skyline of Beijing's central business district with its towers, a sober match for a state bank recapitalisation story."
+    },
+    {
+      "slug": "healey-october-budget-growth-discipline-7ec41b",
+      "kind": "news",
+      "title": "هيلي يعد بدعم النمو في موازنة 28 أكتوبر مع التمسك بالانضباط المالي",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/City_of_London_skyline_from_London_City_Hall_-_Sept_2015_-_Crop_Aligned.jpg/1280px-City_of_London_skyline_from_London_City_Hall_-_Sept_2015_-_Crop_Aligned.jpg",
+      "caption": "الحي المالي في مدينة لندن على ضفاف نهر التايمز",
+      "verdict": "SERIOUS",
+      "reason": "An ordinary view of the City of London's financial district across the Thames, appropriate for a UK budget story."
+    },
+    {
+      "slug": "gcc-listed-companies-record-q2-2026-profits-af1b5f",
+      "kind": "news",
+      "title": "شركات الخليج تسجل أرباحاً قياسية عند 74.8 مليار دولار في الربع الثاني",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Riyadh_Skyline_showing_the_King_Abdullah_Financial_District_%28KAFD%29_and_the_famous_Kingdom_Tower_.jpg/1280px-Riyadh_Skyline_showing_the_King_Abdullah_Financial_District_%28KAFD%29_and_the_famous_Kingdom_Tower_.jpg",
+      "caption": "مركز الملك عبدالله المالي وبرج المملكة في الرياض",
+      "verdict": "SERIOUS",
+      "reason": "The Riyadh skyline with Kingdom Centre and the financial district shows the Gulf's modern economy fittingly for a corporate earnings story."
+    },
+    {
+      "slug": "eurozone-gdp-q2-2026-employment-inventories-f5939d",
+      "kind": "news",
+      "title": "منطقة اليورو تنمو 0.6% في الربع الثاني بقيادة الصادرات",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Container_Terminal_Tollerort%2C_Vorhafen%2C_Hamburg_%28P1080405%29.jpg/1280px-Container_Terminal_Tollerort%2C_Vorhafen%2C_Hamburg_%28P1080405%29.jpg",
+      "caption": "محطة حاويات في ميناء هامبورغ",
+      "verdict": "SERIOUS",
+      "reason": "A working container terminal with cranes and a ship at Hamburg directly illustrates export-led eurozone growth."
+    }
+  ]
+}

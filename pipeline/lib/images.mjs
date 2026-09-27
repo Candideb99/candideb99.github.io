@@ -8,7 +8,7 @@ import { fixNames } from "./copydesk.mjs";
 import { USER_AGENT, fetchWithTimeout } from "./util.mjs";
 
 /** Vision providers cannot fetch Wikimedia URLs themselves; inline the thumbnails as data URLs. */
-async function inlineImage(url, log) {
+export async function inlineImage(url, log = () => {}) {
   try {
     const response = await fetchWithTimeout(url, { headers: { "user-agent": USER_AGENT } }, 25000);
     if (!response.ok) {
@@ -416,7 +416,51 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
  * four-photo shortlist ahead of an empty facade; the judge makes the choice.
  */
 /** What the photo editor is told about life in a picture, beside the ranking below. */
-const LIVELY_RULE = `LIFE AND FRESHNESS. Among photographs that fit the story, choose the one with life in it, the way the news agencies' pictures look: the story's own people at work (speaking, meeting, signing, visiting) or its sector in action (ships loading at a port, cranes working, traders at their screens, workers on a line, shoppers in a market, tankers under way). An empty building front, a skyline, an aerial or satellite view, a logo or a studio portrait is the last choice, taken only when nothing livelier fits. Life never makes a photograph of another subject fit: an oil tanker does not illustrate a growth forecast because the forecast mentions energy. Of two fitting and equally lively photographs, the more recent one (the dates are given).`;
+const LIVELY_RULE = `LIFE AND FRESHNESS. Among photographs that fit the story, choose the one with life in it, the way the news agencies' pictures look: the story's own people at work (speaking, meeting, signing, visiting) or its sector in action (ships loading at a port, cranes working, traders at their screens, workers on a line, shoppers in a market, tankers under way). An empty building front, a skyline, an aerial or satellite view, a logo or a studio portrait is the last choice, taken only when nothing livelier fits. Life never makes a photograph of another subject fit: an oil tanker does not illustrate a growth forecast because the forecast mentions energy. Life means the economy at work, never a curiosity: a quaint or odd street scene is not life for this purpose (see GRAVITY). Of two fitting and equally lively photographs, the more recent one (the dates are given).`;
+
+/**
+ * GRAVITY. The owner, 2026-09-27, on a horse-drawn fuel cart at a Cairo filling station under an analysis of Egypt's
+ * central bank and Brent above 105 dollars: "some pictures are laughable and do not make the website look serious, the
+ * image choosing logic has to be enhanced". Every rule had passed it: it was Egypt, it was fuel, and it had life in the
+ * frame, which LIVELY_RULE asked for. Nothing asked for gravity. Now every pass, the second check and the audits carry
+ * this rule, and `noveltyFault()` refuses in code a file or caption that names such a subject the story does not.
+ */
+export const GRAVITY_RULE = `GRAVITY. This is a serious economics website read by professionals across the Arab world; the photograph must carry the weight of the headline. Refuse a frame that is quaint, comic, odd, folkloric or picturesque, one a reader would smile at or share as a curiosity: an animal (a horse or donkey cart, a camel, goats, a cat) unless the story is about it; a makeshift contraption or a street oddity; costumes, a festival, toys, a mascot, a cartoon, a mural or street art; a staged or posed stock photograph, a meme-like juxtaposition, an unflattering or embarrassing moment. Never picture an Arab country's economy through a cliché of poverty or of the exotic (a horse cart at a fuel pump, a donkey in traffic, a camel beside oil tanks): picture its modern economy the way its own news agencies do, with a working filling station's pumps and cars, the central bank, traders at their screens, a refinery, a port, an ordinary busy market. When every candidate fails this, choose none: the story runs better without a photograph than with a laughable one.`;
+
+// Subjects a file or a caption can name that make a frame a curiosity on an economics story unless the story is about
+// them: [the file's words (its name, description and categories, English), the caption's words (Arabic), the words
+// with which a story would be about them (Arabic)]. A file name in one word («CairoHorseDrawnFuelTransport») is read
+// with its capitals split.
+// Words are whole: «جمال» (beauty, and a name) and «مهرجان» are not camels or clowns; Buffalo and Piccadilly Circus are
+// places, not a curiosity.
+// Arabic letters and marks as a word's edges («،» «؛» «؟» are in the same Unicode block and end a word).
+const LETTER = "\\u0621-\\u065F\\u066E-\\u06D3\\u06FA-\\u06FF";
+const W = (words) => new RegExp(`(?<![${LETTER}])(?:${words})(?![${LETTER}])`);
+const NOVELTIES = [
+  [/\bhorses?\b|\bponies\b|\bpony\b/i, W("حصان|خيول|خيل"), W("حصان|خيول|خيل|الخيل|الفروسية|سباق|سباقات")],
+  [/\bdonkeys?\b|\bmules?\b/i, W("حمار|حمير|بغل|بغال"), /حمار|حمير|بغال/],
+  [/\bcamels?\b|\bdromedar/i, W("جمل|إبل|ناقة|نوق"), W("إبل|الإبل|الهجن|جمل|الجمل")],
+  [/\bgoats?\b|\bsheep\b|\bcows?\b|\bcattle\b|\blivestock\b/i, W("ماعز|أغنام|خراف|أبقار|جاموس|ماشية|مواشي"), /ماعز|أغنام|خراف|أبقار|ماشية|مواشي|لحوم|الأضاحي|الثروة الحيوانية/],
+  [/(?<!hot )\bdogs?\b|\bpupp(?:y|ies)\b|\bkittens?\b|\bcats\b|\bpigeons?\b|\bchickens?\b|\broosters?\b|\bmonkeys?\b/i, W("كلب|كلاب|قطة|قطط|دجاج|ديك|قرد|قرود"), /كلاب|قطط|حيوانات أليفة|دواجن|دجاج/],
+  [/\bcart pulled\b|\bhand ?cart\b|\bpushcart\b|\brickshaws?\b|\btuk[- ]?tuks?\b/i, W("عربة يجرها|عربة يد|كارو|توك توك|ريكشا"), /توك توك|عربات اليد|الباعة الجائلين/],
+  [/\btoys?\b|\bdolls?\b|\bpuppets?\b|\bmascots?\b|\bclowns?\b|\bcostumes?\b|\bcarnival\b/i, W("دمية|دمى|لعبة|تميمة|مهرج|كرنفال|سيرك|أزياء تنكرية"), /ألعاب|دمى|مهرجان|كرنفال|سيرك|صناعة الألعاب/],
+  [/\bcartoons?\b|\bcaricatures?\b|\bmemes?\b|\bgraffiti\b|\bmurals?\b|\bstreet art\b/i, W("كاريكاتير|رسوم متحركة|جدارية|غرافيتي"), /كاريكاتير|جدارية|غرافيتي|فنون/],
+];
+
+/**
+ * The curiosity a photograph's own record or caption names and its story does not (see GRAVITY_RULE), or null.
+ * `story` carries the text the photograph illustrates (title, subtitle, lede, body).
+ */
+export function noveltyFault(image, story) {
+  const record = `${image.title ?? ""} ${image.description ?? ""} ${image.categories ?? ""}`.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/[_-]+/g, " ");
+  const caption = String(image.alt ?? "");
+  const text = [story?.title, story?.subtitle, story?.lede, story?.body].filter(Boolean).join("\n");
+  for (const [en, ar, about] of NOVELTIES) {
+    const named = record.match(en)?.[0] ?? caption.match(ar)?.[0];
+    if (named && !about.test(text)) return named.trim();
+  }
+  return null;
+}
 /**
  * The owner, 2026-09-24, on the risers of an offshore platform seen from above under a Brent story ("weird
  * unattracting image for the topic") and on the Treasury's front under an explainer of bond yields: a photo
@@ -446,11 +490,12 @@ function liveliness(image) {
 export const CAPTION_RULE = `THE CAPTION is shown under the photograph on an Arabic economics news website, so write it the way the desks of Asharq Al-Awsat or Al Jazeera write one: a short noun phrase of 3 to 10 words that says WHAT the photograph shows and, only when the file itself names it, WHERE. Examples of the register: «مصفاة نفط في هيوستن بولاية تكساس الأمريكية», «مقر بورصة نيويورك في وول ستريت», «ناقلة غاز مسال قرب ميناء رأس لفان في قطر», «خوادم في أحد مراكز البيانات», «خط إنتاج بطاريات في مصنع». A caption names; it does not paint: never the weather, the sky, clouds, light, the time of day, colours, the mood, the size impression, the camera or the composition (no «تحت سماء…», «منظر», «مشهد», «لقطة», «في الخلفية», «صورة تظهر», «ضخمة», «حمراء»). Never name a place, company or person the file does not name. A photograph of named people taken at an earlier occasion says so: the occasion and its year as the file gives them («ترامب وشي خلال لقائهما في أوساكا عام 2019»), or «(أرشيفية)» at the end when the file names no occasion. Modern Standard Arabic, no full stop at the end.`;
 
 // Names that contain a colour or a sky word and are not description: struck out before the check.
-const CAPTION_NAMES = ["البحر الأحمر", "البحر الأبيض المتوسط", "البحر الأسود", "البيت الأبيض", "النيل الأزرق", "النيل الأبيض", "الهلال الأحمر", "الصليب الأحمر", "الخط الأخضر", "الذهب الأسود", "المنطقة الخضراء", "الجبل الأخضر"];
+// «معبد السماء» is Beijing's Temple of Heaven, not a sky (the Trump–Xi caption was refused for it, 2026-09-27).
+const CAPTION_NAMES = ["البحر الأحمر", "البحر الأبيض المتوسط", "البحر الأسود", "البيت الأبيض", "النيل الأزرق", "النيل الأبيض", "الهلال الأحمر", "الصليب الأحمر", "الخط الأخضر", "الذهب الأسود", "المنطقة الخضراء", "الجبل الأخضر", "معبد السماء"];
 const CAPTION_FLAWS = /(?<!\p{L})(?:[وفبك]?ال|لل|[وفبك])?(?:سماء|غيوم|غيم|ملبدة|ملبد|غائمة|غائم|صافية|صاف|مشمسة|مشمس|ضباب|غروب|شروق|إضاءة|أضواء|منظر|مشهد|لقطة|الخلفية|المقدمة|تظهر|يظهر|خلابة|خلاب|جميلة|جميل|رائعة|مهيبة|هادئة|هادئ|ضخمة|ضخم|عملاقة|مفتوحة|حمراء|أحمر|زرقاء|أزرق|خضراء|أخضر|صفراء|أصفر|برتقالية|برتقالي|بيضاء|أبيض|سوداء|أسود|رمادية|رمادي)(?!\p{L})/gu;
 
 // Each name with the clitics Arabic attaches to it: البيت الأبيض، للبيت الأبيض، بالبحر الأحمر، والبحر الأسود.
-const CAPTION_NAME_RE = new RegExp(CAPTION_NAMES.map((n) => `(?:[وفبك]?ال|لل)${n.slice(2)}`).join("|"), "gu");
+const CAPTION_NAME_RE = new RegExp(CAPTION_NAMES.map((n) => (n.startsWith("ال") ? `(?:[وفبك]?ال|لل)${n.slice(2)}` : `[وفبكل]?${n}`)).join("|"), "gu");
 
 /** The painted words a caption carries (sky, weather, light, colour, mood, composition), for the code check. */
 export function captionFlaws(caption) {
@@ -552,7 +597,7 @@ ${people.length ? "" : PLACE_RULE}`;
   // the neutral one prefers life (Task 3, 2026-09-24): the agencies show people and sectors at work.
   // Every pass, the neutral one too, wants a frame that reads at a glance; a piece that explains is pictured at work.
   const concept = CONCEPT_KINDS.has(draft.kind) ? `\n${CONCEPT_RULE}` : "";
-  const rules = `${neutral ? placed.replace(PLACE_RULE, NEUTRAL_RULE) : `${placed}\n${LIVELY_RULE}`}\n${GLANCE_RULE}${concept}`;
+  const rules = `${neutral ? placed.replace(PLACE_RULE, NEUTRAL_RULE) : `${placed}\n${LIVELY_RULE}`}\n${GLANCE_RULE}\n${GRAVITY_RULE}${concept}`;
   const user = `We are illustrating an Arabic economics article.
 Headline: ${draft.title}
 Summary: ${draft.subtitle ?? ""}
@@ -716,6 +761,12 @@ async function verifyImage({ image, draft, story, log, neutral = false, people =
     log(`image: second check refused "${String(image.title ?? "").slice(0, 60)}": taken in ${abroad}, which the story does not name`);
     return false;
   }
+  // A curiosity the file or the caption names and the story does not (a horse cart at a fuel pump) is refused in code.
+  const odd = noveltyFault(image, draft);
+  if (odd) {
+    log(`image: second check refused "${String(image.title ?? "").slice(0, 60)}": it shows «${odd}», which is not what the story is about`);
+    return false;
+  }
   const user = `STORY (Arabic economics newspaper):
 Headline: ${draft.title}
 Standfirst: ${draft.subtitle ?? ""}
@@ -737,8 +788,9 @@ Judge as a strict picture editor of a paper read across the Arab world. ${neutra
 - STALE_EVENT: a specific past event (a summit, a ceremony, a visit) that the story is not about, unless the frame shows the story's own people${people.length ? ` (${people.join(", ")})` : ""}: a photograph of them at an earlier occasion, captioned with that occasion and its year or «(أرشيفية)», is how the desks illustrate a story about them, and it is RIGHT.
 ${CONCEPT_KINDS.has(draft.kind) ? "- This piece explains or analyses a concept: its subject at work is GENERIC_OK even where a news story would call it a neighbouring sector. A trading floor, traders at their screens or a price board in a trading hall pictures bonds, rates and markets alike (a Treasury-bond explainer lost an NYSE floor as \"equity trading\", 2026-09-24); an everyday food market pictures prices and inflation.\n" : ""}- GENERIC_OK: a neutral illustration whose frame shows the story's OWN institution or sector itself: the named company's or ministry's building, the sector's own object (a battery production line, a data-centre hall, an LNG tanker, a refinery, a pipeline, a pumpjack, a trading floor, a port crane, a factory line, a branch of the named bank). The named capital's skyline or central bank is acceptable ONLY for a story about the country's economy as a whole (inflation, growth, budget, currency, rates, sovereign rating, trade balance, jobs). An anonymous scene of the story's sector — a battery production line, a refinery, a tanker at sea, a container port, a trading floor, a server hall — is acceptable as a stock photograph is, under the rule below${neutral ? "." : ": for a story about one country, only when nothing (frame, writing, caption, file name, description, categories) places it in another country."}
 - RIGHT: the story's own people (also at an earlier occasion, captioned as one), place or event.
+- UNSERIOUS, whatever else fits: ${GRAVITY_RULE}
 ${neutral ? NEUTRAL_CHECK : people.length ? "" : PLACE_RULE}
-Return JSON: {"verdict":"RIGHT|GENERIC_OK|STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON","reason":"<one short English sentence>"}`;
+Return JSON: {"verdict":"RIGHT|GENERIC_OK|STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON|UNSERIOUS","reason":"<one short English sentence>"}`;
   const { data, model } = await chat({
     role: "critic",
     system: "You are a strict newspaper picture editor. Answer with one JSON object only.",

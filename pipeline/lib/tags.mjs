@@ -18,7 +18,8 @@ import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import YAML from "yaml";
 
-const AR = "؀-ۿ";
+// Arabic letters and marks, the edges of a word: not the whole Unicode block, whose «،» «؛» «؟» end a word.
+const AR = "ء-ٟٮ-ۓۺ-ۿ";
 /** Arabic as matched: no diacritics or tatweel, one alef, ه for ة, ي for ى, the house spellings. */
 export function normalizeTagText(s) {
   return String(s ?? "")

@@ -1,5 +1,5 @@
 ---
-title: "استئجار الناقلات العملاقة عبر هرمز يتجاوز 800 ألف دولار يومياً"
+title: استئجار الناقلات العملاقة عبر هرمز يتجاوز 800 ألف دولار يومياً
 subtitle: تدفقات النفط عبر المضيق تتراجع إلى 45% من مستويات ما قبل الحرب
 slug: hormuz-strait-oil-tanker-rates-record-high-86c98b
 section: energy
@@ -31,15 +31,7 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Petroleum_tanker_leaving_Dar_es_Salaam.jpg/1280px-Petroleum_tanker_leaving_Dar_es_Salaam.jpg
-  width: 1280
-  height: 960
-  alt: ناقلة نفط تغادر ميناء دار السلام
-  credit: Sarvesh Lutchmun · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3APetroleum_tanker_leaving_Dar_es_Salaam.jpg
+image: null
 sources:
   - name: الغارديان
     nameEn: The Guardian

@@ -14,7 +14,8 @@
  * site-check refuses a published «الأرقام» box that breaks it, and scripts/pipeline-selftest.mjs pins its cases.
  */
 
-const AR = "؀-ۿ";
+// Arabic letters and marks, the edges of a word: not the whole Unicode block, whose «،» «؛» «؟» end a word.
+const AR = "ء-ٟٮ-ۓۺ-ۿ";
 const TASHKEEL = /[ً-ٰٟـ]/g; // harakat, the dagger alef, the tatweel
 const toLatinDigits = (s) => s.replace(/[٠-٩]/g, (d) => String(d.charCodeAt(0) - 0x0660)).replace(/[۰-۹]/g, (d) => String(d.charCodeAt(0) - 0x06f0));
 const norm = (s) => toLatinDigits(String(s ?? "").replace(TASHKEEL, "")).replace(/\s+/g, " ").trim();

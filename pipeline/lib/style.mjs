@@ -341,7 +341,8 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
   // carrying a second, unrelated event, most brought in by one of these joints («وفي تطور منفصل، جمعت شركة بورينغ…»،
   // «في مجال آخر، جمعت شركة كلاي…»، «وفي التاريخ نفسه، أعلنت جوجل…»), and their dek, box, «لماذا يهمّ» and tags followed it.
   if (news) {
-    const STITCH = /(?<![؀-ۿ])(?:و|ف)?(?:في تطور منفصل|في سياق منفصل|في سياق آخر|في مجال آخر|على صعيد آخر|على صعيد منفصل|في شأن آخر|في خبر آخر|في تطور آخر|في أخبار أخرى|في ملف آخر|في التاريخ نفسه)(?![؀-ۿ])/;
+    // Letters only as edges: the Arabic comma that follows the joint («وفي التاريخ نفسه،») is in the same Unicode block.
+    const STITCH = /(?<![ء-ٟٮ-ۓۺ-ۿ])(?:و|ف)?(?:في تطور منفصل|في سياق منفصل|في سياق آخر|في مجال آخر|على صعيد آخر|على صعيد منفصل|في شأن آخر|في خبر آخر|في تطور آخر|في أخبار أخرى|في ملف آخر|في التاريخ نفسه)(?![ء-ٟٮ-ۓۺ-ۿ])/;
     const stitched = sentencesOf(`${lede}\n${body}`).find((s) => STITCH.test(s));
     if (stitched) issues.push(`خبر ثانٍ ملحق بالخبر («${stitched.slice(0, 60)}…»)؛ الخبر حدث واحد: احذف الحدث المنفصل من المتن، ومن الوصف والأرقام و«لماذا يهمّ» إن ظهر فيها، فله خبره المستقل.`);
   }

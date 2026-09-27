@@ -32,7 +32,7 @@ image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Donald_Trump_and_Xi_Jinping_at_the_Temple_of_Heaven_%283%29-20260514.jpg/1280px-Donald_Trump_and_Xi_Jinping_at_the_Temple_of_Heaven_%283%29-20260514.jpg
   width: 1280
   height: 853
-  alt: " (أرشيفية)"
+  alt: "ترامب وشي في معبد السماء خلال زيارته للصين عام 2026"
   credit: The White House · Public domain · ويكيميديا كومنز
   license: Public domain
   pageUrl: https://commons.wikimedia.org/wiki/File%3ADonald_Trump_and_Xi_Jinping_at_the_Temple_of_Heaven_(3)-20260514.jpg

@@ -49,14 +49,14 @@ chart:
         - 14.9
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/CairoHorseDrawnFuelTransport.jpg/1280px-CairoHorseDrawnFuelTransport.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/At_the_local_market_place.jpg/1280px-At_the_local_market_place.jpg
   width: 1280
   height: 853
-  alt: عربة وقود يجرها حصان في محطة بنزين بالقاهرة
-  credit: Roland Unger · CC BY-SA 3.0 · ويكيميديا كومنز
-  license: CC BY-SA 3.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/3.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ACairoHorseDrawnFuelTransport.jpg
+  alt: متسوقات أمام بائعة تين شوكي في سوق شعبي بالإسكندرية
+  credit: Marwa elchazly · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AAt_the_local_market_place.jpg
 sources:
   - name: خازندار
     nameEn: Khazendar

@@ -60,10 +60,9 @@ for (const file of files) {
   if (ONLY.size && !ONLY.has(data.slug)) continue;
   const redo = REDO.has(data.slug);
   if (data.image && !redo) continue;
-  if (redo && data.image) {
-    used.delete(data.image.url);
-    data.image = null;
-  }
+  // A photo being replaced stays excluded: a re-pick is never the same picture (2026-09-27, the gravity audit's
+  // replacements; it used to be freed, so the judge could choose it again).
+  if (redo && data.image) data.image = null;
   tried += 1;
   log(`${file}: searching`);
   const draft = { title: data.title, subtitle: data.subtitle, lede: data.lede, imageQueries: [], tags: data.tags ?? [], regions: data.regions ?? [], kind: data.kind };

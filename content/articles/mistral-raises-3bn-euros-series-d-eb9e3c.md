@@ -29,14 +29,14 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Duga-1_radar_data_center_inside_empty_server_racks_2018.jpg/1280px-Duga-1_radar_data_center_inside_empty_server_racks_2018.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Microsoft_Data_Center_Middenmeer%2C_the_Netherlands_-_2.jpg/1280px-Microsoft_Data_Center_Middenmeer%2C_the_Netherlands_-_2.jpg
   width: 1280
-  height: 852
-  alt: رفوف خوادم فارغة في مركز بيانات
-  credit: Joël van der Loo · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ADuga-1_radar_data_center_inside_empty_server_racks_2018.jpg
+  height: 960
+  alt: مبنى أحد مراكز البيانات (صورة تعبيرية)
+  credit: Hay Kranen · CC BY 4.0 · ويكيميديا كومنز
+  license: CC BY 4.0
+  licenseUrl: https://creativecommons.org/licenses/by/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AMicrosoft_Data_Center_Middenmeer%2C_the_Netherlands_-_2.jpg
 sources:
   - name: تك كرانش
     nameEn: TechCrunch
@@ -54,7 +54,7 @@ models:
   editor: nvidia/nemotron-3-ultra-550b-a55b:free
   writer: nvidia/nemotron-3-ultra-550b-a55b:free
   critic: nvidia/nemotron-3-super-120b-a12b:free
-  vision: nex-agi/nex-n2.5-pro:free
+  vision: claude-cli
 quality:
   score: 8
   verdict: publish

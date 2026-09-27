@@ -27,7 +27,7 @@ for (const line of existsSync(path.join(root, ".env")) ? readFileSync(path.join(
 const { chat } = await import("./lib/llm.mjs");
 // The same geography rule the newsroom's picture checks read (2026-09-23): one rule, not two copies,
 // and the same check in code, which overrides a model that passes a photo its own file places abroad.
-const { PLACE_RULE, placedAbroad, ILLUSTRATIVE, glanceFaults } = await import("./lib/images.mjs");
+const { PLACE_RULE, placedAbroad, ILLUSTRATIVE, glanceFaults, GRAVITY_RULE, noveltyFault } = await import("./lib/images.mjs");
 const ARTICLES = path.join(root, "content", "articles");
 const CACHE = path.join(root, "pipeline", ".cache", "commons-meta.json");
 const OUT = path.join(root, "pipeline", "runs", "image-audit.json");
@@ -102,8 +102,9 @@ Judge whether this photograph belongs with this story, as a strict picture edito
 - STALE_EVENT: the photo depicts a specific past event that the story is not about (an old summit, an old ceremony), not just an old photo of a place. The story's OWN people at an earlier occasion are not stale: a photograph of them from a previous summit, visit or conference, captioned with that occasion and its year or «(أرشيفية)», is how the desks illustrate a story about them, and it is RIGHT (the owner's rule, 2026-09-23). The audit of 2026-09-24 flagged five such photographs, Trump and Xi among them, against that rule.
 - GENERIC_OK: a neutral illustration whose frame shows the story's OWN institution or sector itself: the named company's or ministry's building, the sector's own object (a battery production line, a data-centre hall, an LNG tanker, a refinery, a pipeline, a trading floor, a port crane, a factory line, a branch of the named bank). The named capital's skyline or central bank is acceptable ONLY for a story about the country's economy as a whole (inflation, growth, budget, currency, rates, sovereign rating, trade balance, jobs). An anonymous scene of the story's sector — a production line, a refinery, a tanker at sea, a container port, a trading floor, a server hall — is acceptable as a stock photograph is, under the rule below: for a story about one country, only when nothing (the file name, description, categories or caption) places it in another country.
 - RIGHT: shows the actual people, place or event of the story.
+- UNSERIOUS, whatever else fits (2026-09-27): ${GRAVITY_RULE}
 ${a.alt.includes(ILLUSTRATIVE) ? `The paper captions this photograph «${ILLUSTRATIVE}» (illustrative): it was chosen because no photograph from the story's own country passed. Judge it by what readers see (the frame as the file describes it, and the caption), not by where the file says it was taken: WRONG_SUBJECT only if the frame shows readable signs, lettering, a landmark, a flag, a skyline or a street, or the caption names a place. "The caption" is the line under "Caption the paper printed" above, never the file name or the Commons description: a file called "… at the oil terminal in Lisboa" printed as «ناقلة نفط (صورة تعبيرية)» names no place (the audit of 2026-09-24 confused the two).` : PLACE_RULE}
-Return JSON: {"verdict":"RIGHT|GENERIC_OK|STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON","people_in_photo":"<names the file/description implies, or none>","reason":"<one short English sentence>"}`;
+Return JSON: {"verdict":"RIGHT|GENERIC_OK|STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON|UNSERIOUS","people_in_photo":"<names the file/description implies, or none>","reason":"<one short English sentence>"}`;
   try {
     const { data, model } = await chat({ role: "critic", system: "You are a strict newspaper picture editor. Answer with one JSON object only.", user, json: true, maxTokens: 300, temperature: 0, log: () => {} });
     let verdict = String(data.verdict ?? "").toUpperCase();
@@ -111,6 +112,11 @@ Return JSON: {"verdict":"RIGHT|GENERIC_OK|STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON
     if (abroad && (verdict === "GENERIC_OK" || verdict === "RIGHT")) {
       verdict = "WRONG_SUBJECT";
       data.reason = `The file places the photo in ${abroad}, a country the story does not name (checked in code; the model said ${String(data.verdict)}).`;
+    }
+    const odd = noveltyFault({ title: fileTitle, description: meta.description, categories: meta.categories, alt: a.alt }, { title: a.title, subtitle: a.subtitle, lede: a.lede });
+    if (odd && (verdict === "GENERIC_OK" || verdict === "RIGHT")) {
+      verdict = "UNSERIOUS";
+      data.reason = `The photo shows «${odd}», which the story is not about (checked in code; the model said ${String(data.verdict)}).`;
     }
     results.push({ slug: a.slug, file: a.file, title: a.title, image: a.url, fileTitle, verdict, people: data.people_in_photo ?? "", reason: data.reason ?? "", model });
     log(`${verdict.padEnd(13)} ${a.slug.slice(0, 48).padEnd(50)} ${String(data.reason ?? "").slice(0, 90)}`);

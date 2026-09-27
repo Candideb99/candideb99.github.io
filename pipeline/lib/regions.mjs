@@ -45,10 +45,13 @@ const PLACES = {
 const normalizePlace = (s) => String(s ?? "").replace(/[ً-ٰٟـ]/g, "").replace(/[أإآ]/g, "ا").replace(/ة/g, "ه").replace(/ى/g, "ي");
 // A place as a whole word, through the letters Arabic joins to it («وبالسعودية»، «للرياض») and the endings of its
 // adjective and plural («السعوديين»، «الحوثيون»), never inside another word («الرياضة» is not «الرياض»).
+// Arabic letters and marks only: the Arabic comma, semicolon and question mark sit in the same Unicode block and end
+// a word («مضيق هرمز؟»).
+const LETTER = "\\u0621-\\u065F\\u066E-\\u06D3\\u06FA-\\u06FF";
 const placeRe = (w) => {
   const n = escapeRe(normalizePlace(w));
   const forms = n.startsWith("ال") ? `[وفبك]?(?:${n}|لل${n.slice(2)})` : `[وفبلك]?(?:ال|لل)?${n}`;
-  return new RegExp(`(?<![\\u0600-\\u06FF])${forms}(?:ي|يه|ين|يون|يين|ون|ات|ه)?(?![\\u0600-\\u06FF])`);
+  return new RegExp(`(?<![${LETTER}])${forms}(?:ي|يه|ين|يون|يين|ون|ات|ه)?(?![${LETTER}])`);
 };
 const DESK_PLACES = new Map(DESKS.filter((d) => PLACES[d.name]).map((d) => [d.name, [d.name, ...d.match, ...PLACES[d.name]].map(placeRe)]));
 

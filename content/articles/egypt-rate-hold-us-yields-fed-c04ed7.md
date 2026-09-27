@@ -52,14 +52,14 @@ table:
       - 0%
       - 0.3%
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Shopping_in_the_spotlight_%28Cairo%29.jpg/1280px-Shopping_in_the_spotlight_%28Cairo%29.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Street-veggie-market-1.jpg/1280px-Street-veggie-market-1.jpg
   width: 1280
-  height: 900
-  alt: متسوقتان في سوق بجوار مجموعة الغوري في القاهرة
-  credit: Frank Schulenburg · CC BY-SA 3.0 · ويكيميديا كومنز
-  license: CC BY-SA 3.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/3.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AShopping_in_the_spotlight_(Cairo).jpg
+  height: 853
+  alt: بائعو خضراوات في سوق شعبية بمصر
+  credit: Wael.kenawey · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AStreet-veggie-market-1.jpg
 sources:
   - name: خازندار
     nameEn: Khazendar

@@ -20,6 +20,10 @@ import { loadSources, settleDrift } from "../pipeline/lib/factcheck.mjs";
 import { boxFacts } from "../pipeline/lib/keyfacts.mjs";
 import { normalizeDraft } from "../pipeline/lib/write.mjs";
 import { serializeArticle } from "../pipeline/lib/article.mjs";
+import { cleanTags } from "../pipeline/lib/tags.mjs";
+import { groundedRegions } from "../pipeline/lib/regions.mjs";
+import { styleIssues } from "../pipeline/lib/style.mjs";
+import { noveltyFault } from "../pipeline/lib/images.mjs";
 
 let failed = 0;
 function check(name, got, want) {
@@ -242,6 +246,27 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("an explainer's draft keeps its terms", glossary.keyFacts.length, 1);
   const file = serializeArticle({ draft: { ...drafted, keyFacts: [{ label: "مطار بديل", value: "النجف" }, { label: "شركات", value: "27" }] }, slug: "s", section: "economy", sources: [], image: null, models: {}, quality: {} });
   check("the article as written keeps figures only", [file.includes("النجف"), file.includes('"27"')], [false, true]);
+  // The second audit's sentences about figures (2026-09-27): a value opens with its quantity, in Arabic.
+  check("a sentence about a figure leaves the box", box(["تجاوزت 100 دولار للبرميل هذا الأسبوع", "أدنى مستوى في 13 عاماً", "أعلنت 2023 لترخيص تقنية", "18-year high", "2022 و2024", "2026-09-17", "2030 على الأقل"]), []);
+  check("a figure opening with its measure word stays", box(["أعلى من 126 دولاراً/برميل", "حتى 7%", "ارتفاع بأكثر من 40% منذ بداية الشهر", "قرابة يوم واحد", "A-3", "إيه+/إيه-1"]), ["أعلى من 126 دولاراً/برميل", "حتى 7%", "ارتفاع بأكثر من 40% منذ بداية الشهر", "قرابة يوم واحد", "A-3", "إيه+/إيه-1"]);
+}
+
+// 8. Labels that match their stories (the audits of 2026-09-27: "posting info that does not match category/title").
+{
+  const dir = mkdtempSync(path.join(os.tmpdir(), "khazendar-tags-"));
+  // A tag the story never mentions goes; one it words differently stays; spellings meet.
+  const tags = cleanTags(["الذكاء الاصطناعي", "التجارة", "الأميركية", "الحوثيون", "لجنة الاتصالات الفيدرالية"], "قمة ترامب وشي تبحث التجارة والرسوم الجمركية، والسياسة الأمريكية تجاه الحوثي، وقرار هيئة الطيران الفيدرالية", { dir });
+  check("tags: absent subjects and institutions go, worded ones stay, house spelling", tags, ["التجارة", "الأمريكية", "الحوثيون"]);
+  // An Arab desk only where the headline, dek or lede names one of its places; a war named as a cause is not a place.
+  check("desks: a US jobs report leaves the Gulf desk", groundedRegions(["الخليج", "الأمريكتان"], { title: "الاقتصاد الأمريكي يضيف 150 ألف وظيفة", lede: "أضاف الاقتصاد الأمريكي 150 ألف وظيفة في أغسطس" }), ["الأمريكتان"]);
+  check("desks: the ECB's hike stays off the Middle East desk though the war is its cause", groundedRegions(["الشرق الأوسط", "أوروبا"], { title: "المركزي الأوروبي يرفع الفائدة إلى 2.5%", lede: "رفع البنك الفائدة لاحتواء التضخم الناجم عن أسعار النفط جراء الحرب في الشرق الأوسط" }), ["أوروبا"]);
+  check("desks: a Saudi headline joins the Gulf desk", groundedRegions(["عالمي"], { title: "كيف يتجاوز خط الشرق-الغرب السعودي مضيق هرمز؟" }), ["عالمي", "الخليج", "الشرق الأوسط"]);
+  // ONE STORY: a second event brought in by a joint is refused.
+  const stitched = styleIssues({ title: "مصر تنشئ مركز بيانات بمليار دولار", subtitle: "", lede: "أعلنت مصر خطة لمركز بيانات.", body: "وقالت الوزارة إن المرحلة الأولى تبدأ العام المقبل.\n\nوفي التاريخ نفسه، أعلنت «جوجل» استثماراً في فنلندا.", whyItMatters: "", keyFacts: [] }).issues;
+  check("a second event stitched in is refused", stitched.some((i) => i.startsWith("خبر ثانٍ ملحق")), true);
+  // GRAVITY: a curiosity the photograph names and the story does not is refused in code.
+  check("photos: a horse-drawn fuel cart under a central-bank story is refused", noveltyFault({ title: "CairoHorseDrawnFuelTransport.jpg", alt: "عربة وقود يجرها حصان في محطة بنزين بالقاهرة" }, { title: "برنت فوق 105 دولارات يعقّد حسابات المركزي المصري" }), "Horse");
+  check("photos: sheep on an Eid-prices story, a shopping trolley and a street named Jamal pass", [noveltyFault({ title: "Sheep market Riyadh.jpg", alt: "سوق الأغنام في الرياض" }, { title: "أسعار الأضاحي ترتفع في السعودية" }), noveltyFault({ title: "Shopping cart.jpg", alt: "عربة تسوق" }, { title: "التضخم في مصر" }), noveltyFault({ title: "Jamal Street.jpg", alt: "شارع جمال عبد الناصر" }, { title: "التضخم في مصر" })], [null, null, null]);
 }
 
 if (failed) {
