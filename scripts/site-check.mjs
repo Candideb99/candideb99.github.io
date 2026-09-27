@@ -61,8 +61,14 @@ const broken = new Map();
 for (const page of pages) {
   const html = readFileSync(page, "utf8");
   const rel = path.relative(DIST, page).replace(/\\/g, "/");
-  // A redirect stub (<meta http-equiv="refresh">) is not a page a reader reads.
-  if (/http-equiv=["']refresh["']/i.test(html) && html.length < 2000) continue;
+  // A redirect stub (<meta http-equiv="refresh">) is not a page a reader reads, but it must land on one: on 2026-09-27
+  // eleven forwarded tag addresses pointed at a doubly encoded path («%25D9…») that was never built.
+  if (/http-equiv=["']refresh["']/i.test(html) && html.length < 2000) {
+    const to = html.match(/http-equiv=["']refresh["'][^>]*content=["'][^"']*url=([^"']+)["']/i)?.[1] ?? "";
+    links += 1;
+    if (to && !/^(?:https?:)?\/\//i.test(to) && !target(to, page)) fault(page, `forwards to ${to}, which was not built`);
+    continue;
+  }
   const tag = html.match(/<html[^>]*>/i)?.[0] ?? "";
   if (!/\blang=["']ar["']/.test(tag) || !/\bdir=["']rtl["']/.test(tag)) fault(page, `not marked Arabic right-to-left (${tag.slice(0, 60) || "no <html> tag"})`);
   const title = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1]?.trim() ?? "";

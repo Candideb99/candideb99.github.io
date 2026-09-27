@@ -85,7 +85,8 @@ export function tagRedirects(tags) {
   const out = {};
   for (const tag of new Set([...tags, ...Object.keys(read("tag-aliases.json"))])) {
     if (isFileTag(tag) && !ALIASES.has(normalizeArabic(tag))) continue;
-    out[`/tags/${tag}/`] = tagHref(tag);
+    // Astro encodes the destination itself: an already-encoded «/tags/%D9…/» came out as «%25D9…», a page that is not there.
+    out[`/tags/${tag}/`] = decodeURIComponent(tagHref(tag));
   }
   return out;
 }
