@@ -20,6 +20,7 @@ tags:
   - خط الشرق-الغرب
 regions:
   - عالمي
+  - الشرق الأوسط
 readingMinutes: 2
 chart:
   type: bar

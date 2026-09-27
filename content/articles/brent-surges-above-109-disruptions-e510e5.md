@@ -19,12 +19,10 @@ whyItMatters: يهدد توقف خط الشرق-الغرب السعودي وتع
 tags:
   - السعودية
   - العراق
-  - الإمارات
   - النفط
   - الطاقة
 regions:
   - الخليج
-  - الشرق الأوسط
 readingMinutes: 2
 chart: null
 table: null

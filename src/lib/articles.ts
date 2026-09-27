@@ -60,10 +60,35 @@ const GENERIC_TAGS = new Set(["عالمي", "العالم", "الشرق الأو
 let regionNames: Set<string> | null = null;
 let tagCounts: Map<string, number> | null = null;
 
+/** Whether every word of a tag stands in a text (normalised, the article and clinging letters aside). */
+function tagIn(tag: string, text: string): boolean {
+  const words = kickerWords(tag);
+  if (!words.size) return false;
+  const hay = kickerWords(text);
+  return [...words].every((w) => hay.has(w));
+}
+function kickerWords(text: string): Set<string> {
+  const norm = text
+    .replace(/[ً-ٰٟـ]/g, "")
+    .replace(/[أإآ]/g, "ا")
+    .replace(/ة/g, "ه")
+    .replace(/ى/g, "ي")
+    .replace(/اميرك/g, "امريك");
+  return new Set(
+    norm
+      .split(/[^\p{L}\p{N}+]+/u)
+      .map((w) => w.replace(/^(وال|بال|فال|كال|لل|ال)/, "").replace(/^[وفب](?=\p{L}{3})/u, ""))
+      .filter((w) => w.length > 1),
+  );
+}
+
 /**
  * The topic a story is filed under, printed above its headline the way the Arabic desks do
- * (الذهب، مضيق هرمز، التضخم): its most-shared non-region tag, so the kicker names a thread the
- * reader can follow, never a place. Undefined when the story has only regions for tags.
+ * (الذهب، مضيق هرمز، التضخم): the tag its headline names, else one its dek or lede names, else its
+ * most-shared tag; among equals the most-shared, so the kicker names a thread the reader can follow,
+ * never a place. Undefined when the story has only regions for tags. Until 2026-09-27 the most-shared tag
+ * won outright, and the broadest threads (الذكاء الاصطناعي، التضخم، النفط) sat over stories about something
+ * else: «النفط» over a Treasury-yield story, «التضخم» over Japan's imports.
  */
 export function topicOf(article: Article): string | undefined {
   if (!cache) return article.data.tags.find((t) => !GENERIC_TAGS.has(t) && !PLACE_TAGS.has(t));
@@ -74,7 +99,9 @@ export function topicOf(article: Article): string | undefined {
   }
   // Never a place: a country tag («السعودية»، «الولايات المتحدة») read as a section of its own (the owner, 2026-09-24).
   const candidates = article.data.tags.filter((t) => !regionNames!.has(t) && !GENERIC_TAGS.has(t) && !PLACE_TAGS.has(t) && t.length <= 28);
-  return [...candidates].sort((x, y) => (tagCounts!.get(y) ?? 0) - (tagCounts!.get(x) ?? 0))[0];
+  const d = article.data;
+  const rank = (t: string) => (tagIn(t, d.title) ? 3 : tagIn(t, `${d.subtitle ?? ""} ${d.lede ?? ""}`) ? 2 : 1);
+  return [...candidates].sort((x, y) => rank(y) - rank(x) || (tagCounts!.get(y) ?? 0) - (tagCounts!.get(x) ?? 0))[0];
 }
 
 export function articleHref(article: Article): string {

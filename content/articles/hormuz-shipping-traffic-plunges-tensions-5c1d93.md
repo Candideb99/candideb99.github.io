@@ -23,7 +23,8 @@ whyItMatters: يمثل انخفاض حركة الشحن في مضيق هرمز �
 tags:
   - مضيق هرمز
   - الشحن البحري
-regions: []
+regions:
+  - الشرق الأوسط
 readingMinutes: 3
 chart: null
 table: null

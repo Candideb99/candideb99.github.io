@@ -10,7 +10,7 @@
  * An explainer's box is its key terms with their definitions, printed under «مفاهيم أساسية», and is left as it is.
  *
  * Applied where a draft is normalised (lib/write.mjs), where an article is written (lib/article.mjs), by the
- * corrections editor (correct.mjs), and to published stories by `node pipeline/keyfacts.mjs --write`; the gate's
+ * corrections editor (correct.mjs), and to published stories by `node pipeline/tidy.mjs`; the gate's
  * site-check refuses a published «الأرقام» box that breaks it, and scripts/pipeline-selftest.mjs pins its cases.
  */
 
@@ -40,12 +40,13 @@ const NUMBER_WORDS = [
 const NUMBER_WORD = new RegExp(`(?<![${AR}])[وفبلك]?(?:ال|لل)?(?:${NUMBER_WORDS.join("|")})(?![${AR}])`);
 // «ضعف» alone is also "weakness" (ضَعف الطلب); it counts only after a word of measure («أكثر من ضعف»، «نحو ضعف»).
 const DOUBLE = new RegExp(`(?<![${AR}])(?:أكثر من|أقل من|نحو|قرابة|حوالي|زهاء|إلى)\\s+(?:ال)?ضعف(?![${AR}])`);
-// A credit rating is the figure of a rating story (BBB-, A+, Aa3).
-const RATING = /(?<![A-Za-z])(?:AAA|AA[+-]?|A[+-]|BBB[+-]?|BB[+-]?|B[+-]|CCC[+-]?|Aaa|Aa[1-3]|A[1-3]|Baa[1-3]|Ba[1-3]|B[1-3]|Caa[1-3])(?![A-Za-z0-9+-])/;
+// A credit rating is the figure of a rating story (BBB-, A+, Aa3), in Latin letters or as the desks spell it (إيه+).
+const RATING = /(?<![A-Za-z])(?:AAA|AA[+-]?|A-[1-3]\+?|A[+-]|BBB[+-]?|BB[+-]?|B[+-]|CCC[+-]?|Aaa|Aa[1-3]|A[1-3]|Baa[1-3]|Ba[1-3]|B[1-3]|Caa[1-3])(?![A-Za-z0-9+-])/;
+const RATING_AR = /^(?:(?:إيه|بي|سي)\s?){1,3}[+\-−]?(?=\d|\/|\s|$)/;
 
 /** Whether a text carries a quantity: a digit, a number in letters, a fraction, a dual count or a credit rating. */
 function hasQuantity(text) {
-  return /\d/.test(text) || NUMBER_WORD.test(text) || DOUBLE.test(text) || RATING.test(text);
+  return /\d/.test(text) || NUMBER_WORD.test(text) || DOUBLE.test(text) || RATING.test(text) || RATING_AR.test(text);
 }
 
 const MONTHS = "يناير|فبراير|مارس|أبريل|إبريل|ابريل|مايو|يونيو|يوليو|أغسطس|اغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر|كانون الثاني|كانون الأول|شباط|آذار|نيسان|أيار|حزيران|تموز|آب|أيلول|تشرين الأول|تشرين الثاني";
@@ -61,6 +62,10 @@ const DATE_PARTS = [
   new RegExp(`(?<![${AR}\\d])(?:[وف]?(?:في|منذ|حتى|مطلع|أوائل|أواخر|نهاية|بداية|منتصف|عام|العام|سنة|لعام)\\s+)+(?:19|20)\\d{2}(?!\\d)`, "g"),
   // A time of day: «02:22».
   /(?<!\d)\d{1,2}:\d{2}(?!\d)/g,
+  // An ISO date: «2026-09-17».
+  /(?<!\d)(?:19|20)\d{2}-\d{2}-\d{2}(?!\d)/g,
+  // Years listed, or a year left open: «2022 و2024»، «2030 على الأقل».
+  new RegExp(`(?<![\\d${AR}])(?:19|20)\\d{2}(?:(?:\\s*(?:و|،|[-–])\\s*(?:19|20)\\d{2})+|\\s+(?:على الأقل|فصاعدا|فما بعد))(?![\\d${AR}])`, "g"),
 ];
 
 /**
@@ -83,10 +88,46 @@ export function isDateValue(value, label = "") {
   return dated && !hasQuantity(rest);
 }
 
+// What a figure may open with: its number, a number in letters, a word of measure before a number («نحو 70%»، «حتى
+// 7%»، «أعلى 12 مرة»، «من ستة إلى ثمانية أسابيع»), a change stated as a noun before its size («ارتفاع بأكثر من 40%»),
+// a counted noun with «واحد» («عام واحد»), or a rating («BBB-»، «إيه+/إيه-1»). A value that opens with anything else is a
+// sentence about a figure, not the figure: «تجاوزت 100 دولار للبرميل هذا الأسبوع»، «أعلنت 2023 لترخيص…»، «أدنى مستوى في
+// 13 عاماً»، «يضاعف قيمة الشركة لتصل إلى 1.5 تريليون دولار» (the second audit of 2026-09-27 found 14 such values).
+// Longest first: an alternation stops at the first word that fits, and «أعلى» must not take «أعلى من 126 دولاراً».
+const MEASURE_WORDS = ["نحو", "حوالي", "حوالى", "قرابة", "زهاء", "أكثر من", "أقل من", "ما يزيد على", "ما يزيد عن", "ما يقارب", "ما لا يقل عن", "قريب من", "قرب", "دون", "فوق", "تحت", "حتى", "من", "بين", "ما بين", "أعلى من", "أدنى من", "أعلى", "أدنى", "بأكثر من", "بنحو", "بما يزيد على"]
+  .sort((a, b) => b.length - a.length)
+  .join("|");
+const CHANGE_NOUNS = "ارتفاع|تراجع|انخفاض|زيادة|نمو|هبوط|صعود|قفزة|خفض|رفع|تقلص|انكماش|توسع|تضاعف";
+const LEADS = [
+  /^[+\-−±~≈]?[$€£¥]?\d/,
+  new RegExp(`^[وفبلك]?(?:ال|لل)?(?:${NUMBER_WORDS.join("|")})(?![${AR}])`),
+  /^(?:AAA|AA|A|BBB|BB|B|CCC|Aaa|Aa\d|A\d|Baa\d|Ba\d|B\d|Caa\d)[+-]?(?![A-Za-z])/,
+  RATING_AR,
+  new RegExp(`^[^\\s]+\\s+(?:واحد|واحدة)(?![${AR}])`),
+  // A vote's tally: «إجماع 12 عضواً».
+  /^ب?إجماع\s+\d/,
+];
+const LEAD_WORD = new RegExp(`^(?:(?:${MEASURE_WORDS})|(?:${CHANGE_NOUNS})(?:\\s+(?:ب(?:نسبة)?|بأكثر من|بنحو|بما يزيد على|إلى|من))?)\\s+(.*)$`);
+
+/** Whether a value opens with its quantity (see above), not with a verb or a description. */
+function leadsWithQuantity(v) {
+  if (LEADS.some((re) => re.test(v))) return true;
+  const m = v.match(LEAD_WORD);
+  const rest = m ? m[1].trim() : "";
+  return Boolean(m) && (LEADS.some((re) => re.test(rest)) || new RegExp(`^(?:ال)?ضعف(?![${AR}])`).test(rest));
+}
+
+/** Whether a value is written mostly in Latin letters (an untranslated «18-year high» or «£150m»), a rating aside. */
+function untranslated(v) {
+  const latin = (v.match(/[A-Za-z]/g) ?? []).length;
+  const arabic = (v.match(/[ء-ي]/g) ?? []).length;
+  return latin > 0 && latin >= arabic && !RATING.test(v);
+}
+
 /** Whether a key fact's value is a figure the «الأرقام» box may print. */
 export function isFigure(value, label = "") {
-  const v = norm(value);
-  return Boolean(v) && hasQuantity(v) && !isDateValue(v, label);
+  const v = norm(value).replace(/^[«"'(]+/, "");
+  return Boolean(v) && hasQuantity(v) && !isDateValue(v, label) && leadsWithQuantity(v) && !untranslated(v);
 }
 
 /**
@@ -99,4 +140,4 @@ export function boxFacts(facts, kind = "news") {
 }
 
 /** The writers' instruction for the box (one sentence of the schema notes). */
-export const FIGURES_RULE = "The key facts print under the heading «الأرقام», so every value is a figure: a number with its unit (an amount, a rate, a price, a count, a share, a duration), or a credit rating. A name, a place, a company, a date, a weekday, a decision or a description is not a key fact however important it is: it stays in the text, and code drops it from the box. Give only as many key facts as the material has figures, at most six, and none when it has none.";
+export const FIGURES_RULE = "The key facts print under the heading «الأرقام», so every value is a figure: a number with its unit (an amount, a rate, a price, a count, a share, a duration), or a credit rating, opening with the number or its measure word («نحو 70%»، «أكثر من 4,000 وظيفة»، «حتى 7%»), in Arabic. A name, a place, a company, a date, a weekday, a decision, a description or a sentence about a figure («تجاوزت 100 دولار هذا الأسبوع»، «أدنى مستوى في 13 عاماً») is not a key fact however important it is: it stays in the text, and code drops it from the box. The label says exactly what the figure measures, and every figure in the box belongs to the headline's event. Give only as many key facts as the material has figures, at most six, and none when it has none.";

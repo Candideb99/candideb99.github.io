@@ -26,8 +26,6 @@ tags:
   - السعودية
 regions:
   - عالمي
-  - الخليج
-  - الشرق الأوسط
 readingMinutes: 2
 chart:
   type: line

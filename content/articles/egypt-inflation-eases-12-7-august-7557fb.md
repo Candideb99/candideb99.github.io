@@ -28,7 +28,6 @@ tags:
   - السياسة النقدية
 regions:
   - مصر والمغرب العربي
-  - الشرق الأوسط
 readingMinutes: 2
 chart: null
 table:

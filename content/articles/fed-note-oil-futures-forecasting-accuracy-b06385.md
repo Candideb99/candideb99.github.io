@@ -26,8 +26,6 @@ tags:
   - أوراق بحثية
 regions:
   - عالمي
-  - الخليج
-  - مصر والمغرب العربي
 readingMinutes: 5
 chart: null
 table:

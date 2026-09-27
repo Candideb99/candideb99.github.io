@@ -28,7 +28,6 @@ tags:
   - حرب إيران
 regions:
   - مصر والمغرب العربي
-  - الشرق الأوسط
 readingMinutes: 3
 chart: null
 table: null

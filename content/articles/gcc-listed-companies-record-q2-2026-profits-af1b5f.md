@@ -21,14 +21,11 @@ keyFacts:
     value: 32.3 مليار دولار
 whyItMatters: قفز متوسط سعر برنت نحو 51% سنوياً إلى 102.6 دولار للبرميل، فكان المحرك الأول للأرباح القياسية. لكن تفاوت الأداء بين نمو 41.8% في أبوظبي و36.7% في السعودية وتراجع 20% في قطر يجعل اختيار السوق والقطاع أكثر حسماً في تحديد العائد.
 tags:
-  - مجلس التعاون الخليجي
-  - أسواق المال
   - قطاع الطاقة
   - القطاع المصرفي
   - أسعار النفط
 regions:
   - الخليج
-  - الشرق الأوسط
 readingMinutes: 3
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Riyadh_Skyline_showing_the_King_Abdullah_Financial_District_%28KAFD%29_and_the_famous_Kingdom_Tower_.jpg/1280px-Riyadh_Skyline_showing_the_King_Abdullah_Financial_District_%28KAFD%29_and_the_famous_Kingdom_Tower_.jpg

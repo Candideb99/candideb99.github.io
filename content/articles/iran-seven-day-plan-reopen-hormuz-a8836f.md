@@ -25,7 +25,6 @@ tags:
   - النفط
   - قطر
 regions:
-  - الخليج
   - الشرق الأوسط
   - عالمي
 readingMinutes: 2

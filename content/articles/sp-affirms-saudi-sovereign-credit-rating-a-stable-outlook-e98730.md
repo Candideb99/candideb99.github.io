@@ -25,7 +25,7 @@ tags:
   - رؤية 2030
   - النشاط غير النفطي
 regions:
-  - الشرق الأوسط
+  - الخليج
 readingMinutes: 1
 chart:
   type: line

@@ -28,7 +28,6 @@ tags:
   - الهيئة العامة للإحصاء
 regions:
   - الخليج
-  - الشرق الأوسط
 readingMinutes: 2
 chart:
   type: bar

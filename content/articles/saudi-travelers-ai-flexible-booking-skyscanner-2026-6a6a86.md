@@ -26,7 +26,6 @@ tags:
   - سكايسكانر
 regions:
   - الخليج
-  - الشرق الأوسط
 readingMinutes: 2
 chart:
   type: bar

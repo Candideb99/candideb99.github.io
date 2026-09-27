@@ -25,8 +25,19 @@ export const DESKS: Desk[] = [
   { id: "world", name: "العالم", match: [...new Set(abroad.flatMap((d) => [d.name, ...d.match]))] },
 ];
 
+// Places the desks' lists do not name but tags do: a label above a headline never shows one either («الدنمارك» stood
+// over a US–Denmark security story until 2026-09-27).
+const OTHER_PLACES = [
+  "الدنمارك", "جرينلاند", "غرينلاند", "أذربيجان", "هاينان", "الخفجي", "البحر الأحمر", "باب المندب", "بلجيكا", "النمسا", "بولندا",
+  "البرتغال", "اليونان", "أيرلندا", "آيسلندا", "لوكسمبورغ", "قبرص", "مالطا", "المجر", "التشيك", "رومانيا", "بلغاريا", "صربيا",
+  "كرواتيا", "بيلاروسيا", "جورجيا", "أرمينيا", "كازاخستان", "أوزبكستان", "تركمانستان", "أفغانستان", "ماليزيا", "تايلاند",
+  "الفلبين", "بنغلاديش", "سريلانكا", "نيوزيلندا", "كولومبيا", "بيرو", "فنزويلا", "كوبا", "الإكوادور", "تنزانيا", "أنغولا",
+  "السنغال", "جيبوتي", "الصومال", "إريتريا", "الرياض", "جدة", "أبوظبي", "دبي", "الشارقة", "عجمان", "الدوحة", "القاهرة",
+  "لندن", "باريس", "برلين", "بروكسل", "بكين", "شنغهاي", "طوكيو", "موسكو", "واشنطن", "نيويورك", "فرانكفورت", "طهران", "بغداد",
+];
+
 /** Every place a region tag can name, desks and countries alike: a label above a headline never shows one. */
-export const PLACE_TAGS: Set<string> = new Set(RAW.flatMap((d) => [d.name, ...d.match]).concat(["العالم"]));
+export const PLACE_TAGS: Set<string> = new Set(RAW.flatMap((d) => [d.name, ...d.match]).concat(["العالم"], OTHER_PLACES));
 
 // The Arab desks come first and keep a name the world desk also lists.
 const byTag = new Map<string, Desk>();

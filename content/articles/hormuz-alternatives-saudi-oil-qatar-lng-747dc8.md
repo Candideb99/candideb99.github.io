@@ -28,8 +28,8 @@ tags:
   - النفط
 regions:
   - الخليج
-  - مصر والمغرب العربي
   - آسيا
+  - الشرق الأوسط
 readingMinutes: 6
 chart: null
 table:

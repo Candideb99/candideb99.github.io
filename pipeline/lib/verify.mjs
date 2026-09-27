@@ -1,5 +1,5 @@
 import { chat } from "./llm.mjs";
-import { arabicRatio, overlappingPhrases, phraseOverlap, suspiciousLatinWords, ungroundedNumbers, wordCount } from "./util.mjs";
+import { arabicRatio, normalizeDigits, overlappingPhrases, phraseOverlap, suspiciousLatinWords, ungroundedNumbers, wordCount } from "./util.mjs";
 import { styleIssues } from "./style.mjs";
 
 /** The four sections every house analysis must carry, matched loosely against its "## " subheads. */
@@ -127,6 +127,14 @@ export function programmaticChecks(draft, sources, { recentTitles = [], newsTitl
     const values = draft.chart.series.flatMap((s) => s.values).filter((v) => Number.isFinite(v));
     if (/تضخم/.test(about) && values.length && values.every((v) => Math.abs(v) < 1.5)) {
       issues.push("الرسم البياني يعرض التغير الشهري للتضخم (أرقام حول الصفر)؛ اعرض المعدل السنوي الذي يعرفه القارئ، أو سعر الفائدة إلى جانب التضخم السنوي والأساسي، من أرقام المصادر.");
+    }
+    // A chart whose bars only repeat the numbers in their own labels shows no data (the audit of 2026-09-27: Canada's
+    // tariff tiers «50%، 25%، 15%» drawn as bars of 50, 25 and 15); such a chart is dropped, not the story.
+    const labelled = draft.chart.categories.map((c) => (normalizeDigits(String(c)).match(/\d+(?:\.\d+)?/g) ?? []).map(Number));
+    const echoes = draft.chart.series.length === 1 && labelled.every((n) => n.length === 1) && draft.chart.series[0].values.every((v, i) => v === labelled[i][0]);
+    if (echoes) {
+      warnings.push("chart dropped: its values only repeat the numbers in its category labels");
+      draft.chart = null;
     }
   }
   if (draft.table) {

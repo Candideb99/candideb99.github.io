@@ -769,6 +769,9 @@ function markFilePhoto(image, chosen, people = []) {
   if (/(?<!\d)(?:19|20)\d\d(?!\d)/.test(alt) || alt.includes("أرشيفية")) return image;
   const taken = Date.parse(String(chosen.date ?? "").slice(0, 10));
   if (Number.isFinite(taken) && Date.now() - taken < 3 * 86_400_000) return image;
+  // A photo that came back without a caption says «صورة أرشيفية», the desks' own line, never a bare «(أرشيفية)» (the
+  // Trump–Xi summit story printed exactly that, 2026-09-27).
+  if (!alt) return { ...image, alt: "صورة أرشيفية" };
   return { ...image, alt: `${alt.replace(/[\s.،]+$/, "")} (أرشيفية)` };
 }
 

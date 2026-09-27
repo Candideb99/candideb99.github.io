@@ -1,8 +1,15 @@
 /**
  * The standing sub-topics of every news section (`src/data/topics.json`): a curated taxonomy, the
  * way a business daily's section menu reads (Banking, Commodities, Currencies…), not the tags the
- * writers happen to have used. A story belongs to a sub-topic when one of its tags or its title
+ * writers happen to have used. A story belongs to a sub-topic when its headline or one of its tags
  * carries one of the sub-topic's terms, compared after Arabic normalisation.
+ *
+ * Terms match as whole words, through the letters Arabic joins to them («وبالنفط»، «للفائدة»), never inside another
+ * word: until 2026-09-27 a bare substring test filed an FAA outage under monetary policy («الفيدرالي» inside «هيئة
+ * الطيران الفيدرالية»), a uranium find under oil («خام» in «خام اليورانيوم») and the Saudi pipeline's pumping stations
+ * under power («محطات» in «محطاته»). A topic's `titleMatch` terms count only in the headline (a central bank named as
+ * a GDP release's source is not a monetary-policy story), and its `exclude` phrases are read out first («كفاءة الوقود»
+ * is not a fuel price).
  */
 import topicsData from "@data/topics.json";
 import type { Article } from "./articles";
@@ -11,6 +18,8 @@ export interface Topic {
   id: string;
   name: string;
   match: string[];
+  titleMatch?: string[];
+  exclude?: string[];
 }
 
 export const TOPICS = topicsData as Record<string, Topic[]>;
@@ -39,32 +48,81 @@ export function topicHref(section: string, id: string): string {
   return `/topics/${section}/${id}/`;
 }
 
-function matches(article: Article, topic: Topic): boolean {
-  const hay = [article.data.title, ...article.data.tags].map(normalizeArabic);
-  return topic.match.some((term) => {
-    const t = normalizeArabic(term);
-    return t.length > 1 && hay.some((h) => h.includes(t));
+const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const patterns = new Map<string, RegExp>();
+/** A term as whole words, with the letters Arabic joins before it («و»، «ب»، «ل»، «ال»، «لل»). */
+function termPattern(term: string): RegExp {
+  const n = normalizeArabic(term);
+  let re = patterns.get(n);
+  if (!re) {
+    const forms = n.startsWith("ال") ? `[وفبك]?(?:${escapeRe(n)}|لل${escapeRe(n.slice(2))})` : `[وفبكل]?(?:ال|لل)?${escapeRe(n)}`;
+    re = new RegExp(`(?<![\\u0600-\\u06FFa-z0-9])${forms}(?![\\u0600-\\u06FFa-z0-9])`, "g");
+    patterns.set(n, re);
+  }
+  re.lastIndex = 0;
+  return re;
+}
+
+/** The text with a topic's excluded phrases read out. */
+function readable(text: string, topic: Topic): string {
+  let t = normalizeArabic(text);
+  for (const phrase of topic.exclude ?? []) t = t.replace(termPattern(phrase), " ");
+  return t;
+}
+
+interface Hit {
+  score: number;
+  at: number;
+  length: number;
+}
+
+/**
+ * How strongly a story belongs to a topic: a term in the headline (3) outranks one in a tag (1, a little more for the
+ * writer's first tags); within the headline the earlier term wins, since the desks' headline opens with its event
+ * («منطقة اليورو تنمو… بقيادة الصادرات» is growth, not trade). Null when nothing matches.
+ */
+function hit(article: Article, topic: Topic): Hit | null {
+  let best: Hit | null = null;
+  const better = (h: Hit) => !best || h.score > best.score || (h.score === best.score && (h.at < best.at || (h.at === best.at && h.length > best.length)));
+  const title = readable(article.data.title, topic);
+  for (const term of [...topic.match, ...(topic.titleMatch ?? [])]) {
+    if (normalizeArabic(term).length < 2) continue;
+    const m = termPattern(term).exec(title);
+    if (m) {
+      const h = { score: 3, at: m.index, length: term.length };
+      if (better(h)) best = h;
+    }
+  }
+  article.data.tags.forEach((tag, i) => {
+    const text = readable(tag, topic);
+    for (const term of topic.match) {
+      if (normalizeArabic(term).length < 2 || !termPattern(term).test(text)) continue;
+      const h = { score: 1 + (6 - Math.min(i, 5)) / 10, at: Infinity, length: term.length };
+      if (better(h)) best = h;
+    }
   });
+  return best;
 }
 
 /** The section's stories filed under a sub-topic, newest first. */
 export function topicArticles(articles: Article[], section: string, topic: Topic): Article[] {
-  return articles.filter((a) => a.data.section === section && matches(a, topic));
+  return articles.filter((a) => a.data.section === section && hit(a, topic) !== null);
 }
 
 /**
  * The one sub-topic a story sits under in its section's taxonomy, for the trail on its page (الطاقة ›
- * النفط والغاز): a term in the headline outranks a term in the tags; ties go to the taxonomy's order.
+ * النفط والغاز): the strongest hit (above); ties go to the longer term, then to the taxonomy's order.
  */
 export function subTopicOf(article: Article): Topic | undefined {
-  const title = normalizeArabic(article.data.title);
-  const tags = article.data.tags.map(normalizeArabic);
   let best: Topic | undefined;
-  let score = 0;
+  let bestHit: Hit | null = null;
   for (const topic of topicsOf(article.data.section)) {
-    const terms = topic.match.map(normalizeArabic).filter((t) => t.length > 1);
-    const s = terms.some((t) => title.includes(t)) ? 2 : terms.some((t) => tags.some((h) => h.includes(t))) ? 1 : 0;
-    if (s > score) [best, score] = [topic, s];
+    const h = hit(article, topic);
+    if (!h) continue;
+    if (!bestHit || h.score > bestHit.score || (h.score === bestHit.score && (h.at < bestHit.at || (h.at === bestHit.at && h.length > bestHit.length)))) {
+      best = topic;
+      bestHit = h;
+    }
   }
   return best;
 }

@@ -14,6 +14,12 @@
  *   node pipeline/correct.mjs --slug=a-b-c --drop-tags=الهند,طاقة   only takes away tags whose subject a
  *   correction removed from the story (no model, no note: a tag is filing, not content)
  *   (the default holds a correction to 45% of the sentences)
+ *   add --why when the fault is the «لماذا يهمّ» box alone (it speaks of another event, or says nothing of this one):
+ *   the box is rewritten by the house rule from the story and its sources, nothing else moves, and no note is printed,
+ *   since the box is Khazendar's reading, not a reported fact (the audit of 2026-09-27)
+ *   A correction may also take away the story's table or chart when it belongs to another event or shows no data, or
+ *   put right a table's title; it never redraws one (pipeline/rechart.mjs does that). When --max-change is raised to
+ *   take out a merged second story, a subhead of that story may go with it.
  *
  * The corrections editor sees the story, its sources fetched again and the error as reported. It checks the
  * report against the sources (a story that is right stays as it is) and changes only what the error names,
@@ -39,7 +45,10 @@ const args = process.argv.slice(2);
 const option = (name) => args.find((a) => a.startsWith(`--${name}=`))?.slice(name.length + 3) ?? "";
 const DRY = args.includes("--dry-run");
 const LANGUAGE = args.includes("--language");
+const WHY = args.includes("--why");
 const MAX_CHANGE = Math.min(0.9, Number(option("max-change")) || 0.45);
+// A raised limit is for taking a merged second story out; its subhead may go with it.
+const TRIMMING = MAX_CHANGE > 0.45;
 const log = (line) => console.log(`[correct] ${line}`);
 
 let items = [];
@@ -111,9 +120,10 @@ for (const { slug, issue } of items) {
     ? sources.map((s, i) => `[${i + 1}] ${s.name} — ${s.title}\n${s.text ? s.text.slice(0, 7000) : "(the page could not be fetched again; its headline is above)"}`).join("\n\n")
     : "(this piece has no outside sources: it is an explainer; judge the report by the arithmetic or the established fact it states)";
 
+  const visuals = { table: data.table ?? null, chart: data.chart ?? null };
   const user = `THE STORY (JSON)
 ${JSON.stringify(before, null, 2)}
-
+${visuals.table || visuals.chart ? `\nITS TABLE AND CHART (JSON)\n${JSON.stringify(visuals, null, 2)}\n` : ""}
 SOURCE MATERIAL (fetched again)
 ${material}
 
@@ -122,7 +132,7 @@ ${issue}
 
 TASK
 Check the report against the source material. If the story is right after all, answer {"correct": true, "reason": "<one sentence>"}.
-${LANGUAGE ? `This is a slip of the LANGUAGE (grammar, agreement, spelling), not of fact: fix it wherever it appears (title, subtitle, lede, keyFacts, whyItMatters, body) and change nothing else. Every other word stays exactly as it is: no fact, figure, name or attribution moves, no sentence is reworded for style, the body keeps its paragraphs and "## " subheads. No note is printed for a language fix; answer "note": "".` : `Otherwise correct the error wherever it appears (title, subtitle, lede, keyFacts, whyItMatters, body) and change nothing else: every other sentence stays word for word, the body keeps its paragraphs and "## " subheads. Bring in no fact beyond what the correction needs; a figure you add must come from the source material or from the report. Then write the note printed at the foot of the story: one or two Arabic sentences in the desks' form, saying what an earlier version said and what is correct (for example «ذكرت نسخة سابقة من هذا الخبر أن … والصحيح أن …»).`}
+${WHY ? `The fault is the «لماذا يهمّ» box (whyItMatters) alone. Rewrite it as the house style asks: two or three Arabic sentences (40-90 words) stating ONE concrete consequence of THIS story's event that a source reports or that follows from the story's own figures; name an Arab country, company or price only when a source makes the link; never a recap of the body, never a chain of «قد يؤدي… مما قد…», never the reader addressed, never opening with «يعكس/يمثل/يُعدّ». Every other field stays exactly as it is. No note is printed for this; answer "note": "".` : LANGUAGE ? `This is a slip of the LANGUAGE (grammar, agreement, spelling), not of fact: fix it wherever it appears (title, subtitle, lede, keyFacts, whyItMatters, body) and change nothing else. Every other word stays exactly as it is: no fact, figure, name or attribution moves, no sentence is reworded for style, the body keeps its paragraphs and "## " subheads. No note is printed for a language fix; answer "note": "".` : `Otherwise correct the error wherever it appears (title, subtitle, lede, keyFacts, whyItMatters, body) and change nothing else: every other sentence stays word for word, the body keeps its paragraphs and "## " subheads${TRIMMING ? " (a subhead of a merged second story goes with that story)" : ""}. Bring in no fact beyond what the correction needs; a figure you add must come from the source material or from the report. Then write the note printed at the foot of the story: one or two Arabic sentences in the desks' form, saying what an earlier version said and what is correct (for example «ذكرت نسخة سابقة من هذا الخبر أن … والصحيح أن …»).`}${visuals.table || visuals.chart ? `\nThe table and the chart: answer "table": null or "chart": null to take one away when it belongs to another event or shows no data; a table's title may be put right (the same columns and rows under a corrected "title"); otherwise leave them out of your answer. Never change a cell or a value.` : ""}
 Answer with one JSON object: {"correct": false, "title": "...", "subtitle": "...", "lede": "...", "whyItMatters": "...", "keyFacts": [{"label": "...", "value": "..."}], "body": "...", "note": "..."}`;
 
   let answer;
@@ -166,8 +176,24 @@ Answer with one JSON object: {"correct": false, "title": "...", "subtitle": "...
   const ungrounded = added.length ? ungroundedNumbers(added.join(" "), [...sources.map((s) => `${s.title}\n${s.text}`), issue]) : [];
   if (ungrounded.length) problems.push(`figures neither in the sources nor in the report: ${ungrounded.join(", ")}`);
   const heads = (t) => (String(t).match(/^## .*$/gm) ?? []).length;
-  if (heads(before.body) !== heads(after.body)) problems.push("the subheads changed");
-  if (!LANGUAGE && (!note || arabicRatio(note) < 0.6)) problems.push("no Arabic correction note");
+  if (TRIMMING ? heads(after.body) > heads(before.body) : heads(before.body) !== heads(after.body)) problems.push("the subheads changed");
+  if (!LANGUAGE && !WHY && (!note || arabicRatio(note) < 0.6)) problems.push("no Arabic correction note");
+  // The box alone, rewritten: nothing else may move, and it must read as the box.
+  if (WHY) {
+    const moved = FIELDS.filter((f) => f !== "whyItMatters" && before[f].trim() !== after[f].trim());
+    if (moved.length || JSON.stringify(before.keyFacts) !== JSON.stringify(after.keyFacts)) problems.push(`a rewrite of «لماذا يهمّ» moved other fields (${[...moved, ...(JSON.stringify(before.keyFacts) !== JSON.stringify(after.keyFacts) ? ["keyFacts"] : [])].join(", ")})`);
+    const words = after.whyItMatters.split(/\s+/).filter(Boolean).length;
+    if (words < 25 || words > 110 || arabicRatio(after.whyItMatters) < 0.85) problems.push(`the new «لماذا يهمّ» is not a box (${words} words)`);
+    if (/^(?:و|ف)?(?:يعكس|تعكس|يمثل|تمثل|يُمثّل|يُعدّ|يعد|تعد|تُعد|يُعد)(?![؀-ۿ])/.test(after.whyItMatters)) problems.push("the new «لماذا يهمّ» opens with «يعكس/يمثل/يُعدّ»");
+  }
+  // The visuals: taken away, a table retitled, or left alone; never redrawn here.
+  const nextVisuals = { ...visuals };
+  for (const key of ["table", "chart"]) {
+    if (!(key in answer) || !visuals[key]) continue;
+    if (answer[key] === null) nextVisuals[key] = null;
+    else if (key === "table" && answer.table && typeof answer.table.title === "string" && JSON.stringify(answer.table.columns) === JSON.stringify(visuals.table.columns) && JSON.stringify(answer.table.rows) === JSON.stringify(visuals.table.rows)) nextVisuals.table = { ...visuals.table, title: fixNames(answer.table.title.trim()) };
+  }
+  if (WHY && (nextVisuals.table !== visuals.table || nextVisuals.chart !== visuals.chart)) problems.push("a rewrite of «لماذا يهمّ» touched the table or the chart");
   // A language fix moves no figure and touches only the sentences the slip stands in.
   if (LANGUAGE) {
     const kept = new Set(numbersOf(text(after)));
@@ -182,15 +208,19 @@ Answer with one JSON object: {"correct": false, "title": "...", "subtitle": "...
 
   const diff = FIELDS.filter((f) => before[f].trim() !== after[f].trim());
   if (JSON.stringify(before.keyFacts) !== JSON.stringify(after.keyFacts)) diff.push("keyFacts");
-  const item = { slug, issue, language: LANGUAGE || undefined, outcome: problems.length ? "refused" : DRY ? "would correct" : "corrected", problems, fields: diff, note, model, before: Object.fromEntries(diff.filter((f) => f !== "body" && f !== "keyFacts").map((f) => [f, before[f]])), after: Object.fromEntries(diff.filter((f) => f !== "body" && f !== "keyFacts").map((f) => [f, after[f]])), changedSentences: was.filter((s) => !now.has(s)).slice(0, 12), newSentences: sentencesOf(text(after)).filter((s) => !new Set(was).has(s)).slice(0, 12) };
+  for (const key of ["table", "chart"]) if (nextVisuals[key] !== visuals[key]) diff.push(key);
+  const shown = (f) => !["body", "keyFacts", "table", "chart"].includes(f);
+  const item = { slug, issue, language: LANGUAGE || undefined, why: WHY || undefined, outcome: problems.length ? "refused" : DRY ? "would correct" : "corrected", problems, fields: diff, note, model, before: Object.fromEntries(diff.filter(shown).map((f) => [f, before[f]])), after: Object.fromEntries(diff.filter(shown).map((f) => [f, after[f]])), visuals: diff.some((f) => f === "table" || f === "chart") ? { table: nextVisuals.table ? nextVisuals.table.title : null, chart: nextVisuals.chart ? nextVisuals.chart.title : null } : undefined, changedSentences: was.filter((s) => !now.has(s)).slice(0, 12), newSentences: sentencesOf(text(after)).filter((s) => !new Set(was).has(s)).slice(0, 12) };
   report.items.push(item);
   log(`${slug}: ${item.outcome}${problems.length ? ` (${problems.join("; ")})` : ""}; fields ${diff.join(", ") || "none"}\n    note: ${note}`);
   if (problems.length || DRY || !diff.length) continue;
 
   for (const f of ["title", "subtitle", "lede", "whyItMatters"]) if (diff.includes(f)) doc.set(f, after[f]);
   if (diff.includes("keyFacts")) doc.set("keyFacts", doc.createNode(after.keyFacts));
-  // A language fix changes no fact: no note at the foot and no update stamp, as a typo fixed online.
-  if (!LANGUAGE) {
+  for (const key of ["table", "chart"]) if (diff.includes(key)) doc.set(key, nextVisuals[key] ? doc.createNode(nextVisuals[key]) : null);
+  // A language fix changes no fact, and neither does a new «لماذا يهمّ»: no note at the foot and no update stamp, as a
+  // typo fixed online.
+  if (!LANGUAGE && !WHY) {
     const stamp = new Date().toISOString();
     const corrections = [...(data.corrections ?? []), { date: stamp, note }];
     doc.set("corrections", doc.createNode(corrections));

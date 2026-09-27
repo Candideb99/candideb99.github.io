@@ -29,7 +29,6 @@ tags:
   - العقوبات الأمريكية
 regions:
   - الشرق الأوسط
-  - الخليج
 readingMinutes: 2
 chart:
   type: bar

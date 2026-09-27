@@ -100,7 +100,7 @@ for (const page of pages) {
       facts += 1;
       const text = (s) => s.replace(/<[^>]+>/g, "").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").trim();
       for (const m of box.matchAll(/<dt class="facts__label"[^>]*>([\s\S]*?)<\/dt>\s*<dd class="facts__value"[^>]*>([\s\S]*?)<\/dd>/g)) {
-        if (!isFigure(text(m[2]), text(m[1]))) fault(page, `«${text(m[1])}: ${text(m[2])}» under «الأرقام» is not a figure (node pipeline/keyfacts.mjs takes it out)`);
+        if (!isFigure(text(m[2]), text(m[1]))) fault(page, `«${text(m[1])}: ${text(m[2])}» under «الأرقام» is not a figure (node pipeline/tidy.mjs takes it out)`);
       }
     }
   }

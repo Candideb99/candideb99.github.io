@@ -23,7 +23,6 @@ tags:
   - أسعار الطاقة
   - حرب إيران
 regions:
-  - الشرق الأوسط
   - أوروبا
 readingMinutes: 3
 chart:

@@ -26,7 +26,6 @@ tags:
   - النفط
 regions:
   - الخليج
-  - مصر والمغرب العربي
   - عالمي
 readingMinutes: 3
 chart: null

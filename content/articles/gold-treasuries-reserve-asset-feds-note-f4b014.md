@@ -28,7 +28,6 @@ tags:
   - أوراق بحثية
 regions:
   - عالمي
-  - الخليج
   - الأمريكتان
 readingMinutes: 6
 chart:

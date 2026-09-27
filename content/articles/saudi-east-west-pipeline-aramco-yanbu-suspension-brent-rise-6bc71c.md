@@ -22,7 +22,6 @@ tags:
   - إيران
 regions:
   - الخليج
-  - الشرق الأوسط
   - أوروبا
 readingMinutes: 1
 chart: null

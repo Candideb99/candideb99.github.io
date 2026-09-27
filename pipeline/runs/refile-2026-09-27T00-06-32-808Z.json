@@ -1,0 +1,42 @@
+{
+  "at": "2026-09-27T00:06:32.808Z",
+  "dryRun": false,
+  "moves": [
+    {
+      "slug": "us-denmark-greenland-security-deal-eac792",
+      "from": "energy",
+      "to": "defense",
+      "reason": "a US–Denmark security pact on military presence and sensitive investment in Greenland; nothing in it is energy"
+    },
+    {
+      "slug": "trump-announces-ban-cnn-msn-politico-white-house-fd6870",
+      "from": "economy",
+      "to": "companies",
+      "reason": "a ban on named media companies (CNN, MS NOW, Politico); not economics"
+    },
+    {
+      "slug": "egypt-stock-market-institutional-selling-developers-union-la-8d6ff7",
+      "from": "economy",
+      "to": "markets",
+      "reason": "the headline is the EGX30 session under institutional selling"
+    },
+    {
+      "slug": "egypt-ewallets-h1-2026-transactions-growth-9789a5",
+      "from": "markets",
+      "to": "technology",
+      "reason": "e-wallet payments: the guide files digital finance under technology"
+    },
+    {
+      "slug": "saudi-pif-khafji-coastal-development-3b17f7",
+      "from": "markets",
+      "to": "companies",
+      "reason": "the PIF launches a property development company"
+    },
+    {
+      "slug": "nats-air-traffic-control-failure-uk-2026-f8f562",
+      "from": "companies",
+      "to": "economy",
+      "reason": "the guide: an air-traffic outage is economy"
+    }
+  ]
+}

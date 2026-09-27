@@ -29,7 +29,6 @@ tags:
 regions:
   - الخليج
   - الشرق الأوسط
-  - مصر والمغرب العربي
 readingMinutes: 7
 chart: null
 table:

@@ -22,7 +22,6 @@ tags:
   - مضيق هرمز
 regions:
   - الخليج
-  - الشرق الأوسط
 readingMinutes: 2
 chart: null
 table: null

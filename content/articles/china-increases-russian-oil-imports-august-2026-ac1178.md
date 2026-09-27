@@ -26,7 +26,6 @@ tags:
   - التجارة
 regions:
   - آسيا
-  - الشرق الأوسط
   - عالمي
 readingMinutes: 2
 chart: null

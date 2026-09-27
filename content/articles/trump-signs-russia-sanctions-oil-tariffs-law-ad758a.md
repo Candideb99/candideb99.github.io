@@ -23,7 +23,6 @@ tags:
 regions:
   - عالمي
   - آسيا
-  - الخليج
 readingMinutes: 2
 chart: null
 table: null

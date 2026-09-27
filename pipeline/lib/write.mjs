@@ -1,6 +1,7 @@
-import { canonicalRegions } from "./regions.mjs";
+import { groundedRegions } from "./regions.mjs";
 import { chat } from "./llm.mjs";
 import { boxFacts, FIGURES_RULE, isFigure } from "./keyfacts.mjs";
+import { cleanTags, storyText as taggedText } from "./tags.mjs";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { arabicRatio, domainOf, overlappingPhrases, truncate, ungroundedNumbers, wordCount } from "./util.mjs";
@@ -303,7 +304,7 @@ export function normalizeDraft(d, { kind = "news" } = {}) {
       .filter((f) => f.value && f.label),
     kind,
   ).slice(0, 6);
-  return {
+  const draft = {
     title: String(d.title).trim(),
     subtitle: truncate(String(d.subtitle ?? "").trim(), 220),
     slug: String(d.slug ?? "").trim(),
@@ -311,12 +312,17 @@ export function normalizeDraft(d, { kind = "news" } = {}) {
     body: String(d.body ?? "").trim(),
     keyFacts,
     whyItMatters: String(d.why_it_matters ?? "").trim(),
-    tags: [...new Set((Array.isArray(d.tags) ? d.tags : []).map((t) => String(t).trim()).filter(Boolean))].slice(0, 6),
-    regions: canonicalRegions(d.regions),
+    tags: [],
+    regions: [],
     imageQueries: (Array.isArray(d.image_queries) ? d.image_queries : []).map((q) => String(q).trim()).filter(Boolean).slice(0, 3),
     chart: normalizeChart(d.chart),
     table: normalizeTable(d.table),
   };
+  // A tag the story never mentions files it under a subject it does not cover, and a region named only as a cause
+  // puts it on a desk it is not about (the audit of 2026-09-27; lib/tags.mjs, lib/regions.mjs).
+  draft.tags = cleanTags(Array.isArray(d.tags) ? d.tags : [], taggedText(draft)).slice(0, 6);
+  draft.regions = groundedRegions(d.regions, draft);
+  return draft;
 }
 
 function toNumber(value) {

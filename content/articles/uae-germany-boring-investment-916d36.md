@@ -25,8 +25,8 @@ tags:
   - الاستثمار الأجنبي
   - شركة بورينغ كومباني
 regions:
-  - الشرق الأوسط
   - أوروبا
+  - الخليج
 readingMinutes: 2
 chart: null
 table:

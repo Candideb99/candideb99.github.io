@@ -27,7 +27,6 @@ tags:
   - مراكز البيانات
   - أسواق المال
 regions:
-  - الشرق الأوسط
   - الأمريكتان
 readingMinutes: 2
 chart: null

@@ -28,7 +28,6 @@ tags:
   - ميناء غرب بورسعيد
 regions:
   - مصر والمغرب العربي
-  - الشرق الأوسط
 readingMinutes: 3
 image:
   url: https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Suez_Canal_Bridge_%282008%29_04.jpg/1280px-Suez_Canal_Bridge_%282008%29_04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail
