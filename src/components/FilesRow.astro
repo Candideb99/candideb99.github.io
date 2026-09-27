@@ -1,0 +1,48 @@
+---
+/**
+ * ملفات نتابعها as a row under the section bar: the running stories one tap from the top of the front page, as
+ * CNBC Arabia, Sky News Arabia, Le Monde and Axios put theirs under their menus (the owner chose the front-page
+ * clean-up on 2026-09-27). It replaced the band of four files lower down, whose headlines were nearly all printed
+ * elsewhere on the page (10 of 12). It is built like the market strip under it: a green label, a rule, then a
+ * line that scrolls by hand on a narrow screen.
+ */
+import type { Dossier } from "@lib/articles";
+
+interface Props {
+  files: Dossier[];
+}
+const { files } = Astro.props;
+---
+
+{files.length > 0 && (
+  <nav class="files-row" aria-labelledby="files-row-label">
+    <div class="wrap files-row__inner">
+      <span id="files-row-label" class="files-row__label ui">ملفات نتابعها</span>
+      <ul class="files-row__list">
+        {files.map((f) => (
+          <li><a href={`/tags/${encodeURIComponent(f.tag)}/`}>{f.tag}</a></li>
+        ))}
+      </ul>
+      <a class="files-row__all ui" href="/tags/">كل الملفات</a>
+    </div>
+  </nav>
+)}
+
+<style>
+  .files-row { border-bottom: 1px solid var(--rule); background: var(--paper); }
+  .files-row__inner { display: flex; align-items: center; gap: 0.75rem; min-height: 2.3rem; }
+  .files-row__label { flex: none; font-weight: 800; font-size: var(--fs-xs); color: var(--green); padding-block: 0.45rem; padding-inline-end: 0.75rem; border-inline-end: 1px solid var(--rule); }
+  .files-row__list { display: flex; align-items: center; gap: 0 1.25rem; flex: 1 1 auto; min-width: 0; margin: 0; padding: 0; list-style: none; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; white-space: nowrap; }
+  .files-row__list::-webkit-scrollbar { display: none; }
+  .files-row__list a { display: inline-block; padding-block: 0.4rem; font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; line-height: 1.4; color: var(--ink); text-decoration: none; }
+  .files-row__list a:hover { color: var(--green); text-decoration: underline; }
+  .files-row__all { flex: none; font-weight: 700; font-size: var(--fs-xs); color: var(--ink-2); text-decoration: none; padding-block: 0.45rem; }
+  .files-row__all:hover { color: var(--green); text-decoration: underline; }
+
+  @media (max-width: 719px) {
+    .files-row__inner { gap: 0.6rem; min-height: 2.2rem; }
+    .files-row__all { display: none; }
+    .files-row__list { gap: 0 1rem; }
+    .files-row__list a { font-size: 0.92rem; }
+  }
+</style>

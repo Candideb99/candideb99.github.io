@@ -3,7 +3,7 @@ import Base from "@layouts/Base.astro";
 import Cover from "@components/Cover.astro";
 import Front from "@components/Front.astro";
 import Ticker from "@components/Ticker.astro";
-import Dossiers from "@components/Dossiers.astro";
+import FilesRow from "@components/FilesRow.astro";
 import StoryCard from "@components/StoryCard.astro";
 import Chart from "@components/Chart.astro";
 import { DESKS, desksOf } from "@lib/regions";
@@ -13,7 +13,7 @@ import { newsSections, getSection, sectionHref, moreLabel } from "@lib/sections"
 import { articleHref } from "@lib/articles";
 import { isolateNumbers } from "@lib/bidi";
 import { cardSizes } from "@lib/wikimedia";
-import { timeAgo } from "@lib/format";
+import { timeAgo, countLabel } from "@lib/format";
 import site from "@data/site.json";
 
 const articles = await getArticles();
@@ -27,14 +27,17 @@ const repeats = repeatedEvents(lead ? [lead, ...allNews.filter((a) => a.id !== l
 const news = allNews.filter((a) => !repeats.has(a.id));
 const importance = (a: Article) => (a.data.quality?.importance ?? 5) + (a.data.image ? 0.5 : 0);
 const byImportance = (list: Article[]) => [...list].sort((x, y) => importance(y) - importance(x));
+// How long a story stays fresh enough for a section block on the front.
+const FRESH_HOURS = 72;
 
-// Every story is placed once with its own module; anything shown again further down runs as text.
+// Every story is printed once on the front page (the owner chose the clean-up on 2026-09-27, when 26 of the
+// page's 55 stories were printed two to four times): each module takes only stories no module above it has
+// placed. The strip, the day's figures and the charts are furniture and cite stories printed elsewhere.
 const placed = new Set<string>();
 const place = (list: Article[]) => list.forEach((a) => placed.add(a.id));
 const unplaced = (list: Article[]) => list.filter((a) => !placed.has(a.id));
 
-// The cover: the lead on the stage with the four strongest of the freshest dozen turning behind it;
-// all five are placed, so none of them comes back as a secondary or a digest line.
+// The cover: the lead on the stage with the four strongest of the freshest dozen turning behind it.
 const cover = lead ? [lead, ...byImportance(unplaced(news).filter((a) => a.id !== lead.id).slice(0, 12)).slice(0, 4)] : [];
 place(cover);
 // The column beside the cover is the paper's own voice: one reading of each kind, so the column
@@ -48,23 +51,31 @@ const readings = [
   ...articles.filter((a) => a.data.kind === "explainer").slice(0, 1),
   ...(freshFeature ? [freshFeature] : articles.filter((a) => a.data.kind === "paper").slice(0, 1)),
 ];
+place(readings);
 const secondary = byImportance(unplaced(news).slice(0, 8)).slice(0, 2);
 place(secondary);
 // The digest: the next seven stories, each its headline and one sentence, newest first.
 const digest = unplaced(news).slice(0, 7);
 place(digest);
-// The readings beside the cover are not picked again. Picks are the strongest of the last three days:
-// ranked by importance alone they reached back a week, and one said the Saudi pipeline had closed
-// beside a lead saying it had reopened.
-const picks = byImportance(unplaced(articles).filter((a) => !readings.includes(a) && !repeats.has(a.id) && hoursOld(a) < 72)).slice(0, 4);
+// Picks are the strongest of the last three days: ranked by importance alone they reached back a week,
+// and one said the Saudi pipeline had closed beside a lead saying it had reopened.
+const picks = byImportance(unplaced(articles).filter((a) => !repeats.has(a.id) && hoursOld(a) < 72)).slice(0, 4);
 place(picks);
 // The strip (أيضاً على خازندار) carries the newest stories not already on the first screen, so no
 // headline prints twice above the fold; it names each story's section, not its age.
 const ticker = unplaced(news).slice(0, 5);
-// Under each cover story, up to two headlines on its running topic (ذات صلة), none of them already on
-// the first screen; they fill the text column beside the photograph with the story's own context.
+// Under each cover story, up to two headlines on its running topic (ذات صلة) from the last week, none already on
+// the first screen or under another cover story; they fill the text column beside the photograph with the story's
+// own context. Until 2026-09-27 they could reach back two weeks (a 12-day-old story under the lead).
 const onFirstScreen = new Set([...placed, ...ticker.map((a) => a.id)]);
-const coverRelated = new Map(cover.map((s) => [s.id, onTheSameTopic(s, articles.filter((a) => !repeats.has(a.id)), { exclude: onFirstScreen })]));
+const relatedPool = articles.filter((a) => !repeats.has(a.id));
+const coverRelated = new Map<string, Article[]>();
+for (const story of cover) {
+  const list = onTheSameTopic(story, relatedPool, { exclude: onFirstScreen, days: 7 });
+  list.forEach((a) => onFirstScreen.add(a.id));
+  coverRelated.set(story.id, list);
+  place(list);
+}
 
 // Today's figures: one telling number per recent story, never a bare year or a sprawling value. Never an explainer's:
 // its numbers are illustrative examples, and its box is a glossary (2026-09-27).
@@ -82,51 +93,54 @@ const figures = articles
   })
   .slice(0, 3);
 const chart = chartOfTheDay(articles);
-const files = dossiers(articles.filter((a) => !repeats.has(a.id)));
+// ملفات نتابعها runs as a row under the section bar: the running files touched in the last week, biggest and freshest
+// first. The band of four files it replaced printed three headlines each, 10 of 12 of them printed elsewhere.
+const files = dossiers(articles.filter((a) => !repeats.has(a.id)), { max: 8 }).filter((f) => hoursOld(f.latest) < 7 * 24);
 // The charts band (the Economist's graphic detail): the three freshest charts after the chart of the day.
 const chartsBand = articles
   .filter((a) => a.id !== chart?.id && a.data.chart && a.data.chart.title && a.data.chart.categories.length <= 8 && a.data.chart.series.length <= 2)
   .slice(0, 3);
-// The desks: the four regions with the freshest news, three headlines each, a story printed in
-// one desk only even when it carries two regions (as the files band does).
-const deskShown = new Set<string>();
-const desks = DESKS.map((d) => ({ ...d, pool: news.filter((a) => desksOf(a).some((x) => x.id === d.id)).slice(0, 8) }))
-  .filter((d) => d.pool.length >= 2)
-  .sort((x, y) => Date.parse(y.pool[0].data.publishedAt) - Date.parse(x.pool[0].data.publishedAt))
-  .slice(0, 4)
-  .map((d) => {
-    const items = [...d.pool.filter((a) => !deskShown.has(a.id)), ...d.pool.filter((a) => deskShown.has(a.id))].slice(0, 3);
-    items.forEach((a) => deskShown.add(a.id));
-    return { ...d, items: items.sort((x, y) => Date.parse(y.data.publishedAt) - Date.parse(x.data.publishedAt)) };
-  });
 
-// Section blocks: one feature and up to three briefs, the stories not yet on the page first (with
-// their pictures), then stories already placed above, as text.
-const rows = newsSections
-  .map((s) => {
-    const inSection = news.filter((a) => a.data.section === s.id);
-    const fresh = inSection.filter((a) => !placed.has(a.id)).slice(0, 4);
-    const repeats = inSection.filter((a) => placed.has(a.id)).slice(0, Math.max(0, 4 - fresh.length));
-    const items = [...fresh.map((a) => ({ a, repeat: false })), ...repeats.map((a) => ({ a, repeat: true }))];
-    place(fresh);
-    return { section: s, items };
-  })
-  .filter((r) => r.items.length > 0);
+// Section blocks: a feature and up to three briefs, only stories no module above has printed and none older than
+// three days; the blocks follow the news, the section with the newest story first. A section with fewer than two
+// such stories runs as one line in «من الأقسام» (its newest story not yet printed, with its date) instead of a block
+// filled with reprints and week-old stories (الدفاع's stories on the front had a median age of 214 hours).
+const sectionPools = newsSections.map((section) => ({ section, pool: unplaced(news.filter((a) => a.data.section === section.id)) }));
+const rows = sectionPools
+  .map(({ section, pool }) => ({ section, items: pool.filter((a) => hoursOld(a) < FRESH_HOURS).slice(0, 4) }))
+  .filter((r) => r.items.length >= 2)
+  .sort((x, y) => Date.parse(y.items[0].data.publishedAt) - Date.parse(x.items[0].data.publishedAt));
+rows.forEach((r) => place(r.items));
+const lines = sectionPools
+  .filter(({ section }) => !rows.some((r) => r.section.id === section.id))
+  .map(({ section, pool }) => ({ section, story: pool[0] as Article | undefined }))
+  .sort((x, y) => (y.story ? Date.parse(y.story.data.publishedAt) : 0) - (x.story ? Date.parse(x.story.data.publishedAt) : 0));
+lines.forEach((l) => l.story && place([l.story]));
+
+// الأخبار بحسب المنطقة, the four desks readers see, as a way in rather than a fourth printing: each desk its count, its
+// last update and at most one story of the last three days no module above has printed (it reprinted 11 of 12).
+const desks = DESKS.map((d) => {
+  const inDesk = news.filter((a) => desksOf(a).some((x) => x.id === d.id));
+  const story = unplaced(inDesk).find((a) => hoursOld(a) < FRESH_HOURS);
+  if (story) place([story]);
+  return { ...d, count: inDesk.length, latest: inDesk[0], story };
+}).filter((d) => d.count > 0);
 
 // The hubs: analyses and explainers run as text in ruled columns, which also tells the reader at a
-// glance that these are argument and concept pieces, not news reports.
+// glance that these are argument and concept pieces, not news reports; the readings shown beside the
+// cover are not printed again.
 const hubs = [
   { id: "analysis", kind: "analysis", more: "كل التحليلات" },
   { id: "explainers", kind: "explainer", more: "كل المواد" },
 ]
-  .map((h) => ({ ...h, section: getSection(h.id), items: articles.filter((a) => a.data.kind === h.kind || (h.id === "explainers" && a.data.kind === "paper") || (h.id === "analysis" && (a.data.kind === "weekly" || a.data.kind === "feature"))).slice(0, 4) }))
+  .map((h) => ({ ...h, section: getSection(h.id), items: unplaced(articles.filter((a) => a.data.kind === h.kind || (h.id === "explainers" && a.data.kind === "paper") || (h.id === "analysis" && (a.data.kind === "weekly" || a.data.kind === "feature")))).slice(0, 4) }))
   .filter((h) => h.items.length > 0);
 
 // A picture is printed once per page even when two stories share it.
 const photoIds = new Set<string>();
 {
   const seenUrls = new Set<string>();
-  const order = [...cover, ...secondary, ...rows.flatMap((r) => r.items.filter((i) => !i.repeat).map((i) => i.a)), ...hubs.flatMap((h) => h.items)];
+  const order = [...cover, ...secondary, ...rows.flatMap((r) => r.items), ...hubs.flatMap((h) => h.items)];
   for (const a of order) {
     const url = a?.data.image?.url;
     if (!a || !url || seenUrls.has(url)) continue;
@@ -148,6 +162,7 @@ const jsonLd = {
 ---
 
 <Base jsonLd={jsonLd} section="home">
+  <FilesRow slot="under-bar" files={files} />
   <h1 class="visually-hidden">{site.name} — {site.tagline}</h1>
   {cover.length > 0 ? (
     <>
@@ -163,8 +178,6 @@ const jsonLd = {
       <p class="page-intro">تعمل غرفة الأخبار الآن على أولى المواد. عد بعد قليل.</p>
     </section>
   )}
-
-  <Dossiers files={files} />
 
   {chartsBand.length > 0 && (
     <section class="wrap row charts" aria-labelledby="charts-head">
@@ -195,19 +208,19 @@ const jsonLd = {
         </div>
         {cardsRow ? (
           <div class="cards" style={`--n:${r.items.length}`}>
-            {r.items.map(({ a, repeat }) => (
-              <StoryCard article={a} variant={repeat ? "text" : "card"} showSection={false} showExcerpt={repeat || !photoIds.has(a.id)} showPhoto={!repeat && photoIds.has(a.id)} sizes={cardSizes(r.items.length)} />
+            {r.items.map((a) => (
+              <StoryCard article={a} variant="card" showSection={false} showExcerpt={!photoIds.has(a.id)} showPhoto={photoIds.has(a.id)} sizes={cardSizes(r.items.length)} />
             ))}
           </div>
         ) : (
         <div class={`row__body${briefs.length ? "" : " row__body--solo"}`}>
           <div class="row__feature">
-            <StoryCard article={feature.a} variant="card" showSection={false} showExcerpt showTopic showPhoto={!feature.repeat && photoIds.has(feature.a.id)} sizes="(min-width: 1320px) 380px, (min-width: 1024px) 30vw, (min-width: 720px) 52vw, 120px" />
+            <StoryCard article={feature} variant="card" showSection={false} showExcerpt showTopic showPhoto={photoIds.has(feature.id)} sizes="(min-width: 1320px) 380px, (min-width: 1024px) 30vw, (min-width: 720px) 52vw, 120px" />
           </div>
           {briefs.length > 0 && (
             <div class="row__briefs">
-              {briefs.map(({ a, repeat }) => (
-                <StoryCard article={a} variant="list" showSection={false} showExcerpt={false} showPhoto={!repeat && photoIds.has(a.id)} />
+              {briefs.map((a) => (
+                <StoryCard article={a} variant="list" showSection={false} showExcerpt={false} showPhoto={photoIds.has(a.id)} />
               ))}
             </div>
           )}
@@ -216,6 +229,30 @@ const jsonLd = {
       </section>
     );
   })}
+
+  {lines.length > 0 && (
+    <section class="wrap row lines" aria-labelledby="lines-head">
+      <div class="section-head">
+        <h2 id="lines-head">من الأقسام</h2>
+      </div>
+      <ul class="lines__list">
+        {lines.map(({ section, story }) => (
+          <li class="lines__item" data-section={section.id}>
+            <a class="lines__section" href={sectionHref(section.id)}>{section.name}</a>
+            {story ? (
+              <p class="lines__story">
+                <a href={articleHref(story)} set:html={isolateNumbers(story.data.title)} />
+                <time class="ui" datetime={story.data.publishedAt} data-relative>{timeAgo(story.data.publishedAt)}</time>
+              </p>
+            ) : (
+              <p class="lines__story lines__story--none ui">لا جديد في القسم</p>
+            )}
+            <a class="lines__more ui" href={sectionHref(section.id)}>{moreLabel(section.id)}</a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
 
   {desks.length > 0 && (
     <section class="wrap row desks" aria-labelledby="desks-head">
@@ -227,14 +264,15 @@ const jsonLd = {
         {desks.map((d) => (
           <div class="desk">
             <h3 class="desk__name"><a href={`/tags/${encodeURIComponent(d.name)}/`}>{d.name}</a></h3>
-            <ul class="desk__list">
-              {d.items.map((a) => (
-                <li>
-                  <a href={articleHref(a)} set:html={isolateNumbers(a.data.title)} />
-                  <time class="ui" datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time>
-                </li>
-              ))}
-            </ul>
+            <p class="desk__count ui">
+              <bdi>{countLabel(d.count)}</bdi> · آخر تحديث <time datetime={d.latest.data.publishedAt} data-relative>{timeAgo(d.latest.data.publishedAt)}</time>
+            </p>
+            {d.story && (
+              <p class="desk__story">
+                <a href={articleHref(d.story)} set:html={isolateNumbers(d.story.data.title)} />
+                <time class="ui" datetime={d.story.data.publishedAt} data-relative>{timeAgo(d.story.data.publishedAt)}</time>
+              </p>
+            )}
           </div>
         ))}
       </div>
@@ -297,15 +335,30 @@ const jsonLd = {
   .charts .module__from a { color: var(--ink-2); text-decoration: none; font-weight: 700; }
   .charts .module__from a:hover { color: var(--green); text-decoration: underline; }
 
-  /* The desks: a region's name in green Amiri over three dated headlines, as the files band. */
+  /* من الأقسام: a section with too little fresh news for a block runs as one ruled line: its name in green Amiri,
+     its newest story not yet on the page with the story's age, and the way into the section. */
+  .lines__list { display: grid; }
+  .lines__item { display: grid; grid-template-columns: 9rem minmax(0, 1fr) auto; column-gap: var(--col-gap); align-items: baseline; padding-block: 0.65rem; border-top: 1px solid var(--rule); }
+  .lines__item:first-child { border-top: 0; padding-top: 0.2rem; }
+  .lines__section { font-family: var(--font-title); font-weight: 700; font-size: 1.15rem; line-height: 1.35; color: var(--green); text-decoration: none; }
+  .lines__section:hover { color: var(--green-deep); text-decoration: underline; }
+  .lines__story { margin: 0; font-family: var(--font-title); font-weight: 700; font-size: 1.05rem; line-height: 1.45; }
+  .lines__story a { text-decoration: none; }
+  .lines__story a:hover { color: var(--green); }
+  .lines__story time { margin-inline-start: 0.6rem; font-size: var(--fs-xs); font-weight: 500; color: var(--ink-3); white-space: nowrap; }
+  .lines__story--none { font-size: var(--fs-sm); font-weight: 500; color: var(--ink-3); }
+  .lines__more { font-size: var(--fs-xs); font-weight: 700; color: var(--ink-2); text-decoration: none; white-space: nowrap; }
+  .lines__more:hover { color: var(--green); text-decoration: underline; }
+
+  /* The desks: a region's name in green Amiri, its count and last update, and at most one story not printed above. */
   .desk__name { font-family: var(--font-title); font-weight: 700; font-size: 1.3rem; line-height: 1.3; color: var(--green); }
   .desk__name a { text-decoration: none; }
   .desk__name a:hover { color: var(--green-deep); text-decoration: underline; }
-  .desk__list { margin-top: 0.5rem; }
-  .desk__list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 0.75rem; align-items: baseline; padding-block: 0.5rem; border-top: 1px solid var(--rule); font-family: var(--font-title); font-weight: 700; font-size: 1.02rem; line-height: 1.45; }
-  .desk__list a { text-decoration: none; }
-  .desk__list a:hover { color: var(--green); }
-  .desk__list time { font-size: var(--fs-xs); color: var(--ink-3); white-space: nowrap; }
+  .desk__count { margin-top: 0.15rem; font-size: var(--fs-xs); color: var(--ink-3); }
+  .desk__story { margin-top: 0.55rem; padding-top: 0.5rem; border-top: 1px solid var(--rule); font-family: var(--font-title); font-weight: 700; font-size: 1.02rem; line-height: 1.45; }
+  .desk__story a { text-decoration: none; }
+  .desk__story a:hover { color: var(--green); }
+  .desk__story time { display: block; margin-top: 0.1rem; font-size: var(--fs-xs); font-weight: 500; color: var(--ink-3); }
 
   .hub .cols :global(.card__title) { font-size: 1.28rem; line-height: 1.38; }
   .hub .cols :global(.card__summary) { font-size: 1.02rem; line-height: 1.7; margin-top: 0.4rem; }
@@ -326,5 +379,12 @@ const jsonLd = {
     .row__feature :global(.card--photo .card__body) { order: 2; }
     .row__feature :global(.card__title) { font-size: 1.2rem; line-height: 1.4; }
     .row__feature :global(.card__summary) { display: none; }
+    /* One chart of the band on a phone: three full charts in a column took two screens. */
+    .charts .charts__cell:nth-child(n + 2) { display: none; }
+    /* A line on a phone: the section and the way in on one line, the story under them. */
+    .lines__item { grid-template-columns: minmax(0, 1fr) auto; row-gap: 0.2rem; }
+    .lines__section { grid-column: 1; grid-row: 1; }
+    .lines__more { grid-column: 2; grid-row: 1; }
+    .lines__story { grid-column: 1 / -1; grid-row: 2; }
   }
 </style>

@@ -119,6 +119,7 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
     -->
     <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
     <Masthead active={section} />
+    <slot name="under-bar" />
     <MarketStrip />
     {latestNews.length > 0 && <Ticker items={latestNews} label="آخر الأخبار" lead="time" />}
     <main id="main">
@@ -230,7 +231,7 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
         document.querySelectorAll(".photo img").forEach(function (img) { if (below(img)) wait(img, 0); });
         // Stories side by side follow one another by 90 ms in reading order, three steps at most.
         var rows = {};
-        document.querySelectorAll(".card, .digest__item, .picks__item, .figures__item, .agenda__item, .file, .desk, .module__head, .section-head").forEach(function (el) {
+        document.querySelectorAll(".card, .digest__item, .picks__item, .figures__item, .agenda__item, .lines__item, .desk, .module__head, .section-head").forEach(function (el) {
           if (el.closest(".article, .masthead, .masthead__nav") || !below(el)) return;
           var row = Math.round((el.getBoundingClientRect().top + window.scrollY) / 40);
           rows[row] = (rows[row] || 0) + 1;

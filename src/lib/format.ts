@@ -79,6 +79,13 @@ export function timeAgo(iso: string | Date, now = new Date()): string {
   return formatDate(d, { weekday: false });
 }
 
+/** A number of pieces the way Arabic counts them: «مادة واحدة», «مادتان», «5 مواد», «12 مادة». */
+export function countLabel(n: number): string {
+  if (n === 1) return "مادة واحدة";
+  if (n === 2) return "مادتان";
+  return n <= 10 ? `${n} مواد` : `${n} مادة`;
+}
+
 export function readingLabel(minutes: number): string {
   const m = Math.max(1, Math.round(minutes));
   if (m === 1) return "دقيقة قراءة";

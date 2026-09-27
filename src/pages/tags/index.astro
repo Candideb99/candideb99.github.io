@@ -7,14 +7,13 @@
 import Base from "@layouts/Base.astro";
 import { getArticles, dossiers, articleHref } from "@lib/articles";
 import { DESKS, desksOf } from "@lib/regions";
-import { formatShortDate, timeAgo } from "@lib/format";
+import { formatShortDate, timeAgo, countLabel as countWord } from "@lib/format";
 import { isolateNumbers } from "@lib/bidi";
 
 const articles = await getArticles();
 const topics = dossiers(articles, { min: 2, max: 200 });
 // The four desks readers see (src/lib/regions.ts), in their order: three Arab desks, then the world.
 const regions = DESKS.map((d) => ({ tag: d.name, count: articles.filter((a) => desksOf(a).some((x) => x.id === d.id)).length })).filter((r) => r.count > 0);
-const countWord = (n: number) => (n === 1 ? "مادة واحدة" : n === 2 ? "مادتان" : n <= 10 ? `${n} مواد` : `${n} مادة`);
 ---
 
 <Base title="الملفات" description="ملفات خازندار: القصص التي تتطور عبر أكثر من مادة، والمناطق التي نغطيها" path="/tags/">
