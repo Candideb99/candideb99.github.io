@@ -9,7 +9,8 @@
  *   node pipeline/recaption-images.mjs --dry-run    show old and new, write nothing
  *   node pipeline/recaption-images.mjs --limit=10   the ten newest
  *   node pipeline/recaption-images.mjs --slugs=a,b  named articles only
- *   node pipeline/recaption-images.mjs --spellings  the house spellings («أمريكي»، «ترامب») in every caption, no model
+ *   node pipeline/recaption-images.mjs --spellings  the house spellings («أمريكي»، «ترامب») in every caption and a clean
+ *                                                   author in every credit (lib/commons.mjs cleanArtist), no model
  *
  * Nothing is edited by hand: the caption comes from the file's own record and the story, is checked in
  * code (Arabic, at most twelve words, nothing painted), and the frontmatter is rewritten through the YAML
@@ -24,6 +25,7 @@ import YAML from "yaml";
 import { writeCaption, captionFlaws, placedAbroad, ILLUSTRATIVE } from "./lib/images.mjs";
 import { ARTICLES_DIR } from "./lib/article.mjs";
 import { fixNames } from "./lib/copydesk.mjs";
+import { cleanArtist } from "./lib/commons.mjs";
 
 const args = process.argv.slice(2);
 const DRY = args.includes("--dry-run");
@@ -76,19 +78,33 @@ for (const file of files) {
 }
 queue.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 // `--spellings`: the copy desk's spelling table («أمريكي»، «ترامب») over every caption, in code, no model. Captions
-// had never passed through it: eleven printed «الأميركية» or «ترمب» on 2026-09-24.
+// had never passed through it: eleven printed «الأميركية» or «ترمب» on 2026-09-24. And the author in every credit as
+// the credit line names them (2026-09-27: «No machine-readable author provided. MatthiasKabel assumed (based on
+// copyright c», and six more cut mid-word).
 if (args.includes("--spellings")) {
   let fixed = 0;
+  let credits = 0;
   for (const a of queue) {
     const next = fixNames(a.alt);
-    if (next === a.alt) continue;
-    log(`${DRY ? "WOULD" : "FIXED"} ${a.slug.slice(0, 50)}: ${a.alt} → ${next}`);
-    fixed += 1;
+    const credit = String(a.doc.getIn(["image", "credit"]) ?? "");
+    const parts = credit.split(" · ");
+    const author = parts.length >= 2 ? cleanArtist(parts[0]) || (parts.at(-1) === "ويكيميديا كومنز" ? "Wikimedia Commons" : parts[0]) : parts[0];
+    const nextCredit = parts.length >= 2 ? [author, ...parts.slice(1)].join(" · ") : credit;
+    if (next === a.alt && nextCredit === credit) continue;
+    if (next !== a.alt) {
+      log(`${DRY ? "WOULD" : "FIXED"} ${a.slug.slice(0, 50)}: ${a.alt} → ${next}`);
+      fixed += 1;
+    }
+    if (nextCredit !== credit) {
+      log(`${DRY ? "WOULD" : "FIXED"} credit ${a.slug.slice(0, 50)}: ${parts[0]} → ${author}`);
+      credits += 1;
+    }
     if (DRY) continue;
-    a.doc.setIn(["image", "alt"], next);
+    if (next !== a.alt) a.doc.setIn(["image", "alt"], next);
+    if (nextCredit !== credit) a.doc.setIn(["image", "credit"], nextCredit);
     await writeFile(path.join(ARTICLES_DIR, a.file), `---\n${a.doc.toString({ lineWidth: 0 }).trimEnd()}\n---\n${a.match[2]}`);
   }
-  log(`done: ${fixed} caption(s) put in the house spelling${DRY ? " (dry run, nothing written)" : ""}`);
+  log(`done: ${fixed} caption(s) put in the house spelling, ${credits} credit(s) given a clean author${DRY ? " (dry run, nothing written)" : ""}`);
   process.exit(0);
 }
 // A caption that already keeps the rule is not written again (the owner, 2026-09-23: no tokens spent

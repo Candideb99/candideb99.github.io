@@ -56,7 +56,7 @@ image:
   width: 1280
   height: 853
   alt: نهر النيل ووسط القاهرة وجزيرة الجزيرة
-  credit: Andrew A. Shenouda from Cairo, Egypt · CC BY 2.0 · ويكيميديا كومنز
+  credit: Andrew A. Shenouda · CC BY 2.0 · ويكيميديا كومنز
   license: CC BY 2.0
   licenseUrl: https://creativecommons.org/licenses/by/2.0
   pageUrl: https://commons.wikimedia.org/wiki/File%3AFlickr_-_Bakar_88_-_Cairo%2C_Egypt_(HDR).jpg

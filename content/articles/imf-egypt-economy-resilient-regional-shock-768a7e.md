@@ -36,7 +36,7 @@ image:
   width: 1280
   height: 853
   alt: مديرة صندوق النقد الدولي كريستالينا غورغييفا خلال زيارتها للمفوضية الأوروبية في بروكسل عام 2026
-  credit: Europäische Kommission - Audiovisueller Dienst, Xavier Lejeune, Yügen, CE - Serv · CC BY 4.0 · ويكيميديا كومنز
+  credit: Europäische Kommission - Audiovisueller Dienst, Xavier Lejeune, Yügen · CC BY 4.0 · ويكيميديا كومنز
   license: CC BY 4.0
   licenseUrl: https://creativecommons.org/licenses/by/4.0
   pageUrl: https://commons.wikimedia.org/wiki/File%3AVisit_of_Kristalina_Georgieva%2C_Managing_Director_of_the_International_Monetary_Fund_(IMF)%2C_to_the_European_Commission_(P-070421-00-07).jpg

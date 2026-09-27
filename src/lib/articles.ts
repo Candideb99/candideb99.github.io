@@ -271,9 +271,15 @@ export function threads(articles: Article[], { days = 7, max = 8, now = Date.now
 }
 
 /** The freshest story of the last three days that carries a chart small enough for a column. */
+/**
+ * The chart of the day, for the front's side column (about 280px wide): the freshest chart of the last three days that
+ * fits it, five categories or fewer; failing that, the freshest of eight or fewer. Six long names such as the Egyptian
+ * exchange's indices could not stand side by side there (2026-09-27); such a chart goes to the wider band instead.
+ */
 export function chartOfTheDay(articles: Article[], now = Date.now()): Article | undefined {
-  return articles.find((a) => {
+  const fits = (a: Article, most: number) => {
     const c = a.data.chart;
-    return c && c.title && c.categories.length <= 8 && c.series.length <= 2 && hoursOld(a, now) < 72;
-  });
+    return Boolean(c && c.title && c.categories.length <= most && c.series.length <= 2 && hoursOld(a, now) < 72);
+  };
+  return articles.find((a) => fits(a, 5)) ?? articles.find((a) => fits(a, 8));
 }

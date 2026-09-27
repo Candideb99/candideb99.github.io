@@ -76,7 +76,7 @@ image:
   width: 1280
   height: 960
   alt: ميناء شانغهاي
-  credit: User:Vmenkov · CC BY-SA 3.0 · ويكيميديا كومنز
+  credit: Vmenkov · CC BY-SA 3.0 · ويكيميديا كومنز
   license: CC BY-SA 3.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/3.0
   pageUrl: https://commons.wikimedia.org/wiki/File%3AAerial_-_Shanghai_-_Port_-_P1040701.JPG

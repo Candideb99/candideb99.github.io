@@ -30,54 +30,28 @@ interface Props {
 const { chart, id = "chart", compact: compactProp = false, narrow = false, href } = Astro.props;
 const compact = compactProp || narrow;
 
-/** The chart's text is drawn in the drawing's own units, so it shrinks with the drawing. Each kind is sized to come
- *  out at the site's small furniture size, about 12.5px, where it is shown (2026-09-27: at 12 units a story's chart
- *  printed its labels at 10.7px on a laptop and 10.4px on a phone, and the side column's at 9.4px): a full chart
- *  (720 units in a 640px column) at 14.5 units, 24 on a phone (a 358px column); a compact one (400 units, about
- *  390px wide in the front's band) at 14; the side column's (about 280px) at 19. The labels wrap for the largest
- *  size a chart can take, about 0.55 of a unit per letter-unit, so no two ever run into each other. */
+/** The chart's numbers (the scale and the values over the bars) are drawn in the drawing's own units, so they shrink
+ *  with the drawing; each kind is sized to come out near the site's small furniture size, about 12.5px, where it is
+ *  shown (2026-09-27: at 12 units a story's chart printed them at 10.7px on a laptop and 10.4px on a phone, and the
+ *  side column's at 9.4px): a full chart (720 units in a 640px column) at 14.5 units, 24 on a phone (a 358px
+ *  column); a compact one (400 units, about 390px wide in the front's band) at 14; the side column's (about 280px)
+ *  at 19. The categories are not drawn at all: they are set as text under the drawing (the list after the svg). */
 const TEXT = narrow ? 19 : compact ? 14 : 24;
 const W = compact ? 400 : 720;
-const H = compact ? 250 : 380;
-const PAD = narrow ? { top: 22, right: 16, bottom: 0, left: 66 } : compact ? { top: 22, right: 16, bottom: 0, left: 56 } : { top: 28, right: 24, bottom: 0, left: 76 };
-const plotW = W - PAD.left - PAD.right;
-
 const n = chart.categories.length;
+const all = chart.series.flatMap((s) => s.values);
+const showValueLabels = n <= 8 && chart.series.length === 1;
+// The drawing keeps no room for the categories, so it is shorter by what their lines took and the chart stands about
+// as tall as before; a value printed under a bar that hangs below zero keeps its own room.
+const below = chart.type === "bar" && showValueLabels && all.some((v) => v < 0) ? Math.round(TEXT * 1.3) : 0;
+const H = (compact ? 190 : 300) + below;
+const PAD = narrow ? { top: 22, right: 16, bottom: 8, left: 66 } : compact ? { top: 22, right: 16, bottom: 8, left: 56 } : { top: 28, right: 24, bottom: 10, left: 76 };
+PAD.bottom += below;
+const plotW = W - PAD.left - PAD.right;
 const slot = plotW / n;
 const x = (i: number) => PAD.left + slot * i;
-
-/** Category labels wrap by word onto lines that fit their slot (three lines when there are few categories or the
- *  chart is compact, two otherwise); anything longer is elided. The bottom padding follows the deepest label. Until
- *  2026-09-27 a compact chart kept at least eight letters a line in a slot that held five, and its labels ran into
- *  each other («إيجي إكسإيجي إكس»). */
-const catChars = Math.max(4, Math.floor(slot / (TEXT * 0.55)));
-const catLines = n <= 4 || compact ? 3 : 2;
-function wrapLabel(text: string, maxChars: number, maxLines: number): string[] {
-  const words = text.split(/\s+/).filter(Boolean);
-  const lines: string[] = [];
-  let cur = "";
-  for (const w of words) {
-    const next = cur ? `${cur} ${w}` : w;
-    if (next.length <= maxChars || !cur) cur = next;
-    else {
-      lines.push(cur);
-      cur = w;
-    }
-  }
-  if (cur) lines.push(cur);
-  const kept = lines.slice(0, maxLines).map((l) => (l.length > maxChars + 1 ? `${l.slice(0, maxChars - 1)}…` : l));
-  if (lines.length > maxLines && !kept[maxLines - 1].endsWith("…")) kept[maxLines - 1] = `${kept[maxLines - 1].slice(0, Math.max(1, maxChars - 1))}…`;
-  return kept;
-}
-const catLabels = chart.categories.map((c) => wrapLabel(c, catChars, catLines));
-// Compact charts stand side by side in the front's band, so every one keeps room for the deepest labels any can
-// have: their axes then run on one line (they sat on three, 2026-09-27).
-const deepest = compact ? catLines : Math.max(1, ...catLabels.map((l) => l.length));
-const lineStep = Math.round(TEXT * 1.25);
-PAD.bottom = Math.round(TEXT * 1.2) + lineStep * deepest;
 const plotH = H - PAD.top - PAD.bottom;
 
-const all = chart.series.flatMap((s) => s.values);
 // Bars stand on zero; a line follows its own range: Brent between 97 and 108 dollars on a scale from zero was drawn
 // as a flat line (2026-09-27).
 const bars = chart.type === "bar";
@@ -109,7 +83,6 @@ const label = (v: number) => `${fmt(v)}${unit === "%" ? "%" : unit ? ` ${unit}` 
 const groupW = slot * 0.72;
 const barGap = 2;
 const barW = Math.max(6, (groupW - barGap * (chart.series.length - 1)) / chart.series.length);
-const showValueLabels = n <= 8 && chart.series.length === 1;
 const lineEndLabel = chart.series.length <= 3;
 const colors = ["var(--chart-1)", "var(--chart-2)", "var(--chart-3)"];
 
@@ -183,17 +156,12 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
           </g>
         );
       })}
-
-    <g class="chart__axis">
-      {catLabels.map((lines, i) => (
-        <text x={x(i) + slot / 2} y={H - PAD.bottom + Math.round(TEXT * 1.1)} text-anchor="middle" class="chart__cat">
-          {lines.map((line, li) => (
-            <tspan x={x(i) + slot / 2} dy={li === 0 ? 0 : "1.25em"}>{line}</tspan>
-          ))}
-        </text>
-      ))}
-    </g>
   </svg>
+  {/* The categories as text under the plot, each under its own bar or point: whole, wrapped to as many lines as they
+      need at the site's small size. The drawing is announced by its title; the table below carries the data. */}
+  <ol class="chart__cats" style={`--n:${n};--pl:${((PAD.left / W) * 100).toFixed(3)}%;--pr:${((PAD.right / W) * 100).toFixed(3)}%`} aria-hidden="true">
+    {chart.categories.map((c) => <li>{c}</li>)}
+  </ol>
 
   {!compact && <details class="chart__data">
     <summary class="ui">عرض البيانات كجدول</summary>
@@ -232,9 +200,16 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
   .chart__gridline { stroke: var(--rule); stroke-width: 1; }
   .chart__baseline { stroke: var(--ink-3); stroke-width: 1; }
   /* Sizes in the drawing's units (see TEXT in the script above), each landing near 12.5px on screen. */
-  .chart__tick, .chart__cat, .chart__value { fill: var(--ink-2); font-size: 14.5px; font-variant-numeric: tabular-nums; }
-  .chart__cat { fill: var(--ink); direction: rtl; unicode-bidi: plaintext; }
+  .chart__tick, .chart__value { fill: var(--ink-2); font-size: 14.5px; font-variant-numeric: tabular-nums; }
   .chart__value { fill: var(--ink); font-weight: 700; }
+  /* The categories under the drawing, as text at the site's small size, each under its own bar or point: the grid
+     starts and ends where the drawing's plot does (the drawing runs left to right, so does the grid; each label
+     finds its own direction). Drawn inside the svg they were wrapped for the phone's larger size and cut with «…»
+     wherever they ran long (the owner, 2026-09-27: "graphs cut text under the columns"). */
+  .chart__cats { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); margin: 0.3rem var(--pr) 0 var(--pl); padding: 0; list-style: none; direction: ltr; }
+  /* A word is never split: a long one («الإسلامية» in a phone's 50px column) runs a little into the gutters beside it
+     rather than break between its joined letters. */
+  .chart__cats li { padding-inline: 0.1rem; font-family: var(--font-ui); font-size: var(--fs-xs); line-height: 1.35; color: var(--ink); text-align: center; direction: rtl; unicode-bidi: plaintext; }
   .chart__mark:hover rect, .chart__mark:hover circle { filter: brightness(0.85); }
   .chart__data { margin-top: 0.6rem; font-size: var(--fs-data); }
   .chart__data summary { cursor: pointer; color: var(--green); font-weight: 700; }
@@ -252,12 +227,12 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
   .chart--compact .chart__title a { text-decoration: none; }
   .chart--compact .chart__title a:hover { color: var(--green); }
   .chart--compact .chart__svg { margin-top: 0.4rem; }
-  .chart--compact .chart__tick, .chart--compact .chart__cat, .chart--compact .chart__value { font-size: 14px; }
-  .chart--narrow .chart__tick, .chart--narrow .chart__cat, .chart--narrow .chart__value { font-size: 19px; }
+  .chart--compact .chart__tick, .chart--compact .chart__value { font-size: 14px; }
+  .chart--narrow .chart__tick, .chart--narrow .chart__value { font-size: 19px; }
   .chart--compact .chart__source { margin-top: 0.4rem; }
   @media (max-width: 719px) {
-    .chart__tick, .chart__cat, .chart__value { font-size: 24px; }
+    .chart__tick, .chart__value { font-size: 24px; }
     /* On a phone the side column's chart runs the column's full width, as the band's does. */
-    .chart--narrow .chart__tick, .chart--narrow .chart__cat, .chart--narrow .chart__value { font-size: 14px; }
+    .chart--narrow .chart__tick, .chart--narrow .chart__value { font-size: 14px; }
   }
 </style>

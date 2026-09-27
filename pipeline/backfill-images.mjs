@@ -83,7 +83,7 @@ ${match[2]}`);
   }
   found += 1;
   used.add(image.url);
-  log(`${file}: "${image.title}" (${image.license})`);
+  log(`${file}: "${image.title}" (${image.license})${DRY_RUN ? ` ${image.url}` : ""}`);
   if (DRY_RUN) continue;
   data.image = {
     url: image.url,

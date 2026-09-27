@@ -49,14 +49,14 @@ table:
       - نحو 208 ملايين دولار
       - 107%
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Production_of_cheese_1.jpg/1280px-Production_of_cheese_1.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Cairo_Fruit_%2833612956184%29.jpg/1280px-Cairo_Fruit_%2833612956184%29.jpg
   width: 1280
   height: 853
-  alt: تقطيع خثارة الحليب في حوض لصناعة الجبن (صورة تعبيرية)
-  credit: No machine-readable author provided. MatthiasKabel assumed (based on copyright c · CC BY-SA 3.0 · ويكيميديا كومنز
-  license: CC BY-SA 3.0
-  licenseUrl: http://creativecommons.org/licenses/by-sa/3.0/
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AProduction_of_cheese_1.jpg
+  alt: كشك لبيع الفاكهة في حي المهندسين بالقاهرة
+  credit: Mark Fischer · CC BY-SA 2.0 · ويكيميديا كومنز
+  license: CC BY-SA 2.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/2.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ACairo_Fruit_(33612956184).jpg
 sources:
   - name: مصراوي
     nameEn: Masrawy

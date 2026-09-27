@@ -27,7 +27,7 @@ image:
   width: 1280
   height: 858
   alt: طائرة إيرباص A300 تابعة لشركة إيران إير في مطار فرانكفورت
-  credit: Aero Icarus from Zürich, Switzerland · CC BY-SA 2.0 · ويكيميديا كومنز
+  credit: Aero Icarus · CC BY-SA 2.0 · ويكيميديا كومنز
   license: CC BY-SA 2.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/2.0
   pageUrl: https://commons.wikimedia.org/wiki/File%3AIran_Air_Airbus_A300-605R%3B_EP-IBD%40FRA%3B06.07.2011_603ks_(5915220574).jpg

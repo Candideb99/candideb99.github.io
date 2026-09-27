@@ -48,7 +48,7 @@ image:
   width: 1280
   height: 715
   alt: منصة حفر بحرية في بحر قزوين قبالة أذربيجان
-  credit: Peretz Partensky from San Francisco, USA · CC BY-SA 2.0 · ويكيميديا كومنز
+  credit: Peretz Partensky · CC BY-SA 2.0 · ويكيميديا كومنز
   license: CC BY-SA 2.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/2.0
   pageUrl: https://commons.wikimedia.org/wiki/File%3ADeep_sea_oil_drilling_in_the_Caspian._(3892498628).jpg

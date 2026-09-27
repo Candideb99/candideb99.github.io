@@ -28,7 +28,7 @@ image:
   width: 1280
   height: 853
   alt: خوادم في أحد مراكز البيانات
-  credit: Carl Lender from Sunrise, USA · CC BY 2.0 · ويكيميديا كومنز
+  credit: Carl Lender · CC BY 2.0 · ويكيميديا كومنز
   license: CC BY 2.0
   licenseUrl: https://creativecommons.org/licenses/by/2.0
   pageUrl: https://commons.wikimedia.org/wiki/File%3ADatacenter_Server_Racks_(22370909788).jpg

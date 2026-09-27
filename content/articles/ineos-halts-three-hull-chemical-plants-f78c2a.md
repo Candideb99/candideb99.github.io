@@ -37,7 +37,7 @@ image:
   width: 1280
   height: 720
   alt: مصنع للكيماويات (صورة تعبيرية)
-  credit: This photograph is created by Sbb1413 . All photographs created by him are relea · CC BY 4.0 · ويكيميديا كومنز
+  credit: Sbb1413 · CC BY 4.0 · ويكيميديا كومنز
   license: CC BY 4.0
   licenseUrl: https://creativecommons.org/licenses/by/4.0
   pageUrl: https://commons.wikimedia.org/wiki/File%3ASingur_Plant_(Chemical_factory)_of_Himadri_Speciality_Chemicals_Limited_in_Hooghly_district_(18_June_2022).jpg

@@ -59,7 +59,7 @@ export async function searchCommons(query, { limit = 10, log = () => {} } = {}) 
       if ((info.width ?? 0) < 1000 || (info.height ?? 0) < 600) continue;
       const ratio = info.width / info.height;
       if (ratio < 0.95 || ratio > 2.6) continue;
-      const artist = stripHtml(meta.Artist?.value ?? "").trim();
+      const artist = cleanArtist(stripHtml(meta.Artist?.value ?? ""));
       const cleanUrl = (u) => String(u ?? "").replace(/^https:\/\/thumb\.wikimedia\.org\//, "https://upload.wikimedia.org/").replace(/\?.*$/, "");
       out.push({
         title: title.replace(/^File:/, ""),
@@ -70,7 +70,7 @@ export async function searchCommons(query, { limit = 10, log = () => {} } = {}) 
         height: info.thumbheight ?? info.height,
         license,
         licenseUrl: meta.LicenseUrl?.value ?? "",
-        artist: artist.slice(0, 80),
+        artist,
         description: stripHtml(meta.ImageDescription?.value ?? "").slice(0, 200),
         date: takenOn(meta.DateTimeOriginal?.value),
         uploaded: String(info.timestamp ?? "").slice(0, 10),
@@ -83,6 +83,32 @@ export async function searchCommons(query, { limit = 10, log = () => {} } = {}) 
     log(`commons "${query}": ${error.message}`);
     return [];
   }
+}
+
+/**
+ * The author as a credit line names them, from Commons' free-text Artist field. It printed «No machine-readable author
+ * provided. MatthiasKabel assumed (based on copyright c» under a story (the owner, 2026-09-27): the field carries
+ * Commons' own placeholders and whole sentences, and was cut at 80 characters mid-word. Now the name Commons assumes,
+ * the creator a sentence names, an uploader without the city Flickr adds («Andrew A. Shenouda from Cairo, Egypt»),
+ * and a long credit ended at a clause, never inside a word; nothing when Commons knows no author.
+ */
+export function cleanArtist(raw) {
+  let a = String(raw ?? "").replace(/\s+/g, " ").trim();
+  const assumed = a.match(/^No machine-readable author provided\.\s*(.+?)\s+assumed\b/i);
+  if (assumed) a = assumed[1];
+  const created = a.match(/^This (?:photograph|photo|picture|image|file) (?:is|was) (?:created|taken|made) by\s+(.+?)\s*\.(?:\s|$)/i);
+  if (created) a = created[1];
+  a = a.replace(/^User:\s*/i, "").replace(/\s*\((?:talk|contribs)[^)]*\)\s*/gi, " ").trim();
+  a = a.replace(/^(.{2,48}?) from [A-Z][^,]{1,30}(?:, [A-Z][^,]{1,30})?$/u, "$1");
+  if (/^(?:unknown(?: author| photographer)?|anonymous|not provided|none)$/i.test(a)) return "";
+  if (a.length > 72) {
+    const cut = a.slice(0, 72);
+    // A list of names breaks at its commas first; a dash or a full stop only when there is no comma.
+    const comma = Math.max(cut.lastIndexOf(", "), cut.lastIndexOf("; "));
+    const at = comma >= 20 ? comma : Math.max(cut.lastIndexOf(" - "), cut.lastIndexOf(". "));
+    a = at >= 20 ? cut.slice(0, at) : cut.replace(/\s+\S*$/, "");
+  }
+  return a.replace(/[\s.,;:\-–]+$/, "").trim();
 }
 
 /** Where a photo came from, as the credit line names it (pipeline/lib/photolibs.mjs gives each candidate its `library`). */

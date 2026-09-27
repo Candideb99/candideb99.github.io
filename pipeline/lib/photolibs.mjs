@@ -25,6 +25,13 @@ export function flickrSize(url, size) {
 
 const landscape = (w, h) => w > 0 && h > 0 && w / h >= 0.95 && w / h <= 2.6;
 
+/**
+ * Real photographs only (the owner, 2026-09-27, giving his Pexels key: "only serious real life images and not ai
+ * generated images"): an entry whose own title, description or tags say it was made by a computer or drawn is dropped
+ * before any judge sees it. The judges also refuse what only looks generated (GRAVITY_RULE in images.mjs).
+ */
+export const NOT_A_PHOTO = /\b(?:ai[- ]generated|generated (?:by|with) ai|generative ai|midjourney|dall[- ]?e|stable diffusion|3d[- ](?:render|rendering|illustration|model|image)|rendered|cgi|illustration|illustrated|digital (?:art|painting|illustration|image)|vector|clip ?art|cartoon|mock-?up)\b/i;
+
 let openverseRefused = false;
 
 /** Openverse, Flickr's openly licensed photographs among them; never its Wikimedia copies, which Commons already gives. */
@@ -49,6 +56,7 @@ export async function searchOpenverse(query, { limit = 10, log = () => {} } = {}
       const height = Number(r.height) || 0;
       const url = String(r.url ?? "");
       const title = String(r.title ?? "").trim();
+      if (NOT_A_PHOTO.test(`${title} ${(r.tags ?? []).map((t) => t?.name).join(" ")}`)) continue;
       // Flickr's largest copy with the photo's own secret is 1024 pixels wide: enough for the article's 1024.
       if (width < 960 || !landscape(width, height) || !/^https:\/\//.test(url) || BAD_TITLE.test(title)) continue;
       const kind = String(r.license ?? "").toLowerCase();
@@ -70,6 +78,8 @@ export async function searchOpenverse(query, { limit = 10, log = () => {} } = {}
         categories: (r.tags ?? []).map((t) => t?.name).filter(Boolean).slice(0, 25).join(", "),
         library: r.source === "flickr" ? "flickr" : `openverse:${r.source}`,
         thumb: flickrSize(url, "n") ?? String(r.thumbnail ?? url),
+        // Openverse's own copy, asked for when Flickr refuses its thumbnail (images.mjs, shortlist).
+        thumbAlt: r.thumbnail ? String(r.thumbnail) : undefined,
       });
       if (out.length >= limit) break;
     }
@@ -97,6 +107,7 @@ export async function searchPexels(query, { limit = 8, log = () => {} } = {}) {
     for (const p of payload.photos ?? []) {
       const base = String(p.src?.original ?? "").split("?")[0];
       if (!base || !landscape(p.width, p.height) || (p.width ?? 0) < 1280) continue;
+      if (NOT_A_PHOTO.test(String(p.alt ?? ""))) continue;
       out.push({
         title: String(p.alt ?? "").trim(),
         pageUrl: String(p.url ?? ""),
@@ -140,6 +151,7 @@ export async function searchUnsplash(query, { limit = 8, log = () => {} } = {}) 
     for (const p of payload.results ?? []) {
       const raw = String(p.urls?.raw ?? "");
       if (!raw || !landscape(p.width, p.height) || (p.width ?? 0) < 1280) continue;
+      if (NOT_A_PHOTO.test(`${p.alt_description ?? ""} ${p.description ?? ""}`)) continue;
       const join = raw.includes("?") ? "&" : "?";
       out.push({
         title: String(p.alt_description ?? p.description ?? "").trim(),

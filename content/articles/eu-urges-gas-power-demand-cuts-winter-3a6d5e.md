@@ -32,7 +32,7 @@ image:
   width: 1280
   height: 853
   alt: دان يورغنسن خلال زيارته المملكة المتحدة عام 2026
-  credit: Europäische Kommission - Audiovisueller Dienst, Carlos Jasso, CE - Service audio · CC BY 4.0 · ويكيميديا كومنز
+  credit: Europäische Kommission - Audiovisueller Dienst, Carlos Jasso · CC BY 4.0 · ويكيميديا كومنز
   license: CC BY 4.0
   licenseUrl: https://creativecommons.org/licenses/by/4.0
   pageUrl: https://commons.wikimedia.org/wiki/File%3AVisit_by_Dan_J%C3%B8rgensen%2C_European_Commissioner%2C_to_the_UK_(P-070045-00-20).jpg

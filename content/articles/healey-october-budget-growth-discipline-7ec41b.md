@@ -26,7 +26,7 @@ image:
   width: 1280
   height: 708
   alt: الحي المالي في مدينة لندن على ضفاف نهر التايمز
-  credit: User:Colin and Kim Hansen · CC BY-SA 4.0 · ويكيميديا كومنز
+  credit: Colin and Kim Hansen · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
   pageUrl: https://commons.wikimedia.org/wiki/File%3ACity_of_London_skyline_from_London_City_Hall_-_Sept_2015_-_Crop_Aligned.jpg
