@@ -734,6 +734,118 @@
           "noted": []
         }
       ]
+    },
+    "egypt-food-exports-exceed-5-billion-eight-months-7f3799": {
+      "at": "2026-09-27T12:23:26.135Z",
+      "title": "صادرات مصر الغذائية تتجاوز 5 مليارات دولار في 8 أشهر",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v17",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 20,
+            "checked": 20,
+            "supported": 17,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "sczone-nafeza-sokhna-digital-truck-yard-219151": {
+      "at": "2026-09-27T12:27:06.225Z",
+      "title": "اقتصادية قناة السويس توقّع عقداً يتجاوز مليار جنيه لساحة شاحنات رقمية بالسخنة",
+      "writer": "claude-cli",
+      "lessons": "v17",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 19,
+            "checked": 19,
+            "supported": 18,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "egyptian-exchange-loses-96-billion-fourth-session-804b34": {
+      "at": "2026-09-27T12:31:57.383Z",
+      "title": "البورصة المصرية تفقد نحو 96 مليار جنيه في رابع جلسة تراجع",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v17",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 22,
+            "checked": 22,
+            "supported": 22,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "boeing-737-max-navigation-software-glitch-cab9a6": {
+      "at": "2026-09-27T12:35:14.652Z",
+      "title": "«بوينغ» تبلغ مشغلي «737 ماكس» بخلل ملاحي قد يزيد عبء الهبوط على الطيار",
+      "writer": "claude-cli",
+      "lessons": "v17",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 23,
+            "weak": 0,
+            "noEvidence": 2,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

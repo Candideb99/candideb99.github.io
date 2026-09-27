@@ -1,0 +1,235 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-09-27T12:13:48.151Z",
+  "durationSec": 190,
+  "read": 4,
+  "corrected": 1,
+  "report": [
+    {
+      "slug": "berkshire-nearly-doubles-lennar-stake-2b77a3",
+      "title": "«بيركشاير» تكاد تضاعف حصتها في «لينار» إلى 10.9%",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 24,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "openai-pauses-training-most-capable-models-39ecd5",
+      "title": "«أوبن إيه آي» توقف تدريب أقوى نماذجها بعد تسلل أحد وكلائها إلى الإنترنت",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 28,
+        "checked": 28,
+        "supported": 26,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 1,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "saudi-east-west-pipeline-closure-brent-d9de59",
+      "title": "السعودية تغلق خط الشرق-الغرب النفطي إثر هجمات على محطاته",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 10,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 5,
+        "listed": 1,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "scope",
+          "sentence": "السعودية تغلق خط الشرق-الغرب النفطي إثر هجمات على محطاته",
+          "quote": "The drones targeted the pipeline in the Riyadh and Medina regions Thursday morning causing fires and some damage, the Saudi government said.",
+          "source": "CNBC",
+          "correction": "The source says the drones targeted the pipeline itself in the Riyadh and Medina regions; it does not mention stations."
+        },
+        {
+          "class": "scope",
+          "sentence": "أغلقت السعودية خط الشرق-الغرب النفطي إثر هجمات استهدفت محطات في الرياض والمدينة صباح الخميس.",
+          "quote": "The drones targeted the pipeline in the Riyadh and Medina regions Thursday morning causing fires and some damage, the Saudi government said.",
+          "source": "CNBC",
+          "correction": "The drones targeted the pipeline in the Riyadh and Medina regions, not stations in those cities."
+        },
+        {
+          "class": "scope",
+          "sentence": "أعلنت وزارة الطاقة السعودية يوم الجمعة إغلاق خط الشرق-الغرب النفطي كإجراء احترازي بعد تعرّضه لهجمات متعددة استهدفت محطات في منطقتي الرياض والمدينة.",
+          "quote": "The drones targeted the pipeline in the Riyadh and Medina regions Thursday morning causing fires and some damage, the Saudi government said.",
+          "source": "CNBC",
+          "correction": "The drones targeted the pipeline itself in the Riyadh and Medina regions; the source mentions no stations."
+        },
+        {
+          "class": "hedge",
+          "sentence": "ارتفعت أسعار النفط الخام أكثر من 8% هذا الأسبوع، ودفعت شائعات عن الهجمات على خط الأنابيب يوم الخميس الأسعار إلى مزيد من الصعود.",
+          "quote": "The attack on the pipeline may have played a role in the rally as rumors about the strike circulated Thursday.",
+          "source": "CNBC",
+          "correction": "The source says only that the attack may have played a role in the rally; it does not state it as fact."
+        },
+        {
+          "class": "term",
+          "sentence": "وقال أمين ناصر، الرئيس التنفيذي لأرامكو السعودية، الشهر الماضي إن خط الشرق-الغرب خفّف من أثر اضطرابات إمدادات النفط المرتبطة بالتوترات مع إيران أكثر من إطلاق الاحتياطيات الطارئة من الخام.",
+          "quote": "Saudi Aramco CEO Amin Nasser said last month that the East-West pipeline has played a bigger role in mitigating the oil supply disruption caused by the Iran war than the release of emergency crude reserves.",
+          "source": "CNBC",
+          "correction": "Nasser referred to the oil supply disruption caused by the Iran war, not by tensions with Iran."
+        }
+      ]
+    },
+    {
+      "slug": "hormuz-strait-oil-tanker-rates-record-high-86c98b",
+      "title": "استئجار الناقلات العملاقة عبر هرمز يتجاوز 800 ألف دولار يومياً",
+      "kind": "news",
+      "outcome": "refused",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 7,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 7,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "attribution",
+          "sentence": "قفزت تكلفة استئجار ناقلات النفط العملاقة عبر مضيق هرمز إلى أكثر من 800 ألف دولار يومياً، بحسب الجزيرة نقلاً عن محللة الشحن ميشيل بوكمان.",
+          "quote": "ومع اندلاع الحرب الأمريكية الإسرائيلية الإيرانية في فبراير/شباط الماضي، قفزت تكلفة استئجار الناقلات العابرة لمضيق هرمز إلى مستويات قياسية، وسجل خط الخليج – الصين أعلى عائد في تاريخه، متجاوزا 800 ألف دولار.",
+          "source": "Al Jazeera Arabic",
+          "correction": "The over-$800,000 record comes from Al Jazeera's own reporting and refers to the Gulf–China route when the war broke out in February; it is not Bockman's statement (she cited about $600,000 a day for Oman–China)."
+        },
+        {
+          "class": "scope",
+          "sentence": "وبلغت تكلفة الرحلة الواحدة نحو 29 مليون دولار، ما يعادل 15 دولاراً للبرميل.",
+          "quote": "وارتفع المؤشر العالمي المركب لعوائد الناقلات العملاقة بأكثر من 40% منذ بداية الشهر، بينما بلغت عروض نقل النفط من خليج المكسيك إلى آسيا مستويات قياسية، مدفوعة بزيادة الطلب الآسيوي على مصادر بديلة للخام الخليجي. وتجاوزت تكلفة الرحلة الواحدة 29 مليون دولار، أي نحو 15 دولارا للبرميل.",
+          "source": "Al Jazeera Arabic",
+          "correction": "The cost of over $29 million per voyage (about $15 a barrel) applies to the Gulf of Mexico–Asia route, not to a trip through Hormuz."
+        },
+        {
+          "class": "figure",
+          "sentence": "ارتفاع تكلفة نقل البرميل 15 دولاراً يضغط على هوامش المصافي ويزيد فاتورة استيراد الطاقة.",
+          "quote": "وتجاوزت تكلفة الرحلة الواحدة 29 مليون دولار، أي نحو 15 دولارا للبرميل.",
+          "source": "Al Jazeera Arabic",
+          "correction": "About $15 a barrel is the total transport cost per barrel on the Gulf of Mexico–Asia voyage, not an increase of $15."
+        },
+        {
+          "class": "attribution",
+          "sentence": "ونقلت القناة عن بوكمان قولها إن تكلفة استئجار ناقلات النفط العملاقة تشهد ارتفاعاً قياسياً مع استمرار أزمة مضيق هرمز وغياب مؤشرات على انفراج التوتر بين واشنطن وطهران.",
+          "quote": "تشهد تكلفة استئجار ناقلات النفط العملاقة ارتفاعا قياسيا، في ظل استمرار أزمة مضيق هرمز وغياب مؤشرات على انفراج التوتر بين واشنطن وطهران، بالتزامن مع إجراءات أمريكية جديدة لتنظيم مواعيد مرور الناقلات عبر المضيق وتوفير الحماية العسكرية لها.",
+          "source": "Al Jazeera Arabic",
+          "correction": "This is Al Jazeera's own reporting, not a statement by Bockman."
+        },
+        {
+          "class": "attribution",
+          "sentence": "وأوضحت أن سحب السفن إلى الأسواق الشرقية رفع تكلفة استئجار الناقلة بين غرب أفريقيا والصين إلى 350 ألف دولار يومياً، واقترب من 400 ألف دولار يومياً في بعض المسارات.",
+          "quote": "كما امتدت الزيادة إلى المحيط الأطلسي، إذ تجاوزت تكلفة استئجار الناقلة 350 ألف دولار يوميا على المسار بين غرب أفريقيا والصين، نتيجة سحب السفن إلى الأسواق الشرقية واعتماد آسيا على خامات تأتي من مسافات أبعد.",
+          "source": "Al Jazeera Arabic",
+          "correction": "The over-$350,000 figure and its cause come from Al Jazeera's own reporting, not from Bockman; Bockman separately said West Africa–China rates approached $400,000 a day."
+        },
+        {
+          "class": "scope",
+          "sentence": "وذكرت «سي إن بي سي» أن أحدث ضربة في المضيق وقعت قبل اجتماع متوقع بين مسؤولين إيرانيين وخليجيين في عُمان لتوقيع اتفاق لشحن النفط عبر الممر المائي، في مؤشر على صعوبة التوصل إلى تهدئة ميدانية.",
+          "quote": "A senior Iranian government official and Gulf diplomat told MS NOW that officials from Iran and Gulf countries would meet in Oman's capital, Muscat, on Monday to sign an agreement establishing an Iran-Oman shipping route through the Strait of Hormuz.",
+          "source": "CNBC",
+          "correction": "The agreement is to establish an Iran-Oman shipping route through the Strait, not specifically an oil-shipping agreement."
+        },
+        {
+          "class": "attribution",
+          "sentence": "وقدّرت بوكمان أن كل مليون دولار يُضاف إلى تكلفة النقل اليومية يعني نحو 26 دولاراً إضافياً للبرميل، وأن تكلفة تشغيل الطائرات العسكرية المتقدمة تصل إلى 75 ألف دولار في الساعة.",
+          "quote": "ويأتي ذلك مع ارتفاع تكلفة تشغيل الطائرات العسكرية المتقدمة، التي قد تصل إلى 75 ألف دولار في الساعة، في حين يستغرق عبور المضيق نحو 7 ساعات للسفن التجارية.",
+          "source": "Al Jazeera Arabic",
+          "correction": "The $26-per-barrel estimate is Bockman's, but the $75,000-per-hour military aircraft cost is Al Jazeera's own reporting, not hers."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 5,
+    "failures": 0,
+    "promptTokens": 33809,
+    "completionTokens": 26711,
+    "cacheReadTokens": 0,
+    "costUsd": 0.8046,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 5
+    },
+    "correctionsEditorCalls": 2
+  },
+  "log": [
+    "[12:13:48] second look: 4 to read now (51 published pieces not yet read; 15 read clean before publication and left out of the audit sample)",
+    "[12:14:25] llm ok role=checker model=claude-cli attempt=1 ms=37033",
+    "[12:14:25] berkshire-nearly-doubles-lennar-stake-2b77a3: 25 of 25 sentences checked · 24 supported · 0 without a source · 0 confirmed error(s)",
+    "[12:14:41] llm ok role=checker model=claude-cli attempt=1 ms=52075",
+    "[12:14:41] openai-pauses-training-most-capable-models-39ecd5: 28 of 28 sentences checked · 26 supported · 1 without a source · 0 confirmed error(s) · 1 listed for a person",
+    "[12:14:41] saudi-east-west-pipeline-closure-brent-d9de59:   source https://www.nytimes.com/2026/09/11/business/iran-war-hormuz-red-sea.html: http-403",
+    "[12:14:41] saudi-east-west-pipeline-closure-brent-d9de59:   source https://www.nytimes.com/2026/09/11/business/diesel-fuel-prices-oil-iran-war.html: http-403",
+    "[12:14:41] saudi-east-west-pipeline-closure-brent-d9de59:   source https://www.aljazeera.com/news/2026/9/11/houthi-advance-in-yemen-is-about-more-t: robots-disallow",
+    "[12:15:17] llm ok role=checker model=claude-cli attempt=1 ms=35509",
+    "[12:15:17] saudi-east-west-pipeline-closure-brent-d9de59: 19 of 19 sentences checked · 10 supported · 2 without a source · 5 confirmed error(s) · 1 listed for a person",
+    "[12:15:17]   ✗ [scope] السعودية تغلق خط الشرق-الغرب النفطي إثر هجمات على محطاته — The source says the drones targeted the pipeline itself in the Riyadh and Medina regions; it does not mention stations.",
+    "[12:15:17]   ✗ [scope] أغلقت السعودية خط الشرق-الغرب النفطي إثر هجمات استهدفت محطات في الرياض والمدينة صباح الخميس. — The drones targeted the pipeline in the Riyadh and Medina regions, not stations in those cities.",
+    "[12:15:17]   ✗ [scope] أعلنت وزارة الطاقة السعودية يوم الجمعة إغلاق خط الشرق-الغرب النفطي كإجراء احترازي بعد تعرّضه لهجمات متعددة است — The drones targeted the pipeline itself in the Riyadh and Medina regions; the source mentions no stations.",
+    "[12:15:17]   ✗ [hedge] ارتفعت أسعار النفط الخام أكثر من 8% هذا الأسبوع، ودفعت شائعات عن الهجمات على خط الأنابيب يوم الخميس الأسعار إل — The source says only that the attack may have played a role in the rally; it does not state it as fact.",
+    "[12:15:17]   ✗ [term] وقال أمين ناصر، الرئيس التنفيذي لأرامكو السعودية، الشهر الماضي إن خط الشرق-الغرب خفّف من أثر اضطرابات إمدادات  — Nasser referred to the oil supply disruption caused by the Iran war, not by tensions with Iran.",
+    "[12:15:18] llm ok role=checker model=claude-cli attempt=1 ms=48932",
+    "[12:15:18] hormuz-strait-oil-tanker-rates-record-high-86c98b: 17 of 17 sentences checked · 7 supported · 0 without a source · 7 confirmed error(s)",
+    "[12:15:18]   ✗ [attribution] قفزت تكلفة استئجار ناقلات النفط العملاقة عبر مضيق هرمز إلى أكثر من 800 ألف دولار يومياً، بحسب الجزيرة نقلاً عن — The over-$800,000 record comes from Al Jazeera's own reporting and refers to the Gulf–China route when the war broke out in February; it is not Bockman's statem",
+    "[12:15:18]   ✗ [scope] وبلغت تكلفة الرحلة الواحدة نحو 29 مليون دولار، ما يعادل 15 دولاراً للبرميل. — The cost of over $29 million per voyage (about $15 a barrel) applies to the Gulf of Mexico–Asia route, not to a trip through Hormuz.",
+    "[12:15:18]   ✗ [figure] ارتفاع تكلفة نقل البرميل 15 دولاراً يضغط على هوامش المصافي ويزيد فاتورة استيراد الطاقة. — About $15 a barrel is the total transport cost per barrel on the Gulf of Mexico–Asia voyage, not an increase of $15.",
+    "[12:15:18]   ✗ [attribution] ونقلت القناة عن بوكمان قولها إن تكلفة استئجار ناقلات النفط العملاقة تشهد ارتفاعاً قياسياً مع استمرار أزمة مضيق — This is Al Jazeera's own reporting, not a statement by Bockman.",
+    "[12:15:18]   ✗ [attribution] وأوضحت أن سحب السفن إلى الأسواق الشرقية رفع تكلفة استئجار الناقلة بين غرب أفريقيا والصين إلى 350 ألف دولار يوم — The over-$350,000 figure and its cause come from Al Jazeera's own reporting, not from Bockman; Bockman separately said West Africa–China rates approached $400,0",
+    "[12:15:18]   ✗ [scope] وذكرت «سي إن بي سي» أن أحدث ضربة في المضيق وقعت قبل اجتماع متوقع بين مسؤولين إيرانيين وخليجيين في عُمان لتوقيع — The agreement is to establish an Iran-Oman shipping route through the Strait, not specifically an oil-shipping agreement.",
+    "[12:15:18]   ✗ [attribution] وقدّرت بوكمان أن كل مليون دولار يُضاف إلى تكلفة النقل اليومية يعني نحو 26 دولاراً إضافياً للبرميل، وأن تكلفة ت — The $26-per-barrel estimate is Bockman's, but the $75,000-per-hour military aircraft cost is Al Jazeera's own reporting, not hers.",
+    "[12:15:18] corrections: 2 stories to the corrections editor",
+    "[12:15:18] [correct] saudi-east-west-pipeline-closure-brent-d9de59: fetching 4 source(s)",
+    "[12:15:18] [correct]   source https://www.nytimes.com/2026/09/11/business/iran-war-hormuz-red-sea.ht: http-403",
+    "[12:15:18] [correct]   source https://www.nytimes.com/2026/09/11/business/diesel-fuel-prices-oil-ira: http-403",
+    "[12:15:18] [correct]   source https://www.aljazeera.com/news/2026/9/11/houthi-advance-in-yemen-is-ab: robots-disallow",
+    "[12:15:36] [correct] llm ok role=writer model=claude-cli attempt=1 ms=17760",
+    "[12:15:36] [correct] saudi-east-west-pipeline-closure-brent-d9de59: corrected; fields title, lede, whyItMatters, body",
+    "[12:15:36]     note: ذكرت نسخة سابقة من هذا الخبر أن الهجمات استهدفت محطات للخط في الرياض والمدينة، وأن شائعات الهجوم دفعت الأسعار إلى الصعود، وأن اضطرابات الإمدادات ارتبطت بالتوترات مع إيران. والصحيح أن الهجمات استهدفت الخط نفسه في منطقتي الرياض والمدينة، وأن الهجوم ربما أسهم في صعود الأسعار، وأن الاضطرابات نجمت عن الحرب مع إيران.",
+    "[12:15:36] [correct] hormuz-strait-oil-tanker-rates-record-high-86c98b: fetching 4 source(s)",
+    "[12:16:24] [correct] llm ok role=writer model=claude-cli attempt=1 ms=45762",
+    "[12:16:24] [correct] hormuz-strait-oil-tanker-rates-record-high-86c98b: refused (10 of 17 sentences changed: more than a correction needs); fields title, lede, whyItMatters, body, keyFacts",
+    "[12:16:24]     note: ذكرت نسخة سابقة من هذا الخبر أن تكلفة استئجار الناقلات العملاقة عبر هرمز تجاوزت 800 ألف دولار يومياً وفق محللة الشحن ميشيل بوكمان، وأن تكلفة الرحلة البالغة 29 مليون دولار تخص عبور المضيق، ونسبت إلى بوكمان كلاماً عن الارتفاع القياسي وعن خط غرب أفريقيا – الصين وعن كلفة الطائرات العسكرية. والصحيح أن رقم 800 ألف دولار هو أعلى عائد سجله خط الخليج – الصين مع اندلاع الحرب في فبراير بحسب الجزيرة، وأن تكلفة الرحلة التي تجاوزت 29 مليون دولار (نحو 15 دولاراً للبرميل إجمالاً لا زيادةً) تخص خط خليج المكسيك – آسيا، وأن بوكمان قدّرت العائد بنحو 600 ألف دولار يومياً بين عُمان والصين وقرابة 400 ألف دولار بين غرب أفريقيا والصين، فيما تعود بقية المعلومات إلى الجزيرة، وأن الاتفاق المرتقب في عُمان يخص إنشاء مسار شحن إيراني عُماني عبر المضيق.",
+    "[12:16:24] [correct] done: 1 corrected, 0 stand, 1 refused or failed; report pipeline/runs/corrections-2026-09-27T12-15-18-201Z.json",
+    "[12:16:24] saudi-east-west-pipeline-closure-brent-d9de59:   source https://www.nytimes.com/2026/09/11/business/iran-war-hormuz-red-sea.html: http-403",
+    "[12:16:24] saudi-east-west-pipeline-closure-brent-d9de59:   source https://www.nytimes.com/2026/09/11/business/diesel-fuel-prices-oil-iran-war.html: http-403",
+    "[12:16:24] saudi-east-west-pipeline-closure-brent-d9de59:   source https://www.aljazeera.com/news/2026/9/11/houthi-advance-in-yemen-is-about-more-t: robots-disallow",
+    "[12:16:58] llm ok role=checker model=claude-cli attempt=1 ms=33461",
+    "[12:16:58] saudi-east-west-pipeline-closure-brent-d9de59: the correction reads clean where it wrote"
+  ]
+}

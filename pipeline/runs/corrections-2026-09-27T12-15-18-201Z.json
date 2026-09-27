@@ -1,0 +1,99 @@
+{
+  "startedAt": "2026-09-27T12:15:18.383Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "saudi-east-west-pipeline-closure-brent-d9de59",
+      "issue": "1. The headline says «السعودية تغلق خط الشرق-الغرب النفطي إثر هجمات على محطاته» (Saudi Arabia shut down the East-West oil pipeline after attacks on its stations.). Source CNBC says: \"The drones targeted the pipeline in the Riyadh and Medina regions Thursday morning causing fires and some damage, the Saudi government said.\". The source says the drones targeted the pipeline itself in the Riyadh and Medina regions; it does not mention stations.\n2. The lede says «أغلقت السعودية خط الشرق-الغرب النفطي إثر هجمات استهدفت محطات في الرياض والمدينة صباح الخميس.» (Saudi Arabia shut the East-West pipeline after attacks on Thursday morning that targeted stations in Riyadh and Medina.). Source CNBC says: \"The drones targeted the pipeline in the Riyadh and Medina regions Thursday morning causing fires and some damage, the Saudi government said.\". The drones targeted the pipeline in the Riyadh and Medina regions, not stations in those cities.\n3. The body says «أعلنت وزارة الطاقة السعودية يوم الجمعة إغلاق خط الشرق-الغرب النفطي كإجراء احترازي بعد تعرّضه لهجمات متعددة استهدفت محطات في منطقتي الرياض والمدينة.» (On Friday the Saudi Energy Ministry announced that it had shut the pipeline as a precaution after multiple attacks targeting stations in the Riyadh and Medina regions.). Source CNBC says: \"The drones targeted the pipeline in the Riyadh and Medina regions Thursday morning causing fires and some damage, the Saudi government said.\". The drones targeted the pipeline itself in the Riyadh and Medina regions; the source mentions no stations.\n4. The body says «ارتفعت أسعار النفط الخام أكثر من 8% هذا الأسبوع، ودفعت شائعات عن الهجمات على خط الأنابيب يوم الخميس الأسعار إلى مزيد من الصعود.» (Crude rose more than 8% this week, and rumors of the pipeline attacks on Thursday pushed prices higher, stated as fact.). Source CNBC says: \"The attack on the pipeline may have played a role in the rally as rumors about the strike circulated Thursday.\". The source says only that the attack may have played a role in the rally; it does not state it as fact.\n5. The body says «وقال أمين ناصر، الرئيس التنفيذي لأرامكو السعودية، الشهر الماضي إن خط الشرق-الغرب خفّف من أثر اضطرابات إمدادات النفط المرتبطة بالتوترات مع إيران أكثر من إطلاق الاحتياطيات الطارئة من الخام.» (Saudi Aramco CEO Amin Nasser said last month that the East-West pipeline did more than the release of emergency crude reserves to mitigate oil supply disruptions linked to tensions with Iran.). Source CNBC says: \"Saudi Aramco CEO Amin Nasser said last month that the East-West pipeline has played a bigger role in mitigating the oil supply disruption caused by the Iran war than the release of emergency crude reserves.\". Nasser referred to the oil supply disruption caused by the Iran war, not by tensions with Iran.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "title",
+        "lede",
+        "whyItMatters",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن الهجمات استهدفت محطات للخط في الرياض والمدينة، وأن شائعات الهجوم دفعت الأسعار إلى الصعود، وأن اضطرابات الإمدادات ارتبطت بالتوترات مع إيران. والصحيح أن الهجمات استهدفت الخط نفسه في منطقتي الرياض والمدينة، وأن الهجوم ربما أسهم في صعود الأسعار، وأن الاضطرابات نجمت عن الحرب مع إيران.",
+      "model": "claude-cli",
+      "before": {
+        "title": "السعودية تغلق خط الشرق-الغرب النفطي إثر هجمات على محطاته",
+        "lede": "أغلقت السعودية خط الشرق-الغرب النفطي إثر هجمات استهدفت محطات في الرياض والمدينة صباح الخميس. وتجاوزت أسعار النفط 100 دولار للبرميل لأول مرة منذ أشهر مع تصاعد التوترات في المنطقة.",
+        "whyItMatters": "إغلاق الخط يلغي المسار البديل الذي تعتمد عليه السعودية لتصدير نفطها من دون المرور بمضيق هرمز خلال التوترات مع إيران. والحوثيون يسعون أصلاً إلى تعطيل صادراتها عبر باب المندب، فيضيق المنفذان معاً على تدفق النفط السعودي."
+      },
+      "after": {
+        "title": "السعودية تغلق خط الشرق-الغرب النفطي إثر هجمات استهدفته",
+        "lede": "أغلقت السعودية خط الشرق-الغرب النفطي إثر هجمات استهدفت الخط في منطقتي الرياض والمدينة صباح الخميس. وتجاوزت أسعار النفط 100 دولار للبرميل لأول مرة منذ أشهر مع تصاعد التوترات في المنطقة.",
+        "whyItMatters": "إغلاق الخط يلغي المسار البديل الذي تعتمد عليه السعودية لتصدير نفطها من دون المرور بمضيق هرمز خلال الحرب مع إيران. والحوثيون يسعون أصلاً إلى تعطيل صادراتها عبر باب المندب، فيضيق المنفذان معاً على تدفق النفط السعودي."
+      },
+      "changedSentences": [
+        "السعودية تغلق خط الشرق-الغرب النفطي إثر هجمات على محطاته",
+        "أغلقت السعودية خط الشرق-الغرب النفطي إثر هجمات استهدفت محطات في الرياض والمدينة صباح الخميس.",
+        "إغلاق الخط يلغي المسار البديل الذي تعتمد عليه السعودية لتصدير نفطها من دون المرور بمضيق هرمز خلال التوترات مع إيران.",
+        "أعلنت وزارة الطاقة السعودية يوم الجمعة إغلاق خط الشرق-الغرب النفطي كإجراء احترازي بعد تعرّضه لهجمات متعددة استهدفت محطات في منطقتي الرياض والمدينة.",
+        "ارتفعت أسعار النفط الخام أكثر من 8% هذا الأسبوع، ودفعت شائعات عن الهجمات على خط الأنابيب يوم الخميس الأسعار إلى مزيد من الصعود.",
+        "وقال أمين ناصر، الرئيس التنفيذي لأرامكو السعودية، الشهر الماضي إن خط الشرق-الغرب خفّف من أثر اضطرابات إمدادات النفط المرتبطة بالتوترات مع إيران أكثر من إطلاق الاحتياطيات الطارئة من الخام."
+      ],
+      "newSentences": [
+        "السعودية تغلق خط الشرق-الغرب النفطي إثر هجمات استهدفته",
+        "أغلقت السعودية خط الشرق-الغرب النفطي إثر هجمات استهدفت الخط في منطقتي الرياض والمدينة صباح الخميس.",
+        "إغلاق الخط يلغي المسار البديل الذي تعتمد عليه السعودية لتصدير نفطها من دون المرور بمضيق هرمز خلال الحرب مع إيران.",
+        "أعلنت وزارة الطاقة السعودية يوم الجمعة إغلاق خط الشرق-الغرب النفطي كإجراء احترازي بعد تعرّضه لهجمات متعددة استهدفته في منطقتي الرياض والمدينة.",
+        "ارتفعت أسعار النفط الخام أكثر من 8% هذا الأسبوع، وربما أسهم الهجوم على خط الأنابيب في هذا الصعود مع تداول شائعات عنه يوم الخميس.",
+        "وقال أمين ناصر، الرئيس التنفيذي لأرامكو السعودية، الشهر الماضي إن خط الشرق-الغرب خفّف من أثر اضطرابات إمدادات النفط الناجمة عن الحرب مع إيران أكثر من إطلاق الاحتياطيات الطارئة من الخام."
+      ]
+    },
+    {
+      "slug": "hormuz-strait-oil-tanker-rates-record-high-86c98b",
+      "issue": "1. The lede says «قفزت تكلفة استئجار ناقلات النفط العملاقة عبر مضيق هرمز إلى أكثر من 800 ألف دولار يومياً، بحسب الجزيرة نقلاً عن محللة الشحن ميشيل بوكمان.» (The supertanker charter cost through Hormuz jumped to over $800,000 a day, according to Al Jazeera citing shipping analyst Michelle Bockman.). Source Al Jazeera Arabic says: \"ومع اندلاع الحرب الأمريكية الإسرائيلية الإيرانية في فبراير/شباط الماضي، قفزت تكلفة استئجار الناقلات العابرة لمضيق هرمز إلى مستويات قياسية، وسجل خط الخليج – الصين أعلى عائد في تاريخه، متجاوزا 800 ألف دولار.\". The over-$800,000 record comes from Al Jazeera's own reporting and refers to the Gulf–China route when the war broke out in February; it is not Bockman's statement (she cited about $600,000 a day for Oman–China).\n2. The lede says «وبلغت تكلفة الرحلة الواحدة نحو 29 مليون دولار، ما يعادل 15 دولاراً للبرميل.» (In the Hormuz context, a single voyage cost about $29 million, equal to about $15 per barrel.). Source Al Jazeera Arabic says: \"وارتفع المؤشر العالمي المركب لعوائد الناقلات العملاقة بأكثر من 40% منذ بداية الشهر، بينما بلغت عروض نقل النفط من خليج المكسيك إلى آسيا مستويات قياسية، مدفوعة بزيادة الطلب الآسيوي على مصادر بديلة للخام الخليجي. وتجاوزت تكلفة الرحلة الواحدة 29 مليون دولار، أي نحو 15 دولارا للبرميل.\". The cost of over $29 million per voyage (about $15 a barrel) applies to the Gulf of Mexico–Asia route, not to a trip through Hormuz.\n3. The why it matters says «ارتفاع تكلفة نقل البرميل 15 دولاراً يضغط على هوامش المصافي ويزيد فاتورة استيراد الطاقة.» (Website analysis: a $15 increase in per-barrel transport cost squeezes refinery margins and raises energy import bills.). Source Al Jazeera Arabic says: \"وتجاوزت تكلفة الرحلة الواحدة 29 مليون دولار، أي نحو 15 دولارا للبرميل.\". About $15 a barrel is the total transport cost per barrel on the Gulf of Mexico–Asia voyage, not an increase of $15.\n4. The body says «ونقلت القناة عن بوكمان قولها إن تكلفة استئجار ناقلات النفط العملاقة تشهد ارتفاعاً قياسياً مع استمرار أزمة مضيق هرمز وغياب مؤشرات على انفراج التوتر بين واشنطن وطهران.» (Al Jazeera quoted Bockman as saying supertanker charter costs are at record highs amid the continuing Hormuz crisis and no signs of easing between Washington and Tehran.). Source Al Jazeera Arabic says: \"تشهد تكلفة استئجار ناقلات النفط العملاقة ارتفاعا قياسيا، في ظل استمرار أزمة مضيق هرمز وغياب مؤشرات على انفراج التوتر بين واشنطن وطهران، بالتزامن مع إجراءات أمريكية جديدة لتنظيم مواعيد مرور الناقلات عبر المضيق وتوفير الحماية العسكرية لها.\". This is Al Jazeera's own reporting, not a statement by Bockman.\n5. The body says «وأوضحت أن سحب السفن إلى الأسواق الشرقية رفع تكلفة استئجار الناقلة بين غرب أفريقيا والصين إلى 350 ألف دولار يومياً، واقترب من 400 ألف دولار يومياً في بعض المسارات.» (Bockman explained that the withdrawal of ships to eastern markets raised the West Africa–China charter cost to $350,000 a day, and that rates neared $400,000 a day on some routes.). Source Al Jazeera Arabic says: \"كما امتدت الزيادة إلى المحيط الأطلسي، إذ تجاوزت تكلفة استئجار الناقلة 350 ألف دولار يوميا على المسار بين غرب أفريقيا والصين، نتيجة سحب السفن إلى الأسواق الشرقية واعتماد آسيا على خامات تأتي من مسافات أبعد.\". The over-$350,000 figure and its cause come from Al Jazeera's own reporting, not from Bockman; Bockman separately said West Africa–China rates approached $400,000 a day.\n6. The body says «وذكرت «سي إن بي سي» أن أحدث ضربة في المضيق وقعت قبل اجتماع متوقع بين مسؤولين إيرانيين وخليجيين في عُمان لتوقيع اتفاق لشحن النفط عبر الممر المائي، في مؤشر على صعوبة التوصل إلى تهدئة ميدانية.» (CNBC reported that the latest strike came before an expected meeting of Iranian and Gulf officials in Oman to sign an agreement for shipping oil through the waterway.). Source CNBC says: \"A senior Iranian government official and Gulf diplomat told MS NOW that officials from Iran and Gulf countries would meet in Oman's capital, Muscat, on Monday to sign an agreement establishing an Iran-Oman shipping route through the Strait of Hormuz.\". The agreement is to establish an Iran-Oman shipping route through the Strait, not specifically an oil-shipping agreement.\n7. The body says «وقدّرت بوكمان أن كل مليون دولار يُضاف إلى تكلفة النقل اليومية يعني نحو 26 دولاراً إضافياً للبرميل، وأن تكلفة تشغيل الطائرات العسكرية المتقدمة تصل إلى 75 ألف دولار في الساعة.» (Bockman estimated that each $1 million added to the daily transport cost means about $26 more per barrel, and that advanced military aircraft cost up to $75,000 an hour to operate.). Source Al Jazeera Arabic says: \"ويأتي ذلك مع ارتفاع تكلفة تشغيل الطائرات العسكرية المتقدمة، التي قد تصل إلى 75 ألف دولار في الساعة، في حين يستغرق عبور المضيق نحو 7 ساعات للسفن التجارية.\". The $26-per-barrel estimate is Bockman's, but the $75,000-per-hour military aircraft cost is Al Jazeera's own reporting, not hers.",
+      "outcome": "refused",
+      "problems": [
+        "10 of 17 sentences changed: more than a correction needs"
+      ],
+      "fields": [
+        "title",
+        "lede",
+        "whyItMatters",
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن تكلفة استئجار الناقلات العملاقة عبر هرمز تجاوزت 800 ألف دولار يومياً وفق محللة الشحن ميشيل بوكمان، وأن تكلفة الرحلة البالغة 29 مليون دولار تخص عبور المضيق، ونسبت إلى بوكمان كلاماً عن الارتفاع القياسي وعن خط غرب أفريقيا – الصين وعن كلفة الطائرات العسكرية. والصحيح أن رقم 800 ألف دولار هو أعلى عائد سجله خط الخليج – الصين مع اندلاع الحرب في فبراير بحسب الجزيرة، وأن تكلفة الرحلة التي تجاوزت 29 مليون دولار (نحو 15 دولاراً للبرميل إجمالاً لا زيادةً) تخص خط خليج المكسيك – آسيا، وأن بوكمان قدّرت العائد بنحو 600 ألف دولار يومياً بين عُمان والصين وقرابة 400 ألف دولار بين غرب أفريقيا والصين، فيما تعود بقية المعلومات إلى الجزيرة، وأن الاتفاق المرتقب في عُمان يخص إنشاء مسار شحن إيراني عُماني عبر المضيق.",
+      "model": "claude-cli",
+      "before": {
+        "title": "استئجار الناقلات العملاقة عبر هرمز يتجاوز 800 ألف دولار يومياً",
+        "lede": "قفزت تكلفة استئجار ناقلات النفط العملاقة عبر مضيق هرمز إلى أكثر من 800 ألف دولار يومياً، بحسب الجزيرة نقلاً عن محللة الشحن ميشيل بوكمان. وبلغت تكلفة الرحلة الواحدة نحو 29 مليون دولار، ما يعادل 15 دولاراً للبرميل.",
+        "whyItMatters": "ارتفاع تكلفة نقل البرميل 15 دولاراً يضغط على هوامش المصافي ويزيد فاتورة استيراد الطاقة. وعلاوات التأمين التي تبلغ 12.5% من قيمة السفينة قد تجعل بعض مسارات الشحن غير مجدية تجارياً، فيما يهدد تراجع التدفقات إلى 45% أمن الإمدادات لآسيا وأوروبا."
+      },
+      "after": {
+        "title": "عائد الناقلات العملاقة على خط الخليج – الصين يتجاوز 800 ألف دولار يومياً",
+        "lede": "قفز عائد استئجار الناقلات العملاقة على خط الخليج – الصين إلى أكثر من 800 ألف دولار يومياً، مسجلاً أعلى مستوى له على الإطلاق، مع اندلاع الحرب الأمريكية الإسرائيلية الإيرانية في فبراير، بحسب الجزيرة. وتجاوزت تكلفة الرحلة الواحدة لنقل النفط من خليج المكسيك إلى آسيا 29 مليون دولار، أي نحو 15 دولاراً للبرميل.",
+        "whyItMatters": "بلوغ تكلفة نقل البرميل نحو 15 دولاراً على خط خليج المكسيك – آسيا يضغط على هوامش المصافي ويزيد فاتورة استيراد الطاقة. وعلاوات التأمين التي تبلغ 12.5% من قيمة السفينة قد تجعل بعض مسارات الشحن غير مجدية تجارياً، فيما يهدد تراجع التدفقات إلى 45% أمن الإمدادات لآسيا وأوروبا."
+      },
+      "changedSentences": [
+        "استئجار الناقلات العملاقة عبر هرمز يتجاوز 800 ألف دولار يومياً",
+        "قفزت تكلفة استئجار ناقلات النفط العملاقة عبر مضيق هرمز إلى أكثر من 800 ألف دولار يومياً، بحسب الجزيرة نقلاً عن محللة الشحن ميشيل بوكمان.",
+        "وبلغت تكلفة الرحلة الواحدة نحو 29 مليون دولار، ما يعادل 15 دولاراً للبرميل.",
+        "ارتفاع تكلفة نقل البرميل 15 دولاراً يضغط على هوامش المصافي ويزيد فاتورة استيراد الطاقة.",
+        "ونقلت القناة عن بوكمان قولها إن تكلفة استئجار ناقلات النفط العملاقة تشهد ارتفاعاً قياسياً مع استمرار أزمة مضيق هرمز وغياب مؤشرات على انفراج التوتر بين واشنطن وطهران.",
+        "وأوضحت أن سحب السفن إلى الأسواق الشرقية رفع تكلفة استئجار الناقلة بين غرب أفريقيا والصين إلى 350 ألف دولار يومياً، واقترب من 400 ألف دولار يومياً في بعض المسارات.",
+        "وذكرت «سي إن بي سي» أن أحدث ضربة في المضيق وقعت قبل اجتماع متوقع بين مسؤولين إيرانيين وخليجيين في عُمان لتوقيع اتفاق لشحن النفط عبر الممر المائي، في مؤشر على صعوبة التوصل إلى تهدئة ميدانية.",
+        "وقدّرت بوكمان أن كل مليون دولار يُضاف إلى تكلفة النقل اليومية يعني نحو 26 دولاراً إضافياً للبرميل، وأن تكلفة تشغيل الطائرات العسكرية المتقدمة تصل إلى 75 ألف دولار في الساعة.",
+        "تكلفة استئجار الناقلة العملاقة أكثر من 800 ألف دولار يومياً",
+        "تكلفة الرحلة الواحدة 29 مليون دولار (نحو 15 دولاراً للبرميل)"
+      ],
+      "newSentences": [
+        "عائد الناقلات العملاقة على خط الخليج – الصين يتجاوز 800 ألف دولار يومياً",
+        "قفز عائد استئجار الناقلات العملاقة على خط الخليج – الصين إلى أكثر من 800 ألف دولار يومياً، مسجلاً أعلى مستوى له على الإطلاق، مع اندلاع الحرب الأمريكية الإسرائيلية الإيرانية في فبراير، بحسب الجزيرة.",
+        "وتجاوزت تكلفة الرحلة الواحدة لنقل النفط من خليج المكسيك إلى آسيا 29 مليون دولار، أي نحو 15 دولاراً للبرميل.",
+        "بلوغ تكلفة نقل البرميل نحو 15 دولاراً على خط خليج المكسيك – آسيا يضغط على هوامش المصافي ويزيد فاتورة استيراد الطاقة.",
+        "وأوضحت القناة أن تكلفة الاستئجار بلغت مستويات قياسية مع بقاء أزمة المضيق دون حل وانعدام أي بوادر لتهدئة التوتر بين واشنطن وطهران.",
+        "وامتدت الزيادة إلى الأطلسي، فتجاوزت تكلفة استئجار الناقلة على المسار بين غرب أفريقيا والصين 350 ألف دولار يومياً بعد توجيه السفن نحو أسواق الشرق.",
+        "ونقلت القناة عن محللة الشحن ميشيل بوكمان قولها إن العوائد على هذا الخط اقتربت من 400 ألف دولار يومياً، وإن أسعار نقل الناقلات العملاقة من عُمان إلى الصين بلغت نحو 600 ألف دولار يومياً.",
+        "وذكرت «سي إن بي سي» أن أحدث ضربة في المضيق وقعت قبل اجتماع متوقع بين مسؤولين إيرانيين وخليجيين في عُمان لتوقيع اتفاق يؤسس مساراً إيرانياً عُمانياً للشحن عبر المضيق، في مؤشر على صعوبة التوصل إلى تهدئة ميدانية.",
+        "وقدّرت بوكمان أن كل مليون دولار يُضاف إلى تكلفة النقل اليومية يعني نحو 26 دولاراً إضافياً للبرميل.",
+        "وأشارت القناة إلى أن تكلفة تشغيل الطائرات العسكرية المتقدمة قد تصل إلى 75 ألف دولار في الساعة.",
+        "أعلى عائد على خط الخليج – الصين أكثر من 800 ألف دولار يومياً (مع اندلاع الحرب في فبراير)",
+        "تكلفة الرحلة من خليج المكسيك إلى آسيا أكثر من 29 مليون دولار (نحو 15 دولاراً للبرميل)"
+      ]
+    }
+  ]
+}
