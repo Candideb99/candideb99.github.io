@@ -259,6 +259,50 @@
         "classes": [],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-09-28T14:29:25.308Z",
+      "slug": "nvidia-adds-150-billion-share-buyback-0e5de8",
+      "checker": "f6d38e4947.2",
+      "lessons": "v20",
+      "lessonsHash": "f5873a7267",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 15,
+        "notFound": 4,
+        "checked": 19,
+        "words": 181,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 2
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 15,
+        "notFound": 5,
+        "checked": 20,
+        "words": 176,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 15,
+        "notFound": 5,
+        "checked": 20,
+        "words": 176,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }

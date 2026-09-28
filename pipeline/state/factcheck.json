@@ -8000,6 +8000,129 @@
         ],
         "secondCorrection": "corrected"
       }
+    },
+    "global-bond-selloff-oil-prices-ecb-rate-hike-93d47b": {
+      "at": "2026-09-28T14:12:15.655Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-10T23:23:06.787Z",
+      "sourcesRead": 1,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 19,
+        "weak": 0,
+        "noEvidence": 2,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "عوائد سندات أمريكية عشرية: 4.92%، الأعلى منذ 2023",
+        "يُشكّل ارتفاع عوائد السندات العالمية ضغوطًا متزايدة على الاقتصادات الكبرى، إذ إن تصاعد تكاليف الاقتراض الحكومية يُقلّص الهوامش المالية المتاحة للاستثمار ويُرفع أعباء الاقتراض على المستهلكين.",
+        "وارتفعت عوائد سندات الخزانة الأمريكية لأجل عشر سنوات إلى 4.92%، وهو الأعلى منذ 2023."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "china-industrial-profits-slowest-growth-august-d8c45a": {
+      "at": "2026-09-28T14:12:15.620Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v19",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-28T05:55:43.131Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 24,
+        "checked": 24,
+        "supported": 23,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "نمو أرباح الشركات الكبرى يناير-أغسطس: 15.7%"
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "opec-oil-demand-growth-2027-forecast-2e88df": {
+      "at": "2026-09-28T14:12:54.304Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-10T23:19:42.511Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 13,
+        "weak": 1,
+        "noEvidence": 1,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 2,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "drift",
+          "class": "term",
+          "field": "body",
+          "sentence": "وتأتي الزيادة الحادة في النمو بشكل أساسي من دول خارج منظمة التعاون الاقتصادي والتنمية، التي من المتوقع أن يرتفع طلبها من 490 ألف برميل يومياً في 2026 إلى 1.92 مليون برميل يومياً في 2027.",
+          "quote": "Non-OECD countries account for most of next year’s increase. Their combined demand growth accelerates from 490,000 bpd in 2026 to 1.92 million bpd in 2027.",
+          "source": "OilPrice.com",
+          "correction": "The 490,000 bpd and 1.92 million bpd figures are non-OECD demand growth in 2026 and 2027, not their total demand levels."
+        },
+        {
+          "status": "drift",
+          "class": "scope",
+          "field": "body",
+          "sentence": "وبلغ متوسط الإنتاج الأمريكي 13.7 مليون برميل يومياً خلال النصف الأول من هذا العام (2026)، بزيادة 300 ألف برميل يومياً عن الفترة نفسها من العام الماضي، معظمها من حوض بيرميان.",
+          "quote": "Most of that increase came from the Permian and the U.S. part of the Gulf of Mexico.",
+          "source": "OilPrice.com",
+          "correction": "Most of the increase came from the Permian and the US Gulf of Mexico together, and the Gulf alone added 200,000 bpd of the 300,000 bpd rise, so the Permian was not the main source."
+        }
+      ],
+      "notFound": [
+        "لكن ارتفاع الإنتاج الأمريكي المستمر قد يحدّ من قدرة المنظمة على التحكم في الأسعار.",
+        "وأبقت الإدارة على توقعاتها لإنتاج 2026 عند 13.8 مليون برميل يومياً دون تغيير عن توقعات يوليو وأغسطس، وهو ما سيتجاوز الرقم القياسي المسجل في 2025 البالغ 13.7 مليون برميل يومياً إذا تحقق."
+      ],
+      "weak": [
+        {
+          "sentence": "في سياق العرض، رفعت إدارة معلومات الطاقة الأمريكية توقعاتها لإنتاج النفط الأمريكي في 2027 إلى 14.3 مليون برميل يومياً، بزيادة 100 ألف برميل يومياً عن توقعات أغسطس.",
+          "quote": "The U.S. Energy Information Administration has raised its forecast for U.S. crude oil production in 2027 to 14.3 million barrels per day, up from 14.2 million bpd in August and 14.0 million bpd in July."
+        }
+      ],
+      "outcome": "listed"
     }
   }
 }

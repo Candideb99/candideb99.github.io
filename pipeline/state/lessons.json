@@ -169,10 +169,11 @@
     "hormuz-shipping-traffic-plunges-tensions-5c1d93:50c8721f",
     "hormuz-shipping-traffic-plunges-tensions-5c1d93:f150cc8d",
     "hormuz-shipping-traffic-plunges-tensions-5c1d93:72f5ffc3",
-    "oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2:31a9d735"
+    "oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2:31a9d735",
+    "china-industrial-profits-slowest-growth-august-d8c45a:e63784db"
   ],
-  "version": 19,
-  "updatedAt": "2026-09-28T05:38:42.473Z",
+  "version": 20,
+  "updatedAt": "2026-09-28T14:13:30.720Z",
   "lessons": [
     {
       "id": "L1",
@@ -210,11 +211,12 @@
         "us-inflation-august-gasoline-fed-rate-hike-16ce27:17d480ff",
         "saudi-east-west-pipeline-closure-brent-d9de59:dffb331f",
         "oracle-cloud-infrastructure-revenue-ai-growth-fc2b80:2748c51c",
-        "oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2:31a9d735"
+        "oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2:31a9d735",
+        "china-industrial-profits-slowest-growth-august-d8c45a:e63784db"
       ],
-      "seen": 26,
+      "seen": 27,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-28T05:38:42.473Z",
+      "lastSeen": "2026-09-28T14:13:30.720Z",
       "status": "active",
       "previous": [
         "Keep every qualifier in Arabic: could, possibly, as much as, hopefully, expected, scheduled, will, estimates, reportedly. Name who claims, forecasts or estimates it. Never turn a claim, hope, forecast or reported figure into a stated fact, a present result or a bare headline number.",
@@ -764,6 +766,13 @@
     },
     {
       "at": "2026-09-28T05:38:42.473Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L1 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-09-28T14:13:30.720Z",
       "mistakes": 1,
       "applied": [
         "reinforce L1 (+1; reworded at most once a week)"

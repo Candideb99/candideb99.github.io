@@ -1,0 +1,96 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-09-28T14:12:15.088Z",
+  "durationSec": 75,
+  "read": 3,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "global-bond-selloff-oil-prices-ecb-rate-hike-93d47b",
+      "title": "موجة بيع في السندات العالمية مع صعود النفط فوق 107 دولار",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 19,
+        "weak": 0,
+        "noEvidence": 2,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "china-industrial-profits-slowest-growth-august-d8c45a",
+      "title": "أرباح المصانع الصينية تنمو 4.2% في أغسطس بأبطأ وتيرة هذا العام",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 24,
+        "checked": 24,
+        "supported": 23,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "opec-oil-demand-growth-2027-forecast-2e88df",
+      "title": "أوبك تتوقع نمواً يفوق ستة أضعاف في الطلب على النفط عام 2027",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 13,
+        "weak": 1,
+        "noEvidence": 1,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 2,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 3,
+    "failures": 0,
+    "promptTokens": 20482,
+    "completionTokens": 14616,
+    "cacheReadTokens": 0,
+    "costUsd": 0.4562,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 3
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[14:12:15] second look: 3 to read now (43 published pieces not yet read; 23 read clean before publication and left out of the audit sample)",
+    "[14:12:15] global-bond-selloff-oil-prices-ecb-rate-hike-93d47b:   source https://www.nytimes.com/2026/09/10/business/economy/canada-tariffs-sprinkles.htm: http-403",
+    "[14:12:16] global-bond-selloff-oil-prices-ecb-rate-hike-93d47b:   source https://www.nytimes.com/2026/09/09/business/dealbook/clay-ai-fundraising.html: http-403",
+    "[14:12:16] global-bond-selloff-oil-prices-ecb-rate-hike-93d47b:   source https://www.sec.gov/newsroom/press-releases/2026-86-sec-charges-founder-his-two-: http-403",
+    "[14:12:54] llm ok role=checker model=claude-cli attempt=1 ms=38045",
+    "[14:12:54] global-bond-selloff-oil-prices-ecb-rate-hike-93d47b: 22 of 22 sentences checked · 19 supported · 3 without a source · 0 confirmed error(s)",
+    "[14:12:54] llm ok role=checker model=claude-cli attempt=1 ms=37945",
+    "[14:12:54] china-industrial-profits-slowest-growth-august-d8c45a: 24 of 24 sentences checked · 23 supported · 1 without a source · 0 confirmed error(s)",
+    "[14:13:30] llm ok role=checker model=claude-cli attempt=1 ms=34319",
+    "[14:13:30] opec-oil-demand-growth-2027-forecast-2e88df: 18 of 18 sentences checked · 13 supported · 2 without a source · 0 confirmed error(s) · 2 listed for a person"
+  ]
+}

@@ -1100,6 +1100,153 @@
           "noted": []
         }
       ]
+    },
+    "mideast-oil-exports-rebound-september-kpler-fa632f": {
+      "at": "2026-09-28T14:17:59.838Z",
+      "title": "صادرات نفط الشرق الأوسط تتعافى إلى 12.8 مليون برميل يومياً في سبتمبر",
+      "writer": "claude-cli",
+      "lessons": "v20",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 25,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "trump-weighs-us-diesel-export-ban-7feb98": {
+      "at": "2026-09-28T14:25:26.496Z",
+      "title": "ترامب يدرس بجدية حظر صادرات الديزل مقرّاً بأنه قد يرفع البنزين",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v20",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 26,
+            "checked": 26,
+            "supported": 21,
+            "weak": 0,
+            "noEvidence": 4,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 11,
+              "field": "whyItMatters",
+              "class": "attribution",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وفّرت الولايات المتحدة مؤخراً نحو نصف واردات أوروبا من الديزل، ولهذا يتوقع محللون، بينهم غولدمان ساكس، أن يرفع أي قيد أمريكي على صادراته الأسعار في القارة، وقد يدفعها إلى مستوى غير مسبوق.",
+              "quote": "Goldman estimates the price effect at $3 per barrel of diesel, equal to about 2% of current prices.",
+              "source": "OilPrice.com",
+              "sourceN": 3,
+              "correction": "The 'unprecedented level' warning comes from Argus Media's Benedict George; Goldman Sachs estimates only a modest European effect of about $3 per barrel, or roughly 2% of current prices."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 26,
+            "checked": 26,
+            "supported": 22,
+            "weak": 0,
+            "noEvidence": 4,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "nvidia-adds-150-billion-share-buyback-0e5de8": {
+      "at": "2026-09-28T14:29:25.305Z",
+      "title": "إنفيديا تضيف 150 مليار دولار إلى برنامج إعادة شراء أسهمها",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v20",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 20,
+            "checked": 20,
+            "supported": 19,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "nvidia-launches-ai-agent-safety-platform-e7caae": {
+      "at": "2026-09-28T14:35:15.466Z",
+      "title": "إنفيديا: منصتنا الجديدة تعزل وكلاء الذكاء الاصطناعي خلال أجزاء من الثانية",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v20",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 22,
+            "checked": 22,
+            "supported": 21,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
