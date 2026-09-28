@@ -981,6 +981,125 @@
           ]
         }
       ]
+    },
+    "brent-above-107-trump-rejects-iran-proposal-f2ef22": {
+      "at": "2026-09-28T05:44:46.340Z",
+      "title": "برنت يتجاوز 107 دولارات بعد رفض ترامب المقترح الإيراني بشأن هرمز",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v19",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 23,
+            "checked": 23,
+            "supported": 23,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "gold-falls-below-4200-fed-hike-bets-c9d78a": {
+      "at": "2026-09-28T05:49:41.083Z",
+      "title": "الذهب يهبط دون 4200 دولار مع رهانات رفع الفائدة الأمريكية",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v19",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 28,
+            "checked": 28,
+            "supported": 12,
+            "weak": 1,
+            "noEvidence": 15,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "china-industrial-profits-slowest-growth-august-d8c45a": {
+      "at": "2026-09-28T05:55:43.135Z",
+      "title": "أرباح المصانع الصينية تنمو 4.2% في أغسطس بأبطأ وتيرة هذا العام",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v19",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 21,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 22,
+              "field": "body",
+              "class": "hedge",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "ويتوقع اقتصاديون أن تعتمد بكين أكثر على التحفيز لتثبيت ربحية الشركات، وأن تتسارع الاندماجات في القطاعات التي تعاني ضعف الطلب، بحسب «سي إن بي سي».",
+              "quote": "Economists expect Beijing to lean harder on stimulus to stabilize corporate profitability, as consolidation accelerates in sectors already facing sluggish demand, fierce competition and cutthroat price wars.",
+              "source": "CNBC",
+              "sourceN": 2,
+              "correction": "Only the heavier reliance on stimulus is the economists' expectation; the source reports consolidation as already accelerating, not as a forecast."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 2
+          }
+        },
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 23,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

@@ -7874,6 +7874,132 @@
         ],
         "secondCorrection": "corrected"
       }
+    },
+    "uk-economy-grows-july-ai-0a6a4e": {
+      "at": "2026-09-28T05:35:47.797Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-11T11:39:27.362Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 29,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2": {
+      "at": "2026-09-28T05:35:47.867Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-11T04:55:28.108Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 21,
+        "checked": 21,
+        "supported": 14,
+        "weak": 1,
+        "noEvidence": 3,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 2,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 16,
+          "field": "body",
+          "sentence": "وفي المقابل، قدّرت إدارة معلومات الطاقة الأمريكية أن الإنتاج الخام المتوقف في الشرق الأوسط بلغ متوسط 6.7 مليون برميل يومياً في أغسطس، ارتفاعاً من 5 ملايين برميل في يوليو، مع توقعات باستمرار الانخفاض في المخزونات العالمية بمقدار 400 مليون برميل خلال عام 2026.",
+          "claim": "The EIA estimated Middle East crude shut-ins at 6.7 million bpd in August, up from 5 million in July, and forecasts that global inventories will keep declining by 400 million barrels over 2026.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Economy Middle East",
+          "sourceDate": "2026-09-11",
+          "quote": "The EIA estimates worldwide oil inventories have fallen by approximately 400 million barrels so far in 2026 and expects stocks to continue declining through the end of the year.",
+          "correction": "The 400 million barrels is the EIA's estimate of the draw already recorded so far in 2026, not a forecast of the decline over the year; the EIA only expects further, unquantified declines through year-end.",
+          "class": "hedge"
+        }
+      ],
+      "listed": [
+        {
+          "status": "unverified",
+          "class": "hedge",
+          "field": "lede",
+          "sentence": "سجلت أسعار النفط مكاسب أسبوعية بنحو 13%، وهي الأقوى منذ منتصف يوليو، مع تجاوز خام برنت 108 دولارات للبرميل الجمعة.",
+          "quote": "For the week, Brent and WTI were both trading nearly 13 percent higher, putting them on track for their steepest weekly gains since the week ended July 17.",
+          "source": "Economy Middle East",
+          "correction": "On Friday morning the benchmarks were only trading nearly 13% higher for the week and were on track for their steepest weekly gains since mid-July; the week had not closed, so no weekly gain had yet been recorded."
+        },
+        {
+          "status": "unverified",
+          "class": "attribution",
+          "field": "body",
+          "sentence": "وفي تطور منفصل، سيطر الحوثيون على ميناء موcha في اليمن يوم الخميس، ما أضاف مصدراً ثانياً للقلق في أسواق الطاقة مع توسع الأنشطة العسكرية على الساحل الأحمر اليمني، وفق ما ذكرته مصادر السوق.",
+          "quote": "Iran-aligned Houthis seized control of Yemen’s port of Mocha on Thursday, increasing concerns over shipping through the Red Sea and Bab el-Mandeb. However, the spread of military activity along Yemen’s Red Sea coast has added a second major source of uncertainty for energy markets.",
+          "source": "Economy Middle East",
+          "correction": "The seizure and the 'second major source of uncertainty' assessment are Economy Middle East's own reporting and analysis, not statements by market sources."
+        }
+      ],
+      "notFound": [
+        "النفط يقفز 13% في أسبوع.. برنت يتجاوز 108 دولارات",
+        "أسعار برنت الأسبوعية: 108.44 دولار للبرميل يوم الجمعة، بارتفاع أسبوعي نحو 13%",
+        "وارتفع العائد على سندات الخزانة الأمريكية لأجل عشر سنوات إلى 4.91%، بينما سعت الأسواق احتمال رفع الاحتياطي الفيدرالي لأسعار الفائدة في اجتماعه القادم إلى نحو 70%، مقارنة مع 61% في اليوم السابق."
+      ],
+      "weak": [
+        {
+          "sentence": "ارتفاع النفط فوق 108 دولارات يزيد تكاليف النقل والصناعة والطاقة، وقد دفع المركزي الأوروبي فعلاً إلى رفع الفائدة.",
+          "quote": "وفي أوروبا، رفع البنك المركزي الأوروبي أسعار الفائدة يوم الخميس أيضاً، في مسعى للحد من التضخم، محذراً من أن الصراع في الشرق الأوسط «يواصل توليد ضغوط تضخمية»."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن إدارة معلومات الطاقة الأمريكية تتوقع انخفاض المخزونات العالمية من النفط بمقدار 400 مليون برميل خلال 2026. والصحيح أن الإدارة تقدّر أن المخزونات تراجعت بنحو 400 مليون برميل منذ بداية العام، وتتوقع أن تواصل انخفاضها حتى نهايته دون أن تحدد حجم هذا الانخفاض.",
+      "verified": {
+        "at": "2026-09-28T05:38:12.471Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": [
+          {
+            "class": "scope",
+            "field": "keyFacts",
+            "sentence": "تكلفة وقود الطيران: 171 دولاراً للبرميل للأسبوع المنتهي في 4 سبتمبر، بارتفاع 90% سنوياً",
+            "quote": "It was last at $171 per barrel for the week ending Sept. 4, up 90% from the prior year's average, according to the International Air Travel Association's Jet Fuel Price Monitor.",
+            "correction": "The 90% rise is measured against the prior year's average price, not as a year-on-year change."
+          },
+          {
+            "class": "attribution",
+            "field": "body",
+            "sentence": "وفي تطور منفصل، سيطر الحوثيون على ميناء موcha في اليمن يوم الخميس، ما أضاف مصدراً ثانياً للقلق في أسواق الطاقة مع توسع الأنشطة العسكرية على الساحل الأحمر اليمني، وفق ما ذكرته مصادر السوق.",
+            "quote": "Iran-aligned Houthis seized control of Yemen’s port of Mocha on Thursday, increasing concerns over shipping through the Red Sea and Bab el-Mandeb.",
+            "correction": "The seizure of Mocha is reported by Economy Middle East itself and is not attributed to market sources."
+          }
+        ],
+        "secondCorrection": "corrected"
+      }
     }
   }
 }

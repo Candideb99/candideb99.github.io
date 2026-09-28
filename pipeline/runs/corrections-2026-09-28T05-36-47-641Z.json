@@ -1,0 +1,26 @@
+{
+  "startedAt": "2026-09-28T05:36:47.821Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2",
+      "issue": "The body says «وفي المقابل، قدّرت إدارة معلومات الطاقة الأمريكية أن الإنتاج الخام المتوقف في الشرق الأوسط بلغ متوسط 6.7 مليون برميل يومياً في أغسطس، ارتفاعاً من 5 ملايين برميل في يوليو، مع توقعات باستمرار الانخفاض في المخزونات العالمية بمقدار 400 مليون برميل خلال عام 2026.» (The EIA estimated Middle East crude shut-ins at 6.7 million bpd in August, up from 5 million in July, and forecasts that global inventories will keep declining by 400 million barrels over 2026.). Source Economy Middle East says: \"The EIA estimates worldwide oil inventories have fallen by approximately 400 million barrels so far in 2026 and expects stocks to continue declining through the end of the year.\". The 400 million barrels is the EIA's estimate of the draw already recorded so far in 2026, not a forecast of the decline over the year; the EIA only expects further, unquantified declines through year-end.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن إدارة معلومات الطاقة الأمريكية تتوقع انخفاض المخزونات العالمية من النفط بمقدار 400 مليون برميل خلال 2026. والصحيح أن الإدارة تقدّر أن المخزونات تراجعت بنحو 400 مليون برميل منذ بداية العام، وتتوقع أن تواصل انخفاضها حتى نهايته دون أن تحدد حجم هذا الانخفاض.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وفي المقابل، قدّرت إدارة معلومات الطاقة الأمريكية أن الإنتاج الخام المتوقف في الشرق الأوسط بلغ متوسط 6.7 مليون برميل يومياً في أغسطس، ارتفاعاً من 5 ملايين برميل في يوليو، مع توقعات باستمرار الانخفاض في المخزونات العالمية بمقدار 400 مليون برميل خلال عام 2026."
+      ],
+      "newSentences": [
+        "وفي المقابل، قدّرت إدارة معلومات الطاقة الأمريكية أن الإنتاج الخام المتوقف في الشرق الأوسط بلغ متوسط 6.7 مليون برميل يومياً في أغسطس، ارتفاعاً من 5 ملايين برميل في يوليو.",
+        "وتقدّر الإدارة أن المخزونات العالمية من النفط تراجعت بنحو 400 مليون برميل منذ بداية 2026، وتتوقع أن تواصل انخفاضها حتى نهاية العام."
+      ]
+    }
+  ]
+}

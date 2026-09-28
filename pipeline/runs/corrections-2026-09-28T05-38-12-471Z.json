@@ -1,0 +1,28 @@
+{
+  "startedAt": "2026-09-28T05:38:12.658Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2",
+      "issue": "1. The key fact says «تكلفة وقود الطيران: 171 دولاراً للبرميل للأسبوع المنتهي في 4 سبتمبر، بارتفاع 90% سنوياً» (Jet fuel cost $171 a barrel in the week ending September 4, up 90% year on year.). Source CNBC says: \"It was last at $171 per barrel for the week ending Sept. 4, up 90% from the prior year's average, according to the International Air Travel Association's Jet Fuel Price Monitor.\". The 90% rise is measured against the prior year's average price, not as a year-on-year change.\n2. The body says «وفي تطور منفصل، سيطر الحوثيون على ميناء موcha في اليمن يوم الخميس، ما أضاف مصدراً ثانياً للقلق في أسواق الطاقة مع توسع الأنشطة العسكرية على الساحل الأحمر اليمني، وفق ما ذكرته مصادر السوق.» (The Houthis seized Yemen's port of Mocha on Thursday, adding a second source of concern for energy markets, according to market sources.). Source Economy Middle East says: \"Iran-aligned Houthis seized control of Yemen’s port of Mocha on Thursday, increasing concerns over shipping through the Red Sea and Bab el-Mandeb.\". The seizure of Mocha is reported by Economy Middle East itself and is not attributed to market sources.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن سعر وقود الطيران ارتفع 90% على أساس سنوي، والصحيح أن الارتفاع محسوب مقارنة بمتوسط سعره في السنة السابقة. كما نسبت النسخة السابقة نبأ سيطرة الحوثيين على ميناء المخا إلى مصادر في السوق، والصحيح أنه ورد في تقرير لموقع «إيكونومي ميدل إيست».",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وفي تطور منفصل، سيطر الحوثيون على ميناء موcha في اليمن يوم الخميس، ما أضاف مصدراً ثانياً للقلق في أسواق الطاقة مع توسع الأنشطة العسكرية على الساحل الأحمر اليمني، وفق ما ذكرته مصادر السوق.",
+        "تكلفة وقود الطيران 171 دولاراً للبرميل للأسبوع المنتهي في 4 سبتمبر، بارتفاع 90% سنوياً"
+      ],
+      "newSentences": [
+        "وفي تطور منفصل، سيطر الحوثيون على ميناء المخا في اليمن يوم الخميس، ما أضاف مصدراً ثانياً للقلق في أسواق الطاقة مع توسع الأنشطة العسكرية على الساحل الأحمر اليمني، وفق ما أورده موقع «إيكونومي ميدل إيست».",
+        "تكلفة وقود الطيران 171 دولاراً للبرميل للأسبوع المنتهي في 4 سبتمبر، بارتفاع 90% مقارنة بمتوسط السنة السابقة"
+      ]
+    }
+  ]
+}

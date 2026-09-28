@@ -1,0 +1,97 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-09-28T05:35:47.376Z",
+  "durationSec": 175,
+  "read": 2,
+  "corrected": 2,
+  "report": [
+    {
+      "slug": "uk-economy-grows-july-ai-0a6a4e",
+      "title": "الاقتصاد البريطاني ينمو 0.4% في يوليو متجاوزاً التوقعات",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 29,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2",
+      "title": "النفط يقفز 13% في أسبوع.. برنت يتجاوز 108 دولارات",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 21,
+        "checked": 21,
+        "supported": 14,
+        "weak": 1,
+        "noEvidence": 3,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 2,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "hedge",
+          "sentence": "وفي المقابل، قدّرت إدارة معلومات الطاقة الأمريكية أن الإنتاج الخام المتوقف في الشرق الأوسط بلغ متوسط 6.7 مليون برميل يومياً في أغسطس، ارتفاعاً من 5 ملايين برميل في يوليو، مع توقعات باستمرار الانخفاض في المخزونات العالمية بمقدار 400 مليون برميل خلال عام 2026.",
+          "quote": "The EIA estimates worldwide oil inventories have fallen by approximately 400 million barrels so far in 2026 and expects stocks to continue declining through the end of the year.",
+          "source": "Economy Middle East",
+          "correction": "The 400 million barrels is the EIA's estimate of the draw already recorded so far in 2026, not a forecast of the decline over the year; the EIA only expects further, unquantified declines through year-end."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 3,
+    "failures": 0,
+    "promptTokens": 29835,
+    "completionTokens": 19236,
+    "cacheReadTokens": 0,
+    "costUsd": 0.6233,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 3
+    },
+    "correctionsEditorCalls": 1
+  },
+  "log": [
+    "[05:35:47] second look: 2 to read now (44 published pieces not yet read; 21 read clean before publication and left out of the audit sample)",
+    "[05:35:48] uk-economy-grows-july-ai-0a6a4e:   source https://www.nytimes.com/2026/09/11/business/diesel-fuel-prices.html: http-403",
+    "[05:35:51] oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2:   source https://www.marketwatch.com/story/all-the-ways-record-high-diesel-and-rising-gas: robots-disallow",
+    "[05:36:34] llm ok role=checker model=claude-cli attempt=1 ms=44108",
+    "[05:36:34] uk-economy-grows-july-ai-0a6a4e: 29 of 29 sentences checked · 29 supported · 0 without a source · 0 confirmed error(s)",
+    "[05:36:47] llm ok role=checker model=claude-cli attempt=1 ms=55310",
+    "[05:36:47] oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2: 21 of 21 sentences checked · 14 supported · 3 without a source · 1 confirmed error(s) · 2 listed for a person",
+    "[05:36:47]   ✗ [hedge] وفي المقابل، قدّرت إدارة معلومات الطاقة الأمريكية أن الإنتاج الخام المتوقف في الشرق الأوسط بلغ متوسط 6.7 مليون — The 400 million barrels is the EIA's estimate of the draw already recorded so far in 2026, not a forecast of the decline over the year; the EIA only expects fur",
+    "[05:36:47] corrections: 1 story to the corrections editor",
+    "[05:36:47] [correct] oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2: fetching 4 source(s)",
+    "[05:36:51] [correct]   source https://www.marketwatch.com/story/all-the-ways-record-high-diesel-and-: robots-disallow",
+    "[05:37:15] [correct] llm ok role=writer model=claude-cli attempt=1 ms=23165",
+    "[05:37:15] [correct] oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2: corrected; fields body",
+    "[05:37:15]     note: ذكرت نسخة سابقة من هذا الخبر أن إدارة معلومات الطاقة الأمريكية تتوقع انخفاض المخزونات العالمية من النفط بمقدار 400 مليون برميل خلال 2026. والصحيح أن الإدارة تقدّر أن المخزونات تراجعت بنحو 400 مليون برميل منذ بداية العام، وتتوقع أن تواصل انخفاضها حتى نهايته دون أن تحدد حجم هذا الانخفاض.",
+    "[05:37:15] [correct] done: 1 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-09-28T05-36-47-641Z.json",
+    "[05:37:20] oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2:   source https://www.marketwatch.com/story/all-the-ways-record-high-diesel-and-rising-gas: robots-disallow",
+    "[05:38:12] llm ok role=checker model=claude-cli attempt=1 ms=51375",
+    "[05:38:12] oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2: the correction reads clean where it wrote; 2 other error(s) found, corrected once more",
+    "[05:38:12] [correct] oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2: fetching 4 source(s)",
+    "[05:38:17] [correct]   source https://www.marketwatch.com/story/all-the-ways-record-high-diesel-and-: robots-disallow",
+    "[05:38:42] [correct] llm ok role=writer model=claude-cli attempt=1 ms=23659",
+    "[05:38:42] [correct] oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2: corrected; fields body, keyFacts",
+    "[05:38:42]     note: ذكرت نسخة سابقة من هذا الخبر أن سعر وقود الطيران ارتفع 90% على أساس سنوي، والصحيح أن الارتفاع محسوب مقارنة بمتوسط سعره في السنة السابقة. كما نسبت النسخة السابقة نبأ سيطرة الحوثيين على ميناء المخا إلى مصادر في السوق، والصحيح أنه ورد في تقرير لموقع «إيكونومي ميدل إيست».",
+    "[05:38:42] [correct] done: 1 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-09-28T05-38-12-471Z.json"
+  ]
+}
