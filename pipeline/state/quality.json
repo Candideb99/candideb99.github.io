@@ -40,68 +40,78 @@
       "read": 30,
       "confirmedPerStory": 1.7,
       "photosPending": 0
+    },
+    {
+      "date": "2026-09-28",
+      "published": 13,
+      "news": 11,
+      "styleFaultsPerStory": 0,
+      "corrections": 6,
+      "read": 12,
+      "confirmedPerStory": 0.5,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-09-27T13:00:51.806Z",
+  "updatedAt": "2026-09-28T15:25:59.691Z",
   "week": {
-    "published": 95,
-    "news": 81,
-    "revisedShare": 0.8,
-    "styleFaultsPerStory": 0.25,
-    "styleWarningsPerStory": 0.35,
-    "corrections": 111,
+    "published": 103,
+    "news": 88,
+    "revisedShare": 0.82,
+    "styleFaultsPerStory": 0.17,
+    "styleWarningsPerStory": 0.31,
+    "corrections": 117,
     "usefulness": {
       "withLessons": {
-        "stories": 34,
-        "words": 244,
-        "keyFacts": 4.2
+        "stories": 43,
+        "words": 253,
+        "keyFacts": 4.3
       },
       "control": {
-        "stories": 6,
-        "words": 261,
-        "keyFacts": 4.2
+        "stories": 8,
+        "words": 246,
+        "keyFacts": 4.5
       }
     },
     "precheck": {
-      "checked": 26,
-      "clean": 26,
-      "repaired": 0,
+      "checked": 37,
+      "clean": 35,
+      "repaired": 2,
       "held": 0,
-      "errorsFound": 0,
+      "errorsFound": 2,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 0,
-      "correctionsVerifiedClean": 23,
+      "repairedBeforePublication": 2,
+      "correctionsVerifiedClean": 26,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 1
     },
     "secondLook": {
-      "read": 115,
-      "clean": 38,
-      "corrected": 64,
+      "read": 127,
+      "clean": 45,
+      "corrected": 67,
       "stands": 0,
       "refused": 1,
-      "listed": 12,
+      "listed": 14,
       "unverifiable": 0,
-      "confirmedPerStory": 1.49,
+      "confirmedPerStory": 1.39,
       "withLessons": {
-        "read": 17,
+        "read": 19,
         "confirmedPerStory": 0
       },
       "claudeWithout": {
-        "read": 40,
-        "confirmedPerStory": 0.78
+        "read": 42,
+        "confirmedPerStory": 0.74
       }
     },
     "runs": {
       "count": 24,
-      "written": 49,
+      "written": 47,
       "refused": 2,
-      "callsPerStory": 13.8,
-      "tokensPerStory": 101971,
-      "costPerStory": 0.91,
+      "callsPerStory": 14.1,
+      "tokensPerStory": 141201,
+      "costPerStory": 1.39,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": [
@@ -134,7 +144,7 @@
       },
       {
         "what": "second look: hedge errors",
-        "stories": 18,
+        "stories": 20,
         "examples": [
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: «سي إن إن» تصف القرار بالاعتداء غير القانوني..",
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: من جانبها، قالت «سي إن إن» إنها ستواصل التغطية من البيت الأبيض دون عائق، ووصفت الحظر بأنه اعتداء غير قانوني على حقها الد",
@@ -143,7 +153,7 @@
       },
       {
         "what": "second look: term errors",
-        "stories": 13,
+        "stories": 14,
         "examples": [
           "trump-signs-russia-sanctions-oil-tariffs-law-ad758a: وكان مجلس النواب قد وافق على القانون بأغلبية 262 صوتاً مقابل 159، وصوّت 58 ديمقراطياً لصالحه في حين عارضه 7 جمهوريين، في",
           "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb: وبلغ حجم التداول على هذه العقود 6 ملايين دولار في 24 ساعة، والفائدة المفتوحة 31 مليون دولار.",
@@ -161,7 +171,7 @@
       },
       {
         "what": "second look: scope errors",
-        "stories": 17,
+        "stories": 18,
         "examples": [
           "trump-announces-ai-force-and-czar-f4c7aa: ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها",
           "trump-xi-summit-washington-2026-4e439e: يدخل ترامب القمة والتضخم عند 3.4٪ وأسعار الوقود فوق 6 دولارات للغالون، قبل انتخابات منتصف المدة في نوفمبر.",
@@ -170,7 +180,7 @@
       },
       {
         "what": "second look: other errors",
-        "stories": 3,
+        "stories": 4,
         "examples": [
           "gulf-oil-flows-return-pre-war-levels-6a0da7: وقال وزير الطاقة الأمريكي في بيان إن رفع تدفقات النفط من الخليج إلى مستويات قياسية حدث في الوقت الحالي، وفق ما نقلته قنا",
           "hormuz-alternatives-saudi-oil-qatar-lng-747dc8: وتخسر قطر نحو 20 مليار دولار من الإيرادات السنوية وفق تقديرات «أويل برايس فاينانس»، بسبب خطين للغاز المسال أصابتهما ضربة",
@@ -193,23 +203,15 @@
           "paramount-settles-with-us-states-e71142",
           "saudi-restarts-east-west-oil-pipeline-698775"
         ]
-      },
-      {
-        "what": "style: «لماذا يهمّ» تبدأ بـ«يعكس/يمثل/يُعدّ»",
-        "stories": 2,
-        "examples": [
-          "iran-gdp-contracts-10-percent-post-war-a88253",
-          "us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac"
-        ]
       }
     ]
   },
   "weekBefore": {
-    "published": 44,
-    "news": 41,
-    "revisedShare": 0.51,
+    "published": 40,
+    "news": 36,
+    "revisedShare": 0.44,
     "styleFaultsPerStory": 1.22,
-    "styleWarningsPerStory": 0.68,
+    "styleWarningsPerStory": 0.5,
     "corrections": 0,
     "usefulness": {
       "withLessons": {
@@ -268,44 +270,28 @@
     "recurring": [
       {
         "what": "style: الإسناد في كل جملة تقريباً (# من # جملة فيها «وفقاً/بحسب»)",
-        "stories": 12,
+        "stories": 10,
         "examples": [
           "bank-of-japan-raises-rates-to-31-year-high-d62cc8",
           "china-retail-sales-slowdown-august-2026-cb2bb7",
-          "federal-reserve-rate-hike-expectations-september-2026-c63230"
+          "global-markets-close-volatile-week-045574"
         ]
       },
       {
         "what": "style: عبارة مترجمة أو حشو: «#-#-#»",
         "stories": 3,
         "examples": [
-          "anthropic-chooses-nasdaq-for-ipo-57a51e",
+          "oil-decline-diplomacy-hope-d15314",
           "trump-announces-ai-force-and-czar-f4c7aa",
           "trump-xi-summit-washington-2026-4e439e"
         ]
       },
       {
-        "what": "style: المقدمة طويلة (# كلمة)",
+        "what": "style: «لماذا يهمّ» تبدأ بـ«يعكس/يمثل/يُعدّ»",
         "stories": 2,
         "examples": [
-          "anthropic-chooses-nasdaq-for-ipo-57a51e",
-          "bank-of-england-holds-rate-warns-inflation-48f465"
-        ]
-      },
-      {
-        "what": "style: عبارة مترجمة أو حشو: «ما بين # إلى #»",
-        "stories": 2,
-        "examples": [
-          "brent-surges-above-109-disruptions-e510e5",
-          "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d"
-        ]
-      },
-      {
-        "what": "style: عبارة مترجمة أو حشو: «#-#-#»، «#-#-#»",
-        "stories": 2,
-        "examples": [
-          "trump-ukraine-russia-diesel-855f75",
-          "us-denmark-greenland-security-deal-eac792"
+          "china-increases-russian-oil-imports-august-2026-ac1178",
+          "iran-gdp-contracts-10-percent-post-war-a88253"
         ]
       },
       {
@@ -319,19 +305,67 @@
     ]
   },
   "lessons": {
-    "version": 17,
+    "version": 20,
     "active": 10,
-    "learnedFrom": 164,
+    "learnedFrom": 171,
     "kept": null,
-    "lastTest": null
+    "lastTest": {
+      "at": "2026-09-28T13:46:22.576Z",
+      "checker": "f6d38e4947",
+      "live": 19,
+      "liveHash": "f5873a7267",
+      "kept": 0,
+      "decision": "keep",
+      "reason": "unproven so far: better in 0 pairs, worse in 1, tied in 3 (evidence ×0.5 of 20; harm ×1.5 of 10)",
+      "vsKept": {
+        "n": 4,
+        "better": 0,
+        "worse": 1,
+        "tied": 3,
+        "down": 0,
+        "up": 2,
+        "e": 0.5,
+        "harm": 1.4999999999999998,
+        "saysLess": 0.3333333333333335
+      },
+      "own": {
+        "n": 2,
+        "better": 0,
+        "worse": 1,
+        "tied": 1,
+        "down": 0,
+        "up": 1,
+        "e": 0.5,
+        "harm": 1.4999999999999998,
+        "saysLess": 0.5
+      },
+      "vsNone": {
+        "n": 4,
+        "better": 0,
+        "worse": 1,
+        "tied": 3,
+        "down": 0,
+        "up": 2,
+        "e": 0.5,
+        "harm": 1.4999999999999998,
+        "saysLess": 0.3333333333333335
+      },
+      "canary": {
+        "seeded": 3,
+        "found": 3,
+        "falseFlags": 0,
+        "alarm": false
+      },
+      "calls": 1
+    }
   },
   "evidence": {
-    "pairs": 6,
+    "pairs": 7,
     "vsKept": {
-      "n": 4,
+      "n": 5,
       "better": 0,
       "worse": 1,
-      "tied": 3,
+      "tied": 4,
       "down": 0,
       "up": 2,
       "e": 0.5,
@@ -339,10 +373,10 @@
       "saysLess": 0.3333333333333335
     },
     "vsNone": {
-      "n": 4,
+      "n": 5,
       "better": 0,
       "worse": 1,
-      "tied": 3,
+      "tied": 4,
       "down": 0,
       "up": 2,
       "e": 0.5,
@@ -350,11 +384,15 @@
       "saysLess": 0.3333333333333335
     },
     "canary": {
-      "seeded": 0,
-      "found": 0,
+      "seeded": 3,
+      "found": 3,
       "falseFlags": 0,
       "alarm": false
     },
-    "lastDecision": null
+    "lastDecision": {
+      "at": "2026-09-28T13:46:22.576Z",
+      "decision": "keep",
+      "reason": "unproven so far: better in 0 pairs, worse in 1, tied in 3 (evidence ×0.5 of 20; harm ×1.5 of 10)"
+    }
   }
 }
