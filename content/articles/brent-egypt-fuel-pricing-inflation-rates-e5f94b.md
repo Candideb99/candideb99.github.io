@@ -49,14 +49,14 @@ chart:
         - 14.9
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/At_the_local_market_place.jpg/1280px-At_the_local_market_place.jpg
+  url: https://images.pexels.com/photos/12377482/pexels-photo-12377482.jpeg?auto=compress&cs=tinysrgb&w=1280
   width: 1280
-  height: 853
-  alt: متسوقات أمام بائعة تين شوكي في سوق شعبي بالإسكندرية
-  credit: Marwa elchazly · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AAt_the_local_market_place.jpg
+  height: 960
+  alt: تزويد سيارة بالوقود (صورة تعبيرية)
+  credit: Engin Akyurt · بيكسلز
+  license: Pexels License
+  licenseUrl: https://www.pexels.com/license/
+  pageUrl: https://www.pexels.com/photo/gas-pump-nozzle-filling-the-white-car-12377482/
 sources:
   - name: خازندار
     nameEn: Khazendar

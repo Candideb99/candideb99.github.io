@@ -52,14 +52,13 @@ table:
       - 0%
       - 0.3%
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Street-veggie-market-1.jpg/1280px-Street-veggie-market-1.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/EgyptianPounds.jpg/1280px-EgyptianPounds.jpg
   width: 1280
-  height: 853
-  alt: بائعو خضراوات في سوق شعبية بمصر
-  credit: Wael.kenawey · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AStreet-veggie-market-1.jpg
+  height: 960
+  alt: رزمة من أوراق الجنيه المصري النقدية
+  credit: Mo7amedsalim at Arabic Wikipedia · Public domain · ويكيميديا كومنز
+  license: Public domain
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AEgyptianPounds.jpg
 sources:
   - name: خازندار
     nameEn: Khazendar

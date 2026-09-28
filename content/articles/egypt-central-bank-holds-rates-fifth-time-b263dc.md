@@ -46,14 +46,14 @@ chart:
         - 14.9
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/The_Rhythm_of_the_Egyptian_Street_Market.jpg/1280px-The_Rhythm_of_the_Egyptian_Street_Market.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/87A9462.jpg/1280px-87A9462.jpg
   width: 1280
-  height: 1280
-  alt: سوق شعبية للخضراوات والفاكهة في مصر
-  credit: Dodo923 · CC BY-SA 4.0 · ويكيميديا كومنز
+  height: 853
+  alt: حسن عبد الله متحدثاً خلال فعالية (أرشيفية)
+  credit: HassanAbdalla · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AThe_Rhythm_of_the_Egyptian_Street_Market.jpg
+  pageUrl: https://commons.wikimedia.org/wiki/File%3A87A9462.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
