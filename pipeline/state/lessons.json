@@ -769,5 +769,73 @@
         "reinforce L1 (+1; reworded at most once a week)"
       ]
     }
+  ],
+  "canary": [
+    {
+      "at": "2026-09-28T13:46:22.572Z",
+      "checker": "f6d38e4947",
+      "slug": "berkshire-nearly-doubles-lennar-stake-2b77a3",
+      "knownClean": true,
+      "seeded": 3,
+      "found": 3,
+      "kinds": [
+        "period",
+        "hedge",
+        "figure"
+      ],
+      "falseFlags": 0,
+      "checked": 25
+    }
+  ],
+  "tests": [
+    {
+      "at": "2026-09-28T13:46:22.576Z",
+      "checker": "f6d38e4947",
+      "live": 19,
+      "liveHash": "f5873a7267",
+      "kept": 0,
+      "decision": "keep",
+      "reason": "unproven so far: better in 0 pairs, worse in 1, tied in 3 (evidence ×0.5 of 20; harm ×1.5 of 10)",
+      "vsKept": {
+        "n": 4,
+        "better": 0,
+        "worse": 1,
+        "tied": 3,
+        "down": 0,
+        "up": 2,
+        "e": 0.5,
+        "harm": 1.4999999999999998,
+        "saysLess": 0.3333333333333335
+      },
+      "own": {
+        "n": 2,
+        "better": 0,
+        "worse": 1,
+        "tied": 1,
+        "down": 0,
+        "up": 1,
+        "e": 0.5,
+        "harm": 1.4999999999999998,
+        "saysLess": 0.5
+      },
+      "vsNone": {
+        "n": 4,
+        "better": 0,
+        "worse": 1,
+        "tied": 3,
+        "down": 0,
+        "up": 2,
+        "e": 0.5,
+        "harm": 1.4999999999999998,
+        "saysLess": 0.3333333333333335
+      },
+      "canary": {
+        "seeded": 3,
+        "found": 3,
+        "falseFlags": 0,
+        "alarm": false
+      },
+      "calls": 1
+    }
   ]
 }
