@@ -130,7 +130,9 @@ const jsonLd = [articleLd, breadcrumbLd];
       <div class="article__main">
         {d.lede && <p class="article__lede" set:html={isolateNumbers(d.lede)} />}
         <KeyFacts facts={d.keyFacts} placement="inline" terms={d.kind === "explainer"} />
-        {d.chart && <Chart chart={d.chart} id={`chart-${d.slug}`} />}
+        {/* A chart's title elsewhere on the site links here (`#story-chart`): the reader who clicked a chart lands on
+            the chart, not on a headline and a photograph that do not name it (the owner, 2026-09-28). */}
+        {d.chart && <Chart chart={d.chart} id="story-chart" />}
         <div class="prose" data-body>
           <Content />
         </div>

@@ -2,7 +2,6 @@
 import Base from "@layouts/Base.astro";
 import Cover from "@components/Cover.astro";
 import Front from "@components/Front.astro";
-import Ticker from "@components/Ticker.astro";
 import FilesRow from "@components/FilesRow.astro";
 import StoryCard from "@components/StoryCard.astro";
 import Chart from "@components/Chart.astro";
@@ -61,13 +60,12 @@ place(digest);
 // and one said the Saudi pipeline had closed beside a lead saying it had reopened.
 const picks = byImportance(unplaced(articles).filter((a) => !repeats.has(a.id) && hoursOld(a) < 72)).slice(0, 4);
 place(picks);
-// The strip (أيضاً على خازندار) carries the newest stories not already on the first screen, so no
-// headline prints twice above the fold; it names each story's section, not its age.
-const ticker = unplaced(news).slice(0, 5);
+// The strip above the first screen is the layout's «آخر الأخبار», the same on every page since 2026-09-28 (the owner
+// chose one strip everywhere over the front's own «أيضاً على خازندار», which carried stories not on the first screen).
 // Under each cover story, up to two headlines on its running topic (ذات صلة) from the last week, none already on
 // the first screen or under another cover story; they fill the text column beside the photograph with the story's
 // own context. Until 2026-09-27 they could reach back two weeks (a 12-day-old story under the lead).
-const onFirstScreen = new Set([...placed, ...ticker.map((a) => a.id)]);
+const onFirstScreen = new Set([...placed]);
 const relatedPool = articles.filter((a) => !repeats.has(a.id));
 const coverRelated = new Map<string, Article[]>();
 for (const story of cover) {
@@ -157,7 +155,6 @@ const jsonLd = {
   <h1 class="visually-hidden">{site.name} — {site.tagline}</h1>
   {cover.length > 0 ? (
     <>
-      <Ticker items={ticker} />
       <div class="first">
         <Cover stories={cover} readings={readings} photoIds={photoIds} all={articles} related={coverRelated} />
         <Front secondary={secondary} digest={digest} picks={picks} figures={figures} chart={chart} photoIds={photoIds} />
@@ -178,7 +175,7 @@ const jsonLd = {
       <div class="cols" style={`--n:${chartsBand.length}`}>
         {chartsBand.map((a, i) => (
           <div class="charts__cell">
-            <Chart chart={a.data.chart!} id={`band-chart-${i}`} compact href={articleHref(a)} />
+            <Chart chart={a.data.chart!} id={`band-chart-${i}`} compact href={`${articleHref(a)}#story-chart`} />
             <p class="module__from"><span class="module__from-label ui">من مادة</span><a href={articleHref(a)} set:html={isolateNumbers(a.data.title)} /></p>
           </div>
         ))}

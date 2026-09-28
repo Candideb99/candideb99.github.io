@@ -32,6 +32,12 @@ const DRY_RUN = args.includes("--dry-run");
 /** `--no-sources`: pick without reading the sources' pages again (their text for the planner, their lead photographs for
  *  lib/images.mjs sourceBrief(), the cascade's second tier). */
 const NO_SOURCES = args.includes("--no-sources");
+/** `--as-new` (with --dry-run): judge each story as if it were new (see below); never writes. */
+const AS_NEW = args.includes("--as-new");
+if (AS_NEW && !DRY_RUN) {
+  console.error("--as-new is for dry runs only: a story's own photo would be chosen again and written");
+  process.exit(1);
+}
 const limitArg = args.find((a) => a.startsWith("--limit="));
 const LIMIT = limitArg ? Number(limitArg.split("=")[1]) : Infinity;
 const redoArg = args.find((a) => a.startsWith("--redo="));
@@ -67,7 +73,10 @@ for (const file of files) {
   const redo = REDO.has(data.slug);
   if (data.image && !redo) continue;
   // A photo being replaced stays excluded: a re-pick is never the same picture (2026-09-27, the gravity audit's
-  // replacements; it used to be freed, so the judge could choose it again).
+  // replacements; it used to be freed, so the judge could choose it again). `--as-new` (dry runs only, for testing
+  // the desk): the story is judged as the newsroom would judge it new, its own photo a candidate like any other, and
+  // no other story's refusals carried over.
+  const own = data.image?.url;
   if (redo && data.image) data.image = null;
   tried += 1;
   log(`${file}: searching`);
@@ -84,7 +93,8 @@ for (const file of files) {
   }
   let image = null;
   try {
-    image = await pickImage({ draft, story, log, exclude: used, sources });
+    const exclude = AS_NEW ? new Set([...used].filter((u) => u !== own && !String(u).startsWith("title:") && !String(u).startsWith("series"))) : used;
+    image = await pickImage({ draft, story, log, exclude, sources });
   } catch (error) {
     log(`${file}: failed (${error.message.split("\n")[0]})`);
   }

@@ -13,7 +13,9 @@
  *
  * Inside the site (2026-09-24, the owner's Task 4 after reading الشرق الأوسط beside Khazendar) the same strip
  * runs under every page's market strip as «آخر الأخبار»: the newest stories, each with its age, which there is
- * hours, not days (`lead="time"`; the base layout builds it, the front page keeps its own).
+ * hours, not days (`lead="time"`; the base layout builds it). Since 2026-09-28 the front runs it too, in place of its
+ * own «أيضاً على خازندار» (the owner saw the two strips side by side and asked "is this a bug?", then chose one
+ * strip everywhere).
  */
 import type { Article } from "@lib/articles";
 import { articleHref } from "@lib/articles";
@@ -28,7 +30,7 @@ interface Props {
   /** What stands before each headline: its section, or its age (kept current in the browser). */
   lead?: "section" | "time";
 }
-const { items, label = "أيضاً على خازندار", lead = "section" } = Astro.props;
+const { items, label = "آخر الأخبار", lead = "time" } = Astro.props;
 ---
 
 {items.length > 0 && (

@@ -15,12 +15,12 @@ four first. They bind every agent, Codex included.
   dots inside the photograph, his earlier choice, which showed one headline of the day's five). Do
   not put the dots back.
 - **The news bar moves.** The owner asked for a moving strip. It scrolls by whole pixels so the
-  text stays sharp, carries the newest stories not already on the first screen (so no headline
-  prints twice above the fold), and holds under the pointer, keyboard focus and a finger. Do not
-  make it static or chronological. **Its label is «أيضاً على خازندار» and each headline carries its
-  section, not its age** (the owner's choice, 2026-09-22, «أيضاً في العدد», reworded 2026-09-23 when he
-  ruled out paper words; under the older label الأحدث its own rule made it read «منذ 3 أيام»). Do not
-  rename it back.
+  text stays sharp and holds under the pointer, keyboard focus and a finger. Do not make it static.
+  **Since 2026-09-28 it is «آخر الأخبار» on every page, the front included**: the eight newest news
+  stories, each with its age. The front had run its own strip, «أيضاً على خازندار» (the stories not
+  already on its first screen, each with its section); the owner saw the two side by side, asked "is
+  this a bug?" and chose one strip everywhere, knowing some of its headlines also stand in the cover
+  below. Do not bring the front's own strip back.
 - **An online news website, not an online newspaper** (the owner, 2026-09-23: "avoid using wordings
   that hint that my website is a paper newspaper like العدد/issue"). The look keeps its printed
   register; the words never make it a paper: no issue number, no العدد، الطبعة، صحيفة/جريدة about

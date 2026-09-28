@@ -90,7 +90,7 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
 
 ---
 
-<figure class={`chart${compact ? " chart--compact" : ""}${narrow ? " chart--narrow" : ""}`} role="group" aria-labelledby={`${id}-title`}>
+<figure id={id} class={`chart${compact ? " chart--compact" : ""}${narrow ? " chart--narrow" : ""}`} role="group" aria-labelledby={`${id}-title`}>
   <figcaption class="chart__head">
     {chart.title && (
       <h3 id={`${id}-title`} class="chart__title">

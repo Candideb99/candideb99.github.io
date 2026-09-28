@@ -7,6 +7,19 @@ import { chat } from "./llm.mjs";
 import { fixNames } from "./copydesk.mjs";
 import { USER_AGENT, fetchWithTimeout } from "./util.mjs";
 
+/**
+ * Everything the picture desk reaches outside itself for: the model, the libraries, the thumbnails. The desk calls
+ * them through this table so that scripts/images-selftest.mjs can run the whole cascade on scripted stand-ins, with
+ * failures injected, and no Claude call (2026-09-28, the owner: "i think you have to further stress test it more").
+ * Nothing else swaps them.
+ */
+const outside = { chat, searchCommons, searchLibraries, noteUse, inlineImage };
+export function withStandIns(standIns) {
+  const saved = { ...outside };
+  Object.assign(outside, standIns);
+  return () => Object.assign(outside, saved);
+}
+
 /** Vision providers cannot fetch Wikimedia URLs themselves; inline the thumbnails as data URLs. */
 export async function inlineImage(url, log = () => {}) {
   try {
@@ -52,8 +65,11 @@ function simplerQueries(query) {
  */
 function photoYear(image, { upload = true } = {}) {
   const fromDate = String(image.date ?? "").match(/(?<!\d)((?:19|20)\d\d)(?!\d)/)?.[1];
-  // 18xx too: «Edward Angelo Goodall Copper market Cairo 1871.jpg», a painting, passed as undated (2026-09-24).
-  const fromTitle = String(image.title ?? "").match(/(?<!\d)((?:18|19|20)\d\d)(?:[01]\d[0-3]\d)?(?!\d)/)?.[1];
+  // 18xx too: «Edward Angelo Goodall Copper market Cairo 1871.jpg», a painting, passed as undated (2026-09-24). A camera's
+  // frame number is not a year: «IMG_1945» and «IMG_1871», photographs of the Egyptian Exchange, were dropped as
+  // archival pictures of 1945 and 1871 (the stress test of 2026-09-28).
+  const title = String(image.title ?? "").replace(/\b(?:IMG|DSC|DSCN|DSCF|DCIM|PICT|PXL|P|GOPR|MVIMG|WP|SAM|CIMG)[_ -]?\d+/gi, " ");
+  const fromTitle = title.match(/(?<!\d)((?:18|19|20)\d\d)(?:[01]\d[0-3]\d)?(?!\d)/)?.[1];
   const fromUpload = upload ? String(image.uploaded ?? "").match(/^((?:19|20)\d\d)/)?.[1] : undefined;
   const year = Number(fromDate ?? fromTitle ?? fromUpload);
   return Number.isFinite(year) && year > 1800 ? year : null;
@@ -78,7 +94,19 @@ function recencyScore(image) {
  * 2026-09-22: a story about Bessent and He Lifeng ran "Secretary Kerry, Chinese Vice Premier Liu…"
  * because the room matched; no model should have had to be trusted with that call.
  */
-const RANK = /\b(?:Secretary|President|Vice[- ]President|Prime Minister|Premier|Vice[- ]Premier|Chancellor|Minister|Governor|Senator|Congressman|Ambassador|King|Queen|Prince|Princess|Sheikh|Emir|Crown Prince|Chairman|Chairwoman|CEO|Director|Commissioner|Mayor|General|Admiral|Pope|Sultan)\s+(?:of\s+[A-Z][\w-]+\s+)?([A-Z][\w'’-]+(?:\s+[A-Z][\w'’-]+)?)/g;
+// Names are read with their accents (2026-09-28: an ASCII-only pattern read «President Erdoğan» as a person called
+// «Erdo» and dropped the file as someone else; «Mehmet Şimşek» lost his surname).
+const RANK = /\b(?:Secretary|President|Vice[- ]President|Prime Minister|Premier|Vice[- ]Premier|Chancellor|Minister|Governor|Senator|Congressman|Ambassador|King|Queen|Prince|Princess|Sheikh|Emir|Crown Prince|Chairman|Chairwoman|CEO|Director|Commissioner|Mayor|General|Admiral|Pope|Sultan)\s+(?:of\s+\p{Lu}[\p{L}\p{M}-]+\s+)?(\p{Lu}[\p{L}\p{M}'’-]+(?:\s+\p{Lu}[\p{L}\p{M}'’-]+)?)/gu;
+/** Letters without their accents, for matching a name across spellings: «Erdoğan» and «Erdogan», «Şimşek» and «Simsek». */
+export const fold = (s) =>
+  String(s ?? "")
+    .replace(/ı/g, "i")
+    .replace(/İ/g, "I")
+    .normalize("NFD")
+    .replace(/\p{M}/gu, "")
+    .toLowerCase();
+/** The shape of a person's name as the planners give it: letters of any script's Latin spelling, accents kept. */
+const PERSON_NAME = /^\p{Lu}[\p{L}\p{M} .'’-]{2,48}$/u;
 /** Words that make a rank-plus-name a place or an institution, not a person: "King Abdulaziz International Airport", "General Motors", "Prince Sultan Air Base". */
 const NOT_A_PERSON = new Set(["international", "airport", "university", "hospital", "stadium", "bridge", "street", "road", "avenue", "boulevard", "highway", "causeway", "center", "centre", "city", "port", "base", "district", "foundation", "medical", "park", "square", "tower", "towers", "mosque", "library", "museum", "school", "college", "institute", "financial", "economic", "cup", "trophy", "league", "motors", "electric", "mills", "hotel", "terminal", "station", "line", "dam", "canal", "complex", "hall", "building", "plaza", "mall", "gardens", "memorial", "academy", "company", "corporation", "bank", "fund", "award", "prize", "air", "naval", "military", "sports", "convention", "exhibition", "expo", "industrial", "village", "island", "islands", "bay", "beach", "harbour", "harbor", "refinery", "oil", "gas", "petroleum", "energy", "campus", "palace", "monument", "statue"]);
 
@@ -92,8 +120,8 @@ function namedPeople(image) {
   const text = `${image.title ?? ""} ${image.description ?? ""}`;
   const people = [];
   for (const m of text.matchAll(RANK)) {
-    const words = m[1].split(/\s+/).map((w) => w.toLowerCase());
-    const next = text.slice(m.index + m[0].length).match(/^\s+([A-Za-z][\w-]*)/)?.[1]?.toLowerCase();
+    const words = m[1].split(/\s+/).map((w) => fold(w));
+    const next = fold(text.slice(m.index + m[0].length).match(/^\s+(\p{L}[\p{L}\p{M}-]*)/u)?.[1] ?? "");
     if (words.some((w) => NOT_A_PERSON.has(w)) || (next && NOT_A_PERSON.has(next))) continue;
     people.push(words);
   }
@@ -254,6 +282,17 @@ export function storyCountries(story) {
 /** The country a photo was taken in when its own metadata says so and it is none of the story's; else null.
  *  A story filed on the world desk alone (عالمي) is left to the judges: a passing country tag does not make
  *  a world-market story one country's. */
+/**
+ * A town named after a place abroad is where its state says: «Cairo, IL», «Alexandria, Virginia», «Athens, GA»,
+ * «Lebanon, Pennsylvania», «London, Ontario». Its file names the foreign city too («Old Cairo Junior High School»), and
+ * a file that named the story's own country anywhere used to count as home, so a Cairo, Illinois school read as
+ * Egypt (found by scripts/images-selftest.mjs, 2026-09-28). A name followed by a US state or its postal code, or by a
+ * Canadian province, places the photograph in that country. Georgia is left to its code: it is also a country.
+ */
+const US_STATES = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
+const US_CODES = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY", "DC"];
+const PROVINCES = ["Ontario", "Quebec", "Québec", "British Columbia", "Alberta", "Manitoba", "Saskatchewan", "Nova Scotia", "New Brunswick", "Newfoundland"];
+const NAMESAKE = new RegExp(`(?<!\\p{L})\\p{Lu}[\\p{L}.'’-]*(?: \\p{Lu}[\\p{L}.'’-]*)*,\\s*(${[...US_STATES, ...PROVINCES].join("|")}|${US_CODES.join("|")})(?!\\p{L})`, "u");
 export function placedAbroad(image, story) {
   const desks = story?.regions ?? [];
   if (desks.length && desks.every((d) => d === "عالمي")) return null;
@@ -268,6 +307,11 @@ export function placedAbroad(image, story) {
     .replace(/\b(?:built|made|manufactured|registered|designed|founded)\s+(?:in|by)\s+[^|;,]+/gi, " ")
     .replace(/\b(?:Builder|Flag|Owner|Operator|Manager|Home port):\s*[^|;]*?(?=\s+[A-Z][A-Za-z ]{1,20}:|[|;]|$)/g, " ")
     .replace(/\bflag of\s+[^|;,.]+/gi, " ");
+  const namesake = said.match(NAMESAKE);
+  if (namesake) {
+    const country = PROVINCES.includes(namesake[1]) ? "Canada" : "United States";
+    return home.has(country) ? null : country;
+  }
   const found = PHOTO_PLACE_RE.filter(([, re]) => re.test(said)).map(([country]) => country);
   if (!found.length || found.some((c) => home.has(c))) return null;
   return found[0];
@@ -375,7 +419,7 @@ export function commonsFileTitle(url) {
 }
 
 export async function collect(queries, log, { perQuery = 6, max = 8, exclude = new Set(), people = "by-query", place = [], places = [], together = [], fresh: freshFirst = false, libraries = false, civilian = false, simplify = true } = {}) {
-  const surnames = together.map((name) => String(name).trim().split(/\s+/).pop().toLowerCase()).filter((s) => s.length >= 2);
+  const surnames = together.map((name) => fold(String(name).trim().split(/\s+/).pop())).filter((s) => s.length >= 2);
   const seen = new Set(exclude);
   const candidates = [];
   const year = String(new Date().getUTCFullYear());
@@ -386,16 +430,16 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
     // their names, descriptions or "taken on" categories. Only for the writer's own subjects: on generic sector
     // scenes the year fetched fresh but unrelated files ("oil pipeline 2026" → fishing boats) that crowded the
     // four-photo shortlist, and a pipeline from 2015 looks like one from 2026.
-    const fresh = !freshFirst || query.includes(year) ? [] : await searchCommons(`${query} ${year}`, { limit: perQuery, log });
-    let results = await searchCommons(query, { limit: perQuery, log });
+    const fresh = !freshFirst || query.includes(year) ? [] : await outside.searchCommons(`${query} ${year}`, { limit: perQuery, log });
+    let results = await outside.searchCommons(query, { limit: perQuery, log });
     // A place's search is never shortened: «Saltend chemical plant» became «plant» (vegetation) and «Hull» (Hull,
     // Illinois) on 2026-09-28; the place's name alone is already one of its searches.
     for (const alternative of simplify ? simplerQueries(query) : []) {
       if (results.length || fresh.length) break;
-      results = await searchCommons(alternative, { limit: perQuery, log });
+      results = await outside.searchCommons(alternative, { limit: perQuery, log });
     }
     results = [...fresh, ...results];
-    const asked = new Set(query.toLowerCase().split(/[^\p{L}\p{N}'’-]+/u));
+    const asked = new Set(fold(query).split(/[^\p{L}\p{N}'’-]+/u));
     const subject = subjectWords(query, { names: true, place });
     const thing = namedWords(query, place);
     const consider = (list) => {
@@ -419,7 +463,11 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
       // Capital construction»; which of the place's photographs shows the story's subject is the judges' call.
       const atThePlace = places.length > 0 && namesAPlace(image, places);
       if (atThePlace) relevant = Math.max(relevant, 0.75);
-      if (relevant < 0.5) {
+      // Pexels and Unsplash describe a photograph in one plain sentence and match a search by meaning, so half the
+      // search's words is too high a bar there: sixteen of their trader photographs never reached the judges of the
+      // sovereign-rating explainer, which ran without a picture (the stress test of 2026-09-28). A third is theirs.
+      const bar = image.library === "pexels" || image.library === "unsplash" ? 0.3 : 0.5;
+      if (relevant < bar) {
         log(`image: dropped "${String(image.title).slice(0, 70)}" — names too little of ${subject.join(", ")}`);
         continue;
       }
@@ -448,9 +496,9 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
         log(`image: dropped "${String(image.title).slice(0, 70)}" — an event's photograph, people and banners`);
         continue;
       }
-      const said = `${image.title ?? ""} ${image.description ?? ""} ${image.categories ?? ""}`.toLowerCase();
-      const home = place.some((word) => word && said.includes(String(word).toLowerCase()));
-      const ofTheirs = surnames.filter((s) => new RegExp(`(?<![a-z])${escapeRe(s)}(?![a-z])`).test(said)).length;
+      const said = fold(`${image.title ?? ""} ${image.description ?? ""} ${image.categories ?? ""}`);
+      const home = place.some((word) => word && said.includes(fold(word)));
+      const ofTheirs = surnames.filter((s) => new RegExp(`(?<!\\p{L})${escapeRe(s)}(?!\\p{L})`, "u").test(said)).length;
       // A search for the story's people keeps only files that name one of them: «Amin H. Nasser» brought tombs in
       // South Kalimantan and Indonesia's vice-president, Ma'ruf Amin (2026-09-24).
       if (surnames.length && !ofTheirs) {
@@ -462,7 +510,7 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
       const company = surnames.length === 1 && ofTheirs === 1 && /\b(?:and|with|meets?|&)\b/i.test(String(image.title ?? "")) ? -3 : 0;
       const withPeople = (ofTheirs >= 2 ? 6 : ofTheirs === 1 ? 2 : 0) + company;
       // Relevance weighs as much as the newest year: a fitting 2019 tanker comes before a 2026 beach.
-      candidates.push({ ...image, query, score: 6 * relevant + recencyScore(image) + (image.width >= 1600 ? 1 : 0) + (home ? 4 : 0) + (atThePlace ? 4 : 0) + withPeople + liveliness(image) });
+      candidates.push({ ...image, query, home, score: 6 * relevant + recencyScore(image) + (image.width >= 1600 ? 1 : 0) + (home ? 4 : 0) + (atThePlace ? 4 : 0) + withPeople + liveliness(image) });
       added += 1;
     }
     return added;
@@ -472,7 +520,7 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
     // search, which keeps Openverse's 200 anonymous searches a day for the searches that need them.
     // The first two searches of a pass always ask them too: Commons' five "fitting" trading floors were named
     // traders the judges refuse, and the libraries were never asked (2026-09-24).
-    if (libraries && (added < 5 || queries.indexOf(query) < 2)) consider(await searchLibraries(query, { log }));
+    if (libraries && (added < 5 || queries.indexOf(query) < 2)) consider(await outside.searchLibraries(query, { log }));
     if (candidates.length >= max) break;
   }
   candidates.sort((a, b) => b.score - a.score);
@@ -596,16 +644,18 @@ async function arabicCaption(alt, log, { file = {}, story = "" } = {}) {
  * `illustrative`: the photo runs as «صورة تعبيرية», so its caption names no place (the label is added
  * by the caller).
  */
-export async function writeCaption({ file = {}, story = "", current = "", illustrative = false, log = () => {} }) {
+export async function writeCaption({ file = {}, story = "", current = "", illustrative = false, plainNames = false, log = () => {} }) {
   let attempt = String(current ?? "").trim();
   let flaws = captionFlaws(attempt);
   let tooLong = 0;
+  // `plainNames` (the second check's RECAPTION): the frame is right and the caption named too much.
+  const plain = plainNames ? "\nName only what the story itself names and what the frame shows: the aircraft, ship, plant, product or building by its kind or model (as «طائرة إيرباص A321neo» or «ناقلة غاز مسال»), never the airline, operator, owner, company, port, airport or place of the photograph when the story does not name them." : "";
   for (let round = 0; round < 2; round++) {
     try {
-      const { data } = await chat({
+      const { data } = await outside.chat({
         role: "writer",
         system: "You write photo captions for an Arabic economics news website. Reply with one JSON object only.",
-        user: `${CAPTION_RULE}${illustrative ? "\nThis photograph runs as an illustration («صورة تعبيرية»), so its caption names no place at all and invents no setting in its stead (no «في مياه مفتوحة», no «في أحد الموانئ»): only the thing it shows, as «ناقلة نفط خام» or «مصفاة نفط»." : ""}
+        user: `${CAPTION_RULE}${illustrative ? "\nThis photograph runs as an illustration («صورة تعبيرية»), so its caption names no place at all and invents no setting in its stead (no «في مياه مفتوحة», no «في أحد الموانئ»): only the thing it shows, as «ناقلة نفط خام» or «مصفاة نفط»." : ""}${plain}
 Story: ${story || "(unknown)"}
 File name: ${file.title ?? ""}
 File description: ${file.description ?? "(none)"}
@@ -681,7 +731,7 @@ async function shortlist(candidates, log) {
     // The judge looks at a small copy: 500 pixels of a Commons file, the libraries' own thumbnails. Flickr's servers
     // refuse some requests from a bot that names itself (403, 2026-09-27: three of four Flickr photos of a fruit
     // packing search were never looked at); Openverse's own thumbnail of the same photo is then asked for instead.
-    const dataUrl = (await inlineImage(candidate.thumb ?? String(candidate.url).replace(/\/1280px-/, "/500px-"), log)) ?? (candidate.thumbAlt ? await inlineImage(candidate.thumbAlt, log) : null);
+    const dataUrl = (await outside.inlineImage(candidate.thumb ?? String(candidate.url).replace(/\/1280px-/, "/500px-"), log)) ?? (candidate.thumbAlt ? await outside.inlineImage(candidate.thumbAlt, log) : null);
     if (!dataUrl) continue;
     list.push(candidate);
     inlined.push(dataUrl);
@@ -700,8 +750,25 @@ function placeTierNote(places) {
   return `THE STORY'S OWN PLACE: ${places.join(", ")}. These photographs were found by searching it, and the story's own place comes first for this paper, as it does for the agencies. A photograph taken there that shows the story's subject in it is the first choice: for real estate or construction the place's towers, compounds and new buildings, finished or going up (a new city's business or government district is its developers' work); for energy its field, plant or terminal; for a port or a canal its berths and ships; for a market its trading floor. Such a frame is not a generic skyline or cityscape, even for a story about one company, project or law: it is where the story's subject stands. A photograph of the place that shows something else does not picture the story: a stadium, a mosque or a church, a memorial, a park or a fountain, a road, a police station; nor does a satellite or aerial view from space.`;
 }
 
+/**
+ * A skyline is the last resort's alone. The owner, 2026-09-24, on towers by the Nile under Egypt's rate decision: markets,
+ * money and the central bank first, "a skyline only when none of these exists". The rule used to be judged within one
+ * pass's candidates, which a cascade breaks: the stress test of 2026-09-28 found the sources'-photo pass, searching the
+ * central bank's building, taking the Cairo Tower and the 6th of October bridge before the market searches ever ran.
+ * Only lastResort() passes `skyline: true`.
+ */
+const SKYLINE_LAST = "A skyline, a panorama, a landmark or a cityscape of a capital is never chosen in this pass, even for a story about a country's economy as a whole: the paper runs one only as its last resort, after markets, money and the institution itself have been searched (choose 0 rather than a skyline; the story's own place, when one is named below, is not a skyline)";
+
+/**
+ * The cascade's second tier, as the judge reads it: the photographs were searched for the subject of a source's own
+ * photograph, and only that subject is this pass's to take; anything else waits for the passes after it.
+ */
+function briefTierNote(shows) {
+  return `THE SOURCES' OWN PHOTOGRAPH shows: ${shows}. These photographs were found by searching that subject. Choose only one that shows the same subject (the same kind of scene, object, building or people at work, in the story's own country when one is on offer); anything else, however fitting in general, is not this pass's to take: choose 0, and the searches after this one look further.`;
+}
+
 /** Asks the vision model to choose one photograph, or none. `relaxed` accepts a generic illustration. */
-async function judge({ list, inlined, draft, story, log, relaxed, neutral = false, people = [], places = [] }) {
+async function judge({ list, inlined, draft, story, log, relaxed, neutral = false, people = [], places = [], tierNote = "", skyline = false }) {
   // A story about named people is illustrated with those people, as the desks do: the owner, 2026-09-23,
   // on the White House's facade under a Trump–Xi summit story: "i would search for uncopyrighted pictures
   // from older summits maybe for trump and xi together … makes the news look less appealing and boring".
@@ -709,7 +776,7 @@ async function judge({ list, inlined, draft, story, log, relaxed, neutral = fals
     ? `\nTHE STORY'S PEOPLE: ${people.join(", ")}. A photograph of them (together, when the story is about their meeting or talks) is the first choice, even from an earlier occasion such as a previous summit, visit or press conference: that is how the news desks illustrate a story about people, and it is livelier than any building. Of the photographs that show them, choose the MOST RECENT (the dates are given): the event itself when its photograph exists, otherwise their latest occasion; an older one only when nothing newer shows them well. It must be a contemporary news photograph (sharp, their faces visible), never a painting, poster, screen, cartoon or a crowd in which they are hard to find, and nothing unflattering or embarrassing. Its caption names them and, for an earlier occasion, that occasion and its year as the file gives them («ترامب وشي خلال لقائهما في أوساكا عام 2019»).`
     : "\nA photograph of the story's own people taken at an earlier occasion (a previous summit, visit or press conference) is how the desks illustrate a story about them; its caption then names that occasion and its year.";
   const placed = relaxed
-    ? `This is the fallback pass: a generic but appropriate newspaper illustration is acceptable: a typical scene of the story's OWN sector at work (port, refinery, trading floor, factory line, data-centre hall, LNG tanker, bank branch, oil field), or, when nothing livelier fits, the headquarters of the institution named. The skyline or a landmark of the capital is acceptable only for a story about a country's economy as a whole (inflation, growth, budget, currency, rates, rating), and there only when no everyday market scene, shoppers or the central bank itself is among the candidates; for prices, inflation or rates a market means an everyday popular food market where ordinary people shop, never a tourist bazaar of souvenirs such as Khan el-Khalili, which illustrates only a tourism story; a story about one company, plant, project, product, deal, commodity or technology needs its sector's own object, never a cityscape. Reject: a photograph of a named or recognisable person — an official, a politician, an executive, anyone the file names — and a named meeting, summit, ceremony or visit (a generic illustration never shows someone else's event). Anonymous people at work are welcome, they are the life of the frame: traders at their desks, workers on a line, shoppers at a stall (2026-09-24: every trading floor was refused for its traders); visible text overlays or watermarks; logos, maps, charts, diagrams, infographics, screenshots, documents, banknotes or coins as the subject (a price board or ticker in a trading hall is a scene of the market, not a chart), except that a story about prices, inflation, a currency, wages or remittances may run people paying or counting money, or the notes of the story's own currency, the way the agencies picture it; a product or appliance close-up unrelated to the story; military vessels, aircraft or weapons for a story that is not about the military; an archival, black-and-white or pre-2005 look; a close-up of a private individual; a recognisable place (a skyline, a landmark, a sign, a flag) in a different country or city than the story's; anything misleading or embarrassing next to the headline. Of two fitting scenes, choose the one taken in the story's own country, and then the more recent one.
+    ? `This is the fallback pass: a generic but appropriate newspaper illustration is acceptable: a typical scene of the story's OWN sector at work (port, refinery, trading floor, factory line, data-centre hall, LNG tanker, bank branch, oil field), or, when nothing livelier fits, the headquarters of the institution named. ${skyline ? "This is the last resort: the skyline or a landmark of the capital is acceptable only for a story about a country's economy as a whole (inflation, growth, budget, currency, rates, rating), and there only when no everyday market scene, shoppers or the central bank itself is among the candidates" : SKYLINE_LAST}; for prices, inflation or rates a market means an everyday popular food market where ordinary people shop, never a tourist bazaar of souvenirs such as Khan el-Khalili, which illustrates only a tourism story; a story about one company, plant, project, product, deal, commodity or technology needs its sector's own object, never a cityscape. Reject: a photograph of a named or recognisable person — an official, a politician, an executive, anyone the file names — and a named meeting, summit, ceremony or visit (a generic illustration never shows someone else's event). Anonymous people at work are welcome, they are the life of the frame: traders at their desks, workers on a line, shoppers at a stall (2026-09-24: every trading floor was refused for its traders); visible text overlays or watermarks; logos, maps, charts, diagrams, infographics, screenshots, documents, banknotes or coins as the subject (a price board or ticker in a trading hall is a scene of the market, not a chart), except that a story about prices, inflation, a currency, wages or remittances may run people paying or counting money, or the notes of the story's own currency, the way the agencies picture it; a product or appliance close-up unrelated to the story; military vessels, aircraft or weapons for a story that is not about the military; an archival, black-and-white or pre-2005 look; a close-up of a private individual; a recognisable place (a skyline, a landmark, a sign, a flag) in a different country or city than the story's; anything misleading or embarrassing next to the headline. Of two fitting scenes, choose the one taken in the story's own country, and then the more recent one.
 ${PLACE_RULE}`
     : `Requirements: clearly relevant to the story's subject (institution, place, industry, product); looks like a contemporary editorial news photo, and of two fitting photographs the more recent one (the dates are given); landscape composition; no visible text overlays, watermarks, logos as the main subject, charts, maps, diagrams, infographics, screenshots, product close-ups, or historical/archival look; no close-up of a private individual; nothing embarrassing or misleading if paired with the headline.
 PEOPLE — the gravest error: a photograph showing an identifiable person (a politician, official, executive, anyone a caption would name) who is NOT one of the people this story is about is WRONG, however well the room, flag or setting matches. Read each candidate's file name and description for names of people and compare them with the headline: a story about Treasury Secretary Bessent must never run a photo of Secretary Kerry; a story about He Lifeng must never run one of Liu Yandong. When no candidate shows the story's own people, choose 0 and let the fallback find a building, skyline or sector scene instead.${theirs}
@@ -719,7 +786,11 @@ ${people.length ? "" : PLACE_RULE}`;
   // Every pass, the neutral one too, wants a frame that reads at a glance; a piece that explains is pictured at work.
   const concept = CONCEPT_KINDS.has(draft.kind) ? `\n${CONCEPT_RULE}` : "";
   const atPlace = places.length && !neutral ? `\n${placeTierNote(places)} When none of them shows the story's subject at its place, choose 0: the searches after this one look further.` : "";
-  const rules = `${neutral ? placed.replace(PLACE_RULE, NEUTRAL_RULE) : `${placed}\n${LIVELY_RULE}`}\n${GLANCE_RULE}\n${GRAVITY_RULE}${concept}${atPlace}`;
+  // The strict passes carry the skyline rule too (the fallback pass has it in its own text), and a pass with a purpose
+  // (the sources' photograph) says what it may take.
+  const noSkyline = !relaxed && !skyline && !neutral ? `\n${SKYLINE_LAST}.` : "";
+  const note = tierNote && !neutral ? `\n${tierNote}` : "";
+  const rules = `${neutral ? placed.replace(PLACE_RULE, NEUTRAL_RULE) : `${placed}\n${LIVELY_RULE}`}\n${GLANCE_RULE}\n${GRAVITY_RULE}${concept}${noSkyline}${atPlace}${note}`;
   const user = `We are illustrating an Arabic economics article. Read the whole story: the picture must fit what it is about, not only its headline.
 Headline: ${draft.title}
 Summary: ${draft.subtitle ?? ""}
@@ -735,7 +806,7 @@ ${CAPTION_RULE}${neutral ? " This is an illustrative photograph: its caption nam
 Return JSON: {"choice": <1-${list.length} or 0 for none>, "alt": "<the Arabic caption of the chosen photograph, written by the rule above>", "reason": "<short English reason>"}`;
 
   try {
-    const { data, model } = await chat({
+    const { data, model } = await outside.chat({
       role: "vision",
       system: "You are a photo editor at an Arabic economics publication. Reply with one JSON object only.",
       user,
@@ -796,7 +867,7 @@ ${list.map((c, i) => `${i + 1}. "${c.title}" — ${c.description || "no descript
 Choose the single best photograph for this article, or none. ${rules} Prefer recent, plainly descriptive photographs of the place, institution or sector; reject anything whose title, description or categories suggest a map, diagram, chart, logo, document, screenshot, artwork, historical scene, or an unrelated subject.
 ${CAPTION_RULE}
 Return JSON: {"choice": <1-${list.length} or 0 for none>, "alt": "<the Arabic caption of the chosen photograph, written by the rule above>", "reason": "<short English reason>"}`;
-  const { data, model } = await chat({
+  const { data, model } = await outside.chat({
     role: "critic",
     system: "You are a photo editor at an Arabic economics publication choosing from wire captions. Reply with one JSON object only.",
     user,
@@ -831,6 +902,9 @@ Return JSON: {"choice": <1-${list.length} or 0 for none>, "alt": "<the Arabic ca
   };
 }
 
+/** Where news is decided, ruled, announced or discussed: never the story's own place (the cascade's first tier). */
+const NOT_A_PLACE = /\b(?:court(?:house)?s?|tribunal|ministry|ministries|parliament|congress|senate|capitol|white house|headquarters|hq|embassy|consulate|conference|summit|forum|palace|city hall|town hall)\b/i;
+
 /** Asks a text model for the stock subjects a newspaper would use to illustrate this story, and for the
  *  words that name the story's one country (`place`), so photographs taken there are searched first. */
 async function genericQueries({ draft, story, log, sources = [] }) {
@@ -840,7 +914,7 @@ async function genericQueries({ draft, story, log, sources = [] }) {
     .slice(0, 3)
     .map((s) => `— ${s.sourceNameEn || s.sourceName || s.name || "source"}: ${String(s.text).replace(/\s+/g, " ").trim().slice(0, 1200)}`)
     .join("\n");
-  const { data } = await chat({
+  const { data } = await outside.chat({
     role: "writer",
     system: "You are a photo editor at an Arabic economics news website choosing stock photographs from Wikimedia Commons. Reply with one JSON object only.",
     user: `Read the whole story first: the photographs are chosen for what it is about, where it happens and who is in it, never from its headline alone.
@@ -855,23 +929,30 @@ Give 4 English search phrases (2-4 words each, concrete nouns only) for generic 
 The photograph should be from the story's own place. When the story is about ONE country, the first two phrases name it with the object ("diesel pump United States", "gas station Texas", "LNG carrier Qatar", "wheat harvest Egypt"); the last two may leave it out. Also give "place": 2-6 English words a Wikimedia Commons title, description or category of a photo taken in that country would contain (the country's name and demonym, its main cities or states, e.g. ["United States", "USA", "American", "Texas", "California"]); [] when the story is about the world, a region or several countries.
 Also give "people": the English full names, as Wikipedia writes them, of at most three people the story is about when it is about what named people did, said or agreed (heads of state or government, ministers, central bank governors, chief executives), for example ["Donald Trump", "Xi Jinping"] for a story about their summit. When the story reports what ONE institution decided, forecast or announced (a central bank, a ministry, the IMF, the OECD, OPEC, one company), give the person who leads it and speaks for it, for example ["Mathias Cormann"] for an OECD forecast or ["Amin H. Nasser"] for a Saudi Aramco result. [] when the story is about markets, prices, data or a sector as a whole.
 And "focus": "people" when a named person is the news itself, the headline's actor who said, rejected, met or decided (for example «ترامب يرفض مقترح إيران»، «قمة ترامب وشي»، «باول: الفائدة ستبقى مرتفعة»); "subject" when the news is a thing, even one an official announced: a company's result, product or court case, a sector and what hits it, a project, a price, a figure (for example US sanctions on Iranian aviation are pictured by an Iranian airliner, not the Treasury secretary; an Apple patent verdict by an Apple product or store, not its chief executive at an unrelated meeting; TikTok's settlement with Alabama by the app on a phone; Egypt's AI data centre by a data centre; a Fed rule for banks by the Fed or a bank). The leader's photograph, from an unrelated meeting years ago, is the weakest picture for a "subject" story.
-And "places": the story's own place at its most specific, the named sites where its subject physically stands and a camera could stand, in English as Wikimedia Commons names them: a project, a new city or district, a field, a port, a plant, a canal or strait, an exchange (["Ras Laffan"] for Qatar's LNG expansion, ["Jafurah"] for Aramco's Jafurah gas, ["Suez Canal"] for the canal's revenue, ["Egyptian Exchange"] for the Cairo bourse, ["King Abdullah Financial District"] for a Riyadh finance story, ["Jorf Lasfar"] for Morocco's phosphate exports). When the story names no site but is about one country's sector, give the places where that sector of that country is best known and most photographed: Egypt's real-estate developers build the New Administrative Capital, New Cairo, New Alamein and Sheikh Zayed City, so a story about them or the laws that bind them gives ["New Administrative Capital", "New Capital", "New Alamein", "New Cairo"]; Dubai property ["Dubai Marina", "Downtown Dubai"]; Saudi giga-projects ["NEOM", "Diriyah"]. Give a place's short name beside its long one when both are used ("New Administrative Capital", "New Capital"), each spelled as in your searches below. Never a whole country, a region or an institution's headquarters (those come later); [] when the story is about a price, a market, a world body, the world, a region, several countries, or a country's economy as a whole. And "place_queries": 2 or 3 searches for those places, the first a place's name alone (Commons titles a place's photographs by its name: "Central business district, New Administrative Capital"), the others the place with what the story is about there ("New Administrative Capital construction", "New Alamein towers"); [] when "places" is [].
+And "places": the story's own place at its most specific, the named sites where its subject physically stands and a camera could stand, in English as Wikimedia Commons names them: a project, a new city or district, a field, a port, a plant, a canal or strait, an exchange (["Ras Laffan"] for Qatar's LNG expansion, ["Jafurah"] for Aramco's Jafurah gas, ["Suez Canal"] for the canal's revenue, ["Egyptian Exchange"] for the Cairo bourse, ["King Abdullah Financial District"] for a Riyadh finance story, ["Jorf Lasfar"] for Morocco's phosphate exports). When the story names no site but is about one country's sector, give the places where that sector of that country is best known and most photographed: Egypt's real-estate developers build the New Administrative Capital, New Cairo, New Alamein and Sheikh Zayed City, so a story about them or the laws that bind them gives ["New Administrative Capital", "New Capital", "New Alamein", "New Cairo"]; Dubai property ["Dubai Marina", "Downtown Dubai"]; Saudi giga-projects ["NEOM", "Diriyah"]. Give a place's short name beside its long one when both are used ("New Administrative Capital", "New Capital"), each spelled as in your searches below. A place is where the story's SUBJECT is, never where its news was decided, ruled, announced or discussed: not a court, a ministry, a parliament, a headquarters, an embassy or a conference venue, and not an ordinary city by itself (its streets and skyline picture no one's subject; a new city being built is a project, and counts). Never a whole country or a region. [] when the story is about a price, a market, a world body, the world, a region, several countries or a country's economy as a whole, and [] for a company's result, product, valuation, lawsuit, verdict or deal unless the story is about one of its sites (Apple's patent verdict in a San Diego court: [], it is pictured by Apple's product; AMD's market value: []; a new plant or field of a company: its site). And "place_queries": 2 or 3 searches for those places, the first a place's name alone (Commons titles a place's photographs by its name: "Central business district, New Administrative Capital"), the others the place with what the story is about there ("New Administrative Capital construction", "New Alamein towers"); [] when "places" is [].
 Return JSON: {"queries": ["...", "...", "...", "..."], "place": ["..."], "people": ["..."], "focus": "people|subject", "places": ["..."], "place_queries": ["..."]}`,
     // Models that think before answering spend their first tokens on reasoning; leave room for it.
     temperature: 0.2,
     maxTokens: 1500,
     timeoutMs: 60000,
     log,
+    // An answer with people or places but no scene searches is still an answer: a story that is only about a person
+    // lost its person too when an empty `queries` failed the whole plan (found by scripts/images-selftest.mjs).
     validate: (d) => {
-      if (!Array.isArray(d?.queries) || !d.queries.length) throw new Error("queries missing");
+      const some = (v) => Array.isArray(v) && v.length > 0;
+      if (!Array.isArray(d?.queries) || (!some(d.queries) && !some(d.people) && !some(d.places))) throw new Error("queries missing");
     },
   });
   return {
     queries: data.queries.map((q) => String(q).trim()).filter((q) => q.length >= 3).slice(0, 4),
     place: (Array.isArray(data.place) ? data.place : []).map((w) => String(w).trim()).filter((w) => w.length >= 2).slice(0, 8),
-    people: (Array.isArray(data.people) ? data.people : []).map((w) => String(w).trim()).filter((w) => /^[A-Za-z][A-Za-z .'-]{2,40}$/.test(w)).slice(0, 3),
+    // Accents kept: «Fatma Betül Sayan Kaya», whose resignation was the news, was dropped by an ASCII-only pattern and
+    // her story fell to a trading floor (2026-09-28).
+    people: (Array.isArray(data.people) ? data.people : []).map((w) => String(w).trim()).filter((w) => PERSON_NAME.test(w)).slice(0, 3),
     focus: String(data.focus ?? "").toLowerCase() === "people" ? "people" : "subject",
-    places: (Array.isArray(data.places) ? data.places : []).map((w) => String(w).trim()).filter((w) => /^[\p{L}][\p{L}\p{N} .'’-]{2,48}$/u.test(w)).slice(0, 5),
+    // A place may open with its number: «10th of Ramadan City», «6th of October City». Where news was decided is not
+    // a place (the stress test of 2026-09-28: Apple's patent verdict searched its San Diego courthouse and ran its front).
+    places: (Array.isArray(data.places) ? data.places : []).map((w) => String(w).trim()).filter((w) => /^[\p{L}\p{N}][\p{L}\p{M}\p{N} .,'’()&-]{2,60}$/u.test(w) && !NOT_A_PLACE.test(w)).slice(0, 5),
     placeQueries: (Array.isArray(data.place_queries) ? data.place_queries : []).map((q) => String(q).trim()).filter((q) => q.length >= 3 && q.split(/\s+/).length <= 7).slice(0, 3),
   };
 }
@@ -888,7 +969,7 @@ Return JSON: {"queries": ["...", "...", "...", "..."], "place": ["..."], "people
  * event → the photo is refused and the story runs as text. This is the audit rubric of 2026-09-22
  * (37 flagged of 125) made a gate, so it cannot be skipped.
  */
-async function verifyImage({ image, draft, story, log, neutral = false, people = [], places = [] }) {
+async function verifyImage({ image, draft, story, log, neutral = false, people = [], places = [], skyline = false }) {
   // Where the file itself says it was taken is read in code first; a model is not trusted with it. The
   // last pass (`neutral`) looks for no place at all, so there the file's own record does not refuse it,
   // and neither does a photograph of the story's own people, taken wherever they last met.
@@ -920,14 +1001,14 @@ Caption the paper would print: ${image.alt || "(none yet)"}
 
 Judge as a strict picture editor of a paper read across the Arab world. ${neutral ? "The test is what readers will see: the frame and the caption" : "The test is what is in the frame, what the caption says, and where the photograph was taken; the file name, description and categories say where, even when readers never see them"}:
 - WRONG_PERSON: an identifiable person (official, politician, executive) who is not one of the story's own people, whatever the setting.
-- WRONG_SUBJECT: ${neutral ? "a caption that names a place; a frame the file describes with readable signs, lettering, a landmark, a flag, a skyline, a street or a famous building a reader would recognise" : "a different country or city than the story's when the frame, the caption, the writing in the frame, the file name, the description or the categories identify it"}; a different company or institution${neutral ? " whose name or logo a reader can see in the frame (one named only in the file's record does not count in this pass)" : ""}; a different sector, including a neighbouring one (electricity pylons on a gas story, a highway on a port story, a bank branch on a factory story); a military vessel or weapon for a non-military story; ${glanceFaults(draft.kind)}; a tourist bazaar or souvenir market (Khan el-Khalili) for a story about prices, inflation, rates or the economy, which it does not picture: it pictures tourism; a scene that merely lies NEAR the subject (a beach, a park, a street, a metro station, a hillside or a coastline beside a refinery, port or pipeline; a satellite view of a whole country); a landmark, flag, sign or building in the frame that identifies a country the story does not mention; a caption that names a place, company or person the story does not mention (a tanker depot captioned "at Eilat" is WRONG_SUBJECT on a Gulf oil story, however good a tanker depot it is); a city skyline, panorama or street scene on a story about ONE company, plant, project, product, deal, commodity or technology (a Cairo panorama on a battery-plant story, a San Francisco skyline on an AI-company story) — such a story needs its sector's own object. If your reason would contain "loosely", "broadly", "tangentially", "not specifically", "though it shows" or "reasonably", the verdict is WRONG_SUBJECT.
+- WRONG_SUBJECT: ${neutral ? "a caption that names a place; a frame the file describes with readable signs, lettering, a landmark, a flag, a skyline, a street or a famous building a reader would recognise" : "a different country or city than the story's when the frame, the caption, the writing in the frame, the file name, the description or the categories identify it"}; a different company or institution${neutral ? " whose name or logo a reader can see in the frame (one named only in the file's record does not count in this pass)" : ""}; a different sector, including a neighbouring one (electricity pylons on a gas story, a highway on a port story, a bank branch on a factory story); a military vessel or weapon for a non-military story; ${glanceFaults(draft.kind)}; a tourist bazaar or souvenir market (Khan el-Khalili) for a story about prices, inflation, rates or the economy, which it does not picture: it pictures tourism; a scene that merely lies NEAR the subject (a beach, a park, a street, a metro station, a hillside or a coastline beside a refinery, port or pipeline; a satellite view of a whole country); a landmark, flag, sign or building in the frame that identifies a country the story does not mention; a caption that names a place the story does not mention where the place itself matters (a tanker depot captioned "at Eilat" is WRONG_SUBJECT on a Gulf oil story, however good a tanker depot it is); a city skyline, panorama or street scene on a story about ONE company, plant, project, product, deal, commodity or technology (a Cairo panorama on a battery-plant story, a San Francisco skyline on an AI-company story) — such a story needs its sector's own object. If your reason would contain "loosely", "broadly", "tangentially", "not specifically", "though it shows" or "reasonably", the verdict is WRONG_SUBJECT.
 - STALE_EVENT: a specific past event (a summit, a ceremony, a visit) that the story is not about, unless the frame shows the story's own people${people.length ? ` (${people.join(", ")})` : ""}: a photograph of them at an earlier occasion, captioned with that occasion and its year or «(أرشيفية)», is how the desks illustrate a story about them, and it is RIGHT.
-${CONCEPT_KINDS.has(draft.kind) ? "- This piece explains or analyses a concept: its subject at work is GENERIC_OK even where a news story would call it a neighbouring sector. A trading floor, traders at their screens or a price board in a trading hall pictures bonds, rates and markets alike (a Treasury-bond explainer lost an NYSE floor as \"equity trading\", 2026-09-24); an everyday food market pictures prices and inflation.\n" : ""}- GENERIC_OK: a neutral illustration whose frame shows the story's OWN institution or sector itself: the named company's or ministry's building, the sector's own object (a battery production line, a data-centre hall, an LNG tanker, a refinery, a pipeline, a pumpjack, a trading floor, a port crane, a factory line, a branch of the named bank); for prices, inflation, a currency, wages or remittances, people paying or counting money, or the notes of the story's own currency. The named capital's skyline or central bank is acceptable ONLY for a story about the country's economy as a whole (inflation, growth, budget, currency, rates, sovereign rating, trade balance, jobs). An anonymous scene of the story's sector — a battery production line, a refinery, a tanker at sea, a container port, a trading floor, a server hall — is acceptable as a stock photograph is, under the rule below${neutral ? "." : ": for a story about one country, only when nothing (frame, writing, caption, file name, description, categories) places it in another country."} A story about a sector's exports or imports named broadly (food, farm goods, textiles, building materials, manufactured goods) is pictured by the country's own goods of that kind, and such a frame is GENERIC_OK even when the story's figures cover a narrower part of the trade: fruit and vegetables in crates at the country's markets or fields, cartons on a packing line, containers at its port (the owner, 2026-09-27: the other desks pictured Egypt's food-industry exports with its oranges and crates of citrus, where this paper ran a cheese dairy's vat).
+${CONCEPT_KINDS.has(draft.kind) ? "- This piece explains or analyses a concept: its subject at work is GENERIC_OK even where a news story would call it a neighbouring sector. A trading floor, traders at their screens or a price board in a trading hall pictures bonds, rates and markets alike (a Treasury-bond explainer lost an NYSE floor as \"equity trading\", 2026-09-24); an everyday food market pictures prices and inflation.\n" : ""}- GENERIC_OK: a neutral illustration whose frame shows the story's OWN institution or sector itself: the named company's or ministry's building, the sector's own object (a battery production line, a data-centre hall, an LNG tanker, a refinery, a pipeline, a pumpjack, a trading floor, a port crane, a factory line, a branch of the named bank); for prices, inflation, a currency, wages or remittances, people paying or counting money, or the notes of the story's own currency. ${skyline ? "The named capital's skyline or central bank is acceptable ONLY for a story about the country's economy as a whole (inflation, growth, budget, currency, rates, sovereign rating, trade balance, jobs)." : "The named country's central bank is acceptable ONLY for a story about the country's economy as a whole (inflation, growth, budget, currency, rates, sovereign rating, trade balance, jobs). A skyline, a panorama, a landmark or a cityscape of a capital is WRONG_SUBJECT in this pass, whatever the story: the paper runs one only as its last resort, after markets, money and the institution itself (the story's own place, when one is named below and the file is taken there, is not a skyline)."} An anonymous scene of the story's sector — a battery production line, a refinery, a tanker at sea, a container port, a trading floor, a server hall — is acceptable as a stock photograph is, under the rule below${neutral ? "." : ": for a story about one country, only when nothing (frame, writing, caption, file name, description, categories) places it in another country."} A story about a sector's exports or imports named broadly (food, farm goods, textiles, building materials, manufactured goods) is pictured by the country's own goods of that kind, and such a frame is GENERIC_OK even when the story's figures cover a narrower part of the trade: fruit and vegetables in crates at the country's markets or fields, cartons on a packing line, containers at its port (the owner, 2026-09-27: the other desks pictured Egypt's food-industry exports with its oranges and crates of citrus, where this paper ran a cheese dairy's vat).
 - RIGHT: the story's own people (also at an earlier occasion, captioned as one), place or event.
-${places.length && !neutral && namesAPlace(image, places) ? `- ${placeTierNote(places)} The file places this photograph there: RIGHT when its frame shows the story's subject at that place, WRONG_SUBJECT when it shows something else there.\n` : ""}- UNSERIOUS, whatever else fits: ${GRAVITY_RULE}
+${neutral ? "" : "- RECAPTION: the frame alone would be RIGHT or GENERIC_OK, but the caption names an airline, an operator, an owner, a company, a port, an airport or a person the story does not mention (an airline's A321neo under a story about the A321neo's fuselage; a tanker's operator under a story about tanker rates). The paper then rewrites the caption to name only what the story names and asks you again. Never for a wrong person, a wrong country or a wrong subject: those stay refusals.\n"}${places.length && !neutral && namesAPlace(image, places) ? `- ${placeTierNote(places)} The file places this photograph there: RIGHT when its frame shows the story's subject at that place, WRONG_SUBJECT when it shows something else there.\n` : ""}- UNSERIOUS, whatever else fits: ${GRAVITY_RULE}
 ${neutral ? NEUTRAL_CHECK : people.length ? "" : PLACE_RULE}
-Return JSON: {"verdict":"RIGHT|GENERIC_OK|STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON|UNSERIOUS","reason":"<one short English sentence>"}`;
-  const { data, model } = await chat({
+Return JSON: {"verdict":"RIGHT|GENERIC_OK|${neutral ? "" : "RECAPTION|"}STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON|UNSERIOUS","reason":"<one short English sentence>"}`;
+  const { data, model } = await outside.chat({
     role: "critic",
     system: "You are a strict newspaper picture editor. Answer with one JSON object only.",
     user,
@@ -941,6 +1022,10 @@ Return JSON: {"verdict":"RIGHT|GENERIC_OK|STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON
   });
   const verdict = String(data.verdict).toUpperCase();
   const ok = verdict === "RIGHT" || verdict === "GENERIC_OK";
+  if (verdict === "RECAPTION" && !neutral) {
+    log(`image: second check (${model}) RECAPTION "${String(image.title ?? "").slice(0, 60)}": ${String(data.reason ?? "").slice(0, 120)}`);
+    return "RECAPTION";
+  }
   log(`image: second check (${model}) ${verdict}${ok ? "" : " — refused"} "${String(image.title ?? "").slice(0, 60)}": ${String(data.reason ?? "").slice(0, 120)}`);
   return ok ? "OK" : verdict;
 }
@@ -993,14 +1078,14 @@ export async function sourceBrief({ sources, draft, places = [], log = () => {} 
   const photos = [];
   for (const p of offeredSourcePhotos(sources)) {
     if (photos.length >= 3) break;
-    const data = await inlineImage(p.url, log);
+    const data = await outside.inlineImage(p.url, log);
     if (data) photos.push({ ...p, data });
   }
   if (!photos.length) {
     log("image: no source photograph to read");
     return null;
   }
-  const { data } = await chat({
+  const { data } = await outside.chat({
     role: "vision",
     system: "You are the photo editor of an Arabic economics news website. Reply with one JSON object only.",
     user: `The story: ${draft.title}
@@ -1030,9 +1115,9 @@ Return JSON: {"photos":[{"n":1,"news":true,"shows":"...","people":[]}],"best":<n
     log(`image: the sources' photographs give no brief (${(data.photos ?? []).map((p) => `${p.n}: ${p.news === false ? "not a news photo" : String(p.shows ?? "").slice(0, 60)}`).join("; ")})`);
     return null;
   }
-  const people = (Array.isArray(read.people) ? read.people : []).map((n) => String(n).trim()).filter((n) => /^[A-Za-z][A-Za-z .'-]{2,40}$/.test(n)).slice(0, 3);
+  const people = (Array.isArray(read.people) ? read.people : []).map((n) => String(n).trim()).filter((n) => PERSON_NAME.test(n)).slice(0, 3);
   log(`image: the source's photograph (${photos[best - 1].outlet}) shows ${String(read.shows ?? "").slice(0, 120)}; searching ${queries.join(" | ")}`);
-  return { queries, people };
+  return { queries, people, shows: String(read.shows ?? "").slice(0, 200) };
 }
 
 /**
@@ -1062,8 +1147,8 @@ export function namesAPlace(image, places) {
 }
 
 /** Chooser plus second lock; a refused photo is excluded and the story goes on without it. */
-async function chooseVerified({ list, inlined, draft, story, log, relaxed, neutral = false, exclude, people = [], places = [] }) {
-  let image = await judge({ list, inlined, draft, story, log, relaxed, neutral, people, places });
+async function chooseVerified({ list, inlined, draft, story, log, relaxed, neutral = false, exclude, people = [], places = [], tierNote = "", skyline = false }) {
+  let image = await judge({ list, inlined, draft, story, log, relaxed, neutral, people, places, tierNote, skyline });
   if (!image) return null;
   const chosen = list.find((c) => c.url === image.url) ?? {};
   // The last pass's caption names no place, and the judge does not always keep to that (the Hormuz feature's
@@ -1074,8 +1159,18 @@ async function chooseVerified({ list, inlined, draft, story, log, relaxed, neutr
     if (caption) image = { ...image, alt: caption };
   }
   let verdict = "FAILED";
+  const check = () => verifyImage({ image: { ...chosen, title: chosen.title ?? image.title, query: chosen.query, alt: image.alt }, draft, story, log, neutral, people, places, skyline });
   try {
-    verdict = await verifyImage({ image: { ...chosen, title: chosen.title ?? image.title, query: chosen.query, alt: image.alt }, draft, story, log, neutral, people, places });
+    verdict = await check();
+    // The right frame under a caption that names too much: an airline's A321neo under a story about the A321neo's
+    // fuselage was refused four times in one run for naming AirAsia, Cathay, United and Air Astana, and the story fell
+    // to Airbus's headquarters front (the stress test of 2026-09-28). The caption is written again to name only what the
+    // story names, and the second check reads it once more.
+    if (verdict === "RECAPTION") {
+      const caption = await writeCaption({ file: chosen, story: draft.title, current: image.alt, plainNames: true, log });
+      verdict = caption ? ((image = { ...image, alt: caption }), await check()) : "WRONG_SUBJECT";
+      if (verdict === "RECAPTION") verdict = "WRONG_SUBJECT";
+    }
   } catch (error) {
     // No second opinion available: fail closed. A story without a photo is allowed; a wrong photo is not.
     log(`image: second check failed (${error.message.split("\n")[0]}); photo refused`);
@@ -1118,7 +1213,7 @@ const excluded = (exclude, c) => exclude.has(c.url) || exclude.has(`title:${c.ti
  * so the second look shows the next six. It used to show the same four again: the bond explainer's judge
  * refused one set of forum photos twice in a row (2026-09-24).
  */
-async function twoLooks({ candidates, draft, story, log, exclude, neutral = false, relaxed = true, people = [], places = [] }) {
+async function twoLooks({ candidates, draft, story, log, exclude, neutral = false, relaxed = true, people = [], places = [], tierNote = "", skyline = false }) {
   const passed = new Set();
   for (let look = 0; look < 2; look += 1) {
     const rest = candidates.filter((c) => !excluded(exclude, c) && !passed.has(c.url));
@@ -1126,7 +1221,7 @@ async function twoLooks({ candidates, draft, story, log, exclude, neutral = fals
     const s = await shortlist(rest, log);
     if (!s.list.length) return null;
     const refused = exclude.size;
-    const image = await chooseVerified({ ...s, draft, story, log, relaxed, neutral, exclude, people, places });
+    const image = await chooseVerified({ ...s, draft, story, log, relaxed, neutral, exclude, people, places, tierNote, skyline });
     if (image) return image;
     if (exclude.size === refused) for (const c of s.list) passed.add(c.url);
   }
@@ -1144,9 +1239,16 @@ function atHome(candidates, draft, log) {
 
 /** The photo for a story, from every pass below; a photo from Unsplash has its use reported, as Unsplash asks. */
 export async function pickImage(args) {
-  const image = await findImage(args);
-  if (image) await noteUse(image, args.log);
-  return image;
+  // The desk never costs a story: the newsroom calls it after the story is written and checked, and an exception here
+  // (a library that fails in a new way, a slip in this file) used to throw that work away. It runs without a photo.
+  try {
+    const image = await findImage(args);
+    if (image) await outside.noteUse(image, args.log).catch(() => {});
+    return image;
+  } catch (error) {
+    args.log?.(`image: the picture desk failed (${String(error?.message ?? error).split("\n")[0]}); the story runs without a photo`);
+    return null;
+  }
 }
 
 /**
@@ -1212,8 +1314,14 @@ async function findImage({ draft, story, log, exclude = new Set(), sources = [] 
     }
     if (brief) {
       log(`image: tier 2, like the sources' own photograph: ${brief.queries.join(" | ")}`);
-      const candidates = atHome(await collect(brief.queries, log, { perQuery: 10, max: 12, exclude, people: "none", place, places, libraries: true, civilian }), draft, log);
-      const image = await twoLooks({ candidates, draft, story, log, exclude, relaxed: false });
+      const found = atHome(await collect(brief.queries, log, { perQuery: 10, max: 12, exclude, people: "none", place, places, libraries: true, civilian }), draft, log);
+      // Location before likeness (the owner: "same location of the news is priority"): for a story about one country
+      // this pass takes only photographs whose record says they were taken there. A likeness from nowhere in
+      // particular waits for the passes after it, which search the country itself: the stress test of 2026-09-28 found
+      // an unplaced Pexels tanker taken here for Oman's growth forecast, ahead of Oman's own ports.
+      const candidates = place.length ? found.filter((c) => c.home) : found;
+      if (found.length > candidates.length) log(`image: ${found.length - candidates.length} likeness(es) set aside for the country's own photographs`);
+      const image = await twoLooks({ candidates, draft, story, log, exclude, relaxed: false, tierNote: briefTierNote(brief.shows) });
       if (image) return image;
     }
   }
@@ -1273,23 +1381,35 @@ async function peoplePhoto({ people, draft, story, log, exclude }) {
   // the New York Fed's John C. Williams was taken in 2008): such a file is dropped and the story falls back to a
   // scene of its sector.
   const oldest = year - 8;
-  const candidates = (await collect(queries, log, { perQuery: 10, max: 20, exclude, people: "by-query", together: people })).filter((c) => {
-    if (excluded(exclude, c)) return false;
+  const found = (await collect(queries, log, { perQuery: 10, max: 20, exclude, people: "by-query", together: people })).filter((c) => !excluded(exclude, c));
+  const recent = found.filter((c) => {
     const taken = photoYear(c);
     if (taken && taken < oldest) {
-      log(`image: dropped "${String(c.title).slice(0, 60)}" — a ${taken} photograph of a person, older than ${oldest}`);
+      log(`image: set aside "${String(c.title).slice(0, 60)}" — a ${taken} photograph of a person, older than ${oldest}`);
       return false;
     }
     return true;
   });
-  if (!candidates.length) {
+  // When every photograph of the person is older, the newest of them up to fifteen years back, captioned as a file photo
+  // with its year (markFilePhoto): Warren Buffett's newest on Commons date from 2010-2015, and the story of his stepping
+  // down ran without a photograph (the stress test of 2026-09-28). The judges see the dates and take the newest.
+  // The older ones are tried when the recent ones give nothing, not only when there are none: two recent files naming
+  // «Buffett» (his son's foundation truck, and a lunch beside another billionaire) were refused, and the 2010-2015
+  // photographs of him were never shown (the stress test's second round, 2026-09-28).
+  const older = found.filter((c) => !recent.includes(c) && photoYear(c) >= year - 15);
+  if (!recent.length && !older.length) {
     log("image: no photograph of the story's people");
     return null;
   }
-  log(`image: people shortlist: ${candidates.slice(0, 4).map((c) => `${photoYear(c) ?? "?"} ${String(c.title).slice(0, 50)}`).join(" | ")}`);
-  // Two looks: the first four 2026 photographs of Trump all showed him with someone else (Nicki Minaj, Mike
-  // Johnson), the judge rightly refused them, and the story fell back to a data centre (2026-09-24).
-  return twoLooks({ candidates, draft, story, log, exclude, relaxed: false, people });
+  if (recent.length) {
+    log(`image: people shortlist: ${recent.slice(0, 4).map((c) => `${photoYear(c) ?? "?"} ${String(c.title).slice(0, 50)}`).join(" | ")}`);
+    // Two looks: the first four 2026 photographs of Trump all showed him with someone else (Nicki Minaj, Mike
+    // Johnson), the judge rightly refused them, and the story fell back to a data centre (2026-09-24).
+    const image = await twoLooks({ candidates: recent, draft, story, log, exclude, relaxed: false, people });
+    if (image || !older.length) return image;
+  }
+  log(`image: nothing of them since ${oldest} fits; their newest older photographs, run as file photos: ${older.slice(0, 4).map((c) => `${photoYear(c)} ${String(c.title).slice(0, 40)}`).join(" | ")}`);
+  return twoLooks({ candidates: older, draft, story, log, exclude, relaxed: false, people });
 }
 
 /**
@@ -1320,7 +1440,7 @@ async function neutralScene({ draft, story, log, exclude, queries, place }) {
 async function lastResort({ draft, story, log, exclude }) {
   let queries = [];
   try {
-    const { data } = await chat({
+    const { data } = await outside.chat({
       role: "writer",
       system: "You name places for a newspaper photo desk. Reply with one JSON object only.",
       user: `Story headline: ${draft.title}
@@ -1356,5 +1476,6 @@ Return JSON: {"scene": "<search or null>", "country": "<name or null>", "institu
   }
   log(`image: last resort: ${queries.join(" | ")}`);
   const candidates = atHome(await collect(queries, log, { perQuery: 12, max: 12, exclude, people: "none", civilian: civilianStory(draft) }), draft, log);
-  return twoLooks({ candidates, draft, story, log, exclude });
+  // The one pass that may take a capital's skyline (SKYLINE_LAST).
+  return twoLooks({ candidates, draft, story, log, exclude, skyline: true });
 }

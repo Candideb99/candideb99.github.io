@@ -107,7 +107,7 @@
   --fs-sm: 0.86rem;
   /* Tajawal in data tables: a figure a step above the meta line. */
   --fs-data: 0.92rem;
-  /* The labels of the three strips under the bar (ملفات نتابعها، الأسواق، أيضاً على خازندار) share one width, so
+  /* The labels of the three strips under the bar (ملفات نتابعها، الأسواق، آخر الأخبار) share one width, so
      their rules and first items line up. */
   --strip-label: 7.5rem;
 

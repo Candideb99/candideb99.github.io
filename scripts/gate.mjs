@@ -55,6 +55,13 @@ const safeguards = spawnSync(process.execPath, [path.join("scripts", "pipeline-s
 if (safeguards.status !== 0) fail("the newsroom's safeguards (scripts/pipeline-selftest.mjs)", safeguards.stdout + safeguards.stderr);
 console.log(`[ok] the newsroom's safeguards pass their known cases (${seconds(t)})`);
 
+// 1d. The picture desk decides its known cases correctly (scripts/images-selftest.mjs, 2026-09-28): the cascade's
+// order, the place filter, the repeat guard, accented names, namesake towns, and every library failing at once.
+t = Date.now();
+const pictures = spawnSync(process.execPath, [path.join("scripts", "images-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });
+if (pictures.status !== 0) fail("the picture desk (scripts/images-selftest.mjs)", pictures.stdout + pictures.stderr);
+console.log(`[ok] the picture desk passes its known cases (${seconds(t)})`);
+
 // 2 and 3. The type check and the production build, as the project runs them.
 for (const [name, command] of [["astro check", "npm run check"], ["npm run build", "npm run build"]]) {
   t = Date.now();

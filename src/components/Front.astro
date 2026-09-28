@@ -82,7 +82,7 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
     {chart?.data.chart && (
       <section class="module" aria-labelledby="chart-head">
         <h2 id="chart-head" class="module__head">أحدث الرسوم البيانية</h2>
-        <Chart chart={chart.data.chart} id="front-chart" narrow href={articleHref(chart)} />
+        <Chart chart={chart.data.chart} id="front-chart" narrow href={`${articleHref(chart)}#story-chart`} />
         <p class="module__from"><span class="module__from-label ui">من مادة</span><a href={articleHref(chart)} set:html={isolateNumbers(chart.data.title)} /></p>
       </section>
     )}

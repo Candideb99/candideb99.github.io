@@ -37,9 +37,11 @@ const {
 
 const fullTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
 // آخر الأخبار under the market strip, as الشرق الأوسط runs its latest-news line on every page (Task 4,
-// 2026-09-24): the eight newest news stories, the page's own story left out. Not on the front page, which runs
-// its own strip, nor on the latest list, which is the same list at full length.
-const withLatest = path !== "/" && !path.startsWith("/latest") && path !== "/404";
+// 2026-09-24): the eight newest news stories, the page's own story left out. The front page too since 2026-09-28 (the
+// owner, on its own «أيضاً على خازندار» strip beside every other page's «آخر الأخبار»: "is this a bug?"; he chose one
+// strip everywhere, knowing some of its headlines also stand in the cover below). Not on the latest list, which is the
+// same list at full length.
+const withLatest = !path.startsWith("/latest") && path !== "/404";
 const latestNews = withLatest ? (await getArticles()).filter((a) => a.data.kind === "news" && articleHref(a) !== path).slice(0, 8) : [];
 const canonical = new URL(path, site.url).toString();
 const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
