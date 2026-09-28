@@ -8123,6 +8123,167 @@
         }
       ],
       "outcome": "listed"
+    },
+    "trump-weighs-us-diesel-export-ban-7feb98": {
+      "at": "2026-09-28T21:17:02.798Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v20",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-28T14:25:26.492Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 26,
+        "checked": 26,
+        "supported": 22,
+        "weak": 0,
+        "noEvidence": 4,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "وكان متوسط سعر غالون الديزل في الولايات المتحدة قد بلغ نحو 6.50 دولار الجمعة، بحسب الجمعية الأمريكية للسيارات (AAA).",
+        "متوسط سعر الديزل الأمريكي الجمعة: نحو 6.50 دولار للغالون",
+        "المستوى القياسي لسعر الديزل الأمريكي: 6.53 دولار للغالون",
+        "ويبقى سعر الجمعة دون المستوى القياسي البالغ 6.53 دولار للغالون، المسجل في 22 سبتمبر."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "trump-obamacare-500-rebates-33c345": {
+      "at": "2026-09-28T21:17:02.823Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-10T21:11:40.138Z",
+      "sourcesRead": 2,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 24,
+        "checked": 24,
+        "supported": 18,
+        "weak": 1,
+        "noEvidence": 1,
+        "notFound": 1,
+        "confirmed": 3,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 4,
+          "field": "lede",
+          "sentence": "وتبلغ قيمة الشيكات الإجمالية 500 مليون دولار، وفقاً لورقة حقائق نشرها البيت الأبيض الخميس.",
+          "claim": "The checks total $500 million, according to a White House fact sheet published Thursday.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-10",
+          "quote": "The refund payments — which would total about $500 million — come just weeks before the midterm elections, in which Democrats are favored to win back at least one chamber of Congress from Republicans.",
+          "correction": "The total of about $500 million is CNBC's own reporting and is not attributed to the White House fact sheet, which the source cites only for the 30-state eligibility.",
+          "class": "attribution"
+        },
+        {
+          "id": 15,
+          "field": "body",
+          "sentence": "انتقد خبراء السياسة الصحية القرار ووصفوه بأنه محاولة لتشتيت الانتباه عن ارتفاع تكاليف الرعاية الصحية.",
+          "claim": "Health policy experts (plural) criticized the decision and described it as an attempt to distract from rising healthcare costs.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-10",
+          "quote": "He said the policy is likely a form of \"damage control\" for the White House to distract from higher healthcare costs.",
+          "correction": "Only one expert, Jonathan Oberlander, said the policy is likely a form of damage control to distract from higher healthcare costs; this was his hedged view, not a characterization made by experts generally.",
+          "class": "attribution"
+        },
+        {
+          "id": 23,
+          "field": "table",
+          "sentence": "المؤشر: انخفاض الاشتراكات في البورصة بحلول فبراير · القيمة: 3 ملايين (13%)",
+          "claim": "Enrollment on the 'stock exchange' (البورصة) fell by 3 million (13%) by February.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-10",
+          "quote": "As of February, ACA marketplace enrollment had declined by about 3 million people, or 13%, from enrollment figures a year earlier, the Department of Health and Human Services said in June.",
+          "correction": "The decline was in ACA health insurance marketplace (exchange) enrollment, not on a stock exchange.",
+          "class": "term"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "وكان الدعم الفيدرالي المعزَّز لأقساط التأمين الصحي قد انتهى في نهاية العام الماضي، فارتفعت تكاليف التأمين على المؤمَّن عليهم.",
+        "المؤشر: الزيادة في تكاليف التأمين بعد انتهاء الدعم · القيمة: لم يُذكر رقم محدد"
+      ],
+      "weak": [
+        {
+          "sentence": "أفقد انتهاء الدعم الفيدرالي سوق التأمين الصحي نحو 3 ملايين مشترك، وخبراء السياسة الصحية يرون أن شيكات الـ500 دولار لن تعوّض سوى جزء ضئيل من الزيادة في أقساط التأمين التي يتحملها المستفيدون.",
+          "quote": "The expiration of enhanced ACA subsidies, in place since 2021, caused insurance costs to rise for most ACA enrollees and led millions to drop coverage or downgrade to cheaper, skimpier plans. As of February, ACA marketplace enrollment had declined by about 3 million people, or 13%, from enrollment figures a year earlier, the Department of Health and Human Services said in June."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن إجمالي الشيكات البالغ 500 مليون دولار ورد في ورقة حقائق البيت الأبيض، والصحيح أنه نحو 500 مليون دولار بحسب «سي إن بي سي». كما نسبت النسخة السابقة إلى خبراء السياسة الصحية عموماً وصف القرار بأنه محاولة لتشتيت الانتباه، والصحيح أنه رأي جوناثان أوبرلاندر وحده، وأُزيل جدول تحدث عن انخفاض الاشتراكات «في البورصة» بينما الانخفاض في سوق التأمين الصحي.",
+      "verified": {
+        "at": "2026-09-28T21:19:02.466Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
+    },
+    "uae-germany-boring-investment-916d36": {
+      "at": "2026-09-28T21:17:49.531Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-10T21:08:23.763Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 12,
+        "checked": 12,
+        "supported": 9,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "تخصيص 10 مليارات يورو لبافاريا وحدها يجعل الإمارات من كبار المستثمرين في أبرز الولايات الصناعية الألمانية.",
+        "وتأتي هذه الخطوات في وقت تسعى فيه الإمارات إلى توسيع وجودها الاستثماري في اقتصادات كبرى في أوروبا والمنطقة العربية، مستفيدةً من خبرتها في إدارة المشاريع الكبرى ودعم قطاعات المستقبل."
+      ],
+      "weak": [
+        {
+          "sentence": "التقى الشيخ محمد بن زايد آل نهيان الرئيس الألماني فرانز-فالتر شتاينماير في فيلا بورسيغ ببرلين، وتباحث الطرفان في سبل تعزيز الشراكة بين البلدين التي تمتد لأكثر من 50 عاماً.",
+          "quote": "The announcement came during UAE President His Highness Sheikh Mohamed bin Zayed Al Nahyan’s visit to Berlin, where he met with His Excellency Frank-Walter Steinmeier, President of the Federal Republic of Germany, at Villa Borsig in Berlin."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }

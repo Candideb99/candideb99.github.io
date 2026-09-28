@@ -1,0 +1,132 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-09-28T21:17:02.441Z",
+  "durationSec": 120,
+  "read": 3,
+  "corrected": 1,
+  "report": [
+    {
+      "slug": "trump-weighs-us-diesel-export-ban-7feb98",
+      "title": "ترامب يدرس بجدية حظر صادرات الديزل مقرّاً بأنه قد يرفع البنزين",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 26,
+        "checked": 26,
+        "supported": 22,
+        "weak": 0,
+        "noEvidence": 4,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "trump-obamacare-500-rebates-33c345",
+      "title": "واشنطن تعيد 500 دولار للمشتركين في «أوباماكير» قبل الانتخابات",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 24,
+        "checked": 24,
+        "supported": 18,
+        "weak": 1,
+        "noEvidence": 1,
+        "notFound": 1,
+        "confirmed": 3,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "attribution",
+          "sentence": "وتبلغ قيمة الشيكات الإجمالية 500 مليون دولار، وفقاً لورقة حقائق نشرها البيت الأبيض الخميس.",
+          "quote": "The refund payments — which would total about $500 million — come just weeks before the midterm elections, in which Democrats are favored to win back at least one chamber of Congress from Republicans.",
+          "source": "CNBC",
+          "correction": "The total of about $500 million is CNBC's own reporting and is not attributed to the White House fact sheet, which the source cites only for the 30-state eligibility."
+        },
+        {
+          "class": "attribution",
+          "sentence": "انتقد خبراء السياسة الصحية القرار ووصفوه بأنه محاولة لتشتيت الانتباه عن ارتفاع تكاليف الرعاية الصحية.",
+          "quote": "He said the policy is likely a form of \"damage control\" for the White House to distract from higher healthcare costs.",
+          "source": "CNBC",
+          "correction": "Only one expert, Jonathan Oberlander, said the policy is likely a form of damage control to distract from higher healthcare costs; this was his hedged view, not a characterization made by experts generally."
+        },
+        {
+          "class": "term",
+          "sentence": "المؤشر: انخفاض الاشتراكات في البورصة بحلول فبراير · القيمة: 3 ملايين (13%)",
+          "quote": "As of February, ACA marketplace enrollment had declined by about 3 million people, or 13%, from enrollment figures a year earlier, the Department of Health and Human Services said in June.",
+          "source": "CNBC",
+          "correction": "The decline was in ACA health insurance marketplace (exchange) enrollment, not on a stock exchange."
+        }
+      ]
+    },
+    {
+      "slug": "uae-germany-boring-investment-916d36",
+      "title": "الإمارات تستثمر 40 مليار يورو في ألمانيا",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 12,
+        "checked": 12,
+        "supported": 9,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 4,
+    "failures": 0,
+    "promptTokens": 26454,
+    "completionTokens": 16614,
+    "cacheReadTokens": 0,
+    "costUsd": 0.5439,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 4
+    },
+    "correctionsEditorCalls": 1
+  },
+  "log": [
+    "[21:17:02] second look: 3 to read now (42 published pieces not yet read; 26 read clean before publication and left out of the audit sample)",
+    "[21:17:02] trump-obamacare-500-rebates-33c345:   source https://www.nytimes.com/2026/09/10/business/trump-obamacare-rebates.html: http-403",
+    "[21:17:10] trump-obamacare-500-rebates-33c345:   source https://www.marketwatch.com/story/why-500-checks-wont-help-americans-facing-15-i: robots-disallow",
+    "[21:17:49] llm ok role=checker model=claude-cli attempt=1 ms=37290",
+    "[21:17:49] trump-weighs-us-diesel-export-ban-7feb98: 26 of 26 sentences checked · 22 supported · 4 without a source · 0 confirmed error(s)",
+    "[21:17:55] llm ok role=checker model=claude-cli attempt=1 ms=43813",
+    "[21:17:55] trump-obamacare-500-rebates-33c345: 24 of 24 sentences checked · 18 supported · 2 without a source · 3 confirmed error(s)",
+    "[21:17:55]   ✗ [attribution] وتبلغ قيمة الشيكات الإجمالية 500 مليون دولار، وفقاً لورقة حقائق نشرها البيت الأبيض الخميس. — The total of about $500 million is CNBC's own reporting and is not attributed to the White House fact sheet, which the source cites only for the 30-state eligib",
+    "[21:17:55]   ✗ [attribution] انتقد خبراء السياسة الصحية القرار ووصفوه بأنه محاولة لتشتيت الانتباه عن ارتفاع تكاليف الرعاية الصحية. — Only one expert, Jonathan Oberlander, said the policy is likely a form of damage control to distract from higher healthcare costs; this was his hedged view, not",
+    "[21:17:55]   ✗ [term] المؤشر: انخفاض الاشتراكات في البورصة بحلول فبراير · القيمة: 3 ملايين (13%) — The decline was in ACA health insurance marketplace (exchange) enrollment, not on a stock exchange.",
+    "[21:18:12] llm ok role=checker model=claude-cli attempt=1 ms=21139",
+    "[21:18:12] uae-germany-boring-investment-916d36: 12 of 12 sentences checked · 9 supported · 2 without a source · 0 confirmed error(s)",
+    "[21:18:12] corrections: 1 story to the corrections editor",
+    "[21:18:12] [correct] trump-obamacare-500-rebates-33c345: fetching 4 source(s)",
+    "[21:18:12] [correct]   source https://www.nytimes.com/2026/09/10/business/trump-obamacare-rebates.ht: http-403",
+    "[21:18:13] [correct]   source https://www.marketwatch.com/story/why-500-checks-wont-help-americans-f: robots-disallow",
+    "[21:18:36] [correct] llm ok role=writer model=claude-cli attempt=1 ms=21821",
+    "[21:18:36] [correct] trump-obamacare-500-rebates-33c345: corrected; fields lede, body, keyFacts, table",
+    "[21:18:36]     note: ذكرت نسخة سابقة من هذا الخبر أن إجمالي الشيكات البالغ 500 مليون دولار ورد في ورقة حقائق البيت الأبيض، والصحيح أنه نحو 500 مليون دولار بحسب «سي إن بي سي». كما نسبت النسخة السابقة إلى خبراء السياسة الصحية عموماً وصف القرار بأنه محاولة لتشتيت الانتباه، والصحيح أنه رأي جوناثان أوبرلاندر وحده، وأُزيل جدول تحدث عن انخفاض الاشتراكات «في البورصة» بينما الانخفاض في سوق التأمين الصحي.",
+    "[21:18:36] [correct] done: 1 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-09-28T21-18-12-506Z.json",
+    "[21:18:36] trump-obamacare-500-rebates-33c345:   source https://www.nytimes.com/2026/09/10/business/trump-obamacare-rebates.html: http-403",
+    "[21:18:37] trump-obamacare-500-rebates-33c345:   source https://www.marketwatch.com/story/why-500-checks-wont-help-americans-facing-15-i: robots-disallow",
+    "[21:19:02] llm ok role=checker model=claude-cli attempt=1 ms=24583",
+    "[21:19:02] trump-obamacare-500-rebates-33c345: the correction reads clean where it wrote"
+  ]
+}

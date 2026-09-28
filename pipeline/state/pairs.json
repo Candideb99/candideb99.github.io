@@ -303,6 +303,50 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-09-28T21:32:35.596Z",
+      "slug": "rua-mrcb-king-salman-gate-makkah-deal-de80e7",
+      "checker": "f6d38e4947.2",
+      "lessons": "v21",
+      "lessonsHash": "f5873a7267",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 16,
+        "notFound": 0,
+        "checked": 19,
+        "words": 210,
+        "keyFacts": 2,
+        "classes": [],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 14,
+        "notFound": 0,
+        "checked": 17,
+        "words": 210,
+        "keyFacts": 2,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 14,
+        "notFound": 0,
+        "checked": 17,
+        "words": 210,
+        "keyFacts": 2,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }

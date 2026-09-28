@@ -1247,6 +1247,211 @@
           "noted": []
         }
       ]
+    },
+    "qatarenergy-extends-lng-force-majeure-november-4266a4": {
+      "at": "2026-09-28T21:24:34.708Z",
+      "title": "قطر للطاقة تمدد القوة القاهرة على شحنات الغاز المسال حتى نهاية نوفمبر",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v21",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 25,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "us-10-year-treasury-yield-rises-02d373": {
+      "at": "2026-09-28T21:28:44.845Z",
+      "title": "عائد سندات الخزانة الأمريكية لأجل 10 سنوات يصعد إلى 5.234%",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v21",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 14,
+            "checked": 14,
+            "supported": 14,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "rua-mrcb-king-salman-gate-makkah-deal-de80e7": {
+      "at": "2026-09-28T21:32:35.593Z",
+      "title": "«رؤى الحرم المكي» و«إم آر سي بي» تدرسان مشروعاً بـ5.5 مليار دولار في مكة",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v21",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 17,
+            "checked": 17,
+            "supported": 14,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 3,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 1,
+              "field": "title",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "«رؤى الحرم المكي» و«إم آر سي بي» تدرسان مشروعاً بـ5.5 مليار دولار في مكة",
+              "quote": "تطوير مشروع بـ5.6 مليار دولار ضمن «بوابة الملك سلمان» بمكة المكرمة",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 4,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وتُقدَّر القيمة الاسترشادية للمشروع بنحو 21 مليار ريال (5.5 مليار دولار).",
+              "quote": "تطوير مشروع بـ5.6 مليار دولار ضمن «بوابة الملك سلمان» بمكة المكرمة",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 6,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "القيمة الاسترشادية للتطوير بالدولار: نحو 5.5 مليار دولار",
+              "quote": "تطوير مشروع بـ5.6 مليار دولار ضمن «بوابة الملك سلمان» بمكة المكرمة",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "turkish-stocks-extend-losses-fund-liquidation-10b52d": {
+      "at": "2026-09-28T21:41:37.323Z",
+      "title": "الأسهم التركية تمدد خسائرها مع تصفية 131 صندوقاً استثمارياً",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 23,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 12,
+              "field": "whyItMatters",
+              "class": "scope",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وكانت أصول هذه الصناديق قد تراجعت 510 مليارات ليرة في أقل من ثلاثة أسابيع.",
+              "quote": "وكشفت البيانات الرسمية عن انخفاض إجمالي أصول الصناديق بقيمة 510 مليارات ليرة (نحو 11 مليار دولار)، بين نهاية أغسطس (آب) الماضي و18 سبتمبر الحالي، إثر سحب المستثمرين أموالهم بكثافة.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": "The 510 billion lira decline was in the total assets of all funds, not specifically of the 131 funds being liquidated."
+            }
+          ],
+          "noted": [
+            {
+              "id": 19,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ثم رفع مكتب المدعي العام في إسطنبول الاثنين القيود عن الشركات والصناديق، وأبقى الإجراءات بحق الأفراد.",
+              "quote": "ومع استمرار التحقيقات، رفعت السلطات أوامر التجميد وحظر التصرف في الأصول المفروضة على 46 شركة و18 صندوقاً استثمارياً و42 شخصاً، مع منع 37 من السفر إلى خارج البلاد.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 23,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 19,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ثم رفع مكتب المدعي العام في إسطنبول الاثنين القيود عن الشركات والصناديق، وأبقى الإجراءات بحق الأفراد.",
+              "quote": "ومع استمرار التحقيقات، رفعت السلطات أوامر التجميد وحظر التصرف في الأصول المفروضة على 46 شركة و18 صندوقاً استثمارياً و42 شخصاً، مع منع 37 من السفر إلى خارج البلاد.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []

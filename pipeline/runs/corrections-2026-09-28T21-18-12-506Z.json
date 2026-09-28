@@ -1,0 +1,42 @@
+{
+  "startedAt": "2026-09-28T21:18:12.644Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "trump-obamacare-500-rebates-33c345",
+      "issue": "1. The lede says «وتبلغ قيمة الشيكات الإجمالية 500 مليون دولار، وفقاً لورقة حقائق نشرها البيت الأبيض الخميس.» (The checks total $500 million, according to a White House fact sheet published Thursday.). Source CNBC says: \"The refund payments — which would total about $500 million — come just weeks before the midterm elections, in which Democrats are favored to win back at least one chamber of Congress from Republicans.\". The total of about $500 million is CNBC's own reporting and is not attributed to the White House fact sheet, which the source cites only for the 30-state eligibility.\n2. The body says «انتقد خبراء السياسة الصحية القرار ووصفوه بأنه محاولة لتشتيت الانتباه عن ارتفاع تكاليف الرعاية الصحية.» (Health policy experts (plural) criticized the decision and described it as an attempt to distract from rising healthcare costs.). Source CNBC says: \"He said the policy is likely a form of \"damage control\" for the White House to distract from higher healthcare costs.\". Only one expert, Jonathan Oberlander, said the policy is likely a form of damage control to distract from higher healthcare costs; this was his hedged view, not a characterization made by experts generally.\n3. The table says «المؤشر: انخفاض الاشتراكات في البورصة بحلول فبراير · القيمة: 3 ملايين (13%)» (Enrollment on the 'stock exchange' (البورصة) fell by 3 million (13%) by February.). Source CNBC says: \"As of February, ACA marketplace enrollment had declined by about 3 million people, or 13%, from enrollment figures a year earlier, the Department of Health and Human Services said in June.\". The decline was in ACA health insurance marketplace (exchange) enrollment, not on a stock exchange.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "lede",
+        "body",
+        "keyFacts",
+        "table"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن إجمالي الشيكات البالغ 500 مليون دولار ورد في ورقة حقائق البيت الأبيض، والصحيح أنه نحو 500 مليون دولار بحسب «سي إن بي سي». كما نسبت النسخة السابقة إلى خبراء السياسة الصحية عموماً وصف القرار بأنه محاولة لتشتيت الانتباه، والصحيح أنه رأي جوناثان أوبرلاندر وحده، وأُزيل جدول تحدث عن انخفاض الاشتراكات «في البورصة» بينما الانخفاض في سوق التأمين الصحي.",
+      "model": "claude-cli",
+      "before": {
+        "lede": "أعلنت واشنطن خطة لتوزيع شيكات بقيمة 500 دولار على قرابة مليون مشترك في قانون الرعاية الميسّرة («أوباماكير») في 30 ولاية، اعتباراً من أكتوبر، قبل الانتخابات النصفيّة بأسابيع. وتبلغ قيمة الشيكات الإجمالية 500 مليون دولار، وفقاً لورقة حقائق نشرها البيت الأبيض الخميس."
+      },
+      "after": {
+        "lede": "أعلنت واشنطن خطة لتوزيع شيكات بقيمة 500 دولار على قرابة مليون مشترك في قانون الرعاية الميسّرة («أوباماكير») في 30 ولاية، اعتباراً من أكتوبر، قبل الانتخابات النصفيّة بأسابيع. وتبلغ قيمة الشيكات الإجمالية نحو 500 مليون دولار، بحسب «سي إن بي سي»."
+      },
+      "visuals": {
+        "table": null,
+        "chart": null
+      },
+      "changedSentences": [
+        "وتبلغ قيمة الشيكات الإجمالية 500 مليون دولار، وفقاً لورقة حقائق نشرها البيت الأبيض الخميس.",
+        "انتقد خبراء السياسة الصحية القرار ووصفوه بأنه محاولة لتشتيت الانتباه عن ارتفاع تكاليف الرعاية الصحية.",
+        "وقال جوناثان أوبرلاندر، أستاذ السياسة الصحية في جامعة نورث كارولينا، إن الإجراء مرتبط بالانتخابات الكونغرسية أكثر منه بالسياسة الصحية.",
+        "إجمالي قيمة المستردات 500 مليون دولار"
+      ],
+      "newSentences": [
+        "وتبلغ قيمة الشيكات الإجمالية نحو 500 مليون دولار، بحسب «سي إن بي سي».",
+        "وصف جوناثان أوبرلاندر، أستاذ السياسة الصحية في جامعة نورث كارولينا، القرار بأنه على الأرجح محاولة من البيت الأبيض لتشتيت الانتباه عن ارتفاع تكاليف الرعاية الصحية.",
+        "وقال إن الإجراء مرتبط بالانتخابات الكونغرسية أكثر منه بالسياسة الصحية.",
+        "إجمالي قيمة المستردات نحو 500 مليون دولار"
+      ]
+    }
+  ]
+}
