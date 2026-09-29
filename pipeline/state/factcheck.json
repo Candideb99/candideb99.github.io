@@ -8284,6 +8284,298 @@
         }
       ],
       "outcome": "clean"
+    },
+    "us-10-year-treasury-yield-rises-02d373": {
+      "at": "2026-09-29T01:04:12.104Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v21",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-28T21:28:44.842Z",
+      "sourcesRead": 2,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 14,
+        "checked": 14,
+        "supported": 14,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "turkish-stocks-extend-losses-fund-liquidation-10b52d": {
+      "at": "2026-09-29T01:04:12.073Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "control",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-28T21:41:37.319Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 24,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "ثم رفع مكتب المدعي العام في إسطنبول الاثنين القيود عن الشركات والصناديق، وأبقى الإجراءات بحق الأفراد.",
+          "quote": "ومع استمرار التحقيقات، رفعت السلطات أوامر التجميد وحظر التصرف في الأصول المفروضة على 46 شركة و18 صندوقاً استثمارياً و42 شخصاً، مع منع 37 من السفر إلى خارج البلاد.",
+          "source": "Asharq Al-Awsat"
+        }
+      ],
+      "notFound": [],
+      "weak": [],
+      "outcome": "listed"
+    },
+    "fed-october-hike-egypt-gold-savers-3cd586": {
+      "at": "2026-09-29T01:04:37.824Z",
+      "kind": "analysis",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-28T20:38:12.492Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 47,
+        "checked": 47,
+        "supported": 28,
+        "weak": 6,
+        "noEvidence": 0,
+        "notFound": 13,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "والأرجح، في قراءة خازندار، أن مدخرات من يشتري الذهب اتقاءً للتضخم باتت تتأثر بقرار يُتخذ في واشنطن أكثر من تأثرها بسعر الجنيه.",
+        "فإذا رفع الاحتياطي الفيدرالي الفائدة في أكتوبر ودفع الأونصة إلى هبوط جديد، خسر المدخر جزءاً من قيمة الأداة التي اشتراها ليحمي بها تلك القيمة.",
+        "ويبدو هذا المستوى، في قراءة خازندار، الدافع الأوضح لمن يحتفظ بالذهب ليحمي مدخراته من تآكل قدرتها الشرائية.",
+        "وقد تكون الخسارة اتسعت مع هبوط الأونصة الاثنين، إذا انتقل الهبوط إلى السوق المحلية كما انتقل في الأسبوع السابق.",
+        "والمفارقة أن هذه الخسارة لا صلة لها بالتضخم المحلي الذي اشتُري الذهب للتحوط منه.",
+        "في المقابل، يستفيد من أجّل الشراء.",
+        "في السيناريو الأول يستمر الضغط على الذهب.",
+        "ويتحقق إذا جاءت بيانات سوق العمل والأسعار الأمريكية هذا الأسبوع قوية وبقي برنت فوق 107 دولارات، فترتفع الرهانات على رفع أكتوبر فوق 66%."
+      ],
+      "weak": [
+        {
+          "sentence": "هبط الذهب إلى ما دون 4200 دولار للأونصة الاثنين، مع اتساع الرهانات على رفع جديد للفائدة الأمريكية في أكتوبر، بعد أسبوع فقد فيه جرام عيار 21 في مصر 150 جنيهاً.",
+          "quote": "هبط الذهب بأكثر من 2% إلى ما دون 4200 دولار للأونصة الاثنين، مع صعود أسعار النفط الذي غذّى مخاوف التضخم وقوّى التوقعات بأن يرفع الاحتياطي الفيدرالي الأمريكي الفائدة مجدداً."
+        },
+        {
+          "sentence": "في قراءة خازندار، لم يعد شراء الذهب يضمن وحده للأسر المصرية حماية مدخراتها من تضخم بلغ 12.7% في أغسطس، لأن سعر الجرام يتبع الأونصة ورهانات الفائدة الأمريكية أكثر مما يتبع الأسعار داخل مصر.",
+          "quote": "ارتبط تراجع الذهب في السوق المصرية إلى حد كبير بحركة الأونصة العالمية لا بسعر الصرف، بحسب «آي صاغة»؛ فالدولار لم يتحرك أمام الجنيه خلال الفترة إلا بين 51.47 و51.97 جنيه."
+        },
+        {
+          "sentence": "تراجع الذهب في المعاملات الفورية 2.05% إلى 4197.37 دولاراً للأونصة بحلول الساعة 04:30 بتوقيت غرينتش الاثنين، بعدما قفز برنت إلى 107.24 دولار للبرميل إثر رفض الرئيس الأمريكي دونالد ترامب مقترحاً إيرانياً لإعادة فتح مضيق هرمز.",
+          "quote": "فقد تراجع الذهب في المعاملات الفورية 2.05% إلى 4197.37 دولاراً للأونصة بحلول الساعة 04:30 بتوقيت غرينتش."
+        },
+        {
+          "sentence": "فبحسب بيانات منصة «آي صاغة»، فقدت الأونصة نحو 70 دولاراً بين 21 و24 سبتمبر، ونزل جرام عيار 21 من 6395 جنيهاً في 19 سبتمبر إلى 6245 جنيهاً في 26 سبتمبر، بتراجع يقارب 2.35%.",
+          "quote": "وفي السوق المصرية، نزل جرام عيار 21 من 6395 جنيهاً في 19 سبتمبر إلى 6245 جنيهاً في 26 سبتمبر، بخسارة تعادل نحو 2.35%."
+        },
+        {
+          "sentence": "وفي الخليج، الأرجح أن تكون السعودية والإمارات أبرز المستفيدين من بقاء برنت فوق 107 دولارات، بعدما رفعتا شحناتهما.",
+          "quote": "وجاءت الزيادة مع رفع السعودية والإمارات شحناتهما."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "apple-foldable-iphone-duo-release-cycle-change-d6b45a": {
+      "at": "2026-09-29T01:05:07.193Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-10T21:06:30.841Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 19,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 3,
+        "listed": 1,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 4,
+          "field": "lede",
+          "sentence": "كما كشفت الشركة عن آيفون 18 برو وبرو ماكس بشاشات أكبر، مع غياب ملحوظ للطراز الأساسي آيفون 18 الذي كان يباع سابقاً بسعر 799 دولاراً.",
+          "claim": "Apple unveiled the iPhone 18 Pro and Pro Max with larger screens. The base iPhone 18 was absent, and the story says it previously sold for $799.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-10",
+          "quote": "Prior to the event, the iPhone 17 cost $799, but was listed at $899 afterwards.",
+          "correction": "The $799 price belonged to the iPhone 17 before the event; the base iPhone 18 has not been released and had no price.",
+          "class": "scope"
+        },
+        {
+          "id": 12,
+          "field": "body",
+          "sentence": "وكان الحدث أول ظهور لجون تيرنوس رئيساً تنفيذياً منذ 1 سبتمبر، وكُشف فيه عن «آيفون 18 برو» و«برو ماكس» بشاشات أكبر، لكن «آيفون 18» الأساسي الذي كان يُباع بـ799 دولاراً غاب.",
+          "claim": "The event was Ternus' first appearance as CEO since Sept. 1. It revealed the iPhone 18 Pro and Pro Max with larger screens, while the base iPhone 18, which the story says sold for $799, was absent.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-10",
+          "quote": "Prior to the event, the iPhone 17 cost $799, but was listed at $899 afterwards.",
+          "correction": "The $799 price was the iPhone 17's pre-event price; the base iPhone 18 has not been sold at any price.",
+          "class": "scope"
+        },
+        {
+          "id": 16,
+          "field": "body",
+          "sentence": "أبرز ما أعلنته «أبل» احتمال تقسيم دورة الإصدار السنوية: يُتوقع أن يقتصر حدث الخريف على طرازات «برو» المرتفعة السعر، أما الطراز الأساسي الأقل تكلفة فيُطلَق في حدث ربيعي في مارس أو أبريل.",
+          "claim": "The story says Apple's main announcement was a possible split of its annual release cycle: the fall event limited to Pro models, with the base model launched at a spring event in March or April.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-10",
+          "quote": "But the biggest news for investors from Wednesday's event may be the absence of an iPhone 18 without the Pro moniker. Analysts in recent months have largely expected this shift in Apple's annual cadence, and foresee Apple releasing its mainline iPhone at an event in the spring, when the company has previously announced new low-cost models, including the iPhone SE and iPhone 16e.",
+          "correction": "Apple did not announce a split; the base iPhone 18 was simply absent, and it is analysts who foresee a spring launch of the mainline model.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [
+        {
+          "status": "listed",
+          "class": "other",
+          "field": "body",
+          "sentence": "ويدخل «آيفون ديو» سوقاً تهيمن عليها شركات مثل «هواوي»، ويعمل بمودم C2 من تطوير «أبل» الداخلي، وهو الجيل الثاني الذي تقول الشركة إنه أسرع بنسبة 50% ويستهلك طاقة أقل بنسبة 15% من سابقه.",
+          "quote": "At the close of Wednesday's event, the company introduced the foldable iPhone Duo, which will start at $1,999, in line with competitive offerings from companies like Huawei.",
+          "source": "CNBC",
+          "correction": "The source says only that the Duo's price is in line with competing offerings from companies like Huawei; it does not say such companies dominate the market (the C2 figures are correct)."
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "أعلنت أبل في حدث \"مفاجأة وتميّز\" في كوبرتينو يوم 9 سبتمبر 2026 عن هاتف قابل للطي يحمل اسم آيفون ديو بسعر يبدأ من 1999 دولاراً، في أول عرض لجون تيرنوس بصفته الرئيس التنفيذي الجديد منذ توليه المنصب في 1 سبتمبر.",
+          "quote": "Apple CEO John Ternus holds the iPhone Duo during Apple’s “Surprise and Shine” event at the company's corporate headquarters, Apple Park, on Sept. 9, 2026 in Cupertino, California."
+        },
+        {
+          "sentence": "أعلنت «أبل» يوم 9 سبتمبر في كوبرتينو عن «آيفون ديو» القابل للطي بسعر يبدأ من 1999 دولاراً.",
+          "quote": "Apple CEO John Ternus holds the iPhone Duo during Apple’s “Surprise and Shine” event at the company's corporate headquarters, Apple Park, on Sept. 9, 2026 in Cupertino, California."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن «آيفون 18» الأساسي كان يُباع بسعر 799 دولاراً، والصحيح أن هذا السعر كان سعر «آيفون 17» قبل الحدث، وأن «آيفون 18» الأساسي لم يُطرح بعد. كما ذكرت أن «أبل» أعلنت تقسيم دورة الإصدار، والصحيح أن الشركة لم تعلن ذلك، وأن محللين هم من يتوقعون إطلاق الطراز الأساسي في الربيع.",
+      "verified": {
+        "at": "2026-09-29T01:08:27.686Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
+    },
+    "egypt-inflation-eases-12-7-august-7557fb": {
+      "at": "2026-09-29T01:05:51.691Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-10T16:54:11.947Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 30,
+        "checked": 30,
+        "supported": 26,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 14,
+          "field": "body",
+          "sentence": "وقادت الخضروات التراجع الشهري بانخفاض 7%، تلتها لحوم الدواجن بنسبة 1.5%، ثم الحبوب والخبز والأسماك بمعدلات أقل.",
+          "claim": "Vegetables led the monthly decline at -7%. Poultry meat followed at -1.5%. Cereals, bread and fish fell at lower rates.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Arab News",
+          "sourceDate": "2026-09-10",
+          "quote": "In its latest report, CAPMAS stated: “The food and beverages division recorded a decrease of 1.2 percent due to a 0.1 percent decrease in the prices of cereals and bread, a 1.5 percent decrease in the prices of meat and poultry, a 0.1 percent decrease in the prices of fish and seafood, and a 7 percent decrease in the prices of vegetables.”",
+          "correction": "The 1.5% monthly decrease applies to meat and poultry, not to poultry meat alone.",
+          "class": "scope"
+        }
+      ],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "انخفاض أسعار الغذاء شهرياً يخفف الضغط التضخمي الكلي بينما يرتفع التضخم الأساسي إلى 14.9% ويتباطأ التضخم الحضري إلى 14.5%",
+          "quote": "RIYADH: Egypt’s annual nationwide inflation rate eased to 12.7 percent in August from 13 percent in the previous month, as lower food prices offset increases in electricity, housing and other household costs."
+        },
+        {
+          "sentence": "تراجع معدل التضخم السنوي الإجمالي في مصر إلى 12.7% في أغسطس 2026 مقابل 13% في يوليو الماضي، مدفوعاً بانخفاض أسعار الغذاء والمشروبات بنسبة 1.2% شهرياً، في وقت ارتفع فيه التضخم الأساسي إلى 14.9% من 14.7%، بينما تباطأ التضخم السنوي في المدن إلى 14.5% من 14.9%.",
+          "quote": "RIYADH: Egypt’s annual nationwide inflation rate eased to 12.7 percent in August from 13 percent in the previous month, as lower food prices offset increases in electricity, housing and other household costs."
+        },
+        {
+          "sentence": "وتوقع متوسط 17 محللاً تسارع تضخم المدن إلى 15.5%، غير أن القراءة الفعلية جاءت عند 14.5%.",
+          "quote": "وأشار متوسط توقعات 17 محللا استطلعت رويترز آراءهم إلى أن التضخم السنوي في أسعار ​المستهلكين في المدن ارتفع إلى 15.5 بالمئة في أغسطس."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أسعار لحوم الدواجن تراجعت 1.5% على أساس شهري في أغسطس، والصحيح أن هذا التراجع سجّلته مجموعة اللحوم والدواجن مجتمعة، وفق بيانات الجهاز المركزي للتعبئة العامة والإحصاء.",
+      "verified": {
+        "at": "2026-09-29T01:09:21.314Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
     }
   }
 }

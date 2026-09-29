@@ -1,0 +1,188 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-09-29T01:04:11.627Z",
+  "durationSec": 310,
+  "read": 5,
+  "corrected": 2,
+  "report": [
+    {
+      "slug": "us-10-year-treasury-yield-rises-02d373",
+      "title": "عائد سندات الخزانة الأمريكية لأجل 10 سنوات يصعد إلى 5.234%",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 14,
+        "checked": 14,
+        "supported": 14,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "turkish-stocks-extend-losses-fund-liquidation-10b52d",
+      "title": "الأسهم التركية تمدد خسائرها مع تصفية 131 صندوقاً استثمارياً",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 24,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "fed-october-hike-egypt-gold-savers-3cd586",
+      "title": "الفائدة الأمريكية تحرّك جرام الذهب في مصر أكثر من الجنيه",
+      "kind": "analysis",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 47,
+        "checked": 47,
+        "supported": 28,
+        "weak": 6,
+        "noEvidence": 0,
+        "notFound": 13,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "apple-foldable-iphone-duo-release-cycle-change-d6b45a",
+      "title": "«أبل» تطرح «آيفون ديو» القابل للطي بـ1999 دولاراً",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 19,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 3,
+        "listed": 1,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "scope",
+          "sentence": "كما كشفت الشركة عن آيفون 18 برو وبرو ماكس بشاشات أكبر، مع غياب ملحوظ للطراز الأساسي آيفون 18 الذي كان يباع سابقاً بسعر 799 دولاراً.",
+          "quote": "Prior to the event, the iPhone 17 cost $799, but was listed at $899 afterwards.",
+          "source": "CNBC",
+          "correction": "The $799 price belonged to the iPhone 17 before the event; the base iPhone 18 has not been released and had no price."
+        },
+        {
+          "class": "scope",
+          "sentence": "وكان الحدث أول ظهور لجون تيرنوس رئيساً تنفيذياً منذ 1 سبتمبر، وكُشف فيه عن «آيفون 18 برو» و«برو ماكس» بشاشات أكبر، لكن «آيفون 18» الأساسي الذي كان يُباع بـ799 دولاراً غاب.",
+          "quote": "Prior to the event, the iPhone 17 cost $799, but was listed at $899 afterwards.",
+          "source": "CNBC",
+          "correction": "The $799 price was the iPhone 17's pre-event price; the base iPhone 18 has not been sold at any price."
+        },
+        {
+          "class": "attribution",
+          "sentence": "أبرز ما أعلنته «أبل» احتمال تقسيم دورة الإصدار السنوية: يُتوقع أن يقتصر حدث الخريف على طرازات «برو» المرتفعة السعر، أما الطراز الأساسي الأقل تكلفة فيُطلَق في حدث ربيعي في مارس أو أبريل.",
+          "quote": "But the biggest news for investors from Wednesday's event may be the absence of an iPhone 18 without the Pro moniker. Analysts in recent months have largely expected this shift in Apple's annual cadence, and foresee Apple releasing its mainline iPhone at an event in the spring, when the company has previously announced new low-cost models, including the iPhone SE and iPhone 16e.",
+          "source": "CNBC",
+          "correction": "Apple did not announce a split; the base iPhone 18 was simply absent, and it is analysts who foresee a spring launch of the mainline model."
+        }
+      ]
+    },
+    {
+      "slug": "egypt-inflation-eases-12-7-august-7557fb",
+      "title": "التضخم في مصر يتباطأ إلى 12.7% في أغسطس",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 30,
+        "checked": 30,
+        "supported": 26,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "scope",
+          "sentence": "وقادت الخضروات التراجع الشهري بانخفاض 7%، تلتها لحوم الدواجن بنسبة 1.5%، ثم الحبوب والخبز والأسماك بمعدلات أقل.",
+          "quote": "In its latest report, CAPMAS stated: “The food and beverages division recorded a decrease of 1.2 percent due to a 0.1 percent decrease in the prices of cereals and bread, a 1.5 percent decrease in the prices of meat and poultry, a 0.1 percent decrease in the prices of fish and seafood, and a 7 percent decrease in the prices of vegetables.”",
+          "source": "Arab News",
+          "correction": "The 1.5% monthly decrease applies to meat and poultry, not to poultry meat alone."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 7,
+    "failures": 0,
+    "promptTokens": 54054,
+    "completionTokens": 49141,
+    "cacheReadTokens": 0,
+    "costUsd": 1.4152,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 7
+    },
+    "correctionsEditorCalls": 2
+  },
+  "log": [
+    "[01:04:12] second look: 5 to read now (41 published pieces not yet read; 28 read clean before publication and left out of the audit sample)",
+    "[01:04:12] us-10-year-treasury-yield-rises-02d373:   source https://www.marketwatch.com/story/bond-yields-move-relentlessly-higher-as-wall-s: robots-disallow",
+    "[01:04:37] llm ok role=checker model=claude-cli attempt=1 ms=25034",
+    "[01:04:37] us-10-year-treasury-yield-rises-02d373: 14 of 14 sentences checked · 14 supported · 0 without a source · 0 confirmed error(s)",
+    "[01:05:07] llm ok role=checker model=claude-cli attempt=1 ms=53019",
+    "[01:05:07] turkish-stocks-extend-losses-fund-liquidation-10b52d: 25 of 25 sentences checked · 24 supported · 0 without a source · 0 confirmed error(s) · 1 listed for a person",
+    "[01:05:51] llm ok role=checker model=claude-cli attempt=1 ms=73830",
+    "[01:05:51] fed-october-hike-egypt-gold-savers-3cd586: 47 of 47 sentences checked · 28 supported · 13 without a source · 0 confirmed error(s)",
+    "[01:06:05] llm ok role=checker model=claude-cli attempt=1 ms=55361",
+    "[01:06:05] apple-foldable-iphone-duo-release-cycle-change-d6b45a: 25 of 25 sentences checked · 19 supported · 0 without a source · 3 confirmed error(s) · 1 listed for a person",
+    "[01:06:05]   ✗ [scope] كما كشفت الشركة عن آيفون 18 برو وبرو ماكس بشاشات أكبر، مع غياب ملحوظ للطراز الأساسي آيفون 18 الذي كان يباع ساب — The $799 price belonged to the iPhone 17 before the event; the base iPhone 18 has not been released and had no price.",
+    "[01:06:05]   ✗ [scope] وكان الحدث أول ظهور لجون تيرنوس رئيساً تنفيذياً منذ 1 سبتمبر، وكُشف فيه عن «آيفون 18 برو» و«برو ماكس» بشاشات أ — The $799 price was the iPhone 17's pre-event price; the base iPhone 18 has not been sold at any price.",
+    "[01:06:05]   ✗ [attribution] أبرز ما أعلنته «أبل» احتمال تقسيم دورة الإصدار السنوية: يُتوقع أن يقتصر حدث الخريف على طرازات «برو» المرتفعة ا — Apple did not announce a split; the base iPhone 18 was simply absent, and it is analysts who foresee a spring launch of the mainline model.",
+    "[01:06:56] llm ok role=checker model=claude-cli attempt=1 ms=60763",
+    "[01:06:56] egypt-inflation-eases-12-7-august-7557fb: 30 of 30 sentences checked · 26 supported · 0 without a source · 1 confirmed error(s)",
+    "[01:06:56]   ✗ [scope] وقادت الخضروات التراجع الشهري بانخفاض 7%، تلتها لحوم الدواجن بنسبة 1.5%، ثم الحبوب والخبز والأسماك بمعدلات أقل — The 1.5% monthly decrease applies to meat and poultry, not to poultry meat alone.",
+    "[01:06:56] corrections: 2 stories to the corrections editor",
+    "[01:06:56] [correct] apple-foldable-iphone-duo-release-cycle-change-d6b45a: fetching 2 source(s)",
+    "[01:07:22] [correct] llm ok role=writer model=claude-cli attempt=1 ms=23643",
+    "[01:07:22] [correct] apple-foldable-iphone-duo-release-cycle-change-d6b45a: corrected; fields lede, body",
+    "[01:07:22]     note: ذكرت نسخة سابقة من هذا الخبر أن «آيفون 18» الأساسي كان يُباع بسعر 799 دولاراً، والصحيح أن هذا السعر كان سعر «آيفون 17» قبل الحدث، وأن «آيفون 18» الأساسي لم يُطرح بعد. كما ذكرت أن «أبل» أعلنت تقسيم دورة الإصدار، والصحيح أن الشركة لم تعلن ذلك، وأن محللين هم من يتوقعون إطلاق الطراز الأساسي في الربيع.",
+    "[01:07:22] [correct] egypt-inflation-eases-12-7-august-7557fb: fetching 3 source(s)",
+    "[01:07:39] [correct] llm ok role=writer model=claude-cli attempt=1 ms=15484",
+    "[01:07:39] [correct] egypt-inflation-eases-12-7-august-7557fb: corrected; fields body",
+    "[01:07:39]     note: ذكرت نسخة سابقة من هذا الخبر أن أسعار لحوم الدواجن تراجعت 1.5% على أساس شهري في أغسطس، والصحيح أن هذا التراجع سجّلته مجموعة اللحوم والدواجن مجتمعة، وفق بيانات الجهاز المركزي للتعبئة العامة والإحصاء.",
+    "[01:07:39] [correct] done: 2 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-09-29T01-06-56-312Z.json",
+    "[01:08:27] llm ok role=checker model=claude-cli attempt=1 ms=45059",
+    "[01:08:27] apple-foldable-iphone-duo-release-cycle-change-d6b45a: the correction reads clean where it wrote",
+    "[01:09:21] llm ok role=checker model=claude-cli attempt=1 ms=52345",
+    "[01:09:21] egypt-inflation-eases-12-7-august-7557fb: the correction reads clean where it wrote"
+  ]
+}

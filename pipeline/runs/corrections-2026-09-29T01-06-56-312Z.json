@@ -1,0 +1,54 @@
+{
+  "startedAt": "2026-09-29T01:06:56.497Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "apple-foldable-iphone-duo-release-cycle-change-d6b45a",
+      "issue": "1. The lede says «كما كشفت الشركة عن آيفون 18 برو وبرو ماكس بشاشات أكبر، مع غياب ملحوظ للطراز الأساسي آيفون 18 الذي كان يباع سابقاً بسعر 799 دولاراً.» (Apple unveiled the iPhone 18 Pro and Pro Max with larger screens. The base iPhone 18 was absent, and the story says it previously sold for $799.). Source CNBC says: \"Prior to the event, the iPhone 17 cost $799, but was listed at $899 afterwards.\". The $799 price belonged to the iPhone 17 before the event; the base iPhone 18 has not been released and had no price.\n2. The body says «وكان الحدث أول ظهور لجون تيرنوس رئيساً تنفيذياً منذ 1 سبتمبر، وكُشف فيه عن «آيفون 18 برو» و«برو ماكس» بشاشات أكبر، لكن «آيفون 18» الأساسي الذي كان يُباع بـ799 دولاراً غاب.» (The event was Ternus' first appearance as CEO since Sept. 1. It revealed the iPhone 18 Pro and Pro Max with larger screens, while the base iPhone 18, which the story says sold for $799, was absent.). Source CNBC says: \"Prior to the event, the iPhone 17 cost $799, but was listed at $899 afterwards.\". The $799 price was the iPhone 17's pre-event price; the base iPhone 18 has not been sold at any price.\n3. The body says «أبرز ما أعلنته «أبل» احتمال تقسيم دورة الإصدار السنوية: يُتوقع أن يقتصر حدث الخريف على طرازات «برو» المرتفعة السعر، أما الطراز الأساسي الأقل تكلفة فيُطلَق في حدث ربيعي في مارس أو أبريل.» (The story says Apple's main announcement was a possible split of its annual release cycle: the fall event limited to Pro models, with the base model launched at a spring event in March or April.). Source CNBC says: \"But the biggest news for investors from Wednesday's event may be the absence of an iPhone 18 without the Pro moniker. Analysts in recent months have largely expected this shift in Apple's annual cadence, and foresee Apple releasing its mainline iPhone at an event in the spring, when the company has previously announced new low-cost models, including the iPhone SE and iPhone 16e.\". Apple did not announce a split; the base iPhone 18 was simply absent, and it is analysts who foresee a spring launch of the mainline model.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "lede",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن «آيفون 18» الأساسي كان يُباع بسعر 799 دولاراً، والصحيح أن هذا السعر كان سعر «آيفون 17» قبل الحدث، وأن «آيفون 18» الأساسي لم يُطرح بعد. كما ذكرت أن «أبل» أعلنت تقسيم دورة الإصدار، والصحيح أن الشركة لم تعلن ذلك، وأن محللين هم من يتوقعون إطلاق الطراز الأساسي في الربيع.",
+      "model": "claude-cli",
+      "before": {
+        "lede": "أعلنت أبل في حدث \"مفاجأة وتميّز\" في كوبرتينو يوم 9 سبتمبر 2026 عن هاتف قابل للطي يحمل اسم آيفون ديو بسعر يبدأ من 1999 دولاراً، في أول عرض لجون تيرنوس بصفته الرئيس التنفيذي الجديد منذ توليه المنصب في 1 سبتمبر. كما كشفت الشركة عن آيفون 18 برو وبرو ماكس بشاشات أكبر، مع غياب ملحوظ للطراز الأساسي آيفون 18 الذي كان يباع سابقاً بسعر 799 دولاراً."
+      },
+      "after": {
+        "lede": "أعلنت أبل في حدث \"مفاجأة وتميّز\" في كوبرتينو يوم 9 سبتمبر 2026 عن هاتف قابل للطي يحمل اسم آيفون ديو بسعر يبدأ من 1999 دولاراً، في أول عرض لجون تيرنوس بصفته الرئيس التنفيذي الجديد منذ توليه المنصب في 1 سبتمبر. كما كشفت الشركة عن آيفون 18 برو وبرو ماكس بشاشات أكبر، مع غياب ملحوظ للطراز الأساسي آيفون 18."
+      },
+      "changedSentences": [
+        "كما كشفت الشركة عن آيفون 18 برو وبرو ماكس بشاشات أكبر، مع غياب ملحوظ للطراز الأساسي آيفون 18 الذي كان يباع سابقاً بسعر 799 دولاراً.",
+        "وكان الحدث أول ظهور لجون تيرنوس رئيساً تنفيذياً منذ 1 سبتمبر، وكُشف فيه عن «آيفون 18 برو» و«برو ماكس» بشاشات أكبر، لكن «آيفون 18» الأساسي الذي كان يُباع بـ799 دولاراً غاب.",
+        "أبرز ما أعلنته «أبل» احتمال تقسيم دورة الإصدار السنوية: يُتوقع أن يقتصر حدث الخريف على طرازات «برو» المرتفعة السعر، أما الطراز الأساسي الأقل تكلفة فيُطلَق في حدث ربيعي في مارس أو أبريل."
+      ],
+      "newSentences": [
+        "كما كشفت الشركة عن آيفون 18 برو وبرو ماكس بشاشات أكبر، مع غياب ملحوظ للطراز الأساسي آيفون 18.",
+        "وكان الحدث أول ظهور لجون تيرنوس رئيساً تنفيذياً منذ 1 سبتمبر، وكُشف فيه عن «آيفون 18 برو» و«برو ماكس» بشاشات أكبر، لكن «آيفون 18» الأساسي غاب.",
+        "أما أبرز ما خرج به الحدث للمستثمرين فقد يكون غياب «آيفون 18» الأساسي.",
+        "ويتوقع محللون منذ أشهر أن تقسّم «أبل» دورة الإصدار السنوية، فتطلق الطراز الأساسي الأقل تكلفة في حدث ربيعي في مارس أو أبريل."
+      ]
+    },
+    {
+      "slug": "egypt-inflation-eases-12-7-august-7557fb",
+      "issue": "The body says «وقادت الخضروات التراجع الشهري بانخفاض 7%، تلتها لحوم الدواجن بنسبة 1.5%، ثم الحبوب والخبز والأسماك بمعدلات أقل.» (Vegetables led the monthly decline at -7%. Poultry meat followed at -1.5%. Cereals, bread and fish fell at lower rates.). Source Arab News says: \"In its latest report, CAPMAS stated: “The food and beverages division recorded a decrease of 1.2 percent due to a 0.1 percent decrease in the prices of cereals and bread, a 1.5 percent decrease in the prices of meat and poultry, a 0.1 percent decrease in the prices of fish and seafood, and a 7 percent decrease in the prices of vegetables.”\". The 1.5% monthly decrease applies to meat and poultry, not to poultry meat alone.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أسعار لحوم الدواجن تراجعت 1.5% على أساس شهري في أغسطس، والصحيح أن هذا التراجع سجّلته مجموعة اللحوم والدواجن مجتمعة، وفق بيانات الجهاز المركزي للتعبئة العامة والإحصاء.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وقادت الخضروات التراجع الشهري بانخفاض 7%، تلتها لحوم الدواجن بنسبة 1.5%، ثم الحبوب والخبز والأسماك بمعدلات أقل."
+      ],
+      "newSentences": [
+        "وقادت الخضروات التراجع الشهري بانخفاض 7%، تلتها اللحوم والدواجن بنسبة 1.5%، ثم الحبوب والخبز والأسماك بمعدلات أقل."
+      ]
+    }
+  ]
+}

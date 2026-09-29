@@ -174,10 +174,15 @@
     "trump-weighs-us-diesel-export-ban-7feb98:3b1f91c3",
     "trump-obamacare-500-rebates-33c345:dc60a0b9",
     "trump-obamacare-500-rebates-33c345:54f78754",
-    "trump-obamacare-500-rebates-33c345:ce786720"
+    "trump-obamacare-500-rebates-33c345:ce786720",
+    "turkish-stocks-extend-losses-fund-liquidation-10b52d:d6a1cd91",
+    "apple-foldable-iphone-duo-release-cycle-change-d6b45a:d6332478",
+    "apple-foldable-iphone-duo-release-cycle-change-d6b45a:a0596e31",
+    "apple-foldable-iphone-duo-release-cycle-change-d6b45a:ac3cea7a",
+    "egypt-inflation-eases-12-7-august-7557fb:1b066776"
   ],
-  "version": 21,
-  "updatedAt": "2026-09-28T21:19:02.634Z",
+  "version": 22,
+  "updatedAt": "2026-09-29T01:09:21.531Z",
   "lessons": [
     {
       "id": "L1",
@@ -280,11 +285,12 @@
         "trump-ukraine-russia-diesel-855f75:d0a92a95",
         "trump-ukraine-russia-diesel-855f75:bb07774f",
         "trump-obamacare-500-rebates-33c345:dc60a0b9",
-        "trump-obamacare-500-rebates-33c345:54f78754"
+        "trump-obamacare-500-rebates-33c345:54f78754",
+        "apple-foldable-iphone-duo-release-cycle-change-d6b45a:ac3cea7a"
       ],
-      "seen": 40,
+      "seen": 41,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-28T21:19:02.634Z",
+      "lastSeen": "2026-09-29T01:09:21.531Z",
       "status": "active",
       "previous": [
         "Credit each fact to whom the source credits; the outlet's own reporting is never 'informed sources', an official statement or analyst data. Name the originating outlet. Never make a reported line a quote, a private notice an announcement, or a reply the decree's aim.",
@@ -367,11 +373,15 @@
         "saudi-east-west-pipeline-closure-brent-d9de59:156b528a",
         "saudi-east-west-pipeline-closure-brent-d9de59:8ef11fdc",
         "hormuz-shipping-traffic-plunges-tensions-5c1d93:89ffffd1",
-        "hormuz-shipping-traffic-plunges-tensions-5c1d93:f150cc8d"
+        "hormuz-shipping-traffic-plunges-tensions-5c1d93:f150cc8d",
+        "turkish-stocks-extend-losses-fund-liquidation-10b52d:d6a1cd91",
+        "apple-foldable-iphone-duo-release-cycle-change-d6b45a:d6332478",
+        "apple-foldable-iphone-duo-release-cycle-change-d6b45a:a0596e31",
+        "egypt-inflation-eases-12-7-august-7557fb:1b066776"
       ],
-      "seen": 25,
+      "seen": 29,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-27T21:33:40.475Z",
+      "lastSeen": "2026-09-29T01:09:21.531Z",
       "status": "active",
       "previous": [
         "Keep a figure or role tied to the exact item, day and instrument the source names. Diesel is not all fuel. One day's count is not a daily rate. A futures-implied value is not the IPO valuation. An official does only what the source assigns.",
@@ -796,6 +806,14 @@
         "reinforce L10 (+2; reworded at most once a week)",
         "reinforce L3 (+1; reworded at most once a week)",
         "reinforce L1 (+1)"
+      ]
+    },
+    {
+      "at": "2026-09-29T01:09:21.531Z",
+      "mistakes": 5,
+      "applied": [
+        "reinforce L4 (+4; reworded at most once a week)",
+        "reinforce L2 (+1; reworded at most once a week)"
       ]
     }
   ],

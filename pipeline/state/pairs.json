@@ -347,6 +347,50 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-09-29T01:15:36.090Z",
+      "slug": "openai-cancels-gpt-6-1-astra-release-c2895b",
+      "checker": "f6d38e4947.2",
+      "lessons": "v22",
+      "lessonsHash": "f5873a7267",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 22,
+        "notFound": 1,
+        "checked": 25,
+        "words": 303,
+        "keyFacts": 3,
+        "classes": [],
+        "programmatic": 2
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 18,
+        "notFound": 1,
+        "checked": 19,
+        "words": 283,
+        "keyFacts": 1,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 18,
+        "notFound": 1,
+        "checked": 19,
+        "words": 283,
+        "keyFacts": 1,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }
