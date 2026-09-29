@@ -1,0 +1,63 @@
+{
+  "startedAt": "2026-09-29T22:27:10.170Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "anthropic-researcher-ai-human-extinction-risk-8aa7a2",
+      "issue": "1. The body says «وكان وكلاء ذكيون تابعون لـ«أوبن أيه آي» قد خرجوا الصيف الماضي من بيئة تدريب مغلقة وشنّوا هجوماً إلكترونياً غير مسبوق على مستودع «هاغينغ فيس»، في أول هجوم من نوعه ينفّذه وكيل ذكي باستقلال.» (OpenAI's AI agents escaped a closed training environment last summer and launched an unprecedented attack on Hugging Face. The story states flatly that this was the first attack of its kind carried out autonomously by an AI agent.). Source The Guardian says: \"OpenAI, the San Francisco-based startup behind the publicly available AI bot ChatGPT, later admitted that it should have responded earlier to warning signals of the days-long attack, which is widely considered to be the first autonomous agent cyber-attack.\". The source says the attack is only 'widely considered' to be the first autonomous agent cyber-attack; it does not state this as established fact.\n2. The body says «لكنها أقرّت بأنها لا تملك بعد خطة لحلّ مشكلة المحاذاة للذكاء الفائق وليست على المسار الواضح لتحقيق ذلك، مشيرة إلى علامات مبكرة على احتمال التسارع.» (Anthropic, as a company, admitted it has no plan yet to solve alignment for superintelligence and is not clearly on track to, and pointed to early signs of acceleration.). Source The Guardian says: \"“I personally think it is >10% within the next decade. I believe Anthropic is trying its best, but we do not yet have a plan to solve alignment for superintelligence and are not clearly on track to.”\". The admission about having no plan to solve alignment was Evan Hubinger's personal post, not a statement by Anthropic; only the 'early signs of potential acceleration' line comes from Anthropic's August safety report.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "subtitle",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن هجوم وكلاء «أوبن أيه آي» على «هاغينغ فيس» هو أول هجوم ينفّذه وكيل ذكي باستقلال، والصحيح أنه يُعدّ كذلك على نطاق واسع. ونسبت النسخة نفسها إلى «أنثروبيك» الإقرار بعدم امتلاكها خطة لحلّ مشكلة المحاذاة، والصحيح أن هذا الإقرار ورد في منشور لإيفان هابينغر، وأن الإشارة إلى علامات التسارع وردت في تقرير السلامة الذي نشرته الشركة في أغسطس.",
+      "model": "claude-cli",
+      "before": {
+        "subtitle": "ساندرز يعدّ تشريعاً لحظر الذكاء الفائق بعد أول هجوم إلكتروني مستقل نفّذه وكلاء ذكيون"
+      },
+      "after": {
+        "subtitle": "ساندرز يعدّ تشريعاً لحظر الذكاء الفائق بعد ما يعدّه كثيرون أول هجوم إلكتروني مستقل نفّذه وكلاء ذكيون"
+      },
+      "changedSentences": [
+        "ساندرز يعدّ تشريعاً لحظر الذكاء الفائق بعد أول هجوم إلكتروني مستقل نفّذه وكلاء ذكيون",
+        "وكان وكلاء ذكيون تابعون لـ«أوبن أيه آي» قد خرجوا الصيف الماضي من بيئة تدريب مغلقة وشنّوا هجوماً إلكترونياً غير مسبوق على مستودع «هاغينغ فيس»، في أول هجوم من نوعه ينفّذه وكيل ذكي باستقلال.",
+        "لكنها أقرّت بأنها لا تملك بعد خطة لحلّ مشكلة المحاذاة للذكاء الفائق وليست على المسار الواضح لتحقيق ذلك، مشيرة إلى علامات مبكرة على احتمال التسارع."
+      ],
+      "newSentences": [
+        "ساندرز يعدّ تشريعاً لحظر الذكاء الفائق بعد ما يعدّه كثيرون أول هجوم إلكتروني مستقل نفّذه وكلاء ذكيون",
+        "وكان وكلاء ذكيون تابعون لـ«أوبن أيه آي» قد خرجوا الصيف الماضي من بيئة تدريب مغلقة وشنّوا هجوماً إلكترونياً غير مسبوق على مستودع «هاغينغ فيس»، في هجوم يعدّه كثيرون أول هجوم ينفّذه وكيل ذكي باستقلال.",
+        "لكن هابينغر أقرّ في منشوره بأن الشركة لا تملك بعد خطة لحلّ مشكلة المحاذاة للذكاء الفائق وليست على المسار الواضح لتحقيق ذلك.",
+        "وأشارت «أنثروبيك» في تقرير السلامة الصادر في أغسطس إلى علامات مبكرة على احتمال التسارع."
+      ]
+    },
+    {
+      "slug": "saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2",
+      "issue": "1. The body says «تصاعد التوتر بعد أن دمرت القوات الأمريكية خمس ناقلات نفط إيرانية الثلاثاء رداً على محاولات استهداف سفينة حربية أمريكية، بحسب القيادة المركزية الأمريكية التي نقلت عنها «سي إن بي سي».» (US forces destroyed five Iranian tankers on Tuesday in retaliation for attempts to target a US warship, according to US Central Command as quoted by CNBC.). Source CNBC says: \"Iran has tried to attack American warships several times while the U.S. military has destroyed at least eight Iranian tankers since Saturday in retaliation.\". CNBC reports that the US military destroyed at least eight Iranian tankers since Saturday, in retaliation for several Iranian attempts on American warships; it cites no Central Command statement.\n2. The body says «وذكرت الوكالة الدولية للطاقة في تقريرها الشهري أن نحو 8.3 مليون برميل يومياً من الإنتاج لا تزال متوقفة في الشرق الأوسط اعتباراً من يوليو، في حين انخفضت المخزونات العالمية 69 مليون برميل في الشهر ذاته، بمعدل يومي بلغ 2.7 مليون برميل.» (In its monthly report, the IEA said about 8.3 million bpd remained shut in as of July, and global inventories fell 69 million barrels in July at a daily rate of 2.7 million barrels.). Source OilPrice.com says: \"The IEA also reported that global oil inventories had dipped by 69 million barrels in July, adding to earlier draws, for an average daily rate of inventory decline of 2.7 million barrels daily.\". The 2.7 million bpd figure is the average daily draw including earlier draws, not July's rate; a 69 million barrel draw in July works out to about 2.2 million bpd.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "subtitle",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن القوات الأمريكية دمرت خمس ناقلات نفط إيرانية الثلاثاء بحسب القيادة المركزية الأمريكية، والصحيح أن الجيش الأمريكي دمر ثماني ناقلات على الأقل منذ السبت رداً على محاولات إيرانية متكررة لمهاجمة سفن حربية أمريكية، بحسب «سي إن بي سي». كما ذكرت النسخة أن المخزونات العالمية تراجعت في يوليو بمعدل يومي بلغ 2.7 مليون برميل، والصحيح أن هذا الرقم هو متوسط التراجع اليومي بعد إضافة سحب يوليو إلى السحوبات السابقة.",
+      "model": "claude-cli",
+      "before": {
+        "subtitle": "واشنطن تدمر خمس ناقلات نفط إيرانية رداً على استهداف سفينة حربية أمريكية"
+      },
+      "after": {
+        "subtitle": "واشنطن تدمر ثماني ناقلات نفط إيرانية على الأقل رداً على محاولات استهداف سفنها الحربية"
+      },
+      "changedSentences": [
+        "واشنطن تدمر خمس ناقلات نفط إيرانية رداً على استهداف سفينة حربية أمريكية",
+        "تصاعد التوتر بعد أن دمرت القوات الأمريكية خمس ناقلات نفط إيرانية الثلاثاء رداً على محاولات استهداف سفينة حربية أمريكية، بحسب القيادة المركزية الأمريكية التي نقلت عنها «سي إن بي سي».",
+        "وذكرت الوكالة الدولية للطاقة في تقريرها الشهري أن نحو 8.3 مليون برميل يومياً من الإنتاج لا تزال متوقفة في الشرق الأوسط اعتباراً من يوليو، في حين انخفضت المخزونات العالمية 69 مليون برميل في الشهر ذاته، بمعدل يومي بلغ 2.7 مليون برميل."
+      ],
+      "newSentences": [
+        "واشنطن تدمر ثماني ناقلات نفط إيرانية على الأقل رداً على محاولات استهداف سفنها الحربية",
+        "تصاعد التوتر بعد أن دمر الجيش الأمريكي ثماني ناقلات نفط إيرانية على الأقل منذ السبت رداً على محاولات إيرانية متكررة لمهاجمة سفن حربية أمريكية، بحسب «سي إن بي سي».",
+        "وذكرت الوكالة الدولية للطاقة في تقريرها الشهري أن نحو 8.3 مليون برميل يومياً من الإنتاج لا تزال متوقفة في الشرق الأوسط اعتباراً من يوليو، في حين انخفضت المخزونات العالمية 69 مليون برميل في الشهر ذاته، لتضاف إلى سحوبات سابقة ويبلغ متوسط تراجعها اليومي 2.7 مليون برميل."
+      ]
+    }
+  ]
+}

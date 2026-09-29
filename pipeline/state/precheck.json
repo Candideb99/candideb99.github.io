@@ -1877,6 +1877,113 @@
           "noted": []
         }
       ]
+    },
+    "us-offers-40-million-barrels-spr-595d78": {
+      "at": "2026-09-29T22:35:09.604Z",
+      "title": "واشنطن تعرض 40 مليون برميل من احتياطيها النفطي لكبح أسعار الوقود",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v25",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 22,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "raytheon-amraam-multiyear-contract-pentagon-e2fa85": {
+      "at": "2026-09-29T22:38:34.825Z",
+      "title": "البنتاغون يمنح رايثيون عقداً يصل إلى 20.7 مليار دولار لصواريخ «أمرام»",
+      "writer": "claude-cli",
+      "lessons": "v25",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 23,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "iraq-stock-exchange-joins-adx-tabadul-7fd321": {
+      "at": "2026-09-29T22:43:30.503Z",
+      "title": "العراق يبدأ التداول عبر منصة «تبادُل» ثامنَ سوق مشارك",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v25",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 19,
+            "checked": 19,
+            "supported": 16,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 9,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "قيمة التداول عبر «تبادُل» في النصف الأول: 13.5 مليار درهم",
+              "quote": "ويأتي توسع \"تبادُل\" في وقت تسجل فيه مستويات قياسية من نشاط التداول، إذ بلغت قيمة التداول عبرها 13.5 مليار درهم ً حتى الآن خلال عام 2026، متجاوزة إجمالي القيمة المسجلة خلال عام 2025 بأكمله.",
+              "source": "Sky News Arabia",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 18,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وقال سوق أبوظبي إن قيمة التداول عبر «تبادُل» بلغت 13.5 مليار درهم بنهاية النصف الأول من العام، لتتجاوز القيمة التي سجلتها المنصة طوال 2025.",
+              "quote": "ويأتي توسع \"تبادُل\" في وقت تسجل فيه مستويات قياسية من نشاط التداول، إذ بلغت قيمة التداول عبرها 13.5 مليار درهم ً حتى الآن خلال عام 2026، متجاوزة إجمالي القيمة المسجلة خلال عام 2025 بأكمله.",
+              "source": "Sky News Arabia",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []

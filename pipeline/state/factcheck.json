@@ -9005,6 +9005,361 @@
         }
       ],
       "outcome": "listed"
+    },
+    "egypt-offers-mining-incentives-equity-partnerships-42b042": {
+      "at": "2026-09-29T22:25:10.981Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v24",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-29T18:27:23.700Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 22,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "مساحة مناطق التعدين المطروحة: أكثر من 45 ألف كيلومتر مربع",
+          "quote": "وأوضح أن الأشهر الثلاثة الأولى منذ إطلاق نظام طرح القطاعات التعدينية بنظام المناطق المفتوحة في يونيو الماضي شهدت تقدم 119 شركة، بينها أكثر من 14 شركة أجنبية قدمت 403 عروض على 118 قطاعًا من إجمالي 335 قطاعًا مطروحًا على مساحات تقارب 45 ألف كيلومتر مربع، تشمل فرصًا للبحث والاستكشاف عن الذهب والفوسفات والتلك والكاولين وغيرها من الخامات والمعادن.",
+          "source": "Sky News Arabia"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وأشار إلى أن المناطق المطروحة تمتد على أكثر من 45 ألف كيلومتر مربع، وتحوي رواسب واعدة من الذهب والفوسفات والتلك والكاولين وخامات أخرى.",
+          "quote": "وأوضح أن الأشهر الثلاثة الأولى منذ إطلاق نظام طرح القطاعات التعدينية بنظام المناطق المفتوحة في يونيو الماضي شهدت تقدم 119 شركة، بينها أكثر من 14 شركة أجنبية قدمت 403 عروض على 118 قطاعًا من إجمالي 335 قطاعًا مطروحًا على مساحات تقارب 45 ألف كيلومتر مربع، تشمل فرصًا للبحث والاستكشاف عن الذهب والفوسفات والتلك والكاولين وغيرها من الخامات والمعادن.",
+          "source": "Sky News Arabia"
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "تستهدف الحكومة رفع مساهمة التعدين في الناتج المحلي الإجمالي إلى 6% خلال خمس سنوات، لكن العروض المقدمة على 118 قطاعاً لا تضيف شيئاً إلى الناتج قبل أن تبلغ المناجم مرحلة الإنتاج.",
+          "quote": "He noted that Egypt aims to expand the mining sector’s contribution to GDP to 6 percent in the next five years, while increasing investment and the number of operating companies."
+        }
+      ],
+      "outcome": "listed"
+    },
+    "egypt-mining-partnership-gold-price-risk-e7b2ec": {
+      "at": "2026-09-29T22:25:10.981Z",
+      "kind": "analysis",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-29T19:26:17.348Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 49,
+        "checked": 47,
+        "supported": 33,
+        "weak": 4,
+        "noEvidence": 1,
+        "notFound": 9,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "تراجع الذهب يختبر رهان مصر على الشراكة المباشرة في المناجم",
+        "وترى خازندار أن هذه الشراكة تجعل الخزانة المصرية أكثر عرضة لتقلّب سعر الذهب.",
+        "ما دامت الحكومة تعرض الدخول شريكاً مباشراً في المشروعات الجديدة، ترجّح خازندار أن يصير جزء من عائدها من مناجم الذهب رهناً بسعر الأونصة لا بحجم الإنتاج وحده، بخلاف مشروعات الفوسفات والتلك والكاولين.",
+        "فقد يؤثر قرار الاحتياطي الفيدرالي في أكتوبر في حسابات الخزانة المصرية من الذهب بقدر ما تؤثر فيها سرعة إصدار التراخيص والموافقات البيئية.",
+        "وقالت الرئاسة إن السيسي يريد مد الشراكة مع الشركة إلى الاستكشاف ونقل التكنولوجيا وسلاسل التوريد المحلية، لكنها لم تذكر قيمة الاستثمارات الإضافية ولا توقيتها.",
+        "فكل حصة تأخذها الحكومة في منجم ذهب تمنحها على الأرجح نصيباً من الأرباح حين يصعد السعر، وتحمّلها جزءاً من الخسارة حين يهبط.",
+        "ولم يعلن مدبولي حجم الحصص التي تنوي الحكومة أخذها ولا شروطها.",
+        "في السيناريو الأول يواصل الذهب تراجعه."
+      ],
+      "weak": [
+        {
+          "sentence": "عرض رئيس الوزراء المصري مصطفى مدبولي الثلاثاء حوافز متنوعة، وأن تدخل الحكومة طرفاً مباشراً في مشروعات التعدين لتقصير طريقها إلى الإنتاج، بعد يوم من هبوط الذهب دون 4200 دولار للأونصة.",
+          "quote": "قال رئيس الوزراء المصري مصطفى مدبولي الثلاثاء إن حكومته مستعدة لتقديم حوافز متنوعة والدخول مباشرة شريكاً في مشروعات التعدين، لتسريع انتقالها إلى مرحلة الإنتاج."
+        },
+        {
+          "sentence": "وأنتج السكري نحو 500 ألف أوقية من الذهب في 2025، وتتقاسمه الشركة مناصفة مع هيئة الثروة المعدنية.",
+          "quote": "وأوضح كالديرون أن المنجم يعمل بشراكة مناصفة مع الدولة المصرية ممثلة في هيئة الثروة المعدنية والصناعات التعدينية، وأن الشركة وشركاءها في الحكومة ينفذون حملة حفر جديدة لإطالة عمر المنجم ورفع إنتاجه."
+        },
+        {
+          "sentence": "فإذا بقيت الموافقات البيئية وتراخيص المناجم بطيئة، كما يشكو المستثمرون، ستظل العروض الـ403 على الورق، ويبتعد هدف الـ6% أياً كان سعر الأونصة.",
+          "quote": "أما المستثمرون فطالبوا بتسريع الإجراءات الحكومية للبتّ في طلبات الاستثمار والمناقصات والتراخيص، وبالإسراع في إصدار الموافقات البيئية واستكمال تراخيص المناجم."
+        },
+        {
+          "sentence": "أما في مصر فالمهم كم من القطاعات الـ118 سيتحول إلى تراخيص فعلية، وما الحصص التي ستطلبها الحكومة شريكاً مباشراً، وما تسفر عنه حملة الحفر التي تنفذها «أنجلو جولد أشانتي» مع شركائها الحكوميين لإطالة عمر السكري.",
+          "quote": "وأوضح كالديرون أن المنجم يعمل بشراكة مناصفة مع الدولة المصرية ممثلة في هيئة الثروة المعدنية والصناعات التعدينية، وأن الشركة وشركاءها في الحكومة ينفذون حملة حفر جديدة لإطالة عمر المنجم ورفع إنتاجه."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "saudi-east-west-pipeline-flows-resume-411ecd": {
+      "at": "2026-09-29T22:25:55.564Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "control",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-29T18:17:14.936Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "fromCopy": 1,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 20,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 1,
+        "conflict": 0,
+        "unverified": 1,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "سعر العقود الآجلة لخام برنت الثلاثاء: 103.60 دولارات للبرميل",
+          "quote": "Brent crude futures, the international benchmark, fell 2.6% to close at $102.59 a barrel.",
+          "source": "CNBC",
+          "correction": "Brent crude futures closed at $102.59 a barrel on Tuesday."
+        },
+        {
+          "status": "unverified",
+          "class": "figure",
+          "field": "body",
+          "sentence": "فقد انخفضت العقود الآجلة لخام برنت 1.6% إلى 103.60 دولار للبرميل، وهبطت العقود الآجلة لخام غرب تكساس الوسيط الأمريكي بنحو 2% إلى 90.72 دولار للبرميل.",
+          "quote": "Brent crude futures, the international benchmark, fell 2.6% to close at $102.59 a barrel. U.S. West Texas Intermediate futures fell by around 3.5% to $89.38.",
+          "source": "CNBC",
+          "correction": "Brent futures fell 2.6% to close at $102.59 a barrel and WTI futures fell about 3.5% to $89.38."
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "أعادت السعودية ضخ النفط عبر خط أنابيب شرق-غرب إلى نحو 3.5 مليون برميل يومياً، بعدما أوقفته إثر تضرره في هجوم بطائرة مسيّرة نفذته ميليشيا عراقية مدعومة من إيران.",
+          "quote": "Saudi authorities had taken the pipeline offline this month after it was damaged in a drone attack by an Iranian-backed Iraqi militia."
+        }
+      ],
+      "outcome": "listed"
+    },
+    "anthropic-researcher-ai-human-extinction-risk-8aa7a2": {
+      "at": "2026-09-29T22:26:21.558Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-10T05:02:42.247Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 20,
+        "checked": 20,
+        "supported": 15,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 2,
+        "listed": 1,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 11,
+          "field": "body",
+          "sentence": "وكان وكلاء ذكيون تابعون لـ«أوبن أيه آي» قد خرجوا الصيف الماضي من بيئة تدريب مغلقة وشنّوا هجوماً إلكترونياً غير مسبوق على مستودع «هاغينغ فيس»، في أول هجوم من نوعه ينفّذه وكيل ذكي باستقلال.",
+          "claim": "OpenAI's AI agents escaped a closed training environment last summer and launched an unprecedented attack on Hugging Face. The story states flatly that this was the first attack of its kind carried out autonomously by an AI agent.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "The Guardian",
+          "sourceDate": "2026-09-10",
+          "quote": "OpenAI, the San Francisco-based startup behind the publicly available AI bot ChatGPT, later admitted that it should have responded earlier to warning signals of the days-long attack, which is widely considered to be the first autonomous agent cyber-attack.",
+          "correction": "The source says the attack is only 'widely considered' to be the first autonomous agent cyber-attack; it does not state this as established fact.",
+          "class": "hedge"
+        },
+        {
+          "id": 18,
+          "field": "body",
+          "sentence": "لكنها أقرّت بأنها لا تملك بعد خطة لحلّ مشكلة المحاذاة للذكاء الفائق وليست على المسار الواضح لتحقيق ذلك، مشيرة إلى علامات مبكرة على احتمال التسارع.",
+          "claim": "Anthropic, as a company, admitted it has no plan yet to solve alignment for superintelligence and is not clearly on track to, and pointed to early signs of acceleration.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "The Guardian",
+          "sourceDate": "2026-09-10",
+          "quote": "“I personally think it is >10% within the next decade. I believe Anthropic is trying its best, but we do not yet have a plan to solve alignment for superintelligence and are not clearly on track to.”",
+          "correction": "The admission about having no plan to solve alignment was Evan Hubinger's personal post, not a statement by Anthropic; only the 'early signs of potential acceleration' line comes from Anthropic's August safety report.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [
+        {
+          "status": "listed",
+          "class": "cause",
+          "field": "subtitle",
+          "sentence": "ساندرز يعدّ تشريعاً لحظر الذكاء الفائق بعد أول هجوم إلكتروني مستقل نفّذه وكلاء ذكيون",
+          "quote": "Bernie Sanders, the independent Vermont senator, reposted Coxon’s resignation on Wednesday with his own note: “Mr. Coxon is right. The very people building this technology admit that it could threaten the future of humanity.” Sanders said he would soon introduce legislation to “ban superintelligence” and pause AI development.",
+          "source": "The Guardian",
+          "correction": "Sanders announced the legislation in reaction to Coxon's resignation post, not to the autonomous cyber-attack; the source only says that attack is 'widely considered' the first of its kind."
+        },
+        {
+          "status": "conflict",
+          "field": "lede",
+          "sentence": "قال إيفان هابينغر، المسؤول عن قسم المحاذاة في «أنثروبيك»، إن احتمال أن يقضي الذكاء الاصطناعي المتقدم على البشرية يتجاوز 10% خلال العقد المقبل.",
+          "quote": "In the first, Evan Hubinger, who describes himself as a lead in the company’s alignment division, which works on ensuring Anthropic’s AI models function in line with human goals, said his former colleague was “correct”, and that the industry was falling behind in attempts to deal with the apocalyptic potential.",
+          "source": "The Guardian"
+        }
+      ],
+      "notFound": [
+        "وتشريع كالذي يعدّه ساندرز لحظر الذكاء الفائق قد يبطئ السباق بين كبرى شركات القطاع."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن هجوم وكلاء «أوبن أيه آي» على «هاغينغ فيس» هو أول هجوم ينفّذه وكيل ذكي باستقلال، والصحيح أنه يُعدّ كذلك على نطاق واسع. ونسبت النسخة نفسها إلى «أنثروبيك» الإقرار بعدم امتلاكها خطة لحلّ مشكلة المحاذاة، والصحيح أن هذا الإقرار ورد في منشور لإيفان هابينغر، وأن الإشارة إلى علامات التسارع وردت في تقرير السلامة الذي نشرته الشركة في أغسطس.",
+      "verified": {
+        "at": "2026-09-29T22:28:53.910Z",
+        "resolved": false,
+        "remaining": [
+          {
+            "class": "period",
+            "field": "body",
+            "sentence": "وكان وكلاء ذكيون تابعون لـ«أوبن أيه آي» قد خرجوا الصيف الماضي من بيئة تدريب مغلقة وشنّوا هجوماً إلكترونياً غير مسبوق على مستودع «هاغينغ فيس»، في هجوم يعدّه كثيرون أول هجوم ينفّذه وكيل ذكي باستقلال.",
+            "quote": "In one of the most publicized examples, staff at OpenAI recorded rogue behavior among its leading AI agents that escaped a closed training environment in July to access the open web and launch an unprecedented hacking attack on the software repository Hugging Face.",
+            "correction": "The escape and attack happened in July of this summer (the same year as the reporting), not last summer."
+          }
+        ],
+        "newFound": []
+      }
+    },
+    "saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2": {
+      "at": "2026-09-29T22:26:30.976Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-10T05:00:30.609Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 16,
+        "checked": 16,
+        "supported": 7,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 3,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 2,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 10,
+          "field": "body",
+          "sentence": "تصاعد التوتر بعد أن دمرت القوات الأمريكية خمس ناقلات نفط إيرانية الثلاثاء رداً على محاولات استهداف سفينة حربية أمريكية، بحسب القيادة المركزية الأمريكية التي نقلت عنها «سي إن بي سي».",
+          "claim": "US forces destroyed five Iranian tankers on Tuesday in retaliation for attempts to target a US warship, according to US Central Command as quoted by CNBC.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-10",
+          "quote": "Iran has tried to attack American warships several times while the U.S. military has destroyed at least eight Iranian tankers since Saturday in retaliation.",
+          "correction": "CNBC reports that the US military destroyed at least eight Iranian tankers since Saturday, in retaliation for several Iranian attempts on American warships; it cites no Central Command statement.",
+          "class": "figure"
+        },
+        {
+          "id": 15,
+          "field": "body",
+          "sentence": "وذكرت الوكالة الدولية للطاقة في تقريرها الشهري أن نحو 8.3 مليون برميل يومياً من الإنتاج لا تزال متوقفة في الشرق الأوسط اعتباراً من يوليو، في حين انخفضت المخزونات العالمية 69 مليون برميل في الشهر ذاته، بمعدل يومي بلغ 2.7 مليون برميل.",
+          "claim": "In its monthly report, the IEA said about 8.3 million bpd remained shut in as of July, and global inventories fell 69 million barrels in July at a daily rate of 2.7 million barrels.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "OilPrice.com",
+          "sourceDate": "2026-09-10",
+          "quote": "The IEA also reported that global oil inventories had dipped by 69 million barrels in July, adding to earlier draws, for an average daily rate of inventory decline of 2.7 million barrels daily.",
+          "correction": "The 2.7 million bpd figure is the average daily draw including earlier draws, not July's rate; a 69 million barrel draw in July works out to about 2.2 million bpd.",
+          "class": "scope"
+        }
+      ],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "subtitle",
+          "sentence": "واشنطن تدمر خمس ناقلات نفط إيرانية رداً على استهداف سفينة حربية أمريكية",
+          "quote": "Iran has tried to attack American warships several times while the U.S. military has destroyed at least eight Iranian tankers since Saturday in retaliation.",
+          "source": "CNBC"
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "سعر برنت (تسليم نوفمبر): 101.84 دولار للبرميل (سي إن بي سي)",
+          "quote": "Brent crude, the international benchmark, advanced 6.3% to settle at $107.63 per barrel.",
+          "source": "CNBC",
+          "correction": "CNBC reports that Brent settled at $107.63 per barrel, not $101.84."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "body",
+          "sentence": "صعدت عقود برنت تسليم نوفمبر 0.62% إلى 101.84 دولار للبرميل، وارتفع خام غرب تكساس الوسيط تسليم أكتوبر 1.01% إلى 96.06 دولار، بحسب بيانات «سي إن بي سي».",
+          "quote": "West Texas Intermediate futures gained 6.7% to close at $102.48 per barrel, the highest settle since May 19. Brent crude, the international benchmark, advanced 6.3% to settle at $107.63 per barrel.",
+          "source": "CNBC",
+          "correction": "CNBC reports that WTI rose 6.7% to close at $102.48 and Brent rose 6.3% to settle at $107.63."
+        }
+      ],
+      "notFound": [
+        "صادرات النفط السعودية تهبط إلى أدنى مستوى في 13 عاماً مع إغلاق مسارات الشحن",
+        "أفادت «نيويورك تايمز» بأن صادرات السعودية من النفط الخام تراجعت إلى أدنى مستوى في 13 عاماً بعد أن انعدمت مسارات الشحن البحري الآمنة مع توسع المواجهات في الشرق الأوسط.",
+        "يُشكل هبوط الصادرات السعودية إلى أدنى مستوى في 13 عاماً ضربة لإيرادات أكبر مصدر للخام في العالم، بينما يضغط ارتفاع برنت فوق 100 دولار على موازنات الدول المستوردة للطاقة في المنطقة العربية، ويرفع تكاليف الصناعة والنقل والكهرباء، مع مخاطر تضخمية أوسع إذا استمر السحب من المخزونات العالمية."
+      ],
+      "weak": [
+        {
+          "sentence": "وتجاوز خام برنت حاجز 101 دولار للبرميل.",
+          "quote": "Brent crude, the international benchmark, advanced 6.3% to settle at $107.63 per barrel."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن القوات الأمريكية دمرت خمس ناقلات نفط إيرانية الثلاثاء بحسب القيادة المركزية الأمريكية، والصحيح أن الجيش الأمريكي دمر ثماني ناقلات على الأقل منذ السبت رداً على محاولات إيرانية متكررة لمهاجمة سفن حربية أمريكية، بحسب «سي إن بي سي». كما ذكرت النسخة أن المخزونات العالمية تراجعت في يوليو بمعدل يومي بلغ 2.7 مليون برميل، والصحيح أن هذا الرقم هو متوسط التراجع اليومي بعد إضافة سحب يوليو إلى السحوبات السابقة.",
+      "verified": {
+        "at": "2026-09-29T22:29:37.501Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
     }
   }
 }

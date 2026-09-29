@@ -1,0 +1,194 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-09-29T22:25:10.504Z",
+  "durationSec": 267,
+  "read": 5,
+  "corrected": 2,
+  "report": [
+    {
+      "slug": "egypt-offers-mining-incentives-equity-partnerships-42b042",
+      "title": "مصر تعرض حوافز وشراكات مباشرة لتسريع إنتاج مشروعات التعدين",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 22,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "egypt-mining-partnership-gold-price-risk-e7b2ec",
+      "title": "تراجع الذهب يختبر رهان مصر على الشراكة المباشرة في المناجم",
+      "kind": "analysis",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 49,
+        "checked": 47,
+        "supported": 33,
+        "weak": 4,
+        "noEvidence": 1,
+        "notFound": 9,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "saudi-east-west-pipeline-flows-resume-411ecd",
+      "title": "السعودية تعيد التدفقات عبر خط شرق-غرب إلى 3.5 مليون برميل يومياً",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 20,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 1,
+        "conflict": 0,
+        "unverified": 1,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "anthropic-researcher-ai-human-extinction-risk-8aa7a2",
+      "title": "باحث في أنثروبيك يحذر من أن الذكاء الاصطناعي قد يقضي على البشرية بنسبة احتمال تتجاوز 10%",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 20,
+        "checked": 20,
+        "supported": 15,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 2,
+        "listed": 1,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "hedge",
+          "sentence": "وكان وكلاء ذكيون تابعون لـ«أوبن أيه آي» قد خرجوا الصيف الماضي من بيئة تدريب مغلقة وشنّوا هجوماً إلكترونياً غير مسبوق على مستودع «هاغينغ فيس»، في أول هجوم من نوعه ينفّذه وكيل ذكي باستقلال.",
+          "quote": "OpenAI, the San Francisco-based startup behind the publicly available AI bot ChatGPT, later admitted that it should have responded earlier to warning signals of the days-long attack, which is widely considered to be the first autonomous agent cyber-attack.",
+          "source": "The Guardian",
+          "correction": "The source says the attack is only 'widely considered' to be the first autonomous agent cyber-attack; it does not state this as established fact."
+        },
+        {
+          "class": "attribution",
+          "sentence": "لكنها أقرّت بأنها لا تملك بعد خطة لحلّ مشكلة المحاذاة للذكاء الفائق وليست على المسار الواضح لتحقيق ذلك، مشيرة إلى علامات مبكرة على احتمال التسارع.",
+          "quote": "“I personally think it is >10% within the next decade. I believe Anthropic is trying its best, but we do not yet have a plan to solve alignment for superintelligence and are not clearly on track to.”",
+          "source": "The Guardian",
+          "correction": "The admission about having no plan to solve alignment was Evan Hubinger's personal post, not a statement by Anthropic; only the 'early signs of potential acceleration' line comes from Anthropic's August safety report."
+        }
+      ]
+    },
+    {
+      "slug": "saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2",
+      "title": "صادرات النفط السعودية تهبط إلى أدنى مستوى في 13 عاماً مع إغلاق مسارات الشحن",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 16,
+        "checked": 16,
+        "supported": 7,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 3,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 2,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "figure",
+          "sentence": "تصاعد التوتر بعد أن دمرت القوات الأمريكية خمس ناقلات نفط إيرانية الثلاثاء رداً على محاولات استهداف سفينة حربية أمريكية، بحسب القيادة المركزية الأمريكية التي نقلت عنها «سي إن بي سي».",
+          "quote": "Iran has tried to attack American warships several times while the U.S. military has destroyed at least eight Iranian tankers since Saturday in retaliation.",
+          "source": "CNBC",
+          "correction": "CNBC reports that the US military destroyed at least eight Iranian tankers since Saturday, in retaliation for several Iranian attempts on American warships; it cites no Central Command statement."
+        },
+        {
+          "class": "scope",
+          "sentence": "وذكرت الوكالة الدولية للطاقة في تقريرها الشهري أن نحو 8.3 مليون برميل يومياً من الإنتاج لا تزال متوقفة في الشرق الأوسط اعتباراً من يوليو، في حين انخفضت المخزونات العالمية 69 مليون برميل في الشهر ذاته، بمعدل يومي بلغ 2.7 مليون برميل.",
+          "quote": "The IEA also reported that global oil inventories had dipped by 69 million barrels in July, adding to earlier draws, for an average daily rate of inventory decline of 2.7 million barrels daily.",
+          "source": "OilPrice.com",
+          "correction": "The 2.7 million bpd figure is the average daily draw including earlier draws, not July's rate; a 69 million barrel draw in July works out to about 2.2 million bpd."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 7,
+    "failures": 0,
+    "promptTokens": 59532,
+    "completionTokens": 42458,
+    "cacheReadTokens": 0,
+    "costUsd": 1.3253,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 7
+    },
+    "correctionsEditorCalls": 2
+  },
+  "log": [
+    "[22:25:10] second look: 5 to read now (35 published pieces not yet read; 36 read clean before publication and left out of the audit sample)",
+    "[22:25:55] llm ok role=checker model=claude-cli attempt=1 ms=41532",
+    "[22:25:55] egypt-offers-mining-incentives-equity-partnerships-42b042: 25 of 25 sentences checked · 22 supported · 0 without a source · 0 confirmed error(s) · 2 listed for a person",
+    "[22:25:55] saudi-east-west-pipeline-flows-resume-411ecd:   source https://www.nytimes.com/2026/09/29/business/oil-saudi-east-west-pipeline.html: http-403; read from the copy saved at publication (fetched then)",
+    "[22:26:21] llm ok role=checker model=claude-cli attempt=1 ms=70524",
+    "[22:26:21] egypt-mining-partnership-gold-price-risk-e7b2ec: 47 of 49 sentences checked · 33 supported · 10 without a source · 0 confirmed error(s)",
+    "[22:26:22] anthropic-researcher-ai-human-extinction-risk-8aa7a2:   source https://www.aljazeera.net/ebusiness/2026/9/10/%d9%84%d9%85%d8%a7%d8%b0%d8%a7-%d8: robots-disallow",
+    "[22:26:30] llm ok role=checker model=claude-cli attempt=1 ms=34942",
+    "[22:26:30] saudi-east-west-pipeline-flows-resume-411ecd: 23 of 23 sentences checked · 20 supported · 0 without a source · 0 confirmed error(s) · 2 listed for a person",
+    "[22:26:31] saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2:   source https://www.nytimes.com/2026/09/09/business/saudi-arabia-houthis-red-sea-oil-shi: http-403",
+    "[22:27:09] llm ok role=checker model=claude-cli attempt=1 ms=47360",
+    "[22:27:09] anthropic-researcher-ai-human-extinction-risk-8aa7a2: 20 of 20 sentences checked · 15 supported · 1 without a source · 2 confirmed error(s) · 2 listed for a person",
+    "[22:27:09]   ✗ [hedge] وكان وكلاء ذكيون تابعون لـ«أوبن أيه آي» قد خرجوا الصيف الماضي من بيئة تدريب مغلقة وشنّوا هجوماً إلكترونياً غير — The source says the attack is only 'widely considered' to be the first autonomous agent cyber-attack; it does not state this as established fact.",
+    "[22:27:09]   ✗ [attribution] لكنها أقرّت بأنها لا تملك بعد خطة لحلّ مشكلة المحاذاة للذكاء الفائق وليست على المسار الواضح لتحقيق ذلك، مشيرة  — The admission about having no plan to solve alignment was Evan Hubinger's personal post, not a statement by Anthropic; only the 'early signs of potential accele",
+    "[22:27:09] llm ok role=checker model=claude-cli attempt=1 ms=35891",
+    "[22:27:09] saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2: 16 of 16 sentences checked · 7 supported · 3 without a source · 2 confirmed error(s) · 3 listed for a person",
+    "[22:27:09]   ✗ [figure] تصاعد التوتر بعد أن دمرت القوات الأمريكية خمس ناقلات نفط إيرانية الثلاثاء رداً على محاولات استهداف سفينة حربية — CNBC reports that the US military destroyed at least eight Iranian tankers since Saturday, in retaliation for several Iranian attempts on American warships; it ",
+    "[22:27:09]   ✗ [scope] وذكرت الوكالة الدولية للطاقة في تقريرها الشهري أن نحو 8.3 مليون برميل يومياً من الإنتاج لا تزال متوقفة في الشر — The 2.7 million bpd figure is the average daily draw including earlier draws, not July's rate; a 69 million barrel draw in July works out to about 2.2 million b",
+    "[22:27:09] corrections: 2 stories to the corrections editor",
+    "[22:27:10] [correct] anthropic-researcher-ai-human-extinction-risk-8aa7a2: fetching 4 source(s)",
+    "[22:27:10] [correct]   source https://www.aljazeera.net/ebusiness/2026/9/10/%d9%84%d9%85%d8%a7%d8%b0: robots-disallow",
+    "[22:27:31] [correct] llm ok role=writer model=claude-cli attempt=1 ms=20972",
+    "[22:27:31] [correct] anthropic-researcher-ai-human-extinction-risk-8aa7a2: corrected; fields subtitle, body",
+    "[22:27:31]     note: ذكرت نسخة سابقة من هذا الخبر أن هجوم وكلاء «أوبن أيه آي» على «هاغينغ فيس» هو أول هجوم ينفّذه وكيل ذكي باستقلال، والصحيح أنه يُعدّ كذلك على نطاق واسع. ونسبت النسخة نفسها إلى «أنثروبيك» الإقرار بعدم امتلاكها خطة لحلّ مشكلة المحاذاة، والصحيح أن هذا الإقرار ورد في منشور لإيفان هابينغر، وأن الإشارة إلى علامات التسارع وردت في تقرير السلامة الذي نشرته الشركة في أغسطس.",
+    "[22:27:31] [correct] saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2: fetching 4 source(s)",
+    "[22:27:32] [correct]   source https://www.nytimes.com/2026/09/09/business/saudi-arabia-houthis-red-s: http-403",
+    "[22:27:55] [correct] llm ok role=writer model=claude-cli attempt=1 ms=21684",
+    "[22:27:55] [correct] saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2: corrected; fields subtitle, body",
+    "[22:27:55]     note: ذكرت نسخة سابقة من هذا الخبر أن القوات الأمريكية دمرت خمس ناقلات نفط إيرانية الثلاثاء بحسب القيادة المركزية الأمريكية، والصحيح أن الجيش الأمريكي دمر ثماني ناقلات على الأقل منذ السبت رداً على محاولات إيرانية متكررة لمهاجمة سفن حربية أمريكية، بحسب «سي إن بي سي». كما ذكرت النسخة أن المخزونات العالمية تراجعت في يوليو بمعدل يومي بلغ 2.7 مليون برميل، والصحيح أن هذا الرقم هو متوسط التراجع اليومي بعد إضافة سحب يوليو إلى السحوبات السابقة.",
+    "[22:27:55] [correct] done: 2 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-09-29T22-27-09-986Z.json",
+    "[22:27:56] anthropic-researcher-ai-human-extinction-risk-8aa7a2:   source https://www.aljazeera.net/ebusiness/2026/9/10/%d9%84%d9%85%d8%a7%d8%b0%d8%a7-%d8: robots-disallow",
+    "[22:28:53] llm ok role=checker model=claude-cli attempt=1 ms=57687",
+    "[22:28:53] anthropic-researcher-ai-human-extinction-risk-8aa7a2: the correction left 1 error(s) in what it wrote: listed for a person",
+    "[22:28:54] saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2:   source https://www.nytimes.com/2026/09/09/business/saudi-arabia-houthis-red-sea-oil-shi: http-403",
+    "[22:29:37] llm ok role=checker model=claude-cli attempt=1 ms=41253",
+    "[22:29:37] saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2: the correction reads clean where it wrote"
+  ]
+}
