@@ -50,68 +50,78 @@
       "read": 12,
       "confirmedPerStory": 0.5,
       "photosPending": 0
+    },
+    {
+      "date": "2026-09-29",
+      "published": 18,
+      "news": 16,
+      "styleFaultsPerStory": 0,
+      "corrections": 5,
+      "read": 13,
+      "confirmedPerStory": 1,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-09-28T15:25:59.691Z",
+  "updatedAt": "2026-09-29T14:04:09.139Z",
   "week": {
-    "published": 103,
-    "news": 88,
-    "revisedShare": 0.82,
-    "styleFaultsPerStory": 0.17,
-    "styleWarningsPerStory": 0.31,
-    "corrections": 117,
+    "published": 108,
+    "news": 92,
+    "revisedShare": 0.8,
+    "styleFaultsPerStory": 0.07,
+    "styleWarningsPerStory": 0.17,
+    "corrections": 122,
     "usefulness": {
       "withLessons": {
-        "stories": 43,
-        "words": 253,
+        "stories": 54,
+        "words": 252,
         "keyFacts": 4.3
       },
       "control": {
-        "stories": 8,
-        "words": 246,
-        "keyFacts": 4.5
+        "stories": 9,
+        "words": 247,
+        "keyFacts": 4.7
       }
     },
     "precheck": {
-      "checked": 37,
-      "clean": 35,
-      "repaired": 2,
+      "checked": 49,
+      "clean": 45,
+      "repaired": 4,
       "held": 0,
-      "errorsFound": 2,
+      "errorsFound": 4,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 2,
-      "correctionsVerifiedClean": 26,
+      "repairedBeforePublication": 4,
+      "correctionsVerifiedClean": 31,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 1
     },
     "secondLook": {
-      "read": 127,
-      "clean": 45,
-      "corrected": 67,
+      "read": 137,
+      "clean": 49,
+      "corrected": 72,
       "stands": 0,
       "refused": 1,
-      "listed": 14,
+      "listed": 15,
       "unverifiable": 0,
       "confirmedPerStory": 1.39,
       "withLessons": {
-        "read": 19,
+        "read": 21,
         "confirmedPerStory": 0
       },
       "claudeWithout": {
-        "read": 42,
-        "confirmedPerStory": 0.74
+        "read": 44,
+        "confirmedPerStory": 0.7
       }
     },
     "runs": {
       "count": 24,
-      "written": 47,
-      "refused": 2,
-      "callsPerStory": 14.1,
-      "tokensPerStory": 141201,
-      "costPerStory": 1.39,
+      "written": 52,
+      "refused": 1,
+      "callsPerStory": 14.6,
+      "tokensPerStory": 149130,
+      "costPerStory": 1.5,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": [
@@ -126,7 +136,7 @@
       },
       {
         "what": "second look: attribution errors",
-        "stories": 33,
+        "stories": 35,
         "examples": [
           "us-approves-f35-saudi-arms-deal-915064: أكد البيت الأبيض في 18 سبتمبر موافقة إدارة ترامب على الصفقة المحتملة.",
           "russia-temporary-management-western-assets-1dadf4: المرسوم الرئاسي يستهدف حماية الحقوق وضمان استمرارية العمليات لصالح الأطراف المعنية",
@@ -135,7 +145,7 @@
       },
       {
         "what": "second look: actor errors",
-        "stories": 14,
+        "stories": 15,
         "examples": [
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: ترامب يحظر سي إن إن وإم إس إن بي سي وبوليتيكو من البيت الأبيض",
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: حظر الرئيس الأمريكي دونالد ترامب «سي إن إن» و«إم إس إن بي سي» و«بوليتيكو» من البيت الأبيض فوراً، في منشور على «تروث سوشي",
@@ -144,7 +154,7 @@
       },
       {
         "what": "second look: hedge errors",
-        "stories": 20,
+        "stories": 21,
         "examples": [
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: «سي إن إن» تصف القرار بالاعتداء غير القانوني..",
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: من جانبها، قالت «سي إن إن» إنها ستواصل التغطية من البيت الأبيض دون عائق، ووصفت الحظر بأنه اعتداء غير قانوني على حقها الد",
@@ -153,7 +163,7 @@
       },
       {
         "what": "second look: term errors",
-        "stories": 14,
+        "stories": 17,
         "examples": [
           "trump-signs-russia-sanctions-oil-tariffs-law-ad758a: وكان مجلس النواب قد وافق على القانون بأغلبية 262 صوتاً مقابل 159، وصوّت 58 ديمقراطياً لصالحه في حين عارضه 7 جمهوريين، في",
           "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb: وبلغ حجم التداول على هذه العقود 6 ملايين دولار في 24 ساعة، والفائدة المفتوحة 31 مليون دولار.",
@@ -171,7 +181,7 @@
       },
       {
         "what": "second look: scope errors",
-        "stories": 18,
+        "stories": 21,
         "examples": [
           "trump-announces-ai-force-and-czar-f4c7aa: ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها",
           "trump-xi-summit-washington-2026-4e439e: يدخل ترامب القمة والتضخم عند 3.4٪ وأسعار الوقود فوق 6 دولارات للغالون، قبل انتخابات منتصف المدة في نوفمبر.",
@@ -197,21 +207,20 @@
       },
       {
         "what": "style: الإسناد في كل جملة تقريباً (# من # جملة فيها «وفقاً/بحسب»)",
-        "stories": 3,
+        "stories": 2,
         "examples": [
           "openai-anthropic-launch-cheaper-ai-models-979a5b",
-          "paramount-settles-with-us-states-e71142",
           "saudi-restarts-east-west-oil-pipeline-698775"
         ]
       }
     ]
   },
   "weekBefore": {
-    "published": 40,
-    "news": 36,
-    "revisedShare": 0.44,
-    "styleFaultsPerStory": 1.22,
-    "styleWarningsPerStory": 0.5,
+    "published": 45,
+    "news": 41,
+    "revisedShare": 0.56,
+    "styleFaultsPerStory": 1.2,
+    "styleWarningsPerStory": 0.66,
     "corrections": 0,
     "usefulness": {
       "withLessons": {
@@ -270,11 +279,20 @@
     "recurring": [
       {
         "what": "style: الإسناد في كل جملة تقريباً (# من # جملة فيها «وفقاً/بحسب»)",
-        "stories": 10,
+        "stories": 9,
         "examples": [
           "bank-of-japan-raises-rates-to-31-year-high-d62cc8",
-          "china-retail-sales-slowdown-august-2026-cb2bb7",
-          "global-markets-close-volatile-week-045574"
+          "global-markets-close-volatile-week-045574",
+          "oil-prices-decline-china-iran-pressure-41b59d"
+        ]
+      },
+      {
+        "what": "style: «لماذا يهمّ» تبدأ بـ«يعكس/يمثل/يُعدّ»",
+        "stories": 3,
+        "examples": [
+          "china-increases-russian-oil-imports-august-2026-ac1178",
+          "iran-gdp-contracts-10-percent-post-war-a88253",
+          "us-china-ai-trade-talks-ahead-trump-xi-summit-3269ac"
         ]
       },
       {
@@ -284,14 +302,6 @@
           "oil-decline-diplomacy-hope-d15314",
           "trump-announces-ai-force-and-czar-f4c7aa",
           "trump-xi-summit-washington-2026-4e439e"
-        ]
-      },
-      {
-        "what": "style: «لماذا يهمّ» تبدأ بـ«يعكس/يمثل/يُعدّ»",
-        "stories": 2,
-        "examples": [
-          "china-increases-russian-oil-imports-august-2026-ac1178",
-          "iran-gdp-contracts-10-percent-post-war-a88253"
         ]
       },
       {
@@ -305,9 +315,9 @@
     ]
   },
   "lessons": {
-    "version": 20,
+    "version": 23,
     "active": 10,
-    "learnedFrom": 171,
+    "learnedFrom": 186,
     "kept": null,
     "lastTest": {
       "at": "2026-09-28T13:46:22.576Z",
@@ -360,28 +370,28 @@
     }
   },
   "evidence": {
-    "pairs": 7,
+    "pairs": 10,
     "vsKept": {
-      "n": 5,
+      "n": 8,
       "better": 0,
       "worse": 1,
-      "tied": 4,
+      "tied": 7,
       "down": 0,
-      "up": 2,
+      "up": 4,
       "e": 0.5,
       "harm": 1.4999999999999998,
-      "saysLess": 0.3333333333333335
+      "saysLess": 0.20000000000000848
     },
     "vsNone": {
-      "n": 5,
+      "n": 8,
       "better": 0,
       "worse": 1,
-      "tied": 4,
+      "tied": 7,
       "down": 0,
-      "up": 2,
+      "up": 4,
       "e": 0.5,
       "harm": 1.4999999999999998,
-      "saysLess": 0.3333333333333335
+      "saysLess": 0.20000000000000848
     },
     "canary": {
       "seeded": 3,

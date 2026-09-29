@@ -31,7 +31,15 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image: null
+image:
+  url: https://images.pexels.com/photos/5831346/pexels-photo-5831346.jpeg?auto=compress&cs=tinysrgb&w=1280
+  width: 1280
+  height: 854
+  alt: متداول يتابع حركة الأسهم على شاشات التداول
+  credit: AlphaTradeZone · بيكسلز
+  license: Pexels License
+  licenseUrl: https://www.pexels.com/license/
+  pageUrl: https://www.pexels.com/photo/man-in-white-and-blue-stripe-dress-shirt-sitting-in-front-of-computer-5831346/
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -55,7 +63,7 @@ models:
   editor: claude-cli
   writer: claude-cli → claude-cli
   critic: claude-cli
-  vision: null
+  vision: claude-cli
   desk: claude-cli
   lessons: control
 quality:
