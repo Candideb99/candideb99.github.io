@@ -185,10 +185,12 @@
     "trump-5000-dividend-trillion-cost-36981a:8adf42c4",
     "trump-5000-dividend-trillion-cost-36981a:e9c3387e",
     "trump-5000-dividend-trillion-cost-36981a:3b90497d",
-    "ecb-raises-rates-2-5-percent-second-hike-2026-e88f15:976fa682"
+    "ecb-raises-rates-2-5-percent-second-hike-2026-e88f15:976fa682",
+    "anthropic-ipo-prospectus-42-billion-loss-96f8e5:23168033",
+    "uae-germany-45-agreements-state-visit-9774e1:e22c45dc"
   ],
-  "version": 23,
-  "updatedAt": "2026-09-29T10:03:47.635Z",
+  "version": 24,
+  "updatedAt": "2026-09-29T18:12:27.978Z",
   "lessons": [
     {
       "id": "L1",
@@ -230,11 +232,12 @@
         "china-industrial-profits-slowest-growth-august-d8c45a:e63784db",
         "trump-obamacare-500-rebates-33c345:54f78754",
         "trump-5000-dividend-trillion-cost-36981a:c6cf95c0",
-        "trump-5000-dividend-trillion-cost-36981a:3b90497d"
+        "trump-5000-dividend-trillion-cost-36981a:3b90497d",
+        "uae-germany-45-agreements-state-visit-9774e1:e22c45dc"
       ],
-      "seen": 30,
+      "seen": 31,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-29T10:03:47.635Z",
+      "lastSeen": "2026-09-29T18:12:27.978Z",
       "status": "active",
       "previous": [
         "Keep every qualifier in Arabic: could, possibly, as much as, hopefully, expected, scheduled, will, estimates, reportedly. Name who claims, forecasts or estimates it. Never turn a claim, hope, forecast or reported figure into a stated fact, a present result or a bare headline number.",
@@ -595,11 +598,12 @@
         "federal-reserve-rate-hike-expectations-september-2026-c63230:2f8585f4",
         "us-inflation-august-gasoline-fed-rate-hike-16ce27:3d0613b2",
         "trump-weighs-us-diesel-export-ban-7feb98:3b1f91c3",
-        "trump-obamacare-500-rebates-33c345:dc60a0b9"
+        "trump-obamacare-500-rebates-33c345:dc60a0b9",
+        "anthropic-ipo-prospectus-42-billion-loss-96f8e5:23168033"
       ],
-      "seen": 8,
+      "seen": 9,
       "createdAt": "2026-09-26T11:43:04.129Z",
-      "lastSeen": "2026-09-28T21:19:02.634Z",
+      "lastSeen": "2026-09-29T18:12:27.978Z",
       "status": "active",
       "activatedAt": "2026-09-26T11:43:04.129Z",
       "previous": [
@@ -842,6 +846,14 @@
         "reinforce L3 (+1; reworded at most once a week)",
         "sharpen L7 (+2)",
         "reinforce L8 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-09-29T18:12:27.978Z",
+      "mistakes": 2,
+      "applied": [
+        "reinforce L1 (+1; reworded at most once a week)",
+        "reinforce L10 (+1; reworded at most once a week)"
       ]
     }
   ],

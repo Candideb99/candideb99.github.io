@@ -1,0 +1,25 @@
+{
+  "startedAt": "2026-09-29T18:12:01.791Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "uae-germany-45-agreements-state-visit-9774e1",
+      "issue": "The body says «وأضاف محمد الخفاجي أن رأس المال الإماراتي طويل الأجل يمكن أن يسدّ فجوة في تمويل تحديث الصناعة الألمانية في قطاعات تجمع بين خفض الانبعاثات ورفع الإنتاجية.» (Mohammed Al-Khafaji said long-term UAE capital can fill a gap in financing German industrial modernisation, in sectors combining emissions cuts and higher productivity.). Source Sky News Arabia says: \"تدفق رؤوس الأموال الإماراتية طويلة الأجل يمكن أن يسهم في سد جزء من فجوة التمويل اللازمة لتحديث الصناعة الألمانية، خصوصاً في القطاعات التي تجمع بين خفض الانبعاثات ورفع الإنتاجية وتطوير التكنولوجيا المتقدمة.\". Al-Khafaji said UAE capital could contribute to filling part of the financing gap, not that it would fill the gap.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن الخبير محمد الخفاجي قال إن رأس المال الإماراتي طويل الأجل يمكن أن يسدّ فجوة تمويل تحديث الصناعة الألمانية، والصحيح أنه قال إن هذا الرأسمال يمكن أن يسهم في سد جزء من تلك الفجوة.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وأضاف محمد الخفاجي أن رأس المال الإماراتي طويل الأجل يمكن أن يسدّ فجوة في تمويل تحديث الصناعة الألمانية في قطاعات تجمع بين خفض الانبعاثات ورفع الإنتاجية."
+      ],
+      "newSentences": [
+        "وأضاف محمد الخفاجي أن رأس المال الإماراتي طويل الأجل يمكن أن يغطي جانباً من فجوة تمويل تحديث الصناعة الألمانية في قطاعات تجمع بين خفض الانبعاثات ورفع الإنتاجية."
+      ]
+    }
+  ]
+}

@@ -1723,6 +1723,160 @@
           "noted": []
         }
       ]
+    },
+    "saudi-east-west-pipeline-flows-resume-411ecd": {
+      "at": "2026-09-29T18:17:14.945Z",
+      "title": "السعودية تعيد التدفقات عبر خط شرق-غرب إلى 3.5 مليون برميل يومياً",
+      "writer": "claude-cli",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 23,
+            "checked": 23,
+            "supported": 20,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 15,
+              "field": "body",
+              "class": "other",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وأضافت أن 40 ناقلة تنتظر قرب موانئ النفط المطلة على البحر الأحمر.",
+              "quote": "The company reported 40 tankers in the vicinity of Red Sea oil ports.",
+              "source": "AGBI (Arabian Gulf Business Insight)",
+              "sourceN": 2,
+              "correction": "TankerTrackers reported only that 40 tankers were in the vicinity of the Red Sea oil ports; it did not say they were waiting."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 23,
+            "checked": 23,
+            "supported": 21,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "us-consumer-confidence-lowest-since-2014-c8f654": {
+      "at": "2026-09-29T18:20:47.839Z",
+      "title": "ثقة المستهلكين الأمريكيين تهبط إلى 81.9 نقطة، الأدنى منذ 2014",
+      "writer": "claude-cli",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 16,
+            "weak": 0,
+            "noEvidence": 7,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "egypt-offers-mining-incentives-equity-partnerships-42b042": {
+      "at": "2026-09-29T18:27:23.704Z",
+      "title": "مصر تعرض حوافز وشراكات مباشرة لتسريع إنتاج مشروعات التعدين",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v24",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 23,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 14,
+              "field": "body",
+              "class": "cause",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وأضاف أن الأولوية الآن هي تحويل مخرجات المنتدى إلى مشروعات فعلية، تنفيذاً لتوجيهات الرئيس.",
+              "quote": "وأكد أن الأولوية الحالية للحكومة تتمثل في تحويل مخرجات المنتدى إلى مشروعات حقيقية على أرض الواقع، مشيرًا إلى أنه تنفيذًا لتوجيهات فخامة السيد الرئيس، تسعى الحكومة إلى اختصار الفترات الزمنية اللازمة لتنفيذ المشروعات، والعمل مع الشركاء وأصحاب المصلحة للوصول إلى مرحلة الإنتاج في أقصر وقت ممكن.",
+              "source": "Alborsa News",
+              "sourceN": 3,
+              "correction": "The source ties the presidential directives to the government's effort to shorten project execution timelines, not to the priority of turning forum outcomes into projects."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 2
+          }
+        },
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 24,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

@@ -8825,6 +8825,186 @@
         "remaining": [],
         "newFound": []
       }
+    },
+    "anthropic-ipo-prospectus-42-billion-loss-96f8e5": {
+      "at": "2026-09-29T18:08:59.644Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v23",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-29T10:18:20.986Z",
+      "sourcesRead": 2,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 21,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "أظهرت نشرة الاكتتاب العام لشركة الذكاء الاصطناعي «أنثروبيك» صافي خسارة بنحو 42 مليار دولار في 2025، وقفزت إيراداتها في العام نفسه اثني عشر ضعفاً إلى نحو 4.6 مليار دولار.",
+          "quote": "Revenue jumped twelvefold to almost $4.6 billion (€4bn) in 2025, but operating expenses reached $12.65 billion (€11.1bn), more than half of it on computing and infrastructure, leaving an operating loss of more than $8 billion (€7bn)."
+        },
+        {
+          "sentence": "وهي مخاطر تقع على شركة يتوقع داعموها إدراجها بتقييم يتجاوز تريليوني دولار، وتخطط لإنفاق 518 مليار دولار على الحوسبة والبنية التحتية.",
+          "quote": "Backers expect Anthropic to list at a valuation above $2 trillion (€1.73tn), more than double the $965 billion (€848bn) set in its funding round in May."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "uae-germany-45-agreements-state-visit-9774e1": {
+      "at": "2026-09-29T18:08:59.675Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-10T11:39:17.863Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 20,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 3,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 19,
+          "field": "body",
+          "sentence": "وقال الدكتور عبدالرحمن عمار إن الاستثمارات الإماراتية تأتي في قطاعات تمثل أولوية لألمانيا، وتدعم مساعيها لمواجهة ارتفاع تكاليف الطاقة وضغوط قطاع السيارات.",
+          "claim": "Abdulrahman Ammar said UAE investments are in sectors that are German priorities, and stated as fact that they support Germany's efforts against high energy costs and auto-sector pressures.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Sky News Arabia",
+          "sourceDate": "2026-09-10",
+          "quote": "ويشدد على أهمية الاستثمارات المتبادلة، لا سيما في ظل التحديات التي يواجهها الاقتصاد الألماني، سواء على مستوى ارتفاع تكاليف الطاقة أو الضغوط التي تواجه القطاع الصناعي، وفي مقدمتها صناعة السيارات، موضحاً أن ضخ استثمارات إماراتية في قطاعات الطاقة والصناعة والتكنولوجيا يمكن أن يدعم مساعي الحكومة الألمانية لإيجاد حلول عملية لهذه التحديات، وتعزيز القدرة التنافسية للاقتصاد الألماني.",
+          "correction": "Ammar said UAE investment in energy, industry and technology could support Germany's efforts to address these challenges, not that it does.",
+          "class": "hedge"
+        }
+      ],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "التجارة الثنائية 2025: 13.6 مليار يورو",
+          "quote": "ويمكننا البناء على قاعدة اقتصادية متينة، إذ من المتوقع أن يصل حجم التجارة الثنائية إلى 13.6 مليار يورو في عام 2025، بزيادة قدرها 15 بالمئة مقارنة بالعام السابق، فيما ارتفعت صادرات دولة الإمارات إلى ألمانيا بنسبة 58 بالمئة.",
+          "source": "Sky News Arabia"
+        },
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "نمو التجارة: 15%",
+          "quote": "ويمكننا البناء على قاعدة اقتصادية متينة، إذ من المتوقع أن يصل حجم التجارة الثنائية إلى 13.6 مليار يورو في عام 2025، بزيادة قدرها 15 بالمئة مقارنة بالعام السابق، فيما ارتفعت صادرات دولة الإمارات إلى ألمانيا بنسبة 58 بالمئة.",
+          "source": "Sky News Arabia"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "أكد الدكتور سلطان بن أحمد الجابر، وزير الصناعة والتكنولوجيا المتقدمة والمبعوث الخاص إلى ألمانيا، أن التجارة الثنائية بلغت 13.6 مليار يورو في 2025 بزيادة 15%، وقفزت صادرات الإمارات إلى ألمانيا 58%.",
+          "quote": "ويمكننا البناء على قاعدة اقتصادية متينة، إذ من المتوقع أن يصل حجم التجارة الثنائية إلى 13.6 مليار يورو في عام 2025، بزيادة قدرها 15 بالمئة مقارنة بالعام السابق، فيما ارتفعت صادرات دولة الإمارات إلى ألمانيا بنسبة 58 بالمئة.",
+          "source": "Sky News Arabia"
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "وبلغت الاستثمارات الإماراتية في ألمانيا أكثر من 34 مليار يورو، تتركز في الطاقة والصناعة، منها استحواذ شركة XRG التابعة لأدنوك على كوفسترو بقيمة 14.7 مليار يورو، واستثمار مصدر في مزرعة رياح بحر البلطيق (إيغل) بـ 1.6 مليار يورو لتزويد 475 ألف منزل بالطاقة النظيفة.",
+          "quote": "على صعيد الطاقة النظيفة، توفر شركة \"مصدر\" 476 ميغاواط من الطاقة النظيفة لألمانيا من خلال الاستثمار في مشروع مزرعة الرياح البحرية \"إيغل بحر البلطيق\" بقيمة تصل إلى 1.6 مليار يورو، مما يسهم في تزويد 475,000 منزل في ألمانيا بالطاقة عبر هذا المشروع."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن المحلل عبدالرحمن عمار قال إن الاستثمارات الإماراتية تدعم مساعي ألمانيا لمواجهة ارتفاع تكاليف الطاقة وضغوط قطاع السيارات، وقدّمت فقرة «لماذا يهمّ» ذلك أمراً واقعاً. والصحيح أن عمار قال إن هذه الاستثمارات يمكن أن تدعم تلك المساعي.",
+      "verified": {
+        "at": "2026-09-29T18:12:01.616Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": [
+          {
+            "class": "hedge",
+            "field": "body",
+            "sentence": "وأضاف محمد الخفاجي أن رأس المال الإماراتي طويل الأجل يمكن أن يسدّ فجوة في تمويل تحديث الصناعة الألمانية في قطاعات تجمع بين خفض الانبعاثات ورفع الإنتاجية.",
+            "quote": "تدفق رؤوس الأموال الإماراتية طويلة الأجل يمكن أن يسهم في سد جزء من فجوة التمويل اللازمة لتحديث الصناعة الألمانية، خصوصاً في القطاعات التي تجمع بين خفض الانبعاثات ورفع الإنتاجية وتطوير التكنولوجيا المتقدمة.",
+            "correction": "Al-Khafaji said UAE capital could contribute to filling part of the financing gap, not that it would fill the gap."
+          }
+        ],
+        "secondCorrection": "corrected"
+      }
+    },
+    "nats-air-traffic-control-failure-uk-2026-f8f562": {
+      "at": "2026-09-29T18:09:36.380Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-super-120b-a12b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-10T05:06:09.853Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 24,
+        "weak": 1,
+        "noEvidence": 2,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "lede",
+          "sentence": "أدى عطل تقني في نظام معالجة بيانات الطيران التابع لشركة ناتس، مزوّد خدمة التحكم بالحركة الجوية في المملكة المتحدة، إلى إلغاء أكثر من ألفي رحلة جوية خلال يومين، مما أبرز مخاوف متجددة حول مرونة النظام الذي يُدار بنسبة 49% من الحكومة البريطانية.",
+          "quote": "Nats is a public-private partnership, with the government holding the majority stake.",
+          "source": "BBC News"
+        },
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "حصة الحكومة في ناتس: 49%",
+          "quote": "Nats is a public-private partnership, with the government holding the majority stake.",
+          "source": "BBC News"
+        }
+      ],
+      "notFound": [
+        "واجهت المطارات الرئيسية أسوأ الأثر، حيث كانت هيثرو وغاتويك ومانشستر وبرمنغهام أكثر المطارات تضرراً.",
+        "السنة: 2025 · الوصف: عطب في النظام · الأثر: 150 إلغاء"
+      ],
+      "weak": [
+        {
+          "sentence": "يُذكر أن ناتس شهدت عطلين كبيرين سابقين: إغلاقاً حاسوبياً خلال عطلة نهاية الأسبوع في أغسطس 2023 أخلّ بخطوط 700 ألف مسافر، وعطباً أصغر في 2025 تسبب في 150 إلغاءً فقط.",
+          "quote": "In 2023, a computer shutdown over the August bank holiday weekend caused chaos for 700,000 passengers."
+        }
+      ],
+      "outcome": "listed"
     }
   }
 }
