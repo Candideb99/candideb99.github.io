@@ -1,0 +1,65 @@
+{
+  "startedAt": "2026-09-29T10:00:52.686Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "ecb-raises-rates-2-5-percent-second-hike-2026-e88f15",
+      "issue": "The body says «وتأتي الزيادة في ظل ارتفاع كبير في أسعار الطاقة، حيث تجاوزت أسعار النفط 105 دولارات للبرميل، وارتفعت أسعار الغاز الطبيعي المسال في أوروبا القارية إلى أعلى مستوى منذ يناير 2023، بفعل الهجمات على السفن في مضيق هرمز.» (The increase came amid high energy prices: oil exceeded $105 a barrel, and liquefied natural gas (LNG) prices in continental Europe rose to their highest since January 2023, because of attacks on ships in the Strait of Hormuz.). Source The Guardian says: \"The Dutch wholesale gas price – the EU standard – passed €80 per megawatt hour (MWh) for the first time since January 2023. The front-month contract is trading 3.4% higher at €82.56/MWh.\". The source refers to the Dutch wholesale (pipeline/TTF benchmark) gas price passing €80/MWh for the first time since January 2023, not to liquefied natural gas prices.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أسعار الغاز الطبيعي المسال في أوروبا القارية بلغت أعلى مستوى منذ يناير 2023، والصحيح أن سعر الغاز بالجملة في هولندا، المرجع الأوروبي، هو الذي تجاوز 80 يورو للميغاواط ساعة للمرة الأولى منذ يناير 2023.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وتأتي الزيادة في ظل ارتفاع كبير في أسعار الطاقة، حيث تجاوزت أسعار النفط 105 دولارات للبرميل، وارتفعت أسعار الغاز الطبيعي المسال في أوروبا القارية إلى أعلى مستوى منذ يناير 2023، بفعل الهجمات على السفن في مضيق هرمز."
+      ],
+      "newSentences": [
+        "وتأتي الزيادة في ظل ارتفاع كبير في أسعار الطاقة، حيث تجاوزت أسعار النفط 105 دولارات للبرميل، وتجاوز سعر الغاز بالجملة في هولندا، وهو المرجع الأوروبي، 80 يورو للميغاواط ساعة للمرة الأولى منذ يناير 2023، بفعل الهجمات على السفن في مضيق هرمز."
+      ]
+    },
+    {
+      "slug": "trump-5000-dividend-trillion-cost-36981a",
+      "issue": "1. The headline says «ترامب يعد بمنح 5000 دولار لكل أمريكي بتكلفة تتجاوز 1.2 تريليون دولار» (Trump promises $5,000 to every American, at a cost exceeding $1.2 trillion.). Source Euronews says: \"The US president has promised to give every adult citizen a $5,000 (€4,290) payment if Republicans retain control of both the House of Representatives and the Senate.\". The promise covers every adult citizen, not every American, and depends on Republicans winning both chambers.\n2. The dek says «التكلفة المتوقعة تتجاوز ميزانية البنتاغون بالكامل، في ظل دين عام أمريكي قياسي يتجاوز 40 تريليون دولار ومخاوف من ارتفاع تكاليف الاقتراض» (The expected cost exceeds the Pentagon's entire budget, while US public debt is at a record above $40 trillion and there are concerns about rising borrowing costs.). The story itself says elsewhere: «وتُقارن الخطة بما أنفقته الحكومة الأمريكية بالفعل على فوائد الدين العام، وهو ما يقارب 1.3 تريليون دولار في السنة المالية حتى الآن، فيما بلغ الإنفاق الدفاعي نحو 1.4 تريليون دولار في 2026.». The story's own body puts 2026 defense spending at about $1.4 trillion, which is more than the $1.2 trillion cost; the dek's comparison holds only against the Pentagon's $961 billion 2026 budget request cited by Euronews.\n3. The body says «وانتقد العديد من الجمهوريين أنفسهم الخطة، من بينهم جو لونزالد، الشريك المؤسس لشركة بالانتير والمنبر الجمهوري، الذي وصفها بأنها \"رشاوى من نوع الخبز والمسرح\".» (Many Republicans criticized the plan, including Joe Lonsdale, Palantir co-founder and a Republican 'platform/pulpit' figure, who called it 'bread and circus bribes'.). Source CNBC says: \"\"I am hugely in favor of winning the midterms, and love much about this admin, but am strongly against bread and circus bribes,\" Palantir co-founder and Republican donor Joe Lonsdale said on X.\". Joe Lonsdale (the story misspells his name) is a Republican donor, not a Republican 'platform' figure.\n4. The body says «كما طرح السيناتور تشيب روي، زعيم فصيل حرية الكونغرس، تساؤلاً حول كيفية تمويل الخطة، قائلاً: \"أود أن أعرف كيف يخططون للدفع\" مقابل الاقتراح.» (Senator Chip Roy, leader of the Freedom Caucus, asked how the plan would be funded, saying 'I would like to know how they would plan to pay' for the proposal.). Source CNBC says: \"\"I would like to know how they would plan to pay\" for the proposal, Rep. Chip Roy, R-Texas, a leader of the fiscally conservative Freedom Caucus, told Politico.\". Chip Roy is a Republican representative from Texas and a leader of the Freedom Caucus; he is not a senator.\n5. The body says «وأثار الاقتراح أيضاً تساؤلات قانونية حول مدى مشروعيته، إذ يُعدّ وعداً بالدفع مقابل نتيجة سياسية معينة شكلاً من أشكال الرشوة بموجب القانون الفيدرالي الأمريكي.» (The proposal raised legal questions because a promise of payment for a particular political outcome is a form of bribery under US federal law (stated as fact).). Source CNBC says: \"Trump's latest announcement also quickly raised questions about whether such a policy — essentially, the promise of money in exchange for a preferred political outcome — would constitute a bribe under U.S. law.\". The source says only that the announcement raised questions about whether it would constitute a bribe; it does not say it is bribery.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "title",
+        "subtitle",
+        "lede",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن ترامب وعد بمنح 5000 دولار لكل أمريكي، وأن التكلفة تتجاوز ميزانية البنتاغون بالكامل، وأن تشيب روي سيناتور، وأن جو لونزديل شخصية جمهورية، وأن الوعد يُعدّ رشوة بموجب القانون الفيدرالي. والصحيح أن الوعد يشمل المواطنين البالغين ومشروط بفوز الجمهوريين بمجلسي النواب والشيوخ، وأن التكلفة تتجاوز طلب ميزانية البنتاغون لعام 2026 البالغ 961 مليار دولار، وأن روي نائب جمهوري عن تكساس ولونزديل متبرع للحزب الجمهوري، وأن الاقتراح أثار تساؤلات عن كونه رشوة دون أن يُحسم ذلك.",
+      "model": "claude-cli",
+      "before": {
+        "title": "ترامب يعد بمنح 5000 دولار لكل أمريكي بتكلفة تتجاوز 1.2 تريليون دولار",
+        "subtitle": "التكلفة المتوقعة تتجاوز ميزانية البنتاغون بالكامل، في ظل دين عام أمريكي قياسي يتجاوز 40 تريليون دولار ومخاوف من ارتفاع تكاليف الاقتراض",
+        "lede": "وعد الرئيس الأمريكي دونالد ترامب بتوزيع 5000 دولار على كل مواطن أمريكي بالغ إذا فاز الجمهوريون بانتخابات نوفمبر النصفية، في اقتراح تُقدَّر تكلفته بأكثر من 1.2 تريليون دولار. وأثار الوعد انتقادات من الحزبين ومخاوف من اضطراب في سوق السندات."
+      },
+      "after": {
+        "title": "ترامب يعد بـ5000 دولار لكل مواطن بالغ إذا فاز الجمهوريون بمجلسي الكونغرس",
+        "subtitle": "التكلفة المتوقعة تتجاوز طلب ميزانية البنتاغون لعام 2026 البالغ 961 مليار دولار، في ظل دين عام أمريكي قياسي يتجاوز 40 تريليون دولار ومخاوف من ارتفاع تكاليف الاقتراض",
+        "lede": "وعد الرئيس الأمريكي دونالد ترامب بتوزيع 5000 دولار على كل مواطن أمريكي بالغ إذا فاز الجمهوريون بمجلسي النواب والشيوخ في انتخابات نوفمبر النصفية، في اقتراح تُقدَّر تكلفته بأكثر من 1.2 تريليون دولار. وأثار الوعد انتقادات من الحزبين ومخاوف من اضطراب في سوق السندات."
+      },
+      "changedSentences": [
+        "ترامب يعد بمنح 5000 دولار لكل أمريكي بتكلفة تتجاوز 1.2 تريليون دولار",
+        "التكلفة المتوقعة تتجاوز ميزانية البنتاغون بالكامل، في ظل دين عام أمريكي قياسي يتجاوز 40 تريليون دولار ومخاوف من ارتفاع تكاليف الاقتراض",
+        "وعد الرئيس الأمريكي دونالد ترامب بتوزيع 5000 دولار على كل مواطن أمريكي بالغ إذا فاز الجمهوريون بانتخابات نوفمبر النصفية، في اقتراح تُقدَّر تكلفته بأكثر من 1.2 تريليون دولار.",
+        "وانتقد العديد من الجمهوريين أنفسهم الخطة، من بينهم جو لونزالد، الشريك المؤسس لشركة بالانتير والمنبر الجمهوري، الذي وصفها بأنها \"رشاوى من نوع الخبز والمسرح\".",
+        "كما طرح السيناتور تشيب روي، زعيم فصيل حرية الكونغرس، تساؤلاً حول كيفية تمويل الخطة، قائلاً: \"أود أن أعرف كيف يخططون للدفع\" مقابل الاقتراح.",
+        "وأثار الاقتراح أيضاً تساؤلات قانونية حول مدى مشروعيته، إذ يُعدّ وعداً بالدفع مقابل نتيجة سياسية معينة شكلاً من أشكال الرشوة بموجب القانون الفيدرالي الأمريكي."
+      ],
+      "newSentences": [
+        "ترامب يعد بـ5000 دولار لكل مواطن بالغ إذا فاز الجمهوريون بمجلسي الكونغرس",
+        "التكلفة المتوقعة تتجاوز طلب ميزانية البنتاغون لعام 2026 البالغ 961 مليار دولار، في ظل دين عام أمريكي قياسي يتجاوز 40 تريليون دولار ومخاوف من ارتفاع تكاليف الاقتراض",
+        "وعد الرئيس الأمريكي دونالد ترامب بتوزيع 5000 دولار على كل مواطن أمريكي بالغ إذا فاز الجمهوريون بمجلسي النواب والشيوخ في انتخابات نوفمبر النصفية، في اقتراح تُقدَّر تكلفته بأكثر من 1.2 تريليون دولار.",
+        "وانتقد العديد من الجمهوريين أنفسهم الخطة، من بينهم جو لونزديل، الشريك المؤسس لشركة بالانتير والمتبرع للحزب الجمهوري، الذي وصفها بأنها \"رشاوى من نوع الخبز والمسرح\".",
+        "كما طرح النائب الجمهوري عن ولاية تكساس تشيب روي، أحد قادة تجمع الحرية المحافظ مالياً في مجلس النواب، تساؤلاً حول كيفية تمويل الخطة، قائلاً: \"أود أن أعرف كيف يخططون للدفع\" مقابل الاقتراح.",
+        "وأثار الاقتراح أيضاً تساؤلات قانونية حول هل يشكّل الوعد بالمال مقابل نتيجة سياسية مفضلة رشوة بموجب القانون الأمريكي."
+      ]
+    }
+  ]
+}

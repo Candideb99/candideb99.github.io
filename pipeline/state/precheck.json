@@ -1576,6 +1576,153 @@
           "noted": []
         }
       ]
+    },
+    "rba-raises-cash-rate-to-4-6-percent-e6fe7e": {
+      "at": "2026-09-29T10:10:34.471Z",
+      "title": "المركزي الأسترالي يرفع الفائدة إلى 4.6% في رابع زيادة هذا العام",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v23",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 26,
+            "checked": 26,
+            "supported": 24,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "anthropic-ipo-prospectus-42-billion-loss-96f8e5": {
+      "at": "2026-09-29T10:18:20.990Z",
+      "title": "نشرة طرح «أنثروبيك» تُظهر صافي خسارة بنحو 42 مليار دولار في 2025",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v23",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 23,
+            "checked": 23,
+            "supported": 20,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 12,
+              "field": "body",
+              "class": "attribution",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "بلغت النفقات التشغيلية للشركة 12.65 مليار دولار في 2025، ذهب أكثر من نصفها إلى الحوسبة والبنية التحتية، بحسب ما نقلته «فايننشال تايمز» عن النشرة.",
+              "quote": "Reuters was first to report on the financial details within the prospectus on Monday, saying Anthropic recorded an operating loss of more than $8 billion in 2025 as spending on computing power surged, and that its revenue jumped twelvefold to nearly $4.6 billion, though rising infrastructure costs last year pushed total operating expenses to almost $13 billion.",
+              "source": "TechCrunch",
+              "sourceN": 3,
+              "correction": "The operating-expense figures from the prospectus were reported by Reuters, not the Financial Times."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 2
+          }
+        },
+        {
+          "counts": {
+            "sentences": 23,
+            "checked": 23,
+            "supported": 21,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "aldar-talay-yas-riva-reserve-sales-7b0c3a": {
+      "at": "2026-09-29T10:24:52.029Z",
+      "title": "«الدار» تبيع بأكثر من 5 مليارات درهم في مشروعين سكنيين بأبوظبي",
+      "writer": "claude-cli",
+      "lessons": "v23",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 18,
+            "checked": 18,
+            "supported": 17,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "china-lng-imports-second-monthly-drop-263c6b": {
+      "at": "2026-09-29T10:28:24.343Z",
+      "title": "واردات الصين من الغاز المسال تتجه إلى التراجع للشهر الثاني بفعل ارتفاع الأسعار",
+      "writer": "claude-cli",
+      "lessons": "v23",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 19,
+            "checked": 19,
+            "supported": 19,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

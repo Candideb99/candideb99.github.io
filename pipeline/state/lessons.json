@@ -179,10 +179,16 @@
     "apple-foldable-iphone-duo-release-cycle-change-d6b45a:d6332478",
     "apple-foldable-iphone-duo-release-cycle-change-d6b45a:a0596e31",
     "apple-foldable-iphone-duo-release-cycle-change-d6b45a:ac3cea7a",
-    "egypt-inflation-eases-12-7-august-7557fb:1b066776"
+    "egypt-inflation-eases-12-7-august-7557fb:1b066776",
+    "trump-5000-dividend-trillion-cost-36981a:c6cf95c0",
+    "trump-5000-dividend-trillion-cost-36981a:5347db37",
+    "trump-5000-dividend-trillion-cost-36981a:8adf42c4",
+    "trump-5000-dividend-trillion-cost-36981a:e9c3387e",
+    "trump-5000-dividend-trillion-cost-36981a:3b90497d",
+    "ecb-raises-rates-2-5-percent-second-hike-2026-e88f15:976fa682"
   ],
-  "version": 22,
-  "updatedAt": "2026-09-29T01:09:21.531Z",
+  "version": 23,
+  "updatedAt": "2026-09-29T10:03:47.635Z",
   "lessons": [
     {
       "id": "L1",
@@ -222,11 +228,13 @@
         "oracle-cloud-infrastructure-revenue-ai-growth-fc2b80:2748c51c",
         "oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2:31a9d735",
         "china-industrial-profits-slowest-growth-august-d8c45a:e63784db",
-        "trump-obamacare-500-rebates-33c345:54f78754"
+        "trump-obamacare-500-rebates-33c345:54f78754",
+        "trump-5000-dividend-trillion-cost-36981a:c6cf95c0",
+        "trump-5000-dividend-trillion-cost-36981a:3b90497d"
       ],
-      "seen": 28,
+      "seen": 30,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-28T21:19:02.634Z",
+      "lastSeen": "2026-09-29T10:03:47.635Z",
       "status": "active",
       "previous": [
         "Keep every qualifier in Arabic: could, possibly, as much as, hopefully, expected, scheduled, will, estimates, reportedly. Name who claims, forecasts or estimates it. Never turn a claim, hope, forecast or reported figure into a stated fact, a present result or a bare headline number.",
@@ -327,11 +335,12 @@
         "anthropic-chooses-nasdaq-for-ipo-57a51e:9520c315",
         "saudi-east-west-pipeline-closure-brent-d9de59:e64704e8",
         "hormuz-shipping-traffic-plunges-tensions-5c1d93:72f5ffc3",
-        "trump-obamacare-500-rebates-33c345:ce786720"
+        "trump-obamacare-500-rebates-33c345:ce786720",
+        "ecb-raises-rates-2-5-percent-second-hike-2026-e88f15:976fa682"
       ],
-      "seen": 18,
+      "seen": 19,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-28T21:19:02.634Z",
+      "lastSeen": "2026-09-29T10:03:47.635Z",
       "status": "active",
       "previous": [
         "Translate financial terms and tenors exactly. The 10-year Treasury is سندات الخزانة لأجل 10 سنوات, not 'more than ten years'. A nominal yield is not 'actual'. Open interest is العقود/المراكز المفتوحة, not interest. Add no descriptor the source lacks."
@@ -377,11 +386,12 @@
         "turkish-stocks-extend-losses-fund-liquidation-10b52d:d6a1cd91",
         "apple-foldable-iphone-duo-release-cycle-change-d6b45a:d6332478",
         "apple-foldable-iphone-duo-release-cycle-change-d6b45a:a0596e31",
-        "egypt-inflation-eases-12-7-august-7557fb:1b066776"
+        "egypt-inflation-eases-12-7-august-7557fb:1b066776",
+        "trump-5000-dividend-trillion-cost-36981a:c6cf95c0"
       ],
-      "seen": 29,
+      "seen": 30,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-29T01:09:21.531Z",
+      "lastSeen": "2026-09-29T10:03:47.635Z",
       "status": "active",
       "previous": [
         "Keep a figure or role tied to the exact item, day and instrument the source names. Diesel is not all fuel. One day's count is not a daily rate. A futures-implied value is not the IPO valuation. An official does only what the source assigns.",
@@ -476,7 +486,7 @@
     {
       "id": "L7",
       "class": "other",
-      "rule": "Copy the names of outlets, companies, people and laws exactly as the source gives them; never swap in an older or more familiar name (MS NOW is not MSNBC). Recheck the name in the headline and at every repetition in the body.",
+      "rule": "Copy names, titles and roles of outlets, companies, people and laws exactly as the source gives them (Joe Lonsdale, MS NOW not MSNBC); a representative is not a senator, a donor is not a party figure. Recheck them in the headline and every repetition.",
       "example": {
         "wrong": "ترامب يحظر سي إن إن وإم إس إن بي سي وبوليتيكو من البيت الأبيض",
         "quote": "United States President Donald Trump has announced that, effective immediately, CNN, MS NOW and Politico are banned from the White House.",
@@ -496,12 +506,18 @@
         "sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730:12fa2360",
         "saudi-east-west-pipeline-drone-attack-8ce715:3700ddff",
         "france-cuts-growth-forecast-2026-e13a50:2a61c85e",
-        "hormuz-shipping-traffic-plunges-tensions-5c1d93:50c8721f"
+        "hormuz-shipping-traffic-plunges-tensions-5c1d93:50c8721f",
+        "trump-5000-dividend-trillion-cost-36981a:8adf42c4",
+        "trump-5000-dividend-trillion-cost-36981a:e9c3387e"
       ],
-      "seen": 13,
+      "seen": 15,
       "createdAt": "2026-09-25T07:42:29.972Z",
-      "lastSeen": "2026-09-27T21:33:40.475Z",
-      "status": "active"
+      "lastSeen": "2026-09-29T10:03:47.635Z",
+      "status": "active",
+      "previous": [
+        "Copy the names of outlets, companies, people and laws exactly as the source gives them; never swap in an older or more familiar name (MS NOW is not MSNBC). Recheck the name in the headline and at every repetition in the body."
+      ],
+      "sharpenedAt": "2026-09-29T10:03:47.635Z"
     },
     {
       "id": "L8",
@@ -527,11 +543,12 @@
         "egypt-bme-catl-battery-plant-aa81f7:a32f8304",
         "us-inflation-august-gasoline-fed-rate-hike-16ce27:1508e242",
         "us-inflation-august-gasoline-fed-rate-hike-16ce27:1304970a",
-        "us-inflation-august-gasoline-fed-rate-hike-16ce27:3d0613b2"
+        "us-inflation-august-gasoline-fed-rate-hike-16ce27:3d0613b2",
+        "trump-5000-dividend-trillion-cost-36981a:5347db37"
       ],
-      "seen": 14,
+      "seen": 15,
       "createdAt": "2026-09-25T12:04:58.585Z",
-      "lastSeen": "2026-09-27T05:31:23.592Z",
+      "lastSeen": "2026-09-29T10:03:47.635Z",
       "status": "active",
       "previous": [
         "Copy every number and ranking with its own qualifier. 500 is not 'more than 500', 'nearly 4,000' is not 4,000, and 'one of the most important' is not 'the most important'. Never move a qualifier from one figure onto its neighbour."
@@ -814,6 +831,17 @@
       "applied": [
         "reinforce L4 (+4; reworded at most once a week)",
         "reinforce L2 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-09-29T10:03:47.635Z",
+      "mistakes": 6,
+      "applied": [
+        "reinforce L1 (+2; reworded at most once a week)",
+        "reinforce L4 (+1)",
+        "reinforce L3 (+1; reworded at most once a week)",
+        "sharpen L7 (+2)",
+        "reinforce L8 (+1; reworded at most once a week)"
       ]
     }
   ],

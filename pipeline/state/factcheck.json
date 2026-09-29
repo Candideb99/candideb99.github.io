@@ -8576,6 +8576,255 @@
         "remaining": [],
         "newFound": []
       }
+    },
+    "ecb-raises-rates-2-5-percent-second-hike-2026-e88f15": {
+      "at": "2026-09-29T09:59:31.449Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-10T16:38:14.684Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 11,
+        "weak": 3,
+        "noEvidence": 1,
+        "notFound": 1,
+        "confirmed": 1,
+        "listed": 1,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 13,
+          "field": "body",
+          "sentence": "وتأتي الزيادة في ظل ارتفاع كبير في أسعار الطاقة، حيث تجاوزت أسعار النفط 105 دولارات للبرميل، وارتفعت أسعار الغاز الطبيعي المسال في أوروبا القارية إلى أعلى مستوى منذ يناير 2023، بفعل الهجمات على السفن في مضيق هرمز.",
+          "claim": "The increase came amid high energy prices: oil exceeded $105 a barrel, and liquefied natural gas (LNG) prices in continental Europe rose to their highest since January 2023, because of attacks on ships in the Strait of Hormuz.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "The Guardian",
+          "sourceDate": "2026-09-10",
+          "quote": "The Dutch wholesale gas price – the EU standard – passed €80 per megawatt hour (MWh) for the first time since January 2023. The front-month contract is trading 3.4% higher at €82.56/MWh.",
+          "correction": "The source refers to the Dutch wholesale (pipeline/TTF benchmark) gas price passing €80/MWh for the first time since January 2023, not to liquefied natural gas prices.",
+          "class": "term"
+        }
+      ],
+      "listed": [
+        {
+          "status": "listed",
+          "class": "cause",
+          "field": "body",
+          "sentence": "وتأثرت أسواق السندات العالمية بالقرار، حيث ارتفع عائد السندات الحكومية البريطانية لأجل عشر سنوات إلى 5.36%، وهو أعلى مستوى منذ أغسطس 2007، كما ارتفع عائد السندات الألمانية لأجل ثلاثين سنة إلى 5.08% وهو أعلى مستوى منذ ديسمبر 2003، وارتفع عائد السندات الألمانية لأجل عشر سنوات إلى 3.45% وهو أعلى مستوى منذ أبريل 2011، في حين وصل عائد السندات الفرنسية لأجل عشر سنوات إلى 4.344% وهو أعلى مستوى منذ أكتوبر 2008.",
+          "quote": "It came as government borrowing costs soared on the back of a jump in oil and gas prices after the latest US and Iran attacks on ships in the strait of Hormuz.",
+          "source": "The Guardian",
+          "correction": "The Guardian attributes the rise in government bond yields to the jump in oil and gas prices after attacks on ships in Hormuz, not to the ECB decision; the yield figures themselves are correct."
+        }
+      ],
+      "notFound": [
+        "سعر الفائدة الجديد: 2.50%",
+        "ارتفاع الفائدة الأوروبية يزيد تكلفة الاقتراض على حكومات منطقة اليورو وشركاتها."
+      ],
+      "weak": [
+        {
+          "sentence": "رفع البنك المركزي الأوروبي أسعار الفائدة 25 نقطة أساس إلى 2.5% لاحتواء الضغوط التضخمية الناجمة عن تصاعد أسعار النفط والغاز جراء الحرب في الشرق الأوسط.",
+          "quote": "ورفع البنك المركزي الأوروبي سعر الفائدة ربع نقطة مئوية إلى 2.5 في المائة، في ثاني زيادة له هذا العام، في خطوة تستهدف احتواء الضغوط التضخمية المتصاعدة، مستفيداً في الوقت نفسه من قدرة اقتصاد منطقة اليورو على الصمود بصورة أفضل من المتوقع أمام ارتفاع تكاليف الاقتراض والطاقة."
+        },
+        {
+          "sentence": "وأوضح البنك في بيانه أن الصراع في الشرق الأوسط يستمر في توليد ضغوط تضخمية، وأن التضخم من المقرر أن يظل أعلى بكثير من المستهدف البالغ 2% لفترة ممتدة.",
+          "quote": "The conflict in the Middle East continues to generate inflation pressures, and inflation is set to remain well above target for an extended period."
+        },
+        {
+          "sentence": "ورفع البنك توقعاته لنمو اقتصاد منطقة اليورو في 2026 إلى 0.9%، مرتفعاً من 0.8% في توقعات يونيو، فيما أبقى توقع التضخم لعام 2026 عند 3.0%، مع توقعات بنسبة 2.5% في 2027 و2.1% في 2028.",
+          "quote": "Increasing its main rate from 2.25% to the highest level since March last year, the central bank lifted its forecast for eurozone economic growth in 2026 to 0.9%, up from 0.8% in June. It now expects inflation to average 3% this year."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أسعار الغاز الطبيعي المسال في أوروبا القارية بلغت أعلى مستوى منذ يناير 2023، والصحيح أن سعر الغاز بالجملة في هولندا، المرجع الأوروبي، هو الذي تجاوز 80 يورو للميغاواط ساعة للمرة الأولى منذ يناير 2023.",
+      "verified": {
+        "at": "2026-09-29T10:02:26.789Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
+    },
+    "trump-5000-dividend-trillion-cost-36981a": {
+      "at": "2026-09-29T09:59:31.414Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-10T16:45:46.742Z",
+      "sourcesRead": 2,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 14,
+        "weak": 6,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 5,
+        "listed": 2,
+        "drift": 0,
+        "conflict": 3,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 1,
+          "field": "title",
+          "sentence": "ترامب يعد بمنح 5000 دولار لكل أمريكي بتكلفة تتجاوز 1.2 تريليون دولار",
+          "claim": "Trump promises $5,000 to every American, at a cost exceeding $1.2 trillion.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "Euronews",
+          "sourceDate": "2026-09-10",
+          "quote": "The US president has promised to give every adult citizen a $5,000 (€4,290) payment if Republicans retain control of both the House of Representatives and the Senate.",
+          "correction": "The promise covers every adult citizen, not every American, and depends on Republicans winning both chambers.",
+          "class": "scope"
+        },
+        {
+          "id": 2,
+          "field": "subtitle",
+          "sentence": "التكلفة المتوقعة تتجاوز ميزانية البنتاغون بالكامل، في ظل دين عام أمريكي قياسي يتجاوز 40 تريليون دولار ومخاوف من ارتفاع تكاليف الاقتراض",
+          "claim": "The expected cost exceeds the Pentagon's entire budget, while US public debt is at a record above $40 trillion and there are concerns about rising borrowing costs.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 0,
+          "sourceName": "the story itself",
+          "sourceDate": null,
+          "quote": "وتُقارن الخطة بما أنفقته الحكومة الأمريكية بالفعل على فوائد الدين العام، وهو ما يقارب 1.3 تريليون دولار في السنة المالية حتى الآن، فيما بلغ الإنفاق الدفاعي نحو 1.4 تريليون دولار في 2026.",
+          "correction": "The story's own body puts 2026 defense spending at about $1.4 trillion, which is more than the $1.2 trillion cost; the dek's comparison holds only against the Pentagon's $961 billion 2026 budget request cited by Euronews.",
+          "class": "internal"
+        },
+        {
+          "id": 14,
+          "field": "body",
+          "sentence": "وانتقد العديد من الجمهوريين أنفسهم الخطة، من بينهم جو لونزالد، الشريك المؤسس لشركة بالانتير والمنبر الجمهوري، الذي وصفها بأنها \"رشاوى من نوع الخبز والمسرح\".",
+          "claim": "Many Republicans criticized the plan, including Joe Lonsdale, Palantir co-founder and a Republican 'platform/pulpit' figure, who called it 'bread and circus bribes'.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-10",
+          "quote": "\"I am hugely in favor of winning the midterms, and love much about this admin, but am strongly against bread and circus bribes,\" Palantir co-founder and Republican donor Joe Lonsdale said on X.",
+          "correction": "Joe Lonsdale (the story misspells his name) is a Republican donor, not a Republican 'platform' figure.",
+          "class": "term"
+        },
+        {
+          "id": 15,
+          "field": "body",
+          "sentence": "كما طرح السيناتور تشيب روي، زعيم فصيل حرية الكونغرس، تساؤلاً حول كيفية تمويل الخطة، قائلاً: \"أود أن أعرف كيف يخططون للدفع\" مقابل الاقتراح.",
+          "claim": "Senator Chip Roy, leader of the Freedom Caucus, asked how the plan would be funded, saying 'I would like to know how they would plan to pay' for the proposal.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-10",
+          "quote": "\"I would like to know how they would plan to pay\" for the proposal, Rep. Chip Roy, R-Texas, a leader of the fiscally conservative Freedom Caucus, told Politico.",
+          "correction": "Chip Roy is a Republican representative from Texas and a leader of the Freedom Caucus; he is not a senator.",
+          "class": "actor"
+        },
+        {
+          "id": 23,
+          "field": "body",
+          "sentence": "وأثار الاقتراح أيضاً تساؤلات قانونية حول مدى مشروعيته، إذ يُعدّ وعداً بالدفع مقابل نتيجة سياسية معينة شكلاً من أشكال الرشوة بموجب القانون الفيدرالي الأمريكي.",
+          "claim": "The proposal raised legal questions because a promise of payment for a particular political outcome is a form of bribery under US federal law (stated as fact).",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-09-10",
+          "quote": "Trump's latest announcement also quickly raised questions about whether such a policy — essentially, the promise of money in exchange for a preferred political outcome — would constitute a bribe under U.S. law.",
+          "correction": "The source says only that the announcement raised questions about whether it would constitute a bribe; it does not say it is bribery.",
+          "class": "hedge"
+        }
+      ],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "lede",
+          "sentence": "وعد الرئيس الأمريكي دونالد ترامب بتوزيع 5000 دولار على كل مواطن أمريكي بالغ إذا فاز الجمهوريون بانتخابات نوفمبر النصفية، في اقتراح تُقدَّر تكلفته بأكثر من 1.2 تريليون دولار.",
+          "quote": "Giving every adult citizen $5,000 would therefore cost almost $1.2 trillion.",
+          "source": "Euronews"
+        },
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "تكلفة الخطة المقدرة: أكثر من 1.2 تريليون دولار",
+          "quote": "Giving every adult citizen $5,000 would therefore cost almost $1.2 trillion.",
+          "source": "Euronews"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "ووفقاً لتقديرات مبنية على بيانات مكتب الإحصاء الأمريكي لعام 2024، يبلغ عدد البالغين من المواطنين الأمريكيين تقريباً 245.3 مليون شخص، ما يعني أن التكلفة الإجمالية للخطة ستتجاوز 1.2 تريليون دولار.",
+          "quote": "The US had around 240 million adult citizens at the time of the 2024 presidential election, including 174 million registered voters, according to the latest comprehensive US Census Bureau figures.",
+          "source": "Euronews"
+        },
+        {
+          "status": "listed",
+          "class": "other",
+          "field": "body",
+          "sentence": "وتشير تقديرات أخرى إلى أن الحد الأدنى للتكلفة يبلغ نحو 1.18 تريليون دولار إذا شُمل جميع البالغين.",
+          "quote": "That would cover only around a third of the estimated $1.18 trillion (€1.01 trillion) cost of paying every adult citizen $5,000 (€4,290).",
+          "source": "Euronews",
+          "correction": "The $1.18 trillion figure is Euronews' estimate of the cost of paying every adult citizen; it is not presented as a minimum, and it does not cover all adults."
+        },
+        {
+          "status": "listed",
+          "class": "other",
+          "field": "body",
+          "sentence": "من جهته، دافع نائب الرئيس جيه ديهانس عن الاقتراح، مؤكداً أن إيرادات التعريفات الجمركية التي جمعتها إدارة ترامب تُتيح دفع هذه الشيكات.",
+          "quote": "Vice President JD Vance also defended the proposed dividends by asserting that Trump's tariffs have made them possible.",
+          "source": "CNBC",
+          "correction": "The vice president is JD Vance; the story garbles his name."
+        }
+      ],
+      "notFound": [
+        "وأثار الوعد انتقادات من الحزبين ومخاوف من اضطراب في سوق السندات."
+      ],
+      "weak": [
+        {
+          "sentence": "إذ يُقدّر نموذج ميزانية بن وارتون بجامعة بنسلفانيا أن التعريفات الجمركية جنت نحو 300 مليار دولار بين يناير 2025 ويوليو 2026، بينما تتوقع وزارة الخزانة الأمريكية جمع نحو 406 مليار دولار في السنة المالية الحالية.",
+          "quote": "The Penn Wharton Budget Model estimates Trump's import duties have brought in around $300 billion in total between January 2025 and July 2026."
+        },
+        {
+          "sentence": "وسبق لترامب أن طرح أفكاراً مماثلة لم تُنفذ، من بينها \"حصة دوغ\" البالغة 5000 دولار و\"استرداد التعريفات\" البالغة 2000 دولار.",
+          "quote": "Early into his second term, Trump backed the idea of a $5,000 \"DOGE dividend.\" The idea was to disburse savings achieved by cuts enacted by the now-defunct so-called Department of Government Efficiency — then led by Elon Musk — to the U.S. population, but it never materialized."
+        },
+        {
+          "sentence": "بند الإنفاق: السكن · المدة التي يغطيها الدفع المزدوج (10000 دولار): أكثر من 4 أشهر",
+          "quote": "Two $5,000 payments would therefore cover just over four months of average housing costs."
+        },
+        {
+          "sentence": "بند الإنفاق: النقل · المدة التي يغطيها الدفع المزدوج (10000 دولار): 8 أشهر ونصف",
+          "quote": "The combined payment could also cover around eight-and-a-half months of average transport costs or 18 months of healthcare spending."
+        },
+        {
+          "sentence": "بند الإنفاق: الرعاية الصحية · المدة التي يغطيها الدفع المزدوج (10000 دولار): 18 شهراً",
+          "quote": "The combined payment could also cover around eight-and-a-half months of average transport costs or 18 months of healthcare spending."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن ترامب وعد بمنح 5000 دولار لكل أمريكي، وأن التكلفة تتجاوز ميزانية البنتاغون بالكامل، وأن تشيب روي سيناتور، وأن جو لونزديل شخصية جمهورية، وأن الوعد يُعدّ رشوة بموجب القانون الفيدرالي. والصحيح أن الوعد يشمل المواطنين البالغين ومشروط بفوز الجمهوريين بمجلسي النواب والشيوخ، وأن التكلفة تتجاوز طلب ميزانية البنتاغون لعام 2026 البالغ 961 مليار دولار، وأن روي نائب جمهوري عن تكساس ولونزديل متبرع للحزب الجمهوري، وأن الاقتراح أثار تساؤلات عن كونه رشوة دون أن يُحسم ذلك.",
+      "verified": {
+        "at": "2026-09-29T10:03:47.414Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
     }
   }
 }
