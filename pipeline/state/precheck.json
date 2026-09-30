@@ -2119,6 +2119,130 @@
           "noted": []
         }
       ]
+    },
+    "us-core-pce-inflation-august-below-forecast-444dd8": {
+      "at": "2026-09-30T12:56:56.183Z",
+      "title": "التضخم الأساسي الأمريكي يرتفع 3% في أغسطس دون التوقعات",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v27",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 24,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "uae-petrol-prices-rise-october-third-month-df203f": {
+      "at": "2026-09-30T13:02:17.244Z",
+      "title": "الإمارات ترفع أسعار البنزين بنحو 16% في أكتوبر للشهر الثالث على التوالي",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v27",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 23,
+            "checked": 23,
+            "supported": 20,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 16,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وصعد برنت، الخام القياسي العالمي، بنحو 15% خلال الشهر الماضي، وارتفع خام غرب تكساس الوسيط الأمريكي بنحو 9%.",
+              "quote": "This month, Brent has jumped about 9.5 per cent, while WTI has inched up by nearly 0.2 per cent.",
+              "source": "The National",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "saudi-unemployment-falls-3-percent-q2-a68c8a": {
+      "at": "2026-09-30T13:10:57.445Z",
+      "title": "البطالة في السعودية تتراجع إلى 3% في الربع الثاني",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v27",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 24,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "aldar-arada-abu-dhabi-partnership-15-billion-5b8202": {
+      "at": "2026-09-30T13:15:05.644Z",
+      "title": "الدار وأرادَ تتشاركان في مشاريع بـ15 مليار درهم في أبوظبي",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v27",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 13,
+            "checked": 13,
+            "supported": 13,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

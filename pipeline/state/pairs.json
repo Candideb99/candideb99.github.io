@@ -479,6 +479,52 @@
         "classes": [],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-09-30T13:02:17.247Z",
+      "slug": "uae-petrol-prices-rise-october-third-month-df203f",
+      "checker": "f6d38e4947.2",
+      "lessons": "v27",
+      "lessonsHash": "5c629d81ea",
+      "keptVersion": 0,
+      "live": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 2,
+        "supported": 20,
+        "notFound": 1,
+        "checked": 25,
+        "words": 284,
+        "keyFacts": 6,
+        "classes": [
+          "hedge"
+        ],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 17,
+        "notFound": 0,
+        "checked": 23,
+        "words": 230,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 17,
+        "notFound": 0,
+        "checked": 23,
+        "words": 230,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      }
     }
   ]
 }

@@ -1,0 +1,54 @@
+{
+  "startedAt": "2026-09-30T12:49:29.924Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "saudi-travelers-ai-flexible-booking-skyscanner-2026-6a6a86",
+      "issue": "The body says «تُبرز الدراسات التحديات المرتبطة بالسفر الجماعي، إذ أشار 46% من المستطلعة آراؤهم إلى أن تنظيم عطلة جماعية أكثر إجهاداً من الانتقال إلى منزل جديد، في حين حدد 35% الاتفاق على الميزانية كأصعب عقبة.» (46% of respondents said organizing a group vacation is more stressful than moving house, while 35% identified agreeing on the budget as the hardest obstacle.). Source Economy Middle East says: \"Agreeing on the budget was identified as one of the biggest difficulties by 35 percent of respondents.\". The source says 35% identified agreeing on the budget as one of the biggest difficulties, not as the single hardest obstacle.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن 35% من المستطلعة آراؤهم حددوا الاتفاق على الميزانية بوصفه أصعب عقبة في تنظيم العطلات الجماعية، والصحيح أنهم عدّوه من أكبر الصعوبات.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "تُبرز الدراسات التحديات المرتبطة بالسفر الجماعي، إذ أشار 46% من المستطلعة آراؤهم إلى أن تنظيم عطلة جماعية أكثر إجهاداً من الانتقال إلى منزل جديد، في حين حدد 35% الاتفاق على الميزانية كأصعب عقبة."
+      ],
+      "newSentences": [
+        "تُبرز الدراسات التحديات المرتبطة بالسفر الجماعي، إذ أشار 46% من المستطلعة آراؤهم إلى أن تنظيم عطلة جماعية أكثر إجهاداً من الانتقال إلى منزل جديد، في حين عدّ 35% الاتفاق على الميزانية من أكبر الصعوبات."
+      ]
+    },
+    {
+      "slug": "google-finland-13-billion-ai-nuclear-54b058",
+      "issue": "1. The why it matters says «وقال رئيس الوزراء الفنلندي بتيري أوربو إن قيمة الاقتصاد الرقمي تتجاوز الاستثمار المباشر لتحفّز الابتكار والبحث والتطوير، وإن تعميق التعاون مع «جوجل» سيعود بفائدة دائمة على الطرفين.» (Finnish PM Petteri Orpo said the value of the digital economy goes beyond direct investment to spur innovation, research and development, and that deepening collaboration with Google will bring lasting benefit to both parties.). Source BBC News says: \"\"The value of the data economy extends far beyond direct investment into spurring innovation, research and development,\" Orpo added. \"Deepening our collaboration with Google will deliver lasting benefits for both parties.\"\". Orpo spoke of the value of the \"data economy\", not the digital economy.\n2. The body says «وفقاً لما أعلنته «جوجل»، يُتوقع أن يُضيف المشروع 3.6 مليار يورو سنوياً إلى الناتج المحلي الإجمالي الفنلندي، وأن يدعم أكثر من 37 ألف فرصة عمل خلال مرحلة الإنشاء، منها نحو 16 ألف في مجال البناء، و7 آلاف وظيفة دائمة بمجرد تشغيل المواقع.» (Per Google, the project is expected to add €3.6bn a year to Finnish GDP and to support more than 37,000 jobs during construction, of which about 16,000 are in construction and 7,000 are permanent jobs once the sites operate.). Source OilPrice.com says: \"Construction, running through 2027 and 2028, is projected to add €3.6 billion annually to Finland's GDP and support more than 37,000 jobs, about 16,000 of them in construction. Google estimates 7,000 permanent jobs once the sites are operational.\". The 7,000 permanent jobs are a separate estimate for after the sites become operational; they are not part of the 37,000 construction-phase jobs.\n3. The body says «كما أشارت الشركة إلى أن الاستثمار يشمل مشاريع طاقة نظيفة وصناديق مخصصة للطبيعة والمجتمع المحلي لدعم التنوع البيولوجي والتعليم والبحث والتطوير.» (The company said the investment includes clean energy projects and dedicated nature and community funds supporting biodiversity, education, and research and development.). Source BBC News says: \"Google said the investments also covered \"clean energy projects, and dedicated nature and community funds to support local biodiversity, education, research, and workforce development\".\". The funds support local biodiversity, education, research and workforce development, not research and development.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "whyItMatters",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن رئيس الوزراء الفنلندي تحدث عن قيمة «الاقتصاد الرقمي»، وأن صناديق «جوجل» تدعم «البحث والتطوير»، وأوحت بأن الوظائف الدائمة السبعة آلاف جزء من فرص العمل خلال الإنشاء. والصحيح أن أوربو تحدث عن اقتصاد البيانات، وأن الصناديق تدعم التنوع البيولوجي المحلي والتعليم والبحث وتنمية القوى العاملة، وأن الوظائف الدائمة تقدير منفصل لما بعد تشغيل المواقع.",
+      "model": "claude-cli",
+      "before": {
+        "whyItMatters": "هذه أكبر صفقة استثمارية لـ«جوجل» في أوروبا. وقال رئيس الوزراء الفنلندي بتيري أوربو إن قيمة الاقتصاد الرقمي تتجاوز الاستثمار المباشر لتحفّز الابتكار والبحث والتطوير، وإن تعميق التعاون مع «جوجل» سيعود بفائدة دائمة على الطرفين."
+      },
+      "after": {
+        "whyItMatters": "هذه أكبر صفقة استثمارية لـ«جوجل» في أوروبا. وقال رئيس الوزراء الفنلندي بتيري أوربو إن قيمة اقتصاد البيانات تتجاوز الاستثمار المباشر لتحفّز الابتكار والبحث والتطوير، وإن تعميق التعاون مع «جوجل» سيعود بفائدة دائمة على الطرفين."
+      },
+      "changedSentences": [
+        "وقال رئيس الوزراء الفنلندي بتيري أوربو إن قيمة الاقتصاد الرقمي تتجاوز الاستثمار المباشر لتحفّز الابتكار والبحث والتطوير، وإن تعميق التعاون مع «جوجل» سيعود بفائدة دائمة على الطرفين.",
+        "وفقاً لما أعلنته «جوجل»، يُتوقع أن يُضيف المشروع 3.6 مليار يورو سنوياً إلى الناتج المحلي الإجمالي الفنلندي، وأن يدعم أكثر من 37 ألف فرصة عمل خلال مرحلة الإنشاء، منها نحو 16 ألف في مجال البناء، و7 آلاف وظيفة دائمة بمجرد تشغيل المواقع.",
+        "كما أشارت الشركة إلى أن الاستثمار يشمل مشاريع طاقة نظيفة وصناديق مخصصة للطبيعة والمجتمع المحلي لدعم التنوع البيولوجي والتعليم والبحث والتطوير."
+      ],
+      "newSentences": [
+        "وقال رئيس الوزراء الفنلندي بتيري أوربو إن قيمة اقتصاد البيانات تتجاوز الاستثمار المباشر لتحفّز الابتكار والبحث والتطوير، وإن تعميق التعاون مع «جوجل» سيعود بفائدة دائمة على الطرفين.",
+        "وفقاً لما أعلنته «جوجل»، يُتوقع أن يُضيف المشروع 3.6 مليار يورو سنوياً إلى الناتج المحلي الإجمالي الفنلندي، وأن يدعم أكثر من 37 ألف فرصة عمل خلال مرحلة الإنشاء، منها نحو 16 ألف في مجال البناء.",
+        "وتقدّر الشركة أن توفر المواقع 7 آلاف وظيفة دائمة بعد تشغيلها.",
+        "كما أشارت الشركة إلى أن الاستثمار يشمل مشاريع طاقة نظيفة وصناديق مخصصة للطبيعة والمجتمع المحلي لدعم التنوع البيولوجي المحلي والتعليم والبحث وتنمية القوى العاملة."
+      ]
+    }
+  ]
+}

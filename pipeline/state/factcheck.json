@@ -9526,6 +9526,184 @@
         ],
         "secondCorrection": "corrected"
       }
+    },
+    "saudi-travelers-ai-flexible-booking-skyscanner-2026-6a6a86": {
+      "at": "2026-09-30T12:47:57.975Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-09T21:08:34.441Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 24,
+        "checked": 24,
+        "supported": 20,
+        "weak": 0,
+        "noEvidence": 3,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 20,
+          "field": "body",
+          "sentence": "تُبرز الدراسات التحديات المرتبطة بالسفر الجماعي، إذ أشار 46% من المستطلعة آراؤهم إلى أن تنظيم عطلة جماعية أكثر إجهاداً من الانتقال إلى منزل جديد، في حين حدد 35% الاتفاق على الميزانية كأصعب عقبة.",
+          "claim": "46% of respondents said organizing a group vacation is more stressful than moving house, while 35% identified agreeing on the budget as the hardest obstacle.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Economy Middle East",
+          "sourceDate": "2026-09-09",
+          "quote": "Agreeing on the budget was identified as one of the biggest difficulties by 35 percent of respondents.",
+          "correction": "The source says 35% identified agreeing on the budget as one of the biggest difficulties, not as the single hardest obstacle.",
+          "class": "superlative"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "وتُشير هذه النتائج إلى تحول رقمي في سلوك المستهلك السعودي، إذ يفضّل المسافرون السعوديون ممارسة قدر أكبر من التحكم في قرارات سفرهم بدلاً من الالتزام بجدول زمني ثابت مسبقاً.",
+        "وتُشير الدراسة إلى أن هذا التأخير يمنح المسافرين مزيداً من الوقت لمقارنة المسارات والأسعار والبدائل قبل الالتزام.",
+        "وتزامناً مع ذلك، سجّل فلتر التوقفات في سكايسكانر زيادة بنسبة 80% في استخدامه عالمياً منذ إطلاقه في مارس 2026، وتقدّمت أبوظبي على دبي كأكثر مطار توقف إقليمي يتم اختياره عبر هذه الأداة."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن 35% من المستطلعة آراؤهم حددوا الاتفاق على الميزانية بوصفه أصعب عقبة في تنظيم العطلات الجماعية، والصحيح أنهم عدّوه من أكبر الصعوبات.",
+      "verified": {
+        "at": "2026-09-30T12:51:35.475Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
+    },
+    "global-bonds-worst-month-september-yields-1401f4": {
+      "at": "2026-09-30T12:47:57.944Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v26",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-30T06:05:57.144Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 21,
+        "checked": 21,
+        "supported": 18,
+        "weak": 0,
+        "noEvidence": 3,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "عائد السندات الأمريكية لأجل 30 عاماً يقفز إلى أعلى مستوى منذ 2002",
+        "صعد عائد سندات الخزانة الأمريكية لأجل 30 عاماً الثلاثاء إلى نحو 5.6206%، وهو أعلى مستوى له منذ يونيو 2002.",
+        "عائد سندات الخزانة لأجل 30 عاماً: نحو 5.6206%"
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "google-finland-13-billion-ai-nuclear-54b058": {
+      "at": "2026-09-30T12:48:42.507Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-09T21:06:15.915Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 16,
+        "weak": 1,
+        "noEvidence": 2,
+        "notFound": 0,
+        "confirmed": 3,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 12,
+          "field": "whyItMatters",
+          "sentence": "وقال رئيس الوزراء الفنلندي بتيري أوربو إن قيمة الاقتصاد الرقمي تتجاوز الاستثمار المباشر لتحفّز الابتكار والبحث والتطوير، وإن تعميق التعاون مع «جوجل» سيعود بفائدة دائمة على الطرفين.",
+          "claim": "Finnish PM Petteri Orpo said the value of the digital economy goes beyond direct investment to spur innovation, research and development, and that deepening collaboration with Google will bring lasting benefit to both parties.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "BBC News",
+          "sourceDate": "2026-09-09",
+          "quote": "\"The value of the data economy extends far beyond direct investment into spurring innovation, research and development,\" Orpo added. \"Deepening our collaboration with Google will deliver lasting benefits for both parties.\"",
+          "correction": "Orpo spoke of the value of the \"data economy\", not the digital economy.",
+          "class": "term"
+        },
+        {
+          "id": 18,
+          "field": "body",
+          "sentence": "وفقاً لما أعلنته «جوجل»، يُتوقع أن يُضيف المشروع 3.6 مليار يورو سنوياً إلى الناتج المحلي الإجمالي الفنلندي، وأن يدعم أكثر من 37 ألف فرصة عمل خلال مرحلة الإنشاء، منها نحو 16 ألف في مجال البناء، و7 آلاف وظيفة دائمة بمجرد تشغيل المواقع.",
+          "claim": "Per Google, the project is expected to add €3.6bn a year to Finnish GDP and to support more than 37,000 jobs during construction, of which about 16,000 are in construction and 7,000 are permanent jobs once the sites operate.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "OilPrice.com",
+          "sourceDate": "2026-09-09",
+          "quote": "Construction, running through 2027 and 2028, is projected to add €3.6 billion annually to Finland's GDP and support more than 37,000 jobs, about 16,000 of them in construction. Google estimates 7,000 permanent jobs once the sites are operational.",
+          "correction": "The 7,000 permanent jobs are a separate estimate for after the sites become operational; they are not part of the 37,000 construction-phase jobs.",
+          "class": "scope"
+        },
+        {
+          "id": 20,
+          "field": "body",
+          "sentence": "كما أشارت الشركة إلى أن الاستثمار يشمل مشاريع طاقة نظيفة وصناديق مخصصة للطبيعة والمجتمع المحلي لدعم التنوع البيولوجي والتعليم والبحث والتطوير.",
+          "claim": "The company said the investment includes clean energy projects and dedicated nature and community funds supporting biodiversity, education, and research and development.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "BBC News",
+          "sourceDate": "2026-09-09",
+          "quote": "Google said the investments also covered \"clean energy projects, and dedicated nature and community funds to support local biodiversity, education, research, and workforce development\".",
+          "correction": "The funds support local biodiversity, education, research and workforce development, not research and development.",
+          "class": "term"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "ووفقاً لما أعلنته الشركة، سيُنفَّذ البناء خلال عامي 2027 و2028، ويشمل مراكز بيانات جديدة في كاجاني وموهوس وفاالا، فضلاً عن توسيع المرفق القائم في هامينا الذي أُنشئ عام 2009 بعد تحويل مصنع ورق سابق.",
+        "إلى جانب الصفقة النووية، وقّعت «جوجل» عقوداً منفصلة لطاقة الرياح البرية تضيف 629 ميغاوات من السعة، إضافة إلى نظام بطاريات بسعة 94 ميغاوات قرب كاجاني من المتوقع أن يدخل الخدمة في أواخر عام 2027."
+      ],
+      "weak": [
+        {
+          "sentence": "تشمل الصفقة بناء ثلاثة مراكز بيانات جديدة وتوسيع موقعها في هامينا، إلى جانب عقد مع «فورتوم» لشراء ما يصل إلى 50% من إنتاج محطة لوفيسا النووية.",
+          "quote": "The US tech giant said the package would fund three new data centres, expand an existing site and support energy projects to power growing demand for AI services."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن رئيس الوزراء الفنلندي تحدث عن قيمة «الاقتصاد الرقمي»، وأن صناديق «جوجل» تدعم «البحث والتطوير»، وأوحت بأن الوظائف الدائمة السبعة آلاف جزء من فرص العمل خلال الإنشاء. والصحيح أن أوربو تحدث عن اقتصاد البيانات، وأن الصناديق تدعم التنوع البيولوجي المحلي والتعليم والبحث وتنمية القوى العاملة، وأن الوظائف الدائمة تقدير منفصل لما بعد تشغيل المواقع.",
+      "verified": {
+        "at": "2026-09-30T12:50:59.062Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
     }
   }
 }

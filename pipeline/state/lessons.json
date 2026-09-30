@@ -194,10 +194,14 @@
     "anthropic-researcher-ai-human-extinction-risk-8aa7a2:57adc9ea",
     "saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2:f2bcf26a",
     "saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2:8d6816f3",
-    "trump-expands-trade-war-canada-import-ban-6088a2:2013a382"
+    "trump-expands-trade-war-canada-import-ban-6088a2:2013a382",
+    "saudi-travelers-ai-flexible-booking-skyscanner-2026-6a6a86:6be2d0f9",
+    "google-finland-13-billion-ai-nuclear-54b058:60c19b40",
+    "google-finland-13-billion-ai-nuclear-54b058:5004fbea",
+    "google-finland-13-billion-ai-nuclear-54b058:6bb512b5"
   ],
-  "version": 26,
-  "updatedAt": "2026-09-30T05:47:26.503Z",
+  "version": 27,
+  "updatedAt": "2026-09-30T12:51:35.701Z",
   "lessons": [
     {
       "id": "L1",
@@ -350,11 +354,13 @@
         "hormuz-shipping-traffic-plunges-tensions-5c1d93:72f5ffc3",
         "trump-obamacare-500-rebates-33c345:ce786720",
         "ecb-raises-rates-2-5-percent-second-hike-2026-e88f15:976fa682",
-        "saudi-east-west-pipeline-flows-resume-411ecd:a01587d2"
+        "saudi-east-west-pipeline-flows-resume-411ecd:a01587d2",
+        "google-finland-13-billion-ai-nuclear-54b058:60c19b40",
+        "google-finland-13-billion-ai-nuclear-54b058:6bb512b5"
       ],
-      "seen": 20,
+      "seen": 22,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-29T22:29:37.734Z",
+      "lastSeen": "2026-09-30T12:51:35.701Z",
       "status": "active",
       "previous": [
         "Translate financial terms and tenors exactly. The 10-year Treasury is سندات الخزانة لأجل 10 سنوات, not 'more than ten years'. A nominal yield is not 'actual'. Open interest is العقود/المراكز المفتوحة, not interest. Add no descriptor the source lacks."
@@ -401,11 +407,12 @@
         "apple-foldable-iphone-duo-release-cycle-change-d6b45a:d6332478",
         "apple-foldable-iphone-duo-release-cycle-change-d6b45a:a0596e31",
         "egypt-inflation-eases-12-7-august-7557fb:1b066776",
-        "trump-5000-dividend-trillion-cost-36981a:c6cf95c0"
+        "trump-5000-dividend-trillion-cost-36981a:c6cf95c0",
+        "google-finland-13-billion-ai-nuclear-54b058:5004fbea"
       ],
-      "seen": 30,
+      "seen": 31,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-29T10:03:47.635Z",
+      "lastSeen": "2026-09-30T12:51:35.701Z",
       "status": "active",
       "previous": [
         "Keep a figure or role tied to the exact item, day and instrument the source names. Diesel is not all fuel. One day's count is not a daily rate. A futures-implied value is not the IPO valuation. An official does only what the source assigns.",
@@ -619,12 +626,32 @@
       "seen": 10,
       "createdAt": "2026-09-26T11:43:04.129Z",
       "lastSeen": "2026-09-29T22:29:37.734Z",
-      "status": "active",
+      "status": "retired",
       "activatedAt": "2026-09-26T11:43:04.129Z",
       "previous": [
         "When a story uses several outlets, keep each figure and account with the outlet that printed it. Never credit one outlet's price to another, or blend two outlets' numbers and causes into one attributed sentence; give each version its own source."
       ],
-      "sharpenedAt": "2026-09-26T16:41:29.649Z"
+      "sharpenedAt": "2026-09-26T16:41:29.649Z",
+      "retiredAt": "2026-09-30T12:51:35.701Z",
+      "retiredWhy": "Duplicates L2: keeping each figure, framing and reporting step with the outlet or tool that produced it is folded into the sharpened L2."
+    },
+    {
+      "id": "L11",
+      "class": "superlative",
+      "rule": "Keep a ranking exactly as the source words it: 'one of the biggest difficulties' is not 'the hardest obstacle', and 'among the largest' is not 'the largest'. Never turn one item on a list into the top, only, first or record one.",
+      "example": {
+        "wrong": "تُبرز الدراسات التحديات المرتبطة بالسفر الجماعي، إذ أشار 46% من المستطلعة آراؤهم إلى أن تنظيم عطلة جماعية أكثر إجهاداً من الانتقال إلى منزل جديد، في حين حدد 35% الاتفاق على الميزانية كأصعب عقبة.",
+        "quote": "Agreeing on the budget was identified as one of the biggest difficulties by 35 percent of respondents.",
+        "source": "Economy Middle East",
+        "slug": "saudi-travelers-ai-flexible-booking-skyscanner-2026-6a6a86"
+      },
+      "evidence": [
+        "saudi-travelers-ai-flexible-booking-skyscanner-2026-6a6a86:6be2d0f9"
+      ],
+      "seen": 1,
+      "createdAt": "2026-09-30T12:51:35.701Z",
+      "lastSeen": "2026-09-30T12:51:35.701Z",
+      "status": "pending"
     }
   ],
   "model": "claude-cli",
@@ -888,6 +915,16 @@
       "mistakes": 1,
       "applied": [
         "reinforce L2 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-09-30T12:51:35.701Z",
+      "mistakes": 4,
+      "applied": [
+        "retire L10",
+        "add L11 [superlative] from 1 mistake(s)",
+        "reinforce L3 (+2; reworded at most once a week)",
+        "reinforce L4 (+1; reworded at most once a week)"
       ]
     }
   ],
