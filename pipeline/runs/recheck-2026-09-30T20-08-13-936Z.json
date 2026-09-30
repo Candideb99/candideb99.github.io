@@ -1,0 +1,125 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-09-30T20:08:13.936Z",
+  "durationSec": 188,
+  "read": 3,
+  "corrected": 2,
+  "report": [
+    {
+      "slug": "saudi-unemployment-falls-3-percent-q2-a68c8a",
+      "title": "البطالة في السعودية تتراجع إلى 3% في الربع الثاني",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 23,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "egypt-ewallets-h1-2026-transactions-growth-9789a5",
+      "title": "المحافظ الإلكترونية في مصر تسجل معاملات بـ2.96 تريليون جنيه في النصف الأول",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 27,
+        "checked": 27,
+        "supported": 18,
+        "weak": 2,
+        "noEvidence": 4,
+        "notFound": 2,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "figure",
+          "sentence": "وجاءت «إي آند كاش» في المركز الثاني بـ23% من التوزيع و20% من عدد العمليات و14% من القيمة، تلتها «أورنج كاش» و«وي باي» بنسب أحادية.",
+          "quote": "وأشار التقرير إلى زيادة معدل انتشار المحافظ الإلكترونية بنسبة 15%؛ حيث بلغ 45% بالنصف الأول لعام 2026، مقارنةً بـ 39% بالنصف الأول لعام 2025، لافتًا إلى أن توزيع المحافظ للهاتف المحمول على الشركات جاء بالترتيب: فودافون كاش 53%، إي آند كاش 23%، أورنج كاش 20%، وي باي 4%.",
+          "source": "Alborsa News",
+          "correction": "Orange Cash's shares are not single-digit: it holds 20% of wallets, 17% of active wallets and 10% of transaction count; only its 8% share of value is single-digit."
+        }
+      ]
+    },
+    {
+      "slug": "egypt-ai-data-center-nvidia-billion-dollar-b0fc50",
+      "title": "مصر تنشئ مركز بيانات بتقنية «إنفيديا» بمليار دولار",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 16,
+        "checked": 16,
+        "supported": 15,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "attribution",
+          "sentence": "كشف وزير الاتصالات وتكنولوجيا المعلومات رافت هندي عن المشروع الذي يبدأ بمرحلة أولية بقدرة 20 ميغاواط وتكلفة 200 مليون دولار تمتد على ثلاث سنوات، بحسب «بلومبرغ» و«رويترز».",
+          "quote": "CAIRO: Egypt plans to build its first large-scale artificial intelligence data centre, aiming for a 200-megawatt facility worth $1 billion, using Nvidia technology.The project, announced on Sept. 9 by Egypt’s Minister of Communications and Information Technology Raafat Hindi, comes as the world’s two main AI rivals, the US and China, vie for a greater foothold in the Middle East and Africa.",
+          "source": "Arab News",
+          "correction": "The source reports the project as announced by Minister Hindi and does not attribute it or its phase details to Bloomberg or Reuters; Bloomberg is cited only for the Huawei bid, and Reuters is not mentioned."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 5,
+    "failures": 0,
+    "promptTokens": 47332,
+    "completionTokens": 28063,
+    "cacheReadTokens": 0,
+    "costUsd": 0.9399,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 5
+    },
+    "correctionsEditorCalls": 2
+  },
+  "log": [
+    "[20:08:14] second look: 3 to read now (28 published pieces not yet read; 44 read clean before publication and left out of the audit sample)",
+    "[20:08:59] llm ok role=checker model=claude-cli attempt=1 ms=42936",
+    "[20:08:59] saudi-unemployment-falls-3-percent-q2-a68c8a: 25 of 25 sentences checked · 23 supported · 0 without a source · 0 confirmed error(s) · 2 listed for a person",
+    "[20:09:12] llm ok role=checker model=claude-cli attempt=1 ms=54886",
+    "[20:09:12] egypt-ewallets-h1-2026-transactions-growth-9789a5: 27 of 27 sentences checked · 18 supported · 6 without a source · 1 confirmed error(s)",
+    "[20:09:12]   ✗ [figure] وجاءت «إي آند كاش» في المركز الثاني بـ23% من التوزيع و20% من عدد العمليات و14% من القيمة، تلتها «أورنج كاش» و« — Orange Cash's shares are not single-digit: it holds 20% of wallets, 17% of active wallets and 10% of transaction count; only its 8% share of value is single-dig",
+    "[20:09:31] llm ok role=checker model=claude-cli attempt=1 ms=28105",
+    "[20:09:31] egypt-ai-data-center-nvidia-billion-dollar-b0fc50: 16 of 16 sentences checked · 15 supported · 0 without a source · 1 confirmed error(s)",
+    "[20:09:31]   ✗ [attribution] كشف وزير الاتصالات وتكنولوجيا المعلومات رافت هندي عن المشروع الذي يبدأ بمرحلة أولية بقدرة 20 ميغاواط وتكلفة 20 — The source reports the project as announced by Minister Hindi and does not attribute it or its phase details to Bloomberg or Reuters; Bloomberg is cited only fo",
+    "[20:09:31] corrections: 2 stories to the corrections editor",
+    "[20:09:31] [correct] egypt-ewallets-h1-2026-transactions-growth-9789a5: fetching 4 source(s)",
+    "[20:09:51] [correct] llm ok role=writer model=claude-cli attempt=1 ms=17617",
+    "[20:09:51] [correct] egypt-ewallets-h1-2026-transactions-growth-9789a5: corrected; fields body",
+    "[20:09:51]     note: ذكرت نسخة سابقة من هذا الخبر أن «أورنج كاش» و«وي باي» جاءتا بعد «إي آند كاش» بحصص أحادية في كل المؤشرات. والصحيح أن «أورنج كاش» استحوذت على 20% من المحافظ الموزعة و10% من عدد العمليات و8% من قيمتها، وأن الحصص الأحادية تخص «وي باي» وحدها.",
+    "[20:09:51] [correct] egypt-ai-data-center-nvidia-billion-dollar-b0fc50: fetching 4 source(s)",
+    "[20:10:04] [correct] llm ok role=writer model=claude-cli attempt=1 ms=12051",
+    "[20:10:04] [correct] egypt-ai-data-center-nvidia-billion-dollar-b0fc50: corrected; fields body",
+    "[20:10:04]     note: نسبت نسخة سابقة من هذا الخبر تفاصيل المرحلة الأولى من المشروع إلى وكالتي «بلومبرغ» و«رويترز»، والصحيح أن وزير الاتصالات وتكنولوجيا المعلومات المصري رافت هندي هو من أعلن المشروع وتفاصيله.",
+    "[20:10:04] [correct] done: 2 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-09-30T20-09-31-589Z.json",
+    "[20:10:35] llm ok role=checker model=claude-cli attempt=1 ms=29030",
+    "[20:10:35] egypt-ai-data-center-nvidia-billion-dollar-b0fc50: the correction reads clean where it wrote",
+    "[20:11:21] llm ok role=checker model=claude-cli attempt=1 ms=45218",
+    "[20:11:21] egypt-ewallets-h1-2026-transactions-growth-9789a5: the correction reads clean where it wrote"
+  ]
+}

@@ -198,10 +198,12 @@
     "saudi-travelers-ai-flexible-booking-skyscanner-2026-6a6a86:6be2d0f9",
     "google-finland-13-billion-ai-nuclear-54b058:60c19b40",
     "google-finland-13-billion-ai-nuclear-54b058:5004fbea",
-    "google-finland-13-billion-ai-nuclear-54b058:6bb512b5"
+    "google-finland-13-billion-ai-nuclear-54b058:6bb512b5",
+    "egypt-ewallets-h1-2026-transactions-growth-9789a5:4d005a34",
+    "egypt-ai-data-center-nvidia-billion-dollar-b0fc50:9cb6a47d"
   ],
-  "version": 27,
-  "updatedAt": "2026-09-30T12:51:35.701Z",
+  "version": 28,
+  "updatedAt": "2026-09-30T20:11:22.116Z",
   "lessons": [
     {
       "id": "L1",
@@ -311,11 +313,12 @@
         "trump-obamacare-500-rebates-33c345:54f78754",
         "apple-foldable-iphone-duo-release-cycle-change-d6b45a:ac3cea7a",
         "anthropic-researcher-ai-human-extinction-risk-8aa7a2:57adc9ea",
-        "trump-expands-trade-war-canada-import-ban-6088a2:2013a382"
+        "trump-expands-trade-war-canada-import-ban-6088a2:2013a382",
+        "egypt-ai-data-center-nvidia-billion-dollar-b0fc50:9cb6a47d"
       ],
-      "seen": 43,
+      "seen": 44,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-30T05:47:26.503Z",
+      "lastSeen": "2026-09-30T20:11:22.116Z",
       "status": "active",
       "previous": [
         "Credit each fact to whom the source credits; the outlet's own reporting is never 'informed sources', an official statement or analyst data. Name the originating outlet. Never make a reported line a quote, a private notice an announcement, or a reply the decree's aim.",
@@ -567,11 +570,12 @@
         "us-inflation-august-gasoline-fed-rate-hike-16ce27:3d0613b2",
         "trump-5000-dividend-trillion-cost-36981a:5347db37",
         "saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2:f2bcf26a",
-        "saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2:8d6816f3"
+        "saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2:8d6816f3",
+        "egypt-ewallets-h1-2026-transactions-growth-9789a5:4d005a34"
       ],
-      "seen": 17,
+      "seen": 18,
       "createdAt": "2026-09-25T12:04:58.585Z",
-      "lastSeen": "2026-09-29T22:29:37.734Z",
+      "lastSeen": "2026-09-30T20:11:22.116Z",
       "status": "active",
       "previous": [
         "Copy every number and ranking with its own qualifier. 500 is not 'more than 500', 'nearly 4,000' is not 4,000, and 'one of the most important' is not 'the most important'. Never move a qualifier from one figure onto its neighbour."
@@ -925,6 +929,14 @@
         "add L11 [superlative] from 1 mistake(s)",
         "reinforce L3 (+2; reworded at most once a week)",
         "reinforce L4 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-09-30T20:11:22.116Z",
+      "mistakes": 2,
+      "applied": [
+        "reinforce L8 (+1; reworded at most once a week)",
+        "reinforce L2 (+1; reworded at most once a week)"
       ]
     }
   ],

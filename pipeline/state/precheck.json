@@ -2243,6 +2243,90 @@
           "noted": []
         }
       ]
+    },
+    "saudi-arabia-2027-pre-budget-spending-deficit-66fbbd": {
+      "at": "2026-09-30T20:17:44.474Z",
+      "title": "السعودية تقدّر إنفاق موازنة 2027 بنحو 1.392 تريليون ريال",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v28",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 23,
+            "checked": 23,
+            "supported": 20,
+            "weak": 1,
+            "noEvidence": 2,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "saudi-fdi-net-inflows-fall-second-quarter-8344e5": {
+      "at": "2026-09-30T20:24:20.150Z",
+      "title": "صافي الاستثمار الأجنبي المباشر في السعودية يتراجع إلى 5.1 مليار دولار",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v28",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 26,
+            "checked": 26,
+            "supported": 22,
+            "weak": 3,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "trump-ai-firms-voluntary-safety-accord-5315ea": {
+      "at": "2026-09-30T20:29:48.042Z",
+      "title": "ست شركات ذكاء اصطناعي توقّع مع ترامب اتفاقاً طوعياً للسلامة",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v28",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 27,
+            "checked": 27,
+            "supported": 27,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
