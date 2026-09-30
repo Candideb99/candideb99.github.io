@@ -60,68 +60,78 @@
       "read": 13,
       "confirmedPerStory": 1,
       "photosPending": 0
+    },
+    {
+      "date": "2026-09-30",
+      "published": 17,
+      "news": 14,
+      "styleFaultsPerStory": 0,
+      "corrections": 8,
+      "read": 14,
+      "confirmedPerStory": 0.71,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-09-29T14:04:09.139Z",
+  "updatedAt": "2026-09-30T13:41:40.086Z",
   "week": {
-    "published": 108,
-    "news": 92,
-    "revisedShare": 0.8,
-    "styleFaultsPerStory": 0.07,
-    "styleWarningsPerStory": 0.17,
-    "corrections": 122,
+    "published": 112,
+    "news": 96,
+    "revisedShare": 0.78,
+    "styleFaultsPerStory": 0.02,
+    "styleWarningsPerStory": 0.11,
+    "corrections": 119,
     "usefulness": {
       "withLessons": {
-        "stories": 54,
-        "words": 252,
-        "keyFacts": 4.3
+        "stories": 65,
+        "words": 254,
+        "keyFacts": 4.5
       },
       "control": {
-        "stories": 9,
-        "words": 247,
-        "keyFacts": 4.7
+        "stories": 12,
+        "words": 245,
+        "keyFacts": 5
       }
     },
     "precheck": {
-      "checked": 49,
-      "clean": 45,
-      "repaired": 4,
+      "checked": 63,
+      "clean": 57,
+      "repaired": 6,
       "held": 0,
-      "errorsFound": 4,
+      "errorsFound": 6,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 4,
-      "correctionsVerifiedClean": 31,
+      "repairedBeforePublication": 6,
+      "correctionsVerifiedClean": 36,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
-      "correctionsStuck": 1
+      "correctionsStuck": 2
     },
     "secondLook": {
-      "read": 137,
-      "clean": 49,
-      "corrected": 72,
+      "read": 151,
+      "clean": 53,
+      "corrected": 78,
       "stands": 0,
       "refused": 1,
-      "listed": 15,
+      "listed": 19,
       "unverifiable": 0,
-      "confirmedPerStory": 1.39,
+      "confirmedPerStory": 1.32,
       "withLessons": {
-        "read": 21,
+        "read": 25,
         "confirmedPerStory": 0
       },
       "claudeWithout": {
-        "read": 44,
-        "confirmedPerStory": 0.7
+        "read": 46,
+        "confirmedPerStory": 0.67
       }
     },
     "runs": {
       "count": 24,
-      "written": 52,
+      "written": 56,
       "refused": 1,
-      "callsPerStory": 14.6,
-      "tokensPerStory": 149130,
-      "costPerStory": 1.5,
+      "callsPerStory": 15.3,
+      "tokensPerStory": 156363,
+      "costPerStory": 1.57,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": [
@@ -136,7 +146,7 @@
       },
       {
         "what": "second look: attribution errors",
-        "stories": 35,
+        "stories": 37,
         "examples": [
           "us-approves-f35-saudi-arms-deal-915064: أكد البيت الأبيض في 18 سبتمبر موافقة إدارة ترامب على الصفقة المحتملة.",
           "russia-temporary-management-western-assets-1dadf4: المرسوم الرئاسي يستهدف حماية الحقوق وضمان استمرارية العمليات لصالح الأطراف المعنية",
@@ -154,7 +164,7 @@
       },
       {
         "what": "second look: hedge errors",
-        "stories": 21,
+        "stories": 23,
         "examples": [
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: «سي إن إن» تصف القرار بالاعتداء غير القانوني..",
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: من جانبها، قالت «سي إن إن» إنها ستواصل التغطية من البيت الأبيض دون عائق، ووصفت الحظر بأنه اعتداء غير قانوني على حقها الد",
@@ -163,7 +173,7 @@
       },
       {
         "what": "second look: term errors",
-        "stories": 17,
+        "stories": 18,
         "examples": [
           "trump-signs-russia-sanctions-oil-tariffs-law-ad758a: وكان مجلس النواب قد وافق على القانون بأغلبية 262 صوتاً مقابل 159، وصوّت 58 ديمقراطياً لصالحه في حين عارضه 7 جمهوريين، في",
           "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb: وبلغ حجم التداول على هذه العقود 6 ملايين دولار في 24 ساعة، والفائدة المفتوحة 31 مليون دولار.",
@@ -172,7 +182,7 @@
       },
       {
         "what": "second look: figure errors",
-        "stories": 6,
+        "stories": 7,
         "examples": [
           "eu-fuel-prices-record-iran-saudi-supply-8376ff: أظهرت بيانات جمعية ADAC أن البنزين في ألمانيا بلغ 2.31 يورو للتر الأربعاء، وتجاوز الديزل في هولندا 2.78 يورو.",
           "faa-halts-east-coast-flights-equipment-outage-d180ab: كما أن إلغاء أكثر من 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية",
@@ -181,7 +191,7 @@
       },
       {
         "what": "second look: scope errors",
-        "stories": 21,
+        "stories": 23,
         "examples": [
           "trump-announces-ai-force-and-czar-f4c7aa: ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها",
           "trump-xi-summit-washington-2026-4e439e: يدخل ترامب القمة والتضخم عند 3.4٪ وأسعار الوقود فوق 6 دولارات للغالون، قبل انتخابات منتصف المدة في نوفمبر.",
@@ -198,30 +208,30 @@
         ]
       },
       {
+        "what": "second look: superlative errors",
+        "stories": 2,
+        "examples": [
+          "trump-approval-32-percent-iran-war-bd2925: وأشار بيسنت إلى أن الصين، الشريك الاقتصادي الأهم لإيران، انخرطت بفاعلية في مناقشات العقوبات خلال محادثاته مع نائب رئيس ا",
+          "saudi-travelers-ai-flexible-booking-skyscanner-2026-6a6a86: تُبرز الدراسات التحديات المرتبطة بالسفر الجماعي، إذ أشار 46% من المستطلعة آراؤهم إلى أن تنظيم عطلة جماعية أكثر إجهاداً م"
+        ]
+      },
+      {
         "what": "second look: cause errors",
         "stories": 2,
         "examples": [
           "iran-seven-day-plan-reopen-hormuz-a8836f: وتراجعت أسعار النفط الجمعة بعد تقرير أفاد بأن مفاوضين أمريكيين وإيرانيين يبحثون في نيويورك صفقة على مراحل لإنهاء المواجه",
           "oecd-raises-2026-global-growth-forecast-e97fa1: وأشارت المنظمة إلى أن السحب من مخزونات النفط العالمية، والتراجع الشديد في واردات الصين من الطاقة، والتحول إلى أنواع وقود"
         ]
-      },
-      {
-        "what": "style: الإسناد في كل جملة تقريباً (# من # جملة فيها «وفقاً/بحسب»)",
-        "stories": 2,
-        "examples": [
-          "openai-anthropic-launch-cheaper-ai-models-979a5b",
-          "saudi-restarts-east-west-oil-pipeline-698775"
-        ]
       }
     ]
   },
   "weekBefore": {
-    "published": 45,
-    "news": 41,
-    "revisedShare": 0.56,
-    "styleFaultsPerStory": 1.2,
-    "styleWarningsPerStory": 0.66,
-    "corrections": 0,
+    "published": 50,
+    "news": 43,
+    "revisedShare": 0.67,
+    "styleFaultsPerStory": 1.09,
+    "styleWarningsPerStory": 0.67,
+    "corrections": 11,
     "usefulness": {
       "withLessons": {
         "stories": 0,
@@ -279,7 +289,7 @@
     "recurring": [
       {
         "what": "style: الإسناد في كل جملة تقريباً (# من # جملة فيها «وفقاً/بحسب»)",
-        "stories": 9,
+        "stories": 10,
         "examples": [
           "bank-of-japan-raises-rates-to-31-year-high-d62cc8",
           "global-markets-close-volatile-week-045574",
@@ -315,9 +325,9 @@
     ]
   },
   "lessons": {
-    "version": 23,
-    "active": 10,
-    "learnedFrom": 186,
+    "version": 27,
+    "active": 9,
+    "learnedFrom": 199,
     "kept": null,
     "lastTest": {
       "at": "2026-09-28T13:46:22.576Z",
@@ -370,28 +380,28 @@
     }
   },
   "evidence": {
-    "pairs": 10,
+    "pairs": 12,
     "vsKept": {
-      "n": 8,
+      "n": 10,
       "better": 0,
-      "worse": 1,
-      "tied": 7,
+      "worse": 2,
+      "tied": 8,
       "down": 0,
-      "up": 4,
-      "e": 0.5,
-      "harm": 1.4999999999999998,
-      "saysLess": 0.20000000000000848
+      "up": 5,
+      "e": 0.3333333333333335,
+      "harm": 2.3333333333333353,
+      "saysLess": 0.16666666666668742
     },
     "vsNone": {
-      "n": 8,
+      "n": 10,
       "better": 0,
-      "worse": 1,
-      "tied": 7,
+      "worse": 2,
+      "tied": 8,
       "down": 0,
-      "up": 4,
-      "e": 0.5,
-      "harm": 1.4999999999999998,
-      "saysLess": 0.20000000000000848
+      "up": 5,
+      "e": 0.3333333333333335,
+      "harm": 2.3333333333333353,
+      "saysLess": 0.16666666666668742
     },
     "canary": {
       "seeded": 3,

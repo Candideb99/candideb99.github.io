@@ -31,7 +31,15 @@ regions:
 readingMinutes: 1
 chart: null
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Saadiyat_Island%2C_Abu_Dhabi%2C_United_Arab_Emirates%2C_uae%2C_Travelvlogus%2C_Travel_To_The_World%2C.jpg/1280px-Saadiyat_Island%2C_Abu_Dhabi%2C_United_Arab_Emirates%2C_uae%2C_Travelvlogus%2C_Travel_To_The_World%2C.jpg
+  width: 1280
+  height: 720
+  alt: مبانٍ في جزيرة السعديات بأبوظبي
+  credit: Travelvlogus · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ASaadiyat_Island%2C_Abu_Dhabi%2C_United_Arab_Emirates%2C_uae%2C_Travelvlogus%2C_Travel_To_The_World%2C.jpg
 sources:
   - name: أرابيان غلف بزنس إنسايت
     nameEn: AGBI (Arabian Gulf Business Insight)
@@ -61,7 +69,7 @@ models:
   editor: claude-cli
   writer: claude-cli
   critic: claude-cli
-  vision: null
+  vision: claude-cli
   desk: claude-cli
   lessons: v23
 quality:
