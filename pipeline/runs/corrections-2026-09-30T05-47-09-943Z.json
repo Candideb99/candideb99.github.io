@@ -1,0 +1,25 @@
+{
+  "startedAt": "2026-09-30T05:47:10.120Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "trump-expands-trade-war-canada-import-ban-6088a2",
+      "issue": "The body says «وقال مسؤول رفيع في الإدارة الأمريكية إن الحظر سيؤثر على واردات كندية بقيمة بضعة مليارات من الدولارات، وهي نسبة ضئيلة من إجمالي التبادل التجاري بين البلدين.» (A senior US administration official said the ban will affect Canadian imports worth a few billion dollars, a small share of total bilateral trade between the two countries.). Source Asharq Al-Awsat says: \"وقال مسؤول رفيع في الإدارة إن الحظر التجاري الأميركي سيؤثر على واردات كندية بقيمة «مليارات قليلة» من الدولارات. وبينما يمثل هذا المبلغ نسبة ضئيلة من إجمالي واردات الولايات المتحدة من كندا، إلا أن الحظر «غير مسبوق» بالنسبة للبلدين اللذين تمتعا بعلاقات تجارية متناغمة لعقود.\". The source says the amount is a small share of total US imports from Canada, not of total bilateral trade.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن قيمة الواردات الكندية المشمولة بالحظر تمثل نسبة ضئيلة من إجمالي التبادل التجاري بين البلدين، والصحيح أنها تمثل نسبة ضئيلة من إجمالي واردات الولايات المتحدة من كندا.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وقال مسؤول رفيع في الإدارة الأمريكية إن الحظر سيؤثر على واردات كندية بقيمة بضعة مليارات من الدولارات، وهي نسبة ضئيلة من إجمالي التبادل التجاري بين البلدين."
+      ],
+      "newSentences": [
+        "وقال مسؤول رفيع في الإدارة الأمريكية إن الحظر سيؤثر على واردات كندية بقيمة بضعة مليارات من الدولارات، وهي نسبة ضئيلة من إجمالي واردات الولايات المتحدة من كندا."
+      ]
+    }
+  ]
+}

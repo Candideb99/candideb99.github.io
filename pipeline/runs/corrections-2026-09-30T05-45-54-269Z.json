@@ -1,0 +1,23 @@
+{
+  "startedAt": "2026-09-30T05:45:54.446Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "trump-expands-trade-war-canada-import-ban-6088a2",
+      "issue": "The body says «لكنه وصف الإجراء بأنه غير مسبوق نظراً للعلاقة التجارية التي تمتع بها الطرفان لعقود.» (The senior official described the measure as unprecedented, given the two sides' decades-long trade relationship.). Source Asharq Al-Awsat says: \"وبينما يمثل هذا المبلغ نسبة ضئيلة من إجمالي واردات الولايات المتحدة من كندا، إلا أن الحظر «غير مسبوق» بالنسبة للبلدين اللذين تمتعا بعلاقات تجارية متناغمة لعقود.\". The source does not attribute the 'unprecedented' characterisation to the senior official; it is the newspaper's own reporting.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن مسؤولاً رفيعاً في الإدارة الأمريكية وصف الحظر بأنه غير مسبوق. والصحيح أن المسؤول اكتفى بتقدير قيمة الواردات الكندية المتأثرة ببضعة مليارات من الدولارات، ولم يصدر عنه هذا الوصف.",
+      "model": "claude-cli",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "لكنه وصف الإجراء بأنه غير مسبوق نظراً للعلاقة التجارية التي تمتع بها الطرفان لعقود."
+      ],
+      "newSentences": []
+    }
+  ]
+}

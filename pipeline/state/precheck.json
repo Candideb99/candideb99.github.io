@@ -1984,6 +1984,141 @@
           ]
         }
       ]
+    },
+    "uae-egypt-renew-dirham-pound-currency-swap-77af8a": {
+      "at": "2026-09-30T05:53:48.235Z",
+      "title": "الإمارات ومصر تجددان مقايضة عملات بـ5 مليارات درهم لخمس سنوات",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 23,
+            "checked": 23,
+            "supported": 23,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "oil-rises-trump-denies-iran-sanctions-relief-60403e": {
+      "at": "2026-09-30T06:00:50.984Z",
+      "title": "برنت يرتفع إلى 103.3 دولار بعد نفي ترامب تخفيف العقوبات على إيران",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v26",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 26,
+            "checked": 26,
+            "supported": 23,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 9,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "التدفقات عبر مضيق هرمز: 13.2 مليون برميل يومياً",
+              "quote": "An earlier report by Reuters citing Kpler data as well, pegged Hormuz flows specifically at 7.4 million barrels daily, with total Middle East oil export rates at 12.8 million barrels daily.",
+              "source": "OilPrice.com",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 17,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وبحسب بيانات شركة «كبلر»، بلغت التدفقات عبر مضيق هرمز وحده 13.2 مليون برميل يومياً، أي 77% من مستواها قبل الحرب.",
+              "quote": "An earlier report by Reuters citing Kpler data as well, pegged Hormuz flows specifically at 7.4 million barrels daily, with total Middle East oil export rates at 12.8 million barrels daily.",
+              "source": "OilPrice.com",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "global-bonds-worst-month-september-yields-1401f4": {
+      "at": "2026-09-30T06:05:57.157Z",
+      "title": "عائد السندات الأمريكية لأجل 30 عاماً يقفز إلى أعلى مستوى منذ 2002",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v26",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 21,
+            "checked": 21,
+            "supported": 18,
+            "weak": 0,
+            "noEvidence": 3,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "gulf-stock-markets-4-trillion-fitch-aa1995": {
+      "at": "2026-09-30T06:11:59.397Z",
+      "title": "فيتش: القيمة السوقية للأسهم الخليجية نحو 4 تريليونات دولار",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v26",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 23,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

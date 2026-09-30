@@ -435,6 +435,50 @@
         "classes": [],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-09-30T06:11:59.401Z",
+      "slug": "gulf-stock-markets-4-trillion-fitch-aa1995",
+      "checker": "f6d38e4947.2",
+      "lessons": "v26",
+      "lessonsHash": "b78be34b14",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 23,
+        "notFound": 1,
+        "checked": 24,
+        "words": 286,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 22,
+        "notFound": 2,
+        "checked": 25,
+        "words": 322,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 22,
+        "notFound": 2,
+        "checked": 25,
+        "words": 322,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      }
     }
   ]
 }

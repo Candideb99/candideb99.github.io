@@ -9360,6 +9360,172 @@
         "remaining": [],
         "newFound": []
       }
+    },
+    "uae-banks-assets-germany-visit-ce4632": {
+      "at": "2026-09-30T05:44:13.903Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-09T23:28:29.567Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 9,
+        "weak": 1,
+        "noEvidence": 5,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "أصول البنوك الإماراتية تقفز إلى 1.54 تريليون دولار في يوليو",
+        "أصدر البنك المركزي الإماراتي تقرير التطورات النقدية والمصرفية لشهر يوليو 2026، مُظهراً ارتفاع أصول البنوك الإجمالية بنسبة 1.3% لتصل إلى 5.67 تريليون درهم إماراتي ما يعادل 1.54 تريليون دولار.",
+        "أصول البنوك الإجمالية: 5.67 تريليون درهم (1.54 تريليون دولار) بنسبة نمو 1.3%",
+        "توفّر السيولة المصرفية المتنامية أساساً لتمويل خطط التنويع الاقتصادي في الإمارات.",
+        "يُعدّ ارتفاع أصول البنوك الإماراتية إلى هذا المستوى القياسي مؤشراً على متانة القطاع المصرفي الذي يُمثّل العمود الفقري للاقتصاد الوطني.",
+        "فيما يخص العرض النقدي، ارتفع مجمع M1 بنسبة 0.7% ليصل إلى 1.047 تريليون درهم، بينما بلغ مجمع M2 2.9 تريليون درهم بعد نمو نسبته 0.8%، ومجمع M3 وصل إلى 3.44 تريليون درهم بنسبة نمو 0.4%.",
+        "وزادت الاحتياطيات البنكية لدى البنك المركزي بنسبة 4.7% لتصل إلى 256.9 مليار درهم، فيما ارتفع الأساس النقدي بنسبة 1.2% إلى 792.7 مليار درهم."
+      ],
+      "weak": [
+        {
+          "sentence": "وقد قاد هذا النمو توسع في الائتمان الإجمالي بنسبة 1.5% ليصل إلى 2.8 تريليون درهم، مدفوعاً بزيادة الائتمان المحلي بنسبة 1.4% إلى 2.21 تريليون درهم، والائتمان الأجنبي بنسبة 1.8% إلى 592.9 مليار درهم.",
+          "quote": "The growth was driven by a 1.4 percent increase in domestic credit, reaching AED2.21 trillion and a 1.8 percent increase in foreign credit reaching AED592.9 billion, contributing positively by 1.1 p.p. and 0.4 p.p., respectively."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "iraq-stock-exchange-joins-adx-tabadul-7fd321": {
+      "at": "2026-09-30T05:44:13.868Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v25",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-29T22:43:30.498Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 16,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "قيمة التداول عبر «تبادُل» في النصف الأول: 13.5 مليار درهم",
+          "quote": "ويأتي توسع \"تبادُل\" في وقت تسجل فيه مستويات قياسية من نشاط التداول، إذ بلغت قيمة التداول عبرها 13.5 مليار درهم ً حتى الآن خلال عام 2026، متجاوزة إجمالي القيمة المسجلة خلال عام 2025 بأكمله.",
+          "source": "Sky News Arabia"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وقال سوق أبوظبي إن قيمة التداول عبر «تبادُل» بلغت 13.5 مليار درهم بنهاية النصف الأول من العام، لتتجاوز القيمة التي سجلتها المنصة طوال 2025.",
+          "quote": "ويأتي توسع \"تبادُل\" في وقت تسجل فيه مستويات قياسية من نشاط التداول، إذ بلغت قيمة التداول عبرها 13.5 مليار درهم ً حتى الآن خلال عام 2026، متجاوزة إجمالي القيمة المسجلة خلال عام 2025 بأكمله.",
+          "source": "Sky News Arabia"
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "وبذلك يصبح السوق العراقي، الذي بلغت قيمته السوقية 21.7 مليار دولار في أغسطس، ثامن سوق يبدأ التداول الفعلي عبر المنصة.",
+          "quote": "The launch makes the Iraq Stock Exchange, or ISX, the eighth market to go live on Tabadul, while the wider network now comprises 11 exchanges, according to the Emirates News Agency."
+        }
+      ],
+      "outcome": "listed"
+    },
+    "trump-expands-trade-war-canada-import-ban-6088a2": {
+      "at": "2026-09-30T05:44:50.977Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-09T23:25:35.535Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 20,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 1,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 11,
+          "field": "body",
+          "sentence": "لكنه وصف الإجراء بأنه غير مسبوق نظراً للعلاقة التجارية التي تمتع بها الطرفان لعقود.",
+          "claim": "The senior official described the measure as unprecedented, given the two sides' decades-long trade relationship.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Asharq Al-Awsat",
+          "sourceDate": "2026-09-09",
+          "quote": "وبينما يمثل هذا المبلغ نسبة ضئيلة من إجمالي واردات الولايات المتحدة من كندا، إلا أن الحظر «غير مسبوق» بالنسبة للبلدين اللذين تمتعا بعلاقات تجارية متناغمة لعقود.",
+          "correction": "The source does not attribute the 'unprecedented' characterisation to the senior official; it is the newspaper's own reporting.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [
+        {
+          "status": "listed",
+          "class": "other",
+          "field": "body",
+          "sentence": "ولم يكن قطاع الطاقة في مأمن من التوتر، لكنه ظل مستثنى صراحةً.",
+          "quote": "Oil has escaped the escalating U.S.-Canada trade war, with energy explicitly exempted from the latest tariffs, preserving the deeply integrated cross-border crude trade.",
+          "source": "OilPrice.com",
+          "correction": "The source says oil escaped the trade war entirely, with energy explicitly exempted and cross-border crude trade preserved; it does not say the energy sector was affected by the tensions."
+        }
+      ],
+      "notFound": [
+        "وتتوقع الشركة نقل إنتاج جنتها غير الكحولية المصنوعة في كندا بحلول النصف الأول من 2027، وتنظر في إضافة طاقة إنتاجية على الساحل الغربي الأمريكي."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن مسؤولاً رفيعاً في الإدارة الأمريكية وصف الحظر بأنه غير مسبوق. والصحيح أن المسؤول اكتفى بتقدير قيمة الواردات الكندية المتأثرة ببضعة مليارات من الدولارات، ولم يصدر عنه هذا الوصف.",
+      "verified": {
+        "at": "2026-09-30T05:47:09.943Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": [
+          {
+            "class": "scope",
+            "field": "body",
+            "sentence": "وقال مسؤول رفيع في الإدارة الأمريكية إن الحظر سيؤثر على واردات كندية بقيمة بضعة مليارات من الدولارات، وهي نسبة ضئيلة من إجمالي التبادل التجاري بين البلدين.",
+            "quote": "وقال مسؤول رفيع في الإدارة إن الحظر التجاري الأميركي سيؤثر على واردات كندية بقيمة «مليارات قليلة» من الدولارات. وبينما يمثل هذا المبلغ نسبة ضئيلة من إجمالي واردات الولايات المتحدة من كندا، إلا أن الحظر «غير مسبوق» بالنسبة للبلدين اللذين تمتعا بعلاقات تجارية متناغمة لعقود.",
+            "correction": "The source says the amount is a small share of total US imports from Canada, not of total bilateral trade."
+          }
+        ],
+        "secondCorrection": "corrected"
+      }
     }
   }
 }
