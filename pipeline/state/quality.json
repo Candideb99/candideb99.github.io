@@ -70,21 +70,31 @@
       "read": 14,
       "confirmedPerStory": 0.71,
       "photosPending": 0
+    },
+    {
+      "date": "2026-10-01",
+      "published": 11,
+      "news": 9,
+      "styleFaultsPerStory": 0,
+      "corrections": 5,
+      "read": 9,
+      "confirmedPerStory": 0.56,
+      "photosPending": 1
     }
   ],
-  "updatedAt": "2026-09-30T13:41:40.086Z",
+  "updatedAt": "2026-10-01T14:28:21.563Z",
   "week": {
-    "published": 112,
+    "published": 113,
     "news": 96,
     "revisedShare": 0.78,
-    "styleFaultsPerStory": 0.02,
-    "styleWarningsPerStory": 0.11,
-    "corrections": 119,
+    "styleFaultsPerStory": 0,
+    "styleWarningsPerStory": 0.1,
+    "corrections": 124,
     "usefulness": {
       "withLessons": {
-        "stories": 65,
-        "words": 254,
-        "keyFacts": 4.5
+        "stories": 74,
+        "words": 263,
+        "keyFacts": 4.6
       },
       "control": {
         "stories": 12,
@@ -93,8 +103,8 @@
       }
     },
     "precheck": {
-      "checked": 63,
-      "clean": 57,
+      "checked": 72,
+      "clean": 66,
       "repaired": 6,
       "held": 0,
       "errorsFound": 6,
@@ -102,36 +112,36 @@
     },
     "outcomes": {
       "repairedBeforePublication": 6,
-      "correctionsVerifiedClean": 36,
+      "correctionsVerifiedClean": 40,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 2
     },
     "secondLook": {
-      "read": 151,
-      "clean": 53,
-      "corrected": 78,
+      "read": 160,
+      "clean": 56,
+      "corrected": 82,
       "stands": 0,
       "refused": 1,
-      "listed": 19,
+      "listed": 21,
       "unverifiable": 0,
-      "confirmedPerStory": 1.32,
+      "confirmedPerStory": 1.28,
       "withLessons": {
-        "read": 25,
+        "read": 27,
         "confirmedPerStory": 0
       },
       "claudeWithout": {
-        "read": 46,
-        "confirmedPerStory": 0.67
+        "read": 47,
+        "confirmedPerStory": 0.66
       }
     },
     "runs": {
       "count": 24,
-      "written": 56,
-      "refused": 1,
-      "callsPerStory": 15.3,
-      "tokensPerStory": 156363,
-      "costPerStory": 1.57,
+      "written": 55,
+      "refused": 2,
+      "callsPerStory": 15.7,
+      "tokensPerStory": 162229,
+      "costPerStory": 1.62,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": [
@@ -146,7 +156,7 @@
       },
       {
         "what": "second look: attribution errors",
-        "stories": 37,
+        "stories": 38,
         "examples": [
           "us-approves-f35-saudi-arms-deal-915064: أكد البيت الأبيض في 18 سبتمبر موافقة إدارة ترامب على الصفقة المحتملة.",
           "russia-temporary-management-western-assets-1dadf4: المرسوم الرئاسي يستهدف حماية الحقوق وضمان استمرارية العمليات لصالح الأطراف المعنية",
@@ -164,7 +174,7 @@
       },
       {
         "what": "second look: hedge errors",
-        "stories": 23,
+        "stories": 24,
         "examples": [
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: «سي إن إن» تصف القرار بالاعتداء غير القانوني..",
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: من جانبها، قالت «سي إن إن» إنها ستواصل التغطية من البيت الأبيض دون عائق، ووصفت الحظر بأنه اعتداء غير قانوني على حقها الد",
@@ -182,7 +192,7 @@
       },
       {
         "what": "second look: figure errors",
-        "stories": 7,
+        "stories": 9,
         "examples": [
           "eu-fuel-prices-record-iran-saudi-supply-8376ff: أظهرت بيانات جمعية ADAC أن البنزين في ألمانيا بلغ 2.31 يورو للتر الأربعاء، وتجاوز الديزل في هولندا 2.78 يورو.",
           "faa-halts-east-coast-flights-equipment-outage-d180ab: كما أن إلغاء أكثر من 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية",
@@ -191,7 +201,7 @@
       },
       {
         "what": "second look: scope errors",
-        "stories": 23,
+        "stories": 24,
         "examples": [
           "trump-announces-ai-force-and-czar-f4c7aa: ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها",
           "trump-xi-summit-washington-2026-4e439e: يدخل ترامب القمة والتضخم عند 3.4٪ وأسعار الوقود فوق 6 دولارات للغالون، قبل انتخابات منتصف المدة في نوفمبر.",
@@ -226,11 +236,11 @@
     ]
   },
   "weekBefore": {
-    "published": 50,
-    "news": 43,
-    "revisedShare": 0.67,
-    "styleFaultsPerStory": 1.09,
-    "styleWarningsPerStory": 0.67,
+    "published": 54,
+    "news": 47,
+    "revisedShare": 0.68,
+    "styleFaultsPerStory": 0.89,
+    "styleWarningsPerStory": 0.62,
     "corrections": 11,
     "usefulness": {
       "withLessons": {
@@ -325,9 +335,9 @@
     ]
   },
   "lessons": {
-    "version": 27,
+    "version": 29,
     "active": 9,
-    "learnedFrom": 199,
+    "learnedFrom": 204,
     "kept": null,
     "lastTest": {
       "at": "2026-09-28T13:46:22.576Z",

@@ -1,16 +1,23 @@
 {
   "version": 1,
-  "photos": {},
+  "photos": {
+    "uae-petrol-prices-rise-october-third-month-df203f": {
+      "firstBadAt": "2026-10-01T14:27:53.266Z",
+      "lastCheckedAt": "2026-10-01T14:27:53.266Z",
+      "checks": 1,
+      "reason": "its page at the photo library is gone"
+    }
+  },
   "woken": {},
-  "pagesCheckedAt": "2026-09-24T22:37:22.634Z",
+  "pagesCheckedAt": "2026-10-01T14:27:53.266Z",
   "last": {
-    "at": "2026-09-30T13:41:39.849Z",
+    "at": "2026-10-01T14:28:21.319Z",
     "findings": [],
     "owner": [
       "خازندار: published stories with a proved error the corrections desk could not fix"
     ],
     "photos": {
-      "pending": 0,
+      "pending": 1,
       "redo": []
     }
   },
