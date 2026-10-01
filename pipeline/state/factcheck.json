@@ -10225,6 +10225,58 @@
       ],
       "weak": [],
       "outcome": "clean"
+    },
+    "tencent-oracle-ai-chips-lease-deal-e9082f": {
+      "at": "2026-10-01T18:28:54.232Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v29",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-10-01T10:34:28.498Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "outcome": "failed",
+      "failures": 1,
+      "error": "Claude failed for role checker:"
+    },
+    "saudi-stocks-fifth-weekly-loss-streak-bc4aaf": {
+      "at": "2026-10-01T18:28:54.264Z",
+      "kind": "news",
+      "writer": "claude-cli",
+      "lessons": "v29",
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-10-01T10:31:21.678Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "outcome": "failed",
+      "failures": 1,
+      "error": "Claude failed for role checker:"
+    },
+    "openai-navier-stokes-breakthrough-88-hours-a0e062": {
+      "at": "2026-10-01T18:29:06.300Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-08T21:24:10.272Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "outcome": "failed",
+      "failures": 1,
+      "error": "Claude failed for role checker:"
+    },
+    "mistral-raises-3bn-euros-series-d-eb9e3c": {
+      "at": "2026-10-01T18:29:06.626Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-08T17:14:55.554Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "outcome": "failed",
+      "failures": 1,
+      "error": "Claude failed for role checker:"
     }
   }
 }
