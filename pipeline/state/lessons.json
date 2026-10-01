@@ -200,10 +200,13 @@
     "google-finland-13-billion-ai-nuclear-54b058:5004fbea",
     "google-finland-13-billion-ai-nuclear-54b058:6bb512b5",
     "egypt-ewallets-h1-2026-transactions-growth-9789a5:4d005a34",
-    "egypt-ai-data-center-nvidia-billion-dollar-b0fc50:9cb6a47d"
+    "egypt-ai-data-center-nvidia-billion-dollar-b0fc50:9cb6a47d",
+    "brent-above-100-dollars-gulf-escalation-8281ef:950eae47",
+    "brent-above-100-dollars-gulf-escalation-8281ef:e4379e59",
+    "saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3:d59a7a95"
   ],
-  "version": 28,
-  "updatedAt": "2026-09-30T20:11:22.116Z",
+  "version": 29,
+  "updatedAt": "2026-10-01T00:41:58.945Z",
   "lessons": [
     {
       "id": "L1",
@@ -247,11 +250,12 @@
         "trump-5000-dividend-trillion-cost-36981a:c6cf95c0",
         "trump-5000-dividend-trillion-cost-36981a:3b90497d",
         "uae-germany-45-agreements-state-visit-9774e1:e22c45dc",
-        "anthropic-researcher-ai-human-extinction-risk-8aa7a2:92d3dbf3"
+        "anthropic-researcher-ai-human-extinction-risk-8aa7a2:92d3dbf3",
+        "saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3:d59a7a95"
       ],
-      "seen": 32,
+      "seen": 33,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-29T22:29:37.734Z",
+      "lastSeen": "2026-10-01T00:41:58.945Z",
       "status": "active",
       "previous": [
         "Keep every qualifier in Arabic: could, possibly, as much as, hopefully, expected, scheduled, will, estimates, reportedly. Name who claims, forecasts or estimates it. Never turn a claim, hope, forecast or reported figure into a stated fact, a present result or a bare headline number.",
@@ -411,11 +415,12 @@
         "apple-foldable-iphone-duo-release-cycle-change-d6b45a:a0596e31",
         "egypt-inflation-eases-12-7-august-7557fb:1b066776",
         "trump-5000-dividend-trillion-cost-36981a:c6cf95c0",
-        "google-finland-13-billion-ai-nuclear-54b058:5004fbea"
+        "google-finland-13-billion-ai-nuclear-54b058:5004fbea",
+        "brent-above-100-dollars-gulf-escalation-8281ef:950eae47"
       ],
-      "seen": 31,
+      "seen": 32,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-30T12:51:35.701Z",
+      "lastSeen": "2026-10-01T00:41:58.945Z",
       "status": "active",
       "previous": [
         "Keep a figure or role tied to the exact item, day and instrument the source names. Diesel is not all fuel. One day's count is not a daily rate. A futures-implied value is not the IPO valuation. An official does only what the source assigns.",
@@ -571,11 +576,12 @@
         "trump-5000-dividend-trillion-cost-36981a:5347db37",
         "saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2:f2bcf26a",
         "saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2:8d6816f3",
-        "egypt-ewallets-h1-2026-transactions-growth-9789a5:4d005a34"
+        "egypt-ewallets-h1-2026-transactions-growth-9789a5:4d005a34",
+        "brent-above-100-dollars-gulf-escalation-8281ef:e4379e59"
       ],
-      "seen": 18,
+      "seen": 19,
       "createdAt": "2026-09-25T12:04:58.585Z",
-      "lastSeen": "2026-09-30T20:11:22.116Z",
+      "lastSeen": "2026-10-01T00:41:58.945Z",
       "status": "active",
       "previous": [
         "Copy every number and ranking with its own qualifier. 500 is not 'more than 500', 'nearly 4,000' is not 4,000, and 'one of the most important' is not 'the most important'. Never move a qualifier from one figure onto its neighbour."
@@ -937,6 +943,15 @@
       "applied": [
         "reinforce L8 (+1; reworded at most once a week)",
         "reinforce L2 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-10-01T00:41:58.945Z",
+      "mistakes": 3,
+      "applied": [
+        "reinforce L4 (+1; reworded at most once a week)",
+        "reinforce L8 (+1)",
+        "reinforce L1 (+1; reworded at most once a week)"
       ]
     }
   ],

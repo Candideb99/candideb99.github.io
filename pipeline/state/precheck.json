@@ -2327,6 +2327,90 @@
           "noted": []
         }
       ]
+    },
+    "analysts-raise-2026-brent-forecast-poll-b79e2f": {
+      "at": "2026-10-01T00:47:39.533Z",
+      "title": "محللون يرفعون متوسط توقعاتهم لسعر برنت في 2026 إلى 89.05 دولار",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v29",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 31,
+            "weak": 0,
+            "noEvidence": 2,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "qatar-non-hydrocarbon-gdp-grows-q2-2026-d8671e": {
+      "at": "2026-10-01T00:51:32.855Z",
+      "title": "الناتج غير الهيدروكربوني في قطر ينمو 2.6% في الربع الثاني",
+      "writer": "claude-cli",
+      "lessons": "v29",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 28,
+            "checked": 28,
+            "supported": 26,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "boeing-wins-navy-f-a-xx-fighter-contract-054631": {
+      "at": "2026-10-01T00:56:48.076Z",
+      "title": "بوينغ تفوز بعقد يتجاوز 20 مليار دولار لمقاتلة البحرية من الجيل السادس",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v29",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 26,
+            "checked": 26,
+            "supported": 24,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

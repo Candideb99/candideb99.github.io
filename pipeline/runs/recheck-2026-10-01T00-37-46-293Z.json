@@ -1,0 +1,138 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-01T00:37:46.293Z",
+  "durationSec": 252,
+  "read": 3,
+  "corrected": 3,
+  "report": [
+    {
+      "slug": "brent-above-100-dollars-gulf-escalation-8281ef",
+      "title": "برنت يتجاوز 100 دولار لأول مرة منذ يوليو مع تصعيد عسكري في الخليج",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 21,
+        "checked": 21,
+        "supported": 9,
+        "weak": 1,
+        "noEvidence": 2,
+        "notFound": 3,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 3,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "scope",
+          "sentence": "أسعار الوقود في بريطانيا عند أعلى مستوياتها في أربع سنوات",
+          "quote": "The AA said diesel hit an average of 187.7p, a price it last reached in May.",
+          "source": "The Guardian",
+          "correction": "Only petrol reached a four-year high; diesel's average price was last reached in May."
+        },
+        {
+          "class": "figure",
+          "sentence": "وارتفعت أسعار النفط بأكثر من الربع منذ أوائل أغسطس مع تلاشي آمال الحل الدائم للحرب المستمرة منذ ستة أشهر.",
+          "quote": "The oil price has jumped by a quarter since early August as hopes for a permanent resolution to the six-month-old war faded.",
+          "source": "The Guardian",
+          "correction": "The oil price has jumped by a quarter since early August, not by more than a quarter."
+        }
+      ]
+    },
+    {
+      "slug": "aldar-abu-dhabi-sales-us-rate-hike-75341e",
+      "title": "«الدار» تبيع فللاً بأكثر من 5 مليارات درهم قبل اختبار الفائدة الأمريكية",
+      "kind": "analysis",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 47,
+        "checked": 47,
+        "supported": 29,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 15,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3",
+      "title": "السياحة الترفيهية السعودية مرشحة للنمو 93% بين 2025 و2030",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 13,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "hedge",
+          "sentence": "واستمرار النمو بهذه الوتيرة يضغط على قطاع الضيافة السعودي لتوسيع طاقته؛ ففي الرياض يتجاوز الطلب من الشركات والاستشارات المعروض الفندقي الجديد، وفي جدة يُنتظر افتتاح أكثر من 2300 غرفة عام 2027.",
+          "quote": "كما تتوقع شركة «إس تي آر» نمو إيرادات الغرف المتاحة في الرياض بنسبة 18.6 في المائة في عام 2027، حيث من المتوقع أن يتجاوز الطلب المتزايد من الشركات والاستشارات العرض الفندقي الجديد، ومن المتوقع أن يستمر نمو إيرادات الغرف المتاحة خلال السنوات الأربع التالية مع توسع العاصمة في قطاعي الأعمال والترفيه بما يتماشى مع «رؤية 2030».",
+          "source": "Asharq Al-Awsat",
+          "correction": "STR only expects corporate and consulting demand in Riyadh to exceed new hotel supply; it is a forecast, not a current fact."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 5,
+    "failures": 0,
+    "promptTokens": 49827,
+    "completionTokens": 35397,
+    "cacheReadTokens": 0,
+    "costUsd": 1.1066,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 5
+    },
+    "correctionsEditorCalls": 2
+  },
+  "log": [
+    "[00:37:46] second look: 3 to read now (25 published pieces not yet read; 47 read clean before publication and left out of the audit sample)",
+    "[00:38:31] llm ok role=checker model=claude-cli attempt=1 ms=38925",
+    "[00:38:31] brent-above-100-dollars-gulf-escalation-8281ef: 21 of 21 sentences checked · 9 supported · 5 without a source · 2 confirmed error(s) · 4 listed for a person",
+    "[00:38:31]   ✗ [scope] أسعار الوقود في بريطانيا عند أعلى مستوياتها في أربع سنوات — Only petrol reached a four-year high; diesel's average price was last reached in May.",
+    "[00:38:31]   ✗ [figure] وارتفعت أسعار النفط بأكثر من الربع منذ أوائل أغسطس مع تلاشي آمال الحل الدائم للحرب المستمرة منذ ستة أشهر. — The oil price has jumped by a quarter since early August, not by more than a quarter.",
+    "[00:39:13] llm ok role=checker model=claude-cli attempt=1 ms=86960",
+    "[00:39:13] aldar-abu-dhabi-sales-us-rate-hike-75341e: 47 of 47 sentences checked · 29 supported · 15 without a source · 0 confirmed error(s)",
+    "[00:39:28] llm ok role=checker model=claude-cli attempt=1 ms=51838",
+    "[00:39:28] saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3: 17 of 17 sentences checked · 13 supported · 0 without a source · 1 confirmed error(s)",
+    "[00:39:28]   ✗ [hedge] واستمرار النمو بهذه الوتيرة يضغط على قطاع الضيافة السعودي لتوسيع طاقته؛ ففي الرياض يتجاوز الطلب من الشركات وال — STR only expects corporate and consulting demand in Riyadh to exceed new hotel supply; it is a forecast, not a current fact.",
+    "[00:39:28] corrections: 2 stories to the corrections editor",
+    "[00:39:29] [correct] brent-above-100-dollars-gulf-escalation-8281ef: fetching 4 source(s)",
+    "[00:39:47] [correct] llm ok role=writer model=claude-cli attempt=1 ms=17178",
+    "[00:39:47] [correct] brent-above-100-dollars-gulf-escalation-8281ef: corrected; fields subtitle, body",
+    "[00:39:47]     note: ذكرت نسخة سابقة من هذا الخبر أن أسعار الوقود في بريطانيا بلغت أعلى مستوياتها في أربع سنوات، والصحيح أن البنزين وحده بلغ هذا المستوى، أما الديزل فسجّل سعراً بلغه آخر مرة في مايو. كما ذكرت أن أسعار النفط ارتفعت بأكثر من الربع منذ أوائل أغسطس، والصحيح أنها ارتفعت بمقدار الربع.",
+    "[00:39:47] [correct] saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3: fetching 3 source(s)",
+    "[00:40:05] [correct] llm ok role=writer model=claude-cli attempt=1 ms=16053",
+    "[00:40:05] [correct] saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3: corrected; fields whyItMatters",
+    "[00:40:05]     note: ذكرت نسخة سابقة من هذا الخبر أن الطلب من الشركات والاستشارات في الرياض يتجاوز حالياً المعروض الفندقي الجديد، والصحيح أن ذلك توقع لشركة «إس تي آر» وليس واقعاً قائماً.",
+    "[00:40:05] [correct] done: 2 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-10-01T00-39-28-900Z.json",
+    "[00:40:49] llm ok role=checker model=claude-cli attempt=1 ms=42717",
+    "[00:40:49] brent-above-100-dollars-gulf-escalation-8281ef: the correction reads clean where it wrote",
+    "[00:41:39] llm ok role=checker model=claude-cli attempt=1 ms=49172",
+    "[00:41:39] saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3: the correction reads clean where it wrote; 1 other error(s) found, corrected once more",
+    "[00:41:39] [correct] saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3: fetching 3 source(s)",
+    "[00:41:58] [correct] llm ok role=writer model=claude-cli attempt=1 ms=17099",
+    "[00:41:58] [correct] saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3: corrected; fields body",
+    "[00:41:58]     note: ذكرت نسخة سابقة من هذا الخبر أن 42% من وكلاء السفر الصينيين قالوا إن المسافرين من ذوي الثروات الكبيرة هم الشريحة الأكثر نمواً، والصحيح أنهم رأوا أن هؤلاء المسافرين والباحثين عن الرفاهية هم الشريحة الأقرب إلى التعافي والنمو في الشرق الأوسط وشمال أفريقيا.",
+    "[00:41:58] [correct] done: 1 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-10-01T00-41-39-741Z.json"
+  ]
+}

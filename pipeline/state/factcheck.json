@@ -9869,6 +9869,244 @@
         "remaining": [],
         "newFound": []
       }
+    },
+    "brent-above-100-dollars-gulf-escalation-8281ef": {
+      "at": "2026-10-01T00:37:46.807Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-09T11:39:30.016Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 21,
+        "checked": 21,
+        "supported": 9,
+        "weak": 1,
+        "noEvidence": 2,
+        "notFound": 3,
+        "confirmed": 2,
+        "listed": 0,
+        "drift": 3,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 2,
+          "field": "subtitle",
+          "sentence": "أسعار الوقود في بريطانيا عند أعلى مستوياتها في أربع سنوات",
+          "claim": "UK fuel prices (petrol and diesel generally) are at their highest level in four years (reported fact).",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "The Guardian",
+          "sourceDate": "2026-09-09",
+          "quote": "The AA said diesel hit an average of 187.7p, a price it last reached in May.",
+          "correction": "Only petrol reached a four-year high; diesel's average price was last reached in May.",
+          "class": "scope"
+        },
+        {
+          "id": 18,
+          "field": "body",
+          "sentence": "وارتفعت أسعار النفط بأكثر من الربع منذ أوائل أغسطس مع تلاشي آمال الحل الدائم للحرب المستمرة منذ ستة أشهر.",
+          "claim": "Oil prices rose by more than a quarter since early August as hopes for a permanent resolution to the six-month war faded (reported fact).",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "The Guardian",
+          "sourceDate": "2026-09-09",
+          "quote": "The oil price has jumped by a quarter since early August as hopes for a permanent resolution to the six-month-old war faded.",
+          "correction": "The oil price has jumped by a quarter since early August, not by more than a quarter.",
+          "class": "figure"
+        }
+      ],
+      "listed": [
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "سعر برنت: 100.6 دولار للبرميل",
+          "quote": "Brent crude, the international benchmark for oil prices, rose by more than 3% to top $101 after tensions increased in the Gulf amid the latest tit-for-tat exchange of fire between the US and Iran.",
+          "source": "The Guardian",
+          "correction": "Brent topped $101 a barrel, not $100.6."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "نسبة الارتفاع: 2.7%",
+          "quote": "Brent crude, the international benchmark for oil prices, rose by more than 3% to top $101 after tensions increased in the Gulf amid the latest tit-for-tat exchange of fire between the US and Iran.",
+          "source": "The Guardian",
+          "correction": "Brent rose by more than 3%, not 2.7%."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "body",
+          "sentence": "ارتفع برنت 2.7% إلى نحو 100.6 دولار للبرميل، بحسب «الغارديان».",
+          "quote": "Brent crude, the international benchmark for oil prices, rose by more than 3% to top $101 after tensions increased in the Gulf amid the latest tit-for-tat exchange of fire between the US and Iran.",
+          "source": "The Guardian",
+          "correction": "The Guardian says Brent rose by more than 3% to top $101."
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وكان الخام قد بلغ ذروته في أبريل عند 126 دولاراً قبل أن يتراجع مع آمال الهدنة.",
+          "quote": "The price of Brent is some way off the $120 it hit in April, but remains well above the $70 it was trading at before the conflict started.",
+          "source": "BBC News"
+        }
+      ],
+      "notFound": [
+        "تراجع الطلب الصيني المتوقع: 600 ألف برميل يومياً (8.9%)",
+        "يعطل التصعيد في الخليج تدفقات النفط والغاز إلى آسيا وأوروبا، ويرفع كلفة النقل والصناعة.",
+        "وأفادت هيئة RAC بأن البنزين وصل لاحقاً إلى 167.17 بنس والديزل إلى 188.63 بنس، في أكبر زيادة أسبوعية منذ أبريل.",
+        "وارتفع العقد البريطاني 7.77 بنس إلى 196.57 بنس للثرم (وحدة قياس تعادل نحو 29.3 كيلوواط ساعة)، وهو الأعلى منذ ديسمبر 2022.",
+        "أما الطلب، فتوقعت الذراع البحثية لـ«سينوبك» الصينية تراجع استهلاك النفط في الصين بمقدار 600 ألف برميل يومياً في 2026، أي 8.9% مقارنة بالعام الماضي، في إشارة إلى تباطؤ استهلاكي محتمل في أكبر مستورد للخام عالمياً."
+      ],
+      "weak": [
+        {
+          "sentence": "وسجّل متوسط سعر البنزين في بريطانيا 166.2 بنس للتر، الأعلى منذ أربع سنوات، والديزل 187.7 بنس، وفقاً لهيئة AA.",
+          "quote": "The climb in costs has hit UK motorists, with petrol at the pump reaching an average of 166.2p a litre on Tuesday, the highest level in four years, according to the motoring body the AA."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أسعار الوقود في بريطانيا بلغت أعلى مستوياتها في أربع سنوات، والصحيح أن البنزين وحده بلغ هذا المستوى، أما الديزل فسجّل سعراً بلغه آخر مرة في مايو. كما ذكرت أن أسعار النفط ارتفعت بأكثر من الربع منذ أوائل أغسطس، والصحيح أنها ارتفعت بمقدار الربع.",
+      "verified": {
+        "at": "2026-10-01T00:40:49.019Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
+    },
+    "aldar-abu-dhabi-sales-us-rate-hike-75341e": {
+      "at": "2026-10-01T00:37:46.806Z",
+      "kind": "analysis",
+      "writer": "claude-cli",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-30T19:14:40.580Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 47,
+        "checked": 47,
+        "supported": 29,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 15,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "وتدلّ هذه الأرقام على طلب قوي في الوقت الراهن، لكنها لا تكشف قدرته على تحمّل كلفة اقتراض أعلى.",
+        "فالبيانات المعلنة لا تذكر كم من المشترين دفع نقداً وكم اعتمد على التمويل، والأرجح في تقدير «خازندار» أن هذه النسبة هي التي تحدد أثر أي رفع للفائدة.",
+        "ويرى «خازندار» أن المطورين أنفسهم أقدر من غيرهم على طمأنة المستثمرين إن أفصحوا عن وحداتهم المبيعة وطرق سدادها، ما دامت حصة المشترين بالتمويل غير معلنة.",
+        "أما اتجاه الفائدة فلا يبدو واضحاً كما يوحي صعود العوائد.",
+        "ويعني ذلك أن المتعاملين منقسمون تقريباً، وأن سوق أبوظبي العقارية تواصل البيع أمام قرار لم يُحسم بعد.",
+        "وقد يخفف بيع أراضي ياس عنها جزءاً من عبء التنفيذ، غير أن قيمة هذه الصفقة لم تُعلن.",
+        "أما المشترون الأصغر سناً فقد يتحملون كلفة أعلى إذا موّلوا شراءهم بقروض يتبع سعرها الفائدة الأمريكية.",
+        "ولا تتوافر أرقام عن أسعار الرهن العقاري في الإمارة، ولا عن أداء أسهم العقار في سوق أبوظبي هذا الأسبوع، فيبقى هذا الأثر احتمالاً لم تقسه البيانات."
+      ],
+      "weak": [
+        {
+          "sentence": "باعت «الدار» فللاً في مشروعين سكنيين بأبوظبي بأكثر من 5 مليارات درهم، ثم وقّعت مع «أرادَ» شراكات بقيمة 15 مليار درهم، في أسبوع قفز فيه عائد السندات الأمريكية لأجل 30 عاماً إلى أعلى مستوى منذ 2002.",
+          "quote": "وقّعت مجموعة الدار وشركة أرادَ الأربعاء اتفاقيات شراكة لتطوير مشاريع في جزيرة ياس ومنطقة سيح السديرة بأبوظبي، تبلغ قيمتها الإجمالية 15 مليار درهم (4 مليارات دولار)، بحسب بيان للدار."
+        },
+        {
+          "sentence": "وسجّل عائد سندات الخزانة لأجل 30 عاماً نحو 5.6206% الثلاثاء، أعلى مستوى منذ يونيو 2002، واستقر عائد العشر سنوات عند 5.2383% الأربعاء.",
+          "quote": "صعد عائد سندات الخزانة الأمريكية لأجل 30 عاماً الثلاثاء إلى نحو 5.6206%، وهو أعلى مستوى له منذ يونيو 2002."
+        },
+        {
+          "sentence": "ويُرجَّح في قراءة خازندار أن يعكس النزول الطفيف للعائد لأجل عامين إلى 4.8889% انحسارَ رهانات الرفع، وإن احتفظ بمكاسب تفوق 50 نقطة أساس منذ مطلع سبتمبر.",
+          "quote": "العائد لأجل عامين يحافظ على مكاسب تفوق 50 نقطة أساس منذ مطلع سبتمبر رغم تراجعه الطفيف"
+        }
+      ],
+      "outcome": "clean"
+    },
+    "saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3": {
+      "at": "2026-10-01T00:38:31.159Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-09T05:15:15.696Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 13,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 9,
+          "field": "whyItMatters",
+          "sentence": "واستمرار النمو بهذه الوتيرة يضغط على قطاع الضيافة السعودي لتوسيع طاقته؛ ففي الرياض يتجاوز الطلب من الشركات والاستشارات المعروض الفندقي الجديد، وفي جدة يُنتظر افتتاح أكثر من 2300 غرفة عام 2027.",
+          "claim": "Website analysis: growth pressures hospitality to expand. It states as present fact that in Riyadh corporate and consulting demand exceeds new hotel supply. It says more than 2,300 rooms are expected to open in Jeddah in 2027.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "Asharq Al-Awsat",
+          "sourceDate": "2026-09-08",
+          "quote": "كما تتوقع شركة «إس تي آر» نمو إيرادات الغرف المتاحة في الرياض بنسبة 18.6 في المائة في عام 2027، حيث من المتوقع أن يتجاوز الطلب المتزايد من الشركات والاستشارات العرض الفندقي الجديد، ومن المتوقع أن يستمر نمو إيرادات الغرف المتاحة خلال السنوات الأربع التالية مع توسع العاصمة في قطاعي الأعمال والترفيه بما يتماشى مع «رؤية 2030».",
+          "correction": "STR only expects corporate and consulting demand in Riyadh to exceed new hotel supply; it is a forecast, not a current fact.",
+          "class": "hedge"
+        }
+      ],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "التقرير يتوقع تجاوز ثلاثة أضعاف المعدل العالمي مع ارتفاع إيرادات الغرف في الرياض 18.6% عام 2027",
+          "quote": "كشف ديف غودجر، المدير الإداري لمنطقة أوروبا والشرق الأوسط وأفريقيا في شركة «توريزم إيكونوميكس»، أن السياحة الترفيهية الدولية في المملكة، مقيسةً بعدد الليالي السياحية التي قضاها الزوار، من المتوقع أن تنمو بأكثر من ثلاثة أضعاف المعدل العالمي البالغ 30 في المائة خلال السنوات الخمس المقبلة، متجاوزةً بذلك منطقة الشرق الأوسط التي سجلت معدل نمو بلغ 64 في المائة."
+        },
+        {
+          "sentence": "أظهر تقرير صادر عن شركة \"توريزم إيكونوميكس\" عُرض خلال معرض سوق السفر العالمي – سبوت لايت الرياض أن السياحة الترفيهية الدولية في السعودية مرشحة للنمو بنسبة 93% بين عامي 2025 و2030، متجاوزةً ثلاثة أضعاف المعدل العالمي البالغ 30%، بينما سجل الشرق الأوسط معدل نمو بلغ 64%.",
+          "quote": "كشف ديف غودجر، المدير الإداري لمنطقة أوروبا والشرق الأوسط وأفريقيا في شركة «توريزم إيكونوميكس»، أن السياحة الترفيهية الدولية في المملكة، مقيسةً بعدد الليالي السياحية التي قضاها الزوار، من المتوقع أن تنمو بأكثر من ثلاثة أضعاف المعدل العالمي البالغ 30 في المائة خلال السنوات الخمس المقبلة، متجاوزةً بذلك منطقة الشرق الأوسط التي سجلت معدل نمو بلغ 64 في المائة."
+        },
+        {
+          "sentence": "كما أشار 42% من الوكلاء إلى أن المسافرين من ذوي الثروات الكبيرة هم الشريحة الأكثر نمواً، مع اهتمام 54% بالطبيعة والمناظر الطبيعية و45% بالمغامرات والأنشطة الخارجية.",
+          "quote": "ووفقاً لاستطلاع شمل وكلاء سفر صينيين، أشار 54 في المائة منهم إلى أن الطبيعة والمناظر الطبيعية تحظى بجاذبية خاصة لدى عملائهم، تليها المغامرات والأنشطة الخارجية بنسبة 45 في المائة، ثم المتاحف والمعالم الثقافية بـ41 في المائة، والتفاعل مع السكان المحليين بنسبة 41 في المائة، والمنتجعات الفاخرة 37 في المائة."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن الطلب من الشركات والاستشارات في الرياض يتجاوز حالياً المعروض الفندقي الجديد، والصحيح أن ذلك توقع لشركة «إس تي آر» وليس واقعاً قائماً.",
+      "verified": {
+        "at": "2026-10-01T00:41:39.741Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": [
+          {
+            "class": "hedge",
+            "field": "body",
+            "sentence": "كما أشار 42% من الوكلاء إلى أن المسافرين من ذوي الثروات الكبيرة هم الشريحة الأكثر نمواً، مع اهتمام 54% بالطبيعة والمناظر الطبيعية و45% بالمغامرات والأنشطة الخارجية.",
+            "quote": "ويُمثّل قطاع السياحة الفاخرة فرصةً واعدةً للغاية، حيث أشار 42 في المائة من وكلاء السفر الصينيين الذين شملهم الاستطلاع إلى أن المسافرين من ذوي الثروات الكبيرة والباحثين عن الرفاهية هم الشريحة الأكثر قابليةً للتعافي والنمو في منطقة الشرق الأوسط وشمال أفريقيا.",
+            "correction": "The 42% of agents said high-net-worth and luxury travellers are the segment most likely to recover and grow in MENA, not that it is already the fastest-growing segment."
+          }
+        ],
+        "secondCorrection": "corrected"
+      }
     }
   }
 }

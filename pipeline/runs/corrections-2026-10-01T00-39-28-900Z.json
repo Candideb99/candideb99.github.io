@@ -1,0 +1,55 @@
+{
+  "startedAt": "2026-10-01T00:39:29.087Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "brent-above-100-dollars-gulf-escalation-8281ef",
+      "issue": "1. The dek says «أسعار الوقود في بريطانيا عند أعلى مستوياتها في أربع سنوات» (UK fuel prices (petrol and diesel generally) are at their highest level in four years (reported fact).). Source The Guardian says: \"The AA said diesel hit an average of 187.7p, a price it last reached in May.\". Only petrol reached a four-year high; diesel's average price was last reached in May.\n2. The body says «وارتفعت أسعار النفط بأكثر من الربع منذ أوائل أغسطس مع تلاشي آمال الحل الدائم للحرب المستمرة منذ ستة أشهر.» (Oil prices rose by more than a quarter since early August as hopes for a permanent resolution to the six-month war faded (reported fact).). Source The Guardian says: \"The oil price has jumped by a quarter since early August as hopes for a permanent resolution to the six-month-old war faded.\". The oil price has jumped by a quarter since early August, not by more than a quarter.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "subtitle",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أسعار الوقود في بريطانيا بلغت أعلى مستوياتها في أربع سنوات، والصحيح أن البنزين وحده بلغ هذا المستوى، أما الديزل فسجّل سعراً بلغه آخر مرة في مايو. كما ذكرت أن أسعار النفط ارتفعت بأكثر من الربع منذ أوائل أغسطس، والصحيح أنها ارتفعت بمقدار الربع.",
+      "model": "claude-cli",
+      "before": {
+        "subtitle": "أسعار الوقود في بريطانيا عند أعلى مستوياتها في أربع سنوات"
+      },
+      "after": {
+        "subtitle": "سعر البنزين في بريطانيا عند أعلى مستوياته في أربع سنوات"
+      },
+      "changedSentences": [
+        "أسعار الوقود في بريطانيا عند أعلى مستوياتها في أربع سنوات",
+        "وارتفعت أسعار النفط بأكثر من الربع منذ أوائل أغسطس مع تلاشي آمال الحل الدائم للحرب المستمرة منذ ستة أشهر."
+      ],
+      "newSentences": [
+        "سعر البنزين في بريطانيا عند أعلى مستوياته في أربع سنوات",
+        "وارتفعت أسعار النفط بمقدار الربع منذ أوائل أغسطس مع تلاشي آمال الحل الدائم للحرب المستمرة منذ ستة أشهر."
+      ]
+    },
+    {
+      "slug": "saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3",
+      "issue": "The why it matters says «واستمرار النمو بهذه الوتيرة يضغط على قطاع الضيافة السعودي لتوسيع طاقته؛ ففي الرياض يتجاوز الطلب من الشركات والاستشارات المعروض الفندقي الجديد، وفي جدة يُنتظر افتتاح أكثر من 2300 غرفة عام 2027.» (Website analysis: growth pressures hospitality to expand. It states as present fact that in Riyadh corporate and consulting demand exceeds new hotel supply. It says more than 2,300 rooms are expected to open in Jeddah in 2027.). Source Asharq Al-Awsat says: \"كما تتوقع شركة «إس تي آر» نمو إيرادات الغرف المتاحة في الرياض بنسبة 18.6 في المائة في عام 2027، حيث من المتوقع أن يتجاوز الطلب المتزايد من الشركات والاستشارات العرض الفندقي الجديد، ومن المتوقع أن يستمر نمو إيرادات الغرف المتاحة خلال السنوات الأربع التالية مع توسع العاصمة في قطاعي الأعمال والترفيه بما يتماشى مع «رؤية 2030».\". STR only expects corporate and consulting demand in Riyadh to exceed new hotel supply; it is a forecast, not a current fact.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "whyItMatters"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن الطلب من الشركات والاستشارات في الرياض يتجاوز حالياً المعروض الفندقي الجديد، والصحيح أن ذلك توقع لشركة «إس تي آر» وليس واقعاً قائماً.",
+      "model": "claude-cli",
+      "before": {
+        "whyItMatters": "واستمرار النمو بهذه الوتيرة يضغط على قطاع الضيافة السعودي لتوسيع طاقته؛ ففي الرياض يتجاوز الطلب من الشركات والاستشارات المعروض الفندقي الجديد، وفي جدة يُنتظر افتتاح أكثر من 2300 غرفة عام 2027."
+      },
+      "after": {
+        "whyItMatters": "واستمرار النمو بهذه الوتيرة يضغط على قطاع الضيافة السعودي لتوسيع طاقته؛ ففي الرياض تتوقع «إس تي آر» أن يتجاوز الطلب من الشركات والاستشارات المعروض الفندقي الجديد، وفي جدة يُنتظر افتتاح أكثر من 2300 غرفة عام 2027."
+      },
+      "changedSentences": [
+        "واستمرار النمو بهذه الوتيرة يضغط على قطاع الضيافة السعودي لتوسيع طاقته؛ ففي الرياض يتجاوز الطلب من الشركات والاستشارات المعروض الفندقي الجديد، وفي جدة يُنتظر افتتاح أكثر من 2300 غرفة عام 2027."
+      ],
+      "newSentences": [
+        "واستمرار النمو بهذه الوتيرة يضغط على قطاع الضيافة السعودي لتوسيع طاقته؛ ففي الرياض تتوقع «إس تي آر» أن يتجاوز الطلب من الشركات والاستشارات المعروض الفندقي الجديد، وفي جدة يُنتظر افتتاح أكثر من 2300 غرفة عام 2027."
+      ]
+    }
+  ]
+}
