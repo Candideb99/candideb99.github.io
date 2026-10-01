@@ -1,0 +1,94 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-01T10:18:15.353Z",
+  "durationSec": 75,
+  "read": 3,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "south-korea-gdp-q2-2026-ai-chips-4e5373",
+      "title": "كوريا الجنوبية تنمو بأسرع وتيرة منذ 47 عاماً بفضل رقائق الذكاء الاصطناعي",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 13,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 1,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "qatar-non-hydrocarbon-gdp-grows-q2-2026-d8671e",
+      "title": "الناتج غير الهيدروكربوني في قطر ينمو 2.6% في الربع الثاني",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 28,
+        "checked": 28,
+        "supported": 27,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "us-warns-ford-china-partnerships-b5ea31",
+      "title": "إدارة ترامب تنتقد علاقات فورد مع شركات صينية",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 11,
+        "checked": 11,
+        "supported": 7,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 4,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 3,
+    "failures": 0,
+    "promptTokens": 15847,
+    "completionTokens": 14773,
+    "cacheReadTokens": 0,
+    "costUsd": 0.4223,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 3
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[10:18:15] second look: 3 to read now (23 published pieces not yet read; 49 read clean before publication and left out of the audit sample)",
+    "[10:19:00] llm ok role=checker model=claude-cli attempt=1 ms=43314",
+    "[10:19:00] south-korea-gdp-q2-2026-ai-chips-4e5373: 17 of 17 sentences checked · 13 supported · 2 without a source · 0 confirmed error(s) · 1 listed for a person",
+    "[10:19:00] us-warns-ford-china-partnerships-b5ea31:   source https://www.aljazeera.com/economy/2026/9/8/us-warns-ford-over-ties-with-chinese-: robots-disallow",
+    "[10:19:02] llm ok role=checker model=claude-cli attempt=1 ms=44521",
+    "[10:19:02] qatar-non-hydrocarbon-gdp-grows-q2-2026-d8671e: 28 of 28 sentences checked · 27 supported · 0 without a source · 0 confirmed error(s)",
+    "[10:19:30] llm ok role=checker model=claude-cli attempt=1 ms=28728",
+    "[10:19:30] us-warns-ford-china-partnerships-b5ea31: 11 of 11 sentences checked · 7 supported · 4 without a source · 0 confirmed error(s)"
+  ]
+}

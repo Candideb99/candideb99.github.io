@@ -2411,6 +2411,90 @@
           "noted": []
         }
       ]
+    },
+    "saudi-economy-forecast-contract-3-6-percent-310a6c": {
+      "at": "2026-10-01T10:25:25.727Z",
+      "title": "وزارة المالية السعودية تتوقع انكماش الاقتصاد 3.6% في 2026",
+      "writer": "claude-cli",
+      "lessons": "v29",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 26,
+            "checked": 26,
+            "supported": 24,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "saudi-stocks-fifth-weekly-loss-streak-bc4aaf": {
+      "at": "2026-10-01T10:31:21.681Z",
+      "title": "الأسهم السعودية تتجه إلى أطول سلسلة خسائر أسبوعية منذ نوفمبر 2025",
+      "writer": "claude-cli → claude-cli",
+      "lessons": "v29",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 23,
+            "checked": 23,
+            "supported": 23,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "tencent-oracle-ai-chips-lease-deal-e9082f": {
+      "at": "2026-10-01T10:34:28.501Z",
+      "title": "فاينانشال تايمز: تينسنت تستأجر 100 ألف شريحة من أوراكل بـ7 مليارات دولار",
+      "writer": "claude-cli",
+      "lessons": "v29",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 18,
+            "checked": 18,
+            "supported": 18,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
