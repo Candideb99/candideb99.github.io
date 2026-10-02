@@ -1,0 +1,48 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-02T22:22:09.845Z",
+  "durationSec": 16,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "brent-nears-100-dollar-houthi-attacks-saudi-1e290d",
+      "title": "برنت يقترب من 100 دولار بعد هجمات حوثية على السعودية",
+      "kind": "news",
+      "outcome": "failed",
+      "counts": null,
+      "confirmed": []
+    },
+    {
+      "slug": "china-exports-surge-august-ai-trump-xi-223add",
+      "title": "صادرات الصين تقفز 25% في أغسطس مدفوعة بالذكاء الاصطناعي",
+      "kind": "news",
+      "outcome": "failed",
+      "counts": null,
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 0,
+    "failures": 6,
+    "promptTokens": 0,
+    "completionTokens": 0,
+    "cacheReadTokens": 0,
+    "costUsd": 0,
+    "byModel": {},
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[22:22:10] second look: 2 to read now (16 published pieces not yet read; 50 read clean before publication and left out of the audit sample)",
+    "[22:22:10] china-exports-surge-august-ai-trump-xi-223add:   source https://www.nytimes.com/2026/09/08/business/china-exports-xi-trump-talks.html: http-403",
+    "[22:22:12] brent-nears-100-dollar-houthi-attacks-saudi-1e290d:   source https://www.marketwatch.com/story/u-s-oil-prices-reach-highest-level-in-over-thr: robots-disallow",
+    "[22:22:16] llm fail role=checker model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[22:22:17] llm fail role=checker model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[22:22:20] llm fail role=checker model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[22:22:21] llm fail role=checker model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[22:22:24] llm fail role=checker model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[22:22:24] brent-nears-100-dollar-houthi-attacks-saudi-1e290d: the check failed (Claude failed for role checker:)",
+    "[22:22:26] llm fail role=checker model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[22:22:26] china-exports-surge-august-ai-trump-xi-223add: the check failed (Claude failed for role checker:)"
+  ]
+}

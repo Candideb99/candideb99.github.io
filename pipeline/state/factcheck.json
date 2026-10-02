@@ -10303,6 +10303,32 @@
       "outcome": "failed",
       "failures": 2,
       "error": "Claude failed for role checker:"
+    },
+    "brent-nears-100-dollar-houthi-attacks-saudi-1e290d": {
+      "at": "2026-10-02T22:22:10.407Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-08T11:34:28.406Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "outcome": "failed",
+      "failures": 1,
+      "error": "Claude failed for role checker:"
+    },
+    "china-exports-surge-august-ai-trump-xi-223add": {
+      "at": "2026-10-02T22:22:10.375Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-08T11:43:28.162Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "outcome": "failed",
+      "failures": 1,
+      "error": "Claude failed for role checker:"
     }
   }
 }
