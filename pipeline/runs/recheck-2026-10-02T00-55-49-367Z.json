@@ -1,0 +1,71 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-02T00:55:49.367Z",
+  "durationSec": 27,
+  "read": 4,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "saudi-stocks-fifth-weekly-loss-streak-bc4aaf",
+      "title": "الأسهم السعودية تتجه إلى أطول سلسلة خسائر أسبوعية منذ نوفمبر 2025",
+      "kind": "news",
+      "outcome": "failed",
+      "counts": null,
+      "confirmed": []
+    },
+    {
+      "slug": "tencent-oracle-ai-chips-lease-deal-e9082f",
+      "title": "فاينانشال تايمز: تينسنت تستأجر 100 ألف شريحة من أوراكل بـ7 مليارات دولار",
+      "kind": "news",
+      "outcome": "failed",
+      "counts": null,
+      "confirmed": []
+    },
+    {
+      "slug": "mistral-raises-3bn-euros-series-d-eb9e3c",
+      "title": "«ميسترال» تجمع 3 مليارات يورو بتقييم 21 مليار يورو في أكبر جولة تمويل أوروبية",
+      "kind": "news",
+      "outcome": "failed",
+      "counts": null,
+      "confirmed": []
+    },
+    {
+      "slug": "openai-navier-stokes-breakthrough-88-hours-a0e062",
+      "title": "«أوبن أيه آي» تحرز تقدماً في مسألة نافييه-ستوكس خلال 88 ساعة",
+      "kind": "news",
+      "outcome": "failed",
+      "counts": null,
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 0,
+    "failures": 12,
+    "promptTokens": 0,
+    "completionTokens": 0,
+    "cacheReadTokens": 0,
+    "costUsd": 0,
+    "byModel": {},
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[00:55:49] second look: 4 to read now (18 published pieces not yet read; 50 read clean before publication and left out of the audit sample)",
+    "[00:55:50] tencent-oracle-ai-chips-lease-deal-e9082f:   source https://www.marketwatch.com/story/oracle-has-reportedly-signed-a-7-billion-deal-: robots-disallow; read from the copy saved at publication (fetched then)",
+    "[00:55:54] llm fail role=checker model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[00:55:54] llm fail role=checker model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[00:55:58] llm fail role=checker model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[00:55:59] llm fail role=checker model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[00:56:03] llm fail role=checker model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[00:56:03] saudi-stocks-fifth-weekly-loss-streak-bc4aaf: the check failed (Claude failed for role checker:)",
+    "[00:56:03] llm fail role=checker model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[00:56:03] tencent-oracle-ai-chips-lease-deal-e9082f: the check failed (Claude failed for role checker:)",
+    "[00:56:06] llm fail role=checker model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[00:56:06] llm fail role=checker model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[00:56:10] llm fail role=checker model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[00:56:11] llm fail role=checker model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[00:56:15] llm fail role=checker model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[00:56:15] mistral-raises-3bn-euros-series-d-eb9e3c: the check failed (Claude failed for role checker:)",
+    "[00:56:15] llm fail role=checker model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[00:56:15] openai-navier-stokes-breakthrough-88-hours-a0e062: the check failed (Claude failed for role checker:)"
+  ]
+}
