@@ -10277,6 +10277,32 @@
       "outcome": "failed",
       "failures": 2,
       "error": "Claude failed for role checker:"
+    },
+    "canada-us-retaliatory-tariffs-bombardier-trade-war-a97f20": {
+      "at": "2026-10-02T09:55:18.178Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-08T16:55:42.670Z",
+      "sourcesRead": 2,
+      "sourcesAll": 4,
+      "outcome": "failed",
+      "failures": 1,
+      "error": "Claude failed for role checker:"
+    },
+    "saudi-renewables-tourism-growth-2026-93f77e": {
+      "at": "2026-10-02T09:55:18.144Z",
+      "kind": "news",
+      "writer": "inclusionai/ling-3.0-flash-fin:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-08T17:12:52.238Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "outcome": "failed",
+      "failures": 1,
+      "error": "Claude failed for role checker:"
     }
   }
 }

@@ -1,0 +1,48 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-02T09:55:17.621Z",
+  "durationSec": 24,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "canada-us-retaliatory-tariffs-bombardier-trade-war-a97f20",
+      "title": "كندا تفرض رسوماً تصل إلى 50% على منتجات أمريكية بـ28 مليار دولار",
+      "kind": "news",
+      "outcome": "failed",
+      "counts": null,
+      "confirmed": []
+    },
+    {
+      "slug": "saudi-renewables-tourism-growth-2026-93f77e",
+      "title": "السعودية.. قفزة 88% في سعة الطاقة المتجددة المشغّلة خلال 2025",
+      "kind": "news",
+      "outcome": "failed",
+      "counts": null,
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 0,
+    "failures": 6,
+    "promptTokens": 0,
+    "completionTokens": 0,
+    "cacheReadTokens": 0,
+    "costUsd": 0,
+    "byModel": {},
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[09:55:18] second look: 2 to read now (18 published pieces not yet read; 50 read clean before publication and left out of the audit sample)",
+    "[09:55:18] canada-us-retaliatory-tariffs-bombardier-trade-war-a97f20:   source https://www.nytimes.com/2026/09/08/world/canada/carney-tariffs-trade.html: http-403",
+    "[09:55:18] canada-us-retaliatory-tariffs-bombardier-trade-war-a97f20:   source https://www.nytimes.com/2026/09/08/business/bombardier-trump-canada-us-sales-pla: http-403",
+    "[09:55:24] llm fail role=checker model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[09:55:29] llm fail role=checker model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[09:55:32] llm fail role=checker model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[09:55:34] llm fail role=checker model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[09:55:34] canada-us-retaliatory-tariffs-bombardier-trade-war-a97f20: the check failed (Claude failed for role checker:)",
+    "[09:55:36] llm fail role=checker model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[09:55:41] llm fail role=checker model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[09:55:41] saudi-renewables-tourism-growth-2026-93f77e: the check failed (Claude failed for role checker:)"
+  ]
+}
