@@ -3,23 +3,31 @@
   "photos": {
     "uae-petrol-prices-rise-october-third-month-df203f": {
       "firstBadAt": "2026-10-01T14:27:53.266Z",
-      "lastCheckedAt": "2026-10-01T14:27:53.266Z",
-      "checks": 1,
+      "lastCheckedAt": "2026-10-02T13:50:58.260Z",
+      "checks": 2,
       "reason": "its page at the photo library is gone"
     }
   },
-  "woken": {},
+  "woken": {
+    "stall": "2026-10-02T13:51:23.479Z"
+  },
   "pagesCheckedAt": "2026-10-01T14:27:53.266Z",
   "last": {
-    "at": "2026-10-01T14:28:21.319Z",
-    "findings": [],
+    "at": "2026-10-02T13:51:24.504Z",
+    "findings": [
+      "No news story has been published for 27 hours, though the newsroom completed 6 run(s) since. Read the last run reports (pipeline/runs/*.json: each story's outcome and the log) and fix what stops every story; a story the critic rejects is not a bug."
+    ],
     "owner": [
       "خازندار: published stories with a proved error the corrections desk could not fix"
     ],
     "photos": {
       "pending": 1,
-      "redo": []
+      "redo": [
+        "uae-petrol-prices-rise-october-third-month-df203f"
+      ]
     }
   },
-  "tries": {}
+  "tries": {
+    "stall": 1
+  }
 }

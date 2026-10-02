@@ -80,26 +80,36 @@
       "read": 9,
       "confirmedPerStory": 0.56,
       "photosPending": 1
+    },
+    {
+      "date": "2026-10-02",
+      "published": 0,
+      "news": 0,
+      "styleFaultsPerStory": null,
+      "corrections": 0,
+      "read": 6,
+      "confirmedPerStory": 0,
+      "photosPending": 1
     }
   ],
-  "updatedAt": "2026-10-01T14:28:21.563Z",
+  "updatedAt": "2026-10-02T13:51:24.741Z",
   "week": {
-    "published": 113,
-    "news": 96,
-    "revisedShare": 0.78,
+    "published": 95,
+    "news": 81,
+    "revisedShare": 0.8,
     "styleFaultsPerStory": 0,
-    "styleWarningsPerStory": 0.1,
-    "corrections": 124,
+    "styleWarningsPerStory": 0.11,
+    "corrections": 98,
     "usefulness": {
       "withLessons": {
-        "stories": 74,
-        "words": 263,
-        "keyFacts": 4.6
+        "stories": 71,
+        "words": 266,
+        "keyFacts": 4.7
       },
       "control": {
-        "stories": 12,
-        "words": 245,
-        "keyFacts": 5
+        "stories": 10,
+        "words": 248,
+        "keyFacts": 5.4
       }
     },
     "precheck": {
@@ -118,14 +128,14 @@
       "correctionsStuck": 2
     },
     "secondLook": {
-      "read": 160,
-      "clean": 56,
-      "corrected": 82,
+      "read": 133,
+      "clean": 51,
+      "corrected": 56,
       "stands": 0,
       "refused": 1,
-      "listed": 21,
+      "listed": 19,
       "unverifiable": 0,
-      "confirmedPerStory": 1.28,
+      "confirmedPerStory": 0.98,
       "withLessons": {
         "read": 27,
         "confirmedPerStory": 0
@@ -137,94 +147,14 @@
     },
     "runs": {
       "count": 24,
-      "written": 55,
-      "refused": 2,
-      "callsPerStory": 15.7,
-      "tokensPerStory": 162229,
-      "costPerStory": 1.62,
+      "written": 47,
+      "refused": 1,
+      "callsPerStory": 15.5,
+      "tokensPerStory": 160617,
+      "costPerStory": 1.59,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": [
-      {
-        "what": "second look: period errors",
-        "stories": 19,
-        "examples": [
-          "us-approves-f35-saudi-arms-deal-915064: أعلنت وزارة الخارجية الأمريكية في 18 سبتمبر موافقتها على صفقة بيع عسكري محتملة للسعودية تشمل 48 طائرة إف-35 لايتنينغ 2 ذ",
-          "russia-temporary-management-western-assets-1dadf4: نُشر المرسوم على البوابة القانونية الرسمية لروسيا الخميس بحسب بيان «نستله»، وانخفضت أسهم الشركة 2.2% في تداولات صباح الج",
-          "warren-buffett-steps-down-berkshire-chairman-457ee7: وأضاف أن ابنه هوارد سيحمي ثقافة الشركة وقيمها، في حين يتولى غريغ أبيل الإدارة اليومية بوصفه الرئيس التنفيذي منذ مايو 202"
-        ]
-      },
-      {
-        "what": "second look: attribution errors",
-        "stories": 38,
-        "examples": [
-          "us-approves-f35-saudi-arms-deal-915064: أكد البيت الأبيض في 18 سبتمبر موافقة إدارة ترامب على الصفقة المحتملة.",
-          "russia-temporary-management-western-assets-1dadf4: المرسوم الرئاسي يستهدف حماية الحقوق وضمان استمرارية العمليات لصالح الأطراف المعنية",
-          "russia-temporary-management-western-assets-1dadf4: لدى «نستله» نحو 7000 موظف وستة مصانع في روسيا بحسب بيانات شركة Vontobel السويسرية للاستثمار، وأوقفت معظم مبيعاتها غير ال"
-        ]
-      },
-      {
-        "what": "second look: actor errors",
-        "stories": 15,
-        "examples": [
-          "trump-announces-ban-cnn-msn-politico-white-house-fd6870: ترامب يحظر سي إن إن وإم إس إن بي سي وبوليتيكو من البيت الأبيض",
-          "trump-announces-ban-cnn-msn-politico-white-house-fd6870: حظر الرئيس الأمريكي دونالد ترامب «سي إن إن» و«إم إس إن بي سي» و«بوليتيكو» من البيت الأبيض فوراً، في منشور على «تروث سوشي",
-          "trump-announces-ban-cnn-msn-politico-white-house-fd6870: كتب ترامب على «تروث سوشيال» إنه فخور بالإعلان عن الحظر الفوري على «سي إن إن» و«إم إس إن بي سي» و«بوليتيكو» نتيجة تقاريره"
-        ]
-      },
-      {
-        "what": "second look: hedge errors",
-        "stories": 24,
-        "examples": [
-          "trump-announces-ban-cnn-msn-politico-white-house-fd6870: «سي إن إن» تصف القرار بالاعتداء غير القانوني..",
-          "trump-announces-ban-cnn-msn-politico-white-house-fd6870: من جانبها، قالت «سي إن إن» إنها ستواصل التغطية من البيت الأبيض دون عائق، ووصفت الحظر بأنه اعتداء غير قانوني على حقها الد",
-          "us-denmark-greenland-security-deal-eac792: التكلفة على الولايات المتحدة: صفر"
-        ]
-      },
-      {
-        "what": "second look: term errors",
-        "stories": 18,
-        "examples": [
-          "trump-signs-russia-sanctions-oil-tariffs-law-ad758a: وكان مجلس النواب قد وافق على القانون بأغلبية 262 صوتاً مقابل 159، وصوّت 58 ديمقراطياً لصالحه في حين عارضه 7 جمهوريين، في",
-          "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb: وبلغ حجم التداول على هذه العقود 6 ملايين دولار في 24 ساعة، والفائدة المفتوحة 31 مليون دولار.",
-          "fed-rate-hike-oil-109-gulf-economies-a07bff: ومع بلوغ عائد السندات الأمريكية لأكثر من عشر سنوات مستوى 5.04%، تزداد كلفة إصدار السندات الدولارية التي تموّل مشاريع الب"
-        ]
-      },
-      {
-        "what": "second look: figure errors",
-        "stories": 9,
-        "examples": [
-          "eu-fuel-prices-record-iran-saudi-supply-8376ff: أظهرت بيانات جمعية ADAC أن البنزين في ألمانيا بلغ 2.31 يورو للتر الأربعاء، وتجاوز الديزل في هولندا 2.78 يورو.",
-          "faa-halts-east-coast-flights-equipment-outage-d180ab: كما أن إلغاء أكثر من 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية",
-          "trump-backs-us-diesel-export-ban-79317b: وتجاوز سعر البرميل 207 دولارات الثلاثاء، متقدماً على النفط الخام بأكثر من 100 دولار، بحسب «سي إن بي سي»."
-        ]
-      },
-      {
-        "what": "second look: scope errors",
-        "stories": 24,
-        "examples": [
-          "trump-announces-ai-force-and-czar-f4c7aa: ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها",
-          "trump-xi-summit-washington-2026-4e439e: يدخل ترامب القمة والتضخم عند 3.4٪ وأسعار الوقود فوق 6 دولارات للغالون، قبل انتخابات منتصف المدة في نوفمبر.",
-          "oil-prices-decline-china-iran-pressure-41b59d: لكن تراجع حركة الملاحة في مضيق هرمز إلى ثلاث سفن يومياً يُبقي الأسواق عرضة لقفزات سعرية جديدة."
-        ]
-      },
-      {
-        "what": "second look: other errors",
-        "stories": 4,
-        "examples": [
-          "gulf-oil-flows-return-pre-war-levels-6a0da7: وقال وزير الطاقة الأمريكي في بيان إن رفع تدفقات النفط من الخليج إلى مستويات قياسية حدث في الوقت الحالي، وفق ما نقلته قنا",
-          "hormuz-alternatives-saudi-oil-qatar-lng-747dc8: وتخسر قطر نحو 20 مليار دولار من الإيرادات السنوية وفق تقديرات «أويل برايس فاينانس»، بسبب خطين للغاز المسال أصابتهما ضربة",
-          "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d: وكان من المقرر عقد اجتماع في عمان يوم الاثنين 14 سبتمبر 2026 بين إيران ودول خليجية عربية لبحث إعادة فتح مضيق هرمز، لكنه "
-        ]
-      },
-      {
-        "what": "second look: superlative errors",
-        "stories": 2,
-        "examples": [
-          "trump-approval-32-percent-iran-war-bd2925: وأشار بيسنت إلى أن الصين، الشريك الاقتصادي الأهم لإيران، انخرطت بفاعلية في مناقشات العقوبات خلال محادثاته مع نائب رئيس ا",
-          "saudi-travelers-ai-flexible-booking-skyscanner-2026-6a6a86: تُبرز الدراسات التحديات المرتبطة بالسفر الجماعي، إذ أشار 46% من المستطلعة آراؤهم إلى أن تنظيم عطلة جماعية أكثر إجهاداً م"
-        ]
-      },
       {
         "what": "second look: cause errors",
         "stories": 2,
@@ -232,26 +162,98 @@
           "iran-seven-day-plan-reopen-hormuz-a8836f: وتراجعت أسعار النفط الجمعة بعد تقرير أفاد بأن مفاوضين أمريكيين وإيرانيين يبحثون في نيويورك صفقة على مراحل لإنهاء المواجه",
           "oecd-raises-2026-global-growth-forecast-e97fa1: وأشارت المنظمة إلى أن السحب من مخزونات النفط العالمية، والتراجع الشديد في واردات الصين من الطاقة، والتحول إلى أنواع وقود"
         ]
+      },
+      {
+        "what": "second look: term errors",
+        "stories": 14,
+        "examples": [
+          "uk-inflation-rises-to-3-1-percent-august-7dcf61: ونمو الدخل الحقيقي بنسبة 0.6% فقط يضيّق هامش الإنفاق أمام الأسر البريطانية.",
+          "uk-inflation-rises-to-3-1-percent-august-7dcf61: وأظهرت بيانات رسمية أن نمو الأجور العادية بلغ 3.5% سنوياً في الأشهر الثلاثة حتى يوليو، وبعد خصم التضخم لم ينمُ الدخل الح",
+          "openai-seeks-1-5-trillion-funding-a2d732: وتجري «أوبن إيه آي» و«أنثروبيك» و«جوجل» محادثات حول التعاون في سلامة الذكاء الاصطناعي منذ يوليو، حين اقترح ديميس هاسابيس"
+        ]
+      },
+      {
+        "what": "second look: period errors",
+        "stories": 12,
+        "examples": [
+          "uk-inflation-rises-to-3-1-percent-august-7dcf61: وبحسب مكتب الإحصاءات الوطني، ارتفعت أسعار الوقود نحو الربع (23%) بين يوليو وأغسطس، فيما بقي تضخم الخدمات عند 3.4%، وظل ا",
+          "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6: سيطرت جماعة الحوثي على جزر حنيش الكبرى والصغرى وجزيرة ميون ومدينة المخا الساحلية في البحر الأحمر، في تقدم يكسر جمود الجب",
+          "turkish-airlines-orders-150-boeing-737-max-e89a62: وكانت الشركتان قد بدأتا التفاوض على الصفقة في 2025، قبل أن تتعطل بسبب خلافات على المحركات، بحسب موقع «أرابيان غلف بزنس إ"
+        ]
+      },
+      {
+        "what": "second look: attribution errors",
+        "stories": 20,
+        "examples": [
+          "saudi-tanker-war-risk-insurance-yanbu-triples-425bf1: وأضافت المصادر أن الأسعار التي تتفق عليها شركات التأمين فعلاً مع عملائها تختلف عن العروض المعلنة، ولا تُنشر عنها بيانات ",
+          "brent-surges-above-109-disruptions-e510e5: وأوضحت المصادر أن الخط كان ينقل ما بين 4 إلى 5 ملايين برميل يومياً قبل إغلاقه.",
+          "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6: وقال بارا شبان من معهد الخدمات الملكية المتحدة (RUSI) للجزيرة الإنجليزية إن السيطرة على الجزر والساحل من الحديدة إلى الم"
+        ]
+      },
+      {
+        "what": "second look: hedge errors",
+        "stories": 15,
+        "examples": [
+          "us-iran-war-cost-38-1-billion-7017c2: 21.7 مليار دولار لاستبدال الذخائر و10.4 مليار لساعات الطيران وتحذير من استنزاف ثلثي مخزون صواريخ الاعتراض",
+          "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6: تقطع السيطرة الحوثية على ساحل البحر الأحمر والجزر المطلة على باب المندب على السعودية مسارين للتصدير: خط الأنابيب المعطل ",
+          "saudi-restarts-east-west-oil-pipeline-698775: مدة استعادة التدفق: من ستة إلى ثمانية أسابيع"
+        ]
+      },
+      {
+        "what": "second look: scope errors",
+        "stories": 17,
+        "examples": [
+          "wto-warns-gdp-loss-2050-trade-fragmentation-8471db: إخفاق الأعضاء الـ166 في إصلاح قواعد المنظمة يتركها دون آليات فاعلة لتسوية النزاعات التجارية وضبط الدعم الحكومي، وهو ما ق",
+          "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c: إغلاق الخط يُجبر الرياض على تصدير نفطها كله عبر مضيق هرمز وسط توترات مع إيران، ويحرم أوروبا من شحنات أُلغيت أو أُجّلت فع",
+          "saudi-uranium-discovery-madinah-630462: وأشار إلى أن السعودية تبني قدرات في المجال النووي محلياً وعبر شراكات دولية فعالة، حسب المصدر."
+        ]
+      },
+      {
+        "what": "second look: figure errors",
+        "stories": 7,
+        "examples": [
+          "trump-backs-us-diesel-export-ban-79317b: وتجاوز سعر البرميل 207 دولارات الثلاثاء، متقدماً على النفط الخام بأكثر من 100 دولار، بحسب «سي إن بي سي».",
+          "brent-tops-105-us-iran-talks-stall-c4eaa4: أما العقود الآجلة للخام الأمريكي تسليم نوفمبر في بورصة «نايمكس» فارتفعت 1.47 دولار (1.60%) إلى 93.63 دولار للبرميل، وبلغ",
+          "hormuz-strait-oil-tanker-rates-record-high-86c98b: ارتفاع تكلفة نقل البرميل 15 دولاراً يضغط على هوامش المصافي ويزيد فاتورة استيراد الطاقة."
+        ]
+      },
+      {
+        "what": "second look: actor errors",
+        "stories": 9,
+        "examples": [
+          "tech-stocks-fall-ai-slowdown-calls-8c019b: وحذّر النائب السابق ديفيد ساكس ورئيس لجنة التجارة الفيدرالية السابق ألفارو بيدويا من أن الاقتراح قد يرقى إلى استحواذ تنظ",
+          "openai-agent-breached-australia-medicare-portal-f2c278: ثم راسلت الشركة وكالة سيرفيسز أستراليا بالبريد الإلكتروني، فأبلغت الوكالة الوزير المختص، ونقل الوزير المعلومات إلى رئيس ",
+          "brent-oil-surges-saudi-pipeline-closure-0b4217: قفز سعر برنت إلى أكثر من 108.5 دولار للبرميل في 14 سبتمبر، بزيادة 3.7%، بعدما أجبرت هجمات بطائرات مسيرة حوثية السعودية ع"
+        ]
+      },
+      {
+        "what": "second look: other errors",
+        "stories": 3,
+        "examples": [
+          "hormuz-alternatives-saudi-oil-qatar-lng-747dc8: وتخسر قطر نحو 20 مليار دولار من الإيرادات السنوية وفق تقديرات «أويل برايس فاينانس»، بسبب خطين للغاز المسال أصابتهما ضربة",
+          "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d: وكان من المقرر عقد اجتماع في عمان يوم الاثنين 14 سبتمبر 2026 بين إيران ودول خليجية عربية لبحث إعادة فتح مضيق هرمز، لكنه ",
+          "hormuz-shipping-traffic-plunges-tensions-5c1d93: وقال محللا «إنغ» للطاقة وارن باترسون وإيفا مانتلي إن التدفقات لا تزال دون مستويات ما قبل الحرب."
+        ]
       }
     ]
   },
   "weekBefore": {
-    "published": 54,
-    "news": 47,
-    "revisedShare": 0.68,
-    "styleFaultsPerStory": 0.89,
-    "styleWarningsPerStory": 0.62,
-    "corrections": 11,
+    "published": 67,
+    "news": 58,
+    "revisedShare": 0.67,
+    "styleFaultsPerStory": 0.69,
+    "styleWarningsPerStory": 0.5,
+    "corrections": 37,
     "usefulness": {
       "withLessons": {
-        "stories": 0,
-        "words": null,
-        "keyFacts": null
+        "stories": 3,
+        "words": 202,
+        "keyFacts": 3.7
       },
       "control": {
-        "stories": 0,
-        "words": null,
-        "keyFacts": null
+        "stories": 2,
+        "words": 229,
+        "keyFacts": 3
       }
     },
     "precheck": {
@@ -270,14 +272,14 @@
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 0,
-      "clean": 0,
-      "corrected": 0,
+      "read": 33,
+      "clean": 5,
+      "corrected": 26,
       "stands": 0,
       "refused": 0,
-      "listed": 0,
+      "listed": 2,
       "unverifiable": 0,
-      "confirmedPerStory": null,
+      "confirmedPerStory": 2.24,
       "withLessons": {
         "read": 0,
         "confirmedPerStory": null
@@ -298,12 +300,74 @@
     },
     "recurring": [
       {
+        "what": "second look: period errors",
+        "stories": 7,
+        "examples": [
+          "us-approves-f35-saudi-arms-deal-915064: أعلنت وزارة الخارجية الأمريكية في 18 سبتمبر موافقتها على صفقة بيع عسكري محتملة للسعودية تشمل 48 طائرة إف-35 لايتنينغ 2 ذ",
+          "russia-temporary-management-western-assets-1dadf4: نُشر المرسوم على البوابة القانونية الرسمية لروسيا الخميس بحسب بيان «نستله»، وانخفضت أسهم الشركة 2.2% في تداولات صباح الج",
+          "warren-buffett-steps-down-berkshire-chairman-457ee7: وأضاف أن ابنه هوارد سيحمي ثقافة الشركة وقيمها، في حين يتولى غريغ أبيل الإدارة اليومية بوصفه الرئيس التنفيذي منذ مايو 202"
+        ]
+      },
+      {
+        "what": "second look: attribution errors",
+        "stories": 18,
+        "examples": [
+          "us-approves-f35-saudi-arms-deal-915064: أكد البيت الأبيض في 18 سبتمبر موافقة إدارة ترامب على الصفقة المحتملة.",
+          "russia-temporary-management-western-assets-1dadf4: المرسوم الرئاسي يستهدف حماية الحقوق وضمان استمرارية العمليات لصالح الأطراف المعنية",
+          "russia-temporary-management-western-assets-1dadf4: لدى «نستله» نحو 7000 موظف وستة مصانع في روسيا بحسب بيانات شركة Vontobel السويسرية للاستثمار، وأوقفت معظم مبيعاتها غير ال"
+        ]
+      },
+      {
+        "what": "second look: actor errors",
+        "stories": 6,
+        "examples": [
+          "trump-announces-ban-cnn-msn-politico-white-house-fd6870: ترامب يحظر سي إن إن وإم إس إن بي سي وبوليتيكو من البيت الأبيض",
+          "trump-announces-ban-cnn-msn-politico-white-house-fd6870: حظر الرئيس الأمريكي دونالد ترامب «سي إن إن» و«إم إس إن بي سي» و«بوليتيكو» من البيت الأبيض فوراً، في منشور على «تروث سوشي",
+          "trump-announces-ban-cnn-msn-politico-white-house-fd6870: كتب ترامب على «تروث سوشيال» إنه فخور بالإعلان عن الحظر الفوري على «سي إن إن» و«إم إس إن بي سي» و«بوليتيكو» نتيجة تقاريره"
+        ]
+      },
+      {
+        "what": "second look: hedge errors",
+        "stories": 9,
+        "examples": [
+          "trump-announces-ban-cnn-msn-politico-white-house-fd6870: «سي إن إن» تصف القرار بالاعتداء غير القانوني..",
+          "trump-announces-ban-cnn-msn-politico-white-house-fd6870: من جانبها، قالت «سي إن إن» إنها ستواصل التغطية من البيت الأبيض دون عائق، ووصفت الحظر بأنه اعتداء غير قانوني على حقها الد",
+          "us-denmark-greenland-security-deal-eac792: التكلفة على الولايات المتحدة: صفر"
+        ]
+      },
+      {
+        "what": "second look: term errors",
+        "stories": 4,
+        "examples": [
+          "trump-signs-russia-sanctions-oil-tariffs-law-ad758a: وكان مجلس النواب قد وافق على القانون بأغلبية 262 صوتاً مقابل 159، وصوّت 58 ديمقراطياً لصالحه في حين عارضه 7 جمهوريين، في",
+          "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb: وبلغ حجم التداول على هذه العقود 6 ملايين دولار في 24 ساعة، والفائدة المفتوحة 31 مليون دولار.",
+          "fed-rate-hike-oil-109-gulf-economies-a07bff: ومع بلوغ عائد السندات الأمريكية لأكثر من عشر سنوات مستوى 5.04%، تزداد كلفة إصدار السندات الدولارية التي تموّل مشاريع الب"
+        ]
+      },
+      {
+        "what": "second look: figure errors",
+        "stories": 2,
+        "examples": [
+          "eu-fuel-prices-record-iran-saudi-supply-8376ff: أظهرت بيانات جمعية ADAC أن البنزين في ألمانيا بلغ 2.31 يورو للتر الأربعاء، وتجاوز الديزل في هولندا 2.78 يورو.",
+          "faa-halts-east-coast-flights-equipment-outage-d180ab: كما أن إلغاء أكثر من 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية"
+        ]
+      },
+      {
+        "what": "second look: scope errors",
+        "stories": 7,
+        "examples": [
+          "trump-announces-ai-force-and-czar-f4c7aa: ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها",
+          "trump-xi-summit-washington-2026-4e439e: يدخل ترامب القمة والتضخم عند 3.4٪ وأسعار الوقود فوق 6 دولارات للغالون، قبل انتخابات منتصف المدة في نوفمبر.",
+          "oil-prices-decline-china-iran-pressure-41b59d: لكن تراجع حركة الملاحة في مضيق هرمز إلى ثلاث سفن يومياً يُبقي الأسواق عرضة لقفزات سعرية جديدة."
+        ]
+      },
+      {
         "what": "style: الإسناد في كل جملة تقريباً (# من # جملة فيها «وفقاً/بحسب»)",
-        "stories": 10,
+        "stories": 9,
         "examples": [
           "bank-of-japan-raises-rates-to-31-year-high-d62cc8",
           "global-markets-close-volatile-week-045574",
-          "oil-prices-decline-china-iran-pressure-41b59d"
+          "openai-anthropic-launch-cheaper-ai-models-979a5b"
         ]
       },
       {

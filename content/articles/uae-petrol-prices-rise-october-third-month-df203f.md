@@ -50,15 +50,7 @@ chart:
         - 4.28
         - 4.21
 table: null
-image:
-  url: https://live.staticflickr.com/3042/3250964698_41040d82a3_b.jpg
-  width: 1024
-  height: 576
-  alt: محطة وقود في الإمارات
-  credit: Augapfel · CC BY 2.0 · فليكر
-  license: CC BY 2.0
-  licenseUrl: https://creativecommons.org/licenses/by/2.0/
-  pageUrl: https://www.flickr.com/photos/47038415@N00/3250964698
+image: null
 sources:
   - name: أرابيان غلف بزنس إنسايت
     nameEn: AGBI (Arabian Gulf Business Insight)
