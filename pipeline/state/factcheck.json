@@ -10329,6 +10329,32 @@
       "outcome": "failed",
       "failures": 2,
       "error": "Claude failed for role checker:"
+    },
+    "egypt-stock-market-institutional-selling-developers-union-la-8d6ff7": {
+      "at": "2026-10-03T11:50:02.238Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-07T23:46:35.913Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "outcome": "failed",
+      "failures": 1,
+      "error": "Claude failed for role checker:"
+    },
+    "us-jobs-report-rate-hike-citi-2027-31dcfc": {
+      "at": "2026-10-03T11:50:02.258Z",
+      "kind": "news",
+      "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-07T23:42:12.645Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "outcome": "failed",
+      "failures": 1,
+      "error": "Claude failed for role checker:"
     }
   }
 }
