@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-03T11:50:32.298Z",
+  "updatedAt": "2026-10-03T14:41:05.114Z",
   "source": "Yahoo Finance",
   "quotes": [
     {
@@ -155,7 +155,7 @@
       "changeMode": "pct",
       "price": 53055,
       "prev": 51894.8,
-      "time": "2026-10-01T11:25:11.000Z",
+      "time": "2026-10-01T11:25:08.000Z",
       "currency": "EGP",
       "change": 1160.2,
       "pct": 2.2357,
@@ -521,11 +521,11 @@
       "decimals": 2,
       "changeMode": "pct",
       "price": 51176.96,
-      "prev": 50926.6,
+      "prev": 50926.56,
       "time": "2026-10-02T21:00:17.000Z",
       "currency": "USD",
-      "change": 250.36,
-      "pct": 0.4916,
+      "change": 250.4,
+      "pct": 0.4917,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -1227,7 +1227,7 @@
       "changeMode": "pct",
       "price": 1.1257,
       "prev": 1.1245,
-      "time": "2026-10-02T21:29:05.000Z",
+      "time": "2026-10-02T21:29:47.000Z",
       "currency": "USD",
       "change": 0.0012,
       "pct": 0.1067,
@@ -1368,7 +1368,7 @@
       "changeMode": "pct",
       "price": 1.324,
       "prev": 1.3194,
-      "time": "2026-10-02T21:29:05.000Z",
+      "time": "2026-10-02T21:29:47.000Z",
       "currency": "USD",
       "change": 0.0046,
       "pct": 0.3486,
@@ -1932,7 +1932,7 @@
       "changeMode": "pct",
       "price": 6.7048,
       "prev": 6.6987,
-      "time": "2026-10-03T03:30:31.000Z",
+      "time": "2026-10-03T03:30:32.000Z",
       "currency": "CNY",
       "change": 0.0061,
       "pct": 0.0911,
@@ -2355,7 +2355,7 @@
       "changeMode": "pct",
       "price": 91.11,
       "prev": 92.87,
-      "time": "2026-10-02T20:59:59.000Z",
+      "time": "2026-10-02T21:00:00.000Z",
       "currency": "USD",
       "change": -1.76,
       "pct": -1.8951,
@@ -3481,12 +3481,12 @@
       "unit": "دولار",
       "decimals": 0,
       "changeMode": "pct",
-      "price": 84661.71,
+      "price": 84736.87,
       "prev": 84506.336,
-      "time": "2026-10-03T11:50:25.000Z",
+      "time": "2026-10-03T14:41:01.000Z",
       "currency": "USD",
-      "change": 155.374,
-      "pct": 0.1839,
+      "change": 230.534,
+      "pct": 0.2728,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -3608,7 +3608,7 @@
         },
         {
           "d": "2026-10-03",
-          "c": 84661.71
+          "c": 84736.87
         }
       ]
     }
