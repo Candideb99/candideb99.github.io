@@ -90,31 +90,41 @@
       "read": 6,
       "confirmedPerStory": 0,
       "photosPending": 1
+    },
+    {
+      "date": "2026-10-03",
+      "published": 0,
+      "news": 0,
+      "styleFaultsPerStory": null,
+      "corrections": 0,
+      "read": 6,
+      "confirmedPerStory": 0,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-10-02T13:51:24.741Z",
+  "updatedAt": "2026-10-03T12:32:09.680Z",
   "week": {
-    "published": 95,
-    "news": 81,
-    "revisedShare": 0.8,
+    "published": 75,
+    "news": 64,
+    "revisedShare": 0.78,
     "styleFaultsPerStory": 0,
-    "styleWarningsPerStory": 0.11,
-    "corrections": 98,
+    "styleWarningsPerStory": 0.06,
+    "corrections": 74,
     "usefulness": {
       "withLessons": {
-        "stories": 71,
-        "words": 266,
-        "keyFacts": 4.7
+        "stories": 57,
+        "words": 273,
+        "keyFacts": 4.8
       },
       "control": {
-        "stories": 10,
-        "words": 248,
-        "keyFacts": 5.4
+        "stories": 7,
+        "words": 235,
+        "keyFacts": 5.9
       }
     },
     "precheck": {
-      "checked": 72,
-      "clean": 66,
+      "checked": 64,
+      "clean": 58,
       "repaired": 6,
       "held": 0,
       "errorsFound": 6,
@@ -122,108 +132,91 @@
     },
     "outcomes": {
       "repairedBeforePublication": 6,
-      "correctionsVerifiedClean": 40,
+      "correctionsVerifiedClean": 32,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 2
     },
     "secondLook": {
-      "read": 133,
-      "clean": 51,
-      "corrected": 56,
+      "read": 85,
+      "clean": 28,
+      "corrected": 34,
       "stands": 0,
       "refused": 1,
-      "listed": 19,
+      "listed": 12,
       "unverifiable": 0,
-      "confirmedPerStory": 0.98,
+      "confirmedPerStory": 1,
       "withLessons": {
-        "read": 27,
+        "read": 15,
         "confirmedPerStory": 0
       },
       "claudeWithout": {
-        "read": 47,
-        "confirmedPerStory": 0.66
+        "read": 19,
+        "confirmedPerStory": 0.42
       }
     },
     "runs": {
       "count": 24,
-      "written": 47,
+      "written": 27,
       "refused": 1,
-      "callsPerStory": 15.5,
-      "tokensPerStory": 160617,
-      "costPerStory": 1.59,
+      "callsPerStory": 16,
+      "tokensPerStory": 162869,
+      "costPerStory": 1.61,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": [
       {
-        "what": "second look: cause errors",
-        "stories": 2,
-        "examples": [
-          "iran-seven-day-plan-reopen-hormuz-a8836f: وتراجعت أسعار النفط الجمعة بعد تقرير أفاد بأن مفاوضين أمريكيين وإيرانيين يبحثون في نيويورك صفقة على مراحل لإنهاء المواجه",
-          "oecd-raises-2026-global-growth-forecast-e97fa1: وأشارت المنظمة إلى أن السحب من مخزونات النفط العالمية، والتراجع الشديد في واردات الصين من الطاقة، والتحول إلى أنواع وقود"
-        ]
-      },
-      {
-        "what": "second look: term errors",
+        "what": "second look: attribution errors",
         "stories": 14,
         "examples": [
-          "uk-inflation-rises-to-3-1-percent-august-7dcf61: ونمو الدخل الحقيقي بنسبة 0.6% فقط يضيّق هامش الإنفاق أمام الأسر البريطانية.",
-          "uk-inflation-rises-to-3-1-percent-august-7dcf61: وأظهرت بيانات رسمية أن نمو الأجور العادية بلغ 3.5% سنوياً في الأشهر الثلاثة حتى يوليو، وبعد خصم التضخم لم ينمُ الدخل الح",
-          "openai-seeks-1-5-trillion-funding-a2d732: وتجري «أوبن إيه آي» و«أنثروبيك» و«جوجل» محادثات حول التعاون في سلامة الذكاء الاصطناعي منذ يوليو، حين اقترح ديميس هاسابيس"
+          "us-10-year-treasury-yield-highest-since-2007-2a6e1d: وتستند احتمالات رفع الفائدة في أكتوبر إلى أداة «فيدووتش» التابعة لمجموعة «سي إم إي» (CME Group)، التي أظهرت أنها كانت 55",
+          "openai-anthropic-launch-cheaper-ai-models-979a5b: وبحسب «تك كرانش»، أضافت «أوبن إيه آي» فئتين جديدتين إلى عائلة «جي بي تي-6» هما «سول» و«لونا»، وخفّضت أسعار واجهتها البرم",
+          "anthropic-chooses-nasdaq-for-ipo-57a51e: أنثروبيك اختارت بورصة ناسداك لإجراء طرحها العام الأولي، حسبما أكد موقع بزنس إنسايدر."
         ]
       },
       {
         "what": "second look: period errors",
-        "stories": 12,
+        "stories": 4,
         "examples": [
-          "uk-inflation-rises-to-3-1-percent-august-7dcf61: وبحسب مكتب الإحصاءات الوطني، ارتفعت أسعار الوقود نحو الربع (23%) بين يوليو وأغسطس، فيما بقي تضخم الخدمات عند 3.4%، وظل ا",
-          "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6: سيطرت جماعة الحوثي على جزر حنيش الكبرى والصغرى وجزيرة ميون ومدينة المخا الساحلية في البحر الأحمر، في تقدم يكسر جمود الجب",
-          "turkish-airlines-orders-150-boeing-737-max-e89a62: وكانت الشركتان قد بدأتا التفاوض على الصفقة في 2025، قبل أن تتعطل بسبب خلافات على المحركات، بحسب موقع «أرابيان غلف بزنس إ"
-        ]
-      },
-      {
-        "what": "second look: attribution errors",
-        "stories": 20,
-        "examples": [
-          "saudi-tanker-war-risk-insurance-yanbu-triples-425bf1: وأضافت المصادر أن الأسعار التي تتفق عليها شركات التأمين فعلاً مع عملائها تختلف عن العروض المعلنة، ولا تُنشر عنها بيانات ",
-          "brent-surges-above-109-disruptions-e510e5: وأوضحت المصادر أن الخط كان ينقل ما بين 4 إلى 5 ملايين برميل يومياً قبل إغلاقه.",
-          "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6: وقال بارا شبان من معهد الخدمات الملكية المتحدة (RUSI) للجزيرة الإنجليزية إن السيطرة على الجزر والساحل من الحديدة إلى الم"
+          "us-sanctions-iran-aviation-take-effect-5095ea: وأفادت وكالة تسنيم بأن الرحلات المغادرة من إيران إلى بغداد ومسقط ستتوقف اعتباراً من منتصف الليل، أي قبل سريان العقوبات ا",
+          "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d: وأغلقت السعودية خط أنابيب الشرق-الغرب بعد هجمات في منطقتي الرياض والمدينة المنورة يوم الخميس، وفقاً لبيان وزارة الطاقة ا",
+          "ai-leaders-warn-openai-ipo-delay-b7d3e6: بلغت قيمة أنثروبيك 965 مليار دولار في أحدث جولة تمويلية مطلع العام، وقيمة «أوبن إيه آي» 852 مليار دولار في آخر تقييم لها"
         ]
       },
       {
         "what": "second look: hedge errors",
-        "stories": 15,
+        "stories": 11,
         "examples": [
-          "us-iran-war-cost-38-1-billion-7017c2: 21.7 مليار دولار لاستبدال الذخائر و10.4 مليار لساعات الطيران وتحذير من استنزاف ثلثي مخزون صواريخ الاعتراض",
-          "houthis-seize-red-sea-islands-mocha-bab-al-mandeb-55b0d6: تقطع السيطرة الحوثية على ساحل البحر الأحمر والجزر المطلة على باب المندب على السعودية مسارين للتصدير: خط الأنابيب المعطل ",
-          "saudi-restarts-east-west-oil-pipeline-698775: مدة استعادة التدفق: من ستة إلى ثمانية أسابيع"
+          "anthropic-chooses-nasdaq-for-ipo-57a51e: «أنثروبيك» تختار ناسداك لطرح أولي بتقييم 2 تريليون دولار",
+          "anthropic-chooses-nasdaq-for-ipo-57a51e: وتخطط لتحقيق تقييم قدره 2 تريليون دولار في طرحها الأولي.",
+          "anthropic-chooses-nasdaq-for-ipo-57a51e: التقييم المستهدف: 2 تريليون دولار"
         ]
       },
       {
-        "what": "second look: scope errors",
-        "stories": 17,
+        "what": "second look: term errors",
+        "stories": 8,
         "examples": [
-          "wto-warns-gdp-loss-2050-trade-fragmentation-8471db: إخفاق الأعضاء الـ166 في إصلاح قواعد المنظمة يتركها دون آليات فاعلة لتسوية النزاعات التجارية وضبط الدعم الحكومي، وهو ما ق",
-          "saudi-east-west-pipeline-aramco-yanbu-suspension-brent-rise-6bc71c: إغلاق الخط يُجبر الرياض على تصدير نفطها كله عبر مضيق هرمز وسط توترات مع إيران، ويحرم أوروبا من شحنات أُلغيت أو أُجّلت فع",
-          "saudi-uranium-discovery-madinah-630462: وأشار إلى أن السعودية تبني قدرات في المجال النووي محلياً وعبر شراكات دولية فعالة، حسب المصدر."
-        ]
-      },
-      {
-        "what": "second look: figure errors",
-        "stories": 7,
-        "examples": [
-          "trump-backs-us-diesel-export-ban-79317b: وتجاوز سعر البرميل 207 دولارات الثلاثاء، متقدماً على النفط الخام بأكثر من 100 دولار، بحسب «سي إن بي سي».",
-          "brent-tops-105-us-iran-talks-stall-c4eaa4: أما العقود الآجلة للخام الأمريكي تسليم نوفمبر في بورصة «نايمكس» فارتفعت 1.47 دولار (1.60%) إلى 93.63 دولار للبرميل، وبلغ",
-          "hormuz-strait-oil-tanker-rates-record-high-86c98b: ارتفاع تكلفة نقل البرميل 15 دولاراً يضغط على هوامش المصافي ويزيد فاتورة استيراد الطاقة."
+          "anthropic-chooses-nasdaq-for-ipo-57a51e: الإيرادات السنوية: 65 مليار دولار",
+          "saudi-east-west-pipeline-drone-attack-8ce715: يربط خط الشرق-الغرب النفطي بين مدينة أبقاع قرب الخليج وميناء ينبع على ساحل البحر الأحمر، وزادت السعودية من استخدامه منذ ",
+          "saudi-east-west-pipeline-closure-brent-d9de59: وقال أمين ناصر، الرئيس التنفيذي لأرامكو السعودية، الشهر الماضي إن خط الشرق-الغرب خفّف من أثر اضطرابات إمدادات النفط المر"
         ]
       },
       {
         "what": "second look: actor errors",
-        "stories": 9,
+        "stories": 6,
         "examples": [
-          "tech-stocks-fall-ai-slowdown-calls-8c019b: وحذّر النائب السابق ديفيد ساكس ورئيس لجنة التجارة الفيدرالية السابق ألفارو بيدويا من أن الاقتراح قد يرقى إلى استحواذ تنظ",
-          "openai-agent-breached-australia-medicare-portal-f2c278: ثم راسلت الشركة وكالة سيرفيسز أستراليا بالبريد الإلكتروني، فأبلغت الوكالة الوزير المختص، ونقل الوزير المعلومات إلى رئيس ",
-          "brent-oil-surges-saudi-pipeline-closure-0b4217: قفز سعر برنت إلى أكثر من 108.5 دولار للبرميل في 14 سبتمبر، بزيادة 3.7%، بعدما أجبرت هجمات بطائرات مسيرة حوثية السعودية ع"
+          "anthropic-chooses-nasdaq-for-ipo-57a51e: وأوضحت سي إن بي سي أن أنثروبيك وفتحت آفاقاً للتعاون مع شركات مثل Nscale، وآي دي إم، وسبيس إكس، وجوجل في صفقات حاسوبية بق",
+          "egypt-bme-catl-battery-plant-aa81f7: مصر و«كاتل» الصينية تطلقان مصنع بطاريات باستثمار 39 مليون دولار",
+          "egypt-bme-catl-battery-plant-aa81f7: حضر رئيس الوزراء مصطفى مدبولي توقيع عقد إنشاء المصنع، إلى جانب وزير الصناعة خالد هاشم ورئيس BME ماجد وهاب ومدير CATL للا"
+        ]
+      },
+      {
+        "what": "second look: scope errors",
+        "stories": 13,
+        "examples": [
+          "hormuz-alternatives-saudi-oil-qatar-lng-747dc8: تدفقات هرمز من مستويات ما قبل الحرب: نحو 80%",
+          "hormuz-alternatives-saudi-oil-qatar-lng-747dc8: في هذه الحال تستقر التدفقات عبر هرمز عند نحو 80% من مستويات ما قبل الحرب، كما قدّرها رايان ماكي من «تي دي للأوراق المالي",
+          "ai-leaders-warn-openai-ipo-delay-b7d3e6: ووصف جورج أريسون الرئيس التنفيذي لشركة «غرايندر» تحذيرات كوكسون بأنها رؤية معادية للحضارة سائدة في أنثروبيك، وأمر مهندسي"
         ]
       },
       {
@@ -234,31 +227,40 @@
           "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d: وكان من المقرر عقد اجتماع في عمان يوم الاثنين 14 سبتمبر 2026 بين إيران ودول خليجية عربية لبحث إعادة فتح مضيق هرمز، لكنه ",
           "hormuz-shipping-traffic-plunges-tensions-5c1d93: وقال محللا «إنغ» للطاقة وارن باترسون وإيفا مانتلي إن التدفقات لا تزال دون مستويات ما قبل الحرب."
         ]
+      },
+      {
+        "what": "second look: figure errors",
+        "stories": 5,
+        "examples": [
+          "hormuz-strait-oil-tanker-rates-record-high-86c98b: ارتفاع تكلفة نقل البرميل 15 دولاراً يضغط على هوامش المصافي ويزيد فاتورة استيراد الطاقة.",
+          "us-inflation-august-gasoline-fed-rate-hike-16ce27: مؤشر أسعار المستهلكين يرتفع 0.4% شهرياً و3.4% سنوياً مدفوعاً بارتفاع البنزين 3.9%، في وقت تزداد فيه توقعات رفع الفائدة ا",
+          "us-inflation-august-gasoline-fed-rate-hike-16ce27: احتمال رفع الفائدة: 86% حسب سي أم إي فيدووتش"
+        ]
       }
     ]
   },
   "weekBefore": {
-    "published": 67,
-    "news": 58,
-    "revisedShare": 0.67,
-    "styleFaultsPerStory": 0.69,
-    "styleWarningsPerStory": 0.5,
-    "corrections": 37,
+    "published": 81,
+    "news": 69,
+    "revisedShare": 0.75,
+    "styleFaultsPerStory": 0.48,
+    "styleWarningsPerStory": 0.46,
+    "corrections": 61,
     "usefulness": {
       "withLessons": {
-        "stories": 3,
-        "words": 202,
-        "keyFacts": 3.7
+        "stories": 17,
+        "words": 231,
+        "keyFacts": 3.9
       },
       "control": {
-        "stories": 2,
-        "words": 229,
-        "keyFacts": 3
+        "stories": 5,
+        "words": 258,
+        "keyFacts": 3.8
       }
     },
     "precheck": {
-      "checked": 0,
-      "clean": 0,
+      "checked": 8,
+      "clean": 8,
       "repaired": 0,
       "held": 0,
       "errorsFound": 0,
@@ -266,27 +268,27 @@
     },
     "outcomes": {
       "repairedBeforePublication": 0,
-      "correctionsVerifiedClean": 0,
+      "correctionsVerifiedClean": 8,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 33,
-      "clean": 5,
-      "corrected": 26,
+      "read": 85,
+      "clean": 28,
+      "corrected": 48,
       "stands": 0,
       "refused": 0,
-      "listed": 2,
+      "listed": 9,
       "unverifiable": 0,
-      "confirmedPerStory": 2.24,
+      "confirmedPerStory": 1.41,
       "withLessons": {
-        "read": 0,
-        "confirmedPerStory": null
+        "read": 12,
+        "confirmedPerStory": 0
       },
       "claudeWithout": {
-        "read": 0,
-        "confirmedPerStory": null
+        "read": 28,
+        "confirmedPerStory": 0.82
       }
     },
     "runs": {
@@ -301,7 +303,7 @@
     "recurring": [
       {
         "what": "second look: period errors",
-        "stories": 7,
+        "stories": 15,
         "examples": [
           "us-approves-f35-saudi-arms-deal-915064: أعلنت وزارة الخارجية الأمريكية في 18 سبتمبر موافقتها على صفقة بيع عسكري محتملة للسعودية تشمل 48 طائرة إف-35 لايتنينغ 2 ذ",
           "russia-temporary-management-western-assets-1dadf4: نُشر المرسوم على البوابة القانونية الرسمية لروسيا الخميس بحسب بيان «نستله»، وانخفضت أسهم الشركة 2.2% في تداولات صباح الج",
@@ -310,7 +312,7 @@
       },
       {
         "what": "second look: attribution errors",
-        "stories": 18,
+        "stories": 24,
         "examples": [
           "us-approves-f35-saudi-arms-deal-915064: أكد البيت الأبيض في 18 سبتمبر موافقة إدارة ترامب على الصفقة المحتملة.",
           "russia-temporary-management-western-assets-1dadf4: المرسوم الرئاسي يستهدف حماية الحقوق وضمان استمرارية العمليات لصالح الأطراف المعنية",
@@ -319,7 +321,7 @@
       },
       {
         "what": "second look: actor errors",
-        "stories": 6,
+        "stories": 9,
         "examples": [
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: ترامب يحظر سي إن إن وإم إس إن بي سي وبوليتيكو من البيت الأبيض",
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: حظر الرئيس الأمريكي دونالد ترامب «سي إن إن» و«إم إس إن بي سي» و«بوليتيكو» من البيت الأبيض فوراً، في منشور على «تروث سوشي",
@@ -328,7 +330,7 @@
       },
       {
         "what": "second look: hedge errors",
-        "stories": 9,
+        "stories": 13,
         "examples": [
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: «سي إن إن» تصف القرار بالاعتداء غير القانوني..",
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: من جانبها، قالت «سي إن إن» إنها ستواصل التغطية من البيت الأبيض دون عائق، ووصفت الحظر بأنه اعتداء غير قانوني على حقها الد",
@@ -337,7 +339,7 @@
       },
       {
         "what": "second look: term errors",
-        "stories": 4,
+        "stories": 10,
         "examples": [
           "trump-signs-russia-sanctions-oil-tariffs-law-ad758a: وكان مجلس النواب قد وافق على القانون بأغلبية 262 صوتاً مقابل 159، وصوّت 58 ديمقراطياً لصالحه في حين عارضه 7 جمهوريين، في",
           "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb: وبلغ حجم التداول على هذه العقود 6 ملايين دولار في 24 ساعة، والفائدة المفتوحة 31 مليون دولار.",
@@ -346,15 +348,16 @@
       },
       {
         "what": "second look: figure errors",
-        "stories": 2,
+        "stories": 4,
         "examples": [
           "eu-fuel-prices-record-iran-saudi-supply-8376ff: أظهرت بيانات جمعية ADAC أن البنزين في ألمانيا بلغ 2.31 يورو للتر الأربعاء، وتجاوز الديزل في هولندا 2.78 يورو.",
-          "faa-halts-east-coast-flights-equipment-outage-d180ab: كما أن إلغاء أكثر من 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية"
+          "faa-halts-east-coast-flights-equipment-outage-d180ab: كما أن إلغاء أكثر من 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية",
+          "trump-backs-us-diesel-export-ban-79317b: وتجاوز سعر البرميل 207 دولارات الثلاثاء، متقدماً على النفط الخام بأكثر من 100 دولار، بحسب «سي إن بي سي»."
         ]
       },
       {
         "what": "second look: scope errors",
-        "stories": 7,
+        "stories": 11,
         "examples": [
           "trump-announces-ai-force-and-czar-f4c7aa: ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها",
           "trump-xi-summit-washington-2026-4e439e: يدخل ترامب القمة والتضخم عند 3.4٪ وأسعار الوقود فوق 6 دولارات للغالون، قبل انتخابات منتصف المدة في نوفمبر.",
@@ -362,12 +365,20 @@
         ]
       },
       {
-        "what": "style: الإسناد في كل جملة تقريباً (# من # جملة فيها «وفقاً/بحسب»)",
-        "stories": 9,
+        "what": "second look: cause errors",
+        "stories": 2,
         "examples": [
-          "bank-of-japan-raises-rates-to-31-year-high-d62cc8",
-          "global-markets-close-volatile-week-045574",
-          "openai-anthropic-launch-cheaper-ai-models-979a5b"
+          "iran-seven-day-plan-reopen-hormuz-a8836f: وتراجعت أسعار النفط الجمعة بعد تقرير أفاد بأن مفاوضين أمريكيين وإيرانيين يبحثون في نيويورك صفقة على مراحل لإنهاء المواجه",
+          "oecd-raises-2026-global-growth-forecast-e97fa1: وأشارت المنظمة إلى أن السحب من مخزونات النفط العالمية، والتراجع الشديد في واردات الصين من الطاقة، والتحول إلى أنواع وقود"
+        ]
+      },
+      {
+        "what": "style: الإسناد في كل جملة تقريباً (# من # جملة فيها «وفقاً/بحسب»)",
+        "stories": 6,
+        "examples": [
+          "openai-anthropic-launch-cheaper-ai-models-979a5b",
+          "paramount-settles-with-us-states-e71142",
+          "saudi-restarts-east-west-oil-pipeline-698775"
         ]
       },
       {
