@@ -10357,7 +10357,7 @@
       "error": "Claude failed for role checker:"
     },
     "hormuz-escalation-oil-six-week-high-605cff": {
-      "at": "2026-10-03T21:28:41.909Z",
+      "at": "2026-10-04T06:03:46.296Z",
       "kind": "news",
       "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
       "lessons": null,
@@ -10366,11 +10366,11 @@
       "sourcesRead": 3,
       "sourcesAll": 4,
       "outcome": "failed",
-      "failures": 1,
+      "failures": 2,
       "error": "Claude failed for role checker:"
     },
     "egypt-uae-gov-partnership-extension-ee1f1d": {
-      "at": "2026-10-03T21:28:41.941Z",
+      "at": "2026-10-04T06:03:46.332Z",
       "kind": "news",
       "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
       "lessons": null,
@@ -10379,7 +10379,7 @@
       "sourcesRead": 4,
       "sourcesAll": 4,
       "outcome": "failed",
-      "failures": 1,
+      "failures": 2,
       "error": "Claude failed for role checker:"
     }
   }
