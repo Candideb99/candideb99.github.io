@@ -1,0 +1,46 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-04T18:40:51.773Z",
+  "durationSec": 12,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "seoul-texas-gas-plant-ai-data-centers-e9057c",
+      "title": "اتفاق كوري أمريكي على استثمار 22.3 مليار دولار في محطة غاز بتكساس",
+      "kind": "news",
+      "outcome": "failed",
+      "counts": null,
+      "confirmed": []
+    },
+    {
+      "slug": "oman-trade-surplus-june-2026-b70599",
+      "title": "الفائض التجاري العماني يقفز 51% إلى 12.2 مليار دولار",
+      "kind": "news",
+      "outcome": "failed",
+      "counts": null,
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 0,
+    "failures": 6,
+    "promptTokens": 0,
+    "completionTokens": 0,
+    "cacheReadTokens": 0,
+    "costUsd": 0,
+    "byModel": {},
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[18:40:52] second look: 2 to read now (8 published pieces not yet read; 50 read clean before publication and left out of the audit sample)",
+    "[18:40:55] llm fail role=checker model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[18:40:55] llm fail role=checker model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[18:40:59] llm fail role=checker model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[18:40:59] llm fail role=checker model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[18:41:03] llm fail role=checker model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[18:41:03] seoul-texas-gas-plant-ai-data-centers-e9057c: the check failed (Claude failed for role checker:)",
+    "[18:41:04] llm fail role=checker model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[18:41:04] oman-trade-surplus-june-2026-b70599: the check failed (Claude failed for role checker:)"
+  ]
+}

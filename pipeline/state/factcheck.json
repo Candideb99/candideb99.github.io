@@ -10383,7 +10383,7 @@
       "error": "Claude failed for role checker:"
     },
     "seoul-texas-gas-plant-ai-data-centers-e9057c": {
-      "at": "2026-10-04T12:33:56.466Z",
+      "at": "2026-10-04T18:40:52.200Z",
       "kind": "news",
       "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
       "lessons": null,
@@ -10392,11 +10392,11 @@
       "sourcesRead": 2,
       "sourcesAll": 2,
       "outcome": "failed",
-      "failures": 1,
+      "failures": 2,
       "error": "Claude failed for role checker:"
     },
     "oman-trade-surplus-june-2026-b70599": {
-      "at": "2026-10-04T12:33:56.436Z",
+      "at": "2026-10-04T18:40:52.177Z",
       "kind": "news",
       "writer": "nvidia/nemotron-3-ultra-550b-a55b:free",
       "lessons": null,
@@ -10405,7 +10405,7 @@
       "sourcesRead": 1,
       "sourcesAll": 1,
       "outcome": "failed",
-      "failures": 1,
+      "failures": 2,
       "error": "Claude failed for role checker:"
     }
   }
