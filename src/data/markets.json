@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-04T12:34:25.818Z",
+  "updatedAt": "2026-10-04T13:29:39.920Z",
   "source": "Yahoo Finance",
   "quotes": [
     {
@@ -14,7 +14,7 @@
       "changeMode": "pct",
       "price": 10505.84,
       "prev": 10392.97,
-      "time": "2026-10-04T12:19:22.000Z",
+      "time": "2026-10-04T12:20:00.000Z",
       "currency": "SAR",
       "change": 112.87,
       "pct": 1.086,
@@ -3485,12 +3485,12 @@
       "unit": "دولار",
       "decimals": 0,
       "changeMode": "pct",
-      "price": 85259.55,
+      "price": 85216.76,
       "prev": 84742.47,
-      "time": "2026-10-04T12:34:21.000Z",
+      "time": "2026-10-04T13:29:37.000Z",
       "currency": "USD",
-      "change": 517.08,
-      "pct": 0.6102,
+      "change": 474.29,
+      "pct": 0.5597,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -3612,7 +3612,7 @@
         },
         {
           "d": "2026-10-04",
-          "c": 85259.55
+          "c": 85216.76
         }
       ]
     }
