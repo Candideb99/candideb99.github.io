@@ -1,0 +1,49 @@
+{
+  "at": "2026-10-05T14:27:53.077Z",
+  "checker": "f6d38e4947",
+  "live": 29,
+  "liveHash": "5c629d81ea",
+  "kept": 0,
+  "decision": "keep",
+  "reason": "unproven so far: better in 0 pairs, worse in 2, tied in 8 (evidence ×0.3 of 20; harm ×2.3 of 10)",
+  "vsKept": {
+    "n": 10,
+    "better": 0,
+    "worse": 2,
+    "tied": 8,
+    "down": 0,
+    "up": 5,
+    "e": 0.3333333333333335,
+    "harm": 2.3333333333333353,
+    "saysLess": 0.16666666666668742
+  },
+  "own": {
+    "n": 1,
+    "better": 0,
+    "worse": 1,
+    "tied": 0,
+    "down": 0,
+    "up": 1,
+    "e": 0.5,
+    "harm": 1.4999999999999998,
+    "saysLess": 0.5
+  },
+  "vsNone": {
+    "n": 10,
+    "better": 0,
+    "worse": 2,
+    "tied": 8,
+    "down": 0,
+    "up": 5,
+    "e": 0.3333333333333335,
+    "harm": 2.3333333333333353,
+    "saysLess": 0.16666666666668742
+  },
+  "canary": {
+    "seeded": 3,
+    "found": 3,
+    "falseFlags": 0,
+    "alarm": false
+  },
+  "calls": 0
+}
