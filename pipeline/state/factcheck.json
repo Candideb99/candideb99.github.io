@@ -10433,6 +10433,32 @@
       "outcome": "failed",
       "failures": 2,
       "error": "Claude failed for role checker:"
+    },
+    "egypt-sczone-factories-investments-5309ca": {
+      "at": "2026-10-05T14:59:41.161Z",
+      "kind": "news",
+      "writer": "minimax/minimax-m3:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-07T13:46:54.699Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "outcome": "failed",
+      "failures": 1,
+      "error": "Claude failed for role checker:"
+    },
+    "saudi-pif-khafji-coastal-development-3b17f7": {
+      "at": "2026-10-05T14:59:41.240Z",
+      "kind": "news",
+      "writer": "minimax/minimax-m3:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-07T13:42:00.561Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "outcome": "failed",
+      "failures": 1,
+      "error": "Claude failed for role checker:"
     }
   }
 }
