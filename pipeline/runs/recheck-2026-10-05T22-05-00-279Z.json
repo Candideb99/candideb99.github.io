@@ -1,0 +1,47 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-05T22:05:00.279Z",
+  "durationSec": 41,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "saudi-pif-khafji-coastal-development-3b17f7",
+      "title": "صندوق الاستثمارات العامة يطلق «ساحل الخليج للتطوير العقاري» في الخفجي",
+      "kind": "news",
+      "outcome": "failed",
+      "counts": null,
+      "confirmed": []
+    },
+    {
+      "slug": "egypt-sczone-factories-investments-5309ca",
+      "title": "مصر تدشّن 9 مصانع في المنطقة الاقتصادية لقناة السويس باستثمارات 84.5 مليون دولار",
+      "kind": "news",
+      "outcome": "failed",
+      "counts": null,
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 0,
+    "failures": 6,
+    "promptTokens": 0,
+    "completionTokens": 0,
+    "cacheReadTokens": 0,
+    "costUsd": 0,
+    "byModel": {},
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[22:05:00] second look: 2 to read now (4 published pieces not yet read; 50 read clean before publication and left out of the audit sample)",
+    "[22:05:09] llm fail role=checker model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[22:05:14] llm fail role=checker model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[22:05:18] llm fail role=checker model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[22:05:18] saudi-pif-khafji-coastal-development-3b17f7: the check failed (Claude failed for role checker:)",
+    "[22:05:27] egypt-sczone-factories-investments-5309ca:   source https://www.alborsaanews.com/2026/09/07/1991066: The operation was aborted due to timeout",
+    "[22:05:32] llm fail role=checker model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[22:05:36] llm fail role=checker model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[22:05:41] llm fail role=checker model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[22:05:41] egypt-sczone-factories-investments-5309ca: the check failed (Claude failed for role checker:)"
+  ]
+}
