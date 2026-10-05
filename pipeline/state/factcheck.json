@@ -10409,7 +10409,7 @@
       "error": "Claude failed for role checker:"
     },
     "turkey-inflation-forecast-2026-284-baaef7": {
-      "at": "2026-10-05T00:00:23.424Z",
+      "at": "2026-10-05T05:55:30.088Z",
       "kind": "news",
       "writer": "minimax/minimax-m3:free",
       "lessons": null,
@@ -10418,11 +10418,11 @@
       "sourcesRead": 2,
       "sourcesAll": 2,
       "outcome": "failed",
-      "failures": 1,
+      "failures": 2,
       "error": "Claude failed for role checker:"
     },
     "oman-hainan-economic-zone-investments-278630": {
-      "at": "2026-10-05T00:00:23.453Z",
+      "at": "2026-10-05T05:55:30.119Z",
       "kind": "news",
       "writer": "minimax/minimax-m3:free",
       "lessons": null,
@@ -10431,7 +10431,7 @@
       "sourcesRead": 3,
       "sourcesAll": 3,
       "outcome": "failed",
-      "failures": 1,
+      "failures": 2,
       "error": "Claude failed for role checker:"
     }
   }
