@@ -10459,6 +10459,32 @@
       "outcome": "failed",
       "failures": 2,
       "error": "Claude failed for role checker:"
+    },
+    "china-injects-54bn-into-state-banks-and-insurers-bd44d2": {
+      "at": "2026-10-06T06:33:34.267Z",
+      "kind": "news",
+      "writer": "minimax/minimax-m3:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-07T13:29:52.830Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "outcome": "failed",
+      "failures": 1,
+      "error": "Claude failed for role checker:"
+    },
+    "healey-october-budget-growth-discipline-7ec41b": {
+      "at": "2026-10-06T06:33:34.297Z",
+      "kind": "news",
+      "writer": "minimax/minimax-m3:free",
+      "lessons": null,
+      "checker": "f6d38e4947",
+      "publishedAt": "2026-09-07T13:25:34.699Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "outcome": "failed",
+      "failures": 1,
+      "error": "Claude failed for role checker:"
     }
   }
 }
