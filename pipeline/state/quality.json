@@ -120,58 +120,68 @@
       "read": 6,
       "confirmedPerStory": 0,
       "photosPending": 0
+    },
+    {
+      "date": "2026-10-06",
+      "published": 0,
+      "news": 0,
+      "styleFaultsPerStory": null,
+      "corrections": 0,
+      "read": 4,
+      "confirmedPerStory": 0,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-10-05T16:00:23.814Z",
+  "updatedAt": "2026-10-06T14:10:59.329Z",
   "week": {
-    "published": 42,
-    "news": 35,
+    "published": 28,
+    "news": 23,
     "revisedShare": 0.74,
     "styleFaultsPerStory": 0,
-    "styleWarningsPerStory": 0.09,
-    "corrections": 18,
+    "styleWarningsPerStory": 0.04,
+    "corrections": 13,
     "usefulness": {
       "withLessons": {
-        "stories": 31,
-        "words": 278,
-        "keyFacts": 5.2
+        "stories": 20,
+        "words": 293,
+        "keyFacts": 5.5
       },
       "control": {
-        "stories": 4,
-        "words": 242,
+        "stories": 3,
+        "words": 238,
         "keyFacts": 6
       }
     },
     "precheck": {
-      "checked": 35,
-      "clean": 31,
-      "repaired": 4,
+      "checked": 23,
+      "clean": 21,
+      "repaired": 2,
       "held": 0,
-      "errorsFound": 4,
+      "errorsFound": 2,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 4,
-      "correctionsVerifiedClean": 14,
+      "repairedBeforePublication": 2,
+      "correctionsVerifiedClean": 9,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 1
     },
     "secondLook": {
-      "read": 51,
-      "clean": 11,
-      "corrected": 15,
+      "read": 43,
+      "clean": 7,
+      "corrected": 10,
       "stands": 0,
       "refused": 0,
-      "listed": 7,
+      "listed": 6,
       "unverifiable": 0,
-      "confirmedPerStory": 0.55,
+      "confirmedPerStory": 0.35,
       "withLessons": {
-        "read": 8,
+        "read": 6,
         "confirmedPerStory": 0
       },
       "claudeWithout": {
-        "read": 5,
+        "read": 3,
         "confirmedPerStory": 0
       }
     },
@@ -186,39 +196,21 @@
     },
     "recurring": [
       {
-        "what": "second look: attribution errors",
-        "stories": 5,
-        "examples": [
-          "trump-obamacare-500-rebates-33c345: وتبلغ قيمة الشيكات الإجمالية 500 مليون دولار، وفقاً لورقة حقائق نشرها البيت الأبيض الخميس.",
-          "trump-obamacare-500-rebates-33c345: انتقد خبراء السياسة الصحية القرار ووصفوه بأنه محاولة لتشتيت الانتباه عن ارتفاع تكاليف الرعاية الصحية.",
-          "apple-foldable-iphone-duo-release-cycle-change-d6b45a: أبرز ما أعلنته «أبل» احتمال تقسيم دورة الإصدار السنوية: يُتوقع أن يقتصر حدث الخريف على طرازات «برو» المرتفعة السعر، أما "
-        ]
-      },
-      {
-        "what": "second look: term errors",
-        "stories": 4,
-        "examples": [
-          "trump-obamacare-500-rebates-33c345: المؤشر: انخفاض الاشتراكات في البورصة بحلول فبراير · القيمة: 3 ملايين (13%)",
-          "ecb-raises-rates-2-5-percent-second-hike-2026-e88f15: وتأتي الزيادة في ظل ارتفاع كبير في أسعار الطاقة، حيث تجاوزت أسعار النفط 105 دولارات للبرميل، وارتفعت أسعار الغاز الطبيعي",
-          "trump-5000-dividend-trillion-cost-36981a: وانتقد العديد من الجمهوريين أنفسهم الخطة، من بينهم جو لونزالد، الشريك المؤسس لشركة بالانتير والمنبر الجمهوري، الذي وصفها"
-        ]
-      },
-      {
-        "what": "second look: scope errors",
-        "stories": 6,
-        "examples": [
-          "apple-foldable-iphone-duo-release-cycle-change-d6b45a: كما كشفت الشركة عن آيفون 18 برو وبرو ماكس بشاشات أكبر، مع غياب ملحوظ للطراز الأساسي آيفون 18 الذي كان يباع سابقاً بسعر 7",
-          "apple-foldable-iphone-duo-release-cycle-change-d6b45a: وكان الحدث أول ظهور لجون تيرنوس رئيساً تنفيذياً منذ 1 سبتمبر، وكُشف فيه عن «آيفون 18 برو» و«برو ماكس» بشاشات أكبر، لكن «",
-          "egypt-inflation-eases-12-7-august-7557fb: وقادت الخضروات التراجع الشهري بانخفاض 7%، تلتها لحوم الدواجن بنسبة 1.5%، ثم الحبوب والخبز والأسماك بمعدلات أقل."
-        ]
-      },
-      {
         "what": "second look: hedge errors",
-        "stories": 4,
+        "stories": 3,
         "examples": [
-          "trump-5000-dividend-trillion-cost-36981a: وأثار الاقتراح أيضاً تساؤلات قانونية حول مدى مشروعيته، إذ يُعدّ وعداً بالدفع مقابل نتيجة سياسية معينة شكلاً من أشكال الر",
           "uae-germany-45-agreements-state-visit-9774e1: وقال الدكتور عبدالرحمن عمار إن الاستثمارات الإماراتية تأتي في قطاعات تمثل أولوية لألمانيا، وتدعم مساعيها لمواجهة ارتفاع ",
-          "anthropic-researcher-ai-human-extinction-risk-8aa7a2: وكان وكلاء ذكيون تابعون لـ«أوبن أيه آي» قد خرجوا الصيف الماضي من بيئة تدريب مغلقة وشنّوا هجوماً إلكترونياً غير مسبوق على"
+          "anthropic-researcher-ai-human-extinction-risk-8aa7a2: وكان وكلاء ذكيون تابعون لـ«أوبن أيه آي» قد خرجوا الصيف الماضي من بيئة تدريب مغلقة وشنّوا هجوماً إلكترونياً غير مسبوق على",
+          "saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3: واستمرار النمو بهذه الوتيرة يضغط على قطاع الضيافة السعودي لتوسيع طاقته؛ ففي الرياض يتجاوز الطلب من الشركات والاستشارات ا"
+        ]
+      },
+      {
+        "what": "second look: attribution errors",
+        "stories": 3,
+        "examples": [
+          "anthropic-researcher-ai-human-extinction-risk-8aa7a2: لكنها أقرّت بأنها لا تملك بعد خطة لحلّ مشكلة المحاذاة للذكاء الفائق وليست على المسار الواضح لتحقيق ذلك، مشيرة إلى علامات",
+          "trump-expands-trade-war-canada-import-ban-6088a2: لكنه وصف الإجراء بأنه غير مسبوق نظراً للعلاقة التجارية التي تمتع بها الطرفان لعقود.",
+          "egypt-ai-data-center-nvidia-billion-dollar-b0fc50: كشف وزير الاتصالات وتكنولوجيا المعلومات رافت هندي عن المشروع الذي يبدأ بمرحلة أولية بقدرة 20 ميغاواط وتكلفة 200 مليون دو"
         ]
       },
       {
@@ -229,59 +221,68 @@
           "egypt-ewallets-h1-2026-transactions-growth-9789a5: وجاءت «إي آند كاش» في المركز الثاني بـ23% من التوزيع و20% من عدد العمليات و14% من القيمة، تلتها «أورنج كاش» و«وي باي» بن",
           "brent-above-100-dollars-gulf-escalation-8281ef: وارتفعت أسعار النفط بأكثر من الربع منذ أوائل أغسطس مع تلاشي آمال الحل الدائم للحرب المستمرة منذ ستة أشهر."
         ]
+      },
+      {
+        "what": "second look: scope errors",
+        "stories": 3,
+        "examples": [
+          "saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2: وذكرت الوكالة الدولية للطاقة في تقريرها الشهري أن نحو 8.3 مليون برميل يومياً من الإنتاج لا تزال متوقفة في الشرق الأوسط ا",
+          "google-finland-13-billion-ai-nuclear-54b058: وفقاً لما أعلنته «جوجل»، يُتوقع أن يُضيف المشروع 3.6 مليار يورو سنوياً إلى الناتج المحلي الإجمالي الفنلندي، وأن يدعم أكث",
+          "brent-above-100-dollars-gulf-escalation-8281ef: أسعار الوقود في بريطانيا عند أعلى مستوياتها في أربع سنوات"
+        ]
       }
     ]
   },
   "weekBefore": {
-    "published": 103,
-    "news": 88,
-    "revisedShare": 0.82,
-    "styleFaultsPerStory": 0.17,
-    "styleWarningsPerStory": 0.31,
-    "corrections": 117,
+    "published": 108,
+    "news": 92,
+    "revisedShare": 0.8,
+    "styleFaultsPerStory": 0.07,
+    "styleWarningsPerStory": 0.17,
+    "corrections": 122,
     "usefulness": {
       "withLessons": {
-        "stories": 43,
-        "words": 253,
+        "stories": 54,
+        "words": 252,
         "keyFacts": 4.3
       },
       "control": {
-        "stories": 8,
-        "words": 246,
-        "keyFacts": 4.5
+        "stories": 9,
+        "words": 247,
+        "keyFacts": 4.7
       }
     },
     "precheck": {
-      "checked": 37,
-      "clean": 35,
-      "repaired": 2,
+      "checked": 49,
+      "clean": 45,
+      "repaired": 4,
       "held": 0,
-      "errorsFound": 2,
+      "errorsFound": 4,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 2,
-      "correctionsVerifiedClean": 26,
+      "repairedBeforePublication": 4,
+      "correctionsVerifiedClean": 31,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 1
     },
     "secondLook": {
-      "read": 127,
-      "clean": 45,
-      "corrected": 67,
+      "read": 137,
+      "clean": 49,
+      "corrected": 72,
       "stands": 0,
       "refused": 1,
-      "listed": 14,
+      "listed": 15,
       "unverifiable": 0,
       "confirmedPerStory": 1.39,
       "withLessons": {
-        "read": 19,
+        "read": 21,
         "confirmedPerStory": 0
       },
       "claudeWithout": {
-        "read": 42,
-        "confirmedPerStory": 0.74
+        "read": 44,
+        "confirmedPerStory": 0.7
       }
     },
     "runs": {
@@ -305,7 +306,7 @@
       },
       {
         "what": "second look: attribution errors",
-        "stories": 33,
+        "stories": 35,
         "examples": [
           "us-approves-f35-saudi-arms-deal-915064: أكد البيت الأبيض في 18 سبتمبر موافقة إدارة ترامب على الصفقة المحتملة.",
           "russia-temporary-management-western-assets-1dadf4: المرسوم الرئاسي يستهدف حماية الحقوق وضمان استمرارية العمليات لصالح الأطراف المعنية",
@@ -314,7 +315,7 @@
       },
       {
         "what": "second look: actor errors",
-        "stories": 14,
+        "stories": 15,
         "examples": [
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: ترامب يحظر سي إن إن وإم إس إن بي سي وبوليتيكو من البيت الأبيض",
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: حظر الرئيس الأمريكي دونالد ترامب «سي إن إن» و«إم إس إن بي سي» و«بوليتيكو» من البيت الأبيض فوراً، في منشور على «تروث سوشي",
@@ -323,7 +324,7 @@
       },
       {
         "what": "second look: hedge errors",
-        "stories": 20,
+        "stories": 21,
         "examples": [
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: «سي إن إن» تصف القرار بالاعتداء غير القانوني..",
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: من جانبها، قالت «سي إن إن» إنها ستواصل التغطية من البيت الأبيض دون عائق، ووصفت الحظر بأنه اعتداء غير قانوني على حقها الد",
@@ -332,7 +333,7 @@
       },
       {
         "what": "second look: term errors",
-        "stories": 14,
+        "stories": 17,
         "examples": [
           "trump-signs-russia-sanctions-oil-tariffs-law-ad758a: وكان مجلس النواب قد وافق على القانون بأغلبية 262 صوتاً مقابل 159، وصوّت 58 ديمقراطياً لصالحه في حين عارضه 7 جمهوريين، في",
           "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb: وبلغ حجم التداول على هذه العقود 6 ملايين دولار في 24 ساعة، والفائدة المفتوحة 31 مليون دولار.",
@@ -350,7 +351,7 @@
       },
       {
         "what": "second look: scope errors",
-        "stories": 18,
+        "stories": 21,
         "examples": [
           "trump-announces-ai-force-and-czar-f4c7aa: ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها",
           "trump-xi-summit-washington-2026-4e439e: يدخل ترامب القمة والتضخم عند 3.4٪ وأسعار الوقود فوق 6 دولارات للغالون، قبل انتخابات منتصف المدة في نوفمبر.",
@@ -376,10 +377,9 @@
       },
       {
         "what": "style: الإسناد في كل جملة تقريباً (# من # جملة فيها «وفقاً/بحسب»)",
-        "stories": 3,
+        "stories": 2,
         "examples": [
           "openai-anthropic-launch-cheaper-ai-models-979a5b",
-          "paramount-settles-with-us-states-e71142",
           "saudi-restarts-east-west-oil-pipeline-698775"
         ]
       }
