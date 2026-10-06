@@ -1,0 +1,46 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-06T22:42:27.452Z",
+  "durationSec": 20,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "gcc-listed-companies-record-q2-2026-profits-af1b5f",
+      "title": "شركات الخليج تسجل أرباحاً قياسية عند 74.8 مليار دولار في الربع الثاني",
+      "kind": "news",
+      "outcome": "failed",
+      "counts": null,
+      "confirmed": []
+    },
+    {
+      "slug": "eurozone-gdp-q2-2026-employment-inventories-f5939d",
+      "title": "منطقة اليورو تنمو 0.6% في الربع الثاني بقيادة الصادرات",
+      "kind": "news",
+      "outcome": "failed",
+      "counts": null,
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 0,
+    "failures": 6,
+    "promptTokens": 0,
+    "completionTokens": 0,
+    "cacheReadTokens": 0,
+    "costUsd": 0,
+    "byModel": {},
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[22:42:27] second look: 2 to read now (2 published pieces not yet read; 50 read clean before publication and left out of the audit sample)",
+    "[22:42:31] llm fail role=checker model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[22:42:35] llm fail role=checker model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[22:42:38] llm fail role=checker model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[22:42:40] llm fail role=checker model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[22:42:40] gcc-listed-companies-record-q2-2026-profits-af1b5f: the check failed (Claude failed for role checker:)",
+    "[22:42:42] llm fail role=checker model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[22:42:47] llm fail role=checker model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[22:42:47] eurozone-gdp-q2-2026-employment-inventories-f5939d: the check failed (Claude failed for role checker:)"
+  ]
+}
