@@ -130,58 +130,68 @@
       "read": 4,
       "confirmedPerStory": 0,
       "photosPending": 0
+    },
+    {
+      "date": "2026-10-07",
+      "published": 0,
+      "news": 0,
+      "styleFaultsPerStory": null,
+      "corrections": 0,
+      "read": 4,
+      "confirmedPerStory": 0,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-10-06T14:10:59.329Z",
+  "updatedAt": "2026-10-07T14:29:24.565Z",
   "week": {
-    "published": 28,
-    "news": 23,
-    "revisedShare": 0.74,
+    "published": 11,
+    "news": 9,
+    "revisedShare": 0.67,
     "styleFaultsPerStory": 0,
-    "styleWarningsPerStory": 0.04,
-    "corrections": 13,
+    "styleWarningsPerStory": 0.11,
+    "corrections": 5,
     "usefulness": {
       "withLessons": {
-        "stories": 20,
-        "words": 293,
-        "keyFacts": 5.5
+        "stories": 9,
+        "words": 325,
+        "keyFacts": 5.3
       },
       "control": {
-        "stories": 3,
-        "words": 238,
-        "keyFacts": 6
+        "stories": 0,
+        "words": null,
+        "keyFacts": null
       }
     },
     "precheck": {
-      "checked": 23,
-      "clean": 21,
-      "repaired": 2,
+      "checked": 9,
+      "clean": 9,
+      "repaired": 0,
       "held": 0,
-      "errorsFound": 2,
+      "errorsFound": 0,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 2,
-      "correctionsVerifiedClean": 9,
+      "repairedBeforePublication": 0,
+      "correctionsVerifiedClean": 4,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
-      "correctionsStuck": 1
+      "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 43,
-      "clean": 7,
-      "corrected": 10,
+      "read": 31,
+      "clean": 3,
+      "corrected": 4,
       "stands": 0,
       "refused": 0,
-      "listed": 6,
+      "listed": 2,
       "unverifiable": 0,
-      "confirmedPerStory": 0.35,
+      "confirmedPerStory": 0.16,
       "withLessons": {
-        "read": 6,
+        "read": 2,
         "confirmedPerStory": 0
       },
       "claudeWithout": {
-        "read": 3,
+        "read": 1,
         "confirmedPerStory": 0
       }
     },
@@ -196,93 +206,65 @@
     },
     "recurring": [
       {
-        "what": "second look: hedge errors",
-        "stories": 3,
-        "examples": [
-          "uae-germany-45-agreements-state-visit-9774e1: وقال الدكتور عبدالرحمن عمار إن الاستثمارات الإماراتية تأتي في قطاعات تمثل أولوية لألمانيا، وتدعم مساعيها لمواجهة ارتفاع ",
-          "anthropic-researcher-ai-human-extinction-risk-8aa7a2: وكان وكلاء ذكيون تابعون لـ«أوبن أيه آي» قد خرجوا الصيف الماضي من بيئة تدريب مغلقة وشنّوا هجوماً إلكترونياً غير مسبوق على",
-          "saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3: واستمرار النمو بهذه الوتيرة يضغط على قطاع الضيافة السعودي لتوسيع طاقته؛ ففي الرياض يتجاوز الطلب من الشركات والاستشارات ا"
-        ]
-      },
-      {
-        "what": "second look: attribution errors",
-        "stories": 3,
-        "examples": [
-          "anthropic-researcher-ai-human-extinction-risk-8aa7a2: لكنها أقرّت بأنها لا تملك بعد خطة لحلّ مشكلة المحاذاة للذكاء الفائق وليست على المسار الواضح لتحقيق ذلك، مشيرة إلى علامات",
-          "trump-expands-trade-war-canada-import-ban-6088a2: لكنه وصف الإجراء بأنه غير مسبوق نظراً للعلاقة التجارية التي تمتع بها الطرفان لعقود.",
-          "egypt-ai-data-center-nvidia-billion-dollar-b0fc50: كشف وزير الاتصالات وتكنولوجيا المعلومات رافت هندي عن المشروع الذي يبدأ بمرحلة أولية بقدرة 20 ميغاواط وتكلفة 200 مليون دو"
-        ]
-      },
-      {
         "what": "second look: figure errors",
-        "stories": 3,
+        "stories": 2,
         "examples": [
-          "saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2: تصاعد التوتر بعد أن دمرت القوات الأمريكية خمس ناقلات نفط إيرانية الثلاثاء رداً على محاولات استهداف سفينة حربية أمريكية، ",
           "egypt-ewallets-h1-2026-transactions-growth-9789a5: وجاءت «إي آند كاش» في المركز الثاني بـ23% من التوزيع و20% من عدد العمليات و14% من القيمة، تلتها «أورنج كاش» و«وي باي» بن",
           "brent-above-100-dollars-gulf-escalation-8281ef: وارتفعت أسعار النفط بأكثر من الربع منذ أوائل أغسطس مع تلاشي آمال الحل الدائم للحرب المستمرة منذ ستة أشهر."
-        ]
-      },
-      {
-        "what": "second look: scope errors",
-        "stories": 3,
-        "examples": [
-          "saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2: وذكرت الوكالة الدولية للطاقة في تقريرها الشهري أن نحو 8.3 مليون برميل يومياً من الإنتاج لا تزال متوقفة في الشرق الأوسط ا",
-          "google-finland-13-billion-ai-nuclear-54b058: وفقاً لما أعلنته «جوجل»، يُتوقع أن يُضيف المشروع 3.6 مليار يورو سنوياً إلى الناتج المحلي الإجمالي الفنلندي، وأن يدعم أكث",
-          "brent-above-100-dollars-gulf-escalation-8281ef: أسعار الوقود في بريطانيا عند أعلى مستوياتها في أربع سنوات"
         ]
       }
     ]
   },
   "weekBefore": {
-    "published": 108,
-    "news": 92,
-    "revisedShare": 0.8,
-    "styleFaultsPerStory": 0.07,
-    "styleWarningsPerStory": 0.17,
-    "corrections": 122,
+    "published": 112,
+    "news": 96,
+    "revisedShare": 0.78,
+    "styleFaultsPerStory": 0.02,
+    "styleWarningsPerStory": 0.11,
+    "corrections": 119,
     "usefulness": {
       "withLessons": {
-        "stories": 54,
-        "words": 252,
-        "keyFacts": 4.3
+        "stories": 65,
+        "words": 254,
+        "keyFacts": 4.5
       },
       "control": {
-        "stories": 9,
-        "words": 247,
-        "keyFacts": 4.7
+        "stories": 12,
+        "words": 245,
+        "keyFacts": 5
       }
     },
     "precheck": {
-      "checked": 49,
-      "clean": 45,
-      "repaired": 4,
+      "checked": 63,
+      "clean": 57,
+      "repaired": 6,
       "held": 0,
-      "errorsFound": 4,
+      "errorsFound": 6,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 4,
-      "correctionsVerifiedClean": 31,
+      "repairedBeforePublication": 6,
+      "correctionsVerifiedClean": 36,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
-      "correctionsStuck": 1
+      "correctionsStuck": 2
     },
     "secondLook": {
-      "read": 137,
-      "clean": 49,
-      "corrected": 72,
+      "read": 151,
+      "clean": 53,
+      "corrected": 78,
       "stands": 0,
       "refused": 1,
-      "listed": 15,
+      "listed": 19,
       "unverifiable": 0,
-      "confirmedPerStory": 1.39,
+      "confirmedPerStory": 1.32,
       "withLessons": {
-        "read": 21,
+        "read": 25,
         "confirmedPerStory": 0
       },
       "claudeWithout": {
-        "read": 44,
-        "confirmedPerStory": 0.7
+        "read": 46,
+        "confirmedPerStory": 0.67
       }
     },
     "runs": {
@@ -306,7 +288,7 @@
       },
       {
         "what": "second look: attribution errors",
-        "stories": 35,
+        "stories": 37,
         "examples": [
           "us-approves-f35-saudi-arms-deal-915064: أكد البيت الأبيض في 18 سبتمبر موافقة إدارة ترامب على الصفقة المحتملة.",
           "russia-temporary-management-western-assets-1dadf4: المرسوم الرئاسي يستهدف حماية الحقوق وضمان استمرارية العمليات لصالح الأطراف المعنية",
@@ -324,7 +306,7 @@
       },
       {
         "what": "second look: hedge errors",
-        "stories": 21,
+        "stories": 23,
         "examples": [
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: «سي إن إن» تصف القرار بالاعتداء غير القانوني..",
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: من جانبها، قالت «سي إن إن» إنها ستواصل التغطية من البيت الأبيض دون عائق، ووصفت الحظر بأنه اعتداء غير قانوني على حقها الد",
@@ -333,7 +315,7 @@
       },
       {
         "what": "second look: term errors",
-        "stories": 17,
+        "stories": 18,
         "examples": [
           "trump-signs-russia-sanctions-oil-tariffs-law-ad758a: وكان مجلس النواب قد وافق على القانون بأغلبية 262 صوتاً مقابل 159، وصوّت 58 ديمقراطياً لصالحه في حين عارضه 7 جمهوريين، في",
           "sec-tokenized-stocks-anthropic-ipo-valuation-466ddb: وبلغ حجم التداول على هذه العقود 6 ملايين دولار في 24 ساعة، والفائدة المفتوحة 31 مليون دولار.",
@@ -342,7 +324,7 @@
       },
       {
         "what": "second look: figure errors",
-        "stories": 6,
+        "stories": 7,
         "examples": [
           "eu-fuel-prices-record-iran-saudi-supply-8376ff: أظهرت بيانات جمعية ADAC أن البنزين في ألمانيا بلغ 2.31 يورو للتر الأربعاء، وتجاوز الديزل في هولندا 2.78 يورو.",
           "faa-halts-east-coast-flights-equipment-outage-d180ab: كما أن إلغاء أكثر من 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية",
@@ -351,7 +333,7 @@
       },
       {
         "what": "second look: scope errors",
-        "stories": 21,
+        "stories": 23,
         "examples": [
           "trump-announces-ai-force-and-czar-f4c7aa: ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها",
           "trump-xi-summit-washington-2026-4e439e: يدخل ترامب القمة والتضخم عند 3.4٪ وأسعار الوقود فوق 6 دولارات للغالون، قبل انتخابات منتصف المدة في نوفمبر.",
@@ -368,19 +350,19 @@
         ]
       },
       {
+        "what": "second look: superlative errors",
+        "stories": 2,
+        "examples": [
+          "trump-approval-32-percent-iran-war-bd2925: وأشار بيسنت إلى أن الصين، الشريك الاقتصادي الأهم لإيران، انخرطت بفاعلية في مناقشات العقوبات خلال محادثاته مع نائب رئيس ا",
+          "saudi-travelers-ai-flexible-booking-skyscanner-2026-6a6a86: تُبرز الدراسات التحديات المرتبطة بالسفر الجماعي، إذ أشار 46% من المستطلعة آراؤهم إلى أن تنظيم عطلة جماعية أكثر إجهاداً م"
+        ]
+      },
+      {
         "what": "second look: cause errors",
         "stories": 2,
         "examples": [
           "iran-seven-day-plan-reopen-hormuz-a8836f: وتراجعت أسعار النفط الجمعة بعد تقرير أفاد بأن مفاوضين أمريكيين وإيرانيين يبحثون في نيويورك صفقة على مراحل لإنهاء المواجه",
           "oecd-raises-2026-global-growth-forecast-e97fa1: وأشارت المنظمة إلى أن السحب من مخزونات النفط العالمية، والتراجع الشديد في واردات الصين من الطاقة، والتحول إلى أنواع وقود"
-        ]
-      },
-      {
-        "what": "style: الإسناد في كل جملة تقريباً (# من # جملة فيها «وفقاً/بحسب»)",
-        "stories": 2,
-        "examples": [
-          "openai-anthropic-launch-cheaper-ai-models-979a5b",
-          "saudi-restarts-east-west-oil-pipeline-698775"
         ]
       }
     ]
