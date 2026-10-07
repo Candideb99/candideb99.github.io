@@ -10487,7 +10487,7 @@
       "error": "Claude failed for role checker:"
     },
     "gcc-listed-companies-record-q2-2026-profits-af1b5f": {
-      "at": "2026-10-06T22:42:27.965Z",
+      "at": "2026-10-07T06:11:48.530Z",
       "kind": "news",
       "writer": "minimax/minimax-m3:free",
       "lessons": null,
@@ -10496,11 +10496,11 @@
       "sourcesRead": 2,
       "sourcesAll": 2,
       "outcome": "failed",
-      "failures": 1,
+      "failures": 2,
       "error": "Claude failed for role checker:"
     },
     "eurozone-gdp-q2-2026-employment-inventories-f5939d": {
-      "at": "2026-10-06T22:42:27.996Z",
+      "at": "2026-10-07T06:11:48.564Z",
       "kind": "news",
       "writer": "minimax/minimax-m3:free",
       "lessons": null,
@@ -10509,7 +10509,7 @@
       "sourcesRead": 3,
       "sourcesAll": 3,
       "outcome": "failed",
-      "failures": 1,
+      "failures": 2,
       "error": "Claude failed for role checker:"
     }
   }
