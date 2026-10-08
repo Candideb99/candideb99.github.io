@@ -1,6 +1,6 @@
 {
   "mode": "explainer",
-  "startedAt": "2026-10-04T11:15:53.536Z",
+  "startedAt": "2026-10-08T12:13:00.790Z",
   "durationSec": 1,
   "published": 0,
   "report": [],
@@ -14,7 +14,7 @@
     "byModel": {}
   },
   "log": [
-    "[11:15:53] newsroom start mode=explainer limit=4 dry-run=false",
-    "[11:15:54] not enough recent coverage to anchor an explainer"
+    "[12:13:00] newsroom start mode=explainer limit=4 dry-run=false",
+    "[12:13:01] not enough recent coverage to anchor an explainer"
   ]
 }
