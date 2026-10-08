@@ -140,21 +140,31 @@
       "read": 4,
       "confirmedPerStory": 0,
       "photosPending": 0
+    },
+    {
+      "date": "2026-10-08",
+      "published": 0,
+      "news": 0,
+      "styleFaultsPerStory": null,
+      "corrections": 0,
+      "read": 0,
+      "confirmedPerStory": null,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-10-07T14:29:24.565Z",
+  "updatedAt": "2026-10-08T14:35:31.771Z",
   "week": {
-    "published": 11,
-    "news": 9,
-    "revisedShare": 0.67,
-    "styleFaultsPerStory": 0,
-    "styleWarningsPerStory": 0.11,
-    "corrections": 5,
+    "published": 0,
+    "news": 0,
+    "revisedShare": null,
+    "styleFaultsPerStory": null,
+    "styleWarningsPerStory": null,
+    "corrections": 0,
     "usefulness": {
       "withLessons": {
-        "stories": 9,
-        "words": 325,
-        "keyFacts": 5.3
+        "stories": 0,
+        "words": null,
+        "keyFacts": null
       },
       "control": {
         "stories": 0,
@@ -163,8 +173,8 @@
       }
     },
     "precheck": {
-      "checked": 9,
-      "clean": 9,
+      "checked": 0,
+      "clean": 0,
       "repaired": 0,
       "held": 0,
       "errorsFound": 0,
@@ -172,27 +182,27 @@
     },
     "outcomes": {
       "repairedBeforePublication": 0,
-      "correctionsVerifiedClean": 4,
+      "correctionsVerifiedClean": 0,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 31,
-      "clean": 3,
-      "corrected": 4,
+      "read": 22,
+      "clean": 0,
+      "corrected": 0,
       "stands": 0,
       "refused": 0,
-      "listed": 2,
+      "listed": 0,
       "unverifiable": 0,
-      "confirmedPerStory": 0.16,
+      "confirmedPerStory": 0,
       "withLessons": {
-        "read": 2,
-        "confirmedPerStory": 0
+        "read": 0,
+        "confirmedPerStory": null
       },
       "claudeWithout": {
-        "read": 1,
-        "confirmedPerStory": 0
+        "read": 0,
+        "confirmedPerStory": null
       }
     },
     "runs": {
@@ -204,29 +214,20 @@
       "costPerStory": null,
       "note": "from the run reports kept (the newest 24)"
     },
-    "recurring": [
-      {
-        "what": "second look: figure errors",
-        "stories": 2,
-        "examples": [
-          "egypt-ewallets-h1-2026-transactions-growth-9789a5: وجاءت «إي آند كاش» في المركز الثاني بـ23% من التوزيع و20% من عدد العمليات و14% من القيمة، تلتها «أورنج كاش» و«وي باي» بن",
-          "brent-above-100-dollars-gulf-escalation-8281ef: وارتفعت أسعار النفط بأكثر من الربع منذ أوائل أغسطس مع تلاشي آمال الحل الدائم للحرب المستمرة منذ ستة أشهر."
-        ]
-      }
-    ]
+    "recurring": []
   },
   "weekBefore": {
-    "published": 112,
+    "published": 113,
     "news": 96,
     "revisedShare": 0.78,
-    "styleFaultsPerStory": 0.02,
-    "styleWarningsPerStory": 0.11,
-    "corrections": 119,
+    "styleFaultsPerStory": 0,
+    "styleWarningsPerStory": 0.1,
+    "corrections": 124,
     "usefulness": {
       "withLessons": {
-        "stories": 65,
-        "words": 254,
-        "keyFacts": 4.5
+        "stories": 74,
+        "words": 263,
+        "keyFacts": 4.6
       },
       "control": {
         "stories": 12,
@@ -235,8 +236,8 @@
       }
     },
     "precheck": {
-      "checked": 63,
-      "clean": 57,
+      "checked": 72,
+      "clean": 66,
       "repaired": 6,
       "held": 0,
       "errorsFound": 6,
@@ -244,27 +245,27 @@
     },
     "outcomes": {
       "repairedBeforePublication": 6,
-      "correctionsVerifiedClean": 36,
+      "correctionsVerifiedClean": 40,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 2
     },
     "secondLook": {
-      "read": 151,
-      "clean": 53,
-      "corrected": 78,
+      "read": 160,
+      "clean": 56,
+      "corrected": 82,
       "stands": 0,
       "refused": 1,
-      "listed": 19,
+      "listed": 21,
       "unverifiable": 0,
-      "confirmedPerStory": 1.32,
+      "confirmedPerStory": 1.28,
       "withLessons": {
-        "read": 25,
+        "read": 27,
         "confirmedPerStory": 0
       },
       "claudeWithout": {
-        "read": 46,
-        "confirmedPerStory": 0.67
+        "read": 47,
+        "confirmedPerStory": 0.66
       }
     },
     "runs": {
@@ -288,7 +289,7 @@
       },
       {
         "what": "second look: attribution errors",
-        "stories": 37,
+        "stories": 38,
         "examples": [
           "us-approves-f35-saudi-arms-deal-915064: أكد البيت الأبيض في 18 سبتمبر موافقة إدارة ترامب على الصفقة المحتملة.",
           "russia-temporary-management-western-assets-1dadf4: المرسوم الرئاسي يستهدف حماية الحقوق وضمان استمرارية العمليات لصالح الأطراف المعنية",
@@ -306,7 +307,7 @@
       },
       {
         "what": "second look: hedge errors",
-        "stories": 23,
+        "stories": 24,
         "examples": [
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: «سي إن إن» تصف القرار بالاعتداء غير القانوني..",
           "trump-announces-ban-cnn-msn-politico-white-house-fd6870: من جانبها، قالت «سي إن إن» إنها ستواصل التغطية من البيت الأبيض دون عائق، ووصفت الحظر بأنه اعتداء غير قانوني على حقها الد",
@@ -324,7 +325,7 @@
       },
       {
         "what": "second look: figure errors",
-        "stories": 7,
+        "stories": 9,
         "examples": [
           "eu-fuel-prices-record-iran-saudi-supply-8376ff: أظهرت بيانات جمعية ADAC أن البنزين في ألمانيا بلغ 2.31 يورو للتر الأربعاء، وتجاوز الديزل في هولندا 2.78 يورو.",
           "faa-halts-east-coast-flights-equipment-outage-d180ab: كما أن إلغاء أكثر من 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية",
@@ -333,7 +334,7 @@
       },
       {
         "what": "second look: scope errors",
-        "stories": 23,
+        "stories": 24,
         "examples": [
           "trump-announces-ai-force-and-czar-f4c7aa: ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها",
           "trump-xi-summit-washington-2026-4e439e: يدخل ترامب القمة والتضخم عند 3.4٪ وأسعار الوقود فوق 6 دولارات للغالون، قبل انتخابات منتصف المدة في نوفمبر.",
