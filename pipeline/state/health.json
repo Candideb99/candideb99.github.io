@@ -6,9 +6,9 @@
   },
   "pagesCheckedAt": "2026-10-08T14:35:03.756Z",
   "last": {
-    "at": "2026-10-08T14:35:31.543Z",
+    "at": "2026-10-09T14:21:50.896Z",
     "findings": [
-      "No news story has been published for 172 hours, though the newsroom completed 30 run(s) since. Read the last run reports (pipeline/runs/*.json: each story's outcome and the log) and fix what stops every story; a story the critic rejects is not a bug."
+      "No news story has been published for 196 hours, though the newsroom completed 30 run(s) since. Read the last run reports (pipeline/runs/*.json: each story's outcome and the log) and fix what stops every story; a story the critic rejects is not a bug."
     ],
     "owner": [
       "خازندار: published stories with a proved error the corrections desk could not fix",
