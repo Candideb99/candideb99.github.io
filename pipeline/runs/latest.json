@@ -1,12 +1,12 @@
 {
-  "mode": "news",
-  "startedAt": "2026-10-11T13:07:12.472Z",
-  "durationSec": 14,
+  "mode": "feature",
+  "startedAt": "2026-10-11T14:23:51.935Z",
+  "durationSec": 12,
   "published": 0,
   "report": [
     {
       "headline": "",
-      "section": "news",
+      "section": "analysis",
       "outcome": "error: Claude failed for role editor:"
     }
   ],
@@ -20,13 +20,11 @@
     "byModel": {}
   },
   "log": [
-    "[13:07:12] newsroom start mode=news limit=4 dry-run=false",
-    "[13:07:12] lessons: version 29, 9 active, read by the desk notes and the writer",
-    "[13:07:15] candidates: 15 price-service items left out (gold, dollar and share price tables)",
-    "[13:07:15] candidates: 225 fresh unseen items",
-    "[13:07:17] llm fail role=editor model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
-    "[13:07:21] llm fail role=editor model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
-    "[13:07:26] llm fail role=editor model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
-    "[13:07:26] news failed: Claude failed for role editor:"
+    "[14:23:51] newsroom start mode=feature limit=4 dry-run=false",
+    "[14:23:52] feature: 8 running files: الذكاء الاصطناعي (14), الصين (14), السعودية (14), النفط (14), إيران (14), الاحتياطي الفيدرالي (14), التضخم (14), الولايات المتحدة (14)",
+    "[14:23:54] llm fail role=editor model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[14:23:59] llm fail role=editor model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[14:24:03] llm fail role=editor model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[14:24:03] feature failed: Claude failed for role editor:"
   ]
 }
