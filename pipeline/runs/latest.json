@@ -1,18 +1,12 @@
 {
-  "mode": "feature",
-  "startedAt": "2026-10-11T14:23:51.935Z",
-  "durationSec": 12,
+  "mode": "analysis",
+  "startedAt": "2026-10-11T18:47:34.728Z",
+  "durationSec": 0,
   "published": 0,
-  "report": [
-    {
-      "headline": "",
-      "section": "analysis",
-      "outcome": "error: Claude failed for role editor:"
-    }
-  ],
+  "report": [],
   "llm": {
     "calls": 0,
-    "failures": 3,
+    "failures": 0,
     "promptTokens": 0,
     "completionTokens": 0,
     "cacheReadTokens": 0,
@@ -20,11 +14,7 @@
     "byModel": {}
   },
   "log": [
-    "[14:23:51] newsroom start mode=feature limit=4 dry-run=false",
-    "[14:23:52] feature: 8 running files: الذكاء الاصطناعي (14), الصين (14), السعودية (14), النفط (14), إيران (14), الاحتياطي الفيدرالي (14), التضخم (14), الولايات المتحدة (14)",
-    "[14:23:54] llm fail role=editor model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
-    "[14:23:59] llm fail role=editor model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
-    "[14:24:03] llm fail role=editor model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
-    "[14:24:03] feature failed: Claude failed for role editor:"
+    "[18:47:34] newsroom start mode=analysis limit=4 dry-run=false",
+    "[18:47:35] not enough recent coverage to anchor an analysis"
   ]
 }
