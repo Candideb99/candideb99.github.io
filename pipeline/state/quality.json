@@ -180,9 +180,19 @@
       "read": 0,
       "confirmedPerStory": null,
       "photosPending": 0
+    },
+    {
+      "date": "2026-10-12",
+      "published": 0,
+      "news": 0,
+      "styleFaultsPerStory": null,
+      "corrections": 0,
+      "read": 0,
+      "confirmedPerStory": null,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-10-11T14:02:09.815Z",
+  "updatedAt": "2026-10-12T16:43:38.331Z",
   "week": {
     "published": 0,
     "news": 0,
@@ -218,7 +228,7 @@
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 10,
+      "read": 6,
       "clean": 0,
       "corrected": 0,
       "stands": 0,
@@ -247,54 +257,54 @@
     "recurring": []
   },
   "weekBefore": {
-    "published": 55,
-    "news": 46,
-    "revisedShare": 0.76,
+    "published": 42,
+    "news": 35,
+    "revisedShare": 0.74,
     "styleFaultsPerStory": 0,
     "styleWarningsPerStory": 0.09,
-    "corrections": 24,
+    "corrections": 18,
     "usefulness": {
       "withLessons": {
-        "stories": 40,
-        "words": 280,
-        "keyFacts": 5
+        "stories": 31,
+        "words": 278,
+        "keyFacts": 5.2
       },
       "control": {
-        "stories": 6,
-        "words": 229,
-        "keyFacts": 5.8
+        "stories": 4,
+        "words": 242,
+        "keyFacts": 6
       }
     },
     "precheck": {
-      "checked": 46,
-      "clean": 40,
-      "repaired": 6,
+      "checked": 35,
+      "clean": 31,
+      "repaired": 4,
       "held": 0,
-      "errorsFound": 6,
+      "errorsFound": 4,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 6,
-      "correctionsVerifiedClean": 17,
+      "repairedBeforePublication": 4,
+      "correctionsVerifiedClean": 14,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 1
     },
     "secondLook": {
-      "read": 57,
-      "clean": 18,
-      "corrected": 18,
+      "read": 49,
+      "clean": 11,
+      "corrected": 15,
       "stands": 0,
       "refused": 0,
-      "listed": 9,
+      "listed": 7,
       "unverifiable": 0,
-      "confirmedPerStory": 0.6,
+      "confirmedPerStory": 0.57,
       "withLessons": {
-        "read": 10,
+        "read": 8,
         "confirmedPerStory": 0
       },
       "claudeWithout": {
-        "read": 7,
+        "read": 5,
         "confirmedPerStory": 0
       }
     },
@@ -309,39 +319,39 @@
     },
     "recurring": [
       {
-        "what": "second look: hedge errors",
-        "stories": 6,
-        "examples": [
-          "oracle-cloud-infrastructure-revenue-ai-growth-fc2b80: وأبدى محللو «سيتي» تفاؤلاً حذراً، وقالوا إن النتائج استوفت المعايير كلها تقريباً وتهيئ ليوم المستثمرين المقبل.",
-          "oil-brent-surpasses-108-middle-east-shipping-disruption-042bc2: وفي المقابل، قدّرت إدارة معلومات الطاقة الأمريكية أن الإنتاج الخام المتوقف في الشرق الأوسط بلغ متوسط 6.7 مليون برميل يوم",
-          "trump-5000-dividend-trillion-cost-36981a: وأثار الاقتراح أيضاً تساؤلات قانونية حول مدى مشروعيته، إذ يُعدّ وعداً بالدفع مقابل نتيجة سياسية معينة شكلاً من أشكال الر"
-        ]
-      },
-      {
-        "what": "second look: scope errors",
-        "stories": 7,
-        "examples": [
-          "hormuz-shipping-traffic-plunges-tensions-5c1d93: وتأتي هذه الأرقام، التي تستند إلى بيانات تتبع السفن الأولية التي جمعتها كبلر ونشرتها رويترز، مع قفز أسعار النفط الخام فو",
-          "hormuz-shipping-traffic-plunges-tensions-5c1d93: يمر عبر المضيق نحو عشرين بالمئة من إمدادات النفط العالمية، أي نحو عشرة ملايين برميل يومياً من الخام والمنتجات البترولية،",
-          "apple-foldable-iphone-duo-release-cycle-change-d6b45a: كما كشفت الشركة عن آيفون 18 برو وبرو ماكس بشاشات أكبر، مع غياب ملحوظ للطراز الأساسي آيفون 18 الذي كان يباع سابقاً بسعر 7"
-        ]
-      },
-      {
-        "what": "second look: term errors",
-        "stories": 5,
-        "examples": [
-          "hormuz-shipping-traffic-plunges-tensions-5c1d93: لكن هذه الأحجام لم تعد تمثل سوى نصف مستويات ما قبل الحرب، فتفاقم شحّ أسواق الوسائط الحرارية.",
-          "trump-obamacare-500-rebates-33c345: المؤشر: انخفاض الاشتراكات في البورصة بحلول فبراير · القيمة: 3 ملايين (13%)",
-          "ecb-raises-rates-2-5-percent-second-hike-2026-e88f15: وتأتي الزيادة في ظل ارتفاع كبير في أسعار الطاقة، حيث تجاوزت أسعار النفط 105 دولارات للبرميل، وارتفعت أسعار الغاز الطبيعي"
-        ]
-      },
-      {
         "what": "second look: attribution errors",
         "stories": 5,
         "examples": [
           "trump-obamacare-500-rebates-33c345: وتبلغ قيمة الشيكات الإجمالية 500 مليون دولار، وفقاً لورقة حقائق نشرها البيت الأبيض الخميس.",
           "trump-obamacare-500-rebates-33c345: انتقد خبراء السياسة الصحية القرار ووصفوه بأنه محاولة لتشتيت الانتباه عن ارتفاع تكاليف الرعاية الصحية.",
           "apple-foldable-iphone-duo-release-cycle-change-d6b45a: أبرز ما أعلنته «أبل» احتمال تقسيم دورة الإصدار السنوية: يُتوقع أن يقتصر حدث الخريف على طرازات «برو» المرتفعة السعر، أما "
+        ]
+      },
+      {
+        "what": "second look: term errors",
+        "stories": 4,
+        "examples": [
+          "trump-obamacare-500-rebates-33c345: المؤشر: انخفاض الاشتراكات في البورصة بحلول فبراير · القيمة: 3 ملايين (13%)",
+          "ecb-raises-rates-2-5-percent-second-hike-2026-e88f15: وتأتي الزيادة في ظل ارتفاع كبير في أسعار الطاقة، حيث تجاوزت أسعار النفط 105 دولارات للبرميل، وارتفعت أسعار الغاز الطبيعي",
+          "trump-5000-dividend-trillion-cost-36981a: وانتقد العديد من الجمهوريين أنفسهم الخطة، من بينهم جو لونزالد، الشريك المؤسس لشركة بالانتير والمنبر الجمهوري، الذي وصفها"
+        ]
+      },
+      {
+        "what": "second look: scope errors",
+        "stories": 6,
+        "examples": [
+          "apple-foldable-iphone-duo-release-cycle-change-d6b45a: كما كشفت الشركة عن آيفون 18 برو وبرو ماكس بشاشات أكبر، مع غياب ملحوظ للطراز الأساسي آيفون 18 الذي كان يباع سابقاً بسعر 7",
+          "apple-foldable-iphone-duo-release-cycle-change-d6b45a: وكان الحدث أول ظهور لجون تيرنوس رئيساً تنفيذياً منذ 1 سبتمبر، وكُشف فيه عن «آيفون 18 برو» و«برو ماكس» بشاشات أكبر، لكن «",
+          "egypt-inflation-eases-12-7-august-7557fb: وقادت الخضروات التراجع الشهري بانخفاض 7%، تلتها لحوم الدواجن بنسبة 1.5%، ثم الحبوب والخبز والأسماك بمعدلات أقل."
+        ]
+      },
+      {
+        "what": "second look: hedge errors",
+        "stories": 4,
+        "examples": [
+          "trump-5000-dividend-trillion-cost-36981a: وأثار الاقتراح أيضاً تساؤلات قانونية حول مدى مشروعيته، إذ يُعدّ وعداً بالدفع مقابل نتيجة سياسية معينة شكلاً من أشكال الر",
+          "uae-germany-45-agreements-state-visit-9774e1: وقال الدكتور عبدالرحمن عمار إن الاستثمارات الإماراتية تأتي في قطاعات تمثل أولوية لألمانيا، وتدعم مساعيها لمواجهة ارتفاع ",
+          "anthropic-researcher-ai-human-extinction-risk-8aa7a2: وكان وكلاء ذكيون تابعون لـ«أوبن أيه آي» قد خرجوا الصيف الماضي من بيئة تدريب مغلقة وشنّوا هجوماً إلكترونياً غير مسبوق على"
         ]
       },
       {
@@ -361,7 +371,7 @@
     "learnedFrom": 204,
     "kept": null,
     "lastTest": {
-      "at": "2026-10-05T14:27:53.077Z",
+      "at": "2026-10-12T15:13:59.499Z",
       "checker": "f6d38e4947",
       "live": 29,
       "liveHash": "5c629d81ea",
@@ -441,7 +451,7 @@
       "alarm": false
     },
     "lastDecision": {
-      "at": "2026-10-05T14:27:53.077Z",
+      "at": "2026-10-12T15:13:59.499Z",
       "decision": "keep",
       "reason": "unproven so far: better in 0 pairs, worse in 2, tied in 8 (evidence ×0.3 of 20; harm ×2.3 of 10)"
     }
