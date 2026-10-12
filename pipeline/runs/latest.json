@@ -1,18 +1,12 @@
 {
-  "mode": "news",
-  "startedAt": "2026-10-12T21:19:35.946Z",
-  "durationSec": 16,
+  "mode": "analysis",
+  "startedAt": "2026-10-12T22:04:48.088Z",
+  "durationSec": 1,
   "published": 0,
-  "report": [
-    {
-      "headline": "",
-      "section": "news",
-      "outcome": "error: Claude failed for role editor:"
-    }
-  ],
+  "report": [],
   "llm": {
     "calls": 0,
-    "failures": 3,
+    "failures": 0,
     "promptTokens": 0,
     "completionTokens": 0,
     "cacheReadTokens": 0,
@@ -20,13 +14,7 @@
     "byModel": {}
   },
   "log": [
-    "[21:19:35] newsroom start mode=news limit=4 dry-run=false",
-    "[21:19:35] lessons: version 29, 9 active, read by the desk notes and the writer",
-    "[21:19:41] candidates: 9 price-service items left out (gold, dollar and share price tables)",
-    "[21:19:41] candidates: 300 fresh unseen items",
-    "[21:19:43] llm fail role=editor model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
-    "[21:19:47] llm fail role=editor model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
-    "[21:19:52] llm fail role=editor model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
-    "[21:19:52] news failed: Claude failed for role editor:"
+    "[22:04:48] newsroom start mode=analysis limit=4 dry-run=false",
+    "[22:04:48] not enough recent coverage to anchor an analysis"
   ]
 }
