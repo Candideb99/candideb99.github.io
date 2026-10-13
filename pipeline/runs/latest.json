@@ -1,12 +1,18 @@
 {
-  "mode": "explainer",
-  "startedAt": "2026-10-13T12:55:20.059Z",
-  "durationSec": 0,
+  "mode": "paper",
+  "startedAt": "2026-10-13T17:05:59.937Z",
+  "durationSec": 15,
   "published": 0,
-  "report": [],
+  "report": [
+    {
+      "headline": "",
+      "section": "explainers",
+      "outcome": "error: Claude failed for role editor:"
+    }
+  ],
   "llm": {
     "calls": 0,
-    "failures": 0,
+    "failures": 3,
     "promptTokens": 0,
     "completionTokens": 0,
     "cacheReadTokens": 0,
@@ -14,7 +20,11 @@
     "byModel": {}
   },
   "log": [
-    "[12:55:20] newsroom start mode=explainer limit=4 dry-run=false",
-    "[12:55:20] not enough recent coverage to anchor an explainer"
+    "[17:05:59] newsroom start mode=paper limit=4 dry-run=false",
+    "[17:06:03] paper candidates: 112 recent research items",
+    "[17:06:05] llm fail role=editor model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[17:06:10] llm fail role=editor model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[17:06:15] llm fail role=editor model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[17:06:15] paper failed: Claude failed for role editor:"
   ]
 }
