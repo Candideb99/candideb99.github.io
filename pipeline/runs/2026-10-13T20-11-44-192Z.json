@@ -1,6 +1,6 @@
 {
-  "mode": "weekly",
-  "startedAt": "2026-10-09T20:17:04.493Z",
+  "mode": "analysis",
+  "startedAt": "2026-10-13T20:11:43.897Z",
   "durationSec": 0,
   "published": 0,
   "report": [],
@@ -14,7 +14,7 @@
     "byModel": {}
   },
   "log": [
-    "[20:17:04] newsroom start mode=weekly limit=4 dry-run=false",
-    "[20:17:04] not enough coverage this week for a review"
+    "[20:11:43] newsroom start mode=analysis limit=4 dry-run=false",
+    "[20:11:44] not enough recent coverage to anchor an analysis"
   ]
 }
