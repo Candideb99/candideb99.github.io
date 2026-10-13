@@ -1,0 +1,20 @@
+{
+  "mode": "explainer",
+  "startedAt": "2026-10-13T12:55:20.059Z",
+  "durationSec": 0,
+  "published": 0,
+  "report": [],
+  "llm": {
+    "calls": 0,
+    "failures": 0,
+    "promptTokens": 0,
+    "completionTokens": 0,
+    "cacheReadTokens": 0,
+    "costUsd": 0,
+    "byModel": {}
+  },
+  "log": [
+    "[12:55:20] newsroom start mode=explainer limit=4 dry-run=false",
+    "[12:55:20] not enough recent coverage to anchor an explainer"
+  ]
+}
