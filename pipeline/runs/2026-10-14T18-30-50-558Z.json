@@ -1,7 +1,7 @@
 {
   "mode": "analysis",
-  "startedAt": "2026-10-10T18:28:30.051Z",
-  "durationSec": 0,
+  "startedAt": "2026-10-14T18:30:49.635Z",
+  "durationSec": 1,
   "published": 0,
   "report": [],
   "llm": {
@@ -14,7 +14,7 @@
     "byModel": {}
   },
   "log": [
-    "[18:28:30] newsroom start mode=analysis limit=4 dry-run=false",
-    "[18:28:30] not enough recent coverage to anchor an analysis"
+    "[18:30:49] newsroom start mode=analysis limit=4 dry-run=false",
+    "[18:30:50] not enough recent coverage to anchor an analysis"
   ]
 }
