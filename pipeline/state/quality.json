@@ -210,9 +210,19 @@
       "read": 0,
       "confirmedPerStory": null,
       "photosPending": 0
+    },
+    {
+      "date": "2026-10-15",
+      "published": 0,
+      "news": 0,
+      "styleFaultsPerStory": null,
+      "corrections": 0,
+      "read": 0,
+      "confirmedPerStory": null,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-10-14T12:52:44.444Z",
+  "updatedAt": "2026-10-15T12:39:50.829Z",
   "week": {
     "published": 0,
     "news": 0,
@@ -277,17 +287,17 @@
     "recurring": []
   },
   "weekBefore": {
-    "published": 15,
-    "news": 13,
-    "revisedShare": 0.77,
-    "styleFaultsPerStory": 0,
-    "styleWarningsPerStory": 0.08,
-    "corrections": 5,
+    "published": 0,
+    "news": 0,
+    "revisedShare": null,
+    "styleFaultsPerStory": null,
+    "styleWarningsPerStory": null,
+    "corrections": 0,
     "usefulness": {
       "withLessons": {
-        "stories": 13,
-        "words": 295,
-        "keyFacts": 5.3
+        "stories": 0,
+        "words": null,
+        "keyFacts": null
       },
       "control": {
         "stories": 0,
@@ -296,8 +306,8 @@
       }
     },
     "precheck": {
-      "checked": 13,
-      "clean": 13,
+      "checked": 0,
+      "clean": 0,
       "repaired": 0,
       "held": 0,
       "errorsFound": 0,
@@ -305,27 +315,27 @@
     },
     "outcomes": {
       "repairedBeforePublication": 0,
-      "correctionsVerifiedClean": 4,
+      "correctionsVerifiedClean": 0,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 31,
-      "clean": 3,
-      "corrected": 4,
+      "read": 22,
+      "clean": 0,
+      "corrected": 0,
       "stands": 0,
       "refused": 0,
-      "listed": 2,
+      "listed": 0,
       "unverifiable": 0,
-      "confirmedPerStory": 0.16,
+      "confirmedPerStory": 0,
       "withLessons": {
-        "read": 2,
-        "confirmedPerStory": 0
+        "read": 0,
+        "confirmedPerStory": null
       },
       "claudeWithout": {
-        "read": 1,
-        "confirmedPerStory": 0
+        "read": 0,
+        "confirmedPerStory": null
       }
     },
     "runs": {
@@ -337,16 +347,7 @@
       "costPerStory": null,
       "note": "from the run reports kept (the newest 24)"
     },
-    "recurring": [
-      {
-        "what": "second look: figure errors",
-        "stories": 2,
-        "examples": [
-          "egypt-ewallets-h1-2026-transactions-growth-9789a5: وجاءت «إي آند كاش» في المركز الثاني بـ23% من التوزيع و20% من عدد العمليات و14% من القيمة، تلتها «أورنج كاش» و«وي باي» بن",
-          "brent-above-100-dollars-gulf-escalation-8281ef: وارتفعت أسعار النفط بأكثر من الربع منذ أوائل أغسطس مع تلاشي آمال الحل الدائم للحرب المستمرة منذ ستة أشهر."
-        ]
-      }
-    ]
+    "recurring": []
   },
   "lessons": {
     "version": 29,
