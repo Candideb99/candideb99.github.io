@@ -1,7 +1,7 @@
 {
   "mode": "news",
-  "startedAt": "2026-10-15T21:32:15.058Z",
-  "durationSec": 16,
+  "startedAt": "2026-10-16T04:44:15.733Z",
+  "durationSec": 17,
   "published": 0,
   "report": [
     {
@@ -20,13 +20,13 @@
     "byModel": {}
   },
   "log": [
-    "[21:32:15] newsroom start mode=news limit=4 dry-run=false",
-    "[21:32:15] lessons: version 29, 9 active, read by the desk notes and the writer",
-    "[21:32:19] candidates: 12 price-service items left out (gold, dollar and share price tables)",
-    "[21:32:19] candidates: 300 fresh unseen items",
-    "[21:32:22] llm fail role=editor model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
-    "[21:32:26] llm fail role=editor model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
-    "[21:32:30] llm fail role=editor model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
-    "[21:32:30] news failed: Claude failed for role editor:"
+    "[04:44:15] newsroom start mode=news limit=4 dry-run=false",
+    "[04:44:15] lessons: version 29, 9 active, read by the desk notes and the writer",
+    "[04:44:21] candidates: 12 price-service items left out (gold, dollar and share price tables)",
+    "[04:44:21] candidates: 300 fresh unseen items",
+    "[04:44:23] llm fail role=editor model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[04:44:27] llm fail role=editor model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[04:44:32] llm fail role=editor model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "[04:44:32] news failed: Claude failed for role editor:"
   ]
 }
