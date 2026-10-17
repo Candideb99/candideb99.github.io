@@ -2565,8 +2565,8 @@
       ]
     },
     "moodys-upgrades-egypt-credit-rating-b3-636210": {
-      "at": "2026-10-17T20:50:56.575Z",
-      "title": "«موديز» ترفع تصنيف مصر الائتماني بنظرة مستقبلية إيجابية",
+      "at": "2026-10-17T21:21:59.627Z",
+      "title": "«موديز» ترفع تصنيف مصر الائتماني مع نظرة مستقبلية إيجابية",
       "writer": "codex-cli/gpt-6.1-sol → codex-cli/gpt-6.1-sol",
       "lessons": "v29",
       "ok": true,
@@ -2574,11 +2574,11 @@
       "rounds": [
         {
           "counts": {
-            "sentences": 18,
-            "checked": 18,
-            "supported": 18,
+            "sentences": 30,
+            "checked": 30,
+            "supported": 28,
             "weak": 0,
-            "noEvidence": 0,
+            "noEvidence": 2,
             "notFound": 0,
             "confirmed": 0,
             "listed": 0,

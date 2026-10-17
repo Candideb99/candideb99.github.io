@@ -68,3 +68,12 @@ An explicit single-story refresh reuses the normal newsroom gate, preserves iden
 metadata, and prints a dated editorial update. Original publication evidence remains immutable;
 refresh evidence receives its own snapshot. No manual rewriting of generated article text, broader
 unpublishing, publication threshold change or cover reordering is part of this repair.
+
+The selected refresh completed at 21:21:59 UTC with eight successful model calls and no provider
+failures. After the usual revision it received a publish verdict, passed the independent factual
+check without repairs and had no programmatic warnings. The revised lede and body contain 392 words:
+the investment/speculative distinction and risk/return mechanism are explained; two analysts are
+identified; the unneeded unexplained CDS passage is absent; paragraph openings follow several
+constructions. The first preparation's private draft/report/evidence were moved to system temp,
+not published as another version of the story. These checks establish this output's tested behaviour,
+not a claim of Financial Times or Wall Street Journal quality for every future story.
