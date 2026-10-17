@@ -81,7 +81,7 @@ jobs:
       # A new story without a picture, or a photo its library has lost, is mechanical: the pipeline's own picture
       # search finds one or the story runs as text, and the editor round is not woken for it.
       - name: Install Claude Code (for the picture search)
-        if: (steps.precheck.outputs.pictures != '' || steps.precheck.outputs.redo != '') && (vars.KHAZENDAR_PROVIDER == 'claude' || (vars.KHAZENDAR_PROVIDER == '' && secrets.CLAUDE_CODE_OAUTH_TOKEN != '' && secrets.GEMINI_API_KEY == ''))
+        if: (steps.precheck.outputs.pictures != '' || steps.precheck.outputs.redo != '') && vars.KHAZENDAR_PROVIDER == 'claude'
         run: npm install -g @anthropic-ai/claude-code
 
       - name: Fill missing pictures and replace lost ones (the pipeline's own search)

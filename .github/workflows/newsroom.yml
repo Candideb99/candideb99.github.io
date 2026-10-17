@@ -104,7 +104,7 @@ jobs:
 
       # Install Claude Code CLI if Claude is selected as the active provider
       - name: Install Claude Code
-        if: vars.KHAZENDAR_PROVIDER == 'claude' || (vars.KHAZENDAR_PROVIDER == '' && secrets.CLAUDE_CODE_OAUTH_TOKEN != '' && secrets.GEMINI_API_KEY == '')
+        if: vars.KHAZENDAR_PROVIDER == 'claude'
         run: npm install -g @anthropic-ai/claude-code
 
       # The self-improvement loop, each news round (the owner, 2026-09-25: "each time the LLM gets news ... efficient and
