@@ -64,6 +64,23 @@ try {
   assert.equal(accounts.accountPool(), null);
   console.log("ok  Both accounts remain connected; duplicate identities cannot create an extra allowance");
 
+  accounts.beginAccountLogin({ target: "cloud", method: "browser" }, (binary, args, options) => {
+    assert.equal(args.at(-1), "login");
+    assert.equal(args.includes("--device-auth"), false);
+    profile = options.env.CODEX_HOME;
+    assert.notEqual(profile, process.env.CODEX_HOME);
+    child = new EventEmitter(); child.stdout = new EventEmitter(); child.stderr = new EventEmitter();
+    return child;
+  });
+  const browserUrl = "https://auth.openai.com/oauth/authorize?state=test-state&code_challenge=test-challenge";
+  child.stdout.emit("data", `Open ${browserUrl}\n`);
+  assert.equal(accounts.loginState().url, browserUrl, "Browser OAuth parameters survive intact");
+  assert.equal(accounts.loginState().method, "browser");
+  writeFileSync(path.join(profile, "auth.json"), JSON.stringify(auth)); child.emit("close", 0);
+  assert.equal(accounts.loginState().complete, true);
+  assert.equal(accounts.listAccounts().at(-1).target, "cloud");
+  console.log("ok  Browser sign-in preserves OAuth parameters and stores a separate cloud session");
+
   const key = "a".repeat(64), session = "new-session";
   const encrypted = sealCodexAuth(auth, key, session);
   assert.equal(encrypted.includes(auth.tokens.refresh_token), false);

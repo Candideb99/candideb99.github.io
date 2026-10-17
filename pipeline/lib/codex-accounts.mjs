@@ -80,19 +80,22 @@ export function loginState() {
   const { child, ...visible } = login;
   return visible;
 }
-export function beginAccountLogin({ target = "local", label = "" } = {}, run = spawn) {
+export function beginAccountLogin({ target = "local", label = "", method = "device" } = {}, run = spawn) {
   if (login?.running) throw new Error("Finish the ChatGPT sign-in already in progress first.");
   const id = randomUUID();
   const home = path.join(base(), id);
   mkdirSync(home, { recursive: true });
   const account = { id, home, target: target === "cloud" ? "cloud" : "local", label: String(label || (target === "cloud" ? "Scheduled publishing account" : "Newsroom account")).slice(0, 80) };
-  const child = run(process.env.KHAZENDAR_CODEX_BIN || (process.platform === "win32" ? "codex.exe" : "codex"), ["--config", 'cli_auth_credentials_store="file"', "--config", 'forced_login_method="chatgpt"', "login", "--device-auth"], { env: codexEnvironment({ ...process.env, KHAZENDAR_CODEX_HOME: home }), cwd: home, shell: false, windowsHide: true, stdio: ["ignore", "pipe", "pipe"], timeout: 15 * 60 * 1000 });
-  const state = { running: true, accountId: id, target: account.target, url: "", code: "", error: "", complete: false, child };
+  method = method === "browser" ? "browser" : "device";
+  const args = ["--config", 'cli_auth_credentials_store="file"', "--config", 'forced_login_method="chatgpt"', "login"];
+  if (method === "device") args.push("--device-auth");
+  const child = run(process.env.KHAZENDAR_CODEX_BIN || (process.platform === "win32" ? "codex.exe" : "codex"), args, { env: codexEnvironment({ ...process.env, KHAZENDAR_CODEX_HOME: home }), cwd: home, shell: false, windowsHide: true, stdio: ["ignore", "pipe", "pipe"], timeout: 15 * 60 * 1000 });
+  const state = { running: true, accountId: id, target: account.target, method, url: "", code: "", error: "", complete: false, child };
   login = state;
   let output = "";
   const feed = (chunk) => {
     output = (output + chunk).replace(/\x1b\[[0-9;]*m/g, "").slice(-8000);
-    const url = output.match(/https:\/\/auth\.openai\.com\/[a-zA-Z0-9/_-]+/);
+    const url = output.match(/https:\/\/auth\.openai\.com\/[^\s]+/);
     const code = output.match(/\b[A-Z0-9]{4,6}-[A-Z0-9]{4,6}\b/);
     if (url) state.url = url[0];
     if (code) state.code = code[0];
@@ -105,7 +108,7 @@ export function beginAccountLogin({ target = "local", label = "" } = {}, run = s
       if (code === 0 && accountIdentity(home).hasFile) {
         const store = readAccountStore(); store.accounts.push(account); save(store);
         state.complete = true; state.code = ""; state.url = "";
-      } else if (!state.error) state.error = "Sign-in did not finish. You can retry; device-code login may need enabling in ChatGPT Settings → Security.";
+      } else if (!state.error) state.error = method === "device" ? "Sign-in did not finish. Retry with browser sign-in, or enable device-code login in ChatGPT Settings → Security." : "Sign-in did not finish. You can retry browser sign-in.";
     } catch { state.error = "The sign-in finished but its account record could not be saved. Existing accounts were left unchanged."; }
   });
   return loginState();
