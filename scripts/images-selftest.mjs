@@ -155,11 +155,16 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
 {
   const r = await scenario({
     draft: developers,
-    plan: planFor({ places: ["New Administrative Capital", "New Capital"], place_queries: ["New Administrative Capital"] }),
+    plan: planFor({ places: ["New Administrative Capital", "New Capital"], place_queries: ["New Administrative Capital"], message: "developers' money stays with each project" }),
     world: { "New Administrative Capital": [bonn, cbd], "construction site Egypt": [dahab] },
     judge: pickTitle("Central business district"),
   });
   check("the place tier picks the New Capital's business district", r.image?.title, cbd.title);
+  check(
+    "every judge is told what the picture should say and the publication standard",
+    [r.judgePrompts.every((p) => p.includes("WHAT THE PICTURE SHOULD SAY: developers' money stays with each project")), r.judgePrompts.every((p) => p.includes("PUBLICATION STANDARD"))],
+    [true, true],
+  );
   check("a file that does not name the place never reaches the judge; the later tiers are never asked", [r.calls.includes("brief"), r.searched.includes("construction site Egypt")], [false, false]);
 }
 // B. A frame of a series another story runs is never repeated; the cascade moves on to the next tier.
@@ -206,7 +211,7 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
   check("the outlet's logo is never downloaded", r.inlined.some((u) => u.includes("logo")), false);
   check(
     "the sources'-photo pass tells its judge the subject it may take, and that a skyline is not this pass's",
-    [r.judgePrompts[0]?.includes("THE SOURCES' OWN PHOTOGRAPH shows: trucks queue at a port yard"), r.judgePrompts[0]?.includes("never chosen in this pass")],
+    [r.judgePrompts[0]?.includes("THE SOURCES' OWN PHOTOGRAPH shows: trucks queue at a port yard"), r.judgePrompts[0]?.includes("never chosen, whatever the story")],
     [true, true],
   );
 }
@@ -227,7 +232,9 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
   });
   check("an unplaced likeness waits; Oman's own port is chosen", r.image?.title, salalah.title);
 }
-// D2. A skyline is the last resort's alone (the stress test of 2026-09-28: the Cairo Tower ran under a rate decision).
+// D2. No pass takes a skyline, and none is searched (the stress test of 2026-09-28: the Cairo Tower ran under a rate
+// decision; then a Nile corniche, which the last resort had still been allowed, after the governor and a snapshot of notes
+// were refused). The last resort still finds the institution itself.
 {
   const skyline = file("6th of October Bridge and Cairo Tower (14802847662).jpg", { categories: "Cairo Tower|Skylines of Cairo" });
   const cbe = file("Central Bank of Egypt, Cairo.jpg", { categories: "Central Bank of Egypt" });
@@ -236,11 +243,11 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
     plan: planFor({ queries: ["vegetable market Cairo"], places: [], place_queries: [] }),
     world: { "vegetable market Cairo": [], "Cairo skyline": [skyline], "Central Bank of Egypt headquarters": [cbe] },
     lastResort: { scene: null, country: "Egypt", institution: "Central Bank of Egypt", city: "Cairo" },
-    judge: (titles, prompt) => (prompt.includes("This is the last resort") ? titles.findIndex((t) => t.includes("Central Bank")) + 1 || 1 : 0),
-    verify: (name, prompt) => (prompt.includes("skyline or central bank is acceptable ONLY") ? "GENERIC_OK" : "WRONG_SUBJECT"),
+    judge: (titles) => titles.findIndex((t) => t.includes("Central Bank")) + 1,
+    verify: (name, prompt) => (prompt.includes("central bank is acceptable ONLY") && !name.includes("Tower") ? "GENERIC_OK" : "WRONG_SUBJECT"),
   });
-  check("only the last resort is offered the capital's skyline", [r.judgePrompts.filter((p) => p.includes("This is the last resort")).length > 0, r.judgePrompts.filter((p) => !p.includes("This is the last resort") && !p.includes("LAST PASS")).every((p) => p.includes("never chosen in this pass"))], [true, true]);
-  check("the last resort still prefers the central bank to the skyline", r.image?.title, cbe.title);
+  check("no pass is offered a skyline, and none is searched", [r.judgePrompts.every((p) => p.includes("never chosen, whatever the story")), r.searched.some((q) => /skyline|panorama/i.test(q))], [true, false]);
+  check("the last resort still finds the central bank itself", r.image?.title, cbe.title);
 }
 // E. The second check fails closed: a refused or unchecked photo never runs, and the next choice is judged.
 {

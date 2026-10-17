@@ -102,8 +102,9 @@ jobs:
           echo "sections=$sections" >> "$GITHUB_OUTPUT"
           echo "limit=$limit" >> "$GITHUB_OUTPUT"
 
-      # Every model call is Claude's since 2026-09-24 (the owner: «abandon free models and use claude only»).
+      # Install Claude Code CLI if Claude is selected as the active provider
       - name: Install Claude Code
+        if: vars.KHAZENDAR_PROVIDER == 'claude' || (vars.KHAZENDAR_PROVIDER == '' && secrets.CLAUDE_CODE_OAUTH_TOKEN != '' && secrets.GEMINI_API_KEY == '')
         run: npm install -g @anthropic-ai/claude-code
 
       # The self-improvement loop, each news round (the owner, 2026-09-25: "each time the LLM gets news ... efficient and
@@ -114,9 +115,16 @@ jobs:
         if: steps.mode.outputs.mode == 'news' || steps.mode.outputs.mode == 'recheck'
         continue-on-error: true
         env:
-          KHAZENDAR_CLAUDE_MODEL: ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'claude-opus-5-5' }}
+          KHAZENDAR_PROVIDER: ${{ vars.KHAZENDAR_PROVIDER }}
+          KHAZENDAR_MODEL: ${{ vars.KHAZENDAR_MODEL }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+          QWEN_API_KEY: ${{ secrets.QWEN_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          KHAZENDAR_CLAUDE_MODEL: ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'claude-opus-5-5' }}
           REVIEW: ${{ steps.mode.outputs.review }}
           MODE: ${{ steps.mode.outputs.mode }}
         run: |
@@ -131,18 +139,32 @@ jobs:
         continue-on-error: true
         timeout-minutes: 5
         env:
-          KHAZENDAR_CLAUDE_MODEL: ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'claude-opus-5-5' }}
+          KHAZENDAR_PROVIDER: ${{ vars.KHAZENDAR_PROVIDER }}
+          KHAZENDAR_MODEL: ${{ vars.KHAZENDAR_MODEL }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+          QWEN_API_KEY: ${{ secrets.QWEN_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          KHAZENDAR_CLAUDE_MODEL: ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'claude-opus-5-5' }}
         run: node pipeline/learn.mjs
 
       - name: Run the newsroom
         id: newsroom
         if: steps.mode.outputs.mode != 'recheck'
         env:
-          KHAZENDAR_CLAUDE_MODEL: ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'claude-opus-5-5' }}
+          KHAZENDAR_PROVIDER: ${{ vars.KHAZENDAR_PROVIDER }}
+          KHAZENDAR_MODEL: ${{ vars.KHAZENDAR_MODEL }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+          QWEN_API_KEY: ${{ secrets.QWEN_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          KHAZENDAR_CLAUDE_MODEL: ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'claude-opus-5-5' }}
           # Photo libraries beside Commons (pipeline/lib/photolibs.mjs); each is used only when its free key is set.
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}

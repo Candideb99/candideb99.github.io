@@ -352,21 +352,125 @@ async function health() {
       /* none */
     }
   }
+
+let cachedGeminiModels = null;
+let lastGeminiModelsFetch = 0;
+
+async function fetchLiveGeminiModels(apiKey) {
+  if (!apiKey) return null;
+  const now = Date.now();
+  if (cachedGeminiModels && (now - lastGeminiModelsFetch < 3600000)) return cachedGeminiModels;
+  try {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(apiKey)}`, { signal: AbortSignal.timeout(4000) });
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (Array.isArray(data.models)) {
+      const list = data.models
+        .map((m) => m.name.replace(/^models\//, ""))
+        .filter((n) => n.startsWith("gemini") && !n.includes("-tts") && !n.includes("-embedding") && !n.includes("-transcribe") && !n.includes("-audio") && !n.includes("-robotics"));
+      if (list.length > 0) {
+        cachedGeminiModels = list;
+        lastGeminiModelsFetch = now;
+        return list;
+      }
+    }
+  } catch {
+    /* fallback to curated list */
+  }
+  return null;
+}
+
+  const activeProvider = (local.KHAZENDAR_PROVIDER || (vars.match(/KHAZENDAR_PROVIDER\s+(\S+)/) ?? [])[1] || "gemini").toLowerCase();
+  const geminiKey = local.GEMINI_API_KEY || local.GOOGLE_API_KEY;
+  const liveGemini = await fetchLiveGeminiModels(geminiKey);
+  const geminiModels = liveGemini || ["gemini-3.8-flash", "gemini-4-argon", "gemini-3.7-flash", "gemini-3.5-flash", "gemini-3.1-pro-preview", "gemini-2.5-flash"];
+
+  const providers = {
+    gemini: {
+      id: "gemini",
+      name: "Google Gemini",
+      active: activeProvider === "gemini",
+      keySet: Boolean(geminiKey),
+      cloudKeySet: /GEMINI_API_KEY|GOOGLE_API_KEY/.test(secrets),
+      model: local.KHAZENDAR_GEMINI_MODEL || (activeProvider === "gemini" ? local.KHAZENDAR_MODEL : "") || "gemini-3.8-flash",
+      models: geminiModels,
+      thinkingBudget: local.KHAZENDAR_THINKING_BUDGET || "-1",
+    },
+    claude: {
+      id: "claude",
+      name: "Anthropic Claude",
+      active: activeProvider === "claude",
+      keySet: Boolean(local.ANTHROPIC_API_KEY),
+      tokenSet: Boolean(local.CLAUDE_CODE_OAUTH_TOKEN),
+      cloudKeySet: /ANTHROPIC_API_KEY/.test(secrets),
+      cloudTokenSet: /CLAUDE_CODE_OAUTH_TOKEN/.test(secrets),
+      model: local.KHAZENDAR_CLAUDE_MODEL || (activeProvider === "claude" ? local.KHAZENDAR_MODEL : "") || "claude-opus-5-5",
+      models: ["claude-opus-5-5", "claude-3-5-sonnet-20241022", "claude-3-5-haiku-20241022"],
+    },
+    openai: {
+      id: "openai",
+      name: "OpenAI ChatGPT",
+      active: activeProvider === "openai",
+      keySet: Boolean(local.OPENAI_API_KEY),
+      cloudKeySet: /OPENAI_API_KEY/.test(secrets),
+      model: local.KHAZENDAR_OPENAI_MODEL || (activeProvider === "openai" ? local.KHAZENDAR_MODEL : "") || "gpt-4o",
+      models: ["gpt-4o", "gpt-4o-mini", "o3-mini", "gpt-4.5-preview"],
+    },
+    qwen: {
+      id: "qwen",
+      name: "Alibaba Qwen",
+      active: activeProvider === "qwen",
+      keySet: Boolean(local.DASHSCOPE_API_KEY || local.QWEN_API_KEY),
+      cloudKeySet: /DASHSCOPE_API_KEY|QWEN_API_KEY/.test(secrets),
+      model: local.KHAZENDAR_QWEN_MODEL || (activeProvider === "qwen" ? local.KHAZENDAR_MODEL : "") || "qwen-plus",
+      models: ["qwen-plus", "qwen-max", "qwen-turbo", "qwen2.5-72b-instruct"],
+    },
+    openrouter: {
+      id: "openrouter",
+      name: "OpenRouter",
+      active: activeProvider === "openrouter",
+      keySet: Boolean(local.OPENROUTER_API_KEY),
+      cloudKeySet: /OPENROUTER_API_KEY/.test(secrets),
+      model: local.KHAZENDAR_OPENROUTER_MODEL || (activeProvider === "openrouter" ? local.KHAZENDAR_MODEL : "") || "google/gemini-3.8-flash",
+      models: ["google/gemini-3.8-flash", "anthropic/claude-3.5-sonnet", "deepseek/deepseek-chat", "qwen/qwen-2.5-72b-instruct"],
+    },
+  };
+
+  const active = providers[activeProvider] || providers.gemini;
+  const activeKeySet = active.keySet || (active.id === "claude" && active.tokenSet);
+  const activeCloudKeySet = active.cloudKeySet || (active.id === "claude" && active.cloudTokenSet);
+
   return {
     ghOk,
+    activeProvider,
+    providers,
     cloud: {
-      anthropic: /ANTHROPIC_API_KEY/.test(secrets),
-      oauth: /CLAUDE_CODE_OAUTH_TOKEN/.test(secrets),
+      activeProvider,
+      newsroomModel: active.model,
       editorOn: /KHAZENDAR_EDITOR\s+1/.test(vars),
       review: /KHAZENDAR_REVIEW\s+1/.test(vars),
       paused: /KHAZENDAR_PAUSED\s+1/.test(vars),
-      newsroomModel: (vars.match(/KHAZENDAR_CLAUDE_MODEL\s+(\S+)/) ?? [])[1] ?? "claude-opus-5-5",
+      hasKey: activeCloudKeySet,
+      anthropic: /ANTHROPIC_API_KEY/.test(secrets),
+      oauth: /CLAUDE_CODE_OAUTH_TOKEN/.test(secrets),
+      gemini: /GEMINI_API_KEY|GOOGLE_API_KEY/.test(secrets),
     },
-    local: { anthropic: Boolean(local.ANTHROPIC_API_KEY), oauth: Boolean(local.CLAUDE_CODE_OAUTH_TOKEN) },
+    local: {
+      activeProvider,
+      activeModel: active.model,
+      hasKey: activeKeySet,
+      gemini: Boolean(local.GEMINI_API_KEY || local.GOOGLE_API_KEY),
+      anthropic: Boolean(local.ANTHROPIC_API_KEY),
+      oauth: Boolean(local.CLAUDE_CODE_OAUTH_TOKEN),
+      openai: Boolean(local.OPENAI_API_KEY),
+      qwen: Boolean(local.DASHSCOPE_API_KEY || local.QWEN_API_KEY),
+      openrouter: Boolean(local.OPENROUTER_API_KEY),
+    },
     chatModel: local.KHAZENDAR_CHAT_MODEL || "default",
+    thinkingBudget: local.KHAZENDAR_THINKING_BUDGET || "-1",
     editorReal,
     deploy,
-    chatReady: Boolean(CLI) && Boolean(local.CLAUDE_CODE_OAUTH_TOKEN || local.ANTHROPIC_API_KEY),
+    chatReady: activeKeySet,
   };
 }
 
@@ -379,7 +483,7 @@ const CLI_ROOTS = [
   "/usr/local/lib/node_modules/@anthropic-ai/claude-code",
 ];
 const CLI_BIN = CLI_ROOTS.map((root) => path.join(root, "bin", "claude.exe")).find((p) => existsSync(p));
-const CLI_JS = CLI_ROOTS.map((root) => path.join(root, "cli.js")).find((p) => existsSync(p));
+const CLI_JS = CLI_BIN ? undefined : CLI_ROOTS.map((root) => path.join(root, "cli.js")).find((p) => existsSync(p));
 const CLI = CLI_BIN ? [CLI_BIN] : CLI_JS ? [process.execPath, CLI_JS] : null;
 
 function chatEnv() {
@@ -424,69 +528,118 @@ function chatSend(event) {
 }
 async function startChat(message) {
   if (chat.running) return false;
-  if (!CLI) {
-    chatSend({ t: "error", text: "Claude Code is not installed on this laptop, so this tab cannot run. Install it with: npm install -g @anthropic-ai/claude-code" });
-    return true;
-  }
   const keys = envFileKeys();
-  if (!keys.CLAUDE_CODE_OAUTH_TOKEN && !keys.ANTHROPIC_API_KEY) {
-    chatSend({ t: "error", text: "No Claude key is saved yet. Open Settings and fill either the subscription token or the API key." });
+  const activeProvider = (keys.KHAZENDAR_PROVIDER || "gemini").toLowerCase();
+
+  if (activeProvider === "claude") {
+    if (!CLI) {
+      chatSend({ t: "error", text: "Claude Code is not installed on this machine. Switch to Gemini in Settings, or install Claude Code." });
+      return true;
+    }
+    if (!keys.CLAUDE_CODE_OAUTH_TOKEN && !keys.ANTHROPIC_API_KEY) {
+      chatSend({ t: "error", text: "Claude is active but no key or token is saved. Open Settings and add one, or switch to Gemini." });
+      return true;
+    }
+    chat.baseline = await porcelain();
+    chat.touched = [];
+    chat.turns.push({ role: "you", text: message });
+    chatSend({ t: "you", text: message });
+    const args = [...CLI.slice(1), "-p", "--output-format", "stream-json", "--verbose", "--permission-mode", "acceptEdits", "--append-system-prompt", CHAT_RULES];
+    if (keys.KHAZENDAR_CHAT_MODEL) args.push("--model", keys.KHAZENDAR_CHAT_MODEL);
+    if (chat.sessionId) args.push("--resume", chat.sessionId);
+    else {
+      chat.sessionId = randomUUID();
+      args.push("--session-id", chat.sessionId);
+    }
+    args.push("--disallowed-tools", ...BLOCKED_TOOLS);
+    const child = spawn(CLI[0], args, { cwd: root, env: chatEnv(), windowsHide: true, shell: false });
+    chat.running = child;
+    chatSend({ t: "busy" });
+    child.stdin.write(message);
+    child.stdin.end();
+    let buffer = "";
+    child.stdout.on("data", (chunk) => {
+      buffer += chunk;
+      const lines = buffer.split(/\r?\n/);
+      buffer = lines.pop() ?? "";
+      for (const line of lines) {
+        let ev;
+        try {
+          ev = JSON.parse(line);
+        } catch {
+          continue;
+        }
+        if (ev.type === "assistant") {
+          for (const part of ev.message?.content ?? []) {
+            if (part.type === "text" && part.text.trim()) {
+              chat.turns.push({ role: "paper", text: part.text });
+              chatSend({ t: "paper", text: part.text });
+            }
+            if (part.type === "tool_use") {
+              const what = part.input?.file_path ?? part.input?.command ?? part.input?.pattern ?? "";
+              chatSend({ t: "step", text: `${part.name} ${String(what).replace(root, "").replace(/^[\\/]/, "")}`.trim() });
+            }
+          }
+        }
+        if (ev.type === "result") chatSend({ t: "done", text: ev.is_error ? "stopped with an error" : "done", seconds: Math.round((ev.duration_ms ?? 0) / 1000) });
+      }
+    });
+    child.stderr.on("data", (d) => {
+      const text = String(d).trim();
+      if (text) chatSend({ t: "step", text: text.slice(0, 300) });
+    });
+    child.on("close", async () => {
+      chat.running = null;
+      const after = await porcelain();
+      chat.touched = [...after].filter(([f, c]) => chat.baseline.get(f) !== c && !f.startsWith("content/articles/")).map(([f]) => f);
+      chatSend({ t: "changes", changes: await siteChanges() });
+    });
     return true;
   }
+
+  // Active provider is Gemini, OpenAI, Qwen, or OpenRouter
+  const hasKey = activeProvider === "gemini" ? Boolean(keys.GEMINI_API_KEY || keys.GOOGLE_API_KEY)
+    : activeProvider === "openai" ? Boolean(keys.OPENAI_API_KEY)
+    : activeProvider === "qwen" ? Boolean(keys.DASHSCOPE_API_KEY || keys.QWEN_API_KEY)
+    : activeProvider === "openrouter" ? Boolean(keys.OPENROUTER_API_KEY)
+    : false;
+
+  if (!hasKey) {
+    chatSend({ t: "error", text: `Active provider "${activeProvider}" has no API key saved yet. Open Settings and add the key to start.` });
+    return true;
+  }
+
   chat.baseline = await porcelain();
   chat.touched = [];
   chat.turns.push({ role: "you", text: message });
   chatSend({ t: "you", text: message });
-  const args = [...CLI.slice(1), "-p", "--output-format", "stream-json", "--verbose", "--permission-mode", "acceptEdits", "--append-system-prompt", CHAT_RULES];
-  if (keys.KHAZENDAR_CHAT_MODEL) args.push("--model", keys.KHAZENDAR_CHAT_MODEL);
-  if (chat.sessionId) args.push("--resume", chat.sessionId);
-  else {
-    chat.sessionId = randomUUID();
-    args.push("--session-id", chat.sessionId);
-  }
-  args.push("--disallowed-tools", ...BLOCKED_TOOLS);
-  const child = spawn(CLI[0], args, { cwd: root, env: chatEnv(), windowsHide: true, shell: false });
-  chat.running = child;
   chatSend({ t: "busy" });
-  child.stdin.write(message);
-  child.stdin.end();
-  let buffer = "";
-  child.stdout.on("data", (chunk) => {
-    buffer += chunk;
-    const lines = buffer.split(/\r?\n/);
-    buffer = lines.pop() ?? "";
-    for (const line of lines) {
-      let ev;
-      try {
-        ev = JSON.parse(line);
-      } catch {
-        continue;
-      }
-      if (ev.type === "assistant") {
-        for (const part of ev.message?.content ?? []) {
-          if (part.type === "text" && part.text.trim()) {
-            chat.turns.push({ role: "paper", text: part.text });
-            chatSend({ t: "paper", text: part.text });
-          }
-          if (part.type === "tool_use") {
-            const what = part.input?.file_path ?? part.input?.command ?? part.input?.pattern ?? "";
-            chatSend({ t: "step", text: `${part.name} ${String(what).replace(root, "").replace(/^[\\/]/, "")}`.trim() });
-          }
-        }
-      }
-      if (ev.type === "result") chatSend({ t: "done", text: ev.is_error ? "stopped with an error" : "done", seconds: Math.round((ev.duration_ms ?? 0) / 1000) });
+  chatSend({ t: "step", text: `Thinking with ${activeProvider.toUpperCase()}...` });
+
+  (async () => {
+    try {
+      const { chat: llmChat } = await import("../pipeline/lib/llm.mjs");
+      const history = chat.turns.slice(-6).map((t) => `${t.role === "you" ? "User" : "Assistant"}: ${t.text}`).join("\n\n");
+      const res = await llmChat({
+        role: "assistant",
+        system: CHAT_RULES,
+        user: `${history}\n\nUser request: ${message}`,
+        json: false,
+        timeoutMs: 120000,
+      });
+      chat.turns.push({ role: "paper", text: res.text });
+      chatSend({ t: "paper", text: res.text });
+      chatSend({ t: "done", text: "done", seconds: Math.round(res.ms / 1000) });
+    } catch (err) {
+      chatSend({ t: "error", text: `${activeProvider} error: ${err.message}` });
+    } finally {
+      chat.running = null;
+      const after = await porcelain();
+      chat.touched = [...after].filter(([f, c]) => chat.baseline.get(f) !== c && !f.startsWith("content/articles/")).map(([f]) => f);
+      chatSend({ t: "changes", changes: await siteChanges() });
     }
-  });
-  child.stderr.on("data", (d) => {
-    const text = String(d).trim();
-    if (text) chatSend({ t: "step", text: text.slice(0, 300) });
-  });
-  child.on("close", async () => {
-    chat.running = null;
-    const after = await porcelain();
-    chat.touched = [...after].filter(([f, c]) => chat.baseline.get(f) !== c && !f.startsWith("content/articles/")).map(([f]) => f);
-    chatSend({ t: "changes", changes: await siteChanges() });
-  });
+  })();
+
   return true;
 }
 function describe(file) {
@@ -648,6 +801,12 @@ td.src ul{margin:6px 0 0;padding-inline-start:16px;font-size:12.5px;max-width:42
 .set label .m{font-weight:400}.set input,.set select{width:100%}
 .keyrow{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end;margin-bottom:12px}
 .keyrow label{margin:0}
+.keycard{border:1px solid var(--rule-2);border-radius:4px;padding:12px 14px;background:#fff;margin-bottom:12px;transition:border-color var(--t),box-shadow var(--t)}
+.keycard.active{border-color:var(--green);box-shadow:0 0 0 2px var(--green-tint)}
+.keycard .khead{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.badge{font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:0.04em;margin-inline-start:6px;display:inline-block}
+.badge.active{background:var(--green-tint);color:var(--green-deep)}
+.badge.idle{background:var(--paper-3);color:var(--ink-3)}
 code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
 .dots p{margin:6px 0}
 /* chat */
@@ -772,22 +931,139 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
       <button class="go" onclick="saveReview()">Apply</button> <span class="m" id="reviewsaved"></span>
       <p class="m">Runs you start from the desk always wait for you. This is only about the cloud.</p>
 
-      <h2>Who writes</h2>
-      <p class="m">Every job (choosing the stories, writing, the copy desk, the fact check and the photo check) runs on Claude, on your subscription. The free models were dropped on 24 September 2026 at your request, so there is no backup: if your subscription lapses or a limit is hit, the newsroom waits until Claude answers again.</p>
-      <label><span>Claude model for the newsroom</span>
-        <select id="newsroomModel"><option value="claude-opus-5-5">Opus 5.5 — strongest, uses much more of your plan</option><option value="sonnet">Sonnet — fast, uses little of your plan</option><option value="haiku">Haiku — cheapest, weakest</option></select></label>
-      <label><span>Claude model for the "Change the site" chat</span>
-        <select id="chatModel"><option value="">Claude Code's default</option><option value="sonnet">Sonnet</option><option value="opus">Opus</option><option value="haiku">Haiku</option></select></label>
-      <button class="go" onclick="saveWriters()">Apply</button> <span class="m" id="writersaved"></span>
-      <p class="m">The newsroom model applies in the cloud from the next run; the chat model applies here at once.</p>
+      <h2>Who controls &amp; writes the website</h2>
+      <p class="m">The active AI provider controls story selection, writing, fact-checking, and the copy desk. When one provider is active, all other providers stay in <b>idle mode</b> on standby with their credentials preserved.</p>
 
-      <h2>Keys</h2>
+      <label><span>Active AI Controller</span>
+        <select id="activeProvider" onchange="onProviderChange()">
+          <option value="gemini">Google Gemini (Active Controller — recommended)</option>
+          <option value="claude">Anthropic Claude (Idle / Standby)</option>
+          <option value="openai">OpenAI ChatGPT (Idle / Standby)</option>
+          <option value="qwen">Alibaba Qwen (Idle / Standby)</option>
+          <option value="openrouter">OpenRouter / Multi-model Hub (Idle / Standby)</option>
+        </select>
+      </label>
+
+      <div style="display:flex;align-items:flex-end;gap:8px">
+        <label style="flex:1"><span>Model for the newsroom</span>
+          <select id="newsroomModel"></select>
+        </label>
+        <button class="quiet sm" type="button" style="margin-bottom:8px" onclick="refreshModels()" title="Query API for newly released models">↻ Discover Models</button>
+      </div>
+
+      <label id="thinkingRow"><span>Reasoning &amp; Thinking depth (Gemini)</span>
+        <select id="thinkingBudget">
+          <option value="-1">Deepest Reasoning (Maximum / Unlimited) — Recommended</option>
+          <option value="32768">High Reasoning (32,768 thinking tokens)</option>
+          <option value="8192">Balanced Reasoning (8,192 thinking tokens)</option>
+          <option value="2048">Fast Reasoning (2,048 thinking tokens)</option>
+          <option value="0">Standard / No Extra Thinking (0 tokens)</option>
+        </select>
+      </label>
+
+      <label><span>Model for the "Change the site" chat</span>
+        <select id="chatModel">
+          <option value="">Default (same as newsroom)</option>
+          <option value="gemini-3.8-flash">Gemini 3.8 Flash</option>
+          <option value="gemini-4-argon">Gemini 4 Argon</option>
+          <option value="gemini-3.7-flash">Gemini 3.7 Flash</option>
+          <option value="gpt-4o">GPT-4o</option>
+          <option value="gpt-4o-mini">GPT-4o mini</option>
+          <option value="claude-3-5-sonnet-20241022">Claude 3.5 Sonnet</option>
+          <option value="claude-opus-5-5">Claude Opus 5.5</option>
+        </select>
+      </label>
+
+      <button class="go" onclick="saveWriters()">Apply Controller &amp; Model</button> <span class="m" id="writersaved"></span>
+      <p class="m">Takes effect locally at once, and syncs to GitHub for cloud runs.</p>
+
+      <h2>API Keys &amp; Credentials Vault</h2>
       <div id="keystatus" style="display:none"></div>
-      <p style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 6px"><span><b>Claude subscription token</b> <span class="m">— from <code>claude setup-token</code> · starts with <code>sk-ant-oat</code></span><br><span id="ks_oauth">checking…</span></span><button class="quiet sm" onclick="reveal('k_oauth')">Replace</button></p>
-      <div class="keyrow" id="w_k_oauth" style="display:none"><label><input type="password" id="k_oauth" placeholder="paste the new token" autocomplete="off"></label><button class="quiet" onclick="saveKey('CLAUDE_CODE_OAUTH_TOKEN','k_oauth')">Save</button></div>
-      <p style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 6px"><span><b>Claude API key</b> <span class="m">— pay per use · starts with <code>sk-ant-api</code></span><br><span id="ks_ant">checking…</span></span><button class="quiet sm" onclick="reveal('k_ant')">Add</button></p>
-      <div class="keyrow" id="w_k_ant" style="display:none"><label><input type="password" id="k_ant" placeholder="paste the key" autocomplete="off"></label><button class="quiet" onclick="saveKey('ANTHROPIC_API_KEY','k_ant')">Save</button></div>
-      <p><label style="font-weight:400;display:flex;gap:8px;align-items:center"><input type="checkbox" id="k_gh" checked style="width:auto;margin:0"> Also send it to GitHub, so the cloud can use it</label> <span class="m" id="k_note"></span></p>
+
+      <!-- Gemini Card -->
+      <div class="keycard" id="card_gemini">
+        <div class="khead">
+          <div><b>Google Gemini API Key</b> <span class="badge" id="badge_gemini">checking…</span><br><span class="m" id="ks_gemini">checking…</span></div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span id="act_btn_gemini"></span>
+            <button class="quiet sm" onclick="reveal('k_gemini')">Edit</button>
+          </div>
+        </div>
+        <div class="keyrow" id="w_k_gemini" style="display:none">
+          <label><input type="password" id="k_gemini" placeholder="AIzaSy... (Gemini API key)" autocomplete="off"></label>
+          <button class="quiet" onclick="saveKey('GEMINI_API_KEY','k_gemini')">Save</button>
+        </div>
+      </div>
+
+      <!-- Claude Card -->
+      <div class="keycard" id="card_claude">
+        <div class="khead">
+          <div><b>Claude Subscription Token</b> <span class="badge" id="badge_claude">checking…</span><br><span class="m" id="ks_oauth">checking…</span></div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span id="act_btn_claude"></span>
+            <button class="quiet sm" onclick="reveal('k_oauth')">Edit</button>
+          </div>
+        </div>
+        <div class="keyrow" id="w_k_oauth" style="display:none">
+          <label><input type="password" id="k_oauth" placeholder="sk-ant-oat... (Claude CLI token)" autocomplete="off"></label>
+          <button class="quiet" onclick="saveKey('CLAUDE_CODE_OAUTH_TOKEN','k_oauth')">Save</button>
+        </div>
+        <div class="khead" style="margin-top:8px">
+          <div><b>Claude Direct API Key</b> <span class="m">— pay-per-use alternative</span><br><span class="m" id="ks_ant">checking…</span></div>
+          <button class="quiet sm" onclick="reveal('k_ant')">Edit</button>
+        </div>
+        <div class="keyrow" id="w_k_ant" style="display:none">
+          <label><input type="password" id="k_ant" placeholder="sk-ant-api... (Claude API key)" autocomplete="off"></label>
+          <button class="quiet" onclick="saveKey('ANTHROPIC_API_KEY','k_ant')">Save</button>
+        </div>
+      </div>
+
+      <!-- OpenAI Card -->
+      <div class="keycard" id="card_openai">
+        <div class="khead">
+          <div><b>OpenAI API Key (ChatGPT)</b> <span class="badge" id="badge_openai">checking…</span><br><span class="m" id="ks_openai">checking…</span></div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span id="act_btn_openai"></span>
+            <button class="quiet sm" onclick="reveal('k_openai')">Edit</button>
+          </div>
+        </div>
+        <div class="keyrow" id="w_k_openai" style="display:none">
+          <label><input type="password" id="k_openai" placeholder="sk-proj-... (OpenAI key)" autocomplete="off"></label>
+          <button class="quiet" onclick="saveKey('OPENAI_API_KEY','k_openai')">Save</button>
+        </div>
+      </div>
+
+      <!-- Qwen Card -->
+      <div class="keycard" id="card_qwen">
+        <div class="khead">
+          <div><b>Alibaba Qwen / DashScope Key</b> <span class="badge" id="badge_qwen">checking…</span><br><span class="m" id="ks_qwen">checking…</span></div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span id="act_btn_qwen"></span>
+            <button class="quiet sm" onclick="reveal('k_qwen')">Edit</button>
+          </div>
+        </div>
+        <div class="keyrow" id="w_k_qwen" style="display:none">
+          <label><input type="password" id="k_qwen" placeholder="sk-... (DashScope key)" autocomplete="off"></label>
+          <button class="quiet" onclick="saveKey('DASHSCOPE_API_KEY','k_qwen')">Save</button>
+        </div>
+      </div>
+
+      <!-- OpenRouter Card -->
+      <div class="keycard" id="card_openrouter">
+        <div class="khead">
+          <div><b>OpenRouter API Key</b> <span class="badge" id="badge_openrouter">checking…</span><br><span class="m" id="ks_openrouter">checking…</span></div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span id="act_btn_openrouter"></span>
+            <button class="quiet sm" onclick="reveal('k_openrouter')">Edit</button>
+          </div>
+        </div>
+        <div class="keyrow" id="w_k_openrouter" style="display:none">
+          <label><input type="password" id="k_openrouter" placeholder="sk-or-... (OpenRouter key)" autocomplete="off"></label>
+          <button class="quiet" onclick="saveKey('OPENROUTER_API_KEY','k_openrouter')">Save</button>
+        </div>
+      </div>
+
+      <p style="margin-top:14px"><label style="font-weight:400;display:flex;gap:8px;align-items:center"><input type="checkbox" id="k_gh" checked style="width:auto;margin:0"> Also send it to GitHub, so the cloud can use it</label> <span class="m" id="k_note"></span></p>
     </div>
     <div class="set">
       <h2>The newspaper</h2>
@@ -851,27 +1127,14 @@ function render(s){
   document.getElementById('b-last').innerHTML=s.lastRun?esc(KIND[s.lastRun.mode]||s.lastRun.mode)+' <small>· '+s.lastRun.published+' written · '+esc(ago(s.lastRun.startedAt))+'</small>':'–';
   document.getElementById('b-live').textContent=s.live.length+' stories';
   document.getElementById('b-wait').innerHTML=s.drafts.length?'<span class="ok">'+s.drafts.length+' draft'+(s.drafts.length>1?'s':'')+'</span>':'<span style="font-weight:400;color:var(--ink-3)">nothing</span>';
-  var used=document.getElementById('models-used');if(used)used.innerHTML=s.modelsUsed.length?'Wrote the last 24 h: '+s.modelsUsed.map(function(m){return '<code>'+esc(m.id.replace(/^claude-cli\\//,'Claude ').replace(/:free$/,''))+'</code> ×'+m.n}).join(' · '):'';
-  var quietCut=Date.now()-72*36e5;
-  var NEWS=['economy','markets','energy','companies','technology','defense'];
-  document.getElementById('cov').innerHTML=s.coverage.filter(function(c){return NEWS.indexOf(c.id)>=0}).map(function(c){var q=!c.last||Date.parse(c.last)<quietCut;return '<div class="'+(q?'quiet':'')+'"><div class="s">'+esc(c.name)+'</div><div class="c"><b>'+c.day+'</b> today · <b>'+c.week+'</b> this week<br>'+(c.last?'last '+esc(ago(c.last)):'nothing yet')+(q&&c.last?' · due for one':'')+'</div></div>'}).join('');
-  document.getElementById('hubs').innerHTML=s.coverage.filter(function(c){return NEWS.indexOf(c.id)<0}).map(function(c){return '<span><b>'+esc(c.name)+'</b> · '+c.week+' this week · last '+esc(ago(c.last))+'</span>'}).join('');
-  document.getElementById('sched').innerHTML=s.schedule.map(function(x){return '<li><span>'+esc(x.what)+'</span><span>'+esc(x.when)+(x.utc?' at '+utcToLocal(x.utc):'')+'</span></li>'}).join('');
-  var r=document.getElementById('running');r.style.display=s.job.running?'grid':'none';
-  if(s.job.running){document.getElementById('running-name').textContent='Working: '+s.job.name;var secs=Math.round((Date.now()-s.job.startedAt)/1000);document.getElementById('running-time').textContent=Math.floor(secs/60)+'m '+(secs%60)+'s';var c=s.job.counts;document.getElementById('running-count').textContent=c&&s.job.kind==='news'?'· '+c.written+(c.target?' of '+c.target:'')+' written'+(c.refused?' · '+c.refused+' refused':''):'';document.getElementById('running-lines').textContent=s.job.progress.join('\\n')||'starting…';document.getElementById('log').textContent=s.job.log.join('\\n')}
-  else if(wasRunning){document.getElementById('auto-note').textContent=s.job.exitCode===0?'Finished: '+s.job.name+'.':'Stopped or failed: '+s.job.name+'.'}
-  wasRunning=Boolean(s.job.running);
-  document.getElementById('n-drafts').textContent=s.drafts.length;
-  document.getElementById('drafts').innerHTML=s.drafts.length?s.drafts.map(draft).join(''):'<div class="empty">Nothing waits for you. The newsroom is publishing on its own; anything you ask for on the right appears here for approval first.</div>';
-  document.getElementById('drafts-all').style.display=s.drafts.length>1?'block':'none';
-  var rej=(s.lastRun&&s.lastRun.report||[]).filter(function(x){return /^rejected|^skip/.test(x.outcome||'')});
-  document.getElementById('rejected-box').style.display=rej.length?'block':'none';
-  document.getElementById('rejected').innerHTML=rej.map(function(x){return '<p><span class="ar" style="display:block;font-size:15px;color:var(--ink)">'+esc(x.title||x.headline||'')+'</span>'+esc((x.outcome||'').replace(/^rejected (after revision|by critic after revision \\(\\d+\\)): /,'').slice(0,200))+'</p>'}).join('');
-  LIVE=s.live;var months=[];LIVE.forEach(function(a){var m=a.publishedAt.slice(0,7);if(months.indexOf(m)<0)months.push(m)});
-  var msel=document.getElementById('f-month');var cur=msel.value;msel.innerHTML='<option value="">any month</option>'+months.map(function(m){return '<option value="'+m+'"'+(m===cur?' selected':'')+'>'+m+'</option>'}).join('');
-  document.getElementById('latest').innerHTML=LIVE.slice(0,10).map(rowHtml).join('');
-  var cl=s.modelsUsed.filter(function(m){return /^claude/.test(m.id)}).reduce(function(n,m){return n+m.n},0);
-  var mu=document.getElementById('models-used');if(mu&&cl)mu.innerHTML+=' · <b>Claude wrote '+cl+' of them</b> — how much of your plan is left is shown only in the Claude app (Settings → Usage, or /usage in Claude Code); no script can read it.';
+  var used=document.getElementById('models-used');
+  if(used){
+    var cleanList=s.modelsUsed.map(function(m){
+      var id=esc(m.id).replace(/^claude-cli\//,'Claude ').replace(/^gemini\//,'Gemini ').replace(/^openai\//,'OpenAI ').replace(/^qwen\//,'Qwen ').replace(/^openrouter\//,'OpenRouter ').replace(/:free$/,'');
+      return '<code>'+id+'</code> ×'+m.n;
+    });
+    used.innerHTML=cleanList.length?'Wrote the last 24 h: '+cleanList.join(' · '):'';
+  }
   renderChecks(s);
   renderLive();
 }
@@ -930,29 +1193,134 @@ function closePreview(){document.getElementById('overlay').classList.remove('on'
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closePreview()});
 
 // ---- health / settings
+var HEALTH_DATA = null;
 function dot(ok,label,note){return '<p><span style="display:inline-block;width:9px;height:9px;border-radius:50%;margin-inline-end:8px;background:'+(ok===null?'#c9a227':ok?'var(--green)':'var(--red)')+'"></span><b>'+label+'</b>'+(note?' <span class="m">— '+note+'</span>':'')+'</p>'}
+
+function updateModelOptions(h) {
+  var pSel = document.getElementById('activeProvider');
+  if (!pSel) return;
+  var prov = pSel.value;
+  var p = (h && h.providers && h.providers[prov]) || (HEALTH_DATA && HEALTH_DATA.providers && HEALTH_DATA.providers[prov]);
+  var mSel = document.getElementById('newsroomModel');
+  if (!p || !mSel) return;
+  var currentModel = p.model || p.models[0];
+  mSel.innerHTML = p.models.map(function(m){
+    return '<option value="'+esc(m)+'"'+(m===currentModel?' selected':'')+'>'+esc(m)+'</option>';
+  }).join('');
+}
+
+function onProviderChange() {
+  var pSel = document.getElementById('activeProvider');
+  var prov = pSel ? pSel.value : 'gemini';
+  var thinkRow = document.getElementById('thinkingRow');
+  if (thinkRow) thinkRow.style.display = prov === 'gemini' ? 'block' : 'none';
+  updateModelOptions(HEALTH_DATA);
+}
+
+function quickActivate(id) {
+  var pSel = document.getElementById('activeProvider');
+  if (pSel) pSel.value = id;
+  onProviderChange();
+  saveWriters();
+}
+
+function refreshModels() {
+  var prov = document.getElementById('activeProvider').value;
+  var btn = event.target;
+  var old = btn.textContent;
+  btn.textContent = 'Querying API…';
+  fetch('/models/refresh?provider=' + encodeURIComponent(prov))
+    .then(function(r) { return r.json(); })
+    .then(function(res) {
+      btn.textContent = old;
+      if (res.models && res.models.length) {
+        if (HEALTH_DATA && HEALTH_DATA.providers && HEALTH_DATA.providers[res.provider]) {
+          HEALTH_DATA.providers[res.provider].models = res.models;
+        }
+        updateModelOptions(HEALTH_DATA);
+        alert('Discovered ' + res.models.length + ' available models directly from ' + res.provider.toUpperCase() + ' API.');
+      } else {
+        alert(res.error || 'No models returned from API.');
+      }
+    })
+    .catch(function(err) {
+      btn.textContent = old;
+      alert('Error fetching models: ' + err.message);
+    });
+}
+
 function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(function(h){
+  HEALTH_DATA = h;
   PAUSED=Boolean(h.cloud.paused);
+  var provNames = { gemini: 'Google Gemini', claude: 'Anthropic Claude', openai: 'OpenAI ChatGPT', qwen: 'Alibaba Qwen', openrouter: 'OpenRouter' };
+  var curName = provNames[h.activeProvider] || h.activeProvider;
+  var curModel = (h.providers[h.activeProvider] && h.providers[h.activeProvider].model) || '';
+
   var auto=document.getElementById('auto');auto.className='auto'+((h.cloud.review||PAUSED)?' off':'');auto.innerHTML='<i></i><span>'+(PAUSED?'PAUSED — nothing is being written or published':h.cloud.review?'Waits for your approval':'Publishes on its own')+'</span>';
-  document.getElementById('auto-note').textContent='written by Claude ('+h.cloud.newsroomModel+')';
+  document.getElementById('auto-note').innerHTML='Controlled by <b>'+esc(curName)+'</b> ('+esc(curModel)+')'+(h.activeProvider!=='claude'?' · Claude in idle mode':'');
+
   var pb=document.getElementById('pauseBtn');pb.style.display='inline-block';pb.textContent=PAUSED?'Resume':'Pause everything';pb.className=PAUSED?'go sm':'danger sm';
+
+  var provSummary = [];
+  for (var k in h.providers) {
+    var p = h.providers[k];
+    provSummary.push('<b>'+esc(p.name)+':</b> '+(p.active?'<span class="ok">ACTIVE ('+esc(p.model)+')</span>':'<span class="m">Idle ('+((p.keySet||p.tokenSet)?'key saved':'no key')+')</span>'));
+  }
   document.getElementById('now').innerHTML=
-    '<p><b>Articles are written by</b> Claude ('+h.cloud.newsroomModel+'), on your subscription.</p>'+
-    '<p><b>The cloud runs</b> '+(PAUSED?'are <span class="no">paused</span>':h.cloud.review?'write drafts and wait for you':'publish on their own')+'.</p>'+
-    '<p><b>The chat</b> uses '+(h.chatModel==='default'?'Claude Code\\'s default model':'Claude '+h.chatModel)+'.</p>'+
-    '<p><b>Keys saved:</b> Claude subscription token '+(h.local.oauth?'✓'+(h.cloud.oauth?' (laptop and GitHub)':' (laptop only)'):'✗')+' · Claude API key '+(h.local.anthropic?'✓':'not set (not needed)')+'.</p>';
-  document.getElementById('ks_oauth').innerHTML=h.local.oauth?'<span class="ok">Saved'+(h.cloud.oauth?', and on GitHub':'')+'</span>':'<span class="no">Not saved</span>';
-  document.getElementById('ks_ant').innerHTML=h.local.anthropic?'<span class="ok">Saved</span>':'<span class="m">Not set — only needed if you have no subscription</span>';
+    '<p><b>Active AI Controller:</b> '+esc(curName)+' ('+esc(curModel)+')</p>'+
+    '<p><b>The cloud runs:</b> '+(PAUSED?'are <span class="no">paused</span>':h.cloud.review?'write drafts and wait for you':'publish on their own')+'.</p>'+
+    '<p><b>Providers Status:</b> '+provSummary.join(' · ')+'</p>';
+
+  var pSel = document.getElementById('activeProvider');
+  if (pSel) pSel.value = h.activeProvider;
+  updateModelOptions(h);
+
+  for (var id in h.providers) {
+    var pr = h.providers[id];
+    var card = document.getElementById('card_' + id);
+    if (card) card.className = 'keycard' + (pr.active ? ' active' : '');
+    var b = document.getElementById('badge_' + id);
+    if (b) {
+      b.className = 'badge ' + (pr.active ? 'active' : 'idle');
+      b.textContent = pr.active ? 'ACTIVE' : 'IDLE';
+    }
+    var ks = document.getElementById('ks_' + id);
+    if (ks) {
+      var hasLocal = pr.keySet || pr.tokenSet;
+      var hasCloud = pr.cloudKeySet || pr.cloudTokenSet;
+      ks.innerHTML = hasLocal ? '<span class="ok">Saved on laptop' + (hasCloud ? ' and on GitHub' : '') + '</span>' : '<span class="m">Not set</span>';
+    }
+    var actSpan = document.getElementById('act_btn_' + id);
+    if (actSpan) {
+      if (pr.active) {
+        actSpan.innerHTML = '<span class="badge ok" style="font-size:11px">Current Controller</span>';
+      } else {
+        var pShort = pr.name.split(' ')[0] === 'Google' || pr.name.split(' ')[0] === 'Alibaba' ? pr.name.split(' ')[1] : pr.name.split(' ')[0];
+        actSpan.innerHTML = '<button class="go sm" onclick="quickActivate(\'' + id + '\')">Activate ' + esc(pShort) + '</button>';
+      }
+    }
+  }
+
+  var ksOauth = document.getElementById('ks_oauth');
+  if (ksOauth) ksOauth.innerHTML = h.providers.claude.tokenSet ? '<span class="ok">Saved' + (h.providers.claude.cloudTokenSet ? ' (laptop and GitHub)' : ' (laptop only)') + '</span>' : '<span class="no">Not set</span>';
+  var ksAnt = document.getElementById('ks_ant');
+  if (ksAnt) ksAnt.innerHTML = h.providers.claude.keySet ? '<span class="ok">Saved' + (h.providers.claude.cloudKeySet ? ' (laptop and GitHub)' : ' (laptop only)') + '</span>' : '<span class="m">Not set</span>';
+
   var dl=document.getElementById('deploy-light');if(h.deploy){dl.className='light '+(h.deploy.ok?'ok':'no');dl.innerHTML='<i></i><span>'+(h.deploy.ok?'Site deploy OK · '+esc(fmtWhen(h.deploy.when)):'<b>THE SITE IS NOT UPDATING</b> — last deploy failed. <a href="'+esc(h.deploy.url)+'" target="_blank">See why</a>')+'</span>'}
-  var inUse=h.cloud.oauth?'Claude on your subscription token':h.cloud.anthropic?'Claude on your pay-per-use key':'nothing: NO Claude key is on GitHub, so the cloud cannot write';
-  document.getElementById('keystatus').innerHTML=dot(h.local.oauth||h.local.anthropic,'A Claude key on this laptop',h.local.oauth?'subscription token':h.local.anthropic?'API key':'none')+dot(h.cloud.oauth||h.cloud.anthropic,'A Claude key on GitHub',h.cloud.oauth?'subscription token':h.cloud.anthropic?'API key':'none')+'<p><b>The cloud writes with:</b> '+inUse+'</p>';
-  document.getElementById('newsroomModel').value=h.cloud.newsroomModel;document.getElementById('chatModel').value=h.chatModel==='default'?'':h.chatModel;document.getElementById('reviewSel').value=h.cloud.review?'1':'0';
-  document.getElementById('switches').innerHTML=(h.deploy?dot(h.deploy.ok,'The site\\'s last deploy',h.deploy.ok?'succeeded · '+fmtWhen(h.deploy.when):'FAILED — readers see an older edition'):'')+dot(h.ghOk,'This laptop can talk to GitHub',h.ghOk?'gh is signed in':'run: gh auth login')+dot(h.cloud.editorOn&&(h.cloud.oauth||h.cloud.anthropic),'The daily editor',!h.cloud.editorOn?'switched off':(h.cloud.oauth||h.cloud.anthropic)?'switched on with a key':'switched on but has no key, so it skips')+(h.editorReal?dot(h.editorReal.working,'The daily editor is actually doing work','its last run took '+h.editorReal.seconds+'s'+(h.editorReal.working?'':' — a real round takes minutes')):'')+dot(h.chatReady,'The "Change the site" tab',h.chatReady?'ready':'needs a Claude key');
+
+  document.getElementById('chatModel').value=h.chatModel==='default'?'':h.chatModel;
+  if (h.thinkingBudget && document.getElementById('thinkingBudget')) {
+    document.getElementById('thinkingBudget').value = h.thinkingBudget;
+  }
+  var thinkRow = document.getElementById('thinkingRow');
+  if (thinkRow) thinkRow.style.display = h.activeProvider === 'gemini' ? 'block' : 'none';
+
+  document.getElementById('reviewSel').value=h.cloud.review?'1':'0';
+  document.getElementById('switches').innerHTML=(h.deploy?dot(h.deploy.ok,'The site\\'s last deploy',h.deploy.ok?'succeeded · '+fmtWhen(h.deploy.when):'FAILED — readers see an older edition'):'')+dot(h.ghOk,'This laptop can talk to GitHub',h.ghOk?'gh is signed in':'run: gh auth login')+dot(h.cloud.editorOn&&h.cloud.hasKey,'The daily editor',!h.cloud.editorOn?'switched off':h.cloud.hasKey?'switched on with active key':'switched on but has no key, so it skips')+(h.editorReal?dot(h.editorReal.working,'The daily editor is actually doing work','its last run took '+h.editorReal.seconds+'s'+(h.editorReal.working?'':' — a real round takes minutes')):'')+dot(h.chatReady,'The "Change the site" tab',h.chatReady?'ready ('+esc(curName)+')':'needs an active key');
 })}
 loadHealth();
 function saveKey(name,id){var v=document.getElementById(id).value.trim();if(!v)return;var n=document.getElementById('k_note');n.textContent='saving…';post('/keys',{name:name,value:v,github:document.getElementById('k_gh').checked}).then(function(r){return r.text()}).then(function(t){n.textContent=t;document.getElementById(id).value='';loadHealth()})}
-function saveWriters(){var n=document.getElementById('writersaved');n.textContent='applying…';post('/writers',{newsroomModel:document.getElementById('newsroomModel').value,chatModel:document.getElementById('chatModel').value}).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
-var PAUSED=false;
+function saveWriters(){var n=document.getElementById('writersaved');n.textContent='applying…';var tb=document.getElementById('thinkingBudget')?document.getElementById('thinkingBudget').value:'-1';post('/writers',{provider:document.getElementById('activeProvider').value,model:document.getElementById('newsroomModel').value,chatModel:document.getElementById('chatModel').value,thinkingBudget:tb}).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
 function togglePause(){if(!PAUSED&&!confirm('Pause everything? The cloud will stop writing and publishing until you press Resume. Stories already live stay live.'))return;post('/pause?value='+(PAUSED?0:1)).then(function(r){return r.text()}).then(function(t){alert(t);loadHealth()})}
 function reveal(id){var w=document.getElementById('w_'+id);w.style.display=w.style.display==='none'?'grid':'none';if(w.style.display==='grid')document.getElementById(id).focus()}
 function saveReview(){var n=document.getElementById('reviewsaved');n.textContent='applying…';post('/review?value='+document.getElementById('reviewSel').value).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
@@ -1139,26 +1507,58 @@ const server = http.createServer(async (req, res) => {
       return text(200, "Removed. The site updates in about a minute.");
     }
     if (url.pathname === "/health") return json(await health());
+    if (url.pathname === "/models/refresh") {
+      const prov = url.searchParams.get("provider") || "gemini";
+      if (prov === "gemini") {
+        const gemKey = local.GEMINI_API_KEY || local.GOOGLE_API_KEY;
+        if (!gemKey) return json({ error: "No Gemini API key in .env" });
+        cachedGeminiModels = null;
+        const live = await fetchLiveGeminiModels(gemKey);
+        return json({ provider: "gemini", models: live || [] });
+      }
+      return json({ provider: prov, models: [] });
+    }
     if (url.pathname === "/writers" && req.method === "POST") {
-      // Claude is the only provider since 2026-09-24 (the owner: «abandon free models and use claude only»); only the model is chosen.
-      const { newsroomModel, chatModel } = await body(req);
-      // Opus 5.5 by name (the owner, 2026-09-24): the alias "opus" follows the installed Claude Code, and 2.1.81 gave Opus 4.6.
-      const nm = ["claude-opus-5-5", "sonnet", "opus", "haiku"].includes(newsroomModel) ? newsroomModel : "claude-opus-5-5";
-      const cm = ["", "sonnet", "opus", "haiku"].includes(chatModel) ? chatModel : "";
-      await setEnvKey("KHAZENDAR_CLAUDE_MODEL", nm);
+      const { provider, model, newsroomModel, chatModel, thinkingBudget } = await body(req);
+      const prov = ["gemini", "claude", "openai", "qwen", "openrouter"].includes(provider) ? provider : "gemini";
+      const actualModel = model || newsroomModel;
+      const cm = typeof chatModel === "string" ? chatModel : "";
+
+      await setEnvKey("KHAZENDAR_PROVIDER", prov);
+      if (actualModel) {
+        await setEnvKey("KHAZENDAR_MODEL", actualModel);
+        if (prov === "gemini") await setEnvKey("KHAZENDAR_GEMINI_MODEL", actualModel);
+        if (prov === "claude") await setEnvKey("KHAZENDAR_CLAUDE_MODEL", actualModel);
+        if (prov === "openai") await setEnvKey("KHAZENDAR_OPENAI_MODEL", actualModel);
+        if (prov === "qwen") await setEnvKey("KHAZENDAR_QWEN_MODEL", actualModel);
+        if (prov === "openrouter") await setEnvKey("KHAZENDAR_OPENROUTER_MODEL", actualModel);
+      }
       await setEnvKey("KHAZENDAR_CHAT_MODEL", cm);
-      const b = await sh(`gh variable set KHAZENDAR_CLAUDE_MODEL --repo ${REPO} --body ${nm} 2>&1`);
+      if (typeof thinkingBudget === "string") {
+        await setEnvKey("KHAZENDAR_THINKING_BUDGET", thinkingBudget);
+        await sh(`gh variable set KHAZENDAR_THINKING_BUDGET --repo ${REPO} --body ${thinkingBudget} 2>&1`);
+      }
+
+      const b = await sh(`gh variable set KHAZENDAR_PROVIDER --repo ${REPO} --body ${prov} 2>&1`);
+      if (actualModel) await sh(`gh variable set KHAZENDAR_MODEL --repo ${REPO} --body ${actualModel} 2>&1`);
       const bad = /error|not logged|could not/i.test(b) ? b : null;
-      return text(200, bad ? `Saved here; the cloud refused: ${bad.slice(0, 120)}` : `Done — the cloud writes with Claude (${nm}) from the next run; the chat uses ${cm || "Claude Code's default"}.`);
+      return text(200, bad ? `Saved locally; cloud variable update skipped: ${bad.slice(0, 100)}` : `Done — active controller is now ${prov.toUpperCase()} (${actualModel || "default"}). Other models are in idle mode.`);
     }
     if (url.pathname === "/keys" && req.method === "POST") {
       const { name, value, github } = await body(req);
       const v = String(value ?? "").trim();
-      if (!["ANTHROPIC_API_KEY", "CLAUDE_CODE_OAUTH_TOKEN"].includes(name)) return text(400, "unknown key");
+      const validKeys = [
+        "GEMINI_API_KEY", "GOOGLE_API_KEY",
+        "CLAUDE_CODE_OAUTH_TOKEN", "ANTHROPIC_API_KEY",
+        "OPENAI_API_KEY",
+        "DASHSCOPE_API_KEY", "QWEN_API_KEY",
+        "OPENROUTER_API_KEY",
+        "PEXELS_API_KEY", "UNSPLASH_ACCESS_KEY",
+      ];
+      if (!validKeys.includes(name)) return text(400, "unknown key name");
       if (!v || /\s/.test(v)) return text(400, "That does not look like a key — it should be one unbroken string.");
       if (name === "ANTHROPIC_API_KEY" && /^sk-ant-oat/.test(v)) return text(400, "That is a subscription token (sk-ant-oat…), not an API key — paste it in the token box instead.");
       if (name === "CLAUDE_CODE_OAUTH_TOKEN" && /^sk-ant-api/.test(v)) return text(400, "That is an API key (sk-ant-api…), not a subscription token — paste it in the API key box instead.");
-      if (name === "ANTHROPIC_API_KEY" && !/^sk-ant-/.test(v)) return text(400, "A Claude API key starts with sk-ant-. This one does not.");
       await setEnvKey(name, v);
       let note = "Saved on this laptop.";
       if (github) {

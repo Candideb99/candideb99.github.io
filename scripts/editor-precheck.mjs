@@ -73,8 +73,10 @@ for (const workflow of OFFLINE ? [] : ["newsroom.yml", "deploy.yml"]) {
 
 // 2. The newsroom's own last report: a refused login stops every story, and no editor can renew the owner's token.
 const lastReport = readJson(path.join("pipeline", "runs", "latest.json"));
-const refusedLogin = (lastReport?.log ?? []).some((l) => /llm fail/.test(l) && /not logged in|\b401\b|authenticat|oauth|invalid (?:x-)?api[- ]key|credit balance/i.test(l));
-if (refusedLogin) owner.push({ key: "token", title: "خازندار: Claude refuses the newsroom's token", text: `The newsroom's last run (${lastReport.startedAt}) could not log in to Claude, so no story is being written. Renew the token: on the laptop run \`claude setup-token\`, then put the token it prints in the repository secret CLAUDE_CODE_OAUTH_TOKEN (Settings → Secrets and variables → Actions) and in the control room's Settings.` });
+if (refusedLogin) {
+  const provider = (process.env.KHAZENDAR_PROVIDER || "gemini").toUpperCase();
+  owner.push({ key: "token", title: `خازندار: ${provider} refuses the newsroom's credentials`, text: `The newsroom's last run (${lastReport.startedAt}) could not authenticate with ${provider}, so no story is being written. Verify the credentials in .env, the control room's Settings or repository secrets.` });
+}
 
 // The published stories.
 const dir = path.join("content", "articles");

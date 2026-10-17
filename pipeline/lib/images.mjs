@@ -771,7 +771,27 @@ function placeTierNote(places) {
  * central bank's building, taking the Cairo Tower and the 6th of October bridge before the market searches ever ran.
  * Only lastResort() passes `skyline: true`.
  */
-const SKYLINE_LAST = "A skyline, a panorama, a landmark or a cityscape of a capital is never chosen in this pass, even for a story about a country's economy as a whole: the paper runs one only as its last resort, after markets, money and the institution itself have been searched (choose 0 rather than a skyline; the story's own place, when one is named below, is not a skyline)";
+// Since the same night no pass takes one at all: a skyline says where, never what the story says, and the owner turned
+// down the Nile's towers under the rate decision (2026-09-24) and a Nile corniche the last resort took for it after the
+// governor and a snapshot of notes were refused (2026-09-28: "images that also deliver a message").
+const SKYLINE_LAST = "A skyline, a panorama, a landmark or a cityscape of a city is never chosen, whatever the story: it says where, not what the story says (choose 0 rather than a skyline; the story's own place, when one is named below and the photograph shows the story's subject there, is not a skyline)";
+
+/**
+ * What a picture editor adds to a picture desk that only matches topics (the owner, 2026-09-28, on the central bank's
+ * governor "delivering a speech somewhere" under a rate decision and an amateur snapshot of pound notes: "usually
+ * sophisticated newspapers choose images that also deliver a message in itself"). The Economist's picture desk asks for
+ * an editor who can "read a piece of copy quickly, understand what it is really saying, and find imagery that informs,
+ * engages and sometimes surprises", pictures "that do more than fill a space", delivered "to publication standard"
+ * (its job advertisement, 16 September 2026); the Bonn Institute's guidelines for picture selection: "make sure the
+ * meaning is clear, not vague", "convey the same tone as your story", "refrain from using a picture as a mere
+ * illustration of the issue", "question the purpose of the picture you're selecting (why that one and not another?)"
+ * ("Psychology in journalism", part 5). So every judge is told what the picture should say (the planner's `message`),
+ * that it must look like a professional's work, and that people run in the role the story is about.
+ */
+function messageNote(message) {
+  return `WHAT THE PICTURE SHOULD SAY: ${message}. A picture editor reads the story, asks what it is really saying, and chooses the photograph that says it: its meaning concrete and clear, in the story's tone, doing more than fill the space. Of the candidates that fit, choose the one that says this best; one that merely names the story's topic is the weaker choice, and one that says something else is not chosen.`;
+}
+const PUBLICATION_STANDARD = `PUBLICATION STANDARD. The photograph must look like a professional's work, as an agency or a staff photographer would file it: sharp where it matters, well exposed, true colour, composed around a clear subject. Refuse an amateur snapshot however well its subject fits: an object shot on a table, a bed or a floor with a phone or a flash, glare, blur, grain or an old camera's colour, a tilted or cluttered frame, a tourist's casual shot, a scan, a photograph of a screen or a printed page (the owner, 2026-09-28, on a bundle of pound notes on a table: "does not seem professional and seems taken by old camera or old phone").`;
 
 /**
  * The cascade's second tier, as the judge reads it: the photographs were searched for the subject of a source's own
@@ -787,7 +807,7 @@ async function judge({ list, inlined, draft, story, log, relaxed, neutral = fals
   // on the White House's facade under a Trump–Xi summit story: "i would search for uncopyrighted pictures
   // from older summits maybe for trump and xi together … makes the news look less appealing and boring".
   const theirs = people.length
-    ? `\nTHE STORY'S PEOPLE: ${people.join(", ")}. A photograph of them (together, when the story is about their meeting or talks) is the first choice, even from an earlier occasion such as a previous summit, visit or press conference: that is how the news desks illustrate a story about people, and it is livelier than any building. Of the photographs that show them, choose the MOST RECENT (the dates are given): the event itself when its photograph exists, otherwise their latest occasion; an older one only when nothing newer shows them well. It must be a contemporary news photograph (sharp, their faces visible), never a painting, poster, screen, cartoon or a crowd in which they are hard to find, and nothing unflattering or embarrassing. Its caption names them and, for an earlier occasion, that occasion and its year as the file gives them («ترامب وشي خلال لقائهما في أوساكا عام 2019»).`
+    ? `\nTHE STORY'S PEOPLE: ${people.join(", ")}. A photograph of them (together, when the story is about their meeting or talks) is the first choice, even from an earlier occasion such as a previous summit, visit or press conference: that is how the news desks illustrate a story about people, and it is livelier than any building. Of the photographs that show them, choose one of them in the role this story is about (a central bank's governor at the bank or at its announcement of rates, a minister at the signing or the ministry, a chief executive at the company's own event), and of those the MOST RECENT (the dates are given): the event itself when its photograph exists, otherwise their latest occasion; an older one only when nothing newer shows them well. One of them speaking at an unrelated event says little about the story: take it only when the story is about them personally, and otherwise choose 0 so a picture that says the story can be found (the owner, 2026-09-28, on the governor photographed "delivering a speech somewhere" under a rate decision). It must be a contemporary news photograph (sharp, their faces visible), never a painting, poster, screen, cartoon or a crowd in which they are hard to find, and nothing unflattering or embarrassing. Its caption names them and, for an earlier occasion, that occasion and its year as the file gives them («ترامب وشي خلال لقائهما في أوساكا عام 2019»).`
     : "\nA photograph of the story's own people taken at an earlier occasion (a previous summit, visit or press conference) is how the desks illustrate a story about them; its caption then names that occasion and its year.";
   const placed = relaxed
     ? `This is the fallback pass: a generic but appropriate newspaper illustration is acceptable: a typical scene of the story's OWN sector at work (port, refinery, trading floor, factory line, data-centre hall, LNG tanker, bank branch, oil field), or, when nothing livelier fits, the headquarters of the institution named. ${skyline ? "This is the last resort: the skyline or a landmark of the capital is acceptable only for a story about a country's economy as a whole (inflation, growth, budget, currency, rates, rating), and there only when no everyday market scene, shoppers or the central bank itself is among the candidates" : SKYLINE_LAST}; for prices or inflation a market means an everyday popular food market where ordinary people shop, never a tourist bazaar of souvenirs such as Khan el-Khalili, which illustrates only a tourism story; a central bank's decision on rates is pictured most seriously by the bank itself, its governor or the country's banknotes, and a street market reads light under it unless the story's own text dwells on what households pay; a story about one company, plant, project, product, deal, commodity or technology needs its sector's own object, never a cityscape. Reject: a photograph of a named or recognisable person — an official, a politician, an executive, anyone the file names — and a named meeting, summit, ceremony or visit (a generic illustration never shows someone else's event). Anonymous people at work are welcome, they are the life of the frame: traders at their desks, workers on a line, shoppers at a stall (2026-09-24: every trading floor was refused for its traders); visible text overlays or watermarks; logos, maps, charts, diagrams, infographics, screenshots, documents, banknotes or coins as the subject (a price board or ticker in a trading hall is a scene of the market, not a chart), except that a story about prices, inflation, a currency, wages or remittances may run people paying or counting money, or the notes of the story's own currency photographed as money (counted, stacked or in hand; never a flat scan of a note's face, whose printed art reads as a monument), the way the agencies picture it; a product or appliance close-up unrelated to the story; military vessels, aircraft or weapons for a story that is not about the military; an archival, black-and-white or pre-2005 look; a close-up of a private individual; a recognisable place (a skyline, a landmark, a sign, a flag) in a different country or city than the story's; anything misleading or embarrassing next to the headline. Of two fitting scenes, choose the one taken in the story's own country, and then the more recent one.
@@ -804,7 +824,9 @@ ${people.length ? "" : PLACE_RULE}`;
   // (the sources' photograph) says what it may take.
   const noSkyline = !relaxed && !skyline && !neutral ? `\n${SKYLINE_LAST}.` : "";
   const note = tierNote && !neutral ? `\n${tierNote}` : "";
-  const rules = `${neutral ? placed.replace(PLACE_RULE, NEUTRAL_RULE) : `${placed}\n${LIVELY_RULE}`}\n${GLANCE_RULE}\n${GRAVITY_RULE}${concept}${noSkyline}${atPlace}${note}`;
+  // Every pass, the neutral one too: what the picture should say, and a professional's frame (messageNote()).
+  const says = story?.message ? `\n${messageNote(story.message)}` : "";
+  const rules = `${neutral ? placed.replace(PLACE_RULE, NEUTRAL_RULE) : `${placed}\n${LIVELY_RULE}`}\n${GLANCE_RULE}\n${GRAVITY_RULE}\n${PUBLICATION_STANDARD}${concept}${noSkyline}${atPlace}${note}${says}`;
   const user = `We are illustrating an Arabic economics article. Read the whole story: the picture must fit what it is about, not only its headline.
 Headline: ${draft.title}
 Summary: ${draft.subtitle ?? ""}
@@ -944,7 +966,8 @@ The photograph should be from the story's own place. When the story is about ONE
 Also give "people": the English full names, as Wikipedia writes them, of at most three people the story is about when it is about what named people did, said or agreed (heads of state or government, ministers, central bank governors, chief executives), for example ["Donald Trump", "Xi Jinping"] for a story about their summit. When the story reports what ONE institution decided, forecast or announced (a central bank, a ministry, the IMF, the OECD, OPEC, one company), give the person who leads it and speaks for it, for example ["Mathias Cormann"] for an OECD forecast or ["Amin H. Nasser"] for a Saudi Aramco result. [] when the story is about markets, prices, data or a sector as a whole.
 And "focus": "people" when a named person is the news itself, the headline's actor who said, rejected, met or decided (for example «ترامب يرفض مقترح إيران»، «قمة ترامب وشي»، «باول: الفائدة ستبقى مرتفعة»); "subject" when the news is a thing, even one an official announced: a company's result, product or court case, a sector and what hits it, a project, a price, a figure (for example US sanctions on Iranian aviation are pictured by an Iranian airliner, not the Treasury secretary; an Apple patent verdict by an Apple product or store, not its chief executive at an unrelated meeting; TikTok's settlement with Alabama by the app on a phone; Egypt's AI data centre by a data centre; a Fed rule for banks by the Fed or a bank). The leader's photograph, from an unrelated meeting years ago, is the weakest picture for a "subject" story.
 And "places": the story's own place at its most specific, the named sites where its subject physically stands and a camera could stand, in English as Wikimedia Commons names them: a project, a new city or district, a field, a port, a plant, a canal or strait, an exchange (["Ras Laffan"] for Qatar's LNG expansion, ["Jafurah"] for Aramco's Jafurah gas, ["Suez Canal"] for the canal's revenue, ["Egyptian Exchange"] for the Cairo bourse, ["King Abdullah Financial District"] for a Riyadh finance story, ["Jorf Lasfar"] for Morocco's phosphate exports). When the story names no site but is about one country's sector, give the places where that sector of that country is best known and most photographed: Egypt's real-estate developers build the New Administrative Capital, New Cairo, New Alamein and Sheikh Zayed City, so a story about them or the laws that bind them gives ["New Administrative Capital", "New Capital", "New Alamein", "New Cairo"]; Dubai property ["Dubai Marina", "Downtown Dubai"]; Saudi giga-projects ["NEOM", "Diriyah"]. Give a place's short name beside its long one when both are used ("New Administrative Capital", "New Capital"), each spelled as in your searches below. A place is where the story's SUBJECT is, never where its news was decided, ruled, announced or discussed: not a court, a ministry, a parliament, a headquarters, an embassy or a conference venue, and not an ordinary city by itself (its streets and skyline picture no one's subject; a new city being built is a project, and counts). Never a whole country or a region. [] when the story is about a price, a market, a world body, the world, a region, several countries or a country's economy as a whole, and [] for a company's result, product, valuation, lawsuit, verdict or deal unless the story is about one of its sites (Apple's patent verdict in a San Diego court: [], it is pictured by Apple's product; AMD's market value: []; a new plant or field of a company: its site). And "place_queries": 2 or 3 searches for those places, the first a place's name alone (Commons titles a place's photographs by its name: "Central business district, New Administrative Capital"), the others the place with what the story is about there ("New Administrative Capital construction", "New Alamein towers"); [] when "places" is [].
-Return JSON: {"queries": ["...", "...", "...", "..."], "place": ["..."], "people": ["..."], "focus": "people|subject", "places": ["..."], "place_queries": ["..."]}`,
+And "message": one short English sentence saying what the photograph should tell a reader at a glance about THIS story: its point, not its topic, in its tone, the way a picture editor reads the copy and asks what it is really saying. And "message_queries": 2 or 3 English searches of 2-5 words for photographs that would say it, things a camera can see (people at work, a place, an object in use), in the story's own country when it has one. For example, and these are examples, not rules: a central bank holding its rates might say "Egypt's central bank keeps money tight" and search "Central Bank of Egypt", "Egyptian pound notes"; an analysis of how rising US yields raise the cost of cutting Egypt's rates might say "the dollar pulls money away from Egypt" and search "US dollar banknotes", "dollar pound exchange".
+Return JSON: {"queries": ["...", "...", "...", "..."], "place": ["..."], "people": ["..."], "focus": "people|subject", "places": ["..."], "place_queries": ["..."], "message": "...", "message_queries": ["..."]}`,
     // Models that think before answering spend their first tokens on reasoning; leave room for it.
     temperature: 0.2,
     maxTokens: 1500,
@@ -968,6 +991,8 @@ Return JSON: {"queries": ["...", "...", "...", "..."], "place": ["..."], "people
     // a place (the stress test of 2026-09-28: Apple's patent verdict searched its San Diego courthouse and ran its front).
     places: (Array.isArray(data.places) ? data.places : []).map((w) => String(w).trim()).filter((w) => /^[\p{L}\p{N}][\p{L}\p{M}\p{N} .,'’()&-]{2,60}$/u.test(w) && !NOT_A_PLACE.test(w)).slice(0, 5),
     placeQueries: (Array.isArray(data.place_queries) ? data.place_queries : []).map((q) => String(q).trim()).filter((q) => q.length >= 3 && q.split(/\s+/).length <= 7).slice(0, 3),
+    message: String(data.message ?? "").replace(/\s+/g, " ").trim().slice(0, 200),
+    messageQueries: (Array.isArray(data.message_queries) ? data.message_queries : []).map((q) => String(q).trim()).filter((q) => q.length >= 3 && q.split(/\s+/).length <= 6).slice(0, 3),
   };
 }
 
@@ -1294,10 +1319,17 @@ async function findImage({ draft, story, log, exclude = new Set(), sources = [] 
   let focus = "subject";
   let places = [];
   let placeQueries = [];
+  let message = "";
+  let messageQueries = [];
   try {
-    ({ queries, place, people, focus, places, placeQueries } = await genericQueries({ draft, story, log, sources }));
+    ({ queries, place, people, focus, places, placeQueries, message = "", messageQueries = [] } = await genericQueries({ draft, story, log, sources }));
   } catch (error) {
     log(`image: generic queries failed (${error.message.split("\n")[0]})`);
+  }
+  // What the picture should say travels with the story to every judge of every pass (messageNote()).
+  if (message) {
+    story = { ...(story ?? {}), message };
+    log(`image: the picture should say: ${message}`);
   }
   // The story's people before any building or scene when they are the news (the owner, 2026-09-23: a Trump–Xi summit
   // story ran the White House's facade, "boring"; the desks run the two leaders from an earlier summit). When the news
@@ -1353,8 +1385,10 @@ async function findImage({ draft, story, log, exclude = new Set(), sources = [] 
       log("image: no candidates for the specific queries");
     }
   }
+  // The searches for what the story is saying lead the subject's own (the planner's `message_queries`).
+  queries = [...new Set([...messageQueries, ...queries])].slice(0, 6);
   if (queries.length) {
-    log(`image: tier 4, the subject in its country: ${queries.join(" | ")}${place.length ? ` (home: ${place.join(", ")})` : ""}`);
+    log(`image: tier 4, the story's point and its subject: ${queries.join(" | ")}${place.length ? ` (home: ${place.join(", ")})` : ""}`);
     const candidates = atHome(await collect(queries, log, { perQuery: 12, max: 12, exclude, people: "none", place, libraries: true, civilian }), draft, log);
     if (!candidates.length) log("image: no candidates for the fallback queries");
     const image = await twoLooks({ candidates, draft, story, log, exclude });
@@ -1479,7 +1513,8 @@ Return JSON: {"scene": "<search or null>", "country": "<name or null>", "institu
     if (scene && country) queries.push(`${scene} ${country}`);
     if (scene) queries.push(scene, `${scene} industrial`);
     if (institution) queries.push(`${institution} headquarters`, `${institution} building`);
-    if (city) queries.push(`${city} skyline`, `${city} city panorama`);
+    // No skyline or panorama any more (SKYLINE_LAST): the city is asked for and left unused.
+    void city;
   } catch (error) {
     log(`image: last resort failed (${error.message.split("\n")[0]})`);
     return null;
@@ -1490,6 +1525,5 @@ Return JSON: {"scene": "<search or null>", "country": "<name or null>", "institu
   }
   log(`image: last resort: ${queries.join(" | ")}`);
   const candidates = atHome(await collect(queries, log, { perQuery: 12, max: 12, exclude, people: "none", civilian: civilianStory(draft) }), draft, log);
-  // The one pass that may take a capital's skyline (SKYLINE_LAST).
-  return twoLooks({ candidates, draft, story, log, exclude, skyline: true });
+  return twoLooks({ candidates, draft, story, log, exclude });
 }

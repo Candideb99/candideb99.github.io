@@ -11,7 +11,7 @@ You own an automated Arabic economics newspaper. This page is the whole operatin
 | The cloud runs | https://github.com/Candideb99/candideb99.github.io/actions | Every automatic run with a table of what it published or rejected and why. |
 | Hermes, the local editor | double-click `TALK_TO_HERMES.cmd` | The older way to talk to an agent, from a black terminal window. The control room's **Chat** tab replaces it and is easier. |
 
-Nothing here uses your GPU. Writing happens on your Claude subscription (see section 5); the site is built and served by GitHub.
+Nothing here uses your GPU. Writing and website control happen via AI providers (Google Gemini is active; Claude, OpenAI, Qwen, and OpenRouter are supported and kept in idle mode; see section 5); the site is built and served by GitHub.
 
 ## 2. What happens automatically
 
@@ -233,64 +233,33 @@ The site is prepared for Google AdSense but a person must open the account:
 
 Realistic expectations: ad income follows traffic, and traffic follows months of consistent publishing plus search visibility. The system gives you the consistency; the domain and time give you the rest.
 
-## 5. Letting Claude run the paper on your subscription
+## 5. Model Providers: Gemini (Active), Claude (Idle), and Third-Party Models
 
-No API key and no per-message cost: this uses your Claude subscription. Do these three things once,
-then never again.
+The website supports **Google Gemini** (default & active), **Anthropic Claude** (standby/idle), **OpenAI ChatGPT**, **Alibaba Qwen**, and **OpenRouter**. You can easily switch between them at any time directly in the control room (**Settings** → **Who controls & writes the website**), or via `KHAZENDAR_PROVIDER` in `.env` and GitHub Actions repository variables.
 
-**Step 1, on this laptop.** Open a terminal in the project folder and run:
+When any provider is chosen as active, all other configured keys and credentials remain safely in **idle mode**, ready to be reactivated instantly.
 
-```bash
-claude setup-token
-```
+### 1. Active Provider: Google Gemini
+Gemini is the primary active writer and website controller:
+- **Fast, native JSON structured output and vision**: Evaluates candidate news, writes the Arabic stories, checks facts, and scans photo candidates directly.
+- **Local setup**: Obtain a key from [Google AI Studio](https://aistudio.google.com/), then enter it in the Control Room under **Settings** → **API Keys & Credentials Vault** → **Gemini API Key** (or in `.env` as `GEMINI_API_KEY`).
+- **Cloud setup**: In your GitHub repository, go to `Settings` → `Secrets and variables` → `Actions` → `Secrets` and add `GEMINI_API_KEY`.
 
-It prints one long token. Copy it.
+### 2. Claude in Idle Mode (Standby)
+Claude credentials (`CLAUDE_CODE_OAUTH_TOKEN` or `ANTHROPIC_API_KEY`) remain securely saved in your vault and in `.env`.
+- If you renew your Claude subscription or wish to switch back to Claude, simply select **Anthropic Claude** in the Control Room's **Settings** panel (or set `KHAZENDAR_PROVIDER=claude`).
+- Gemini is placed into idle mode and Claude immediately resumes control.
+- No re-entry of tokens or keys is required.
 
-**Step 2 — the easy way.** Open the control room → **Settings** and paste the token into the box at
-the top with the GitHub option ticked. It writes both places for you, and you can skip the table
-below. The manual way, if you would rather:
+### 3. Third-Party Models (OpenAI, Qwen, OpenRouter)
+You can activate other models with one click:
+- **OpenAI (ChatGPT)**: Add your `OPENAI_API_KEY` (supports `gpt-4o`, `gpt-4.5-preview`, `o3-mini`).
+- **Alibaba Qwen**: Add your `DASHSCOPE_API_KEY` (supports `qwen-max`, `qwen-vl-max`).
+- **OpenRouter**: Add your `OPENROUTER_API_KEY` (access hundreds of models through OpenRouter).
 
-**Step 2, on GitHub.** Open
-https://github.com/Candideb99/candideb99.github.io/settings/secrets/actions and add:
-
-| Where | Name | Value |
-| --- | --- | --- |
-| Secrets tab, "New repository secret" | `CLAUDE_CODE_OAUTH_TOKEN` | the token from step 1 |
-| Variables tab, "New repository variable" | `KHAZENDAR_EDITOR` | `1` |
-| Variables tab, optional | `KHAZENDAR_PROVIDER` | `claude` |
-
-**Step 3.** Install the Claude app on the repository: https://github.com/apps/claude
-
-### What each one switches on
-
-- **`KHAZENDAR_EDITOR = 1`** gives you an editor-in-chief. Every morning Claude reads the night's
-  runs, repairs a broken pipeline, finds any missing picture, checks the site still builds, and
-  leaves a short report. It commits its own fixes. Anything that would change how the paper looks
-  comes to you as a pull request instead. Nobody types a prompt; it is in `.github/workflows/editor.yml`.
-- **Claude writes everything.** Since 24 September 2026, at your request, every job on every run
-  (choosing the stories, writing, the copy desk, the fact check, the photo check) runs on Claude,
-  on your subscription. There is no free backup any more: if the subscription lapses or a limit is
-  hit, the newsroom publishes nothing until Claude answers again. Every story records which model
-  wrote it, and the desk shows the last 24 hours' writers. (Since 22 September Claude receives the
-  paper's full rule sheet on this laptop too; before that a Windows quirk cut it to its first word on
-  every run started from the desk, which is one reason older stories read stiffly. The cloud runs
-  were never affected.)
-- **Asking for something from anywhere.** With the same setup, open an issue on the repository from
-  your phone and write `@claude` with your request. Claude answers and opens a pull request. You
-  never open the project folder.
-
-**Turning it off** is one edit: set `KHAZENDAR_EDITOR` to `0`. The newsroom keeps publishing
-regardless, so nothing breaks.
-
-**The cost.** No money. It draws on your subscription's usage limits: the daily editor is one
-session, and a full newsroom run is roughly 40 to 60 model calls (up to twenty stories a day since
-24 September). If you hit your limit, the newsroom waits until the limit resets; to use less, choose
-Sonnet instead of Opus under Settings → *Who writes*.
-
-### Codex
-
-Possible locally with `codex exec` and a ChatGPT login, but there is no clean way to run it in the
-cloud without copying your login file. Claude is the better route here.
+### Controlling the Daily Editor & Agent
+- **`KHAZENDAR_EDITOR = 1`** runs the morning audit round. If Claude is configured, it can also wake the Claude Code editor.
+- **Turning off the editor**: set `KHAZENDAR_EDITOR` to `0`. The newsroom continues writing and publishing independently.
 
 ## 6. Changing things
 

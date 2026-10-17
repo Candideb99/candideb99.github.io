@@ -83,7 +83,15 @@ When the sources contain at least three comparable figures, the writer emits a c
 
 ## Model providers
 
-Claude only (the owner, 2026-09-24: «abandon free models and use claude only»). Every model call goes through Claude Code on the owner's subscription: the token from `claude setup-token` in `CLAUDE_CODE_OAUTH_TOKEN` (a git-ignored `.env` locally, an Actions secret in the cloud) and the model in `KHAZENDAR_CLAUDE_MODEL` (opus by default). The picture desk sends its thumbnails to the same command line. There is no backup model: a call is tried three times, and a run whose calls fail publishes nothing until Claude answers again.
+Supports Google Gemini (default & active), Anthropic Claude (standby/idle), OpenAI ChatGPT, Alibaba Qwen (DashScope), and OpenRouter. The active provider can be changed at any time from the Control Room UI (**Settings** → **Who controls & writes the website**) or via `KHAZENDAR_PROVIDER` in `.env` / GitHub Actions repository variables.
+
+- **Google Gemini (Active)**: Uses Google Generative Language API (`GEMINI_API_KEY`). Defaults to `gemini-2.5-pro` (or `gemini-2.5-flash`), featuring native JSON structured output and multimodal vision for newsroom image selection.
+- **Anthropic Claude (Idle / Standby)**: Preserved for easy switching back. Uses Claude Code CLI OAuth token (`CLAUDE_CODE_OAUTH_TOKEN` via `claude setup-token`) or direct `ANTHROPIC_API_KEY`, defaulting to `claude-opus-5-5`.
+- **OpenAI / ChatGPT**: Uses OpenAI API (`OPENAI_API_KEY`), defaulting to `gpt-4o` or `gpt-4.5-preview`.
+- **Alibaba Qwen**: Uses DashScope OpenAI-compatible API (`DASHSCOPE_API_KEY` / `QWEN_API_KEY`), defaulting to `qwen-max` or `qwen-vl-max`.
+- **OpenRouter**: Third-party router (`OPENROUTER_API_KEY`).
+
+When one provider is active, all other configured credentials remain safely idle. There is no fallback between providers: the active provider's calls are retried up to three times with exponential backoff and schema validation.
 
 ## Advertising
 
@@ -104,11 +112,11 @@ Set `adsenseClient` (and optionally `googleSiteVerification`) in `src/data/site.
 
 **The cadence GitHub actually keeps.** The crons are what the workflows ask for, not what they get. Over 7–13 September 2026 GitHub fired the three-hourly news cron 1.5–2.5 hours late and never fired its 00:23, 06:23 and 12:23 slots, so the paper gets about five news runs a day, not eight; the 05:41 explainer ran between 09:33 and 10:35, the daily editor (07:17) between 11:35 and 12:13, and the two-hourly deploy fired once in five slots. Expect the Friday review (15:37) and the Tuesday/Friday paper reading (09:31) two to four hours late. The mode is decided from the cron string, so a late run still does the right thing; only the timing is the platform's, and nothing in this repository can promise more than that. A run that publishes nothing still commits its state and report, so `pipeline/runs/latest.json` is always the last run.
 
-Models: Claude for every job (see "Model providers" above).
+Models: Gemini by default, or Claude, OpenAI, Qwen, OpenRouter (see "Model providers" above).
 
 ## Operating it
 
-- **Secrets:** the repository needs one Actions secret, `CLAUDE_CODE_OAUTH_TOKEN` (from `claude setup-token`). Nothing else.
+- **Secrets:** Repository secret for your chosen provider: `GEMINI_API_KEY` (active) or `CLAUDE_CODE_OAUTH_TOKEN` (idle/standby), or `OPENAI_API_KEY`, etc.
 - **Manual run:** Actions → Newsroom → Run workflow (choose `news`, `explainer`, `analysis`, `paper` or `weekly`, a limit, and for an analysis optionally the sections it may draw on, e.g. `defense` for the defence-and-geopolitics reading).
 - **Unpublish:** delete the Markdown file in `content/articles/` and push; the next deploy removes the page.
 - **Quality signal:** every article's frontmatter carries `quality.score` (critic score 0-10), the models used, and the sources. The Actions run summary shows a table per run.
@@ -127,7 +135,7 @@ npm run newsroom:analysis
 npm run newsroom:paper
 ```
 
-Node 22 or newer, and Claude Code installed (`npm i -g @anthropic-ai/claude-code`). The token (`CLAUDE_CODE_OAUTH_TOKEN`) is read from the environment or from a git-ignored `.env` in the project root; never commit it.
+Node 22 or newer. The credentials for your active provider (such as `GEMINI_API_KEY` or `CLAUDE_CODE_OAUTH_TOKEN`) are read from the environment or from a git-ignored `.env` in the project root; never commit it.
 
 ## Editorial policy in one paragraph
 

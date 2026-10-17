@@ -2,21 +2,52 @@ import os from "node:os";
 import path from "node:path";
 import { existsSync } from "node:fs";
 import { jsonrepair } from "jsonrepair";
+import "./env.mjs";
 import { USER_AGENT, fetchWithTimeout, sleep } from "./util.mjs";
 
 /**
- * Every model call of the newsroom, the copy desk, the picture desk and the tools goes to Claude, on the
- * owner's subscription, through the Claude Code command line. Nothing else: the owner, 2026-09-24, «abandon
- * free models and use claude only». Until then the free OpenRouter models were the backup behind Claude and
- * the only eyes of the picture desk; in that day's test run the free vision models spent fifteen minutes on
- * one story's photograph and answered with nothing half the time, and a free writer padded a story Claude
- * had declined to pad. A call that fails is retried on Claude; there is no other model to fall back to.
- * `role` (editor, writer, desk, critic, vision) only labels the call in the logs.
+ * Khazendar multi-provider LLM module.
+ *
+ * Supported providers:
+ * - "gemini": Google Gemini (Default & Active controller, fast, native multimodal & structured output)
+ * - "claude": Anthropic Claude (via Claude Code CLI subscription or Anthropic API; idle mode by default)
+ * - "openai": OpenAI / ChatGPT (gpt-4o, gpt-4o-mini, o3-mini)
+ * - "qwen": Alibaba Qwen (DashScope API or OpenRouter)
+ * - "openrouter": Multi-model router for third-party models
+ *
+ * Active provider is controlled by KHAZENDAR_PROVIDER (default "gemini").
+ * All other configured providers stay in "idle mode" with their credentials safely preserved.
  */
 
 export const usage = { calls: 0, failures: 0, promptTokens: 0, completionTokens: 0, cacheReadTokens: 0, costUsd: 0, byModel: {} };
-/** The model every role runs on unless KHAZENDAR_CLAUDE_MODEL names another: Claude Opus 5.5 (the owner, 2026-09-24). */
+
+export const PROVIDERS = ["gemini", "claude", "openai", "qwen", "openrouter"];
+
+export const DEFAULT_MODELS = {
+  gemini: "gemini-3.8-flash",
+  claude: "claude-opus-5-5",
+  openai: "gpt-4o",
+  qwen: "qwen-plus",
+  openrouter: "google/gemini-3.8-flash",
+};
+
+/** Backward compatibility: export CLAUDE_MODEL as referenced in factcheck and tests. */
 export const CLAUDE_MODEL = "claude-opus-5-5";
+export const GEMINI_MODEL = "gemini-3.8-flash";
+
+export function getActiveProvider() {
+  const p = (process.env.KHAZENDAR_PROVIDER || "gemini").toLowerCase().trim();
+  return PROVIDERS.includes(p) ? p : "gemini";
+}
+
+export function getActiveModel(provider = getActiveProvider()) {
+  if (provider === "gemini") return process.env.KHAZENDAR_GEMINI_MODEL || process.env.KHAZENDAR_MODEL || DEFAULT_MODELS.gemini;
+  if (provider === "claude") return process.env.KHAZENDAR_CLAUDE_MODEL || process.env.KHAZENDAR_MODEL || DEFAULT_MODELS.claude;
+  if (provider === "openai") return process.env.KHAZENDAR_OPENAI_MODEL || process.env.KHAZENDAR_MODEL || DEFAULT_MODELS.openai;
+  if (provider === "qwen") return process.env.KHAZENDAR_QWEN_MODEL || process.env.KHAZENDAR_MODEL || DEFAULT_MODELS.qwen;
+  if (provider === "openrouter") return process.env.KHAZENDAR_OPENROUTER_MODEL || process.env.KHAZENDAR_MODEL || DEFAULT_MODELS.openrouter;
+  return DEFAULT_MODELS.gemini;
+}
 
 let inFlight = 0;
 const MAX_CONCURRENCY = Number(process.env.KHAZENDAR_LLM_CONCURRENCY ?? 2);
@@ -98,31 +129,26 @@ export function parseJsonLoose(text) {
   throw new LlmError("Model output was not valid JSON", { sample: cleaned.slice(0, 300) });
 }
 
-/**
- * The Claude Code command line, which uses the owner's Claude subscription (a `claude setup-token` token in
- * CLAUDE_CODE_OAUTH_TOKEN) instead of an API key.
- *
- * The command line is never handed to a shell. On Windows the `claude` on PATH is a .cmd shim that
- * only cmd.exe can start, and cmd.exe cuts an argument at every newline, `&` and `%`: measured on
- * 2026-09-22, the multi-line house-style system prompt reached the model as the single word "You",
- * the rest of its first line became the prompt, and a `%PATH%` inside a prompt was expanded. So the
- * CLI's own entry file runs under this node. The call is also made from a bare temporary directory
- * with settings switched off, so that neither the owner's other projects' CLAUDE.md files nor this
- * repository's agent notes and memories are pasted into the writer's context.
- */
+async function fetchImageBuffer(url) {
+  const m = String(url).match(/^data:([^;,]+);base64,(.*)$/s);
+  if (m) return { mimeType: m[1], base64: m[2] };
+  const response = await fetchWithTimeout(String(url), { headers: { "user-agent": USER_AGENT } }, 30000);
+  if (!response.ok) throw new LlmError(`image ${response.status}: ${String(url).slice(0, 100)}`, { retryable: true });
+  const mimeType = (response.headers.get("content-type") ?? "image/jpeg").split(";")[0].trim();
+  const base64 = Buffer.from(await response.arrayBuffer()).toString("base64");
+  return { mimeType, base64 };
+}
+
+// ------------------------------------------------------------------ Claude CLI / API
 const CLI_ROOTS = [
   path.join(process.env.APPDATA ?? "", "npm", "node_modules", "@anthropic-ai", "claude-code"),
   path.join(process.env.HOME ?? "", ".npm-global", "lib", "node_modules", "@anthropic-ai", "claude-code"),
   "/usr/local/lib/node_modules/@anthropic-ai/claude-code",
   "/usr/lib/node_modules/@anthropic-ai/claude-code",
 ];
-// Since 2.1.2xx the package ships a native binary, bin/claude.exe on every platform, and no cli.js (found
-// 2026-09-24 when 2.1.81 was updated for Opus 5.5, which needs 2.1.280 or newer). An executable starts with no
-// shell, so its arguments arrive whole, as cli.js under node did; the node route stays for older installs.
 const CLI_BIN = CLI_ROOTS.map((root) => path.join(root, "bin", "claude.exe")).find((p) => existsSync(p));
 const CLI_JS = CLI_BIN ? undefined : CLI_ROOTS.map((root) => path.join(root, "cli.js")).find((p) => existsSync(p));
 
-/** A nested Claude Code session poisons its children ("Not logged in"); only the owner's token and API key pass through. */
 function claudeCliEnv() {
   const env = { ...process.env };
   const oauth = env.CLAUDE_CODE_OAUTH_TOKEN;
@@ -131,42 +157,30 @@ function claudeCliEnv() {
   }
   if (oauth) {
     env.CLAUDE_CODE_OAUTH_TOKEN = oauth;
-    // The owner's subscription pays for every call (the owner, 2026-09-24: Claude on his plan, no API billing). With a
-    // subscription token present an API key is removed, so a key added later can never start pay-as-you-go billing
-    // unnoticed (2026-09-26: Anthropic bills API-key calls separately; subscription calls count against the plan).
     delete env.ANTHROPIC_API_KEY;
   }
   return env;
 }
 
-/**
- * An image for Claude, always as its bytes. The picture desk inlines its thumbnails as data URLs; a plain URL is
- * fetched here, because Claude's servers could not download a Wikimedia thumbnail themselves ("Unable to download
- * the file", 2026-09-24) while this client, with its own user agent, can.
- */
-async function imageBlock(url) {
-  const m = String(url).match(/^data:([^;,]+);base64,(.*)$/s);
-  if (m) return { type: "image", source: { type: "base64", media_type: m[1], data: m[2] } };
-  const response = await fetchWithTimeout(String(url), { headers: { "user-agent": USER_AGENT } }, 30000);
-  if (!response.ok) throw new LlmError(`image ${response.status}: ${String(url).slice(0, 100)}`, { retryable: true });
-  const type = (response.headers.get("content-type") ?? "image/jpeg").split(";")[0].trim();
-  return { type: "image", source: { type: "base64", media_type: type, data: Buffer.from(await response.arrayBuffer()).toString("base64") } };
-}
-
-/**
- * One call. Text goes in on stdin as it is; a call with images goes in as one stream-json user message carrying
- * the text and the image blocks (tested 2026-09-24 on a Commons thumbnail: the CLI described the photograph in
- * three seconds), and its answer is the stream's closing "result" line.
- */
-async function callClaudeCli({ system, user, images = [], timeoutMs }) {
+async function callClaudeCli({ model, system, user, images = [], timeoutMs }) {
   const { spawn } = await import("node:child_process");
-  // Opus 5.5 by name (the owner, 2026-09-24: "use claude opus 5.5"): the alias "opus" answered as Opus 4.6
-  // under Claude Code 2.1.81, and an alias follows whatever the installed version maps it to.
-  const cliModel = process.env.KHAZENDAR_CLAUDE_MODEL || CLAUDE_MODEL;
+  const cliModel = model || process.env.KHAZENDAR_CLAUDE_MODEL || CLAUDE_MODEL;
   const seeing = images.length > 0;
   const args = ["-p", "--output-format", seeing ? "stream-json" : "json", ...(seeing ? ["--input-format", "stream-json", "--verbose"] : []), "--tools", "", "--no-session-persistence", "--setting-sources", "", "--model", cliModel];
   if (system) args.push("--system-prompt", system);
-  const input = seeing ? `${JSON.stringify({ type: "user", message: { role: "user", content: [{ type: "text", text: user }, ...(await Promise.all(images.map(imageBlock)))] } })}\n` : user;
+
+  let input;
+  if (seeing) {
+    const blocks = [{ type: "text", text: user }];
+    for (const img of images) {
+      const { mimeType, base64 } = await fetchImageBuffer(img);
+      blocks.push({ type: "image", source: { type: "base64", media_type: mimeType, data: base64 } });
+    }
+    input = `${JSON.stringify({ type: "user", message: { role: "user", content: blocks } })}\n`;
+  } else {
+    input = user;
+  }
+
   const started = Date.now();
   const result = await new Promise((resolve, reject) => {
     const child = spawn(CLI_BIN ?? (CLI_JS ? process.execPath : "claude"), CLI_BIN ? args : CLI_JS ? [CLI_JS, ...args] : args, { shell: false, windowsHide: true, env: claudeCliEnv(), cwd: os.tmpdir() });
@@ -198,7 +212,6 @@ async function callClaudeCli({ system, user, images = [], timeoutMs }) {
     payload = null;
   }
   if (!payload) throw new LlmError("claude cli returned non-JSON output", { sample: result.slice(0, 200), retryable: true });
-  // Only a refused login stops the retries; any other error the CLI reports (an API 400, an overloaded server) may pass on the next try.
   if (payload.is_error) {
     const message = String(payload.result ?? "");
     const login = /not logged in|\b401\b|authenticat|oauth|invalid (?:x-)?api[- ]key|credit balance/i.test(message);
@@ -206,37 +219,401 @@ async function callClaudeCli({ system, user, images = [], timeoutMs }) {
   }
   const used = payload.usage ?? {};
   usage.calls += 1;
-  // Every token read counts, cached or not: input_tokens alone is only the uncached remainder, and a 13-call run had
-  // reported 26 prompt tokens (a review of the design, 2026-09-25: judge the cost in tokens, not calls). The CLI also
-  // prices each call as the API would (total_cost_usd), which the subscription does not bill but which compares runs.
   usage.promptTokens += (used.input_tokens ?? 0) + (used.cache_creation_input_tokens ?? 0) + (used.cache_read_input_tokens ?? 0);
   usage.cacheReadTokens += used.cache_read_input_tokens ?? 0;
   usage.completionTokens += used.output_tokens ?? 0;
   usage.costUsd = Number((usage.costUsd + (Number(payload.total_cost_usd) || 0)).toFixed(4));
-  // The model that answered, as the CLI reports it, not the name asked for: an alias hid Opus 4.6 for days.
   const answered = Object.keys(payload.modelUsage ?? {})[0] ?? cliModel;
   usage.byModel[`claude-cli/${answered}`] = (usage.byModel[`claude-cli/${answered}`] ?? 0) + 1;
-  return { content: String(payload.result ?? ""), ms: Date.now() - started, usage: { completion_tokens: used.output_tokens } };
+  return { content: String(payload.result ?? ""), ms: Date.now() - started, usage: { completion_tokens: used.output_tokens }, model: `claude-cli/${answered}` };
 }
 
-/** Three tries on Claude: with no other model behind it, a third try costs less than a lost story. */
+async function callClaudeApi({ model, system, user, images = [], timeoutMs, temperature, maxTokens }) {
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) {
+    throw new LlmError("Claude is active but ANTHROPIC_API_KEY is not set. Add your key or subscription token in the Control Room Settings or .env.", { status: 401 });
+  }
+  const started = Date.now();
+  const content = [{ type: "text", text: user }];
+  for (const img of images) {
+    const { mimeType, base64 } = await fetchImageBuffer(img);
+    content.push({
+      type: "image",
+      source: { type: "base64", media_type: mimeType, data: base64 },
+    });
+  }
+
+  const actualModel = model.startsWith("claude-") ? model : "claude-3-5-sonnet-20241022";
+  const body = {
+    model: actualModel,
+    max_tokens: maxTokens || 4096,
+    messages: [{ role: "user", content }],
+    temperature: typeof temperature === "number" ? temperature : 0.2,
+  };
+  if (system) body.system = system;
+
+  const response = await fetchWithTimeout("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      "x-api-key": apiKey,
+      "anthropic-version": "2023-06-01",
+    },
+    body: JSON.stringify(body),
+  }, timeoutMs);
+
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok || payload.error) {
+    const err = payload.error || {};
+    const code = response.status;
+    const message = err.message || response.statusText;
+    const login = code === 401 || /invalid (?:x-)?api[- ]key/i.test(message);
+    throw new LlmError(`claude-api (${actualModel}): ${code} ${message}`, login ? { status: 401 } : { retryable: [429, 500, 502, 503, 504].includes(code) });
+  }
+
+  const text = payload.content?.map((c) => c.text || "").join("") ?? "";
+  const used = payload.usage ?? {};
+  usage.calls += 1;
+  usage.promptTokens += (used.input_tokens ?? 0) + (used.cache_creation_input_tokens ?? 0) + (used.cache_read_input_tokens ?? 0);
+  usage.completionTokens += used.output_tokens ?? 0;
+  const modelKey = `claude/${actualModel}`;
+  usage.byModel[modelKey] = (usage.byModel[modelKey] ?? 0) + 1;
+
+  return {
+    content: text,
+    ms: Date.now() - started,
+    usage: { completion_tokens: used.output_tokens },
+    model: modelKey,
+  };
+}
+
+async function callClaude(options) {
+  const hasOauth = Boolean(process.env.CLAUDE_CODE_OAUTH_TOKEN);
+  const hasApiKey = Boolean(process.env.ANTHROPIC_API_KEY);
+  if (hasOauth || (CLI_BIN && !hasApiKey)) {
+    return callClaudeCli(options);
+  }
+  return callClaudeApi(options);
+}
+
+// ------------------------------------------------------------------ Google Gemini
+async function callGemini({ model, system, user, images = [], timeoutMs, temperature, maxTokens, json = true }) {
+  const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
+  if (!apiKey) {
+    throw new LlmError("Gemini is active but GEMINI_API_KEY (or GOOGLE_API_KEY) is not set. Add your key in the Control Room Settings or .env.", { status: 401 });
+  }
+  const started = Date.now();
+  const userParts = [{ text: user }];
+  for (const img of images) {
+    const { mimeType, base64 } = await fetchImageBuffer(img);
+    userParts.push({
+      inlineData: {
+        mimeType,
+        data: base64,
+      },
+    });
+  }
+
+  const contents = [{ role: "user", parts: userParts }];
+  const body = {
+    contents,
+    generationConfig: {
+      temperature: typeof temperature === "number" ? temperature : 0.2,
+      ...(json ? { responseMimeType: "application/json" } : {}),
+      ...(maxTokens ? { maxOutputTokens: maxTokens } : {}),
+      // Configurable reasoning/thinking depth (default -1 = maximum/unlimited).
+      // Controlled via KHAZENDAR_THINKING_BUDGET env var or Control Room UI.
+      thinkingConfig: {
+        thinkingBudget: process.env.KHAZENDAR_THINKING_BUDGET !== undefined
+          ? (Number(process.env.KHAZENDAR_THINKING_BUDGET) || 0)
+          : -1,
+      },
+    },
+  };
+  if (system) {
+    body.systemInstruction = {
+      parts: [{ text: system }],
+    };
+  }
+
+  const actualModel = model || DEFAULT_MODELS.gemini;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(actualModel)}:generateContent?key=${encodeURIComponent(apiKey)}`;
+  const response = await fetchWithTimeout(url, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(body),
+  }, timeoutMs);
+
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok || payload.error) {
+    const err = payload.error || {};
+    const code = err.code || response.status;
+    const message = err.message || response.statusText;
+    const login = (code === 400 && /API_KEY_INVALID|key not valid/i.test(message)) || code === 401 || code === 403;
+    throw new LlmError(`gemini (${actualModel}): ${code} ${message}`, login ? { status: 401 } : { retryable: [429, 500, 502, 503, 504].includes(code) });
+  }
+
+  const candidate = payload.candidates?.[0];
+  if (!candidate) throw new LlmError(`gemini (${actualModel}) returned no candidates`, { retryable: true });
+  // When thinking is enabled, the API returns parts with `thought: true` for internal reasoning.
+  // We extract only the non-thought text parts as the actual response.
+  const allParts = candidate.content?.parts ?? [];
+  const text = allParts.filter((p) => !p.thought).map((p) => p.text || "").join("");
+  const used = payload.usageMetadata ?? {};
+  const promptTokens = used.promptTokenCount ?? 0;
+  const completionTokens = used.candidatesTokenCount ?? 0;
+  const thinkingTokens = used.thoughtsTokenCount ?? 0;
+
+  usage.calls += 1;
+  usage.promptTokens += promptTokens;
+  usage.completionTokens += completionTokens + thinkingTokens;
+  const modelKey = `gemini/${actualModel}`;
+  usage.byModel[modelKey] = (usage.byModel[modelKey] ?? 0) + 1;
+
+  return {
+    content: text,
+    ms: Date.now() - started,
+    usage: { prompt_tokens: promptTokens, completion_tokens: completionTokens, thinking_tokens: thinkingTokens },
+    model: modelKey,
+  };
+}
+
+// ------------------------------------------------------------------ OpenAI / ChatGPT
+async function callOpenAI({ model, system, user, images = [], timeoutMs, temperature, maxTokens, json = true }) {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    throw new LlmError("OpenAI is active but OPENAI_API_KEY is not set. Add your key in the Control Room Settings or .env.", { status: 401 });
+  }
+  const started = Date.now();
+  let userContent = user;
+  if (images.length > 0) {
+    userContent = [{ type: "text", text: user }];
+    for (const img of images) {
+      const { mimeType, base64 } = await fetchImageBuffer(img);
+      userContent.push({
+        type: "image_url",
+        image_url: { url: `data:${mimeType};base64,${base64}` },
+      });
+    }
+  }
+
+  const messages = [];
+  if (system) messages.push({ role: "system", content: system });
+  messages.push({ role: "user", content: userContent });
+
+  const actualModel = model || DEFAULT_MODELS.openai;
+  const body = {
+    model: actualModel,
+    messages,
+    temperature: typeof temperature === "number" ? temperature : 0.2,
+    ...(json ? { response_format: { type: "json_object" } } : {}),
+    ...(maxTokens ? { max_tokens: maxTokens } : {}),
+  };
+
+  const response = await fetchWithTimeout("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify(body),
+  }, timeoutMs);
+
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok || payload.error) {
+    const err = payload.error || {};
+    const code = response.status;
+    const message = err.message || response.statusText;
+    const login = code === 401 || /invalid api key/i.test(message);
+    throw new LlmError(`openai (${actualModel}): ${code} ${message}`, login ? { status: 401 } : { retryable: [429, 500, 502, 503, 504].includes(code) });
+  }
+
+  const choice = payload.choices?.[0];
+  const text = choice?.message?.content ?? "";
+  const used = payload.usage ?? {};
+  usage.calls += 1;
+  usage.promptTokens += used.prompt_tokens ?? 0;
+  usage.completionTokens += used.completion_tokens ?? 0;
+  const modelKey = `openai/${actualModel}`;
+  usage.byModel[modelKey] = (usage.byModel[modelKey] ?? 0) + 1;
+
+  return {
+    content: text,
+    ms: Date.now() - started,
+    usage: used,
+    model: modelKey,
+  };
+}
+
+// ------------------------------------------------------------------ Alibaba Qwen
+async function callQwen({ model, system, user, images = [], timeoutMs, temperature, maxTokens, json = true }) {
+  const apiKey = process.env.DASHSCOPE_API_KEY || process.env.QWEN_API_KEY;
+  if (!apiKey) {
+    throw new LlmError("Qwen is active but DASHSCOPE_API_KEY (or QWEN_API_KEY) is not set. Add your key in the Control Room Settings or .env.", { status: 401 });
+  }
+  const started = Date.now();
+  const baseUrl = process.env.DASHSCOPE_BASE_URL || "https://dashscope-intl.aliyuncs.com/compatible-mode/v1";
+
+  let userContent = user;
+  if (images.length > 0) {
+    userContent = [{ type: "text", text: user }];
+    for (const img of images) {
+      const { mimeType, base64 } = await fetchImageBuffer(img);
+      userContent.push({
+        type: "image_url",
+        image_url: { url: `data:${mimeType};base64,${base64}` },
+      });
+    }
+  }
+
+  const messages = [];
+  if (system) messages.push({ role: "system", content: system });
+  messages.push({ role: "user", content: userContent });
+
+  const actualModel = model || DEFAULT_MODELS.qwen;
+  const body = {
+    model: actualModel,
+    messages,
+    temperature: typeof temperature === "number" ? temperature : 0.2,
+    ...(json ? { response_format: { type: "json_object" } } : {}),
+    ...(maxTokens ? { max_tokens: maxTokens } : {}),
+  };
+
+  const response = await fetchWithTimeout(`${baseUrl.replace(/\/+$/, "")}/chat/completions`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify(body),
+  }, timeoutMs);
+
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok || payload.error) {
+    const err = payload.error || {};
+    const code = response.status;
+    const message = err.message || response.statusText;
+    const login = code === 401 || /invalid api key/i.test(message);
+    throw new LlmError(`qwen (${actualModel}): ${code} ${message}`, login ? { status: 401 } : { retryable: [429, 500, 502, 503, 504].includes(code) });
+  }
+
+  const choice = payload.choices?.[0];
+  const text = choice?.message?.content ?? "";
+  const used = payload.usage ?? {};
+  usage.calls += 1;
+  usage.promptTokens += used.prompt_tokens ?? 0;
+  usage.completionTokens += used.completion_tokens ?? 0;
+  const modelKey = `qwen/${actualModel}`;
+  usage.byModel[modelKey] = (usage.byModel[modelKey] ?? 0) + 1;
+
+  return {
+    content: text,
+    ms: Date.now() - started,
+    usage: used,
+    model: modelKey,
+  };
+}
+
+// ------------------------------------------------------------------ OpenRouter
+async function callOpenRouter({ model, system, user, images = [], timeoutMs, temperature, maxTokens, json = true }) {
+  const apiKey = process.env.OPENROUTER_API_KEY;
+  if (!apiKey) {
+    throw new LlmError("OpenRouter is active but OPENROUTER_API_KEY is not set. Add your key in the Control Room Settings or .env.", { status: 401 });
+  }
+  const started = Date.now();
+  let userContent = user;
+  if (images.length > 0) {
+    userContent = [{ type: "text", text: user }];
+    for (const img of images) {
+      const { mimeType, base64 } = await fetchImageBuffer(img);
+      userContent.push({
+        type: "image_url",
+        image_url: { url: `data:${mimeType};base64,${base64}` },
+      });
+    }
+  }
+
+  const messages = [];
+  if (system) messages.push({ role: "system", content: system });
+  messages.push({ role: "user", content: userContent });
+
+  const actualModel = model || DEFAULT_MODELS.openrouter;
+  const body = {
+    model: actualModel,
+    messages,
+    temperature: typeof temperature === "number" ? temperature : 0.2,
+    ...(json ? { response_format: { type: "json_object" } } : {}),
+    ...(maxTokens ? { max_tokens: maxTokens } : {}),
+  };
+
+  const response = await fetchWithTimeout("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      authorization: `Bearer ${apiKey}`,
+      "http-referer": "https://candideb99.github.io",
+      "x-title": "Khazendar newsroom",
+    },
+    body: JSON.stringify(body),
+  }, timeoutMs);
+
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok || payload.error) {
+    const err = payload.error || {};
+    const code = response.status;
+    const message = err.message || response.statusText;
+    const login = code === 401 || /invalid api key/i.test(message);
+    throw new LlmError(`openrouter (${actualModel}): ${code} ${message}`, login ? { status: 401 } : { retryable: [429, 500, 502, 503, 504].includes(code) });
+  }
+
+  const choice = payload.choices?.[0];
+  const text = choice?.message?.content ?? "";
+  const used = payload.usage ?? {};
+  usage.calls += 1;
+  usage.promptTokens += used.prompt_tokens ?? 0;
+  usage.completionTokens += used.completion_tokens ?? 0;
+  const modelKey = `openrouter/${actualModel}`;
+  usage.byModel[modelKey] = (usage.byModel[modelKey] ?? 0) + 1;
+
+  return {
+    content: text,
+    ms: Date.now() - started,
+    usage: used,
+    model: modelKey,
+  };
+}
+
+// ------------------------------------------------------------------ Dispatcher
+async function dispatchCall(options) {
+  const provider = getActiveProvider();
+  const model = getActiveModel(provider);
+  const callOpts = { ...options, model };
+
+  if (provider === "gemini") return callGemini(callOpts);
+  if (provider === "claude") return callClaude(callOpts);
+  if (provider === "openai") return callOpenAI(callOpts);
+  if (provider === "qwen") return callQwen(callOpts);
+  if (provider === "openrouter") return callOpenRouter(callOpts);
+  return callGemini(callOpts);
+}
+
 const ATTEMPTS = 3;
 
 /**
- * Runs one model call on Claude. `validate(data)` may throw to reject a parsed answer, which is then asked
- * again, up to three times in all. The returned `model` ("claude-cli") is what the article records.
+ * Runs one model call through the active provider (Gemini by default; Claude, OpenAI, Qwen in idle mode).
+ * `validate(data)` may throw to reject a parsed answer, which is retried up to three times.
  */
-export async function chat({ role, system, user, images = [], json = true, validate, timeoutMs = 240000, log = () => {} }) {
+export async function chat({ role, system, user, images = [], json = true, validate, temperature, maxTokens, timeoutMs = 240000, log = () => {} }) {
+  const provider = getActiveProvider();
+  const modelName = getActiveModel(provider);
   const errors = [];
-  // Why the last answer was refused, told to the next try: three identical requests came back three times at the
-  // same length (a story refused at 140, 149 and 152 words against a floor of 200, 2026-09-24).
   let refusal = "";
   for (let attempt = 1; attempt <= ATTEMPTS; attempt += 1) {
     await acquire();
     try {
       const told = attempt > 1 && refusal ? `\n\nYour previous answer was refused: ${refusal}. Correct exactly that in this answer.` : "";
       const nudge = attempt > 1 && json ? "\n\nIMPORTANT: Reply with ONE valid JSON value only. No prose, no markdown fences, no comments." : "";
-      const result = await callClaudeCli({ system, user: user + told + nudge, images, timeoutMs });
+      const result = await dispatchCall({ system, user: user + told + nudge, images, timeoutMs, temperature, maxTokens, json });
       let data = result.content;
       try {
         if (json) data = parseJsonLoose(result.content);
@@ -245,19 +622,18 @@ export async function chat({ role, system, user, images = [], json = true, valid
         refusal = String(error.message).split("\n")[0].slice(0, 300);
         throw error;
       }
-      log(`llm ok role=${role} model=claude-cli attempt=${attempt} ms=${result.ms}`);
-      return { data, text: result.content, model: "claude-cli", ms: result.ms, usage: result.usage };
+      log(`llm ok role=${role} provider=${provider} model=${result.model || modelName} attempt=${attempt} ms=${result.ms}`);
+      return { data, text: result.content, model: result.model || modelName, ms: result.ms, usage: result.usage };
     } catch (error) {
       usage.failures += 1;
-      errors.push(`claude-cli#${attempt}: ${error.message}`);
+      errors.push(`${provider}:${modelName}#${attempt}: ${error.message}`);
       const sample = error.meta?.sample ? ` sample=${JSON.stringify(String(error.meta.sample).slice(0, 140))}` : "";
-      log(`llm fail role=${role} model=claude-cli attempt=${attempt}: ${String(error.message).slice(0, 200)}${sample}`);
-      // A refused login is not cured by asking again.
+      log(`llm fail role=${role} provider=${provider} model=${modelName} attempt=${attempt}: ${String(error.message).slice(0, 200)}${sample}`);
       if (error.meta?.status === 401) break;
-      if (attempt < ATTEMPTS) await sleep(3000);
+      if (attempt < ATTEMPTS) await sleep(error.meta?.status === 429 ? 6000 : 3000);
     } finally {
       release();
     }
   }
-  throw new LlmError(`Claude failed for role ${role}:\n${errors.join("\n")}`);
+  throw new LlmError(`Model (${provider}/${modelName}) failed for role ${role}:\n${errors.join("\n")}`);
 }

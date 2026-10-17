@@ -79,10 +79,9 @@ jobs:
         run: node scripts/harvest.mjs
 
       # A new story without a picture, or a photo its library has lost, is mechanical: the pipeline's own picture
-      # search finds one or the story runs as text, and the editor round is not woken for it. Its model calls are
-      # Claude's, like every model call since 2026-09-24 (the owner: «abandon free models and use claude only»).
+      # search finds one or the story runs as text, and the editor round is not woken for it.
       - name: Install Claude Code (for the picture search)
-        if: steps.precheck.outputs.pictures != '' || steps.precheck.outputs.redo != ''
+        if: (steps.precheck.outputs.pictures != '' || steps.precheck.outputs.redo != '') && (vars.KHAZENDAR_PROVIDER == 'claude' || (vars.KHAZENDAR_PROVIDER == '' && secrets.CLAUDE_CODE_OAUTH_TOKEN != '' && secrets.GEMINI_API_KEY == ''))
         run: npm install -g @anthropic-ai/claude-code
 
       - name: Fill missing pictures and replace lost ones (the pipeline's own search)
@@ -90,7 +89,15 @@ jobs:
         env:
           SLUGS: ${{ steps.precheck.outputs.pictures }}
           REDO: ${{ steps.precheck.outputs.redo }}
+          KHAZENDAR_PROVIDER: ${{ vars.KHAZENDAR_PROVIDER }}
+          KHAZENDAR_MODEL: ${{ vars.KHAZENDAR_MODEL }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+          QWEN_API_KEY: ${{ secrets.QWEN_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
           KHAZENDAR_CLAUDE_MODEL: ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'claude-opus-5-5' }}

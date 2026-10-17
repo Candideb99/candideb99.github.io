@@ -123,8 +123,11 @@ export const newsFloor = (notes) => (notes && Array.isArray(notes.facts) && note
 export function validateDraft(draft, { minWords = 200, maxWords = 1100 } = {}) {
   if (!draft || typeof draft !== "object") throw new Error("draft is not an object");
   // Tolerate renamed keys and reshaped bodies from different models.
+  draft.title = draft.title ?? draft.headline ?? draft.header;
+  draft.subtitle = draft.subtitle ?? draft.dek ?? draft.subhead ?? draft.sub_title;
+  draft.lede = draft.lede ?? draft.lead ?? draft.intro;
   draft.key_facts = draft.key_facts ?? draft.keyFacts ?? draft.key_figures ?? draft.facts ?? draft.numbers ?? [];
-  draft.why_it_matters = draft.why_it_matters ?? draft.whyItMatters ?? draft.why ?? "";
+  draft.why_it_matters = draft.why_it_matters ?? draft.whyItMatters ?? draft.why ?? draft.why_it_matters_ar ?? draft.significance ?? draft.impact ?? "";
   draft.image_queries = draft.image_queries ?? draft.imageQueries ?? draft.images ?? [];
   draft.tags = draft.tags ?? draft.keywords ?? draft.topics;
   draft.body = coerceBody(draft.body);
@@ -181,6 +184,9 @@ Return: {"event":"<one Arabic sentence naming the one event>","facts":[{"fact":"
       maxTokens: 4000,
       log,
       validate: (d) => {
+        if (d && typeof d === "object") {
+          d.facts = d.facts ?? d.key_facts ?? d.desk_notes ?? d.atomic_facts ?? [];
+        }
         if (!d || !Array.isArray(d.facts) || d.facts.length < 5) throw new Error("fewer than five facts");
         // A fact whose figures its own source does not carry is dropped; too many dropped means the notes are unreliable.
         const kept = d.facts.filter((f) => {
