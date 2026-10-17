@@ -101,10 +101,22 @@ with its noun. Preferred: نحو not حوالي، في الوقت نفسه، م�
 
 **Headlines.** A nominal sentence: actor first, present-tense verb, the figure (الذهب يتجه لثالث
 خسارة أسبوعية مع تصاعد رهانات رفع الفائدة). One idea, at most 12 words, never two developments
-chained with و. The two-dot hinge is a desk form (النفط يشتعل.. برنت يتجاوز 100 دولار); the colon
+chained with و. No ellipsis hinge or dramatic metaphor in a news headline; the colon
 carries a quoted speaker (صندوق النقد: الاقتصاد العالمي يتجه إلى نمو 3%). Definite references for
 institutions (الإدارة الأمريكية or واشنطن, never إدارة أمريكية); a strong verb instead of يعلن عن +
 verbal noun. No "!", no teaser, no تعرف على, no question headline for news (explainers may ask).
+
+**The report has a line of thought** (the owner, 2026-10-17, on the first Sol story). The headline is a
+complete idiomatic statement: «مخاوف من تعطل إمدادات النفط» says what is feared; «مخاوف الإمدادات»
+compresses away the relation. The headline's subject-first form differs from the lede's natural verb
+opening; the copy desk must not impose one order on both. Checked desk notes are evidence, never a
+paragraph plan: group related figures, their comparisons and attributed context into paragraphs that
+develop one point. Three separately attributed one-sentence dispatches in a row merit review, not an
+automatic rejection of a brief. The desk may regroup and reorder sentences while preserving actual
+chronology, attribution, hedges and every unique fact. No invented cause or contrast just to make a
+transition; no extra words just to make the article longer. A useful consequence develops the story;
+«ارتفاع السعر يرفع كلفة الشراء» alone merely repeats it. The writer, copy desk and critic share this
+brief in `pipeline/lib/editorial.mjs`; the critic names concrete defects in construction as well as facts.
 
 **Marks.** Western digits; pan-Arab month names; % after the figure; the Arabic comma (،); «» for
 quotations and foreign brand names; tanween on the alef (اً).

@@ -23,6 +23,8 @@ import { serializeArticle } from "../pipeline/lib/article.mjs";
 import { cleanTags } from "../pipeline/lib/tags.mjs";
 import { groundedRegions } from "../pipeline/lib/regions.mjs";
 import { styleIssues } from "../pipeline/lib/style.mjs";
+import { judgeRewrite } from "../pipeline/lib/copydesk.mjs";
+import { programmaticChecks } from "../pipeline/lib/verify.mjs";
 import { noveltyFault } from "../pipeline/lib/images.mjs";
 
 let failed = 0;
@@ -264,6 +266,31 @@ if (spawnSync("git", ["--version"]).status === 0) {
   // ONE STORY: a second event brought in by a joint is refused.
   const stitched = styleIssues({ title: "مصر تنشئ مركز بيانات بمليار دولار", subtitle: "", lede: "أعلنت مصر خطة لمركز بيانات.", body: "وقالت الوزارة إن المرحلة الأولى تبدأ العام المقبل.\n\nوفي التاريخ نفسه، أعلنت «جوجل» استثماراً في فنلندا.", whyItMatters: "", keyFacts: [] }).issues;
   check("a second event stitched in is refused", stitched.some((i) => i.startsWith("خبر ثانٍ ملحق")), true);
+
+  // The first Sol story was factually clean but had an incomplete headline and three tiny dispatches.
+  const dispatches = [
+    "وقالت القيادة المركزية الأمريكية إن إيران أغرقت سفينة الحاويات «جي إف إس برايد» الأربعاء في مضيق هرمز.",
+    "وأفادت الهيئة البحرية السنغافورية بإجلاء أفراد طاقم السفينة المسجلة في سنغافورة بسلام.",
+    "وقالت المنظمة البحرية الدولية إن الاعتداءات أسفرت عن إصابة ثلاثة بحارة، وظل اثنان في عداد المفقودين.",
+  ];
+  const brief = { title: "يلامس برنت 110 دولارات مع مخاوف الإمدادات عبر هرمز", subtitle: "ارتفع برنت 4.9% خلال الأسبوع", lede: "لامس خام برنت 110 دولارات للبرميل الجمعة.", body: dispatches.join("\n\n"), whyItMatters: "تتعلق المخاوف بوصول النفط عبر المضيق." };
+  check("the reported compressed supply-fears headline is sent back", styleIssues(brief).issues.some((i) => i.startsWith("العنوان يختزل المعنى")), true);
+  const naturalTitle = "برنت يلامس 110 دولارات وسط مخاوف بشأن الإمدادات عبر هرمز";
+  check("a complete fears phrase passes", styleIssues({ ...brief, title: naturalTitle }).issues.some((i) => i.startsWith("العنوان يختزل المعنى")), false);
+  check("whose fears they are is a valid possessive", styleIssues({ ...brief, title: "مخاوف المستثمرين تدفع الذهب إلى الصعود" }).issues.some((i) => i.startsWith("العنوان يختزل المعنى")), false);
+  check("three detached dispatches prompt a flow review", styleIssues(brief).warnings.some((i) => i.startsWith("ثلاث فقرات قصيرة")), true);
+  check("a short brief is not automatically a flow defect", styleIssues({ ...brief, body: dispatches.slice(0, 2).join("\n\n") }).warnings.some((i) => i.startsWith("ثلاث فقرات قصيرة")), false);
+  check("grouped related dispatches do not trigger the same warning", styleIssues({ ...brief, body: dispatches.join(" ") }).warnings.some((i) => i.startsWith("ثلاث فقرات قصيرة")), false);
+  check("literal news bullet lists are sent for editing", styleIssues({ ...brief, body: dispatches.map((p) => `- ${p}`).join("\n") }).issues.some((i) => i.startsWith("متن الخبر قائمة")), true);
+  check("an explainer's list is not treated as news prose", styleIssues({ ...brief, body: "- سعر الفائدة هو كلفة الاقتراض." }, { kind: "explainer" }).issues.some((i) => i.startsWith("متن الخبر قائمة")), false);
+  const regrouped = judgeRewrite(brief, { title: naturalTitle, body: [dispatches[2], dispatches[0], dispatches[1]].join(" ") }, ["title", "body"]);
+  check("the fact guard permits regrouping without losing facts", Object.keys(regrouped.accepted).sort(), ["body", "title"]);
+  const changedFigure = judgeRewrite(brief, { title: naturalTitle.replace("110", "120") }, ["title"]);
+  check("improving the headline cannot change its figure", changedFigure.rejected.some((r) => r.field === "title"), true);
+  const withBox = { ...brief, title: naturalTitle, subtitle: "برنت يحقق مكاسب أسبوعية بنسبة 4.9%", keyFacts: [{ label: "مكاسب برنت الأسبوعية", value: "4.9%" }] };
+  const dekFault = (d) => programmaticChecks(d, [{ text: "Brent 110, weekly gain 4.9%." }], { minWords: 0 }).issues.some((i) => i.startsWith("الوصف الفرعي"));
+  check("a dek may develop a figure in the story's numeric sidebar", dekFault(withBox), false);
+  check("an unrelated dek still fails its topic check", dekFault({ ...withBox, subtitle: "شركة الطيران الكندية تطلب أسطولاً جديداً من الطائرات" }), true);
   // GRAVITY: a curiosity the photograph names and the story does not is refused in code.
   check("photos: a horse-drawn fuel cart under a central-bank story is refused", noveltyFault({ title: "CairoHorseDrawnFuelTransport.jpg", alt: "عربة وقود يجرها حصان في محطة بنزين بالقاهرة" }, { title: "برنت فوق 105 دولارات يعقّد حسابات المركزي المصري" }), "Horse");
   check("photos: an oil field's «nodding donkey» is a pumpjack, not an animal", noveltyFault({ title: "Oil pumpjack in the Permian Basin.jpg", categories: "Nodding donkeys in Texas" }, { title: "النفط يتراجع مع آمال مفاوضات هرمز" }), null);

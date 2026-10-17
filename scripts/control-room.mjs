@@ -24,7 +24,7 @@ import { randomUUID, randomBytes } from "node:crypto";
 import path from "node:path";
 import os from "node:os";
 import YAML from "yaml";
-import { codexStatus } from "../pipeline/lib/codex.mjs";
+import { codexStatus, CODEX_REASONING_EFFORT } from "../pipeline/lib/codex.mjs";
 import { accountById, listAccounts, beginAccountLogin, loginState, setAccountReminder, setAccountPool, readAccountStore } from "../pipeline/lib/codex-accounts.mjs";
 import { validateCodexAuth } from "../pipeline/lib/codex-cloud.mjs";
 import { readQuotaState, refreshAccountUsage } from "../pipeline/lib/codex-pool.mjs";
@@ -1076,7 +1076,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
 
       <div class="keycard" id="card_codex">
         <div class="khead">
-          <div><b>ChatGPT subscription — Codex</b> <span class="badge" id="badge_codex">checking…</span><br><span class="m" id="ks_codex">checking…</span></div>
+          <div><b>ChatGPT subscription — Codex</b> <span class="badge" id="badge_codex">checking…</span><br><span class="m" id="ks_codex">checking…</span><br><span class="m">Reasoning effort: ${CODEX_REASONING_EFFORT}. Applies to local and GitHub cloud calls after deployment.</span></div>
           <span id="act_btn_codex"></span>
         </div>
         <p class="m">Uses your ChatGPT subscription allowance, with no Platform API key. Connect another account below and select it when needed. A cancelled or unusable subscription stops its model calls; it never starts paid API calls or silently switches providers.</p>

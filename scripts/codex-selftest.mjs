@@ -24,6 +24,7 @@ const result = await runCodex({ system: "Keep all figures; return JSON only.", u
     workingDirectory = options.cwd;
     assert.equal(options.shell, false);
     assert.ok(args.includes('forced_login_method="chatgpt"'));
+    assert.ok(args.includes('model_reasoning_effort="high"'), "Newsroom calls use the owner's high reasoning setting");
     assert.ok(args.includes("--ignore-user-config"));
     assert.ok(args.includes("--ephemeral"));
     assert.ok(args.includes("features.shell_tool=false"));

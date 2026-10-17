@@ -198,6 +198,15 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
     else warnings.push(line);
   }
 
+  // The October 17 Brent headline passed every vocabulary check but omitted what the fear concerned.
+  // Keep this narrow: «مخاوف المستثمرين» names whose fears they are and is perfectly good Arabic.
+  if (news && /(?<![؀-ۿ])مخاوف\s+(?:الإمدادات|المعروض|سلاسل التوريد)(?![؀-ۿ])/.test(title)) {
+    issues.push('العنوان يختزل المعنى في «مخاوف الإمدادات» أو ما يشبهها؛ اذكر ما يخشاه المتعاملون بصلة كاملة («مخاوف من تعطل الإمدادات» أو «مخاوف بشأن الإمدادات») وفق ما يثبته المصدر، ولا تحوّل الاحتمال إلى واقعة.');
+  }
+  if (news && /^\s*(?:[-*+•]|\d+[.)])\s+\S/m.test(body)) {
+    issues.push('متن الخبر قائمة نقطية أو مرقمة؛ حرره في فقرات مترابطة، تجمع كل منها الوقائع المتصلة بنقطة واحدة، مع إبقاء الأرقام والإسناد. صندوق الأرقام مكانه المنفصل.');
+  }
+
   // The lede: one breath, under 45 words, and never a scene-setter.
   const ledeWords = lede.trim().split(/\s+/).filter(Boolean).length;
   if (news && ledeWords > 55) issues.push(`المقدمة طويلة (${ledeWords} كلمة)؛ اجعلها جملتين إلى ثلاث بأقل من 45 كلمة: الفعل، الفاعل، الرقم، السبب.`);
@@ -211,6 +220,13 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
   const paragraphs = body.split(/\n\s*\n/).map((p) => p.trim()).filter((p) => p && !p.startsWith("## "));
   const walls = paragraphs.filter((p) => p.split(SENTENCE_SPLIT).filter((s) => s.trim().split(/\s+/).length >= 3).length >= 5);
   if (walls.length) warnings.push(`فقرات طويلة (${walls.length}) من خمس جمل أو أكثر؛ الفقرة في الصحافة العربية جملة إلى ثلاث.`);
+
+  // An isolated short paragraph is normal. A run of three tiny, separately attributed dispatches is
+  // a prompt for editorial judgement, not a reason to reject an otherwise sound brief automatically.
+  const dispatch = (p) => /^(?:و|ف)?(?:قال|قالت|أفاد|أفادت|أضاف|أضافت|أوضح|أوضحت|أعلن|أعلنت)(?![؀-ۿ])/.test(p) && sentencesOf(p).length === 1 && p.split(/\s+/).length <= 35;
+  if (news && paragraphs.some((p, i) => i >= 2 && [paragraphs[i - 2], paragraphs[i - 1], p].every(dispatch))) {
+    warnings.push('ثلاث فقرات قصيرة متتالية تبدأ بأفعال إسناد منفصلة؛ راجع هل تحوّل الخبر إلى برقيات متجاورة. اجمع الوقائع المتصلة في فقرة تطور فكرة واحدة، ونوّع الإيقاع مع حفظ المتحدث والزمن، دون اختراع سبب أو رابط.');
+  }
 
   // Every paragraph opening with the same «و» reads as a machine; the desks vary the joint («ويأتي» and «وجاء» are stock joints, not variety).
   const wawOpeners = paragraphs.filter((p) => /^و(?!كان|في|رغم|قال|قالت|أضاف|أضافت|أشار|أشارت|أوضح|أوضحت|بحسب|وفق)/.test(p)).length;
