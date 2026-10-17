@@ -19,9 +19,10 @@ import "./lib/env.mjs";
 import { mkdir, readFile, writeFile, appendFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import YAML from "yaml";
 import { fetchFeed } from "./lib/feeds.mjs";
 import { extractArticle } from "./lib/extract.mjs";
-import { collectNewsEvidence } from "./lib/news-evidence.mjs";
+import { collectNewsEvidence, eventSourcesOf } from "./lib/news-evidence.mjs";
 import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectFeatureTopic, selectPaper, selectStories } from "./lib/select.mjs";
 import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, newsFloor, reviseArticle, writeAnalysis, writeArticle, writeExplainer, writeFeature, writePaperReading, writeWeekly } from "./lib/write.mjs";
 import { critique, programmaticChecks } from "./lib/verify.mjs";
@@ -32,7 +33,7 @@ import { checkSourcesOf, precheck, writeJsonAtomic } from "./lib/precheck.mjs";
 import { repeatsRecent } from "./lib/events.mjs";
 import { saveSnapshot } from "./lib/snapshots.mjs";
 import { pickImage } from "./lib/images.mjs";
-import { ARTICLES_DIR, buildSlug, loadExistingArticles, serializeArticle } from "./lib/article.mjs";
+import { ARTICLES_DIR, buildSlug, loadExistingArticles, mergeNewsRefresh, serializeArticle } from "./lib/article.mjs";
 import { usage as llmUsage } from "./lib/llm.mjs";
 import { fingerprint, hoursSince, isoNow, sleep } from "./lib/util.mjs";
 import { pickDataChart } from "./lib/datacharts.mjs";
@@ -53,6 +54,9 @@ const PREVIEW_DIR = DRY_RUN ? option("preview", null) : null;
 /** `--draft`: write every article with `draft: true`, so nothing reaches the site until the editor publishes it from the desk. */
 const DRAFT = flag("draft");
 const MODE = option("mode", "news");
+/** Explicit single-story editorial refresh; never enabled by the schedule. */
+const REFRESH = option("refresh", null);
+const REFRESH_NOTE = option("refresh-note", "");
 const LIMIT = Math.max(1, Math.min(Number(option("limit", 4)) || 4, 10));
 /**
  * A day's news is edited, not filled: at most this many news stories in any 24 hours. Raised from 10 to 20 on
@@ -301,13 +305,14 @@ async function recordPrecheck({ slug, title, pre, writer, lessons, held }) {
 /** About one story in three is eligible, chosen by hash (not the day's first two, which would favour one hour's news). */
 const inPairSample = (story) => parseInt(fingerprint(`pair:${story.headlineHint ?? ""}`).slice(0, 8), 16) % 3 === 0;
 
-async function produceStory({ story, candidates, existing, recentTitles, models, report }) {
+async function produceStory({ story, candidates, existing, recentTitles, models, report, refresh = null }) {
   const { items, sources, evidenceChars } = await collectEvidence(story, candidates);
+  const eventSources = eventSourcesOf(sources);
   const entry = { headline: story.headlineHint, section: story.section, importance: story.importance, sources: sources.map((s) => s.url) };
   // A story is written from at least one fetched article body, never from feed summaries alone: a writer asked
   // for 300 words out of 100 invents the rest. The items take the short "rejected" mark, so a page that was
   // down is tried once more next run.
-  if (!sources.some((s) => s.text)) {
+  if (!eventSources.some((s) => s.text)) {
     entry.outcome = `skipped: no source body could be fetched (${evidenceChars} chars of feed summaries only)`;
     report.push(entry);
     log(`skip "${story.headlineHint}": no source body could be fetched (${evidenceChars} chars of summaries); items marked for one retry`);
@@ -317,8 +322,8 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   // news outlet cannot be cross-checked and would be that outlet's report in Arabic, which is the one
   // thing this paper must never publish (copyright, and Google's "scaled, unoriginal content"). The items
   // take the short mark, so the story is tried again when a second outlet has picked it up.
-  const outlets = new Set(sources.map((s) => s.sourceNameEn ?? s.sourceName));
-  if (outlets.size < 2 && !sources.some((s) => Number(s.reliability) === 3 && s.kind === "official")) {
+  const outlets = new Set(eventSources.map((s) => s.sourceNameEn ?? s.sourceName));
+  if (outlets.size < 2 && !eventSources.some((s) => Number(s.reliability) === 3 && s.kind === "official")) {
     entry.outcome = "skipped: a single non-official source (needs a second outlet, or an official primary source)";
     report.push(entry);
     log(`skip "${story.headlineHint}": one non-official source only; items marked for one retry`);
@@ -411,9 +416,9 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
 
   // The whole story and its sources' own lead photographs go to the picture desk: the cascade's place and the
   // subject of the sources' photographs come before the writer's searches (lib/images.mjs findImage()).
-  const image = await pickImage({ draft, story, log, exclude: usedImages(existing), sources });
-  const slug = buildSlug(draft, story);
-  const markdown = serializeArticle({
+  const image = refresh ? refresh.data.image : await pickImage({ draft, story, log, exclude: usedImages(existing), sources });
+  const slug = refresh ? refresh.data.slug : buildSlug(draft, story);
+  let markdown = serializeArticle({
     pending: DRAFT,
     draft,
     slug,
@@ -434,7 +439,8 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
       criticSummary: review.summary,
     },
   });
-  entry.outcome = "published";
+  if (refresh) markdown = mergeNewsRefresh(refresh.original, markdown, { note: REFRESH_NOTE });
+  entry.outcome = refresh ? "refreshed" : "published";
   entry.slug = slug;
   entry.title = draft.title;
   entry.score = review.score;
@@ -445,13 +451,13 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     await mkdir(dir, { recursive: true });
     await writeFile(path.join(dir, `${slug}.md`), markdown);
   }
-  log(`${DRAFT ? "drafted" : "published"} "${draft.title}" -> ${slug}${DRY_RUN ? " (dry-run)" : ""}`);
+  log(`${refresh ? "refreshed" : DRAFT ? "drafted" : "published"} "${draft.title}" -> ${slug}${DRY_RUN ? " (dry-run)" : ""}`);
   await recordPrecheck({ slug, title: draft.title, pre, writer: writerModel, lessons: lessonsTag, held: false });
   // The evidence the story rests on, as its sources read at publication (lib/snapshots.mjs: the passages and the check's
   // verdicts, never the pages), committed with the story. From the same numbered list the check read, so each quote
   // stays with its own source. A failure to save never stops a story.
   const storyText = [draft.title, draft.subtitle, draft.lede, draft.body, draft.whyItMatters, ...(draft.keyFacts ?? []).map((k) => `${k.label} ${k.value}`)].join("\n");
-  if (!DRY_RUN) await saveSnapshot({ slug, title: draft.title, publishedAt: isoNow(), sources: checkSourcesOf(sources), checks: pre.checks ?? [], storyText }).catch((error) => log(`evidence for ${slug} not saved: ${String(error.message).slice(0, 120)}`));
+  if (!DRY_RUN) await saveSnapshot({ slug: refresh ? `${slug}-refresh-${Date.now()}` : slug, title: draft.title, publishedAt: refresh?.data.publishedAt ?? isoNow(), kind: refresh ? "editorial-refresh" : "publication", sources: checkSourcesOf(sources), checks: pre.checks ?? [], storyText }).catch((error) => log(`evidence for ${slug} not saved: ${String(error.message).slice(0, 120)}`));
   return { slug, items, title: draft.title, pairing: !control && LESSONS ? { story, sources, firstDraft, firstNotes: notes, slug, title: draft.title } : null };
 }
 
@@ -510,6 +516,7 @@ async function runNews(report) {
   KEPT = keptBlock(lessons);
   KEPT_VERSION = lessons.kept?.version ?? 0;
   if (LESSONS) log(`lessons: version ${lessons.version}, ${lessons.lessons.filter((l) => l.status === "active").length} active, read by the desk notes and the writer`);
+  if (REFRESH) return runNewsRefresh(report);
   const config = await readJson(path.join(root, "pipeline", "sources.json"), { sources: [] });
   // News is filed only into the news sections; the analysis and explainers hubs hold the paper's own pieces.
   const sections = newsSectionsOf(await readJson(path.join(root, "src", "data", "sections.json"), []));
@@ -619,6 +626,28 @@ async function runNews(report) {
     }
   }
   return { report, published };
+}
+
+/** Re-report exactly one owner-selected event through the normal gate, preserving its address/date. */
+async function runNewsRefresh(report) {
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(REFRESH) || !REFRESH_NOTE.trim()) throw new Error("--refresh requires a single valid slug and --refresh-note");
+  const original = await readFile(path.join(ARTICLES_DIR, `${REFRESH}.md`), "utf8");
+  const parts = original.replace(/\r\n/g, "\n").match(/^---\n([\s\S]*?)\n---\n/);
+  const data = parts ? YAML.parse(parts[1]) : null;
+  if (data?.kind !== "news" || data.slug !== REFRESH || data.draft || !data.sources?.length) throw new Error("refresh requires an existing published news article with sources");
+  const registry = await readJson(path.join(root, "pipeline", "sources.json"), { sources: [] });
+  const candidates = data.sources.filter((s) => !/fidelity.com\/learning-center/.test(s.url)).slice(0, 4).map((s, i) => {
+    const configured = registry.sources.find((r) => r.nameEn === s.nameEn);
+    return { ...s, id: `refresh-${i}`, sourceId: configured?.id ?? s.nameEn, sourceName: s.name, sourceNameEn: s.nameEn,
+      reliability: configured?.reliability ?? 2, kind: configured?.kind ?? "news", paywalled: Boolean(configured?.paywalled) };
+  });
+  const existing = await loadExistingArticles();
+  const result = await produceStory({ story: { ids: candidates.map((s) => s.id), headlineHint: data.title, section: data.section,
+    importance: data.quality?.importance ?? 6, regions: data.regions ?? [], angle: "إعادة تحرير الخبر نفسه بشرح اقتصادي وافٍ ومسنَد: تعريف المصطلحات الأساسية، موقع الأرقام في سياقها، آلية الأثر وحدوده، والتعريف بأصحاب الآراء. لا تطور جديد ولا حشو." },
+    candidates, existing, recentTitles: existing.filter((a) => a.slug !== REFRESH && hoursSince(a.publishedAt) < 96).map((a) => a.title),
+    models: { editor: data.models?.editor ?? null }, report, refresh: { original, data } });
+  if (!result?.slug) throw new Error("editorial refresh did not pass; the published article was left intact");
+  return { report, published: 0, refreshed: 1 };
 }
 
 /** News stories of the last 72 hours, newest first: the coverage a hub piece (explainer, analysis) is anchored in. */
@@ -1154,6 +1183,7 @@ async function main() {
     startedAt: new Date(started).toISOString(),
     durationSec: Math.round((Date.now() - started) / 1000),
     published: outcome.published,
+    refreshed: outcome.refreshed ?? 0,
     report: outcome.report,
     llm: llmUsage,
     log: logLines.filter((l) => !/\] feed /.test(l)).slice(-150),

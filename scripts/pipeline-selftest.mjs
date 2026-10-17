@@ -18,8 +18,8 @@ import { writeJsonAtomic } from "../pipeline/lib/util.mjs";
 import { loadSnapshot, saveSnapshot } from "../pipeline/lib/snapshots.mjs";
 import { loadSources, settleDrift } from "../pipeline/lib/factcheck.mjs";
 import { boxFacts } from "../pipeline/lib/keyfacts.mjs";
-import { normalizeDraft, prioritizeContext } from "../pipeline/lib/write.mjs";
-import { serializeArticle } from "../pipeline/lib/article.mjs";
+import { newsDepthBrief, normalizeDraft, prioritizeContext } from "../pipeline/lib/write.mjs";
+import { mergeNewsRefresh, serializeArticle } from "../pipeline/lib/article.mjs";
 import { cleanTags } from "../pipeline/lib/tags.mjs";
 import { groundedRegions } from "../pipeline/lib/regions.mjs";
 import { styleIssues } from "../pipeline/lib/style.mjs";
@@ -312,6 +312,13 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const thin = { reader_context: null, facts: [{ fact: "خبر مقتضب", source: 1 }] };
   prioritizeContext(thin);
   check("thin sources do not force invented context", thin.facts.length, 1);
+  const identity = { fact: "سليم نور مسؤول الدخل الثابت في شركة واحة للاستثمارات", source: 2 };
+  const rich = { reader_context: context, identifications: [identity], facts: Array.from({ length: 20 }, (_, i) => ({ fact: `تفصيل ${i}`, source: 1 })) };
+  prioritizeContext(rich);
+  check("expert identification survives the same twenty-fact budget", rich.facts.slice(0, 20).includes(identity), true);
+  const noContext = { reader_context: null, identifications: [identity], facts: [identity] };
+  prioritizeContext(noContext);
+  check("an expert can be identified without invented economic context or duplication", noContext.facts, [identity]);
   const invalidContext = (reader_context) => { try { prioritizeContext({ reader_context, facts: [] }); return false; } catch { return true; } };
   check("a boolean is not a contextual fact", invalidContext(false), true);
   check("a context label without a fact is refused", invalidContext({ source: 1 }), true);
@@ -330,6 +337,26 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("a number cannot substitute for a reader observation", refuses({ ...clear, flow: { status: "clear", evidence: 10 } }), true);
   check("a revision finding needs an actionable repair", refuses({ ...clear, context: { status: "revise", evidence: "سياق ضروري غائب", repair: "" } }), true);
   check("a thin source can make context not applicable without a false alarm", normalizeCritique({ ...review, reader_check: { ...clear, context: { status: "not_applicable", evidence: "المصدر خبر مقتضب ولا يقدم خلفية إضافية", repair: "" } } }, { news: true }).verdict, "publish");
+}
+
+{
+  const old = '---\nslug: same-story\nsection: economy\nkind: news\npublishedAt: 2026-10-17T10:00:00Z\nfeatured: true\nimage: {url: old.jpg}\ncorrections: [{date: 2026-10-17T11:00:00Z, note: تصحيح سابق}]\n---\nقديم';
+  const fresh = '---\nslug: same-story\nsection: economy\nkind: news\npublishedAt: 2026-10-18T10:00:00Z\nimage: null\ndraft: true\n---\nخبر موسع';
+  const merged = mergeNewsRefresh(old, fresh, { note: "إضافة شرح وتعريف بالمحلل", at: "2026-10-18T12:00:00Z" });
+  check("a refresh keeps the original publication date, picture, cover choice and correction history", [merged.includes("publishedAt: 2026-10-17T10:00:00Z"), merged.includes("old.jpg"), merged.includes("featured: true"), merged.includes("تصحيح سابق"), merged.includes("draft: true")], [true, true, true, true, false]);
+  check("a refresh records its own note/date and new body", [merged.includes("إضافة شرح وتعريف بالمحلل"), merged.includes("updatedAt: 2026-10-18T12:00:00Z"), merged.includes("خبر موسع")], [true, true, true]);
+  let refused = false;
+  try { mergeNewsRefresh(old, fresh.replace("same-story", "different-story"), { note: "تحديث" }); } catch { refused = true; }
+  check("a refresh cannot overwrite a different article", refused, true);
+}
+
+{
+  const body = "وقال المحلل إن كلفة التمويل لم تتغير.\n\nواستندت الوكالة إلى تحسن الإيرادات.\n\nوقالت الوزارة إن احتياطياتها زادت.\n\nوأوضحت الوكالة أن الدين لا يزال مرتفعاً.";
+  const warnings = (text) => styleIssues({ title: "قرار التصنيف الائتماني", lede: "رفعت الوكالة التصنيف الائتماني.", body: text, whyItMatters: "" }).warnings;
+  check("monotonous waw/reporting openings include the previously exempt reporting verbs", warnings(body).some((w) => w.includes("كل فقرات المتن")), true);
+  check("ordinary waw is not by itself a defect", warnings(body.replace("واستندت", "استندت")).some((w) => w.includes("كل فقرات المتن")), false);
+  check("substantial sources get developed reporting guidance", newsDepthBrief([{ text: "a".repeat(4000) }, { text: "b".repeat(4000) }]).includes("450-700"), true);
+  check("definitions alone do not turn a brief into rich event reporting", newsDepthBrief([{ text: "short event" }, { kind: "reference", text: "a".repeat(9000) }]).includes("450-700"), false);
 }
 
 if (failed) {

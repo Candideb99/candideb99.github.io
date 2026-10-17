@@ -165,6 +165,17 @@ const jsonLd = [articleLd, breadcrumbLd];
             ))}
           </aside>
         )}
+        {d.updates.length > 0 && (
+          <aside class="corrections" aria-labelledby="updates-head">
+            <h2 id="updates-head" class="corrections__head ui">تحديث تحريري</h2>
+            {d.updates.map((u) => (
+              <p class="corrections__item">
+                <time class="ui" datetime={u.date}>{formatDate(u.date, { weekday: false })}</time>
+                <span set:html={isolateNumbers(u.note)} />
+              </p>
+            ))}
+          </aside>
+        )}
         {d.tags.length > 0 && (
           <p class="tags">
             {pills.map((p) => (

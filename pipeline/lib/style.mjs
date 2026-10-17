@@ -230,7 +230,9 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
 
   // Every paragraph opening with the same «و» reads as a machine; the desks vary the joint («ويأتي» and «وجاء» are stock joints, not variety).
   const wawOpeners = paragraphs.filter((p) => /^و(?!كان|في|رغم|قال|قالت|أضاف|أضافت|أشار|أشارت|أوضح|أوضحت|بحسب|وفق)/.test(p)).length;
-  if (paragraphs.length >= 4 && wawOpeners / paragraphs.length > 0.6) warnings.push(`أكثر من نصف الفقرات تبدأ بواو العطف المجردة؛ نوّع المفاصل: «وكان … قد»، «فقد»، «لكن»، «أما … فـ»، «وقال».`);
+  const wawReporting = /^و(?:قال|أضاف|أوضح|استند|أشار|أكد|توقع|أفاد|بلغ|سجّل|ارتفع|انخفض|بحسب|وفق|كان|ترى|تقول|يعني|يقول|لكن|هو|هي|في|رغم|أن|من|مع)/;
+  if (news && paragraphs.length >= 4 && paragraphs.every((p) => wawReporting.test(p))) warnings.push('كل فقرات المتن تبدأ بالواو وأفعال الإسناد أو الوصل؛ راجع ترتيب الأفكار وإيقاعها. قد تبدأ فقرة التعريف بمصطلحها أو المقارنة برقمها، مع حفظ الإسناد. لا تستبدل أدوات الربط آلياً ولا تختلق تقابلاً لتنويع الافتتاح.');
+  else if (paragraphs.length >= 4 && wawOpeners / paragraphs.length > 0.6) warnings.push(`أكثر من نصف الفقرات تبدأ بواو العطف المجردة؛ نوّع المفاصل: «وكان … قد»، «فقد»، «لكن»، «أما … فـ»، «وقال».`);
 
   // Speech: قال takes إن, never أن.
   const qalAn = prose.match(/(?:قال|قالت|وقال|وقالت)\s+[^.،\n]{0,40}?\s+أن\s/g) ?? [];

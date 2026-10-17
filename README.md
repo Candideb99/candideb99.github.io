@@ -146,6 +146,13 @@ Models: Gemini by default, or Claude, OpenAI, Qwen, OpenRouter (see "Model provi
 
 ## Local development
 
+For an owner-requested editorial expansion of one published news event, use
+`node pipeline/run.mjs --refresh=<slug> --refresh-note='<Arabic explanation of the update>'`.
+It refetches the article's cited sources and runs the normal notes, writer, desk, critic/revision
+and factual check. It preserves the address/date and adds an editorial update; a rejected refresh
+leaves the live article intact. `--dry-run --preview=<temp directory>` previews it without changing
+the article or state. This is a deliberate single-story action, never a scheduled mass rewrite.
+
 ```bash
 npm ci
 npm run dev            # site at http://localhost:4321

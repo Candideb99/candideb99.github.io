@@ -20,6 +20,15 @@ const PUBLISHERS = new Map([
 ]);
 const hostOf = (url) => new URL(url).hostname.toLowerCase().replace(/^www\./, "");
 
+const RATINGS_REFERENCE = "https://www.fidelity.com/learning-center/investment-products/fixed-income-bonds/bond-ratings";
+/** Definitions explain an event; they cannot corroborate that it happened. */
+export const eventSourcesOf = (sources) => sources.filter((s) => s.kind !== "reference");
+
+export function needsRatingsReference(story, sources) {
+  const brief = `${story.headlineHint ?? ""} ${sources.map((s) => s.title).join(" ")}`;
+  return /rating|تصنيف/i.test(brief) && /moody|موديز|fitch|فيتش|ستاندرد|standard.*poor/i.test(brief);
+}
+
 export function officialDocument(raw) {
   try {
     const u = new URL(raw);
@@ -82,6 +91,17 @@ export async function collectNewsEvidence(story, candidates, { extract = extract
         log(`evidence primary document: ${selected.nameEn} (linked by ${selected.discoveredFrom})`);
       } else log(`evidence primary document skipped: ${fetched.ok ? "title does not establish relevance" : fetched.reason}`);
     } catch (error) { log(`evidence primary document unavailable: ${error.message}`); }
+  }
+  if (sources.length < 5 && sources.some((s) => s.text) && needsRatingsReference(story, sources) && !sources.some((s) => canonicalUrl(s.url) === RATINGS_REFERENCE)) {
+    try {
+      const fetched = await extract(RATINGS_REFERENCE, { log, allowUrl: (raw) => canonicalUrl(raw) === RATINGS_REFERENCE });
+      if (fetched.ok && /investment.grade/i.test(fetched.text) && /Baa3/.test(fetched.text) && /B3/.test(fetched.text)) {
+        sources.push({ id: "reference-bond-ratings", sourceId: "fidelity-reference", sourceName: "فيديليتي — شرح التصنيفات الائتمانية", sourceNameEn: "Fidelity — bond ratings reference", kind: "reference", reliability: 3,
+          title: fetched.title, url: RATINGS_REFERENCE, lang: "en", publishedAt: fetched.publishedAt ?? null,
+          summary: "", text: fetched.text, fetchedAt: now(), ogImage: "" });
+        log("evidence reference: credit-rating definitions (not event corroboration)");
+      } else log(`evidence ratings reference skipped: ${fetched.reason || "definition/scale missing"}`);
+    } catch (error) { log(`evidence ratings reference unavailable: ${error.message}`); }
   }
   return { items, sources, evidenceChars: sources.reduce((n, s) => n + (s.text || s.summary || "").length, 0) };
 }

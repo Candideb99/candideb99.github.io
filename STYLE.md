@@ -176,6 +176,30 @@ illustration names no place and carries «(صورة تعبيرية)». The rule 
 `captionFlaws()` in `pipeline/lib/images.mjs`; `node pipeline/recaption-images.mjs` rewrites published
 captions by it.
 
+**Depth for the general reader** (2026-10-17, after the Egypt rating report). A substantial policy,
+financing or rating event deserves a developed account when its sources provide the material;
+the writer and its revision are guided toward 450-700 words for rich reporting, without changing
+the publication floor or padding a thin event. Preserve the central term's meaning, the useful
+comparison, the mechanism and the limits. A credit-rating code is not an explanation: define
+creditworthiness, and distinguish investment from speculative grade when the supplied reference
+establishes that distinction. The collector can add a fetched ratings reference; it never counts
+that reference as confirmation of the event, and keeps five sources at most.
+
+An unfamiliar expert needs a concise sourced role and institution at first mention. Preserve the
+origin of an outlet's own comments without implying our own interview. «رفع التصنيف» is clearer
+than the catch-all «الترقية» here; «بمقدار محدد» needs an explicit meaning or a faithful clearer
+paraphrase. Neither phrase justifies losing the uncertainty about financing costs.
+
+Initial «و» is normal Arabic. A report whose every paragraph opens with «وقال/وأضاف/وأوضح» still
+needs a review of its construction and rhythm. The checker now includes these previously exempt
+openers in its warning; it does not ban conjunctions or require a quota of alternatives. Definitions
+may begin with their subject, comparisons with their facts, while each speaker remains identified.
+
+An owner-selected news article can be re-reported through `pipeline/run.mjs --refresh=<slug>
+--refresh-note=<Arabic note>`. It faces the existing gate and factual check, keeps its address,
+original publication date, picture and previous correction history, and gains a dated editorial
+update. The schedule never invokes this option. A failed refresh leaves the published text intact.
+
 ## 2. The editing (فن التحرير الصحفي)
 
 News is edited, not filled. The editor model scores every candidate on the news values an

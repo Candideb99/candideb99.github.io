@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import assert from "node:assert/strict";
 import { readArticleHtml, extractArticle } from "../pipeline/lib/extract.mjs";
-import { collectNewsEvidence, officialDocument } from "../pipeline/lib/news-evidence.mjs";
+import { collectNewsEvidence, eventSourcesOf, needsRatingsReference, officialDocument } from "../pipeline/lib/news-evidence.mjs";
 import { checkSourcesOf } from "../pipeline/lib/precheck.mjs";
 
 const primary = "https://www.whitehouse.gov/presidential-actions/2026/10/implementing-russia-sanctions/";
@@ -83,4 +83,20 @@ try {
   const robots = await extractArticle("https://www.bankofengland.co.uk/news/2026/decision", { allowUrl: (url) => Boolean(officialDocument(url)) });
   assert.equal(robots.reason, "robots-disallow");
 } finally { globalThis.fetch = originalFetch; }
-console.log("News evidence: article-only links, exact official hosts, bounded enrichment, provenance, dates, fail-soft fetching and redirect/robots checks pass.");
+const ratings = [item(1, { title: "Moody's raises Egypt credit rating" }), item(2, { title: "Egypt debt financing after Moody's rating action" })];
+assert.equal(needsRatingsReference({}, ratings), true);
+assert.equal(needsRatingsReference({ headlineHint: "موديز ترفع تصنيف مصر" }, []), true);
+assert.equal(needsRatingsReference({ headlineHint: "Oil prices rise" }, []), false);
+const referenceUrl = "https://www.fidelity.com/learning-center/investment-products/fixed-income-bonds/bond-ratings";
+const withReference = await collectNewsEvidence({ ids: [1, 2] }, ratings, { extract: async (url, options) => {
+  if (url !== referenceUrl) return { ...extracted, links: [] };
+  assert.equal(options.allowUrl("https://www.fidelity.com/login"), false);
+  return { ok: true, title: "Bond Ratings", text: "Baa3 and above are investment-grade. B3 is in the non-investment-grade scale." };
+} });
+assert.equal(withReference.sources.length, 3);
+assert.equal(withReference.sources.at(-1).kind, "reference");
+assert.equal(eventSourcesOf(withReference.sources).length, 2, "definitions do not corroborate today's event");
+assert.equal(eventSourcesOf([{ kind: "reference", text: "full definition body" }]).length, 0, "a reference alone cannot supply an event body");
+const referenceDown = await collectNewsEvidence({ ids: [1, 2] }, ratings, { extract: async (url) => url === referenceUrl ? { ok: false, reason: "offline" } : { ...extracted, links: [] } });
+assert.equal(referenceDown.sources.length, 2, "an unavailable glossary keeps the original reports");
+console.log("News evidence: body links, exact hosts, bounded enrichment, provenance, dates, fail-soft fetching, redirects/robots and definition/event separation pass.");
