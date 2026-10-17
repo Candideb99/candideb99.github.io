@@ -630,7 +630,12 @@ export async function chat({ role, system, user, images = [], json = true, valid
       const sample = error.meta?.sample ? ` sample=${JSON.stringify(String(error.meta.sample).slice(0, 140))}` : "";
       log(`llm fail role=${role} provider=${provider} model=${modelName} attempt=${attempt}: ${String(error.message).slice(0, 200)}${sample}`);
       if (error.meta?.status === 401) break;
-      if (attempt < ATTEMPTS) await sleep(error.meta?.status === 429 ? 6000 : 3000);
+      if (attempt < ATTEMPTS) {
+        const is503 = /503|high demand|temporarily unavailable/i.test(error.message);
+        const is429 = error.meta?.status === 429 || /rate limit|quota|resource exhausted/i.test(error.message);
+        const delayMs = is503 ? attempt * 8000 : is429 ? attempt * 6000 : 3000;
+        await sleep(delayMs);
+      }
     } finally {
       release();
     }

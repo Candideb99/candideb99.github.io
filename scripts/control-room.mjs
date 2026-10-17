@@ -325,6 +325,33 @@ function bodyHtml(md) {
     .join("\n");
 }
 
+let cachedGeminiModels = null;
+let lastGeminiModelsFetch = 0;
+
+async function fetchLiveGeminiModels(apiKey) {
+  if (!apiKey) return null;
+  const now = Date.now();
+  if (cachedGeminiModels && (now - lastGeminiModelsFetch < 3600000)) return cachedGeminiModels;
+  try {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(apiKey)}`, { signal: AbortSignal.timeout(4000) });
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (Array.isArray(data.models)) {
+      const list = data.models
+        .map((m) => m.name.replace(/^models\//, ""))
+        .filter((n) => n.startsWith("gemini") && !n.includes("-tts") && !n.includes("-embedding") && !n.includes("-transcribe") && !n.includes("-audio") && !n.includes("-robotics"));
+      if (list.length > 0) {
+        cachedGeminiModels = list;
+        lastGeminiModelsFetch = now;
+        return list;
+      }
+    }
+  } catch {
+    /* fallback to curated list */
+  }
+  return null;
+}
+
 // --------------------------------------------------------------------- health
 async function health() {
   const secrets = await sh(`gh secret list --repo ${REPO} 2>&1`);
@@ -353,37 +380,12 @@ async function health() {
     }
   }
 
-let cachedGeminiModels = null;
-let lastGeminiModelsFetch = 0;
-
-async function fetchLiveGeminiModels(apiKey) {
-  if (!apiKey) return null;
-  const now = Date.now();
-  if (cachedGeminiModels && (now - lastGeminiModelsFetch < 3600000)) return cachedGeminiModels;
-  try {
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(apiKey)}`, { signal: AbortSignal.timeout(4000) });
-    if (!res.ok) return null;
-    const data = await res.json();
-    if (Array.isArray(data.models)) {
-      const list = data.models
-        .map((m) => m.name.replace(/^models\//, ""))
-        .filter((n) => n.startsWith("gemini") && !n.includes("-tts") && !n.includes("-embedding") && !n.includes("-transcribe") && !n.includes("-audio") && !n.includes("-robotics"));
-      if (list.length > 0) {
-        cachedGeminiModels = list;
-        lastGeminiModelsFetch = now;
-        return list;
-      }
-    }
-  } catch {
-    /* fallback to curated list */
-  }
-  return null;
-}
-
   const activeProvider = (local.KHAZENDAR_PROVIDER || (vars.match(/KHAZENDAR_PROVIDER\s+(\S+)/) ?? [])[1] || "gemini").toLowerCase();
   const geminiKey = local.GEMINI_API_KEY || local.GOOGLE_API_KEY;
-  const liveGemini = await fetchLiveGeminiModels(geminiKey);
-  const geminiModels = liveGemini || ["gemini-3.8-flash", "gemini-4-argon", "gemini-3.7-flash", "gemini-3.5-flash", "gemini-3.1-pro-preview", "gemini-2.5-flash"];
+  if (!cachedGeminiModels && geminiKey) {
+    fetchLiveGeminiModels(geminiKey).catch(() => {});
+  }
+  const geminiModels = cachedGeminiModels || ["gemini-3.8-flash", "gemini-4-argon", "gemini-3.7-flash", "gemini-3.5-flash", "gemini-3.1-pro-preview", "gemini-flash-latest", "gemini-pro-latest"];
 
   const providers = {
     gemini: {
@@ -1130,11 +1132,38 @@ function render(s){
   var used=document.getElementById('models-used');
   if(used){
     var cleanList=s.modelsUsed.map(function(m){
-      var id=esc(m.id).replace(/^claude-cli\//,'Claude ').replace(/^gemini\//,'Gemini ').replace(/^openai\//,'OpenAI ').replace(/^qwen\//,'Qwen ').replace(/^openrouter\//,'OpenRouter ').replace(/:free$/,'');
+      var id=esc(m.id).replace(/^claude-cli\\//,'Claude ').replace(/^gemini\\//,'Gemini ').replace(/^openai\\//,'OpenAI ').replace(/^qwen\\//,'Qwen ').replace(/^openrouter\\//,'OpenRouter ').replace(/:free$/,'');
       return '<code>'+id+'</code> ×'+m.n;
     });
     used.innerHTML=cleanList.length?'Wrote the last 24 h: '+cleanList.join(' · '):'';
   }
+  var quietCut=Date.now()-72*36e5;
+  var NEWS=['economy','markets','energy','companies','technology','defense'];
+  var covEl = document.getElementById('cov');
+  if (covEl) covEl.innerHTML=s.coverage.filter(function(c){return NEWS.indexOf(c.id)>=0}).map(function(c){var q=!c.last||Date.parse(c.last)<quietCut;return '<div class="'+(q?'quiet':'')+'"><div class="s">'+esc(c.name)+'</div><div class="c"><b>'+c.day+'</b> today · <b>'+c.week+'</b> this week<br>'+(c.last?'last '+esc(ago(c.last)):'nothing yet')+(q&&c.last?' · due for one':'')+'</div></div>'}).join('');
+  var hubsEl = document.getElementById('hubs');
+  if (hubsEl) hubsEl.innerHTML=s.coverage.filter(function(c){return NEWS.indexOf(c.id)<0}).map(function(c){return '<span><b>'+esc(c.name)+'</b> · '+c.week+' this week · last '+esc(ago(c.last))+'</span>'}).join('');
+  var schedEl = document.getElementById('sched');
+  if (schedEl) schedEl.innerHTML=s.schedule.map(function(x){return '<li><span>'+esc(x.what)+'</span><span>'+esc(x.when)+(x.utc?' at '+utcToLocal(x.utc):'')+'</span></li>'}).join('');
+  var r=document.getElementById('running');
+  if (r) {
+    r.style.display=s.job.running?'grid':'none';
+    if(s.job.running){document.getElementById('running-name').textContent='Working: '+s.job.name;var secs=Math.round((Date.now()-s.job.startedAt)/1000);document.getElementById('running-time').textContent=Math.floor(secs/60)+'m '+(secs%60)+'s';var c=s.job.counts;document.getElementById('running-count').textContent=c&&s.job.kind==='news'?'· '+c.written+(c.target?' of '+c.target:'')+' written'+(c.refused?' · '+c.refused+' refused':''):'';document.getElementById('running-lines').textContent=s.job.progress.join('\\n')||'starting…';document.getElementById('log').textContent=s.job.log.join('\\n')}
+    else if(wasRunning){document.getElementById('auto-note').textContent=s.job.exitCode===0?'Finished: '+s.job.name+'.':'Stopped or failed: '+s.job.name+'.'}
+  }
+  wasRunning=Boolean(s.job.running);
+  var ndEl = document.getElementById('n-drafts');
+  if (ndEl) ndEl.textContent=s.drafts.length;
+  var dEl = document.getElementById('drafts');
+  if (dEl) dEl.innerHTML=s.drafts.length?s.drafts.map(draft).join(''):'<div class="empty">Nothing waits for you. The newsroom is publishing on its own; anything you ask for on the right appears here for approval first.</div>';
+  var daEl = document.getElementById('drafts-all');
+  if (daEl) daEl.style.display=s.drafts.length>1?'block':'none';
+  var rej=(s.lastRun&&s.lastRun.report||[]).filter(function(x){return /^rejected|^skip/.test(x.outcome||'')});
+  var rbEl = document.getElementById('rejected-box');
+  if (rbEl) rbEl.style.display=rej.length?'block':'none';
+  var rjEl = document.getElementById('rejected');
+  if (rjEl) rjEl.innerHTML=rej.map(function(x){return '<p><span class="ar" style="display:block;font-size:15px;color:var(--ink)">'+esc(x.title||x.headline||'')+'</span>'+esc((x.outcome||'').replace(/^rejected (after revision|by critic after revision \\(\\d+\\)): /,'').slice(0,200))+'</p>'}).join('');
+  LIVE = s.live;
   renderChecks(s);
   renderLive();
 }
@@ -1296,7 +1325,7 @@ function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(f
         actSpan.innerHTML = '<span class="badge ok" style="font-size:11px">Current Controller</span>';
       } else {
         var pShort = pr.name.split(' ')[0] === 'Google' || pr.name.split(' ')[0] === 'Alibaba' ? pr.name.split(' ')[1] : pr.name.split(' ')[0];
-        actSpan.innerHTML = '<button class="go sm" onclick="quickActivate(\'' + id + '\')">Activate ' + esc(pShort) + '</button>';
+        actSpan.innerHTML = '<button class="go sm" data-pid="' + esc(id) + '" onclick="quickActivate(this.dataset.pid)">Activate ' + esc(pShort) + '</button>';
       }
     }
   }
@@ -1306,18 +1335,30 @@ function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(f
   var ksAnt = document.getElementById('ks_ant');
   if (ksAnt) ksAnt.innerHTML = h.providers.claude.keySet ? '<span class="ok">Saved' + (h.providers.claude.cloudKeySet ? ' (laptop and GitHub)' : ' (laptop only)') + '</span>' : '<span class="m">Not set</span>';
 
-  var dl=document.getElementById('deploy-light');if(h.deploy){dl.className='light '+(h.deploy.ok?'ok':'no');dl.innerHTML='<i></i><span>'+(h.deploy.ok?'Site deploy OK · '+esc(fmtWhen(h.deploy.when)):'<b>THE SITE IS NOT UPDATING</b> — last deploy failed. <a href="'+esc(h.deploy.url)+'" target="_blank">See why</a>')+'</span>'}
-
-  document.getElementById('chatModel').value=h.chatModel==='default'?'':h.chatModel;
-  if (h.thinkingBudget && document.getElementById('thinkingBudget')) {
-    document.getElementById('thinkingBudget').value = h.thinkingBudget;
+  var dl = document.getElementById('deploy-light');
+  if (dl && h.deploy) {
+    dl.className = 'light ' + (h.deploy.ok ? 'ok' : 'no');
+    dl.innerHTML = '<i></i><span>' + (h.deploy.ok ? 'Site deploy OK · ' + esc(fmtWhen(h.deploy.when)) : '<b>THE SITE IS NOT UPDATING</b> — last deploy failed. <a href="' + esc(h.deploy.url) + '" target="_blank">See why</a>') + '</span>';
   }
+
+  var cm = document.getElementById('chatModel');
+  if (cm) cm.value = h.chatModel === 'default' ? '' : h.chatModel;
+  var tb = document.getElementById('thinkingBudget');
+  if (tb && h.thinkingBudget) tb.value = h.thinkingBudget;
   var thinkRow = document.getElementById('thinkingRow');
   if (thinkRow) thinkRow.style.display = h.activeProvider === 'gemini' ? 'block' : 'none';
 
-  document.getElementById('reviewSel').value=h.cloud.review?'1':'0';
-  document.getElementById('switches').innerHTML=(h.deploy?dot(h.deploy.ok,'The site\\'s last deploy',h.deploy.ok?'succeeded · '+fmtWhen(h.deploy.when):'FAILED — readers see an older edition'):'')+dot(h.ghOk,'This laptop can talk to GitHub',h.ghOk?'gh is signed in':'run: gh auth login')+dot(h.cloud.editorOn&&h.cloud.hasKey,'The daily editor',!h.cloud.editorOn?'switched off':h.cloud.hasKey?'switched on with active key':'switched on but has no key, so it skips')+(h.editorReal?dot(h.editorReal.working,'The daily editor is actually doing work','its last run took '+h.editorReal.seconds+'s'+(h.editorReal.working?'':' — a real round takes minutes')):'')+dot(h.chatReady,'The "Change the site" tab',h.chatReady?'ready ('+esc(curName)+')':'needs an active key');
-})}
+  var rs = document.getElementById('reviewSel');
+  if (rs) rs.value = h.cloud.review ? '1' : '0';
+  var sw = document.getElementById('switches');
+  if (sw) {
+    sw.innerHTML = (h.deploy ? dot(h.deploy.ok, 'The site\\\'s last deploy', h.deploy.ok ? 'succeeded · ' + fmtWhen(h.deploy.when) : 'FAILED — readers see an older edition') : '') +
+      dot(h.ghOk, 'This laptop can talk to GitHub', h.ghOk ? 'gh is signed in' : 'run: gh auth login') +
+      dot(h.cloud.editorOn && h.cloud.hasKey, 'The daily editor', !h.cloud.editorOn ? 'switched off' : h.cloud.hasKey ? 'switched on with active key' : 'switched on but has no key, so it skips') +
+      (h.editorReal ? dot(h.editorReal.working, 'The daily editor is actually doing work', 'its last run took ' + h.editorReal.seconds + 's' + (h.editorReal.working ? '' : ' — a real round takes minutes')) : '') +
+      dot(h.chatReady, 'The "Change the site" tab', h.chatReady ? 'ready (' + esc(curName) + ')' : 'needs an active key');
+  }
+}).catch(function(err){ console.error('Health fetch failed:', err); });}
 loadHealth();
 function saveKey(name,id){var v=document.getElementById(id).value.trim();if(!v)return;var n=document.getElementById('k_note');n.textContent='saving…';post('/keys',{name:name,value:v,github:document.getElementById('k_gh').checked}).then(function(r){return r.text()}).then(function(t){n.textContent=t;document.getElementById(id).value='';loadHealth()})}
 function saveWriters(){var n=document.getElementById('writersaved');n.textContent='applying…';var tb=document.getElementById('thinkingBudget')?document.getElementById('thinkingBudget').value:'-1';post('/writers',{provider:document.getElementById('activeProvider').value,model:document.getElementById('newsroomModel').value,chatModel:document.getElementById('chatModel').value,thinkingBudget:tb}).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
@@ -1510,6 +1551,7 @@ const server = http.createServer(async (req, res) => {
     if (url.pathname === "/models/refresh") {
       const prov = url.searchParams.get("provider") || "gemini";
       if (prov === "gemini") {
+        const local = envFileKeys();
         const gemKey = local.GEMINI_API_KEY || local.GOOGLE_API_KEY;
         if (!gemKey) return json({ error: "No Gemini API key in .env" });
         cachedGeminiModels = null;
