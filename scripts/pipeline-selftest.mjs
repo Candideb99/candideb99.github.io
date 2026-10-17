@@ -291,6 +291,9 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const dekFault = (d) => programmaticChecks(d, [{ text: "Brent 110, weekly gain 4.9%." }], { minWords: 0 }).issues.some((i) => i.startsWith("الوصف الفرعي"));
   check("a dek may develop a figure in the story's numeric sidebar", dekFault(withBox), false);
   check("an unrelated dek still fails its topic check", dekFault({ ...withBox, subtitle: "شركة الطيران الكندية تطلب أسطولاً جديداً من الطائرات" }), true);
+  const englishFault = (body) => programmaticChecks({ ...withBox, body }, [{ text: "Brent 110, weekly gain 4.9%." }], { minWords: 0 }).issues.some((i) => i.startsWith("كلمات إنجليزية تُركت"));
+  check("a parenthesized Latin proper name is identification, not English prose", englishFault("وقال النائب دون باير (Don Beyer) إن القرار لا يخدم مصالح بلاده."), false);
+  check("an English common word in Arabic prose still needs translation", englishFault("وقال النائب دون باير إن outlook الاقتصاد تحسن."), true);
   // GRAVITY: a curiosity the photograph names and the story does not is refused in code.
   check("photos: a horse-drawn fuel cart under a central-bank story is refused", noveltyFault({ title: "CairoHorseDrawnFuelTransport.jpg", alt: "عربة وقود يجرها حصان في محطة بنزين بالقاهرة" }, { title: "برنت فوق 105 دولارات يعقّد حسابات المركزي المصري" }), "Horse");
   check("photos: an oil field's «nodding donkey» is a pumpjack, not an animal", noveltyFault({ title: "Oil pumpjack in the Permian Basin.jpg", categories: "Nodding donkeys in Texas" }, { title: "النفط يتراجع مع آمال مفاوضات هرمز" }), null);
