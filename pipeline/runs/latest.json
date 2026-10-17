@@ -1,32 +1,34 @@
 {
   "mode": "news",
-  "startedAt": "2026-10-17T10:58:15.192Z",
-  "durationSec": 15,
+  "startedAt": "2026-10-17T13:31:05.222Z",
+  "durationSec": 64,
   "published": 0,
   "report": [
     {
       "headline": "",
       "section": "news",
-      "outcome": "error: Claude failed for role editor:"
+      "outcome": "error: Model (gemini/gemini-3.8-flash) failed for role editor:"
     }
   ],
   "llm": {
-    "calls": 0,
+    "calls": 1,
     "failures": 3,
-    "promptTokens": 0,
-    "completionTokens": 0,
+    "promptTokens": 28482,
+    "completionTokens": 7996,
     "cacheReadTokens": 0,
     "costUsd": 0,
-    "byModel": {}
+    "byModel": {
+      "gemini/gemini-3.8-flash": 1
+    }
   },
   "log": [
-    "[10:58:15] newsroom start mode=news limit=4 dry-run=false",
-    "[10:58:15] lessons: version 29, 9 active, read by the desk notes and the writer",
-    "[10:58:19] candidates: 12 price-service items left out (gold, dollar and share price tables)",
-    "[10:58:19] candidates: 300 fresh unseen items",
-    "[10:58:21] llm fail role=editor model=claude-cli attempt=1: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
-    "[10:58:26] llm fail role=editor model=claude-cli attempt=2: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
-    "[10:58:30] llm fail role=editor model=claude-cli attempt=3: claude cli: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
-    "[10:58:30] news failed: Claude failed for role editor:"
+    "[13:31:05] newsroom start mode=news limit=1 dry-run=false",
+    "[13:31:05] lessons: version 29, 9 active, read by the desk notes and the writer",
+    "[13:31:09] candidates: 16 price-service items left out (gold, dollar and share price tables)",
+    "[13:31:09] candidates: 300 fresh unseen items",
+    "[13:31:09] llm fail role=editor provider=gemini model=gemini-3.8-flash attempt=1: gemini (gemini-3.8-flash): 503 This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.",
+    "[13:31:13] llm fail role=editor provider=gemini model=gemini-3.8-flash attempt=2: gemini (gemini-3.8-flash): 503 This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.",
+    "[13:32:09] llm fail role=editor provider=gemini model=gemini-3.8-flash attempt=3: stories[] missing",
+    "[13:32:09] news failed: Model (gemini/gemini-3.8-flash) failed for role editor:"
   ]
 }
