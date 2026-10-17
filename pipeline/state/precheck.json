@@ -2495,6 +2495,34 @@
           "noted": []
         }
       ]
+    },
+    "brent-touches-110-hormuz-supply-fears-44594d": {
+      "at": "2026-10-17T16:49:46.039Z",
+      "title": "يلامس برنت 110 دولارات مع مخاوف الإمدادات عبر هرمز",
+      "writer": "codex-cli/gpt-6.1-sol → codex-cli/gpt-6.1-sol",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 21,
+            "checked": 21,
+            "supported": 19,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
