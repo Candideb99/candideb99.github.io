@@ -336,15 +336,32 @@ async function callGemini({ model, system, user, images = [], timeoutMs, tempera
     };
   }
 
-  const actualModel = model || DEFAULT_MODELS.gemini;
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(actualModel)}:generateContent?key=${encodeURIComponent(apiKey)}`;
-  const response = await fetchWithTimeout(url, {
+  let actualModel = model || DEFAULT_MODELS.gemini;
+  let url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(actualModel)}:generateContent?key=${encodeURIComponent(apiKey)}`;
+  let response = await fetchWithTimeout(url, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify(body),
   }, timeoutMs);
 
-  const payload = await response.json().catch(() => ({}));
+  let payload = await response.json().catch(() => ({}));
+  // If an experimental or preview model hits free tier quota limit or 503 demand spike, fallback to gemini-3.7-flash
+  if ((response.status === 429 || response.status === 503) && actualModel !== "gemini-3.7-flash") {
+    const fallbackModel = "gemini-3.7-flash";
+    const fallbackUrl = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(fallbackModel)}:generateContent?key=${encodeURIComponent(apiKey)}`;
+    const fbRes = await fetchWithTimeout(fallbackUrl, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(body),
+    }, timeoutMs);
+    const fbPayload = await fbRes.json().catch(() => ({}));
+    if (fbRes.ok && !fbPayload.error) {
+      response = fbRes;
+      payload = fbPayload;
+      actualModel = fallbackModel;
+    }
+  }
+
   if (!response.ok || payload.error) {
     const err = payload.error || {};
     const code = err.code || response.status;
