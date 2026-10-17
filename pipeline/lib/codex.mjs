@@ -31,7 +31,10 @@ export function codexStatus(run = spawnSync, source = process.env) {
 export function codexRateLimits({ codexHome, timeoutMs = 20000 } = {}, run = spawn) {
   return new Promise((resolve, reject) => {
     const source = codexHome ? { ...process.env, KHAZENDAR_CODEX_HOME: codexHome } : process.env;
-    const child = run(binary(), ["--config", 'forced_login_method="chatgpt"', "app-server", "--listen", "stdio://"], { cwd: os.tmpdir(), env: codexEnvironment(source), shell: false, windowsHide: true, stdio: ["pipe", "pipe", "pipe"] });
+    const args = ["--config", 'forced_login_method="chatgpt"'];
+    if (source.KHAZENDAR_CODEX_HOME) args.push("--config", 'cli_auth_credentials_store="file"');
+    args.push("app-server", "--listen", "stdio://");
+    const child = run(binary(), args, { cwd: os.tmpdir(), env: codexEnvironment(source), shell: false, windowsHide: true, stdio: ["pipe", "pipe", "pipe"] });
     let buffer = "", done = false;
     const finish = (error, value) => {
       if (done) return; done = true; clearTimeout(timer);

@@ -2,7 +2,7 @@
 import assert from "node:assert/strict";
 import { EventEmitter } from "node:events";
 import { existsSync, readFileSync } from "node:fs";
-import { codexEnvironment, runCodex } from "../pipeline/lib/codex.mjs";
+import { codexEnvironment, codexRateLimits, runCodex } from "../pipeline/lib/codex.mjs";
 
 const env = codexEnvironment({ PATH: "bin", CODEX_HOME: "auth-store", OPENAI_API_KEY: "fake-key", CODEX_API_KEY: "fake-key", OPENAI_BASE_URL: "https://example.invalid", CODEX_ACCESS_TOKEN: "fake-token" });
 assert.deepEqual(env, { PATH: "bin", CODEX_HOME: "auth-store" });
@@ -50,3 +50,20 @@ assert.equal(result.model, "codex-cli/gpt-6.1-sol");
 assert.equal(result.usage.input_tokens, 50);
 assert.equal(existsSync(workingDirectory), false);
 console.log("ok  House instructions, long stdin, vision, usage and temporary-file cleanup");
+
+const allowance = await codexRateLimits({ codexHome: "isolated-cloud-home" }, (binary, args, options) => {
+  assert.ok(args.includes('cli_auth_credentials_store="file"'), "The isolated usage reader uses the same file credential store as inference");
+  assert.equal(options.env.CODEX_HOME, "isolated-cloud-home");
+  assert.equal(options.shell, false);
+  const child = new EventEmitter();
+  child.stdout = new EventEmitter(); child.stderr = new EventEmitter(); child.stdin = new EventEmitter();
+  child.stdin.end = () => {}; child.kill = () => {};
+  child.stdin.write = (line) => {
+    const message = JSON.parse(line);
+    if (!message.id) return;
+    queueMicrotask(() => child.stdout.emit("data", JSON.stringify({ id: message.id, result: message.id === 1 ? {} : { rateLimits: { primary: { usedPercent: 20 } } } }) + "\n"));
+  };
+  return child;
+});
+assert.equal(allowance.rateLimits.primary.usedPercent, 20);
+console.log("ok  Isolated cloud usage lookup reads its file credentials and completes the RPC handshake");

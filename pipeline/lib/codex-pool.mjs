@@ -58,10 +58,25 @@ export async function routeSubscription(options, { pool = accountPool(), run = r
       catch { quota = { ...quota, checkedAt: now(), unavailable: true }; }
       state.accounts[account.id] = quota; saveState(pool.stateFile, state);
     }
-    // A failed usage lookup cannot clear a previously exhausted account.
-    if (quota.exhausted) continue;
+    // An unavailable meter must preserve known future/unknown caps, but must not lock an
+    // account forever after every recorded exhausted window has reset. One normal request
+    // asks the service to decide; it never resets a quota or changes the billing provider.
+    const blocked = (quota.windows ?? []).filter((w) => w.usedPercent >= 100);
+    const resetProbe = quota.exhausted && quota.unavailable && blocked.length > 0
+      && blocked.every((w) => Number.isFinite(w.resetsAt) && w.resetsAt <= now())
+      && !(quota.probeAfter > now());
+    if (quota.exhausted && !resetProbe) continue;
+    if (resetProbe) {
+      quota = { ...quota, probeAfter: now() + 300000 };
+      state.accounts[account.id] = quota; saveState(pool.stateFile, state);
+    }
     try {
       const result = await run({ ...options, codexHome: account.home });
+      if (resetProbe) {
+        // Acceptance confirms availability, not a guessed percentage. Expired readings are unknown.
+        state.accounts[account.id] = { ...quota, exhausted: false, retryAt: null, probeAfter: null,
+          windows: quota.windows.map((w) => Number.isFinite(w.resetsAt) && w.resetsAt <= now() ? { ...w, usedPercent: null } : w) };
+      }
       state.active = account.id; state.lastSwitchAt = now(); saveState(pool.stateFile, state);
       return result;
     } catch (error) {
@@ -69,7 +84,8 @@ export async function routeSubscription(options, { pool = accountPool(), run = r
       if (!isQuotaError(error)) throw error;
       try { quota = quotaSnapshot(await limits({ codexHome: account.home }), now()); } catch {}
       if (!quota?.exhausted && !/usage_limit_reached|usage limit|quota (?:exceeded|exhausted)/i.test(error.message || "")) throw error;
-      state.accounts[account.id] = { ...quota, checkedAt: now(), exhausted: true };
+      state.accounts[account.id] = { ...quota, checkedAt: now(), exhausted: true,
+        ...(resetProbe ? { probeAfter: now() + 300000 } : {}) };
       saveState(pool.stateFile, state);
     }
   }

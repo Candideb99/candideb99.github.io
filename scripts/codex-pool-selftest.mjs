@@ -46,6 +46,34 @@ try {
   await assert.rejects(routeSubscription({}, { pool: stale, now: () => now, limits: async () => { throw new Error("Usage offline"); }, run: async () => assert.fail("An unknown lookup must not clear a known cap") }));
   console.log("ok  Unavailable usage never clears a previously exhausted account");
 
+  const recovered = config(); recovered.backup = "";
+  const resetAt = now + 300000;
+  await assert.rejects(routeSubscription({}, { pool: recovered, now: () => now, limits: async () => usage(100, 16, resetAt), run: async () => assert.fail() }));
+  now = resetAt + 1;
+  let probes = 0;
+  const missingMeter = async () => { throw new Error("Usage offline"); };
+  await routeSubscription({}, { pool: recovered, now: () => now, limits: missingMeter, run: async () => { probes++; return { content: "accepted" }; } });
+  assert.equal(probes, 1, "An expired cap and unavailable meter permit one normal service-validated request");
+  const recoveredState = readQuotaState(recovered.stateFile).accounts.one;
+  assert.equal(recoveredState.exhausted, false);
+  assert.equal(recoveredState.windows[0].usedPercent, null, "Do not invent remaining usage after recovery");
+  assert.equal(recoveredState.windows[1].usedPercent, 16);
+
+  const stillCapped = config(); stillCapped.backup = "";
+  await assert.rejects(routeSubscription({}, { pool: stillCapped, now: () => now, limits: async () => usage(100, 10, now - 1), run: async () => assert.fail() }));
+  now += 61000;
+  let denied = 0;
+  const quotaDenied = async () => { denied++; throw new Error("You've hit your usage limit."); };
+  await assert.rejects(routeSubscription({}, { pool: stillCapped, now: () => now, limits: missingMeter, run: quotaDenied }));
+  await assert.rejects(routeSubscription({}, { pool: stillCapped, now: () => now, limits: missingMeter, run: quotaDenied }));
+  assert.equal(denied, 1, "A denied recovery probe is not retried in a tight loop");
+
+  const weeklyCapped = config(); weeklyCapped.backup = "";
+  await assert.rejects(routeSubscription({}, { pool: weeklyCapped, now: () => now, limits: async () => usage(100, 100, now - 1, now + 86400000), run: async () => assert.fail() }));
+  now += 61000;
+  await assert.rejects(routeSubscription({}, { pool: weeklyCapped, now: () => now, limits: missingMeter, run: async () => assert.fail("A future weekly cap still blocks recovery") }));
+  console.log("ok  Expired quota recovers through one bounded request; unknown/future windows stay blocked");
+
   const quotaError = new Error("Both account allowances exhausted"); quotaError.meta = { quota: true, status: 429 };
   const common = { draft: { body: "draft" }, sources: [{ title: "source", text: "fetched evidence", url: "https://example.invalid/source" }] };
   await assert.rejects(precheck({ ...common, verify: async () => { throw quotaError; } }), (e) => e === quotaError);
