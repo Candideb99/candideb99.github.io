@@ -1,5 +1,5 @@
 import { chat } from "./llm.mjs";
-import { EDITORIAL_CRAFT } from "./editorial.mjs";
+import { EDITORIAL_CRAFT, EDITORIAL_READER_CHECK } from "./editorial.mjs";
 import { arabicRatio, normalizeDigits, overlappingPhrases, phraseOverlap, suspiciousLatinWords, ungroundedNumbers, wordCount } from "./util.mjs";
 import { styleIssues } from "./style.mjs";
 
@@ -266,6 +266,7 @@ const CRITIC_RUBRIC = {
 
 /** Critic pass. Returns { verdict: "publish"|"revise"|"reject", score, issues[], model }. */
 export async function critique({ draft, sources, explainer = false, analysis = false, paper = false, weekly = false, feature = false, previousIssues = null, log }) {
+  const news = !explainer && !analysis && !paper && !weekly && !feature;
   const rubric = CRITIC_RUBRIC[explainer ? "explainer" : analysis ? "analysis" : paper ? "paper" : weekly ? "weekly" : feature ? "feature" : "news"];
   // Each source with its date: a timeline («في العمق») is checked row by row against its stories' dates.
   const material = sources.map((s, i) => `SOURCE ${i + 1}: ${s.sourceNameEn} (${s.lang}) — "${s.title}"${s.publishedAt ? ` — published ${String(s.publishedAt).slice(0, 10)}` : ""}\n${s.text || s.summary || ""}`).join("\n\n");
@@ -283,6 +284,8 @@ CHECK
 5. Headline and construction: accurate, idiomatic and complete; state what a fear concerns rather than compressing it into «مخاوف الإمدادات». Does the report develop one point per paragraph, with related facts grouped, clear references and a supported economic consequence, or does it merely reproduce desk notes and separate incident dispatches? An honestly brief report is fine. Quote a concrete editorial defect and request revision; do not invent defects to fill a list. Headline: accurate, specific, not misleading. One event per story: a draft that reports two unrelated events (Britain's grid investment and France's wine harvest; copper prices and Uganda's first crude cargo; a Dubai silver product and an Abu Dhabi skills card) is a roundup, not a story — verdict "reject", with the issue «قصتان في مقال واحد» naming both.
 6. Charts and tables: check every cell against its entity, period, unit and direction in the sources; a number that occurs somewhere in a source is not evidence for a different claim. Reject unsupported superlatives and claims of breakthroughs.
 
+${news ? EDITORIAL_READER_CHECK : ""}
+
 ${previousIssues?.length ? `\nA REVISION WAS MADE. These problems were reported on the previous draft; say which of them remain and judge the draft as it now stands, not the old one:\n${previousIssues.map((i, n) => `${n + 1}. ${i}`).join("\n")}\n` : ""}
 SCORING (apply exactly)
 A real error is: a figure with a changed magnitude, direction, period, unit or actor; a claim, cause or consequence no source makes; a wrong attribution; a quotation that is not verbatim from an Arabic source; a headline that says more than the sources. A faithful paraphrase, a synonym, a rounding the source's own headline makes (108 for 108.44), a large count rounded in thousands or millions with «نحو» (نحو 456 ألف for 455,758), a shorter attribution form, or the omission of a detail is NOT an error.
@@ -290,7 +293,7 @@ Start from 10. Subtract 1 for each real error and 1 for each translationese faul
 List at most six issues, the real errors first, each quoting the offending text and naming the source that contradicts it; include demonstrated Arabic or construction defects after the factual errors, without padding the list with stylistic preferences.
 
 Return JSON:
-{"score": <0-10 as scored above>, "verdict": "publish" | "revise" | "reject", "issues": ["<one concrete, actionable problem in Arabic, quoting the offending text>", "..."], "summary": "<one sentence in Arabic>"}`;
+{"score": <0-10 as scored above>, "verdict": "publish" | "revise" | "reject", "issues": ["<one concrete, actionable problem in Arabic, quoting the offending text>", "..."], "summary": "<one sentence in Arabic>"${news ? ', "reader_check": {"scope": {"status": "clear|revise|not_applicable", "evidence": "<specific observation>", "repair": "<repair if needed>"}, "context": {"status": "clear|revise|not_applicable", "evidence": "<specific observation>", "repair": "<repair if needed>"}, "flow": {"status": "clear|revise|not_applicable", "evidence": "<specific observation>", "repair": "<repair if needed>"}, "precision": {"status": "clear|revise|not_applicable", "evidence": "<specific observation>", "repair": "<repair if needed>"}}' : ""}}`;
 
   // Some models wrap the answer ({"review": {...}}) or rename keys; find the object that carries the verdict.
   const unwrap = (d) => {
@@ -312,17 +315,36 @@ Return JSON:
       if (!inner) throw new Error("verdict missing");
       const verdict = String(inner.verdict ?? inner.decision ?? inner.result ?? "").toLowerCase();
       if (!["publish", "revise", "reject"].includes(verdict) && !Number.isFinite(Number(inner.score))) throw new Error("verdict missing");
+      if (news) validateReaderCheck(inner.reader_check);
     },
   });
   const data = unwrap(raw);
+  return normalizeCritique(data, { news, model });
+}
+
+/** Require observations rather than an unexplained high score, within the existing critic pass. */
+function validateReaderCheck(check) {
+  for (const area of ["scope", "context", "flow", "precision"]) {
+    const observation = check?.[area];
+    if (!["clear", "revise", "not_applicable"].includes(observation?.status) || typeof observation?.evidence !== "string" || !observation.evidence.trim()) throw new Error(`reader_check.${area} missing`);
+    if (observation.status === "revise" && (typeof observation.repair !== "string" || !observation.repair.trim())) throw new Error(`reader_check.${area}.repair missing`);
+  }
+}
+
+/** Keep the critic's reader findings actionable even if its overall verdict overlooks them. */
+export function normalizeCritique(data, { news = false, model } = {}) {
+  if (news) validateReaderCheck(data.reader_check);
   const score = Number(data.score) || 0;
   let verdict = String(data.verdict ?? data.decision ?? data.result ?? "").toLowerCase();
   if (!["publish", "revise", "reject"].includes(verdict)) verdict = score >= 7 ? "publish" : score >= 4 ? "revise" : "reject";
+  const readerIssues = news ? Object.entries(data.reader_check).filter(([area, observation]) => ["scope", "context", "flow", "precision"].includes(area) && observation.status === "revise").map(([, observation]) => `${observation.evidence} — ${observation.repair}`) : [];
+  if (readerIssues.length && verdict === "publish") verdict = "revise";
   return {
     verdict,
     score,
-    issues: Array.isArray(data.issues) ? data.issues.map(String).filter(Boolean).slice(0, 10) : [],
+    issues: [...new Set([...(Array.isArray(data.issues) ? data.issues.map(String).filter(Boolean) : []), ...readerIssues])].slice(0, 10),
     summary: String(data.summary ?? ""),
     model,
+    ...(news ? { readerCheck: data.reader_check } : {}),
   };
 }

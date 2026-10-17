@@ -17,9 +17,9 @@ the cause clause (بعدما، مع، وسط، في ظل). Under 45 words. No sc
 > خفّضت منظمة أوبك توقعاتها لنمو الطلب العالمي على النفط في 2026 للمرة الخامسة على التوالي، في
 > مؤشر على استمرار تأثير الحرب.
 
-**The second paragraph** does one of three things: the source's own words (وقال البنك في بيان
-إن…), the hard figure behind the lede, or the contrast (وفي المقابل…, only for a real opposite).
-**The third** gives the background in its own sentence with وكان … قد.
+**The development** follows the reader's questions, without a compulsory second or third paragraph.
+Put a decisive qualification, comparison or explanation beside the claim it clarifies. Background
+may need to precede procedural detail; وكان … قد is one useful opener, not a paragraph formula.
 
 **Every figure** in this order: value, unit, direction, benchmark, time, source. Adjectives only
 when quantified (أكبر زيادة منذ مايو); never "بشكل كبير".
@@ -43,7 +43,7 @@ sentences; concrete nouns (البرميل، الأونصة، العقود الآ
 
 **Joints with a job** (added 2026-09-23, from an audit of the published paper that found the machine
 now shows in structure more than in words). Arabic's own joints: و، فـ، فقد، ثم، لكن، أما … فـ،
-وكان … قد، ورغم، وقال. Background in its own sentence with وكان … قد, never ويأتي/وجاء + noun + في
+وكان … قد، ورغم، وقال. Introduce background directly where needed, never ويأتي/وجاء + noun + في
 وقت/في ظل/وسط, never يأتي ذلك. «، إذ» only when the clause explains the one before, never before a
 reporting verb. فيما/بينما only for two things at once, never to slip a second development into the
 dek. وفي المقابل only for a real opposite; حيث only for a place; مما at most once.
@@ -54,15 +54,16 @@ to" is كان مقرراً أن, never كان سيـ; "as a" is بوصفه or a 
 adjective becomes the adverb or the figure; يتم/تم + verbal noun becomes the verb. An abstract noun
 never judges: name who does. **Idioms and trade terms** are translated by meaning, never word for
 word (industrial-scale, crown jewels, guardrails, ground stop, term contracts, lagged effects,
-intraday, grounded, "Senator X of Alaska" = السيناتور عن ألاسكا); a phrase that needs a sentence to
-explain it is the wrong phrase.
+intraday, grounded, "Senator X of Alaska" = السيناتور عن ألاسكا); replace an awkward calque rather
+than explaining it, but keep a useful brief definition of a necessary technical concept.
 
-**Each field adds something.** The dek carries the second most important fact, never a figure from the
-lede; the first body paragraph moves the story on and never retells the lede; لماذا يهمّ states one
+**Each field has a job.** The dek adds an important detail or qualification to the headline;
+the body develops the opening through evidence, comparison or explanation; لماذا يهمّ states one
 concrete consequence that a source reports or that follows from the story's own figures, names an Arab
 country, company or price only when a source makes the link, and never recaps, speculates in chains
 (قد يؤدي… مما قد…), addresses the reader or opens with يعكس/يمثل/يُعدّ. A sentence whose facts already
-appear higher up is deleted. The copy desk may cut a repeat because its guard counts facts over the
+appear higher up without adding meaning is deleted. Repeating a figure to explain its components
+or comparison, or a term to keep its referent clear, is useful. The copy desk may cut a repeat because its guard counts facts over the
 whole story: a figure, a name or a hedged claim may leave a place where it repeats, never the story.
 
 **The box holds what its heading says.** Under «الأرقام» every value is a figure with its unit (an
@@ -117,6 +118,27 @@ chronology, attribution, hedges and every unique fact. No invented cause or cont
 transition; no extra words just to make the article longer. A useful consequence develops the story;
 «ارتفاع السعر يرفع كلفة الشراء» alone merely repeats it. The writer, copy desk and critic share this
 brief in `pipeline/lib/editorial.mjs`; the critic names concrete defects in construction as well as facts.
+
+**Meaning before machinery** (2026-10-17, after reading eight reports from four Arabic desks).
+The headline, dek and opening together must establish what changed, who is affected and the
+qualification needed to understand the event. Distinguish a waiver of new sanctions from lifting
+existing ones, a target from an operating project, and a sample from a country. State a provision's
+conditions and reference date accurately: enactment is not implementation, and a fixed additional
+tariff is not a ceiling. Use the supplied primary document for a provision when available.
+
+Select the sourced background that answers the reader's question: the previous position, why the
+measure exists, the relevant comparison or its practical consequence. Put it near the fact it explains;
+do not leave all significance to the final box. No compulsory history paragraph, invented everyday
+scene, analyst, motive or Arab angle. A brief remains brief when the evidence is limited.
+
+Interest comes from concrete actors, useful comparisons and an account that advances. A row of
+«وشمل… وشمل…» rewritten as «وأضاف… وأوضح…» still needs editing if the underlying structure is a list.
+Keep necessary technical terms stable, explain them briefly when needed, and vary rhythm for meaning,
+not by a quota of connectors. The copy desk can reorganise existing facts; it cannot invent context.
+The critic records observations on scope, context, flow and precision within its existing pass, and
+gives specific repairs for defects. Its numeric score is not a certificate of literary quality.
+The publication threshold and number of revision rounds stay unchanged. The sample, limitations and
+source links are recorded in [the editorial audit](docs/arabic-editorial-audit-2026-10-17.md).
 
 **Marks.** Western digits; pan-Arab month names; % after the figure; the Arabic comma (،); «» for
 quotations and foreign brand names; tanween on the alef (اً).

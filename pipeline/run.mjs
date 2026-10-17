@@ -381,6 +381,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   const minWords = newsFloor(notes);
   let checks = programmaticChecks(draft, sources, { recentTitles, minWords });
   let review = await critique({ draft, sources, log });
+  entry.editorialReviews = [{ pass: 1, verdict: review.verdict, readerCheck: review.readerCheck }];
   log(`critic "${draft.title}": ${review.verdict} score=${review.score} issues=${review.issues.length}`);
   for (const issue of [...checks.issues, ...review.issues].slice(0, 4)) log(`  · ${String(issue).slice(0, 160)}`);
 
@@ -407,6 +408,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     // Every revised draft faces the critic again and is published only with a second-pass score of 6 or more.
     const floor = 6;
     review = await critique({ draft, sources, previousIssues: issues, log });
+    entry.editorialReviews.push({ pass: 2, verdict: review.verdict, readerCheck: review.readerCheck });
     log(`critic (second pass) "${draft.title}": ${review.verdict} score=${review.score} issues=${review.issues.length}`);
     if (review.verdict === "reject" || review.score < floor) {
       entry.outcome = `rejected by critic after revision (${review.score}): ${review.summary}`;

@@ -10,10 +10,10 @@ import { arabicRatio, domainOf, overlappingPhrases, truncate, ungroundedNumbers,
 const HOUSE_STYLE = `HOUSE STYLE (the practice of the Arabic economics desks: الشرق الأوسط، الاقتصادية، الشرق بلومبرغ، CNBC عربية، الجزيرة)
 ${EDITORIAL_CRAFT}
 - Write original journalism in clear Modern Standard Arabic (فصحى معاصرة). Never translate a source sentence by sentence; report the facts in your own structure and words. The reader must never feel English under the Arabic.
-- When a source is itself in Arabic, rewrite it completely: never reuse any of its phrases longer than three words; copying Arabic sentences is plagiarism and the article will be rejected.
+- When a source is itself in Arabic, report independently in your own sentence structure; never copy its sentences or distinctive phrasing. Preserve exact official names, established technical terms and unavoidable factual expressions: changing them merely to avoid shared words damages precision. The originality checks still apply to substantial copied passages.
 - ONE STORY. The brief names one event; write that event. If the material also carries unrelated items, leave them out; a second development belongs in its own story, never chained into this one with «و». The key facts, the chart and the why-it-matters belong to this event alone.
 - THE LEDE: a past-tense verb of action or saying, then the named actor, then the figure, then the cause clause (بعدما، مع، وسط، في ظل). Under 45 words. No scene-setting, no "في خطوة"، no "شهد". Vary the opening verb across stories (أعلنت، خفّضت، أبقى، قرر، سجّل، تراجع، قفز، رفعت، أظهرت بيانات، كشف). Model: «خفّضت منظمة أوبك توقعاتها لنمو الطلب العالمي على النفط في 2026 للمرة الخامسة على التوالي، في مؤشر على استمرار تأثير الحرب».
-- THE SECOND PARAGRAPH does one of three things: the source's own words («وقال البنك في بيان إن…»), the hard figure behind the lede, or the contrast («وفي المقابل…», only for a real opposite). THE THIRD gives the background in its own sentence with «وكان … قد».
+- DEVELOP THE EVENT in the order a reader needs: explain its decisive qualification, evidence, comparison or sourced consequence near the claim it clarifies. Background has no fixed paragraph number or compulsory «وكان … قد» opener. Do not make the reader wade through legal procedures before learning what a decision changes.
 - EVERY FIGURE in this order: value, unit, direction, benchmark, time, source («تراجع سعر الذهب 0.3% إلى 4522 دولاراً للأونصة بحلول الساعة 02:22 بتوقيت غرينتش، بحسب رويترز»). Adjectives only when quantified («أكبر زيادة منذ مايو»); never «بشكل كبير».
 - ATTRIBUTION in the desks' forms: «قال X في بيان/مقابلة إن» (always إن after قال), «وأضاف»، «وأوضح»، «وأشار إلى أن»، «وفق بيانات صدرت الخميس»، «بحسب رويترز»، «نقلاً عن». Name each source once, where its information first enters; after that the reporting verb («وأضاف») or one attribution at the head of the paragraph carries it. Never repeat an attribution tag for the same source within a paragraph. Different speakers or institutions keep their own explicit attribution when their related claims share a paragraph; never merge their voices or create a tiny paragraph solely because the source changes. Never twice for the same source, never two sentences in a row tagged «وفقاً لـ/بحسب», never «وفقاً للمصدر نفسه», never one outlet more than three times in a story; a market price needs its source once. «أكد» takes an object, never «أكد على». «كشف» only for something that was hidden.
 - EXPECTATIONS are always someone's: «يتوقع المجلس أن»، «ترجّح الأسواق»، «مرشح لـ»، «من المرجح بحسب». Never a floating forecast.
@@ -24,9 +24,9 @@ ${EDITORIAL_CRAFT}
 - LARGE COUNTS as the desks write them: in the headline, the dek and the lede a count or amount of 10,000 or more is written in thousands, millions or billions («نحو 456 ألف مستثمر» for 455,758; «1.5 مليون برميل يومياً»; «18.3 مليار دولار»), never as a long run of digits; the exact figure, when it matters, appears once in the body. Index levels keep their digits («51721 نقطة»).
 - TEXTURE: one idea per sentence, no sentence over 35 words; paragraphs of one to three sentences; concrete nouns (البرميل، الأونصة، العقود الآجلة، نقطة أساس، الجلسة، الإغلاق، المكاسب الأسبوعية؛ «المعاملات الفورية» only for spot prices, never for futures); active voice unless the agent is unknown.
 - ARABIC SENTENCES, NOT ENGLISH ONES IN ARABIC WORDS. Body sentences may open with the verb; news headlines use the subject-first form specified below. Never chain more than three nouns in an إضافة; turn the rest into a verb clause. "Whether" is «هل», never «ما إذا كان»; "in terms of" becomes a verb, never «من حيث»; "was set to" is «كان مقرراً أن», never «كان سيـ»; "as a" is «بوصفه» or a rephrase, never «كـ» + noun; «بشكل/بصورة» + adjective becomes the adverb or the figure; «يتم/تم» + verbal noun becomes the verb. An abstract noun never judges (never «ويرجّح التباين أن»): name who judges.
-- IDIOMS AND TRADE TERMS: translate what they mean, never their words (industrial-scale, crown jewels, at the pump, guardrails, choke point, ground stop, term contracts, lagged effects, surprisingly strong, intraday, grounded, "Senator X of Alaska" = «السيناتور عن ألاسكا»). Use the term the Arab business desks use, or say plainly what happened; if a phrase needs a sentence to explain it, the phrase is wrong.
-- EACH FIELD ADDS SOMETHING. The dek carries the second most important fact, never a figure from the lede; the first body paragraph moves the story forward and never retells the lede; «لماذا يهمّ» states a consequence, never a recap. Before returning the JSON, delete every sentence whose facts already appear higher up.
-- JOINTS WITH A JOB. Arabic's own: «و»، «فـ»، «فقد»، «ثم»، «لكن»، «أما … فـ»، «وكان … قد»، «ورغم»، «وقال». Background goes in its own sentence with «وكان … قد», never «ويأتي/وجاء + noun + في وقت/في ظل/وسط» and never «يأتي ذلك». «، إذ» only when the clause explains the one before, never before a reporting verb. «فيما/بينما» only for two things happening at once, never to slip a second development into the dek. «حيث» only for a place; «مما» at most once.
+- IDIOMS AND TRADE TERMS: translate what they mean, never their words (industrial-scale, crown jewels, at the pump, guardrails, choke point, ground stop, term contracts, lagged effects, surprisingly strong, intraday, grounded, "Senator X of Alaska" = «السيناتور عن ألاسكا»). Use the term the Arab business desks use, or say plainly what happened; replace an awkward calque rather than explaining it; a necessary technical concept may still need a brief definition.
+- EACH FIELD HAS A JOB. The dek adds a significant detail or qualification to the headline. The body develops the opening with evidence, conditions, comparison and explanation; delete a bare restatement, but keep a return to a fact when it explains something new. «لماذا يهمّ» develops an evidenced consequence. Do not sacrifice intelligibility to make every field contain completely different facts.
+- JOINTS WITH A JOB. Arabic's own: «و»، «فـ»، «فقد»، «ثم»، «لكن»، «أما … فـ»، «وكان … قد»، «ورغم»، «وقال». Introduce background directly where needed; «وكان … قد» is one option, not a required opener. Never «ويأتي/وجاء + noun + في وقت/في ظل/وسط» and never «يأتي ذلك». «، إذ» only when the clause explains the one before, never before a reporting verb. «فيما/بينما» only for two things happening at once, never to slip a second development into the dek. «حيث» only for a place; «مما» at most once.
 - NO TEMPLATES. At most one «الأول… والثاني» list and one «ليس… بل» contrast in a piece; no «السؤال الحقيقي»، «معادلة صعبة»، «ليس مجرد»; the dek is one statement, not a how/why/what list; «حاد، انهيار، تاريخي، الاستراتيجي، جداً» only beside the number that earns them; no closing verdict without a source.
 - DATES as the desks write them: the weekday for this week («الجمعة»), the month for this year («في 18 سبتمبر»), the year only when it is not the current one; never an ISO date, never «بتاريخ», never «اليوم» or «أمس» (the story is read after today).
 - BANNED (a sub-editor cuts them; the checker rejects them): fillers «في هذا السياق»، «تجدر الإشارة»، «من الجدير بالذكر»، «يُذكر أن»، «لا يخفى»، «في نهاية المطاف»، «بالإضافة إلى ذلك»، «علاوة على ذلك»، «من ناحية أخرى»، «على الرغم من ذلك»؛ calques «تم/يتم + مصدر»، «من قبل»، «يقوم بـ»، «يلعب دوراً»، «بشكل/بصورة + صفة»، «على صعيد»، «على مستوى»، «يعتبر»، «ما إذا كان»، «هناك ارتفاع في»، «شهد ارتفاعاً»؛ clichés «بمثابة»، «يسلط الضوء»، «يمهد الطريق»، «نقطة تحول»، «مما يعكس»، «في خطوة»، «في إطار»، «يأتي ذلك»، «وفقاً للمصدر نفسه». Prefer «نحو» to «حوالي»، «في الوقت نفسه»، «مديرو»، «أسهم»، «مهم».
@@ -37,7 +37,7 @@ ${EDITORIAL_CRAFT}
 - Write foreign names in Arabic transliteration as Arab business media write them; for lesser-known people or companies add the Latin original in parentheses once. Keep well-known tickers and acronyms in Latin (S&P 500, OPEC+, IMF). Chinese names follow the Arabic wire agencies: the surname He is خه (never هي, which reads as the pronoun "she"), Xi is شي, Li is لي, Wang is وانغ, Liu is ليو, Zhang is تشانغ; He Lifeng is خه لي فنغ. Never let a transliterated name form an Arabic word or pronoun («وهي», «هو», «لا»).
 - HEADLINES: a nominal sentence, actor first, present-tense verb, the figure: «الذهب يتجه لثالث خسارة أسبوعية مع تصاعد رهانات رفع الفائدة»، «المركزي التركي يثبّت الفائدة عند 37% للمرة الخامسة». ONE idea, at most 12 words, never two developments chained with «و». A quote headline uses the colon: «صندوق النقد: الاقتصاد العالمي يتجه إلى نمو 3%». Never ".." or "!" or a teaser; no "تعرف على"، no question headlines for news. Definite references for institutions («الإدارة الأمريكية» or «واشنطن», never «إدارة أمريكية»); a strong verb instead of «يعلن عن» + verbal noun.
 - Tone: calm, precise, authoritative. No sensationalism, no clichés, no rhetorical questions, no first person, no moralising.
-- Explain context that an Arab reader needs (what the institution is, why the indicator matters) in one clause, without lecturing.
+- Explain the supplied context an educated non-specialist needs: the relevant earlier position, a term's meaning, the purpose of a measure or who it affects. Use a short clause or a paragraph as the evidence requires; never invent a local angle or turn context into a second unrelated story.
 - No URLs, no markdown links, no headings other than optional "## " subheads for long pieces, no bullet lists inside the body.
 - Do not mention that you are an AI or that the article was generated.
 - Khazendar is an online news website, not a newspaper: when a piece must name the site it says «خازندار», never «الصحيفة»، «صحيفتنا»، «الجريدة»، «هذا العدد» or «الطبعة».
@@ -60,10 +60,10 @@ const CHART_RULE = "A chart shows the measure readers know, in the unit the text
 
 const SCHEMA_TEXT = `{
   "title": "Arabic headline, 35-80 characters, ONE idea (never chain two or three developments with و), specific, contains the key fact or number (a large count in thousands or millions, «456 ألف مستثمر», never a run of digits such as 455758), no colon-tricks, no clickbait",
-  "subtitle": "Arabic dek: one statement (max 160 chars) carrying the second most important fact, a detail in neither the headline nor the lede; never a figure the lede gives, never a second development added with فيما/بينما, never a how/why/what list",
+  "subtitle": "Arabic dek: one statement (max 160 chars) adding an important detail or qualification of the headline's event. It must be understandable with the headline and opening, with no apparent contradiction. No bare restatement, second unrelated development or how/why/what list.",
   "slug": "english-kebab-case-slug-4-to-7-words",
   "lede": "Opening paragraph: 2-3 sentences with the core news, the who/what/when, and the main number",
-  "body": "The rest of the article in Markdown: 4-7 paragraphs separated by blank lines, 300-550 words total when the material carries that much, with attribution and context; when the desk notes hold fewer than ten facts, a brief of 120-250 words in 3-4 paragraphs. Never pad. May include one or two '## ' subheads if the piece is long.",
+  "body": "The rest of the article in Markdown, with blank lines between coherent paragraphs. Select and organise the facts that explain the event; no fixed paragraph count or one-provision-per-paragraph template. Usually 300-550 words total when the material carries that much; a small event can be a brief of 120-250 words. Never pad. May include one or two '## ' subheads if the piece is long.",
   "key_facts": [{"label": "short Arabic label (2-5 words) naming what is measured, where and when, e.g. الوظائف المباشرة في المصانع الثلاثة; no source in brackets", "value": "a FIGURE exactly as sourced, with its unit, e.g. 4,000 or 1.7 مليار جنيه or 2.25%; never a name, a place, a date or a weekday"}],
   "why_it_matters": "Two or three Arabic sentences (40-90 words) stating ONE concrete consequence of this event that a source reports or that follows from the story's own figures; it may reuse a body figure only as the premise of that consequence. Name an Arab country, company or price only when a source makes the link; otherwise say what the event changes in its own market. Never a recap of the body, never a chain of «قد يؤدي… مما قد…», never tell the reader what to understand, never open with «يعكس/يمثل/يُعدّ».",
   "tags": ["3-5 Arabic tags: institutions, countries, sectors, indicators"],
@@ -156,7 +156,7 @@ export function ensureTags(d, fallback) {
 }
 
 /** Writes an original Arabic article from a story cluster. */
-const NOTES_SYSTEM = `You are the chief sub-editor of خازندار, an Arabic economics publication. Before a story is written you extract its desk notes: the facts of ONE event, each as a single Arabic sentence carrying its figure, unit, date and actor exactly as its source states them, tied to that source's number. You never interpret, never infer, never add from memory, and you leave out anything that belongs to a different event. You answer with one JSON object only.`;
+const NOTES_SYSTEM = `You are the chief sub-editor of خازندار, an Arabic economics publication. Before a story is written you select its desk notes: the facts of ONE event, each as a single Arabic sentence carrying its figure, unit, date and actor exactly as its source states them, tied to that source's number. Select a reporting brief, not an inventory of a document's provisions: the decision and its scope, the sourced purpose and practical stakes, a meaningful prior comparison, and a relevant attributed reaction or estimate when supplied. Implementation details enter only when they help explain what changes. A primary legal document settles the wording of a provision; it does not make every administrative paragraph newsworthy. Read all supplied reports before choosing. You never make your own interpretation, inference or addition from memory; an analyst's interpretation or official's stated purpose in the source may be recorded with its attribution and uncertainty intact. Leave out anything that belongs to a different event. You answer with one JSON object only.`;
 
 /**
  * Stage one of a news story: the desk notes, 8-20 atomic facts of the one event, each tied to its
@@ -175,8 +175,9 @@ SOURCE MATERIAL
 ${sources.map(sourceBlock).join("\n\n")}
 
 ${lessons}TASK
-Extract the desk notes for this ONE event (the working headline). 8 to 20 facts, each one Arabic sentence of at most 30 words in your own words (never a sentence copied from an Arabic source), with the figure, its unit, the date and the actor exactly as the source gives them, and the number of the source it comes from; a figure appears only with its own period and unit. Attribution words belong in the fact («قال المصرف في بيان إن…», «بحسب بيانات المكتب…»): a public fact (a decision, a published figure, a price) names the institution, company or news agency behind it, never the outlet that relayed it; an outlet is named only for what it alone reports (its own sources, interview or exclusive). When two sources give different figures for the same measure, keep ONE fact: the latest-timed, or the one the institution itself published, with its time if the source gives it; never both. Leave out everything that is a different event, a background fact from memory, or an interpretation. Then list up to three verbatim quotations only if the source is Arabic (Arabic text copied exactly); for other languages, no quotations.
-Return: {"event":"<one Arabic sentence naming the one event>","facts":[{"fact":"<sentence>","source":<source number>}],"quotes":[{"text":"<verbatim Arabic>","source":<source number>}]}`;
+Extract the desk notes for this ONE event (the working headline). 8 to 20 facts, each one Arabic sentence of at most 30 words in your own words (never a sentence copied from an Arabic source), with the figure, its unit, the date and the actor exactly as the source gives them, and the number of the source it comes from; a figure appears only with its own period and unit. Attribution words belong in the fact («قال المصرف في بيان إن…», «بحسب بيانات المكتب…»): a public fact (a decision, a published figure, a price) names the institution, company or news agency behind it, never the outlet that relayed it; an outlet is named only for what it alone reports (its own sources, interview or exclusive). When two sources give different figures for the same measure, keep ONE fact: the latest-timed, or the one the institution itself published, with its time if the source gives it; never both. Leave out everything that is a different event, a background fact from memory, or an interpretation.
+Within those notes, preserve the supplied facts that explain this event: its purpose, relevant previous position, meaningful comparison, affected group and decisive exceptions or conditions. Select the useful context instead of filling the notes with procedural details. In reader_context, identify the ONE source-backed fact that best answers why the event matters or what the reader must understand to interpret it: a law's purpose, the meaningful prior position, an affected group or a mechanism. Prefer this to a signing date or a list of delegated officials. Write it independently in Arabic with its source number, under the same accuracy and originality rules. Return null only if the sources contain no useful context; never invent it. Distinguish new from existing measures, a fixed rate from a ceiling, the reference date of a deadline and a sample from a whole population. For a provision described differently by reports, use its supplied primary document when available. Then list up to three verbatim quotations only if the source is Arabic (Arabic text copied exactly); for other languages, no quotations.
+Return: {"event":"<one Arabic sentence naming the one event>","reader_context":{"fact":"<one contextual fact, or null instead of this object if none is supplied>","source":<source number>},"facts":[{"fact":"<sentence>","source":<source number>}],"quotes":[{"text":"<verbatim Arabic>","source":<source number>}]}`;
   try {
     const { data, model } = await chat({
       role: "desk",
@@ -190,6 +191,8 @@ Return: {"event":"<one Arabic sentence naming the one event>","facts":[{"fact":"
           d.facts = d.facts ?? d.key_facts ?? d.desk_notes ?? d.atomic_facts ?? [];
         }
         if (!d || !Array.isArray(d.facts) || d.facts.length < 5) throw new Error("fewer than five facts");
+        if (!Object.hasOwn(d, "reader_context")) throw new Error("reader_context missing (use null when the sources supply none)");
+        prioritizeContext(d);
         // A fact whose figures its own source does not carry is dropped; too many dropped means the notes are unreliable.
         const kept = d.facts.filter((f) => {
           const n = Number(f?.source);
@@ -199,6 +202,7 @@ Return: {"event":"<one Arabic sentence naming the one event>","facts":[{"fact":"
           // A fact lifted from an Arabic source would carry its sentence into the story.
           return sources[n - 1].lang !== "ar" || overlappingPhrases(text, texts[n - 1], 8, 1).length === 0;
         });
+        if (d.reader_context && !kept.includes(d.reader_context)) throw new Error("reader_context is not grounded in its source or copies its phrasing; rewrite it faithfully");
         if (kept.length < 5) throw new Error(`${d.facts.length - kept.length} of ${d.facts.length} facts are not in their sources`);
         if (kept.length < d.facts.length) log?.(`desk notes: ${d.facts.length - kept.length} of ${d.facts.length} facts dropped (not in their source or copied from it)`);
         d.facts = kept.slice(0, 20);
@@ -214,6 +218,14 @@ Return: {"event":"<one Arabic sentence naming the one event>","facts":[{"fact":"
     log?.(`desk notes failed: ${String(error.message).split("\n")[0]}; the writer works from the sources alone`);
     return null;
   }
+}
+
+/** Reserve room for the checked context within the existing notes budget, never beyond it. */
+export function prioritizeContext(notes) {
+  if (notes.reader_context === null) return;
+  const context = notes.reader_context;
+  if (!context || typeof context !== "object" || !String(context.fact ?? "").trim()) throw new Error("reader_context must be a sourced fact or null");
+  notes.facts = [context, ...notes.facts.filter((f) => f?.fact !== context.fact || Number(f?.source) !== Number(context.source))];
 }
 
 /** For the writer: an Arabic source's text is withheld once the desk notes carry its facts, so the story cannot be assembled from its sentences. */
@@ -236,6 +248,7 @@ Event: ${notes.event}
 ${facts}${quotes}
 
 These are atomic evidence records, not a paragraph plan. Group related facts and their comparisons into a report with a clear line of thought; do not turn each numbered note into its own sentence or paragraph. Use the relevant context recorded here without adding background from memory.
+The notes limit which facts you may state; they are not a checklist of facts you must all print. Select what explains the event, giving its sourced context priority over article numbers, delegated officials and paperwork. Keep every condition necessary for a claim you choose to report. Do not omit the central qualification or substitute administrative procedure for the event's meaning.
 
 `;
 }
@@ -251,7 +264,7 @@ ${notesBlock(notes)}SOURCE MATERIAL (use only this material; do not add facts fr
 ${sources.map(writerSourceBlock(notes)).join("\n\n")}
 
 ${lessons}TASK
-Write the article for خازندار following the house style: ONE event, the working headline's, told in the desks' order (the fact, the figure, who said it, the context the sources give, why it matters), at most 12 words in the title stating that one idea with no evaluative adjective (no حاسم، حافل، مصيري، صادم). Return one JSON object exactly in this shape:
+Write the article for خازندار following the house style: ONE event, the working headline's, developed in the order that makes its meaning clear to the reader, with figures, attribution and sourced context where needed. Use at most 12 words in the title stating that one idea with no evaluative adjective (no حاسم، حافل، مصيري، صادم). Return one JSON object exactly in this shape:
 ${SCHEMA_TEXT}`;
 
   const { data, model } = await chat({

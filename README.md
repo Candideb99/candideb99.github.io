@@ -40,6 +40,18 @@ economics desks: the lede formula, attribution forms, the banned calques and fil
 forms, the kicker, relative time, and what is deliberately not copied. `pipeline/lib/style.mjs`
 is its machine-checkable half.
 
+The [17 October editorial audit](docs/arabic-editorial-audit-2026-10-17.md) records the eight-report
+sample behind the reader-focused rules: meaning before procedure, sourced context, flexible paragraph
+order and useful explanatory repetition. The news critic records scope, context, flow and precision
+observations in each run report; its score alone is not a fluency measure. The existing publication
+thresholds and revision-round count are unchanged.
+
+`node scripts/editorial-eval.mjs` lists eight synthetic calibration cases without model calls.
+Add `--live` to test the configured critic on them, or `--live --case=waiver-unclear-scope` for one.
+This consumes the normal provider allowance, writes a report in the system temp folder, and never
+publishes. A provider failure is **incomplete**, not a passing evaluation. The harness checks known
+critic decisions; it does not establish that all generated prose has improved.
+
 ## The Arabic copy desk
 
 `pipeline/lib/copydesk.mjs` runs on every draft before the critic: a model rewrites translationese

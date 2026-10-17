@@ -18,13 +18,13 @@ import { writeJsonAtomic } from "../pipeline/lib/util.mjs";
 import { loadSnapshot, saveSnapshot } from "../pipeline/lib/snapshots.mjs";
 import { loadSources, settleDrift } from "../pipeline/lib/factcheck.mjs";
 import { boxFacts } from "../pipeline/lib/keyfacts.mjs";
-import { normalizeDraft } from "../pipeline/lib/write.mjs";
+import { normalizeDraft, prioritizeContext } from "../pipeline/lib/write.mjs";
 import { serializeArticle } from "../pipeline/lib/article.mjs";
 import { cleanTags } from "../pipeline/lib/tags.mjs";
 import { groundedRegions } from "../pipeline/lib/regions.mjs";
 import { styleIssues } from "../pipeline/lib/style.mjs";
 import { judgeRewrite } from "../pipeline/lib/copydesk.mjs";
-import { programmaticChecks } from "../pipeline/lib/verify.mjs";
+import { normalizeCritique, programmaticChecks } from "../pipeline/lib/verify.mjs";
 import { noveltyFault } from "../pipeline/lib/images.mjs";
 
 let failed = 0;
@@ -298,6 +298,38 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("photos: a horse-drawn fuel cart under a central-bank story is refused", noveltyFault({ title: "CairoHorseDrawnFuelTransport.jpg", alt: "عربة وقود يجرها حصان في محطة بنزين بالقاهرة" }, { title: "برنت فوق 105 دولارات يعقّد حسابات المركزي المصري" }), "Horse");
   check("photos: an oil field's «nodding donkey» is a pumpjack, not an animal", noveltyFault({ title: "Oil pumpjack in the Permian Basin.jpg", categories: "Nodding donkeys in Texas" }, { title: "النفط يتراجع مع آمال مفاوضات هرمز" }), null);
   check("photos: sheep on an Eid-prices story, a shopping trolley and a street named Jamal pass",[noveltyFault({ title: "Sheep market Riyadh.jpg", alt: "سوق الأغنام في الرياض" }, { title: "أسعار الأضاحي ترتفع في السعودية" }), noveltyFault({ title: "Shopping cart.jpg", alt: "عربة تسوق" }, { title: "التضخم في مصر" }), noveltyFault({ title: "Jamal Street.jpg", alt: "شارع جمال عبد الناصر" }, { title: "التضخم في مصر" })], [null, null, null]);
+}
+
+// 9. Reader findings survive an overgenerous overall score (the Russia-waiver report scored 10).
+{
+  const context = { fact: "القانون يستهدف زيادة الضغط الاقتصادي على روسيا بسبب الحرب", source: 2 };
+  const notes = { reader_context: context, facts: Array.from({ length: 20 }, (_, i) => ({ fact: `تفصيل إجرائي ${i}`, source: 1 })) };
+  prioritizeContext(notes);
+  check("useful sourced context survives a full twenty-fact notes budget", notes.facts.slice(0, 20)[0], context);
+  const repeated = { reader_context: context, facts: [context, { ...context }, { fact: "تفصيل آخر", source: 1 }] };
+  prioritizeContext(repeated);
+  check("the context fact is not counted twice", repeated.facts.length, 2);
+  const thin = { reader_context: null, facts: [{ fact: "خبر مقتضب", source: 1 }] };
+  prioritizeContext(thin);
+  check("thin sources do not force invented context", thin.facts.length, 1);
+  const invalidContext = (reader_context) => { try { prioritizeContext({ reader_context, facts: [] }); return false; } catch { return true; } };
+  check("a boolean is not a contextual fact", invalidContext(false), true);
+  check("a context label without a fact is refused", invalidContext({ source: 1 }), true);
+  const clear = Object.fromEntries(["scope", "context", "flow", "precision"].map((area) => [area, { status: "clear", evidence: "الخبر واضح ضمن نطاق الأدلة المتاحة", repair: "" }]));
+  const review = { score: 10, verdict: "publish", issues: [], summary: "مراجعة", reader_check: clear };
+  for (const area of ["scope", "context", "flow", "precision"]) {
+    const result = normalizeCritique({ ...review, reader_check: { ...clear, [area]: { status: "revise", evidence: "العنوان لا يميز العقوبات الجديدة من السابقة", repair: "بيّن نطاق الإعفاء في المقدمة" } } }, { news: true });
+    check(`reader ${area} defect requests revision despite a 10/10 verdict`, [result.verdict, result.score, result.issues.some((i) => i.includes("بيّن نطاق"))], ["revise", 10, true]);
+  }
+  check("a clear brief does not acquire a new rejection threshold", normalizeCritique(review, { news: true }).verdict, "publish");
+  check("a reader finding cannot erase a factual rejection", normalizeCritique({ ...review, verdict: "reject", score: 3 }, { news: true }).verdict, "reject");
+  check("other genres keep their existing review contract", normalizeCritique({ score: 8, verdict: "publish", issues: [] }).verdict, "publish");
+  const refuses = (reader_check) => { try { normalizeCritique({ ...review, reader_check }, { news: true }); return false; } catch { return true; } };
+  check("an unexplained numeric score is not a complete news review", refuses(undefined), true);
+  check("a missing reader observation is refused", refuses({ ...clear, flow: undefined }), true);
+  check("a number cannot substitute for a reader observation", refuses({ ...clear, flow: { status: "clear", evidence: 10 } }), true);
+  check("a revision finding needs an actionable repair", refuses({ ...clear, context: { status: "revise", evidence: "سياق ضروري غائب", repair: "" } }), true);
+  check("a thin source can make context not applicable without a false alarm", normalizeCritique({ ...review, reader_check: { ...clear, context: { status: "not_applicable", evidence: "المصدر خبر مقتضب ولا يقدم خلفية إضافية", repair: "" } } }, { news: true }).verdict, "publish");
 }
 
 if (failed) {

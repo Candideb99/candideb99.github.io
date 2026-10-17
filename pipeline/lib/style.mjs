@@ -339,7 +339,7 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
   if (news && dekShared.length >= 2) warnings.push(`الوصف الفرعي يكرر أرقام المقدمة (${dekShared.join("، ")})؛ ليحمل ثاني أهم معلومة لا رقم المقدمة.`);
   const first = paragraphs[0] ?? "";
   const ledeSeen = new Set(contentWords(`${title}\n${dek}\n${lede}`));
-  if (news && first && covered(contentWords(first), ledeSeen) > 0.6) warnings.push(`الفقرة الأولى من المتن تعيد المقدمة («${first.slice(0, 50)}…»)؛ لتتقدم بالخبر: كلام المصدر، أو الرقم وراء المقدمة، أو المقابل. احذف كل جملة وردت وقائعها أعلى النص.`);
+  if (news && first && covered(contentWords(first), ledeSeen) > 0.6) warnings.push(`الفقرة الأولى من المتن تتداخل مع المقدمة («${first.slice(0, 50)}…»)؛ راجع هل تضيف شرحاً أو مقارنة أو شرطاً ضرورياً. احذف إعادة المعنى وحدها، وأبقِ التفصيل الذي يوضح الخبر؛ تكرار المصطلح أو الرقم لهذا الغرض ليس عيباً بذاته.`);
   if (box) {
     const bodyGrams = grams(contentWords(`${lede}\n${body}`));
     const recaps = sentencesOf(box).filter((s) => {
