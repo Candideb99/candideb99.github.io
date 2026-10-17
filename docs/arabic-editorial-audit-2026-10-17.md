@@ -77,6 +77,14 @@ connector, an ambiguous reference, an unstated crane fuel type and a duplicated 
 Those fixtures were corrected and re-read, rather than teaching the critic to overlook the faults.
 These are curated examples, not an estimate of newsroom accuracy or a controlled before/after study.
 
+A private writer → copy desk → critic preview of the waiver retained the sourced purpose of the
+law and an attributed oil-price risk. The harness initially supplied the White House page's date
+incorrectly as 17 October rather than 16 October; the critic independently caught the resulting
+Saturday claim against the report's Friday wording. With the test metadata corrected and that
+invalid note removed, one normal revision resolved it: programmatic checks returned no issues and
+the critic accepted the revised text. This preview was not published and did not exercise the image
+desk or the separate pre-publication fact-check; it is not a full newsroom acceptance test.
+
 Human assessment of fresh outputs is still needed to establish improvement in reader experience;
 the current complaint and these examples are the calibration evidence, not a promise that prompts
 prevent every future error. No model ranking follows from this sample.
