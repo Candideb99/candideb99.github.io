@@ -1,0 +1,30 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-17T17:52:36.525Z",
+  "durationSec": 6,
+  "published": 0,
+  "report": [
+    {
+      "headline": "",
+      "section": "news",
+      "outcome": "error: The connected ChatGPT accounts have no available allowance. Earliest reported reset: 2026-10-17T20:32:19.000Z. No paid API fallback was used."
+    }
+  ],
+  "llm": {
+    "calls": 0,
+    "failures": 1,
+    "promptTokens": 0,
+    "completionTokens": 0,
+    "cacheReadTokens": 0,
+    "costUsd": 0,
+    "byModel": {}
+  },
+  "log": [
+    "[17:52:36] newsroom start mode=news limit=4 dry-run=false",
+    "[17:52:36] lessons: version 29, 9 active, read by the desk notes and the writer",
+    "[17:52:41] candidates: 15 price-service items left out (gold, dollar and share price tables)",
+    "[17:52:41] candidates: 300 fresh unseen items",
+    "[17:52:42] llm fail role=editor provider=codex model=gpt-6.1-sol attempt=1: The connected ChatGPT accounts have no available allowance. Earliest reported reset: 2026-10-17T20:32:19.000Z. No paid API fallback was used.",
+    "[17:52:42] news failed: The connected ChatGPT accounts have no available allowance. Earliest reported reset: 2026-10-17T20:32:19.000Z. No paid API fallback was used."
+  ]
+}
