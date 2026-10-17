@@ -7,7 +7,7 @@ import { sha1, slugifyLatin, wordCount } from "./util.mjs";
 
 export const ARTICLES_DIR = path.join(process.cwd(), "content", "articles");
 
-/** A named, fully rechecked editorial refresh keeps the original address/date and an audit note. */
+/** A fully rechecked style refresh keeps the original address/date; its reason stays in the run audit. */
 export function mergeNewsRefresh(original, generated, { note, at = new Date().toISOString() }) {
   const split = (raw) => String(raw).replace(/\r\n/g, "\n").match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
   const oldParts = split(original), newParts = split(generated);
@@ -15,8 +15,8 @@ export function mergeNewsRefresh(original, generated, { note, at = new Date().to
   const old = YAML.parse(oldParts[1]), fresh = YAML.parse(newParts[1]);
   if (old.kind !== "news" || fresh.kind !== "news" || old.slug !== fresh.slug || old.section !== fresh.section) throw new Error("refresh must keep the news article's identity and section");
   const data = { ...old, ...fresh, slug: old.slug, publishedAt: old.publishedAt, updatedAt: at,
-    image: old.image ?? null, corrections: old.corrections ?? [],
-    updates: [...(old.updates ?? []), { date: at, note: String(note).trim() }] };
+    image: old.image ?? null, corrections: old.corrections ?? [] };
+  delete data.updates;
   if (data.models && old.models) data.models.vision = old.models.vision ?? null;
   // A refresh cannot turn a live story into a draft or change an editor's cover choice.
   for (const key of ["draft", "featured"]) {

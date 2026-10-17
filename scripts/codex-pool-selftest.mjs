@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, rmSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { routeSubscription, readQuotaState, quotaSnapshot } from "../pipeline/lib/codex-pool.mjs";
+import { routeSubscription, runSubscription, readQuotaState, quotaSnapshot } from "../pipeline/lib/codex-pool.mjs";
 import { precheck } from "../pipeline/lib/precheck.mjs";
 
 const temp = mkdtempSync(path.join(os.tmpdir(), "khazendar-pool-test-"));
@@ -39,6 +39,11 @@ try {
   await assert.rejects(routeSubscription({}, { pool: config(), limits: async () => usage(10, 10), run: async () => { burstAttempts++; throw new Error("Too many requests"); } }), /Too many requests/);
   assert.equal(burstAttempts, 1, "A temporary burst limit without exhausted allowance must not switch accounts");
   console.log("ok  A quota race retries once on backup; unrelated failures preserve account selection");
+
+  let creditAttempts = 0;
+  await assert.rejects(runSubscription({}, { pool: config(), limits: async () => usage(10, 10), run: async () => { creditAttempts++; throw new Error("Your workspace is out of credits. Add credits to continue."); } }), (e) => e.meta?.quota && e.meta.workspaceCredits && e.meta.retryAt === null);
+  assert.equal(creditAttempts, 1, "A workspace credit refusal stops without retrying or spending another account's allowance");
+  console.log("ok  Workspace credit refusal defers publishing without a guessed reset or paid fallback");
 
   const stale = config();
   await assert.rejects(routeSubscription({}, { pool: stale, limits: async () => usage(100, 100), run: async () => assert.fail() }));

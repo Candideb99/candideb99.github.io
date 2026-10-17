@@ -42,7 +42,14 @@ export function quotaWaitError(state, accounts) {
 /** Serialize this process's calls so a depleted account is not selected by two calls at once. */
 let queue = Promise.resolve();
 export function runSubscription(options, outside = {}) {
-  const task = queue.then(() => routeSubscription(options, outside));
+  const task = queue.then(() => routeSubscription(options, outside)).catch((error) => {
+    // A workspace credit refusal is not a bad story or a transient request failure. Stop this run
+    // without buying credits, inferring a five-hour reset or cycling through accounts in that workspace.
+    if (/workspace (?:is )?out of credits/i.test(error.message || "")) {
+      error.meta = { ...error.meta, quota: true, workspaceCredits: true, retryAt: null };
+    }
+    throw error;
+  });
   queue = task.catch(() => {}); return task;
 }
 export async function routeSubscription(options, { pool = accountPool(), run = runCodex, limits = codexRateLimits, now = () => Date.now() } = {}) {

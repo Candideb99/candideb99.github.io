@@ -18,7 +18,7 @@ import { writeJsonAtomic } from "../pipeline/lib/util.mjs";
 import { loadSnapshot, saveSnapshot } from "../pipeline/lib/snapshots.mjs";
 import { loadSources, settleDrift } from "../pipeline/lib/factcheck.mjs";
 import { boxFacts } from "../pipeline/lib/keyfacts.mjs";
-import { newsDepthBrief, normalizeDraft, prioritizeContext } from "../pipeline/lib/write.mjs";
+import { newsDepthBrief, normalizeDraft, prioritizeContext, validateWhyBasis } from "../pipeline/lib/write.mjs";
 import { mergeNewsRefresh, serializeArticle } from "../pipeline/lib/article.mjs";
 import { cleanTags } from "../pipeline/lib/tags.mjs";
 import { groundedRegions } from "../pipeline/lib/regions.mjs";
@@ -344,7 +344,7 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const fresh = '---\nslug: same-story\nsection: economy\nkind: news\npublishedAt: 2026-10-18T10:00:00Z\nimage: null\ndraft: true\n---\nخبر موسع';
   const merged = mergeNewsRefresh(old, fresh, { note: "إضافة شرح وتعريف بالمحلل", at: "2026-10-18T12:00:00Z" });
   check("a refresh keeps the original publication date, picture, cover choice and correction history", [merged.includes("publishedAt: 2026-10-17T10:00:00Z"), merged.includes("old.jpg"), merged.includes("featured: true"), merged.includes("تصحيح سابق"), merged.includes("draft: true")], [true, true, true, true, false]);
-  check("a refresh records its own note/date and new body", [merged.includes("إضافة شرح وتعريف بالمحلل"), merged.includes("updatedAt: 2026-10-18T12:00:00Z"), merged.includes("خبر موسع")], [true, true, true]);
+  check("a style refresh records its date and body without a public editorial banner", [merged.includes("إضافة شرح وتعريف بالمحلل"), merged.includes("updatedAt: 2026-10-18T12:00:00Z"), merged.includes("خبر موسع"), merged.includes("updates:")], [false, true, true, false]);
   let refused = false;
   try { mergeNewsRefresh(old, fresh.replace("same-story", "different-story"), { note: "تحديث" }); } catch { refused = true; }
   check("a refresh cannot overwrite a different article", refused, true);
@@ -357,6 +357,19 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("ordinary waw is not by itself a defect", warnings(body.replace("واستندت", "استندت")).some((w) => w.includes("كل فقرات المتن")), false);
   check("substantial sources get developed reporting guidance", newsDepthBrief([{ text: "a".repeat(4000) }, { text: "b".repeat(4000) }]).includes("450-700"), true);
   check("definitions alone do not turn a brief into rich event reporting", newsDepthBrief([{ text: "short event" }, { kind: "reference", text: "a".repeat(9000) }]).includes("450-700"), false);
+}
+
+{
+  const defects = (body, whyItMatters = "") => styleIssues({ title: "قرار اقتصادي", lede: "أعلن المصرف قراره.", body, whyItMatters }).issues;
+  check("vague reference attribution cannot pass as finished journalism", defects("التصنيف الائتماني، وفق تعريف المرجع، رأي في القدرة على السداد.").some((i) => i.includes("إسناد مبهم")), true);
+  check("the benchmark sense of مرجع remains legitimate", defects("يظل خام برنت مرجعاً لتسعير النفط.").some((i) => i.includes("إسناد مبهم")), false);
+  check("an analyst-led recap cannot replace the house synthesis", defects("يرى المحلل أن القرار مفيد.", "يرى محمود نجلة أن التصنيف الجديد يحسن شروط التمويل.").some((i) => i.includes("تبدأ بإسناد")), true);
+  check("attributed reporting remains valid in the body", defects("يرى المحلل أن القرار مفيد.", "تبقى كلفة الدين قيداً على الموازنة رغم تحسن التصنيف.").some((i) => i.includes("تبدأ بإسناد")), false);
+  const sources = [{ text: "بلغ الدين 81.9% من الناتج المحلي." }];
+  const refuses = (basis) => { try { validateWhyBasis({ why_basis: basis }, sources); return false; } catch { return true; } };
+  check("synthesis premises need real source numbers", refuses([{ fact: "الدين مرتفع", source: 2 }]), true);
+  check("a premise cannot borrow a figure absent from its source", refuses([{ fact: "بلغ الدين 60% من الناتج المحلي", source: 1 }]), true);
+  check("a sourced premise is accepted for semantic review", refuses([{ fact: "بلغ الدين 81.9% من الناتج المحلي", source: 1 }]), false);
 }
 
 if (failed) {

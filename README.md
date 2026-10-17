@@ -149,9 +149,18 @@ Models: Gemini by default, or Claude, OpenAI, Qwen, OpenRouter (see "Model provi
 For an owner-requested editorial expansion of one published news event, use
 `node pipeline/run.mjs --refresh=<slug> --refresh-note='<Arabic explanation of the update>'`.
 It refetches the article's cited sources and runs the normal notes, writer, desk, critic/revision
-and factual check. It preserves the address/date and adds an editorial update; a rejected refresh
+and factual check. It preserves the address/date and records its reason in the run report, without
+a public style-update banner; a rejected refresh
 leaves the live article intact. `--dry-run --preview=<temp directory>` previews it without changing
 the article or state. This is a deliberate single-story action, never a scheduled mass rewrite.
+
+To evaluate future writing on unseen feed events, use
+`node pipeline/run.mjs --dry-run --limit=3 --text-only --writing-audit --preview=<system-temp subdirectory>`.
+The normal selector, notes, writer, copy desk, critic/revision and factual check run; only photographs
+are skipped. Raw/final drafts, reviews and source bodies stay in that temporary directory, outside
+the public repository. `node scripts/writing-eval.mjs --input=<same directory>` compares anonymous
+raw/final texts with a separate reader prompt. This uses subscription quota. It never rewrites or
+publishes its inputs; a small same-model assessment does not establish unattended editorial quality.
 
 ```bash
 npm ci

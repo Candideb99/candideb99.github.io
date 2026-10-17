@@ -229,8 +229,8 @@ const FACTS_CHECK = "Every number, date, name, quote and causal claim in the dra
 const CRITIC_RUBRIC = {
   news: {
     material: "",
-    facts: FACTS_CHECK,
-    check: "Is this ONE story? An article that stitches unrelated developments together (different countries' data releases, a decision plus an unrelated market move, a sanctions remark beside a confidence survey) is a roundup, not a news story, and must be rejected: say which developments do not belong. Then: does the article add anything not in the sources beyond neutral, well-known context?",
+    facts: `${FACTS_CHECK} The synthesis box's reported premises must be grounded; its bounded inference is evaluated separately under WHY IT MATTERS, not penalised merely for not being a source's own conclusion.`,
+    check: "Is this ONE story? An article stitching unrelated developments together is a roundup and must be rejected. The headline, lede and body report supplied facts. The synthesis box draws a bounded house inference from those facts: check its economic logic and limiting conditions. Identify invented premises or overstated certainty as concrete errors under the existing scoring rules, and request revision for an attributed recap or empty generality.",
   },
   explainer: {
     material:
@@ -274,7 +274,7 @@ export async function critique({ draft, sources, explainer = false, analysis = f
 ${[rubric.material, material || (explainer ? "" : "(no sources supplied)")].filter(Boolean).join("\n\n")}
 
 DRAFT ARTICLE (JSON)
-${JSON.stringify({ title: draft.title, subtitle: draft.subtitle, lede: draft.lede, body: draft.body, key_facts: draft.keyFacts, why_it_matters: draft.whyItMatters, chart: draft.dataChart ? `(a chart of official data, filled by code from ${draft.chart?.source ?? "the IMF or the World Bank"}; not in the sources, and not to be judged against them)` : draft.chart, table: draft.table }, null, 2)}
+${JSON.stringify({ title: draft.title, subtitle: draft.subtitle, lede: draft.lede, body: draft.body, key_facts: draft.keyFacts, why_it_matters: draft.whyItMatters, ...(news ? { why_basis: draft.whyBasis ?? [] } : {}), chart: draft.dataChart ? `(a chart of official data, filled by code from ${draft.chart?.source ?? "the IMF or the World Bank"}; not in the sources, and not to be judged against them)` : draft.chart, table: draft.table }, null, 2)}
 
 CHECK
 1. ${rubric.facts}
@@ -288,7 +288,8 @@ ${news ? EDITORIAL_READER_CHECK : ""}
 
 ${previousIssues?.length ? `\nA REVISION WAS MADE. These problems were reported on the previous draft; say which of them remain and judge the draft as it now stands, not the old one:\n${previousIssues.map((i, n) => `${n + 1}. ${i}`).join("\n")}\n` : ""}
 SCORING (apply exactly)
-A real error is: a figure with a changed magnitude, direction, period, unit or actor; a claim, cause or consequence no source makes; a wrong attribution; a quotation that is not verbatim from an Arabic source; a headline that says more than the sources. A faithful paraphrase, a synonym, a rounding the source's own headline makes (108 for 108.44), a large count rounded in thousands or millions with «نحو» (نحو 456 ألف for 455,758), a shorter attribution form, or the omission of a detail is NOT an error.
+${news ? "For the synthesis box, distinguish reported premises from inference. Independently check why_basis against the numbered sources: these are the writer's assertions, not verified evidence. A bounded economic inference from supported premises is allowed even when no source states that conclusion. Invented premises, a faulty causal link or certainty beyond the evidence remain errors. An attributed recap or vague process attribution is a concrete editorial defect requiring revision." : ""}
+A real error is: a figure with a changed magnitude, direction, period, unit or actor; a reported claim, cause or consequence no source makes (subject to the synthesis distinction above); a wrong attribution; a quotation that is not verbatim from an Arabic source; a headline that says more than the sources. A faithful paraphrase, a synonym, a rounding the source's own headline makes (108 for 108.44), a large count rounded in thousands or millions with «نحو» (نحو 456 ألف for 455,758), a shorter attribution form, or the omission of a detail is NOT an error.
 Start from 10. Subtract 1 for each real error and 1 for each translationese fault (point 4). A draft with no real error scores 8 or more whatever its style points. Verdict: "publish" at 7 or more with no real error or unresolved concrete editorial defect; "revise" for one to three real errors, translationese, incomplete wording or disconnected construction; "reject" only for a fabricated key fact, a misrepresented story, or a draft that cannot be fixed from the sources.
 List at most six issues, the real errors first, each quoting the offending text and naming the source that contradicts it; include demonstrated Arabic or construction defects after the factual errors, without padding the list with stylistic preferences.
 

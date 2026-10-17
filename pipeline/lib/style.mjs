@@ -188,6 +188,8 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
   const lede = String(draft.lede ?? "");
   const box = String(draft.whyItMatters ?? "");
   const prose = [title, dek, lede, body, box].join("\n");
+  const processAttribution = prose.match(/(?:وفق(?:اً)?|بحسب|حسب|طبقاً)\s+(?:تعريف\s+)?(?:المرجع|المادة|النص المرفق|المصادر المرفقة|المعلومات المتاحة)(?![\p{L}\p{M}])/u);
+  if (processAttribution) issues.push(`إسناد مبهم إلى عملية الإعداد («${processAttribution[0]}»)؛ اشرح التعريف بلغة مباشرة وأبقِ مرجعه في المصادر، أو سمّ الجهة صاحبة الادعاء الذي يحتاج إلى إسناد.`);
   const news = kind === "news";
 
   for (const rule of BANNED) {
@@ -343,6 +345,7 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
   const ledeSeen = new Set(contentWords(`${title}\n${dek}\n${lede}`));
   if (news && first && covered(contentWords(first), ledeSeen) > 0.6) warnings.push(`الفقرة الأولى من المتن تتداخل مع المقدمة («${first.slice(0, 50)}…»)؛ راجع هل تضيف شرحاً أو مقارنة أو شرطاً ضرورياً. احذف إعادة المعنى وحدها، وأبقِ التفصيل الذي يوضح الخبر؛ تكرار المصطلح أو الرقم لهذا الغرض ليس عيباً بذاته.`);
   if (box) {
+    if (news && /^(?:و|ف)?(?:يرى|ترى|قال|قالت|يقول|تقول|بحسب|وفق(?:اً)?)(?![\p{L}\p{M}])/u.test(box.trim())) issues.push('«لماذا يهمّ» تبدأ بإسناد أو رأي منقول؛ هي قراءة خازندار للمعنى الاقتصادي الأوسع من الوقائع، وليست ملخصاً أو نقلاً عن محلل. أبقِ آراء المحللين في المتن، واربط مقدمات الخبر بنتيجة محدودة بشروطها.');
     const bodyGrams = grams(contentWords(`${lede}\n${body}`));
     const recaps = sentencesOf(box).filter((s) => {
       const g = [...grams(contentWords(s))];

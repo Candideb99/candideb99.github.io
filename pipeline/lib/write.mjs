@@ -17,7 +17,7 @@ ${EDITORIAL_CRAFT}
 - EVERY FIGURE in this order: value, unit, direction, benchmark, time, source («تراجع سعر الذهب 0.3% إلى 4522 دولاراً للأونصة بحلول الساعة 02:22 بتوقيت غرينتش، بحسب رويترز»). Adjectives only when quantified («أكبر زيادة منذ مايو»); never «بشكل كبير».
 - ATTRIBUTION in the desks' forms: «قال X في بيان/مقابلة إن» (always إن after قال), «وأضاف»، «وأوضح»، «وأشار إلى أن»، «وفق بيانات صدرت الخميس»، «بحسب رويترز»، «نقلاً عن». Name each source once, where its information first enters; after that the reporting verb («وأضاف») or one attribution at the head of the paragraph carries it. Never repeat an attribution tag for the same source within a paragraph. Different speakers or institutions keep their own explicit attribution when their related claims share a paragraph; never merge their voices or create a tiny paragraph solely because the source changes. Never twice for the same source, never two sentences in a row tagged «وفقاً لـ/بحسب», never «وفقاً للمصدر نفسه», never one outlet more than three times in a story; a market price needs its source once. «أكد» takes an object, never «أكد على». «كشف» only for something that was hidden.
 - EXPECTATIONS are always someone's: «يتوقع المجلس أن»، «ترجّح الأسواق»، «مرشح لـ»، «من المرجح بحسب». Never a floating forecast.
-- ATTRIBUTE every claim to its source; never present a source's claim as your own knowledge.
+- Attribute reported decisions, figures, disputed claims and opinions to their actual origin. Standard definitions may be stated directly in fluent Arabic, with their reference included in the source list; no «وفق تعريف المرجع» or account of the desk's research. The synthesis box follows WHY IT MATTERS below: grounded premises and bounded house reasoning, not an analyst's attributed recap.
 - SOURCES THE WAY A WIRE DESK USES THEM. A fact is attributed to where it comes from: the institution, company or official that announced it, the body that published the data, or the news agency that reported it (رويترز، بلومبرغ، فرانس برس، أسوشيتد برس، الأناضول). A newspaper, channel or website is named only for what it alone reports (its interview, its own sources, its exclusive, its own tally or analysis), never as the source of a public fact such as a decision, a published figure or a market price. An Arab outlet (الشرق الأوسط، الجزيرة، العربية، سكاي نيوز عربية، اندبندنت عربية، البورصة، بي بي سي عربي) is not cited at all except for its own exclusive: the Arab desks do not quote one another for public facts. Give the institution or agency behind the report, or no tag when the fact is public («رفع الاحتياطي الفيدرالي الفائدة الأسبوع الماضي»).
 - WHEN SOURCES DISAGREE on a figure (prices and yields are quoted at different times of the session): report one figure, the latest-timed or the one the institution itself published, with its time when the source gives it («في أواخر التعاملات»). Never tell the reader that sources differ, and never compare what outlets reported («أوردت … أرقاماً أدنى»).
 - Keep every number, date and name exactly as in the sources. Never invent, estimate, round differently, or extrapolate; the one rounding allowed is the desks' own for large counts in the headline, dek and lede (below). If a figure is missing, say the source did not disclose it.
@@ -27,7 +27,7 @@ ${EDITORIAL_CRAFT}
 - IDIOMS AND TRADE TERMS: translate what they mean, never their words (industrial-scale, crown jewels, at the pump, guardrails, choke point, ground stop, term contracts, lagged effects, surprisingly strong, intraday, grounded, "Senator X of Alaska" = «السيناتور عن ألاسكا»). Use the term the Arab business desks use, or say plainly what happened; replace an awkward calque rather than explaining it; a necessary technical concept may still need a brief definition.
 - EACH FIELD HAS A JOB. The dek adds a significant detail or qualification to the headline. The body develops the opening with evidence, conditions, comparison and explanation; delete a bare restatement, but keep a return to a fact when it explains something new. «لماذا يهمّ» develops an evidenced consequence. Do not sacrifice intelligibility to make every field contain completely different facts.
 - JOINTS WITH A JOB. Arabic's own: «و»، «فـ»، «فقد»، «ثم»، «لكن»، «أما … فـ»، «وكان … قد»، «ورغم»، «وقال». Introduce background directly where needed; «وكان … قد» is one option, not a required opener. Never «ويأتي/وجاء + noun + في وقت/في ظل/وسط» and never «يأتي ذلك». «، إذ» only when the clause explains the one before, never before a reporting verb. «فيما/بينما» only for two things happening at once, never to slip a second development into the dek. «حيث» only for a place; «مما» at most once.
-- NO TEMPLATES. At most one «الأول… والثاني» list and one «ليس… بل» contrast in a piece; no «السؤال الحقيقي»، «معادلة صعبة»، «ليس مجرد»; the dek is one statement, not a how/why/what list; «حاد، انهيار، تاريخي، الاستراتيجي، جداً» only beside the number that earns them; no closing verdict without a source.
+- NO TEMPLATES. At most one «الأول… والثاني» list and one «ليس… بل» contrast in a piece; no «السؤال الحقيقي»، «معادلة صعبة»، «ليس مجرد»; the dek is one statement, not a how/why/what list; «حاد، انهيار، تاريخي، الاستراتيجي، جداً» only beside the number that earns them; no closing verdict in the reported body without a source; the separate synthesis box follows WHY IT MATTERS.
 - DATES as the desks write them: the weekday for this week («الجمعة»), the month for this year («في 18 سبتمبر»), the year only when it is not the current one; never an ISO date, never «بتاريخ», never «اليوم» or «أمس» (the story is read after today).
 - BANNED (a sub-editor cuts them; the checker rejects them): fillers «في هذا السياق»، «تجدر الإشارة»، «من الجدير بالذكر»، «يُذكر أن»، «لا يخفى»، «في نهاية المطاف»، «بالإضافة إلى ذلك»، «علاوة على ذلك»، «من ناحية أخرى»، «على الرغم من ذلك»؛ calques «تم/يتم + مصدر»، «من قبل»، «يقوم بـ»، «يلعب دوراً»، «بشكل/بصورة + صفة»، «على صعيد»، «على مستوى»، «يعتبر»، «ما إذا كان»، «هناك ارتفاع في»، «شهد ارتفاعاً»؛ clichés «بمثابة»، «يسلط الضوء»، «يمهد الطريق»، «نقطة تحول»، «مما يعكس»، «في خطوة»، «في إطار»، «يأتي ذلك»، «وفقاً للمصدر نفسه». Prefer «نحو» to «حوالي»، «في الوقت نفسه»، «مديرو»، «أسهم»، «مهم».
 - THE REGISTER OF MEDIA ARABIC (لغة وسائل الإعلام), the formulas readers of Arabic news expect. Reporting: أفادت وكالة/صحيفة … بأن، ذكرت مصادر، نقلت … عن … قوله، أعلن/أعلنت، كشف، أوضح، أشار إلى أن، لفت إلى، أكد، شدّد على، نفى، حذّر من، دعا إلى، من جانبه/من جهته/بدوره (a second speaker), في تصريحات لـ، في بيان صدر اليوم، في مؤتمر صحفي، على هامش. Time and cause: عقب، إثر، غداة، على خلفية، في ظل، وسط، مع، بعدما، فيما، في وقت لاحق، من المقرر أن، في غضون، خلال. Economy: سجّل، بلغ، ارتفع/تراجع/قفز/هبط بنسبة … ليصل إلى، على أساس سنوي/شهري، مقارنة بـ، مقابل، أعلى/أدنى مستوى منذ، نقطة أساس، سعر الفائدة، العائد، سعر الصرف، الاحتياطي، العجز/الفائض، الميزان التجاري، الدين العام، التضخم الأساسي، الناتج المحلي الإجمالي، الطلب/المعروض، العقود الآجلة، المعاملات الفورية، الجلسة، الإغلاق، المكاسب/الخسائر الأسبوعية، الصكوك، الإدراج، الاكتتاب، الاستحواذ، الاندماج، الموازنة، التقشف، الخصخصة، الدعم. Use them as a native desk does: formulas carry the news, they never pad it.
@@ -65,7 +65,8 @@ const SCHEMA_TEXT = `{
   "lede": "Opening paragraph: 2-3 sentences with the core news, the who/what/when, and the main number",
   "body": "The rest of the article in Markdown, with blank lines between coherent paragraphs. Select and organise the facts that explain the event; no fixed paragraph count or one-provision-per-paragraph template. Usually 300-550 words total when the material carries that much; a small event can be a brief of 120-250 words. Never pad. May include one or two '## ' subheads if the piece is long.",
   "key_facts": [{"label": "short Arabic label (2-5 words) naming what is measured, where and when, e.g. الوظائف المباشرة في المصانع الثلاثة; no source in brackets", "value": "a FIGURE exactly as sourced, with its unit, e.g. 4,000 or 1.7 مليار جنيه or 2.25%; never a name, a place, a date or a weekday"}],
-  "why_it_matters": "Two or three Arabic sentences (40-90 words) stating ONE concrete consequence of this event that a source reports or that follows from the story's own figures; it may reuse a body figure only as the premise of that consequence. Name an Arab country, company or price only when a source makes the link; otherwise say what the event changes in its own market. Never a recap of the body, never a chain of «قد يؤدي… مما قد…», never tell the reader what to understand, never open with «يعكس/يمثل/يُعدّ».",
+  "why_it_matters": "Two or three fluent Arabic sentences in Khazendar's own voice: the wider economic significance, decisive constraint or trade-off inferred from supplied facts. No attributed analyst recap, vague reference, generic moral or invented outcome. Preserve the inference's conditions. Follow WHY IT MATTERS in the house brief.",
+  "why_basis": [{"fact": "one concise reported premise underpinning the synthesis, not a new inference", "source": 1}],
   "tags": ["3-5 Arabic tags: institutions, countries, sectors, indicators"],
   "regions": ["1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي"],
   "image_queries": ["2-3 short English search terms (2-4 words each) naming a concrete subject that exists as a photo on Wikimedia Commons. When named people are the news itself (a summit, talks, a statement, a head of state's or central banker's own decision), the FIRST term is their full names, together when there are two (e.g. 'Donald Trump Xi Jinping', 'Jerome Powell'): the desks illustrate such a story with a photo of those people, from an earlier occasion if need be. When the news is a thing an official announced (sanctions on an airline, a verdict on a product, a rule for banks), the first term is that thing ('Iran Air Airbus', 'iPhone', 'bank branch'), never the official. Otherwise, and for the other terms: an institution's headquarters, a city, a port, a plant, a product, a commodity (e.g. 'Bundesbank Frankfurt', 'Ras Laffan', 'oil tanker', 'Riyadh skyline'). A sector's exports or imports: its best-known goods being packed, loaded or sold ('orange packing Egypt', 'citrus fruit crates', 'container ship Port Said'), never a factory of a product the story does not name; no adjectives, no abstract concepts"],
@@ -178,7 +179,7 @@ For an expert whose view you select, retain a concise source-backed role and ins
 
 For substantial material, select the distinct facts needed for a developed report, normally 14-20 rather than a digest of the first source. Preserve the named expert's concise role, the central term's sourced definition, the scale/category that makes a rating meaningful, a relevant comparison, the reported financing mechanism and material risks or limits. Use at most three supplied REFERENCE definitions as separately numbered facts, never as news of a second event. A rating reference should supply meaning (creditworthiness, the investment/speculative risk distinction and its financing implication), not just a list of code thresholds. Leave out ancillary jargon that no supplied source explains, such as credit-default swaps, if the main event can be explained without it. State the role independently and concisely rather than pasting a long job title. Do not drop useful explanatory material merely to shorten the list; remove duplicate facts and ceremonial promises first. Thin evidence remains thin.
 
-${lessons}TASK
+${lessons}${lessons ? "SCOPE OF THE LEARNED RULES: preserve their safeguards for reported facts and attribution. A prohibition on adding a source's conclusion does not prohibit the house synthesis permitted by WHY IT MATTERS. Its premises remain sourced, its inference remains bounded and conditional, and no analyst opinion becomes an established fact.\n\n" : ""}TASK
 Extract the desk notes for this ONE event (the working headline). 8 to 20 facts, each one Arabic sentence of at most 30 words in your own words (never a sentence copied from an Arabic source), with the figure, its unit, the date and the actor exactly as the source gives them, and the number of the source it comes from; a figure appears only with its own period and unit. Attribution words belong in the fact («قال المصرف في بيان إن…», «بحسب بيانات المكتب…»): a public fact (a decision, a published figure, a price) names the institution, company or news agency behind it, never the outlet that relayed it; an outlet is named only for what it alone reports (its own sources, interview or exclusive). When two sources give different figures for the same measure, keep ONE fact: the latest-timed, or the one the institution itself published, with its time if the source gives it; never both. Leave out everything that is a different event, a background fact from memory, or an interpretation.
 Within those notes, preserve the supplied facts that explain this event: its purpose, relevant previous position, meaningful comparison, affected group and decisive exceptions or conditions. Select the useful context instead of filling the notes with procedural details. In reader_context, identify the ONE source-backed fact that best answers why the event matters or what the reader must understand to interpret it: a law's purpose, the meaningful prior position, an affected group or a mechanism. Prefer this to a signing date or a list of delegated officials. Write it independently in Arabic with its source number, under the same accuracy and originality rules. Return null only if the sources contain no useful context; never invent it. Distinguish new from existing measures, a fixed rate from a ceiling, the reference date of a deadline and a sample from a whole population. For a provision described differently by reports, use its supplied primary document when available. Then list up to three verbatim quotations only if the source is Arabic (Arabic text copied exactly); for other languages, no quotations.
 In identifications, reserve up to three source-backed sentences identifying the unfamiliar experts whose views you selected (name, concise role and institution). Use [] when no such expert is selected or the source supplies no role. These sentences count within the twenty-fact budget, not in addition to it; write them independently, not as a copied string of job-title words.
@@ -252,7 +253,7 @@ function notesBlock(notes) {
   if (!notes) return "";
   const facts = notes.facts.map((f, i) => `${i + 1}. ${f.fact} [SOURCE ${f.source}]`).join("\n");
   const quotes = notes.quotes?.length ? `\nVERBATIM ARABIC QUOTATIONS (the only text that may stand inside «»):\n${notes.quotes.map((q) => `- «${q.text}» [SOURCE ${q.source}]`).join("\n")}` : "";
-  return `DESK NOTES: the facts of this one event, each checked against its source. The article states these facts and nothing else: every figure, date, name and attribution in the article must appear in the notes; the source material below is for phrasing and attribution only. Facts that are not in the notes do not enter the article.
+  return `DESK NOTES: the facts of this one event, each checked against its source. Every reported figure, date, name and attribution must appear in these notes; do not add facts from memory. The synthesis box may draw a limited inference from these facts under WHY IT MATTERS, without inventing an additional fact. The source material below is for accurate phrasing and attribution, not additional reporting beyond the notes.
 Event: ${notes.event}
 ${facts}${quotes}
 
@@ -269,6 +270,17 @@ export function newsDepthBrief(sources) {
   return substantial
     ? "DEVELOPED REPORT: aim for 450-700 words (lede plus body) when distinct evidence supports it. Explain the central terms, meaningful comparisons, reported mechanism and limits, and identify experts. Do not compress rich reporting into a 160-word digest; do not pad or invent facts to reach a number. A shorter complete account is preferable to filler."
     : "Use the depth the distinct evidence supports. A thin event remains a brief; do not invent background to lengthen it.";
+}
+
+/** Premises, not private reasoning: a small source-indexed audit trail for the synthesis. */
+export function validateWhyBasis(d, sources) {
+  const basis = d.why_basis ?? d.whyBasis;
+  if (!Array.isArray(basis) || basis.length < 1 || basis.length > 4) throw new Error("why_basis needs one to four reported premises with source numbers");
+  for (const p of basis) {
+    const source = sources[Number(p?.source) - 1];
+    const fact = String(p?.fact ?? "").trim();
+    if (!Number.isInteger(Number(p?.source)) || !source || !fact || arabicRatio(fact) < 0.7 || ungroundedNumbers(fact, [source.text || source.summary || ""]).length) throw new Error("why_basis premise is not grounded in its numbered source");
+  }
 }
 
 export async function writeArticle({ story, sources, notes = null, log, lessons = "", today = new Date() }) {
@@ -297,6 +309,7 @@ ${SCHEMA_TEXT}`;
       // The editor's region tags stand in for tags the model forgot.
       ensureTags(d, story.regions);
       validateDraft(d, { minWords: newsFloor(notes) });
+      validateWhyBasis(d, sources);
     },
   });
   return { draft: normalizeDraft(data), model };
@@ -313,12 +326,12 @@ ${JSON.stringify(draft, null, 2)}
 ${notesBlock(notes)}SOURCE MATERIAL
 ${sources.map(writerSourceBlock(notes)).join("\n\n")}
 
-${lessons}${wordLimits || kind ? "" : newsDepthBrief(sources)}
+${lessons}${lessons && !wordLimits && !kind ? "SCOPE OF THE LEARNED RULES: they protect reported facts and attribution; WHY IT MATTERS separately permits a bounded house inference from sourced premises. Never convert an analyst's opinion into an established fact.\n\n" : ""}${wordLimits || kind ? "" : newsDepthBrief(sources)}
 An editor found the following problems. Fix every one of them strictly using the source material. Remove any claim or number that the sources do not support. Preserve useful explanations, identification and developed comparisons; do not shrink the report into a digest during revision. Keep everything else intact, and keep the article at least ${wordLimits?.target ?? (newsFloor(notes) < 120 ? 120 : 160)} words (lede + body) when the sources allow it; never pad with unsupported material.
 PROBLEMS
 ${issues.map((i, n) => `${n + 1}. ${i}`).join("\n")}
 
-Return the complete corrected article as one JSON object with the same keys as before (title, subtitle, slug, lede, body, key_facts, why_it_matters, tags, regions, image_queries${draft.chart || draft.table ? ", chart, table" : ""}).`;
+Return the complete corrected article as one JSON object with the same keys as before (title, subtitle, slug, lede, body, key_facts, why_it_matters, ${!wordLimits && !kind ? "why_basis, " : ""}tags, regions, image_queries${draft.chart || draft.table ? ", chart, table" : ""}).`;
   const { data, model } = await chat({
     role: "writer",
     system: kind === "paper" ? PAPER_SYSTEM : kind === "feature" ? FEATURE_SYSTEM : wordLimits ? ANALYST_SYSTEM : WRITER_SYSTEM,
@@ -331,6 +344,7 @@ Return the complete corrected article as one JSON object with the same keys as b
     validate: (d) => {
       ensureTags(d, draft.tags);
       validateDraft(d, wordLimits ?? { minWords: newsFloor(notes) });
+      if (!wordLimits && !kind) validateWhyBasis(d, sources);
     },
   });
   return { draft: normalizeDraft(data, { kind: kind || "news" }), model };
@@ -355,6 +369,7 @@ export function normalizeDraft(d, { kind = "news" } = {}) {
     body: String(d.body ?? "").trim(),
     keyFacts,
     whyItMatters: String(d.why_it_matters ?? "").trim(),
+    whyBasis: (Array.isArray(d.why_basis ?? d.whyBasis) ? (d.why_basis ?? d.whyBasis) : []).map((p) => ({ fact: String(p?.fact ?? "").trim(), source: Number(p?.source) })).filter((p) => p.fact && Number.isInteger(p.source) && p.source > 0).slice(0, 4),
     tags: [],
     regions: [],
     imageQueries: (Array.isArray(d.image_queries) ? d.image_queries : []).map((q) => String(q).trim()).filter(Boolean).slice(0, 3),

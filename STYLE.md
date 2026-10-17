@@ -58,9 +58,11 @@ intraday, grounded, "Senator X of Alaska" = السيناتور عن ألاسكا
 than explaining it, but keep a useful brief definition of a necessary technical concept.
 
 **Each field has a job.** The dek adds an important detail or qualification to the headline;
-the body develops the opening through evidence, comparison or explanation; لماذا يهمّ states one
-concrete consequence that a source reports or that follows from the story's own figures, names an Arab
-country, company or price only when a source makes the link, and never recaps, speculates in chains
+the body develops the opening through evidence, comparison or explanation. لماذا يهمّ gives
+Khazendar's own bounded synthesis: connect sourced facts to a material constraint, trade-off or
+transmission channel, with conditions stated plainly. It is neither a summary nor an analyst's
+attributed opinion. Reported premises must be sourced; the inference need not repeat a source's
+conclusion. No invented outcome, forecast or country effect. It never recaps or speculates in chains
 (قد يؤدي… مما قد…), addresses the reader or opens with يعكس/يمثل/يُعدّ. A sentence whose facts already
 appear higher up without adding meaning is deleted. Repeating a figure to explain its components
 or comparison, or a term to keep its referent clear, is useful. The copy desk may cut a repeat because its guard counts facts over the
@@ -197,8 +199,8 @@ may begin with their subject, comparisons with their facts, while each speaker r
 
 An owner-selected news article can be re-reported through `pipeline/run.mjs --refresh=<slug>
 --refresh-note=<Arabic note>`. It faces the existing gate and factual check, keeps its address,
-original publication date, picture and previous correction history, and gains a dated editorial
-update. The schedule never invokes this option. A failed refresh leaves the published text intact.
+original publication date, picture and previous correction history. Its reason is recorded in
+the internal run report; style improvements carry no public editorial-update banner (owner, 2026-10-17). The schedule never invokes this option. A failed refresh leaves the published text intact.
 
 ## 2. The editing (فن التحرير الصحفي)
 

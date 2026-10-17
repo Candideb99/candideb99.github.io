@@ -18,6 +18,7 @@
 import "./lib/env.mjs";
 import { mkdir, readFile, writeFile, appendFile } from "node:fs/promises";
 import path from "node:path";
+import os from "node:os";
 import process from "node:process";
 import YAML from "yaml";
 import { fetchFeed } from "./lib/feeds.mjs";
@@ -51,6 +52,13 @@ const option = (name, fallback) => {
 const DRY_RUN = flag("dry-run");
 /** `--dry-run --preview=DIR`: what the run would publish is written to DIR instead, to be read first. */
 const PREVIEW_DIR = DRY_RUN ? option("preview", null) : null;
+/** Private writing evaluation only: never change scheduled publishing or save source bodies in the repository. */
+const TEXT_ONLY = DRY_RUN && flag("text-only");
+const WRITING_AUDIT = DRY_RUN && PREVIEW_DIR && flag("writing-audit");
+if (WRITING_AUDIT) {
+  const relative = path.relative(os.tmpdir(), path.resolve(PREVIEW_DIR));
+  if (!relative || relative.startsWith("..") || path.isAbsolute(relative)) throw new Error("--writing-audit requires a preview subdirectory inside the system temp directory");
+}
 /** `--draft`: write every article with `draft: true`, so nothing reaches the site until the editor publishes it from the desk. */
 const DRAFT = flag("draft");
 const MODE = option("mode", "news");
@@ -309,6 +317,13 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   const { items, sources, evidenceChars } = await collectEvidence(story, candidates);
   const eventSources = eventSourcesOf(sources);
   const entry = { headline: story.headlineHint, section: story.section, importance: story.importance, sources: sources.map((s) => s.url) };
+  const audit = { story, sources };
+  const checkpoint = async (stage, details = {}) => {
+    if (!WRITING_AUDIT) return;
+    Object.assign(audit, details, { stage });
+    await mkdir(PREVIEW_DIR, { recursive: true });
+    await writeFile(path.join(PREVIEW_DIR, `${fingerprint(story.headlineHint)}.writing-audit.json`), JSON.stringify(audit, null, 2));
+  };
   // A story is written from at least one fetched article body, never from feed summaries alone: a writer asked
   // for 300 words out of 100 invents the rest. The items take the short "rejected" mark, so a page that was
   // down is tried once more next run.
@@ -350,6 +365,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   let { draft, model: writerModel } = await writeArticle({ story, sources, notes, log, lessons });
   // The writer's own draft, before the desk and the critic touch it: what a private pair compares.
   const firstDraft = draft;
+  await checkpoint("written", { notes, firstDraft, writerModel });
   const desk = await copyDeskPass(draft, { sources });
   draft = desk.draft;
   const deskModel = desk.model;
@@ -357,6 +373,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   const minWords = newsFloor(notes);
   let checks = programmaticChecks(draft, sources, { recentTitles, minWords });
   let review = await critique({ draft, sources, log });
+  await checkpoint("first-review", { deskDraft: draft, firstReview: review, checks });
   entry.editorialReviews = [{ pass: 1, verdict: review.verdict, readerCheck: review.readerCheck }];
   log(`critic "${draft.title}": ${review.verdict} score=${review.score} issues=${review.issues.length}`);
   for (const issue of [...checks.issues, ...review.issues].slice(0, 4)) log(`  · ${String(issue).slice(0, 160)}`);
@@ -376,6 +393,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     checks = programmaticChecks(draft, sources, { recentTitles, minWords });
     ({ draft, checks } = await lastDeskPass(draft, checks, { sources, recheck: (d) => programmaticChecks(d, sources, { recentTitles, minWords }) }));
     if (!checks.ok) {
+      await checkpoint("rejected-checks", { finalDraft: draft, checks });
       entry.outcome = `rejected after revision: ${checks.issues.join(" | ")}`;
       report.push(entry);
       log(`reject "${draft.title}" after revision: ${checks.issues.join(" | ")}`);
@@ -384,6 +402,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     // Every revised draft faces the critic again and is published only with a second-pass score of 6 or more.
     const floor = 6;
     review = await critique({ draft, sources, previousIssues: issues, log });
+    await checkpoint("second-review", { finalDraft: draft, finalReview: review, checks });
     entry.editorialReviews.push({ pass: 2, verdict: review.verdict, readerCheck: review.readerCheck });
     log(`critic (second pass) "${draft.title}": ${review.verdict} score=${review.score} issues=${review.issues.length}`);
     if (review.verdict === "reject" || review.score < floor) {
@@ -400,6 +419,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   const pre = await precheck({ draft, sources, log, validate: (d) => programmaticChecks(d, sources, { recentTitles, minWords }) });
   const found = pre.rounds.reduce((n, r) => n + r.found.length, 0);
   entry.precheck = { ok: pre.ok, repairs: pre.repairs, rounds: pre.rounds.length, found };
+  await checkpoint(pre.ok ? "checked" : "held", { finalDraft: pre.ok ? pre.draft ?? draft : draft, finalReview: review, precheck: entry.precheck });
   if (!pre.ok) {
     entry.outcome = `held by the check before publication: ${pre.held}`;
     report.push(entry);
@@ -416,7 +436,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
 
   // The whole story and its sources' own lead photographs go to the picture desk: the cascade's place and the
   // subject of the sources' photographs come before the writer's searches (lib/images.mjs findImage()).
-  const image = refresh ? refresh.data.image : await pickImage({ draft, story, log, exclude: usedImages(existing), sources });
+  const image = refresh ? refresh.data.image : TEXT_ONLY ? null : await pickImage({ draft, story, log, exclude: usedImages(existing), sources });
   const slug = refresh ? refresh.data.slug : buildSlug(draft, story);
   let markdown = serializeArticle({
     pending: DRAFT,
@@ -441,10 +461,13 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   });
   if (refresh) markdown = mergeNewsRefresh(refresh.original, markdown, { note: REFRESH_NOTE });
   entry.outcome = refresh ? "refreshed" : "published";
+  if (refresh) entry.editorialRefresh = { reason: REFRESH_NOTE, at: isoNow() };
+  entry.whyBasis = draft.whyBasis ?? [];
   entry.slug = slug;
   entry.title = draft.title;
   entry.score = review.score;
   entry.image = image ? "photo" : "cover-art";
+  await checkpoint("accepted", { finalDraft: draft, finalReview: review, outcome: entry.outcome });
   report.push(entry);
   if (!DRY_RUN || PREVIEW_DIR) {
     const dir = PREVIEW_DIR ?? ARTICLES_DIR;

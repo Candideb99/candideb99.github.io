@@ -86,7 +86,6 @@ const articles = defineCollection({
     deskedAt: isoString.optional(),
     /** Corrections printed at the foot of the story, as /methodology/ promises (pipeline/correct.mjs writes them). */
     corrections: z.array(z.object({ date: isoString, note: z.string() })).default([]),
-    updates: z.array(z.object({ date: isoString, note: z.string() })).default([]),
     models: z.record(z.string(), z.string().nullable()).optional(),
     quality: z
       .object({
