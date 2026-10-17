@@ -18,11 +18,16 @@
  */
 import http from "node:http";
 import { spawn, spawnSync } from "node:child_process";
-import { readFile, readdir, unlink, writeFile, rm } from "node:fs/promises";
+import { readFile, readdir, unlink, writeFile, rm, mkdtemp } from "node:fs/promises";
 import { existsSync, readFileSync } from "node:fs";
-import { randomUUID } from "node:crypto";
+import { randomUUID, randomBytes } from "node:crypto";
 import path from "node:path";
+import os from "node:os";
 import YAML from "yaml";
+import { codexStatus } from "../pipeline/lib/codex.mjs";
+import { accountById, listAccounts, beginAccountLogin, loginState, setAccountReminder, setAccountPool, readAccountStore } from "../pipeline/lib/codex-accounts.mjs";
+import { validateCodexAuth } from "../pipeline/lib/codex-cloud.mjs";
+import { readQuotaState, refreshAccountUsage } from "../pipeline/lib/codex-pool.mjs";
 
 const root = process.cwd();
 const PORT = Number(process.env.KHAZENDAR_CONTROL_PORT ?? 7777);
@@ -82,11 +87,77 @@ async function setEnvKey(name, value) {
   if (value) kept.push(`${name}=${value}`);
   kept.push("");
   await writeFile(file, kept.join("\n"), "utf8");
+  if (value) process.env[name] = value;
+  else delete process.env[name];
 }
 /** A secret goes to GitHub over stdin, never as an argument, so it never shows in a process list. */
 function ghSecret(name, value) {
   const r = spawnSync("gh", ["secret", "set", name, "--repo", REPO], { input: value, encoding: "utf8", shell: process.platform === "win32", windowsHide: true });
   return r.status === 0 ? "ok" : (r.stderr || r.stdout || "gh failed").slice(0, 200);
+}
+function ghArgs(args) {
+  const r = spawnSync("gh", args, { encoding: "utf8", windowsHide: true, shell: false, timeout: 30000 });
+  if (r.status !== 0) throw new Error("GitHub could not complete that action. Check gh auth status and repository access.");
+  return r.stdout.trim();
+}
+let cloudAccountChanging = false;
+let cloudUsage = { accounts: {} };
+async function refreshCloudUsage() {
+  const { artifacts = [] } = JSON.parse(ghArgs(["api", `repos/${REPO}/actions/artifacts?name=chatgpt-usage&per_page=10`]));
+  const latest = artifacts.filter((a) => !a.expired).sort((a, b) => b.created_at.localeCompare(a.created_at))[0];
+  if (!latest) throw new Error("No cloud allowance report yet. It appears after the first connected Sol run.");
+  const temp = await mkdtemp(path.join(os.tmpdir(), "khazendar-cloud-usage-"));
+  try {
+    ghArgs(["run", "download", String(latest.workflow_run.id), "--repo", REPO, "--name", "chatgpt-usage", "--dir", temp]);
+    const report = JSON.parse(await readFile(path.join(temp, "khazendar-chatgpt-usage.json"), "utf8"));
+    cloudUsage = { updatedAt: report.updatedAt, active: report.active, accounts: Object.fromEntries(Object.entries(report.accounts || {}).map(([id, q]) => [id, { checkedAt: q.checkedAt, windows: q.windows, exhausted: q.exhausted, retryAt: q.retryAt }])) };
+    return cloudUsage;
+  } finally {
+    if (path.dirname(temp) === path.resolve(os.tmpdir()) && path.basename(temp).startsWith("khazendar-cloud-usage-")) await rm(temp, { recursive: true, force: true });
+  }
+}
+async function activateCloudAccount(id, backup = "") {
+  if (cloudAccountChanging) throw new Error("A scheduled-publishing account connection is already in progress.");
+  cloudAccountChanging = true;
+  try { return await configureCloudAccount(id, backup); }
+  finally { cloudAccountChanging = false; }
+}
+async function configureCloudAccount(id, backup = "") {
+  const account = accountById(id);
+  const pair = [account, ...(backup ? [accountById(backup)] : [])];
+  if (pair.some((a) => a.target !== "cloud")) throw new Error("Connect separate account sessions for scheduled publishing first. This keeps cloud refreshes independent of the desktop login.");
+  if (pair.length === 2 && (id === backup || (listAccounts().find((a) => a.id === id)?.email && listAccounts().find((a) => a.id === id)?.email === listAccounts().find((a) => a.id === backup)?.email))) throw new Error("Choose two different ChatGPT accounts; two sign-ins to one account share the same allowance.");
+  try { ghArgs(["api", `repos/${REPO}/contents/scripts/codex-cloud-auth.mjs?ref=main`]); }
+  catch { throw new Error("The Sol cloud integration is prepared locally but has not been deployed to main yet. Deploy it before changing the scheduled provider."); }
+  const vars = ghArgs(["variable", "list", "--repo", REPO]);
+  const currentPair = [(vars.match(/KHAZENDAR_CODEX_ACCOUNT\s+(\S+)/) ?? [])[1], ((vars.match(/KHAZENDAR_CODEX_BACKUP\s+(\S+)/) ?? [])[1] || "").replace(/^none$/, "")];
+  if (currentPair[0] === id && currentPair[1] === backup && /KHAZENDAR_PROVIDER\s+codex/.test(vars)) return "These accounts are already connected for scheduled publishing. Their sessions refresh automatically.";
+  if (/KHAZENDAR_PROVIDER\s+codex/.test(vars) && pair.some((a) => currentPair.includes(a.id))) throw new Error("That session is now managed by GitHub. Reconnect it before replacing the cloud account pair so an old refresh token cannot overwrite the live session.");
+  const paused = /KHAZENDAR_PAUSED\s+1/.test(vars);
+  let credentialsChanged = false, complete = false;
+  ghArgs(["variable", "set", "KHAZENDAR_PAUSED", "--repo", REPO, "--body", "1"]);
+  try {
+    const runs = JSON.parse(ghArgs(["run", "list", "--repo", REPO, "--limit", "30", "--json", "status,workflowName"]));
+    if (runs.some((r) => ["Newsroom", "Editor"].includes(r.workflowName) && ["in_progress", "queued", "waiting"].includes(r.status))) throw new Error("A cloud newsroom/editor run is still active. Let it finish before changing the account.");
+    const quotaState = { accounts: {} }, accounts = [];
+    for (const a of pair) {
+      quotaState.accounts[a.id] = await refreshAccountUsage(a);
+      accounts.push({ id: a.id, auth: validateCodexAuth(await readFile(path.join(a.home, "auth.json"), "utf8")) });
+    }
+    const auth = JSON.stringify({ version: 2, primary: id, backup, accounts, quotaState });
+    validateCodexAuth(auth);
+    const key = randomBytes(32).toString("hex");
+    credentialsChanged = true;
+    if (ghSecret("KHAZENDAR_CODEX_AUTH_JSON", auth) !== "ok" || ghSecret("KHAZENDAR_CODEX_STATE_KEY", key) !== "ok") throw new Error("GitHub refused the cloud sign-in secrets. The provider was not changed.");
+    for (const [name, value] of [["KHAZENDAR_CODEX_SESSION", randomUUID()], ["KHAZENDAR_CODEX_ACCOUNT", id], ["KHAZENDAR_CODEX_BACKUP", backup || "none"], ["KHAZENDAR_CODEX_MODEL", "gpt-6.1-sol"], ["KHAZENDAR_MODEL", "gpt-6.1-sol"], ["KHAZENDAR_PROVIDER", "codex"]]) ghArgs(["variable", "set", name, "--repo", REPO, "--body", value]);
+    complete = true;
+    return "Scheduled publishing now uses gpt-6.1-sol through the selected ChatGPT account(s). The primary is preferred; an available backup is used only on quota exhaustion. Both exhausted: wait for a reported reset. No Platform API key is used.";
+  } catch (error) {
+    if (credentialsChanged) error.message += " Cloud runs remain paused until this connection is completed successfully.";
+    throw error;
+  } finally {
+    if (!paused && (!credentialsChanged || complete)) ghArgs(["variable", "set", "KHAZENDAR_PAUSED", "--repo", REPO, "--body", "0"]);
+  }
 }
 
 // --------------------------------------------------------------------- shell
@@ -381,13 +452,26 @@ async function health() {
   }
 
   const activeProvider = (local.KHAZENDAR_PROVIDER || (vars.match(/KHAZENDAR_PROVIDER\s+(\S+)/) ?? [])[1] || "gemini").toLowerCase();
+  const cloudProvider = (vars.match(/KHAZENDAR_PROVIDER\s+(\S+)/) ?? [])[1] || "gemini";
   const geminiKey = local.GEMINI_API_KEY || local.GOOGLE_API_KEY;
   if (!cachedGeminiModels && geminiKey) {
     fetchLiveGeminiModels(geminiKey).catch(() => {});
   }
   const geminiModels = cachedGeminiModels || ["gemini-3.8-flash", "gemini-4-argon", "gemini-3.7-flash", "gemini-3.5-flash", "gemini-3.1-pro-preview", "gemini-flash-latest", "gemini-pro-latest"];
+  const codex = codexStatus(spawnSync, loadEnv());
+  const cloudAccountId = cloudProvider === "codex" ? (vars.match(/KHAZENDAR_CODEX_ACCOUNT\s+(\S+)/) ?? [])[1] : "";
+  const cloudBackupId = cloudProvider === "codex" ? (vars.match(/KHAZENDAR_CODEX_BACKUP\s+(\S+)/) ?? [])[1] : "";
+  const localUsage = readQuotaState();
+  const accounts = listAccounts(loadEnv()).map((a) => ({ ...a, cloudActive: a.id === cloudAccountId || a.id === cloudBackupId,
+    quota: (a.target === "cloud" ? cloudUsage : localUsage).accounts[a.id], inUse: (a.target === "cloud" ? cloudUsage : localUsage).active === a.id }));
 
   const providers = {
+    codex: {
+      id: "codex", name: "ChatGPT subscription (Codex)", active: activeProvider === "codex",
+      subscription: codex.subscription, available: codex.available, note: codex.message,
+      keySet: false, cloudKeySet: false,
+      model: local.KHAZENDAR_CODEX_MODEL || "gpt-6.1-sol", models: ["gpt-6.1-sol"],
+    },
     gemini: {
       id: "gemini",
       name: "Google Gemini",
@@ -411,12 +495,12 @@ async function health() {
     },
     openai: {
       id: "openai",
-      name: "OpenAI ChatGPT",
+      name: "OpenAI API (separate billing)",
       active: activeProvider === "openai",
       keySet: Boolean(local.OPENAI_API_KEY),
       cloudKeySet: /OPENAI_API_KEY/.test(secrets),
-      model: local.KHAZENDAR_OPENAI_MODEL || (activeProvider === "openai" ? local.KHAZENDAR_MODEL : "") || "gpt-4o",
-      models: ["gpt-4o", "gpt-4o-mini", "o3-mini", "gpt-4.5-preview"],
+      model: local.KHAZENDAR_OPENAI_MODEL || (activeProvider === "openai" ? local.KHAZENDAR_MODEL : "") || "gpt-6.1-sol",
+      models: ["gpt-6.1-sol", "gpt-4o", "gpt-4o-mini", "o3-mini", "gpt-4.5-preview"],
     },
     qwen: {
       id: "qwen",
@@ -439,16 +523,19 @@ async function health() {
   };
 
   const active = providers[activeProvider] || providers.gemini;
-  const activeKeySet = active.keySet || (active.id === "claude" && active.tokenSet);
-  const activeCloudKeySet = active.cloudKeySet || (active.id === "claude" && active.cloudTokenSet);
+  const activeKeySet = active.subscription || active.keySet || (active.id === "claude" && active.tokenSet);
+  const cloudActive = providers[cloudProvider] || providers.gemini;
+  const activeCloudKeySet = cloudProvider === "codex" ? /KHAZENDAR_CODEX_AUTH_JSON/.test(secrets) && /KHAZENDAR_CODEX_STATE_KEY/.test(secrets) : cloudActive.cloudKeySet || (cloudActive.id === "claude" && cloudActive.cloudTokenSet);
 
   return {
     ghOk,
     activeProvider,
     providers,
+    chatgptAccounts: accounts,
+    chatgptPool: { local: readAccountStore().pool || { enabled: false }, cloud: { enabled: Boolean(cloudBackupId && cloudBackupId !== "none"), primary: cloudAccountId, backup: cloudBackupId } },
     cloud: {
-      activeProvider,
-      newsroomModel: active.model,
+      activeProvider: cloudProvider,
+      newsroomModel: (vars.match(/KHAZENDAR_MODEL\s+(\S+)/) ?? [])[1] || cloudActive.model,
       editorOn: /KHAZENDAR_EDITOR\s+1/.test(vars),
       review: /KHAZENDAR_REVIEW\s+1/.test(vars),
       paused: /KHAZENDAR_PAUSED\s+1/.test(vars),
@@ -601,6 +688,7 @@ async function startChat(message) {
 
   // Active provider is Gemini, OpenAI, Qwen, or OpenRouter
   const hasKey = activeProvider === "gemini" ? Boolean(keys.GEMINI_API_KEY || keys.GOOGLE_API_KEY)
+    : activeProvider === "codex" ? codexStatus(spawnSync, loadEnv()).subscription
     : activeProvider === "openai" ? Boolean(keys.OPENAI_API_KEY)
     : activeProvider === "qwen" ? Boolean(keys.DASHSCOPE_API_KEY || keys.QWEN_API_KEY)
     : activeProvider === "openrouter" ? Boolean(keys.OPENROUTER_API_KEY)
@@ -894,7 +982,8 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
     <div>
       <h2>Need something now?</h2>
       <div class="get">
-        <div class="row"><button class="quiet" onclick="run('news')">News stories</button><label>in <select id="newsSection"><option value="">all sections</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option><option value="defense">الدفاع</option></select></label><label><select id="limit"><option>2</option><option selected>4</option><option>6</option><option>8</option></select> stories</label></div>
+        <div class="row"><button class="quiet" onclick="run('news')">News stories</button><label>in <select id="newsSection"><option value="">all sections</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option><option value="defense">الدفاع</option></select></label><label><select id="limit"><option>1</option><option>2</option><option selected>4</option><option>6</option><option>8</option></select> stories</label></div>
+        <div class="row"><button class="quiet" onclick="run('dry')">Test one story (dry run)</button><span class="m">Uses the local controller and reports the result without saving an article.</span></div>
         <div class="row"><button class="quiet" onclick="run('explainer')">An explainer</button><button class="quiet" onclick="run('analysis')">An analysis</button><label>of <select id="analysisSection"><option value="">the week</option><option value="defense">defence only</option><option value="economy">الاقتصاد only</option><option value="markets">الأسواق only</option><option value="energy">الطاقة only</option></select></label></div>
         <div class="row"><button class="quiet" onclick="run('paper')">A research paper</button><button class="quiet" onclick="run('weekly')">The week's review</button><button class="quiet" onclick="run('feature')">In depth (في العمق)</button><button class="quiet" onclick="run('pull')">Sync from GitHub</button></div>
         <p class="m" style="margin:2px 0 0">These write drafts for your approval. News takes 8–10 minutes for four stories; the others 3–5.</p>
@@ -938,9 +1027,10 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
 
       <label><span>Active AI Controller</span>
         <select id="activeProvider" onchange="onProviderChange()">
-          <option value="gemini">Google Gemini (Active Controller — recommended)</option>
+          <option value="codex">ChatGPT subscription — Codex (no API bill)</option>
+          <option value="gemini">Google Gemini (standby)</option>
           <option value="claude">Anthropic Claude (Idle / Standby)</option>
-          <option value="openai">OpenAI ChatGPT (Idle / Standby)</option>
+          <option value="openai">OpenAI API (separate billing)</option>
           <option value="qwen">Alibaba Qwen (Idle / Standby)</option>
           <option value="openrouter">OpenRouter / Multi-model Hub (Idle / Standby)</option>
         </select>
@@ -969,6 +1059,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
           <option value="gemini-3.8-flash">Gemini 3.8 Flash</option>
           <option value="gemini-4-argon">Gemini 4 Argon</option>
           <option value="gemini-3.7-flash">Gemini 3.7 Flash</option>
+          <option value="gpt-6.1-sol">GPT-6.1 Sol</option>
           <option value="gpt-4o">GPT-4o</option>
           <option value="gpt-4o-mini">GPT-4o mini</option>
           <option value="claude-3-5-sonnet-20241022">Claude 3.5 Sonnet</option>
@@ -976,11 +1067,31 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
         </select>
       </label>
 
-      <button class="go" onclick="saveWriters()">Apply Controller &amp; Model</button> <span class="m" id="writersaved"></span>
-      <p class="m">Takes effect locally at once, and syncs to GitHub for cloud runs.</p>
+      <button class="go" id="applyWriters" onclick="saveWriters()">Apply Controller &amp; Model</button> <span class="m" id="writersaved"></span>
+      <button class="quiet" type="button" onclick="saveWriters(true)">Use locally for testing</button>
+      <p class="m">Apply updates this laptop and GitHub cloud runs. Use locally for testing changes this laptop only; start a dry run from the Desk to preview a story.</p>
 
       <h2>API Keys &amp; Credentials Vault</h2>
       <div id="keystatus" style="display:none"></div>
+
+      <div class="keycard" id="card_codex">
+        <div class="khead">
+          <div><b>ChatGPT subscription — Codex</b> <span class="badge" id="badge_codex">checking…</span><br><span class="m" id="ks_codex">checking…</span></div>
+          <span id="act_btn_codex"></span>
+        </div>
+        <p class="m">Uses your ChatGPT subscription allowance, with no Platform API key. Connect another account below and select it when needed. A cancelled or unusable subscription stops its model calls; it never starts paid API calls or silently switches providers.</p>
+        <button class="quiet sm" type="button" onclick="testCodex(this)">Test ChatGPT subscription</button> <span class="m" id="codex-test" role="status" aria-live="polite"></span>
+        <h3>Primary and backup accounts</h3>
+        <p class="m">Keep both accounts signed in. Prefer the primary; use the backup when a quota window is exhausted. Return to the primary once its allowance is available. If both are exhausted, stop until a reported reset. Authentication refreshes automatically while the sessions remain valid.</p>
+        <div class="keyrow"><label>Run location<select id="pool-target" onchange="renderPoolSelectors()"><option value="local">This laptop</option><option value="cloud">GitHub scheduled publishing</option></select></label><label>Primary account<select id="pool-primary"></select></label><label>Backup account<select id="pool-backup"></select></label></div>
+        <p><label><input type="checkbox" id="pool-enabled" style="width:auto"> Enable quota fallback</label></p>
+        <button class="quiet sm" id="pool-save" onclick="saveAccountPool()">Save account pair</button> <button class="quiet sm" onclick="refreshCloudQuotas()">Read latest cloud usage report</button>
+        <p class="m" id="pool-note" role="status" aria-live="polite"></p>
+        <div id="chatgpt-accounts"></div>
+        <p class="m">Subscription expiry: OpenAI sign-in does not provide a reliable current cancellation/renewal date. Dates below are reminders entered by you; token expiry is different and refreshes automatically.</p>
+        <div class="keyrow"><label><span>New connection</span><select id="chatgpt-target"><option value="local">Another account for this laptop</option><option value="cloud">Separate sign-in for GitHub scheduled publishing</option></select></label><button class="quiet" type="button" onclick="connectChatGPT()">Connect ChatGPT account</button></div>
+        <p class="m" id="chatgpt-login" role="status" aria-live="polite"></p>
+      </div>
 
       <!-- Gemini Card -->
       <div class="keycard" id="card_gemini">
@@ -1023,7 +1134,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
       <!-- OpenAI Card -->
       <div class="keycard" id="card_openai">
         <div class="khead">
-          <div><b>OpenAI API Key (ChatGPT)</b> <span class="badge" id="badge_openai">checking…</span><br><span class="m" id="ks_openai">checking…</span></div>
+          <div><b>OpenAI API Key</b> <span class="badge" id="badge_openai">checking…</span><br><span class="m" id="ks_openai">checking…</span></div>
           <div style="display:flex;gap:6px;align-items:center">
             <span id="act_btn_openai"></span>
             <button class="quiet sm" onclick="reveal('k_openai')">Edit</button>
@@ -1033,6 +1144,9 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
           <label><input type="password" id="k_openai" placeholder="sk-proj-... (OpenAI key)" autocomplete="off"></label>
           <button class="quiet" onclick="saveKey('OPENAI_API_KEY','k_openai')">Save</button>
         </div>
+        <p class="m"><a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer">Create an API key</a> · <a href="https://platform.openai.com/settings/organization/billing/overview" target="_blank" rel="noopener noreferrer">Set up API billing</a>. API usage is billed separately from your ChatGPT subscription.</p>
+        <p class="m">Save the key above, then test GPT-6.1 Sol here. If OpenAI is selected above, the test uses its selected newsroom model. This makes one small billed request and leaves the active controller unchanged.</p>
+        <button class="quiet sm" type="button" onclick="testOpenAI(this)">Test OpenAI connection</button> <span class="m" id="openai-test" role="status" aria-live="polite"></span>
       </div>
 
       <!-- Qwen Card -->
@@ -1121,7 +1235,7 @@ window.addEventListener('hashchange',function(){show((location.hash||'#desk').sl
 
 // ---- state
 var LIVE=[],wasRunning=false,timer=null;
-function refresh(){fetch('/api/state').then(function(r){return r.json()}).then(function(s){render(s);clearTimeout(timer);timer=setTimeout(refresh,s.job.running?3000:20000)}).catch(function(){timer=setTimeout(refresh,5000)})}
+function refresh(){fetch('/api/state').then(function(r){return r.json()}).then(function(s){try{render(s);}catch(e){console.error('Render error:',e);}clearTimeout(timer);timer=setTimeout(refresh,s&&s.job&&s.job.running?3000:20000)}).catch(function(err){console.error('State fetch error:',err);timer=setTimeout(refresh,5000)})}
 function scoreTag(s){if(s==null||s==='')return '<span class="score">–</span>';var c=s>=8?'hi':(s<=5?'lo':'');return '<span class="score '+c+'">'+s+'</span>'}
 function srcList(list){return '<details><summary>'+list.length+' source'+(list.length===1?'':'s')+'</summary><ul>'+list.map(function(s){return '<li><a href="'+esc(s.url)+'" target="_blank">'+esc(s.nameEn||s.name)+'</a> — '+esc(s.title)+'</li>'}).join('')+'</ul></details>'}
 function render(s){
@@ -1183,7 +1297,7 @@ function renderChecks(s){
   if(act.length){document.getElementById('lessons-sum').innerHTML='<b>What the newsroom has learned</b>: '+act.length+' lessons from '+((L.used||[]).length)+' mistakes it printed and corrected; the writer reads them before every story';
     document.getElementById('lessons-list').innerHTML=act.sort(function(a,b){return b.seen-a.seen}).map(function(l){return '<li>'+esc(l.rule)+' <span style="color:var(--ink-3)">('+esc(l.class)+', seen '+l.seen+'×)</span></li>'}).join('')}
 }
-function draft(a){return '<div class="draft">'+(a.image?'<img src="'+esc(a.image)+'" alt="">':'<div class="noimg">no photo</div>')+'<div><h3>'+esc(a.title)+'</h3><p>'+esc(a.subtitle)+'</p><div class="meta">'+esc(SECTION[a.section]||a.section)+' · '+esc(KIND[a.kind]||a.kind)+' · '+scoreTag(a.score)+' '+esc(a.verdict)+(a.hasChart?' · chart':'')+(a.hasTable?' · table':'')+' · '+a.sources.length+' sources'+(a.committed?' · from the cloud':'')+'</div><div class="acts"><button class="quiet sm" onclick="openPreview(\\''+esc(a.file)+'\\')">Read it</button><button class="go sm" onclick="publish(\\''+esc(a.file)+'\\')">Publish</button><button class="danger sm" onclick="discard(\\''+esc(a.file)+'\\',\\''+esc(a.slug)+'\\')">Discard</button></div></div></div>'}
+function draft(a){var writer=(a.models&&a.models.writer)?String(a.models.writer).split('→').pop().trim().split('/').pop():'';return '<div class="draft">'+(a.image?'<img src="'+esc(a.image)+'" alt="">':'<div class="noimg">no photo</div>')+'<div><h3>'+esc(a.title)+'</h3><p>'+esc(a.subtitle)+'</p><div class="meta">'+esc(SECTION[a.section]||a.section)+' · '+esc(KIND[a.kind]||a.kind)+' · '+scoreTag(a.score)+' '+esc(a.verdict)+(a.hasChart?' · chart':'')+(a.hasTable?' · table':'')+' · '+a.sources.length+' sources'+(a.committed?' · from the cloud':'')+(writer?' · <span style="opacity:0.75" title="Writer: '+esc(a.models.writer)+'">'+esc(writer)+'</span>':'')+'</div><div class="acts"><button class="quiet sm" data-file="'+esc(a.file)+'" onclick="openPreview(this.dataset.file)">Read it</button><button class="go sm" data-file="'+esc(a.file)+'" onclick="publish(this.dataset.file)">Publish</button><button class="danger sm" data-file="'+esc(a.file)+'" data-slug="'+esc(a.slug)+'" onclick="discard(this.dataset.file,this.dataset.slug)">Discard</button></div></div></div>'}
 function renderLive(){
   var sec=document.getElementById('f-section').value,kind=document.getElementById('f-kind').value,month=document.getElementById('f-month').value,where=document.getElementById('f-where').value,q=document.getElementById('f-q').value.trim().toLowerCase();
   var rows=LIVE.filter(function(a){var front=a.where!=='section'&&a.where!=='hub';return (!sec||a.section===sec)&&(!kind||a.kind===kind)&&(!month||a.publishedAt.slice(0,7)===month)&&(!where||(where==='front'?front:!front))&&(!q||(a.title+' '+a.subtitle).toLowerCase().indexOf(q)>=0)});
@@ -1191,12 +1305,13 @@ function renderLive(){
   document.getElementById('live').innerHTML=rows.slice(0,200).map(rowHtml).join('');
 }
 function rowHtml(a){var front=a.where!=='section'&&a.where!=='hub';
-    return '<tr><td class="t"><a href="'+LIVE_URL+'/articles/'+esc(a.slug)+'/" target="_blank">'+esc(a.title)+'</a><div class="meta">'+esc(SECTION[a.section]||a.section)+' · '+esc(KIND[a.kind]||a.kind)+' · '+esc(fmtWhen(a.publishedAt))+(a.featured?' · ★ featured':'')+'</div></td>'+
+    var writer=(a.models&&a.models.writer)?String(a.models.writer).split('→').pop().trim().split('/').pop():'';
+    return '<tr><td class="t"><a href="'+LIVE_URL+'/articles/'+esc(a.slug)+'/" target="_blank">'+esc(a.title)+'</a><div class="meta">'+esc(SECTION[a.section]||a.section)+' · '+esc(KIND[a.kind]||a.kind)+' · '+esc(fmtWhen(a.publishedAt))+(a.featured?' · ★ featured':'')+(writer?' · <span style="opacity:0.75" title="Writer: '+esc(a.models.writer)+'">'+esc(writer)+'</span>':'')+'</div></td>'+
       '<td><span class="chip'+(front?' front':'')+'">'+esc(WHERE[a.where]||a.where)+'</span></td><td>'+scoreTag(a.score)+'</td><td class="src">'+srcList(a.sources)+'</td>'+
       '<td><details class="menu"><summary aria-label="Actions">'+DOTS+'</summary><div class="pop">'+
       '<a href="'+LIVE_URL+'/articles/'+esc(a.slug)+'/" target="_blank">Open on the site</a>'+
-      (a.kind==='news'?(a.featured?'<button onclick="feature(\\''+esc(a.file)+'\\',false)">Take it off the lead</button>':'<button onclick="feature(\\''+esc(a.file)+'\\',true)">Make it the lead (48 h)</button>')+'<div class="sep"></div><div class="lbl">Move to</div><div class="secs">'+['economy','markets','energy','companies','technology','defense'].filter(function(s){return s!==a.section}).map(function(s){return '<button onclick="moveTo(\\''+esc(a.file)+'\\',\\''+s+'\\')">'+esc(SECTION[s])+'</button>'}).join('')+'</div>':'')+
-      '<div class="sep"></div><button class="d" onclick="unpublish(\\''+esc(a.file)+'\\',\\''+esc(a.title).replace(/'/g,'’')+'\\')">Unpublish</button></div></details></td></tr>'}
+      (a.kind==='news'?(a.featured?'<button data-file="'+esc(a.file)+'" onclick="feature(this.dataset.file,false)">Take it off the lead</button>':'<button data-file="'+esc(a.file)+'" onclick="feature(this.dataset.file,true)">Make it the lead (48 h)</button>')+'<div class="sep"></div><div class="lbl">Move to</div><div class="secs">'+['economy','markets','energy','companies','technology','defense'].filter(function(s){return s!==a.section}).map(function(s){return '<button data-file="'+esc(a.file)+'" data-sec="'+s+'" onclick="moveTo(this.dataset.file,this.dataset.sec)">'+esc(SECTION[s])+'</button>'}).join('')+'</div>':'')+
+      '<div class="sep"></div><button class="d" data-file="'+esc(a.file)+'" data-title="'+esc(a.title)+'" onclick="unpublish(this.dataset.file,this.dataset.title)">Unpublish</button></div></details></td></tr>'}
 document.addEventListener('click',function(e){document.querySelectorAll('details.menu[open]').forEach(function(d){if(!d.contains(e.target))d.removeAttribute('open')})});
 refresh();
 
@@ -1213,7 +1328,7 @@ function moveTo(file,section){post('/move?file='+encodeURIComponent(file)+'&sect
 // ---- preview
 function openPreview(file){var box=document.getElementById('preview');box.innerHTML='<p class="m">loading…</p>';document.getElementById('overlay').classList.add('on');
   fetch('/draft?file='+encodeURIComponent(file)).then(function(r){return r.json()}).then(function(a){var d=a.data;
-    box.innerHTML='<div class="bar"><button class="go" onclick="publish(\\''+esc(file)+'\\')">Publish this</button><button class="danger" onclick="discard(\\''+esc(file)+'\\',\\''+esc(d.slug)+'\\')">Discard</button><button class="quiet x" onclick="closePreview()">Close</button></div>'+
+    box.innerHTML='<div class="bar"><button class="go" data-file="'+esc(file)+'" onclick="publish(this.dataset.file)">Publish this</button><button class="danger" data-file="'+esc(file)+'" data-slug="'+esc(d.slug)+'" onclick="discard(this.dataset.file,this.dataset.slug)">Discard</button><button class="quiet x" onclick="closePreview()">Close</button></div>'+
       '<article><h1>'+esc(d.title)+'</h1><p class="sub">'+esc(d.subtitle)+'</p>'+(d.image?'<img src="'+esc(d.image.url)+'" alt="'+esc(d.image.alt)+'"><div class="credit">'+esc(d.image.credit||'')+'</div>':'')+'<p class="lede">'+esc(d.lede)+'</p>'+
       ((d.keyFacts||[]).length?'<div class="facts"><ul>'+d.keyFacts.map(function(f){return '<li>'+(f.label?'<b>'+esc(f.label)+':</b> ':'')+esc(f.value)+'</li>'}).join('')+'</ul></div>':'')+a.bodyHtml+(d.whyItMatters?'<div class="why"><b>لماذا يهم؟</b> '+esc(d.whyItMatters)+'</div>':'')+
       (d.chart?'<p class="m" style="direction:ltr;text-align:left">Carries a chart ('+esc(d.chart.title||d.chart.type)+'); it renders on the site.</p>':'')+(d.table?'<p class="m" style="direction:ltr;text-align:left">Carries a table; it renders on the site.</p>':'')+'</article>'+
@@ -1229,11 +1344,13 @@ function updateModelOptions(h) {
   var pSel = document.getElementById('activeProvider');
   if (!pSel) return;
   var prov = pSel.value;
+  var apply=document.getElementById('applyWriters');if(apply){apply.disabled=prov==='codex';apply.title=prov==='codex'?'Choose an account below for GitHub scheduled publishing.':'';}
   var p = (h && h.providers && h.providers[prov]) || (HEALTH_DATA && HEALTH_DATA.providers && HEALTH_DATA.providers[prov]);
   var mSel = document.getElementById('newsroomModel');
   if (!p || !mSel) return;
   var currentModel = p.model || p.models[0];
-  mSel.innerHTML = p.models.map(function(m){
+  var models = [currentModel].concat(p.models).filter(function(m,i,a){return a.indexOf(m)===i});
+  mSel.innerHTML = models.map(function(m){
     return '<option value="'+esc(m)+'"'+(m===currentModel?' selected':'')+'>'+esc(m)+'</option>';
   }).join('');
 }
@@ -1250,7 +1367,7 @@ function quickActivate(id) {
   var pSel = document.getElementById('activeProvider');
   if (pSel) pSel.value = id;
   onProviderChange();
-  saveWriters();
+  saveWriters(id === 'codex');
 }
 
 function refreshModels() {
@@ -1279,30 +1396,37 @@ function refreshModels() {
 }
 
 function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(function(h){
+  if (!h) return;
   HEALTH_DATA = h;
-  PAUSED=Boolean(h.cloud.paused);
-  var provNames = { gemini: 'Google Gemini', claude: 'Anthropic Claude', openai: 'OpenAI ChatGPT', qwen: 'Alibaba Qwen', openrouter: 'OpenRouter' };
-  var curName = provNames[h.activeProvider] || h.activeProvider;
-  var curModel = (h.providers[h.activeProvider] && h.providers[h.activeProvider].model) || '';
+  var cloud = h.cloud || {};
+  var providers = h.providers || {};
+  PAUSED=Boolean(cloud.paused);
+  var provNames = { codex: 'ChatGPT subscription (Codex)', gemini: 'Google Gemini', claude: 'Anthropic Claude', openai: 'OpenAI API (separate billing)', qwen: 'Alibaba Qwen', openrouter: 'OpenRouter' };
+  var curName = provNames[h.activeProvider] || h.activeProvider || 'Gemini';
+  var curModel = (providers[h.activeProvider] && providers[h.activeProvider].model) || '';
 
-  var auto=document.getElementById('auto');auto.className='auto'+((h.cloud.review||PAUSED)?' off':'');auto.innerHTML='<i></i><span>'+(PAUSED?'PAUSED — nothing is being written or published':h.cloud.review?'Waits for your approval':'Publishes on its own')+'</span>';
-  document.getElementById('auto-note').innerHTML='Controlled by <b>'+esc(curName)+'</b> ('+esc(curModel)+')'+(h.activeProvider!=='claude'?' · Claude in idle mode':'');
+  var auto=document.getElementById('auto');if(auto){auto.className='auto'+((cloud.review||PAUSED)?' off':'');auto.innerHTML='<i></i><span>'+(PAUSED?'PAUSED — nothing is being written or published':cloud.review?'Waits for your approval':'Publishes on its own')+'</span>';}
+  var an=document.getElementById('auto-note');if(an)an.innerHTML='Controlled by <b>'+esc(curName)+'</b> ('+esc(curModel)+')'+(h.activeProvider!=='claude'?' · Claude in idle mode':'');
 
-  var pb=document.getElementById('pauseBtn');pb.style.display='inline-block';pb.textContent=PAUSED?'Resume':'Pause everything';pb.className=PAUSED?'go sm':'danger sm';
+  var pb=document.getElementById('pauseBtn');if(pb){pb.style.display='inline-block';pb.textContent=PAUSED?'Resume':'Pause everything';pb.className=PAUSED?'go sm':'danger sm';}
 
   var provSummary = [];
-  for (var k in h.providers) {
-    var p = h.providers[k];
-    provSummary.push('<b>'+esc(p.name)+':</b> '+(p.active?'<span class="ok">ACTIVE ('+esc(p.model)+')</span>':'<span class="m">Idle ('+((p.keySet||p.tokenSet)?'key saved':'no key')+')</span>'));
+  for (var k in providers) {
+    var p = providers[k];
+    provSummary.push('<b>'+esc(p.name)+':</b> '+(p.active?'<span class="ok">ACTIVE ('+esc(p.model)+')</span>':'<span class="m">Idle ('+(p.subscription?'signed in':(p.keySet||p.tokenSet)?'key saved':'not connected')+')</span>'));
   }
-  document.getElementById('now').innerHTML=
-    '<p><b>Active AI Controller:</b> '+esc(curName)+' ('+esc(curModel)+')</p>'+
-    '<p><b>The cloud runs:</b> '+(PAUSED?'are <span class="no">paused</span>':h.cloud.review?'write drafts and wait for you':'publish on their own')+'.</p>'+
+  var nowEl=document.getElementById('now');
+  if(nowEl)nowEl.innerHTML=
+    '<p><b>This laptop:</b> '+esc(curName)+' ('+esc(curModel)+')</p>'+
+    '<p><b>Cloud controller:</b> '+esc(provNames[cloud.activeProvider]||cloud.activeProvider)+' ('+esc(cloud.newsroomModel)+')</p>'+
+    '<p><b>The cloud runs:</b> '+(PAUSED?'are <span class="no">paused</span>':cloud.review?'write drafts and wait for you':'publish on their own')+'.</p>'+
     '<p><b>Providers Status:</b> '+provSummary.join(' · ')+'</p>';
 
   var pSel = document.getElementById('activeProvider');
   if (pSel) pSel.value = h.activeProvider;
   updateModelOptions(h);
+  CHATGPT_ACCOUNTS = h.chatgptAccounts || []; CHATGPT_POOLS = h.chatgptPool || {};
+  renderChatGPTAccounts(CHATGPT_ACCOUNTS); renderPoolSelectors();
 
   for (var id in h.providers) {
     var pr = h.providers[id];
@@ -1317,7 +1441,7 @@ function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(f
     if (ks) {
       var hasLocal = pr.keySet || pr.tokenSet;
       var hasCloud = pr.cloudKeySet || pr.cloudTokenSet;
-      ks.innerHTML = hasLocal ? '<span class="ok">Saved on laptop' + (hasCloud ? ' and on GitHub' : '') + '</span>' : '<span class="m">Not set</span>';
+      ks.innerHTML = id === 'codex' ? esc(pr.note) : hasLocal ? '<span class="ok">Saved on laptop' + (hasCloud ? ' and on GitHub' : '') + '</span>' : '<span class="m">Not set</span>';
     }
     var actSpan = document.getElementById('act_btn_' + id);
     if (actSpan) {
@@ -1349,19 +1473,32 @@ function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(f
   if (thinkRow) thinkRow.style.display = h.activeProvider === 'gemini' ? 'block' : 'none';
 
   var rs = document.getElementById('reviewSel');
-  if (rs) rs.value = h.cloud.review ? '1' : '0';
+  if (rs) rs.value = cloud.review ? '1' : '0';
   var sw = document.getElementById('switches');
   if (sw) {
     sw.innerHTML = (h.deploy ? dot(h.deploy.ok, 'The site\\\'s last deploy', h.deploy.ok ? 'succeeded · ' + fmtWhen(h.deploy.when) : 'FAILED — readers see an older edition') : '') +
       dot(h.ghOk, 'This laptop can talk to GitHub', h.ghOk ? 'gh is signed in' : 'run: gh auth login') +
-      dot(h.cloud.editorOn && h.cloud.hasKey, 'The daily editor', !h.cloud.editorOn ? 'switched off' : h.cloud.hasKey ? 'switched on with active key' : 'switched on but has no key, so it skips') +
+      dot(cloud.editorOn && cloud.hasKey, 'The daily editor', !cloud.editorOn ? 'switched off' : cloud.hasKey ? 'switched on with active key' : 'switched on but has no key, so it skips') +
       (h.editorReal ? dot(h.editorReal.working, 'The daily editor is actually doing work', 'its last run took ' + h.editorReal.seconds + 's' + (h.editorReal.working ? '' : ' — a real round takes minutes')) : '') +
       dot(h.chatReady, 'The "Change the site" tab', h.chatReady ? 'ready (' + esc(curName) + ')' : 'needs an active key');
   }
 }).catch(function(err){ console.error('Health fetch failed:', err); });}
 loadHealth();
 function saveKey(name,id){var v=document.getElementById(id).value.trim();if(!v)return;var n=document.getElementById('k_note');n.textContent='saving…';post('/keys',{name:name,value:v,github:document.getElementById('k_gh').checked}).then(function(r){return r.text()}).then(function(t){n.textContent=t;document.getElementById(id).value='';loadHealth()})}
-function saveWriters(){var n=document.getElementById('writersaved');n.textContent='applying…';var tb=document.getElementById('thinkingBudget')?document.getElementById('thinkingBudget').value:'-1';post('/writers',{provider:document.getElementById('activeProvider').value,model:document.getElementById('newsroomModel').value,chatModel:document.getElementById('chatModel').value,thinkingBudget:tb}).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
+function testOpenAI(btn){var n=document.getElementById('openai-test');var model=document.getElementById('activeProvider').value==='openai'?document.getElementById('newsroomModel').value:'gpt-6.1-sol';btn.disabled=true;n.textContent='Testing '+model+'…';post('/providers/openai/test',{model:model}).then(function(r){return r.json()}).then(function(r){n.textContent=r.ok?'Connected: '+r.model+' · '+r.message+' · '+(r.ms/1000).toFixed(1)+'s':r.error}).catch(function(e){n.textContent='Could not test: '+e.message}).finally(function(){btn.disabled=false})}
+function testCodex(btn){var n=document.getElementById('codex-test');btn.disabled=true;n.textContent='Testing your ChatGPT subscription…';post('/providers/codex/test',{}).then(function(r){return r.json()}).then(function(r){n.textContent=r.ok?'Connected: '+r.model+' · '+r.message+' · '+r.billing:r.error}).catch(function(e){n.textContent='Could not test: '+e.message}).finally(function(){btn.disabled=false})}
+var CHATGPT_ACCOUNTS=[],CHATGPT_POOLS={};
+function quotaText(q){if(!q)return 'Usage not checked yet.';var windows=(q.windows||[]).map(function(w){var label=w.windowDurationMins===300?'5-hour':w.windowDurationMins===10080?'Weekly':String(w.windowDurationMins||'?')+' min';return label+': '+(w.usedPercent==null?'unknown':Math.max(0,100-w.usedPercent)+'% remaining')+(w.resetsAt?' · resets '+new Date(w.resetsAt).toLocaleString():'')});return windows.join(' | ')+(q.exhausted?' · exhausted':'')+(q.checkedAt?' · checked '+new Date(q.checkedAt).toLocaleString():'')}
+function renderChatGPTAccounts(accounts){document.getElementById('chatgpt-accounts').innerHTML=accounts.map(function(a){return '<div style="border-top:1px solid var(--rule);margin-top:12px;padding-top:10px"><b>'+esc(a.email||a.label)+'</b> '+esc(a.plan)+(a.active?' · selected local account':'')+(a.cloudActive?' · connected to cloud':'')+(a.inUse?' · last used':'')+' · '+esc(a.target==='cloud'?'scheduled publishing sign-in':'local sign-in')+'<p class="m">'+esc(quotaText(a.quota))+'</p>'+(a.target==='local'?'<button class="quiet sm" data-id="'+esc(a.id)+'" onclick="refreshUsage(this)">Refresh usage</button>':'')+'<div class="row"><label>Expected access end (your reminder) <input type="date" id="expiry-'+esc(a.id)+'" value="'+esc(a.expectedEnd)+'"></label><button class="quiet sm" data-id="'+esc(a.id)+'" onclick="saveChatGPTDate(this.dataset.id)">Save date</button><button class="quiet sm" data-id="'+esc(a.id)+'" data-target="'+esc(a.target)+'" onclick="useChatGPT(this.dataset.id,this.dataset.target)">'+(a.target==='cloud'?'Use for GitHub scheduled publishing':'Use this account')+'</button></div></div>'}).join('')}
+function renderPoolSelectors(){var target=document.getElementById('pool-target').value;var accounts=CHATGPT_ACCOUNTS.filter(function(a){return a.target===target});var pool=CHATGPT_POOLS[target]||{};var options=accounts.map(function(a){return '<option value="'+esc(a.id)+'">'+esc(a.email||a.label)+'</option>'}).join('');document.getElementById('pool-primary').innerHTML=options;document.getElementById('pool-backup').innerHTML='<option value="">No backup</option>'+options;document.getElementById('pool-primary').value=pool.primary||(accounts[0]&&accounts[0].id)||'';document.getElementById('pool-backup').value=pool.backup||'';document.getElementById('pool-enabled').checked=Boolean(pool.enabled);document.getElementById('pool-save').disabled=!accounts.length;document.getElementById('pool-note').textContent=accounts.length<2?'Connect the second account below, then choose it as backup.':pool.enabled?'Quota fallback is configured. Both accounts stay connected.':'Choose two different accounts and enable quota fallback.'}
+function saveAccountPool(){var target=document.getElementById('pool-target').value;var enabled=document.getElementById('pool-enabled').checked;var primary=document.getElementById('pool-primary').value,backup=enabled?document.getElementById('pool-backup').value:'';var n=document.getElementById('pool-note');if(enabled&&(!backup||primary===backup)){n.textContent='Choose two different accounts first.';return}n.textContent='Saving account pair…';post(target==='cloud'?'/accounts/cloud':'/accounts/pool',{id:primary,primary:primary,backup:backup,enabled:enabled}).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()}).catch(function(e){n.textContent=e.message})}
+function refreshUsage(btn){btn.disabled=true;post('/accounts/usage',{id:btn.dataset.id}).then(function(r){return r.json()}).then(function(r){document.getElementById('pool-note').textContent=r.error||quotaText(r.quota);loadHealth()}).catch(function(e){document.getElementById('pool-note').textContent=e.message}).finally(function(){btn.disabled=false})}
+function refreshCloudQuotas(){document.getElementById('pool-note').textContent='Reading the latest cloud allowance report…';post('/accounts/cloud-usage',{}).then(function(r){return r.text()}).then(function(t){document.getElementById('pool-note').textContent=t;loadHealth()})}
+function saveChatGPTDate(id){post('/accounts/reminder',{id:id,date:document.getElementById('expiry-'+id).value}).then(function(r){return r.text()}).then(function(t){document.getElementById('chatgpt-login').textContent=t})}
+function useChatGPT(id,target){var n=document.getElementById('chatgpt-login');n.textContent='Connecting…';post(target==='cloud'?'/accounts/cloud':'/accounts/use',{id:id}).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
+function connectChatGPT(){post('/accounts/login',{target:document.getElementById('chatgpt-target').value}).then(function(r){return r.json()}).then(function(r){if(r.error)document.getElementById('chatgpt-login').textContent=r.error;else pollChatGPTLogin()})}
+function pollChatGPTLogin(){fetch('/accounts').then(function(r){return r.json()}).then(function(r){var s=r.login,n=document.getElementById('chatgpt-login');if(s.complete){n.textContent='Account connected. Select Use this account or Use for GitHub scheduled publishing.';loadHealth()}else if(s.error)n.textContent=s.error;else{n.innerHTML=s.url?'Open <a href="'+esc(s.url)+'" target="_blank" rel="noopener noreferrer">ChatGPT sign-in</a> and enter <b>'+esc(s.code||'the code shown shortly')+'</b>. Complete sign-in yourself; no password is entered here.':'Starting ChatGPT sign-in…';if(s.running)setTimeout(pollChatGPTLogin,1500)}})}
+function saveWriters(localOnly){var n=document.getElementById('writersaved');n.textContent='applying…';var tb=document.getElementById('thinkingBudget')?document.getElementById('thinkingBudget').value:'-1';post('/writers',{provider:document.getElementById('activeProvider').value,model:document.getElementById('newsroomModel').value,chatModel:document.getElementById('chatModel').value,thinkingBudget:tb,localOnly:localOnly===true}).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
 function togglePause(){if(!PAUSED&&!confirm('Pause everything? The cloud will stop writing and publishing until you press Resume. Stories already live stay live.'))return;post('/pause?value='+(PAUSED?0:1)).then(function(r){return r.text()}).then(function(t){alert(t);loadHealth()})}
 function reveal(id){var w=document.getElementById('w_'+id);w.style.display=w.style.display==='none'?'grid':'none';if(w.style.display==='grid')document.getElementById(id).focus()}
 function saveReview(){var n=document.getElementById('reviewsaved');n.textContent='applying…';post('/review?value='+document.getElementById('reviewSel').value).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
@@ -1414,6 +1551,10 @@ const server = http.createServer(async (req, res) => {
     res.end(JSON.stringify(o));
   };
   try {
+    if (url.pathname.startsWith("/accounts") && req.method === "POST") {
+      const origin = req.headers.origin;
+      if (req.headers["sec-fetch-site"] === "cross-site" || (origin && ![`http://127.0.0.1:${server.address().port}`, `http://localhost:${server.address().port}`].includes(origin))) return text(403, "Open account settings directly in the local Control Room.");
+    }
     if (url.pathname === "/" && req.method === "GET") {
       res.writeHead(200, { "content-type": "text/html; charset=utf-8" });
       return res.end(page());
@@ -1463,6 +1604,7 @@ const server = http.createServer(async (req, res) => {
       const kind = url.searchParams.get("kind");
       const limit = Math.max(1, Math.min(Number(url.searchParams.get("limit")) || 4, 10));
       const plans = {
+        dry: ["test one story", "node", ["pipeline/run.mjs", "--dry-run", "--limit=1"]],
         news: ["news stories", "node", ["pipeline/run.mjs", "--draft", `--limit=${limit}`]],
         explainer: ["an explainer", "node", ["pipeline/run.mjs", "--draft", "--mode=explainer"]],
         analysis: ["an analysis", "node", ["pipeline/run.mjs", "--draft", "--mode=analysis"]],
@@ -1548,6 +1690,68 @@ const server = http.createServer(async (req, res) => {
       return text(200, "Removed. The site updates in about a minute.");
     }
     if (url.pathname === "/health") return json(await health());
+    if (url.pathname === "/accounts") return json({ accounts: listAccounts(loadEnv()), login: loginState() });
+    if (url.pathname === "/accounts/login" && req.method === "POST") {
+      try { return json(beginAccountLogin(await body(req))); } catch (error) { return json({ error: error.message }); }
+    }
+    if (url.pathname === "/accounts/reminder" && req.method === "POST") {
+      const { id, date = "" } = await body(req);
+      setAccountReminder(id, date);
+      return text(200, "Reminder saved. It is your expected date, not a verified billing expiry.");
+    }
+    if (url.pathname === "/accounts/pool" && req.method === "POST") {
+      if (job.running || chat.running) return text(409, "Finish the current job before changing its account pair.");
+      const pool = setAccountPool(await body(req));
+      const primary = accountById(pool.primary);
+      await setEnvKey("KHAZENDAR_CODEX_HOME", primary.id === "desktop" ? "" : primary.home);
+      await setEnvKey("KHAZENDAR_CODEX_MODEL", "gpt-6.1-sol");
+      await setEnvKey("KHAZENDAR_PROVIDER", "codex");
+      return text(200, pool.enabled ? "Primary and backup saved. Quota fallback is active for this laptop; both accounts stay signed in." : "Quota fallback disabled. This laptop uses the selected primary account.");
+    }
+    if (url.pathname === "/accounts/usage" && req.method === "POST") {
+      try {
+        const { id } = await body(req); const account = accountById(id);
+        if (account.target !== "local") throw new Error("Read the latest cloud report instead; GitHub owns that session's refreshes.");
+        return json({ quota: await refreshAccountUsage(account) });
+      } catch (error) { return json({ error: error.message }); }
+    }
+    if (url.pathname === "/accounts/cloud-usage" && req.method === "POST") {
+      await refreshCloudUsage();
+      return text(200, "Cloud allowance report loaded. Check each account's usage and last-check time below.");
+    }
+    if (url.pathname === "/accounts/use" && req.method === "POST") {
+      if (job.running || chat.running) return text(409, "Finish the current job before switching its account.");
+      const { id } = await body(req); const account = accountById(id);
+      if (account.target !== "local") return text(400, "Use the scheduled-publishing button for this separate cloud session.");
+      if (!codexStatus(spawnSync, { ...loadEnv(), KHAZENDAR_CODEX_HOME: account.home }).subscription) return text(400, "That account needs a ChatGPT sign-in first.");
+      setAccountPool({ primary: id, enabled: false });
+      await setEnvKey("KHAZENDAR_CODEX_HOME", id === "desktop" ? "" : account.home);
+      await setEnvKey("KHAZENDAR_CODEX_MODEL", "gpt-6.1-sol");
+      await setEnvKey("KHAZENDAR_PROVIDER", "codex");
+      return text(200, "This laptop now uses the selected ChatGPT account with gpt-6.1-sol. Cloud runs are unchanged.");
+    }
+    if (url.pathname === "/accounts/cloud" && req.method === "POST") {
+      const { id, backup = "" } = await body(req);
+      return text(200, await activateCloudAccount(id, backup));
+    }
+    if (url.pathname === "/providers/codex/test" && req.method === "POST") {
+      try {
+        const { testCodexConnection } = await import("../pipeline/lib/llm.mjs");
+        return json(await testCodexConnection());
+      } catch (error) { return json({ ok: false, error: error.message }); }
+    }
+    if (url.pathname === "/providers/openai/test" && req.method === "POST") {
+      const { model = "gpt-6.1-sol" } = await body(req);
+      if (typeof model !== "string" || !/^(?:gpt-|o[134](?:-|$))[a-zA-Z0-9._-]*$/.test(model)) return json({ ok: false, error: "Choose an OpenAI model first." });
+      const apiKey = loadEnv().OPENAI_API_KEY;
+      if (!apiKey) return json({ ok: false, error: "Save an OpenAI API key in Settings first. Create one at platform.openai.com/api-keys and enable API billing." });
+      try {
+        const { testOpenAIConnection } = await import("../pipeline/lib/llm.mjs");
+        return json(await testOpenAIConnection({ apiKey, model }));
+      } catch (error) {
+        return json({ ok: false, error: String(error.message).split(apiKey).join("[redacted]") });
+      }
+    }
     if (url.pathname === "/models/refresh") {
       const prov = url.searchParams.get("provider") || "gemini";
       if (prov === "gemini") {
@@ -1561,8 +1765,8 @@ const server = http.createServer(async (req, res) => {
       return json({ provider: prov, models: [] });
     }
     if (url.pathname === "/writers" && req.method === "POST") {
-      const { provider, model, newsroomModel, chatModel, thinkingBudget } = await body(req);
-      const prov = ["gemini", "claude", "openai", "qwen", "openrouter"].includes(provider) ? provider : "gemini";
+      const { provider, model, newsroomModel, chatModel, thinkingBudget, localOnly } = await body(req);
+      const prov = ["codex", "gemini", "claude", "openai", "qwen", "openrouter"].includes(provider) ? provider : "gemini";
       const actualModel = model || newsroomModel;
       const cm = typeof chatModel === "string" ? chatModel : "";
 
@@ -1572,14 +1776,17 @@ const server = http.createServer(async (req, res) => {
         if (prov === "gemini") await setEnvKey("KHAZENDAR_GEMINI_MODEL", actualModel);
         if (prov === "claude") await setEnvKey("KHAZENDAR_CLAUDE_MODEL", actualModel);
         if (prov === "openai") await setEnvKey("KHAZENDAR_OPENAI_MODEL", actualModel);
+        if (prov === "codex") await setEnvKey("KHAZENDAR_CODEX_MODEL", actualModel);
         if (prov === "qwen") await setEnvKey("KHAZENDAR_QWEN_MODEL", actualModel);
         if (prov === "openrouter") await setEnvKey("KHAZENDAR_OPENROUTER_MODEL", actualModel);
       }
       await setEnvKey("KHAZENDAR_CHAT_MODEL", cm);
       if (typeof thinkingBudget === "string") {
         await setEnvKey("KHAZENDAR_THINKING_BUDGET", thinkingBudget);
-        await sh(`gh variable set KHAZENDAR_THINKING_BUDGET --repo ${REPO} --body ${thinkingBudget} 2>&1`);
       }
+
+      if (localOnly === true || prov === "codex") return text(200, `Saved on this laptop for testing: ${prov.toUpperCase()} (${actualModel || "default"}). Scheduled cloud runs are unchanged.`);
+      if (typeof thinkingBudget === "string") await sh(`gh variable set KHAZENDAR_THINKING_BUDGET --repo ${REPO} --body ${thinkingBudget} 2>&1`);
 
       const b = await sh(`gh variable set KHAZENDAR_PROVIDER --repo ${REPO} --body ${prov} 2>&1`);
       if (actualModel) await sh(`gh variable set KHAZENDAR_MODEL --repo ${REPO} --body ${actualModel} 2>&1`);
@@ -1692,8 +1899,19 @@ function listenOn(i = 0) {
   };
   const onListening = () => {
     server.off("error", onError);
-    const url = `http://127.0.0.1:${server.address().port}/`;
+    const activePort = server.address().port;
+    const url = `http://127.0.0.1:${activePort}/`;
     console.log(`خازندار control room: ${url}`);
+    if (activePort !== 17777) {
+      try {
+        const redir = http.createServer((req, res) => {
+          res.writeHead(302, { Location: `http://127.0.0.1:${activePort}${req.url}` });
+          res.end();
+        });
+        redir.once("error", () => {});
+        redir.listen(17777, "127.0.0.1");
+      } catch {}
+    }
     if (process.env.KHAZENDAR_OPEN_BROWSER === "1") spawn("cmd", ["/c", "start", "", url], { shell: false, windowsHide: true, stdio: "ignore", detached: true }).unref();
   };
   server.once("error", onError);

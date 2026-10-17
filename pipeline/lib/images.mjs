@@ -499,7 +499,10 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
         continue;
       }
       const named = namedPeople(image);
-      const unwanted = people === "none" ? named : named.filter((words) => !words.some((w) => asked.has(w)));
+      // An explicit list comes from the story planner AND source-photo reader agreeing. Match surnames,
+      // not a shared first name (Donald Tusk must never stand in for Donald Trump).
+      const allowedSurnames = Array.isArray(people) ? people.map((name) => fold(String(name).trim().split(/\s+/).pop())) : null;
+      const unwanted = people === "none" ? named : named.filter((words) => allowedSurnames ? !words.some((w) => allowedSurnames.includes(w)) : !words.some((w) => asked.has(w)));
       if (unwanted.length) {
         log(`image: dropped "${String(image.title).slice(0, 70)}" — shows ${unwanted.map((w) => w[0]).join(", ")}, not the story's people`);
         continue;
@@ -1360,14 +1363,15 @@ async function findImage({ draft, story, log, exclude = new Set(), sources = [] 
     }
     if (brief) {
       log(`image: tier 2, like the sources' own photograph: ${brief.queries.join(" | ")}`);
-      const found = atHome(await collect(brief.queries, log, { perQuery: 10, max: 12, exclude, people: "none", place, places, libraries: true, civilian }), draft, log);
+      const ownPeople = focus === "people" ? people.filter((name) => brief.people.some((n) => fold(n) === fold(name))) : [];
+      const found = atHome(await collect(brief.queries, log, { perQuery: 10, max: 12, exclude, people: ownPeople.length ? ownPeople : "none", together: ownPeople, place, places, libraries: true, civilian }), draft, log);
       // Location before likeness (the owner: "same location of the news is priority"): for a story about one country
       // this pass takes only photographs whose record says they were taken there. A likeness from nowhere in
       // particular waits for the passes after it, which search the country itself: the stress test of 2026-09-28 found
       // an unplaced Pexels tanker taken here for Oman's growth forecast, ahead of Oman's own ports.
       const candidates = place.length ? found.filter((c) => c.home) : found;
       if (found.length > candidates.length) log(`image: ${found.length - candidates.length} likeness(es) set aside for the country's own photographs`);
-      const image = await twoLooks({ candidates, draft, story, log, exclude, relaxed: false, tierNote: briefTierNote(brief.shows) });
+      const image = await twoLooks({ candidates, draft, story, log, exclude, relaxed: false, people: ownPeople, tierNote: briefTierNote(brief.shows) });
       if (image) return image;
     }
   }

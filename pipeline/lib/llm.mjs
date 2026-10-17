@@ -4,6 +4,7 @@ import { existsSync } from "node:fs";
 import { jsonrepair } from "jsonrepair";
 import "./env.mjs";
 import { USER_AGENT, fetchWithTimeout, sleep } from "./util.mjs";
+import { runSubscription } from "./codex-pool.mjs";
 
 /**
  * Khazendar multi-provider LLM module.
@@ -11,7 +12,7 @@ import { USER_AGENT, fetchWithTimeout, sleep } from "./util.mjs";
  * Supported providers:
  * - "gemini": Google Gemini (Default & Active controller, fast, native multimodal & structured output)
  * - "claude": Anthropic Claude (via Claude Code CLI subscription or Anthropic API; idle mode by default)
- * - "openai": OpenAI / ChatGPT (gpt-4o, gpt-4o-mini, o3-mini)
+ * - "openai": OpenAI API (GPT-6.1 Sol; legacy GPT-4o models also supported)
  * - "qwen": Alibaba Qwen (DashScope API or OpenRouter)
  * - "openrouter": Multi-model router for third-party models
  *
@@ -21,12 +22,13 @@ import { USER_AGENT, fetchWithTimeout, sleep } from "./util.mjs";
 
 export const usage = { calls: 0, failures: 0, promptTokens: 0, completionTokens: 0, cacheReadTokens: 0, costUsd: 0, byModel: {} };
 
-export const PROVIDERS = ["gemini", "claude", "openai", "qwen", "openrouter"];
+export const PROVIDERS = ["gemini", "claude", "codex", "openai", "qwen", "openrouter"];
 
 export const DEFAULT_MODELS = {
   gemini: "gemini-3.8-flash",
   claude: "claude-opus-5-5",
-  openai: "gpt-4o",
+  openai: "gpt-6.1-sol",
+  codex: "gpt-6.1-sol",
   qwen: "qwen-plus",
   openrouter: "google/gemini-3.8-flash",
 };
@@ -41,6 +43,7 @@ export function getActiveProvider() {
 }
 
 export function getActiveModel(provider = getActiveProvider()) {
+  if (provider === "codex") return process.env.KHAZENDAR_CODEX_MODEL || DEFAULT_MODELS.codex;
   if (provider === "gemini") return process.env.KHAZENDAR_GEMINI_MODEL || process.env.KHAZENDAR_MODEL || DEFAULT_MODELS.gemini;
   if (provider === "claude") return process.env.KHAZENDAR_CLAUDE_MODEL || process.env.KHAZENDAR_MODEL || DEFAULT_MODELS.claude;
   if (provider === "openai") return process.env.KHAZENDAR_OPENAI_MODEL || process.env.KHAZENDAR_MODEL || DEFAULT_MODELS.openai;
@@ -297,12 +300,19 @@ async function callClaude(options) {
 }
 
 // ------------------------------------------------------------------ Google Gemini
+const QUOTA_EXHAUSTED_GEMINI_MODELS = new Set();
+
 async function callGemini({ model, system, user, images = [], timeoutMs, temperature, maxTokens, json = true }) {
   const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
   if (!apiKey) {
     throw new LlmError("Gemini is active but GEMINI_API_KEY (or GOOGLE_API_KEY) is not set. Add your key in the Control Room Settings or .env.", { status: 401 });
   }
   const started = Date.now();
+  let actualModel = model || DEFAULT_MODELS.gemini;
+  if (QUOTA_EXHAUSTED_GEMINI_MODELS.has(actualModel) && actualModel !== "gemini-3.7-flash") {
+    actualModel = "gemini-3.7-flash";
+  }
+
   const userParts = [{ text: user }];
   for (const img of images) {
     const { mimeType, base64 } = await fetchImageBuffer(img);
@@ -336,7 +346,6 @@ async function callGemini({ model, system, user, images = [], timeoutMs, tempera
     };
   }
 
-  let actualModel = model || DEFAULT_MODELS.gemini;
   let url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(actualModel)}:generateContent?key=${encodeURIComponent(apiKey)}`;
   let response = await fetchWithTimeout(url, {
     method: "POST",
@@ -347,8 +356,10 @@ async function callGemini({ model, system, user, images = [], timeoutMs, tempera
   let payload = await response.json().catch(() => ({}));
   // If an experimental or preview model hits free tier quota limit or 503 demand spike, fallback to gemini-3.7-flash
   if ((response.status === 429 || response.status === 503) && actualModel !== "gemini-3.7-flash") {
+    if (response.status === 429) QUOTA_EXHAUSTED_GEMINI_MODELS.add(actualModel);
     const fallbackModel = "gemini-3.7-flash";
     const fallbackUrl = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(fallbackModel)}:generateContent?key=${encodeURIComponent(apiKey)}`;
+    await sleep(1500);
     const fbRes = await fetchWithTimeout(fallbackUrl, {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -396,8 +407,7 @@ async function callGemini({ model, system, user, images = [], timeoutMs, tempera
 }
 
 // ------------------------------------------------------------------ OpenAI / ChatGPT
-async function callOpenAI({ model, system, user, images = [], timeoutMs, temperature, maxTokens, json = true }) {
-  const apiKey = process.env.OPENAI_API_KEY;
+async function callOpenAI({ model, system, user, images = [], timeoutMs, temperature, maxTokens, json = true, apiKey = process.env.OPENAI_API_KEY }) {
   if (!apiKey) {
     throw new LlmError("OpenAI is active but OPENAI_API_KEY is not set. Add your key in the Control Room Settings or .env.", { status: 401 });
   }
@@ -419,12 +429,14 @@ async function callOpenAI({ model, system, user, images = [], timeoutMs, tempera
   messages.push({ role: "user", content: userContent });
 
   const actualModel = model || DEFAULT_MODELS.openai;
+  // Reasoning models reject temperature; their completion limit includes thinking tokens.
+  const reasoning = /^(?:gpt-[56](?:[.\-]|$)|o[134](?:-|$))/.test(actualModel);
   const body = {
     model: actualModel,
     messages,
-    temperature: typeof temperature === "number" ? temperature : 0.2,
+    ...(reasoning ? { reasoning_effort: "medium" } : { temperature: typeof temperature === "number" ? temperature : 0.2 }),
     ...(json ? { response_format: { type: "json_object" } } : {}),
-    ...(maxTokens ? { max_tokens: maxTokens } : {}),
+    ...(maxTokens ? { max_completion_tokens: maxTokens } : {}),
   };
 
   const response = await fetchWithTimeout("https://api.openai.com/v1/chat/completions", {
@@ -440,9 +452,9 @@ async function callOpenAI({ model, system, user, images = [], timeoutMs, tempera
   if (!response.ok || payload.error) {
     const err = payload.error || {};
     const code = response.status;
-    const message = err.message || response.statusText;
+    const message = String(err.message || response.statusText).split(apiKey).join("[redacted]");
     const login = code === 401 || /invalid api key/i.test(message);
-    throw new LlmError(`openai (${actualModel}): ${code} ${message}`, login ? { status: 401 } : { retryable: [429, 500, 502, 503, 504].includes(code) });
+    throw new LlmError(`openai (${actualModel}): ${code} ${message}`, { status: login ? 401 : code, retryable: [429, 500, 502, 503, 504].includes(code) });
   }
 
   const choice = payload.choices?.[0];
@@ -451,8 +463,18 @@ async function callOpenAI({ model, system, user, images = [], timeoutMs, tempera
   usage.calls += 1;
   usage.promptTokens += used.prompt_tokens ?? 0;
   usage.completionTokens += used.completion_tokens ?? 0;
+  const cached = used.prompt_tokens_details?.cached_tokens ?? 0;
+  usage.cacheReadTokens += cached;
+  // Standard API rates, USD per million tokens (OpenAI model page, 2026-10-17).
+  if (actualModel === "gpt-6.1-sol") {
+    usage.costUsd += (Math.max(0, (used.prompt_tokens ?? 0) - cached) * 2 + cached * 0.1 + (used.completion_tokens ?? 0) * 10) / 1e6;
+  }
   const modelKey = `openai/${actualModel}`;
   usage.byModel[modelKey] = (usage.byModel[modelKey] ?? 0) + 1;
+
+  if (choice?.message?.refusal) throw new LlmError(`openai (${actualModel}): request refused`);
+  if (choice?.finish_reason === "length") throw new LlmError(`openai (${actualModel}): completion token limit reached; increase maxTokens to leave room for reasoning and the answer`);
+  if (!text.trim()) throw new LlmError(`openai (${actualModel}): empty answer`);
 
   return {
     content: text,
@@ -460,6 +482,24 @@ async function callOpenAI({ model, system, user, images = [], timeoutMs, tempera
     usage: used,
     model: modelKey,
   };
+}
+
+/** One bounded request with the saved key; does not switch providers or write an article. */
+export async function testOpenAIConnection({ apiKey, model = DEFAULT_MODELS.openai }) {
+  const result = await callOpenAI({
+    apiKey,
+    model,
+    system: 'Reply with JSON only: {"ok":true,"message":"a short Arabic sentence confirming the connection"}.',
+    user: "Confirm the API connection in Arabic.",
+    json: true,
+    maxTokens: 4096,
+    timeoutMs: 60000,
+  });
+  const data = parseJsonLoose(result.content);
+  if (data.ok !== true || typeof data.message !== "string" || !/[\u0600-\u06ff]/.test(data.message)) {
+    throw new LlmError("OpenAI answered, but the Arabic JSON connection check did not pass.");
+  }
+  return { ok: true, model: result.model, message: data.message, ms: result.ms, usage: result.usage };
 }
 
 // ------------------------------------------------------------------ Alibaba Qwen
@@ -601,6 +641,25 @@ async function callOpenRouter({ model, system, user, images = [], timeoutMs, tem
 }
 
 // ------------------------------------------------------------------ Dispatcher
+async function callCodex(options) {
+  const images = [];
+  for (const url of options.images || []) images.push(await fetchImageBuffer(url));
+  const result = await runSubscription({ ...options, images });
+  usage.calls += 1;
+  usage.promptTokens += result.usage.input_tokens || 0;
+  usage.completionTokens += result.usage.output_tokens || 0;
+  usage.cacheReadTokens += result.usage.cached_input_tokens || 0;
+  usage.byModel[result.model] = (usage.byModel[result.model] || 0) + 1;
+  return result;
+}
+
+export async function testCodexConnection({ model = DEFAULT_MODELS.codex, codexHome } = {}) {
+  const result = await callCodex({ model, codexHome, system: 'Reply with JSON only: {"ok":true,"message":"a short Arabic connection confirmation"}.', user: "Confirm the ChatGPT subscription connection.", timeoutMs: 60000 });
+  const data = parseJsonLoose(result.content);
+  if (data.ok !== true || typeof data.message !== "string" || !/[\u0600-\u06ff]/.test(data.message)) throw new LlmError("Codex answered, but the Arabic JSON connection check did not pass.");
+  return { ok: true, model: result.model, message: data.message, ms: result.ms, billing: "ChatGPT subscription allowance; no Platform API key" };
+}
+
 async function dispatchCall(options) {
   const provider = getActiveProvider();
   const model = getActiveModel(provider);
@@ -609,6 +668,7 @@ async function dispatchCall(options) {
   if (provider === "gemini") return callGemini(callOpts);
   if (provider === "claude") return callClaude(callOpts);
   if (provider === "openai") return callOpenAI(callOpts);
+  if (provider === "codex") return callCodex(callOpts);
   if (provider === "qwen") return callQwen(callOpts);
   if (provider === "openrouter") return callOpenRouter(callOpts);
   return callGemini(callOpts);
@@ -646,6 +706,7 @@ export async function chat({ role, system, user, images = [], json = true, valid
       errors.push(`${provider}:${modelName}#${attempt}: ${error.message}`);
       const sample = error.meta?.sample ? ` sample=${JSON.stringify(String(error.meta.sample).slice(0, 140))}` : "";
       log(`llm fail role=${role} provider=${provider} model=${modelName} attempt=${attempt}: ${String(error.message).slice(0, 200)}${sample}`);
+      if (error.meta?.quota) throw error;
       if (error.meta?.status === 401) break;
       if (attempt < ATTEMPTS) {
         const is503 = /503|high demand|temporarily unavailable/i.test(error.message);

@@ -253,7 +253,11 @@ Claude credentials (`CLAUDE_CODE_OAUTH_TOKEN` or `ANTHROPIC_API_KEY`) remain sec
 
 ### 3. Third-Party Models (OpenAI, Qwen, OpenRouter)
 You can activate other models with one click:
-- **OpenAI (ChatGPT)**: Add your `OPENAI_API_KEY` (supports `gpt-4o`, `gpt-4.5-preview`, `o3-mini`).
+- **ChatGPT subscription (local)**: In Settings choose **ChatGPT subscription — Codex** and `gpt-6.1-sol`, then **Use locally for testing**. It uses the ChatGPT login already saved by Codex and your plan allowance, like the Claude subscription connection. **Test ChatGPT subscription** checks it without an API key. Scheduled cloud runs keep their existing provider.
+- **Change the ChatGPT account:** Settings → ChatGPT subscription → **Connect ChatGPT account**. Sign in with the replacement account, then **Use this account**. This does not sign the Codex desktop app out. You can enter an expected subscription end as a reminder; OpenAI does not provide a reliable current billing expiry through this sign-in. If a plan is cancelled or no longer permits the model, its calls stop; they never start separate API billing.
+- **Keep two accounts connected:** connect both, choose the run location and primary/backup pair, check **Enable quota fallback**, then save. The backup is used only when the primary's quota is exhausted; the primary is preferred again once available. Both exhausted means wait for a reset, including a weekly reset when needed. **Refresh usage** shows local allowances; **Read latest cloud usage report** shows the scheduled run's last observation. Sign-ins refresh automatically, with another login needed only if the session stops being valid.
+- **Use Sol for scheduled publishing:** after its workflow support is deployed, connect a separate sign-in for **GitHub scheduled publishing**, then **Use for GitHub scheduled publishing**. A separate session keeps the cloud's automatic sign-in renewal independent of the desktop app. No password is entered in the Control Room.
+- **OpenAI API (separate billing)**: `OPENAI_API_KEY` uses a separate Platform API balance, including for `gpt-6.1-sol`. This is different from ChatGPT subscription access.
 - **Alibaba Qwen**: Add your `DASHSCOPE_API_KEY` (supports `qwen-max`, `qwen-vl-max`).
 - **OpenRouter**: Add your `OPENROUTER_API_KEY` (access hundreds of models through OpenRouter).
 

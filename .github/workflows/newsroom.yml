@@ -34,7 +34,7 @@ on:
         type: string
 
 concurrency:
-  group: newsroom
+  group: ${{ vars.KHAZENDAR_PROVIDER == 'codex' && 'chatgpt-newsroom' || 'newsroom' }}
   cancel-in-progress: false
 
 permissions:
@@ -46,6 +46,8 @@ jobs:
     if: vars.KHAZENDAR_PAUSED != '1'
     name: Write and publish
     runs-on: ubuntu-latest
+    env:
+      KHAZENDAR_CODEX_MODEL: ${{ vars.KHAZENDAR_CODEX_MODEL || 'gpt-6.1-sol' }}
     # «في العمق» runs longer than a news round: the first one took 32 minutes on its own, and one desk call on a
     # 1,500-word body may take fifteen.
     # A news round also runs the second look and the learning step before it writes: up to 12 and 1 minutes.
@@ -106,6 +108,29 @@ jobs:
       - name: Install Claude Code
         if: vars.KHAZENDAR_PROVIDER == 'claude'
         run: npm install -g @anthropic-ai/claude-code
+
+      - name: Install Codex for ChatGPT subscription
+        if: vars.KHAZENDAR_PROVIDER == 'codex'
+        run: |
+          echo "CODEX_HOME=$RUNNER_TEMP/khazendar-codex" >> "$GITHUB_ENV"
+          npm install -g @openai/codex
+
+      - name: Restore encrypted ChatGPT session cache
+        if: vars.KHAZENDAR_PROVIDER == 'codex'
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ runner.temp }}/khazendar-codex-auth.enc
+          key: chatgpt-${{ vars.KHAZENDAR_CODEX_SESSION }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: chatgpt-${{ vars.KHAZENDAR_CODEX_SESSION }}-
+
+      - name: Restore ChatGPT subscription sign-in
+        if: vars.KHAZENDAR_PROVIDER == 'codex'
+        id: chatgpt_auth
+        env:
+          KHAZENDAR_CODEX_AUTH_JSON: ${{ secrets.KHAZENDAR_CODEX_AUTH_JSON }}
+          KHAZENDAR_CODEX_STATE_KEY: ${{ secrets.KHAZENDAR_CODEX_STATE_KEY }}
+          KHAZENDAR_CODEX_SESSION: ${{ vars.KHAZENDAR_CODEX_SESSION }}
+        run: node scripts/codex-cloud-auth.mjs restore
 
       # The self-improvement loop, each news round (the owner, 2026-09-25: "each time the LLM gets news ... efficient and
       # fast"): the earlier rounds' stories are read again against their sources, what is proved is corrected, and the
@@ -180,6 +205,29 @@ jobs:
           else
             node pipeline/run.mjs --mode="$MODE" --limit="$LIMIT" --sections="$SECTIONS" ${REVIEW:+--draft}
           fi
+
+      - name: Encrypt refreshed ChatGPT sign-in
+        id: chatgpt_save
+        if: always() && steps.chatgpt_auth.outputs.ready == 'true'
+        env:
+          KHAZENDAR_CODEX_STATE_KEY: ${{ secrets.KHAZENDAR_CODEX_STATE_KEY }}
+          KHAZENDAR_CODEX_SESSION: ${{ vars.KHAZENDAR_CODEX_SESSION }}
+        run: node scripts/codex-cloud-auth.mjs save
+
+      - name: Save encrypted ChatGPT session cache
+        if: always() && steps.chatgpt_save.outcome == 'success'
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ runner.temp }}/khazendar-codex-auth.enc
+          key: chatgpt-${{ vars.KHAZENDAR_CODEX_SESSION }}-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Share ChatGPT allowance status with the Control Room
+        if: always() && steps.chatgpt_save.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: chatgpt-usage
+          path: ${{ runner.temp }}/khazendar-chatgpt-usage.json
+          retention-days: 7
 
       - name: Refresh market quotes and the calendar (best effort; the committed files are the fallback)
         timeout-minutes: 5

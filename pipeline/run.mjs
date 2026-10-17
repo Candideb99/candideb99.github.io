@@ -631,6 +631,11 @@ async function runNews(report) {
       }
       await saveState(state);
     } catch (error) {
+      if (error.meta?.quota) {
+        log(`desk paused for ChatGPT allowance: ${error.message}`);
+        report.push({ headline: story.headlineHint, section: story.section, outcome: "deferred: ChatGPT allowance exhausted", retryAt: error.meta.retryAt });
+        break;
+      }
       log(`story failed "${story.headlineHint}": ${String(error.message).split("\n")[0]}`);
       report.push({ headline: story.headlineHint, section: story.section, outcome: `error: ${String(error.message).split("\n")[0]}` });
       // A story that failed outright takes the rejection mark like a rejected one (another try after twelve

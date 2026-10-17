@@ -32,7 +32,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: editor
+  group: ${{ vars.KHAZENDAR_PROVIDER == 'codex' && 'chatgpt-newsroom' || 'editor' }}
   cancel-in-progress: false
 
 permissions:
@@ -46,6 +46,8 @@ jobs:
   editor:
     name: Daily editor's round
     runs-on: ubuntu-latest
+    env:
+      KHAZENDAR_CODEX_MODEL: ${{ vars.KHAZENDAR_CODEX_MODEL || 'gpt-6.1-sol' }}
     timeout-minutes: 45
     if: vars.KHAZENDAR_EDITOR == '1' && vars.KHAZENDAR_PAUSED != '1'
     steps:
@@ -84,6 +86,29 @@ jobs:
         if: (steps.precheck.outputs.pictures != '' || steps.precheck.outputs.redo != '') && vars.KHAZENDAR_PROVIDER == 'claude'
         run: npm install -g @anthropic-ai/claude-code
 
+      - name: Install Codex for ChatGPT subscription
+        if: (steps.precheck.outputs.pictures != '' || steps.precheck.outputs.redo != '') && vars.KHAZENDAR_PROVIDER == 'codex'
+        run: |
+          echo "CODEX_HOME=$RUNNER_TEMP/khazendar-codex" >> "$GITHUB_ENV"
+          npm install -g @openai/codex
+
+      - name: Restore encrypted ChatGPT session cache
+        if: (steps.precheck.outputs.pictures != '' || steps.precheck.outputs.redo != '') && vars.KHAZENDAR_PROVIDER == 'codex'
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ runner.temp }}/khazendar-codex-auth.enc
+          key: chatgpt-${{ vars.KHAZENDAR_CODEX_SESSION }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: chatgpt-${{ vars.KHAZENDAR_CODEX_SESSION }}-
+
+      - name: Restore ChatGPT subscription sign-in
+        id: chatgpt_auth
+        if: (steps.precheck.outputs.pictures != '' || steps.precheck.outputs.redo != '') && vars.KHAZENDAR_PROVIDER == 'codex'
+        env:
+          KHAZENDAR_CODEX_AUTH_JSON: ${{ secrets.KHAZENDAR_CODEX_AUTH_JSON }}
+          KHAZENDAR_CODEX_STATE_KEY: ${{ secrets.KHAZENDAR_CODEX_STATE_KEY }}
+          KHAZENDAR_CODEX_SESSION: ${{ vars.KHAZENDAR_CODEX_SESSION }}
+        run: node scripts/codex-cloud-auth.mjs restore
+
       - name: Fill missing pictures and replace lost ones (the pipeline's own search)
         if: steps.precheck.outputs.pictures != '' || steps.precheck.outputs.redo != ''
         env:
@@ -104,6 +129,29 @@ jobs:
         run: |
           if [ -n "$SLUGS" ]; then node pipeline/backfill-images.mjs --only="$SLUGS" || echo "The picture search failed; the stories run as text."; fi
           if [ -n "$REDO" ]; then node pipeline/backfill-images.mjs --redo="$REDO" --only="$REDO" || echo "The re-pick failed; tomorrow's round tries again."; fi
+
+      - name: Encrypt refreshed ChatGPT sign-in
+        id: chatgpt_save
+        if: always() && steps.chatgpt_auth.outputs.ready == 'true'
+        env:
+          KHAZENDAR_CODEX_STATE_KEY: ${{ secrets.KHAZENDAR_CODEX_STATE_KEY }}
+          KHAZENDAR_CODEX_SESSION: ${{ vars.KHAZENDAR_CODEX_SESSION }}
+        run: node scripts/codex-cloud-auth.mjs save
+
+      - name: Save encrypted ChatGPT session cache
+        if: always() && steps.chatgpt_save.outcome == 'success'
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ runner.temp }}/khazendar-codex-auth.enc
+          key: chatgpt-${{ vars.KHAZENDAR_CODEX_SESSION }}-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Share ChatGPT allowance status with the Control Room
+        if: always() && steps.chatgpt_save.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: chatgpt-usage
+          path: ${{ runner.temp }}/khazendar-chatgpt-usage.json
+          retention-days: 7
 
       # The round's own changes: pictures, photos re-addressed after a rename, the health state and the week's numbers.
       - name: Commit the round

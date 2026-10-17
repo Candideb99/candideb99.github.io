@@ -42,6 +42,26 @@ for (const f of scripts) {
 }
 console.log(`[ok] ${scripts.length} scripts parse (${seconds(t)})`);
 
+t = Date.now();
+const llm = spawnSync(process.execPath, [path.join("scripts", "llm-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });
+if (llm.status !== 0) fail("OpenAI requests (scripts/llm-selftest.mjs)", llm.stdout + llm.stderr);
+console.log(`[ok] OpenAI requests and connection test pass offline (${seconds(t)})`);
+
+t = Date.now();
+const codex = spawnSync(process.execPath, [path.join("scripts", "codex-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });
+if (codex.status !== 0) fail("ChatGPT subscription (scripts/codex-selftest.mjs)", codex.stdout + codex.stderr);
+console.log(`[ok] ChatGPT subscription authentication and requests pass offline (${seconds(t)})`);
+
+t = Date.now();
+const accounts = spawnSync(process.execPath, [path.join("scripts", "accounts-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });
+if (accounts.status !== 0) fail("ChatGPT account switching (scripts/accounts-selftest.mjs)", accounts.stdout + accounts.stderr);
+console.log(`[ok] Account switching, expiry reminders and encrypted cloud sign-in pass offline (${seconds(t)})`);
+
+t = Date.now();
+const pool = spawnSync(process.execPath, [path.join("scripts", "codex-pool-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });
+if (pool.status !== 0) fail("ChatGPT quota fallback (scripts/codex-pool-selftest.mjs)", pool.stdout + pool.stderr);
+console.log(`[ok] ChatGPT primary/backup quotas and reset decisions pass offline (${seconds(t)})`);
+
 // 1b. The lessons' decision rule decides its known cases correctly (scripts/evidence-selftest.mjs, 2026-09-25).
 t = Date.now();
 const selftest = spawnSync(process.execPath, [path.join("scripts", "evidence-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });

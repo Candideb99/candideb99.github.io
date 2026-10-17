@@ -368,5 +368,22 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
   check("every library down: no photo, and no exception", outcome, null);
 }
 
+// A source's relevant photograph may show the story's own person at work. The source reader already
+// supplies their name; the collection stage used to discard it by banning all named people in this tier.
+{
+  const trump = file("President Donald Trump signs an order in the Oval Office 2026.jpg", { categories: "Donald Trump|Oval Office|United States" });
+  const tusk = file("President Donald Tusk at a signing in the Oval Office 2026.jpg", { categories: "Donald Tusk|United States" });
+  const r = await scenario({
+    draft: { ...developers, title: "ترامب يصدر قراراً بشأن عقوبات النفط", tags: ["ترامب", "الولايات المتحدة"], regions: ["الأمريكتان"] },
+    plan: planFor({ queries: [], place: ["United States"], people: ["Donald Trump"], focus: "people", places: [], place_queries: [] }),
+    sources: [{ ogImage: "https://src.test/photos/signing.jpg", sourceNameEn: "Source", title: "Sanctions decision" }],
+    brief: { photos: [{ n: 1, news: true, shows: "Donald Trump signing an order at his desk", people: ["Donald Trump"] }], best: 1, queries: ["Donald Trump Oval Office"] },
+    world: { "Donald Trump Oval Office": [tusk, trump] },
+    judge: pickTitle("Donald Trump"),
+  });
+  check("the source-photo tier can select the story's own person at work", r.image?.title, trump.title);
+  check("sharing a first name never makes another official the story's person", r.judgePrompts.some((p) => p.includes(tusk.title)), false);
+}
+
 console.log(failed ? `\n${failed} check(s) FAILED` : "\nall checks passed");
 process.exit(failed ? 1 : 0);
