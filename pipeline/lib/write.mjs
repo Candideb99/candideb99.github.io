@@ -85,7 +85,7 @@ const NEWS_MAX_TOKENS = 12000;
 function sourceBlock(source, index) {
   const text = source.text || source.summary || "";
   return `SOURCE ${index + 1}: ${source.sourceNameEn} (${source.lang}) — "${source.title}" — published ${source.publishedAt ?? "unknown"}
-${text}`;
+${source.kind === "official" ? "[PRIMARY INSTITUTIONAL DOCUMENT: authoritative for its own provisions/announcement; stated benefits remain attributed claims.]\n" : ""}${source.discoveredFrom ? `[Document linked in ${source.discoveredFrom}; this is evidence provenance, not independent confirmation.]\n` : ""}${text}`;
 }
 
 /** Some models return the body as paragraphs or as sections ({heading, text} or heading → text); fold it into Markdown. */
@@ -173,6 +173,8 @@ Today (UTC): ${new Date(today).toISOString().slice(0, 10)}
 
 SOURCE MATERIAL
 ${sources.map(sourceBlock).join("\n\n")}
+
+For an expert whose view you select, retain a concise source-backed role and institution in the notes, so the writer can identify the person. Preserve the reporting origin of an outlet's own comments (for example, «في تصريحات أوردتها «…»» when supported); do not imply our own interview or an exclusive. Several pickups of one statement or agency are not independent confirmation. An institution's promised benefit is its attributed aim, not an achieved outcome. Page publication timestamps are not event dates: use the reported event or signing date, with its time zone, rather than deriving a weekday from the page timestamp.
 
 ${lessons}TASK
 Extract the desk notes for this ONE event (the working headline). 8 to 20 facts, each one Arabic sentence of at most 30 words in your own words (never a sentence copied from an Arabic source), with the figure, its unit, the date and the actor exactly as the source gives them, and the number of the source it comes from; a figure appears only with its own period and unit. Attribution words belong in the fact («قال المصرف في بيان إن…», «بحسب بيانات المكتب…»): a public fact (a decision, a published figure, a price) names the institution, company or news agency behind it, never the outlet that relayed it; an outlet is named only for what it alone reports (its own sources, interview or exclusive). When two sources give different figures for the same measure, keep ONE fact: the latest-timed, or the one the institution itself published, with its time if the source gives it; never both. Leave out everything that is a different event, a background fact from memory, or an interpretation.

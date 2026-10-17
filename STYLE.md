@@ -140,6 +140,17 @@ gives specific repairs for defects. Its numeric score is not a certificate of li
 The publication threshold and number of revision rounds stay unchanged. The sample, limitations and
 source links are recorded in [the editorial audit](docs/arabic-editorial-audit-2026-10-17.md).
 
+**An original construction, with honest evidence.** The report answers a reader's question through
+the checked facts, rather than mirroring another report's paragraph order with different words.
+Develop the supplied comparison, mechanism, affected group or limits of a decision. Thin evidence
+still makes a brief; no invented exclusive, interview, calculation or local consequence to create
+novelty. Outlets repeating the same agency or statement do not provide independent confirmations.
+An official release establishes its announcement, not the truth of every benefit it promises.
+When a fetched report cites a relevant public institutional document, the evidence collector may
+read one such document on an approved host. It keeps the actual publication date (or unknown),
+records the referring report and checks relevance. A failed supplement leaves the original sources
+intact. The existing limit of five source items and all publication checks still apply.
+
 **Marks.** Western digits; pan-Arab month names; % after the figure; the Arabic comma (،); «» for
 quotations and foreign brand names; tanween on the alef (اً).
 

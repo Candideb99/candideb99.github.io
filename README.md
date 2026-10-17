@@ -138,7 +138,7 @@ Models: Gemini by default, or Claude, OpenAI, Qwen, OpenRouter (see "Model provi
 
 ## Operating it
 
-- **Secrets:** Repository secret for your chosen provider: `GEMINI_API_KEY` (active) or `CLAUDE_CODE_OAUTH_TOKEN` (idle/standby), or `OPENAI_API_KEY`, etc.
+- **Secrets:** The chosen provider's credentials. The owner currently uses ChatGPT subscription authentication (`codex`), with a separate cloud session restored by the workflow; no paid API fallback. Other providers' saved keys remain available. Check GitHub Actions variables for the current cloud provider instead of assuming it from an installed key.
 - **Manual run:** Actions → Newsroom → Run workflow (choose `news`, `explainer`, `analysis`, `paper` or `weekly`, a limit, and for an analysis optionally the sections it may draw on, e.g. `defense` for the defence-and-geopolitics reading).
 - **Unpublish:** delete the Markdown file in `content/articles/` and push; the next deploy removes the page.
 - **Quality signal:** every article's frontmatter carries `quality.score` (critic score 0-10), the models used, and the sources. The Actions run summary shows a table per run.

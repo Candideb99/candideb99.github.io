@@ -269,7 +269,7 @@ export async function critique({ draft, sources, explainer = false, analysis = f
   const news = !explainer && !analysis && !paper && !weekly && !feature;
   const rubric = CRITIC_RUBRIC[explainer ? "explainer" : analysis ? "analysis" : paper ? "paper" : weekly ? "weekly" : feature ? "feature" : "news"];
   // Each source with its date: a timeline («في العمق») is checked row by row against its stories' dates.
-  const material = sources.map((s, i) => `SOURCE ${i + 1}: ${s.sourceNameEn} (${s.lang}) — "${s.title}"${s.publishedAt ? ` — published ${String(s.publishedAt).slice(0, 10)}` : ""}\n${s.text || s.summary || ""}`).join("\n\n");
+  const material = sources.map((s, i) => `SOURCE ${i + 1}: ${s.sourceNameEn} (${s.lang}) — "${s.title}"${s.publishedAt ? ` — published ${String(s.publishedAt).slice(0, 10)}` : ""}${s.kind === "official" ? " — PRIMARY INSTITUTIONAL DOCUMENT (stated aims remain attributed claims)" : ""}\n${s.text || s.summary || ""}`).join("\n\n");
   const user = `SOURCE MATERIAL
 ${[rubric.material, material || (explainer ? "" : "(no sources supplied)")].filter(Boolean).join("\n\n")}
 

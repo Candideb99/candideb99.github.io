@@ -88,6 +88,8 @@ export async function saveSnapshot({ slug, title, publishedAt = null, sources, c
       publishedAt: s.publishedAt ?? null,
       fetchedAt: s.fetchedAt ?? null,
       lang: s.lang ?? null,
+      sourceKind: s.kind ?? null,
+      discoveredFrom: s.discoveredFrom ?? null,
       passages: passagesOf(s.text, checks.filter((c) => Number(c.sourceN ?? c.source) === i + 1 && c.quote).map((c) => c.quote), storyFigures),
     })),
     claims: checks.map((c) => ({ field: c.field, sentence: c.sentence, verdict: c.verdict, status: c.status, source: c.sourceN ?? c.source ?? null, quote: c.quote ?? "" })),

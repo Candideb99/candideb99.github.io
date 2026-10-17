@@ -1,5 +1,12 @@
 # خازندار — notes for agents
 
+News evidence (2026-10-17): `pipeline/lib/news-evidence.mjs` preserves official-source metadata and
+may supplement the selected reports with one relevant institutional document explicitly linked in
+their readable bodies. Exact approved hosts, document paths, robots and redirect checks apply;
+failure keeps the original evidence, and the five-source limit remains. Publication metadata is
+not an event date. The shared editorial brief requires independent construction, honest reporting
+origins and sourced expert identification, never invented reporting or novelty. See the dated audit.
+
 Arabic-first (RTL) economics publication written by an automated newsroom. Read `README.md` first, then `PRODUCT.md` (product truth), `DESIGN.md` (visual system) and `STYLE.md` (how the Arabic is written and how the pages are organised, from the practice of the Arabic economics desks).
 
 - The site is static Astro in `src/`; articles are Markdown in `content/articles/` written only by `pipeline/run.mjs`. Never hand-write news articles; run the pipeline.

@@ -75,6 +75,11 @@ const safeguards = spawnSync(process.execPath, [path.join("scripts", "pipeline-s
 if (safeguards.status !== 0) fail("the newsroom's safeguards (scripts/pipeline-selftest.mjs)", safeguards.stdout + safeguards.stderr);
 console.log(`[ok] the newsroom's safeguards pass their known cases (${seconds(t)})`);
 
+t = Date.now();
+const newsEvidence = spawnSync(process.execPath, [path.join("scripts", "news-evidence-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });
+if (newsEvidence.status !== 0) fail("news evidence collection (scripts/news-evidence-selftest.mjs)", newsEvidence.stdout + newsEvidence.stderr);
+console.log(`[ok] source metadata, cited primary documents and fetch failures pass offline (${seconds(t)})`);
+
 // 1d. The picture desk decides its known cases correctly (scripts/images-selftest.mjs, 2026-09-28): the cascade's
 // order, the place filter, the repeat guard, accented names, namesake towns, and every library failing at once.
 t = Date.now();

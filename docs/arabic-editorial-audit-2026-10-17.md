@@ -88,3 +88,54 @@ desk or the separate pre-publication fact-check; it is not a full newsroom accep
 Human assessment of fresh outputs is still needed to establish improvement in reader experience;
 the current complaint and these examples are the calibration evidence, not a promise that prompts
 prevent every future error. No model ranking follows from this sample.
+
+## Publishing and evidence follow-up, 17 October
+
+The 20:40 UTC scheduled run fetched 300 candidates but made no successful model call. Its usage
+lookup failed while retaining a five-hour exhaustion flag whose recorded reset had already passed;
+the weekly reading was 16%, not exhausted. The router now permits one service-validated request
+after every recorded exhausted window resets, with a five-minute retry guard if allowance is still
+unavailable. A future or unknown weekly reset still blocks it, and no paid API fallback is used.
+The isolated quota RPC also now uses the same file credential-store setting as inference.
+
+A fresh cloud run, [39068021801](https://github.com/Candideb99/candideb99.github.io/actions/runs/39068021801),
+made 13 successful Sol calls with no provider failures, completed the existing revision and factual
+precheck, and published [the Egypt credit-rating report](https://candideb99.github.io/articles/moodys-upgrades-egypt-credit-rating-b3-636210/)
+at 20:50:56 UTC. Its public page returned HTTP 200 with the actual article body after deployment.
+The first critic caught the difference between a rating upgrade **not guaranteeing** an immediate
+borrowing-cost reduction and asserting that such a reduction **does not happen**. The revision
+kept the qualified claim. This is one successful end-to-end run, not a promise about future quotas
+or a certificate that its prose cannot improve.
+
+The originality audit identified a concrete evidence gap: the collector discarded `kind` and
+`reliability`, defeating its existing single-official-source exception, and never followed a report's
+cited primary document. The new collector retains metadata, reads at most three selected report
+bodies and one linked institutional document, and keeps at most five source items. Links must come
+from the readable body, have a specific document path on an exact approved host and pass a conservative
+title/context relevance check. Robots and every redirect are checked. An unavailable or unrelated
+supplement is skipped; original evidence remains, and the existing fetched-body requirement applies.
+The referring report is preserved in the publication evidence. No model stage or JSON obligation is
+added. This supplement does not discover every primary source: unsupported hosts, PDFs, unlinked
+documents and some cross-language titles will be missed deliberately rather than treated as verified.
+
+On the live waiver reports, the collector followed CNBC's link to the White House order and retained
+the page's publication timestamp, 17 October at 00:34 UTC. That timestamp must not be mistaken for the
+order's signing day in Washington. A source page's publication date and the date of the event it
+describes are different facts.
+
+The shared writer/desk/critic brief now distinguishes an independently constructed explanation from
+synonym substitution. It asks for a reader's question developed through supplied comparisons,
+mechanisms, affected groups or limits; it preserves expert identification and reporting origins.
+Several pickups of one agency or statement are not independent confirmation, and an institution's
+promised benefit remains an attributed claim. No fabricated exclusives, interviews, scenes, analysis
+or calculations are permitted to manufacture uniqueness. These choices are consistent with
+[Reuters' sourcing and attribution standards](https://reutersagency.com/about/standards-values/)
+and the Al Jazeera Media Institute's emphasis on turning data into a coherent, explanatory story
+in [«تكرير البيانات الخام في القصة الصحفية»](https://institute.aljazeera.net/en/node/305).
+
+Offline tests cover article-only links, exact hosts, robots, unsafe redirects, duplicate documents,
+source limits, unknown dates, paywalls and failed/unrelated supplements. A live critic recheck still
+requested revision for empty sales repetition. It initially also asked to relocate an already supplied
+purpose from the significance box in an otherwise clear brief. The context criterion was clarified:
+placement alone is not a defect; earlier context is needed when its absence misleads or obscures the
+event. The same brief then received a publish verdict. Neither exercise measures overall writer quality.

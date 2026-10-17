@@ -83,27 +83,41 @@ function metaContent(html, name) {
 
 /**
  * Fetches a public article page and extracts its readable text.
- * Returns { ok, text, title, ogImage, lang, status, reason }.
+ * Links come only from the readable article, never the page's navigation.
  */
-export async function extractArticle(url, { maxChars = 9000, log = () => {} } = {}) {
-  const result = { ok: false, text: "", title: "", ogImage: "", lang: "", status: 0, reason: "" };
+export async function extractArticle(url, { maxChars = 9000, log = () => {}, allowUrl = null } = {}) {
+  const result = { ok: false, text: "", title: "", ogImage: "", lang: "", links: [], publishedAt: null, status: 0, reason: "" };
   try {
+    if (allowUrl && !allowUrl(url)) return { ...result, reason: "url-not-allowed" };
     if (!(await allowedByRobots(url))) {
       result.reason = "robots-disallow";
       return result;
     }
-    const response = await fetchWithTimeout(
-      url,
+    let response;
+    let current = url;
+    for (let redirects = 0; redirects <= 4; redirects++) {
+      response = await fetchWithTimeout(
+      current,
       {
         headers: {
           "user-agent": USER_AGENT,
           accept: "text/html,application/xhtml+xml;q=0.9,*/*;q=0.5",
           "accept-language": "en,ar;q=0.9,de;q=0.7",
         },
-        redirect: "follow",
+        redirect: allowUrl ? "manual" : "follow",
       },
       25000,
-    );
+      );
+      if (!allowUrl || ![301, 302, 303, 307, 308].includes(response.status)) break;
+      const location = response.headers.get("location");
+      if (!location) break;
+      const next = new URL(location, current).href;
+      if (response.body) await response.body.cancel();
+      if (redirects === 4 || !allowUrl(next) || !(await allowedByRobots(next))) {
+        return { ...result, reason: "redirect-not-allowed" };
+      }
+      current = next;
+    }
     result.status = response.status;
     const type = response.headers.get("content-type") ?? "";
     if (!response.ok) {
@@ -115,16 +129,44 @@ export async function extractArticle(url, { maxChars = 9000, log = () => {} } = 
       return result;
     }
     const html = (await response.text()).slice(0, 3_000_000);
-    result.ogImage = metaContent(html, "og:image");
-    result.lang = (html.match(/<html[^>]+lang=["']([a-zA-Z-]+)["']/i)?.[1] ?? "").toLowerCase();
+    Object.assign(result, readArticleHtml(html, response.url || current, { maxChars, log }));
+    return result;
+  } catch (error) {
+    result.reason = error.name === "AbortError" ? "timeout" : error.message;
+    return result;
+  }
+}
+
+/** Pure extraction, shared with offline evidence tests. No inferred publication date. */
+export function readArticleHtml(html, url, { maxChars = 9000, log = () => {} } = {}) {
+    const result = { ok: false, text: "", title: "", ogImage: metaContent(html, "og:image"),
+      lang: (html.match(/<html[^>]+lang=["']([a-zA-Z-]+)["']/i)?.[1] ?? "").toLowerCase(),
+      links: [], publishedAt: null, reason: "" };
     let text = "";
     let title = "";
     try {
       const { document } = parseHTML(html);
       const article = new Readability(document, { charThreshold: 300 }).parse();
+      const published = article?.publishedTime || metaContent(html, "article:published_time") || metaContent(html, "datePublished");
+      if (published && Number.isFinite(Date.parse(published))) result.publishedAt = new Date(published).toISOString();
       if (article?.textContent) {
         text = article.textContent.replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n").trim();
         title = article.title ?? "";
+        const body = parseHTML(`<html><body>${article.content}</body></html>`).document;
+        for (const node of body.querySelectorAll("nav, aside, footer, header, script, style, [class*='related'], [class*='share']")) node.remove();
+        const seen = new Set();
+        for (const anchor of body.querySelectorAll("p a[href]")) {
+          try {
+            const href = new URL(anchor.getAttribute("href"), url).href;
+            const label = anchor.textContent.trim();
+            const context = anchor.closest("p").textContent.trim().slice(0, 600);
+            if (seen.has(href) || /^(read more|related|اقرأ أيضا|اقرأ أيضاً)/i.test(context)) continue;
+            if (!/^https?:/.test(href)) continue;
+            seen.add(href);
+            result.links.push({ url: href, label: label.slice(0, 180), context });
+            if (result.links.length >= 40) break;
+          } catch { /* An invalid link is not evidence. */ }
+        }
       }
     } catch (error) {
       log(`readability failed for ${url}: ${error.message}`);
@@ -139,8 +181,4 @@ export async function extractArticle(url, { maxChars = 9000, log = () => {} } = 
     result.ok = result.text.length >= 400;
     if (!result.ok) result.reason = "thin";
     return result;
-  } catch (error) {
-    result.reason = error.name === "AbortError" ? "timeout" : error.message;
-    return result;
-  }
 }

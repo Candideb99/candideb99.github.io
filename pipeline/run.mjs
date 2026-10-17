@@ -21,6 +21,7 @@ import path from "node:path";
 import process from "node:process";
 import { fetchFeed } from "./lib/feeds.mjs";
 import { extractArticle } from "./lib/extract.mjs";
+import { collectNewsEvidence } from "./lib/news-evidence.mjs";
 import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectFeatureTopic, selectPaper, selectStories } from "./lib/select.mjs";
 import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, newsFloor, reviseArticle, writeAnalysis, writeArticle, writeExplainer, writeFeature, writePaperReading, writeWeekly } from "./lib/write.mjs";
 import { critique, programmaticChecks } from "./lib/verify.mjs";
@@ -193,37 +194,7 @@ async function gatherCandidates(sources, state, existing) {
 }
 
 async function collectEvidence(story, candidates) {
-  const items = story.ids.map((id) => candidates.find((c) => c.id === id)).filter(Boolean);
-  // Prefer official and tier-A sources, then freshness; fetch at most three bodies.
-  items.sort((a, b) => b.reliability - a.reliability || hoursSince(a.publishedAt) - hoursSince(b.publishedAt));
-  const sources = [];
-  for (const item of items.slice(0, 5)) {
-    let text = "";
-    let fetched = null;
-    if (!item.paywalled && sources.filter((s) => s.text).length < 3) {
-      fetched = await extractArticle(item.url, { log });
-      if (fetched.ok) text = fetched.text;
-      else log(`evidence ${item.sourceId}: ${fetched.reason}`);
-    }
-    sources.push({
-      id: item.id,
-      sourceId: item.sourceId,
-      sourceName: item.sourceName,
-      sourceNameEn: item.sourceNameEn,
-      title: item.title,
-      url: item.url,
-      lang: item.lang,
-      publishedAt: item.publishedAt,
-      summary: item.summary,
-      text,
-      // When the page was read: the saved evidence says what the source said at that moment (lib/snapshots.mjs).
-      fetchedAt: text ? isoNow() : null,
-      ogImage: fetched?.ogImage ?? "",
-    });
-    if (sources.length >= 4) break;
-  }
-  const evidenceChars = sources.reduce((n, s) => n + (s.text || s.summary || "").length, 0);
-  return { items, sources, evidenceChars };
+  return collectNewsEvidence(story, candidates, { log });
 }
 
 /** Pictures already printed on the site; a new story never repeats one. */
