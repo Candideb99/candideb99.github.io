@@ -230,9 +230,19 @@
       "read": 0,
       "confirmedPerStory": null,
       "photosPending": 0
+    },
+    {
+      "date": "2026-10-17",
+      "published": 0,
+      "news": 0,
+      "styleFaultsPerStory": null,
+      "corrections": 0,
+      "read": 0,
+      "confirmedPerStory": null,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-10-16T12:24:14.339Z",
+  "updatedAt": "2026-10-17T11:35:53.647Z",
   "week": {
     "published": 0,
     "news": 0,
@@ -331,7 +341,7 @@
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 18,
+      "read": 14,
       "clean": 0,
       "corrected": 0,
       "stands": 0,
