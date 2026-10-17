@@ -1,43 +1,41 @@
 {
   "mode": "news",
-  "startedAt": "2026-10-17T21:16:34.846Z",
-  "durationSec": 325,
-  "published": 0,
-  "refreshed": 1,
+  "startedAt": "2026-10-17T23:10:51.913Z",
+  "durationSec": 1525,
+  "published": 4,
+  "refreshed": 0,
   "report": [
     {
-      "headline": "«موديز» ترفع تصنيف مصر الائتماني بنظرة مستقبلية إيجابية",
+      "headline": "عجز الموازنة الأميركية يقترب من تريليوني دولار في 2026",
       "section": "economy",
       "importance": 8,
       "sources": [
-        "https://www.dailynewsegypt.com/2026/10/17/finance-ministry-in-egypt-vows-to-cut-debt-service-costs-following-moodys-b3-rating/",
-        "https://www.dailynewsegypt.com/2026/10/17/egypt-seeks-to-accelerate-reduction-in-debt-service-costs/",
-        "https://www.alborsaanews.com/2026/10/17/1999905",
-        "https://www.fidelity.com/learning-center/investment-products/fixed-income-bonds/bond-ratings"
+        "https://www.nytimes.com/2026/10/16/business/us-budget-deficit.html",
+        "https://www.cnbc.com/2026/10/16/us-budget-deficit-2026.html"
       ],
       "editorialReviews": [
         {
           "pass": 1,
-          "verdict": "publish",
+          "verdict": "revise",
           "readerCheck": {
             "scope": {
               "status": "clear",
-              "evidence": "يوضح العنوان والمقدمة الانتقال من Caa1 إلى B3 والإبقاء على النظرة الإيجابية، ويبيّن العنوان الفرعي أن مصر لم تدخل الدرجة الاستثمارية.",
+              "evidence": "العنوان والمقدمة يحددان ارتفاع العجز في السنة المالية 2026، ويبيّن المتن استمرار العجز للسنة الخامسة والعشرين؛ وتسجيل الإيرادات والإنفاق مستويين قياسيين لا يناقض اتساع الفجوة بينهما.",
               "repair": ""
             },
             "context": {
-              "status": "clear",
-              "evidence": "يشرح النص الجدارة الائتمانية والتمييز بين الفئتين الاستثمارية والمضاربية، وعلاقة المخاطر بالعائد المطلوب، استناداً إلى المصدر 4، ويعرّف الخبيرين بوظيفتيهما ومؤسستيهما.",
-              "repair": ""
+              "status": "revise",
+              "evidence": "المقارنات السنوية وتفسير صافي الفوائد يوضحان الحدث، لكن «وان بيغ بيوتيفول بيل» يبقى عبارة أجنبية منقولة صوتياً. وصندوق الأهمية يستند بصورة سليمة إلى ارتفاع الفوائد والفرق بين الحصيلة الجمركية الإجمالية وما تحتفظ به الخزانة بعد الرد.",
+              "repair": "استبدل اسم القانون المنقول صوتياً بوصف عربي مستند إلى المصدر 2: «التخفيضات الضريبية التي تضمّنها قانون أقرّه الكونغرس في 2025»."
             },
             "flow": {
               "status": "clear",
-              "evidence": "يتدرج التقرير من معنى القرار إلى أسبابه والمؤشرات المالية، ثم أثره المحتمل على التمويل وحدود هذا الأثر؛ وجميعها جوانب للحدث نفسه.",
+              "evidence": "تتدرج الفقرات من حجم العجز إلى كلفة الاقتراض وبنود الإنفاق والإيرادات، ضمن قصة واحدة. ويستخلص صندوق الأهمية قيد خدمة الدين وأهمية صافي الإيرادات الجمركية، دون افتراض أن الرسوم ستكفي لتمويل الإنفاق أو اختلاق أثر كمي.",
               "repair": ""
             },
             "precision": {
               "status": "clear",
-              "evidence": "تطابق أرقام الدين والاحتياطيات والضرائب المصادر، وتُعرض توقعات خفض الأعباء وأهداف الإصلاحات بوصفها توقعات وأهدافاً، لا نتائج متحققة، مع التصريح بأن انخفاض تكلفة الاقتراض ليس فورياً أو مضمون المقدار.",
+              "evidence": "الأرقام والفترات والمقارنات تطابق المصدر 2، مع تمييز صافي الفوائد عن إجمالي مدفوعاتها والحصيلة الجمركية قبل الرد عن الإيرادات بعده. وتُنسب كلفة الحرب إلى «نيويورك تايمز» ورؤية النمو إلى بيسنت مع حفظ أصل تصريحاته لشبكة «سي إن بي سي».",
               "repair": ""
             }
           }
@@ -48,22 +46,22 @@
           "readerCheck": {
             "scope": {
               "status": "clear",
-              "evidence": "يوضح العنوان والمطلع رفع التصنيف، ويبيّن العنوان الفرعي بقاءه ضمن الفئة غير الاستثمارية؛ فلا يوحيان بانتقال مصر إلى الدرجة الاستثمارية.",
+              "evidence": "العنوان والمقدمة يحددان ارتفاع العجز في السنة المالية 2026 بنحو 12%، ويوضحان أن الإيرادات والإنفاق سجّلا مستويات قياسية؛ فلا تناقض بين نمو الإيرادات واتساع العجز.",
               "repair": ""
             },
             "context": {
               "status": "clear",
-              "evidence": "يشرح النص الجدارة الائتمانية والفرق في المخاطر بين الفئتين، ويربط انخفاض التصنيف بارتفاع العائد المطلوب وفق مرجع «فيديليتي»، ويعرّف الخبيرين بوظيفتيهما ومؤسستيهما.",
+              "evidence": "المقارنات السنوية وشرح صافي الفوائد وأثر رد الرسوم تفسّر مكونات العجز. ويستنتج صندوق الأهمية قيد خدمة الدين وأهمية الحصيلة الجمركية بعد الرد من مقدمات يدعمها المصدر 2، دون افتراض أن الإيرادات ستكفي لخفض العجز.",
               "repair": ""
             },
             "flow": {
               "status": "clear",
-              "evidence": "يتدرج التقرير من معنى القرار إلى أسبابه والمؤشرات المالية ثم حدود أثره على التمويل، وتبقى تصريحات الخبيرين مرتبطة بالسؤال نفسه مع حفظ نسبتها إلى «البورصة».",
+              "evidence": "تنتقل الفقرات من حجم العجز ومقارنته إلى الإنفاق والفوائد والدين ثم الإيرادات والرسوم، مع تجميع الحقائق المرتبطة. ويضيف صندوق الأهمية تفسيراً اقتصادياً محدوداً بدلاً من تكرار الخبر أو تلخيص رأي منسوب.",
               "repair": ""
             },
             "precision": {
               "status": "clear",
-              "evidence": "تطابق أرقام الدين والاحتياطيات والإيرادات الضريبية المصادر، وتُنسب توقعات النمو وخفض الدين إلى أصحابها، مع توضيح أن انخفاض تكلفة الاقتراض ليس فورياً ولا مضمون المقدار.",
+              "evidence": "الأرقام والفترات والأسماء والأسباب مدعومة، مع تمييز صافي الفوائد عن إجمالي مدفوعاتها والحصيلة الجمركية الإجمالية عن الإيرادات بعد الرد. كما حُفظ إسناد تفسير تكاليف الاقتراض إلى «نيويورك تايمز» وتصريح بيسنت إلى «سي إن بي سي».",
               "repair": ""
             }
           }
@@ -75,45 +73,374 @@
         "rounds": 1,
         "found": 0
       },
-      "outcome": "refreshed",
-      "slug": "moodys-upgrades-egypt-credit-rating-b3-636210",
-      "title": "«موديز» ترفع تصنيف مصر الائتماني مع نظرة مستقبلية إيجابية",
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تجاوز صافي فوائد الخزانة تريليون دولار في السنة المالية 2026، مقابل 970 مليار دولار في السنة السابقة.",
+          "source": 2
+        },
+        {
+          "fact": "بلغت الإيرادات والنفقات مستويات قياسية خلال السنة المالية 2026، بحسب مسؤول في الخزانة.",
+          "source": 2
+        },
+        {
+          "fact": "بلغ إجمالي الحصيلة الجمركية قبل الرد مستوى قياسياً، لكن رد مليارات الدولارات لتجار التجزئة قلّص الإيرادات الجمركية.",
+          "source": 2
+        }
+      ],
+      "slug": "us-budget-deficit-nears-two-trillion-eb4d1b",
+      "title": "عجز الموازنة الأمريكية يقترب من تريليوني دولار في 2026",
+      "score": 10,
+      "image": "photo"
+    },
+    {
+      "headline": "حيازات الإمارات من سندات الخزانة الأميركية ترتفع إلى 116.1 مليار دولار",
+      "section": "markets",
+      "importance": 8,
+      "sources": [
+        "https://aawsat.com/node/5330506",
+        "https://www.alkhaleej.ae/2026-10-17/%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF/%D8%A3%D8%B3%D9%88%D8%A7%D9%82-%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA/116-%D9%85%D9%84%D9%8A%D8%A7%D8%B1-%D8%AF%D9%88%D9%84%D8%A7%D8%B1-%D8%AD%D9%8A%D8%A7%D8%B2%D8%A9-%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA-%D9%85%D9%86-%D8%B3%D9%86%D8%AF%D8%A7%D8%AA-%D8%A7%D9%84%D8%AE%D8%B2%D8%A7%D9%86%D8%A9-%D9%81%D9%8A-%D8%A3%D8%BA%D8%B3%D8%B7%D8%B3"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يوضح العنوان والمقدمة ارتفاع حيازة الإمارات، ويبيّن العنوان الفرعي عودة الإجمالي الأجنبي إلى الارتفاع مع بقائه دون ذروة فبراير؛ ولا يحوّل الارتفاع الشهري إلى اتجاه مستقر.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "تضع المقارنة بيوليو وذروة فبراير الزيادة في سياقها، وتوضح حركة كبار الحائزين تفاوت الاتجاهات. يستند صندوق الأهمية إلى هذا التفاوت ليستنتج أن زيادة شهر واحد لا تثبت استمرار التعافي، وهو استنتاج متناسب مع الأدلة.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "ينتقل التقرير من حيازة الإمارات إلى حجم الإجمالي ومقارناته، ثم يجمع زيادات بريطانيا وكندا وتراجعات اليابان والصين في فقرتين واضحتين. ويضيف صندوق الأهمية حدود الاستدلال من الزيادة بدلاً من الاكتفاء بتكرار الخبر.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "تطابق أرقام الإمارات المصدر 2، وتطابق أرقام الإجمالي ومدد التراجع والمقارنات المصدر 1. والإسناد إلى وزارة الخزانة صحيح، كما أن مقدمات why_basis مدعومة بالمصادر المحددة ولا تتضمن حسابات أو توقعات مستحدثة.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "زادت حيازة الإمارات 6 مليارات دولار في أغسطس لتبلغ 116.1 مليار دولار.",
+          "source": 2
+        },
+        {
+          "fact": "تعافت الحيازات الأجنبية بدفع من بريطانيا وكندا، مع استمرار تراجع حيازة اليابان وانخفاض حيازة الصين.",
+          "source": 1
+        },
+        {
+          "fact": "بلغ الإجمالي 9.331 تريليون دولار في أغسطس، دون المستوى القياسي البالغ 9.487 تريليون دولار في فبراير.",
+          "source": 1
+        }
+      ],
+      "slug": "uae-us-treasury-holdings-rise-august-c9ce2e",
+      "title": "الإمارات ترفع حيازتها من سندات الخزانة الأمريكية إلى 116.1 مليار دولار",
+      "score": 10,
+      "image": "photo"
+    },
+    {
+      "headline": "الأسهم الإندونيسية تهبط مع تهديد باستبعادها من مؤشرات «إم إس سي آي»",
+      "section": "markets",
+      "importance": 8,
+      "sources": [
+        "https://www.nytimes.com/2026/10/16/business/indonesia-stocks-economy.html",
+        "https://aawsat.com/node/5330269"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يميزان بين هبوط الأسهم المتحقق واقتراح إعادة التصنيف الذي لم يُنفذ بعد؛ ويشرح المتن أن الأسواق المستقلة خارج مؤشرات الأسواق الناشئة والحدودية.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يوضح المتن سبب المقترح ومشكلات الملكية والتداول، ويربط الاستبعاد بمبيعات الصناديق المتتبعة للمؤشرات. ويستند الصندوق إلى هذا الالتزام ومهلة التشاور ليستنتج أن إعلان الإجراءات وحده لا يكفي لتفادي تلك المبيعات، مع اشتراط أدلة تحسن تقبلها المؤسسة.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "يبني التقرير شرحاً مستقلاً يبدأ بمعنى الاستبعاد، ثم شروطه وأسبابه وخلفيته وحجم التدفقات المحتملة ورد السلطات. ويضيف صندوق الأهمية تفسيراً لطبيعة البيع الإلزامي وما يتوقف عليه تجنبه، بدلاً من الاكتفاء بتكرار الخبر.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "تطابق نسبة الهبوط ومدة تعليق التداول وصافي البيع الأجنبي المصدر 2. وتُنسب تقديرات التدفقات إلى «يو بي إس» مع فصلها صراحة عن المبيعات المتحققة، وتُحفظ مشروطية إعادة التصنيف بعد مشاورات تمتد حتى أبريل 2027.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "التصنيف المقترح سيُلزم الصناديق المتتبعة للمؤشرات ببيع حيازاتها الإندونيسية إذا أُقرّ.",
+          "source": 2
+        },
+        {
+          "fact": "ستستمر المشاورات حتى أبريل 2027، ثم تُنفذ إعادة التصنيف ما لم تتضح أدلة على تحسن الحوكمة وآليات السوق.",
+          "source": 2
+        },
+        {
+          "fact": "قالت بورصة إندونيسيا إنها اتخذت خطوات لتعزيز الشفافية والنزاهة.",
+          "source": 2
+        }
+      ],
+      "slug": "indonesia-stocks-fall-msci-exclusion-proposal-36172d",
+      "title": "الأسهم الإندونيسية تهبط 11.57% إثر اقتراح استبعادها من مؤشرات عالمية",
+      "score": 10,
+      "image": "cover-art"
+    },
+    {
+      "headline": "ميتا تحذف صياغة أثارت مخاوف بشأن استخدام محتوى المواقع لتدريب الذكاء الاصطناعي",
+      "section": "technology",
+      "importance": 7,
+      "sources": [
+        "https://techcrunch.com/2026/10/17/meta-removes-language-that-raised-scraping-and-ai-training-concerns/",
+        "https://www.theverge.com/tech/1013409/meta-removes-language-that-may-have-allowed-it-to-scrape-news-sites"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يحددان التغيير بحذف صياغة، لا بوقف جمع المحتوى، ويشرح المتن أن تأكيد الشركة يخص شروط الزحف لمنتجات الإعلانات والأعمال.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "توضح المسودة صلة الخلاف بمحتوى الناشرين وتدريب النماذج مجاناً وتعليمات الحجب، وتعرّف غريملمان بتخصصه وجامعته. ومقدمات صندوق الأهمية مسندة إلى المصدر 2.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "ينتقل التقرير من الصياغة المحذوفة إلى تفسيرها القانوني ثم رد الشركة وأداة إعلان تفضيلات أصحاب المواقع. ويستنتج الصندوق، بصورة محدودة، أن حذف النص وحده لا يثبت تغير الممارسة، ويربط الأثر بنطاق الإذن واحترام التفضيلات.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "السبت يوافق 17 أكتوبر 2026، والأسماء والصفات مدعومة. تُنسب احتمالات الإذن والتجاوز إلى الخبراء، بينما تبقى تصريحات عدم تغير الزحف واحترام التفضيلات منسوبة إلى «ميتا»، مع حفظ مصدر تصريحات روبرتس.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "فسّر غريملمان وآخرون الصياغة باعتبارها محاولة لمنح ميتا حق استخدام محتوى المواقع لتدريب منتجاتها للذكاء الاصطناعي مجاناً.",
+          "source": 2
+        },
+        {
+          "fact": "أكدت ميتا أن طريقة استخدامها برامج زحف الويب لم تتغير.",
+          "source": 2
+        },
+        {
+          "fact": "قال روبرتس إن التحديثات لا تمنح ميتا حقوقاً جديدة تتجاوز تفضيلات مالكي المحتوى.",
+          "source": 2
+        }
+      ],
+      "slug": "meta-removes-website-content-training-language-6149f4",
+      "title": "«ميتا» تحذف صياغة بشأن استخدام محتوى المواقع لتدريب الذكاء الاصطناعي",
       "score": 10,
       "image": "photo"
     }
   ],
   "llm": {
-    "calls": 8,
+    "calls": 64,
     "failures": 0,
-    "promptTokens": 202153,
-    "completionTokens": 18987,
-    "cacheReadTokens": 23296,
+    "promptTokens": 730263,
+    "completionTokens": 75072,
+    "cacheReadTokens": 250368,
     "costUsd": 0,
     "byModel": {
-      "codex-cli/gpt-6.1-sol": 8
+      "codex-cli/gpt-6.1-sol": 64
     }
   },
   "log": [
-    "[21:16:34] newsroom start mode=news limit=4 dry-run=false",
-    "[21:16:34] lessons: version 29, 9 active, read by the desk notes and the writer",
-    "[21:16:37] evidence reference: credit-rating definitions (not event corroboration)",
-    "[21:17:24] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=46833",
-    "[21:17:24] desk notes: 20 facts, 1 quotes (codex-cli/gpt-6.1-sol)",
-    "[21:18:06] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=41970",
-    "[21:19:15] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=68628",
-    "[21:19:15] desk model=codex-cli/gpt-6.1-sol applied=[lede,whyItMatters,body] rejected=[]",
-    "[21:19:15] desk \"«موديز» ترفع تصنيف مصر إلى B3 بنظرة مستقبلية إيجابية\": rewrote lede, whyItMatters, body",
-    "[21:19:43] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=28084",
-    "[21:19:43] critic \"«موديز» ترفع تصنيف مصر إلى B3 بنظرة مستقبلية إيجابية\": publish score=10 issues=0",
-    "[21:19:43]   · العنوان يحتوي كلمات لاتينية (B). اكتب العنوان بالعربية كاملاً.",
-    "[21:20:06] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=22336",
-    "[21:20:41] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=35085",
-    "[21:20:41] desk model=codex-cli/gpt-6.1-sol applied=[subtitle,body] rejected=[]",
-    "[21:20:41] desk \"«موديز» ترفع تصنيف مصر الائتماني مع نظرة مستقبلية إيجابية\": rewrote subtitle, body",
-    "[21:21:01] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=19851",
-    "[21:21:01] critic (second pass) \"«موديز» ترفع تصنيف مصر الائتماني مع نظرة مستقبلية إيجابية\": publish score=10 issues=0",
-    "[21:21:59] llm ok role=checker provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=58350",
-    "[21:21:59] precheck \"«موديز» ترفع تصنيف مصر الائتماني مع نظرة مستقبلية إيجابية\": clean",
-    "[21:21:59] refreshed \"«موديز» ترفع تصنيف مصر الائتماني مع نظرة مستقبلية إيجابية\" -> moodys-upgrades-egypt-credit-rating-b3-636210"
+    "[23:28:18] image: dropped \"Brussels Stock Exchange and Marriott Hotel - Pedestrian street view on\" — taken in Belgium, which the story does not name",
+    "[23:28:18] image: dropped \"NASA Administrator Rings NYSE Opening Bell (NHQ202604300007).jpg\" — taken in United States, which the story does not name",
+    "[23:28:18] image: dropped \"NASA Administrator Rings NYSE Opening Bell (NHQ202604300006).jpg\" — taken in United States, which the story does not name",
+    "[23:28:18] image: dropped \"Live Stock Exchange (20102232).jpg\" — taken in United States, which the story does not name",
+    "[23:28:18] image: dropped \"Glasgow City - Glasgow Stock Exchange - 2026-09-09 02-51-01 001.jpg\" — taken in United Kingdom, which the story does not name",
+    "[23:28:18] image: dropped \"Old Saint Petersburg Stock Exchange-2025-09-msu---2578.jpg\" — taken in Russia, which the story does not name",
+    "[23:28:18] image: dropped \"Astrakhan Stock Exchange Building P5101174 2200.jpg\" — taken in Russia, which the story does not name",
+    "[23:28:18] image: dropped \"Astrakhan Stock Exchange Building P5090963 2200.jpg\" — taken in Russia, which the story does not name",
+    "[23:28:18] image: no candidates for the specific queries",
+    "[23:28:18] image: tier 4, the story's point and its subject: Indonesia stock exchange traders | Jakarta stock exchange trading | Indonesia stockbrokers | Indonesia stock traders | Indonesia stock exchange | Jakarta trading floor (home: Indonesia, Indonesian, Jakarta)",
+    "[23:28:19] commons \"Indonesia stock exchange traders\": 2 usable of 3",
+    "[23:28:19] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[23:28:19] image: dropped \"Defense.gov News Photo 000706-N-1110A-505.jpg\" — dated 2000, an archival picture",
+    "[23:28:19] pexels \"Indonesia stock exchange traders\": 8 usable",
+    "[23:28:20] openverse \"Indonesia stock exchange traders\": 0 usable of 0",
+    "[23:28:20] image: dropped \"Detailed view of cryptocurrency trading charts on digital screens, sho\" — names too little of stock, exchange, traders",
+    "[23:28:20] image: dropped \"High-resolution candlestick chart showing forex trading trends and ana\" — names too little of stock, exchange, traders",
+    "[23:28:20] image: dropped \"Financial candlestick chart showing market trends and data visualizati\" — names too little of stock, exchange, traders",
+    "[23:28:20] image: dropped \"Vibrant red and green candlestick chart showcasing crypto market trend\" — names too little of stock, exchange, traders",
+    "[23:28:20] commons \"Jakarta stock exchange trading\": 0 usable of 0",
+    "[23:28:20] commons \"Jakarta stock\": 18 usable of 24",
+    "[23:28:20] image: dropped \"Masks thermometers hand sanitizers out of stock at Indonesian pharmacy\" — names too little of stock, exchange, trading",
+    "[23:28:20] image: dropped \"MRT Jakarta train in Lebak Bulus Depot.jpg\" — names too little of stock, exchange, trading",
+    "[23:28:20] image: dropped \"Series 205 KeyoM20(Transported to Jakarta).jpg\" — names too little of stock, exchange, trading",
+    "[23:28:20] image: dropped \"MRTset6.jpg\" — names too little of stock, exchange, trading",
+    "[23:28:20] image: dropped \"MRTset12.jpg\" — names too little of stock, exchange, trading",
+    "[23:28:20] image: dropped \"Panser Rel. Museum Satria Mandala, Jakarta.jpg\" — names too little of stock, exchange, trading",
+    "[23:28:20] image: dropped \"Train Car's Number of LRT Jakarta.jpg\" — names too little of stock, exchange, trading",
+    "[23:28:20] image: dropped \"EF81 140+Series 205 KeyoM22(Transported to Jakarta).jpg\" — names too little of stock, exchange, trading",
+    "[23:28:20] image: dropped \"MRTset3.jpg\" — names too little of stock, exchange, trading",
+    "[23:28:20] image: dropped \"Depo JAKK.jpg\" — names too little of stock, exchange, trading",
+    "[23:28:20] image: dropped \"K1-02527 JNG 01.JPG\" — names too little of stock, exchange, trading",
+    "[23:28:21] openverse \"Jakarta stock exchange trading\": 0 usable of 0",
+    "[23:28:22] pexels \"Jakarta stock exchange trading\": 8 usable",
+    "[23:28:35] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=13049",
+    "[23:28:42] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=6570",
+    "[23:28:42] image: second check (codex-cli/gpt-6.1-sol) WRONG_SUBJECT — refused \"From above of crop anonymous dealer touching screen on cellp\": The cropped overhead view of a phone and netbook is an odd-angle detail rather than an immediately legible stock-market ",
+    "[23:28:48] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=5753",
+    "[23:28:48] image: vision rejected all candidates (fallback pass) (All candidates show charts, trading screens or a printed report, except the Jakarta cityscape; none meets the photo requirements.)",
+    "[23:28:55] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=5473",
+    "[23:28:55] image: last resort: Indonesia stock exchange Indonesia | Indonesia stock exchange | Indonesia stock exchange industrial | MSCI headquarters | MSCI building",
+    "[23:28:55] commons \"Indonesia stock exchange Indonesia\": 7 usable of 24",
+    "[23:28:56] commons \"Indonesia stock exchange\": 8 usable of 24",
+    "[23:28:56] image: dropped \"New York Stock Exchange LCCN2005697001.jpg\" — dated 1904, an archival picture",
+    "[23:28:57] commons \"Indonesia stock exchange industrial\": 13 usable of 23",
+    "[23:28:57] image: dropped \"Duisburg, Landschaftspark Duisburg-Nord, Gasreinigung West -- 2024 -- \" — names too little of stock, exchange, industrial",
+    "[23:28:57] image: dropped \"Duisburg, Landschaftspark Duisburg-Nord, Winderhitzer -- 2025 -- 7368.\" — names too little of stock, exchange, industrial",
+    "[23:28:57] image: dropped \"Duisburg, Landschaftspark Duisburg-Nord, Winderhitzer -- 2024 -- 4183.\" — names too little of stock, exchange, industrial",
+    "[23:28:57] image: dropped \"Duisburg, Landschaftspark Duisburg-Nord, Winderhitzer -- 2025 -- 7358.\" — names too little of stock, exchange, industrial",
+    "[23:28:57] image: dropped \"Duisburg, Landschaftspark Duisburg-Nord, Winderhitzer -- 2025 -- 7404.\" — names too little of stock, exchange, industrial",
+    "[23:28:57] image: dropped \"Duisburg, Landschaftspark Duisburg-Nord, Gasreinigung West -- 2024 -- \" — names too little of stock, exchange, industrial",
+    "[23:28:57] image: dropped \"Duisburg, Landschaftspark Duisburg-Nord, Winderhitzer -- 2025 -- 7358 \" — names too little of stock, exchange, industrial",
+    "[23:28:57] image: dropped \"Duisburg, Landschaftspark Duisburg-Nord, Gasreinigung West -- 2024 -- \" — names too little of stock, exchange, industrial",
+    "[23:28:57] image: dropped \"Duisburg, Landschaftspark Duisburg-Nord -- 2016 -- 1168.jpg\" — names too little of stock, exchange, industrial",
+    "[23:28:57] image: dropped \"Duisburg, Landschaftspark Duisburg-Nord, Winderhitzer -- 2016 -- 1170.\" — names too little of stock, exchange, industrial",
+    "[23:28:57] image: dropped \"Duisburg, Landschaftspark Duisburg-Nord, Winderhitzer -- 2024 -- 4175.\" — names too little of stock, exchange, industrial",
+    "[23:28:57] image: dropped \"Duisburg, Landschaftspark Duisburg-Nord, Winderhitzer -- 2024 -- 4183 \" — names too little of stock, exchange, industrial",
+    "[23:28:57] commons \"MSCI headquarters\": 0 usable of 0",
+    "[23:28:58] commons \"headquarters\": 18 usable of 24",
+    "[23:28:58] image: dropped \"Southwestern Bell Main Office -- Houston.jpg\" — names too little of headquarters",
+    "[23:28:58] image: dropped \"Head office building of Meta in Ireland.jpg\" — names too little of headquarters",
+    "[23:28:58] image: dropped \"Burger King headquarters 2025.jpg\" — taken in United States, which the story does not name",
+    "[23:28:58] image: dropped \"Headquarters Inks Lake State Park 2024.jpg\" — taken in United States, which the story does not name",
+    "[23:28:58] image: dropped \"406 Rosemont-Ringoes Road, Headquarters, NJ.jpg\" — taken in United States, which the story does not name",
+    "[23:28:58] image: dropped \"National Headquarters Building - Woodbury, NY.jpg\" — taken in United States, which the story does not name",
+    "[23:28:58] image: dropped \"Live Stock Exchange (20102232).jpg\" — taken in United States, which the story does not name",
+    "[23:28:58] image: dropped \"Live Stock Exchange (20102222).jpg\" — taken in United States, which the story does not name",
+    "[23:28:58] image: dropped \"ESI Technology Headquarters Wrexham UK.jpg\" — taken in United Kingdom, which the story does not name",
+    "[23:28:58] image: dropped \"Old Saint Petersburg Stock Exchange-2025-09-msu---2578.jpg\" — taken in Russia, which the story does not name",
+    "[23:28:58] image: dropped \"Astrakhan Stock Exchange Building P5101174 2200.jpg\" — taken in Russia, which the story does not name",
+    "[23:28:58] image: dropped \"Astrakhan Stock Exchange Building P5090963 2200.jpg\" — taken in Russia, which the story does not name",
+    "[23:28:58] image: dropped \"New York Stock Exchange Building 2010.jpg\" — taken in United States, which the story does not name",
+    "[23:28:58] image: dropped \"Köln Germany Catkins-at-TUV-Rheinland-Headquarters-01.jpg\" — taken in Germany, which the story does not name",
+    "[23:28:58] image: dropped \"Namco headquarters building.jpg\" — taken in Japan, which the story does not name",
+    "[23:28:58] image: dropped \"Palmetto state park headquarters 2014.jpg\" — taken in United States, which the story does not name",
+    "[23:29:02] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=3575",
+    "[23:29:02] image: vision rejected all candidates (fallback pass) (Neither photograph depicts Indonesian equities or MSCI: one shows a Croatian cityscape, the other an unrelated agency headquarters.)",
+    "[23:29:02] image: last pass, a neutral illustration: stock exchange traders | stock exchange trading | stock traders | stock exchange | trading floor",
+    "[23:29:04] commons \"stock exchange traders\": 15 usable of 24",
+    "[23:29:04] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[23:29:04] image: dropped \"Toronto Stock Exchange 1956.jpg\" — dated 1956, an archival picture",
+    "[23:29:04] image: dropped \"1er Forum Talk Invest à la Bourse des Valeurs Mobilières de l'Afrique \" — an event's photograph, people and banners",
+    "[23:29:04] image: dropped \"1er Forum Talk Invest à la Bourse des Valeurs Mobilières de l'Afrique \" — an event's photograph, people and banners",
+    "[23:29:04] pexels \"stock exchange traders\": 8 usable",
+    "[23:29:07] openverse \"stock exchange traders\": 7 usable of 12",
+    "[23:29:07] image: dropped \"No Known Restrictions: Traders on the Floor of the New York Stock Exch\" — dated 1936, an archival picture",
+    "[23:29:07] image: dropped \"Spirit of Freedom balloon - Smithsonian Air and Space Museum - 2012-05\" — names too little of stock, exchange, traders",
+    "[23:29:07] image: dropped \"161010-N-PX557-001\" — names too little of stock, exchange, traders",
+    "[23:29:07] image: dropped \"Detailed view of cryptocurrency trading charts on digital screens, sho\" — names too little of stock, exchange, traders",
+    "[23:29:07] image: dropped \"High-resolution candlestick chart showing forex trading trends and ana\" — names too little of stock, exchange, traders",
+    "[23:29:07] image: dropped \"Financial candlestick chart showing market trends and data visualizati\" — names too little of stock, exchange, traders",
+    "[23:29:07] image: dropped \"A hand points to a financial graph on a digital screen, indicating mar\" — names too little of stock, exchange, traders",
+    "[23:29:07] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/4244643524_9612863c82_n.jpg",
+    "[23:29:16] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=7823",
+    "[23:29:16] image: vision rejected all candidates (fallback pass) (No suitable neutral trading scene: candidates are archival, show foreign landmarks or flags, or feature a staged-looking close-up of a trader and charts.)",
+    "[23:29:16] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/51804147044_c9258c2716_n.jpg",
+    "[23:29:26] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=9374",
+    "[23:29:26] image: vision rejected all candidates (fallback pass) (The generic images are dominated by charts and screens rather than a trading scene; the remaining photographs visibly identify exchanges outside Indonesia.)",
+    "[23:29:26] published \"الأسهم الإندونيسية تهبط 11.57% إثر اقتراح استبعادها من مؤشرات عالمية\" -> indonesia-stocks-fall-msci-exclusion-proposal-36172d",
+    "[23:29:54] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=27482",
+    "[23:29:54] desk notes: 10 facts, 0 quotes (codex-cli/gpt-6.1-sol)",
+    "[23:30:53] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=59000",
+    "[23:31:31] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=37420",
+    "[23:31:43] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=11893",
+    "[23:31:43] desk: body accepted on the second try",
+    "[23:31:43] desk model=codex-cli/gpt-6.1-sol applied=[title,lede,whyItMatters,body] rejected=[]",
+    "[23:31:43] desk \"«ميتا» تحذف صياغة بشأن استخدام محتوى المواقع لتدريب الذكاء الاصطناعي\": rewrote title, lede, whyItMatters, body",
+    "[23:32:07] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=23665",
+    "[23:32:07] critic \"«ميتا» تحذف صياغة بشأن استخدام محتوى المواقع لتدريب الذكاء الاصطناعي\": publish score=10 issues=0",
+    "[23:32:41] llm ok role=checker provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=33452",
+    "[23:32:41] precheck \"«ميتا» تحذف صياغة بشأن استخدام محتوى المواقع لتدريب الذكاء الاصطناعي\": clean",
+    "[23:32:55] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=13429",
+    "[23:32:55] image: the picture should say: Meta withdraws disputed content permissions while saying its web crawling remains unchanged.",
+    "[23:33:04] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=9052",
+    "[23:33:04] image: the source's photograph (TechCrunch) shows A fingertip hovers over the Meta AI app icon on a smartphone screen in a close-up photograph.; searching Meta AI smartphone screen | Meta AI mobile app | finger touching Meta AI",
+    "[23:33:04] image: tier 2, like the sources' own photograph: Meta AI smartphone screen | Meta AI mobile app | finger touching Meta AI",
+    "[23:33:04] commons \"Meta AI smartphone screen\": 0 usable of 0",
+    "[23:33:05] commons \"Meta AI\": 11 usable of 20",
+    "[23:33:05] image: dropped \"Number of times an aggregated AI governance principle was cited in 200\" — names too little of smartphone, screen",
+    "[23:33:05] image: dropped \"2025‐04‐24 Thursday 12.40 (UTC−4) song generated by artificial intelli\" — a scan of a note's or a coin's face, not a photograph",
+    "[23:33:05] image: dropped \"UK Government hosts AI Summit at Bletchley Park (53303069531).jpg\" — names too little of smartphone, screen",
+    "[23:33:05] image: dropped \"UK Government hosts AI Summit at Bletchley Park (53302954384).jpg\" — names too little of smartphone, screen",
+    "[23:33:05] image: dropped \"UK Government hosts AI Summit at Bletchley Park (53303550330).jpg\" — names too little of smartphone, screen",
+    "[23:33:05] image: dropped \"UK Government hosts AI Summit at Bletchley Park (53303310258).jpg\" — names too little of smartphone, screen",
+    "[23:33:05] image: dropped \"UK Government hosts AI Summit at Bletchley Park (53301159917).jpg\" — names too little of smartphone, screen",
+    "[23:33:05] image: dropped \"UK Government hosts AI Summit at Bletchley Park (53302263013).jpg\" — names too little of smartphone, screen",
+    "[23:33:05] pexels \"Meta AI smartphone screen\": 8 usable",
+    "[23:33:06] openverse \"Meta AI smartphone screen\": 0 usable of 0",
+    "[23:33:07] commons \"Meta AI mobile app\": 3 usable of 20",
+    "[23:33:07] image: dropped \"Timisoara1656 (restaurare AI).jpg\" — names too little of mobile, app",
+    "[23:33:07] pexels \"Meta AI mobile app\": 8 usable",
+    "[23:33:08] openverse \"Meta AI mobile app\": 0 usable of 0",
+    "[23:33:14] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=5326",
+    "[23:33:14] image: vision rejected all candidates (No candidate shows the Meta AI subject required for this pass. The relevant-looking options are logo-focused smartphone close-ups of other products, which are excluded.)",
+    "[23:33:21] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=5744",
+    "[23:33:21] image: vision rejected all candidates (All candidates are phone or app close-ups, which are excluded. None clearly shows Meta AI; Instagram and rival AI apps do not match the required subject.)",
+    "[23:33:21] image: tier 3, the writer's own subjects: Meta headquarters | Meta logo",
+    "[23:33:22] commons \"Meta headquarters 2026\": 0 usable of 12",
+    "[23:33:22] commons \"Meta headquarters\": 4 usable of 12",
+    "[23:33:22] commons \"Meta logo 2026\": 0 usable of 12",
+    "[23:33:23] commons \"Meta logo\": 1 usable of 12",
+    "[23:33:30] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=6954",
+    "[23:33:36] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=5050",
+    "[23:33:36] image: second check (codex-cli/gpt-6.1-sol) GENERIC_OK \"Meta Platforms Headquarters Menlo Park California.jpg\": The photograph shows Meta’s own headquarters, a suitable institutional illustration with an accurate caption.",
+    "[23:33:36] published \"«ميتا» تحذف صياغة بشأن استخدام محتوى المواقع لتدريب الذكاء الاصطناعي\" -> meta-removes-website-content-training-language-6149f4",
+    "[23:34:11] llm ok role=checker provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=34941",
+    "[23:34:49] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=37633",
+    "[23:35:39] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=49701",
+    "[23:36:17] llm ok role=checker provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=34372",
+    "[23:36:17] evidence pair \"«ميتا» تحذف صياغة بشأن استخدام محتوى المواقع لتدريب الذكاء الاصطناعي\": 0 proved error(s) live (v29), 0 with the kept lessons (v0); the private drafts are not published"
   ]
 }

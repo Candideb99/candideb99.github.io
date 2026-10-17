@@ -2591,6 +2591,118 @@
           "noted": []
         }
       ]
+    },
+    "us-budget-deficit-nears-two-trillion-eb4d1b": {
+      "at": "2026-10-17T23:19:19.590Z",
+      "title": "عجز الموازنة الأمريكية يقترب من تريليوني دولار في 2026",
+      "writer": "codex-cli/gpt-6.1-sol → codex-cli/gpt-6.1-sol",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 27,
+            "checked": 27,
+            "supported": 18,
+            "weak": 0,
+            "noEvidence": 7,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "uae-us-treasury-holdings-rise-august-c9ce2e": {
+      "at": "2026-10-17T23:23:28.614Z",
+      "title": "الإمارات ترفع حيازتها من سندات الخزانة الأمريكية إلى 116.1 مليار دولار",
+      "writer": "codex-cli/gpt-6.1-sol",
+      "lessons": "v29",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 16,
+            "checked": 16,
+            "supported": 12,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "indonesia-stocks-fall-msci-exclusion-proposal-36172d": {
+      "at": "2026-10-17T23:29:26.329Z",
+      "title": "الأسهم الإندونيسية تهبط 11.57% إثر اقتراح استبعادها من مؤشرات عالمية",
+      "writer": "codex-cli/gpt-6.1-sol",
+      "lessons": "v29",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 20,
+            "weak": 0,
+            "noEvidence": 4,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "meta-removes-website-content-training-language-6149f4": {
+      "at": "2026-10-17T23:33:36.075Z",
+      "title": "«ميتا» تحذف صياغة بشأن استخدام محتوى المواقع لتدريب الذكاء الاصطناعي",
+      "writer": "codex-cli/gpt-6.1-sol",
+      "lessons": "v29",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 13,
+            "checked": 13,
+            "supported": 12,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

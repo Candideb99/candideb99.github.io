@@ -525,6 +525,50 @@
         "classes": [],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-10-17T23:33:36.077Z",
+      "slug": "meta-removes-website-content-training-language-6149f4",
+      "checker": "f6d38e4947.2",
+      "lessons": "v29",
+      "lessonsHash": "5c629d81ea",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 12,
+        "notFound": 1,
+        "checked": 13,
+        "words": 191,
+        "keyFacts": 0,
+        "classes": [],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 11,
+        "notFound": 2,
+        "checked": 13,
+        "words": 189,
+        "keyFacts": 0,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 11,
+        "notFound": 2,
+        "checked": 13,
+        "words": 189,
+        "keyFacts": 0,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }
