@@ -75,6 +75,9 @@ export async function latestEdition(report, { now = new Date(), log = () => {} }
       const url = report.template.replace("{month}", MONTH_NAMES[month].toLowerCase()).replace("{year}", String(year));
       const page = await fetchHtml(url).catch(() => ({ ok: false }));
       const title = page.html?.match(/<title[^>]*>([^<]*)/i)?.[1] ?? "";
+      // A refusal is said, not swallowed: from GitHub's runners the IEA answered nothing on 2026-10-18 while it answered
+      // this laptop (a 404 is only an edition not out yet).
+      if (!page.ok && page.reason !== "http-404") log(`report ${report.id}: ${url.replace(/^https?:\/\//, "").slice(0, 70)} not read (${page.reason || "no answer"})`);
       if (page.ok && new RegExp(report.edition, "i").test(title)) {
         const monthly = report.template.includes("{month}");
         const key = monthly ? year * 100 + month : editionKey(title, report.month ?? 6)?.key ?? year * 100 + (report.month ?? 6);
