@@ -346,6 +346,16 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("the fact guard permits regrouping without losing facts", Object.keys(regrouped.accepted).sort(), ["body", "title"]);
   const changedFigure = judgeRewrite(brief, { title: naturalTitle.replace("110", "120") }, ["title"]);
   check("improving the headline cannot change its figure", changedFigure.rejected.some((r) => r.field === "title"), true);
+  // 2026-10-18: no explainer or analysis had been published since 1 October; the two of that day were thrown away by
+  // rules that contradicted each other or a sound phrase.
+  const hedgedExplainer = { title: "إعادة تمويل الدين العام قد تغيّر كلفته حتى مع ثبات أصله", subtitle: "تستبدل الحكومة ديناً يحل أجله بدين جديد", lede: "تلجأ الحكومات إلى إعادة تمويل ديونها حين يحل أجل السندات.", body: "تصدر الحكومة سندات جديدة تسدد بها القديمة." };
+  check("an explainer's hedged headline may become the question it answers", Object.keys(judgeRewrite(hedgedExplainer, { title: "لماذا تتغير كلفة الدين العام عند إعادة تمويله حتى مع ثبات أصله؟" }, ["title"]).accepted), ["title"]);
+  check("the same headline may not become an assertion", Object.keys(judgeRewrite(hedgedExplainer, { title: "إعادة تمويل الدين العام تغيّر كلفته حتى مع ثبات أصله" }, ["title"]).accepted), []);
+  const passiveAgent = (body) => styleIssues({ ...brief, title: naturalTitle, body }).issues.some((i) => /«من قِ?بل»/.test(i));
+  check("«من قبل» with its agent is the calque", passiveAgent("رُفع التصنيف من قبل الوكالة الأسبوع الماضي."), true);
+  check("«من قِبل» before a quoted name is the calque", passiveAgent("رُفع التصنيف من قِبل «موديز» الأسبوع الماضي."), true);
+  check("«من قبل» meaning before, at a clause's end, is good Arabic", passiveAgent("لم تبلغ البورصة هذا المستوى من قبل."), false);
+  check("«من قبل أن» is good Arabic", passiveAgent("ارتفع السهم من قبل أن يبدأ الطرح."), false);
   const withBox = { ...brief, title: naturalTitle, subtitle: "برنت يحقق مكاسب أسبوعية بنسبة 4.9%", keyFacts: [{ label: "مكاسب برنت الأسبوعية", value: "4.9%" }] };
   const dekFault = (d) => programmaticChecks(d, [{ text: "Brent 110, weekly gain 4.9%." }], { minWords: 0 }).issues.some((i) => i.startsWith("الوصف الفرعي"));
   check("a dek may develop a figure in the story's numeric sidebar", dekFault(withBox), false);

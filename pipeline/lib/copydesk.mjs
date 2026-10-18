@@ -219,6 +219,10 @@ function assertedClaim(before, after) {
       if (share > score) [best, score] = [i, share];
     });
     if (best < 0 || score < 0.34) continue;
+    // A question asserts nothing, so it cannot turn a hedge into a claim: an explainer's hedged statement headline
+    // («… قد تغيّر كلفته …») rewritten as the question it answers was refused here, while the checker demanded that
+    // very question, and the explainer was thrown away (2026-10-18).
+    if (/؟\s*$/.test(target[best].s)) continue;
     const next = target[best + 1]?.p === target[best].p ? target[best + 1].s : "";
     const kept = hedgeKinds(`${target[best].s} ${next}`);
     if ([...kinds].some((k) => !kept.has(k))) return sentence;
@@ -417,8 +421,14 @@ export async function copyEdit({ draft, includeBody = false, role = "desk", kind
   const found = styleIssues(input, { kind, sources });
   // A fault that needs the sources (which outlet's figure stands) is the writer's; the desk would invent a way round it.
   const problems = [...new Set([...handed.map(String), ...found.issues, ...found.warnings])].filter((p) => !WRITER_ONLY.test(p)).slice(0, 14);
+  // The desk's headline rule says "no question", which is right for news and wrong for an explainer: the desk turned an
+  // explainer's question into a statement, the checker sent it back for not being a question, and the piece was thrown
+  // away (2026-10-18; no explainer had been published since 1 October).
+  const kindNote = kind === "explainer"
+    ? "\nTHIS PIECE IS AN EXPLAINER. Its headline is the one question the piece answers and ends in «؟» (e.g. «لماذا يرتفع عائد السند كلما انخفض سعره؟»). Keep the headline a question; the rule against question headlines is for news.\n"
+    : "";
   const user = `${EXAMPLES}
-${problems.length ? `
+${kindNote}${problems.length ? `
 PROBLEMS THE CHECKER FOUND IN THIS DRAFT (fix every one):
 ${problems.map((x, i) => `${i + 1}. ${x}`).join("\n")}
 ` : ""}
