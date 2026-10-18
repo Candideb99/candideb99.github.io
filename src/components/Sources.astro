@@ -68,13 +68,16 @@ const latin = (t: string) => /[A-Za-z]/.test(t) && !/[؀-ۿ]/.test(t);
   }
   .sources__item:first-child { border-top: 0; }
   .sources__name { font-weight: 700; font-size: var(--fs-sm); color: var(--green); }
-  @media (max-width: 599px) {
-    .sources__item { grid-template-columns: minmax(0, 1fr); }
-    .sources__host { grid-column: 1; }
-  }
   .sources__title { font-family: var(--font-body); font-size: var(--n-text); line-height: 1.6; color: var(--ink); overflow-wrap: anywhere; }
   /* An English headline is set in the reading face's own Latin, like the Arabic titles around it (until 2026-09-27
      it took the furniture face, which the renderer was drawing in the system's Segoe UI). */
   .sources__host { grid-column: 2; display: flex; gap: 0.6rem; font-size: var(--fs-xs); color: var(--ink-3); }
+  /* On a phone the name sits over its title. This rule must come after the one above: while it stood before it, the
+     host line's `grid-column: 2` won, opened a second column, and the title was drawn over the source's name on every
+     phone (found 2026-10-19). */
+  @media (max-width: 599px) {
+    .sources__item { grid-template-columns: minmax(0, 1fr); }
+    .sources__host { grid-column: 1; }
+  }
   .sources__none, .sources__note { font-family: var(--font-body); font-size: var(--n-text); line-height: 1.7; color: var(--ink-3); margin-top: 0.9rem; }
 </style>

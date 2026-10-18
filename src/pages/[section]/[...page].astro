@@ -47,6 +47,8 @@ const besideCount = others.length <= 5 ? others.length : 3;
 const beside = first ? others.slice(0, besideCount) : [];
 const rest = first ? others.slice(besideCount) : page.data;
 const pics = firstPictures(first ? [lead, ...beside, ...rest] : rest);
+// A lead without a photograph runs across the page with the stories beside it as a ruled row under it.
+const textLead = first && lead && !lead.data.image && beside.length > 0;
 const title = first ? section.name : `${section.name} — صفحة ${page.currentPage}`;
 // The markets section carries a glance at the data under its lead block, as the business dailies do.
 const glance = first && section.id === "markets" ? quotes(GLANCE_IDS) : [];
@@ -72,12 +74,12 @@ const topics = first ? topicCounts(await getArticles(), section.id).filter((t) =
     ) : (
       <div class="section-page">
         {first && lead && (
-          <div class={`section-page__top${beside.length ? "" : " section-page__top--solo"}`}>
+          <div class={`section-page__top${beside.length ? "" : " section-page__top--solo"}${textLead ? " section-page__top--text" : ""}`}>
             <div class="section-page__lead">
               <StoryCard article={lead} variant="lead" level={2} showSection={showKind} label={analysisLabel(lead, all)} showTopic eager />
             </div>
             {beside.length > 0 && (
-              <div class="section-page__beside">
+              <div class="section-page__beside" style={textLead ? `--n:${Math.min(beside.length, 3)}` : undefined}>
                 {beside.map((a) => (
                   <StoryCard article={a} variant="list" showSection={showKind} label={analysisLabel(a, all)} showExcerpt showPhoto={pics.has(a.id)} />
                 ))}
@@ -135,6 +137,19 @@ const topics = first ? topicCounts(await getArticles(), section.id).filter((t) =
   .section-page__beside { border-inline-start: 1px solid var(--rule); padding-inline-start: var(--col-gap); display: grid; }
   .section-page__beside > :global(.card) { padding-block: 0.8rem; border-top: 1px solid var(--rule); }
   .section-page__beside > :global(.card:first-child) { border-top: 0; padding-top: 0.1rem; }
+  /* A lead without a photograph: beside the list its column was a headline and a line over half a screen of blank
+     paper (الأسواق, 2026-10-19). It now runs across the page at the reading measure, and the next stories stand under
+     it in ruled columns, three to a row, as a text-only lead runs on a printed page. */
+  @media (min-width: 1024px) {
+    .section-page__top--text { grid-template-columns: 1fr; }
+    .section-page__top--text .section-page__lead { padding-inline-end: 0; max-width: 56rem; }
+    .section-page__top--text .section-page__beside { grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); border-inline-start: 0; padding-inline-start: 0; margin-top: 1.25rem; padding-top: 1.1rem; border-top: 1px solid var(--rule); }
+    .section-page__top--text .section-page__beside > :global(.card) { padding-block: 0; padding-inline: var(--col-gap); border-top: 0; }
+    .section-page__top--text .section-page__beside > :global(.card:nth-child(3n + 1)) { padding-inline-start: 0; }
+    .section-page__top--text .section-page__beside > :global(.card:nth-child(3n)), .section-page__top--text .section-page__beside > :global(.card:last-child) { padding-inline-end: 0; }
+    .section-page__top--text .section-page__beside > :global(.card:not(:nth-child(3n + 1))) { border-inline-start: 1px solid var(--rule); }
+    .section-page__top--text .section-page__beside > :global(.card:nth-child(n + 4)) { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+  }
   .section-page__rest { margin-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--ink); padding-top: 1.25rem; }
   .page-head__link { display: inline-block; margin-top: 0.6rem; font-weight: 700; font-size: var(--fs-sm); color: var(--green); text-decoration: none; }
   .page-head__link:hover { text-decoration: underline; }
@@ -173,7 +188,9 @@ const topics = first ? topicCounts(await getArticles(), section.id).filter((t) =
   .pager { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--rule); padding-top: 0.9rem; }
   .pager__step { font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-sm); color: var(--green); text-decoration: none; padding: 0.4rem 0.8rem 0.3rem; border: 1px solid var(--rule); }
   .pager__step:hover { border-color: var(--green); }
-  .pager__step--off { color: var(--ink-3); border-color: var(--rule); }
+  /* No newer page before the first, no older after the last: the step keeps its place, so the count stays centred,
+     but is not drawn; a grey boxed «أحدث» on page 1 looked like a button that did nothing (2026-10-19). */
+  .pager__step--off { visibility: hidden; }
   .pager__count { font-size: var(--fs-sm); color: var(--ink-3); }
 
   @media (max-width: 719px) {

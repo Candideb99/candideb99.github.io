@@ -70,6 +70,8 @@ for (const a of page.data) {
   .pager { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--rule); padding-top: 0.9rem; max-width: 56rem; }
   .pager__step { font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-sm); color: var(--green); text-decoration: none; padding: 0.4rem 0.8rem 0.3rem; border: 1px solid var(--rule); }
   .pager__step:hover { border-color: var(--green); }
-  .pager__step--off { color: var(--ink-3); border-color: var(--rule); }
+  /* No newer page before the first, no older after the last: the step keeps its place, so the count stays centred,
+     but is not drawn; a grey boxed «أحدث» on page 1 looked like a button that did nothing (2026-10-19). */
+  .pager__step--off { visibility: hidden; }
   .pager__count { font-size: var(--fs-sm); color: var(--ink-3); }
 </style>

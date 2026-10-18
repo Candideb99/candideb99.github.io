@@ -41,7 +41,8 @@ const events = upcoming(limit);
   .agenda__title { font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; text-decoration: none; color: var(--ink); }
   .agenda__title:hover { color: var(--green); }
   .agenda__foot { margin-top: 0.5rem; font-size: var(--fs-xs); line-height: 1.55; color: var(--ink-3); }
-  .agenda__foot a { font-weight: 700; color: var(--ink-2); text-decoration: none; }
+  /* A finger-sized target (24px and more) that keeps its place in the line, as .meta links do. */
+  .agenda__foot a { font-weight: 700; color: var(--ink-2); text-decoration: none; padding-block: 0.35rem; }
   .agenda__foot a:hover { color: var(--green); text-decoration: underline; }
   .agenda__foot time { color: inherit; }
 </style>

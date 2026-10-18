@@ -63,5 +63,7 @@ const uniq = (list: typeof press) => [...new Map(list.map((s) => [s.nameEn, s]))
 
 <style>
   .method__prose { margin-top: 0; }
-  .method__en { font-family: var(--font-ui); color: var(--ink-3); font-size: 0.9em; }
+  /* An English name is set in the reading face's own Latin, as the article's sources set an English headline; in the
+     furniture face it drew 18px Tajawal Latin in the middle of a naskh list (2026-10-19). */
+  .method__en { color: var(--ink-3); font-size: 0.9em; }
 </style>

@@ -66,7 +66,8 @@ const tip = (q: Quote) => `${q.name}${q.note ? ` (${q.note})` : ""}${q.unit && q
   .board__move--flat, .board__na { color: var(--ink-3); }
   .is-stale .board__num { color: var(--ink-3); }
   .board__foot { margin-top: 0.5rem; font-size: var(--fs-xs); line-height: 1.55; color: var(--ink-3); }
-  .board__foot a { font-weight: 700; color: var(--ink-2); text-decoration: none; }
+  /* A finger-sized target (24px and more) that keeps its place in the line, as .meta links do. */
+  .board__foot a { font-weight: 700; color: var(--ink-2); text-decoration: none; padding-block: 0.35rem; }
   .board__foot a:hover { color: var(--green); text-decoration: underline; }
   .board__foot time { color: inherit; }
 </style>

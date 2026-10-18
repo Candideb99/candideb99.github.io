@@ -120,6 +120,11 @@ export function excerpt(text: string, max = 180): string {
   let kept = clause >= max * 0.55 ? cut.slice(0, clause) : cut.slice(0, at > 60 ? at : max);
   // Never stop inside «…» with its closing mark cut off: step back to before the open one.
   if ((kept.match(/«/g) ?? []).length > (kept.match(/»/g) ?? []).length && kept.lastIndexOf("«") > 40) kept = kept.slice(0, kept.lastIndexOf("«"));
+  // Never stop on a figure whose unit was cut off: «… على ضخ 29.7…» left the reader a number with no «مليار جنيه»
+  // (2026-10-19). A percentage or a year is whole on its own and stays.
+  kept = kept.replace(/[\s،؛,.:«(-]+$/u, "");
+  const lastWord = kept.slice(kept.lastIndexOf(" ") + 1);
+  if (/\d/.test(lastWord) && !/%$/.test(lastWord) && !/^(19|20)\d{2}$/.test(lastWord) && kept.lastIndexOf(" ") > 40) kept = kept.slice(0, kept.lastIndexOf(" "));
   const tidy = kept
     .replace(/[\s،؛,.:«(-]+$/u, "")
     .replace(/\s+(?:و|ف|في|من|على|إلى|عن|أن|إن|مع|بعد|قبل|التي|الذي|بين|حتى|أو|ثم|لكن|بل|كلما|عندما|حين|حيث|لأن|إذ|إذا|بينما|فيما|مما|كما|بعدما)$/u, "");

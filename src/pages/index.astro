@@ -111,10 +111,15 @@ const rows = sectionPools
   .filter((r) => r.items.length >= 2)
   .sort((x, y) => Date.parse(y.items[0].data.publishedAt) - Date.parse(x.items[0].data.publishedAt));
 rows.forEach((r) => place(r.items));
+// A line carries a story of the last week or is not printed: «من الأقسام» had run الدفاع's, الطاقة's and الشركات's newest
+// unprinted stories at 18 and 19 days old under today's news, which reads as a paper nobody keeps (2026-10-19). The
+// section bar and the menu still lead to every section.
+const LINE_HOURS = 7 * 24;
 const lines = sectionPools
   .filter(({ section }) => !rows.some((r) => r.section.id === section.id))
-  .map(({ section, pool }) => ({ section, story: pool[0] as Article | undefined }))
-  .sort((x, y) => (y.story ? Date.parse(y.story.data.publishedAt) : 0) - (x.story ? Date.parse(x.story.data.publishedAt) : 0));
+  .map(({ section, pool }) => ({ section, story: pool.find((a) => hoursOld(a) < LINE_HOURS) }))
+  .filter((l): l is { section: typeof l.section; story: Article } => Boolean(l.story))
+  .sort((x, y) => Date.parse(y.story.data.publishedAt) - Date.parse(x.story.data.publishedAt));
 lines.forEach((l) => l.story && place([l.story]));
 
 // الأخبار بحسب المنطقة, the four desks readers see, as a way in rather than a fourth printing: each desk its count, its
@@ -202,7 +207,7 @@ const jsonLd = {
             ))}
           </div>
         ) : briefs.length === 1 ? (
-          <div class="cols row__pair" style="--n:2">
+          <div class={`cols row__pair${r.items.filter((a) => a.data.image && photoIds.has(a.id)).length === 1 ? " row__pair--mixed" : ""}`} style="--n:2">
             {r.items.map((a) => (
               <StoryCard article={a} variant="card" showSection={false} showExcerpt showTopic showPhoto={photoIds.has(a.id)} sizes="(min-width: 1320px) 600px, (min-width: 720px) 48vw, 120px" />
             ))}
@@ -234,14 +239,10 @@ const jsonLd = {
         {lines.map(({ section, story }) => (
           <li class="lines__item" data-section={section.id}>
             <a class="lines__section" href={sectionHref(section.id)}>{section.name}</a>
-            {story ? (
-              <p class="lines__story">
-                <a href={articleHref(story)} set:html={isolateNumbers(story.data.title)} />
-                <time class="ui" datetime={story.data.publishedAt} data-relative>{timeAgo(story.data.publishedAt)}</time>
-              </p>
-            ) : (
-              <p class="lines__story lines__story--none ui">لا جديد في القسم</p>
-            )}
+            <p class="lines__story">
+              <a href={articleHref(story)} set:html={isolateNumbers(story.data.title)} />
+              <time class="ui" datetime={story.data.publishedAt} data-relative>{timeAgo(story.data.publishedAt)}</time>
+            </p>
             <a class="lines__more ui" href={sectionHref(section.id)}>{moreLabel(section.id)}</a>
           </li>
         ))}
@@ -314,6 +315,14 @@ const jsonLd = {
      column three-fifths empty (2026-09-27). */
   .row__pair :global(.card__title) { font-size: var(--t-feature); line-height: 1.36; }
   .row__pair :global(.card__summary) { font-size: var(--n-text); margin-top: 0.35rem; }
+  /* A pair where only one story has a photograph: stacked over its headline, the photograph made one column about
+     480px deep beside three lines and blank paper (الأسواق and الاقتصاد, 2026-10-19). That story runs like a block's
+     feature instead, its text beside its photograph, so the two columns end near each other. */
+  @media (min-width: 720px) {
+    .row__pair--mixed > :global(.card--photo) { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 0 var(--col-gap); align-items: start; }
+    .row__pair--mixed > :global(.card--photo .card__photo) { order: 2; }
+    .row__pair--mixed > :global(.card--photo .card__body) { order: 1; }
+  }
 
   /* One story leads each block, the rest sit beside it as briefs. */
   .row__body { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: 0; align-items: start; }
@@ -343,8 +352,7 @@ const jsonLd = {
   .lines__story a { text-decoration: none; }
   .lines__story a:hover { color: var(--green); }
   .lines__story time { margin-inline-start: 0.6rem; font-size: var(--fs-xs); font-weight: 500; color: var(--ink-3); white-space: nowrap; }
-  .lines__story--none { font-size: var(--fs-sm); font-weight: 500; color: var(--ink-3); }
-  .lines__more { font-size: var(--fs-xs); font-weight: 700; color: var(--ink-2); text-decoration: none; white-space: nowrap; }
+  .lines__more { font-size: var(--fs-xs); font-weight: 700; color: var(--ink-2); text-decoration: none; white-space: nowrap; padding-block: 0.35rem; margin-block: -0.35rem; }
   .lines__more:hover { color: var(--green); text-decoration: underline; }
 
   /* The desks: a region's name in green Amiri, its count and last update, and at most one story not printed above. */

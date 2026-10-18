@@ -143,7 +143,7 @@ import Base from "@layouts/Base.astro";
   /* Focus thickens the rule as well as turning it green, so it shows without relying on colour alone. */
   .search__input:focus { outline: none; border-bottom: 3px solid var(--green); padding-bottom: calc(0.6rem - 1px); }
   .search__results { margin-top: 1.5rem; max-width: 46rem; }
-  .search :global(.search__hint), .search :global(.search__count) { font-family: var(--font-ui); color: var(--ink-3); }
+  .search :global(.search__hint), .search :global(.search__count) { font-family: var(--font-ui); font-size: var(--fs-sm); color: var(--ink-3); }
   .search :global(.search__list) { display: grid; gap: 1rem; margin-top: 0.75rem; }
   .search :global(.search__item) { border-top: 1px solid var(--rule); padding-top: 0.9rem; }
   .search :global(.search__title) { font-family: var(--font-title); font-weight: 700; font-size: var(--t-head); line-height: 1.4; text-decoration: none; }

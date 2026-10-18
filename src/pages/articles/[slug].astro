@@ -86,14 +86,17 @@ const jsonLd = [articleLd, breadcrumbLd];
 <Base title={d.title} description={description} path={path} image={ogImage} imageAlt={d.image?.alt} type="article" section={d.section} jsonLd={jsonLd} publishedAt={d.publishedAt} updatedAt={d.updatedAt}>
   <article class="article wrap--article" data-section={d.section} data-pagefind-body data-pagefind-meta={`section:${d.section}`}>
     <header class="article__head">
-      {topic && <span class="kicker"><a href={tagHref(topic)}>{topic}</a></span>}
+      {/* The kicker, the meta lines, the share row and the photo credit are furniture and stay out of the search text
+          (data-pagefind-ignore; the meta values inside are still read): a result's excerpt read «الطاقة › أوبك+
+          خازندار نُشر الجمعة 11 سبتمبر 2026 م.» before the story's first words (2026-10-19). */}
+      {topic && <span class="kicker" data-pagefind-ignore><a href={tagHref(topic)}>{topic}</a></span>}
       {/* The headline outweighs the body in search, and the dek comes next (2026-09-24: «التضخم في مصر» ranked a US
           story above «التضخم في مصر يتباطأ إلى 12.7%»). */}
       <h1 class="article__title" data-pagefind-meta={`title:${d.title}`} data-pagefind-weight="10" set:html={isolateNumbers(d.title)} />
       {d.subtitle && <p class="article__dek" data-pagefind-weight="4" set:html={isolateNumbers(d.subtitle)} />}
       {/* Two lines on purpose: where the story sits and who wrote it, then when. The hour and the reading time are
           each kept whole, so a phone never leaves «بتوقيت القاهرة» or «دقيقتا قراءة» alone on a line (2026-09-24). */}
-      <div class="article__meta">
+      <div class="article__meta" data-pagefind-ignore>
         <p class="meta">
           <span class="crumbs">
             <a href={sectionHref(d.section)} data-pagefind-meta={`sectionName:${sec.name}`}>{sectionLabel}</a>
@@ -109,7 +112,7 @@ const jsonLd = [articleLd, breadcrumbLd];
           <span class="article__whole">{readingLabel(d.readingMinutes)}</span>
         </p>
       </div>
-      <Share url={new URL(path, site.url).toString()} title={d.title} />
+      <div data-pagefind-ignore><Share url={new URL(path, site.url).toString()} title={d.title} /></div>
     </header>
 
     {d.image && (
@@ -118,7 +121,7 @@ const jsonLd = [articleLd, breadcrumbLd];
         <figcaption class="article__caption ui">
           <span>{d.image.alt}</span>
           {d.image.credit && (
-            <span class="article__credit">
+            <span class="article__credit" data-pagefind-ignore>
               الصورة: {d.image.pageUrl ? <a href={d.image.pageUrl} rel="noopener" target="_blank"><bdi>{d.image.credit}</bdi></a> : <bdi>{d.image.credit}</bdi>}
             </span>
           )}
@@ -236,6 +239,10 @@ const jsonLd = [articleLd, breadcrumbLd];
   .also__head { font-weight: 700; font-size: var(--fs-xs); color: var(--green); white-space: nowrap; }
   .also__link { font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; color: var(--ink); text-decoration: none; }
   .also__link:hover { color: var(--green); }
+  /* A story too short for the line to sit inside its text (fewer than five paragraphs) leaves it where it was printed,
+     at the end, where it only repeated the first headline of the اقرأ أيضاً list beside or under the story and stacked
+     a second pair of rules on top of لماذا يهمّ (2026-10-19). There it is not shown. */
+  .article__main > .also { display: none; }
   .article__title {
     font-family: var(--font-title);
     font-weight: 700;
