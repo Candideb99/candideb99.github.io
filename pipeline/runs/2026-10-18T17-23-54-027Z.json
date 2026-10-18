@@ -1,0 +1,51 @@
+{
+  "mode": "analysis",
+  "startedAt": "2026-10-18T17:16:16.535Z",
+  "durationSec": 457,
+  "published": 0,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "طرح بنك القاهرة بين تحسن تصنيف مصر وتراجع البورصة",
+      "section": "analysis",
+      "outcome": "rejected after revision: عبارة مترجمة أو حشو: «من قبل»؛ اجعل الفاعل فاعلاً: «رفع البنك» لا «رُفع من قبل البنك»."
+    }
+  ],
+  "llm": {
+    "calls": 7,
+    "failures": 0,
+    "promptTokens": 97283,
+    "completionTokens": 19345,
+    "cacheReadTokens": 28160,
+    "costUsd": 0,
+    "byModel": {
+      "codex-cli/gpt-6.1-sol": 7
+    }
+  },
+  "log": [
+    "[17:16:16] newsroom start mode=analysis limit=4 dry-run=false",
+    "[17:16:50] llm ok role=editor provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=33101",
+    "[17:16:50] analysis theme: طرح بنك القاهرة بين تحسن تصنيف مصر وتراجع البورصة (Banque du Caire’s offering amid Egypt’s rating upgrade and stock-market decline); question: كيف يوازن المستثمر الذي يدرس المشاركة في طرح بنك القاهرة بين تحسن التصنيف الائتماني لمصر وتراجع البورصة؟",
+    "[17:16:50]   related: بنك القاهرة يبدأ الاثنين طرح حصة أساسية تصل إلى 30%",
+    "[17:16:50]   related: «موديز» ترفع تصنيف مصر الائتماني مع نظرة مستقبلية إيجابية",
+    "[17:16:50]   related: البورصة المصرية تفقد نحو 160 مليار جنيه في جلسة الأحد",
+    "[17:18:37] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=106647",
+    "[17:20:27] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=108977",
+    "[17:20:27] desk model=codex-cli/gpt-6.1-sol applied=[lede,whyItMatters,body] rejected=[]",
+    "[17:20:27] desk \"تحسن تصنيف مصر لا يغني عن تقييم سعر طرح بنك القاهرة\": rewrote lede, whyItMatters, body",
+    "[17:20:27] checks analysis \"تحسن تصنيف مصر لا يغني عن تقييم سعر طرح بنك القاهرة\": 805 words, 1 issues, 1 warnings",
+    "[17:21:01] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=33053",
+    "[17:21:01] critic analysis: publish score=10 issues=0",
+    "[17:21:01]   · عبارة مترجمة أو حشو: «من قبل»؛ اجعل الفاعل فاعلاً: «رفع البنك» لا «رُفع من قبل البنك».",
+    "[17:21:46] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=45069",
+    "[17:22:16] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=29735",
+    "[17:22:16] desk model=codex-cli/gpt-6.1-sol applied=[subtitle,lede,whyItMatters] rejected=[]",
+    "[17:22:16] desk \"تحسن تصنيف مصر لا يغني عن تقييم سعر طرح بنك القاهرة\": rewrote subtitle, lede, whyItMatters",
+    "[17:22:16] last desk pass for 1 fault(s): عبارة مترجمة أو حشو: «من قبل»؛ اجعل الفاعل فاعلاً: «رفع البن",
+    "[17:23:54] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=97273",
+    "[17:23:54] desk model=codex-cli/gpt-6.1-sol applied=[title,lede,whyItMatters,body] rejected=[]",
+    "[17:23:54] desk \"تحسن تصنيف مصر لا يحسم جاذبية طرح بنك القاهرة\": rewrote title, lede, whyItMatters, body",
+    "[17:23:54] last desk pass: still 1 fault(s)",
+    "[17:23:54] reject analysis \"تحسن تصنيف مصر لا يحسم جاذبية طرح بنك القاهرة\" after revision: عبارة مترجمة أو حشو: «من قبل»؛ اجعل الفاعل فاعلاً: «رفع البنك» لا «رُفع من قبل البنك»."
+  ]
+}
