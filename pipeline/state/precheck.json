@@ -2787,6 +2787,130 @@
           "noted": []
         }
       ]
+    },
+    "morocco-budget-2027-purchasing-power-support-018b33": {
+      "at": "2026-10-18T11:24:45.172Z",
+      "title": "المغرب يقر توجهات موازنة 2027 لدعم القدرة الشرائية",
+      "writer": "codex-cli/gpt-6.1-sol",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 23,
+            "checked": 23,
+            "supported": 21,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "venezuela-oil-gas-investment-outlook-2187ff": {
+      "at": "2026-10-18T11:31:53.948Z",
+      "title": "فنزويلا تتوقع استثمارات نفطية وغازية بنحو 76 مليار دولار",
+      "writer": "codex-cli/gpt-6.1-sol → codex-cli/gpt-6.1-sol",
+      "lessons": "v29",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 19,
+            "checked": 19,
+            "supported": 15,
+            "weak": 0,
+            "noEvidence": 2,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 19,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وأضافت أن زيادة إنتاج الولاية ستمكّنها لاحقاً من إنتاج غاز البترول المسال للاستهلاك المحلي أولاً، ثم التصدير.",
+              "quote": "وأشارت رودريغيز إلى الطفرة الإنتاجية في ولاية زوليا، حيث ارتفع إنتاج النفط من 70 ألفا إلى 370 ألف برميل يوميا، متوقعة وصوله إلى 400 ألف برميل بنهاية العام الجاري، ما يمهد لدخول الولاية مجال إنتاج الغاز الطبيعي المسال خلال العام المقبل.",
+              "source": "Al Khaleej",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "egypt-fra-six-companies-fintech-approvals-c495f7": {
+      "at": "2026-10-18T11:41:52.875Z",
+      "title": "الرقابة المصرية تمنح 6 شركات موافقات لاستخدام التكنولوجيا المالية",
+      "writer": "codex-cli/gpt-6.1-sol",
+      "lessons": "v29",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 15,
+            "checked": 15,
+            "supported": 12,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "saudi-stocks-rise-led-by-heavyweights-3381fa": {
+      "at": "2026-10-18T11:48:23.387Z",
+      "title": "السوق السعودية ترتفع 0.6% بدعم الأسهم القيادية",
+      "writer": "codex-cli/gpt-6.1-sol",
+      "lessons": "v29",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 17,
+            "checked": 17,
+            "supported": 17,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

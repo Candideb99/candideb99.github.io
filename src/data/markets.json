@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-18T09:57:08.779Z",
+  "updatedAt": "2026-10-18T11:48:26.549Z",
   "source": "Yahoo Finance",
   "quotes": [
     {
@@ -12,12 +12,12 @@
       "unit": null,
       "decimals": 2,
       "changeMode": "pct",
-      "price": 10184.82,
+      "price": 10196.16,
       "prev": 10106.54,
-      "time": "2026-10-18T09:42:06.000Z",
+      "time": "2026-10-18T11:33:24.000Z",
       "currency": "SAR",
-      "change": 78.28,
-      "pct": 0.7745,
+      "change": 89.62,
+      "pct": 0.8868,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -139,7 +139,7 @@
         },
         {
           "d": "2026-10-18",
-          "c": 10184.82
+          "c": 10196.16
         }
       ]
     },
@@ -153,12 +153,12 @@
       "unit": null,
       "decimals": 2,
       "changeMode": "pct",
-      "price": 51335.6,
+      "price": 50896.2,
       "prev": 51492.8,
-      "time": "2026-10-18T09:42:02.000Z",
+      "time": "2026-10-18T11:25:01.000Z",
       "currency": "EGP",
-      "change": -157.2,
-      "pct": -0.3053,
+      "change": -596.6,
+      "pct": -1.1586,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -264,7 +264,7 @@
         },
         {
           "d": "2026-10-18",
-          "c": 51335.6
+          "c": 50896.2
         }
       ]
     },
@@ -704,7 +704,7 @@
       "price": 6204.23,
       "prev": 6168.26,
       "time": "2026-10-16T16:00:00.000Z",
-      "currency": null,
+      "currency": "EUR",
       "change": 35.97,
       "pct": 0.5831,
       "source": "yahoo",
@@ -3521,12 +3521,12 @@
       "unit": "دولار",
       "decimals": 0,
       "changeMode": "pct",
-      "price": 82050.73,
+      "price": 81882.04,
       "prev": 81383.29,
-      "time": "2026-10-18T09:57:02.000Z",
+      "time": "2026-10-18T11:48:24.000Z",
       "currency": "USD",
-      "change": 667.44,
-      "pct": 0.8201,
+      "change": 498.75,
+      "pct": 0.6128,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -3648,7 +3648,7 @@
         },
         {
           "d": "2026-10-18",
-          "c": 82050.73
+          "c": 81882.04
         }
       ]
     }

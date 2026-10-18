@@ -569,6 +569,50 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-10-18T11:31:53.951Z",
+      "slug": "venezuela-oil-gas-investment-outlook-2187ff",
+      "checker": "f6d38e4947.2",
+      "lessons": "v29",
+      "lessonsHash": "5c629d81ea",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 15,
+        "notFound": 3,
+        "checked": 19,
+        "words": 192,
+        "keyFacts": 4,
+        "classes": [],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 18,
+        "notFound": 2,
+        "checked": 21,
+        "words": 224,
+        "keyFacts": 5,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 18,
+        "notFound": 2,
+        "checked": 21,
+        "words": 224,
+        "keyFacts": 5,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }

@@ -1,0 +1,447 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-18T11:16:51.638Z",
+  "durationSec": 1892,
+  "published": 4,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "المغرب يقر توجهات موازنة 2027 لدعم القدرة الشرائية",
+      "section": "economy",
+      "importance": 8,
+      "sources": [
+        "https://www.aljazeera.net/ebusiness/2026/10/18/%d9%85%d9%88%d8%a7%d8%b2%d9%86%d8%a9-%d8%a7%d9%84%d9%85%d8%ba%d8%b1%d8%a8-2027-%d8%aa%d8%b3%d8%aa%d9%87%d8%af%d9%81-%d8%af%d8%b9%d9%85-%d8%a7%d9%84%d9%82%d8%af%d8%b1%d8%a9",
+        "https://www.hespress.com/%d9%85%d8%ac%d9%84%d8%b3-%d9%88%d8%b2%d8%a7%d8%b1%d9%8a-%d8%a8%d8%b1%d8%a6%d8%a7%d8%b3%d8%a9-%d8%a7%d9%84%d9%85%d9%84%d9%83-%d9%8a%d8%b6%d8%b9-%d8%af%d8%b9%d9%85-%d8%a7%d9%84%d9%82%d8%af%d8%b1%d8%a9-1824612.html"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "عبارة «أقرّ المجلس الوزاري… التوجهات العامة لمشروع موازنة 2027» تحدد ما تغير؛ ولا يوحي العنوان والافتتاح بأن الموازنة أُقرت نهائياً أو أن زيادة الدعم نُفذت.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "توضح نتائج بحث الأسر خلفية استهداف القدرة الشرائية، ويشرح النص غرض برنامج الشباب. ويستند صندوق الأهمية إلى زيادة الدعم واستدامة التغطية الصحية والحفاظ على التوازنات المالية، ليستنتج اشتراط الموارد والتنفيذ لتحقيق المساندة المستهدفة.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "تنتقل الفقرات من ضغوط المعيشة إلى الحماية الاجتماعية، ثم إدماج الشباب والتنمية وتمويلها، ضمن حدث واحد. ويضيف الصندوق قيد التمويل والتنفيذ بدلاً من الاكتفاء بتكرار الإعلان أو تلخيص رأي منسوب.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام والأسماء والفترات مسندة إلى المصدرين؛ ونسب المعيشة مقيدة بالأسر المشمولة بالبحث، وتوقعات 2026 معروضة كتوقعات حكومية. ويطابق الرسم نسب التراجع والاستقرار والتحسن ووحدتها وفترتها، كما تتطابق مقدمات why_basis مع المصادر المحددة.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تشمل التوجهات زيادة الدعم الاجتماعي المباشر واستكمال التغطية الصحية مع ضمان استدامة أنظمتها.",
+          "source": 2
+        },
+        {
+          "fact": "يستهدف الحفاظ على التوازنات الاقتصادية والمالية توفير موارد لتمويل المشاريع التنموية والاستراتيجيات القطاعية.",
+          "source": 2
+        },
+        {
+          "fact": "أفادت 76.3% من الأسر المشمولة بالبحث بتدهور معيشتها خلال الشهور الـ12 الماضية.",
+          "source": 1
+        }
+      ],
+      "slug": "morocco-budget-2027-purchasing-power-support-018b33",
+      "title": "المغرب يقر توجهات موازنة 2027 لدعم القدرة الشرائية",
+      "score": 10,
+      "image": "photo"
+    },
+    {
+      "headline": "فنزويلا تتوقع استثمارات نفطية وغازية بـ76 مليار دولار",
+      "section": "energy",
+      "importance": 7,
+      "sources": [
+        "https://www.alborsaanews.com/2026/10/18/2000007",
+        "https://www.alkhaleej.ae/2026-10-18/%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF/%D8%A3%D8%B3%D9%88%D8%A7%D9%82-%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-%D9%88%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D8%A9/%D9%81%D9%86%D8%B2%D9%88%D9%8A%D9%84%D8%A7-%D8%AA%D8%B3%D8%AA%D9%82%D8%B7%D8%A8-76-%D9%85%D9%84%D9%8A%D8%A7%D8%B1-%D8%AF%D9%88%D9%84%D8%A7%D8%B1-%D8%A7%D8%B3%D8%AA%D8%AB%D9%85%D8%A7%D8%B1%D8%A7%D8%AA-%D9%81%D9%8A-%D8%A7%D9%84%D9%86%D9%81%D8%B7-%D9%88%D8%A7%D9%84%D8%BA%D8%A7%D8%B2-%D8%AE%D9%84%D8%A7%D9%84-5-%D8%B3%D9%86%D9%88%D8%A7%D8%AA"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يعرضان استثمارات متوقعة خلال خمس سنوات، لا أموالاً تدفقت بالفعل، ويبيّن المتن أن زيادة الإنتاج ما زالت تواجه قيوداً.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "المقارنة بين ضخامة الاحتياطيات وضعف الإنتاج توضح غرض الاستثمارات. ويربط صندوق الأهمية قيود الكهرباء والمعدات والخدمات والعمالة باحتمال تأخر الإنتاج والوظائف، بشرط استمرار تلك القيود.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "ينتقل النص من الاتفاقيات الحكومية إلى «وقالت «شيفرون» في سبتمبر إن الاتفاقيات تتيح استثمارات جديدة» دون تحديد الاتفاقيات التي تتناولها الشركة.",
+              "repair": "أدخل سياق المصدر 1 المتعلق بحقوق شيفرون في تطوير حقول حزام أورينوكو وشروط أنشطتها، وافصل مرجع تعليقها عن الاتفاقيات الحكومية الـ61."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "أرقام إنتاج زوليا وتوقع نهاية العام مدعومة بالمصدر 2، وغاز البترول المسال وأولوية الاستهلاك المحلي مدعومان بالمصدر 1؛ ولم ينقل النص وصف الغاز الطبيعي المسال أو موعده المختلف في المصدر 2. وتظل تقديرات الاستثمار والوظائف منسوبة إلى رودريغيز.",
+              "repair": ""
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يقدمان الـ76 مليار دولار كتوقع لخمس سنوات، لا كاستثمارات منفذة، والعنوان الفرعي يوضح احتمال تباطؤ زيادة الإنتاج.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "المقارنة بين ضخامة الاحتياطيات وانخفاض الإنتاج عن مستوياته السابقة، مع قيود الكهرباء والمعدات والعمالة، تفسر تحدي الاستثمار. ويستنتج الصندوق احتمال تأخر الإنتاج والوظائف بشرط استمرار هذه القيود، استناداً إلى مقدمات يدعمها المصدر 1.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "ينتقل النص من حجم الاستثمار المتوقع إلى عوائق تنفيذه، ثم الاتفاقيات والمستهدفات الإقليمية. تعليق شيفرون الحالي محدد بنمو الإنتاج والإصلاحات، ولم يعد يتضمن مرجع «الاتفاقيات» الملتبس. والصندوق يضيف استنتاجاً اقتصادياً مشروطاً، لا مجرد تكرار للخبر.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "أرقام الاستثمار والاتفاقيات والوظائف مدعومة بالمصدر 1، وأرقام إنتاج زوليا بالمصدر 2، مع إبقاء التوقعات منسوبة لرودريغيز. واستخدام «غاز البترول المسال» يستند إلى المصدر 1، دون خلطه بالغاز الطبيعي المسال الوارد في المصدر 2.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "توقعت رودريغيز استثمارات تقارب 76 مليار دولار خلال خمس سنوات، إثر إبرام 61 اتفاقية.",
+          "source": 1
+        },
+        {
+          "fact": "يواجه القطاع قيوداً في الكهرباء والمعدات وخدمات الحقول والعمالة الخبيرة قد تبطئ زيادة الإنتاج.",
+          "source": 1
+        },
+        {
+          "fact": "توقعت رودريغيز أن تتيح الاستثمارات أكثر من 324 ألف فرصة عمل مباشرة وغير مباشرة ومستحثة.",
+          "source": 1
+        }
+      ],
+      "slug": "venezuela-oil-gas-investment-outlook-2187ff",
+      "title": "فنزويلا تتوقع استثمارات نفطية وغازية بنحو 76 مليار دولار",
+      "score": 10,
+      "image": "photo"
+    },
+    {
+      "headline": "الرقابة المالية المصرية توافق لست شركات على استخدام التكنولوجيا المالية",
+      "section": "technology",
+      "importance": 6,
+      "sources": [
+        "https://www.masrawy.com/news/news_economy/details/2026/10/18/3064649/%D8%A7%D9%84%D8%B1%D9%82%D8%A7%D8%A8%D8%A9-%D8%A7%D9%84%D9%85%D8%A7%D9%84%D9%8A%D8%A9-%D8%AA%D9%88%D8%A7%D9%81%D9%82-%D9%84%D9%806-%D8%B4%D8%B1%D9%83%D8%A7%D8%AA-%D8%B9%D9%84%D9%89-%D9%85%D8%B2%D8%A7%D9%88%D9%84%D8%A9-%D8%A3%D9%86%D8%B4%D8%B7%D8%A9-%D9%85%D8%A7%D9%84%D9%8A%D8%A9-%D8%BA%D9%8A%D8%B1-%D9%85%D8%B5%D8%B1%D9%81%D9%8A%D8%A9-%D8%A8%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-%D8%A7%D9%84%D8%AA%D9%83%D9%86%D9%88%D9%84%D9%88%D8%AC%D9%8A%D8%A7-%D8%A7%D9%84%D9%85%D8%A7%D9%84%D9%8A%D8%A9",
+        "https://www.alborsaanews.com/2026/10/18/2000036",
+        "https://www.youm7.com/story/2026/10/18/%D8%A7%D9%84%D8%B1%D9%82%D8%A7%D8%A8%D8%A9-%D8%A7%D9%84%D9%85%D8%A7%D9%84%D9%8A%D8%A9-%D8%AA%D9%85%D9%86%D8%AD-6-%D8%B4%D8%B1%D9%83%D8%A7%D8%AA-%D9%85%D9%88%D8%A7%D9%81%D9%82%D8%A9-%D9%84%D9%85%D8%B2%D8%A7%D9%88%D9%84%D8%A9-%D8%A3%D9%86%D8%B4%D8%B7%D8%A9-%D9%85%D8%A7%D9%84%D9%8A%D8%A9-%D8%BA%D9%8A%D8%B1/7584195"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "توضح المقدمة أن الموافقات الست تشمل مزاولة أنشطة وتأسيس شركات والقيد للتعهيد، ولا تعرضها جميعاً كتراخيص تشغيل. وتفسر موافقة «سهولة» بأسبقية طلبها على تعليق قبول الطلبات، دون الإيحاء بإلغاء التعليق.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يربط المتن القرارات بهدف الهيئة المعلن لتوسيع الاستفادة من الخدمات المالية ودعم التحول الرقمي. ويستند صندوق الأهمية إلى قصر خدمات «فوري» على شركاتها التابعة وتعليق الطلبات الجديدة ليستنتج أن نطاق الموافقات، لا عددها وحده، يحد مسارات التوسع؛ وهو استنتاج محدود تدعمه المصادر.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "يبدأ المتن بتفسير القيد الوارد في العنوان الفرعي، ثم يجمع الموافقات بحسب وظائفها: تمويل المشروعات وسوق المال والتعهيد. ويضيف صندوق الأهمية معنى لهذه الحدود بدلاً من تكرار قائمة الشركات.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "تطابق الأسماء وعدد الشركات الست والشركتين الناشئتين المصادر، وتحفظ المسودة مدة التعليق البالغة عاماً وتوقيت تقديم طلب «سهولة» وقيد خدمات «فوري». كما تنسب القرارات والأهداف إلى الهيئة ولا تحول الأهداف إلى نتائج متحققة.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تستهدف الهيئة توسيع الاستفادة من الخدمات المالية غير المصرفية ودعم التحول الرقمي.",
+          "source": 1
+        },
+        {
+          "fact": "تقتصر خدمات التعهيد التي وافقت الهيئة على تقديم «فوري» لها على شركاتها التابعة.",
+          "source": 2
+        },
+        {
+          "fact": "علقت الهيئة قبول طلبات تأسيس وترخيص التمويل الاستهلاكي بالتكنولوجيا المالية لمدة عام منذ فبراير، وسبق طلب «سهولة» هذا القرار.",
+          "source": 1
+        }
+      ],
+      "slug": "egypt-fra-six-companies-fintech-approvals-c495f7",
+      "title": "الرقابة المصرية تمنح 6 شركات موافقات لاستخدام التكنولوجيا المالية",
+      "score": 10,
+      "image": "photo"
+    },
+    {
+      "headline": "السوق السعودية ترتفع 0.6% بدعم الأسهم القيادية",
+      "section": "markets",
+      "importance": 6,
+      "sources": [
+        "https://aawsat.com/node/5330786",
+        "https://www.alborsaanews.com/2026/10/18/1999971"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يوضحان ارتفاع «تاسي» 0.6% في التعاملات المبكرة، لا عند الإغلاق، مع إبقاء الارتفاع ضمن سياق جلستين من الهبوط وسبعة أسابيع من التراجع؛ ولا يقدمانه بوصفه تحولاً مستداماً.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يفسر النص احتمال ضغط ارتفاع النفط على التضخم والتمويل والتوسع، وينسب هذا التقدير إلى جرار مع تعريف صفته ومؤسسته. ويستنتج صندوق الأهمية أن مكاسب القياديات وحدها لا تثبت متانة التعافي، استناداً إلى هذه الضغوط وشروط السيولة والنتائج الواردة في المصدر 2.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "ينتقل التقرير من الارتفاع ومقارنته بالتراجعات السابقة إلى ضغوط النفط، ثم شروط استمرار التعافي ومستوى الدعم. ويضيف صندوق الأهمية استنتاجاً اقتصادياً متناسباً، لا مجرد إعادة للعنوان أو تلخيص منسوب إلى محلل.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "النسبة ومستوى المؤشر والتوقيت والمقارنات تطابق المصدر 2، وآراء جرار وسالم تحتفظ بإسنادها واحتمالاتها. كما تظل استدامة التعافي مرتبطة بالنتائج والسيولة، ولا تُعرض بوصفها نتيجة تحققت.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "ارتفع تاسي بدعم الأسهم القيادية بعد جلستين من الانخفاض.",
+          "source": 2
+        },
+        {
+          "fact": "قال جرار إن ضغوط ارتفاع النفط على التضخم والتمويل والتوسع قد تفوق مكاسب بعض شركات الطاقة.",
+          "source": 2
+        },
+        {
+          "fact": "ربطت سالم استمرار التعافي بتحسن السيولة والمعنويات ومحفزات جديدة، خصوصاً نتائج أعمال تتجاوز التوقعات.",
+          "source": 2
+        }
+      ],
+      "slug": "saudi-stocks-rise-led-by-heavyweights-3381fa",
+      "title": "السوق السعودية ترتفع 0.6% بدعم الأسهم القيادية",
+      "score": 10,
+      "image": "photo"
+    }
+  ],
+  "llm": {
+    "calls": 60,
+    "failures": 1,
+    "promptTokens": 689375,
+    "completionTokens": 71750,
+    "cacheReadTokens": 160000,
+    "costUsd": 0,
+    "byModel": {
+      "codex-cli/gpt-6.1-sol": 60
+    }
+  },
+  "log": [
+    "[11:40:37] image: dropped \"A person at a colorful urban kiosk with a neon sign at night in Turkey\" — taken in Turkey, which the story does not name",
+    "[11:40:46] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=7447",
+    "[11:40:46] image: vision rejected all candidates (fallback pass) (None shows digital financial services or financial-sector activity. The smartphone group looks staged, while the other images depict unrelated subjects.)",
+    "[11:40:55] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=8079",
+    "[11:40:55] image: vision rejected all candidates (fallback pass) (The candidates show generic smartphone use, not digital financial services. Several are visibly staged stock scenes; none credibly illustrates the sector at work.)",
+    "[11:40:55] image: the story's people first: Islam Azzam 2026 | Islam Azzam",
+    "[11:40:56] commons \"Islam Azzam 2026\": 0 usable of 2",
+    "[11:40:57] commons \"Islam Azzam\": 2 usable of 4",
+    "[11:40:57] commons \"Islam Azzam\": 2 usable of 4",
+    "[11:40:57] image: set aside \"Muizz Street - Egypt.jpg\" — a 2016 photograph of a person, older than 2018",
+    "[11:40:57] image: people shortlist: 2018 Ali Khamenei met with Ziyad Al-Nakhaleh01.jpg",
+    "[11:41:02] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=4426",
+    "[11:41:02] image: vision rejected all candidates (The photograph shows Ali Khamenei and Palestinian Islamic Jihad officials, not Islam Azzam or Egypt’s financial technology sector, and would mislead readers.)",
+    "[11:41:02] image: nothing of them since 2018 fits; their newest older photographs, run as file photos: 2016 Muizz Street - Egypt.jpg",
+    "[11:41:06] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=4146",
+    "[11:41:06] image: vision rejected all candidates (The historic Cairo street is unrelated to fintech approvals or financial services and does not show Islam Azzam or the regulator.)",
+    "[11:41:13] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=6448",
+    "[11:41:13] image: last resort: smartphone payment app Egypt | smartphone payment app | smartphone payment app industrial | Financial Regulatory Authority headquarters | Financial Regulatory Authority building",
+    "[11:41:13] commons \"smartphone payment app Egypt\": 0 usable of 0",
+    "[11:41:14] commons \"smartphone payment\": 9 usable of 24",
+    "[11:41:14] commons \"smartphone payment app\": 2 usable of 3",
+    "[11:41:15] commons \"smartphone payment app industrial\": 0 usable of 0",
+    "[11:41:15] commons \"smartphone payment\": 9 usable of 24",
+    "[11:41:16] commons \"Financial Regulatory Authority headquarters\": 0 usable of 0",
+    "[11:41:17] commons \"Financial Regulatory\": 11 usable of 24",
+    "[11:41:17] image: dropped \"Barack Obama at a Financial Regulatory Reform announcement, 2009.jpg\" — names too little of headquarters",
+    "[11:41:17] image: dropped \"National Administration of Financial Regulation (20230628183842).jpg\" — names too little of headquarters",
+    "[11:41:17] image: dropped \"National Administration of Financial Regulation (20230628183732).jpg\" — names too little of headquarters",
+    "[11:41:17] image: dropped \"Figure 1 Change in Regulatory Oversight of Investment Adviser Firms Pr\" — names too little of headquarters",
+    "[11:41:17] image: dropped \"Beijing CSRC Building.jpg\" — names too little of headquarters",
+    "[11:41:17] image: dropped \"中国证券监督管理委员会.jpg\" — names too little of headquarters",
+    "[11:41:17] image: dropped \"Figure 1- Federal Banking Agencies' Decennial Economic Growth and Regu\" — names too little of headquarters",
+    "[11:41:17] image: dropped \"Figure 1 - Overall Rulemaking Steps and Process for Small Business Reg\" — names too little of headquarters",
+    "[11:41:17] image: dropped \"USDA WIC-FMNP-SFMNP Programs, San Diego, CA (20230503-FNS-UNK-0014).jp\" — taken in United States, which the story does not name",
+    "[11:41:17] image: dropped \"USDA WIC-FMNP-SFMNP Programs, San Diego, CA (20230503-FNS-UNK-0013).jp\" — taken in United States, which the story does not name",
+    "[11:41:17] image: dropped \"Financial Industry Regulatory Authority (FINRA) (48126619532).jpg\" — taken in United States, which the story does not name",
+    "[11:41:17] image: dropped \"Finanssivalvonta-2016.jpg\" — taken in Finland, which the story does not name",
+    "[11:41:17] image: dropped \"Finanssivalvonta.jpg\" — taken in Finland, which the story does not name",
+    "[11:41:24] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=6236",
+    "[11:41:33] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=8940",
+    "[11:41:33] image: second check (codex-cli/gpt-6.1-sol) WRONG_SUBJECT — refused \"P059743-262182.jpg\": The metadata identifies a European Commission context rather than Egypt, the story’s sole country.",
+    "[11:41:42] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=8554",
+    "[11:41:52] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=9826",
+    "[11:41:52] image: second check (codex-cli/gpt-6.1-sol) GENERIC_OK \"P059743-876254.jpg\": The smartphone payment illustrates financial technology, and nothing provided identifies a location outside Egypt.",
+    "[11:41:52] published \"الرقابة المصرية تمنح 6 شركات موافقات لاستخدام التكنولوجيا المالية\" -> egypt-fra-six-companies-fintech-approvals-c495f7",
+    "[11:42:51] desk notes: 2 of 16 facts dropped (not in their source or copied from it)",
+    "[11:42:51] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=55487",
+    "[11:42:51] desk notes: 14 facts, 0 quotes (codex-cli/gpt-6.1-sol)",
+    "[11:44:02] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=70482",
+    "[11:44:56] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=53383",
+    "[11:45:08] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=11917",
+    "[11:45:08] desk: body accepted on the second try",
+    "[11:45:08] desk model=codex-cli/gpt-6.1-sol applied=[subtitle,lede,whyItMatters,body] rejected=[]",
+    "[11:45:08] desk \"السوق السعودية ترتفع 0.6% بدعم الأسهم القيادية\": rewrote subtitle, lede, whyItMatters, body",
+    "[11:45:41] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=32058",
+    "[11:45:41] critic \"السوق السعودية ترتفع 0.6% بدعم الأسهم القيادية\": publish score=10 issues=0",
+    "[11:46:39] llm ok role=checker provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=58334",
+    "[11:46:39] precheck \"السوق السعودية ترتفع 0.6% بدعم الأسهم القيادية\": clean",
+    "[11:46:55] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=15454",
+    "[11:46:55] image: the picture should say: Saudi stocks rebound, but rising oil prices and regional tensions leave the recovery fragile.",
+    "[11:47:07] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=11372",
+    "[11:47:07] image: the source's photograph (Asharq Al-Awsat) shows Two men in traditional Saudi attire examine an electronic stock quotation board displaying Tadawul market data.; searching Saudi stock exchange investors | Saudi stock market display | Tadawul stock quotation board",
+    "[11:47:07] image: tier 2, like the sources' own photograph: Saudi stock exchange investors | Saudi stock market display | Tadawul stock quotation board",
+    "[11:47:07] commons \"Saudi stock exchange investors\": 0 usable of 1",
+    "[11:47:09] commons \"Saudi stock\": 10 usable of 20",
+    "[11:47:09] image: dropped \"Foreign Secretary Yvette Cooper visits Saudi Arabia - 54901195650.jpg\" — shows yvette, yvette, not the story's people",
+    "[11:47:09] image: dropped \"Foreign Secretary Yvette Cooper visits Saudi Arabia - 54900016437.jpg\" — shows yvette, yvette, not the story's people",
+    "[11:47:09] image: dropped \"AL RAHAILY POLYCLINIC - JEDDAH SAUDI ARABIA.jpg\" — names too little of stock, exchange, investors",
+    "[11:47:09] image: dropped \"Sadr lighting1.jpg\" — names too little of stock, exchange, investors",
+    "[11:47:09] image: dropped \"El Faleh (221650625).jpeg\" — names too little of stock, exchange, investors",
+    "[11:47:09] image: dropped \"02019 1173 Rzeszów Pride.jpg\" — names too little of stock, exchange, investors",
+    "[11:47:09] image: dropped \"20060805-Schottenring21-07.JPG\" — names too little of stock, exchange, investors",
+    "[11:47:09] image: dropped \"Herforder kleinbahn Museum - in the former Enger Bahnhof (32459253027)\" — names too little of stock, exchange, investors",
+    "[11:47:09] image: dropped \"20060805-Schottenring21-06.JPG\" — names too little of stock, exchange, investors",
+    "[11:47:09] pexels \"Saudi stock exchange investors\": 8 usable",
+    "[11:47:13] openverse \"Saudi stock exchange investors\": 0 usable of 0",
+    "[11:47:13] image: dropped \"Hand pointing at a financial graph displaying cryptocurrency data anal\" — names too little of stock, exchange, investors",
+    "[11:47:13] image: dropped \"A hand giving a thumbs up in front of a financial graph displaying mar\" — names too little of stock, exchange, investors",
+    "[11:47:13] image: dropped \"Market analysis with focus on cryptocurrency trends displayed. Ideal f\" — names too little of stock, exchange, investors",
+    "[11:47:14] commons \"Saudi stock market display\": 0 usable of 0",
+    "[11:47:14] commons \"Saudi stock\": 10 usable of 20",
+    "[11:47:14] pexels \"Saudi stock market display\": 8 usable",
+    "[11:47:28] openverse \"Saudi stock market display\": 1 usable of 1",
+    "[11:47:28] image: 14 likeness(es) set aside for the country's own photographs",
+    "[11:47:28] image: tier 3, the writer's own subjects: Riyadh skyline | King Abdullah Financial District",
+    "[11:47:29] commons \"Riyadh skyline 2026\": 1 usable of 3",
+    "[11:47:29] commons \"Riyadh skyline\": 7 usable of 12",
+    "[11:47:30] commons \"King Abdullah Financial District 2026\": 4 usable of 10",
+    "[11:47:30] commons \"King Abdullah Financial District\": 7 usable of 12",
+    "[11:47:30] image: dropped \"Foreign Secretary Yvette Cooper visits Saudi Arabia - 54901195650.jpg\" — shows yvette, yvette, not the story's people",
+    "[11:47:30] image: dropped \"Foreign Secretary Yvette Cooper visits Saudi Arabia - 54900016437.jpg\" — shows yvette, yvette, not the story's people",
+    "[11:47:30] image: dropped \"King Abdullah Financial District 184713.jpg\" — another frame of a series a published story runs",
+    "[11:47:30] image: dropped \"King Abdullah Financial District 170553.jpg\" — another frame of a series a published story runs",
+    "[11:47:30] image: dropped \"King Abdullah Financial District 170555.jpg\" — another frame of a series a published story runs",
+    "[11:47:30] image: dropped \"King Abdullah Financial District 184719.jpg\" — another frame of a series a published story runs",
+    "[11:47:30] image: dropped \"King Abdullah Financial District 201553.jpg\" — another frame of a series a published story runs",
+    "[11:47:36] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=4340",
+    "[11:47:36] image: vision rejected all candidates (Photo 1 is a prohibited skyline; photo 2 shows a metro station, not the Saudi stock market or trading activity.)",
+    "[11:47:36] image: tier 4, the story's point and its subject: Saudi Arabia trading floor | Saudi stock exchange traders | Tadawul stock exchange | Saudi Arabia stock traders | Tadawul trading hall | Saudi Exchange headquarters (home: Saudi Arabia, Saudi, Riyadh)",
+    "[11:47:36] commons \"Saudi Arabia trading floor\": 0 usable of 0",
+    "[11:47:37] commons \"Saudi Arabia\": 16 usable of 24",
+    "[11:47:37] image: dropped \"Uruq Bani Ma'arid Reserve, Saudi Arabia (2025).jpg\" — names too little of trading, floor",
+    "[11:47:37] image: dropped \"Supplicating Pilgrim at Masjid Al Haram. Mecca, Saudi Arabia.jpg\" — names too little of trading, floor",
+    "[11:47:37] image: dropped \"Saudi Hawks90.jpg\" — names too little of trading, floor",
+    "[11:47:37] image: dropped \"راع يقود جمله.jpg\" — names too little of trading, floor",
+    "[11:47:37] image: dropped \"Alexander Schallenberg in Saudi Arabia on 23 May 2024 - 8.jpg\" — names too little of trading, floor",
+    "[11:47:37] image: dropped \"Alexander Schallenberg in Saudi Arabia on 23 May 2024 - 10.jpg\" — names too little of trading, floor",
+    "[11:47:37] image: dropped \"Alexander Schallenberg in Saudi Arabia on 23 May 2024 - 22.jpg\" — names too little of trading, floor",
+    "[11:47:37] image: dropped \"Alexander Schallenberg in Saudi Arabia on 23 May 2024 - 7.jpg\" — names too little of trading, floor",
+    "[11:47:37] image: dropped \"Alexander Schallenberg in Saudi Arabia on 23 May 2024 - 14.jpg\" — names too little of trading, floor",
+    "[11:47:37] image: dropped \"Alexander Schallenberg in Saudi Arabia on 23 May 2024 - 12.jpg\" — names too little of trading, floor",
+    "[11:47:37] image: dropped \"Alexander Schallenberg in Saudi Arabia on 23 May 2024 - 23.jpg\" — names too little of trading, floor",
+    "[11:47:37] image: dropped \"Alexander Schallenberg in Saudi Arabia on 23 May 2024 - 1.jpg\" — names too little of trading, floor",
+    "[11:47:38] pexels \"Saudi Arabia trading floor\": 8 usable",
+    "[11:47:50] openverse \"Saudi Arabia trading floor\": 4 usable of 5",
+    "[11:47:50] image: dropped \"Pilgrims gathering at the courtyard of Al-Masjid an-Nabawi in Medina, \" — names too little of trading, floor",
+    "[11:47:50] image: dropped \"Sunlit view of architectural umbrellas in Medina with people walking, \" — names too little of trading, floor",
+    "[11:47:50] image: dropped \"A stunning aerial view of the Masjid al-Haram, capturing the bustling \" — names too little of trading, floor",
+    "[11:47:50] image: dropped \"Aerial view of people around Masjid al-Haram in Mecca, showing its arc\" — names too little of trading, floor",
+    "[11:47:50] image: dropped \"Captivating night view of worshippers circling the Kaaba at Masjid al-\" — names too little of trading, floor",
+    "[11:47:50] image: dropped \"Vibrant night view of the Kaaba in Mecca, capturing Islamic architectu\" — names too little of trading, floor",
+    "[11:47:50] image: dropped \"A breathtaking aerial view of Riyadh at night featuring the iconic Kin\" — names too little of trading, floor",
+    "[11:47:51] commons \"Saudi stock exchange traders\": 0 usable of 0",
+    "[11:47:51] commons \"Saudi stock\": 10 usable of 21",
+    "[11:47:51] image: dropped \"Foreign Secretary Yvette Cooper visits Saudi Arabia - 54901195650.jpg\" — shows yvette, yvette, not the story's people",
+    "[11:47:51] image: dropped \"Foreign Secretary Yvette Cooper visits Saudi Arabia - 54900016437.jpg\" — shows yvette, yvette, not the story's people",
+    "[11:47:51] image: dropped \"AL RAHAILY POLYCLINIC - JEDDAH SAUDI ARABIA.jpg\" — names too little of stock, exchange, traders",
+    "[11:47:51] image: dropped \"Sadr lighting1.jpg\" — names too little of stock, exchange, traders",
+    "[11:47:51] image: dropped \"El Faleh (221650625).jpeg\" — names too little of stock, exchange, traders",
+    "[11:47:51] image: dropped \"02019 1173 Rzeszów Pride.jpg\" — names too little of stock, exchange, traders",
+    "[11:47:51] image: dropped \"20060805-Schottenring21-07.JPG\" — names too little of stock, exchange, traders",
+    "[11:47:51] image: dropped \"Herforder kleinbahn Museum - in the former Enger Bahnhof (32459253027)\" — names too little of stock, exchange, traders",
+    "[11:47:51] image: dropped \"20060805-Schottenring21-06.JPG\" — names too little of stock, exchange, traders",
+    "[11:47:52] pexels \"Saudi stock exchange traders\": 8 usable",
+    "[11:47:57] openverse \"Saudi stock exchange traders\": 0 usable of 0",
+    "[11:47:57] image: dropped \"High-resolution candlestick chart showing forex trading trends and ana\" — names too little of stock, exchange, traders",
+    "[11:47:57] image: dropped \"Financial candlestick chart showing market trends and data visualizati\" — names too little of stock, exchange, traders",
+    "[11:47:57] image: dropped \"Detailed view of cryptocurrency trading charts on digital screens, sho\" — names too little of stock, exchange, traders",
+    "[11:47:57] commons \"Tadawul stock exchange\": 1 usable of 3",
+    "[11:47:58] pexels \"Tadawul stock exchange\": 8 usable",
+    "[11:48:01] openverse \"Tadawul stock exchange\": 0 usable of 0",
+    "[11:48:01] image: dropped \"Vibrant digital chart showcasing cryptocurrency market trends with can\" — names too little of stock, exchange",
+    "[11:48:01] image: thumbnail HTTP 403 for https://live.staticflickr.com/5606/14929086793_a872a56c71_n.jpg",
+    "[11:48:02] image: thumbnail HTTP 403 for https://live.staticflickr.com/91/253847572_2f75024695_n.jpg",
+    "[11:48:03] image: thumbnail HTTP 403 for https://live.staticflickr.com/3762/11381646825_a7c415534f_n.jpg",
+    "[11:48:03] image: thumbnail HTTP 403 for https://live.staticflickr.com/107/253857257_654f639e25_n.jpg",
+    "[11:48:15] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=9693",
+    "[11:48:23] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=8208",
+    "[11:48:23] image: second check (codex-cli/gpt-6.1-sol) GENERIC_OK \"A trader confidently viewing stock market charts on multiple\": An anonymous trader monitoring stock charts illustrates the story’s sector, with no indication of another country.",
+    "[11:48:23] published \"السوق السعودية ترتفع 0.6% بدعم الأسهم القيادية\" -> saudi-stocks-rise-led-by-heavyweights-3381fa"
+  ]
+}
