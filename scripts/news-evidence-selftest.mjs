@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import assert from "node:assert/strict";
 import { readArticleHtml, extractArticle } from "../pipeline/lib/extract.mjs";
-import { collectNewsEvidence, eventSourcesOf, needsRatingsReference, officialDocument } from "../pipeline/lib/news-evidence.mjs";
+import { collectNewsEvidence, eventSourcesOf, independentOutletCount, needsRatingsReference, officialDocument } from "../pipeline/lib/news-evidence.mjs";
 import { checkSourcesOf } from "../pipeline/lib/precheck.mjs";
 
 const primary = "https://www.whitehouse.gov/presidential-actions/2026/10/implementing-russia-sanctions/";
@@ -24,6 +24,44 @@ assert.equal(officialDocument(primary).nameEn, "White House");
 
 const item = (id, extra = {}) => ({ id, sourceId: `feed${id}`, sourceName: `مصدر ${id}`, sourceNameEn: `Source ${id}`, title: "Russia sanctions waiver", url: `https://example.com/report${id}`, lang: "en", reliability: 2, kind: "news", summary: "Feed summary", publishedAt: "2026-10-17T12:00:00Z", ...extra });
 const candidates = [1, 2, 3, 4, 5].map((n) => item(n));
+const distinctReportText = (url) => `${paragraph} Report-specific evidence marker ${url}.`;
+const syndicatedBody = Array.from({ length: 14 }, (_, n) =>
+  `In section ${n + 1}, officials described how the sanctions measure changes the treatment of Russian oil purchases while leaving existing restrictions intact. The report explains the distinction between the current waiver and older rules, then identifies which agencies must publish implementation guidance before the next review date.`,
+).join(" ");
+const independentBody = [
+  "The parliamentary committee opened a public hearing after regional refiners asked for clarification on the measure's licensing procedure.",
+  "Several shipping firms said they were reviewing contract language and insurance terms, while declining to estimate any change in cargo volumes.",
+  "The central bank's latest bulletin separately tracks energy imports and makes no forecast about this policy's effect on prices.",
+  "A trade association told members that compliance teams should continue checking existing restrictions until regulators issue detailed guidance.",
+  "The committee plans to publish written submissions before a second hearing, which is scheduled for the following month.",
+  "Analysts said the public documents did not specify how many firms would qualify or how applications would be assessed.",
+  "The ministry said its next update would explain reporting duties and the evidence companies must provide with an application.",
+  "The debate has focused on administrative timing, with lawmakers asking whether the review process can be completed before contracts renew.",
+].join(" ");
+assert.equal(independentOutletCount([
+  item(1, { text: syndicatedBody }),
+  item(2, { sourceNameEn: "Another Publisher", text: syndicatedBody }),
+]), 1, "identical stories under different mastheads are one reporting origin");
+assert.equal(independentOutletCount([
+  item(1, { text: syndicatedBody }),
+  item(2, { sourceNameEn: "Another Publisher", text: `A different headline and short introduction. ${syndicatedBody} An outlet-specific closing note.` }),
+]), 1, "a long near-copy does not count as independent corroboration");
+assert.equal(independentOutletCount([
+  item(1, { text: syndicatedBody }),
+  item(2, { sourceNameEn: "Another Publisher", text: independentBody }),
+]), 2, "materially different reporting on the same event remains independent");
+assert.equal(independentOutletCount([
+  item(1, { sourceNameEn: "Same Publisher", text: syndicatedBody }),
+  item(2, { sourceNameEn: "Same Publisher", text: independentBody }),
+]), 1, "separate feeds from one publisher do not become separate outlets");
+assert.equal(independentOutletCount([
+  item(1, { text: "The ministry announced a new export licensing rule today." }),
+  item(2, { sourceNameEn: "Another Publisher", text: "A committee will question officials about the export licensing rule next month." }),
+]), 2, "short, distinct reporting is not collapsed by the near-copy check");
+assert.equal(independentOutletCount([
+  item(1, { text: syndicatedBody }),
+  item(2, { sourceNameEn: "Another Publisher", kind: "official", reliability: 3, text: syndicatedBody }),
+]), 1, "official sources do not count as non-official reporting origins");
 const calls = [];
 const fake = async (url, options) => {
   calls.push(url);
@@ -31,7 +69,7 @@ const fake = async (url, options) => {
     if (options.allowUrl) assert.equal(options.allowUrl("https://evil.test/a/b"), false);
     return { ok: true, title: "Implementing Russia sanctions waiver", text: paragraph.repeat(4), lang: "en", publishedAt: "2026-10-16T18:00:00Z" };
   }
-  return extracted;
+  return { ...extracted, text: distinctReportText(url) };
 };
 const result = await collectNewsEvidence({ ids: [1, 2, 3, 4, 5] }, candidates, { extract: fake, now: () => "2026-10-17T20:00:00Z" });
 assert.equal(result.sources.length, 5);
@@ -42,6 +80,24 @@ assert.equal(result.sources[4].reliability, 3);
 assert.equal(result.sources[4].discoveredFrom, candidates[0].url);
 assert.equal(result.sources[4].publishedAt, "2026-10-16T18:00:00Z");
 assert.equal(checkSourcesOf(result.sources).at(-1).discoveredFrom, candidates[0].url);
+
+const sameReport = await collectNewsEvidence({ ids: [6, 7] }, [item(6), item(7, { sourceNameEn: "Another Publisher" })], {
+  extract: async () => ({ ok: true, title: "Russia sanctions waiver", text: syndicatedBody, links: [] }),
+});
+assert.equal(sameReport.sources.length, 1, "the writer receives one copy of a repeated report");
+assert.equal(sameReport.items.length, 2, "deduplication retains the selected-item provenance");
+const nearCopyReport = await collectNewsEvidence({ ids: [6, 7] }, [item(6), item(7, { sourceNameEn: "Another Publisher" })], {
+  extract: async (url) => ({ ok: true, title: "Russia sanctions waiver", text: url.endsWith("report6") ? syndicatedBody : `A distinct headline and introduction. ${syndicatedBody} A short outlet note.`, links: [] }),
+});
+assert.equal(nearCopyReport.sources.length, 1, "a syndicated near-copy is not sent to the writer twice");
+const summaryCopy = await collectNewsEvidence({ ids: [6, 7] }, [item(6), item(7, { paywalled: true, summary: syndicatedBody })], {
+  extract: async () => ({ ok: true, title: "Russia sanctions waiver", text: syndicatedBody, links: [] }),
+});
+assert.equal(summaryCopy.sources.length, 1, "an unfetched source with a repeated feed summary is also removed");
+const officialCopy = await collectNewsEvidence({ ids: [6, 7] }, [item(6), item(7, { kind: "official", reliability: 3 })], {
+  extract: async () => ({ ok: true, title: "Russia sanctions waiver", text: syndicatedBody, links: [] }),
+});
+assert.equal(officialCopy.sources.length, 2, "a primary document remains available even when its body matches reporting");
 
 const official = await collectNewsEvidence({ ids: [1] }, [item(1, { kind: "official", reliability: 3, url: primary })], { extract: fake });
 assert.equal(official.sources.length, 1);
@@ -93,10 +149,10 @@ const withReference = await collectNewsEvidence({ ids: [1, 2] }, ratings, { extr
   assert.equal(options.allowUrl("https://www.fidelity.com/login"), false);
   return { ok: true, title: "Bond Ratings", text: "Baa3 and above are investment-grade. B3 is in the non-investment-grade scale." };
 } });
-assert.equal(withReference.sources.length, 3);
+assert.equal(withReference.sources.length, 2);
 assert.equal(withReference.sources.at(-1).kind, "reference");
-assert.equal(eventSourcesOf(withReference.sources).length, 2, "definitions do not corroborate today's event");
+assert.equal(eventSourcesOf(withReference.sources).length, 1, "definitions do not corroborate today's event");
 assert.equal(eventSourcesOf([{ kind: "reference", text: "full definition body" }]).length, 0, "a reference alone cannot supply an event body");
-const referenceDown = await collectNewsEvidence({ ids: [1, 2] }, ratings, { extract: async (url) => url === referenceUrl ? { ok: false, reason: "offline" } : { ...extracted, links: [] } });
-assert.equal(referenceDown.sources.length, 2, "an unavailable glossary keeps the original reports");
+const referenceDown = await collectNewsEvidence({ ids: [1, 2] }, ratings, { extract: async (url) => url === referenceUrl ? { ok: false, reason: "offline" } : { ...extracted, text: distinctReportText(url), links: [] } });
+assert.equal(referenceDown.sources.length, 2, "an unavailable glossary keeps the distinct original reports");
 console.log("News evidence: body links, exact hosts, bounded enrichment, provenance, dates, fail-soft fetching, redirects/robots and definition/event separation pass.");

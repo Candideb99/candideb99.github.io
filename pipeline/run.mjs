@@ -23,9 +23,10 @@ import process from "node:process";
 import YAML from "yaml";
 import { fetchFeed } from "./lib/feeds.mjs";
 import { extractArticle } from "./lib/extract.mjs";
-import { collectNewsEvidence, eventSourcesOf } from "./lib/news-evidence.mjs";
+import { collectNewsEvidence, eventSourcesOf, independentOutletCount } from "./lib/news-evidence.mjs";
 import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectFeatureTopic, selectPaper, selectStories } from "./lib/select.mjs";
 import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, newsFloor, reviseArticle, writeAnalysis, writeArticle, writeExplainer, writeFeature, writePaperReading, writeWeekly } from "./lib/write.mjs";
+import { NEWS_FLOOR, NEWS_MIN_FACTS } from "./lib/editorial.mjs";
 import { critique, programmaticChecks } from "./lib/verify.mjs";
 import { copyEdit } from "./lib/copydesk.mjs";
 import { keptBlock, lessonsBlock, lessonsHash, loadLessons } from "./lib/lessons.mjs";
@@ -221,7 +222,7 @@ async function copyDeskPass(draft, { includeBody = true, kind = "news", sources 
   try {
     // The names the sources go by, so the checker can count a source named in sentence after sentence.
     const names = sources.flatMap((s) => [s.sourceName ?? s.name, s.sourceNameEn ?? s.nameEn]).filter(Boolean);
-    const desk = await copyEdit({ draft, includeBody, role: "desk", kind, sources: names, problems, log });
+    const desk = await copyEdit({ draft, includeBody, role: "desk", kind, sources: names, problems, minWords: kind === "news" ? NEWS_FLOOR : 0, log });
     if (desk.changed) log(`desk "${desk.draft.title}": rewrote ${desk.applied.join(", ")}${desk.rejected.length ? `; refused ${desk.rejected.map((r) => `${r.field} (${r.reason})`).join(", ")}` : ""}`);
     return desk;
   } catch (error) {
@@ -337,11 +338,11 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   // news outlet cannot be cross-checked and would be that outlet's report in Arabic, which is the one
   // thing this paper must never publish (copyright, and Google's "scaled, unoriginal content"). The items
   // take the short mark, so the story is tried again when a second outlet has picked it up.
-  const outlets = new Set(eventSources.map((s) => s.sourceNameEn ?? s.sourceName));
-  if (outlets.size < 2 && !eventSources.some((s) => Number(s.reliability) === 3 && s.kind === "official")) {
-    entry.outcome = "skipped: a single non-official source (needs a second outlet, or an official primary source)";
+  const outlets = independentOutletCount(eventSources);
+  if (outlets < 2 && !eventSources.some((s) => Number(s.reliability) === 3 && s.kind === "official")) {
+    entry.outcome = "skipped: a single independent non-official reporting origin (needs a second independently reported outlet, or an official primary source)";
     report.push(entry);
-    log(`skip "${story.headlineHint}": one non-official source only; items marked for one retry`);
+    log(`skip "${story.headlineHint}": fewer than two independent non-official reporting origins; items marked for one retry`);
     return { rejected: true, items };
   }
   // The same event twice: the editor is told not to repeat a recent story, yet "oil above 107" and
@@ -356,12 +357,27 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   }
 
   // Stage one: the desk notes, the checked facts of the one event; stage two: the story written from them.
+  // Keep early failures visible in private writing audits, including a provider stopping before its first draft.
+  await checkpoint("evidence");
   const control = !LAUNCHED && Boolean(LESSONS) && inControlGroup(story);
   const lessons = control ? "" : LESSONS;
   if (control) log(`control group: "${story.headlineHint}" is written without the lessons`);
   const notesResult = await deskNotes({ story, sources, log, lessons });
   const notes = notesResult?.notes ?? null;
-  if (notes) log(`desk notes: ${notes.facts.length} facts, ${notes.quotes.length} quotes (${notesResult.model})`);
+  if (notes) {
+    const jobs = Object.entries(notes.facts.reduce((n, f) => ({ ...n, [f.job || "?"]: (n[f.job || "?"] ?? 0) + 1 }), {})).map(([j, c]) => `${j} ${c}`).join(", ");
+    log(`desk notes: ${notes.facts.length} facts (${jobs}), ${notes.quotes.length} quotes (${notesResult.model})`);
+  }
+  await checkpoint("notes", { notes, notesModel: notesResult?.model });
+  // Too little checked material for a developed report (the owner, 2026-10-18: "too short"): the story is not written,
+  // and its items take the short mark, so the event is tried again when more outlets have reported it. Costs the one
+  // notes call, never a writer, a desk and a critic spent on a story that can only come back thin or padded.
+  if (notes && notes.facts.length < NEWS_MIN_FACTS) {
+    entry.outcome = `skipped: too little material for a developed report (${notes.facts.length} checked facts, ${NEWS_MIN_FACTS} needed)`;
+    report.push(entry);
+    log(`skip "${story.headlineHint}": ${notes.facts.length} checked facts, fewer than ${NEWS_MIN_FACTS}; items marked for one retry`);
+    return { rejected: true, items };
+  }
   let { draft, model: writerModel } = await writeArticle({ story, sources, notes, log, lessons });
   // The writer's own draft, before the desk and the critic touch it: what a private pair compares.
   const firstDraft = draft;
@@ -369,7 +385,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   const desk = await copyDeskPass(draft, { sources });
   draft = desk.draft;
   const deskModel = desk.model;
-  // A thin event runs as a brief: the floor follows the desk notes (newsFloor in write.mjs).
+  // A news story is a developed report or it is not published (NEWS_FLOOR in lib/editorial.mjs, the owner, 2026-10-18).
   const minWords = newsFloor(notes);
   let checks = programmaticChecks(draft, sources, { recentTitles, minWords });
   let review = await critique({ draft, sources, log });
@@ -409,6 +425,26 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
       entry.outcome = `rejected by critic after revision (${review.score}): ${review.summary}`;
       report.push(entry);
       return { rejected: true, items };
+    }
+    // Passed, yet still "revise": the critic's remaining findings are mended before the check, not printed (2026-10-18:
+    // Claude's second pass at 8 still named a forecast stated as certain and a sequence no source gives, and the blind
+    // fact-check passed both). The thresholds above are unchanged; a repair the checks refuse leaves the reviewed draft.
+    if (review.verdict === "revise" && review.issues.length) {
+      try {
+        const mend = await reviseArticle({ draft, sources, issues: review.issues, log, notes, lessons });
+        const mended = (await copyDeskPass(mend.draft, { includeBody: true, sources })).draft;
+        const mendedChecks = programmaticChecks(mended, sources, { recentTitles, minWords });
+        if (mendedChecks.ok) {
+          draft = mended;
+          checks = mendedChecks;
+          writerModel = `${writerModel} → ${mend.model}`;
+          entry.mendedAfterReview = review.issues.length;
+          log(`mended "${draft.title}": the second pass's ${review.issues.length} finding(s) sent back once more`);
+        } else log(`mend refused by the checks (${mendedChecks.issues.map((i) => i.slice(0, 60)).join(" | ")}); the reviewed draft goes on`);
+      } catch (error) {
+        if (error.meta?.quota) throw error;
+        log(`mend failed (${String(error.message).split("\n")[0].slice(0, 120)}); the reviewed draft goes on`);
+      }
     }
   }
 

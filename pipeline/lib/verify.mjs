@@ -1,5 +1,5 @@
 import { chat } from "./llm.mjs";
-import { EDITORIAL_CRAFT, EDITORIAL_READER_CHECK } from "./editorial.mjs";
+import { EDITORIAL_CRAFT, EDITORIAL_READER_CHECK, NEWS_DEPTH, NEWS_FLOOR } from "./editorial.mjs";
 import { arabicRatio, normalizeDigits, overlappingPhrases, phraseOverlap, suspiciousLatinWords, ungroundedNumbers, wordCount } from "./util.mjs";
 import { styleIssues } from "./style.mjs";
 
@@ -41,7 +41,7 @@ const FEATURE_SECTIONS = [
  * paper's own related stories; for a paper reading, the research paper's text as the single source).
  * Explainers carry only illustrative numbers, so their figures and visuals are not checked.
  */
-export function programmaticChecks(draft, sources, { recentTitles = [], newsTitles = [], explainer = false, analysis = false, paper = false, weekly = false, feature = false, minWords = 200 } = {}) {
+export function programmaticChecks(draft, sources, { recentTitles = [], newsTitles = [], explainer = false, analysis = false, paper = false, weekly = false, feature = false, minWords = NEWS_FLOOR } = {}) {
   const issues = [];
   const warnings = [];
   const grounded = !explainer;
@@ -108,7 +108,7 @@ export function programmaticChecks(draft, sources, { recentTitles = [], newsTitl
     const missing = PAPER_SECTIONS.filter((s) => !s.test.test(subheads)).map((s) => s.name);
     if (missing.length) issues.push(`بنية القراءة ناقصة؛ العناوين الفرعية المطلوبة (بصيغة "## ") غير موجودة: ${missing.join("، ")}. أضفها بهذا الترتيب: السؤال، البيانات والطريقة، النتائج، الحدود، ماذا يعني للقارئ العربي.`);
     if (/تثبت (?:الدراسة|الورقة)|يثبت البحث|تبرهن/.test(prose)) issues.push("القراءة تصف النتائج بأنها «تثبت»؛ الورقة تجد وتقدّر وتخلص، ولا تثبت. أعد الصياغة (تجد الورقة، يقدّر الباحثون).");
-  } else if (words < minWords) issues.push(`المقال قصير جداً (${words} كلمة). وسّع السياق من المصادر دون اختراع معلومات، بحيث لا يقل عن ${minWords < 120 ? 120 : minWords < 200 ? 160 : 260} كلمة.`);
+  } else if (words < minWords) issues.push(`المقال قصير جداً (${words} كلمة)؛ لا يُنشر خبر دون ${minWords} كلمة، والمستهدف 350-650. أضف من المصادر ما ينقصه: سبب الحدث، والأرقام في سياقها، وردود الفعل، والخلفية، وما يليه، دون اختراع معلومات.`);
 
   // Data visuals must be built only from figures in the sources; a visual with invented numbers is dropped, not the article.
   // A chart of official data (pipeline/lib/datacharts.mjs) was filled by code from the IMF or the World Bank, never
@@ -230,7 +230,9 @@ const CRITIC_RUBRIC = {
   news: {
     material: "",
     facts: `${FACTS_CHECK} The synthesis box's reported premises must be grounded; its bounded inference is evaluated separately under WHY IT MATTERS, not penalised merely for not being a source's own conclusion.`,
-    check: "Is this ONE story? An article stitching unrelated developments together is a roundup and must be rejected. The headline, lede and body report supplied facts. The synthesis box draws a bounded house inference from those facts: check its economic logic and limiting conditions. Identify invented premises or overstated certainty as concrete errors under the existing scoring rules, and request revision for an attributed recap or empty generality.",
+    check: `Is this ONE story? An article stitching unrelated developments together is a roundup and must be rejected. The headline, lede and body report supplied facts. The synthesis box draws a bounded house inference from those facts: check its economic logic and limiting conditions. Identify invented premises or overstated certainty as concrete errors under the existing scoring rules, and request revision for an attributed recap or empty generality.
+DEPTH. ${NEWS_DEPTH}
+Count the lede and body words; under ${NEWS_FLOOR} is a depth defect in itself. Then go through the six elements (the news, the driver, the numbers in perspective, the reaction, the background, what comes next). For each element a SOURCE supplies and the draft omits or reduces to a bare mention, write one issue in Arabic beginning «ينقص التقرير:», naming the element, the supplied fact and its SOURCE number. An element no source supplies is not a defect; never ask for invented material. A «لماذا يهمّ» box about something other than the event's economic consequence (a casualty count, a human-interest detail, a restated headline) is also a depth defect.`,
   },
   explainer: {
     material:
@@ -280,8 +282,8 @@ CHECK
 1. ${rubric.facts}
 2. Attribution: are claims attributed to the right source? Is anything presented as fact that the source presents as an estimate, forecast or opinion? The desks attribute a public fact (a decision, a published figure, a price) to the institution or news agency behind it: an Arab outlet (الشرق الأوسط، الجزيرة، العربية، سكاي نيوز عربية) cited for a public fact, or a sentence telling the reader that outlets reported different figures, is an attribution fault to fix (one figure, the latest or the institution's own).
 3. ${rubric.check}
-4. Arabic quality. A lesser-known person or company may carry its Latin spelling in parentheses ONCE for identification (e.g. «دون باير (Don Beyer)»); this is allowed by the house style and is not untranslated prose or a reason to revise. Untranslated English sentences or common words remain faults. Incomplete wording, unclear references, a string of disconnected dispatches, or a consequence that merely repeats the headline are concrete editorial defects under this point; quote the passage and explain the repair. Natural synonyms, ordinary short paragraphs and an honestly brief report are not defects. Translationese is a fault that requires "revise", never "publish": English syntax under Arabic words (an indefinite subject such as "إدارة أمريكية" where Arabic uses the definite or the name; "يعلن عن" + verbal noun; jargon rendered word for word such as "مستردات", "المعدل العقاري", "استئناف بيع", "للأضواء", "في زيارة دولة"; "من قبل"; "يقوم بـ"), wrong case endings on numbers and duals ("ألفين رحلة", "حل جزئي" as an object), a headline chaining two developments with "و", untranslated foreign words, sensational tone, repetition. Quote each offending phrase and give the idiomatic Arabic.
-5. Headline and construction: accurate, idiomatic and complete; state what a fear concerns rather than compressing it into «مخاوف الإمدادات». Does the report develop one point per paragraph, with related facts grouped, clear references and a supported economic consequence, or does it merely reproduce desk notes and separate incident dispatches? An honestly brief report is fine. Quote a concrete editorial defect and request revision; do not invent defects to fill a list. Headline: accurate, specific, not misleading. One event per story: a draft that reports two unrelated events (Britain's grid investment and France's wine harvest; copper prices and Uganda's first crude cargo; a Dubai silver product and an Abu Dhabi skills card) is a roundup, not a story — verdict "reject", with the issue «قصتان في مقال واحد» naming both.
+4. Arabic quality. A lesser-known person or company may carry its Latin spelling in parentheses ONCE for identification (e.g. «دون باير (Don Beyer)»); this is allowed by the house style and is not untranslated prose or a reason to revise. Untranslated English sentences or common words remain faults. Incomplete wording, unclear references, a string of disconnected dispatches, or a consequence that merely repeats the headline are concrete editorial defects under this point; quote the passage and explain the repair. Natural synonyms and ordinary short paragraphs are not defects. Translationese is a fault that requires "revise", never "publish": English syntax under Arabic words (an indefinite subject such as "إدارة أمريكية" where Arabic uses the definite or the name; "يعلن عن" + verbal noun; jargon rendered word for word such as "مستردات", "المعدل العقاري", "استئناف بيع", "للأضواء", "في زيارة دولة"; "من قبل"; "يقوم بـ"), wrong case endings on numbers and duals ("ألفين رحلة", "حل جزئي" as an object), a headline chaining two developments with "و", untranslated foreign words, sensational tone, repetition. Quote each offending phrase and give the idiomatic Arabic.
+5. Headline and construction: accurate, idiomatic and complete; state what a fear concerns rather than compressing it into «مخاوف الإمدادات». Does the report develop one point per paragraph, with related facts grouped, clear references and a supported economic consequence, or does it merely reproduce desk notes and separate incident dispatches? Quote a concrete editorial defect and request revision; do not invent defects to fill a list. Headline: accurate, specific, not misleading. One event per story: a draft that reports two unrelated events (Britain's grid investment and France's wine harvest; copper prices and Uganda's first crude cargo; a Dubai silver product and an Abu Dhabi skills card) is a roundup, not a story — verdict "reject", with the issue «قصتان في مقال واحد» naming both.
 6. Charts and tables: check every cell against its entity, period, unit and direction in the sources; a number that occurs somewhere in a source is not evidence for a different claim. Reject unsupported superlatives and claims of breakthroughs.
 
 ${news ? EDITORIAL_READER_CHECK : ""}
@@ -290,7 +292,7 @@ ${previousIssues?.length ? `\nA REVISION WAS MADE. These problems were reported 
 SCORING (apply exactly)
 ${news ? "For the synthesis box, distinguish reported premises from inference. Independently check why_basis against the numbered sources: these are the writer's assertions, not verified evidence. A bounded economic inference from supported premises is allowed even when no source states that conclusion. Invented premises, a faulty causal link or certainty beyond the evidence remain errors. An attributed recap or vague process attribution is a concrete editorial defect requiring revision." : ""}
 A real error is: a figure with a changed magnitude, direction, period, unit or actor; a reported claim, cause or consequence no source makes (subject to the synthesis distinction above); a wrong attribution; a quotation that is not verbatim from an Arabic source; a headline that says more than the sources. A faithful paraphrase, a synonym, a rounding the source's own headline makes (108 for 108.44), a large count rounded in thousands or millions with «نحو» (نحو 456 ألف for 455,758), a shorter attribution form, or the omission of a detail is NOT an error.
-Start from 10. Subtract 1 for each real error and 1 for each translationese fault (point 4). A draft with no real error scores 8 or more whatever its style points. Verdict: "publish" at 7 or more with no real error or unresolved concrete editorial defect; "revise" for one to three real errors, translationese, incomplete wording or disconnected construction; "reject" only for a fabricated key fact, a misrepresented story, or a draft that cannot be fixed from the sources.
+Start from 10. Subtract 1 for each real error and 1 for each translationese fault (point 4)${news ? ", and 1 for each depth defect (point 3, DEPTH)" : ""}. A draft with no real error scores 8 or more whatever its style points${news ? ", unless it has depth defects: a news draft with three or more scores at most 6" : ""}. Verdict: "publish" at 7 or more with no real error or unresolved concrete editorial defect${news ? " and no depth defect" : ""}; "revise" for one to three real errors, translationese, incomplete wording${news ? ", a depth defect" : ""} or disconnected construction; "reject" only for a fabricated key fact, a misrepresented story, or a draft that cannot be fixed from the sources.
 List at most six issues, the real errors first, each quoting the offending text and naming the source that contradicts it; include demonstrated Arabic or construction defects after the factual errors, without padding the list with stylistic preferences.
 
 Return JSON:
@@ -314,6 +316,7 @@ Return JSON:
     validate: (d) => {
       const inner = unwrap(d);
       if (!inner) throw new Error("verdict missing");
+      criticScore(inner.score);
       const verdict = String(inner.verdict ?? inner.decision ?? inner.result ?? "").toLowerCase();
       if (!["publish", "revise", "reject"].includes(verdict) && !Number.isFinite(Number(inner.score))) throw new Error("verdict missing");
       if (news) validateReaderCheck(inner.reader_check);
@@ -332,10 +335,16 @@ function validateReaderCheck(check) {
   }
 }
 
+function criticScore(value) {
+  const score = Number(value);
+  if (!["number", "string"].includes(typeof value) || String(value).trim() === "" || !Number.isFinite(score) || score < 0 || score > 10) throw new Error("critic score must be a number from 0 to 10");
+  return score;
+}
+
 /** Keep the critic's reader findings actionable even if its overall verdict overlooks them. */
 export function normalizeCritique(data, { news = false, model } = {}) {
   if (news) validateReaderCheck(data.reader_check);
-  const score = Number(data.score) || 0;
+  const score = criticScore(data.score);
   let verdict = String(data.verdict ?? data.decision ?? data.result ?? "").toLowerCase();
   if (!["publish", "revise", "reject"].includes(verdict)) verdict = score >= 7 ? "publish" : score >= 4 ? "revise" : "reject";
   const readerIssues = news ? Object.entries(data.reader_check).filter(([area, observation]) => ["scope", "context", "flow", "precision"].includes(area) && observation.status === "revise").map(([, observation]) => `${observation.evidence} — ${observation.repair}`) : [];

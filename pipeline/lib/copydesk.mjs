@@ -16,7 +16,7 @@
  */
 import { chat } from "./llm.mjs";
 import { EDITORIAL_CRAFT } from "./editorial.mjs";
-import { arabicRatio, normalizeDigits } from "./util.mjs";
+import { arabicRatio, normalizeDigits, wordCount } from "./util.mjs";
 import { ARAB_OUTLET_NAMES, BANNED, WRITER_ONLY, contentWords, styleIssues } from "./style.mjs";
 
 export const DESK_SYSTEM = `You are the Arabic copy desk (محرر الصياغة) of خازندار, an Arabic economics news website (online only, never a newspaper) for educated readers across the Arab world. A correspondent who thinks in English wrote the draft; you make it read as if a native Arabic news editor wrote it, in clear Modern Standard Arabic (فصحى معاصرة) in the register of الشرق الأوسط and الاقتصادية. Translated words are half of what gives a draft away; the other half is structure, repetition and rhythm.
@@ -282,7 +282,7 @@ function repeatedShare(draft) {
  * must still be hedged; a field that broke that goes back to its original, until the story holds.
  * Returns { accepted: {field: text}, rejected: [{field, reason, proposal}] }.
  */
-export function judgeRewrite(draft, proposal, fields, { year = new Date().getUTCFullYear(), minFloor = 0.55 } = {}) {
+export function judgeRewrite(draft, proposal, fields, { year = new Date().getUTCFullYear(), minFloor = 0.55, minWords = 0 } = {}) {
   const before = storyText(draft);
   // The current year is the one figure a rewrite may drop (the desks print the year only when it is not this
   // one); it is exempt from the loss check below, never from the invention check.
@@ -311,6 +311,19 @@ export function judgeRewrite(draft, proposal, fields, { year = new Date().getUTC
       continue;
     }
     accepted[f] = after;
+  }
+  // A news story the desk would cut under the publication floor keeps its own lede and body (2026-10-18: the floor
+  // is a developed report's, and the desk's job is the Arabic, not the length).
+  if (minWords && (accepted.body != null || accepted.lede != null)) {
+    const words = (d) => wordCount(`${d.lede ?? ""}
+${d.body ?? ""}`);
+    const now = words({ ...draft, ...accepted });
+    if (now < minWords && now < words(draft)) {
+      for (const f of ["body", "lede"].filter((x) => accepted[x] != null)) {
+        rejected.push({ field: f, reason: `length: the story would fall to ${now} words, under ${minWords}`, proposal: f === "body" ? undefined : accepted[f] });
+        delete accepted[f];
+      }
+    }
   }
   // Nothing may leave the story, and no hedged claim may come back as an assertion.
   for (let round = 0; round < fields.length; round++) {
@@ -387,7 +400,7 @@ export function fixNames(text) {
  * `problems`: faults found by checks the desk's own checker does not run (the newsroom's last pass hands over
  * what still blocks a finished story: a passage copied from an Arabic source, an English word left behind).
  */
-export async function copyEdit({ draft, includeBody = false, role = "desk", kind = "news", sources = [], problems: handed = [], publishedAt = null, minFloor = 0.55, log = () => {} }) {
+export async function copyEdit({ draft, includeBody = false, role = "desk", kind = "news", sources = [], problems: handed = [], publishedAt = null, minFloor = 0.55, minWords = 0, log = () => {} }) {
   const year = new Date(publishedAt ?? Date.now()).getUTCFullYear();
   const fields = ["title", "subtitle", "lede", ...(String(draft.whyItMatters ?? "").trim() ? ["whyItMatters"] : []), ...(includeBody ? ["body"] : [])];
   const mechanical = [];
@@ -433,7 +446,7 @@ If nothing needs changing, return the fields unchanged and an empty "changes" li
     validate: validateDeskAnswer(fields),
   });
 
-  let { accepted, rejected } = judgeRewrite(draft, data, fields, { year, minFloor });
+  let { accepted, rejected } = judgeRewrite(draft, data, fields, { year, minFloor, minWords });
 
   // A body the guard refused gets one second try, with the desk told exactly what it broke. The model is
   // stochastic and the guard is exact: on 2026-09-22 four bodies in ten were refused for a figure moved or
@@ -464,7 +477,7 @@ ${data.body}`,
         log,
         validate: validateDeskAnswer(["body"]),
       });
-      const second = judgeRewrite(draft, { ...accepted, body: again.body }, [...Object.keys(accepted), "body"], { year, minFloor });
+      const second = judgeRewrite(draft, { ...accepted, body: again.body }, [...Object.keys(accepted), "body"], { year, minFloor, minWords });
       if (second.accepted.body) {
         accepted = second.accepted;
         rejected = [...rejected.filter((r) => r !== bodyRefusal && !(r.field === "body")), ...second.rejected];

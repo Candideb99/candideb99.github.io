@@ -1,6 +1,6 @@
 import { groundedRegions } from "./regions.mjs";
 import { chat } from "./llm.mjs";
-import { EDITORIAL_CRAFT } from "./editorial.mjs";
+import { EDITORIAL_CRAFT, NEWS_DEPTH, NEWS_FLOOR } from "./editorial.mjs";
 import { boxFacts, FIGURES_RULE, isFigure } from "./keyfacts.mjs";
 import { cleanTags, storyText as taggedText } from "./tags.mjs";
 import { readFileSync } from "node:fs";
@@ -63,9 +63,9 @@ const SCHEMA_TEXT = `{
   "subtitle": "Arabic dek: one statement (max 160 chars) adding an important detail or qualification of the headline's event. It must be understandable with the headline and opening, with no apparent contradiction. No bare restatement, second unrelated development or how/why/what list.",
   "slug": "english-kebab-case-slug-4-to-7-words",
   "lede": "Opening paragraph: 2-3 sentences with the core news, the who/what/when, and the main number",
-  "body": "The rest of the article in Markdown, with blank lines between coherent paragraphs. Select and organise the facts that explain the event; no fixed paragraph count or one-provision-per-paragraph template. Usually 300-550 words total when the material carries that much; a small event can be a brief of 120-250 words. Never pad. May include one or two '## ' subheads if the piece is long.",
+  "body": "The rest of the article in Markdown, with blank lines between coherent paragraphs, developed as NEWS DEPTH requires: the driver, the numbers in perspective, the reaction, the background and what comes next, each from the sources. No fixed paragraph count or one-provision-per-paragraph template. Lede plus body 350-650 words; under ${NEWS_FLOOR} the story is refused. Never pad or invent. May include one or two '## ' subheads if the piece is long.",
   "key_facts": [{"label": "short Arabic label (2-5 words) naming what is measured, where and when, e.g. الوظائف المباشرة في المصانع الثلاثة; no source in brackets", "value": "a FIGURE exactly as sourced, with its unit, e.g. 4,000 or 1.7 مليار جنيه or 2.25%; never a name, a place, a date or a weekday"}],
-  "why_it_matters": "Two or three fluent Arabic sentences in Khazendar's own voice: the wider economic significance, decisive constraint or trade-off inferred from supplied facts. No attributed analyst recap, vague reference, generic moral or invented outcome. Preserve the inference's conditions. Follow WHY IT MATTERS in the house brief.",
+  "why_it_matters": "One or two fluent Arabic sentences in Khazendar's own voice: the wider economic significance, decisive constraint or trade-off inferred from supplied facts. No attributed analyst recap, vague reference, generic moral or invented outcome. Preserve the inference's conditions. Follow WHY IT MATTERS in the house brief; do not repeat the body's completed conclusion just to fill a second sentence.",
   "why_basis": [{"fact": "one concise reported premise underpinning the synthesis, not a new inference", "source": 1}],
   "tags": ["3-5 Arabic tags: institutions, countries, sectors, indicators"],
   "regions": ["1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي"],
@@ -112,15 +112,12 @@ function coerceBody(body) {
 }
 
 /**
- * The shortest news story accepted: 120 words, or 100 when the desk notes hold fewer than ten facts. It is a
- * safety net against a broken answer, not a target (the brief asks for 300-550 words when the material carries
- * them). The desks run a small event as a brief (الشرق الأوسط's US crude-stocks story ran about 200 words, the
- * wires' briefs a hundred), and a writer pushed past what the material holds pads or fails. On 2026-09-24,
- * against the old floor of 200, a Gulf story from two short items failed seven attempts at 172 to 199 words;
- * against 140 it came back three times at 119 to 129; and in the first cloud run on Claude alone an Abu Dhabi
- * regulation with fourteen small facts came back three times at 140 to 152 words and was lost.
+ * The shortest news story accepted (NEWS_FLOOR in editorial.mjs, lede plus body). From 2026-09-24 it was 120 words,
+ * or 100 when the desk notes held fewer than ten facts, so that a small event could run as a brief; the owner, on
+ * 2026-10-18, found the briefs too short and too thin to publish. A thin event is now not written at all
+ * (NEWS_MIN_FACTS in run.mjs), so the floor no longer bends to the notes. `notes` stays in the signature for callers.
  */
-export const newsFloor = (notes) => (notes && Array.isArray(notes.facts) && notes.facts.length < 10 ? 100 : 120);
+export const newsFloor = (_notes) => NEWS_FLOOR;
 
 /** Structural validation of a writer's answer. `minWords`/`maxWords` bound the lede plus body (news defaults; analyses are longer). */
 export function validateDraft(draft, { minWords = 200, maxWords = 1100 } = {}) {
@@ -157,15 +154,15 @@ export function ensureTags(d, fallback) {
 }
 
 /** Writes an original Arabic article from a story cluster. */
-const NOTES_SYSTEM = `You are the chief sub-editor of خازندار, an Arabic economics publication. Before a story is written you select its desk notes: the facts of ONE event, each as a single Arabic sentence carrying its figure, unit, date and actor exactly as its source states them, tied to that source's number. Select a reporting brief, not an inventory of a document's provisions: the decision and its scope, the sourced purpose and practical stakes, a meaningful prior comparison, and a relevant attributed reaction or estimate when supplied. Implementation details enter only when they help explain what changes. A primary legal document settles the wording of a provision; it does not make every administrative paragraph newsworthy. Read all supplied reports before choosing. You never make your own interpretation, inference or addition from memory; an analyst's interpretation or official's stated purpose in the source may be recorded with its attribution and uncertainty intact. Leave out anything that belongs to a different event. You answer with one JSON object only.`;
+const NOTES_SYSTEM = `You are the chief sub-editor of خازندار, an Arabic economics publication. Before a story is written you select its desk notes: the facts of ONE event, each as a single Arabic sentence carrying its figure, unit, date and actor exactly as its source states them, tied to that source's number. Select the material for a developed report, not an inventory of a document's provisions: the decision and its scope, its driver, the sourced purpose and practical stakes, meaningful comparisons, the attributed reactions and estimates, the background and what comes next. Implementation details enter only when they help explain what changes. A primary legal document settles the wording of a provision; it does not make every administrative paragraph newsworthy. Read all supplied reports before choosing. You never make your own interpretation, inference or addition from memory; an analyst's interpretation or official's stated purpose in the source may be recorded with its attribution and uncertainty intact. Leave out anything that belongs to a different event. You answer with one JSON object only.`;
 
 /**
- * Stage one of a news story: the desk notes, 8-20 atomic facts of the one event, each tied to its
+ * Stage one of a news story: the desk notes, 15-30 atomic facts of the one event, each tied to its
  * source and checked against it (a fact whose figures are not in its source is dropped). The writer
  * then writes from these notes, so nothing enters the story that the sources do not carry.
  * Returns null when no usable notes can be made, and the writer works from the sources alone.
  */
-export async function deskNotes({ story, sources, log, lessons = "", today = new Date() }) {
+export async function deskNotes({ story, sources, log, lessons = "", today = new Date(), chatWith = chat }) {
   const texts = sources.map((s) => s.text || s.summary || "");
   const user = `STORY BRIEF FROM THE EDITOR
 Working headline: ${story.headlineHint}
@@ -177,20 +174,22 @@ ${sources.map(sourceBlock).join("\n\n")}
 
 For an expert whose view you select, retain a concise source-backed role and institution in the notes, so the writer can identify the person. Preserve the reporting origin of an outlet's own comments (for example, «في تصريحات أوردتها «…»» when supported); do not imply our own interview or an exclusive. Several pickups of one statement or agency are not independent confirmation. An institution's promised benefit is its attributed aim, not an achieved outcome. Page publication timestamps are not event dates: use the reported event or signing date, with its time zone, rather than deriving a weekday from the page timestamp.
 
-For substantial material, select the distinct facts needed for a developed report, normally 14-20 rather than a digest of the first source. Preserve the named expert's concise role, the central term's sourced definition, the scale/category that makes a rating meaningful, a relevant comparison, the reported financing mechanism and material risks or limits. Use at most three supplied REFERENCE definitions as separately numbered facts, never as news of a second event. A rating reference should supply meaning (creditworthiness, the investment/speculative risk distinction and its financing implication), not just a list of code thresholds. Leave out ancillary jargon that no supplied source explains, such as credit-default swaps, if the main event can be explained without it. State the role independently and concisely rather than pasting a long job title. Do not drop useful explanatory material merely to shorten the list; remove duplicate facts and ceremonial promises first. Thin evidence remains thin.
+${NEWS_DEPTH}
+
+The writer may state ONLY what these notes hold, so the notes decide how deep the story can go. Read every source to its end: the driver, the reactions, the background and the next steps usually sit in the lower half of a report. Select the distinct facts a developed report needs, normally 20-30, never a digest of the first source's opening. Preserve the named expert's concise role, the central term's sourced definition, the scale/category that makes a rating meaningful, a relevant comparison, the reported financing mechanism and material risks or limits. Use at most three supplied REFERENCE definitions as separately numbered facts, never as news of a second event. A rating reference should supply meaning (creditworthiness, the investment/speculative risk distinction and its financing implication), not just a list of code thresholds. Leave out ancillary jargon that no supplied source explains, such as credit-default swaps, if the main event can be explained without it. State the role independently and concisely rather than pasting a long job title. Do not drop useful explanatory material merely to shorten the list; remove duplicate facts and ceremonial promises first. Never invent: when the sources are thin, return only what they hold (a thin event is not written).
 
 ${lessons}${lessons ? "SCOPE OF THE LEARNED RULES: preserve their safeguards for reported facts and attribution. A prohibition on adding a source's conclusion does not prohibit the house synthesis permitted by WHY IT MATTERS. Its premises remain sourced, its inference remains bounded and conditional, and no analyst opinion becomes an established fact.\n\n" : ""}TASK
-Extract the desk notes for this ONE event (the working headline). 8 to 20 facts, each one Arabic sentence of at most 30 words in your own words (never a sentence copied from an Arabic source), with the figure, its unit, the date and the actor exactly as the source gives them, and the number of the source it comes from; a figure appears only with its own period and unit. Attribution words belong in the fact («قال المصرف في بيان إن…», «بحسب بيانات المكتب…»): a public fact (a decision, a published figure, a price) names the institution, company or news agency behind it, never the outlet that relayed it; an outlet is named only for what it alone reports (its own sources, interview or exclusive). When two sources give different figures for the same measure, keep ONE fact: the latest-timed, or the one the institution itself published, with its time if the source gives it; never both. Leave out everything that is a different event, a background fact from memory, or an interpretation.
+Extract the desk notes for this ONE event (the working headline). 15 to 30 facts, each one Arabic sentence of at most 30 words in your own words (never a sentence copied from an Arabic source), with the figure, its unit, the date and the actor exactly as the source gives them, and the number of the source it comes from; a figure appears only with its own period and unit. Attribution words belong in the fact («قال المصرف في بيان إن…», «بحسب بيانات المكتب…»): a public fact (a decision, a published figure, a price) names the institution, company or news agency behind it, never the outlet that relayed it; an outlet is named only for what it alone reports (its own sources, interview or exclusive). When two sources give different figures for the same measure, keep ONE fact: the latest-timed, or the one the institution itself published, with its time if the source gives it; never both. Leave out everything that is a different event, a background fact from memory, or an interpretation.
 Within those notes, preserve the supplied facts that explain this event: its purpose, relevant previous position, meaningful comparison, affected group and decisive exceptions or conditions. Select the useful context instead of filling the notes with procedural details. In reader_context, identify the ONE source-backed fact that best answers why the event matters or what the reader must understand to interpret it: a law's purpose, the meaningful prior position, an affected group or a mechanism. Prefer this to a signing date or a list of delegated officials. Write it independently in Arabic with its source number, under the same accuracy and originality rules. Return null only if the sources contain no useful context; never invent it. Distinguish new from existing measures, a fixed rate from a ceiling, the reference date of a deadline and a sample from a whole population. For a provision described differently by reports, use its supplied primary document when available. Then list up to three verbatim quotations only if the source is Arabic (Arabic text copied exactly); for other languages, no quotations.
-In identifications, reserve up to three source-backed sentences identifying the unfamiliar experts whose views you selected (name, concise role and institution). Use [] when no such expert is selected or the source supplies no role. These sentences count within the twenty-fact budget, not in addition to it; write them independently, not as a copied string of job-title words.
-Return: {"event":"<one Arabic sentence naming the one event>","reader_context":{"fact":"<one contextual fact, or null instead of this object if none is supplied>","source":<source number>},"identifications":[{"fact":"<expert name, concise role and institution>","source":<source number>}],"facts":[{"fact":"<sentence>","source":<source number>}],"quotes":[{"text":"<verbatim Arabic>","source":<source number>}]}`;
+In identifications, reserve up to three source-backed sentences identifying unfamiliar experts whose views you selected (name, concise role and institution), or named programmes/institutions essential to an important figure (name and the brief function supplied by the source). A transliterated programme name alone does not explain a major spending item. Use [] when no such identification is needed or supplied. These sentences count within the thirty-fact budget, not in addition to it; write them independently, not as a copied string of job-title words. Do not invent a role or definition from memory.
+Return: {"event":"<one Arabic sentence naming the one event>","reader_context":{"fact":"<one contextual fact, or null instead of this object if none is supplied>","source":<source number>},"identifications":[{"fact":"<name and concise sourced role or function>","source":<source number>}],"facts":[{"fact":"<sentence>","source":<source number>,"job":"news|driver|numbers|reaction|background|next"}],"quotes":[{"text":"<verbatim Arabic>","source":<source number>}]}`;
   try {
-    const { data, model } = await chat({
+    const { data, model } = await chatWith({
       role: "desk",
       system: NOTES_SYSTEM,
       user,
       temperature: 0.2,
-      maxTokens: 4000,
+      maxTokens: 8000,
       log,
       validate: (d) => {
         if (d && typeof d === "object") {
@@ -212,7 +211,7 @@ Return: {"event":"<one Arabic sentence naming the one event>","reader_context":{
         if ((d.identifications ?? []).some((f) => !kept.includes(f))) throw new Error("an expert identification is not grounded or copies a long source phrase; rewrite it concisely and faithfully");
         if (kept.length < 5) throw new Error(`${d.facts.length - kept.length} of ${d.facts.length} facts are not in their sources`);
         if (kept.length < d.facts.length) log?.(`desk notes: ${d.facts.length - kept.length} of ${d.facts.length} facts dropped (not in their source or copied from it)`);
-        d.facts = kept.slice(0, 20);
+        d.facts = kept.slice(0, 30);
         d.quotes = (Array.isArray(d.quotes) ? d.quotes : []).filter((q) => {
           const n = Number(q?.source);
           const text = String(q?.text ?? "").trim();
@@ -222,6 +221,7 @@ Return: {"event":"<one Arabic sentence naming the one event>","reader_context":{
     });
     return { notes: { event: String(data.event ?? "").trim(), facts: data.facts, quotes: data.quotes }, model };
   } catch (error) {
+    if (error.meta?.quota) throw error;
     log?.(`desk notes failed: ${String(error.message).split("\n")[0]}; the writer works from the sources alone`);
     return null;
   }
@@ -251,7 +251,7 @@ function writerSourceBlock(notes) {
 
 function notesBlock(notes) {
   if (!notes) return "";
-  const facts = notes.facts.map((f, i) => `${i + 1}. ${f.fact} [SOURCE ${f.source}]`).join("\n");
+  const facts = notes.facts.map((f, i) => `${i + 1}. ${f.fact} [SOURCE ${f.source}${f.job ? `; ${f.job}` : ""}]`).join("\n");
   const quotes = notes.quotes?.length ? `\nVERBATIM ARABIC QUOTATIONS (the only text that may stand inside «»):\n${notes.quotes.map((q) => `- «${q.text}» [SOURCE ${q.source}]`).join("\n")}` : "";
   return `DESK NOTES: the facts of this one event, each checked against its source. Every reported figure, date, name and attribution must appear in these notes; do not add facts from memory. The synthesis box may draw a limited inference from these facts under WHY IT MATTERS, without inventing an additional fact. The source material below is for accurate phrasing and attribution, not additional reporting beyond the notes.
 Event: ${notes.event}
@@ -267,9 +267,8 @@ The notes limit which facts you may state; they are not a checklist of facts you
 export function newsDepthBrief(sources) {
   const reports = sources.filter((s) => s.kind !== "reference" && s.text);
   const substantial = reports.length >= 2 && reports.reduce((n, s) => n + s.text.length, 0) >= 7000;
-  return substantial
-    ? "DEVELOPED REPORT: aim for 450-700 words (lede plus body) when distinct evidence supports it. Explain the central terms, meaningful comparisons, reported mechanism and limits, and identify experts. Do not compress rich reporting into a 160-word digest; do not pad or invent facts to reach a number. A shorter complete account is preferable to filler."
-    : "Use the depth the distinct evidence supports. A thin event remains a brief; do not invent background to lengthen it.";
+  return `${NEWS_DEPTH}
+${substantial ? "The evidence here is substantial: aim for 450-650 words. " : ""}Explain the central terms, meaningful comparisons, reported mechanism and limits, and identify experts. Before writing, check the notes against the six elements and use every one the evidence supplies. Never pad, and never invent a fact to reach a number.`;
 }
 
 /** Premises, not private reasoning: a small source-indexed audit trail for the synthesis. */
@@ -327,7 +326,7 @@ ${notesBlock(notes)}SOURCE MATERIAL
 ${sources.map(writerSourceBlock(notes)).join("\n\n")}
 
 ${lessons}${lessons && !wordLimits && !kind ? "SCOPE OF THE LEARNED RULES: they protect reported facts and attribution; WHY IT MATTERS separately permits a bounded house inference from sourced premises. Never convert an analyst's opinion into an established fact.\n\n" : ""}${wordLimits || kind ? "" : newsDepthBrief(sources)}
-An editor found the following problems. Fix every one of them strictly using the source material. Remove any claim or number that the sources do not support. Preserve useful explanations, identification and developed comparisons; do not shrink the report into a digest during revision. Keep everything else intact, and keep the article at least ${wordLimits?.target ?? (newsFloor(notes) < 120 ? 120 : 160)} words (lede + body) when the sources allow it; never pad with unsupported material.
+An editor found the following problems. Fix every one of them strictly using the source material. Remove any claim or number that the sources do not support. Preserve useful explanations, identification and developed comparisons; do not shrink the report into a digest during revision. Keep everything else intact, and keep the article at least ${wordLimits?.target ?? 350} words (lede + body)${wordLimits || kind ? " when the sources allow it" : `; a news story under ${NEWS_FLOOR} words is refused. When a problem says the report lacks an element («ينقص التقرير»), add it from the named source`}; never pad with unsupported material.
 PROBLEMS
 ${issues.map((i, n) => `${n + 1}. ${i}`).join("\n")}
 

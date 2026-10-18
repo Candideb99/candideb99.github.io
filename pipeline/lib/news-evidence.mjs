@@ -24,6 +24,73 @@ const RATINGS_REFERENCE = "https://www.fidelity.com/learning-center/investment-p
 /** Definitions explain an event; they cannot corroborate that it happened. */
 export const eventSourcesOf = (sources) => sources.filter((s) => s.kind !== "reference");
 
+const REPORT_SHINGLE_SIZE = 5;
+const REPORT_DUPLICATE_CHARS = 750;
+const REPORT_DUPLICATE_CONTAINMENT = 0.88;
+
+function reportShingles(text) {
+  const words = String(text ?? "").normalize("NFKC").toLowerCase().match(/[\p{L}\p{M}\p{N}]+/gu) ?? [];
+  const shingles = new Set();
+  for (let i = 0; i <= words.length - REPORT_SHINGLE_SIZE; i += 1) {
+    shingles.add(words.slice(i, i + REPORT_SHINGLE_SIZE).join(" "));
+  }
+  return { normalized: words.join(" "), shingles };
+}
+
+function sameReportBody(left, right) {
+  const a = reportShingles(left);
+  const b = reportShingles(right);
+  if (!a.normalized || !b.normalized) return false;
+  if (a.normalized === b.normalized) return true;
+  if (String(left).length < REPORT_DUPLICATE_CHARS || String(right).length < REPORT_DUPLICATE_CHARS) return false;
+
+  const smaller = a.shingles.size <= b.shingles.size ? a.shingles : b.shingles;
+  const larger = smaller === a.shingles ? b.shingles : a.shingles;
+  if (smaller.size < 24) return false;
+  let shared = 0;
+  for (const shingle of smaller) if (larger.has(shingle)) shared += 1;
+  return shared / smaller.size >= REPORT_DUPLICATE_CONTAINMENT;
+}
+
+function removeRepeatedReports(sources, log) {
+  const retained = [];
+  for (const source of sources) {
+    const evidenceText = source.text || source.summary || "";
+    if (source.kind === "official" || source.kind === "reference" || !evidenceText) {
+      retained.push(source);
+      continue;
+    }
+    const duplicate = retained.find((candidate) => candidate.kind !== "official" && candidate.kind !== "reference"
+      && (candidate.text || candidate.summary) && sameReportBody(candidate.text || candidate.summary, evidenceText));
+    if (duplicate) {
+      log(`evidence duplicate report skipped: ${source.sourceNameEn ?? source.sourceName ?? source.sourceId} repeats ${duplicate.sourceNameEn ?? duplicate.sourceName ?? duplicate.sourceId}`);
+      continue;
+    }
+    retained.push(source);
+  }
+  return retained;
+}
+
+/**
+ * Count distinct non-official reporting origins. Repeated feeds from one publisher and near-copy
+ * syndicated bodies do not add a second independent confirmation.
+ */
+export function independentOutletCount(sources) {
+  const publishers = new Set();
+  const reports = [];
+  let independent = 0;
+  for (const source of sources) {
+    if (source.kind === "official" || source.kind === "reference") continue;
+    const publisher = String(source.sourceNameEn ?? source.sourceName ?? "").normalize("NFKC").trim().toLowerCase();
+    const newPublisher = !publishers.has(publisher);
+    publishers.add(publisher);
+    reports.push(source.text ?? "");
+    const syndicatedCopy = reports.slice(0, -1).some((report) => sameReportBody(report, source.text));
+    if (newPublisher && !syndicatedCopy) independent += 1;
+  }
+  return independent;
+}
+
 export function needsRatingsReference(story, sources) {
   const brief = `${story.headlineHint ?? ""} ${sources.map((s) => s.title).join(" ")}`;
   return /rating|تصنيف/i.test(brief) && /moody|موديز|fitch|فيتش|ستاندرد|standard.*poor/i.test(brief);
@@ -103,5 +170,6 @@ export async function collectNewsEvidence(story, candidates, { extract = extract
       } else log(`evidence ratings reference skipped: ${fetched.reason || "definition/scale missing"}`);
     } catch (error) { log(`evidence ratings reference unavailable: ${error.message}`); }
   }
-  return { items, sources, evidenceChars: sources.reduce((n, s) => n + (s.text || s.summary || "").length, 0) };
+  const distinctSources = removeRepeatedReports(sources, log);
+  return { items, sources: distinctSources, evidenceChars: distinctSources.reduce((n, s) => n + (s.text || s.summary || "").length, 0) };
 }

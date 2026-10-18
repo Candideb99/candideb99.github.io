@@ -30,7 +30,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import YAML from "yaml";
 import { createHash } from "node:crypto";
-import { CLAUDE_MODEL, chat } from "./llm.mjs";
+import { chat, getActiveModel, getActiveProvider } from "./llm.mjs";
 import { extractArticle } from "./extract.mjs";
 import { ARTICLES_DIR } from "./article.mjs";
 import { extractNumbers, normalizeDigits, ungroundedNumbers } from "./util.mjs";
@@ -224,27 +224,41 @@ Answer with one JSON object:
  * review of the design, 2026-09-25: an evaluator the loop cannot touch, with its version recorded).
  */
 export const CHECKER_VERSION = createHash("sha1")
-  .update([SYSTEM, prompt.toString(), quoteFound.toString(), process.env.KHAZENDAR_CLAUDE_MODEL || CLAUDE_MODEL].join(" | "))
+  .update([SYSTEM, prompt.toString(), quoteFound.toString(), validateChecks.toString(), verifyStory.toString(), getActiveProvider(), getActiveModel()].join(" | "))
   .digest("hex")
   .slice(0, 10);
+
+/** Malformed answers must take the normal schema retry path, never disappear into a clean result. */
+function validateChecks(data, sentences) {
+  if (!data || !Array.isArray(data.checks)) throw new Error("no checks array");
+  if (!data.checks.length && sentences.some(mustCheck)) throw new Error("no sentence was checked");
+  const seen = new Set();
+  for (const check of data.checks) {
+    const id = Number(check?.id);
+    if (!["number", "string"].includes(typeof check?.id) || !Number.isInteger(id) || id < 1 || id > sentences.length) throw new Error("invalid checked sentence id");
+    if (seen.has(id)) throw new Error(`duplicate checked sentence id ${id}`);
+    seen.add(id);
+    if (!["supported", "contradicted", "conflict", "not_found"].includes(check.verdict)) throw new Error(`invalid verdict for sentence ${id}`);
+    if (check.source !== null && check.source !== undefined && check.source !== "" && Number(check.source) === 0 && check.verdict !== "contradicted") throw new Error("the story itself can prove only an internal contradiction, never external support");
+  }
+  const missing = sentences.filter((sentence) => mustCheck(sentence) && !seen.has(sentence.id)).map((sentence) => sentence.id);
+  if (missing.length) throw new Error(`unchecked factual sentence ids: ${missing.join(", ")}`);
+}
 
 /**
  * Checks one story. `story` carries the article's fields (title, subtitle, lede, keyFacts, whyItMatters, body,
  * table); `sources` comes from loadSources(). Returns the checks as code judged them and a count of each outcome.
  */
-export async function verifyStory({ story, sources, log = () => {} }) {
+export async function verifyStory({ story, sources, log = () => {}, chatWith = chat }) {
   const sentences = storySentences(story);
   const storyText = sentences.map((s) => s.text).join("\n");
-  const { data, model } = await chat({
+  const { data, model } = await chatWith({
     role: "checker",
     system: SYSTEM,
     user: prompt(sentences, sources),
     timeoutMs: 480000,
     log,
-    validate: (d) => {
-      if (!d || !Array.isArray(d.checks)) throw new Error("no checks array");
-      if (d.checks.length === 0 && sentences.some(mustCheck)) throw new Error("no sentence was checked");
-    },
+    validate: (d) => validateChecks(d, sentences),
   });
   // A source's headline is its text too: a page that cannot be read again still has the headline the feed gave.
   const readable = sources.map((s) => ({ ...s, all: [s.title, s.text].filter(Boolean).join("\n") }));

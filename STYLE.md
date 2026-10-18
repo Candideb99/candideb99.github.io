@@ -180,8 +180,8 @@ captions by it.
 
 **Depth for the general reader** (2026-10-17, after the Egypt rating report). A substantial policy,
 financing or rating event deserves a developed account when its sources provide the material;
-the writer and its revision are guided toward 450-700 words for rich reporting, without changing
-the publication floor or padding a thin event. Preserve the central term's meaning, the useful
+the writer and its revision are guided toward 450-650 words for rich reporting (since 2026-10-18 every
+news story is a developed report of at least 300 words; see below), never by padding. Preserve the central term's meaning, the useful
 comparison, the mechanism and the limits. A credit-rating code is not an explanation: define
 creditworthiness, and distinguish investment from speculative grade when the supplied reference
 establishes that distinction. The collector can add a fetched ratings reference; it never counts
@@ -237,14 +237,24 @@ reading, hedged. The headline may take the in-depth hinge «الموضوع... م
 answers. A threshold is a fact the desks print: «فوق 108 دولارات» for a peak of 108.68 passes the number check,
 «عند 108» does not (a rounding to 109 would pass, and the critic judges whether «فوق 109» is true).
 
-**A small event runs as a brief.** The shortest news story accepted is 120 words, 100 when the desk notes
-hold fewer than ten facts (`newsFloor()` in `pipeline/lib/write.mjs`; 200 until 2026-09-24). It is a safety
-net, not a target: the brief still asks for 300-550 words when the material carries them, and a writer pushed
-past what the material holds pads or fails. That day a Gulf story failed ten attempts at 119 to 199 words and
-an Abu Dhabi regulation with fourteen small facts three at 140 to 152; Claude judged both brief-sized, as the
-desks would. A retry is now told why the last answer was refused (`chat()` in `pipeline/lib/llm.mjs`), where
-three identical requests had come back the same. A story that fails outright takes the rejection mark, so the
-editor does not choose it again in the next run.
+**A news story is a developed report, or it is not published** (the owner, 2026-10-18: "i still see low quality
+articles (also too short) being published"). From 2026-09-24 a small event ran as a brief: the floor was 120 words,
+100 when the desk notes held fewer than ten facts, every brief told the writer a thin event "remains a brief", and
+the critic was told that an honestly brief report was no defect. The stories of 17 October ran 124 to 193 words
+beside sources that carried the cause, the reactions and the background, and scored 10. Now (`NEWS_DEPTH`,
+`NEWS_FLOOR` and `NEWS_MIN_FACTS` in `pipeline/lib/editorial.mjs`):
+- every news story answers, from its sources, six questions in the reader's order: the news, its driver, the
+  numbers in perspective, the reaction (named voices), the background and what comes next; 350-650 words, never
+  under 300 (lede plus body), checked in the writer's answer, in the checks before publication and by the critic;
+- the desk notes hold 15-30 checked facts, each tagged with its job, and an event whose notes hold fewer than 12 is
+  not written: its items take the short mark and return when more outlets have reported it;
+- the critic lists, as «ينقص التقرير:», each element a source supplies and the draft leaves out, and takes a point
+  for each; three or more hold the score at 6, so a digest no revision fills is refused;
+- the copy desk may not cut a story under the floor, and the editor cites every report of the event, up to five;
+- a draft that passes the critic's second pass but is still marked "revise" is sent back once more with those findings
+  before the check against the sources (the thresholds are unchanged; a repair the checks refuse leaves the reviewed draft).
+The cost is volume: fewer stories pass, and the thin ones that used to run as briefs are not written. A retry is
+told why the last answer was refused (`chat()` in `pipeline/lib/llm.mjs`).
 
 A finished story is mended, not thrown away (2026-09-24). In the 24 runs before that day, 19 drafts were
 rejected after their revision against 30 published, most for one stock phrase or a lede a few words long,

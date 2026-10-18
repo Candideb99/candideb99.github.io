@@ -46,7 +46,11 @@ order and useful explanatory repetition. The news critic records scope, context,
 observations in each run report; its score alone is not a fluency measure. The existing publication
 thresholds and revision-round count are unchanged.
 
-`node scripts/editorial-eval.mjs` lists eight synthetic calibration cases without model calls.
+The [18 October unattended audit](docs/unattended-quality-audit-2026-10-18.md) records checker-response
+and quota safeguards, the live writing sample, and the gap between passing publication checks and
+being judged ready by a separate reader assessment.
+
+`node scripts/editorial-eval.mjs` lists eleven synthetic calibration cases without model calls.
 Add `--live` to test the configured critic on them, or `--live --case=waiver-unclear-scope` for one.
 This consumes the normal provider allowance, writes a report in the system temp folder, and never
 publishes. A provider failure is **incomplete**, not a passing evaluation. The harness checks known
@@ -138,7 +142,7 @@ Models: Gemini by default, or Claude, OpenAI, Qwen, OpenRouter (see "Model provi
 
 ## Operating it
 
-- **Secrets:** The chosen provider's credentials. The owner currently uses ChatGPT subscription authentication (`codex`), with a separate cloud session restored by the workflow; no paid API fallback. Other providers' saved keys remain available. Check GitHub Actions variables for the current cloud provider instead of assuming it from an installed key.
+- **Secrets:** The chosen provider's credentials. Since 2026-10-18 the newsroom writes with Claude (`claude`, `claude-opus-5-5`) on the owner's subscription token, `CLAUDE_CODE_OAUTH_TOKEN`; `node scripts/claude-token.mjs` makes a new one, tests it and saves it locally and on GitHub (the owner runs it himself). ChatGPT subscription authentication (`codex`) stays configured as the alternative; no paid API fallback. Other providers' saved keys remain available. Check GitHub Actions variables for the current cloud provider instead of assuming it from an installed key.
 - **Manual run:** Actions → Newsroom → Run workflow (choose `news`, `explainer`, `analysis`, `paper` or `weekly`, a limit, and for an analysis optionally the sections it may draw on, e.g. `defense` for the defence-and-geopolitics reading).
 - **Unpublish:** delete the Markdown file in `content/articles/` and push; the next deploy removes the page.
 - **Quality signal:** every article's frontmatter carries `quality.score` (critic score 0-10), the models used, and the sources. The Actions run summary shows a table per run.

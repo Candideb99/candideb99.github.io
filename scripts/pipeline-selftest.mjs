@@ -16,9 +16,10 @@ import { repeatsRecent } from "../pipeline/lib/events.mjs";
 import { lessonRuleOk, loadLessons } from "../pipeline/lib/lessons.mjs";
 import { writeJsonAtomic } from "../pipeline/lib/util.mjs";
 import { loadSnapshot, saveSnapshot } from "../pipeline/lib/snapshots.mjs";
-import { loadSources, settleDrift } from "../pipeline/lib/factcheck.mjs";
+import { loadSources, settleDrift, verifyStory } from "../pipeline/lib/factcheck.mjs";
 import { boxFacts } from "../pipeline/lib/keyfacts.mjs";
-import { newsDepthBrief, normalizeDraft, prioritizeContext, validateWhyBasis } from "../pipeline/lib/write.mjs";
+import { deskNotes, newsDepthBrief, newsFloor, normalizeDraft, prioritizeContext, validateWhyBasis } from "../pipeline/lib/write.mjs";
+import { NEWS_DEPTH, NEWS_FLOOR } from "../pipeline/lib/editorial.mjs";
 import { mergeNewsRefresh, serializeArticle } from "../pipeline/lib/article.mjs";
 import { cleanTags } from "../pipeline/lib/tags.mjs";
 import { groundedRegions } from "../pipeline/lib/regions.mjs";
@@ -58,6 +59,63 @@ const repairer = (accept) => {
 };
 const draft = { title: "عنوان", lede: "مقدمة", body: "متن", keyFacts: [] };
 const sources = [{ sourceName: "رويترز", title: "t", url: "https://example.com/a", text: "source text" }];
+
+{
+  const quota = Object.assign(new Error("workspace out of credits"), { meta: { quota: true } });
+  let stopped = false;
+  try { await deskNotes({ story: {}, sources, chatWith: async () => { throw quota; } }); } catch (error) { stopped = error === quota; }
+  check("notes quota exhaustion stops before another writer call", stopped, true);
+  const fallback = await deskNotes({ story: {}, sources, chatWith: async () => { throw new Error("temporary notes failure"); } });
+  check("ordinary notes failure retains the existing source-only fallback", fallback, null);
+}
+
+// Exercise the real checker response boundary; a nonempty array is not necessarily a completed check.
+const checkerReply = (checks) => async ({ validate }) => {
+  const data = { checks };
+  validate(data);
+  return { data, model: "offline-checker" };
+};
+for (const [name, checks] of [
+  ["unknown sentence", [{ id: 999, verdict: "supported" }]],
+  ["fractional sentence", [{ id: 1.5, verdict: "supported" }]],
+  ["missing sentence", [{ verdict: "supported" }]],
+  ["boolean sentence", [{ id: true, verdict: "supported" }]],
+  ["unknown verdict", [{ id: 1, verdict: "looks fine" }]],
+  ["self-cited support", [{ id: 1, verdict: "supported", source: 0, quote: "عنوان" }]],
+  ["duplicate sentence", [{ id: 1, verdict: "supported" }, { id: 1, verdict: "contradicted" }]],
+]) {
+  const result = await precheck({ draft, sources, verify: (options) => verifyStory({ ...options, chatWith: checkerReply(checks) }) });
+  check(`malformed checker response (${name}) cannot count as clean`, [result.ok, /could not run/.test(result.held ?? "")], [false, true]);
+}
+{
+  const result = await precheck({
+    draft: { title: "The bank raised its rate.", body: "The policy rate rose to 5%." },
+    sources: [{ sourceNameEn: "Central bank", title: "Rate decision", text: "The bank raised its policy rate to 5%." }],
+    verify: (options) => verifyStory({ ...options, chatWith: checkerReply([{ id: 1, verdict: "supported", source: 1, quote: "The bank raised its policy rate to 5%." }]) }),
+  });
+  check("a partial fact-check cannot silently skip a required factual sentence", [result.ok, /could not run.*unchecked factual sentence ids: 2/.test(result.held ?? "")], [false, true]);
+}
+{
+  const result = await verifyStory({ story: draft, sources: checkSourcesOf(sources), chatWith: checkerReply([{ id: 1, verdict: "not_found", source: null, quote: "" }]) });
+  check("a valid not-found verdict remains an observation, not a proved error", [result.checks.length, result.checks[0].status], [1, "not_found"]);
+}
+{
+  const quote = "The bank raised its policy rate to 3%.";
+  const evidence = [{ n: 1, name: "Central bank", title: "Rate decision", text: quote }];
+  for (const [title, verdict, status] of [[quote, "supported", "supported"], ["The bank cut its policy rate to 3%.", "contradicted", "confirmed"]]) {
+    const result = await verifyStory({ story: { title }, sources: evidence, chatWith: checkerReply([{ id: "1", verdict, source: 1, quote, class: "figure" }]) });
+    check(`valid ${verdict} evidence survives response validation`, [result.checks[0].status, result.counts.checked], [status, 1]);
+  }
+  const internal = await verifyStory({ story: { title: "The bank cut its policy rate to 3%.", body: quote }, sources: evidence, chatWith: checkerReply([{ id: 1, verdict: "contradicted", source: 0, quote, class: "internal" }, { id: 2, verdict: "supported", source: 1, quote }]) });
+  check("the story remains evidence for its own internal contradiction", internal.checks[0].status, "confirmed");
+}
+{
+  const versionFor = (provider, model) => spawnSync(process.execPath, ["--input-type=module", "-e", "import { CHECKER_VERSION } from './pipeline/lib/factcheck.mjs'; console.log(CHECKER_VERSION)"], {
+    encoding: "utf8", env: { ...process.env, KHAZENDAR_PROVIDER: provider, KHAZENDAR_CODEX_MODEL: model, KHAZENDAR_CLAUDE_MODEL: model },
+  });
+  const versions = [versionFor("codex", "offline-model-a"), versionFor("codex", "offline-model-b"), versionFor("claude", "offline-model-a")];
+  check("checker evidence versions separate active providers and models", [versions.every((r) => r.status === 0), new Set(versions.map((r) => r.stdout.trim())).size], [true, 3]);
+}
 
 // 1. The check before publication.
 {
@@ -316,6 +374,10 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const rich = { reader_context: context, identifications: [identity], facts: Array.from({ length: 20 }, (_, i) => ({ fact: `تفصيل ${i}`, source: 1 })) };
   prioritizeContext(rich);
   check("expert identification survives the same twenty-fact budget", rich.facts.slice(0, 20).includes(identity), true);
+  const programme = { fact: "برنامج رعاية يوفر تأميناً صحياً حكومياً", source: 2 };
+  const withProgramme = { reader_context: context, identifications: [programme], facts: Array.from({ length: 20 }, (_, i) => ({ fact: `تفصيل ${i}`, source: 1 })) };
+  prioritizeContext(withProgramme);
+  check("a sourced programme function survives the same notes budget", withProgramme.facts.slice(0, 20).includes(programme), true);
   const noContext = { reader_context: null, identifications: [identity], facts: [identity] };
   prioritizeContext(noContext);
   check("an expert can be identified without invented economic context or duplication", noContext.facts, [identity]);
@@ -324,6 +386,12 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("a context label without a fact is refused", invalidContext({ source: 1 }), true);
   const clear = Object.fromEntries(["scope", "context", "flow", "precision"].map((area) => [area, { status: "clear", evidence: "الخبر واضح ضمن نطاق الأدلة المتاحة", repair: "" }]));
   const review = { score: 10, verdict: "publish", issues: [], summary: "مراجعة", reader_check: clear };
+  for (const score of ["Infinity", 11, -1, null, true, [], ""]) {
+    let refused = false;
+    try { normalizeCritique({ ...review, score }, { news: true }); } catch { refused = true; }
+    check(`invalid critic score ${JSON.stringify(score)} is a malformed response`, refused, true);
+  }
+  check("a numeric-string critic score remains compatible", normalizeCritique({ ...review, score: "6" }, { news: true }).score, 6);
   for (const area of ["scope", "context", "flow", "precision"]) {
     const result = normalizeCritique({ ...review, reader_check: { ...clear, [area]: { status: "revise", evidence: "العنوان لا يميز العقوبات الجديدة من السابقة", repair: "بيّن نطاق الإعفاء في المقدمة" } } }, { news: true });
     check(`reader ${area} defect requests revision despite a 10/10 verdict`, [result.verdict, result.score, result.issues.some((i) => i.includes("بيّن نطاق"))], ["revise", 10, true]);
@@ -355,8 +423,8 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const warnings = (text) => styleIssues({ title: "قرار التصنيف الائتماني", lede: "رفعت الوكالة التصنيف الائتماني.", body: text, whyItMatters: "" }).warnings;
   check("monotonous waw/reporting openings include the previously exempt reporting verbs", warnings(body).some((w) => w.includes("كل فقرات المتن")), true);
   check("ordinary waw is not by itself a defect", warnings(body.replace("واستندت", "استندت")).some((w) => w.includes("كل فقرات المتن")), false);
-  check("substantial sources get developed reporting guidance", newsDepthBrief([{ text: "a".repeat(4000) }, { text: "b".repeat(4000) }]).includes("450-700"), true);
-  check("definitions alone do not turn a brief into rich event reporting", newsDepthBrief([{ text: "short event" }, { kind: "reference", text: "a".repeat(9000) }]).includes("450-700"), false);
+  check("substantial sources get developed reporting guidance", newsDepthBrief([{ text: "a".repeat(4000) }, { text: "b".repeat(4000) }]).includes("450-650"), true);
+  check("definitions alone do not turn a brief into rich event reporting", newsDepthBrief([{ text: "short event" }, { kind: "reference", text: "a".repeat(9000) }]).includes("450-650"), false);
 }
 
 {
@@ -370,6 +438,26 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("synthesis premises need real source numbers", refuses([{ fact: "الدين مرتفع", source: 2 }]), true);
   check("a premise cannot borrow a figure absent from its source", refuses([{ fact: "بلغ الدين 60% من الناتج المحلي", source: 1 }]), true);
   check("a sourced premise is accepted for semantic review", refuses([{ fact: "بلغ الدين 81.9% من الناتج المحلي", source: 1 }]), false);
+}
+
+// News depth (the owner, 2026-10-18: "low quality articles (also too short)"): a news story is a developed report of at
+// least NEWS_FLOOR words whatever the notes hold, the checks refuse a shorter one, and the copy desk may not cut a
+// story under the floor.
+{
+  const sentence = "وارتفع خام برنت في جلسة الجمعة مع تصاعد المخاوف من تعطل الإمدادات عبر المضيق.";
+  const bodyOf = (n) => Array.from({ length: n }, () => sentence).join("\n\n");
+  const story = (n) => ({ title: "برنت يرتفع مع مخاوف تعطل الإمدادات", subtitle: "مكاسب أسبوعية للخام", lede: "ارتفع خام برنت الجمعة.", body: bodyOf(n), whyItMatters: "", keyFacts: [] });
+  const short = (d) => programmaticChecks(d, [{ text: sentence }]).issues.some((i) => i.startsWith("المقال قصير جداً"));
+  check("the news floor no longer bends to thin notes", [newsFloor(null), newsFloor({ facts: [1, 2, 3] }), newsFloor({ facts: Array(25).fill(1) })], [NEWS_FLOOR, NEWS_FLOOR, NEWS_FLOOR]);
+  check("a 170-word news story is refused", short(story(12)), true);
+  check("a developed news story passes the floor", short(story(24)), false);
+  const long = story(24);
+  const cut = judgeRewrite(long, { body: bodyOf(16) }, ["body"], { minWords: NEWS_FLOOR });
+  check("the copy desk cannot cut a news story under the floor", [Boolean(cut.accepted.body), cut.rejected.some((r) => /^length: the story would fall/.test(r.reason))], [false, true]);
+  const trimmed = judgeRewrite(long, { body: bodyOf(22) }, ["body"], { minWords: NEWS_FLOOR });
+  check("a desk trim that keeps the story above the floor is accepted", Boolean(trimmed.accepted.body), true);
+  check("the writer's brief carries the six elements on thin and rich material", [newsDepthBrief([{ text: "x" }]), newsDepthBrief([{ text: "a".repeat(4000) }, { text: "b".repeat(4000) }])].every((b) => b.includes("WHAT COMES NEXT") && b.includes("THE REACTION")), true);
+  check("no brief tells a writer that a thin event may run as a brief", /remains a brief|brief of 120|honestly brief/.test(`${newsDepthBrief([{ text: "x" }])}${NEWS_DEPTH}`), false);
 }
 
 if (failed) {
