@@ -1,48 +1,6 @@
 {
   "version": 1,
   "items": {
-    "7aeb5f5bf85e8942": {
-      "at": "2026-09-26T23:50:00.496Z",
-      "decision": "published",
-      "slug": "microsoft-merges-office-apps-into-copilot-fa6351",
-      "title": "«مايكروسوفت» تُدرج برامجها «وورد» و«إكسل» و«باوربوينت» في «كوبايلوت»"
-    },
-    "4353e1e56f5e7f84": {
-      "at": "2026-09-26T23:50:00.496Z",
-      "decision": "published",
-      "slug": "microsoft-merges-office-apps-into-copilot-fa6351",
-      "title": "Microsoft integrates Word, Excel deeper into Copilot"
-    },
-    "600f160bde750262": {
-      "at": "2026-09-26T23:50:00.496Z",
-      "decision": "published",
-      "slug": "microsoft-merges-office-apps-into-copilot-fa6351",
-      "title": "Microsoft packages business AI in single app as it tries to compete with Anthropic"
-    },
-    "7597176acd00265f": {
-      "at": "2026-09-26T23:53:51.772Z",
-      "decision": "published",
-      "slug": "apple-taction-haptics-patent-verdict-f37d49",
-      "title": "Apple hit with $5.7 billion in damages over haptic patents"
-    },
-    "0af68f8a5bedc069": {
-      "at": "2026-09-26T23:53:51.772Z",
-      "decision": "published",
-      "slug": "apple-taction-haptics-patent-verdict-f37d49",
-      "title": "Apple faces $5.7 billion patent infringement verdict over iPhone and Apple Watch haptics"
-    },
-    "34ad90bf77124cde": {
-      "at": "2026-09-26T23:57:14.754Z",
-      "decision": "published",
-      "slug": "mexico-pledges-more-us-imports-trade-surplus-4c273f",
-      "title": "المكسيك تتعهد باستيراد مزيد من السلع الأميركية"
-    },
-    "d544b9d83eb4c4af": {
-      "at": "2026-09-26T23:57:14.754Z",
-      "decision": "published",
-      "slug": "mexico-pledges-more-us-imports-trade-surplus-4c273f",
-      "title": "المكسيك تتعهد باستيراد المزيد من السلع الأمريكية"
-    },
     "7af8dfa058d97308": {
       "at": "2026-09-27T05:39:18.307Z",
       "decision": "published",
@@ -992,16 +950,16 @@
       "strikes": 1
     },
     "454477c78729a341": {
-      "at": "2026-10-17T14:04:27.017Z",
-      "decision": "rejected",
-      "title": "غورغييفا: سنقدم للعراق دعماً مالياً",
-      "strikes": 1
+      "at": "2026-10-18T04:54:55.153Z",
+      "decision": "published",
+      "slug": "iraq-seeks-imf-financing-programme-talks-d17aa2",
+      "title": "غورغييفا: سنقدم للعراق دعماً مالياً"
     },
     "c7e50354a0c85beb": {
-      "at": "2026-10-17T14:04:27.017Z",
-      "decision": "rejected",
-      "title": "IMF to accelerate talks with Iraq and Lebanon as Mena support grows",
-      "strikes": 1
+      "at": "2026-10-18T04:54:55.153Z",
+      "decision": "published",
+      "slug": "iraq-seeks-imf-financing-programme-talks-d17aa2",
+      "title": "IMF to accelerate talks with Iraq and Lebanon as Mena support grows"
     },
     "f4f72be8b8ec9f22": {
       "at": "2026-10-17T14:04:27.017Z",
@@ -1128,6 +1086,30 @@
       "decision": "published",
       "slug": "meta-removes-website-content-training-language-6149f4",
       "title": "Meta removes language that may have allowed it to scrape news sites"
+    },
+    "21bcd11435cc40a6": {
+      "at": "2026-10-18T04:50:58.094Z",
+      "decision": "published",
+      "slug": "dubai-real-gdp-first-half-contraction-507750",
+      "title": "Dubai's economy reaches Dh473bn in first half of 2026 as key sectors expand"
+    },
+    "5c25b31a0c1aa6d8": {
+      "at": "2026-10-18T04:50:58.094Z",
+      "decision": "published",
+      "slug": "dubai-real-gdp-first-half-contraction-507750",
+      "title": "473 مليار درهم الناتج المحلي الإجمالي لدبي في النصف الأول من 2026"
+    },
+    "c2c0f4b07e6f289a": {
+      "at": "2026-10-18T05:02:53.215Z",
+      "decision": "published",
+      "slug": "netflix-appoints-peter-rice-content-chief-f41468",
+      "title": "Netflix Hurries to Rewrite Its Narrative With Layoffs and a Sudden Firing"
+    },
+    "f878b4f8fc00cdaf": {
+      "at": "2026-10-18T05:02:53.215Z",
+      "decision": "published",
+      "slug": "netflix-appoints-peter-rice-content-chief-f41468",
+      "title": "Here's who Netflix just brought in to run content — and what it means for the streamer"
     }
   }
 }

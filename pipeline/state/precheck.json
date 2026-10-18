@@ -2703,6 +2703,90 @@
           "noted": []
         }
       ]
+    },
+    "dubai-real-gdp-first-half-contraction-507750": {
+      "at": "2026-10-18T04:50:58.091Z",
+      "title": "ناتج دبي الحقيقي يتراجع 2.3% إلى نحو 473 مليار درهم",
+      "writer": "codex-cli/gpt-6.1-sol",
+      "lessons": "v29",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 29,
+            "weak": 0,
+            "noEvidence": 3,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "iraq-seeks-imf-financing-programme-talks-d17aa2": {
+      "at": "2026-10-18T04:54:55.151Z",
+      "title": "العراق يطلب بحث برنامج تمويلي محتمل مع صندوق النقد الدولي",
+      "writer": "codex-cli/gpt-6.1-sol",
+      "lessons": "v29",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 10,
+            "checked": 10,
+            "supported": 7,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "netflix-appoints-peter-rice-content-chief-f41468": {
+      "at": "2026-10-18T05:02:53.213Z",
+      "title": "«نتفليكس» تعيّن بيتر رايس لقيادة المحتوى",
+      "writer": "codex-cli/gpt-6.1-sol → codex-cli/gpt-6.1-sol",
+      "lessons": "v29",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 19,
+            "weak": 0,
+            "noEvidence": 4,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
