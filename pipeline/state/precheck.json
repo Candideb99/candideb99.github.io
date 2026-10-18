@@ -3138,6 +3138,34 @@
           "noted": []
         }
       ]
+    },
+    "egypt-offshore-seismic-survey-east-mediterranean-cbf72c": {
+      "at": "2026-10-18T19:41:22.024Z",
+      "title": "مصر تبدأ خلال أسبوعين مسحاً سيزمياً لاستكشاف الغاز في شرق المتوسط",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v31",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 19,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 4,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

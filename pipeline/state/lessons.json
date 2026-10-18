@@ -204,10 +204,11 @@
     "brent-above-100-dollars-gulf-escalation-8281ef:950eae47",
     "brent-above-100-dollars-gulf-escalation-8281ef:e4379e59",
     "saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3:d59a7a95",
-    "saudi-oil-disruption-growth-budget-outlook-1f48b3:25ba2543"
+    "saudi-oil-disruption-growth-budget-outlook-1f48b3:25ba2543",
+    "banque-du-caire-share-offering-launch-f9a4ac:646d95c3"
   ],
-  "version": 30,
-  "updatedAt": "2026-10-18T16:07:56.392Z",
+  "version": 31,
+  "updatedAt": "2026-10-18T19:30:49.164Z",
   "lessons": [
     {
       "id": "L1",
@@ -319,11 +320,12 @@
         "apple-foldable-iphone-duo-release-cycle-change-d6b45a:ac3cea7a",
         "anthropic-researcher-ai-human-extinction-risk-8aa7a2:57adc9ea",
         "trump-expands-trade-war-canada-import-ban-6088a2:2013a382",
-        "egypt-ai-data-center-nvidia-billion-dollar-b0fc50:9cb6a47d"
+        "egypt-ai-data-center-nvidia-billion-dollar-b0fc50:9cb6a47d",
+        "banque-du-caire-share-offering-launch-f9a4ac:646d95c3"
       ],
-      "seen": 44,
+      "seen": 45,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-30T20:11:22.116Z",
+      "lastSeen": "2026-10-18T19:30:49.164Z",
       "status": "active",
       "previous": [
         "Credit each fact to whom the source credits; the outlet's own reporting is never 'informed sources', an official statement or analyst data. Name the originating outlet. Never make a reported line a quote, a private notice an announcement, or a reply the decree's aim.",
@@ -666,7 +668,7 @@
       "status": "pending"
     }
   ],
-  "model": "codex-cli/gpt-6.1-sol",
+  "model": "claude-cli/claude-opus-5-5",
   "history": [
     {
       "at": "2026-09-25T07:41:52.105Z",
@@ -961,6 +963,13 @@
       "mistakes": 1,
       "applied": [
         "reinforce L6 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-10-18T19:30:49.164Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L2 (+1; reworded at most once a week)"
       ]
     }
   ],
