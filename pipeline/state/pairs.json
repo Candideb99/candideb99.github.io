@@ -613,6 +613,50 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-10-18T21:00:26.099Z",
+      "slug": "syria-world-bank-reconstruction-trust-fund-464831",
+      "checker": "4c54099299.2",
+      "lessons": "v31",
+      "lessonsHash": "5c629d81ea",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 23,
+        "notFound": 0,
+        "checked": 27,
+        "words": 431,
+        "keyFacts": 5,
+        "classes": [],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 20,
+        "notFound": 4,
+        "checked": 27,
+        "words": 488,
+        "keyFacts": 4,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 20,
+        "notFound": 4,
+        "checked": 27,
+        "words": 488,
+        "keyFacts": 4,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }

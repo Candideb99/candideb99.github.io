@@ -3166,6 +3166,125 @@
           "noted": []
         }
       ]
+    },
+    "syria-world-bank-reconstruction-trust-fund-464831": {
+      "at": "2026-10-18T21:00:26.094Z",
+      "title": "سوريا والبنك الدولي يتفقان على صندوق متعدد المانحين لإعادة الإعمار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v31",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 27,
+            "checked": 27,
+            "supported": 24,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "microsoft-exits-nscale-essex-datacentre-power-ce50c6": {
+      "at": "2026-10-18T21:20:06.877Z",
+      "title": "مايكروسوفت تنسحب من مركز بيانات في إسيكس وسط مخاوف من نقص الكهرباء",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v31",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 25,
+            "weak": 0,
+            "noEvidence": 3,
+            "notFound": 2,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 31,
+              "field": "body",
+              "class": "scope",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وترتبط قيمة حصتيهما مباشرة بالتقييم الذي ستُدرج به الشركة: فكليغ يملك 0.25% منها، وقد تبلغ قيمة حصته 88 مليون دولار إذا أُدرجت بتقييم 35 مليار دولار.",
+              "quote": "Clegg holds a 0.25% stake that could be worth $88m if the company floats at a $35bn valuation.",
+              "source": "The Guardian",
+              "sourceN": 1,
+              "correction": "The source reports a stake only for Clegg (0.25%, potentially $88m); it says nothing about Sandberg holding a stake."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 26,
+            "weak": 0,
+            "noEvidence": 3,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "qatari-diar-launches-alam-al-roum-investment-zone-82ae33": {
+      "at": "2026-10-18T21:35:08.977Z",
+      "title": "الديار القطرية تطلق منطقة استثمارية في علم الروم بمصر لجذب الشركات",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 32,
+            "checked": 32,
+            "supported": 27,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
