@@ -205,10 +205,11 @@
     "brent-above-100-dollars-gulf-escalation-8281ef:e4379e59",
     "saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3:d59a7a95",
     "saudi-oil-disruption-growth-budget-outlook-1f48b3:25ba2543",
-    "banque-du-caire-share-offering-launch-f9a4ac:646d95c3"
+    "banque-du-caire-share-offering-launch-f9a4ac:646d95c3",
+    "microsoft-exits-nscale-essex-datacentre-power-ce50c6:b9cc2c69"
   ],
-  "version": 31,
-  "updatedAt": "2026-10-18T19:30:49.164Z",
+  "version": 32,
+  "updatedAt": "2026-10-18T23:19:59.791Z",
   "lessons": [
     {
       "id": "L1",
@@ -419,11 +420,12 @@
         "egypt-inflation-eases-12-7-august-7557fb:1b066776",
         "trump-5000-dividend-trillion-cost-36981a:c6cf95c0",
         "google-finland-13-billion-ai-nuclear-54b058:5004fbea",
-        "brent-above-100-dollars-gulf-escalation-8281ef:950eae47"
+        "brent-above-100-dollars-gulf-escalation-8281ef:950eae47",
+        "microsoft-exits-nscale-essex-datacentre-power-ce50c6:b9cc2c69"
       ],
-      "seen": 32,
+      "seen": 33,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-10-01T00:41:58.945Z",
+      "lastSeen": "2026-10-18T23:19:59.791Z",
       "status": "active",
       "previous": [
         "Keep a figure or role tied to the exact item, day and instrument the source names. Diesel is not all fuel. One day's count is not a daily rate. A futures-implied value is not the IPO valuation. An official does only what the source assigns.",
@@ -970,6 +972,13 @@
       "mistakes": 1,
       "applied": [
         "reinforce L2 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-10-18T23:19:59.791Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L4 (+1; reworded at most once a week)"
       ]
     }
   ],

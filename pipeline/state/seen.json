@@ -1,18 +1,6 @@
 {
   "version": 1,
   "items": {
-    "cb70f47ce47a1d9a": {
-      "at": "2026-09-27T21:39:17.562Z",
-      "decision": "published",
-      "slug": "turkey-akp-deputy-resigns-fund-crisis-1afa4a",
-      "title": "استقالة نائبة رئيس حزب إردوغان وسط أزمة صناديق الاستثمار"
-    },
-    "e745a0eb6a605dfa": {
-      "at": "2026-09-27T21:39:17.562Z",
-      "decision": "published",
-      "slug": "turkey-akp-deputy-resigns-fund-crisis-1afa4a",
-      "title": "توابع «زلزال صناديق تركيا» مستمرة"
-    },
     "23fc08618e6ecaa0": {
       "at": "2026-09-28T05:44:46.344Z",
       "decision": "published",
@@ -1140,6 +1128,24 @@
       "decision": "published",
       "slug": "qatari-diar-launches-alam-al-roum-investment-zone-82ae33",
       "title": "مصر.. إطلاق المنطقة الاستثمارية لعلم الروم في الساحل الشمالي"
+    },
+    "20dce07f486b1ca9": {
+      "at": "2026-10-18T23:26:35.245Z",
+      "decision": "published",
+      "slug": "egypt-non-oil-exports-48-billion-2025-fe5963",
+      "title": "Egypt’s non-oil exports reach $48bn in 2025: Minister"
+    },
+    "778b73123291e3e5": {
+      "at": "2026-10-18T23:26:35.245Z",
+      "decision": "published",
+      "slug": "egypt-non-oil-exports-48-billion-2025-fe5963",
+      "title": "وزير الاستثمار: 48 مليار دولار صادرات مصر السلعية غير البترولية بنهاية 2025"
+    },
+    "23921488a9f75391": {
+      "at": "2026-10-18T23:26:35.245Z",
+      "decision": "published",
+      "slug": "egypt-non-oil-exports-48-billion-2025-fe5963",
+      "title": "صادرات مصر غير البترولية ترتفع إلى 48 مليار دولار"
     }
   }
 }

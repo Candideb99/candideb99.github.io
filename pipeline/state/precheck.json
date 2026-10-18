@@ -3313,6 +3313,34 @@
           "noted": []
         }
       ]
+    },
+    "egypt-non-oil-exports-48-billion-2025-fe5963": {
+      "at": "2026-10-18T23:26:35.242Z",
+      "title": "صادرات مصر السلعية غير البترولية تبلغ 48 مليار دولار في 2025",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 22,
+            "checked": 22,
+            "supported": 18,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 3,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
