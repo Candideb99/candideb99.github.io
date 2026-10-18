@@ -1,0 +1,116 @@
+{
+  "reports": {
+    "imf-weo": {
+      "edition": 202607,
+      "label": "World Economic Outlook Update, July 2026",
+      "url": "https://www.imf.org/en/publications/weo/issues/2026/07/08/world-economic-outlook-update-july-2026",
+      "at": "2026-10-18T22:34:47.495Z",
+      "outcome": "starting point",
+      "tries": 0
+    },
+    "imf-reo-meca": {
+      "edition": 202604,
+      "label": "Middle East and Central Asia, April 2026",
+      "url": "https://www.imf.org/en/publications/reo/meca/issues/2026/04/16/regional-economic-outlook-middle-east-central-asia-april-2026",
+      "at": "2026-10-18T22:34:47.564Z",
+      "outcome": "starting point",
+      "tries": 0
+    },
+    "imf-gfsr": {
+      "edition": 202604,
+      "label": "global financial stability report april 2026",
+      "url": "https://www.imf.org/en/publications/gfsr/issues/2026/04/14/global-financial-stability-report-april-2026",
+      "at": "2026-10-18T22:34:47.604Z",
+      "outcome": "starting point",
+      "tries": 0
+    },
+    "wb-gep": {
+      "edition": 202606,
+      "label": "june 2026",
+      "url": "https://www.worldbank.org/en/news/press-release/2026/06/11/global-economic-prospects-june-2026-press-release",
+      "at": "2026-10-18T22:34:47.797Z",
+      "outcome": "starting point",
+      "tries": 0
+    },
+    "wb-menaap": {
+      "edition": 202610,
+      "label": "October 2026",
+      "url": "https://www.worldbank.org/en/region/mena/publication/middle-east-north-africa-afghanistan-and-pakistan-economic-update",
+      "at": "2026-10-18T22:46:46.584Z",
+      "outcome": "published world-bank-gulf-economies-contract-2026-f98d77",
+      "tries": 0
+    },
+    "wb-gulf": {
+      "edition": 202506,
+      "label": "Issue 14:",
+      "url": "https://www.worldbank.org/en/news/press-release/2025/06/19/gcc-growth-on-the-rise-but-smart-spending-will-shape-a-thriving-future",
+      "at": "2026-10-18T22:34:47.901Z",
+      "outcome": "starting point",
+      "tries": 0
+    },
+    "wb-cmo": {
+      "edition": 202604,
+      "label": "Commodity Markets Outlook, April 2026",
+      "url": "https://openknowledge.worldbank.org/bitstreams/a384bcad-abc5-4b9b-9c1d-35f374581024/download",
+      "at": "2026-10-18T22:34:47.941Z",
+      "outcome": "starting point",
+      "tries": 0
+    },
+    "ec-forecast": {
+      "edition": 202604,
+      "label": "Spring 2026 Economic Forecast",
+      "url": "https://economy-finance.ec.europa.eu/economic-forecast-and-surveys/economic-forecasts/spring-2026-economic-forecast-slowdown-growth-energy-shock-drives-inflation_en",
+      "at": "2026-10-18T22:34:48.933Z",
+      "outcome": "starting point",
+      "tries": 0
+    },
+    "de-gd": {
+      "edition": 202609,
+      "label": "Herbst 2026",
+      "url": "https://gemeinschaftsdiagnose.de/2026/09/24/gemeinschaftsdiagnose-herbst-2026-aufschwung-mit-strukturproblemen-finanzpolitik-auf-abwegen/",
+      "at": "2026-10-18T22:34:50.647Z",
+      "outcome": "starting point",
+      "tries": 0
+    },
+    "de-svr": {
+      "edition": 202511,
+      "label": "Annual Report 2025/26",
+      "url": "https://www.sachverstaendigenrat-wirtschaft.de/en/annualreport-2025.html",
+      "at": "2026-10-18T22:34:51.952Z",
+      "outcome": "starting point",
+      "tries": 0
+    },
+    "fr-bdf": {
+      "edition": 202609,
+      "label": "September 2026",
+      "url": "https://www.banque-france.fr/en/publications-and-statistics/publications/macroeconomic-interim-projections-september-2026",
+      "at": "2026-10-18T22:34:53.583Z",
+      "outcome": "starting point",
+      "tries": 0
+    },
+    "ubs-gwr": {
+      "edition": 202606,
+      "label": "Global Wealth Report 2026",
+      "url": "https://www.ubs.com/global/en/wealthmanagement/insights/global-wealth-report.html",
+      "at": "2026-10-18T22:34:54.431Z",
+      "outcome": "starting point",
+      "tries": 0
+    },
+    "henley-wealth-migration": {
+      "edition": 202606,
+      "label": "Henley Private Wealth Migration Report 2026",
+      "url": "https://www.henleyglobal.com/publications/henley-private-wealth-migration-report-2026",
+      "at": "2026-10-18T22:34:57.152Z",
+      "outcome": "starting point",
+      "tries": 0
+    },
+    "fao-fpi": {
+      "edition": 202609,
+      "label": "averaged 136.0 points in September 2026",
+      "url": "https://www.fao.org/worldfoodsituation/foodpricesindex/en/",
+      "at": "2026-10-18T22:34:57.966Z",
+      "outcome": "starting point",
+      "tries": 0
+    }
+  }
+}

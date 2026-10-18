@@ -3285,6 +3285,34 @@
           "noted": []
         }
       ]
+    },
+    "world-bank-gulf-economies-contract-2026-f98d77": {
+      "at": "2026-10-18T22:46:46.579Z",
+      "title": "البنك الدولي يتوقع انكماش اقتصادات الخليج 4.3% هذا العام",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 35,
+            "checked": 35,
+            "supported": 34,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
