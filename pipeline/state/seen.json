@@ -1,66 +1,6 @@
 {
   "version": 1,
   "items": {
-    "d6ce96b861f6a2db": {
-      "at": "2026-09-27T12:23:26.138Z",
-      "decision": "published",
-      "slug": "egypt-food-exports-exceed-5-billion-eight-months-7f3799",
-      "title": "التصديري للصناعات الغذائية: أسبانيا تضاعف واردتها من المنتجات المصرية خلال 8 أشهر"
-    },
-    "3240790625fa2a11": {
-      "at": "2026-09-27T12:23:26.138Z",
-      "decision": "published",
-      "slug": "egypt-food-exports-exceed-5-billion-eight-months-7f3799",
-      "title": "الصناعات الغذائية تحقق أعلى صادرات في تاريخها خلال 8 أشهر بقيمة 5.1 مليار دولار"
-    },
-    "2715d138adfdbf43": {
-      "at": "2026-09-27T12:23:26.138Z",
-      "decision": "published",
-      "slug": "egypt-food-exports-exceed-5-billion-eight-months-7f3799",
-      "title": "صادرات الصناعات الغذائية المصرية تتجاوز 5 مليارات دولار خلال 8 أشهر"
-    },
-    "074f14fac25ea32a": {
-      "at": "2026-09-27T12:27:06.228Z",
-      "decision": "published",
-      "slug": "sczone-nafeza-sokhna-digital-truck-yard-219151",
-      "title": "تابعة لـ”إيجيترانس” تفوز بتطوير منظومة إدارة حركة الشاحنات في ميناء السخنة"
-    },
-    "6eeab4e3ad9bd2e9": {
-      "at": "2026-09-27T12:27:06.228Z",
-      "decision": "published",
-      "slug": "sczone-nafeza-sokhna-digital-truck-yard-219151",
-      "title": "Suez Canal Economic Zone signs EGP 1bn contract for digital truck yard at Sokhna Port"
-    },
-    "42d512c05cf2f995": {
-      "at": "2026-09-27T12:31:57.386Z",
-      "decision": "published",
-      "slug": "egyptian-exchange-loses-96-billion-fourth-session-804b34",
-      "title": "المؤشرات حمراء للجلسة الرابعة.. البورصة تفقد 96 مليارا وسط تداولات بـ7.8مليار"
-    },
-    "1a45b59f4a87ed9b": {
-      "at": "2026-09-27T12:31:57.387Z",
-      "decision": "published",
-      "slug": "egyptian-exchange-loses-96-billion-fourth-session-804b34",
-      "title": "السيولة تكسر الـ\"3 مليارات\".. انقسام بالبورصة بين مبيعات المصريين وشراء الأجانب"
-    },
-    "19269bf23324416e": {
-      "at": "2026-09-27T12:31:57.387Z",
-      "decision": "published",
-      "slug": "egyptian-exchange-loses-96-billion-fourth-session-804b34",
-      "title": "مشتريات الأجانب تدفع البورصة للارتفاع 0.35%"
-    },
-    "8801e3789c51301a": {
-      "at": "2026-09-27T12:35:14.655Z",
-      "decision": "published",
-      "slug": "boeing-737-max-navigation-software-glitch-cab9a6",
-      "title": "خلل برمجي في «737 ماكس» يزيد عبء الهبوط"
-    },
-    "7ce4ddf970fefd21": {
-      "at": "2026-09-27T12:35:14.655Z",
-      "decision": "published",
-      "slug": "boeing-737-max-navigation-software-glitch-cab9a6",
-      "title": "Boeing flags 737 Max software glitch affecting some automated approach functions"
-    },
     "66a25399a08ce666": {
       "at": "2026-09-27T17:11:07.323Z",
       "decision": "published",
@@ -1122,6 +1062,60 @@
       "decision": "published",
       "slug": "saudi-stocks-rise-led-by-heavyweights-3381fa",
       "title": "الأسهم السعودية ترتد بعد جلستين من الهبوط وسط ترقب نتائج الشركات"
+    },
+    "592fb44aee9ae8e2": {
+      "at": "2026-10-18T16:21:12.920Z",
+      "decision": "published",
+      "slug": "banque-du-caire-share-offering-launch-f9a4ac",
+      "title": "أضخم طرح حكومي بالبورصة.. اعتماد نشرة بيع 30% من بنك القاهرة"
+    },
+    "999f1854bb97d396": {
+      "at": "2026-10-18T16:21:12.920Z",
+      "decision": "published",
+      "slug": "banque-du-caire-share-offering-launch-f9a4ac",
+      "title": "هاشم السيد: إعلان السعر النهائى لطرح بنك القاهرة بحد أقصى 26 أكتوبر"
+    },
+    "746c3c896b81ed13": {
+      "at": "2026-10-18T16:21:12.920Z",
+      "decision": "published",
+      "slug": "banque-du-caire-share-offering-launch-f9a4ac",
+      "title": "غدًا.. بدء الطرحين العام والخاص لبنك القاهرة بالبورصة المصرية"
+    },
+    "174d1970b34bd2b5": {
+      "at": "2026-10-18T16:29:24.855Z",
+      "decision": "published",
+      "slug": "egyptian-exchange-loses-market-value-sunday-b89572",
+      "title": "البورصة تفقد 160 مليار جنيه من رأس المال السوقي اليوم.. فما السبب؟"
+    },
+    "dc276abb91425054": {
+      "at": "2026-10-18T16:29:24.855Z",
+      "decision": "published",
+      "slug": "egyptian-exchange-loses-market-value-sunday-b89572",
+      "title": "من الأكثر تراجعاً بجلسة الأحد؟.. السيارات تتصدر هبوط القطاعات بـ 6.4%"
+    },
+    "13b4a02b5ffef236": {
+      "at": "2026-10-18T16:37:50.108Z",
+      "decision": "published",
+      "slug": "fertiglobe-egypt-phosphate-fertilizer-complex-plans-bad1ec",
+      "title": "أدنوك تبحث إقامة مجمع أسمدة فوسفاتية في مصر بـ1.5 مليار دولار"
+    },
+    "402339355878a270": {
+      "at": "2026-10-18T16:37:50.108Z",
+      "decision": "published",
+      "slug": "fertiglobe-egypt-phosphate-fertilizer-complex-plans-bad1ec",
+      "title": "وزير البترول يبحث مع رئيس فيرتيجلوب إقامة مجمع للأسمدة الفوسفاتية بالعين السخنة"
+    },
+    "67bcfd97b73300d3": {
+      "at": "2026-10-18T16:49:21.282Z",
+      "decision": "published",
+      "slug": "russian-diesel-us-delivery-contract-timeline-db7311",
+      "title": "موسكو: شحن الديزل إلى السوق الأميركية سيستغرق 20 يوماً"
+    },
+    "ff5b91817e99ce68": {
+      "at": "2026-10-18T16:49:21.282Z",
+      "decision": "published",
+      "slug": "russian-diesel-us-delivery-contract-timeline-db7311",
+      "title": "شحن الديزل الروسي إلى أمريكا يستغرق 20 يوماً"
     }
   }
 }

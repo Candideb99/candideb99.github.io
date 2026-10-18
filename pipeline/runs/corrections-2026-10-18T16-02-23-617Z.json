@@ -1,0 +1,19 @@
+{
+  "startedAt": "2026-10-18T16:02:23.796Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "saudi-oil-disruption-growth-budget-outlook-1f48b3",
+      "issue": "The table says «التاريخ: 25 سبتمبر · الحدث: فرنسا تعرض حماية منشآت ينبع، والسعودية تعلن تدمير ستة صواريخ باليستية أُطلقت الخميس.» (On September 25, France offered protection for Yanbu facilities and Saudi Arabia announced the destruction of six ballistic missiles launched on Thursday.). Source Khazendar says: \"وكانت وكالة الأنباء السعودية قد أفادت الخميس بتدمير ستة صواريخ باليستية أطلقتها الجماعة اليمنية باتجاه الطائف وينبع.\". SPA reported the destruction of six ballistic missiles on Thursday, not September 25, and the source does not specify that they were launched on Thursday.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [],
+      "note": "ذكرت نسخة سابقة من الجدول أن السعودية أعلنت في 25 سبتمبر تدمير ستة صواريخ باليستية أُطلقت الخميس. والصحيح أن وكالة الأنباء السعودية أفادت الخميس بتدمير الصواريخ الستة، ولم يحدد المصدر يوم إطلاقها.",
+      "model": "codex-cli/gpt-6.1-sol",
+      "before": {},
+      "after": {},
+      "changedSentences": [],
+      "newSentences": []
+    }
+  ]
+}

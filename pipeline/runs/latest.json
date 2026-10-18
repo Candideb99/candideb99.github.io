@@ -1,114 +1,499 @@
 {
-  "mode": "feature",
-  "startedAt": "2026-10-18T12:12:01.660Z",
-  "durationSec": 690,
-  "published": 1,
+  "mode": "news",
+  "startedAt": "2026-10-18T16:08:14.548Z",
+  "durationSec": 2467,
+  "published": 4,
   "refreshed": 0,
   "report": [
     {
-      "headline": "الاقتصاد السعودي بين اضطراب تصدير النفط وتوقعات الانكماش وموازنة 2027",
-      "section": "analysis",
+      "headline": "طرح حتى 30% من بنك القاهرة يبدأ غداً",
+      "section": "markets",
+      "importance": 8,
+      "sources": [
+        "https://www.youm7.com/story/2026/10/18/%D8%A3%D8%B6%D8%AE%D9%85-%D8%B7%D8%B1%D8%AD-%D8%AD%D9%83%D9%88%D9%85%D9%8A-%D8%A8%D8%A7%D9%84%D8%A8%D9%88%D8%B1%D8%B5%D8%A9-%D8%A7%D8%B9%D8%AA%D9%85%D8%A7%D8%AF-%D9%86%D8%B4%D8%B1%D8%A9-%D8%A8%D9%8A%D8%B9-30-%D9%85%D9%86-%D8%A8%D9%86%D9%83/7584572",
+        "https://www.alborsaanews.com/2026/10/18/2000122",
+        "https://www.alborsaanews.com/2026/10/18/2000113"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يقدمان طرحاً مقرراً الاثنين، لا بيعاً منجزاً، ويوضح المتن أنه بيع لأسهم قائمة لا إصدار لأسهم جديدة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يربط المتن الطرح ببرنامج الطروحات الحكومية ويشرح توزيع الأسهم وآلية تحديد السعر. ويستند الصندوق إلى تقدير محسوب عند الحد الأعلى للسعر وإمكان زيادة المعروض ليستنتج، بصورة مشروطة، أهمية طلب المستثمرين المؤهلين لقيمة العملية وحجمها.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "تتدرج الفقرات من طبيعة البيع وقيمته التقديرية إلى التسعير والتخصيص والمواعيد ثم الزيادة وشروط التداول؛ والصندوق يفسر حدود التقدير المالي بدلاً من تكرار الإعلان.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والمواعيد المذكورة مسندة، لكن «وأتاحت الهيئة زيادة المعروض… بحسب حجم التغطية» لا تذكر الموافقة المطلوبة لتنفيذ الزيادة. كذلك فإن أصل الأقوال المنسوبة إلى «تصريحات أوردتها «البورصة»» هو بيان مجلس الوزراء وفق المصدر 2.",
+              "repair": "إسناد الأقوال إلى بيان مجلس الوزراء، وإضافة أن الزيادة تتطلب موافقة الهيئة وقد ترفع الحصة الإجمالية إلى 45%."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يميّز النص بين بيع أسهم قائمة وإصدار أسهم جديدة، وبين بدء الطرح وبدء التداول المشروط بتقديم موافقة مجلس الوزراء.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يوضح توزيع الأسهم وآلية تحديد السعر. ويستنتج صندوق «لماذا يهمّ» أهمية طلب المستثمرين المؤهلين من حصتهم البالغة 95%، مع إبقاء زيادة المعروض مشروطة بالتغطية وموافقة الهيئة؛ وهي خلاصة اقتصادية محدودة تسندها المصادر.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "تتدرج الفقرات من طبيعة البيع وقيمته التقديرية إلى التسعير والتوزيع والمواعيد، ثم الزيادة وشروط التداول؛ ويضيف صندوق الدلالة تفسيراً لدور الطلب بدلاً من إعادة الخبر.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "يحافظ النص على وصف 24.25 مليار جنيه بأنها قيمة تقديرية عند الحد الأعلى للسعر الاسترشادي، ويفصل موعد تحديد السعر عن إغلاق الطرح العام، ويشترط موافقة الهيئة لزيادة الحصة إلى 45%. وتاريخ القيد المؤقت المذكور مسند إلى المصدر 1.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 1,
+        "rounds": 2,
+        "found": 1
+      },
       "outcome": "published",
-      "slug": "saudi-oil-disruption-growth-budget-outlook-1f48b3",
-      "title": "السعودية تتوقع انكماش اقتصادها 3.6% رغم عودة تدفقات النفط",
-      "score": 8,
+      "whyBasis": [
+        {
+          "fact": "القيمة التقديرية البالغة نحو 24.25 مليار جنيه تستند إلى الحد الأقصى للسعر الاسترشادي.",
+          "source": 2
+        },
+        {
+          "fact": "السعر النهائي يُحدد بحلول 26 أكتوبر استناداً إلى البناء السعري وطلبات المستثمرين.",
+          "source": 2
+        },
+        {
+          "fact": "تخصص الخطة 95% من الأسهم المعروضة للمستثمرين المؤهلين.",
+          "source": 1
+        },
+        {
+          "fact": "تسمح الهيئة بزيادة الأسهم المطروحة وفق حجم التغطية، ضمن حد أقصى مقرر وبشرط الحصول على موافقتها لتنفيذ الزيادة.",
+          "source": 1
+        }
+      ],
+      "slug": "banque-du-caire-share-offering-launch-f9a4ac",
+      "title": "بنك القاهرة يبدأ الاثنين طرح حصة أساسية تصل إلى 30%",
+      "score": 10,
+      "image": "photo"
+    },
+    {
+      "headline": "البورصة المصرية تفقد 160 مليار جنيه في جلسة الأحد",
+      "section": "markets",
+      "importance": 8,
+      "sources": [
+        "https://www.masrawy.com/news/news_economy/details/2026/10/18/3064794/%D8%A7%D9%84%D8%A8%D9%88%D8%B1%D8%B5%D8%A9-%D8%AA%D9%81%D9%82%D8%AF-160-%D9%85%D9%84%D9%8A%D8%A7%D8%B1-%D8%AC%D9%86%D9%8A%D9%87-%D9%85%D9%86-%D8%B1%D8%A3%D8%B3-%D8%A7%D9%84%D9%85%D8%A7%D9%84-%D8%A7%D9%84%D8%B3%D9%88%D9%82%D9%8A-%D8%A7%D9%84%D9%8A%D9%88%D9%85-%D9%81%D9%85%D8%A7-%D8%A7%D9%84%D8%B3%D8%A8%D8%A8-",
+        "https://www.youm7.com/story/2026/10/18/%D9%85%D9%86-%D8%A7%D9%84%D8%A3%D9%83%D8%AB%D8%B1-%D8%AA%D8%B1%D8%A7%D8%AC%D8%B9%D8%A7%D9%8B-%D8%A8%D8%AC%D9%84%D8%B3%D8%A9-%D8%A7%D9%84%D8%A3%D8%AD%D8%AF-%D8%A7%D9%84%D8%B3%D9%8A%D8%A7%D8%B1%D8%A7%D8%AA-%D8%AA%D8%AA%D8%B5%D8%AF%D8%B1-%D9%87%D8%A8%D9%88%D8%B7-%D8%A7%D9%84%D9%82%D8%B7%D8%A7%D8%B9%D8%A7%D8%AA-%D8%A8%D9%80/7584610"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يحددان خسارة القيمة السوقية خلال جلسة الأحد، مع قصر شمول التراجع على القطاعات الواردة في البيانات، وعدم تقديم التعافي المحتمل كحدث تحقق.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "توضح مقارنة المؤشرات تفاوت الهبوط، وتُنسب تفسيرات التحوط والتوترات إلى خبيرين مع تعريفهما وذكر «مصراوي» بوصفه مصدر التصريحات. ويستنتج صندوق الأهمية من تفاوت الهبوط واتساعه أن المؤشر الرئيسي وحده لا يكفي للحكم على تعافٍ واسع.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "تنتقل الفقرات من المؤشرات إلى القطاعات ثم تفسير البيع وشروط التعافي ضمن حدث واحد. ويضيف الصندوق معياراً مشروطاً لاتساع التعافي، بدلاً من تكرار الخسائر أو تلخيص أقوال المحللين.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام ومستوى الإغلاق وبيانات الرسم مطابقة للمصدرين، مع الحفاظ على «نحو» للخسارة السوقية. والتمييز بين مبيعات المؤسسات بحسب الغايش وتعاملات المستثمرين بحسب رمسيس يحفظ اختلاف نطاق القولين، كما تبقى توقعات التعافي منسوبة ومشروطة.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "انخفض المؤشر الرئيسي 2.63% مقابل تراجع مؤشر الأسهم الصغيرة والمتوسطة 6.58%.",
+          "source": 1
+        },
+        {
+          "fact": "تراجعت جميع القطاعات الواردة في بيانات الأداء خلال جلسة الأحد.",
+          "source": 2
+        }
+      ],
+      "slug": "egyptian-exchange-loses-market-value-sunday-b89572",
+      "title": "البورصة المصرية تفقد نحو 160 مليار جنيه في جلسة الأحد",
+      "score": 10,
+      "image": "cover-art"
+    },
+    {
+      "headline": "فيرتيجلوب تبحث مجمع أسمدة في مصر باستثمارات تتجاوز 1.5 مليار دولار",
+      "section": "companies",
+      "importance": 8,
+      "sources": [
+        "https://www.masrawy.com/news/news_economy/details/2026/10/18/3064833/%D8%A3%D8%AF%D9%86%D9%88%D9%83-%D8%AA%D8%A8%D8%AD%D8%AB-%D8%A5%D9%82%D8%A7%D9%85%D8%A9-%D9%85%D8%AC%D9%85%D8%B9-%D8%A3%D8%B3%D9%85%D8%AF%D8%A9-%D9%81%D9%88%D8%B3%D9%81%D8%A7%D8%AA%D9%8A%D8%A9-%D9%81%D9%8A-%D9%85%D8%B5%D8%B1-%D8%A8%D9%801-5-%D9%85%D9%84%D9%8A%D8%A7%D8%B1-%D8%AF%D9%88%D9%84%D8%A7%D8%B1",
+        "https://www.youm7.com/story/2026/10/18/%D9%88%D8%B2%D9%8A%D8%B1-%D8%A7%D9%84%D8%A8%D8%AA%D8%B1%D9%88%D9%84-%D9%8A%D8%A8%D8%AD%D8%AB-%D9%85%D8%B9-%D8%B1%D8%A6%D9%8A%D8%B3-%D9%81%D9%8A%D8%B1%D8%AA%D9%8A%D8%AC%D9%84%D9%88%D8%A8-%D8%A5%D9%82%D8%A7%D9%85%D8%A9-%D9%85%D8%AC%D9%85%D8%B9-%D9%84%D9%84%D8%A3%D8%B3%D9%85%D8%AF%D8%A9-%D8%A7%D9%84%D9%81%D9%88%D8%B3%D9%81%D8%A7%D8%AA%D9%8A%D8%A9/7584647"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يصفان خططاً مبدئية ودراسة جدوى، لا استثماراً معتمداً أو مشروعاً بدأ تنفيذه، والعنوان الفرعي يبرز شرط تأمين الخام.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يفسر النص الغرض المعلن بتحويل الخامات إلى منتجات أعلى قيمة، ويعرض التكامل مع إنتاج الأحماض والاستفادة من الأمونيا والبنية الصناعية. وهذه مقدمات مسندة في المصدرين وليست نتائج اقتصادية متحققة.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "يتدرج الخبر من حجم المشروع وطاقته إلى متطلبات تقييمه. ويستنتج صندوق الأهمية أن القيمة المضافة لا تتوقف على حجم الاستثمار وحده، مع تقييد الانتقال إلى الإنتاج بالجدوى وتأمين الخام وتحديد الاحتياجات؛ وهو استنتاج متناسب مع الوقائع، لا مجرد إعادة للعنوان.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «ويستهدف المشروع الوصول إلى الإنتاج التجاري عام 2030» توافق المصدر 1، بينما يحدد المصدر 2 الموعد بعام 2031، ولا تتضمن المواد بياناً أصلياً يحسم الاختلاف.",
+              "repair": "احذف موعد بدء الإنتاج مع إبقاء الطاقة المستهدفة، أو اعتمد السنة التي يثبتها بيان الوزارة الأصلي."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يوضحان أن المشروع قيد الدراسة، لا أنه حصل على موافقة تنفيذية، والعنوان الفرعي يبيّن شرط تأمين الخام لاستكمال تقييمه.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يربط المتن المشروع بالتصنيع المحلي وزيادة القيمة الاقتصادية للخامات، ويشرح التكامل المقترح مع إنتاج الأحماض والأمونيا والبنية الصناعية القائمة؛ وهي تفاصيل يؤيدها المصدران.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "يتدرج التقرير من حجم المشروع وطاقته إلى متطلبات الخام والتكامل الصناعي. ويستنتج صندوق الأهمية أن حجم الاستثمار وحده لا يحقق القيمة المضافة، مع تقييد الانتقال إلى الإنتاج باستكمال الجدوى وتأمين المدخلات؛ وهو استنتاج متناسب مع مقدماته المسندة.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الاستثمارات تتجاوز 1.5 مليار دولار والطاقة المستهدفة 1.3 مليون طن سنوياً، كما في المصدرين، وتظل المنافع أهدافاً لا نتائج محققة. حُذفت سنة الإنتاج، فزال التعارض السابق بين 2030 في المصدر 1 و2031 في المصدر 2.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "يستهدف المشروع زيادة العائد الاقتصادي للثروات التعدينية المصرية عبر التصنيع المحلي ودعم الإنتاج والصادرات.",
+          "source": 1
+        },
+        {
+          "fact": "تواصل فيرتيجلوب استكمال دراسة الجدوى وتدرس الربط بين إنتاج الأحماض الفوسفاتية وتصنيع الأسمدة النهائية.",
+          "source": 1
+        },
+        {
+          "fact": "تأمين إمدادات خام الفوسفات على المدى الطويل من المتطلبات الرئيسية لاستكمال تقييم المشروع.",
+          "source": 1
+        },
+        {
+          "fact": "تشمل الدراسات اللازمة التكنولوجيا واحتياجات الطاقة والبنية التحتية.",
+          "source": 1
+        }
+      ],
+      "slug": "fertiglobe-egypt-phosphate-fertilizer-complex-plans-bad1ec",
+      "title": "«فيرتيجلوب» تدرس إنشاء مجمع أسمدة في مصر بأكثر من 1.5 مليار دولار",
+      "score": 10,
+      "image": "photo"
+    },
+    {
+      "headline": "موسكو: شحن الديزل إلى أميركا يستغرق 15 إلى 20 يوماً بعد توقيع العقود",
+      "section": "energy",
+      "importance": 6,
+      "sources": [
+        "https://aawsat.com/node/5330830",
+        "https://www.alkhaleej.ae/2026-10-18/%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF/%D8%A3%D8%B3%D9%88%D8%A7%D9%82-%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-%D9%88%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D8%A9/%D8%B4%D8%AD%D9%86-%D8%A7%D9%84%D8%AF%D9%8A%D8%B2%D9%84-%D8%A7%D9%84%D8%B1%D9%88%D8%B3%D9%8A-%D8%A5%D9%84%D9%89-%D8%A3%D9%85%D8%B1%D9%8A%D9%83%D8%A7-%D9%8A%D8%B3%D8%AA%D8%BA%D8%B1%D9%82-20-%D9%8A%D9%88%D9%85%D8%A7"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يربطان مهلة الوصول بتوقيع العقود، ويبيّنان أن المفاوضات مستمرة وموعد التوقيع غير محدد؛ فلا يوحيان ببدء الشحن.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المقارنة بين كمية المرحلة الأولى والاستهلاك اليومي توضح حجم الاتفاق، لكن «المسؤول الروسي ألكسندر نوفاك» لا يبيّن صفته المختصة بالطاقة الواردة في المصدر 2.",
+              "repair": "يُستبدل التعريف عند أول ذكر بـ«ألكسندر نوفاك، نائب رئيس الوزراء الروسي لشؤون الطاقة»."
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "تنتقل الفقرات من شرط الوصول إلى حجم الكمية ثم خلفية الاتفاق. ويستنتج صندوق الأهمية، من شرط التوقيع ومقارنة الكمية بالاستهلاك، حدود تحديد موعد الوصول واستنتاج أثر مستمر؛ وهو استنتاج محدود لا يدّعي انعدام الأثر.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "المصدر 2 يدعم مهلة 15 إلى 20 يوماً بعد التوقيع، وكمية 2,22 مليون برميل، واستهلاك 3,9 ملايين برميل يومياً. وتطابق إحالتا why_basis هاتين المقدمتين، مع الحفاظ على الفرق بين كمية المرحلة الأولى ومعدل الاستهلاك اليومي.",
+              "repair": ""
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يربطان وصول الديزل بتوقيع العقود، ويوضح العنوان الفرعي أن المفاوضات مستمرة وموعد التوقيع غير معلن؛ فلا يوحيان ببدء الشحن أو تحديد موعد وصول نهائي.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "مقارنة كمية المرحلة الأولى بالاستهلاك اليومي تشرح حجم الاتفاق. ويستند صندوق «لماذا يهمّ» إلى شرط التوقيع وحجم الكمية، ليستنتج بصورة محدودة أنهما لا يكفيان لتحديد موعد الوصول أو إثبات أثر مستمر في التوافر. والمقدمتان مثبتتان في المصدر 2 وتطابقهما إحالتا why_basis.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "يتدرج التقرير من شروط الوصول إلى وضع العقود، ثم حجم الإمدادات وخلفية الاتفاق؛ وكلها جوانب لحدث واحد. ويضيف صندوق الخلاصة معنى اقتصادياً مشروطاً، لا مجرد إعادة للعنوان أو تلخيص لرأي محلل.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأسماء والصفات والتوقيتات والأرقام مطابقة للمصدر 2؛ والتمييز واضح بين كمية المرحلة الأولى البالغة 2,22 مليون برميل والاستهلاك اليومي البالغ 3,9 ملايين برميل. كما نُسب تقدير الوصول إلى نوفاك وحدد اختصاصه عند أول ذكر، فعولجت الملاحظة السابقة.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "ربط نوفاك وصول الوقود خلال 15 إلى 20 يوماً بتوقيع العقود، ولم يحدد موعد التوقيع.",
+          "source": 2
+        },
+        {
+          "fact": "تضم المرحلة الأولى 2,22 مليون برميل، مقابل استهلاك أمريكي يبلغ 3,9 ملايين برميل يومياً.",
+          "source": 2
+        }
+      ],
+      "slug": "russian-diesel-us-delivery-contract-timeline-db7311",
+      "title": "نوفاك يتوقع وصول الديزل إلى أمريكا خلال 15 إلى 20 يوماً من توقيع العقود",
+      "score": 10,
       "image": "photo"
     }
   ],
   "llm": {
-    "calls": 12,
+    "calls": 63,
     "failures": 0,
-    "promptTokens": 191059,
-    "completionTokens": 28349,
-    "cacheReadTokens": 35840,
+    "promptTokens": 744099,
+    "completionTokens": 74760,
+    "cacheReadTokens": 192256,
     "costUsd": 0,
     "byModel": {
-      "codex-cli/gpt-6.1-sol": 12
+      "codex-cli/gpt-6.1-sol": 63
     }
   },
   "log": [
-    "[12:12:01] newsroom start mode=feature limit=4 dry-run=false",
-    "[12:12:02] feature: 8 running files: السعودية (14), النفط (14), مصر (14), الذكاء الاصطناعي (14), الولايات المتحدة (14), مضيق هرمز (14), الصين (14), إيران (14)",
-    "[12:12:41] llm ok role=editor provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=38080",
-    "[12:12:41] feature file: السعودية; theme: الاقتصاد السعودي بين اضطراب تصدير النفط وتوقعات الانكماش وموازنة 2027; question: كيف تواجه السعودية اضطراب تصدير النفط بالتوازي مع توقع انكماش اقتصادها وإعداد موازنة 2027؟; 10 stories",
-    "[12:12:41]   story: 2026-09-24 فائض التجارة السعودية يتراجع 25% في يوليو إلى أدنى مستوى منذ مايو 2025",
-    "[12:12:41]   story: 2026-09-24 السعودية تبيع نحو 100 مليون برميل من الخام إلى آسيا عبر هرمز",
-    "[12:12:41]   story: 2026-09-25 علاوة تأمين مخاطر الحرب في ينبع تقفز إلى 3% من قيمة الناقلة",
-    "[12:12:41]   story: 2026-09-25 فرنسا تعرض حماية منشآت الطاقة السعودية في ينبع بعد هجمات حوثية",
-    "[12:12:41]   story: 2026-09-28 صادرات نفط الشرق الأوسط تتعافى إلى 12.8 مليون برميل يومياً في سبتمبر",
-    "[12:12:41]   story: 2026-09-29 السعودية تعيد التدفقات عبر خط شرق-غرب إلى 3.5 مليون برميل يومياً",
-    "[12:12:41]   story: 2026-09-30 البطالة في السعودية تتراجع إلى 3% في الربع الثاني",
-    "[12:12:41]   story: 2026-09-30 السعودية تقدّر إنفاق موازنة 2027 بنحو 1.392 تريليون ريال",
-    "[12:12:41]   story: 2026-09-30 صافي الاستثمار الأجنبي المباشر في السعودية يتراجع إلى 5.1 مليار دولار",
-    "[12:12:41]   story: 2026-10-01 وزارة المالية السعودية تتوقع انكماش الاقتصاد 3.6% في 2026",
-    "[12:15:24] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=162904",
-    "[12:17:24] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=119449",
-    "[12:18:21] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=56469",
-    "[12:18:21] desk: body accepted on the second try",
-    "[12:18:21] desk model=codex-cli/gpt-6.1-sol applied=[title,subtitle,lede,whyItMatters,body] rejected=[]",
-    "[12:18:21] desk \"السعودية تتوقع انكماش اقتصادها 3.6% رغم عودة تدفقات النفط\": rewrote title, subtitle, lede, whyItMatters, body",
-    "[12:18:21] checks feature \"السعودية تتوقع انكماش اقتصادها 3.6% رغم عودة تدفقات النفط\": 1374 words, 0 issues, 1 warnings",
-    "[12:20:15] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=114060",
-    "[12:20:15] critic feature: revise score=9 issues=1",
-    "[12:20:15]   · عبارة «الموعد المالي المقبل… هو نهاية العام، حين تعلن وزارة المالية خطة اقتراض 2027» تحوّل المهلة القصوى إلى موعد إعلان محدد. المصدر 10 يقول «بحلول نهاية العام»",
-    "[12:21:10] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=54026",
-    "[12:21:43] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=33546",
-    "[12:21:43] desk model=codex-cli/gpt-6.1-sol applied=[lede,whyItMatters] rejected=[]",
-    "[12:21:43] desk \"السعودية تتوقع انكماش اقتصادها 3.6% رغم عودة تدفقات النفط\": rewrote lede, whyItMatters",
-    "[12:22:30] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=45940",
-    "[12:22:30] critic (second pass) feature: revise score=8",
-    "[12:22:47] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=16684",
-    "[12:22:47] image: the picture should say: Saudi economic activity remains uneven despite restored oil flows.",
-    "[12:22:47] image: tier 3, the writer's own subjects: Yanbu oil terminal | Ras Tanura refinery | Saudi oil tanker",
-    "[12:22:47] commons \"Yanbu oil terminal 2026\": 0 usable of 0",
-    "[12:22:48] commons \"Yanbu oil terminal\": 0 usable of 0",
-    "[12:22:48] commons \"Yanbu oil\": 0 usable of 0",
-    "[12:22:49] commons \"terminal\": 2 usable of 12",
-    "[12:22:50] commons \"Ras Tanura refinery 2026\": 0 usable of 0",
-    "[12:22:50] commons \"Ras Tanura refinery\": 0 usable of 3",
-    "[12:22:51] commons \"Ras Tanura\": 5 usable of 12",
-    "[12:22:51] image: dropped \"Ras Tanura refinary 01.jpg\" — names too little of refinery",
-    "[12:22:51] image: dropped \"Ras Tanura beach.jpg\" — names too little of refinery",
-    "[12:22:51] image: dropped \"Ras Tanura Beach.jpg\" — names too little of refinery",
-    "[12:22:51] image: dropped \"Ras Tanura - pláž.jpg\" — names too little of refinery",
-    "[12:22:51] image: dropped \"شاطئ راس تنورة.jpg\" — names too little of refinery",
-    "[12:22:51] commons \"Saudi oil tanker 2026\": 0 usable of 0",
-    "[12:22:52] commons \"Saudi oil tanker\": 6 usable of 11",
-    "[12:22:52] image: dropped \"Weeze, Flughafen -- 2016 -- 2522-8.jpg\" — taken in Germany, which the story does not name",
-    "[12:22:52] image: dropped \"Cincinnati Union Terminal Ceiling.jpg\" — taken in United States, which the story does not name",
-    "[12:22:59] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=6078",
-    "[12:22:59] image: vision rejected all candidates (The tankers were photographed off Somalia in 2008, not in Saudi Arabia. The remaining image is an annotated satellite view of a 2019 oil spill, unsuitable and misleading for this story.)",
-    "[12:22:59] image: tier 4, the story's point and its subject: Saudi Arabia container port | Saudi Arabia factory workers | Riyadh shoppers | container port Saudi Arabia | factory workers Saudi Arabia | Jeddah shopping street (home: Saudi Arabia, Saudi, Riyadh, Jeddah, Yanbu)",
-    "[12:23:01] commons \"Saudi Arabia container port\": 4 usable of 7",
-    "[12:23:01] image: dropped \"Agreement signing for Patenga Container Terminal management and operat\" — shows sheikh, not the story's people",
-    "[12:23:01] image: dropped \"Eagle Resolve 2017 170330-A-WQ129-100.jpg\" — a warship or weapon, and the story is not about the military",
-    "[12:23:01] image: dropped \"Clathrina sinusarabica (10.11646-zootaxa.4426.1.1) Figure 14.jpg\" — names too little of container, port",
-    "[12:23:02] pexels \"Saudi Arabia container port\": 8 usable",
-    "[12:23:09] openverse \"Saudi Arabia container port\": 1 usable of 1",
-    "[12:23:09] commons \"Saudi Arabia factory workers\": 0 usable of 2",
-    "[12:23:09] commons \"Saudi Arabia\": 16 usable of 24",
-    "[12:23:09] image: dropped \"Uruq Bani Ma'arid Reserve, Saudi Arabia (2025).jpg\" — names too little of factory, workers",
-    "[12:23:09] image: dropped \"Supplicating Pilgrim at Masjid Al Haram. Mecca, Saudi Arabia.jpg\" — names too little of factory, workers",
-    "[12:23:09] image: dropped \"Saudi Hawks90.jpg\" — names too little of factory, workers",
-    "[12:23:09] image: dropped \"راع يقود جمله.jpg\" — names too little of factory, workers",
-    "[12:23:09] image: dropped \"Alexander Schallenberg in Saudi Arabia on 23 May 2024 - 8.jpg\" — names too little of factory, workers",
-    "[12:23:09] image: dropped \"Alexander Schallenberg in Saudi Arabia on 23 May 2024 - 10.jpg\" — names too little of factory, workers",
-    "[12:23:09] image: dropped \"Alexander Schallenberg in Saudi Arabia on 23 May 2024 - 22.jpg\" — names too little of factory, workers",
-    "[12:23:09] image: dropped \"Alexander Schallenberg in Saudi Arabia on 23 May 2024 - 7.jpg\" — names too little of factory, workers",
-    "[12:23:09] image: dropped \"Alexander Schallenberg in Saudi Arabia on 23 May 2024 - 14.jpg\" — names too little of factory, workers",
-    "[12:23:09] image: dropped \"Alexander Schallenberg in Saudi Arabia on 23 May 2024 - 12.jpg\" — names too little of factory, workers",
-    "[12:23:09] image: dropped \"Alexander Schallenberg in Saudi Arabia on 23 May 2024 - 23.jpg\" — names too little of factory, workers",
-    "[12:23:09] image: dropped \"Alexander Schallenberg in Saudi Arabia on 23 May 2024 - 1.jpg\" — names too little of factory, workers",
-    "[12:23:10] pexels \"Saudi Arabia factory workers\": 8 usable",
-    "[12:23:14] openverse \"Saudi Arabia factory workers\": 0 usable of 0",
-    "[12:23:14] image: dropped \"Three shepherds standing in a barn wearing traditional attire, showcas\" — names too little of factory, workers",
-    "[12:23:14] image: dropped \"A woman wearing a hijab organizes bottles in a warehouse environment.\" — names too little of factory, workers",
-    "[12:23:14] image: dropped \"A drone shot of shipping containers at Barcelona Port, Spain, showcasi\" — taken in Spain, which the story does not name",
-    "[12:23:14] image: dropped \"Colorful stacked cargo containers at a shipping yard in Jakarta, Indon\" — taken in Indonesia, which the story does not name",
-    "[12:23:14] image: thumbnail HTTP 403 for https://live.staticflickr.com/3385/3475528893_e754c2a822_n.jpg",
-    "[12:23:24] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=8226",
-    "[12:23:31] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=6248",
-    "[12:23:31] image: second check (codex-cli/gpt-6.1-sol) GENERIC_OK \"A cement manufacturing facility in Saudi Arabia with a worke\": The Saudi cement facility illustrates the non-oil economic activity discussed in the story.",
-    "[12:23:31] published feature \"السعودية تتوقع انكماش اقتصادها 3.6% رغم عودة تدفقات النفط\" -> saudi-oil-disruption-growth-budget-outlook-1f48b3"
+    "[16:30:17] desk notes: 10 facts, 1 quotes (codex-cli/gpt-6.1-sol)",
+    "[16:31:20] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=62803",
+    "[16:31:59] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=37861",
+    "[16:31:59] desk model=codex-cli/gpt-6.1-sol applied=[title,subtitle,lede,whyItMatters,body] rejected=[]",
+    "[16:31:59] desk \"فيرتيجلوب تدرس إنشاء مجمع أسمدة في مصر بأكثر من 1.5 مليار دولار\": rewrote title, subtitle, lede, whyItMatters, body",
+    "[16:32:33] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=33915",
+    "[16:32:33] critic \"فيرتيجلوب تدرس إنشاء مجمع أسمدة في مصر بأكثر من 1.5 مليار دولار\": revise score=10 issues=2",
+    "[16:32:33]   · موعد «الإنتاج التجاري عام 2030» تؤيده المادة في المصدر 1، لكن المصدر 2 يذكر 2031 مراراً. هذا تعارض غير محسوم، لا خطأ مثبت في نقل المصدر 1؛ احذف السنة مؤقتاً، أو",
+    "[16:32:33]   · عبارة «ويستهدف المشروع الوصول إلى الإنتاج التجاري عام 2030» توافق المصدر 1، بينما يحدد المصدر 2 الموعد بعام 2031، ولا تتضمن المواد بياناً أصلياً يحسم الاختلاف. ",
+    "[16:33:38] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=64942",
+    "[16:34:26] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=47031",
+    "[16:34:26] desk model=codex-cli/gpt-6.1-sol applied=[title,body] rejected=[]",
+    "[16:34:26] desk \"«فيرتيجلوب» تدرس إنشاء مجمع أسمدة في مصر بأكثر من 1.5 مليار دولار\": rewrote title, body",
+    "[16:34:44] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=17773",
+    "[16:34:44] critic (second pass) \"«فيرتيجلوب» تدرس إنشاء مجمع أسمدة في مصر بأكثر من 1.5 مليار دولار\": publish score=10 issues=0",
+    "[16:35:37] llm ok role=checker provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=52922",
+    "[16:35:37] precheck \"«فيرتيجلوب» تدرس إنشاء مجمع أسمدة في مصر بأكثر من 1.5 مليار دولار\": clean",
+    "[16:35:59] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=21118",
+    "[16:35:59] image: the picture should say: Egypt is weighing a fertilizer complex to turn phosphate into higher-value products, provided long-term supplies can be secured.",
+    "[16:35:59] image: tier 1, the story's own place (Ain Sokhna): Ain Sokhna | Ain Sokhna fertilizer plant | Ain Sokhna industrial complex",
+    "[16:35:59] commons \"Ain Sokhna\": 16 usable of 24",
+    "[16:35:59] pexels \"Ain Sokhna\": 8 usable",
+    "[16:36:19] openverse \"Ain Sokhna\": The operation was aborted due to timeout",
+    "[16:36:19] image: 7 file(s) dropped for naming none of Ain Sokhna",
+    "[16:36:25] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=4330",
+    "[16:36:25] image: vision rejected all candidates (None shows fertilizer production, phosphate processing or industrial infrastructure in Ain Sokhna; the shoreline, resorts and motorcycle scenes do not illustrate the proposed complex.)",
+    "[16:36:30] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=4931",
+    "[16:36:30] image: vision rejected all candidates (None shows fertilizer production, phosphate processing, or industrial infrastructure in Ain Sokhna; the candidates depict irrigation, flowers, and motorcycle gatherings.)",
+    "[16:36:44] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=13594",
+    "[16:36:44] image: the sources' photographs give no brief (1: A man wearing round glasses, a dark suit and a tie poses aga; 2: Two suited officials sit facing each other in an office besi)",
+    "[16:36:44] image: tier 3, the writer's own subjects: phosphate rock | Ain Sokhna port | fertilizer granules",
+    "[16:36:44] commons \"phosphate rock 2026\": 5 usable of 5",
+    "[16:36:44] commons \"phosphate rock\": 7 usable of 12",
+    "[16:36:44] image: dropped \"Phosphorite (GeoDIL number - 493).jpg\" — dated 2001, an archival picture",
+    "[16:36:44] image: dropped \"Amblygonite (GeoDIL number - 677).jpg\" — dated 2001, an archival picture",
+    "[16:36:44] image: dropped \"Amblygonite (GeoDIL number - 925).jpg\" — dated 2001, an archival picture",
+    "[16:36:44] image: dropped \"Apatite in calcite (GeoDIL number - 571).jpg\" — dated 2001, an archival picture",
+    "[16:36:44] image: dropped \"Apatite (GeoDIL number - 1734).jpg\" — dated 2001, an archival picture",
+    "[16:36:44] image: dropped \"Phosphorite (GeoDIL number - 301).jpg\" — dated 2001, an archival picture",
+    "[16:36:44] image: dropped \"Фосфатизированная порода.jpg\" — names too little of phosphate, rock",
+    "[16:36:44] image: dropped \"Phosphorit (Staffelit) - Staffel Lahngebiet.jpg\" — names too little of phosphate, rock",
+    "[16:36:44] image: dropped \"Phosphorite near Arad.jpg\" — names too little of phosphate, rock",
+    "[16:36:45] commons \"Ain Sokhna port 2026\": 0 usable of 1",
+    "[16:36:45] commons \"Ain Sokhna port\": 0 usable of 1",
+    "[16:36:45] commons \"Ain Sokhna\": 6 usable of 12",
+    "[16:36:46] commons \"fertilizer granules 2026\": 1 usable of 1",
+    "[16:36:46] commons \"fertilizer granules\": 6 usable of 12",
+    "[16:36:46] image: dropped \"DAP (Diammonium Phosphate) Granules (3).jpg\" — taken in India, which the story does not name",
+    "[16:36:46] image: dropped \"DAP (Diammonium Phosphate) Granules (2).jpg\" — taken in India, which the story does not name",
+    "[16:36:46] image: dropped \"DAP (Diammonium Phosphate) Granules (1).jpg\" — taken in India, which the story does not name",
+    "[16:36:46] image: dropped \"Disc Granulator.jpg\" — taken in China, which the story does not name",
+    "[16:36:46] image: dropped \"Phosphorite Mine Oron Israel 070313.jpg\" — taken in Israel, which the story does not name",
+    "[16:36:54] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=7180",
+    "[16:36:54] image: vision rejected all candidates (The sulfur image is a staged product close-up, while the other photographs show resorts and leisure scenes, not Egypt’s fertilizer or phosphate industry.)",
+    "[16:36:54] image: tier 4, the story's point and its subject: phosphate fertilizer plant Egypt | phosphate mine Egypt | fertilizer factory Ain Sokhna | fertilizer factory Egypt | fertilizer warehouse | ADNOC headquarters (home: Egypt, Egyptian, Ain Sokhna, Suez)",
+    "[16:36:54] commons \"phosphate fertilizer plant Egypt\": 0 usable of 1",
+    "[16:36:55] commons \"phosphate fertilizer\": 8 usable of 24",
+    "[16:36:55] image: dropped \"2023 Nawóz do kwiatów.jpg\" — names too little of phosphate, fertilizer, plant",
+    "[16:36:55] image: dropped \"Prosser-Fertilizer.jpg\" — names too little of phosphate, fertilizer, plant",
+    "[16:36:55] image: dropped \"NPK 19-19-19 Fertilizer (2).jpg\" — names too little of phosphate, fertilizer, plant",
+    "[16:36:55] image: dropped \"NPK 19-19-19 Fertilizer (3).jpg\" — names too little of phosphate, fertilizer, plant",
+    "[16:36:55] image: dropped \"NPK 19-19-19 Fertilizer (4).jpg\" — names too little of phosphate, fertilizer, plant",
+    "[16:36:55] image: dropped \"घुरुवा.jpg\" — names too little of phosphate, fertilizer, plant",
+    "[16:36:55] pexels \"phosphate fertilizer plant Egypt\": 8 usable",
+    "[16:37:06] openverse \"phosphate fertilizer plant Egypt\": 0 usable of 0",
+    "[16:37:06] image: dropped \"A vibrant corn field with lush green leaves basking in summer sunlight\" — names too little of phosphate, fertilizer, plant",
+    "[16:37:06] image: dropped \"Expansive green crop field under the warm sunrise, showcasing agricult\" — names too little of phosphate, fertilizer, plant",
+    "[16:37:06] image: dropped \"Hand holding a handful of organic silage for agricultural feeding, out\" — names too little of phosphate, fertilizer, plant",
+    "[16:37:06] image: dropped \"A vast industrial complex set in a desert environment under a clear sk\" — names too little of phosphate, fertilizer, plant",
+    "[16:37:06] image: dropped \"A vast agricultural landscape in Egypt with green fields under a brigh\" — names too little of phosphate, fertilizer, plant",
+    "[16:37:06] image: dropped \"Lush green cornfield glowing under bright blue skies and fluffy white \" — names too little of phosphate, fertilizer, plant",
+    "[16:37:06] commons \"phosphate mine Egypt\": 4 usable of 6",
+    "[16:37:06] image: dropped \"ModernEgypt, Fouad I, DHP13402-1-12 01.jpg\" — dated 1950, an archival picture",
+    "[16:37:07] pexels \"phosphate mine Egypt\": 8 usable",
+    "[16:37:26] openverse \"phosphate mine Egypt\": The operation was aborted due to timeout",
+    "[16:37:26] image: dropped \"A large yellow mining truck in a rocky quarry under a clear sky.\" — names too little of phosphate, mine",
+    "[16:37:26] image: dropped \"An underground tunnel with stored bricks and industrial equipment, evo\" — names too little of phosphate, mine",
+    "[16:37:26] image: dropped \"Aerial shot of a quarry with machinery extracting and processing mater\" — names too little of phosphate, mine",
+    "[16:37:26] image: dropped \"Yellow Hyundai excavator operating in a rocky quarry under a clear blu\" — names too little of phosphate, mine",
+    "[16:37:27] commons \"fertilizer factory Ain Sokhna\": 0 usable of 0",
+    "[16:37:27] commons \"fertilizer factory\": 15 usable of 24",
+    "[16:37:27] image: dropped \"Hartsville - Fertilizer Factory.jpg\" — dated 1929, an archival picture",
+    "[16:37:27] image: dropped \"DAP (Diammonium Phosphate) Granules (3).jpg\" — taken in India, which the story does not name",
+    "[16:37:43] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=13854",
+    "[16:37:50] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=6178",
+    "[16:37:50] image: second check (codex-cli/gpt-6.1-sol) GENERIC_OK \"Phosphate mine (52726859085).jpg\": An Egyptian phosphate mine illustrates the raw-material supply central to the proposed fertilizer complex.",
+    "[16:37:50] published \"«فيرتيجلوب» تدرس إنشاء مجمع أسمدة في مصر بأكثر من 1.5 مليار دولار\" -> fertiglobe-egypt-phosphate-fertilizer-complex-plans-bad1ec",
+    "[16:38:51] desk notes: 1 of 10 facts dropped (not in their source or copied from it)",
+    "[16:38:51] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=61401",
+    "[16:38:51] desk notes: 9 facts, 2 quotes (codex-cli/gpt-6.1-sol)",
+    "[16:39:53] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=60723",
+    "[16:39:53] desk: spelling table fixed title",
+    "[16:40:23] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=29223",
+    "[16:40:43] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=20493",
+    "[16:40:43] desk: body accepted on the second try",
+    "[16:40:43] desk model=codex-cli/gpt-6.1-sol applied=[title,subtitle,lede,whyItMatters,body] rejected=[]",
+    "[16:40:43] desk \"نوفاك يتوقع وصول الديزل إلى أمريكا بعد توقيع العقود بـ15 إلى 20 يوماً\": rewrote title, subtitle, lede, whyItMatters, body",
+    "[16:41:27] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=43961",
+    "[16:41:27] critic \"نوفاك يتوقع وصول الديزل إلى أمريكا بعد توقيع العقود بـ15 إلى 20 يوماً\": revise score=10 issues=2",
+    "[16:41:27]   · التعريف «المسؤول الروسي ألكسندر نوفاك» عام؛ يورد المصدر 2 صفته «نائب رئيس الوزراء الروسي لشؤون الطاقة». تُضاف عند أول ذكر لتوضيح موقعه وصلته بملف الإمدادات، من ",
+    "[16:41:27]   · المقارنة بين كمية المرحلة الأولى والاستهلاك اليومي توضح حجم الاتفاق، لكن «المسؤول الروسي ألكسندر نوفاك» لا يبيّن صفته المختصة بالطاقة الواردة في المصدر 2. — يُس",
+    "[16:43:59] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=151313",
+    "[16:44:38] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=37959",
+    "[16:44:56] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=17710",
+    "[16:44:56] desk: body accepted on the second try",
+    "[16:44:56] desk model=codex-cli/gpt-6.1-sol applied=[title,whyItMatters,body] rejected=[]",
+    "[16:44:56] desk \"نوفاك يتوقع وصول الديزل إلى أمريكا خلال 15 إلى 20 يوماً من توقيع العقود\": rewrote title, whyItMatters, body",
+    "[16:45:28] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=31770",
+    "[16:45:28] critic (second pass) \"نوفاك يتوقع وصول الديزل إلى أمريكا خلال 15 إلى 20 يوماً من توقيع العقود\": publish score=10 issues=0",
+    "[16:47:20] llm ok role=checker provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=107686",
+    "[16:47:20] precheck \"نوفاك يتوقع وصول الديزل إلى أمريكا خلال 15 إلى 20 يوماً من توقيع العقود\": clean",
+    "[16:47:47] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=25311",
+    "[16:47:47] image: the picture should say: Russian diesel would reach American markets 15–20 days after contracts are signed, not after the agreement was announced.",
+    "[16:47:47] image: the story's people first: Alexander Novak Kirill Dmitriev 2026 | Alexander Novak Kirill Dmitriev | Alexander Novak and Kirill Dmitriev | Alexander Novak 2026 | Kirill Dmitriev 2026",
+    "[16:47:47] commons \"Alexander Novak Kirill Dmitriev 2026\": 0 usable of 0",
+    "[16:47:48] commons \"Alexander Novak\": 12 usable of 20",
+    "[16:47:48] image: dropped \"Gazprom CEO Alexei Miller and Russian Energy Minister Alexander Novak \" — shows alexei, alexei, not the story's people",
+    "[16:47:48] image: dropped \"Alexey Kudrin and Aleksandr Novak, June 2010.jpeg\" — shows alexei, not the story's people",
+    "[16:47:49] commons \"Alexander Novak Kirill Dmitriev\": 0 usable of 0",
+    "[16:47:49] commons \"Alexander Novak\": 12 usable of 20",
+    "[16:47:49] commons \"Alexander Novak and Kirill Dmitriev\": 0 usable of 0",
+    "[16:47:49] commons \"Alexander Novak Kirill Dmitriev\": 0 usable of 0",
+    "[16:47:49] commons \"Alexander Novak\": 12 usable of 20",
+    "[16:47:50] commons \"Alexander Novak 2026\": 11 usable of 12",
+    "[16:47:50] image: dropped \"Sergey Lavrov before the Russia-Seychelles talks.jpg\" — shows sergei, oksana, not the story's people",
+    "[16:47:50] image: dropped \"Dmitry Peskov during the Russia-Congo talks.jpg\" — shows dmitry, not the story's people",
+    "[16:47:50] commons \"Kirill Dmitriev 2026\": 1 usable of 1",
+    "[16:47:50] image: set aside \"Aleksandr Novak, July 2010.jpeg\" — a 2010 photograph of a person, older than 2018",
+    "[16:47:50] image: set aside \"Maksim Topilin, Nikolay Nikiforov, Aleksand Novak, May 2012.\" — a 2012 photograph of a person, older than 2018",
+    "[16:47:50] image: set aside \"Aleksandr Novak in Simferopol (2015-12-02).jpg\" — a 2015 photograph of a person, older than 2018",
+    "[16:47:50] image: people shortlist: 2026 P20260905DT-0397 (55519336625).jpg | 2026 Vladimir Putin with President of the Republic of t | 2026 Russia-Congo talks.jpg | 2026 Russia-Seychelles talks.jpg",
+    "[16:48:09] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=17195",
+    "[16:48:09] image: vision rejected all candidates (None clearly illustrates the diesel negotiations or shipments. Novak appears at unrelated events, while the airport photograph foregrounds other US envoys rather than Dmitriev.)",
+    "[16:48:18] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=8483",
+    "[16:48:18] image: vision rejected all candidates (Novak appears only at unrelated events; none depicts the diesel negotiations or shipments, and signing imagery could misleadingly suggest contracts are finalized.)",
+    "[16:48:18] image: nothing of them since 2018 fits; their newest older photographs, run as file photos: 2012 Maksim Topilin, Nikolay Nikiforov, Aleks | 2015 Aleksandr Novak in Simferopol (2015-12-0",
+    "[16:48:26] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=7278",
+    "[16:48:26] image: vision rejected all candidates (Neither photo illustrates the diesel negotiations: the first shows an unrelated group of officials, and the second shows Novak at a Crimea electricity project with a prominent map.)",
+    "[16:48:41] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=13922",
+    "[16:48:41] image: the source's photograph (Asharq Al-Awsat) shows A tanker is moored at an industrial waterfront terminal with a tugboat alongside.; searching Russian oil tanker | Russia oil terminal | diesel tanker at port | oil tanker loading terminal",
+    "[16:48:41] image: tier 2, like the sources' own photograph: Russian oil tanker | Russia oil terminal | diesel tanker at port | oil tanker loading terminal",
+    "[16:48:41] commons \"Russian oil tanker\": 15 usable of 20",
+    "[16:48:41] image: dropped \"The stateless crude oil tanker MT Sophia transits the Atlantic Ocean d\" — a warship or weapon, and the story is not about the military",
+    "[16:48:41] pexels \"Russian oil tanker\": 8 usable",
+    "[16:49:01] openverse \"Russian oil tanker\": The operation was aborted due to timeout",
+    "[16:49:01] image: dropped \"Aerial shot of an oil tanker sailing in the ocean near Vado Ligure, It\" — taken in Italy, which the story does not name",
+    "[16:49:11] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=9256",
+    "[16:49:21] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=9974",
+    "[16:49:21] image: second check (codex-cli/gpt-6.1-sol) GENERIC_OK \"ARARAT (Chemical and oil tanker), Arhangelsk.jpg\": The Russian oil tanker illustrates the story’s fuel-shipping sector in a country directly involved in the deal.",
+    "[16:49:21] published \"نوفاك يتوقع وصول الديزل إلى أمريكا خلال 15 إلى 20 يوماً من توقيع العقود\" -> russian-diesel-us-delivery-contract-timeline-db7311"
   ]
 }

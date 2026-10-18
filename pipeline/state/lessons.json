@@ -203,10 +203,11 @@
     "egypt-ai-data-center-nvidia-billion-dollar-b0fc50:9cb6a47d",
     "brent-above-100-dollars-gulf-escalation-8281ef:950eae47",
     "brent-above-100-dollars-gulf-escalation-8281ef:e4379e59",
-    "saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3:d59a7a95"
+    "saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3:d59a7a95",
+    "saudi-oil-disruption-growth-budget-outlook-1f48b3:25ba2543"
   ],
-  "version": 29,
-  "updatedAt": "2026-10-01T00:41:58.945Z",
+  "version": 30,
+  "updatedAt": "2026-10-18T16:07:56.392Z",
   "lessons": [
     {
       "id": "L1",
@@ -499,11 +500,12 @@
         "oil-surges-above-107-after-saudi-pipeline-shutdown-13652d:9cc1b03e",
         "ai-leaders-warn-openai-ipo-delay-b7d3e6:bba093b8",
         "ai-leaders-warn-openai-ipo-delay-b7d3e6:e9073376",
-        "sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730:dceab7ec"
+        "sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730:dceab7ec",
+        "saudi-oil-disruption-growth-budget-outlook-1f48b3:25ba2543"
       ],
-      "seen": 27,
+      "seen": 28,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-26T21:21:24.740Z",
+      "lastSeen": "2026-10-18T16:07:56.392Z",
       "status": "active",
       "previous": [
         "Take each event's day from the source's sentence about that event; convert a weekday by counting back from the publication date. Keep an announcement, a takeover, a later remark and a reply on their own days, with any time of day given.",
@@ -664,7 +666,7 @@
       "status": "pending"
     }
   ],
-  "model": "claude-cli",
+  "model": "codex-cli/gpt-6.1-sol",
   "history": [
     {
       "at": "2026-09-25T07:41:52.105Z",
@@ -952,6 +954,13 @@
         "reinforce L4 (+1; reworded at most once a week)",
         "reinforce L8 (+1)",
         "reinforce L1 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-10-18T16:07:56.392Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L6 (+1; reworded at most once a week)"
       ]
     }
   ],

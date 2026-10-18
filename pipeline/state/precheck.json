@@ -2911,6 +2911,233 @@
           "noted": []
         }
       ]
+    },
+    "banque-du-caire-share-offering-launch-f9a4ac": {
+      "at": "2026-10-18T16:21:12.915Z",
+      "title": "بنك القاهرة يبدأ الاثنين طرح حصة أساسية تصل إلى 30%",
+      "writer": "codex-cli/gpt-6.1-sol → codex-cli/gpt-6.1-sol",
+      "lessons": "v30",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 19,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 2,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 3,
+              "field": "lede",
+              "class": "attribution",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "أعلن هاشم السيد، رئيس وحدة الشركات المملوكة للدولة، بدء طرح حصة تصل إلى 30% من بنك القاهرة الاثنين.",
+              "quote": "واعتمدت الهيئة العامة للرقابة المالية، اليوم الأحد، نشرة طرح أسهم البنك، تمهيدًا لبدء الطرحين الخاص والعام غدًا الاثنين، بعد نحو 9 سنوات من القيد المؤقت لأسهمه بالبورصة في 8 فبراير 2017.",
+              "source": "Alborsa News",
+              "sourceN": 2,
+              "correction": "The source reports Monday's launch in its own narration rather than attributing a launch announcement to Hashem El-Sayed."
+            }
+          ],
+          "noted": [
+            {
+              "id": 21,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ويجب، بموجب اشتراطات الهيئة، إعلان أي زيادة في موعد أقصاه 3 أيام قبل إغلاق تلقي أوامر الطرح العام.",
+              "quote": "وتتيح موافقة الهيئة زيادة عدد الأسهم المطروحة بحد أقصى 2.2875 مليار سهم إضافي، بما يمثل 15% من إجمالي رأس مال البنك، ليصل إجمالي الأسهم المطروحة في هذه الحالة إلى 6.8625 مليار سهم، تعادل 45% من إجمالي أسهم البنك، وذلك وفقًا لقرار الجمعية العامة العادية المنعقدة في 5 أبريل 2026، وبعد الحصول على موافقة الهيئة، على أن يُعلن عن الزيادة قبل موعد غلق باب تلقي أوامر الطرح العام بثلاثة أيام على الأكثر.",
+              "source": "Alborsa News",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 24,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وأسهم البنك مقيدة مؤقتاً في السوق الرئيسية منذ 19 فبراير 2017.",
+              "quote": "واعتمدت الهيئة العامة للرقابة المالية، اليوم الأحد، نشرة طرح أسهم البنك، تمهيدًا لبدء الطرحين الخاص والعام غدًا الاثنين، بعد نحو 9 سنوات من القيد المؤقت لأسهمه بالبورصة في 8 فبراير 2017.",
+              "source": "Alborsa News",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 18,
+            "weak": 0,
+            "noEvidence": 3,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 21,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ويجب، بموجب اشتراطات الهيئة، إعلان أي زيادة في موعد أقصاه 3 أيام قبل إغلاق تلقي أوامر الطرح العام.",
+              "quote": "وتتيح موافقة الهيئة زيادة عدد الأسهم المطروحة بحد أقصى 2.2875 مليار سهم إضافي، بما يمثل 15% من إجمالي رأس مال البنك، ليصل إجمالي الأسهم المطروحة في هذه الحالة إلى 6.8625 مليار سهم، تعادل 45% من إجمالي أسهم البنك، وذلك وفقًا لقرار الجمعية العامة العادية المنعقدة في 5 أبريل 2026، وبعد الحصول على موافقة الهيئة، على أن يُعلن عن الزيادة قبل موعد غلق باب تلقي أوامر الطرح العام بثلاثة أيام على الأكثر.",
+              "source": "Alborsa News",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 24,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وأسهم البنك مقيدة مؤقتاً في السوق الرئيسية منذ 19 فبراير 2017.",
+              "quote": "واعتمدت الهيئة العامة للرقابة المالية، اليوم الأحد، نشرة طرح أسهم البنك، تمهيدًا لبدء الطرحين الخاص والعام غدًا الاثنين، بعد نحو 9 سنوات من القيد المؤقت لأسهمه بالبورصة في 8 فبراير 2017.",
+              "source": "Alborsa News",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "egyptian-exchange-loses-market-value-sunday-b89572": {
+      "at": "2026-10-18T16:29:24.852Z",
+      "title": "البورصة المصرية تفقد نحو 160 مليار جنيه في جلسة الأحد",
+      "writer": "codex-cli/gpt-6.1-sol",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 22,
+            "checked": 22,
+            "supported": 17,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 3,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 2,
+              "field": "subtitle",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "مؤشر الأسهم الصغيرة والمتوسطة يهبط 6.58% مقابل تراجع المؤشر الرئيسي 2.63%",
+              "quote": "وأوضح أن المؤشر الرئيسي تراجع بنحو 6.10%، فيما هبط مؤشر الشركات الصغيرة والمتوسطة EGX70 بنحو 6.5%، وهي نسب انخفاض كبيرة انعكست بشكل ملحوظ على رأس المال السوقي للشركات المقيدة.",
+              "source": "Masrawy",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 7,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تراجع المؤشر الرئيسي الأحد: 2.63%",
+              "quote": "وأوضح أن المؤشر الرئيسي تراجع بنحو 6.10%، فيما هبط مؤشر الشركات الصغيرة والمتوسطة EGX70 بنحو 6.5%، وهي نسب انخفاض كبيرة انعكست بشكل ملحوظ على رأس المال السوقي للشركات المقيدة.",
+              "source": "Masrawy",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 13,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "أغلق المؤشر الرئيسي EGX 30 عند 50896 نقطة، منخفضاً 2.63%.",
+              "quote": "وأوضح أن المؤشر الرئيسي تراجع بنحو 6.10%، فيما هبط مؤشر الشركات الصغيرة والمتوسطة EGX70 بنحو 6.5%، وهي نسب انخفاض كبيرة انعكست بشكل ملحوظ على رأس المال السوقي للشركات المقيدة.",
+              "source": "Masrawy",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "fertiglobe-egypt-phosphate-fertilizer-complex-plans-bad1ec": {
+      "at": "2026-10-18T16:37:50.105Z",
+      "title": "«فيرتيجلوب» تدرس إنشاء مجمع أسمدة في مصر بأكثر من 1.5 مليار دولار",
+      "writer": "codex-cli/gpt-6.1-sol → codex-cli/gpt-6.1-sol",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 14,
+            "checked": 14,
+            "supported": 12,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "russian-diesel-us-delivery-contract-timeline-db7311": {
+      "at": "2026-10-18T16:49:21.279Z",
+      "title": "نوفاك يتوقع وصول الديزل إلى أمريكا خلال 15 إلى 20 يوماً من توقيع العقود",
+      "writer": "codex-cli/gpt-6.1-sol → codex-cli/gpt-6.1-sol",
+      "lessons": "v30",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 15,
+            "checked": 15,
+            "supported": 12,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 3,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
