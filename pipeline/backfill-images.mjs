@@ -89,12 +89,13 @@ for (const file of files) {
   for (const s of NO_SOURCES ? [] : (data.sources ?? []).slice(0, 4)) {
     if (!/^https?:\/\//.test(String(s.url ?? ""))) continue;
     const page = await extractArticle(s.url, { log });
-    if (page.ogImage || page.text) sources.push({ sourceName: s.name, sourceNameEn: s.nameEn, title: s.title, url: s.url, ogImage: page.ogImage ?? "", text: page.ok ? page.text : "" });
+    if (page.ogImage || page.text) sources.push({ sourceName: s.name, sourceNameEn: s.nameEn, title: s.title, url: s.url, ogImage: page.ogImage ?? "", photos: page.photos ?? [], text: page.ok ? page.text : "" });
   }
   let image = null;
   try {
     const exclude = AS_NEW ? new Set([...used].filter((u) => u !== own && !String(u).startsWith("title:") && !String(u).startsWith("series"))) : used;
-    image = await pickImage({ draft, story, log, exclude, sources });
+    // A handout is kept on the site (lib/images.mjs handoutTier()); a dry run keeps nothing.
+    image = await pickImage({ draft, story, log, exclude, sources, photoDir: DRY_RUN ? null : path.join(process.cwd(), "public", "photos", "handouts") });
   } catch (error) {
     log(`${file}: failed (${error.message.split("\n")[0]})`);
   }

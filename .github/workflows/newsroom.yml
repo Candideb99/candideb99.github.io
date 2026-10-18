@@ -260,6 +260,8 @@ jobs:
           git config merge.state-json.driver "node scripts/merge-state.mjs %O %A %B"
           # evidence/: each published story's source evidence as it read at publication (pipeline/lib/snapshots.mjs).
           git add content/articles evidence pipeline/state pipeline/runs src/data/markets.json src/data/calendar.json 2>/dev/null || git add content/articles pipeline/state pipeline/runs src/data/markets.json src/data/calendar.json
+          # public/photos/handouts/: official handout photographs kept on the site (pipeline/lib/images.mjs handoutTier()).
+          git add public/photos/handouts 2>/dev/null || true
           fixed=""
           if [ "${CORRECTED:-0}" != "0" ]; then fixed=", ${CORRECTED} corrected"; fi
           if git diff --cached --quiet; then

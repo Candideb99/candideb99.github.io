@@ -35,6 +35,8 @@ const image = z
     license: z.string().optional(),
     licenseUrl: z.string().optional(),
     pageUrl: z.string().optional(),
+    /** A handout photograph (pipeline/lib/images.mjs handoutTier()): the report it was taken from; never printed. */
+    foundOn: z.string().optional(),
   })
   .nullable()
   .optional();

@@ -133,7 +133,7 @@ export async function collectNewsEvidence(story, candidates, { extract = extract
       if (!fetched.ok) log(`evidence ${item.sourceId}: ${fetched.reason}`);
     }
     const text = fetched?.ok ? fetched.text : "";
-    sources.push({ ...item, text, fetchedAt: text ? now() : null, ogImage: fetched?.ogImage ?? "" });
+    sources.push({ ...item, text, fetchedAt: text ? now() : null, ogImage: fetched?.ogImage ?? "", photos: fetched?.photos ?? [] });
     if (text && item.kind !== "official") {
       for (const link of fetched.links ?? []) {
         const official = officialDocument(link.url);
@@ -154,7 +154,7 @@ export async function collectNewsEvidence(story, candidates, { extract = extract
         sources.push({ id: `primary-${fingerprint(selected.url)}`, sourceId: hostOf(selected.url),
           sourceName: selected.name, sourceNameEn: selected.nameEn, kind: "official", reliability: 3,
           title: fetched.title, url: selected.url, lang: fetched.lang || "unknown", publishedAt: fetched.publishedAt ?? null,
-          summary: "", text: fetched.text, fetchedAt: now(), ogImage: fetched.ogImage ?? "", discoveredFrom: selected.discoveredFrom });
+          summary: "", text: fetched.text, fetchedAt: now(), ogImage: fetched.ogImage ?? "", photos: fetched.photos ?? [], discoveredFrom: selected.discoveredFrom });
         log(`evidence primary document: ${selected.nameEn} (linked by ${selected.discoveredFrom})`);
       } else log(`evidence primary document skipped: ${fetched.ok ? "title does not establish relevance" : fetched.reason}`);
     } catch (error) { log(`evidence primary document unavailable: ${error.message}`); }

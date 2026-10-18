@@ -53,6 +53,8 @@ const option = (name, fallback) => {
 const DRY_RUN = flag("dry-run");
 /** `--dry-run --preview=DIR`: what the run would publish is written to DIR instead, to be read first. */
 const PREVIEW_DIR = DRY_RUN ? option("preview", null) : null;
+/** Where a handout photograph is kept (lib/images.mjs handoutTier()): on the site, or beside a preview, or nowhere in a bare dry run. */
+const HANDOUT_DIR = DRY_RUN ? (PREVIEW_DIR ? path.join(PREVIEW_DIR, "photos", "handouts") : null) : path.join(root, "public", "photos", "handouts");
 /** Private writing evaluation only: never change scheduled publishing or save source bodies in the repository. */
 const TEXT_ONLY = DRY_RUN && flag("text-only");
 const WRITING_AUDIT = DRY_RUN && PREVIEW_DIR && flag("writing-audit");
@@ -484,7 +486,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
 
   // The whole story and its sources' own lead photographs go to the picture desk: the cascade's place and the
   // subject of the sources' photographs come before the writer's searches (lib/images.mjs findImage()).
-  const image = refresh ? refresh.data.image : TEXT_ONLY ? null : await pickImage({ draft, story, log, exclude: usedImages(existing), sources });
+  const image = refresh ? refresh.data.image : TEXT_ONLY ? null : await pickImage({ draft, story, log, exclude: usedImages(existing), sources, photoDir: HANDOUT_DIR });
   const slug = refresh ? refresh.data.slug : buildSlug(draft, story);
   let markdown = serializeArticle({
     pending: DRAFT,

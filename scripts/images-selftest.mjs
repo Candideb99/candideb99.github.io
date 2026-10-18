@@ -8,7 +8,7 @@
  *
  *   node scripts/images-selftest.mjs
  */
-import { withStandIns, pickImage, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, fold, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { withStandIns, pickImage, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
 
 let failed = 0;
 function check(name, got, want) {
@@ -73,12 +73,15 @@ const fileNameIn = (prompt) => String(prompt).match(/^File name: (.*)$/m)?.[1] ?
  * "throw"); `judge(titles, prompt)` returns the 1-based choice or 0; `verify(fileName, prompt)` returns a verdict or
  * throws; `brief` is the source-photo reader's answer. Returns the photo, every search asked, and the calls made.
  */
-async function scenario({ draft, world = {}, libs = {}, plan, judge, verify = () => "RIGHT", brief = null, byText = null, sources = [], exclude = new Set(), lastResort = { scene: null, country: null, institution: null, city: null } }) {
+async function scenario({ draft, world = {}, libs = {}, plan, judge, verify = () => "RIGHT", brief = null, byText = null, sources = [], exclude = new Set(), lastResort = { scene: null, country: null, institution: null, city: null }, handout = null, handoutWidth = 975, photoDir = null }) {
   const searched = [];
   const calls = [];
   const judgePrompts = [];
   const inlined = [];
+  const saved = [];
   const restore = withStandIns({
+    fetchHandout: async (url) => ({ width: handoutWidth, height: 557, savedWidth: Math.min(handoutWidth, 1280), savedHeight: 557, buffer: Buffer.from("x"), preview: "data:image/jpeg;base64,AAAA", url }),
+    saveHandout: async (got, file) => { saved.push(file); },
     searchCommons: async (query) => {
       searched.push(query);
       return (world[query] ?? []).map((f) => ({ ...f }));
@@ -111,6 +114,9 @@ async function scenario({ draft, world = {}, libs = {}, plan, judge, verify = ()
       } else if (system.includes("wire captions")) {
         calls.push("judge-by-text");
         data = { choice: (byText ?? (() => 1))(titlesIn(user), user), alt: "صورة اختبار", reason: "test" };
+      } else if (user.includes("The outlet credits it to")) {
+        calls.push("handout");
+        data = handout ?? { news_photo: true, this_story: true, watermark: false, clear: true, caption_ar: "جانب من الاجتماع", credit_ar: "وزارة البترول المصرية", reason: "test" };
       } else if (system.includes("strict newspaper picture editor")) {
         calls.push(`verify:${fileNameIn(user)}`);
         data = { verdict: verify(fileNameIn(user), user), reason: "test" };
@@ -127,8 +133,8 @@ async function scenario({ draft, world = {}, libs = {}, plan, judge, verify = ()
   try {
     // IMAGES_SELFTEST_LOG=1 prints the desk's own log for every case.
     const log = process.env.IMAGES_SELFTEST_LOG ? (line) => console.log(`      ${line}`) : () => {};
-    const image = await pickImage({ draft, story: { angle: "" }, log, exclude, sources });
-    return { image, searched, calls, inlined, judgePrompts };
+    const image = await pickImage({ draft, story: { angle: "" }, log, exclude, sources, photoDir });
+    return { image, searched, calls, inlined, judgePrompts, saved };
   } finally {
     restore();
   }
@@ -407,6 +413,48 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
   });
   check("a frame the check calls UNCLEAR is refused and never offered again", [u.image?.title ?? null, u.calls.filter((c) => c === `verify:${gate.title}`).length], [null, 1]);
   check("the check that refused it had the frame and the UNCLEAR rule", prompts.some((p) => p.includes("UNCLEAR: the photograph itself is attached")), true);
+}
+
+// Handouts (the owner, 2026-10-18: "yes, use handouts credited to official sources"): a source's photograph is taken
+// only when the outlet credits an official body or a company the story names; never an agency's, the outlet's own, an
+// archive, an uncredited one or a small one; it comes before every library and is kept on the site, credited.
+{
+  check(
+    "the credited body is read as outlets write it",
+    [
+      creditedBody({ credit: "الصورة من وزارة البترول المصرية" }),
+      creditedBody({ caption: "Egypt's Petroleum Ministry/Handout via REUTERS" }),
+      creditedBody({ caption: "Al Jaber at the signing. Photo: ADNOC" }),
+      creditedBody({ caption: "جانب من الاجتماع" }),
+    ],
+    ["وزارة البترول المصرية", "Egypt's Petroleum Ministry", "ADNOC", ""],
+  );
+  const story = { title: "وزير البترول يبحث مع «فيرتيجلوب» إنشاء مجمع للأسمدة في مصر", lede: "بحث وزير البترول مع رئيس «فيرتيجلوب».", body: "قالت وزارة البترول في بيان إن...", tags: ["مصر"] };
+  const ministry = { url: "https://cdn.test/meeting.jpeg", credit: "الصورة من وزارة البترول المصرية", caption: "", width: 975 };
+  check(
+    "only an official, related, large-enough credit passes",
+    [
+      handoutFault(ministry, { story, source: { sourceName: "سي إن بي سي عربية", title: "مصر تبحث مع فيرتيغلوب" } }),
+      handoutFault({ ...ministry, credit: "الصورة من رويترز" }, { story }) ?? "",
+      handoutFault({ ...ministry, caption: "صورة أرشيفية" }, { story }) ?? "",
+      handoutFault({ ...ministry, credit: "الصورة من وزارة الصحة" }, { story }) ?? "",
+      handoutFault({ ...ministry, width: 600 }, { story }) ?? "",
+      handoutFault({ ...ministry, credit: "" , caption: "جانب من الاجتماع" }, { story }) ?? "",
+    ].map((x) => (x === null ? "ok" : x.split(" ")[0])),
+    ["ok", "credited", "the", "«وزارة", "too", "no"],
+  );
+  const draft = { ...developers, ...story, kind: "news" };
+  const sources = [{ sourceNameEn: "CNBC Arabia", sourceName: "سي إن بي سي عربية", title: "مصر تبحث مع فيرتيغلوب", url: "https://www.cnbcarabia.com/158331", photos: [ministry] }];
+  const r = await scenario({ draft, sources, photoDir: "C:/site/public/photos/handouts", plan: planFor(), world: {}, judge: () => 1 });
+  check(
+    "a credited handout comes before every library, kept on the site and credited to the ministry",
+    [r.image?.basis, /^\/photos\/handouts\/[0-9a-f]{12}\.jpg$/.test(r.image?.url ?? ""), r.image?.credit, r.image?.foundOn, r.saved.length, r.searched.length, r.calls.includes("planner")],
+    ["handout", true, "وزارة البترول المصرية", "https://www.cnbcarabia.com/158331", 1, 0, false],
+  );
+  const w = await scenario({ draft, sources, photoDir: "C:/site/public/photos/handouts", handout: { news_photo: true, this_story: true, watermark: true, clear: true, caption_ar: "جانب من الاجتماع", credit_ar: "وزارة البترول", reason: "logo" }, plan: planFor(), world: { "construction site Egypt": [dahab] }, judge: pickTitle("Dahab") });
+  check("a watermarked handout is refused and the cascade goes on", [w.image?.basis ?? null, w.saved.length, w.calls.includes("planner")], [null, 0, true]);
+  const s = await scenario({ draft, sources, handoutWidth: 640, plan: planFor(), world: {}, judge: () => 1 });
+  check("a handout under 700 pixels is never looked at", [s.calls.includes("handout"), s.image?.basis ?? null], [false, null]);
 }
 
 console.log(failed ? `\n${failed} check(s) FAILED` : "\nall checks passed");

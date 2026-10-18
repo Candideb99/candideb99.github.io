@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import { attributionLine, searchCommons } from "./commons.mjs";
 import { searchLibraries, noteUse } from "./photolibs.mjs";
@@ -13,7 +14,7 @@ import { USER_AGENT, fetchWithTimeout } from "./util.mjs";
  * failures injected, and no Claude call (2026-09-28, the owner: "i think you have to further stress test it more").
  * Nothing else swaps them.
  */
-const outside = { chat, searchCommons, searchLibraries, noteUse, inlineImage };
+const outside = { chat, searchCommons, searchLibraries, noteUse, inlineImage, fetchHandout: (...a) => fetchHandout(...a), saveHandout: (...a) => saveHandout(...a) };
 export function withStandIns(standIns) {
   const saved = { ...outside };
   Object.assign(outside, standIns);
@@ -1327,7 +1328,170 @@ export async function pickImage(args) {
  * developers searched "residential construction Egypt", found nothing Egyptian and ran a foreign concrete frame as an
  * illustration, while Commons holds the New Capital's business district by name.
  */
-async function findImage({ draft, story, log, exclude = new Set(), sources = [] }) {
+/**
+ * Handouts (the owner, 2026-10-18: "yes, use handouts credited to official sources"). The Arab desks illustrate an
+ * official event with the institution's own photograph of it, released for publication: CNBC عربية ran the petroleum
+ * ministry's photograph of its minister meeting Fertiglobe's chief, credited «الصورة من وزارة البترول المصرية», where
+ * this paper ran a hazy mine gate. Ministries post such photographs on Facebook, not on their own sites, and the
+ * outlets carry them (an official site almost never does: 9 of 275 stories' sources were official pages, all logos).
+ * So a source's photograph is taken only when THE OUTLET'S OWN CAPTION OR CREDIT names an official body (a ministry,
+ * a cabinet, a presidency or royal court, a central bank, an authority) or a company as its source, and the story or
+ * that source names the body; never one credited to an agency, to the outlet's own photographer, as an archive or an
+ * illustration, or with no credit at all. It must show the story's own event or people, be a real photograph, clear,
+ * without an outlet's watermark, and at least 700 pixels wide. It is kept on the site (public/photos/handouts/),
+ * credited to the institution, never hotlinked from the outlet. One vision call per candidate; none without one.
+ */
+const AGENCY_CREDIT = /رويترز|reuters|فرانس\s*برس|\bafp\b|أسوشي?تد|اسوشيتد|associated press|\bap photo\b|getty|غيتي|جيتي|بلوم[بي]?رغ|bloomberg|\bepa\b|الأناضول|anadolu|shutterstock|istock|alamy|\bdpa\b|xinhua|شينخوا|imago|\bsipa\b|zuma|nurphoto|depositphotos|unsplash|pexels|freepik|ويكيميديا|wikimedia/i;
+const OWN_PHOTO = /تصوير|عدسة|مصور|photographer|\bstaff\b|أرشيفي|ارشيفي|archive|file photo|تعبيري|illustrat|\bstock\b/i;
+const OFFICIAL_BODY = /وزار[ةه]|وزير|مجلس الوزراء|رئاسة|الرئاسة|الديوان|البلاط|القصر|البنك المركزي|المصرف المركزي|مؤسسة النقد|هيئة|المكتب الإعلامي|الحكومة|المتحدث الرسمي|سفارة|مجلس النواب|البرلمان|محافظة|ministry|minister|cabinet|presiden|royal court|central bank|monetary authority|authority|government|press office|media office|embassy|parliament/i;
+const COMPANY_BODY = /شركة|مجموعة|company|group|corporation|\bcorp\b|\bplc\b|\bpjsc\b|\binc\b|holding/i;
+// Words that say what kind of body it is, or which country, never which one: they cannot tie a credit to a story.
+const CREDIT_WORDS = new Set("الصورة صورة الصور مصدر وزارة وزير هيئة شركة مجموعة البنك المركزي المصرف مجلس الوزراء الحكومة رئاسة الرئاسة المكتب الإعلامي ministry minister company group authority government office media press photo image courtesy handout central bank the and مصر المصرية المصري السعودية السعودي الإمارات الإماراتية الإماراتي قطر القطرية الكويت الكويتية البحرين عمان العمانية الأردن الأردنية العراق العراقية المغرب المغربية الجزائر تونس ليبيا لبنان سوريا الأمريكية الأمريكي egypt egypt's egyptian saudi emirati emirates qatar qatari kuwait kuwaiti bahrain oman omani jordan iraq morocco american".split(" "));
+
+/** The body a source's photograph is credited to, as the outlet wrote it, or "". */
+export function creditedBody(photo) {
+  const text = `${photo?.credit ?? ""} | ${photo?.caption ?? ""}`;
+  const patterns = [
+    /(?:الصورة|صورة|الصور|مصدر الصورة)\s*(?:من|:|-|–|—)\s*([^|()\n.،؛"]{3,70})/,
+    /(?:Photo|Image|PHOTO|IMAGE)(?: [Cc]redit)?:\s+([^|()\n.;"]{3,70})/,
+    /[Cc]ourtesy of\s+([^|()\n.;"]{3,70})/,
+    /([^|()\n"]{3,70}?)\s*\/\s*(?:Handout|HANDOUT)/,
+    /(?:Handout|HANDOUT)(?: photo| image)?\s*(?:from|by|:)\s*([^|()\n.;"]{3,70})/,
+  ];
+  for (const re of patterns) {
+    const m = text.match(re);
+    if (m) return m[1].replace(/\s+/g, " ").trim();
+  }
+  return "";
+}
+
+/** Why a source's photograph is not a handout this story may run, or null when it is one. */
+export function handoutFault(photo, { story, source = {} }) {
+  const body = creditedBody(photo);
+  if (!body) return "no credit to an official source";
+  if (AGENCY_CREDIT.test(body)) return `credited to an agency («${body}»)`;
+  if (OWN_PHOTO.test(`${body} | ${photo.credit ?? ""} | ${photo.caption ?? ""}`)) return `the outlet's own, an archive or an illustration («${body}»)`;
+  const outlet = [source.sourceName, source.sourceNameEn, source.name, source.nameEn].filter(Boolean).map((n) => String(n).toLowerCase());
+  if (outlet.some((n) => body.toLowerCase().includes(n))) return `credited to the outlet itself («${body}»)`;
+  const pool = `${storyText(story ?? {}, 4000)} ${story?.title ?? ""} ${source.title ?? ""} ${String(source.text ?? "").slice(0, 6000)}`.toLowerCase();
+  // A company credited by its name alone ("Photo: ADNOC"): an organisation's acronym the report itself names. A person's
+  // name (a photographer) or "Supplied" is never enough.
+  const acronym = /^[A-Z][A-Z&]{1,7}$/.test(body) && body !== "AP" && pool.includes(body.toLowerCase());
+  if (!acronym && !OFFICIAL_BODY.test(body) && !COMPANY_BODY.test(body)) return `credited to «${body}», not an official body or a company`;
+  const words = body.toLowerCase().split(/[^\p{L}\p{N}']+/u).filter((w) => (w.length >= 4 || acronym) && !CREDIT_WORDS.has(w));
+  if (!words.length || !words.some((w) => pool.includes(w))) return `«${body}» is not named in the story or its source`;
+  if (photo.width && photo.width < 700) return `too small (${photo.width} pixels wide)`;
+  return null;
+}
+
+/** A source's photograph, fetched, measured and made ready to keep: { width, height, buffer (JPEG, at most 1280 wide), preview }. */
+async function fetchHandout(url, log = () => {}) {
+  try {
+    const response = await fetchWithTimeout(url, { headers: { "user-agent": USER_AGENT, accept: "image/*" } }, 25000);
+    const type = response.headers.get("content-type") ?? "";
+    if (!response.ok || !/^image\//i.test(type)) {
+      log(`image: handout ${response.status} ${type} for ${url.slice(0, 90)}`);
+      return null;
+    }
+    const raw = Buffer.from(await response.arrayBuffer());
+    if (raw.length > 15_000_000) return null;
+    const sharp = (await import("sharp")).default;
+    const meta = await sharp(raw).metadata();
+    const out = await sharp(raw).rotate().resize({ width: 1280, withoutEnlargement: true }).jpeg({ quality: 82, mozjpeg: true }).toBuffer({ resolveWithObject: true });
+    const preview = await sharp(out.data).resize({ width: 800, withoutEnlargement: true }).jpeg({ quality: 75 }).toBuffer();
+    return { width: meta.width ?? out.info.width, height: meta.height ?? out.info.height, buffer: out.data, savedWidth: out.info.width, savedHeight: out.info.height, preview: `data:image/jpeg;base64,${preview.toString("base64")}` };
+  } catch (error) {
+    log(`image: handout could not be read (${String(error.message).slice(0, 100)})`);
+    return null;
+  }
+}
+
+async function saveHandout(got, file) {
+  const { mkdir, writeFile } = await import("node:fs/promises");
+  await mkdir(path.dirname(file), { recursive: true });
+  await writeFile(file, got.buffer);
+}
+
+async function handoutTier({ draft, log, sources = [], photoDir = null }) {
+  const offered = [];
+  for (const source of sources) {
+    for (const photo of source.photos ?? []) {
+      const fault = handoutFault(photo, { story: draft, source });
+      if (!fault) offered.push({ photo, source, body: creditedBody(photo) });
+      else if (creditedBody(photo)) log(`image: handout passed over (${source.sourceNameEn ?? source.sourceName ?? "source"}): ${fault}`);
+    }
+  }
+  for (const { photo, source, body } of offered.slice(0, 2)) {
+    const outlet = source.sourceNameEn ?? source.sourceName ?? "the source";
+    const got = await outside.fetchHandout(photo.url, log);
+    if (!got) continue;
+    if (got.width < 700) {
+      log(`image: handout from ${outlet} passed over: ${got.width} pixels wide`);
+      continue;
+    }
+    let read;
+    try {
+      read = await outside.chat({
+        role: "vision",
+        system: "You are a strict newspaper picture editor. Answer with one JSON object only.",
+        user: `STORY (Arabic economics news site):
+Headline: ${draft.title}
+Standfirst: ${draft.subtitle ?? ""}
+${storyText(draft, 1500)}
+
+PHOTOGRAPH (attached), from ${outlet}'s report of this event. The outlet's caption: «${photo.caption || "(none)"}». The outlet credits it to: «${body}».
+Answer as a strict picture editor:
+- news_photo: a real photograph (of people, an event, a place or a thing), not a logo, an emblem, a graphic, a chart, a map, a text card, a screenshot, a collage or a poster.
+- this_story: it shows THIS story's own event, people, place or subject (the meeting, the signing, the site or the product the story reports), not another occasion.
+- watermark: a news outlet's or an agency's logo or watermark shows in the frame.
+- clear: its subject reads at a glance, as a small picture beside the headline (not hazy, dark, blurred or cluttered).
+- caption_ar: one short Arabic caption in the Arab desks' style saying what the frame shows. Name only people, institutions and places that the outlet's caption or the story names, and never put a name to a face the caption does not identify (for example «جانب من اجتماع وزير البترول مع رئيس «فيرتيجلوب»»).
+- credit_ar: the credited body's name in Arabic as an Arabic news site prints it (for example «وزارة البترول المصرية»).
+Return JSON: {"news_photo":true,"this_story":true,"watermark":false,"clear":true,"caption_ar":"...","credit_ar":"...","reason":"<one short English sentence>"}`,
+        images: [got.preview],
+        temperature: 0,
+        maxTokens: 500,
+        timeoutMs: 120000,
+        log,
+        validate: (d) => {
+          if (!d || typeof d.news_photo !== "boolean" || typeof d.this_story !== "boolean") throw new Error("handout verdict missing");
+        },
+      });
+    } catch (error) {
+      if (error.meta?.quota) throw error;
+      log(`image: handout check failed (${String(error.message).split("\n")[0].slice(0, 120)})`);
+      continue;
+    }
+    const v = read.data;
+    const caption = fixNames(String(v.caption_ar ?? "").trim());
+    const credit = String(v.credit_ar ?? "").replace(/^«|»$/g, "").trim();
+    if (!v.news_photo || !v.this_story || v.watermark || v.clear === false || !/[؀-ۿ]/.test(caption) || !/[؀-ۿ]/.test(credit)) {
+      log(`image: handout from ${outlet} refused: ${String(v.reason ?? "").slice(0, 140)}`);
+      continue;
+    }
+    const name = `${createHash("sha1").update(photo.url).digest("hex").slice(0, 12)}.jpg`;
+    if (photoDir) await outside.saveHandout(got, path.join(photoDir, name));
+    log(`image: handout from ${outlet}, credited to ${credit}: ${caption}`);
+    return {
+      url: photoDir ? `/photos/handouts/${name}` : photo.url,
+      width: got.savedWidth,
+      height: got.savedHeight,
+      alt: caption,
+      credit,
+      license: "صورة رسمية",
+      foundOn: source.url,
+      title: `handout:${photo.url}`,
+      model: read.model,
+      basis: "handout",
+    };
+  }
+  return null;
+}
+
+async function findImage({ draft, story, log, exclude = new Set(), sources = [], photoDir = null }) {
+  // The event's own handout, credited by the outlet to the institution, comes before every library (handoutTier()).
+  const handout = await handoutTier({ draft, log, sources, photoDir });
+  if (handout) return handout;
   // The photographs other stories already run, before this story's passes add their refusals, and the series they
   // belong to (seriesKey): a frame of the same scene by the same photographer is the same picture to a reader.
   for (const url of [...exclude]) {

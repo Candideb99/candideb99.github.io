@@ -137,9 +137,95 @@ export async function extractArticle(url, { maxChars = 9000, log = () => {}, all
   }
 }
 
+/**
+ * A page's photographs with what the page itself says about them: its lead image (og:image and its alt), the images
+ * its structured data describes (caption, credit, copyright holder, author) and its <figure> photographs and captioned
+ * images. The picture desk takes a handout only when the page credits an official body or the story's company
+ * (lib/images.mjs, handoutTier(); the owner, 2026-10-18: "yes, use handouts credited to official sources"); the
+ * outlet's own photographs and the agencies' are never taken. Logos, icons and drawings are left out here.
+ */
+export function photosOf(html, url, document = null) {
+  const found = new Map();
+  const absolute = (u) => {
+    try {
+      return new URL(String(u ?? "").trim(), url).href;
+    } catch {
+      return "";
+    }
+  };
+  const clean = (s) => String(s ?? "").replace(/\s+/g, " ").trim();
+  const add = (u, info = {}) => {
+    const href = absolute(u);
+    if (!/^https?:\/\//.test(href) || /\.(?:svg|gif)(?:[?#]|$)/i.test(href) || /logo|icon|sprite|avatar|placeholder|blank|banner|\/ads?\//i.test(href)) return;
+    const key = href.split(/[?#]/)[0];
+    const photo = found.get(key) ?? { url: href, caption: "", credit: "", width: null, height: null };
+    for (const k of ["caption", "credit"]) {
+      const v = clean(info[k]);
+      if (v && !photo[k].includes(v)) photo[k] = [photo[k], v].filter(Boolean).join(" | ").slice(0, 400);
+    }
+    photo.width ??= Number(info.width) || null;
+    photo.height ??= Number(info.height) || null;
+    found.set(key, photo);
+  };
+  const og = metaContent(html, "og:image");
+  if (og) add(og, { caption: metaContent(html, "og:image:alt"), width: metaContent(html, "og:image:width"), height: metaContent(html, "og:image:height") });
+  const name = (x) => (typeof x === "string" ? x : Array.isArray(x) ? x.map(name).join(", ") : x?.name ?? "");
+  for (const m of html.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+    let data;
+    try {
+      data = JSON.parse(m[1]);
+    } catch {
+      continue;
+    }
+    const visit = (node, depth = 0) => {
+      if (!node || typeof node !== "object" || depth > 6) return;
+      if (Array.isArray(node)) return node.forEach((n) => visit(n, depth + 1));
+      if ([].concat(node["@type"] ?? []).includes("ImageObject")) {
+        add(node.contentUrl ?? node.url, { caption: node.caption ?? node.description, credit: [node.creditText, name(node.copyrightHolder), name(node.author)].filter(Boolean).join(" | "), width: node.width, height: node.height });
+      }
+      for (const v of Object.values(node)) if (v && typeof v === "object") visit(v, depth + 1);
+    };
+    visit(data);
+  }
+  try {
+    const doc = document ?? parseHTML(html).document;
+    const src = (img) => img.getAttribute("data-src") || img.getAttribute("data-lazy-src") || img.getAttribute("data-original") || img.getAttribute("src") || "";
+    for (const figure of [...doc.querySelectorAll("figure")].slice(0, 12)) {
+      const img = figure.querySelector("img");
+      if (img) add(src(img), { caption: [figure.querySelector("figcaption")?.textContent, img.getAttribute("alt"), img.getAttribute("title")].filter(Boolean).join(" | "), width: img.getAttribute("width"), height: img.getAttribute("height") });
+    }
+    // Sites without <figure>: an image beside an element whose class names a caption or a credit.
+    for (const el of [...doc.querySelectorAll("[class*='caption'], [class*='Caption'], [class*='credit'], [class*='Credit']")].slice(0, 12)) {
+      const img = el.parentElement?.querySelector("img");
+      if (img) add(src(img), { caption: el.textContent.slice(0, 300) });
+    }
+  } catch {
+    /* the structured data and the og:image stand on their own */
+  }
+  // Pages built from embedded data (CNBC عربية keeps «الصورة من وزارة البترول المصرية» in a JSON blob beside the image's
+  // address, 2026-10-18): a credit phrase anywhere in the raw page goes to the nearest image address around it.
+  // English credit words are matched as a caption writes them (capitalised, a space after the colon), never the
+  // attribute names of the page's own markup (og:image:width).
+  const hints = [...html.matchAll(/(?:الصورة\s*من|صورة\s*من|مصدر\s*الصورة|الصورة\s*:|(?:Photo|PHOTO|Image|IMAGE)(?: [Cc]redit)?:\s+|[Cc]ourtesy of\s|\/\s*(?:Handout|HANDOUT)|(?:Handout|HANDOUT)(?: photo| image)?\s*(?:from|by|:))/g)].slice(0, 8);
+  for (const hint of hints) {
+    const start = Math.max(0, hint.index - 900);
+    const window = html.slice(start, hint.index + 900);
+    let best = null;
+    for (const m of window.matchAll(/https?:\/\/[^"'\s<>()\\]+?\.(?:jpe?g|png|webp)(?:\?[^"'\s<>\\]*)?/gi)) {
+      const distance = Math.abs(start + m.index - hint.index);
+      if (!best || distance < best.distance) best = { url: m[0], distance };
+    }
+    if (!best) continue;
+    const phrase = stripHtml(html.slice(hint.index, hint.index + 160)).split(/["{}<>\n|]|\\u0022/)[0];
+    add(best.url, { credit: phrase.slice(0, 120) });
+  }
+  return [...found.values()].slice(0, 8);
+}
+
 /** Pure extraction, shared with offline evidence tests. No inferred publication date. */
 export function readArticleHtml(html, url, { maxChars = 9000, log = () => {} } = {}) {
     const result = { ok: false, text: "", title: "", ogImage: metaContent(html, "og:image"),
+      photos: photosOf(html, url),
       lang: (html.match(/<html[^>]+lang=["']([a-zA-Z-]+)["']/i)?.[1] ?? "").toLowerCase(),
       links: [], publishedAt: null, reason: "" };
     let text = "";

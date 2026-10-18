@@ -157,6 +157,7 @@ jobs:
       - name: Commit the round
         run: |
           git add content/articles pipeline/state
+          git add public/photos/handouts 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "nothing to commit"
             exit 0

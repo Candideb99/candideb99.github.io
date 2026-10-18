@@ -76,6 +76,8 @@ export function serializeArticle({ draft, slug, section, sources, image, models,
           license: image.license,
           licenseUrl: image.licenseUrl || undefined,
           pageUrl: image.pageUrl,
+          // A handout (lib/images.mjs): the report it was found in, kept for the record and never printed.
+          foundOn: image.foundOn || undefined,
         }
       : null,
     sources: sources.map((s) => ({
