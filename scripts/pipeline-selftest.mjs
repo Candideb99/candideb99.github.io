@@ -20,6 +20,7 @@ import { loadSources, settleDrift, verifyStory } from "../pipeline/lib/factcheck
 import { boxFacts } from "../pipeline/lib/keyfacts.mjs";
 import { deskNotes, newsDepthBrief, newsFloor, normalizeDraft, prioritizeContext, validateDraft, validateWhyBasis } from "../pipeline/lib/write.mjs";
 import { NEWS_DEPTH, NEWS_FLOOR, SHORT_WORDS } from "../pipeline/lib/editorial.mjs";
+import { arabicEdition, bestPdf, editionKey, reportExcerpts } from "../pipeline/lib/reports.mjs";
 import { mergeNewsRefresh, serializeArticle } from "../pipeline/lib/article.mjs";
 import { cleanTags } from "../pipeline/lib/tags.mjs";
 import { groundedRegions } from "../pipeline/lib/regions.mjs";
@@ -477,6 +478,25 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const trimmed = judgeRewrite(draft, { body: bodyOf(11) }, ["body"], { minWords: SHORT_WORDS.minWords });
   const cut = judgeRewrite(draft, { body: bodyOf(7) }, ["body"], { minWords: SHORT_WORDS.minWords });
   check("the desk may trim a short story to its own floor, never below it", [Boolean(trimmed.accepted.body), Boolean(cut.accepted.body)], [true, false]);
+}
+
+// The reports desk (lib/reports.mjs, 2026-10-18): an edition is dated by its label or its address, labelled in Arabic,
+// read from the report's own document (never an annex, a country note or a methodology note), and its passages on the
+// Arab economies come before those on the major economies.
+{
+  check(
+    "editions are dated by a month, a season, a year or an address",
+    [editionKey("World Economic Outlook, October 2026")?.key, editionKey("Herbst 2026")?.key, editionKey("Annual Report 2025/26", 11)?.key, editionKey("Issue 14: | en news press release 2025 06 19 gcc")?.key],
+    [202610, 202609, 202511, 202506],
+  );
+  check("an edition is labelled in Arabic", [arabicEdition(editionKey("October 2026")), arabicEdition(editionKey("Spring 2026 Economic Forecast")), arabicEdition(editionKey("Global Wealth Report 2026", 6))], ["أكتوبر 2026", "ربيع 2026", "2026"]);
+  const page = `<a href="/related/mpo-egy.pdf">Egypt</a><a href="/methodology.pdf">Refinery margin methodology</a><a href="https://openknowledge.worldbank.org/bitstreams/abc/download">Full Report</a><a href="/ar/download">التقرير باللغة العربية</a>`;
+  check("the full report is chosen over a country note, a methodology note and another language", bestPdf(page, "https://www.worldbank.org/x", { nameEn: "MENAAP Economic Update" }, { key: 202610 }), "https://openknowledge.worldbank.org/bitstreams/abc/download");
+  check("no document is taken when none is the report", bestPdf(`<a href="/methodology.pdf">Methodology</a>`, "https://www.iea.org/x", { nameEn: "IEA Oil Market Report" }, { key: 202610 }), null);
+  const pages = ["Cover", "Executive summary\nGrowth in the region is projected at 2.1 percent in 2026 while Gulf output fell sharply in the second quarter of the year.", "In Germany, output is expected to grow by 0.4 percent in 2026, held back by weak industry and exports to China and the United States.\nIn Egypt, growth is projected at 4.6 percent in fiscal 2026, while Saudi Arabia's economy contracts by 3.0 percent as oil output falls."];
+  const { summary, countries } = reportExcerpts(pages, { countryChars: 160 });
+  check("the summary starts at the executive summary", summary.startsWith("[p.2] Executive summary"), true);
+  check("the Arab economies' passage comes before the major economies' when room is short", [countries.includes("Egypt"), countries.includes("Germany")], [true, false]);
 }
 
 if (failed) {

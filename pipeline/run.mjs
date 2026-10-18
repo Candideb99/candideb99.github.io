@@ -39,6 +39,7 @@ import { ARTICLES_DIR, buildSlug, loadExistingArticles, mergeNewsRefresh, serial
 import { usage as llmUsage } from "./lib/llm.mjs";
 import { fingerprint, hoursSince, isoNow, sleep } from "./lib/util.mjs";
 import { pickDataChart } from "./lib/datacharts.mjs";
+import { latestEdition, loadRegistry, monthKey, readEdition, reportStory } from "./lib/reports.mjs";
 
 const root = process.cwd();
 const STATE_PATH = path.join(root, "pipeline", "state", "seen.json");
@@ -76,6 +77,8 @@ const LIMIT = Math.max(1, Math.min(Number(option("limit", 4)) || 4, 10));
  */
 const DAILY_CAP = Number(process.env.KHAZENDAR_DAILY_CAP) || 20;
 const ONLY_SOURCE = option("source", null);
+/** `--report=<id>`: the reports desk looks at that report alone (lib/reports.mjs, pipeline/reports.json). */
+const ONLY_REPORT = option("report", null);
 const MIN_IMPORTANCE = (() => {
   const n = Number(option("min-importance", 6));
   return Number.isFinite(n) ? n : 6;
@@ -318,8 +321,9 @@ async function recordPrecheck({ slug, title, pre, writer, lessons, held }) {
 /** About one story in three is eligible, chosen by hash (not the day's first two, which would favour one hour's news). */
 const inPairSample = (story) => parseInt(fingerprint(`pair:${story.headlineHint ?? ""}`).slice(0, 8), 16) % 3 === 0;
 
-async function produceStory({ story, candidates, existing, recentTitles, models, report, refresh = null }) {
-  const { items, sources, evidenceChars } = await collectEvidence(story, candidates);
+async function produceStory({ story, candidates, existing, recentTitles, models, report, refresh = null, preset = null }) {
+  // `preset`: sources already read (the reports desk, lib/reports.mjs: a flagship report's own pages), not feed items.
+  const { items, sources, evidenceChars } = preset ? { items: [], sources: preset.sources, evidenceChars: 0 } : await collectEvidence(story, candidates);
   const eventSources = eventSourcesOf(sources);
   const entry = { headline: story.headlineHint, section: story.section, importance: story.importance, sources: sources.map((s) => s.url) };
   const audit = { story, sources };
@@ -343,7 +347,8 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   // thing this paper must never publish (copyright, and Google's "scaled, unoriginal content"). The items
   // take the short mark, so the story is tried again when a second outlet has picked it up.
   const outlets = independentOutletCount(eventSources);
-  if (outlets < 2 && !eventSources.some((s) => Number(s.reliability) === 3 && s.kind === "official")) {
+  // A publisher's own flagship report (the reports desk) speaks for itself, as an official institution does.
+  if (outlets < 2 && !eventSources.some((s) => Number(s.reliability) === 3 && (s.kind === "official" || s.kind === "report"))) {
     entry.outcome = "skipped: a single independent non-official reporting origin (needs a second independently reported outlet, or an official primary source)";
     report.push(entry);
     log(`skip "${story.headlineHint}": fewer than two independent non-official reporting origins; items marked for one retry`);
@@ -1245,8 +1250,103 @@ function runFeature() {
   });
 }
 
+/**
+ * The reports desk (lib/reports.mjs; the owner, 2026-10-18: "yes build it, however although arab world is in focus (not
+ * only gulf states), but important developed economies are also important like germany, france etc"). Each report of
+ * pipeline/reports.json is looked at; a new edition is read from its publisher's own pages and written through the
+ * newsroom's ordinary path (notes, writer, desk, critic, check before publication, picture desk), the report counting
+ * as a primary source. The first sight of a report records its edition as the starting point, unless that edition is
+ * this month's. An edition that fails is tried on the next day once more, then left. At most two a run.
+ * State: pipeline/state/reports.json, { reports: { id: { edition, label, url, at, outcome, tries } } }.
+ */
+const REPORTS_STATE = path.join(root, "pipeline", "state", "reports.json");
+function runReports() {
+  return runHub("reports", "economy", async (report) => {
+    const raw = await readFile(REPORTS_STATE, "utf8").catch(() => null);
+    let state = { reports: {} };
+    if (raw !== null) {
+      try {
+        state = JSON.parse(raw);
+      } catch {
+        log("reports: pipeline/state/reports.json cannot be read; it is left as it is for a person, and nothing is written");
+        return { report, published: 0 };
+      }
+    }
+    state.reports ??= {};
+    const save = async () => {
+      if (!DRY_RUN) await writeJsonAtomic(REPORTS_STATE, state);
+    };
+    const registry = (await loadRegistry()).filter((r) => !ONLY_REPORT || r.id === ONLY_REPORT);
+    const existing = await loadExistingArticles();
+    const recentTitles = existing.filter((a) => hoursSince(a.publishedAt) < 96).map((a) => a.title);
+    const current = monthKey();
+    const fresh = [];
+    for (const r of registry) {
+      let edition = null;
+      try {
+        edition = await latestEdition(r, { log });
+      } catch (error) {
+        log(`report ${r.id}: ${String(error.message).slice(0, 120)}`);
+      }
+      if (!edition) continue;
+      const seen = state.reports[r.id];
+      if (!seen) {
+        const now = edition.key >= current;
+        state.reports[r.id] = { edition: edition.key, label: edition.label, url: edition.url, at: isoNow(), outcome: now ? "new" : "starting point", tries: 0 };
+        if (!now) {
+          log(`report ${r.id}: «${edition.label}» recorded as the starting point`);
+          continue;
+        }
+      } else if (edition.key < seen.edition || (edition.key === seen.edition && !["new", "retry"].includes(seen.outcome))) continue;
+      fresh.push({ r, edition });
+    }
+    log(`reports: ${fresh.length} new edition(s)${fresh.length ? `: ${fresh.map((f) => `${f.r.id} «${f.edition.label}»`).join(", ")}` : ""}`);
+    let published = 0;
+    for (const { r, edition } of fresh.slice(0, Math.min(LIMIT, 2))) {
+      const prior = state.reports[r.id];
+      const tries = prior?.edition === edition.key ? prior.tries ?? 0 : 0;
+      const mark = (outcome, extra = {}) => (state.reports[r.id] = { edition: edition.key, label: edition.label, url: edition.url, at: isoNow(), outcome, tries, ...extra });
+      if (tries >= 2) {
+        mark("left after two tries");
+        log(`report ${r.id}: «${edition.label}» failed twice; left`);
+        continue;
+      }
+      // The same edition told already, by the news file or by an earlier run: once is enough.
+      const covered = existing.find((a) => hoursSince(a.publishedAt) < 24 * 21 && ((a.sourceUrls ?? []).includes(edition.url) || String(a.title).includes(r.name)));
+      if (covered) {
+        mark(`covered by ${covered.slug}`);
+        log(`report ${r.id}: «${edition.label}» already told in ${covered.slug}`);
+        continue;
+      }
+      const { sources } = await readEdition(r, edition, { log });
+      if (!sources.length) {
+        mark("retry", { tries: tries + 1 });
+        report.push({ headline: `${r.nameEn} ${edition.label}`, section: r.section, outcome: "skipped: nothing readable in the report's pages" });
+        await save();
+        continue;
+      }
+      const story = reportStory(r, edition);
+      let result = null;
+      try {
+        result = await produceStory({ story, candidates: [], existing, recentTitles, models: { editor: "reports-desk" }, report, preset: { sources } });
+      } catch (error) {
+        if (error.meta?.quota) throw error;
+        log(`report ${r.id}: ${String(error.message).split("\n")[0]}`);
+        report.push({ headline: story.headlineHint, section: r.section, outcome: `error: ${String(error.message).split("\n")[0]}` });
+      }
+      if (result?.slug) {
+        mark(`published ${result.slug}`, { tries: 0 });
+        published += 1;
+      } else mark("retry", { tries: tries + 1 });
+      await save();
+    }
+    await save();
+    return { report, published };
+  });
+}
+
 /** News runs through runHub like the hub modes: an editor that fails outright still leaves a report and the outputs. */
-const RUNNERS = { news: () => runHub("news", "news", runNews), explainer: runExplainer, analysis: runAnalysis, paper: runPaper, weekly: runWeekly, feature: runFeature };
+const RUNNERS = { news: () => runHub("news", "news", runNews), explainer: runExplainer, analysis: runAnalysis, paper: runPaper, weekly: runWeekly, feature: runFeature, reports: runReports };
 
 async function main() {
   const started = Date.now();

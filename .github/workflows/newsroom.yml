@@ -17,13 +17,15 @@ on:
     # from what it proves (the lessons), then writes (2026-09-25; the separate twice-daily second-look run was folded in).
     # The weekly test of the lessons: keep the current ones or put back the last version that passed (Mondays).
     - cron: "13 6 * * 1"
+    # The reports desk (pipeline/lib/reports.mjs, 2026-10-18): new editions of the flagship reports, read from their own pages.
+    - cron: "17 8 * * *"
   workflow_dispatch:
     inputs:
       mode:
-        description: news, explainer, analysis, paper, weekly, feature (في العمق), recheck (the second look) or lessons-test
+        description: news, explainer, analysis, paper, weekly, feature (في العمق), reports (the flagship reports), recheck (the second look) or lessons-test
         default: news
         type: choice
-        options: [news, explainer, analysis, paper, weekly, feature, recheck, lessons-test]
+        options: [news, explainer, analysis, paper, weekly, feature, reports, recheck, lessons-test]
       limit:
         description: maximum stories to publish
         default: "4"
@@ -92,9 +94,10 @@ jobs:
             elif [ "$SCHEDULE" = "7 10 * * 6" ]; then mode=analysis; sections=defense;
             elif [ "$SCHEDULE" = "47 7 * * 0" ]; then mode=feature;
             elif [ "$SCHEDULE" = "13 6 * * 1" ]; then mode=lessons-test;
+            elif [ "$SCHEDULE" = "17 8 * * *" ]; then mode=reports;
             else mode=news; fi
           fi
-          case "$mode" in news|explainer|analysis|paper|weekly|feature|recheck|lessons-test) ;; *) echo "invalid mode: $mode"; exit 2;; esac
+          case "$mode" in news|explainer|analysis|paper|weekly|feature|reports|recheck|lessons-test) ;; *) echo "invalid mode: $mode"; exit 2;; esac
           review=""
           if [ "$REVIEW" = "1" ]; then review=1; fi
           echo "review=$review" >> "$GITHUB_OUTPUT"

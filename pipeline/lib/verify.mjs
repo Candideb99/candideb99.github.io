@@ -281,7 +281,7 @@ export async function critique({ draft, sources, explainer = false, analysis = f
   const full = news && !short;
   const rubric = CRITIC_RUBRIC[explainer ? "explainer" : analysis ? "analysis" : paper ? "paper" : weekly ? "weekly" : feature ? "feature" : short ? "short" : "news"];
   // Each source with its date: a timeline («في العمق») is checked row by row against its stories' dates.
-  const material = sources.map((s, i) => `SOURCE ${i + 1}: ${s.sourceNameEn} (${s.lang}) — "${s.title}"${s.publishedAt ? ` — published ${String(s.publishedAt).slice(0, 10)}` : ""}${s.kind === "official" ? " — PRIMARY INSTITUTIONAL DOCUMENT (stated aims remain attributed claims)" : ""}\n${s.text || s.summary || ""}`).join("\n\n");
+  const material = sources.map((s, i) => `SOURCE ${i + 1}: ${s.sourceNameEn} (${s.lang}) — "${s.title}"${s.publishedAt ? ` — published ${String(s.publishedAt).slice(0, 10)}` : ""}${s.kind === "official" ? " — PRIMARY INSTITUTIONAL DOCUMENT (stated aims remain attributed claims)" : ""}${s.kind === "report" ? " — THE PUBLISHER'S OWN REPORT (its estimates and forecasts are attributed to it; [p.N] marks its page; a figure read off a bare run of table numbers is unsupported)" : ""}\n${s.text || s.summary || ""}`).join("\n\n");
   const user = `SOURCE MATERIAL
 ${[rubric.material, material || (explainer ? "" : "(no sources supplied)")].filter(Boolean).join("\n\n")}
 
