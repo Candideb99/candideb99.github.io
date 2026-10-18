@@ -26,7 +26,7 @@ import { extractArticle } from "./lib/extract.mjs";
 import { collectNewsEvidence, eventSourcesOf, independentOutletCount } from "./lib/news-evidence.mjs";
 import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectFeatureTopic, selectPaper, selectStories } from "./lib/select.mjs";
 import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, newsFloor, reviseArticle, writeAnalysis, writeArticle, writeExplainer, writeFeature, writePaperReading, writeWeekly } from "./lib/write.mjs";
-import { NEWS_FLOOR, NEWS_MIN_FACTS } from "./lib/editorial.mjs";
+import { NEWS_FLOOR, NEWS_MIN_FACTS, SHORT_DAILY_CAP, SHORT_WORDS } from "./lib/editorial.mjs";
 import { critique, programmaticChecks } from "./lib/verify.mjs";
 import { copyEdit } from "./lib/copydesk.mjs";
 import { keptBlock, lessonsBlock, lessonsHash, loadLessons } from "./lib/lessons.mjs";
@@ -218,11 +218,11 @@ const usedImages = (existing) => new Set(existing.map((a) => a.imageUrl).filter(
  * (the owner's rule: no literal translations) and its guard keeps every figure and name intact. A
  * desk failure never blocks a story; the draft simply goes on as written.
  */
-async function copyDeskPass(draft, { includeBody = true, kind = "news", sources = [], problems = [] } = {}) {
+async function copyDeskPass(draft, { includeBody = true, kind = "news", sources = [], problems = [], minWords = kind === "news" ? NEWS_FLOOR : 0 } = {}) {
   try {
     // The names the sources go by, so the checker can count a source named in sentence after sentence.
     const names = sources.flatMap((s) => [s.sourceName ?? s.name, s.sourceNameEn ?? s.nameEn]).filter(Boolean);
-    const desk = await copyEdit({ draft, includeBody, role: "desk", kind, sources: names, problems, minWords: kind === "news" ? NEWS_FLOOR : 0, log });
+    const desk = await copyEdit({ draft, includeBody, role: "desk", kind, sources: names, problems, minWords, log });
     if (desk.changed) log(`desk "${desk.draft.title}": rewrote ${desk.applied.join(", ")}${desk.rejected.length ? `; refused ${desk.rejected.map((r) => `${r.field} (${r.reason})`).join(", ")}` : ""}`);
     return desk;
   } catch (error) {
@@ -242,10 +242,10 @@ async function copyDeskPass(draft, { includeBody = true, kind = "news", sources 
 const WRITERS_FAULT = /أرقام لا تظهر في المصادر|نسبة النص العربي منخفضة|قصير جداً|ناقصة؛ العناوين الفرعية|العنوان مكرر لمقال|تكرر مقالاً منشوراً|يقارن بين ما أوردته المصادر|بلا جدول زمني/;
 
 /** One more desk pass on a revised draft whose remaining faults are all the desk's trade; the checks run again after it. */
-async function lastDeskPass(draft, checks, { sources, kind = "news", recheck }) {
+async function lastDeskPass(draft, checks, { sources, kind = "news", recheck, minWords }) {
   if (checks.ok || checks.issues.some((i) => WRITERS_FAULT.test(i))) return { draft, checks };
   log(`last desk pass for ${checks.issues.length} fault(s): ${checks.issues.map((i) => i.slice(0, 60)).join(" | ")}`);
-  const desk = await copyDeskPass(draft, { includeBody: true, kind, sources, problems: checks.issues });
+  const desk = await copyDeskPass(draft, { includeBody: true, kind, sources, problems: checks.issues, ...(minWords != null ? { minWords } : {}) });
   const again = recheck(desk.draft);
   log(`last desk pass: ${again.ok ? "clean" : `still ${again.issues.length} fault(s)`}`);
   return { draft: desk.draft, checks: again };
@@ -265,6 +265,8 @@ let LESSONS_VERSION = null;
  * stories and worse on none: the right direction, too few errors to be sure. The control group keeps the answer
  * coming from every day's news, and the second look corrects its stories like any other.
  */
+/** Short stories published in this run, added to the last 24 hours' count for SHORT_DAILY_CAP. */
+let SHORT_PUBLISHED = 0;
 const CONTROL_SHARE = 5;
 const inControlGroup = (story) => parseInt(fingerprint(String(story.headlineHint ?? "")).slice(0, 8), 16) % CONTROL_SHARE === 0;
 /**
@@ -369,26 +371,35 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     log(`desk notes: ${notes.facts.length} facts (${jobs}), ${notes.quotes.length} quotes (${notesResult.model})`);
   }
   await checkpoint("notes", { notes, notesModel: notesResult?.model });
-  // Too little checked material for a developed report (the owner, 2026-10-18: "too short"): the story is not written,
-  // and its items take the short mark, so the event is tried again when more outlets have reported it. Costs the one
-  // notes call, never a writer, a desk and a critic spent on a story that can only come back thin or padded.
+  // Too little checked material for a developed report (the owner, 2026-10-18: "too short"): no developed report is
+  // forced out of it. The event runs as a short story instead (lib/editorial.mjs SHORT_STORY; the owner, the same day,
+  // on al-aalem.com's 200-word item), through the same desk, critic and check, at most SHORT_DAILY_CAP in 24 hours. Past
+  // the cap, or for a refresh, it is not written and its items take the short mark, so the event is tried again when
+  // more outlets have reported it.
+  let short = false;
   if (notes && notes.facts.length < NEWS_MIN_FACTS) {
-    entry.outcome = `skipped: too little material for a developed report (${notes.facts.length} checked facts, ${NEWS_MIN_FACTS} needed)`;
-    report.push(entry);
-    log(`skip "${story.headlineHint}": ${notes.facts.length} checked facts, fewer than ${NEWS_MIN_FACTS}; items marked for one retry`);
-    return { rejected: true, items };
+    const shortToday = existing.filter((a) => a.kind === "news" && a.format === "short" && hoursSince(a.publishedAt) < 24).length + SHORT_PUBLISHED;
+    if (refresh || shortToday >= SHORT_DAILY_CAP) {
+      entry.outcome = `skipped: too little material for a developed report (${notes.facts.length} checked facts, ${NEWS_MIN_FACTS} needed)${refresh ? "" : `; ${SHORT_DAILY_CAP} short stories already in 24 hours`}`;
+      report.push(entry);
+      log(`skip "${story.headlineHint}": ${notes.facts.length} checked facts, fewer than ${NEWS_MIN_FACTS}; items marked for one retry`);
+      return { rejected: true, items };
+    }
+    short = true;
+    entry.format = "short";
+    log(`short story: "${story.headlineHint}" has ${notes.facts.length} checked facts, fewer than ${NEWS_MIN_FACTS} (${shortToday + 1} of ${SHORT_DAILY_CAP} short stories in 24 hours)`);
   }
-  let { draft, model: writerModel } = await writeArticle({ story, sources, notes, log, lessons });
+  let { draft, model: writerModel } = await writeArticle({ story, sources, notes, log, lessons, short });
   // The writer's own draft, before the desk and the critic touch it: what a private pair compares.
   const firstDraft = draft;
   await checkpoint("written", { notes, firstDraft, writerModel });
-  const desk = await copyDeskPass(draft, { sources });
+  const desk = await copyDeskPass(draft, { sources, minWords: short ? SHORT_WORDS.minWords : NEWS_FLOOR });
   draft = desk.draft;
   const deskModel = desk.model;
   // A news story is a developed report or it is not published (NEWS_FLOOR in lib/editorial.mjs, the owner, 2026-10-18).
-  const minWords = newsFloor(notes);
+  const minWords = short ? SHORT_WORDS.minWords : newsFloor(notes);
   let checks = programmaticChecks(draft, sources, { recentTitles, minWords });
-  let review = await critique({ draft, sources, log });
+  let review = await critique({ draft, sources, log, short });
   await checkpoint("first-review", { deskDraft: draft, firstReview: review, checks });
   entry.editorialReviews = [{ pass: 1, verdict: review.verdict, readerCheck: review.readerCheck }];
   log(`critic "${draft.title}": ${review.verdict} score=${review.score} issues=${review.issues.length}`);
@@ -402,12 +413,12 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   if (!straightOut) {
     const issues = [...checks.issues, ...review.issues];
     if (!issues.length) issues.push(`المحرر أعطى المسودة ${review.score}/10 (${review.verdict})${review.summary ? `: ${review.summary}` : ""}؛ راجع الدقة والعزو والعربية.`);
-    const revision = await reviseArticle({ draft, sources, issues, log, notes, lessons });
-    draft = (await copyDeskPass(revision.draft, { includeBody: true, sources })).draft;
+    const revision = await reviseArticle({ draft, sources, issues, log, notes, lessons, short });
+    draft = (await copyDeskPass(revision.draft, { includeBody: true, sources, minWords })).draft;
     writerModel = `${writerModel} → ${revision.model}`;
     revised = true;
     checks = programmaticChecks(draft, sources, { recentTitles, minWords });
-    ({ draft, checks } = await lastDeskPass(draft, checks, { sources, recheck: (d) => programmaticChecks(d, sources, { recentTitles, minWords }) }));
+    ({ draft, checks } = await lastDeskPass(draft, checks, { sources, minWords, recheck: (d) => programmaticChecks(d, sources, { recentTitles, minWords }) }));
     if (!checks.ok) {
       await checkpoint("rejected-checks", { finalDraft: draft, checks });
       entry.outcome = `rejected after revision: ${checks.issues.join(" | ")}`;
@@ -417,7 +428,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     }
     // Every revised draft faces the critic again and is published only with a second-pass score of 6 or more.
     const floor = 6;
-    review = await critique({ draft, sources, previousIssues: issues, log });
+    review = await critique({ draft, sources, previousIssues: issues, log, short });
     await checkpoint("second-review", { finalDraft: draft, finalReview: review, checks });
     entry.editorialReviews.push({ pass: 2, verdict: review.verdict, readerCheck: review.readerCheck });
     log(`critic (second pass) "${draft.title}": ${review.verdict} score=${review.score} issues=${review.issues.length}`);
@@ -431,8 +442,8 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     // fact-check passed both). The thresholds above are unchanged; a repair the checks refuse leaves the reviewed draft.
     if (review.verdict === "revise" && review.issues.length) {
       try {
-        const mend = await reviseArticle({ draft, sources, issues: review.issues, log, notes, lessons });
-        const mended = (await copyDeskPass(mend.draft, { includeBody: true, sources })).draft;
+        const mend = await reviseArticle({ draft, sources, issues: review.issues, log, notes, lessons, short });
+        const mended = (await copyDeskPass(mend.draft, { includeBody: true, sources, minWords })).draft;
         const mendedChecks = programmaticChecks(mended, sources, { recentTitles, minWords });
         if (mendedChecks.ok) {
           draft = mended;
@@ -465,7 +476,8 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     return { rejected: true, items };
   }
   if (pre.repairs) {
-    draft = pre.draft;
+    // A repair rewrites the fields it was shown; a short story still carries no boxes.
+    draft = short ? { ...pre.draft, keyFacts: [], whyItMatters: "", whyBasis: [] } : pre.draft;
     checks = programmaticChecks(draft, sources, { recentTitles, minWords });
     log(`precheck "${draft.title}": ${found} proved error(s) repaired (${pre.repairs} repair(s)); the repaired text checked clean`);
   } else log(`precheck "${draft.title}": clean`);
@@ -476,6 +488,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   const slug = refresh ? refresh.data.slug : buildSlug(draft, story);
   let markdown = serializeArticle({
     pending: DRAFT,
+    format: short ? "short" : "full",
     draft,
     slug,
     section: story.section,
@@ -517,7 +530,9 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   // stays with its own source. A failure to save never stops a story.
   const storyText = [draft.title, draft.subtitle, draft.lede, draft.body, draft.whyItMatters, ...(draft.keyFacts ?? []).map((k) => `${k.label} ${k.value}`)].join("\n");
   if (!DRY_RUN) await saveSnapshot({ slug: refresh ? `${slug}-refresh-${Date.now()}` : slug, title: draft.title, publishedAt: refresh?.data.publishedAt ?? isoNow(), kind: refresh ? "editorial-refresh" : "publication", sources: checkSourcesOf(sources), checks: pre.checks ?? [], storyText }).catch((error) => log(`evidence for ${slug} not saved: ${String(error.message).slice(0, 120)}`));
-  return { slug, items, title: draft.title, pairing: !control && LESSONS ? { story, sources, firstDraft, firstNotes: notes, slug, title: draft.title } : null };
+  if (short && !refresh) SHORT_PUBLISHED += 1;
+  // The evidence pairs measure the lessons on developed reports; a short story is not paired.
+  return { slug, items, title: draft.title, pairing: !control && LESSONS && !short ? { story, sources, firstDraft, firstNotes: notes, slug, title: draft.title } : null };
 }
 
 /** One published story written again privately with the reference lessons; every draft judged blind; nothing published. */

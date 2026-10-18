@@ -246,15 +246,26 @@ beside sources that carried the cause, the reactions and the background, and sco
 - every news story answers, from its sources, six questions in the reader's order: the news, its driver, the
   numbers in perspective, the reaction (named voices), the background and what comes next; 350-650 words, never
   under 300 (lede plus body), checked in the writer's answer, in the checks before publication and by the critic;
-- the desk notes hold 15-30 checked facts, each tagged with its job, and an event whose notes hold fewer than 12 is
-  not written: its items take the short mark and return when more outlets have reported it;
+- the desk notes hold 15-30 checked facts, each tagged with its job, and an event whose notes hold fewer than 12 runs
+  as a short story (below);
 - the critic lists, as «ينقص التقرير:», each element a source supplies and the draft leaves out, and takes a point
   for each; three or more hold the score at 6, so a digest no revision fills is refused;
 - the copy desk may not cut a story under the floor, and the editor cites every report of the event, up to five;
 - a draft that passes the critic's second pass but is still marked "revise" is sent back once more with those findings
   before the check against the sources (the thresholds are unchanged; a repair the checks refuse leaves the reviewed draft).
-The cost is volume: fewer stories pass, and the thin ones that used to run as briefs are not written. A retry is
-told why the last answer was refused (`chat()` in `pipeline/lib/llm.mjs`).
+A retry is told why the last answer was refused (`chat()` in `pipeline/lib/llm.mjs`).
+
+**A small event runs as a short story, not as a thin report** (the same day; the owner asked whether renowned sites
+publish short stories, and showed al-aalem.com's item: a headline, a photograph and some 200 words in six short
+paragraphs on an ordinary article page). The Arab sites, the wires and the business papers all run small events
+that way, beside their full reports. `SHORT_STORY` in editorial.mjs: 150-250 words (120-320 accepted), a lede with
+the news and the decisive figure, then one to four short paragraphs with the most useful sourced detail (the stated
+cause, the previous figure, a named reaction, the next step); no subheads, no list, no «الأرقام» box and no «لماذا
+يهمّ», which on a 120-word story read as padding. It goes through the same desk, critic (judged as a short story,
+never against the six elements), revision and check before publication, and gets a photograph; it is marked
+`format: short`, never leads the cover or sits among its secondaries, and at most seven run in 24 hours, so the
+developed report stays the paper's form. Past that cap a thin event is not written and returns when more outlets
+have reported it. A daily briefs page was built first and dropped the same day: the owner did not like it.
 
 A finished story is mended, not thrown away (2026-09-24). In the 24 runs before that day, 19 drafts were
 rejected after their revision against 30 published, most for one stock phrase or a lede a few words long,

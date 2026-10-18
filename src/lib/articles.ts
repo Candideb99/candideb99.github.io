@@ -30,11 +30,15 @@ export function hoursOld(article: Article, now = Date.now()): number {
  * Strength = editor importance, with a freshness penalty of one point per 12 hours.
  */
 export function pickLead(articles: Article[], now = Date.now()): Article | undefined {
-  const news = articles.filter((a) => a.data.kind === "news");
+  // A short story never leads by the formula (the owner, 2026-10-18): the front opens on a developed report whenever
+  // there is one. The owner's own choice from the control room still wins.
+  const all = articles.filter((a) => a.data.kind === "news");
+  const full = all.filter((a) => a.data.format !== "short");
+  const news = full.length ? full : all;
   if (!news.length) return articles[0];
   // The editor's own choice comes first: a story featured from the control room leads for 48 hours
   // (the newest featured one, if several), after which the formula below takes over again.
-  const featured = news.filter((a) => a.data.featured && hoursOld(a, now) < 48).sort((x, y) => Date.parse(y.data.publishedAt) - Date.parse(x.data.publishedAt));
+  const featured = all.filter((a) => a.data.featured && hoursOld(a, now) < 48).sort((x, y) => Date.parse(y.data.publishedAt) - Date.parse(x.data.publishedAt));
   if (featured.length) return featured[0];
   const scored = news.map((a) => ({
     a,

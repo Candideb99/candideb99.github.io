@@ -315,8 +315,7 @@ export function judgeRewrite(draft, proposal, fields, { year = new Date().getUTC
   // A news story the desk would cut under the publication floor keeps its own lede and body (2026-10-18: the floor
   // is a developed report's, and the desk's job is the Arabic, not the length).
   if (minWords && (accepted.body != null || accepted.lede != null)) {
-    const words = (d) => wordCount(`${d.lede ?? ""}
-${d.body ?? ""}`);
+    const words = (d) => wordCount(`${d.lede ?? ""}\n${d.body ?? ""}`);
     const now = words({ ...draft, ...accepted });
     if (now < minWords && now < words(draft)) {
       for (const f of ["body", "lede"].filter((x) => accepted[x] != null)) {

@@ -18,8 +18,8 @@ import { writeJsonAtomic } from "../pipeline/lib/util.mjs";
 import { loadSnapshot, saveSnapshot } from "../pipeline/lib/snapshots.mjs";
 import { loadSources, settleDrift, verifyStory } from "../pipeline/lib/factcheck.mjs";
 import { boxFacts } from "../pipeline/lib/keyfacts.mjs";
-import { deskNotes, newsDepthBrief, newsFloor, normalizeDraft, prioritizeContext, validateWhyBasis } from "../pipeline/lib/write.mjs";
-import { NEWS_DEPTH, NEWS_FLOOR } from "../pipeline/lib/editorial.mjs";
+import { deskNotes, newsDepthBrief, newsFloor, normalizeDraft, prioritizeContext, validateDraft, validateWhyBasis } from "../pipeline/lib/write.mjs";
+import { NEWS_DEPTH, NEWS_FLOOR, SHORT_WORDS } from "../pipeline/lib/editorial.mjs";
 import { mergeNewsRefresh, serializeArticle } from "../pipeline/lib/article.mjs";
 import { cleanTags } from "../pipeline/lib/tags.mjs";
 import { groundedRegions } from "../pipeline/lib/regions.mjs";
@@ -458,6 +458,25 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("a desk trim that keeps the story above the floor is accepted", Boolean(trimmed.accepted.body), true);
   check("the writer's brief carries the six elements on thin and rich material", [newsDepthBrief([{ text: "x" }]), newsDepthBrief([{ text: "a".repeat(4000) }, { text: "b".repeat(4000) }])].every((b) => b.includes("WHAT COMES NEXT") && b.includes("THE REACTION")), true);
   check("no brief tells a writer that a thin event may run as a brief", /remains a brief|brief of 120|honestly brief/.test(`${newsDepthBrief([{ text: "x" }])}${NEWS_DEPTH}`), false);
+}
+
+// The short story (editorial.mjs SHORT_STORY, 2026-10-18): 120-320 words with no boxes, marked `format: short` in its
+// frontmatter; a developed report carries no such field; the copy desk may trim a short story down to its own floor.
+{
+  const sentence = "أعلنت شركة فيرتيغلوب الأحد خطة لإنشاء مجمع للأسمدة الفوسفاتية في مصر بطاقة كبيرة.";
+  const bodyOf = (n) => Array.from({ length: n }, () => sentence).join("\n\n");
+  const base = { title: "فيرتيغلوب تخطط لمجمع أسمدة فوسفاتية في مصر", subtitle: "المشروع ينتظر تقييم الإمدادات", slug: "fertiglobe-phosphate-complex-egypt", lede: "أعلنت فيرتيغلوب خطة لمجمع أسمدة.", body: bodyOf(13), tags: ["الأسمدة"] };
+  const refused = (d, o) => { try { validateDraft(structuredClone(d), o); return false; } catch { return true; } };
+  check("a short story needs no «لماذا يهمّ»", refused(base, { ...SHORT_WORDS, short: true }), false);
+  check("a developed report still needs one", refused(base, { minWords: 100 }), true);
+  check("a short story over its word ceiling is refused", refused({ ...base, body: bodyOf(30) }, { ...SHORT_WORDS, short: true }), true);
+  check("a short story under its floor is refused", refused({ ...base, body: bodyOf(6) }, { ...SHORT_WORDS, short: true }), true);
+  const draft = { ...base, keyFacts: [], whyItMatters: "", regions: [], chart: null, table: null };
+  const md = (format) => serializeArticle({ draft, slug: base.slug, section: "companies", sources: [], image: null, models: {}, quality: {}, format });
+  check("a short story is marked in its frontmatter, a developed report is not", [/\nformat: short\n/.test(md("short")), /\nformat:/.test(md("full"))], [true, false]);
+  const trimmed = judgeRewrite(draft, { body: bodyOf(11) }, ["body"], { minWords: SHORT_WORDS.minWords });
+  const cut = judgeRewrite(draft, { body: bodyOf(7) }, ["body"], { minWords: SHORT_WORDS.minWords });
+  check("the desk may trim a short story to its own floor, never below it", [Boolean(trimmed.accepted.body), Boolean(cut.accepted.body)], [true, false]);
 }
 
 if (failed) {

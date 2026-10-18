@@ -1,6 +1,6 @@
 import { groundedRegions } from "./regions.mjs";
 import { chat } from "./llm.mjs";
-import { EDITORIAL_CRAFT, NEWS_DEPTH, NEWS_FLOOR } from "./editorial.mjs";
+import { EDITORIAL_CRAFT, NEWS_DEPTH, NEWS_FLOOR, SHORT_STORY, SHORT_WORDS } from "./editorial.mjs";
 import { boxFacts, FIGURES_RULE, isFigure } from "./keyfacts.mjs";
 import { cleanTags, storyText as taggedText } from "./tags.mjs";
 import { readFileSync } from "node:fs";
@@ -76,6 +76,21 @@ const SCHEMA_TEXT = `{
 ${FIGURES_RULE}
 Data visuals: include "chart" only when the sources give at least three comparable figures of the same kind (a time series, or the same indicator across countries/companies); use "line" for time series and "bar" for comparisons; at most 3 series. Include "table" only when the sources list comparable figures for several entities (max 12 rows). Every number in a chart or table must appear in the sources; translate all labels to Arabic; otherwise set them to null. ${CHART_RULE}`;
 
+/** The short story's answer (editorial.mjs SHORT_STORY): the story's fields without the boxes, the chart and the table. */
+const SHORT_SCHEMA_TEXT = `{
+  "title": "Arabic headline with no Latin letters, 35-80 characters, ONE idea, the named actor first, a present-tense verb and the key figure (a large count in thousands or millions), no clickbait",
+  "subtitle": "Arabic dek: one statement (max 160 chars) adding an important detail of the same event; no bare restatement",
+  "slug": "english-kebab-case-slug-4-to-7-words",
+  "lede": "Opening paragraph: one or two sentences with the news, the who/what/when and the main number",
+  "body": "The rest in Markdown: one to four short paragraphs separated by blank lines, the most useful sourced detail; lede plus body 150-250 words; no subheads, no list",
+  "tags": ["3-5 Arabic tags: institutions, countries, sectors, indicators"],
+  "regions": ["1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي"],
+  "image_queries": ["2-3 short English search terms (2-4 words each) naming a concrete subject that exists as a photo on Wikimedia Commons: the named people when they are the news, else the thing, the place or the sector at work; no adjectives, no abstract concepts"]
+}`;
+
+/** A short story carries no boxes, whatever a model returned. */
+const asShort = (draft) => ({ ...draft, keyFacts: [], whyItMatters: "", whyBasis: [], chart: null, table: null, short: true });
+
 /**
  * Arabic JSON is token-hungry and Ling's reasoning counts against the cap: at the old cap of 5000 the writer's
  * answers were regularly cut off right where "tags" sits in the schema (run reports show many "draft.tags
@@ -120,7 +135,7 @@ function coerceBody(body) {
 export const newsFloor = (_notes) => NEWS_FLOOR;
 
 /** Structural validation of a writer's answer. `minWords`/`maxWords` bound the lede plus body (news defaults; analyses are longer). */
-export function validateDraft(draft, { minWords = 200, maxWords = 1100 } = {}) {
+export function validateDraft(draft, { minWords = 200, maxWords = 1100, short = false } = {}) {
   if (!draft || typeof draft !== "object") throw new Error("draft is not an object");
   // Tolerate renamed keys and reshaped bodies from different models.
   draft.title = draft.title ?? draft.headline ?? draft.header;
@@ -137,7 +152,7 @@ export function validateDraft(draft, { minWords = 200, maxWords = 1100 } = {}) {
   if (!Array.isArray(draft.tags) || !draft.tags.some((t) => String(t ?? "").trim())) throw new Error("draft.tags missing (a non-empty array)");
   if (String(draft.title).length < 15 || String(draft.title).length > 95) throw new Error("title length out of range (15-95 chars); write one idea per headline");
   if (!Array.isArray(draft.key_facts)) throw new Error("key_facts must be an array");
-  if (!draft.why_it_matters) throw new Error("why_it_matters missing");
+  if (!draft.why_it_matters && !short) throw new Error("why_it_matters missing");
   const prose = [draft.title, draft.subtitle, draft.lede, draft.body, draft.why_it_matters].join("\n");
   if (arabicRatio(prose) < 0.85) throw new Error(`Arabic ratio too low: ${arabicRatio(prose).toFixed(2)}`);
   const words = wordCount(`${draft.lede}\n${draft.body}`);
@@ -282,7 +297,7 @@ export function validateWhyBasis(d, sources) {
   }
 }
 
-export async function writeArticle({ story, sources, notes = null, log, lessons = "", today = new Date() }) {
+export async function writeArticle({ story, sources, notes = null, log, lessons = "", today = new Date(), short = false }) {
   const user = `STORY BRIEF FROM THE EDITOR
 Angle: ${story.angle}
 Working headline: ${story.headlineHint}
@@ -293,9 +308,9 @@ ${notesBlock(notes)}SOURCE MATERIAL (use only this material; do not add facts fr
 ${sources.map(writerSourceBlock(notes)).join("\n\n")}
 
 ${lessons}TASK
-${newsDepthBrief(sources)}
-Write the article for خازندار following the house style: ONE event, the working headline's, developed in the order that makes its meaning clear to the reader, with figures, attribution and sourced context where needed. Use at most 12 words in the title stating that one idea with no evaluative adjective (no حاسم، حافل، مصيري، صادم). Return one JSON object exactly in this shape:
-${SCHEMA_TEXT}`;
+${short ? SHORT_STORY : newsDepthBrief(sources)}
+Write the ${short ? "short story" : "article"} for خازندار following the house style: ONE event, the working headline's, ${short ? "told in the order the reader needs" : "developed in the order that makes its meaning clear to the reader"}, with figures, attribution and sourced context where needed. Use at most 12 words in the title stating that one idea with no evaluative adjective (no حاسم، حافل، مصيري، صادم). Return one JSON object exactly in this shape:
+${short ? SHORT_SCHEMA_TEXT : SCHEMA_TEXT}`;
 
   const { data, model } = await chat({
     role: "writer",
@@ -307,30 +322,33 @@ ${SCHEMA_TEXT}`;
     validate: (d) => {
       // The editor's region tags stand in for tags the model forgot.
       ensureTags(d, story.regions);
+      if (short) return validateDraft(d, { ...SHORT_WORDS, short: true });
       validateDraft(d, { minWords: newsFloor(notes) });
       validateWhyBasis(d, sources);
     },
   });
-  return { draft: normalizeDraft(data), model };
+  return { draft: short ? asShort(normalizeDraft(data)) : normalizeDraft(data), model };
 }
 
 /**
  * Sends critic findings back to the writer for one revision. `wordLimits` (analyses, paper readings) overrides the
  * news word bounds; `kind` picks the brief the revision is written under ("paper" for a reading of a research paper).
  */
-export async function reviseArticle({ draft, sources, issues, log, wordLimits, kind = "", notes = null, lessons = "" }) {
-  const user = `You previously wrote this article for خازندار:
-${JSON.stringify(draft, null, 2)}
+export async function reviseArticle({ draft, sources, issues, log, wordLimits, kind = "", notes = null, lessons = "", short = false }) {
+  const news = !wordLimits && !kind;
+  const shown = short ? { title: draft.title, subtitle: draft.subtitle, slug: draft.slug, lede: draft.lede, body: draft.body, tags: draft.tags, regions: draft.regions, image_queries: draft.imageQueries ?? draft.image_queries } : draft;
+  const user = `You previously wrote this ${short ? "short story" : "article"} for خازندار:
+${JSON.stringify(shown, null, 2)}
 
 ${notesBlock(notes)}SOURCE MATERIAL
 ${sources.map(writerSourceBlock(notes)).join("\n\n")}
 
-${lessons}${lessons && !wordLimits && !kind ? "SCOPE OF THE LEARNED RULES: they protect reported facts and attribution; WHY IT MATTERS separately permits a bounded house inference from sourced premises. Never convert an analyst's opinion into an established fact.\n\n" : ""}${wordLimits || kind ? "" : newsDepthBrief(sources)}
-An editor found the following problems. Fix every one of them strictly using the source material. Remove any claim or number that the sources do not support. Preserve useful explanations, identification and developed comparisons; do not shrink the report into a digest during revision. Keep everything else intact, and keep the article at least ${wordLimits?.target ?? 350} words (lede + body)${wordLimits || kind ? " when the sources allow it" : `; a news story under ${NEWS_FLOOR} words is refused. When a problem says the report lacks an element («ينقص التقرير»), add it from the named source`}; never pad with unsupported material.
+${lessons}${lessons && news && !short ? "SCOPE OF THE LEARNED RULES: they protect reported facts and attribution; WHY IT MATTERS separately permits a bounded house inference from sourced premises. Never convert an analyst's opinion into an established fact.\n\n" : ""}${!news ? "" : short ? SHORT_STORY : newsDepthBrief(sources)}
+An editor found the following problems. Fix every one of them strictly using the source material. Remove any claim or number that the sources do not support. ${short ? `Keep everything else intact, and keep the story within 150-250 words (lede + body); never pad with unsupported material.` : `Preserve useful explanations, identification and developed comparisons; do not shrink the report into a digest during revision. Keep everything else intact, and keep the article at least ${wordLimits?.target ?? 350} words (lede + body)${wordLimits || kind ? " when the sources allow it" : `; a news story under ${NEWS_FLOOR} words is refused. When a problem says the report lacks an element («ينقص التقرير»), add it from the named source`}; never pad with unsupported material.`}
 PROBLEMS
 ${issues.map((i, n) => `${n + 1}. ${i}`).join("\n")}
 
-Return the complete corrected article as one JSON object with the same keys as before (title, subtitle, slug, lede, body, key_facts, why_it_matters, ${!wordLimits && !kind ? "why_basis, " : ""}tags, regions, image_queries${draft.chart || draft.table ? ", chart, table" : ""}).`;
+Return the complete corrected ${short ? "story" : "article"} as one JSON object with the same keys as before (${short ? "title, subtitle, slug, lede, body, tags, regions, image_queries" : `title, subtitle, slug, lede, body, key_facts, why_it_matters, ${news ? "why_basis, " : ""}tags, regions, image_queries${draft.chart || draft.table ? ", chart, table" : ""}`}).`;
   const { data, model } = await chat({
     role: "writer",
     system: kind === "paper" ? PAPER_SYSTEM : kind === "feature" ? FEATURE_SYSTEM : wordLimits ? ANALYST_SYSTEM : WRITER_SYSTEM,
@@ -342,11 +360,13 @@ Return the complete corrected article as one JSON object with the same keys as b
     log,
     validate: (d) => {
       ensureTags(d, draft.tags);
+      if (short) return validateDraft(d, { ...SHORT_WORDS, short: true });
       validateDraft(d, wordLimits ?? { minWords: newsFloor(notes) });
-      if (!wordLimits && !kind) validateWhyBasis(d, sources);
+      if (news) validateWhyBasis(d, sources);
     },
   });
-  return { draft: normalizeDraft(data, { kind: kind || "news" }), model };
+  const revised = normalizeDraft(data, { kind: kind || "news" });
+  return { draft: short ? asShort(revised) : revised, model };
 }
 
 /** `kind` decides what the key-facts box keeps (lib/keyfacts.mjs): figures only, except an explainer's glossary. */

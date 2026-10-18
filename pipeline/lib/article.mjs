@@ -46,7 +46,7 @@ export const KINDS = new Set(["news", "explainer", "analysis", "paper", "weekly"
 
 /** Serializes an article as Markdown with YAML frontmatter. `kind` is "news" (default), "explainer", "analysis" or "paper". */
 /** `pending: true` writes the article as a draft: it stays out of the built site until the editor publishes it. */
-export function serializeArticle({ draft, slug, section, sources, image, models, quality, kind = "news", publishedAt, pending = false, deskedAt = null }) {
+export function serializeArticle({ draft, slug, section, sources, image, models, quality, kind = "news", publishedAt, pending = false, deskedAt = null, format = "full" }) {
   if (!KINDS.has(kind)) throw new Error(`unknown article kind "${kind}" (${[...KINDS].join(", ")})`);
   const frontmatter = {
     title: draft.title,
@@ -54,6 +54,8 @@ export function serializeArticle({ draft, slug, section, sources, image, models,
     slug,
     section,
     kind,
+    // "short": a short story (lib/editorial.mjs SHORT_STORY), never the cover's lead; a developed report has no field.
+    ...(format === "short" ? { format } : {}),
     publishedAt: publishedAt ?? new Date().toISOString(),
     lede: draft.lede,
     // The last word on the box, whatever path the draft came by (a repair, a revision): figures only under «الأرقام».
@@ -120,6 +122,7 @@ export async function loadExistingArticles() {
         subtitle: data.subtitle ?? "",
         section: data.section,
         kind: data.kind ?? "news",
+        format: data.format === "short" ? "short" : "full",
         publishedAt: data.publishedAt,
         lede: data.lede ?? "",
         body: match[2].trim(),

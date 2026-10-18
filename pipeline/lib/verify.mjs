@@ -1,5 +1,5 @@
 import { chat } from "./llm.mjs";
-import { EDITORIAL_CRAFT, EDITORIAL_READER_CHECK, NEWS_DEPTH, NEWS_FLOOR } from "./editorial.mjs";
+import { EDITORIAL_CRAFT, EDITORIAL_READER_CHECK, NEWS_DEPTH, NEWS_FLOOR, SHORT_STORY } from "./editorial.mjs";
 import { arabicRatio, normalizeDigits, overlappingPhrases, phraseOverlap, suspiciousLatinWords, ungroundedNumbers, wordCount } from "./util.mjs";
 import { styleIssues } from "./style.mjs";
 
@@ -234,6 +234,14 @@ const CRITIC_RUBRIC = {
 DEPTH. ${NEWS_DEPTH}
 Count the lede and body words; under ${NEWS_FLOOR} is a depth defect in itself. Then go through the six elements (the news, the driver, the numbers in perspective, the reaction, the background, what comes next). For each element a SOURCE supplies and the draft omits or reduces to a bare mention, write one issue in Arabic beginning «ينقص التقرير:», naming the element, the supplied fact and its SOURCE number. An element no source supplies is not a defect; never ask for invented material. A «لماذا يهمّ» box about something other than the event's economic consequence (a casualty count, a human-interest detail, a restated headline) is also a depth defect.`,
   },
+  // A short story (editorial.mjs SHORT_STORY): judged as one, never against the developed report's checklist.
+  short: {
+    material: "",
+    facts: FACTS_CHECK,
+    check: `Is this ONE story? An article stitching unrelated developments together is a roundup and must be rejected. The headline, lede and body report supplied facts.
+SHORT STORY. ${SHORT_STORY}
+Judge it as a short story: never ask for a developed report, more words, subheads, a key-figures box or «لماذا يهمّ». Check that the lede carries the news and the decisive figure, and that the paragraphs after it give the most useful sourced detail rather than ceremony or procedure; when a SOURCE gives the event's stated cause or the previous figure and the story leaves it out while keeping something less useful, name it and the SOURCE number. A story over 250 words that repeats itself, or under 150 that leaves out such a fact, needs revision. It has no synthesis box: in reader_check, whatever concerns the box is not_applicable.`,
+  },
   explainer: {
     material:
       "(explainer: no external sources by design, so it may state NO current events: no dated fact, current price, statistic, decision, attack or deal of recent days; only definitions, mechanisms and worked examples labelled مثال توضيحي. Judge internal consistency and standard definitions.)",
@@ -267,9 +275,11 @@ Count the lede and body words; under ${NEWS_FLOOR} is a depth defect in itself. 
 };
 
 /** Critic pass. Returns { verdict: "publish"|"revise"|"reject", score, issues[], model }. */
-export async function critique({ draft, sources, explainer = false, analysis = false, paper = false, weekly = false, feature = false, previousIssues = null, log }) {
+export async function critique({ draft, sources, explainer = false, analysis = false, paper = false, weekly = false, feature = false, short = false, previousIssues = null, log }) {
   const news = !explainer && !analysis && !paper && !weekly && !feature;
-  const rubric = CRITIC_RUBRIC[explainer ? "explainer" : analysis ? "analysis" : paper ? "paper" : weekly ? "weekly" : feature ? "feature" : "news"];
+  // A developed news report: the synthesis box and the depth checklist apply. A short story has neither.
+  const full = news && !short;
+  const rubric = CRITIC_RUBRIC[explainer ? "explainer" : analysis ? "analysis" : paper ? "paper" : weekly ? "weekly" : feature ? "feature" : short ? "short" : "news"];
   // Each source with its date: a timeline («في العمق») is checked row by row against its stories' dates.
   const material = sources.map((s, i) => `SOURCE ${i + 1}: ${s.sourceNameEn} (${s.lang}) — "${s.title}"${s.publishedAt ? ` — published ${String(s.publishedAt).slice(0, 10)}` : ""}${s.kind === "official" ? " — PRIMARY INSTITUTIONAL DOCUMENT (stated aims remain attributed claims)" : ""}\n${s.text || s.summary || ""}`).join("\n\n");
   const user = `SOURCE MATERIAL
@@ -290,9 +300,9 @@ ${news ? EDITORIAL_READER_CHECK : ""}
 
 ${previousIssues?.length ? `\nA REVISION WAS MADE. These problems were reported on the previous draft; say which of them remain and judge the draft as it now stands, not the old one:\n${previousIssues.map((i, n) => `${n + 1}. ${i}`).join("\n")}\n` : ""}
 SCORING (apply exactly)
-${news ? "For the synthesis box, distinguish reported premises from inference. Independently check why_basis against the numbered sources: these are the writer's assertions, not verified evidence. A bounded economic inference from supported premises is allowed even when no source states that conclusion. Invented premises, a faulty causal link or certainty beyond the evidence remain errors. An attributed recap or vague process attribution is a concrete editorial defect requiring revision." : ""}
+${full ? "For the synthesis box, distinguish reported premises from inference. Independently check why_basis against the numbered sources: these are the writer's assertions, not verified evidence. A bounded economic inference from supported premises is allowed even when no source states that conclusion. Invented premises, a faulty causal link or certainty beyond the evidence remain errors. An attributed recap or vague process attribution is a concrete editorial defect requiring revision." : ""}
 A real error is: a figure with a changed magnitude, direction, period, unit or actor; a reported claim, cause or consequence no source makes (subject to the synthesis distinction above); a wrong attribution; a quotation that is not verbatim from an Arabic source; a headline that says more than the sources. A faithful paraphrase, a synonym, a rounding the source's own headline makes (108 for 108.44), a large count rounded in thousands or millions with «نحو» (نحو 456 ألف for 455,758), a shorter attribution form, or the omission of a detail is NOT an error.
-Start from 10. Subtract 1 for each real error and 1 for each translationese fault (point 4)${news ? ", and 1 for each depth defect (point 3, DEPTH)" : ""}. A draft with no real error scores 8 or more whatever its style points${news ? ", unless it has depth defects: a news draft with three or more scores at most 6" : ""}. Verdict: "publish" at 7 or more with no real error or unresolved concrete editorial defect${news ? " and no depth defect" : ""}; "revise" for one to three real errors, translationese, incomplete wording${news ? ", a depth defect" : ""} or disconnected construction; "reject" only for a fabricated key fact, a misrepresented story, or a draft that cannot be fixed from the sources.
+Start from 10. Subtract 1 for each real error and 1 for each translationese fault (point 4)${full ? ", and 1 for each depth defect (point 3, DEPTH)" : ""}. A draft with no real error scores 8 or more whatever its style points${full ? ", unless it has depth defects: a news draft with three or more scores at most 6" : ""}. Verdict: "publish" at 7 or more with no real error or unresolved concrete editorial defect${full ? " and no depth defect" : ""}; "revise" for one to three real errors, translationese, incomplete wording${full ? ", a depth defect" : ""} or disconnected construction; "reject" only for a fabricated key fact, a misrepresented story, or a draft that cannot be fixed from the sources.
 List at most six issues, the real errors first, each quoting the offending text and naming the source that contradicts it; include demonstrated Arabic or construction defects after the factual errors, without padding the list with stylistic preferences.
 
 Return JSON:

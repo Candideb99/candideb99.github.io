@@ -69,6 +69,8 @@ const articles = defineCollection({
     slug: z.string(),
     section: z.enum(["economy", "markets", "energy", "companies", "technology", "defense", "analysis", "explainers"]),
     kind: z.enum(["news", "explainer", "analysis", "paper", "weekly", "feature"]).default("news"),
+    /** "short": a short news story (150-250 words, no boxes; pipeline/lib/editorial.mjs SHORT_STORY), never the cover's lead. */
+    format: z.enum(["full", "short"]).default("full"),
     publishedAt: isoString,
     updatedAt: isoString.optional(),
     lede: z.string().default(""),

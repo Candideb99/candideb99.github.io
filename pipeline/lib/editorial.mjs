@@ -16,7 +16,22 @@ The copy desk may improve an existing inference's expression without strengtheni
  */
 export const NEWS_FLOOR = 300;
 /** Checked desk notes needed before a news story is written: fewer cannot carry NEWS_FLOOR words without padding. */
-export const NEWS_MIN_FACTS = 12;
+export const NEWS_MIN_FACTS = Number(process.env.KHAZENDAR_NEWS_MIN_FACTS) || 12;
+
+/**
+ * The short story (the owner, 2026-10-18: "do renowned news websites publish short stories?", then, showing al-aalem.com's
+ * 200-word item on its own page, "i did not like how the summary you built looks like"). The Arab news sites run a small
+ * event as an ordinary article (a headline, a photograph, some 200 words in short paragraphs), and so do the wires and
+ * the business papers beside their full reports; a separate daily briefs page was built and dropped the same day. An
+ * event whose checked notes hold fewer than NEWS_MIN_FACTS facts runs as one: the same writer, copy desk, critic, check
+ * before publication and picture desk, with no key-figures box and no «لماذا يهمّ» (on a 120-word story they were what
+ * read as padding), never the cover's lead, and at most SHORT_DAILY_CAP in 24 hours so the developed report stays the
+ * paper's form. Its article carries `format: short`.
+ */
+export const SHORT_WORDS = { minWords: 120, maxWords: 320, target: 150 };
+export const SHORT_DAILY_CAP = Number(process.env.KHAZENDAR_SHORT_CAP) || 7;
+export const SHORT_STORY = `SHORT STORY — THIS EVENT'S FORM
+The sources of this event carry too little for a developed report, so it runs as a short news story, the way Arab news sites and the wires run a small event on its own page: 150-250 words (lede plus body), in two to five short paragraphs of one to three sentences. The lede carries the news: who did what, the decisive figure, when. The paragraphs after it give the most useful sourced detail in the order the reader needs: the cause or stated reason, a comparison with the previous figure, a named reaction, the next step. No subheads and no list. No key-figures box and no «لماذا يهمّ»: this form has neither. Never pad, never invent, nothing from memory; a short story is complete, not a fragment.`;
 
 /** What a news report must answer from its sources; read by the desk notes, the writer, the reviser and the critic. */
 export const NEWS_DEPTH = `NEWS DEPTH — THE STANDARD OF A KHAZENDAR NEWS REPORT
