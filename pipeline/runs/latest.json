@@ -1,388 +1,50 @@
 {
-  "mode": "news",
-  "startedAt": "2026-10-18T04:42:28.387Z",
-  "durationSec": 1225,
-  "published": 3,
+  "mode": "explainer",
+  "startedAt": "2026-10-18T09:51:42.695Z",
+  "durationSec": 323,
+  "published": 0,
   "refreshed": 0,
   "report": [
     {
-      "headline": "ناتج دبي يبلغ 473 مليار درهم في النصف الأول من 2026",
-      "section": "economy",
-      "importance": 8,
-      "sources": [
-        "https://www.thenationalnews.com/business/economy/2026/10/18/dubais-economy-reaches-dh473bn-in-first-half-of-2026-as-key-sectors-expand/",
-        "https://www.alkhaleej.ae/2026-10-17/%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF/%D8%A3%D8%B3%D9%88%D8%A7%D9%82-%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA/473-%D9%85%D9%84%D9%8A%D8%A7%D8%B1-%D8%AF%D8%B1%D9%87%D9%85-%D8%A7%D9%84%D9%86%D8%A7%D8%AA%D8%AC-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A-%D8%A7%D9%84%D8%A5%D8%AC%D9%85%D8%A7%D9%84%D9%8A-%D9%84%D8%AF%D8%A8%D9%8A-%D9%81%D9%8A-%D8%A7%D9%84%D9%86%D8%B5%D9%81-%D8%A7%D9%84%D8%A3%D9%88%D9%84-%D9%85%D9%86-2026"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "publish",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان والمقدمة يحددان تراجع الناتج الحقيقي، ويبيّن النص أن نمو بعض القطاعات وارتفاع الناتج بالأسعار الجارية لا يعنيان نمو الاقتصاد حقيقياً.",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "ينسب النص أثر الحرب إلى «ذا ناشيونال»، ويشرح أهمية انكماش التجارة بحصتها البالغة 20.5%. ويستند الصندوق إلى تفاوت أداء القطاعات وأوزانها، ويربط تحسن المحصلة بتراجع أثر الانكماش أو زيادة تعويض القطاعات النامية له، دون توقع جازم.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "clear",
-              "evidence": "تتدرج الفقرات من المحصلة العامة إلى القطاعات المنكمشة والنامية، وتضيف مقارنة الصحة بالقطاع المالي معنى يتجاوز سرد النسب. ويحوّل الصندوق هذه المقارنة إلى استنتاج عن حدود التعويض، لا إلى مجرد تكرار للخبر.",
-              "repair": ""
-            },
-            "precision": {
-              "status": "clear",
-              "evidence": "يحافظ النص على المقارنة السنوية للنصف الأول، ويميّز الأسعار الجارية من الثابتة والقيمة المضافة من حصة القطاع. وتطابق نسب الرسم القطاعات والفترة والاتجاه الواردة في المصدرين، وتظل قراءة المرّي منسوبة إليه.",
-              "repair": ""
-            }
-          }
-        }
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "تراجع ناتج دبي الحقيقي 2.3%، بينما نما الناتج بالأسعار الجارية 0.2% في النصف الأول من 2026.",
-          "source": 2
-        },
-        {
-          "fact": "شكّلت تجارة الجملة والتجزئة 20.5% من الناتج الحقيقي رغم انكماشها 6%.",
-          "source": 1
-        },
-        {
-          "fact": "نمت الأنشطة المالية والتأمين 8.8%، والصحة والعمل الاجتماعي 14.3%، والتشييد 2.4% حقيقياً.",
-          "source": 2
-        }
-      ],
-      "slug": "dubai-real-gdp-first-half-contraction-507750",
-      "title": "ناتج دبي الحقيقي يتراجع 2.3% إلى نحو 473 مليار درهم",
-      "score": 10,
-      "image": "photo"
-    },
-    {
-      "headline": "العراق يطلب برنامجاً تمويلياً جديداً من صندوق النقد",
-      "section": "economy",
-      "importance": 8,
-      "sources": [
-        "https://aawsat.com/node/5330472",
-        "https://www.thenationalnews.com/business/economy/2026/10/17/imf-to-accelerate-talks-with-iraq-and-lebanon-as-mena-support-grows/"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "publish",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان والمقدمة يحددان المستجد بطلب العراق بحث برنامج محتمل وتسريع المناقشات، ويؤكد صندوق «لماذا يهمّ» أن ذلك لا يعني إقرار البرنامج.",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "يوضح المتن الوضع الاقتصادي والأمني العراقي منذ اندلاع حرب إيران، ويضع المناقشات ضمن جهود الصندوق الإقليمية، وفق المصدر الثاني. ويستنتج الصندوق التحريري من الجمع بين الأموال والمساندة في السياسات أن الدعم يتجاوز التمويل وحده؛ وهو استنتاج متناسب مع المقدمات.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "clear",
-              "evidence": "تنتقل المسودة من طلب البرنامج إلى الظروف العراقية وجهود جذب الاستثمار، ثم إلى نطاق مساندة الصندوق. ويضيف «لماذا يهمّ» معنى اقتصادياً وحدّاً للاستنتاج بدلاً من الاكتفاء بتكرار الخبر؛ والقصر مناسب للمعلومات المتاحة عن العراق.",
-              "repair": ""
-            },
-            "precision": {
-              "status": "clear",
-              "evidence": "الأسماء والتوقيت والوقائع مدعومة بالمصدر الثاني، وتصريحات غورغييفا منسوبة إلى «ذا ناشيونال» مع تعريف منصبها. ولا تُختلق قيمة للتمويل أو مهلة لصرفه، كما أن عناصر why_basis الثلاثة مسندة إلى المصدر الصحيح.",
-              "repair": ""
-            }
-          }
-        }
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "طلب العراق بحث برنامج محتمل مع صندوق النقد الدولي.",
-          "source": 2
-        },
-        {
-          "fact": "يعتزم الصندوق تسريع المناقشات مع العراق للمساعدة على استقرار اقتصاده.",
-          "source": 2
-        },
-        {
-          "fact": "قالت غورغييفا إن الصندوق سيقدم للعراق أموالاً ومساندة في السياسات.",
-          "source": 2
-        }
-      ],
-      "slug": "iraq-seeks-imf-financing-programme-talks-d17aa2",
-      "title": "العراق يطلب بحث برنامج تمويلي محتمل مع صندوق النقد الدولي",
-      "score": 10,
-      "image": "photo"
-    },
-    {
-      "headline": "نتفليكس تعيّن بيتر رايس لقيادة المحتوى",
-      "section": "companies",
-      "importance": 7,
-      "sources": [
-        "https://www.nytimes.com/2026/10/16/business/media/netflix-layoffs-bela-bajaria.html",
-        "https://www.cnbc.com/2026/10/16/netflix-peter-rice-chief-content-officer.html"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان والمقدمة يحددان تعيين رايس خلفاً لبجاريا، ويربطان التغيير بضعف تفاعل المشاهدين دون تصوير قوة الإيرادات والأرباح على أنها زالت.",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "نمو المشاهدة بنسبة 2% والمقارنة مع يوتيوب يوضحان تحدي المنافسة على وقت الجمهور. ويستند صندوق «لماذا يهمّ» إلى الميزانية والتوسع وضعف النمو ليستنتج أن تنويع المحتوى وحده لا يضمن زيادة المشاهدة؛ وهو استنتاج محدود، لا نتيجة مؤكدة.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "clear",
-              "evidence": "يتدرج النص من التغيير الإداري والتسريحات إلى مؤشرات المشاهدة والمنافسة، ثم خبرة رايس ذات الصلة. ويضيف الصندوق سؤال توزيع ميزانية المحتوى بدلاً من الاكتفاء بتكرار التعيين.",
-              "repair": ""
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الأرقام والفترات والأسماء مسندة، وتقدير بيتز محفوظ بوصفه احتمالاً، لكن «المسلسلات المكتوبة وغير المكتوبة» لا تشرح للقارئ نوعَي المحتوى المقصودين في المصدر 2.",
-              "repair": "استبدال العبارة بـ«المسلسلات والبرامج التي تعتمد على سيناريو وتلك التي لا تعتمد عليه»، مع إبقاء الأفلام والفعاليات المباشرة ضمن نطاق مسؤوليات رايس."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "publish",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان والمقدمة يحددان تعيين رايس خلفاً لبجاريا ونطاق مسؤولياته، من دون الإيحاء بأن تغيير القيادة حقق بالفعل تحسناً في المشاهدة.",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "نمو المشاهدة بنسبة 2% ومقارنة حصتي نتفليكس ويوتيوب يوضحان ضغط المنافسة على وقت الجمهور. مقدمات صندوق الأهمية وwhy_basis مسندة إلى المصدرين؛ والاستنتاج أن تنويع المحتوى لا يضمن وحده زيادة المشاهدة محدود ومشروع.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "clear",
-              "evidence": "يتدرج التقرير من تغيير القيادة إلى ضغوط الأداء والمنافسة ثم خبرة رايس، ضمن قصة واحدة. ويربط صندوق الأهمية ميزانية المحتوى بتحدي جذب وقت الجمهور، بدلاً من تكرار خبر التعيين.",
-              "repair": ""
-            },
-            "precision": {
-              "status": "clear",
-              "evidence": "الأرقام والفترات والأسماء مدعومة؛ والسبب المنسوب إلى «نيويورك تايمز» محفوظ، وتقدير بيتز معروض بوصفه احتمالاً مع تعريفه وذكر أصل نقله. وعبارة «بسيناريو أو من دونه» توضح نوعَي المحتوى وتعالج الملاحظة السابقة.",
-              "repair": ""
-            }
-          }
-        }
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "قادت بجاريا ميزانية محتوى نتفليكس البالغة 20 مليار دولار.",
-          "source": 2
-        },
-        {
-          "fact": "أعلنت نتفليكس زيادة المشاهدة بنسبة 2% فقط خلال النصف الأول من العام.",
-          "source": 2
-        },
-        {
-          "fact": "وسّعت نتفليكس محتواها ليشمل الرياضة المباشرة والأفلام الوثائقية وألعاب الفيديو للمنافسة على وقت الجمهور.",
-          "source": 2
-        },
-        {
-          "fact": "أرجعت نيويورك تايمز الإقالة والتسريحات إلى انخفاض السهم وتفاعل المشاهدين رغم قوة الإيرادات والأرباح.",
-          "source": 1
-        }
-      ],
-      "slug": "netflix-appoints-peter-rice-content-chief-f41468",
-      "title": "«نتفليكس» تعيّن بيتر رايس لقيادة المحتوى",
-      "score": 10,
-      "image": "photo"
+      "headline": "إعادة تمويل الدين العام",
+      "section": "explainers",
+      "outcome": "rejected after revision: عنوان الشرح سؤال واحد واضح ينتهي بـ«؟» يجيب عنه النص (مثل «لماذا يرتفع عائد السند كلما انخفض سعره؟»)، لا جملة خبرية ولا عنوان بنقطتين."
     }
   ],
   "llm": {
-    "calls": 44,
+    "calls": 8,
     "failures": 0,
-    "promptTokens": 528991,
-    "completionTokens": 56329,
-    "cacheReadTokens": 150656,
+    "promptTokens": 93612,
+    "completionTokens": 13643,
+    "cacheReadTokens": 8704,
     "costUsd": 0,
     "byModel": {
-      "codex-cli/gpt-6.1-sol": 44
+      "codex-cli/gpt-6.1-sol": 8
     }
   },
   "log": [
-    "[04:54:36] pexels \"Iraq commercial street\": 8 usable",
-    "[04:54:38] openverse \"Iraq commercial street\": 2 usable of 2",
-    "[04:54:38] image: dropped \"Aleppo, Great Mosque\" — names too little of commercial, street",
-    "[04:54:38] image: dropped \"A striking black and white aerial view showcasing Erbil's town square,\" — names too little of commercial, street",
-    "[04:54:38] image: dropped \"A grand mosque in Erbil, Kurdistan, Iraq, showcasing its magnificent a\" — names too little of commercial, street",
-    "[04:54:38] image: dropped \"People walk near a mosque in a bustling Middle Eastern city, depicting\" — names too little of commercial, street",
-    "[04:54:38] image: dropped \"Two vintage sports cars parked in an urban alleyway in Erbil, Iraq, fe\" — names too little of commercial, street",
-    "[04:54:38] image: dropped \"Rear view of a vintage Corvette car parked in an alley of Erbil, Iraq \" — names too little of commercial, street",
-    "[04:54:39] commons \"Umm Qasr port\": 13 usable of 24",
-    "[04:54:39] image: dropped \"Iraq 1961.jpg\" — dated 1961, an archival picture",
-    "[04:54:39] image: dropped \"Naval School at Umm Qasr in Basra.jpg\" — a warship or weapon, and the story is not about the military",
-    "[04:54:39] image: dropped \"US Navy 090630-N-6814F-043 Mine countermeasure ship USS Scout (MCM 8) \" — a warship or weapon, and the story is not about the military",
-    "[04:54:39] image: dropped \"US Navy 090517-N-9286M-002 An Iraqi Navy coastal patrol boat is moored\" — a warship or weapon, and the story is not about the military",
-    "[04:54:39] image: dropped \"US Navy 090630-N-6814F-033 Mine countermeasure ship USS Scout (MCM 8) \" — a warship or weapon, and the story is not about the military",
-    "[04:54:39] image: dropped \"US Navy 030328-N-3783H-152 Members of Commander Task Unit (CTU-55.4.3)\" — dated 2003, an archival picture",
-    "[04:54:39] image: dropped \"US Navy 090517-N-9286M-003 Iraqi Navy defender-class patrol boats are \" — a warship or weapon, and the story is not about the military",
-    "[04:54:39] image: dropped \"US Navy 090325-N-6590M-001 The coastal patrol craft USS Chinook (PC 9)\" — a warship or weapon, and the story is not about the military",
-    "[04:54:39] image: dropped \"US Navy 090325-N-6590M-002 Senior Iraqi officers greet Lt. Allen Maxwe\" — a warship or weapon, and the story is not about the military",
-    "[04:54:39] image: dropped \"US Navy 030328-N-2513W-063 Bottled water is delivered by crane to the \" — dated 2003, an archival picture",
-    "[04:54:39] image: dropped \"US Navy 090325-N-6590M-003 Lt. Allen Maxwell, third from left, command\" — a warship or weapon, and the story is not about the military",
-    "[04:54:39] image: dropped \"US Navy 030328-N-2513W-054 Bottled water is delivered by crane to the \" — dated 2003, an archival picture",
-    "[04:54:39] pexels \"Umm Qasr port\": 8 usable",
-    "[04:54:40] openverse \"Umm Qasr port\": 4 usable of 4",
-    "[04:54:40] image: dropped \"030328-N-3783H-191\" — names too little of port",
-    "[04:54:40] image: dropped \"030328-N-5362A-010\" — names too little of port",
-    "[04:54:40] image: dropped \"030328-N-5362A-001\" — names too little of port",
-    "[04:54:40] image: dropped \"030328-N-5362A-006\" — names too little of port",
-    "[04:54:40] image: dropped \"Agama lizard basking in sun on rock, Umm Qais, Jordan.\" — names too little of port",
-    "[04:54:40] image: dropped \"Aerial view of Umm al-Fahm featuring a prominent mosque and surroundin\" — names too little of port",
-    "[04:54:40] image: dropped \"Explore the beauty of a harbor illuminated at night, showcasing vibran\" — names too little of port",
-    "[04:54:40] image: dropped \"Explore the historic ruins of Umm Qais under a clear blue sky in the I\" — names too little of port",
-    "[04:54:40] commons \"International Monetary Fund headquarters\": 9 usable of 24",
-    "[04:54:40] image: dropped \"Caruana, Jaime (IMF 2008) (frame).jpg\" — an event's photograph, people and banners",
-    "[04:54:40] image: dropped \"Joseph Oladele Sanusi.jpg\" — dated 2001, an archival picture",
-    "[04:54:40] image: dropped \"Youssef Boutros-Ghali, IMF 982008IMFC1Presser lg.jpg\" — an event's photograph, people and banners",
-    "[04:54:40] image: dropped \"Wide view of the industrial port in Dubai with ships docked, highlight\" — taken in United Arab Emirates, which the story does not name",
-    "[04:54:40] image: dropped \"Aerial view of Muscat port with ship, cranes, and mountains in Oman.\" — taken in Oman, which the story does not name",
-    "[04:54:41] image: thumbnail HTTP 403 for https://live.staticflickr.com/3651/3525487321_e398acfeeb_n.jpg",
-    "[04:54:48] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=6636",
-    "[04:54:55] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=6458",
-    "[04:54:55] image: second check (codex-cli/gpt-6.1-sol) GENERIC_OK \"International Monetary Fund headquarters.jpg\": The photograph shows the IMF’s own headquarters, an appropriate institutional illustration of its financing discussions ",
-    "[04:54:55] published \"العراق يطلب بحث برنامج تمويلي محتمل مع صندوق النقد الدولي\" -> iraq-seeks-imf-financing-programme-talks-d17aa2",
-    "[04:55:54] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=58204",
-    "[04:55:54] desk notes: 19 facts, 0 quotes (codex-cli/gpt-6.1-sol)",
-    "[04:56:57] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=62827",
-    "[04:57:52] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=54628",
-    "[04:57:52] desk model=codex-cli/gpt-6.1-sol applied=[title,subtitle,lede,whyItMatters,body] rejected=[]",
-    "[04:57:52] desk \"«نتفليكس» تعيّن بيتر رايس لقيادة المحتوى\": rewrote title, subtitle, lede, whyItMatters, body",
-    "[04:58:26] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=34063",
-    "[04:58:26] critic \"«نتفليكس» تعيّن بيتر رايس لقيادة المحتوى\": revise score=9 issues=2",
-    "[04:58:26]   · «المسلسلات المكتوبة وغير المكتوبة» ترجمة حرفية ملتبسة لعبارة scripted and unscripted series في المصدر 2؛ المقصود الاعتماد على سيناريو، لا كتابة المسلسلات نفسها.",
-    "[04:58:26]   · الأرقام والفترات والأسماء مسندة، وتقدير بيتز محفوظ بوصفه احتمالاً، لكن «المسلسلات المكتوبة وغير المكتوبة» لا تشرح للقارئ نوعَي المحتوى المقصودين في المصدر 2. — ",
-    "[04:59:02] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=35698",
-    "[05:00:20] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=77453",
-    "[05:00:20] desk model=codex-cli/gpt-6.1-sol applied=[lede,whyItMatters,body] rejected=[]",
-    "[05:00:20] desk \"«نتفليكس» تعيّن بيتر رايس لقيادة المحتوى\": rewrote lede, whyItMatters, body",
-    "[05:00:43] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=22829",
-    "[05:00:43] critic (second pass) \"«نتفليكس» تعيّن بيتر رايس لقيادة المحتوى\": publish score=10 issues=0",
-    "[05:01:40] llm ok role=checker provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=56778",
-    "[05:01:40] precheck \"«نتفليكس» تعيّن بيتر رايس لقيادة المحتوى\": clean",
-    "[05:01:53] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=12581",
-    "[05:01:53] image: the picture should say: Peter Rice takes charge of Netflix content as viewer engagement weakens.",
-    "[05:01:53] image: the story's people first: Peter Rice Bela Bajaria 2026 | Peter Rice Bela Bajaria | Peter Rice and Bela Bajaria | Peter Rice 2026 | Bela Bajaria 2026",
-    "[05:01:54] commons \"Peter Rice Bela Bajaria 2026\": 0 usable of 0",
-    "[05:01:54] commons \"Peter Rice\": 9 usable of 20",
-    "[05:01:54] image: dropped \"Pabellón del Futuro, Expo'92.jpg\" — names too little of peter, rice, bela, bajaria",
-    "[05:01:54] image: dropped \"Soportes de la cubierta del Pabellón del Futuro, Expo'92.jpg\" — names too little of peter, rice, bela, bajaria",
-    "[05:01:54] image: dropped \"Pabellón del Futuro (Expo'92 Sevilla).jpg\" — names too little of peter, rice, bela, bajaria",
-    "[05:01:54] image: dropped \"Pabellón del Futuro, Expo'92 Sevilla.jpg\" — names too little of peter, rice, bela, bajaria",
-    "[05:01:55] commons \"Peter Rice Bela Bajaria\": 0 usable of 0",
-    "[05:01:55] commons \"Peter Rice\": 9 usable of 20",
-    "[05:01:55] commons \"Peter Rice and Bela Bajaria\": 0 usable of 0",
-    "[05:01:55] commons \"Peter Rice Bela Bajaria\": 0 usable of 0",
-    "[05:01:55] commons \"Peter Rice\": 9 usable of 20",
-    "[05:01:56] commons \"Peter Rice 2026\": 2 usable of 5",
-    "[05:01:56] image: dropped \"President George W. Bush and Peter Mandelson.jpg\" — shows george, not the story's people",
-    "[05:01:56] image: dropped \"Some People With Severe Depression - People With Mental Illnesses Who \" — names too little of peter, rice",
-    "[05:01:56] commons \"Bela Bajaria 2026\": 0 usable of 0",
-    "[05:01:56] commons \"Bela Bajaria\": 0 usable of 0",
-    "[05:01:57] commons \"2026\": 10 usable of 20",
-    "[05:01:57] image: dropped \"Castle Ponoviče, Municipality Litija, Slovenia (2026).jpg\" — names too little of bela, bajaria",
-    "[05:01:57] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 14.jpg\" — names too little of bela, bajaria",
-    "[05:01:57] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 25.jpg\" — names too little of bela, bajaria",
-    "[05:01:57] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 04.jpg\" — names too little of bela, bajaria",
-    "[05:01:57] image: dropped \"Gefallenendenkmal Grüneberg 2026 SW.jpg\" — names too little of bela, bajaria",
-    "[05:01:57] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 01.jpg\" — names too little of bela, bajaria",
-    "[05:01:57] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 08.jpg\" — names too little of bela, bajaria",
-    "[05:01:57] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 17.jpg\" — names too little of bela, bajaria",
-    "[05:01:57] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 21.jpg\" — names too little of bela, bajaria",
-    "[05:01:57] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 02.jpg\" — names too little of bela, bajaria",
-    "[05:01:57] image: set aside \"Peter Rowan & Tony Rice (5682673224).jpg\" — a 2011 photograph of a person, older than 2018",
-    "[05:01:57] image: set aside \"Peter Rowan & Tony Rice (5682104489).jpg\" — a 2011 photograph of a person, older than 2018",
-    "[05:01:57] image: set aside \"Peter Rowan & Tony Rice (5682105249).jpg\" — a 2011 photograph of a person, older than 2018",
-    "[05:01:57] image: set aside \"Mexican rice 144235.jpg\" — a 2015 photograph of a person, older than 2018",
-    "[05:01:57] image: people shortlist: 2019 Lee Zeldin, Kathleen Rice, Peter King, and Tom Suo",
-    "[05:02:02] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=4654",
-    "[05:02:02] image: vision rejected all candidates (The photograph shows US politicians at a drinking-water press conference, not Peter Rice or Bela Bajaria, and has no relevance to Netflix’s content leadership.)",
-    "[05:02:02] image: nothing of them since 2018 fits; their newest older photographs, run as file photos: 2011 Peter Rowan & Tony Rice (5682673224).jpg | 2011 Peter Rowan & Tony Rice (5682104489).jpg | 2011 Peter Rowan & Tony Rice (5682105249).jpg | 2015 Mexican rice 144235.jpg",
-    "[05:02:09] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=4953",
-    "[05:02:09] image: vision rejected all candidates (The photographs show musicians Peter Rowan and Tony Rice, or a rice dish—not Netflix executives Peter Rice or Bela Bajaria. None is relevant to the story.)",
-    "[05:02:23] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=13183",
-    "[05:02:23] image: the source's photograph (CNBC) shows A man in glasses and a grey suit gestures while speaking through a headset microphone on a blue-lit stage.; searching Peter Rice | Peter Rice Disney | Peter Rice television",
-    "[05:02:23] image: tier 2, like the sources' own photograph: Peter Rice | Peter Rice Disney | Peter Rice television",
-    "[05:02:23] commons \"Peter Rice\": 9 usable of 20",
-    "[05:02:23] image: dropped \"Pabellón del Futuro, Expo'92.jpg\" — names too little of peter, rice",
-    "[05:02:23] image: dropped \"Soportes de la cubierta del Pabellón del Futuro, Expo'92.jpg\" — names too little of peter, rice",
-    "[05:02:23] image: dropped \"Pabellón del Futuro (Expo'92 Sevilla).jpg\" — names too little of peter, rice",
-    "[05:02:23] image: dropped \"Pabellón del Futuro, Expo'92 Sevilla.jpg\" — names too little of peter, rice",
-    "[05:02:23] pexels \"Peter Rice\": 8 usable",
-    "[05:02:24] openverse \"Peter Rice\": 9 usable of 20",
-    "[05:02:24] image: dropped \"Ryan Corr, Zoe Crammond\" — names too little of peter, rice",
-    "[05:02:24] image: dropped \"Daikon Salad with Sashimi - Horoki\" — names too little of peter, rice",
-    "[05:02:24] image: dropped \"Roasted Octopus in Garlic Butter - Horoki\" — names too little of peter, rice",
-    "[05:02:24] image: dropped \"Kerryn Amyes, Todd Lasance, Lincoln Younes\" — names too little of peter, rice",
-    "[05:02:24] image: dropped \"Maria Venuti\" — names too little of peter, rice",
-    "[05:02:24] image: dropped \"Tofu and Avocado Salad topped with Tuna in Sesame Sauce - Horoki\" — names too little of peter, rice",
-    "[05:02:24] image: dropped \"Portrait of a businessman in formal attire against a neutral backgroun\" — names too little of peter, rice",
-    "[05:02:24] image: dropped \"Close-up portrait of a smiling senior man with bright eyes and white h\" — names too little of peter, rice",
-    "[05:02:24] image: dropped \"A portrait of a mature man standing in a library, showcasing a profess\" — names too little of peter, rice",
-    "[05:02:24] image: dropped \"Close-up portrait of a serious businessman in eyeglasses against a dar\" — names too little of peter, rice",
-    "[05:02:24] image: dropped \"Friendly middle-aged man wearing glasses, smiling in an indoor setting\" — names too little of peter, rice",
-    "[05:02:24] image: dropped \"Portrait of a senior man with short gray hair against a red background\" — names too little of peter, rice",
-    "[05:02:24] commons \"Peter Rice Disney\": 0 usable of 3",
-    "[05:02:24] commons \"Peter Rice\": 9 usable of 20",
-    "[05:02:25] openverse \"Peter Rice Disney\": 0 usable of 0",
-    "[05:02:25] pexels \"Peter Rice Disney\": 8 usable",
-    "[05:02:25] image: dropped \"Colorful parade with performers in front of iconic castle, capturing f\" — names too little of peter, rice, disney",
-    "[05:02:25] image: dropped \"A costumed character interacting with park visitors outdoors in Bay La\" — names too little of peter, rice, disney",
-    "[05:02:25] image: dropped \"Mickey and Minnie Mouse in colorful costumes outside an iconic castle \" — names too little of peter, rice, disney",
-    "[05:02:25] image: dropped \"Playful Pluto character waving during a sunny Orlando parade at an amu\" — names too little of peter, rice, disney",
-    "[05:02:25] image: dropped \"Vibrant purple and pink fireworks lighting up the Florida night sky wi\" — names too little of peter, rice, disney",
-    "[05:02:25] image: thumbnail HTTP 403 for https://live.staticflickr.com/3169/2618967279_5f81fe9ac9_n.jpg",
-    "[05:02:25] image: thumbnail HTTP 403 for https://live.staticflickr.com/4011/4304351935_bae82f25a1_n.jpg",
-    "[05:02:32] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=5664",
-    "[05:02:32] image: vision rejected all candidates (None shows Netflix or executive Peter Rice. The candidates depict an unrelated historic house, politicians, or musicians with matching name fragments.)",
-    "[05:02:32] image: thumbnail HTTP 403 for https://live.staticflickr.com/1274/924521466_8633ea919b_n.jpg",
-    "[05:02:36] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=4021",
-    "[05:02:36] image: vision rejected all candidates (None shows Peter Rice or a relevant executive speaking. The food, basilica and Disney tourist photographs do not illustrate Netflix’s content leadership change.)",
-    "[05:02:36] image: tier 3, the writer's own subjects: Peter Rice | Netflix headquarters | Bela Bajaria",
-    "[05:02:37] commons \"Peter Rice 2026\": 2 usable of 5",
-    "[05:02:37] commons \"Peter Rice\": 4 usable of 12",
-    "[05:02:37] image: dropped \"President George W. Bush and Peter Mandelson.jpg\" — shows george, not the story's people",
-    "[05:02:37] image: dropped \"Some People With Severe Depression - People With Mental Illnesses Who \" — names too little of peter, rice",
-    "[05:02:37] image: dropped \"Soportes de la cubierta del Pabellón del Futuro, Expo'92.jpg\" — names too little of peter, rice",
-    "[05:02:38] commons \"Netflix headquarters 2026\": 0 usable of 1",
-    "[05:02:38] commons \"Netflix headquarters\": 8 usable of 12",
-    "[05:02:46] llm ok role=vision provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=7526",
-    "[05:02:53] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=6179",
-    "[05:02:53] image: second check (codex-cli/gpt-6.1-sol) GENERIC_OK \"101 Albright Way.jpg\": Netflix’s own headquarters is a suitable institutional illustration of its content leadership change.",
-    "[05:02:53] published \"«نتفليكس» تعيّن بيتر رايس لقيادة المحتوى\" -> netflix-appoints-peter-rice-content-chief-f41468"
+    "[09:51:42] newsroom start mode=explainer limit=4 dry-run=false",
+    "[09:52:19] llm ok role=editor provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=32669",
+    "[09:52:19] explainer topic: إعادة تمويل الدين العام (Public Debt Refinancing)",
+    "[09:53:13] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=54424",
+    "[09:53:18] llm ok role=editor provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=4306",
+    "[09:53:18] data chart: none fits this piece",
+    "[09:54:31] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=73280",
+    "[09:54:31] desk model=codex-cli/gpt-6.1-sol applied=[title,whyItMatters,body] rejected=[]",
+    "[09:54:31] desk \"إعادة تمويل الدين العام قد تغيّر كلفته دون زيادة أصله\": rewrote title, whyItMatters, body",
+    "[09:54:31] checks explainer \"إعادة تمويل الدين العام قد تغيّر كلفته دون زيادة أصله\": 626 words, 1 issues, 0 warnings",
+    "[09:54:44] llm ok role=critic provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=12365",
+    "[09:54:44] critic explainer: publish score=10 issues=0",
+    "[09:54:44]   · عنوان الشرح سؤال واحد واضح ينتهي بـ«؟» يجيب عنه النص (مثل «لماذا يرتفع عائد السند كلما انخفض سعره؟»)، لا جملة خبرية ولا عنوان بنقطتين.",
+    "[09:55:14] llm ok role=writer provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=29400",
+    "[09:55:37] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=23757",
+    "[09:55:37] desk model=codex-cli/gpt-6.1-sol applied=[title,whyItMatters] rejected=[]",
+    "[09:55:37] desk \"إعادة تمويل الدين العام قد تغيّر كلفته حتى مع ثبات أصله\": rewrote title, whyItMatters",
+    "[09:55:37] last desk pass for 1 fault(s): عنوان الشرح سؤال واحد واضح ينتهي بـ«؟» يجيب عنه النص (مثل «ل",
+    "[09:57:05] llm ok role=desk provider=codex model=codex-cli/gpt-6.1-sol attempt=1 ms=87188",
+    "[09:57:05] desk model=codex-cli/gpt-6.1-sol applied=[subtitle,body] rejected=[title:a hedge was dropped («إعادة تمويل الدين العام قد تغيّر كلفته حتى مع ثبات أصله»)]",
+    "[09:57:05] desk \"إعادة تمويل الدين العام قد تغيّر كلفته حتى مع ثبات أصله\": rewrote subtitle, body; refused title (a hedge was dropped («إعادة تمويل الدين العام قد تغيّر كلفته حتى مع ثبات أصله»))",
+    "[09:57:05] last desk pass: still 1 fault(s)",
+    "[09:57:05] reject explainer \"إعادة تمويل الدين العام قد تغيّر كلفته حتى مع ثبات أصله\" after revision: عنوان الشرح سؤال واحد واضح ينتهي بـ«؟» يجيب عنه النص (مثل «لماذا يرتفع عائد السند كلما انخفض سعره؟»)، لا جملة خبرية ولا عنوان بنقطتين."
   ]
 }
