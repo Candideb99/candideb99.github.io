@@ -135,7 +135,7 @@ function namedPeople(image) {
  * The checks had judged only the frame and passed it as an anonymous sector scene. Every step that
  * chooses or checks a picture now reads this rule; the audit imports it too.
  */
-export const PLACE_RULE = `WHERE IT WAS TAKEN. The photograph must match the story's geography. When the story is about ONE country (a US fuel ban, a Saudi pipeline, Egypt's budget, a Qatari gas field), the photograph must come from that country whenever anything says where it was taken: the file name, the description, the categories (for example "Finland photographs taken on 2016-08-19" or "Gas stations in Germany"), or writing in the frame (shop signs, pump labels, road signs, number plates) in a language or script not used in the story's country, such as the Finnish «ITSEPALVELU» on a pump on a US story. A photograph placed in another country is WRONG_SUBJECT for such a story, however typical its scene. A scene with no clue to its place is acceptable only when nothing from the story's own country is on offer. For a story about the world market, a region or several countries, a sector scene may come from anywhere unless the frame itself identifies a country the story does not mention.`;
+export const PLACE_RULE = `WHERE IT WAS TAKEN. The photograph must match the story's geography. When the story is about ONE country (a US fuel ban, a Saudi pipeline, Egypt's budget, a Qatari gas field), the photograph must come from that country whenever anything says where it was taken: the file name, the description, the categories (for example "Finland photographs taken on 2016-08-19" or "Gas stations in Germany"), or writing in the frame (shop signs, pump labels, road signs, number plates) in a language or script not used in the story's country, such as the Finnish «ITSEPALVELU» on a pump on a US story. A photograph placed in another country is WRONG_SUBJECT for such a story, however typical its scene. A scene with no clue to its place is acceptable only when nothing from the story's own country is on offer. For a story about the world market, a region or several countries, a sector scene may come from anywhere unless the frame itself identifies a country the story does not mention. A close-up of a material or a product (fertilizer granules in a gloved hand, grain, ore, crude in a sample jar) shows no place at all and runs as an illustration: where its file says it was taken does not count against it, unless writing, packaging, a flag or a scene in the frame shows a country.`;
 
 /**
  * "If possible" (the owner's words). When nothing from the story's own country passes, a story is not left
@@ -293,6 +293,21 @@ const US_STATES = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Co
 const US_CODES = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY", "DC"];
 const PROVINCES = ["Ontario", "Quebec", "Québec", "British Columbia", "Alberta", "Manitoba", "Saskatchewan", "Nova Scotia", "New Brunswick", "Newfoundland"];
 const NAMESAKE = new RegExp(`(?<!\\p{L})\\p{Lu}[\\p{L}.'’-]*(?: \\p{Lu}[\\p{L}.'’-]*)*,\\s*(${[...US_STATES, ...PROVINCES].join("|")}|${US_CODES.join("|")})(?!\\p{L})`, "u");
+/**
+ * A close-up of a material or a product shows no place: fertilizer granules photographed in India look like granules
+ * anywhere. The Fertiglobe story (2026-10-18) lost three such frames to "taken in India, which the story does not
+ * name" and ran a hazy mine gate instead, where الشرق بلومبرغ ran a gloved hand holding the granules. The file's
+ * record still says where it was taken, so the country rule is not asked about it (atHome(), verifyImage()), and the
+ * caption calls it an illustration (asIllustrationIfElsewhere(), which still reads the record). A banknote, a coin, a
+ * sign or a scene is not such a close-up: its country shows.
+ */
+const CLOSE_UP = /\b(?:close[- ]?up|closeup|macro|granules?|granular|pellets?|powder|crystals?|grains? of|kernels?|handful|specimen)\b/i;
+const NOT_CLOSE_UP = /\b(?:banknotes?|notes|coins?|currency|bills|signs?|street|city|town|village|port|harbou?r|market|bazaar|shop|store|landscape|aerial|skyline|panorama|building|station|people|workers?|crowd)\b/i;
+export function closeUpOfMaterial(image) {
+  const said = `${image?.title ?? ""} | ${image?.description ?? ""}`.replace(/_/g, " ");
+  return CLOSE_UP.test(said) && !NOT_CLOSE_UP.test(said);
+}
+
 export function placedAbroad(image, story) {
   const desks = story?.regions ?? [];
   if (desks.length && desks.every((d) => d === "عالمي")) return null;
@@ -1011,11 +1026,11 @@ Return JSON: {"queries": ["...", "...", "...", "..."], "place": ["..."], "people
  * event → the photo is refused and the story runs as text. This is the audit rubric of 2026-09-22
  * (37 flagged of 125) made a gate, so it cannot be skipped.
  */
-async function verifyImage({ image, draft, story, log, neutral = false, people = [], places = [], skyline = false }) {
+async function verifyImage({ image, draft, story, log, neutral = false, people = [], places = [], skyline = false, thumbnail = null }) {
   // Where the file itself says it was taken is read in code first; a model is not trusted with it. The
   // last pass (`neutral`) looks for no place at all, so there the file's own record does not refuse it,
   // and neither does a photograph of the story's own people, taken wherever they last met.
-  const abroad = neutral || people.length ? null : placedAbroad(image, draft);
+  const abroad = neutral || people.length || closeUpOfMaterial(image) ? null : placedAbroad(image, draft);
   if (abroad) {
     log(`image: second check refused "${String(image.title ?? "").slice(0, 60)}": taken in ${abroad}, which the story does not name`);
     return "ABROAD";
@@ -1049,11 +1064,14 @@ ${CONCEPT_KINDS.has(draft.kind) ? "- This piece explains or analyses a concept: 
 - RIGHT: the story's own people (also at an earlier occasion, captioned as one), place or event.
 ${neutral ? "" : "- RECAPTION: the frame alone would be RIGHT or GENERIC_OK, but the caption names an airline, an operator, an owner, a company, a port, an airport or a person the story does not mention (an airline's A321neo under a story about the A321neo's fuselage; a tanker's operator under a story about tanker rates). The paper then rewrites the caption to name only what the story names and asks you again. Never for a wrong person, a wrong country or a wrong subject: those stay refusals.\n"}${places.length && !neutral && namesAPlace(image, places) ? `- ${placeTierNote(places)} The file places this photograph there: RIGHT when its frame shows the story's subject at that place, WRONG_SUBJECT when it shows something else there.\n` : ""}- UNSERIOUS, whatever else fits: ${GRAVITY_RULE}
 ${neutral ? NEUTRAL_CHECK : people.length ? "" : PLACE_RULE}
-Return JSON: {"verdict":"RIGHT|GENERIC_OK|${neutral ? "" : "RECAPTION|"}STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON|UNSERIOUS","reason":"<one short English sentence>"}`;
+${thumbnail ? `- UNCLEAR: the photograph itself is attached. Cover the caption and look at it as a reader meets it, small beside the headline. Refuse it when its subject cannot be recognised at a glance: a gate, a fence, a wall or a facade standing in for an industry; a hazy, dark, blurred or distant view; a cluttered scene with no main subject; a detail only a specialist would recognise. A photograph that needs its caption to be understood is UNCLEAR however true the caption is (a hazy phosphate-mine gate ran under a fertilizer story, 2026-10-18).\n` : ""}Return JSON: {"verdict":"RIGHT|GENERIC_OK|${neutral ? "" : "RECAPTION|"}STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON|UNSERIOUS${thumbnail ? "|UNCLEAR" : ""}","reason":"<one short English sentence>"}`;
   const { data, model } = await outside.chat({
     role: "critic",
     system: "You are a strict newspaper picture editor. Answer with one JSON object only.",
     user,
+    // The check sees the frame since 2026-10-18; until then it read only the file's record and could not tell a clear
+    // photograph from a hazy one.
+    images: thumbnail ? [thumbnail] : [],
     temperature: 0,
     maxTokens: 300,
     timeoutMs: 90000,
@@ -1074,7 +1092,7 @@ Return JSON: {"verdict":"RIGHT|GENERIC_OK|${neutral ? "" : "RECAPTION|"}STALE_EV
 
 /** Refusals for what a photograph shows, not for where it was taken: the last pass never offers such a photo again
  *  (a tourist boat beside a tanker was refused as unserious twice in one story's run, 2026-09-27). */
-const HARD_REFUSALS = new Set(["NOVELTY", "UNSERIOUS", "WRONG_PERSON", "STALE_EVENT"]);
+const HARD_REFUSALS = new Set(["NOVELTY", "UNSERIOUS", "WRONG_PERSON", "STALE_EVENT", "UNCLEAR"]);
 
 /**
  * A file photograph of people says it is one, as the desks mark it: the occasion's year in its caption, or
@@ -1201,7 +1219,9 @@ async function chooseVerified({ list, inlined, draft, story, log, relaxed, neutr
     if (caption) image = { ...image, alt: caption };
   }
   let verdict = "FAILED";
-  const check = () => verifyImage({ image: { ...chosen, title: chosen.title ?? image.title, query: chosen.query, alt: image.alt }, draft, story, log, neutral, people, places, skyline });
+  // The judge's own thumbnail of the chosen frame goes to the second check, which looks at it (UNCLEAR).
+  const thumbnail = inlined?.[list.indexOf(chosen)] ?? null;
+  const check = () => verifyImage({ image: { ...chosen, title: chosen.title ?? image.title, query: chosen.query, alt: image.alt }, draft, story, log, neutral, people, places, skyline, thumbnail });
   try {
     verdict = await check();
     // The right frame under a caption that names too much: an airline's A321neo under a story about the A321neo's
@@ -1273,7 +1293,7 @@ async function twoLooks({ candidates, draft, story, log, exclude, neutral = fals
 /** Candidates whose own metadata places them in a country the story does not name never reach the judges. */
 function atHome(candidates, draft, log) {
   return candidates.filter((c) => {
-    const abroad = placedAbroad(c, draft);
+    const abroad = closeUpOfMaterial(c) ? null : placedAbroad(c, draft);
     if (abroad) log(`image: dropped "${String(c.title).slice(0, 70)}" — taken in ${abroad}, which the story does not name`);
     return !abroad;
   });

@@ -8,7 +8,7 @@
  *
  *   node scripts/images-selftest.mjs
  */
-import { withStandIns, pickImage, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, fold, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { withStandIns, pickImage, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, fold, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
 
 let failed = 0;
 function check(name, got, want) {
@@ -383,6 +383,30 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
   });
   check("the source-photo tier can select the story's own person at work", r.image?.title, trump.title);
   check("sharing a first name never makes another official the story's person", r.judgePrompts.some((p) => p.includes(tusk.title)), false);
+}
+
+// The Fertiglobe story (2026-10-18): a close-up of fertilizer granules shows no country, so the country rule does not
+// refuse it and it runs as an illustration; the second check sees the frame, and a frame it calls UNCLEAR (a hazy mine
+// gate that needs its caption) is refused and never offered again.
+{
+  check("granules are a close-up of a material", closeUpOfMaterial({ title: "DAP (Diammonium Phosphate) Granules (3).jpg", description: "DAP fertilizer granules" }), true);
+  check("a mine and a banknote are not", [closeUpOfMaterial({ title: "Phosphate mine (52726859085).jpg" }), closeUpOfMaterial({ title: "Egyptian pound banknotes close-up.jpg" })], [false, false]);
+  const fertilizer = { ...developers, title: "فيرتيجلوب تدرس إنشاء مجمع أسمدة فوسفاتية في مصر", tags: ["مصر", "الأسمدة"], imageQueries: ["fertilizer granules"] };
+  const granules = file("DAP (Diammonium Phosphate) Granules (3).jpg", { description: "DAP fertilizer granules in a hand", categories: "Fertilizers in India" });
+  const r = await scenario({ draft: fertilizer, plan: planFor({ queries: ["fertilizer granules"] }), world: { "fertilizer granules": [granules] }, judge: pickTitle("Granules") });
+  check("a close-up placed abroad survives the country rule and runs as an illustration", [r.image?.title, String(r.image?.alt ?? "").includes(ILLUSTRATIVE)], [granules.title, true]);
+  check("the second check is shown the frame and may call it UNCLEAR", r.calls.some((c) => c.startsWith("verify:")) && r.judgePrompts.length > 0, true);
+  const gate = file("Phosphate mine (52726859085).jpg", { description: "Gate of a phosphate mine, Egypt", categories: "Mines in Egypt" });
+  const prompts = [];
+  const u = await scenario({
+    draft: { ...fertilizer, imageQueries: ["phosphate mine Egypt"] },
+    plan: planFor({ queries: ["phosphate mine Egypt"] }),
+    world: { "phosphate mine Egypt": [gate], "construction site Egypt": [gate] },
+    judge: pickTitle("Phosphate mine"),
+    verify: (name, user) => (prompts.push(user), name.includes("Phosphate mine") ? "UNCLEAR" : "RIGHT"),
+  });
+  check("a frame the check calls UNCLEAR is refused and never offered again", [u.image?.title ?? null, u.calls.filter((c) => c === `verify:${gate.title}`).length], [null, 1]);
+  check("the check that refused it had the frame and the UNCLEAR rule", prompts.some((p) => p.includes("UNCLEAR: the photograph itself is attached")), true);
 }
 
 console.log(failed ? `\n${failed} check(s) FAILED` : "\nall checks passed");
