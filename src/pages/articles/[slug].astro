@@ -11,7 +11,7 @@ import Share from "@components/Share.astro";
 import { getArticles, related, articleHref, topicOf } from "@lib/articles";
 import { getSection, sectionHref, kindLabel, moreLabel, allLabel } from "@lib/sections";
 import { subTopicOf, topicHref, tagHref } from "@lib/topics";
-import { analysisLabel } from "@lib/analysis";
+import { analysisLabel, analysisDesk, ANALYSIS_DESKS } from "@lib/analysis";
 import { formatDate, formatHijri, formatTime, readingLabel, excerpt } from "@lib/format";
 import { isolateNumbers } from "@lib/bidi";
 import { cardSizes } from "@lib/wikimedia";
@@ -53,6 +53,21 @@ const sources = d.sources.map((s) => {
 // النفط والغاز), as the Arab news sites print a trail above or beside the headline.
 const sub = isHub ? undefined : subTopicOf(article);
 const sectionLabel = analysisLabel(article, all) ?? kindLabel(d.kind, d.section);
+// A piece of the paper's own (an analysis, the week's review, an explainer, a paper reading) is named by its kind over
+// its headline, on a page head's 3px ink rule, where a news story carries its subject: an analysis had been told from
+// news only by a 13.76px label in its date line, under a tag such as «الدار» (the critique of 2026-10-19). The kind
+// leads to its own list: the analysis desk, or the explainers' kind.
+const desk = analysisDesk(article, all);
+const kindHead = isHub
+  ? {
+      label: sectionLabel,
+      href:
+        d.kind === "explainer" ? "/explainers/kind/concepts/"
+        : d.kind === "paper" ? "/explainers/kind/papers/"
+        : desk && ANALYSIS_DESKS[desk.id] ? `/analysis/desk/${desk.id}/`
+        : sectionHref(d.section),
+    }
+  : undefined;
 const trail = [
   { name: "الرئيسية", url: "/" },
   { name: sec.name, url: sectionHref(d.section) },
@@ -87,11 +102,15 @@ const jsonLd = [articleLd, breadcrumbLd];
   {/* Search can list a story by its date (`data-pagefind-sort`, in milliseconds so no colon splits the value): «النفط»
       listed 7 September to 1 October first, by relevance alone, with that day's oil stories out of sight (2026-10-19). */}
   <article class="article wrap--article" data-section={d.section} data-pagefind-body data-pagefind-meta={`section:${d.section}`} data-pagefind-sort={`date:${Date.parse(d.publishedAt)}`}>
-    <header class="article__head">
+    <header class:list={["article__head", { "article__head--kind": kindHead }]}>
       {/* The kicker, the meta lines, the share row and the photo credit are furniture and stay out of the search text
           (data-pagefind-ignore; the meta values inside are still read): a result's excerpt read «الطاقة › أوبك+
           خازندار نُشر الجمعة 11 سبتمبر 2026 م.» before the story's first words (2026-10-19). */}
-      {topic && <span class="kicker" data-pagefind-ignore><a href={tagHref(topic)}>{topic}</a></span>}
+      {kindHead ? (
+        <p class="article__kind" data-pagefind-ignore><a href={kindHead.href}>{kindHead.label}</a></p>
+      ) : (
+        topic && <span class="kicker" data-pagefind-ignore><a href={tagHref(topic)}>{topic}</a></span>
+      )}
       {/* The headline outweighs the body in search, and the dek comes next (2026-09-24: «التضخم في مصر» ranked a US
           story above «التضخم في مصر يتباطأ إلى 12.7%»). */}
       <h1 class="article__title" data-pagefind-meta={`title:${d.title}`} data-pagefind-weight="10" set:html={isolateNumbers(d.title)} />
@@ -103,7 +122,7 @@ const jsonLd = [articleLd, breadcrumbLd];
       <div class="article__meta" data-pagefind-ignore>
         <p class="meta">
           <span class="crumbs">
-            <a href={sectionHref(d.section)} data-pagefind-meta={`sectionName:${sec.name}`}>{sectionLabel}</a>
+            <a href={sectionHref(d.section)} data-pagefind-meta={`sectionName:${sec.name}`}>{kindHead ? sec.name : sectionLabel}</a>
             {sub && <span class="crumbs__sep" aria-hidden="true">›</span>}
             {sub && <a href={topicHref(d.section, sub.id)}>{sub.name}</a>}
           </span>
@@ -239,6 +258,12 @@ const jsonLd = [articleLd, breadcrumbLd];
 
 <style>
   .article__head { padding-top: clamp(1.5rem, 3.5vw, 2.5rem); max-width: 52rem; }
+  /* A piece of the paper's own opens like a page head: the 3px ink rule, then its kind in the green Amiri of a module's
+     label, over the headline. */
+  .article__head--kind { padding-top: 0; margin-top: clamp(1.5rem, 3.5vw, 2.5rem); border-top: 3px solid var(--ink); }
+  .article__kind { margin: 0.75rem 0 0.35rem; font-family: var(--font-title); font-weight: 700; font-size: var(--t-module); line-height: 1.3; color: var(--green); }
+  .article__kind a { color: inherit; text-decoration: none; display: inline-block; padding-block: 0.2rem; }
+  .article__kind a:hover { text-decoration: underline; }
   .article__more { padding-top: clamp(2.25rem, 4.5vw, 3.75rem); }
   /* اقرأ أيضاً inside the text, after the third paragraph, as the desks place it: a ruled line, not a box. */
   .also { max-width: var(--measure); margin: 1.25rem 0 1.5rem; padding: 0.55rem 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.75rem; }
