@@ -6,13 +6,21 @@
  *
  * It is the subject's one page (2026-09-27): it also lists every story, from any section, carrying one of the tags that
  * are its subject («النفط», «أسعار النفط», «خام برنت» on النفط's page), each such story naming its own section.
+ *
+ * It is laid out as a dossier (2026-10-19): the newest story as a lead, beside it the subject's own prices when the
+ * board carries them (Brent and WTI on النفط) or the next three stories, then the next four as picture cards, then the
+ * rest as a dated list under month heads. It had been one grid of equal picture cards, النفط's 79 of them over 6,282px
+ * at 1440, about eight tanker photographs in two screens, no lead and no price.
  */
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
-import { getArticles, firstPictures } from "@lib/articles";
-import { getSection, sectionHref, newsSections } from "@lib/sections";
+import QuoteCard from "@components/QuoteCard.astro";
+import { getArticles, firstPictures, articleHref } from "@lib/articles";
+import { getSection, sectionHref, newsSections, kindLabel } from "@lib/sections";
 import { topicsOf, topicArticles, topicHref, type Topic } from "@lib/topics";
-import { countLabel } from "@lib/format";
+import { quotes, TOPIC_QUOTE_IDS } from "@lib/markets";
+import { countLabel, formatShortDate, formatMonth } from "@lib/format";
+import { isolateNumbers } from "@lib/bidi";
 
 export async function getStaticPaths() {
   const articles = await getArticles();
@@ -34,9 +42,24 @@ interface Props {
 const { section, topic, items, fallback } = Astro.props;
 const sec = getSection(section);
 const n = items.length;
-const pics = firstPictures(n > 0 ? items : fallback);
 const countWord = countLabel(n);
 const siblings = topicsOf(section).filter((t) => t.id !== topic.id);
+
+const prices = quotes(TOPIC_QUOTE_IDS[`${section}/${topic.id}`] ?? []);
+const [lead, ...after] = items;
+// Beside the lead: the subject's prices, or the next three stories. A small subject keeps every story up there.
+const beside = prices.length > 0 ? [] : after.slice(0, after.length <= 5 ? after.length : 3);
+const rest = after.slice(beside.length);
+const recent = rest.length > 6 ? rest.slice(0, 4) : rest;
+const archive = rest.slice(recent.length);
+// The archive under month heads, newest first.
+const months: { name: string; items: typeof archive }[] = [];
+for (const a of archive) {
+  const name = formatMonth(a.data.publishedAt);
+  if (months.at(-1)?.name !== name) months.push({ name, items: [] });
+  months.at(-1)!.items.push(a);
+}
+const pics = firstPictures(n > 0 ? [lead, ...beside, ...recent] : fallback);
 ---
 
 <Base title={`${topic.name} — ${sec.name}`} description={`${topic.name} في قسم ${sec.name} من خازندار.`} path={topicHref(section, topic.id)} section={section}>
@@ -50,13 +73,112 @@ const siblings = topicsOf(section).filter((t) => t.id !== topic.id);
         {siblings.map((t) => <a href={topicHref(section, t.id)}>{t.name}</a>)}
       </p>
     </header>
-    <div class={`${(n > 0 ? items : fallback).length < 3 ? "cards cards--list" : "cards"}`} style={`--n:${Math.min((n > 0 ? items : fallback).length, 4)}`}>
-      {(n > 0 ? items : fallback).map((a, i) => (
-        <StoryCard article={a} variant={(n > 0 ? items : fallback).length < 3 ? "list" : "card"} showSection={a.data.section !== section} showPhoto={pics.has(a.id)} showExcerpt={!pics.has(a.id)} eager={i < 4} />
-      ))}
-    </div>
+
+    {n === 0 ? (
+      <div class={`${fallback.length < 3 ? "cards cards--list" : "cards"}`} style={`--n:${Math.min(fallback.length, 4)}`}>
+        {fallback.map((a, i) => (
+          <StoryCard article={a} variant={fallback.length < 3 ? "list" : "card"} showSection={false} showPhoto={pics.has(a.id)} showExcerpt={!pics.has(a.id)} eager={i < 4} />
+        ))}
+      </div>
+    ) : (
+      <Fragment>
+        <div class={`topic-top${prices.length || beside.length ? "" : " topic-top--solo"}`}>
+          <div class="topic-top__lead">
+            <StoryCard article={lead} variant="lead" level={2} showSection={lead.data.section !== section} eager />
+          </div>
+          {prices.length > 0 && (
+            <aside class="topic-top__beside topic-prices" aria-labelledby="topic-prices-head">
+              <h2 id="topic-prices-head" class="module__head">الأسعار الآن</h2>
+              <div class="topic-prices__list">
+                {prices.map((q) => <QuoteCard quote={q} href={`/markets/data/#${q.group}`} />)}
+              </div>
+              <a class="topic-prices__more ui" href="/markets/data/">لوحة الأسواق كاملة</a>
+            </aside>
+          )}
+          {beside.length > 0 && (
+            <div class="topic-top__beside">
+              {beside.map((a) => (
+                <StoryCard article={a} variant="list" showSection={a.data.section !== section} showPhoto={pics.has(a.id)} />
+              ))}
+            </div>
+          )}
+        </div>
+
+        {recent.length > 0 && (
+          <div class={`topic-recent ${recent.length < 3 ? "cards cards--list" : "cards"}`} style={`--n:${Math.min(recent.length, 4)}`}>
+            {recent.map((a) => (
+              <StoryCard article={a} variant={recent.length < 3 ? "list" : "card"} showSection={a.data.section !== section} showPhoto={pics.has(a.id)} showExcerpt={!pics.has(a.id)} />
+            ))}
+          </div>
+        )}
+
+        {months.length > 0 && (
+          <section class="topic-archive" aria-labelledby="topic-archive-head">
+            <h2 id="topic-archive-head" class="visually-hidden">أرشيف {topic.name}</h2>
+            {months.map((m) => (
+              <section class="topic-month" aria-label={m.name}>
+                <h3 class="module__head">{m.name}</h3>
+                <ol class="topic-month__list">
+                  {m.items.map((a) => (
+                    <li class="topic-month__item">
+                      <a class="topic-month__title" href={articleHref(a)} set:html={isolateNumbers(a.data.title)} />
+                      <p class="meta topic-month__meta">
+                        {a.data.section !== section && <a href={sectionHref(a.data.section)}>{kindLabel(a.data.kind, a.data.section)}</a>}
+                        <time datetime={a.data.publishedAt}>{formatShortDate(a.data.publishedAt)}</time>
+                      </p>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            ))}
+          </section>
+        )}
+      </Fragment>
+    )}
   </section>
 </Base>
 
 <style>
+  /* The lead and what stands beside it, as on a section page: `8fr | 4fr`, the lead's text beside its photograph. */
+  .topic-top { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); align-items: start; }
+  .topic-top--solo { grid-template-columns: minmax(0, 1fr); }
+  .topic-top__lead { padding-inline-end: var(--col-gap); }
+  .topic-top--solo .topic-top__lead { padding-inline-end: 0; max-width: 56rem; }
+  .topic-top__beside { border-inline-start: 1px solid var(--rule); padding-inline-start: var(--col-gap); display: grid; }
+  .topic-top__beside > :global(.card) { padding-block: 0.8rem; border-top: 1px solid var(--rule); }
+  .topic-top__beside > :global(.card:first-child) { border-top: 0; padding-top: 0.1rem; }
+  .topic-top__lead :global(.card--lead.card--photo) { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 0 clamp(1.25rem, 3vw, 2.5rem); align-items: start; }
+  .topic-top__lead :global(.card--lead .card__photo) { order: 2; margin-bottom: 0; }
+  .topic-top__lead :global(.card--lead .card__body) { order: 1; }
+  /* The subject's prices: the board's cards one under another on hairlines, the way to the full board under them. */
+  .topic-prices__list { display: grid; }
+  .topic-prices__list > :global(.quote) { padding-block: 0.7rem; border-top: 1px solid var(--rule); }
+  .topic-prices__list > :global(.quote:first-child) { border-top: 0; padding-top: 0.2rem; }
+  .topic-prices__more { margin-top: 0.4rem; justify-self: start; font-weight: 700; font-size: var(--fs-xs); color: var(--ink-2); text-decoration: none; padding-block: 0.35rem; }
+  .topic-prices__more:hover { color: var(--green); text-decoration: underline; }
+  .topic-recent { margin-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--ink); padding-top: 1.25rem; }
+  /* The archive: month heads over ruled columns of headlines with their dates, three to a row. */
+  .topic-archive { margin-top: clamp(2rem, 4vw, 3rem); display: grid; gap: clamp(1.5rem, 3vw, 2.25rem); }
+  .topic-month__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--col-gap); margin: 0; padding: 0; list-style: none; }
+  .topic-month__item { padding-block: 0.6rem; border-top: 1px solid var(--rule); }
+  .topic-month__item:nth-child(-n + 3) { border-top: 0; padding-top: 0.15rem; }
+  .topic-month__title { display: block; font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; color: var(--ink); text-decoration: none; }
+  .topic-month__title:hover { color: var(--green); }
+  .topic-month__meta { margin-top: 0.15rem; font-size: var(--fs-xs); }
+  @media (max-width: 1023px) {
+    .topic-top { grid-template-columns: minmax(0, 1fr); row-gap: 1.25rem; }
+    .topic-top__lead { padding-inline-end: 0; }
+    .topic-top__beside { border-inline-start: 0; padding-inline-start: 0; border-top: 1px solid var(--rule); padding-top: 0.75rem; }
+    .topic-prices__list { grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); column-gap: var(--col-gap); }
+    .topic-prices__list > :global(.quote) { border-top: 0; padding-top: 0.2rem; }
+    .topic-month__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .topic-month__item:nth-child(3) { border-top: 1px solid var(--rule); padding-top: 0.6rem; }
+  }
+  @media (max-width: 719px) {
+    .topic-top__lead :global(.card--lead.card--photo) { grid-template-columns: 1fr; gap: 0.6rem 0; }
+    .topic-top__lead :global(.card--lead .card__photo) { order: 1; }
+    .topic-top__lead :global(.card--lead .card__body) { order: 2; }
+    .topic-month__list { grid-template-columns: minmax(0, 1fr); }
+    .topic-month__item:nth-child(2) { border-top: 1px solid var(--rule); padding-top: 0.6rem; }
+  }
 </style>

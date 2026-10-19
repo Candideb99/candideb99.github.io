@@ -54,6 +54,23 @@ export const BOX_IDS = ["tasi", "egx30", "brent", "gold", "usdegp"];
 /** The الأسواق في لمحة band on the markets section: six cards with a month's line each. */
 export const GLANCE_IDS = ["tasi", "egx30", "spx", "brent", "gold", "usdegp"];
 
+/**
+ * The instruments a standing sub-topic's page prints beside its lead (`section/topic` of topics.json), so the oil page
+ * shows Brent and WTI as they stand as well as the stories about them (2026-10-19). A subject with no instrument of
+ * its own on the board has none.
+ */
+export const TOPIC_QUOTE_IDS: Record<string, string[]> = {
+  "energy/oil": ["brent", "wti"],
+  "energy/opec": ["brent", "wti"],
+  "energy/gas": ["natgas"],
+  "markets/stocks": ["tasi", "egx30", "spx"],
+  "markets/gulf-markets": ["tasi"],
+  "markets/bonds": ["us10y", "us30y"],
+  "markets/currencies": ["usdegp", "eurusd", "dxy"],
+  "markets/commodities": ["gold", "silver", "copper"],
+  "markets/crypto": ["btc"],
+};
+
 /** The headline numbers of the data page. */
 export const FEATURED_IDS = ["tasi", "egx30", "spx", "brent", "gold", "usdegp"];
 

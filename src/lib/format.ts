@@ -46,6 +46,14 @@ export function formatDate(iso: string | Date, { weekday = true } = {}): string 
   return weekday ? `${DAYS[p.weekday]} ${base}` : base;
 }
 
+/** "سبتمبر 2026": the month heads of a subject's archive. */
+export function formatMonth(iso: string | Date): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+  const p = partsIn(d);
+  return `${MONTHS[p.month - 1]} ${p.year}`;
+}
+
 /** "7 سبتمبر" */
 export function formatShortDate(iso: string | Date): string {
   const d = new Date(iso);
