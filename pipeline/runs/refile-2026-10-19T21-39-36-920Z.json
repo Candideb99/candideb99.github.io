@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-19T21:39:36.920Z",
+  "dryRun": false,
+  "moves": [
+    {
+      "slug": "qatar-defence-production-plant-regional-partnership-be26cb",
+      "from": "defense",
+      "to": "companies",
+      "reason": "filed under the defence section by a run that started before the section was folded (2026-10-19); a defence plant is the defence industry, under companies"
+    }
+  ]
+}
