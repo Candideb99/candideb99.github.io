@@ -2,8 +2,10 @@
 /**
  * The front page under the cover, laid out like a newsroom's site: three ruled columns: the day's
  * digest at the start (الأخبار في سطور: one sentence per story, the way the Journal's What's News
- * runs), two secondary stories over the top stories' list in the centre, and the numbers at the end:
- * the market box, the day's chart, its figures and the agenda.
+ * runs), two secondary stories over the top stories' list in the centre, and at the end the agenda, the day's
+ * chart and its figures. The market box went on 2026-10-19 (the owner's choice: the market strip under the bar is the
+ * site's one price line, and the box repeated five of its eight instruments); the agenda took its place and the
+ * columns came out level.
  */
 import type { Article } from "@lib/articles";
 import { articleHref } from "@lib/articles";
@@ -13,7 +15,6 @@ import { excerpt, timeAgo } from "@lib/format";
 import StoryCard from "./StoryCard.astro";
 import Chart from "./Chart.astro";
 import Agenda from "./Agenda.astro";
-import MarketBoard from "./MarketBoard.astro";
 
 interface Figure {
   label: string;
@@ -48,7 +49,6 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
         </li>
       ))}
     </ul>
-    <Agenda limit={5} />
   </div>
 
   <div class="front__mid">
@@ -75,7 +75,7 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
   </div>
 
   <aside class="front__side">
-    <MarketBoard variant="box" id="front-board" title="لوحة الأسواق" />
+    <Agenda limit={5} />
     {chart?.data.chart && (
       <section class="module" aria-labelledby="chart-head">
         <h2 id="chart-head" class="module__head">بالرسم البياني</h2>
@@ -115,7 +115,6 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
   .front__side { padding-inline-start: var(--col-gap); display: grid; gap: 1.5rem; }
   /* The agenda closes the digest's column: at the foot of the numbers column it left that column 400px longer than
      the other two, over blank paper (2026-09-27). */
-  .front__top :global(.agenda) { margin-top: 1.5rem; }
 
   /* The digest: a story to a line on hairlines, its Amiri headline on a line of its own and its one
      sentence under it in Naskh, the section and time beneath. The owner, 2026-09-23: the sentence ran

@@ -24,7 +24,7 @@ const news = (await getArticlesBySection("markets")).slice(0, 4);
 const updated = board.updatedAt ? `${formatDate(board.updatedAt)}، ${formatTime(board.updatedAt)}` : "";
 ---
 
-<Base title="لوحة الأسواق" description="أسعار المؤشرات والعملات والسلع والسندات التي تتابعها خازندار، مؤجّلة وللاطلاع." path="/markets/data/" section="markets">
+<Base title="لوحة الأسواق" description="أسعار المؤشرات والعملات والسلع والسندات التي تتابعها خازندار، مؤجّلة وللاطلاع." path="/markets/data/" section="markets" quotesShown={board.quotes.map((q) => q.id)} printed={news.map((a) => a.id)}>
   <section class="wrap block" id="board">
     <header class="page-head">
       <h1 class="page-title">لوحة الأسواق</h1>

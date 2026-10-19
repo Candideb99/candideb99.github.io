@@ -37,7 +37,7 @@ const countObject = n === 2 ? "مادتين" : countLabel;
 const latest = items[0];
 ---
 
-<Base title={`ملف: ${tag}`} description={n === 1 ? `ملف خازندار عن ${tag}: مادة واحدة حتى الآن` : `ملف خازندار عن ${tag}: ${countLabel} من الأحدث إلى الأقدم`} path={`/tags/${encodeURIComponent(tag)}/`}>
+<Base title={`ملف: ${tag}`} description={n === 1 ? `ملف خازندار عن ${tag}: مادة واحدة حتى الآن` : `ملف خازندار عن ${tag}: ${countLabel} من الأحدث إلى الأقدم`} path={`/tags/${encodeURIComponent(tag)}/`} printed={items.map((a) => a.id)}>
   <section class="wrap block">
     <header class="page-head">
       <h1 class="page-title">{tag}</h1>

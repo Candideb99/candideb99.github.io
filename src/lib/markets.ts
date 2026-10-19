@@ -51,8 +51,6 @@ export const STRIP_IDS = ["tasi", "egx30", "spx", "ndq", "brent", "gold", "eurus
 /** The box beside the cover: what an Arab reader looks up first, five rows so the cover keeps its height. */
 export const BOX_IDS = ["tasi", "egx30", "brent", "gold", "usdegp"];
 
-/** The الأسواق في لمحة band on the markets section: six cards with a month's line each. */
-export const GLANCE_IDS = ["tasi", "egx30", "spx", "brent", "gold", "usdegp"];
 
 /**
  * The instruments a standing sub-topic's page prints beside its lead (`section/topic` of topics.json), so the oil page

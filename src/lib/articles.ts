@@ -58,9 +58,15 @@ export function related(article: Article, all: Article[], count = 4): Article[] 
   return onTheSameTopic(article, all, { n: count, days: 60 });
 }
 
-/** The «آخر الأخبار» strip of a page (Base.astro): the eight newest news stories, the page's own left out. */
-export function stripStories(all: Article[], path: string): Article[] {
-  return all.filter((a) => a.data.kind === "news" && articleHref(a) !== path).slice(0, 8);
+/**
+ * The «آخر الأخبار» strip of a page (Base.astro): the eight newest news stories, leaving out the page's own story and
+ * any the page prints itself (`printed`, ids). Since 2026-10-19 (the owner's check of the section pages) a section or
+ * subject page passes the stories it prints: on الاقتصاد and الشركات three of the first four stories ran in the strip
+ * above them as well.
+ */
+export function stripStories(all: Article[], path: string, printed: Iterable<string> = []): Article[] {
+  const skip = new Set(printed);
+  return all.filter((a) => a.data.kind === "news" && articleHref(a) !== path && !skip.has(a.id)).slice(0, 8);
 }
 
 const GENERIC_TAGS = new Set(["عالمي", "العالم", "الشرق الأوسط", "الخليج", "الخليج العربي", "أوروبا", "آسيا", "أفريقيا", "الاقتصاد", "الأسواق", "الطاقة", "الشركات", "التكنولوجيا", "الدفاع", "الاقتصاد العالمي"]);

@@ -19,6 +19,10 @@ interface Props {
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   publishedAt?: string;
   updatedAt?: string;
+  /** Stories (ids) the page prints itself, left out of «آخر الأخبار». */
+  printed?: string[];
+  /** Instruments (ids) the page prints itself, left out of the market strip; all of them hide it. */
+  quotesShown?: string[];
 }
 
 const {
@@ -33,6 +37,8 @@ const {
   jsonLd,
   publishedAt,
   updatedAt,
+  printed = [],
+  quotesShown = [],
 } = Astro.props;
 
 const fullTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
@@ -43,7 +49,7 @@ const fullTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site
 // same list at full length, and not on the front since 2026-10-19 (the owner's check of the front page: all eight of its
 // headlines were printed again on the same screen, five in «الأخبار في سطور», which is the front's latest list).
 const withLatest = !path.startsWith("/latest") && path !== "/404" && path !== "/";
-const latestNews = withLatest ? stripStories(await getArticles(), path) : [];
+const latestNews = withLatest ? stripStories(await getArticles(), path, printed) : [];
 const canonical = new URL(path, site.url).toString();
 const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
 ---
@@ -126,7 +132,7 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
     <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
     <Masthead active={section} compact={path !== "/"} />
     <slot name="under-bar" />
-    <MarketStrip />
+    <MarketStrip omit={quotesShown} />
     {latestNews.length > 0 && <Ticker items={latestNews} label="آخر الأخبار" lead="time" />}
     <main id="main">
       <slot />

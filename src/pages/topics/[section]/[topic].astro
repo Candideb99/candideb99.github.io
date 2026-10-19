@@ -63,7 +63,7 @@ for (const a of archive) {
 const pics = firstPictures(n > 0 ? [lead, ...beside, ...recent] : fallback);
 ---
 
-<Base title={`${topic.name} — ${sec.name}`} description={`${topic.name} في قسم ${sec.name} من خازندار.`} path={topicHref(section, topic.id)} section={section}>
+<Base title={`${topic.name} — ${sec.name}`} description={`${topic.name} في قسم ${sec.name} من خازندار.`} path={topicHref(section, topic.id)} section={section} printed={items.map((a) => a.id)} quotesShown={prices.map((q) => q.id)}>
   <section class="wrap block" data-section={section}>
     <header class="page-head">
       <p class="page-head__section ui"><a href={sectionHref(section)}>{sec.name}</a></p>
