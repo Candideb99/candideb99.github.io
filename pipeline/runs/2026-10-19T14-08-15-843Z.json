@@ -1,0 +1,493 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-19T13:29:02.039Z",
+  "durationSec": 2354,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "الدولار يتخطى 54 جنيهاً في البنوك المصرية لأول مرة",
+      "section": "markets",
+      "importance": 8,
+      "sources": [
+        "https://www.masrawy.com/news/news_economy/details/2026/10/19/3065332/%D8%AC%D9%88%D9%84%D8%AF-%D8%A8%D9%8A%D9%84%D9%8A%D9%88%D9%86-%D8%A7%D9%84%D8%B0%D9%87%D8%A8-%D9%81%D9%8A-%D9%85%D8%B5%D8%B1-%D9%8A%D8%AD%D8%A7%D9%81%D8%B8-%D8%B9%D9%84%D9%89-%D9%85%D9%83%D8%A7%D8%B3%D8%A8%D9%87-%D8%A8%D8%AF%D8%B9%D9%85-%D9%85%D9%86-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D8%A7%D8%B1",
+        "https://www.youm7.com/story/2026/10/19/%D8%A7%D9%84%D8%AF%D9%88%D9%84%D8%A7%D8%B1-%D9%8A%D9%83%D8%B3%D8%B1-%D8%AD%D8%A7%D8%AC%D8%B2-%D8%A7%D9%84%D9%80-54-%D8%AC%D9%86%D9%8A%D9%87%D8%A7-%D9%82%D9%81%D8%B2%D8%A9-%D8%AC%D9%85%D8%A7%D8%B9%D9%8A%D8%A9-%D8%A8%D8%AE%D8%AA%D8%A7%D9%85-%D8%AA%D8%B9%D8%A7%D9%85%D9%84%D8%A7%D8%AA/7585825",
+        "https://www.youm7.com/story/2026/10/19/%D8%A7%D9%84%D8%AF%D9%88%D9%84%D8%A7%D8%B1-%D9%8A%D8%AF%D8%B9%D9%85-%D8%A3%D8%B3%D8%B9%D8%A7%D8%B1-%D8%A7%D9%84%D8%B0%D9%87%D8%A8-%D9%81%D9%89-%D9%85%D8%B5%D8%B1-%D9%88%D8%B9%D9%8A%D8%A7%D8%B1-21-%D9%8A%D8%B3%D8%AA%D9%82%D8%B1-%D8%B9%D9%86%D8%AF/7585460",
+        "https://www.youm7.com/story/2026/10/19/%D9%85%D9%88%D8%AC%D8%A9-%D8%B5%D8%B9%D9%88%D8%AF-%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9-%D8%A3%D8%B3%D8%B9%D8%A7%D8%B1-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D8%A7%D8%B1-%D8%AA%D9%84%D8%A7%D9%85%D8%B3-%D8%AD%D8%A7%D8%AC%D8%B2-%D8%A7%D9%84%D9%80-54-%D8%AC%D9%86%D9%8A%D9%87%D9%8B%D8%A7/7585386"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والمقدمة يحددان الحدث بدقة: سعر البيع لدى البنك المركزي 54.02 جنيه لأول مرة (المصدر 2)، وسعر الشراء 53.88 بقي دون الحاجز، والأهلي ومصر عند 53.99. لكن العنوان الفرعي ينسب تفسير «الصعود» إلى تحليل صدر قبل الإغلاق، فيبدو كأنه يفسر كسر الحاجز نفسه.",
+              "repair": "«تربط ارتفاع الدولار هذا الأسبوع بغلاء النفط...» بدلاً من «تربط الصعود»، مع إبقاء العنوان كما هو."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الآلية المسندة حاضرة: النفط قرب 110 دولارات يرفع كلفة واردات الطاقة والطلب على العملة الأجنبية، والتدفقات لم تكفِ. لكن فقرة موديز مفصولة عن هذا التقابل، ومحرّك الأونصة (تراجع النفط وعوائد السندات الأمريكية، المصدران 1 و3) غائب. والصندوق يبني على تفسير المنصة كأنه مؤكد ويكرر خلاصة الختام بدل أن يضيف القيد الذي يقدمه الفارق عن السعر العادل.",
+              "repair": "دمج موديز مع اقتباس التدفقات بعلاقة «رغم... فإن»، وإضافة محرّك الأونصة منسوباً، وإعادة صياغة الصندوق بشرط صريح وبحدّ الطلب المحلي."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الانتقال من الدولار إلى الذهب مبرَّر بالمصادر، لكن فقرة أسعار الأعيرة («وبلغ سعر جرام عيار 24 نحو 7166 جنيهاً...») قائمة منقولة، وفقرة السوق العالمية تقطع الإسناد بجملة العقود الآجلة ثم تستأنف أحكام التحليل كأنها حقائق. والفقرة الأولى تكرر الجدول بنداً بنداً.",
+              "repair": "ضم الأعيرة إلى الجدول أو إلى جملة تابعة، واختصار الفقرة الأولى إلى نطاق الأسعار (53.99 إلى 54.02) مع الإحالة إلى الجدول، وفصل بيانات العقود الآجلة في جملة مسندة إلى مصدرها."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "سعر 53.80 في المصدر 1 لا يحدد جانب الشراء أو البيع، فلا يُبنى عليه مسار نحو 54.02. والعقود الآجلة (المصدر 5) منخفضة 0.03% وهي أداة غير السعر الفوري الصاعد 0.3%. وعبارة «أي سعراً تعثّر الصعود عنده من قبل» غير مسندة، و«خصم عيار 21» تقدير لا حقيقة.",
+              "repair": "نسبة كل رقم إلى أداته ومصدره ووقته، وذكر اتجاه العقود الآجلة، وحذف الادعاء التاريخي عن مستوى 6200، ووسم الفارق عن السعر العادل بأنه تقدير «جولد بيليون»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يوضح العنوان والمقدمة ما تغيّر: سعر البيع لدى البنك المركزي 54.02 جنيه لأول مرة. ويوضح الجسم ما لم يتغير: سعر الشراء 53.88 جنيه دون الحاجز، والأهلي ومصر عند 53.99 جنيه. والعنوان الفرعي يربط «ارتفاع الدولار هذا الأسبوع» بالنفط، لا كسر الحاجز تحديداً.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "الآلية منسوبة إلى التحليل: النفط قرب 110 دولارات يرفع كلفة واردات الطاقة والطلب على النقد الأجنبي (المصدر 1)، وفقرة موديز مدمجة مع اقتباس التدفقات بعلاقة «لكنه». و«جولد بيليون» معرّفة بوظيفتها عند أول ذكر. ولا تقدّم المصادر تعريفاً لرمزَي التصنيف حتى يُطلب شرحهما. والصندوق يبني على مقدمتين مسندتين، هما أثر النفط في الطلب على الدولار وأثر ملف هرمز في أسعار الطاقة، ويستدل منهما استدلالاً محدوداً بشرط صريح «إذا ظل النفط قرب 110 دولارات» دون أن يكرر خلاصة الختام.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "يتدرج التقرير من الدولار إلى سببه ثم إلى أثره على الذهب المحلي ثم على الأونصة. وأسعار عيار 24 والجنيه الذهب صارت جملة تابعة لفقرة عيار 21، وجملة العقود الآجلة جاءت مستقلة بأداتها ووقتها، والجمل الطويلة قُسمت.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "خلايا الجدول مطابقة للمصدر 2 بنكاً بنكاً. والعقود الآجلة منخفضة 0.03% إلى 4179.90 دولار عند 13:19 بتوقيت غرينتش (المصدر 5)، وهي مفصولة عن صعود الأونصة 0.3%. والفارق عن السعر العادل موسوم بأنه تقدير المنصة، وسعر 53.80 لم يُبنَ عليه مسار نحو 54.02.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تحليل جولد بيليون يربط ارتفاع الدولار باقتراب النفط من 110 دولارات للبرميل وارتفاع كلفة استيراد الطاقة والحاجة إلى النقد الأجنبي",
+          "source": 1
+        },
+        {
+          "fact": "زيادة تدفقات السياحة والتحويلات واستثمارات المحافظ لم تكفِ لاحتواء ارتفاع الدولار بحسب التحليل",
+          "source": 1
+        },
+        {
+          "fact": "الأسواق تترقب المفاوضات الأمريكية الإيرانية وعودة الملاحة في هرمز لأثرها على الطاقة والتضخم والفائدة الأمريكية",
+          "source": 1
+        },
+        {
+          "fact": "اتجاه الذهب محلياً مرهون بحركة الدولار والأونصة، والتحليل يقدّر أن عيار 21 يُتداول دون سعره العادل بنحو 62 جنيهاً بسبب ضعف الطلب وبيع المدخرات",
+          "source": 1
+        }
+      ],
+      "slug": "egypt-dollar-tops-54-pounds-first-time-d53b8f",
+      "title": "الدولار يتجاوز 54 جنيهاً في السوق الرسمية المصرية للمرة الأولى",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "تغطية طرح بنك القاهرة تبلغ 42% في اليوم الأول ومؤسسات خليجية وأوروبية في الطرح الخاص",
+      "section": "companies",
+      "importance": 7,
+      "sources": [
+        "https://www.alborsaanews.com/2026/10/19/2000410",
+        "https://www.alborsaanews.com/2026/10/19/2000363",
+        "https://www.youm7.com/story/2026/10/19/%D9%85%D8%A4%D8%B3%D8%B3%D8%A7%D8%AA-%D9%83%D8%A8%D8%B1%D9%89-%D9%85%D9%86-%D8%A7%D9%84%D8%AE%D9%84%D9%8A%D8%AC-%D9%88%D8%A3%D9%88%D8%B1%D9%88%D8%A8%D8%A7-%D8%AA%D9%82%D8%AA%D9%86%D8%B5-63-%D9%85%D9%86-%D8%A7%D9%84%D8%B7%D8%B1%D8%AD-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5/7585707",
+        "https://www.alkhaleej.ae/2026-10-19/%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF/%D8%A3%D8%B3%D9%88%D8%A7%D9%82-%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-%D9%88%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D8%A9/%D8%A8%D9%86%D9%83-%D8%A7%D9%84%D9%82%D8%A7%D9%87%D8%B1%D8%A9-%D9%8A%D8%B3%D8%B9%D9%89-%D9%84%D8%AC%D9%85%D8%B9-454-%D9%85%D9%84%D9%8A%D9%88%D9%86-%D8%AF%D9%88%D9%84%D8%A7%D8%B1"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "يوضح العنوان والفقرة الأولى أن نسبة 42% تخص شريحة الأفراد الصغيرة (5%)، وهذا جيد. لكن العنوان الفرعي «التزم أربعة منهم بالشراء» يقدّم الالتزام كأنه نهائي غير مشروط وغير محدد السقف. والمقدمة تقول إن البنك يجمع الحصيلة بينما البائع بنك مصر.",
+              "repair": "إضافة «بشروط مسبقة» و«ما يصل إلى 63%» في العنوان الفرعي، وصياغة الحصيلة بوصفها حجم الطرح عند الحد الأعلى للنطاق السعري."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "تغيب خلفية برنامج الخصخصة والقيمة السوقية المقدرة (المصدر 4). ويُذكر «إم إن تي-حالان» دون تعريف. أما «لماذا يهمّ» فمقدماتها صحيحة: الـ95% لشريحة المؤسسات، وسقف 63% المشروط، ودراسة الرفع إلى 45%. واستدلالها الأول بأن مصير الطرح يُحسم في دفتر طلبات المؤسسات معقول، لكن الثاني يربط الزيادة بحدود التزامات المستثمرين الأساسيين بـ«لذا» دون سند.",
+              "repair": "إضافة الخصخصة والتقييم في الفقرة الرابعة، وتعريف «إم إن تي-حالان» بأنها شركة ناشئة مليارية، واستبدال الرابط السببي في الصندوق بصياغة تفصل بين الجزء غير المغطى من الشريحة الخاصة واشتراط الزيادة بحجم الطلب."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "تنتقل الفقرة الثالثة من نسبتين إلى مجموع 63% دون الحلقتين الوسيطتين. وتُجزَّأ الزيادة إلى 45% بين فقرتين («وتسمح هذه الموافقة...» ثم «وكان البنك قد ذكر...»)، فتُروى الإمكانية قبل خبر دراستها. وتنتهي الفقرة الأخيرة بقائمة مديري الطرح ملحقة بالمواعيد.",
+              "repair": "ذكر نسب المستثمرين الأربعة كاملة قبل المجموع، ودمج فقرتي الزيادة في فقرة تبدأ بإفصاح الأحد ثم سندها القانوني وشرطها، وإبقاء مديري الطرح في جملة مختصرة بعد المواعيد."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "يسقط شرط «بعد الحصول على موافقة الهيئة» عن الزيادة (المصدر 2). وتُقدَّم «أكبر طرح عام أولي في مصر منذ سنوات» بلا نسبة رغم أنها تقدير في المصدر 4. أما بقية الأرقام والمواعيد فمطابقة: 97 مليون من 228.75 مليون سهم، و28.5% و1.5%، والجمعة 23 والاثنين 26 والأربعاء 28 أكتوبر، والطابع الاسترشادي للمواعيد.",
+              "repair": "إعادة شرط موافقة الهيئة إلى جملة الزيادة، ونسبة تقدير «أكبر طرح» إلى ناقله، ووصف الحصيلة بأنها حد أقصى عند أعلى النطاق السعري."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والمقدمة والفقرة الأولى تقول بوضوح إن نسبة 42% تخص شريحة الأفراد التي لا تمثل سوى 5% من الطرح، وإن البائع بنك مصر دون إصدار أسهم جديدة. لكن «منها» الثانية في العنوان الفرعي قد تجعل سقف الـ63% يبدو حصة من الطرح كله.",
+              "repair": "«بشراء ما يصل إلى 63% من هذه الشريحة»."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يضع التقرير الطرح في سياقه من المصدر 4: برنامج الخصخصة، وطرح «إم إن تي-حالان» معرَّفاً بأنها شركة ناشئة مليارية، والقيمة السوقية المقابلة للنطاق السعري. ويُبقي تقدير «أكبر طرح» مشروطاً بـ«قد». في «لماذا يهمّ» مقدمتان مسندتان: 95% للمؤسسات، والتزامات أساسية مشروطة سقفها 63%. ويستنتج منهما الموقع أن السعر والنجاح يُحسمان في دفتر طلبات المؤسسات، وأن نحو ثلث الشريحة الخاصة على الأقل يحتاج طلباً من خارج المستثمرين الأساسيين. والاستنتاج محدود بشرط حجم الطلب، ولم يعد يتضمن رابطاً سببياً بلا سند.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "الترتيب يخدم سؤال القارئ: صِغر الشريحة التي تخصها التغطية، ثم المستثمرون الأساسيون ونسبهم كاملة قبل مجموعها، ثم الموافقة والتقييم، ثم الخلفية، ثم الزيادة المحتملة في فقرة واحدة تبدأ بإفصاح الأحد ثم سندها وشرطها، ثم المواعيد. وتكمّل فقرة «لماذا يهمّ» الجسم ولا تكرره.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والمواعيد مطابقة للمصادر: 97 من 228.75 مليون سهم، و4.34625 مليار سهم، و28.5% و1.5%، و2.2875 مليار سهم إضافي، و6.8625 مليار سهم، و23 و26 و28 أكتوبر. وعادت الزيادة مشروطة بموافقة الهيئة. ويبقى «مديرة استثمار لأحد صناديقها» و«شركات آر دبليو سي» بخلاف المصدرين 1 و3.",
+              "repair": "«مديرة الاستثمار لصندوق تديره» و«شركتي «آر دبليو سي»»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 5,
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "الشريحة الخاصة تعادل 95% من الأسهم المطروحة وشريحة الأفراد 5%",
+          "source": 2
+        },
+        {
+          "fact": "النسب القصوى للمستثمرين المؤهلين الأربعة مجتمعة 63% من الشريحة الخاصة ولا تمثل تخصيصاً نهائياً",
+          "source": 3
+        },
+        {
+          "fact": "التزامات المستثمرين تخضع لشروط مسبقة وبالسعر النهائي للطرح",
+          "source": 1
+        },
+        {
+          "fact": "البنك يدرس رفع النسبة المطروحة إلى 45% تبعاً لحجم الطلب",
+          "source": 4
+        }
+      ],
+      "slug": "banque-du-caire-ipo-retail-coverage-42-263aca",
+      "title": "تغطية الشريحة العامة لطرح بنك القاهرة تبلغ 42% في أول أيام الاكتتاب",
+      "score": 8,
+      "image": "cover-art"
+    },
+    {
+      "headline": "14 مؤسسة مالية بأصول تتجاوز 5 تريليونات دولار تتجه إلى سوق أبوظبي العالمي",
+      "section": "economy",
+      "importance": 6,
+      "sources": [
+        "https://www.skynewsarabia.com/business/1899141-adgm-%D9%8A%D8%B3%D8%AA%D9%82%D8%B7%D8%A8-14-%D9%85%D8%A4%D8%B3%D8%B3%D8%A9-%D9%85%D8%A7%D9%84%D9%8A%D8%A9-%D8%A8%D8%A3%D8%B5%D9%88%D9%84-%D8%AA%D8%AA%D8%AC%D8%A7%D9%88%D8%B2-5-%D8%AA%D8%B1%D9%8A%D9%84%D9%8A%D9%88%D9%86%D8%A7%D8%AA-%D8%AF%D9%88%D9%84%D8%A7%D8%B1",
+        "https://www.alkhaleej.ae/2026-10-19/%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF/%D8%A3%D8%B3%D9%88%D8%A7%D9%82-%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA/5-%D8%AA%D8%B1%D9%8A%D9%84%D9%8A%D9%88%D9%86%D8%A7%D8%AA-%D8%AF%D9%88%D9%84%D8%A7%D8%B1-%D8%B9%D9%8A%D9%86-%D8%B9%D9%84%D9%89-%D8%A3%D8%A8%D9%88%D8%B8%D8%A8%D9%8A-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%D9%8A",
+        "https://economymiddleeast.com/news/adgm-attracts-14-global-financial-institutions-managing-over-5-trillion-in-assets-in-h1-2026-says-al-zaabi/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يوضح العنوان والفقرة الأولى من المتن أن ما أُعلن خطط لتأسيس أعمال لا عمليات قائمة، وأن الخمسة تريليونات أصول تديرها المؤسسات حول العالم لا أموال ستديرها من أبوظبي. لا يوجد تناقض بين العنوان والمقدمة والمتن.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الدافع المعلن مشروح جيداً بعاملين: الإطار القانوني وسرعة مزاولة الأعمال، ومعهما أرقام النمو. لكن وصف «جهة تنظيم خاصة به» يحرّف «الإطار التنظيمي» (المصادر 1–3). أما «لماذا يهمّ» فينطلق من مقدمات مسندة (الإطار القانوني، وأن الأصول عالمية، وأن المعلن خطط) ويستنتج شرطاً معقولاً هو تحول الخطط إلى عمليات وما سيُدار منها في أبوظبي، غير أن «يستطيع المستثمر اختبارهما» إضافة لا سند لها.",
+              "repair": "تصحيح وصف الإطار التنظيمي، واستبدال «يستطيع المستثمر اختبارهما» بـ«عنصرين مؤسسيين»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "تنتقل الفقرات بخط واضح: معنى الرقم، ثم الدافع القانوني، ثم السرعة، ثم الأداء الاقتصادي، ثم القطاعات. لكن فقرة «ورأت منصة «Economy Middle East»...» إشارة إلى الموقع الإخباري تقطع السياق، والخاتمة تتحول إلى دعوة عامة، وجملة «ولخّص ذلك» تربط الاقتباس بغير موضعه. والشطر الثاني من «لماذا يهمّ» يقترب من الفقرة الأولى في المتن، لكنه يضيف شرط الحكم على الأثر، فلا يُعدّ تكراراً خالصاً.",
+              "repair": "حذف فقرة الموقع الإخباري والدعوة العامة، ونقل عبارة «الاستثمار لعقود» إلى فقرة رأس المال، وإنهاء التقرير بمعيار قياس التقدم."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: 14 مؤسسة، وأكثر من 5 تريليونات دولار، والنصف الأول من 2026، ونمو 7% و8% في 2025، وأكثر من نصف الناتج. ويوم «الاثنين» يطابق المصدر 2 ويوافق تاريخ 19 أكتوبر 2026. لكن عبارة «الطاقة بأسعار تنافسية» تضيف الأسعار إلى ميزة لم تحددها المصادر.",
+              "repair": "«والمزايا التنافسية في قطاع الطاقة»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يبيّن العنوان والسطر التمهيدي والفقرة الأولى ما تغيّر وحدوده معاً. فالعنوان يستخدم فعل نية «تخطط لدخول»، والسطر التمهيدي يحصر الأصول في «أعمالها حول العالم لا ما ستديره من الإمارة». وتؤكد الفقرة الأولى أن المعلن «خطط لتأسيس حضورها في السوق، وليس عمليات تعمل فعلاً»، وهذا مطابق لصيغة «أعلنت خططها لتأسيس أعمالها» في المصدرين 1 و2.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يشرح التقرير الدافع الذي أعلنه الزعابي بعاملين: الإطار القانوني القائم على القانون العام الإنجليزي ومحاكم مستقلة (المصادر 1–3)، وسرعة مزاولة الأعمال (المصدران 1 و3). ويعرّف بالمؤسسة عند أول ذكر مفيد بأنها «مركز مالي دولي»، ويضيف أرقام النمو في 2025 سياقاً. ولا تقدم المصادر مقارنة بعدد سابق ولا ردود فعل ولا موعداً تالياً، فغيابها ليس نقصاً. أما «لماذا يهمّ» فينطلق من مقدمات مسندة: الإطار القانوني وسرعة القرار، وأن الأصول المذكورة عالمية، وأن المعلن خطط. ويستنتج منها شرطاً محدوداً ومعقولاً هو أن الحكم على النجاح يتوقف على تحول الخطط إلى عمليات وعلى حجم ما سيُدار من الإمارة. وأُصلحت عبارة «عنصرين مؤسسيين» كما طُلب.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "تتدرج الفقرات بخط واضح: معنى الرقم وحدوده، ثم الإطار القانوني، ثم سرعة الأعمال، ثم الأداء الاقتصادي ومصادر الجاذبية، ثم القطاعات، وتنتهي بمعيار قياس التقدم بدل الدعوة العامة. وعبارة «القدرة على الاستثمار لعقود والمرونة للتحرك فوراً» صارت في فقرة رأس المال طويل الأجل التي تخصها في المصدر 3. وفي جملة «وتطور الإمارة، بحسب الزعابي، صناعات... قال إنها تسهم» إسناد مزدوج يمكن لمكتب التحرير تخفيفه، لكنه لا يُخلّ بالمعنى. ويضيف الشطر الثاني من «لماذا يهمّ» شرط الحكم على الأثر، فلا يكرر المتن تكراراً خالصاً.",
+              "repair": "تحسين اختياري: «وقال الزعابي إن الإمارة تطور صناعات في الذكاء الاصطناعي والتصنيع المتقدم والطاقة وعلوم الحياة تسهم في تشكيل أسواق المستقبل»."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام كلها مطابقة للمصادر: 14 مؤسسة، وأكثر من 5 تريليونات دولار من الأصول حول العالم، والنصف الأول من 2026، ونمو الاقتصاد 7% والاقتصاد غير النفطي 8% في 2025، وإسهام الاقتصاد غير النفطي بأكثر من نصف الناتج المحلي الإجمالي. ويوم «الاثنين» يطابق المصدر 2 وتاريخ 19 أكتوبر 2026. وصار الوصفان «إطار تنظيمي» و«المزايا التنافسية في قطاع الطاقة» مطابقين للمصدرين 1 و3، ويفصل التقرير بين الخطط المعلنة والعمليات القائمة.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قال الزعابي إن خطط المؤسسات الأربع عشرة تعكس استجابة الشركات الدولية للإطار القانوني القائم على القانون العام الإنجليزي ولسرعة مزاولة الأعمال",
+          "source": 3
+        },
+        {
+          "fact": "أبوظبي العالمي يطبق القانون العام الإنجليزي مباشرة بمحاكم مستقلة وإطار تنظيمي يرسخ قابلية إنفاذ الحقوق التجارية",
+          "source": 1
+        },
+        {
+          "fact": "المؤسسات الأربع عشرة تدير مجتمعة حول العالم أصولاً تتجاوز 5 تريليونات دولار",
+          "source": 1
+        },
+        {
+          "fact": "المؤسسات كشفت في النصف الأول من 2026 عن خطط لتأسيس أعمالها في السوق",
+          "source": 2
+        }
+      ],
+      "slug": "adgm-14-financial-institutions-5-trillion-c0532d",
+      "title": "مؤسسات مالية تفوق أصولها 5 تريليونات دولار تخطط لدخول سوق أبوظبي العالمي",
+      "score": 9,
+      "image": "cover-art"
+    },
+    {
+      "headline": "الصناعة الألمانية تفقد نحو نصف مليون وظيفة منذ 2019 بحسب إيفو",
+      "section": "economy",
+      "importance": 6,
+      "sources": [
+        "https://www.aljazeera.net/ebusiness/2026/10/19/%d8%a7%d9%84%d8%b5%d9%86%d8%a7%d8%b9%d8%a9-%d8%a7%d9%84%d8%a3%d9%84%d9%85%d8%a7%d9%86%d9%8a%d8%a9-%d8%aa%d9%81%d9%82%d8%af-%d9%86%d8%b5%d9%81-%d9%85%d9%84%d9%8a%d9%88%d9%86",
+        "https://aawsat.com/node/5331069",
+        "https://www.skynewsarabia.com/business/1899122-%D8%A5%D9%8A%D9%81%D9%88-%D8%A7%D9%84%D8%B5%D9%86%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%A3%D9%84%D9%85%D8%A7%D9%86%D9%8A%D8%A9-%D8%AA%D9%81%D9%82%D8%AF-%D9%86%D8%B5%D9%81-%D9%85%D9%84%D9%8A%D9%88%D9%86-%D9%88%D8%B8%D9%8A%D9%81%D8%A9-2019"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يحددان الحدث بوضوح: تراجع 496 ألف وظيفة (7.1%) في الصناعة بين مطلع 2019 ونهاية 2025 وفق دراسة إيفو، مقابل أكثر من 2.2 مليون وظيفة في الخدمات. والملخص يحمل تحفظ راغنيتس بصياغة قريبة من «غالباً».",
+              "repair": "يُستحسن أن يذكر الملخص صفة الخبير، أي «نائب مدير فرع إيفو في دريسدن»، بدلاً من «خبيراً في إيفو»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السياق الذي تقدمه المصادر (شيخوخة السكان، وتعويض المتقاعدين في الإدارة العامة، والاستناد إلى إحصاءات الوكالة الاتحادية للعمل) موجود. لكن المسودة تضيف إليه سياقاً من خارج المصادر: تعريف الإنتاجية ومقارنتها بين القطاعات، و«أكبر اقتصاد في أوروبا». وفي «لماذا يهمّ» تقوم المقدمة على «انتقال» العمالة، وهو غير ثابت، ويحمل الصندوق إسناداً بصيغة «كما يقدّر إيفو». أما الاستنتاج المحدود بأن نمو التوظيف وحده لا يكفي مؤشراً على قوة الاقتصاد فمقبول.",
+              "repair": "حذف التعريف والآلية المخترعين. وإعادة صياغة الصندوق بلا إسناد مثلاً: «تتقلص الوظائف في السيارات والمعادن والآلات وتتسع في الرعاية التي تغذيها شيخوخة السكان، فلا يكفي نمو التوظيف وحده دليلاً على قوة الاقتصاد. وإذا ظلت الوظائف الجديدة خارج القطاعات عالية الإنتاجية، فستتوقف قدرة ألمانيا على النمو على وقف تآكل قاعدتها الصناعية أو رفع إنتاجية الخدمات»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "البناء العام منطقي: الخسائر، ثم التحذير، ثم المكاسب وأسبابها، ثم سؤال النوعية. لكن عدة فقرات تنتهي بعبارة «أي...» تفسيرية مخترعة، والخاتمة تعيد وصف المنهجية وتعلّق عليها بحشو عن «فترة طويلة لا فصل أو عام واحد». وتحذير راغنيتس موزع على فقرتين متباعدتين.",
+              "repair": "جمع وصف راغنيتس وتحذيره في فقرة واحدة بعد عرض المكاسب. وإدراج رقم الإدارة العامة (329 ألفاً) ونمو تكنولوجيا المعلومات في فقرة الخدمات. ونقل الإشارة إلى الوكالة الاتحادية للعمل إلى جملة قصيرة مع الرقم الرئيسي، وحذف فقرة الإنتاجية وعبارات «أي...»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«وارتفع التوظيف كذلك في الإدارة العامة» تُسقط الرقم 329 ألفاً وتُسقط أنه يخص الوظائف الخاضعة للتأمينات الاجتماعية. و«نحو ضعف» و«أكثر من أربعة أضعاف» حسابات من صنع المحرر. و«يكمن القلق الذي يثيره المعهد» تنسب إلى المعهد كلام نائب مدير فرعه.",
+              "repair": "«ارتفع عدد العاملين في وظائف خاضعة للتأمينات الاجتماعية بالإدارة العامة بمقدار 329 ألفاً». وحذف الحسابات. وإسناد التحذير إلى راغنيتس بصفته لا إلى المعهد."
+            }
+          }
+        }
+      ],
+      "outcome": "rejected after revision: عبارة مترجمة أو حشو: «قام ب»؛ الفعل نفسه («زار» لا «قام بزيارة»)."
+    }
+  ],
+  "llm": {
+    "calls": 69,
+    "failures": 3,
+    "promptTokens": 857564,
+    "completionTokens": 223744,
+    "cacheReadTokens": 246874,
+    "costUsd": 9.4092,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 69
+    }
+  },
+  "log": [
+    "[14:00:44] image: dropped \"Explore the modern architectural designs and palm-lined pavements of K\" — names too little of skyscrapers",
+    "[14:00:45] commons \"Abu Dhabi Global Market\": 2 usable of 6",
+    "[14:00:45] image: dropped \"Alexandre de Gouyon Matignon - 2012.JPG\" — names too little of global, market",
+    "[14:00:45] image: dropped \"Alexandre de Gouyon Matignon - North Pole Marathon - 2012 ii.JPG\" — names too little of global, market",
+    "[14:00:45] pexels \"Abu Dhabi Global Market\": 8 usable",
+    "[14:00:53] openverse \"Abu Dhabi Global Market\": 0 usable of 0",
+    "[14:00:53] image: dropped \"Night view of Abu Dhabi skyline with reflections on water, showcasing \" — names too little of global, market",
+    "[14:00:53] image: dropped \"Panoramic view of Abu Dhabi's futuristic skyline with modern skyscrape\" — names too little of global, market",
+    "[14:00:53] image: dropped \"Captivating view of Abu Dhabi's skyline amidst lush palm trees on a su\" — names too little of global, market",
+    "[14:00:53] image: dropped \"A captivating daytime view of Etihad Towers in Abu Dhabi, showcasing m\" — names too little of global, market",
+    "[14:00:53] image: dropped \"Explore the stunning modern architecture and waterfront of Yas Island,\" — names too little of global, market",
+    "[14:00:53] image: dropped \"Close-up view of the modern architectural design of Louvre Abu Dhabi's\" — names too little of global, market",
+    "[14:00:53] image: dropped \"Close-up of the intricate geometric dome roof of Louvre Abu Dhabi, sho\" — names too little of global, market",
+    "[14:00:53] image: dropped \"Silhouette of Sheikh Zayed Grand Mosque reflecting in water during a v\" — names too little of global, market",
+    "[14:00:54] commons \"Abu Dhabi financial centre towers\": 0 usable of 0",
+    "[14:00:54] commons \"Abu Dhabi\": 23 usable of 24",
+    "[14:00:54] image: dropped \"13-08-06-abu-dhabi-airport-16.jpg\" — names too little of financial, centre, towers",
+    "[14:00:54] image: dropped \"Qasr Al Watan, Abu Dhabi (P1100960).jpg\" — names too little of financial, centre, towers",
+    "[14:00:54] image: dropped \"Cycling path, Abu Dhabi (P1100971).jpg\" — names too little of financial, centre, towers",
+    "[14:00:54] image: dropped \"Birds, Abu Dhabi (P1100967).jpg\" — names too little of financial, centre, towers",
+    "[14:00:54] image: dropped \"13-08-06-abu-dhabi-airport-46.jpg\" — names too little of financial, centre, towers",
+    "[14:00:54] image: dropped \"13-08-06-abu-dhabi-airport-28.jpg\" — names too little of financial, centre, towers",
+    "[14:00:54] image: dropped \"13-08-06-abu-dhabi-airport-35.jpg\" — names too little of financial, centre, towers",
+    "[14:00:54] image: dropped \"13-08-06-abu-dhabi-airport-34.jpg\" — names too little of financial, centre, towers",
+    "[14:00:54] image: dropped \"13-08-06-abu-dhabi-airport-25.jpg\" — names too little of financial, centre, towers",
+    "[14:00:54] image: dropped \"13-08-06-abu-dhabi-airport-31.jpg\" — names too little of financial, centre, towers",
+    "[14:00:54] image: dropped \"13-08-06-abu-dhabi-airport-33.jpg\" — names too little of financial, centre, towers",
+    "[14:00:54] image: dropped \"13-08-06-abu-dhabi-airport-01.jpg\" — names too little of financial, centre, towers",
+    "[14:00:55] pexels \"Abu Dhabi financial centre towers\": 8 usable",
+    "[14:01:01] openverse \"Abu Dhabi financial centre towers\": 0 usable of 0",
+    "[14:01:01] image: dropped \"Breathtaking view of Abu Dhabi skyline showcasing modern architecture \" — names too little of financial, centre, towers",
+    "[14:01:01] image: dropped \"View of Abu Dhabi skyline with modern skyscrapers reflecting over the \" — names too little of financial, centre, towers",
+    "[14:01:01] image: dropped \"A view of sleek, glass skyscrapers reflecting the urban skyline of Abu\" — names too little of financial, centre, towers",
+    "[14:01:01] image: dropped \"Modern skyline of UAE cityscape with national flag waving against clea\" — names too little of financial, centre, towers",
+    "[14:01:01] image: dropped \"A city skyline with modern skyscrapers and traffic lights under a clea\" — names too little of financial, centre, towers",
+    "[14:01:01] image: dropped \"Vibrant view of Abu Dhabi skyline featuring modern skyscrapers under c\" — names too little of financial, centre, towers",
+    "[14:01:01] commons \"Al Maryah Island Abu Dhabi\": 4 usable of 6",
+    "[14:01:02] pexels \"Al Maryah Island Abu Dhabi\": 8 usable",
+    "[14:01:21] openverse \"Al Maryah Island Abu Dhabi\": The operation was aborted due to timeout",
+    "[14:01:21] image: dropped \"Elegant outdoor crescent and lantern installation by the water with a \" — names too little of maryah, island",
+    "[14:01:21] image: dropped \"A mesmerizing night view of Abu Dhabi's skyline with a dramatic lightn\" — names too little of maryah, island",
+    "[14:01:21] image: dropped \"Captivating view of Abu Dhabi skyline with boats docked by the beach, \" — names too little of maryah, island",
+    "[14:01:21] image: dropped \"Skyscrapers reflecting in water at sunset in Abu Dhabi, showcasing urb\" — names too little of maryah, island",
+    "[14:01:21] commons \"financial district Abu Dhabi\": 0 usable of 0",
+    "[14:01:22] commons \"financial district\": 9 usable of 24",
+    "[14:01:22] image: dropped \"Detroit Financial District by night from Windsor, Ontario, 2025-06-28.\" — taken in Canada, which the story does not name",
+    "[14:01:22] image: dropped \"Buildings in Financial District, Manhattan.jpg\" — taken in United States, which the story does not name",
+    "[14:01:22] image: dropped \"Financial District, San Francisco.jpg\" — taken in United States, which the story does not name",
+    "[14:01:22] image: dropped \"Financial District East Skyline, 2025.jpg\" — taken in United States, which the story does not name",
+    "[14:01:22] image: dropped \"Skyline of Financial District, Manhattan, 2025.jpg\" — taken in United States, which the story does not name",
+    "[14:01:22] image: dropped \"Financial District Skyline.jpg\" — taken in United States, which the story does not name",
+    "[14:01:22] image: dropped \"Toronto Financial District August 2017.jpg\" — taken in Canada, which the story does not name",
+    "[14:01:22] image: dropped \"Chrissy Field - view towards the Financial district.jpg\" — taken in United States, which the story does not name",
+    "[14:01:22] image: dropped \"NYC Financial District (Water Taxi view).jpg\" — taken in United States, which the story does not name",
+    "[14:01:29] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6152",
+    "[14:01:29] image: vision rejected all candidates (fallback pass) (No candidate shows the story's subject. Images 1 to 5 are Abu Dhabi skylines, waterfront cityscapes or residential towers, which say where, not what. None plainly shows ADGM's headquarters or financial firms at work. Image 6 shows named executives at another company's launch event.)",
+    "[14:01:34] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3544",
+    "[14:01:34] image: vision rejected all candidates (fallback pass) (Both candidates are skylines rather than a scene of the story itself. Photo 1 is an Abu Dhabi cityscape of Etihad Towers with a fountain, which shows where, not ADGM or financial institutions at work. Photo 2 is a Sharjah skyline, the wrong city, mislabelled under an Al Maryah Island search. Skylines are never chosen.)",
+    "[14:01:34] image: the story's people first: Ahmed Jasim Al Zaabi 2026 | Ahmed Jasim Al Zaabi",
+    "[14:01:34] commons \"Ahmed Jasim Al Zaabi 2026\": 0 usable of 0",
+    "[14:01:35] commons \"Ahmed Jasim\": 4 usable of 6",
+    "[14:01:35] image: dropped \"Muzammil, Yogesh, Ashish, Jasim, Rajib & Nisar.jpg\" — names none of the story's people",
+    "[14:01:35] image: dropped \"US Navy 090822-N-8273J-246 Chief of Naval Operations (CNO) Adm. Gary R\" — names none of the story's people",
+    "[14:01:35] image: dropped \"US Navy 090822-N-8273J-250 Chief of Naval Operations (CNO) Adm. Gary R\" — names none of the story's people",
+    "[14:01:35] image: dropped \"US Navy 090822-N-8273J-230 Chief of Naval Operations (CNO) Adm. Gary R\" — names none of the story's people",
+    "[14:01:36] commons \"Ahmed Jasim Al Zaabi\": 0 usable of 0",
+    "[14:01:36] commons \"Ahmed Jasim\": 4 usable of 6",
+    "[14:01:36] image: no photograph of the story's people",
+    "[14:01:39] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=2930",
+    "[14:01:39] image: last resort: Al Maryah Island financial district United Arab Emirates | Al Maryah Island financial district | Al Maryah Island financial district industrial | Abu Dhabi Global Market headquarters | Abu Dhabi Global Market building",
+    "[14:01:39] commons \"Al Maryah Island financial district United Arab Emirates\": 0 usable of 0",
+    "[14:01:39] commons \"Al Maryah\": 4 usable of 6",
+    "[14:01:40] commons \"Al Maryah Island financial district\": 0 usable of 0",
+    "[14:01:40] commons \"Al Maryah\": 4 usable of 6",
+    "[14:01:41] commons \"Al Maryah Island financial district industrial\": 0 usable of 0",
+    "[14:01:41] commons \"Al Maryah\": 4 usable of 6",
+    "[14:01:41] commons \"Abu Dhabi Global Market headquarters\": 0 usable of 1",
+    "[14:01:41] commons \"Abu Dhabi\": 23 usable of 24",
+    "[14:01:41] image: dropped \"13-08-06-abu-dhabi-airport-16.jpg\" — names too little of headquarters",
+    "[14:01:41] image: dropped \"Qasr Al Watan, Abu Dhabi (P1100960).jpg\" — names too little of headquarters",
+    "[14:01:41] image: dropped \"Cycling path, Abu Dhabi (P1100971).jpg\" — names too little of headquarters",
+    "[14:01:41] image: dropped \"Birds, Abu Dhabi (P1100967).jpg\" — names too little of headquarters",
+    "[14:01:41] image: dropped \"13-08-06-abu-dhabi-airport-46.jpg\" — names too little of headquarters",
+    "[14:01:41] image: dropped \"13-08-06-abu-dhabi-airport-28.jpg\" — names too little of headquarters",
+    "[14:01:41] image: dropped \"13-08-06-abu-dhabi-airport-35.jpg\" — names too little of headquarters",
+    "[14:01:41] image: dropped \"13-08-06-abu-dhabi-airport-34.jpg\" — names too little of headquarters",
+    "[14:01:41] image: dropped \"13-08-06-abu-dhabi-airport-25.jpg\" — names too little of headquarters",
+    "[14:01:41] image: dropped \"13-08-06-abu-dhabi-airport-31.jpg\" — names too little of headquarters",
+    "[14:01:41] image: dropped \"13-08-06-abu-dhabi-airport-33.jpg\" — names too little of headquarters",
+    "[14:01:41] image: dropped \"13-08-06-abu-dhabi-airport-01.jpg\" — names too little of headquarters",
+    "[14:01:42] commons \"Abu Dhabi Global Market building\": 0 usable of 2",
+    "[14:01:42] commons \"Abu Dhabi Global Market\": 2 usable of 6",
+    "[14:01:42] image: dropped \"Alexandre de Gouyon Matignon - 2012.JPG\" — names too little of building",
+    "[14:01:42] image: dropped \"Alexandre de Gouyon Matignon - North Pole Marathon - 2012 ii.JPG\" — names too little of building",
+    "[14:01:48] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5400",
+    "[14:01:48] image: vision rejected all candidates (fallback pass) (Photos 1-3 are skylines or waterfront cityscapes. Photo 1 mainly shows Cleveland Clinic, not a clear view of ADGM's headquarters, and 2 and 3 look across to the Tourist Club Area. None shows financial institutions at work. Photo 4 shows named executives at an unrelated SAAL.ai launch with logos in the frame. No candidate fits.)",
+    "[14:01:48] image: last pass, a neutral illustration: financial centre towers | financial district | bank office workers",
+    "[14:01:49] commons \"financial centre towers\": 8 usable of 24",
+    "[14:01:49] image: dropped \"Baker & McKenzie.Wong & Leow, Marina Bay Financial Centre Tower 1, Sin\" — an event's photograph, people and banners",
+    "[14:01:49] pexels \"financial centre towers\": 8 usable",
+    "[14:02:06] openverse \"financial centre towers\": 10 usable of 20",
+    "[14:02:06] image: dropped \"Sculpture Female Nudes Embracing 7 - Finance Tower Brussels\" — names too little of financial, centre, towers",
+    "[14:02:06] image: dropped \"Sculpture Female Nudes Embracing 4 - Finance Tower Brussels\" — names too little of financial, centre, towers",
+    "[14:02:06] image: dropped \"Sculpture Female Nudes Embracing 21 - Finance Tower Brussels\" — names too little of financial, centre, towers",
+    "[14:02:06] image: dropped \"Sculpture Female Nudes Embracing 2 - Finance Tower Brussels\" — names too little of financial, centre, towers",
+    "[14:02:06] image: dropped \"Sculpture Female Nudes Embracing 5 - Finance Tower Brussels\" — names too little of financial, centre, towers",
+    "[14:02:06] image: dropped \"Sculpture Female Nudes Embracing 17 - Finance Tower Brussels\" — names too little of financial, centre, towers",
+    "[14:02:06] image: dropped \"Striking modern architecture of Hong Kong's iconic skyscrapers under c\" — names too little of financial, centre, towers",
+    "[14:02:06] image: dropped \"Stunning view of Shanghai's iconic skyscrapers, showcasing modern arch\" — names too little of financial, centre, towers",
+    "[14:02:06] image: dropped \"City skyline featuring tall skyscrapers under a cloudy sky, showcasing\" — names too little of financial, centre, towers",
+    "[14:02:06] image: dropped \"Dramatic skyscraper skyline with palm trees and blue sky in Hong Kong.\" — names too little of financial, centre, towers",
+    "[14:02:06] image: dropped \"Stunning view of Hong Kong's illuminated skyline featuring modern skys\" — names too little of financial, centre, towers",
+    "[14:02:06] image: dropped \"Modern skyscrapers in Shanghai with a distinctive roof structure under\" — names too little of financial, centre, towers",
+    "[14:02:06] image: dropped \"A beautiful view of London's skyline featuring modern architecture and\" — names too little of financial, centre, towers",
+    "[14:02:07] image: thumbnail HTTP 403 for https://live.staticflickr.com/7323/16334552147_ab1704080f_n.jpg",
+    "[14:02:24] image: thumbnail HTTP 403 for https://live.staticflickr.com/8621/16297997927_e03c7de861_n.jpg",
+    "[14:02:49] image: thumbnail HTTP 403 for https://live.staticflickr.com/3195/3059556171_4faa25598e_n.jpg",
+    "[14:02:54] image: thumbnail HTTP 403 for https://live.staticflickr.com/2803/4038150802_301e53242c_n.jpg",
+    "[14:03:01] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6703",
+    "[14:03:01] image: vision rejected all candidates (fallback pass) (None of the photos fits. #1 is food. #2 is a dim snapshot of a law firm's reception with its sign visible. #3 is an amateur plaza shot. #4 and #6 are skylines with a DBS logo or Hong Kong landmarks. #5 is a Brussels street with signs and plates.)",
+    "[14:03:06] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3530",
+    "[14:03:06] image: vision rejected all candidates (fallback pass) (All six candidates are skylines or landmarks of other cities: Toronto, and Singapore's Merlion, Marina Bay and ArtScience Museum with DBS signage. These are recognisable places, not Abu Dhabi, and they show where rather than what the story is about. None shows a neutral scene of the financial sector, so it is better to run no photograph.)",
+    "[14:03:06] published \"مؤسسات مالية تفوق أصولها 5 تريليونات دولار تخطط لدخول سوق أبوظبي العالمي\" -> adgm-14-financial-institutions-5-trillion-c0532d",
+    "[14:03:31] desk notes: 4 of 20 facts dropped (not in their source or copied from it)",
+    "[14:03:31] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=21766",
+    "[14:03:31] desk notes: 16 facts (? 2, news 1, numbers 6, driver 2, reaction 4, background 1), 3 quotes (claude-cli/claude-opus-5-5)",
+    "[14:04:18] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=46778",
+    "[14:04:38] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=19677",
+    "[14:04:38] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[14:04:38] desk \"الصناعة الألمانية تفقد 496 ألف وظيفة منذ 2019 بحسب إيفو\": rewrote body",
+    "[14:05:37] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=58954",
+    "[14:05:37] critic \"الصناعة الألمانية تفقد 496 ألف وظيفة منذ 2019 بحسب إيفو\": revise score=4 issues=9",
+    "[14:05:37]   · الفقرة الثانية تضيف إلى اقتباس راغنيتس تفسيراً لا تذكره المصادر: «أي انتقال للعمالة من المصانع إلى قطاعات الخدمات يزداد وتيرة ولا يقتصر على تقلبات دورية». الدرا",
+    "[14:05:37]   · الفقرة السادسة مخترعة بكاملها: «تعني الإنتاجية هنا ما يولده العامل من قيمة اقتصادية، وهي أعلى عادة في الصناعات التي تعتمد على الآلات والتقنية والتصدير... ولذلك ",
+    "[14:05:37]   · الفقرة الرابعة تحمّل وقائع الدراسة استنتاجات ليست فيها. الأول: «وهو طلب تحركه التركيبة السكانية لا التوسع في الإنتاج أو التصدير». والثاني: «أي أن جانباً من هذه ",
+    "[14:05:37]   · حسابات غير واردة في المصادر: «أي نحو ضعف نسبة الانكماش في الصناعة في مجملها» (13% مقابل 7.1% تساوي 1.8 مرة، والمصادر لا تجري هذه المقارنة)، و«فرغم أن مكاسب الخد",
+    "[14:06:55] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=78077",
+    "[14:07:22] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=27020",
+    "[14:07:37] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=15624",
+    "[14:07:37] desk: body accepted on the second try",
+    "[14:07:37] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,body] rejected=[lede:length: the story would fall to 270 words, under 300]",
+    "[14:07:37] desk \"الصناعة الألمانية تفقد 496 ألف وظيفة منذ 2019 بحسب «إيفو»\": rewrote title, subtitle, body; refused lede (length: the story would fall to 270 words, under 300)",
+    "[14:07:37] last desk pass for 1 fault(s): عبارة مترجمة أو حشو: «قام ب»؛ الفعل نفسه («زار» لا «قام بزيا",
+    "[14:08:03] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=25150",
+    "[14:08:15] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=12728",
+    "[14:08:15] desk: body accepted on the second try",
+    "[14:08:15] desk model=claude-cli/claude-opus-5-5 applied=[whyItMatters,body] rejected=[]",
+    "[14:08:15] desk \"الصناعة الألمانية تفقد 496 ألف وظيفة منذ 2019 بحسب «إيفو»\": rewrote whyItMatters, body",
+    "[14:08:15] last desk pass: still 1 fault(s)",
+    "[14:08:15] reject \"الصناعة الألمانية تفقد 496 ألف وظيفة منذ 2019 بحسب «إيفو»\" after revision: عبارة مترجمة أو حشو: «قام ب»؛ الفعل نفسه («زار» لا «قام بزيارة»)."
+  ]
+}

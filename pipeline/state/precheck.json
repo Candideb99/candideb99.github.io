@@ -3639,6 +3639,102 @@
           "noted": []
         }
       ]
+    },
+    "egypt-dollar-tops-54-pounds-first-time-d53b8f": {
+      "at": "2026-10-19T13:39:55.466Z",
+      "title": "الدولار يتجاوز 54 جنيهاً في السوق الرسمية المصرية للمرة الأولى",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 32,
+            "checked": 32,
+            "supported": 30,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "banque-du-caire-ipo-retail-coverage-42-263aca": {
+      "at": "2026-10-19T13:53:22.975Z",
+      "title": "تغطية الشريحة العامة لطرح بنك القاهرة تبلغ 42% في أول أيام الاكتتاب",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 23,
+            "weak": 6,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 27,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "يظل الاكتتاب مفتوحاً أمام المؤسسات حتى الجمعة 23 أكتوبر، وأمام الأفراد حتى الأربعاء 28 أكتوبر.",
+              "quote": "أما الاكتتاب العام، فسيمتد من 19 إلى 26 أكتوبر، ومن المتوقع أن يبدأ تداول الأسهم في البورصة أوائل شهر نوفمبر.",
+              "source": "Al Khaleej",
+              "sourceN": 4,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "adgm-14-financial-institutions-5-trillion-c0532d": {
+      "at": "2026-10-19T14:03:06.440Z",
+      "title": "مؤسسات مالية تفوق أصولها 5 تريليونات دولار تخطط لدخول سوق أبوظبي العالمي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 22,
+            "checked": 22,
+            "supported": 21,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
