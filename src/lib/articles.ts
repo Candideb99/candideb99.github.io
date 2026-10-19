@@ -1,6 +1,6 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import { PLACE_TAGS } from "./regions";
-import { TOPICS, canonicalTag, isFileTag, topicArticles, topicHref } from "./topics";
+import { canonicalTag, isFileTag } from "./topics";
 
 export type Article = CollectionEntry<"articles">;
 
@@ -256,20 +256,17 @@ export interface Thread {
 }
 
 /**
- * What the paper is following now, for the files row under the section bar: the curated subjects (a sub-topic with
- * tags of its own, counted over every section) and the files (running stories, companies, institutions, people),
- * each once under its one page, busiest in the last week first. A subject reads under its short name.
+ * What the paper is following now, for the files row under the section bar: the running files (a running story, a
+ * company, an institution, a person), each once under its one page, busiest in the last week first.
+ *
+ * Never a standing subject (2026-10-19, the owner's check of the front page): the row had carried the sub-topics with
+ * tags of their own (النفط، الأسهم، التضخم…), seven of its eight entries one evening, a second copy of the section menus
+ * under a label that promises the stories being followed. The running stories are what the big sites keep outside
+ * their menus; the subjects are in the menus.
  */
 export function threads(articles: Article[], { days = 7, max = 8, now = Date.now() } = {}): Thread[] {
   const recentOf = (items: Article[]) => items.filter((a) => hoursOld(a, now) < days * 24).length;
   const out: Thread[] = [];
-  for (const [section, list] of Object.entries(TOPICS)) {
-    for (const topic of list) {
-      if (!topic.tags?.length) continue;
-      const items = topicArticles(articles, section, topic);
-      if (items.length) out.push({ label: topic.short ?? topic.name, href: topicHref(section, topic.id), recent: recentOf(items), total: items.length });
-    }
-  }
   for (const d of dossiers(articles, { max: 500, now })) out.push({ label: d.tag, href: `/tags/${encodeURIComponent(d.tag)}/`, recent: recentOf(d.items), total: d.items.length });
   return out.filter((t) => t.recent >= 2).sort((x, y) => y.recent - x.recent || y.total - x.total).slice(0, max);
 }

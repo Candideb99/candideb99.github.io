@@ -2,7 +2,7 @@
 /**
  * The front page under the cover, laid out like a newsroom's site: three ruled columns: the day's
  * digest at the start (الأخبار في سطور: one sentence per story, the way the Journal's What's News
- * runs), two secondary stories over the editor's picks in the centre, and the numbers at the end:
+ * runs), two secondary stories over the top stories' list in the centre, and the numbers at the end:
  * the market box, the day's chart, its figures and the agenda.
  */
 import type { Article } from "@lib/articles";
@@ -60,28 +60,25 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
       </div>
     )}
     {picks.length > 0 && (
-      <section class="module front__picks" aria-labelledby="picks-head">
-        <h2 id="picks-head" class="module__head">مختارات المحرر</h2>
-        <ol class="picks">
-          {picks.map((a) => (
-            <li class="picks__item">
-              <a class="picks__title" href={articleHref(a)} set:html={isolateNumbers(a.data.title)} />
-              <p class="meta">
-                <a href={sectionHref(a.data.section)}>{kindLabel(a.data.kind, a.data.section)}</a>
-                <time datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time>
-              </p>
-            </li>
-          ))}
-        </ol>
-      </section>
+      <ol class="picks front__picks" aria-label="أبرز الأخبار أيضاً">
+        {picks.map((a) => (
+          <li class="picks__item">
+            <a class="picks__title" href={articleHref(a)} set:html={isolateNumbers(a.data.title)} />
+            <p class="meta">
+              <a href={sectionHref(a.data.section)}>{kindLabel(a.data.kind, a.data.section)}</a>
+              <time datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time>
+            </p>
+          </li>
+        ))}
+      </ol>
     )}
   </div>
 
   <aside class="front__side">
-    <MarketBoard variant="box" id="front-board" />
+    <MarketBoard variant="box" id="front-board" title="لوحة الأسواق" />
     {chart?.data.chart && (
       <section class="module" aria-labelledby="chart-head">
-        <h2 id="chart-head" class="module__head">أحدث الرسوم البيانية</h2>
+        <h2 id="chart-head" class="module__head">بالرسم البياني</h2>
         <Chart chart={chart.data.chart} id="front-chart" narrow href={`${articleHref(chart)}#story-chart`} />
         <p class="module__from"><span class="module__from-label ui">من مادة</span><a href={articleHref(chart)} set:html={isolateNumbers(chart.data.title)} /></p>
       </section>
@@ -142,7 +139,8 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
   .front__secondary > :global(.card) { padding-block: 0.85rem; border-top: 1px solid var(--rule); }
   .front__secondary > :global(.card:first-child) { border-top: 0; padding-top: 0; }
   .front__secondary :global(.card__title) { font-size: var(--t-feature); line-height: 1.38; }
-  .front__picks { margin-top: 1.4rem; }
+  /* The top stories' list continues the secondary cards under one rule, with no label of its own. */
+  .front__picks { margin-top: 0.3rem; border-top: 1px solid var(--rule); }
 
   .figures__list { display: grid; }
   .figures__item { border-top: 1px solid var(--rule); }
