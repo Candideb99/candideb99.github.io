@@ -212,6 +212,13 @@ checked in `style.mjs` (calibrated on 245 published news stories; 3 are sent bac
 - *A sentence that sums up in abstract nouns.* «وتتباين الاحتمالات التي تواجهها السوق بين…»: cut.
 - *Paragraphs bridged to the one before.* «ولتطوير هذه الحلول، …»، «إلى جانب الأدوات التقنية، …». Two
   in a story send it back; one, a real contrast («ورغم هذا الصعود») or a time phrase («هذا الشهر») passes.
+The same day three stories were read beside الشرق بلومبرغ, Reuters and the FT on the same events
+(China's third quarter, oil after the Russia waiver, Anthropic's public-benefit pledge). What they
+had and we lacked, now in the house style and the critic: the number that matters leads (Brent before
+WTI; never a contract the source says is expiring; the latest-timed price); the dek says what the news
+changes; a pending plan takes a verb of intent («تعتزم», not «تخصص»); an institution's self-praise is
+not reported; the latest result comes before old background; two or three distinct voices, one
+attribution formula at most twice (checked in code: the China story had «في تصريحات أوردتها» four times).
 Headlines carry what is new about a figure (its movement, comparison, record or consequence) when the
 sources give it; a bare level («…تبلغ 48 مليار دولار») only when they give none. «بلومبرغ» has one
 spelling, applied in code.

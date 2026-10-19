@@ -524,6 +524,8 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const natural = "ورغم هذا الصعود، تبقى الأسهم دون ذروتها.\n\nورفعت قطر شحناتها عبر المضيق هذا الشهر، بحسب بيانات تتبع السفن.\n\nلكن هذا التحسن لم يكفِ لتعويض خسائر الربع.";
   check("a real contrast and a time phrase are not bridges", said(flagged({ body: natural }), /بجسر يشير/), false);
   check("a summing-up in abstract nouns is sent back", said(flagged({ body: "وتتباين الاحتمالات التي تواجهها السوق بين مكاسب شركات الطاقة وضغوط التمويل." }), /أسماء مجردة/), true);
+  const relayed = "وقالت شينا يو في تصريحات أوردتها «سي إن بي سي» إن النمو تسارع. وأضاف محلل آخر في تصريحات أوردتها «رويترز» أن الصادرات قادت النمو. ورأت يو في تصريحات أوردتها «بلومبرغ» أن الاستهلاك ضعيف.";
+  check("one attribution formula three times is sent back", said(flagged({ body: relayed }), /صيغة الإسناد نفسها/), true);
   check("remarks never count toward a developed report", substantiveFacts({ facts: [{ job: "news" }, { job: "remark" }, { job: "numbers" }, { job: "remark" }] }), 2);
   check("one spelling of Bloomberg", fixNames("قالت المحللة في «الشرق بلومبرج» لـ«بلومبيرغ»"), "قالت المحللة في «الشرق بلومبرغ» لـ«بلومبرغ»");
 }

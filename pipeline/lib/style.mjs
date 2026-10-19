@@ -440,6 +440,10 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
     // (three stories of 245: the Egypt exports story, a UAE–Germany story, none of them read as a desk wrote them).
     const bridges = bridgeOpenings(body);
     if (bridges.length >= 2) issues.push(`فقرات تبدأ بجسر يشير إلى الفقرة السابقة («${bridges.slice(0, 2).join("…»، «")}…»)؛ ابدأ كل فقرة بفاعلها أو رقمها أو تاريخها، وأعد ترتيب الوقائع بحيث لا تحتاج إلى «إلى جانب ذلك» أو «ولتطوير هذه…» لتتصل.`);
+    // One attribution formula said over and over: the China growth story of 2026-10-19 used «في تصريحات أوردتها» four
+    // times (the only story of 245 with three or more), with one analyst quoted four times through two outlets.
+    const relayed = (`${lede}\n${body}`.match(/في (?:تصريحات|مقابلة|حديث|تعليقات) (?:أوردتها|أوردها|نقلتها|نقلها|مع|لـ|ل«|لشبكة|لوكالة|لصحيفة)/g) ?? []).length;
+    if (relayed >= 3) issues.push(`صيغة الإسناد نفسها ${relayed} مرات («في تصريحات أوردتها…» أو «في مقابلة مع…»)؛ صوتان أو ثلاثة يقولون أشياء مختلفة خير من ستة يتكرر بعضهم، فاجمع أقوال المحلل الواحد، ونوّع صيغة الإسناد مع حفظ مصدر كل تصريح.`);
     // A speaker's exhortations, one per sentence: only the Egypt exports story of 245 has four or more.
     const urged = exhortations(`${lede}\n${body}`);
     if (urged.length >= 4) issues.push(`${urged.length} جمل من الدعوات والتشديد والإشادة («${urged[0].slice(0, 50)}…»)؛ الدعوة العامة ليست خبراً: أبقِ منها ما يحمل قراراً أو رقماً أو موعداً أو التزاماً، واجمع الباقي في جملة واحدة أو احذفه.`);
