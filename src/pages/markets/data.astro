@@ -13,7 +13,13 @@ import { getArticlesBySection } from "@lib/articles";
 import { formatDate, formatTime, timeAgo } from "@lib/format";
 
 const featured = quotes(FEATURED_IDS);
-const groups = grouped();
+// The groups run down newspaper columns in this order (2026-10-19): the Arab markets over the commodities their readers
+// watch (oil, gold), then the bonds, the currencies and the world's indices. Three across, columns break before the
+// bonds and the indices: Arab markets and commodities | bonds and currencies | indices, ending within 174px of each
+// other at 1440. Two across, the browser balances them: Arab markets, commodities and bonds | currencies and indices,
+// within 49-94px (the order that suited three across left 338-383px there).
+const ORDER = ["arab", "commodities", "rates", "fx", "world"];
+const groups = grouped().sort((x, y) => ORDER.indexOf(x.group) - ORDER.indexOf(y.group));
 const news = (await getArticlesBySection("markets")).slice(0, 4);
 const updated = board.updatedAt ? `${formatDate(board.updatedAt)}، ${formatTime(board.updatedAt)}` : "";
 ---
@@ -35,7 +41,7 @@ const updated = board.updatedAt ? `${formatDate(board.updatedAt)}، ${formatTime
 
     <div class="groups">
       {groups.map((g) => (
-        <div class="groups__cell">
+        <div class="groups__cell" data-group={g.group}>
           <MarketBoard variant="group" ids={g.items.map((q) => q.id)} title={g.name} id={g.group} />
         </div>
       ))}
@@ -63,13 +69,17 @@ const updated = board.updatedAt ? `${formatDate(board.updatedAt)}، ${formatTime
   .featured__cell { min-width: 0; padding-inline: var(--col-gap); }
   .featured__cell:first-child { padding-inline-start: 0; }
   .featured__cell:last-child { padding-inline-end: 0; }
-  .featured__cell + .featured__cell { border-inline-start: 1px solid var(--rule); }
-  /* One compact table per group, three across, ruled between. */
-  .groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 0; row-gap: 2rem; margin-top: clamp(1.5rem, 3vw, 2.25rem); }
-  .groups__cell { min-width: 0; padding-inline: var(--col-gap); }
-  .groups__cell:nth-child(3n + 1) { padding-inline-start: 0; }
-  .groups__cell:nth-child(3n) { padding-inline-end: 0; }
-  .groups__cell:not(:nth-child(3n + 1)) { border-inline-start: 1px solid var(--rule); }
+  /* `:not(:first-child)`, not `+`: the sibling selector outranked the narrower screens' resets below, and a phone
+     drew a stray rule at the page's edge beside the third and fifth cards (2026-10-19). */
+  .featured__cell:not(:first-child) { border-inline-start: 1px solid var(--rule); }
+  /* One compact table per group in ruled newspaper columns that balance themselves: in a grid of three across, the
+     Arab markets' two rows stood beside tables of seven over a 290px hole (2026-10-19). */
+  .groups { columns: 3; column-gap: calc(var(--col-gap) * 2); column-rule: 1px solid var(--rule); margin-top: clamp(1.5rem, 3vw, 2.25rem); }
+  .groups__cell { min-width: 0; break-inside: avoid; padding-bottom: 2rem; }
+  .groups__cell:last-child { padding-bottom: 0; }
+  @media (min-width: 1024px) {
+    .groups__cell[data-group="rates"], .groups__cell[data-group="world"] { break-before: column; }
+  }
   .note { margin-top: 1.5rem; font-size: var(--fs-xs); line-height: 1.6; color: var(--ink-3); max-width: var(--measure); }
   .news { margin-top: clamp(2rem, 4vw, 3rem); }
   @media (min-width: 600px) and (max-width: 1023px) {
@@ -78,10 +88,7 @@ const updated = board.updatedAt ? `${formatDate(board.updatedAt)}، ${formatTime
   }
   @media (max-width: 1023px) {
     .featured { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 1rem; }
-    .groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .groups__cell { padding-inline: var(--col-gap) !important; border-inline-start: 0 !important; }
-    .groups__cell:nth-child(odd) { padding-inline-start: 0 !important; }
-    .groups__cell:nth-child(even) { padding-inline-end: 0 !important; border-inline-start: 1px solid var(--rule) !important; }
+    .groups { columns: 2; }
   }
   @media (max-width: 599px) {
     .featured { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -90,7 +97,7 @@ const updated = board.updatedAt ? `${formatDate(board.updatedAt)}، ${formatTime
     .featured__cell:nth-child(even) { padding-inline-end: 0; }
     .featured__cell:nth-child(3), .featured__cell:nth-child(4) { border-inline-start: 0; }
     .featured__cell:nth-child(even) { border-inline-start: 1px solid var(--rule); }
-    .groups { grid-template-columns: 1fr; row-gap: 1.5rem; }
-    .groups__cell { padding-inline: 0 !important; border-inline-start: 0 !important; }
+    .groups { columns: 1; }
+    .groups__cell { padding-bottom: 1.5rem; }
   }
 </style>

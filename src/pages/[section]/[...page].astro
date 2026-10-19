@@ -137,6 +137,13 @@ const topics = first ? topicCounts(await getArticles(), section.id).filter((t) =
   .section-page__beside { border-inline-start: 1px solid var(--rule); padding-inline-start: var(--col-gap); display: grid; }
   .section-page__beside > :global(.card) { padding-block: 0.8rem; border-top: 1px solid var(--rule); }
   .section-page__beside > :global(.card:first-child) { border-top: 0; padding-top: 0.1rem; }
+  /* Beside a lead with a photograph the three stories run as headlines with their thumbnails, as the front's briefs do:
+     with an excerpt each, the list ran 103-248px past the lead and left that much blank paper under it on every news
+     section (827 by 269px on الاقتصاد at 1440, 2026-10-19); without, the two columns end within about 60px. Phones,
+     where the list runs under the lead, keep the excerpts. */
+  @media (min-width: 1024px) {
+    .section-page__top:not(.section-page__top--text) .section-page__beside :global(.card__summary) { display: none; }
+  }
   /* A lead without a photograph: beside the list its column was a headline and a line over half a screen of blank
      paper (الأسواق, 2026-10-19). It now runs across the page at the reading measure, and the next stories stand under
      it in ruled columns, three to a row, as a text-only lead runs on a printed page. */
