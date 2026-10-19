@@ -280,8 +280,9 @@ import Base from "@layouts/Base.astro";
   .search :global(.search__title) { font-family: var(--font-title); font-weight: 700; font-size: var(--t-head); line-height: 1.4; text-decoration: none; }
   .search :global(.search__title:hover) { color: var(--green); }
   .search :global(.search__excerpt) { font-size: var(--n-text); line-height: 1.7; color: var(--ink-2); margin-top: 0.3rem; }
-  /* The passing mentions open under a label in the furniture face, over the section's 3px ink rule. */
-  .search :global(.search__group) { margin-top: 1rem; padding-top: 0.6rem; border-top: 3px solid var(--ink); font-size: var(--fs-sm); font-weight: 700; color: var(--ink-3); }
+  /* The passing mentions open under a label in the furniture face, on a 1px ink rule like the corrections' (the 3px
+     ink rule is kept for page heads and the close of the cover). */
+  .search :global(.search__group) { margin-top: 1rem; padding-top: 0.6rem; border-top: 1px solid var(--ink); font-size: var(--fs-sm); font-weight: 700; color: var(--ink-3); }
   /* «المزيد» is built like the section pages' pager steps. */
   .search__more { display: block; margin-top: 1.25rem; padding: 0.55rem 1.2rem 0.45rem; font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-sm); color: var(--green); background: none; border: 1px solid var(--rule); cursor: pointer; }
   .search__more:hover { border-color: var(--green); }

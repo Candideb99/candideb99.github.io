@@ -296,10 +296,12 @@ const jsonLd = [articleLd, breadcrumbLd];
   }
   /* A rule-bottomed block like the figures, not a box: the site draws rules, never frames. It sits
      under the lede and the figures, set at the text's own size (it was a step smaller than the text). */
-  /* «لماذا يهمّ» closes the story, ruled off from it (the owner, 2026-09-27): a 1px ink rule opens it as it opens the
-     corrections and the related line, and its text sits a step under the body's, so it never reads as a paragraph. */
-  .why { margin: 2.25rem 0 0.5rem; max-width: var(--measure); border-top: 1px solid var(--ink); padding-top: 0.85rem; border-bottom: 1px solid var(--rule); padding-bottom: 1rem; }
-  .why__text { margin: 0; font-family: var(--font-body); font-size: var(--n-text); line-height: 1.85; text-align: justify; text-align-last: start; }
+  /* «لماذا يهمّ» closes the story, ruled off from it (the owner, 2026-09-27). It is the paper's own reading of the news,
+     so it is set at the body's size in ink and marked off by its frame, not by a smaller face: the 1px ink rule that
+     opens the corrections and the related line, its head, and a hairline under it. A step under the body (16px against
+     20px, about 95 letters a line) it read as a footnote under the last paragraph (the critique of 2026-10-19). */
+  .why { margin: 2.5rem 0 0.5rem; max-width: var(--measure); border-top: 1px solid var(--ink); padding-top: 0.85rem; border-bottom: 1px solid var(--rule); padding-bottom: 1.1rem; }
+  .why__text { margin: 0; font-family: var(--font-body); font-size: var(--n-body); line-height: 1.9; color: var(--ink); text-align: justify; text-align-last: start; }
   .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.5rem; }
   /* The correction note: a ruled line under the text, like اقرأ أيضاً, never a box. */
   .corrections { max-width: var(--measure); margin-top: 1.5rem; padding-block: 0.6rem; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); }
