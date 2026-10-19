@@ -28,7 +28,8 @@ const NAMES = {
   wheat: /(?<![؀-ۿ])(?:و|ف|ب|ل)?القمح(?![؀-ۿ])|\bwheat\b/i,
   tasi: /تاسي|السوق السعودية|الأسهم السعودية|البورصة السعودية|\bTASI\b|Saudi (?:stocks|shares|bourse|index)/i,
   egx30: /البورصة المصرية|إيجي إكس|الأسهم المصرية|\bEGX ?30\b|Egyptian (?:stocks|shares|bourse|exchange)/i,
-  spx: /ستاندرد آند بورز|S&P ?500/i,
+  // The index, never the rating agency: «ستاندرد آند بورز تثبّت تصنيف السعودية» is a rating, not a price.
+  spx: /(?:ستاندرد آند بورز|إس آند بي) 500|S&P ?500/i,
   ndq: /ناسداك|\bNasdaq\b/i,
   dji: /داو جونز|\bDow\b/i,
   sx5e: /ستوكس|\bSTOXX\b/i,
@@ -48,19 +49,60 @@ const NAMES = {
 const PRICE_WORDS = /سعر|أسعار|يرتفع|ترتفع|يتراجع|تتراجع|يقفز|تقفز|يهبط|تهبط|ينخفض|تنخفض|يصعد|تصعد|يربح|تربح|يخسر|تخسر|مكاسب|خسائر|خسارة|مستوى|عائد|صرف|يسجل|تسجل|يغلق|تغلق|ينهي|تنهي|\b(?:rise|rises|falls?|slips?|jumps?|drops?|gains?|surges?|tumbles?|climbs?|hits?|price|prices|yields?)\b/i;
 const MARKET_SECTIONS = new Set(["markets", "energy"]);
 
+/**
+ * The market an economic release or a central-bank decision is read in (the owner's go, 2026-10-19, item 3 of the next
+ * steps): Bloomberg and Reuters gave China's third-quarter growth with the yuan and the bond yield; ours had no market at
+ * all. A forecast is not a release and fetches nothing.
+ */
+const MACRO = /الناتج المحلي|الناتج الإجمالي|نمو الاقتصاد|النمو الاقتصادي|الاقتصاد [؀-ۿ]+ (?:ينمو|ينكمش|يتسارع|يتباطأ)|(?<![؀-ۿ])(?:و|ل|ب)?التضخم(?![؀-ۿ])|أسعار المستهلكين|البطالة|الوظائف|مبيعات التجزئة|الإنتاج الصناعي|مديري المشتريات|الميزان التجاري|الفائض التجاري|العجز التجاري|(?<![؀-ۿ])(?:و|ل|ب)?الفائدة(?![؀-ۿ])/;
+const FORECAST = /(?<![؀-ۿ])(?:يتوقع|تتوقع|يتوقعان|تتوقعان|يتوقعون|توقعات|يرجح|ترجح|يرجّح|ترجّح|يُرجّح|تُرجّح|يرجحان|يرجّحان|ترجحان|ترجّحان|يرجحون|يرجّحون)(?![؀-ۿ])/;
+const MARKET_OF = [
+  { place: /الصين|الصيني|بكين|بنك الشعب/, ids: ["sse", "usdcny"] },
+  { place: /مصر|المصري|المصرية/, ids: ["egx30", "usdegp"] },
+  { place: /السعودية|السعودي|ساما/, ids: ["tasi"] },
+  { place: /الأمريكي|الأمريكية|الولايات المتحدة|الفيدرالي/, ids: ["spx", "us10y", "dxy"] },
+  { place: /اليابان|الياباني|اليابانية/, ids: ["n225", "usdjpy"] },
+  { place: /تركيا|التركي|التركية/, ids: ["usdtry"] },
+  { place: /منطقة اليورو|المركزي الأوروبي|ألمانيا|الألماني|الألمانية/, ids: ["sx5e", "eurusd"] },
+  { place: /بريطانيا|البريطاني|البريطانية|بنك إنجلترا/, ids: ["ftse", "gbpusd"] },
+];
+export function macroMarketOf(headline) {
+  if (!MACRO.test(headline) || FORECAST.test(headline)) return [];
+  return MARKET_OF.find((m) => m.place.test(headline))?.ids ?? [];
+}
+
 /** The instruments a story is about: named in its headline, or for a market or energy story in its reports' titles. */
 export function instrumentsOf(story, sources = []) {
   const headline = String(story.headlineHint ?? "");
   const titles = sources.map((s) => s.title ?? "").join(" \n ");
+  const macro = macroMarketOf(headline);
   const priced = MARKET_SECTIONS.has(story.section) || PRICE_WORDS.test(headline);
-  if (!priced) return [];
-  let ids = Object.keys(NAMES).filter((id) => NAMES[id].test(headline));
+  if (!priced && !macro.length) return [];
+  let ids = priced ? Object.keys(NAMES).filter((id) => NAMES[id].test(headline)) : [];
+  if (!ids.length && macro.length) ids = macro;
   if (!ids.length && MARKET_SECTIONS.has(story.section) && PRICE_WORDS.test(titles)) ids = Object.keys(NAMES).filter((id) => NAMES[id].test(titles)).slice(0, 2);
   // A story about the long bond is about the thirty-year yield.
   if (ids.includes("us10y") && /30 عاماً|30 سنة|ثلاثين (?:عاماً|سنة)|30-year/i.test(headline)) ids = ids.map((id) => (id === "us10y" ? "us30y" : id));
   // Oil is reported with both benchmarks, Brent first: the Gulf's crude is priced off it.
   if (ids.includes("brent") || ids.includes("wti")) ids = ["brent", "wti", ...ids.filter((id) => id !== "brent" && id !== "wti")];
   return ids.slice(0, 3).map((id) => INSTRUMENTS.find((i) => i.id === id)).filter(Boolean);
+}
+
+/**
+ * A routine move told twice: «برنت يقفز فوق 109 دولارات مع تعطل صادرات ينبع» ran four hours after «أرامكو تعلّق
+ * تحميلات ينبع… برنت يرتفع 3%» (15 September). The newest of our price stories of the last `hours` (eight: the duplicate came four hours after, a real development twelve) on the same
+ * instrument, or null; a new record or a reversal named in the headline is news again.
+ */
+const NEWS_AGAIN = /أعلى مستوى|أدنى مستوى|قياسي|قياسية|منذ (?:يناير|فبراير|مارس|أبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر|\d)|يعكس اتجاه|يمحو|يبدد/;
+export function repeatsInstrument(story, existing = [], { now = Date.now(), hours = 8 } = {}) {
+  if (!MARKET_SECTIONS.has(story.section) || NEWS_AGAIN.test(String(story.headlineHint ?? ""))) return null;
+  const lead = instrumentsOf({ headlineHint: story.headlineHint, section: story.section })[0];
+  if (!lead) return null;
+  const earlier = existing
+    .filter((a) => a.kind === "news" && MARKET_SECTIONS.has(a.section) && a.publishedAt && now - new Date(a.publishedAt) < hours * 3600000)
+    .filter((a) => instrumentsOf({ headlineHint: a.title, section: a.section })[0]?.id === lead.id)
+    .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))[0];
+  return earlier ? earlier.title : null;
 }
 
 const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];

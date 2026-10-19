@@ -17,12 +17,12 @@ import { lessonRuleOk, loadLessons } from "../pipeline/lib/lessons.mjs";
 import { writeJsonAtomic } from "../pipeline/lib/util.mjs";
 import { loadSnapshot, saveSnapshot } from "../pipeline/lib/snapshots.mjs";
 import { loadSources, settleDrift, verifyStory } from "../pipeline/lib/factcheck.mjs";
-import { instrumentsOf, marketData } from "../pipeline/lib/context.mjs";
+import { instrumentsOf, marketData, repeatsInstrument } from "../pipeline/lib/context.mjs";
 import { independentOutletCount } from "../pipeline/lib/news-evidence.mjs";
 import { boxFacts } from "../pipeline/lib/keyfacts.mjs";
 import { deskNotes, newsDepthBrief, newsFloor, normalizeDraft, prioritizeContext, substantiveFacts, validateDraft, validateWhyBasis } from "../pipeline/lib/write.mjs";
 import { NEWS_DEPTH, NEWS_FLOOR, SHORT_WORDS } from "../pipeline/lib/editorial.mjs";
-import { arabicEdition, bestPdf, editionKey, reportExcerpts } from "../pipeline/lib/reports.mjs";
+import { arabicEdition, bestPdf, editionKey, previousEdition, releaseDocument, releaseStory, reportExcerpts } from "../pipeline/lib/reports.mjs";
 import { mergeNewsRefresh, serializeArticle } from "../pipeline/lib/article.mjs";
 import { cleanTags } from "../pipeline/lib/tags.mjs";
 import { groundedRegions } from "../pipeline/lib/regions.mjs";
@@ -508,6 +508,18 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const pages = ["Cover", "Executive summary\nGrowth in the region is projected at 2.1 percent in 2026 while Gulf output fell sharply in the second quarter of the year.", "In Germany, output is expected to grow by 0.4 percent in 2026, held back by weak industry and exports to China and the United States.\nIn Egypt, growth is projected at 4.6 percent in fiscal 2026, while Saudi Arabia's economy contracts by 3.0 percent as oil output falls."];
   const { summary, countries } = reportExcerpts(pages, { countryChars: 160 });
   check("the summary starts at the executive summary", summary.startsWith("[p.2] Executive summary"), true);
+  // Official releases (2026-10-19): a quarter is dated by its last month, and each edition reads its own month's PDF
+  // from a page that lists every month's side by side.
+  const q2 = editionKey("GDP and National Accounts Q2/2026");
+  check("a quarter is dated by its last month and named in Arabic", [q2?.key, arabicEdition(q2)], [202606, "الربع الثاني من 2026"]);
+  const sep0 = editionKey("Consumer Price Index – September 2026");
+  check("the period before a release: last month, or last quarter across the year", [previousEdition({ key: 202601 })?.key, previousEdition({ key: 202603, quarter: 1 })?.label], [202512, "Q4 2025"]);
+  check("a data release is written as a short story", releaseStory({ headline: "التضخم في السعودية", nameEn: "Consumer Price Index", publisherEn: "GASTAT" }, sep0).format, "short");
+  const listing = `<a href="/documents/1/CPI+Sep+2026-EN.pdf/a?t=1">CPI</a><a href="/documents/1/CPI+Tables-Sep+2026-AR-EN.xlsx/b">Tables</a><a href="/documents/1/CPI+Aug+2026-EN.pdf/c">CPI</a>`;
+  const sep = editionKey("Consumer Price Index – September 2026");
+  const aug = editionKey("Consumer Price Index – August 2026");
+  const cpi = { document: "CPI\\W*{mon}\\W*{yyyy}\\W*EN" };
+  check("each month reads its own release, never a neighbour's or a table", [releaseDocument(listing, "https://www.stats.gov.sa/en/x", cpi, sep), releaseDocument(listing, "https://www.stats.gov.sa/en/x", cpi, aug), releaseDocument(listing, "https://www.stats.gov.sa/en/x", cpi, editionKey("Consumer Price Index – October 2026"))], ["https://www.stats.gov.sa/documents/1/CPI+Sep+2026-EN.pdf/a?t=1", "https://www.stats.gov.sa/documents/1/CPI+Aug+2026-EN.pdf/c", null]);
   check("the Arab economies' passage comes before the major economies' when room is short", [countries.includes("Egypt"), countries.includes("Germany")], [true, false]);
 }
 
@@ -541,6 +553,14 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("a bond holding is not a yield story", ids("الإمارات ترفع حيازتها من سندات الخزانة الأمريكية إلى 116.1 مليار دولار"), []);
   check("an investment counted in euros fetches no exchange rate", ids("الإمارات تستثمر 40 مليار يورو في ألمانيا", "economy"), []);
   check("a thirty-year yield story reads the thirty-year bond", ids("عائد السندات الأمريكية لأجل 30 عاماً يقفز إلى أعلى مستوى منذ 2002"), ["us30y"]);
+  check("a rating agency is not the S&P 500", ids("«ستاندرد آند بورز» تثبّت تصنيف السعودية الائتماني مع نظرة مستقرة"), []);
+  check("a data release is read with its country's market", [ids("نمو الاقتصاد الصيني يتسارع إلى 4.5% في الربع الثالث", "economy"), ids("المركزي المصري يثبّت الفائدة عند 19% و20%", "economy")], [["sse", "usdcny"], ["egx30", "usdegp"]]);
+  check("a forecast is not a release", ids("«غولدمان ساكس» و«جي بي مورغان» يرجّحان رفع الفائدة الأمريكية هذا الأسبوع", "economy"), []);
+  const at = (h) => new Date(Date.parse("2026-09-15T12:00:00Z") + h * 3600000).toISOString();
+  const ran = [{ kind: "news", section: "energy", title: "أرامكو تعلّق تحميلات ينبع بعد إغلاق خط الشرق-الغرب.. برنت يرتفع 3%", publishedAt: at(0) }];
+  const again = (headlineHint, h) => repeatsInstrument({ headlineHint, section: "energy" }, ran, { now: Date.parse(at(h)) });
+  check("the same instrument's move twice in four hours is held", Boolean(again("برنت يقفز فوق 109 دولارات مع تعطل صادرات ينبع", 4)), true);
+  check("twelve hours on, or with a record, it is news again", [again("برنت يقترب من 100 دولار بعد هجمات حوثية", 12), again("برنت يصعد إلى أعلى مستوى منذ مايو", 2)], [null, null]);
   const now = Date.parse("2026-10-19T10:35:00Z");
   const quote = async (symbol) => ({ price: symbol === "BZ=F" ? 108.63 : 98.36, prev: symbol === "BZ=F" ? 109.86 : 99.02, time: "2026-10-19T10:25:00Z", history: [] });
   const market = await marketData({ story: { headlineHint: "برنت يتراجع بعد إعفاء روسيا", section: "energy" }, now, fetchQuote: quote });

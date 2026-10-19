@@ -38,8 +38,11 @@ export function editionKey(label, defaultMonth = 6) {
   const word = words.find((w) => MONTHS[w]);
   // An address dates an edition by number («2025 06 19» from …/2025/06/19/…) when no month is named.
   const numeric = Number(String(label).match(new RegExp(`(?<!\\d)${year}\\s+(0[1-9]|1[0-2])(?!\\d)`))?.[1] ?? 0);
-  const month = word ? MONTHS[word] : numeric || defaultMonth;
-  return { key: year * 100 + month, year, month, season: word && SEASONS[word] ? SEASONS[word] : null, named: Boolean(word) };
+  // A quarter («GDP and National Accounts Q2/2026», «Q4,2023») is dated by its last month (2026-10-19, the statistics
+  // releases): Q2 is June.
+  const quarter = word ? 0 : Number(String(label).match(/(?<![A-Za-z])Q([1-4])(?!\d)/i)?.[1] ?? 0);
+  const month = word ? MONTHS[word] : numeric || (quarter ? quarter * 3 : defaultMonth);
+  return { key: year * 100 + month, year, month, season: word && SEASONS[word] ? SEASONS[word] : null, named: Boolean(word), quarter: quarter || null };
 }
 
 /** The current month as a key, in UTC. */
@@ -125,9 +128,11 @@ export async function latestEdition(report, { now = new Date(), log = () => {} }
 }
 
 /** The edition's label in Arabic for the working headline: «أكتوبر 2026» or «2026». */
+const AR_QUARTERS = ["", "الربع الأول", "الربع الثاني", "الربع الثالث", "الربع الرابع"];
 export function arabicEdition(edition) {
   const y = Math.floor((edition?.key ?? 0) / 100);
   if (edition?.season) return `${edition.season} ${y}`;
+  if (edition?.quarter) return `${AR_QUARTERS[edition.quarter]} من ${y}`;
   return edition?.named ? `${AR_MONTHS[edition.key % 100]} ${y}` : String(y);
 }
 
@@ -254,6 +259,40 @@ export function bestPdf(html, base, report, edition = null) {
   return best && best.score >= 4 ? best.url : null;
 }
 
+/**
+ * An official release's own document for one edition (2026-10-19): a statistics page lists every month's PDF side by
+ * side («CPI Sep 2026-EN.pdf», «CPI Aug 2026-EN.pdf», «ITR Jul2026 EN.pdf»), so the edition picks its file by the
+ * registry's `document` pattern, filled with the edition's month ({mon} «Sep», {month} «September»), quarter ({q}) and
+ * year ({yyyy}), read against the link's decoded address. Null when the edition has no such file yet.
+ */
+export function releaseDocument(html, base, report, edition) {
+  if (!report.document || !edition?.key) return null;
+  const year = Math.floor(edition.key / 100);
+  const month = edition.key % 100;
+  const full = MONTH_NAMES[month] ?? "";
+  const pattern = report.document
+    .replaceAll("{mon}", full.slice(0, 3))
+    .replaceAll("{month}", full)
+    .replaceAll("{q}", String(edition.quarter ?? Math.ceil(month / 3)))
+    .replaceAll("{yyyy}", String(year));
+  const re = new RegExp(pattern, "i");
+  const { document } = parseHTML(html);
+  for (const a of document.querySelectorAll("a[href]")) {
+    let url;
+    try {
+      url = new URL(a.getAttribute("href"), base).href;
+    } catch {
+      continue;
+    }
+    let address = url;
+    try {
+      address = decodeURIComponent(url.replace(/\+/g, " "));
+    } catch {}
+    if (/\.pdf/i.test(address) && re.test(address)) return url;
+  }
+  return null;
+}
+
 /** The publisher's own press release for an edition, linked from its page and on its own site, or null. */
 export function pressRelease(html, base, edition = null) {
   const { document } = parseHTML(html);
@@ -281,6 +320,7 @@ export function pressRelease(html, base, edition = null) {
  * and forecasts attributed to it. Returns [] when nothing readable was found.
  */
 export async function readEdition(report, edition, { log = () => {} } = {}) {
+  if (report.kind === "release") return readRelease(report, edition, { log });
   const sources = [];
   const name = report.publisher;
   const nameEn = report.publisherEn;
@@ -313,6 +353,64 @@ export async function readEdition(report, edition, { log = () => {} } = {}) {
   if (release && release.text.length >= 400) sources.push({ ...common, title: `${report.nameEn} — ${edition.label}: press release`, url: release.url, text: release.text });
   log(`report ${report.id}: ${edition.label} read (${summary.length} chars of summary${pdfUrl ? `, PDF ${pages ? `${pages.length} pages` : "unread"}` : ", no PDF"}, ${excerpts.countries.length} chars on the economies)`);
   return { sources, pdfUrl };
+}
+
+/**
+ * An official statistics release (`kind: "release"` in the registry; the owner's go of 2026-10-19 for reporting from
+ * official data): the edition's own PDF, whole up to a story's worth, as one primary institutional source. The listing
+ * page is never a source (it is the list of every month's titles); without the edition's document there is nothing to
+ * write from, and the edition is tried again the next day.
+ */
+async function readRelease(report, edition, { log = () => {} } = {}) {
+  const html = await fetchHtml(edition.url).catch(() => ({ ok: false }));
+  const pdfUrl = html.ok ? releaseDocument(html.html, html.url, report, edition) : null;
+  const pages = pdfUrl ? await pdfPages(pdfUrl, log) : null;
+  const text = (pages ?? []).map((p, i) => `[p.${i + 1}] ${p}`).join("\n").slice(0, 12000);
+  log(`release ${report.id}: ${edition.label} ${pdfUrl ? `read (${pages ? `${pages.length} pages, ${text.length} chars` : "PDF unread"})` : "has no document yet"}`);
+  if (text.length < 400) return { sources: [], pdfUrl };
+  const common = { sourceName: report.publisher, sourceNameEn: report.publisherEn, lang: "en", kind: "official", reliability: 3, publishedAt: null, summary: "" };
+  const sources = [{ ...common, title: `${report.nameEn} — ${edition.label}`, url: pdfUrl, text }];
+  // The previous period's release, from the same page, for the comparison a reader asks first: did inflation rise or
+  // fall? The first test of September's Saudi prices (2026-10-19) gave 1.9% with no word on August, and filled the
+  // floor with every minor category and the method.
+  const previous = previousEdition(edition);
+  const prevUrl = previous && html.ok ? releaseDocument(html.html, html.url, report, previous) : null;
+  const prevPages = prevUrl ? await pdfPages(prevUrl, log) : null;
+  const prevText = (prevPages ?? []).map((p, i) => `[p.${i + 1}] ${p}`).join("\n").slice(0, 4000);
+  if (prevText.length >= 400) sources.push({ ...common, title: `${report.nameEn} — the previous release (${previous.label})`, url: prevUrl, text: prevText });
+  log(`release ${report.id}: previous release ${previous?.label ?? "?"} ${prevText.length >= 400 ? "read" : "not found"}`);
+  return { sources, pdfUrl };
+}
+
+/** The period before an edition: the month before, or the quarter before when the edition is a quarter. */
+export function previousEdition(edition) {
+  if (!edition?.key) return null;
+  const year = Math.floor(edition.key / 100);
+  if (edition.quarter) {
+    const q = edition.quarter === 1 ? 4 : edition.quarter - 1;
+    const y = edition.quarter === 1 ? year - 1 : year;
+    return { key: y * 100 + q * 3, quarter: q, label: `Q${q} ${y}` };
+  }
+  const month = edition.key % 100;
+  const m = month === 1 ? 12 : month - 1;
+  const y = month === 1 ? year - 1 : year;
+  return { key: y * 100 + m, quarter: null, label: `${MONTH_NAMES[m]} ${y}` };
+}
+
+/** The editor's brief for an official release: its headline figure and the change, then what drove it, nothing padded. */
+export function releaseStory(report, edition) {
+  return {
+    ids: [],
+    report: report.id,
+    section: report.section,
+    importance: report.importance ?? 7,
+    regions: report.regions ?? [],
+    headlineHint: `${report.headline} (${arabicEdition(edition)})`,
+    // A data release is told as the wires tell it, in a short story (the owner, 2026-10-19, of a long compiled piece:
+    // "extremely boring to read and i lost concentration").
+    format: "short",
+    angle: `AN OFFICIAL DATA RELEASE: ${report.publisherEn}'s ${report.nameEn} for ${edition.label}, read from the release itself, a primary source. ${report.lead ?? "Lead with the release's headline figure and its change from the previous period, as the release states them."} The previous period's figure comes from the previous release supplied beside it: say plainly whether the figure rose, fell or held. Then the two or three components that drove it most, with their own figures. Leave out the minor components, the full list of categories and the methodology: a reader wants the figure, its direction and its cause. Every figure as the release states it, with its period and unit, attributed to the authority («بحسب الهيئة العامة للإحصاء»).`,
+  };
 }
 
 /** The editor's brief for a report story: the Arab world first, all of it, then the major economies the report covers. */
