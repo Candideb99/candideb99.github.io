@@ -119,6 +119,22 @@
       "at": "2026-10-19T11:35:05.768Z",
       "outcome": "published saudi-inflation-rises-september-2026-224823",
       "tries": 0
+    },
+    "sa-trade": {
+      "edition": 202608,
+      "label": "International trade in goods for Saudi Arabia in August 2026",
+      "url": "https://www.stats.gov.sa/en/statistics-tabs?tab=436312&category=123481#",
+      "at": "2026-10-19T15:42:47.425Z",
+      "outcome": "starting point",
+      "tries": 0
+    },
+    "sa-gdp": {
+      "edition": 202606,
+      "label": "GDP and National Accounts Q2/2026",
+      "url": "https://www.stats.gov.sa/en/statistics-tabs?tab=436312&category=120038#",
+      "at": "2026-10-19T15:42:48.042Z",
+      "outcome": "starting point",
+      "tries": 0
     }
   }
 }
