@@ -25,7 +25,7 @@ import { fetchFeed } from "./lib/feeds.mjs";
 import { extractArticle } from "./lib/extract.mjs";
 import { collectNewsEvidence, eventSourcesOf, independentOutletCount } from "./lib/news-evidence.mjs";
 import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectFeatureTopic, selectPaper, selectStories } from "./lib/select.mjs";
-import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, newsFloor, reviseArticle, writeAnalysis, writeArticle, writeExplainer, writeFeature, writePaperReading, writeWeekly } from "./lib/write.mjs";
+import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, newsFloor, reviseArticle, substantiveFacts, writeAnalysis, writeArticle, writeExplainer, writeFeature, writePaperReading, writeWeekly } from "./lib/write.mjs";
 import { NEWS_FLOOR, NEWS_MIN_FACTS, SHORT_DAILY_CAP, SHORT_WORDS } from "./lib/editorial.mjs";
 import { critique, programmaticChecks } from "./lib/verify.mjs";
 import { copyEdit } from "./lib/copydesk.mjs";
@@ -384,17 +384,19 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   // the cap, or for a refresh, it is not written and its items take the short mark, so the event is tried again when
   // more outlets have reported it.
   let short = false;
-  if (notes && notes.facts.length < NEWS_MIN_FACTS) {
+  // Remarks (calls, emphasis, praise) are kept for the writer but never count toward a developed report.
+  const substantive = substantiveFacts(notes);
+  if (notes && substantive < NEWS_MIN_FACTS) {
     const shortToday = existing.filter((a) => a.kind === "news" && a.format === "short" && hoursSince(a.publishedAt) < 24).length + SHORT_PUBLISHED;
     if (refresh || shortToday >= SHORT_DAILY_CAP) {
-      entry.outcome = `skipped: too little material for a developed report (${notes.facts.length} checked facts, ${NEWS_MIN_FACTS} needed)${refresh ? "" : `; ${SHORT_DAILY_CAP} short stories already in 24 hours`}`;
+      entry.outcome = `skipped: too little material for a developed report (${substantive} substantive facts (remarks not counted), ${NEWS_MIN_FACTS} needed)${refresh ? "" : `; ${SHORT_DAILY_CAP} short stories already in 24 hours`}`;
       report.push(entry);
-      log(`skip "${story.headlineHint}": ${notes.facts.length} checked facts, fewer than ${NEWS_MIN_FACTS}; items marked for one retry`);
+      log(`skip "${story.headlineHint}": ${substantive} substantive facts (remarks not counted), fewer than ${NEWS_MIN_FACTS}; items marked for one retry`);
       return { rejected: true, items };
     }
     short = true;
     entry.format = "short";
-    log(`short story: "${story.headlineHint}" has ${notes.facts.length} checked facts, fewer than ${NEWS_MIN_FACTS} (${shortToday + 1} of ${SHORT_DAILY_CAP} short stories in 24 hours)`);
+    log(`short story: "${story.headlineHint}" has ${substantive} substantive facts (remarks not counted), fewer than ${NEWS_MIN_FACTS} (${shortToday + 1} of ${SHORT_DAILY_CAP} short stories in 24 hours)`);
   }
   let { draft, model: writerModel } = await writeArticle({ story, sources, notes, log, lessons, short });
   // The writer's own draft, before the desk and the critic touch it: what a private pair compares.

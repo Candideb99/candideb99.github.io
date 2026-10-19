@@ -197,6 +197,25 @@ needs a review of its construction and rhythm. The checker now includes these pr
 openers in its warning; it does not ban conjunctions or require a quota of alternatives. Definitions
 may begin with their subject, comparisons with their facts, while each speaker remains identified.
 
+**What still read as a machine (owner, 2026-10-19: "is the arabic ... robotic and scream ai? i want ...
+financial times level").** The grammar was sound; four habits in how stories were built gave the
+machine away, and each is now cut by the writer, the desk notes, the copy desk and the critic, and
+checked in `style.mjs` (calibrated on 245 published news stories; 3 are sent back, 4 more warned):
+- *What the sources do not say.* «ولم تتضمن تصريحاته المنشورة مقارنة… لكنه لا يكشف وحده اتجاه نموها».
+  A reporter finds the missing figure or says nothing. The house style itself had asked for it ("if a
+  figure is missing, say the source did not disclose it"); that line is gone. The wires' one clause about
+  a material term the actor withheld («لم تكشف الشركة قيمة الصفقة») stays.
+- *A speech told call by call.* «ودعا… وشدد… وأكد أهمية… وأشاد…». Desk notes now tag a speaker's general
+  remarks `remark` (two at most reach the writer) and they do not count toward `NEWS_MIN_FACTS`, so an
+  event made of remarks runs as a short story instead of being stretched to the 300-word floor. Four
+  exhortation sentences in one story send it back.
+- *A sentence that sums up in abstract nouns.* «وتتباين الاحتمالات التي تواجهها السوق بين…»: cut.
+- *Paragraphs bridged to the one before.* «ولتطوير هذه الحلول، …»، «إلى جانب الأدوات التقنية، …». Two
+  in a story send it back; one, a real contrast («ورغم هذا الصعود») or a time phrase («هذا الشهر») passes.
+Headlines carry what is new about a figure (its movement, comparison, record or consequence) when the
+sources give it; a bare level («…تبلغ 48 مليار دولار») only when they give none. «بلومبرغ» has one
+spelling, applied in code.
+
 An owner-selected news article can be re-reported through `pipeline/run.mjs --refresh=<slug>
 --refresh-note=<Arabic note>`. It faces the existing gate and factual check, keeps its address,
 original publication date, picture and previous correction history. Its reason is recorded in

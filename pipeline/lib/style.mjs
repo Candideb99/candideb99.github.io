@@ -92,7 +92,63 @@ export const BANNED = [
   // dates the way a database writes them
   { re: /\b20\d\d-\d\d-\d\d\b/g, fix: "اكتب التاريخ كما تكتبه الصحف (اليوم أو الشهر)، لا 2026-09-19", hard: true },
   { re: /(?<![؀-ۿ])(?:و|ف)?بتاريخ(?![؀-ۿ])/g, fix: "اليوم أو الشهر مباشرة («الجمعة»، «في 19 سبتمبر»)", hard: true },
+  // --- the owner, 2026-10-19: "is the arabic language used natural or robotic and scream ai? i want ... financial
+  // times level". Read beside the day's stories: a sentence that sums up in abstract nouns and adds no fact
+  // («وتتباين الاحتمالات التي تواجهها السوق بين…»), and an English intensifier carried into reported speech. ---
+  { re: /(?<![؀-ۿ])(?:و|ف)?(?:تتباين|تتعدد|تتداخل|تتشابك|تتضافر|تتقاطع|تتنوع)\s+(?:ال)?(?:احتمالات|عوامل|سيناريوهات|تحديات|فرص|ضغوط|مخاوف|رهانات|اعتبارات|حسابات|قراءات|مسارات)(?![؀-ۿ])/g, fix: "جملة تلخّص بأسماء مجردة ولا تضيف واقعة؛ احذفها أو اذكر الواقعة نفسها (من يربح، ومن يتضرر، وبكم)", hard: true },
+  { re: /(?:يطرح|تطرح|يثير|تثير)\s+(?:ال)?(?:تساؤلات|أسئلة|علامات استفهام)(?![؀-ۿ])/g, fix: "حشو صحفي؛ إن طرح أحدٌ السؤال فسمّه، وإلا احذف الجملة", hard: false },
+  { re: /(?<![؀-ۿ])(?:لا|لن|لم) [؀-ۿ]+(?: [؀-ۿ]+){0,4} أبداً(?![؀-ۿ])/g, fix: "«أبداً» توكيد إنجليزي (in no way, at all) في كلام منقول؛ النفي وحده يكفي", hard: false },
 ];
+
+/**
+ * A story that tells the reader what its sources do not say. The Egypt exports story of 2026-10-19 spent a paragraph
+ * on it («ولم تتضمن تصريحاته المنشورة مقارنة… لذلك يبيّن الرقم… لكنه لا يكشف وحده اتجاه نموها»), the clearest sign
+ * of a machine the owner was shown: a reporter finds the missing figure or says nothing. The house style itself had
+ * asked for it ("if a figure is missing, say the source did not disclose it"). What stays is the wires' one clause
+ * about a material term the ACTOR withheld («لم تكشف الشركة قيمة الصفقة»): its subject is the company, not a document.
+ */
+const ABSENCE = [
+  /(?<![؀-ۿ])(?:و|ف)?(?:لم|لا) (?:تتضمن|يتضمن|تتضمّن|يتضمّن|تذكر|يذكر|تحدد|يحدد|توضح|يوضح|تكشف|يكشف|تقدّم|يقدّم|تقدم|يقدم|تتطرق|يتطرق|تشر|يشر|تُشر|يُشر|تورد|يورد|تتناول|يتناول|تفصّل|يفصّل|تفصل|يفصل|تعرض|يعرض|تتضمنها|يحمل|تحمل)\s+(?:[؀-ۿ]+\s+)?(?:تصريحات|التصريحات|البيان|بيانه|بيانها|بيان|التقرير|تقرير|التقارير|المصادر|المصدر|ما نُشر|ما نشر|الأرقام المنشورة|المعلومات المنشورة|الإعلان|إعلان|الوثيقة|الرواية|الملخص|المادة)/,
+  /(?<![؀-ۿ])(?:لا|لن) (?:يكشف|تكشف|يبيّن|يبين|تبيّن|تبين|يوضح|توضح|يحسم|تحسم|يحدد|تحدد|يقول|تقول)(?: [؀-ۿ]+){0,2} (?:وحده|وحدها|بمفرده|بمفردها)(?![؀-ۿ])/,
+  /(?<![؀-ۿ])(?:وحده|وحدها|بمفرده|بمفردها) (?:لا|لن) (?:يكشف|تكشف|يبيّن|يبين|تبيّن|تبين|يوضح|توضح|يحسم|تحسم|يحدد|تحدد|يقول|تقول)(?![؀-ۿ])/,
+];
+export function absenceNotes(text) {
+  return sentencesOf(text).filter((s) => ABSENCE.some((re) => re.test(s)));
+}
+
+/**
+ * A paragraph that opens by pointing back at the one before («ولتطوير هذه الحلول، …»، «إلى جانب الأدوات التقنية، …»،
+ * «ووضع الوزير ذلك في تصور أوسع»): the bridge a model builds between its notes, which a desk does not write. A
+ * paragraph that opens with its own actor, figure or date needs no bridge. Time phrases («هذا العام») are not one.
+ */
+const BRIDGE_START = /^(?:و|ف)?(?:إلى جانب|فضلاً عن|بالتوازي مع|بعيداً عن|بالإضافة إلى|علاوة على|ومن هنا|من هنا|وانطلاقاً من|انطلاقاً من|وفي ضوء|في ضوء)(?![؀-ۿ])/;
+const BACK_POINTER = /(?<![؀-ۿ])(?:هذه|هذا|ذلك|تلك|هذين|هاتين|هؤلاء)(?![؀-ۿ])(?!\s+(?:العام|الشهر|الأسبوع|الربع|السنة|العامين|اليوم|الأسبوعين|الشهرين|الصيف|الشتاء|الخريف|الربيع|المرحلة|الفترة)(?![؀-ۿ]))/;
+/** A real contrast with what came before («ورغم هذا الصعود»، «لكن هذا التحسن») is Arabic, not a bridge. */
+const CONTRAST_START = /^(?:و|ف)?(?:رغم|برغم|لكن|ولكن|غير أن|إلا أن|بيد أن)(?![؀-ۿ])/;
+export function bridgeOpenings(body) {
+  return String(body ?? "")
+    .split(/\n\s*\n/)
+    .map((p) => p.trim())
+    .filter((p) => p && !p.startsWith("#") && !CONTRAST_START.test(p))
+    .filter((p) => {
+      if (BRIDGE_START.test(p)) return true;
+      // The pointer must sit in the opening (six words, before the first comma); the words after it decide whether
+      // it is a time phrase («عبر المضيق هذا الشهر»).
+      const words = p.split(/[،,؛.:]/)[0].split(/\s+/);
+      const m = words.slice(0, 9).join(" ").match(BACK_POINTER);
+      return Boolean(m) && m.index < words.slice(0, 6).join(" ").length;
+    })
+    .map((p) => p.split(/\s+/).slice(0, 7).join(" "));
+}
+
+/**
+ * A speaker's exhortations told one by one («ودعا… وشدد… وأكد أهمية… وأشاد…»): how a thin event was stretched to
+ * the news floor (the Egypt exports story, 2026-10-19: a minister's general remarks at a bell-ringing filled 400 words).
+ */
+const EXHORTATION = /(?<![؀-ۿ])(?:و|ف)?(?:دعا|دعت|يدعو|تدعو|شدد|شددت|شدّد|شدّدت|يشدد|تشدد|أشاد|أشادت|يشيد|تشيد|حث|حثت|حثّ|حثّت|يحث|تحث|ناشد|ناشدت)(?![؀-ۿ])|(?:أكد|أكدت|أكّد|أكّدت|يؤكد|تؤكد)\s+(?:على\s+)?(?:أهمية|ضرورة|حرص|التزام)/;
+export function exhortations(text) {
+  return sentencesOf(text).filter((s) => EXHORTATION.test(s));
+}
 
 /**
  * Arab news outlets as a story names them between «». The desks do not cite one another for public facts, so
@@ -368,6 +424,25 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
     const STITCH = /(?<![ء-ٟٮ-ۓۺ-ۿ])(?:و|ف)?(?:في تطور منفصل|في سياق منفصل|في سياق آخر|في مجال آخر|على صعيد آخر|على صعيد منفصل|في شأن آخر|في خبر آخر|في تطور آخر|في أخبار أخرى|في ملف آخر|في التاريخ نفسه)(?![ء-ٟٮ-ۓۺ-ۿ])/;
     const stitched = sentencesOf(`${lede}\n${body}`).find((s) => STITCH.test(s));
     if (stitched) issues.push(`خبر ثانٍ ملحق بالخبر («${stitched.slice(0, 60)}…»)؛ الخبر حدث واحد: احذف الحدث المنفصل من المتن، ومن الوصف والأرقام و«لماذا يهمّ» إن ظهر فيها، فله خبره المستقل.`);
+  }
+
+  // --- the owner, 2026-10-19 ("is the arabic ... robotic and scream ai?"): three habits of a machine read in the day's
+  // stories, each calibrated on the 245 published news stories before it was switched on. ---
+  if (news) {
+    // What the sources do not say: four published stories; the one that explains what a figure "does not reveal on its
+    // own" is never a reporter's sentence. A single clause about what a document left out is the wires' form when the
+    // term is material, so it is a warning (write it with the actor: «لم تكشف الحكومة حجم موارد الصندوق»).
+    const absent = absenceNotes(`${lede}\n${body}`);
+    const verdict = absent.find((s) => !ABSENCE[0].test(s));
+    if (verdict || absent.length >= 2) issues.push(`المقال يخبر القارئ بما لم تقله مصادره («${(verdict ?? absent[0]).slice(0, 70)}…»)؛ المحرر يأتي بالمقارنة الناقصة من المصادر أو يسكت عنها، ولا يشرح ما «لا يكشفه الرقم وحده». احذف الجملة، وإن كان البند المحجوب جوهرياً (قيمة صفقة، سعر) فاذكره في عبارة واحدة فاعلها الجهة: «لم تكشف الشركة قيمة الصفقة».`);
+    else if (absent.length) warnings.push(`جملة عمّا لم تذكره الوثيقة أو التقارير («${absent[0].slice(0, 60)}…»)؛ أبقِها فقط إن كان البند المحجوب جوهرياً، واجعل فاعلها الجهة لا الوثيقة («لم تكشف الشركة…»)، وإلا فاحذفها.`);
+    // Paragraphs joined by pointing back: one is Arabic, two or more is the model stitching its notes together
+    // (three stories of 245: the Egypt exports story, a UAE–Germany story, none of them read as a desk wrote them).
+    const bridges = bridgeOpenings(body);
+    if (bridges.length >= 2) issues.push(`فقرات تبدأ بجسر يشير إلى الفقرة السابقة («${bridges.slice(0, 2).join("…»، «")}…»)؛ ابدأ كل فقرة بفاعلها أو رقمها أو تاريخها، وأعد ترتيب الوقائع بحيث لا تحتاج إلى «إلى جانب ذلك» أو «ولتطوير هذه…» لتتصل.`);
+    // A speaker's exhortations, one per sentence: only the Egypt exports story of 245 has four or more.
+    const urged = exhortations(`${lede}\n${body}`);
+    if (urged.length >= 4) issues.push(`${urged.length} جمل من الدعوات والتشديد والإشادة («${urged[0].slice(0, 50)}…»)؛ الدعوة العامة ليست خبراً: أبقِ منها ما يحمل قراراً أو رقماً أو موعداً أو التزاماً، واجمع الباقي في جملة واحدة أو احذفه.`);
   }
 
   // A key fact names what is measured, where and when; a weekday, a date or a source in brackets is not a fact.

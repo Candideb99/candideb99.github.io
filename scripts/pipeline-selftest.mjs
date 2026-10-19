@@ -18,14 +18,14 @@ import { writeJsonAtomic } from "../pipeline/lib/util.mjs";
 import { loadSnapshot, saveSnapshot } from "../pipeline/lib/snapshots.mjs";
 import { loadSources, settleDrift, verifyStory } from "../pipeline/lib/factcheck.mjs";
 import { boxFacts } from "../pipeline/lib/keyfacts.mjs";
-import { deskNotes, newsDepthBrief, newsFloor, normalizeDraft, prioritizeContext, validateDraft, validateWhyBasis } from "../pipeline/lib/write.mjs";
+import { deskNotes, newsDepthBrief, newsFloor, normalizeDraft, prioritizeContext, substantiveFacts, validateDraft, validateWhyBasis } from "../pipeline/lib/write.mjs";
 import { NEWS_DEPTH, NEWS_FLOOR, SHORT_WORDS } from "../pipeline/lib/editorial.mjs";
 import { arabicEdition, bestPdf, editionKey, reportExcerpts } from "../pipeline/lib/reports.mjs";
 import { mergeNewsRefresh, serializeArticle } from "../pipeline/lib/article.mjs";
 import { cleanTags } from "../pipeline/lib/tags.mjs";
 import { groundedRegions } from "../pipeline/lib/regions.mjs";
 import { styleIssues } from "../pipeline/lib/style.mjs";
-import { judgeRewrite } from "../pipeline/lib/copydesk.mjs";
+import { fixNames, judgeRewrite } from "../pipeline/lib/copydesk.mjs";
 import { normalizeCritique, programmaticChecks } from "../pipeline/lib/verify.mjs";
 import { noveltyFault } from "../pipeline/lib/images.mjs";
 
@@ -507,6 +507,25 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const { summary, countries } = reportExcerpts(pages, { countryChars: 160 });
   check("the summary starts at the executive summary", summary.startsWith("[p.2] Executive summary"), true);
   check("the Arab economies' passage comes before the major economies' when room is short", [countries.includes("Egypt"), countries.includes("Germany")], [true, false]);
+}
+
+// What reads as a machine (the owner, 2026-10-19: "is the arabic language used natural or robotic and scream ai?"):
+// a story about what its sources do not say, a speech told call by call, bridges between paragraphs, abstract
+// summing-up; and what must still pass: the wires' clause about a withheld term, a real contrast, a time phrase.
+{
+  const flagged = (draft) => styleIssues({ title: "صادرات مصر غير البترولية ترتفع إلى 48 مليار دولار", subtitle: "", lede: "", whyItMatters: "", ...draft }, { kind: "news" });
+  const said = (r, re) => r.issues.some((i) => re.test(i));
+  check("a sentence on what the figure does not reveal on its own is sent back", said(flagged({ body: "ولم تتضمن تصريحاته المنشورة مقارنة بالأعوام السابقة. لذلك يبيّن الرقم حجم الصادرات، لكنه لا يكشف وحده اتجاه نموها." }), /لم تقله مصادره/), true);
+  check("the wires' clause about a withheld term passes", flagged({ body: "ولم تكشف الشركة قيمة الصفقة. وقالت إن الإغلاق متوقع في الربع الأول." }).issues.some((i) => /لم تقله مصادره/.test(i)), false);
+  const speech = "ودعا الوزير إلى تطوير حلول تكنولوجية للشركات. وشدد على تعريف الشباب باتفاقيات التجارة. وأكد أهمية فهم قواعد المنشأ للتصدير. وأشاد بجهود البورصة في نشر الثقافة المالية.";
+  check("four exhortations in a row are sent back", said(flagged({ body: speech }), /من الدعوات والتشديد/), true);
+  const bridged = "ولتطوير هذه الحلول، أشار الوزير إلى مبادرات تكنولوجيا التجارة.\n\nإلى جانب الأدوات التقنية، شدد الوزير على اتفاقيات التجارة.";
+  check("two paragraphs opening on a bridge are sent back", said(flagged({ body: bridged }), /بجسر يشير/), true);
+  const natural = "ورغم هذا الصعود، تبقى الأسهم دون ذروتها.\n\nورفعت قطر شحناتها عبر المضيق هذا الشهر، بحسب بيانات تتبع السفن.\n\nلكن هذا التحسن لم يكفِ لتعويض خسائر الربع.";
+  check("a real contrast and a time phrase are not bridges", said(flagged({ body: natural }), /بجسر يشير/), false);
+  check("a summing-up in abstract nouns is sent back", said(flagged({ body: "وتتباين الاحتمالات التي تواجهها السوق بين مكاسب شركات الطاقة وضغوط التمويل." }), /أسماء مجردة/), true);
+  check("remarks never count toward a developed report", substantiveFacts({ facts: [{ job: "news" }, { job: "remark" }, { job: "numbers" }, { job: "remark" }] }), 2);
+  check("one spelling of Bloomberg", fixNames("قالت المحللة في «الشرق بلومبرج» لـ«بلومبيرغ»"), "قالت المحللة في «الشرق بلومبرغ» لـ«بلومبرغ»");
 }
 
 if (failed) {
