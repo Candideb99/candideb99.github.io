@@ -5,7 +5,7 @@ import StoryCard from "@components/StoryCard.astro";
 import QuoteCard from "@components/QuoteCard.astro";
 import { quotes, GLANCE_IDS } from "@lib/markets";
 import { analysisLabel } from "@lib/analysis";
-import { topicCounts, topicHref } from "@lib/topics";
+import { menuTopics, topicHref } from "@lib/topics";
 import type { Article } from "@lib/articles";
 import { getArticles, getArticlesBySection, firstPictures } from "@lib/articles";
 import { sections, HUB_SECTIONS, type Section } from "@lib/sections";
@@ -52,7 +52,8 @@ const textLead = first && lead && !lead.data.image && beside.length > 0;
 const title = first ? section.name : `${section.name} — صفحة ${page.currentPage}`;
 // The markets section carries a glance at the data under its lead block, as the business dailies do.
 const glance = first && section.id === "markets" ? quotes(GLANCE_IDS) : [];
-const topics = first ? topicCounts(await getArticles(), section.id).filter((t) => t.count > 0) : [];
+// The sub-topics we are writing about (menuTopics, 2026-10-19), with their counts.
+const topics = first ? menuTopics(await getArticles(), section.id) : [];
 ---
 
 <Base title={title} description={`${section.name} في خازندار: ${section.description}`} path={page.url.current} section={section.id}>

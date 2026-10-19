@@ -61,14 +61,12 @@ export const GLANCE_IDS = ["tasi", "egx30", "spx", "brent", "gold", "usdegp"];
  */
 export const TOPIC_QUOTE_IDS: Record<string, string[]> = {
   "energy/oil": ["brent", "wti"],
-  "energy/opec": ["brent", "wti"],
   "energy/gas": ["natgas"],
   "markets/stocks": ["tasi", "egx30", "spx"],
   "markets/gulf-markets": ["tasi"],
   "markets/bonds": ["us10y", "us30y"],
   "markets/currencies": ["usdegp", "eurusd", "dxy"],
   "markets/commodities": ["gold", "silver", "copper"],
-  "markets/crypto": ["btc"],
 };
 
 /** The headline numbers of the data page. */

@@ -17,7 +17,8 @@
  * reader deep in a story is one tap from every section and tool.
  *
  * On a wide screen each section opens a panel under the bar, as the business sites' bars do: the
- * section's standing sub-topics (a curated taxonomy in `src/data/topics.json`, not the writers' tags),
+ * section's standing sub-topics (a curated taxonomy in `src/data/topics.json`, not the writers' tags; since
+ * 2026-10-19 only those with recent stories, `menuTopics()`, and the latest news where none has),
  * its analyses by desk, and the data and pages that belong to it. The panel is sized to its content,
  * never wider than the bar, hung under the section that opened it (slid back inside the bar when it
  * would overrun the bar's end; until 2026-09-22 every panel hung from the bar's start edge, which put
@@ -31,7 +32,7 @@ import { formatDate } from "@lib/format";
 import { todayIso } from "@lib/calendar";
 import { getArticles, articleHref } from "@lib/articles";
 import { analysisDesk, ANALYSIS_DESKS } from "@lib/analysis";
-import { topicsOf, topicHref } from "@lib/topics";
+import { menuTopics, topicHref } from "@lib/topics";
 import { isolateNumbers } from "@lib/bidi";
 import { LOGO } from "@lib/brand";
 import Logo from "./Logo.astro";
@@ -73,7 +74,13 @@ const panels = new Map<string, Column[]>();
 for (const s of sections) {
   const columns: Column[] = [];
   if (newsIds.has(s.id)) {
-    columns.push({ head: "المواضيع", links: topicsOf(s.id).map((t) => ({ href: topicHref(s.id, t.id), text: t.name })) });
+    // Only the sub-topics we are writing about (menuTopics); a section with none offers its latest news instead.
+    const topics = menuTopics(articles, s.id, now.getTime());
+    if (topics.length) columns.push({ head: "المواضيع", links: topics.map(({ topic: t }) => ({ href: topicHref(s.id, t.id), text: t.name })) });
+    else {
+      const latest = articles.filter((a) => a.data.section === s.id && a.data.kind === "news").slice(0, 4).map((a) => ({ href: articleHref(a), text: a.data.title, title: true }));
+      if (latest.length) columns.push({ head: "أحدث الأخبار", links: latest, wide: true });
+    }
     const pieces = analyses.filter((a) => analysisDesk(a, articles)?.id === s.id).slice(0, 3).map((a) => ({ href: articleHref(a), text: a.data.title, title: true }));
     if (pieces.length) columns.push({ head: "تحليلات القسم", links: [...pieces, { href: `/analysis/desk/${s.id}/`, text: "كل تحليلات القسم" }], wide: true });
     columns.push({ head: "المزيد", links: [{ href: sectionHref(s.id), text: `كل مواد ${s.name}` }, ...(DATA_LINKS[s.id] ?? [])] });

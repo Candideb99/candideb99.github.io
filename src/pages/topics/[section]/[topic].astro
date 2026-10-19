@@ -17,7 +17,7 @@ import StoryCard from "@components/StoryCard.astro";
 import QuoteCard from "@components/QuoteCard.astro";
 import { getArticles, firstPictures, articleHref } from "@lib/articles";
 import { getSection, sectionHref, newsSections, kindLabel } from "@lib/sections";
-import { topicsOf, topicArticles, topicHref, type Topic } from "@lib/topics";
+import { menuTopics, topicsOf, topicArticles, topicHref, type Topic } from "@lib/topics";
 import { quotes, TOPIC_QUOTE_IDS } from "@lib/markets";
 import { countLabel, formatShortDate, formatMonth } from "@lib/format";
 import { isolateNumbers } from "@lib/bidi";
@@ -43,7 +43,8 @@ const { section, topic, items, fallback } = Astro.props;
 const sec = getSection(section);
 const n = items.length;
 const countWord = countLabel(n);
-const siblings = topicsOf(section).filter((t) => t.id !== topic.id);
+// The neighbours we are writing about (menuTopics), never an empty page.
+const siblings = menuTopics(await getArticles(), section).map((t) => t.topic).filter((t) => t.id !== topic.id);
 
 const prices = quotes(TOPIC_QUOTE_IDS[`${section}/${topic.id}`] ?? []);
 const [lead, ...after] = items;
@@ -68,10 +69,12 @@ const pics = firstPictures(n > 0 ? [lead, ...beside, ...recent] : fallback);
       <p class="page-head__section ui"><a href={sectionHref(section)}>{sec.name}</a></p>
       <h1 class="page-title">{topic.name}</h1>
       <p class="page-intro">{n > 0 ? <span>{countWord} من تغطية خازندار، من الأحدث إلى الأقدم.</span> : <span>لم تُنشر مواد تحت هذا الموضوع بعد؛ تعمل غرفة الأخبار على مدار الساعة. في الأثناء، أحدث ما نشرناه في {sec.name}.</span>}</p>
-      <p class="page-head__topics ui">
-        <span class="page-head__topics-label">مواضيع {sec.name}:</span>
-        {siblings.map((t) => <a href={topicHref(section, t.id)}>{t.name}</a>)}
-      </p>
+      {siblings.length > 0 && (
+        <p class="page-head__topics ui">
+          <span class="page-head__topics-label">مواضيع {sec.name}:</span>
+          {siblings.map((t) => <a href={topicHref(section, t.id)}>{t.name}</a>)}
+        </p>
+      )}
     </header>
 
     {n === 0 ? (

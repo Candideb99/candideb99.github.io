@@ -10,6 +10,14 @@
  * under power («محطات» in «محطاته»). A topic's `titleMatch` terms count only in the headline (a central bank named as
  * a GDP release's source is not a monetary-policy story), and its `exclude` phrases are read out first («كفاءة الوقود»
  * is not a fuel price).
+ *
+ * The lists were cut on 2026-10-19 (the owner: "i do not think all sections topic are realistic, since there are days
+ * when there could be no news about these topics"). The 45 of 13 September were my own guess at a business daily's
+ * menu: 6 had never had a story and about 15 more had two or fewer. Read against the live menus of 13 outlets that day
+ * (Reuters, the FT, Bloomberg, the WSJ, Asharq Business, Aawsat, Al Arabiya, Sky News Arabia and others): a short list of
+ * lasting beats, 4 to 13 an outlet, economy by theme, markets by asset, companies by industry, technology in four
+ * (AI, chips, big tech, cyber); no Arab desk has a defence menu, and running stories live outside the menu. So 23
+ * remain, defence has none, and a sub-topic is offered in a menu only while we write about it (`menuTopics()`).
  */
 import topicsData from "@data/topics.json";
 import { canonicalTag, normalizeArabic } from "./tag-map.mjs";
@@ -134,4 +142,21 @@ export function subTopicOf(article: Article): Topic | undefined {
 /** The sub-topics of a section with their story counts, in the taxonomy's order. */
 export function topicCounts(articles: Article[], section: string): { topic: Topic; count: number }[] {
   return topicsOf(section).map((topic) => ({ topic, count: topicArticles(articles, section, topic).length }));
+}
+
+/** A sub-topic is offered in the menus while it has had MENU_MIN stories in the last MENU_DAYS days. */
+export const MENU_MIN = 3;
+export const MENU_DAYS = 60;
+
+/**
+ * The sub-topics a section's menus offer (the bar's panel, the section page, a topic page's neighbours): those the
+ * newsroom is writing about, so a reader is never sent to an empty or stale page, and a beat that grows appears by
+ * itself. The pages of the others stay, since a story's trail and tags still lead there. Counts are all-time.
+ */
+export function menuTopics(articles: Article[], section: string, now = Date.now()): { topic: Topic; count: number }[] {
+  const since = now - MENU_DAYS * 864e5;
+  return topicsOf(section)
+    .map((topic) => ({ topic, items: topicArticles(articles, section, topic) }))
+    .filter(({ items }) => items.filter((a) => Date.parse(a.data.publishedAt) >= since).length >= MENU_MIN)
+    .map(({ topic, items }) => ({ topic, count: items.length }));
 }
