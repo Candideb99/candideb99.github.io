@@ -40,8 +40,8 @@ const LIVE = site.url;
 const REPO = "Candideb99/candideb99.github.io";
 const REPO_URL = `https://github.com/${REPO}`;
 const GIT_ID = ["-c", "user.name=khazendar-control", "-c", "user.email=newsroom@users.noreply.github.com"];
-const NEWS_SECTIONS = ["economy", "markets", "energy", "companies", "technology", "defense"];
-const SECTION_NAME = { economy: "الاقتصاد", markets: "الأسواق", energy: "الطاقة", companies: "الشركات", technology: "التكنولوجيا", defense: "الدفاع", analysis: "تحليلات", explainers: "مدخل إلى الاقتصاد" };
+const NEWS_SECTIONS = ["economy", "markets", "energy", "companies", "technology"];
+const SECTION_NAME = { economy: "الاقتصاد", markets: "الأسواق", energy: "الطاقة", companies: "الشركات", technology: "التكنولوجيا", analysis: "تحليلات", explainers: "مدخل إلى الاقتصاد" };
 /** What the cloud runs on its own (newsroom.yml). UTC; the page shows it in the owner's local time. */
 const SCHEDULE = [
   { what: "News stories", when: "every 3 hours, at :23", utc: null },
@@ -982,9 +982,9 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
     <div>
       <h2>Need something now?</h2>
       <div class="get">
-        <div class="row"><button class="quiet" onclick="run('news')">News stories</button><label>in <select id="newsSection"><option value="">all sections</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option><option value="defense">الدفاع</option></select></label><label><select id="limit"><option>1</option><option>2</option><option selected>4</option><option>6</option><option>8</option></select> stories</label></div>
+        <div class="row"><button class="quiet" onclick="run('news')">News stories</button><label>in <select id="newsSection"><option value="">all sections</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option></select></label><label><select id="limit"><option>1</option><option>2</option><option selected>4</option><option>6</option><option>8</option></select> stories</label></div>
         <div class="row"><button class="quiet" onclick="run('dry')">Test one story (dry run)</button><span class="m">Uses the local controller and reports the result without saving an article.</span></div>
-        <div class="row"><button class="quiet" onclick="run('explainer')">An explainer</button><button class="quiet" onclick="run('analysis')">An analysis</button><label>of <select id="analysisSection"><option value="">the week</option><option value="defense">defence only</option><option value="economy">الاقتصاد only</option><option value="markets">الأسواق only</option><option value="energy">الطاقة only</option></select></label></div>
+        <div class="row"><button class="quiet" onclick="run('explainer')">An explainer</button><button class="quiet" onclick="run('analysis')">An analysis</button><label>of <select id="analysisSection"><option value="">the week</option><option value="economy">الاقتصاد only</option><option value="markets">الأسواق only</option><option value="energy">الطاقة only</option></select></label></div>
         <div class="row"><button class="quiet" onclick="run('paper')">A research paper</button><button class="quiet" onclick="run('weekly')">The week's review</button><button class="quiet" onclick="run('feature')">In depth (في العمق)</button><button class="quiet" onclick="run('pull')">Sync from GitHub</button></div>
         <p class="m" style="margin:2px 0 0">These write drafts for your approval. News takes 8–10 minutes for four stories; the others 3–5.</p>
       </div>
@@ -1000,7 +1000,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
 <section class="pane" id="pane-stories">
   <div class="bar">
     <input type="text" id="f-q" placeholder="Search a headline…" oninput="renderLive()">
-    <select id="f-section" onchange="renderLive()"><option value="">every section</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option><option value="defense">الدفاع</option><option value="analysis">تحليلات</option><option value="explainers">مدخل</option></select>
+    <select id="f-section" onchange="renderLive()"><option value="">every section</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option><option value="analysis">تحليلات</option><option value="explainers">مدخل</option></select>
     <select id="f-kind" onchange="renderLive()"><option value="">every kind</option><option value="news">news</option><option value="analysis">analysis</option><option value="explainer">explainer</option><option value="paper">paper</option><option value="weekly">weekly</option><option value="feature">in depth</option></select>
     <select id="f-month" onchange="renderLive()"><option value="">any month</option></select>
     <select id="f-where" onchange="renderLive()"><option value="">anywhere</option><option value="front">on the front page</option><option value="section">section pages only</option></select>
@@ -1252,7 +1252,7 @@ function render(s){
     used.innerHTML=cleanList.length?'Wrote the last 24 h: '+cleanList.join(' · '):'';
   }
   var quietCut=Date.now()-72*36e5;
-  var NEWS=['economy','markets','energy','companies','technology','defense'];
+  var NEWS=['economy','markets','energy','companies','technology'];
   var covEl = document.getElementById('cov');
   if (covEl) covEl.innerHTML=s.coverage.filter(function(c){return NEWS.indexOf(c.id)>=0}).map(function(c){var q=!c.last||Date.parse(c.last)<quietCut;return '<div class="'+(q?'quiet':'')+'"><div class="s">'+esc(c.name)+'</div><div class="c"><b>'+c.day+'</b> today · <b>'+c.week+'</b> this week<br>'+(c.last?'last '+esc(ago(c.last)):'nothing yet')+(q&&c.last?' · due for one':'')+'</div></div>'}).join('');
   var hubsEl = document.getElementById('hubs');
@@ -1310,7 +1310,7 @@ function rowHtml(a){var front=a.where!=='section'&&a.where!=='hub';
       '<td><span class="chip'+(front?' front':'')+'">'+esc(WHERE[a.where]||a.where)+'</span></td><td>'+scoreTag(a.score)+'</td><td class="src">'+srcList(a.sources)+'</td>'+
       '<td><details class="menu"><summary aria-label="Actions">'+DOTS+'</summary><div class="pop">'+
       '<a href="'+LIVE_URL+'/articles/'+esc(a.slug)+'/" target="_blank">Open on the site</a>'+
-      (a.kind==='news'?(a.featured?'<button data-file="'+esc(a.file)+'" onclick="feature(this.dataset.file,false)">Take it off the lead</button>':'<button data-file="'+esc(a.file)+'" onclick="feature(this.dataset.file,true)">Make it the lead (48 h)</button>')+'<div class="sep"></div><div class="lbl">Move to</div><div class="secs">'+['economy','markets','energy','companies','technology','defense'].filter(function(s){return s!==a.section}).map(function(s){return '<button data-file="'+esc(a.file)+'" data-sec="'+s+'" onclick="moveTo(this.dataset.file,this.dataset.sec)">'+esc(SECTION[s])+'</button>'}).join('')+'</div>':'')+
+      (a.kind==='news'?(a.featured?'<button data-file="'+esc(a.file)+'" onclick="feature(this.dataset.file,false)">Take it off the lead</button>':'<button data-file="'+esc(a.file)+'" onclick="feature(this.dataset.file,true)">Make it the lead (48 h)</button>')+'<div class="sep"></div><div class="lbl">Move to</div><div class="secs">'+['economy','markets','energy','companies','technology'].filter(function(s){return s!==a.section}).map(function(s){return '<button data-file="'+esc(a.file)+'" data-sec="'+s+'" onclick="moveTo(this.dataset.file,this.dataset.sec)">'+esc(SECTION[s])+'</button>'}).join('')+'</div>':'')+
       '<div class="sep"></div><button class="d" data-file="'+esc(a.file)+'" data-title="'+esc(a.title)+'" onclick="unpublish(this.dataset.file,this.dataset.title)">Unpublish</button></div></details></td></tr>'}
 document.addEventListener('click',function(e){document.querySelectorAll('details.menu[open]').forEach(function(d){if(!d.contains(e.target))d.removeAttribute('open')})});
 refresh();

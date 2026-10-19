@@ -5,7 +5,8 @@
  * desk pages never split one region across spellings (أمريكا / أميركا الشمالية / الولايات المتحدة).
  *
  * Four, not eight (the owner, 2026-09-24: an Americas desk is odd on an Arab economics site): الخليج،
- * مصر والمغرب العربي، الشرق الأوسط، and العالم for Europe, the Americas, Asia, Africa and the world market.
+ * مصر والمغرب العربي، المشرق وإيران وتركيا، and العالم for Europe, the Americas, Asia, Africa and the world market. The third was
+ * «الشرق الأوسط» until 2026-10-19, the region the other two belong to (half its stories were the Gulf's too).
  */
 import desks from "@data/regions.json";
 import type { Article } from "./articles";
@@ -28,7 +29,7 @@ export const DESKS: Desk[] = [
 // Places the desks' lists do not name but tags do: a label above a headline never shows one either («الدنمارك» stood
 // over a US–Denmark security story until 2026-09-27).
 const OTHER_PLACES = [
-  "الدنمارك", "جرينلاند", "غرينلاند", "أذربيجان", "هاينان", "الخفجي", "البحر الأحمر", "باب المندب", "بلجيكا", "النمسا", "بولندا",
+  "الشرق الأوسط", "العالم العربي", "الدنمارك", "جرينلاند", "غرينلاند", "أذربيجان", "هاينان", "الخفجي", "البحر الأحمر", "باب المندب", "بلجيكا", "النمسا", "بولندا",
   "البرتغال", "اليونان", "أيرلندا", "آيسلندا", "لوكسمبورغ", "قبرص", "مالطا", "المجر", "التشيك", "رومانيا", "بلغاريا", "صربيا",
   "كرواتيا", "بيلاروسيا", "جورجيا", "أرمينيا", "كازاخستان", "أوزبكستان", "تركمانستان", "أفغانستان", "ماليزيا", "تايلاند",
   "الفلبين", "بنغلاديش", "سريلانكا", "نيوزيلندا", "كولومبيا", "بيرو", "فنزويلا", "كوبا", "الإكوادور", "تنزانيا", "أنغولا",

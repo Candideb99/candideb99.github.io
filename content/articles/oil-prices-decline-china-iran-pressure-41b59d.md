@@ -26,7 +26,7 @@ tags:
   - الطاقة
 regions:
   - الخليج
-  - الشرق الأوسط
+  - المشرق وإيران وتركيا
 readingMinutes: 1
 chart: null
 table: null

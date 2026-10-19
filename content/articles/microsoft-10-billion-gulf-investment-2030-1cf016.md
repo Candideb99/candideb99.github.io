@@ -24,7 +24,6 @@ tags:
   - دول الخليج
 regions:
   - الخليج
-  - الشرق الأوسط
 readingMinutes: 2
 chart: null
 table: null

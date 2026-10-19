@@ -24,7 +24,6 @@ tags:
   - التضخم العالمي
 regions:
   - الخليج
-  - الشرق الأوسط
 readingMinutes: 4
 chart: null
 table:

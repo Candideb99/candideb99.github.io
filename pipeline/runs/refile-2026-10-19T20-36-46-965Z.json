@@ -1,0 +1,48 @@
+{
+  "at": "2026-10-19T20:36:46.965Z",
+  "dryRun": false,
+  "moves": [
+    {
+      "slug": "boeing-wins-navy-f-a-xx-fighter-contract-054631",
+      "from": "defense",
+      "to": "companies",
+      "reason": "the defence section folded, 2026-10-19 (the owner's choice): a contractor's award is the defence industry, under companies"
+    },
+    {
+      "slug": "fincantieri-leonardo-ddx-destroyer-contract-d76a49",
+      "from": "defense",
+      "to": "companies",
+      "reason": "the defence section folded, 2026-10-19 (the owner's choice): a shipbuilder's contract is the defence industry, under companies"
+    },
+    {
+      "slug": "raytheon-amraam-multiyear-contract-pentagon-e2fa85",
+      "from": "defense",
+      "to": "companies",
+      "reason": "the defence section folded, 2026-10-19 (the owner's choice): a contractor's award is the defence industry, under companies"
+    },
+    {
+      "slug": "us-approves-f35-saudi-arms-deal-915064",
+      "from": "defense",
+      "to": "companies",
+      "reason": "the defence section folded, 2026-10-19 (the owner's choice): an arms sale is the defence industry, under companies"
+    },
+    {
+      "slug": "navy-shipyard-program-could-cost-200-billion-e8fbb1",
+      "from": "defense",
+      "to": "economy",
+      "reason": "the defence section folded, 2026-10-19 (the owner's choice): the cost of a state programme to the public purse is public finance, under economy"
+    },
+    {
+      "slug": "us-iran-war-cost-38-1-billion-7017c2",
+      "from": "defense",
+      "to": "economy",
+      "reason": "the defence section folded, 2026-10-19 (the owner's choice): a war's cost to a state is public finance, under economy"
+    },
+    {
+      "slug": "us-denmark-greenland-security-deal-eac792",
+      "from": "defense",
+      "to": "economy",
+      "reason": "the defence section folded, 2026-10-19 (the owner's choice): a security pact between governments is government policy, under economy"
+    }
+  ]
+}

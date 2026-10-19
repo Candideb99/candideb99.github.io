@@ -27,8 +27,8 @@ tags:
   - بورصة إسطنبول
   - حزب العدالة والتنمية
 regions:
-  - الشرق الأوسط
   - أوروبا
+  - المشرق وإيران وتركيا
 readingMinutes: 1
 chart: null
 table: null

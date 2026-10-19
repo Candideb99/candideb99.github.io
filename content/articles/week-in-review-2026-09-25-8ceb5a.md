@@ -28,7 +28,6 @@ tags:
   - البنك المركزي المصري
 regions:
   - الخليج
-  - الشرق الأوسط
 readingMinutes: 7
 chart: null
 table:

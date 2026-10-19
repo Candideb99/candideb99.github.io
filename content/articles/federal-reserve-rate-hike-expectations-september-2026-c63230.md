@@ -26,7 +26,6 @@ tags:
   - السندات
 regions:
   - الخليج
-  - الشرق الأوسط
   - عالمي
 readingMinutes: 2
 chart: null

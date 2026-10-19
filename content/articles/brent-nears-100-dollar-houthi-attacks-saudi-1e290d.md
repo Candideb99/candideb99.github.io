@@ -29,7 +29,6 @@ tags:
   - الفيدرالي الأمريكي
 regions:
   - الخليج
-  - الشرق الأوسط
   - الأمريكتان
 readingMinutes: 3
 chart: null

@@ -25,8 +25,9 @@ tags:
   - أسعار النفط
   - قطر
 regions:
-  - الشرق الأوسط
   - عالمي
+  - الخليج
+  - المشرق وإيران وتركيا
 readingMinutes: 3
 chart: null
 table:

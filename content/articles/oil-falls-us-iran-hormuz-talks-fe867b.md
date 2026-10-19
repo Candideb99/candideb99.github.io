@@ -27,8 +27,9 @@ tags:
   - إيران
   - السعودية
 regions:
-  - الشرق الأوسط
   - عالمي
+  - الخليج
+  - المشرق وإيران وتركيا
 readingMinutes: 1
 chart: null
 table: null

@@ -1,8 +1,8 @@
 /**
  * The desk an analysis belongs to, read from the paper's own stories it draws on (its internal
- * sources): economic, markets, energy, companies, technology, or defence and geopolitics. Printed
- * as the kicker so a reader never mistakes a defence reading for an economic one, the way the
- * business dailies keep "Heard on the Street" apart from their geopolitical columns.
+ * sources): economic, markets, energy, companies or technology. Printed as the kicker so a reader
+ * never mistakes one kind of reading for another, the way the business dailies keep "Heard on the
+ * Street" apart from their other columns. The defence desk went with the defence section, 2026-10-19.
  */
 import type { Article } from "./articles";
 
@@ -17,7 +17,6 @@ export const ANALYSIS_DESKS: Record<string, string> = {
   energy: "تحليل الطاقة",
   companies: "تحليل الشركات",
   technology: "تحليل التكنولوجيا",
-  defense: "تحليل دفاعي وجيوسياسي",
 };
 
 const bySlug = new WeakMap<Article[], Map<string, Article>>();

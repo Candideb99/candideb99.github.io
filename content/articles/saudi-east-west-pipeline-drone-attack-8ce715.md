@@ -16,7 +16,7 @@ tags:
   - مجلس التعاون الخليجي
 regions:
   - الخليج
-  - الشرق الأوسط
+  - المشرق وإيران وتركيا
 readingMinutes: 2
 chart: null
 table: null

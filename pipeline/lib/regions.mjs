@@ -35,23 +35,29 @@ export function canonicalRegions(tags) {
  * effects might be felt: the audit of 2026-09-27 found the US jobs report and US inflation on the Gulf desk, and the
  * Bank of England, UK inflation and EU gas on the Middle East desk, because the writer had tagged the war as a cause or
  * the Gulf as the reader's interest.
+ *
+ * One place, one desk (2026-10-19, the owner's check of the whole site): the third Arab desk had been «الشرق الأوسط», the
+ * region the Gulf and Egypt desks beside it belong to, and half its stories were Gulf stories tagged with the wider
+ * region too. It is «المشرق وإيران وتركيا», what the other two do not hold; the region as a whole names no desk, and
+ * Hormuz, the mouth of the Gulf, is the Gulf desk's.
  */
 const PLACES = {
   // Not «تداول» or «مبادلة»: they are also the words for trading and swapping.
-  "الخليج": ["خليجي", "سعودي", "إماراتي", "قطري", "كويتي", "بحريني", "عماني", "الرياض", "جدة", "الدمام", "أبوظبي", "أبو ظبي", "دبي", "الشارقة", "الفجيرة", "عجمان", "الدوحة", "المنامة", "مسقط", "أرامكو", "أدنوك", "سابك", "ينبع", "رأس تنورة", "رأس لفان", "جازان", "الخفجي", "نيوم", "مجلس التعاون", "صندوق الاستثمارات العامة", "جهاز قطر للاستثمار", "قطر للطاقة"],
+  "الخليج": ["خليجي", "سعودي", "إماراتي", "قطري", "كويتي", "بحريني", "عماني", "الرياض", "جدة", "الدمام", "أبوظبي", "أبو ظبي", "دبي", "الشارقة", "الفجيرة", "عجمان", "الدوحة", "المنامة", "مسقط", "أرامكو", "أدنوك", "سابك", "ينبع", "هرمز", "رأس تنورة", "رأس لفان", "جازان", "الخفجي", "نيوم", "مجلس التعاون", "صندوق الاستثمارات العامة", "جهاز قطر للاستثمار", "قطر للطاقة"],
   "مصر والمغرب العربي": ["مصري", "مغربي", "جزائري", "تونسي", "ليبي", "موريتاني", "القاهرة", "الإسكندرية", "السويس", "بورسعيد", "الدار البيضاء", "الرباط", "طنجة"],
-  "الشرق الأوسط": ["إيراني", "عراقي", "تركي", "إسرائيلي", "أردني", "لبناني", "سوري", "يمني", "فلسطيني", "طهران", "بغداد", "البصرة", "كردستان", "الحوثي", "هرمز", "البحر الأحمر", "باب المندب", "غزة", "الضفة الغربية", "أنقرة", "إسطنبول", "بيروت", "دمشق", "تل أبيب"],
+  "المشرق وإيران وتركيا": ["إيراني", "عراقي", "تركي", "إسرائيلي", "أردني", "لبناني", "سوري", "يمني", "فلسطيني", "طهران", "بغداد", "البصرة", "كردستان", "الحوثي", "البحر الأحمر", "باب المندب", "غزة", "الضفة الغربية", "القدس", "المستوطنات", "أنقرة", "إسطنبول", "بيروت", "دمشق", "تل أبيب"],
 };
 const normalizePlace = (s) => String(s ?? "").replace(/[ً-ٰٟـ]/g, "").replace(/[أإآ]/g, "ا").replace(/ة/g, "ه").replace(/ى/g, "ي");
 // A place as a whole word, through the letters Arabic joins to it («وبالسعودية»، «للرياض») and the endings of its
-// adjective and plural («السعوديين»، «الحوثيون»), never inside another word («الرياضة» is not «الرياض»).
+// adjective and plural («السعوديين»، «الحوثيون») and its accusative («مقترحاً إيرانياً», 2026-10-19), never inside another
+// word («الرياضة» is not «الرياض»).
 // Arabic letters and marks only: the Arabic comma, semicolon and question mark sit in the same Unicode block and end
 // a word («مضيق هرمز؟»).
 const LETTER = "\\u0621-\\u065F\\u066E-\\u06D3\\u06FA-\\u06FF";
 const placeRe = (w) => {
   const n = escapeRe(normalizePlace(w));
   const forms = n.startsWith("ال") ? `[وفبك]?(?:${n}|لل${n.slice(2)})` : `[وفبلك]?(?:ال|لل)?${n}`;
-  return new RegExp(`(?<![${LETTER}])${forms}(?:ي|يه|ين|يون|يين|ون|ات|ه)?(?![${LETTER}])`);
+  return new RegExp(`(?<![${LETTER}])${forms}(?:ي|يه|ين|يون|يين|ون|ات|ه|ا)?(?![${LETTER}])`);
 };
 const DESK_PLACES = new Map(DESKS.filter((d) => PLACES[d.name]).map((d) => [d.name, [d.name, ...d.match, ...PLACES[d.name]].map(placeRe)]));
 

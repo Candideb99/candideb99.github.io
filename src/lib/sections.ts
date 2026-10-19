@@ -1,6 +1,6 @@
 import sectionsData from "@data/sections.json";
 
-export type SectionId = "economy" | "markets" | "energy" | "companies" | "technology" | "defense" | "analysis" | "explainers";
+export type SectionId = "economy" | "markets" | "energy" | "companies" | "technology" | "analysis" | "explainers";
 
 export interface Section {
   id: SectionId;

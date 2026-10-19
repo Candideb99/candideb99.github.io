@@ -26,8 +26,8 @@ tags:
   - صناديق الاستثمار
   - مؤشر بيست 100
 regions:
-  - الشرق الأوسط
   - أوروبا
+  - المشرق وإيران وتركيا
 readingMinutes: 2
 chart: null
 table: null

@@ -25,8 +25,9 @@ tags:
   - النفط
   - العقوبات
 regions:
-  - الشرق الأوسط
   - عالمي
+  - الخليج
+  - المشرق وإيران وتركيا
 readingMinutes: 2
 chart: null
 table: null

@@ -21,8 +21,8 @@ tags:
   - خط أنابيب شرق-غرب
   - أسعار النفط
 regions:
-  - الشرق الأوسط
   - عالمي
+  - المشرق وإيران وتركيا
 readingMinutes: 3
 chart: null
 table: null

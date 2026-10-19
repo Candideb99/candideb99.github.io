@@ -26,8 +26,8 @@ tags:
   - إيران
   - الخليج
 regions:
-  - الشرق الأوسط
   - آسيا
+  - الخليج
 readingMinutes: 2
 chart: null
 table: null

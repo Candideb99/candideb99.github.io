@@ -28,7 +28,7 @@ tags:
   - الأسهم الإماراتية
 regions:
   - الخليج
-  - الشرق الأوسط
+  - المشرق وإيران وتركيا
 readingMinutes: 1
 chart:
   type: bar

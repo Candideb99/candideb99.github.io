@@ -3,14 +3,14 @@ name: Newsroom
 on:
   schedule:
     # News every three hours; one explainer and one analysis a day; one research-paper reading on Tuesdays and Fridays;
-    # the week's review on Fridays; the defence-and-geopolitics reading on Saturdays.
+    # the week's review on Fridays. The Saturday defence-and-geopolitics reading went with the defence section on
+    # 2026-10-19 (folded into companies and economy at the owner's choice); in five weeks it never found enough stories to run.
     # GitHub fires these crons 1.5-5 hours late and drops some slots; README "How it runs" records the cadence it keeps.
     - cron: "23 */3 * * *"
     - cron: "41 5 * * *"
     - cron: "7 14 * * *"
     - cron: "31 9 * * 2,5"
     - cron: "37 15 * * 5"
-    - cron: "7 10 * * 6"
     # «في العمق», the weekly in-depth piece, ran on Sundays from 2026-09-24 until the owner stopped it on 2026-10-19
     # ("extremely boring to read and i lost concentration"): a 1,370-word retelling of our own stories in date order. The
     # mode stays for a run by hand; the schedule no longer starts it.
@@ -32,7 +32,7 @@ on:
         default: "4"
         type: string
       sections:
-        description: "analysis only: draw on these sections alone, comma-separated (e.g. defense)"
+        description: "analysis only: draw on these sections alone, comma-separated (e.g. energy,markets)"
         default: ""
         type: string
 
@@ -92,7 +92,6 @@ jobs:
             elif [ "$SCHEDULE" = "7 14 * * *" ]; then mode=analysis;
             elif [ "$SCHEDULE" = "31 9 * * 2,5" ]; then mode=paper;
             elif [ "$SCHEDULE" = "37 15 * * 5" ]; then mode=weekly;
-            elif [ "$SCHEDULE" = "7 10 * * 6" ]; then mode=analysis; sections=defense;
             elif [ "$SCHEDULE" = "47 7 * * 0" ]; then mode=feature;
             elif [ "$SCHEDULE" = "13 6 * * 1" ]; then mode=lessons-test;
             elif [ "$SCHEDULE" = "17 8 * * *" ]; then mode=reports;

@@ -28,7 +28,7 @@ tags:
   - الحرب
   - العقوبات الأمريكية
 regions:
-  - الشرق الأوسط
+  - المشرق وإيران وتركيا
 readingMinutes: 2
 chart:
   type: bar

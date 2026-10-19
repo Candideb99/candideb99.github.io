@@ -3,7 +3,7 @@
     "id": "economy",
     "name": "الاقتصاد",
     "description": "النمو والتضخم والسياسة النقدية والمالية العامة والتجارة والاستثمار.",
-    "guide": "Macro and public life: growth, inflation, central banks and rates, budgets and taxes, jobs, trade and tariffs, government policy and regulation, public infrastructure and transport systems (airports, air-traffic control, ports, railways, roads) when the story is about the system or the public, not one company. A flight ban or an air-traffic outage is economy. NOT: a single company's results (companies), asset prices (markets)."
+    "guide": "Macro and public life: growth, inflation, central banks and rates, budgets and taxes, jobs, trade and tariffs, government policy and regulation, defence budgets and military spending, the cost of a war to a state, security pacts between governments, public infrastructure and transport systems (airports, air-traffic control, ports, railways, roads) when the story is about the system or the public, not one company. A flight ban or an air-traffic outage is economy. NOT: a single company's results (companies), asset prices (markets)."
   },
   {
     "id": "markets",
@@ -21,19 +21,13 @@
     "id": "companies",
     "name": "الشركات",
     "description": "أخبار الشركات في البنوك والعقارات والنقل والصناعة والتجزئة: نتائجها وصفقاتها وقياداتها.",
-    "guide": "One or a few named companies: results and guidance, deals and mergers, leadership, strikes, lawsuits and fines, product launches, an airline's or automaker's or bank's own story, sector news told through its companies. NOT: a technology or AI company story whose point is the technology (technology); a defence contractor's award (defense)."
+    "guide": "One or a few named companies: results and guidance, deals and mergers, leadership, strikes, lawsuits and fines, product launches, an airline's or automaker's or bank's own story, sector news told through its companies. The defence industry is an industry like any other and files here: a contractor's award or procurement contract, an arms sale or export deal, shipyards and military suppliers. NOT: a technology or AI company story whose point is the technology (technology); a state's defence budget or a war's cost (economy)."
   },
   {
     "id": "technology",
     "name": "التكنولوجيا",
     "description": "الذكاء الاصطناعي والرقائق ومراكز البيانات والأمن السيبراني والتكنولوجيا المالية.",
     "guide": "The technology economy: AI models and labs, chips and data centres, platforms and apps, software, telecoms, tech regulation, digital finance and crypto infrastructure. NOT: an ordinary company story that merely mentions software (companies); an IT failure at a public agency (economy)."
-  },
-  {
-    "id": "defense",
-    "name": "الدفاع",
-    "description": "اقتصاد الدفاع: الموازنات والصفقات وصادرات السلاح والصناعات العسكرية وما تعنيه للمنطقة.",
-    "guide": "Defence economics only: defence budgets, procurement and contract awards, arms exports and imports, military industry and its suppliers, and the economics of conflict (war costs, sanctions on defence). NOT: a war's effect on oil (energy) or on markets (markets); general geopolitics with no defence-economy content."
   },
   {
     "id": "analysis",

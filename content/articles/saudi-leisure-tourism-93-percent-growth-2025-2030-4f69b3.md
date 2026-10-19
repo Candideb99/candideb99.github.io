@@ -25,7 +25,6 @@ tags:
   - الخدمات اللوجستية
 regions:
   - الخليج
-  - الشرق الأوسط
 readingMinutes: 2
 chart:
   type: bar

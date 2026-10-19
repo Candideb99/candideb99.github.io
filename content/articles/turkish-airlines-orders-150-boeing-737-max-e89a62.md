@@ -24,8 +24,8 @@ tags:
   - تركيا
   - الطيران
 regions:
-  - الشرق الأوسط
   - الأمريكتان
+  - المشرق وإيران وتركيا
 readingMinutes: 1
 chart: null
 table: null

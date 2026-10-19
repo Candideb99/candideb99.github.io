@@ -17,8 +17,8 @@ tags:
   - العراق
   - سلطنة عمان
 regions:
-  - الشرق الأوسط
   - الخليج
+  - المشرق وإيران وتركيا
 readingMinutes: 2
 chart: null
 table: null

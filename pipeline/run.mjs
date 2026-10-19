@@ -103,7 +103,7 @@ const ARAB_DAILY = 8;
 const SERVICE_ITEM = /(?:سعر|أسعار)\s+(?:الذهب|الدولار|اليورو|الريال|الدرهم|الجنيه|العملات|الحديد|الأسمنت|الفضة|الخضروات|الخضار|الفاكهة|الدواجن|الفراخ|اللحوم|الأسماك|الأسهم|البنزين)[^.؟]{0,70}?(?:اليوم|الآن|لحظ|مساء|صباح)|تحديث لحظ[يى]|حصاد الـ?\s?\d+ دقيقة|آخر تحديث لسعر|(?:التعاملات|تعاملات) (?:الصباحية|المسائية)/;
 /** Words too common in this paper's headlines to tell two stories apart. */
 // The same-event rule and its stopwords live in lib/events.mjs (shared with the learner since 2026-09-26).
-/** `--sections=defense,energy`: an analysis drawn only from these sections' stories (the defence and geopolitics reading). */
+/** `--sections=energy,markets`: an analysis drawn only from these sections' stories (the Saturday defence reading used it until the defence section was folded, 2026-10-19). */
 const SECTIONS = (option("sections", "") || "").split(",").map((s) => s.trim()).filter(Boolean);
 
 const logLines = [];

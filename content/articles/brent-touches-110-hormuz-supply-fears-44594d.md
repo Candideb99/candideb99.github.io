@@ -26,8 +26,8 @@ tags:
   - مضيق هرمز
   - إمدادات الطاقة
 regions:
-  - الشرق الأوسط
   - عالمي
+  - الخليج
 readingMinutes: 1
 chart: null
 table: null

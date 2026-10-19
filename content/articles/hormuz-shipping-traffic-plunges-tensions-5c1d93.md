@@ -24,7 +24,7 @@ tags:
   - مضيق هرمز
   - الشحن البحري
 regions:
-  - الشرق الأوسط
+  - الخليج
 readingMinutes: 3
 chart: null
 table: null

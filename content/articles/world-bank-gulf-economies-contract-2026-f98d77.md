@@ -28,7 +28,6 @@ tags:
   - النمو الاقتصادي
 regions:
   - الخليج
-  - الشرق الأوسط
 readingMinutes: 4
 chart:
   type: bar

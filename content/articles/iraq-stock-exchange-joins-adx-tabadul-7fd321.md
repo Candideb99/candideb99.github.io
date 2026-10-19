@@ -24,8 +24,8 @@ tags:
   - منصة تبادُل
   - العراق
 regions:
-  - الشرق الأوسط
   - الخليج
+  - المشرق وإيران وتركيا
 readingMinutes: 1
 chart: null
 table: null

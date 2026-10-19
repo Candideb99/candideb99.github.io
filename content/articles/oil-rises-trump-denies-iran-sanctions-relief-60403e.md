@@ -27,8 +27,8 @@ tags:
   - مضيق هرمز
   - قطر
 regions:
-  - الشرق الأوسط
   - عالمي
+  - المشرق وإيران وتركيا
 readingMinutes: 2
 chart: null
 table: null

@@ -243,7 +243,7 @@ const DESK_COUNTRIES = (() => {
     /* without the desk list, tags alone decide */
   }
   const gulf = desks.get("الخليج");
-  const mena = desks.get("الشرق الأوسط");
+  const mena = desks.get("المشرق وإيران وتركيا");
   if (gulf) ["Iraq", "Iran"].forEach((c) => gulf.add(c));
   if (gulf && mena) gulf.forEach((c) => mena.add(c));
   return desks;
@@ -390,7 +390,7 @@ function relevance(image, words) {
 // Porter's 2012 collision there, and the judges refused its six frames four times in one run (the photo trial of
 // 2026-09-27), crowding out every other candidate. Dropped in code unless the story is about the military.
 const WARSHIP = /\b(?:USS|USNS|HMS|HMAS|INS|destroyers?|frigates?|corvettes?|warships?|aircraft carriers?|submarines?|naval|navy|missiles?|fighter jets?|air force|military)\b/i;
-const MILITARY_STORY = /عسكري|البحرية|دفاع|الجيش|القوات|سلاح|أسلحة|مدمرة|فرقاطة|غواصة|صاروخ|حربية|الناتو/;
+const MILITARY_STORY = /عسكري|البحرية|دفاع|الجيش|القوات|سلاح|أسلحة|مدمرة|مدمّرة|مدمرت|فرقاطة|غواصة|صاروخ|صواريخ|حربية|الناتو|البنتاغون|مقاتلة|مقاتلات|إف-35/;
 /**
  * A file that is the face of a note or a coin, or another depiction: Commons names note scans by side («… obverse», «…
  * Backside») and files them under a depicted subject «in art» and «Banknotes with a face value of …»; «One Egyptian
@@ -398,8 +398,9 @@ const MILITARY_STORY = /عسكري|البحرية|دفاع|الجيش|القوا
  */
 const SCAN = /\b(?:obverse|reverse|backside|back side|frontside|front side|recto|verso)\b/i;
 const DEPICTION = /(?:^|\|)\s*(?:[^|]*\bin art|banknotes with a face value[^|]*|[^|]*postage stamps[^|]*)\s*(?=\||$)/i;
-/** Whether a story is about something other than the military (its section, headline and dek). */
-const civilianStory = (draft) => draft?.section !== "defense" && !MILITARY_STORY.test(`${draft?.title ?? ""} ${draft?.subtitle ?? ""}`);
+/** Whether a story is about something other than the military (its headline, dek and tags; there is no defence section since
+ *  2026-10-19, its stories file under companies and economy). */
+const civilianStory = (draft) => !MILITARY_STORY.test(`${draft?.title ?? ""} ${draft?.subtitle ?? ""} ${(draft?.tags ?? []).join(" ")}`);
 
 /**
  * A photographer's numbered frames of one scene are one picture to a reader: «Central business district 1, New

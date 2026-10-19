@@ -29,7 +29,6 @@ tags:
 regions:
   - الخليج
   - عالمي
-  - الشرق الأوسط
 readingMinutes: 3
 chart:
   type: bar

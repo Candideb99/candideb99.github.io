@@ -28,7 +28,6 @@ tags:
   - إندونيسيا
 regions:
   - عالمي
-  - الشرق الأوسط
   - آسيا
 readingMinutes: 3
 chart: null
