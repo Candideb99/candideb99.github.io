@@ -1,456 +1,141 @@
 {
-  "mode": "news",
-  "startedAt": "2026-10-19T04:52:06.153Z",
-  "durationSec": 2253,
-  "published": 3,
+  "mode": "explainer",
+  "startedAt": "2026-10-19T11:12:31.682Z",
+  "durationSec": 308,
+  "published": 1,
   "refreshed": 0,
   "report": [
     {
-      "headline": "نمو الاقتصاد الصيني يتسارع إلى 4.5% في الربع الثالث بدعم الصادرات",
-      "section": "economy",
-      "importance": 8,
-      "sources": [
-        "https://www.nytimes.com/2026/10/18/business/china-economy-gdp.html",
-        "https://www.bbc.co.uk/news/articles/cm5yn098xz8lo",
-        "https://www.cnbc.com/2026/10/19/chinas-economic-growth-quickens-to-4point6percent-as-exports-surge-stimulus-rolls-out.html",
-        "https://www.euronews.com/2026/10/19/chinas-economy-grows-45-on-robust-exports-as-domestic-weakness-persists"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يوضح العنوان والمقدمة والافتتاح معاً ما تغير، وهو تسارع النمو إلى 4.5% من 4.3% بفضل الصادرات متجاوزاً التوقعات. ويوضحون ما لم يتغير، وهو بقاء النمو دون 5% في الربع الأول، واستمرار انكماش الاستثمار العقاري بنسبة 20.6%، وضعف الاستهلاك. والعنوان لا يزعم أكثر مما في المصادر، ولا يوجد تناقض ظاهر بينه وبين المقدمة.",
-              "repair": ""
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "يقدم التقرير المقارنات الأساسية: الربع السابق، والتوقعات، والهدف الرسمي، وتوقع صندوق النقد. لكنه يُسقط سياق الاستجابة الوارد في المصدر 3، وهو تثبيت الفائدة المتوقع، وحزمة أواخر سبتمبر، و550 مليار يوان من حصص الدين. ويُسقط موقف بكين وبان قونغشنغ من الفائض (المصدر 4)، وسبب أزمة العقار (المصدر 2). أما مقدمات مربع «لماذا يهمّ» فثابتة في المصادر: الاعتماد على الطلب الخارجي، والفائض المتجه إلى مستوى قياسي، والسقف الأوروبي، والانكماش العقاري. واستنتاجه محدود ومعقول، لكنه يغفل شرطاً مقيِّداً متاحاً في المصادر، وهو أن الدعم المالي المعلن قد يسند الطلب المحلي جزئياً.",
-              "repair": "تُضاف فقرة الاستجابة المالية والنقدية من المصدر 3، ورد بكين من المصدر 4، وجملة سبب أزمة العقار من المصدر 2. وتُصاغ الجملة الأخيرة من المربع هكذا: «وما دام الاستثمار العقاري في انكماش، فلن يسهل على الطلب المحلي تعويض أي تباطؤ في هذا المحرك، ما لم يُسرَّع تنفيذ الدعم المالي المعلن»."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "تتبع الفقرات سؤالاً واضحاً عن مصدر قوة النمو وحدوده، لكن عبارة «جاءت مؤشرات الداخل أضعف من صورة التصدير» يتبعها مؤشران تجاوزا التوقعات أو طابقاها. وتأتي فقرة «وفي الأسعار…» رقمين معزولين بلا الآلية التي تربطهما بضعف الطلب. ويُختم التقرير بخبر السقف الأوروبي دون أي إشارة إلى الخطوة التالية.",
-              "repair": "يُعاد افتتاح قسم الطلب المحلي بضعف الاستهلاك، ويُنقل الإنتاج الصناعي إلى فقرة التصنيع والتصدير، وتُضاف آلية فائض الطاقة الإنتاجية وضعف الطلب من المصدر 3 إلى فقرة الأسعار. ويُختم التقرير بالاستجابة المالية المتوقعة ورد بكين على الضغوط التجارية."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الأرقام والفترات مطابقة للمصادر: 4.5%، و4.3%، و4.4%، و4.6%، و36%، و938 مليار دولار، و133.5 مليار دولار، و20.6% مقابل 19.9%، و919 ألف سيارة، و7.1 مليون سيارة. لكن صيغة «كبير الاقتصاديين» تحرّف رتبة «senior economist». وعبارة «أعلن المكتب الوطني للإحصاء… بدعم من قوة الصادرات» تنسب تفسير الصادرات إلى المكتب، مع أن المصادر 3 و4 هي التي تقدم هذا التفسير.",
-              "repair": "تُستبدل بها صيغة «الاقتصادي الأول»، ويُفصل الرقم الرسمي عن تفسيره: «أعلن المكتب… أن الاقتصاد نما 4.5%… متسارعاً من 4.3%، مدعوماً بقوة الصادرات التي عوّضت إلى حد كبير ضعف العقار والاستهلاك»."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يعرض العنوان والموجز والمقدمة معاً ما تغيّر: تسارع النمو إلى 4.5% من 4.3% بدعم الصادرات. ويحددون ما بقي على حاله: تراجع الاستثمار العقاري 20.6% وضعف الاستهلاك. ولا يوجد تناقض ظاهر بينها.",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "يضع التقرير الرقم في سياقه: الربع السابق، وتوقعات رويترز، والهدف الرسمي، وتوقع صندوق النقد الدولي. ويذكر سبب أزمة العقار وأثرها في ثروة الأسر ومدخراتها، والاستجابة المالية (550 مليار يوان، وحزمة أواخر سبتمبر). ويعرّف كل خبير بصفته ومؤسسته. أما مربع «لماذا يهمّ» فمقدماته ثابتة في المصادر: الاعتماد على الطلب الخارجي، والفائض المتجه إلى مستوى قياسي، والسقف الأوروبي، والانكماش العقاري. واستنتاجه محدود بشرط صريح هو «ما لم يُسرَّع تنفيذ الدعم المالي المعلن».",
-              "repair": ""
-            },
-            "flow": {
-              "status": "clear",
-              "evidence": "صار قسم الطلب المحلي يبدأ بضعف الاستهلاك، ونُقل الإنتاج الصناعي إلى فقرة المصانع والتصدير. وتربط فقرة الأسعار الرقمين بآلية فائض الطاقة الإنتاجية، ويُختم التقرير برد بكين على ضغوط الفائض. ويضيف المربع قيداً لا يكرر خاتمة المتن، هو أن تعويض أي تباطؤ في التصدير مشروط بتنفيذ الدعم المالي.",
-              "repair": ""
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "ثلاثة مواضع تحتاج ضبطاً: لقب «كبيرة خبراء الأسواق» يرفع رتبة «senior market strategist» (المصدر 4). وعبارة «بدفع من طفرة الذكاء الاصطناعي» تمد سبباً ذكره المصدر 2 إلى صادرات السيارات. وعبارة البطالة «5.2%» بلا شهر. أما بقية الأرقام والفترات فمطابقة للمصادر، ومنها 4.5% و4.3% و4.4% و4.6% و36% و938 مليار دولار و133.5 مليار دولار و20.6% مقابل 19.9% و550 مليار يوان، وكذلك أرقام الرسم البياني (5، 4.3، 4.5).",
-              "repair": "استبدال اللقب بـ«الاستراتيجية الأولى للأسواق»، وفصل أثر الذكاء الاصطناعي في جملة منسوبة إلى «بي بي سي»، وإضافة «في سبتمبر» إلى رقم البطالة."
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 5,
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
+      "headline": "الطرح العام الأولي: كيف تتحول شركة إلى ملكية متداولة في البورصة ومن يحدد سعر سهمها؟",
+      "section": "explainers",
       "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "عوّض الطلب الخارجي القوي على السلع التكنولوجية الصينية إلى حد كبير أثر أزمة العقار وضعف طلب المستهلكين، وتعمق تراجع الاستثمار في التطوير العقاري إلى 20.6% بين يناير وسبتمبر",
-          "source": 3
-        },
-        {
-          "fact": "تسير الصين نحو تجاوز فائضها التجاري القياسي البالغ 1.2 تريليون دولار",
-          "source": 4
-        },
-        {
-          "fact": "وضع الاتحاد الأوروبي سقفاً لواردات السيارات الهجينة الصينية عند 350 ألف سيارة سنوياً وتطالب دول أعضاء بقيود إضافية",
-          "source": 4
-        },
-        {
-          "fact": "تتوقع شينا يوي تسريع تنفيذ الإجراءات المالية المعلنة بما يدعم الاستثمار والنشاط في الأرباع المقبلة",
-          "source": 3
-        }
-      ],
-      "slug": "china-q3-growth-accelerates-exports-a0aa29",
-      "title": "نمو الاقتصاد الصيني يتسارع إلى 4.5% في الربع الثالث بدعم الصادرات",
-      "score": 8,
-      "image": "photo"
-    },
-    {
-      "headline": "النفط يتراجع بعد تعليق واشنطن رسوماً وعقوبات على روسيا",
-      "section": "energy",
-      "importance": 7,
-      "sources": [
-        "https://www.nytimes.com/2026/10/17/business/trump-russia-sanctions-congress.html",
-        "https://www.cnbc.com/2026/10/18/oil-price-today-ukraine-russia-iran-strait-hormuz.html",
-        "https://www.skynewsarabia.com/business/1899012-%D8%A7%D9%84%D9%86%D9%81%D8%B7-%D9%8A%D8%AA%D8%B1%D8%A7%D8%AC%D8%B9-%D8%AA%D8%B9%D9%84%D9%8A%D9%82-%D8%AA%D8%B1%D8%A7%D9%85%D8%A8-%D8%B9%D9%82%D9%88%D8%A8%D8%A7%D8%AA-%D8%B1%D9%88%D8%B3%D9%8A%D8%A7",
-        "https://www.masrawy.com/news/news_economy/details/2026/10/19/3065054/%D8%A7%D9%86%D8%AE%D9%81%D8%A7%D8%B6-%D8%A3%D8%B3%D8%B9%D8%A7%D8%B1-%D8%A7%D9%84%D9%86%D9%81%D8%B7-%D8%A7%D9%84%D9%8A%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%AB%D9%86%D9%8A%D9%86-%D9%81%D9%8A-%D8%A8%D8%AF%D8%A7%D9%8A%D8%A9-%D8%A7%D9%84%D8%AA%D8%B9%D8%A7%D9%85%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D9%85%D8%A8%D9%83%D8%B1%D8%A9"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "يوضح الافتتاح ما تغيّر، وهو الإعفاء من عقوبات ورسوم قانون جراهام وتراجع الخام. لكن القيد الأهم، وهو أن الرئيس سيستخدم ما يصل إلى 60 يوماً لتقييم أثر العقوبات والرسوم (المصدر 3)، مؤجل إلى الفقرة الأخيرة. كما تزعم عبارة «إجراءات جديدة لم تكن قد طُبّقت بعد» حالة قانونية لا تثبتها المصادر.",
-              "repair": "نقل تصريح روبيو إلى الفقرة الثانية بجوار وصف الإعفاء، وحذف «لم تكن قد طُبّقت بعد»."
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "يتضمن التقرير الدافع السياسي (المصدر 1) وقراءة المحلل ووترر مع صفته ومؤسسته وارتفاع الأسعار يوم الجمعة. لكنه يغفل تحرك برنت يوم الاثنين رغم أنه الخام القياسي العالمي، ويقلب العلاقة الزمنية بين اتفاق الديزل والإعفاء. أما مقدمات «لماذا يهمّ» فمسندة: غياب وضوح المدة (ووترر)، ومهلة الستين يوماً (روبيو)، وتراجع تدفقات الخليج (كبلر). والاستنتاج بأن أي تهدئة للأسعار تظل هشة استنتاج محدود ومشروط ومقبول.",
-              "repair": "إضافة: «وتراجع خام برنت 1.94 دولار، أو 1.77%، إلى 107.92 دولار للبرميل»، وتصحيح العبارة إلى «وجاء القرار بعد اتفاق...»."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "قسم «مخاطر على الإمدادات» سلسلة نشرات منفصلة: حريق سان بطرسبرغ، ثم توقف الضربات، ثم ناقلات الخليج، ثم مذكرة كبلر. ثم تأتي فقرة «سياسياً» تلحق زيلينسكي وروبيو بنهاية التقرير بلا رابط بما قبلها.",
-              "repair": "دمج الهجمات الأوكرانية وتوقفها المؤقت في فقرة واحدة عن الإمدادات الروسية، ودمج هجمات الناقلات وأرقام كبلر في فقرة واحدة عن الخليج. ونقل ردَّي روبيو وزيلينسكي إلى جوار وصف القرار."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "رقم غرب تكساس (100.58 دولار، -0.82%، 02:27 بتوقيت غرينتش) مسند بدقة إلى رويترز. لكن «مع ترقب المتعاملين وصول إمدادات روسية أكبر» أقوى من «weighed possibly higher Russian supplies» في المصدر 2، و«مقاعد» زيادة على المصدر 1.",
-              "repair": "صياغة الجملة: «مع موازنة المتعاملين احتمال زيادة الإمدادات الروسية»، واستبدال «تضر بالجمهوريين» بعبارة «تكلف الحزب الجمهوري مقاعد»."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يوضح العنوان والعنوان الفرعي والافتتاح ما تغيّر: إعفاء من عقوبات ورسوم رئيسية في قانون جراهام، وتراجع الخام مع احتمال زيادة الإمدادات الروسية. والقيد الأساسي، وهو مهلة تقييم تصل إلى 60 يوماً بحسب روبيو، صار في العنوان الفرعي وفي الفقرة الثانية بجوار وصف القرار. وحُذف ادعاء «لم تكن قد طُبّقت بعد».",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "يقدّم المتن غرض القانون (تشديد الضغط على موسكو بسبب حربها في أوكرانيا) والدافع السياسي المنسوب إلى «نيويورك تايمز» واتفاق الديزل السابق للقرار والقمة السعرية يوم الجمعة. ويرد ووترر بصفته ومؤسسته، و«كبلر» بوظيفتها. وفي «لماذا يهمّ» مقدمات مسندة: عدم وضوح التفاصيل والمدة وفق ووترر، ومهلة الستين يوماً، وتراجع تدفقات الخليج بفعل الهجمات وفق كبلر. والاستنتاج بأن أي تهدئة سعرية تظل هشة استنتاج محدود ومشروط بمصير الإعفاء وأمن الملاحة.",
-              "repair": "اختياري: توضيح عبارة «يضغط... في الاتجاه المعاكس» في الصندوق بعبارة صريحة مثل «يدفع الأسعار نحو الصعود»، دون تقوية الادعاء."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "الجزء الأول متماسك. أما قسم الإمدادات فيبدأ بفقرة من جملة واحدة «في الاتجاه المعاكس، تُبقي الهجمات...»، ثم يفصل فقرة الناقلات عن فقرة أرقام كبلر. كما تقف فقرة «نيويورك تايمز» وحدها بعيداً عن وصف القانون الذي تعلّق عليه.",
-              "repair": "دمج جملة المدخل بفقرة سان بطرسبرغ، ودمج هجمات الناقلات بأرقام كبلر في فقرة واحدة تبدأ بالأثر في التدفقات، وإلحاق تعليق «نيويورك تايمز» بفقرة الأمر التنفيذي وقانون جراهام."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الأرقام مطابقة للمصادر: غرب تكساس 100.58 دولار (-83 سنتاً، -0.82%)، وبرنت 107.92 دولار (-1.94 دولار، -1.77%) بحلول 02:27 غرينتش بحسب رويترز، و110 دولارات لامسها برنت الجمعة، و2.3 مليون ثم 7.6 مليون برميل، و8.5 مليون مقابل أكثر من 20 مليون برميل يومياً، و120 ألف برميل يومياً، و78 ميلاً بحرياً. لكن عبارة «سعياً إلى خنق صادرات الخام» حكم على النية مصدره «سي إن بي سي» (المصدر 2)، وموضعها يوحي بأنها من تقارير مركز عمليات التجارة البحرية البريطاني.",
-              "repair": "«وتقول «سي إن بي سي» إن إيران صعّدت هجماتها على الناقلات... سعياً إلى خنق صادرات الخام من المنطقة»."
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 5,
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "استبعد ووترر أن تحتسب السوق كاملاً زيادة دائمة في المعروض قبل وضوح تفاصيل الإعفاء ومدته",
-          "source": 3
-        },
-        {
-          "fact": "قال روبيو إن الرئيس سيستخدم فترة تصل إلى 60 يوماً لتقييم أثر العقوبات والرسوم على الاقتصاد العالمي",
-          "source": 3
-        },
-        {
-          "fact": "تراجعت تدفقات الخام الخليجي إلى نحو 8.5 مليون برميل يومياً بعدما تجاوزت 20 مليوناً في الأسبوع السابق، بحسب كبلر",
-          "source": 3
-        },
-        {
-          "fact": "تلقي الهجمات الأوكرانية على منشآت النفط الروسية واستهداف الناقلات في الخليج بظلالها على آفاق الإمدادات",
-          "source": 2
-        }
-      ],
-      "slug": "oil-falls-us-waiver-russia-sanctions-f7c876",
-      "title": "خام غرب تكساس يتراجع إلى 100.58 دولار بعد إعفاء روسيا من عقوبات جديدة",
-      "score": 8,
-      "image": "photo"
-    },
-    {
-      "headline": "أنثروبيك تخصص 5% من أسهمها لصندوق منفعة عامة قبل طرحها في البورصة",
-      "section": "technology",
-      "importance": 6,
-      "sources": [
-        "https://www.bbc.co.uk/news/articles/cm2kez327gdko",
-        "https://www.aljazeera.com/economy/2026/10/19/anthropic-says-it-will-commit-5-of-shares-to-public-benefit-fund",
-        "https://techcrunch.com/2026/10/18/anthropic-says-its-committing-5-of-its-shares-to-a-public-benefit-fund/"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "المقدمة تحدد بوضوح ما تغيّر: تخصيص 5% يسري فوراً مشروطاً بموافقة المساهمين، مع إضافات محتملة بتقدير مجلس الإدارة. لكن العنوان يُسقط صفة الاحتمال عن الطرح: «قبل طرحها في البورصة».",
-              "repair": "«قبل طرحها المرتقب في البورصة»."
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "التقرير يشرح الغاية والآلية: ربط الحصة بنمو القيمة بديلاً عن مكافآت المديرين، واستبعاد الضغط السياسي. ويضع ذلك في سياق المخاوف على الوظائف (صندوق النقد الدولي، ماكنزي) والتدقيق في القطاع، ويورد رد ماسك والخلفية القانونية للشركة. ويستبعد بحق أحداثاً منفصلة وردت في SOURCE 1، مثل استقالة الباحث ووثيقة ترامب. أما صندوق «لماذا يهمّ» فيربط قيمة الحصة بالتقييم ويحدد قيودها: موافقة المساهمين، وتقدير المجلس، وغياب قواعد الحوكمة. هذا استنتاج محدود ومشروط ومقبول، وإن كانت العلاقة بين تقييم الطرح ونقطة الأساس للزيادة البالغة 50% غير محددة في المصادر.",
-              "repair": "يُستحسن في صندوق «لماذا يهمّ» حذف «لمعالجة اضطراب سوق العمل»، لأن سوق العمل واحدة فقط من القضايا المحتملة. صيغة مقترحة: «فيرتفع ما قد يتاح منه للمنفعة العامة إذا ارتفعت قيمة الشركة»."
-            },
-            "flow": {
-              "status": "clear",
-              "evidence": "الفقرات مجمّعة حسب وظيفتها: آلية الحصة، ثم وظيفة الصندوق، ثم سوق العمل، ثم الطرح والإيرادات، ثم المخاوف والرد، ثم الخلفية، وتنتهي بالخطوة التالية. والخاتمة عن الحوكمة تخدم سؤال القارئ. بعض الفقرات تبدأ بـ«وقالت/وأضافت»، لكن التكرار محدود ولا يرقى إلى خلل.",
-              "repair": ""
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الشروط والتوقيت مضبوطة: يسري فوراً، ومشروط بموافقة المساهمين، و2% لكل زيادة 50%. لكن هناك ثلاث مشكلات. نسبة «من يقرر الإنفاق» إلى الشركة غير دقيقة (SOURCE 3). وتقدير التقييم منسوب إلى «بي بي سي» بدل المحللين، مع إغفال تقديرهم البالغ تريليوني دولار (SOURCE 2). ووصف ماكنزي فقد قيد «القائمة على الذكاء الاصطناعي».",
-              "repair": "تطبيق الإصلاحات الواردة في قائمة المشكلات أعلاه: إعادة صياغة جملة الحوكمة، ونسبة التقييم إلى المحللين، وإعادة قيد الذكاء الاصطناعي إلى تقدير ماكنزي."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يقرأ العنوان والدك والمقدمة معاً بوضوح. التخصيص 5% يسري فوراً مشروطاً بموافقة المساهمين، والإضافة 2% لكل زيادة 50% في القيمة متروكة لتقدير المجلس. والطرح موصوف بأنه «مرتقب» و«محتمل»، كما في SOURCE 1 وSOURCE 2.",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "يقدّم التقرير المحرّك، وهو التدقيق في القطاع ووصف أمودي للوضع بأنه «أزمة ثقة» (SOURCE 1 وSOURCE 3)، وسياق الطرح والإيرادات، وتقديرات صندوق النقد وماكنزي لأثر الذكاء الاصطناعي في الوظائف، وصفة «شركة منفعة عامة». وصندوق «لماذا يهمّ» يربط حجم الموارد بالتقييم، ويقيّد ذلك بموافقة المساهمين وتقدير المجلس وغياب قواعد الحوكمة. وهذا استنتاج محدود ومسند إلى مقدمات موثقة، لا تكرار للخاتمة.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "clear",
-              "evidence": "الفقرات مجمّعة حسب وظيفتها: آلية الصندوق، ثم استخداماته وحدوده، ثم رد الفعل، ثم سوق العمل وتقديراته، ثم الطرح والإيرادات، ثم التدقيق، ثم الخلفية، ثم ما سيأتي. والخاتمة عن الحوكمة تجيب عن سؤال القارئ الأساسي. العيب الأسلوبي الوحيد تكرار «أوضحت» في الفقرة الأولى، ويرد إصلاحه في قائمة المشكلات.",
-              "repair": ""
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الشروط والتوقيت والأرقام مطابقة للمصادر: 5%، و2% لكل 50%، و200 مليون دولار، و16.8 مليار دولار بنمو 45%، و40% و60% من الوظائف، و11 مليون عامل، وتقييم يتجاوز تريليوني دولار منسوب إلى محللين. لكن عبارة «يجعل الجزء المخصص للمنفعة العامة يكبر كلما نمت» تحوّل ما «يمكن» تخصيصه (SOURCE 2) إلى نتيجة مؤكدة.",
-              "repair": "«يتيح تخصيص حصة أكبر من الشركة للمنفعة العامة كلما نمت»."
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 4,
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "يمكن إضافة 2% من الأسهم لكل زيادة 50% في قيمة الشركة وفق تقدير مجلس الإدارة، والتخصيص مشروط بموافقة المساهمين",
-          "source": 2
-        },
-        {
-          "fact": "يتوقع محللون أن يتجاوز تقييم الشركة في الطرح تريليوني دولار",
-          "source": 2
-        },
-        {
-          "fact": "ستكشف الشركة في الأشهر المقبلة مزيداً من التفاصيل عن هيكل الصندوق وحوكمته",
-          "source": 3
-        },
-        {
-          "fact": "اضطراب سوق العمل الناجم عن الذكاء الاصطناعي قد يكون من القضايا التي يتصدى لها الصندوق",
-          "source": 2
-        }
-      ],
-      "slug": "anthropic-public-benefit-fund-five-percent-shares-bd9f24",
-      "title": "أنثروبيك تخصص 5% من أسهمها لصندوق منفعة عامة قبل طرحها المرتقب في البورصة",
+      "slug": "how-ipo-offer-price-is-set-4af35a",
+      "title": "كيف يُحدَّد سعر السهم حين تطرح شركة أسهمها في البورصة؟",
       "score": 9,
-      "image": "cover-art"
+      "image": "none"
     }
   ],
   "llm": {
-    "calls": 66,
-    "failures": 4,
-    "promptTokens": 806364,
-    "completionTokens": 255107,
-    "cacheReadTokens": 210408,
-    "costUsd": 9.9116,
+    "calls": 18,
+    "failures": 0,
+    "promptTokens": 156278,
+    "completionTokens": 26648,
+    "cacheReadTokens": 49872,
+    "costUsd": 1.394,
     "byModel": {
-      "claude-cli/claude-opus-5-5": 66
+      "claude-cli/claude-opus-5-5": 18
     }
   },
   "log": [
-    "[05:14:31] commons \"Saint Petersburg oil terminal\": 3 usable of 7",
-    "[05:14:32] commons \"oil pump jack 2026\": 7 usable of 12",
-    "[05:14:32] commons \"oil pump jack\": 5 usable of 12",
-    "[05:14:32] image: dropped \"2026019-FS-SCM-006 (55195863737).jpg\" — names too little of oil, pump, jack",
-    "[05:14:32] image: dropped \"Lots to Learn at Farm Lot 59 (20221021-FPAC-LSC-0235).jpg\" — names too little of oil, pump, jack",
-    "[05:14:32] image: dropped \"Lots to Learn at Farm Lot 59 (20221021-FPAC-LSC-0194).jpg\" — names too little of oil, pump, jack",
-    "[05:14:32] image: dropped \"Lots to Learn at Farm Lot 59 (20221021-FPAC-LSC-0356).jpg\" — names too little of oil, pump, jack",
-    "[05:14:32] image: dropped \"Lots to Learn at Farm Lot 59 (20221021-FPAC-LSC-0345).jpg\" — names too little of oil, pump, jack",
-    "[05:14:32] image: dropped \"A tourist boaat sials fast a oil tanker, Cochin Oil Terminal.jpg\" — taken in India, which the story does not name",
-    "[05:14:32] image: dropped \"An oil tanker sails past Cochin Port, Vallarpadam Island.jpg\" — taken in India, which the story does not name",
-    "[05:14:32] image: dropped \"Monumen Oil Pump Jack Field Sangasanga.jpg\" — taken in Indonesia, which the story does not name",
-    "[05:14:38] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4816",
-    "[05:14:44] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6006",
-    "[05:14:44] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"2026019-FS-SCM-010 (55196746856).jpg\": A clear, real photograph of working pumpjacks in a US oilfield illustrates a story about US benchmark WTI crude and worl",
-    "[05:14:44] published \"خام غرب تكساس يتراجع إلى 100.58 دولار بعد إعفاء روسيا من عقوبات جديدة\" -> oil-falls-us-waiver-russia-sanctions-f7c876",
-    "[05:15:23] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=38334",
-    "[05:15:23] desk notes: 26 facts (? 2, news 6, driver 5, background 6, numbers 4, next 2, reaction 1), 0 quotes (claude-cli/claude-opus-5-5)",
-    "[05:16:44] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: why_basis needs one to four reported premises with source numbers",
-    "[05:17:26] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=2 ms=39087",
-    "[05:17:52] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=25827",
-    "[05:17:52] desk model=claude-cli/claude-opus-5-5 applied=[lede,body] rejected=[]",
-    "[05:17:52] desk \"أنثروبيك تخصص 5% من أسهمها لصندوق منفعة عامة قبل طرحها في البورصة\": rewrote lede, body",
-    "[05:18:47] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=55513",
-    "[05:18:47] critic \"أنثروبيك تخصص 5% من أسهمها لصندوق منفعة عامة قبل طرحها في البورصة\": revise score=8 issues=8",
-    "[05:18:47]   · العنوان يقدّم الطرح كأنه محسوم: «قبل طرحها في البورصة». المصادر تصفه بأنه إدراج «محتمل» (SOURCE 1) ومتوقع قبل نهاية 2026 (SOURCE 2)، والمقدمة نفسها تقول «طرح مح",
-    "[05:18:47]   · عبارة «في عملية قد تقيّم الشركة بأكثر من تريليون دولار بحسب «بي بي سي»» تنسب التقدير إلى منفذ إخباري، وتُسقط التقدير المنسوب إلى أصحابه في SOURCE 2: «توقعات محل",
-    "[05:18:47]   · عبارة «بما في ذلك الجهة التي تقرر أوجه إنفاقه» تنسب إلى أنثروبيك ما لم تقله. الشركة وعدت بمعلومات عن «الهيكل والحوكمة» فقط، أما سؤال «من يقرر» فهو صياغة TechCru",
-    "[05:18:47]   · عبارة «وتتسع تقديرات المخاطر على الوظائف» توحي باتجاه متصاعد لا تذكره المصادر، وتركيبها غير سلس. الإصلاح: «وتتعدد التقديرات لأثر الذكاء الاصطناعي في الوظائف».",
-    "[05:19:19] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=31665",
-    "[05:20:17] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=58297",
-    "[05:20:17] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,lede,whyItMatters,body] rejected=[]",
-    "[05:20:17] desk \"أنثروبيك تخصص 5% من أسهمها لصندوق منفعة عامة قبل طرحها المرتقب في البورصة\": rewrote subtitle, lede, whyItMatters, body",
-    "[05:21:02] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=44752",
-    "[05:21:02] critic (second pass) \"أنثروبيك تخصص 5% من أسهمها لصندوق منفعة عامة قبل طرحها المرتقب في البورصة\": revise score=9 issues=4",
-    "[05:21:32] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=29886",
-    "[05:22:02] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=30275",
-    "[05:22:02] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
-    "[05:22:02] desk \"أنثروبيك تخصص 5% من أسهمها لصندوق منفعة عامة قبل طرحها المرتقب في البورصة\": rewrote body",
-    "[05:22:02] mended \"أنثروبيك تخصص 5% من أسهمها لصندوق منفعة عامة قبل طرحها المرتقب في البورصة\": the second pass's 4 finding(s) sent back once more",
-    "[05:22:51] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=48854",
-    "[05:22:51] precheck \"أنثروبيك تخصص 5% من أسهمها لصندوق منفعة عامة قبل طرحها المرتقب في البورصة\": clean",
-    "[05:22:57] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5393",
-    "[05:22:57] image: the picture should say: An AI company heading for a record Wall Street listing is setting aside part of its shares for public benefit.",
-    "[05:23:02] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5013",
-    "[05:23:02] image: the sources' photographs give no brief (1: A man in a dark suit gestures as he speaks at a podium with ; 2: not a news photo; 3: not a news photo)",
-    "[05:23:02] image: tier 3, the writer's own subjects: Anthropic Claude | Dario Amodei | San Francisco skyline",
-    "[05:23:03] commons \"Anthropic Claude 2026\": 10 usable of 12",
-    "[05:23:04] commons \"Anthropic Claude\": 1 usable of 12",
-    "[05:23:04] image: dropped \"Yellow-headed caracara (Milvago chimachima) on capybara (Hydrochoeris \" — names too little of anthropic, claude",
-    "[05:23:04] image: dropped \"Capybara skeleton.jpg\" — names too little of anthropic, claude",
-    "[05:23:04] image: dropped \"Cattle tyrant (Machetornis rixosa) on Capybara.jpg\" — names too little of anthropic, claude",
-    "[05:23:04] image: dropped \"055 Capybara swimming in Encontro das Águas State Park Photo by Giles \" — names too little of anthropic, claude",
-    "[05:23:04] image: dropped \"046 Capybara by the river in Encontro das Águas State Park Photo by Gi\" — names too little of anthropic, claude",
-    "[05:23:04] image: dropped \"028 Capybara and Pink Ipê trees in Encontro das Águas State Park Photo\" — names too little of anthropic, claude",
-    "[05:23:04] commons \"Dario Amodei 2026\": 0 usable of 1",
-    "[05:23:04] commons \"Dario Amodei\": 8 usable of 12",
-    "[05:23:04] image: dropped \"Dario Amodei at TechCrunch Disrupt 2023 05.jpg\" — another frame of a series a published story runs",
-    "[05:23:04] image: dropped \"Dario Amodei at TechCrunch Disrupt 2023 08.jpg\" — another frame of a series a published story runs",
-    "[05:23:04] image: dropped \"Dario Amodei at TechCrunch Disrupt 2023 01.jpg\" — another frame of a series a published story runs",
-    "[05:23:04] image: dropped \"Dario Amodei at TechCrunch Disrupt 2023 07.jpg\" — another frame of a series a published story runs",
-    "[05:23:05] commons \"San Francisco skyline 2026\": 11 usable of 12",
-    "[05:23:06] commons \"San Francisco skyline\": 4 usable of 12",
-    "[05:23:10] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=2962",
-    "[05:23:10] image: vision rejected all candidates (All candidates are San Francisco skylines, cityscapes or a landmark, which the rules exclude, or an unrelated car show photo. None shows Anthropic, its people, or anything about the public-benefit share allocation or the IPO, so the fallback should find a better image.)",
-    "[05:23:10] image: tier 4, the story's point and its subject: New York Stock Exchange | Nasdaq MarketSite Times Square | Wall Street New York | data center United States | New York Stock Exchange trading floor | AI data center server hall (home: United States, USA, American, San Francisco, California, New York)",
-    "[05:23:11] commons \"New York Stock Exchange\": 18 usable of 24",
-    "[05:23:11] pexels \"New York Stock Exchange\": 8 usable",
-    "[05:23:13] openverse \"New York Stock Exchange\": 8 usable of 20",
-    "[05:23:13] image: dropped \"New York Stock Exchange 1\" — another frame of a series a published story runs",
-    "[05:23:13] image: dropped \"No Known Restrictions: Traders on the Floor of the New York Stock Exch\" — dated 1936, an archival picture",
-    "[05:23:13] image: dropped \"No Known Restrictions: New York Stock Exchange Floor by Thomas J. O'Ha\" — dated 1963, an archival picture",
-    "[05:23:13] image: dropped \"American flags displayed prominently on a historic Wall Street buildin\" — names too little of stock, exchange",
-    "[05:23:13] image: thumbnail HTTP 403 for https://live.staticflickr.com/3343/3448030730_4a2d32e37b_n.jpg",
-    "[05:23:14] image: thumbnail HTTP 403 for https://live.staticflickr.com/7379/15933611724_0ca11196ee_n.jpg",
-    "[05:23:24] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=9453",
-    "[05:23:31] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6360",
-    "[05:23:31] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"New York Stock Exchange 20170311.jpg\": The story is about Anthropic's own public-benefit fund, but the photo shows the New York Stock Exchange facade, a landma",
-    "[05:23:31] image: thumbnail HTTP 403 for https://live.staticflickr.com/3343/3448030730_4a2d32e37b_n.jpg",
-    "[05:23:31] image: thumbnail HTTP 403 for https://live.staticflickr.com/7379/15933611724_0ca11196ee_n.jpg",
-    "[05:23:32] image: thumbnail HTTP 403 for https://live.staticflickr.com/2325/1613548865_6e6dd9cb06_n.jpg",
-    "[05:23:40] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7977",
-    "[05:23:48] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7246",
-    "[05:23:48] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"New York Stock Exchange\": The story is about Anthropic's public-benefit fund and does not name the NYSE as its listing venue, so a flag-draped NYS",
-    "[05:23:48] image: the story's people first: Dario Amodei 2026 | Dario Amodei",
-    "[05:23:48] commons \"Dario Amodei 2026\": 0 usable of 1",
-    "[05:23:48] commons \"Dario Amodei\": 13 usable of 20",
-    "[05:23:48] image: dropped \"Dario Amodei at TechCrunch Disrupt 2023 05.jpg\" — another frame of a series a published story runs",
-    "[05:23:48] image: dropped \"Dario Amodei at TechCrunch Disrupt 2023 04.jpg\" — another frame of a series a published story runs",
-    "[05:23:48] image: dropped \"Dario Amodei at TechCrunch Disrupt 2023 08.jpg\" — another frame of a series a published story runs",
-    "[05:23:48] image: dropped \"Dario Amodei at TechCrunch Disrupt 2023 01.jpg\" — another frame of a series a published story runs",
-    "[05:23:48] image: dropped \"Dario Amodei at TechCrunch Disrupt 2023 07.jpg\" — another frame of a series a published story runs",
-    "[05:23:48] image: dropped \"V20230504LJ-0199-2.jpg\" — shows kamala, not the story's people",
-    "[05:23:48] image: dropped \"The Prime Minister meets with AI developers - 52922965274.jpg\" — shows rishi, deepmind, anthropic, openai, not the story's people",
-    "[05:23:48] commons \"Dario Amodei\": 13 usable of 20",
-    "[05:23:48] image: people shortlist: 2025 Sanae Takaichi and Dario Amodei in 2025 (2).jpg",
-    "[05:23:55] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6465",
-    "[05:23:55] image: vision rejected all candidates (The only candidate shows Dario Amodei at a courtesy call on Japanese PM Sanae Takaichi in Tokyo, a meeting unrelated to the share allocation. Takaichi and other officials are prominent, identifiable people who are not part of this story, and Amodei is small in a formal seated group. Pairing it with the headline would mislead, so a fallback picture of the company or sector is better.)",
-    "[05:23:58] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=2623",
-    "[05:23:58] image: last resort: data center server racks United States | data center server racks | data center server racks industrial | Anthropic headquarters | Anthropic building",
-    "[05:23:58] commons \"data center server racks United States\": 4 usable of 6",
-    "[05:23:59] commons \"data center server racks\": 14 usable of 24",
-    "[05:23:59] image: dropped \"Wikimedia Foundation Servers-8055 15.jpg\" — another frame of a series a published story runs",
-    "[05:23:59] image: dropped \"Wikimedia Foundation Servers-8055 02.jpg\" — another frame of a series a published story runs",
-    "[05:23:59] commons \"data center server racks industrial\": 0 usable of 0",
-    "[05:24:00] commons \"data center\": 15 usable of 24",
-    "[05:24:00] image: dropped \"Virginia Tech - data center.jpg\" — names too little of data, center, server, racks, industrial",
-    "[05:24:00] image: dropped \"Data center infrastructure in the United States.jpg\" — names too little of data, center, server, racks, industrial",
-    "[05:24:00] image: dropped \"CERN data centre.jpg\" — names too little of data, center, server, racks, industrial",
-    "[05:24:00] image: dropped \"Utah Data Center Panorama (cropped).jpg\" — names too little of data, center, server, racks, industrial",
-    "[05:24:00] image: dropped \"Microsoft Data Center Middenmeer, the Netherlands - 1.jpg\" — another frame of a series a published story runs",
-    "[05:24:00] image: dropped \"Una batteria di grossi generatori alimentati a gasolio in un Data Cent\" — names too little of data, center, server, racks, industrial",
-    "[05:24:00] image: dropped \"Le emissioni luminose notturne di un Data Center visto da lontano (800\" — names too little of data, center, server, racks, industrial",
-    "[05:24:00] commons \"Anthropic headquarters\": 0 usable of 0",
-    "[05:24:01] commons \"headquarters\": 18 usable of 24",
-    "[05:24:01] image: dropped \"Southwestern Bell Main Office -- Houston.jpg\" — names too little of headquarters",
-    "[05:24:01] image: dropped \"Head office building of Meta in Ireland.jpg\" — names too little of headquarters",
-    "[05:24:01] image: dropped \"ESI Technology Headquarters Wrexham UK.jpg\" — taken in United Kingdom, which the story does not name",
-    "[05:24:01] image: dropped \"Köln Germany Catkins-at-TUV-Rheinland-Headquarters-01.jpg\" — taken in Germany, which the story does not name",
-    "[05:24:01] image: dropped \"Namco headquarters building.jpg\" — taken in Japan, which the story does not name",
-    "[05:24:06] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4230",
-    "[05:24:06] image: vision rejected all candidates (fallback pass) (No candidate fits. Photos 1 and 6 show the headquarters of Burger King and a Texas state park, not Anthropic. Photos 2-4 come from the Epstein files, which would be embarrassing beside this story, and they are cluttered, dim close-ups of cables. Photo 5 is an abandoned Chernobyl radar site. None shows an AI company or a share listing for public benefit.)",
-    "[05:24:16] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7500",
-    "[05:24:16] image: vision rejected all candidates (fallback pass) (Candidates 1-5 are unrelated headquarters (a Texas park office, a New Jersey house, a Croatian firm, the Al-Quds agency, a New York office) with no link to Anthropic. Candidate 6 is the only sector scene, but it is an amateur 2011 flash snapshot of a man crouching from behind in a cluttered server room. That falls below publication standard and says nothing about the share allocation or the IPO, so the story runs better without a photograph.)",
-    "[05:24:16] image: last pass, a neutral illustration: data center | trading floor | data center server hall",
-    "[05:24:16] commons \"data center\": 15 usable of 24",
-    "[05:24:16] image: dropped \"Microsoft Data Center Middenmeer, the Netherlands - 1.jpg\" — another frame of a series a published story runs",
-    "[05:24:16] pexels \"data center\": 8 usable",
-    "[05:24:17] openverse \"data center\": 10 usable of 20",
-    "[05:24:17] image: dropped \"From below of fiber optic equipment with similar colorful rubber cable\" — names too little of data, center",
-    "[05:24:17] image: thumbnail HTTP 403 for https://live.staticflickr.com/7179/6947132019_44104a3acf_n.jpg",
-    "[05:24:18] image: thumbnail HTTP 403 for https://live.staticflickr.com/6156/6205315211_fe458e509e_n.jpg",
-    "[05:24:22] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3481",
-    "[05:24:22] image: vision rejected all candidates (fallback pass) (None fits. 1 shows a named groundbreaking ceremony with recognisable people. 2 is an amateur close-up of a fire-alarm panel. 3 is a cluttered construction-site snapshot. 4 is a dark, blurry night shot. 5 is a map. 6 carries visible CERN signage and is off-topic. None conveys an AI company's share allocation or IPO.)",
-    "[05:24:22] image: thumbnail HTTP 403 for https://live.staticflickr.com/6165/6205831916_de2983b0f5_n.jpg",
-    "[05:24:23] image: thumbnail HTTP 403 for https://live.staticflickr.com/6045/6239564720_7a282a86fa_n.jpg",
-    "[05:24:24] image: thumbnail HTTP 403 for https://live.staticflickr.com/3045/5863167909_c4357c71e0_n.jpg",
-    "[05:24:24] image: thumbnail HTTP 403 for https://live.staticflickr.com/4047/4323586224_5a1fde7a78_n.jpg",
-    "[05:24:25] image: thumbnail HTTP 403 for https://live.staticflickr.com/3290/2811490521_6c6a135c9f_n.jpg",
-    "[05:24:25] image: thumbnail HTTP 403 for https://live.staticflickr.com/5528/9069608036_724f803e01_n.jpg",
-    "[05:24:33] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7104",
-    "[05:24:37] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4123",
-    "[05:24:42] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4975",
-    "[05:24:42] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Data Center Network Core\": The frame is a cramped, odd-angle close-up of network racks and cabling with another company's Cisco Catalyst branding r",
-    "[05:24:42] published \"أنثروبيك تخصص 5% من أسهمها لصندوق منفعة عامة قبل طرحها المرتقب في البورصة\" -> anthropic-public-benefit-fund-five-percent-shares-bd9f24",
-    "[05:25:33] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=51658",
-    "[05:26:08] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=34952",
-    "[05:27:21] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: why_basis needs one to four reported premises with source numbers",
-    "[05:28:31] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=2 ms=66976",
-    "[05:29:38] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=67822",
-    "[05:29:38] evidence pair \"أنثروبيك تخصص 5% من أسهمها لصندوق منفعة عامة قبل طرحها المرتقب في البورصة\": 0 proved error(s) live (v32), 0 with the kept lessons (v0); the private drafts are not published"
+    "[11:12:31] newsroom start mode=explainer limit=4 dry-run=false",
+    "[11:12:40] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=8235",
+    "[11:12:40] explainer topic: الطرح العام الأولي: كيف تتحول شركة إلى ملكية متداولة في البورصة ومن يحدد سعر سهمها؟ (Initial Public Offering (IPO) and how the offer price is set)",
+    "[11:13:40] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=59708",
+    "[11:13:45] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4595",
+    "[11:13:45] data chart: none fits this piece",
+    "[11:14:20] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=35656",
+    "[11:14:20] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,whyItMatters,body] rejected=[]",
+    "[11:14:20] desk \"كيف تتحول شركة إلى سهم متداول في البورصة ومن يحدد سعر طرحها؟\": rewrote subtitle, whyItMatters, body",
+    "[11:14:20] checks explainer \"كيف تتحول شركة إلى سهم متداول في البورصة ومن يحدد سعر طرحها؟\": 648 words, 0 issues, 0 warnings",
+    "[11:14:49] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=28798",
+    "[11:14:49] critic explainer: revise score=8 issues=6",
+    "[11:14:49]   · الآلية ناقصة في عبارة «خيار التخصيص الإضافي، الذي يسمح له ببيع أسهم إضافية ثم إعادة شرائها من السوق إذا تراجع السعر»، فهي تشرح نصفها فقط. الإصلاح: «يبيع مدير ال",
+    "[11:14:49]   · رأي منسوب إلى جهة غير محددة في دليل بلا مصادر: «لذلك يرى المحللون أن القفزة الكبيرة في اليوم الأول قد تعني...». تُصاغ آليةً مباشرة: «ولهذا قد تعني القفزة الكبير",
+    "[11:14:49]   · تمهيد المقدمة يلمّح إلى موجة أخبار جارية: «وتتكرر أخبار شركات تقنية كبرى ومصارف تستعد لطرح حصص منها». الدليل بلا مصادر، فلا يصف تدفق الأخبار الحالي. يُستبدل بسؤ",
+    "[11:14:49]   · ترتيب كلمات متكلف في «وعند قراءة خبر عن طرح جديد تستحق خمسة أمور الانتباه». الصواب: «وعند قراءة خبر عن طرح جديد، ثمة خمسة أمور تستحق الانتباه». ويختل التعداد بع",
+    "[11:15:19] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=30014",
+    "[11:15:44] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=24800",
+    "[11:15:44] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,whyItMatters] rejected=[]",
+    "[11:15:44] desk \"كيف يُحدَّد سعر السهم حين تطرح شركة أسهمها في البورصة؟\": rewrote title, subtitle, whyItMatters",
+    "[11:15:59] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=15266",
+    "[11:15:59] critic (second pass) explainer: publish score=9",
+    "[11:16:02] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3149",
+    "[11:16:02] image: the picture should say: A new share gets its first price when trading opens on the exchange floor.",
+    "[11:16:02] image: tier 3, the writer's own subjects: stock exchange trading floor | New York Stock Exchange IPO | stock exchange bell ringing",
+    "[11:16:03] commons \"stock exchange trading floor 2026\": 2 usable of 3",
+    "[11:16:03] commons \"stock exchange trading floor\": 8 usable of 12",
+    "[11:16:03] image: dropped \"President Ronald Reagan During a Trip to New York and a Visit to The N\" — dated 1985, an archival picture",
+    "[11:16:03] image: dropped \"Secretary Rubio visits NYSE (55542207624).jpg\" — shows rubio, marco, not the story's people",
+    "[11:16:04] commons \"New York Stock Exchange IPO 2026\": 0 usable of 0",
+    "[11:16:04] commons \"New York Stock Exchange IPO\": 3 usable of 7",
+    "[11:16:04] image: dropped \"CABRERA @Xactly IPO.jpg\" — shows christopher, not the story's people",
+    "[11:16:10] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5406",
+    "[11:16:18] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=8546",
+    "[11:16:18] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Frankfurt Stock Exchange (Ank Kumar) 02.jpg\": The trading floor would suit a global IPO explainer, but the 'Deutsche' lettering on the board and the Frankfurt caption",
+    "[11:16:18] image: tier 4, the story's point and its subject: stock exchange opening bell | traders on trading floor | IPO bell ringing ceremony | stock exchange trading floor | stock ticker display board",
+    "[11:16:19] commons \"stock exchange opening bell\": 19 usable of 24",
+    "[11:16:19] image: dropped \"Director Petraeus rings opening bell at NY Stock Exchange - Flickr - T\" — shows petraeus, david, not the story's people",
+    "[11:16:19] image: dropped \"Director Petraeus rings opening bell at NY Stock Exchange - Flickr - T\" — shows petraeus, david, not the story's people",
+    "[11:16:19] image: dropped \"Director Petraeus rings NY Stock Exchange bell - Flickr - The Central \" — shows petraeus, david, not the story's people",
+    "[11:16:19] image: dropped \"Director Petraeus rings NY Stock Exchange bell - Flickr - The Central \" — shows petraeus, david, not the story's people",
+    "[11:16:19] image: dropped \"US Navy 040601-N-6371Q-096 Vice Adm. Gary Roughead, right, rings the o\" — dated 2004, an archival picture",
+    "[11:16:19] image: dropped \"New York Stock Exchange, 4-30-2010 (4565957967).jpg\" — another frame of a series a published story runs",
+    "[11:16:19] pexels \"stock exchange opening bell\": 8 usable",
+    "[11:16:37] openverse \"stock exchange opening bell\": 10 usable of 20",
+    "[11:16:37] image: dropped \"20190319-OSEC-NP-0010\" — names too little of stock, exchange, opening, bell",
+    "[11:16:37] image: dropped \"Staff Sergeant Salvatore A. Giunta - Medal of Honor - Afghanistan - Op\" — names too little of stock, exchange, opening, bell",
+    "[11:16:37] image: dropped \"Detailed view of a stock report displaying a market performance graph \" — names too little of stock, exchange, opening, bell",
+    "[11:16:37] image: dropped \"Close-up of a tablet displaying stock market analysis with colorful gr\" — names too little of stock, exchange, opening, bell",
+    "[11:16:37] image: dropped \"Hands folded over stock market documents with calculator and cash on d\" — names too little of stock, exchange, opening, bell",
+    "[11:16:37] image: dropped \"Financial chart with ascending trends on a grid background, ideal for \" — names too little of stock, exchange, opening, bell",
+    "[11:16:37] image: dropped \"Detailed view of cryptocurrency trading charts on digital screens, sho\" — names too little of stock, exchange, opening, bell",
+    "[11:16:37] image: dropped \"Close-up of a live cryptocurrency trading chart screen displaying dyna\" — names too little of stock, exchange, opening, bell",
+    "[11:16:37] image: dropped \"Smartphone with stock market data in front of financial chart.\" — names too little of stock, exchange, opening, bell",
+    "[11:16:37] image: thumbnail HTTP 403 for https://live.staticflickr.com/5179/5430182310_c6c31698d9_n.jpg",
+    "[11:16:43] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/48791271596_d7a5003312_n.jpg",
+    "[11:16:49] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5471",
+    "[11:16:49] image: vision rejected all candidates (fallback pass) (Photos 1, 2, 5 and 6 show named or recognisable people at specific ceremonies: a Medal of Honor recipient, Melania Trump, and military bell-ringings. Photos 3 and 4 are NYSE building fronts carrying NASA/Artemis event signage, flags and text. That makes them a landmark tied to someone else's event, and a building front does not picture the IPO pricing concept. No trading-floor scene without named people is on offer.)",
+    "[11:16:49] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/48790905398_0962d8aab7_n.jpg",
+    "[11:16:49] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/48790905973_7133f931dd_n.jpg",
+    "[11:16:50] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/48791269721_72109e3f23_n.jpg",
+    "[11:16:50] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/48790904418_a93d584db8_n.jpg",
+    "[11:17:13] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4925",
+    "[11:17:13] image: vision rejected all candidates (fallback pass) (None of the candidates works. Photos 2–5 show named people at specific bell-ringing ceremonies (Melania Trump, military delegations). Photo 1 is a signature on a wall. Photo 6 shows the NYSE floor, but its 'BE BEST' banners tie it to Melania Trump's 2019 visit, which is someone else's event.)",
+    "[11:17:15] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=2408",
+    "[11:17:15] image: last resort: stock exchange trading floor | stock exchange trading floor industrial",
+    "[11:17:16] commons \"stock exchange trading floor\": 18 usable of 24",
+    "[11:17:16] image: dropped \"New Toronto Stock Exchange trading floor.jpg\" — dated 1937, an archival picture",
+    "[11:17:16] commons \"stock exchange trading floor industrial\": 0 usable of 1",
+    "[11:17:17] commons \"stock exchange\": 17 usable of 24",
+    "[11:17:17] image: dropped \"Stock Exchange Yangon.jpg\" — names too little of stock, exchange, trading, floor, industrial",
+    "[11:17:17] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[11:17:17] image: dropped \"New Zealand Stock Exchange 1.jpg\" — names too little of stock, exchange, trading, floor, industrial",
+    "[11:17:17] image: dropped \"Brussels Stock Exchange (3).jpg\" — names too little of stock, exchange, trading, floor, industrial",
+    "[11:17:17] image: dropped \"Brussels Stock Exchange (6).jpg\" — names too little of stock, exchange, trading, floor, industrial",
+    "[11:17:17] image: dropped \"Brussels Stock Exchange (4).jpg\" — names too little of stock, exchange, trading, floor, industrial",
+    "[11:17:23] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6199",
+    "[11:17:23] image: vision rejected all candidates (fallback pass) (Photo 1, the Frankfurt trading floor, is the only real market scene, but its prominent 'Börse Frankfurt' sign places it in Germany, a country this global story (which cites the US and Egypt) does not mention. Photos 3, 5 and 6 are snapshots of a spreadsheet on a screen, and 2 and 4 are puzzling close-ups of a ticker-symbol wall. None works, so the story runs better without a photo.)",
+    "[11:17:30] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6515",
+    "[11:17:30] image: vision rejected all candidates (fallback pass) (This global explainer mentions only US and Egyptian listings. Photos 2 and 6 are the only lively trading-floor scenes, but their large 'Börse Frankfurt' signs tie them to Germany, which the story never mentions. Photo 5 is an IPO poster where the text and logo are the subject. Photos 3 and 4 are empty auditoriums with a wall mural. Photo 1 is a puzzling shot of floor tiles and legs. None fits well enough to run.)",
+    "[11:17:30] image: last pass, a neutral illustration: stock exchange opening bell | traders trading floor | bell ringing ceremony | stock exchange trading floor | stock ticker display board",
+    "[11:17:30] commons \"stock exchange opening bell\": 19 usable of 24",
+    "[11:17:30] image: dropped \"Director Petraeus rings opening bell at NY Stock Exchange - Flickr - T\" — shows petraeus, david, not the story's people",
+    "[11:17:30] image: dropped \"Director Petraeus rings opening bell at NY Stock Exchange - Flickr - T\" — shows petraeus, david, not the story's people",
+    "[11:17:30] image: dropped \"Director Petraeus rings NY Stock Exchange bell - Flickr - The Central \" — shows petraeus, david, not the story's people",
+    "[11:17:30] image: dropped \"Director Petraeus rings NY Stock Exchange bell - Flickr - The Central \" — shows petraeus, david, not the story's people",
+    "[11:17:30] image: dropped \"US Navy 040601-N-6371Q-096 Vice Adm. Gary Roughead, right, rings the o\" — dated 2004, an archival picture",
+    "[11:17:30] image: dropped \"New York Stock Exchange, 4-30-2010 (4565957967).jpg\" — another frame of a series a published story runs",
+    "[11:17:30] openverse \"stock exchange opening bell\": 10 usable of 20",
+    "[11:17:30] pexels \"stock exchange opening bell\": 8 usable",
+    "[11:17:30] image: dropped \"20190319-OSEC-NP-0010\" — names too little of stock, exchange, opening, bell",
+    "[11:17:30] image: dropped \"Staff Sergeant Salvatore A. Giunta - Medal of Honor - Afghanistan - Op\" — names too little of stock, exchange, opening, bell",
+    "[11:17:30] image: dropped \"Detailed view of a stock report displaying a market performance graph \" — names too little of stock, exchange, opening, bell",
+    "[11:17:30] image: dropped \"Close-up of a tablet displaying stock market analysis with colorful gr\" — names too little of stock, exchange, opening, bell",
+    "[11:17:30] image: dropped \"Hands folded over stock market documents with calculator and cash on d\" — names too little of stock, exchange, opening, bell",
+    "[11:17:30] image: dropped \"Financial chart with ascending trends on a grid background, ideal for \" — names too little of stock, exchange, opening, bell",
+    "[11:17:30] image: dropped \"Detailed view of cryptocurrency trading charts on digital screens, sho\" — names too little of stock, exchange, opening, bell",
+    "[11:17:30] image: dropped \"Close-up of a live cryptocurrency trading chart screen displaying dyna\" — names too little of stock, exchange, opening, bell",
+    "[11:17:30] image: dropped \"Smartphone with stock market data in front of financial chart.\" — names too little of stock, exchange, opening, bell",
+    "[11:17:30] image: thumbnail HTTP 403 for https://live.staticflickr.com/5179/5430182310_c6c31698d9_n.jpg",
+    "[11:17:30] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/48791271596_d7a5003312_n.jpg",
+    "[11:17:34] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3580",
+    "[11:17:34] image: vision rejected all candidates (fallback pass) (Every candidate fails. Photos 1, 2, 5 and 6 show named or recognisable people at bell-ringing ceremonies or visits, and 5 and 6 are military groups. Photos 3 and 4 show the NYSE facade with US flags and NASA event signage, which is a landmark and someone else's event, not a trading scene.)",
+    "[11:17:34] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/48790905398_0962d8aab7_n.jpg",
+    "[11:17:34] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/48790905973_7133f931dd_n.jpg",
+    "[11:17:34] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/48791269721_72109e3f23_n.jpg",
+    "[11:17:34] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/48790904418_a93d584db8_n.jpg",
+    "[11:17:39] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4872",
+    "[11:17:39] image: vision rejected all candidates (fallback pass) (Every candidate fails. Photos 2-5 show named people at specific ceremonies: Melania Trump's 'Be Best' event and military bell-ringings. Photo 1 is a close-up of a signature. Photo 6 shows the trading floor, but it is filled with 'Be Best' banners from that same event and with NYSE lettering that points to one place.)",
+    "[11:17:39] published explainer \"كيف يُحدَّد سعر السهم حين تطرح شركة أسهمها في البورصة؟\" -> how-ipo-offer-price-is-set-4af35a"
   ]
 }
