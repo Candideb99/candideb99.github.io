@@ -537,6 +537,7 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("two paragraphs opening on a bridge are sent back", said(flagged({ body: bridged }), /بجسر يشير/), true);
   const natural = "ورغم هذا الصعود، تبقى الأسهم دون ذروتها.\n\nورفعت قطر شحناتها عبر المضيق هذا الشهر، بحسب بيانات تتبع السفن.\n\nلكن هذا التحسن لم يكفِ لتعويض خسائر الربع.";
   check("a real contrast and a time phrase are not bridges", said(flagged({ body: natural }), /بجسر يشير/), false);
+  check("a piece that describes itself is sent back", said(flagged({ subtitle: "يتتبع هذا الشرح الطرح العام الأولي من نشرة الاكتتاب إلى أول جلسة تداول", body: "نص." }), /النص يصف نفسه/), true);
   check("a summing-up in abstract nouns is sent back", said(flagged({ body: "وتتباين الاحتمالات التي تواجهها السوق بين مكاسب شركات الطاقة وضغوط التمويل." }), /أسماء مجردة/), true);
   const relayed = "وقالت شينا يو في تصريحات أوردتها «سي إن بي سي» إن النمو تسارع. وأضاف محلل آخر في تصريحات أوردتها «رويترز» أن الصادرات قادت النمو. ورأت يو في تصريحات أوردتها «بلومبرغ» أن الاستهلاك ضعيف.";
   check("one attribution formula three times is sent back", said(flagged({ body: relayed }), /صيغة الإسناد نفسها/), true);
