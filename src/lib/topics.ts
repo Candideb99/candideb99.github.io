@@ -18,6 +18,15 @@
  * lasting beats, 4 to 13 an outlet, economy by theme, markets by asset, companies by industry, technology in four
  * (AI, chips, big tech, cyber); no Arab desk has a defence menu, and running stories live outside the menu. So 23
  * remain, defence has none, and a sub-topic is offered in a menu only while we write about it (`menuTopics()`).
+ *
+ * The same evening the owner went further: "i do not think fuel prices deserve own category, its important, but
+ * something like this could maybe fall under oil category. this applies for everything else." Two tests now hold every
+ * list: a sub-topic is never a part of another (fuel prices, refining, tankers and OPEC+ are oil; the Gulf exchanges are
+ * stocks), and a section is divided along one line only (energy by source, markets by asset, companies by industry,
+ * technology by technology: «big tech», a group of companies, was a second line, and so was «Gulf markets», a region).
+ * The stories no sub-topic claimed showed three beats the cut had missed: real estate (developers, a dozen stories, an
+ * عقارات section on every Arab business site), investment (FDI, economic zones, the Gulf's money abroad; Asharq's
+ * تمويل واستثمار) and fintech (wallets, tokenised assets). 22 in all.
  */
 import topicsData from "@data/topics.json";
 import { canonicalTag, normalizeArabic } from "./tag-map.mjs";
