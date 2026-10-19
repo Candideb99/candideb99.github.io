@@ -657,6 +657,50 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-10-19T05:24:42.210Z",
+      "slug": "anthropic-public-benefit-fund-five-percent-shares-bd9f24",
+      "checker": "4c54099299.2",
+      "lessons": "v32",
+      "lessonsHash": "5c629d81ea",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 27,
+        "notFound": 1,
+        "checked": 32,
+        "words": 536,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 36,
+        "notFound": 2,
+        "checked": 39,
+        "words": 548,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 36,
+        "notFound": 2,
+        "checked": 39,
+        "words": 548,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }

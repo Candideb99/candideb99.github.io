@@ -1,0 +1,117 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-19T04:49:57.584Z",
+  "durationSec": 128,
+  "read": 4,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "egypt-non-oil-exports-48-billion-2025-fe5963",
+      "title": "صادرات مصر السلعية غير البترولية تبلغ 48 مليار دولار في 2025",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 18,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 4,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "world-bank-gulf-economies-contract-2026-f98d77",
+      "title": "البنك الدولي يتوقع انكماش اقتصادات الخليج 4.3% هذا العام",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 35,
+        "checked": 35,
+        "supported": 34,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "microsoft-exits-nscale-essex-datacentre-power-ce50c6",
+      "title": "مايكروسوفت تنسحب من مركز بيانات في إسيكس وسط مخاوف من نقص الكهرباء",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 28,
+        "weak": 0,
+        "noEvidence": 3,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "qatari-diar-launches-alam-al-roum-investment-zone-82ae33",
+      "title": "الديار القطرية تطلق منطقة استثمارية في علم الروم بمصر لجذب الشركات",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 32,
+        "checked": 32,
+        "supported": 26,
+        "weak": 4,
+        "noEvidence": 1,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 4,
+    "failures": 0,
+    "promptTokens": 34485,
+    "completionTokens": 30909,
+    "cacheReadTokens": 0,
+    "costUsd": 0.894,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 4
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[04:49:58] second look: 4 to read now (4 published pieces not yet read; 64 read clean before publication and left out of the audit sample)",
+    "[04:49:59] world-bank-gulf-economies-contract-2026-f98d77:   source https://openknowledge.worldbank.org/bitstreams/a0c07fd2-4c8e-4e11-8231-8af9a5bff: content-type application/pdf;charset=UTF-8; read from the copy saved at publication (fetched then)",
+    "[04:50:36] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=36373",
+    "[04:50:36] egypt-non-oil-exports-48-billion-2025-fe5963: 22 of 22 sentences checked · 18 supported · 4 without a source · 0 confirmed error(s)",
+    "[04:50:56] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=56953",
+    "[04:50:56] world-bank-gulf-economies-contract-2026-f98d77: 35 of 35 sentences checked · 34 supported · 0 without a source · 0 confirmed error(s)",
+    "[04:51:50] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=52727",
+    "[04:51:50] microsoft-exits-nscale-essex-datacentre-power-ce50c6: 31 of 31 sentences checked · 28 supported · 3 without a source · 0 confirmed error(s)",
+    "[04:52:05] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=87544",
+    "[04:52:05] qatari-diar-launches-alam-al-roum-investment-zone-82ae33: 32 of 32 sentences checked · 26 supported · 2 without a source · 0 confirmed error(s)"
+  ]
+}

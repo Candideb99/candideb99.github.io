@@ -10841,6 +10841,161 @@
         }
       ],
       "outcome": "clean"
+    },
+    "egypt-non-oil-exports-48-billion-2025-fe5963": {
+      "at": "2026-10-19T04:49:58.102Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "4c54099299",
+      "publishedAt": "2026-10-18T23:26:35.236Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 18,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 4,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "ربط التوسع في الصادرات بقدرة الشركات على استغلال اتفاقيات التجارة التي تشارك فيها مصر، وبفهم قواعد المنشأ ومتطلبات دخول الأسواق، يعني أن وجود هذه الاتفاقيات وحده لا يكفي لتوسيع الصادرات.",
+        "فأثر مبادرات تكنولوجيا التجارة وحملات التوعية يتوقف على تحولها إلى أدوات تستخدمها الشركات فعلاً لتوسيع قاعدة المصدرين، وهو أثر لم تقدم التصريحات أرقاماً لقياسه بعد.",
+        "يقتصر الرقم الذي أعلنه الوزير على الصادرات السلعية غير البترولية في 2025، ولم تتضمن تصريحاته المنشورة مقارنة بقيمة هذه الصادرات في الأعوام السابقة أو توزيعها على القطاعات.",
+        "لذلك يبيّن الرقم حجم هذه الصادرات بنهاية العام، لكنه لا يكشف وحده اتجاه نموها."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "world-bank-gulf-economies-contract-2026-f98d77": {
+      "at": "2026-10-19T04:49:58.131Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "checker": "4c54099299",
+      "publishedAt": "2026-10-18T22:46:46.570Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "fromCopy": 1,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 35,
+        "checked": 35,
+        "supported": 34,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "فهو يقدّر أن أقل من 10% من الوظائف في المنطقة تواجه خطر الأتمتة في المدى القريب، بينما يملك ما بين 13 و20% منها إمكانات كبيرة لرفع الإنتاجية.",
+          "quote": "While less than ten percent of jobs in the region face near-term automation risk, between 13 and 20% carry significant augmentation potential — raising productivity for workers and firms that can use these tools effectively."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "microsoft-exits-nscale-essex-datacentre-power-ce50c6": {
+      "at": "2026-10-19T04:50:56.912Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v31",
+      "checker": "4c54099299",
+      "publishedAt": "2026-10-18T21:20:06.873Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 28,
+        "weak": 0,
+        "noEvidence": 3,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "وكان قد تبيّن أن الموقع، المقرر افتتاحه العام المقبل، لن يحصل على طاقة كافية قبل مطلع ثلاثينيات القرن الحالي أو منتصفها.",
+        "تعود المشكلة إلى شركة «يو كيه باور نتووركس» (UK Power Networks)، التي تملك شبكة الكهرباء في لندن وجنوب شرق إنجلترا وتتولى صيانتها.",
+        "فقد تبيّن في وقت سابق من هذا الشهر أنها أبلغت «إن سكيل» بعجزها عن تزويد موقع لوتون بكهرباء كافية قبل مطلع الثلاثينيات أو منتصفها، أي بعد سنوات من موعد الافتتاح المقرر."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "qatari-diar-launches-alam-al-roum-investment-zone-82ae33": {
+      "at": "2026-10-19T04:50:36.059Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "4c54099299",
+      "publishedAt": "2026-10-18T21:35:08.973Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 32,
+        "checked": 32,
+        "supported": 26,
+        "weak": 4,
+        "noEvidence": 1,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "ما حققه المشروع حتى الآن، بحسب المعلن، هو المبيعات، والمنطقة تفتح له مساراً آخر لاستضافة شركات وأنشطة خدمية.",
+        "وقال فريد إن استثمارات القطاع الخاص تجاوزت تريليون جنيه في العام الماضي، وإن الاستثمار الأجنبي المباشر بلغ نحو 18 مليار دولار بنهاية العام المالي 2025-2026 في يونيو."
+      ],
+      "weak": [
+        {
+          "sentence": "تمتد المنطقة على مساحة تقارب 50 ألف متر مربع، ويهدف إطلاقها إلى إتاحة أنشطة متنوعة في السياحة والعقار والخدمات داخل المشروع.",
+          "quote": "The launch marks a new step in developing the investment components of the Alam Al Roum project and creating opportunities for diversified activities in tourism, real estate and services, supporting Egypt’s efforts to attract Arab and foreign capital and expand economic development beyond the Nile Valley and Delta."
+        },
+        {
+          "sentence": "وأوضح طالب العذبة، المسؤول في الديار القطرية عن قيادة تطوير مشروعاتها وتسليمها في آسيا وأفريقيا، أن تجهيز المنطقة الاستثمارية استغرق عاماً من التخطيط والتنسيق مع الجهات الحكومية، وأن الشركة تعمل على تطوير منطقة حرة خدمية بمساحة 50 ألف متر مربع تستهدف قطاعات التكنولوجيا والمال والإعلام.",
+          "quote": "وقال طالب العذبة، رئيس قطاع تطوير وتسليم المشروعات فى آسيا وأفريقيا بشركة «الديار القطرية»، إن إعداد المنطقة استغرق عامًا من التخطيط والتنسيق مع الجهات الحكومية، مشيرًا إلى اختيار شركة «SOM» العالمية لإعداد المخطط العام، بعد منافسة شاركت فيها 6 من كبرى بيوت الخبرة الدولية."
+        },
+        {
+          "sentence": "ويمتد علم الروم، وفق العذبة، على 4900 فدان، أي أكثر من 20 كيلومتراً مربعاً، وتبني الشركة فيه ميناءً دولياً ومحلياً لليخوت تتجاوز طاقته 370 مرسى لربط المشروع بخطوط الملاحة البحرية الدولية.",
+          "quote": "وقال المسؤول في الشركة القطرية إنها تعمل على إنشاء مرسى دولي ومحلي وفق أعلى المعايير العالمية، بطاقة استيعابية تزيد على 370 مرسى لليخوت، ليكون المشروع بوابة تربط المنطقة والمشروعات المحيطة بها بالخلجان وخطوط الملاحة البحرية الدولية."
+        },
+        {
+          "sentence": "وتملك الشركة محفظة أراضٍ في مصر تبلغ 64 مليون متر مربع، واستقبل رئيس الوزراء مصطفى مدبولي رئيسها التنفيذي الشيخ حمد بن طلال آل ثاني في العلمين الجديدة في أغسطس لبحث مستجدات المشروع.",
+          "quote": "وكان رئيس مجلس الوزراء المصري مصطفى مدبولي قد استقبل الرئيس التنفيذي لشركة الديار الشيخ حمد بن طلال آل ثاني في مقر رئاسة مجلس الوزراء بمدينة العلمين الجديدة في أغسطس/آب الماضي، لبحث مستجدات مشروع تنمية وتطوير منطقة علم الروم."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }

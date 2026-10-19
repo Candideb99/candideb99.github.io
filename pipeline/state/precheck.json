@@ -3341,6 +3341,102 @@
           "noted": []
         }
       ]
+    },
+    "china-q3-growth-accelerates-exports-a0aa29": {
+      "at": "2026-10-19T05:05:11.841Z",
+      "title": "نمو الاقتصاد الصيني يتسارع إلى 4.5% في الربع الثالث بدعم الصادرات",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 45,
+            "checked": 45,
+            "supported": 38,
+            "weak": 6,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "oil-falls-us-waiver-russia-sanctions-f7c876": {
+      "at": "2026-10-19T05:14:44.196Z",
+      "title": "خام غرب تكساس يتراجع إلى 100.58 دولار بعد إعفاء روسيا من عقوبات جديدة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 31,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "anthropic-public-benefit-fund-five-percent-shares-bd9f24": {
+      "at": "2026-10-19T05:24:42.206Z",
+      "title": "أنثروبيك تخصص 5% من أسهمها لصندوق منفعة عامة قبل طرحها المرتقب في البورصة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 30,
+            "supported": 26,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 24,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تستعد أنثروبيك لما قد يكون أكبر طرح عام أولي في التاريخ، ويُتوقع إدراجها في السوق الأمريكية قبل نهاية العام، ويقدّر محللون أن يتجاوز تقييمها تريليوني دولار.",
+              "quote": "The announcement comes as Anthropic lays the ground for a potential blockbuster stock market listing that could value the firm at more than $1tn (£750bn).",
+              "source": "BBC News",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []
