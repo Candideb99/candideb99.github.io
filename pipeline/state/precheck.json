@@ -3465,6 +3465,180 @@
           "noted": []
         }
       ]
+    },
+    "french-bond-yields-jump-after-protests-1b64ee": {
+      "at": "2026-10-19T12:05:58.997Z",
+      "title": "عائد سندات فرنسا يقفز بأكثر من 10 نقاط أساس مع تعمّق المخاوف من العجز",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 42,
+            "checked": 42,
+            "supported": 34,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 5,
+            "unverified": 1,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 5,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "عائد السندات الفرنسية لعشر سنوات: نحو 4.85%",
+              "quote": "The chaos has spooked investors in France’s government debt, with the yield on its 10-year yield rising by 10 basis points to 4.89% on Monday.",
+              "source": "The Guardian",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 7,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تراجع مؤشر كاك 40 صباح الاثنين: 1.34%",
+              "quote": "The French Cac 40, which tracks the biggest companies listed in Paris, fell by 1.2% in morning trading, compared with a 0.7% drop on the pan-European Stoxx Europe 600 index.",
+              "source": "The Guardian",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 13,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "صعد العائد القياسي إلى نحو 4.85% خلال تعاملات الاثنين.",
+              "quote": "The chaos has spooked investors in France’s government debt, with the yield on its 10-year yield rising by 10 basis points to 4.89% on Monday.",
+              "source": "The Guardian",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 14,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وكان ارتفاع عوائد الآجال الأخرى أقل، إذ زاد عائد السندات لأجل عامين 6 نقاط أساس، وعائد السندات لأجل ثلاثين عاماً 8 نقاط أساس.",
+              "quote": "The 30-year bond, which is a benchmark for the French government’s long-term cost of borrowing, rose by five basis points to 5.42%.",
+              "source": "The Guardian",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 23,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "هبط مؤشر «كاك 40» بنسبة 1.34% في تعاملات الصباح، وكانت أسهم البنوك بين أكبر الخاسرين، إذ تراجع سهما «سوسيتيه جنرال» و«بي إن بي باريبا» بأكثر من 2%.",
+              "quote": "The French Cac 40, which tracks the biggest companies listed in Paris, fell by 1.2% in morning trading, compared with a 0.7% drop on the pan-European Stoxx Europe 600 index.",
+              "source": "The Guardian",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 25,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "unverified",
+              "sentence": "وضغطت المخاوف من عدم الاستقرار السياسي على اليورو، فانخفض 0.28% أمام الدولار و0.24% أمام الجنيه الإسترليني، بعدما هبط صباحاً إلى أدنى مستوى أمام العملة البريطانية في 17 شهراً.",
+              "quote": "The euro also slipped against the US dollar, down by 0.4% in early trading on Monday, falling to $1.1197.",
+              "source": "The Guardian",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "dip-holding-ipo-dubai-financial-market-44bc9e": {
+      "at": "2026-10-19T12:18:35.634Z",
+      "title": "«دبي للاستثمار» تعتزم بيع 20% من «دي اي بي هولدينغ» في أول طرح إماراتي هذا العام",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 36,
+            "checked": 36,
+            "supported": 31,
+            "weak": 0,
+            "noEvidence": 3,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 3,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "أعلنت «دبي للاستثمار» الاثنين أنها تعتزم بيع 20% من شركتها التابعة «دي اي بي هولدينغ»، مالكة مجمع دبي للاستثمار، في سوق دبي المالي.",
+              "quote": "DIP Holding, a subsidiary of Dubai Investments, announces on Monday its intention to list its shares on the Dubai Financial Market (DFM) through the UAE’s first Initial Public Offering (IPO) of the year.",
+              "source": "Economy Middle East",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 23,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ويمتد على 23 مليون متر مربع، ويخدم نحو 1,000 مستأجر ونحو 5,700 عقد إيجار من الباطن وأكثر من 150 ألف مقيم، بحسب الشركة.",
+              "quote": "It is home to more than 1,200 tenants and 5,700 sub-leases, according to its operator, Dubai Investments.",
+              "source": "AGBI (Arabian Gulf Business Insight)",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "global-food-inflation-accelerate-2027-3126f6": {
+      "at": "2026-10-19T12:29:20.728Z",
+      "title": "تضخم الغذاء العالمي مرشح للتسارع حتى 2027 مع اضطرابات الشحن والجفاف",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 34,
+            "checked": 34,
+            "supported": 32,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

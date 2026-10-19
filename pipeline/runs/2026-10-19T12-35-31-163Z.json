@@ -1,0 +1,462 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-19T11:52:27.107Z",
+  "durationSec": 2584,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "عوائد السندات الفرنسية تقفز 11 نقطة أساس مع اتساع الاضطرابات",
+      "section": "markets",
+      "importance": 8,
+      "sources": [
+        "https://aawsat.com/node/5331064",
+        "https://www.theguardian.com/world/2026/oct/19/france-hit-by-debt-sell-off-as-protests-unnerve-investors",
+        "https://www.cnbc.com/2026/10/19/france-protests-bond-yields-markets.html",
+        "https://www.alborsaanews.com/2026/10/19/2000316",
+        "https://www.ecb.europa.eu/press/pr/date/2022/html/ecb.pr220721~973e6e7273.en.html"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان يقول «عائد السندات الفرنسية يقفز» دون تحديد الأجل، مع أن عائدي السنتين والثلاثين عاماً ارتفعا بمقادير أصغر (المصدر 3). والمقدمة تنسب القفزة إلى الاحتجاجات وحدها، بينما تقدم المصادر 1 و2 و3 الاضطرابات عاملاً يضاف إلى مخاوف قائمة بشأن العجز والموازنة.",
+              "repair": "«عائد السندات الفرنسية لأجل عشر سنوات يقفز بأكثر من 10 نقاط أساس مع احتجاجات تعمّق مخاوف العجز»، وإضافة نصف جملة في المقدمة تقول إن الاضطرابات زادت شكوك المستثمرين في قدرة الحكومة على تمرير موازنة 2027 وكبح العجز."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الأداة معرّفة تعريفاً مقبولاً من المصدر 5، والخبراء معرّفون بأدوارهم ومؤسساتهم، وهذا جيد. لكن المصادر تشرح لماذا يقلق ارتفاع العوائد الدائنين (دوامة الدين، المصدر 3) وتذكر ما تتضمنه الموازنة (43 مليار يورو وهدف 5%، المصدر 1)، والتقرير يغفل الاثنين. وفي الصندوق تنتهي المقدمات (حصة الأجانب 60%، وشرطية الأداة، والعجز 5.1%) إلى استنتاج مقبول في جوهره هو أن مصير الموازنة يؤثر في علاوة المخاطر وفي فرص الاستناد إلى شبكة الأمان. لكن «يحدد» تجزم بأكثر مما تسمح به المقدمات، وجملة انتقال الضغط إلى اليورو لا تسندها المصادر.",
+              "repair": "إضافة مضمون الموازنة وآلية دوامة الدين في المتن. وفي الصندوق: «يملك المستثمرون الأجانب قرابة 60% من الدين الفرنسي، وشبكة الأمان لدى المركزي الأوروبي مشروطة باحترام الإطار المالي الأوروبي، لذلك يتوقف على مسار موازنة 2027 جزء كبير من علاوة المخاطر التي يطلبها الدائنون، ومن قدرة فرنسا على الاستناد إلى تلك الشبكة إن اضطربت السوق»، مع حذف الجملة الثانية أو ربطها بتراجع الثقة في الاستقرار السياسي (المصدر 1) دون ادعاء انتقال آلي من السندات إلى العملة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات مجمّعة حسب وظيفتها: سوق الدين، ثم المقارنة التاريخية، ثم الاضطرابات، ثم الأسهم والعملة، ثم المحللون، ثم الموازنة والمركزي الأوروبي. لكن فقرة «تنتقل المعركة الآن إلى البرلمان» تسرد آليات التصويت دون ذكر ما يُتصارع عليه. وصياغة «إن الاحتجاجات لن تُريح المستثمرين الدوليين في شراء السندات الفرنسية» ركيكة. وجملة «يبقى البنك المركزي الأوروبي خط الدفاع الأخير» تفتح الفقرة بحكم بلاغي غير مسند.",
+              "repair": "افتتاح فقرة البرلمان بمضمون الموازنة (المصدر 1) ثم عرض موقفي الاشتراكيين و«التجمع الوطني». وإعادة صياغة عبارة ريد: «إن الاحتجاجات ستجعل المستثمرين الدوليين أقل ارتياحاً لشراء السندات الحكومية الفرنسية». وافتتاح الفقرة الأخيرة بموقف شارون بيل المنسوب إليها."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة لمصادرها: 4.85% (المصدر 1)، و141-144 نقطة أساس مقابل 137، و1.34% و0.28% و0.24% و6 و8 نقاط أساس (المصدر 3)، و115.6% و5.1% (المصدر 2)، ونحو 2400 معتقل. لكن شرط إجراء العجز المفرط مضيَّق، و«يضاعف التقلبات» مبالغة في عبارة احتمالية، و«القسط الأكبر» تضخيم لموقع البنوك.",
+              "repair": "نقل معيار الأهلية بصيغته المزدوجة من المصدر 5، واستبدال «يضاعف» بـ«يزيد» مع إبقاء «قد»، واستبدال «القسط الأكبر» بـ«بين أكبر الخاسرين»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يحدد أجل العشر سنوات، والمقدمة تقدّم الاضطرابات عاملاً يعمّق مخاوف قائمة بشأن العجز والموازنة، والعنوان الفرعي لم يعد يربط اليورو آلياً باتساع الفارق. ويفصل المتن بين عائد العشر سنوات وارتفاعات أصغر في الآجال الأخرى.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "عُرّفت أداة حماية انتقال السياسة النقدية من المصدر 5، وعُرّف الخبراء بأدوارهم، وشُرحت دوامة الدين من المصدر 3. لكن القارئ لا يعرف مضمون موازنة 2027 الذي يدور عليه الصراع: هدف 5% وحزمة 43 مليار يورو وبنود الصحة والمعاشات (المصدر 1). وفي الصندوق مقدمات مسندة: حصة الأجانب قرابة 60%، وشرطية الأداة، والعجز نحو 5% مقابل 3%. ويستنتج منها أن مسار الموازنة يؤثر في علاوة المخاطر وفي إمكان الاستناد إلى الأداة، ويقيّده بشرط التصحيح المالي ومقاومة البرلمان. وهو استنتاج محدود ومقبول ويضيف إلى المتن.",
+              "repair": "افتتاح فقرة الموازنة بهدف 5% وحزمة 43 مليار يورو وبنودها واعتراض المعارضة على أعبائها على الأسر (المصدر 1)."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات مجمّعة حسب وظيفتها: سوق الدين، ثم المقارنة التاريخية، ثم الاضطرابات، ثم الأسهم والعملة، ثم المحللون، ثم الدين والعجز، ثم الموازنة والبرلمان والمركزي الأوروبي. لكن فقرة المحللين تخلو من الإشارة إلى ما ينتظر السوق، وهو ترجيح بروكس (المصدر 1). وعبارة «ونالت المخاوف... من اليورو» ملتبسة التركيب.",
+              "repair": "إضافة ترجيح بروكس الشرطي إلى فقرة المحللين، وإعادة صياغة جملة اليورو: «وضغطت المخاوف من عدم الاستقرار السياسي على اليورو»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة لمصادرها: 4.85% و141-144 مقابل 137 (المصدر 1)، و1.34% و0.28% و0.24% و6 و8 نقاط أساس (المصدر 3)، و115.6% و5.1% و2400 معتقل (المصدر 2). لكن «ويقضي هذا الإجراء بألا يتجاوز العجز 3%... ويدور عجز فرنسا حول 5%» تُقدَّم حكماً مستقلاً وتوحي باستبعاد فرنسا، مع أن معيار المصدر 5 مزدوج («أو» عدم ثبوت الإخفاق في اتخاذ إجراء فعال). وفي why_basis نُسب موقف الاشتراكيين إلى المصدر 3 وهو في المصدر 1.",
+              "repair": "نسبة جملة إجراء العجز المفرط إلى «سي إن بي سي» بصيغة «يُستبعد أن يتدخل ما لم...»، وتصحيح رقم المصدر في why_basis."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 9,
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "ارتفعت حصة المستثمرين الأجانب من الدين الفرنسي إلى قرابة 60% مطلع 2026، ما قد يزيد تقلبات السوق",
+          "source": 3
+        },
+        {
+          "fact": "من معايير أهلية أداة حماية انتقال السياسة النقدية احترام الإطار المالي الأوروبي: عدم الخضوع لإجراء العجز المفرط أو عدم ثبوت الإخفاق في اتخاذ إجراء فعال استجابة لتوصية مجلس الاتحاد الأوروبي",
+          "source": 5
+        },
+        {
+          "fact": "يحدد إجراء العجز المفرط سقف العجز بـ3% من الناتج، وعجز فرنسا نحو 5%",
+          "source": 3
+        },
+        {
+          "fact": "أعلن الاشتراكيون عزمهم التحرك لرفض شق الإيرادات في مشروع الموازنة عند بدء النقاش البرلماني",
+          "source": 1
+        }
+      ],
+      "slug": "french-bond-yields-jump-after-protests-1b64ee",
+      "title": "عائد سندات فرنسا يقفز بأكثر من 10 نقاط أساس مع تعمّق المخاوف من العجز",
+      "score": 6,
+      "image": "photo"
+    },
+    {
+      "headline": "«دبي للاستثمار» تطرح 20% من «دي اي بي هولدينغ» في أول اكتتاب إماراتي لعام 2026",
+      "section": "companies",
+      "importance": 7,
+      "sources": [
+        "https://www.agbi.com/markets/2026/10/dubai-investments-park-to-be-emirates-first-ipo-of-2026/",
+        "https://economymiddleeast.com/news/dip-holding-to-list-20-percent-of-its-shares-on-dfm-in-uaes-first-2026-ipo/",
+        "https://www.skynewsarabia.com/business/1899040-dip-%D9%87%D9%88%D9%84%D8%AF%D9%8A%D9%86%D8%BA-%D8%AA%D8%B9%D9%84%D9%86-%D9%86%D9%8A%D8%AA%D9%87%D8%A7-%D8%B7%D8%B1%D8%AD-%D8%A3%D8%B3%D9%87%D9%85%D9%87%D8%A7-%D8%B3%D9%88%D9%82-%D8%AF%D8%A8%D9%8A-%D8%A7%D9%84%D9%85%D8%A7%D9%84%D9%8A",
+        "https://www.thenationalnews.com/business/markets/2026/10/19/dubai-investment-to-list-dip-holdings-shares-in-first-dfm-ipo-this-year/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يوضح الدّك والفقرة الأولى أن الأسهم قائمة تبيعها «دبي للاستثمار»، فلا تدخل الشركة المدرجة أي حصيلة. ويذكر التقرير أن «دبي للاستثمار» تحتفظ بنسبة 80% بشرط بقاء حجم الطرح كما هو.",
+              "repair": "يُستحسن ذكر حق المساهم البائع في تعديل حجم الطرح أو شرائحه قبل انتهاء الاكتتاب (SOURCE 3)، لأنه يحدد شرط نسبة الـ80%."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "نموذج إيجار الأراضي الطويل وإعادة التسعير والتوزيعات مشروحة جيداً، وأساربوتا معرّف بمنصبه. في المقابل يغيب صافي الربح الأحدث (SOURCE 3)، ويغيب محرك نمو التداولات (SOURCE 1). مقدمات «لماذا يهمّ» سليمة واستنتاجها محدود ومعقول: تسعير 4 نوفمبر اختبار لشهية المستثمرين. لكن الصندوق يقدّم ادعاء الشركة بمحدودية الإنفاق الرأسمالي كأنه حقيقة، وصيغة «لأن... فإن» تربط نوع الطرح بطبيعة ما يشتريه المكتتبون ربطاً فضفاضاً.",
+              "repair": "أضف صافي الربح 444 مليوناً مقابل 418 مليوناً. وفي الصندوق اكتب: «لا تدخل الشركة أموال جديدة، فقيمة السهم تقوم على تدفقات إيجار تقول الشركة إنها لا تتطلب إنفاقاً رأسمالياً كبيراً، وعلى تنفيذ إعادة تسعير نحو 86% من محفظة الإيجار التشغيلي...»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "البناء العام جيد: آلية الطرح، ثم السياق، ثم النموذج والأرقام، ثم الشرائح والمواعيد. لكن فقرة صعود السهم وثناء المسمار مجمّعة بلا رابط، والفقرة المالية تبدأ بالأقدم.",
+              "repair": "انقل حركة السهم إلى قرب الإعلان، واحذف ثناء المسمار، وابدأ الفقرة المالية بالنصف الأول من 2026."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والمواعيد مطابقة للمصادر، لكن «86% من المحفظة» تُسقط مقام النسبة ونقطة بدء الخطة، و«عن موعد سابق» تحوّل أملاً إلى موعد، و«رغم تأجيل الطروحات» تغيّر النقيض الذي ورد في SOURCE 1.",
+              "repair": "استعمل «محفظة الإيجار التشغيلي للأراضي بين النصف الثاني من 2026 و2030»، و«الموعد الذي أمل فيه»، و«رغم التقلبات»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التمهيدي والمقدمة توضح معاً ما تغيّر وما لم يتغيّر: «دبي للاستثمار» تبيع 20% من أسهم قائمة، وتذهب الحصيلة إليها لا إلى «دي اي بي هولدينغ»، وتبقى لها 80% بشرط ألا يتغير حجم الطرح. والفعل «تعتزم» يحفظ أن الطرح لم يتم بعد.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "النص يشرح نموذج إيجار الأراضي الطويل وإعادة التسعير والتوزيعات، ويعرّف أساربوتا وبن كلبان بمنصبيهما. لكنه لا يذكر حجم المجمع (23 مليون متر مربع) ولا قاعدة مستأجريه ومقيميه (SOURCE 2 وSOURCE 3)، وهما ما يعطي معنى لنسب الإشغال وإعادة التسعير. أما صندوق «لماذا يهمّ» فمقدماته مسندة: لا أموال جديدة للشركة (SOURCE 3)، والشركة تقول إن إنفاقها الرأسمالي محدود وإن لديها خطة لإعادة تسعير 86% (SOURCE 3)، وموعد التسعير 4 نوفمبر (SOURCE 4)، وتأجيل الطروح (SOURCE 1). والاستنتاج محدود ومعقول: تسعير 4 نوفمبر أول قياس لاستعداد المستثمرين لدفع ثمن هذا الدخل.",
+              "repair": "أضف المساحة وعدد المستأجرين وعقود الباطن والمقيمين إلى فقرة وصف المجمع، منسوبة إلى الشركة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "البناء متدرج: آلية الطرح وحصيلته، ثم السياق السوقي، ثم نموذج الأعمال والأرقام، ثم الشرائح والمواعيد. لكن خبر تأجيل الطروح بسبب الصراع يتكرر في المقدمة والفقرة الثالثة، وتبدأ الفقرة الرابعة بـ«ورغم التقلبات» بلا مرجع سابق. والخاتمة الزمنية ناقصة لأنها تقفز من 28 أكتوبر إلى 4 نوفمبر من دون فترة الاكتتاب.",
+              "repair": "اجمع ذكر الصراع وتاريخه في الفقرة الثالثة، واكتب «تقلبات الأسواق»، وافتح الفقرة الأخيرة بفترة الاكتتاب 27 أكتوبر–3 نوفمبر."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الشروط والمقامات مضبوطة: 80% مشروطة بثبات حجم الطرح، ونسبة 86% من محفظة الإيجار التشغيلي للأراضي بين النصف الثاني من 2026 و2030، والتوزيعات رهن الموافقات، والإدراج رهن الموافقات وظروف السوق. غير أن «صافي الربح» يأتي بعد عبارة أساس المقارنة المعدلة، مع أن SOURCE 3 يصفه بأنه «المعلن».",
+              "repair": "اكتب «صافي الربح المعلن للفترة» وافصله عن جملة أساس المقارنة."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 8,
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "جميع أسهم الطرح قائمة مملوكة لـ«دبي للاستثمار» ولن تحصل «دي اي بي هولدينغ» على أي عائدات منه",
+          "source": 3
+        },
+        {
+          "fact": "يموّل المستأجرون مبانيهم ما يُبقي حاجة المجمع إلى نفقات رأسمالية مستمرة محدودة بحسب الشركة، وتشمل خطة تعاقدية إعادة تسعير نحو 86% من محفظة الإيجار التشغيلي للأراضي بين النصف الثاني من 2026 و2030",
+          "source": 3
+        },
+        {
+          "fact": "اندلاع الصراع الأمريكي الإيراني في فبراير دفع عدة شركات إلى تأجيل خطط طرحها أو تعليقها",
+          "source": 1
+        },
+        {
+          "fact": "من المقرر إعلان التسعير النهائي للطرح في 4 نوفمبر",
+          "source": 4
+        }
+      ],
+      "slug": "dip-holding-ipo-dubai-financial-market-44bc9e",
+      "title": "«دبي للاستثمار» تعتزم بيع 20% من «دي اي بي هولدينغ» في أول طرح إماراتي هذا العام",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "توقعات بتسارع تضخم أسعار الغذاء العالمية حتى 2027",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://aawsat.com/node/5331051",
+        "https://www.skynewsarabia.com/business/1899028-%D8%A7%D9%84%D8%A3%D8%B1%D8%B2-%D8%A7%D9%84%D8%A5%D9%86%D8%AF%D9%88%D9%86%D9%8A%D8%B3%D9%8A-%D9%88%D8%A7%D9%84%D8%B3%D9%83%D8%B1-%D8%A7%D9%84%D9%87%D9%86%D8%AF%D9%8A-%D9%8A%D8%B3%D8%AC%D9%84%D8%A7%D9%86-%D9%85%D8%B3%D8%AA%D9%88%D9%8A%D8%A7%D8%AA-%D9%85%D8%B3%D8%A8%D9%88%D9%82%D8%A9"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يقدّمان توقعاً منسوباً إلى تحليل رويترز («مرشح للتسارع»، «توقّع تحليل لوكالة رويترز»)، لا تضخماً تحقق. وتوضح المقدمة المستوى المرصود فعلاً: 136 نقطة، الأعلى منذ نوفمبر 2022. أما الدَّكّ فيحدد الفئة الأكثر تضرراً وسبب تضررها.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "آلية الكلفة (الأسمدة والوقود والعقود والعملة) مشروحة جيداً، وكذلك نطاق مؤشر الفاو، وأدوار المتحدثين ومؤسساتهم. لكن التقرير يُسقط سياقاً يورده المصدران 1 و2: تعطّل قمح البحر الأسود الذي دفع مصر وإندونيسيا إلى البحث عن مورّدين بديلين، وتحويل مسار السفن حول أفريقيا، وضعف الرياح الموسمية في الهند. وفقرة «لماذا يهمّ» تستند إلى مقدمات واردة في المصادر: تراكم كلفة السلعة والشحن والعملة، وتآكل حاجز المخزونات، واحتمال حظر الصادرات. والاستنتاج منها محدود ومشروط («إذا اقترن»، «قد يحوّل»)، ولا يكرر خلاصة الجسم.",
+              "repair": "إضافة سببَي البحر الأسود والبحر الأحمر إلى فقرة الشحن، وفقرة عن جفاف الهند وأسعار السكر والبصل والبقول، مع تحديد المستوردين العائدين في الشرق الأوسط وأفريقيا وسبب عودتهم (المصدران 1 و2)."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "التسلسل عموماً منطقي: المؤشر واتساعه، ثم الكلفة، ثم المستهلك، ثم الشركات، ثم موجة الطلب، ثم المخاطر. لكن جملة أرز إندونيسيا معلّقة في آخر فقرة الحرب والشحن. وفقرة إندونيسيا الأخيرة («وتراجعت واردات... ورغم أن إندونيسيا أكبر منتج لزيت النخيل...») تجمع نقص القمح وغلاء الزيوت دون رابط واضح. أما الخاتمة عن الاضطرابات الاجتماعية وحظر الصادرات فتؤدي وظيفتها.",
+              "repair": "نقل جملة الأرز إلى فقرة الأرز أو إلى فقرة الجفاف، ونقل جملة الزيوت النباتية إلى فقرة زيت الطهي في الإمارات بوصفها مقارنة بين أسعار الزيوت."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: 136 نقطة، 22% من 150 دولة مقابل 14%، أكثر من 30%، 10–13%، نحو 50%، نحو 40%، 7%، 41% و491 ألف طن. لكن «بعدما» في فقرة الخبز المصري تخلق تتابعاً زمنياً لا وجود له. وتسمية الحقيقة الرئيسية «دول تجاوز فيها تضخم الغذاء العام» قابلة للالتباس، إذ قد تُقرأ «تضخم الغذاء العام».",
+              "repair": "إعادة صياغة جملة الخبز بـ«أي بزيادة تقارب الربع»، وتعديل التسمية إلى «دول فاق فيها تضخم الغذاء التضخم العام (الربع الثالث)»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقدّم العنوان والمقدمة التسارع بوصفه توقعاً منسوباً إلى تحليل رويترز («توقّع تحليل لوكالة رويترز»)، ويثبّت المؤشر عند 136 نقطة، ولا يحوّل خطر الحظر أو النقص إلى أمر واقع («قد يدفع»). لا يوجد تناقض ظاهر بين العنوان والعنوان الفرعي.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "آلية الكلفة (الوقود والأسمدة والعقود والعملة)، ونطاق مؤشر الفاو، وأدوار المتحدثين ومؤسساتهم مشروحة كلها. لكن التقرير ما زال يُسقط ثلاثة أسباب يوردها المصدران 1 و2: تعطّل قمح البحر الأسود وتحويل السفن حول أفريقيا، وضعف الرياح الموسمية في الهند وأثره على السكر والبصل والبقول، وإحجام مستوردي الشرق الأوسط وأفريقيا عن الشراء ثم عودتهم. فقرة «لماذا يهمّ» مبنية على مقدمات واردة في المصادر (تراكم كلفة السلعة والشحن والعملة، وتآكل المخزونات، وموجة الطلب، واحتمال الحظر)، واستنتاجها محدود ومشروط («إذا اقترن»، «قد يحوّل») ولا يكرر الخاتمة.",
+              "repair": "إضافة سببَي البحر الأسود والبحر الأحمر إلى فقرة الشحن، وفقرة عن جفاف الهند وأرقامها، وتحديد المستوردين العائدين وسبب عودتهم قبل تصريح كارافايتسيف (المصدران 1 و2)."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "صار التسلسل متماسكاً: المؤشر واتساعه، ثم الكلفة، ثم الحبوب، ثم المستهلك، ثم الشركات، ثم موجة الطلب، ثم المخاطر. وجملة الأرز والزيوت في موضعها الآن. لكن العنوان الفرعي «الحبوب تحت ضغط الجفاف والنقل» يعد بشرح الجفاف والنقل، والفقرتان التاليتان تخلوان من أي منهما سوى «توقعات بتأخر هطول الأمطار».",
+              "repair": "ملء هذا القسم بأثر النينيو على الهند وجنوب شرق آسيا وتعطّل شحنات البحر الأسود، أو تعديل العنوان الفرعي ليطابق مضمونه."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصدرين: 136 نقطة (أعلى منذ نوفمبر 2022)، و22% من 150 دولة مقابل 14%، وأكثر من 30% منذ بداية 2026، و10–13%، ونحو 50%، ونحو 40%، و7%، و41% إلى 491 ألف طن. فقرة الخبز صارت «مقابل أربعة في يوليو، أي بزيادة تقارب الربع» دون تتابع زمني مخترع، وتسمية الحقيقة الرئيسية لم تعد ملتبسة.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 5,
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "ارتفعت أسعار الشحن بنحو 50% على بعض الطرق مع صعود النفط وعلاوات مخاطر الحرب، ويضخّم ضعف العملات المحلية التكاليف",
+          "source": 2
+        },
+        {
+          "fact": "قال توريرو إن حاجز المخزونات القياسية والمحاصيل الجيدة بدأ يتعرض لضغوط",
+          "source": 2
+        },
+        {
+          "fact": "توقع كارافايتسيف موجة طلب كبيرة جديدة خلال شهرين مع عودة المستوردين",
+          "source": 2
+        },
+        {
+          "fact": "الغلاء قد يدفع حكومات دول مورّدة رئيسية إلى حظر الصادرات بما يعمّق النقص",
+          "source": 2
+        }
+      ],
+      "slug": "global-food-inflation-accelerate-2027-3126f6",
+      "title": "تضخم الغذاء العالمي مرشح للتسارع حتى 2027 مع اضطرابات الشحن والجفاف",
+      "score": 6,
+      "image": "photo"
+    },
+    {
+      "headline": "الإمارات تعدّل أحكام الفوترة الإلكترونية قبل بدء التطبيق",
+      "section": "economy",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
+  "llm": {
+    "calls": 54,
+    "failures": 8,
+    "promptTokens": 922513,
+    "completionTokens": 302646,
+    "cacheReadTokens": 298986,
+    "costUsd": 11.1006,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 54
+    }
+  },
+  "log": [
+    "[12:05:52] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=8573",
+    "[12:05:58] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6003",
+    "[12:05:58] image: second check (claude-cli/claude-opus-5-5) RIGHT \"Palais Brongniart Paris 5.jpg\": A clear, well-lit frame of Palais Brongniart, the historic Paris Bourse listed as the story's own place, which fits a st",
+    "[12:05:58] published \"عائد سندات فرنسا يقفز بأكثر من 10 نقاط أساس مع تعمّق المخاوف من العجز\" -> french-bond-yields-jump-after-protests-1b64ee",
+    "[12:07:06] desk notes: 3 of 32 facts dropped (not in their source or copied from it)",
+    "[12:07:06] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=63702",
+    "[12:07:06] desk notes: 29 facts (? 3, news 7, next 3, background 5, numbers 7, driver 1, reaction 1, remark 2), 1 quotes (claude-cli/claude-opus-5-5)",
+    "[12:08:37] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: why_basis needs one to four reported premises with source numbers",
+    "[12:09:58] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=2 ms=77878",
+    "[12:10:33] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=35179",
+    "[12:10:33] desk model=claude-cli/claude-opus-5-5 applied=[lede,body] rejected=[]",
+    "[12:10:33] desk \"«دي اي بي هولدينغ» تعتزم طرح 20% في أول اكتتاب إماراتي لعام 2026\": rewrote lede, body",
+    "[12:11:42] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=69454",
+    "[12:11:42] critic \"«دي اي بي هولدينغ» تعتزم طرح 20% في أول اكتتاب إماراتي لعام 2026\": revise score=8 issues=9",
+    "[12:11:42]   · خطأ إسناد في why_basis: البند الرابع ينسب «والتسعير النهائي يُعلن في 4 نوفمبر» إلى SOURCE 1، وهذا الموعد لا يرد إلا في SOURCE 4 (The National). الإصلاح: قسّم ال",
+    "[12:11:42]   · ينقص التقرير: أحدث نتيجة للربح، وهي ارتفاع صافي الربح المعلن في النصف الأول من 2026 إلى 444 مليون درهم من 418 مليوناً (SOURCE 3). وتقدّم الفقرة المالية نتائج 20",
+    "[12:11:42]   · العنوان ناقص المتعلَّق: «تعتزم طرح 20% في أول اكتتاب» لا يبيّن ما المطروح. الإصلاح: «\"دي اي بي هولدينغ\" تعتزم طرح 20% من أسهمها في أول اكتتاب إماراتي لعام 2026»",
+    "[12:11:42]   · «وتأخر إدراج المجمع نفسه عن موعد سابق» يحوّل أملاً أبداه بن كلبان إلى موعد مقرر، وSOURCE 1 يقول إنه «hoped to list DIP before the end of last year». الإصلاح: «و",
+    "[12:12:22] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: why_basis needs one to four reported premises with source numbers",
+    "[12:13:01] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=2 ms=36152",
+    "[12:13:52] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=51473",
+    "[12:13:52] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,lede,whyItMatters,body] rejected=[]",
+    "[12:13:52] desk \"«دبي للاستثمار» تعتزم طرح 20% من «دي اي بي هولدينغ» في أول اكتتاب إماراتي هذا العام\": rewrote title, subtitle, lede, whyItMatters, body",
+    "[12:15:11] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=78663",
+    "[12:15:11] critic (second pass) \"«دبي للاستثمار» تعتزم طرح 20% من «دي اي بي هولدينغ» في أول اكتتاب إماراتي هذا العام\": revise score=8 issues=8",
+    "[12:15:49] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=38303",
+    "[12:16:44] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=55065",
+    "[12:16:44] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,whyItMatters,body] rejected=[]",
+    "[12:16:44] desk \"«دبي للاستثمار» تعتزم بيع 20% من «دي اي بي هولدينغ» في أول طرح إماراتي هذا العام\": rewrote title, subtitle, whyItMatters, body",
+    "[12:16:44] mended \"«دبي للاستثمار» تعتزم بيع 20% من «دي اي بي هولدينغ» في أول طرح إماراتي هذا العام\": the second pass's 8 finding(s) sent back once more",
+    "[12:17:57] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=72668",
+    "[12:17:57] precheck \"«دبي للاستثمار» تعتزم بيع 20% من «دي اي بي هولدينغ» في أول طرح إماراتي هذا العام\": clean",
+    "[12:18:02] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4500",
+    "[12:18:02] image: the picture should say: Dubai Investments sells a slice of a vast leased industrial park, testing investors' appetite for the UAE's first listing of the year.",
+    "[12:18:02] image: tier 1, the story's own place (Dubai Investments Park, Dubai Financial Market): Dubai Investments Park | Dubai Investments Park industrial area | Dubai Financial Market trading",
+    "[12:18:02] commons \"Dubai Investments Park\": 14 usable of 24",
+    "[12:18:02] image: dropped \"Premier Inn 30 Nov 2013 433.jpg\" — shows inn, inn, not the story's people",
+    "[12:18:02] image: dropped \"Premier Inn 30 Nov 2013 432.jpg\" — shows inn, inn, not the story's people",
+    "[12:18:02] image: dropped \"Emirates Air Line, London 01-07-2012 (7551143044).jpg\" — names too little of investments, park",
+    "[12:18:02] image: dropped \"Emirates Air Line, London 01-07-2012 (7551146190).jpg\" — names too little of investments, park",
+    "[12:18:02] image: dropped \"Emirates Air Line, London 01-07-2012 (7551152864).jpg\" — names too little of investments, park",
+    "[12:18:02] image: dropped \"Emirates Air Line, London 01-07-2012 (7551135822).jpg\" — names too little of investments, park",
+    "[12:18:03] pexels \"Dubai Investments Park\": 8 usable",
+    "[12:18:13] openverse \"Dubai Investments Park\": 10 usable of 20",
+    "[12:18:13] image: dropped \"Emirates Air Line, London 01-07-2012\" — names too little of investments, park",
+    "[12:18:13] image: dropped \"Emirates Air Line, London 01-07-2012\" — names too little of investments, park",
+    "[12:18:13] image: dropped \"Emirates Air Line, London 01-07-2012\" — names too little of investments, park",
+    "[12:18:13] image: dropped \"Emirates Air Line, London 01-07-2012\" — names too little of investments, park",
+    "[12:18:13] image: dropped \"Emirates Air Line, London 01-07-2012\" — names too little of investments, park",
+    "[12:18:13] image: dropped \"Emirates Air Line, London 01-07-2012\" — names too little of investments, park",
+    "[12:18:13] image: dropped \"Emirates Air Line, London 01-07-2012\" — names too little of investments, park",
+    "[12:18:13] image: dropped \"Emirates Air Line, London 01-07-2012\" — names too little of investments, park",
+    "[12:18:13] image: dropped \"Emirates Air Line, London 01-07-2012\" — names too little of investments, park",
+    "[12:18:13] image: dropped \"Emirates Air Line, London 01-07-2012\" — names too little of investments, park",
+    "[12:18:13] image: dropped \"Aerial view of modern residential villas surrounded by greenery in Dub\" — names too little of investments, park",
+    "[12:18:13] image: dropped \"Captivating view of Sharjah's modern high-rise architecture on a clear\" — names too little of investments, park",
+    "[12:18:13] image: dropped \"Stunning view of skyscrapers and yachts at Dubai Marina reflecting urb\" — names too little of investments, park",
+    "[12:18:13] image: dropped \"Stunning view of modern skyscrapers against a clear sky in Dubai, UAE,\" — names too little of investments, park",
+    "[12:18:13] image: dropped \"Aerial view of Dubai's modern skyline with towering skyscrapers and ur\" — names too little of investments, park",
+    "[12:18:13] image: dropped \"A stunning view of modern skyscrapers forming the urban skyline of Dub\" — names too little of investments, park",
+    "[12:18:13] image: dropped \"A striking modern building with unique geometric design in Dubai captu\" — names too little of investments, park",
+    "[12:18:13] image: dropped \"Modern skyscrapers stand tall against a clear blue sky in a vibrant ci\" — names too little of investments, park",
+    "[12:18:14] commons \"Dubai Investments Park industrial area\": 0 usable of 0",
+    "[12:18:14] pexels \"Dubai Investments Park industrial area\": 8 usable",
+    "[12:18:17] openverse \"Dubai Investments Park industrial area\": 0 usable of 0",
+    "[12:18:17] image: dropped \"A stunning aerial view of the lush Jumeirah Island housing community i\" — names too little of industrial, area",
+    "[12:18:17] image: dropped \"Stunning aerial view of Dubai's skyline featuring modern skyscrapers a\" — names too little of industrial, area",
+    "[12:18:17] image: dropped \"A scenic aerial view of Dubai Silicon Oasis with modern architecture a\" — names too little of industrial, area",
+    "[12:18:18] commons \"Dubai Financial Market trading\": 0 usable of 1",
+    "[12:18:18] pexels \"Dubai Financial Market trading\": 8 usable",
+    "[12:18:23] openverse \"Dubai Financial Market trading\": 0 usable of 0",
+    "[12:18:23] image: dropped \"Candlestick chart showing a downward trend in the stock market analysi\" — names too little of trading",
+    "[12:18:23] image: dropped \"Bright candlestick chart showing stock market trends and analysis.\" — names too little of trading",
+    "[12:18:23] image: dropped \"Businessman using laptop in office analyzing stock market charts. Prof\" — names too little of trading",
+    "[12:18:23] image: 10 file(s) dropped for naming none of Dubai Investments Park, Dubai Financial Market",
+    "[12:18:31] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7247",
+    "[12:18:35] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4103",
+    "[12:18:35] image: second check (claude-cli/claude-opus-5-5) RIGHT \"Dubai Investments Park 20181114 131201.jpg\": Taken at Dubai Investments Park, the frame clearly shows one of the park's residential compounds, part of the real-estat",
+    "[12:18:35] published \"«دبي للاستثمار» تعتزم بيع 20% من «دي اي بي هولدينغ» في أول طرح إماراتي هذا العام\" -> dip-holding-ipo-dubai-financial-market-44bc9e",
+    "[12:19:19] llm fail role=desk provider=claude model=claude-opus-5-5 attempt=1: an expert identification is not grounded or copies a long source phrase; rewrite it concisely and faithfully",
+    "[12:19:53] desk notes: 6 of 31 facts dropped (not in their source or copied from it)",
+    "[12:19:53] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=2 ms=31200",
+    "[12:19:53] desk notes: 25 facts (? 3, news 2, driver 4, numbers 7, reaction 5, next 3, background 1), 3 quotes (claude-cli/claude-opus-5-5)",
+    "[12:21:07] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: why_basis needs one to four reported premises with source numbers",
+    "[12:22:00] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=2 ms=50232",
+    "[12:22:00] desk: spelling table fixed body",
+    "[12:23:00] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=59642",
+    "[12:23:25] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=24929",
+    "[12:23:25] desk: body accepted on the second try",
+    "[12:23:25] desk model=claude-cli/claude-opus-5-5 applied=[lede,whyItMatters,body] rejected=[]",
+    "[12:23:25] desk \"تضخم الغذاء العالمي مرشح للتسارع حتى 2027 بفعل اضطرابات الشحن والجفاف\": rewrote lede, whyItMatters, body",
+    "[12:24:19] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=54065",
+    "[12:24:19] critic \"تضخم الغذاء العالمي مرشح للتسارع حتى 2027 بفعل اضطرابات الشحن والجفاف\": revise score=6 issues=9",
+    "[12:24:19]   · ينقص التقرير: العامل المحرّك الخاص بممرات الشحن. المصدران 1 و2 يذكران أن الهجمات على البنية التحتية للحبوب في البحر الأسود عطّلت شحنات القمح، فاضطر كبار المستور",
+    "[12:24:19]   · ينقص التقرير: أثر الجفاف بالأرقام. المصدران 1 و2 يذكران أن أضعف موسم رياح موسمية في الهند منذ أكثر من عقد خفّض الإنتاج، فسجّل السكر أعلى سعر له على الإطلاق، وقف",
+    "[12:24:19]   · ينقص التقرير: مصدر موجة الطلب المرتقبة. المصدران 1 و2 يذكران أن كبار المستوردين في الشرق الأوسط وأفريقيا أحجموا عن الشراء بعد محاصيل محلية جيدة، وأن عليهم العود",
+    "[12:24:19]   · بناء مفكك: جملة «وفي إندونيسيا بلغت أسعار الأرز مستويات قياسية وسط توقعات بتأخر هطول الأمطار» جاءت في آخر فقرة عن حرب إيران والأسمدة والشحن، ولا صلة لها بهما. ا",
+    "[12:25:06] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=47147",
+    "[12:25:56] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=50229",
+    "[12:25:56] desk model=claude-cli/claude-opus-5-5 applied=[title,body] rejected=[]",
+    "[12:25:56] desk \"تضخم الغذاء العالمي يتجه إلى التسارع حتى 2027 بفعل اضطرابات الشحن والجفاف\": rewrote title, body",
+    "[12:26:38] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=41681",
+    "[12:26:38] critic (second pass) \"تضخم الغذاء العالمي يتجه إلى التسارع حتى 2027 بفعل اضطرابات الشحن والجفاف\": revise score=6 issues=5",
+    "[12:27:17] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=38973",
+    "[12:27:53] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=36004",
+    "[12:27:53] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[12:27:53] desk \"تضخم الغذاء العالمي مرشح للتسارع حتى 2027 مع اضطرابات الشحن والجفاف\": rewrote body",
+    "[12:27:53] mended \"تضخم الغذاء العالمي مرشح للتسارع حتى 2027 مع اضطرابات الشحن والجفاف\": the second pass's 5 finding(s) sent back once more",
+    "[12:28:52] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=59144",
+    "[12:28:52] precheck \"تضخم الغذاء العالمي مرشح للتسارع حتى 2027 مع اضطرابات الشحن والجفاف\": clean",
+    "[12:28:55] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3357",
+    "[12:28:55] image: the picture should say: Poor households in import-dependent countries are paying more for staple food every week.",
+    "[12:29:01] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4288",
+    "[12:29:01] image: the source's photograph (Asharq Al-Awsat) shows Laborers shovel and winnow heaps of harvested wheat grain and fill jute sacks at an open grain market yard with tractors; searching wheat grain market India | workers winnowing wheat grain | wheat sacks grain yard | wheat harvest heap laborers",
+    "[12:29:01] image: tier 2, like the sources' own photograph: wheat grain market India | workers winnowing wheat grain | wheat sacks grain yard | wheat harvest heap laborers",
+    "[12:29:01] commons \"wheat grain market India\": 6 usable of 7",
+    "[12:29:01] image: dropped \"Grain Harvesting Machine.JPG\" — names too little of wheat, grain, market",
+    "[12:29:01] image: dropped \"Grain Harvesting Machine (2).JPG\" — names too little of wheat, grain, market",
+    "[12:29:01] image: dropped \"Ridpath's history of the world; being an account of the ethnic origin,\" — names too little of wheat, grain, market",
+    "[12:29:01] image: dropped \"Wall Street guide - (1902) (14804332293).jpg\" — names too little of wheat, grain, market",
+    "[12:29:01] image: dropped \"Review of reviews and world's work (1890) (14773451085).jpg\" — names too little of wheat, grain, market",
+    "[12:29:01] image: dropped \"Spring 1897 (1897) (20558118531).jpg\" — names too little of wheat, grain, market",
+    "[12:29:02] pexels \"wheat grain market India\": 8 usable",
+    "[12:29:05] openverse \"wheat grain market India\": 0 usable of 0",
+    "[12:29:05] commons \"workers winnowing wheat grain\": 0 usable of 0",
+    "[12:29:06] commons \"workers winnowing\": 3 usable of 17",
+    "[12:29:06] image: dropped \"Chinese farm workers winnowing beans, California, ca.1900 (CHS-1432).j\" — dated 1900, an archival picture",
+    "[12:29:06] image: dropped \"1880s Sorting tea Ceylon Sri Lanka 1.jpg\" — dated 1880, an archival picture",
+    "[12:29:06] pexels \"workers winnowing wheat grain\": 8 usable",
+    "[12:29:10] openverse \"workers winnowing wheat grain\": 0 usable of 0",
+    "[12:29:10] image: dropped \"An elderly South Asian farmer threshing grains in Dhaka fields, Bangla\" — names too little of workers, winnowing, wheat, grain",
+    "[12:29:10] image: dropped \"Workers raking golden grains on a sunny day in rural India.\" — taken in India, which the story does not name",
+    "[12:29:10] image: dropped \"Two women winnowing rice and man pounding rice flour. (19949904135).jp\" — taken in Japan, which the story does not name",
+    "[12:29:10] image: dropped \"A sunlit golden wheat field in Jabalpur, MP, India during a bright day\" — taken in India, which the story does not name",
+    "[12:29:10] image: dropped \"An Indian woman in traditional attire stands on a vast grain field in \" — taken in India, which the story does not name",
+    "[12:29:10] image: dropped \"Aerial shot of a person walking across grain rows in India, creating a\" — taken in India, which the story does not name",
+    "[12:29:10] image: dropped \"Aerial scene of farmers manually drying yellow grains in West Bengal, \" — taken in India, which the story does not name",
+    "[12:29:16] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4005",
+    "[12:29:20] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4533",
+    "[12:29:20] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Workers operating a grain machine in a rural setting, creati\": A clear, real scene of workers sifting wheat at a grain market illustrates a global grain-price story, and nothing in th",
+    "[12:29:20] published \"تضخم الغذاء العالمي مرشح للتسارع حتى 2027 مع اضطرابات الشحن والجفاف\" -> global-food-inflation-accelerate-2027-3126f6",
+    "[12:30:46] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=85705",
+    "[12:31:42] llm fail role=desk provider=claude model=claude-opus-5-5 attempt=1: an expert identification is not grounded or copies a long source phrase; rewrite it concisely and faithfully",
+    "[12:32:16] desk notes: 4 of 31 facts dropped (not in their source or copied from it)",
+    "[12:32:16] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=2 ms=30888",
+    "[12:33:29] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: why_basis needs one to four reported premises with source numbers",
+    "[12:34:24] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=2 ms=51363",
+    "[12:35:31] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=66915",
+    "[12:35:31] evidence pair \"تضخم الغذاء العالمي مرشح للتسارع حتى 2027 مع اضطرابات الشحن والجفاف\": 0 proved error(s) live (v32), 0 with the kept lessons (v0); the private drafts are not published",
+    "[12:35:31] run budget of 35 minutes spent; \"الإمارات تعدّل أحكام الفوترة الإلكترونية قبل بدء التطبيق\" waits for the next run"
+  ]
+}

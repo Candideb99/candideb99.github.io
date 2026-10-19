@@ -10996,6 +10996,89 @@
         }
       ],
       "outcome": "clean"
+    },
+    "oil-falls-us-waiver-russia-sanctions-f7c876": {
+      "at": "2026-10-19T11:51:20.770Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "4c54099299",
+      "publishedAt": "2026-10-19T05:14:44.191Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "fromCopy": 1,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 33,
+        "checked": 33,
+        "supported": 31,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "لذلك تظل أي تهدئة للأسعار تنتجها الخطوة الأمريكية هشة ما دام مصير الإعفاء وأمن الملاحة في الخليج معلّقين."
+      ],
+      "weak": [
+        {
+          "sentence": "يبقى أثر القرار في الأسعار مشروطاً بتفاصيل الإعفاء ومدته اللتين لم تتضحا بعد، وبتقييم قد يمتد 60 يوماً لأثر العقوبات والرسوم، في حين يضغط تراجع تدفقات الخام الخليجي في الاتجاه المعاكس.",
+          "quote": "وقال \"إلى أن تتضح التفاصيل والمدة، من غير المرجح أن تضع السوق في الحسبان بشكل كامل زيادة مستدامة في المعروض\"."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "china-q3-growth-accelerates-exports-a0aa29": {
+      "at": "2026-10-19T11:51:20.802Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "checker": "4c54099299",
+      "publishedAt": "2026-10-19T05:05:11.832Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 45,
+        "checked": 45,
+        "supported": 41,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "وما دام الاستثمار العقاري في انكماش، فلن يسهل على الطلب المحلي تعويض أي تباطؤ في هذا المحرك، ما لم يُسرَّع تنفيذ الدعم المالي المعلن."
+      ],
+      "weak": [
+        {
+          "sentence": "وتجاوز الرقم توقعات اقتصاديين استطلعت رويترز آراءهم بنمو 4.4%، لكنه بقي دون نسبة 5% التي سجلها الاقتصاد بين يناير ومارس.",
+          "quote": "Third-quarter growth beat Reuters-polled economists' expectation of a 4.4% expansion, and was also higher than the three-year low of 4.3% in the second quarter."
+        },
+        {
+          "sentence": "فقد قفزت الصادرات الصينية 36% في سبتمبر، وبلغ الفائض التجاري 938 مليار دولار في الأشهر التسعة الأولى، وسجّل الفائض الشهري مستوى قياسياً عند 133.5 مليار دولار.",
+          "quote": "After a 36% jump in exports last month and a $938 billion surplus for January-September, China is on course to top last year’s record $1.2 trillion trade surplus."
+        },
+        {
+          "sentence": "وصدّرت الصين نحو 919 ألف سيارة ركاب في سبتمبر، وأكثر من 7.1 مليون سيارة في الأشهر التسعة الأولى بزيادة تفوق 70% على أساس سنوي، وفق بيانات الجمعية الصينية لمصنعي السيارات.",
+          "quote": "China shipped about 919,000 passenger vehicles overseas in September, driven by strong foreign demand for plug-in hybrids and all-electric models, according to data from the China Association of Automobile Manufacturers."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }

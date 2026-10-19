@@ -701,6 +701,50 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-10-19T12:29:20.733Z",
+      "slug": "global-food-inflation-accelerate-2027-3126f6",
+      "checker": "4c54099299.2",
+      "lessons": "v32",
+      "lessonsHash": "5c629d81ea",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 32,
+        "notFound": 2,
+        "checked": 34,
+        "words": 560,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 34,
+        "notFound": 1,
+        "checked": 39,
+        "words": 549,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 2
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 34,
+        "notFound": 1,
+        "checked": 39,
+        "words": 549,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 2
+      }
     }
   ]
 }
