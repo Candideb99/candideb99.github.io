@@ -57,6 +57,20 @@ export const GLANCE_IDS = ["tasi", "egx30", "spx", "brent", "gold", "usdegp"];
 /** The headline numbers of the data page. */
 export const FEATURED_IDS = ["tasi", "egx30", "spx", "brent", "gold", "usdegp"];
 
+/**
+ * Whether a story's key figure is a market quote: a price, level or move of an instrument the board carries (Brent,
+ * gold, Tasi, EGX 30, the dollar's rates, Treasury yields). The story printed it as it stood when it was written, and
+ * the market box and the strip print it as it stands now: as one of the front's «أرقام اليوم» it put two prices of one
+ * instrument on one screen (Brent at 108.52 in the box and 107.92 in the figures 740px below it, 2026-10-19). Measured
+ * on the last 120 stories' 565 figures, it takes 56, all of them quotes. A forecast, a physical quantity, a reserve and
+ * the local price of a gold coin or of jewellery gold are not quotes.
+ */
+const QUOTE_NAMES = /برنت|غرب تكساس|خام تكساس|الخام الأمريكي|الخام الأميركي|\bWTI\b|الذهب|الفضة|النحاس|القمح|هنري هب|تاسي|إيجي إكس|\bEGX|مصر 30|المؤشر الرئيسي|ستاندرد آند بورز 500|S&P 500|ناسداك المركب|مؤشر ناسداك|داو جونز الصناعي|مؤشر داو|ستوكس|فوتسي|نيكاي|شنغهاي المركب|بتكوين|سندات الخزانة|مؤشر الدولار|سعر الصرف|سعر صرف|مقابل الدولار|للدولار/;
+const NOT_A_QUOTE = /توقع|الجنيه الذهب|عيار|احتياطيات|الاحتياطي الاستراتيجي|(?:^|\s)(?:طن|طناً|أطنان)/;
+export function isMarketQuote(text: string): boolean {
+  return QUOTE_NAMES.test(text) && !NOT_A_QUOTE.test(text);
+}
+
 const byId = new Map(board.quotes.map((q) => [q.id, q]));
 
 export function quotes(ids: string[]): Quote[] {

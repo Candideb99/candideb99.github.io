@@ -274,16 +274,15 @@ export function threads(articles: Article[], { days = 7, max = 8, now = Date.now
   return out.filter((t) => t.recent >= 2).sort((x, y) => y.recent - x.recent || y.total - x.total).slice(0, max);
 }
 
-/** The freshest story of the last three days that carries a chart small enough for a column. */
 /**
  * The chart of the day, for the front's side column (about 280px wide): the freshest chart of the last three days that
- * fits it, five categories or fewer; failing that, the freshest of eight or fewer. Six long names such as the Egyptian
- * exchange's indices could not stand side by side there (2026-09-27); such a chart goes to the wider band instead.
+ * fits it, five categories or fewer, or none. Six long names such as the Egyptian exchange's indices could not stand
+ * side by side there (2026-09-27); such a chart goes to the wider band instead. Until 2026-10-19 a chart of up to eight
+ * was taken when no smaller one was fresh, and Dubai's six sectors printed their names over each other.
  */
 export function chartOfTheDay(articles: Article[], now = Date.now()): Article | undefined {
-  const fits = (a: Article, most: number) => {
+  return articles.find((a) => {
     const c = a.data.chart;
-    return Boolean(c && c.title && c.categories.length <= most && c.series.length <= 2 && hoursOld(a, now) < 72);
-  };
-  return articles.find((a) => fits(a, 5)) ?? articles.find((a) => fits(a, 8));
+    return Boolean(c && c.title && c.categories.length <= 5 && c.series.length <= 2 && hoursOld(a, now) < 72);
+  });
 }

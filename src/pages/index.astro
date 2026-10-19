@@ -13,6 +13,7 @@ import { articleHref } from "@lib/articles";
 import { isolateNumbers } from "@lib/bidi";
 import { cardSizes } from "@lib/wikimedia";
 import { timeAgo, countLabel } from "@lib/format";
+import { isMarketQuote } from "@lib/markets";
 import site from "@data/site.json";
 
 const articles = await getArticles();
@@ -31,7 +32,8 @@ const FRESH_HOURS = 72;
 
 // Every story is printed once on the front page (the owner chose the clean-up on 2026-09-27, when 26 of the
 // page's 55 stories were printed two to four times): each module takes only stories no module above it has
-// placed. The strip, the day's figures and the charts are furniture and cite stories printed elsewhere.
+// placed. Only the moving strip cites stories printed elsewhere; the day's chart, figures and charts band are
+// placed like any other module since 2026-10-19 (below).
 const placed = new Set<string>();
 const place = (list: Article[]) => list.forEach((a) => placed.add(a.id));
 const unplaced = (list: Article[]) => list.filter((a) => !placed.has(a.id));
@@ -76,30 +78,46 @@ for (const story of cover) {
   place(list);
 }
 
+// The numbers column (the chart of the day, then أرقام اليوم) and the charts band print stories too, so each takes,
+// in page order, only stories no module above has printed, and places what it prints. Until 2026-10-19 they were
+// furniture citing stories printed elsewhere, and every one of their seven citations repeated one: China's growth
+// story ran as cover tab 2, under the chart of the day and again in the figures, a column apart from its own chart's
+// «من مادة». A module with nothing fresh to cite is left out.
+const citable = (a: Article) => !repeats.has(a.id) && hoursOld(a) < FRESH_HOURS;
+const chart = chartOfTheDay(unplaced(articles).filter((a) => !repeats.has(a.id)));
+if (chart) place([chart]);
 // Today's figures: one telling number per recent story, never a bare year or a sprawling value. Never an explainer's:
-// its numbers are illustrative examples, and its box is a glossary (2026-09-27).
+// its numbers are illustrative examples, and its box is a glossary (2026-09-27). Never a market quote: the market box
+// beside it prints the instrument as it stands now (`isMarketQuote()`, lib/markets.ts).
 const figureScore = (value: string) => {
   const v = value.trim();
   if (!/\d/.test(v) || /^(19|20)\d{2}$/.test(v) || v.length > 30) return -1;
   return (/[%٪]/.test(v) ? 2 : 0) + (/(مليار|مليون|ألف|دولار|ريال|يورو|جنيه|دينار|درهم|يوان|طن|برميل)/.test(v) ? 2 : 0) + (v.length <= 18 ? 1 : 0);
 };
-const figures = articles
-  .filter((a) => a.data.kind !== "explainer")
+const figures = unplaced(articles)
+  .filter((a) => a.data.kind !== "explainer" && citable(a))
   .slice(0, 8)
   .flatMap((a) => {
-    const best = [...a.data.keyFacts].map((f) => ({ ...f, article: a, score: figureScore(f.value) })).filter((f) => f.score >= 0 && (f.label ?? "").length <= 48).sort((x, y) => y.score - x.score)[0];
+    const best = [...a.data.keyFacts]
+      .map((f) => ({ ...f, article: a, score: figureScore(f.value) }))
+      .filter((f) => f.score >= 0 && (f.label ?? "").length <= 48 && !isMarketQuote(`${f.label ?? ""} ${f.value}`))
+      .sort((x, y) => y.score - x.score)[0];
     return best ? [best] : [];
   })
   .slice(0, 3);
-const chart = chartOfTheDay(articles);
+place(figures.map((f) => f.article));
 // ملفات نتابعها runs as a row under the section bar: what the paper is following this week, subjects and running
 // files alike, busiest first, each once under its one page (lib/articles.ts `threads`). The band of four files it
 // replaced printed three headlines each, 10 of 12 of them printed elsewhere.
 const files = threads(articles.filter((a) => !repeats.has(a.id)));
-// The charts band (the Economist's graphic detail): the three freshest charts after the chart of the day.
-const chartsBand = articles
-  .filter((a) => a.id !== chart?.id && a.data.chart && a.data.chart.title && a.data.chart.categories.length <= 8 && a.data.chart.series.length <= 2)
+// The charts band (the Economist's graphic detail): the three freshest charts of stories not yet printed, or no band:
+// its shape is three compact charts in thirds, and one or two drawn across the page's width would stand 400-600px tall.
+// Charts it does not take leave their stories to the section blocks.
+const bandPool = unplaced(articles)
+  .filter((a) => citable(a) && a.data.chart && a.data.chart.title && a.data.chart.categories.length <= 8 && a.data.chart.series.length <= 2)
   .slice(0, 3);
+const chartsBand = bandPool.length === 3 ? bandPool : [];
+place(chartsBand);
 
 // Section blocks: a feature and up to three briefs, only stories no module above has printed and none older than
 // three days; the blocks follow the news, the section with the newest story first. A section with fewer than two
@@ -383,8 +401,11 @@ const jsonLd = {
     .row__feature :global(.card--photo .card__photo) { order: 1; }
     .row__feature :global(.card--photo .card__body) { order: 2; }
     .row__feature :global(.card__summary) { display: none; }
-    /* One chart of the band on a phone: three full charts in a column took two screens. */
-    .charts .charts__cell:nth-child(n + 2) { display: none; }
+    /* One chart of the band on a phone: three full charts in a column took two screens. The other two stories keep
+       their headlines, since the band is the only place on the page that prints them (2026-10-19). */
+    .charts .charts__cell:nth-child(n + 2) :global(.chart),
+    .charts .charts__cell:nth-child(n + 2) .module__from-label { display: none; }
+    .charts .charts__cell:nth-child(n + 2) .module__from { margin-top: 0; }
     /* A line on a phone: the section and the way in on one line, the story under them. */
     .lines__item { grid-template-columns: minmax(0, 1fr) auto; row-gap: 0.2rem; }
     .lines__section { grid-column: 1; grid-row: 1; }
