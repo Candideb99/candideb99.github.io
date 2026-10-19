@@ -11,13 +11,15 @@ import { deskNotes, newsFloor, writeArticle } from "./write.mjs";
 import { CHECKER_VERSION, verifyStory } from "./factcheck.mjs";
 import { extractArticle } from "./extract.mjs";
 import { programmaticChecks } from "./verify.mjs";
+import { MARKET_QUOTE_URL } from "./quotes.mjs";
 
 /** A published story's sources, fetched once for both drafts and the fact-check: the writer's form and the checker's. */
 export async function sourcesOf(article, { log = () => {} } = {}) {
   const writer = [];
   const check = [];
   for (const s of article.sources ?? []) {
-    if (!s.url || String(s.url).startsWith("/")) continue;
+    // Our own stories and a market quote of its moment (lib/context.mjs) are not pages to fetch again.
+    if (!s.url || String(s.url).startsWith("/") || MARKET_QUOTE_URL.test(s.url)) continue;
     const got = await extractArticle(s.url, { maxChars: 9000, log });
     if (!got.ok) continue;
     const lang = s.lang || (/[؀-ۿ]/.test(got.text.slice(0, 400)) ? "ar" : "en");

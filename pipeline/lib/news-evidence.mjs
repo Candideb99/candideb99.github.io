@@ -22,7 +22,7 @@ const hostOf = (url) => new URL(url).hostname.toLowerCase().replace(/^www\./, ""
 
 const RATINGS_REFERENCE = "https://www.fidelity.com/learning-center/investment-products/fixed-income-bonds/bond-ratings";
 /** Definitions explain an event; they cannot corroborate that it happened. */
-export const eventSourcesOf = (sources) => sources.filter((s) => s.kind !== "reference");
+export const eventSourcesOf = (sources) => sources.filter((s) => s.kind !== "reference" && s.kind !== "market");
 
 const REPORT_SHINGLE_SIZE = 5;
 const REPORT_DUPLICATE_CHARS = 750;
@@ -80,7 +80,7 @@ export function independentOutletCount(sources) {
   const reports = [];
   let independent = 0;
   for (const source of sources) {
-    if (source.kind === "official" || source.kind === "reference") continue;
+    if (source.kind === "official" || source.kind === "reference" || source.kind === "market") continue;
     const publisher = String(source.sourceNameEn ?? source.sourceName ?? "").normalize("NFKC").trim().toLowerCase();
     const newPublisher = !publishers.has(publisher);
     publishers.add(publisher);

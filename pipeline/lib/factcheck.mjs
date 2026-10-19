@@ -35,6 +35,7 @@ import { extractArticle } from "./extract.mjs";
 import { ARTICLES_DIR } from "./article.mjs";
 import { extractNumbers, normalizeDigits, ungroundedNumbers } from "./util.mjs";
 import { loadSnapshot, snapshotSource } from "./snapshots.mjs";
+import { MARKET_QUOTE_URL } from "./quotes.mjs";
 
 /** The kinds a second look can check: each rests on sources it can read again. Explainers carry none by design,
  *  and a paper reading's one source is usually a PDF the extractor cannot read back. */
@@ -165,6 +166,12 @@ export async function loadSources(story, { log = () => {}, fetcher = extractArti
     if (String(s.url).startsWith("/")) {
       text = (await internalSource(s.url)).slice(0, cap);
       if (!text) reason = "not found among our stories";
+    } else if (MARKET_QUOTE_URL.test(s.url)) {
+      // A market quote is a moment (lib/context.mjs): fetched again it shows a later price, which a checker would call a
+      // contradiction and a correction would "fix". It is read only as it stood when the story was written.
+      text = copy?.text ? copy.text.slice(0, cap) : "";
+      fromCopy = Boolean(text);
+      if (!text) reason = "a market quote of its moment, with no copy saved at publication";
     } else {
       const fetched = await fetcher(s.url, { maxChars: cap, log });
       text = fetched.ok ? fetched.text : "";

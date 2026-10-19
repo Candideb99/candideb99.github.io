@@ -24,6 +24,8 @@ import YAML from "yaml";
 import { fetchFeed } from "./lib/feeds.mjs";
 import { extractArticle } from "./lib/extract.mjs";
 import { collectNewsEvidence, eventSourcesOf, independentOutletCount } from "./lib/news-evidence.mjs";
+import { marketData } from "./lib/context.mjs";
+import { MARKET_QUOTE_URL } from "./lib/quotes.mjs";
 import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectFeatureTopic, selectPaper, selectStories } from "./lib/select.mjs";
 import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, newsFloor, reviseArticle, substantiveFacts, writeAnalysis, writeArticle, writeExplainer, writeFeature, writePaperReading, writeWeekly } from "./lib/write.mjs";
 import { NEWS_FLOOR, NEWS_MIN_FACTS, SHORT_DAILY_CAP, SHORT_WORDS } from "./lib/editorial.mjs";
@@ -363,6 +365,16 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     report.push(entry);
     log(`skip "${story.headlineHint}": repeats "${repeated}"; items marked as seen`);
     return { rejected: true, items };
+  }
+
+  // The latest price of what the story is about (lib/context.mjs; the owner, 2026-10-19), read just before writing: the
+  // oil story of that morning printed a price six hours old. Not for a flagship report, which is about its own figures.
+  if (!preset) {
+    const market = await marketData({ story, sources: eventSources, log });
+    if (market) {
+      sources.push(market);
+      log(`market data: ${market.title}`);
+    }
   }
 
   // Stage one: the desk notes, the checked facts of the one event; stage two: the story written from them.
@@ -719,7 +731,8 @@ async function runNewsRefresh(report) {
   const data = parts ? YAML.parse(parts[1]) : null;
   if (data?.kind !== "news" || data.slug !== REFRESH || data.draft || !data.sources?.length) throw new Error("refresh requires an existing published news article with sources");
   const registry = await readJson(path.join(root, "pipeline", "sources.json"), { sources: [] });
-  const candidates = data.sources.filter((s) => !/fidelity.com\/learning-center/.test(s.url)).slice(0, 4).map((s, i) => {
+  // A market quote of the first writing is read afresh by the refresh itself (lib/context.mjs), never fetched as a report.
+  const candidates = data.sources.filter((s) => !/fidelity.com\/learning-center/.test(s.url) && !MARKET_QUOTE_URL.test(s.url)).slice(0, 4).map((s, i) => {
     const configured = registry.sources.find((r) => r.nameEn === s.nameEn);
     return { ...s, id: `refresh-${i}`, sourceId: configured?.id ?? s.nameEn, sourceName: s.name, sourceNameEn: s.nameEn,
       reliability: configured?.reliability ?? 2, kind: configured?.kind ?? "news", paywalled: Boolean(configured?.paywalled) };

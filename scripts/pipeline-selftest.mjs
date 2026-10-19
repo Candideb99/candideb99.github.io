@@ -17,6 +17,8 @@ import { lessonRuleOk, loadLessons } from "../pipeline/lib/lessons.mjs";
 import { writeJsonAtomic } from "../pipeline/lib/util.mjs";
 import { loadSnapshot, saveSnapshot } from "../pipeline/lib/snapshots.mjs";
 import { loadSources, settleDrift, verifyStory } from "../pipeline/lib/factcheck.mjs";
+import { instrumentsOf, marketData } from "../pipeline/lib/context.mjs";
+import { independentOutletCount } from "../pipeline/lib/news-evidence.mjs";
 import { boxFacts } from "../pipeline/lib/keyfacts.mjs";
 import { deskNotes, newsDepthBrief, newsFloor, normalizeDraft, prioritizeContext, substantiveFacts, validateDraft, validateWhyBasis } from "../pipeline/lib/write.mjs";
 import { NEWS_DEPTH, NEWS_FLOOR, SHORT_WORDS } from "../pipeline/lib/editorial.mjs";
@@ -528,6 +530,29 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("one attribution formula three times is sent back", said(flagged({ body: relayed }), /صيغة الإسناد نفسها/), true);
   check("remarks never count toward a developed report", substantiveFacts({ facts: [{ job: "news" }, { job: "remark" }, { job: "numbers" }, { job: "remark" }] }), 2);
   check("one spelling of Bloomberg", fixNames("قالت المحللة في «الشرق بلومبرج» لـ«بلومبيرغ»"), "قالت المحللة في «الشرق بلومبرغ» لـ«بلومبرغ»");
+}
+
+// The latest price (lib/context.mjs, 2026-10-19): read for the instruments a story is about, Brent with WTI and first,
+// never for a story that only names a currency or a bond holding; filed as a source the outlet count ignores; and read by
+// the second look only as it stood at publication, never fetched again (a later price would read as a contradiction).
+{
+  const ids = (headlineHint, section = "markets") => instrumentsOf({ headlineHint, section }).map((i) => i.id);
+  check("an oil story reads Brent first, then WTI", ids("خام غرب تكساس يتراجع إلى 100.58 دولار بعد إعفاء روسيا من عقوبات", "energy"), ["brent", "wti"]);
+  check("a bond holding is not a yield story", ids("الإمارات ترفع حيازتها من سندات الخزانة الأمريكية إلى 116.1 مليار دولار"), []);
+  check("an investment counted in euros fetches no exchange rate", ids("الإمارات تستثمر 40 مليار يورو في ألمانيا", "economy"), []);
+  check("a thirty-year yield story reads the thirty-year bond", ids("عائد السندات الأمريكية لأجل 30 عاماً يقفز إلى أعلى مستوى منذ 2002"), ["us30y"]);
+  const now = Date.parse("2026-10-19T10:35:00Z");
+  const quote = async (symbol) => ({ price: symbol === "BZ=F" ? 108.63 : 98.36, prev: symbol === "BZ=F" ? 109.86 : 99.02, time: "2026-10-19T10:25:00Z", history: [] });
+  const market = await marketData({ story: { headlineHint: "برنت يتراجع بعد إعفاء روسيا", section: "energy" }, now, fetchQuote: quote });
+  check("market data carries each price with its time and its move", [market.kind, /108\.63 US dollars per barrel at 10:25 GMT on Monday 19 October 2026/.test(market.text), /down 1\.23 or 1\.12% from the previous close of 109\.86/.test(market.text)], ["market", true, true]);
+  const weekend = await marketData({ story: { headlineHint: "الذهب يرتفع", section: "markets" }, now, fetchQuote: async () => ({ price: 4186.3, prev: 4181.2, time: "2026-10-16T21:00:00Z" }) });
+  check("a quote from a closed market says so", /has not traded since/.test(weekend.text), true);
+  check("no priced instrument, no market source", await marketData({ story: { headlineHint: "«فيرتيجلوب» تدرس إنشاء مجمع أسمدة في مصر", section: "companies" }, fetchQuote: quote }), null);
+  check("market data never counts as an outlet", independentOutletCount([{ kind: "news", sourceNameEn: "Reuters", text: "a" }, market]), 1);
+  const story = { slug: "x", sources: [{ url: market.url, nameEn: "Yahoo Finance" }] };
+  let refetched = false;
+  const read = await loadSources(story, { fetcher: async () => ((refetched = true), { ok: true, text: "Brent 101.00" }), snapshot: { sources: [{ url: market.url, passages: "Brent 108.63 US dollars per barrel at 10:25 GMT" }] } });
+  check("the second look reads a market quote as it stood, never fetched again", [refetched, read[0].text.includes("108.63"), read[0].snapshot], [false, true, true]);
 }
 
 if (failed) {
