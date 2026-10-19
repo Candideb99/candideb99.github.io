@@ -11,8 +11,9 @@ on:
     - cron: "31 9 * * 2,5"
     - cron: "37 15 * * 5"
     - cron: "7 10 * * 6"
-    # «في العمق», the weekly in-depth piece: Sundays, the first working day of the Gulf week (2026-09-24).
-    - cron: "47 7 * * 0"
+    # «في العمق», the weekly in-depth piece, ran on Sundays from 2026-09-24 until the owner stopped it on 2026-10-19
+    # ("extremely boring to read and i lost concentration"): a 1,370-word retelling of our own stories in date order. The
+    # mode stays for a run by hand; the schedule no longer starts it.
     # Every news round first reads the earlier rounds' stories again against their sources (the second look) and learns
     # from what it proves (the lessons), then writes (2026-09-25; the separate twice-daily second-look run was folded in).
     # The weekly test of the lessons: keep the current ones or put back the last version that passed (Mondays).
