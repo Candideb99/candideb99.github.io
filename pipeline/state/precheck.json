@@ -3437,6 +3437,34 @@
           ]
         }
       ]
+    },
+    "saudi-inflation-rises-september-2026-224823": {
+      "at": "2026-10-19T11:35:05.761Z",
+      "title": "التضخم في السعودية يرتفع إلى 1.9% في سبتمبر",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 8,
+            "checked": 8,
+            "supported": 1,
+            "weak": 7,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

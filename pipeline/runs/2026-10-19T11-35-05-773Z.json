@@ -1,0 +1,102 @@
+{
+  "mode": "reports",
+  "startedAt": "2026-10-19T11:32:46.825Z",
+  "durationSec": 139,
+  "published": 1,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "التضخم في السعودية (سبتمبر 2026)",
+      "section": "economy",
+      "importance": 8,
+      "sources": [
+        "https://www.stats.gov.sa/documents/20117/2435267/CPI+Sep+2026-EN.pdf/a8531921-415f-7411-1eeb-d4bc808d8013?t=1792042101243",
+        "https://www.stats.gov.sa/documents/20117/2435267/CPI+Aug+2026-EN.pdf/4af79137-b647-6e2f-859d-50a3eb55b4a3?t=1789447587686"
+      ],
+      "format": "short",
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يوضح العنوان والسطر التمهيدي والمقدمة معاً ما تغير: ارتفع التضخم السنوي إلى 1.9% من 1.8% (المصدر 1 والمصدر 2). ويحمل السطر التمهيدي القيد اللازم لفهم الخبر، وهو أن زيادة الإيجارات تباطأت إلى 3.5% من 3.9% مع أنها بقيت المحرك الرئيسي، فلا تناقض بين الارتفاع العام وتباطؤ البند الأكبر.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يقارن التقرير كل رقم رئيسي بقيمته في أغسطس من المصدر 2: السكن 3.6% مقابل 3.9%، ومساهمته 0.7 مقابل 0.8 نقطة، والنقل 2.3% مقابل 2.0%، وبقية الأقسام 0.3 مقابل 0.2 نقطة، والمؤشر الشهري مستقر بعد ارتفاع 0.1%. بهذه المقارنات يفهم القارئ سبب الارتفاع الطفيف. أما محرك صعود قسم العناية الشخصية، أي المجوهرات والساعات بنسبة 12.9% في المصدر 1، فتفصيل اختياري لا يخل غيابه بفهم الخبر. ولا ينطبق هنا مربع «لماذا يهمّ» لأن الخبر قصير.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "لكل فقرة وظيفة واضحة. الأولى تشرح المحرك الرئيسي ومساهمته وتباطؤه، والثانية تجمع بقية المساهمات في المعدل، والثالثة تنقل القراءة الشهرية التي تفسر استقرار الأسعار بين الشهرين. والختام الشهري يخدم التفسير ولا يقف رقماً معزولاً. لا يتجاوز النص 250 كلمة، ولا تكرار فيه ولا عبارات حشو.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "جميع الأرقام مطابقة للمصادر في الكيان والفترة والوحدة والاتجاه: 1.9% و3.6% و3.5% و0.7 نقطة و2.3% و1.4% و0.3 نقطة و3.3% و0.2 نقطة، وفي الأرقام الشهرية 1.2% و-0.6% و-0.5%. ووصف التعليم بأنه «أكبر صعود شهري» يدعمه الشكل 5 في المصدر 1. ويميز النص بوضوح بين التغير السنوي والشهري وبين نسبة الارتفاع والمساهمة بالنقاط المئوية.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [],
+      "slug": "saudi-inflation-rises-september-2026-224823",
+      "title": "التضخم في السعودية يرتفع إلى 1.9% في سبتمبر",
+      "score": 10,
+      "image": "photo"
+    }
+  ],
+  "llm": {
+    "calls": 8,
+    "failures": 0,
+    "promptTokens": 76991,
+    "completionTokens": 13334,
+    "cacheReadTokens": 32451,
+    "costUsd": 0.6294,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 8
+    }
+  },
+  "log": [
+    "[11:32:46] newsroom start mode=reports limit=4 dry-run=false",
+    "[11:32:48] reports: 1 new edition(s): sa-cpi «Consumer Price Index – September 2026»",
+    "[11:32:49] release sa-cpi: Consumer Price Index – September 2026 read (1 pages, 5442 chars)",
+    "[11:32:49] release sa-cpi: previous release August 2026 read",
+    "[11:33:17] desk notes: 1 of 22 facts dropped (not in their source or copied from it)",
+    "[11:33:17] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=27706",
+    "[11:33:17] desk notes: 21 facts (? 1, news 2, numbers 12, driver 4, background 2), 0 quotes (claude-cli/claude-opus-5-5)",
+    "[11:33:17] short story: \"التضخم في السعودية (سبتمبر 2026)\" is a data release",
+    "[11:33:42] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=24523",
+    "[11:33:59] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=17421",
+    "[11:33:59] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[11:33:59] desk \"التضخم في السعودية يرتفع إلى 1.9% في سبتمبر\": rewrote body",
+    "[11:34:24] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=24184",
+    "[11:34:24] critic \"التضخم في السعودية يرتفع إلى 1.9% في سبتمبر\": publish score=10 issues=0",
+    "[11:34:41] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=17228",
+    "[11:34:41] precheck \"التضخم في السعودية يرتفع إلى 1.9% في سبتمبر\": clean",
+    "[11:34:48] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7215",
+    "[11:34:48] image: the picture should say: Housing rents keep pushing up what Saudi households pay, even as their rise slows.",
+    "[11:34:48] image: tier 3, the writer's own subjects: Riyadh skyline | Riyadh residential buildings | Saudi supermarket",
+    "[11:34:49] commons \"Riyadh skyline 2026\": 1 usable of 3",
+    "[11:34:49] commons \"Riyadh skyline\": 7 usable of 12",
+    "[11:34:50] commons \"Riyadh residential buildings 2026\": 1 usable of 1",
+    "[11:34:51] commons \"Riyadh residential buildings\": 1 usable of 12",
+    "[11:34:51] commons \"Saudi supermarket 2026\": 0 usable of 0",
+    "[11:34:52] commons \"Saudi supermarket\": 5 usable of 12",
+    "[11:34:52] image: dropped \"The first supermarket in Al-Khobar.jpg\" — dated 1952, an archival picture",
+    "[11:34:59] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6000",
+    "[11:35:05] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5983",
+    "[11:35:05] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Residential building on Olaya street (12753702893).jpg\": A clearly readable residential apartment block in Riyadh shows the housing and rents that the story names as the main dr",
+    "[11:35:05] published \"التضخم في السعودية يرتفع إلى 1.9% في سبتمبر\" -> saudi-inflation-rises-september-2026-224823"
+  ]
+}

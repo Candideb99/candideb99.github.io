@@ -111,6 +111,14 @@
       "at": "2026-10-18T22:34:57.966Z",
       "outcome": "starting point",
       "tries": 0
+    },
+    "sa-cpi": {
+      "edition": 202609,
+      "label": "Consumer Price Index – September 2026",
+      "url": "https://www.stats.gov.sa/en/statistics-tabs?tab=436312&category=121421#",
+      "at": "2026-10-19T11:35:05.768Z",
+      "outcome": "published saudi-inflation-rises-september-2026-224823",
+      "tries": 0
     }
   }
 }
