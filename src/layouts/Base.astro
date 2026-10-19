@@ -5,7 +5,7 @@ import Masthead from "@components/Masthead.astro";
 import Footer from "@components/Footer.astro";
 import MarketStrip from "@components/MarketStrip.astro";
 import Ticker from "@components/Ticker.astro";
-import { getArticles, articleHref } from "@lib/articles";
+import { getArticles, articleHref, stripStories } from "@lib/articles";
 
 interface Props {
   title?: string;
@@ -43,7 +43,7 @@ const fullTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site
 // same list at full length, and not on the front since 2026-10-19 (the owner's check of the front page: all eight of its
 // headlines were printed again on the same screen, five in «الأخبار في سطور», which is the front's latest list).
 const withLatest = !path.startsWith("/latest") && path !== "/404" && path !== "/";
-const latestNews = withLatest ? (await getArticles()).filter((a) => a.data.kind === "news" && articleHref(a) !== path).slice(0, 8) : [];
+const latestNews = withLatest ? stripStories(await getArticles(), path) : [];
 const canonical = new URL(path, site.url).toString();
 const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
 ---

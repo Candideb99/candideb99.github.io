@@ -48,17 +48,19 @@ export function pickLead(articles: Article[], now = Date.now()): Article | undef
   return scored[0]?.a;
 }
 
+/**
+ * «اقرأ أيضاً» under a story: stories on its running topic of the last two months (`onTheSameTopic`), or none. Until
+ * 2026-10-19 (the owner's check of the article pages) it scored the same section and any shared tag, a country
+ * included, and always filled four places: Qatar's defence plant was followed by the Bank of Cairo's IPO and the World
+ * Bank's Gulf forecast by Syria's reconstruction fund. A page with nothing related prints no «اقرأ أيضاً».
+ */
 export function related(article: Article, all: Article[], count = 4): Article[] {
-  const tags = new Set(article.data.tags);
-  return all
-    .filter((a) => a.id !== article.id)
-    .map((a) => ({
-      a,
-      score: (a.data.section === article.data.section ? 2 : 0) + a.data.tags.filter((t) => tags.has(t)).length * 1.5 - hoursOld(a) / 72,
-    }))
-    .sort((x, y) => y.score - x.score)
-    .slice(0, count)
-    .map((x) => x.a);
+  return onTheSameTopic(article, all, { n: count, days: 60 });
+}
+
+/** The «آخر الأخبار» strip of a page (Base.astro): the eight newest news stories, the page's own left out. */
+export function stripStories(all: Article[], path: string): Article[] {
+  return all.filter((a) => a.data.kind === "news" && articleHref(a) !== path).slice(0, 8);
 }
 
 const GENERIC_TAGS = new Set(["عالمي", "العالم", "الشرق الأوسط", "الخليج", "الخليج العربي", "أوروبا", "آسيا", "أفريقيا", "الاقتصاد", "الأسواق", "الطاقة", "الشركات", "التكنولوجيا", "الدفاع", "الاقتصاد العالمي"]);
@@ -170,7 +172,9 @@ export function sameEvent(a: Article, b: Article): boolean {
  * Stories on the same running topic as `article`: they share a narrow topic (a tag carried by at most
  * one story in twenty, such as الديزل or أرامكو) or two topics at once (النفط and إيران). One broad tag
  * alone (الصين, النفط, a country) does not make stories related: it put Chinese retail sales under
- * the Bessent talks. Region and section tags never count. The closest come first, then the newest.
+ * the Bessent talks. Region and section tags never count, and since 2026-10-19 no place does (`PLACE_TAGS`: a
+ * country tag such as «قطر» or «فرنسا» is often rare enough to pass as narrow, and tied a Qatari defence plant to a
+ * Lebanese power deal). The closest come first, then the newest.
  * Used under the cover story, where the lead's text column stood 175px short of its photograph (the
  * owner, 2026-09-23: "too much space").
  */
@@ -181,7 +185,7 @@ export function onTheSameTopic(article: Article, all: Article[], { exclude = new
   const count = (t: string) => counts.get(t) ?? 0;
   const narrow = Math.max(3, Math.floor(all.length / 20));
   const broad = Math.max(3, Math.floor(all.length / 8));
-  const topics = new Set(article.data.tags.filter((t) => !regions.has(t) && !GENERIC_TAGS.has(t) && count(t) <= broad));
+  const topics = new Set(article.data.tags.filter((t) => !regions.has(t) && !PLACE_TAGS.has(t) && !GENERIC_TAGS.has(t) && count(t) <= broad));
   if (!topics.size) return [];
   return all
     .filter((a) => a.id !== article.id && !exclude.has(a.id) && hoursOld(a, now) < days * 24)
