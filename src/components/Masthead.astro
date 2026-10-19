@@ -354,10 +354,12 @@ for (const s of sections) {
   }
 
   @media (max-width: 719px) {
-    .masthead__row { grid-template-columns: 1fr; grid-template-areas: "date" "brand"; row-gap: 0.7rem; padding-block: 0.5rem 0.7rem; font-size: var(--fs-xs); }
+    /* The front's nameplate on a phone: the date over the logo at 64px, the other pages' laptop size, a little tighter
+       than the 72px and 0.7rem it had (133px of the 297 above the lead's photograph, 2026-10-19). */
+    .masthead__row { grid-template-columns: 1fr; grid-template-areas: "date" "brand"; row-gap: 0.5rem; padding-block: 0.45rem 0.6rem; font-size: var(--fs-xs); }
     /* The tools of the date line move into the bar on a phone: the search and the menu. */
     .masthead__tools { display: none; }
-    .brand :global(.brand__lockup img) { height: 72px; width: auto; }
+    .brand :global(.brand__lockup img) { height: 64px; width: auto; }
     /* Every other page opens on the bar itself, its small logo in place of الرئيسية: the 64px logo and the date
        over a story pushed its headline half a screen down. */
     .masthead--compact { display: none; }

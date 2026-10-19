@@ -182,6 +182,7 @@ const jsonLd = {
       <div class="first">
         <Cover stories={cover} readings={readings} photoIds={photoIds} all={articles} related={coverRelated} />
         <Front secondary={secondary} digest={digest} picks={picks} figures={figures} chart={chart} photoIds={photoIds} />
+        <FilesRow files={files} placement="inline" />
       </div>
     </>
   ) : (
@@ -322,6 +323,9 @@ const jsonLd = {
     .first { display: flex; flex-direction: column; gap: 1.5rem; width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; padding-top: 1.1rem; }
     .first > :global(.cover), .first > :global(.front), .first :global(.front__mid) { display: contents; }
     .first :global(.cover__stage) { order: 1; padding-bottom: 1.25rem; border-bottom: 3px solid var(--ink); }
+    /* ملفات نتابعها follows the cover's stories on a phone (FilesRow `inline`), on the same order as the stage and
+       later in the page, so it comes straight after it. */
+    .first :global(.files-row--inline) { order: 1; margin-top: -0.25rem; }
     .first :global(.front__secondary) { order: 2; }
     .first :global(.front__top) { order: 3; }
     .first :global(.cover__beside) { order: 4; padding-top: 0; }

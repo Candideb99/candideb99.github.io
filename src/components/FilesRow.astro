@@ -11,14 +11,20 @@ import type { Thread } from "@lib/articles";
 
 interface Props {
   files: Thread[];
+  /**
+   * bar: under the section bar, from 720px up. inline: a phone's copy, printed after the cover's stories (2026-10-19):
+   * under the bar it was the third band of chrome over the lead's photograph, which began 315px down a 844px screen.
+   */
+  placement?: "bar" | "inline";
 }
-const { files } = Astro.props;
+const { files, placement = "bar" } = Astro.props;
+const labelId = `files-row-label-${placement}`;
 ---
 
 {files.length > 0 && (
-  <nav class="files-row" aria-labelledby="files-row-label">
-    <div class="wrap files-row__inner">
-      <span id="files-row-label" class="files-row__label ui">ملفات نتابعها</span>
+  <nav class={`files-row files-row--${placement}`} aria-labelledby={labelId}>
+    <div class={`files-row__inner${placement === "bar" ? " wrap" : ""}`}>
+      <span id={labelId} class="files-row__label ui">ملفات نتابعها</span>
       <ul class="files-row__list">
         {files.map((f) => (
           <li><a href={f.href}>{f.label}</a></li>
@@ -40,7 +46,10 @@ const { files } = Astro.props;
   .files-row__all { flex: none; font-weight: 700; font-size: var(--fs-xs); color: var(--ink-2); text-decoration: none; padding-block: 0.45rem; }
   .files-row__all:hover { color: var(--green); text-decoration: underline; }
 
+  .files-row--inline { display: none; }
   @media (max-width: 719px) {
+    .files-row--bar { display: none; }
+    .files-row--inline { display: block; border-top: 1px solid var(--rule); }
     .files-row__inner { gap: 0.6rem; min-height: 2.2rem; }
     .files-row__all { display: none; }
     .files-row__list { gap: 0 1rem; }
