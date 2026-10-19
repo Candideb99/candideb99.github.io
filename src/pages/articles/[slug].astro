@@ -84,7 +84,9 @@ const jsonLd = [articleLd, breadcrumbLd];
 ---
 
 <Base title={d.title} description={description} path={path} image={ogImage} imageAlt={d.image?.alt} type="article" section={d.section} jsonLd={jsonLd} publishedAt={d.publishedAt} updatedAt={d.updatedAt}>
-  <article class="article wrap--article" data-section={d.section} data-pagefind-body data-pagefind-meta={`section:${d.section}`}>
+  {/* Search can list a story by its date (`data-pagefind-sort`, in milliseconds so no colon splits the value): «النفط»
+      listed 7 September to 1 October first, by relevance alone, with that day's oil stories out of sight (2026-10-19). */}
+  <article class="article wrap--article" data-section={d.section} data-pagefind-body data-pagefind-meta={`section:${d.section}`} data-pagefind-sort={`date:${Date.parse(d.publishedAt)}`}>
     <header class="article__head">
       {/* The kicker, the meta lines, the share row and the photo credit are furniture and stay out of the search text
           (data-pagefind-ignore; the meta values inside are still read): a result's excerpt read «الطاقة › أوبك+
@@ -93,7 +95,9 @@ const jsonLd = [articleLd, breadcrumbLd];
       {/* The headline outweighs the body in search, and the dek comes next (2026-09-24: «التضخم في مصر» ranked a US
           story above «التضخم في مصر يتباطأ إلى 12.7%»). */}
       <h1 class="article__title" data-pagefind-meta={`title:${d.title}`} data-pagefind-weight="10" set:html={isolateNumbers(d.title)} />
-      {d.subtitle && <p class="article__dek" data-pagefind-weight="4" set:html={isolateNumbers(d.subtitle)} />}
+      {/* A search result prints the dek, as the desks' search pages print a story's standfirst: Pagefind's own excerpt
+          opened on the headline's last words and ran on into the photo caption (2026-10-19). */}
+      {d.subtitle && <p class="article__dek" data-pagefind-weight="4" data-pagefind-meta="summary" set:html={isolateNumbers(d.subtitle)} />}
       {/* Two lines on purpose: where the story sits and who wrote it, then when. The hour and the reading time are
           each kept whole, so a phone never leaves «بتوقيت القاهرة» or «دقيقتا قراءة» alone on a line (2026-09-24). */}
       <div class="article__meta" data-pagefind-ignore>
@@ -115,8 +119,10 @@ const jsonLd = [articleLd, breadcrumbLd];
       <div data-pagefind-ignore><Share url={new URL(path, site.url).toString()} title={d.title} /></div>
     </header>
 
+    {/* The photograph and its caption stay out of the search text: a stock refinery's «(صورة تعبيرية)» made a story
+        match «نفط» for its picture (2026-10-19). */}
     {d.image && (
-      <figure class="article__figure">
+      <figure class="article__figure" data-pagefind-ignore>
         <Photo image={d.image} ratio="3/2" eager sizes="(min-width: 1100px) 1024px, 100vw" class="article__photo" />
         <figcaption class="article__caption ui">
           <span>{d.image.alt}</span>

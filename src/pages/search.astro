@@ -11,19 +11,53 @@ import Base from "@layouts/Base.astro";
     <form class="search__form" role="search" action="/search/" method="get">
       <label class="visually-hidden" for="q">عبارة البحث</label>
       <input id="q" class="search__input" type="search" name="q" placeholder="مثال: التضخم في منطقة اليورو" autocomplete="off" autofocus />
+      {/* The house's own clear control, a word in the furniture face: the browser's was a blue × (2026-10-19). */}
+      <button type="button" class="search__clear" hidden>مسح</button>
     </form>
-    <div id="results" class="search__results" aria-live="polite"></div>
+    <div class="search__results">
+      <div class="search__bar">
+        <p class="search__status ui" role="status"></p>
+        {/* A news search lists the newest first (2026-10-19: «النفط» listed 7 September to 1 October by relevance alone,
+            and none of the day's oil stories); relevance stays one tap away. */}
+        <p class="search__sort ui" role="group" aria-label="ترتيب النتائج" hidden>
+          <span class="search__sort-label">الترتيب:</span>
+          <button type="button" data-order="date" aria-pressed="true">الأحدث</button>
+          <span class="search__sort-sep" aria-hidden="true">·</span>
+          <button type="button" data-order="relevance" aria-pressed="false">الأكثر صلة</button>
+        </p>
+      </div>
+      <ol class="search__list"></ol>
+      {/* Twenty at a time, and the rest a tap away: «110 نتائج، تُعرض أول 20» had no way to the other ninety. */}
+      <button type="button" class="search__more" hidden>المزيد من النتائج</button>
+    </div>
   </section>
 </Base>
 
 <script is:inline>
   // Plain script on purpose: the Pagefind bundle is generated after the build and must not be touched by the bundler.
   (function () {
+    var PAGE = 20;
+    // Newest first, a story that names the search fewer than three times comes after the rest, under its own label:
+    // by date alone «الذهب» opened on a French bond story that mentions gold once, and «النفط» on an IPO explainer.
+    // Measured on 2026-10-19 (Pagefind's own count of matched words, `result.words`): passing mentions 0-2, stories
+    // on the subject 4-51, among them the day's WTI story (5), whose headline does not say «النفط».
+    var PASSING = 3;
     var input = document.getElementById("q");
     var form = input && input.form;
-    var results = document.getElementById("results");
+    var clear = document.querySelector(".search__clear");
+    var status = document.querySelector(".search__status");
+    var sort = document.querySelector(".search__sort");
+    var list = document.querySelector(".search__list");
+    var more = document.querySelector(".search__more");
     var pagefind = null;
     var timer;
+    // Every search gets a number, and an answer that arrives after a newer search has started is dropped.
+    var current = 0;
+    // The results of the search on screen, in the order they are listed: { r: Pagefind's result, d: its data once read }.
+    var entries = [];
+    var shown = 0;
+    var params = new URLSearchParams(location.search);
+    var order = params.get("order") === "relevance" ? "relevance" : "date";
     function escape(text) {
       return String(text == null ? "" : text).replace(/[&<>"]/g, function (c) {
         return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
@@ -33,12 +67,15 @@ import Base from "@layouts/Base.astro";
       if (pagefind) return Promise.resolve(pagefind);
       return import("/pagefind/pagefind.js")
         .then(function (pf) {
-          return pf.options({ excerptLength: 30 }).then(function () { return pf.init(); }).then(function () { pagefind = pf; return pf; });
+          return pf.init().then(function () { pagefind = pf; return pf; });
         })
         .catch(function () {
-          results.innerHTML = '<p class="search__hint">تعذّر تحميل البحث. تحقّق من اتصالك بالإنترنت ثم أعد تحميل الصفحة.</p>';
+          say("تعذّر تحميل البحث. تحقّق من اتصالك بالإنترنت ثم أعد تحميل الصفحة.");
           return null;
         });
+    }
+    function say(html) {
+      status.innerHTML = html;
     }
     // The count agrees with its number, as Arabic counts do: نتيجة واحدة، نتيجتان، 3 نتائج، 11 نتيجة.
     function counted(n) {
@@ -47,8 +84,8 @@ import Base from "@layouts/Base.astro";
       var mod = n % 100;
       return "<bdi>" + n + "</bdi> " + (mod >= 3 && mod <= 10 ? "نتائج" : "نتيجة");
     }
-    // A story whose headline carries every word of the search comes first, in the index's own order after that
-    // (2026-09-24: «التضخم في مصر» listed a US inflation story above «التضخم في مصر يتباطأ إلى 12.7%»). Words are
+    // By relevance, a story whose headline carries every word of the search comes first, in the index's own order after
+    // that (2026-09-24: «التضخم في مصر» listed a US inflation story above «التضخم في مصر يتباطأ إلى 12.7%»). Words are
     // compared without marks, tatweel or the variant alef, yaa and taa marbuta, and the small words are left out.
     function norm(text) {
       return String(text == null ? "" : text)
@@ -66,60 +103,125 @@ import Base from "@layouts/Base.astro";
       var ws = words(q);
       if (!ws.length) return items;
       return items
-        .map(function (d, i) {
-          var title = norm((d.meta || {}).title);
-          return { d: d, i: i, all: ws.every(function (w) { return title.indexOf(w) !== -1; }) ? 1 : 0 };
+        .map(function (e, i) {
+          var title = norm((e.d.meta || {}).title);
+          return { e: e, i: i, all: ws.every(function (w) { return title.indexOf(w) !== -1; }) ? 1 : 0 };
         })
         .sort(function (a, b) { return b.all - a.all || a.i - b.i; })
-        .map(function (s) { return s.d; });
+        .map(function (s) { return s.e; });
     }
-    function render(search, items) {
-      var n = search.results.length;
-      var shown = items.length < n ? "، تُعرض أول <bdi>" + items.length + "</bdi>" : "";
-      results.innerHTML =
-        '<p class="search__count ui">' + counted(n) + shown + '</p><ol class="search__list">' +
-        items
-          .map(function (d) {
-            var meta = d.meta || {};
-            return (
-              '<li class="search__item" data-section="' + escape(meta.section) + '">' +
-              '<a class="search__title" href="' + escape(d.url) + '">' + escape(meta.title) + "</a>" +
-              '<p class="search__excerpt">' + d.excerpt + "</p>" +
-              '<p class="meta">' + (meta.sectionName ? '<a href="/' + escape(meta.section) + '/">' + escape(meta.sectionName) + "</a>" : "") + (meta.date ? "<time>" + escape(meta.date) + "</time>" : "") + "</p>" +
-              "</li>"
-            );
-          })
-          .join("") +
-        "</ol>";
+    function read(slice) {
+      return Promise.all(slice.map(function (e) {
+        return e.d ? e.d : e.r.data().then(function (d) { e.d = d; return d; });
+      }));
+    }
+    function item(d) {
+      var meta = d.meta || {};
+      return (
+        '<li class="search__item" data-section="' + escape(meta.section) + '">' +
+        '<a class="search__title" href="' + escape(d.url) + '">' + escape(meta.title) + "</a>" +
+        (meta.summary ? '<p class="search__excerpt">' + escape(meta.summary) + "</p>" : "") +
+        '<p class="meta">' + (meta.sectionName ? '<a href="/' + escape(meta.section) + '/">' + escape(meta.sectionName) + "</a>" : "") + (meta.date ? "<time>" + escape(meta.date) + "</time>" : "") + "</p>" +
+        "</li>"
+      );
+    }
+    function tally() {
+      say(counted(entries.length) + (shown < entries.length ? "، تُعرض <bdi>" + shown + "</bdi>" : ""));
+      more.hidden = shown >= entries.length;
+    }
+    // The next twenty, read and listed; after a tap on «المزيد» focus moves to the first of them.
+    function page(id, focus) {
+      var start = shown;
+      var slice = entries.slice(start, start + PAGE);
+      return read(slice).then(function () {
+        if (id !== current) return;
+        var before = list.children.length;
+        list.insertAdjacentHTML("beforeend", slice.map(function (e, i) {
+          var at = start + i;
+          var label = e.passing && at > 0 && !entries[at - 1].passing ? '<li class="search__group ui">مواد ورد فيها ذكرٌ عابر</li>' : "";
+          return label + item(e.d);
+        }).join(""));
+        shown += slice.length;
+        tally();
+        var first = [].slice.call(list.children, before).filter(function (li) { return li.classList.contains("search__item"); })[0];
+        if (focus && first) first.querySelector("a").focus();
+      });
+    }
+    function reset() {
+      entries = [];
+      shown = 0;
+      list.innerHTML = "";
+      more.hidden = true;
+      sort.hidden = true;
+    }
+    function address(q) {
+      // The search and its order live in the address, so a search can be shared or bookmarked.
+      if (!history.replaceState) return;
+      var query = q ? "?q=" + encodeURIComponent(q) + (order === "relevance" ? "&order=relevance" : "") : "";
+      history.replaceState(null, "", location.pathname + query);
     }
     function run() {
       var q = input.value.trim();
-      // The query lives in the address so a search can be shared or bookmarked.
-      if (history.replaceState) history.replaceState(null, "", q ? "?q=" + encodeURIComponent(q) : location.pathname);
+      var id = ++current;
+      clear.hidden = !input.value;
+      address(q);
       if (!q) {
-        results.innerHTML = "";
+        reset();
+        say("");
         return;
       }
       load().then(function (pf) {
-        if (!pf) return;
-        return pf.search(q).then(function (search) {
+        if (!pf || id !== current) return;
+        return pf.search(q, order === "date" ? { sort: { date: "desc" } } : {}).then(function (search) {
+          if (id !== current) return;
+          reset();
           if (!search.results.length) {
-            results.innerHTML = '<p class="search__hint">لا نتائج. جرّب كلمة أخرى أو اسم مؤسسة.</p>';
+            say("لا نتائج. جرّب كلمة أخرى أو اسم مؤسسة.");
             return;
           }
-          // Forty read, twenty shown: a headline match further down the index's list still reaches the top.
-          return Promise.all(search.results.slice(0, 40).map(function (r) { return r.data(); })).then(function (items) {
-            render(search, headlinesFirst(items, q).slice(0, 20));
+          entries = search.results.map(function (r) { return { r: r, passing: order === "date" && r.words.length < PASSING }; });
+          sort.hidden = entries.length < 2;
+          if (order === "date") {
+            entries = entries.filter(function (e) { return !e.passing; }).concat(entries.filter(function (e) { return e.passing; }));
+            return page(id, false);
+          }
+          // Forty read before the first twenty are listed, so a headline match further down still reaches the top.
+          var head = entries.slice(0, 40);
+          return read(head).then(function () {
+            if (id !== current) return;
+            entries = headlinesFirst(head, q).concat(entries.slice(40));
+            return page(id, false);
           });
         });
       });
     }
+    sort.querySelectorAll("button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        if (b.dataset.order === order) return;
+        order = b.dataset.order;
+        sort.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+        run();
+      });
+    });
+    var busy = false;
+    more.addEventListener("click", function () {
+      if (busy) return;
+      busy = true;
+      page(current, true).then(function () { busy = false; }, function () { busy = false; });
+    });
+    clear.addEventListener("click", function () {
+      input.value = "";
+      run();
+      input.focus();
+    });
     input.addEventListener("input", function () {
+      clear.hidden = !input.value;
       clearTimeout(timer);
       timer = setTimeout(run, 180);
     });
     if (form) form.addEventListener("submit", function (e) { e.preventDefault(); clearTimeout(timer); run(); });
-    var initial = new URLSearchParams(location.search).get("q");
+    sort.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", String(x.dataset.order === order)); });
+    var initial = params.get("q");
     if (initial) {
       input.value = initial;
       run();
@@ -128,26 +230,60 @@ import Base from "@layouts/Base.astro";
 </script>
 
 <style>
-  .search__form { max-width: 40rem; }
+  .search__form { position: relative; max-width: 40rem; }
   .search__input {
     width: 100%;
     font-family: var(--font-body);
     font-size: 1.3rem;
     padding: 0.6rem 0.2rem;
+    padding-inline-end: 3.5rem;
     border: 0;
     border-bottom: 2px solid var(--ink);
     border-radius: 0;
     background: var(--paper);
     color: var(--ink);
   }
+  .search__input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; display: none; }
   /* Focus thickens the rule as well as turning it green, so it shows without relying on colour alone. */
   .search__input:focus { outline: none; border-bottom: 3px solid var(--green); padding-bottom: calc(0.6rem - 1px); }
+  .search__clear {
+    position: absolute;
+    inset-inline-end: 0;
+    inset-block: 0;
+    display: flex;
+    align-items: center;
+    padding-inline: 0.6rem 0.2rem;
+    font-family: var(--font-ui);
+    font-weight: 700;
+    font-size: var(--fs-sm);
+    color: var(--ink-3);
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+  .search__clear:hover { color: var(--green); }
+  .search__clear[hidden] { display: none; }
   .search__results { margin-top: 1.5rem; max-width: 46rem; }
-  .search :global(.search__hint), .search :global(.search__count) { font-family: var(--font-ui); font-size: var(--fs-sm); color: var(--ink-3); }
-  .search :global(.search__list) { display: grid; gap: 1rem; margin-top: 0.75rem; }
+  .search__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 1rem; }
+  .search__status { font-size: var(--fs-sm); color: var(--ink-3); }
+  .search__status:empty { display: none; }
+  .search__sort { display: flex; align-items: center; font-size: var(--fs-sm); }
+  .search__sort[hidden] { display: none; }
+  .search__sort-label { color: var(--ink-3); margin-inline-end: 0.2rem; }
+  .search__sort-sep { color: var(--ink-3); }
+  /* The order in use turns green and bold, as a state does on this site, never by a fill. */
+  .search__sort button { min-height: 2.75rem; padding-inline: 0.45rem; font-family: var(--font-ui); font-size: var(--fs-sm); font-weight: 500; color: var(--ink-3); background: none; border: 0; cursor: pointer; }
+  .search__sort button:hover { color: var(--ink); }
+  .search__sort button[aria-pressed="true"] { color: var(--green); font-weight: 700; }
+  .search :global(.search__list) { display: grid; gap: 1rem; margin-top: 0.5rem; }
   .search :global(.search__item) { border-top: 1px solid var(--rule); padding-top: 0.9rem; }
   .search :global(.search__title) { font-family: var(--font-title); font-weight: 700; font-size: var(--t-head); line-height: 1.4; text-decoration: none; }
   .search :global(.search__title:hover) { color: var(--green); }
   .search :global(.search__excerpt) { font-size: var(--n-text); line-height: 1.7; color: var(--ink-2); margin-top: 0.3rem; }
-  .search :global(.search__excerpt mark) { background: none; color: var(--green); font-weight: 700; }
+  /* The passing mentions open under a label in the furniture face, over the section's 3px ink rule. */
+  .search :global(.search__group) { margin-top: 1rem; padding-top: 0.6rem; border-top: 3px solid var(--ink); font-size: var(--fs-sm); font-weight: 700; color: var(--ink-3); }
+  /* «المزيد» is built like the section pages' pager steps. */
+  .search__more { display: block; margin-top: 1.25rem; padding: 0.55rem 1.2rem 0.45rem; font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-sm); color: var(--green); background: none; border: 1px solid var(--rule); cursor: pointer; }
+  .search__more:hover { border-color: var(--green); }
+  .search__more[hidden] { display: none; }
 </style>
