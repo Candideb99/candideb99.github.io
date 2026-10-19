@@ -11079,6 +11079,173 @@
         }
       ],
       "outcome": "clean"
+    },
+    "dip-holding-ipo-dubai-financial-market-44bc9e": {
+      "at": "2026-10-19T20:37:29.300Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "checker": "4c54099299",
+      "publishedAt": "2026-10-19T12:18:35.629Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 36,
+        "checked": 36,
+        "supported": 28,
+        "weak": 1,
+        "noEvidence": 5,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "أُسس المجمع عام 1999 على طريق الشيخ محمد بن زايد قرب مطار آل مكتوم الدولي وميناء جبل علي، ويضم مناطق صناعية وتجارية وسكنية.",
+          "quote": "The district was established in 1997 and hosts warehouses, hotels, retail outlets, schools and medical centres, making it one of the largest mixed-use developments in the emirate.",
+          "source": "The National"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "ويمتد على 23 مليون متر مربع، ويخدم نحو 1,000 مستأجر ونحو 5,700 عقد إيجار من الباطن وأكثر من 150 ألف مقيم، بحسب الشركة.",
+          "quote": "It is home to more than 1,200 tenants and 5,700 sub-leases, according to its operator, Dubai Investments.",
+          "source": "AGBI (Arabian Gulf Business Insight)"
+        }
+      ],
+      "notFound": [
+        "وسيكون تسعير 4 نوفمبر أول قياس لاستعداد المستثمرين لدفع ثمن هذا الدخل، بعد عام أجّلت فيه شركات عدة طروحها إثر اندلاع الصراع.",
+        "أما في عام 2025 كاملاً، فبلغت الإيرادات 960 مليون درهم والأرباح المعدلة 678 مليون درهم.",
+        "ويُتوقع صرف أول توزيع بعد الطرح، وقيمته 350 مليون درهم، في أبريل 2027 عن كامل النصف الثاني من 2026، لا عن الفترة التالية للإدراج وحدها.",
+        "وخُصصت الشريحة الرابعة، وتمثل 2% إضافية من الطرح، لمساهمي «دبي للاستثمار» الأفراد المؤهلين المسجلين في تاريخ الأحقية في 28 أكتوبر، شرط أن يكونوا قد اشتروا أسهمهم في موعد أقصاه 26 أكتوبر.",
+        "ولم يُحدَّد سعر الطرح بعد، إذ يُعلن السعر النهائي في 4 نوفمبر، على أن يبدأ تداول الأسهم في سوق دبي المالي في 11 نوفمبر أو في موعد قريب منه، رهناً بالموافقات التنظيمية وظروف السوق."
+      ],
+      "weak": [
+        {
+          "sentence": "أعلنت «دبي للاستثمار» الاثنين أنها تعتزم بيع 20% من شركتها التابعة «دي اي بي هولدينغ»، مالكة مجمع دبي للاستثمار، في سوق دبي المالي.",
+          "quote": "The deal will comprise the sale of 1.74 billion shares by existing shareholders in DIP Holding, which owns the mixed-use development Dubai Investments Park, the company said on Monday."
+        }
+      ],
+      "outcome": "listed"
+    },
+    "banque-du-caire-ipo-retail-coverage-42-263aca": {
+      "at": "2026-10-19T20:37:29.280Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "checker": "4c54099299",
+      "publishedAt": "2026-10-19T13:53:22.971Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 23,
+        "weak": 7,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "يظل الاكتتاب مفتوحاً أمام المؤسسات حتى الجمعة 23 أكتوبر، وأمام الأفراد حتى الأربعاء 28 أكتوبر.",
+          "quote": "أما الاكتتاب العام، فسيمتد من 19 إلى 26 أكتوبر، ومن المتوقع أن يبدأ تداول الأسهم في البورصة أوائل شهر نوفمبر.",
+          "source": "Al Khaleej"
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "شريحة الأفراد تمثل 5% فقط من الأسهم المطروحة، وتُخصَّص 95% منها لمستثمرين مؤهلين التزم أربعة منهم، بشروط مسبقة، بشراء ما يصل إلى 63% من هذه الشريحة",
+          "quote": "وتبلغ النسب القصوى المحددة في الإفصاح للمستثمرين الأربعة أو مجموعتي المستثمرين المشار إليهما 63% من الشريحة الأولى للطرح الخاص، وفقًا للنسب المعلنة في الاتفاقيات، دون أن يعني ذلك تخصيص هذه النسب بصورة نهائية."
+        },
+        {
+          "sentence": "بلغت نسبة تغطية الشريحة العامة من الطرح العام الأولي لبنك القاهرة نحو 42% في أول أيام الاكتتاب الاثنين، مع توقيع اتفاقيات استثمار أساسي مع 4 مستثمرين مؤهلين للاكتتاب في الطرح الخاص.",
+          "quote": "وبدأ اليوم، خلال جلسة الاثنين، تلقي أوامر الشراء في شريحتي الطرح العام والخاص بالبورصة المصرية، ويظل باب الاكتتاب مفتوحًا أمام المستثمرين من المؤسسات حتى يوم الجمعة 23 أكتوبر، فيما يستمر الاكتتاب في الشريحة المخصصة للأفراد حتى الأربعاء 28 أكتوبر."
+        },
+        {
+          "sentence": "النسبة المطروحة حالياً والمحتملة: 30%، مع دراسة رفعها إلى 45%",
+          "quote": "وذكر البنك في بيان أرسله الأحد إلى البورصة المصرية، أنه يدرس رفع هذه النسبة لتصل إلى 45%، وذلك بناءً على حجم الطلب خلال فترة الاكتتاب."
+        },
+        {
+          "sentence": "لأن 95% من الأسهم المطروحة مخصصة للمستثمرين المؤهلين، يتحدد نجاح الطرح وسعره النهائي في دفتر طلبات المؤسسات حتى 23 أكتوبر أكثر مما يتحدد بتغطية الأفراد.",
+          "quote": "وبدأ اليوم، خلال جلسة الاثنين، تلقي أوامر الشراء في شريحتي الطرح العام والخاص بالبورصة المصرية، ويظل باب الاكتتاب مفتوحًا أمام المستثمرين من المؤسسات حتى يوم الجمعة 23 أكتوبر، فيما يستمر الاكتتاب في الشريحة المخصصة للأفراد حتى الأربعاء 28 أكتوبر."
+        },
+        {
+          "sentence": "والتزامات المستثمرين الأساسيين لا تتجاوز 63% من الشريحة الخاصة وهي مشروطة، فيبقى جزء من هذه الشريحة معلقاً على طلب مؤسسات أخرى، كما يبقى رفع الطرح إلى 45% رهن حجم الطلب.",
+          "quote": "وأكد البنك أن النسب المشار إليها تخضع لشروط وأحكام الاتفاقيات المبرمة مع المستثمرين، بما في ذلك الشروط المسبقة والسعر المنصوص عليه في الاتفاقية ذات الصلة، والتي قد تختلف من مستثمر إلى آخر."
+        }
+      ],
+      "outcome": "listed"
+    },
+    "saudi-inflation-rises-september-2026-224823": {
+      "at": "2026-10-19T20:38:27.052Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "checker": "4c54099299",
+      "publishedAt": "2026-10-19T11:35:05.750Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "fromCopy": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 8,
+        "checked": 8,
+        "supported": 2,
+        "weak": 6,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "الإيجارات تبقى المحرك الرئيسي للأسعار رغم تباطؤ زيادتها السنوية إلى 3.5% من 3.9% في أغسطس",
+          "quote": "The prices of the housing, water, electricity, gas and other fuels division increased by 3.6% as a result of the increase in the prices of the actual rental group for housing by 3.5%."
+        },
+        {
+          "sentence": "ارتفع معدل التضخم السنوي في السعودية إلى 1.9% في سبتمبر من 1.8% في أغسطس، بحسب الهيئة العامة للإحصاء، مدفوعاً أساساً بصعود أسعار السكن والمياه والكهرباء والغاز وأنواع الوقود الأخرى بنسبة 3.6%.",
+          "quote": "The Consumer Price Index (CPI) in Saudi Arabia recorded an annual increase of 1.9% in September 2026, compared to the same month of the previous year (September 2025). This increase was mainly driven by a rise in housing, water, electricity, gas, and other fuel prices by 3.6%, food and beverage prices by 1.4%, and transportation prices by 2.3% (Figure 1)."
+        },
+        {
+          "sentence": "وزادت الإيجارات الفعلية للمساكن 3.5% على أساس سنوي، فبقي قسم السكن صاحب الحصة الكبرى في التضخم، إذ أضاف 0.7 نقطة مئوية من أصل 1.9%.",
+          "quote": "The housing, water, electricity, gas, and other fuels division was the main contributor to the annual inflation with a contribution of 0.7 percentage points, followed by the food and beverages division with a contribution of 0.3 percentage points, in addition to the transportation division with a contribution of 0.3 percentage points."
+        },
+        {
+          "sentence": "لكن وتيرة صعوده تباطأت؛ فقد ارتفع القسم 3.9% في أغسطس مع زيادة الإيجارات بالنسبة نفسها، وكانت حصته حينها 0.8 نقطة مئوية.",
+          "quote": "The housing, water, electricity, gas and other fuels division was the main contributor to the annual inflation with a contribution of 0.8 percentage points, followed by the food and beverages division with a contribution of 0.3 percentage points, in addition to the transport division with a contribution of 0.3 percentage points."
+        },
+        {
+          "sentence": "وصعدت أسعار النقل 2.3% سنوياً مقابل 2.0% في أغسطس، واستقرت زيادة أسعار الأغذية والمشروبات عند 1.4%، وأضاف كل من القسمين 0.3 نقطة مئوية إلى المعدل.",
+          "quote": "The housing, water, electricity, gas, and other fuels division was the main contributor to the annual inflation with a contribution of 0.7 percentage points, followed by the food and beverages division with a contribution of 0.3 percentage points, in addition to the transportation division with a contribution of 0.3 percentage points."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }
