@@ -24,21 +24,33 @@ interface Props {
 }
 const { image, ratio = "3/2", eager = false, sizes = "(min-width: 1024px) 40vw, 100vw", class: className = "" } = Astro.props;
 const source = image ? responsiveImage(image.url, image.width) : null;
+// A phone is offered no copy wider than 960px. A full-width photograph on a 390px phone at three device pixels a point
+// asked for 1170 and took the 1280px copy: the front's cover weighed 366 kB and was painted 19.7s after a cold load on a
+// slow phone network (2026-10-19). 960 is 2.5 pixels a point, which no eye tells from three in a photograph.
+const PHONE_MAX = 960;
+const phoneSet = source?.srcset
+  ?.split(", ")
+  .filter((c) => Number(c.match(/ (\d+)w$/)?.[1] ?? 0) <= PHONE_MAX)
+  .join(", ");
+const capped = Boolean(phoneSet && source?.srcset && phoneSet !== source.srcset);
 ---
 
 {image && source && (
   <div class={`photo ${className}`} style={`aspect-ratio:${ratio}`}>
-    <img
-      src={source.src}
-      srcset={source.srcset}
-      sizes={sizes}
-      width={image.width ?? 1280}
-      height={image.height ?? 853}
-      alt={image.alt}
-      loading={eager ? "eager" : "lazy"}
-      decoding="async"
-      fetchpriority={eager ? "high" : "auto"}
-      referrerpolicy="no-referrer"
-    />
+    <picture>
+      {capped && <source media="(max-width: 719px)" srcset={phoneSet} sizes={sizes} />}
+      <img
+        src={source.src}
+        srcset={source.srcset}
+        sizes={sizes}
+        width={image.width ?? 1280}
+        height={image.height ?? 853}
+        alt={image.alt}
+        loading={eager ? "eager" : "lazy"}
+        decoding="async"
+        fetchpriority={eager ? "high" : "auto"}
+        referrerpolicy="no-referrer"
+      />
+    </picture>
   </div>
 )}

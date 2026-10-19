@@ -242,6 +242,9 @@ bdi:has(> .mark-dir) { white-space: nowrap; }
 /* ----- Photographs: true colour, sized to their column, never washed ----- */
 .photo { position: relative; overflow: hidden; background: var(--paper-2); width: 100%; }
 .photo img { width: 100%; height: 100%; object-fit: cover; }
+/* The phone's copy comes through a <picture> (Photo.astro), which takes no box of its own, so the image still fills the
+   frame. */
+.photo picture { display: contents; }
 
 /* ----- Prose (article body): justified naskh in a newspaper measure ----- */
 .prose {
