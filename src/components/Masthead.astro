@@ -31,7 +31,7 @@ import { sections, sectionHref, newsSections } from "@lib/sections";
 import { formatDate } from "@lib/format";
 import { todayIso } from "@lib/calendar";
 import { getArticles, articleHref } from "@lib/articles";
-import { analysisDesk, ANALYSIS_DESKS } from "@lib/analysis";
+import { analysisDesk, liveDesks } from "@lib/analysis";
 import { menuTopics, topicHref } from "@lib/topics";
 import { isolateNumbers } from "@lib/bidi";
 import { LOGO } from "@lib/brand";
@@ -67,8 +67,7 @@ interface Column {
 const DATA_LINKS: Record<string, Link[]> = {
   markets: [{ href: "/markets/data/", text: "لوحة الأسواق" }, { href: "/calendar/", text: "الأجندة الاقتصادية" }],
   economy: [{ href: "/calendar/", text: "الأجندة الاقتصادية" }],
-  energy: [{ href: "/markets/data/#commodities", text: "أسعار النفط والغاز والمعادن" }],
-  defense: [{ href: "/analysis/desk/defense/", text: "التحليل الدفاعي والجيوسياسي" }],
+  energy: [{ href: "/markets/data/#commodities", text: "أسعار النفط والغاز" }],
 };
 const panels = new Map<string, Column[]>();
 for (const s of sections) {
@@ -81,14 +80,19 @@ for (const s of sections) {
       const latest = articles.filter((a) => a.data.section === s.id && a.data.kind === "news").slice(0, 4).map((a) => ({ href: articleHref(a), text: a.data.title, title: true }));
       if (latest.length) columns.push({ head: "أحدث الأخبار", links: latest, wide: true });
     }
-    const pieces = analyses.filter((a) => analysisDesk(a, articles)?.id === s.id).slice(0, 3).map((a) => ({ href: articleHref(a), text: a.data.title, title: true }));
-    if (pieces.length) columns.push({ head: "تحليلات القسم", links: [...pieces, { href: `/analysis/desk/${s.id}/`, text: "كل تحليلات القسم" }], wide: true });
+    const deskPieces = analyses.filter((a) => analysisDesk(a, articles)?.id === s.id);
+    const pieces = deskPieces.slice(0, 3).map((a) => ({ href: articleHref(a), text: a.data.title, title: true }));
+    // «كل تحليلات القسم» only when the desk's page holds more than the panel shows.
+    const more = deskPieces.length > pieces.length ? [{ href: `/analysis/desk/${s.id}/`, text: "كل تحليلات القسم" }] : [];
+    if (pieces.length) columns.push({ head: "تحليلات القسم", links: [...pieces, ...more], wide: true });
     columns.push({ head: "المزيد", links: [{ href: sectionHref(s.id), text: `كل مواد ${s.name}` }, ...(DATA_LINKS[s.id] ?? [])] });
   } else if (s.id === "analysis") {
-    columns.push({ head: "بحسب المجال", links: Object.entries(ANALYSIS_DESKS).map(([id, name]) => ({ href: `/analysis/desk/${id}/`, text: name })) });
+    // Only the desks we are writing in (liveDesks, 2026-10-19).
+    const desks = liveDesks(articles, now.getTime()).map(({ id, label }) => ({ href: `/analysis/desk/${id}/`, text: label }));
+    if (desks.length) columns.push({ head: "بحسب المجال", links: desks });
     const pieces = analyses.slice(0, 4).map((a) => ({ href: articleHref(a), text: a.data.title, title: true }));
     if (pieces.length) columns.push({ head: "أحدث التحليلات", links: pieces, wide: true });
-    columns.push({ head: "المزيد", links: [{ href: sectionHref(s.id), text: "كل التحليلات" }, { href: "/tags/", text: "الملفات التي نتابعها" }] });
+    columns.push({ head: "المزيد", links: [{ href: sectionHref(s.id), text: "كل التحليلات" }] });
   } else if (s.id === "explainers") {
     columns.push({ head: "الأنواع", links: [{ href: "/explainers/kind/concepts/", text: "شروح مبسّطة" }, { href: "/explainers/kind/papers/", text: "قراءات في أوراق بحثية" }] });
     const pieces = articles.filter((a) => a.data.kind === "explainer" || a.data.kind === "paper").slice(0, 4).map((a) => ({ href: articleHref(a), text: a.data.title, title: true }));

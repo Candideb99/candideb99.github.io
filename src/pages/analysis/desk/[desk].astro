@@ -7,7 +7,7 @@
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
 import { getArticles } from "@lib/articles";
-import { ANALYSIS_DESKS, analysisDesk, analysisLabel } from "@lib/analysis";
+import { ANALYSIS_DESKS, analysisDesk, analysisLabel, liveDesks } from "@lib/analysis";
 
 export async function getStaticPaths() {
   const articles = await getArticles();
@@ -25,6 +25,8 @@ interface Props {
 const { desk, label, items } = Astro.props;
 const all = await getArticles();
 const n = items.length;
+// The other desks we are writing in (liveDesks), never an empty page.
+const siblings = liveDesks(all).filter((d) => d.id !== desk);
 ---
 
 <Base title={label} description={`${label}: قراءات خازندار في هذا المجال.`} path={`/analysis/desk/${desk}/`} section="analysis">
@@ -33,10 +35,12 @@ const n = items.length;
       <p class="page-head__section ui"><a href="/analysis/">تحليلات</a></p>
       <h1 class="page-title">{label}</h1>
       <p class="page-intro">{n > 0 ? <span>قراءات خازندار في هذا المجال، من الأحدث إلى الأقدم.</span> : <span>لم تُنشر قراءات في هذا المجال بعد؛ تُكتب التحليلات من تغطية خازندار نفسها حين تتراكم.</span>}</p>
-      <p class="page-head__topics ui">
-        <span class="page-head__topics-label">المجالات:</span>
-        {Object.entries(ANALYSIS_DESKS).filter(([id]) => id !== desk).map(([id, name]) => <a href={`/analysis/desk/${id}/`}>{name}</a>)}
-      </p>
+      {siblings.length > 0 && (
+        <p class="page-head__topics ui">
+          <span class="page-head__topics-label">المجالات:</span>
+          {siblings.map((d) => <a href={`/analysis/desk/${d.id}/`}>{d.label}</a>)}
+        </p>
+      )}
     </header>
     {n > 0 && (
       <div class="cols cols--rows" style={`--n:${Math.min(n, 3)}`}>

@@ -2,7 +2,7 @@
   {
     "id": "economy",
     "name": "الاقتصاد",
-    "description": "النمو والتضخم والسياسة النقدية والمالية العامة والعمل والتجارة.",
+    "description": "النمو والتضخم والسياسة النقدية والمالية العامة والتجارة والاستثمار.",
     "guide": "Macro and public life: growth, inflation, central banks and rates, budgets and taxes, jobs, trade and tariffs, government policy and regulation, public infrastructure and transport systems (airports, air-traffic control, ports, railways, roads) when the story is about the system or the public, not one company. A flight ban or an air-traffic outage is economy. NOT: a single company's results (companies), asset prices (markets)."
   },
   {
@@ -20,13 +20,13 @@
   {
     "id": "companies",
     "name": "الشركات",
-    "description": "نتائج الشركات والصفقات والقيادات والصناعات.",
+    "description": "أخبار الشركات في البنوك والعقارات والنقل والصناعة والتجزئة: نتائجها وصفقاتها وقياداتها.",
     "guide": "One or a few named companies: results and guidance, deals and mergers, leadership, strikes, lawsuits and fines, product launches, an airline's or automaker's or bank's own story, sector news told through its companies. NOT: a technology or AI company story whose point is the technology (technology); a defence contractor's award (defense)."
   },
   {
     "id": "technology",
     "name": "التكنولوجيا",
-    "description": "اقتصاد التكنولوجيا والذكاء الاصطناعي والرقائق والمنصات.",
+    "description": "الذكاء الاصطناعي والرقائق ومراكز البيانات والأمن السيبراني والتكنولوجيا المالية.",
     "guide": "The technology economy: AI models and labs, chips and data centres, platforms and apps, software, telecoms, tech regulation, digital finance and crypto infrastructure. NOT: an ordinary company story that merely mentions software (companies); an IT failure at a public agency (economy)."
   },
   {

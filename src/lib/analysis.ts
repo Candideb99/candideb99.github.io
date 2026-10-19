@@ -47,3 +47,23 @@ export function analysisDesk(article: Article, all: Article[]): Desk | null {
 export function analysisLabel(article: Article, all: Article[]): string | undefined {
   return analysisDesk(article, all)?.label;
 }
+
+/** A desk is offered in the menus while it has had DESK_MIN analyses in the last DESK_DAYS days. */
+export const DESK_MIN = 2;
+export const DESK_DAYS = 60;
+
+/**
+ * The analysis desks the menus offer (the bar's panel, a desk page's neighbours), in their order: only those we are
+ * writing in (2026-10-19, the owner's check of the whole site: six desks were offered for nine analyses, technology and
+ * defence with none). A desk's page stays, since an analysis's kicker leads there.
+ */
+export function liveDesks(all: Article[], now = Date.now()): Desk[] {
+  const since = now - DESK_DAYS * 864e5;
+  const counts = new Map<string, number>();
+  for (const a of all) {
+    if (a.data.kind !== "analysis" || Date.parse(a.data.publishedAt) < since) continue;
+    const id = analysisDesk(a, all)?.id;
+    if (id) counts.set(id, (counts.get(id) ?? 0) + 1);
+  }
+  return Object.entries(ANALYSIS_DESKS).filter(([id]) => (counts.get(id) ?? 0) >= DESK_MIN).map(([id, label]) => ({ id, label }));
+}
