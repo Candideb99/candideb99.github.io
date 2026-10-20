@@ -26,7 +26,7 @@ tags:
   - تنويع الاقتصاد
 regions:
   - الخليج
-  - الشرق الأوسط
+  - المشرق وإيران وتركيا
 readingMinutes: 3
 chart: null
 table: null

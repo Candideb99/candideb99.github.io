@@ -25,23 +25,7 @@ regions:
   - الخليج
   - المشرق وإيران وتركيا
 readingMinutes: 2
-chart:
-  type: bar
-  title: عدد السفن العابرة لمضيق هرمز
-  unit: سفينة
-  source: OilPrice.com، Kpler
-  categories:
-    - نهاية الأسبوع الحالي
-    - الأسبوع السابق
-    - يوم الخميس الماضي
-    - المتوسط المتحرك لـ10 أيام
-  series:
-    - name: السفن العابرة
-      values:
-        - 12
-        - 35
-        - 4
-        - 16
+chart: null
 table: null
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/WHITE_TRADER_Crude_Oil_Tanker%2C_Bosphorus_Strait%2C_Istanbul%2C_Turkiye_%28Ank_Kumar%2C_Infosys_Limited%29_01.jpg/1280px-WHITE_TRADER_Crude_Oil_Tanker%2C_Bosphorus_Strait%2C_Istanbul%2C_Turkiye_%28Ank_Kumar%2C_Infosys_Limited%29_01.jpg

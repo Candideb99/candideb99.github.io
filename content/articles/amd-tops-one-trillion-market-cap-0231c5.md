@@ -30,21 +30,7 @@ regions:
   - الأمريكتان
   - عالمي
 readingMinutes: 2
-chart:
-  type: bar
-  title: مكاسب سهم «إيه إم دي» عبر ثلاث فترات
-  unit: "%"
-  source: CNBC
-  categories:
-    - جلسة الاثنين
-    - خمس جلسات
-    - منذ بداية العام
-  series:
-    - name: التغير
-      values:
-        - 10
-        - 25
-        - 180
+chart: null
 table: null
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/AMD_CEO_Lisa_Su_speaking_at_ORNL_2019-05-07.jpg/1280px-AMD_CEO_Lisa_Su_speaking_at_ORNL_2019-05-07.jpg

@@ -1,0 +1,55 @@
+{
+  "startedAt": "2026-10-20T17:50:02.735Z",
+  "slug": "rba-raises-cash-rate-to-4-6-percent-e6fe7e",
+  "issue": "the chart puts different measures side by side: the policy rate, annual inflation and the top of the target band",
+  "dryRun": true,
+  "before": {
+    "type": "bar",
+    "title": "سعر الفائدة الأساسي في أستراليا مقارنة بالتضخم والنطاق المستهدف",
+    "unit": "%",
+    "source": "بنك الاحتياطي الأسترالي؛ بيانات التضخم الرسمية",
+    "categories": [
+      "سعر الفائدة الأساسي بعد القرار",
+      "التضخم السنوي في يوليو",
+      "الحد الأعلى للنطاق المستهدف"
+    ],
+    "series": [
+      {
+        "name": "النسبة",
+        "values": [
+          4.6,
+          3.5,
+          3
+        ]
+      }
+    ]
+  },
+  "model": "claude-cli/claude-opus-5-5",
+  "after": {
+    "type": "bar",
+    "title": "احتمال رفع الفائدة الأسترالية مجدداً وفق تسعير الأسواق، قبل القرار وبعده",
+    "unit": "%",
+    "source": "الشرق الأوسط",
+    "categories": [
+      "نوفمبر",
+      "ديسمبر"
+    ],
+    "series": [
+      {
+        "name": "قبل القرار",
+        "values": [
+          44,
+          60
+        ]
+      },
+      {
+        "name": "بعد القرار",
+        "values": [
+          32,
+          50
+        ]
+      }
+    ]
+  },
+  "problems": []
+}

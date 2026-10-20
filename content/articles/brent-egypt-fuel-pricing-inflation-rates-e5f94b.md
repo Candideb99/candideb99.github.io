@@ -30,23 +30,7 @@ regions:
   - مصر والمغرب العربي
   - عالمي
 readingMinutes: 4
-chart:
-  type: bar
-  title: فائدة المركزي المصري مقابل التضخم في أغسطس
-  unit: "%"
-  source: البنك المركزي المصري
-  categories:
-    - فائدة الإيداع لليلة واحدة
-    - فائدة الإقراض لليلة واحدة
-    - التضخم السنوي في المدن
-    - التضخم الأساسي السنوي
-  series:
-    - name: المعدل
-      values:
-        - 19
-        - 20
-        - 14.5
-        - 14.9
+chart: null
 table: null
 image:
   url: https://images.pexels.com/photos/12377482/pexels-photo-12377482.jpeg?auto=compress&cs=tinysrgb&w=1280

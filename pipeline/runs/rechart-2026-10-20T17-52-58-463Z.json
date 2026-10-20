@@ -1,0 +1,57 @@
+{
+  "startedAt": "2026-10-20T17:52:58.463Z",
+  "slug": "us-core-pce-inflation-august-below-forecast-444dd8",
+  "issue": "actual and expected readings are drawn as four separate bars instead of two series (actual, expected) over the headline and core index",
+  "dryRun": false,
+  "before": {
+    "type": "bar",
+    "title": "مؤشر أسعار نفقات الاستهلاك الشخصي في أغسطس: القراءة الفعلية والتوقعات على أساس سنوي",
+    "unit": "%",
+    "source": "وزارة التجارة الأمريكية، داو جونز",
+    "categories": [
+      "المؤشر العام (فعلي)",
+      "المؤشر العام (متوقع)",
+      "المؤشر الأساسي (فعلي)",
+      "المؤشر الأساسي (متوقع)"
+    ],
+    "series": [
+      {
+        "name": "النسبة السنوية",
+        "values": [
+          3.4,
+          3.7,
+          3,
+          3.3
+        ]
+      }
+    ]
+  },
+  "model": "claude-cli/claude-opus-5-5",
+  "after": {
+    "type": "bar",
+    "title": "مؤشر أسعار نفقات الاستهلاك الشخصي الأمريكي في أغسطس على أساس سنوي: الفعلي مقابل المتوقع",
+    "unit": "%",
+    "source": "وزارة التجارة الأمريكية، داو جونز",
+    "categories": [
+      "المؤشر العام",
+      "المؤشر الأساسي"
+    ],
+    "series": [
+      {
+        "name": "فعلي",
+        "values": [
+          3.4,
+          3
+        ]
+      },
+      {
+        "name": "متوقع",
+        "values": [
+          3.7,
+          3.3
+        ]
+      }
+    ]
+  },
+  "problems": []
+}

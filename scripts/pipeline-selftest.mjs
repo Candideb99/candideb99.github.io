@@ -20,7 +20,7 @@ import { loadSources, settleDrift, verifyStory } from "../pipeline/lib/factcheck
 import { instrumentsOf, marketData, repeatsInstrument } from "../pipeline/lib/context.mjs";
 import { independentOutletCount } from "../pipeline/lib/news-evidence.mjs";
 import { boxFacts } from "../pipeline/lib/keyfacts.mjs";
-import { deskNotes, newsDepthBrief, newsFloor, normalizeDraft, prioritizeContext, substantiveFacts, validateDraft, validateWhyBasis } from "../pipeline/lib/write.mjs";
+import { deskNotes, newsDepthBrief, newsFloor, normalizeChart, normalizeDraft, prioritizeContext, substantiveFacts, validateDraft, validateWhyBasis } from "../pipeline/lib/write.mjs";
 import { NEWS_DEPTH, NEWS_FLOOR, SHORT_WORDS } from "../pipeline/lib/editorial.mjs";
 import { arabicEdition, bestPdf, editionKey, previousEdition, releaseDocument, releaseStory, reportExcerpts } from "../pipeline/lib/reports.mjs";
 import { mergeNewsRefresh, serializeArticle } from "../pipeline/lib/article.mjs";
@@ -322,6 +322,15 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("tags: absent subjects and institutions go, worded ones stay, house spelling", tags, ["التجارة", "الأمريكية", "الحوثيون"]);
   // An Arab desk only where the headline, dek or lede names one of its places; a war named as a cause is not a place.
   check("desks: a US jobs report leaves the Gulf desk", groundedRegions(["الخليج", "الأمريكتان"], { title: "الاقتصاد الأمريكي يضيف 150 ألف وظيفة", lede: "أضاف الاقتصاد الأمريكي 150 ألف وظيفة في أغسطس" }), ["الأمريكتان"]);
+  // One measure per chart (CHART_RULE, 2026-10-20): what code can see of it.
+  const bars = (categories, values) => ({ type: "bar", title: "t", unit: "%", source: "s", categories, series: [{ name: "v", values }] });
+  check("charts: a policy rate beside inflation is no chart", normalizeChart(bars(["سعر الفائدة الأساسي", "التضخم السنوي", "الحد الأعلى للنطاق"], [4.6, 3.5, 3])), null);
+  check("charts: a bond yield beside a policy rate is no chart", normalizeChart(bars(["عوائد سندات بريطانيا", "عوائد سندات أمريكا", "معدل فائدة المركزي الأوروبي"], [5.37, 4.92, 2.5])), null);
+  check("charts: Egypt's deposit rate is an interest rate, so three rates stay one measure", normalizeChart(bars(["سعر عائد الإيداع", "سعر عائد الإقراض", "سعر الائتمان والخصم"], [19, 20, 19.5]))?.categories.length, 3);
+  check("charts: actual and expected as four bars become two series", normalizeChart(bars(["الصادرات (فعلي)", "الصادرات (متوقع)", "الواردات (فعلي)", "الواردات (متوقع)"], [25, 25.9, 28.2, 31]))?.series.map((x) => `${x.name}:${x.values.join(",")}`), ["فعلي:25,28.2", "متوقع:25.9,31"]);
+  check("charts: a total beside its own parts loses the total, and two bars are no chart", normalizeChart(bars(["إجمالي التجارة الثنائية", "الصادرات", "الواردات"], [10, 7, 3])), null);
+  check("charts: a rate that never moved is a sentence, not a chart", normalizeChart({ ...bars(["أبريل", "مايو", "يوليو"], [20, 20, 20]), type: "line" }), null);
+  check("charts: a total that is not the sum of the others stays (a rate of the whole beside its groups)", normalizeChart(bars(["المعدل الإجمالي", "السعوديون", "السعوديات"], [3, 6.5, 9.6]))?.categories.length, 3);
   check("desks: the ECB's hike stays off the Middle East desk though the war is its cause", groundedRegions(["الشرق الأوسط", "أوروبا"], { title: "المركزي الأوروبي يرفع الفائدة إلى 2.5%", lede: "رفع البنك الفائدة لاحتواء التضخم الناجم عن أسعار النفط جراء الحرب في الشرق الأوسط" }), ["أوروبا"]);
   check("desks: a Saudi headline joins the Gulf desk", groundedRegions(["عالمي"], { title: "كيف يتجاوز خط الشرق-الغرب السعودي مضيق هرمز؟" }), ["عالمي", "الخليج"]);
   // ONE STORY: a second event brought in by a joint is refused.

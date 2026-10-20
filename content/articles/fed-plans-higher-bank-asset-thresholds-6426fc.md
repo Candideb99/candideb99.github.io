@@ -28,21 +28,7 @@ tags:
 regions:
   - الأمريكتان
 readingMinutes: 2
-chart:
-  type: bar
-  title: عتبات الأصول التي تشدد الرقابة على البنوك الأمريكية وفق قواعد 2019
-  unit: مليار دولار
-  source: رويترز
-  categories:
-    - العتبة الأولى
-    - العتبة الثانية
-    - العتبة الثالثة
-  series:
-    - name: حجم الأصول
-      values:
-        - 100
-        - 250
-        - 700
+chart: null
 table: null
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Marriner_S._Eccles_Federal_Reserve_Board_Building.jpg/1280px-Marriner_S._Eccles_Federal_Reserve_Board_Building.jpg

@@ -1,4 +1,8 @@
-import { groundedRegions } from "./regions.mjs";
+import { DESK_NAMES, groundedRegions } from "./regions.mjs";
+
+/** The region names a writer may give, read from src/data/regions.json (2026-10-20: the list was written into six
+ *  schemas and still offered «الشرق الأوسط» a day after that desk became «المشرق وإيران وتركيا»). */
+const REGION_NAMES = DESK_NAMES.join("، ");
 import { chat } from "./llm.mjs";
 import { EDITORIAL_CRAFT, NEWS_DEPTH, NEWS_FLOOR, SHORT_STORY, SHORT_WORDS } from "./editorial.mjs";
 import { boxFacts, FIGURES_RULE, isFigure } from "./keyfacts.mjs";
@@ -65,9 +69,16 @@ ${HOUSE_STYLE}`;
 
 /**
  * What a chart shows (the owner, 2026-09-24, on a chart of Egypt's monthly inflation at -0.4, 0 and 0.1: "people
- * usually accustomed to 10%, not 0.1"). Shared by every writer that may draw one.
+ * usually accustomed to 10%, not 0.1"). Shared by every writer that may draw one, and by pipeline/rechart.mjs.
+ *
+ * One measure per chart (the owner, 2026-10-20: "fix the chart forms in the newsroom too"). Of the 74 charts then
+ * published, 16 broke it: a central bank's rate beside inflation three times (this rule's own example had asked for
+ * it), a bond yield beside a policy rate, a total beside its own parts (total trade beside exports and imports; M1 beside
+ * M2 and M3), readings of different days or windows as if comparable (a one-day gain beside a year-to-date one), actual
+ * and expected as four bars instead of two series, regulatory thresholds drawn as data, tenors out of order.
+ * `normalizeChart()` holds the parts code can see; the rest is the writer's.
  */
-const CHART_RULE = "A chart shows the measure readers know, in the unit the text uses: the annual inflation rate (14.5%), never the month-on-month change (0.1%) unless the story is about that change; a rate's or a price's level (19%, 105 دولارات), not its change in basis points or cents; a percentage as a percentage (14.5, not 0.145). A few figures that make the story's point beat a long series of a side indicator: a central bank's policy rate beside annual and core inflation shows its real rate at a glance.";
+export const CHART_RULE = "A chart compares ONE measure: every bar or point is the same indicator, in the same unit, either for one date or period across countries, companies, sectors or tenors (a comparison), or over time (a series, oldest first). Never put different indicators side by side (a policy rate beside inflation, a bond yield beside a policy rate, a capacity beside a target), a total beside its own parts (total trade beside exports and imports, M1 beside M2), or figures of different dates or windows as if comparable (a close beside last week's, a one-day gain beside a year-to-date one). Actual against expected, or before against after, is two series over the same categories (\"فعلي\" and \"متوقع\"), never four categories. Rules, thresholds and targets are not data. Order a comparison largest first unless its categories have an order of their own (tenors, a survey's scale); a series runs oldest first. The measure readers know, in the unit the text uses: the annual inflation rate (14.5%), never the month-on-month change (0.1%) unless the story is about that change; a rate's or a price's level (19%, 105 دولارات), not its change in basis points or cents; a percentage as a percentage (14.5, not 0.145). Three categories at least, or two with two series. When the story has no such figures, there is no chart: its numbers go in the key facts.";
 
 const SCHEMA_TEXT = `{
   "title": "Arabic headline with no Latin letters (put rating codes such as B3 in the body, not the headline), 35-80 characters, ONE idea (never chain two or three developments with و), specific, contains the key fact or number (a large count in thousands or millions, «456 ألف مستثمر», never a run of digits such as 455758), no colon-tricks, no clickbait",
@@ -79,9 +90,9 @@ const SCHEMA_TEXT = `{
   "why_it_matters": "One or two fluent Arabic sentences in Khazendar's own voice: the wider economic significance, decisive constraint or trade-off inferred from supplied facts. No attributed analyst recap, vague reference, generic moral or invented outcome. Preserve the inference's conditions. Follow WHY IT MATTERS in the house brief; do not repeat the body's completed conclusion just to fill a second sentence.",
   "why_basis": [{"fact": "one concise reported premise underpinning the synthesis, not a new inference", "source": 1}],
   "tags": ["3-5 Arabic tags: institutions, countries, sectors, indicators"],
-  "regions": ["1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي"],
+  "regions": ["1-3 region names, only from: ${REGION_NAMES}"],
   "image_queries": ["2-3 short English search terms (2-4 words each) naming a concrete subject that exists as a photo on Wikimedia Commons. When named people are the news itself (a summit, talks, a statement, a head of state's or central banker's own decision), the FIRST term is their full names, together when there are two (e.g. 'Donald Trump Xi Jinping', 'Jerome Powell'): the desks illustrate such a story with a photo of those people, from an earlier occasion if need be. When the news is a thing an official announced (sanctions on an airline, a verdict on a product, a rule for banks), the first term is that thing ('Iran Air Airbus', 'iPhone', 'bank branch'), never the official. Otherwise, and for the other terms: an institution's headquarters, a city, a port, a plant, a product, a commodity (e.g. 'Bundesbank Frankfurt', 'Ras Laffan', 'oil tanker', 'Riyadh skyline'). A sector's exports or imports: its best-known goods being packed, loaded or sold ('orange packing Egypt', 'citrus fruit crates', 'container ship Port Said'), never a factory of a product the story does not name; no adjectives, no abstract concepts"],
-  "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit, e.g. % or مليار دولار", "source": "publisher name", "categories": ["Arabic x-axis labels, 3-12 items, in the sources' order"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the sources]}]},
+  "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit, e.g. % or مليار دولار", "source": "publisher name", "categories": ["Arabic labels, 3-12 items: oldest first for a series, largest first for a comparison unless they have an order of their own"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the sources]}]},
   "table": null or {"title": "Arabic table title", "source": "publisher name", "columns": ["2-5 Arabic column headers"], "rows": [["cells as Arabic text or numbers exactly as in the sources"]]}
 }
 ${FIGURES_RULE}
@@ -95,7 +106,7 @@ const SHORT_SCHEMA_TEXT = `{
   "lede": "Opening paragraph: one or two sentences with the news, the who/what/when and the main number",
   "body": "The rest in Markdown: one to four short paragraphs separated by blank lines, the most useful sourced detail; lede plus body 150-250 words; no subheads, no list",
   "tags": ["3-5 Arabic tags: institutions, countries, sectors, indicators"],
-  "regions": ["1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي"],
+  "regions": ["1-3 region names, only from: ${REGION_NAMES}"],
   "image_queries": ["2-3 short English search terms (2-4 words each) naming a concrete subject that exists as a photo on Wikimedia Commons: the named people when they are the news, else the thing, the place or the sector at work; no adjectives, no abstract concepts"]
 }`;
 
@@ -431,14 +442,66 @@ function toNumber(value) {
 }
 
 /** Keeps a chart only when it is structurally sound: 3-12 categories, 1-3 series of matching numeric length. */
+/**
+ * Series written as categories («الصادرات (فعلي)»، «الصادرات (متوقع)»، «الواردات (فعلي)»…), pivoted to one series per
+ * tag over the bases (2026-10-20: China's trade and the US PCE index ran as four bars of actual and expected). Null when
+ * the categories are not such a grid.
+ */
+function pivotTagged(categories, series) {
+  if (series.length !== 1) return null;
+  const parts = categories.map((c) => c.match(/^(.*?)\s*\(([^()]+)\)\s*$/));
+  if (parts.some((m) => !m)) return null;
+  const tags = [...new Set(parts.map((m) => m[2].trim()))];
+  const bases = [...new Set(parts.map((m) => m[1].trim()))];
+  if (tags.length < 2 || tags.length > 3 || bases.length < 2 || bases.length * tags.length !== categories.length) return null;
+  const value = new Map(parts.map((m, i) => [`${m[1].trim()}|${m[2].trim()}`, series[0].values[i]]));
+  if (value.size !== categories.length) return null;
+  return { categories: bases, series: tags.map((t) => ({ name: t, values: bases.map((b) => value.get(`${b}|${t}`)) })) };
+}
+
+/** A category that is a total of the others («إجمالي التجارة الثنائية» beside exports and imports). */
+const TOTAL_CATEGORY = /^(?:ال)?(?:إجمالي|مجموع)|^المجموع|^الإجمالي/;
+/**
+ * The indicator a category names, where it names one: a chart whose categories name two of these compares unlike
+ * measures (a policy rate beside inflation, a bond yield beside a policy rate). «عائد الإيداع» is Egypt's deposit rate,
+ * an interest rate, so the interest family is read first.
+ */
+const MEASURE_FAMILIES = [
+  ["interest", /فائدة|عائد الإيداع|عائد الإقراض/],
+  ["yield", /عوائد|عائد/],
+  ["inflation", /تضخم/],
+  ["growth", /نمو|الناتج/],
+  ["unemployment", /بطالة/],
+];
+const measureOf = (category) => MEASURE_FAMILIES.find(([, re]) => re.test(category))?.[0];
+
 export function normalizeChart(chart) {
   if (!chart || typeof chart !== "object") return null;
-  const categories = (Array.isArray(chart.categories) ? chart.categories : []).map((c) => String(c ?? "").trim()).filter(Boolean).slice(0, 12);
-  const series = (Array.isArray(chart.series) ? chart.series : [])
+  let categories = (Array.isArray(chart.categories) ? chart.categories : []).map((c) => String(c ?? "").trim()).filter(Boolean).slice(0, 12);
+  let series = (Array.isArray(chart.series) ? chart.series : [])
     .map((s) => ({ name: String(s?.name ?? "").trim(), values: (Array.isArray(s?.values) ? s.values : []).map(toNumber) }))
     .filter((s) => s.name && s.values.length === categories.length && s.values.every((v) => v !== null))
     .slice(0, 3);
-  if (categories.length < 3 || !series.length) return null;
+  // One measure per chart (CHART_RULE): what code can see of it.
+  const pivoted = pivotTagged(categories, series);
+  if (pivoted) ({ categories, series } = pivoted);
+  if (series.length === 1) {
+    const t = categories.findIndex((c) => TOTAL_CATEGORY.test(c));
+    if (t >= 0) {
+      const values = series[0].values;
+      const rest = values.reduce((sum, v, i) => (i === t ? sum : sum + v), 0);
+      if (Math.abs(rest - values[t]) <= Math.abs(values[t]) * 0.03) {
+        categories = categories.filter((_, i) => i !== t);
+        series = [{ ...series[0], values: values.filter((_, i) => i !== t) }];
+      }
+    }
+  }
+  if (new Set(categories.map(measureOf).filter(Boolean)).size > 1) return null;
+  // Values that never change show nothing a sentence does not («the rate held at 20%» drawn as a flat line of five 20s,
+  // 2026-10-20).
+  if (new Set(series.flatMap((s) => s.values)).size === 1) return null;
+  // Three categories, or two compared over two series or more (actual against expected).
+  if (categories.length < (series.length >= 2 ? 2 : 3) || !series.length) return null;
   return {
     type: chart.type === "line" ? "line" : "bar",
     title: String(chart.title ?? "").trim() || null,
@@ -520,7 +583,7 @@ const ANALYSIS_SCHEMA = `{
   "key_facts": [{"label": "short Arabic label (2-5 words)", "value": "a figure exactly as it appears in the supplied material, e.g. 108 دولاراً or 2.5%"}],
   "why_it_matters": "One Arabic paragraph (40-90 words): the one consequence the argument leads to, stated plainly as Khazendar's reading; not a summary of the analysis, never the region as a formula, never open with «يعكس/يمثل/يُعدّ»",
   "tags": ["3-5 Arabic tags: institutions, countries, sectors, indicators"],
-  "regions": ["1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي"],
+  "regions": ["1-3 region names, only from: ${REGION_NAMES}"],
   ${HUB_IMAGE_QUERIES},
   "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit, e.g. % or مليار دولار", "source": "the publisher named in the material", "categories": ["Arabic labels, 3-12 items"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the supplied material]}]},
   "table": null or {"title": "Arabic table title", "source": "the publisher named in the material", "columns": ["2-5 Arabic column headers"], "rows": [["cells exactly as in the supplied material"]]}
@@ -594,7 +657,7 @@ const FEATURE_SCHEMA = `{
   "key_facts": [{"label": "short Arabic label (2-5 words) naming the indicator, its place and its date", "value": "a figure exactly as it appears in the material"}],
   "why_it_matters": "One Arabic paragraph (40-90 words): the one consequence the whole file leads to, stated as Khazendar's reading; not a summary, never the region as a formula, never open with «يعكس/يمثل/يُعدّ»",
   "tags": ["3-5 Arabic tags, the file's own tag first"],
-  "regions": ["1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي"],
+  "regions": ["1-3 region names, only from: ${REGION_NAMES}"],
   "image_queries": ["2-3 short English search terms (2-4 words each) naming a concrete subject that exists as a photo on Wikimedia Commons, the file's people or its sector at work first; no adjectives, no abstract concepts"],
   "table": {"title": "الجدول الزمني", "source": "خازندار", "columns": ["التاريخ", "الحدث"], "rows": [["<the day and month the story was published, e.g. 13 سبتمبر>", "<one line, at most 18 words: what that story reported, with its main figure exactly as the story gives it>"]]},
   "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit", "source": "the publisher named in the material", "categories": ["Arabic labels, 3-12 items, in date order"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the material]}]}
@@ -730,7 +793,7 @@ Return one JSON object:
   "ahead": "one or two Arabic paragraphs (90-160 words) under 'ما ننتظره الأسبوع المقبل': the calendar's dated events, each with its date as the calendar gives it, and what each could change for the developments above; only the calendar's events and dates",
   "why_it_matters": "one Arabic paragraph (40-90 words): the one consequence of the week that matters most, stated plainly; not a summary of the week, never open with «يعكس/يمثل/يُعدّ»",
   "tags": ["حصاد الأسبوع", "then 3-4 Arabic tags: institutions, countries, sectors"],
-  "regions": ["1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي"],
+  "regions": ["1-3 region names, only from: ${REGION_NAMES}"],
   ${HUB_IMAGE_QUERIES}
 }
 Short sentences, one idea each, none over 30 words. Paragraphs separated by blank lines. No bullet lists, no subheads (they are added by the desk).`;
@@ -801,7 +864,7 @@ const PAPER_SCHEMA = `{
   "key_facts": [{"label": "short Arabic label (2-5 words)", "value": "a figure exactly as it appears in the paper's text, e.g. 75% or 3,058 أسرة"}],
   "why_it_matters": "One Arabic paragraph (40-90 words): the one use this finding has for Arab policymakers, businesses or readers, marked once as Khazendar's reading; never a chain of «قد…», never open with «يعكس/يمثل/يُعدّ»",
   "tags": ["3-5 Arabic tags: the topic, the institution, the country or region studied, and always the tag أوراق بحثية"],
-  "regions": ["1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي"],
+  "regions": ["1-3 region names, only from: ${REGION_NAMES}"],
   ${HUB_IMAGE_QUERIES},
   "chart": null or {"type": "bar" | "line", "title": "Arabic chart title (what is measured)", "unit": "Arabic unit", "source": "the paper (authors, institution, year)", "categories": ["Arabic labels, 3-12 items"], "series": [{"name": "Arabic series name", "values": [numbers, one per category, exactly as in the paper's text]}]},
   "table": null or {"title": "Arabic table title", "source": "the paper", "columns": ["2-5 Arabic column headers"], "rows": [["cells exactly as in the paper's text"]]}

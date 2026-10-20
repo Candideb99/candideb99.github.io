@@ -1,0 +1,57 @@
+{
+  "startedAt": "2026-10-20T17:50:54.029Z",
+  "slug": "china-exports-surge-august-ai-trump-xi-223add",
+  "issue": "actual and expected growth are drawn as four separate bars instead of two series (actual, expected) over exports and imports",
+  "dryRun": false,
+  "before": {
+    "type": "bar",
+    "title": "نمو التجارة الخارجية الصينية في أغسطس 2026 مقابل التوقعات",
+    "unit": "%",
+    "source": "الإدارة العامة للجمارك الصينية / بلومبرغ",
+    "categories": [
+      "الصادرات (فعلي)",
+      "الصادرات (متوقع)",
+      "الواردات (فعلي)",
+      "الواردات (متوقع)"
+    ],
+    "series": [
+      {
+        "name": "نسبة النمو السنوي",
+        "values": [
+          25,
+          25.9,
+          28.2,
+          31
+        ]
+      }
+    ]
+  },
+  "model": "claude-cli/claude-opus-5-5",
+  "after": {
+    "type": "bar",
+    "title": "نمو التجارة الخارجية الصينية في أغسطس على أساس سنوي: الفعلي مقابل التوقعات",
+    "unit": "%",
+    "source": "الإدارة العامة للجمارك الصينية / استطلاع بلومبرغ",
+    "categories": [
+      "الواردات",
+      "الصادرات"
+    ],
+    "series": [
+      {
+        "name": "فعلي",
+        "values": [
+          28.2,
+          25
+        ]
+      },
+      {
+        "name": "متوقع",
+        "values": [
+          31,
+          25.9
+        ]
+      }
+    ]
+  },
+  "problems": []
+}

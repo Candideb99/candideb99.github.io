@@ -1,0 +1,138 @@
+{
+  "at": "2026-10-20T17:53:45.877Z",
+  "changes": [
+    {
+      "slug": "brent-egypt-fuel-pricing-inflation-rates-e5f94b",
+      "why": "dropped: the redraw was a flat line of an unchanged rate",
+      "before": {
+        "type": "line",
+        "title": "فائدة الإقراض لليلة واحدة لدى البنك المركزي المصري في اجتماعاته منذ أبريل",
+        "unit": "%",
+        "source": "البنك المركزي المصري",
+        "categories": [
+          "أبريل",
+          "مايو",
+          "يوليو",
+          "20 أغسطس",
+          "الخميس"
+        ],
+        "series": [
+          {
+            "name": "فائدة الإقراض لليلة واحدة",
+            "values": [
+              20,
+              20,
+              20,
+              20,
+              20
+            ]
+          }
+        ]
+      },
+      "after": null
+    },
+    {
+      "slug": "oil-decline-diplomacy-hope-d15314",
+      "why": "dropped: the redraw compared a Friday settlement with a Monday-morning move",
+      "before": {
+        "type": "bar",
+        "title": "التغير اليومي في أسعار عقود النفط الخام",
+        "unit": "%",
+        "source": "عرب نيوز",
+        "categories": [
+          "برنت",
+          "غرب تكساس الوسيط"
+        ],
+        "series": [
+          {
+            "name": "تسوية الجمعة",
+            "values": [
+              -0.91,
+              -1.58
+            ]
+          },
+          {
+            "name": "الاثنين (05:13 بتوقيت السعودية)",
+            "values": [
+              -2.08,
+              -2.14
+            ]
+          }
+        ]
+      },
+      "after": null
+    },
+    {
+      "slug": "uae-egypt-renew-dirham-pound-currency-swap-77af8a",
+      "why": "dropped: the redraw's Bahrain and China figures stand only in a refetched source, not in the story",
+      "before": {
+        "type": "bar",
+        "title": "قيمة اتفاقيات مقايضة العملات لمصرف الإمارات المركزي مع البحرين والصين ومصر",
+        "unit": "مليار درهم",
+        "source": "ذا ناشيونال",
+        "categories": [
+          "البحرين",
+          "الصين",
+          "مصر"
+        ],
+        "series": [
+          {
+            "name": "القيمة الاسمية للاتفاقية",
+            "values": [
+              20,
+              18,
+              5
+            ]
+          }
+        ]
+      },
+      "after": null
+    },
+    {
+      "slug": "us-10-year-treasury-yield-highest-since-2007-2a6e1d",
+      "why": "the story's own yields, shortest tenor first",
+      "before": {
+        "type": "bar",
+        "title": "عوائد سندات الخزانة الأمريكية حسب الأجل يوم الأربعاء",
+        "unit": "%",
+        "source": "سي إن بي سي",
+        "categories": [
+          "عامان",
+          "10 سنوات",
+          "30 عاماً"
+        ],
+        "series": [
+          {
+            "name": "العائد عند الإغلاق",
+            "values": [
+              4.889,
+              5.104,
+              5.398
+            ]
+          }
+        ]
+      },
+      "after": {
+        "type": "bar",
+        "title": "عوائد سندات الخزانة الأمريكية حسب الأجل يوم الأربعاء",
+        "unit": "%",
+        "source": "سي إن بي سي",
+        "categories": [
+          "عامان",
+          "10 سنوات",
+          "30 عاماً"
+        ],
+        "series": [
+          {
+            "name": "العائد عند الإغلاق",
+            "values": [
+              4.914,
+              5.104,
+              5.389
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

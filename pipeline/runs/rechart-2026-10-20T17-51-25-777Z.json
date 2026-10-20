@@ -1,0 +1,31 @@
+{
+  "startedAt": "2026-10-20T17:51:25.777Z",
+  "slug": "fed-rate-hike-oil-109-gulf-economies-a07bff",
+  "issue": "it mixes two benchmarks (Brent and WTI) and two dates in one comparison",
+  "dryRun": false,
+  "before": {
+    "type": "bar",
+    "title": "أسعار النفط الخام: من نهاية أغسطس إلى 15 سبتمبر 2026",
+    "unit": "دولاراً للبرميل",
+    "source": "رويترز، بي بي سي",
+    "categories": [
+      "برنت نهاية أغسطس",
+      "برنت 15 سبتمبر",
+      "غرب تكساس 15 سبتمبر"
+    ],
+    "series": [
+      {
+        "name": "سعر البرميل",
+        "values": [
+          86,
+          109.2,
+          106.12
+        ]
+      }
+    ]
+  },
+  "model": "claude-cli/claude-opus-5-5",
+  "dropped": true,
+  "after": null,
+  "problems": []
+}

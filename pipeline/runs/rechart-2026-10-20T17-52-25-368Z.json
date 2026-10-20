@@ -1,0 +1,50 @@
+{
+  "startedAt": "2026-10-20T17:52:25.368Z",
+  "slug": "uae-banks-assets-germany-visit-ce4632",
+  "issue": "it draws M1, M2 and M3, each of which contains the one before it: parts beside their wholes",
+  "dryRun": false,
+  "before": {
+    "type": "bar",
+    "title": "العرض النقدي في الإمارات يوليو 2026",
+    "unit": "تريليون درهم إماراتي",
+    "source": "البنك المركزي الإماراتي",
+    "categories": [
+      "M1",
+      "M2",
+      "M3"
+    ],
+    "series": [
+      {
+        "name": "العرض النقدي",
+        "values": [
+          1.047,
+          2.9,
+          3.44
+        ]
+      }
+    ]
+  },
+  "model": "claude-cli/claude-opus-5-5",
+  "after": {
+    "type": "bar",
+    "title": "الزيادة في الائتمان المحلي بالإمارات حسب القطاع خلال يوليو 2026",
+    "unit": "مليار درهم إماراتي",
+    "source": "البنك المركزي الإماراتي",
+    "categories": [
+      "الأفراد",
+      "الشركات",
+      "الحكومة"
+    ],
+    "series": [
+      {
+        "name": "الزيادة الشهرية في الائتمان",
+        "values": [
+          13.9,
+          10.9,
+          4.2
+        ]
+      }
+    ]
+  },
+  "problems": []
+}

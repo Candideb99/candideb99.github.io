@@ -26,19 +26,19 @@ regions:
 readingMinutes: 2
 chart:
   type: bar
-  title: العرض النقدي في الإمارات يوليو 2026
-  unit: تريليون درهم إماراتي
+  title: الزيادة في الائتمان المحلي بالإمارات حسب القطاع خلال يوليو 2026
+  unit: مليار درهم إماراتي
   source: البنك المركزي الإماراتي
   categories:
-    - M1
-    - M2
-    - M3
+    - الأفراد
+    - الشركات
+    - الحكومة
   series:
-    - name: العرض النقدي
+    - name: الزيادة الشهرية في الائتمان
       values:
-        - 1.047
-        - 2.9
-        - 3.44
+        - 13.9
+        - 10.9
+        - 4.2
 table: null
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Dubai_UAE_1301200712645.jpg/1280px-Dubai_UAE_1301200712645.jpg

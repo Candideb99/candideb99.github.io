@@ -1,0 +1,31 @@
+{
+  "startedAt": "2026-10-20T17:50:26.120Z",
+  "slug": "aldar-abu-dhabi-sales-us-rate-hike-75341e",
+  "issue": "it compares Treasury yields read on different days, as if they were one day's curve",
+  "dryRun": false,
+  "before": {
+    "type": "bar",
+    "title": "آخر عوائد سندات الخزانة الأمريكية المعلنة حسب الأجل (قراءات من جلسات مختلفة)",
+    "unit": "%",
+    "source": "خازندار",
+    "categories": [
+      "عامان",
+      "10 سنوات (الأربعاء)",
+      "30 عاماً (الثلاثاء)"
+    ],
+    "series": [
+      {
+        "name": "العائد",
+        "values": [
+          4.8889,
+          5.2383,
+          5.6206
+        ]
+      }
+    ]
+  },
+  "model": "claude-cli/claude-opus-5-5",
+  "dropped": true,
+  "after": null,
+  "problems": []
+}

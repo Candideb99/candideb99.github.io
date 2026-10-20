@@ -1,0 +1,33 @@
+{
+  "startedAt": "2026-10-20T17:51:32.320Z",
+  "slug": "global-bond-selloff-oil-prices-ecb-rate-hike-93d47b",
+  "issue": "it puts ten-year bond yields beside central-bank policy rates: different measures side by side",
+  "dryRun": false,
+  "before": {
+    "type": "bar",
+    "title": "مقارنة بين أبرز معدلات الفائدة وعوائد السندات عالميًا",
+    "unit": "%",
+    "source": "The Guardian",
+    "categories": [
+      "عوائد سندات بريطانيا 10 سنوات",
+      "عوائد سندات أمريكا 10 سنوات",
+      "معدل فائدة البنك المركزي البريطاني",
+      "معدل فائدة المركزي الأوروبي"
+    ],
+    "series": [
+      {
+        "name": "المعدل أو العائد",
+        "values": [
+          5.37,
+          4.92,
+          3.75,
+          2.5
+        ]
+      }
+    ]
+  },
+  "model": "claude-cli/claude-opus-5-5",
+  "dropped": true,
+  "after": null,
+  "problems": []
+}

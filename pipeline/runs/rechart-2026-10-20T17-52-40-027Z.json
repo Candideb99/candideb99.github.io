@@ -1,0 +1,50 @@
+{
+  "startedAt": "2026-10-20T17:52:40.027Z",
+  "slug": "uae-egypt-renew-dirham-pound-currency-swap-77af8a",
+  "issue": "it puts total trade beside the exports and imports it is the sum of",
+  "dryRun": false,
+  "before": {
+    "type": "bar",
+    "title": "التجارة بين مصر والإمارات في 2025",
+    "unit": "مليار دولار",
+    "source": "وزارة الخارجية الإماراتية",
+    "categories": [
+      "إجمالي التجارة الثنائية",
+      "الصادرات المصرية إلى الإمارات",
+      "الواردات المصرية من الإمارات"
+    ],
+    "series": [
+      {
+        "name": "القيمة في 2025",
+        "values": [
+          10,
+          7,
+          3
+        ]
+      }
+    ]
+  },
+  "model": "claude-cli/claude-opus-5-5",
+  "after": {
+    "type": "bar",
+    "title": "قيمة اتفاقيات مقايضة العملات لمصرف الإمارات المركزي مع البحرين والصين ومصر",
+    "unit": "مليار درهم",
+    "source": "ذا ناشيونال",
+    "categories": [
+      "البحرين",
+      "الصين",
+      "مصر"
+    ],
+    "series": [
+      {
+        "name": "القيمة الاسمية للاتفاقية",
+        "values": [
+          20,
+          18,
+          5
+        ]
+      }
+    ]
+  },
+  "problems": []
+}

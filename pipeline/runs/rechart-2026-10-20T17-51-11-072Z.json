@@ -1,0 +1,55 @@
+{
+  "startedAt": "2026-10-20T17:51:11.072Z",
+  "slug": "egypt-central-bank-holds-rates-fifth-time-b263dc",
+  "issue": "it puts the overnight deposit rate beside annual and core inflation: different measures side by side",
+  "dryRun": false,
+  "before": {
+    "type": "bar",
+    "title": "سعر عائد الإيداع لليلة واحدة مقابل التضخم السنوي في أغسطس",
+    "unit": "%",
+    "source": "البنك المركزي المصري",
+    "categories": [
+      "سعر عائد الإيداع لليلة واحدة",
+      "التضخم العام السنوي في المدن",
+      "التضخم الأساسي السنوي"
+    ],
+    "series": [
+      {
+        "name": "المعدل (أغسطس 2026)",
+        "values": [
+          19,
+          14.5,
+          14.9
+        ]
+      }
+    ]
+  },
+  "model": "claude-cli/claude-opus-5-5",
+  "after": {
+    "type": "bar",
+    "title": "التضخم السنوي في مصر: العام في المدن مقابل الأساسي",
+    "unit": "%",
+    "source": "البنك المركزي المصري",
+    "categories": [
+      "يوليو 2026",
+      "أغسطس 2026"
+    ],
+    "series": [
+      {
+        "name": "التضخم العام السنوي في المدن",
+        "values": [
+          14.9,
+          14.5
+        ]
+      },
+      {
+        "name": "التضخم الأساسي السنوي",
+        "values": [
+          14.7,
+          14.9
+        ]
+      }
+    ]
+  },
+  "problems": []
+}

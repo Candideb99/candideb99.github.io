@@ -1,0 +1,31 @@
+{
+  "startedAt": "2026-10-20T17:51:39.219Z",
+  "slug": "gold-treasuries-reserve-asset-feds-note-f4b014",
+  "issue": "it puts world gold reserves beside gold excluding the United States, a part beside its whole",
+  "dryRun": false,
+  "before": {
+    "type": "bar",
+    "title": "احتياطيات الذهب وحيازات سندات الخزانة نهاية 2025",
+    "unit": "تريليون دولار",
+    "source": "كولن وايس، مجلس الاحتياطي الفيدرالي، 2026",
+    "categories": [
+      "احتياطيات الذهب العالمية",
+      "الذهب باستثناء الولايات المتحدة",
+      "سندات الخزانة لدى الجهات الرسمية الأجنبية"
+    ],
+    "series": [
+      {
+        "name": "نهاية 2025",
+        "values": [
+          5.1,
+          4,
+          3.9
+        ]
+      }
+    ]
+  },
+  "model": "claude-cli/claude-opus-5-5",
+  "dropped": true,
+  "after": null,
+  "problems": []
+}

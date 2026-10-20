@@ -30,21 +30,7 @@ regions:
   - الخليج
   - الأمريكتان
 readingMinutes: 4
-chart:
-  type: bar
-  title: آخر عوائد سندات الخزانة الأمريكية المعلنة حسب الأجل (قراءات من جلسات مختلفة)
-  unit: "%"
-  source: خازندار
-  categories:
-    - عامان
-    - 10 سنوات (الأربعاء)
-    - 30 عاماً (الثلاثاء)
-  series:
-    - name: العائد
-      values:
-        - 4.8889
-        - 5.2383
-        - 5.6206
+chart: null
 table: null
 image: null
 sources:

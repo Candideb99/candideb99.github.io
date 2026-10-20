@@ -1,0 +1,31 @@
+{
+  "startedAt": "2026-10-20T17:51:16.989Z",
+  "slug": "fed-plans-higher-bank-asset-thresholds-6426fc",
+  "issue": "it draws three regulatory asset thresholds as if they were data",
+  "dryRun": false,
+  "before": {
+    "type": "bar",
+    "title": "عتبات الأصول التي تشدد الرقابة على البنوك الأمريكية وفق قواعد 2019",
+    "unit": "مليار دولار",
+    "source": "رويترز",
+    "categories": [
+      "العتبة الأولى",
+      "العتبة الثانية",
+      "العتبة الثالثة"
+    ],
+    "series": [
+      {
+        "name": "حجم الأصول",
+        "values": [
+          100,
+          250,
+          700
+        ]
+      }
+    ]
+  },
+  "model": "claude-cli/claude-opus-5-5",
+  "dropped": true,
+  "after": null,
+  "problems": []
+}

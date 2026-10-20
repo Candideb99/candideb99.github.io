@@ -8,9 +8,13 @@
  *   add --dry-run to see the new chart without writing it
  *
  * Nothing is drawn by hand. The model proposes a chart from the story's text and its sources fetched again;
- * code then holds it to what a chart is here: it must pass normalizeChart (three categories or more, every
- * series complete), and every figure in it must stand in the story or its sources. A chart that fails keeps the
- * old one. Only the chart field changes; no correction note is printed, since no fact of the story changes.
+ * code then holds it to what a chart is here: it must pass normalizeChart (one measure, three categories or more or
+ * two over two series, every series complete), and every figure in it must stand in the story or its sources. A chart
+ * that fails keeps the old one, unless `--drop-if-none` is given and the model finds no chart the story can honestly run
+ * (2026-10-20: a central bank's rate beside inflation has no one-measure chart in its story). Only the chart field
+ * changes; no correction note is printed, since no fact of the story changes.
+ *
+ *   node pipeline/rechart.mjs --slug=… --issue="…" --drop-if-none
  */
 import "./lib/env.mjs";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
@@ -18,13 +22,14 @@ import path from "node:path";
 import YAML from "yaml";
 import { chat } from "./lib/llm.mjs";
 import { extractArticle } from "./lib/extract.mjs";
-import { normalizeChart } from "./lib/write.mjs";
+import { CHART_RULE, normalizeChart } from "./lib/write.mjs";
 import { ungroundedNumbers } from "./lib/util.mjs";
 import { ARTICLES_DIR } from "./lib/article.mjs";
 
 const args = process.argv.slice(2);
 const option = (name) => args.find((a) => a.startsWith(`--${name}=`))?.slice(name.length + 3) ?? "";
 const DRY = args.includes("--dry-run");
+const DROP_IF_NONE = args.includes("--drop-if-none");
 const SLUG = option("slug");
 const ISSUE = option("issue");
 const log = (line) => console.log(`[rechart] ${line}`);
@@ -33,8 +38,8 @@ if (!SLUG) {
   process.exit(2);
 }
 
-const RULE =
-  "A chart shows the measure readers know, in the unit the text uses: the annual inflation rate (14.5%), never the month-on-month change (0.1%) unless the story is about that change; a rate's or a price's level (19%, 105 دولارات), not its change in basis points or cents; a percentage as a percentage (14.5, not 0.145). A few figures that make the story's point beat a long series of a side indicator: a central bank's policy rate beside annual and core inflation shows its real rate at a glance. Use \"line\" for one measure over at least three dates and \"bar\" for figures compared side by side; at most 3 series, 3 to 12 categories, every series with one value per category.";
+// The writers' own rule (CHART_RULE in lib/write.mjs), so the two never drift: until 2026-10-20 this file kept a copy.
+const RULE = `${CHART_RULE} Use "line" for one measure over at least three dates and "bar" for figures compared side by side; at most 3 series, 3 to 12 categories (2 when there are two series), every series with one value per category.`;
 
 const file = path.join(ARTICLES_DIR, `${SLUG}.md`);
 const raw = (await readFile(file, "utf8")).replace(/\r\n/g, "\n");
@@ -81,9 +86,12 @@ const { data: answer, model } = await chat({
 });
 
 const report = { startedAt: new Date().toISOString(), slug: SLUG, issue: ISSUE, dryRun: DRY, before: data.chart ?? null, model };
-const chart = normalizeChart(answer.chart);
+// No chart the story can honestly run: with --drop-if-none the old one goes.
+const none = answer.chart === null;
+const chart = none ? null : normalizeChart(answer.chart);
 const problems = [];
-if (!chart) problems.push("the proposal is not a chart this site can draw (three categories or more, every series complete)");
+if (none && DROP_IF_NONE) report.dropped = true;
+else if (!chart) problems.push("the proposal is not a chart this site can draw (three categories or more, every series complete)");
 else {
   const figures = [chart.title, chart.unit, ...chart.categories, ...chart.series.flatMap((s) => [s.name, ...s.values])].join(" ");
   const bad = ungroundedNumbers(figures, grounding, { ignoreYears: false });
@@ -93,9 +101,9 @@ else {
 }
 report.after = chart;
 report.problems = problems;
-log(`${SLUG}: ${problems.length ? `refused (${problems.join("; ")})` : DRY ? "would redraw" : "redrawn"}\n    ${JSON.stringify(chart)}`);
+log(`${SLUG}: ${problems.length ? `refused (${problems.join("; ")})` : report.dropped ? (DRY ? "would drop the chart" : "chart dropped") : DRY ? "would redraw" : "redrawn"}\n    ${JSON.stringify(chart)}`);
 if (!problems.length && !DRY) {
-  doc.set("chart", doc.createNode(chart));
+  doc.set("chart", report.dropped ? null : doc.createNode(chart));
   await writeFile(file, `---\n${doc.toString({ lineWidth: 0 }).trimEnd()}\n---\n\n${body}\n`);
 }
 const runs = path.join(process.cwd(), "pipeline", "runs");

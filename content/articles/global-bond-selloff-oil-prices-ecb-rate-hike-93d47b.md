@@ -25,23 +25,7 @@ regions:
   - أوروبا
   - الأمريكتان
 readingMinutes: 3
-chart:
-  type: bar
-  title: مقارنة بين أبرز معدلات الفائدة وعوائد السندات عالميًا
-  unit: "%"
-  source: The Guardian
-  categories:
-    - عوائد سندات بريطانيا 10 سنوات
-    - عوائد سندات أمريكا 10 سنوات
-    - معدل فائدة البنك المركزي البريطاني
-    - معدل فائدة المركزي الأوروبي
-  series:
-    - name: المعدل أو العائد
-      values:
-        - 5.37
-        - 4.92
-        - 3.75
-        - 2.5
+chart: null
 table: null
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/European_Central_Bank_Headquarters_%28Ank_Kumar%2C_Infosys_Limited%29_03.jpg/1280px-European_Central_Bank_Headquarters_%28Ank_Kumar%2C_Infosys_Limited%29_03.jpg

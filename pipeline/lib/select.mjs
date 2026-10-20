@@ -1,5 +1,6 @@
 import { chat } from "./llm.mjs";
 import { hoursSince, truncate } from "./util.mjs";
+import { DESK_NAMES } from "./regions.mjs";
 
 const EDITOR_SYSTEM = `You are the managing editor of خازندار (Khazendar), an Arabic-language economics and business publication read across the Gulf, Egypt, the Levant, North Africa and the diaspora.
 You decide which stories the newsroom will write in the next hours. You are rigorous, allergic to fluff, and you think about what an educated Arab reader needs to understand the economy today.
@@ -57,7 +58,7 @@ ${sectionGuide}
 7. The angle and headline_hint must state only what the candidate items themselves report; a neutral factual working title, no dramatisation, no ".." ellipses, no inferred events.
 
 Return JSON:
-{"stories":[{"ids":["<candidate id>", "..."],"section":"<section id>","importance":<1-10>,"news_value":"<the values it carries, e.g. تأثير، آنية، قرب>","angle":"<one Arabic sentence stating the story and the angle for Arab readers>","headline_hint":"<short Arabic working headline>","regions":["<1-3 region names, only from: الخليج، مصر والمغرب العربي، الشرق الأوسط، أوروبا، الأمريكتان، آسيا، أفريقيا، عالمي>"]}]}
+{"stories":[{"ids":["<candidate id>", "..."],"section":"<section id>","importance":<1-10>,"news_value":"<the values it carries, e.g. تأثير، آنية، قرب>","angle":"<one Arabic sentence stating the story and the angle for Arab readers>","headline_hint":"<short Arabic working headline>","regions":["<1-3 region names, only from: ${DESK_NAMES.join("، ")}>"]}]}
 Order stories by importance, highest first. Use only candidate ids that exist. Return at most ${limit + 2} stories.`;
 
   const { data, model } = await chat({

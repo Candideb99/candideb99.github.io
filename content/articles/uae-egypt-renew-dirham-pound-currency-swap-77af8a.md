@@ -30,21 +30,7 @@ regions:
   - الخليج
   - مصر والمغرب العربي
 readingMinutes: 2
-chart:
-  type: bar
-  title: التجارة بين مصر والإمارات في 2025
-  unit: مليار دولار
-  source: وزارة الخارجية الإماراتية
-  categories:
-    - إجمالي التجارة الثنائية
-    - الصادرات المصرية إلى الإمارات
-    - الواردات المصرية من الإمارات
-  series:
-    - name: القيمة في 2025
-      values:
-        - 10
-        - 7
-        - 3
+chart: null
 table: null
 image: null
 sources:

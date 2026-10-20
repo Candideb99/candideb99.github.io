@@ -29,19 +29,21 @@ regions:
 readingMinutes: 2
 chart:
   type: bar
-  title: سعر الفائدة الأساسي في أستراليا مقارنة بالتضخم والنطاق المستهدف
+  title: احتمال رفع الفائدة الأسترالية مجدداً كما تسعّره الأسواق، قبل القرار وبعده
   unit: "%"
-  source: بنك الاحتياطي الأسترالي؛ بيانات التضخم الرسمية
+  source: الشرق الأوسط
   categories:
-    - سعر الفائدة الأساسي بعد القرار
-    - التضخم السنوي في يوليو
-    - الحد الأعلى للنطاق المستهدف
+    - نوفمبر
+    - ديسمبر
   series:
-    - name: النسبة
+    - name: قبل القرار
       values:
-        - 4.6
-        - 3.5
-        - 3
+        - 44
+        - 60
+    - name: بعد القرار
+      values:
+        - 32
+        - 50
 table: null
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Reserve_Bank_of_Australia%2C_Knowles_Place_view.jpg/1280px-Reserve_Bank_of_Australia%2C_Knowles_Place_view.jpg

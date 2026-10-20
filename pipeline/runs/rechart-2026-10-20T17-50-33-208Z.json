@@ -1,0 +1,31 @@
+{
+  "startedAt": "2026-10-20T17:50:33.208Z",
+  "slug": "amd-tops-one-trillion-market-cap-0231c5",
+  "issue": "it compares a one-session gain, a five-session gain and a year-to-date gain: different windows, not one measure",
+  "dryRun": false,
+  "before": {
+    "type": "bar",
+    "title": "مكاسب سهم «إيه إم دي» عبر ثلاث فترات",
+    "unit": "%",
+    "source": "CNBC",
+    "categories": [
+      "جلسة الاثنين",
+      "خمس جلسات",
+      "منذ بداية العام"
+    ],
+    "series": [
+      {
+        "name": "التغير",
+        "values": [
+          10,
+          25,
+          180
+        ]
+      }
+    ]
+  },
+  "model": "claude-cli/claude-opus-5-5",
+  "dropped": true,
+  "after": null,
+  "problems": []
+}

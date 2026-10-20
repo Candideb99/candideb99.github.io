@@ -1,0 +1,56 @@
+{
+  "startedAt": "2026-10-20T17:50:43.037Z",
+  "slug": "brent-egypt-fuel-pricing-inflation-rates-e5f94b",
+  "issue": "it puts the central bank's overnight rates beside annual and core inflation: different measures side by side",
+  "dryRun": false,
+  "before": {
+    "type": "bar",
+    "title": "فائدة المركزي المصري مقابل التضخم في أغسطس",
+    "unit": "%",
+    "source": "البنك المركزي المصري",
+    "categories": [
+      "فائدة الإيداع لليلة واحدة",
+      "فائدة الإقراض لليلة واحدة",
+      "التضخم السنوي في المدن",
+      "التضخم الأساسي السنوي"
+    ],
+    "series": [
+      {
+        "name": "المعدل",
+        "values": [
+          19,
+          20,
+          14.5,
+          14.9
+        ]
+      }
+    ]
+  },
+  "model": "claude-cli/claude-opus-5-5",
+  "after": {
+    "type": "line",
+    "title": "فائدة الإقراض لليلة واحدة لدى البنك المركزي المصري في اجتماعاته منذ أبريل",
+    "unit": "%",
+    "source": "البنك المركزي المصري",
+    "categories": [
+      "أبريل",
+      "مايو",
+      "يوليو",
+      "20 أغسطس",
+      "الخميس"
+    ],
+    "series": [
+      {
+        "name": "فائدة الإقراض لليلة واحدة",
+        "values": [
+          20,
+          20,
+          20,
+          20,
+          20
+        ]
+      }
+    ]
+  },
+  "problems": []
+}

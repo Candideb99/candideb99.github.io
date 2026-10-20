@@ -30,21 +30,7 @@ regions:
   - الخليج
   - عالمي
 readingMinutes: 3
-chart:
-  type: bar
-  title: طاقة قطر من الغاز الطبيعي المسال
-  unit: مليون طن سنوياً
-  source: OilPrice.com
-  categories:
-    - الطاقة عند دخول 2026
-    - المستهدف بحلول 2030
-    - طاقة الخطين المعطّلين
-  series:
-    - name: الطاقة السنوية
-      values:
-        - 77
-        - 142
-        - 12.8
+chart: null
 table: null
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/LNG_Carrier_Fuji_Lng.jpg/1280px-LNG_Carrier_Fuji_Lng.jpg

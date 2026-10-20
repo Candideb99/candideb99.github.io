@@ -1,0 +1,31 @@
+{
+  "startedAt": "2026-10-20T17:52:02.727Z",
+  "slug": "qatarenergy-hormuz-north-field-delay-f6a1c3",
+  "issue": "it puts current capacity beside the 2030 target and beside the capacity of two lines that are part of it",
+  "dryRun": false,
+  "before": {
+    "type": "bar",
+    "title": "طاقة قطر من الغاز الطبيعي المسال",
+    "unit": "مليون طن سنوياً",
+    "source": "OilPrice.com",
+    "categories": [
+      "الطاقة عند دخول 2026",
+      "المستهدف بحلول 2030",
+      "طاقة الخطين المعطّلين"
+    ],
+    "series": [
+      {
+        "name": "الطاقة السنوية",
+        "values": [
+          77,
+          142,
+          12.8
+        ]
+      }
+    ]
+  },
+  "model": "claude-cli/claude-opus-5-5",
+  "dropped": true,
+  "after": null,
+  "problems": []
+}

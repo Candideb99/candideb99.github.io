@@ -1,0 +1,57 @@
+{
+  "startedAt": "2026-10-20T17:51:55.011Z",
+  "slug": "oil-decline-diplomacy-hope-d15314",
+  "issue": "it compares ship counts over different windows (a weekend, a week, one day, a ten-day average)",
+  "dryRun": false,
+  "before": {
+    "type": "bar",
+    "title": "عدد السفن العابرة لمضيق هرمز",
+    "unit": "سفينة",
+    "source": "OilPrice.com، Kpler",
+    "categories": [
+      "نهاية الأسبوع الحالي",
+      "الأسبوع السابق",
+      "يوم الخميس الماضي",
+      "المتوسط المتحرك لـ10 أيام"
+    ],
+    "series": [
+      {
+        "name": "السفن العابرة",
+        "values": [
+          12,
+          35,
+          4,
+          16
+        ]
+      }
+    ]
+  },
+  "model": "claude-cli/claude-opus-5-5",
+  "after": {
+    "type": "bar",
+    "title": "التغير اليومي في أسعار عقود النفط الخام",
+    "unit": "%",
+    "source": "عرب نيوز",
+    "categories": [
+      "برنت",
+      "غرب تكساس الوسيط"
+    ],
+    "series": [
+      {
+        "name": "تسوية الجمعة",
+        "values": [
+          -0.91,
+          -1.58
+        ]
+      },
+      {
+        "name": "الاثنين (05:13 بتوقيت السعودية)",
+        "values": [
+          -2.08,
+          -2.14
+        ]
+      }
+    ]
+  },
+  "problems": []
+}

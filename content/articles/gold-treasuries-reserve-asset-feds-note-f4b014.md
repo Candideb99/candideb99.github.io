@@ -30,21 +30,7 @@ regions:
   - عالمي
   - الأمريكتان
 readingMinutes: 6
-chart:
-  type: bar
-  title: احتياطيات الذهب وحيازات سندات الخزانة نهاية 2025
-  unit: تريليون دولار
-  source: كولن وايس، مجلس الاحتياطي الفيدرالي، 2026
-  categories:
-    - احتياطيات الذهب العالمية
-    - الذهب باستثناء الولايات المتحدة
-    - سندات الخزانة لدى الجهات الرسمية الأجنبية
-  series:
-    - name: نهاية 2025
-      values:
-        - 5.1
-        - 4
-        - 3.9
+chart: null
 table: null
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/The_Federal_Reserve_Building_-_Washington_D.C..jpg/1280px-The_Federal_Reserve_Building_-_Washington_D.C..jpg
