@@ -3903,6 +3903,90 @@
           "noted": []
         }
       ]
+    },
+    "morocco-government-targets-five-percent-growth-757c81": {
+      "at": "2026-10-20T08:49:18.549Z",
+      "title": "الحكومة المغربية تستهدف نمواً بمتوسط 5% سنوياً بين 2027 و2031",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 27,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "mnt-tech-shares-jump-egyptian-exchange-debut-3df070": {
+      "at": "2026-10-20T09:01:47.112Z",
+      "title": "سهم «إم إن تي تيك» يقفز 13% في أول خمس دقائق من تداوله بالبورصة المصرية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 20,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "arada-enters-saudi-riyadh-project-a96a6a": {
+      "at": "2026-10-20T09:15:27.854Z",
+      "title": "«أرادَ» الإماراتية تدخل السوق السعودية بمشروع في الرياض قيمته 13.7 مليار درهم",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 41,
+            "checked": 41,
+            "supported": 38,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

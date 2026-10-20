@@ -1,78 +1,6 @@
 {
   "version": 1,
   "items": {
-    "3fa1cec903f94012": {
-      "at": "2026-09-29T01:15:36.089Z",
-      "decision": "published",
-      "slug": "openai-cancels-gpt-6-1-astra-release-c2895b",
-      "title": "OpenAI scraps release of latest AI model over safety concerns"
-    },
-    "220dea2c55f48506": {
-      "at": "2026-09-29T01:15:36.089Z",
-      "decision": "published",
-      "slug": "openai-cancels-gpt-6-1-astra-release-c2895b",
-      "title": "OpenAI reportedly ditches model over safety concerns"
-    },
-    "0f614f7c3995af7b": {
-      "at": "2026-09-29T01:15:36.089Z",
-      "decision": "published",
-      "slug": "openai-cancels-gpt-6-1-astra-release-c2895b",
-      "title": "OpenAI abandons plan to release upcoming model as safety concerns escalate"
-    },
-    "ab81a70d40e41b55": {
-      "at": "2026-09-29T01:22:20.423Z",
-      "decision": "published",
-      "slug": "jd-property-kezad-abu-dhabi-logistics-hub-dcc643",
-      "title": "JD.com's new logistics hub at Abu Dhabi’s Kezad to create 1,000 jobs"
-    },
-    "d01a336a9b1d494e": {
-      "at": "2026-09-29T01:22:20.423Z",
-      "decision": "published",
-      "slug": "jd-property-kezad-abu-dhabi-logistics-hub-dcc643",
-      "title": "\"جينغ دونغ العقارية\" تؤسس منشأة لوجستية متطورة في \"كيزاد\""
-    },
-    "4a6e7db3d3ed8d55": {
-      "at": "2026-09-29T01:27:42.096Z",
-      "decision": "published",
-      "slug": "anglogold-ashanti-egypt-eastern-desert-exploration-014a45",
-      "title": "AngloGold Ashanti plans further investment in promising Egyptian mining sites"
-    },
-    "f0fb20d32983d39e": {
-      "at": "2026-09-29T01:27:42.096Z",
-      "decision": "published",
-      "slug": "anglogold-ashanti-egypt-eastern-desert-exploration-014a45",
-      "title": "Egypt targets 6% mining contribution to GDP as 119 companies submit 403 offers"
-    },
-    "93c327c0cbd41f56": {
-      "at": "2026-09-29T01:27:42.096Z",
-      "decision": "published",
-      "slug": "anglogold-ashanti-egypt-eastern-desert-exploration-014a45",
-      "title": "أنجلو جولد تتقدم بطلبات للتنقيب عن الذهب في 19 منطقة بالصحراء الشرقية"
-    },
-    "c9fc18b7476a0f41": {
-      "at": "2026-09-29T01:31:25.848Z",
-      "decision": "published",
-      "slug": "amd-acquires-world-labs-8-2-billion-c7f26d",
-      "title": "AMD makes a big bet on the next era of AI with World Labs acquisition"
-    },
-    "dd8828b4bf58845c": {
-      "at": "2026-09-29T01:31:25.848Z",
-      "decision": "published",
-      "slug": "amd-acquires-world-labs-8-2-billion-c7f26d",
-      "title": "AMD acquiring Fei-Fei Li's World Labs AI firm in deal worth $8.2 billion"
-    },
-    "227c6ab559343ea9": {
-      "at": "2026-09-29T01:31:25.848Z",
-      "decision": "published",
-      "slug": "amd-acquires-world-labs-8-2-billion-c7f26d",
-      "title": "AMD is acquiring AI company World Labs in a deal worth more than $8 billion"
-    },
-    "2f5ef06215656984": {
-      "at": "2026-09-29T01:31:25.848Z",
-      "decision": "published",
-      "slug": "amd-acquires-world-labs-8-2-billion-c7f26d",
-      "title": "AMD will acquire Fei-Fei Li’s World Labs for $8.2 billion"
-    },
     "1031f460856f5f63": {
       "at": "2026-09-29T10:10:34.476Z",
       "decision": "published",
@@ -1266,6 +1194,60 @@
       "decision": "published",
       "slug": "uae-amends-e-invoicing-tax-group-exclusion-d644d9",
       "title": "UAE amends e-invoicing regulations as implementation deadline draws closer"
+    },
+    "f24ca322445aaf7a": {
+      "at": "2026-10-20T08:49:18.555Z",
+      "decision": "published",
+      "slug": "morocco-government-targets-five-percent-growth-757c81",
+      "title": "الحكومة المغربية الجديدة تستهدف نموا 5% بين 2027 و2031"
+    },
+    "9aabc3f5085942b3": {
+      "at": "2026-10-20T08:49:18.555Z",
+      "decision": "published",
+      "slug": "morocco-government-targets-five-percent-growth-757c81",
+      "title": "الحكومة المغربية تعرض خطتها على البرلمان وتتعهد تحسين الأوضاع الاجتماعية"
+    },
+    "6ac26f993e2593f8": {
+      "at": "2026-10-20T08:49:18.555Z",
+      "decision": "published",
+      "slug": "morocco-government-targets-five-percent-growth-757c81",
+      "title": "الحكومة تستهدف نموا بـ5% وتضخما بـ2% وتقليص الدين العمومي"
+    },
+    "1ba6063136f50994": {
+      "at": "2026-10-20T09:01:47.116Z",
+      "decision": "published",
+      "slug": "mnt-tech-shares-jump-egyptian-exchange-debut-3df070",
+      "title": "نخلة: إقبال أكثر من 40 صندوقًا دوليًا من 10 دول على طرح “إم إن تي حالًا”"
+    },
+    "eba7ab66685e4b5f": {
+      "at": "2026-10-20T09:01:47.116Z",
+      "decision": "published",
+      "slug": "mnt-tech-shares-jump-egyptian-exchange-debut-3df070",
+      "title": "سهم إم إن تي تيك يقفز 13% أول 5 دقائق من التداول ويسجل 27.90 جنيه.. فيديو"
+    },
+    "20048608feb68aac": {
+      "at": "2026-10-20T09:01:47.116Z",
+      "decision": "published",
+      "slug": "mnt-tech-shares-jump-egyptian-exchange-debut-3df070",
+      "title": "منير نخلة: إقبال أكثر من 40 صندوقا دوليا على إم إن تى حالا يعزز الثقة بسوق المال"
+    },
+    "06b1ea37e7728f44": {
+      "at": "2026-10-20T09:01:47.116Z",
+      "decision": "published",
+      "slug": "mnt-tech-shares-jump-egyptian-exchange-debut-3df070",
+      "title": "ساعة الصفر للتكنولوجيا المالية.. دق جرس التداول لأسهم إم إن تي تيك.. فيديو"
+    },
+    "faa41489b3c1ce3d": {
+      "at": "2026-10-20T09:15:27.859Z",
+      "decision": "published",
+      "slug": "arada-enters-saudi-riyadh-project-a96a6a",
+      "title": "UAE developer Arada enters Saudi market with Riyadh project"
+    },
+    "6f0e292042d2f9f6": {
+      "at": "2026-10-20T09:15:27.859Z",
+      "decision": "published",
+      "slug": "arada-enters-saudi-riyadh-project-a96a6a",
+      "title": "Arada enters Saudi Arabia with $3.8bn Riyadh project"
     }
   }
 }

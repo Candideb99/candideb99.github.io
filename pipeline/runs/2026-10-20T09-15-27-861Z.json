@@ -1,0 +1,459 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-20T08:39:05.587Z",
+  "durationSec": 2182,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "الحكومة المغربية تستهدف نمواً بـ5% وعجزاً دون 3% حتى 2031",
+      "section": "economy",
+      "importance": 8,
+      "sources": [
+        "https://www.skynewsarabia.com/business/1899295-%D8%A7%D9%84%D8%AD%D9%83%D9%88%D9%85%D8%A9-%D8%A7%D9%84%D9%85%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9-%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9-%D8%AA%D8%B3%D8%AA%D9%87%D8%AF%D9%81-%D9%86%D9%85%D9%88%D8%A7-5-2027-%D9%882031",
+        "https://www.independentarabia.com/node/660813/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1/%D8%A7%D9%84%D8%AD%D9%83%D9%88%D9%85%D8%A9-%D8%A7%D9%84%D9%85%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9-%D8%AA%D8%B9%D8%B1%D8%B6-%D8%AE%D8%B7%D8%AA%D9%87%D8%A7-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D8%A8%D8%B1%D9%84%D9%85%D8%A7%D9%86-%D9%88%D8%AA%D8%AA%D8%B9%D9%87%D8%AF-%D8%AA%D8%AD%D8%B3%D9%8A%D9%86-%D8%A7%D9%84%D8%A3%D9%88%D8%B6%D8%A7%D8%B9-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A%D8%A9",
+        "https://www.hespress.com/%d8%a7%d9%84%d8%ad%d9%83%d9%88%d9%85%d8%a9-%d8%aa%d8%b3%d8%aa%d9%87%d8%af%d9%81-%d9%86%d9%85%d9%88%d8%a7-%d8%a8%d9%805-%d9%88%d8%aa%d8%b6%d8%ae%d9%85%d8%a7-%d8%a8%d9%802-%d9%88%d8%aa%d9%82%d9%84%d9%8a-1825795.html"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يوضحان أن ما جرى عرضُ برنامج حكومي بأهداف للفترة 2027–2031، لا نتائج متحققة، ويقارنان النمو المستهدف بـ4.7% المتوقعة هذا العام. ويضيف العنوان الفرعي قيدَي العجز والدين من الحدث نفسه.",
+              "repair": "يُستحسن «نمواً بمتوسط 5% سنوياً» في العنوان للحفاظ على معنى المتوسط، دون أن يكون ذلك خطأً."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "مقارنة المسح (76% من الأسر تشكو تدني معيشتها رغم تباطؤ التضخم إلى 0.3%) تشرح دوافع المحور الاجتماعي. لكن سياق الحكومة الجديدة وطلب الثقة متأخر إلى الفقرة الأخيرة. وهدف خفض أسعار الغذاء والتعويض التلقائي لفواتير الماء والكهرباء غائبان (SOURCE 1 وSOURCE 2). والصندوق يربط التعهدات الاجتماعية بسقف العجز ربطاً مفيداً، لكنه يُسقط ترشيد الإنفاق وأثر النمو اللذين تذكرهما SOURCE 3.",
+              "repair": "قدّم سياق الحكومة الجديدة إلى الفقرة الثانية. أضف هدف أسعار الغذاء والتعويض التلقائي. واذكر في الصندوق كل الرافعات التي تسمّيها الوثيقة، مع شرط بلوغ النمو المستهدف."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الأقسام الأولى متماسكة: العجز والدين ثم الإيرادات ثم الأسر والمعاشات. لكن قسم «الغذاء والماء والطاقة» ينتهي بقائمة أهداف تُلحق بها السياحة، وفقرته الأولى تفتح بـ«كذلك» دون غاية واضحة، والمقال يختم بسيرة تشكيل الحكومة بدل أن يقدّمها.",
+              "repair": "افتح محور الغذاء بهدف الأسعار، واجمع الماء والطاقة في فقرة، وانقل السياحة إلى فقرة الاستثمار، وقدّم سياق التشكيل وطلب الثقة إلى أول المقال."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة: 5% و4.7% و3% و62% و2% و500→1000 و3000 درهم و20→50% و52% و1.8 مليار م³ و26 مليون سائح. والتاريخ صحيح، إذ يوافق الاثنين 19 أكتوبر. أما «وأعلنت المنصوري إطلاق خارطة سياحية» فيحوّل تعهداً مستقبلياً إلى إجراء منجز.",
+              "repair": "«وقالت المنصوري إن الحكومة ستطلق خارطة سياحية...»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "تقول المقدمة بوضوح إن الحدث هو عرض برنامج خماسي يتضمن أهدافاً لا إنجازات، وتستخدم أفعال النية (ستطلق، تعتزم، تستهدف). لكن العنوان «نمواً سنوياً بـ5%» يسقط قيد «المتوسط» الذي تنص عليه SOURCE 1 وSOURCE 3.",
+              "repair": "«الحكومة المغربية تستهدف نمواً بمتوسط 5% سنوياً بين 2027 و2031»."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "صار السياق في أول المتن: حكومة جديدة عيّنها الملك الجمعة وتخلف أخنوش، يدعمها تحالف رباعي، وتطلب ثقة البرلمان. ومقارنة مسح المندوبية (76% يشكون تدني المعيشة رغم تضخم 0.3%) تشرح دافع المحور الاجتماعي. والصندوق يقرن التعهدات الاجتماعية بسقف العجز والدين، ويجعل تمويلها مشروطاً بالوسائل الأربع التي تسميها SOURCE 3 وببلوغ نمو أعلى من 4.7%، وهي قراءة محدودة ومشروطة تضيف معنى ولا تكرر المتن.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "تتدرج الأقسام بوضوح: المالية العامة، ثم الاستثمار والسياحة، ثم الأسر والمعاشات، ثم الغذاء والماء والطاقة. غير أن جملة «وقالت إن هدف التضخم يرمي إلى حماية القدرة الشرائية والاستقرار» منفصلة عن فقرتها. كما أن الفقرة الثالثة القصيرة تكرر «توسيع القاعدة الضريبية» المذكور في الفقرة السابقة.",
+              "repair": "انقل غاية هدف التضخم إلى المقدمة، وادمج إعادة هيكلة محفظة الشركات العامة وتعديل ضريبة الدخل في فقرة وسائل ضبط العجز."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: 5% و4.7% و2% و3% و62% و500→1000 و3000 درهم و1000/1500 و20→50% و52% و1.8 مليار م³ و26 مليون سائح، والتاريخ (الاثنين 19 أكتوبر) صحيح. لكن «في صدارة أولويات» تحرف «ضمن أولوياتها»، و«وأعفت الحكومة» تنسب ضمناً إجراءً سابقاً إلى الحكومة الجديدة.",
+              "repair": "«تضع ضمن أولوياتها»، و«واعتُمدت خلال تلك السنوات إجراءات لإعفاء هذه الواردات...»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 7,
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تستهدف الحكومة ضبط عجز الميزانية في حدود 3% من الناتج طوال 2026–2031 وخفض الدين العمومي إلى نحو 62% بحلول 2031",
+          "source": 3
+        },
+        {
+          "fact": "تعتزم الحكومة رفع الدعم الاجتماعي من 500 إلى 1000 درهم ورفع الحد الأدنى للمعاش إلى 3000 درهم",
+          "source": 1
+        },
+        {
+          "fact": "تراهن الوثيقة على رفع مساهمة المؤسسات والمقاولات العمومية في ضبط العجز، وتعتزم الحكومة تعديل ضريبة الدخل وتوسيع القاعدة الضريبية",
+          "source": 3
+        },
+        {
+          "fact": "تستهدف الحكومة نمواً بمتوسط 5% سنوياً بين 2027 و2031 مقابل 4.7% متوقعة للعام الحالي",
+          "source": 1
+        }
+      ],
+      "slug": "morocco-government-targets-five-percent-growth-757c81",
+      "title": "الحكومة المغربية تستهدف نمواً بمتوسط 5% سنوياً بين 2027 و2031",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "سهم «إم إن تي تيك» يرتفع 13% في أول دقائق تداوله بالبورصة المصرية",
+      "section": "markets",
+      "importance": 7,
+      "sources": [
+        "https://www.alborsaanews.com/2026/10/20/2000539",
+        "https://www.youm7.com/story/2026/10/20/%D8%B3%D9%87%D9%85-%D8%A5%D9%85-%D8%A5%D9%86-%D8%AA%D9%8A-%D8%AA%D9%8A%D9%83-%D9%8A%D9%82%D9%81%D8%B2-13-%D8%A3%D9%88%D9%84-5-%D8%AF%D9%82%D8%A7%D8%A6%D9%82/7586458",
+        "https://www.youm7.com/story/2026/10/20/%D9%85%D9%86%D9%8A%D8%B1-%D9%86%D8%AE%D9%84%D8%A9-%D8%A5%D9%82%D8%A8%D8%A7%D9%84-%D8%A3%D9%83%D8%AB%D8%B1-%D9%85%D9%86-40-%D8%B5%D9%86%D8%AF%D9%88%D9%82%D8%A7-%D8%AF%D9%88%D9%84%D9%8A%D8%A7-%D8%B9%D9%84%D9%89-%D8%A5%D9%85/7586473",
+        "https://www.youm7.com/story/2026/10/20/%D8%B3%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%81%D8%B1-%D9%84%D9%84%D8%AA%D9%83%D9%86%D9%88%D9%84%D9%88%D8%AC%D9%8A%D8%A7-%D8%A7%D9%84%D9%85%D8%A7%D9%84%D9%8A%D8%A9-%D8%AF%D9%82-%D8%AC%D8%B1%D8%B3-%D8%A7%D9%84%D8%AA%D8%AF%D8%A7%D9%88%D9%84-%D9%84%D8%A3%D8%B3%D9%87%D9%85-%D8%A5%D9%85-%D8%A5%D9%86/7586442"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والاستهلال يوضحان أن السهم ارتفع 13% إلى 27.90 جنيه في أول خمس دقائق. لكن القارئ ينتقل من «إم إن تي تيك» في العنوان إلى نخلة مؤسس «إم إن تي-حالًا» دون ربط، ولا يعرف أن القفزة قراءة مبكرة لا إقفال الجلسة. و«لماذا يهمّ» يتحدث عن «صعود الجلسة الأولى».",
+              "repair": "ربط اسم الشركة بكلمة نخلة بمناسبة بدء تداول أسهمها كما في المصدر 3، والإبقاء على حد «أول خمس دقائق» في كل موضع، بما في ذلك «لماذا يهمّ»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المقارنة بسعر الطرح حاضرة ومفيدة. لكن آلية الاستقرار تُعرض بلا أداتها الأساسية، وهي أمر الشراء المفتوح عند 24.50 جنيه (المصدر 2). ولا يُعرّف القارئ بأن الشركة من قطاع التكنولوجيا المالية والخدمات المالية غير المصرفية (المصدر 2). ومقدمات «لماذا يهمّ» مدعومة، لكن استنتاجها عن بدء «الاختبار الفعلي» مع الجلسة التالية يتجاهل أن الآلية تمتد حتى 18 نوفمبر.",
+              "repair": "إضافة أمر الشراء المفتوح والتعريف بالقطاع من المصدر 2. وإعادة صياغة «لماذا يهمّ» مثلاً: «ارتفع السهم في دقائقه الأولى ضمن حدود سعرية مضاعفة، ويحمي أمر الشراء المفتوح عند سعر الطرح مكتتبي الطرح العام حتى 18 نوفمبر؛ وبعد هذا التاريخ يتحدد سعر السهم بالعرض والطلب في السوق وحدهما، دون أرضية عند 24.50 جنيه»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "جملة المؤشر «وصعد مؤشر «إيجي إكس 30» في الوقت نفسه…» فقرة يتيمة بين قواعد التداول وكلمة نخلة، لا تفسر قفزة السهم ولا ترتبط بما قبلها. وكلمة نخلة مفصولة عن الاستهلال الذي ذكر الصناديق الأربعين، فتبدو تصريحاته العامة ملحقاً لا سياقاً للطلب على الطرح.",
+              "repair": "دمج قراءة المؤشر، بتوقيتها الصحيح، في فقرة القفزة أو حذفها. وضم إقبال الصناديق وتوقعات نخلة بطروحات جديدة وطرح بنك القاهرة في فقرة واحدة تلي القفزة مباشرة، ثم قواعد الجلسة الأولى، ثم ما بعدها وآلية الاستقرار."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام 13% و27.90 و24.50 و40% و80% و30 يوماً من 20 أكتوبر إلى 18 نوفمبر مطابقة للمصدر 2. لكن «في الوقت نفسه» تخالف توقيت المصدر 5 (08:34 غرينتش). وعبارة «نافذة البيع… مقصورة على من خُصصت لهم أسهم» توسّع قيد سوق الصفقات الخاصة إلى البيع عامة. ويسقط شرط الشراء «في تاريخ تنفيذه بالبورصة».",
+              "repair": "تصحيح التوقيت، وحصر القيد صراحة في أوامر البيع عبر سوق الصفقات الخاصة، وإضافة شرط تاريخ التنفيذ كما ورد في المصدر 2."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يحدد العنوان والمقدمة القفزة بـ«أول خمس دقائق» لا بإقفال الجلسة، ويضع الموجز سعر الطرح (24.50 جنيه) أساساً للمقارنة، ويبيّن أن الحماية حتى 18 نوفمبر. ويربط الحديث عن «كلمته بمناسبة بدء تداول أسهم الشركة» بين نخلة مؤسس «إم إن تي-حالًا» والسهم المدرج، كما يفعل المصدر 3، دون اختراع علاقة ملكية. ويوضح التقرير أن قيد البيع يخص سوق الصفقات الخاصة وحدها، وأن السهم يبقى متداولاً في السوق المفتوحة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يعرّف التقرير بقطاع الشركة، أي التكنولوجيا المالية والخدمات المالية غير المصرفية (المصدر 2). ويقارن السعر بسعر الطرح، ويضع قراءة «إيجي إكس 30» في سياق السوق الأوسع بتوقيتها الصحيح 08:34 غرينتش (المصدر 5). وينسب إقبال الصناديق وتوقعات الطروحات وطرح بنك القاهرة إلى نخلة مع صفته (المصدران 1 و3). ويشرح آلية الاستقرار بأداتها، وهي أمر شراء مفتوح عند 24.50 جنيه. أما مقدمات «لماذا يهمّ» فمسندة إلى المصدر 2، واستنتاجه محدود ومشروط: الأمر يحمي سعر الطرح لا العلاوة، ولا أرضية للسعر بعد 18 نوفمبر.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "تتدرج الفقرات من الشركة والقفزة ومقارنتها، إلى الطلب على الطرح بحسب نخلة، ثم قواعد اليوم الأول، فما يتغير من الجلسة التالية، وتنتهي بآلية الاستقرار حتى 18 نوفمبر. لم تعد الفقرات إرساليات منفصلة، وحُذفت الأقوال العامة والإشادات. ويضيف «لماذا يهمّ» معنى غير مكرر، هو انكشاف العلاوة فوق سعر الطرح وغياب الأرضية بعد انتهاء الأمر.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصدر 2: 13% و27.90 و24.50 جنيه، وحدود 40% ضعف حدود السوق، وضمان حتى 80%، و30 يوماً من 20 أكتوبر إلى 18 نوفمبر. وأرقام المؤشر 1.09% و51656.20 نقطة مطابقة للمصدر 5 بتوقيتها. وعبارة «أكثر من 40 صندوقاً من أكثر من 10 دول» منسوبة إلى نخلة. وشرط الشراء «في تاريخ تنفيذه» واستبعاد أسهم السوق المفتوحة محفوظان.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قررت البورصة تطبيق حدود سعرية 40% على السهم في يومه الأول، أي ضعف حدود السوق المدرج فيه",
+          "source": 2
+        },
+        {
+          "fact": "سعر الطرح 24.50 جنيه، وارتفع السهم 13% إلى 27.90 جنيه في أول خمس دقائق",
+          "source": 2
+        },
+        {
+          "fact": "فُتح سوق الصفقات الخاصة لتثبيت سعر السهم 30 يوماً من 20 أكتوبر حتى 18 نوفمبر، ويلتزم مدير الطرح خلالها بأمر شراء مفتوح بسعر الطرح البالغ 24.50 جنيه",
+          "source": 2
+        },
+        {
+          "fact": "يقتصر تسجيل أوامر البيع في هذه الآلية على مكتتبي الطرح العام في حدود الأسهم المخصصة لهم والمشتراة عبر الطرح وما زالت في حوزتهم",
+          "source": 2
+        }
+      ],
+      "slug": "mnt-tech-shares-jump-egyptian-exchange-debut-3df070",
+      "title": "سهم «إم إن تي تيك» يقفز 13% في أول خمس دقائق من تداوله بالبورصة المصرية",
+      "score": 9,
+      "image": "cover-art"
+    },
+    {
+      "headline": "«أرادَ» الإماراتية تدخل السعودية بمشروع في الرياض بقيمة 3.8 مليار دولار",
+      "section": "companies",
+      "importance": 7,
+      "sources": [
+        "https://www.agbi.com/real-estate/2026/10/arada-launches-in-dipping-saudi-arabia-property-market/",
+        "https://www.thenationalnews.com/business/property/2026/10/20/arada-enters-saudi-arabia-with-38bn-riyadh-project/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يحددان الحدث بوضوح: دخول «أرادَ» السعودية لأول مرة بمشروع مشترك في الرياض قيمته التطويرية 13.7 مليار درهم. والمقدمة تفصل بين ما أُعلن (المشروع) وما هو خطة (100 ألف وحدة) ورهان (توقيت ضعف السوق). المبيعات والبناء لم يبدآ، والتقرير يوضح ذلك في الخاتمة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يشرح التقرير غرض رسوم الأراضي وقواعد تملك الأجانب وهدف برنامج «سكني»، ويعرّف «الراجحي المالية» و«روبرتس كو». لكنه يغفل أشد أرقام السوق صلة بالمشروع: تراجع الرياض 82% (المصدر 1). كما يحذف سبب تراجع الأرباح وارتفاع كلفة المواد (المصدر 1). أما صندوق «لماذا يهمّ» فاستدلاله معقول، إذ يربط ميزة الأرض والتمويل بشرط تعافي الطلب، لكنه يقدّم الشروط الأفضل كواقع متحقق.",
+              "repair": "إضافة رقم الرياض وسبب تراجع الأرباح من المصدر 1، وإعادة صياغة مقدمة الصندوق بصيغة الرهان: «تراهن «أرادَ» على...»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عدد مرافق المشروع يتكرر: المقدمة تقول «ويضم المشروع 3500 فيلا ومنزل متلاصق»، ثم تبدأ أول فقرة في المتن بـ«يضم المجتمع السكني المتكامل 3500 فيلا ومنزل متلاصق». وفي العبارة «وتملك الشركة الجديدة إمكانية الوصول إلى مخزون أراضٍ» ترجمة حرفية لـ«has access». وفقرة ملكية «أرادَ» ملتبسة الفاعل. فيما عدا ذلك، تتدرج الفقرات منطقياً من المشروع إلى الدافع فالسوق فالطلب فالتمويل فالخطوات التالية.",
+              "repair": "حذف تكرار عدد الوحدات من أول جملة في المتن والبدء بالموقع: «يقع المشروع في حي الرمال...». استبدال «تملك إمكانية الوصول إلى» بـ«تتاح لها أراضٍ مساحتها...». وإعادة بناء جملة الملكية كما في قائمة الملاحظات."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«نائب الرئيس التنفيذي» تحريف لصفة executive vice chairman. و«أغسطس الماضي» توحي بأغسطس 2026، في حين يضع المصدر 2 قواعد الرسوم في العام الماضي. والأرقام الأخرى مطابقة: 13.7 مليار درهم، و2.5 مليون م²، و49 مليار درهم، و1000–1400 ريال للقدم، و26.9% و37.67 مليار ريال، و185 مليار درهم و70 ألف وحدة. كما أن «AGBI» واردة بالحروف اللاتينية بلا اسم عربي.",
+              "repair": "تصحيح الصفة إلى «نائب رئيس مجلس الإدارة التنفيذي». كتابة «في أغسطس من العام الماضي». وتعريف المنصة: «منصة «أرابيان غلف بيزنس إنسايت» (AGBI)»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "The headline, dek and lede read together make the change clear: the company's first entry into Saudi Arabia, through a joint venture with «إكستوبيا», with a project whose development value is 13.7 billion dirhams. The lede then names the context (a slowing market) and the company's bet. The dek attributes the plan for 100,000 units with a verb of intent («تخطط»).",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "The body explains the levy on undeveloped land and its purpose, the rules for foreign ownership, the target of the «سكني» programme, and what «الراجحي المالية» and «روبرتس كو» do. It sets the Riyadh figure (82%) against the national figures. The box links the land bet to recovering demand as a reasonable, bounded inference, but its premise «تشتري «أرادَ» الأرض بشروط أفضل» goes beyond SOURCE 1, which gives only a strategy and access to a land bank.",
+              "repair": "Recast the box's premise as a bet: «تراهن «أرادَ» على شراء الأرض بشروط أفضل...», and keep the condition that demand recovers when sales begin."
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "The paragraphs move from the project and its location, to the reason for entering a weak market, to market figures that compare Riyadh with the kingdom, then demand and its drivers, financing and execution, and finally the next steps and the company's position. Each paragraph has a job, and the company's financial strain closes the report as context for the expansion.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "The figures match the sources: 13.7 and 49 billion dirhams, 2.5 million m², 1,000–1,400 riyals per square foot, 57% and 22 billion riyals, 82%, 26.9% and 37.67 billion riyals, 2.6% and 1.1%, 185 billion dirhams and more than 70,000 units, 21% to 3 billion and 29% to 480 million. The date of the levy is now «في أغسطس من العام الماضي». Two problems remain: «الحرب مع إيران» implies an actor that SOURCE 1 does not name, and the box presents better land terms as achieved.",
+              "repair": "Write «حرب إيران», and recast the opening of the box as a bet."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 4,
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قال الخشيبي إن الشركة دخلت السوق السعودية عمداً في فترة ضعفها لأن تراجع السوق يتيح التفاوض على شروط جيدة لصفقات الأراضي",
+          "source": 1
+        },
+        {
+          "fact": "رفعت السلطات السعودية الرسم على الأراضي غير المطورة من 2.5% إلى ما يصل إلى 10% وتراجعت أسعار الأراضي منذ ذلك الحين",
+          "source": 1
+        },
+        {
+          "fact": "انكمشت قيمة الصفقات السكنية في المملكة 26.9% سنوياً إلى 37.67 مليار ريال في الربع الثاني بحسب سي بي آر إي",
+          "source": 2
+        },
+        {
+          "fact": "تبدأ مبيعات المشروع العام المقبل والبناء في منتصف 2027",
+          "source": 1
+        }
+      ],
+      "slug": "arada-enters-saudi-riyadh-project-a96a6a",
+      "title": "«أرادَ» الإماراتية تدخل السوق السعودية بمشروع في الرياض قيمته 13.7 مليار درهم",
+      "score": 9,
+      "image": "cover-art"
+    },
+    {
+      "headline": "واشنطن تحظر «ديب سيك» الصينية في الوكالات الحكومية",
+      "section": "technology",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
+  "llm": {
+    "calls": 65,
+    "failures": 4,
+    "promptTokens": 843435,
+    "completionTokens": 214197,
+    "cacheReadTokens": 235835,
+    "costUsd": 9.191,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 65
+    }
+  },
+  "log": [
+    "[09:13:23] image: vision rejected all candidates (None of the candidates shows the story's subject, which is housing development in Riyadh. Photos 1-3 show airport roads, road signs and a terminal: they are road scenes taken through a windshield, some with text in the frame, and amateur quality. Photos 4-6 show Cathay Pacific aircraft in flight over Hong Kong, which is the wrong subject and the wrong country.)",
+    "[09:13:26] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3082",
+    "[09:13:26] image: vision rejected all candidates (Photo 1 shows Donald and Melania Trump, who are not part of this story about Arada's Riyadh housing project. Photo 2 is an amateur interior shot of the airport terminal. It does not show housing or real estate, and it falls short of the publication standard.)",
+    "[09:13:33] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6111",
+    "[09:13:33] image: the source's photograph (AGBI (Arabian Gulf Business Insight)) shows Unfinished concrete and cinder-block villas under construction beside an ornate street lamp against a clear blue sky.; searching Riyadh villas under construction | residential construction site Riyadh | unfinished concrete villa Saudi Arabia | housing development construction Riyadh",
+    "[09:13:33] image: tier 2, like the sources' own photograph: Riyadh villas under construction | residential construction site Riyadh | unfinished concrete villa Saudi Arabia | housing development construction Riyadh",
+    "[09:13:33] commons \"Riyadh villas under construction\": 0 usable of 0",
+    "[09:13:33] commons \"Riyadh villas\": 18 usable of 20",
+    "[09:13:33] image: dropped \"530 Cameron view of MODA building - USACE-p15141coll5-15732.jpeg\" — dated 1967, an archival picture",
+    "[09:13:34] pexels \"Riyadh villas under construction\": 8 usable",
+    "[09:13:42] openverse \"Riyadh villas under construction\": 0 usable of 0",
+    "[09:13:42] image: dropped \"Cityscape of Riyadh with busy streets and modern skyscrapers on a sunn\" — names too little of villas, construction",
+    "[09:13:42] image: dropped \"Mediterranean architecture home against a bright blue sky, emphasizing\" — names too little of villas, construction",
+    "[09:13:42] image: dropped \"A partially constructed building against a clear evening sky in Los Ce\" — names too little of villas, construction",
+    "[09:13:42] image: dropped \"Outdoor scene of modern unfinished buildings under a cloudy sky.\" — names too little of villas, construction",
+    "[09:13:42] image: dropped \"Casa de la Villa, Madrid, 1645 and after (3) (29023424470).jpg\" — taken in Spain, which the story does not name",
+    "[09:13:42] image: dropped \"Casa de la Villa, Madrid, 1645 and after (4) (28688601924).jpg\" — taken in Spain, which the story does not name",
+    "[09:13:42] image: dropped \"Casa de la Villa, Madrid, 1645 and after (8) (29023047240).jpg\" — taken in Spain, which the story does not name",
+    "[09:13:42] image: dropped \"Casa de la Villa, Madrid, 1645 and after (6) (29202949122).jpg\" — taken in Spain, which the story does not name",
+    "[09:13:42] image: dropped \"Casa de la Villa, Madrid, 1645 and after (7) (29310964855).jpg\" — taken in Spain, which the story does not name",
+    "[09:13:42] image: dropped \"Casa de la Villa, Madrid, 1645 and after (5) (28688521034).jpg\" — taken in Spain, which the story does not name",
+    "[09:13:42] image: dropped \"Casa de la Villa, Madrid, 1645 and after (1) (29311489255).jpg\" — taken in Spain, which the story does not name",
+    "[09:13:42] image: dropped \"Casa de la Villa, Madrid, 1645 and after (2) (29232703521).jpg\" — taken in Spain, which the story does not name",
+    "[09:13:42] image: 3 likeness(es) set aside for the country's own photographs",
+    "[09:13:47] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4223",
+    "[09:13:47] image: vision rejected all candidates (Candidate 1 is a city skyline, which is never chosen. It also looks like Kuwait City rather than Riyadh, and the image may be processed. Candidate 2 is a 2009 BlackBerry snapshot of workers insulating a garage door: an amateur, low-quality close-up of a detail, not villas under construction. Neither meets the standard.)",
+    "[09:13:47] image: tier 3, the writer's own subjects: Riyadh skyline | villa construction Saudi Arabia | King Khalid International Airport",
+    "[09:13:47] commons \"Riyadh skyline 2026\": 1 usable of 3",
+    "[09:13:47] commons \"Riyadh skyline\": 7 usable of 12",
+    "[09:13:48] commons \"villa construction Saudi Arabia 2026\": 0 usable of 0",
+    "[09:13:48] commons \"villa construction Saudi Arabia\": 1 usable of 1",
+    "[09:13:48] image: dropped \"530 Cameron view of MODA building - USACE-p15141coll5-15732.jpeg\" — dated 1967, an archival picture",
+    "[09:13:49] commons \"King Khalid International Airport 2026\": 12 usable of 12",
+    "[09:13:49] commons \"King Khalid International Airport\": 4 usable of 12",
+    "[09:13:49] image: dropped \"President Trump's Trip Abroad (33942182734).jpg\" — shows trump's, donald, not the story's people",
+    "[09:13:49] image: dropped \"KKIA terminal construction.jpg\" — dated 1970, an archival picture",
+    "[09:13:55] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3215",
+    "[09:13:55] image: vision rejected all candidates (None of the candidates shows the story's subject, which is homebuilding in Riyadh by a UAE developer. Photo 1 is a night skyline of KAFD, and skylines are excluded. Photos 2-5 are amateur shots of Saudia aircraft at the airport, unrelated to housing. Photo 6 shows Trump, a person the story is not about.)",
+    "[09:13:55] image: tier 4, the story's point and its subject: villas under construction Riyadh | residential neighbourhood Riyadh | construction workers Saudi Arabia | housing construction Riyadh | villa construction Saudi Arabia | residential compound construction (home: Saudi Arabia, Saudi, Riyadh, Jeddah, Mecca)",
+    "[09:13:55] commons \"villas under construction Riyadh\": 0 usable of 0",
+    "[09:13:56] commons \"villas under\": 14 usable of 24",
+    "[09:13:56] pexels \"villas under construction Riyadh\": 8 usable",
+    "[09:14:02] openverse \"villas under construction Riyadh\": 0 usable of 0",
+    "[09:14:02] image: dropped \"Cityscape of Riyadh with busy streets and modern skyscrapers on a sunn\" — names too little of villas, construction",
+    "[09:14:02] image: dropped \"Mediterranean architecture home against a bright blue sky, emphasizing\" — names too little of villas, construction",
+    "[09:14:02] image: dropped \"A partially constructed building against a clear evening sky in Los Ce\" — names too little of villas, construction",
+    "[09:14:02] image: dropped \"Warsaw, Villa Bogoria under construction (2).jpg\" — taken in Poland, which the story does not name",
+    "[09:14:02] image: dropped \"Warsaw, Villa Bogoria under construction (3).jpg\" — taken in Poland, which the story does not name",
+    "[09:14:02] image: dropped \"Warsaw, Villa Bogoria under construction (6).jpg\" — taken in Poland, which the story does not name",
+    "[09:14:02] image: dropped \"Warsaw, Villa Bogoria under construction (4).jpg\" — taken in Poland, which the story does not name",
+    "[09:14:02] image: dropped \"Warsaw, Villa Bogoria under construction (5).jpg\" — taken in Poland, which the story does not name",
+    "[09:14:02] image: dropped \"Nevin-aladag-villa-stuck-tusch.jpg\" — taken in Germany, which the story does not name",
+    "[09:14:02] image: dropped \"Wimereux Villa 40 Rue du Capitaine Ferber.jpg\" — taken in France, which the story does not name",
+    "[09:14:02] image: dropped \"Villa Under the Mother of God and Villa Zosia.jpg\" — taken in Ukraine, which the story does not name",
+    "[09:14:09] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6699",
+    "[09:14:15] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6435",
+    "[09:14:15] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"New residential homes under construction with scaffolding, s\": The frame shows timber-framed, OSB-sheathed tract houses typical of North American suburbs, not Riyadh's concrete-block ",
+    "[09:14:22] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6076",
+    "[09:14:22] image: vision rejected all candidates (fallback pass) (No candidate fits. No. 1 is a city skyline, which is never chosen, and it does not look like Riyadh. No. 2 is a generic construction site that looks Latin American, from its red-brick buildings, and its heavy filtered look falls below a professional standard. Nos. 3–6 are a resort in the Maldives, the wrong country and the wrong subject for Saudi housing.)",
+    "[09:14:22] image: the story's people first: Ahmed Alkhoshaibi Khaled bin Alwaleed bin Talal 2026 | Ahmed Alkhoshaibi Khaled bin Alwaleed bin Talal | Ahmed Alkhoshaibi and Khaled bin Alwaleed bin Talal | Ahmed Alkhoshaibi 2026 | Khaled bin Alwaleed bin Talal 2026",
+    "[09:14:22] commons \"Ahmed Alkhoshaibi Khaled bin Alwaleed bin Talal 2026\": 0 usable of 0",
+    "[09:14:22] commons \"Ahmed Alkhoshaibi\": 0 usable of 0",
+    "[09:14:22] commons \"2026\": 10 usable of 20",
+    "[09:14:22] image: dropped \"Castle Ponoviče, Municipality Litija, Slovenia (2026).jpg\" — names too little of bin",
+    "[09:14:22] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 14.jpg\" — names too little of bin",
+    "[09:14:22] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 01.jpg\" — names too little of bin",
+    "[09:14:22] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 22.jpg\" — names too little of bin",
+    "[09:14:22] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 04.jpg\" — names too little of bin",
+    "[09:14:22] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 25.jpg\" — names too little of bin",
+    "[09:14:22] image: dropped \"Gefallenendenkmal Grüneberg 2026 SW.jpg\" — names too little of bin",
+    "[09:14:22] image: dropped \"Dorfkirche Ortwig 2026 SW.jpg\" — names too little of bin",
+    "[09:14:22] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 17.jpg\" — names too little of bin",
+    "[09:14:22] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 21.jpg\" — names too little of bin",
+    "[09:14:23] commons \"Ahmed Alkhoshaibi Khaled bin Alwaleed bin Talal\": 0 usable of 0",
+    "[09:14:23] commons \"Ahmed Alkhoshaibi\": 0 usable of 0",
+    "[09:14:23] commons \"Talal\": 3 usable of 20",
+    "[09:14:23] image: dropped \"Flickr - Government Press Office (GPO) - King Hussein of Jordan lights\" — names too little of bin",
+    "[09:14:23] image: dropped \"King Hussein and Queen Alia of Jordan in Los Angeles.jpg\" — names too little of bin",
+    "[09:14:23] image: dropped \"King Hussein bin Talal Mosque in Amman.jpg\" — shows hussein, hussein, hussein, hussein, not the story's people",
+    "[09:14:24] commons \"Ahmed Alkhoshaibi and Khaled bin Alwaleed bin Talal\": 0 usable of 0",
+    "[09:14:24] commons \"Ahmed Alkhoshaibi Khaled bin Alwaleed bin Talal\": 0 usable of 0",
+    "[09:14:24] commons \"Ahmed Alkhoshaibi\": 0 usable of 0",
+    "[09:14:24] commons \"Talal\": 3 usable of 20",
+    "[09:14:24] commons \"Ahmed Alkhoshaibi 2026\": 0 usable of 0",
+    "[09:14:24] commons \"Ahmed Alkhoshaibi\": 0 usable of 0",
+    "[09:14:24] commons \"2026\": 10 usable of 20",
+    "[09:14:25] commons \"Khaled bin Alwaleed bin Talal 2026\": 0 usable of 0",
+    "[09:14:25] commons \"Khaled bin\": 7 usable of 20",
+    "[09:14:25] image: dropped \"Fumio Kishida and Khaled bin Mohamed bin Zayed Al Nahyan before the fu\" — shows kishida, not the story's people",
+    "[09:14:25] image: dropped \"Fumio Kishida and Khaled bin Mohamed bin Zayed Al Nahyan before the fu\" — shows kishida, not the story's people",
+    "[09:14:25] image: dropped \"HRH Prince Abdulla bin Khaled bin Sultan bin Abdulaziz (01410869) (486\" — shows abdulla, abdulla, not the story's people",
+    "[09:14:25] image: dropped \"HRH Prince Abdullah bin Khaled bin Sultan bin Abdulaziz Al-Saud (02817\" — shows abdullah, abdullah, not the story's people",
+    "[09:14:25] image: dropped \"HRH Prince Abdullah bin Khaled bin Sultan bin Abdulaziz Al-Saud (02817\" — shows abdullah, abdullah, not the story's people",
+    "[09:14:25] image: dropped \"HRH Prince Abdullah bin Khaled bin Sultan bin Abdulaziz Al-Saud (00281\" — shows abdullah, abdullah, not the story's people",
+    "[09:14:25] image: dropped \"HRH Prince Abdullah bin Khaled bin Sultan bin Abdulaziz Al-Saud (02817\" — shows abdullah, abdullah, not the story's people",
+    "[09:14:25] image: no photograph of the story's people",
+    "[09:14:27] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=2123",
+    "[09:14:27] image: last resort: villa housing construction site Saudi Arabia | villa housing construction site | villa housing construction site industrial | Arada headquarters | Arada building",
+    "[09:14:28] commons \"villa housing construction site Saudi Arabia\": 0 usable of 0",
+    "[09:14:29] commons \"villa housing\": 21 usable of 24",
+    "[09:14:29] image: dropped \"Winterthur - Stiftung Oskar Reinhart (ehemaliges Knabenschulhaus) sowi\" — names too little of villa, housing, construction, site",
+    "[09:14:29] image: dropped \"Grande Villa Housing Temple.jpg\" — an event's photograph, people and banners",
+    "[09:14:29] image: dropped \"Blick auf die Stadthausstrasse in Winterthur (2017).jpg\" — names too little of villa, housing, construction, site",
+    "[09:14:29] image: dropped \"Kunst Museum Winterthur Reinhart am Stadtgarten 2023 02.jpg\" — names too little of villa, housing, construction, site",
+    "[09:14:29] image: dropped \"Kunst Museum Winterthur Reinhart am Stadtgarten 2023 25.jpg\" — names too little of villa, housing, construction, site",
+    "[09:14:29] image: dropped \"Kunst Museum Winterthur Reinhart am Stadtgarten 2023 06.jpg\" — names too little of villa, housing, construction, site",
+    "[09:14:29] image: dropped \"Kunst Museum Winterthur Reinhart am Stadtgarten 2023 12.jpg\" — names too little of villa, housing, construction, site",
+    "[09:14:29] image: dropped \"Kunst Museum Winterthur Reinhart am Stadtgarten 2023 18.jpg\" — names too little of villa, housing, construction, site",
+    "[09:14:29] image: dropped \"Kunst Museum Winterthur Reinhart am Stadtgarten 2023 26.jpg\" — names too little of villa, housing, construction, site",
+    "[09:14:29] image: dropped \"Kunst Museum Winterthur Reinhart am Stadtgarten 2023 05.jpg\" — names too little of villa, housing, construction, site",
+    "[09:14:29] image: dropped \"Kunst Museum Winterthur Reinhart am Stadtgarten 2023 17.jpg\" — names too little of villa, housing, construction, site",
+    "[09:14:29] image: dropped \"Kunst Museum Winterthur Reinhart am Stadtgarten 2023 04.jpg\" — names too little of villa, housing, construction, site",
+    "[09:14:29] commons \"villa housing construction site\": 2 usable of 5",
+    "[09:14:29] image: dropped \"Kwai Tsui Estate under foundation works in June 2015.jpg\" — names too little of villa, housing, construction, site",
+    "[09:14:30] commons \"villa housing construction site industrial\": 0 usable of 0",
+    "[09:14:30] commons \"villa housing\": 21 usable of 24",
+    "[09:14:30] commons \"Arada headquarters\": 0 usable of 0",
+    "[09:14:31] commons \"headquarters\": 18 usable of 24",
+    "[09:14:31] image: dropped \"Southwestern Bell Main Office -- Houston.jpg\" — names too little of headquarters",
+    "[09:14:31] image: dropped \"MACZUL.jpg\" — names too little of headquarters",
+    "[09:14:31] image: dropped \"Head office building of Meta in Ireland.jpg\" — names too little of headquarters",
+    "[09:14:32] commons \"Arada building\": 11 usable of 24",
+    "[09:14:32] image: dropped \"Atatürk Boulevard, General Directorate of Turkish Red Crescent (Kızıla\" — shows directorate, directorate, not the story's people",
+    "[09:14:32] image: dropped \"Burger King headquarters 2025.jpg\" — taken in United States, which the story does not name",
+    "[09:14:32] image: dropped \"Headquarters Inks Lake State Park 2024.jpg\" — taken in United States, which the story does not name",
+    "[09:14:32] image: dropped \"406 Rosemont-Ringoes Road, Headquarters, NJ.jpg\" — taken in United States, which the story does not name",
+    "[09:14:32] image: dropped \"National Headquarters Building - Woodbury, NY.jpg\" — taken in United States, which the story does not name",
+    "[09:14:32] image: dropped \"ESI Technology Headquarters Wrexham UK.jpg\" — taken in United Kingdom, which the story does not name",
+    "[09:14:32] image: dropped \"Köln Germany Catkins-at-TUV-Rheinland-Headquarters-01.jpg\" — taken in Germany, which the story does not name",
+    "[09:14:32] image: dropped \"Namco headquarters building.jpg\" — taken in Japan, which the story does not name",
+    "[09:14:38] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4333",
+    "[09:14:38] image: vision rejected all candidates (fallback pass) (None of the photos fits a Riyadh housing project. Photos 1, 3 and 5–6 are unrelated places (an Ethiopian post office, a Croatian building, a Philippine bust and church), and 4 is a Moroccan agency headquarters. Photo 2 shows housing under construction, but it is an amateur 2008 shot from Hong Kong, so it is the wrong country and below publication standard.)",
+    "[09:14:52] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3373",
+    "[09:14:52] image: vision rejected all candidates (fallback pass) (All six candidates are 2013 snapshots from Balayan, Batangas in the Philippines: a McDonald's, a church and its interior, a public market, and tricycles on a street. None shows Saudi or Gulf housing, construction or real estate. All come from another country, and they fail the subject, gravity and professional-standard rules, so the story runs better without a photograph.)",
+    "[09:14:52] image: last pass, a neutral illustration: villas construction | residential neighbourhood | construction workers | housing construction | villa construction | residential compound construction",
+    "[09:14:54] commons \"villas construction\": 17 usable of 24",
+    "[09:14:54] pexels \"villas construction\": 8 usable",
+    "[09:15:14] openverse \"villas construction\": The operation was aborted due to timeout",
+    "[09:15:14] image: dropped \"Mediterranean architecture home against a bright blue sky, emphasizing\" — names too little of villas, construction",
+    "[09:15:14] image: dropped \"Spacious family house featuring a stone facade and red tile roof, set \" — names too little of villas, construction",
+    "[09:15:14] image: dropped \"Aerial photograph of a modern housing estate with a communal pool, sur\" — names too little of villas, construction",
+    "[09:15:14] image: dropped \"Contemporary apartment building exterior in sunny Foça, İzmir, Turkey,\" — names too little of villas, construction",
+    "[09:15:14] image: dropped \"Exterior view of contemporary residential house with terrace and large\" — names too little of villas, construction",
+    "[09:15:14] image: dropped \"Contemporary house with pool, lush lawn, and clear skies.\" — names too little of villas, construction",
+    "[09:15:20] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5218",
+    "[09:15:20] image: vision rejected all candidates (fallback pass) (No candidate is usable. Photo 1 shows a green, coastal landscape that contradicts Riyadh's desert. Photo 2 looks like a 3D render, not a real photograph. Photos 3–6 are amateur phone shots with a camera watermark, Polish signage and a European street scene.)",
+    "[09:15:27] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5343",
+    "[09:15:27] image: vision rejected all candidates (fallback pass) (No candidate is usable. Photo 1 has a phone watermark, street signage and a European street. Photo 2 is a 19th-century archival print. Photo 3 is a Hong Kong high-rise skyline with a timestamp overlay. Photo 4 is an amateur snapshot of a leafy Belgian street with signs. Photo 5 is a framed floor plan, a drawing and a document. Photo 6 is a green, tree-filled cityscape that contradicts a Riyadh desert setting.)",
+    "[09:15:27] published \"«أرادَ» الإماراتية تدخل السوق السعودية بمشروع في الرياض قيمته 13.7 مليار درهم\" -> arada-enters-saudi-riyadh-project-a96a6a",
+    "[09:15:27] run budget of 35 minutes spent; \"واشنطن تحظر «ديب سيك» الصينية في الوكالات الحكومية\" waits for the next run"
+  ]
+}
