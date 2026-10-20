@@ -1,96 +1,6 @@
 {
   "version": 1,
   "items": {
-    "1031f460856f5f63": {
-      "at": "2026-09-29T10:10:34.476Z",
-      "decision": "published",
-      "slug": "rba-raises-cash-rate-to-4-6-percent-e6fe7e",
-      "title": "RBA interest rates: Reserve Bank raises cash rate to highest level in 15 years and warns of more hikes ‘if needed’"
-    },
-    "4ea3ee0b2908fdb4": {
-      "at": "2026-09-29T10:10:34.476Z",
-      "decision": "published",
-      "slug": "rba-raises-cash-rate-to-4-6-percent-e6fe7e",
-      "title": "Australia raises interest rates to 15-year high"
-    },
-    "7efd3713d7c66b96": {
-      "at": "2026-09-29T10:10:34.476Z",
-      "decision": "published",
-      "slug": "rba-raises-cash-rate-to-4-6-percent-e6fe7e",
-      "title": "أستراليا ترفع الفائدة إلى أعلى مستوى في 15 عاماً وسط عودة التضخم"
-    },
-    "ff6ed4067c759f81": {
-      "at": "2026-09-29T10:10:34.476Z",
-      "decision": "published",
-      "slug": "rba-raises-cash-rate-to-4-6-percent-e6fe7e",
-      "title": "Australia's central bank raises cash rate to 15-year high"
-    },
-    "afa6eb692234ba36": {
-      "at": "2026-09-29T10:10:34.476Z",
-      "decision": "published",
-      "slug": "rba-raises-cash-rate-to-4-6-percent-e6fe7e",
-      "title": "المركزي الأسترالي يرفع الفائدة لأعلى مستوى في 15 عاماً"
-    },
-    "564517c2f8a63ff6": {
-      "at": "2026-09-29T10:18:20.993Z",
-      "decision": "published",
-      "slug": "anthropic-ipo-prospectus-42-billion-loss-96f8e5",
-      "title": "Could A.I. Safety Risks Derail the Sector’s I.P.O. Prospects?"
-    },
-    "d6f71cecfce7ee90": {
-      "at": "2026-09-29T10:18:20.993Z",
-      "decision": "published",
-      "slug": "anthropic-ipo-prospectus-42-billion-loss-96f8e5",
-      "title": "Anthropic IPO filing warns AI may pose 'existential risks to humanity'"
-    },
-    "a54b0644eac77f89": {
-      "at": "2026-09-29T10:18:20.993Z",
-      "decision": "published",
-      "slug": "anthropic-ipo-prospectus-42-billion-loss-96f8e5",
-      "title": "Anthropic’s prospectus details losses, growth, and, yes, a warning that its AI could end humanity"
-    },
-    "d3087d8d05c738fd": {
-      "at": "2026-09-29T10:18:20.993Z",
-      "decision": "published",
-      "slug": "anthropic-ipo-prospectus-42-billion-loss-96f8e5",
-      "title": "Anthropic’s potential $2 trillion IPO comes with the following fine print"
-    },
-    "9e9c8cccc09d1a76": {
-      "at": "2026-09-29T10:24:52.032Z",
-      "decision": "published",
-      "slug": "aldar-talay-yas-riva-reserve-sales-7b0c3a",
-      "title": "Expatriates and foreigners drive sales at Aldar projects"
-    },
-    "4040eeb4e837d114": {
-      "at": "2026-09-29T10:24:52.032Z",
-      "decision": "published",
-      "slug": "aldar-talay-yas-riva-reserve-sales-7b0c3a",
-      "title": "Aldar generates more than Dh5bn in sales from new housing developments"
-    },
-    "5449ebc7eafa5652": {
-      "at": "2026-09-29T10:24:52.032Z",
-      "decision": "published",
-      "slug": "aldar-talay-yas-riva-reserve-sales-7b0c3a",
-      "title": "1.4 مليار دولار مبيعات الدار من مشروعي \"تَلاي\" و\"ياس ريڤا\""
-    },
-    "36440149744f5944": {
-      "at": "2026-09-29T10:24:52.032Z",
-      "decision": "published",
-      "slug": "aldar-talay-yas-riva-reserve-sales-7b0c3a",
-      "title": "أطلقت «تَلاي» و«ياس ريڤا».. 5 مليارات درهم مبيعات «الدار»"
-    },
-    "a15f6a7de92aac1e": {
-      "at": "2026-09-29T10:28:24.345Z",
-      "decision": "published",
-      "slug": "china-lng-imports-second-monthly-drop-263c6b",
-      "title": "الأسعار المرتفعة تخفض الطلب الصيني على الغاز الطبيعي المسال"
-    },
-    "f2ef204c3f1bc33e": {
-      "at": "2026-09-29T10:28:24.345Z",
-      "decision": "published",
-      "slug": "china-lng-imports-second-monthly-drop-263c6b",
-      "title": "China's LNG Imports Set for Second Straight Monthly Drop"
-    },
     "fc7fd11e5046146f": {
       "at": "2026-09-29T16:12:08.212Z",
       "decision": "published",
@@ -1248,6 +1158,90 @@
       "decision": "published",
       "slug": "arada-enters-saudi-riyadh-project-a96a6a",
       "title": "Arada enters Saudi Arabia with $3.8bn Riyadh project"
+    },
+    "40342bc313fda006": {
+      "at": "2026-10-20T14:23:25.551Z",
+      "decision": "rejected",
+      "title": "النفط فوق 110 دولارات مع تصاعد مخاطر الإمدادات في الشرق الأوسط",
+      "strikes": 1
+    },
+    "63a13e5194bb0d09": {
+      "at": "2026-10-20T14:23:25.551Z",
+      "decision": "rejected",
+      "title": "U.S. crude oil tops $105, Brent crude at five-month highs amid Mideast tensions",
+      "strikes": 1
+    },
+    "ce0753d1ec50ce25": {
+      "at": "2026-10-20T14:23:25.551Z",
+      "decision": "rejected",
+      "title": "Oil prices hit five-month high as Houthi escalation worsens supply and inflation fears",
+      "strikes": 1
+    },
+    "e11564cd54235f4b": {
+      "at": "2026-10-20T14:23:25.551Z",
+      "decision": "rejected",
+      "title": "برنت فوق 111 دولاراً .. النفط عند قمة 5 أشهر",
+      "strikes": 1
+    },
+    "b81e815ae87cb37a": {
+      "at": "2026-10-20T14:23:25.551Z",
+      "decision": "rejected",
+      "title": "Brent Tops $110 as Tanker Attacks Threaten Persian Gulf Supply",
+      "strikes": 1
+    },
+    "274461c231b12bd0": {
+      "at": "2026-10-20T14:29:44.782Z",
+      "decision": "rejected",
+      "title": "UK to deploy Typhoon jets to help defend Saudi Arabia from Houthi attacks",
+      "strikes": 1
+    },
+    "d7464a16ce2195ba": {
+      "at": "2026-10-20T14:29:44.782Z",
+      "decision": "rejected",
+      "title": "Operational update 20 October – UK military support to the Kingdom of Saudi Arabia",
+      "strikes": 1
+    },
+    "49cbcb08b4d39b08": {
+      "at": "2026-10-20T14:29:44.782Z",
+      "decision": "rejected",
+      "title": "UK Typhoons deployed to patrol the skies above Saudi cities",
+      "strikes": 1
+    },
+    "07e0e0a0cf9df122": {
+      "at": "2026-10-20T14:29:44.782Z",
+      "decision": "rejected",
+      "title": "UK to deploy fighter jets to defend Saudi cities from Houthi attacks",
+      "strikes": 1
+    },
+    "b04c9a034235d222": {
+      "at": "2026-10-20T14:29:44.782Z",
+      "decision": "rejected",
+      "title": "'Gulf security is our security', says former UK defence secretary",
+      "strikes": 1
+    },
+    "c723746d1e667296": {
+      "at": "2026-10-20T14:40:01.074Z",
+      "decision": "published",
+      "slug": "us-orders-agencies-remove-deepseek-systems-b7af11",
+      "title": "US orders federal agencies to remove China’s DeepSeek AI from their systems"
+    },
+    "8ce3a69a2d6d0f66": {
+      "at": "2026-10-20T14:40:01.074Z",
+      "decision": "published",
+      "slug": "us-orders-agencies-remove-deepseek-systems-b7af11",
+      "title": "U.S. bans DeepSeek from government agency systems amid AI rift with China"
+    },
+    "4df1b96bbe3e3c34": {
+      "at": "2026-10-20T14:52:03.043Z",
+      "decision": "published",
+      "slug": "egypt-private-insurance-funds-assets-rise-2025-4adb5c",
+      "title": "أصول صناديق التأمين الخاصة ترتفع إلى 238.2 مليار جنيه بنمو 21.7% خلال 2025"
+    },
+    "644d4362f0549cec": {
+      "at": "2026-10-20T14:52:03.043Z",
+      "decision": "published",
+      "slug": "egypt-private-insurance-funds-assets-rise-2025-4adb5c",
+      "title": "أصول صناديق التأمين الخاصة ترتفع 21.7% إلى 238.2 مليار جنيه العام الماضي"
     }
   }
 }

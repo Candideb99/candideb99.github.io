@@ -1,0 +1,407 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-20T14:22:55.138Z",
+  "durationSec": 1748,
+  "published": 2,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "برنت عند أعلى مستوى في 5 أشهر فوق 111 دولاراً مع هجمات الحوثيين على السعودية",
+      "section": "energy",
+      "importance": 8,
+      "sources": [
+        "https://aawsat.com/node/5331572",
+        "https://www.cnbc.com/2026/10/20/oil-price-wti-brent-crude.html",
+        "https://www.thenationalnews.com/business/energy/2026/10/20/oil-prices-hit-five-month-high-as-more-houthi-attacks-prompt-supply-and-inflation-fears/",
+        "https://www.alkhaleej.ae/2026-10-20/%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF/%D8%A3%D8%B3%D9%88%D8%A7%D9%82-%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-%D9%88%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D8%A9/%D8%A8%D8%B1%D9%86%D8%AA-%D9%81%D9%88%D9%82-111-%D8%AF%D9%88%D9%84%D8%A7%D8%B1%D8%A7-%D8%A7%D9%84%D9%86%D9%81%D8%B7-%D8%B9%D9%86%D8%AF-%D9%82%D9%85%D8%A9-5-%D8%A3%D8%B4%D9%87%D8%B1"
+      ],
+      "outcome": "skipped: repeats a recent story («السعودية تؤجل مؤتمر مبادرة مستقبل الاستثمار إلى 2027 مع تصاعد هجمات الحوثيين»)"
+    },
+    {
+      "headline": "بريطانيا تنشر مقاتلات تايفون لحماية مدن سعودية من هجمات الحوثيين",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://www.aljazeera.com/news/2026/10/20/uk-to-deploy-raf-fighter-jets-to-defend-saudi-arabia-from-houthi-attacks",
+        "https://www.gov.uk/government/news/operational-update-20-october-uk-military-support-to-the-kingdom-of-saudi-arabia",
+        "https://www.airforce-technology.com/news/uk-typhoons-deployed-to-patrol-the-skies-above-saudi-cities/",
+        "https://www.cnbc.com/2026/10/20/uk-fighter-jets-saudi-houthi-attacks-iran.html"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يوضح العنوان والمقدمة أن المقاتلات ستحمي المدن والبنية الحيوية في دور دفاعي دون ضرب الحوثيين. ويشرح المتن أن تمديد التزويد بالوقود يشمل عمليات سعودية لإضعاف أهداف حوثية (المصدر 2)، فيزول التناقض الظاهري مع العنوان الفرعي.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يورد التقرير المبرر الرسمي (تصاعد الهجمات واستهداف مطار الرياض، المصدر 2)، والدافع الاقتصادي الذي أعلنته الوزارة (كلفة المعيشة والطاقة)، وسياق إغلاق هرمز (المصدر 3)، والوجود البريطاني السابق. ويستند صندوق «لماذا يهمّ» إلى مقدمات موثقة، ويستنتج أن حماية المنشآت باتت جزءاً من حساب الكلفة الداخلية، ويقيّد ذلك بشرط استمرار الهجمات.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "بعض المعاني يعود دون إضافة: الوجود القائم يُذكر مرتين («ويستند الدعم الجديد…» ثم «تُبنى على المعدات والأفراد»)، و«فوياجر» يكرر شرح التزويد بالوقود. ويُختم التقرير بإحصاء منفصل عن الفقرة التي يفسّرها.",
+              "repair": "دمج «فوياجر» في فقرة التزويد بالوقود، وحذف جملة ستريتنغ المكررة، ونقل أرقام العسكريين إلى فقرة الوجود البريطاني القائم بوصفها خط أساس سابقاً للحرب."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«حتى 1 أبريل 2025» تحرّف «as at» في المصدر 3. وبندا 320 و5,570 في الحقائق الرئيسية بلا تاريخ، فقد يُفهمان على أنهما الوجود الحالي.",
+              "repair": "كتابة «في 1 أبريل 2025» في المتن، وإضافة التاريخ نفسه إلى بندي الحقائق الرئيسية."
+            }
+          }
+        }
+      ],
+      "outcome": "rejected after revision: خبر ثانٍ ملحق بالخبر («وفي التاريخ نفسه بلغ عدد العسكريين البريطانيين نحو 320 في مو…»)؛ الخبر حدث واحد: احذف الحدث المنفصل من المتن، ومن الوصف والأرقام و«لماذا يهمّ» إن ظهر فيها، فله خبره المستقل."
+    },
+    {
+      "headline": "واشنطن تحظر «ديب سيك» الصينية في أنظمة الوكالات الفيدرالية",
+      "section": "technology",
+      "importance": 6,
+      "sources": [
+        "https://techcrunch.com/2026/10/20/us-orders-federal-agencies-to-remove-chinas-deepseek-ai-from-their-systems/",
+        "https://www.cnbc.com/2026/10/20/us-deepseek-federal-agency-ban.html",
+        "https://www.federalregister.gov/documents/2026/10/20/2026-21447/notice-of-order-regarding-exclusion-and-removal-of-deepseek-products-from-federal-civilian-executive"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يحددان ما تغيّر: وقف الشراء وإزالة منتجات «ديب سيك» من أنظمة الوكالات المدنية، مع تسمية الخزانة والخارجية والعدل. ويحددان ما لم يتغيّر: استثناء وزارة الدفاع، وأن القيود السابقة على أنظمة الاستخبارات قائمة أصلاً. ويوضح الجسم أن الأمر صدر في يوليو وأُعلن الاثنين.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "دوافع الوزارة المصرّح بها حاضرة: احتمال وصول السلطات الصينية إلى البيانات بموجب القانون الصيني، والثغرات السيبرانية في تطبيق «آي أو إس» (المصدران 1 و2). والسوابق مذكورة: قانون ديسمبر 2025، وحجب وكالة أنظمة معلومات الدفاع في يناير 2025، وحظر وزارة التجارة في مارس. ويُشرح «التقطير» من المصدر 1. في صندوق «لماذا يهمّ»، المقدمة المنطقية هي امتداد الحظر إلى منتجات الأطراف الثالثة، والاستنتاج المحدود هو أن على الوكالات تتبع أصل النماذج فيما تشتريه، وأن السعر المنخفض يفقد وزنه في هذا السوق. هذا استنتاج متناسب مع المعطيات.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "تنتقل الفقرات من نطاق الحظر إلى الاستثناءات، ثم مخاطر البيانات، ثم الأمن السيبراني، ثم الرد الصيني، ثم سياق القيود السابقة والتنافس. ولكل فقرة وظيفة واحدة، والإسناد واضح دون افتتاحيات آلية متكررة. أما جملة الصندوق الأخيرة فتُعالج تحت بند الدقة.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "في الدك: «ويحق للوكالات طلب استثناءات خلال 60 يوماً». وفي الصندوق: «رهناً بعدد الوكالات التي تطلب استثناءات». كلاهما يُسقط أن المهلة محسوبة «من صدور الأمر» في 24 يوليو (المصدر 2)، فيوحي بأن الباب مفتوح الآن. كذلك تجعل «تطبيقات «ديب سيك»» مصطلح «implementations» (المصدر 3) ملتبساً بالتطبيق الاستهلاكي.",
+              "repair": "تُربط المهلة صراحةً بتاريخ الصدور في الدك والصندوق وفي why_basis، ويُكتب «تقنيات «ديب سيك» أو نماذجها» بدل «تطبيقات «ديب سيك»»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يبين العنوان والدك والمقدمة ما تغير وحدوده. الأمر يقضي بالإزالة من الأنظمة ووقف الشراء، ويمتد إلى ما بناه موردون آخرون على تقنيات الشركة. يسري على الوكالات المدنية، ومنها الخزانة والخارجية والعدل، ويستثني وزارة الدفاع (المصدر 2). ويذكر التقرير أن الإعلان جرى الاثنين وأن الأمر صدر في 24 يوليو. أسقط الدك كلمة «منتجات» من «منتجات أطراف ثالثة وخدماتها»، وهذا إغفال لا يغير المعنى.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "الدافع وارد بإسناده: مخاطر الوصول إلى البيانات بموجب القانون الصيني، والثغرات السيبرانية (المصدران 1 و2). والخلفية مرتبة زمنياً: حجب وكالة أنظمة معلومات الدفاع في يناير 2025، ثم وزارة التجارة في مارس، ثم قانون الكونغرس في ديسمبر 2025. ويُشرح مصطلح التقطير عند أول ذكر له. ويستند صندوق «لماذا يهمّ» إلى مقدمات صحيحة: امتداد الحظر إلى منتجات الأطراف الثالثة (المصدر 3)، والمنافسة بنماذج منخفضة التكلفة (المصدر 1)، ومهلة الاستثناءات (المصدر 2). ويستنتج منها أن على الوكالات تتبع أصل النماذج في ما تشتريه، ويقيّد الاستنتاج بما يُمنح من استثناءات دون أن يفترض أن المهلة ما زالت مفتوحة. هذا استدلال محدود ومشروع.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات مبنية على أسئلة القارئ لا على ترتيب المصادر: نطاق الحظر، ثم الاستثناءات، ثم مصدرا التهديد، ثم الرد الصيني، ثم القيود السابقة، ثم التدقيق الدولي واتهامات التقطير، ثم سياق التنافس. لا حشو ولا جمل عن ما لا تقوله المصادر. الخلل الوحيد هو مرجع «ويشمل ذلك» الملتبس في الفقرة الأولى.",
+              "repair": "«وبذلك يغطي الأمر المشتريات الجديدة والأنظمة القائمة معاً»."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "المهلة مربوطة بتاريخ الصدور: «خلال 60 يوماً من صدوره» في المتن، و«من صدور الأمر» في why_basis. التحوطات محفوظة: «قد تصبح متاحة»، و«محاولات يُشتبه في أن «ديب سيك» نفذتها»، و«تدرس» في خبر بلومبرغ. ومواعيد الثلاثاء والاثنين ويناير ومارس وديسمبر 2025 مطابقة للمصادر. والاسم اللاتيني للشركة يرد مرة واحدة للتعريف، وهذا مسموح.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 2,
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "يشمل الأمر إزالة منتجات وخدمات الأطراف الثالثة المبنية على تقنيات «ديب سيك» أو نماذجها من أنظمة الوكالات المدنية",
+          "source": 3
+        },
+        {
+          "fact": "يستبعد الأمر منتجات «ديب سيك» وخدماتها من مشتريات الوكالات الفيدرالية المدنية",
+          "source": 3
+        },
+        {
+          "fact": "تنافس «ديب سيك» «أوبن إيه آي» و«ميتا» بنماذج منخفضة التكلفة مفتوحة الأوزان",
+          "source": 1
+        },
+        {
+          "fact": "يحق للوكالات التنفيذية طلب استثناءات منها تأجيل الامتثال بمبرر مكتوب خلال 60 يوماً من صدور الأمر",
+          "source": 2
+        }
+      ],
+      "slug": "us-orders-agencies-remove-deepseek-systems-b7af11",
+      "title": "واشنطن تأمر الوكالات الفيدرالية المدنية بإزالة «ديب سيك» الصينية من أنظمتها",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "أصول صناديق التأمين الخاصة في مصر ترتفع 21.7% إلى 238.2 مليار جنيه في 2025",
+      "section": "markets",
+      "importance": 6,
+      "sources": [
+        "https://www.masrawy.com/news/news_economy/details/2026/10/20/3065879/%D8%A3%D8%B5%D9%88%D9%84-%D8%B5%D9%86%D8%A7%D8%AF%D9%8A%D9%82-%D8%A7%D9%84%D8%AA%D8%A3%D9%85%D9%8A%D9%86-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9-%D8%AA%D8%B1%D8%AA%D9%81%D8%B9-%D8%A5%D9%84%D9%89-238-2-%D9%85%D9%84%D9%8A%D8%A7%D8%B1-%D8%AC%D9%86%D9%8A%D9%87-%D8%A8%D9%86%D9%85%D9%88-21-7-%D8%AE%D9%84%D8%A7%D9%84-2025",
+        "https://www.alborsaanews.com/2026/10/20/2000711"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يصرّح العنوان والمقدمة بالتغير الأساسي: ارتفاع الأصول 21.7% إلى 238.2 مليار جنيه من 195.7 مليار جنيه، مع نسبة ذلك إلى التقرير السنوي للهيئة العامة للرقابة المالية. ويكمل العنوان الفرعي بتفصيل من الحدث نفسه هو تركز الاستثمارات.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "تشرح المسودة وظيفة الصناديق وتقدّم عزام بصفته رئيساً للهيئة. لكنها تُسقط الاشتراكات (23.4 مليار جنيه) وصافي العائد (40.6 مليار جنيه) من المصدرين 1 و2، وهما ما يوضح حركة الأموال الداخلة والخارجة. واستنتاج «لماذا يهمّ» يقوم على مقارنة المال الاحتياطي بالمزايا بدلاً من الاشتراكات والعوائد.",
+              "repair": "إضافة الاشتراكات وصافي العائد مع مقارنتهما بعام 2024، وإعادة صياغة الصندوق التحليلي على أساس أن الاشتراكات والعوائد تفوق المزايا، مع ربط نمو أموال الأعضاء بعوائد الدين والودائع."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عبارة «أي أن نمو الأصول تحقق رغم انكماش عدد الصناديق العاملة» استنتاج لا يتصل بالجملة السابقة. والتقرير ينتهي بدعوة عامة من عزام بدل أن ينتهي بمعلومة.",
+              "repair": "حذف الاستنتاج المفتعل، وجمع الاشتراكات والمزايا واقتباس التوازن في فقرة واحدة، واختصار دعوات الحوكمة العامة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «بنحو نصف هذه الوتيرة» تقارن نمو رصيد بنمو تدفق سنوي. وعنوان الرسم «توزيع استثمارات» لا يتسق مع مجموع بنوده البالغ 199.76 مليار جنيه مقابل إجمالي 210.9 مليار جنيه.",
+              "repair": "مقارنة المزايا بالاشتراكات، وتعديل عنوان الرسم إلى «أبرز بنود الاستثمارات» أو الإشارة إلى أن البنود المعلنة لا تغطي الإجمالي."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة والافتتاح تبيّن ما تغيّر: نمو الأصول 21.7% إلى 238.2 مليار جنيه، ونمو الاستثمارات بوتيرة أسرع. ويحدد العنوان الفرعي تركّز الاستثمارات في الدين الحكومي والودائع، دون مبالغة أو تناقض.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "تشرح المسودة وظيفة الصناديق وتقدّم عزام بصفته رئيساً للهيئة. لكنها تُسقط الاشتراكات (23.4 مليار جنيه) وصافي العائد (40.6 مليار جنيه) من المصدرين 1 و2، وهما ما يفسّر حركة الأموال الداخلة والخارجة. وتقوم مقدمات صندوق «لماذا يهمّ» على تركز الاستثمارات (مسندة)، لكن استدلاله يربط قدرة الصناديق على صرف المزايا بالعوائد مع أن الاشتراكات تغطيها.",
+              "repair": "إضافة الاشتراكات وصافي العائد مع مقارنتهما بعام 2024، وحصر الاستنتاج في ارتباط نمو أموال الأعضاء بعوائد الدين والودائع، مع شرط أن الاشتراكات تغطي المزايا."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يبدأ التقرير بثناء عام من عزام وينتهي بدعوته العامة. وفقرة المال الاحتياطي جملة معزولة، وفقرة المزايا لا يقابلها رقم الاشتراكات، فيقرأ القارئ أرقاماً متتابعة دون خط يربط الداخل والخارج.",
+              "repair": "ترتيب الفقرات على النحو التالي: الأصول والاستثمارات، ثم توزيع الاستثمارات وصافي عائدها، ثم الاشتراكات مقابل المزايا مع اقتباس التوازن، ثم عدد الصناديق والأعضاء، مع حذف الثناء العام."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصدرين، وعنوان الرسم صار «أبرز بنود» بما يتسق مع مجموعه البالغ 199.76 مليار جنيه من أصل 210.9 مليار جنيه. لكن «يجري وفق قانون التأمين الموحد» تحوّل دعوة («شدد على أهمية») إلى إجراء قائم.",
+              "repair": "إعادة الصياغة إلى «وشدد عزام على أهمية تطوير إدارة الصناديق...» كما في المصدر 1."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 9,
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "الأوراق المضمونة من الحكومة بلغت نحو 88.27 مليار جنيه والودائع وشهادات الادخار والحسابات الاستثمارية 88.05 مليار جنيه من الاستثمارات",
+          "source": 1
+        },
+        {
+          "fact": "الاستثمار في الأسهم المتداولة بالبورصة المصرية بلغ 4.46 مليار جنيه",
+          "source": 1
+        },
+        {
+          "fact": "الاستثمارات صعدت 25.5% إلى 210.9 مليار جنيه",
+          "source": 1
+        }
+      ],
+      "slug": "egypt-private-insurance-funds-assets-rise-2025-4adb5c",
+      "title": "أصول صناديق التأمين الخاصة في مصر ترتفع 21.7% إلى 238.2 مليار جنيه",
+      "score": 6,
+      "image": "cover-art"
+    }
+  ],
+  "llm": {
+    "calls": 50,
+    "failures": 1,
+    "promptTokens": 634382,
+    "completionTokens": 167995,
+    "cacheReadTokens": 196844,
+    "costUsd": 6.899,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 50
+    }
+  },
+  "log": [
+    "[14:48:21] commons \"Smart Village Giza office building\": 0 usable of 0",
+    "[14:48:21] commons \"Smart Village Giza office\": 2 usable of 2",
+    "[14:48:41] pexels \"Smart Village Giza office building\": 8 usable",
+    "[14:48:41] openverse \"Smart Village Giza office building\": The operation was aborted due to timeout",
+    "[14:48:41] image: dropped \"Urban landscape with Giza Pyramids under clear sky, Egypt.\" — names too little of office, building",
+    "[14:48:41] image: dropped \"Aerial image showcasing modern villas and greenery in a luxury communi\" — names too little of office, building",
+    "[14:48:41] image: dropped \"A scenic view of a modern apartment complex surrounded by greenery und\" — names too little of office, building",
+    "[14:48:41] image: dropped \"Stylish modern kitchen with natural light and elegant design in Giza, \" — names too little of office, building",
+    "[14:48:41] image: dropped \"Telenorbygget Fornebu fra øst (6. juni 2018).jpg\" — taken in Norway, which the story does not name",
+    "[14:48:41] image: dropped \"Telenorbygget Fornebu fra vest (8. juni 2018).jpg\" — taken in Norway, which the story does not name",
+    "[14:48:41] image: dropped \"Copenhagen Police Headquarters - corner.jpg\" — taken in Denmark, which the story does not name",
+    "[14:48:41] image: dropped \"FRA Deutsche Bank.jpg\" — taken in Germany, which the story does not name",
+    "[14:48:41] image: dropped \"Mærsks hovedkvarter fra Amaliegade 2011.jpg\" — taken in Denmark, which the story does not name",
+    "[14:48:41] image: dropped \"United Nations headquarters 2006-06-17.jpg\" — taken in United States, which the story does not name",
+    "[14:48:41] image: 4 likeness(es) set aside for the country's own photographs",
+    "[14:49:06] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4636",
+    "[14:49:06] image: vision rejected all candidates (None of the candidates shows the FRA headquarters. Photo 1 is a historic building in Alexandria (likely Alexandria University), not the regulator. Photos 2, 3 and 6 are residential compounds that have nothing to do with insurance funds. Photos 4 and 5 are 2009 snapshots of the Smart Village post office; they are dated and amateur, and photo 5 is blurred.)",
+    "[14:49:06] image: tier 3, the writer's own subjects: Cairo skyline | Egyptian Exchange Cairo | Egyptian pound banknotes",
+    "[14:49:07] commons \"Cairo skyline 2026\": 1 usable of 1",
+    "[14:49:07] commons \"Cairo skyline\": 9 usable of 12",
+    "[14:49:07] image: dropped \"Ahmad Ibn Tulun Mosque Courtyard and Dome.jpg\" — names too little of skyline",
+    "[14:49:08] commons \"Egyptian Exchange Cairo 2026\": 0 usable of 3",
+    "[14:49:10] commons \"Egyptian Exchange Cairo\": 9 usable of 12",
+    "[14:49:10] image: dropped \"A6-EGX Boeing 777 Emirates (8575953904).jpg\" — names too little of egyptian, exchange",
+    "[14:49:10] image: dropped \"A6-EGX 03052016 LHR (26778296311).jpg\" — names too little of egyptian, exchange",
+    "[14:49:10] image: dropped \"Secretary of Defense Lloyd J. Austin III in Cairo, Egypt, to reaffirm \" — shows lloyd, lloyd, general, not the story's people",
+    "[14:49:10] image: dropped \"Secretary of Defense Lloyd J. Austin III in Cairo, Egypt, to reaffirm \" — shows lloyd, lloyd, abdel, not the story's people",
+    "[14:49:10] image: dropped \"Secretary of Defense Lloyd J. Austin III in Cairo, Egypt, to reaffirm \" — shows lloyd, lloyd, general, not the story's people",
+    "[14:49:10] image: dropped \"Secretary of Defense Lloyd J. Austin III in Cairo, Egypt, to reaffirm \" — shows lloyd, lloyd, general, not the story's people",
+    "[14:49:11] commons \"Egyptian pound banknotes 2026\": 0 usable of 5",
+    "[14:49:12] commons \"Egyptian pound banknotes\": 2 usable of 12",
+    "[14:49:12] image: dropped \"One Egyptian pound note.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[14:49:12] image: dropped \"1 Egyptian Pound Backside.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[14:49:15] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3388",
+    "[14:49:15] image: vision rejected all candidates (All five candidates are Cairo skylines or cityscapes, which the rules never allow. None shows the story's subject: insurance funds, government debt, bank deposits or the regulator. Better to let the fallback find a relevant scene.)",
+    "[14:49:15] image: tier 4, the story's point and its subject: Egyptian pound notes counting | National Bank of Egypt branch | Egyptian Exchange Cairo | bank branch Egypt | Egyptian pound banknotes Egypt | Egyptian Exchange trading (home: Egypt, Egyptian, Cairo, Giza, Alexandria)",
+    "[14:49:16] commons \"Egyptian pound notes counting\": 4 usable of 7",
+    "[14:49:16] image: dropped \"American bee journal (1918) (17928763999).jpg\" — names too little of pound, notes, counting",
+    "[14:49:16] image: dropped \"Allen's catalogue for 1906 - choice strawberry plants and hundreds of \" — names too little of pound, notes, counting",
+    "[14:49:16] image: dropped \"A collection of voyages and travels- consisting of authentic writers i\" — names too little of pound, notes, counting",
+    "[14:49:16] image: dropped \"Spring 1897 (1897) (20525382086).jpg\" — names too little of pound, notes, counting",
+    "[14:49:36] pexels \"Egyptian pound notes counting\": 8 usable",
+    "[14:49:36] openverse \"Egyptian pound notes counting\": The operation was aborted due to timeout",
+    "[14:49:38] commons \"National Bank of Egypt branch\": 5 usable of 18",
+    "[14:49:38] image: dropped \"Medal, campaign (AM 1979.116-6).jpg\" — names too little of branch",
+    "[14:49:38] image: dropped \"Medal, campaign (AM 1979.116-7).jpg\" — names too little of branch",
+    "[14:49:38] image: dropped \"Perkins School for the Blind Bound Clippings- World War Blind, 1916 (1\" — names too little of branch",
+    "[14:49:38] image: dropped \"Hillsborough War Memorial County Down Northern Ireland.jpg\" — names too little of branch",
+    "[14:49:38] pexels \"National Bank of Egypt branch\": 8 usable",
+    "[14:49:58] openverse \"National Bank of Egypt branch\": The operation was aborted due to timeout",
+    "[14:49:58] image: dropped \"Detailed facade view of Bank Al-Maghrib showcasing Arabic architecture\" — names too little of branch",
+    "[14:49:58] image: dropped \"Classic architecture of T.C. Ziraat Bankasi building in Ankara, Turkey\" — names too little of branch",
+    "[14:49:58] image: dropped \"A vibrant Egyptian flag on a boat with clear blue water in Hurghada, E\" — names too little of branch",
+    "[14:49:58] image: dropped \"Elegant exterior of Česká Národní Banka showcasing classic architectur\" — names too little of branch",
+    "[14:49:58] image: dropped \"Elegant entrance of Türkiye İş Bankası with architectural details in I\" — names too little of branch",
+    "[14:49:58] image: dropped \"Man at a currency exchange office window, showing currency rates insid\" — names too little of branch",
+    "[14:49:59] commons \"Egyptian Exchange Cairo\": 19 usable of 24",
+    "[14:49:59] image: dropped \"A6-EGX Boeing 777 Emirates (8575953904).jpg\" — names too little of exchange",
+    "[14:49:59] image: dropped \"A6-EGX 03052016 LHR (26778296311).jpg\" — names too little of exchange",
+    "[14:49:59] image: dropped \"Secretary of Defense Lloyd J. Austin III in Cairo, Egypt, to reaffirm \" — shows lloyd, lloyd, general, not the story's people",
+    "[14:49:59] image: dropped \"Secretary of Defense Lloyd J. Austin III in Cairo, Egypt, to reaffirm \" — shows lloyd, lloyd, abdel, not the story's people",
+    "[14:49:59] image: dropped \"Secretary of Defense Lloyd J. Austin III in Cairo, Egypt, to reaffirm \" — shows lloyd, lloyd, general, not the story's people",
+    "[14:49:59] image: dropped \"Secretary of Defense Lloyd J. Austin III in Cairo, Egypt, to reaffirm \" — shows lloyd, lloyd, general, not the story's people",
+    "[14:49:59] image: dropped \"Secretary of Defense Lloyd J. Austin III in Cairo, Egypt, to reaffirm \" — shows lloyd, lloyd, general, not the story's people",
+    "[14:49:59] image: dropped \"Secretary of Defense Lloyd J. Austin III in Cairo, Egypt, to reaffirm \" — shows lloyd, lloyd, general, not the story's people",
+    "[14:49:59] image: dropped \"Secretary of Defense Lloyd J. Austin III in Cairo, Egypt, to reaffirm \" — shows lloyd, lloyd, general, not the story's people",
+    "[14:49:59] image: dropped \"Secretary of Defense Lloyd J. Austin III in Cairo, Egypt, to reaffirm \" — shows lloyd, lloyd, general, not the story's people",
+    "[14:49:59] image: dropped \"Secretary of Defense Lloyd J. Austin III in Cairo, Egypt, to reaffirm \" — shows lloyd, lloyd, general, not the story's people",
+    "[14:49:59] image: dropped \"تصوير شارع الفن (شارع الشريفين - البورصة) 01.jpg\" — names too little of exchange",
+    "[14:50:19] pexels \"Egyptian Exchange Cairo\": 8 usable",
+    "[14:50:19] openverse \"Egyptian Exchange Cairo\": The operation was aborted due to timeout",
+    "[14:50:19] image: dropped \"A local guide gives a thumbs up to tourists at a historic site in Cair\" — names too little of exchange",
+    "[14:50:19] image: dropped \"Low angle of aged building of Egyptian Museum located in Cairo with ar\" — names too little of exchange",
+    "[14:50:19] image: dropped \"View of a historic street intersection in Cairo, Egypt, showcasing dis\" — names too little of exchange",
+    "[14:50:19] image: dropped \"Historic building in Cairo, Egypt, with beautiful palm trees and a cle\" — names too little of exchange",
+    "[14:50:19] image: dropped \"Wide view of the Egyptian Museum's main hall showcasing ancient sculpt\" — names too little of exchange",
+    "[14:50:19] image: dropped \"Woman in Luxor Temple admiring ancient carved columns in sunlight.\" — names too little of exchange",
+    "[14:50:19] image: dropped \"Tourists browse a vibrant souvenir shop in Cairo filled with Egyptian \" — names too little of exchange",
+    "[14:50:19] image: dropped \"A quiet night scene featuring an Egyptian police vehicle and entrance \" — names too little of exchange",
+    "[14:50:20] commons \"bank branch Egypt\": 17 usable of 24",
+    "[14:50:20] image: dropped \"The struggle of the nations - Egypt, Syria, and Assyria (1896) (145913\" — names too little of bank, branch",
+    "[14:50:27] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5743",
+    "[14:50:32] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5234",
+    "[14:50:32] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Suez Canal Bank branch in New Borg El Arab city.jpg\": The frame is the facade of a Suez Canal Bank branch, a named bank and a neighbouring sector, not Egypt's private insuran",
+    "[14:50:40] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7203",
+    "[14:50:44] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4748",
+    "[14:50:44] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Import & Export bank of Egypt.jpg\": The frame shows a branch of EBank, a specific bank the story never names, in New Borg El Arab, while the story is about ",
+    "[14:50:44] image: the story's people first: Islam Azzam 2026 | Islam Azzam",
+    "[14:50:45] commons \"Islam Azzam 2026\": 0 usable of 2",
+    "[14:50:46] commons \"Islam Azzam\": 2 usable of 4",
+    "[14:50:46] commons \"Islam Azzam\": 2 usable of 4",
+    "[14:50:46] image: set aside \"Muizz Street - Egypt.jpg\" — a 2016 photograph of a person, older than 2018",
+    "[14:50:46] image: people shortlist: 2018 Ali Khamenei met with Ziyad Al-Nakhaleh01.jpg",
+    "[14:50:50] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3847",
+    "[14:50:50] image: vision rejected all candidates (The only candidate shows Ali Khamenei meeting Islamic Jihad leaders, including Nafiz Azzam, not Islam Azzam of Egypt's FRA. That is a wrong-person match from the surname and is unrelated and politically misleading for a story on Egyptian insurance funds.)",
+    "[14:50:50] image: nothing of them since 2018 fits; their newest older photographs, run as file photos: 2016 Muizz Street - Egypt.jpg",
+    "[14:50:53] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=2982",
+    "[14:50:53] image: vision rejected all candidates (The only candidate is a night streetscape of Muizz Street in historic Cairo, a landmark tourist view. It matched the search only through the street name 'Essam Azzam' and does not show Islam Azzam. It says nothing about insurance funds, government debt or bank deposits, so none is chosen.)",
+    "[14:50:58] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4907",
+    "[14:50:58] image: last resort: Egyptian pound banknotes Egypt | Egyptian pound banknotes | Egyptian pound banknotes industrial | Financial Regulatory Authority headquarters | Financial Regulatory Authority building",
+    "[14:50:59] commons \"Egyptian pound banknotes Egypt\": 4 usable of 24",
+    "[14:50:59] image: dropped \"1 Egyptian Pound Backside.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[14:50:59] image: dropped \"One Egyptian pound note.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[14:50:59] image: dropped \"Egypt 1 pound obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[14:51:00] commons \"Egyptian pound banknotes\": 3 usable of 24",
+    "[14:51:00] commons \"Egyptian pound banknotes industrial\": 0 usable of 0",
+    "[14:51:01] commons \"Egyptian pound\": 6 usable of 24",
+    "[14:51:01] image: dropped \"Obverse of Egyptian 20 piastres.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[14:51:02] commons \"Financial Regulatory Authority headquarters\": 0 usable of 0",
+    "[14:51:03] commons \"Financial Regulatory\": 11 usable of 24",
+    "[14:51:03] image: dropped \"Barack Obama at a Financial Regulatory Reform announcement, 2009.jpg\" — names too little of headquarters",
+    "[14:51:03] image: dropped \"National Administration of Financial Regulation (20230628183842).jpg\" — names too little of headquarters",
+    "[14:51:03] image: dropped \"National Administration of Financial Regulation (20230628183732).jpg\" — names too little of headquarters",
+    "[14:51:03] image: dropped \"Figure 1 Change in Regulatory Oversight of Investment Adviser Firms Pr\" — names too little of headquarters",
+    "[14:51:03] image: dropped \"Beijing CSRC Building.jpg\" — names too little of headquarters",
+    "[14:51:03] image: dropped \"中国证券监督管理委员会.jpg\" — names too little of headquarters",
+    "[14:51:03] image: dropped \"Figure 1- Federal Banking Agencies' Decennial Economic Growth and Regu\" — names too little of headquarters",
+    "[14:51:03] image: dropped \"Figure 1 - Overall Rulemaking Steps and Process for Small Business Reg\" — names too little of headquarters",
+    "[14:51:05] commons \"Financial Regulatory Authority building\": 0 usable of 7",
+    "[14:51:08] commons \"Financial Regulatory Authority\": 8 usable of 24",
+    "[14:51:08] image: dropped \"PalmTX.jpg\" — names too little of building",
+    "[14:51:08] image: dropped \"Nuclear Security in Big Cities (02pea0836) (45273403325).jpg\" — names too little of building",
+    "[14:51:08] image: dropped \"Nuclear Security in Big Cities (02815261) (45385525485).jpg\" — names too little of building",
+    "[14:51:08] image: dropped \"Senator Vance Calls For Passage Of Bank Failure Prevention Act Amid Re\" — names too little of building",
+    "[14:51:08] image: dropped \"Financial Industry Regulatory Authority (FINRA) (48126619532).jpg\" — taken in United States, which the story does not name",
+    "[14:51:08] image: dropped \"Finanssivalvonta-2016.jpg\" — taken in Finland, which the story does not name",
+    "[14:51:08] image: dropped \"Finanssivalvonta.jpg\" — taken in Finland, which the story does not name",
+    "[14:51:11] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3045",
+    "[14:51:11] image: vision rejected all candidates (fallback pass) (Photo 1 is the German regulator BaFin in Bonn, a building in another country for an Egyptian story. Photo 2 is a chart, and photo 3 is an amateur flash close-up of a coin. All three are rejected, so the story runs better without a picture.)",
+    "[14:51:11] image: last pass, a neutral illustration: pound notes counting | bank branch | pound banknotes",
+    "[14:51:12] commons \"pound notes counting\": 0 usable of 0",
+    "[14:51:13] commons \"pound notes\": 10 usable of 24",
+    "[14:51:13] image: dropped \"Kingdom of England Exchequer note-5 Pounds (1697).jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[14:51:13] image: dropped \"One Egyptian pound note.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[14:51:13] image: dropped \"Wipena Pound(GN05452).jpg\" — dated 1915, an archival picture",
+    "[14:51:13] image: dropped \"100 Pound White Note 1938 Peppiatt obverse.jpg\" — dated 1938, an archival picture",
+    "[14:51:13] image: dropped \"AUS-11b-Commonwealth Bank of Australia-One Pound (1923).jpg\" — dated 1923, an archival picture",
+    "[14:51:13] image: dropped \"OCE-4a-Oceania-Japanese Occupation-One Pound ND (1942).jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[14:51:13] image: dropped \"Wilpena Pound Flinders Ranges(GN07714).jpg\" — dated 1925, an archival picture",
+    "[14:51:14] pexels \"pound notes counting\": 8 usable",
+    "[14:51:33] openverse \"pound notes counting\": The operation was aborted due to timeout",
+    "[14:51:34] commons \"bank branch\": 19 usable of 24",
+    "[14:51:35] pexels \"bank branch\": 8 usable",
+    "[14:51:54] openverse \"bank branch\": The operation was aborted due to timeout",
+    "[14:51:54] image: dropped \"Man at a currency exchange office window, showing currency rates insid\" — names too little of bank, branch",
+    "[14:51:59] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4118",
+    "[14:51:59] image: vision rejected all candidates (fallback pass) (None fits. Every bank-branch photo shows a prominent foreign bank sign (Wells Fargo, Standard Bank, Bank of India, Chase, Bank of Montreal), which points to another country and reads as a logo. The British pound notes are the wrong currency and are banknotes as the subject. No candidate conveys Egyptian insurance funds' savings going into government debt and deposits.)",
+    "[14:52:03] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3402",
+    "[14:52:03] image: vision rejected all candidates (fallback pass) (Images 1 and 2 show British pound notes and coins: the wrong currency for an Egyptian story, and banknotes as the subject are not allowed for a pension-fund assets story. Images 3 to 6 show a PNC Bank branch with visible PNC signage, US street signs and traffic lights, which points to a foreign place and brand. None of them fits.)",
+    "[14:52:03] published \"أصول صناديق التأمين الخاصة في مصر ترتفع 21.7% إلى 238.2 مليار جنيه\" -> egypt-private-insurance-funds-assets-rise-2025-4adb5c"
+  ]
+}

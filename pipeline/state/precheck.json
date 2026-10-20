@@ -3987,6 +3987,62 @@
           "noted": []
         }
       ]
+    },
+    "us-orders-agencies-remove-deepseek-systems-b7af11": {
+      "at": "2026-10-20T14:40:01.069Z",
+      "title": "واشنطن تأمر الوكالات الفيدرالية المدنية بإزالة «ديب سيك» الصينية من أنظمتها",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 28,
+            "checked": 28,
+            "supported": 25,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 3,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "egypt-private-insurance-funds-assets-rise-2025-4adb5c": {
+      "at": "2026-10-20T14:52:03.039Z",
+      "title": "أصول صناديق التأمين الخاصة في مصر ترتفع 21.7% إلى 238.2 مليار جنيه",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 29,
+            "checked": 29,
+            "supported": 26,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
