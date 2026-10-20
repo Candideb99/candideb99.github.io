@@ -1,78 +1,6 @@
 {
   "version": 1,
   "items": {
-    "fc7fd11e5046146f": {
-      "at": "2026-09-29T16:12:08.212Z",
-      "decision": "published",
-      "slug": "income-convergence-developers-return-migration-74a754",
-      "title": "Catch-Up and Come Home: Economic Convergence and Return Migration"
-    },
-    "d2612f2fb5a0579a": {
-      "at": "2026-09-29T18:17:14.949Z",
-      "decision": "published",
-      "slug": "saudi-east-west-pipeline-flows-resume-411ecd",
-      "title": "Tankers Are Loading Oil Again From a Vital Saudi Pipeline"
-    },
-    "e4553f4ca6324b0e": {
-      "at": "2026-09-29T18:17:14.949Z",
-      "decision": "published",
-      "slug": "saudi-east-west-pipeline-flows-resume-411ecd",
-      "title": "Saudi Arabia restores oil flows through East-West pipeline"
-    },
-    "6cd43aef4e2d0663": {
-      "at": "2026-09-29T18:17:14.949Z",
-      "decision": "published",
-      "slug": "saudi-east-west-pipeline-flows-resume-411ecd",
-      "title": "Oil prices fall as crude exports recover at Saudi Arabia's Red Sea ports"
-    },
-    "d31c31cfab57b7e9": {
-      "at": "2026-09-29T18:20:47.842Z",
-      "decision": "published",
-      "slug": "us-consumer-confidence-lowest-since-2014-c8f654",
-      "title": "ثقة الأميركيين بالاقتصاد تهبط لأدنى مستوى منذ 2014"
-    },
-    "d101173a7a9d6ef9": {
-      "at": "2026-09-29T18:20:47.842Z",
-      "decision": "published",
-      "slug": "us-consumer-confidence-lowest-since-2014-c8f654",
-      "title": "Consumer optimism slides to lowest since 2014 as fears escalate over rising prices and jobs"
-    },
-    "7366f1419382f81e": {
-      "at": "2026-09-29T18:20:47.842Z",
-      "decision": "published",
-      "slug": "us-consumer-confidence-lowest-since-2014-c8f654",
-      "title": "تراجع ثقة المستهلكين الأمريكيين اقتصادياً إلى أدنى مستوى منذ 12 عاماً"
-    },
-    "86e9f4cb5dd073b4": {
-      "at": "2026-09-29T18:20:47.842Z",
-      "decision": "published",
-      "slug": "us-consumer-confidence-lowest-since-2014-c8f654",
-      "title": "التضخم ينهك الجيوب.. الأمريكي يصرخ «وضعي سيئ»"
-    },
-    "56c2429968388ea3": {
-      "at": "2026-09-29T18:27:23.707Z",
-      "decision": "published",
-      "slug": "egypt-offers-mining-incentives-equity-partnerships-42b042",
-      "title": "More than 100 companies vie for Egypt’s mining rights"
-    },
-    "d52d80ea2ecdb7fc": {
-      "at": "2026-09-29T18:27:23.707Z",
-      "decision": "published",
-      "slug": "egypt-offers-mining-incentives-equity-partnerships-42b042",
-      "title": "Government ready to offer incentives and equity partnerships to accelerate mining projects, Egypt PM says"
-    },
-    "cb23115dfa927a2c": {
-      "at": "2026-09-29T18:27:23.708Z",
-      "decision": "published",
-      "slug": "egypt-offers-mining-incentives-equity-partnerships-42b042",
-      "title": "رئيس الوزراء يعقد مائدة مستديرة حول تطوير قطاع التعدين وتعزيز ثقة المستثمرين"
-    },
-    "68fc361e921f3a45": {
-      "at": "2026-09-29T18:27:23.708Z",
-      "decision": "published",
-      "slug": "egypt-offers-mining-incentives-equity-partnerships-42b042",
-      "title": "انطلاق منتدى مصر للتعدين بمشاركة مستثمرين دوليين"
-    },
     "8954c21f2406a8f1": {
       "at": "2026-09-29T22:35:09.608Z",
       "decision": "published",
@@ -1248,6 +1176,42 @@
       "decision": "published",
       "slug": "fed-note-bonds-safe-haven-inflation-2abcf8",
       "title": "FEDS Note: Government Bonds’ Safe-Haven Property and Inflationary Pressures"
+    },
+    "c9d917e969e67c7e": {
+      "at": "2026-10-20T19:34:25.364Z",
+      "decision": "published",
+      "slug": "egypt-clears-6-1-billion-oil-gas-arrears-b3bdd9",
+      "title": "Egypt targets regional gas integration and reveals $6.1 bn debt clearance at Mediterranean Offshore Conference"
+    },
+    "7f865526c085b740": {
+      "at": "2026-10-20T19:34:25.364Z",
+      "decision": "published",
+      "slug": "egypt-clears-6-1-billion-oil-gas-arrears-b3bdd9",
+      "title": "وزير البترول: تكامل البنية التحتية المصرية يفتح آفاقًا لتنمية غاز شرق المتوسط"
+    },
+    "44261addf6572bb0": {
+      "at": "2026-10-20T19:34:25.364Z",
+      "decision": "published",
+      "slug": "egypt-clears-6-1-billion-oil-gas-arrears-b3bdd9",
+      "title": "وزير البترول: وضع 591 بئرًا على خريطة الإنتاج وتحقيق 113 كشفًا جديدًا خلال عامين"
+    },
+    "319cac76d45a83b3": {
+      "at": "2026-10-20T19:34:26.061Z",
+      "decision": "rejected",
+      "title": "As Macron visits Gulf, can France forge its own energy-for-security future?",
+      "strikes": 1
+    },
+    "cf353aa934f51052": {
+      "at": "2026-10-20T19:34:26.061Z",
+      "decision": "rejected",
+      "title": "Macron lines up more Gulf diesel as France battles soaring fuel prices",
+      "strikes": 1
+    },
+    "e119a1c90be11c88": {
+      "at": "2026-10-20T19:38:55.823Z",
+      "decision": "rejected",
+      "title": "Erzeugerpreise im September 2026: +6,7 % gegenüber September 2025",
+      "strikes": 1
     }
   }
 }
