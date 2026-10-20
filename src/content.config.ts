@@ -47,9 +47,12 @@ const chart = z
     title: z.string().nullable().optional(),
     unit: z.string().default(""),
     source: z.string().default(""),
-    categories: z.array(z.string()).min(3).max(12),
+    // Two categories when there are two series or more (actual against expected, 2026-10-20), three otherwise: the
+    // newsroom's own rule (normalizeChart in pipeline/lib/write.mjs).
+    categories: z.array(z.string()).min(2).max(12),
     series: z.array(z.object({ name: z.string(), values: z.array(z.number()) })).min(1).max(3),
   })
+  .refine((c) => c.categories.length >= (c.series.length >= 2 ? 2 : 3), { message: "a chart needs three categories, or two with two series" })
   .nullable()
   .optional();
 
