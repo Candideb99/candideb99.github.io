@@ -252,7 +252,7 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
         });
         document.querySelectorAll(".chart").forEach(function (chart) {
           if (!below(chart)) return;
-          chart.querySelectorAll(".chart__mark rect").forEach(function (bar, i) { bar.style.transitionDelay = Math.min(i, 8) * 55 + "ms"; });
+          chart.querySelectorAll(".chart__mark rect, .hbars__bar").forEach(function (bar, i) { bar.style.transitionDelay = Math.min(i, 8) * 55 + "ms"; });
           wait(chart, 0);
         });
       })();

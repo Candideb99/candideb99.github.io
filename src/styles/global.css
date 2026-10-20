@@ -81,7 +81,9 @@
   /* The market board's rise and fall: green is the house ink, the red is functional and appears nowhere else. */
   --up: #0f5c3c;
   --down: #a3271f;
-  --chart-1: #0f5c3c;
+  /* The chart series pass the dataviz validator on paper (2026-10-20): the house green a step lighter, same hue,
+     since at #0f5c3c (OKLCH L 0.42, C 0.09) a bar read as a dark block and fell outside the lightness band. */
+  --chart-1: #0c764d;
   --chart-2: #2f4f8f;
   --chart-3: #b07a12;
 
@@ -144,9 +146,10 @@
     --green-deep: #8ad3b0;
     --up: #67c096;
     --down: #e2796d;
-    --chart-1: #5dbb8d;
-    --chart-2: #7f9ee6;
-    --chart-3: #dcaa3d;
+    /* Dark: each a step darker, into the band the validator sets on the dark surface (all three were above it). */
+    --chart-1: #3aa273;
+    --chart-2: #6c8acf;
+    --chart-3: #ba8b1a;
   }
 }
 
@@ -431,17 +434,24 @@ bdi.latin--short, bdi.latin .nb { white-space: nowrap; }
 .has-motion .chart.will-settle .chart__line { stroke-dashoffset: 1; }
 .has-motion .chart.is-settling .chart__line { transition: stroke-dashoffset 1.2s var(--ease-out); }
 .has-motion .chart.will-settle .chart__mark circle,
-.has-motion .chart.will-settle .chart__value { opacity: 0; }
+.has-motion .chart.will-settle .chart__value,
+.has-motion .chart.will-settle .hbars__value { opacity: 0; }
 .has-motion .chart.is-settling .chart__mark circle,
-.has-motion .chart.is-settling .chart__value { transition: opacity 0.5s var(--ease-out) 0.55s; }
+.has-motion .chart.is-settling .chart__value,
+.has-motion .chart.is-settling .hbars__value { transition: opacity 0.5s var(--ease-out) 0.55s; }
+/* A horizontal bar grows from its start, or from zero when it falls below it (the site reads right to left). */
+.has-motion .hbars__bar { transform-origin: 100% 50%; }
+.has-motion .hbars__bar.is-neg { transform-origin: 0 50%; }
+.has-motion .chart.will-settle .hbars__bar { transform: scaleX(0); }
+.has-motion .chart.is-settling .hbars__bar { transition: transform 0.8s var(--ease-out); }
 /* A story's photograph leans in a little under the pointer (chosen with the demo, 2026-09-27). */
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .card .photo img { transition: transform 0.6s var(--ease-out); }
   .card:hover .photo img:not(.will-settle):not(.is-settling) { transform: scale(1.03); }
 }
 @media print {
-  .has-motion .will-settle, .has-motion .will-settle .chart__mark circle, .has-motion .will-settle .chart__value { opacity: 1 !important; }
-  .has-motion .photo img.will-settle, .has-motion .will-settle .chart__mark rect { transform: none !important; }
+  .has-motion .will-settle, .has-motion .will-settle .chart__mark circle, .has-motion .will-settle .chart__value, .has-motion .will-settle .hbars__value { opacity: 1 !important; }
+  .has-motion .photo img.will-settle, .has-motion .will-settle .chart__mark rect, .has-motion .will-settle .hbars__bar { transform: none !important; }
   .has-motion .will-settle .chart__line { stroke-dashoffset: 0 !important; }
 }
 
