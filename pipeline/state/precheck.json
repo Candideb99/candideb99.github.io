@@ -3819,6 +3819,90 @@
           "noted": []
         }
       ]
+    },
+    "iraq-oil-exports-top-3-4-million-bpd-728346": {
+      "at": "2026-10-20T00:34:57.862Z",
+      "title": "صادرات نفط العراق تتجاوز 3.4 مليون برميل يومياً في أكتوبر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 25,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "turkey-capital-markets-chief-resigns-funds-crisis-3bdd4c": {
+      "at": "2026-10-20T00:45:39.725Z",
+      "title": "رئيس هيئة أسواق رأس المال التركية يستقيل وسط أزمة صناديق الاستثمار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 8,
+            "checked": 8,
+            "supported": 8,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "uae-amends-e-invoicing-tax-group-exclusion-d644d9": {
+      "at": "2026-10-20T00:55:11.654Z",
+      "title": "الإمارات تستثني المعاملات داخل المجموعات الضريبية من الفوترة الإلكترونية لعامين",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 22,
+            "checked": 22,
+            "supported": 19,
+            "weak": 0,
+            "noEvidence": 3,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

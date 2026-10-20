@@ -1,66 +1,6 @@
 {
   "version": 1,
   "items": {
-    "1b5c1023c6858dcc": {
-      "at": "2026-09-28T21:24:34.711Z",
-      "decision": "published",
-      "slug": "qatarenergy-extends-lng-force-majeure-november-4266a4",
-      "title": "Qatar Extends LNG Force Majeure as Hormuz Crisis Drags On"
-    },
-    "4188f570a1e95eb8": {
-      "at": "2026-09-28T21:24:34.711Z",
-      "decision": "published",
-      "slug": "qatarenergy-extends-lng-force-majeure-november-4266a4",
-      "title": "Qatar extends LNG force majeure as Hormuz disruption threatens winter supply"
-    },
-    "d761890a5da7d367": {
-      "at": "2026-09-28T21:28:44.847Z",
-      "decision": "published",
-      "slug": "us-10-year-treasury-yield-rises-02d373",
-      "title": "Bond yields move relentlessly higher, as Wall Street wonders how much more tech stocks can take"
-    },
-    "0d79f6ecb9ef7f52": {
-      "at": "2026-09-28T21:28:44.847Z",
-      "decision": "published",
-      "slug": "us-10-year-treasury-yield-rises-02d373",
-      "title": "Treasury yields rise as march to multiyear highs continues"
-    },
-    "06b228f4e2bad6e0": {
-      "at": "2026-09-28T21:28:44.847Z",
-      "decision": "published",
-      "slug": "us-10-year-treasury-yield-rises-02d373",
-      "title": "السندات تهدد عرش الأسهم"
-    },
-    "6bd582193d788021": {
-      "at": "2026-09-28T21:32:35.595Z",
-      "decision": "published",
-      "slug": "rua-mrcb-king-salman-gate-makkah-deal-de80e7",
-      "title": "تطوير مشروع بـ5.6 مليار دولار ضمن «بوابة الملك سلمان» بمكة المكرمة"
-    },
-    "614cd4bc1d60e470": {
-      "at": "2026-09-28T21:32:35.595Z",
-      "decision": "published",
-      "slug": "rua-mrcb-king-salman-gate-makkah-deal-de80e7",
-      "title": "RUA, MRCB explore $5.5bn mixed-use development at King Salman Gate in Makkah"
-    },
-    "e079a872ee79560b": {
-      "at": "2026-09-28T21:41:37.326Z",
-      "decision": "published",
-      "slug": "turkish-stocks-extend-losses-fund-liquidation-10b52d",
-      "title": "تركيا: أزمة صناديق الاستثمار تتفاعل... وتوقيفات جديدة في إطار التحقيقات"
-    },
-    "85fac76e28910e51": {
-      "at": "2026-09-28T21:41:37.326Z",
-      "decision": "published",
-      "slug": "turkish-stocks-extend-losses-fund-liquidation-10b52d",
-      "title": "Turkish stocks extend losses as fund crisis deepens"
-    },
-    "e69ab6b23d4b0c5f": {
-      "at": "2026-09-28T21:41:37.326Z",
-      "decision": "published",
-      "slug": "turkish-stocks-extend-losses-fund-liquidation-10b52d",
-      "title": "Turkey lifts asset freezes in fund probe as ruling-party deputy chair quits amid share trading allegations"
-    },
     "3fa1cec903f94012": {
       "at": "2026-09-29T01:15:36.089Z",
       "decision": "published",
@@ -1290,6 +1230,42 @@
       "decision": "published",
       "slug": "qatar-defence-production-plant-regional-partnership-be26cb",
       "title": "Qatar to seek regional and international partners in defence production push"
+    },
+    "02296a291a194913": {
+      "at": "2026-10-20T00:34:57.867Z",
+      "decision": "published",
+      "slug": "iraq-oil-exports-top-3-4-million-bpd-728346",
+      "title": "العراق يرفع صادرات النفط إلى 3.4 مليون برميل يومياً"
+    },
+    "f9ec15f0903ad68e": {
+      "at": "2026-10-20T00:34:57.867Z",
+      "decision": "published",
+      "slug": "iraq-oil-exports-top-3-4-million-bpd-728346",
+      "title": "Iraq's October Oil Exports Top 3.4 Million Bpd, Nearing Pre-War Levels"
+    },
+    "57302cccad08bc31": {
+      "at": "2026-10-20T00:45:39.732Z",
+      "decision": "published",
+      "slug": "turkey-capital-markets-chief-resigns-funds-crisis-3bdd4c",
+      "title": "استقالة رئيس هيئة أسواق المال التركية و«تقاعد» نائب وزير المالية وسط أزمة الصناديق"
+    },
+    "54e72465014b1085": {
+      "at": "2026-10-20T00:45:39.732Z",
+      "decision": "published",
+      "slug": "turkey-capital-markets-chief-resigns-funds-crisis-3bdd4c",
+      "title": "رئيس هيئة سوق المال التركية يستقيل وسط «أزمة الصناديق»"
+    },
+    "95d9c48af58592ec": {
+      "at": "2026-10-20T00:55:11.658Z",
+      "decision": "published",
+      "slug": "uae-amends-e-invoicing-tax-group-exclusion-d644d9",
+      "title": "UAE amends electronic invoicing regulations to ease burden on businesses"
+    },
+    "a39b7c30ed0fdedf": {
+      "at": "2026-10-20T00:55:11.658Z",
+      "decision": "published",
+      "slug": "uae-amends-e-invoicing-tax-group-exclusion-d644d9",
+      "title": "UAE amends e-invoicing regulations as implementation deadline draws closer"
     }
   }
 }
