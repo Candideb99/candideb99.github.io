@@ -1,0 +1,68 @@
+{
+  "mode": "explainer",
+  "startedAt": "2026-10-20T10:23:39.516Z",
+  "durationSec": 236,
+  "published": 1,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "نسبة تغطية الاكتتاب وكيف تُخصَّص الأسهم بين المكتتبين",
+      "section": "explainers",
+      "outcome": "published",
+      "slug": "ipo-subscription-coverage-ratio-share-allocation-a1cab3",
+      "title": "ماذا تعني نسبة تغطية الاكتتاب حين يفوق الطلب المعروض؟",
+      "score": 9,
+      "image": "photo"
+    }
+  ],
+  "llm": {
+    "calls": 11,
+    "failures": 0,
+    "promptTokens": 103912,
+    "completionTokens": 24843,
+    "cacheReadTokens": 25015,
+    "costUsd": 1.133,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 11
+    }
+  },
+  "log": [
+    "[10:23:39] newsroom start mode=explainer limit=4 dry-run=false",
+    "[10:23:50] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=11021",
+    "[10:23:50] explainer topic: نسبة تغطية الاكتتاب وكيف تُخصَّص الأسهم بين المكتتبين (IPO subscription coverage ratio (oversubscription) and share allocation)",
+    "[10:24:51] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=60095",
+    "[10:24:54] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=2698",
+    "[10:24:54] data chart: none fits this piece",
+    "[10:25:43] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=48988",
+    "[10:25:43] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,lede,whyItMatters,body] rejected=[]",
+    "[10:25:43] desk \"ماذا تعني نسبة تغطية الاكتتاب وكيف تُوزَّع الأسهم حين يفوق الطلب المعروض؟\": rewrote subtitle, lede, whyItMatters, body",
+    "[10:25:43] checks explainer \"ماذا تعني نسبة تغطية الاكتتاب وكيف تُوزَّع الأسهم حين يفوق الطلب المعروض؟\": 671 words, 0 issues, 0 warnings",
+    "[10:26:05] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=22337",
+    "[10:26:05] critic explainer: revise score=9 issues=3",
+    "[10:26:05]   · خانة «لماذا يهمّ» تكرر نتائج المتن ولا تضيف استنتاجاً. فعبارة «نسبة التغطية وقاعدة التخصيص معاً تحددان حصة المكتتب والمبلغ الذي يُرد إليه» تعيد العنوان الفرعي و",
+    "[10:26:05]   · تسقط الخانة قيداً يضعه المتن، فتبدو أقوى منه. المتن يقول إن الطلب غير الملبّى «عامل واحد من عوامل السعر»، والخانة تكتفي بقولها «قد ينتقل إلى السوق في الجلسة الأ",
+    "[10:26:05]   · عبارة «وتفسران أخبار الإقبال على الطروح الأولية» عامة لا تقول للقارئ ما الذي تفسّره تحديداً. تُحذف، أو تُستبدل بها الصلة المحددة الواردة في المتن: أن التغطية ال",
+    "[10:26:37] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=32238",
+    "[10:26:55] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=17310",
+    "[10:26:55] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,lede,whyItMatters] rejected=[]",
+    "[10:26:55] desk \"ماذا تعني نسبة تغطية الاكتتاب حين يفوق الطلب المعروض؟\": rewrote title, subtitle, lede, whyItMatters",
+    "[10:27:16] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=21238",
+    "[10:27:16] critic (second pass) explainer: revise score=9",
+    "[10:27:19] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3511",
+    "[10:27:19] image: the picture should say: When investors ask for far more shares than a listing offers, each gets only a slice of what they ordered.",
+    "[10:27:19] image: tier 3, the writer's own subjects: stock exchange trading floor | traders stock screens | stock exchange bell ceremony",
+    "[10:27:20] commons \"stock exchange trading floor 2026\": 2 usable of 3",
+    "[10:27:20] commons \"stock exchange trading floor\": 8 usable of 12",
+    "[10:27:20] image: dropped \"President Ronald Reagan During a Trip to New York and a Visit to The N\" — dated 1985, an archival picture",
+    "[10:27:20] image: dropped \"Secretary Rubio visits NYSE (55542207624).jpg\" — shows rubio, marco, not the story's people",
+    "[10:27:21] commons \"traders stock screens 2026\": 0 usable of 0",
+    "[10:27:21] commons \"traders stock screens\": 0 usable of 0",
+    "[10:27:22] commons \"traders stock\": 4 usable of 12",
+    "[10:27:22] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[10:27:22] image: dropped \"Toronto Stock Exchange 1956.jpg\" — dated 1956, an archival picture",
+    "[10:27:29] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5764",
+    "[10:27:35] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6094",
+    "[10:27:35] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Frankfurt Stock Exchange (Ank Kumar) 02.jpg\": A clear, real trading-floor scene of traders at their screens illustrates a global explainer on IPO subscription ratios,",
+    "[10:27:35] published explainer \"ماذا تعني نسبة تغطية الاكتتاب حين يفوق الطلب المعروض؟\" -> ipo-subscription-coverage-ratio-share-allocation-a1cab3"
+  ]
+}
