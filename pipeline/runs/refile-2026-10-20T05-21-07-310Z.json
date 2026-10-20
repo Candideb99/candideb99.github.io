@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-20T05:21:07.310Z",
+  "dryRun": false,
+  "moves": [
+    {
+      "slug": "saudi-renewables-tourism-growth-2026-93f77e",
+      "from": "economy",
+      "to": "energy",
+      "reason": "its subject is renewable power capacity, energy itself; under economy it ran with the label «الاستثمار» (the owner's check of the labels, 2026-10-20)"
+    }
+  ]
+}

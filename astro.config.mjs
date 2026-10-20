@@ -15,7 +15,9 @@ export default defineConfig({
   // One page per subject (2026-09-27): the old address of a tag that is now a sub-topic's subject, a section's name or
   // a second spelling forwards to its one page (lib/tag-map.mjs); a tiny page each, not a copy of the site.
   // The defence section was folded into companies (the defence industry) and economy on 2026-10-19, at the owner's choice.
-  redirects: { ...tagRedirects(storyTags()), "/defense/": "/topics/companies/defense/", "/analysis/desk/defense/": "/analysis/" },
+  // The energy sub-topic «الكهرباء والطاقة النظيفة» became «الطاقة النظيفة» on 2026-10-20 (the owner: an electricity
+  // category is weird).
+  redirects: { ...tagRedirects(storyTags()), "/defense/": "/topics/companies/defense/", "/analysis/desk/defense/": "/analysis/", "/topics/energy/power/": "/topics/energy/clean/" },
   trailingSlash: "always",
   compressHTML: true,
   devToolbar: { enabled: false },

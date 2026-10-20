@@ -148,6 +148,20 @@ export function subTopicOf(article: Article): Topic | undefined {
   return best;
 }
 
+/**
+ * The label above a story's headline (the kicker, on its page and on its cards): its sub-topic in its short name, linking
+ * to the sub-topic's page, or none. Since 2026-10-20 (the owner, on «الكهرباء» over a story about gas-fed power plants:
+ * "looks for other weird categories you used and try to fix this issue of using unusual categories"), never one of the
+ * writers' tags: the tag the headline named first had put 144 different labels over about 260 news stories, «القمة»،
+ * «الأمن»، «الحرب»، «توقعات 2026»، «أوباماكير» among them and one subject under four («النفط»، «أسعار النفط»، «برنت»،
+ * «خام برنت»). The desks print a category of their own list above a headline, as Reuters and Asharq do; a running story
+ * keeps its file in ملفات نتابعها and among the tag chips.
+ */
+export function kickerOf(article: Article): { label: string; href: string } | undefined {
+  const topic = subTopicOf(article);
+  return topic ? { label: topic.short ?? topic.name, href: topicHref(article.data.section, topic.id) } : undefined;
+}
+
 /** The sub-topics of a section with their story counts, in the taxonomy's order. */
 export function topicCounts(articles: Article[], section: string): { topic: Topic; count: number }[] {
   return topicsOf(section).map((topic) => ({ topic, count: topicArticles(articles, section, topic).length }));

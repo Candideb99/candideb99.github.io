@@ -8,9 +8,9 @@ import StoryCard from "@components/StoryCard.astro";
 import Chart from "@components/Chart.astro";
 import DataTable from "@components/DataTable.astro";
 import Share from "@components/Share.astro";
-import { getArticles, related, articleHref, topicOf, stripStories } from "@lib/articles";
+import { getArticles, related, articleHref, stripStories } from "@lib/articles";
 import { getSection, sectionHref, kindLabel, moreLabel, allLabel } from "@lib/sections";
-import { subTopicOf, topicHref, tagHref } from "@lib/topics";
+import { subTopicOf, topicHref, tagHref, kickerOf } from "@lib/topics";
 import { analysisLabel, analysisDesk, ANALYSIS_DESKS } from "@lib/analysis";
 import { formatDate, formatHijri, formatTime, readingLabel, excerpt } from "@lib/format";
 import { isolateNumbers } from "@lib/bidi";
@@ -31,7 +31,8 @@ const isHub = d.kind === "explainer" || d.kind === "analysis" || d.kind === "pap
 const description = d.subtitle || excerpt(d.lede, 160);
 const ogImage = d.image?.url ?? `/og/${d.slug}.png`;
 const more = related(article, all, 4);
-const topic = topicOf(article);
+// Over a news story's headline, its sub-topic (kickerOf), never a writer's tag (2026-10-20).
+const kicker = isHub ? undefined : kickerOf(article);
 // The story's tags as links, each to its one page (lib/topics.ts); two tags of one subject («النفط», «أسعار النفط») would
 // be two chips to the same page, so only the first of them is printed.
 const pills = d.tags.map((tag) => ({ tag, href: tagHref(tag) })).filter((p, i, all) => all.findIndex((q) => q.href === p.href) === i);
@@ -57,7 +58,7 @@ const sources = d.sources.map((s) => {
 const sub = isHub ? undefined : subTopicOf(article);
 // The kicker above the headline and the trail under it never name the same page (2026-10-19: «الصناعات الدفاعية» twice
 // on Qatar's defence plant); the trail then stops at the section. The breadcrumb data keeps the full trail.
-const subInTrail = sub && !(topic && tagHref(topic) === topicHref(d.section, sub.id)) ? sub : undefined;
+const subInTrail = sub && !(kicker && kicker.href === topicHref(d.section, sub.id)) ? sub : undefined;
 const sectionLabel = analysisLabel(article, all) ?? kindLabel(d.kind, d.section);
 // A piece of the paper's own (an analysis, the week's review, an explainer, a paper reading) is named by its kind over
 // its headline, on a page head's 3px ink rule, where a news story carries its subject: an analysis had been told from
@@ -115,7 +116,7 @@ const jsonLd = [articleLd, breadcrumbLd];
       {kindHead ? (
         <p class="article__kind" data-pagefind-ignore><a href={kindHead.href}>{kindHead.label}</a></p>
       ) : (
-        topic && <span class="kicker" data-pagefind-ignore><a href={tagHref(topic)}>{topic}</a></span>
+        kicker && <span class="kicker" data-pagefind-ignore><a href={kicker.href}>{kicker.label}</a></span>
       )}
       {/* The headline outweighs the body in search, and the dek comes next (2026-09-24: «التضخم في مصر» ranked a US
           story above «التضخم في مصر يتباطأ إلى 12.7%»). */}
