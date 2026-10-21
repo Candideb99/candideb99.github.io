@@ -745,6 +745,50 @@
         "classes": [],
         "programmatic": 2
       }
+    },
+    {
+      "at": "2026-10-21T00:08:08.212Z",
+      "slug": "tesla-spacex-committees-study-possible-merger-9effc6",
+      "checker": "4c54099299.2",
+      "lessons": "v32",
+      "lessonsHash": "5c629d81ea",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 33,
+        "notFound": 1,
+        "checked": 36,
+        "words": 542,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 33,
+        "notFound": 1,
+        "checked": 36,
+        "words": 518,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 33,
+        "notFound": 1,
+        "checked": 36,
+        "words": 518,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      }
     }
   ]
 }

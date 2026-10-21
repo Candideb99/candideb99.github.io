@@ -1,0 +1,47 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-20T23:56:36.594Z",
+  "durationSec": 83,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "morocco-deficit-ceiling-food-inflation-2027-13a5ef",
+      "title": "الحكومة المغربية تتوقع بلوغ العجز سقفه البالغ 3% في 2026",
+      "kind": "analysis",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 43,
+        "checked": 43,
+        "supported": 32,
+        "weak": 5,
+        "noEvidence": 0,
+        "notFound": 6,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 12662,
+    "completionTokens": 10876,
+    "cacheReadTokens": 0,
+    "costUsd": 0.3188,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[23:56:37] second look: 1 to read now (1 published pieces not yet read; 78 read clean before publication and left out of the audit sample)",
+    "[23:57:59] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=82314",
+    "[23:57:59] morocco-deficit-ceiling-food-inflation-2027-13a5ef: 43 of 43 sentences checked · 32 supported · 6 without a source · 0 confirmed error(s)"
+  ]
+}

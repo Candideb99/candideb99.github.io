@@ -4105,6 +4105,90 @@
           ]
         }
       ]
+    },
+    "tesla-spacex-committees-study-possible-merger-9effc6": {
+      "at": "2026-10-21T00:08:08.206Z",
+      "title": "ماسك: مجلسا تسلا وسبيس إكس يشكّلان لجنتين لدراسة اندماج محتمل",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 37,
+            "checked": 37,
+            "supported": 34,
+            "weak": 1,
+            "noEvidence": 2,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "eni-starts-meleiha-phase-2-egypt-7f5b4c": {
+      "at": "2026-10-21T00:28:34.156Z",
+      "title": "إيني تشغّل المرحلة الثانية من مليحة بطاقة معالجة 100 مليون قدم مكعبة يومياً",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 21,
+            "checked": 21,
+            "supported": 18,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "egypt-digital-exports-target-2030-b8fb6e": {
+      "at": "2026-10-21T00:37:39.821Z",
+      "title": "مصر تستهدف رفع صادراتها الرقمية إلى 12 مليار دولار سنوياً بحلول 2030",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 27,
+            "checked": 27,
+            "supported": 24,
+            "weak": 1,
+            "noEvidence": 2,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

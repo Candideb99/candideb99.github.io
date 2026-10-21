@@ -1,42 +1,6 @@
 {
   "version": 1,
   "items": {
-    "8954c21f2406a8f1": {
-      "at": "2026-09-29T22:35:09.608Z",
-      "decision": "published",
-      "slug": "us-offers-40-million-barrels-spr-595d78",
-      "title": "U.S. Taps Strategic Oil Reserve Again as Diesel Tops $6"
-    },
-    "79b63ed01be4f679": {
-      "at": "2026-09-29T22:35:09.608Z",
-      "decision": "published",
-      "slug": "us-offers-40-million-barrels-spr-595d78",
-      "title": "من الاحتياطي الاستراتيجي.. أمريكا تُقرض شركات الطاقة 40 مليون برميل نفط"
-    },
-    "bfb6b261b9c9a8d6": {
-      "at": "2026-09-29T22:38:34.828Z",
-      "decision": "published",
-      "slug": "raytheon-amraam-multiyear-contract-pentagon-e2fa85",
-      "title": "Raytheon nets potential $20.7 billion AMRAAM deal"
-    },
-    "8103147828d721af": {
-      "at": "2026-09-29T22:38:34.828Z",
-      "decision": "published",
-      "slug": "raytheon-amraam-multiyear-contract-pentagon-e2fa85",
-      "title": "Raytheon wins $20.7bn Department of War contract for AMRAAM missiles"
-    },
-    "a727a9c1e006f900": {
-      "at": "2026-09-29T22:43:30.506Z",
-      "decision": "published",
-      "slug": "iraq-stock-exchange-joins-adx-tabadul-7fd321",
-      "title": "Iraq Stock Exchange goes live on ADX Tabadul, linking $21.7 billion market to $1 trillion network"
-    },
-    "08fb1327c00c4989": {
-      "at": "2026-09-29T22:43:30.506Z",
-      "decision": "published",
-      "slug": "iraq-stock-exchange-joins-adx-tabadul-7fd321",
-      "title": "\"سوق العراق للأوراق المالية\" ينضم رسمياً إلى منصة \"تبادُل\""
-    },
     "c80769e27abb7572": {
       "at": "2026-09-30T05:53:48.239Z",
       "decision": "published",
@@ -1212,6 +1176,60 @@
       "decision": "rejected",
       "title": "Erzeugerpreise im September 2026: +6,7 % gegenüber September 2025",
       "strikes": 1
+    },
+    "9dabda8095fb9cae": {
+      "at": "2026-10-21T00:08:08.211Z",
+      "decision": "published",
+      "slug": "tesla-spacex-committees-study-possible-merger-9effc6",
+      "title": "Elon Musk says Tesla-SpaceX merger being considered"
+    },
+    "954ba61da6d3c686": {
+      "at": "2026-10-21T00:08:08.211Z",
+      "decision": "published",
+      "slug": "tesla-spacex-committees-study-possible-merger-9effc6",
+      "title": "SpaceX and Tesla boards form special committees to review merger"
+    },
+    "de1e69419e81a6c5": {
+      "at": "2026-10-21T00:08:08.211Z",
+      "decision": "published",
+      "slug": "tesla-spacex-committees-study-possible-merger-9effc6",
+      "title": "Tesla’s stock rises as Elon Musk drops new clues about a possible SpaceX merger"
+    },
+    "589388b0b1425476": {
+      "at": "2026-10-21T00:08:08.211Z",
+      "decision": "published",
+      "slug": "tesla-spacex-committees-study-possible-merger-9effc6",
+      "title": "Tesla and SpaceX are discussing a possible merger, Musk says"
+    },
+    "e0b9ac9a40040899": {
+      "at": "2026-10-21T00:28:34.160Z",
+      "decision": "published",
+      "slug": "eni-starts-meleiha-phase-2-egypt-7f5b4c",
+      "title": "Eni project boosts Egypt’s local gas production"
+    },
+    "e4fe6381fbc8a4f2": {
+      "at": "2026-10-21T00:28:34.160Z",
+      "decision": "published",
+      "slug": "eni-starts-meleiha-phase-2-egypt-7f5b4c",
+      "title": "Eni launches second phase of Meleiha gas project in Egypt’s Western Desert"
+    },
+    "eac60371c285785e": {
+      "at": "2026-10-21T00:37:39.826Z",
+      "decision": "published",
+      "slug": "egypt-digital-exports-target-2030-b8fb6e",
+      "title": "وزير الاتصالات: نستهدف الوصول بالصادرات الرقمية إلى 12 مليار دولار بحلول 2030"
+    },
+    "97d3d3ab1fc9fa7e": {
+      "at": "2026-10-21T00:37:39.826Z",
+      "decision": "published",
+      "slug": "egypt-digital-exports-target-2030-b8fb6e",
+      "title": "وزير الاتصالات: التوسع في شبكات الجيل الخامس وإنشاء مراكز البيانات العملاقة"
+    },
+    "396665a7dfc4952b": {
+      "at": "2026-10-21T00:37:39.826Z",
+      "decision": "published",
+      "slug": "egypt-digital-exports-target-2030-b8fb6e",
+      "title": "وزير الاتصالات يستعرض استراتيجية “مصر الرقمية” ومستهدفاتها حتى 2030"
     }
   }
 }
