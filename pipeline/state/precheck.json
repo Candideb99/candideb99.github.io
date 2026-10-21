@@ -4522,6 +4522,114 @@
           "noted": []
         }
       ]
+    },
+    "meta-25-billion-new-mexico-cambridge-analytica-d301c7": {
+      "at": "2026-10-21T21:57:27.667Z",
+      "title": "قاضٍ في نيو مكسيكو يلزم «ميتا» بدفع 25 مليار دولار عن مخالفات الخصوصية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v33",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 37,
+            "checked": 37,
+            "supported": 34,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 32,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وفي أغسطس سوّت دعاوى أخرى متصلة بها ضمن تسوية بنحو 17 مليار دولار مع ائتلاف من المدعين العامين للولايات، في قضية فيدرالية منفصلة تتعلق بسلامة الأطفال والصحة النفسية.",
+              "quote": "The fine is the largest to date against Meta, which has either been fined or agreed to settle several other lawsuits this year, including an $18bn deal with California over child safety.",
+              "source": "BBC News",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "php-flaws-force-websites-offline-worldwide-cac721": {
+      "at": "2026-10-21T22:08:04.987Z",
+      "title": "حكومات تغلق مواقعها احترازياً بعد كشف ثغرتين في لغة «بي إتش بي»",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v33",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 40,
+            "checked": 40,
+            "supported": 38,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 26,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ووصفت الثغرتين بأنهما أخطر ما اكتشفه الذكاء الاصطناعي حتى الآن، وعدّت OpenAI الاكتشاف من أشد المشكلات الأمنية أثراً في السنوات الأخيرة.",
+              "quote": "And Wiz said it’s “among the most severe vulnerabilities discovered … in software history.”",
+              "source": "The Verge",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "saudi-crude-exports-five-month-high-august-8b70f1": {
+      "at": "2026-10-21T22:15:27.507Z",
+      "title": "صادرات السعودية من الخام ترتفع 7.9% إلى أعلى مستوى منذ مارس",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v33",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 21,
+            "weak": 0,
+            "noEvidence": 3,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

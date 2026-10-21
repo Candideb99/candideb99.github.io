@@ -1,0 +1,493 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-21T21:49:00.062Z",
+  "durationSec": 1897,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "محكمة أمريكية تلزم «ميتا» بدفع 25 مليار دولار في قضية كامبريدج أناليتيكا",
+      "section": "companies",
+      "importance": 8,
+      "sources": [
+        "https://www.aljazeera.com/news/2026/10/21/judge-orders-meta-to-pay-25bn-in-fines-for-facebook-privacy-violations",
+        "https://www.bbc.co.uk/news/articles/cqdr8zxrr3dxo",
+        "https://www.cnbc.com/2026/10/21/meta-new-mexico-cambridge-analytica-penalty.html",
+        "https://www.theverge.com/policy/1015782/meta-new-mexico-cambridge-analytica-penalty"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقرأ القارئ في العنوان والعنوان الفرعي والمقدمة ما تغيّر: قاضٍ فرض 25 مليار دولار بعد حكم المحلفين بوقوع أكثر من 43 مليون مخالفة. والفقرة الأولى توضح أن المبلغ مخفّض من 219.5 ملياراً، وأن الشركة تعتزم الاستئناف، فلا تناقض بين الأرقام.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يشرح التقرير آلية العقوبة (5 آلاف دولار لكل مخالفة) ويقارنها بغرامة لجنة التجارة الفيدرالية ويروي جذور كامبريدج أناليتيكا. لكنه يغفل قضية مارس في الولاية نفسها: 375 مليوناً ثم 567 مليوناً، أي الهزيمة الثانية في ستة أشهر (SOURCE 1، SOURCE 3). وصندوق «لجنة التجارة الفيدرالية» معروف ولا يحتاج إلى تعريف. أما «لماذا يهمّ» فيستند إلى مقدمات مثبتة: احتساب العقوبة لكل مخالفة، وعشرات ملايين المخالفات، وفائدة 15%، والاستئناف. ويستنتج منها أن قانون ولاية واحدة صار أداة مالية تفوق غرامة اتحادية، وأن الفائدة ترفع كلفة إطالة النزاع، ويقيّد الاستنتاج الثاني بشرط صريح هو «إذا ثبّت الاستئناف الحكم». وهذا استنتاج محدود ومقبول.",
+              "repair": "إضافة جملتين عن قضية مارس (375 مليون دولار ثم 567 مليوناً لصندوق الصحة النفسية للمراهقين) بوصفها الهزيمة الثانية في الولاية خلال ستة أشهر، من SOURCE 1 وSOURCE 3."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات مجمّعة حسب وظيفتها: الآلية، ثم تعليل القاضي، ثم الاتهامات، ثم المقارنة، ثم الحدّان، ثم الجذور، ثم ردود الفعل. والافتتاحيات متنوعة. لكن جملة «الغرامة هي أكبر عقوبة تُفرض على «ميتا» حتى الآن بسبب ممارساتها التجارية» تكرر العنوان الفرعي حرفياً، و«تلك المخالفات» في فقرة توريس بلا مرجع واضح. أما الصندوق فلا يعيد خاتمة المتن، بل يضيف قراءة لأثر احتساب العقوبة لكل مخالفة ولكلفة الفائدة.",
+              "repair": "فتح فقرة «الأكبر في سجل الشركة» بالمقارنة مع غرامة 2019 بدل تكرار العنوان الفرعي، وتوضيح مرجع «تلك المخالفات» في تصريح توريس."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «ويترك للقاضي تحديد المبلغ النهائي» تحوّل ما جرى في هذه القضية إلى حكم عام في القانون (SOURCE 3). وعبارة «لم يثبتوا» أقوى من قول المحامي إن المحلفين لم يخلصوا إلى ذلك (SOURCE 1). ويرد اتفاق 18 ملياراً مع كاليفورنيا (SOURCE 2) وتسوية أغسطس مع ائتلاف الولايات (SOURCE 3، نحو 17 ملياراً في قضية فيدرالية تخص سلامة الأطفال) كأنهما تسويتان منفصلتان. ويغيب أن الاستئناف قد يخفّض المبلغ النهائي (SOURCE 1).",
+              "repair": "«وكان على القاضي تحديد المبلغ النهائي»، و«لم يخلصوا إلى أن...»، وتوحيد وصف التسوية وفق SOURCE 3، وإضافة «وهو ما قد يخفّض المبلغ الذي ستدفعه في النهاية» بعد ذكر الاستئناف."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقول العنوان والعنوان الفرعي والمقدمة معاً ما تغيّر: عقوبة بـ25 مليار دولار تفرضها محكمة ولاية، وتتراكم عليها فائدة 15% سنوياً، بعد أن خلص المحلفون إلى أكثر من 43 مليون مخالفة. ويحفظ المتن القيد الحاسم، وهو أن الشركة تعتزم الاستئناف «وهو ما قد يخفّض المبلغ الذي ستدفعه في النهاية» (SOURCE 1)، فلا يُقدَّم المبلغ نهائياً.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يشرح التقرير الآلية: حد أقصى 5 آلاف دولار لكل مخالفة، وعقوبة محتسبة بـ219.5 مليار خُفّضت إلى 25 ملياراً (SOURCE 3). ويضع المبلغ بين حدّي الطرفين، 40 ملياراً و3.4 مليار (SOURCE 2)، ويقارنه بغرامة لجنة التجارة الفيدرالية عام 2019 (SOURCE 1). ويروي جذور «كامبريدج أناليتيكا» والتسويات السابقة وقضية مارس (SOURCE 1، SOURCE 3). أما صندوق «لماذا يهمّ» فينطلق من مقدمات مثبتة، هي احتساب العقوبة لكل مخالفة وعشرات ملايين المخالفات والفائدة والاستئناف، ويخلص إلى استنتاج محدود مقيّد بشرط تثبيت الحكم في الاستئناف، ولا يكرر خاتمة المتن.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "تتوالى الفقرات بحسب وظيفتها: الآلية وتخفيض المبلغ، ثم تعليل القاضي، ثم الاتهامات ونتائج المحلفين، ثم المقارنة والحدّان وسجل الولاية مع الشركة، ثم الجذور والتسويات، ثم ردّا توريس وماهوني والخطوة التالية. وتتنوع افتتاحيات الفقرات، ولا تقوم «وفي المقابل» إلا على تعارض حقيقي بين الموقفين.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام والتواريخ مطابقة للمصادر: 43 مليون مخالفة، و26 من 29 تصريحاً، و2010-2021، و375 مليوناً و567 مليوناً، و725 مليوناً عام 2022، ونحو 17 ملياراً في أغسطس. وتُنسب إلى محامي الولاية دعوى أن مليوني نسمة تضرروا بوصفها ادعاءً لا حقيقة، ويظل حديث نيكولسون في حدود «لم يخلصوا إلى». أما «خمسة أضعاف» فحساب دقيق (25 مقابل 5) لا يغيّر مضمون «far exceeds» في المصدر.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "يقضي القانون بعقوبة تصل إلى 5 آلاف دولار عن كل مخالفة، وخلص المحلفون إلى أكثر من 43 مليون مخالفة",
+          "source": 3
+        },
+        {
+          "fact": "الغرامة تفوق بكثير غرامة 5 مليارات دولار فرضتها لجنة التجارة الفيدرالية عام 2019",
+          "source": 1
+        },
+        {
+          "fact": "تُحتسب على العقوبة فائدة 15% سنوياً حتى سدادها كاملة",
+          "source": 3
+        },
+        {
+          "fact": "تعتزم «ميتا» استئناف الحكم",
+          "source": 3
+        }
+      ],
+      "slug": "meta-25-billion-new-mexico-cambridge-analytica-d301c7",
+      "title": "قاضٍ في نيو مكسيكو يلزم «ميتا» بدفع 25 مليار دولار عن مخالفات الخصوصية",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "ثغرتان حرجتان في لغة PHP تدفعان مواقع حول العالم إلى الإغلاق",
+      "section": "technology",
+      "importance": 7,
+      "sources": [
+        "https://www.bbc.co.uk/news/articles/cmly0lg3w5x2o",
+        "https://www.theguardian.com/technology/2026/oct/21/flaw-in-php-computer-language-leads-to-shutdown-of-websites-around-world",
+        "https://www.theverge.com/tech/1015906/php2shell-vulnerability-october-2026",
+        "https://techcrunch.com/2026/10/21/the-internet-is-having-a-very-bad-cybersecurity-day/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والاستهلال يقدّمان الإغلاق والتحديث تقديماً واضحاً. لكن عبارة «تحديثاً أمنياً يعالج الثغرتين» توحي بإصلاح شامل، والمصدران 1 و3 يحصرانه في أحدث الإصدارات. كذلك يسمّي العنوان اللغة «بي إتش بي» بينما يستخدم المتن PHP، وتركيب «تدفعان مواقع حكومية إلى الإغلاق» يجعل المواقع فاعلة، والحكومات هي التي أغلقتها.",
+              "repair": "إضافة قيد الإصدارات القديمة إلى الاستهلال، وتوحيد الاسم، وصياغة العنوان هكذا: «ثغرتان في لغة PHP تدفعان حكومات حول العالم إلى إغلاق مواقعها»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "خبراء المتن معرّفون بأدوارهم ومؤسساتهم: سميث من سوفوس مع نسبة تصريحاته إلى BBC، ووودوارد من جامعة سري، وكنيخت من كلاودفلير. لكن برنامج «باتش ذا بلانت» يرد باسمه بلا وظيفته (SOURCE 1). وفي «لماذا يهمّ» مقدمات موثقة: الاستغلال خلال ساعات، والهجمات المبكرة، وصعوبة حصر نسخ PHP. والاستدلال المبني عليها معقول ومحدود، غير أن جملته الثانية تعيد خلاصة وودوارد.",
+              "repair": "شرح وظيفة البرنامج عند أول ذكر له، واستبدال الجملة الثانية في الصندوق بقيد انقطاع الإصلاح عن الإصدارات 8.1 وما قبلها، وهو تحويل لكلفة الأمان إلى ترقية كاملة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الأقسام مرتبة وفق أسئلة القارئ: ما الذي أُغلق، ولماذا الآن (التسريب)، ومن اكتشف الثغرتين، وما خطورتهما، وما التحدي المقبل. لكن الفقرة الأولى تحشر بريطانيا بالفاء في سلسلة الحكومات الأوروبية. وعبارة «الباحث الذي عثر على الثغرة» تأتي بلا مرجع واضح. ويُختم المقال بقائمة تهديدات، مع أن المصادر تقدّم خطوة لاحقة واضحة: الترقية للإصدارات القديمة، ومراقبة تحديثات موردي البرمجيات وفق المركز الوطني البريطاني (SOURCE 1).",
+              "repair": "فصل جملة المجالس البريطانية، ونسبة رواية الباحث إلى «الغارديان»، وإدراج خطوة الترقية ومراقبة تحديثات الموردين ضمن قسم «مهمة تتجاوز تثبيت التحديث»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة لمصادرها: نسبة 69.3% منسوبة إلى W3Techs، و3.8 مليون موقع إلى فايروس توتال، ومدة «نحو 20 عاماً» منسوبة إلى ذا فيرج. لكن ثمة ثلاث نقاط دقة. أولاً، توقف موقع مجلس إدنبرة يُعرض كأنه ناتج عن الثغرة، وBBC تقول إن الصلة غير مؤكدة. ثانياً، عبارة «والهجمات بدأت بالفعل» تقدّم ملاحظة كلاودفلير حقيقةً عامة قبل أن تنسبها. ثالثاً، شرح «تنفيذ تعليمات برمجية عن بُعد… وتعديل المحتوى» هو صياغة ذا فيرج، والمسودة تنسبه كاملاً إلى مجموعة PHP.",
+              "repair": "إضافة تحفظ BBC بشأن إدنبرة، وصياغة جملة كلاودفلير هكذا: «وقالت كلاودفلير إنها ترصد ظهور هجمات مبكرة»، وقصر النسبة إلى مجموعة PHP على وصف «تنفيذ تعليمات برمجية عن بُعد دون مصادقة» مع تقديم الشرح شرحاً."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقول العنوان إن حكومات أغلقت مواقعها احترازياً، ويحدد الدِّك والاستهلال حدّ الإصلاح بقولهما «تحديثاً أمنياً يقتصر على أحدث إصدارات اللغة». ثم تشرح الفقرة الأولى أن مستخدمي PHP 8.1 وما قبلها عليهم الترقية لأن هذه الإصدارات لن تحصل على إصلاح رسمي (SOURCE 1، 3)، وأن الثغرتين قد تطالان كل الإصدارات منذ PHP 5 (CERT-EU، SOURCE 1). لم يعد في المسودة إيحاء بإصلاح شامل.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يشرح المقال سبب التوقيت، وهو التسريب الذي أجبر مؤسسة PHP على التعجيل بالإعلان. ويعرض قِدم الخلل منسوباً إلى ذا فيرج، ووظيفة برنامج «باتش ذا بلانت» عند أول ذكر له، ومعنى «تنفيذ تعليمات برمجية عن بُعد دون مصادقة» بلغة مفهومة. ويعرّف الخبراء بأدوارهم ومؤسساتهم: سميث من سوفوس في تصريحات أوردتها BBC، ووودوارد من جامعة سري، وكنيخت من كلاودفلير. وفي «لماذا يهمّ» مقدمات موثقة: الاستغلال خلال ساعات (Wiz)، والهجمات المبكرة (كلاودفلير)، وصعوبة حصر نسخ PHP (سميث)، وانقطاع الإصلاح عن الإصدارات القديمة (GoDaddy). ويبني الصندوق على هذه المقدمات استدلالاً محدوداً بشرطه: حجم الضرر رهن بسرعة الحصر، وثمن الأمان للإصدارات القديمة ترقية كاملة.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "تتبع الأقسام أسئلة القارئ بترتيب منطقي: ما الذي أُغلق وحدود الإصلاح، ثم لماذا الآن ومن اكتشف الثغرتين، ثم ما تتيحه الثغرتان وتحذيرات الأجهزة الرسمية، ثم التحدي المقبل وتقدير الخبراء للمخاطر. وتجمع كل فقرة وقائع متصلة بنقطة واحدة، مثل جمع تحذيري NSA والمركز البريطاني مع خطوة متابعة تحديثات الموردين. ولا يكرر الصندوق خلاصة المتن، بل يضيف قيد كلفة الترقية.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة لمصادرها: 69.3% منسوبة إلى W3Techs بمقامها الصحيح «المواقع المعروفة لغة برمجتها على جانب الخادم»، ونحو 3.8 مليون موقع بمنفذ مفتوح منسوبة إلى فايروس توتال، ونحو 20 عاماً منسوبة إلى ذا فيرج. وتحفظات المصادر محفوظة: عدم تأكيد مجلس إدنبرة صلة توقف موقعه بالثغرة، و«قد تطال» لدى CERT-EU، و«على الأرجح» لدى سميث، و«قد يعني» لدى وودوارد. ويفرّق المقال بين ادعاء OpenAI ورواية الباحث المنقولة عن «الغارديان».",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قالت ويز إن النماذج المتقدمة مكّنتها من تطوير أدوات استغلال فعالة وتكييفها عبر تطبيقات متعددة خلال ساعات",
+          "source": 1
+        },
+        {
+          "fact": "قال كبير مسؤولي التكنولوجيا في كلاودفلير إن الشركة ترصد ظهور هجمات مبكرة",
+          "source": 1
+        },
+        {
+          "fact": "قال دون سميث إن التحدي العاجل هو العثور على كل موضع تعمل فيه PHP لأنها قد تقبع تحت منتجات طرف ثالث دون أن تدركها المؤسسة",
+          "source": 1
+        },
+        {
+          "fact": "قالت GoDaddy إن المواقع العاملة بإصدار PHP 8.1 أو ما قبله يجب أن تترقى لأن هذه الإصدارات لم تعد مدعومة ولن يصدر لها إصلاح رسمي",
+          "source": 3
+        }
+      ],
+      "slug": "php-flaws-force-websites-offline-worldwide-cac721",
+      "title": "حكومات تغلق مواقعها احترازياً بعد كشف ثغرتين في لغة «بي إتش بي»",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "صادرات السعودية النفطية في أعلى مستوى منذ 5 أشهر مع إنتاج عند أدنى مستوى قياسي",
+      "section": "energy",
+      "importance": 7,
+      "sources": [
+        "https://aawsat.com/node/5332017",
+        "https://oilprice.com/Latest-Energy-News/World-News/Saudi-Crude-Exports-Hit-Five-Month-High-as-Production-Falls-to-Record-Low.html"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي والمقدمة تبين أن الصادرات ارتفعت إلى أعلى مستوى منذ مارس، بينما هبط الإنتاج إلى مستوى قياسي منخفض في الشهر نفسه. التقرير يذكر لاحقاً أن الصادرات بقيت دون مستوى مارس (4.974 مليون).",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يقدم التقرير المقارنة الشهرية وتراجع التكرير وارتفاع الحرق المباشر، ويشرح طبيعة بيانات جودي. ستاونوفو معرَّف بأنه محلل في يو بي إس، ويشرح أن التعافي جاء عبر موانئ الساحلين. «لماذا يهمّ» يستخلص استنتاجاً محدوداً من مقدمات موثقة: التعافي مرتبط بالمنافذ لا بالإنتاج، فاستمراره مشروط بسلامة منافذ البحر الأحمر والخليج. هذا قيد مفيد غير مكرر، والمصدر 1 خارج الموضوع ولم يُستخدم، وهذا صحيح.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "القسم الأخير «مخاطر على البنية النفطية» يسرد اعتراض المسيّرات ونفي الحوثيين والعمل من المنازل كسجل حوادث لا يخدم سؤال الصادرات، ويفتتحه بتزامن غير موثق «يتزامن تعافي الشحنات مع هجمات».",
+              "repair": "يُكتفى بخبر رويترز عن الهجمات التي عطّلت صادرات النفط، ويُربط بالاعتماد على موانئ الساحلين، وتُحذف التفاصيل الأخرى أو تُختصر."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "رقم كبلر 9.1 مليون برميل يومياً يشمل الخام والمكثفات ويقيس التحميلات الأسبوعية، وهو مقياس مختلف عن صادرات جودي الشهرية من الخام (4.451 مليون). عبارة «تدعم بيانات شركة كبلر هذا الاتجاه» قد توحي بقابلية المقارنة.",
+              "repair": "يُنص صراحة على أن رقم كبلر مقياس أسبوعي للتحميلات يشمل المكثفات ولا يقارَن مباشرة بأرقام جودي."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يبينان ما تغير: ارتفعت الصادرات نحو 7.9% إلى 4.451 مليون برميل يومياً، وهو أعلى مستوى منذ مارس. وتحمل المقدمة القيد الحاسم، وهو هبوط الإنتاج إلى مستوى قياسي منخفض بلغ 6.24 مليون. ويحمل العنوان الفرعي التفسير المنسوب إلى ستاونوفو.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "التفسير المتاح، وهو التصدير من موانئ الساحلين، موجود ومنسوب إلى «يو بي إس» وكبلر. لكن خبر تعطيل الصادرات بهجمات الحوثيين معزول في قسم مستقل ومختلط باعتراض مسيّرات فوق المدينة المنورة، بدل أن يوضع قرب قول ستاونوفو «رغم التوترات الإقليمية» الذي يفسره.",
+              "repair": "يُنقل خبر رويترز عن الهجمات التي عطّلت الصادرات إلى جوار فقرة ستاونوفو، ويُحذف الاعتراض والنفي أو يُختصران."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "التقرير ينتهي بنفي الحوثيين بدل أن ينتهي بمعنى يتصل بالصادرات. ومقارنة يوليو ومارس مفصولة بفقرة التكرير. وفقرة كبلر تبدأ بجملة إشارية عن المقاييس. أما مربع «لماذا يهمّ» فيبني استنتاجاً مشروطاً بـ«ما دام»: التعافي قائم على منافذ الساحلين لا على الإنتاج، فاستمراره رهن ببقائها عاملة. وهو استنتاج محدود ومقبول من مقدمات موجودة في المصدر 2.",
+              "repair": "تُجمع مقارنات الصادرات في فقرة واحدة، وتُحذف الجملة الإشارية في فقرة كبلر، ويُختم المتن بتوقع ستاونوفو استمرار التعافي في سبتمبر وأكتوبر أو بخبر التعطيل المرتبط به."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصدر 2: الصادرات 4.451 و4.125 و4.974 مليون، والإنتاج 6.24 و8.135 و6.560 مليون، والتكرير 2.297 و2.478 مليون بتراجع 181 ألفاً، والحرق المباشر 604,097 برميلاً بزيادة 43 ألفاً، وتحميلات كبلر 9.1 مليون. وقد أضيف التنبيه إلى أن رقم 9.1 مليون أسبوعي يشمل المكثفات ولا يقارَن بأرقام جودي الشهرية. والرسم البياني صحيح.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 6,
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "ارتفعت صادرات السعودية من الخام في أغسطس إلى 4.451 مليون برميل يومياً بينما هبط الإنتاج إلى مستوى قياسي منخفض بلغ 6.24 مليون برميل يومياً، وفق بيانات جودي",
+          "source": 2
+        },
+        {
+          "fact": "قال ستاونوفو من يو بي إس إن السعودية استعادت أحجام صادراتها عبر استغلال موانئها على الساحلين",
+          "source": 2
+        },
+        {
+          "fact": "عزت كبلر قفزة صادرات الخليج في سبتمبر إلى تحميل السعودية من البحر الأحمر والخليج معاً",
+          "source": 2
+        },
+        {
+          "fact": "أفادت رويترز بأن الحوثيين هاجموا مطار الرياض الدولي وأرامكو السعودية ما عطّل الرحلات وصادرات النفط",
+          "source": 2
+        }
+      ],
+      "slug": "saudi-crude-exports-five-month-high-august-8b70f1",
+      "title": "صادرات السعودية من الخام ترتفع 7.9% إلى أعلى مستوى منذ مارس",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "الإمارات وسنغافورة تطلقان مفاوضات اتفاقية شراكة اقتصادية شاملة",
+      "section": "economy",
+      "importance": 6,
+      "sources": [
+        "https://economymiddleeast.com/news/uae-president-singapore-prime-minister-discuss-expanding-bilateral-cooperation-in-key-sectors-launch-cepa-negotiations/",
+        "https://www.skynewsarabia.com/business/1899693-%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA-%D9%88%D8%B3%D9%86%D8%BA%D8%A7%D9%81%D9%88%D8%B1%D8%A9-%D8%AA%D8%A8%D8%AD%D8%AB%D8%A7%D9%86-%D8%A7%D9%84%D8%B4%D8%B1%D8%A7%D9%83%D8%A9-%D8%A7%D9%84%D8%AB%D9%86%D8%A7%D8%A6%D9%8A%D8%A9-%D9%88%D8%B3%D8%A8%D9%84-%D8%AA%D8%B7%D9%88%D9%8A%D8%B1%D9%87%D8%A7",
+        "https://economymiddleeast.com/news/uae-and-singapore-explore-ai-energy-and-advanced-technology-partnerships/",
+        "https://www.skynewsarabia.com/business/1899677-%D9%88%D9%88%D9%86%D8%BA-%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA-%D8%AA%D8%B9%D8%AF-%D9%88%D8%AC%D9%87%D8%A9-%D8%A7%D8%B3%D8%AA%D8%AB%D9%85%D8%A7%D8%B1%D9%8A%D8%A9-%D8%B1%D8%A6%D9%8A%D8%B3%D9%8A%D8%A9-%D9%84%D8%B3%D9%86%D8%BA%D8%A7%D9%81%D9%88%D8%B1%D8%A9"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يستخدم «تبدآن التفاوض» والمتن يصرّح بأن «الاتفاقية الجديدة ما زالت في مرحلة التفاوض»، فلا يوحي بإبرام الاتفاقية. ويفصل المتن بين الشراكة الشاملة القائمة منذ 2019 والاتفاقية الجديدة المقترحة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "المقدمة تضع رقم التجارة غير النفطية (نحو 6.5 مليار دولار، بزيادة 25%) قرب الخبر. الخلفية حاضرة: شراكة 2019. والدافع منسوب إلى وونغ: أمن الطاقة وتنويع سلاسل الإمداد في عالم مضطرب. صندوق «لماذا يهمّ» يقابل قاعدة التجارة غير النفطية بالصلة النفطية عبر أدنوك، ويعلّق أثر الاتفاقية على شرط إبرامها. مقدماته مسندة (المصدر 1 والمصدر 3) واستنتاجه محدود. جملته الثانية عامة نسبياً، لكنها مشروطة ولا تضيف حقيقة جديدة.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "القسم المعنون «الاستثمار في الاتجاهين» يخلط وصف وونغ للإمارات وجهة استثمارية وخطط تيماسك بعروض G42 والجامعة وإيدج، ولا يقدم استثماراً في الاتجاهين. ويختم التقرير بفقرة مؤتمر المياه منفصلة عن سياقها.",
+              "repair": "إعادة تسمية القسم بما يطابق مضمونه، ونقل فقرة العروض التقنية إلى قسم حوار الأعمال أو منحها عنواناً خاصاً، وضم مؤتمر المياه إلى أولوية التعاون في إدارة المياه والاستدامة (المصدر 1)."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«ولها حضور متنامٍ هناك» يحصر حضور أدنوك في التجارة والاستثمار والشحن داخل سنغافورة، والمصدر 3 لا يحدد المكان. بقية الأرقام والتواريخ مطابقة: 6.5 مليار دولار و25% لعام 2025، والاجتماع الرابع للجنة المشتركة، وديسمبر للمؤتمر، و2019 للشراكة، والأربعاء الموافق 21 أكتوبر.",
+              "repair": "حذف «هناك» واستبدال «التداول» بـ«تجارة النفط»."
+            }
+          }
+        }
+      ],
+      "outcome": "rejected after revision: المقدمة طويلة (56 كلمة)؛ اجعلها جملتين إلى ثلاث بأقل من 45 كلمة: الفعل، الفاعل، الرقم، السبب."
+    }
+  ],
+  "llm": {
+    "calls": 53,
+    "failures": 1,
+    "promptTokens": 782811,
+    "completionTokens": 215183,
+    "cacheReadTokens": 229034,
+    "costUsd": 8.7794,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 53
+    }
+  },
+  "log": [
+    "[21:56:53] image: dropped \"WhatsApp - 27476653873.jpg\" — names too little of app, smartphone",
+    "[21:56:53] image: dropped \"Commédie musicale et concert Reine Esther à Abidjan 126.jpg\" — names too little of app, smartphone",
+    "[21:56:53] image: dropped \"Bienvenidos a WhatsApp.jpg\" — names too little of app, smartphone",
+    "[21:56:53] image: dropped \"Corte de EE.UU. rechaza apelación de NSO Group en litigio contra Whats\" — a scan of a note's or a coin's face, not a photograph",
+    "[21:56:53] pexels \"Facebook app on smartphone\": 8 usable",
+    "[21:57:09] openverse \"Facebook app on smartphone\": 7 usable of 20",
+    "[21:57:09] image: dropped \"JUST SHOOT IT.\" — names too little of app, smartphone",
+    "[21:57:10] image: thumbnail HTTP 403 for https://live.staticflickr.com/2706/4329364198_c749f5e279_n.jpg",
+    "[21:57:10] image: thumbnail HTTP 403 for https://live.staticflickr.com/1877/30411910658_7648822863_n.jpg",
+    "[21:57:10] image: thumbnail HTTP 403 for https://live.staticflickr.com/1702/26207038352_0cb8afa98a_n.jpg",
+    "[21:57:10] image: thumbnail HTTP 403 for https://live.staticflickr.com/933/30141407018_e0f96b9245_n.jpg",
+    "[21:57:14] image: thumbnail HTTP 403 for https://live.staticflickr.com/1777/43918116722_2dbdac4c97_n.jpg",
+    "[21:57:14] image: thumbnail HTTP 403 for https://live.staticflickr.com/1797/41208509170_1cb44f49d8_n.jpg",
+    "[21:57:21] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6566",
+    "[21:57:27] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5889",
+    "[21:57:27] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Apple applications apps - Credit to https://homegets.com/\": A real photograph of a smartphone showing the Facebook app, with Meta's Instagram, WhatsApp and Messenger beside it, is ",
+    "[21:57:27] published \"قاضٍ في نيو مكسيكو يلزم «ميتا» بدفع 25 مليار دولار عن مخالفات الخصوصية\" -> meta-25-billion-new-mexico-cambridge-analytica-d301c7",
+    "[21:58:33] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=64659",
+    "[21:58:33] desk notes: 30 facts (? 4, news 8, reaction 9, driver 2, background 5, numbers 2), 0 quotes (claude-cli/claude-opus-5-5)",
+    "[21:59:54] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=81415",
+    "[22:00:30] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=35743",
+    "[22:00:51] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=21360",
+    "[22:00:51] desk: body accepted on the second try",
+    "[22:00:51] desk model=claude-cli/claude-opus-5-5 applied=[whyItMatters,body] rejected=[]",
+    "[22:00:51] desk \"ثغرتان في لغة «بي إتش بي» تدفعان مواقع حكومية حول العالم إلى الإغلاق\": rewrote whyItMatters, body",
+    "[22:02:09] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=78210",
+    "[22:02:09] critic \"ثغرتان في لغة «بي إتش بي» تدفعان مواقع حكومية حول العالم إلى الإغلاق\": revise score=7 issues=10",
+    "[22:02:09]   · ينقص التقرير: عنصر «ما الذي يأتي لاحقاً» وحدود الإصلاح. أصدرت مؤسسة PHP التحديث لأحدث الإصدارات فقط، ودُعي مستخدمو PHP 8.1 أو ما قبلها إلى الترقية إلى إصدار أحد",
+    "[22:02:09]   · ينقص التقرير: وظيفة برنامج «باتش ذا بلانت» (Patch the Planet). يذكره المسودة باسمه فقط في «وكانت كاليف ومؤسسة PHP ضمن برنامج «باتش ذا بلانت» الذي أطلقته OpenAI»",
+    "[22:02:09]   · دقة وبناء: «وحجبت حكومات مواقع بلجيكية وفرنسية وألمانية مؤقتاً لترقيع الثغرة، فتوقفت في فرنسا…، وفي بريطانيا مواقع مجالس إدنبرة وبريستول وأكسفورد المحلية». الفا",
+    "[22:02:09]   · ترجمة حرفية: عبارة «من أشد المشكلات الأمنية أثراً في الذاكرة القريبة» نقلٌ حرفي لـ«in recent memory». البديل: «من أشد المشكلات الأمنية أثراً منذ سنوات» أو «في ا",
+    "[22:03:05] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: why_basis needs one to four reported premises with source numbers",
+    "[22:04:01] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=2 ms=52765",
+    "[22:04:40] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=38687",
+    "[22:04:40] desk model=claude-cli/claude-opus-5-5 applied=[whyItMatters,body] rejected=[]",
+    "[22:04:40] desk \"ثغرتان في لغة PHP تدفعان حكومات حول العالم إلى إغلاق مواقعها\": rewrote whyItMatters, body",
+    "[22:04:40] last desk pass for 1 fault(s): العنوان يحتوي كلمات لاتينية (PHP). اكتب العنوان بالعربية كام",
+    "[22:05:14] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=34844",
+    "[22:05:14] desk model=claude-cli/claude-opus-5-5 applied=[title] rejected=[]",
+    "[22:05:14] desk \"حكومات تغلق مواقعها احترازياً بعد كشف ثغرتين في لغة «بي إتش بي»\": rewrote title",
+    "[22:05:14] last desk pass: clean",
+    "[22:06:10] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=55895",
+    "[22:06:10] critic (second pass) \"حكومات تغلق مواقعها احترازياً بعد كشف ثغرتين في لغة «بي إتش بي»\": publish score=9 issues=0",
+    "[22:07:11] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=60742",
+    "[22:07:11] precheck \"حكومات تغلق مواقعها احترازياً بعد كشف ثغرتين في لغة «بي إتش بي»\": clean",
+    "[22:07:17] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6003",
+    "[22:07:17] image: the picture should say: A decades-old flaw found by AI is forcing governments to pull websites offline while servers everywhere stay exposed.",
+    "[22:07:26] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=8131",
+    "[22:07:26] image: the source's photograph (The Guardian) shows A smartphone displaying the php.net notice of the PHP 8.5.12 security release, held in front of a monitor showing the PH; searching PHP website on smartphone | PHP logo on screen | PHP source code on monitor | web server room racks",
+    "[22:07:26] image: tier 2, like the sources' own photograph: PHP website on smartphone | PHP logo on screen | PHP source code on monitor | web server room racks",
+    "[22:07:26] commons \"PHP website on smartphone\": 1 usable of 3",
+    "[22:07:26] pexels \"PHP website on smartphone\": 8 usable",
+    "[22:07:31] openverse \"PHP website on smartphone\": 0 usable of 0",
+    "[22:07:31] image: dropped \"Focused view of programming code displayed on a laptop, ideal for tech\" — names too little of website, smartphone",
+    "[22:07:31] image: dropped \"Close view of computer screen displaying HTML code with an authenticat\" — names too little of website, smartphone",
+    "[22:07:32] commons \"PHP logo on screen\": 3 usable of 20",
+    "[22:07:32] image: dropped \"Japanese folding screen (c.1878), by Giuseppe De Nittis.jpg\" — dated 1878, an archival picture",
+    "[22:07:32] image: dropped \"The Day the Earth Smiled - PIA17172.jpg\" — names too little of logo, screen",
+    "[22:07:32] pexels \"PHP logo on screen\": 8 usable",
+    "[22:07:35] openverse \"PHP logo on screen\": 0 usable of 0",
+    "[22:07:35] image: dropped \"A teenager focused on coding software on a desktop monitor in a home o\" — names too little of logo, screen",
+    "[22:07:40] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4048",
+    "[22:07:40] image: vision rejected all candidates (None matches the sources' subject (a phone showing the php.net security notice). Photos 1, 2, 5 and 6 are phone screenshots of unrelated sites (Pexels, a Polish e-commerce shop), and several are amateur shots on a table or blurred. Photos 3 and 4 show code on a screen: generic, screenshot-like close-ups that do not show the security release or the shutdowns. Better to search further.)",
+    "[22:07:48] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7580",
+    "[22:07:48] image: vision rejected all candidates (None matches the sources' photo of a phone showing the php.net security notice. 1 is a Polish e-commerce ad on a phone, unrelated. 2-4 are generic screen shots of code (C#, JavaScript, XML), not PHP and not news photos. 5 does show PHP code, but it is a staged stock scene with Russian text on screen, pointing to a country the story does not mention. 6 is NASA imagery of Earth from orbit, irrelevant.)",
+    "[22:07:48] image: tier 3, the writer's own subjects: PHP logo | server room | data center",
+    "[22:07:48] commons \"PHP logo 2026\": 2 usable of 12",
+    "[22:07:49] commons \"PHP logo\": 0 usable of 12",
+    "[22:07:49] image: dropped \"Walk of fame, dolly parton.JPG\" — names too little of logo",
+    "[22:07:49] image: dropped \"24S HR DollyParton&Crew 10.jpg\" — names too little of logo",
+    "[22:07:49] commons \"server room 2026\": 9 usable of 10",
+    "[22:07:49] commons \"server room\": 9 usable of 12",
+    "[22:07:49] image: dropped \"MSRT West and partner forces strengthen maritime interoperability duri\" — a warship or weapon, and the story is not about the military",
+    "[22:07:49] image: dropped \"U S Coast Guard PSU 301, partner forces build maritime security readin\" — a warship or weapon, and the story is not about the military",
+    "[22:07:49] image: dropped \"MSRT West and partner forces strengthen maritime interoperability duri\" — a warship or weapon, and the story is not about the military",
+    "[22:07:49] image: dropped \"Pride of the Pack- SrA Lowen Lara (9758187).jpg\" — a warship or weapon, and the story is not about the military",
+    "[22:07:49] image: dropped \"PDC server room.jpg\" — taken in Sweden, which the story does not name",
+    "[22:07:57] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7053",
+    "[22:08:04] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7455",
+    "[22:08:04] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Centaur server room (2293424530).jpg\": An anonymous server room full of machines reads at a glance as the web-hosting infrastructure behind a global PHP vulner",
+    "[22:08:04] published \"حكومات تغلق مواقعها احترازياً بعد كشف ثغرتين في لغة «بي إتش بي»\" -> php-flaws-force-websites-offline-worldwide-cac721",
+    "[22:08:32] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=27090",
+    "[22:08:32] desk notes: 21 facts (? 3, news 3, numbers 5, reaction 1, next 2, background 6, driver 1), 0 quotes (claude-cli/claude-opus-5-5)",
+    "[22:09:45] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=72694",
+    "[22:10:08] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=23184",
+    "[22:10:08] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,whyItMatters,body] rejected=[]",
+    "[22:10:08] desk \"صادرات السعودية من الخام ترتفع 7.9% إلى أعلى مستوى منذ مارس\": rewrote subtitle, whyItMatters, body",
+    "[22:10:50] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=41756",
+    "[22:10:50] critic \"صادرات السعودية من الخام ترتفع 7.9% إلى أعلى مستوى منذ مارس\": revise score=8 issues=6",
+    "[22:10:50]   · الخاتمة تتحول إلى سجل حوادث منفصل عن الحدث الاقتصادي: «وقال التحالف بقيادة السعودية الأربعاء إنه اعترض أربع طائرات مسيّرة... ونفى الحوثيون... وأبلغت جهات حكومية",
+    "[22:10:50]   · «يتزامن تعافي الشحنات مع هجمات تطال منشآت سعودية» تقرر تزامناً زمنياً لا يحدده المصدر. المصدر 2 لا يؤرخ هجمات الحوثيين على المطار وأرامكو، والمؤرخ فقط اعتراض ال",
+    "[22:10:50]   · العنوان الفرعي للقسم «مخاطر على البنية النفطية» أوسع من محتواه، فالقسم يضم مطار الرياض واعتراض المسيّرات والعمل من المنازل. الإصلاح: «مخاطر على منافذ التصدير» ب",
+    "[22:10:50]   · رقم كبلر «9.1 مليون برميل يومياً» يأتي بعد رقم جودي 4.451 مليون دون تنبيه إلى أنه مقياس مختلف: تحميلات أسبوعية للخام والمكثفات وفق كبلر، لا صادرات شهرية من الخا",
+    "[22:11:29] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=39533",
+    "[22:11:58] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=28444",
+    "[22:11:58] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,body] rejected=[]",
+    "[22:11:58] desk \"صادرات السعودية من الخام ترتفع 7.9% إلى أعلى مستوى منذ مارس\": rewrote subtitle, body",
+    "[22:12:50] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=51977",
+    "[22:12:50] critic (second pass) \"صادرات السعودية من الخام ترتفع 7.9% إلى أعلى مستوى منذ مارس\": revise score=8 issues=6",
+    "[22:13:27] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=37556",
+    "[22:13:53] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=25394",
+    "[22:13:53] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[22:13:53] desk \"صادرات السعودية من الخام ترتفع 7.9% إلى أعلى مستوى منذ مارس\": rewrote body",
+    "[22:13:53] mended \"صادرات السعودية من الخام ترتفع 7.9% إلى أعلى مستوى منذ مارس\": the second pass's 6 finding(s) sent back once more",
+    "[22:14:31] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=37870",
+    "[22:14:31] precheck \"صادرات السعودية من الخام ترتفع 7.9% إلى أعلى مستوى منذ مارس\": clean",
+    "[22:14:38] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7728",
+    "[22:14:38] image: the picture should say: Saudi Arabia keeps crude flowing to buyers by loading tankers from ports on both its coasts, even as output falls.",
+    "[22:14:38] image: tier 1, the story's own place (Ras Tanura, Yanbu, Red Sea): Ras Tanura | Yanbu oil terminal | Ras Tanura oil tanker",
+    "[22:14:39] commons \"Ras Tanura\": 9 usable of 24",
+    "[22:14:39] image: dropped \"Ras Tanura refinary 01.jpg\" — dated 1949, an archival picture",
+    "[22:14:39] image: dropped \"Ras Tanura Oil Burn Off-1959.jpg\" — dated 1959, an archival picture",
+    "[22:14:39] pexels \"Ras Tanura\": 8 usable",
+    "[22:14:53] openverse \"Ras Tanura\": 9 usable of 10",
+    "[22:14:53] image: dropped \"Beautiful canal amid residential area with palm trees in Ras Al-Khaima\" — taken in United Arab Emirates, which the story does not name",
+    "[22:14:53] image: dropped \"Serene view of a red lighthouse and rocky shore on Chuburná Beach, Yuc\" — taken in Mexico, which the story does not name",
+    "[22:14:53] image: 11 file(s) dropped for naming none of Ras Tanura, Yanbu, Red Sea",
+    "[22:14:53] image: thumbnail HTTP 403 for https://live.staticflickr.com/448/18088875274_724d2d83e7_n.jpg",
+    "[22:14:57] image: thumbnail HTTP 403 for https://live.staticflickr.com/453/18557256195_cfa27240f5_n.jpg",
+    "[22:15:00] image: thumbnail HTTP 403 for https://live.staticflickr.com/3751/9123857748_3384204138_n.jpg",
+    "[22:15:01] image: thumbnail HTTP 403 for https://live.staticflickr.com/7109/13717554883_20a21b1c9e_n.jpg",
+    "[22:15:09] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7870",
+    "[22:15:16] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7502",
+    "[22:15:16] image: second check (claude-cli/claude-opus-5-5) RECAPTION \"Tanker 'UACC Ras Tanura' IMO 9425318\": The frame clearly shows a crude tanker at sea, the story's own sector, but the caption names the vessel 'UACC Ras Tanura",
+    "[22:15:21] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4531",
+    "[22:15:27] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5998",
+    "[22:15:27] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Tanker 'UACC Ras Tanura' IMO 9425318\": A tanker at sea with a tug is the sector's own object; 'Ras Tanura' in the file name is the ship's name, not where it wa",
+    "[22:15:27] published \"صادرات السعودية من الخام ترتفع 7.9% إلى أعلى مستوى منذ مارس\" -> saudi-crude-exports-five-month-high-august-8b70f1",
+    "[22:16:16] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=45708",
+    "[22:16:16] desk notes: 28 facts (? 2, news 13, numbers 1, next 3, remark 2, background 2, driver 2, reaction 3), 2 quotes (claude-cli/claude-opus-5-5)",
+    "[22:17:18] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=62003",
+    "[22:17:48] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=29670",
+    "[22:17:48] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,lede,whyItMatters,body] rejected=[]",
+    "[22:17:48] desk \"الإمارات وسنغافورة تبدآن التفاوض على اتفاقية شراكة اقتصادية شاملة\": rewrote subtitle, lede, whyItMatters, body",
+    "[22:18:43] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=55687",
+    "[22:18:43] critic \"الإمارات وسنغافورة تبدآن التفاوض على اتفاقية شراكة اقتصادية شاملة\": revise score=8 issues=8",
+    "[22:18:43]   · تحديد غير مسند: «ولها حضور متنامٍ هناك في التداول والاستثمار والشحن». المصدر 3 يقول إن لأدنوك «expanding presence in trading, investment and shipping» ولا يحدد ",
+    "[22:18:43]   · ترجمة حرفية: «التداول» مقابل trading في سياق النفط أقرب إلى لغة البورصة، والمقصود تجارة الطاقة. البديل: «في تجارة النفط والاستثمار والشحن».",
+    "[22:18:43]   · عنوان فرعي لا يحمله مضمون فقرته: «## الاستثمار في الاتجاهين». تحت هذا العنوان ترد فقرات عن وصف وونغ للإمارات بأنها وجهة استثمارية لسنغافورة، وعن خطط تيماسك لفتح",
+    "[22:18:43]   · خاتمة معلقة: «وتناول الزعيمان مؤتمر الأمم المتحدة للمياه 2026 الذي تستضيفه الإمارات في ديسمبر...» جاءت فقرة منفصلة بعد التعاون الخليجي الآسيوي، بلا صلة بما قبله",
+    "[22:19:12] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=28272",
+    "[22:19:58] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=46135",
+    "[22:19:58] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[lede:numbers changed (2024)]",
+    "[22:19:58] desk \"الإمارات وسنغافورة تبدآن التفاوض على اتفاقية شراكة اقتصادية شاملة\": rewrote body; refused lede (numbers changed (2024))",
+    "[22:19:58] last desk pass for 1 fault(s): المقدمة طويلة (56 كلمة)؛ اجعلها جملتين إلى ثلاث بأقل من 45 ك",
+    "[22:20:37] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=38638",
+    "[22:20:37] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[lede:numbers changed (2024)]",
+    "[22:20:37] desk \"الإمارات وسنغافورة تبدآن التفاوض على اتفاقية شراكة اقتصادية شاملة\": rewrote body; refused lede (numbers changed (2024))",
+    "[22:20:37] last desk pass: still 1 fault(s)",
+    "[22:20:37] reject \"الإمارات وسنغافورة تبدآن التفاوض على اتفاقية شراكة اقتصادية شاملة\" after revision: المقدمة طويلة (56 كلمة)؛ اجعلها جملتين إلى ثلاث بأقل من 45 كلمة: الفعل، الفاعل، الرقم، السبب."
+  ]
+}

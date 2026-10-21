@@ -11518,6 +11518,46 @@
         }
       ],
       "outcome": "clean"
+    },
+    "france-secures-gulf-diesel-supplies-a5bb1f": {
+      "at": "2026-10-21T21:47:51.301Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "checker": "4c54099299",
+      "publishedAt": "2026-10-21T17:49:05.919Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 36,
+        "checked": 36,
+        "supported": 35,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 1,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "listed",
+          "class": "other",
+          "field": "body",
+          "sentence": "والتقى ماكرون في الرياض ولي العهد الأمير محمد بن سلمان، واتفق الجانبان على التشاور بشأن توسيع التعاون الأمني ومشاريع بنية تحتية تتيح تجاوز مضيق هرمز المحاصر.",
+          "quote": "Macron met Saudi Crown Prince Mohammed bin Salman in the Saudi capital, and the two discussed regional and international developments, as well as coordinating efforts to strengthen security and stability, the official Saudi Press Agency (SPA) reported on Wednesday.",
+          "source": "Al Jazeera English",
+          "correction": "According to SPA, the two discussed regional and international developments and coordinating efforts to strengthen security and stability; the source reports no agreement and no infrastructure projects to bypass Hormuz."
+        }
+      ],
+      "notFound": [],
+      "weak": [],
+      "outcome": "listed"
     }
   }
 }

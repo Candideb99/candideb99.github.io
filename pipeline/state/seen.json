@@ -1,60 +1,6 @@
 {
   "version": 1,
   "items": {
-    "8e07960016c7062b": {
-      "at": "2026-09-30T20:17:44.479Z",
-      "decision": "published",
-      "slug": "saudi-arabia-2027-pre-budget-spending-deficit-66fbbd",
-      "title": "السعودية ترصد 371 مليار دولار للإنفاق في موازنة 2027"
-    },
-    "39c2e08aaad5ab94": {
-      "at": "2026-09-30T20:17:44.479Z",
-      "decision": "published",
-      "slug": "saudi-arabia-2027-pre-budget-spending-deficit-66fbbd",
-      "title": "السعودية تتوقع إنفاق 371 مليار دولار عام 2027"
-    },
-    "510e30a1d78f24c6": {
-      "at": "2026-09-30T20:17:44.479Z",
-      "decision": "published",
-      "slug": "saudi-arabia-2027-pre-budget-spending-deficit-66fbbd",
-      "title": "Saudi Arabia projects 2027 budget deficit at 3.6% of GDP"
-    },
-    "38dce9c5a55a8bd9": {
-      "at": "2026-09-30T20:24:20.154Z",
-      "decision": "published",
-      "slug": "saudi-fdi-net-inflows-fall-second-quarter-8344e5",
-      "title": "Saudi foreign investment drops during Iran war"
-    },
-    "a9e8a0c43e49b088": {
-      "at": "2026-09-30T20:24:20.154Z",
-      "decision": "published",
-      "slug": "saudi-fdi-net-inflows-fall-second-quarter-8344e5",
-      "title": "Saudi FDI net inflows reach $5.1 billion in Q2, lifting H1 total to $11.1 billion as Vision 2030 investment drive continues"
-    },
-    "7ff0531fcef42d03": {
-      "at": "2026-09-30T20:29:48.046Z",
-      "decision": "published",
-      "slug": "trump-ai-firms-voluntary-safety-accord-5315ea",
-      "title": "How does Trump’s White House AI accord work?"
-    },
-    "b3707029996ac405": {
-      "at": "2026-09-30T20:29:48.046Z",
-      "decision": "published",
-      "slug": "trump-ai-firms-voluntary-safety-accord-5315ea",
-      "title": "Here’s what AI leaders are saying about Trump’s new safety plan"
-    },
-    "a907c50a143f5cc8": {
-      "at": "2026-09-30T20:29:48.046Z",
-      "decision": "published",
-      "slug": "trump-ai-firms-voluntary-safety-accord-5315ea",
-      "title": "Trump, 6 AI leaders sign voluntary safety accord with four layers of controls and external audits"
-    },
-    "0bbffa145260d4c0": {
-      "at": "2026-09-30T20:29:48.046Z",
-      "decision": "published",
-      "slug": "trump-ai-firms-voluntary-safety-accord-5315ea",
-      "title": "Trump says he and tech leaders signed AI agreement that is 'morally binding'"
-    },
     "40aea18b109af545": {
       "at": "2026-10-01T00:47:39.538Z",
       "decision": "published",
@@ -1248,6 +1194,108 @@
       "decision": "published",
       "slug": "oman-dubai-crude-premium-lowest-since-july-3ff7e2",
       "title": "أسعار نفط الشرق الأوسط عند أدنى مستوى في 3 أشهر بفضل متانة الصادرات"
+    },
+    "c7d16c318ed18e39": {
+      "at": "2026-10-21T21:57:27.673Z",
+      "decision": "published",
+      "slug": "meta-25-billion-new-mexico-cambridge-analytica-d301c7",
+      "title": "Judge orders Meta to pay $25bn in fines for Facebook privacy violations"
+    },
+    "3277c6dc05221a34": {
+      "at": "2026-10-21T21:57:27.673Z",
+      "decision": "published",
+      "slug": "meta-25-billion-new-mexico-cambridge-analytica-d301c7",
+      "title": "Meta fined $25bn for 'lies' over user data privacy"
+    },
+    "af5d3897eb075e94": {
+      "at": "2026-10-21T21:57:27.673Z",
+      "decision": "published",
+      "slug": "meta-25-billion-new-mexico-cambridge-analytica-d301c7",
+      "title": "Meta ordered to pay $25 billion penalty in New Mexico Cambridge Analytica case"
+    },
+    "c32a385a1b866b17": {
+      "at": "2026-10-21T21:57:27.673Z",
+      "decision": "published",
+      "slug": "meta-25-billion-new-mexico-cambridge-analytica-d301c7",
+      "title": "Meta ordered to pay $25 billion in penalties over the Cambridge Analytica scandal"
+    },
+    "223632847046328c": {
+      "at": "2026-10-21T21:57:27.673Z",
+      "decision": "published",
+      "slug": "meta-25-billion-new-mexico-cambridge-analytica-d301c7",
+      "title": "25 مليار دولار غرامة على «ميتا» في قضية «كامبريدج أناليتيكا»"
+    },
+    "a67f99a0a39f0755": {
+      "at": "2026-10-21T22:08:04.992Z",
+      "decision": "published",
+      "slug": "php-flaws-force-websites-offline-worldwide-cac721",
+      "title": "Websites taken down worldwide as critical cyber-security update issued"
+    },
+    "2355322f24b23a81": {
+      "at": "2026-10-21T22:08:04.992Z",
+      "decision": "published",
+      "slug": "php-flaws-force-websites-offline-worldwide-cac721",
+      "title": "Flaw in PHP computer language leads to shutdown of websites around world"
+    },
+    "0efdcaa8b19e5498": {
+      "at": "2026-10-21T22:08:04.992Z",
+      "decision": "published",
+      "slug": "php-flaws-force-websites-offline-worldwide-cac721",
+      "title": "PHP: The three letters that shut down sites all over the internet today"
+    },
+    "9e7ff52c6deb0aa7": {
+      "at": "2026-10-21T22:08:04.992Z",
+      "decision": "published",
+      "slug": "php-flaws-force-websites-offline-worldwide-cac721",
+      "title": "The internet is having a very bad cybersecurity day"
+    },
+    "8e902c1d75d29c42": {
+      "at": "2026-10-21T22:08:04.992Z",
+      "decision": "published",
+      "slug": "php-flaws-force-websites-offline-worldwide-cac721",
+      "title": "Critical flaws in ubiquitous website software draw urgent warning from NSA, FBI"
+    },
+    "318abaf7309bead9": {
+      "at": "2026-10-21T22:15:27.511Z",
+      "decision": "published",
+      "slug": "saudi-crude-exports-five-month-high-august-8b70f1",
+      "title": "الصادرات السعودية من النفط الخام تسجل أعلى مستوى في 5 أشهر خلال أغسطس"
+    },
+    "14d0220354d01ee2": {
+      "at": "2026-10-21T22:15:27.511Z",
+      "decision": "published",
+      "slug": "saudi-crude-exports-five-month-high-august-8b70f1",
+      "title": "Saudi Crude Exports Hit Five-Month High as Production Falls to Record Low"
+    },
+    "176afa69344350be": {
+      "at": "2026-10-21T22:20:37.025Z",
+      "decision": "rejected",
+      "title": "UAE President, Singapore Prime Minister discuss expanding bilateral cooperation in key sectors, launch CEPA negotiations",
+      "strikes": 1
+    },
+    "609cc397889ac82a": {
+      "at": "2026-10-21T22:20:37.025Z",
+      "decision": "rejected",
+      "title": "الإمارات وسنغافورة تبحثان الشراكة الثنائية وسبل تطويرها",
+      "strikes": 1
+    },
+    "cdf37a0c8c87a8f9": {
+      "at": "2026-10-21T22:20:37.025Z",
+      "decision": "rejected",
+      "title": "UAE and Singapore explore AI, energy and advanced technology partnerships",
+      "strikes": 1
+    },
+    "3f156c41c2a215fc": {
+      "at": "2026-10-21T22:20:37.025Z",
+      "decision": "rejected",
+      "title": "وونغ: الإمارات تعد وجهة استثمارية رئيسية لسنغافورة",
+      "strikes": 1
+    },
+    "04caf9ba43d17a84": {
+      "at": "2026-10-21T22:20:37.025Z",
+      "decision": "rejected",
+      "title": "UAE President receives Prime Minister of Singapore on official visit",
+      "strikes": 1
     }
   }
 }
