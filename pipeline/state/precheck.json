@@ -4189,6 +4189,136 @@
           "noted": []
         }
       ]
+    },
+    "brent-above-110-hormuz-shipping-risks-760305": {
+      "at": "2026-10-21T05:05:39.466Z",
+      "title": "برنت يتجاوز 110 دولارات مع تصاعد المخاطر على الملاحة في هرمز",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 32,
+            "checked": 32,
+            "supported": 31,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 19,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ونقلت وكالة تسنيم الإيرانية عن بحرية الحرس الثوري أن النيران اشتعلت الثلاثاء أيضاً في ناقلتي نفط وصفتهما البحرية بأنهما غير ملتزمتين، بعد اصطدامهما بألغام زرعتها جنوب المضيق.",
+              "quote": "وجاء الارتفاع بعد تقارير عن تعرض ناقلة نفط عملاقة لحريق إثر اصطدامها بلغم بحري جنوب مضيق هرمز، وفقاً لما أعلنته البحرية التابعة للحرس الثوري الإيراني، الثلاثاء، بحسب وسائل إعلام إيرانية.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "spacex-returns-to-q3-profit-ai-ac728c": {
+      "at": "2026-10-21T05:21:01.089Z",
+      "title": "سبايس إكس تحقق ربحاً فصلياً قدره 4.4 مليار دولار بعد خسارة قبل عام",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 32,
+            "checked": 32,
+            "supported": 27,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 3,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 7,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "إيرادات قطاع الذكاء الفائق: 7.5 مليار دولار",
+              "quote": "قفزت إيرادات الذكاء الاصطناعي بأكثر من تسعة أضعاف إلى 7.6 مليار دولار، مدفوعة في معظمها بتأجير القدرات الحاسوبية لمطوري الذكاء الاصطناعي، بدلاً من الاعتماد حصراً على إيرادات نماذج الشركة وبرمجياتها.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 16,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "حقق قطاع «الذكاء الفائق» (Super Intelligence) إيرادات بلغت 7.5 مليار دولار في الربع، مصدرها أداة البرمجة «كيرسر» (Cursor) التي استحوذت عليها الشركة حديثاً، وروبوت المحادثة «غروك»، وأعمال الحوسبة السحابية التي تبلغ سعتها 1.7 غيغاواط.",
+              "quote": "قفزت إيرادات الذكاء الاصطناعي بأكثر من تسعة أضعاف إلى 7.6 مليار دولار، مدفوعة في معظمها بتأجير القدرات الحاسوبية لمطوري الذكاء الاصطناعي، بدلاً من الاعتماد حصراً على إيرادات نماذج الشركة وبرمجياتها.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 20,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وحقق قطاع الذكاء الاصطناعي ربحاً قدره 431 مليون دولار، بحسب «تك كرانش»، ولولا تعويضات بالأسهم لمرة واحدة قيمتها 1.2 مليار دولار مرتبطة بالاستحواذ على «كيرسر» لجاء ربحه أعلى.",
+              "quote": "ومع ذلك، لا تزال وحدة الذكاء الاصطناعي تسجل خسائر تشغيلية كبيرة، فيما حذرت الشركة من حاجتها إلى استثمارات مستمرة قبل أن تتمكن من تحقيق أرباح بصورة منتظمة.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "anthropic-net-loss-80-billion-ipo-draft-2a27c8": {
+      "at": "2026-10-21T05:32:55.944Z",
+      "title": "وول ستريت جورنال: خسارة أنثروبيك تتجاوز 80 مليار دولار في النصف الأول",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 22,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
