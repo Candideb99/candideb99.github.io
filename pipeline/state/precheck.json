@@ -4319,6 +4319,90 @@
           "noted": []
         }
       ]
+    },
+    "talaat-moustafa-egypt-four-projects-partnership-32300d": {
+      "at": "2026-10-21T12:11:44.135Z",
+      "title": "طلعت مصطفى توقّع مع الحكومة شراكة لأربعة مشروعات بنحو 11 تريليون جنيه",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 29,
+            "checked": 29,
+            "supported": 27,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "uk-inflation-rises-3-5-september-fuel-8bdff2": {
+      "at": "2026-10-21T12:26:42.452Z",
+      "title": "التضخم البريطاني يتسارع إلى 3.5% في سبتمبر بدفع من الوقود",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 37,
+            "checked": 37,
+            "supported": 33,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "emirates-nbd-record-nine-month-income-2026-8d6346": {
+      "at": "2026-10-21T12:37:47.641Z",
+      "title": "«الإمارات دبي الوطني» يرفع دخله 15% إلى مستوى قياسي في تسعة أشهر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 32,
+            "checked": 32,
+            "supported": 29,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

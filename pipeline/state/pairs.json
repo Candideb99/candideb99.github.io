@@ -789,6 +789,56 @@
         "classes": [],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-10-21T12:11:44.141Z",
+      "slug": "talaat-moustafa-egypt-four-projects-partnership-32300d",
+      "checker": "4c54099299.2",
+      "lessons": "v32",
+      "lessonsHash": "5c629d81ea",
+      "keptVersion": 0,
+      "live": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 2,
+        "supported": 22,
+        "notFound": 2,
+        "checked": 26,
+        "words": 360,
+        "keyFacts": 6,
+        "classes": [
+          "superlative"
+        ],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 3,
+        "supported": 28,
+        "notFound": 0,
+        "checked": 30,
+        "words": 378,
+        "keyFacts": 6,
+        "classes": [
+          "period"
+        ],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 3,
+        "supported": 28,
+        "notFound": 0,
+        "checked": 30,
+        "words": 378,
+        "keyFacts": 6,
+        "classes": [
+          "period"
+        ],
+        "programmatic": 1
+      }
     }
   ]
 }
