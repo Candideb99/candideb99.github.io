@@ -1,72 +1,6 @@
 {
   "version": 1,
   "items": {
-    "e67c569f72c3c8ea": {
-      "at": "2026-09-30T12:56:56.187Z",
-      "decision": "published",
-      "slug": "us-core-pce-inflation-august-below-forecast-444dd8",
-      "title": "تضخم أميركا يهدأ دون التوقعات ويعقّد حسابات «الفيدرالي»"
-    },
-    "640cdc2291eda869": {
-      "at": "2026-09-30T12:56:56.187Z",
-      "decision": "published",
-      "slug": "us-core-pce-inflation-august-below-forecast-444dd8",
-      "title": "Fed’s Preferred Inflation Gauge Points to Continued Price Pressures"
-    },
-    "3a80131b9833d296": {
-      "at": "2026-09-30T12:56:56.187Z",
-      "decision": "published",
-      "slug": "us-core-pce-inflation-august-below-forecast-444dd8",
-      "title": "Fed’s preferred gauge showed core inflation at 3.0% in August, much lighter than expected"
-    },
-    "c0243e656adb2ae2": {
-      "at": "2026-09-30T12:56:56.187Z",
-      "decision": "published",
-      "slug": "us-core-pce-inflation-august-below-forecast-444dd8",
-      "title": "U.S. inflation rises again and keeps the pressure on Fed"
-    },
-    "697884a636d7dd07": {
-      "at": "2026-09-30T13:02:17.247Z",
-      "decision": "published",
-      "slug": "uae-petrol-prices-rise-october-third-month-df203f",
-      "title": "UAE raises fuel prices for third straight month"
-    },
-    "77c8f5dc022d36c6": {
-      "at": "2026-09-30T13:02:17.247Z",
-      "decision": "published",
-      "slug": "uae-petrol-prices-rise-october-third-month-df203f",
-      "title": "UAE petrol prices to rise by about 16% in October"
-    },
-    "0e27b3e49d953e17": {
-      "at": "2026-09-30T13:10:57.448Z",
-      "decision": "published",
-      "slug": "saudi-unemployment-falls-3-percent-q2-a68c8a",
-      "title": "البطالة السعودية دون مستهدف 2030... والمشاركة تتوسع"
-    },
-    "5288b149ca0d9514": {
-      "at": "2026-09-30T13:10:57.448Z",
-      "decision": "published",
-      "slug": "saudi-unemployment-falls-3-percent-q2-a68c8a",
-      "title": "Saudi Arabia unemployment falls to 3% as labor market expands"
-    },
-    "eae03fad5fe17785": {
-      "at": "2026-09-30T13:15:05.646Z",
-      "decision": "published",
-      "slug": "aldar-arada-abu-dhabi-partnership-15-billion-5b8202",
-      "title": "Aldar and Arada partner for Abu Dhabi projects worth $4bn"
-    },
-    "1d0f23566c688103": {
-      "at": "2026-09-30T13:15:05.646Z",
-      "decision": "published",
-      "slug": "aldar-arada-abu-dhabi-partnership-15-billion-5b8202",
-      "title": "شراكة بـ15 مليار درهم بين الدار وأرادَ لتطوير مشاريع بأبوظبي"
-    },
-    "c95cb86017a4bcd7": {
-      "at": "2026-09-30T13:15:05.646Z",
-      "decision": "published",
-      "slug": "aldar-arada-abu-dhabi-partnership-15-billion-5b8202",
-      "title": "Aldar and Arada sign Dh15bn partnership for new projects in Abu Dhabi"
-    },
     "8e07960016c7062b": {
       "at": "2026-09-30T20:17:44.479Z",
       "decision": "published",
@@ -1272,6 +1206,48 @@
       "decision": "published",
       "slug": "emirates-nbd-record-nine-month-income-2026-8d6346",
       "title": "Emirates NBD delivers record $11.49 billion income in 9M 2026 as profit after tax hits $5.26 billion"
+    },
+    "cf995ab8ef53811d": {
+      "at": "2026-10-21T17:32:41.696Z",
+      "decision": "published",
+      "slug": "french-10-year-bond-yield-tops-5-percent-32877e",
+      "title": "French borrowing costs hit 24-year high as civil unrest and budget fears spook markets"
+    },
+    "a73d94e702f89352": {
+      "at": "2026-10-21T17:32:41.696Z",
+      "decision": "published",
+      "slug": "french-10-year-bond-yield-tops-5-percent-32877e",
+      "title": "Eurozone government debt climbs to 88.8% of GDP as Italy closes in on Greece"
+    },
+    "c7e349e3db8921e9": {
+      "at": "2026-10-21T17:32:41.696Z",
+      "decision": "published",
+      "slug": "french-10-year-bond-yield-tops-5-percent-32877e",
+      "title": "French government 10-year bond yield tops 5% for first time since 2002"
+    },
+    "eca3abf224aca8e6": {
+      "at": "2026-10-21T17:49:05.929Z",
+      "decision": "published",
+      "slug": "france-secures-gulf-diesel-supplies-a5bb1f",
+      "title": "Macron makes surprise Saudi visit as France secures extra diesel supplies"
+    },
+    "d0702d497de3a75f": {
+      "at": "2026-10-21T17:49:05.929Z",
+      "decision": "published",
+      "slug": "france-secures-gulf-diesel-supplies-a5bb1f",
+      "title": "France’s diesel deal with Gulf states will not make fuel 'cheap overnight’ for European country"
+    },
+    "d6e70365bafc4d63": {
+      "at": "2026-10-21T18:01:52.804Z",
+      "decision": "published",
+      "slug": "oman-dubai-crude-premium-lowest-since-july-3ff7e2",
+      "title": "Higher Oil Availability Pressures Middle East Crude Benchmarks"
+    },
+    "17d7513fa355e538": {
+      "at": "2026-10-21T18:01:52.805Z",
+      "decision": "published",
+      "slug": "oman-dubai-crude-premium-lowest-since-july-3ff7e2",
+      "title": "أسعار نفط الشرق الأوسط عند أدنى مستوى في 3 أشهر بفضل متانة الصادرات"
     }
   }
 }

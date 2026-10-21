@@ -11481,6 +11481,43 @@
         }
       ],
       "outcome": "clean"
+    },
+    "talaat-moustafa-egypt-four-projects-partnership-32300d": {
+      "at": "2026-10-21T17:18:13.191Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "checker": "4c54099299",
+      "publishedAt": "2026-10-21T12:11:44.126Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 27,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "وتختلف شراكة طلعت مصطفى عن هاتين الصفقتين في أن الطرف الذي يتولى التطوير شركة مصرية خاصة تعمل ضمن مبادرة الحكومة للشراكة مع القطاع الخاص."
+      ],
+      "weak": [
+        {
+          "sentence": "الاستثمارات المستهدفة تعادل نحو 202.3 مليار دولار، ومشروع أبو قير وحده يستحوذ على نحو 5 تريليونات جنيه منها",
+          "quote": "The project planned next to the new Abu Qir port accounts for the largest share of targeted investments, at 5 trillion pounds, across about 10 million sq. meters, with expected tax revenue of about 1.1 trillion pounds."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }

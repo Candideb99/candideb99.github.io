@@ -1,0 +1,47 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-21T17:18:12.682Z",
+  "durationSec": 60,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "talaat-moustafa-egypt-four-projects-partnership-32300d",
+      "title": "طلعت مصطفى توقّع مع الحكومة شراكة لأربعة مشروعات بنحو 11 تريليون جنيه",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 27,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 7868,
+    "completionTokens": 7514,
+    "cacheReadTokens": 0,
+    "costUsd": 0.2132,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[17:18:13] second look: 1 to read now (1 published pieces not yet read; 86 read clean before publication and left out of the audit sample)",
+    "[17:19:12] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=56477",
+    "[17:19:12] talaat-moustafa-egypt-four-projects-partnership-32300d: 29 of 29 sentences checked · 27 supported · 1 without a source · 0 confirmed error(s)"
+  ]
+}

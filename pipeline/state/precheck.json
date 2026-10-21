@@ -4403,6 +4403,125 @@
           "noted": []
         }
       ]
+    },
+    "french-10-year-bond-yield-tops-5-percent-32877e": {
+      "at": "2026-10-21T17:32:41.691Z",
+      "title": "عائد السندات الفرنسية لأجل عشر سنوات يتجاوز 5% للمرة الأولى منذ 2002",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 35,
+            "checked": 35,
+            "supported": 34,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "france-secures-gulf-diesel-supplies-a5bb1f": {
+      "at": "2026-10-21T17:49:05.924Z",
+      "title": "تعهدات خليجية تغطي أكثر من 10% من استهلاك فرنسا للديزل",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 35,
+            "checked": 35,
+            "supported": 34,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 23,
+              "field": "body",
+              "class": "other",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "ورأى أن قيمته الأكبر نفسية، لأن فرنسا لم تعد تشتري في حالة ذعر، وقد تقلّص الإمدادات الخليجية علاوة الندرة حتى قبل أن تصل كمياتها كاملة إلى محطات الوقود.",
+              "quote": "“Gulf supply gives refiners, distributors and traders confidence that physical barrels are coming, which can compress the scarcity premium before it fully reaches the pump.”",
+              "source": "The National",
+              "sourceN": 2,
+              "correction": "Aslam said the confidence that barrels are coming can compress the scarcity premium before that premium fully passes through to pump prices, not before the Gulf volumes reach petrol stations."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 36,
+            "checked": 36,
+            "supported": 36,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "oman-dubai-crude-premium-lowest-since-july-3ff7e2": {
+      "at": "2026-10-21T18:01:52.801Z",
+      "title": "علاوة خام عُمان على دبي تهبط إلى أدنى مستوى منذ يوليو",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v32",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 28,
+            "checked": 28,
+            "supported": 27,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
