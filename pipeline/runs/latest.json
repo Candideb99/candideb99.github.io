@@ -1,454 +1,50 @@
 {
-  "mode": "news",
-  "startedAt": "2026-10-21T17:19:13.253Z",
-  "durationSec": 2560,
-  "published": 3,
+  "mode": "analysis",
+  "startedAt": "2026-10-21T18:33:37.575Z",
+  "durationSec": 281,
+  "published": 0,
   "refreshed": 0,
   "report": [
     {
-      "headline": "عائد سندات فرنسا لعشر سنوات يتجاوز 5% لأول مرة منذ 24 عاماً",
-      "section": "markets",
-      "importance": 7,
-      "sources": [
-        "https://www.theguardian.com/business/2026/oct/21/french-borrowing-costs-failure-to-pass-budget-govenment-bonds-violent-street-protests",
-        "https://www.euronews.com/2026/10/21/eurozone-government-debt-climbs-to-888-of-gdp-as-italy-closes-in-on-greece",
-        "https://www.euronews.com/2026/10/21/french-government-10-year-bond-yield-tops-5-for-first-time-since-2002"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان والتمهيد يحددان ما تغيّر: تجاوز العائد لأجل عشر سنوات 5% للمرة الأولى منذ 2002 ثم تراجعه إلى 4.99%. ويحدد المتن ما بقي معلقاً: موازنة 2027 بلا أغلبية، ومراجعة «موديز» الجمعة بوصفها احتمالاً يتوقعه الاقتصاديون لا قراراً صدر.",
-              "repair": ""
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "السياق متوفر: دور سند «أو إيه تي» مرجعاً للفائدة، والفارق مع ألمانيا، والدين 119.1% مقارنة باليونان وإيطاليا، وقواعد 60% و3%، ورايان معرّفاً بمنصبه ومؤسسته. لكن المقارنة الألمانية في الرسم والمتن تخلط رقماً سنوياً لعام 2025 بأرقام الربع الثاني (المصدر 2). ومقدمات «لماذا يهمّ» صحيحة، فالموازنة بلا أغلبية تُبقي العجز عند 5% (المصدر 3)، والسند مرجع للفائدة (المصدر 3). واستدلاله مشروط بـ«قد»، غير أن شقه الثاني يكرر خلاصة الفقرة الأولى والعنوان الفرعي.",
-              "repair": "تصحيح فترة رقم ألمانيا أو حذفه من الرسم. وتركيز المربع على أن خفض التصنيف المحتمل يرفع كلفة اقتراض الحكومة ويمتد عبر السند المرجعي، مع حذف التكرار من أحد الموضعين."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "الفقرات مجمّعة بحسب وظيفتها: الحدث، ثم آلية الانتقال، ثم الموازنة والجمود البرلماني، ثم الشارع، ثم الدين الأوروبي، ثم المقرضون ورايان، ثم «موديز». لكن العنوان الداخلي «الدين الثالث في التكتل» مبهم، و«تراجع وكالة موديز» ملتبسة القراءة، ونتيجة «الشركات والأسر» تتكرر ثلاث مرات.",
-              "repair": "«ثالث أعلى نسبة دين في التكتل»، و«تُجري «موديز» مراجعة»، وصيغة واحدة لنتيجة انتقال الكلفة."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "صياغة «تجاوز… 5%» ثم «إلى 5%» ثم «4.99%» توحي بتعارض، والمصدر 1 يفرّق بين ذروة الصباح والتراجع اللاحق. واتهام «التسيب المالي» نُقل من المقرضين عموماً إلى الباقين وحدهم (المصدر 1). ورقم ألمانيا قُدّم رقماً للربع الثاني، وهو في المصدر 2 رقم سنوي لعام 2025.",
-              "repair": "«ارتفع… ليبلغ 5% ويتخطاه، قبل أن يتراجع إلى 4.99%»، ونسبة الاتهام إلى المقرضين الدوليين عموماً، وتحديد سنة 2025 لرقم ألمانيا أو حذفه."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يجتمع العنوان والعنوان الفرعي والتمهيد على بيان ما تغيّر: تجاوز العائد 5% للمرة الأولى منذ 2002 في تعاملات الصباح ثم تراجع إلى 4.99% (المصدران 1 و3)، مع ذكر مراجعة «موديز» المقبلة وأثر محتمل مصوغ بـ«قد» على الشركات والأسر (المصدر 3). ولم يعد في التمهيد تعارض بين الذروة والتراجع.",
-              "repair": ""
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "السياق المطلوب حاضر: دور سند «أو إيه تي» مرجعاً للفائدة، والفارق مع ألمانيا ومعناه، والجمود البرلماني منذ 2024، والدين 119.1% مقارنة باليونان وإيطاليا، وقاعدتا 60% و3%، ورايان معرّفاً بمنصبه ومؤسسته وبمصدر تصريحاته. ومقدمات «لماذا يهمّ» صحيحة في معظمها، واستدلاله يحمل قيد «إذا» و«قد»، ويضيف ربط خفض التصنيف بالسند المرجعي. غير أن عبارة «يُفترض أن تطمئن المقرضين» تنسب إلى الموازنة غاية غير مسندة.",
-              "repair": "استبدال «يُفترض أن تطمئن المقرضين» بالغاية الواردة في المصدر 3: «تنص على خفض الإنفاق لتقليص الدين»."
-            },
-            "flow": {
-              "status": "clear",
-              "evidence": "الفقرات مجمّعة بحسب وظيفتها: الحدث ومقارنته التاريخية، ثم آلية انتقال الأثر، ثم الفارق مع ألمانيا، ثم الموازنة والجمود، ثم الشارع، ثم الدين الأوروبي وقواعده، ثم المقرضون ورايان، ثم «موديز». والعنوان الداخلي «ثالث أعلى نسبة دين في التكتل» واضح، وصارت نتيجة «الشركات والأسر» تَرِد مرة واحدة في العنوان الفرعي.",
-              "repair": ""
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "صُحح رقم ألمانيا إلى عام 2025 («وفي العام نفسه»)، وأرقام الرسم كلها للربع الثاني، وعاد اتهام «التسيب المالي» إلى المقرضين الدوليين عموماً. يبقى خلل واحد: نُسب نهب «لوي فيتون» وحريق بلدية ليموج إلى احتجاجات عطلة نهاية الأسبوع، والمصدر 1 يضعهما ضمن شغب الأسابيع الأخيرة.",
-              "repair": "فصل حادثي «لوي فيتون» وليموج عن احتجاجات عطلة نهاية الأسبوع، ونسبتهما إلى أعمال الشغب في الأسابيع الأخيرة (المصدر 1)."
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 4,
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "سند «أو إيه تي» يُستخدم لتحديد أسعار الفائدة في قطاع واسع من الاقتصاد",
-          "source": 3
-        },
-        {
-          "fact": "موازنة 2027 تنص على خفض الإنفاق لتقليص الدين، ولوكورنو يفتقر إلى أغلبية لخفض بقيمة 43 مليار يورو، والموازنة حتى إن أُقرّت تخفض العجز إلى 5% فقط مقابل سقف أوروبي 3%",
-          "source": 3
-        },
-        {
-          "fact": "«موديز» تراجع تصنيف فرنسا الجمعة ويتوقع معظم الاقتصاديين خفضاً يرفع كلفة اقتراض الحكومة تلقائياً",
-          "source": 3
-        }
-      ],
-      "slug": "french-10-year-bond-yield-tops-5-percent-32877e",
-      "title": "عائد السندات الفرنسية لأجل عشر سنوات يتجاوز 5% للمرة الأولى منذ 2002",
-      "score": 9,
-      "image": "photo"
-    },
-    {
-      "headline": "فرنسا تؤمّن إمدادات ديزل إضافية من السعودية والإمارات والبحرين",
-      "section": "energy",
-      "importance": 7,
-      "sources": [
-        "https://www.aljazeera.com/news/2026/10/21/macron-makes-surprise-saudi-visit-as-france-secures-extra-diesel-supplies",
-        "https://www.thenationalnews.com/business/energy/2026/10/21/frances-diesel-deal-with-gulf-states-will-not-make-fuel-cheap-overnight-for-european-country/"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "يُفهم من العنوان والمقدمة أن فرنسا حصلت على 295 ألف طن شهرياً بصورة دائمة، وأن هذا الرقم نتج من زيارة الرياض. والمصدران يقولان إن الرقم أُعلن الثلاثاء، وإن جزءه السعودي مضمون لأكتوبر ونوفمبر، وإن الجزء البحريني ما زال قيد التأمين، وإن الكمية السعودية الإضافية الجديدة غير محددة.",
-              "repair": "صحّح التسلسل في المقدمة، واذكر مكونات الرقم ومدده في الفقرة الأولى. يمكن أن يحمل العنوان صيغة «تعهدات خليجية تغطي نحو 10% من استهلاك فرنسا من الديزل» مع الاحتفاظ بالرقم."
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "الدافع موجود: أعمال شغب بسبب غلاء المعيشة وحصار هرمز (المصدر 1). والمقارنة موجودة: 200 دولار للبرميل مقابل 80 مطلع 2026، ومخزونات في أدنى مستوى منذ 25 عاماً (المصدر 2). والخبراء معرَّفون بمناصبهم ومؤسساتهم مع ذكر «ذا ناشونال» مصدراً للتصريحات. وصندوق «لماذا يهمّ» يستند إلى مقدمات مسندة (حصار هرمز وهجمات ينبع، المصدر 1؛ قيود الشحن والتكرير، المصدر 2)، ويستنتج منها استنتاجاً محدوداً: قيمة التعهدات رهن انتظام وصولها، وهو استنتاج يضيف ربطاً لا يكرره المتن.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "آراء فاليتشا موزعة على قسمين يفصل بينهما روكر. وفقرة روكر تنتهي بعبارة معلقة «في سوق عالمية». أما فقرة أسلم فتسرد ملاحظاته واحدة تلو الأخرى («ورأى ... وأضاف ...»).",
-              "repair": "اجمع الخبراء حول سؤال واحد: هل تخفض الإمدادات الأسعار؟ ابدأ بأثر الندرة وعلاوتها (أسلم وفاليتشا)، ثم الإشارة العالمية الإيجابية (روكر)، ثم التحفظ بشأن المصافي والشحن (فاليتشا وأسلم)، وأتمم جملة روكر."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "التسلسل الزمني بين الثلاثاء والأربعاء مقلوب في المقدمة. والمدد غائبة عن الرقم الرئيسي. وعبارة «إلى ما بعد مطلع 2027 بفترة» لا تطابق «well into 2027».",
-              "repair": "طبّق إصلاحات المقدمة والمدد والعبارة المذكورة في قائمة المشكلات."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "يقول العنوان والمقدمة والفقرة الأولى بدقة إن رقم 295 ألف طن أُعلن الثلاثاء، ويعددون مكوناته ويذكرون أن مدة الشحنات الإماراتية والبحرينية مجهولة. لكن القارئ يجد الضمانة السعودية محددة بأكتوبر ونوفمبر، ثم يقرأ أن الرياض ستزود فرنسا «لعدد الأشهر اللازم»، ولا يُشرح له أن الثاني التزام جديد بكميات غير محددة.",
-              "repair": "اربط الأمرين في الفقرتين الأوليين: الضمانة السابقة بـ95 ألف طن شهرياً لشهرين، والتزام الأربعاء بكميات إضافية غير محددة الحجم طوال الأشهر اللازمة (المصدر 1 والمصدر 2)."
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "يقدم المتن الدافع (أعمال الشغب بسبب كلفة المعيشة، والحرب الأمريكية الإيرانية، وحصار هرمز)، والمقارنة السعرية (200 دولار مقابل 80 مطلع 2026)، وانخفاض المخزونات والصادرات. ويعرّف كل خبير بمنصبه ومؤسسته. وصندوق «لماذا يهمّ» يستنتج من مقدمات مسندة أن قيمة التعهدات تتوقف على استمرارها، وأن الشح مرتبط بالتكرير وأمن النقل، وهذا استنتاج محدود ومشروع.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "يتبع ترتيب الخبراء الآن سؤالاً واحداً: هل تخفض الإمدادات الأسعار؟ (علاوة الندرة، ثم إشارة روكر، ثم تحفظات المصافي والشحن، ثم المدة والخطوات التالية). لكن فقرة فاليتشا تفتتح بعبارة «ويتفق... على أن» دون سند، وتضع «لكنه» على تخفيف مؤقت للنقص لا يناقض ما قبله.",
-              "repair": "«ويرى فاليتشا... أن وصول ديزل إضافي سيخفف التنافس... لكن هذا الارتياح مؤقت على الأرجح، ولا يُرجَّح أن يقود إلى تراجع مستدام في الأسعار»."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "عبارة «من أصل 400 مليون برميل تعهدوا بها في مارس» تنسب التعهد إلى مجموعة السبع دون سند من المصدر 2. وعبارة «مخزونات الوكالة» تجعل المخزونات ملكاً لوكالة الطاقة الدولية. والصندوق يقرر أن «الجزء السعودي المضمون محدد بشهرين» ويُغفل الالتزام المفتوح المدة الذي أعلنه الإليزيه.",
-              "repair": "«السحب الطارئ من المخزونات الذي تنسقه وكالة الطاقة الدولية... من أصل 400 مليون برميل جرى التعهد بها في مارس». وفي الصندوق اذكر أن الضمانة المحددة الكمية تغطي شهرين، وأن الالتزام الجديد مفتوح المدة بلا حجم معلن."
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 8,
-      "precheck": {
-        "ok": true,
-        "repairs": 1,
-        "rounds": 2,
-        "found": 1
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "باتت لدى فرنسا تعهدات خليجية بـ295 ألف طن شهرياً، أي ما يزيد قليلاً على 10% من استهلاكها، ووافقت السعودية على ديزل إضافي لعدد الأشهر اللازم من دون تحديد الكمية",
-          "source": 1
-        },
-        {
-          "fact": "ضمنت السعودية 95 ألف طن في كل من أكتوبر ونوفمبر، ومدة شحنات الإمارات والبحرين غير معروفة",
-          "source": 2
-        },
-        {
-          "fact": "حصار إيران لمضيق هرمز وهجمات الحوثيين على ميناء ينبع السعودي",
-          "source": 1
-        },
-        {
-          "fact": "قال أسلم إن القيد ليس الإنتاج وحده بل الشحن الآمن والتأمين وتوافر الناقلات، وتوقع فاليتشا بقاء الأسواق شحيحة حتى منتصف 2027 بسبب صيانة المصافي",
-          "source": 2
-        }
-      ],
-      "slug": "france-secures-gulf-diesel-supplies-a5bb1f",
-      "title": "تعهدات خليجية تغطي أكثر من 10% من استهلاك فرنسا للديزل",
-      "score": 9,
-      "image": "photo"
-    },
-    {
-      "headline": "علاوة خام عُمان على دبي عند أدنى مستوى في ثلاثة أشهر مع متانة الصادرات",
-      "section": "energy",
-      "importance": 7,
-      "sources": [
-        "https://oilprice.com/Latest-Energy-News/World-News/Higher-Oil-Availability-Pressures-Middle-East-Crude-Benchmarks.html",
-        "https://www.alborsaanews.com/2026/10/21/2000997"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "العنوان والمقدمة يوضحان ما تغير: هبوط علاوة الخام الفعلي مع تعافي التدفقات. لكن القارئ يصل إلى نهاية التقرير فيجد برنت مرتفعاً قرب ذروة خمسة أشهر، والتناقض الظاهر بين الأمرين يفسره توغني في فقرة سابقة بعيدة. كما أن الحرب المشار إليها لا يُذكر أطرافها.",
-              "repair": "وصل فقرة برنت بتفسير توغني عن افتراق السوق الفعلية عن العقود الآجلة، وتسمية الحرب بين إيران والولايات المتحدة وإسرائيل منذ سبعة أشهر (المصدر 2)."
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "الآلية حاضرة: الشحن المكوكي، والنقل من سفينة إلى سفينة، وخطوط الأنابيب، وكلفة الشحن. وتعريف المحللَين بدوريهما ومؤسستيهما سليم. ويستند «لماذا يهمّ» إلى مقدمات مسندة (أجور شحن قياسية، وناقلات معطلة، وخصومات عراقية تعكس جزئياً كلفة النقل)، ويستنتج استنتاجاً محدوداً بأن القيد انتقل من التوافر إلى النقل، مع حصر التحمل في «جزء» ومثال العراق. هذا مقبول. لكن التقرير يغفل تصريح روبيو وأرقام السعودية والإمارات وخلفية مساعي إيران.",
-              "repair": "إضافة تصريح روبيو وأرقام إنتاج السعودية والإمارات وخلفية الحرب، كلها من المصدر 2، في مواضعها من الفقرات القائمة."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "الفقرات مجمعة بحسب وظيفتها: المقياس وسبب الوفرة، ثم المسار التاريخي، ثم التدفقات، ثم المحللون، ثم المنافسة والكلفة. غير أن الخاتمة «وفي سوق العقود الآجلة، صعد خام برنت...» تأتي معزولة بعد فقرة الشحن، فتبدو إضافة متأخرة لا جزءاً من التفسير.",
-              "repair": "نقل جملة برنت إلى ما بعد كلام توغني مباشرة لتصبح دليلاً على افتراق السعر الفعلي عن العقود الآجلة، وإنهاء التقرير بفقرة كلفة النقل والناقلات."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "ذروة 112 دولاراً نُسبت إلى الثلاثاء، بينما يربطها المصدر 2 بارتفاع الأربعاء. والرسم يعامل ذروتي 65 و30 دولاراً كنقاط مسار متصل ويغفل فترة الخصم. وكلمة «محتجزة» تبالغ في وصف انشغال الناقلات.",
-              "repair": "تصحيح توقيت سعر برنت في المتن وفي خانة الحقائق، وإعادة بناء الرسم بعناوين الذرى أو حذفه، واستبدال «معطلة/مشغولة» بـ«محتجزة»."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يقول العنوان والمقدمة إن علاوة الخام الفعلي هبطت إلى 4.22 دولار مع تعافي التدفقات، ثم يفسّر كلام توغني، الذي تليه مباشرة جملة برنت، كيف يرتفع برنت قرب 112 دولاراً في الوقت نفسه، فزال التناقض الظاهر.",
-              "repair": ""
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "المقياس معرَّف بوظيفته («أي لمدى شح الإمدادات المادية»)، والحرب مسماة الأطراف ومدتها سبعة أشهر، والمحللان معرَّفان بدوريهما ومؤسستيهما. أما «لماذا يهمّ» فيستنتج استنتاجاً محدوداً من مقدمات مسندة (أجور شحن قياسية، وناقلات معطلة، وخصومات عراقية تعكس جزئياً كلفة النقل) بأن القيد انتقل من التوافر إلى النقل، ويحصر تحمّل الكلفة في «جزء». وهذا مقبول. لكن السياق ينقصه تصريح روبيو وأرقام إنتاج السعودية والإمارات (المصدر 2).",
-              "repair": "إضافة تصريح روبيو إلى فقرة التدفقات، وأرقام الإنتاج السعودي والإماراتي إلى فقرة تنافس المنتجين، مع نسبة كل منها إلى صاحبه كما في المصدر 2."
-            },
-            "flow": {
-              "status": "clear",
-              "evidence": "صارت الفقرات تبدأ بفاعلها أو رقمها («يُعدّ الفارق...»، «سرّع منتجو الشرق الأوسط...»، «صعدت أجور الشحن...») دون جسور إحالية. وجاءت جملة برنت دليلاً على افتراق السوق الفعلية عن العقود الآجلة، وانتهى التقرير بفقرة كلفة النقل التي يبني عليها صندوق «لماذا يهمّ» استنتاجه دون أن يكرره.",
-              "repair": ""
-            },
-            "precision": {
-              "status": "clear",
-              "evidence": "صُحح التوقيت إلى «ارتفع خام برنت الأربعاء مقترباً من 112 دولاراً للبرميل، بعدما سجل الثلاثاء أعلى مستوى له في خمسة أشهر»، وعُدلت الخانة إلى «برنت الأربعاء». ويعرض الرسم 65 و30 بوصفهما ذروتين في أعمدة، ويحفظ المتن فترة الخصم بين منتصف يونيو وأوائل يوليو، ويستبدل «معطلة» بـ«محتجزة»، ويقيّد خصومات العراق بعبارة «تصل إلى» وبأن جزءاً منها فقط يعود إلى كلفة النقل.",
-              "repair": ""
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 3,
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "زيادة المعروض، ولا سيما الشحنات الفورية، خفضت علاوة عُمان على دبي من 30 دولاراً في منتصف سبتمبر إلى ما يزيد قليلاً على 4 دولارات",
-          "source": 1
-        },
-        {
-          "fact": "أجور الشحن صعدت إلى مستويات قياسية في ظل نقص الناقلات",
-          "source": 1
-        },
-        {
-          "fact": "عمليات النقل من سفينة إلى سفينة في خليج عُمان تُبقي ناقلات عملاقة معطلة لأسابيع وتقلص الناقلات المتاحة لطرق أخرى",
-          "source": 1
-        },
-        {
-          "fact": "خصومات العراق التي تصل إلى 37 دولاراً للبرميل تعكس جزئياً ارتفاع كلفة نقل النفط إلى خارج المنطقة",
-          "source": 2
-        }
-      ],
-      "slug": "oman-dubai-crude-premium-lowest-since-july-3ff7e2",
-      "title": "علاوة خام عُمان على دبي تهبط إلى أدنى مستوى منذ يوليو",
-      "score": 8,
-      "image": "photo"
-    },
-    {
-      "headline": "مصر تحفر 150 بئراً في أقل من أربعة أشهر لوقف تراجع إنتاج النفط",
-      "section": "energy",
-      "importance": 6,
-      "outcome": "deferred: run budget spent"
+      "headline": "تسوية مصر متأخرات شركاء البترول البالغة 6.1 مليار دولار وأثرها في إنتاج الغاز المحلي مع تجاوز الدولار 54 جنيهاً",
+      "section": "analysis",
+      "outcome": "rejected after revision: عبارة مترجمة أو حشو: «، إذ قال»؛ «إذ» للتعليل لا قبل فعل إسناد: «…؛ فقد قفز…، بحسب…». | بنية التحليل ناقصة؛ العناوين الفرعية المطلوبة (بصيغة \"## \") غير موجودة: من يربح ومن يخسر. أضفها بهذا الترتيب: ما الذي تغيّر، من يربح ومن يخسر، السيناريوهات، ما الذي نراقبه."
     }
   ],
   "llm": {
-    "calls": 78,
-    "failures": 4,
-    "promptTokens": 952003,
-    "completionTokens": 260254,
-    "cacheReadTokens": 303331,
-    "costUsd": 10.4543,
+    "calls": 6,
+    "failures": 0,
+    "promptTokens": 110084,
+    "completionTokens": 32709,
+    "cacheReadTokens": 34032,
+    "costUsd": 1.2693,
     "byModel": {
-      "claude-cli/claude-opus-5-5": 78
+      "claude-cli/claude-opus-5-5": 6
     }
   },
   "log": [
-    "[17:58:35] image: dropped \"Flickr - DVIDSHUB - USS Porter damaged in collision with oil tanker (I\" — a warship or weapon, and the story is not about the military",
-    "[17:58:35] image: dropped \"Flickr - DVIDSHUB - USS Porter damaged in collision with oil tanker (I\" — a warship or weapon, and the story is not about the military",
-    "[17:58:35] image: dropped \"AFCENT tankers team up with NAVCENT fighters to execute mission over U\" — a warship or weapon, and the story is not about the military",
-    "[17:58:35] image: dropped \"AFCENT tankers team up with NAVCENT fighters to execute mission over U\" — a warship or weapon, and the story is not about the military",
-    "[17:58:35] image: dropped \"AFCENT tankers team up with NAVCENT fighters to execute mission over U\" — a warship or weapon, and the story is not about the military",
-    "[17:58:35] image: dropped \"Iranian naval forces board MT Wila, August 12, 2020.jpg\" — a warship or weapon, and the story is not about the military",
-    "[17:58:35] image: dropped \"120812-N-XO436-114 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[17:58:35] image: dropped \"120812-N-XO436-093 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[17:58:35] image: dropped \"120812-N-XO436-116 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[17:58:35] image: dropped \"120812-N-XO436-314 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[17:58:35] image: dropped \"120812-N-XO436-025 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[17:58:36] pexels \"Strait of Hormuz tanker\": 8 usable",
-    "[17:58:55] openverse \"Strait of Hormuz tanker\": The operation was aborted due to timeout",
-    "[17:58:55] image: dropped \"Aerial view of a cargo ship navigating through the Bosphorus Strait in\" — names too little of tanker",
-    "[17:58:55] image: dropped \"A stunning aerial shot of a cargo ship navigating the Bosphorus Strait\" — names too little of tanker",
-    "[17:58:55] image: dropped \"Cargo ship navigates the Gibraltar Strait as the sun sets, scenic view\" — names too little of tanker",
-    "[17:58:55] image: dropped \"Aerial shot of a red cargo ship navigating the Bosphorus Strait near I\" — names too little of tanker",
-    "[17:58:55] image: dropped \"Top-down view of cargo ship and tugboats in turquoise waters near Butt\" — names too little of tanker",
-    "[17:58:55] image: dropped \"Aerial shot of two cargo ships in Gibraltar waters with boats nearby, \" — names too little of tanker",
-    "[17:58:56] commons \"Gulf of Oman tanker\": 20 usable of 24",
-    "[17:58:56] image: dropped \"German oiler Spessart (A1442) underway in the Gulf of Oman on 4 Octobe\" — a warship or weapon, and the story is not about the military",
-    "[17:58:56] image: dropped \"US Navy 040919-N-5471P-004 The guided missile destroyer USS Preble (DD\" — dated 2004, an archival picture",
-    "[17:58:56] image: dropped \"US Navy 071214-N-1928H-015 Sailors from guided-missile cruiser USS Vic\" — a warship or weapon, and the story is not about the military",
-    "[17:58:56] image: dropped \"Spessart 061004-N-8547M-009.jpg\" — a warship or weapon, and the story is not about the military",
-    "[17:58:56] image: 3 file(s) dropped for naming none of Strait of Hormuz, Gulf of Oman",
-    "[17:59:01] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4378",
-    "[17:59:01] image: vision rejected all candidates (None of the candidates shows tankers or crude shipping. Photo 1 shows US Coast Guard cutters, which suggests a military patrol rather than oil flows. Photo 2 is a satellite view. Photos 3 to 5 are amateur sunset and seascape shots; photo 3 has only a small platform and a vessel in the distance. Photo 6 is seashells on a Sharjah beach. The search should continue to find a tanker under way.)",
-    "[17:59:08] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6063",
-    "[17:59:08] image: vision rejected all candidates (None of the candidates shows tankers or oil shipping. Photos 1–3 are skylines of Sharjah towers seen across the water, which the rules exclude and which say nothing about crude flows through Hormuz. Photo 4 is the Dubai Aquarium, which is irrelevant to the story and too light in tone.)",
-    "[17:59:08] image: application/octet-stream is not a photograph the judge can read (https://d32r1sh890xpii.cloudfront.net/news/1200x675/2026-10-21_iy9hg0xeun.jpg)",
-    "[17:59:14] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5149",
-    "[17:59:14] image: the sources' photographs give no brief (1: not a news photo)",
-    "[17:59:14] image: tier 3, the writer's own subjects: oil tanker Strait of Hormuz | Gulf of Oman tanker | crude oil tanker",
-    "[17:59:14] commons \"oil tanker Strait of Hormuz 2026\": 0 usable of 0",
-    "[17:59:14] commons \"oil tanker Strait of Hormuz\": 11 usable of 12",
-    "[17:59:14] image: dropped \"Flickr - DVIDSHUB - USS Porter damaged in collision with oil tanker (I\" — a warship or weapon, and the story is not about the military",
-    "[17:59:14] image: dropped \"Flickr - DVIDSHUB - USS Porter damaged in collision with oil tanker (I\" — a warship or weapon, and the story is not about the military",
-    "[17:59:14] image: dropped \"120812-N-XO436-114 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[17:59:14] image: dropped \"120812-N-XO436-116 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[17:59:14] image: dropped \"120812-N-XO436-093 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[17:59:14] image: dropped \"120812-N-XO436-314 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[17:59:15] commons \"Gulf of Oman tanker 2026\": 0 usable of 0",
-    "[17:59:15] commons \"Gulf of Oman tanker\": 10 usable of 12",
-    "[17:59:15] image: dropped \"German oiler Spessart (A1442) underway in the Gulf of Oman on 4 Octobe\" — names too little of tanker",
-    "[17:59:15] image: dropped \"Khalig-fars-Persian-Gulf 01.jpg\" — names too little of tanker",
-    "[17:59:15] image: dropped \"Khalig-fars-Persian-Gulf 04.jpg\" — names too little of tanker",
-    "[17:59:15] image: dropped \"Khalig-fars-Persian-Gulf 05.jpg\" — names too little of tanker",
-    "[17:59:15] image: dropped \"Khalig-fars-Persian-Gulf 03.jpg\" — names too little of tanker",
-    "[17:59:15] image: dropped \"Khalig-fars-Persian-Gulf 02.jpg\" — names too little of tanker",
-    "[17:59:16] commons \"crude oil tanker 2026\": 12 usable of 12",
-    "[17:59:16] commons \"crude oil tanker\": 11 usable of 12",
-    "[17:59:16] image: dropped \"Advantage Smooth, Crude Oil Tanker, IMO 9999620, Calandkanaal pic1.jpg\" — another frame of a series a published story runs",
-    "[17:59:16] image: dropped \"Pacific Sapphire, Crude Oil Tanker, IMO 9893058, Port of Rotterdam pic\" — another frame of a series a published story runs",
-    "[17:59:16] image: dropped \"WHITE TRADER Crude Oil Tanker, Bosphorus Strait, Istanbul, Turkiye (An\" — another frame of a series a published story runs",
-    "[17:59:16] image: dropped \"WHITE TRADER Crude Oil Tanker, Bosphorus Strait, Istanbul, Turkiye (An\" — another frame of a series a published story runs",
-    "[17:59:27] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=10207",
-    "[17:59:34] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6971",
-    "[17:59:34] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Monte Serantes, Crude Oil Tanker, IMO 9841615, Calandkanaal \": The caption places this tanker in the Calandkanaal at Rotterdam, a Dutch location the Gulf story never mentions, which m",
-    "[17:59:34] image: tier 4, the story's point and its subject: oil tankers Strait of Hormuz | supertanker at sea | ship-to-ship transfer tankers | oil tanker Strait of Hormuz | crude oil supertanker | ship-to-ship oil transfer",
-    "[17:59:34] commons \"oil tankers Strait of Hormuz\": 13 usable of 14",
-    "[17:59:34] image: dropped \"Flickr - DVIDSHUB - USS Porter damaged in collision with oil tanker (I\" — a warship or weapon, and the story is not about the military",
-    "[17:59:34] image: dropped \"Flickr - DVIDSHUB - USS Porter damaged in collision with oil tanker (I\" — a warship or weapon, and the story is not about the military",
-    "[17:59:34] image: dropped \"120812-N-XO436-114 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[17:59:34] image: dropped \"120812-N-XO436-093 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[17:59:34] image: dropped \"120812-N-XO436-116 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[17:59:34] image: dropped \"120812-N-XO436-314 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[17:59:34] image: dropped \"120812-N-XO436-025 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[17:59:34] image: dropped \"120812-N-XO436-152 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[17:59:34] image: dropped \"Khalig-fars-Persian-Gulf 03.jpg\" — names too little of oil, tankers",
-    "[17:59:34] image: dropped \"Khalig-fars-Persian-Gulf 05.jpg\" — names too little of oil, tankers",
-    "[17:59:34] image: dropped \"Khalig-fars-Persian-Gulf 01.jpg\" — names too little of oil, tankers",
-    "[17:59:34] image: dropped \"Khalig-fars-Persian-Gulf 02.jpg\" — names too little of oil, tankers",
-    "[17:59:35] pexels \"oil tankers Strait of Hormuz\": 8 usable",
-    "[17:59:54] openverse \"oil tankers Strait of Hormuz\": The operation was aborted due to timeout",
-    "[17:59:54] image: dropped \"Top-down view of cargo ship and tugboats in turquoise waters near Butt\" — names too little of oil, tankers",
-    "[17:59:54] image: dropped \"Aerial shot of a red cargo ship navigating the Bosphorus Strait near I\" — names too little of oil, tankers",
-    "[17:59:54] image: dropped \"Cargo ship navigating through Bosphorus Strait, Istanbul under cloudy \" — names too little of oil, tankers",
-    "[17:59:55] commons \"supertanker at sea\": 19 usable of 24",
-    "[17:59:55] image: dropped \"Sea Brilliance IMO 7408720 und Esso Pacific T Vestnes 07-1985.jpg\" — dated 1985, an archival picture",
-    "[17:59:55] image: dropped \"Kissing Prairie dog edit 3.jpg\" — names too little of supertanker, sea",
-    "[17:59:55] image: dropped \"Le Vengeur 13 prairial an II République.jpg\" — names too little of supertanker, sea",
-    "[17:59:55] pexels \"supertanker at sea\": 8 usable",
-    "[18:00:15] openverse \"supertanker at sea\": The operation was aborted due to timeout",
-    "[18:00:15] image: dropped \"Aerial view of a large industrial ship navigating the open ocean, show\" — names too little of supertanker, sea",
-    "[18:00:15] image: dropped \"Aerial shot of an oil tanker on the ocean at sunset in Galveston, Texa\" — names too little of supertanker, sea",
-    "[18:00:15] image: dropped \"Stunning aerial view of Istanbul's Maiden's Tower at sunset with boats\" — names too little of supertanker, sea",
-    "[18:00:15] image: dropped \"Aerial view of a large shipping tanker amidst a clear blue sky and oce\" — names too little of supertanker, sea",
-    "[18:00:15] image: dropped \"A large oil tanker sailing on the ocean with a sunset view.\" — names too little of supertanker, sea",
-    "[18:00:15] image: dropped \"Cargo ship navigating through the ocean under clear skies, showcasing \" — names too little of supertanker, sea",
-    "[18:00:15] image: dropped \"MV Sea Brilliance.jpg\" — taken in Singapore, which the story does not name",
-    "[18:00:15] image: dropped \"Oil tanker navigating the Bosphorus Strait with the Istanbul cityscape\" — taken in Turkey, which the story does not name",
-    "[18:00:15] image: dropped \"A large oil tanker navigates the Bosphorus Strait with Istanbul's skyl\" — taken in Turkey, which the story does not name",
-    "[18:00:15] image: dropped \"NORTH SEA GIANT (52161552742).jpg\" — taken in Netherlands, which the story does not name",
-    "[18:00:15] image: dropped \"NORTH SEA GIANT (52162577741).jpg\" — taken in Netherlands, which the story does not name",
-    "[18:00:15] image: dropped \"NORTH SEA GIANT (52162577711).jpg\" — taken in Netherlands, which the story does not name",
-    "[18:00:15] image: dropped \"NORTH SEA GIANT (52162578098).jpg\" — taken in Netherlands, which the story does not name",
-    "[18:00:15] image: dropped \"9524073 North Sea Giant 2011.jpg\" — taken in Norway, which the story does not name",
-    "[18:00:15] image: dropped \"VB KRACHT & NORTH SEA GIANT (52162578028).jpg\" — taken in Netherlands, which the story does not name",
-    "[18:00:24] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7916",
-    "[18:00:31] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7298",
-    "[18:00:31] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Cargo ships and oil tankers on the Bosporus strait, capturin\": The file places these anchored tankers on the Bosporus in Turkey, a different strait and country from the Gulf and Hormu",
-    "[18:00:44] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=11930",
-    "[18:00:44] image: vision rejected all candidates (fallback pass) (Photos 1 and 2 show a dry-bulk carrier, with hatch covers, ploughing through a storm, not a crude tanker. The view from the bridge is dramatic, but it would mislabel the subject for a story about crude tankers leaving the Gulf. Photos 3 and 4 show the offshore installation vessel North Sea Giant docked in Norway and the UK, which is the wrong subject and the wrong region. None of them shows Gulf crude moving by tanker.)",
-    "[18:00:47] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3208",
-    "[18:00:47] image: last resort: oil tanker Strait of Hormuz | oil tanker Strait of Hormuz industrial",
-    "[18:00:47] commons \"oil tanker Strait of Hormuz\": 13 usable of 14",
-    "[18:00:47] image: dropped \"Flickr - DVIDSHUB - USS Porter damaged in collision with oil tanker (I\" — a warship or weapon, and the story is not about the military",
-    "[18:00:47] image: dropped \"Flickr - DVIDSHUB - USS Porter damaged in collision with oil tanker (I\" — a warship or weapon, and the story is not about the military",
-    "[18:00:47] image: dropped \"120812-N-XO436-114 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[18:00:47] image: dropped \"120812-N-XO436-093 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[18:00:47] image: dropped \"120812-N-XO436-314 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[18:00:47] image: dropped \"120812-N-XO436-116 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[18:00:47] image: dropped \"120812-N-XO436-025 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[18:00:47] image: dropped \"120812-N-XO436-152 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[18:00:47] image: dropped \"Khalig-fars-Persian-Gulf 02.jpg\" — names too little of oil, tanker",
-    "[18:00:47] image: dropped \"Khalig-fars-Persian-Gulf 05.jpg\" — names too little of oil, tanker",
-    "[18:00:47] image: dropped \"Khalig-fars-Persian-Gulf 03.jpg\" — names too little of oil, tanker",
-    "[18:00:47] image: dropped \"Khalig-fars-Persian-Gulf 01.jpg\" — names too little of oil, tanker",
-    "[18:00:48] commons \"oil tanker Strait of Hormuz industrial\": 0 usable of 0",
-    "[18:00:48] commons \"oil tanker Strait Hormuz industrial\": 0 usable of 0",
-    "[18:00:49] commons \"oil tanker\": 20 usable of 24",
-    "[18:00:49] image: dropped \"Britannica Ship, Oil-Tank Steamer.jpg\" — dated 1911, an archival picture",
-    "[18:00:49] image: dropped \"Petroleum tanker leaving Dar es Salaam.jpg\" — names too little of oil, tanker, industrial",
-    "[18:00:49] image: dropped \"A tourist boaat sials fast a oil tanker, Cochin Oil Terminal.jpg\" — taken in India, which the story does not name",
-    "[18:00:49] image: dropped \"An oil tanker sails past Cochin Port, Vallarpadam Island.jpg\" — taken in India, which the story does not name",
-    "[18:00:49] image: last pass, a neutral illustration: oil tankers | supertanker sea | ship-to-ship transfer tankers | oil tanker | crude oil supertanker | ship-to-ship oil transfer",
-    "[18:00:50] commons \"oil tankers\": 18 usable of 24",
-    "[18:00:50] image: dropped \"Britannica Ship, Oil-Tank Steamer.jpg\" — dated 1911, an archival picture",
-    "[18:00:50] image: dropped \"SS Tiger (1917) in 1918.jpg\" — dated 1918, an archival picture",
-    "[18:00:50] pexels \"oil tankers\": 8 usable",
-    "[18:01:10] openverse \"oil tankers\": The operation was aborted due to timeout",
-    "[18:01:10] commons \"supertanker sea\": 19 usable of 24",
-    "[18:01:10] image: dropped \"Sea Brilliance IMO 7408720 und Esso Pacific T Vestnes 07-1985.jpg\" — dated 1985, an archival picture",
-    "[18:01:10] image: dropped \"Kissing Prairie dog edit 3.jpg\" — names too little of supertanker, sea",
-    "[18:01:10] image: dropped \"Le Vengeur 13 prairial an II République.jpg\" — names too little of supertanker, sea",
-    "[18:01:10] pexels \"supertanker sea\": 8 usable",
-    "[18:01:30] openverse \"supertanker sea\": The operation was aborted due to timeout",
-    "[18:01:30] image: dropped \"Aerial view of a large industrial ship navigating the open ocean, show\" — names too little of supertanker, sea",
-    "[18:01:30] image: dropped \"A cargo ship navigating through rough ocean waves on a bright day.\" — names too little of supertanker, sea",
-    "[18:01:30] image: dropped \"Drone shot of large tanker ship with helipads in ocean waters.\" — names too little of supertanker, sea",
-    "[18:01:30] image: dropped \"Stunning aerial view of Istanbul's Maiden's Tower at sunset with boats\" — names too little of supertanker, sea",
-    "[18:01:30] image: dropped \"Aerial shot of an oil tanker on the ocean at sunset in Galveston, Texa\" — names too little of supertanker, sea",
-    "[18:01:40] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=8919",
-    "[18:01:42] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=2345",
-    "[18:01:45] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=2513",
-    "[18:01:50] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5266",
-    "[18:01:50] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Aerial shot of an oil tanker sailing in the ocean near Vado \": A clearly recognisable crude tanker on open blue sea with no readable lettering, flag or place in the caption: a neutral",
-    "[18:01:52] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=2450",
-    "[18:01:52] published \"علاوة خام عُمان على دبي تهبط إلى أدنى مستوى منذ يوليو\" -> oman-dubai-crude-premium-lowest-since-july-3ff7e2",
-    "[18:01:52] run budget of 35 minutes spent; \"مصر تحفر 150 بئراً في أقل من أربعة أشهر لوقف تراجع إنتاج النفط\" waits for the next run"
+    "[18:33:37] newsroom start mode=analysis limit=4 dry-run=false",
+    "[18:33:53] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=14938",
+    "[18:33:53] analysis theme: تسوية مصر متأخرات شركاء البترول البالغة 6.1 مليار دولار وأثرها في إنتاج الغاز المحلي مع تجاوز الدولار 54 جنيهاً (Egypt's $6.1bn settlement of foreign oil partners' arrears and what it means for domestic gas output as the dollar passes 54 pounds); question: هل تتحول تسوية متأخرات الشركاء الأجانب إلى غاز إضافي من الحقول المصرية، وما الذي ترصده الأرقام المعلنة حتى الآن في وقت يتجاوز فيه الدولار 54 جنيهاً؟",
+    "[18:33:53]   related: مصر تسوّي كامل متأخرات شركائها الأجانب في البترول البالغة 6.1 مليار دولار",
+    "[18:33:53]   related: إيني تشغّل المرحلة الثانية من مليحة بطاقة معالجة 100 مليون قدم مكعبة يومياً",
+    "[18:33:53]   related: مصر تبدأ خلال أسبوعين مسحاً سيزمياً لاستكشاف الغاز في شرق المتوسط",
+    "[18:33:53]   related: الدولار يتجاوز 54 جنيهاً في السوق الرسمية المصرية للمرة الأولى",
+    "[18:35:49] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=116181",
+    "[18:36:25] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=35793",
+    "[18:36:25] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[18:36:25] desk \"هل تتحول تسوية متأخرات شركاء البترول إلى غاز إضافي في مصر؟\": rewrote body",
+    "[18:36:25] checks analysis \"هل تتحول تسوية متأخرات شركاء البترول إلى غاز إضافي في مصر؟\": 810 words, 0 issues, 0 warnings",
+    "[18:37:15] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=50392",
+    "[18:37:15] critic analysis: revise score=7 issues=6",
+    "[18:37:15]   · ادعاء غير مسند: «وتتصدرهم إيني بوصفها أكبر منتج للطاقة في البلاد» و«ويكسب مقاولو الخدمات أيضاً، مثل «إس إل بي» و«فيريديان»». لا يسمّي المصدر 1 أياً من الشركاء ا",
+    "[18:37:15]   · ادعاء غير مسند يوحي بعلاقة سببية: «وفي هذه السوق نفسها جرت تسوية التزامات مقوّمة بالدولار». لا تذكر أي قصة كيف مُوّل السداد ولا أنه جرى عبر سوق الصرف. والجملة ت",
+    "[18:37:15]   · تقديم هدف معلن على أنه أثر متحقق: العنوان الفرعي يقول «سداد 6.1 مليار دولار يعيد ثقة الشركاء»، وصندوق الأهمية يقول «أزالت التسوية عقبة الثقة». قول الوزير في الم",
+    "[18:37:15]   · خلل في البناء: قسم «من يربح ومن يخسر» لا يسمّي خاسراً. وعبارة «أما الضغط فيبقى على الحسابات الخارجية للدولة» عامة لا تحدد من يتحمل الكلفة، وتُلحق بها قراءة «جول",
+    "[18:37:56] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=40852",
+    "[18:38:18] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=22085",
+    "[18:38:18] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,lede,whyItMatters] rejected=[]",
+    "[18:38:18] desk \"سداد مصر متأخرات شركاء البترول لا يضمن وحده غازاً إضافياً\": rewrote title, subtitle, lede, whyItMatters",
+    "[18:38:18] reject analysis \"سداد مصر متأخرات شركاء البترول لا يضمن وحده غازاً إضافياً\" after revision: عبارة مترجمة أو حشو: «، إذ قال»؛ «إذ» للتعليل لا قبل فعل إسناد: «…؛ فقد قفز…، بحسب…». | بنية التحليل ناقصة؛ العناوين الفرعية المطلوبة (بصيغة \"## \") غير موجودة: من يربح ومن يخسر. أضفها بهذا الترتيب: ما الذي تغيّر، من يربح ومن يخسر، السيناريوهات، ما الذي نراقبه."
   ]
 }
