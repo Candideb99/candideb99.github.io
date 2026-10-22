@@ -38,10 +38,8 @@ interface Props {
   all?: Article[];
   /** Milliseconds a story stays on the stage. */
   interval?: number;
-  /** Up to two headlines on each story's running topic, by story id, printed under its meta line. */
-  related?: Map<string, Article[]>;
 }
-const { stories, readings = [], photoIds, interval = 6000, all = [], related = new Map<string, Article[]>() } = Astro.props;
+const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.props;
 ---
 
 <section class="wrap cover" data-cover data-interval={interval} aria-roledescription="carousel" aria-label="أبرز الأخبار">
@@ -63,16 +61,6 @@ const { stories, readings = [], photoIds, interval = 6000, all = [], related = n
               <a href={sectionHref(d.section)}>{kindLabel(d.kind, d.section)}</a>
               <time datetime={d.publishedAt} data-relative>{timeAgo(d.publishedAt)}</time>
             </p>
-            {(related.get(a.id) ?? []).length > 0 && (
-              <div class="cover__related">
-                <p class="cover__related-head ui">ذات صلة</p>
-                <ul>
-                  {(related.get(a.id) ?? []).map((r) => (
-                    <li><a href={articleHref(r)} set:html={isolateNumbers(r.data.title)} /></li>
-                  ))}
-                </ul>
-              </div>
-            )}
           </div>
           {withPhoto && (
             <a class="cover__photo" href={href} tabindex="-1" aria-hidden="true">
@@ -290,15 +278,6 @@ const { stories, readings = [], photoIds, interval = 6000, all = [], related = n
   .cover__title a:hover { color: var(--green); }
   .cover__dek { font-family: var(--font-body); font-size: var(--n-lead); line-height: 1.7; color: var(--ink-2); margin-top: 0.55rem; max-width: 34em; }
   .cover__meta { margin-top: 0.6rem; }
-  /* ذات صلة: two headlines on the story's running topic under a hairline, filling the text column that
-     otherwise stood short of the photograph beside it. */
-  .cover__related { margin-top: 1rem; border-top: 1px solid var(--rule); padding-top: 0.55rem; max-width: 34em; }
-  .cover__related-head { font-weight: 700; font-size: var(--fs-xs); color: var(--green); margin-bottom: 0.15rem; }
-  .cover__related li { padding-block: 0.35rem; }
-  .cover__related li + li { border-top: 1px solid var(--rule); }
-  .cover__related a { font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; text-decoration: none; }
-  .cover__related a:hover { color: var(--green); }
-
   /* The four stories behind the lead, listed under it on a phone, where the stage does not turn. */
   .cover__more { display: none; }
 
@@ -354,7 +333,6 @@ const { stories, readings = [], photoIds, interval = 6000, all = [], related = n
     .cover__photo { order: 1; container-type: normal; }
     .cover__body { order: 2; }
     .cover__tabs { display: none; }
-    .cover__related { display: none; }
     .cover__photo :global(.photo) { aspect-ratio: 3 / 2 !important; height: auto; min-height: 0; max-height: none; }
     .cover__more { display: grid; margin-top: 1rem; border-top: 1px solid var(--ink); }
     .cover__more > :global(.card) { padding-block: 0.75rem; border-top: 1px solid var(--rule); }
