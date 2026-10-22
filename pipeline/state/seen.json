@@ -1202,10 +1202,10 @@
       "strikes": 1
     },
     "1ce63db7d898ac23": {
-      "at": "2026-10-22T05:05:07.473Z",
-      "decision": "rejected",
-      "title": "Oil rises further after Dammam airport and oil field attacks",
-      "strikes": 1
+      "at": "2026-10-22T22:01:49.544Z",
+      "decision": "published",
+      "slug": "aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210",
+      "title": "Brent rises after Dammam airport and oil field attacks"
     },
     "617b96a8e725bad4": {
       "at": "2026-10-22T05:05:07.473Z",
@@ -1458,6 +1458,78 @@
       "decision": "published",
       "slug": "us-jobless-claims-fall-194000-near-1969-low-3be3f0",
       "title": "Jobless claims near the lowest since the 1960s as low-fire trend continues"
+    },
+    "e881396c9637e5cb": {
+      "at": "2026-10-22T22:01:49.544Z",
+      "decision": "published",
+      "slug": "aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210",
+      "title": "جماعة أنصار الله الحوثية تقول إنها استهدفت وزارة الدفاع السعودية في الرياض"
+    },
+    "91873e1441d68aad": {
+      "at": "2026-10-22T22:01:49.544Z",
+      "decision": "published",
+      "slug": "aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210",
+      "title": "US orders some personnel to leave Saudi Arabia after Houthi attacks"
+    },
+    "e0658cfba00a585e": {
+      "at": "2026-10-22T22:01:49.544Z",
+      "decision": "published",
+      "slug": "aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210",
+      "title": "Houthis target civilians as Dammam airport and energy infrastructure attacked"
+    },
+    "effcd2de0e24230d": {
+      "at": "2026-10-22T22:01:49.544Z",
+      "decision": "published",
+      "slug": "aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210",
+      "title": "Saudi Aramco orders full evacuation of Dhahran headquarters amid Houthi attacks"
+    },
+    "f7546e1cb065050b": {
+      "at": "2026-10-22T22:14:56.804Z",
+      "decision": "published",
+      "slug": "imf-cuts-middle-east-forecast-oil-shock-a9a490",
+      "title": "الاقتصاد العراقي بين انكماش حاد في 2026... وتعافٍ مرتقب في 2027"
+    },
+    "ebcdf6cd48ce361f": {
+      "at": "2026-10-22T22:14:56.804Z",
+      "decision": "published",
+      "slug": "imf-cuts-middle-east-forecast-oil-shock-a9a490",
+      "title": "صندوق النقد الدولي يرفع توقعات نمو الاقتصاد المصري إلى 5.1 % في 2026"
+    },
+    "895acb3f2b98be0a": {
+      "at": "2026-10-22T22:14:56.804Z",
+      "decision": "published",
+      "slug": "imf-cuts-middle-east-forecast-oil-shock-a9a490",
+      "title": "صندوق النقد يتوقع نمو اقتصاد الإمارات 7.7% فى 2027"
+    },
+    "47b560c9c0083011": {
+      "at": "2026-10-22T22:14:56.804Z",
+      "decision": "published",
+      "slug": "imf-cuts-middle-east-forecast-oil-shock-a9a490",
+      "title": "صندوق النقد يتوقع انكماش اقتصاد الشرق الأوسط 1.3 بالمئة في 2026"
+    },
+    "443d81186e376461": {
+      "at": "2026-10-22T22:27:09.076Z",
+      "decision": "published",
+      "slug": "saudi-tasi-falls-lowest-close-since-2021-172984",
+      "title": "السوق السعودية تهبط 2.3 % لتسجل أدنى إغلاق منذ عام 2021"
+    },
+    "b2c4618a00a6da2c": {
+      "at": "2026-10-22T22:27:09.076Z",
+      "decision": "published",
+      "slug": "saudi-tasi-falls-lowest-close-since-2021-172984",
+      "title": "مؤشر الأسهم السعودية يسجل أدنى مستوى منذ 2021 وسط ضغوط بيعية واسعة"
+    },
+    "983ddd29a5c9b629": {
+      "at": "2026-10-22T22:27:09.076Z",
+      "decision": "published",
+      "slug": "saudi-tasi-falls-lowest-close-since-2021-172984",
+      "title": "الأسهم السعودية تهبط 2.3 % وسط موجة بيع عالمية وضعف الطلب"
+    },
+    "3a19eef9501085db": {
+      "at": "2026-10-22T22:27:09.076Z",
+      "decision": "published",
+      "slug": "saudi-tasi-falls-lowest-close-since-2021-172984",
+      "title": "لماذا هبط \"تاسي\" إلى قاع عام 2021؟"
     }
   }
 }

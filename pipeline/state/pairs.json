@@ -883,6 +883,50 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-10-22T22:27:09.076Z",
+      "slug": "saudi-tasi-falls-lowest-close-since-2021-172984",
+      "checker": "4c54099299.2",
+      "lessons": "v34",
+      "lessonsHash": "1917f27221",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 25,
+        "notFound": 0,
+        "checked": 31,
+        "words": 521,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 35,
+        "notFound": 0,
+        "checked": 40,
+        "words": 557,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 35,
+        "notFound": 0,
+        "checked": 40,
+        "words": 557,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }

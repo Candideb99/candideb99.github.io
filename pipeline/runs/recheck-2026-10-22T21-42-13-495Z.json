@@ -1,0 +1,71 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-22T21:42:13.495Z",
+  "durationSec": 89,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "egypt-egx30-falls-market-cap-below-4-trillion-f90c93",
+      "title": "المؤشر الرئيسي للبورصة المصرية يهبط 3.41% مع تراجع 15 قطاعاً",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 32,
+        "checked": 32,
+        "supported": 27,
+        "weak": 5,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "egypt-arrears-settlement-gas-output-test-27cfe4",
+      "title": "تسوية متأخرات الشركاء الأجانب لا تكفي وحدها لرفع إنتاج مصر من الغاز",
+      "kind": "analysis",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 47,
+        "checked": 47,
+        "supported": 38,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 8,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 2,
+    "failures": 0,
+    "promptTokens": 20344,
+    "completionTokens": 19662,
+    "cacheReadTokens": 0,
+    "costUsd": 0.5559,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 2
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[21:42:14] second look: 2 to read now (2 published pieces not yet read; 95 read clean before publication and left out of the audit sample)",
+    "[21:42:40] egypt-egx30-falls-market-cap-below-4-trillion-f90c93:   source https://www.masrawy.com/news/news_economy/details/2026/10/22/3066990/%D8%A7%D9%8: The operation was aborted due to timeout; read from the copy saved at publication (fetched 2026-10-22T17:30:18.201Z)",
+    "[21:43:36] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=55402",
+    "[21:43:36] egypt-egx30-falls-market-cap-below-4-trillion-f90c93: 32 of 32 sentences checked · 27 supported · 0 without a source · 0 confirmed error(s)",
+    "[21:43:42] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=88464",
+    "[21:43:42] egypt-arrears-settlement-gas-output-test-27cfe4: 47 of 47 sentences checked · 38 supported · 8 without a source · 0 confirmed error(s)"
+  ]
+}

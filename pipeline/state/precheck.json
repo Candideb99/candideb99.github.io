@@ -4964,6 +4964,124 @@
           "noted": []
         }
       ]
+    },
+    "aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210": {
+      "at": "2026-10-22T22:01:49.537Z",
+      "title": "مصادر: أرامكو تأمر من بقي من موظفي مقرها في الظهران بالعمل عن بعد",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 34,
+            "checked": 34,
+            "supported": 28,
+            "weak": 1,
+            "noEvidence": 2,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 1,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 9,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "قتلى هجومي الشيبة والدمام: 4 أشخاص",
+              "quote": "King Fahd International Airport in Dammam was targeted on Wednesday evening, leaving one person dead and eight injured, the state-run SPA news agency reported.",
+              "source": "AGBI (Arabian Gulf Business Insight)",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 24,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ومساء الأربعاء، قتل هجوم على مطار الملك فهد الدولي في الدمام مواطناً سعودياً ومقيماً هندياً وأصاب ثمانية أشخاص، وفق الهيئة العامة للطيران المدني، التي أعلنت استئناف عمليات المطار صباح الخميس وعودة حركة الطيران إلى طبيعتها بعد تقييم الأضرار.",
+              "quote": "King Fahd International Airport in Dammam was targeted on Wednesday evening, leaving one person dead and eight injured, the state-run SPA news agency reported.",
+              "source": "AGBI (Arabian Gulf Business Insight)",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 27,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "unverified",
+              "sentence": "وأعلن تحالف دعم الشرعية في اليمن الخميس اعتراض خمس مسيّرات في منطقتي الرياض والمدينة المنورة، بعد إسقاط أربع أخرى فوق المنطقة الشرقية.",
+              "quote": "وأعلنت السعودية، الخميس، اعتراض أربع طائرات مسيّرة في منطقتي الرياض والمدينة المنورة.",
+              "source": "BBC Arabic",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "imf-cuts-middle-east-forecast-oil-shock-a9a490": {
+      "at": "2026-10-22T22:14:56.798Z",
+      "title": "صندوق النقد يخفض توقعاته للشرق الأوسط إلى انكماش 1.3% في 2026",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 32,
+            "checked": 32,
+            "supported": 27,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "saudi-tasi-falls-lowest-close-since-2021-172984": {
+      "at": "2026-10-22T22:27:09.070Z",
+      "title": "الأسهم السعودية تهبط 2.3% إلى أدنى إغلاق منذ 2021",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 32,
+            "checked": 32,
+            "supported": 31,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
