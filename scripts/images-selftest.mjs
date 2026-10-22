@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The picture desk, tested on cases whose right answer is known (35 checks), with scripted stand-ins for Claude, Wikimedia Commons,
+ * The picture desk, tested on cases whose right answer is known (69 checks), with scripted stand-ins for Claude, Wikimedia Commons,
  * the other libraries and the thumbnails: no model call, no network. Written 2026-09-28 after the owner asked for the
  * image engine to be stress-tested ("it might still be buggy"), so that the cascade's order, its place filter, the
  * repeat guard, its behaviour when a service fails, and the reading of accented names cannot regress unseen. The gate
@@ -8,7 +8,7 @@
  *
  *   node scripts/images-selftest.mjs
  */
-import { withStandIns, pickImage, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { withStandIns, pickImage, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
 
 let failed = 0;
 function check(name, got, want) {
@@ -77,6 +77,7 @@ async function scenario({ draft, world = {}, libs = {}, plan, judge, verify = ()
   const searched = [];
   const calls = [];
   const judgePrompts = [];
+  const verifyPrompts = [];
   const inlined = [];
   const saved = [];
   const restore = withStandIns({
@@ -110,7 +111,9 @@ async function scenario({ draft, world = {}, libs = {}, plan, judge, verify = ()
         calls.push(user.includes("LAST PASS") ? "judge-neutral" : "judge");
         judgePrompts.push(user);
         if (judge === "throw") throw new Error("Claude failed for role vision");
-        data = { choice: judge(titlesIn(user), user), alt: "صورة اختبار", reason: "test" };
+        // A judge may answer { choice, says }: whether the photograph says the story's point (messageNote()).
+        const said = judge(titlesIn(user), user);
+        data = typeof said === "object" ? { alt: "صورة اختبار", reason: "test", ...said } : { choice: said, alt: "صورة اختبار", reason: "test" };
       } else if (system.includes("wire captions")) {
         calls.push("judge-by-text");
         data = { choice: (byText ?? (() => 1))(titlesIn(user), user), alt: "صورة اختبار", reason: "test" };
@@ -119,6 +122,7 @@ async function scenario({ draft, world = {}, libs = {}, plan, judge, verify = ()
         data = handout ?? { news_photo: true, this_story: true, watermark: false, clear: true, caption_ar: "جانب من الاجتماع", credit_ar: "وزارة البترول المصرية", reason: "test" };
       } else if (system.includes("strict newspaper picture editor")) {
         calls.push(`verify:${fileNameIn(user)}`);
+        verifyPrompts.push(user);
         data = { verdict: verify(fileNameIn(user), user), reason: "test" };
       } else if (system.includes("photo captions")) {
         calls.push("caption");
@@ -134,7 +138,7 @@ async function scenario({ draft, world = {}, libs = {}, plan, judge, verify = ()
     // IMAGES_SELFTEST_LOG=1 prints the desk's own log for every case.
     const log = process.env.IMAGES_SELFTEST_LOG ? (line) => console.log(`      ${line}`) : () => {};
     const image = await pickImage({ draft, story: { angle: "" }, log, exclude, sources, photoDir });
-    return { image, searched, calls, inlined, judgePrompts, saved };
+    return { image, searched, calls, inlined, judgePrompts, verifyPrompts, saved };
   } finally {
     restore();
   }
@@ -455,6 +459,166 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
   check("a watermarked handout is refused and the cascade goes on", [w.image?.basis ?? null, w.saved.length, w.calls.includes("planner")], [null, 0, true]);
   const s = await scenario({ draft, sources, handoutWidth: 640, plan: planFor(), world: {}, judge: () => 1 });
   check("a handout under 700 pixels is never looked at", [s.calls.includes("handout"), s.image?.basis ?? null], [false, null]);
+}
+
+// ---------------------------------------------------------------------------------------------------------------
+// 3. The front page's cover of 2026-10-22 (the owner: "picture choices is still bit poor"): a Barclays branch under the
+// bank's job cuts, the Shanghai exchange's tower under a bear market, Morocco's parliament under its growth target, a
+// phone of app icons under Meta's $25bn penalty, a Saudia airliner under the Future Investment Initiative's postponement.
+{
+  check(
+    "a branch, an exchange's or a parliament's building and a skyline are building fronts",
+    [
+      frontOfBuilding({ title: "Barclays Bank, West Kirby.jpg", categories: "Barclays branches in England|Bank buildings in Merseyside" }),
+      frontOfBuilding({ title: "Shanghai Stock Exchange 2.jpg", description: "The Shanghai Stock Exchange building in Lujiazui" }),
+      frontOfBuilding({ title: "Moroccan Parliament Building.jpg" }),
+      frontOfBuilding({ title: "Modern skyscrapers of Shenzhen skyline by the waterfront" }),
+    ],
+    [true, true, true, true],
+  );
+  check(
+    "a trading floor, a port, a shipyard and a branch line are not",
+    [
+      frontOfBuilding({ title: "Traders on the floor of the New York Stock Exchange.jpg" }),
+      frontOfBuilding({ title: "Porte-conteneurs Maersk Congo Tanger med.jpg", categories: "Port of Tanger Med" }),
+      frontOfBuilding({ title: "Ship building at Hyundai Heavy Industries, Ulsan.jpg" }),
+      frontOfBuilding({ title: "Train on the Rhymney branch line.jpg" }),
+    ],
+    [false, false, false, false],
+  );
+  check(
+    "a phone of app icons, a defunct service and a gavel are stock clichés; a product in use is not",
+    [
+      Boolean(stockFault({ title: "Close-up of hand holding smartphone showing social media apps like Facebook and Instagram." })),
+      Boolean(stockFault({ title: "Social Networks", categories: "facebook, instagram, twitter, pinterest" })),
+      Boolean(stockFault({ title: "Google+ icon on a phone" })),
+      Boolean(stockFault({ title: "Judge's gavel on a desk" })),
+      Boolean(stockFault({ title: "Customers try the iPhone 17 at an Apple Store in Dubai.jpg" })),
+    ],
+    [true, true, true, true, false],
+  );
+  check(
+    "«الدار البيضاء» (Casablanca) is a name, not a painted colour; «جدار أبيض» still paints",
+    [captionFlaws("خضراوات معروضة في سوق الجميعة بحي درب السلطان بالدار البيضاء"), captionFlaws("مصنع خلف جدار أبيض")],
+    [[], ["أبيض"]],
+  );
+  check(
+    "a story about property may run buildings; «المقرر» (scheduled) is not «المقر» (headquarters)",
+    [
+      aboutBuildings({ title: "مسودة قانون تلزم المطورين العقاريين بحساب لكل مشروع", tags: ["القطاع العقاري"] }),
+      aboutBuildings({ title: "باركليز يلغي 5 آلاف وظيفة مع توسعه في الذكاء الاصطناعي", subtitle: "الوظائف المقرر إلغاؤها", tags: ["باركليز"] }),
+    ],
+    [true, false],
+  );
+}
+const barclays = {
+  ...developers,
+  title: "باركليز يلغي 5 آلاف وظيفة مع توسعه في الذكاء الاصطناعي",
+  subtitle: "ألغى البنك نحو ألف وظيفة في النصف الأول",
+  tags: ["باركليز", "بريطانيا", "الذكاء الاصطناعي"],
+  regions: ["أوروبا"],
+  section: "companies",
+};
+const branchFront = file("Barclays Bank, West Kirby.jpg", { categories: "Barclays branches in England" });
+const office = file("Staff at work in an open-plan office in London, England.jpg", { categories: "Offices in London" });
+// M. The sources' photograph of a branch front is no brief, and no branch front reaches a judge; the search for what the
+// story says (office staff) is made and its photograph runs.
+{
+  const r = await scenario({
+    draft: barclays,
+    plan: planFor({ queries: ["bank branch England"], place: ["United Kingdom", "England", "London"], message: "Barclays trades office staff for AI", message_queries: ["office staff London"] }),
+    sources: [{ ogImage: "https://src.test/photos/branch.jpg", sourceNameEn: "BBC News", title: "Barclays cutting 5,000 jobs" }],
+    brief: { photos: [{ n: 1, news: true, shows: "The Barclays name and eagle logo sign on the red-brick facade of a Barclays bank branch in the UK", people: [] }], best: 1, queries: ["Barclays branch sign"] },
+    world: { "Barclays branch sign": [branchFront], "bank branch England": [branchFront], "office staff London": [office] },
+    judge: (titles) => (titles.length ? 1 : 0),
+    verify: () => "GENERIC_OK",
+  });
+  check("a branch front is no brief and never reaches a judge; office staff at work run", [r.searched.includes("Barclays branch sign"), r.judgePrompts.some((p) => p.includes(branchFront.title)), r.image?.title], [false, false, office.title]);
+  check("every judge has the building-front and stock rules", r.judgePrompts.every((p) => p.includes("NO BUILDING FRONTS") && p.includes("NO STOCK CLICHÉS")), true);
+  check("the second check no longer calls a company's building GENERIC_OK, and may call a frame AMATEUR or STOCK", [r.verifyPrompts.some((p) => p.includes("the named company's or ministry's building")), r.verifyPrompts.every((p) => p.includes("AMATEUR") && p.includes("STOCK"))], [false, true]);
+}
+// N. A photograph that only names the topic waits in reserve while the later passes look for one that says the point.
+{
+  const port = file("Port of Tanger Med container terminal, Morocco.jpg", { categories: "Port of Tanger Med|Ports of Morocco" });
+  const souk = file("Shoppers at a vegetable market in Casablanca, Morocco.jpg", { categories: "Markets in Casablanca" });
+  const morocco = { ...developers, title: "الحكومة المغربية تستهدف نمواً بمتوسط 5% سنوياً بين 2027 و2031", tags: ["المغرب", "النمو الاقتصادي"], regions: ["مصر والمغرب العربي"] };
+  const plan = planFor({ queries: ["vegetable market Morocco"], place: ["Morocco", "Casablanca"], places: ["Tanger Med"], place_queries: ["Tanger Med"], message: "Morocco promises faster growth and more household support", message_queries: ["shoppers market Casablanca"] });
+  const world = { "Tanger Med": [port], "shoppers market Casablanca": [souk], "vegetable market Morocco": [souk] };
+  const says = await scenario({ draft: morocco, plan, world, judge: (titles) => ({ choice: titles.length ? 1 : 0, says: titles[0] === souk.title }), verify: () => "GENERIC_OK" });
+  check("the place's port only names the topic and waits, checked; the market that says the point is searched and runs", [says.image?.title, says.calls.filter((c) => c.startsWith("verify:"))], [souk.title, [`verify:${port.title}`, `verify:${souk.title}`]]);
+  check("the second check reads the whole-economy rule the planner and the judge read", [says.verifyPrompts.every((p) => p.includes("economy as a whole") && p.includes("container port")), says.judgePrompts.every((p) => p.includes("economy as a whole"))], [true, true]);
+  const none = await scenario({ draft: morocco, plan, world, judge: (titles) => ({ choice: titles.length ? 1 : 0, says: false }), verify: () => "GENERIC_OK" });
+  check("when nothing says it, the first photograph of the topic runs, checked once", [none.image?.title, none.calls.filter((c) => c.startsWith("verify:")).length], [port.title, 1]);
+  // A held photograph the check refuses brings its companions back: Morocco's dry run lost Tanger Med's port to an amateur
+  // market snapshot that was refused only after the port's shortlist had been passed over (2026-10-22).
+  const snapshot = file("New market in Tata, Morocco.jpg", { categories: "Markets in Morocco" });
+  const back = await scenario({
+    draft: morocco,
+    plan: { ...plan, places: [], place_queries: [], message_queries: [], queries: ["market port Morocco"] },
+    world: { "market port Morocco": [snapshot, port] },
+    judge: (titles) => ({ choice: titles.length ? 1 : 0, says: false }),
+    verify: (name) => (name.includes("Tata") ? "AMATEUR" : "GENERIC_OK"),
+  });
+  check("a held photograph the check refuses brings its companions back, and the port runs", back.image?.title, port.title);
+  // Every search of a pass is made: Morocco's first two searches filled the pass and «Tanger Med container port», its
+  // fourth, was never asked (2026-10-22).
+  const stalls = Array.from({ length: 8 }, (_, i) => file(`Olive stall in a market in Marrakesh ${i + 1}.jpg`, { categories: "Markets in Morocco" }));
+  const crowd = Array.from({ length: 8 }, (_, i) => file(`Shoppers in a market in Fes ${i + 1}.jpg`, { categories: "Markets in Morocco" }));
+  const wide = await scenario({
+    draft: morocco,
+    plan: { ...plan, places: [], place_queries: [], message_queries: [], queries: ["market stall Morocco", "market shoppers Morocco", "pensioners Morocco", "Tanger Med container port"] },
+    world: { "market stall Morocco": stalls, "market shoppers Morocco": crowd, "Tanger Med container port": [port] },
+    judge: (titles) => titles.findIndex((t) => t.includes("Tanger")) + 1,
+    verify: () => "GENERIC_OK",
+  });
+  check("every search of a pass is made, and the port it finds can run", [wide.searched.includes("Tanger Med container port"), wide.image?.title], [true, port.title]);
+  const noMessage = await scenario({ draft: morocco, plan: { ...plan, message: "" }, world, judge: (titles) => ({ choice: titles.length ? 1 : 0, says: false }), verify: () => "GENERIC_OK" });
+  check("with no message from the planner the first fitting photograph runs, as before", noMessage.image?.title, port.title);
+}
+// O. Meta's penalty: the phone of app icons never reaches a judge, and the story's own people may appear in the search for
+// what it says (a chief executive answering for the matter), named to every judge.
+{
+  const meta = { ...developers, title: "قاضٍ في نيو مكسيكو يلزم «ميتا» بدفع 25 مليار دولار عن مخالفات الخصوصية", tags: ["ميتا", "الولايات المتحدة"], regions: ["الأمريكتان"], section: "companies" };
+  const phone = { ...file("Close-up of hand holding smartphone showing social media apps like Facebook and Instagram."), url: "https://images.pexels.com/photos/8488289/phone.jpeg" };
+  const hearing = file("CEO Mark Zuckerberg testifies before the Senate, Washington, D.C., 2018.jpg", { categories: "Mark Zuckerberg|United States Senate", date: "2018-04-10" });
+  const r = await scenario({
+    draft: meta,
+    plan: planFor({ queries: ["Facebook app phone"], place: ["United States"], people: ["Mark Zuckerberg", "Raúl Torrez"], focus: "subject", message: "a state court makes Meta pay for misleading users about their data", message_queries: ["Mark Zuckerberg testifies Senate"] }),
+    libs: { "Facebook app phone": [phone] },
+    world: { "Mark Zuckerberg testifies Senate": [hearing] },
+    judge: pickTitle("Zuckerberg"),
+    verify: () => "RIGHT",
+  });
+  check("the phone of app icons is never shown; the chief executive at a hearing on the matter runs", [r.judgePrompts.some((p) => p.includes(phone.title)), r.image?.title], [false, hearing.title]);
+  check("the judges and the second check know the story's people", [r.judgePrompts[0]?.includes("Mark Zuckerberg, Raúl Torrez"), r.verifyPrompts[0]?.includes("Mark Zuckerberg, Raúl Torrez")], [true, true]);
+}
+// P. A story about an event is pictured by an earlier edition of the event, which the generic passes drop as "people and
+// banners"; it runs as a file photo.
+{
+  const fii = { ...developers, title: "السعودية تؤجل مؤتمر مبادرة مستقبل الاستثمار إلى 2027 مع تصاعد هجمات الحوثيين", tags: ["السعودية", "مبادرة مستقبل الاستثمار"], regions: ["الخليج"] };
+  const session = file("Opening panel at the 2024 FII conference, Riyadh.jpg", { categories: "Future Investment Initiative|Riyadh", date: "2024-10-29" });
+  const r = await scenario({
+    draft: fii,
+    plan: planFor({ queries: ["investment conference Saudi Arabia"], place: ["Saudi Arabia", "Riyadh"], event: ["Future Investment Initiative", "FII"], event_queries: ["FII Riyadh"], message: "Houthi attacks push Riyadh's investment forum off this year's calendar" }),
+    world: { "FII Riyadh": [session], "investment conference Saudi Arabia": [session] },
+    judge: pickTitle("FII"),
+    verify: () => "RIGHT",
+  });
+  check("the forum's earlier edition runs, marked as a file photo", [r.image?.title, /2024|أرشيفية/.test(String(r.image?.alt ?? ""))], [session.title, true]);
+  check("its judge and second check know the story's own event", [r.judgePrompts[0]?.includes("THE STORY'S OWN EVENT"), r.verifyPrompts[0]?.includes("earlier edition of that same event")], [true, true]);
+}
+// Q. An exchange or a business district is never the story's place; the last resort follows no company to its headquarters.
+{
+  const csi = { ...developers, title: "المؤشر الرئيسي للأسهم الصينية يدخل السوق الهابطة بخسارة 20% من ذروته", tags: ["الصين", "الأسهم"], regions: ["آسيا"], section: "markets" };
+  const r = await scenario({
+    draft: csi,
+    plan: planFor({ queries: ["stock investors China"], place: ["China", "Shanghai"], places: ["Shanghai Stock Exchange", "Lujiazui financial district"], place_queries: ["Shanghai Stock Exchange", "Lujiazui financial district"] }),
+    world: {},
+    judge: () => 0,
+  });
+  check("the exchange's building is not searched as the story's place", r.searched.includes("Shanghai Stock Exchange"), false);
+  const b = await scenario({ draft: barclays, plan: planFor({ queries: ["bank office England"] }), world: {}, judge: () => 0, lastResort: { scene: "bank office", country: "United Kingdom", institution: "Barclays", city: "London" } });
+  check("the last resort searches no company's headquarters", b.searched.some((q) => /headquarters|building/i.test(q)), false);
 }
 
 console.log(failed ? `\n${failed} check(s) FAILED` : "\nall checks passed");
