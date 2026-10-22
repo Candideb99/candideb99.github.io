@@ -364,6 +364,13 @@ if (spawnSync("git", ["--version"]).status === 0) {
   // ONE STORY: a second event brought in by a joint is refused.
   const stitched = styleIssues({ title: "مصر تنشئ مركز بيانات بمليار دولار", subtitle: "", lede: "أعلنت مصر خطة لمركز بيانات.", body: "وقالت الوزارة إن المرحلة الأولى تبدأ العام المقبل.\n\nوفي التاريخ نفسه، أعلنت «جوجل» استثماراً في فنلندا.", whyItMatters: "", keyFacts: [] }).issues;
   check("a second event stitched in is refused", stitched.some((i) => i.startsWith("خبر ثانٍ ملحق")), true);
+  // A close is recorded, never reached; "the median stock" is said as what it shows (the owner, 2026-10-23).
+  const closeFaults = (title, subtitle = "") => {
+    const found = styleIssues({ title, subtitle, lede: "", body: "", whyItMatters: "", keyFacts: [] });
+    return [found.issues.filter((i) => /الإغلاق يُسجَّل/.test(i)).length, [...found.issues, ...found.warnings].filter((i) => /مصطلح إحصائي/.test(i)).length];
+  };
+  check("«تهبط 2.3% إلى أدنى إغلاق» is sent back, «وسيط تراجع الأسهم» warned", closeFaults("الأسهم السعودية تهبط 2.3% إلى أدنى إغلاق منذ 2021", "ووسيط تراجع الأسهم يبلغ 3.32%"), [1, 1]);
+  check("«لتسجل أدنى إغلاق», «إلى أدنى مستوى» and a broker («وسيط مالي») pass", closeFaults("السوق السعودية تهبط 2.3% لتسجل أدنى إغلاق منذ 2021", "المؤشر يهبط إلى أدنى مستوى منذ 2021 ووسيط مالي يتوقع ارتداداً"), [0, 0]);
 
   // The first Sol story was factually clean but had an incomplete headline and three tiny dispatches.
   const dispatches = [
