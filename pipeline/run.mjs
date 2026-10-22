@@ -29,7 +29,7 @@ import { MARKET_QUOTE_URL } from "./lib/quotes.mjs";
 import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectFeatureTopic, selectPaper, selectStories } from "./lib/select.mjs";
 import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, newsFloor, reviseArticle, substantiveFacts, writeAnalysis, writeArticle, writeExplainer, writeFeature, writePaperReading, writeWeekly } from "./lib/write.mjs";
 import { NEWS_FLOOR, NEWS_MIN_FACTS, SHORT_DAILY_CAP, SHORT_WORDS } from "./lib/editorial.mjs";
-import { critique, programmaticChecks } from "./lib/verify.mjs";
+import { critique, CUTTABLE, cutToSources, programmaticChecks } from "./lib/verify.mjs";
 import { copyEdit } from "./lib/copydesk.mjs";
 import { keptBlock, lessonsBlock, lessonsHash, loadLessons } from "./lib/lessons.mjs";
 import { JUDGE_VERSION, draftWith, judge } from "./lib/paired.mjs";
@@ -90,8 +90,12 @@ const RUN_STARTED = Date.now();
 const RUN_BUDGET_MS = 35 * 60 * 1000;
 /** A first rejection expires after this long (the item may be tried once more); a second one is final for the state's 21 days. */
 const REJECT_RETRY_HOURS = 12;
-/** The editor reads at most this many candidates a run (260 until 2026-09-24, when ten Gulf and Egyptian feeds joined). */
-const CANDIDATE_CAP = 300;
+/**
+ * The editor reads at most this many candidates a run (260 until 2026-09-24, when ten Gulf and Egyptian feeds joined;
+ * 300 until 2026-10-22, when the region's news desks joined for politics that moves money: the feeds then held about
+ * 620 fresh items, and 300 gave each feed only its nine freshest; 450 gives fifteen).
+ */
+const CANDIDATE_CAP = 450;
 /** The regional desks that are our readers' own economies (src/data/regions.json), and how many of their stories a day the region balance aims for. */
 const ARAB_REGIONS = ["الخليج", "مصر والمغرب العربي"];
 const ARAB_DAILY = 8;
@@ -247,6 +251,24 @@ async function copyDeskPass(draft, { includeBody = true, kind = "news", sources 
  * lede a few words too long, each after the writer, the desk and the critic had already been paid for.
  */
 const WRITERS_FAULT = /أرقام لا تظهر في المصادر|نسبة النص العربي منخفضة|قصير جداً|ناقصة؛ العناوين الفرعية|العنوان مكرر لمقال|تكرر مقالاً منشوراً|يقارن بين ما أوردته المصادر|بلا جدول زمني/;
+
+/**
+ * The last cut (lib/verify.mjs cutToSources): a revised draft still carrying a figure no source has, or a second event
+ * stitched in, loses those sentences instead of the whole story (2026-10-22: two of the three Houthi stories chosen on
+ * 20-22 October were thrown away for one sentence each). Runs before the last desk pass, which waits for the writer's
+ * faults to be gone; the checks run again after it, and the critic's second pass reads the cut draft.
+ */
+function lastCut(draft, checks, { sources, recheck }) {
+  if (checks.ok || !checks.issues.some((i) => CUTTABLE.test(i))) return { draft, checks };
+  const cut = cutToSources(draft, sources);
+  if (!cut) {
+    log("last cut: nothing that can be cut (a figure in the headline, the dek or a subhead, or a stitch in the lede)");
+    return { draft, checks };
+  }
+  const again = recheck(cut.draft);
+  log(`last cut: ${cut.cut.length} sentence(s) removed (${cut.cut.map((s) => `«${s.slice(0, 50)}…»`).join(" ")}); ${again.ok ? "clean" : `still ${again.issues.length} fault(s)`}`);
+  return { draft: cut.draft, checks: again, removed: cut.cut.length };
+}
 
 /** One more desk pass on a revised draft whose remaining faults are all the desk's trade; the checks run again after it. */
 async function lastDeskPass(draft, checks, { sources, kind = "news", recheck, minWords }) {
@@ -453,6 +475,9 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     writerModel = `${writerModel} → ${revision.model}`;
     revised = true;
     checks = programmaticChecks(draft, sources, { recentTitles, minWords });
+    const cut = lastCut(draft, checks, { sources, recheck: (d) => programmaticChecks(d, sources, { recentTitles, minWords }) });
+    if (cut.removed) entry.lastCut = cut.removed;
+    ({ draft, checks } = cut);
     ({ draft, checks } = await lastDeskPass(draft, checks, { sources, minWords, recheck: (d) => programmaticChecks(d, sources, { recentTitles, minWords }) }));
     if (!checks.ok) {
       await checkpoint("rejected-checks", { finalDraft: draft, checks });

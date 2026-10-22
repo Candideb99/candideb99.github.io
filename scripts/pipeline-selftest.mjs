@@ -28,7 +28,7 @@ import { cleanTags } from "../pipeline/lib/tags.mjs";
 import { groundedRegions } from "../pipeline/lib/regions.mjs";
 import { styleIssues } from "../pipeline/lib/style.mjs";
 import { fixNames, judgeRewrite } from "../pipeline/lib/copydesk.mjs";
-import { normalizeCritique, programmaticChecks } from "../pipeline/lib/verify.mjs";
+import { CUTTABLE, cutToSources, normalizeCritique, programmaticChecks } from "../pipeline/lib/verify.mjs";
 import { noveltyFault } from "../pipeline/lib/images.mjs";
 
 let failed = 0;
@@ -163,6 +163,24 @@ for (const [name, checks] of [
 check("the same headline again (a retried round) is caught", repeatsRecent("ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول للإشراف على القطاع", ["ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول للإشراف على القطاع"]) !== null, true);
 check("the same event under another headline is caught", repeatsRecent("ترامب يعلن إنشاء «قوة للذكاء الاصطناعي» على غرار «قوة الفضاء»", ["ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول للإشراف على القطاع"]) !== null, true);
 check("a different event is not", repeatsRecent("السعودية تعيد تشغيل خط «شرق - غرب» النفطي المتوقف منذ 13 سبتمبر", ["ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول للإشراف على القطاع"]), null);
+check("one oil move under two names is still one event", repeatsRecent("برنت يقفز فوق 108 دولارات بعد إغلاق خط الأنابيب السعودي", ["النفط يقفز فوق 107 دولارات مع إغلاق خط الأنابيب السعودي"]) !== null, true);
+check("two subjects sharing only a running war are two events", repeatsRecent("برنت عند أعلى مستوى في 5 أشهر فوق 111 دولاراً مع هجمات الحوثيين على السعودية", ["السعودية تؤجل مؤتمر مبادرة مستقبل الاستثمار إلى 2027 مع تصاعد هجمات الحوثيين"]), null);
+check("two institutions' different forecasts are two events", repeatsRecent("صندوق النقد يتوقع انكماش اقتصادات الخليج 4.8% في 2026 قبل تعافيها 9.1% في 2027", ["البنك الدولي يتوقع انكماش اقتصادات الخليج 4.3% هذا العام"]), null);
+
+// 2b. The last cut (2026-10-22): a sentence carrying a figure no source has, or a stitched second event, goes; the story stays.
+{
+  const sources = [{ title: "Houthi attack", text: "Drones struck the Dammam airport and an Aramco facility on Wednesday, killing 3 people and injuring 10. Brent rose to 111.2 dollars." }];
+  const base = { title: "هجوم حوثي على مطار الدمام ومنشأة لأرامكو", subtitle: "برنت يرتفع إلى 111.2 دولار", lede: "استهدفت مسيّرات مطار الدمام ومنشأة لأرامكو الأربعاء، ما أسفر عن مقتل 3 أشخاص وإصابة 10.", body: "ارتفع خام برنت إلى 111.2 دولار للبرميل بعد الهجوم.\n\nوكانت هجمات سابقة قد أوقعت 36 جريحاً في الرياض. وتواصل الدفاعات اعتراض المسيّرات منذ أسابيع.\n\nوفي التاريخ نفسه، أعلنت شركة طيران خفض رحلاتها. وقالت إن الخفض مؤقت.\n\nوتراقب الأسواق إمدادات الخام السعودي من الخليج.", whyItMatters: "", keyFacts: [{ label: "الجرحى في هجمات سابقة", value: "36" }, { label: "سعر برنت", value: "111.2 دولار" }] };
+  const before = programmaticChecks(base, sources, { minWords: 0 });
+  check("the faults the cut is for are found first", [before.issues.some((i) => i.startsWith("أرقام لا تظهر في المصادر")), before.issues.some((i) => i.startsWith("خبر ثانٍ ملحق"))], [true, true]);
+  const cut = cutToSources(base, sources);
+  check("the figure's sentence and the stitched paragraph are cut, nothing else", [cut.draft.body.includes("36"), cut.draft.body.includes("التاريخ نفسه"), cut.draft.body.includes("الخفض مؤقت"), cut.draft.body.includes("وتواصل الدفاعات"), cut.draft.body.includes("111.2"), cut.draft.keyFacts.length], [false, false, false, true, true, 1]);
+  const after = programmaticChecks(cut.draft, sources, { minWords: 0 });
+  check("the cut draft passes the checks it failed", after.issues.filter((i) => CUTTABLE.test(i)).length, 0);
+  check("a figure in the headline cannot be cut", cutToSources({ ...base, title: "هجوم حوثي يوقع 36 جريحاً" }, sources), null);
+  check("a stitch in the lede cannot be cut", cutToSources({ ...base, lede: `${base.lede} وفي التاريخ نفسه، أعلنت شركة طيران خفض رحلاتها.` }, sources), null);
+  check("a clean draft has nothing to cut", cutToSources({ ...base, body: "ارتفع خام برنت إلى 111.2 دولار للبرميل بعد الهجوم.", keyFacts: [] }, sources), null);
+}
 
 // 3. The lessons' lint: harmful rules refused, good ones kept.
 check("a rule to drop figures is refused", lessonRuleOk("Skip secondary figures so the story stays focused on the main event and its lead number."), false);
