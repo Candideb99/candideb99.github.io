@@ -1,457 +1,181 @@
 {
-  "mode": "news",
-  "startedAt": "2026-10-22T17:17:27.719Z",
-  "durationSec": 2394,
-  "published": 3,
+  "mode": "analysis",
+  "startedAt": "2026-10-22T18:28:49.228Z",
+  "durationSec": 691,
+  "published": 1,
   "refreshed": 0,
   "report": [
     {
-      "headline": "صندوق النقد يتوقع انكماش اقتصادات الخليج 4.8% وتعافياً في 2027",
-      "section": "economy",
-      "importance": 8,
-      "sources": [
-        "https://www.agbi.com/economy/2026/10/gulfs-worst-oil-shock-will-leave-lasting-scars-says-imf/",
-        "https://www.arabnews.com/business/from-war-shock-to-comeback-imfs-azour-maps-gulf-recovery-3007761",
-        "https://economymiddleeast.com/news/menap-economy-to-rebound-6-6-percent-in-2027-as-energy-exports-and-shipping-recover-imf-says/"
-      ],
-      "outcome": "skipped: repeats a recent story («البنك الدولي يتوقع انكماش اقتصادات الخليج 4.3% هذا العام»)"
-    },
-    {
-      "headline": "المركزي التركي يخفض الفائدة إلى 36% في أول خفض منذ تسعة أشهر",
-      "section": "economy",
-      "importance": 7,
-      "sources": [
-        "https://aawsat.com/node/5332385",
-        "https://aawsat.com/node/5332352",
-        "https://economymiddleeast.com/news/turkiye-cuts-interest-rate-100-bps-to-36-percent-as-inflation-falls-below-30-percent/"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "العنوان والموجز والمقدمة توضح ما تغير: خفض 100 نقطة أساس إلى 36% بعد خمسة اجتماعات تثبيت. لكن صياغة العنوان «للمرة الأولى منذ يناير» تحتمل معنى أن الفائدة تبلغ 36% لأول مرة. كما أن المقدمة تذكر أسباب الخفض دون التحفظ الذي أبقاه البيان، وهو استمرار مخاطر الطاقة.",
-              "repair": "صحّح العنوان إلى «في أول خفض منذ يناير»، وأضف تحفظ مخاطر الطاقة الوارد في بيان أكتوبر (المصدر 1) إلى الفقرة الأولى."
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "السياق التاريخي غني: تواريخ التثبيت وحرب إيران وتوقعات التضخم. لكن فقرة تعليق مزادات الريبو واستئنافها تخلو من معناها الاقتصادي الذي يذكره المصدر 3. وفي «لماذا يهمّ» تصح المقدمات، أي ضعف الطلب وأثر صدمات العرض المحدود ورفع توقع أغسطس بسبب الطاقة، ويصح الاستدلال الأول بأن الخفض التالي مشروط ببقاء انتقال صدمات العرض محدوداً. أما الجملة الثانية فتحول «يمكن أن يدعم» إلى قناة وحيدة وكلفة مؤكدة.",
-              "repair": "أضف أن عودة تمويل الريبو جعلت سعر السياسة أقرب إلى كلفة سيولة البنك المركزي (المصدر 3)، واحذف الجملة الثانية من الصندوق أو قيّدها بتعدد القنوات."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "الفقرات مجمعة بحسب وظيفتها في الغالب. غير أن جملة سعر الدولار «واستقر الدولار عند 49.62 ليرة» ملحقة بتوقعات «جيه بي مورغان» بلا رابط، وتتكرر الإحالة «بحسب الموقع... ويرى الموقع» في فقرة واحدة.",
-              "repair": "افصل سعر الصرف في جملة مستقلة قرب الخبر دون إيحاء بأنه رد فعل على القرار، واجمع رأي «إيكونومي ميدل إيست» تحت إسناد واحد."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "التضخم الشهري «1.84%» يتعارض مع «1.48%» في المصدر 1. ويقدّم الموجز والعنوان الفرعي «الفائدة فوق التضخم» فارق الست نقاط دون التحفظ الذي يذكره المصدر 3 نفسه، وهو أن هذه المقارنة وحدها لا تحدد مدى تشدد السياسة لأن البنك يراعي التوقعات واتجاه الأسعار وسعر الصرف. وفي الفقرة الأولى نُسب «لشهر سبتمبر» إلى بيانات النشاط أيضاً، والمصدر يقصر سبتمبر على أرقام التضخم.",
-              "repair": "تحقق من الرقم الشهري الرسمي أو احذفه، وأضف إلى فقرة «الفائدة فوق التضخم» تحفظ المصدر 3 بشأن حدود المقارنة، واكتب «أرقام التضخم في سبتمبر وبيانات النشاط الاقتصادي»."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "يوضح الموجز والمقدمة ما تغير: خفض 100 نقطة أساس إلى 36% بعد خمسة اجتماعات تثبيت. ويوضح الموجز والفقرة الأولى أيضاً ما بقي قائماً، أي مخاطر الطاقة التي تبقي البنك حذراً. لكن عبارة «للمرة الأولى منذ يناير» في العنوان تحتمل أن الفائدة تبلغ 36% لأول مرة.",
-              "repair": "«المركزي التركي يخفض الفائدة إلى 36% في أول خفض منذ يناير»."
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "يقدم التقرير سياقاً غنياً: تواريخ التثبيت، وارتباطه بحرب إيران وأسعار الطاقة، وتوقعات البنك للتضخم، ومعنى عودة تمويل الريبو. كما تصح مقدمات الصندوق واستدلاله الأول بأن الخفوض التالية مشروطة ببقاء انتقال صدمات العرض محدوداً. لكن فقرة «الفائدة فوق التضخم» تعرض الفارق دون حدود المقارنة التي يذكرها المصدر 3 نفسه.",
-              "repair": "أضف تحفظ المصدر 3: الفارق وحده لا يحدد مدى التشدد، لأن البنك يراعي التوقعات واتجاه الأسعار وسعر الصرف والأوضاع المالية."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "الفقرات مجمعة في الغالب بحسب وظيفتها: البيان، ثم التضخم، ثم الطلب، ثم التوقعات، ثم الخلفية، ثم الخطوة التالية. لكن فقرة الفائدة تكرر الإسناد «بحسب الموقع... ويصف الموقع». ويختم الصندوق بعبارة «وهو ضعف تظهره أيضاً أرقام الإنتاج الصناعي وثقة المستهلك»، وهي ترديد لما في المتن.",
-              "repair": "اجمع رأي «إيكونومي ميدل إيست» تحت إسناد واحد يسمّيه. واحذف ذيل الصندوق المكرر، أو حوّله إلى استدلال عن حدود الاعتماد على قناة الطلب وحدها."
-            },
-            "precision": {
-              "status": "clear",
-              "evidence": "الأرقام مطابقة للمصادر: 36% و100 نقطة أساس، و39% و34.5% لسعري الليلة الواحدة، و29.73% مقابل 31.51%، والتوقع البالغ 30.3%، والإنتاج الصناعي -1.9%، ومؤشر الثقة 84.8، والتوقعات 28% و15% و9%، والتواريخ 30 أكتوبر و12 نوفمبر و10 ديسمبر. وحُذف رقم التضخم الشهري المتعارض بين المصدرين. وتُقدَّم توقعات البنك و«جيه بي مورغان» بوصفها توقعات، ويُذكر سعر الدولار وقت الكتابة دون نسبته إلى القرار.",
-              "repair": ""
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 7,
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
+      "headline": "بعد تسوية متأخرات بقيمة 6.1 مليار دولار: هل تتحول ثقة شركاء البترول الأجانب إلى إنتاج غاز أكبر في مصر؟",
+      "section": "analysis",
       "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "قال البنك إن أرقام التضخم في سبتمبر وبيانات النشاط تشير إلى أثر محدود لصدمات العرض على الأسعار المحلية واستمرار ضعف الطلب المحلي",
-          "source": 1
-        },
-        {
-          "fact": "نبّه البنك إلى أن مخاطر ارتفاع أسعار الطاقة الناجمة عن التوترات الجيوسياسية ما زالت قائمة على توقعات التضخم",
-          "source": 1
-        },
-        {
-          "fact": "رفع تقرير التضخم في أغسطس توقع نهاية 2026 إلى 28% جزئياً بسبب أسعار الديزل والغاز الطبيعي والسلع الأولية والغذاء",
-          "source": 3
-        },
-        {
-          "fact": "يقول البنك إن سياسته المتشددة تعمل عبر قنوات عدة منها الطلب وسعر الصرف والتوقعات، وإن قراراته تعتمد على التضخم المتحقق والمتوقع واتجاهه الأساسي",
-          "source": 3
-        }
-      ],
-      "slug": "turkey-central-bank-cuts-rate-36-percent-00a110",
-      "title": "المركزي التركي يخفض الفائدة إلى 36% في أول خفض منذ يناير",
-      "score": 8,
-      "image": "photo"
-    },
-    {
-      "headline": "البورصة المصرية تهبط 3.41% وقيمتها السوقية تنزل دون 4 تريليونات جنيه",
-      "section": "markets",
-      "importance": 6,
-      "sources": [
-        "https://www.youm7.com/story/2026/10/22/%D8%B3%D9%82%D9%88%D8%B7-%D8%A7%D9%84%D9%83%D8%A8%D8%A7%D8%B1-%D8%A8%D8%A7%D9%84%D8%A8%D9%88%D8%B1%D8%B5%D8%A9-%D8%A7%D9%84%D9%8A%D9%88%D9%85-%D8%A3%D8%B3%D9%87%D9%85-%D8%A7%D9%84%D8%A7%D8%AA%D8%B5%D8%A7%D9%84%D8%A7%D8%AA-%D9%88%D8%A7%D9%84%D8%B9%D9%82%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A8%D8%B5%D8%AF%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D8%AA%D8%B1%D8%A7%D8%AC%D8%B9/7589773",
-        "https://www.masrawy.com/news/news_economy/details/2026/10/22/3066990/%D8%A7%D9%84%D9%85%D8%A4%D8%B4%D8%B1-%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3%D9%8A-%D9%84%D9%84%D8%A8%D9%88%D8%B1%D8%B5%D8%A9-%D9%8A%D9%86%D8%AE%D9%81%D8%B6-3-41-%D9%81%D9%8A-%D8%AE%D8%AA%D8%A7%D9%85-%D8%AA%D8%B9%D8%A7%D9%85%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D9%8A%D9%88%D9%85-%D8%A7%D9%84%D8%AE%D9%85%D9%8A%D8%B3",
-        "https://www.youm7.com/story/2026/10/22/%D8%AA%D8%A8%D8%AE%D8%B1-102-%D9%85%D9%84%D9%8A%D8%A7%D8%B1-%D8%AE%D9%84%D8%A7%D9%84-%D8%A3%D8%B3%D8%A8%D9%88%D8%B9-%D8%B1%D8%A3%D8%B3-%D9%85%D8%A7%D9%84-%D8%A7%D9%84%D8%A8%D9%88%D8%B1%D8%B5%D8%A9-%D9%8A%D9%86%D8%AE%D9%81%D8%B6-%D8%AA%D8%AD%D8%AA/7589800"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "العنوان والمقدمة يوضحان هبوط المؤشر 3.41% ونزول القيمة السوقية الأسبوعية دون أربعة تريليونات. لكن «بقيادة أسهم الاتصالات» تنسب إلى القطاع دوراً في هبوط المؤشر لا يثبته المصدر 1.",
-              "repair": "«مؤشر البورصة المصرية الرئيسي يهبط 3.41% مع تراجع 15 قطاعاً»، مع ذكر صدارة الاتصالات للقطاعات المتراجعة في المقدمة."
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "السياق المتاح حاضر: صعود الأربعاء 1.47%، واتساع التراجع إلى EGX 100، وتدفقات المستثمرين، والحصيلة الأسبوعية. لكن مقدمات «لماذا يهمّ» صحيحة جزئياً فقط، والاستنتاج يقفز من صافي بيع الأجانب في جلسة واحدة إلى اعتماد «تماسك السوق» على الشراء المحلي، من دون شرط يحدّه.",
-              "repair": "صياغة الصندوق حول قيد واحد مثبت: أن التراجع الأسبوعي جاء من الأسعار مع ثبات قاعدة الأسهم، وأن نسبه الأعلى كانت في الأسهم الأصغر. ويُحذف التعميم عن الأجانب أو يُحصر في جلسة الخميس."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "الفقرات مجمّعة بحسب وظيفتها (الجلسة، القطاعات، الأسهم، التدفقات، الأسبوع). لكن جملة «ما يحصر الخسارة في هبوط أسعار الأسهم» تكرر ما يقوله صندوق «لماذا يهمّ»، فيصبح الصندوق صدى للخاتمة.",
-              "repair": "إبقاء الأرقام في الفقرة الأخيرة، وترك تفسير مصدر التراجع للصندوق وحده."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "عبارة «الأربعة تريليونات فُقدت» تحرّف حجم الخسارة البالغة 102.1 مليار جنيه. وعبارة «تركّزت الخسائر الأكبر» تخلط النسبة بالقيمة، إذ فقدت أسهم EGX30 بالقيمة أكثر من أسهم EGX70 EWI. والرسم يسقط خمسة قطاعات متراجعة.",
-              "repair": "تصحيح العبارتين إلى صيغة النسبة وحاجز الأربعة تريليونات، واستكمال الرسم بالقطاعات الخمسة عشر أو تغيير عنوانه."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان يحدد ما تغيّر: هبوط EGX 30 بنسبة 3.41% مع تراجع 15 قطاعاً. ولم يعد ينسب قيادة الهبوط إلى الاتصالات. ويحمل الدك نتيجة الأسبوع للحدث نفسه، أي أداء السوق، والمقدمة تجمع الجلسة والأسبوع بوضوح.",
-              "repair": ""
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "السياق المتاح حاضر: صعود الأربعاء 1.47%، واتساع التراجع إلى EGX 100، والتدفقات، والحصيلة الأسبوعية، ورأس المال المدفوع. أما الصندوق فمقدمته الأولى صحيحة، لكنه يختمها بصدى المتن. ومقدمته الثانية صحيحة، لكنها تُبنى عليها نتيجة سببية لا تحتملها (صافي الشراء «لم يمنع» الهبوط).",
-              "repair": "حصر الصندوق في قراءة مصدر التراجع الأسبوعي: أسعار لا قاعدة أسهم، مع أثر نسبي أشد على الأسهم الأصغر. وحذف جملة التدفقات."
-            },
-            "flow": {
-              "status": "clear",
-              "evidence": "الفقرات مجمّعة بحسب وظيفتها: الجلسة ومقارنتها بالأربعاء، ثم القطاعات من الأشد إلى الأخف، ثم الأسهم، ثم التدفقات، ثم الأسبوع. واختفت جملة التعليل المكررة من الخاتمة، فلم يعد المتن يستبق الصندوق.",
-              "repair": ""
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الأرقام والتواريخ والمراتب مطابقة للمصادر 1 و2 و3، وكذلك الجدول وصيغة النسب في المقارنة الأسبوعية. لكن عنوان الرسم «أبرز القطاعات تراجعاً» لا يطابق اختياره للقطاعات. ويغيب أيضاً تراجع EGX 70 اليومي 3.09%، وهو ما يحدد أن الأسهم الأصغر هبطت يوم الخميس أقل من المؤشر الرئيسي.",
-              "repair": "تصحيح اختيار القطاعات في الرسم أو عنوانه، وإضافة رقم EGX 70 اليومي إلى الفقرة الأولى."
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 6,
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "ارتفع رأس المال المدفوع للأسهم المقيدة 0.7% إلى 621.7 مليار جنيه بينما نزلت القيمة السوقية من 4.0512 إلى 3.9491 تريليون جنيه",
-          "source": 3
-        },
-        {
-          "fact": "تراجعت القيمة السوقية لأسهم EGX70 EWI بنسبة 6.1% خلال الأسبوع مقابل 2.5% لأسهم EGX30",
-          "source": 3
-        }
-      ],
-      "slug": "egypt-egx30-falls-market-cap-below-4-trillion-f90c93",
-      "title": "المؤشر الرئيسي للبورصة المصرية يهبط 3.41% مع تراجع 15 قطاعاً",
-      "score": 8,
-      "image": "cover-art"
-    },
-    {
-      "headline": "طلبات إعانة البطالة الأمريكية تنخفض إلى 194 ألفاً قرب أدنى مستوى منذ 1969",
-      "section": "economy",
-      "importance": 6,
-      "sources": [
-        "https://aawsat.com/node/5332450",
-        "https://www.aljazeera.net/ebusiness/2026/10/22/%d8%b7%d9%84%d8%a8%d8%a7%d8%aa-%d8%a5%d8%b9%d8%a7%d9%86%d8%a9-%d8%a7%d9%84%d8%a8%d8%b7%d8%a7%d9%84%d8%a9-%d9%81%d9%8a-%d8%a3%d9%85%d8%b1%d9%8a%d9%83%d8%a7-%d8%aa%d9%82%d8%aa%d8%b1%d8%a8-%d9%85%d9%86",
-        "https://www.cnbc.com/2026/10/22/jobless-claims-record-low-weekly.html"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يوضح العنوان والمقدمة ما تغيّر: انخفاض الطلبات إلى 194 ألفاً قرب أدنى مستوى منذ 1969، مقابل توقعات عند 200 ألف. وتوضح الفقرة الثانية ما لم يتغيّر: ضعف التوظيف عند 29 ألف وظيفة في سبتمبر.",
-              "repair": ""
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "يعرّف التقرير الخبراء بأدوارهم ومؤسساتهم، ويشرح أسباب الاحتفاظ بالعمال. لكنه يغفل الطلبات المستمرة (1.728 مليون) ومدة البطالة (11.5 أسبوع) من المصدر 1، ولا يسمّي الحرب. أما «لماذا يهمّ» فاستدلاله محدود ومشروع: قلة التسريح تجعل التضخم القيد الحاكم، وأي تشديد قد يختبر تمسك الشركات بعمالها. وهو مسنود بالمصادر 1 و3، غير أن وصف «سوق شحيحة العمالة» يُسقط تحفظ روبكي «ربما».",
-              "repair": "أضف الأرقام المغفلة وتحذير الاقتصاديين من العام المقبل (المصدران 1 و2)، وسمِّ الحرب. وفي «لماذا يهمّ» اكتب «في سوق تقلّصت فيها القوى العاملة» بدلاً من «شحيحة العمالة»."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "تتبع الفقرات سؤال القارئ: لماذا تنخفض الطلبات مع ضعف التوظيف؟ لكن فقرة حدود مؤشر الطلبات المستمرة تأتي بلا رقمه. وفقرة الأسواق تقول إن الأسواق لم تتحرك كثيراً ثم تذكر هبوطاً بنسبة 1.25%.",
-              "repair": "ادمج رقم الطلبات المستمرة مع شرح حدوده في فقرة واحدة، وافصل ردّ الفعل الفوري عن أسعار المساء أو احذف الأخيرة."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الأرقام والتواريخ مطابقة للمصادر: 194 ألفاً، و197,750، و189 ألفاً في أسبوع 18 يوليو، ونطاق 3.75–4%، وصدور التقرير في 6 نوفمبر. لكن «يرى اقتصاديون أن تراجع متوسط الطلبات… قد يشير» ينسب استنتاج التقرير إلى اقتصاديين. وأسعار الساعة 17:45 لا تقيس ردّ الفعل على بيانات صدرت صباحاً.",
-              "repair": "صغ الاستنتاج دون نسبته إلى اقتصاديين، وبيّن توقيت أسعار السوق أو احذفها."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يوضح العنوان والمقدمة ما تغيّر: 194 ألف طلب مقابل توقعات عند 200 ألف، قرب أدنى مستوى منذ 1969. وتضيف الفقرة الثانية القيد الأساسي: «لا يعني انخفاض الطلبات أن الشركات توظف بقوة». فلا يفهم القارئ المتانة على أنها توظيف قوي.",
-              "repair": ""
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "يشرح التقرير سبب تمسك الشركات بعمالها، ويعرّف روبكي وسيمونز وواينبرغ بأدوارهم ومؤسساتهم، ويسمّي الحرب عند أول ذكر. لكنه يغفل رقم الطلبات المستمرة (1.728 مليون، +25 ألفاً) ومدة البطالة (11.5 أسبوع) من المصدر 1، كما يغفل تحذير الاقتصاديين من ضغط على سوق العمل العام المقبل (المصدران 1 و2). مقدمات «لماذا يهمّ» مسنودة بالمصدرين 1 و3، واستدلاله محدود ومشروع: قلة التسريح تجعل التضخم القيد الحاكم، وأي تشديد سيختبر تمسك الشركات بعمالها. والتحذير الغائب عن المتن هو ما يسند هذا الاستدلال.",
-              "repair": "أضف الأرقام المغفلة إلى فقرة حدود المؤشر، وأضف التحذير منسوباً إلى الاقتصاديين في قسم الفائدة."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "تتبع الفقرات سؤال القارئ: لماذا تنخفض الطلبات مع ضعف التوظيف؟ وتنتهي بموعد تقرير الوظائف في 6 نوفمبر. لكن فقرة الأسواق تقول إن الأسواق «لم تتغير كثيراً» ثم تذكر هبوطاً بنسبة 1.25%. وتفتتح الفقرة الرابعة بالإحالة «تدعم ... هذه الصورة».",
-              "repair": "افصل ردّ الفعل الفوري عن أسعار المساء أو احذف الأخيرة، وابدأ فقرة مكتب إحصاءات العمل بالحقيقة المقيسة."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الأرقام والتواريخ مطابقة للمصادر: 194 ألفاً، و197,750، و189 ألفاً في أسبوع 18 يوليو، ومتوسط 212 ألفاً، و61 ألفاً، و1%، ونطاق 3.75–4%، و6 نوفمبر. وصارت قراءة فترتي المسح منسوبة إلى التقرير لا إلى اقتصاديين. لكن «من تنقصهم الخبرة» تحرّف شرط «محدودية التاريخ الوظيفي»، وأسعار الساعة 17:45 تُقدَّم دون بيان أنها لاحقة ولا تقيس ردّ الفعل على البيانات.",
-              "repair": "اكتب «لقصر تاريخهم الوظيفي»، وقدّم الأسعار مستويات تداول لاحقة مع ذكر الإغلاق السابق، أو احذفها."
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 8,
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "انخفضت الطلبات الأولية لإعانة البطالة إلى 194 ألفاً، قرب أدنى مستوى منذ 1969",
-          "source": 3
-        },
-        {
-          "fact": "يرجع اقتصاديون متانة السوق إلى عوامل منها تقلص القوى العاملة وقيود الهجرة، ما يدفع الشركات للاحتفاظ بموظفيها",
-          "source": 1
-        },
-        {
-          "fact": "بلغ متوسط الزيادة الشهرية في الوظائف غير الزراعية 69 ألف وظيفة فقط في 2026",
-          "source": 3
-        },
-        {
-          "fact": "ركز مسؤولو الفيدرالي على تضخم يبقى أعلى كثيراً من مستهدف البنك البالغ 2%",
-          "source": 3
-        }
-      ],
-      "slug": "us-jobless-claims-fall-194000-near-1969-low-3be3f0",
-      "title": "طلبات إعانة البطالة الأمريكية تنخفض إلى 194 ألفاً قرب أدنى مستوى منذ 1969",
+      "slug": "egypt-arrears-settlement-gas-output-test-27cfe4",
+      "title": "تسوية متأخرات الشركاء الأجانب لا تكفي وحدها لرفع إنتاج مصر من الغاز",
       "score": 8,
       "image": "photo"
     }
   ],
   "llm": {
-    "calls": 63,
-    "failures": 5,
-    "promptTokens": 909342,
-    "completionTokens": 238241,
-    "cacheReadTokens": 252339,
-    "costUsd": 10.0706,
+    "calls": 13,
+    "failures": 0,
+    "promptTokens": 171041,
+    "completionTokens": 39961,
+    "cacheReadTokens": 38679,
+    "costUsd": 1.8657,
     "byModel": {
-      "claude-cli/claude-opus-5-5": 63
+      "claude-cli/claude-opus-5-5": 13
     }
   },
   "log": [
-    "[17:49:12]   · ينقص التقرير: الأرقام التي توازن صورة المتانة. يذكر المصدر 1 ارتفاع الطلبات المستمرة بمقدار 25 ألفاً إلى 1.728 مليون في الأسبوع المنتهي في 10 أكتوبر، وبلوغ متوس",
-    "[17:49:51] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: why_basis needs one to four reported premises with source numbers",
-    "[17:50:31] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=2 ms=37293",
-    "[17:50:57] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=25242",
-    "[17:50:57] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
-    "[17:50:57] desk \"طلبات إعانة البطالة الأمريكية تنخفض إلى 194 ألفاً قرب أدنى مستوى منذ 1969\": rewrote body",
-    "[17:51:46] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=49576",
-    "[17:51:46] critic (second pass) \"طلبات إعانة البطالة الأمريكية تنخفض إلى 194 ألفاً قرب أدنى مستوى منذ 1969\": revise score=8 issues=8",
-    "[17:52:24] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=37545",
-    "[17:52:52] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=28373",
-    "[17:52:52] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
-    "[17:52:52] desk \"طلبات إعانة البطالة الأمريكية تنخفض إلى 194 ألفاً قرب أدنى مستوى منذ 1969\": rewrote body",
-    "[17:52:52] mended \"طلبات إعانة البطالة الأمريكية تنخفض إلى 194 ألفاً قرب أدنى مستوى منذ 1969\": the second pass's 8 finding(s) sent back once more",
-    "[17:53:51] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=58530",
-    "[17:53:51] precheck \"طلبات إعانة البطالة الأمريكية تنخفض إلى 194 ألفاً قرب أدنى مستوى منذ 1969\": clean",
-    "[17:53:51] image: handout passed over (Al Jazeera Arabic): the outlet's own, an archive or an illustration («Signage for a job fair is seen on 5th Avenue after the release of the»)",
-    "[17:53:56] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5551",
-    "[17:53:56] image: the picture should say: American employers are holding on to their workers even as hiring slows.",
-    "[17:54:03] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6414",
-    "[17:54:03] image: the source's photograph (CNBC) shows A job seeker holds a leather portfolio and a South Florida job fair exhibitor directory while attending a hiring event a; searching job fair South Florida | job seekers at job fair | job fair attendees United States | career fair hiring event",
-    "[17:54:03] image: tier 2, like the sources' own photograph: job fair South Florida | job seekers at job fair | job fair attendees United States | career fair hiring event",
-    "[17:54:04] commons \"job fair South Florida\": 1 usable of 7",
-    "[17:54:04] image: dropped \"Breeder and sportsman (1887) (19786010554).jpg\" — names too little of job, fair",
-    "[17:54:04] pexels \"job fair South Florida\": 8 usable",
-    "[17:54:24] openverse \"job fair South Florida\": The operation was aborted due to timeout",
-    "[17:54:24] image: dropped \"Back view of a man with dreadlocks holding a cup at an outdoor festiva\" — names too little of job, fair",
-    "[17:54:24] image: dropped \"Van with wheelchair lift and driver assisting, located outdoors near a\" — names too little of job, fair",
-    "[17:54:24] image: dropped \"Aerial daytime view of Miami, Florida capturing city skyline and dista\" — names too little of job, fair",
-    "[17:54:24] image: dropped \"Stunning aerial cityscape of Fort Lauderdale, highlighting the urban s\" — names too little of job, fair",
-    "[17:54:24] image: dropped \"Discover the luxury Biltmore Hotel in Miami with lush golf course pano\" — names too little of job, fair",
-    "[17:54:24] image: dropped \"High-rise buildings along the coast of Sunny Isles Beach, Florida on a\" — names too little of job, fair",
-    "[17:54:24] image: dropped \"Exterior view of the Hyatt and Miami Convention Center under a clear b\" — names too little of job, fair",
-    "[17:54:24] image: dropped \"Vibrant night scene of South Miami Avenue with light trails and illumi\" — names too little of job, fair",
-    "[17:54:24] commons \"job seekers at job fair\": 19 usable of 20",
-    "[17:54:24] image: dropped \"Job fair breaks the ice for employment seekers (5934893714).jpg\" — a warship or weapon, and the story is not about the military",
-    "[17:54:25] pexels \"job seekers at job fair\": 8 usable",
-    "[17:54:44] openverse \"job seekers at job fair\": The operation was aborted due to timeout",
-    "[17:54:44] image: dropped \"Businesswoman in professional attire shaking hands with recruiter in a\" — names too little of job, seekers, fair",
-    "[17:54:44] image: dropped \"Young woman in a business meeting with an interviewer, showcasing conf\" — names too little of job, seekers, fair",
-    "[17:54:44] image: dropped \"A diverse group of business professionals reviewing documents in a mee\" — names too little of job, seekers, fair",
-    "[17:54:44] image: dropped \"Multicultural team discussing work in an office, holding binders and d\" — names too little of job, seekers, fair",
-    "[17:54:44] image: dropped \"Three business professionals engaged in discussion at a conference roo\" — names too little of job, seekers, fair",
-    "[17:54:45] commons \"job fair attendees United States\": 11 usable of 13",
-    "[17:54:45] image: dropped \"L.A. Opportunity Youth Job Fair (24891157571).jpg\" — shows garcetti, not the story's people",
-    "[17:54:45] image: dropped \"Team Shaw hosts job fair 120622-F-HJ874-017.jpg\" — a warship or weapon, and the story is not about the military",
-    "[17:54:45] image: dropped \"USMC-101104-M-6664-187.jpg\" — names too little of job, fair, attendees",
-    "[17:54:45] commons \"career fair hiring event\": 18 usable of 20",
-    "[17:54:45] image: dropped \"STARCOM hosts career fair in Florida amid hiring surge (9636937).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[17:54:45] image: dropped \"Job fair conversation (7713574).jpg\" — taken in Germany, which the story does not name",
-    "[17:54:45] image: dropped \"Job fair gives community members more job opportunities (7578464).jpg\" — taken in Germany, which the story does not name",
-    "[17:54:45] image: dropped \"Jobmesse (Job Fair) Nurnberg (7713577).jpg\" — taken in Germany, which the story does not name",
-    "[17:54:45] image: 4 likeness(es) set aside for the country's own photographs",
-    "[17:55:02] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=8320",
-    "[17:55:02] image: vision rejected all candidates (No candidate works. Photo 1 shows a named official, Brian Raymond, who is not in the story. Photo 5 shows a named politician, Lt. Gov. Guadagno. Photo 3 was taken in Germany. Photo 4 is dated (2012) and shows Marines in uniform, which misleads for a US labor-market story. Photo 2 is a 2026 Florida hiring event, but at a glance it reads as a crowd at a beach rather than job seekers, so it would puzzle readers.)",
-    "[17:55:02] image: tier 3, the writer's own subjects: job fair United States | job seekers line | office workers desks",
-    "[17:55:03] commons \"job fair United States 2026\": 12 usable of 12",
-    "[17:55:03] commons \"job fair United States\": 10 usable of 12",
-    "[17:55:03] commons \"job seekers line 2026\": 0 usable of 0",
-    "[17:55:04] commons \"job seekers line\": 10 usable of 12",
-    "[17:55:04] image: dropped \"US Navy 081117-N-8856L-002 Hopeful job seekers line up at the Career F\" — a warship or weapon, and the story is not about the military",
-    "[17:55:04] image: dropped \"MBTA Haverhill Line Groundbreaking, May 3, 2010 (4578083733).jpg\" — names too little of job, seekers, line",
-    "[17:55:04] image: dropped \"MBTA Haverhill Line Groundbreaking, May 3, 2010 (4578083731).jpg\" — names too little of job, seekers, line",
-    "[17:55:04] image: dropped \"US Army 50954 FIRST IN LINE.jpg\" — names too little of job, seekers, line",
-    "[17:55:07] commons \"office workers desks 2026\": 0 usable of 8",
-    "[17:55:07] commons \"office workers desks\": 4 usable of 12",
-    "[17:55:07] image: dropped \"Office chair (4444288246).jpg\" — names too little of office, workers, desks",
-    "[17:55:07] image: dropped \"Frances Harriet Williams 1940s.jpg\" — dated 1940, an archival picture",
-    "[17:55:15] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7758",
-    "[17:55:15] image: \"4H Youth Career Fair 2026 (20260413-USDA-NIFA-CDP-1203).jpg\" names the story's topic without saying its point (Photo 4 is the best fit: a recent (2026) US career fair with a recruiter talking to young job seekers, showing the American labour market at work. It does not s); checked now and kept in reserve while the desk looks further",
-    "[17:55:22] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7069",
-    "[17:55:22] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"4H Youth Career Fair 2026 (20260413-USDA-NIFA-CDP-1203).jpg\": A professionally shot US job fair, with recruiters talking to applicants in Arlington, Virginia, is the standard illustr",
-    "[17:55:22] image: tier 4, the story's point and its subject: construction workers Chicago | factory workers United States | job fair Florida | job fair United States | factory workers assembly line | warehouse workers (home: United States, USA, American, Chicago, Florida)",
-    "[17:55:23] commons \"construction workers Chicago\": 9 usable of 24",
-    "[17:55:23] image: dropped \"BLACK CONSTRUCTION WORKER IN SOUTH SIDE CHICAGO. SOME BLACKS CHARGE TH\" — dated 1973, an archival picture",
-    "[17:55:23] image: dropped \"Atrium, Sears Tower, Wacker Drive and Jackson Boulevard, Chicago, IL.j\" — names too little of construction, workers",
-    "[17:55:23] image: dropped \"Atrium, Sears Tower, Wacker Drive and Jackson Boulevard, Chicago, IL -\" — names too little of construction, workers",
-    "[17:55:23] image: dropped \"Atrium, Sears Tower, Wacker Drive and Jackson Boulevard, Chicago, IL -\" — names too little of construction, workers",
-    "[17:55:23] image: dropped \"Atrium, Sears Tower, Wacker Drive and Jackson Boulevard, Chicago, IL -\" — names too little of construction, workers",
-    "[17:55:23] image: dropped \"Atrium, Sears Tower, Wacker Drive and Jackson Boulevard, Chicago, IL -\" — names too little of construction, workers",
-    "[17:55:23] image: dropped \"Atrium, Sears Tower, Wacker Drive and Jackson Boulevard, Chicago, IL -\" — names too little of construction, workers",
-    "[17:55:23] image: dropped \"Atrium, Sears Tower, Wacker Drive and Jackson Boulevard, Chicago, IL -\" — names too little of construction, workers",
-    "[17:55:23] image: dropped \"Atrium, Sears Tower, Wacker Drive and Jackson Boulevard, Chicago, IL -\" — names too little of construction, workers",
-    "[17:55:23] pexels \"construction workers Chicago\": 8 usable",
-    "[17:55:43] openverse \"construction workers Chicago\": The operation was aborted due to timeout",
-    "[17:55:43] image: dropped \"Two construction workers install an electrical panel outside a buildin\" — an event's photograph, people and banners",
-    "[17:55:43] commons \"factory workers United States\": 8 usable of 24",
-    "[17:55:43] image: dropped \"International Association of Fur Workers United States and Canada (reg\" — dated 1928, an archival picture",
-    "[17:55:43] image: dropped \"R-1830 engine on C-47 at factory 1942.jpg\" — dated 1942, an archival picture",
-    "[17:55:43] image: dropped \"Workers leaving James Martin factory, Gawler SA, 1907 (SLSA B 44970).j\" — dated 1907, an archival picture",
-    "[17:55:43] image: dropped \"StateLibQld 1 174703 Builders and butter factory workers at the Biggen\" — dated 1926, an archival picture",
-    "[17:55:43] image: dropped \"1885 - Eagle Brewery Workers - Allentown PA.jpg\" — dated 1885, an archival picture",
-    "[17:55:43] image: dropped \"StateLibQld 1 140935 Workers of the Caboolture Butter Factory, Brisban\" — dated 1912, an archival picture",
-    "[17:55:43] image: dropped \"StateLibQld 1 52836 Workers in a boot making factory, South Brisbane, \" — dated 1900, an archival picture",
-    "[17:55:43] pexels \"factory workers United States\": 8 usable",
-    "[17:56:03] openverse \"factory workers United States\": The operation was aborted due to timeout",
-    "[17:56:04] commons \"job fair Florida\": 9 usable of 23",
-    "[17:56:04] image: dropped \"Locomotive engineering - a practical journal of railway motive power a\" — names too little of job, fair",
-    "[17:56:04] image: dropped \"2009 01 Happy Anoniversary 24.jpg\" — names too little of job, fair",
-    "[17:56:04] image: dropped \"2009 01 Happy Anoniversary 20.jpg\" — names too little of job, fair",
-    "[17:56:04] image: dropped \"2009 01 Happy Anoniversary 21.jpg\" — names too little of job, fair",
-    "[17:56:04] image: dropped \"170315-N-RL456-0027 170315-N-RL456-0027.jpg\" — names too little of job, fair",
-    "[17:56:04] image: dropped \"170315-N-RL456-0026 170315-N-RL456-0026.jpg\" — names too little of job, fair",
-    "[17:56:04] image: dropped \"Illinois Agricultural Association record (microform) (January 1931- De\" — names too little of job, fair",
-    "[17:56:04] image: dropped \"Breeder and sportsman (1887) (19786010554).jpg\" — names too little of job, fair",
-    "[17:56:04] pexels \"job fair Florida\": 8 usable",
-    "[17:56:21] openverse \"job fair Florida\": 7 usable of 13",
-    "[17:56:21] image: dropped \"Happy Anoniversary 123\" — names too little of job, fair",
-    "[17:56:21] image: dropped \"Happy Anoniversary 24\" — names too little of job, fair",
-    "[17:56:21] image: dropped \"Happy Anoniversary 20\" — names too little of job, fair",
-    "[17:56:21] image: dropped \"Happy Anoniversary 21\" — names too little of job, fair",
-    "[17:56:21] image: dropped \"Happy Anoniversary 253\" — names too little of job, fair",
-    "[17:56:21] image: dropped \"Florida, My Home State\" — names too little of job, fair",
-    "[17:56:21] image: dropped \"Back view of a man with dreadlocks holding a cup at an outdoor festiva\" — names too little of job, fair",
-    "[17:56:21] image: dropped \"Van with wheelchair lift and driver assisting, located outdoors near a\" — names too little of job, fair",
-    "[17:56:21] image: dropped \"Top view of a bustling indoor exhibition space in Taipei, Taiwan.\" — names too little of job, fair",
-    "[17:56:21] image: dropped \"Vibrant carnival stand with lemonade and cold drinks in West Springfie\" — names too little of job, fair",
-    "[17:56:21] image: dropped \"Professionals engaging in conversation at a diverse business conferenc\" — names too little of job, fair",
-    "[17:56:21] image: dropped \"A diverse group of professionals networking at an indoor business semi\" — names too little of job, fair",
-    "[17:56:21] image: dropped \"A diverse group of business professionals reviewing documents in a mee\" — names too little of job, fair",
-    "[17:56:21] commons \"job fair United States\": 22 usable of 24",
-    "[17:56:21] image: dropped \"Job fair gives community members more job opportunities (7578467).jpg\" — a warship or weapon, and the story is not about the military",
-    "[17:56:21] image: dropped \"Jimmy Panetta visits Census 2020 Job Fair at the Monterey Library.jpg\" — an event's photograph, people and banners",
-    "[17:56:22] commons \"factory workers assembly line\": 8 usable of 24",
-    "[17:56:22] image: dropped \"Experienced assembly line workers of both sexes contribute to the prod\" — dated 1942, an archival picture",
-    "[17:56:22] image: dropped \"Flower in hair, Betty Gumbetter adds glamour to the assembly line 8b07\" — dated 1942, an archival picture",
-    "[17:56:22] image: dropped \"Airacobra P39 Assembly LOC 02902u.jpg\" — dated 1940, an archival picture",
-    "[17:56:22] image: dropped \"Metal parts are placed on masonite by this woman employee before they \" — dated 1942, an archival picture",
-    "[17:56:22] image: dropped \"Woman working on an airplane motor at North American Aviation, Inc., p\" — dated 1942, an archival picture",
-    "[17:56:22] image: dropped \"Canadian forest industries 1905-1906 (1906) (20338568119).jpg\" — names too little of factory, workers, assembly, line",
-    "[17:56:22] image: dropped \"Airplane Cloth Room, Pepperell Manufacturing Company (11179238556).jpg\" — names too little of factory, workers, assembly, line",
-    "[17:56:22] image: dropped \"AEMC Summit (11343379864).jpg\" — an event's photograph, people and banners",
-    "[17:56:22] pexels \"factory workers assembly line\": 8 usable",
-    "[17:56:42] openverse \"factory workers assembly line\": The operation was aborted due to timeout",
-    "[17:56:42] image: dropped \"Woman in blue uniform handling textiles in a modern industrial factory\" — names too little of factory, workers, assembly, line",
-    "[17:56:42] image: dropped \"A worker operates machinery in a modern textile manufacturing facility\" — names too little of factory, workers, assembly, line",
-    "[17:56:42] commons \"warehouse workers\": 15 usable of 24",
-    "[17:56:42] image: dropped \"Amazon warehouse workers outside the National Labor Relations Board 03\" — a scan of a note's or a coin's face, not a photograph",
-    "[17:56:42] image: dropped \"Amazon warehouse workers outside the National Labor Relations Board 02\" — a scan of a note's or a coin's face, not a photograph",
-    "[17:56:42] image: dropped \"Workers in warehouse, 1915 (4167079120).jpg\" — dated 1915, an archival picture",
-    "[17:56:42] image: dropped \"Warehouse workers prepare packages for shipment at Sharpe Army Depot -\" — dated 1987, an archival picture",
-    "[17:56:42] image: dropped \"\"A group of workers in front of the partially constructed warehouse ju\" — dated 1933, an archival picture",
-    "[17:56:42] image: dropped \"Medamud. Temple of Montu. Workers move a block to the warehouse.jpg\" — dated 1924, an archival picture",
-    "[17:56:48] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5079",
-    "[17:56:48] image: \"A safety worker in a reflective vest manages traffic on a bu\" names the story's topic without saying its point; the desk already holds one such, and looks further",
-    "[17:56:48] image: thumbnail HTTP 403 for https://live.staticflickr.com/8445/8017598073_a9226c1bfa_n.jpg",
-    "[17:57:13] image: could not inline https://api.openverse.org/v1/images/1a92aeee-c6b5-4364-b4b4-a90d44f43929/thumb/: The operation was aborted due to timeout",
-    "[17:57:21] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7451",
-    "[17:57:21] image: \"Women sorting tomatoes on a factory production line, ensurin\" names the story's topic without saying its point; the desk already holds one such, and looks further",
-    "[17:57:21] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"4H Youth Career Fair 2026 (20260413-USDA-NIFA-CDP-1203).jpg\"",
-    "[17:57:21] published \"طلبات إعانة البطالة الأمريكية تنخفض إلى 194 ألفاً قرب أدنى مستوى منذ 1969\" -> us-jobless-claims-fall-194000-near-1969-low-3be3f0"
+    "[18:34:55] image: dropped \"Oil pumpjack surrounded by barren landscape under overcast skies, show\" — names too little of gas, field",
+    "[18:34:55] image: dropped \"A rusty oil pumpjack situated in a desert-like landscape under a partl\" — names too little of gas, field",
+    "[18:34:55] image: dropped \"Oil pump jack and equipment at remote industrial site under cloudy sky\" — names too little of gas, field",
+    "[18:34:55] image: dropped \"Engineer in safety gear within an industrial setting in Libya, pipes a\" — names too little of gas, field",
+    "[18:34:55] image: dropped \"Scenic view of an offshore oil platform on a frozen sea during sunset,\" — names too little of gas, field",
+    "[18:34:56] commons \"Western Desert oil field Egypt\": 1 usable of 2",
+    "[18:34:56] image: dropped \"Jean-Léon Gérôme - Rider and his Steed in the Desert (1872).jpg\" — dated 1872, an archival picture",
+    "[18:34:58] pexels \"Western Desert oil field Egypt\": 8 usable",
+    "[18:35:02] openverse \"Western Desert oil field Egypt\": 0 usable of 0",
+    "[18:35:02] image: dropped \"Line of pumpjacks against a stunning rocky landscape at sunset in Kara\" — names too little of oil, field",
+    "[18:35:02] image: dropped \"Breathtaking view of a desert landscape with a striking rock formation\" — names too little of oil, field",
+    "[18:35:02] image: dropped \"A breathtaking view of the Egyptian desert with unique rock formations\" — names too little of oil, field",
+    "[18:35:02] image: dropped \"Experience the thrill of quad biking across the vast Egyptian desert l\" — names too little of oil, field",
+    "[18:35:02] image: dropped \"Rock Formations in Meleiha Protected Area.jpg\" — taken in United Arab Emirates, which the story does not name",
+    "[18:35:02] image: dropped \"Meleiha Protected Area Overview.jpg\" — taken in United Arab Emirates, which the story does not name",
+    "[18:35:02] image: dropped \"Rock Formations in Meleiha Protected Area 2.jpg\" — taken in United Arab Emirates, which the story does not name",
+    "[18:35:02] image: dropped \"Rock Formations in Meleiha Protected Area 3.jpg\" — taken in United Arab Emirates, which the story does not name",
+    "[18:35:02] image: 4 file(s) dropped for naming none of Meleiha, Western Desert, Zohr gas field",
+    "[18:35:29] image: could not inline https://api.openverse.org/v1/images/996e168e-bde2-4a70-827c-527ba6dcd85e/thumb/: The operation was aborted due to timeout",
+    "[18:35:54] image: could not inline https://api.openverse.org/v1/images/996e168e-bde2-4a70-827c-527ba6dcd85e/thumb/: The operation was aborted due to timeout",
+    "[18:36:36] image: could not inline https://api.openverse.org/v1/images/f5f58ecc-83e2-4cf1-b6ed-7aba855a278d/thumb/: The operation was aborted due to timeout",
+    "[18:37:01] image: could not inline https://api.openverse.org/v1/images/f5f58ecc-83e2-4cf1-b6ed-7aba855a278d/thumb/: The operation was aborted due to timeout",
+    "[18:37:21] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3317",
+    "[18:37:21] image: vision rejected all candidates (All four are archival black-and-white photos of a tribal lunch at a cavalry post at Tel-el-Meleiha, apparently in Jordan or Palestine rather than at Egypt's Meleiha gas field. They show uniformed men and tribesmen, not gas wells or production. They are historical, folkloric and wrong in subject and place.)",
+    "[18:37:47] image: could not inline https://api.openverse.org/v1/images/f5f58ecc-83e2-4cf1-b6ed-7aba855a278d/thumb/: The operation was aborted due to timeout",
+    "[18:38:12] image: could not inline https://api.openverse.org/v1/images/f5f58ecc-83e2-4cf1-b6ed-7aba855a278d/thumb/: The operation was aborted due to timeout",
+    "[18:38:16] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4174",
+    "[18:38:16] image: vision rejected all candidates (The only candidate is a vintage archival photo of a camel cavalry post at Tel el-Meleiha. It shows no gas field, plant or wells. It also has an archival negative number written in the frame and is a folkloric cliché of camels, which fails the gravity, freshness and subject rules for a story on Egypt's gas production.)",
+    "[18:38:16] image: tier 3, the writer's own subjects: gas processing plant | drilling rig desert | natural gas pipeline",
+    "[18:38:17] commons \"gas processing plant 2026\": 9 usable of 12",
+    "[18:38:17] commons \"gas processing plant\": 8 usable of 12",
+    "[18:38:17] image: dropped \"Former Consumers Gas Company Water Gas Purification House plaque 51 Pa\" — names too little of gas, processing, plant",
+    "[18:38:17] image: dropped \"Окрестности газзавода - panoramio.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[18:38:17] commons \"drilling rig desert 2026\": 0 usable of 0",
+    "[18:38:18] commons \"drilling rig desert\": 6 usable of 8",
+    "[18:38:18] image: dropped \"Geotechnical Drilling Rig at Desert - By Eng. Fadi Fayyadh Al Toubeh -\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[18:38:18] image: dropped \"ACES Drilling Rig at Al Ain Desert By Fadi Fayyadh Al Toubeh - panoram\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[18:38:18] image: dropped \"Total satorp refinery flare - panoramio.jpg\" — names too little of drilling, rig, desert",
+    "[18:38:18] commons \"natural gas pipeline 2026\": 9 usable of 12",
+    "[18:38:19] commons \"natural gas pipeline\": 2 usable of 12",
+    "[18:38:19] image: dropped \"Part for gas distribution replacement in Newton Massachusetts June 202\" — taken in United States, which the story does not name",
+    "[18:38:19] image: dropped \"Columbia Gas Transmission electrical box on the Columbia Rail Trail, N\" — taken in United States, which the story does not name",
+    "[18:38:19] image: dropped \"Supplies and equipment for gas distribution replacement in Newton Mass\" — taken in United States, which the story does not name",
+    "[18:38:19] image: dropped \"Kentucky Celebration Harrodsburg-APHIS-15-16 September 2023 (20230916-\" — taken in United States, which the story does not name",
+    "[18:38:19] image: dropped \"Kentucky Celebration Harrodsburg-APHIS-15-16 September 2023 (20230915-\" — taken in United States, which the story does not name",
+    "[18:38:19] image: dropped \"Kentucky Celebration Harrodsburg-APHIS-15-16 September 2023 (20230916-\" — taken in United States, which the story does not name",
+    "[18:38:19] image: dropped \"USMC-090320-M-9607A-162.jpg\" — taken in Iraq, which the story does not name",
+    "[18:38:19] image: dropped \"Annual training 140815-N-AX577-105.jpg\" — taken in United States, which the story does not name",
+    "[18:38:19] image: no candidates for the specific queries",
+    "[18:38:19] image: tier 4, the story's point and its subject: drilling rig Western Desert | gas well Egypt | Zohr gas field platform | gas field Egypt | drilling rig Egypt | gas processing plant desert (home: Egypt, Egyptian, Cairo, Alexandria, Western Desert)",
+    "[18:38:19] commons \"drilling rig Western Desert\": 0 usable of 0",
+    "[18:38:20] commons \"drilling rig\": 18 usable of 24",
+    "[18:38:20] pexels \"drilling rig Western Desert\": 8 usable",
+    "[18:38:28] openverse \"drilling rig Western Desert\": 0 usable of 0",
+    "[18:38:28] image: dropped \"Line of pumpjacks against a stunning rocky landscape at sunset in Kara\" — names too little of drilling, rig",
+    "[18:38:28] image: dropped \"Oil pumpjack surrounded by barren landscape under overcast skies, show\" — names too little of drilling, rig",
+    "[18:38:28] image: dropped \"Dramatic silhouette of an oil pump jack against a vibrant sunset sky, \" — names too little of drilling, rig",
+    "[18:38:28] image: dropped \"High-angle view of an offshore oil platform with helipad surrounded by\" — names too little of drilling, rig",
+    "[18:38:29] commons \"gas well Egypt\": 8 usable of 24",
+    "[18:38:29] image: dropped \"Eclairage.jpg\" — dated 1900, an archival picture",
+    "[18:38:29] image: dropped \"Gas about (German prisoners) (13983849473).jpg\" — dated 1920, an archival picture",
+    "[18:38:29] image: dropped \"Egyptian Pre-dynastic,Flattened Spherical Vase Hargm 10051.JPG\" — names too little of gas, well",
+    "[18:38:29] image: dropped \"Breitling Orbiter 3 - Smithsonian Air and Space Museum - 2012-05-15 (7\" — names too little of gas, well",
+    "[18:38:29] image: dropped \"Bright Star DVIDS10369.jpg\" — dated 2003, an archival picture",
+    "[18:38:29] pexels \"gas well Egypt\": 8 usable",
+    "[18:38:38] openverse \"gas well Egypt\": 10 usable of 20",
+    "[18:38:38] image: dropped \"Breitling Orbiter 3 - Smithsonian Air and Space Museum - 2012-05-15\" — names too little of gas, well",
+    "[18:38:38] image: dropped \"Rusty crane at an industrial site during sunset, highlighting its aged\" — names too little of gas, well",
+    "[18:38:38] image: dropped \"Artistic underwater photo of a woman swimming in the ocean, capturing \" — names too little of gas, well",
+    "[18:38:38] image: dropped \"A towering industrial chimney with a dramatic flame against a dark sky\" — names too little of gas, well",
+    "[18:38:38] image: dropped \"Oil pump jack in a dry landscape with shrubs and clear sky in Bakú, Az\" — names too little of gas, well",
+    "[18:38:39] commons \"Zohr gas field platform\": 0 usable of 0",
+    "[18:38:39] commons \"Zohr gas\": 0 usable of 1",
+    "[18:38:40] commons \"platform\": 17 usable of 24",
+    "[18:38:40] image: dropped \"Star Shaped Platform - Chennakesava Temple.jpg\" — names too little of gas, field, platform",
+    "[18:38:40] image: dropped \"Hampi - King's Palace - Throne Platform - Relief - 15.jpg\" — names too little of gas, field, platform",
+    "[18:38:40] image: dropped \"Oil Platform Crew Transfer.jpg\" — names too little of gas, field, platform",
+    "[18:38:40] image: dropped \"Tokyo-Station-2005-7-21 4.jpg\" — names too little of gas, field, platform",
+    "[18:38:40] image: dropped \"Odawara-eki-2005-5-4 13.jpg\" — names too little of gas, field, platform",
+    "[18:38:40] image: dropped \"20260425 Views From charging platform of Völklingen Ironworks 24.jpg\" — names too little of gas, field, platform",
+    "[18:38:40] image: dropped \"Back Bay MBTA Commuter Rail platform in December 2025.jpg\" — names too little of gas, field, platform",
+    "[18:38:40] image: dropped \"Train station platform shelter at Corinda railway station, Queensland,\" — names too little of gas, field, platform",
+    "[18:38:40] image: dropped \"Church of St George - Kyustendil.jpg\" — names too little of gas, field, platform",
+    "[18:38:40] image: dropped \"De Brouckere Metro Station - Metro platform waiting for Herrmann-Debro\" — names too little of gas, field, platform",
+    "[18:38:40] image: dropped \"Basilica of the Sacred Heart.jpg\" — names too little of gas, field, platform",
+    "[18:38:40] image: dropped \"Neak Pean, Angkor, Camboya, 2013-08-17, DD 01.JPG\" — names too little of gas, field, platform",
+    "[18:38:40] pexels \"Zohr gas field platform\": 8 usable",
+    "[18:38:45] openverse \"Zohr gas field platform\": 0 usable of 0",
+    "[18:38:46] commons \"gas field Egypt\": 19 usable of 24",
+    "[18:38:46] image: dropped \"Qasr Kharana in Jordan.jpg\" — names too little of gas, field",
+    "[18:38:46] image: dropped \"Monument in Qasr Prison.JPG\" — names too little of gas, field",
+    "[18:38:46] image: dropped \"Qasr al-Bint 02.jpg\" — names too little of gas, field",
+    "[18:38:46] image: dropped \"The desert castle Qasr Kharana, Jordan.JPG\" — names too little of gas, field",
+    "[18:38:46] image: dropped \"The desert castle Qasr Kharana in Jordan.JPG\" — names too little of gas, field",
+    "[18:38:46] image: dropped \"Qasr al-Bint 01.jpg\" — names too little of gas, field",
+    "[18:38:46] image: dropped \"Desert near Qasr Al-Sarab.jpg\" — names too little of gas, field",
+    "[18:38:46] image: dropped \"Qasr al-Bint 03.jpg\" — names too little of gas, field",
+    "[18:38:46] pexels \"gas field Egypt\": 8 usable",
+    "[18:39:06] openverse \"gas field Egypt\": The operation was aborted due to timeout",
+    "[18:39:06] image: dropped \"Engineer in safety gear within an industrial setting in Libya, pipes a\" — names too little of gas, field",
+    "[18:39:06] image: dropped \"A serene rural landscape featuring farmers working with a donkey and c\" — names too little of gas, field",
+    "[18:39:06] image: dropped \"A rusty oil pumpjack situated in a desert-like landscape under a partl\" — names too little of gas, field",
+    "[18:39:06] image: dropped \"A stunning view of the Pyramids of Giza under a clear blue sky, showca\" — names too little of gas, field",
+    "[18:39:06] commons \"drilling rig Egypt\": 2 usable of 4",
+    "[18:39:06] pexels \"drilling rig Egypt\": 8 usable",
+    "[18:39:11] openverse \"drilling rig Egypt\": 0 usable of 0",
+    "[18:39:11] image: dropped \"Various modern construction cranes located near harbor during shipbuil\" — names too little of drilling, rig",
+    "[18:39:11] image: dropped \"Oil platform in the sea under clear skies, showcasing industrial seasc\" — names too little of drilling, rig",
+    "[18:39:11] commons \"gas processing plant desert\": 3 usable of 6",
+    "[18:39:11] image: dropped \"Death Valley Nut and Candy Co., Beatty, Nevada (3375632415).jpg\" — names too little of gas, processing, plant, desert",
+    "[18:39:11] image: dropped \"Beatty, Nevada (3376449876).jpg\" — names too little of gas, processing, plant, desert",
+    "[18:39:12] pexels \"gas processing plant desert\": 8 usable",
+    "[18:39:20] openverse \"gas processing plant desert\": 0 usable of 0",
+    "[18:39:20] image: dropped \"A detailed view of industrial pipelines in a Saudi Arabian factory set\" — names too little of gas, processing, plant, desert",
+    "[18:39:20] image: dropped \"View of a large oil refinery plant with intricate pipelines in Trzebin\" — names too little of gas, processing, plant, desert",
+    "[18:39:20] image: dropped \"A detailed view of an industrial refinery featuring pipelines and larg\" — names too little of gas, processing, plant, desert",
+    "[18:39:20] image: dropped \"Industrial storage tank with metal stairs in an outdoor facility under\" — names too little of gas, processing, plant, desert",
+    "[18:39:20] image: dropped \"A large industrial refinery with pipes and towers under a clear blue s\" — names too little of gas, processing, plant, desert",
+    "[18:39:20] image: dropped \"A large industrial refinery complex with tall chimneys by the waterfro\" — names too little of gas, processing, plant, desert",
+    "[18:39:20] image: dropped \"Industrial refinery with spherical tanks by the coastline against a ba\" — names too little of gas, processing, plant, desert",
+    "[18:39:20] image: dropped \"Drilling rig and a digger at a construction site in Tuntorp.jpg\" — taken in Sweden, which the story does not name",
+    "[18:39:20] image: dropped \"Deepwater Horizon offshore drilling unit on fire 2010.jpg\" — taken in Mexico, which the story does not name",
+    "[18:39:20] image: dropped \"Majestic offshore oil platform in Norway's North Sea, under blue skies\" — taken in Norway, which the story does not name",
+    "[18:39:21] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/52501709244_2930a76cec_n.jpg",
+    "[18:39:46] image: could not inline https://api.openverse.org/v1/images/48896f8c-3e69-42b7-864d-90f107fa74d0/thumb/: The operation was aborted due to timeout",
+    "[18:39:48] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/52501707579_5e1f765df9_n.jpg",
+    "[18:40:03] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4006",
+    "[18:40:03] image: vision rejected all candidates (fallback pass) (None fits. 1 is a construction piling rig in a green mountain valley, not a gas well and not Egypt. 2 is a water-well rig with two private individuals posing, an amateur snapshot. 3 and 4 are military gas-chamber training. 5 is a cargo aircraft. 6 is a climate protest in Scotland.)",
+    "[18:40:03] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/52501709244_2930a76cec_n.jpg",
+    "[18:40:12] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=8899",
+    "[18:40:12] image: \"Aerial view of an oil rig amidst desert rock formations, sho\" names the story's topic without saying its point (A clear, professional drilling-rig scene in desert terrain that fits the story's emphasis on new wells and the Western Desert, though nothing in the frame place); checked now and kept in reserve while the desk looks further",
+    "[18:40:17] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4309",
+    "[18:40:17] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Aerial view of an oil rig amidst desert rock formations, sho\": A sharp, professional photo of a working drilling rig in desert terrain shows the story's own subject, well drilling, an",
+    "[18:40:17] image: the story's people first: Karim Badawi 2026 | Karim Badawi",
+    "[18:40:17] commons \"Karim Badawi 2026\": 0 usable of 0",
+    "[18:40:20] commons \"Karim Badawi\": 20 usable of 20",
+    "[18:40:20] image: dropped \"ʿABD AL-KARĪM IBN IBRĀHĪM IBN ʿABD AL-KARĪM IBN ḪALĪFA AL-ǦĪLĪ. al-Ins\" — names too little of karim, badawi",
+    "[18:40:20] image: dropped \"ʿABD AL-KARĪM IBN IBRĀHĪM IBN ʿABD AL-KARĪM IBN ḪALĪFA AL-ǦĪLĪ. al-Ins\" — names too little of karim, badawi",
+    "[18:40:20] image: dropped \"ʿABD AL-KARĪM IBN IBRĀHĪM IBN ʿABD AL-KARĪM IBN ḪALĪFA AL-ǦĪLĪ. al-Ins\" — names too little of karim, badawi",
+    "[18:40:20] image: dropped \"ʿABD AL-KARĪM IBN IBRĀHĪM IBN ʿABD AL-KARĪM IBN ḪALĪFA AL-ǦĪLĪ. al-Ins\" — names too little of karim, badawi",
+    "[18:40:20] image: dropped \"ʿABD AL-KARĪM IBN IBRĀHĪM IBN ʿABD AL-KARĪM IBN ḪALĪFA AL-ǦĪLĪ. al-Ins\" — names too little of karim, badawi",
+    "[18:40:20] image: dropped \"ʿABD AL-KARĪM IBN IBRĀHĪM IBN ʿABD AL-KARĪM IBN ḪALĪFA AL-ǦĪLĪ. al-Ins\" — names too little of karim, badawi",
+    "[18:40:20] image: dropped \"ʿABD AL-KARĪM IBN IBRĀHĪM IBN ʿABD AL-KARĪM IBN ḪALĪFA AL-ǦĪLĪ. al-Ins\" — names too little of karim, badawi",
+    "[18:40:20] image: dropped \"ʿABD AL-KARĪM IBN IBRĀHĪM IBN ʿABD AL-KARĪM IBN ḪALĪFA AL-ǦĪLĪ. al-Ins\" — names too little of karim, badawi",
+    "[18:40:20] image: dropped \"ʿABD AL-KARĪM IBN IBRĀHĪM IBN ʿABD AL-KARĪM IBN ḪALĪFA AL-ǦĪLĪ. al-Ins\" — names too little of karim, badawi",
+    "[18:40:20] image: dropped \"ʿABD AL-KARĪM IBN IBRĀHĪM IBN ʿABD AL-KARĪM IBN ḪALĪFA AL-ǦĪLĪ. al-Ins\" — names too little of karim, badawi",
+    "[18:40:20] commons \"Karim Badawi\": 20 usable of 20",
+    "[18:40:20] image: no photograph of the story's people",
+    "[18:40:20] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"Aerial view of an oil rig amidst desert rock formations, sho\"",
+    "[18:40:20] published analysis \"تسوية متأخرات الشركاء الأجانب لا تكفي وحدها لرفع إنتاج مصر من الغاز\" -> egypt-arrears-settlement-gas-output-test-27cfe4"
   ]
 }
