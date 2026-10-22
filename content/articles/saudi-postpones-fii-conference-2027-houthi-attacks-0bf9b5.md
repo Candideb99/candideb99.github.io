@@ -31,14 +31,14 @@ readingMinutes: 3
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Saudi_Arabian_Airlines_A320-214%2C_HZ-AS62%2C_MSN_8007_%2812_2017%29%2C_as_SV_1529_Riyadh_%28RUH%29_-_Tabuk_%28TUU%29%2C_Flight_time_1_35_%2848845025957%29.jpg/1280px-Saudi_Arabian_Airlines_A320-214%2C_HZ-AS62%2C_MSN_8007_%2812_2017%29%2C_as_SV_1529_Riyadh_%28RUH%29_-_Tabuk_%28TUU%29%2C_Flight_time_1_35_%2848845025957%29.jpg
+  url: https://images.pexels.com/photos/16972927/pexels-photo-16972927.jpeg?auto=compress&cs=tinysrgb&w=1280
   width: 1280
-  height: 828
-  alt: طائرة ركاب من طراز إيرباص A320
-  credit: Charles · CC BY 2.0 · ويكيميديا كومنز
-  license: CC BY 2.0
-  licenseUrl: https://creativecommons.org/licenses/by/2.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ASaudi_Arabian_Airlines_A320-214%2C_HZ-AS62%2C_MSN_8007_(12_2017)%2C_as_SV_1529_Riyadh_(RUH)_-_Tabuk_(TUU)%2C_Flight_time_1_35_(48845025957).jpg
+  height: 853
+  alt: مقاعد فارغة في قاعة مؤتمرات (صورة تعبيرية)
+  credit: Jan van der Wolf · بيكسلز
+  license: Pexels License
+  licenseUrl: https://www.pexels.com/license/
+  pageUrl: https://www.pexels.com/photo/colorful-seats-in-an-auditorium-16972927/
 sources:
   - name: نيويورك تايمز
     nameEn: The New York Times

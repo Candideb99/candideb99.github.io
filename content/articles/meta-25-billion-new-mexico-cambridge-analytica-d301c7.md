@@ -32,14 +32,14 @@ readingMinutes: 4
 chart: null
 table: null
 image:
-  url: https://live.staticflickr.com/1877/30411910658_7648822863_b.jpg
-  width: 1024
-  height: 683
-  alt: تطبيق فيسبوك وتطبيقات تواصل اجتماعي على هاتف ذكي
-  credit: homegets.com · CC BY 2.0 · فليكر
-  license: CC BY 2.0
-  licenseUrl: https://creativecommons.org/licenses/by/2.0/
-  pageUrl: https://www.flickr.com/photos/141436406@N04/30411910658
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Ra%C3%BAl_Torrez.jpg/1280px-Ra%C3%BAl_Torrez.jpg
+  width: 1280
+  height: 854
+  alt: المدعي العام لولاية نيو مكسيكو راؤول توريز (أرشيفية)
+  credit: LandofEnchantment Pics · CC0 · ويكيميديا كومنز
+  license: CC0
+  licenseUrl: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ARa%C3%BAl_Torrez.jpg
 sources:
   - name: الجزيرة الإنجليزية
     nameEn: Al Jazeera English

@@ -30,14 +30,14 @@ readingMinutes: 4
 chart: null
 table: null
 image:
-  url: https://images.pexels.com/photos/5480781/pexels-photo-5480781.jpeg?auto=compress&cs=tinysrgb&w=1280
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Mark-Zuckerberg-2019.jpg/1280px-Mark-Zuckerberg-2019.jpg
   width: 1280
-  height: 852
-  alt: خوادم في أحد مراكز البيانات
-  credit: Brett Sayles · بيكسلز
-  license: Pexels License
-  licenseUrl: https://www.pexels.com/license/
-  pageUrl: https://www.pexels.com/photo/server-racks-on-data-center-5480781/
+  height: 901
+  alt: مارك زوكربيرغ الرئيس التنفيذي لشركة ميتا (أرشيفية)
+  credit: Anurag R Dubey · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AMark-Zuckerberg-2019.jpg
 sources:
   - name: الخليج
     nameEn: Al Khaleej
