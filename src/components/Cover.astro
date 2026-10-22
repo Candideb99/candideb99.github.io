@@ -24,7 +24,7 @@ import { kickerOf } from "@lib/topics";
 import { kindLabel, sectionHref } from "@lib/sections";
 import { analysisLabel } from "@lib/analysis";
 import { excerpt, timeAgo } from "@lib/format";
-import { isolateNumbers } from "@lib/bidi";
+import { headline, isolateNumbers } from "@lib/bidi";
 import Photo from "./Photo.astro";
 import StoryCard from "./StoryCard.astro";
 
@@ -55,7 +55,7 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
         <article class={`cover__slide${withPhoto ? "" : " cover__slide--text"}`} id={`cover-slide-${i}`} role="tabpanel" aria-roledescription="slide" aria-label={`${i + 1} من ${stories.length}`} data-index={i} hidden={i !== 0} data-section={d.section}>
           <div class="cover__body">
             {kicker && <span class="kicker"><a href={kicker.href}>{kicker.label}</a></span>}
-            <h2 class="cover__title"><a href={href} set:html={isolateNumbers(d.title)} /></h2>
+            <h2 class="cover__title"><a href={href} set:html={headline(d.title)} /></h2>
             {summary && <p class="cover__dek" set:html={isolateNumbers(summary)} />}
             <p class="meta cover__meta">
               <a href={sectionHref(d.section)}>{kindLabel(d.kind, d.section)}</a>
@@ -76,7 +76,7 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
       <div class="cover__tabs" data-cover-tabs style={`--tabs: ${stories.length}`}>
         {stories.map((a, i) => (
           <a class={`cover__tab${i === 0 ? " is-on" : ""}`} href={articleHref(a)} id={`cover-tab-${i}`} data-index={i}>
-            <span class="cover__tab-title"><span class="cover__tab-num" aria-hidden="true">{i + 1}</span><span set:html={isolateNumbers(a.data.title)} /></span>
+            <span class="cover__tab-title"><span class="cover__tab-num" aria-hidden="true">{i + 1}</span><span set:html={headline(a.data.title)} /></span>
           </a>
         ))}
       </div>
@@ -103,7 +103,7 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
           return (
             <article class={`cover__reading${analysis ? " cover__reading--lead" : ""}`} data-section={a.data.section}>
               <span class="kicker">{analysisLabel(a, all) ?? kindLabel(a.data.kind, a.data.section)}</span>
-              <h3 class="cover__reading-title"><a href={articleHref(a)} set:html={isolateNumbers(a.data.title)} /></h3>
+              <h3 class="cover__reading-title"><a href={articleHref(a)} set:html={headline(a.data.title)} /></h3>
               {dek && <p class="cover__reading-dek" set:html={isolateNumbers(dek)} />}
               {dated && <p class="meta"><time datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time></p>}
             </article>

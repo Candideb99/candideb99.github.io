@@ -10,7 +10,7 @@
 import type { Article } from "@lib/articles";
 import { articleHref } from "@lib/articles";
 import { kindLabel, sectionHref } from "@lib/sections";
-import { isolateNumbers } from "@lib/bidi";
+import { headline, isolateNumbers } from "@lib/bidi";
 import { excerpt, timeAgo } from "@lib/format";
 import StoryCard from "./StoryCard.astro";
 import Chart from "./Chart.astro";
@@ -40,7 +40,7 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
     <ul class="digest">
       {digest.map((a) => (
         <li class="digest__item">
-          <a class="digest__head" href={articleHref(a)} set:html={isolateNumbers(a.data.title)} />
+          <a class="digest__head" href={articleHref(a)} set:html={headline(a.data.title)} />
           <p class="digest__text" set:html={isolateNumbers(excerpt(a.data.subtitle || a.data.lede, 140))} />
           <p class="meta digest__meta">
             <a href={sectionHref(a.data.section)}>{kindLabel(a.data.kind, a.data.section)}</a>
@@ -63,7 +63,7 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
       <ol class="picks front__picks" aria-label="أبرز الأخبار أيضاً">
         {picks.map((a) => (
           <li class="picks__item">
-            <a class="picks__title" href={articleHref(a)} set:html={isolateNumbers(a.data.title)} />
+            <a class="picks__title" href={articleHref(a)} set:html={headline(a.data.title)} />
             <p class="meta">
               <a href={sectionHref(a.data.section)}>{kindLabel(a.data.kind, a.data.section)}</a>
               <time datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time>

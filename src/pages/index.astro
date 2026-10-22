@@ -9,7 +9,7 @@ import { analysisLabel } from "@lib/analysis";
 import { getArticles, pickLead, threads, chartOfTheDay, hoursOld, repeatedEvents, firstPictures, type Article } from "@lib/articles";
 import { newsSections, getSection, sectionHref, moreLabel } from "@lib/sections";
 import { articleHref } from "@lib/articles";
-import { isolateNumbers } from "@lib/bidi";
+import { headline } from "@lib/bidi";
 import { cardSizes } from "@lib/wikimedia";
 import { timeAgo, countLabel } from "@lib/format";
 import { isMarketQuote } from "@lib/markets";
@@ -229,7 +229,7 @@ const jsonLd = {
           <li class="lines__item" data-section={section.id}>
             <a class="lines__section" href={sectionHref(section.id)}>{section.name}</a>
             <p class="lines__story">
-              <a href={articleHref(story)} set:html={isolateNumbers(story.data.title)} />
+              <a href={articleHref(story)} set:html={headline(story.data.title)} />
               <time class="ui" datetime={story.data.publishedAt} data-relative>{timeAgo(story.data.publishedAt)}</time>
             </p>
             <a class="lines__more ui" href={sectionHref(section.id)}>{moreLabel(section.id)}</a>
@@ -254,7 +254,7 @@ const jsonLd = {
             </p>
             {d.story && (
               <p class="desk__story">
-                <a href={articleHref(d.story)} set:html={isolateNumbers(d.story.data.title)} />
+                <a href={articleHref(d.story)} set:html={headline(d.story.data.title)} />
                 <time class="ui" datetime={d.story.data.publishedAt} data-relative>{timeAgo(d.story.data.publishedAt)}</time>
               </p>
             )}

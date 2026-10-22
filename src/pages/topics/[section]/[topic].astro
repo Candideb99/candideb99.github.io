@@ -20,7 +20,7 @@ import { getSection, sectionHref, newsSections, kindLabel } from "@lib/sections"
 import { menuTopics, topicsOf, topicArticles, topicHref, type Topic } from "@lib/topics";
 import { quotes, TOPIC_QUOTE_IDS } from "@lib/markets";
 import { countLabel, formatShortDate, formatMonth } from "@lib/format";
-import { isolateNumbers } from "@lib/bidi";
+import { headline } from "@lib/bidi";
 
 export async function getStaticPaths() {
   const articles = await getArticles();
@@ -124,7 +124,7 @@ const pics = firstPictures(n > 0 ? [lead, ...beside, ...recent] : fallback);
                 <ol class="topic-month__list">
                   {m.items.map((a) => (
                     <li class="topic-month__item">
-                      <a class="topic-month__title" href={articleHref(a)} set:html={isolateNumbers(a.data.title)} />
+                      <a class="topic-month__title" href={articleHref(a)} set:html={headline(a.data.title)} />
                       <p class="meta topic-month__meta">
                         {a.data.section !== section && <a href={sectionHref(a.data.section)}>{kindLabel(a.data.kind, a.data.section)}</a>}
                         <time datetime={a.data.publishedAt}>{formatShortDate(a.data.publishedAt)}</time>

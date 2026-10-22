@@ -12,7 +12,7 @@ import { getArticles, dossiers, articleHref } from "@lib/articles";
 import { DESKS, desksOf } from "@lib/regions";
 import { TOPICS, topicArticles, topicHref } from "@lib/topics";
 import { formatShortDate, timeAgo, countLabel as countWord } from "@lib/format";
-import { isolateNumbers } from "@lib/bidi";
+import { headline } from "@lib/bidi";
 
 const articles = await getArticles();
 const topics = dossiers(articles, { min: 2, max: 200 });
@@ -41,7 +41,7 @@ const subjects = Object.entries(TOPICS)
               <bdi>{countWord(t.items.length)}</bdi> · آخر تحديث <time datetime={t.latest.data.publishedAt} data-relative>{timeAgo(t.latest.data.publishedAt)}</time>
             </p>
             <p class="files-index__latest">
-              <a href={articleHref(t.latest)} set:html={isolateNumbers(t.latest.data.title)} />
+              <a href={articleHref(t.latest)} set:html={headline(t.latest.data.title)} />
               <time class="ui" datetime={t.latest.data.publishedAt}>{formatShortDate(t.latest.data.publishedAt)}</time>
             </p>
           </article>

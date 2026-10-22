@@ -13,7 +13,7 @@ import { getSection, sectionHref, kindLabel, moreLabel, allLabel } from "@lib/se
 import { subTopicOf, topicHref, tagHref, kickerOf } from "@lib/topics";
 import { analysisLabel, analysisDesk, ANALYSIS_DESKS } from "@lib/analysis";
 import { formatDate, formatHijri, formatTime, readingLabel, excerpt } from "@lib/format";
-import { isolateNumbers } from "@lib/bidi";
+import { headline, isolateNumbers } from "@lib/bidi";
 import { cardSizes } from "@lib/wikimedia";
 import site from "@data/site.json";
 
@@ -120,7 +120,7 @@ const jsonLd = [articleLd, breadcrumbLd];
       )}
       {/* The headline outweighs the body in search, and the dek comes next (2026-09-24: «التضخم في مصر» ranked a US
           story above «التضخم في مصر يتباطأ إلى 12.7%»). */}
-      <h1 class="article__title" data-pagefind-meta={`title:${d.title}`} data-pagefind-weight="10" set:html={isolateNumbers(d.title)} />
+      <h1 class="article__title" data-pagefind-meta={`title:${d.title}`} data-pagefind-weight="10" set:html={headline(d.title)} />
       {/* A search result prints the dek, as the desks' search pages print a story's standfirst: Pagefind's own excerpt
           opened on the headline's last words and ran on into the photo caption (2026-10-19). */}
       {d.subtitle && <p class="article__dek" data-pagefind-weight="4" data-pagefind-meta="summary" set:html={isolateNumbers(d.subtitle)} />}
@@ -174,7 +174,7 @@ const jsonLd = [articleLd, breadcrumbLd];
         {more.length > 0 && (
           <aside class="also" data-also data-pagefind-ignore aria-labelledby="also-head">
             <span id="also-head" class="also__head ui">اقرأ أيضاً</span>
-            <a class="also__link" href={articleHref(more[0])} set:html={isolateNumbers(more[0].data.title)} />
+            <a class="also__link" href={articleHref(more[0])} set:html={headline(more[0].data.title)} />
           </aside>
         )}
         {d.table && <DataTable table={d.table} />}
