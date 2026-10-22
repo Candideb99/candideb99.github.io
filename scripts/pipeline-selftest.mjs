@@ -13,6 +13,7 @@ import os from "node:os";
 import path from "node:path";
 import { MAX_REPAIRS, checkSourcesOf, precheck } from "../pipeline/lib/precheck.mjs";
 import { repeatsRecent } from "../pipeline/lib/events.mjs";
+import { fetchFeed } from "../pipeline/lib/feeds.mjs";
 import { lessonRuleOk, loadLessons } from "../pipeline/lib/lessons.mjs";
 import { writeJsonAtomic } from "../pipeline/lib/util.mjs";
 import { loadSnapshot, saveSnapshot } from "../pipeline/lib/snapshots.mjs";
@@ -166,6 +167,15 @@ check("a different event is not", repeatsRecent("السعودية تعيد تش�
 check("one oil move under two names is still one event", repeatsRecent("برنت يقفز فوق 108 دولارات بعد إغلاق خط الأنابيب السعودي", ["النفط يقفز فوق 107 دولارات مع إغلاق خط الأنابيب السعودي"]) !== null, true);
 check("two subjects sharing only a running war are two events", repeatsRecent("برنت عند أعلى مستوى في 5 أشهر فوق 111 دولاراً مع هجمات الحوثيين على السعودية", ["السعودية تؤجل مؤتمر مبادرة مستقبل الاستثمار إلى 2027 مع تصاعد هجمات الحوثيين"]), null);
 check("two institutions' different forecasts are two events", repeatsRecent("صندوق النقد يتوقع انكماش اقتصادات الخليج 4.8% في 2026 قبل تعافيها 9.1% في 2027", ["البنك الدولي يتوقع انكماش اقتصادات الخليج 4.3% هذا العام"]), null);
+
+// 2a. A Google News sitemap is read like a feed, and an Arabic address is filtered decoded (2026-10-22, Independent Arabia).
+{
+  const fresh = new Date(Date.now() - 3600 * 1000).toISOString();
+  const entry = (section, slug, title) => `<url><loc>https://www.example.com/node/1/${encodeURIComponent(section)}/${encodeURIComponent(slug)}</loc><news:news><news:publication><news:name>x</news:name><news:language>ar</news:language></news:publication><news:title>${title}</news:title><news:publication_date>${fresh}</news:publication_date></news:news></url>`;
+  const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">${entry("اقتصاد", "تاسي-يهبط", "لماذا هبط &quot;تاسي&quot;؟")}${entry("رياضة", "مباراة", "موعد المباراة")}</urlset>`;
+  const items = await fetchFeed({ id: "t", url: `data:text/xml;charset=utf-8,${encodeURIComponent(xml)}`, pathFilter: "/node/\\d+/(اقتصاد|الأخبار)/" });
+  check("a news sitemap is read, and its Arabic sections filtered", items.map((i) => i.title), ['لماذا هبط "تاسي"؟']);
+}
 
 // 2b. The last cut (2026-10-22): a sentence carrying a figure no source has, or a stitched second event, goes; the story stays.
 {

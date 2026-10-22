@@ -53,6 +53,14 @@ function feedDate(value) {
   return safeIsoDate(`${m[3]}-${pad(month)}-${pad(m[1])}T${pad(hour)}:${m[5] ?? "00"}:00+03:00`);
 }
 
+const decoded = (url) => {
+  try {
+    return decodeURI(url);
+  } catch {
+    return url;
+  }
+};
+
 /** A link as some feeds print it: «>http://www.alriyadh.com/2207847» (الرياض, 2026-09-24), with the tag's «>» doubled. */
 const cleanLink = (url) => String(url ?? "").trim().replace(/^[>\s]+/, "");
 
@@ -75,6 +83,19 @@ function normalizeItems(doc) {
       categories: asArray(entry.category).map((c) => c?.["@_term"] ?? textOf(c)).filter(Boolean),
     }));
   }
+  // A Google News sitemap (2026-10-22, Independent Arabia): the list of a site's last two days of articles that it
+  // publishes for crawlers, named in its robots.txt. Titles and dates only; the article page gives the rest.
+  if (doc?.urlset) {
+    return asArray(doc.urlset.url)
+      .filter((entry) => entry["news:news"])
+      .map((entry) => ({
+        title: stripHtml(textOf(entry["news:news"]["news:title"])),
+        url: textOf(entry.loc),
+        summary: "",
+        publishedAt: safeIsoDate(textOf(entry["news:news"]["news:publication_date"])),
+        categories: [],
+      }));
+  }
   const rdf = doc?.["rdf:RDF"];
   if (rdf) {
     return asArray(rdf.item).map((item) => ({
@@ -94,8 +115,13 @@ function normalizeItems(doc) {
  */
 export async function fetchFeed(source, { maxAgeHours = 36, log = () => {} } = {}) {
   try {
+    // `hourKey`: a publisher whose own cache stopped refreshing (Independent Arabia, 2026-10-22: Cloudflare served a
+    // feed 65 hours old to every reader, browsers included) is asked once an hour under a new key, which its cache has
+    // not seen. Our reader still names itself; a reader asks no more than once an hour.
+    const hour = new Date().toISOString().slice(0, 13).replace(/\D/g, "");
+    const url = source.hourKey ? `${source.url}${source.url.includes("?") ? "&" : "?"}t=${hour}` : source.url;
     const response = await fetchWithTimeout(
-      source.url,
+      url,
       {
         headers: {
           "user-agent": USER_AGENT,
@@ -127,8 +153,9 @@ export async function fetchFeed(source, { maxAgeHours = 36, log = () => {} } = {
         summary: truncate(item.summary, source.summaryChars ?? 1200),
         sourceId: source.id,
       }))
-      .filter((item) => !pathFilter || pathFilter.test(item.url) || pathFilter.test(item.categories.join(" ")))
-      .filter((item) => !excludePath || !excludePath.test(item.url))
+      // An Arabic address is percent-encoded («/node/660964/%D8%A7…»): the filter reads it decoded too.
+      .filter((item) => !pathFilter || pathFilter.test(item.url) || pathFilter.test(decoded(item.url)) || pathFilter.test(item.categories.join(" ")))
+      .filter((item) => !excludePath || !(excludePath.test(item.url) || excludePath.test(decoded(item.url))))
       // A PDF cannot be read as a page; a working-paper series that links only to PDFs sets `allowPdf` and is read from its abstract.
       .filter((item) => source.allowPdf || !item.url.toLowerCase().endsWith(".pdf"))
       // An undated item has no age and cannot be "fresh": it is dropped (hoursSince(null) is Infinity).

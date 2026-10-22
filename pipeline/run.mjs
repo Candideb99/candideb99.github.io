@@ -93,7 +93,9 @@ const REJECT_RETRY_HOURS = 12;
 /**
  * The editor reads at most this many candidates a run (260 until 2026-09-24, when ten Gulf and Egyptian feeds joined;
  * 300 until 2026-10-22, when the region's news desks joined for politics that moves money: the feeds then held about
- * 620 fresh items, and 300 gave each feed only its nine freshest; 450 gives fifteen).
+ * 620 fresh items, and 300 gave each feed only its nine freshest). With the eight sources added the same evening the
+ * feeds hold about 810 items over 36 hours; 450 still gives every feed its eleven freshest, about what the busiest
+ * publishes between two runs.
  */
 const CANDIDATE_CAP = 450;
 /** The regional desks that are our readers' own economies (src/data/regions.json), and how many of their stories a day the region balance aims for. */
