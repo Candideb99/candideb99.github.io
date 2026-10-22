@@ -1,0 +1,487 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-22T04:58:52.965Z",
+  "durationSec": 1784,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "هجمات حوثية على منشأة لأرامكو ومطار الدمام وواشنطن تسحب موظفيها من السعودية",
+      "section": "energy",
+      "importance": 9,
+      "sources": [
+        "https://www.agbi.com/oil-and-gas/2026/10/oil-rises-further-after-dammam-airport-and-oil-field-attacks/",
+        "https://www.aljazeera.com/news/2026/10/22/one-killed-eight-injured-in-attack-on-saudi-arabias-king-fahd-airport-2",
+        "https://www.thenationalnews.com/business/energy/2026/10/22/oil-tops-110-as-houthi-drone-strike-near-saudi-shaybah-field-rattles-markets/",
+        "https://www.cnbc.com/2026/10/22/us-iran-trump-hormuz-.html"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان «تسحب موظفيها» يوحي بإجلاء كامل للبعثة. الأمر شمل غير الأساسيين وعائلاتهم، والقيد مذكور في المقدمة فقط.",
+              "repair": "إدخال «غير الأساسيين» في العنوان. وإبقاء أن عمليات الشيبة لم تتأثر، كما هو في السطر الثاني."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "سياق طرق التصدير وخط شرق-غرب جيد ومسند. لكن السياق السوقي الذي يجعل الحدث اقتصادياً ناقص: ارتفاع برنت فوق 110 دولارات (SOURCE 3، SOURCE 1). أما مقدمات «لماذا يهمّ» فسليمة، والاستنتاج عن المنفذ البديل مفيد، لكن ترجيحه الطرق على المنشآت تجاوز للمقدمات.",
+              "repair": "إضافة سعر برنت الأحدث ونسبة ارتفاعه وربطه بعلاوة المخاطر. وتليين الحكم في الخلاصة بحيث يصبح أمن المنفذ «عاملاً حاسماً» إلى جانب أمن المنشآت."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "التسلسل الزمني للهجمات واضح وفقراته مجمّعة جيداً. لكن جملة الـ40% ملحقة بفقرة رأي «ذا ناشيونال» بلا سعر حالي. وفقرة «تاسي» معزولة عن بقية حركة الأسواق الخليجية الواردة في SOURCE 1.",
+              "repair": "جمع النفط (السعر الحالي، ثم منذ بداية العام) و«تاسي» في فقرة سوق واحدة تلي فقرة علاوة المخاطر. ويمكن ذكر أن خمس بورصات خليجية من سبع تراجعت الأربعاء (SOURCE 1)."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والتواريخ مطابقة: 2 و2 في الشيبة، و1 و8 في الدمام، و12 و300 في 10 أكتوبر، و1 و11 في 11 أكتوبر، و9927 نقطة. أما مواضع الخلل فهي: «في تحليلها»، و«الحرب مع إيران»، و«دمّرت الدفاعات» التي تنسب التدمير إلى جهة لم تحددها «واس».",
+              "repair": "«وذكرت «ذا ناشيونال»»، و«الحرب على إيران»، و«أعلنت «واس» تدمير طائرة مسيّرة»."
+            }
+          }
+        }
+      ],
+      "outcome": "rejected after revision: أرقام لا تظهر في المصادر: 36. احذف كل رقم غير مذكور في المصادر أو صحّحه."
+    },
+    {
+      "headline": "ميتا ترفع إيراداتها 26% وتنشئ فئة أسهم جديدة لتمويل الذكاء الاصطناعي",
+      "section": "technology",
+      "importance": 7,
+      "sources": [
+        "https://www.alkhaleej.ae/2026-10-22/%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF/%D8%A3%D8%B3%D9%88%D8%A7%D9%82-%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-%D9%88%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D8%A9/%D9%85%D9%8A%D8%AA%D8%A7-%D8%AA%D8%B9%D9%84%D9%86-%D8%B9%D9%86-%D8%A5%D9%8A%D8%B1%D8%A7%D8%AF%D8%A7%D8%AA-%D9%81%D8%B5%D9%84%D9%8A%D8%A9-%D8%AA%D9%81%D9%88%D9%82-%D8%A7%D9%84%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA-646-%D9%85%D9%84%D9%8A%D8%A7%D8%B1-%D8%AF%D9%88%D9%84%D8%A7%D8%B1-%D8%A8%D9%86%D9%85%D9%88-26",
+        "https://www.cnbc.com/investingclub/2026/10/21/meta-put-out-an-ambitious-roadmap-to-muse-monetization-after-strong-quarter-and-guide.html",
+        "https://www.marketwatch.com/story/metas-stock-rises-as-investors-glimpse-an-opportunity-that-could-dwarf-the-ad-business-89369c6c?mod=mw_rss_topstories",
+        "https://techcrunch.com/2026/10/21/meta-wants-to-pay-for-its-broad-ai-buildout-with-a-newly-created-class-of-stock/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "يقول العنوان «ميتا تستحدث أسهماً» وتقول المقدمة «أعلنت ميتا الأربعاء إنشاء فئة جديدة»، فيفهم القارئ أن الأسهم قائمة الآن. المصدر 1 يتحدث عن «عزم» يدخل حيز التنفيذ ويبدأ تداوله في يناير 2027. ويوضح الدك بدقة ما لا يتغير: بقاء القوة التصويتية لحملة الفئتين «أ» و«ب».",
+              "repair": "استعمل فعل النية («تعتزم»)، وأضف موعد يناير 2027 في المقدمة أو الفقرة الأولى."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "التقرير يشرح آلية التوزيع (سهمان مقابل سهم) والغرض كما ذكرته لي، وهذا جيد. لكنه يغيّب الدافع المالي الأوضح، وهو توقع ميتا لنفقات رأسمالية بين 135 و145 مليار دولار (المصدر 1)، ويكتفي بتوقع المحللين معزولاً. أما «لماذا يهمّ» فيبني استنتاجه على فرق نسب النمو بدل حجم الإنفاق، وحدّه المشروط بشأن توزّع الملكية مقبول.",
+              "repair": "أدرج توقع الإنفاق الرأسمالي وتضييق نطاقه في فقرة التكاليف، واجعله مقدمة «لماذا يهمّ» بدل المقارنة بين 68% و26% وحدها."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "جملة «وكان المحللون يتوقعون أن يبلغ إنفاقها الرأسمالي...» معلّقة بين جملة التكاليف وجملة عدد الموظفين بلا رابط. وفقرة «ميوز» تبدأ بنسبة 25% من دون الأساس الذي تُحسب منه (10 ملايين مستخدم). بقية الفقرات مجمّعة جيداً: الآلية، ثم الغرض، ثم الكلفة، ثم الرهان، ثم ما يلي.",
+              "repair": "اجمع التكاليف والإنفاق الرأسمالي في فقرة واحدة تشرح حاجة التمويل، وانقل خفض عدد الموظفين إلى جملة مستقلة عن الكفاءة. وافتتح فقرة «ميوز» برقم الملايين العشرة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «تشمل بيعه أسهم الفئة «سي»» تحوّل «بنوداً تتعلق ببيعه» إلى ما يشبه التزاماً بالبيع. وعبارة «محاكمات تتعلق بالشباب» تنقل «youth-related» بغير دقة. وموعد السريان (يناير 2027) غائب.",
+              "repair": "«تتضمن بنوداً تنظّم بيعه أسهم الفئة «سي»...»، و«قضايا تتعلق بالقُصّر»، وأضف «اعتباراً من يناير 2027»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقول العنوان «ميتا تعتزم إصدار أسهم بلا حق تصويت»، والمقدمة تحدد أن العمل بها وتداولها يبدآن «في يناير 2027» (المصدر 1). ويوضح الدك ما لا يتغير، أي القوة التصويتية لحملة الأسهم الحاليين (المصدر 4). وتشرح الفقرة الأولى أن التوزيع يعادل تقسيم السهم بنسبة سهمين مقابل سهم، فلا يبقى تناقض بين الدك والمقدمة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يقدّم التقرير سياق التمويل كما تورده المصادر: توقع ميتا لإنفاق رأسمالي بين 135 و145 مليار دولار بعد 130 إلى 145 ملياراً، مقارنةً بتوقع المحللين (المصدر 1)، وارتفاع التكاليف 68% مقابل نمو الإيرادات 26% (المصدر 4). كما يعرّف «رياليتي لابس» بوظيفته (المصدر 4) وينسب سبق الخبر إلى «سيمافور». ويستند «لماذا يهمّ» إلى مقدمات موثقة، هي حجم الإنفاق والغرض الذي أعلنته لي، ثم يستنتج استنتاجاً محدوداً: أداة تمويل بالأسهم بدل النقد، مع احتمال تخفيف حصص الملكية وبقاء السيطرة في يد الفئتين «أ» و«ب». وهو حد مشروط بـ«قد» ولا يكرر خلاصة المتن.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "تتدرج الفقرات من آلية الأسهم الجديدة، إلى غرضها كما شرحته لي والشركة، إلى ضغط التكاليف والإنفاق، ثم القوة العاملة و«رياليتي لابس»، ثم رهان «ميوز» ورد فعل السهم (المصدر 3)، وتنتهي بما يلي: توقعات الربع الرابع والمخاطر القانونية. وتُفتتح فقرة «ميوز» بالملايين العشرة التي تُحسب منها نسبة الاستخدام اليومي.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة لمصادرها: 64.6 مليار دولار مقابل 63.37، و26%، و68%، ونطاق 135 إلى 145 مليار دولار، و138.27، و66 ألف موظف بتراجع 12% عن الربع السابق، و443 مليون دولار و4.13 مليار دولار مقابل 513 مليوناً و4.54 مليار، ونطاق 18 إلى 19 مليار دولار، و73 إلى 76 مليار دولار مقابل 73.73. وعبارة «تنظّم بيعه أسهم الفئة «سي»» تطابق «بنوداً تتعلق ببيعه» في المصدر 1. أما وصف نمو التكاليف بأنه «بأكثر من مثلي» نمو الإيرادات فهو حساب صحيح (68 مقابل 26).",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "ضيّقت ميتا توقعاتها لنفقاتها الرأسمالية على مراكز البيانات هذا العام إلى ما بين 135 و145 مليار دولار",
+          "source": 1
+        },
+        {
+          "fact": "ارتفعت تكاليف ميتا ونفقاتها في الربع الثالث 68% على أساس سنوي مقابل نمو الإيرادات 26%",
+          "source": 4
+        },
+        {
+          "fact": "الفئة الجديدة صُممت لجمع رأس المال والاستحواذات وتعويض الموظفين مع الحفاظ على القوة التصويتية لحملة الفئتين «أ» و«ب»",
+          "source": 4
+        }
+      ],
+      "slug": "meta-non-voting-shares-ai-funding-c16252",
+      "title": "ميتا تعتزم إصدار أسهم بلا حق تصويت لتمويل توسعها في الذكاء الاصطناعي",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "الأسهم الصينية تدخل السوق الهابطة بعد تراجع 20% منذ يونيو",
+      "section": "markets",
+      "importance": 7,
+      "sources": [
+        "https://www.cnbc.com/2026/10/22/chinas-stock-market-csi-300-bear-market.html",
+        "https://www.alkhaleej.ae/2026-10-22/%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF/%D8%A3%D8%B3%D9%88%D8%A7%D9%82-%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-%D9%88%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D8%A9/%D9%85%D8%A4%D8%B4%D8%B1%D8%A7%D8%AA-%D8%A2%D8%B3%D9%8A%D8%A7-%D8%AA%D8%AA%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A8%D8%B6%D8%BA%D8%B7-%D8%A7%D9%84%D8%B1%D9%82%D8%A7%D8%A6%D9%82-%D9%88%D8%A7%D9%84%D8%A3%D8%B3%D9%87%D9%85-%D9%88%D9%82-%D8%A7%D9%84%D8%B5%D9%8A%D9%86%D9%8A%D8%A9-%D8%AA%D8%AF%D8%AE%D9%84-%D9%81%D9%8A-%D8%B3%D9%88%D9%82-%D9%87%D8%A7%D8%A8%D8%B7%D8%A9"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يوضح العنوان والمقدمة ما تغير: دخل CSI 300 السوق الهابطة بعد هبوطه 20% عن ذروة يونيو وتراجعه عشرة أسابيع متتالية. ويحدد المتن أن المؤشر يضم 300 من أكبر أسهم شنغهاي وشنتشن، ولا يوجد تناقض بين العنوان والعنوان الفرعي.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يقدم المتن السياق المسند: تباطؤ الأرباح الصناعية، وأبطأ نمو منذ أكثر من ثلاث سنوات، وثقل الأفراد (90% مقابل 20–25% في نيويورك)، مع تعريف كل خبير بمنصبه ومؤسسته. لكن صندوق «لماذا يهمّ» يقدّم ثقة الأسر على الأرباح بلا أساس في المقدمات، ويحوّل رأي راين إلى آلية ثابتة.",
+              "repair": "صياغة الاستنتاج بشرط: الأرباح وحدها لا تكفي ما لم تعد ثقة المدخرين الأفراد، بدل المفاضلة «أكثر من»."
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "يتدرج التقرير من الخبر إلى ضغوط الأرباح والاقتصاد، ثم إلى بنية السوق التي يقودها الأفراد، ثم إلى الأصوات المتفائلة (راين في توقعه لعام 2027، وجيرارد). والفقرات مجمّعة حول وظائفها لا حول ترتيب ملاحظات المصدر، وتخلو من الإحالة إلى ما لا تقوله المصادر ومن الجمل الختامية المجردة.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصدر 1 (20%، 10 أسابيع، 2.6%، أكثر من 1%، 90%، 20–25%)، ونسبة البيانات إلى LSEG وإتش إس بي سي صحيحة. أما عبارة «يرجع ... هذا التراجع إلى تحديات هيكلية» فتضيف علاقة سببية مباشرة لم يصرح بها سفيتانوفسكي، وعبارة «بهذه النسبة» لا تبين أن 20% عتبة.",
+              "repair": "استبدال «يرجع هذا التراجع» بـ«يرى أن سوق الأسهم الصينية لا تزال تواجه تحديات هيكلية»، وكتابة «20% أو أكثر عن ذروته» في جملة التعريف."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقول العنوان والمقدمة معاً ما تغير: دخل المؤشر السوق الهابطة الخميس بعد تراجعه 20% عن ذروة يونيو. ويحدد التقرير المقياس: 300 من أكبر الأسهم في بورصتي شنغهاي وشنتشن، ومصدر البيانات LSEG. وجملة «وتوصف السوق بالهابطة حين يتراجع المؤشر 20% أو أكثر عن ذروته الأخيرة» تعرض النسبة الآن عتبة، كما طُلب في الملاحظة 3.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يورد المتن ما يوفره المصدر 1 من أسباب: تباطؤ نمو الأرباح، وأضعف نمو للأرباح الصناعية في سبتمبر منذ بداية العام، وأبطأ نمو اقتصادي منذ أكثر من ثلاث سنوات بفعل العقار وضعف الطلب. ويقارن ثقل الأفراد في الصين (90%) بحصتهم في نيويورك (20–25%) بحسب إتش إس بي سي، ويعرّف كل خبير بمنصبه ومؤسسته. وتأتي عبارة سفيتانوفسكي الآن «يرى ... أن سوق الأسهم الصينية لا تزال تواجه تحديات هيكلية»، فزال التشديد السببي. وفي صندوق «لماذا يهمّ»: المقدمات (90%، والتحول إلى الودائع لأجل، وتآكل الأرباح) مسندة، والاستنتاج مشروط («لا يكفي ... ما لم تعد ثقة هؤلاء المدخرين»)، والآلية مخففة بـ«قد»، فلا مفاضلة ولا يقين زائد.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "تتدرج الفقرات من الحدث وأرقامه إلى ضغط الأرباح والاقتصاد، ثم القراءة الهيكلية، ثم بنية السوق التي يقودها الأفراد وما تعنيه للتقلب، ثم الآراء المتفائلة (راين في 2027، وجيرارد والذكاء الاصطناعي). كل فقرة تؤدي وظيفة، ولا تستهلّها إحالات إلى ما قبلها ولا جمل حشو. ويضيف الصندوق ربطاً بين الأرباح والثقة لم يقله المتن، ولا يقتصر على تكرار كلام راين.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصدر 1: 20% عن ذروة يونيو، و10 أسابيع، و2.6% هذا الأسبوع، وأكثر من 1% الخميس، و90% مقابل 20–25%. ويعتمد التقرير هبوط الخميس الأحدث توقيتاً (أكثر من 1%) بدل نسبة 0.37% المبكرة في المصدر 2، وهذا اختيار صحيح. وتبقى التوقعات منسوبة إلى أصحابها: انتعاش 2027 لراين، وعودة المستثمرين «قد» تحدث بحسب جيرارد، دون تحويلها إلى حقائق.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "الأفراد يستحوذون على 90% من التداول اليومي في الصين بحسب بيانات إتش إس بي سي",
+          "source": 1
+        },
+        {
+          "fact": "المستثمرون الأفراد يميلون إلى الانسحاب أسرع في فترات عدم اليقين بحسب شون راين",
+          "source": 1
+        },
+        {
+          "fact": "المستثمرون الصينيون يتجهون إلى أصول آمنة كالودائع لأجل مع ضعف العقارات وسوق العمل بحسب راين",
+          "source": 1
+        },
+        {
+          "fact": "الشركات الصينية تعاني تباطؤ نمو الأرباح مع منافسة أضعفت هوامش الربح",
+          "source": 1
+        }
+      ],
+      "slug": "china-csi-300-enters-bear-market-0ca4b5",
+      "title": "المؤشر الرئيسي للأسهم الصينية يدخل السوق الهابطة بخسارة 20% من ذروته",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "مصر تشكل لجنة دائمة لضبط سوق البيليت وتوفيره لمصانع الحديد",
+      "section": "economy",
+      "importance": 6,
+      "sources": [
+        "https://www.alborsaanews.com/2026/10/22/2001043",
+        "https://www.dailynewsegypt.com/2026/10/21/egyptian-government-tackles-steelmakers-challenges-billet-supply/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والافتتاحية يوضحان ما تغيّر: لجنة دائمة لمتابعة توافر البيليت. لكن عبارة «عقب اجتماعين وزاريين مع منتجي الصلب» تخلط التسلسل وتختزل طرفي الاجتماعين. ويبقى مقترح الحصص غير مقرر، وقد عبّر عنه المقال بربط غير مسند إلى المراكبي.",
+              "repair": "فصل تشكيل اللجنة عن الاجتماعين دون «عقب»، وذكر أن الاجتماعين شملا مصانع الدرفلة والمصانع المتكاملة، والإشارة إلى أن الحكومة تبدأ الرد على مقترحات الشركات مطلع نوفمبر دون نسبة حكم خاص بالحصص إلى المراكبي."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الافتتاحية تذكر «تقييم أثر التدابير المطبقة» دون بيانها. ولا يتضح للقارئ أنها التدابير الوقائية النهائية بموجب القرار 121 لسنة 2026 إلا في الفقرة الأخيرة (المصدر 2). وتعريف المسؤولين وعياد والمراكبي بمناصبهم جيد. أما صندوق «لماذا يهمّ» فمقدماته (الفجوة، والصادرات مقابل السوق المحلية، والرخص الجديدة) مسندة، واستنتاجه الثاني منضبط، لكن «طرفاً في توزيع الخام» يتجاوز المقدمات.",
+              "repair": "إلحاق إشارة موجزة بالقرار 121 بأول ذكر لـ«التدابير المطبقة» قرب الافتتاحية، وتعديل صياغة الصندوق إلى المراقبة لا التوزيع."
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "الفقرات مجمّعة حسب وظيفتها: حجم الفجوة، ثم الاجتماعان، ثم البيانات والرقابة، ثم مقترح الحصص وموعد الرد، ثم الرخص الجديدة على المدى الأبعد، ثم الخلفية القانونية. ولا تتبع النص المصدري فقرة بفقرة. والصندوق يضيف قيداً اقتصادياً واضحاً: سد الفجوة رهين بالمنتجين الحاليين أو بالاستيراد إلى أن تعمل الرخص.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام (100 إلى 110 آلاف، و80 ألفاً، و20 إلى 30 ألف طن، والقرار 121 لسنة 2026، والقانون 161 لسنة 1998، ونوفمبر) مطابقة للمصادر. لكن «أوجب» و«ألزم» تحوّلان التأكيد إلى إلزام. وجملة «وما لا تحصل عليه محلياً تستورده بتكلفة أعلى» ترد بلا نسبة مع أن أصلها كلام عياد.",
+              "repair": "استبدال «أوجب» و«ألزم» بـ«شدد على ضرورة»، ونسبة جملة الاستيراد بتكلفة أعلى إلى عياد أو دمجها في فقرته."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والافتتاحية يحددان ما تغيّر: لجنة دائمة من ثلاث وزارات وجهاز حماية المنافسة لمتابعة سوق الحديد وتوافر البيليت. والاجتماعان منفصلان عن التشكيل، والأول مع مصانع الدرفلة والثاني مع المصانع المتكاملة ونصف المتكاملة (المصدر 2). والحصص تبقى مقترحاً لا قراراً.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "القرار 121 لسنة 2026 والقانون 161 لسنة 1998 يظهران الآن في الفقرة الثانية، والمسؤولون وعياد والمراكبي والمهندس معرّفون بمناصبهم. لكن الدافع العالمي الملموس، أي قيود الخردة الأوروبية المذكورة في المصدر 2، مؤجل إلى الجملة الأخيرة. وصندوق «لماذا يهمّ» يبني على مقدمات مسندة، هي الفجوة وتوزع الإنتاج بين التصدير والسوق المحلية والرخص الجديدة، استنتاجاً منضبطاً بشرط واضح هو «إلى أن تتحول رخص البيليت الجديدة إلى إنتاج فعلي».",
+              "repair": "نقل إشارة قيود الخردة الأوروبية إلى جوار «أوضاع السوق العالمية» في الفقرة الأولى أو إلى فقرة القرار 121، مع نسبتها إلى الوزيرين."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "زالت الجسور التي تحيل إلى الفقرة السابقة. لكن فكرة «الاستيراد بتكلفة أعلى» تتكرر في الفقرتين الرابعة والسابعة، وتقف جملة نوفمبر وحدها في فقرة من سطر واحد، وتفتتح فقرة الرخص بعبارة «تراهن... على المدى الأبعد» التي تصنع إطاراً لا تقدمه المصادر.",
+              "repair": "حصر كلفة الاستيراد في فقرة الحصص، ودمج موعد نوفمبر في فقرة المطالب، وافتتاح فقرة الرخص بالفعل المسند: «طرحت وزارة الصناعة رخصاً جديدة...»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصدر 1: من 100 إلى 110 آلاف طن، ونحو 80 ألفاً، ومن 20 إلى 30 ألف طن، وموعد نوفمبر. والقرار والقانون مطابقان للمصدر 2، و«شدد على ضرورة» تحل الآن محل «أوجب» و«ألزم». غير أن «تلجأ إلى استيراد الفجوة» تحوّل تقدير عياد للفجوة إلى قول منسوب إليه بأن الفجوة كلها تُستورد.",
+              "repair": "«ما يعني بحسب تقديره فجوة بين 20 و30 ألف طن شهراً»، دون نسبة استيراد الفجوة كاملة إليه."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 8,
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "عياد: احتياجات مصانع الدرفلة بين 100 و110 آلاف طن شهرياً، والمصانع المتكاملة توفر نحو 80 ألف طن",
+          "source": 1
+        },
+        {
+          "fact": "الحكومة طلبت من الشركات المتكاملة بيانات أسبوعية عن الإنتاج والصادرات والمبيعات المحلية والمخزون",
+          "source": 1
+        },
+        {
+          "fact": "مصانع الدرفلة اقترحت حصصاً من البيليت المحلي بدلاً من استيراده بتكلفة أعلى",
+          "source": 1
+        },
+        {
+          "fact": "وزارة الصناعة طرحت رخصاً جديدة لإنتاج البيليت وشدد الوزير على ضرورة تحرك الحاصلين عليها سريعاً نحو التشغيل",
+          "source": 2
+        }
+      ],
+      "slug": "egypt-permanent-committee-steel-billet-supply-9899a3",
+      "title": "مصر تشكل لجنة دائمة لمتابعة توافر البيليت لمصانع الدرفلة",
+      "score": 9,
+      "image": "photo"
+    }
+  ],
+  "llm": {
+    "calls": 51,
+    "failures": 2,
+    "promptTokens": 740886,
+    "completionTokens": 195491,
+    "cacheReadTokens": 231562,
+    "costUsd": 8.0304,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 51
+    }
+  },
+  "log": [
+    "[05:25:16] critic (second pass) \"مصر تشكل لجنة دائمة لمتابعة توافر البيليت لمصانع الدرفلة\": revise score=9 issues=8",
+    "[05:25:45] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=29561",
+    "[05:26:13] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=28338",
+    "[05:26:13] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[05:26:13] desk \"مصر تشكل لجنة دائمة لمتابعة توافر البيليت لمصانع الدرفلة\": rewrote body",
+    "[05:26:13] mended \"مصر تشكل لجنة دائمة لمتابعة توافر البيليت لمصانع الدرفلة\": the second pass's 8 finding(s) sent back once more",
+    "[05:27:08] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=54304",
+    "[05:27:08] precheck \"مصر تشكل لجنة دائمة لمتابعة توافر البيليت لمصانع الدرفلة\": clean",
+    "[05:27:16] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=8398",
+    "[05:27:16] image: the picture should say: Egypt's rolling mills are short of the steel billets they need, and the government is stepping in to watch who gets them.",
+    "[05:27:16] image: tier 1, the story's own place (Helwan, Ain Sokhna, Sadat City): Helwan | Helwan steel plant | Ain Sokhna steel",
+    "[05:27:17] commons \"Helwan\": 2 usable of 24",
+    "[05:27:17] image: dropped \"E 003261 E Maoris in North Africa July 1941.jpg\" — dated 1941, an archival picture",
+    "[05:27:17] pexels \"Helwan\": 8 usable",
+    "[05:27:22] openverse \"Helwan\": 7 usable of 20",
+    "[05:27:22] image: dropped \"1944-01 Maccabi trip to Helwan\" — dated 1944, an archival picture",
+    "[05:27:22] image: dropped \"1944-11 Maccabi Cairo trip to Helwan\" — dated 1944, an archival picture",
+    "[05:27:22] image: dropped \"1943 Maccabi scouts excursion to Helwan\" — dated 1943, an archival picture",
+    "[05:27:22] image: dropped \"Māori Battalion survivors of action in Greece, performing a haka in He\" — dated 1941, an archival picture",
+    "[05:27:22] image: dropped \"Military airplane with propellers landing on tarmac at an airport.\" — a warship or weapon, and the story is not about the military",
+    "[05:27:22] commons \"Helwan steel plant\": 0 usable of 0",
+    "[05:27:23] pexels \"Helwan steel plant\": 8 usable",
+    "[05:27:25] openverse \"Helwan steel plant\": 0 usable of 0",
+    "[05:27:25] image: dropped \"Interior view of a large industrial warehouse with stacked metal sheet\" — names too little of steel, plant",
+    "[05:27:25] image: dropped \"Interior view of a large industrial factory featuring machinery and eq\" — names too little of steel, plant",
+    "[05:27:25] image: dropped \"A large industrial facility on a cloudy day in Saudi Arabia, showcasin\" — names too little of steel, plant",
+    "[05:27:25] image: dropped \"Close-up of a large rusted industrial metal structure with blue sky ba\" — names too little of steel, plant",
+    "[05:27:25] image: dropped \"Low angle view of an industrial facility featuring a tall smokestack a\" — names too little of steel, plant",
+    "[05:27:25] commons \"Ain Sokhna steel\": 1 usable of 1",
+    "[05:27:26] pexels \"Ain Sokhna steel\": 8 usable",
+    "[05:27:27] openverse \"Ain Sokhna steel\": 0 usable of 0",
+    "[05:27:27] image: dropped \"A tranquil view of an industrial port surrounded by calm blue waters, \" — names too little of steel",
+    "[05:27:27] image: dropped \"Rusty pipes at a coastal construction site with scenic sunset view.\" — names too little of steel",
+    "[05:27:27] image: dropped \"A factory worker operates heavy machinery in an industrial setting, de\" — names too little of steel",
+    "[05:27:27] image: 14 file(s) dropped for naming none of Helwan, Ain Sokhna, Sadat City",
+    "[05:27:27] image: thumbnail HTTP 403 for https://live.staticflickr.com/2259/2101971148_8139c80702_n.jpg",
+    "[05:27:28] image: thumbnail HTTP 403 for https://live.staticflickr.com/2111/2096341213_cbc19d04dc_n.jpg",
+    "[05:27:29] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/52025596063_b5d7664d39_n.jpg",
+    "[05:27:34] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3127",
+    "[05:27:34] image: vision rejected all candidates (No candidate shows the story's subject, which is steel billets, rolling mills or the ministers involved. Photos 1 and 2 show identifiable activists who are not part of the story. Photo 3 is an archival engraving. Photo 4 is a scenic sunset with no steel content. Photo 5 is a metro station with a watermark and no link to the steel industry.)",
+    "[05:27:39] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5124",
+    "[05:27:39] image: the source's photograph (Alborsa News) shows Square steel billets stacked in crossed layers in a storage yard.; searching steel billets stacked | square steel billets | steel billet storage yard | steel rolling mill Egypt",
+    "[05:27:39] image: tier 2, like the sources' own photograph: steel billets stacked | square steel billets | steel billet storage yard | steel rolling mill Egypt",
+    "[05:27:40] commons \"steel billets stacked\": 0 usable of 20",
+    "[05:27:40] commons \"steel billets\": 11 usable of 20",
+    "[05:27:40] image: dropped \"Industries of War - Metals - Steel - Lackawanna Steel Company - Manufa\" — dated 1917, an archival picture",
+    "[05:27:40] image: dropped \"Industries of War - Metals - Steel - Lackawanna Steel Company - Genera\" — dated 1917, an archival picture",
+    "[05:27:40] image: dropped \"Industries of War - Barbed Wire - MANUFACTURING BARBED WIRE. Steel bil\" — dated 1917, an archival picture",
+    "[05:27:40] image: dropped \"Industries of War - Metals - Steel - Lackawanna Steel Company - View i\" — dated 1917, an archival picture",
+    "[05:27:40] image: dropped \"Industries of War - Metals - Steel - Lackawanna Steel Company - Manufa\" — dated 1917, an archival picture",
+    "[05:27:40] image: dropped \"Motor Vehicles - Motor Trucks - Types - Manufacturers - Nash Quad - Br\" — dated 1917, an archival picture",
+    "[05:27:40] image: dropped \"Roughing mill - Trumbull Steel 1919.jpg\" — names too little of steel, billets, stacked",
+    "[05:27:40] image: dropped \"Roughing train - Trumbull Steel 1927.jpg\" — dated 1927, an archival picture",
+    "[05:27:40] image: dropped \"Industries of War - Metals - Steel - Lackawanna Steel Company - View i\" — dated 1917, an archival picture",
+    "[05:27:41] pexels \"steel billets stacked\": 8 usable",
+    "[05:27:46] openverse \"steel billets stacked\": 3 usable of 3",
+    "[05:27:46] image: dropped \"A glovebox cell inside Building 235-F\" — names too little of steel, billets, stacked",
+    "[05:27:46] image: dropped \"Construction of Building 235-F at SRS\" — names too little of steel, billets, stacked",
+    "[05:27:46] image: dropped \"Iron runners - Trumbull-Cliffs Blast Furnace\" — names too little of steel, billets, stacked",
+    "[05:27:46] commons \"square steel billets\": 2 usable of 2",
+    "[05:27:46] image: dropped \"The Architect and engineer of California and the Pacific Coast (1917) \" — names too little of square, steel, billets",
+    "[05:27:46] image: dropped \"Locomotive engineering - a practical journal of railway motive power a\" — names too little of square, steel, billets",
+    "[05:27:47] pexels \"square steel billets\": 8 usable",
+    "[05:27:52] openverse \"square steel billets\": 0 usable of 1",
+    "[05:27:52] image: dropped \"A close-up abstract composition of stacked, perforated metal plates in\" — names too little of square, steel, billets",
+    "[05:27:52] image: dropped \"Close-up of a modern architectural installation with geometric pattern\" — names too little of square, steel, billets",
+    "[05:27:52] image: dropped \"Diverse collection of stacked metallic pipes and rods in a warehouse d\" — names too little of square, steel, billets",
+    "[05:27:52] image: dropped \"Detailed view of a textured glass brick wall with a metal grid, showca\" — names too little of square, steel, billets",
+    "[05:27:52] image: dropped \"Close-up of a rusty metal surface with a diamond-shaped pattern, showc\" — names too little of square, steel, billets",
+    "[05:27:52] image: dropped \"Close-up of a sleek and futuristic office building with glass windows.\" — names too little of square, steel, billets",
+    "[05:27:52] image: dropped \"A lively street parade with people in traditional costumes and drummer\" — names too little of square, steel, billets",
+    "[05:27:52] commons \"steel billet storage yard\": 3 usable of 5",
+    "[05:27:53] pexels \"steel billet storage yard\": 8 usable",
+    "[05:27:54] openverse \"steel billet storage yard\": 0 usable of 0",
+    "[05:27:54] image: dropped \"Outdoor view of an industrial warehouse with multiple stacks of metal \" — names too little of steel, billet, storage, yard",
+    "[05:27:54] image: dropped \"Stacked steel bars in an outdoor industrial area with trees providing \" — names too little of steel, billet, storage, yard",
+    "[05:27:54] image: dropped \"Aerial photo of an industrial area with metal beams, showcasing organi\" — names too little of steel, billet, storage, yard",
+    "[05:27:58] commons \"steel rolling mill Egypt\": 1 usable of 20",
+    "[05:27:58] pexels \"steel rolling mill Egypt\": 8 usable",
+    "[05:28:00] openverse \"steel rolling mill Egypt\": 0 usable of 0",
+    "[05:28:00] image: dropped \"Molten metal pouring in a foundry, showcasing intense industrial proce\" — names too little of steel, rolling, mill",
+    "[05:28:00] image: dropped \"A woman in safety gear inspects metal sheets in a modern Russian indus\" — names too little of steel, rolling, mill",
+    "[05:28:00] image: dropped \"A worker in protective gear welds metal in an industrial plant with sp\" — names too little of steel, rolling, mill",
+    "[05:28:00] image: dropped \"Silhouetted industrial structures against a vibrant sunset sky.\" — names too little of steel, rolling, mill",
+    "[05:28:00] image: dropped \"Interior shot of an industrial factory showing large machinery and met\" — names too little of steel, rolling, mill",
+    "[05:28:00] image: dropped \"Close-up of molten metal pouring in a foundry, showcasing industrial p\" — names too little of steel, rolling, mill",
+    "[05:28:00] image: dropped \"1933 Century of Progress, Armco-Ferro Porcelain Enameled House Brochur\" — taken in United States, which the story does not name",
+    "[05:28:00] image: 13 likeness(es) set aside for the country's own photographs",
+    "[05:28:00] image: tier 3, the writer's own subjects: steel billets | steel rolling mill | Ezz Steel",
+    "[05:28:01] commons \"steel billets 2026\": 1 usable of 6",
+    "[05:28:01] commons \"steel billets\": 8 usable of 12",
+    "[05:28:01] image: dropped \"Staccato P.4.5 or 4.5” July 25 2026 9mm handgun 01.jpg\" — names too little of steel, billets",
+    "[05:28:01] image: dropped \"Industries of War - Metals - Steel - Lackawanna Steel Company - Manufa\" — dated 1917, an archival picture",
+    "[05:28:01] image: dropped \"Industries of War - Metals - Steel - Lackawanna Steel Company - Genera\" — dated 1917, an archival picture",
+    "[05:28:01] image: dropped \"Industries of War - Barbed Wire - MANUFACTURING BARBED WIRE. Steel bil\" — dated 1917, an archival picture",
+    "[05:28:01] image: dropped \"Industries of War - Metals - Steel - Lackawanna Steel Company - View i\" — dated 1917, an archival picture",
+    "[05:28:01] image: dropped \"Industries of War - Metals - Steel - Lackawanna Steel Company - Manufa\" — dated 1917, an archival picture",
+    "[05:28:03] commons \"steel rolling mill 2026\": 6 usable of 10",
+    "[05:28:04] commons \"steel rolling mill\": 3 usable of 12",
+    "[05:28:04] image: dropped \"ECSC Financial report 1984 Serémange Réversible.jpg\" — dated 1984, an archival picture",
+    "[05:28:04] image: dropped \"ECSC Financial report 1989 Allevard Laminoir à rond.jpg\" — dated 1989, an archival picture",
+    "[05:28:04] image: dropped \"ECSC Financial report 1987 Sainte-Agathe Laminoir.jpg\" — dated 1987, an archival picture",
+    "[05:28:04] image: dropped \"ECSC Financial report 1985 Sainte-Agathe Laminoir.jpg\" — dated 1985, an archival picture",
+    "[05:28:04] image: dropped \"Contract No. 85, Manufacture and Delivery of Precast Concrete Steel Cy\" — dated 1939, an archival picture",
+    "[05:28:04] image: dropped \"Cold-rolling mills - Trumbul Steel 1919.jpg\" — dated 1919, an archival picture",
+    "[05:28:04] image: dropped \"Instantaneous Flash in Rolling Mill, Pittsburgh, PA.jpg\" — dated 1911, an archival picture",
+    "[05:28:04] image: dropped \"SydneySteel(Rolling)MillCa1900.jpg\" — dated 1900, an archival picture",
+    "[05:28:04] commons \"Ezz Steel 2026\": 0 usable of 0",
+    "[05:28:04] commons \"Ezz Steel\": 1 usable of 1",
+    "[05:28:04] image: dropped \"20240607 18 Pennsylvania Trolley Museum.jpg\" — taken in United States, which the story does not name",
+    "[05:28:12] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6995",
+    "[05:28:12] image: vision rejected all candidates (Neither photo is fit to run. Photo 1 does show steel billets, but its categories place it on a rail siding in Cardiff, UK. It is a wagon scene, not a material close-up, so it is the wrong country for a story about Egypt. Photo 2 does show Ezz Steel in Egypt, a company named in the story. But it is a 2009 Nokia N95 phone snapshot of an empty factory front, an old-phone amateur image that fails the publication standard and says nothing about the billet shortage.)",
+    "[05:28:12] image: tier 4, the story's point and its subject: steel billets stack | hot rolling mill Egypt | steel plant workers Egypt | steel rolling mill Egypt | steel billets Egypt | steel rebar bundles (home: Egypt, Egyptian, Cairo, Helwan, Alexandria)",
+    "[05:28:13] commons \"steel billets stack\": 0 usable of 24",
+    "[05:28:13] commons \"steel billets\": 13 usable of 24",
+    "[05:28:13] image: dropped \"Industries of War - Metals - Steel - Lackawanna Steel Company - Manufa\" — dated 1917, an archival picture",
+    "[05:28:13] image: dropped \"Industries of War - Metals - Steel - Lackawanna Steel Company - Genera\" — dated 1917, an archival picture",
+    "[05:28:13] image: dropped \"Industries of War - Barbed Wire - MANUFACTURING BARBED WIRE. Steel bil\" — dated 1917, an archival picture",
+    "[05:28:13] image: dropped \"Industries of War - Metals - Steel - Lackawanna Steel Company - View i\" — dated 1917, an archival picture",
+    "[05:28:13] image: dropped \"Industries of War - Metals - Steel - Lackawanna Steel Company - Manufa\" — dated 1917, an archival picture",
+    "[05:28:13] image: dropped \"Motor Vehicles - Motor Trucks - Types - Manufacturers - Nash Quad - Br\" — dated 1917, an archival picture",
+    "[05:28:13] image: dropped \"Roughing mill - Trumbull Steel 1919.jpg\" — names too little of steel, billets, stack",
+    "[05:28:13] image: dropped \"Roughing train - Trumbull Steel 1927.jpg\" — dated 1927, an archival picture",
+    "[05:28:13] image: dropped \"Industries of War - Metals - Steel - Lackawanna Steel Company - View i\" — dated 1917, an archival picture",
+    "[05:28:13] image: dropped \"In the finishing department of Republic Steel. 8d17845v.jpg\" — names too little of steel, billets, stack",
+    "[05:28:14] pexels \"steel billets stack\": 8 usable",
+    "[05:28:21] openverse \"steel billets stack\": 3 usable of 3",
+    "[05:28:21] image: dropped \"A glovebox cell inside Building 235-F\" — names too little of steel, billets, stack",
+    "[05:28:21] image: dropped \"Construction of Building 235-F at SRS\" — names too little of steel, billets, stack",
+    "[05:28:21] image: dropped \"Iron runners - Trumbull-Cliffs Blast Furnace\" — names too little of steel, billets, stack",
+    "[05:28:21] commons \"hot rolling mill Egypt\": 0 usable of 0",
+    "[05:28:22] commons \"hot rolling\": 9 usable of 24",
+    "[05:28:22] image: dropped \"Laminoir Grey Arbed Differdange 1990.jpg\" — names too little of hot, rolling, mill",
+    "[05:28:22] image: dropped \"ECSC Financial report 1980 Wetzlar Edelstahlwerke Buderus.jpg\" — names too little of hot, rolling, mill",
+    "[05:28:22] image: dropped \"Rolling (metalworking) DMK.jpg\" — names too little of hot, rolling, mill",
+    "[05:28:22] image: dropped \"Rolling (metalworking) DMK1.jpg\" — dated 1908, an archival picture",
+    "[05:28:22] image: dropped \"Rolling steel bars for Sydney Harbour Bridge (8209921148).jpg\" — names too little of hot, rolling, mill",
+    "[05:28:22] image: dropped \"\"Hot\" Rolling Some Steel (2267617927).jpg\" — dated 2004, an archival picture",
+    "[05:28:22] image: dropped \"Nadezhdinsky plant production.jpg\" — names too little of hot, rolling, mill",
+    "[05:28:22] image: dropped \"ECSC Financial report 1985 Sainte-Agathe Laminoir.jpg\" — dated 1985, an archival picture",
+    "[05:28:23] pexels \"hot rolling mill Egypt\": 8 usable",
+    "[05:28:26] openverse \"hot rolling mill Egypt\": 0 usable of 0",
+    "[05:28:26] image: dropped \"Molten metal pouring in a foundry, showcasing intense industrial proce\" — names too little of hot, rolling, mill",
+    "[05:28:26] image: dropped \"Dramatic image of a blazing industrial furnace with intense flames.\" — names too little of hot, rolling, mill",
+    "[05:28:26] image: dropped \"A blacksmith at work in a dimly lit forge, shaping heated metal with i\" — names too little of hot, rolling, mill",
+    "[05:28:26] image: dropped \"A woman in safety gear inspects metal sheets in a modern Russian indus\" — names too little of hot, rolling, mill",
+    "[05:28:32] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5392",
+    "[05:28:36] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4077",
+    "[05:28:36] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Industrial steel beams stacked outdoors beneath a gantry cra\": The frame clearly shows stacked square-section steel billets beneath a gantry crane, the story's own commodity, with not",
+    "[05:28:36] published \"مصر تشكل لجنة دائمة لمتابعة توافر البيليت لمصانع الدرفلة\" -> egypt-permanent-committee-steel-billet-supply-9899a3"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-22T04:57:44.955Z",
+  "durationSec": 67,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "meta-25-billion-new-mexico-cambridge-analytica-d301c7",
+      "title": "قاضٍ في نيو مكسيكو يلزم «ميتا» بدفع 25 مليار دولار عن مخالفات الخصوصية",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 37,
+        "checked": 37,
+        "supported": 33,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "php-flaws-force-websites-offline-worldwide-cac721",
+      "title": "حكومات تغلق مواقعها احترازياً بعد كشف ثغرتين في لغة «بي إتش بي»",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 40,
+        "checked": 40,
+        "supported": 38,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 2,
+    "failures": 0,
+    "promptTokens": 22169,
+    "completionTokens": 15164,
+    "cacheReadTokens": 0,
+    "costUsd": 0.4807,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 2
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[04:57:45] second look: 2 to read now (2 published pieces not yet read; 89 read clean before publication and left out of the audit sample)",
+    "[04:58:35] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=48241",
+    "[04:58:35] meta-25-billion-new-mexico-cambridge-analytica-d301c7: 37 of 37 sentences checked · 33 supported · 2 without a source · 0 confirmed error(s)",
+    "[04:58:52] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=65988",
+    "[04:58:52] php-flaws-force-websites-offline-worldwide-cac721: 40 of 40 sentences checked · 38 supported · 1 without a source · 0 confirmed error(s) · 1 listed for a person"
+  ]
+}

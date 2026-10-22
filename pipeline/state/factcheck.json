@@ -11558,6 +11558,88 @@
       "notFound": [],
       "weak": [],
       "outcome": "listed"
+    },
+    "meta-25-billion-new-mexico-cambridge-analytica-d301c7": {
+      "at": "2026-10-22T04:57:45.574Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v33",
+      "checker": "4c54099299",
+      "publishedAt": "2026-10-21T21:57:27.657Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 37,
+        "checked": 37,
+        "supported": 33,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "احتساب العقوبة عن كل مخالفة على حدة جعل قانون الممارسات غير العادلة في ولاية واحدة أداة تفوق في أثرها المالي غرامة لجنة التجارة الفيدرالية عام 2019، لأن عدد المخالفات يُقاس بعشرات الملايين.",
+        "وإذا ثبّتت محكمة الاستئناف الحكم، فإن فائدة 15% السنوية التي تتراكم حتى السداد الكامل ترفع على الشركة كلفة إطالة النزاع."
+      ],
+      "weak": [
+        {
+          "sentence": "أكبر عقوبة تُفرض على الشركة حتى الآن بسبب ممارساتها التجارية، وتتراكم عليها فائدة سنوية بنسبة 15% حتى سدادها كاملة",
+          "quote": "Meta, the company behind Facebook, Instagram and WhatsApp has been hit with the largest ever fine against it for its business practices."
+        },
+        {
+          "sentence": "رفع المدعي العام السابق للولاية هيكتور بالديراس الدعوى عام 2021، وتعود جزئياً إلى انكشاف حصول «كامبريدج أناليتيكا»، شركة الاستشارات السياسية البريطانية التي توقفت عن العمل، على بيانات ما يصل إلى 87 مليون مستخدم دون موافقتهم.",
+          "quote": "Former New Mexico Attorney General Hector Balderas originally filed the state's Cambridge Analytica-related lawsuit in 2021, while current AG Torrez oversaw the related trial."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "php-flaws-force-websites-offline-worldwide-cac721": {
+      "at": "2026-10-22T04:57:45.542Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v33",
+      "checker": "4c54099299",
+      "publishedAt": "2026-10-21T22:08:04.982Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 40,
+        "checked": 40,
+        "supported": 38,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "ووصفت الثغرتين بأنهما أخطر ما اكتشفه الذكاء الاصطناعي حتى الآن، وعدّت OpenAI الاكتشاف من أشد المشكلات الأمنية أثراً في السنوات الأخيرة.",
+          "quote": "And Wiz said it’s “among the most severe vulnerabilities discovered … in software history.”",
+          "source": "The Verge"
+        }
+      ],
+      "notFound": [
+        "وقال فريق الاستجابة لطوارئ الحاسوب في الاتحاد الأوروبي (CERT-EU) إن الثغرتين قد تطالان كل الإصدارات منذ PHP 5 التي صدرت في 2004."
+      ],
+      "weak": [],
+      "outcome": "listed"
     }
   }
 }

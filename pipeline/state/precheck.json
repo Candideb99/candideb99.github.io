@@ -4630,6 +4630,125 @@
           "noted": []
         }
       ]
+    },
+    "meta-non-voting-shares-ai-funding-c16252": {
+      "at": "2026-10-22T05:13:27.171Z",
+      "title": "ميتا تعتزم إصدار أسهم بلا حق تصويت لتمويل توسعها في الذكاء الاصطناعي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v33",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 27,
+            "weak": 1,
+            "noEvidence": 3,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "china-csi-300-enters-bear-market-0ca4b5": {
+      "at": "2026-10-22T05:19:10.300Z",
+      "title": "المؤشر الرئيسي للأسهم الصينية يدخل السوق الهابطة بخسارة 20% من ذروته",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 26,
+            "checked": 26,
+            "supported": 21,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 8,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "هبوط المؤشر في جلسة الخميس: أكثر من 1%",
+              "quote": "كما خسر مؤشر «إس أند بي/إيه إس إكس 200» الأسترالي 0.53%، وتراجع مؤشر «هانغ سينغ» في هونغ كونغ بأكثر من 2%، في حين انخفض مؤشر «سي إس آي 300» في الصين بنسبة 0.37%.",
+              "source": "Al Khaleej",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 13,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تجاوز هبوط المؤشر 1% خلال جلسة الخميس، وبلغت خسائره منذ بداية الأسبوع 2.6%، وفق بيانات مجموعة بورصة لندن (LSEG).",
+              "quote": "كما خسر مؤشر «إس أند بي/إيه إس إكس 200» الأسترالي 0.53%، وتراجع مؤشر «هانغ سينغ» في هونغ كونغ بأكثر من 2%، في حين انخفض مؤشر «سي إس آي 300» في الصين بنسبة 0.37%.",
+              "source": "Al Khaleej",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "egypt-permanent-committee-steel-billet-supply-9899a3": {
+      "at": "2026-10-22T05:28:36.652Z",
+      "title": "مصر تشكل لجنة دائمة لمتابعة توافر البيليت لمصانع الدرفلة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v33",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 26,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 10,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وعقد هاشم ووزير الاستثمار والتجارة الخارجية محمد فريد اجتماعين موسعين، الأول مع ممثلي مصانع الدرفلة والثاني مع ممثلي المصانع المتكاملة ونصف المتكاملة، لبحث التحديات التي تواجه الشركات في ظل أوضاع السوق العالمية.",
+              "quote": "وعقد خالد هاشم، وزير الصناعة، ومحمد فريد، وزير الاستثمار والتجارة الخارجية، اجتماعا مع ممثلى المصانع المتكاملة ونصف المتكاملة ومصانع الدرفلة، لبحث التحديات التى تواجه الشركات فى ظل الظروف العالمية الراهنة.",
+              "source": "Alborsa News",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []

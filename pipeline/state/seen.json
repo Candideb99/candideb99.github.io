@@ -1,48 +1,6 @@
 {
   "version": 1,
   "items": {
-    "40aea18b109af545": {
-      "at": "2026-10-01T00:47:39.538Z",
-      "decision": "published",
-      "slug": "analysts-raise-2026-brent-forecast-poll-b79e2f",
-      "title": "محللون يرفعون توقعاتهم لأسعار النفط في 2026"
-    },
-    "fa62cd84fde6764a": {
-      "at": "2026-10-01T00:47:39.538Z",
-      "decision": "published",
-      "slug": "analysts-raise-2026-brent-forecast-poll-b79e2f",
-      "title": "Analysts raise 2026 oil forecasts on prolonged Gulf disruption"
-    },
-    "47cd49de9383e4c8": {
-      "at": "2026-10-01T00:47:39.538Z",
-      "decision": "published",
-      "slug": "analysts-raise-2026-brent-forecast-poll-b79e2f",
-      "title": "Oil Price Forecasts Jump as Hormuz Disruption Drags On"
-    },
-    "8d354e566a93afa5": {
-      "at": "2026-10-01T00:51:32.858Z",
-      "decision": "published",
-      "slug": "qatar-non-hydrocarbon-gdp-grows-q2-2026-d8671e",
-      "title": "Qatar’s non-oil GDP grows 2.6 percent in Q2 2026, led by real estate and finance"
-    },
-    "2c8d0c78d73265a0": {
-      "at": "2026-10-01T00:51:32.858Z",
-      "decision": "published",
-      "slug": "qatar-non-hydrocarbon-gdp-grows-q2-2026-d8671e",
-      "title": "Qatar's non-hydrocarbon economy expands 2.6% in Q2 2026"
-    },
-    "32a28a0fe3965bdc": {
-      "at": "2026-10-01T00:56:48.079Z",
-      "decision": "published",
-      "slug": "boeing-wins-navy-f-a-xx-fighter-contract-054631",
-      "title": "Boeing lands US Navy contract for 6th-Gen F/A-XX fighter"
-    },
-    "60beed47bb1c161a": {
-      "at": "2026-10-01T00:56:48.079Z",
-      "decision": "published",
-      "slug": "boeing-wins-navy-f-a-xx-fighter-contract-054631",
-      "title": "What Boeing’s F/A-XX win means for the company, and what challenges come next"
-    },
     "cf58b44c0814f3a9": {
       "at": "2026-10-01T10:25:25.730Z",
       "decision": "published",
@@ -1296,6 +1254,90 @@
       "decision": "rejected",
       "title": "UAE President receives Prime Minister of Singapore on official visit",
       "strikes": 1
+    },
+    "1ce63db7d898ac23": {
+      "at": "2026-10-22T05:05:07.473Z",
+      "decision": "rejected",
+      "title": "Oil rises further after Dammam airport and oil field attacks",
+      "strikes": 1
+    },
+    "617b96a8e725bad4": {
+      "at": "2026-10-22T05:05:07.473Z",
+      "decision": "rejected",
+      "title": "One killed, eight injured in attack on Saudi Arabia’s King Fahd airport",
+      "strikes": 1
+    },
+    "0f9076db1613ae68": {
+      "at": "2026-10-22T05:05:07.473Z",
+      "decision": "rejected",
+      "title": "Oil tops $110 as Houthi drone strike near Saudi Shaybah field rattles markets",
+      "strikes": 1
+    },
+    "66b007a5acb5ef77": {
+      "at": "2026-10-22T05:05:07.474Z",
+      "decision": "rejected",
+      "title": "U.S. pulls diplomats from Saudi Arabia as it reportedly readies Iran strikes after midterms",
+      "strikes": 1
+    },
+    "ed167b4c538832d9": {
+      "at": "2026-10-22T05:05:07.474Z",
+      "decision": "rejected",
+      "title": "الطيران المدني: وفاة مقيم وإصابة 8 أشخاص في اعتداء على مطار الدمام",
+      "strikes": 1
+    },
+    "7eb6bda16a00e54f": {
+      "at": "2026-10-22T05:13:27.176Z",
+      "decision": "published",
+      "slug": "meta-non-voting-shares-ai-funding-c16252",
+      "title": "ميتا تعلن عن إيرادات فصلية تفوق التوقعات.. 64.6 مليار دولار بنمو 26%"
+    },
+    "c1d532d526a94390": {
+      "at": "2026-10-22T05:13:27.176Z",
+      "decision": "published",
+      "slug": "meta-non-voting-shares-ai-funding-c16252",
+      "title": "Meta put out an ambitious roadmap to Muse monetization after strong quarter and guide"
+    },
+    "f901f0374d9225e3": {
+      "at": "2026-10-22T05:13:27.176Z",
+      "decision": "published",
+      "slug": "meta-non-voting-shares-ai-funding-c16252",
+      "title": "Meta’s stock rises as investors glimpse an opportunity that could dwarf the ad business"
+    },
+    "c1d080de5b4338cf": {
+      "at": "2026-10-22T05:13:27.176Z",
+      "decision": "published",
+      "slug": "meta-non-voting-shares-ai-funding-c16252",
+      "title": "Meta wants to pay for its broad AI buildout with a newly created class of stock"
+    },
+    "86bbef590f282368": {
+      "at": "2026-10-22T05:13:27.176Z",
+      "decision": "published",
+      "slug": "meta-non-voting-shares-ai-funding-c16252",
+      "title": "Meta to create a new class of shares to fund AI push"
+    },
+    "14c2ebb49f6ec835": {
+      "at": "2026-10-22T05:19:10.304Z",
+      "decision": "published",
+      "slug": "china-csi-300-enters-bear-market-0ca4b5",
+      "title": "China's stock market sinks into bear territory as CSI 300 extends 10-week rout"
+    },
+    "dd542ef34f5b5cfa": {
+      "at": "2026-10-22T05:19:10.304Z",
+      "decision": "published",
+      "slug": "china-csi-300-enters-bear-market-0ca4b5",
+      "title": "مؤشرات آسيا تتراجع بضغط الرقائق.. والأسهم وق الصينية تدخل في «سوق هابطة»"
+    },
+    "4797b440951b589d": {
+      "at": "2026-10-22T05:28:36.656Z",
+      "decision": "published",
+      "slug": "egypt-permanent-committee-steel-billet-supply-9899a3",
+      "title": "الحكومة تشكل لجنة دائمة لضبط سوق البيليت وتوفيره للمصانع"
+    },
+    "640aef14fc2e1406": {
+      "at": "2026-10-22T05:28:36.656Z",
+      "decision": "published",
+      "slug": "egypt-permanent-committee-steel-billet-supply-9899a3",
+      "title": "Egyptian government tackles steelmakers’ challenges, billet supply"
     }
   }
 }
