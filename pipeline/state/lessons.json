@@ -207,10 +207,11 @@
     "saudi-oil-disruption-growth-budget-outlook-1f48b3:25ba2543",
     "banque-du-caire-share-offering-launch-f9a4ac:646d95c3",
     "microsoft-exits-nscale-essex-datacentre-power-ce50c6:b9cc2c69",
-    "france-secures-gulf-diesel-supplies-a5bb1f:ede0a439"
+    "france-secures-gulf-diesel-supplies-a5bb1f:ede0a439",
+    "norway-wealth-fund-third-quarter-bond-loss-ebd227:ea51def9"
   ],
-  "version": 33,
-  "updatedAt": "2026-10-21T21:48:49.270Z",
+  "version": 34,
+  "updatedAt": "2026-10-22T17:17:20.500Z",
   "lessons": [
     {
       "id": "L1",
@@ -664,12 +665,14 @@
         "slug": "saudi-travelers-ai-flexible-booking-skyscanner-2026-6a6a86"
       },
       "evidence": [
-        "saudi-travelers-ai-flexible-booking-skyscanner-2026-6a6a86:6be2d0f9"
+        "saudi-travelers-ai-flexible-booking-skyscanner-2026-6a6a86:6be2d0f9",
+        "norway-wealth-fund-third-quarter-bond-loss-ebd227:ea51def9"
       ],
-      "seen": 1,
+      "seen": 2,
       "createdAt": "2026-09-30T12:51:35.701Z",
-      "lastSeen": "2026-09-30T12:51:35.701Z",
-      "status": "pending"
+      "lastSeen": "2026-10-22T17:17:20.500Z",
+      "status": "active",
+      "activatedAt": "2026-10-22T17:17:20.500Z"
     }
   ],
   "model": "claude-cli/claude-opus-5-5",
@@ -988,6 +991,14 @@
       "mistakes": 1,
       "applied": [
         "reinforce L4 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-10-22T17:17:20.500Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L11 (+1; reworded at most once a week)",
+        "L11 now read by the writer (proved in 2 unrelated stories)"
       ]
     }
   ],

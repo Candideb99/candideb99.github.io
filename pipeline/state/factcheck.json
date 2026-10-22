@@ -11686,6 +11686,57 @@
         }
       ],
       "outcome": "listed"
+    },
+    "norway-wealth-fund-third-quarter-bond-loss-ebd227": {
+      "at": "2026-10-22T17:16:30.330Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v33",
+      "checker": "4c54099299",
+      "publishedAt": "2026-10-22T12:33:57.427Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 28,
+        "checked": 28,
+        "supported": 21,
+        "weak": 7,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "العائد الإجمالي سالب 0.5% مع هبوط استثمارات الدخل الثابت 3.5%، بعد نصف أول حقق فيه الصندوق أرباحاً قياسية",
+          "quote": "The fund's overall investment return was −0.5%, while its investments in company shares yielded a gain of 0.5%, with large differences between sectors."
+        },
+        {
+          "sentence": "وبلغ العائد الإجمالي للصندوق، الذي تقدَّر قيمته بنحو 2.3 تريليون دولار، سالب 0.5% خلال الربع.",
+          "quote": "The fund's overall investment return was −0.5%, while its investments in company shares yielded a gain of 0.5%, with large differences between sectors."
+        },
+        {
+          "sentence": "ويبقى مسار عوائد الدين الحكومي في الولايات المتحدة وأوروبا مؤثراً في نتائج الصندوق ما دامت السندات الحكومية تشكل نحو 70% من محفظة الدخل الثابت، وهي الحصة التي يعتزم الصندوق خفضها، ما قد يقلل هذا الأثر.",
+          "quote": "Last month, NBIM said it wanted to cut its U.S. Treasury holdings as part of wider plans to reduce its allocation to government-issued debt."
+        },
+        {
+          "sentence": "ويذهب نحو 70% منها إلى سندات حكومية والباقي إلى ديون الشركات، وتتوزع على 1,664 سنداً في 51 دولة.",
+          "quote": "Fixed income accounts for just over a quarter of the fund's entire portfolio, with NBIM invested in 1,664 bonds across 51 countries."
+        },
+        {
+          "sentence": "لم تكفِ الأسهم، التي تشكل 72.1% من المحفظة، لموازنة خسائر السندات، إذ حققت عائداً موجباً بنسبة 0.5% فقط.",
+          "quote": "At the end of September, the fund was worth 22,014 billion kroner (€2.09 trillion), with 72.1% invested in shares and 25.8% in bonds."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }

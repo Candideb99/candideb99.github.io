@@ -839,6 +839,50 @@
         ],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-10-22T17:41:38.187Z",
+      "slug": "egypt-egx30-falls-market-cap-below-4-trillion-f90c93",
+      "checker": "4c54099299.2",
+      "lessons": "v34",
+      "lessonsHash": "1917f27221",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 30,
+        "notFound": 0,
+        "checked": 34,
+        "words": 376,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 26,
+        "notFound": 0,
+        "checked": 33,
+        "words": 426,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 26,
+        "notFound": 0,
+        "checked": 33,
+        "words": 426,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }

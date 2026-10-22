@@ -4880,6 +4880,90 @@
           "noted": []
         }
       ]
+    },
+    "turkey-central-bank-cuts-rate-36-percent-00a110": {
+      "at": "2026-10-22T17:30:17.183Z",
+      "title": "المركزي التركي يخفض الفائدة إلى 36% في أول خفض منذ يناير",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 21,
+            "weak": 6,
+            "noEvidence": 4,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "egypt-egx30-falls-market-cap-below-4-trillion-f90c93": {
+      "at": "2026-10-22T17:41:38.182Z",
+      "title": "المؤشر الرئيسي للبورصة المصرية يهبط 3.41% مع تراجع 15 قطاعاً",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 32,
+            "checked": 32,
+            "supported": 27,
+            "weak": 5,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "us-jobless-claims-fall-194000-near-1969-low-3be3f0": {
+      "at": "2026-10-22T17:57:21.527Z",
+      "title": "طلبات إعانة البطالة الأمريكية تنخفض إلى 194 ألفاً قرب أدنى مستوى منذ 1969",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 34,
+            "checked": 34,
+            "supported": 28,
+            "weak": 3,
+            "noEvidence": 3,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
