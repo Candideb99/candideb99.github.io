@@ -1,124 +1,463 @@
 {
-  "mode": "explainer",
-  "startedAt": "2026-10-22T10:36:06.991Z",
-  "durationSec": 297,
-  "published": 1,
+  "mode": "news",
+  "startedAt": "2026-10-22T12:01:36.985Z",
+  "durationSec": 1940,
+  "published": 3,
   "refreshed": 0,
   "report": [
     {
-      "headline": "الخامات القياسية للنفط والفروق السعرية بينها (برنت ودبي وعُمان)",
-      "section": "explainers",
+      "headline": "صندوق النقد يتوقع انكماش اقتصادات الخليج 4.8% في 2026 قبل تعافيها 9.1% في 2027",
+      "section": "economy",
+      "importance": 9,
+      "sources": [
+        "https://aawsat.com/node/5332294",
+        "https://economymiddleeast.com/news/uae-saudi-economies-to-rebound-7-7-percent-and-7-9-percent-in-2027-as-energy-exports-trade-recover/",
+        "https://economymiddleeast.com/news/gcc-economy-set-to-rebound-9-1-percent-in-2027-as-energy-production-and-trade-normalize-imf-says/",
+        "https://www.thenationalnews.com/business/economy/2026/10/22/imf-forecasts-48-gulf-economic-contraction-in-2026-as-iran-war-hits-energy-exports/"
+      ],
+      "outcome": "skipped: repeats a recent story («البنك الدولي يتوقع انكماش اقتصادات الخليج 4.3% هذا العام»)"
+    },
+    {
+      "headline": "برنت فوق 111 دولاراً بعد إعلان إيران إصابة سبع سفن في الخليج",
+      "section": "energy",
+      "importance": 8,
+      "sources": [
+        "https://www.theguardian.com/business/2026/oct/22/oil-prices-jump-five-month-high-threats-supply",
+        "https://www.cnbc.com/2026/10/22/oil-prices-today-wti-brent-saudi-arabia.html",
+        "https://oilprice.com/Latest-Energy-News/World-News/Iran-Claims-Seven-Ships-Hit-in-Persian-Gulf-as-Oil-Prices-Surge.html",
+        "https://oilprice.com/Latest-Energy-News/World-News/Oil-Prices-Surge-Above-111-as-Houthis-Strike-Saudi-Targets.html"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التمهيدي والافتتاحية تقول معاً ما تغيّر: برنت عند 112.04 دولار، أعلى مستوى منذ 18 مايو. وتذكر القيد الأساسي في السطر التمهيدي: عمليات حقل شيبة لم تتأثر، أي أن الخطر على الإمدادات لم يتحول إلى تعطل في الحقل. وتوضح الفقرة الخامسة أن أمر المغادرة الأمريكي يقتصر على السعودية بحسب المتحدث باسم الخارجية.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السياق المهم موجود: المسار من 126 دولاراً في أبريل إلى 71 دولاراً في يوليو، وانهيار مذكرة التفاهم، وبيانات كبلر، وتقرير «نيويورك تايمز» عن الضربات المحتملة، ورأي واغنر مع صفته ومؤسسته. لكن مربع «لماذا يهمّ» يستنتج من سلامة حقل شيبة وحده أن الارتفاع ليس «على تعطل فعلي»، متجاهلاً إصابة سبع سفن، ويحصر أساس التعافي في الإمدادات السعودية مع أن كبلر تتحدث عن الخليج كله (SOURCE 1, SOURCE 3).",
+              "repair": "ضيّق الاستدلال إلى «جزء من الإمدادات»، واجعله مشروطاً بالمعطيات المتاحة كما في الإصلاح المقترح أعلاه."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات تتقدم في خط واضح: حادثة السفن، ثم هجمات الحوثيين، ثم أثرها على الإمدادات السعودية، ثم خطر التصعيد، ثم ردود الفعل والأسواق، ثم رأي واغنر، ثم الخلفية. لكن الخاتمة «وحذّرت بحرية الحرس الثوري…» معزولة بعد بيانات كبلر وتبدو ملاحظة مكتب ملحقة. أما مربع «لماذا يهمّ» فيضيف ربطاً مفيداً بين تعافي الصادرات عبر خطوط الأنابيب وانتقال الهجمات إلى البر السعودي، وليس تكراراً للنص.",
+              "repair": "انقل التحذير إلى فقرة إعلان الحرس الثوري أو إلى فقرة مخاطر التصعيد، واختم بفقرة كبلر."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأسعار والنسب والتوقيت مطابقة للمصادر (SOURCE 5)، وكذلك أرقام الضحايا ومؤشرات الأسهم في الرسم البياني. ما يحتاج تصحيحاً: «لا على تعطل فعلي» يقين يتجاوز الأدلة. وصفة واغنر «مدير المحافظ ومسؤول الأسهم» غير دقيقة. وعبارة «توقع مراقبون للسوق أن يصل إلى 150 دولاراً» تُسقط معنى «حتى» في up to $150 (SOURCE 1).",
+              "repair": "اكتب «توقع مراقبون أن تصل الأسعار إلى ما يصل إلى 150 دولاراً»، وصحح الصفة إلى «رئيس قسم الأسهم ومدير المحافظ»، وخفف يقين مربع «لماذا يهمّ»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة والافتتاحية تبيّن ما تغيّر: صعد برنت إلى 112.04 دولار، وهو أعلى مستوى منذ 18 مايو، مع إعلان إيران إصابة سفن وهجمات حوثية على السعودية. وتبيّن ما لم يتغير: «رغم عدم تأثر عمليات الحقل» (SOURCE 3). فلا يُقدَّم الخطر على أنه تعطل واقع.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "السياق المسند حاضر: مسار الأسعار من 126 دولاراً إلى 71 دولاراً، وانهيار مذكرة التفاهم، وبيانات كبلر (SOURCE 1)، وتقرير «نيويورك تايمز» عن ضربات محتملة بعد الانتخابات النصفية (SOURCE 2)، ورأي واغنر مع صفته ومؤسسته (SOURCE 2). ويقدّم مربع «لماذا يهمّ» استدلالاً محدوداً من مقدمات مسندة: التعافي قام جزئياً على خطوط الأنابيب، والهجمات بلغت الأراضي السعودية، وعمليات شيبة لم تتأثر. والاستنتاج مقيد بعبارتَي «جزءاً من» و«حتى الآن»، ومحصور في الإمدادات السعودية، فلم يعد ينفي أي تعطل في الخليج كله.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "صار تحذير الحرس الثوري ضمن فقرة إعلان إصابة السفن، ويختم التقرير ببيانات كبلر التي تقابل الخطر بقدرة التصدير الفعلية. وتتقدم الفقرات في خط مفهوم: الحادثتان، ثم أثرهما على الإمدادات السعودية، ثم خطر التصعيد، ثم ردود الفعل والأسواق، ثم رأي واغنر، ثم الخلفية. ولا يكرر المربع خاتمة النص، بل يربط تعافي الصادرات بانتقال الهجمات إلى البر.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأسعار والنسب والتوقيت مطابقة لـ SOURCE 5، وأرقام الضحايا ومؤشرات الأسهم مطابقة لـ SOURCE 1 وSOURCE 3. وصُححت صفة واغنر، وأدّت عبارة «أسعاراً تصل إلى 150 دولاراً» معنى up to. وما بقي هو اللفظ المترجم «سقوط مذكرة التفاهم».",
+              "repair": "استبدل «سقوط مذكرة التفاهم» بـ«انهيار مذكرة التفاهم»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 2,
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
       "outcome": "published",
-      "slug": "crude-benchmarks-brent-dubai-oman-spreads-explained-bec4d8",
-      "title": "لماذا قد يرتفع برنت وتهبط علاوة عُمان على دبي في الوقت نفسه؟",
+      "whyBasis": [
+        {
+          "fact": "صادرات النفط من الخليج تجاوزت مستويات ما قبل الحرب، جزئياً بفضل زيادة الضخ عبر خطوط أنابيب إلى البحر الأحمر وخليج عُمان، بحسب بيانات كبلر",
+          "source": 1
+        },
+        {
+          "fact": "الحوثيون ضربوا أهدافاً في السعودية بينها موقع قرب منشأة معالجة في حقل شيبة",
+          "source": 3
+        },
+        {
+          "fact": "العمليات في حقل شيبة ومنشآت المعالجة لم تتأثر، لكن الهجوم أثار مخاوف من تعطل الإمدادات السعودية",
+          "source": 3
+        }
+      ],
+      "slug": "brent-tops-112-iran-ships-gulf-b0b102",
+      "title": "برنت يتجاوز 112 دولاراً مع إعلان إيران إصابة سبع سفن في الخليج",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "باركليز يلغي 5 آلاف وظيفة مع توسعه في الذكاء الاصطناعي",
+      "section": "companies",
+      "importance": 7,
+      "sources": [
+        "https://www.bbc.co.uk/news/articles/cm4g1p347qgxo",
+        "https://www.cnbc.com/2026/10/22/barclays-ai-jobs-cuts.html",
+        "https://www.euronews.com/2026/10/22/barclays-to-cut-5000-jobs-as-it-turns-to-ai-to-improve-efficiency",
+        "https://www.skynewsarabia.com/business/1899926-3-%D9%85%D9%84%D9%8A%D8%A7%D8%B1-%D8%AF%D9%88%D9%84%D8%A7%D8%B1-%D8%A3%D8%B1%D8%A8%D8%A7%D8%AD-%D8%A8%D9%86%D9%83-%D8%A8%D8%A7%D8%B1%D9%83%D9%84%D9%8A%D8%B2-%D8%A7%D9%84%D8%B1%D8%A8%D8%B9-%D8%A7%D9%84%D8%AB%D8%A7%D9%84%D8%AB"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يوضح العنوان والمقدمة والفقرة الأولى أن الخفض الكلي نحو 5 آلاف وظيفة (5% من القوة العاملة)، نُفِّذ منها ألف في النصف الأول، ويُنتظر إتمام 4 آلاف بنهاية 2026، وأن العبء يقع أساساً على التجزئة البريطانية ووظائف الدعم والهند.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يقدّم التقرير الدافع (خطة تحديث، برنامج ثلاثي لخفض التكاليف، تعريف CET1) ويعرّف المحللَين بدوريهما ومؤسستيهما. لكنه يغفل نمو الدخل السنوي 3% (المصدر 3)، ويغفل ملاحظة مولد أن التكاليف ارتفعت على مستوى المجموعة (المصدر 3)، وهي مفارقة مفيدة مع خطة الخفض. أما الصندوق فيبني على مقدمات صحيحة (دخل دون التقديرات، تراجع العائد، وفورات 2027) استنتاجاً يتجاوزها عن تراجع دور الإيرادات.",
+              "repair": "أضف نمو الدخل 3% وارتفاع التكاليف على مستوى المجموعة بحسب مولد في فقرتي النتائج ورد الفعل، وأعد صياغة الصندوق حول رهان تحويل الاستثمار التقني إلى تكاليف أدنى دائماً دون الإضرار بالنمو."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات مجمّعة حسب وظيفتها: الخفض، ثم الدافع، ثم النتائج، ثم ردود الفعل، ثم المخاطر المقبلة. لكن «غير أن الرئيس التنفيذي...» تخلق تقابلاً غير موجود، وجملة الصندوق الأخيرة تكرر ما ورد في الفقرتين الأولى والثانية.",
+              "repair": "استبدل «غير أن» بفعل ربط محايد مثل «وربط»، واحذف جملة الصندوق الأخيرة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: 12% و2.3 مليار وLSEG، و1.65 من 1.46، و47%، و11.7% من 16.1%، و14.2% من 14.3%، و500 مليون، و1.1 مليار في 2027. غير أن «المتطلبات المحاسبية والرقابية» تُسقط عبارة «رأس المال»، وصياغة سؤال هاولت تُسقط قيد «بصورة دائمة»، والصندوق يستبدل «النمو» بـ«أعمال التداول».",
+              "repair": "اكتب «متطلبات رأس المال الرقابية»، وأعد إلى سؤال هاولت قيد «بصورة دائمة» وشرط «دون الإضرار بالنمو» في المتن والصندوق."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يميز العنوان والمقدمة والفقرة الأولى بين ألف وظيفة أُلغيت في النصف الأول وأربعة آلاف متوقع إلغاؤها بنهاية 2026. وتوضح المسودة أن الخفض يتركز في التجزئة المصرفية البريطانية ووظائف الدعم مع جزء كبير في الهند، وأن وفورات 1.1 مليار جنيه توقعٌ للبنك في 2027 لا نتيجة متحققة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يقدم التقرير الدافع (خطة التحديث، وبرنامج خفض التكاليف الممتد ثلاث سنوات، وربط الرئيس التنفيذي التخفيضات بالاستثمار التقني)، ويعرّف مقياس CET1، ويقدّم المحللَين بدوريهما ومؤسستيهما. ويبني الصندوق على مقدمات مسندة (دخل دون التقديرات، تراجع العائد إلى 11.7%، وفورات 2027، ارتفاع التكاليف بحسب مولد) استنتاجاً محدوداً: نجاح الرهان مشروط بتحقيق الوفورات دون الإضرار بالنمو.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات مجمّعة حسب وظيفتها: الخفض، ثم الدافع، ثم النتائج، ثم رد السوق والمحللين، ثم المخاطر المقبلة. غير أن الفقرة الثالثة تحشر في جملة واحدة ثلاثة أقوال من مصادر مختلفة تحت إسناد واحد، بعبارة مترجمة حرفياً هي «كفاءة في التغيير التقني يقودها الذكاء الاصطناعي».",
+              "repair": "فصل قول البنك عن خطة التحديث وإنتاجية الموظفين عن عبارة عرض النتائج، وصياغة الأخيرة بعربية مفهومة كما ورد في قائمة المشكلات."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر: 12% و2.3 مليار جنيه، و7.37 مليار جنيه مقابل تقديرات 7.61 مليار، و1.65 من 1.46 مليار، و47%، و11.7% من 16.1%، و14.2% من 14.3%، و500 مليون جنيه، ونحو 1% في الساعة 8:50 بتوقيت لندن. والقيود محفوظة: «بصورة دائمة» و«دون الإضرار بالنمو» و«متطلبات رأس المال الرقابية».",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 4,
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "بلغ دخل المجموعة في الربع 7.4 مليار جنيه دون تقديرات المحللين البالغة 7.61 مليار، وتراجع العائد على حقوق الملكية الملموسة إلى 11.7% من 16.1%",
+          "source": 2
+        },
+        {
+          "fact": "يتوقع باركليز أن تحقق إجراءات الكفاءة وفورات إضافية بقيمة 1.1 مليار جنيه إسترليني في 2027",
+          "source": 1
+        },
+        {
+          "fact": "قال هاولت إن السؤال هو هل يستطيع باركليز تحويل استثماره التقني وتقليص قوته العاملة إلى تكاليف أدنى بصورة مستدامة دون الإضرار بالنمو",
+          "source": 3
+        },
+        {
+          "fact": "قال مولد إن التكاليف ارتفعت على مستوى المجموعة الأوسع",
+          "source": 3
+        }
+      ],
+      "slug": "barclays-cuts-5000-jobs-ai-e9e28a",
+      "title": "باركليز يلغي 5 آلاف وظيفة مع توسعه في الذكاء الاصطناعي",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "صندوق الثروة النرويجي يخسر 30 مليار دولار في الربع الثالث مع تراجع السندات",
+      "section": "markets",
+      "importance": 6,
+      "sources": [
+        "https://www.cnbc.com/2026/10/22/norges-bank-nbim-wealth-fund-q3-results.html",
+        "https://www.euronews.com/2026/10/22/worlds-largest-wealth-fund-posts-30bn-loss-as-rising-rates-hit-bonds",
+        "https://www.skynewsarabia.com/business/1899905-%D8%B5%D9%86%D8%AF%D9%88%D9%82-%D8%A7%D9%84%D8%AB%D8%B1%D9%88%D8%A9-%D8%A7%D9%84%D9%86%D8%B1%D9%88%D9%8A%D8%AC%D9%8A-%D9%8A%D8%AA%D9%83%D8%A8%D8%AF-%D8%AE%D8%B3%D8%A7%D8%A6%D8%B1-%D9%81%D8%B5%D9%84%D9%8A%D8%A9-%D8%A830-%D9%85%D9%84%D9%8A%D8%A7%D8%B1-%D8%AF%D9%88%D9%84%D8%A7%D8%B1"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والتمهيد والمقدمة تحدد ما تغيّر بوضوح: خسارة محاسبية قدرها 278 مليار كرونة، وعائد إجمالي سالب 0.5%، وسببها الدخل الثابت. كما تميّز المقدمة بين هذه الخسارة وتراجع القيمة الكلية بـ670 مليار كرونة مع احتساب العملات والتدفقات.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "مقدمات «لماذا يهمّ» مسنودة: عائد الدخل الثابت سالب 3.5%، والأسهم +0.5%، والعائد الإجمالي سالب 0.5%، والعوائد عند أعلى مستوياتها منذ الأزمة المالية، والصندوق يعتزم خفض حيازاته من سندات الخزانة. الاستنتاج الأول معقول، فالحصة الصغيرة من السندات طغت على الأسهم. أما الشرط الأخير «ما دام يمضي في خطته لتقليص حصة الدين الحكومي» فيناقض منطق التعرض.",
+              "repair": "ربط الحساسية للعوائد بحصة السندات الحكومية الحالية (نحو 70% من الدخل الثابت) مع الإشارة إلى أن خطة خفضها قد تقلل هذا الأثر، دون الجزم بأن العوائد هي العامل الحاسم."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات مرتبة وفق سؤال القارئ: الخسارة، فمصدرها، فالآلية، فتعويض الأسهم الجزئي، فالخلفية والخطوة التالية. لكن عبارة «أما في وول ستريت...» تقطع فقرة الطاقة، وجملة «وهذا ما أصاب حيازات الصندوق الحكومية» إحالة إلى الفقرة السابقة لا تضيف شيئاً.",
+              "repair": "وضع أرقام المؤشرات الأميركية مقارنةً لعائد الأسهم في فقرة «لم تكفِ الأسهم...»، وحذف جملة الإحالة أو دمجها في شرح الآلية."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والفترات والوحدات مطابقة للمصادر: 278 مليار كرونة و29.7 مليار دولار، وسالب 0.5%، وسالب 3.5%، و72.1%، و22,014 مليار كرونة، و670 مليار كرونة. غير أن «حيازات الصندوق الحكومية» تضيّق نطاق الخسارة المنسوبة إلى الدخل الثابت كله.",
+              "repair": "استبدال «حيازات الصندوق الحكومية» بـ«استثمارات الصندوق في الدخل الثابت»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقدّم العنوان الخسارة (نحو 30 مليار دولار)، ويضيف الدك العائد الإجمالي (سالب 0.5%) وعائد الدخل الثابت (سالب 3.5%)، ثم يحدد الليد الفترة ومصدر الإعلان (بنك نورجيس لإدارة الاستثمار، الخميس). ويفصل التقرير بين الخسارة المحاسبية (278 مليار كرونة) وتراجع القيمة الكلية (670 مليار كرونة مع العملات والتدفقات) دون خلط، وفق المصدرين 1 و2. وخطة خفض سندات الخزانة وردت بصيغة نية: «رغبته في خفض»، «يتجه».",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يقدّم التقرير المحرّك كاملاً: موجة بيع السندات، وبلوغ العوائد أعلى مستوياتها منذ الأزمة المالية، ورفع الفيدرالي والمركزي الأوروبي الفائدة (المصدر 2). ويشرح آلية تراجع أسعار السندات القائمة (المصدر 2)، ويقارن عائد الأسهم بمؤشرات وول ستريت، ثم بالنصف الأول القياسي (المصدر 1). ومقدمات «لماذا يهمّ» مسنودة: 3.5- مقابل 0.5+ و0.5- إجمالاً، ونحو 70% سندات حكومية، والخطة المعلنة. والاستنتاج بأن حصة تتجاوز ربع المحفظة بقليل محت مكاسب الأسهم متسق حسابياً مع الأوزان (25.8% و72.1%). وجاء الشرط الأخير مقيداً بـ«قد»، فلم يعد معكوساً.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "تتابع الفقرات سؤال القارئ: مصدر الخسارة، ثم سياق السوق، ثم الآلية مع قول غراندي، ثم قصور الأسهم مقارنةً بوول ستريت، ثم تفاوت القطاعات، ثم بقية الفئات والخلفية، فالنصف الأول، فالقيمة الكلية والخطوة التالية. وقد نُقلت أرقام المؤشرات الأميركية إلى فقرة «لم تكفِ الأسهم…»، وحُذفت جملة الإحالة «وهذا ما أصاب حيازات الصندوق الحكومية». ويضيف الصندوق التحريري قراءةً لحساسية المحفظة ولا يكرر خاتمة المتن.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر: 278 مليار كرونة، و29.7 مليار دولار، و2.3 تريليون دولار، و1,664 سنداً في 51 دولة، و72.1%، و0.4% و7.5%، و12.95%، ونحو 185 مليار دولار، و22,014 مليار كرونة، و670 مليار كرونة، و65.4 مليار دولار لحصة إنفيديا، ونحو 7,100 شركة تمثل 1.5% من الشركات المدرجة. ونُسبت الخسارة إلى الدخل الثابت كله لا إلى الحيازات الحكومية وحدها. وعبارة «الشهر الماضي» في مقال 22 أكتوبر تقابل سبتمبر بدقة، وخلايا الرسم البياني مطابقة للفئة والفترة والإشارة.",
+              "repair": "صقل اختياري لا يؤثر في القرار: «جاء سلبياً بفارق طفيف» تصير «انتهى سالباً بقدر طفيف»، لأن «بفارق» توحي بمقارنة غير موجودة."
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 1,
+        "rounds": 2,
+        "found": 1
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "سجلت استثمارات الدخل الثابت عائداً سالباً بنسبة 3.5% وكانت عاملاً رئيسياً وراء التراجع الإجمالي، بينما حققت الأسهم 0.5% وبلغ العائد الإجمالي سالب 0.5%",
+          "source": 2
+        },
+        {
+          "fact": "ارتفعت عوائد السندات الحكومية إلى مستويات لم تُسجَّل منذ الأزمة المالية مع رفع الاحتياطي الفيدرالي والبنك المركزي الأوروبي أسعار الفائدة",
+          "source": 2
+        },
+        {
+          "fact": "يذهب نحو 70% من محفظة الدخل الثابت لدى الصندوق إلى سندات حكومية",
+          "source": 1
+        },
+        {
+          "fact": "أعلن بنك نورجيس لإدارة الاستثمار رغبته في خفض حيازاته من سندات الخزانة الأمريكية ضمن خطط لتقليص حصة الديون الحكومية",
+          "source": 1
+        }
+      ],
+      "slug": "norway-wealth-fund-third-quarter-bond-loss-ebd227",
+      "title": "صندوق الثروة النرويجي يخسر نحو 30 مليار دولار مع تراجع السندات",
       "score": 9,
       "image": "photo"
     }
   ],
   "llm": {
-    "calls": 12,
-    "failures": 0,
-    "promptTokens": 110429,
-    "completionTokens": 28384,
-    "cacheReadTokens": 25015,
-    "costUsd": 1.2558,
+    "calls": 53,
+    "failures": 4,
+    "promptTokens": 746452,
+    "completionTokens": 196819,
+    "cacheReadTokens": 209075,
+    "costUsd": 8.2767,
     "byModel": {
-      "claude-cli/claude-opus-5-5": 12
+      "claude-cli/claude-opus-5-5": 53
     }
   },
   "log": [
-    "[10:36:06] newsroom start mode=explainer limit=4 dry-run=false",
-    "[10:36:16] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=9193",
-    "[10:36:16] explainer topic: الخامات القياسية للنفط والفروق السعرية بينها (برنت ودبي وعُمان) (Crude oil benchmarks and price differentials (Brent, Dubai, Oman spreads))",
-    "[10:37:18] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=61917",
-    "[10:37:21] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=2370",
-    "[10:37:21] data chart: none fits this piece",
-    "[10:38:17] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=56479",
-    "[10:38:17] desk model=claude-cli/claude-opus-5-5 applied=[whyItMatters,body] rejected=[]",
-    "[10:38:17] desk \"لماذا قد يرتفع برنت وتهبط علاوة عُمان على دبي في الوقت نفسه؟\": rewrote whyItMatters, body",
-    "[10:38:17] checks explainer \"لماذا قد يرتفع برنت وتهبط علاوة عُمان على دبي في الوقت نفسه؟\": 636 words, 0 issues, 0 warnings",
-    "[10:38:50] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=32905",
-    "[10:38:50] critic explainer: revise score=8 issues=5",
-    "[10:38:50]   · المثال التوضيحي لا يعزل أثر علاوة عُمان: في الحالة الثانية «ضاق فارق برنت ودبي إلى 3 دولارات»، ثم يستنتج النص أن «الطلب الآسيوي على الخام الخليجي أضعف نسبياً». ",
-    "[10:38:50]   · تعريف برنت بأنه «سلة من خامات بحر الشمال» يحتاج إلى تدقيق، لأن السلة المرجعية لم تعد مقصورة على خامات بحر الشمال، إذ أُدرج فيها خام أمريكي يُسلَّم في المنطقة نف",
-    "[10:38:50]   · عبارة «فارق عُمان ودبي أدق.» مبهمة، فلا يتضح في أي شيء هو أدق ولا قياساً إلى ماذا. الإصلاح: «أما علاوة عُمان على دبي فتقيس الطلب داخل سوق الخام الخليجي نفسه، بي",
-    "[10:38:50]   · صياغة «وعليه تُسعَّر معظم الخامات المتجهة إلى أوروبا ومن أفريقيا» تجمع حرفي جر متنافرين في تركيب واحد. الأوضح: «وعليه تُسعَّر معظم الخامات الأفريقية ومعظم الخام",
-    "[10:39:21] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=31082",
-    "[10:39:43] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=21284",
-    "[10:39:43] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,whyItMatters] rejected=[]",
-    "[10:39:43] desk \"لماذا قد يرتفع برنت وتهبط علاوة عُمان على دبي في الوقت نفسه؟\": rewrote subtitle, whyItMatters",
-    "[10:40:01] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=18405",
-    "[10:40:01] critic (second pass) explainer: publish score=9",
-    "[10:40:04] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3434",
-    "[10:40:04] image: the picture should say: Gulf crude shipped to Asia is priced on Oman and Dubai, not Brent, so the two can move apart.",
-    "[10:40:04] image: tier 3, the writer's own subjects: oil tanker | crude oil tanker port | oil refinery",
-    "[10:40:05] commons \"oil tanker 2026\": 11 usable of 12",
-    "[10:40:06] commons \"oil tanker\": 8 usable of 12",
-    "[10:40:06] image: dropped \"Britannica Ship, Oil-Tank Steamer.jpg\" — dated 1911, an archival picture",
-    "[10:40:06] commons \"crude oil tanker port 2026\": 7 usable of 7",
-    "[10:40:07] commons \"crude oil tanker port\": 11 usable of 12",
-    "[10:40:07] image: dropped \"Pacific Sapphire, Crude Oil Tanker, IMO 9893058, Port of Rotterdam pic\" — another frame of a series a published story runs",
-    "[10:40:07] image: dropped \"Pacific Sapphire, Crude Oil Tanker, IMO 9893058, Port of Rotterdam pic\" — another frame of a series a published story runs",
-    "[10:40:07] commons \"oil refinery 2026\": 8 usable of 12",
-    "[10:40:08] commons \"oil refinery\": 6 usable of 12",
-    "[10:40:08] image: dropped \"Waterloo, NSW - NSW Shale & Oil Co.'s refinery in Botany Rd (Aust. Tow\" — dated 1875, an archival picture",
-    "[10:40:08] image: dropped \"A tourist boaat sials fast a oil tanker, Cochin Oil Terminal.jpg\" — taken in India, which the story does not name",
-    "[10:40:08] image: dropped \"An oil tanker sails past Cochin Port, Vallarpadam Island.jpg\" — taken in India, which the story does not name",
-    "[10:40:08] image: dropped \"Almi Atlas, Crude Oil Tanker, IMO 9816323, Port of Rotterdam pic1.jpg\" — taken in Netherlands, which the story does not name",
-    "[10:40:08] image: dropped \"Almi Atlas, Crude Oil Tanker, IMO 9816323, Port of Rotterdam pic2.jpg\" — taken in Netherlands, which the story does not name",
-    "[10:40:08] image: dropped \"Almi Atlas, Crude Oil Tanker, IMO 9816323, Port of Rotterdam pic3.jpg\" — taken in Netherlands, which the story does not name",
-    "[10:40:08] image: dropped \"Fire at the Moscow Oil Refinery on June 18, 2026 (20260618 131954).jpg\" — taken in Russia, which the story does not name",
-    "[10:40:08] image: dropped \"Fire at the Moscow Oil Refinery on June 18, 2026 (20260618 132423).jpg\" — taken in Russia, which the story does not name",
-    "[10:40:08] image: dropped \"Fire at the Moscow Oil Refinery on June 18, 2026 (20260618 132321).jpg\" — taken in Russia, which the story does not name",
-    "[10:40:08] image: dropped \"Fire at the Moscow Oil Refinery on June 18, 2026 (20260618 134210).jpg\" — taken in Russia, which the story does not name",
-    "[10:40:08] image: dropped \"Fire at the Moscow Oil Refinery on June 18, 2026 (20260618 132807).jpg\" — taken in Russia, which the story does not name",
-    "[10:40:08] image: dropped \"Oil refinery, Port Dickson.jpg\" — taken in Malaysia, which the story does not name",
-    "[10:40:08] image: dropped \"Altona oil refinery 2.jpg\" — taken in Australia, which the story does not name",
-    "[10:40:08] image: dropped \"Altona Oil Refinery Victoria.jpg\" — taken in Australia, which the story does not name",
-    "[10:40:08] image: dropped \"BP Oil Refinery Jetty, Kwinana, August 2019 1.jpg\" — taken in Australia, which the story does not name",
-    "[10:40:14] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5381",
-    "[10:40:14] image: vision rejected all candidates (The only candidate is an amateur phone snapshot taken from a moving train, with strong sun glare and a cluttered foreground. It fails the publication standard. It also shows an Australian refinery, which says nothing about Gulf crude priced on Oman and Dubai for Asian buyers. A tanker or Gulf oil scene from the fallback would serve better.)",
-    "[10:40:14] image: tier 4, the story's point and its subject: oil tanker Persian Gulf | supertanker at sea | oil refinery Asia | oil tanker loading terminal | crude oil tanker ship | Ras Tanura oil terminal",
-    "[10:40:14] commons \"oil tanker Persian Gulf\": 16 usable of 24",
-    "[10:40:14] image: dropped \"Khalig-fars-Persian-Gulf 01.jpg\" — names too little of oil, tanker",
-    "[10:40:14] image: dropped \"Khalig-fars-Persian-Gulf 05.jpg\" — names too little of oil, tanker",
-    "[10:40:14] image: dropped \"Khalig-fars-Persian-Gulf 04.jpg\" — names too little of oil, tanker",
-    "[10:40:14] image: dropped \"Khalig-fars-Persian-Gulf 03.jpg\" — names too little of oil, tanker",
-    "[10:40:14] image: dropped \"US Navy 041207-N-6932B-014 The oil tanker Omala is one of hundreds of \" — dated 2004, an archival picture",
-    "[10:40:14] image: dropped \"US Navy 051019-N-5088T-002 An F-14D Tomcat banks over an oil tanker wh\" — a warship or weapon, and the story is not about the military",
-    "[10:40:14] image: dropped \"US Navy 041020-N-1348L-054 The U.S. Coast Guard cutter Monomoy (WPB 13\" — dated 2004, an archival picture",
-    "[10:40:14] image: dropped \"Khalig-fars-Persian-Gulf 02.jpg\" — names too little of oil, tanker",
-    "[10:40:14] image: dropped \"US Navy 041028-N-1348L-128 The guided missile cruiser USS Mobile Bay (\" — dated 2004, an archival picture",
-    "[10:40:14] image: dropped \"US Navy 041020-N-1348L-037 The guided missile destroyer USS Preble (DD\" — dated 2004, an archival picture",
-    "[10:40:14] image: dropped \"Tankers at the Iraqi Al Basra Oil Terminal in the Northern Arabian Gul\" — dated 2004, an archival picture",
-    "[10:40:14] pexels \"oil tanker Persian Gulf\": 8 usable",
-    "[10:40:21] openverse \"oil tanker Persian Gulf\": 0 usable of 0",
-    "[10:40:21] image: dropped \"Bright orange LNG carrier ship cruising through calm sea waters on a c\" — names too little of oil, tanker",
-    "[10:40:22] commons \"supertanker at sea\": 19 usable of 24",
-    "[10:40:22] image: dropped \"Sea Brilliance IMO 7408720 und Esso Pacific T Vestnes 07-1985.jpg\" — dated 1985, an archival picture",
-    "[10:40:22] image: dropped \"Kissing Prairie dog edit 3.jpg\" — names too little of supertanker, sea",
-    "[10:40:22] image: dropped \"Le Vengeur 13 prairial an II République.jpg\" — names too little of supertanker, sea",
-    "[10:40:23] pexels \"supertanker at sea\": 8 usable",
-    "[10:40:40] openverse \"supertanker at sea\": 6 usable of 7",
-    "[10:40:40] image: dropped \"USNS Mercy Replenishment\" — a warship or weapon, and the story is not about the military",
-    "[10:40:40] image: dropped \"Aerial view of a large industrial ship navigating the open ocean, show\" — names too little of supertanker, sea",
-    "[10:40:40] image: dropped \"Stunning aerial view of Istanbul's Maiden's Tower at sunset with boats\" — names too little of supertanker, sea",
-    "[10:40:40] image: dropped \"Aerial view of a large shipping tanker amidst a clear blue sky and oce\" — names too little of supertanker, sea",
-    "[10:40:40] image: dropped \"A large oil tanker sailing on the ocean with a sunset view.\" — names too little of supertanker, sea",
-    "[10:40:40] image: dropped \"Cargo ship navigating through the ocean under clear skies, showcasing \" — names too little of supertanker, sea",
-    "[10:40:40] image: dropped \"MV Sea Brilliance.jpg\" — taken in Singapore, which the story does not name",
-    "[10:40:40] image: dropped \"Aerial shot of an oil tanker on the ocean at sunset in Galveston, Texa\" — taken in United States, which the story does not name",
-    "[10:40:40] image: dropped \"NORTH SEA GIANT (52162577741).jpg\" — taken in Netherlands, which the story does not name",
-    "[10:40:40] image: dropped \"NORTH SEA GIANT (52162577711).jpg\" — taken in Netherlands, which the story does not name",
-    "[10:40:40] image: dropped \"NORTH SEA GIANT (52162578098).jpg\" — taken in Netherlands, which the story does not name",
-    "[10:40:40] image: dropped \"NORTH SEA GIANT (52161552742).jpg\" — taken in Netherlands, which the story does not name",
-    "[10:40:40] image: dropped \"9524073 North Sea Giant 2011.jpg\" — taken in Norway, which the story does not name",
-    "[10:40:40] image: dropped \"VB KRACHT & NORTH SEA GIANT (52162578028).jpg\" — taken in Netherlands, which the story does not name",
-    "[10:40:40] image: thumbnail HTTP 403 for https://live.staticflickr.com/3135/2652666712_eb06d73571_n.jpg",
-    "[10:40:44] image: thumbnail HTTP 403 for https://live.staticflickr.com/6078/6159124340_bf4f190723_n.jpg",
-    "[10:40:57] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7694",
-    "[10:41:03] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5972",
-    "[10:41:03] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Oil tanker 'Northsea Shipping' sailing on calm waters during\": A crude tanker at sea is the sector's own object for a world and Gulf oil-benchmark explainer, it reads at a glance desp",
-    "[10:41:03] published explainer \"لماذا قد يرتفع برنت وتهبط علاوة عُمان على دبي في الوقت نفسه؟\" -> crude-benchmarks-brent-dubai-oman-spreads-explained-bec4d8"
+    "[12:14:27] image: dropped \"Cargo ship navigating through Bosphorus Strait, Istanbul under cloudy \" — taken in Turkey, which the story does not name",
+    "[12:14:27] image: dropped \"View of a large oil refinery plant with intricate pipelines in Trzebin\" — taken in Poland, which the story does not name",
+    "[12:14:27] image: dropped \"A stunning aerial shot of a cargo ship navigating the Bosphorus Strait\" — taken in Turkey, which the story does not name",
+    "[12:14:27] image: dropped \"Aerial view of a cargo ship navigating through the Bosphorus Strait in\" — taken in Turkey, which the story does not name",
+    "[12:14:35] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7304",
+    "[12:14:39] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4254",
+    "[12:14:39] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"A large cargo ship navigating the open blue sea under a clea\": A clearly recognisable crude tanker at sea, with nothing in the frame or file placing it in a specific country, suits a ",
+    "[12:14:39] published \"برنت يتجاوز 112 دولاراً مع إعلان إيران إصابة سبع سفن في الخليج\" -> brent-tops-112-iran-ships-gulf-b0b102",
+    "[12:14:39] control group: \"باركليز يلغي 5 آلاف وظيفة مع توسعه في الذكاء الاصطناعي\" is written without the lessons",
+    "[12:15:15] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=35721",
+    "[12:15:15] desk notes: 30 facts (? 3, news 8, driver 4, remark 1, background 1, numbers 5, reaction 5, next 3), 0 quotes (claude-cli/claude-opus-5-5)",
+    "[12:16:00] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: why_basis needs one to four reported premises with source numbers",
+    "[12:16:53] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=2 ms=49779",
+    "[12:17:20] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=27561",
+    "[12:17:20] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[12:17:20] desk \"باركليز يلغي 5 آلاف وظيفة مع توسعه في الذكاء الاصطناعي\": rewrote body",
+    "[12:18:15] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=54687",
+    "[12:18:15] critic \"باركليز يلغي 5 آلاف وظيفة مع توسعه في الذكاء الاصطناعي\": revise score=7 issues=9",
+    "[12:18:15]   · خطأ في صندوق «لماذا يهمّ»: عبارة «صار تحسن ربحية باركليز يعتمد على خفض التكاليف أكثر من نمو الإيرادات» تتجاوز ما تحمله المقدمات. فدخل المجموعة ارتفع 3% على أساس",
+    "[12:18:15]   · تكرار في صندوق «لماذا يهمّ»: الجملة الأخيرة «ويقع معظم عبء هذا الخفض على وظائف الدعم، ومنها أعمال مكتبية تُنفَّذ في الهند» تعيد ما ورد في الفقرتين الأولى والثان",
+    "[12:18:15]   · علاقة تقابل غير مدعومة: «غير أن الرئيس التنفيذي سي إس فينكاتاكريشنان ردّ التخفيضات إلى استثمار كبير في التقنية...» توحي بأن الرئيس التنفيذي يخالف بيان البنك، مع",
+    "[12:18:15]   · ينقص التقرير: الأرقام في سياقها. يقارن التقرير دخل المجموعة (7.4 مليار جنيه) بتقديرات المحللين فقط، ويغفل أنه ارتفع 3% على أساس سنوي إلى 7.37 مليار جنيه (المصدر",
+    "[12:18:52] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: why_basis premise is not grounded in its numbered source",
+    "[12:19:42] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=2 ms=47204",
+    "[12:20:49] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=67454",
+    "[12:21:11] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=21453",
+    "[12:21:11] desk: body accepted on the second try",
+    "[12:21:11] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,lede,whyItMatters,body] rejected=[]",
+    "[12:21:11] desk \"باركليز يلغي 5 آلاف وظيفة مع توسعه في الذكاء الاصطناعي\": rewrote subtitle, lede, whyItMatters, body",
+    "[12:21:59] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=48151",
+    "[12:21:59] critic (second pass) \"باركليز يلغي 5 آلاف وظيفة مع توسعه في الذكاء الاصطناعي\": revise score=8 issues=4",
+    "[12:22:32] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=33417",
+    "[12:23:24] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=51319",
+    "[12:23:24] desk model=claude-cli/claude-opus-5-5 applied=[whyItMatters,body] rejected=[]",
+    "[12:23:24] desk \"باركليز يلغي 5 آلاف وظيفة مع توسعه في الذكاء الاصطناعي\": rewrote whyItMatters, body",
+    "[12:23:24] mended \"باركليز يلغي 5 آلاف وظيفة مع توسعه في الذكاء الاصطناعي\": the second pass's 4 finding(s) sent back once more",
+    "[12:24:23] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=58806",
+    "[12:24:23] precheck \"باركليز يلغي 5 آلاف وظيفة مع توسعه في الذكاء الاصطناعي\": clean",
+    "[12:24:26] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3707",
+    "[12:24:26] image: the picture should say: Barclays is replacing bank office staff with AI to cut costs.",
+    "[12:24:31] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4922",
+    "[12:24:31] image: the source's photograph (BBC News) shows The Barclays name and eagle logo signs on the red-brick facade of a bank branch in the UK.; searching Barclays bank branch sign | Barclays branch high street UK | Barclays bank London | Barclays logo brick facade",
+    "[12:24:31] image: tier 2, like the sources' own photograph: Barclays bank branch sign | Barclays branch high street UK | Barclays bank London | Barclays logo brick facade",
+    "[12:24:32] commons \"Barclays bank branch sign\": 0 usable of 1",
+    "[12:24:32] commons \"Barclays bank\": 12 usable of 20",
+    "[12:24:33] pexels \"Barclays bank branch sign\": 8 usable",
+    "[12:24:52] openverse \"Barclays bank branch sign\": The operation was aborted due to timeout",
+    "[12:24:52] image: 8 likeness(es) set aside for the country's own photographs",
+    "[12:24:59] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6128",
+    "[12:25:05] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5691",
+    "[12:25:05] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Barclays, Market Place, Pontefract (16th September 2023) 001\": The frame shows a UK branch of Barclays, the story's own bank, with its logo legible on the facade, so it works as a neu",
+    "[12:25:05] published \"باركليز يلغي 5 آلاف وظيفة مع توسعه في الذكاء الاصطناعي\" -> barclays-cuts-5000-jobs-ai-e9e28a",
+    "[12:25:41] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=35042",
+    "[12:25:41] desk notes: 28 facts (? 4, news 2, numbers 9, driver 5, reaction 2, background 5, next 1), 1 quotes (claude-cli/claude-opus-5-5)",
+    "[12:26:40] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=59323",
+    "[12:27:18] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=38194",
+    "[12:27:18] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,lede,whyItMatters,body] rejected=[]",
+    "[12:27:18] desk \"صندوق الثروة النرويجي يخسر نحو 30 مليار دولار مع تراجع السندات\": rewrote subtitle, lede, whyItMatters, body",
+    "[12:28:09] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=50957",
+    "[12:28:09] critic \"صندوق الثروة النرويجي يخسر نحو 30 مليار دولار مع تراجع السندات\": revise score=8 issues=6",
+    "[12:28:09]   · خلل منطقي في «لماذا يهمّ»: «ولذلك يبقى مسار العوائد في الولايات المتحدة وأوروبا، لا أداء الأسهم وحده، العامل الحاسم في نتائج الصندوق المقبلة، ما دام يمضي في خطت",
+    "[12:28:09]   · دقة: «وهذا ما أصاب حيازات الصندوق الحكومية خلال الربع» يحصر الخسارة في السندات الحكومية. المصدران 1 و2 ينسبانها إلى استثمارات الدخل الثابت كلها، وهي تشمل سندات ",
+    "[12:28:09]   · بناء: أرقام وول ستريت ملحقة بفقرة أسهم الطاقة بعبارة «أما في وول ستريت فقد ارتفع مؤشر ستاندرد آند بورز 500 بنسبة 2.03%...». فتبدو برقية منفصلة لا صلة لها بموضوع",
+    "[12:28:09]   · مقدمات «لماذا يهمّ» مسنودة: عائد الدخل الثابت سالب 3.5%، والأسهم +0.5%، والعائد الإجمالي سالب 0.5%، والعوائد عند أعلى مستوياتها منذ الأزمة المالية، والصندوق يعت",
+    "[12:28:41] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: why_basis needs one to four reported premises with source numbers",
+    "[12:29:18] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=2 ms=33197",
+    "[12:29:43] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=25335",
+    "[12:29:43] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[12:29:43] desk \"صندوق الثروة النرويجي يخسر نحو 30 مليار دولار مع تراجع السندات\": rewrote body",
+    "[12:30:24] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=41226",
+    "[12:30:24] critic (second pass) \"صندوق الثروة النرويجي يخسر نحو 30 مليار دولار مع تراجع السندات\": publish score=9 issues=0",
+    "[12:31:18] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=53868",
+    "[12:31:37] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=18878",
+    "[12:31:37] precheck: repair 1 accepted (1 sentence(s) changed); checking the repaired text again",
+    "[12:32:16] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=39357",
+    "[12:32:16] precheck \"صندوق الثروة النرويجي يخسر نحو 30 مليار دولار مع تراجع السندات\": 1 proved error(s) repaired (1 repair(s)); the repaired text checked clean",
+    "[12:32:20] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3590",
+    "[12:32:20] image: the picture should say: Rising interest rates hit the bonds of the world's largest sovereign wealth fund, wiping out its stock gains.",
+    "[12:32:29] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7462",
+    "[12:32:29] image: the source's photograph (Sky News Arabia) shows A Norges Bank Investment Management sign stands in front of an office building with hedges and palm plants.; searching Norges Bank Investment Management sign | Norges Bank headquarters Oslo | Norges Bank building Oslo | Norwegian sovereign wealth fund office",
+    "[12:32:29] image: tier 2, like the sources' own photograph: Norges Bank Investment Management sign | Norges Bank headquarters Oslo | Norges Bank building Oslo | Norwegian sovereign wealth fund office",
+    "[12:32:29] commons \"Norges Bank Investment Management sign\": 0 usable of 0",
+    "[12:32:30] commons \"Norges Bank\": 13 usable of 20",
+    "[12:32:30] image: dropped \"Norges Bank bygningen.jpg\" — names too little of sign",
+    "[12:32:30] image: dropped \"Norges Bank inngangsparti.jpg\" — names too little of sign",
+    "[12:32:30] image: dropped \"Norges Bank - Domkirkeplassen 3.jpg\" — names too little of sign",
+    "[12:32:30] image: dropped \"Ehemalige Norges Bank in Bergen.jpg\" — names too little of sign",
+    "[12:32:30] image: dropped \"Norges Bank Lillehammer 2.jpg\" — names too little of sign",
+    "[12:32:30] image: dropped \"NorgesBank Bergen.jpg\" — names too little of sign",
+    "[12:32:30] image: dropped \"Norges Bank Lillehammer 2022-08-17 02.jpg\" — names too little of sign",
+    "[12:32:30] image: dropped \"Norges Bank Lillehammer 2022-08-17 01.jpg\" — names too little of sign",
+    "[12:32:30] image: dropped \"Norges bank - no-nb digifoto 20150223 00058 NB MIT FNR 16672 B (croppe\" — names too little of sign",
+    "[12:32:30] image: dropped \"Norges Bank Bankgata 9-11.jpg\" — names too little of sign",
+    "[12:32:30] pexels \"Norges Bank Investment Management sign\": 8 usable",
+    "[12:32:46] openverse \"Norges Bank Investment Management sign\": 0 usable of 0",
+    "[12:32:46] image: dropped \"Top view of financial analysis tools including a cellphone, clipboard,\" — names too little of sign",
+    "[12:32:46] image: dropped \"The entrance gate of Bank Indonesia in Bandung, showcasing the iconic \" — names too little of sign",
+    "[12:32:46] image: dropped \"Detailed view of multiple US hundred dollar bills featuring Benjamin F\" — names too little of sign",
+    "[12:32:46] image: dropped \"Detailed close-up of multiple US one hundred dollar bills in a scatter\" — names too little of sign",
+    "[12:32:46] image: dropped \"Exterior of an industrial building in Nürnberg captured in daylight.\" — names too little of sign",
+    "[12:32:46] image: dropped \"Low-angle view of Nykredit's modern building in Copenhagen under a cle\" — names too little of sign",
+    "[12:32:47] commons \"Norges Bank headquarters Oslo\": 2 usable of 3",
+    "[12:32:47] image: dropped \"Christiania med randbilder (xylografi) Offentlige bygninger minnesmerk\" — names too little of headquarters",
+    "[12:32:47] pexels \"Norges Bank headquarters Oslo\": 8 usable",
+    "[12:33:03] openverse \"Norges Bank headquarters Oslo\": 0 usable of 0",
+    "[12:33:03] image: dropped \"Aerial sunset view of Oslo Fjord with city skyline and dramatic clouds\" — names too little of headquarters",
+    "[12:33:03] image: dropped \"Futuristic office skyscraper with glass facade and steel columns under\" — names too little of headquarters",
+    "[12:33:03] image: dropped \"Minimalist shot of a modern high-rise building with clear blue sky bac\" — names too little of headquarters",
+    "[12:33:03] image: dropped \"Close-up of a modern office building facade in Utrecht, Netherlands.\" — names too little of headquarters",
+    "[12:33:03] image: dropped \"Red brick building in Oslo with lush trees and landscaped garden in th\" — names too little of headquarters",
+    "[12:33:03] image: dropped \"Contemporary glass facade building reflecting on the water in Copenhag\" — names too little of headquarters",
+    "[12:33:03] image: dropped \"Contemporary architecture with striking statue in Oslo, featuring the \" — names too little of headquarters",
+    "[12:33:03] image: dropped \"Vibrant city skyline at dusk showcasing modern architecture and skyscr\" — names too little of headquarters",
+    "[12:33:04] commons \"Norges Bank building Oslo\": 8 usable of 9",
+    "[12:33:04] image: dropped \"Norges Bank - Parkgaten 21, Hamar.jpg\" — dated 1950, an archival picture",
+    "[12:33:04] image: dropped \"Norges Bank - no-nb digifoto 20160115 00028 NB NS 000091.jpg\" — dated 1950, an archival picture",
+    "[12:33:04] image: dropped \"Arkitekturmuseet Oslo.JPG\" — names too little of building",
+    "[12:33:04] image: dropped \"Nasjonalmuseet Akritektur gamle norgesbank IMG 3894 rk 87641.JPG\" — names too little of building",
+    "[12:33:04] image: dropped \"Folkemøte ved Rådhusplassen og musikkpaviljongen i forbindelse med nav\" — names too little of building",
+    "[12:33:04] pexels \"Norges Bank building Oslo\": 8 usable",
+    "[12:33:24] openverse \"Norges Bank building Oslo\": The operation was aborted due to timeout",
+    "[12:33:24] image: dropped \"Stunning view of the contemporary Munch Museum and Oslo skyline reflec\" — names too little of building",
+    "[12:33:24] image: dropped \"Black and white photo showcasing modern architecture in Oslo with wate\" — names too little of building",
+    "[12:33:24] commons \"Norwegian sovereign wealth fund office\": 0 usable of 1",
+    "[12:33:25] commons \"Norwegian sovereign\": 15 usable of 20",
+    "[12:33:25] image: dropped \"Zeta Ophiuchi (Adam Block).jpg\" — names too little of sovereign, wealth, fund, office",
+    "[12:33:25] image: dropped \"Graceful Pitta 0A2A8564.jpg\" — names too little of sovereign, wealth, fund, office",
+    "[12:33:25] image: dropped \"African buffalo (Syncerus caffer) male with Oxpecker.jpg\" — names too little of sovereign, wealth, fund, office",
+    "[12:33:25] image: dropped \"African Cape Daisy (Osteospermum barberiae).jpg\" — names too little of sovereign, wealth, fund, office",
+    "[12:33:25] image: dropped \"African Spoonbill-001.jpg\" — names too little of sovereign, wealth, fund, office",
+    "[12:33:25] image: dropped \"African common toad (Amietophrynus gutturalis) swimming.jpg\" — names too little of sovereign, wealth, fund, office",
+    "[12:33:25] image: dropped \"African emerald cuckoo (Chrysococcyx cupreus) male.jpg\" — names too little of sovereign, wealth, fund, office",
+    "[12:33:25] image: dropped \"One-eyed African leopard.jpg\" — names too little of sovereign, wealth, fund, office",
+    "[12:33:25] image: dropped \"African helmeted turtle (Pelomedusa subrufa).jpg\" — names too little of sovereign, wealth, fund, office",
+    "[12:33:25] image: dropped \"African bush elephant (Loxodonta africana) drinking Kruger.jpg\" — names too little of sovereign, wealth, fund, office",
+    "[12:33:26] pexels \"Norwegian sovereign wealth fund office\": 8 usable",
+    "[12:33:45] openverse \"Norwegian sovereign wealth fund office\": The operation was aborted due to timeout",
+    "[12:33:45] image: dropped \"Open briefcase filled with stacks of hundred dollar bills on a glass t\" — names too little of sovereign, wealth, fund, office",
+    "[12:33:45] image: dropped \"A bustling street scene outside Posthallen in Oslo, Norway, captured a\" — names too little of sovereign, wealth, fund, office",
+    "[12:33:45] image: dropped \"Skyline view of Oslo's Barcode Project buildings with modern architect\" — names too little of sovereign, wealth, fund, office",
+    "[12:33:45] image: dropped \"A stunning view of Oslo's illuminated skyline at night, capturing the \" — names too little of sovereign, wealth, fund, office",
+    "[12:33:45] image: dropped \"Swedish Parliament House by the waterfront with warm sunset lighting i\" — names too little of sovereign, wealth, fund, office",
+    "[12:33:45] image: dropped \"Close-up of a vintage typewriter with a paper labeled 'Hedge Funds'.\" — names too little of sovereign, wealth, fund, office",
+    "[12:33:45] image: dropped \"Close-up view of various Polish coins on a wooden table showcasing cur\" — names too little of sovereign, wealth, fund, office",
+    "[12:33:45] image: dropped \"Close-up of a hand holding dollar bills beside a laptop and piggy bank\" — names too little of sovereign, wealth, fund, office",
+    "[12:33:45] image: 3 likeness(es) set aside for the country's own photographs",
+    "[12:33:51] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4805",
+    "[12:33:57] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5865",
+    "[12:33:57] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Norges Bank - Bankplassen 2.jpg\": Bankplassen 2 in Oslo is Norges Bank's headquarters, which also houses Norges Bank Investment Management, the manager of",
+    "[12:33:57] published \"صندوق الثروة النرويجي يخسر نحو 30 مليار دولار مع تراجع السندات\" -> norway-wealth-fund-third-quarter-bond-loss-ebd227"
   ]
 }

@@ -1,60 +1,6 @@
 {
   "version": 1,
   "items": {
-    "cf58b44c0814f3a9": {
-      "at": "2026-10-01T10:25:25.730Z",
-      "decision": "published",
-      "slug": "saudi-economy-forecast-contract-3-6-percent-310a6c",
-      "title": "Saudi economy forecast to shrink and deficit to widen"
-    },
-    "b7988dd3a672bde8": {
-      "at": "2026-10-01T10:25:25.730Z",
-      "decision": "published",
-      "slug": "saudi-economy-forecast-contract-3-6-percent-310a6c",
-      "title": "Saudi Arabia forecasts $317 billion in 2027 revenue as non-oil income strengthens"
-    },
-    "31282f925d70110c": {
-      "at": "2026-10-01T10:25:26.253Z",
-      "decision": "rejected",
-      "title": "Global bond sell-off intensifies, as UK long-term borrowing costs pass 6%",
-      "strikes": 1
-    },
-    "ae5343d6d528659e": {
-      "at": "2026-10-01T10:25:26.253Z",
-      "decision": "rejected",
-      "title": "الأعلى منذ 1998.. 6% عائد السندات البريطانية",
-      "strikes": 1
-    },
-    "997f3106a30efc02": {
-      "at": "2026-10-01T10:31:21.684Z",
-      "decision": "published",
-      "slug": "saudi-stocks-fifth-weekly-loss-streak-bc4aaf",
-      "title": "السوق السعودية تتجه لتسجيل خامس خسارة أسبوعية على التوالي"
-    },
-    "75ada1a8a8954908": {
-      "at": "2026-10-01T10:31:21.684Z",
-      "decision": "published",
-      "slug": "saudi-stocks-fifth-weekly-loss-streak-bc4aaf",
-      "title": "الأسهم السعودية تتجه لأطول خسائر أسبوعية منذ نوفمبر 2025"
-    },
-    "015ed87b601a9c7b": {
-      "at": "2026-10-01T10:34:28.504Z",
-      "decision": "published",
-      "slug": "tencent-oracle-ai-chips-lease-deal-e9082f",
-      "title": "Oracle has reportedly signed a $7 billion deal with Tencent. It could provide relief for the troubled stock."
-    },
-    "3f1e31eff1c3ff60": {
-      "at": "2026-10-01T10:34:28.504Z",
-      "decision": "published",
-      "slug": "tencent-oracle-ai-chips-lease-deal-e9082f",
-      "title": "تينسنت تتجاوز قيود الرقائق الأمريكية عقب صفقة بـ 7 مليارات دولار"
-    },
-    "2e9209f083c1f146": {
-      "at": "2026-10-01T10:34:28.504Z",
-      "decision": "published",
-      "slug": "tencent-oracle-ai-chips-lease-deal-e9082f",
-      "title": "تينسنت تستأجر 100 ألف شريحة ذكاء اصطناعي من أوراكل"
-    },
     "6b37a3ab8d4a1780": {
       "at": "2026-10-17T14:04:27.017Z",
       "decision": "rejected",
@@ -1338,6 +1284,108 @@
       "decision": "published",
       "slug": "egypt-permanent-committee-steel-billet-supply-9899a3",
       "title": "Egyptian government tackles steelmakers’ challenges, billet supply"
+    },
+    "bdc99b6adb2baeb1": {
+      "at": "2026-10-22T12:02:08.455Z",
+      "decision": "rejected",
+      "title": "سيناريوهات صندوق النقد الدولي: ماذا ينتظر اقتصادات المنطقة في 2027؟",
+      "strikes": 1
+    },
+    "901a791f792b7eaa": {
+      "at": "2026-10-22T12:02:08.455Z",
+      "decision": "rejected",
+      "title": "UAE, Saudi economies to rebound 7.7 percent and 7.9 percent in 2027 as energy exports, trade recover",
+      "strikes": 1
+    },
+    "7d5f7bb2f53aa5d9": {
+      "at": "2026-10-22T12:02:08.455Z",
+      "decision": "rejected",
+      "title": "GCC economy set to rebound 9.1 percent in 2027 as energy production and trade normalize, IMF says",
+      "strikes": 1
+    },
+    "eac53bbd1b711299": {
+      "at": "2026-10-22T12:02:08.455Z",
+      "decision": "rejected",
+      "title": "IMF forecasts 4.8% Gulf economic contraction in 2026 as Iran war hits energy exports",
+      "strikes": 1
+    },
+    "2923bac1131589cf": {
+      "at": "2026-10-22T12:02:08.455Z",
+      "decision": "rejected",
+      "title": "صندوق النقد يتوقع انكماشا 1.3% لمنطقة MENAP في 2026",
+      "strikes": 1
+    },
+    "f742c3911c3533b1": {
+      "at": "2026-10-22T12:14:39.336Z",
+      "decision": "published",
+      "slug": "brent-tops-112-iran-ships-gulf-b0b102",
+      "title": "Oil prices jump to five-month high as attacks threaten global supply"
+    },
+    "46165f3ed7c16f40": {
+      "at": "2026-10-22T12:14:39.336Z",
+      "decision": "published",
+      "slug": "brent-tops-112-iran-ships-gulf-b0b102",
+      "title": "Brent crude tops $111 on Middle East worries as U.S., Israel reportedly weigh fresh Iran strikes"
+    },
+    "ac4b287dfebe3e1b": {
+      "at": "2026-10-22T12:14:39.336Z",
+      "decision": "published",
+      "slug": "brent-tops-112-iran-ships-gulf-b0b102",
+      "title": "Iran Claims Seven Ships Hit in Persian Gulf as Oil Prices Surge"
+    },
+    "398eb642a77c0462": {
+      "at": "2026-10-22T12:14:39.336Z",
+      "decision": "published",
+      "slug": "brent-tops-112-iran-ships-gulf-b0b102",
+      "title": "Oil Prices Surge Above $111 as Houthis Strike Saudi Targets"
+    },
+    "52e8775d890cc5f9": {
+      "at": "2026-10-22T12:25:05.165Z",
+      "decision": "published",
+      "slug": "barclays-cuts-5000-jobs-ai-e9e28a",
+      "title": "Barclays cutting 5,000 jobs as it increases reliance on AI"
+    },
+    "22f96a0e9f04e4c7": {
+      "at": "2026-10-22T12:25:05.165Z",
+      "decision": "published",
+      "slug": "barclays-cuts-5000-jobs-ai-e9e28a",
+      "title": "Barclays to slash 5,000 jobs in AI efficiency push"
+    },
+    "81b4c98d3bdd49a6": {
+      "at": "2026-10-22T12:25:05.165Z",
+      "decision": "published",
+      "slug": "barclays-cuts-5000-jobs-ai-e9e28a",
+      "title": "Barclays to cut 5,000 jobs as it turns to AI to improve efficiency"
+    },
+    "8bc52b79c3bf0d86": {
+      "at": "2026-10-22T12:25:05.165Z",
+      "decision": "published",
+      "slug": "barclays-cuts-5000-jobs-ai-e9e28a",
+      "title": "3 مليار دولار أرباح بنك \"باركليز\" في الربع الثالث"
+    },
+    "5fe65358ed959853": {
+      "at": "2026-10-22T12:25:05.165Z",
+      "decision": "published",
+      "slug": "barclays-cuts-5000-jobs-ai-e9e28a",
+      "title": "Why a global bank is slashing thousands of jobs — and what the Fed says about AI replacing workers"
+    },
+    "3c428e888bbfc2fc": {
+      "at": "2026-10-22T12:33:57.435Z",
+      "decision": "published",
+      "slug": "norway-wealth-fund-third-quarter-bond-loss-ebd227",
+      "title": "World's largest wealth fund posts $30 billion loss after bond market turbulence"
+    },
+    "24932bd127feee59": {
+      "at": "2026-10-22T12:33:57.435Z",
+      "decision": "published",
+      "slug": "norway-wealth-fund-third-quarter-bond-loss-ebd227",
+      "title": "World’s largest wealth fund posts $30bn loss as rising rates hit bonds"
+    },
+    "12290a88538f52ed": {
+      "at": "2026-10-22T12:33:57.435Z",
+      "decision": "published",
+      "slug": "norway-wealth-fund-third-quarter-bond-loss-ebd227",
+      "title": "صندوق الثروة النرويجي يتكبد خسائر فصلية بـ30 مليار دولار"
     }
   }
 }

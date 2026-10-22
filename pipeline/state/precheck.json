@@ -4749,6 +4749,137 @@
           ]
         }
       ]
+    },
+    "brent-tops-112-iran-ships-gulf-b0b102": {
+      "at": "2026-10-22T12:14:39.332Z",
+      "title": "برنت يتجاوز 112 دولاراً مع إعلان إيران إصابة سبع سفن في الخليج",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v33",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 34,
+            "checked": 34,
+            "supported": 32,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "barclays-cuts-5000-jobs-ai-e9e28a": {
+      "at": "2026-10-22T12:25:05.162Z",
+      "title": "باركليز يلغي 5 آلاف وظيفة مع توسعه في الذكاء الاصطناعي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 38,
+            "checked": 38,
+            "supported": 34,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 24,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "طابق الربح قبل الضرائب في الربع الثالث، البالغ 2.3 مليار جنيه إسترليني (3.1 مليار دولار)، توقعات المحللين التي جمعتها مجموعة بورصة لندن (LSEG)، وصعد الربح العائد للمساهمين إلى 1.65 مليار جنيه من 1.46 مليار جنيه قبل عام.",
+              "quote": "Barclays also revealed it made £2.3bn profit in the three months to September, higher than the same period a year ago, but slightly less than forecast.",
+              "source": "BBC News",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "norway-wealth-fund-third-quarter-bond-loss-ebd227": {
+      "at": "2026-10-22T12:33:57.431Z",
+      "title": "صندوق الثروة النرويجي يخسر نحو 30 مليار دولار مع تراجع السندات",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v33",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 28,
+            "checked": 28,
+            "supported": 20,
+            "weak": 7,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 20,
+              "field": "body",
+              "class": "superlative",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وأوضح غراندي أن عوائد الأسهم كانت قريبة من الصفر مع تفاوت كبير بين القطاعات، فقد تصدرت شركات الطاقة الارتفاعات، بينما هبطت المرافق والعقارات، وهي من أكثر القطاعات حساسية للفائدة.",
+              "quote": "\"Equity returns were also close to zero, but there were large differences between sectors. Energy companies rose the most, while interest-rate-sensitive sectors such as utilities and real estate fell,\" Grande said Thursday.",
+              "source": "CNBC",
+              "sourceN": 1,
+              "correction": "Grande called utilities and real estate interest-rate-sensitive sectors; he did not say they are among the most rate-sensitive."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 28,
+            "checked": 28,
+            "supported": 21,
+            "weak": 7,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
