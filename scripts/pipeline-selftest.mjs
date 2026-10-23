@@ -620,6 +620,29 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("the second look reads a market quote as it stood, never fetched again", [refetched, read[0].text.includes("108.63"), read[0].snapshot], [false, true, true]);
 }
 
+// The explainers' and paper readings' machine template (2026-10-23, the owner on four of them: "looks like ai badly
+// written topics with bad headlines"). Each check is tested both ways: the template is sent back, the news form passes.
+{
+  const has = (draft, kind, start) => styleIssues({ subtitle: "", whyItMatters: "", keyFacts: [], ...draft }, { kind }).issues.some((i) => i.startsWith(start));
+  const pegged = { title: "لماذا لا يرتفع سعر الخبز فور هبوط الجنيه؟", lede: "تجاوز الدولار 54 جنيهاً الاثنين للمرة الأولى. لكن رغيف الخبز المدعوم لا يتبعه في اليوم نفسه.", body: "## من يدفع الفرق؟\n\nتتحمل الموازنة الفرق حتى موعد مراجعة السعر." };
+  check("an explainer opened on the news passes its lede checks", [has(pegged, "explainer", "المقدمة تبدأ بتعريف"), has(pegged, "explainer", "المقدمة لا تذكر الخبر")], [false, false]);
+  check("an explainer opened on a definition is sent back", has({ ...pegged, lede: "نسبة تغطية الاكتتاب هي المقياس الذي يقارن الطلب بالمعروض." }, "explainer", "المقدمة تبدأ بتعريف"), true);
+  check("an explainer lede without the news is sent back", has({ ...pegged, lede: "الخام القياسي سعر مرجعي يُقاس عليه ثمن خامات كثيرة أخرى." }, "explainer", "المقدمة لا تذكر الخبر"), true);
+  check("a news lede with «هي» later on is no definition", has({ ...pegged, lede: "قال المركزي الخميس إن الفائدة هي أداته الأولى." }, "explainer", "المقدمة تبدأ بتعريف"), false);
+  check("template subheads are sent back, a reader's question is not", [has({ ...pegged, body: "## مثال توضيحي بالأرقام\n\nنص.\n\n## أخطاء شائعة وما يستحق المتابعة\n\nنص." }, "explainer", "عناوين فرعية من قالب"), has(pegged, "explainer", "عناوين فرعية من قالب")], [true, false]);
+  check("a paper's academic labels are sent back", has({ ...pegged, body: "## السؤال\n\nنص.\n\n## البيانات والطريقة\n\nنص." }, "paper", "عناوين فرعية من قالب"), true);
+  check("an invented currency unit is sent back", has({ ...pegged, body: "لو بلغ السعر 120 وحدة نقدية ارتفع." }, "explainer", "مثال بعملة مخترعة"), true);
+  check("a closing watch-list is sent back", has({ ...pegged, body: "تتحمل الموازنة الفرق.\n\nللمتابعة، تكفي أربعة مؤشرات: الواردات والأجور." }, "explainer", "الشرح يُختم بقائمة"), true);
+  const glossed = (n) => ({ ...pegged, body: Array.from({ length: n }, (_, i) => `ارتفع المؤشر ${i + 1}، أي المقياس العام.`).join("\n\n") });
+  check("four «، أي» glosses are sent back, three are not", [has(glossed(4), "paper", "شرح المصطلحات بسلسلة"), has(glossed(3), "paper", "شرح المصطلحات بسلسلة")], [true, false]);
+  check("the site never quotes itself, in any kind", [has({ ...pegged, body: "في قراءة خازندار، تهم الورقة مديري الاحتياطيات." }, "analysis", "عبارة مترجمة أو حشو"), has({ ...pegged, body: "ترى خازندار أن الأثر مؤقت." }, "news", "عبارة مترجمة أو حشو")], [true, true]);
+  // Grounding: an explainer's figures of these weeks trace to its stories; its announced hypothesis computes its own.
+  const stories = [{ title: "الدولار يتجاوز 54 جنيهاً", text: "تجاوز الدولار 54 جنيهاً في السوق الرسمية للمرة الأولى." }];
+  const missing = (body) => programmaticChecks({ title: pegged.title, subtitle: "", lede: pegged.lede, body, whyItMatters: "", keyFacts: [] }, stories, { explainer: true, minWords: 0 }).issues.some((i) => i.startsWith("أرقام لا تظهر في المصادر"));
+  check("an explainer's invented current figure is sent back, its hypothesis is not", [missing("بلغ التضخم 37% في سبتمبر."), missing("لو ارتفع سعر الدولار 25% لارتفع سعر السلعة 16.7% فقط.")], [true, false]);
+  check("an old explainer checked without its stories' text is not grounded", programmaticChecks({ title: pegged.title, subtitle: "", lede: pegged.lede, body: "بلغ التضخم 37%.", whyItMatters: "", keyFacts: [] }, [{ title: "x" }], { explainer: true, minWords: 0 }).issues.some((i) => i.startsWith("أرقام لا تظهر")), false);
+}
+
 if (failed) {
   console.log(`\n${failed} case(s) failed: a newsroom safeguard behaves wrongly.`);
   process.exit(1);

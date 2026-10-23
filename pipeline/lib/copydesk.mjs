@@ -428,7 +428,7 @@ export async function copyEdit({ draft, includeBody = false, role = "desk", kind
   // explainer's question into a statement, the checker sent it back for not being a question, and the piece was thrown
   // away (2026-10-18; no explainer had been published since 1 October).
   const kindNote = kind === "explainer"
-    ? "\nTHIS PIECE IS AN EXPLAINER. Its headline is the one question the piece answers and ends in «؟» (e.g. «لماذا يرتفع عائد السند كلما انخفض سعره؟»). Keep the headline a question; the rule against question headlines is for news.\n"
+    ? "\nTHIS PIECE IS AN EXPLAINER. Its headline is the one question the piece answers and ends in «؟» (e.g. «لماذا يرتفع عائد السند كلما انخفض سعره؟»). Keep the headline a question; the rule against question headlines is for news. Its lede opens on the news fact that raised the question: keep that opening, never turn it into a definition.\n"
     : "";
   const user = `${EXAMPLES}
 ${kindNote}${problems.length ? `

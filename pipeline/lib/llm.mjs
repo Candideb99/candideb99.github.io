@@ -170,7 +170,16 @@ async function callClaudeCli({ model, system, user, images = [], timeoutMs }) {
   const cliModel = model || process.env.KHAZENDAR_CLAUDE_MODEL || CLAUDE_MODEL;
   const seeing = images.length > 0;
   const args = ["-p", "--output-format", seeing ? "stream-json" : "json", ...(seeing ? ["--input-format", "stream-json", "--verbose"] : []), "--tools", "", "--no-session-persistence", "--setting-sources", "", "--model", cliModel];
-  if (system) args.push("--system-prompt", system);
+  // A long system prompt goes through a file: Windows caps a whole command line at 32,767 characters, and the house
+  // style alone had reached 32,188 when the paper writer's own preamble took it over (2026-10-23: "spawn ENAMETOOLONG"
+  // on every try; the analysis and «في العمق» writers sat as close). The file is the CLI's own --system-prompt-file.
+  let systemFile = null;
+  if (system && system.length > 8000) {
+    const { writeFile } = await import("node:fs/promises");
+    systemFile = path.join(os.tmpdir(), `khazendar-system-${process.pid}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}.txt`);
+    await writeFile(systemFile, system, "utf8");
+    args.push("--system-prompt-file", systemFile);
+  } else if (system) args.push("--system-prompt", system);
 
   let input;
   if (seeing) {
@@ -185,7 +194,9 @@ async function callClaudeCli({ model, system, user, images = [], timeoutMs }) {
   }
 
   const started = Date.now();
-  const result = await new Promise((resolve, reject) => {
+  let result;
+  try {
+  result = await new Promise((resolve, reject) => {
     const child = spawn(CLI_BIN ?? (CLI_JS ? process.execPath : "claude"), CLI_BIN ? args : CLI_JS ? [CLI_JS, ...args] : args, { shell: false, windowsHide: true, env: claudeCliEnv(), cwd: os.tmpdir() });
     let out = "";
     let err = "";
@@ -206,6 +217,9 @@ async function callClaudeCli({ model, system, user, images = [], timeoutMs }) {
     });
     child.stdin.end(input);
   });
+  } finally {
+    if (systemFile) await import("node:fs/promises").then(({ rm }) => rm(systemFile, { force: true })).catch(() => {});
+  }
   let payload;
   try {
     payload = seeing

@@ -815,7 +815,7 @@ function internalSources(articles, { withText = false } = {}) {
 /**
  * Shared tail of the explainer, analysis and paper modes: programmatic checks, the critic, one revision round
  * with a second critic pass, the photo, and the file. `checkSources` is what the draft is checked
- * against (nothing for an explainer, the related stories for an analysis, the research paper's text for a
+ * against (the stories that raised an explainer's question, the related stories for an analysis, the research paper's text for a
  * paper reading); `sources` is what is filed.
  */
 async function finishHubPiece({ kind, section, draft: firstDraft, sources, checkSources, recentTitles, wordLimits, story, headlineHint, headline, models, existing, report }) {
@@ -923,9 +923,8 @@ function runExplainer() {
       log("not enough recent coverage to anchor an explainer");
       return { report, published: 0 };
     }
-    const { topic, model: editorModel } = await selectExplainerTopic({ recentArticles: recent, existingExplainers: explainers, log });
-    log(`explainer topic: ${topic.concept_ar} (${topic.concept_en})`);
-    const related = recent.filter((a) => (topic.related_titles ?? []).includes(a.title)).slice(0, 4);
+    const { topic, related, model: editorModel } = await selectExplainerTopic({ recentArticles: recent, existingExplainers: explainers, log });
+    log(`explainer question: ${topic.question_ar} (${topic.concept_en}); opens on "${related[0]?.title}"`);
     const { draft, model: writerModel } = await writeExplainer({ topic, relatedArticles: related, log });
     // A chart of official data when one shows what the piece explains (the owner, 2026-09-24: "explainers usually add
     // graphs"); Claude chooses from a menu, code fetches the figures from the IMF or the World Bank.
@@ -936,11 +935,12 @@ function runExplainer() {
       section: "explainers",
       draft,
       sources: internalSources(related),
-      checkSources: [],
+      // Since 2026-10-23 an explainer opens on the stories that raised its question, so it is checked against them.
+      checkSources: internalSources(related, { withText: true }),
       recentTitles: explainers,
-      story: { angle: topic.hook },
+      story: { angle: topic.question_ar },
       headlineHint: topic.concept_en,
-      headline: topic.concept_ar,
+      headline: topic.question_ar,
       models: { editor: editorModel, writer: writerModel },
       existing,
       report,

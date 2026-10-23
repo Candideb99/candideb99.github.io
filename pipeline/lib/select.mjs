@@ -134,16 +134,23 @@ Order stories by importance, highest first. Use only candidate ids that exist. R
 
 const EXPLAINER_SYSTEM = `You are the explainers editor of خازندار, an Arabic economics publication. You answer with one JSON object only.`;
 
-/** Picks one concept worth an evergreen explainer, tied to current coverage. */
+/**
+ * Picks the one question readers of this week's news are left asking, and the stories that raised it. Returns
+ * { topic: { question_ar, answer_ar, concept_ar, concept_en, peg_titles }, related: [articles], model }.
+ * Until 2026-10-23 it picked an "evergreen concept" and the writer was forbidden to name any news, so 23 of 24
+ * explainers came out as textbook entries priced in «وحدات نقدية» under jargon headlines (the owner, on four of them:
+ * "looks like ai badly written topics with bad headlines that is even more confusing").
+ */
 export async function selectExplainerTopic({ recentArticles, existingExplainers, log }) {
-  const user = `Recent خازندار coverage (title — tags):
-${recentArticles.map((a) => `- ${a.title} — ${(a.tags ?? []).join("، ")}`).join("\n") || "- (none)"}
+  const user = `Recent خازندار news (exact title — lede):
+${recentArticles.map((a) => `- ${a.title} — ${truncate(a.lede ?? "", 220)}`).join("\n") || "- (none)"}
 
-Explainers already published (do not repeat these concepts):
+Explainers already published (do not ask their questions again):
 ${existingExplainers.map((t) => `- ${t}`).join("\n") || "- (none)"}
 
-Choose ONE economic or financial concept that recurs in the recent coverage (or underpins it) and that a curious Arab reader would want explained calmly: what it is, how it works, why it matters now, with one or two concrete worked examples using realistic illustrative numbers clearly labelled as examples.
-Return JSON: {"concept_ar":"<concept in Arabic>","concept_en":"<concept in English>","hook":"<one Arabic sentence linking it to current news>","related_titles":["<titles from the recent coverage list that relate>"]}`;
+Choose ONE question that readers of one of these stories are left asking: the mechanism, the term or the consequence behind the news that the story itself does not explain. It must be a question many readers share, answerable from standard economics plus the facts in the stories, and not one the explainers above have answered.
+Write the question as that reader would say it, in everyday Arabic. A reader cannot ask about a term he has not learned yet, so a term the answer has to teach stays out of the question unless the news headline itself used it. The form, not the subject: «لماذا لا يرتفع سعر الخبز في اليوم الذي يهبط فيه الجنيه؟»; the subject comes from the list above.
+Return JSON: {"question_ar":"<the question, ending in «؟», at most 14 words>","answer_ar":"<the short answer, one Arabic sentence>","concept_ar":"<the concept the answer turns on, in Arabic>","concept_en":"<the same in English>","peg_titles":["<1-3 exact titles from the list above whose facts raise the question; the first is the story the explainer opens on>"]}`;
   const { data, model } = await chat({
     role: "editor",
     system: EXPLAINER_SYSTEM,
@@ -152,10 +159,11 @@ Return JSON: {"concept_ar":"<concept in Arabic>","concept_en":"<concept in Engli
     maxTokens: 2000,
     log,
     validate: (d) => {
-      if (!d?.concept_ar) throw new Error("concept missing");
+      if (!d?.question_ar || !d?.concept_ar) throw new Error("question missing");
+      if (!matchTitles(d.peg_titles, recentArticles, 3).length) throw new Error("peg_titles names no story of the list");
     },
   });
-  return { topic: data, model };
+  return { topic: data, related: matchTitles(data.peg_titles, recentArticles, 3), model };
 }
 
 const ANALYSIS_SYSTEM = `You are the analysis editor of خازندار, an Arabic economics publication. Once a day you commission one house analysis: a piece that connects several of Khazendar's own recent stories and answers the reader's question "what does this mean for us?". You answer with one JSON object only.`;
@@ -301,7 +309,7 @@ Choose ONE paper that is
 (b) impactful for Arab readers: oil and energy markets, fiscal policy and public debt, labour markets and migration, inflation and monetary policy, trade and tariffs, development, banking and finance, the energy transition, remittances, sovereign wealth and reserves, AI and productivity; prefer findings a reader in the Gulf, Egypt, the Levant or the Maghreb can use, and findings with concrete numbers;
 (c) not already covered in the list above;
 (d) recent: prefer the last 60 days.
-Skip papers that are purely methodological, about a single rich-country programme with no wider lesson, or too technical to explain in plain words. The writer needs at least 3,000 characters of the paper's own text to explain it without inventing: strongly prefer series whose pages carry the full text or a long summary (the Federal Reserve series and notes, the Bank of England working papers, arXiv papers with an HTML version, World Bank abstracts of several paragraphs); choose an "abstract only" paper only when no full-text candidate fits.
+Skip papers that are purely methodological, about a single rich-country programme with no wider lesson, or too technical to explain in plain words. Prefer a finding measured in real data (what happened to prices, jobs, flows, yields, output) over one produced by a calibrated theoretical model: the wires report a paper when its finding can be told in one plain sentence a reader can picture («تراجع الهجرة يبطئ نمو الوظائف»), and a model's mechanism rarely can (2026-10-23). The writer needs at least 3,000 characters of the paper's own text to explain it without inventing: strongly prefer series whose pages carry the full text or a long summary (the Federal Reserve series and notes, the Bank of England working papers, arXiv papers with an HTML version, World Bank abstracts of several paragraphs); choose an "abstract only" paper only when no full-text candidate fits.
 
 Return JSON:
 {"id":"<candidate id>","title_en":"<the paper's title in English, exactly as listed>","why_it_matters_ar":"<one Arabic sentence: why this paper matters to Arab readers>","reading_angle_ar":"<one Arabic sentence: the angle the reading should take>","open_access":{"ok":true,"url":"<the link shown for the paper>"}}`;

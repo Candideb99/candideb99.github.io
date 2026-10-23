@@ -18,15 +18,6 @@ const WEEKLY_SECTIONS = [
   { name: "ما ننتظره الأسبوع المقبل", test: /ما ننتظره|الأسبوع المقبل|ما نراقبه/ },
 ];
 
-/** The five sections of a reading of a research paper, matched loosely against its "## " subheads. */
-const PAPER_SECTIONS = [
-  { name: "السؤال", test: /السؤال/ },
-  { name: "البيانات والطريقة", test: /البيانات|الطريقة|المنهج/ },
-  { name: "النتائج", test: /النتائج|النتيجة/ },
-  { name: "الحدود", test: /الحدود|القيود|حدود/ },
-  { name: "ماذا يعني للقارئ العربي", test: /القارئ العربي|للقارئ|يعني/ },
-];
-
 /** The four sections of «في العمق», the weekly in-depth piece (2026-09-24), matched loosely against its "## " subheads. */
 const FEATURE_SECTIONS = [
   { name: "كيف وصلنا إلى هنا", test: /كيف وصلنا|كيف بدأ|البداية/ },
@@ -39,12 +30,14 @@ const FEATURE_SECTIONS = [
  * Deterministic checks. Returns { ok, issues[], warnings[], metrics }.
  * News, analyses and paper readings are grounded: every figure must trace to `sources` (for an analysis, the
  * paper's own related stories; for a paper reading, the research paper's text as the single source).
- * Explainers carry only illustrative numbers, so their figures and visuals are not checked.
+ * Explainers too, since 2026-10-23: they open on the stories that raised their question, and a figure of these weeks
+ * must come from them; a paragraph that works through a hypothesis («لو…»، «لنفترض…») may compute its own. An
+ * explainer checked without its stories' text (the old evergreen kind) is not grounded.
  */
 export function programmaticChecks(draft, sources, { recentTitles = [], newsTitles = [], explainer = false, analysis = false, paper = false, weekly = false, feature = false, minWords = NEWS_FLOOR } = {}) {
   const issues = [];
   const warnings = [];
-  const grounded = !explainer;
+  const grounded = !explainer || sources.some((s) => s.text);
   const prose = [draft.title, draft.subtitle, draft.lede, draft.body, draft.whyItMatters].join("\n");
   const factsText = draft.keyFacts.map((f) => `${f.label} ${f.value}`).join("\n");
   const sourceTexts = sources.map((s) => `${s.title}\n${s.text || ""}\n${s.summary || ""}`);
@@ -102,11 +95,10 @@ export function programmaticChecks(draft, sources, { recentTitles = [], newsTitl
     const missing = WEEKLY_SECTIONS.filter((s) => !s.test.test(subheads)).map((s) => s.name);
     if (missing.length) issues.push(`بنية حصاد الأسبوع ناقصة؛ العناوين الفرعية المطلوبة (بصيغة "## ") غير موجودة: ${missing.join("، ")}. أضفها بهذا الترتيب: أبرز ما جرى، ما يعنيه للمنطقة، ما ننتظره الأسبوع المقبل.`);
   } else if (paper) {
-    if (words < 550) issues.push(`القراءة قصيرة جداً (${words} كلمة)؛ يجب ألا تقل عن 600 كلمة. وسّع الشرح من نص الورقة نفسه دون اختراع أرقام.`);
-    else if (words > 1000) warnings.push(`long paper reading: ${words} words`);
-    const subheads = (draft.body.match(/^##\s+.+$/gm) ?? []).join("\n");
-    const missing = PAPER_SECTIONS.filter((s) => !s.test.test(subheads)).map((s) => s.name);
-    if (missing.length) issues.push(`بنية القراءة ناقصة؛ العناوين الفرعية المطلوبة (بصيغة "## ") غير موجودة: ${missing.join("، ")}. أضفها بهذا الترتيب: السؤال، البيانات والطريقة، النتائج، الحدود، ماذا يعني للقارئ العربي.`);
+    // No fixed sections since 2026-10-23: the five academic labels it required were the template the owner read as
+    // machine writing. The caveats stay required content, checked by the critic.
+    if (words < 380) issues.push(`القراءة قصيرة جداً (${words} كلمة)؛ يجب ألا تقل عن 400 كلمة. وسّع ما يحتاجه القارئ من نص الورقة نفسه (نتيجة أخرى، تحفّظ الباحثين) دون اختراع أرقام.`);
+    else if (words > 750) warnings.push(`long paper reading: ${words} words`);
     if (/تثبت (?:الدراسة|الورقة)|يثبت البحث|تبرهن/.test(prose)) issues.push("القراءة تصف النتائج بأنها «تثبت»؛ الورقة تجد وتقدّر وتخلص، ولا تثبت. أعد الصياغة (تجد الورقة، يقدّر الباحثون).");
   } else if (words < minWords) issues.push(`المقال قصير جداً (${words} كلمة)؛ لا يُنشر خبر دون ${minWords} كلمة، والمستهدف 350-650. أضف من المصادر ما ينقصه: سبب الحدث، والأرقام في سياقها، وردود الفعل، والخلفية، وما يليه، دون اختراع معلومات.`);
 
@@ -151,13 +143,19 @@ export function programmaticChecks(draft, sources, { recentTitles = [], newsTitl
   if (feature && (!draft.table || (draft.table.rows ?? []).length < 4)) issues.push(`«في العمق» بلا جدول زمني صالح؛ أضف جدول «الجدول الزمني» (التاريخ، الحدث) بصف لكل قصة من قصص الملف، من الأقدم إلى الأحدث، بتاريخ نشرها، وكل رقم فيه كما في قصته.`);
 
   if (grounded) {
-    const missing = ungroundedNumbers(`${prose}\n${factsText}`, sourceTexts);
+    // An explainer's worked hypothesis computes figures no story carries («لو مرّر التاجر الزيادة كاملة…»): the
+    // paragraph that announces it is left to the critic, who checks its arithmetic.
+    const hypothesis = /(?<![\p{L}\p{M}])(?:و|ف)?(?:لو|لنفترض|نفترض|افترض|افترضنا|بافتراض|فلنفترض)(?![\p{L}\p{M}])/u;
+    const checked = explainer
+      ? [draft.title, draft.subtitle, draft.lede, ...String(draft.body ?? "").split(/\n\s*\n/).filter((p) => !hypothesis.test(p)), draft.whyItMatters].join("\n")
+      : prose;
+    const missing = ungroundedNumbers(`${checked}\n${explainer ? "" : factsText}`, sourceTexts);
     // Any figure the sources do not carry forces a revision; the reviser removes or corrects it.
     if (missing.length) {
       issues.push(`أرقام لا تظهر في المصادر: ${missing.join(", ")}. احذف كل رقم غير مذكور في المصادر أو صحّحه.`);
     }
     // Verbatim reuse of an Arabic source is plagiarism; an analysis restating the paper's own stories gets a little more room.
-    const overlapLimit = analysis || weekly ? 0.2 : 0.12;
+    const overlapLimit = analysis || weekly || explainer ? 0.2 : 0.12;
     for (const source of sources) {
       if (source.lang !== "ar") continue;
       // A verbatim Arabic quotation inside «» is allowed to match its source; the prose around it is not.
@@ -304,17 +302,19 @@ Count the lede and body words; under ${NEWS_FLOOR} is a depth defect in itself. 
 SHORT STORY. ${SHORT_STORY}
 Judge it as a short story: never ask for a developed report, more words, subheads, a key-figures box or «لماذا يهمّ». Check that the lede carries the news and the decisive figure, and that the paragraphs after it give the most useful sourced detail rather than ceremony or procedure; when a SOURCE gives the event's stated cause or the previous figure and the story leaves it out while keeping something less useful, name it and the SOURCE number. A story over 250 words that repeats itself, or under 150 that leaves out such a fact, needs revision. It has no synthesis box: in reader_check, whatever concerns the box is not_applicable.`,
   },
+  // Since 2026-10-23 an explainer answers a question this week's news raised and opens on that news (the owner, on
+  // four "evergreen" ones forbidden any current fact: "looks like ai badly written topics with bad headlines").
   explainer: {
     material:
-      "(explainer: no external sources by design, so it may state NO current events: no dated fact, current price, statistic, decision, attack or deal of recent days; only definitions, mechanisms and worked examples labelled مثال توضيحي. Judge internal consistency and standard definitions.)",
-    facts: "Every claim in the draft: is it a definition or a mechanism, not a report of something that happened? Every number: is it labelled as an illustrative example (مثال توضيحي)? List each current-events claim (a dated event, a current price or figure, a decision or attack of recent days, a named recent deal) and each unlabelled number: with no sources they are unsupported by construction.",
-    check: "Are definitions standard and correct? Are all worked-example numbers clearly labelled as illustrative? Any current-events claim at all means the verdict \"reject\", never \"revise\"; Khazendar's news pages, not an explainer, report events.",
+      "(explainer: it answers one question readers of this week's news are asking. The sources below are خازندار's own stories that raised the question. Every fact of these weeks in the draft (a price, a figure, a date, a decision, a name) must trace to them; standard definitions and mechanisms of economics need no source and are judged for correctness; a paragraph that works through a hypothesis («لو…»، «لنفترض…») may compute its own figures, and its arithmetic must be right.)",
+    facts: "Every fact of these weeks in the draft: does it trace to the stories, with the same magnitude, unit, direction, date and actor? List each that does not; an invented current fact is a real error. Every definition and mechanism: is it standard and correct? Every calculation: is it right, and is a hypothesis written as one?",
+    check: "Read it as someone who has just read the news story and has the question. Does the headline ask what that reader would ask, in his everyday words, without a term the piece has to teach? Does the lede open on the news fact (its figure, its day or date) rather than a definition, and is the question answered within the first two paragraphs? Does the dek give the answer rather than describe the piece? Are the stories' real figures used wherever they exist, with no invented currency units («وحدات نقدية»)? Is it free of a template: no label subheads (تعريف، مثال توضيحي، أخطاء شائعة، ما يجب متابعته), no closing list of indicators to watch, no recap? Is each term explained once, without chains of «، أي…»? Does it read as a reporter who knows the beat explaining it plainly, not as a textbook entry? Each failure is one issue.",
   },
   paper: {
     material:
       "(reading of a research paper: the single source below is the paper's own text, abstract and whatever free full text its page offers. The reading explains that paper to educated non-economists; it may add nothing the text does not contain, and its implications for Arab readers are legitimate only as hedged readings.)",
     facts: "Every number, name, date and finding in the draft: does it trace to the paper's text, with the same magnitude, unit, direction, sample and period? Is each finding reported as the paper reports it (an estimate stays an estimate, an association is not made a cause, nothing is described as proven)? List each unsupported, altered or overstated item.",
-    check: "Does the reading carry the five sections (السؤال، البيانات والطريقة، النتائج، الحدود، ماذا يعني للقارئ العربي) with substance in each? Are the paper's own caveats and limits kept under الحدود rather than dropped? Is every implication for Arab economies hedged as a reading, never asserted, and never a one-country result generalised to the region? Is every technical term glossed in plain words? Does the Arabic read as the economics desks write it (الشرق الأوسط، الاقتصادية): short sentences, concrete nouns, the desks' attribution forms, no translationese?",
+    check: "Read it as an educated reader who has never studied statistics. Do the headline and the dek say the finding in words that reader understands, with no correlation, coefficient or other statistic (each is a defect to name)? Does the lede give the finding before the method? Is each statistic in the body translated into what it means before its number? Is the method kept to what the reader needs to trust the result, without window lengths, survey frequencies or unit conversions that change nothing? Are the paper's own caveats kept, in a paragraph of their own? A paragraph on what the paper cannot tell about Arab economies is padding: quote it and ask for it to be cut. Is every implication for Arab economies hedged as a reading, never asserted, never attributed to the site, and never a one-country result generalised to the region? Does it avoid an academic template (subheads السؤال، البيانات والطريقة، النتائج، الحدود) and chains of «، أي…» glosses? Does the Arabic read as the economics desks write it (الشرق الأوسط، الاقتصادية): short sentences, concrete nouns, the desks' attribution forms, no translationese?",
   },
   weekly: {
     material:

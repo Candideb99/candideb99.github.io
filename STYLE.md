@@ -228,6 +228,39 @@ An owner-selected news article can be re-reported through `pipeline/run.mjs --re
 original publication date, picture and previous correction history. Its reason is recorded in
 the internal run report; style improvements carry no public editorial-update banner (owner, 2026-10-17). The schedule never invokes this option. A failed refresh leaves the published text intact.
 
+**Explainers and paper readings sound like a reporter, not a textbook** (2026-10-23, the owner on four of them:
+"these articles look like nonsense, no? looks like ai badly written topics with bad headlines that is even more
+confusing ... the writing needs to sound human"). Their facts and sums were right; their construction was ours.
+The explainer was "evergreen" and forbidden any current fact, so each priced a made-up example in «وحدات نقدية»
+while the week's real figure (the dollar past 54 pounds, the Banque du Caire offering) sat in our own news; 23 of
+24 carried the same subheads (ما X؟ / مثال توضيحي / أخطاء شائعة وما يُراقب) and closed on a list of indicators;
+9 opened on a dictionary definition; the headlines asked about the very term the piece had to teach («علاوة عُمان
+على دبي»). The paper readings ran an academic paper's five labels, a correlation in the dek, regression
+coefficients in the box and eight «، أي…» glosses a piece. None of the 293 news stories showed any of this.
+Read the same day against eight professional pieces (Reuters' explainers on oil above $100, rising Treasury yields
+and MSCI's case against Indonesia; الشرق بلومبرغ on Egypt's fuel prices; الجزيرة نت on stagflation; اندبندنت عربية on
+Egypt's gold; two Reuters write-ups of San Francisco Fed papers): 7 of 8 open on the week's event with a real figure;
+none uses a hypothetical example or definition / misconception / what-to-watch subheads (Reuters heads them with the
+reader's questions or the answers stated as facts); they end on the last new fact, a forecast or the next date; the
+explainers run 540-1,400 words (Reuters 640-810), the paper write-ups about 300, with the statistic turned into plain
+words and the method in one sentence. The one textbook-shaped piece found, an older الشرق explainer of a Nobel theory,
+has exactly our template. Now:
+- **An explainer answers the question a reader of this week's news is left with** (`selectExplainerTopic()` in
+  select.mjs), asked in that reader's words, and opens on the story that raised it: the lede is the news fact with
+  its figure and date, then the answer; the dek is the answer. Its figures come from those stories, which are now
+  its sources and are checked like an analysis's (`programmaticChecks()`); a paragraph that announces a hypothesis
+  («لو…»، «لنفترض…») may compute its own numbers. No fixed sections: at most three subheads, each the reader's next
+  question or its answer stated as a fact; the piece ends on the last thing the reader needs or the next dated event. 450-700 words.
+- **A paper reading leads with the finding in plain words**; a statistic is translated before it is given and never
+  sits in the headline, dek or box; the method gets the paragraph the reader needs to trust the number; the paper's
+  caveats keep a paragraph of their own; no academic labels. 400-600 words (Reuters' write-ups of a Fed paper run about 300).
+- **Code checks** (`style.mjs`, hard for these two kinds): label subheads, a definition lede or one with no news,
+  invented currency units, a closing watch-list, more than three «، أي» glosses. For every kind: the site quoting
+  itself («في قراءة خازندار»، «ترى خازندار»: a reading is marked by its hedge), and a warning for significance
+  asserted instead of shown («يكتسب أهمية»، «محطة مفصلية»). The house style's «WRITE WHAT IS THERE» rule carries the
+  rest of Wikipedia's *Signs of AI writing*, said the Arabic way. Calibrated on all 335 published pieces: no news
+  story trips any of them; every explainer and paper reading does.
+
 ## 2. The editing (فن التحرير الصحفي)
 
 News is edited, not filled. The editor model scores every candidate on the news values an

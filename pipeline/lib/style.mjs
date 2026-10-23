@@ -24,7 +24,13 @@ export const BANNED = [
   { re: /يفهم القارئ|من خلال هذا المقال|في هذا المقال (?:سوف|سن)|دعونا نستكشف/g, fix: "اذكر المعلومة مباشرة بدلاً من وصف المقال أو مخاطبة القارئ", hard: true },
   // A piece that describes itself («يتتبع هذا الشرح الطرح العام الأولي…», an explainer's dek, 2026-10-19): a dek states
   // the point, it never announces the article. One instance in 280 pieces, none of them a false alarm.
-  { re: /(?:يتتبع|يشرح|يستعرض|يتناول|يوضح|يبين|يبيّن|يجيب|يعرض|يقدم|يقدّم|تتتبع|تشرح|تستعرض|تتناول|توضح|تبين|تبيّن|تجيب|تعرض|تقدم|تقدّم) (?:هذا|هذه) (?:الشرح|التقرير|التحليل|المقال|المادة|القراءة|الورقة|المقالة)/g, fix: "النص يصف نفسه؛ قل الفكرة نفسها مباشرة («يُحدَّد سعر الطرح بالتفاوض بين…»)", hard: true },
+  { re: /(?:يتتبع|يشرح|يستعرض|يتناول|يوضح|يبين|يبيّن|يجيب|يعرض|يقدم|يقدّم|تتتبع|تشرح|تستعرض|تتناول|توضح|تبين|تبيّن|تجيب|تعرض|تقدم|تقدّم) (?:هذا|هذه) (?:الشرح|الدليل|التقرير|التحليل|المقال|المادة|القراءة|الورقة|المقالة)/g, fix: "النص يصف نفسه؛ قل الفكرة نفسها مباشرة («يُحدَّد سعر الطرح بالتفاوض بين…»)", hard: true },
+  // The site quoting itself («في قراءة خازندار، تهمّ الورقة…»): nine hub pieces of 2026-10-23 did, because the briefs
+  // asked for "Khazendar's reading" to be marked. A reading is marked by its hedge; a reporter never cites his paper.
+  { re: /(?:في|بحسب|وفق(?:اً)?) قراءة خازندار|(?:ترى|تقرأ|تقدّر|تقدر|ترجّح|ترجح|تتوقع) خازندار/g, fix: "الموقع لا يقتبس نفسه؛ علّم القراءة بتحوّط واحد («قد»، «يُرجَّح») ثم اكتبها مباشرة", hard: true },
+  // Significance asserted instead of shown (Wikipedia's «Signs of AI writing», 1.1, said the Arabic way): the fact that
+  // makes a thing matter is written, not a sentence saying that it does. Rare here (six in 335 pieces), so a warning.
+  { re: /يكتسب(?:ان)? أهمية|تكتسب أهمية|يحمل(?: في طياته)? دلالات|تحمل(?: في طياتها)? دلالات|محطة (?:مفصلية|فارقة)|دور(?:اً|ا)? محوري(?:اً|ا)?|نقلة نوعية/g, fix: "عبارة تقول إن الأمر مهم بدل أن تذكر ما يجعله مهماً؛ اكتب الواقعة أو الرقم واحذف العبارة" },
   // fillers and machine connectors
   { re: /في هذا السياق/g, fix: "احذفها أو ابدأ بـ«و»", hard: true },
   { re: /تجدر الإشارة(?: إلى)?|من الجدير بالذكر|جدير بالذكر|يُذكر أن|يذكر أن|هذا وقد|لا يخفى على أحد|لا يمكن إنكار/g, fix: "احذفها؛ ابدأ الفقرة بـ«وكان» أو بالواقعة نفسها", hard: true },
@@ -381,6 +387,33 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
   // An explainer is titled with the question it answers (the owner, 2026-09-24, on «عائد السند يرتفع كلما انخفض
   // سعره والعكس صحيح»: "i would opt in giving the headline as question").
   if (kind === "explainer" && !/؟\s*$/.test(title.trim())) issues.push(`عنوان الشرح سؤال واحد واضح ينتهي بـ«؟» يجيب عنه النص (مثل «لماذا يرتفع عائد السند كلما انخفض سعره؟»)، لا جملة خبرية ولا عنوان بنقطتين.`);
+
+  // The explainers' and paper readings' machine template (the owner, 2026-10-23, on four of them: "looks like ai badly
+  // written topics with bad headlines"). Of the 24 explainers then published, 23 carried the same label subheads
+  // («ما X؟ / مثال توضيحي / أخطاء شائعة وما يُراقب») and ended on a list of indicators to watch, 9 opened on a dictionary
+  // definition and 2 priced their example in «وحدات نقدية»; the paper readings averaged eight «، أي…» glosses and used
+  // an academic paper's own section labels. None of the 293 news stories carried any of these.
+  if (kind === "explainer" || kind === "paper") {
+    const labels = [...body.matchAll(/^##\s+(.+)$/gm)].map((m) => m[1].trim()).filter((h) =>
+      /أخطاء شائعة|سوء (?:ال)?فهم|مفاهيم خاطئة|مثال (?:توضيحي|افتراضي|بالأرقام)|ما (?:الذي )?(?:يجب|ينبغي|تجب|يستحق|يُ?ستحق) (?:متابعته|مراقبته|المتابعة|المراقبة)|ما يُ?راقَ?ب|ما يُ?تابَ?ع|^(?:ال)?تعريف(?![\p{L}\p{M}])|^(?:ال)?سؤال$|^البيانات والطريقة$|^(?:ال)?منهج(?:ية)?$|^النتائج$|^الحدود$|القارئ العربي/u.test(h));
+    if (labels.length) issues.push(`عناوين فرعية من قالب جاهز («${labels.slice(0, 3).join("»، «")}»)؛ العنوان الفرعي سؤال يطرحه القارئ بعد الفقرة السابقة بكلماته («من يدفع الفرق؟») أو جملة تقول شيئاً، وأغلب القطع لا تحتاج إلا إلى عنوانين أو لا شيء.`);
+    const glosses = (`${lede}\n${body}`.match(/[،,]\s*أي\s/g) ?? []).length;
+    if (glosses > 3) issues.push(`شرح المصطلحات بسلسلة «، أي…» (${glosses} مرات)؛ اشرح المصطلح الذي يحتاجه القارئ مرة واحدة في جملة مستقلة حيث يحتاجه أول مرة، واحذف ما لا يحتاجه لفهم النتيجة.`);
+  }
+  if (kind === "explainer") {
+    // A reader asks his question after the news, never about a definition: the lede opens on what happened.
+    // «X هو/هي…» as the main clause of the opening: the copula within the first eight words, with no «إن/أن» or figure
+    // before it («قال المركزي إن الفائدة هي أداته» reports the news).
+    const opening = lede.trim().split(/\s+/);
+    const copula = opening.findIndex((w, i) => i > 0 && i < 8 && /^(?:هو|هي|هما)$/.test(w));
+    const defines = copula > 0 && !opening.slice(0, copula).some((w) => /^(?:و|ف)?(?:إن|أن|بأن|لأن|التي|الذي)$|\d/.test(normalizeDigits(w)));
+    if (defines || /^(?:يُقصد|يقصد|يُعرَّف|يعرّف|يعرف|يطلق|يُطلق)(?![\p{L}\p{M}])/u.test(opening[0] ?? "")) issues.push("المقدمة تبدأ بتعريف («X هو…»)؛ الشرح يبدأ بالخبر الذي أثار السؤال، برقمه وتاريخه كما في القصة، ثم يجيب.");
+    else if (!/\d|(?:السبت|الأحد|الاثنين|الثلاثاء|الأربعاء|الخميس|الجمعة|يناير|فبراير|مارس|أبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر)/.test(normalizeDigits(lede))) issues.push("المقدمة لا تذكر الخبر الذي أثار السؤال؛ ابدأ بالواقعة من القصص المرفقة، برقمها أو تاريخها، ثم أجب.");
+    const units = prose.match(/وحد(?:ة|ات|تين|تان) (?:نقدية|محلية)/);
+    if (units) issues.push(`مثال بعملة مخترعة («${units[0]}»)؛ احسب بالعملة الحقيقية وبالأرقام التي في القصص المرفقة، أو بالدولار إن كان الموضوع عالمياً.`);
+    const last = body.split(/\n\s*\n/).map((p) => p.trim()).filter((p) => p && !p.startsWith("## ")).pop() ?? "";
+    if (/^(?:و|ف)?(?:للمتابعة|أفضل ما يُ?تابَ?ع|ما يُ?تابَ?ع|ما يجب (?:متابعته|مراقبته)|من يريد (?:الحكم|متابعة|تقدير)|ومن يريد|يبقى على (?:القارئ|المتابع))/.test(last)) issues.push("الشرح يُختم بقائمة مؤشرات للمتابعة؛ اختمه بآخر ما يحتاجه القارئ من الجواب، أو بالموعد التالي الذي تذكره القصص.");
+  }
 
   // Dates the desks write: the weekday this week, the month this year, the year only when it is not this one.
   const year = new Date().getUTCFullYear();
