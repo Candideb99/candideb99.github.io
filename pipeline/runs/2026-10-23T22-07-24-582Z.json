@@ -1,0 +1,482 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-23T21:30:13.103Z",
+  "durationSec": 2231,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "موازنة المغرب 2027 تخفف ضريبة الأجور وترفع الجباية على شركات المحروقات",
+      "section": "economy",
+      "importance": 8,
+      "sources": [
+        "https://www.skynewsarabia.com/middle-east/1900291-%D9%85%D8%B4%D8%B1%D9%88%D8%B9-%D9%85%D9%88%D8%A7%D8%B2%D9%86%D8%A9-%D8%A7%D9%84%D9%85%D8%BA%D8%B1%D8%A8-2027-%D8%A5%D8%B9%D9%81%D8%A7%D8%A1%D8%A7%D8%AA-%D8%B6%D8%B1%D9%8A%D8%A8%D9%8A%D8%A9-%D9%88%D8%AF%D8%B9%D9%85-%D9%84%D9%84%D8%A3%D8%B3%D8%B1",
+        "https://www.hespress.com/19-%d9%85%d9%84%d9%8a%d8%a7%d8%b1-%d8%af%d8%b1%d9%87%d9%85-%d9%84%d8%af%d8%b9%d9%85-%d8%a7%d9%84%d8%b3%d9%83%d8%b1-%d9%88%d8%a7%d9%84%d8%af%d9%82%d9%8a%d9%82-%d9%88%d8%a7%d9%84%d8%a8%d9%88%d8%aa%d8%a7-1827898.html",
+        "https://www.hespress.com/%d9%84%d9%82%d8%ac%d8%b9-%d9%85%d8%ac%d8%a7%d9%86%d9%8a%d8%a9-%d9%81%d8%a7%d8%aa%d9%88%d8%b1%d8%a9-%d8%a7%d9%84%d9%83%d9%87%d8%b1%d8%a8%d8%a7%d8%a1-%d8%a3%d9%82%d9%84-%d9%85%d9%86-100-%d8%af%d8%b1-1827848.html",
+        "https://www.hespress.com/%d8%aa%d9%81%d8%a7%d8%b5%d9%8a%d9%84-%d8%a7%d9%84%d8%a5%d8%b9%d9%81%d8%a7%d8%a1-%d9%85%d9%86-%d8%a7%d9%84%d8%b6%d8%b1%d9%8a%d8%a8%d8%a9-%d8%b9%d9%84%d9%89-%d8%a7%d9%84%d8%af%d8%ae%d9%84-%d9%88%d8%b1-1827817.html"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والمقدمة يوضحان أن المشروع مقترح لم يُعتمد بعد، وهذا سليم. لكنهما يغفلان أن الإعفاء يخص الأجر الشهري الصافي، وأنه جزء من مراجعة تدريجية تمتد من 2027 إلى 2031، وأن 13% من الأجراء سيواصلون أداء الضريبة بمعدل أعلى خُفّض من 37% إلى 30%.",
+              "repair": "إضافة «الشهرية الصافية» إلى العنوان، وذكر الطابع التدريجي للمراجعة (2027-2031) وخفض المعدل الأعلى في الفقرة الأولى عن الضريبة (SOURCE 1، SOURCE 4)."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يغيب الغرض المعلن للإصلاح (تخفيف العبء على الطبقات المتوسطة وتشجيع العمل المصرح به)، ورفع الحد المعفى من 40 إلى 60 ألف درهم، وعدد المشتركين المعنيين بالكهرباء (6 ملايين، 60%). أما «لماذا يهمّ» فيستند إلى مقدمات مسندة (13%، كلفة 5.5 مليار، مرحلة أولى نحو 1000 و3000 درهم)، ويستنتج منها أن كلفة الدعم والمعاشات مرشحة للارتفاع، ويقيّد ذلك بشرط «إذا مضت في الخطة». هذا استنتاج متناسب.",
+              "repair": "إدراج الغرض والأرقام المقارنة من SOURCE 1 وSOURCE 4، وعدد مشتركي الكهرباء من SOURCE 3، ووضع نسبة 13% في الصندوق بصيغة التقدير الحكومي."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يبدأ المتن بفقرة إدارية («يشغل لقجع منصب…»)، وينتهي بجملة عامة منفصلة عن فقرة الدعم («ووصف لقجع الدعم الاجتماعي بأنه حق…»). كما يحيل إلى «إجراءَي المعاشات والأرامل» دون شرح الإجراء الثاني.",
+              "repair": "الدخول مباشرة في آلية الإعفاء وأثره، ونقل وصف الدعم إلى فقرة نظام الاستهداف، وذكر رفع معاش الأرامل من 50% إلى 100% قبل كلفته (SOURCE 1)."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«الأجور دون 10 آلاف درهم» في العنوان بلا قيد الشهرية الصافية. الدعم المباشر «من 500 إلى 600 درهم» بلا «شهرياً». الدكّة تقول «يرى وزير المالية» عن تقدير رقمي. «ثم قدّمه مساء الجمعة» تفترض ترتيباً غير مسند. والصندوق يقدّم نسبة 13% كأمر محقق.",
+              "repair": "إضافة القيود الزمنية والقيمية، واستبدال «يرى» بـ«قال»، وحذف «ثم»، ونسبة 13% إلى تقديرات الحكومة."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والدكّة والمقدمة تقدم الإجراء بوصفه مقترحاً في مشروع قانون لم يُعتمد بعد («يقترح»، «ويقترح المشروع»). وتحمل قيد «الشهرية الصافية» والطابع التدريجي حتى 2031، وتختم بانتقال المشروع إلى المناقشة البرلمانية.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الغرض المعلن للإصلاح وآلية الإعفاء (40 إلى 60 ألفاً، والأشطر، و37% إلى 30%) وحجم مشتركي الكهرباء ومعاش الأرامل كلها حاضرة الآن. يغيب مخصص 19.4 مليار درهم لدعم البوتان والسكر والدقيق (SOURCE 1، SOURCE 2)، وهو جزء من حزمة القدرة الشرائية نفسها. أما صندوق «لماذا يهمّ» فينطلق من مقدمات مسندة (13%، كلفة 5.5 مليار، مرحلتان أوليان نحو 1000 و3000 درهم)، ويستنتج كلفة متكررة مرشحة للارتفاع، ويقيدها بشرط «إذا مضت الحكومة في خطتها». هذا استنتاج متناسب، لولا تعميم «عبء الضريبة على الدخل» على الأجراء وحدهم.",
+              "repair": "إضافة مخصص 19.4 مليار درهم ومعه المليار الإضافي في فقرة مستقلة عن دعم المواد الأساسية، وتقييد عبارة الصندوق بـ«الضريبة على دخل الأجراء»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "صار المتن يدخل مباشرة في آلية الإعفاء، ونُقل وصف الدعم إلى جوار نظام الاستهداف، ويُختم بالمسار البرلماني. لكن فقرة «أجور القطاع العام والتعليم» تجمع مخصص الحوار الاجتماعي مع «مليار درهم لدعم القدرة الشرائية» وميزانية التعليم دون رابط يجمعها. كما أن فقرة فقدان الشغل والتقاعد جملة يتيمة.",
+              "repair": "نقل المليار إلى فقرة دعم المواد الأساسية، ودمج جملة فقدان الشغل في فقرة الحماية الاجتماعية. ويُدرج في قسم القطاعات الاجتماعية مخصص الصحة (45.4 مليار درهم، بزيادة 3 مليارات، و8000 منصب، SOURCE 3) إلى جانب التعليم، أو يُختصر القسم إلى مخصص الحوار الاجتماعي وحده."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «وتبدأ المراجعة في 2027 برفع الحد...» ترتيب غير مسند. وعبارة «ولا يقتصر الإعفاء على الأسر» تسمي تحمّل الفاتورة إعفاءً. وعبارة «سيرتفع من 500 إلى 600 درهم» تُسقط أن المرفوع هو الحد الأدنى. وبند الحقائق «كلفة زيادة الدعم الاجتماعي المباشر: 3 مليارات» لا يذكر أنها كلفة المرحلة الأولى.",
+              "repair": "«وتشمل المراجعة، الممتدة من 2027 إلى 2031، رفع الحد...»؛ «ولا يقتصر الإجراء على الأسر»؛ «الحد الأدنى للدعم الاجتماعي المباشر يرتفع من 500 إلى 600 درهم شهرياً»؛ «كلفة المرحلة الأولى من زيادة الدعم المباشر: 3 مليارات درهم»."
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تتوقع الحكومة أن ترتفع نسبة الأجراء المعفيين من الضريبة على الدخل إلى 87% وألا تؤديها سوى 13%",
+          "source": 4
+        },
+        {
+          "fact": "قدّر لقجع كلفة إجراء الضريبة على الدخل بنحو 5.5 مليارات درهم خلال 2027",
+          "source": 1
+        },
+        {
+          "fact": "يرتفع الدعم المباشر من 500 إلى 600 درهم شهرياً ضمن رفع تدريجي للحد الأدنى إلى 1000 درهم",
+          "source": 3
+        },
+        {
+          "fact": "تعتزم الحكومة رفع الحد الأدنى للمعاش تدريجياً إلى 3000 درهم بحلول نهاية الولاية",
+          "source": 1
+        }
+      ],
+      "slug": "morocco-2027-budget-income-tax-relief-9d51d0",
+      "title": "المغرب يقترح إعفاء الأجور الصافية دون 10 آلاف درهم شهرياً من الضريبة",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "برنت يقترب من 117 دولاراً في أعلى مستوى منذ مارس مع تصاعد الهجمات في هرمز",
+      "section": "energy",
+      "importance": 8,
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-10-23/chipmakers-post-longest-weekly-drop-since-november-video",
+        "https://www.aljazeera.net/news/liveblog/2026/10/24/%d8%a5%d9%8a%d8%b1%d8%a7%d9%86-%d9%85%d8%a8%d8%a7%d8%b4%d8%b1-%d8%aa%d8%b1%d9%85%d8%a8-%d9%8a%d9%84%d9%88%d8%ad-%d8%a8%d8%b9%d9%85%d9%84%d9%8a%d8%a9-%d8%ac%d8%af%d9%8a%d8%af%d8%a9-%d8%b6%d8%af",
+        "https://www.annahar.com/economy/359808/%D8%AE%D8%A7%D9%85-%D8%A8%D8%B1%D9%86%D8%AA-%D9%8A%D9%82%D9%81%D8%B2-355-%D8%AF%D9%88%D9%84%D8%A7%D8%B1%D8%A7-%D9%88%D8%A3%D8%B3%D9%88%D8%A3-%D8%B4%D9%87%D8%B1-%D9%84%D9%84%D9%87%D8%AC%D9%85%D8%A7%D8%AA-%D9%81%D9%8A-%D9%87%D8%B1%D9%85%D8%B2",
+        "https://www.marketwatch.com/story/oil-markets-are-on-edge-ahead-of-the-weekend-as-midterm-elections-near-and-fresh-u-s-strikes-on-iran-are-predicted-8c27e634?mod=mw_rss_topstories"
+      ],
+      "outcome": "skipped: repeats a recent story («برنت يتجاوز 110 دولارات مع تصاعد المخاطر على الملاحة في هرمز»)"
+    },
+    {
+      "headline": "تركيا تعرض على مصر اتفاقاً لترسيم الحدود البحرية في شرق المتوسط",
+      "section": "energy",
+      "importance": 7,
+      "sources": [
+        "https://www.independentarabia.com/node/661115/%D8%B3%D9%8A%D8%A7%D8%B3%D8%A9/%D9%85%D8%AA%D8%A7%D8%A8%D8%B9%D8%A7%D8%AA/%D8%AA%D8%B1%D9%83%D9%8A%D8%A7-%D8%AA%D8%A8%D8%AF%D9%8A-%D8%A7%D8%B3%D8%AA%D8%B9%D8%AF%D8%A7%D8%AF%D9%87%D8%A7-%D9%84%D8%AA%D9%88%D9%82%D9%8A%D8%B9-%D8%A7%D8%AA%D9%81%D8%A7%D9%82-%D9%85%D8%B9-%D9%85%D8%B5%D8%B1-%D9%84%D8%AA%D8%B1%D8%B3%D9%8A%D9%85-%D8%A7%D9%84%D8%AD%D8%AF%D9%88%D8%AF-%D8%A7%D9%84%D8%A8%D8%AD%D8%B1%D9%8A%D8%A9",
+        "https://www.skynewsarabia.com/middle-east/1900276-%D8%B4%D8%B1%D9%82-%D8%A7%D9%84%D9%85%D8%AA%D9%88%D8%B3%D8%B7-%D8%AA%D8%AA%D8%AD%D8%B1%D9%83-%D9%85%D8%B5%D8%B1-%D9%88%D8%A7%D9%84%D9%8A%D9%88%D9%86%D8%A7%D9%86-%D9%85%D9%88%D8%A7%D8%AC%D9%87%D8%A9-%D8%AA%D8%B1%D9%83%D9%8A%D8%A7",
+        "https://www.skynewsarabia.com/middle-east/1900261-%D8%AA%D8%B1%D9%83%D9%8A%D8%A7-%D8%A8%D8%A5%D9%85%D9%83%D8%A7%D9%86%D9%86%D8%A7-%D8%AA%D9%87%D8%AF%D8%A6%D8%A9-%D9%85%D8%AE%D8%A7%D9%88%D9%81-%D9%85%D8%B5%D8%B1-%D8%A8%D8%B4%D8%A3%D9%86-%D8%A7%D9%84%D8%A7%D8%AA%D9%81%D8%A7%D9%82-%D8%A7%D9%84%D8%A8%D8%AD%D8%B1%D9%8A-%D9%84%D9%8A%D8%A8%D9%8A%D8%A7"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يميز العنوان والمقدمة بين ما تغيّر وما بقي على حاله. الجديد هو استعداد أنقرة المعلن لاتفاق مع مصر وقول فيدان إنها قادرة على تهدئة المخاوف. الثابت هو مذكرة 2019 التي صادق عليها البرلمان الليبي الثلاثاء وتواصل القاهرة رفضها. ولا يقدّم المقال العرض كأنه اتفاق مُبرم.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يقدّم المقال الخبيرين بصفتيهما ومؤسستيهما، ويشرح خلفية المذكرة وانقسام السلطات الليبية. لكنه يغفل أن التصريحات جاءت في اجتماعات إسطنبول التي ضمت ممثلي بريطانيا وفرنسا وألمانيا وإيطاليا (المصدران 1 و3). ويجزم صندوق «لماذا يهمّ» بأن العرض «مرهون» بالمذكرة دون مقدمة تسنده.",
+              "repair": "إضافة سياق اجتماعات إسطنبول وحضور إيطاليا، واستبدال «مرهوناً» بصياغة تذكر التزامن بين العرض التركي واستمرار الرفض المصري دون ادعاء شرط."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "تتدرج الفقرات من التصديق إلى العرض فالخلفية فاللقاء فالخطوات المقبلة فالقراءة القانونية. لكن الفقرة الأولى تكرر «اليونان» داخل جملة واحدة، وعبارة «وطرح فيدان اجتماعاً محتملاً» متكلفة. الجملة الثانية في صندوق «لماذا يهمّ» تضيف حداً مفيداً لا يكرر الخاتمة، أما الأولى فتلخّص الوقائع بجزم زائد.",
+              "repair": "إعادة صياغة الجملتين كما في قائمة الملاحظات، وتعديل الجملة الأولى في الصندوق لتصف تعارض الترسيمين دون علاقة شرطية."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والتواريخ صحيحة: مذكرة 2019، واتفاقية 2020، وتصديق الثلاثاء، ورفض الأربعاء، ولقاء الجمعة، واتفاقية 1982. لكن رفض عبد العاطي القاطع يُنسب إلى بيان الخارجية خلافاً للمصدر 3، والإدانة الشديدة تُلحق بتاريخ الأربعاء دون سند.",
+              "repair": "نسبة تجديد الرفض إلى محادثات الجمعة، وحصر ما يرد في البيان بما نقله المصدر 3، وفصل الإدانة عن تاريخ الأربعاء."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والمقدمة يميّزان بين العرض التركي لاتفاق جديد مع مصر ومذكرة 2019 القائمة مع ليبيا. لكن عبارة «تبحث الاتفاق مع القاهرة» تعيد الخلط بين الاتفاقين، فيبدو أن أنقرة تتفاوض فعلاً على الترسيم الجديد، والمصدر 3 يتحدث عن مناقشة المذكرة الليبية.",
+              "repair": "«أما فيدان فقال إن أنقرة تناقش مع القاهرة مذكرتها البحرية مع ليبيا»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السياق المطلوب أضيف: اجتماعات إسطنبول وحضور إيطاليا، والاتفاق المصري اليوناني لعام 2020، وانقسام السلطات الليبية، وتقديم هريدي وعبد الفتاح بصفتيهما. صندوق «لماذا يهمّ» يبني على مقدمات مسندة (العرض التركي، والرفض المصري المحتكم إلى قانون البحار، والتشاور المصري اليوناني، والنزاع على حقوق التنقيب) ويستنتج منها حداً مشروطاً بعبارة «ما دام». لكن ورود «حكومة السراج» دون ربطها بـ«حكومة الوحدة الوطنية» التي قيل إنها أبرمت المذكرة يترك القارئ أمام جهتين غير مفسرتين.",
+              "repair": "ربط اسم السراج بحكومة طرابلس التي أبرمت المذكرة عند أول ذكر، اعتماداً على المصدرين 2 و3 فقط."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "التدرج واضح: المصادقة ورد الفعل، ثم العرض التركي، فالخلفية، فمحادثات إسطنبول والخطوات المقبلة، فالقراءة القانونية. الصندوق لا يكرر الخاتمة. لكن فقرة الخلفية تعيد معنى «رفضت سلطات الشرق... إقرارها» في جملة «ورفض مجلس النواب المذكرة عند توقيعها»، ويحسن أيضاً تسمية «الترسيمان المتعارضان» في الصندوق صراحة لتوضيح المرجع.",
+              "repair": "دمج جملتي الرفض الليبي في جملة واحدة. وفي الصندوق يمكن كتابة «ما دامت المذكرة التركية الليبية والاتفاق المصري اليوناني قائمين» دون تغيير الاستنتاج."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "التواريخ والأرقام مطابقة للمصادر: تصديق الثلاثاء، ورفض الأربعاء، ولقاء الجمعة، ومذكرة 2019، واتفاقية 2020، واتفاقية 1982. الاقتباس من غولر حرفي، والإدانة مفصولة عن تاريخ الأربعاء. لكن «وأثارت حفيظة الاتحاد الأوروبي» تنسب، من جهة النحو، إغضاب الاتحاد إلى مصر واليونان وقبرص بدلاً من المصادقة كما في المصدر 1.",
+              "repair": "«كما أثارت المصادقة حفيظة الاتحاد الأوروبي ولا سيما إيطاليا»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 8,
+      "mendIssues": [
+        "إحالة ملتبسة في الفقرة الأولى: «فانتقدت مصر واليونان وقبرص المصادقة بحدة، وأثارت حفيظة الاتحاد الأوروبي ولا سيما إيطاليا». بهذه الصياغة يعود فاعل «أثارت» إلى مصر واليونان وقبرص، فيبدو أن هذه الدول هي التي أغضبت الاتحاد الأوروبي. المصدر 1 يقول إن المصادقة هي التي «أثارت حفيظة الاتحاد الأوروبي ولا سيما إيطاليا واليونان». الإصلاح: «فانتقدت مصر واليونان وقبرص المصادقة بحدة، كما أثارت المصادقة حفيظة الاتحاد الأوروبي ولا سيما إيطاليا».",
+        "مرجع غامض: «أما فيدان فأوضح أن أنقرة تبحث الاتفاق مع القاهرة». الجملة تأتي مباشرة بعد عرض غولر توقيع اتفاق جديد مع مصر، فيفهم القارئ أن المقصود هو الاتفاق المقترح. لكن المصدر 3 يقول إن أنقرة «تناقش مع مصر اتفاق ترسيم الحدود البحرية الذي وقعته مع ليبيا عام 2019». الإصلاح: «أما فيدان فقال إن أنقرة تناقش مع القاهرة مذكرتها البحرية مع ليبيا، ووصف موقف بلاده في هذا الملف بأنه بنّاء للغاية».",
+        "تسمية غير منسجمة تربك القارئ. الخلفية تقول إن «حكومة الوحدة الوطنية الليبية» هي التي أبرمت المذكرة عام 2019 (المصدر 3). ثم تظهر فجأة في فقرة عبد الفتاح «حكومة السراج» (المصدر 2)، دون أي توضيح لعلاقتها بالحكومة التي أبرمت الاتفاق. الإصلاح: الربط بين الاسمين عند أول ذكر، مثلاً «غياب الشرعية الدستورية لحكومة طرابلس التي أبرمت المذكرة، وكانت يومها برئاسة السراج»، دون إضافة أي اسم أو صفة من خارج المصادر.",
+        "تكرار في المعنى بفقرة «خلاف قديم»: «بينما رفضت سلطات الشرق بقيادة خليفة حفتر إقرارها سنوات. ورفض مجلس النواب المذكرة عند توقيعها أول مرة، قبل أن يصادق عليها هذا الأسبوع». الجملتان تكرران الفكرة نفسها، كما أن المصادقة وردت في الفقرة الأولى. الإصلاح: دمجهما في جملة واحدة: «وامتنعت سلطات الشرق بقيادة خليفة حفتر سنوات عن إقرارها، إذ رفضها مجلس النواب عند توقيعها أول مرة» (المصدران 1 و3).",
+        "العنوان والمقدمة يميّزان بين العرض التركي لاتفاق جديد مع مصر ومذكرة 2019 القائمة مع ليبيا. لكن عبارة «تبحث الاتفاق مع القاهرة» تعيد الخلط بين الاتفاقين، فيبدو أن أنقرة تتفاوض فعلاً على الترسيم الجديد، والمصدر 3 يتحدث عن مناقشة المذكرة الليبية. — «أما فيدان فقال إن أنقرة تناقش مع القاهرة مذكرتها البحرية مع ليبيا».",
+        "السياق المطلوب أضيف: اجتماعات إسطنبول وحضور إيطاليا، والاتفاق المصري اليوناني لعام 2020، وانقسام السلطات الليبية، وتقديم هريدي وعبد الفتاح بصفتيهما. صندوق «لماذا يهمّ» يبني على مقدمات مسندة (العرض التركي، والرفض المصري المحتكم إلى قانون البحار، والتشاور المصري اليوناني، والنزاع على حقوق التنقيب) ويستنتج منها حداً مشروطاً بعبارة «ما دام». لكن ورود «حكومة السراج» دون ربطها بـ«حكومة الوحدة الوطنية» التي قيل إنها أبرمت المذكرة يترك القارئ أمام جهتين غير مفسرتين. — ربط اسم السراج بحكومة طرابلس التي أبرمت المذكرة عند أول ذكر، اعتماداً على المصدرين 2 و3 فقط.",
+        "التدرج واضح: المصادقة ورد الفعل، ثم العرض التركي، فالخلفية، فمحادثات إسطنبول والخطوات المقبلة، فالقراءة القانونية. الصندوق لا يكرر الخاتمة. لكن فقرة الخلفية تعيد معنى «رفضت سلطات الشرق... إقرارها» في جملة «ورفض مجلس النواب المذكرة عند توقيعها»، ويحسن أيضاً تسمية «الترسيمان المتعارضان» في الصندوق صراحة لتوضيح المرجع. — دمج جملتي الرفض الليبي في جملة واحدة. وفي الصندوق يمكن كتابة «ما دامت المذكرة التركية الليبية والاتفاق المصري اليوناني قائمين» دون تغيير الاستنتاج.",
+        "التواريخ والأرقام مطابقة للمصادر: تصديق الثلاثاء، ورفض الأربعاء، ولقاء الجمعة، ومذكرة 2019، واتفاقية 2020، واتفاقية 1982. الاقتباس من غولر حرفي، والإدانة مفصولة عن تاريخ الأربعاء. لكن «وأثارت حفيظة الاتحاد الأوروبي» تنسب، من جهة النحو، إغضاب الاتحاد إلى مصر واليونان وقبرص بدلاً من المصادقة كما في المصدر 1. — «كما أثارت المصادقة حفيظة الاتحاد الأوروبي ولا سيما إيطاليا»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قال وزير الدفاع التركي إن بلاده مستعدة لإبرام اتفاق مع مصر يرسم مناطق الولاية البحرية في شرق المتوسط",
+          "source": 1
+        },
+        {
+          "fact": "النزاع يدور حول مطالبات متعارضة بالسيادة على مناطق بحرية وحقوق استكشاف موارد الطاقة والتنقيب عنها",
+          "source": 3
+        },
+        {
+          "fact": "مصر ترفض قطعياً التصديق على المذكرة الليبية التركية وتطالب باحترام اتفاقية قانون البحار لعام 1982",
+          "source": 3
+        },
+        {
+          "fact": "القاهرة وأثينا اتفقتا على مواصلة المشاورات لتوسيع نطاق اتفاقية ترسيم المنطقتين الاقتصاديتين الموقعة عام 2020",
+          "source": 2
+        }
+      ],
+      "slug": "turkey-ready-maritime-deal-with-egypt-b8b731",
+      "title": "تركيا تبدي استعدادها لترسيم حدودها البحرية مع مصر في شرق المتوسط",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "أسعار الشركات الأمريكية ترتفع بأسرع وتيرة منذ 2022 قبل قرار الفيدرالي",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://aawsat.com/node/5332793",
+        "https://www.bloomberg.com/news/articles/2026-10-23/us-business-activity-expands-prices-surge-by-most-since-2022"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يوضحان ما تغيّر: تسارع رفع الأسعار مع تباطؤ طفيف في النمو. والمسودة لا تقدّم التباطؤ على أنه انكماش، لأنها تشرح أن القراءة فوق 50 تعني نمواً. كما تتبع المسودة SOURCE 1 في أن التوظيف تراجع إجمالاً، لا عبارة Bloomberg العامة عن ارتفاعه.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المقارنات التي تجعل الحدث مفهوماً غائبة: 57.6 مقابل 58.4، و59.8 بوصفها الأعلى منذ أغسطس 2022، و58.2 للطلبات الجديدة، و38.1 لأوقات التسليم، وتراجع أسعار المدخلات إلى 64.9. ويُعرَّف ويليامسون بصفته ومؤسسته تعريفاً سليماً. أما مقدّمات «لماذا يهمّ» فصحيحة في الطلب والتمرير، لكن القول إن الاختناقات «ترفع» التكاليف يتجاوز مؤشر المدخلات المتراجع.",
+              "repair": "إدراج القراءات ومقارناتها من SOURCE 1 بجانب الوقائع التي تفسّرها، وتقييد صيغة الاستنتاج في «لماذا يهمّ» إلى «تُبقي التكاليف مرتفعة»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "قسم «الأسعار وسلاسل الإمداد» يتحدث عن رفع الأسعار وتراجع أوقات التسليم دون رقم واحد، فيبدو وصفاً لا تقريراً. وتأتي فقرتا نمو الربع الثالث وصدمة النفط في الذيل بلا موعد بيانات الناتج المحلي الذي يربطهما بما يأتي. صندوق «لماذا يهمّ» يضيف استنتاجاً مستقلاً عن الضغط المزدوج وعن إنفاق المستهلكين حتى ديسمبر، ولا يكرر المتن حرفياً.",
+              "repair": "ربط فقرة الربع الثالث بصدور التقدير الأولي الأسبوع المقبل وتوقع نمو بنحو 3%، ووضع أرقام الأسعار والتسليم في قسمها."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «رفع الاحتياطي الفيدرالي الفائدة في سبتمبر» تفقد المقدار والنطاق (25 نقطة أساس إلى 3.75-4%). ولا يُذكر أن كل الأرقام قراءات أولية إلا في المقدمة. كما أن key_facts تعرض قراءة سبتمبر دون قراءة أكتوبر، وهي موضوع الخبر.",
+              "repair": "ذكر 25 نقطة أساس والنطاق 3.75-4%، وإضافة قراءة أكتوبر 57.6 ومؤشر الأسعار 59.8 إلى key_facts بوصفهما قراءتين أوليتين."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي والمقدمة تقرأ معاً بوضوح. ما تغير: أسعار البيع تسجل أعلى قراءة منذ أغسطس 2022، والمؤشر المركب يتراجع إلى 57.6. وما لم يتغير: النشاط ما زال في منطقة النمو والطلبات الجديدة في ذروة منذ مارس 2022. والمقدمة تنص على أن القراءة أولية.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "المحرك (قوة الطلب ومعه بناء المخزونات والصادرات) يأتي قرب الرقم الذي يفسره. ويُعرَّف ويليامسون بصفته ومؤسسته. وتحضر الخلفية: بيانات الأسعار في سبتمبر، ورفع الفائدة 25 نقطة أساس إلى 3.75-4%، وعوامل الصمود رغم صدمة النفط. وفي «لماذا يهمّ» مقدّمات مسنودة: طلبات جديدة عند 58.2، وتمرير التكاليف بحسب ويليامسون، وتراجع أسعار المدخلات مع بقائها مرتفعة. والاستنتاج المشروط عن بقاء التضخم مرتفعاً ما لم يتباطأ الإنفاق متناسب، ولا يكرر خاتمة المتن.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات مجمعة حسب وظيفتها: النشاط، ثم الطلب، ثم الأسعار والمدخلات والتسليم، ثم التوظيف، ثم الفيدرالي والنمو. لكن الفقرة الأولى تبني استنتاجها على رابط منطقي خاطئ: «وبما أن أي قراءة فوق 50 نقطة تدل على نمو القطاع الخاص، فقد بقي النشاط... قريباً من أعلى مستوياته».",
+              "repair": "فصل المعلومتين: «وتدل أي قراءة فوق 50 نقطة على نمو النشاط، وبقيت قراءة أكتوبر قريبة من ذروة سبتمبر»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والتواريخ كلها مطابقة لـ SOURCE 1، لكن صيغة «تراكم الطلبات زاد اختناقات الإمداد سوءاً» تحوّل تزامناً إلى سببية، وعبارة «تكديس الشركات للمخزونات» تضيف فاعلاً لم يحدده المصدر.",
+              "repair": "«اختناقات الإمداد تفاقمت في وقت تتزايد فيه الطلبات المتراكمة»، و«بناء المخزونات تحسباً لاضطرابات محتملة»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 5,
+      "mendIssues": [
+        "خطأ في العلاقة السببية بتصريح ويليامسون (SOURCE 1): تقول المسودة «وإن تراكم الطلبات زاد اختناقات الإمداد سوءاً». أما المصدر فيذكر أمرين متزامنين لا سبباً ونتيجة: «اختناقات سلاسل الإمداد تفاقمت، في وقت تتزايد فيه الطلبات المتراكمة، ما يمنح الشركات قدرة أكبر على تمرير التكاليف». الإصلاح: «وإن اختناقات الإمداد تفاقمت في وقت تتزايد فيه الطلبات المتراكمة، وهو ما يتيح للشركات تحميل المستهلكين قدراً أكبر من التكاليف المرتفعة».",
+        "ربط سببي لا تسنده المصادر: «وبما أن أي قراءة فوق 50 نقطة تدل على نمو القطاع الخاص، فقد بقي النشاط رغم هذا التباطؤ قريباً من أعلى مستوياته في سنوات». تجاوز المؤشر حاجز 50 يعني أن النشاط ينمو، ولا يعني أنه قريب من أعلى مستوياته. القرب من أعلى مستوى في سنوات معلومة يوردها SOURCE 2، وأساسها مقارنة 57.6 بقمة سبتمبر (58.4، الأعلى في خمس سنوات، SOURCE 1). الإصلاح: «وتدل أي قراءة فوق 50 نقطة على نمو نشاط القطاع الخاص، أي أن النشاط ما زال يتوسع وإن بوتيرة أبطأ قليلاً، وبقي قريباً من ذروة سبتمبر».",
+        "دقة في الفاعل (SOURCE 1): «التي دعمها جزئياً تكديس الشركات للمخزونات». يقول المصدر إن الطلب المحلي «تعزّز جزئياً بفعل بناء المخزونات تحسباً لاضطرابات محتملة» ولا يحدد من يبني المخزونات. الإصلاح: «التي دعمها جزئياً بناء المخزونات تحسباً لاضطرابات محتملة».",
+        "الفقرات مجمعة حسب وظيفتها: النشاط، ثم الطلب، ثم الأسعار والمدخلات والتسليم، ثم التوظيف، ثم الفيدرالي والنمو. لكن الفقرة الأولى تبني استنتاجها على رابط منطقي خاطئ: «وبما أن أي قراءة فوق 50 نقطة تدل على نمو القطاع الخاص، فقد بقي النشاط... قريباً من أعلى مستوياته». — فصل المعلومتين: «وتدل أي قراءة فوق 50 نقطة على نمو النشاط، وبقيت قراءة أكتوبر قريبة من ذروة سبتمبر».",
+        "الأرقام والتواريخ كلها مطابقة لـ SOURCE 1، لكن صيغة «تراكم الطلبات زاد اختناقات الإمداد سوءاً» تحوّل تزامناً إلى سببية، وعبارة «تكديس الشركات للمخزونات» تضيف فاعلاً لم يحدده المصدر. — «اختناقات الإمداد تفاقمت في وقت تتزايد فيه الطلبات المتراكمة»، و«بناء المخزونات تحسباً لاضطرابات محتملة»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "مؤشر الطلبات الجديدة ارتفع إلى 58.2 نقطة في أكتوبر، أعلى مستوى منذ مارس 2022، ومؤشر أسعار الإنتاج إلى 59.8 نقطة، أعلى قراءة منذ أغسطس 2022",
+          "source": 1
+        },
+        {
+          "fact": "ويليامسون: اختناقات الإمداد تفاقمت في وقت تتزايد فيه الطلبات المتراكمة، والظروف تمنح الشركات قدرة أكبر على نقل التكاليف المرتفعة إلى المستهلكين",
+          "source": 1
+        },
+        {
+          "fact": "مؤشر أسعار المدخلات تراجع إلى 64.9 نقطة من 65.9 لكنه بقي عند مستوى مرتفع",
+          "source": 1
+        },
+        {
+          "fact": "اقتصاديون حذّروا من أن التبعات التضخمية للصراع المطول في الشرق الأوسط قد تبطئ إنفاق المستهلكين خلال الربع الحالي",
+          "source": 1
+        }
+      ],
+      "slug": "us-business-prices-fastest-since-2022-4bd763",
+      "title": "الشركات الأمريكية ترفع أسعارها بأسرع وتيرة منذ 2022 قبل قرار الفيدرالي",
+      "score": 8,
+      "image": "photo"
+    }
+  ],
+  "llm": {
+    "calls": 62,
+    "failures": 4,
+    "promptTokens": 902105,
+    "completionTokens": 212167,
+    "cacheReadTokens": 259507,
+    "costUsd": 9.4355,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 62
+    }
+  },
+  "log": [
+    "[22:01:06] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=22928",
+    "[22:01:06] desk: body accepted on the second try",
+    "[22:01:06] desk model=claude-cli/claude-opus-5-5 applied=[whyItMatters,body] rejected=[]",
+    "[22:01:06] desk \"الشركات الأمريكية ترفع أسعارها بأسرع وتيرة منذ 2022 قبل قرار الفيدرالي\": rewrote whyItMatters, body",
+    "[22:01:06] last desk pass: clean",
+    "[22:01:48] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=41914",
+    "[22:01:48] critic (second pass) \"الشركات الأمريكية ترفع أسعارها بأسرع وتيرة منذ 2022 قبل قرار الفيدرالي\": revise score=8 issues=5",
+    "[22:02:20] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=32549",
+    "[22:03:09] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=49355",
+    "[22:03:09] desk model=claude-cli/claude-opus-5-5 applied=[whyItMatters,body] rejected=[]",
+    "[22:03:09] desk \"الشركات الأمريكية ترفع أسعارها بأسرع وتيرة منذ 2022 قبل قرار الفيدرالي\": rewrote whyItMatters, body",
+    "[22:03:09] mended \"الشركات الأمريكية ترفع أسعارها بأسرع وتيرة منذ 2022 قبل قرار الفيدرالي\": the second pass's 5 finding(s) sent back once more",
+    "[22:03:57] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=47122",
+    "[22:03:57] precheck \"الشركات الأمريكية ترفع أسعارها بأسرع وتيرة منذ 2022 قبل قرار الفيدرالي\": clean",
+    "[22:04:03] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6584",
+    "[22:04:03] image: the picture should say: American businesses are passing rising costs on to their customers as demand stays strong.",
+    "[22:04:07] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4023",
+    "[22:04:07] image: the source's photograph (Asharq Al-Awsat) shows Workers sit at sewing machines among racks of denim garments on the floor of a large American apparel factory.; searching garment factory workers United States | denim factory sewing machines | US factory floor workers | apparel manufacturing plant Los Angeles",
+    "[22:04:07] image: tier 2, like the sources' own photograph: garment factory workers United States | denim factory sewing machines | US factory floor workers | apparel manufacturing plant Los Angeles",
+    "[22:04:08] commons \"garment factory workers United States\": 8 usable of 20",
+    "[22:04:08] image: dropped \"Garment Workers on strike, ca 1913.jpg\" — dated 1913, an archival picture",
+    "[22:04:08] image: dropped \"Manzanar Relocation Center, Manzanar, California. Bert Miura, former g\" — dated 1943, an archival picture",
+    "[22:04:08] image: dropped \"Group of employees and several small boys in the littered alley entran\" — dated 1921, an archival picture",
+    "[22:04:08] image: dropped \"Bertram L. Podell visits ILGWU workers in their Brooklyn factory to ce\" — an event's photograph, people and banners",
+    "[22:04:08] image: dropped \"Industries of War - Uniforms - Overcoats - MAKING COATS FOR SOLIDERS. \" — dated 1917, an archival picture",
+    "[22:04:08] image: dropped \"Seamstresses at their stations in the Consolidated Garment Company sew\" — names too little of garment, factory, workers",
+    "[22:04:08] image: dropped \"Fola La Follette, Rose Livingston and unidentified striker.jpg\" — names too little of garment, factory, workers",
+    "[22:04:09] pexels \"garment factory workers United States\": 8 usable",
+    "[22:04:28] openverse \"garment factory workers United States\": The operation was aborted due to timeout",
+    "[22:04:29] commons \"denim factory sewing machines\": 0 usable of 0",
+    "[22:04:30] commons \"denim factory\": 13 usable of 16",
+    "[22:04:30] pexels \"denim factory sewing machines\": 8 usable",
+    "[22:04:50] openverse \"denim factory sewing machines\": The operation was aborted due to timeout",
+    "[22:04:51] commons \"US factory floor workers\": 6 usable of 20",
+    "[22:04:51] image: dropped \"SLNSW 12879 General view of the factory floor.jpg\" — dated 1941, an archival picture",
+    "[22:04:51] image: dropped \"Guiseppe Zapell (?), 102 Common Street, regular job as a doffer on the\" — dated 1911, an archival picture",
+    "[22:04:51] image: dropped \"A worker sprays protective (9605228043).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:04:51] image: dropped \"Interior of the Triangle Waist Company shop in the Asch Building 9th f\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:04:51] image: dropped \"Interior view of the tenth-floor work area in the Asch Building after \" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:04:51] pexels \"US factory floor workers\": 8 usable",
+    "[22:05:11] openverse \"US factory floor workers\": The operation was aborted due to timeout",
+    "[22:05:11] commons \"apparel manufacturing plant Los Angeles\": 0 usable of 0",
+    "[22:05:13] commons \"apparel manufacturing\": 5 usable of 20",
+    "[22:05:13] image: dropped \"Flickr - infomatique - American Apparel.jpg\" — names too little of apparel, manufacturing, plant",
+    "[22:05:13] image: dropped \"CBP Detains Shipment of Chinese Apparel Suspected to be Made with Forc\" — names too little of apparel, manufacturing, plant",
+    "[22:05:13] image: dropped \"CBP Detains Shipment of Chinese Apparel Suspected to be Made with Forc\" — names too little of apparel, manufacturing, plant",
+    "[22:05:13] image: dropped \"CBP Detains Shipment of Chinese Apparel Suspected to be Made with Forc\" — names too little of apparel, manufacturing, plant",
+    "[22:05:13] image: dropped \"Saloon and Stillwater Manufacturing Company, Stillwater, Minnesota - D\" — names too little of apparel, manufacturing, plant",
+    "[22:05:13] pexels \"apparel manufacturing plant Los Angeles\": 8 usable",
+    "[22:05:21] openverse \"apparel manufacturing plant Los Angeles\": 0 usable of 0",
+    "[22:05:21] image: dropped \"A woman operating machinery in a factory, wearing a safety mask for pr\" — names too little of apparel, manufacturing, plant",
+    "[22:05:21] image: dropped \"Drone view of Los Angeles showcasing railroads, river channel, and ind\" — names too little of apparel, manufacturing, plant",
+    "[22:05:21] image: dropped \"A female worker in a factory setting using a sewing machine for textil\" — names too little of apparel, manufacturing, plant",
+    "[22:05:21] image: dropped \"A dedicated worker operates machinery in a busy textile factory, showc\" — names too little of apparel, manufacturing, plant",
+    "[22:05:21] image: dropped \"Textile factory worker sewing fabric using Juki machine in industrial \" — names too little of apparel, manufacturing, plant",
+    "[22:05:21] image: dropped \"Indian woman working efficiently in a textile factory, sewing fabrics.\" — names too little of apparel, manufacturing, plant",
+    "[22:05:21] image: 14 likeness(es) set aside for the country's own photographs",
+    "[22:05:25] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3172",
+    "[22:05:25] image: vision rejected all candidates (The only candidate shows USAID-funded garment trainees in Port-au-Prince, Haiti (2011). That is the wrong country for a story about US business activity and prices. It is also a vocational class, not American firms passing costs to customers, and it is dated.)",
+    "[22:05:25] image: tier 3, the writer's own subjects: factory workers assembly line | shopping mall customers | container port loading",
+    "[22:05:25] commons \"factory workers assembly line 2026\": 0 usable of 5",
+    "[22:05:26] commons \"factory workers assembly line\": 3 usable of 12",
+    "[22:05:26] image: dropped \"Experienced assembly line workers of both sexes contribute to the prod\" — dated 1942, an archival picture",
+    "[22:05:26] image: dropped \"Flower in hair, Betty Gumbetter adds glamour to the assembly line 8b07\" — dated 1942, an archival picture",
+    "[22:05:26] image: dropped \"Airacobra P39 Assembly LOC 02902u.jpg\" — dated 1940, an archival picture",
+    "[22:05:27] commons \"shopping mall customers 2026\": 7 usable of 7",
+    "[22:05:27] commons \"shopping mall customers\": 12 usable of 12",
+    "[22:05:27] image: dropped \"DFC 3498 A bright welcoming Otteri wash dry laundromat at night with c\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:05:27] image: dropped \"Whites of Kent in Court Street, Faversham.jpg\" — names too little of shopping, mall, customers",
+    "[22:05:27] image: dropped \"Shopping malls فروشگاه هایکشور امارات، منطقه دبی 12.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:05:27] image: dropped \"Shopping malls فروشگاه هایکشور امارات، منطقه دبی 13.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:05:27] image: dropped \"Shopping malls فروشگاه هایکشور امارات، منطقه دبی 05.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:05:28] commons \"container port loading 2026\": 1 usable of 2",
+    "[22:05:29] commons \"container port loading\": 4 usable of 12",
+    "[22:05:29] image: dropped \"Subic Bay SPOD RSOI (9691433).jpg\" — names too little of container, port, loading",
+    "[22:05:29] image: dropped \"Mix Street mall in Daxin Road Pedestrian Street.jpg\" — taken in China, which the story does not name",
+    "[22:05:29] image: dropped \"Weekend trip to Nanaimo - BC Ferries from Duke Point to Tswassen - Rob\" — taken in Canada, which the story does not name",
+    "[22:05:29] image: dropped \"Container Crane Mainz Port I.jpg\" — taken in Germany, which the story does not name",
+    "[22:05:29] image: dropped \"Container handling--6103【 Pictures taken in Japan 】.jpg\" — taken in Japan, which the story does not name",
+    "[22:05:34] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4920",
+    "[22:05:34] image: vision rejected all candidates (Both candidates are staged stock shots of the same model posing and smiling for the camera in an IKEA store. Each is a close-up of a private individual and a posed stock cliché. Nothing places either in the US or shows prices being raised, so neither meets the publication standard.)",
+    "[22:05:34] image: tier 4, the story's point and its subject: grocery prices United States | supermarket checkout shoppers | factory workers assembly line | supermarket shoppers United States | factory floor United States | grocery store prices (home: United States, USA, American, California, Texas)",
+    "[22:05:35] commons \"grocery prices United States\": 14 usable of 24",
+    "[22:05:35] image: dropped \"Site of Price Chopper from Congress Street in Cohoes, New York.jpg\" — an event's photograph, people and banners",
+    "[22:05:35] image: dropped \"RATIONING SAFEGUARDS YOUR SHARE - NARA - 515277.jpg\" — dated 1941, an archival picture",
+    "[22:05:35] image: dropped \"Canned goods in a U.S. Coal and Coke company store in Gary, West Virgi\" — names too little of grocery, prices",
+    "[22:05:35] pexels \"grocery prices United States\": 8 usable",
+    "[22:05:55] openverse \"grocery prices United States\": The operation was aborted due to timeout",
+    "[22:05:55] image: dropped \"Colorful array of fruits at Seattle market, showcasing local produce a\" — names too little of grocery, prices",
+    "[22:05:55] image: dropped \"Vibrant assortment of fruits including oranges, plantains, and yuca at\" — names too little of grocery, prices",
+    "[22:05:55] image: dropped \"Variety of eggs for sale in a supermarket in Tarneit, Victoria, Austra\" — names too little of grocery, prices",
+    "[22:05:55] image: dropped \"Crop anonymous woman in casual outfit with little kid buying vegetable\" — names too little of grocery, prices",
+    "[22:05:56] commons \"supermarket checkout shoppers\": 11 usable of 24",
+    "[22:05:56] image: dropped \"Mini grocery toy pushcart.jpg\" — names too little of supermarket, checkout, shoppers",
+    "[22:05:56] image: dropped \"Shopping cart of Prisma shop.JPG\" — names too little of supermarket, checkout, shoppers",
+    "[22:05:56] image: dropped \"VW I.D. Buggy Genf 2019 1Y7A5934.jpg\" — names too little of supermarket, checkout, shoppers",
+    "[22:05:56] image: dropped \"Shopping cart shelters by Carrefour in Tomaszów Mazowiecki, Pope John \" — names too little of supermarket, checkout, shoppers",
+    "[22:05:56] image: dropped \"Line of shopping carts.jpg\" — names too little of supermarket, checkout, shoppers",
+    "[22:05:56] image: dropped \"A shopping cart full of goods and a bicycle under an overpass..jpg\" — names too little of supermarket, checkout, shoppers",
+    "[22:05:56] image: dropped \"Abandoned shopping cart.jpg\" — names too little of supermarket, checkout, shoppers",
+    "[22:05:56] image: dropped \"Xinyihua shopping cart.jpg\" — names too little of supermarket, checkout, shoppers",
+    "[22:05:56] image: dropped \"Shopping carts Tegut Tauberbischofsheim.jpg\" — names too little of supermarket, checkout, shoppers",
+    "[22:05:56] pexels \"supermarket checkout shoppers\": 8 usable",
+    "[22:06:16] openverse \"supermarket checkout shoppers\": The operation was aborted due to timeout",
+    "[22:06:16] image: dropped \"Two people making a cashless payment at a grocery store with a credit \" — names too little of supermarket, checkout, shoppers",
+    "[22:06:16] image: dropped \"Young woman wearing a mask shops in a modern grocery store with a bask\" — names too little of supermarket, checkout, shoppers",
+    "[22:06:16] image: dropped \"A woman wearing a mask shops for groceries using her smartphone in a f\" — names too little of supermarket, checkout, shoppers",
+    "[22:06:16] commons \"factory workers assembly line\": 8 usable of 24",
+    "[22:06:16] image: dropped \"Experienced assembly line workers of both sexes contribute to the prod\" — dated 1942, an archival picture",
+    "[22:06:16] image: dropped \"Flower in hair, Betty Gumbetter adds glamour to the assembly line 8b07\" — dated 1942, an archival picture",
+    "[22:06:16] image: dropped \"Airacobra P39 Assembly LOC 02902u.jpg\" — dated 1940, an archival picture",
+    "[22:06:16] image: dropped \"Metal parts are placed on masonite by this woman employee before they \" — dated 1942, an archival picture",
+    "[22:06:16] image: dropped \"Woman working on an airplane motor at North American Aviation, Inc., p\" — dated 1942, an archival picture",
+    "[22:06:16] image: dropped \"Canadian forest industries 1905-1906 (1906) (20338568119).jpg\" — names too little of factory, workers, assembly, line",
+    "[22:06:16] image: dropped \"Airplane Cloth Room, Pepperell Manufacturing Company (11179238556).jpg\" — names too little of factory, workers, assembly, line",
+    "[22:06:16] image: dropped \"AEMC Summit (11343379864).jpg\" — an event's photograph, people and banners",
+    "[22:06:17] pexels \"factory workers assembly line\": 8 usable",
+    "[22:06:36] openverse \"factory workers assembly line\": The operation was aborted due to timeout",
+    "[22:06:36] image: dropped \"Woman in blue uniform handling textiles in a modern industrial factory\" — names too little of factory, workers, assembly, line",
+    "[22:06:36] image: dropped \"A worker operates machinery in a modern textile manufacturing facility\" — names too little of factory, workers, assembly, line",
+    "[22:06:37] commons \"supermarket shoppers United States\": 15 usable of 24",
+    "[22:06:37] image: dropped \"ShopRite in Piscataway 37.jpg\" — names too little of supermarket, shoppers",
+    "[22:06:37] image: dropped \"ShopRite in Piscataway 31.jpg\" — names too little of supermarket, shoppers",
+    "[22:06:37] image: dropped \"ShopRite in Piscataway 22.jpg\" — names too little of supermarket, shoppers",
+    "[22:06:37] image: dropped \"ShopRite in Piscataway 13.jpg\" — names too little of supermarket, shoppers",
+    "[22:06:37] image: dropped \"ShopRite in Piscataway 04.jpg\" — names too little of supermarket, shoppers",
+    "[22:06:37] image: dropped \"ShopRite in Piscataway 23.jpg\" — names too little of supermarket, shoppers",
+    "[22:06:38] commons \"factory floor United States\": 7 usable of 24",
+    "[22:06:38] image: dropped \"FMIB 44478 Main Floor of Factory Showing some of HenryIron ChinksPhoto\" — dated 1909, an archival picture",
+    "[22:06:38] image: dropped \"Men on Factory Floor - DPLA - 19cfbc6875d7f7c4645219fdabb551cb.jpg\" — dated 1943, an archival picture",
+    "[22:06:38] image: dropped \"FMIB 44479 In the Assembling Department on the Upper Floor of the New \" — dated 1909, an archival picture",
+    "[22:06:38] image: dropped \"SLNSW 12879 General view of the factory floor.jpg\" — dated 1941, an archival picture",
+    "[22:06:39] pexels \"factory floor United States\": 8 usable",
+    "[22:06:58] openverse \"factory floor United States\": The operation was aborted due to timeout",
+    "[22:06:58] image: dropped \"Interior view of a deserted industrial building featuring vibrant graf\" — names too little of factory, floor",
+    "[22:06:58] image: dropped \"Interior view of a busy warehouse with forklifts and workers handling \" — names too little of factory, floor",
+    "[22:06:59] commons \"grocery store prices\": 16 usable of 24",
+    "[22:06:59] image: dropped \"Costco Wholesale Club.jpg\" — names too little of grocery, store, prices",
+    "[22:06:59] image: dropped \"Side dishes for meals for sale at grocery store in rural Japan in 2000\" — dated 2000, an archival picture",
+    "[22:06:59] image: dropped \"Usego Cash and Carry 1964.jpg\" — names too little of grocery, store, prices",
+    "[22:06:59] image: dropped \"Halva mini bars at supermarket checkout (cropped).jpg\" — taken in Germany, which the story does not name",
+    "[22:06:59] image: dropped \"Grocery store in Palermo, Sicily, Italy (9455641633).jpg\" — taken in Italy, which the story does not name",
+    "[22:07:09] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=9161",
+    "[22:07:09] image: \"\"wow\" price tag.jpg\" names the story's topic without saying its point (The only US-placed candidate on point: 2025 price tags in a Vermont grocery store illustrate the prices theme. The promo 'WOW' tags show prices, not businesses ); checked now and kept in reserve while the desk looks further",
+    "[22:07:17] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=8367",
+    "[22:07:17] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"\"wow\" price tag.jpg\": A sharp, professional close-up of real price tags in a US grocery store illustrates rising American prices and places th",
+    "[22:07:24] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5743",
+    "[22:07:24] image: \"Workers in a textile factory operating sewing machines and o\" names the story's topic without saying its point; the desk already holds one such, and looks further",
+    "[22:07:24] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"\"wow\" price tag.jpg\"",
+    "[22:07:24] published \"الشركات الأمريكية ترفع أسعارها بأسرع وتيرة منذ 2022 قبل قرار الفيدرالي\" -> us-business-prices-fastest-since-2022-4bd763"
+  ]
+}

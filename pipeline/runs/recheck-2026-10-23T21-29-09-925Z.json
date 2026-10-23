@@ -1,0 +1,71 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-23T21:29:09.925Z",
+  "durationSec": 63,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "uae-pledges-17-billion-investment-greece-fc3cb8",
+      "title": "الإمارات تتعهد باستثمارات إضافية بنحو 17 مليار دولار في اليونان",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 27,
+        "checked": 27,
+        "supported": 24,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "gold-weekly-loss-dips-below-4000-14694e",
+      "title": "الذهب يتجه إلى أكبر خسارة أسبوعية منذ 4 أشهر مع موجة بيع في الأسهم",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 27,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 2,
+    "failures": 0,
+    "promptTokens": 15773,
+    "completionTokens": 13422,
+    "cacheReadTokens": 0,
+    "costUsd": 0.3946,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 2
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[21:29:10] second look: 2 to read now (2 published pieces not yet read; 106 read clean before publication and left out of the audit sample)",
+    "[21:29:10] gold-weekly-loss-dips-below-4000-14694e:   source https://www.ft.com/content/5a6e15e9-249d-4d59-a140-c51302930a9f?syn-25a6b1a6=1: http-403; read from the copy saved at publication (fetched then)",
+    "[21:29:57] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=43483",
+    "[21:29:57] uae-pledges-17-billion-investment-greece-fc3cb8: 27 of 27 sentences checked · 24 supported · 0 without a source · 0 confirmed error(s)",
+    "[21:30:12] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=56479",
+    "[21:30:12] gold-weekly-loss-dips-below-4000-14694e: 29 of 29 sentences checked · 27 supported · 0 without a source · 0 confirmed error(s) · 2 listed for a person"
+  ]
+}

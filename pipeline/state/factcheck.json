@@ -11878,6 +11878,95 @@
       "notFound": [],
       "weak": [],
       "outcome": "listed"
+    },
+    "uae-pledges-17-billion-investment-greece-fc3cb8": {
+      "at": "2026-10-23T21:29:10.498Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "checker": "7bb3653e29",
+      "publishedAt": "2026-10-23T17:44:18.017Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 27,
+        "checked": 27,
+        "supported": 24,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "أعلنت الإمارات الخميس عزمها استثمار 15 مليار يورو إضافية في اليونان، أي نحو 17 مليار دولار، خلال الزيارة الرسمية التي يجريها ولي عهد أبوظبي الشيخ خالد بن محمد بن زايد آل نهيان إلى أثينا.",
+          "quote": "On Thursday, the UAE announced its intention to invest an additional €15 billion under its joint investment initiative with Greece."
+        },
+        {
+          "sentence": "يبقى الالتزام البالغ 15 مليار يورو نية موزعة على خمس إلى ثماني سنوات، ويتوقف أثره على تحوله إلى صفقات منفذة على غرار استحواذَي «مصدر» و«بيورهيلث» اللذين أنتجتهما المبادرة منذ إطلاقها في 2022.",
+          "quote": "These investments were made under the joint investment initiative between the UAE and Greece, which was launched in May 2022 with a value of €4 billion."
+        },
+        {
+          "sentence": "تستهدف الأموال الجديدة، بحسب الزيودي، قطاعات الطاقة والضيافة والذكاء الاصطناعي والتكنولوجيا والصناعة والبنية التحتية، وتوسّع مبادرة الاستثمار المشترك التي أطلقها البلدان في مايو 2022 بقيمة 4 مليارات يورو.",
+          "quote": "UAE foreign trade minister Dr Thani bin Ahmed Al Zeyoudi said the additional investments would be made over the next five to eight years, targeting energy, hospitality, artificial intelligence, technology, industry and infrastructure."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "gold-weekly-loss-dips-below-4000-14694e": {
+      "at": "2026-10-23T21:29:10.526Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "checker": "7bb3653e29",
+      "publishedAt": "2026-10-23T17:34:30.512Z",
+      "sourcesRead": 5,
+      "sourcesAll": 5,
+      "fromCopy": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 27,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "تراجع الذهب يوم الخميس: نحو 3%",
+          "quote": "وواصل الذهب تراجعه إلى 4127 دولارا للأونصة يوم الأربعاء، ثم هبط إلى 4055 دولارا بنهاية تعاملات الخميس.",
+          "source": "Masrawy"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وتراجع السعر خلال جلسة الجمعة بما يصل إلى 0.9% إلى أقل من 3990 دولاراً للأونصة، بعد انخفاضه بنحو 3% الخميس.",
+          "quote": "وواصل الذهب تراجعه إلى 4127 دولارا للأونصة يوم الأربعاء، ثم هبط إلى 4055 دولارا بنهاية تعاملات الخميس.",
+          "source": "Masrawy"
+        }
+      ],
+      "notFound": [],
+      "weak": [],
+      "outcome": "listed"
     }
   }
 }
