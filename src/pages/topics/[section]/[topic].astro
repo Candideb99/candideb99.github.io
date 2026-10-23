@@ -150,9 +150,6 @@ const pics = firstPictures(n > 0 ? [lead, ...beside, ...recent] : fallback);
   .topic-top__beside { border-inline-start: 1px solid var(--rule); padding-inline-start: var(--col-gap); display: grid; }
   .topic-top__beside > :global(.card) { padding-block: 0.8rem; border-top: 1px solid var(--rule); }
   .topic-top__beside > :global(.card:first-child) { border-top: 0; padding-top: 0.1rem; }
-  .topic-top__lead :global(.card--lead.card--photo) { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 0 clamp(1.25rem, 3vw, 2.5rem); align-items: start; }
-  .topic-top__lead :global(.card--lead .card__photo) { order: 2; margin-bottom: 0; }
-  .topic-top__lead :global(.card--lead .card__body) { order: 1; }
   /* The subject's prices: the board's cards one under another on hairlines, the way to the full board under them. */
   .topic-prices__list { display: grid; }
   .topic-prices__list > :global(.quote) { padding-block: 0.7rem; border-top: 1px solid var(--rule); }
@@ -178,9 +175,6 @@ const pics = firstPictures(n > 0 ? [lead, ...beside, ...recent] : fallback);
     .topic-month__item:nth-child(3) { border-top: 1px solid var(--rule); padding-top: 0.6rem; }
   }
   @media (max-width: 719px) {
-    .topic-top__lead :global(.card--lead.card--photo) { grid-template-columns: 1fr; gap: 0.6rem 0; }
-    .topic-top__lead :global(.card--lead .card__photo) { order: 1; }
-    .topic-top__lead :global(.card--lead .card__body) { order: 2; }
     .topic-month__list { grid-template-columns: minmax(0, 1fr); }
     .topic-month__item:nth-child(2) { border-top: 1px solid var(--rule); padding-top: 0.6rem; }
   }

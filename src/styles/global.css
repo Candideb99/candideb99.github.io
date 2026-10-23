@@ -391,6 +391,15 @@ bdi.latin--short, bdi.latin .nb { white-space: nowrap; }
   .cols > *:nth-child(even) { padding-inline-end: 0; }
   .cols > *:nth-child(n + 3) { border-top: 1px solid var(--rule); padding-top: 1.25rem; }
 }
+/* Four to a row (the front's hub blocks) runs two by two below 1200px as well: four in a row left each about 190px at
+   1024 and its 20px headline three or four lines (2026-10-23). */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .cols--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cols--four > * { padding-inline: var(--col-gap); }
+  .cols--four > *:nth-child(odd) { padding-inline-start: 0; border-inline-start: 0; }
+  .cols--four > *:nth-child(even) { padding-inline-end: 0; }
+  .cols--four > *:nth-child(n + 3) { border-top: 1px solid var(--rule); padding-top: 1.25rem; }
+}
 /* Ruled columns three to a row over several rows (the analysis desks, the explainer kinds): each row starts
    without a rule and every row after the first opens with a hairline, as .cols does two to a row below 1024px. */
 @media (min-width: 1024px) {

@@ -196,15 +196,15 @@ const jsonLd = {
             ))}
           </div>
         ) : briefs.length === 1 ? (
-          <div class={`cols row__pair${r.items.filter((a) => a.data.image && photoIds.has(a.id)).length === 1 ? " row__pair--mixed" : ""}`} style="--n:2">
+          <div class="cols row__pair" style="--n:2">
             {r.items.map((a) => (
-              <StoryCard article={a} variant="card" showSection={false} showExcerpt showTopic showPhoto={photoIds.has(a.id)} sizes="(min-width: 1320px) 600px, (min-width: 720px) 48vw, 120px" />
+              <StoryCard article={a} variant="card" class={r.items.filter((s) => s.data.image && photoIds.has(s.id)).length === 1 ? "card--spread" : ""} showSection={false} showExcerpt showTopic showPhoto={photoIds.has(a.id)} sizes="(min-width: 1320px) 600px, (min-width: 720px) 48vw, 120px" />
             ))}
           </div>
         ) : (
         <div class={`row__body${briefs.length ? "" : " row__body--solo"}`}>
           <div class="row__feature">
-            <StoryCard article={feature} variant="card" showSection={false} showExcerpt showTopic showPhoto={photoIds.has(feature.id)} sizes="(min-width: 1320px) 380px, (min-width: 1024px) 30vw, (min-width: 720px) 52vw, 120px" />
+            <StoryCard article={feature} variant="card" class="card--spread" showSection={false} showExcerpt showTopic showPhoto={photoIds.has(feature.id)} sizes="(min-width: 1320px) 380px, (min-width: 1024px) 30vw, (min-width: 720px) 52vw, 120px" />
           </div>
           {briefs.length > 0 && (
             <div class="row__briefs">
@@ -270,7 +270,7 @@ const jsonLd = {
         <h2 id={`sec-${h.id}`}><a href={sectionHref(h.id)}>{h.section.name}</a></h2>
         <a class="more" href={sectionHref(h.id)}>{h.more}</a>
       </div>
-      <div class="cols" style={`--n:${Math.min(h.items.length, 4)}`}>
+      <div class={`cols${h.items.length >= 4 ? " cols--four" : ""}`} style={`--n:${Math.min(h.items.length, 4)}`}>
         {h.items.map((a) => (
           <StoryCard article={a} variant="text" showSection showExcerpt label={analysisLabel(a, articles)} />
         ))}
@@ -309,12 +309,8 @@ const jsonLd = {
   .row__pair :global(.card__summary) { font-size: var(--n-text); margin-top: 0.35rem; }
   /* A pair where only one story has a photograph: stacked over its headline, the photograph made one column about
      480px deep beside three lines and blank paper (الأسواق and الاقتصاد, 2026-10-19). That story runs like a block's
-     feature instead, its text beside its photograph, so the two columns end near each other. */
-  @media (min-width: 720px) {
-    .row__pair--mixed > :global(.card--photo) { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 0 var(--col-gap); align-items: start; }
-    .row__pair--mixed > :global(.card--photo .card__photo) { order: 2; }
-    .row__pair--mixed > :global(.card--photo .card__body) { order: 1; }
-  }
+     feature instead (`card--spread`, StoryCard.astro: the headline across, the summary beside the photograph), so the
+     two columns end near each other. */
 
   /* One story leads each block, the rest sit beside it as briefs. */
   .row__body { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: 0; align-items: start; }
@@ -356,9 +352,8 @@ const jsonLd = {
 
   .hub .cols :global(.card__title) { font-size: var(--t-head); line-height: 1.38; }
   .hub .cols :global(.card__summary) { font-size: var(--n-text); line-height: 1.7; margin-top: 0.4rem; }
-  .row__feature :global(.card--photo) { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); column-gap: var(--col-gap); align-items: start; gap: 0 var(--col-gap); }
-  .row__feature :global(.card--photo .card__photo) { order: 2; }
-  .row__feature :global(.card--photo .card__body) { order: 1; }
+  /* A block's feature runs `card--spread` (StoryCard.astro): the headline across the column, the summary beside the
+     photograph. */
 
   @media (max-width: 1023px) {
     .row__body { grid-template-columns: 1fr; row-gap: 1.1rem; }
@@ -368,7 +363,7 @@ const jsonLd = {
   @media (max-width: 719px) {
     /* On a phone the feature keeps its larger headline but runs as a thumbnail row: a full-width
        photograph for every block made the page ten thousand pixels long. */
-    .row__feature :global(.card--photo) { grid-template-columns: 7.5rem minmax(0, 1fr); column-gap: 0.75rem; gap: 0 0.75rem; }
+    .row__feature :global(.card--photo) { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0 0.75rem; align-items: start; }
     .row__feature :global(.card--photo .card__photo) { order: 1; }
     .row__feature :global(.card--photo .card__body) { order: 2; }
     .row__feature :global(.card__summary) { display: none; }

@@ -120,7 +120,7 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
     for (var r = 0; r < roots.length; r++) init(roots[r]);
 
     function init(root) {
-      var box = root.querySelector(".cover__slides");
+      var box = root.querySelector(".cover__stage");
       var slides = root.querySelectorAll(".cover__slide");
       var list = root.querySelector("[data-cover-tabs]");
       var tabs = root.querySelectorAll(".cover__tab");
@@ -163,9 +163,10 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
         if (img.srcset) pre.srcset = img.srcset;
         pre.src = img.currentSrc || img.src;
       }
-      // The stories keep the height of the tallest, so neither the tabs nor anything under the cover moves
-      // when it turns (the stage's own least height, the row's, is in the stylesheet: the photograph fills
-      // the stage beside a tall readings column). Each hidden story is laid out for a moment (unseen, its
+      // The stage keeps the height of its tallest story, so neither the tabs nor anything under the cover moves
+      // when it turns (its other least height, the row's, is in the stylesheet: the photograph fills the stage
+      // beside a tall readings column). The stories share the stage's rows (a subgrid, which takes no height of
+      // its own), so the least height goes on the stage. Each hidden story is laid out for a moment (unseen, its
       // picture not fetched) to be measured.
       function fit() {
         if (phone || !box) return;
@@ -178,7 +179,7 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
           tallest = Math.max(tallest, s.getBoundingClientRect().height);
           if (was) { s.hidden = true; s.style.visibility = ""; }
         }
-        if (tallest) box.style.minHeight = Math.ceil(tallest) + "px";
+        if (tallest) box.style.minHeight = "max(100%, " + Math.ceil(tallest) + "px)";
       }
       // The reader is on the cover: the pointer is over it, keyboard focus is inside it (focus left by a
       // mouse click on a tab does not count, so the minute's rest after a click still ends), or the tab
@@ -254,40 +255,49 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
 <style>
   .cover { display: grid; grid-template-columns: minmax(0, 9fr) minmax(0, 3fr); column-gap: 0; padding-top: clamp(1.1rem, 2.5vw, 1.75rem); padding-bottom: clamp(1.25rem, 2.5vw, 1.75rem); border-bottom: 3px solid var(--ink); align-items: start; }
 
-  /* The stage is at least the row's height (the readings beside it may be taller); the stories take what the tabs
-     under them leave, so the photograph fills the stage. */
-  .cover__stage { padding-inline-end: var(--col-gap); display: grid; grid-template-rows: 1fr auto; min-height: 100%; }
-  .cover__slides { display: grid; }
-  /* Headline and photograph share the stage 5 to 7: at 4 to 8 the 40px headline wrapped five lines deep in a 286px column. */
-  .cover__slide { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 0 clamp(1.25rem, 3vw, 2.5rem); align-items: stretch; grid-area: 1 / 1; }
-  /* The photograph fills the stage's height, so no paper is left bare beside a short headline, but it
-     never turns portrait: between 3:2 and square, measured on its own width. Stretched to the old
-     740px column it showed half of every picture (the airport slide was mostly ceiling). */
-  .cover__photo { order: 2; display: block; text-decoration: none; container-type: inline-size; }
-  .cover__photo :global(.photo) { aspect-ratio: auto !important; height: 100%; min-height: 66.667cqi; max-height: 100cqi; }
-  /* The headline hangs from the photograph's top edge, as it does on the printed page; centred beside
-     a tall picture it started 80px lower and its dek fell under a laptop's fold. */
-  .cover__body { order: 1; align-self: start; }
+  /* The headline runs across the whole stage; under it the dek shares the stage with the photograph, 5 to 7, and the
+     five numbered headlines run under both. Beside the photograph the 40px headline had a 350px column, about 9 of its
+     own letters' widths, and wrapped three or four lines deep, some 17 letters a line (the owner, 2026-10-23:
+     "headlines might still be aggressively split on multiple lines"); across the stage it has 22 and takes one or two.
+     An-Nahar and Ennahar set their leads at 22, An-Nahar's under its photograph and Ennahar's over it (measured the
+     same day).
+     The stage's rows are shared by every story on it (subgrid): kicker, headline, dek, meta, the room left, the tabs.
+     A story's parts are its own grid items, so the tabs, which belong to no one story, keep their row under whichever
+     story is showing. The stage is at least the row's height (the readings beside it may be taller); the room left
+     takes the difference, so the photograph fills the stage down to the tabs. */
+  .cover__stage { padding-inline-end: var(--col-gap); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto auto auto auto 1fr auto; column-gap: clamp(1.25rem, 3vw, 2.5rem); min-height: 100%; }
+  .cover__slides { grid-column: 1 / -1; grid-row: 1 / -1; display: grid; grid-template-columns: subgrid; grid-template-rows: subgrid; }
+  .cover__slide { grid-column: 1 / -1; grid-row: 1 / -1; display: grid; grid-template-columns: subgrid; grid-template-rows: subgrid; align-items: start; }
+  .cover__body { display: contents; }
+  .cover__body > .kicker { grid-column: 1 / -1; grid-row: 1; }
+  /* The photograph fills its column from the dek's top down to the tabs, between 16:9 and square, measured on its own
+     width: at least 3:2 under the headline put the tabs about 105px lower than beside it (1440 wide, 2026-10-23), 16:9
+     about 50. Stretched to the old 740px column it showed half of every picture (the airport slide was mostly ceiling). */
+  .cover__photo { grid-column: 2; grid-row: 3 / 6; align-self: stretch; display: block; text-decoration: none; container-type: inline-size; }
+  .cover__photo :global(.photo) { aspect-ratio: auto !important; height: 100%; min-height: 56.25cqi; max-height: 100cqi; }
+  /* The picture fills the frame without sizing it: in the flow its own 3:2 set the stage's rows. */
+  .cover__photo :global(.photo img) { position: absolute; inset: 0; }
   .cover__slide[hidden] { display: none; }
   .cover--js .cover__slide:not([hidden]) { animation: cover-in 0.4s var(--ease-out); }
   @keyframes cover-in { from { opacity: 0; } }
-  .cover__slide--text { grid-template-columns: 1fr; }
-  .cover__slide--text .cover__body { max-width: 56rem; padding-block: 1.5rem; }
-  .cover__title { font-family: var(--font-title); font-weight: 700; font-size: var(--t-cover); line-height: 1.28; }
+  .cover__title { grid-column: 1 / -1; grid-row: 2; margin-bottom: 0.8rem; font-family: var(--font-title); font-weight: 700; font-size: var(--t-cover); line-height: 1.28; }
   .cover__title a { text-decoration: none; }
   .cover__title a:hover { color: var(--green); }
-  .cover__dek { font-family: var(--font-body); font-size: var(--n-lead); line-height: 1.7; color: var(--ink-2); margin-top: 0.55rem; max-width: 34em; }
-  .cover__meta { margin-top: 0.6rem; }
+  .cover__dek { grid-column: 1; grid-row: 3; font-family: var(--font-body); font-size: var(--n-lead); line-height: 1.7; color: var(--ink-2); max-width: 34em; }
+  .cover__meta { grid-column: 1; grid-row: 4; margin-top: 0.6rem; }
+  /* A story without a photograph: its headline at the reading measure, its dek across both columns. */
+  .cover__slide--text .cover__title { max-width: 56rem; }
+  .cover__slide--text .cover__dek, .cover__slide--text .cover__meta { grid-column: 1 / -1; }
   /* The four stories behind the lead, listed under it on a phone, where the stage does not turn. */
   .cover__more { display: none; }
 
   /* The tabs: the five headlines numbered in ruled columns under the stage, as a daily's site runs the stories behind
-     its lead. The one on the stage carries a green rule over it and its number in green; the others stay in the
-     page's ink, a step quieter. The number opens the headline's first line, so the lines under it keep the column's
-     whole width (in a column of its own it cut three of five headlines at three lines); four lines at most, the
-     whole headline being on the stage once it is chosen. Nothing changes size between the states, so the row never
-     moves as the stage turns. */
-  .cover__tabs { display: grid; grid-template-columns: repeat(var(--tabs, 5), minmax(0, 1fr)); margin-top: 1.1rem; border-top: 1px solid var(--rule); }
+     its lead (the owner's choice, 2026-09-27, and again 2026-10-23 over a list beside the photograph). The one on the
+     stage carries a green rule over it and its number in green; the others stay in the page's ink, a step quieter. The
+     number opens the headline's first line, so the lines under it keep the column's whole width (in a column of its own
+     it cut three of five headlines at three lines); four lines at most, the whole headline being on the stage once it
+     is chosen. Nothing changes size between the states, so the row never moves as the stage turns. */
+  .cover__tabs { grid-column: 1 / -1; grid-row: 6; display: grid; grid-template-columns: repeat(var(--tabs, 5), minmax(0, 1fr)); margin-top: 1.1rem; border-top: 1px solid var(--rule); }
   .cover__tab { position: relative; display: block; padding: 0.7rem 0.85rem 0.15rem; color: var(--ink-2); text-decoration: none; }
   .cover__tab:first-child { padding-inline-start: 0; }
   .cover__tab:last-child { padding-inline-end: 0; }
@@ -329,9 +339,11 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
     .cover__reading + .cover__reading { border-inline-start: 1px solid var(--rule); }
   }
   @media (max-width: 719px) {
-    .cover__slide { grid-template-columns: 1fr; gap: 0.6rem 0; align-items: start; }
-    .cover__photo { order: 1; container-type: normal; }
-    .cover__body { order: 2; }
+    /* One story in a column, photograph first, then its kicker, headline, dek and meta. */
+    .cover__stage, .cover__slides { display: block; }
+    .cover__slide { display: flex; flex-direction: column; }
+    .cover__photo { order: -1; margin-bottom: 0.6rem; container-type: normal; }
+    .cover__title { margin-bottom: 0.55rem; }
     .cover__tabs { display: none; }
     .cover__photo :global(.photo) { aspect-ratio: 3 / 2 !important; height: auto; min-height: 0; max-height: none; }
     .cover__more { display: grid; margin-top: 1rem; border-top: 1px solid var(--ink); }

@@ -73,6 +73,22 @@ const hasPhoto = Boolean(image) && showPhoto && variant !== "text";
   .card--lead .card__summary { font-size: var(--n-lead); line-height: 1.7; margin-top: 0.55rem; max-width: 34em; }
   .card--lead .card__meta { margin-top: 0.6rem; }
   .card--lead .card__photo { margin-bottom: 0.3rem; }
+  /* A lead with a photograph, as the cover runs, and a block's feature (`card--spread`): the headline across the whole
+     block, then the summary beside the photograph, 5 to 6. Beside the photograph a section page's 37px lead had a
+     340px column and wrapped three or four lines deep (الاقتصاد and الأسواق), and a front block's 24px feature 250px
+     and three or four lines (2026-10-23). On a phone the lead's photograph comes first and the rest follows under it;
+     the front's features run as thumbnail rows there (index.astro). */
+  @media (min-width: 720px) {
+    .card--lead.card--photo, .card--spread.card--photo { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); grid-template-rows: auto auto auto auto 1fr; grid-template-areas: "kicker kicker" "title title" "summary photo" "meta photo" ". photo"; gap: 0 clamp(1.25rem, 3vw, 2.5rem); align-items: start; }
+    .card--spread.card--photo { column-gap: var(--col-gap); }
+    .card--photo:is(.card--lead, .card--spread) .card__body { display: contents; }
+    .card--photo:is(.card--lead, .card--spread) .card__body > .kicker { grid-area: kicker; }
+    .card--photo:is(.card--lead, .card--spread) .card__title { grid-area: title; margin-bottom: 0.8rem; }
+    .card--spread.card--photo .card__title { margin-bottom: 0.55rem; }
+    .card--photo:is(.card--lead, .card--spread) .card__summary { grid-area: summary; margin-top: 0; }
+    .card--photo:is(.card--lead, .card--spread) .card__meta { grid-area: meta; }
+    .card--photo:is(.card--lead, .card--spread) .card__photo { grid-area: photo; margin-bottom: 0; }
+  }
 
   .card--list { flex-direction: row; align-items: flex-start; gap: 0.75rem; }
   .card--list .card__photo { flex: 0 0 5.5rem; width: 5.5rem; }

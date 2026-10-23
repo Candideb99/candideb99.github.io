@@ -13,7 +13,9 @@ four first. They bind every agent, Codex included.
   dropped). Do not make it static. **Its tabs are the five headlines, numbered, in a row under the
   stage** (the owner's yes, 2026-09-27, to the first-screen change: they replaced the small round
   dots inside the photograph, his earlier choice, which showed one headline of the day's five). Do
-  not put the dots back.
+  not put the dots back. On 2026-10-23, when the cover headline moved across the stage, he was shown
+  the five as a list beside the photograph and kept the row ("Keep the five numbered headlines in a
+  row under the stage"). Do not move them into a list.
 - **The news bar moves.** The owner asked for a moving strip. It scrolls by whole pixels so the
   text stays sharp and holds under the pointer, keyboard focus and a finger. Do not make it static.
   **Since 2026-09-28 it is «آخر الأخبار» on every page, the front included**: the eight newest news

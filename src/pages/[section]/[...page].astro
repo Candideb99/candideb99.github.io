@@ -164,12 +164,9 @@ const divisions: { href: string; name: string; count: number }[] = !first
   .section-page__rest { margin-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--ink); padding-top: 1.25rem; }
   .page-head__link { display: inline-block; margin-top: 0.6rem; font-weight: 700; font-size: var(--fs-sm); color: var(--green); text-decoration: none; }
   .page-head__link:hover { text-decoration: underline; }
-  /* The lead runs like the cover: headline first in the reading direction, photograph beside it. */
-  /* Text beside the photograph only when there is one: a lead without a photo kept the two columns and left half
-     its block blank (2026-09-27). */
-  .section-page__lead :global(.card--lead.card--photo) { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 0 clamp(1.25rem, 3vw, 2.5rem); align-items: start; }
-  .section-page__lead :global(.card--lead .card__photo) { order: 2; margin-bottom: 0; }
-  .section-page__lead :global(.card--lead .card__body) { order: 1; }
+  /* The lead runs like the cover (StoryCard.astro: the headline across the block, the summary beside the photograph);
+     the photograph's column only when there is one: a lead without a photo kept the two columns and left half its block
+     blank (2026-09-27). */
 
   .pager { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--rule); padding-top: 0.9rem; }
   .pager__step { font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-sm); color: var(--green); text-decoration: none; padding: 0.4rem 0.8rem 0.3rem; border: 1px solid var(--rule); }
@@ -179,11 +176,6 @@ const divisions: { href: string; name: string; count: number }[] = !first
   .pager__step--off { visibility: hidden; }
   .pager__count { font-size: var(--fs-sm); color: var(--ink-3); }
 
-  @media (max-width: 719px) {
-    .section-page__lead :global(.card--lead.card--photo) { grid-template-columns: 1fr; gap: 0.6rem 0; align-items: start; }
-    .section-page__lead :global(.card--lead .card__photo) { order: 1; }
-    .section-page__lead :global(.card--lead .card__body) { order: 2; }
-  }
   @media (max-width: 1023px) {
     .section-page__top { grid-template-columns: 1fr; row-gap: 1.25rem; }
     .section-page__lead { padding-inline-end: 0; }
