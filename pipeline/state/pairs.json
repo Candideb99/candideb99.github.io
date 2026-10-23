@@ -927,6 +927,50 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-10-23T05:23:33.059Z",
+      "slug": "libya-central-bank-governor-resignation-accepted-781c9a",
+      "checker": "7bb3653e29.2",
+      "lessons": "v34",
+      "lessonsHash": "1917f27221",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 24,
+        "notFound": 2,
+        "checked": 27,
+        "words": 484,
+        "keyFacts": 0,
+        "classes": [],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 26,
+        "notFound": 2,
+        "checked": 31,
+        "words": 519,
+        "keyFacts": 0,
+        "classes": [],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 26,
+        "notFound": 2,
+        "checked": 31,
+        "words": 519,
+        "keyFacts": 0,
+        "classes": [],
+        "programmatic": 0
+      }
     }
   ]
 }

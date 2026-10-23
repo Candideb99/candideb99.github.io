@@ -5082,6 +5082,158 @@
           "noted": []
         }
       ]
+    },
+    "nasdaq-falls-meta-ai-spending-fears-e3dbef": {
+      "at": "2026-10-23T05:11:20.041Z",
+      "title": "ناسداك يهبط 2.6% مع قلق المستثمرين من الإنفاق على الذكاء الاصطناعي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 29,
+            "checked": 29,
+            "supported": 21,
+            "weak": 1,
+            "noEvidence": 2,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 5,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 1,
+              "field": "title",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ناسداك يهبط 2.6% مع قلق المستثمرين من الإنفاق على الذكاء الاصطناعي",
+              "quote": "The S&P 500 index fell over 1.4 percent, its largest daily decline since July, while the tech-heavy Nasdaq slumped nearly 2.5 percent, that index’s biggest one-day decline since June.",
+              "source": "The New York Times",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 3,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "هبط مؤشر ناسداك المركب 2.6% يوم الخميس، في أشد تراجع له منذ يونيو، مع قلق المستثمرين من قدرة شركات التكنولوجيا الأمريكية على مواصلة إنفاقها الرأسمالي الهائل على الذكاء الاصطناعي.",
+              "quote": "The S&P 500 index fell over 1.4 percent, its largest daily decline since July, while the tech-heavy Nasdaq slumped nearly 2.5 percent, that index’s biggest one-day decline since June.",
+              "source": "The New York Times",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 5,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تراجع ناسداك المركب الخميس: 2.6%",
+              "quote": "The S&P 500 index fell over 1.4 percent, its largest daily decline since July, while the tech-heavy Nasdaq slumped nearly 2.5 percent, that index’s biggest one-day decline since June.",
+              "source": "The New York Times",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 6,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تراجع ستاندرد آند بورز 500 الخميس: 1.21%",
+              "quote": "The S&P 500 index fell over 1.4 percent, its largest daily decline since July, while the tech-heavy Nasdaq slumped nearly 2.5 percent, that index’s biggest one-day decline since June.",
+              "source": "The New York Times",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 16,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "أما مؤشر ستاندرد آند بورز 500 الأوسع نطاقاً فانخفض 1.21%، في أكبر خسارة له منذ تراجعه 1.52% في 29 يوليو.",
+              "quote": "The S&P 500 index fell over 1.4 percent, its largest daily decline since July, while the tech-heavy Nasdaq slumped nearly 2.5 percent, that index’s biggest one-day decline since June.",
+              "source": "The New York Times",
+              "sourceN": 4,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "libya-central-bank-governor-resignation-accepted-781c9a": {
+      "at": "2026-10-23T05:23:33.046Z",
+      "title": "رئاسة البرلمان الليبي تقبل مبدئياً استقالة محافظ المصرف المركزي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 27,
+            "checked": 27,
+            "supported": 25,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 3,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "قبلت هيئة رئاسة مجلس النواب الليبي الخميس استقالة محافظ مصرف ليبيا المركزي ناجي محمد عيسى قبولاً مبدئياً، وكلّفت عضو مجلس إدارة المصرف فوزي مصباح أبوخزام بتسيير مهامه مؤقتاً.",
+              "quote": "ورغم ذلك، عادت هيئة رئاسة البرلمان اليوم الأربعاء ليستند إلى تلك الاستقالة القديمة وإعلان قبولها، مبينة أن القرار يهدف إلى ضمان استمرارية العمل وانتظام أداء المصرف لحين عرض الاستقالة بشكل رسمي على الجلسة القادمة لمجلس النواب للبت النهائي فيها.",
+              "source": "Sky News Arabia",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "qatarenergy-cheniere-us-lng-purchase-deal-347068": {
+      "at": "2026-10-23T05:38:25.248Z",
+      "title": "قطر للطاقة تتعاقد لشراء حتى 4 ملايين طن سنوياً من الغاز المسال الأمريكي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 27,
+            "checked": 27,
+            "supported": 27,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
