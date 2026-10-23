@@ -231,7 +231,9 @@ async function callClaudeCli({ model, system, user, images = [], timeoutMs }) {
   if (!payload) throw new LlmError("claude cli returned non-JSON output", { sample: result.slice(0, 200), retryable: true });
   if (payload.is_error) {
     const message = String(payload.result ?? "");
-    const login = /not logged in|\b401\b|authenticat|oauth|invalid (?:x-)?api[- ]key|credit balance/i.test(message);
+    // "Your organization has disabled Claude subscription access for Claude Code" refused every call from 1 to
+    // 17 October 2026: a refusal, not a blip to retry.
+    const login = /not logged in|\b401\b|authenticat|oauth|invalid (?:x-)?api[- ]key|credit balance|subscription access/i.test(message);
     throw new LlmError(`claude cli: ${message.slice(0, 200)}`, login ? { status: 401 } : { retryable: true });
   }
   const used = payload.usage ?? {};
@@ -721,7 +723,9 @@ export async function chat({ role, system, user, images = [], json = true, valid
       usage.failures += 1;
       errors.push(`${provider}:${modelName}#${attempt}: ${error.message}`);
       const sample = error.meta?.sample ? ` sample=${JSON.stringify(String(error.meta.sample).slice(0, 140))}` : "";
-      log(`llm fail role=${role} provider=${provider} model=${modelName} attempt=${attempt}: ${String(error.message).slice(0, 200)}${sample}`);
+      // login=refused: every provider marks a refused credential status 401, and the editor's morning round reads it
+      // from the run report to tell the owner (scripts/editor-precheck.mjs).
+      log(`llm fail role=${role} provider=${provider} model=${modelName} attempt=${attempt}${error.meta?.status === 401 ? " login=refused" : ""}: ${String(error.message).slice(0, 200)}${sample}`);
       if (error.meta?.quota) throw error;
       if (error.meta?.status === 401) break;
       if (attempt < ATTEMPTS) {

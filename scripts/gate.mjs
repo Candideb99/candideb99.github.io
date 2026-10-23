@@ -4,8 +4,9 @@
  *
  *   node scripts/gate.mjs
  *
- * 1. every pipeline and tool script parses (`node --check`), so a syntax slip cannot reach the cloud newsroom, and the
- *    lessons' decision rule decides its known cases correctly (scripts/evidence-selftest.mjs);
+ * 1. every pipeline and tool script parses (`node --check`), so a syntax slip cannot reach the cloud newsroom, uses no
+ *    name it never defines (TypeScript over the JavaScript, scripts/tsconfig.names.json), and the lessons' decision
+ *    rule decides its known cases correctly (scripts/evidence-selftest.mjs);
  * 2. `astro check` reports no errors;
  * 3. `npm run build` (the production build and its search index) succeeds;
  * 4. the built pages hold together for a reader (scripts/site-check.mjs: links, RTL, alt text, dates, sources).
@@ -41,6 +42,16 @@ for (const f of scripts) {
   if (r.status !== 0) fail(`node --check ${f}`, r.stderr || r.stdout);
 }
 console.log(`[ok] ${scripts.length} scripts parse (${seconds(t)})`);
+
+// 1a. Every name a script uses is defined somewhere. Parsing cannot see it: the multi-provider rewrite of 2026-10-17
+// dropped `const refusedLogin` from scripts/editor-precheck.mjs, which still parsed, and the daily editor's round died
+// on a ReferenceError every morning until 2026-10-23. TypeScript reads the JavaScript (scripts/tsconfig.names.json);
+// only "cannot find name" fails the gate, every other type message is ignored, and a config fault fails it too.
+t = Date.now();
+const names = spawnSync(process.execPath, [path.join(ROOT, "node_modules", "typescript", "bin", "tsc"), "-p", path.join("scripts", "tsconfig.names.json")], { cwd: ROOT, encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
+const undefinedNames = `${names.stdout ?? ""}${names.stderr ?? ""}`.split(/\r?\n/).filter((l) => /error TS(2304|2552|5\d{3}|18003):/.test(l));
+if (names.error || undefinedNames.length) fail("names (scripts/tsconfig.names.json)", names.error ? String(names.error.message) : undefinedNames.join("\n"));
+console.log(`[ok] every name the scripts use is defined (${seconds(t)})`);
 
 t = Date.now();
 const llm = spawnSync(process.execPath, [path.join("scripts", "llm-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });

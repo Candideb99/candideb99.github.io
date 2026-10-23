@@ -73,6 +73,10 @@ for (const workflow of OFFLINE ? [] : ["newsroom.yml", "deploy.yml"]) {
 
 // 2. The newsroom's own last report: a refused login stops every story, and no editor can renew the owner's token.
 const lastReport = readJson(path.join("pipeline", "runs", "latest.json"));
+// The definition went missing in the multi-provider rewrite of 2026-10-17, and the round crashed here every day after
+// (ReferenceError) until 2026-10-23. `login=refused` is how pipeline/lib/llm.mjs marks a refused credential for any
+// provider; the words are the older reports' only sign.
+const refusedLogin = (lastReport?.log ?? []).some((l) => /llm fail/.test(l) && (/ login=refused:/.test(l) || /not logged in|\b401\b|authenticat|oauth|invalid (?:x-)?api[- ]key|credit balance|subscription access/i.test(l)));
 if (refusedLogin) {
   const provider = (process.env.KHAZENDAR_PROVIDER || "gemini").toUpperCase();
   owner.push({ key: "token", title: `خازندار: ${provider} refuses the newsroom's credentials`, text: `The newsroom's last run (${lastReport.startedAt}) could not authenticate with ${provider}, so no story is being written. Verify the credentials in .env, the control room's Settings or repository secrets.` });

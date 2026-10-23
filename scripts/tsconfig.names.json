@@ -1,0 +1,17 @@
+{
+  "//": "For the gate's names check only (scripts/gate.mjs, 1a): TypeScript reads the newsroom's and the tools' JavaScript and the gate fails on a name used but never defined (TS2304, TS2552). Every other type message is ignored.",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "noImplicitAny": false,
+    "target": "es2023",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "types": ["node"],
+    "typeRoots": ["../node_modules/@types"]
+  },
+  "include": ["./*.mjs", "../pipeline/*.mjs", "../pipeline/lib/*.mjs"]
+}
