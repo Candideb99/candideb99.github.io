@@ -5476,6 +5476,46 @@
           ]
         }
       ]
+    },
+    "why-high-oil-fails-saudi-stocks-7ca7e4": {
+      "at": "2026-10-23T18:23:44.142Z",
+      "title": "مكاسب السعودية من صعود برنت رهن بسلامة موانئ ساحليها",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 47,
+            "checked": 47,
+            "supported": 35,
+            "weak": 5,
+            "noEvidence": 1,
+            "notFound": 5,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 15,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وصعد الخام بعدما أعلن الحوثيون مسؤوليتهم عن هجمات على ميناء ينبع السعودي على البحر الأحمر وعن ضربات على حقل نفطي ومطار في المملكة.",
+              "quote": "ولم تتبنَّ الجماعة محاولة استهداف الشيبة، ولم تؤكد السلطات السعودية حتى الخميس استهداف الوزارة أو منشأة ينبع.",
+              "source": "Khazendar",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []
