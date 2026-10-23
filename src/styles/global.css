@@ -331,6 +331,11 @@ bdi:has(> .mark-dir) { white-space: nowrap; }
 .kicker { display: block; font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-sm); line-height: 1.4; color: var(--green); margin-bottom: 0.3rem; letter-spacing: 0; }
 .kicker a { color: inherit; text-decoration: none; display: inline-block; padding-block: 0.3rem; margin-block: -0.3rem; }
 .kicker a:hover { text-decoration: underline; }
+/* Over a headline the kicker's room grows with the headline: Amiri's tall letters (an alef with its hamza) rise to the
+   top of the line, and at a fixed 0.3rem the cover's 36px headline stood 4px under its kicker and a 17px reading touched
+   it (the owner, 2026-10-23: "headline is almost touching the category"). Padding, not margin: in a card's block the
+   margin collapsed into the kicker's own and changed nothing. */
+.kicker + :is(h1, h2, h3, h4) { padding-top: 0.2em; }
 
 /* ----- A page head's section label and its topics line (section, topic, desk and kind pages; one rule, it was
    copied into four pages). The subjects are set in the reading face in bold, as the files row sets them, the
