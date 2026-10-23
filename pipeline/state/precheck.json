@@ -5346,6 +5346,136 @@
           "noted": []
         }
       ]
+    },
+    "gold-weekly-loss-dips-below-4000-14694e": {
+      "at": "2026-10-23T17:34:30.517Z",
+      "title": "الذهب يتجه إلى أكبر خسارة أسبوعية منذ 4 أشهر مع موجة بيع في الأسهم",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 29,
+            "checked": 29,
+            "supported": 26,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 7,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تراجع الذهب يوم الخميس: نحو 3%",
+              "quote": "وواصل الذهب تراجعه إلى 4127 دولارا للأونصة يوم الأربعاء، ثم هبط إلى 4055 دولارا بنهاية تعاملات الخميس.",
+              "source": "Masrawy",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 14,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وتراجع السعر خلال جلسة الجمعة بما يصل إلى 0.9% إلى أقل من 3990 دولاراً للأونصة، بعد انخفاضه بنحو 3% الخميس.",
+              "quote": "وواصل الذهب تراجعه إلى 4127 دولارا للأونصة يوم الأربعاء، ثم هبط إلى 4055 دولارا بنهاية تعاملات الخميس.",
+              "source": "Masrawy",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "uae-pledges-17-billion-investment-greece-fc3cb8": {
+      "at": "2026-10-23T17:44:18.021Z",
+      "title": "الإمارات تتعهد باستثمارات إضافية بنحو 17 مليار دولار في اليونان",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 27,
+            "checked": 27,
+            "supported": 24,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "volvo-cars-shares-plunge-quarterly-loss-job-cuts-a6e445": {
+      "at": "2026-10-23T17:55:33.454Z",
+      "title": "سهم فولفو للسيارات يهوي 24% بعد خسارة فصلية فاقت التوقعات",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 34,
+            "checked": 34,
+            "supported": 30,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 6,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "الخسارة التشغيلية في الربع الثالث بحسب رويترز: 3.7 مليارات كرونة",
+              "quote": "The Swedish automaker reported an operating loss of 5.6 billion Swedish kronor ($563.7 million) in the third quarter, down from an operating profit of 6.4 billion Swedish kronor in the previous period.",
+              "source": "CNBC",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 13,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "بلغت الخسارة التشغيلية للشركة في الربع الثالث 3.7 مليار كرونة سويدية، أي نحو 373 مليون دولار، مقابل أرباح تشغيلية قدرها 5.8 مليار كرونة في الربع نفسه من العام الماضي، بحسب رويترز.",
+              "quote": "The Swedish automaker reported an operating loss of 5.6 billion Swedish kronor ($563.7 million) in the third quarter, down from an operating profit of 6.4 billion Swedish kronor in the previous period.",
+              "source": "CNBC",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []
