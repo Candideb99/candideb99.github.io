@@ -640,7 +640,15 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const stories = [{ title: "الدولار يتجاوز 54 جنيهاً", text: "تجاوز الدولار 54 جنيهاً في السوق الرسمية للمرة الأولى." }];
   const missing = (body) => programmaticChecks({ title: pegged.title, subtitle: "", lede: pegged.lede, body, whyItMatters: "", keyFacts: [] }, stories, { explainer: true, minWords: 0 }).issues.some((i) => i.startsWith("أرقام لا تظهر في المصادر"));
   check("an explainer's invented current figure is sent back, its hypothesis is not", [missing("بلغ التضخم 37% في سبتمبر."), missing("لو ارتفع سعر الدولار 25% لارتفع سعر السلعة 16.7% فقط.")], [true, false]);
-  check("an old explainer checked without its stories' text is not grounded", programmaticChecks({ title: pegged.title, subtitle: "", lede: pegged.lede, body: "بلغ التضخم 37%.", whyItMatters: "", keyFacts: [] }, [{ title: "x" }], { explainer: true, minWords: 0 }).issues.some((i) => i.startsWith("أرقام لا تظهر")), false);
+  // 2026-10-23, the second audit: the analyses' four fixed labels, «رفع الدعم» raised to a level, and a source's own
+  // wrong arithmetic, which the fact-check had passed as supported.
+  check("an analysis's fixed labels are sent back; the same words in news prose are not", [has({ ...pegged, body: "## ما الذي تغيّر\n\nنص.\n\n## السيناريوهات\n\nنص." }, "analysis", "عناوين فرعية من قالب"), has({ ...pegged, body: "## من يدفع الفرق؟\n\nنص." }, "analysis", "عناوين فرعية من قالب")], [true, false]);
+  check("«رفع الدعم» raised to a level is sent back; its removal is not", [has({ ...pegged, body: "يُرجَّح ألا يُموَّل رفع الدعم الاجتماعي إلى مثليه." }, "analysis", "«رفع الدعم"), has({ ...pegged, body: "قررت الحكومة رفع الدعم عن الوقود تدريجياً." }, "news", "«رفع الدعم")], [true, false]);
+  const sum = "The three indices moved 2.03%, 2.2% and -1.9%, an average of 0.6%.";
+  const arithmetic = (cls) => verifyStory({ story: { title: "Markets end mixed", body: sum }, sources: [{ n: 1, name: "CNBC", title: "Markets", text: sum }], chatWith: checkerReply([{ id: 1, verdict: "not_found", source: null, quote: "" }, { id: 2, verdict: "contradicted", source: 0, quote: sum, class: cls }]) });
+  check("a wrong average beside its own inputs is a proved error, even when the source prints it", (await arithmetic("internal")).checks[1].status, "confirmed");
+  check("a sentence still cannot prove itself wrong by any other class", (await arithmetic("figure")).checks[1].status, "unverified");
+  check("an old explainer checked without its stories' text is not grounded",programmaticChecks({ title: pegged.title, subtitle: "", lede: pegged.lede, body: "بلغ التضخم 37%.", whyItMatters: "", keyFacts: [] }, [{ title: "x" }], { explainer: true, minWords: 0 }).issues.some((i) => i.startsWith("أرقام لا تظهر")), false);
 }
 
 if (failed) {

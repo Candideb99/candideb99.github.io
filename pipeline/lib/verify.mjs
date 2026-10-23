@@ -3,14 +3,6 @@ import { EDITORIAL_CRAFT, EDITORIAL_READER_CHECK, NEWS_DEPTH, NEWS_FLOOR, SHORT_
 import { arabicRatio, normalizeDigits, overlappingPhrases, phraseOverlap, suspiciousLatinWords, ungroundedNumbers, wordCount } from "./util.mjs";
 import { STITCH, styleIssues } from "./style.mjs";
 
-/** The four sections every house analysis must carry, matched loosely against its "## " subheads. */
-const ANALYSIS_SECTIONS = [
-  { name: "ما الذي تغيّر", test: /تغي/ },
-  { name: "من يربح ومن يخسر", test: /يربح|يخسر/ },
-  { name: "السيناريوهات", test: /سيناريو/ },
-  { name: "ما الذي نراقبه", test: /نراقب|المراقبة|نرصد/ },
-];
-
 /** The three sections of the week's review, matched loosely against its "## " subheads. */
 const WEEKLY_SECTIONS = [
   { name: "أبرز ما جرى", test: /أبرز ما جرى|أبرز الأحداث|أبرز التطورات/ },
@@ -77,11 +69,10 @@ export function programmaticChecks(draft, sources, { recentTitles = [], newsTitl
 
   const words = wordCount(`${draft.lede}\n${draft.body}`);
   if (analysis) {
-    if (words < 550) issues.push(`التحليل قصير جداً (${words} كلمة)؛ يجب ألا يقل عن 700 كلمة. وسّع الحجة والسيناريوهات من المواد المرفقة دون اختراع أرقام.`);
-    else if (words > 1100) warnings.push(`long analysis: ${words} words`);
-    const subheads = (draft.body.match(/^##\s+.+$/gm) ?? []).join("\n");
-    const missing = ANALYSIS_SECTIONS.filter((s) => !s.test.test(subheads)).map((s) => s.name);
-    if (missing.length) issues.push(`بنية التحليل ناقصة؛ العناوين الفرعية المطلوبة (بصيغة "## ") غير موجودة: ${missing.join("، ")}. أضفها بهذا الترتيب: ما الذي تغيّر، من يربح ومن يخسر، السيناريوهات، ما الذي نراقبه.`);
+    // No fixed sections since 2026-10-23: all 12 analyses had carried the same four, the template removed from the
+    // explainers that day; style.mjs now sends those labels back.
+    if (words < 500) issues.push(`التحليل قصير جداً (${words} كلمة)؛ يجب ألا يقل عن 600 كلمة. طوّر الحجة من المواد المرفقة دون اختراع أرقام.`);
+    else if (words > 1000) warnings.push(`long analysis: ${words} words`);
   } else if (feature) {
     if (words < 950) issues.push(`«في العمق» قصير جداً (${words} كلمة)؛ يجب ألا يقل عن 1200 كلمة. وسّع كل قسم بما في قصص الملف دون اختراع أرقام.`);
     else if (words > 2300) warnings.push(`long feature: ${words} words`);
@@ -332,7 +323,7 @@ Judge it as a short story: never ask for a developed report, more words, subhead
     material:
       "(analysis: the sources below are خازندار's own published stories; every figure, date, name and quotation in the draft must trace to them. Interpretation is the genre: Khazendar's own reading of consequences is legitimate when it is clearly framed as a reading (يرجّح، قد، من المحتمل) and stays within what the stories support; it is a fault when asserted as fact or when it contradicts the stories.)",
     facts: "Every number, date, name and quotation in the draft: does it trace to the supplied stories? List each unsupported or altered item. Causal reasoning is judged under point 3.",
-    check: "Is the argument coherent from the opening to the scenarios, and does the piece answer its own question? Is every causal claim either reported by the stories or clearly framed as Khazendar's hedged reading, never asserted as fact? Is every forecast framed as a scenario with a stated trigger?",
+    check: "Is the argument coherent from the opening to its end, and does the piece answer its own question? Is it stated positively, or built against a claim nobody made («لا… وحده»، «ليس… بل»)? Does «لماذا يهمّ» agree with the body (a box that contradicts the body is a real error)? Is every causal claim either reported by the stories or clearly framed as a hedged reading, never asserted as fact and never attributed to the site? Is every forecast framed as a scenario with a stated trigger? Does it avoid a template (the labels ما الذي تغيّر، من يربح ومن يخسر، السيناريوهات، ما الذي نراقبه; a closing list of things to watch)? Is each economic term used in the sense Arab economics desks give it (رفع الدعم means removing a subsidy, never raising it)?",
   },
 };
 

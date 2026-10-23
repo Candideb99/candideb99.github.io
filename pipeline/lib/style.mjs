@@ -400,6 +400,15 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
     const glosses = (`${lede}\n${body}`.match(/[،,]\s*أي\s/g) ?? []).length;
     if (glosses > 3) issues.push(`شرح المصطلحات بسلسلة «، أي…» (${glosses} مرات)؛ اشرح المصطلح الذي يحتاجه القارئ مرة واحدة في جملة مستقلة حيث يحتاجه أول مرة، واحذف ما لا يحتاجه لفهم النتيجة.`);
   }
+  // The analyses' four fixed labels: all 12 published analyses carried them and closed on «نراقب» (an audit of 2026-10-23).
+  if (kind === "analysis") {
+    const labels = [...body.matchAll(/^##\s+(.+)$/gm)].map((m) => m[1].trim()).filter((h) => /^(?:ما الذي تغيّ?ر|من يربح ومن يخسر|السيناريوهات|ما الذي نراقبه)\s*؟?$/u.test(h));
+    if (labels.length) issues.push(`عناوين فرعية من قالب جاهز («${labels.join("»، «")}»)؛ العنوان الفرعي خطوة من الحجة تقول شيئاً أو سؤال القارئ التالي، ويُختم التحليل بالموعد التالي أو بآخر ما تحتاجه الحجة، لا بقائمة لما نراقبه.`);
+  }
+  // «رفع الدعم» is the removal of a subsidy in the Arab economics desks' usage; raised to a level it reads backwards
+  // (2026-10-23: «يُرجَّح ألا يُموَّل رفع الدعم الاجتماعي إلى مثليه», meaning its doubling, four times in one analysis).
+  const subsidy = prose.match(/رفع (?:ال)?دعم(?:\s+[\p{L}\p{M}]+)?\s+إلى/u);
+  if (subsidy) issues.push(`«${subsidy[0]}» تقرأ إلغاءً للدعم؛ «رفع الدعم» في لغة الاقتصاد يعني إلغاءه، وللزيادة «زيادة الدعم» أو «مضاعفته».`);
   if (kind === "explainer") {
     // A reader asks his question after the news, never about a definition: the lede opens on what happened.
     // «X هو/هي…» as the main clause of the opening: the copula within the first eight words, with no «إن/أن» or figure

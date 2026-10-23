@@ -218,6 +218,9 @@ For each sentence you check:
    Sources may disagree. When one source supports the claim and another conflicts with it, the verdict is "conflict", with the conflicting sentence as the quote: the story followed one of them, and that is not its error.
    A claim that was right when the source was written and has since been overtaken by later events is not an error: judge what the sources say, not what happened afterwards.
    A sentence that contradicts ANOTHER SENTENCE OF THE STORY (the box against the body, the headline against the lede) is "contradicted" with "source": 0 and that other story sentence, verbatim, as the quote.
+   ARITHMETIC IS CHECKED, NOT TRUSTED. When the story prints a figure computed from others it also prints (an average, a sum, a difference, a share, a multiple), recompute it from those figures. If it is wrong, the verdict is "contradicted", class internal, "source": 0, quoting the story sentence that gives the inputs, even when a source prints the same wrong result: a news outlet's own arithmetic is not evidence (a story averaged three index moves of 2.03, 2.2 and -1.9 as 0.6, copying its source; the average is 0.78).
+   A SHARE KEEPS ITS BASE: 1.5% of all listed shares is not 1.5% of all listed companies; a different base is "contradicted", class scope.
+   ONE OUTLET'S SOURCES ARE NOT ANOTHER'S: «المصدران»، «المصادر»، "the sources" must be the sources of the outlet the story names for them; a claim that one outlet's sources made, credited to another outlet's sources or to sources the story never introduced, is "contradicted", class attribution.
 4. For "contradicted" only: "correction", one English sentence saying what is right according to the quote, and "class", one of ${CLASSES.join(", ")}.
 Judge by the source material and the story alone. Your own knowledge of the world is not evidence, and a fact newer than what you know is not an error. Do not report style.
 
@@ -280,9 +283,12 @@ export async function verifyStory({ story, sources, log = () => {}, chatWith = c
     const verdict = ["supported", "contradicted", "conflict", "not_found"].includes(raw.verdict) ? raw.verdict : "not_found";
     const n = raw.source === null || raw.source === undefined || raw.source === "" ? null : Number(raw.source);
     const quote = String(raw.quote ?? "").trim();
-    const source = n === 0 ? { name: "the story itself", all: storyText.replace(sentence.text, " ") } : readable.find((s) => s.n === n) ?? null;
-    const found = Boolean(quote && source?.all && quoteFound(quote, source.all));
     const kind = verdict === "contradicted" ? (CLASSES.includes(raw.class) ? raw.class : "other") : undefined;
+    // A sentence never proves itself wrong, except by its own arithmetic: an average printed beside its three inputs
+    // (2026-10-23, an average of 0.6 for 0.78, copied from the source) may quote the sentence that carries them.
+    const ownArithmetic = n === 0 && kind === "internal" && extractNumbers(sentence.text).size >= 3;
+    const source = n === 0 ? { name: "the story itself", all: ownArithmetic ? storyText : storyText.replace(sentence.text, " ") } : readable.find((s) => s.n === n) ?? null;
+    const found = Boolean(quote && source?.all && quoteFound(quote, source.all));
     let status;
     if (verdict === "contradicted") {
       if (!found) status = "unverified";

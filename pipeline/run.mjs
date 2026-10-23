@@ -512,6 +512,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
           checks = mendedChecks;
           writerModel = `${writerModel} → ${mend.model}`;
           entry.mendedAfterReview = review.issues.length;
+          entry.mendIssues = review.issues;
           log(`mended "${draft.title}": the second pass's ${review.issues.length} finding(s) sent back once more`);
         } else log(`mend refused by the checks (${mendedChecks.issues.map((i) => i.slice(0, 60)).join(" | ")}); the reviewed draft goes on`);
       } catch (error) {
@@ -565,6 +566,8 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
       revised,
       // "clean" or "repaired": the second look audits a sample of the clean ones and every repaired one.
       precheck: pre.repairs ? "repaired" : "clean",
+      // The verdict and summary are the second review's, written before the mend (2026-10-23).
+      ...(entry.mendedAfterReview ? { mended: entry.mendedAfterReview } : {}),
       importance: story.importance,
       warnings: checks.warnings,
       criticSummary: review.summary,
@@ -867,6 +870,50 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
       report.push(entry);
       return { report, published: 0 };
     }
+    // Passed, yet still "revise": the findings are mended before publication, as a news story's are. Until 2026-10-23
+    // a hub piece went out as reviewed, and 10 of 12 analyses, 3 of 4 paper readings and the week's review carried the
+    // faults their own last review named («يبقى خطأ واحد يحوّل توقع البنك المركزي…»، «فتحتاج إلى مراجعة قبل النشر»).
+    if (finalReview.verdict === "revise" && finalReview.issues.length) {
+      try {
+        const mend = await reviseArticle({ draft, sources: checkSources, issues: finalReview.issues, log, wordLimits, kind });
+        const mended = (await copyDeskPass(mend.draft, { includeBody: false, kind: deskKind, sources: checkSources ?? [] })).draft;
+        const mendedChecks = programmaticChecks(mended, checkSources, { ...flags, recentTitles });
+        if (mendedChecks.ok) {
+          draft = mended;
+          checks = mendedChecks;
+          writerModel = `${writerModel} → ${mend.model}`;
+          entry.mendedAfterReview = finalReview.issues.length;
+          entry.mendIssues = finalReview.issues;
+          log(`mended ${kind} "${draft.title}": the second pass's ${finalReview.issues.length} finding(s) sent back once more`);
+        } else log(`mend refused by the checks (${mendedChecks.issues.map((i) => i.slice(0, 60)).join(" | ")}); the reviewed draft goes on`);
+      } catch (error) {
+        if (error.meta?.quota) throw error;
+        log(`mend failed (${String(error.message).split("\n")[0].slice(0, 120)}); the reviewed draft goes on`);
+      }
+    }
+  }
+  // The check before publication, as for news (lib/precheck.mjs): the final text read against its own material, what
+  // the material disproves repaired, a piece still wrong held. Not for an explainer, whose announced hypotheses compute
+  // figures no story carries (the check would call them drift and repair them away).
+  let precheckTag = null;
+  if (kind !== "explainer") {
+    const pre = await precheck({ draft, sources: checkSources, log, validate: (d) => programmaticChecks(d, checkSources, { ...flags, recentTitles }) });
+    entry.precheck = { ok: pre.ok, repairs: pre.repairs, rounds: pre.rounds.length, found: pre.rounds.reduce((n, r) => n + r.found.length, 0) };
+    if (!pre.ok) {
+      entry.outcome = `held by the check before publication: ${pre.held}`;
+      report.push(entry);
+      log(`held ${kind} "${draft.title}": ${pre.held}`);
+      for (const f of pre.unresolved ?? []) log(`  ✗ [${f.class}] ${f.sentence.slice(0, 140)}`);
+      await recordPrecheck({ slug: buildSlug(draft, { headlineHint }), title: draft.title, pre, writer: writerModel, lessons: null, held: true });
+      return { report, published: 0 };
+    }
+    if (pre.repairs) {
+      draft = pre.draft;
+      checks = programmaticChecks(draft, checkSources, { ...flags, recentTitles });
+      log(`precheck ${kind} "${draft.title}": ${entry.precheck.found} proved error(s) repaired`);
+    } else log(`precheck ${kind} "${draft.title}": clean`);
+    precheckTag = pre.repairs ? "repaired" : "clean";
+    await recordPrecheck({ slug: buildSlug(draft, { headlineHint }), title: draft.title, pre, writer: writerModel, lessons: null, held: false });
   }
   // The piece's kind tells the picture desk it explains or analyses: its subject at work, never a facade.
   const image = await pickImage({ draft: { ...draft, kind }, story, log, exclude: usedImages(existing) });
@@ -881,7 +928,9 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
     image,
     deskedAt: deskModel ? isoNow() : null,
     models: { editor: models.editor, writer: writerModel, critic: finalReview.model, vision: image?.model ?? null, desk: deskModel },
-    quality: { score: finalReview.score, verdict: finalReview.verdict, revised, warnings: checks.warnings, criticSummary: finalReview.summary },
+    // The verdict and summary are the last review's, written before any mend: `mended` says so (2026-10-23; the record
+    // had read as unfixed faults the published text no longer had).
+    quality: { score: finalReview.score, verdict: finalReview.verdict, revised, ...(entry.mendedAfterReview ? { mended: entry.mendedAfterReview } : {}), ...(precheckTag ? { precheck: precheckTag } : {}), warnings: checks.warnings, criticSummary: finalReview.summary },
   });
   if (!DRY_RUN || PREVIEW_DIR) {
     const dir = PREVIEW_DIR ?? ARTICLES_DIR;

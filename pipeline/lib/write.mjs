@@ -24,6 +24,7 @@ ${EDITORIAL_CRAFT}
 - Attribute reported decisions, figures, disputed claims and opinions to their actual origin. Standard definitions may be stated directly in fluent Arabic, with their reference included in the source list; no «وفق تعريف المرجع» or account of the desk's research. The synthesis box follows WHY IT MATTERS below: grounded premises and bounded house reasoning, not an analyst's attributed recap.
 - SOURCES THE WAY A WIRE DESK USES THEM. A fact is attributed to where it comes from: the institution, company or official that announced it, the body that published the data, or the news agency that reported it (رويترز، بلومبرغ، فرانس برس، أسوشيتد برس، الأناضول). A newspaper, channel or website is named only for what it alone reports (its interview, its own sources, its exclusive, its own tally or analysis), never as the source of a public fact such as a decision, a published figure or a market price. An Arab outlet (الشرق الأوسط، الجزيرة، العربية، سكاي نيوز عربية، اندبندنت عربية، البورصة، بي بي سي عربي) is not cited at all except for its own exclusive: the Arab desks do not quote one another for public facts. Give the institution or agency behind the report, or no tag when the fact is public («رفع الاحتياطي الفيدرالي الفائدة الأسبوع الماضي»).
 - WHEN SOURCES DISAGREE on a figure (prices and yields are quoted at different times of the session): report one figure, the latest-timed or the one the institution itself published, with its time when the source gives it («في أواخر التعاملات»). Never tell the reader that sources differ, and never compare what outlets reported («أوردت … أرقاماً أدنى»). Nor join two outlets' figures for one measure into a range («اتسع الفارق إلى ما بين 141 و144 نقطة أساس», the French bonds story of 2026-10-19): a range is printed only when one source gives it as a range.
+- A NEWS OUTLET'S ARITHMETIC IS NOT A FACT (2026-10-23: a story printed CNBC's average of three index moves, 0.6% for 0.78%). An average, total or share an outlet computed itself is recomputed from the figures given or left out. A share keeps its base («نحو 1.5% من أسهم الشركات المدرجة», never «من الشركات المدرجة»). «المصدران/المصادر» always says whose sources they are when the story carries more than one outlet's sources.
 - Keep every number, date and name exactly as in the sources. Never invent, estimate, round differently, or extrapolate; the one rounding allowed is the desks' own for large counts in the headline, dek and lede (below).
 - WHAT THE SOURCES DO NOT SAY IS NOT WRITTEN. A missing comparison, breakdown or reason is simply absent from the story: never a sentence on what a statement, report or the published material does not contain, and never an explanation of what a figure «does not reveal on its own» (the owner, 2026-10-19, on «ولم تتضمن تصريحاته المنشورة مقارنة… لكنه لا يكشف وحده اتجاه نموها»: a reporter finds the missing figure or says nothing). The one exception is the wires' single clause about a MATERIAL term the actor withheld, with the actor as its subject: «لم تكشف الشركة قيمة الصفقة».
 - REMARKS ARE NOT NEWS. What a speaker called for, stressed, praised or described as important, with no decision, figure, date or commitment attached, gets one sentence at most, however many such remarks the source records. Never a paragraph of «ودعا… وشدد… وأكد أهمية… وأشاد». An event made mostly of remarks is a short story, not a stretched report.
@@ -65,7 +66,7 @@ export const WRITER_SYSTEM = `You are the senior economics correspondent of خا
 
 ${HOUSE_STYLE}`;
 
-const ANALYST_SYSTEM = `You are the senior analyst of خازندار (Khazendar), an Arabic-language economics and business publication for educated readers across the Arab world. You write Khazendar's signed house analysis (تحليل): not a news report and not an explainer, but an argued reading of what Khazendar's own recent reporting means, for whom, and what could happen next. You use only the facts and figures in the material supplied; you never invent numbers, quotes or sources; and every forecast is framed as a scenario with the conditions that would trigger it, never asserted as fact. The paper's voice may say "نراقب" in the watch section; otherwise no first person.
+const ANALYST_SYSTEM = `You are the senior analyst of خازندار (Khazendar), an Arabic-language economics and business publication for educated readers across the Arab world. You write Khazendar's signed house analysis (تحليل): not a news report and not an explainer, but an argued reading of what Khazendar's own recent reporting means, for whom, and what could happen next. You use only the facts and figures in the material supplied; you never invent numbers, quotes or sources; and every forecast is framed as a scenario with the conditions that would trigger it, never asserted as fact. You state the argument positively, as a columnist at the FT or الشرق الأوسط would, never against a claim nobody made («لا… وحده»، «ليس… بل»). No first person.
 
 ${HOUSE_STYLE}`;
 
@@ -289,9 +290,9 @@ export function prioritizeContext(notes) {
 }
 
 /** For the writer: an Arabic source's text is withheld once the desk notes carry its facts, so the story cannot be assembled from its sentences. */
-function writerSourceBlock(notes) {
+function writerSourceBlock(notes, reveal = new Set()) {
   return (source, index) => {
-    if (notes && source.lang === "ar") {
+    if (notes && source.lang === "ar" && !reveal.has(index + 1)) {
       return `SOURCE ${index + 1}: ${source.sourceNameEn} (${source.lang}) — "${source.title}" — published ${source.publishedAt ?? "unknown"}
 [Arabic text withheld: its facts are in the DESK NOTES above; attribute them to this source by name and write them in your own sentences.]`;
     }
@@ -372,11 +373,20 @@ ${short ? SHORT_SCHEMA_TEXT : SCHEMA_TEXT}`;
 export async function reviseArticle({ draft, sources, issues, log, wordLimits, kind = "", notes = null, lessons = "", short = false }) {
   const news = !wordLimits && !kind;
   const shown = short ? { title: draft.title, subtitle: draft.subtitle, slug: draft.slug, lede: draft.lede, body: draft.body, tags: draft.tags, regions: draft.regions, image_queries: draft.imageQueries ?? draft.image_queries } : draft;
+  // An editor's «ينقص التقرير:» names a fact a source carries and the story lacks. With desk notes the reviser saw only
+  // the notes (an Arabic source's text withheld, every figure "must appear in these notes"), so 9 of 12 such omissions
+  // survived the mend (an audit of 2026-10-23). The sources those findings name are shown whole, and their facts may join.
+  const omissions = notes ? issues.map(String).filter((i) => /ينقص التقرير|غائب|أغفل|يغفل|لا يذكر|missing|omits/i.test(i)) : [];
+  const named = omissions.flatMap((i) => [...i.matchAll(/(?:SOURCE|المصدر|مصدر)\s*(\d+)/gi)].map((m) => Number(m[1])));
+  const reveal = new Set(omissions.length && !named.length ? sources.map((_, i) => i + 1) : named);
+  const omissionNote = omissions.length
+    ? "THE EDITOR'S OMISSION FINDINGS name facts a source carries that the desk notes left out. Add each one the story needs, as that source states it and attributed to it, in your own sentences, even though the notes lack it; the text of the sources they name is shown below. Never add anything else from outside the notes.\n\n"
+    : "";
   const user = `You previously wrote this ${short ? "short story" : "article"} for خازندار:
 ${JSON.stringify(shown, null, 2)}
 
-${notesBlock(notes)}SOURCE MATERIAL
-${sources.map(writerSourceBlock(notes)).join("\n\n")}
+${notesBlock(notes)}${omissionNote}SOURCE MATERIAL
+${sources.map(writerSourceBlock(notes, reveal)).join("\n\n")}
 
 ${lessons}${lessons && news && !short ? "SCOPE OF THE LEARNED RULES: they protect reported facts and attribution; WHY IT MATTERS separately permits a bounded house inference from sourced premises. Never convert an analyst's opinion into an established fact.\n\n" : ""}${!news ? "" : short ? SHORT_STORY : newsDepthBrief(sources)}
 An editor found the following problems. Fix every one of them strictly using the source material. Remove any claim or number that the sources do not support. ${short ? `Keep everything else intact, and keep the story within 150-250 words (lede + body); never pad with unsupported material.` : `Preserve useful explanations, identification and developed comparisons; do not shrink the report into a digest during revision. Keep everything else intact, and keep the article at least ${wordLimits?.target ?? 350} words (lede + body)${wordLimits || kind ? " when the sources allow it" : `; a news story under ${NEWS_FLOOR} words is refused. When a problem says the report lacks an element («ينقص التقرير»), add it from the named source`}; never pad with unsupported material.`}
@@ -588,8 +598,9 @@ ${EXPLAINER_SCHEMA}`;
   return { draft: normalizeDraft(data, { kind: "explainer" }), model };
 }
 
-/** Word bounds of a house analysis (lede + body) for validateDraft: the brief asks for 700-1000; the validator tolerates a margin. */
-export const ANALYSIS_WORDS = { minWords: 500, maxWords: 1500, target: 700 };
+/** Word bounds of a house analysis (lede + body) for validateDraft: the brief asks for 600-900; the validator tolerates a margin.
+ *  700-1000 under four fixed sections until 2026-10-23, when an audit found all 12 analyses on that one template. */
+export const ANALYSIS_WORDS = { minWords: 450, maxWords: 1300, target: 650 };
 /** A 1000-word Arabic JSON answer runs to ~5000 tokens; reasoning models also think first, so leave ample room. */
 const ANALYSIS_MAX_TOKENS = 12000;
 
@@ -598,7 +609,7 @@ const ANALYSIS_SCHEMA = `{
   "subtitle": "Arabic dek: one sentence (max 160 chars) carrying the central claim of the analysis",
   "slug": "english-kebab-case-slug-4-to-7-words",
   "lede": "Opening paragraph, 2-3 sentences: the argument stated plainly and anchored in this week's facts",
-  "body": "Markdown. First one or two paragraphs (no subhead) that complete the argument; then exactly these four '## ' subheads in this order: '## ما الذي تغيّر' (what changed, from the facts of the related stories, attributed as they attribute them), '## من يربح ومن يخسر' (winners and losers, concrete: countries, sectors, companies, households), '## السيناريوهات' (two or three scenarios, each with what would trigger it and what it would mean), '## ما الذي نراقبه' (what to watch, with dates where the material gives them). Lede and body together 700-1000 words. Paragraphs separated by blank lines; no bullet lists.",
+  "body": "Markdown. First one or two paragraphs (no subhead) that complete the argument; then its development in the order the argument needs: what changed (from the related stories, attributed as they attribute it), who gains and who pays (concrete: countries, sectors, companies, households), and what could turn it (a scenario only where the stories show a real fork, with what would trigger it), all in prose. At most three '## ' subheads, each a step of the argument stated as a claim or the reader's next question; never the labels ما الذي تغيّر، من يربح ومن يخسر، السيناريوهات، ما الذي نراقبه. End on the next dated decision or release the stories name, or the last fact the argument needs; never a list of things to watch. Lede and body together 600-900 words. Paragraphs separated by blank lines; no bullet lists.",
   "key_facts": [{"label": "short Arabic label (2-5 words)", "value": "a figure exactly as it appears in the supplied material, e.g. 108 دولاراً or 2.5%"}],
   "why_it_matters": "One Arabic paragraph (40-90 words): the one consequence the argument leads to, stated plainly as Khazendar's reading; not a summary of the analysis, never the region as a formula, never open with «يعكس/يمثل/يُعدّ»",
   "tags": ["3-5 Arabic tags: institutions, countries, sectors, indicators"],
@@ -632,8 +643,8 @@ MATERIAL: خازندار's own recent reporting (use only this material; every f
 ${relatedArticles.map(relatedBlock).join("\n\n")}
 
 TASK
-Write the analysis for خازندار. State the argument in the first two paragraphs, then develop it under the four required subheads. The editor's theme and angle are direction only: where the material does not support a part of them, drop that part rather than inventing support. Attribute facts as the material attributes them (the original institution or outlet), never to vague "reports". Do not add facts, figures or quotations from memory; if the material lacks a number, say so or leave it out. Restate the facts in fresh sentences of your own; do not copy sentences from the material. Frame every forecast as a scenario with its trigger; never assert what will happen. A consequence or causal link that the material does not itself report is Khazendar's reading: state it hedged (marked once where that reading begins, then written plainly: at most one hedge in a paragraph, never the same hedge twice, never two sentences in a row opening with one) and in proportion to the evidence, never as established fact, and never generalise one country's figure to a whole region. The title states the question or a claim the material supports; it must not overstate.
-LENGTH: 700-1000 words in the lede and body together; each of the four sections needs two or three full paragraphs. A draft under 700 words is rejected automatically.
+Write the analysis for خازندار. State the argument in the first two paragraphs, then develop it in the order the argument needs, with no fixed sections. The editor's theme and angle are direction only: where the material does not support a part of them, drop that part rather than inventing support. Attribute facts as the material attributes them (the original institution or outlet), never to vague "reports". Do not add facts, figures or quotations from memory; if the material lacks a number, say so or leave it out. Restate the facts in fresh sentences of your own; do not copy sentences from the material. Frame every forecast as a scenario with its trigger; never assert what will happen. A consequence or causal link that the material does not itself report is Khazendar's reading: state it hedged (marked once where that reading begins, then written plainly: at most one hedge in a paragraph, never the same hedge twice, never two sentences in a row opening with one) and in proportion to the evidence, never as established fact, and never generalise one country's figure to a whole region. The title states the question or a claim the material supports; it must not overstate.
+LENGTH: 600-900 words in the lede and body together. A draft under 500 words is sent back.
 Return one JSON object exactly in this shape:
 ${ANALYSIS_SCHEMA}`;
   // An analysis without tags is still an analysis: fall back to the related stories' own tags.

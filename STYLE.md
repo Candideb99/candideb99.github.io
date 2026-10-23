@@ -260,6 +260,13 @@ has exactly our template. Now:
   asserted instead of shown («يكتسب أهمية»، «محطة مفصلية»). The house style's «WRITE WHAT IS THERE» rule carries the
   rest of Wikipedia's *Signs of AI writing*, said the Arabic way. Calibrated on all 335 published pieces: no news
   story trips any of them; every explainer and paper reading does.
+- **Analyses have no fixed sections either** (the second audit, the same day: all 12 ran ما الذي تغيّر / من يربح ومن
+  يخسر / السيناريوهات / ما الذي نراقبه and closed on «نراقب»). The argument is stated positively, never against a claim
+  nobody made («لا… وحده»); a scenario appears only where the stories show a real fork; the piece ends on the next
+  dated decision or the last fact the argument needs. 600-900 words. Every hub piece's last review findings are mended
+  before publication, and analyses, paper readings and the weekly pass the check before publication as news does.
+- **A news outlet's arithmetic is not a fact**: an average or share it computed is recomputed or left out, a share keeps
+  its base, and «المصدران» says whose sources they are. «رفع الدعم» means removing a subsidy: «زيادة الدعم» for a rise.
 
 ## 2. The editing (فن التحرير الصحفي)
 
