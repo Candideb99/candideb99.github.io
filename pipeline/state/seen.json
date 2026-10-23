@@ -1686,6 +1686,17 @@
       "decision": "published",
       "slug": "openai-trims-valuation-target-30-billion-raise-806edd",
       "title": "OpenAI working on new $30B raise at $1.25T valuation ahead of IPO"
+    },
+    "34ca0ea599abecaa": {
+      "at": "2026-10-23T14:22:08.282Z",
+      "decision": "skipped",
+      "title": "IFDP Paper: Estimating Yield Impacts of Treasury Demand and Supply Changes"
+    },
+    "c3384471cc69a957": {
+      "at": "2026-10-23T14:30:27.902Z",
+      "decision": "published",
+      "slug": "ai-agents-delegable-work-income-divide-79e720",
+      "title": "The Delegation Divide: An Open Index of AI-Agent Delegability across Occupations and Countries"
     }
   }
 }
