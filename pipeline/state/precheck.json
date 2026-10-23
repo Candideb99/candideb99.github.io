@@ -5234,6 +5234,90 @@
           "noted": []
         }
       ]
+    },
+    "brent-highest-since-may-houthi-escalation-saudi-1b83e1": {
+      "at": "2026-10-23T12:02:35.376Z",
+      "title": "برنت يصعد إلى أعلى مستوى منذ مايو مع تصعيد الحوثيين ضد السعودية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 32,
+            "checked": 32,
+            "supported": 31,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "eurozone-private-sector-slows-france-contraction-e5093c": {
+      "at": "2026-10-23T12:21:23.751Z",
+      "title": "نمو القطاع الخاص في منطقة اليورو يتباطأ إلى أدنى مستوى في 4 أشهر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 47,
+            "checked": 47,
+            "supported": 44,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "openai-trims-valuation-target-30-billion-raise-806edd": {
+      "at": "2026-10-23T12:32:40.596Z",
+      "title": "أوبن إيه آي تخفض تقييمها المستهدف إلى 1.25 تريليون دولار في جولة تمويل جديدة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 19,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 3,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

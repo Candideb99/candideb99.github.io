@@ -1,187 +1,484 @@
 {
-  "mode": "explainer",
-  "startedAt": "2026-10-23T10:28:56.430Z",
-  "durationSec": 455,
-  "published": 1,
+  "mode": "news",
+  "startedAt": "2026-10-23T11:48:00.441Z",
+  "durationSec": 2680,
+  "published": 3,
   "refreshed": 0,
   "report": [
     {
-      "headline": "لماذا يشتري المستثمرون أسهماً لا تمنحهم صوتاً في قرارات ميتا؟",
-      "section": "explainers",
-      "outcome": "published",
-      "mendedAfterReview": 3,
-      "mendIssues": [
-        "تعارض بين المقدمة والمتن: تقول المقدمة «ويقبلها المستثمرون لأنها تبقى حصة في أرباح الشركة» كأن السوق قبلت أسهم ميتا الجديدة فعلاً. لكن المصدر 1 يذكر أن تداولها لا يبدأ قبل يناير 2027، والمتن نفسه يقول «أما سؤال القبول فيُطرح لاحقاً». الإصلاح: «ويقبل المستثمرون عادةً أسهماً كهذه لأنها تبقى حصة في الأرباح يمكن بيعها في السوق»، أو جعل الفعل احتمالياً في العنوان: «لماذا قد يقبل المستثمرون…».",
-        "آلية مضللة وتوقيت غير متسق: «ولا يملك حامل السهم الجديد صوتاً يعترض به على الإصدار، أو على إنفاق يتراوح بين 135 و145 مليار دولار هذا العام». العبارة توحي بأن حملة الأسهم المصوّتة يقرّون ميزانية الإنفاق الرأسمالي، وهم لا يصوّتون عليها عادة. والإنفاق المذكور يخص هذا العام (المصدر 1 والمصدر 2)، في حين لا تُتداول الفئة «سي» قبل يناير 2027، فلا يمكن أن يكون لحاملها أي موقف منه. الإصلاح: حذف الإحالة إلى الإنفاق والاكتفاء بـ«ولا يملك حامل السهم الجديد صوتاً في انتخاب مجلس الإدارة أو في القرارات الكبرى؛ فلا يبقى له إلا السعر، يحتفظ بالسهم أو يبيعه».",
-        "المشكلات الست المبلَّغ عنها في المسودة السابقة عولجت كلها: صياغة الخلاصة عن الفئات صُححت، و«تعويض الموظفين» بقي على أصله، وحُذف استنتاج «المؤشر»، وصُحح العنوان الفرعي، وحُذفت جملة «لم يكن للتصويت شأن»، واقتصر وصف اتفاقية زوكربيرغ على مضمونها."
+      "headline": "برنت عند أعلى مستوى منذ مايو بعد هجمات الحوثيين على ينبع ومنشآت سعودية",
+      "section": "energy",
+      "importance": 8,
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-10-23/oil-climbs-on-threats-of-a-widening-war-in-middle-east-video",
+        "https://aawsat.com/node/5332645",
+        "https://www.agbi.com/oil-and-gas/2026/10/houthi-threat-of-strikes-deep-in-saudi-arabia-pushes-oil-up/",
+        "https://www.cnbc.com/2026/10/23/oil-price-brent-wti-iran-war-saudi-arabia.html"
       ],
-      "slug": "why-investors-accept-meta-non-voting-shares-946886",
-      "title": "لماذا قد يقبل المستثمرون أسهم ميتا الجديدة التي لا تمنح حق التصويت؟",
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والمقدمة يوضحان ما تغيّر: برنت عند أعلى مستوى منذ أوائل مايو. لكن العنوان يحذف قيد «أعلن الحوثيون مسؤوليتهم» الذي تحتفظ به المقدمة، فيبدو استهداف ينبع واقعة مؤكدة. وتوضح الفقرة الأولى من الجسم التباين الأسبوعي بين برنت وغرب تكساس، فلا يبقى تناقض ظاهر.",
+              "repair": "إعادة قيد الادعاء إلى العنوان، أو استبدال «ينبع» بالتصعيد المؤكد ضد السعودية."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يقدم التقرير سياقاً مسنوداً: ارتفاع الخامين أكثر من 40% منذ بداية العام، منها أكثر من 13% في ثلاثين يوماً (المصدر 3)، وعودة صادرات هرمز إلى قرب مستويات ما قبل الحرب (المصدر 1)، وإخلاء مقر أرامكو وأمر الخارجية الأمريكية بمغادرة موظفيها، وتراجع البورصات الخليجية. وتربط الخلاصة تعافي صادرات هرمز بانتقال الخطر إلى منشآت المملكة نفسها، وتحدد شرطاً واضحاً هو تحوّل التهديد إلى ضربات تصيب الإنتاج أو الشحن. هذا استنتاج محدود ومفيد، باستثناء تثبيت واقعة ينبع.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "تحذير سريع («تداعيات كارثية وغير متوقعة... عمليات في عمق الأراضي السعودية») مؤخر إلى الجملة الأخيرة بعد فقرة الخلفية اليمنية، ومفصول عن مزاعمه بشأن الأهداف. والفقرة الختامية «وعلى الجبهة اليمنية...» تنتهي بخلفية عامة بدلاً من المخاطر التالية.",
+              "repair": "جمع تهديد سريع ومزاعمه ونفي المالكي في قسم الاستهداف قبل هجمات الجمعة، ثم إنهاء التقرير بفقرة هرمز التي تربط المخاطر بالإمدادات، وضغط خلفية اليمن في جملة واحدة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "أرقام الأسعار (109.97 و100.95 عند 11:38 غرينتش) مطابقة للمصدر 5، وهي أحدث توقيتاً من رقم 113.9 دولار عند 03:30 في المصدر 3. والنسب الأسبوعية مطابقة للمصدر 4، ومؤشرات البورصات وسهم الأهلي للمصدر 3. الخلل في الحالة لا في الأرقام: استهداف ينبع ادعاء حوثي يُعرض حقيقةً في العنوان و«لماذا يهمّ»، والسعودية أعلنت اعتراض المسيّرات والصواريخ.",
+              "repair": "إسناد واقعة ينبع إلى الحوثيين في العنوان والخلاصة، وتصحيح «بحسب تقارير نقلتها رويترز» إلى «بحسب رويترز»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان صار «برنت يصعد إلى أعلى مستوى منذ مايو مع تصعيد الحوثيين ضد السعودية»، والمقدمة تحتفظ بقيد «أعلن الحوثيون مسؤوليتهم». والفقرة الأولى من الجسم تشرح افتراق برنت (+3.3% أسبوعياً) عن غرب تكساس (-1.1%)، فلا يبقى تناقض ظاهر.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السياق مسند ومكتمل في الجسم: تعافي صادرات هرمز، وإخلاء مقر أرامكو، وأمر الخارجية الأمريكية بالمغادرة، وتراجع البورصات، وخلفية اليمن في جملة واحدة. مقدمات «لماذا يهمّ» صحيحة (المصدران 1 و3)، والاستنتاج معقول، وهو أن تعافي الإمدادات لا يهدئ السوق ما دامت منشآت أكبر مصدّر مهددة. لكن الجملة الثانية تحوّل الشرط إلى عامل وحيد ومؤكد.",
+              "repair": "«ويبقى الحاسم لمسار برنت ما إذا كان تهديد الحوثيين بعمليات في عمق السعودية سيتحول إلى ضربات تصيب الإنتاج أو الشحن فعلاً»."
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "التسلسل منطقي: السعر، ثم المقارنة الأسبوعية والسنوية، ثم التهديد فالمزاعم فهجمات الجمعة فالرد السعودي، ثم ردود الشركات والحكومات والأسواق، ثم الختام بهرمز وتباين روايتي إيران وترامب. وانضغطت خلفية اليمن في جملة ملحقة بفقرتها كما طُلب.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة: 109.97 و100.95 عند 11:38 غرينتش (المصدر 5)، والنسب الأسبوعية (المصدر 4)، والبورصات وسهم الأهلي (المصدر 3). لكن «ولم يبدأ صعود الخامين هذا الأسبوع» تنسب إلى غرب تكساس صعوداً أسبوعياً يناقض المصدر 4.",
+              "repair": "إعادة صياغة الجملة لتربط الأداء بالموجة السنوية والشهرية دون الإيحاء بأن الخامين يصعدان هذا الأسبوع."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 5,
+      "mendIssues": [
+        "خطأ في الاتجاه. تقول المسودة: «ولم يبدأ صعود الخامين هذا الأسبوع، فقد ارتفع كل منهما أكثر من 40% منذ بداية العام». الجملة توحي بأن الخامين يصعدان هذا الأسبوع. لكن المصدر 4 يقول إن غرب تكساس يتجه إلى تراجع أسبوعي بنسبة 1.1%، والفقرة السابقة نفسها تذكر ذلك، فينشأ تناقض داخلي. الإصلاح: «ويأتي ارتفاع اليوم ضمن موجة صعود أطول، إذ ارتفع كل من الخامين أكثر من 40% منذ بداية العام، منها أكثر من 13% خلال الثلاثين يوماً الماضية» (المصدر 3).",
+        "يقين يتجاوز المقدمات في «لماذا يهمّ»: «ويتوقف مسار برنت على تحوّل تهديد الحوثيين بعمليات في عمق السعودية إلى ضربات تصيب الإنتاج أو الشحن فعلاً». الصيغة تجعل تهديد الحوثيين العامل الوحيد في مسار برنت. لكن المصادر تذكر عاملاً آخر هو ما يعلنه الحرس الثوري عن سفن أصيبت أو اصطدمت بألغام في هرمز، ونفي ترامب لذلك (المصدر 4). كما أن «يتوقف على تحوّل» توحي بأن التحول سيقع. الإصلاح: «ويبقى الحاسم لمسار برنت ما إذا كان تهديد الحوثيين بعمليات في عمق السعودية سيتحول إلى ضربات تصيب الإنتاج أو الشحن فعلاً».",
+        "إسناد مختلط في الدك. تقول المسودة: «تصعيد الحوثيين ضد السعودية، أكبر مصدّر للخام في العالم، يهدد بتوسيع القتال حول مضيق هرمز، بحسب «بلومبرغ»». وصف السعودية بأكبر مصدّر للخام يأتي من المصدر 3 (AGBI) لا من بلومبرغ (المصدر 1)، والدك يكرر عبارة العنوان «تصعيد الحوثيين ضد السعودية» حرفياً. الإصلاح: «تقول «بلومبرغ» إن التصعيد يهدد بتوسيع القتال حول مضيق هرمز، حيث عادت صادرات الخام إلى ما يقارب مستويات ما قبل الحرب»، مع إبقاء صفة أكبر مصدّر في الجسم منسوبة إلى سياقها.",
+        "السياق مسند ومكتمل في الجسم: تعافي صادرات هرمز، وإخلاء مقر أرامكو، وأمر الخارجية الأمريكية بالمغادرة، وتراجع البورصات، وخلفية اليمن في جملة واحدة. مقدمات «لماذا يهمّ» صحيحة (المصدران 1 و3)، والاستنتاج معقول، وهو أن تعافي الإمدادات لا يهدئ السوق ما دامت منشآت أكبر مصدّر مهددة. لكن الجملة الثانية تحوّل الشرط إلى عامل وحيد ومؤكد. — «ويبقى الحاسم لمسار برنت ما إذا كان تهديد الحوثيين بعمليات في عمق السعودية سيتحول إلى ضربات تصيب الإنتاج أو الشحن فعلاً».",
+        "الأرقام مطابقة: 109.97 و100.95 عند 11:38 غرينتش (المصدر 5)، والنسب الأسبوعية (المصدر 4)، والبورصات وسهم الأهلي (المصدر 3). لكن «ولم يبدأ صعود الخامين هذا الأسبوع» تنسب إلى غرب تكساس صعوداً أسبوعياً يناقض المصدر 4. — إعادة صياغة الجملة لتربط الأداء بالموجة السنوية والشهرية دون الإيحاء بأن الخامين يصعدان هذا الأسبوع."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "صادرات الخام عبر مضيق هرمز عادت إلى ما يقارب مستويات ما قبل الحرب",
+          "source": 1
+        },
+        {
+          "fact": "الحوثيون أعلنوا مسؤوليتهم عن هجمات على ميناء ينبع السعودي على البحر الأحمر وعلى حقل نفطي ومطار في المملكة",
+          "source": 1
+        },
+        {
+          "fact": "السعودية أكبر مصدّر للخام في العالم",
+          "source": 3
+        },
+        {
+          "fact": "سريع حذّر من عمليات في عمق الأراضي السعودية إذا استهدفت المملكة القبائل اليمنية",
+          "source": 3
+        }
+      ],
+      "slug": "brent-highest-since-may-houthi-escalation-saudi-1b83e1",
+      "title": "برنت يصعد إلى أعلى مستوى منذ مايو مع تصعيد الحوثيين ضد السعودية",
       "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "مصر تستهدف نمواً 6.8% وتضخماً 7% بحلول 2030 في برنامج التحول الاقتصادي",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://www.alborsaanews.com/2026/10/23/2001337",
+        "https://www.alborsaanews.com/2026/10/23/2001334",
+        "https://www.youm7.com/story/2026/10/23/%D8%A7%D9%84%D8%AD%D9%83%D9%88%D9%85%D8%A9-%D8%AA%D8%B3%D8%AA%D9%87%D8%AF%D9%81-%D9%86%D9%85%D9%88%D9%8B%D8%A7-%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%D9%8A%D9%8B%D8%A7-6-8-%D9%88%D8%AE%D9%81%D8%B6-%D8%A7%D9%84%D8%AA%D8%B6%D8%AE%D9%85-%D8%A5%D9%84%D9%89-7/7590266",
+        "https://www.alborsaanews.com/2026/10/22/2001320"
+      ],
+      "outcome": "skipped: repeats a recent story («مصر تستهدف رفع صادراتها الرقمية إلى 12 مليار دولار سنوياً بحلول 2030»)"
+    },
+    {
+      "headline": "انكماش فرنسا يبطئ نمو القطاع الخاص في منطقة اليورو إلى أدنى مستوى في 4 أشهر",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://aawsat.com/node/5332642",
+        "https://www.bloomberg.com/news/articles/2026-10-23/euro-zone-business-activity-slowed-as-france-unrest-weighs",
+        "https://www.bloomberg.com/news/articles/2026-10-23/french-business-activity-unexpectedly-shrinks-on-budget-unrest",
+        "https://www.euronews.com/2026/10/23/france-slips-into-contraction-as-europes-growth-slows-how-bad-could-it-get"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "يفهم القارئ من العنوان أن النمو تباطأ، لكنه لا يعرف القراءة التي سجلتها منطقة اليورو (51.9 من 53.1). ولا تقول المقدمة صراحة إن المنطقة ما زالت فوق عتبة 50، فيبدو العنوان الفرعي عن انكماش فرنسا بلا مقابل واضح لوضع المنطقة.",
+              "repair": "تُذكر في المقدمة القراءة 51.9 من 53.1 وأنها لا تزال فوق 50، أي أن النمو تباطأ ولم يتحول إلى انكماش، ثم يأتي الانكماش الفرنسي بوصفه أبرز مصدر للضغط."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يقدم التقرير الخبراء بأدوارهم ومؤسساتهم، ويشرح عتبة 50 وفارق العائد. لكنه يحذف سياقاً يورده المصدران: ارتباط تكاليف الطاقة بحرب الشرق الأوسط (المصدر 1)، وبرنت قرب 114 دولاراً واليورو الأضعف (المصدر 4)، وتضخم يقارب ضعف هدف 2% (المصدر 1). أما «لماذا يهمّ» فاستنتاجه محدود ومشروط بـ«إذا صحّت توقعات الاقتصاديين المستطلعين»، ومقدماته مدعومة من المصدرين 1 و4.",
+              "repair": "تُضاف هذه الوقائع إلى فقرة الطاقة والفائدة، ويبقى صندوق «لماذا يهمّ» كما هو."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يتسلسل التقرير من فرنسا إلى السندات ثم ألمانيا، وهذا ترتيب منطقي. لكن أرقام منطقة اليورو تأتي متأخرة بعد ألمانيا في فقرة تبدأ بتكرار توقع 52.7، فتبدو ملحقاً معزولاً عن الخبر الرئيسي.",
+              "repair": "تُنقل أرقام منطقة اليورو (الخدمات والتصنيع والطلبيات والتوظيف) إلى ما بعد المقدمة مباشرة، ثم تُشرح فرنسا وألمانيا بوصفهما مكونين لهذه الصورة، وتُحذف جملة التوقع المكررة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "أرقام فرنسا وألمانيا والسندات وتوقع المركزي مطابقة للمصادر. لكن عبارة «تتحمل فرنسا الجزء الأكبر من هذا التراجع» تنسب إلى فرنسا حصة لم يحسبها أي مصدر، و«بسبب» و«بعدما» تشددان الرابط الذي يصوغه المصدر 1 بعبارتي «في ظل» و«تحت ضغط».",
+              "repair": "«وكانت فرنسا أبرز مصادر الضغط»، و«تحت ضغط...»، و«في ظل التشديد السريع للأوضاع المالية»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يذكران تباطؤ النمو إلى 51.9 نقطة من 53.1 وبقاءه فوق عتبة 50، فلا يتناقض العنوان الفرعي حين يتحدث عن عودة فرنسا إلى الانكماش، إذ يصرّح بأن المنطقة لا تزال في نطاق النمو.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يقدّم التقرير الخبراء بأدوارهم ومؤسساتهم، ويشرح عتبة 50 وفارق العائد، ويربط الطاقة بحرب الشرق الأوسط. لكنه يُغفل آليتين يوردهما المصدران: ضغط الهوامش مع إبطاء رفع أسعار البيع (المصدر 1)، وانتقال صعود العوائد الفرنسية إلى كلفة قروض الشركات واستثمارها (المصدر 4). مقدمات صندوق «لماذا يهمّ» مدعومة: كلفة الاقتراض والتوتر السياسي، وتكاليف المدخلات، واستطلاع «رويترز». واستنتاجه، أي تزامن التباطؤ مع فائدة أعلى، محدود ومشروط بـ«إذا صحّت توقعات الاقتصاديين المستطلعين».",
+              "repair": "تُضاف جملة الهوامش إلى فقرة الطاقة، وجملة أثر العوائد على الشركات إلى قسم الأسواق، ويبقى الصندوق كما هو."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الترتيب العام سليم: صورة المنطقة، ثم فرنسا وأسواقها، ثم ألمانيا، ثم الطاقة والفائدة. لكن الجملة «وتداول خام برنت... وأوضحت «يورونيوز» أن ضعف اليورو...» تجمع واقعتين منفصلتين، وجملة ثقة الشركات تقطع تصريحات ويليامسون.",
+              "repair": "تُدمج آلية اليورو مع سعره في موضع واحد، وتُنقل جملة الثقة إلى فقرة الطلبيات والتوظيف، وتُجمع أقوال ويليامسون في فقرة واحدة."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الفترات والأرقام والتوقعات مطابقة للمصادر: عائد 5.14% الخميس ثم 5.04% الجمعة، وقراءة 53.8 لألمانيا «آنذاك» أعلى قراءة في 11 شهراً، وتوقع رفع الفائدة منسوب إلى استطلاع «رويترز» بوصفه توقعاً لا قراراً، والروابط «تحت ضغط» و«في ظل» مطابقة لصياغة المصدر 1.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 6,
+      "mendIssues": [
+        "بناء مفكك: «وتداول خام برنت قرب 114 دولاراً للبرميل الجمعة، وأوضحت «يورونيوز» أن ضعف اليورو قد يرفع كلفة الطاقة المستوردة، فيضيف مصدراً آخر للتضخم» تربط بالواو واقعتين مختلفتين. وسعر اليورو نفسه (1.12 دولار) ورد قبل ذلك بفقرات في قسم الأسواق، فبقيت الآلية منفصلة عن الرقم الذي تفسره (المصدر 4). الإصلاح: تُنقل الآلية إلى جملة اليورو أو تُدمجان هكذا: «وتداول خام برنت قرب 114 دولاراً للبرميل الجمعة، ويهدد تراجع اليورو إلى نحو 1.12 دولار برفع كلفة الطاقة المستوردة أكثر، فيضيف مصدراً آخر للتضخم»، مع حذف ذكر اليورو المكرر من قسم الأسواق أو إبقائه هناك وحده مع آليته.",
+        "بناء مفكك: تقطع جملة «وتراجعت ثقة الشركات في منطقة اليورو إلى أدنى مستوى في خمسة أشهر...» تصريحات ويليامسون، فتأتي بعدها «وأضاف ويليامسون...» كأنها إملاء جديد من مذكرة المحرر. الإصلاح: تُنقل جملة الثقة إلى فقرة الطلبيات والتوظيف في أول المتن (المصدر 1) لأنها جزء من صورة المنطقة، وتُدمج أقوال ويليامسون عن التضخم والطلب والناتج والمركزي الأوروبي في فقرة واحدة متصلة.",
+        "ينقص التقرير: الدافع في صورته الكاملة. يقول ويليامسون إن الشركات رفعت أسعار البيع لحماية هوامشها، ويضيف المصدر 1 أنها رفعتها بوتيرة أبطأ من سبتمبر، ما يشير إلى ضغط على الهوامش. هذه هي الحلقة التي تربط كلفة الطاقة بتباطؤ النشاط، والمسودة تكتفي بذكر ارتفاع التكاليف. الإصلاح: تُضاف بعد جملة تسارع تكاليف المدخلات: «لكن الشركات رفعت أسعار بيعها بوتيرة أبطأ من سبتمبر، ما يشير إلى ضغط على هوامش أرباحها».",
+        "ينقص التقرير: أثر ارتفاع تكاليف الاقتراض الفرنسية على الشركات. يشرح المصدر 4 أن صعود العوائد يرفع كلفة القروض وقد يثبط الاستثمار حتى دون رفع المركزي الأوروبي الفائدة، والمسودة تعرض أرقام العوائد والفارق دون هذه الآلية التي تصل قسم الأسواق بانكماش النشاط، وتسند كذلك مقدمة صندوق «لماذا يهمّ». الإصلاح: تُضاف بعد فقرة الفارق مع ألمانيا جملة منسوبة إلى «يورونيوز»: «ويرفع صعود العوائد كلفة القروض على الشركات وقد يثبط استثمارها، حتى دون زيادات جديدة من المركزي الأوروبي». ولإبقاء التقرير قريباً من الحد المعتاد (المتن الحالي نحو 750 كلمة) يُختصر تكرار كلمة «نقطة» بعد كل رقم ثانٍ في الأزواج المتتالية.",
+        "يقدّم التقرير الخبراء بأدوارهم ومؤسساتهم، ويشرح عتبة 50 وفارق العائد، ويربط الطاقة بحرب الشرق الأوسط. لكنه يُغفل آليتين يوردهما المصدران: ضغط الهوامش مع إبطاء رفع أسعار البيع (المصدر 1)، وانتقال صعود العوائد الفرنسية إلى كلفة قروض الشركات واستثمارها (المصدر 4). مقدمات صندوق «لماذا يهمّ» مدعومة: كلفة الاقتراض والتوتر السياسي، وتكاليف المدخلات، واستطلاع «رويترز». واستنتاجه، أي تزامن التباطؤ مع فائدة أعلى، محدود ومشروط بـ«إذا صحّت توقعات الاقتصاديين المستطلعين». — تُضاف جملة الهوامش إلى فقرة الطاقة، وجملة أثر العوائد على الشركات إلى قسم الأسواق، ويبقى الصندوق كما هو.",
+        "الترتيب العام سليم: صورة المنطقة، ثم فرنسا وأسواقها، ثم ألمانيا، ثم الطاقة والفائدة. لكن الجملة «وتداول خام برنت... وأوضحت «يورونيوز» أن ضعف اليورو...» تجمع واقعتين منفصلتين، وجملة ثقة الشركات تقطع تصريحات ويليامسون. — تُدمج آلية اليورو مع سعره في موضع واحد، وتُنقل جملة الثقة إلى فقرة الطلبيات والتوظيف، وتُجمع أقوال ويليامسون في فقرة واحدة."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "صعدت تكاليف اقتراض الحكومة الفرنسية وسط قلق المستثمرين من قدرتها على إصلاح ماليتها، وزادت الاحتجاجات التوتر قبل الانتخابات الرئاسية المقررة في الربيع",
+          "source": 1
+        },
+        {
+          "fact": "تسارع ارتفاع تكاليف المدخلات في منطقة اليورو للشهر الثاني على التوالي بسبب أسعار الطاقة والوقود والنقل",
+          "source": 1
+        },
+        {
+          "fact": "توقع استطلاع لرويترز إبقاء فائدة الودائع عند 2.50% الأسبوع المقبل ثم رفعها 25 نقطة أساس في ديسمبر، مع تضخم يقارب ضعف مستهدف 2%",
+          "source": 1
+        },
+        {
+          "fact": "قال ويليامسون إن ارتفاع أسعار الفائدة بدأ يضعف الطلب وإن البيانات قد تزيد التكهنات بتشديد أكثر حدة من المركزي الأوروبي",
+          "source": 4
+        }
+      ],
+      "slug": "eurozone-private-sector-slows-france-contraction-e5093c",
+      "title": "نمو القطاع الخاص في منطقة اليورو يتباطأ إلى أدنى مستوى في 4 أشهر",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "أوبن إيه آي تخفض تقييمها المستهدف إلى 1.25 تريليون دولار في جولة تمويل بـ30 مليار دولار",
+      "section": "technology",
+      "importance": 6,
+      "sources": [
+        "https://www.ft.com/content/bb564eb1-79d4-4694-aa24-1155202a9abc?syn-25a6b1a6=1",
+        "https://techcrunch.com/2026/10/22/openai-working-on-new-30b-raise-at-1-25t-valuation-ahead-of-ipo/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يوضح العنوان والعنوان الفرعي والافتتاحية معاً أن المتغير هو التقييم المستهدف (من 1.4 إلى 1.25 تريليون دولار)، وأن الجولة لم تُغلق بعد لأن شروطها قيد التفاوض وقد تتغير. ويحدد المتن أن الشركة تتجه إلى جولة خاصة بدلاً من الإسراع في الطرح العام، رغم أنها قدمت أوراقها السرية في يونيو.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السياق المطلوب حاضر: المقارنة بتقييم مارس البالغ 852 مليار دولار بعد التمويل مع شرح الفرق بين التقييم قبل التمويل وبعده، والرقم القياسي لأعلى شركة خاصة قيمة، والأثر على طرح أنثروبيك (المصدر 2). كما أن خلاصة «لماذا يهمّ» استدلال محدود من مقدمات مسندة: الشروط قيد التفاوض، والتقييم انخفض خلال أسابيع، ومن ثم فهو سعر تفاوضي وقد يصير مرجعاً للطرح العام، وقد صيغ ذلك بحذر عبر «قد». غير أن السياق يضيف ادعاء غير مسند عن صفقة واحدة «مع الطرف نفسه».",
+              "repair": "حذف «فتجمع الجولة بين المال والقدرة على تشغيل النماذج في صفقة واحدة مع الطرف نفسه» والإبقاء على صيغة الاحتمال الواردة في المصدر 2."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرة الأولى من المتن تعيد ما قالته الافتتاحية عن قيادة كواتو والمستثمرين الإماراتيين وعن التقييم قبل التمويل، فيبدأ المتن بتكرار بدل أن يتقدم بمعلومة جديدة. أما بقية الفقرات فتتدرج تدرجاً معقولاً: المقارنة، ثم الرقم القياسي، ثم التفاوض، ثم الطرح العام، ثم أنثروبيك. وخلاصة «لماذا يهمّ» لا تكرر خاتمة المتن، بل تضيف قراءة عن طبيعة التقييم التفاوضية.",
+              "repair": "حذف الجملة المكررة وافتتاح المتن بخبر احتمال اقتران التمويل الإماراتي باتفاق للقدرات الحاسوبية، ثم الانتقال إلى المقارنة بتقييم مارس."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: حتى 30 مليار دولار، و1.25 تريليون قبل التمويل، و852 ملياراً بعد التمويل، و65 ملياراً بتقييم 965 ملياراً، ونطاق 1.5 إلى 2 تريليون. لكن عبارة «في تقرير سابق ... وهو الرقم نفسه الذي طرحته الشركة في وقت سابق من الشهر» تدمج تقرير بلومبرغ الصادر قبل شهر مع عرض أكتوبر الذي نقلته فايننشال تايمز، وتُسقط التوقيت الذي يحدده المصدر 2.",
+              "repair": "ذكر أن تقرير بلومبرغ صدر «قبل نحو شهر» (المصدر 2)، وفصله عن عرض أكتوبر الذي نقلته فايننشال تايمز عن وثائق اطلعت عليها (المصدر 1)."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يوضح العنوان والمقدمة ما تغيّر: نزل التقييم المستهدف من 1.4 إلى 1.25 تريليون دولار (المصدر 1). ويوضح المتن ما لم يتقرر بعد: الشروط قيد التفاوض وقد تتغير، والاقتران باتفاق القدرات الحاسوبية احتمال لا اتفاق منجز (المصدر 2).",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يقارن التقرير بتقييم مارس البالغ 852 مليار دولار بعد التمويل، ويشرح الفرق بين التقييم قبل التمويل وبعده، ويذكر الرقم القياسي لأعلى شركة خاصة قيمة، وطلب الطرح العام في يونيو، وأرقام أنثروبيك (المصدر 2). وفي «لماذا يهمّ» مقدمتان مسندتان: تراجع السعر خلال أسابيع واستمرار التفاوض، ويُستنتج منهما استدلال محدود بأن التقييم سعر تفاوضي لا سعر سوق.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "تتدرج الفقرات تدرجاً معقولاً: الجولة، ثم المقارنة، ثم الرقم القياسي، ثم التفاوض، ثم الطرح العام، ثم أنثروبيك. لكن الفقرتين الأخيرتين تتكئان على وسم «الموقع» المتكرر، والجملة الثانية في «لماذا يهمّ» تعيد خلاصة المتن عن سقف التوقعات وأثر التقييم على أنثروبيك.",
+              "repair": "جمع تقديرات «تك كرانش» تحت إسناد واحد، وإسناد الخبر إلى «سي إن بي سي» بدل «التقارير»، ودمج الجملة الثانية من «لماذا يهمّ» في الأولى أو حذفها."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر: «ما يصل إلى» 30 مليار دولار، و1.25 تريليون قبل التمويل، و852 ملياراً بعد التمويل، و«قبل شهر» لتقرير بلومبرغ مقابل «وقت سابق من أكتوبر» لوثائق فايننشال تايمز، و65 ملياراً بتقييم 965 ملياراً، ونطاق 1.5 إلى 2 تريليون. كما بقيت صيغة الشرط في «إذا حصلت… فستصبح».",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 4,
+      "mendIssues": [
+        "ترجمة حرفية تتكرر مرتين: «قدّمت في يونيو أوراقاً سرية تمهيداً لهذا الطرح» و«ثم قدّمت هي الأخرى أوراقاً سرية للإدراج في يونيو». هذا نقل مباشر لـ\"filed confidential paperwork\" (المصدر 2)، و«أوراق سرية» توحي بالعربية بوثائق مكتومة لا بطلب إدراج غير معلن. الإصلاح: «رغم أنها تقدّمت في يونيو بطلب سري للطرح العام الأولي»، و«ثم تقدّمت هي الأخرى بطلب سري للإدراج في يونيو».",
+        "تكرار وسم المصدر في فقرتين متتاليتين: «وفق ما أورده «تك كرانش» استناداً إلى التقارير»، ثم «ويرى الموقع»، ثم «في تقدير الموقع»، ثم «شائعات أوردها الموقع». أربعة إسنادات متلاحقة إلى الموقع نفسه تثقل القراءة. كما أن «استناداً إلى التقارير» إسناد مبهم، والمصدر 2 ينسب الخبر إلى «سي إن بي سي». الإصلاح: «تبدو أوبن إيه آي، بحسب تقرير «سي إن بي سي» الذي نقله «تك كرانش»، أقرب إلى…»، ثم إسناد واحد لتقدير الموقع يجمع أثر التقييم على طرح أوبن إيه آي وعلى طرح أنثروبيك، مع حذف «في تقدير الموقع» المكررة.",
+        "الجملة الثانية من «لماذا يهمّ» تكرر خلاصة المتن: «وما تستقر عليه الشروط قد يصبح المرجع الذي يُقاس عليه طرح الشركة العام لاحقاً، ومعه التقييم الذي تطلبه أنثروبيك» تعيد ما ورد في المتن من أن التقييم «سيرفع سقف التوقعات أكثر لطرح الشركة العام المرتقب» وأن له «تداعيات» على طرح أنثروبيك (المصدر 2). الإصلاح: الاكتفاء بالجملة الأولى عن الطبيعة التفاوضية للسعر، أو ربط الثانية بقيد جديد، كأن يكون مرجع الطرح هو السعر الذي يقبله قائدو الجولة لا الرقم الذي عرضته الشركة أولاً، دون تكرار ما ورد في المتن.",
+        "تتدرج الفقرات تدرجاً معقولاً: الجولة، ثم المقارنة، ثم الرقم القياسي، ثم التفاوض، ثم الطرح العام، ثم أنثروبيك. لكن الفقرتين الأخيرتين تتكئان على وسم «الموقع» المتكرر، والجملة الثانية في «لماذا يهمّ» تعيد خلاصة المتن عن سقف التوقعات وأثر التقييم على أنثروبيك. — جمع تقديرات «تك كرانش» تحت إسناد واحد، وإسناد الخبر إلى «سي إن بي سي» بدل «التقارير»، ودمج الجملة الثانية من «لماذا يهمّ» في الأولى أو حذفها."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "طرحت أوبن إيه آي في وقت سابق من الشهر تقييماً بـ1.4 تريليون دولار، وفق وثائق اطلعت عليها فايننشال تايمز",
+          "source": 1
+        },
+        {
+          "fact": "تعمل أوبن إيه آي على جمع ما يصل إلى 30 مليار دولار بتقييم 1.25 تريليون دولار قبل التمويل في جولة تقودها كواتو ومستثمرون في الإمارات، بحسب مصادر سي إن بي سي",
+          "source": 2
+        },
+        {
+          "fact": "أفادت سي إن بي سي وبلومبرغ بأن الشروط لا تزال قيد التفاوض وقد تتغير",
+          "source": 2
+        }
+      ],
+      "slug": "openai-trims-valuation-target-30-billion-raise-806edd",
+      "title": "أوبن إيه آي تخفض تقييمها المستهدف إلى 1.25 تريليون دولار في جولة تمويل جديدة",
+      "score": 9,
       "image": "photo"
     }
   ],
   "llm": {
-    "calls": 17,
-    "failures": 0,
-    "promptTokens": 191605,
-    "completionTokens": 34767,
-    "cacheReadTokens": 46999,
-    "costUsd": 1.8615,
+    "calls": 70,
+    "failures": 6,
+    "promptTokens": 1000875,
+    "completionTokens": 259624,
+    "cacheReadTokens": 284102,
+    "costUsd": 10.9829,
     "byModel": {
-      "claude-cli/claude-opus-5-5": 17
+      "claude-cli/claude-opus-5-5": 70
     }
   },
   "log": [
-    "[10:31:40]   · خطأ في الخلاصة: «لم يعد سهم ميتا بعد يناير 2027 أداة ملكية وتصويت معاً» يوحي بأن أسهم ميتا كلها فقدت التصويت. المصدر 1 ينص على الحفاظ على «القوة التصويتية لحملة",
-    "[10:31:40]   · تغيير في المعنى: «عملة جديدة تدفع بها ثمن الاستحواذات ورواتب الموظفين». المصدر 1 يقول «تعويض الموظفين»، أي مكافآتهم بالأسهم، لا رواتبهم. الصواب: «وتعويض الموظفي",
-    "[10:31:40]   · استنتاج يتجاوز المقدمات في الخلاصة: «تصبح أخبار الإصدارات الجديدة من الفئة «سي» مؤشراً على حصته، بالقدر نفسه الذي تؤشر به أرقام الأرباح». لا شيء في المصادر يسند",
-    "[10:31:40]   · العنوان الفرعي مضلل: «والصوت الذي يفقده المستثمر قلّما يغيّر قراراً». المساهم الحالي لا يفقد صوتاً، بل يتسلم بحسب المصدر 1 أسهماً إضافية بلا تصويت في صورة توزيع",
-    "[10:32:10] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=30047",
-    "[10:32:32] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=22622",
-    "[10:32:32] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,lede,whyItMatters] rejected=[]",
-    "[10:32:32] desk \"لماذا يقبل المستثمرون أسهم ميتا الجديدة التي لا تمنح حق التصويت؟\": rewrote title, subtitle, lede, whyItMatters",
-    "[10:33:08] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=35555",
-    "[10:33:08] critic (second pass) explainer: revise score=8",
-    "[10:33:35] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=27217",
-    "[10:34:00] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=25416",
-    "[10:34:00] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,lede,whyItMatters] rejected=[]",
-    "[10:34:00] desk \"لماذا قد يقبل المستثمرون أسهم ميتا الجديدة التي لا تمنح حق التصويت؟\": rewrote subtitle, lede, whyItMatters",
-    "[10:34:00] mended explainer \"لماذا قد يقبل المستثمرون أسهم ميتا الجديدة التي لا تمنح حق التصويت؟\": the second pass's 3 finding(s) sent back once more",
-    "[10:34:04] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3576",
-    "[10:34:04] image: the picture should say: Meta's new shares give investors a cut of the profits but leave the votes with Zuckerberg.",
-    "[10:34:04] image: tier 3, the writer's own subjects: Nasdaq MarketSite traders | Mark Zuckerberg speaking | stock exchange trading floor",
-    "[10:34:04] commons \"Nasdaq MarketSite traders 2026\": 0 usable of 0",
-    "[10:34:05] commons \"Nasdaq MarketSite traders\": 0 usable of 0",
-    "[10:34:05] commons \"Nasdaq MarketSite\": 2 usable of 12",
-    "[10:34:06] commons \"Mark Zuckerberg speaking 2026\": 6 usable of 6",
-    "[10:34:06] commons \"Mark Zuckerberg speaking\": 7 usable of 12",
-    "[10:34:06] image: dropped \"President Donald J Trump hosts a luncheon on Super Intelligence, Septe\" — shows donald, donald, not the story's people",
-    "[10:34:06] image: dropped \"President Donald J Trump hosts a luncheon on Super Intelligence, Septe\" — shows donald, donald, not the story's people",
-    "[10:34:06] image: dropped \"P20260929JB-0139 (55561573319).jpg\" — shows donald, not the story's people",
-    "[10:34:06] image: dropped \"P20260929JB-0164 (55560393737).jpg\" — shows donald, not the story's people",
-    "[10:34:06] image: dropped \"P20260929JB-0542 (55561811380).jpg\" — shows donald, not the story's people",
-    "[10:34:06] image: dropped \"P20260929MR-0168 (55561513053).jpg\" — shows donald, not the story's people",
-    "[10:34:06] commons \"stock exchange trading floor 2026\": 2 usable of 3",
-    "[10:34:07] commons \"stock exchange trading floor\": 8 usable of 12",
-    "[10:34:07] image: dropped \"President Ronald Reagan During a Trip to New York and a Visit to The N\" — dated 1985, an archival picture",
-    "[10:34:07] image: dropped \"Secretary Rubio visits NYSE (55542207624).jpg\" — shows rubio, marco, not the story's people",
-    "[10:34:07] image: dropped \"Frankfurt Stock Exchange (Ank Kumar) 03.jpg\" — another frame of a series a published story runs",
-    "[10:34:07] image: dropped \"Frankfurt Stock Exchange (Ank Kumar) 08.jpg\" — another frame of a series a published story runs",
-    "[10:34:07] image: dropped \"Frankfurt Stock Exchange (Ank Kumar) 05.jpg\" — another frame of a series a published story runs",
-    "[10:34:07] image: dropped \"Frankfurt Stock Exchange (Ank Kumar) 04.jpg\" — another frame of a series a published story runs",
-    "[10:34:07] image: dropped \"Frankfurt Stock Exchange (Ank Kumar) 07.jpg\" — another frame of a series a published story runs",
-    "[10:34:13] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6260",
-    "[10:34:20] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6893",
-    "[10:34:20] image: second check (claude-cli/claude-opus-5-5) AMATEUR — refused \"Mark Zuckerberg speaks at Startup School (6293319148).jpg\": Although it shows Zuckerberg himself at a captioned past occasion, the frame is an audience member's low-resolution snap",
-    "[10:34:20] image: tier 4, the story's point and its subject: Mark Zuckerberg Meta shareholders | traders New York Stock Exchange | Nasdaq traders screens | traders trading floor United States | stock exchange traders New York | shareholders annual meeting (home: United States, USA, American, New York, California)",
-    "[10:34:21] commons \"Mark Zuckerberg Meta shareholders\": 1 usable of 2",
-    "[10:34:21] pexels \"Mark Zuckerberg Meta shareholders\": 8 usable",
-    "[10:34:41] openverse \"Mark Zuckerberg Meta shareholders\": The operation was aborted due to timeout",
-    "[10:34:41] image: dropped \"Hands holding smartphone with Meta Threads logo on screen, Meta brandi\" — names too little of shareholders",
-    "[10:34:41] image: dropped \"Close-up view of Facebook app on a modern smartphone, emphasizing tech\" — names too little of shareholders",
-    "[10:34:41] image: dropped \"A person trading stocks on a smartphone and laptop. Ideal for finance \" — names too little of shareholders",
-    "[10:34:41] image: dropped \"Close-up of a hand holding a smartphone displaying the Instagram app, \" — names too little of shareholders",
-    "[10:34:41] image: dropped \"Athlete kneeling at starting block, ready to sprint on Ciudad de Méxic\" — names too little of shareholders",
-    "[10:34:41] image: dropped \"Close-up of a smartphone with a stylus crossing out text on its screen\" — names too little of shareholders",
-    "[10:34:41] image: dropped \"Close-up of a woman holding a smartphone displaying the Instagram app \" — names too little of shareholders",
-    "[10:34:41] image: dropped \"Confident businessman presenting with a microphone in New York office.\" — names too little of shareholders",
-    "[10:34:41] commons \"traders New York Stock Exchange\": 17 usable of 24",
-    "[10:34:41] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
-    "[10:34:41] image: dropped \"New York - Docks-New York Harbor - NARA - 68146200 ed2.jpg\" — names too little of traders",
-    "[10:34:41] image: dropped \"New York - New York City - NARA - 68146147.jpg\" — dated 1928, an archival picture",
-    "[10:34:41] image: dropped \"New York - New York City - NARA - 68146131.jpg\" — dated 1924, an archival picture",
-    "[10:34:41] image: dropped \"New York - New York City - NARA - 68146159.jpg\" — names too little of traders",
-    "[10:34:41] image: dropped \"New York - New York City - NARA - 68145654.jpg\" — dated 1937, an archival picture",
-    "[10:34:41] image: dropped \"New York - Docks-New York Harbor - NARA - 68146234.jpg\" — names too little of traders",
-    "[10:34:41] image: dropped \"How to know New York City - a serviceable and trustworthy guide, havin\" — names too little of traders",
-    "[10:34:41] image: dropped \"Defense.gov News Photo 000706-N-1110A-505.jpg\" — dated 2000, an archival picture",
-    "[10:34:41] pexels \"traders New York Stock Exchange\": 8 usable",
-    "[10:35:01] openverse \"traders New York Stock Exchange\": The operation was aborted due to timeout",
-    "[10:35:01] image: dropped \"Close-up of a hand holding a smartphone displaying a stock trading app\" — names too little of traders",
-    "[10:35:01] image: dropped \"Ornate façade of the New York Stock Exchange featuring intricate stone\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[10:35:01] image: dropped \"Close-up of a smartphone screen displaying a stock trading app with ca\" — names too little of traders",
-    "[10:35:01] image: dropped \"Two business professionals in suits smiling and viewing a cellphone ou\" — names too little of traders",
-    "[10:35:01] image: dropped \"Detailed view of cryptocurrency trading charts on digital screens, sho\" — names too little of traders",
-    "[10:35:01] image: dropped \"High-resolution candlestick chart showing forex trading trends and ana\" — names too little of traders",
-    "[10:35:01] image: dropped \"Classic architecture of the New York Stock Exchange facade in NYC.\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[10:35:01] commons \"Nasdaq traders screens\": 0 usable of 0",
-    "[10:35:02] commons \"Nasdaq traders\": 0 usable of 1",
-    "[10:35:02] commons \"screens\": 15 usable of 24",
-    "[10:35:02] image: dropped \"Olkiluoto Nuclear Power Plant production.jpg\" — names too little of traders, screens",
-    "[10:35:02] image: dropped \"Amiga500 system.jpg\" — names too little of traders, screens",
-    "[10:35:02] image: dropped \"Penn Station Clock Vane Display.jpg\" — names too little of traders, screens",
-    "[10:35:03] commons \"traders trading floor United States\": 5 usable of 9",
-    "[10:35:03] image: dropped \"Chicago Board of Trade traders cph.3d02377.jpg\" — dated 1949, an archival picture",
-    "[10:35:03] image: dropped \"Chicago Board of Trade traders cph.3d02368.jpg\" — dated 1949, an archival picture",
-    "[10:35:03] image: dropped \"20120105-OC-AMW-0425 (7042322619).jpg\" — dated 1973, an archival picture",
-    "[10:35:03] pexels \"traders trading floor United States\": 8 usable",
-    "[10:35:23] openverse \"traders trading floor United States\": The operation was aborted due to timeout",
-    "[10:35:23] image: dropped \"Close-up of financial data on a computer screen showing stock market t\" — names too little of traders, trading, floor",
-    "[10:35:23] image: dropped \"Bright candlestick chart showing stock market trends and analysis.\" — names too little of traders, trading, floor",
-    "[10:35:23] image: dropped \"Colorful financial chart displaying market trends and analysis on a sc\" — names too little of traders, trading, floor",
-    "[10:35:23] image: dropped \"Market analysis with focus on cryptocurrency trends displayed. Ideal f\" — names too little of traders, trading, floor",
-    "[10:35:23] image: dropped \"A businessman in a suit looks at a screen displaying stock market char\" — names too little of traders, trading, floor",
-    "[10:35:23] commons \"stock exchange traders New York\": 17 usable of 24",
-    "[10:35:23] pexels \"stock exchange traders New York\": 8 usable",
-    "[10:35:43] openverse \"stock exchange traders New York\": The operation was aborted due to timeout",
-    "[10:35:43] image: dropped \"Financial candlestick chart showing market trends and data visualizati\" — names too little of stock, exchange, traders",
-    "[10:35:43] image: dropped \"Captured the iconic facade of the New York Stock Exchange with intrica\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[10:35:44] commons \"shareholders annual meeting\": 18 usable of 24",
-    "[10:35:44] image: dropped \"Novatek’s Annual General Meeting of Shareholders 2016-04-22 39.JPG\" — shows meeting, meeting, not the story's people",
-    "[10:35:44] image: dropped \"Novatek’s Annual General Meeting of Shareholders 2016-04-22 37.JPG\" — shows meeting, meeting, not the story's people",
-    "[10:35:44] image: dropped \"Novatek’s Annual General Meeting of Shareholders 2016-04-22 23.JPG\" — shows meeting, meeting, not the story's people",
-    "[10:35:44] image: dropped \"Novatek’s Annual General Meeting of Shareholders 2016-04-22 03.JPG\" — shows meeting, meeting, not the story's people",
-    "[10:35:44] image: dropped \"Novatek’s Annual General Meeting of Shareholders 2016-04-22 13.JPG\" — shows meeting, meeting, not the story's people",
-    "[10:35:44] image: dropped \"Novatek’s Annual General Meeting of Shareholders 2016-04-22 15.JPG\" — shows meeting, meeting, not the story's people",
-    "[10:35:44] image: dropped \"Novatek’s Annual General Meeting of Shareholders 2016-04-22 31.JPG\" — shows meeting, meeting, not the story's people",
-    "[10:35:44] image: dropped \"Novatek’s Annual General Meeting of Shareholders 2016-04-22 28.JPG\" — shows meeting, meeting, not the story's people",
-    "[10:35:44] image: dropped \"Novatek’s Annual General Meeting of Shareholders 2016-04-22 26.JPG\" — shows meeting, meeting, not the story's people",
-    "[10:35:44] image: dropped \"Novatek’s Annual General Meeting of Shareholders 2016-04-22 25.JPG\" — shows meeting, meeting, not the story's people",
-    "[10:35:44] image: dropped \"Novatek’s Annual General Meeting of Shareholders 2016-04-22 09.JPG\" — shows meeting, meeting, not the story's people",
-    "[10:35:44] image: dropped \"Novatek’s Annual General Meeting of Shareholders 2016-04-22 38.JPG\" — shows meeting, meeting, not the story's people",
-    "[10:35:44] pexels \"shareholders annual meeting\": 8 usable",
-    "[10:36:04] openverse \"shareholders annual meeting\": The operation was aborted due to timeout",
-    "[10:36:04] image: dropped \"Business meeting with professionals discussing financial reports and g\" — an event's photograph, people and banners",
-    "[10:36:04] image: dropped \"Vibrant image of a diverse audience seated in a large auditorium, high\" — names too little of shareholders, annual, meeting",
-    "[10:36:04] image: dropped \"A businessman pointing at financial charts on a whiteboard, discussing\" — names too little of shareholders, annual, meeting",
-    "[10:36:04] image: dropped \"Participants attend a business conference in Phnom Penh, focusing on i\" — names too little of shareholders, annual, meeting",
-    "[10:36:04] image: dropped \"Close-up of hands holding devices during a business meeting, highlight\" — an event's photograph, people and banners",
-    "[10:36:04] image: dropped \"Business professionals wearing masks attending a conference meeting in\" — an event's photograph, people and banners",
-    "[10:36:04] image: dropped \"Professional setting of a business conference with attendees and a pre\" — names too little of shareholders, annual, meeting",
-    "[10:36:04] image: dropped \"Professional team in corporate attire ready for a meeting, engaged in \" — an event's photograph, people and banners",
-    "[10:36:04] image: dropped \"Ripon Cathedral Rood Screen, Nth Yorkshire, UK - Diliff.jpg\" — taken in United Kingdom, which the story does not name",
-    "[10:36:09] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5449",
-    "[10:36:09] image: vision rejected all candidates (fallback pass) (None fits. #3 is a caricature and #4 shows a named person (Andrew Aziz) who is not in the story. #1 is a staged phone-chart cliché, and #2 and #6 are close-ups of charts on screens, one with crypto. #5 is a casual 2009 street shot built around a close-up of a private individual.)",
-    "[10:36:14] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4178",
-    "[10:36:14] image: vision rejected all candidates (fallback pass) (Photo 1 is a stock close-up of a trading chart on a tablet: a chart as the subject and a stock cliché, not a trading scene with people. Photo 2 is a staged product shot of an industrial touch screen with no link to Meta or its share classes. Neither fits.)",
-    "[10:36:14] image: the story's people first: Mark Zuckerberg Susan Li 2026 | Mark Zuckerberg Susan Li | Mark Zuckerberg and Susan Li | Mark Zuckerberg 2026 | Susan Li 2026",
-    "[10:36:14] commons \"Mark Zuckerberg Susan Li 2026\": 0 usable of 0",
-    "[10:36:14] commons \"Mark Zuckerberg\": 13 usable of 20",
-    "[10:36:14] commons \"Mark Zuckerberg Susan Li\": 0 usable of 0",
-    "[10:36:14] commons \"Mark Zuckerberg\": 13 usable of 20",
-    "[10:36:14] commons \"Mark Zuckerberg and Susan Li\": 0 usable of 0",
-    "[10:36:14] commons \"Mark Zuckerberg Susan Li\": 0 usable of 0",
-    "[10:36:14] commons \"Mark Zuckerberg\": 13 usable of 20",
-    "[10:36:15] commons \"Mark Zuckerberg 2026\": 10 usable of 18",
-    "[10:36:15] image: dropped \"President Donald J Trump hosts a luncheon on Super Intelligence, Septe\" — shows donald, donald, not the story's people",
-    "[10:36:15] image: dropped \"President Donald J Trump hosts a luncheon on Super Intelligence, Septe\" — shows donald, donald, not the story's people",
-    "[10:36:15] image: dropped \"P20260929DT-1520 (55560393477).jpg\" — shows donald, not the story's people",
-    "[10:36:15] image: dropped \"P20260929DT-1655 (55561811540).jpg\" — shows donald, not the story's people",
-    "[10:36:15] image: dropped \"P20260929JB-0139 (55561573319).jpg\" — shows donald, not the story's people",
-    "[10:36:15] image: dropped \"P20260929JB-0164 (55560393737).jpg\" — shows donald, not the story's people",
-    "[10:36:15] image: dropped \"P20260929DT-1541 (55560393492).jpg\" — shows donald, not the story's people",
-    "[10:36:15] image: dropped \"P20260929JB-0542 (55561811380).jpg\" — shows donald, not the story's people",
-    "[10:36:15] image: dropped \"P20260929MR-0168 (55561513053).jpg\" — shows donald, not the story's people",
-    "[10:36:15] commons \"Susan Li 2026\": 2 usable of 6",
-    "[10:36:15] image: dropped \"Où allons-nous, où allons-nous? Nous marchons sur un volcan... - DPLA \" — names too little of susan",
-    "[10:36:15] image: set aside \"Mark Zuckerberg - 3481555455.jpg\" — a 2009 photograph of a person, older than 2018",
-    "[10:36:15] image: set aside \"Mark Zuckerberg (7985186041).jpg\" — a 2012 photograph of a person, older than 2018",
-    "[10:36:15] image: set aside \"Mark Zuckerberg.jpg\" — a 2009 photograph of a person, older than 2018",
-    "[10:36:15] image: people shortlist: 2020 Zuckerberg-Jourová meeting (2020).jpg | 2024 Susan Li, Courtney Fukuda, Nicole Baer, and Vidya  | 2018 Mark Zuckerberg F8 2018 Keynote (cropped).jpg",
-    "[10:36:28] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=13294",
-    "[10:36:31] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=2680",
-    "[10:36:31] image: second check (claude-cli/claude-opus-5-5) RIGHT \"Mark Zuckerberg F8 2018 Keynote (cropped).jpg\": A sharp professional portrait of Mark Zuckerberg, the founder whose control the story turns on, at an earlier occasion t",
-    "[10:36:31] published explainer \"لماذا قد يقبل المستثمرون أسهم ميتا الجديدة التي لا تمنح حق التصويت؟\" -> why-investors-accept-meta-non-voting-shares-946886"
+    "[12:21:01] image: \"Container-Terminal Bremerhaven 01.jpg\" names the story's topic without saying its point (A busy container port with ships at the cranes is a fitting, professional picture of eurozone economic activity for a regional PMI story. Photo 4 is livelier th); checked now and kept in reserve while the desk looks further",
+    "[12:21:07] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6031",
+    "[12:21:07] image: second check (claude-cli/claude-opus-5-5) RECAPTION \"Container-Terminal Bremerhaven 01.jpg\": A sharp, professional container-port scene in Germany fits this eurozone private-sector story as the region's economic l",
+    "[12:21:11] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4029",
+    "[12:21:15] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3651",
+    "[12:21:15] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Container-Terminal Bremerhaven 01.jpg\": A sharp, professional view of a busy container port at Bremerhaven, Germany, a euro-area economy the story covers, fits ",
+    "[12:21:23] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7916",
+    "[12:21:23] image: vision rejected all candidates (fallback pass) (None fits. 1 is a Paris cityscape. 2 shows a Ukraine-solidarity rally, which is misleading here. 3 is a 2010 pension protest dominated by a political party's flags and placards, too old and too partisan. 4 is offensive and unrelated. 5 is an amateur close-up of banknotes, and this is not a currency or prices story. 6 is a staged stock photo of models at screens.)",
+    "[12:21:23] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"Container-Terminal Bremerhaven 01.jpg\"",
+    "[12:21:23] published \"نمو القطاع الخاص في منطقة اليورو يتباطأ إلى أدنى مستوى في 4 أشهر\" -> eurozone-private-sector-slows-france-contraction-e5093c",
+    "[12:21:51] desk notes: 1 of 19 facts dropped (not in their source or copied from it)",
+    "[12:21:51] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=27613",
+    "[12:21:51] desk notes: 18 facts (? 1, news 3, numbers 5, background 3, next 3, driver 1, reaction 2), 0 quotes (claude-cli/claude-opus-5-5)",
+    "[12:22:45] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: why_basis premise is not grounded in its numbered source",
+    "[12:24:09] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=2 ms=81537",
+    "[12:24:46] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=36557",
+    "[12:24:46] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,body] rejected=[lede:length 0.59x]",
+    "[12:24:46] desk \"أوبن إيه آي تخفض تقييمها المستهدف إلى 1.25 تريليون دولار\": rewrote subtitle, body; refused lede (length 0.59x)",
+    "[12:25:38] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=51761",
+    "[12:25:38] critic \"أوبن إيه آي تخفض تقييمها المستهدف إلى 1.25 تريليون دولار\": revise score=8 issues=7",
+    "[12:25:38]   · المقدمة طويلة (72 كلمة)؛ اجعلها جملتين إلى ثلاث بأقل من 45 كلمة: الفعل، الفاعل، الرقم، السبب.",
+    "[12:25:38]   · خطأ فعلي، إذ تحوّل الاحتمال إلى أمر واقع وأُضيف ادعاء غير مسند: «فتجمع الجولة بين المال والقدرة على تشغيل النماذج في صفقة واحدة مع الطرف نفسه». المصدر 2 ينقل عن",
+    "[12:25:38]   · تكرار يعيد صياغة الافتتاحية: الفقرة الأولى من المتن («وقالت مصادر تحدثت إلى القناة إن شركة «كواتو» (Coatue) ومستثمرين في الإمارات يقودون الجولة، وإن التقييم الم",
+    "[12:25:38]   · دقة التوقيت والإسناد: «وكانت «بلومبرغ» قد أفادت في تقرير سابق بأن الشركة تعمل على جمع 30 مليار دولار بتقييم 1.4 تريليون دولار، وهو الرقم نفسه الذي طرحته الشركة ",
+    "[12:26:16] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=38468",
+    "[12:27:00] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=43812",
+    "[12:27:13] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=13413",
+    "[12:27:13] desk: body accepted on the second try",
+    "[12:27:13] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,lede,body] rejected=[]",
+    "[12:27:13] desk \"أوبن إيه آي تخفض تقييمها المستهدف في جولة تمويل جديدة إلى 1.25 تريليون دولار\": rewrote title, subtitle, lede, body",
+    "[12:28:20] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=66870",
+    "[12:28:20] critic (second pass) \"أوبن إيه آي تخفض تقييمها المستهدف في جولة تمويل جديدة إلى 1.25 تريليون دولار\": revise score=9 issues=4",
+    "[12:29:02] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=41186",
+    "[12:29:41] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=39164",
+    "[12:29:56] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=15107",
+    "[12:29:56] desk: body accepted on the second try",
+    "[12:29:56] desk model=claude-cli/claude-opus-5-5 applied=[title,whyItMatters,body] rejected=[]",
+    "[12:29:56] desk \"أوبن إيه آي تخفض تقييمها المستهدف إلى 1.25 تريليون دولار في جولة تمويل جديدة\": rewrote title, whyItMatters, body",
+    "[12:29:56] mended \"أوبن إيه آي تخفض تقييمها المستهدف إلى 1.25 تريليون دولار في جولة تمويل جديدة\": the second pass's 4 finding(s) sent back once more",
+    "[12:30:22] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=26073",
+    "[12:30:22] precheck \"أوبن إيه آي تخفض تقييمها المستهدف إلى 1.25 تريليون دولار في جولة تمويل جديدة\": clean",
+    "[12:30:31] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=8616",
+    "[12:30:31] image: the picture should say: OpenAI's sky-high price is being haggled down by the investors who will pay it, not set by a market.",
+    "[12:30:34] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3731",
+    "[12:30:34] image: the sources' photographs give no brief (1: not a news photo)",
+    "[12:30:34] image: tier 3, the writer's own subjects: ChatGPT on laptop | data center servers | computer server racks",
+    "[12:30:35] commons \"ChatGPT on laptop 2026\": 0 usable of 0",
+    "[12:30:35] commons \"ChatGPT on laptop\": 2 usable of 8",
+    "[12:30:36] commons \"data center servers 2026\": 4 usable of 12",
+    "[12:30:36] commons \"data center servers\": 5 usable of 12",
+    "[12:30:36] image: dropped \"North Central Telephone Cooperative Rural Broadband keeps TN and KY Hi\" — names too little of data, center, servers",
+    "[12:30:37] commons \"computer server racks 2026\": 0 usable of 0",
+    "[12:30:37] commons \"computer server racks\": 4 usable of 12",
+    "[12:30:37] image: dropped \"NOIRLab HQ Server Racks (6V6A0395-CC).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[12:30:37] image: dropped \"NOIRLab HQ Server Racks (6V6A0402-CC).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[12:30:37] image: dropped \"NOIRLab HQ Server Racks (6V6A0404-CC).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[12:30:37] image: dropped \"Le torrette con i bocchettoni per il raffreddamento ad aria dei server\" — taken in Italy, which the story does not name",
+    "[12:30:44] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5943",
+    "[12:30:44] image: vision rejected all candidates (None fits. 1 shows a named private speaker who is not Sam Altman. 2 is a staged phone-and-laptop stock cliché showing a screenshot. 3 comes from the Epstein files (embarrassing pairing) and is a cluttered cable close-up. 4 is a close-up of a named private technician. 5 shows the same named technician at a rural Tennessee broadband centre, unrelated to OpenAI's funding round.)",
+    "[12:30:44] image: tier 4, the story's point and its subject: Sam Altman investors | venture capital investors meeting | data center server racks | data center server hall | ChatGPT on laptop | AI data center construction",
+    "[12:30:44] commons \"Sam Altman investors\": 13 usable of 24",
+    "[12:30:44] image: dropped \"Meeting with Masayoshi Son and Sam Altman (February 3, 2025).jpg\" — an event's photograph, people and banners",
+    "[12:30:44] image: dropped \"Isaac Herzog meeting with Sam Altman, June 2023 (GPOABG244).jpeg\" — an event's photograph, people and banners",
+    "[12:30:44] image: dropped \"Isaac Herzog meeting with Sam Altman, June 2023 (GPOABG748).jpeg\" — an event's photograph, people and banners",
+    "[12:30:44] image: dropped \"Isaac Herzog meeting with Sam Altman, June 2023 (GPOABG647).jpeg\" — an event's photograph, people and banners",
+    "[12:30:44] image: dropped \"Isaac Herzog meeting with Sam Altman, June 2023 (GPOABG539).jpeg\" — an event's photograph, people and banners",
+    "[12:30:44] image: dropped \"Nancy Pelosi GLAAD 2017 2.jpg\" — an event's photograph, people and banners",
+    "[12:30:45] pexels \"Sam Altman investors\": 8 usable",
+    "[12:30:57] openverse \"Sam Altman investors\": 0 usable of 0",
+    "[12:30:57] image: dropped \"Hand pointing at stock market graphs analyzed with financial metrics o\" — names too little of investors",
+    "[12:30:57] image: dropped \"Smartphone displaying stock market app next to U.S. dollar and passpor\" — names too little of investors",
+    "[12:30:57] image: dropped \"A young entrepreneur gives a presentation on startup strategies indoor\" — names too little of investors",
+    "[12:30:57] image: dropped \"A group of young professionals brainstorming ideas in a startup office\" — names too little of investors",
+    "[12:30:57] image: dropped \"A hand holds a smartphone displaying Grok 3 announcement against a red\" — names too little of investors",
+    "[12:30:57] image: dropped \"A smartphone displaying Alphabet stock price alongside credit cards, c\" — names too little of investors",
+    "[12:30:57] image: dropped \"Young entrepreneurs seated together, engaged in a business discussion \" — names too little of investors",
+    "[12:30:57] image: dropped \"Calm male in casual clothes sitting at table with laptop with crossed \" — names too little of investors",
+    "[12:30:57] commons \"venture capital investors meeting\": 0 usable of 3",
+    "[12:30:58] commons \"venture capital\": 5 usable of 24",
+    "[12:30:58] image: dropped \"O'Neill VC memorial at Birkenhead Cenotaph.jpg\" — names too little of venture, capital, investors, meeting",
+    "[12:30:58] image: dropped \"Cyril Gourley VC memorial.jpg\" — names too little of venture, capital, investors, meeting",
+    "[12:30:58] image: dropped \"Bushell VC memorial at Birkenhead Cenotaph.jpg\" — names too little of venture, capital, investors, meeting",
+    "[12:30:58] image: dropped \"Neely VC memorial at Birkenhead Cenotaph.jpg\" — names too little of venture, capital, investors, meeting",
+    "[12:30:59] pexels \"venture capital investors meeting\": 8 usable",
+    "[12:31:13] openverse \"venture capital investors meeting\": 1 usable of 20",
+    "[12:31:13] image: dropped \"SODM15 Blockchain Tech Panel\" — names too little of venture, capital, investors, meeting",
+    "[12:31:13] image: dropped \"Colleagues engaged in a collaborative business meeting around a table \" — names too little of venture, capital, investors, meeting",
+    "[12:31:13] image: dropped \"A group of diverse professionals engaged in a collaborative business m\" — names too little of venture, capital, investors, meeting",
+    "[12:31:13] image: dropped \"Collaborative business team engaging in a strategic meeting in a moder\" — names too little of venture, capital, investors, meeting",
+    "[12:31:13] image: dropped \"A group of diverse entrepreneurs in a workspace celebrating success an\" — names too little of venture, capital, investors, meeting",
+    "[12:31:13] image: dropped \"Three diverse team members clapping and smiling during an indoor meeti\" — names too little of venture, capital, investors, meeting",
+    "[12:31:13] image: dropped \"Engaged team members in a lively office meeting discussing startup ide\" — names too little of venture, capital, investors, meeting",
+    "[12:31:13] image: dropped \"Financial analysis and planning tools with graphs and calculator on a \" — names too little of venture, capital, investors, meeting",
+    "[12:31:13] commons \"data center server racks\": 14 usable of 24",
+    "[12:31:13] image: dropped \"Wikimedia Foundation Servers-8055 15.jpg\" — another frame of a series a published story runs",
+    "[12:31:13] image: dropped \"Wikimedia Foundation Servers-8055 02.jpg\" — another frame of a series a published story runs",
+    "[12:31:14] commons \"data center server hall\": 8 usable of 19",
+    "[12:31:14] image: dropped \"UPComputerCenterjf3807 05.JPG\" — names too little of data, center, server, hall",
+    "[12:31:14] image: dropped \"UPComputerCenterjf3807 12.JPG\" — names too little of data, center, server, hall",
+    "[12:31:14] image: dropped \"UPComputerCenterjf3807 02.JPG\" — names too little of data, center, server, hall",
+    "[12:31:14] image: dropped \"UPComputerCenterjf3807 03.JPG\" — names too little of data, center, server, hall",
+    "[12:31:14] image: dropped \"UPComputerCenterjf3807 10.JPG\" — names too little of data, center, server, hall",
+    "[12:31:14] image: dropped \"UPComputerCenterjf3807 04.JPG\" — names too little of data, center, server, hall",
+    "[12:31:14] image: dropped \"UPComputerCenterjf3807 07.JPG\" — names too little of data, center, server, hall",
+    "[12:31:14] image: dropped \"UPComputerCenterjf3807 06.JPG\" — names too little of data, center, server, hall",
+    "[12:31:14] pexels \"data center server hall\": 8 usable",
+    "[12:31:22] openverse \"data center server hall\": 0 usable of 0",
+    "[12:31:22] image: dropped \"Detailed image of illuminated server racks showcasing modern technolog\" — names too little of data, center, server, hall",
+    "[12:31:22] commons \"ChatGPT on laptop\": 2 usable of 8",
+    "[12:31:22] pexels \"ChatGPT on laptop\": 8 usable",
+    "[12:31:42] openverse \"ChatGPT on laptop\": The operation was aborted due to timeout",
+    "[12:31:42] image: dropped \"Close-up of a smartphone with AI chat interface, showcasing advanced t\" — names too little of laptop",
+    "[12:31:42] image: dropped \"A MacBook displaying the DeepSeek AI interface, showcasing digital inn\" — names too little of laptop",
+    "[12:31:42] commons \"AI data center construction\": 11 usable of 24",
+    "[12:31:42] image: dropped \"Hyperion false color.jpg\" — names too little of data, center, construction",
+    "[12:31:42] image: dropped \"The Hyperion Proto-Supercluster.jpg\" — names too little of data, center, construction",
+    "[12:31:42] image: dropped \"Clanis hyperion MHNT CUT 2010 0 321 Khasi Hills Assam India female dor\" — names too little of data, center, construction",
+    "[12:31:42] image: dropped \"Clanis hyperion MHNT CUT 2010 0 321 Khasi Hills Assam India female ven\" — names too little of data, center, construction",
+    "[12:31:42] image: dropped \"Hyperion Augoust 25 2011.jpg\" — names too little of data, center, construction",
+    "[12:31:42] image: dropped \"Hyperion Track.jpg\" — names too little of data, center, construction",
+    "[12:31:42] image: dropped \"Hyperion 3D PIA06244.jpg\" — names too little of data, center, construction",
+    "[12:31:42] image: dropped \"Hyperion Lyceum.jpg\" — names too little of data, center, construction",
+    "[12:31:42] image: dropped \"Hyperion hg.jpg\" — names too little of data, center, construction",
+    "[12:31:42] image: dropped \"Dynalogic Hyperion keyboard profile.jpg\" — names too little of data, center, construction",
+    "[12:31:42] image: dropped \"Hyperion Cassini december 2010.jpg\" — names too little of data, center, construction",
+    "[12:31:43] pexels \"AI data center construction\": 8 usable",
+    "[12:32:02] openverse \"AI data center construction\": The operation was aborted due to timeout",
+    "[12:32:02] image: dropped \"Artistic arrangement of circuit boards and cables symbolizes modern te\" — names too little of data, center, construction",
+    "[12:32:02] image: dropped \"Empty industrial warehouse interior with polished concrete floor in Ho\" — names too little of data, center, construction",
+    "[12:32:02] image: dropped \"Empty modern warehouse interior with polished floor and ample space lo\" — names too little of data, center, construction",
+    "[12:32:12] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=8901",
+    "[12:32:12] image: \"Sam Altman CropEdit James Tamim.jpg\" names the story's topic without saying its point (Sam Altman, OpenAI's CEO, is the story's own person, shown speaking on stage in the US. The laptop and phone shots of ChatGPT are stock clichés, #3 shows an unr); checked now and kept in reserve while the desk looks further",
+    "[12:32:15] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3607",
+    "[12:32:15] image: second check (claude-cli/claude-opus-5-5) RIGHT \"Sam Altman CropEdit James Tamim.jpg\": A sharp, professional archive portrait of the story's own figure, OpenAI CEO Sam Altman, captioned as a 2019 TechCrunch ",
+    "[12:32:24] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7042",
+    "[12:32:24] image: \"Close-up of server equipment in a modern data center highlig\" names the story's topic without saying its point; the desk already holds one such, and looks further",
+    "[12:32:24] image: the story's people first: Sam Altman 2026 | Sam Altman",
+    "[12:32:24] commons \"Sam Altman 2026\": 1 usable of 8",
+    "[12:32:24] commons \"Sam Altman\": 9 usable of 20",
+    "[12:32:24] image: set aside \"Sam altman.jpg\" — a 2016 photograph of a person, older than 2018",
+    "[12:32:24] image: people shortlist: 2019 Sam Altman CropEdit James Tamim.jpg | 2019 Sam Altman TechCrunch SF 2019 Day 2 Oct 3 (cropped | 2025 Meeting with Masayoshi Son and Sam Altman (Februar | 2022 Wade Foster, Jack Altman, & Sam Altman (5253031147",
+    "[12:32:30] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4711",
+    "[12:32:30] image: vision rejected all candidates (Photos 1 and 2 show only Altman, but they are close-up crops in square or portrait format, not landscape. They are also from an unrelated 2019 conference talk. Photos 3 to 6 show other identifiable people beside Altman: Masayoshi Son and Japanese officials, Jack Altman and Wade Foster, and Israeli President Herzog. None of those people are in the story. None shows the funding round or its investors, so a fallback should be sought.)",
+    "[12:32:35] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5200",
+    "[12:32:35] image: vision rejected all candidates (Both photos show Sam Altman meeting Israeli President Isaac Herzog in Jerusalem in 2023. Herzog is a prominent, identifiable person with no part in this story. The visit has nothing to do with the funding round led by Coatue and UAE investors, and pairing it with the headline would mislead readers of an Arabic publication. Better to let the fallback find another image.)",
+    "[12:32:35] image: nothing of them since 2018 fits; their newest older photographs, run as file photos: 2016 Sam altman.jpg",
+    "[12:32:40] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4936",
+    "[12:32:40] image: vision rejected all candidates (The only candidate shows Sam Altman in 2016 as Y Combinator president at a hackathon fireside chat, not in his OpenAI role. The story is about OpenAI's valuation, not about Altman personally. The backdrop is also crowded with other companies' logos, and a decade-old informal photo would mislead. Choosing none lets the fallback find a better image.)",
+    "[12:32:40] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"Sam Altman CropEdit James Tamim.jpg\"",
+    "[12:32:40] published \"أوبن إيه آي تخفض تقييمها المستهدف إلى 1.25 تريليون دولار في جولة تمويل جديدة\" -> openai-trims-valuation-target-30-billion-raise-806edd"
   ]
 }

@@ -971,6 +971,58 @@
         "classes": [],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-10-23T12:02:35.382Z",
+      "slug": "brent-highest-since-may-houthi-escalation-saudi-1b83e1",
+      "checker": "7bb3653e29.2",
+      "lessons": "v34",
+      "lessonsHash": "1917f27221",
+      "keptVersion": 0,
+      "live": {
+        "errors": 3,
+        "drift": 0,
+        "severity": 8,
+        "supported": 27,
+        "notFound": 2,
+        "checked": 32,
+        "words": 510,
+        "keyFacts": 6,
+        "classes": [
+          "hedge",
+          "other",
+          "hedge"
+        ],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 6,
+        "supported": 23,
+        "notFound": 5,
+        "checked": 31,
+        "words": 487,
+        "keyFacts": 6,
+        "classes": [
+          "scope"
+        ],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 6,
+        "supported": 23,
+        "notFound": 5,
+        "checked": 31,
+        "words": 487,
+        "keyFacts": 6,
+        "classes": [
+          "scope"
+        ],
+        "programmatic": 0
+      }
     }
   ]
 }
