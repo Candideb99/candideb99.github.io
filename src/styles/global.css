@@ -118,8 +118,8 @@
      set a hair differently from module to module (the owner, 2026-09-27: "a circus of fonts"). Heads are Amiri 700,
      reading is Naskh, furniture is Tajawal (--fs-xs, --fs-sm, --fs-data above). */
   --t-display: clamp(1.85rem, 1.3rem + 2vw, 2.75rem); /* a page's title, a story's headline */
-  --t-cover: clamp(1.7rem, 1.1rem + 1.9vw, 2.5rem);   /* the cover: the one headline that must win the front */
-  --t-lead: clamp(1.6rem, 1.1rem + 1.6vw, 2.3rem);    /* a section page's lead */
+  --t-cover: clamp(1.7rem, 1rem + 1.6vw, 2.25rem);    /* the cover: the one headline that must win the front (2.5rem wrapped four lines beside its photograph) */
+  --t-lead: clamp(1.5rem, 1rem + 1.3vw, 2rem);        /* a section page's lead (2.3rem wrapped four lines beside its photograph) */
   --t-feature: clamp(1.22rem, 1rem + 0.7vw, 1.5rem);  /* block features, the front's secondaries, a file's newest, key figures */
   --t-head: 1.25rem;    /* hub cards, the lead reading, search results, chart and table titles, today's figures */
   --t-list: 1.05rem;    /* every other headline: cards, lists, briefs, picks, the digest, the cover's tabs, related lines */

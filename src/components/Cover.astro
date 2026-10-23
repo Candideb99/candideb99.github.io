@@ -255,39 +255,39 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
 <style>
   .cover { display: grid; grid-template-columns: minmax(0, 9fr) minmax(0, 3fr); column-gap: 0; padding-top: clamp(1.1rem, 2.5vw, 1.75rem); padding-bottom: clamp(1.25rem, 2.5vw, 1.75rem); border-bottom: 3px solid var(--ink); align-items: start; }
 
-  /* The headline runs across the whole stage; under it the dek shares the stage with the photograph, 5 to 7, and the
-     five numbered headlines run under both. Beside the photograph the 40px headline had a 350px column, about 9 of its
-     own letters' widths, and wrapped three or four lines deep, some 17 letters a line (the owner, 2026-10-23:
-     "headlines might still be aggressively split on multiple lines"); across the stage it has 22 and takes one or two.
-     An-Nahar and Ennahar set their leads at 22, An-Nahar's under its photograph and Ennahar's over it (measured the
-     same day).
+  /* The story's text (kicker, headline, dek, meta) in one column beside its photograph, half the stage each, and the
+     five numbered headlines under both. At 5 to 7 the 40px headline had a 350px column, about 9 of its own letters'
+     widths, and wrapped three or four lines deep, some 17 letters a line (the owner, 2026-10-23: "headlines might
+     still be aggressively split on multiple lines"). Run across the stage over the dek and the photograph (the same
+     evening) it took one or two, but the dek's column stood half empty beside the photograph and the stage's corner
+     over the photograph empty too, and the owner called it weird. Here it has about 12 at 2.25rem and takes two or
+     three, the text a block that reaches the photograph's foot.
      The stage's rows are shared by every story on it (subgrid): kicker, headline, dek, meta, the room left, the tabs.
      A story's parts are its own grid items, so the tabs, which belong to no one story, keep their row under whichever
      story is showing. The stage is at least the row's height (the readings beside it may be taller); the room left
      takes the difference, so the photograph fills the stage down to the tabs. */
-  .cover__stage { padding-inline-end: var(--col-gap); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto auto auto auto 1fr auto; column-gap: clamp(1.25rem, 3vw, 2.5rem); min-height: 100%; }
+  .cover__stage { padding-inline-end: var(--col-gap); display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); grid-template-rows: auto auto auto auto 1fr auto; column-gap: clamp(1.25rem, 3vw, 2.5rem); min-height: 100%; }
   .cover__slides { grid-column: 1 / -1; grid-row: 1 / -1; display: grid; grid-template-columns: subgrid; grid-template-rows: subgrid; }
   .cover__slide { grid-column: 1 / -1; grid-row: 1 / -1; display: grid; grid-template-columns: subgrid; grid-template-rows: subgrid; align-items: start; }
   .cover__body { display: contents; }
-  .cover__body > .kicker { grid-column: 1 / -1; grid-row: 1; }
-  /* The photograph fills its column from the dek's top down to the tabs, between 16:9 and square, measured on its own
-     width: at least 3:2 under the headline put the tabs about 105px lower than beside it (1440 wide, 2026-10-23), 16:9
-     about 50. Stretched to the old 740px column it showed half of every picture (the airport slide was mostly ceiling). */
-  .cover__photo { grid-column: 2; grid-row: 3 / 6; align-self: stretch; display: block; text-decoration: none; container-type: inline-size; }
-  .cover__photo :global(.photo) { aspect-ratio: auto !important; height: 100%; min-height: 56.25cqi; max-height: 100cqi; }
+  .cover__body > .kicker { grid-column: 1; grid-row: 1; }
+  /* The photograph fills its column from the kicker's top down to the tabs, between 3:2 and square, measured on its own
+     width. Stretched to the old 740px column it showed half of every picture (the airport slide was mostly ceiling). */
+  .cover__photo { grid-column: 2; grid-row: 1 / 6; align-self: stretch; display: block; text-decoration: none; container-type: inline-size; }
+  .cover__photo :global(.photo) { aspect-ratio: auto !important; height: 100%; min-height: 66.667cqi; max-height: 100cqi; }
   /* The picture fills the frame without sizing it: in the flow its own 3:2 set the stage's rows. */
   .cover__photo :global(.photo img) { position: absolute; inset: 0; }
   .cover__slide[hidden] { display: none; }
   .cover--js .cover__slide:not([hidden]) { animation: cover-in 0.4s var(--ease-out); }
   @keyframes cover-in { from { opacity: 0; } }
-  .cover__title { grid-column: 1 / -1; grid-row: 2; margin-bottom: 0.8rem; font-family: var(--font-title); font-weight: 700; font-size: var(--t-cover); line-height: 1.28; }
+  .cover__title { grid-column: 1; grid-row: 2; margin-bottom: 0.55rem; font-family: var(--font-title); font-weight: 700; font-size: var(--t-cover); line-height: 1.28; }
   .cover__title a { text-decoration: none; }
   .cover__title a:hover { color: var(--green); }
   .cover__dek { grid-column: 1; grid-row: 3; font-family: var(--font-body); font-size: var(--n-lead); line-height: 1.7; color: var(--ink-2); max-width: 34em; }
   .cover__meta { grid-column: 1; grid-row: 4; margin-top: 0.6rem; }
-  /* A story without a photograph: its headline at the reading measure, its dek across both columns. */
+  /* A story without a photograph: its text across both columns, the headline at the reading measure. */
   .cover__slide--text .cover__title { max-width: 56rem; }
-  .cover__slide--text .cover__dek, .cover__slide--text .cover__meta { grid-column: 1 / -1; }
+  .cover__slide--text :is(.kicker, .cover__title, .cover__dek, .cover__meta) { grid-column: 1 / -1; }
   /* The four stories behind the lead, listed under it on a phone, where the stage does not turn. */
   .cover__more { display: none; }
 
