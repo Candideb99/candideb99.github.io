@@ -4,6 +4,13 @@ dist/
 .env
 .env.*
 !.env.example
+# Key and sign-in files, should a tool ever drop one here (the repository is public)
+.firecrawl/
+*.pem
+*.p12
+*.pfx
+auth.json
+firecrawl*.txt
 *.log
 .DS_Store
 Thumbs.db

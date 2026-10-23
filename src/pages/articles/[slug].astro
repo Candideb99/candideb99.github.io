@@ -15,6 +15,7 @@ import { analysisLabel, analysisDesk, ANALYSIS_DESKS } from "@lib/analysis";
 import { formatDate, formatHijri, formatTime, readingLabel, excerpt } from "@lib/format";
 import { headline, isolateNumbers } from "@lib/bidi";
 import { cardSizes } from "@lib/wikimedia";
+import { safeHref } from "@lib/safe-url.mjs";
 import site from "@data/site.json";
 
 export async function getStaticPaths() {
@@ -154,7 +155,7 @@ const jsonLd = [articleLd, breadcrumbLd];
           <span>{d.image.alt}</span>
           {d.image.credit && (
             <span class="article__credit" data-pagefind-ignore>
-              الصورة: {d.image.pageUrl ? <a href={d.image.pageUrl} rel="noopener" target="_blank"><bdi>{d.image.credit}</bdi></a> : <bdi>{d.image.credit}</bdi>}
+              الصورة: {safeHref(d.image.pageUrl) ? <a href={safeHref(d.image.pageUrl)} rel="noopener" target="_blank"><bdi>{d.image.credit}</bdi></a> : <bdi>{d.image.credit}</bdi>}
             </span>
           )}
         </figcaption>

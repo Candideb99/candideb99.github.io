@@ -360,10 +360,12 @@ async function callGemini({ model, system, user, images = [], timeoutMs, tempera
     };
   }
 
-  let url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(actualModel)}:generateContent?key=${encodeURIComponent(apiKey)}`;
+  // The key goes in a header, never in the address: an address can end up in an error message, and run reports are public.
+  const headers = { "content-type": "application/json", "x-goog-api-key": apiKey };
+  let url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(actualModel)}:generateContent`;
   let response = await fetchWithTimeout(url, {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    headers,
     body: JSON.stringify(body),
   }, timeoutMs);
 
@@ -372,11 +374,11 @@ async function callGemini({ model, system, user, images = [], timeoutMs, tempera
   if ((response.status === 429 || response.status === 503) && actualModel !== "gemini-3.7-flash") {
     if (response.status === 429) QUOTA_EXHAUSTED_GEMINI_MODELS.add(actualModel);
     const fallbackModel = "gemini-3.7-flash";
-    const fallbackUrl = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(fallbackModel)}:generateContent?key=${encodeURIComponent(apiKey)}`;
+    const fallbackUrl = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(fallbackModel)}:generateContent`;
     await sleep(1500);
     const fbRes = await fetchWithTimeout(fallbackUrl, {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers,
       body: JSON.stringify(body),
     }, timeoutMs);
     const fbPayload = await fbRes.json().catch(() => ({}));

@@ -7,6 +7,7 @@
 import Base from "@layouts/Base.astro";
 import { byDay, localTime, calendar } from "@lib/calendar";
 import { formatDate, formatTime, timeAgo } from "@lib/format";
+import { safeHref } from "@lib/safe-url.mjs";
 import site from "@data/site.json";
 
 const days = byDay(75);
@@ -35,7 +36,7 @@ const KIND = { rates: "قرار فائدة", data: "بيانات" } as const;
                   <li class="agenda__event">
                     <span class={`agenda__kind agenda__kind--${e.kind} ui`}>{KIND[e.kind]}</span>
                     <div class="agenda__body">
-                      <p class="agenda__title"><a href={e.url} rel="noopener">{e.title}</a></p>
+                      <p class="agenda__title"><a href={safeHref(e.url)} rel="noopener">{e.title}</a></p>
                       <p class="agenda__meta ui">{e.org}{at && <span> · <bdi>{at}</bdi></span>}{e.note && <span> · {e.note}</span>}</p>
                     </div>
                   </li>

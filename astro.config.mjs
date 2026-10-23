@@ -3,11 +3,14 @@ import sitemap from "@astrojs/sitemap";
 import site from "./src/data/site.json" with { type: "json" };
 import rehypeIsolateNumbers from "./src/lib/rehype-isolate-numbers.mjs";
 import rehypeTopicLinks from "./src/lib/rehype-topic-links.mjs";
+import remarkSafeMarkdown from "./src/lib/remark-safe-markdown.mjs";
 import { storyTags, tagRedirects } from "./src/lib/tag-map.mjs";
 
 export default defineConfig({
   site: site.url,
   markdown: {
+    // A body is printed as text: no raw HTML, no address that is not a web page (lib/remark-safe-markdown.mjs).
+    remarkPlugins: [remarkSafeMarkdown],
     // Topic links first: the figure isolation leaves the inside of a link alone.
     rehypePlugins: [rehypeTopicLinks, rehypeIsolateNumbers],
   },

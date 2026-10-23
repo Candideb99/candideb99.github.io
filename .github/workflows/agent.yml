@@ -68,7 +68,8 @@ jobs:
             } >> "$GITHUB_STEP_SUMMARY"
           fi
 
-      - uses: anthropics/claude-code-action@v1
+      # Pinned to one commit, not the moving v1 tag, like the editor's (editor.yml says why). v1.0.259.
+      - uses: anthropics/claude-code-action@ae68417a745a5df4b2124873632bd73a2255e6f6 # v1.0.259
         if: steps.token.outputs.present == '1'
         # The pipeline's own tools, when the agent runs one, call Claude with the same subscription token.
         env:

@@ -5,13 +5,16 @@
  * «remove such things from the news "النماذج: claude-cli, nex-agi/nex-n2.5-pro"».
  */
 import { formatShortDate } from "@lib/format";
+import { safeHref } from "@lib/safe-url.mjs";
 
 interface Props {
   /** `url` is empty for an internal source whose article has since been retired: it is named, not linked. */
   sources: { name: string; nameEn?: string; title: string; url: string; publishedAt?: string | null; lang?: string }[];
   explainer?: boolean;
 }
-const { sources, explainer = false } = Astro.props;
+const { explainer = false } = Astro.props;
+// An address that is not a web page is named, not linked, like a retired internal source (lib/safe-url.mjs).
+const sources = Astro.props.sources.map((s) => ({ ...s, url: safeHref(s.url) ?? "" }));
 function host(url: string) {
   try {
     return new URL(url).hostname.replace(/^www\./, "");

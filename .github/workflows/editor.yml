@@ -193,7 +193,10 @@ jobs:
             } >> "$GITHUB_STEP_SUMMARY"
           fi
 
-      - uses: anthropics/claude-code-action@v1
+      # Pinned to one commit, not the moving v1 tag (2026-10-23): this step holds the Claude token and may write to
+      # main, so a release pushed under the tag by whoever controlled it would run here unseen. v1.0.259, which installs
+      # Claude Code 2.1.309; to move on, put a newer v1 release's commit here (and in agent.yml).
+      - uses: anthropics/claude-code-action@ae68417a745a5df4b2124873632bd73a2255e6f6 # v1.0.259
         if: steps.precheck.outputs.work == '1' && steps.token.outputs.present == '1'
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}

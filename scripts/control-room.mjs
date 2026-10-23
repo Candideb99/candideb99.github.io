@@ -20,7 +20,7 @@ import http from "node:http";
 import { spawn, spawnSync } from "node:child_process";
 import { readFile, readdir, unlink, writeFile, rm, mkdtemp } from "node:fs/promises";
 import { existsSync, readFileSync } from "node:fs";
-import { randomUUID, randomBytes } from "node:crypto";
+import { randomUUID, randomBytes, timingSafeEqual } from "node:crypto";
 import path from "node:path";
 import os from "node:os";
 import YAML from "yaml";
@@ -80,6 +80,8 @@ function envFileKeys() {
   return out;
 }
 async function setEnvKey(name, value) {
+  // One line per key: a value carrying a line break would write a second key of its choosing into .env.
+  if (/[\r\n]/.test(String(value ?? ""))) throw new Error(`${name} must be one line.`);
   const file = path.join(root, ".env");
   const lines = existsSync(file) ? readFileSync(file, "utf8").split(/\r?\n/) : [];
   const kept = lines.filter((l) => !new RegExp(`^\\s*${name}\\s*=`).test(l));
@@ -92,7 +94,7 @@ async function setEnvKey(name, value) {
 }
 /** A secret goes to GitHub over stdin, never as an argument, so it never shows in a process list. */
 function ghSecret(name, value) {
-  const r = spawnSync("gh", ["secret", "set", name, "--repo", REPO], { input: value, encoding: "utf8", shell: process.platform === "win32", windowsHide: true });
+  const r = spawnSync("gh", ["secret", "set", name, "--repo", REPO], { input: value, encoding: "utf8", shell: false, windowsHide: true });
   return r.status === 0 ? "ok" : (r.stderr || r.stdout || "gh failed").slice(0, 200);
 }
 function ghArgs(args) {
@@ -161,26 +163,24 @@ async function configureCloudAccount(id, backup = "") {
 }
 
 // --------------------------------------------------------------------- shell
-function sh(cmd) {
+/**
+ * A program with its arguments as an array and no shell, so nothing a request carries can become a second command
+ * (2026-10-23: `/writers` had put the model name it was sent into a shell line, and a page could run any program on
+ * the laptop through it). Answers stdout and stderr together, trimmed; a program that cannot start answers its error.
+ */
+function exec(command, args, { raw = false } = {}) {
   return new Promise((resolve) => {
-    const child = spawn(cmd, { cwd: root, shell: true, windowsHide: true });
+    const child = spawn(command, args, { cwd: root, shell: false, windowsHide: true });
     let out = "";
     child.stdout.on("data", (d) => (out += d));
-    child.stderr.on("data", (d) => (out += d));
-    child.on("close", () => resolve(out.trim()));
-  });
-}
-/** git status --porcelain puts a LEADING SPACE on unstaged changes; never trim its output. */
-function shRaw(cmd) {
-  return new Promise((resolve) => {
-    const child = spawn(cmd, { cwd: root, shell: true, windowsHide: true });
-    let out = "";
-    child.stdout.on("data", (d) => (out += d));
-    child.on("close", () => resolve(out));
+    if (!raw) child.stderr.on("data", (d) => (out += d));
+    child.on("error", (error) => resolve(`error: ${error.message}`));
+    child.on("close", () => resolve(raw ? out : out.trim()));
   });
 }
 async function porcelain() {
-  const out = await shRaw("git status --porcelain");
+  // git status --porcelain puts a LEADING SPACE on unstaged changes; never trim its output.
+  const out = await exec("git", ["status", "--porcelain"], { raw: true });
   const map = new Map();
   for (const line of out.split(/\r?\n/)) {
     if (line.length < 4) continue;
@@ -197,26 +197,46 @@ function killTree(child) {
 }
 
 // ----------------------------------------------------------------- the one job
-const job = { running: null, name: "", kind: "", log: [], startedAt: null, exitCode: null, finishedAt: null };
+const job = { running: null, name: "", kind: "", log: [], startedAt: null, exitCode: null, finishedAt: null, stopped: false };
 function pushLog(line) {
   job.log.push(line);
   if (job.log.length > 3000) job.log.shift();
 }
-function runJob(name, kind, command, args, opts = {}) {
+/**
+ * Runs `steps`, [program, args] pairs, one after another and stops at the first that fails, as `a && b` did. No shell:
+ * git and node are programs and take their arguments as they are. npm and npx are .cmd files on Windows, which Node
+ * starts only through a shell; every argument they are given here is fixed in this file.
+ */
+function runJob(name, kind, steps, opts = {}) {
   if (job.running) return false;
-  Object.assign(job, { name, kind, log: [], startedAt: Date.now(), exitCode: null, finishedAt: null });
-  pushLog(`$ ${command} ${args.join(" ")}`);
-  const child = spawn(command, args, { cwd: root, env: { ...loadEnv(), ...(opts.env ?? {}) }, shell: process.platform === "win32", windowsHide: true });
-  job.running = child;
-  const feed = (chunk) => String(chunk).split(/\r?\n/).filter(Boolean).forEach(pushLog);
-  child.stdout.on("data", feed);
-  child.stderr.on("data", feed);
-  child.on("close", (code) => {
-    job.exitCode = code;
-    job.running = null;
-    job.finishedAt = Date.now();
-    pushLog(`— finished (${name}) with exit code ${code} —`);
-  });
+  Object.assign(job, { name, kind, log: [], startedAt: Date.now(), exitCode: null, finishedAt: null, stopped: false });
+  const env = { ...loadEnv(), ...(opts.env ?? {}) };
+  const step = (i) => {
+    const [command, args] = steps[i];
+    pushLog(`$ ${command} ${args.join(" ")}`);
+    const shell = process.platform === "win32" && (command === "npm" || command === "npx");
+    const child = spawn(command === "node" ? process.execPath : command, args, { cwd: root, env, shell, windowsHide: true });
+    job.running = child;
+    const feed = (chunk) => String(chunk).split(/\r?\n/).filter(Boolean).forEach(pushLog);
+    child.stdout.on("data", feed);
+    child.stderr.on("data", feed);
+    let ended = false;
+    const end = (code) => {
+      if (ended) return;
+      ended = true;
+      if (code === 0 && !job.stopped && i + 1 < steps.length) return step(i + 1);
+      job.exitCode = code;
+      job.running = null;
+      job.finishedAt = Date.now();
+      pushLog(`— finished (${name}) with exit code ${code} —`);
+    };
+    child.on("error", (error) => {
+      pushLog(error.message);
+      end(1);
+    });
+    child.on("close", end);
+  };
+  step(0);
   return true;
 }
 /** The last log lines that mean something to an editor, not to a programmer. */
@@ -404,7 +424,8 @@ async function fetchLiveGeminiModels(apiKey) {
   const now = Date.now();
   if (cachedGeminiModels && (now - lastGeminiModelsFetch < 3600000)) return cachedGeminiModels;
   try {
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(apiKey)}`, { signal: AbortSignal.timeout(4000) });
+    // The key goes in a header, never in the address: an address ends up in error messages and logs.
+    const res = await fetch("https://generativelanguage.googleapis.com/v1beta/models", { headers: { "x-goog-api-key": apiKey }, signal: AbortSignal.timeout(4000) });
     if (!res.ok) return null;
     const data = await res.json();
     if (Array.isArray(data.models)) {
@@ -425,21 +446,21 @@ async function fetchLiveGeminiModels(apiKey) {
 
 // --------------------------------------------------------------------- health
 async function health() {
-  const secrets = await sh(`gh secret list --repo ${REPO} 2>&1`);
-  const vars = await sh(`gh variable list --repo ${REPO} 2>&1`);
+  const secrets = await exec("gh", ["secret", "list", "--repo", REPO]);
+  const vars = await exec("gh", ["variable", "list", "--repo", REPO]);
   const ghOk = !/not logged|not recognized|command not found|could not|error/i.test(secrets);
   const local = envFileKeys();
   let editorReal = null;
   let deploy = null;
   if (ghOk) {
-    const d = await sh(`gh run list --repo ${REPO} --workflow deploy.yml -L 1 --json conclusion,createdAt,headSha,url 2>&1`);
+    const d = await exec("gh", ["run", "list", "--repo", REPO, "--workflow", "deploy.yml", "-L", "1", "--json", "conclusion,createdAt,headSha,url"]);
     try {
       const [r] = JSON.parse(d);
       if (r) deploy = { ok: r.conclusion === "success", when: r.createdAt, sha: (r.headSha ?? "").slice(0, 7), url: r.url };
     } catch {
       /* none yet */
     }
-    const last = await sh(`gh run list --repo ${REPO} --workflow editor.yml -L 1 --json startedAt,updatedAt,conclusion 2>&1`);
+    const last = await exec("gh", ["run", "list", "--repo", REPO, "--workflow", "editor.yml", "-L", "1", "--json", "startedAt,updatedAt,conclusion"]);
     try {
       const [r] = JSON.parse(last);
       if (r) {
@@ -581,6 +602,9 @@ function chatEnv() {
   const apiKey = env.ANTHROPIC_API_KEY;
   for (const key of Object.keys(env)) {
     if (/^CLAUDECODE$|^CLAUDE_/.test(key) || key === "ANTHROPIC_BASE_URL" || key === "ANTHROPIC_AUTH_TOKEN") delete env[key];
+    // The chat needs its own Claude credential and no other: the newsroom's keys stay out of its reach, so a file
+    // that talks it into running something finds nothing to send anywhere.
+    else if (/(?:_KEY|_TOKEN|_SECRET)$|^KHAZENDAR_CODEX_AUTH/.test(key)) delete env[key];
   }
   if (oauth) env.CLAUDE_CODE_OAUTH_TOKEN = oauth;
   if (apiKey) env.ANTHROPIC_API_KEY = apiKey;
@@ -610,7 +634,8 @@ WHAT YOU MUST NEVER DO — HE PUBLISHES, NOT YOU
   a picture. Never print, copy or commit .env, a key or a token.
 
 END EVERY TURN with one line: what changed, and whether the site still builds.`;
-const BLOCKED_TOOLS = ["Bash(git commit:*)", "Bash(git push:*)", "Bash(git reset:*)", "Bash(git checkout:*)", "Bash(git restore:*)", "Bash(git clean:*)", "Bash(git stash:*)", "Bash(git rebase:*)"];
+// Also out of the chat's reach: the keys file, and the workflows, which run in the cloud with every key the site has.
+const BLOCKED_TOOLS = ["Bash(git commit:*)", "Bash(git push:*)", "Bash(git reset:*)", "Bash(git checkout:*)", "Bash(git restore:*)", "Bash(git clean:*)", "Bash(git stash:*)", "Bash(git rebase:*)", "Read(./.env)", "Read(./.env.*)", "Edit(./.github/workflows/**)"];
 const chat = { running: null, sessionId: null, clients: new Set(), turns: [], baseline: null, touched: [] };
 function chatSend(event) {
   for (const res of chat.clients) res.write(`data: ${JSON.stringify(event)}\n\n`);
@@ -1215,6 +1240,14 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
 <div id="overlay" onclick="if(event.target===this)closePreview()"><div id="preview"></div></div>
 
 <script>
+var TOKEN=${JSON.stringify(DESK_TOKEN)};
+// Every request to the desk carries its token (the door, in the server). A tab left open from before a restart holds
+// the old one: the desk answers 401 and the tab reloads itself once to take the new one.
+var deskFetch=window.fetch.bind(window);
+window.fetch=function(u,o){o=o||{};var h=new Headers(o.headers||{});if(new URL(u,location.href).origin===location.origin)h.set('x-khazendar-token',TOKEN);o.headers=h;return deskFetch(u,o).then(function(r){if(r.status===401)reloadOnce();return r})};
+function reloadOnce(){try{if(Date.now()-(+sessionStorage.getItem('desk-reload')||0)<15000)return;sessionStorage.setItem('desk-reload',String(Date.now()))}catch(e){}location.reload()}
+// A link from a story's data opens only a web page: a «javascript:» address would run inside the desk.
+var link=function(u){u=String(u==null?'':u).trim();return /^https?:/i.test(u)?u:'#'};
 var LIVE_URL=${JSON.stringify(LIVE)};
 var SECTION=${JSON.stringify(SECTION_NAME)};
 var DOTS=${JSON.stringify(ICON.dots)};
@@ -1237,7 +1270,7 @@ window.addEventListener('hashchange',function(){show((location.hash||'#desk').sl
 var LIVE=[],wasRunning=false,timer=null;
 function refresh(){fetch('/api/state').then(function(r){return r.json()}).then(function(s){try{render(s);}catch(e){console.error('Render error:',e);}clearTimeout(timer);timer=setTimeout(refresh,s&&s.job&&s.job.running?3000:20000)}).catch(function(err){console.error('State fetch error:',err);timer=setTimeout(refresh,5000)})}
 function scoreTag(s){if(s==null||s==='')return '<span class="score">–</span>';var c=s>=8?'hi':(s<=5?'lo':'');return '<span class="score '+c+'">'+s+'</span>'}
-function srcList(list){return '<details><summary>'+list.length+' source'+(list.length===1?'':'s')+'</summary><ul>'+list.map(function(s){return '<li><a href="'+esc(s.url)+'" target="_blank">'+esc(s.nameEn||s.name)+'</a> — '+esc(s.title)+'</li>'}).join('')+'</ul></details>'}
+function srcList(list){return '<details><summary>'+list.length+' source'+(list.length===1?'':'s')+'</summary><ul>'+list.map(function(s){return '<li><a href="'+esc(link(s.url))+'" target="_blank">'+esc(s.nameEn||s.name)+'</a> — '+esc(s.title)+'</li>'}).join('')+'</ul></details>'}
 function render(s){
   document.getElementById('b-next').innerHTML=esc(fmtWhen(s.nextCloudRun));
   document.getElementById('b-last').innerHTML=s.lastRun?esc(KIND[s.lastRun.mode]||s.lastRun.mode)+' <small>· '+s.lastRun.published+' written · '+esc(ago(s.lastRun.startedAt))+'</small>':'–';
@@ -1332,7 +1365,7 @@ function openPreview(file){var box=document.getElementById('preview');box.innerH
       '<article><h1>'+esc(d.title)+'</h1><p class="sub">'+esc(d.subtitle)+'</p>'+(d.image?'<img src="'+esc(d.image.url)+'" alt="'+esc(d.image.alt)+'"><div class="credit">'+esc(d.image.credit||'')+'</div>':'')+'<p class="lede">'+esc(d.lede)+'</p>'+
       ((d.keyFacts||[]).length?'<div class="facts"><ul>'+d.keyFacts.map(function(f){return '<li>'+(f.label?'<b>'+esc(f.label)+':</b> ':'')+esc(f.value)+'</li>'}).join('')+'</ul></div>':'')+a.bodyHtml+(d.whyItMatters?'<div class="why"><b>لماذا يهم؟</b> '+esc(d.whyItMatters)+'</div>':'')+
       (d.chart?'<p class="m" style="direction:ltr;text-align:left">Carries a chart ('+esc(d.chart.title||d.chart.type)+'); it renders on the site.</p>':'')+(d.table?'<p class="m" style="direction:ltr;text-align:left">Carries a table; it renders on the site.</p>':'')+'</article>'+
-      '<div class="meta"><b>Sources</b><ul>'+(d.sources||[]).map(function(s){return '<li><a href="'+esc(s.url)+'" target="_blank">'+esc(s.nameEn||s.name)+'</a> — '+esc(s.title)+'</li>'}).join('')+'</ul><b>Quality</b> '+scoreTag(d.quality&&d.quality.score)+' '+esc(d.quality&&d.quality.verdict||'')+(d.quality&&d.quality.criticSummary?'<div class="ar m" style="margin-top:4px">'+esc(d.quality.criticSummary)+'</div>':'')+'<div class="m" style="margin-top:6px">Written by '+esc((d.models&&d.models.writer)||'?')+' · checked by '+esc((d.models&&d.models.critic)||'?')+'</div></div>'})}
+      '<div class="meta"><b>Sources</b><ul>'+(d.sources||[]).map(function(s){return '<li><a href="'+esc(link(s.url))+'" target="_blank">'+esc(s.nameEn||s.name)+'</a> — '+esc(s.title)+'</li>'}).join('')+'</ul><b>Quality</b> '+scoreTag(d.quality&&d.quality.score)+' '+esc(d.quality&&d.quality.verdict||'')+(d.quality&&d.quality.criticSummary?'<div class="ar m" style="margin-top:4px">'+esc(d.quality.criticSummary)+'</div>':'')+'<div class="m" style="margin-top:6px">Written by '+esc((d.models&&d.models.writer)||'?')+' · checked by '+esc((d.models&&d.models.critic)||'?')+'</div></div>'})}
 function closePreview(){document.getElementById('overlay').classList.remove('on')}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closePreview()});
 
@@ -1508,7 +1541,7 @@ function saveSettings(){var body={contactEmail:contactEmail.value,publisher:publ
 var thread=document.getElementById('thread');
 function bubble(cls,text){var e=document.getElementById('thread-empty');if(e)e.remove();var d=document.createElement('div');d.className='bub '+cls+(rtl(text)?' rtl':'');d.textContent=text;thread.appendChild(d);thread.scrollTop=thread.scrollHeight;return d}
 function step(text){var d=document.createElement('div');d.className='step';d.textContent='· '+text;thread.appendChild(d);thread.scrollTop=thread.scrollHeight}
-var busy=null;var ce=new EventSource('/chat/events');
+var busy=null;var ce=new EventSource('/chat/events?t='+TOKEN);
 ce.onmessage=function(e){var ev=JSON.parse(e.data);if(ev.t==='you')bubble('you',ev.text);if(ev.t==='paper'){if(busy){busy.remove();busy=null}bubble('paper',ev.text)}if(ev.t==='step')step(ev.text);if(ev.t==='busy')busy=bubble('paper','…');if(ev.t==='error'){if(busy){busy.remove();busy=null}bubble('paper',ev.text)}if(ev.t==='done'){if(busy){busy.remove();busy=null}document.getElementById('send').disabled=false;document.getElementById('msg').disabled=false;step('finished in '+ev.seconds+'s')}if(ev.t==='changes')renderChanges(ev.changes)};
 function ask(){var box=document.getElementById('msg');var text=box.value.trim();if(!text)return;box.value='';box.disabled=true;document.getElementById('send').disabled=true;post('/chat',{message:text}).then(function(r){if(!r.ok){r.text().then(alert);box.disabled=false;document.getElementById('send').disabled=false}})}
 document.getElementById('msg').addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();ask()}});
@@ -1517,6 +1550,44 @@ function publishChanges(){if(!confirm('Publish these site changes?'))return;post
 function undoChanges(){if(!confirm('Undo the last change the chat made?'))return;post('/undo').then(function(r){return r.text()}).then(function(t){alert(t);location.reload()})}
 fetch('/changes').then(function(r){return r.json()}).then(renderChanges);
 </script></body></html>`;
+}
+
+// ----------------------------------------------------------------------- door
+// The desk listens on 127.0.0.1 only, but every web page open in the owner's browser can send requests to that
+// address too, and a page on a domain that re-points itself at 127.0.0.1 (DNS rebinding) can even read the answers.
+// Found 2026-10-23: any site visited while the desk was open could publish, unpublish, replace the keys, put its own
+// AdSense account on the paper or, through /writers, run a program on the laptop. So the desk obeys only the page it
+// served: a token drawn fresh at every launch goes with every request, the address asked for must be the desk's own,
+// a request a browser marks as sent by another site is refused, and the desk's page cannot be framed.
+const DESK_TOKEN = randomBytes(32).toString("hex");
+/** gemini-3.8-flash, claude-opus-5-5, google/gemini-3.8-flash:free: what a model name may contain, and nothing else. */
+const MODEL_NAME = /^[A-Za-z0-9][A-Za-z0-9._:/@-]{0,127}$/;
+const SECURITY_HEADERS = {
+  "content-security-policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; object-src 'none'; form-action 'none'",
+  "x-frame-options": "DENY",
+  "x-content-type-options": "nosniff",
+  "referrer-policy": "no-referrer",
+  "cross-origin-opener-policy": "same-origin",
+  "cross-origin-resource-policy": "same-origin",
+  "cache-control": "no-store",
+};
+/** Why a request is refused, or null when it is the desk's own page asking. */
+function doorCheck(req, url) {
+  const port = server.address().port;
+  const own = [`127.0.0.1:${port}`, `localhost:${port}`];
+  if (!own.includes(req.headers.host ?? "")) return [403, "This is the Khazendar control room. Open it at its own address."];
+  const origin = req.headers.origin;
+  if (origin && !own.some((h) => origin === `http://${h}`)) return [403, "Refused: the request came from another website."];
+  // The page itself and its fonts open from anywhere (the launcher, a bookmark); everything else is asked by the page.
+  if (req.method === "GET" && (url.pathname === "/" || url.pathname.startsWith("/fonts/"))) return null;
+  const site = req.headers["sec-fetch-site"];
+  if (site && site !== "same-origin") return [403, "Refused: the request came from another website."];
+  // An EventSource cannot send a header, so the chat's stream alone takes the token in its address.
+  const given = Buffer.from(String(req.headers["x-khazendar-token"] ?? (url.pathname === "/chat/events" ? url.searchParams.get("t") ?? "" : "")));
+  const token = Buffer.from(DESK_TOKEN);
+  if (given.length !== token.length || !timingSafeEqual(given, token)) return [401, "The control room was restarted. Reload this page."];
+  if (req.method !== "GET" && !/^application\/json\b/i.test(req.headers["content-type"] ?? "")) return [415, "Refused: not a request from the control room's page."];
+  return null;
 }
 
 // ---------------------------------------------------------------------- routes
@@ -1535,9 +1606,9 @@ function body(req) {
 }
 // --autostash: the chat leaves edits uncommitted on purpose and a plain rebase refuses to run over them.
 // -X theirs: the cloud commits pipeline/state every run; keep the local hunk, as newsroom.yml does.
-const PUSH = ["&&", "git", "pull", "--rebase", "--autostash", "-X", "theirs", "pages", "main", "&&", "git", "push", "pages", "HEAD:main"];
+const PUSH = [["git", ["pull", "--rebase", "--autostash", "-X", "theirs", "pages", "main"]], ["git", ["push", "pages", "HEAD:main"]]];
 function commitAndPush(name, paths, message) {
-  return runJob(name, "publish", "git", ["add", ...paths, "&&", "git", ...GIT_ID, "commit", "-q", "-m", `"${message}"`, ...PUSH]);
+  return runJob(name, "publish", [["git", ["add", ...paths]], ["git", [...GIT_ID, "commit", "-q", "-m", message]], ...PUSH]);
 }
 
 const server = http.createServer(async (req, res) => {
@@ -1550,11 +1621,10 @@ const server = http.createServer(async (req, res) => {
     res.writeHead(200, { "content-type": "application/json; charset=utf-8" });
     res.end(JSON.stringify(o));
   };
+  for (const [name, value] of Object.entries(SECURITY_HEADERS)) res.setHeader(name, value);
   try {
-    if (url.pathname.startsWith("/accounts") && req.method === "POST") {
-      const origin = req.headers.origin;
-      if (req.headers["sec-fetch-site"] === "cross-site" || (origin && ![`http://127.0.0.1:${server.address().port}`, `http://localhost:${server.address().port}`].includes(origin))) return text(403, "Open account settings directly in the local Control Room.");
-    }
+    const refused = doorCheck(req, url);
+    if (refused) return text(...refused);
     if (url.pathname === "/" && req.method === "GET") {
       res.writeHead(200, { "content-type": "text/html; charset=utf-8" });
       return res.end(page());
@@ -1604,27 +1674,28 @@ const server = http.createServer(async (req, res) => {
       const kind = url.searchParams.get("kind");
       const limit = Math.max(1, Math.min(Number(url.searchParams.get("limit")) || 4, 10));
       const plans = {
-        dry: ["test one story", "node", ["pipeline/run.mjs", "--dry-run", "--limit=1"]],
-        news: ["news stories", "node", ["pipeline/run.mjs", "--draft", `--limit=${limit}`]],
-        explainer: ["an explainer", "node", ["pipeline/run.mjs", "--draft", "--mode=explainer"]],
-        analysis: ["an analysis", "node", ["pipeline/run.mjs", "--draft", "--mode=analysis"]],
-        paper: ["a research paper", "node", ["pipeline/run.mjs", "--draft", "--mode=paper"]],
-        weekly: ["the week's review", "node", ["pipeline/run.mjs", "--draft", "--mode=weekly"]],
-        feature: ["an in-depth piece (في العمق)", "node", ["pipeline/run.mjs", "--draft", "--mode=feature"]],
-        build: ["build & local preview", "npm", ["run", "build", "&&", "npx", "astro", "preview", "--port", "4325", "--host", "127.0.0.1"], { env: { KHAZENDAR_SHOW_DRAFTS: "1" } }],
-        pull: ["sync from GitHub", "git", ["pull", "--rebase", "--autostash", "-X", "theirs", "pages", "main"]],
+        dry: ["test one story", [["node", ["pipeline/run.mjs", "--dry-run", "--limit=1"]]]],
+        news: ["news stories", [["node", ["pipeline/run.mjs", "--draft", `--limit=${limit}`]]]],
+        explainer: ["an explainer", [["node", ["pipeline/run.mjs", "--draft", "--mode=explainer"]]]],
+        analysis: ["an analysis", [["node", ["pipeline/run.mjs", "--draft", "--mode=analysis"]]]],
+        paper: ["a research paper", [["node", ["pipeline/run.mjs", "--draft", "--mode=paper"]]]],
+        weekly: ["the week's review", [["node", ["pipeline/run.mjs", "--draft", "--mode=weekly"]]]],
+        feature: ["an in-depth piece (في العمق)", [["node", ["pipeline/run.mjs", "--draft", "--mode=feature"]]]],
+        build: ["build & local preview", [["npm", ["run", "build"]], ["npx", ["astro", "preview", "--port", "4325", "--host", "127.0.0.1"]]], { env: { KHAZENDAR_SHOW_DRAFTS: "1" } }],
+        pull: ["sync from GitHub", [["git", ["pull", "--rebase", "--autostash", "-X", "theirs", "pages", "main"]]]],
       };
       const plan = plans[kind];
       if (!plan) return text(400, "unknown action");
       const sections = (url.searchParams.get("sections") ?? "").replace(/[^a-z,]/g, "");
       if (sections && (kind === "news" || kind === "analysis")) {
-        plan[2].push(`--sections=${sections}`);
+        plan[1][0][1].push(`--sections=${sections}`);
         plan[0] += ` (${sections})`;
       }
-      if (!runJob(plan[0], kind, plan[1], plan[2], plan[3])) return text(409, `Still busy with "${job.name}". Wait for it to finish, or press Stop.`);
+      if (!runJob(plan[0], kind, plan[1], plan[2])) return text(409, `Still busy with "${job.name}". Wait for it to finish, or press Stop.`);
       return text(200, "started");
     }
     if (url.pathname === "/stop" && req.method === "POST") {
+      job.stopped = true;
       killTree(job.running);
       killTree(chat.running);
       return text(200, "stopping");
@@ -1767,8 +1838,11 @@ const server = http.createServer(async (req, res) => {
     if (url.pathname === "/writers" && req.method === "POST") {
       const { provider, model, newsroomModel, chatModel, thinkingBudget, localOnly } = await body(req);
       const prov = ["codex", "gemini", "claude", "openai", "qwen", "openrouter"].includes(provider) ? provider : "gemini";
-      const actualModel = model || newsroomModel;
-      const cm = typeof chatModel === "string" ? chatModel : "";
+      const picked = model || newsroomModel;
+      const actualModel = typeof picked === "string" ? picked.trim() : "";
+      const cm = typeof chatModel === "string" ? chatModel.trim() : "";
+      if ([actualModel, cm].some((m) => m && !MODEL_NAME.test(m))) return text(400, "That model name has characters no model name has.");
+      if (thinkingBudget !== undefined && !(typeof thinkingBudget === "string" && /^-?\d{1,6}$/.test(thinkingBudget))) return text(400, "The thinking budget must be a whole number.");
 
       await setEnvKey("KHAZENDAR_PROVIDER", prov);
       if (actualModel) {
@@ -1786,10 +1860,10 @@ const server = http.createServer(async (req, res) => {
       }
 
       if (localOnly === true || prov === "codex") return text(200, `Saved on this laptop for testing: ${prov.toUpperCase()} (${actualModel || "default"}). Scheduled cloud runs are unchanged.`);
-      if (typeof thinkingBudget === "string") await sh(`gh variable set KHAZENDAR_THINKING_BUDGET --repo ${REPO} --body ${thinkingBudget} 2>&1`);
+      if (typeof thinkingBudget === "string") await exec("gh", ["variable", "set", "KHAZENDAR_THINKING_BUDGET", "--repo", REPO, `--body=${thinkingBudget}`]);
 
-      const b = await sh(`gh variable set KHAZENDAR_PROVIDER --repo ${REPO} --body ${prov} 2>&1`);
-      if (actualModel) await sh(`gh variable set KHAZENDAR_MODEL --repo ${REPO} --body ${actualModel} 2>&1`);
+      const b = await exec("gh", ["variable", "set", "KHAZENDAR_PROVIDER", "--repo", REPO, `--body=${prov}`]);
+      if (actualModel) await exec("gh", ["variable", "set", "KHAZENDAR_MODEL", "--repo", REPO, `--body=${actualModel}`]);
       const bad = /error|not logged|could not/i.test(b) ? b : null;
       return text(200, bad ? `Saved locally; cloud variable update skipped: ${bad.slice(0, 100)}` : `Done — active controller is now ${prov.toUpperCase()} (${actualModel || "default"}). Other models are in idle mode.`);
     }
@@ -1819,18 +1893,25 @@ const server = http.createServer(async (req, res) => {
     // "Pause everything": the cloud newsroom and the daily editor skip every scheduled run until resumed.
     if (url.pathname === "/pause" && req.method === "POST") {
       const value = url.searchParams.get("value") === "1" ? "1" : "0";
-      const out = await sh(`gh variable set KHAZENDAR_PAUSED --repo ${REPO} --body ${value} 2>&1`);
+      const out = await exec("gh", ["variable", "set", "KHAZENDAR_PAUSED", "--repo", REPO, `--body=${value}`]);
       if (/error|not logged|could not/i.test(out)) return text(200, `Could not: ${out.slice(0, 160)}`);
       return text(200, value === "1" ? "Paused — nothing will be written or published until you press Resume. Stories already live stay live." : "Resumed — the next scheduled run goes ahead.");
     }
     if (url.pathname === "/review" && req.method === "POST") {
       const value = url.searchParams.get("value") === "1" ? "1" : "0";
-      const out = await sh(`gh variable set KHAZENDAR_REVIEW --repo ${REPO} --body ${value} 2>&1`);
+      const out = await exec("gh", ["variable", "set", "KHAZENDAR_REVIEW", "--repo", REPO, `--body=${value}`]);
       return text(200, /error|not logged|could not/i.test(out) ? `Could not: ${out.slice(0, 160)}` : value === "1" ? "Done — from the next run the cloud writes drafts and waits for you." : "Done — the cloud publishes on its own.");
     }
     if (url.pathname === "/settings" && req.method === "POST") {
       const patch = await body(req);
       const current = JSON.parse(readFileSync(SITE_FILE, "utf8"));
+      // The AdSense ID decides who is paid for the paper's ads and the verification code whom Google takes for its
+      // owner; both go live at once, so a value in neither form is refused (a pasted meta tag gives up its code).
+      if (typeof patch.googleSiteVerification === "string") patch.googleSiteVerification = (patch.googleSiteVerification.match(/content=["']([^"']+)["']/) ?? [])[1] ?? patch.googleSiteVerification;
+      const FORMS = { adsenseClient: [/^(?:ca-)?pub-\d{10,20}$/, "AdSense ID (ca-pub- and digits)"], googleSiteVerification: [/^[A-Za-z0-9_-]{10,100}$/, "Google verification code"], contactEmail: [/^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/, "contact email"] };
+      for (const [key, [form, label]] of Object.entries(FORMS)) {
+        if (typeof patch[key] === "string" && patch[key].trim() && !form.test(patch[key].trim())) return text(400, `That ${label} does not look right, so nothing was saved.`);
+      }
       for (const key of ["contactEmail", "publisher", "adsenseClient", "googleSiteVerification"]) if (typeof patch[key] === "string") current[key] = patch[key].trim();
       if (typeof patch.private === "boolean") current.private = patch.private;
       await writeFile(SITE_FILE, `${JSON.stringify(current, null, 2)}\n`, "utf8");
@@ -1857,9 +1938,12 @@ const server = http.createServer(async (req, res) => {
     if (url.pathname === "/publish-changes" && req.method === "POST") {
       const c = await siteChanges();
       if (!c.count) return text(200, "Nothing to publish.");
+      // An automatic job runs in the cloud with every key the site has, so a change to one is never published from here.
+      const files = c.files.filter((f) => !f.file.startsWith(".github/"));
+      if (!files.length) return text(200, "Only a change to an automatic job waits, and those are never published from the desk. Ask Claude Code to look at it.");
       if (job.running) return text(409, `Still busy with "${job.name}".`);
-      commitAndPush("publish site changes", c.files.map((f) => f.file), "site: changes from the control room");
-      return text(200, "Publishing — live in about a minute.");
+      commitAndPush("publish site changes", files.map((f) => f.file), "site: changes from the control room");
+      return text(200, files.length < c.count ? "Publishing — live in about a minute. A change to an automatic job stays unpublished: those never go out from the desk." : "Publishing — live in about a minute.");
     }
     if (url.pathname === "/undo" && req.method === "POST") {
       if (chat.running) return text(409, "It is still working. Press Stop first.");
@@ -1871,7 +1955,7 @@ const server = http.createServer(async (req, res) => {
         if (isNew) await rm(path.join(root, file), { force: true, recursive: true });
         else tracked.push(file);
       }
-      if (tracked.length) await sh(`git restore --worktree --staged -- ${tracked.map((f) => `"${f}"`).join(" ")}`);
+      if (tracked.length) await exec("git", ["restore", "--worktree", "--staged", "--", ...tracked]);
       const n = chat.touched.length;
       chat.touched = [];
       return text(200, `Undone: ${n} file(s) put back.`);

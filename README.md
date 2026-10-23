@@ -83,7 +83,7 @@ Windows and fires it. `TALK_TO_HERMES.cmd` opens an interactive session.
 
 ## Control room
 
-Double-click `OPEN_CONTROL_ROOM.cmd` (or `npm run control`); it opens the browser itself at the port it got: 7777, or 4777 and then any free port when Windows has reserved 7777 (it did on 2026-09-24, in the block 7722-7821). It shows the last run's report, the next scheduled cloud run, every article with its critic score, and buttons to run the newsroom, write an explainer, dry-run, build a local preview, sync, publish local changes, or unpublish a story. It binds to localhost only and uses no GPU.
+Double-click `OPEN_CONTROL_ROOM.cmd` (or `npm run control`); it opens the browser itself at the port it got: 7777, or 4777 and then any free port when Windows has reserved 7777 (it did on 2026-09-24, in the block 7722-7821). It shows the last run's report, the next scheduled cloud run, every article with its critic score, and buttons to run the newsroom, write an explainer, dry-run, build a local preview, sync, publish local changes, or unpublish a story. It binds to localhost only, obeys only the page it served (a token drawn at every launch; other websites, other host names and framing are refused: CLAUDE.md, Security) and uses no GPU.
 
 ## Design and brand
 
