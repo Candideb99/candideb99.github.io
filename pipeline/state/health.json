@@ -1,25 +1,25 @@
 {
   "version": 1,
-  "photos": {},
-  "woken": {
-    "stall": "2026-10-05T16:00:22.854Z"
+  "photos": {
+    "qatari-diar-launches-alam-al-roum-investment-zone-82ae33": {
+      "firstBadAt": "2026-10-23T18:59:45.051Z",
+      "lastCheckedAt": "2026-10-23T18:59:45.051Z",
+      "checks": 1,
+      "reason": "its page at the photo library is gone"
+    }
   },
-  "pagesCheckedAt": "2026-10-15T12:39:23.004Z",
+  "woken": {},
+  "pagesCheckedAt": "2026-10-23T18:59:45.052Z",
   "last": {
-    "at": "2026-10-17T11:35:53.498Z",
-    "findings": [
-      "No news story has been published for 385 hours, though the newsroom completed 30 run(s) since. Read the last run reports (pipeline/runs/*.json: each story's outcome and the log) and fix what stops every story; a story the critic rejects is not a bug."
-    ],
+    "at": "2026-10-23T19:01:50.594Z",
+    "findings": [],
     "owner": [
-      "خازندار: published stories with a proved error the corrections desk could not fix",
-      "خازندار: the daily editor could not fix \"stall\" in 2 tries"
+      "خازندار: published stories with a proved error the corrections desk could not fix"
     ],
     "photos": {
-      "pending": 0,
+      "pending": 1,
       "redo": []
     }
   },
-  "tries": {
-    "stall": 2
-  }
+  "tries": {}
 }

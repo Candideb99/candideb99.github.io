@@ -240,10 +240,89 @@
       "read": 0,
       "confirmedPerStory": null,
       "photosPending": 0
+    },
+    {
+      "date": "2026-10-23",
+      "published": 15,
+      "news": 12,
+      "styleFaultsPerStory": 0,
+      "corrections": 6,
+      "read": 3,
+      "confirmedPerStory": 0,
+      "photosPending": 1
     }
   ],
-  "updatedAt": "2026-10-17T11:35:53.647Z",
+  "updatedAt": "2026-10-23T19:01:50.841Z",
   "week": {
+    "published": 92,
+    "news": 81,
+    "revisedShare": 0.88,
+    "styleFaultsPerStory": 0,
+    "styleWarningsPerStory": 0.27,
+    "corrections": 6,
+    "usefulness": {
+      "withLessons": {
+        "stories": 47,
+        "words": 498,
+        "keyFacts": 4.9
+      },
+      "control": {
+        "stories": 14,
+        "words": 521,
+        "keyFacts": 5.9
+      }
+    },
+    "precheck": {
+      "checked": 84,
+      "clean": 80,
+      "repaired": 4,
+      "held": 0,
+      "errorsFound": 4,
+      "heldTitles": []
+    },
+    "outcomes": {
+      "repairedBeforePublication": 4,
+      "correctionsVerifiedClean": 1,
+      "correctionsNotVerifiedYet": 0,
+      "heldBeforePublication": 0,
+      "correctionsStuck": 0
+    },
+    "secondLook": {
+      "read": 30,
+      "clean": 20,
+      "corrected": 1,
+      "stands": 0,
+      "refused": 0,
+      "listed": 9,
+      "unverifiable": 0,
+      "confirmedPerStory": 0.03,
+      "withLessons": {
+        "read": 16,
+        "confirmedPerStory": 0
+      },
+      "claudeWithout": {
+        "read": 8,
+        "confirmedPerStory": 0
+      }
+    },
+    "runs": {
+      "count": 24,
+      "written": 44,
+      "refused": 8,
+      "callsPerStory": 20.8,
+      "tokensPerStory": 351123,
+      "costPerStory": 3.09,
+      "note": "from the run reports kept (the newest 24)"
+    },
+    "recurring": [
+      {
+        "what": "newsroom: skipped: repeats a recent story («…»)",
+        "stories": 4,
+        "examples": []
+      }
+    ]
+  },
+  "weekBefore": {
     "published": 0,
     "news": 0,
     "revisedShare": null,
@@ -296,69 +375,6 @@
       }
     },
     "runs": {
-      "count": 24,
-      "written": 0,
-      "refused": 0,
-      "callsPerStory": null,
-      "tokensPerStory": null,
-      "costPerStory": null,
-      "note": "from the run reports kept (the newest 24)"
-    },
-    "recurring": []
-  },
-  "weekBefore": {
-    "published": 0,
-    "news": 0,
-    "revisedShare": null,
-    "styleFaultsPerStory": null,
-    "styleWarningsPerStory": null,
-    "corrections": 0,
-    "usefulness": {
-      "withLessons": {
-        "stories": 0,
-        "words": null,
-        "keyFacts": null
-      },
-      "control": {
-        "stories": 0,
-        "words": null,
-        "keyFacts": null
-      }
-    },
-    "precheck": {
-      "checked": 0,
-      "clean": 0,
-      "repaired": 0,
-      "held": 0,
-      "errorsFound": 0,
-      "heldTitles": []
-    },
-    "outcomes": {
-      "repairedBeforePublication": 0,
-      "correctionsVerifiedClean": 0,
-      "correctionsNotVerifiedYet": 0,
-      "heldBeforePublication": 0,
-      "correctionsStuck": 0
-    },
-    "secondLook": {
-      "read": 14,
-      "clean": 0,
-      "corrected": 0,
-      "stands": 0,
-      "refused": 0,
-      "listed": 0,
-      "unverifiable": 0,
-      "confirmedPerStory": 0,
-      "withLessons": {
-        "read": 0,
-        "confirmedPerStory": null
-      },
-      "claudeWithout": {
-        "read": 0,
-        "confirmedPerStory": null
-      }
-    },
-    "runs": {
       "count": 0,
       "written": 0,
       "refused": 0,
@@ -370,50 +386,50 @@
     "recurring": []
   },
   "lessons": {
-    "version": 29,
-    "active": 9,
-    "learnedFrom": 204,
+    "version": 34,
+    "active": 10,
+    "learnedFrom": 209,
     "kept": null,
     "lastTest": {
-      "at": "2026-10-12T15:13:59.499Z",
-      "checker": "f6d38e4947",
-      "live": 29,
+      "at": "2026-10-19T13:03:25.563Z",
+      "checker": "4c54099299",
+      "live": 32,
       "liveHash": "5c629d81ea",
       "kept": 0,
       "decision": "keep",
-      "reason": "unproven so far: better in 0 pairs, worse in 2, tied in 8 (evidence ×0.3 of 20; harm ×2.3 of 10)",
+      "reason": "unproven so far: better in 0 pairs, worse in 0, tied in 3 (evidence ×1.0 of 20; harm ×1.0 of 10)",
       "vsKept": {
-        "n": 10,
+        "n": 3,
         "better": 0,
-        "worse": 2,
-        "tied": 8,
-        "down": 0,
-        "up": 5,
-        "e": 0.3333333333333335,
-        "harm": 2.3333333333333353,
-        "saysLess": 0.16666666666668742
+        "worse": 0,
+        "tied": 3,
+        "down": 1,
+        "up": 1,
+        "e": 1,
+        "harm": 1,
+        "saysLess": 0.6666666666666662
       },
       "own": {
-        "n": 1,
+        "n": 3,
         "better": 0,
-        "worse": 1,
-        "tied": 0,
-        "down": 0,
+        "worse": 0,
+        "tied": 3,
+        "down": 1,
         "up": 1,
-        "e": 0.5,
-        "harm": 1.4999999999999998,
-        "saysLess": 0.5
+        "e": 1,
+        "harm": 1,
+        "saysLess": 0.6666666666666662
       },
       "vsNone": {
-        "n": 10,
+        "n": 3,
         "better": 0,
-        "worse": 2,
-        "tied": 8,
-        "down": 0,
-        "up": 5,
-        "e": 0.3333333333333335,
-        "harm": 2.3333333333333353,
-        "saysLess": 0.16666666666668742
+        "worse": 0,
+        "tied": 3,
+        "down": 1,
+        "up": 1,
+        "e": 1,
+        "harm": 1,
+        "saysLess": 0.6666666666666662
       },
       "canary": {
         "seeded": 3,
@@ -421,43 +437,43 @@
         "falseFlags": 0,
         "alarm": false
       },
-      "calls": 0
+      "calls": 1
     }
   },
   "evidence": {
-    "pairs": 12,
+    "pairs": 23,
     "vsKept": {
-      "n": 10,
+      "n": 0,
       "better": 0,
-      "worse": 2,
-      "tied": 8,
+      "worse": 0,
+      "tied": 0,
       "down": 0,
-      "up": 5,
-      "e": 0.3333333333333335,
-      "harm": 2.3333333333333353,
-      "saysLess": 0.16666666666668742
+      "up": 0,
+      "e": 1,
+      "harm": 1,
+      "saysLess": 1
     },
     "vsNone": {
-      "n": 10,
+      "n": 0,
       "better": 0,
-      "worse": 2,
-      "tied": 8,
+      "worse": 0,
+      "tied": 0,
       "down": 0,
-      "up": 5,
-      "e": 0.3333333333333335,
-      "harm": 2.3333333333333353,
-      "saysLess": 0.16666666666668742
+      "up": 0,
+      "e": 1,
+      "harm": 1,
+      "saysLess": 1
     },
     "canary": {
-      "seeded": 3,
-      "found": 3,
+      "seeded": 0,
+      "found": 0,
       "falseFlags": 0,
       "alarm": false
     },
     "lastDecision": {
-      "at": "2026-10-12T15:13:59.499Z",
+      "at": "2026-10-19T13:03:25.563Z",
       "decision": "keep",
-      "reason": "unproven so far: better in 0 pairs, worse in 2, tied in 8 (evidence ×0.3 of 20; harm ×2.3 of 10)"
+      "reason": "unproven so far: better in 0 pairs, worse in 0, tied in 3 (evidence ×1.0 of 20; harm ×1.0 of 10)"
     }
   }
 }
