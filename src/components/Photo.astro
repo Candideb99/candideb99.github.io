@@ -33,6 +33,11 @@ const phoneSet = source?.srcset
   .filter((c) => Number(c.match(/ (\d+)w$/)?.[1] ?? 0) <= PHONE_MAX)
   .join(", ");
 const capped = Boolean(phoneSet && source?.srcset && phoneSet !== source.srcset);
+// A near-square photograph is cropped from a fifth of the way down, not from its centre. Cut to the story's 2/1 frame from
+// the centre, it lost the top of every head and all of a building worker's under the jobless-claims story (2026-10-24: 16
+// live photos wider than tall by under 1.3; a person stands in most of them, head in the top third). A wider photograph
+// keeps the centre, where a ship, a plant or a market stall sits: on the 88 at 4:3 the higher crop only added sky.
+const squarish = Boolean(image?.width && image?.height && image.width / image.height < 1.3);
 ---
 
 {image && source && (
@@ -50,6 +55,7 @@ const capped = Boolean(phoneSet && source?.srcset && phoneSet !== source.srcset)
         decoding="async"
         fetchpriority={eager ? "high" : "auto"}
         referrerpolicy="no-referrer"
+        style={squarish ? "object-position: 50% 20%" : undefined}
       />
     </picture>
   </div>
