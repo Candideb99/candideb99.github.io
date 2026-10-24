@@ -49,11 +49,18 @@ const ONLY = new Set(onlyArg ? onlyArg.slice(7).split(",").map((s) => s.trim()).
 const log = (message) => console.log(`[backfill ${new Date().toISOString().slice(11, 19)}] ${message}`);
 
 const files = (await readdir(ARTICLES_DIR)).filter((f) => f.endsWith(".md")).sort();
-const used = new Set();
-for (const file of files) {
-  const raw = await readFile(path.join(ARTICLES_DIR, file), "utf8");
-  const url = raw.match(/^image:\r?\n  url: (\S+)/m)?.[1];
-  if (url) used.add(url);
+/** The photographs published now, read again before every story: another run writing at the same time (the newsroom, a
+ *  second batch by hand) is seen before this one picks, not after. With this run's own picks, which a dry run never writes. */
+const picked = new Set();
+async function usedNow() {
+  const used = new Set(picked);
+  for (const file of await readdir(ARTICLES_DIR)) {
+    if (!file.endsWith(".md")) continue;
+    const raw = await readFile(path.join(ARTICLES_DIR, file), "utf8").catch(() => "");
+    const url = raw.match(/^image:\r?\n  url: (\S+)/m)?.[1];
+    if (url) used.add(url);
+  }
+  return used;
 }
 let tried = 0;
 let found = 0;
@@ -93,6 +100,7 @@ for (const file of files) {
   }
   let image = null;
   try {
+    const used = await usedNow();
     const exclude = AS_NEW ? new Set([...used].filter((u) => u !== own && !String(u).startsWith("title:") && !String(u).startsWith("series"))) : used;
     // A handout is kept on the site (lib/images.mjs handoutTier()); a dry run keeps nothing.
     image = await pickImage({ draft, story, log, exclude, sources, photoDir: DRY_RUN ? null : path.join(process.cwd(), "public", "photos", "handouts") });
@@ -108,7 +116,7 @@ ${match[2]}`);
     continue;
   }
   found += 1;
-  used.add(image.url);
+  picked.add(image.url);
   log(`${file}: "${image.title}" (${image.license})${DRY_RUN ? ` ${image.url}\n    caption: ${image.alt}\n    credit: ${image.credit}` : ""}`);
   if (DRY_RUN) continue;
   data.image = {

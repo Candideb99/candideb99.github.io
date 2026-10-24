@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The picture desk, tested on cases whose right answer is known (69 checks), with scripted stand-ins for Claude, Wikimedia Commons,
+ * The picture desk, tested on cases whose right answer is known (80 checks), with scripted stand-ins for Claude, Wikimedia Commons,
  * the other libraries and the thumbnails: no model call, no network. Written 2026-09-28 after the owner asked for the
  * image engine to be stress-tested ("it might still be buggy"), so that the cascade's order, its place filter, the
  * repeat guard, its behaviour when a service fails, and the reading of accented names cannot regress unseen. The gate
@@ -9,6 +9,7 @@
  *   node scripts/images-selftest.mjs
  */
 import { withStandIns, pickImage, headlinePeople, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { photoKey, sharedPhotos } from "../pipeline/lib/photo-key.mjs";
 
 let failed = 0;
 function check(name, got, want) {
@@ -487,6 +488,16 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
     [false, false, false, false],
   );
   check(
+    "a Panoramio file is not a panorama; a panorama still is",
+    [
+      frontOfBuilding({ title: "Oil pipe lines in saudi Arabia - panoramio.jpg" }),
+      frontOfBuilding({ title: "Total satorp refinery flare - panoramio.jpg" }),
+      frontOfBuilding({ title: "Hoboken Terminal June 2015 panorama 2.jpg" }),
+      frontOfBuilding({ title: "Panoramic view of Doha.jpg" }),
+    ],
+    [false, false, true, true],
+  );
+  check(
     "a phone of app icons, a defunct service and a gavel are stock clichés; a product in use is not",
     [
       Boolean(stockFault({ title: "Close-up of hand holding smartphone showing social media apps like Facebook and Instagram." })),
@@ -647,6 +658,51 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   });
   check("the side figure is never searched; the governor, titled in Arabic, is found and runs", [r.searched.some((q) => /Takala/.test(q)), r.image?.title], [false, issa.title]);
   check("every judge is told the side figure is not the story's subject", r.judgePrompts.every((p) => p.includes("not in its headline: Mohamed Takala")), true);
+}
+
+// S. A photograph another story runs is never offered again under another of its addresses (2026-10-24: Duqm's port ran on
+// two stories, the Oman story's copy stored as thumb.wikimedia.org/…?utm_source=…, the desk offering upload.wikimedia.org/…).
+{
+  const duqm = "%D9%85%D9%8A%D9%86%D8%A7%D8%A1_%D8%A7%D9%84%D8%AF%D9%82%D9%85_%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.jpg";
+  const forms = [
+    `https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/${duqm}/1280px-${duqm}?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail`,
+    `https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/${duqm}/960px-${duqm}`,
+    `https://upload.wikimedia.org/wikipedia/commons/e/e3/${decodeURIComponent(duqm)}`,
+  ];
+  check("one Commons file under two hosts, two widths and both encodings is one photograph", new Set(forms.map(photoKey)).size, 1);
+  check(
+    "two Commons names that differ in case after the first letter are two photographs",
+    photoKey("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Riyadh_skyline.jpg/1280px-Riyadh_skyline.jpg") === photoKey("https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Riyadh_Skyline.jpg/1280px-Riyadh_Skyline.jpg"),
+    false,
+  );
+  check(
+    "a Flickr or Pexels photograph is its number, whatever its size",
+    ["https://live.staticflickr.com/3790/12001284873_5581f12f6c_b.jpg", "https://farm4.staticflickr.com/3790/12001284873_5581f12f6c_z.jpg", "https://images.pexels.com/photos/36563588/pexels-photo-36563588.jpeg?auto=compress&cs=tinysrgb&w=1280", "https://images.pexels.com/photos/36563588/pexels-photo-36563588.jpeg?w=940"].map(photoKey),
+    ["flickr:12001284873", "flickr:12001284873", "pexels:36563588", "pexels:36563588"],
+  );
+  // The New Capital's district, published under the old host with a written comma, is offered again in the upload form.
+  const oldForm = cbd.url.replace("https://upload.wikimedia.org", "https://thumb.wikimedia.org").replace(/%2C/g, ",") + "?utm_source=commons.wikimedia.org&utm_content=thumbnail";
+  const r = await scenario({
+    draft: developers,
+    plan: planFor({ places: ["New Administrative Capital"], place_queries: ["New Administrative Capital"] }),
+    world: { "New Administrative Capital": [cbd], "construction site Egypt": [dahab] },
+    judge: (titles) => (titles.length ? 1 : 0),
+    verify: () => "GENERIC_OK",
+    exclude: new Set([oldForm]),
+  });
+  check("a photograph published under another address is passed over for the next tier", r.image?.title, dahab.title);
+  // The morning round's net: the newer of two stories sharing a photograph is given another; the older keeps it.
+  const at = (iso) => Date.parse(iso);
+  check(
+    "the newer of two stories sharing a photograph is the one re-picked",
+    sharedPhotos([
+      { slug: "explainer", at: at("2026-09-27T10:48:02Z"), image: { url: forms[1] } },
+      { slug: "oman", at: at("2026-09-07T13:50:31Z"), image: { url: forms[0] } },
+      { slug: "budget", at: at("2026-10-17T23:19:19Z"), image: { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Treasury_sign.jpg/1280px-Treasury_sign.jpg" } },
+      { slug: "text-only", at: at("2026-10-18T00:00:00Z"), image: null },
+    ]),
+    [{ slug: "explainer", keeps: "oman" }],
+  );
 }
 
 console.log(failed ? `\n${failed} check(s) FAILED` : "\nall checks passed");

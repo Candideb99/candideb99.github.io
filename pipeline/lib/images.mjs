@@ -7,6 +7,7 @@ import { chat } from "./llm.mjs";
 // The house spellings the copy desk keeps («أمريكي»، «ترامب») hold under photographs too.
 import { fixNames } from "./copydesk.mjs";
 import { USER_AGENT, fetchWithTimeout } from "./util.mjs";
+import { photoKey } from "./photo-key.mjs";
 
 /**
  * Everything the picture desk reaches outside itself for: the model, the libraries, the thumbnails. The desk calls
@@ -368,11 +369,12 @@ export function closeUpOfMaterial(image) {
  * offered a headquarters as the fallback and the second check passed "the named company's building" as GENERIC_OK. A file
  * whose own record calls it one is now dropped in code, unless the story is about buildings themselves (real estate,
  * construction, a new headquarters, branches) or the pass is the last resort's, which may still take a central bank under
- * its own decision on rates (the owner's ruling of 2026-09-28).
+ * its own decision on rates (the owner's ruling of 2026-09-28). «… - panoramio.jpg» names Panoramio, the photo site much
+ * of Commons' Gulf comes from, not a panorama: it dropped Saudi pipelines and a Jubail refinery's flare (2026-10-24).
  */
-const FRONT = /\b(?:headquarters|head office|HQ|exterior|fa[cç]ade|frontage|storefront|shop ?front|(?:bank )?branch(?:es)?(?! lines?)|office (?:building|block|tower)s?|bank building|signage|(?<!ship )buildings?(?! (?:sites?|works?))|skylines?|panoram\w*|cityscapes?|skyscrapers?|financial district)\b/i;
+const FRONT = /\b(?:headquarters|head office|HQ|exterior|fa[cç]ade|frontage|storefront|shop ?front|(?:bank )?branch(?:es)?(?! lines?)|office (?:building|block|tower)s?|bank building|signage|(?<!ship )buildings?(?! (?:sites?|works?))|skylines?|panoram(?!io\b)\w*|cityscapes?|skyscrapers?|financial district)\b/i;
 const FRONT_CATEGORY = /(?:^|\|)[^|]*\b(?:branches|headquarters|office buildings|bank buildings|facades|exchange buildings|parliament buildings|government buildings|skylines|skyscrapers)\b[^|]*(?=\||$)/i;
-const FRONT_BRIEF = /\b(?:fa[cç]ade|exterior|storefront|shop ?front|(?:bank )?branch(?:es)?(?! lines?)|headquarters|head office|skylines?|cityscapes?|panoram\w*|skyscrapers?|office (?:building|block|tower)s?|logo (?:sign|on)|signage|signs? (?:on|above|over))\b/i;
+const FRONT_BRIEF = /\b(?:fa[cç]ade|exterior|storefront|shop ?front|(?:bank )?branch(?:es)?(?! lines?)|headquarters|head office|skylines?|cityscapes?|panoram(?!io\b)\w*|skyscrapers?|office (?:building|block|tower)s?|logo (?:sign|on)|signage|signs? (?:on|above|over))\b/i;
 /** What a story about buildings names in its headline, dek or tags: property, construction, a headquarters, branches. Whole
  *  words, so «المقرر» (scheduled) is not «المقر» (the headquarters). */
 const BUILDINGS_STORY = /(?<![ء-ٟٮ-ۓۺ-ۿ])[وفبل]?(?:العقار|العقارات|عقاري|العقاري|عقارية|العقارية|البناء|التشييد|الإنشاءات|إنشاءات|المباني|مبنى|أبراج|برج|المقر|مقر|مقرها|مقره|الفروع|فروع|فرع|فرعاً|العاصمة الإدارية)(?![ء-ٟٮ-ۓۺ-ۿ])/;
@@ -573,13 +575,15 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
     let added = 0;
     let taken = 0;
     for (const image of list) {
-      if (seen.has(image.url) || seen.has(`title:${image.title}`)) continue;
+      const key = `key:${photoKey(image.url)}`;
+      if (seen.has(image.url) || seen.has(`title:${image.title}`) || seen.has(key)) continue;
       if (inUsedSeries(seen, image.title)) {
         log(`image: dropped "${String(image.title).slice(0, 70)}" — another frame of a series a published story runs`);
         seen.add(image.url);
         continue;
       }
       seen.add(image.url);
+      seen.add(key);
       // A file that names less than half of what the phrase is about never reaches the judges («bond market
       // screens» found a church in the town of Market Rasen).
       let relevant = relevance(image, subject);
@@ -1436,8 +1440,8 @@ async function settle({ image, chosen, thumbnail, draft, story, log, neutral = f
     log(`image: second check failed (${error.message.split("\n")[0]}); photo refused`);
   }
   if (verdict !== "OK") {
-    // Excluded by URL and by file title: Commons serves one file under several URLs and widths.
-    const keys = [image.url, ...(chosen.title ? [`title:${chosen.title}`] : [])];
+    // Excluded by URL, by file title and by the photo's own identity: Commons serves one file under several URLs and widths.
+    const keys = [image.url, `key:${photoKey(image.url)}`, ...(chosen.title ? [`title:${chosen.title}`] : [])];
     for (const k of keys) exclude.add(k);
     // A refusal for what the frame shows follows the photo into the last pass (findImage), which forgives only places.
     if (HARD_REFUSALS.has(verdict)) for (const k of keys) (exclude.hard ??= new Set()).add(k);
@@ -1465,7 +1469,7 @@ export async function asIllustrationIfElsewhere(image, file, story, log = () => 
   return { ...image, alt: caption ? `${caption} (${ILLUSTRATIVE})` : `(${ILLUSTRATIVE})` };
 }
 
-const excluded = (exclude, c) => exclude.has(c.url) || exclude.has(`title:${c.title}`) || inUsedSeries(exclude, c.title);
+const excluded = (exclude, c) => exclude.has(c.url) || exclude.has(`key:${photoKey(c.url)}`) || exclude.has(`title:${c.title}`) || inUsedSeries(exclude, c.title);
 
 /**
  * Two looks at a pass's candidates, four photographs at a time. A photo the second check refused is excluded
@@ -1688,10 +1692,13 @@ Return JSON: {"news_photo":true,"this_story":true,"watermark":false,"clear":true
 async function findImage({ draft, story, log, exclude = new Set(), sources = [], photoDir = null }) {
   // The event's own handout, credited by the outlet to the institution, comes before every library (handoutTier()).
   const handout = await handoutTier({ draft, log, sources, photoDir });
-  if (handout) return handout;
-  // The photographs other stories already run, before this story's passes add their refusals, and the series they
-  // belong to (seriesKey): a frame of the same scene by the same photographer is the same picture to a reader.
+  if (handout && !exclude.has(handout.url)) return handout;
+  // The photographs other stories already run, before this story's passes add their refusals: each by its own identity
+  // (photoKey(): a Commons file under any address or width), and by the series it belongs to (seriesKey): a frame of the
+  // same scene by the same photographer is the same picture to a reader.
   for (const url of [...exclude]) {
+    if (!/^(?:https?:)?\//.test(url)) continue;
+    exclude.add(`key:${photoKey(url)}`);
     const series = seriesKey(commonsFileTitle(url));
     if (series) exclude.add(series);
   }

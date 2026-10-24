@@ -29,6 +29,7 @@ import { appendFileSync, mkdirSync, readFileSync, readdirSync, writeFileSync } f
 import path from "node:path";
 import YAML from "yaml";
 import { checkCommons, checkPages, commonsTitle, confirmLoss, renamedUrl } from "../pipeline/lib/health.mjs";
+import { sharedPhotos } from "../pipeline/lib/photo-key.mjs";
 
 const DAY = 86_400_000;
 const now = Date.now();
@@ -160,6 +161,12 @@ if (!OFFLINE) {
   const pending = Object.keys(state.photos).filter((slug) => !redo.includes(slug));
   fine.push(`Photos: Commons answered for ${asked} of ${commons.length}${pageChecks.length ? `, and ${pageChecks.length} other librar${pageChecks.length === 1 ? "y's page was" : "ies' pages were"} asked` : ""}.${renamed.length ? ` Re-addressed after a rename: ${renamed.join(", ")}.` : ""}${pending.length ? ` Found gone once, to be checked again tomorrow: ${pending.join(", ")}.` : ""}${redo.length ? ` Gone on two checks, a new photo is sought: ${redo.join(", ")}.` : ""}${!renamed.length && !pending.length && !redo.length ? " Every one is in place." : ""}`);
 }
+// One photograph on two stories, under any of its addresses (photoKey()): the older story keeps it and the newer is given
+// another, as a lost one is. The newsroom's own rounds no longer repeat a photo, but two rounds on two machines (the
+// newsroom and this one, or a run by hand) each see only what was published when they began (2026-10-24: three pairs).
+const shared = sharedPhotos(stories).filter((x) => /^[a-z0-9-]+$/.test(x.slug) && !redo.includes(x.slug));
+for (const x of shared) redo.push(x.slug);
+if (shared.length) fine.push(`One photo on two stories; the newer is given another: ${shared.map((x) => `${x.slug} (${x.keeps} runs it)`).join(", ")}.`);
 
 // 5. The same event twice in the last two days: four shared headline words and 60% of the shorter headline's, as
 // src/lib/articles.ts decides it for the front page.

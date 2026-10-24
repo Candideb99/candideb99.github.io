@@ -227,8 +227,13 @@ async function collectEvidence(story, candidates) {
   return collectNewsEvidence(story, candidates, { log });
 }
 
-/** Pictures already printed on the site; a new story never repeats one. */
-const usedImages = (existing) => new Set(existing.map((a) => a.imageUrl).filter(Boolean));
+/**
+ * Pictures already printed on the site; a new story never repeats one. With the pictures this run has chosen: `existing`
+ * is read once at the start, so two stories of one round could take the same photo minutes apart (a Kwinana tanker on
+ * 25 September, the Treasury's sign on 17 October).
+ */
+const RUN_IMAGES = new Set();
+const usedImages = (existing) => new Set([...existing.map((a) => a.imageUrl).filter(Boolean), ...RUN_IMAGES]);
 
 /**
  * The Arabic copy desk runs on every draft before the critic sees it: it rewrites translationese
@@ -552,6 +557,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   // The whole story and its sources' own lead photographs go to the picture desk: the cascade's place and the
   // subject of the sources' photographs come before the writer's searches (lib/images.mjs findImage()).
   const image = refresh ? refresh.data.image : TEXT_ONLY ? null : await pickImage({ draft, story, log, exclude: usedImages(existing), sources, photoDir: HANDOUT_DIR });
+  if (image?.url) RUN_IMAGES.add(image.url);
   const slug = refresh ? refresh.data.slug : buildSlug(draft, story);
   let markdown = serializeArticle({
     pending: DRAFT,
@@ -925,6 +931,7 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   // The piece's kind tells the picture desk it explains or analyses: its subject at work, never a facade. A piece written
   // again under its own address keeps its photograph, and is pictured only when it had none.
   const image = TEXT_ONLY || replace?.hasImage ? null : await pickImage({ draft: { ...draft, kind }, story, log, exclude: usedImages(existing) });
+  if (image?.url) RUN_IMAGES.add(image.url);
   const slug = replace?.slug ?? buildSlug(draft, { headlineHint });
   let markdown = serializeArticle({
     pending: DRAFT,
