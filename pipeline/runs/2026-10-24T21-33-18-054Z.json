@@ -1,0 +1,480 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-24T20:55:47.509Z",
+  "durationSec": 2251,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "مصر تستهدف رفع الحد الأدنى للأجور إلى 15 ألف جنيه بحلول 2030",
+      "section": "economy",
+      "importance": 8,
+      "sources": [
+        "https://www.dailynewsegypt.com/2026/10/24/egypt-targets-12-5-million-feddans-of-farmland-annual-car-production-of-100k-madbouly/",
+        "https://www.dailynewsegypt.com/2026/10/24/egypt-forum-recommends-raising-minimum-wage-to-egp-15000-by-fy2029-30/",
+        "https://www.alborsaanews.com/2026/10/24/2001550",
+        "https://www.alborsaanews.com/2026/10/24/2001524"
+      ],
+      "outcome": "skipped: repeats a recent story («مصر تستهدف رفع صادراتها الرقمية إلى 12 مليار دولار سنوياً بحلول 2030»)"
+    },
+    {
+      "headline": "مصر تضاعف سعة باقة الإنترنت الأرضي الأساسية إلى 100 جيجابايت بالسعر نفسه",
+      "section": "technology",
+      "importance": 6,
+      "sources": [
+        "https://www.masrawy.com/news/news_economy/details/2026/10/24/3068014/%D8%AA%D9%86%D9%81%D9%8A%D8%B0%D8%A7-%D9%84%D8%AA%D9%88%D8%AC%D9%8A%D9%87%D8%A7%D8%AA-%D8%A7%D9%84%D8%AD%D9%83%D9%88%D9%85%D8%A9-%D8%A7%D9%84%D9%82%D9%88%D9%85%D9%8A-%D9%84%D9%84%D8%A7%D8%AA%D8%B5%D8%A7%D9%84%D8%A7%D8%AA-%D9%8A%D9%88%D8%AC%D9%87-%D8%A7%D9%84%D8%B4%D8%B1%D9%83%D8%A7%D8%AA-%D8%A8%D9%85%D8%B6%D8%A7%D8%B9%D9%81%D8%A9-%D8%B3%D8%B9%D8%A9-%D8%A8%D8%A7%D9%82%D8%A9-%D8%A7%D9%84%D8%A5%D9%86%D8%AA%D8%B1%D9%86%D8%AA-%D8%A7%D9%84%D8%A3%D8%B1%D8%B6%D9%8A",
+        "https://www.youm7.com/story/2026/10/24/%D9%85%D8%B5%D8%A7%D8%AF%D8%B1-%D9%85%D8%B6%D8%A7%D8%B9%D9%81%D8%A9-%D8%B3%D8%B9%D8%A9-%D8%A8%D8%A7%D9%82%D8%A9-%D8%A7%D9%84%D8%A5%D9%86%D8%AA%D8%B1%D9%86%D8%AA-%D8%A7%D9%84%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A9-%D8%A5%D9%84%D9%89-100-%D8%AC%D9%8A%D8%AC%D8%A7%D8%A8%D8%A7%D9%8A%D8%AA-%D8%BA%D8%AF%D8%A7/7592127",
+        "https://www.masrawy.com/news/news_economy/details/2026/10/24/3067889/%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84-%D8%A8%D8%A7%D9%82%D8%A9-%D8%A7%D9%84%D8%A5%D9%86%D8%AA%D8%B1%D9%86%D8%AA-%D8%A7%D9%84%D8%A3%D8%B1%D8%B6%D9%8A-%D8%A7%D9%84%D8%AA%D9%8A-%D8%A3%D9%88%D8%B5%D8%AA-%D8%A7%D9%84%D8%AD%D9%83%D9%88%D9%85%D8%A9-%D8%A8%D9%85%D8%B6%D8%A7%D8%B9%D9%81%D8%A9-%D8%B3%D8%B9%D8%AA%D9%87%D8%A7"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "التغيير واضح: سعة الباقة الأساسية ترتفع من 50 إلى 100 جيجابايت والسعر 150/171 جنيهاً ثابت. لكن الدك والمقدمة يقدمان موعد الأحد بلا إسناد، والمصدر 2 ينقله عن مصادر مجهولة. كما يحسم المتن أن «زيادات مايو... بقيت قائمة» دون سند.",
+              "repair": "إسناد موعد الأحد إلى مصادر الجهاز عبر «اليوم السابع»، واستبدال عبارة بقاء الزيادات بـ«ولا يشمل التوجيه الأسعار التي رُفعت في مايو»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "مقارنة مايو مفيدة، لكنها تغفل تثبيت أسعار الصوت والشحن والمحافظ (المصدر 3). والغرض المعلن مختزل إلى «تخفيف الأعباء»، مع أن المصدرين 1 و2 يذكران الشمول الرقمي وتوسيع قاعدة المستفيدين والوصول إلى الخدمات التعليمية والصحية والحكومية. في «لماذا يهمّ» المقدمات هي: الباقة طُرحت مع زيادات مايو، والسعة تضاعفت، والسعر ثابت. الاستنتاج الثاني عن تحمّل الشركات كلفة السعة الإضافية استنتاج محدود معقول. أما الجملة الأولى فتكرر المتن وتعتمد على مقدمة غير مسندة.",
+              "repair": "إضافة الأغراض المعلنة وشق التثبيت من قرارات مايو. وإعادة صياغة الصندوق تقريباً هكذا: «تخفض المضاعفة كلفة الجيجابايت إلى النصف لمشتركي الباقة التي طُرحت مع رفع أسعار بعض الخدمات في مايو، لكنها لا تمس تلك الأسعار؛ ولأن السعر مثبت بتوجيه تنظيمي، لا تنتقل أي كلفة لتوفير السعة الإضافية إلى المشترك عبر سعر الباقة»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "التقرير يبدأ جيداً بالآلية والمقارنة، لكنه ينتهي بتكرار: «ومنذ ذلك الموعد يُفترض أن يحصل المشتركون...». والفقرة الخامسة القصيرة تكرر «يرفعها بنسبة 100%». والصندوق يكرر خاتمة الفقرة الخامسة. وفيه تركيب متعثر: «الشركاتِ إلى طرحها باقةً».",
+              "repair": "نقل الموعد المنسوب إلى جوار آلية التطبيق، ودمج الفقرة الخامسة في فقرة الخلفية، وحذف الخاتمة التكرارية، وتصحيح التركيب إلى «وجّه الجهاز الشركاتِ إلى طرح باقة أرضية جديدة»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام 50 و100 جيجابايت و150 و171 جنيهاً و9% و15% مطابقة للمصادر. لكن فيها ثلاث إضافات: فرق «21 جنيهاً» حساب غير وارد. وعبارة «بصفته الجهة التي توافق على تعديل أسعار خدمات الاتصالات في السوق المصرية» تعميم لدور الجهاز يتجاوز ما يذكره المصدر 3، أي موافقته على زيادات مايو. وموعد الأحد غير منسوب في المقدمة والدك.",
+              "repair": "حذف فرق الـ21 جنيهاً، واستبدال الوصف العام بما يسنده المصدر 3: «وتزامن ذلك مع موافقة الجهاز على رفع أسعار بعض الخدمات»، وإسناد الموعد إلى مصادر الجهاز عبر «اليوم السابع»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "التغيير واضح في العنوان والدك والمقدمة: ترتفع سعة الباقة الأساسية من 50 إلى 100 جيجابايت، ويبقى السعر 150 جنيهاً قبل الضرائب و171 جنيهاً شاملاً الضرائب، والموعد مسند الآن. لكن الخاتمة «ولا تتغير أسعار الباقات والخدمات الأخرى التي شملتها زيادات مايو» تتجاوز ما يذكره المصدر 3، أي «بعض خدمات الاتصالات».",
+              "repair": "«ولا يشمل التوجيه أسعار الخدمات التي رُفعت في مايو»."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "التقرير يعرض الدافع المعلن، أي الشمول الرقمي وتوسيع قاعدة المستفيدين والوصول إلى الخدمات التعليمية والصحية والحكومية (المصدران 1 و2). ويعرض خلفية طرح الباقة في مايو بالتزامن مع زيادات بين 9% و15% وتثبيت أسعار الصوت والشحن والمحافظ (المصدر 3)، والموعد المنسوب (المصدر 2). في الصندوق، المقدمات مسندة: الباقة طُرحت مع زيادات مايو، والسعر ثابت بتوجيه، والسعة مضاعفة. والاستنتاج بأن كلفة السعة الإضافية لا تنتقل إلى المشترك عبر السعر استنتاج محدود ومشروط بشكل معقول.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "البناء تحسن: الآلية والموعد في فقرة واحدة، ومسار التوصية إلى التوجيه في فقرة، والخلفية في فقرة. لكن معنى «إلى النصف» يتكرر في الدك والفقرة الثانية والصندوق، و«لكنها لا تمس تلك الأسعار» في الصندوق تكرار لخاتمة المتن. ويبقى التركيب «الشركاتِ إلى طرحها باقةً» متعثراً.",
+              "repair": "حذف تكرار النصف من الصندوق والإبقاء فيه على استنتاج الكلفة ونطاق الأثر، واختصار خاتمة المتن إلى «ولا يشمل التوجيه أسعار الخدمات التي رُفعت في مايو»، وتصحيح التركيب إلى «وجّه الجهاز الشركات إلى طرح باقة أرضية جديدة»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام 50 و100 جيجابايت و150 و171 جنيهاً و9% و15% مطابقة للمصادر، والموعد منسوب إلى مصادر الجهاز عبر «اليوم السابع». لكن «توجيه ملزم» توصيف لا تذكره المصادر، و«تنفيذاً لتوجيهات الحكومة» عنوان مصراوي نُسب إلى بيان الجهاز، و«الأعباء المعيشية» إضافة إلى نص المصدرين 1 و2.",
+              "repair": "حذف «ملزم»، وإسناد البيان إلى صيغة «يأتي ذلك في ضوء التوصيات» كما في المصدر 1، واستعمال «تخفيف الأعباء عن المواطنين»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 8,
+      "mendIssues": [
+        "خطأ (ادعاء يتجاوز المصدر): «ولا تتغير أسعار الباقات والخدمات الأخرى التي شملتها زيادات مايو». المصدر 3 يذكر رفع أسعار «بعض خدمات الاتصالات» بنسب بين 9% و15%، ولا يقول إن الباقات الأخرى كانت ضمن الزيادة. كما أن «لا تتغير» تبدو حكماً مطلقاً على أسعار السوق، لا وصفاً لنطاق التوجيه. هذه بقية من الملاحظة 2 السابقة ولم تُصلح تماماً. الإصلاح: «ولا يشمل التوجيه أسعار الخدمات التي رُفعت في مايو» (المصادر 1 و2 و3).",
+        "خطأ (توصيف غير مسند): «ثم تحولت إلى توجيه ملزم للشركات». المصدران 1 و2 يقولان إن الوزارة والجهاز «وجّها» الشركات، ولا يصفان التوجيه بأنه ملزم. وكذلك نُسبت عبارة «تنفيذاً لتوجيهات الحكومة» إلى إعلان الجهاز على فيسبوك، وهي في الأصل عنوان مقال مصراوي (المصدر 1) لا جزء من البيان. الإصلاح: «ثم صدر بها توجيه للشركات عن وزارة الاتصالات وتكنولوجيا المعلومات والجهاز القومي لتنظيم الاتصالات. وقال الجهاز على صفحته الرسمية على فيسبوك إن الخطوة تأتي في ضوء توصيات المنتدى التي أعلنها رئيس مجلس الوزراء مصطفى مدبولي».",
+        "تركيب متعثر لم يُصلح رغم الإشارة إليه في المراجعة السابقة (الملاحظتان 7 و10): «وجّه الجهاز الشركاتِ إلى طرحها باقةً أرضية جديدة». الضمير في «طرحها» يعود قبل مرجعه، والمفعول «باقةً» معلّق. الإصلاح: «ففي مايو الماضي وجّه الجهاز الشركات إلى طرح باقة أرضية جديدة بسعة 50 جيجابايت شهرياً بسعرها الحالي».",
+        "تكرار يحتاج إلى دمج: معنى انخفاض كلفة الجيجابايت إلى النصف يرد في الدك، ثم في الفقرة الثانية «فتنخفض كلفة الجيجابايت عليه إلى النصف»، ثم في أول «لماذا يهمّ». وعبارة الصندوق «لكنها لا تمس تلك الأسعار» صدى لخاتمة المتن «ولا تتغير أسعار... زيادات مايو». الإصلاح: الاكتفاء بالمثال العددي في الفقرة الثانية، وحذف تكرار النصف من الصندوق ليبقى فيه الاستنتاج المميز: «ولأن التوجيه يثبّت السعر، لا تنتقل كلفة توفير السعة الإضافية إلى المشترك عبر سعر الباقة، ولا يمتد أثر الخطوة إلى الخدمات التي رُفعت أسعارها في مايو». ثم تُختصر خاتمة المتن إلى تحديد نطاق التوجيه بالصيغة المقترحة في الملاحظة الأولى.",
+        "إضافة صغيرة في الغرض المعلن: «تخفيف الأعباء المعيشية عنهم». المصدران 1 و2 يقولان «تخفيف الأعباء عن المواطنين» دون كلمة «المعيشية». الإصلاح: «وتخفيف الأعباء عن المواطنين».",
+        "التغيير واضح في العنوان والدك والمقدمة: ترتفع سعة الباقة الأساسية من 50 إلى 100 جيجابايت، ويبقى السعر 150 جنيهاً قبل الضرائب و171 جنيهاً شاملاً الضرائب، والموعد مسند الآن. لكن الخاتمة «ولا تتغير أسعار الباقات والخدمات الأخرى التي شملتها زيادات مايو» تتجاوز ما يذكره المصدر 3، أي «بعض خدمات الاتصالات». — «ولا يشمل التوجيه أسعار الخدمات التي رُفعت في مايو».",
+        "البناء تحسن: الآلية والموعد في فقرة واحدة، ومسار التوصية إلى التوجيه في فقرة، والخلفية في فقرة. لكن معنى «إلى النصف» يتكرر في الدك والفقرة الثانية والصندوق، و«لكنها لا تمس تلك الأسعار» في الصندوق تكرار لخاتمة المتن. ويبقى التركيب «الشركاتِ إلى طرحها باقةً» متعثراً. — حذف تكرار النصف من الصندوق والإبقاء فيه على استنتاج الكلفة ونطاق الأثر، واختصار خاتمة المتن إلى «ولا يشمل التوجيه أسعار الخدمات التي رُفعت في مايو»، وتصحيح التركيب إلى «وجّه الجهاز الشركات إلى طرح باقة أرضية جديدة».",
+        "الأرقام 50 و100 جيجابايت و150 و171 جنيهاً و9% و15% مطابقة للمصادر، والموعد منسوب إلى مصادر الجهاز عبر «اليوم السابع». لكن «توجيه ملزم» توصيف لا تذكره المصادر، و«تنفيذاً لتوجيهات الحكومة» عنوان مصراوي نُسب إلى بيان الجهاز، و«الأعباء المعيشية» إضافة إلى نص المصدرين 1 و2. — حذف «ملزم»، وإسناد البيان إلى صيغة «يأتي ذلك في ضوء التوصيات» كما في المصدر 1، واستعمال «تخفيف الأعباء عن المواطنين»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "وجّه الجهاز الشركات بمضاعفة سعة الباقة من 50 إلى 100 جيجابايت مع الإبقاء على سعر الاشتراك دون أي زيادة",
+          "source": 1
+        },
+        {
+          "fact": "سعر الباقة 150 جنيهاً قبل الضرائب و171 جنيهاً شاملاً الضرائب ويبقى دون تغيير مع مضاعفة السعة",
+          "source": 3
+        },
+        {
+          "fact": "أتاح الجهاز الباقة الأساسية في مايو بالتزامن مع موافقته على رفع أسعار بعض خدمات الاتصالات بين 9% و15% شاملة الضرائب",
+          "source": 3
+        }
+      ],
+      "slug": "egypt-doubles-basic-home-internet-package-4d137f",
+      "title": "مصر تضاعف سعة باقة الإنترنت الأرضي الأساسية إلى 100 جيجابايت بالسعر نفسه",
+      "score": 7,
+      "image": "cover-art"
+    },
+    {
+      "headline": "الذهب ينهي الأسبوع دون 4000 دولار للأوقية لأول مرة منذ يوليو",
+      "section": "markets",
+      "importance": 6,
+      "sources": [
+        "https://www.albayan.ae/economy/business/world-economy/1560290",
+        "https://www.masrawy.com/news/news_economy/details/2026/10/24/3067945/%D8%AC%D9%88%D9%84%D8%AF-%D8%A8%D9%8A%D9%84%D9%8A%D9%88%D9%86-%D8%A7%D9%84%D8%B0%D9%87%D8%A8-%D9%8A%D9%87%D8%A8%D8%B7-%D9%84%D8%A3%D8%AF%D9%86%D9%8A-%D9%85%D8%B3%D8%AA%D9%88%D9%8A-%D9%81%D9%8A-3-%D8%A3%D8%B4%D9%87%D8%B1-%D8%A8%D9%81%D8%B9%D9%84-%D8%B5%D8%B9%D9%88%D8%AF-%D8%A7%D9%84%D9%86%D9%81%D8%B7",
+        "https://www.masrawy.com/news/news_economy/details/2026/10/24/3067896/%D8%A7%D9%84%D8%A3%D9%88%D9%82%D9%8A%D8%A9-%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D8%A7-%D8%AA%D8%AE%D8%B3%D8%B1-145-%D8%AF%D9%88%D9%84%D8%A7%D8%B1%D8%A7-%D9%84%D9%85%D8%A7%D8%B0%D8%A7-%D9%84%D9%85-%D9%8A%D9%87%D8%A8%D8%B7-%D8%A7%D9%84%D8%B0%D9%87%D8%A8-%D9%81%D9%8A-%D9%85%D8%B5%D8%B1-%D8%A8%D8%A7%D9%84%D9%86%D8%B3%D8%A8%D8%A9-%D9%86%D9%81%D8%B3%D9%87%D8%A7-",
+        "https://www.youm7.com/story/2026/10/24/%D8%AC%D9%88%D9%84%D8%AF-%D8%A8%D9%8A%D9%84%D9%8A%D9%88%D9%86-%D8%AA%D9%83%D8%B4%D9%81-%D8%B3%D8%A8%D8%A8-%D9%87%D8%A8%D9%88%D8%B7-%D8%A7%D9%84%D8%B0%D9%87%D8%A8-%D9%84%D8%A3%D8%AF%D9%86%D9%89-%D9%85%D8%B3%D8%AA%D9%88%D9%89-%D9%81%D9%8A-3/7591769"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والافتتاحية يحددان ما تغيّر: إغلاق أسبوعي دون 4000 دولار وخسارة 4.1%. لكن فقرة العقود الآجلة عند 4007.90 دولار تبدو مناقضة للعنوان دون تفسير.",
+              "repair": "يُوضَّح الفرق بين السعر الفوري (3995 دولاراً) وسعر العقود الآجلة للشهر الأقرب مع إسناده، أو يُحذف الرقم."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "آلية الفائدة والذهب بوصفه أصلاً بلا عائد واردة، وآلية سعر الصرف في مصر مشروحة جيداً. لكن سبب صعود النفط (برنت في أعلى مستوى منذ أكثر من خمسة أشهر، وهجمات الحوثيين في السعودية) والمقارنة بالقمة القياسية غائبان رغم ورودهما في المصدر 3. صندوق «لماذا يهمّ» يستند إلى مقدمات صحيحة ويضيف شرطاً مفيداً بشأن توقف صعود الدولار، غير أن عبارة «بقدر ما يتوقف على الأوقية» توحي بتساوي الوزنين، والمصدر لا يثبت ذلك.",
+              "repair": "يُضاف محرّك النفط والمقارنة بقمة يناير منسوبين إلى المصدر 3. وتُعاد صياغة عبارة الصندوق إلى «يتوقف السعر المحلي على سعر الصرف إلى جانب الأوقية»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "القسم المعنون «اجتماع الفيدرالي» يفتتح بتوقعات بنوك لمستويات السعر، وفقرة أسعار السبت قائمة معزولة لا تخدم سؤال القارئ.",
+              "repair": "تُجمع آراء البنوك حول دلالة مستوى 4000 دولار في فقرة واحدة، ويُختم التقرير بموعد اجتماع 27 و28 أكتوبر واحتمالات ديسمبر، وتُدمج أسعار السبت في قسم مصر."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «لأول مرة منذ منتصف يوليو» منسوبة خطأً إلى جولد بيليون. وتعبير «أنهت ... تعاملات الجمعة» يصف سعراً متأخراً رُصد عند 20:59 بتوقيت غرينتش. بقية الأرقام (3975 و4167 و0.24% و2.58% و93% و76-81%) مطابقة للمصادر.",
+              "repair": "يُصحَّح الإسناد في الافتتاحية، ويُنسب سعر العقود الآجلة إلى مصدره مع توقيته وتمييزه عن السعر الفوري."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة والافتتاحية تحدد ما تغيّر: إغلاق أسبوعي عند 3995 دولاراً دون 4000 لأول مرة منذ منتصف يوليو، وخسارة 4.1% هي الأسوأ منذ يونيو. ورقم العقود الآجلة 4007.90 بات مفسَّراً ولم يعد يناقض العنوان.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المحرّك (برنت في أعلى مستوى منذ أكثر من خمسة أشهر، وهجمات الحوثيين، والتضخم 3.7%) والمقارنة بالقمة القياسية وآلية سعر الصرف حاضرة كلها. لكن خلفية أن رفع ديسمبر سيكون الثاني هذا العام (المصدر 2) غائبة. وجملة الصندوق الأولى تعيد آلية «الأصل بلا عائد» دون أن تحدد ما يبقى حاسماً، بينما جملته الثانية استدلال مشروط ومفيد عن توقف صعود الدولار.",
+              "repair": "تُضاف خلفية الرفع الثاني منسوبة إلى جولد بيليون. وتُعاد صياغة الجملة الأولى من الصندوق حول ضغط رهانات ديسمبر واجتماع 27 و28 أكتوبر."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "البناء متماسك في عمومه: الأداء، ثم السياق، ثم المحرّك، ثم ردود الفعل، ثم مصر، ثم مستوى 4000 والفيدرالي. لكن فقرة إمبابي الأولى تكرر تعليل جولد بيليون نفسه ولا تضيف سوى احتمال ديسمبر. وفقرة الآلية المصرية تنتهي بقائمة أسعار السبت المنفصلة عن الشرح. والفقرة الثانية تجمع ثلاث مهام: القمة القياسية والعقود الآجلة والفضة.",
+              "repair": "تُدمج إضافة إمبابي (احتمال رفع ديسمبر) في فقرة المحرّك. وتُنقل أسعار السبت إلى أول قسم مصر. وتُفصل الفضة أو تُلحق بجملة الأداء الأسبوعي."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "نسبة 1.29% لعقد الشهر الأقرب تراجع عن الجلسة السابقة لا عن الأسبوع (المصدر 5). وقراءة الدولار تنتهي في 22 أكتوبر بينما تنتهي قراءة الأوقية في 23 أكتوبر، والمصدر 3 يصف الامتصاص بأنه نظري. وصفة «المحلل» لصافي الدين غير واردة في أي مصدر.",
+              "repair": "يُكتب «عن إغلاق الجلسة السابقة»، ويُضاف «نظرياً» مع إيضاح اختلاف تاريخي القراءتين، وتُحذف «المحلل»."
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تعزو جولد بيليون تراجع الذهب إلى صعود النفط الذي زاد المخاوف من التضخم وبقاء الفائدة مرتفعة لفترة أطول",
+          "source": 2
+        },
+        {
+          "fact": "يضعف ارتفاع الفائدة جاذبية الذهب لأنه أصل لا يدر عائداً",
+          "source": 1
+        },
+        {
+          "fact": "تراوحت احتمالات رفع الفائدة الأمريكية في ديسمبر بين 76% و81% وفق تقديرات السوق المنشورة في 23 أكتوبر",
+          "source": 3
+        },
+        {
+          "fact": "ارتفع جرام عيار 21 في مصر 0.24% بينما تراجعت الأوقية 3.50%، مع صعود الدولار نحو 2.58% أمام الجنيه، وهو ما حدّ نظرياً من انتقال الخسائر إلى السعر المحلي",
+          "source": 3
+        }
+      ],
+      "slug": "gold-weekly-close-below-4000-dollars-c3172a",
+      "title": "الذهب ينهي الأسبوع دون 4000 دولار للأوقية لأول مرة منذ يوليو",
+      "score": 8,
+      "image": "cover-art"
+    },
+    {
+      "headline": "بزشكيان: الحرب تترك كثيراً من الإيرانيين عاجزين عن تأمين الغذاء",
+      "section": "economy",
+      "importance": 6,
+      "sources": [
+        "https://gulfnews.com/world/mena/irans-president-says-war-is-leaving-many-struggling-to-put-food-on-the-table-1.500722430",
+        "https://www.independentarabia.com/node/661140/%D8%B3%D9%8A%D8%A7%D8%B3%D8%A9/%D9%85%D8%AA%D8%A7%D8%A8%D8%B9%D8%A7%D8%AA/%D9%85%D8%A4%D8%B4%D8%B1%D8%A7%D8%AA-%D9%84%D8%AA%D8%B5%D8%B9%D9%8A%D8%AF-%D8%A3%D9%85%D9%8A%D8%B1%D9%83%D9%8A-%D8%B6%D8%AF-%D8%A5%D9%8A%D8%B1%D8%A7%D9%86-%D9%88%D8%A8%D8%B2%D8%B4%D9%83%D9%8A%D8%A7%D9%86-%D9%86%D9%83%D8%A7%D9%81%D8%AD-%D9%84%D8%AA%D8%A3%D9%85%D9%8A%D9%86-%D8%A7%D9%84%D8%BA%D8%B0%D8%A7%D8%A1"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والاستهلال يوضحان ما قاله بزشكيان وتحول واشنطن إلى الضغط الاقتصادي. لكن العنوان الفرعي يعيد خلفية الحصار بدل الجديد، وهو الدعوة إلى إنهاء «حالة اللاحرب واللاسلم» وسط مخاوف من ضربات جديدة.",
+              "repair": "يحمل العنوان الفرعي دعوة بزشكيان إلى الخروج من حالة اللاحرب واللاسلم مع تزايد المخاوف من تجدد الضربات (SOURCE 1)."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الخبيران معرّفان بدوريهما ومؤسستيهما، وخلفية الحرب والهدنة والحصار حاضرة. لكن الحدود التي تشرح الجمود غائبة: لا هجمات برية كبيرة منذ مطلع سبتمبر، وخيارات أمريكية محدودة، والتصعيد لا ينهي الحرب (SOURCE 2). يقوم صندوق «لماذا يهمّ» على مقدمات مدعومة (الحصار، الغذاء، شرط طهران خلو المفاوضات من الضغوط) ويستنتج أن رفع الكلفة لا يقود تلقائياً إلى التفاوض، وهو استدلال محدود ومشروط. غير أن عبارة «مقياساً مباشراً» تبالغ قليلاً، لأن بزشكيان ينسب الضائقة إلى الحرب عموماً لا إلى الحصار وحده.",
+              "repair": "إضافة الحدود المذكورة من SOURCE 2 بنسبتها إلى قائليها، وتخفيف عبارة الصندوق إلى «مؤشراً على كلفة الضغط الاقتصادي على السكان»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات مترابطة في الغالب، لكن الربط في «لكنها أشارت إلى أن ترامب أعلن...» يوحي بتباين لا يدعمه المصدر. والفقرة الأخيرة عن شعبية الحرب والحزب الجمهوري معلّقة بلا صلة بما قبلها.",
+              "repair": "جمع توقيت الضربات المتوقع بعد الانتخابات وأسبابه الانتخابية في فقرة واحدة تفسر التوقيت، وحذف الخاتمة المنفصلة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «بسبب الحرب مع الولايات المتحدة» تنسب إلى بزشكيان تسمية لم يقلها. وخانة «3 حاملات» تُسقط «المقرر» و«مؤقتاً». ووصف «وحدة إضافية من مشاة البحرية» يُسقط أنها «وحدة استطلاع». وعبارة «النزاع مجمّداً» أقوى من «الجمود» الوارد في SOURCE 1.",
+              "repair": "التقيد بنص كلام بزشكيان، وإعادة القيدين إلى خانة الحقائق، وكتابة «وحدة استطلاع إضافية من مشاة البحرية»، واستبدال «مجمّداً» بعبارة «في حالة جمود»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي والاستهلال تقول بوضوح ما الجديد: إقرار بزشكيان بصعوبة تأمين الغذاء ودعوته إلى الخروج من حالة اللاحرب واللاسلم. وتضع ذلك في سياق تحوّل واشنطن نحو الضغط الاقتصادي وتزايد المخاوف من تجدد الضربات، ولا تحوّل احتمال الضربات إلى وقوعها.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الخلفية حاضرة: الحرب والهدنة الباكستانية والحصار، ولا هجمات برية كبيرة منذ سبتمبر. والخبيران معرّفان بدوريهما ومؤسستيهما. لكن «إبيك فيوري» تبقى اسماً بلا تعريف رغم أن SOURCE 2 يوفره. صندوق «لماذا يهمّ» يقوم على مقدمات مدعومة، هي الحصار وضائقة الغذاء وشرط طهران خلو المفاوضات من الضغوط، ويستنتج استنتاجاً مشروطاً ومحدوداً بأن رفع الكلفة لا يقود تلقائياً إلى التفاوض. وهذا تركيب مفيد لا يكرر الخاتمة.",
+              "repair": "إضافة تعريف «إبيك فيوري» من SOURCE 2 عند أول ذكر لها."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "التقرير يتدرج من التصريح إلى الحصار ثم الخلفية ثم المخاوف وحدود التصعيد، وينتهي على حدود الحل العسكري لا على السياسة الأمريكية الداخلية. يُضعف هذا التدرجَ أمران: فقرة «ويقول المسؤولون الإيرانيون...» المعزولة بين الحصار والخلفية، والفعل «وردّ» الذي يصنع تسلسلاً غير مدعوم.",
+              "repair": "دمج شرط المفاوضات وحالة الجمود مع دعوة بزشكيان في الفقرة الأولى، واستبدال «وردّ» بـ«وقال»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "المواعيد والأعداد وقيدا «المقرر» و«مؤقتاً» ووصف «وحدة استطلاع» كلها مطابقة. غير أن عبارة «لن يغير حسابات النظام الإيراني» تحوّل تحفظ كامبل («لا أرى كيف») إلى جزم. وعبارة «تحولت ... من العمليات العسكرية إلى الضغط الاقتصادي» في الاستهلال مقبولة، لكن «قلّصت عملياتها العسكرية لصالح الضغط الاقتصادي» أقرب إلى نص SOURCE 1 («dialled back»).",
+              "repair": "إعادة صيغة التحفظ في كلام كامبل، ويُفضَّل في الاستهلال: «وكانت واشنطن قد قلّصت عملياتها العسكرية في الأسابيع الأخيرة لصالح الضغط الاقتصادي»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 7,
+      "mendIssues": [
+        "يُذكر اسم العملية دون تعريف في «إن بلاده قد تنفذ عملية صغيرة أخرى ضمن «إبيك فيوري»». الاسم المنقول حرفياً لا يقول للقارئ شيئاً، مع أن SOURCE 2 تعرّفه بأنه «اسم العملية الأميركية ضد إيران التي أطلقت في أواخر فبراير». الإصلاح: «قد تنفذ عملية صغيرة أخرى ضمن «إبيك فيوري»، وهو اسم العملية العسكرية الأمريكية ضد إيران التي بدأت أواخر فبراير، إذا لم يُتوصل إلى اتفاق مع طهران».",
+        "رأي كامبل صار أكثر جزماً في المسودة: «وأضاف أن استئناف الضربات على غرار الأيام الخمسين الأولى من الحرب لن يغير حسابات النظام الإيراني». أما في SOURCE 2 فقال: «لا أرى كيف أن استئناف الضربات... من شأنه أن يغير المعادلة الإستراتيجية». الإصلاح: «وقال إنه لا يرى كيف يمكن لاستئناف الضربات على غرار الأيام الخمسين الأولى من الحرب أن يغير المعادلة الاستراتيجية للنظام الإيراني، الذي أظهر استعداداً لتحمل أضرار مادية كبيرة».",
+        "في «وردّ متحدث باسم الحرس الثوري لوكالة فارس السبت» يوحي الفعل «ردّ» بأن المتحدث كان يجيب عن كلام براك وترامب، ولا يذكر SOURCE 1 ولا SOURCE 2 ذلك. كلاهما يقول إنه صرّح لوكالة فارس بأن القوات مستعدة للرد على أي هجوم جديد. الإصلاح: «وقال المتحدث باسم الحرس الثوري لوكالة فارس السبت إن القوات المسلحة مستعدة للرد على أي هجوم جديد...».",
+        "الفقرة الثالثة معلّقة بين فقرة الحصار وفقرة الخلفية: «ويقول المسؤولون الإيرانيون إن مفاوضات السلام لن تنجح إلا إذا خلت من الضغوط والتهديدات الأمريكية، ولا يزال النزاع في حالة جمود». مكانها الطبيعي بعد دعوة بزشكيان إلى الخروج من «حالة اللاحرب واللاسلم»، لأنها تشرح لماذا يبقى المخرج غامضاً. الإصلاح: دمجها في الفقرة الأولى بعد «من دون أن يحدد كيف»، بصيغة مثل: «ويشترط المسؤولون الإيرانيون أن تخلو أي مفاوضات سلام من الضغوط والتهديدات الأمريكية، فيما يبقى النزاع في حالة جمود» (SOURCE 1).",
+        "الخلفية حاضرة: الحرب والهدنة الباكستانية والحصار، ولا هجمات برية كبيرة منذ سبتمبر. والخبيران معرّفان بدوريهما ومؤسستيهما. لكن «إبيك فيوري» تبقى اسماً بلا تعريف رغم أن SOURCE 2 يوفره. صندوق «لماذا يهمّ» يقوم على مقدمات مدعومة، هي الحصار وضائقة الغذاء وشرط طهران خلو المفاوضات من الضغوط، ويستنتج استنتاجاً مشروطاً ومحدوداً بأن رفع الكلفة لا يقود تلقائياً إلى التفاوض. وهذا تركيب مفيد لا يكرر الخاتمة. — إضافة تعريف «إبيك فيوري» من SOURCE 2 عند أول ذكر لها.",
+        "التقرير يتدرج من التصريح إلى الحصار ثم الخلفية ثم المخاوف وحدود التصعيد، وينتهي على حدود الحل العسكري لا على السياسة الأمريكية الداخلية. يُضعف هذا التدرجَ أمران: فقرة «ويقول المسؤولون الإيرانيون...» المعزولة بين الحصار والخلفية، والفعل «وردّ» الذي يصنع تسلسلاً غير مدعوم. — دمج شرط المفاوضات وحالة الجمود مع دعوة بزشكيان في الفقرة الأولى، واستبدال «وردّ» بـ«وقال».",
+        "المواعيد والأعداد وقيدا «المقرر» و«مؤقتاً» ووصف «وحدة استطلاع» كلها مطابقة. غير أن عبارة «لن يغير حسابات النظام الإيراني» تحوّل تحفظ كامبل («لا أرى كيف») إلى جزم. وعبارة «تحولت ... من العمليات العسكرية إلى الضغط الاقتصادي» في الاستهلال مقبولة، لكن «قلّصت عملياتها العسكرية لصالح الضغط الاقتصادي» أقرب إلى نص SOURCE 1 («dialled back»). — إعادة صيغة التحفظ في كلام كامبل، ويُفضَّل في الاستهلال: «وكانت واشنطن قد قلّصت عملياتها العسكرية في الأسابيع الأخيرة لصالح الضغط الاقتصادي»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "ردّت واشنطن على تقييد إيران للملاحة في هرمز بحصار الموانئ الإيرانية، ما قيّد صادراتها النفطية وتجارتها",
+          "source": 1
+        },
+        {
+          "fact": "قال بزشكيان إن كثيرين في المجتمع الإيراني يجدون صعوبة في تأمين الطعام بسبب الحرب وظروفها",
+          "source": 1
+        },
+        {
+          "fact": "قلّصت واشنطن عملياتها العسكرية في الأسابيع الأخيرة لصالح الضغط الاقتصادي وبقي النزاع في حالة جمود",
+          "source": 1
+        },
+        {
+          "fact": "قال المسؤولون الإيرانيون إن مفاوضات السلام لن تنجح إلا إذا خلت من الضغوط والتهديدات الأمريكية",
+          "source": 1
+        }
+      ],
+      "slug": "iran-pezeshkian-war-food-struggle-blockade-ee5d4d",
+      "title": "بزشكيان: كثير من الإيرانيين يكافحون لتأمين الغذاء بسبب الحرب",
+      "score": 8,
+      "image": "photo"
+    }
+  ],
+  "llm": {
+    "calls": 67,
+    "failures": 3,
+    "promptTokens": 915350,
+    "completionTokens": 237292,
+    "cacheReadTokens": 229411,
+    "costUsd": 10.279,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 67
+    }
+  },
+  "log": [
+    "[21:23:05] pexels \"gold traders trading floor\": 8 usable",
+    "[21:23:14] openverse \"gold traders trading floor\": 0 usable of 1",
+    "[21:23:14] image: dropped \"A hand points to a financial graph on a digital screen, indicating mar\" — names too little of gold, traders, trading, floor",
+    "[21:23:14] image: dropped \"Analyzing financial charts with a calculator and chocolate coins.\" — names too little of gold, traders, trading, floor",
+    "[21:23:14] image: dropped \"Close-up of financial data on a computer screen showing stock market t\" — names too little of gold, traders, trading, floor",
+    "[21:23:14] image: dropped \"Bright candlestick chart showing stock market trends and analysis.\" — names too little of gold, traders, trading, floor",
+    "[21:23:14] image: dropped \"A stock trader in an office raises his hands in celebration while moni\" — names too little of gold, traders, trading, floor",
+    "[21:23:14] image: dropped \"Monitors displaying stock market charts in a dimly lit room, perfect f\" — names too little of gold, traders, trading, floor",
+    "[21:23:14] image: dropped \"A businessman in a suit looks at a screen displaying stock market char\" — names too little of gold, traders, trading, floor",
+    "[21:23:14] image: dropped \"Man in a headset analyzing stock data on a computer monitor at his wor\" — names too little of gold, traders, trading, floor",
+    "[21:23:15] commons \"gold jewellery shop Cairo\": 0 usable of 0",
+    "[21:23:15] commons \"gold jewellery\": 12 usable of 24",
+    "[21:23:15] pexels \"gold jewellery shop Cairo\": 8 usable",
+    "[21:23:17] openverse \"gold jewellery shop Cairo\": 0 usable of 0",
+    "[21:23:17] image: dropped \"Close-up of diamond wedding rings displayed elegantly against a soft p\" — names too little of gold, jewellery",
+    "[21:23:17] image: dropped \"Explore a bustling Cairo souk filled with antique brassware and vibran\" — names too little of gold, jewellery",
+    "[21:23:17] image: dropped \"Tourists browse a vibrant souvenir shop in Cairo filled with Egyptian \" — names too little of gold, jewellery",
+    "[21:23:26] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=8705",
+    "[21:23:26] image: \"Chinese Gold and Silver Exchange Society hand signals.jpg\" names the story's topic without saying its point (The only live scene from the gold market itself, with anonymous traders calling prices on a gold exchange floor, which suits a global gold price story. Photo 1 ); checked now and kept in reserve while the desk looks further",
+    "[21:23:34] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7520",
+    "[21:23:34] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Chinese Gold and Silver Exchange Society hand signals.jpg\": The frame shows the Hong Kong Chinese Gold and Silver Exchange Society's open-outcry hall in 2012, identified by the Chi",
+    "[21:23:39] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5424",
+    "[21:23:39] image: vision rejected all candidates (fallback pass) (None fits. Photo 1 (stacked gold bars) looks computer-rendered, with too-perfect surfaces and light, so it is not a real photograph. Photo 2 is a souvenir-style display of brass items, not gold trading. Photo 3 shows empty museum vault shelves: puzzling and amateur. Photos 4 and 5 show Nigerian yam and watermelon traders, which are unrelated. Photo 6 is an ancient coin, a coin as subject and archival.)",
+    "[21:23:41] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=2126",
+    "[21:23:41] image: last resort: gold bullion bars | gold bullion bars industrial",
+    "[21:23:41] commons \"gold bullion bars\": 14 usable of 24",
+    "[21:23:41] image: dropped \"Gold Ingots on white background.jpg\" — names too little of gold, bullion, bars",
+    "[21:23:41] image: dropped \"Gold ingot and bar of Banque de France.jpg\" — names too little of gold, bullion, bars",
+    "[21:23:41] image: dropped \"Gold bar of Banque de France.jpg\" — names too little of gold, bullion, bars",
+    "[21:23:41] image: dropped \"Gold Ingot on white background.jpg\" — names too little of gold, bullion, bars",
+    "[21:23:41] image: dropped \"Laying your hand on '12.5Kg' Gold Ingot..JPG\" — names too little of gold, bullion, bars",
+    "[21:23:41] image: dropped \"Gold Ingot B 100g Ögussa.JPG\" — names too little of gold, bullion, bars",
+    "[21:23:41] image: dropped \"Lingote de oro - Feldioara.jpg\" — names too little of gold, bullion, bars",
+    "[21:23:42] commons \"gold bullion bars industrial\": 0 usable of 0",
+    "[21:23:42] commons \"gold bullion\": 15 usable of 24",
+    "[21:23:50] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7495",
+    "[21:23:56] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6590",
+    "[21:23:56] image: second check (claude-cli/claude-opus-5-5) AMATEUR — refused \"China - 5732266939 Gold - Münzen - Barren.jpg\": A casual 2011 snapshot through a shop display case, with a heavy yellow cast, soft focus and low resolution, is not publ",
+    "[21:24:01] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4436",
+    "[21:24:01] image: vision rejected all candidates (fallback pass) (None meets the publication standard. Photo 1 is an amateur flash shot of a museum gold bar on a white surface, with glare and a tilted frame. Photos 2 and 3 are flat scans of branded assay cards, with trademark text, logos and green redaction blocks. None conveys gold falling under oil-driven rate fears.)",
+    "[21:24:01] image: last pass, a neutral illustration: gold bars stack | gold jewellery market | commodity traders screens | gold bullion bars | gold traders trading floor | gold jewellery shop",
+    "[21:24:01] commons \"gold bars stack\": 17 usable of 24",
+    "[21:24:01] image: dropped \"The Victoria Institute - Library and Museum - Foregate Street, Worcest\" — names too little of gold, bars, stack",
+    "[21:24:01] image: dropped \"California mines and minerals (1899) (14595804460).jpg\" — names too little of gold, bars, stack",
+    "[21:24:01] image: dropped \"The European Race Heat IId Anno Dom MDCCXXXVIII (BM 1868,0808.3606).jp\" — names too little of gold, bars, stack",
+    "[21:24:01] image: dropped \"A Skit on Britain (BM 1868,0808.3631).jpg\" — names too little of gold, bars, stack",
+    "[21:24:01] image: dropped \"Bronze Age quoit headed pin detail (FindID 538672).jpg\" — names too little of gold, bars, stack",
+    "[21:24:01] image: dropped \"Bronze Age twisted torc (FindID 538672-424206).jpg\" — names too little of gold, bars, stack",
+    "[21:24:01] image: dropped \"Narrow bladed palstave (FindID 538672).jpg\" — names too little of gold, bars, stack",
+    "[21:24:01] image: dropped \"Bronze Age torc with rings (FindID 538672).jpg\" — names too little of gold, bars, stack",
+    "[21:24:01] image: dropped \"Bronze Age twisted torc detail (FindID 538672-424207).jpg\" — names too little of gold, bars, stack",
+    "[21:24:01] image: dropped \"Bronze Age reworked blade (FindID 538672).jpg\" — names too little of gold, bars, stack",
+    "[21:24:01] openverse \"gold bars stack\": 3 usable of 9",
+    "[21:24:01] pexels \"gold bars stack\": 8 usable",
+    "[21:24:01] image: dropped \"100_2202\" — names too little of gold, bars, stack",
+    "[21:24:01] image: dropped \"Silver bar and coins on blue surface, highlighting investment and coll\" — names too little of gold, bars, stack",
+    "[21:24:01] commons \"gold jewellery market\": 9 usable of 24",
+    "[21:24:01] image: dropped \"Belly Dancing School demonstration - Carrara Market (2569637885).jpg\" — names too little of gold, jewellery, market",
+    "[21:24:01] image: dropped \"Australian and Pan-Asian crafts 2 - Carrara Market (2570461610).jpg\" — names too little of gold, jewellery, market",
+    "[21:24:01] image: dropped \"Australian and Pan-Asian crafts 1 - Carrara Market (2569634479).jpg\" — names too little of gold, jewellery, market",
+    "[21:24:02] pexels \"gold jewellery market\": 8 usable",
+    "[21:24:18] openverse \"gold jewellery market\": 10 usable of 20",
+    "[21:24:18] image: dropped \"PP Central Market- cavernous interior\" — names too little of gold, jewellery, market",
+    "[21:24:18] image: dropped \"The Weyhill Fair, Weyhill, Hampshire\" — names too little of gold, jewellery, market",
+    "[21:24:18] image: dropped \"Ethereum Classic Wallpaper - Subway Marketing\" — names too little of gold, jewellery, market",
+    "[21:24:18] image: dropped \"ETC Wallpaper - Cinema Marketing\" — names too little of gold, jewellery, market",
+    "[21:24:18] image: dropped \"Luxury jewelry set elegantly displayed with necklaces and rings in a s\" — names too little of gold, jewellery, market",
+    "[21:24:18] commons \"commodity traders screens\": 0 usable of 1",
+    "[21:24:18] commons \"commodity traders\": 16 usable of 24",
+    "[21:24:18] image: dropped \"Stockbroker.jpg\" — names too little of commodity, traders",
+    "[21:24:18] commons \"gold bullion bars\": 14 usable of 24",
+    "[21:24:18] image: dropped \"Gold Ingots on white background.jpg\" — names too little of gold, bullion, bars",
+    "[21:24:18] image: dropped \"Gold ingot and bar of Banque de France.jpg\" — names too little of gold, bullion, bars",
+    "[21:24:18] image: dropped \"Gold bar of Banque de France.jpg\" — names too little of gold, bullion, bars",
+    "[21:24:18] image: dropped \"Gold Ingot on white background.jpg\" — names too little of gold, bullion, bars",
+    "[21:24:18] image: dropped \"Laying your hand on '12.5Kg' Gold Ingot..JPG\" — names too little of gold, bullion, bars",
+    "[21:24:18] image: dropped \"Gold Ingot B 100g Ögussa.JPG\" — names too little of gold, bullion, bars",
+    "[21:24:18] image: dropped \"Lingote de oro - Feldioara.jpg\" — names too little of gold, bullion, bars",
+    "[21:24:18] openverse \"gold bullion bars\": 8 usable of 20",
+    "[21:24:18] pexels \"gold bullion bars\": 8 usable",
+    "[21:24:18] image: dropped \"DSC223861, Silver Legacy Casino Hotel, Reno, Nevada, USA\" — names too little of gold, bullion, bars",
+    "[21:24:18] image: dropped \"Pouring Liquid Gold\" — names too little of gold, bullion, bars",
+    "[21:24:18] image: dropped \"2011 IACA Conference in Winnipeg, Manitoba, Canada – Lifting the Bar a\" — an event's photograph, people and banners",
+    "[21:24:18] image: dropped \"Removing Liquid Gold from the Arc Furnace\" — names too little of gold, bullion, bars",
+    "[21:24:18] commons \"gold traders trading floor\": 2 usable of 3",
+    "[21:24:18] image: dropped \"Winnipeg (6408469941).jpg\" — names too little of gold, traders, trading, floor",
+    "[21:24:18] openverse \"gold traders trading floor\": 0 usable of 1",
+    "[21:24:18] pexels \"gold traders trading floor\": 8 usable",
+    "[21:24:18] image: dropped \"A hand points to a financial graph on a digital screen, indicating mar\" — names too little of gold, traders, trading, floor",
+    "[21:24:18] image: dropped \"Analyzing financial charts with a calculator and chocolate coins.\" — names too little of gold, traders, trading, floor",
+    "[21:24:18] image: dropped \"Close-up of financial data on a computer screen showing stock market t\" — names too little of gold, traders, trading, floor",
+    "[21:24:18] image: dropped \"Bright candlestick chart showing stock market trends and analysis.\" — names too little of gold, traders, trading, floor",
+    "[21:24:18] image: dropped \"A stock trader in an office raises his hands in celebration while moni\" — names too little of gold, traders, trading, floor",
+    "[21:24:18] image: dropped \"Monitors displaying stock market charts in a dimly lit room, perfect f\" — names too little of gold, traders, trading, floor",
+    "[21:24:18] image: dropped \"A businessman in a suit looks at a screen displaying stock market char\" — names too little of gold, traders, trading, floor",
+    "[21:24:18] image: dropped \"Man in a headset analyzing stock data on a computer monitor at his wor\" — names too little of gold, traders, trading, floor",
+    "[21:24:18] commons \"gold jewellery shop\": 18 usable of 24",
+    "[21:24:18] image: dropped \"SZ 深圳 Shenzhen 寶安 BaoAn 萬豐大仟里 MaxLand Mall shop King Tai Fook gold n j\" — shows tai, not the story's people",
+    "[21:24:18] image: thumbnail HTTP 403 for https://live.staticflickr.com/3023/2569637885_e41610fcbc_n.jpg",
+    "[21:24:23] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4358",
+    "[21:24:23] image: vision rejected all candidates (fallback pass) (None fits. The gold-bar pile (1) looks like a 3D render on a plain background, which rules it out. The belly dancers (2) and the yam trader (4) are off-topic. The empty vault shelves (3) are puzzling at a glance. The jewellery shop fronts (5, 6) carry Chinese signage and logos.)",
+    "[21:24:23] image: thumbnail HTTP 403 for https://live.staticflickr.com/3060/2570461610_a84242c462_n.jpg",
+    "[21:24:23] image: thumbnail HTTP 403 for https://live.staticflickr.com/4077/5440099040_7fbe9db699_n.jpg",
+    "[21:24:31] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7511",
+    "[21:24:34] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3303",
+    "[21:24:42] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=8086",
+    "[21:24:42] image: second check (claude-cli/claude-opus-5-5) AMATEUR — refused \"Gold market in Sharjah.jpg\": The subject fits, but this is a passer-by's phone snapshot through a shop window, with glass reflections and ceiling-lig",
+    "[21:24:42] published \"الذهب ينهي الأسبوع دون 4000 دولار للأوقية لأول مرة منذ يوليو\" -> gold-weekly-close-below-4000-dollars-c3172a",
+    "[21:24:43] evidence duplicate report skipped: Arab News repeats Gulf News",
+    "[21:25:18] desk notes: 2 of 28 facts dropped (not in their source or copied from it)",
+    "[21:25:18] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=35784",
+    "[21:25:18] desk notes: 26 facts (? 3, news 1, driver 2, reaction 9, remark 1, background 6, next 2, numbers 2), 3 quotes (claude-cli/claude-opus-5-5)",
+    "[21:26:54] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=95914",
+    "[21:26:54] desk: spelling table fixed body",
+    "[21:27:25] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=31002",
+    "[21:27:25] desk model=claude-cli/claude-opus-5-5 applied=[lede,body] rejected=[]",
+    "[21:27:25] desk \"بزشكيان: كثير من الإيرانيين يكافحون لتأمين الغذاء بسبب الحرب\": rewrote lede, body",
+    "[21:28:32] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=66322",
+    "[21:28:32] critic \"بزشكيان: كثير من الإيرانيين يكافحون لتأمين الغذاء بسبب الحرب\": revise score=8 issues=10",
+    "[21:28:32]   · ينقص التقرير (ما الذي يأتي بعد ذلك): قلب الكاتب توقع مالوني. ففي SOURCE 2 قالت سوزان مالوني «أتوقع الآن احتمال تنفيذ ضربات بعد وقت قصير من انتخابات منتصف الولاي",
+    "[21:28:32]   · ينقص التقرير (الخلفية وحدود التصعيد): تذكر SOURCE 2 أن أياً من البلدين لم ينفذ هجمات كبيرة على أهداف برية منذ مطلع سبتمبر، وأن الطرفين يتبادلان الهجمات على السف",
+    "[21:28:32]   · الدقة في نسبة الكلام: في الاستهلال «بسبب الحرب مع الولايات المتحدة وظروفها». بزشكيان قال «بسبب الحرب التي وجدنا أنفسنا فيها، وبسبب ظروف الحرب التي نعيشها» (SOUR",
+    "[21:28:32]   · العنوان الفرعي يكرر خلفية قديمة ولا يكمل الخبر: «الحصار الأمريكي على الموانئ الإيرانية يقيّد صادرات طهران النفطية وتجارتها منذ ردّ واشنطن على تقييد الملاحة في ه",
+    "[21:29:37] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=64915",
+    "[21:29:37] desk: spelling table fixed body",
+    "[21:30:09] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=32243",
+    "[21:30:09] desk model=claude-cli/claude-opus-5-5 applied=[lede,body] rejected=[]",
+    "[21:30:09] desk \"بزشكيان: كثير من الإيرانيين يكافحون لتأمين الغذاء بسبب الحرب\": rewrote lede, body",
+    "[21:31:07] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=58214",
+    "[21:31:07] critic (second pass) \"بزشكيان: كثير من الإيرانيين يكافحون لتأمين الغذاء بسبب الحرب\": revise score=8 issues=7",
+    "[21:31:40] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=33194",
+    "[21:32:08] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=27642",
+    "[21:32:08] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[21:32:08] desk \"بزشكيان: كثير من الإيرانيين يكافحون لتأمين الغذاء بسبب الحرب\": rewrote body",
+    "[21:32:08] mended \"بزشكيان: كثير من الإيرانيين يكافحون لتأمين الغذاء بسبب الحرب\": the second pass's 7 finding(s) sent back once more",
+    "[21:33:01] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=52688",
+    "[21:33:01] precheck \"بزشكيان: كثير من الإيرانيين يكافحون لتأمين الغذاء بسبب الحرب\": clean",
+    "[21:33:07] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6379",
+    "[21:33:07] image: the picture should say: Under war and a US blockade, ordinary Iranian families are struggling to put food on the table.",
+    "[21:33:07] image: the story's people first: Masoud Pezeshkian 2026 | Masoud Pezeshkian | مسعود بزشكيان",
+    "[21:33:07] commons \"Masoud Pezeshkian 2026\": 6 usable of 20",
+    "[21:33:08] commons \"Masoud Pezeshkian\": 2 usable of 20",
+    "[21:33:08] commons \"مسعود بزشكيان\": 14 usable of 20",
+    "[21:33:08] image: dropped \"The President's Meeting with Educators and Student Teachers 4 Mehr.jpg\" — shows masoud, not the story's people",
+    "[21:33:08] image: dropped \"Economic Cooperation Organization July 2025 - 1751655051.jpg\" — names too little of مسعود, بزشكيان",
+    "[21:33:08] image: people shortlist: 2026 Masoud Pezeshkian, Mohammad Bagher Ghalibaf, and G | 2026 Presidents of Azerbaijan and Iran met in Bishkek - | 2026 Presidents of Azerbaijan and Iran met in Bishkek - | 2026 Presidents of Azerbaijan and Iran met in Bishkek -",
+    "[21:33:14] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5633",
+    "[21:33:18] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3279",
+    "[21:33:18] image: second check (claude-cli/claude-opus-5-5) RIGHT \"Presidents of Azerbaijan and Iran met in Bishkek - 04.jpg\": A sharp, professional portrait of the story's own subject, Masoud Pezeshkian, at an earlier occasion, captioned with its",
+    "[21:33:18] published \"بزشكيان: كثير من الإيرانيين يكافحون لتأمين الغذاء بسبب الحرب\" -> iran-pezeshkian-war-food-struggle-blockade-ee5d4d"
+  ]
+}

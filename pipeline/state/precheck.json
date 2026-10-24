@@ -5916,6 +5916,124 @@
           "noted": []
         }
       ]
+    },
+    "egypt-doubles-basic-home-internet-package-4d137f": {
+      "at": "2026-10-24T21:08:56.586Z",
+      "title": "مصر تضاعف سعة باقة الإنترنت الأرضي الأساسية إلى 100 جيجابايت بالسعر نفسه",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 21,
+            "checked": 21,
+            "supported": 18,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "gold-weekly-close-below-4000-dollars-c3172a": {
+      "at": "2026-10-24T21:24:42.559Z",
+      "title": "الذهب ينهي الأسبوع دون 4000 دولار للأوقية لأول مرة منذ يوليو",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 39,
+            "checked": 39,
+            "supported": 32,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 3,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 13,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "افتتح الذهب الأسبوع عند 4167 دولاراً للأوقية، ثم كسر نطاقاً عرضياً دام قرابة أربعة أسابيع حين نزل دون مستوى الدعم عند 4100 دولار.",
+              "quote": "وفي قراءة أسبوعية أخرى، بدأ الذهب الأسبوع قرب 4177 دولارًا صباح الاثنين، وتحرك بين 4125 و4141 دولارًا خلال الإغلاقات اليومية الثلاثة الأولى، قبل أن يهبط الخميس بنحو 2.8%، أو ما يقارب 117 إلى 120 دولارًا، إلى نحو 4024 دولارًا، ثم تراجع الجمعة بنحو 0.7% إلى ما دون 4000 دولار.",
+              "source": "Masrawy",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 25,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وترى الشركة أن قوة الهبوط جعلت المعدن يتجاهل عوامل كانت تدعمه، منها تراجع عوائد السندات الأمريكية إلى أدنى مستوى في نحو شهر وانخفاض الدولار.",
+              "quote": "وأوضح مونتي صافي الدين من «كابيتال دوت كوم» أن الهبوط دون 4000 دولار يعكس تصاعد مخاوف التضخم والعوائد وقوة الدولار، معتبرًا المستوى اختبارًا لثقة المستثمرين، وأشار «ساكسو بنك» إلى تفوق عمليات البيع المضاربي قصيرة الأجل على طلب المستثمرين طويلي الأجل، رغم استمرار تراكم حيازات الصناديق منذ يوليو.",
+              "source": "Masrawy",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 39,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وأظهرت تقديرات السوق المنشورة الجمعة احتمال تثبيت الفائدة في هذا الاجتماع بنحو 93%، وتراوحت احتمالات رفعها في ديسمبر بين 76% و81% بحسب أدوات القياس المختلفة.",
+              "quote": "وتبقى التوقعات في الأسواق حالياً أن البنك الاحتياطي الفيدرالي سيقوم بتثبيت أسعار الفائدة خلال اجتماعه الأسبوع الحالي، بينما وضعت الأسواق احتمال بنسبة 90% أن يقوم البنك برفع الفائدة للمرة الثانية خلال اجتماعه الأخير هذا العام في ديسمبر القادم، بحسب التقرير الفني لجولد بيليون.",
+              "source": "Masrawy",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "iran-pezeshkian-war-food-struggle-blockade-ee5d4d": {
+      "at": "2026-10-24T21:33:18.047Z",
+      "title": "بزشكيان: كثير من الإيرانيين يكافحون لتأمين الغذاء بسبب الحرب",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 30,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
