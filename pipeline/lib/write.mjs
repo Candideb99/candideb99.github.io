@@ -413,6 +413,9 @@ Return the complete corrected ${short ? "story" : "article"} as one JSON object 
       if (short) return validateDraft(d, { ...SHORT_WORDS, short: true });
       validateDraft(d, wordLimits ?? { minWords: newsFloor(notes) });
       if (news) validateWhyBasis(d, sources);
+      // A reading's revision keeps every author it was written with (missingAuthors, below).
+      const dropped = paper && notes?.authors ? missingAuthors(d, notes.authors.map((a) => a.en)) : [];
+      if (dropped.length) throw new Error(`keep every author in the lede, with the Latin original in parentheses once: missing ${dropped.join(", ")}`);
     },
   });
   const revised = normalizeDraft(data, { kind: kind || "news" });
@@ -567,12 +570,12 @@ The key facts print under the heading «مفاهيم أساسية»: two to four
  * (2026-10-23). Every current fact comes from those stories; standard definitions and mechanisms need no source.
  * Until then the explainer was "evergreen" and forbidden any news: the owner read four of them as machine writing.
  */
-export async function writeExplainer({ topic, relatedArticles, log }) {
+export async function writeExplainer({ topic, relatedArticles, log, today = new Date() }) {
   const user = `Write an explainer for خازندار: the answer to one question readers of this week's news are asking.
 THE QUESTION: ${topic.question_ar}
 THE SHORT ANSWER (the editor's; correct it where the material or standard economics says otherwise): ${topic.answer_ar ?? ""}
 THE CONCEPT IT TURNS ON: ${topic.concept_ar} (${topic.concept_en})
-Today (UTC): ${new Date().toISOString().slice(0, 10)}
+Today (UTC): ${new Date(today).toISOString().slice(0, 10)}
 
 MATERIAL: the خازندار stories that raised the question, the first being the one to open on. Every fact of these weeks you state (a price, a figure, a date, a decision, a name) must come from them, attributed as they attribute it.
 ${relatedArticles.map(relatedBlock).join("\n\n")}
@@ -1000,7 +1003,7 @@ ${notes.facts.map((f, i) => `${i + 1}. ${f.fact} [${f.job}]`).join("\n")}
  * paper's own text (abstract and whatever free full text its page gave); `notes`, when the research desk made them
  * (`paperNotes`), stand in for the text, which the writer then never sees.
  */
-export async function writePaperReading({ paper, text, notes = null, log, chatWith = chat }) {
+export async function writePaperReading({ paper, text, notes = null, log, chatWith = chat, today = new Date() }) {
   // A preprint is said to be one, as science desks report them; a central bank's working paper needs no such line.
   const status = paper.preprint && notes?.peerReviewed !== true ? "\nStatus: a preprint, not yet peer-reviewed: say so once, in the lede or the sentence after it («في دراسة لم تخضع بعد للتحكيم»)" : "";
   const user = `PAPER BRIEF FROM THE EDITOR
@@ -1009,7 +1012,7 @@ Institution / series: ${paper.institutionEn}${paper.institutionAr ? ` (${paper.i
 Published: ${paper.publishedAt ? String(paper.publishedAt).slice(0, 10) : "date not given by the feed; take the year from the text if it states one"}
 Why it matters to Arab readers (editor): ${paper.why_it_matters_ar}
 Reading angle (editor): ${paper.reading_angle_ar}
-Today (UTC): ${new Date().toISOString().slice(0, 10)}
+Today (UTC): ${new Date(today).toISOString().slice(0, 10)}
 
 ${notes ? paperNotesBlock(notes) : `THE PAPER'S TEXT (the only material you may use; every figure, name, date and claim must come from it)
 ${text}
@@ -1033,16 +1036,25 @@ ${PAPER_SCHEMA}`;
         if (!tags.some((t) => /أوراق بحثية/.test(t))) d.tags = [...tags, "أوراق بحثية"];
       }
       validateDraft(d, PAPER_WORDS);
-      // Every author by name, the first alone above three (2026-10-24: the published reading and three of five rewrites
-      // named one of two authors, one of them with both in its notes). A name counts by any surname, in Latin.
-      const authors = (notes?.authors?.map((a) => a.en) ?? paper.authors ?? []).filter(Boolean);
-      const prose = `${d.lede}\n${d.body}`;
-      const missing = (authors.length > 3 ? authors.slice(0, 1) : authors).filter((name) => {
-        const parts = String(name).split(/\s+/).filter(Boolean);
-        return !(parts.length > 1 ? parts.slice(1) : parts).some((p) => prose.includes(p));
-      });
+      // Every author by name (2026-10-24: the published reading and three of five rewrites named one of two authors, one
+      // of them with both in its notes).
+      const missing = missingAuthors(d, notes?.authors?.map((a) => a.en) ?? paper.authors);
       if (missing.length) throw new Error(`name every author in the lede (transliterated, with the Latin original in parentheses once): missing ${missing.join(", ")}`);
     },
   });
   return { draft: normalizeDraft(data), model };
+}
+
+/**
+ * The authors a reading must name, by any surname in Latin (the first alone above three), or [] when none is missing.
+ * The writer is held to it, and so is the reviser: on 2026-10-24 a revision dropped the Latin originals of three Fed
+ * authors the writer had named.
+ */
+export function missingAuthors(draft, authors) {
+  const names = (authors ?? []).filter(Boolean);
+  const prose = `${draft?.lede ?? ""}\n${draft?.body ?? ""}`;
+  return (names.length > 3 ? names.slice(0, 1) : names).filter((name) => {
+    const parts = String(name).split(/\s+/).filter(Boolean);
+    return !(parts.length > 1 ? parts.slice(1) : parts).some((p) => prose.includes(p));
+  });
 }

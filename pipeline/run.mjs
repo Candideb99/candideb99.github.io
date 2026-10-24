@@ -37,9 +37,9 @@ import { checkSourcesOf, precheck, writeJsonAtomic } from "./lib/precheck.mjs";
 import { repeatsRecent } from "./lib/events.mjs";
 import { saveSnapshot } from "./lib/snapshots.mjs";
 import { pickImage } from "./lib/images.mjs";
-import { ARTICLES_DIR, buildSlug, loadExistingArticles, mergeNewsRefresh, serializeArticle } from "./lib/article.mjs";
+import { ARTICLES_DIR, buildSlug, loadExistingArticles, mergeNewsRefresh, mergeRewrite, serializeArticle } from "./lib/article.mjs";
 import { usage as llmUsage } from "./lib/llm.mjs";
-import { fingerprint, hoursSince, isoNow, sleep } from "./lib/util.mjs";
+import { domainOf, fingerprint, hoursSince, isoNow, sleep } from "./lib/util.mjs";
 import { pickDataChart } from "./lib/datacharts.mjs";
 import { latestEdition, loadRegistry, monthKey, readEdition, releaseStory, reportStory } from "./lib/reports.mjs";
 
@@ -83,6 +83,8 @@ const ONLY_SOURCE = option("source", null);
 const ONLY_REPORT = option("report", null);
 /** `--paper=<arXiv id or address>`: the paper mode reads that one paper, chosen by hand (a reading written again, or a test). */
 const ONLY_PAPER = option("paper", null);
+/** `--slugs=a,b`: the explainers and paper readings `--mode=rewrite` writes again under their own addresses. */
+const REWRITE_SLUGS = option("slugs", "").split(",").map((s) => s.trim()).filter(Boolean);
 const MIN_IMPORTANCE = (() => {
   const n = Number(option("min-importance", 6));
   return Number.isFinite(n) ? n : 6;
@@ -823,7 +825,7 @@ function internalSources(articles, { withText = false } = {}) {
  * against (the stories that raised an explainer's question, the related stories for an analysis, the research paper's text for a
  * paper reading); `sources` is what is filed.
  */
-async function finishHubPiece({ kind, section, draft: firstDraft, sources, checkSources, recentTitles, wordLimits, story, headlineHint, headline, models, existing, report, notes = null }) {
+async function finishHubPiece({ kind, section, draft: firstDraft, sources, checkSources, recentTitles, wordLimits, story, headlineHint, headline, models, existing, report, notes = null, replace = null }) {
   const deskKind = kind === "explainer" ? "explainer" : kind === "paper" ? "paper" : "analysis";
   const desk = await copyDeskPass(firstDraft, { kind: deskKind, sources: checkSources ?? [] });
   let draft = desk.draft;
@@ -909,7 +911,7 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
       report.push(entry);
       log(`held ${kind} "${draft.title}": ${pre.held}`);
       for (const f of pre.unresolved ?? []) log(`  ✗ [${f.class}] ${f.sentence.slice(0, 140)}`);
-      await recordPrecheck({ slug: buildSlug(draft, { headlineHint }), title: draft.title, pre, writer: writerModel, lessons: null, held: true });
+      await recordPrecheck({ slug: replace?.slug ?? buildSlug(draft, { headlineHint }), title: draft.title, pre, writer: writerModel, lessons: null, held: true });
       return { report, published: 0 };
     }
     if (pre.repairs) {
@@ -918,12 +920,13 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
       log(`precheck ${kind} "${draft.title}": ${entry.precheck.found} proved error(s) repaired`);
     } else log(`precheck ${kind} "${draft.title}": clean`);
     precheckTag = pre.repairs ? "repaired" : "clean";
-    await recordPrecheck({ slug: buildSlug(draft, { headlineHint }), title: draft.title, pre, writer: writerModel, lessons: null, held: false });
+    await recordPrecheck({ slug: replace?.slug ?? buildSlug(draft, { headlineHint }), title: draft.title, pre, writer: writerModel, lessons: null, held: false });
   }
-  // The piece's kind tells the picture desk it explains or analyses: its subject at work, never a facade.
-  const image = TEXT_ONLY ? null : await pickImage({ draft: { ...draft, kind }, story, log, exclude: usedImages(existing) });
-  const slug = buildSlug(draft, { headlineHint });
-  const markdown = serializeArticle({
+  // The piece's kind tells the picture desk it explains or analyses: its subject at work, never a facade. A piece written
+  // again under its own address keeps its photograph, and is pictured only when it had none.
+  const image = TEXT_ONLY || replace?.hasImage ? null : await pickImage({ draft: { ...draft, kind }, story, log, exclude: usedImages(existing) });
+  const slug = replace?.slug ?? buildSlug(draft, { headlineHint });
+  let markdown = serializeArticle({
     pending: DRAFT,
     draft,
     slug,
@@ -937,6 +940,8 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
     // had read as unfixed faults the published text no longer had).
     quality: { score: finalReview.score, verdict: finalReview.verdict, revised, ...(entry.mendedAfterReview ? { mended: entry.mendedAfterReview } : {}), ...(precheckTag ? { precheck: precheckTag } : {}), warnings: checks.warnings, criticSummary: finalReview.summary },
   });
+  // A rewrite (--mode=rewrite) goes into the piece's own file: its address, date, photograph and correction notes stay.
+  if (replace) markdown = mergeRewrite(replace.original, markdown);
   if (!DRY_RUN || PREVIEW_DIR) {
     const dir = PREVIEW_DIR ?? ARTICLES_DIR;
     await mkdir(dir, { recursive: true });
@@ -948,7 +953,7 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   entry.score = finalReview.score;
   entry.image = image ? "photo" : "none";
   report.push(entry);
-  log(`published ${kind} "${draft.title}" -> ${slug}${DRY_RUN ? " (dry-run)" : ""}`);
+  log(`${replace ? "rewrote" : "published"} ${kind} "${draft.title}" -> ${slug}${DRY_RUN ? " (dry-run)" : ""}`);
   return { report, published: 1 };
 }
 
@@ -1095,18 +1100,24 @@ async function gatherPapers(sources, state, existing) {
 /** The arXiv id in an address or a bare id («2610.30752v1»), without its version. */
 const arxivId = (text) => String(text ?? "").match(/(\d{4}\.\d{4,5})(?:v\d+)?/)?.[1] ?? null;
 
+/** One paper's record from arXiv's own API (title, abstract, date, authors), filed under the research feed that reads arXiv. */
+async function arxivItem(ref, papers) {
+  const id = String(ref).match(/(\d{4}\.\d{4,5})(v\d+)?/);
+  if (!id) throw new Error(`not an arXiv id or address (${ref})`);
+  const source = papers.find((s) => /arxiv\.org/.test(s.url));
+  if (!source) throw new Error("no research feed reads arXiv (sources.json papers)");
+  const [item] = await fetchFeed({ ...source, url: `https://export.arxiv.org/api/query?id_list=${id[1]}${id[2] ?? ""}`, maxAgeHours: 24 * 365 * 10, summaryChars: 4000 }, { log });
+  if (!item) throw new Error(`arXiv returned no paper ${id[0]}`);
+  return { ...item, id: "p1", sourceName: source.name, sourceNameEn: source.nameEn, reliability: source.reliability, kind: source.kind, lang: source.lang, abstractOnly: Boolean(source.abstractOnly), note: source.note ?? "" };
+}
+
 /**
- * `--paper=`: the one paper the mode reads, from arXiv's own API (title, abstract, date), filed under the research feed
- * that reads arXiv. The research editor still writes the brief; nothing in the state stops a paper chosen by hand.
+ * `--paper=`: the one paper the mode reads, chosen by hand. The research editor still writes the brief; nothing in the
+ * state stops a paper chosen by hand.
  */
 async function paperByHand(papers) {
-  const id = String(ONLY_PAPER).match(/(\d{4}\.\d{4,5})(v\d+)?/);
-  if (!id) throw new Error(`--paper: not an arXiv id or address (${ONLY_PAPER})`);
-  const source = papers.find((s) => /arxiv\.org/.test(s.url));
-  if (!source) throw new Error("--paper: no research feed reads arXiv (sources.json papers)");
-  const [item] = await fetchFeed({ ...source, url: `https://export.arxiv.org/api/query?id_list=${id[1]}${id[2] ?? ""}`, maxAgeHours: 24 * 365 * 10, summaryChars: 4000 }, { log });
-  if (!item) throw new Error(`--paper: arXiv returned no paper ${id[0]}`);
-  return { arxiv: id[1], item: { ...item, id: "p1", sourceName: source.name, sourceNameEn: source.nameEn, reliability: source.reliability, kind: source.kind, lang: source.lang, abstractOnly: Boolean(source.abstractOnly), note: source.note ?? "" } };
+  const item = await arxivItem(ONLY_PAPER, papers);
+  return { arxiv: arxivId(ONLY_PAPER), item };
 }
 
 /** Whether a fetched page is about this paper: a repository page that yields only "related items" is not. */
@@ -1156,6 +1167,151 @@ async function readPaper(item) {
 }
 
 /**
+ * The reading of one chosen paper, from its text to the finished piece: the research desk's notes, the writer from them,
+ * then finishHubPiece. The paper mode's, and `--mode=rewrite`'s for a reading written again under its own address.
+ */
+async function writeReading({ item, choice, editorModel, pageText, existing, existingPapers, report, replace = null, today = new Date() }) {
+  // The repository's own list of authors heads the text everyone reads, the critic and the check before publication
+  // included (2026-10-24: the page text kept only the first author's credit, and in four of five test rewrites the critic
+  // called the second author an error and twice had him removed).
+  const text = `${item.authors?.length ? `Authors (as the repository records them): ${item.authors.join("; ")}\n\n` : ""}${pageText}`;
+  // The paper itself is the single source: filed as read, and checked against as text.
+  const source = {
+    sourceId: item.sourceId,
+    sourceName: item.sourceName,
+    sourceNameEn: item.sourceNameEn,
+    title: item.title,
+    url: item.url,
+    lang: "en",
+    publishedAt: item.publishedAt ?? undefined,
+    summary: item.summary,
+    text,
+  };
+  const brief = {
+    ...choice,
+    title_en: item.title,
+    institutionEn: item.sourceNameEn,
+    institutionAr: item.sourceName,
+    publishedAt: item.publishedAt,
+    note: item.note,
+    preprint: /arxiv\.org/i.test(item.url),
+    authors: item.authors ?? [],
+  };
+  // The research desk's notes first; the writer and the reviser then see them in place of the paper's English.
+  const notes = (await paperNotes({ paper: brief, text, log }))?.notes ?? null;
+  const { draft, model: writerModel } = await writePaperReading({ paper: brief, text, notes, log, today });
+  return finishHubPiece({
+    kind: "paper",
+    section: "explainers",
+    draft,
+    sources: [source],
+    checkSources: [source],
+    recentTitles: existingPapers,
+    wordLimits: PAPER_WORDS,
+    story: { angle: choice.reading_angle_ar },
+    headlineHint: item.title,
+    headline: item.title,
+    models: { editor: editorModel, writer: writerModel },
+    existing,
+    report,
+    notes,
+    replace,
+  });
+}
+
+/**
+ * `--mode=rewrite --slugs=a,b` (the owner, 2026-10-24: "rewrite the 24 old explainers and 4 old readings with the new
+ * writers, keeping their addresses"): an explainer or a paper reading written again by today's writers, as of its own
+ * date, from its own week's stories or its own paper, into its own file (article.mjs mergeRewrite: the address, the
+ * date, the photograph and the correction notes stay). Never scheduled; a piece the checks or the critic refuse keeps
+ * its old text.
+ */
+async function runRewrite(report) {
+  if (!REWRITE_SLUGS.length) throw new Error("--mode=rewrite needs --slugs=a,b");
+  const config = await readJson(path.join(root, "pipeline", "sources.json"), { papers: [] });
+  let published = 0;
+  for (const slug of REWRITE_SLUGS) {
+    const original = await readFile(path.join(ARTICLES_DIR, `${slug}.md`), "utf8").catch(() => null);
+    const front = original?.replace(/\r\n/g, "\n").match(/^---\n([\s\S]*?)\n---/)?.[1];
+    const old = front ? YAML.parse(front) : null;
+    if (!old || !["explainer", "paper"].includes(old.kind)) {
+      report.push({ headline: slug, section: old?.section ?? "", outcome: `skipped: ${old ? `a ${old.kind} is not rewritten by this mode` : "no such article"}` });
+      continue;
+    }
+    log(`rewrite ${old.kind} ${slug} of ${String(old.publishedAt).slice(0, 10)}: «${old.title}»`);
+    const existing = (await loadExistingArticles()).filter((a) => a.slug !== slug);
+    const replace = { original, slug, hasImage: Boolean(old.image?.url) };
+    try {
+      const result = old.kind === "explainer" ? await rewriteExplainer(old, { existing, report, replace }) : await rewritePaper(old, { existing, report, replace, papers: config.papers ?? [] });
+      published += result.published;
+    } catch (error) {
+      if (error.meta?.quota) throw error;
+      const message = String(error.message).split("\n")[0];
+      log(`rewrite ${slug} failed: ${message}`);
+      report.push({ headline: old.title, section: old.section, outcome: `error: ${message}` });
+    }
+  }
+  return { report, published };
+}
+
+/** An explainer written again from its own week: the stories it was filed with first, then that week's other news. */
+async function rewriteExplainer(old, { existing, report, replace }) {
+  const at = Date.parse(old.publishedAt);
+  const age = (a) => (at - Date.parse(a.publishedAt)) / 3600000;
+  const filed = new Set((old.sources ?? []).map((s) => String(s.url ?? "").replace(/^\/articles\/|\/$/g, "")));
+  const own = existing.filter((a) => filed.has(a.slug));
+  const week = existing.filter((a) => a.kind === "news" && !filed.has(a.slug) && age(a) >= 0 && age(a) <= 24 * 7).slice(0, 25);
+  const recent = [...own, ...week];
+  if (!recent.length) {
+    report.push({ headline: old.title, section: old.section, outcome: "skipped: no story of its week to open on" });
+    return { report, published: 0 };
+  }
+  const explainers = existing.filter((a) => a.kind === "explainer").map((a) => a.title);
+  const { topic, related, model: editorModel } = await selectExplainerTopic({ recentArticles: recent, existingExplainers: explainers, subject: old.title, log });
+  log(`explainer question: ${topic.question_ar} (${topic.concept_en}); opens on "${related[0]?.title}"`);
+  const { draft, model: writerModel } = await writeExplainer({ topic, relatedArticles: related, log, today: old.publishedAt });
+  const { chart: dataChart } = await pickDataChart({ draft, log });
+  if (dataChart) Object.assign(draft, { chart: dataChart, dataChart: true });
+  return finishHubPiece({
+    kind: "explainer",
+    section: "explainers",
+    draft,
+    sources: internalSources(related),
+    checkSources: internalSources(related, { withText: true }),
+    recentTitles: explainers,
+    story: { angle: topic.question_ar },
+    headlineHint: topic.concept_en,
+    headline: topic.question_ar,
+    models: { editor: editorModel, writer: writerModel },
+    existing,
+    report,
+    replace,
+  });
+}
+
+/** A paper reading written again from its own paper, read afresh from its page (and from arXiv's record for an arXiv paper). */
+async function rewritePaper(old, { existing, report, replace, papers }) {
+  const filed = old.sources?.[0];
+  if (!filed?.url) {
+    report.push({ headline: old.title, section: old.section, outcome: "skipped: the reading names no paper" });
+    return { report, published: 0 };
+  }
+  const feed = papers.find((s) => s.nameEn === filed.nameEn) ?? papers.find((s) => domainOf(s.url) === domainOf(filed.url));
+  const item = arxivId(filed.url)
+    ? await arxivItem(filed.url, papers)
+    : { id: "p1", title: filed.title, url: filed.url, summary: "", publishedAt: filed.publishedAt, categories: [], authors: [], sourceId: feed?.id ?? "", sourceName: filed.name, sourceNameEn: filed.nameEn, reliability: feed?.reliability, kind: "research", lang: "en", abstractOnly: false, note: feed?.note ?? "" };
+  const existingPapers = existing.filter((a) => a.kind === "paper").map((a) => a.title);
+  const { choice, model: editorModel } = await selectPaper({ candidates: [item], existingPapers, log });
+  const read = await readPaper(item);
+  log(`paper ${old.slug}: ${read.text.length} chars of text${read.pageUrl ? ` (${read.pageUrl})` : ""}`);
+  if (read.text.length < PAPER_MIN_CHARS) {
+    report.push({ headline: old.title, section: old.section, outcome: `skipped: too little of the paper's text (${read.text.length} chars)` });
+    return { report, published: 0 };
+  }
+  return writeReading({ item, choice, editorModel, pageText: read.text, existing, existingPapers, report, replace, today: old.publishedAt });
+}
+
+/**
  * Twice a week: one plain-Arabic reading of a recent open-access research paper (kind "paper", filed in the
  * explainers hub). The research editor picks the paper; the paper's own text is the only material and the
  * only source the reading is checked against; a paper whose free text is too thin is passed over, up to three times.
@@ -1199,51 +1355,7 @@ function runPaper() {
     }
 
     const { item, choice, editorModel } = chosen;
-    // The repository's own list of authors heads the text everyone reads, the critic and the check before publication
-    // included (2026-10-24: the page text kept only the first author's credit, and in four of five test rewrites the critic
-    // called the second author an error and twice had him removed).
-    const text = `${item.authors?.length ? `Authors (as the repository records them): ${item.authors.join("; ")}\n\n` : ""}${chosen.text}`;
-    // The paper itself is the single source: filed as read, and checked against as text.
-    const source = {
-      sourceId: item.sourceId,
-      sourceName: item.sourceName,
-      sourceNameEn: item.sourceNameEn,
-      title: item.title,
-      url: item.url,
-      lang: "en",
-      publishedAt: item.publishedAt ?? undefined,
-      summary: item.summary,
-      text,
-    };
-    const brief = {
-      ...choice,
-      title_en: item.title,
-      institutionEn: item.sourceNameEn,
-      institutionAr: item.sourceName,
-      publishedAt: item.publishedAt,
-      note: item.note,
-      preprint: /arxiv\.org/i.test(item.url),
-      authors: item.authors ?? [],
-    };
-    // The research desk's notes first; the writer and the reviser then see them in place of the paper's English.
-    const notes = (await paperNotes({ paper: brief, text, log }))?.notes ?? null;
-    const { draft, model: writerModel } = await writePaperReading({ paper: brief, text, notes, log });
-    const result = await finishHubPiece({
-      kind: "paper",
-      section: "explainers",
-      draft,
-      sources: [source],
-      checkSources: [source],
-      recentTitles: existingPapers,
-      wordLimits: PAPER_WORDS,
-      story: { angle: choice.reading_angle_ar },
-      headlineHint: item.title,
-      headline: item.title,
-      models: { editor: editorModel, writer: writerModel },
-      existing,
-      report,
-      notes,
-    });
+    const result = await writeReading({ item, choice, editorModel, pageText: chosen.text, existing, existingPapers, report });
     markItems(state, [item], result.published ? "published" : "rejected", report.at(-1)?.slug);
     await saveState(state);
     return result;
@@ -1490,7 +1602,7 @@ function runReports() {
 }
 
 /** News runs through runHub like the hub modes: an editor that fails outright still leaves a report and the outputs. */
-const RUNNERS = { news: () => runHub("news", "news", runNews), explainer: runExplainer, analysis: runAnalysis, paper: runPaper, weekly: runWeekly, feature: runFeature, reports: runReports };
+const RUNNERS = { news: () => runHub("news", "news", runNews), explainer: runExplainer, analysis: runAnalysis, paper: runPaper, weekly: runWeekly, feature: runFeature, reports: runReports, rewrite: () => runHub("rewrite", "explainers", runRewrite) };
 
 async function main() {
   const started = Date.now();

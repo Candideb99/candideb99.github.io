@@ -141,14 +141,15 @@ const EXPLAINER_SYSTEM = `You are the explainers editor of خازندار, an Ar
  * explainers came out as textbook entries priced in «وحدات نقدية» under jargon headlines (the owner, on four of them:
  * "looks like ai badly written topics with bad headlines that is even more confusing").
  */
-export async function selectExplainerTopic({ recentArticles, existingExplainers, log }) {
+export async function selectExplainerTopic({ recentArticles, existingExplainers, log, subject = null }) {
   const user = `Recent خازندار news (exact title — lede):
 ${recentArticles.map((a) => `- ${a.title} — ${truncate(a.lede ?? "", 220)}`).join("\n") || "- (none)"}
 
 Explainers already published (do not ask their questions again):
 ${existingExplainers.map((t) => `- ${t}`).join("\n") || "- (none)"}
 
-Choose ONE question that readers of one of these stories are left asking: the mechanism, the term or the consequence behind the news that the story itself does not explain. It must be a question many readers share, answerable from standard economics plus the facts in the stories, and not one the explainers above have answered.
+${subject ? `This explainer replaces Khazendar's earlier one on the same subject, which asked «${subject}» as a textbook would. Keep that subject: choose the question on it that readers of one of these stories are left asking, in their words, never the textbook's.
+` : ""}Choose ONE question that readers of one of these stories are left asking: the mechanism, the term or the consequence behind the news that the story itself does not explain. It must be a question many readers share, answerable from standard economics plus the facts in the stories, and not one the explainers above have answered.
 Write the question as that reader would say it, in everyday Arabic. A reader cannot ask about a term he has not learned yet, so a term the answer has to teach stays out of the question unless the news headline itself used it. The form, not the subject: «لماذا لا يرتفع سعر الخبز في اليوم الذي يهبط فيه الجنيه؟»; the subject comes from the list above.
 Return JSON: {"question_ar":"<the question, ending in «؟», at most 14 words>","answer_ar":"<the short answer, one Arabic sentence>","concept_ar":"<the concept the answer turns on, in Arabic>","concept_en":"<the same in English>","peg_titles":["<1-3 exact titles from the list above whose facts raise the question; the first is the story the explainer opens on>"]}`;
   const { data, model } = await chat({

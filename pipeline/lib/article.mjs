@@ -25,6 +25,26 @@ export function mergeNewsRefresh(original, generated, { note, at = new Date().to
   return `---\n${YAML.stringify(data, { lineWidth: 0 }).trimEnd()}\n---\n\n${newParts[2].trim()}\n`;
 }
 
+/**
+ * An explainer or a paper reading written again by today's writers (pipeline/run.mjs --mode=rewrite; the owner, 2026-10-24:
+ * "rewrite the 24 old explainers and 4 old readings with the new writers, keeping their addresses"): the new text under the
+ * old address and date, the old photograph and correction notes kept (the new pick is used only where there was none), and
+ * `updatedAt` stamped, which the site prints nowhere but the page's metadata.
+ */
+export function mergeRewrite(original, generated, { at = new Date().toISOString() } = {}) {
+  const split = (raw) => String(raw).replace(/\r\n/g, "\n").match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+  const oldParts = split(original), newParts = split(generated);
+  if (!oldParts || !newParts) throw new Error("a rewrite needs two valid articles");
+  const old = YAML.parse(oldParts[1]), fresh = YAML.parse(newParts[1]);
+  if (old.kind !== fresh.kind || old.section !== fresh.section) throw new Error("a rewrite keeps the piece's kind and section");
+  const data = { ...fresh, slug: old.slug, publishedAt: old.publishedAt, updatedAt: at, image: old.image ?? fresh.image ?? null, corrections: old.corrections ?? [] };
+  if (old.image && data.models) data.models.vision = old.models?.vision ?? null;
+  for (const key of ["draft", "featured"]) {
+    if (Object.hasOwn(old, key)) data[key] = old[key]; else delete data[key];
+  }
+  return `---\n${YAML.stringify(data, { lineWidth: 0 }).trimEnd()}\n---\n\n${newParts[2].trim()}\n`;
+}
+
 export function buildSlug(draft, story) {
   const base = slugifyLatin(draft.slug) || slugifyLatin(story?.headlineHint) || "story";
   const suffix = sha1(`${draft.title}|${new Date().toISOString().slice(0, 10)}`).slice(0, 6);
