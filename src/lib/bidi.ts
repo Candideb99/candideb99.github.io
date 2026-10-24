@@ -12,10 +12,12 @@
  * rehype-isolate-numbers.mjs carries the same pattern for the article body.
  */
 const NUMBER_SRC = String.raw`(?:(?<=^|[\s(\[«"'،])[+\-−])?\d[\d.,]*(?:[\/:\-–]\d[\d.,]*)*(?:\s?[%٪])?`;
-const LATIN_SRC = String.raw`(?<![&A-Za-z0-9])\(?[A-Za-z][A-Za-z0-9'’.\-]*(?:\s+[A-Za-z0-9'’.\-]+)*\)?`;
-const RUN = new RegExp(`(${LATIN_SRC})|(${NUMBER_SRC})`, "g");
+// Any Latin-script letter, accents included (2026-10-24: «(Santiago Jiménez Londoño)» was cut at «é» and «ñ», and the
+// pieces were laid out right to left as «(o، énez Londoñ(Santiago Jim»).
+const LATIN_SRC = String.raw`(?<![&\p{Script=Latin}\p{M}0-9])\(?(?:\d+(?=\p{Script=Latin}))?\p{Script=Latin}[\p{Script=Latin}\p{M}0-9'’.\-]*(?:\s+[\p{Script=Latin}\p{M}0-9'’.\-]+)*\)?`;
+const RUN = new RegExp(`(${LATIN_SRC})|(${NUMBER_SRC})`, "gu");
 
-export const NUMBER_PATTERN = new RegExp(NUMBER_SRC, "g");
+export const NUMBER_PATTERN = new RegExp(NUMBER_SRC, "gu");
 export const RUN_PATTERN = RUN;
 
 export function escapeHtml(text: string): string {
@@ -31,7 +33,7 @@ export function wrapRun(latin: string | undefined, number: string | undefined): 
   if (latin) {
     const words = latin.trim().split(/\s+/).length;
     const cls = words <= 3 ? ' class="latin latin--short"' : ' class="latin"';
-    const held = latin.replace(/[^\s]*\w-\w[^\s]*/g, (word) => `<span class="nb">${word}</span>`);
+    const held = latin.replace(/[^\s]*[\p{L}\p{N}]-[\p{L}\p{N}][^\s]*/gu, (word) => `<span class="nb">${word}</span>`);
     return `<bdi dir="ltr"${cls}>${held}</bdi>`;
   }
   return `<bdi dir="ltr">${(number ?? "").replace(/^-/, "−")}</bdi>`;

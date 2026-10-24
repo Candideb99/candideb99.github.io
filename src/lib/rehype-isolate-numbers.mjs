@@ -5,15 +5,16 @@
  */
 // One run per figure however many groups it has (2026/27, 2026-09-19, 14:30, 2020–2025); see src/lib/bidi.ts.
 const NUMBER_SRC = String.raw`(?:(?<=^|[\s(\[«"'،])[+\-−])?\d[\d.,]*(?:[\/:\-–]\d[\d.,]*)*(?:\s?[%٪])?`;
-const LATIN_SRC = String.raw`(?<![&A-Za-z0-9])\(?[A-Za-z][A-Za-z0-9'’.\-]*(?:\s+[A-Za-z0-9'’.\-]+)*\)?`;
-const RUN = new RegExp(`(${LATIN_SRC})|(${NUMBER_SRC})`, "g");
+// Any Latin-script letter, accents included: an ASCII class cut «Jiménez» at «é» (2026-10-24; see src/lib/bidi.ts).
+const LATIN_SRC = String.raw`(?<![&\p{Script=Latin}\p{M}0-9])\(?(?:\d+(?=\p{Script=Latin}))?\p{Script=Latin}[\p{Script=Latin}\p{M}0-9'’.\-]*(?:\s+[\p{Script=Latin}\p{M}0-9'’.\-]+)*\)?`;
+const RUN = new RegExp(`(${LATIN_SRC})|(${NUMBER_SRC})`, "gu");
 const SKIP = new Set(["code", "pre", "bdi", "script", "style", "svg", "a"]);
 
 function latinNode(text) {
   const words = text.trim().split(/\s+/).length;
   // hyphenated words are held together with a nowrap span (a non-breaking hyphen has no glyph in the subset fonts)
-  const children = text.split(/([^\s]*\w-\w[^\s]*)/).filter(Boolean).map((part) =>
-    /\w-\w/.test(part) ? { type: "element", tagName: "span", properties: { className: ["nb"] }, children: [{ type: "text", value: part }] } : { type: "text", value: part },
+  const children = text.split(/([^\s]*[\p{L}\p{N}]-[\p{L}\p{N}][^\s]*)/u).filter(Boolean).map((part) =>
+    /[\p{L}\p{N}]-[\p{L}\p{N}]/u.test(part) ? { type: "element", tagName: "span", properties: { className: ["nb"] }, children: [{ type: "text", value: part }] } : { type: "text", value: part },
   );
   return {
     type: "element",
