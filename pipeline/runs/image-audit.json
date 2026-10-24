@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-24T21:58:07.645Z",
+  "at": "2026-10-24T22:34:24.213Z",
   "results": [
     {
       "slug": "trump-exempts-canadian-goods-tariffs-midterms-787322",
@@ -1113,17 +1113,6 @@
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "iraq-seeks-imf-financing-programme-talks-d17aa2",
-      "file": "iraq-seeks-imf-financing-programme-talks-d17aa2.md",
-      "title": "العراق يطلب بحث برنامج تمويلي محتمل مع صندوق النقد الدولي",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/International_Monetary_Fund_headquarters.jpg/1280px-International_Monetary_Fund_headquarters.jpg",
-      "fileTitle": "International Monetary Fund headquarters.jpg",
-      "verdict": "WRONG_SUBJECT",
-      "people": "none",
-      "reason": "A headquarters building front standing for the IMF says only whose, not what happened (Iraq's request for a financing programme), and it is not a central bank under its own rate or currency decision.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
       "slug": "fiscal-breakeven-oil-price-explained-006eda",
       "file": "fiscal-breakeven-oil-price-explained-006eda.md",
       "title": "النفط فوق 100 دولار، فلماذا تتوقع السعودية عجزاً في موازنتها؟",
@@ -1157,25 +1146,25 @@
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "oil-rises-trump-denies-iran-sanctions-relief-60403e",
-      "file": "oil-rises-trump-denies-iran-sanctions-relief-60403e.md",
-      "title": "برنت يرتفع إلى 103.3 دولار بعد نفي ترامب تخفيف العقوبات على إيران",
-      "image": "https://images.pexels.com/photos/39012056/pexels-photo-39012056.jpeg?auto=compress&cs=tinysrgb&w=1280",
-      "fileTitle": null,
-      "verdict": "WRONG_SUBJECT",
-      "people": "none",
-      "reason": "The frame shows Odfjell Tankers' chemical tanker 'Bow Excellence' with the operator's name painted large on the hull, so it pictures a company the story never mentions and a chemical carrier rather than the crude trade through Hormuz, and a new caption cannot remove writing that is in the frame.",
+      "slug": "iraq-seeks-imf-financing-programme-talks-d17aa2",
+      "file": "iraq-seeks-imf-financing-programme-talks-d17aa2.md",
+      "title": "العراق يطلب بحث برنامج تمويلي محتمل مع صندوق النقد الدولي",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/NYCW_2025_-_Kristalina_Georgieva_02.jpg/1280px-NYCW_2025_-_Kristalina_Georgieva_02.jpg",
+      "fileTitle": "NYCW 2025 - Kristalina Georgieva 02.jpg",
+      "verdict": "RIGHT",
+      "people": "Kristalina Georgieva",
+      "reason": "The IMF named in the headline is led by Georgieva, and this sharp, professional frame of her at an earlier, correctly captioned 2025 occasion is how the desk illustrates a story about her institution.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "fund-redemption-runs-forced-selling-explained-c71c08",
-      "file": "fund-redemption-runs-forced-selling-explained-c71c08.md",
-      "title": "كيف تضغط سحوبات المستثمرين من الصناديق على أسهم بورصة إسطنبول؟",
-      "image": "https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=1280",
-      "fileTitle": null,
-      "verdict": "WRONG_SUBJECT",
+      "slug": "oil-rises-trump-denies-iran-sanctions-relief-60403e",
+      "file": "oil-rises-trump-denies-iran-sanctions-relief-60403e.md",
+      "title": "برنت يرتفع إلى 103.3 دولار بعد نفي ترامب تخفيف العقوبات على إيران",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Crude_Oil_Tanker_STI_Symphony_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_01.jpg/1280px-Crude_Oil_Tanker_STI_Symphony_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_01.jpg",
+      "fileTitle": "Crude Oil Tanker STI Symphony at BP Oil Refinery Jetty, Kwinana, October 2023 01.jpg",
+      "verdict": "GENERIC_OK",
       "people": "none",
-      "reason": "The price board lists Arabic company names such as Abu Dhabi firms, placing it on a UAE exchange rather than Borsa Istanbul, whose boards are in Turkish Latin script.",
+      "reason": "A neutral crude tanker moored at a refinery jetty reads at a glance as the oil sector, has no legible lettering, flag or landmark, and carries a caption that names no place, so it works as an illustrative image for a Brent price story.",
       "model": "claude-cli/claude-opus-5-5"
     }
   ]

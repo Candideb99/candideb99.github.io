@@ -18,15 +18,7 @@ regions:
 readingMinutes: 1
 chart: null
 table: null
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/International_Monetary_Fund_headquarters.jpg/1280px-International_Monetary_Fund_headquarters.jpg
-  width: 1280
-  height: 1205
-  alt: مقر صندوق النقد الدولي في واشنطن
-  credit: APK · CC BY 4.0 · ويكيميديا كومنز
-  license: CC BY 4.0
-  licenseUrl: https://creativecommons.org/licenses/by/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AInternational_Monetary_Fund_headquarters.jpg
+image: null
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -44,7 +36,7 @@ models:
   editor: codex-cli/gpt-6.1-sol
   writer: codex-cli/gpt-6.1-sol
   critic: codex-cli/gpt-6.1-sol
-  vision: codex-cli/gpt-6.1-sol
+  vision: claude-cli/claude-opus-5-5
   desk: codex-cli/gpt-6.1-sol
   lessons: v29
 quality:

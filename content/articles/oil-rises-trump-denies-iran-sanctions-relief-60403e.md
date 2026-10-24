@@ -33,14 +33,14 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://images.pexels.com/photos/39012056/pexels-photo-39012056.jpeg?auto=compress&cs=tinysrgb&w=1280
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Crude_Oil_Tanker_STI_Symphony_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_01.jpg/1280px-Crude_Oil_Tanker_STI_Symphony_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_01.jpg
   width: 1280
-  height: 853
-  alt: ناقلة نفط راسية في أحد الموانئ
-  credit: Oleksiy Yeshtokyn,🌻🇺🇦🌻 · بيكسلز
-  license: Pexels License
-  licenseUrl: https://www.pexels.com/license/
-  pageUrl: https://www.pexels.com/photo/large-red-oil-tanker-docked-at-harbor-39012056/
+  height: 960
+  alt: ناقلة نفط خام راسية عند رصيف مصفاة (صورة تعبيرية)
+  credit: Calistemon · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ACrude_Oil_Tanker_STI_Symphony_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_01.jpg
 sources:
   - name: أرابيان غلف بزنس إنسايت
     nameEn: AGBI (Arabian Gulf Business Insight)
@@ -70,7 +70,7 @@ models:
   editor: claude-cli
   writer: claude-cli → claude-cli
   critic: claude-cli
-  vision: claude-cli
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli
   lessons: v26
 quality:

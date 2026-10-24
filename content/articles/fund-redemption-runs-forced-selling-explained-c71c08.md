@@ -27,15 +27,7 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image:
-  url: https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=1280
-  width: 1280
-  height: 701
-  alt: شاشة أسعار الأسهم في إحدى البورصات
-  credit: Pixabay · بيكسلز
-  license: Pexels License
-  licenseUrl: https://www.pexels.com/license/
-  pageUrl: https://www.pexels.com/photo/numbers-on-monitor-534216/
+image: null
 sources:
   - name: خازندار
     nameEn: Khazendar
