@@ -1,0 +1,275 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-24T23:20:40.293Z",
+  "durationSec": 703,
+  "published": 1,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "مطار الرياض يستأنف الرحلات الأحد بصالتين بعد أسبوعين من التوقف",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://www.bbc.com/arabic/articles/cw2406dvvqgdo",
+        "https://www.bloomberg.com/news/articles/2026-10-24/saudi-arabia-suggests-riyadh-airport-may-reopen-on-sunday",
+        "https://www.arabnews.com/saudi-arabia/riyadhs-king-khalid-international-airport-to-reopen-terminals-on-sunday-3008107",
+        "https://www.skynewsarabia.com/middle-east/1900416-%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6-%D9%85%D8%B7%D8%A7%D8%B1-%D8%A7%D9%84%D9%85%D9%84%D9%83-%D8%AE%D8%A7%D9%84%D8%AF-%D9%8A%D8%B9%D9%8A%D8%AF-%D8%AA%D9%88%D8%B2%D9%8A%D8%B9-%D8%A7%D9%84%D8%B1%D8%AD%D9%84%D8%A7%D8%AA-%D8%A8%D8%A7%D9%84%D8%B5%D8%A7%D9%84%D8%A7%D8%AA"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة والفقرة الأولى توضح ما تغيّر: عودة صالتين اعتباراً من الأحد. وتوضح حدوده: الصالة 2 للرحلات الدولية التي تشغلها الناقلات الوطنية فقط.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يغيب السياق الذي يفسر أثر الحدث على السفر: تحذير الحوثيين لشركات الطيران والعاملين والمسافرين (المصدر 1)، ودعوة المطار إلى تأكيد الحجوزات (المصدران 3 و4). أما صندوق «لماذا يهمّ» فمقدماته مسندة (المطار الرئيسي، التهديد المتجدد، تحديث الإرشادات الأمريكية)، واستنتاجه محدود ومعقول: انتظام الحركة مشروط بمنع تكرار التعليق. لكنه يجعل الدفاعات العامل الوحيد، ويتجاهل قرار شركات الطيران والمسافرين الذي يستهدفه التحذير الحوثي مباشرة.",
+              "repair": "تضاف الوقائع المسندة المذكورة إلى المتن. ويُصاغ الصندوق على قيد واحد واضح، مثلاً: «تعود الحركة الداخلية والدولية للناقلات الوطنية، لكن انتظامها يبقى مشروطاً بعدم تكرار التعليق في ظل تهديد حوثي موجّه صراحة إلى شركات الطيران والمسافرين»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "تسير الفقرات وفق تسلسل منطقي: الإعلان، فالإغلاق، فالتهديد. لكن الخاتمة «هكذا يبدأ المطار الأحد…» تلخيص يكرره الصندوق، وفقرة «يكتسب استئناف التشغيل وزناً خاصاً…» تعليق مسند إلى بلومبرغ لا يضيف واقعة.",
+              "repair": "تُحذف الخاتمة التلخيصية، وتُدمج معلومة «المطار الرئيسي» في فقرة التوزيع أو الإغلاق، ويُختم التقرير بواقعة مسندة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «إرشادات السفر الأجنبية» تعمّم إجراءً أمريكياً وحده. و«ثم… في وقت لاحق» توحي بتسلسل لم يذكره المصدر. ولا يُذكر أن تصريح «هدفاً عسكرياً» صدر في وقت مبكر من الأحد.",
+              "repair": "«حدّثت الولايات المتحدة إرشادات السفر»، و«وقال التحالف في إعلان لاحق»، و«قال المتحدث باسم الجماعة في وقت مبكر من الأحد»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة والسطر التمهيدي تبيّن معاً ما تغيّر: عودة التشغيل عبر صالتين، الأولى للرحلات الداخلية والثانية للرحلات الدولية التي تشغلها الناقلات الوطنية. وتبيّن ما بقي قائماً: تحذير الحوثيين لشركات الطيران والمسافرين. وقيد الناقلات الوطنية محفوظ في السطر التمهيدي.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "سياق الإغلاق (هجوم 10 أكتوبر وقرارا هيئة الطيران المدني في 10 و12 أكتوبر) حاضر ومسند. لكن تصاعد الهجمات على السعودية منذ مطلع أكتوبر (المصدر 1) غائب. أما صندوق «لماذا يهمّ» فمقدماته مسندة، واستنتاجه محدود: انتظام الحركة مشروط بعدم تكرار التعليق في ظل تهديد موجّه إلى شركات الطيران والمسافرين.",
+              "repair": "تضاف خلفية التصعيد منذ مطلع أكتوبر مسندة إلى المصدر 1 في فقرة الإغلاق، ويُبقى الصندوق كما هو."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يسير التقرير بتسلسل واضح: الإعلان وتفاصيله، ثم الإغلاق، ثم التهديد وردود الفعل، ويُختم بواقعة مسندة. غير أن فقرة «وقالت «بلومبرغ» إن رحلات شركات الطيران السعودية…» فقرة مستقلة تعيد مضمون الفقرة الأولى بإسناد خاطئ.",
+              "repair": "تُحذف الفقرة، وتُدمج معلومة «المطار الرئيسي» و«سلسلة هجمات» في فقرة الإغلاق مع إسنادها إلى بلومبرغ."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "التواريخ والأرقام (10 و12 و25 أكتوبر، و13 قتيلاً، وأكثر من 300 مصاب، وسبع عمليات) مطابقة للمصادر. لكن نسبة عودة رحلات «شركات الطيران السعودية الداخلية والخارجية» إلى بلومبرغ غير صحيحة، وتحديث إرشادات السفر فقد نطاقه (السعودية والإمارات).",
+              "repair": "تصحيح إسناد بلومبرغ، وذكر البلدين في جملة تحديث الإرشادات."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 6,
+      "mendIssues": [
+        "خطأ في الإسناد: عبارة «وقالت «بلومبرغ» إن رحلات شركات الطيران السعودية، الداخلية والخارجية، تعود بذلك إلى المطار الرئيسي في المملكة» تنسب إلى بلومبرغ ما لم تقله. فالمصدر 2 يقول فقط إن المطار الرئيسي في السعودية كان يستعد لإعادة الفتح «as early as Sunday» بعد تعطل عملياته جراء سلسلة هجمات حوثية، ولا يذكر شركات الطيران السعودية ولا الرحلات الداخلية والخارجية. توزيع الرحلات على الناقلات الوطنية جاء من بيان المطار (المصدران 3 و4). الإصلاح: تُحذف الفقرة المستقلة، وتُضم معلومة بلومبرغ إلى فقرة الإغلاق: «وهو المطار الرئيسي في المملكة، وقد تعطلت عملياته جراء سلسلة هجمات حوثية، بحسب بلومبرغ». هذا هو الإصلاح الذي طُلب في الملاحظة 4 السابقة ولم يُطبّق كما ورد.",
+        "ينقص التقرير (الخلفية): يذكر المصدر 1 أن هذه التطورات «تأتي في ظل تصاعد هجمات الحوثيين المدعومين من إيران على السعودية منذ مطلع أكتوبر/تشرين الأول». هذه الخلفية تفسر لماذا يبقى التهديد قائماً عند إعادة الفتح، والمسودة لا تذكرها إلا بعبارة «سلسلة هجمات» المنسوبة إلى بلومبرغ. الإصلاح: تضاف جملة مسندة إلى فقرة الإغلاق، مثلاً: «وجاء إغلاق المطار في سياق تصاعد هجمات الحوثيين المدعومين من إيران على السعودية منذ مطلع أكتوبر».",
+        "دقة: «حدّثت الولايات المتحدة إرشادات السفر» تُسقط نطاق الإجراء. فالمصدر 1 يذكر أن البعثة الأمريكية لدى الإمارات والسفارة في الرياض حدّثتا «إرشادات السفر الأمريكية الخاصة بالبلدين». الإصلاح: «وحدّثت الولايات المتحدة إرشادات السفر إلى السعودية والإمارات؛ إذ أعلنت…».",
+        "سياق الإغلاق (هجوم 10 أكتوبر وقرارا هيئة الطيران المدني في 10 و12 أكتوبر) حاضر ومسند. لكن تصاعد الهجمات على السعودية منذ مطلع أكتوبر (المصدر 1) غائب. أما صندوق «لماذا يهمّ» فمقدماته مسندة، واستنتاجه محدود: انتظام الحركة مشروط بعدم تكرار التعليق في ظل تهديد موجّه إلى شركات الطيران والمسافرين. — تضاف خلفية التصعيد منذ مطلع أكتوبر مسندة إلى المصدر 1 في فقرة الإغلاق، ويُبقى الصندوق كما هو.",
+        "يسير التقرير بتسلسل واضح: الإعلان وتفاصيله، ثم الإغلاق، ثم التهديد وردود الفعل، ويُختم بواقعة مسندة. غير أن فقرة «وقالت «بلومبرغ» إن رحلات شركات الطيران السعودية…» فقرة مستقلة تعيد مضمون الفقرة الأولى بإسناد خاطئ. — تُحذف الفقرة، وتُدمج معلومة «المطار الرئيسي» و«سلسلة هجمات» في فقرة الإغلاق مع إسنادها إلى بلومبرغ.",
+        "التواريخ والأرقام (10 و12 و25 أكتوبر، و13 قتيلاً، وأكثر من 300 مصاب، وسبع عمليات) مطابقة للمصادر. لكن نسبة عودة رحلات «شركات الطيران السعودية الداخلية والخارجية» إلى بلومبرغ غير صحيحة، وتحديث إرشادات السفر فقد نطاقه (السعودية والإمارات). — تصحيح إسناد بلومبرغ، وذكر البلدين في جملة تحديث الإرشادات."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "بلومبرغ وصفت مطار الملك خالد بأنه المطار الرئيسي في السعودية وقالت إن عملياته تعطلت بسلسلة هجمات حوثية",
+          "source": 2
+        },
+        {
+          "fact": "الصالة 1 للرحلات الداخلية والصالة 2 للرحلات الدولية التي تشغلها الناقلات الوطنية",
+          "source": 3
+        },
+        {
+          "fact": "الحوثيون جددوا تحذيرهم لشركات الطيران والعاملين والمسافرين من استخدام المطار ووصفوه بأنه لا يزال هدفاً عسكرياً",
+          "source": 1
+        },
+        {
+          "fact": "المطار أُغلق بعد هجوم صاروخي حوثي في 10 أكتوبر قتل 13 شخصاً وأصاب أكثر من 300",
+          "source": 3
+        }
+      ],
+      "slug": "riyadh-airport-resumes-flights-two-terminals-d29856",
+      "title": "مطار الرياض يستأنف الرحلات الأحد عبر صالتين بعد أسبوعين من التوقف",
+      "score": 8,
+      "image": "photo"
+    }
+  ],
+  "llm": {
+    "calls": 27,
+    "failures": 2,
+    "promptTokens": 399719,
+    "completionTokens": 72162,
+    "cacheReadTokens": 98271,
+    "costUsd": 3.8741,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 27
+    }
+  },
+  "log": [
+    "[23:30:47] image: dropped \"Intricate modern ceiling design at Mumbai Airport showcasing architect\" — names too little of terminal",
+    "[23:30:48] commons \"King Khalid International Airport Saudia\": 0 usable of 2",
+    "[23:30:48] pexels \"King Khalid International Airport Saudia\": 8 usable",
+    "[23:30:50] openverse \"King Khalid International Airport Saudia\": 0 usable of 0",
+    "[23:30:50] image: dropped \"Saudia Airlines aircraft with landing gear extended in flight over Ind\" — names too little of king, khalid, international, airport, saudia",
+    "[23:30:50] image: dropped \"A Saudia Cargo plane on a runway at twilight with a serene sky backgro\" — names too little of king, khalid, international, airport, saudia",
+    "[23:30:50] image: dropped \"Saudia Airlines aircraft safely lands on a cloudy day in Geneva, showc\" — names too little of king, khalid, international, airport, saudia",
+    "[23:30:50] image: dropped \"Low angle view of a commercial aircraft flying with landing gear down \" — names too little of king, khalid, international, airport, saudia",
+    "[23:30:50] image: dropped \"Saudia Airbus A330 captured in mid-air with landing gear deployed agai\" — names too little of king, khalid, international, airport, saudia",
+    "[23:30:50] image: dropped \"A Saudia Airlines Boeing 777 aircraft flying against a cloudy sky back\" — names too little of king, khalid, international, airport, saudia",
+    "[23:30:50] image: dropped \"Saudia Airlines Airbus A330 flying with clear sky background.\" — names too little of king, khalid, international, airport, saudia",
+    "[23:30:50] image: dropped \"Saudia Airlines Boeing 787 aircraft captured during flight with clear \" — names too little of king, khalid, international, airport, saudia",
+    "[23:30:50] image: dropped \"Explore the striking modern architecture of Istanbul Airport's termina\" — taken in Turkey, which the story does not name",
+    "[23:30:50] image: 2 file(s) dropped for naming none of King Khalid International Airport, Riyadh airport",
+    "[23:30:55] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3585",
+    "[23:30:55] image: vision rejected all candidates (Candidates 1-2 show a Cathay Pacific plane in flight photographed over Hong Kong, so they were taken in the wrong country, and they are grey, amateur sky shots. Candidates 3-6 show Brazil's President Lula and Saudi officials during a 2023 state visit, people this story is not about. None shows Riyadh airport's terminals or flight operations.)",
+    "[23:31:03] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7747",
+    "[23:31:03] image: vision rejected all candidates (Photos 1-3 show Lula and Trump, who have no part in this story. Photo 4 is a dated, amateur interior snapshot. Photo 5 shows Terminal 1's gates, but it is a casual shot through a plane window with the frame edge in view, below publication standard. Photo 6 is a hazy aerial view. None fits, so the fallback should search further.)",
+    "[23:31:10] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4263",
+    "[23:31:10] image: the source's photograph (Arab News) shows A woman in an abaya pulls a suitcase through a departures hall with check-in counters and queue barriers at King Khalid ; searching King Khalid International Airport terminal | Riyadh airport departures hall | passengers check-in counters Riyadh airport | King Khalid Airport passengers luggage",
+    "[23:31:10] image: tier 2, like the sources' own photograph: King Khalid International Airport terminal | Riyadh airport departures hall | passengers check-in counters Riyadh airport | King Khalid Airport passengers luggage",
+    "[23:31:10] commons \"King Khalid International Airport terminal\": 8 usable of 20",
+    "[23:31:10] image: dropped \"KKIA terminal construction.jpg\" — dated 1970, an archival picture",
+    "[23:31:10] image: dropped \"Secretary Kerry Poses for a Photo With Saudi Arabian Officials and Oth\" — shows kerry, john, sabah, muhammad, not the story's people",
+    "[23:31:10] image: dropped \"Secretary Kerry Poses for a Photo With Saudi Arabian Officials and Oth\" — shows kerry, john, sabah, muhammad, not the story's people",
+    "[23:31:10] openverse \"King Khalid International Airport terminal\": 0 usable of 0",
+    "[23:31:11] pexels \"King Khalid International Airport terminal\": 8 usable",
+    "[23:31:11] image: dropped \"Modern airport seating area with green chairs and expansive windows of\" — names too little of terminal",
+    "[23:31:11] image: dropped \"Airplane seen through a window, parked on the airport runway, capturin\" — names too little of terminal",
+    "[23:31:11] image: dropped \"Black and white image of travelers silhouetted against large airport w\" — names too little of terminal",
+    "[23:31:11] image: dropped \"Intricate modern ceiling design at Mumbai Airport showcasing architect\" — names too little of terminal",
+    "[23:31:11] commons \"Riyadh airport departures hall\": 0 usable of 0",
+    "[23:31:12] commons \"Riyadh airport\": 11 usable of 20",
+    "[23:31:12] image: dropped \"Secretary Kerry and Senator McCain Arrive at King Khaled International\" — shows kerry, mccain, john, john, not the story's people",
+    "[23:31:12] image: dropped \"Loreleyblick Maria Ruh 2020.jpg\" — names too little of airport",
+    "[23:31:12] pexels \"Riyadh airport departures hall\": 8 usable",
+    "[23:31:14] openverse \"Riyadh airport departures hall\": 0 usable of 0",
+    "[23:31:14] image: dropped \"A calm and empty airport terminal in Singapore with a reflective glass\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[23:31:14] commons \"passengers check-in counters Riyadh airport\": 0 usable of 0",
+    "[23:31:15] commons \"passengers check-in\": 16 usable of 20",
+    "[23:31:15] image: dropped \"Ground satff check the passanger.jpg\" — names too little of passengers, check-in",
+    "[23:31:15] image: dropped \"Taipei Main Station Taoyuan Metro Common Use Self Service Check in 202\" — names too little of passengers, check-in",
+    "[23:31:15] image: dropped \"Newhaven Ferry Port passenger check-in building (north side) 2025-03-0\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[23:31:16] commons \"King Khalid Airport passengers luggage\": 0 usable of 0",
+    "[23:31:16] commons \"King Khalid\": 1 usable of 20",
+    "[23:31:16] image: dropped \"Sadat and Khalid.jpg\" — dated 1975, an archival picture",
+    "[23:31:17] pexels \"King Khalid Airport passengers luggage\": 8 usable",
+    "[23:31:18] openverse \"King Khalid Airport passengers luggage\": 0 usable of 0",
+    "[23:31:18] image: dropped \"Travelers in a bustling airport terminal with carry-on luggage waiting\" — names too little of king, khalid",
+    "[23:31:18] image: dropped \"Travelers undergo security screening at an airport terminal.\" — names too little of king, khalid",
+    "[23:31:18] image: dropped \"Silhouettes of travelers with luggage at a sunlit modern airport termi\" — names too little of king, khalid",
+    "[23:31:18] image: dropped \"Passengers checking the departure board at Hong Kong International Air\" — names too little of king, khalid",
+    "[23:31:18] image: dropped \"Dynamic scene of travelers at Doha Hamad International Airport with fe\" — names too little of king, khalid",
+    "[23:31:18] image: dropped \"Silhouette of an airplane and waiting passengers inside an airport ter\" — names too little of king, khalid",
+    "[23:31:18] image: dropped \"Passengers walking and seated in a bustling Hong Kong airport terminal\" — names too little of king, khalid",
+    "[23:31:18] image: dropped \"Explore the striking modern architecture of Istanbul Airport's termina\" — taken in Turkey, which the story does not name",
+    "[23:31:18] image: dropped \"Passengers walk through Istanbul Airport's departure area, surrounded \" — taken in Turkey, which the story does not name",
+    "[23:31:18] image: dropped \"Travelers walking through the spacious modern terminal at Istanbul Air\" — taken in Turkey, which the story does not name",
+    "[23:31:18] image: dropped \"Passengers' body temperature check in KBP (6).jpg\" — taken in Ukraine, which the story does not name",
+    "[23:31:18] image: dropped \"Passengers' body temperature check in KBP (1).jpg\" — taken in Ukraine, which the story does not name",
+    "[23:31:18] image: dropped \"Passengers' body temperature check in KBP (3).jpg\" — taken in Ukraine, which the story does not name",
+    "[23:31:18] image: 5 likeness(es) set aside for the country's own photographs",
+    "[23:31:21] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3081",
+    "[23:31:21] image: vision rejected all candidates (Candidates 1-3 show Brazil's President Lula at the royal terminal, and 4 shows Donald and Melania Trump. None of these people are in the story. Candidate 5 is an amateur 2012 snapshot of an empty interior with no travellers or departures-hall activity, so it does not match the sources' scene. None fits.)",
+    "[23:31:21] image: tier 3, the writer's own subjects: King Khalid International Airport | airport passenger terminal | Saudia aircraft",
+    "[23:31:22] commons \"King Khalid International Airport 2026\": 12 usable of 12",
+    "[23:31:22] commons \"King Khalid International Airport\": 4 usable of 12",
+    "[23:31:22] image: dropped \"President Trump's Trip Abroad (33942182734).jpg\" — shows trump's, donald, not the story's people",
+    "[23:31:22] image: dropped \"KKIA terminal construction.jpg\" — dated 1970, an archival picture",
+    "[23:31:23] commons \"airport passenger terminal 2026\": 9 usable of 12",
+    "[23:31:23] commons \"airport passenger terminal\": 5 usable of 12",
+    "[23:31:23] image: dropped \"199 - Buenos Aires - Aéroport international Ezeiza - Janvier 2010.jpg\" — names too little of airport, passenger, terminal",
+    "[23:31:24] commons \"Saudia aircraft 2026\": 12 usable of 12",
+    "[23:31:25] commons \"Saudia aircraft\": 8 usable of 12",
+    "[23:31:25] image: dropped \"Logan Airport Framingham Remote Terminal August 2026 1.jpg\" — taken in United States, which the story does not name",
+    "[23:31:25] image: dropped \"Logan Airport Framingham Remote Terminal and parking lot August 2026.j\" — taken in United States, which the story does not name",
+    "[23:31:25] image: dropped \"Saudia Boeing 787 HZ-AR27 Kuala Lumpur 2026 (01).jpg\" — taken in Malaysia, which the story does not name",
+    "[23:31:25] image: dropped \"Saudia Boeing 777-300ER HZ-AK37 MD2.jpg\" — taken in United States, which the story does not name",
+    "[23:31:25] image: dropped \"Saudia Boeing 777-300ER HZ-AK38 MD1.jpg\" — taken in United States, which the story does not name",
+    "[23:31:32] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6668",
+    "[23:31:32] image: \"Saudi Arabian Airlines A330-343, HZ-AQ22, MSN 1770 (03 2017)\" names the story's topic without saying its point (This is the national carrier's aircraft at King Khalid International Airport in Riyadh, being serviced at its stand with ground vehicles and stairs. That makes ); checked now and kept in reserve while the desk looks further",
+    "[23:31:39] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6656",
+    "[23:31:39] image: second check (claude-cli/claude-opus-5-5) AMATEUR — refused \"Saudi Arabian Airlines A330-343, HZ-AQ22, MSN 1770 (03 2017)\": This is the right airport, but it is a passenger's casual window-side snapshot in washed-out, low-contrast light, with h",
+    "[23:31:39] image: tier 4, the story's point and its subject: Saudia plane King Khalid Airport | passengers Riyadh airport terminal | Patriot missile battery Saudi Arabia | King Khalid International Airport | Saudia airliner Riyadh | airport passenger terminal (home: Saudi Arabia, Saudi, Riyadh, Jeddah, KSA)",
+    "[23:31:39] commons \"Saudia plane King Khalid Airport\": 0 usable of 0",
+    "[23:31:40] commons \"Saudia plane\": 10 usable of 11",
+    "[23:31:40] image: dropped \"HZ-AIH Heathrow 8-3-1986.jpg\" — dated 1986, an archival picture",
+    "[23:31:40] pexels \"Saudia plane King Khalid Airport\": 8 usable",
+    "[23:31:42] openverse \"Saudia plane King Khalid Airport\": 0 usable of 0",
+    "[23:31:42] image: dropped \"Low angle view of a commercial aircraft flying with landing gear down \" — names too little of plane",
+    "[23:31:43] commons \"passengers Riyadh airport terminal\": 0 usable of 0",
+    "[23:31:44] commons \"passengers Riyadh\": 6 usable of 8",
+    "[23:31:44] image: dropped \"Lofoten Islands; Day Four of the Hurtigruten Coastal Voyage North (107\" — names too little of passengers",
+    "[23:31:44] image: dropped \"British C-130, Prince Sultan Air Base, Saudi Arabia, on Aug. 16, 1996.\" — dated 1996, an archival picture",
+    "[23:31:44] pexels \"passengers Riyadh airport terminal\": 8 usable",
+    "[23:31:45] openverse \"passengers Riyadh airport terminal\": 0 usable of 0",
+    "[23:31:45] image: dropped \"A white minivan parked at a modern airport terminal drop-off zone, ide\" — names too little of passengers",
+    "[23:31:45] image: dropped \"Travelers in a bustling airport terminal with carry-on luggage waiting\" — names too little of passengers",
+    "[23:31:45] image: dropped \"Busy airport terminal featuring modern architecture and vibrant lighti\" — names too little of passengers",
+    "[23:31:45] image: dropped \"A bustling modern airport terminal with geometric ceiling design and r\" — names too little of passengers",
+    "[23:31:45] image: dropped \"Dynamic scene of travelers at Doha Hamad International Airport with fe\" — names too little of passengers",
+    "[23:31:45] image: dropped \"A spacious and modern interior view of Mactan-Cebu Airport terminal wi\" — names too little of passengers",
+    "[23:31:45] image: dropped \"Silhouettes of travelers with luggage at a sunlit modern airport termi\" — names too little of passengers",
+    "[23:31:46] commons \"Patriot missile battery Saudi Arabia\": 0 usable of 0",
+    "[23:31:46] commons \"Patriot missile\": 14 usable of 24",
+    "[23:31:46] image: dropped \"Flickr - Government Press Office (GPO) - Patriot missiles being launch\" — dated 1991, an archival picture",
+    "[23:31:46] image: dropped \"MIM-104 Patriot LS Fassberg-2019.JPG\" — a warship or weapon, and the story is not about the military",
+    "[23:31:46] image: dropped \"MIM-104 Patriot TP Rostock 2016.JPG\" — a warship or weapon, and the story is not about the military",
+    "[23:31:46] image: dropped \"MIM-104 Patriot LS front Rostock 2025.JPG\" — a warship or weapon, and the story is not about the military",
+    "[23:31:46] image: dropped \"MIM-104 Patriot LS Access Panel Pwr Sply.jpg\" — a warship or weapon, and the story is not about the military",
+    "[23:31:46] image: dropped \"Nederlandse MIM-104 Patriot Diyarbakır.jpg\" — dated 1991, an archival picture",
+    "[23:31:46] image: dropped \"MIM-104 Patriot LS prepared to move Rostock 2016.JPG\" — a warship or weapon, and the story is not about the military",
+    "[23:31:46] image: dropped \"Blue Light Mile Dresden City Festival 2024 - MIM-104 PATRIOT anti-airc\" — a warship or weapon, and the story is not about the military",
+    "[23:31:46] image: dropped \"Blue Light Mile Dresden City Festival 2024 - MIM-104 PATRIOT anti-airc\" — a warship or weapon, and the story is not about the military",
+    "[23:31:46] pexels \"Patriot missile battery Saudi Arabia\": 8 usable",
+    "[23:31:48] openverse \"Patriot missile battery Saudi Arabia\": 0 usable of 0",
+    "[23:31:48] image: dropped \"Saudi military personnel participate in a ceremonial parade outdoors.\" — names too little of missile",
+    "[23:31:48] image: dropped \"Majestic Saudi Arabian flag illuminated against the night sky, surroun\" — names too little of missile",
+    "[23:31:48] image: dropped \"Saudi Arabian flag waves against blue sky amid traditional architectur\" — names too little of missile",
+    "[23:31:48] image: dropped \"A large crowd gathers outdoors under sunny conditions in Saudi Arabia.\" — names too little of missile",
+    "[23:31:48] image: dropped \"Aerial cityscape view featuring a mosque and mountains in Saudi Arabia\" — names too little of missile",
+    "[23:31:48] image: dropped \"Stunning rock formation in a desert landscape showcasing natural erosi\" — names too little of missile",
+    "[23:31:48] image: dropped \"Cement processing plant in the Saudi Arabian desert. Industrial archit\" — names too little of missile",
+    "[23:31:48] image: dropped \"Road signage leading to Al Rahmah Mountain, Mecca, with vehicles and p\" — names too little of missile",
+    "[23:31:48] commons \"King Khalid International Airport\": 12 usable of 24",
+    "[23:31:48] image: dropped \"KKIA terminal construction.jpg\" — dated 1970, an archival picture",
+    "[23:31:48] image: dropped \"Loreleyblick Maria Ruh 2020.jpg\" — names too little of king, khalid, international, airport",
+    "[23:31:48] image: dropped \"Mohammad Mosaddak Ali met with Saud Al Faisal bin Abdulaziz Al Saud, M\" — shows affairs, affairs, not the story's people",
+    "[23:31:48] image: dropped \"Defense.gov News Photo 110406-F-DQ383-006 - Secretary of Defense Rober\" — shows robert, khalid, robert, khalid, not the story's people",
+    "[23:31:48] commons \"Saudia airliner Riyadh\": 1 usable of 1",
+    "[23:31:48] image: dropped \"Saudia - Saudi Arabian Airlines Fokker F-28-3000 Fellowship OY-BRM.jpg\" — dated 1985, an archival picture",
+    "[23:31:48] pexels \"Saudia airliner Riyadh\": 8 usable",
+    "[23:31:56] openverse \"Saudia airliner Riyadh\": 1 usable of 1",
+    "[23:31:56] image: dropped \"The French are swimming (flying) against the stream:\" — names too little of airliner",
+    "[23:31:56] commons \"airport passenger terminal\": 10 usable of 24",
+    "[23:31:56] image: dropped \"199 - Buenos Aires - Aéroport international Ezeiza - Janvier 2010.jpg\" — names too little of airport, passenger, terminal",
+    "[23:31:56] image: dropped \"Jeppesen Terminal - Concourse A passenger bridge & Airport Office Buil\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[23:31:56] image: dropped \"Saudia Airlines aircraft safely lands on a cloudy day in Geneva, showc\" — taken in Switzerland, which the story does not name",
+    "[23:31:56] image: dropped \"210716-M-VR873-1132 - MIM-104 Patriot at exercise Talisman Sabre 21 (I\" — taken in Australia, which the story does not name",
+    "[23:31:56] image: dropped \"210716-M-VR873-1135 - MIM-104 Patriot at exercise Talisman Sabre 21 (I\" — taken in Australia, which the story does not name",
+    "[23:32:05] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7064",
+    "[23:32:05] image: \"Saudia plane.jpg\" names the story's topic without saying its point (The only candidate showing a Saudi passenger airliner at a Saudi airport gate, ready for boarding, so it fits a story about passenger flights resuming. It was t); checked now and kept in reserve while the desk looks further",
+    "[23:32:08] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3597",
+    "[23:32:08] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Saudia plane.jpg\": The file, description and caption place the Saudia jet at King Abdulaziz International Airport in Jeddah, a different ci",
+    "[23:32:14] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5794",
+    "[23:32:14] image: \"Saudia Airlines Boeing 787 aircraft captured during flight w\" names the story's topic without saying its point (A Saudia passenger airliner, a sharp professional frame of the national carrier whose domestic and international flights resume. Still, it shows the sector, not); checked now and kept in reserve while the desk looks further",
+    "[23:32:22] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=8081",
+    "[23:32:22] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Saudia Airlines Boeing 787 aircraft captured during flight w\": A sharp, professional shot of a Saudia Boeing 787, a Saudi national carrier's airliner, illustrates resumed flights at R",
+    "[23:32:22] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"Saudia Airlines Boeing 787 aircraft captured during flight w\"",
+    "[23:32:22] published \"مطار الرياض يستأنف الرحلات الأحد عبر صالتين بعد أسبوعين من التوقف\" -> riyadh-airport-resumes-flights-two-terminals-d29856"
+  ]
+}

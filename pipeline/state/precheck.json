@@ -6034,6 +6034,34 @@
           "noted": []
         }
       ]
+    },
+    "riyadh-airport-resumes-flights-two-terminals-d29856": {
+      "at": "2026-10-24T23:32:22.846Z",
+      "title": "مطار الرياض يستأنف الرحلات الأحد عبر صالتين بعد أسبوعين من التوقف",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 22,
+            "checked": 22,
+            "supported": 18,
+            "weak": 0,
+            "noEvidence": 4,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
