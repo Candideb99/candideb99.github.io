@@ -28,13 +28,14 @@ readingMinutes: 3
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/2/24/Al_Basrah_Oil_Terminal_essential_to_Iraq%27s_economy_DVIDS202701.jpg
+  url: https://images.pexels.com/photos/36563588/pexels-photo-36563588.jpeg?auto=compress&cs=tinysrgb&w=1280
   width: 1280
-  height: 858
-  alt: ناقلة نفط راسية عند محطة بحرية لتصدير النفط
-  credit: Spc. Darryl Montgomery · Public domain · ويكيميديا كومنز
-  license: Public domain
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AAl_Basrah_Oil_Terminal_essential_to_Iraq's_economy_DVIDS202701.jpg
+  height: 960
+  alt: ناقلة نفط خام في عرض البحر
+  credit: Punit Singh · بيكسلز
+  license: Pexels License
+  licenseUrl: https://www.pexels.com/license/
+  pageUrl: https://www.pexels.com/photo/oil-tanker-at-sea-during-sunset-36563588/
 sources:
   - name: خازندار
     nameEn: Khazendar
@@ -58,7 +59,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: claude-cli
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
 quality:
   score: 8

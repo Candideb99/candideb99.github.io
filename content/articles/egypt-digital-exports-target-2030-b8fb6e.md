@@ -31,15 +31,7 @@ regions:
 readingMinutes: 3
 chart: null
 table: null
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Telecom_Egypt_Smart_Village_building_4.jpg/1280px-Telecom_Egypt_Smart_Village_building_4.jpg
-  width: 1280
-  height: 582
-  alt: مبنى إداري لشركة اتصالات في مصر
-  credit: Mohamed Ouda · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ATelecom_Egypt_Smart_Village_building_4.jpg
+image: null
 sources:
   - name: مصراوي
     nameEn: Masrawy

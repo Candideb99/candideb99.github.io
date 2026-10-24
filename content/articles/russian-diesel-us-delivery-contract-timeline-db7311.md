@@ -25,14 +25,14 @@ readingMinutes: 1
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/ARARAT_%28Chemical_and_oil_tanker%29%2C_Arhangelsk.jpg/1280px-ARARAT_%28Chemical_and_oil_tanker%29%2C_Arhangelsk.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Alexander_Novak_on_MGIMO_18_March_2026_02.jpg/1280px-Alexander_Novak_on_MGIMO_18_March_2026_02.jpg
   width: 1280
   height: 720
-  alt: ناقلة النفط والمواد الكيميائية «أرارات» في أرخانغيلسك الروسية
-  credit: Georg Pik · CC0 · ويكيميديا كومنز
-  license: CC0
-  licenseUrl: http://creativecommons.org/publicdomain/zero/1.0/deed.en
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AARARAT_(Chemical_and_oil_tanker)%2C_Arhangelsk.jpg
+  alt: نائب رئيس الوزراء الروسي ألكسندر نوفاك خلال يوم معهد السياسة الطاقوية والدبلوماسية في جامعة موسكو للعلاقات الدولية عام 2026
+  credit: government.ru · CC BY 4.0 · ويكيميديا كومنز
+  license: CC BY 4.0
+  licenseUrl: https://creativecommons.org/licenses/by/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AAlexander_Novak_on_MGIMO_18_March_2026_02.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -50,7 +50,7 @@ models:
   editor: codex-cli/gpt-6.1-sol
   writer: codex-cli/gpt-6.1-sol → codex-cli/gpt-6.1-sol
   critic: codex-cli/gpt-6.1-sol
-  vision: codex-cli/gpt-6.1-sol
+  vision: claude-cli/claude-opus-5-5
   desk: codex-cli/gpt-6.1-sol
   lessons: v30
 quality:

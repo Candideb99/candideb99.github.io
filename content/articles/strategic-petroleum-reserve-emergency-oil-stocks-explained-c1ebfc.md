@@ -27,14 +27,14 @@ readingMinutes: 3
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Advantage_Smooth%2C_Crude_Oil_Tanker%2C_IMO_9999620%2C_Calandkanaal_pic2.jpg/1280px-Advantage_Smooth%2C_Crude_Oil_Tanker%2C_IMO_9999620%2C_Calandkanaal_pic2.jpg
-  width: 1280
-  height: 960
-  alt: ناقلة نفط خام تبحر في قناة ملاحية
-  credit: Alfvanbeem · CC0 · ويكيميديا كومنز
-  license: CC0
-  licenseUrl: http://creativecommons.org/publicdomain/zero/1.0/deed.en
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AAdvantage_Smooth%2C_Crude_Oil_Tanker%2C_IMO_9999620%2C_Calandkanaal_pic2.jpg
+  url: https://live.staticflickr.com/5524/12001284873_5581f12f6c_b.jpg
+  width: 1024
+  height: 678
+  alt: محطة وقود في لافاييت بولاية كاليفورنيا الأمريكية
+  credit: Franco Folini · CC BY-SA 2.0 · فليكر
+  license: CC BY-SA 2.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/2.0/
+  pageUrl: https://www.flickr.com/photos/78425154@N00/12001284873
 sources:
   - name: خازندار
     nameEn: Khazendar
@@ -58,7 +58,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: claude-cli
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
 quality:
   score: 9

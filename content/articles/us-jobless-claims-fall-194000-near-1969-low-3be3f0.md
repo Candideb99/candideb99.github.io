@@ -32,13 +32,14 @@ readingMinutes: 4
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/4H_Youth_Career_Fair_2026_%2820260413-USDA-NIFA-CDP-1203%29.jpg/1280px-4H_Youth_Career_Fair_2026_%2820260413-USDA-NIFA-CDP-1203%29.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/NYC_-_Construction_worker_resting_-_1365_cropped.jpg/1280px-NYC_-_Construction_worker_resting_-_1365_cropped.jpg
   width: 1280
-  height: 853
-  alt: معرض توظيف للشباب في أرلينغتون بولاية فرجينيا الأمريكية
-  credit: USDAgov · Public domain · ويكيميديا كومنز
-  license: Public domain
-  pageUrl: https://commons.wikimedia.org/wiki/File%3A4H_Youth_Career_Fair_2026_(20260413-USDA-NIFA-CDP-1203).jpg
+  height: 1265
+  alt: عامل بناء خلال استراحة في نيويورك
+  credit: Jorge Royan · CC BY 3.0 · ويكيميديا كومنز
+  license: CC BY 3.0
+  licenseUrl: https://creativecommons.org/licenses/by/3.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ANYC_-_Construction_worker_resting_-_1365_cropped.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat

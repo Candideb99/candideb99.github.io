@@ -32,15 +32,7 @@ regions:
 readingMinutes: 3
 chart: null
 table: null
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Container_port_of_Piraeus_2026.jpg/1280px-Container_port_of_Piraeus_2026.jpg
-  width: 1280
-  height: 853
-  alt: رافعات حاويات وسفن في أحد موانئ اليونان
-  credit: Aaaatu · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AContainer_port_of_Piraeus_2026.jpg
+image: null
 sources:
   - name: أرابيان غلف بزنس إنسايت
     nameEn: AGBI (Arabian Gulf Business Insight)

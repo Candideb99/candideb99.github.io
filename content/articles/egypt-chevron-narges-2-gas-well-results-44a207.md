@@ -24,14 +24,14 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://live.staticflickr.com/65535/51707807343_7db05f5bf5_b.jpg
-  width: 1024
-  height: 682
-  alt: سفينة الحفر «ستينا فورث» قبالة ليماسول في قبرص عام 2021
-  credit: George M. Groutas · CC BY 2.0 · فليكر
-  license: CC BY 2.0
-  licenseUrl: https://creativecommons.org/licenses/by/2.0/
-  pageUrl: https://www.flickr.com/photos/22083482@N03/51707807343
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Stena_Forth_%28IMO_9428932%29_Las_Palmas_2018.jpg/1280px-Stena_Forth_%28IMO_9428932%29_Las_Palmas_2018.jpg
+  width: 1280
+  height: 855
+  alt: سفينة حفر للتنقيب البحري عن النفط والغاز
+  credit: Niels Johannes · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AStena_Forth_(IMO_9428932)_Las_Palmas_2018.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat

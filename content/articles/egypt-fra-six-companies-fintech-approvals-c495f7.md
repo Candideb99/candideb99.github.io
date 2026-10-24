@@ -23,15 +23,7 @@ regions:
 readingMinutes: 1
 chart: null
 table: null
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/P059743-876254.jpg/1280px-P059743-876254.jpg
-  width: 1280
-  height: 853
-  alt: إجراء عملية دفع باستخدام هاتف ذكي
-  credit: Bogdan Hoyaux / European Commission · CC BY 4.0 · ويكيميديا كومنز
-  license: CC BY 4.0
-  licenseUrl: https://creativecommons.org/licenses/by/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AP059743-876254.jpg
+image: null
 sources:
   - name: مصراوي
     nameEn: Masrawy

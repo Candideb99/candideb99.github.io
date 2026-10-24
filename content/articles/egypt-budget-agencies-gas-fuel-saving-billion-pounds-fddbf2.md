@@ -20,15 +20,7 @@ regions:
 readingMinutes: 1
 chart: null
 table: null
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Afsluitdijk_-_wind_turbines.jpg/1280px-Afsluitdijk_-_wind_turbines.jpg
-  width: 1280
-  height: 853
-  alt: توربينات لتوليد الكهرباء من طاقة الرياح (صورة تعبيرية)
-  credit: Denkrahm · CC BY 4.0 · ويكيميديا كومنز
-  license: CC BY 4.0
-  licenseUrl: https://creativecommons.org/licenses/by/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AAfsluitdijk_-_wind_turbines.jpg
+image: null
 sources:
   - name: البورصة
     nameEn: Alborsa News

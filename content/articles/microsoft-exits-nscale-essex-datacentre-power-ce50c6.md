@@ -24,14 +24,14 @@ readingMinutes: 3
 chart: null
 table: null
 image:
-  url: https://images.pexels.com/photos/31277038/pexels-photo-31277038.jpeg?auto=compress&cs=tinysrgb&w=1280
-  width: 1280
-  height: 853
-  alt: أبراج لنقل الكهرباء في ريف إنجلترا
-  credit: Eclipse Chasers · بيكسلز
-  license: Pexels License
-  licenseUrl: https://www.pexels.com/license/
-  pageUrl: https://www.pexels.com/photo/scenic-view-of-power-lines-in-english-countryside-31277038/
+  url: https://live.staticflickr.com/3345/3639487285_25a487c19f_b.jpg
+  width: 1024
+  height: 683
+  alt: مهندس كهرباء يعمل في محطة لتحويل الكهرباء (صورة تعبيرية)
+  credit: Idaho National Laboratory · CC BY 2.0 · فليكر
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0/
+  pageUrl: https://www.flickr.com/photos/30369883@N03/3639487285
 sources:
   - name: الغارديان
     nameEn: The Guardian

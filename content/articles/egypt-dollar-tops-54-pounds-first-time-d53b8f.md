@@ -50,15 +50,7 @@ table:
     - - البنك الأهلي المصري وبنك مصر
       - "53.89"
       - "53.99"
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Main_Bank_of_Egypt.jpg/1280px-Main_Bank_of_Egypt.jpg
-  width: 1280
-  height: 854
-  alt: قاعة داخل مقر بنك مصر في القاهرة
-  credit: Ahmed Yousry Mahfouz · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AMain_Bank_of_Egypt.jpg
+image: null
 sources:
   - name: مصراوي
     nameEn: Masrawy

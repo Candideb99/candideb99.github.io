@@ -26,15 +26,7 @@ regions:
 readingMinutes: 3
 chart: null
 table: null
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Frankfurt_Stock_Exchange_%28Ank_Kumar%29_02.jpg/1280px-Frankfurt_Stock_Exchange_%28Ank_Kumar%29_02.jpg
-  width: 1280
-  height: 853
-  alt: متداولون أمام شاشاتهم في قاعة التداول ببورصة فرانكفورت
-  credit: Ank Kumar · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AFrankfurt_Stock_Exchange_(Ank_Kumar)_02.jpg
+image: null
 sources:
   - name: خازندار
     nameEn: Khazendar

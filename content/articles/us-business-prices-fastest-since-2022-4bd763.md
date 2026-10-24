@@ -27,14 +27,14 @@ readingMinutes: 3
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/%22wow%22_price_tag.jpg/1280px-%22wow%22_price_tag.jpg
+  url: https://images.pexels.com/photos/27283278/pexels-photo-27283278.jpeg?auto=compress&cs=tinysrgb&w=1280
   width: 1280
-  height: 1024
-  alt: ملصقات أسعار في متجر بقالة بولاية فيرمونت الأمريكية
-  credit: Tessa Bury · CC BY 4.0 · ويكيميديا كومنز
-  license: CC BY 4.0
-  licenseUrl: https://creativecommons.org/licenses/by/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3A%22wow%22_price_tag.jpg
+  height: 720
+  alt: متسوقون أمام متجر للخضار والفواكه في نيويورك
+  credit: SilBaBum _ · بيكسلز
+  license: Pexels License
+  licenseUrl: https://www.pexels.com/license/
+  pageUrl: https://www.pexels.com/photo/nyc-through-my-eyes-21-27283278/
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat

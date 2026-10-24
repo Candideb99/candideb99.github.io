@@ -42,15 +42,7 @@ chart:
         - 31
         - 22.5
 table: null
-image:
-  url: https://live.staticflickr.com/7293/8745509772_9486ac1fae_b.jpg
-  width: 1024
-  height: 678
-  alt: عمال يزيلون الأعشاب الضارة في حقل بصل
-  credit: amira_a · CC BY 2.0 · فليكر
-  license: CC BY 2.0
-  licenseUrl: https://creativecommons.org/licenses/by/2.0/
-  pageUrl: https://www.flickr.com/photos/46646401@N06/8745509772
+image: null
 sources:
   - name: أرشيف أرخايف (الاقتصاد العام)
     nameEn: arXiv econ.GN

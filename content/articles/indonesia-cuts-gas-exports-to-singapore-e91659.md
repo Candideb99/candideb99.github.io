@@ -30,14 +30,14 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Senoko_Energy.jpg/1280px-Senoko_Energy.jpg
+  url: https://images.pexels.com/photos/6754760/pexels-photo-6754760.jpeg?auto=compress&cs=tinysrgb&w=1280
   width: 1280
-  height: 853
-  alt: محطة لتوليد الكهرباء بالدورة المركبة في سنغافورة
-  credit: Website · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ASenoko_Energy.jpg
+  height: 854
+  alt: محطة لتوليد الكهرباء وخزانات وقود في بانتن بإندونيسيا
+  credit: Tom Fisk · بيكسلز
+  license: Pexels License
+  licenseUrl: https://www.pexels.com/license/
+  pageUrl: https://www.pexels.com/photo/infrastructure-of-poer-plant-6754760/
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat

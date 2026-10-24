@@ -32,14 +32,14 @@ readingMinutes: 3
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/%D9%85%D8%A3%D9%83%D9%88%D9%84%D8%A7%D8%AA_%D8%B3%D9%88%D9%82_%D8%A7%D9%84%D8%AC%D9%85%D9%8A%D8%B9%D8%A9_%D8%A8%D8%AD%D9%8A_%D8%AF%D8%B1%D8%A8_%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A7%D9%86_%D8%A8%D9%85%D8%AF%D9%8A%D9%86%D8%A9_%D8%A7%D9%84%D8%AF%D8%A7%D8%B1%D8%A7%D9%84%D8%A8%D9%8A%D8%B6%D8%A7%D8%A1_31.jpg/1280px-%D9%85%D8%A3%D9%83%D9%88%D9%84%D8%A7%D8%AA_%D8%B3%D9%88%D9%82_%D8%A7%D9%84%D8%AC%D9%85%D9%8A%D8%B9%D8%A9_%D8%A8%D8%AD%D9%8A_%D8%AF%D8%B1%D8%A8_%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A7%D9%86_%D8%A8%D9%85%D8%AF%D9%8A%D9%86%D8%A9_%D8%A7%D9%84%D8%AF%D8%A7%D8%B1%D8%A7%D9%84%D8%A8%D9%8A%D8%B6%D8%A7%D8%A1_31.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Casablanca_container_port_2023.jpg/1280px-Casablanca_container_port_2023.jpg
   width: 1280
-  height: 720
-  alt: خضراوات معروضة في سوق الجميعة بحي درب السلطان بالدار البيضاء
-  credit: Ahlamine · CC BY-SA 4.0 · ويكيميديا كومنز
+  height: 851
+  alt: رافعات وسفن حاويات في ميناء مغربي
+  credit: Niels Johannes · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3A%D9%85%D8%A3%D9%83%D9%88%D9%84%D8%A7%D8%AA_%D8%B3%D9%88%D9%82_%D8%A7%D9%84%D8%AC%D9%85%D9%8A%D8%B9%D8%A9_%D8%A8%D8%AD%D9%8A_%D8%AF%D8%B1%D8%A8_%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A7%D9%86_%D8%A8%D9%85%D8%AF%D9%8A%D9%86%D8%A9_%D8%A7%D9%84%D8%AF%D8%A7%D8%B1%D8%A7%D9%84%D8%A8%D9%8A%D8%B6%D8%A7%D8%A1_31.jpg
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ACasablanca_container_port_2023.jpg
 sources:
   - name: سكاي نيوز عربية
     nameEn: Sky News Arabia

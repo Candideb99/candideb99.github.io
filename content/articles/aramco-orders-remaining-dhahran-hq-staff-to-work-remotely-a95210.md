@@ -32,15 +32,7 @@ regions:
 readingMinutes: 3
 chart: null
 table: null
-image:
-  url: https://images.pexels.com/photos/15970032/pexels-photo-15970032.jpeg?auto=compress&cs=tinysrgb&w=1280
-  width: 1280
-  height: 853
-  alt: أنابيب في مصفاة نفط (صورة تعبيرية)
-  credit: Jakub Pabis · بيكسلز
-  license: Pexels License
-  licenseUrl: https://www.pexels.com/license/
-  pageUrl: https://www.pexels.com/photo/oil-refinery-plant-15970032/
+image: null
 sources:
   - name: بي بي سي عربي
     nameEn: BBC Arabic

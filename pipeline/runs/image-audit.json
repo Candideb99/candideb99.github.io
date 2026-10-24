@@ -1,17 +1,6 @@
 {
-  "at": "2026-10-24T19:03:52.173Z",
+  "at": "2026-10-24T20:38:46.271Z",
   "results": [
-    {
-      "slug": "indonesia-cuts-gas-exports-to-singapore-e91659",
-      "file": "indonesia-cuts-gas-exports-to-singapore-e91659.md",
-      "title": "إندونيسيا تخفض صادرات الغاز إلى سنغافورة بمقدار 31 مليون قدم مكعب يومياً",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Senoko_Energy.jpg/1280px-Senoko_Energy.jpg",
-      "fileTitle": "Senoko Energy.jpg",
-      "verdict": "WRONG_SUBJECT",
-      "people": "none",
-      "reason": "The photo shows Singapore's Senoko power station, which belongs to the neighbouring electricity sector, while the story is about Indonesian pipeline gas exports being cut and diverted to Indonesia's own power plants, so it shows neither the gas pipelines nor the Indonesian side.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
     {
       "slug": "trump-exempts-canadian-goods-tariffs-midterms-787322",
       "file": "trump-exempts-canadian-goods-tariffs-midterms-787322.md",
@@ -24,17 +13,6 @@
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "ai-agents-delegation-divide-rich-poor-countries-972617",
-      "file": "ai-agents-delegation-divide-rich-poor-countries-972617.md",
-      "title": "البلدان الغنية تستطيع تفويض حصة أكبر من عملها لبرامج الذكاء الاصطناعي",
-      "image": "https://live.staticflickr.com/7293/8745509772_9486ac1fae_b.jpg",
-      "fileTitle": null,
-      "verdict": "WRONG_SUBJECT",
-      "people": "none",
-      "reason": "Workers weeding an onion field read as an agriculture story, while the headline is about rich countries handing work to AI software; the field shows only the manual-labour counterpoint, not the story's subject.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
       "slug": "russian-diesel-tankers-head-to-america-634507",
       "file": "russian-diesel-tankers-head-to-america-634507.md",
       "title": "ثلاث ناقلات ديزل روسي تتجه إلى أمريكا الشمالية بعد رفع العقوبات مؤقتاً",
@@ -43,17 +21,6 @@
       "verdict": "GENERIC_OK",
       "people": "none",
       "reason": "An anonymous oil tanker in New York Harbor is the story's own sector object at the US destination the story names, and the caption does not claim it is one of the Russian diesel cargoes.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
-      "slug": "egypt-chevron-narges-2-gas-well-results-44a207",
-      "file": "egypt-chevron-narges-2-gas-well-results-44a207.md",
-      "title": "بئر «نرجس 2» تؤكد امتداد طبقات الغاز قبالة سواحل مصر",
-      "image": "https://live.staticflickr.com/65535/51707807343_7db05f5bf5_b.jpg",
-      "fileTitle": null,
-      "verdict": "WRONG_SUBJECT",
-      "people": "none",
-      "reason": "The caption places the drillship off Limassol, Cyprus in 2021, a country the Egypt-only Narges 2 story does not mention, so the sector scene is located in the wrong country.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
@@ -76,28 +43,6 @@
       "verdict": "GENERIC_OK",
       "people": "none",
       "reason": "An anonymous cleanroom worker in a chip fab is a recognisable scene from the story's own semiconductor sector, and nothing in the file or caption places it in another country.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
-      "slug": "egypt-budget-agencies-gas-fuel-saving-billion-pounds-fddbf2",
-      "file": "egypt-budget-agencies-gas-fuel-saving-billion-pounds-fddbf2.md",
-      "title": "وزير المالية المصري: خفض استهلاك أجهزة الموازنة للغاز والوقود وفّر بين 7 و8 مليارات جنيه",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Afsluitdijk_-_wind_turbines.jpg/1280px-Afsluitdijk_-_wind_turbines.jpg",
-      "fileTitle": "Afsluitdijk - wind turbines.jpg",
-      "verdict": "WRONG_SUBJECT",
-      "people": "none",
-      "reason": "The headline is about Egypt's finance ministry saving money by cutting state bodies' gas and fuel use, but the photo shows wind turbines, a neighbouring sector that only the standfirst touches, so the frame does not show the story's own subject.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
-      "slug": "us-business-prices-fastest-since-2022-4bd763",
-      "file": "us-business-prices-fastest-since-2022-4bd763.md",
-      "title": "الشركات الأمريكية ترفع أسعارها بأسرع وتيرة منذ 2022 قبل قرار الفيدرالي",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/%22wow%22_price_tag.jpg/1280px-%22wow%22_price_tag.jpg",
-      "fileTitle": "\"wow\" price tag.jpg",
-      "verdict": "UNSERIOUS",
-      "people": "none",
-      "reason": "Although a US grocery price tag fits a story on rising US prices, the file is a curiosity shot of a tag reading \"Wow\", a meme-like frame that a reader would smile at and that lacks the gravity a serious economics story needs.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
@@ -131,17 +76,6 @@
       "verdict": "RIGHT",
       "people": "Håkan Samuelsson",
       "reason": "Samuelsson, chief executive of Volvo Cars since 2025, speaks for the company the headline names, and this archive photo from the 2018 Car of the Year ceremony is captioned with the occasion and year.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
-      "slug": "uae-pledges-17-billion-investment-greece-fc3cb8",
-      "file": "uae-pledges-17-billion-investment-greece-fc3cb8.md",
-      "title": "الإمارات تتعهد باستثمارات إضافية بنحو 17 مليار دولار في اليونان",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Container_port_of_Piraeus_2026.jpg/1280px-Container_port_of_Piraeus_2026.jpg",
-      "fileTitle": "Container port of Piraeus 2026.jpg",
-      "verdict": "WRONG_SUBJECT",
-      "people": "none",
-      "reason": "A panorama of Piraeus container port shows no part of the UAE pledge, its people or its sectors (the story cites renewable energy, not ports), and Piraeus is known as a Chinese-run (COSCO) port, so a reader could take it for a different investor's project.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
@@ -211,28 +145,6 @@
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "libya-central-bank-governor-resignation-accepted-781c9a",
-      "file": "libya-central-bank-governor-resignation-accepted-781c9a.md",
-      "title": "رئاسة البرلمان الليبي تقبل مبدئياً استقالة محافظ المصرف المركزي",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Mohammed_Takala_-_2023.jpg/1280px-Mohammed_Takala_-_2023.jpg",
-      "fileTitle": "Mohammed Takala - 2023.jpg",
-      "verdict": "WRONG_PERSON",
-      "people": "Mohammed Takala, Vyacheslav Volodin",
-      "reason": "The headline is about Libya's parliament accepting the central bank governor's resignation, but the photo shows State Council head Takala, who appears only in the standfirst, meeting Russia's Duma chairman, so it is WRONG_PERSON under the owner's 2026-10-24 rule.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
-      "slug": "nasdaq-falls-meta-ai-spending-fears-e3dbef",
-      "file": "nasdaq-falls-meta-ai-spending-fears-e3dbef.md",
-      "title": "ناسداك يهبط 2.6% مع قلق المستثمرين من الإنفاق على الذكاء الاصطناعي",
-      "image": "https://images.pexels.com/photos/5480781/pexels-photo-5480781.jpeg?auto=compress&cs=tinysrgb&w=1280",
-      "fileTitle": null,
-      "verdict": "WRONG_SUBJECT",
-      "people": "none",
-      "reason": "The caption describes a close-up of cables plugged into data-centre servers, a part-level frame that doesn't read at a glance, and it shows neither the Nasdaq sell-off nor Meta.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
       "slug": "saudi-tasi-falls-lowest-close-since-2021-172984",
       "file": "saudi-tasi-falls-lowest-close-since-2021-172984.md",
       "title": "الأسهم السعودية تهبط 2.3% وتسجل أدنى إغلاق منذ 2021",
@@ -255,17 +167,6 @@
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210",
-      "file": "aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210.md",
-      "title": "مصادر: أرامكو تأمر من بقي من موظفي مقرها في الظهران بالعمل عن بعد",
-      "image": "https://images.pexels.com/photos/15970032/pexels-photo-15970032.jpeg?auto=compress&cs=tinysrgb&w=1280",
-      "fileTitle": null,
-      "verdict": "WRONG_SUBJECT",
-      "people": "none",
-      "reason": "The caption describes only pipes at a refinery, a close-up of parts that does not read at a glance, and it shows neither Aramco's Dhahran headquarters nor the Eastern Province attacks the story is about.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
       "slug": "egypt-arrears-settlement-gas-output-test-27cfe4",
       "file": "egypt-arrears-settlement-gas-output-test-27cfe4.md",
       "title": "تسوية متأخرات الشركاء الأجانب لا تكفي وحدها لرفع إنتاج مصر من الغاز",
@@ -274,17 +175,6 @@
       "verdict": "GENERIC_OK",
       "people": "none",
       "reason": "An anonymous drilling rig in a desert is the story's own sector object, fits onshore drilling such as Eni's Western Desert Meleiha project, and nothing places it in another country, though nothing confirms it shows Meleiha either.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
-      "slug": "us-jobless-claims-fall-194000-near-1969-low-3be3f0",
-      "file": "us-jobless-claims-fall-194000-near-1969-low-3be3f0.md",
-      "title": "طلبات إعانة البطالة الأمريكية تنخفض إلى 194 ألفاً قرب أدنى مستوى منذ 1969",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/4H_Youth_Career_Fair_2026_%2820260413-USDA-NIFA-CDP-1203%29.jpg/1280px-4H_Youth_Career_Fair_2026_%2820260413-USDA-NIFA-CDP-1203%29.jpg",
-      "fileTitle": "4H Youth Career Fair 2026 (20260413-USDA-NIFA-CDP-1203).jpg",
-      "verdict": "STALE_EVENT",
-      "people": "none (unnamed 4-H youth and federal agency staff)",
-      "reason": "The photo shows a specific past event, the April 2026 National 4-H youth career fair for federal agencies in Arlington, which has nothing to do with October's weekly US jobless-claims data or employers holding on to staff.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
@@ -508,17 +398,6 @@
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "egypt-digital-exports-target-2030-b8fb6e",
-      "file": "egypt-digital-exports-target-2030-b8fb6e.md",
-      "title": "مصر تستهدف رفع صادراتها الرقمية إلى 12 مليار دولار سنوياً بحلول 2030",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Telecom_Egypt_Smart_Village_building_4.jpg/1280px-Telecom_Egypt_Smart_Village_building_4.jpg",
-      "fileTitle": "Telecom Egypt Smart Village building 4.jpg",
-      "verdict": "WRONG_SUBJECT",
-      "people": "none",
-      "reason": "The photo shows the office building of Telecom Egypt, a company the story never mentions, rather than the ICT ministry or the sector's own subject such as data centres or outsourcing.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
       "slug": "eni-starts-meleiha-phase-2-egypt-7f5b4c",
       "file": "eni-starts-meleiha-phase-2-egypt-7f5b4c.md",
       "title": "إيني تشغّل المرحلة الثانية من مليحة بطاقة معالجة 100 مليون قدم مكعبة يومياً",
@@ -563,17 +442,6 @@
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "fed-note-bonds-safe-haven-inflation-2abcf8",
-      "file": "fed-note-bonds-safe-haven-inflation-2abcf8.md",
-      "title": "باحثان في الفيدرالي: حماية السندات من هبوط الأسهم تضعف حين يرتفع التضخم",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Deutsche-boerse-parkett-ffm006.jpg/1280px-Deutsche-boerse-parkett-ffm006.jpg",
-      "fileTitle": "Deutsche-boerse-parkett-ffm006.jpg",
-      "verdict": "WRONG_PERSON",
-      "people": "Dirk Müller (German stock trader)",
-      "reason": "The file's categories identify the well-known German trader Dirk Müller on the Frankfurt floor, who has nothing to do with this story about two Federal Reserve researchers and US bonds; the German setting would also be wrong for a US story.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
       "slug": "us-orders-agencies-remove-deepseek-systems-b7af11",
       "file": "us-orders-agencies-remove-deepseek-systems-b7af11.md",
       "title": "واشنطن تأمر الوكالات الفيدرالية المدنية بإزالة «ديب سيك» الصينية من أنظمتها",
@@ -582,28 +450,6 @@
       "verdict": "GENERIC_OK",
       "people": "none",
       "reason": "The DeepSeek app on a phone screen shows the very product being banned, which works as a neutral illustration, though with no file metadata it cannot be checked for staging or place.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
-      "slug": "ipo-subscription-coverage-ratio-share-allocation-a1cab3",
-      "file": "ipo-subscription-coverage-ratio-share-allocation-a1cab3.md",
-      "title": "هل تعني تغطية 42% في أول يوم تعثّر طرح بنك القاهرة؟",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Frankfurt_Stock_Exchange_%28Ank_Kumar%29_02.jpg/1280px-Frankfurt_Stock_Exchange_%28Ank_Kumar%29_02.jpg",
-      "fileTitle": "Frankfurt Stock Exchange (Ank Kumar) 02.jpg",
-      "verdict": "WRONG_SUBJECT",
-      "people": "none",
-      "reason": "The photo and printed caption place the trading floor at the Frankfurt Stock Exchange in Germany, a country and exchange the story about the Egyptian Exchange and Banque du Caire's IPO does not mention.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
-      "slug": "morocco-government-targets-five-percent-growth-757c81",
-      "file": "morocco-government-targets-five-percent-growth-757c81.md",
-      "title": "الحكومة المغربية تستهدف نمواً بمتوسط 5% سنوياً بين 2027 و2031",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/%D9%85%D8%A3%D9%83%D9%88%D9%84%D8%A7%D8%AA_%D8%B3%D9%88%D9%82_%D8%A7%D9%84%D8%AC%D9%85%D9%8A%D8%B9%D8%A9_%D8%A8%D8%AD%D9%8A_%D8%AF%D8%B1%D8%A8_%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A7%D9%86_%D8%A8%D9%85%D8%AF%D9%8A%D9%86%D8%A9_%D8%A7%D9%84%D8%AF%D8%A7%D8%B1%D8%A7%D9%84%D8%A8%D9%8A%D8%B6%D8%A7%D8%A1_31.jpg/1280px-%D9%85%D8%A3%D9%83%D9%88%D9%84%D8%A7%D8%AA_%D8%B3%D9%88%D9%82_%D8%A7%D9%84%D8%AC%D9%85%D9%8A%D8%B9%D8%A9_%D8%A8%D8%AD%D9%8A_%D8%AF%D8%B1%D8%A8_%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A7%D9%86_%D8%A8%D9%85%D8%AF%D9%8A%D9%86%D8%A9_%D8%A7%D9%84%D8%AF%D8%A7%D8%B1%D8%A7%D9%84%D8%A8%D9%8A%D8%B6%D8%A7%D8%A1_31.jpg",
-      "fileTitle": "مأكولات سوق الجميعة بحي درب السلطان بمدينة الدارالبيضاء 31.jpg",
-      "verdict": "WRONG_SUBJECT",
-      "people": "none",
-      "reason": "A close-up of vegetables on a Casablanca market stall, taken for a 'Farm to Plate' photo contest, does not depict the government's five-year programme or its growth, deficit and debt targets; it shows retail food produce rather than the story's institution or macro-fiscal subject.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
@@ -648,17 +494,6 @@
       "verdict": "GENERIC_OK",
       "people": "none",
       "reason": "An anonymous empty conference hall, captioned as illustrative and naming no place, is a neutral and serious stand-in for a postponed investment conference, with nothing placing it in another country.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
-      "slug": "egypt-dollar-tops-54-pounds-first-time-d53b8f",
-      "file": "egypt-dollar-tops-54-pounds-first-time-d53b8f.md",
-      "title": "الدولار يتجاوز 54 جنيهاً في السوق الرسمية المصرية للمرة الأولى",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Main_Bank_of_Egypt.jpg/1280px-Main_Bank_of_Egypt.jpg",
-      "fileTitle": "Main Bank of Egypt.jpg",
-      "verdict": "WRONG_SUBJECT",
-      "people": "none",
-      "reason": "The photo is a heritage interior of Banque Misr, a commercial bank the story never mentions, not the Central Bank of Egypt or a currency-trading scene, and the caption names that other institution.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
@@ -750,17 +585,6 @@
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "microsoft-exits-nscale-essex-datacentre-power-ce50c6",
-      "file": "microsoft-exits-nscale-essex-datacentre-power-ce50c6.md",
-      "title": "مايكروسوفت تنسحب من مركز بيانات في إسيكس وسط مخاوف من نقص الكهرباء",
-      "image": "https://images.pexels.com/photos/31277038/pexels-photo-31277038.jpeg?auto=compress&cs=tinysrgb&w=1280",
-      "fileTitle": null,
-      "verdict": "WRONG_SUBJECT",
-      "people": "none",
-      "reason": "Generic pylons in the English countryside show the power grid, a neighbouring sector, not Microsoft, Nscale or the Loughton data centre, the deal at the centre of this story.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
       "slug": "syria-world-bank-reconstruction-trust-fund-464831",
       "file": "syria-world-bank-reconstruction-trust-fund-464831.md",
       "title": "سوريا والبنك الدولي يتفقان على صندوق متعدد المانحين لإعادة الإعمار",
@@ -780,17 +604,6 @@
       "verdict": "GENERIC_OK",
       "people": "none",
       "reason": "An anonymous offshore oil and gas drilling rig is a stock image of the story's own sector, offshore gas exploration, and neither the frame nor the caption places it in another country.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
-      "slug": "russian-diesel-us-delivery-contract-timeline-db7311",
-      "file": "russian-diesel-us-delivery-contract-timeline-db7311.md",
-      "title": "نوفاك يتوقع وصول الديزل إلى أمريكا خلال 15 إلى 20 يوماً من توقيع العقود",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/ARARAT_%28Chemical_and_oil_tanker%29%2C_Arhangelsk.jpg/1280px-ARARAT_%28Chemical_and_oil_tanker%29%2C_Arhangelsk.jpg",
-      "fileTitle": "ARARAT (Chemical and oil tanker), Arhangelsk.jpg",
-      "verdict": "WRONG_SUBJECT",
-      "people": "none",
-      "reason": "Although a product tanker in Russia suits the diesel-export theme, the caption names a specific vessel, Ararat, and the city of Arkhangelsk, neither of which the story mentions, implying a link to the US diesel deal that the story does not support.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
@@ -824,17 +637,6 @@
       "verdict": "GENERIC_OK",
       "people": "none",
       "reason": "An anonymous trader watching share prices on screens shows the story's own sector, and no file name, description, category or caption places it outside Saudi Arabia, so it runs as a neutral market illustration.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
-      "slug": "egypt-fra-six-companies-fintech-approvals-c495f7",
-      "file": "egypt-fra-six-companies-fintech-approvals-c495f7.md",
-      "title": "الرقابة المصرية تمنح 6 شركات موافقات لاستخدام التكنولوجيا المالية",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/P059743-876254.jpg/1280px-P059743-876254.jpg",
-      "fileTitle": "P059743-876254.jpg",
-      "verdict": "WRONG_SUBJECT",
-      "people": "none",
-      "reason": "A European Commission stock shot of a contactless smartphone payment at a terminal shows retail payments, a neighbouring sector, and its source points to Europe, not to Egypt's regulator licensing non-bank fintech lenders.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
@@ -959,17 +761,6 @@
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "fiscal-breakeven-oil-price-explained-006eda",
-      "file": "fiscal-breakeven-oil-price-explained-006eda.md",
-      "title": "النفط فوق 100 دولار، فلماذا تتوقع السعودية عجزاً في موازنتها؟",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/2/24/Al_Basrah_Oil_Terminal_essential_to_Iraq%27s_economy_DVIDS202701.jpg",
-      "fileTitle": "Al Basrah Oil Terminal essential to Iraq's economy DVIDS202701.jpg",
-      "verdict": "WRONG_SUBJECT",
-      "people": "none",
-      "reason": "The file name, description and categories place the tanker at Iraq's Al Basrah Oil Terminal, a different country from this story about Saudi Arabia's budget.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
       "slug": "tencent-oracle-ai-chips-lease-deal-e9082f",
       "file": "tencent-oracle-ai-chips-lease-deal-e9082f.md",
       "title": "فاينانشال تايمز: تينسنت تستأجر 100 ألف شريحة من أوراكل بـ7 مليارات دولار",
@@ -1025,17 +816,6 @@
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "trump-ai-firms-voluntary-safety-accord-5315ea",
-      "file": "trump-ai-firms-voluntary-safety-accord-5315ea.md",
-      "title": "ست شركات ذكاء اصطناعي توقّع مع ترامب اتفاقاً طوعياً للسلامة",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Sundar_Pichai_%282023%29.jpg/1280px-Sundar_Pichai_%282023%29.jpg",
-      "fileTitle": "Sundar Pichai (2023).jpg",
-      "verdict": "WRONG_PERSON",
-      "people": "Sundar Pichai",
-      "reason": "The photo shows Google's Sundar Pichai at a 2023 European Commission meeting in Brussels, but the story never names him, Google, or Brussels; its headline concerns Trump and six unnamed AI firms, and its tags name only OpenAI and Anthropic.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
       "slug": "saudi-fdi-net-inflows-fall-second-quarter-8344e5",
       "file": "saudi-fdi-net-inflows-fall-second-quarter-8344e5.md",
       "title": "صافي الاستثمار الأجنبي المباشر في السعودية يتراجع إلى 5.1 مليار دولار",
@@ -1088,17 +868,6 @@
       "verdict": "GENERIC_OK",
       "people": "none",
       "reason": "A US supermarket's checkout aisles are a neutral, serious stock illustration of American consumer prices and spending, taken in the United States and matching this US PCE inflation story.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
-      "slug": "strategic-petroleum-reserve-emergency-oil-stocks-explained-c1ebfc",
-      "file": "strategic-petroleum-reserve-emergency-oil-stocks-explained-c1ebfc.md",
-      "title": "لماذا لا يرخص البنزين رغم عرض واشنطن 40 مليون برميل من احتياطيها؟",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Advantage_Smooth%2C_Crude_Oil_Tanker%2C_IMO_9999620%2C_Calandkanaal_pic2.jpg/1280px-Advantage_Smooth%2C_Crude_Oil_Tanker%2C_IMO_9999620%2C_Calandkanaal_pic2.jpg",
-      "fileTitle": "Advantage Smooth, Crude Oil Tanker, IMO 9999620, Calandkanaal pic2.jpg",
-      "verdict": "WRONG_SUBJECT",
-      "people": "none",
-      "reason": "The story is about US gasoline prices and the US strategic reserve, but the file description places this crude tanker in the Calandkanaal at Rotterdam in the Netherlands, a country the story does not mention.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
@@ -1234,17 +1003,6 @@
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "aldar-talay-yas-riva-reserve-sales-7b0c3a",
-      "file": "aldar-talay-yas-riva-reserve-sales-7b0c3a.md",
-      "title": "«الدار» تبيع بأكثر من 5 مليارات درهم في مشروعين سكنيين بأبوظبي",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Saadiyat_Island%2C_Abu_Dhabi%2C_United_Arab_Emirates%2C_uae%2C_Travelvlogus%2C_Travel_To_The_World%2C.jpg/1280px-Saadiyat_Island%2C_Abu_Dhabi%2C_United_Arab_Emirates%2C_uae%2C_Travelvlogus%2C_Travel_To_The_World%2C.jpg",
-      "fileTitle": "Saadiyat Island, Abu Dhabi, United Arab Emirates, uae, Travelvlogus, Travel To The World,.jpg",
-      "verdict": "WRONG_SUBJECT",
-      "people": "none",
-      "reason": "This is a 2020 travel-blog view of unspecified buildings on Saadiyat Island, not Aldar's Talea or Yas Riva Reserve projects or an Aldar property, so it only shows the area near a story about one company's projects.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
       "slug": "anthropic-ipo-prospectus-42-billion-loss-96f8e5",
       "file": "anthropic-ipo-prospectus-42-billion-loss-96f8e5.md",
       "title": "نشرة طرح «أنثروبيك» تُظهر صافي خسارة بنحو 42 مليار دولار في 2025",
@@ -1319,6 +1077,105 @@
       "verdict": "GENERIC_OK",
       "people": "none",
       "reason": "An anonymous trader watching stock screens shows the story's own sector, and since nothing in the metadata or caption places it outside Turkey, it works as a stock illustration for a Borsa Istanbul story.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "indonesia-cuts-gas-exports-to-singapore-e91659",
+      "file": "indonesia-cuts-gas-exports-to-singapore-e91659.md",
+      "title": "إندونيسيا تخفض صادرات الغاز إلى سنغافورة بمقدار 31 مليون قدم مكعب يومياً",
+      "image": "https://images.pexels.com/photos/6754760/pexels-photo-6754760.jpeg?auto=compress&cs=tinysrgb&w=1280",
+      "fileTitle": null,
+      "verdict": "GENERIC_OK",
+      "people": "none",
+      "reason": "The caption places it in Indonesia and shows a power plant with fuel tanks, the domestic power generation the lede says the withheld gas will feed, though it shows no gas pipeline or export link to Singapore.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "egypt-chevron-narges-2-gas-well-results-44a207",
+      "file": "egypt-chevron-narges-2-gas-well-results-44a207.md",
+      "title": "بئر «نرجس 2» تؤكد امتداد طبقات الغاز قبالة سواحل مصر",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Stena_Forth_%28IMO_9428932%29_Las_Palmas_2018.jpg/1280px-Stena_Forth_%28IMO_9428932%29_Las_Palmas_2018.jpg",
+      "fileTitle": "Stena Forth (IMO 9428932) Las Palmas 2018.jpg",
+      "verdict": "WRONG_SUBJECT",
+      "people": "none",
+      "reason": "The drillship is photographed in the Port of Las Palmas, Spain (per the file name, description and categories), so for a story about one Egyptian offshore gas well the photograph is placed in another country.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "us-business-prices-fastest-since-2022-4bd763",
+      "file": "us-business-prices-fastest-since-2022-4bd763.md",
+      "title": "الشركات الأمريكية ترفع أسعارها بأسرع وتيرة منذ 2022 قبل قرار الفيدرالي",
+      "image": "https://images.pexels.com/photos/27283278/pexels-photo-27283278.jpeg?auto=compress&cs=tinysrgb&w=1280",
+      "fileTitle": null,
+      "verdict": "GENERIC_OK",
+      "people": "none",
+      "reason": "Anonymous shoppers at a New York produce store are a neutral, serious US illustration for a story about American businesses raising prices and inflation pressure ahead of the Fed decision.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "us-jobless-claims-fall-194000-near-1969-low-3be3f0",
+      "file": "us-jobless-claims-fall-194000-near-1969-low-3be3f0.md",
+      "title": "طلبات إعانة البطالة الأمريكية تنخفض إلى 194 ألفاً قرب أدنى مستوى منذ 1969",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/NYC_-_Construction_worker_resting_-_1365_cropped.jpg/1280px-NYC_-_Construction_worker_resting_-_1365_cropped.jpg",
+      "fileTitle": "NYC - Construction worker resting - 1365 cropped.jpg",
+      "verdict": "GENERIC_OK",
+      "people": "none (an unnamed construction worker)",
+      "reason": "An anonymous American worker at a New York construction site is a fitting stock illustration of the US labour market on a story about national jobless claims, and nothing places it outside the United States.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "morocco-government-targets-five-percent-growth-757c81",
+      "file": "morocco-government-targets-five-percent-growth-757c81.md",
+      "title": "الحكومة المغربية تستهدف نمواً بمتوسط 5% سنوياً بين 2027 و2031",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Casablanca_container_port_2023.jpg/1280px-Casablanca_container_port_2023.jpg",
+      "fileTitle": "Casablanca container port 2023.jpg",
+      "verdict": "GENERIC_OK",
+      "people": "none",
+      "reason": "A container port in Casablanca is a neutral, serious picture of Morocco's modern economy, and nothing places it outside Morocco, so it fits a story about the country's growth, deficit and debt targets.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "microsoft-exits-nscale-essex-datacentre-power-ce50c6",
+      "file": "microsoft-exits-nscale-essex-datacentre-power-ce50c6.md",
+      "title": "مايكروسوفت تنسحب من مركز بيانات في إسيكس وسط مخاوف من نقص الكهرباء",
+      "image": "https://live.staticflickr.com/3345/3639487285_25a487c19f_b.jpg",
+      "fileTitle": null,
+      "verdict": "WRONG_SUBJECT",
+      "people": "none",
+      "reason": "An anonymous engineer at an electricity substation shows the power-grid sector, not Microsoft, Nscale or a data-centre hall, so it misses the story's subject: the collapsed data-centre deal.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "russian-diesel-us-delivery-contract-timeline-db7311",
+      "file": "russian-diesel-us-delivery-contract-timeline-db7311.md",
+      "title": "نوفاك يتوقع وصول الديزل إلى أمريكا خلال 15 إلى 20 يوماً من توقيع العقود",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Alexander_Novak_on_MGIMO_18_March_2026_02.jpg/1280px-Alexander_Novak_on_MGIMO_18_March_2026_02.jpg",
+      "fileTitle": "Alexander Novak on MGIMO 18 March 2026 02.jpg",
+      "verdict": "RIGHT",
+      "people": "Alexander Novak",
+      "reason": "The headline names Novak and the photo shows him at a 2026 MGIMO energy event, and the caption states that occasion and year, which the owner's rule accepts for a story about its own person.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "fiscal-breakeven-oil-price-explained-006eda",
+      "file": "fiscal-breakeven-oil-price-explained-006eda.md",
+      "title": "النفط فوق 100 دولار، فلماذا تتوقع السعودية عجزاً في موازنتها؟",
+      "image": "https://images.pexels.com/photos/36563588/pexels-photo-36563588.jpeg?auto=compress&cs=tinysrgb&w=1280",
+      "fileTitle": null,
+      "verdict": "GENERIC_OK",
+      "people": "none",
+      "reason": "An anonymous crude tanker at sea illustrates the story's oil-export theme, and nothing in the caption or file places it outside Saudi Arabia.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "strategic-petroleum-reserve-emergency-oil-stocks-explained-c1ebfc",
+      "file": "strategic-petroleum-reserve-emergency-oil-stocks-explained-c1ebfc.md",
+      "title": "لماذا لا يرخص البنزين رغم عرض واشنطن 40 مليون برميل من احتياطيها؟",
+      "image": "https://live.staticflickr.com/5524/12001284873_5581f12f6c_b.jpg",
+      "fileTitle": null,
+      "verdict": "GENERIC_OK",
+      "people": "none",
+      "reason": "A US filling station, which the caption places in California, is the sector's own object in the story's own country for a piece on US gasoline prices.",
       "model": "claude-cli/claude-opus-5-5"
     }
   ]

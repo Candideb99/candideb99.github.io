@@ -4,6 +4,7 @@
  *
  *   node pipeline/audit-images.mjs            # judge every live article, write pipeline/runs/image-audit.json
  *   node pipeline/audit-images.mjs --limit=20 # the newest N only
+ *   node pipeline/audit-images.mjs --slugs=a,b # these stories only (after a re-pick)
  *
  * For each article it fetches the Commons file's own title and description (cached in
  * pipeline/.cache/commons-meta.json), and asks a text model one question: does this photograph
@@ -33,6 +34,7 @@ const CACHE = path.join(root, "pipeline", ".cache", "commons-meta.json");
 const OUT = path.join(root, "pipeline", "runs", "image-audit.json");
 const args = process.argv.slice(2);
 const LIMIT = Number((args.find((a) => a.startsWith("--limit=")) ?? "").split("=")[1]) || 0;
+const SLUGS = new Set((args.find((a) => a.startsWith("--slugs=")) ?? "").slice(8).split(",").map((s) => s.trim()).filter(Boolean));
 const log = (m) => console.log(`[audit] ${m}`);
 
 function fileTitleFromUrl(url) {
@@ -70,7 +72,8 @@ for (const f of files) {
   articles.push({ file: f, slug: d.slug, title: d.title, subtitle: d.subtitle ?? "", lede: d.lede ?? "", tags: d.tags ?? [], regions: d.regions ?? [], sources: (d.sources ?? []).map((s) => s.title).slice(0, 5), url: d.image.url, alt: d.image.alt ?? "", publishedAt: String(d.publishedAt), kind: d.kind ?? "news" });
 }
 articles.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
-const todo = LIMIT ? articles.slice(0, LIMIT) : articles;
+const chosen = SLUGS.size ? articles.filter((a) => SLUGS.has(a.slug)) : articles;
+const todo = LIMIT ? chosen.slice(0, LIMIT) : chosen;
 log(`${todo.length} articles to judge`);
 
 const results = [];
@@ -127,7 +130,10 @@ Return JSON: {"verdict":"RIGHT|GENERIC_OK|STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON
 }
 await mkdir(path.dirname(CACHE), { recursive: true });
 await writeFile(CACHE, JSON.stringify(cache, null, 1));
-await writeFile(OUT, JSON.stringify({ at: new Date().toISOString(), results }, null, 2));
+// A --slugs run re-judges those stories in the last full audit and keeps every other entry.
+const earlier = SLUGS.size && existsSync(OUT) ? JSON.parse(await readFile(OUT, "utf8")).results ?? [] : [];
+const kept = earlier.filter((r) => !SLUGS.has(r.slug) && articles.some((a) => a.slug === r.slug));
+await writeFile(OUT, JSON.stringify({ at: new Date().toISOString(), results: [...kept, ...results] }, null, 2));
 const counts = {};
 for (const r of results) counts[r.verdict] = (counts[r.verdict] ?? 0) + 1;
 log(`done: ${JSON.stringify(counts)} → ${path.relative(root, OUT)}`);
