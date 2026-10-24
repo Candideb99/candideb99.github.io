@@ -8,7 +8,7 @@
  *
  *   node scripts/images-selftest.mjs
  */
-import { withStandIns, pickImage, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { withStandIns, pickImage, headlinePeople, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
 
 let failed = 0;
 function check(name, got, want) {
@@ -315,7 +315,7 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
   const kaya = file("Fatma Betül Sayan Kaya in 2025.jpg", { date: "2025-03-01" });
   const r = await scenario({
     draft: { ...developers, title: "نائبة رئيس حزب العدالة والتنمية التركي تستقيل مع اتساع أزمة الصناديق", tags: ["تركيا"], regions: ["الشرق الأوسط"] },
-    plan: planFor({ queries: ["Borsa Istanbul trading floor"], place: ["Turkey", "Istanbul"], people: ["Fatma Betül Sayan Kaya"], focus: "people" }),
+    plan: planFor({ queries: ["Borsa Istanbul trading floor"], place: ["Turkey", "Istanbul"], people: [{ name: "Fatma Betül Sayan Kaya", ar: "فاطمة بتول صايان قايا", headline: "نائبة رئيس حزب العدالة والتنمية التركي" }], focus: "people" }),
     world: { "Fatma Betül Sayan Kaya 2026": [], "Fatma Betül Sayan Kaya": [kaya] },
     judge: pickTitle("Kaya"),
     verify: () => "RIGHT",
@@ -328,7 +328,7 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
   const withOther = file("President Erdoğan meets Chancellor Scholz, 2025.jpg", { date: "2025-06-01" });
   const r = await scenario({
     draft: { ...developers, title: "أردوغان يعلن حزمة لدعم الليرة التركية", tags: ["تركيا"], regions: ["الشرق الأوسط"] },
-    plan: planFor({ queries: [], place: ["Turkey"], people: ["Recep Tayyip Erdoğan"], focus: "people" }),
+    plan: planFor({ queries: [], place: ["Turkey"], people: [{ name: "Recep Tayyip Erdoğan", ar: "رجب طيب أردوغان", headline: "أردوغان" }], focus: "people" }),
     world: { "Recep Tayyip Erdoğan 2026": [withOther, ascii], "Recep Tayyip Erdoğan": [] },
     judge: (titles) => titles.findIndex((t) => t.includes("speaks")) + 1,
     verify: () => "RIGHT",
@@ -385,7 +385,7 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
   const tusk = file("President Donald Tusk at a signing in the Oval Office 2026.jpg", { categories: "Donald Tusk|United States" });
   const r = await scenario({
     draft: { ...developers, title: "ترامب يصدر قراراً بشأن عقوبات النفط", tags: ["ترامب", "الولايات المتحدة"], regions: ["الأمريكتان"] },
-    plan: planFor({ queries: [], place: ["United States"], people: ["Donald Trump"], focus: "people", places: [], place_queries: [] }),
+    plan: planFor({ queries: [], place: ["United States"], people: [{ name: "Donald Trump", ar: "دونالد ترامب", headline: "ترامب" }], focus: "people", places: [], place_queries: [] }),
     sources: [{ ogImage: "https://src.test/photos/signing.jpg", sourceNameEn: "Source", title: "Sanctions decision" }],
     brief: { photos: [{ n: 1, news: true, shows: "Donald Trump signing an order at his desk", people: ["Donald Trump"] }], best: 1, queries: ["Donald Trump Oval Office"] },
     world: { "Donald Trump Oval Office": [tusk, trump] },
@@ -583,14 +583,14 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   const hearing = file("CEO Mark Zuckerberg testifies before the Senate, Washington, D.C., 2018.jpg", { categories: "Mark Zuckerberg|United States Senate", date: "2018-04-10" });
   const r = await scenario({
     draft: meta,
-    plan: planFor({ queries: ["Facebook app phone"], place: ["United States"], people: ["Mark Zuckerberg", "Raúl Torrez"], focus: "subject", message: "a state court makes Meta pay for misleading users about their data", message_queries: ["Mark Zuckerberg testifies Senate"] }),
+    plan: planFor({ queries: ["Facebook app phone"], place: ["United States"], people: [{ name: "Mark Zuckerberg", ar: "مارك زوكربيرغ", headline: "ميتا" }, { name: "Raúl Torrez", ar: "راؤول توريز", headline: "" }], focus: "subject", message: "a state court makes Meta pay for misleading users about their data", message_queries: ["Mark Zuckerberg testifies Senate"] }),
     libs: { "Facebook app phone": [phone] },
     world: { "Mark Zuckerberg testifies Senate": [hearing] },
     judge: pickTitle("Zuckerberg"),
     verify: () => "RIGHT",
   });
   check("the phone of app icons is never shown; the chief executive at a hearing on the matter runs", [r.judgePrompts.some((p) => p.includes(phone.title)), r.image?.title], [false, hearing.title]);
-  check("the judges and the second check know the story's people", [r.judgePrompts[0]?.includes("Mark Zuckerberg, Raúl Torrez"), r.verifyPrompts[0]?.includes("Mark Zuckerberg, Raúl Torrez")], [true, true]);
+  check("the judges and the second check know the headline's people, and the official the headline does not name as a side figure", [r.judgePrompts[0]?.includes("(Mark Zuckerberg)"), r.verifyPrompts[0]?.includes("(Mark Zuckerberg)"), r.judgePrompts[0]?.includes("not in its headline: Raúl Torrez")], [true, true, true]);
 }
 // P. A story about an event is pictured by an earlier edition of the event, which the generic passes drop as "people and
 // banners"; it runs as a file photo.
@@ -619,6 +619,34 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   check("the exchange's building is not searched as the story's place", r.searched.includes("Shanghai Stock Exchange"), false);
   const b = await scenario({ draft: barclays, plan: planFor({ queries: ["bank office England"] }), world: {}, judge: () => 0, lastResort: { scene: "bank office", country: "United Kingdom", institution: "Barclays", city: "London" } });
   check("the last resort searches no company's headquarters", b.searched.some((q) => /headquarters|building/i.test(q)), false);
+}
+
+// R. Only the headline's people are pictured (the owner, 2026-10-24: a story headlined on Libya's parliament accepting the
+// central bank governor's resignation ran the head of the State Council, named only in its standfirst). A person leads when
+// the headline carries the words quoted for them or their Arabic surname; the governor's photograph, titled in Arabic, is found.
+{
+  const title = "رئاسة البرلمان الليبي تقبل مبدئياً استقالة محافظ المصرف المركزي";
+  const listed = [
+    { name: "Naji Issa", ar: "ناجي محمد عيسى", headline: "محافظ المصرف المركزي" },
+    { name: "Mohamed Takala", ar: "محمد تكالة", headline: "" },
+    { name: "Aguila Saleh", ar: "عقيلة صالح", headline: "رئاسة البرلمان الليبي" },
+  ];
+  const split = headlinePeople(title, listed);
+  check("the headline's governor and parliament lead; the State Council's head is a side figure", [split.lead.map((p) => p.name), split.side.map((p) => p.name)], [["Naji Issa", "Aguila Saleh"], ["Mohamed Takala"]]);
+  check("words the headline does not carry make no one its subject", headlinePeople(title, [{ name: "Mohamed Takala", ar: "محمد تكالة", headline: "المجلس الأعلى للدولة" }]).lead.length, 0);
+  check("an Arabic surname in the headline is enough", headlinePeople("أردوغان يعلن حزمة لدعم الليرة", [{ name: "Recep Tayyip Erdoğan", ar: "رجب طيب أردوغان", headline: "" }]).lead.length, 1);
+  const libya = { ...developers, title, subtitle: "تكليف فوزي أبوخزام بتسيير مهام المصرف مؤقتاً، ورئيس مجلس الدولة يؤيد التكليف", tags: ["ليبيا", "مصرف ليبيا المركزي"], regions: ["مصر والمغرب العربي"] };
+  const issa = file("ناجي عيسى مع جيرمي برنت.jpg", { date: "2025-02-11" });
+  const takala = file("Mohammed Takala - 2023.jpg", { date: "2023-11-20" });
+  const r = await scenario({
+    draft: libya,
+    plan: planFor({ queries: [], place: ["Libya", "Tripoli"], people: listed.slice(0, 2), focus: "people" }),
+    world: { "ناجي محمد عيسى": [issa], "Mohamed Takala": [takala], "Mohamed Takala 2026": [takala] },
+    judge: pickTitle("عيسى"),
+    verify: () => "RIGHT",
+  });
+  check("the side figure is never searched; the governor, titled in Arabic, is found and runs", [r.searched.some((q) => /Takala/.test(q)), r.image?.title], [false, issa.title]);
+  check("every judge is told the side figure is not the story's subject", r.judgePrompts.every((p) => p.includes("not in its headline: Mohamed Takala")), true);
 }
 
 console.log(failed ? `\n${failed} check(s) FAILED` : "\nall checks passed");
