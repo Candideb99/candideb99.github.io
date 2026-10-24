@@ -5764,6 +5764,90 @@
           "noted": []
         }
       ]
+    },
+    "gold-treasuries-reserve-asset-feds-note-f4b014": {
+      "at": "2026-10-24T15:08:33.631Z",
+      "title": "باحث في الفيدرالي: الأسعار لا المشتريات الرسمية رفعت الذهب فوق السندات الأمريكية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 38,
+            "checked": 38,
+            "supported": 33,
+            "weak": 2,
+            "noEvidence": 2,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "fed-note-oil-futures-forecasting-accuracy-b06385": {
+      "at": "2026-10-24T15:18:55.464Z",
+      "title": "باحثون في الفيدرالي: العقود الآجلة أدق من الطرق البسيطة في توقع أسعار السلع",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 28,
+            "weak": 3,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "income-convergence-developers-return-migration-74a754": {
+      "at": "2026-10-24T15:31:07.981Z",
+      "title": "مطوّرو البرمجيات المهاجرون يعودون أكثر كلما ضاقت فجوة الدخل مع بلدان المهجر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 34,
+            "checked": 34,
+            "supported": 32,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

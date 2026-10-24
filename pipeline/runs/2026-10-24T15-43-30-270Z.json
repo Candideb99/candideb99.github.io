@@ -1,0 +1,71 @@
+{
+  "mode": "rewrite",
+  "startedAt": "2026-10-24T15:36:44.633Z",
+  "durationSec": 406,
+  "published": 1,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "تأمين الناقلة في ينبع صار 3% من قيمتها، فكم يضيف ذلك لسعر البنزين؟",
+      "section": "explainers",
+      "outcome": "published",
+      "mendedAfterReview": 3,
+      "mendIssues": [
+        "العنوان الفرعي يقدّم رقماً محسوباً دون شرطه: «بحساب تقريبي مبني على تقديرات القطاع، تقارب فاتورة الرحلة عند هذه النسبة 3 ملايين دولار». المصدر 1 لا يذكر قيمة للسفينة ولا يربط فاتورة الـ7 ملايين بعلاوة 7% تحديداً، فرقم الـ3 ملايين يقوم على افتراض المقال نفسه لا على تقدير القطاع. الإصلاح: «لناقلة قيمتها نحو 100 مليون دولار، تقارب فاتورة التأمين عند 3% نحو 3 ملايين دولار للرحلة، تتوزع على حمولتها كلها».",
+        "الخلاصة التحريرية تبني على مقدمة غير واردة في المصدرين: «صعود العلاوة إلى 3% يرفع فاتورة الرحلة على مالكي الناقلات». المصدران لا يحددان من يدفع العلاوة، مالك السفينة أم المستأجر. الإصلاح: «صعود العلاوة إلى 3% يرفع كلفة الرحلة من ينبع».",
+        "في المقدمة ربط مرتبك بين النسبة والتهديد: «ونقلت رويترز هذه الأرقام عن أربعة مصادر في قطاع التأمين، والحوثيون يهددون باستهداف هذه السفن قرب باب المندب». جملة الحال تلحق سبب الارتفاع بجملة النسبة الصحفية، فيضيع السبب. الإصلاح: «ويأتي الارتفاع مع تهديد الحوثيين باستهداف هذه السفن قرب باب المندب، بحسب أربعة مصادر تأمينية تحدثت إلى رويترز»."
+      ],
+      "slug": "war-risk-insurance-premium-shipping-explained-129434",
+      "title": "ماذا تعني علاوة تأمين مخاطر الحرب البالغة 3% لناقلات ينبع؟",
+      "score": 8,
+      "image": "none"
+    }
+  ],
+  "llm": {
+    "calls": 11,
+    "failures": 0,
+    "promptTokens": 147088,
+    "completionTokens": 45712,
+    "cacheReadTokens": 81742,
+    "costUsd": 1.4533,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 11
+    }
+  },
+  "log": [
+    "[15:36:44] newsroom start mode=rewrite limit=4 dry-run=false",
+    "[15:36:44] rewrite explainer war-risk-insurance-premium-shipping-explained-129434 of 2026-09-25: «كيف تنتقل علاوة مخاطر الحرب من تأمين السفن إلى أسعار الوقود؟»",
+    "[15:36:56] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=11048",
+    "[15:36:56] explainer question: تأمين الناقلة في ينبع صار 3% من قيمتها، فكم يضيف ذلك لسعر البنزين؟ (Per-barrel pass-through of war-risk insurance premiums); opens on \"علاوة تأمين مخاطر الحرب في ينبع تقفز إلى 3% من قيمة الناقلة\"",
+    "[15:37:55] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=59434",
+    "[15:37:59] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3586",
+    "[15:37:59] data chart: none fits this piece",
+    "[15:38:32] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=32447",
+    "[15:38:32] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,lede,body] rejected=[]",
+    "[15:38:32] desk \"علاوة تأمين ناقلة في ينبع تقفز إلى 3%، فكم تضيف إلى سعر البنزين؟\": rewrote title, subtitle, lede, body",
+    "[15:38:32] checks explainer \"علاوة تأمين ناقلة في ينبع تقفز إلى 3%، فكم تضيف إلى سعر البنزين؟\": 460 words, 1 issues, 0 warnings",
+    "[15:39:14] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=42350",
+    "[15:39:14] critic explainer: revise score=7 issues=5",
+    "[15:39:14]   · أرقام لا تظهر في المصادر: 1.5, 159, 2.2, 1.4. احذف كل رقم غير مذكور في المصادر أو صحّحه.",
+    "[15:39:14]   · تقدير مقدَّم كأنه حقيقة: يقول العنوان الفرعي «نحو 1.5 دولار للبرميل وأقل من سنت للتر»، وتقول المقدمة «لكن أثرها في سعر الوقود ضئيل: نحو 1.5 دولار للبرميل». لا ي",
+    "[15:39:14]   · الافتراض غائب عن القارئ وخطأ في وصف الحد الأقصى: عبارة «فلو طُبّقت علاوة ينبع البالغة 3% على السفينة نفسها» لا تقول إن قيمة السفينة الضمنية نحو 100 مليون دولار،",
+    "[15:39:14]   · سبب غير منسوب: عبارة «تنبع هذه الحركة من الخوف على الإمدادات. فقد أوقفت هجمات بطائرات مسيّرة خط أنابيب شرق-غرب...» تجعل توقف الخط في مطلع سبتمبر سبباً لحركة برن",
+    "[15:40:27] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=72790",
+    "[15:40:57] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=30665",
+    "[15:40:57] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,whyItMatters,body] rejected=[]",
+    "[15:40:57] desk \"ماذا تعني علاوة تأمين مخاطر الحرب البالغة 3% لناقلات ينبع؟\": rewrote title, subtitle, whyItMatters, body",
+    "[15:40:57] last desk pass for 1 fault(s): نسبة النقل الحرفي من مصدر عربي مرتفعة (20%). أعد صياغة كل جم",
+    "[15:41:32] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=35001",
+    "[15:41:32] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,lede,whyItMatters,body] rejected=[]",
+    "[15:41:32] desk \"ماذا تعني علاوة تأمين مخاطر الحرب البالغة 3% لناقلات ينبع؟\": rewrote subtitle, lede, whyItMatters, body",
+    "[15:41:32] last desk pass: clean",
+    "[15:42:03] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=30839",
+    "[15:42:03] critic (second pass) explainer: revise score=8",
+    "[15:42:39] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=36138",
+    "[15:43:30] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=50288",
+    "[15:43:30] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,lede,whyItMatters,body] rejected=[]",
+    "[15:43:30] desk \"ماذا تعني علاوة تأمين مخاطر الحرب البالغة 3% لناقلات ينبع؟\": rewrote subtitle, lede, whyItMatters, body",
+    "[15:43:30] mended explainer \"ماذا تعني علاوة تأمين مخاطر الحرب البالغة 3% لناقلات ينبع؟\": the second pass's 3 finding(s) sent back once more",
+    "[15:43:30] rewrote explainer \"ماذا تعني علاوة تأمين مخاطر الحرب البالغة 3% لناقلات ينبع؟\" -> war-risk-insurance-premium-shipping-explained-129434"
+  ]
+}
