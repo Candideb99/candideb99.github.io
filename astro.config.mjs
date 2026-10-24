@@ -20,7 +20,7 @@ export default defineConfig({
   // The defence section was folded into companies (the defence industry) and economy on 2026-10-19, at the owner's choice.
   // The energy sub-topic «الكهرباء والطاقة النظيفة» became «الطاقة النظيفة» on 2026-10-20 (the owner: an electricity
   // category is weird).
-  redirects: { ...tagRedirects(storyTags()), "/defense/": "/topics/companies/defense/", "/analysis/desk/defense/": "/analysis/", "/topics/energy/power/": "/topics/energy/clean/" },
+  redirects: { ...tagRedirects(storyTags()), "/defense/": "/topics/companies/defense/", "/analysis/desk/defense/": "/analysis/", "/topics/energy/power/": "/topics/energy/clean/", "/articles/ai-agents-delegable-work-income-divide-79e720/": "/articles/ai-agents-delegation-divide-rich-poor-countries-972617/" },
   trailingSlash: "always",
   compressHTML: true,
   devToolbar: { enabled: false },
