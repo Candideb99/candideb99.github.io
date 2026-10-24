@@ -30,14 +30,13 @@ readingMinutes: 4
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/7/70/Sen._Susan_Collins%2C_R-Maine_%286761048503%29.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/United_States_Customs_and_Border_Protection_Officers_conduct_daily_operations_at_the_Detroit_Windsor_Tunnel_Port_of_Entry_at_the_Port_of_Detroit%2C_Michigan_on_August_24%2C_2022_-_20.jpg/1280px-thumbnail.jpg
   width: 1280
-  height: 854
-  alt: السيناتورة الجمهورية سوزان كولينز في الكابيتول عام 2011 (أرشيفية)
-  credit: Medill DC · CC BY 2.0 · ويكيميديا كومنز
-  license: CC BY 2.0
-  licenseUrl: https://creativecommons.org/licenses/by/2.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ASen._Susan_Collins%2C_R-Maine_(6761048503).jpg
+  height: 951
+  alt: ضباط الجمارك الأمريكية يفتشون شاحنة تجارية على الحدود مع كندا
+  credit: CBP Photography · Public domain · ويكيميديا كومنز
+  license: Public domain
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AUnited_States_Customs_and_Border_Protection_Officers_conduct_daily_operations_at_the_Detroit_Windsor_Tunnel_Port_of_Entry_at_the_Port_of_Detroit%2C_Michigan_on_August_24%2C_2022_-_20.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat

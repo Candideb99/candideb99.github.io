@@ -27,15 +27,7 @@ regions:
 readingMinutes: 4
 chart: null
 table: null
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Deutsche-boerse-parkett-ffm006.jpg/1280px-Deutsche-boerse-parkett-ffm006.jpg
-  width: 1280
-  height: 902
-  alt: متداولون في قاعة تداول بورصة فرانكفورت
-  credit: Dontworry · CC BY-SA 3.0 · ويكيميديا كومنز
-  license: CC BY-SA 3.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/3.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ADeutsche-boerse-parkett-ffm006.jpg
+image: null
 sources:
   - name: مجلس الاحتياطي الفيدرالي
     nameEn: Federal Reserve Board (FEDS Notes)

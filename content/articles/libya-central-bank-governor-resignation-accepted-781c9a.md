@@ -20,15 +20,7 @@ regions:
 readingMinutes: 4
 chart: null
 table: null
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Mohammed_Takala_-_2023.jpg/1280px-Mohammed_Takala_-_2023.jpg
-  width: 1280
-  height: 913
-  alt: رئيس المجلس الأعلى للدولة في ليبيا محمد تكالة خلال لقائه رئيس مجلس الدوما الروسي عام 2023
-  credit: State Duma of the Russian Federation · CC BY 4.0 · ويكيميديا كومنز
-  license: CC BY 4.0
-  licenseUrl: https://creativecommons.org/licenses/by/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AMohammed_Takala_-_2023.jpg
+image: null
 sources:
   - name: اندبندنت عربية
     nameEn: Independent Arabia

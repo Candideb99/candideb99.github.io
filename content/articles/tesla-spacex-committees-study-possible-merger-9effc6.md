@@ -32,14 +32,14 @@ readingMinutes: 3
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Front_row_club._The_outside_board_members_at_the_Tesla_annual_shareholder_meeting_%2827384178855%29.jpg/1280px-Front_row_club._The_outside_board_members_at_the_Tesla_annual_shareholder_meeting_%2827384178855%29.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/0/04/Elon_Musk_-_The_Summit_2013.jpg
   width: 1280
-  height: 1075
-  alt: روبين دنهولم وأعضاء مستقلون في مجلس تسلا خلال اجتماع المساهمين عام 2016
-  credit: Steve Jurvetson · CC BY 2.0 · ويكيميديا كومنز
+  height: 1144
+  alt: إيلون ماسك خلال مؤتمر ذا سميت عام 2013
+  credit: Heisenberg Media · CC BY 2.0 · ويكيميديا كومنز
   license: CC BY 2.0
   licenseUrl: https://creativecommons.org/licenses/by/2.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AFront_row_club._The_outside_board_members_at_the_Tesla_annual_shareholder_meeting_(27384178855).jpg
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AElon_Musk_-_The_Summit_2013.jpg
 sources:
   - name: بي بي سي
     nameEn: BBC News

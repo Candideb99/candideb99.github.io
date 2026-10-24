@@ -30,15 +30,7 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Sundar_Pichai_%282023%29.jpg/1280px-Sundar_Pichai_%282023%29.jpg
-  width: 1280
-  height: 853
-  alt: سوندار بيتشاي الرئيس التنفيذي لغوغل خلال اجتماع في المفوضية الأوروبية ببروكسل عام 2023
-  credit: "Photographer: Lukasz Kobus (European Commission) · CC BY 4.0 · ويكيميديا كومنز"
-  license: CC BY 4.0
-  licenseUrl: https://creativecommons.org/licenses/by/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ASundar_Pichai_(2023).jpg
+image: null
 sources:
   - name: الجزيرة الإنجليزية
     nameEn: Al Jazeera English

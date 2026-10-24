@@ -32,14 +32,14 @@ readingMinutes: 4
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Ra%C3%BAl_Torrez.jpg/1280px-Ra%C3%BAl_Torrez.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Mark_Zuckerberg_F8_2018_Keynote.jpg/1280px-Mark_Zuckerberg_F8_2018_Keynote.jpg
   width: 1280
-  height: 854
-  alt: المدعي العام لولاية نيو مكسيكو راؤول توريز (أرشيفية)
-  credit: LandofEnchantment Pics · CC0 · ويكيميديا كومنز
-  license: CC0
-  licenseUrl: http://creativecommons.org/publicdomain/zero/1.0/deed.en
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ARa%C3%BAl_Torrez.jpg
+  height: 853
+  alt: مارك زوكربيرغ خلال مؤتمر «إف 8» لـ«فيسبوك» عام 2018
+  credit: Anthony Quintano from Honolulu, HI, United States · CC BY 2.0 · ويكيميديا كومنز
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AMark_Zuckerberg_F8_2018_Keynote.jpg
 sources:
   - name: الجزيرة الإنجليزية
     nameEn: Al Jazeera English
