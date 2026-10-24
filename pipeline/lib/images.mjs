@@ -1592,6 +1592,10 @@ export function creditedBody(photo) {
     /[Cc]ourtesy of\s+([^|()\n.;"]{3,70})/,
     /([^|()\n"]{3,70}?)\s*\/\s*(?:Handout|HANDOUT)/,
     /(?:Handout|HANDOUT)(?: photo| image)?\s*(?:from|by|:)\s*([^|()\n.;"]{3,70})/,
+    // The Arab desks' own way: the credit closes the caption in brackets. The ministry's photograph of its minister at the
+    // Narges well, «… بالبحر المتوسط (وزارة البترول)» in Asharq Al-Awsat, was passed over as uncredited (2026-10-24); an
+    // agency's «(رويترز)», «(أرشيفية)» or the outlet's own name in brackets are refused below as before.
+    /\(([^()\n]{3,60})\)\s*$/,
   ];
   for (const re of patterns) {
     const m = text.match(re);

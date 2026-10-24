@@ -24,14 +24,12 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Stena_Forth_%28IMO_9428932%29_Las_Palmas_2018.jpg/1280px-Stena_Forth_%28IMO_9428932%29_Las_Palmas_2018.jpg
+  url: /photos/handouts/37b87a9e62d1.jpg
   width: 1280
-  height: 855
-  alt: سفينة حفر للتنقيب البحري عن النفط والغاز
-  credit: Niels Johannes · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AStena_Forth_(IMO_9428932)_Las_Palmas_2018.jpg
+  height: 719
+  alt: جانب من تفقد وزير البترول بدء أعمال الحفر في منطقة «نرجس» بالبحر المتوسط
+  credit: وزارة البترول المصرية
+  license: صورة رسمية
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat

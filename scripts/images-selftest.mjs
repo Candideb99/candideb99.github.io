@@ -431,8 +431,9 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
       creditedBody({ caption: "Egypt's Petroleum Ministry/Handout via REUTERS" }),
       creditedBody({ caption: "Al Jaber at the signing. Photo: ADNOC" }),
       creditedBody({ caption: "جانب من الاجتماع" }),
+      creditedBody({ caption: "وزير البترول يتفقد بدء أعمال الحفر بحقل «نرجس» للغاز بالبحر المتوسط (وزارة البترول)" }),
     ],
-    ["وزارة البترول المصرية", "Egypt's Petroleum Ministry", "ADNOC", ""],
+    ["وزارة البترول المصرية", "Egypt's Petroleum Ministry", "ADNOC", "", "وزارة البترول"],
   );
   const story = { title: "وزير البترول يبحث مع «فيرتيجلوب» إنشاء مجمع للأسمدة في مصر", lede: "بحث وزير البترول مع رئيس «فيرتيجلوب».", body: "قالت وزارة البترول في بيان إن...", tags: ["مصر"] };
   const ministry = { url: "https://cdn.test/meeting.jpeg", credit: "الصورة من وزارة البترول المصرية", caption: "", width: 975 };
@@ -445,8 +446,12 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
       handoutFault({ ...ministry, credit: "الصورة من وزارة الصحة" }, { story }) ?? "",
       handoutFault({ ...ministry, width: 600 }, { story }) ?? "",
       handoutFault({ ...ministry, credit: "" , caption: "جانب من الاجتماع" }, { story }) ?? "",
+      handoutFault({ ...ministry, credit: "", caption: "جانب من اجتماع وزير البترول (وزارة البترول)" }, { story }),
+      handoutFault({ ...ministry, credit: "", caption: "ناقلة غاز طبيعي مسال تمر على طول ساحل سنغافورة (رويترز)" }, { story }) ?? "",
+      handoutFault({ ...ministry, credit: "", caption: "مقر الوزارة (أرشيفية)" }, { story }) ?? "",
+      handoutFault({ ...ministry, credit: "", caption: "جانب من الاجتماع (الشرق الأوسط)" }, { story, source: { sourceName: "الشرق الأوسط" } }) ?? "",
     ].map((x) => (x === null ? "ok" : x.split(" ")[0])),
-    ["ok", "credited", "the", "«وزارة", "too", "no"],
+    ["ok", "credited", "the", "«وزارة", "too", "no", "ok", "credited", "the", "credited"],
   );
   const draft = { ...developers, ...story, kind: "news" };
   const sources = [{ sourceNameEn: "CNBC Arabia", sourceName: "سي إن بي سي عربية", title: "مصر تبحث مع فيرتيغلوب", url: "https://www.cnbcarabia.com/158331", photos: [ministry] }];
