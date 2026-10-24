@@ -5600,6 +5600,114 @@
           "noted": []
         }
       ]
+    },
+    "moodys-holds-france-rating-negative-outlook-a08070": {
+      "at": "2026-10-24T04:53:58.740Z",
+      "title": "موديز تبقي تصنيف فرنسا رغم تجاوز عائد سنداتها 5%",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 28,
+            "checked": 28,
+            "supported": 23,
+            "weak": 2,
+            "noEvidence": 2,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "egypt-budget-agencies-gas-fuel-saving-billion-pounds-fddbf2": {
+      "at": "2026-10-24T05:02:52.714Z",
+      "title": "وزير المالية المصري: خفض استهلاك أجهزة الموازنة للغاز والوقود وفّر بين 7 و8 مليارات جنيه",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 9,
+            "checked": 9,
+            "supported": 8,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 7,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وقال إن الدين الخارجي لأجهزة الموازنة انخفض بنحو 6.5 مليار دولار خلال 3 سنوات، أي أن مصر سددت أكثر مما اقترضت، وإن الإيرادات الضريبية بلغت 13% من الناتج المحلي خلال عامين من دون فرض أعباء جديدة.",
+              "quote": "أكد كجوك، خفض الدين الخارجي لأجهزة الموازنة بنحو 6 مليارات دولار خلال السنوات الثلاث الماضية، موضحًا أن مصر سددت أكثر مما اقترضت.",
+              "source": "Alborsa News",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "sk-hynix-halts-solidigm-us-ipo-f97d46": {
+      "at": "2026-10-24T05:11:39.190Z",
+      "title": "إس كيه هاينكس تعلّق طرح وحدتها «سوليدايم» في أمريكا وتعزوه إلى تقلب الأسواق",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 35,
+            "checked": 35,
+            "supported": 24,
+            "weak": 2,
+            "noEvidence": 6,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 3,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "علّقت «إس كيه هاينكس» الكورية الجنوبية الجمعة خطة إدراج وحدتها «سوليدايم» للرقائق في الولايات المتحدة، وعزت قرارها إلى تقلبات السوق.",
+              "quote": "On Thursday, South Korean memory giant SK Hynix, one of the biggest winners in the AI boom, said it's pulling an IPO for its U.S.-based Solidigm unit, citing market volatility.",
+              "source": "CNBC",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []
