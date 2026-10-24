@@ -1,447 +1,188 @@
 {
-  "mode": "news",
-  "startedAt": "2026-10-24T04:44:28.557Z",
-  "durationSec": 1631,
-  "published": 3,
+  "mode": "explainer",
+  "startedAt": "2026-10-24T09:46:09.441Z",
+  "durationSec": 408,
+  "published": 1,
   "refreshed": 0,
   "report": [
     {
-      "headline": "موديز تبقي تصنيف فرنسا عند Aa3 رغم صعود كلفة الاقتراض",
-      "section": "economy",
-      "importance": 7,
-      "sources": [
-        "https://www.nytimes.com/2026/10/23/business/france-debt-moodys-protests.html",
-        "https://www.ft.com/content/840f9c94-cb41-4340-9fc4-41e76d908831?syn-25a6b1a6=1",
-        "https://www.bloomberg.com/news/articles/2026-10-23/france-avoids-moody-s-downgrade-in-reprieve-after-week-of-crisis",
-        "https://www.cnbc.com/2026/10/23/moodys-holds-steady-on-frances-credit-rating-as-country-grapples-with-turmoil-and-higher-yields.html",
-        "https://www.fidelity.com/learning-center/investment-products/fixed-income-bonds/bond-ratings"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان والسطر التمهيدي والمقدمة تبيّن ما ثبت وما بقي معلقاً. ثبت التصنيف عند Aa3، وبقيت النظرة السلبية، والقرار قائم على افتراض إقرار ميزانية 2027 (المصدر 2). لا تناقض بين العنوان والسطر التمهيدي.",
-              "repair": ""
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "يشرح النص الجدارة الائتمانية وعلاقة التصنيف بالعائد (المصدر 5)، لكنه يترك «الدرجة الاستثمارية» عتبةً رمزية دون التمييز بين الفئة الاستثمارية والفئة المضاربية، ولا يبيّن موقع Aa3 في السلم. وفي «لماذا يهمّ» مقدمات مسندة: افتراض الميزانية، والنظرة السلبية، وتريليون دولار تستحق بحلول 2030، والعائد فوق 5%. والاستنتاج المبني عليها مشروط ومتناسب: تعثر الميزانية يُبقي إعادة التمويل معرّضة لكلفة مرتفعة واحتمال الخفض قائماً.",
-              "repair": "تُضاف جملة من المصدر 5 تقول إن ما دون Baa3 يُعد مضاربياً عالي المخاطر، وإن Aa3 هي الرابعة من أعلى سلم موديز. يبقى المربع كما هو."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "شرط عودة النظرة إلى مستقرة منفصل عن فقرة النظرة السلبية ومعلّق في آخر التقرير بعد الاحتجاجات. وجملة «وتقف موديز بقرارها على خلاف...» تخلق مقابلة لا تسندها المصادر.",
-              "repair": "تُدمج جملة الشرط في فقرة النظرة السلبية، وتُصاغ إشارة ستاندرد آند بورز وفيتش خلفيةً بصيغة «وكانت... قد خفضتا»، ويُختم التقرير بما يكمل الحساب دون جملة يتيمة."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الأرقام مطابقة للمصادر: 5% للمرة الأولى منذ 2002، وأعلى فارق في 15 عاماً، و5.5%، و3%، وأكثر من تريليون دولار بحلول 2030، و121.7% في 2027، وأكثر من 500 ألف محتج، و17 أكتوبر. لكن «على نحو مستدام» تحرّف معنى «durable increase»، وتعريف الفارق مضاف دون مصدر.",
-              "repair": "تُكتب «والارتفاع الدائم في كلفة الاقتراض»، وتُحذف جملة تعريف الفارق غير المسندة."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "publish",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يبيّن العنوان والسطر التمهيدي والمقدمة معاً ما تغيّر وما بقي. أبقت موديز التصنيف عند Aa3 وتجنبت خفضه، وأبقت النظرة المستقبلية سلبية، وبنت قرارها على افتراض إقرار ميزانية 2027 الخافضة للعجز (المصدران 2 و4). وتصف «رغم» في العنوان تناقضاً تسنده المصادر: يربط المصدر 1 ارتفاع كلفة الاقتراض بتفاقم وضع الدين، ويصف المصدر 3 القرار بأنه متنفس وسط قفزة العوائد. ولا يوحي النص بتحسن التصنيف.",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "يشرح النص من المصدر 5 أربعة أمور: الجدارة الائتمانية، والفرق بين الفئة الاستثمارية (Baa3 فما فوق) والفئة المضاربية عالية العائد، وموقع Aa3 رابعةً في سلم موديز ومقابلها AA-، وسبب مطالبة المقرضين بعائد أعلى من المقترض الأدنى تصنيفاً. ويضع المصدر 4 الأرقام في سياقها: أعلى عائد منذ 2002، وأعلى فارق مع ألمانيا في 15 عاماً، والعجز مقارنة بحد 3%، وتوقع الدين لعام 2027. وتأتي خلفية خفض ستاندرد آند بورز وفيتش في 2025 دون مقابلة مصطنعة. أما «لماذا يهمّ» فمقدماته مسندة: افتراض الميزانية، والنظرة السلبية، وتريليون دولار تستحق بحلول 2030، والعائد فوق 5%. واستنتاجه مشروط بتعثر الميزانية ومتناسب، ويضيف قيد إعادة التمويل ولا يكرر خلاصة المتن.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "clear",
-              "evidence": "لكل فقرة وظيفة واضحة: موقع Aa3 في السلم، ثم معنى الرموز، ثم سبب النظرة السلبية وشرط عودتها إلى مستقرة، ثم ضغط السوق والمالية العامة، ثم الاحتجاجات وترقب المستثمرين، ثم قراءة «فايننشال تايمز» و«بلومبرغ» المنسوبة لكل منهما. يُختم التقرير بردود الفعل لا بجملة يتيمة، ويخلو من جمل الحشو عمّا لا تقوله المصادر ومن الخلاصات المجردة. يبلغ طول المقدمة والمتن نحو 410 كلمات.",
-              "repair": ""
-            },
-            "precision": {
-              "status": "clear",
-              "evidence": "تطابق الأرقام والتواريخ المصادر: عائد 5% للمرة الأولى منذ 2002، وفارق في أعلى مستوى منذ 15 عاماً، وعجز نحو 5.5% مقابل حد 3%، وأكثر من تريليون دولار تستحق بحلول 2030، و121.7% في 2027 منسوبة توقعاً لوزارة المالية، وأكثر من 500 ألف محتج، ومظاهرة باريس في 17 أكتوبر. ويوافق يوم الجمعة 23 أكتوبر 2026 تاريخ التقرير. وتبقى الميزانية افتراضاً لا إقراراً منجزاً، وعودة النظرة إلى مستقرة مشروطة بتقليص العجز.",
-              "repair": ""
-            }
-          }
-        }
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
+      "headline": "لماذا يبيع المستثمرون الذهب حين تهبط الأسهم بدل أن يلجؤوا إليه؟",
+      "section": "explainers",
       "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "موديز أبقت التصنيف Aa3 على افتراض إقرار ميزانية لعام 2027 تخفض العجز",
-          "source": 2
-        },
-        {
-          "fact": "النظرة السلبية تعكس خطر أن يواصل تشرذم المشهد السياسي إعاقة عمل المؤسسات التشريعية",
-          "source": 4
-        },
-        {
-          "fact": "فرنسا تواجه ديوناً تتجاوز تريليون دولار يحل أجلها بحلول 2030",
-          "source": 4
-        },
-        {
-          "fact": "عائد السندات الفرنسية لأجل 10 سنوات تجاوز 5% هذا الأسبوع للمرة الأولى منذ 2002",
-          "source": 4
-        }
+      "mendedAfterReview": 4,
+      "mendIssues": [
+        "خطأ في الإسناد: عبارة «وهذا ما يقصده لين بوصفه مصدراً ممتازاً للسيولة» تنسب إلى جاستن لين تفسيراً لم يقله. في المصدر الأول قال لين إن الذهب «مصدر ممتاز للسيولة اللازمة لتلبية طلبات تغطية الهامش ومتطلبات رأس المال»، ولم يتحدث عن تغيّر النظرة إلى المعدن ولا عن تفضيله على بيع الأسهم الخاسرة. الإصلاح: حذف «وهذا ما يقصده لين» وتقديم الشرح بصوت المجلة، مثلاً: «أما الذهب فيُباع في هذه الحالة لجمع النقد، لا لأن النظرة إليه تغيّرت».",
+        "ترجمة حرفية: «وهذا ما يُعرف بنداء تغطية الهامش» نقلٌ كلمة بكلمة لمصطلح margin call. والمقال نفسه ينقل عن لين بعد فقرتين صيغة المصدر «طلبات تغطية الهامش»، فيجد القارئ اسمين للشيء نفسه. وتتكرر الصيغة في خانة الحقائق «نداء تغطية الهامش». الإصلاح: «وهذا ما يُعرف بطلب تغطية الهامش» في المتن وفي الحقائق الرئيسية.",
+        "علاقة غير مسندة وفقرة معزولة: «وتراجع المعدن هذا الأسبوع رغم أنه خسر أكثر من 20% منذ أن شنت الولايات المتحدة وإسرائيل الحرب على إيران في 28 فبراير». أداة «رغم» تصنع تناقضاً لا يقوم عليه دليل، فخسارة سابقة لا تجعل خسارة جديدة مستغربة. والجملة معلّقة في فقرة وحدها لا تخدم سؤال القسم «لماذا الذهب وليس الأسهم الخاسرة نفسها؟». الإصلاح: حذفها، أو نقلها خلفيةً إلى قسم «هل يستعيد الذهب دوره ملاذاً؟» بصيغة بلا تضاد: «وكان الذهب قد خسر أكثر من 20% منذ بدء الحرب على إيران في 28 فبراير».",
+        "صيغة زمنية أقوى من المصدر في «لماذا يهمّ»: «وسعر برنت لا يزال فوق 114 دولاراً للبرميل». المصدر الثاني يذكر تجاوز 114.20 دولار صباح الجمعة فقط، و«لا يزال» توحي باستمرار لم يُرصد. الإصلاح: «وقد تجاوز سعر برنت 114 دولاراً للبرميل صباح الجمعة»."
       ],
-      "slug": "moodys-holds-france-rating-negative-outlook-a08070",
-      "title": "موديز تبقي تصنيف فرنسا رغم تجاوز عائد سنداتها 5%",
-      "score": 9,
-      "image": "cover-art"
-    },
-    {
-      "headline": "نوفاتك الروسية متهمة بتمويل مشروع غاز مسال أمريكي بـ25 مليار دولار",
-      "section": "energy",
-      "importance": 7,
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-10-24/us-lng-project-developer-funded-by-russia-s-novatek-ft-says",
-        "https://www.ft.com/content/e9cfbfbb-e65a-4303-aebb-20d59319ef1b?syn-25a6b1a6=1"
-      ],
-      "outcome": "skipped: no source body could be fetched (333 chars of feed summaries only)"
-    },
-    {
-      "headline": "مصر توفر 7 إلى 8 مليارات جنيه بترشيد الوقود في الجهات الحكومية",
-      "section": "economy",
-      "importance": 6,
-      "sources": [
-        "https://www.alborsaanews.com/2026/10/23/2001384",
-        "https://www.masrawy.com/news/news_economy/details/2026/10/23/3067421/%D9%83%D8%AC%D9%88%D9%83-%D9%88%D9%81%D8%B1%D9%86%D8%A7-%D9%85%D9%86-7-%D8%A5%D9%84%D9%89-8-%D9%85%D9%84%D9%8A%D8%A7%D8%B1%D8%A7%D8%AA-%D8%AC%D9%86%D9%8A%D9%87-%D9%85%D9%86-%D8%AA%D8%B1%D8%B4%D9%8A%D8%AF-%D8%A7%D8%B3%D8%AA%D9%87%D9%84%D8%A7%D9%83-%D8%A7%D9%84%D9%88%D9%82%D9%88%D8%AF-%D9%88%D8%A7%D9%84%D8%BA%D8%A7%D8%B2",
-        "https://www.alborsaanews.com/2026/10/23/2001367"
-      ],
-      "format": "short",
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "يقول العنوان «ترشيد وقود الجهات الحكومية»، والمصادر تحصر الخفض في «أجهزة الموازنة» وتشمل الغاز والوقود معاً. ويبقى غير واضح للقارئ أن أرقام الدين والضرائب جاءت من جلسة أخرى ولا تتصل بوفر الطاقة مباشرة.",
-              "repair": "تحديد النطاق في العنوان بـ«أجهزة الموازنة» و«الغاز والوقود»، وتقديم أرقام الدين بوصفها جزءاً من حديث الوزير عن موارد الموازنة في المنتدى نفسه."
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "يورد المصدر 1 الصلة بين الطاقة والنقد الأجنبي والاستدامة المالية، ويورد المصدر 3 هدف خفض الدين إلى أقل من 70% من الناتج بحلول يونيو 2030 وأدوات تحقيقه. المسودة تغفل الاثنين.",
-              "repair": "إضافة الهدف وأدواته من المصدر 3 مسنداً إلى الوزير بوصفه مستهدفاً، واستخدام صلة الطاقة بالنقد الأجنبي من المصدر 1 جسراً بين الفقرات."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "تبدأ الفقرة الثانية بـ«وفي جلسة «موارد النقد وإدارة الدين»» فتنقل القارئ إلى ملف آخر دون رابط. وتسرد الفقرة الأخيرة («وأشار إلى أن لدى الحكومة خططاً استرشادية... وأن الانضباط المالي...») تصريحات عامة للوزير واحدة تلو الأخرى، وتتكرر الافتتاحات «وربط/وأوضح/وأشار».",
-              "repair": "إعادة التجميع في ثلاث فقرات: الأولى للوفر وسببه المعلن، والثانية لعائد الطاقة المتجددة من واردات الغاز وصلته بالنقد الأجنبي، والثالثة لخفض الدين الخارجي ومستهدف 2030، مع حذف العموميات."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "«الجمعة» تاريخ مستنتج من تاريخ النشر، و«بسبب الأزمات» تحويل لعبارة «في ظل» إلى علاقة سببية. أما الأرقام (20%، و7–8 مليارات جنيه، و200–250 مليون دولار، و13%، و6.5 مليار دولار خلال 3 سنوات) فمطابقة للمصدرين 1 و3.",
-              "repair": "حذف «الجمعة» والاكتفاء بـ«اليوم الرابع من المنتدى»، واستبدال «بسبب» بـ«في ظل»."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان والمقدمة يحصران الخفض في «أجهزة الموازنة» ويشملان «الغاز والوقود» بنسبة 20% في العام المالي الماضي، ويقدّمان الوفر (7 إلى 8 مليارات جنيه) بوصفه تصريحاً للوزير، دون تضخيم.",
-              "repair": ""
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "عبارة «في ظل الأزمات» صُحّحت وصارت تعبّر عن تزامن لا عن سبب. لكن السياق الأهم لحديث الدين غائب، وهو المستهدف المعلن «أقل من 70% من الناتج المحلي بحلول يونيو 2030» وأدواته (المصدر 3).",
-              "repair": "إضافة المستهدف وأدواته مسندين إلى الوزير بوصفهما مستهدفاً، بدل جملة الانضباط المالي العامة."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "جملة الطاقة والنقد الأجنبي تصلح جسراً بين الجزأين، لكنها موضوعة في غير جلستها. ثم تنتقل الفقرة الثانية بعبارة «وفي جلسة «موارد النقد وإدارة الدين» بالمنتدى نفسه». وتنتهي الفقرة الأخيرة بسرد تصريحات عامة للوزير («وقال كجوك إن الانضباط المالي...») بدل أن تنتهي بالخطوة المقبلة.",
-              "repair": "افتتاح فقرة الدين بجملة صلة الطاقة بالنقد الأجنبي والاستدامة المالية (المصدر 1)، ثم خفض الدين الخارجي بنحو 6.5 مليار دولار ونسبة الإيرادات الضريبية، وختم المقال بالسقوف المرنة ومستهدف 2030 وأدواته."
-            },
-            "precision": {
-              "status": "clear",
-              "evidence": "الأرقام مطابقة: 20%، و7 إلى 8 مليارات جنيه، و200 إلى 250 مليون دولار سنوياً، و13% من الناتج خلال عامين، ونحو 6.5 مليار دولار خلال 3 سنوات. الرقم الأخير مأخوذ من المصدر 1، وهو أدق من «نحو 6 مليارات» في المصدر 3، ومسبوق بـ«نحو». وقد حُذف «الجمعة» ولم يعد في المقال تاريخ مستنتج.",
-              "repair": ""
-            }
-          }
-        }
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [],
-      "slug": "egypt-budget-agencies-gas-fuel-saving-billion-pounds-fddbf2",
-      "title": "وزير المالية المصري: خفض استهلاك أجهزة الموازنة للغاز والوقود وفّر بين 7 و8 مليارات جنيه",
+      "slug": "why-investors-sell-gold-when-stocks-fall-f9be16",
+      "title": "لماذا يبيع المستثمرون الذهب بدل اللجوء إليه حين تهبط الأسهم؟",
       "score": 8,
-      "image": "photo"
-    },
-    {
-      "headline": "إس كيه هاينكس تعلّق طرح سوليدايم في أمريكا مع اضطراب أسهم الذكاء الاصطناعي",
-      "section": "technology",
-      "importance": 6,
-      "sources": [
-        "https://www.cnbc.com/2026/10/23/ai-turmoil-neoclouds-struggle-credit-risks-jump-solidigm-pulls-ipo.html",
-        "https://www.cnbc.com/2026/10/23/sk-hynix-solidigm-ipo-.html",
-        "https://www.gulf-times.com/article/736461/business/sk-hynix-puts-us-ipo-of-chip-unit-solidigm-on-hold"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "العنوان والمقدمة يوضحان أن الطرح عُلّق ولم تتغير حاجة سوليدايم إلى الاستثمار. لكن «اعتراضات رقابية» تصوّر تحذيراً واحتمال مراجعة على أنه اعتراض قائم.",
-              "repair": "استبدال «اعتراضات رقابية» بـ«تحذير الهيئة الرقابية من احتمال مخالفة قواعد الإدراج المزدوج» (المصدران 2 و3)."
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "السياق جيد: الغرض من الطرح، وشراء الوحدة من إنتل، ومقارنة 31% بـ20% لمؤشر كوسبي، وتعريف غيلبرت بدوره ومؤسسته. غير أن صندوق «لماذا يهمّ» يعامل التمويل الذاتي كأنه أمر محسوم، والشركة لم تحسم سوى أنها تبحث بدائل. وسياق تصحيح أسهم الرقائق (المصدر 2) غائب لصالح كور ويف.",
-              "repair": "صياغة الصندوق بشرطه («إن لم تجد بديلاً») وحذف المقارنة مع الطلب. إضافة تراجع إنفيديا وإيه إم دي سياقاً لـ«التصحيح الأوسع لأسهم أشباه الموصلات»."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "معظم الفقرات تؤدي وظيفة واضحة. لكن الخاتمة تنتهي بخبر نتائج ألفابت ومايكروسوفت وأمازون، وهو حدث آخر، وفقرة مقايضات كور ويف تبتعد عن قصة الشركة.",
-              "repair": "إنهاء المتن عند حاجة الشركة إلى خطة تمويل موثوقة قبل نتائجها، واختصار فقرة السوق إلى ما يخص أسهم الرقائق ومخاوف الفائدة والديون."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "«نيويورك» غير واردة في المصادر. والإسناد «قالوا لصحيفة غلف تايمز» غير دقيق. ورقما 15 و150 مليار دولار في الحقائق الرئيسية بلا تحفظ «بحسب مطلعين».",
-              "repair": "«في الولايات المتحدة»، و«قال أشخاص مطلعون على الخطة»، وإضافة «بحسب مطلعين» إلى الرقمين في الحقائق الرئيسية."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "publish",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يقول العنوان والعنوان الفرعي والمقدمة إن الطرح عُلّق بسبب تقلب الأسواق (المصدران 1 و3)، وإن حاجة الوحدة الاستثمارية لم تتغير (المصدران 2 و3)، وإن الشركة تبحث بدائل. وتنقل المقدمة موقف الهيئة الرقابية في حدوده: «حذّرت من أن الإدراج قد يخالف»، لا اعتراضاً قائماً. وقد زالت «اعتراضات رقابية» و«نيويورك».",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "يورد التقرير السياق الذي تحمله المصادر:\n- وظيفة سوليدايم وشراءها من إنتل في 2021 (المصدر 1).\n- غرض الطرح وقيود الطاقة الإنتاجية (المصدر 2).\n- تشديد قواعد الإدراج المزدوج في يوليو (المصدر 3).\n- مقارنة تراجع السهم 31% بتراجع كوسبي 20% (المصدر 3).\n- تصحيح أسهم الرقائق: إنفيديا 4.4% وإيه إم دي 8.1% (المصدر 2).\n- تعريف غيلبرت بدوره ومؤسسته، والمنتدى بأنه هيئة مستقلة.\nأما الصندوق فمقدماته مسندة: غرض الطرح، والقيد على الطاقة، ومراجعة الاستثمارات، وضغط واشنطن. واستنتاجه مشروط بعبارة «إن لم تجد بديلاً».",
-              "repair": ""
-            },
-            "flow": {
-              "status": "clear",
-              "evidence": "تتدرج الفقرات من القرار ومبرراته، إلى الوحدة وغرض الطرح، فالعامل الرقابي، فأداء السهم، فردود الفعل، فالسوق، فواشنطن، وتنتهي بالخطوة التالية: خطة تمويل موثوقة قبل النتائج. وقد حُذفت خاتمة ألفابت ومايكروسوفت وأمازون وفقرة مقايضات كور ويف. ولا يكرر الصندوق خلاصة المتن حرفياً، بل يضيف ربط توقيت المصنع بالمراجعة وبمباحثات واشنطن.",
-              "repair": ""
-            },
-            "precision": {
-              "status": "clear",
-              "evidence": "الرقمان 15 و150 مليار دولار منسوبان إلى مطلعين في المتن وفي الحقائق الرئيسية. ورقم 456 تريليون وون منسوب إلى متوسط تقديرات شركات الوساطة. وتراجع السهم 3% ثم إغلاقه مرتفعاً 4.4% مقياسان مختلفان لا تناقض بينهما. ويوم «الجمعة» يوافق التوقيت الكوري الذي يعتمده المصدر 3. وموقف الهيئة مقرون بـ«بحسب رويترز» كما في المصدر 2.",
-              "repair": ""
-            }
-          }
-        }
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "قالت إس كيه هاينكس إن الطرح كان من الممكن أن يموّل توسع سوليدايم وأن يمنح مرونة مالية أكبر لعوائد المساهمين، بما فيها التوزيعات وإعادة شراء الأسهم وإلغاؤها",
-          "source": 2
-        },
-        {
-          "fact": "قالت الشركة إن طاقة منشآت سوليدايم الحالية محدودة أمام الطلب على الذواكر، ما يستدعي طاقة تصنيع إضافية في الولايات المتحدة",
-          "source": 2
-        },
-        {
-          "fact": "قالت الشركة إنها ستواصل بحث سبل تمويل توسع سوليدايم، بما يشمل مراجعة توقيت الاستثمارات المقبلة وحجمها وطريقة تمويلها",
-          "source": 3
-        },
-        {
-          "fact": "تضغط إدارة ترامب على صانعي الرقائق الأجانب لبناء منشآت في الولايات المتحدة وتجري مباحثات مع إس كيه هاينكس",
-          "source": 3
-        }
-      ],
-      "slug": "sk-hynix-halts-solidigm-us-ipo-f97d46",
-      "title": "إس كيه هاينكس تعلّق طرح وحدتها «سوليدايم» في أمريكا وتعزوه إلى تقلب الأسواق",
-      "score": 9,
       "image": "photo"
     }
   ],
   "llm": {
-    "calls": 65,
-    "failures": 2,
-    "promptTokens": 754976,
-    "completionTokens": 145940,
-    "cacheReadTokens": 176098,
-    "costUsd": 7.5845,
+    "calls": 15,
+    "failures": 0,
+    "promptTokens": 181293,
+    "completionTokens": 42022,
+    "cacheReadTokens": 46999,
+    "costUsd": 1.9241,
     "byModel": {
-      "claude-cli/claude-opus-5-5": 65
+      "claude-cli/claude-opus-5-5": 15
     }
   },
   "log": [
-    "[05:01:45] image: dropped \"Attack on carrier USS Franklin 19 March 1945.jpg\" — dated 1945, an archival picture",
-    "[05:01:45] image: thumbnail HTTP 403 for https://live.staticflickr.com/3308/3414028795_d2083e0388_n.jpg",
-    "[05:01:55] image: thumbnail HTTP 403 for https://live.staticflickr.com/7024/6474147839_bea3f870f4_n.jpg",
-    "[05:02:19] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=10342",
-    "[05:02:22] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=2825",
-    "[05:02:30] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=8388",
-    "[05:02:30] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Wind turbines along North Middle Road, Essex County, Ontario\": The headline is about Egypt's budget agencies cutting gas and fuel use and the minister's wider fiscal and debt figures,",
-    "[05:02:30] image: thumbnail HTTP 403 for https://live.staticflickr.com/3308/3414028795_d2083e0388_n.jpg",
-    "[05:02:31] image: thumbnail HTTP 403 for https://live.staticflickr.com/7024/6474147839_bea3f870f4_n.jpg",
-    "[05:02:37] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5968",
-    "[05:02:40] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=2809",
-    "[05:02:40] image: caption refused \"\" (not Arabic)",
-    "[05:02:43] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3202",
-    "[05:02:49] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5882",
-    "[05:02:49] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Afsluitdijk - wind turbines.jpg\": A clean, professional, sign-free frame of wind turbines neutrally illustrates the renewable-energy savings the standfirs",
-    "[05:02:52] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3412",
-    "[05:02:52] published \"وزير المالية المصري: خفض استهلاك أجهزة الموازنة للغاز والوقود وفّر بين 7 و8 مليارات جنيه\" -> egypt-budget-agencies-gas-fuel-saving-billion-pounds-fddbf2",
-    "[05:03:43] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=49522",
-    "[05:03:43] desk notes: 30 facts (? 3, news 3, numbers 5, background 6, driver 6, next 3, reaction 4), 0 quotes (claude-cli/claude-opus-5-5)",
-    "[05:04:43] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=59365",
-    "[05:05:31] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=48747",
-    "[05:05:31] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,lede,whyItMatters,body] rejected=[]",
-    "[05:05:31] desk \"إس كيه هاينكس تعلّق طرح وحدة سوليدايم في أمريكا وسط تقلب الأسواق\": rewrote subtitle, lede, whyItMatters, body",
-    "[05:06:33] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=61175",
-    "[05:06:33] critic \"إس كيه هاينكس تعلّق طرح وحدة سوليدايم في أمريكا وسط تقلب الأسواق\": revise score=7 issues=10",
-    "[05:06:33]   · خطأ في الإسناد: «وكان أشخاص مطلعون قد قالوا لصحيفة «غلف تايمز» إن عملية البيع كان يمكن أن تقيّم الوحدة بنحو 150 مليار دولار». المصدر 3 لا يقول إن المطلعين تحدثو",
-    "[05:06:33]   · إضافة غير مسندة: «أن يؤدي إدراج الوحدة في نيويورك». المصادر 1 و2 و3 تتحدث عن إدراج في الولايات المتحدة (US listing) ولا تذكر نيويورك ولا بورصة بعينها. الإصلاح: ",
-    "[05:06:33]   · مبالغة في المقدّمة: «وجاء القرار بعد اعتراضات رقابية في كوريا الجنوبية على الصفقة». بحسب المصدرين 2 و3 قالت الهيئة إن الإدراج «قد يخالف» قواعد الإدراج المزدوج، ",
-    "[05:06:33]   · «لماذا يهمّ» يتجاوز مقدماته: «يعود تمويل المصنع الأمريكي... إلى ميزانية إس كيه هاينكس نفسها». الشركة قالت إنها ستواصل بحث «خيارات تمويل بديلة» (المصدر 2)، والتم",
-    "[05:07:13] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: why_basis needs one to four reported premises with source numbers",
-    "[05:07:55] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=2 ms=38691",
-    "[05:08:54] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=58608",
-    "[05:08:54] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,lede,whyItMatters,body] rejected=[]",
-    "[05:08:54] desk \"إس كيه هاينكس تعلّق طرح وحدتها «سوليدايم» في أمريكا وتعزوه إلى تقلب الأسواق\": rewrote title, subtitle, lede, whyItMatters, body",
-    "[05:09:43] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=49617",
-    "[05:09:43] critic (second pass) \"إس كيه هاينكس تعلّق طرح وحدتها «سوليدايم» في أمريكا وتعزوه إلى تقلب الأسواق\": publish score=9 issues=0",
-    "[05:10:40] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=56962",
-    "[05:10:40] precheck \"إس كيه هاينكس تعلّق طرح وحدتها «سوليدايم» في أمريكا وتعزوه إلى تقلب الأسواق\": clean",
-    "[05:10:47] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6873",
-    "[05:10:47] image: the picture should say: SK Hynix shelves its Solidigm listing as chip stocks slide and shareholders win out.",
-    "[05:10:57] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=9630",
-    "[05:10:57] image: the sources' photographs give no brief (1: A CoreWeave executive in glasses stands at a podium under a ; 2: An illuminated SK hynix logo sign hangs from a lighting trus; 3: SK hynix executives clap and wave behind large red-and-orang)",
-    "[05:10:57] image: tier 3, the writer's own subjects: SK Hynix memory chips | solid state drive | semiconductor wafer fab",
-    "[05:10:58] commons \"SK Hynix memory chips 2026\": 0 usable of 0",
-    "[05:10:58] commons \"SK Hynix memory chips\": 8 usable of 12",
-    "[05:10:58] image: dropped \"MK809III V1.0 130606 connectors.jpg\" — names too little of memory, chips",
-    "[05:10:58] image: dropped \"MK809III V1.0 130606 inside NAND AP6210-WIFI.jpg\" — names too little of memory, chips",
-    "[05:10:58] image: dropped \"MK809III V1.0 130606 inside front.jpg\" — names too little of memory, chips",
-    "[05:10:58] image: dropped \"MK809III V1.0 130606 inside RAM IT66121-HDMI.jpg\" — names too little of memory, chips",
-    "[05:10:58] image: dropped \"MK809III V1.0 130606.jpg\" — names too little of memory, chips",
-    "[05:10:58] image: dropped \"MK809III V1.0 130606 inside VREG uSD USB.jpg\" — names too little of memory, chips",
-    "[05:10:59] commons \"solid state drive 2026\": 3 usable of 12",
-    "[05:10:59] commons \"solid state drive\": 7 usable of 12",
-    "[05:10:59] image: dropped \"Western Digital SN850X NVME solid state drive 8TB front side.jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[05:10:59] image: dropped \"Western Digital SN850X NVME solid state drive 8TB back side.jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[05:11:00] commons \"semiconductor wafer fab 2026\": 0 usable of 1",
-    "[05:11:00] commons \"semiconductor wafer fab\": 0 usable of 4",
-    "[05:11:01] commons \"semiconductor wafer\": 8 usable of 12",
-    "[05:11:01] image: dropped \"Wafer - 2.jpg\" — names too little of semiconductor, wafer, fab",
-    "[05:11:01] image: dropped \"Wafer - 3.jpg\" — names too little of semiconductor, wafer, fab",
-    "[05:11:01] image: dropped \"Wafer - 5.jpg\" — names too little of semiconductor, wafer, fab",
-    "[05:11:01] image: dropped \"Wafer - 1.jpg\" — names too little of semiconductor, wafer, fab",
-    "[05:11:06] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4147",
-    "[05:11:06] image: vision rejected all candidates (None of the five fits. Candidates 1, 2 and 4 are amateur or staged close-ups of products, and they show other companies' brands: Samsung, Micron, Plextor and OCZ. Candidate 3 is an archival DEC VAX wafer. Candidate 5 is a 2011 wafer close-up with a watermark and a stylised look. None shows SK Hynix, Solidigm, its executives or the cancelled listing. Choose none and let the fallback find a better image.)",
-    "[05:11:06] image: tier 4, the story's point and its subject: KOSPI board Seoul investors | stock brokerage Seoul traders | semiconductor stocks screen Korea | semiconductor cleanroom South Korea | chip factory workers Korea | data center server racks (home: South Korea, Korea, Korean, Seoul, Icheon)",
-    "[05:11:06] commons \"KOSPI board Seoul investors\": 0 usable of 0",
-    "[05:11:07] commons \"KOSPI board\": 0 usable of 0",
-    "[05:11:08] commons \"investors\": 6 usable of 24",
-    "[05:11:08] image: dropped \"Houssam Nasrawin during investment forum in Jordan.jpg\" — shows abdullah, not the story's people",
-    "[05:11:08] image: dropped \"Investors Group Field 2018.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[05:11:08] image: dropped \"Кыргыз Республикасынын Президенти Садыр Жапаров.jpg\" — names too little of board, investors",
-    "[05:11:08] image: dropped \"Amanda Staveley 2021.jpg\" — names too little of board, investors",
-    "[05:11:08] pexels \"KOSPI board Seoul investors\": 8 usable",
-    "[05:11:10] openverse \"KOSPI board Seoul investors\": 0 usable of 0",
-    "[05:11:10] image: dropped \"Hand pointing at stock market graphs analyzed with financial metrics o\" — names too little of board, investors",
-    "[05:11:10] image: dropped \"Red facade of Seoul Square with multiple international flags displayed\" — names too little of board, investors",
-    "[05:11:10] image: dropped \"Detailed financial graphs depicting market trends and stock data for i\" — names too little of board, investors",
-    "[05:11:10] image: dropped \"A modern urban building surrounded by colorful autumn trees in a citys\" — names too little of board, investors",
-    "[05:11:10] image: dropped \"Detailed financial chart featuring candlestick patterns, trend lines, \" — names too little of board, investors",
-    "[05:11:10] image: dropped \"Smiling man presenting cryptocurrency investment chart indoors.\" — names too little of board, investors",
-    "[05:11:10] image: dropped \"Hand pointing at cryptocurrency chart showing market trends and analys\" — names too little of board, investors",
-    "[05:11:10] commons \"stock brokerage Seoul traders\": 0 usable of 0",
-    "[05:11:12] commons \"stock brokerage\": 9 usable of 24",
-    "[05:11:12] image: dropped \"Stockbroker.jpg\" — names too little of stock, brokerage, traders",
-    "[05:11:12] image: dropped \"Stockbrokers at the New York Stock Exchange.jpg\" — names too little of stock, brokerage, traders",
-    "[05:11:12] image: dropped \"Nego MONEP 0511.jpg\" — names too little of stock, brokerage, traders",
-    "[05:11:12] image: dropped \"Drexel Office.JPG\" — names too little of stock, brokerage, traders",
-    "[05:11:12] image: dropped \"Effectenmakelaar S, SFA022005543.jpg\" — names too little of stock, brokerage, traders",
-    "[05:11:12] image: dropped \"Beurshandelaren voor een café, Bestanddeelnr 252-0037.jpg\" — names too little of stock, brokerage, traders",
-    "[05:11:12] image: dropped \"Curb brokers in Wall Street, New York City, 1920.jpg\" — names too little of stock, brokerage, traders",
-    "[05:11:12] image: dropped \"Marion Gaynor (married to Ralph Heyward Isham), Harry Russell Balfe an\" — names too little of stock, brokerage, traders",
-    "[05:11:12] image: dropped \"Flickr - Government Press Office (GPO) - A broker giving an order to p\" — names too little of stock, brokerage, traders",
-    "[05:11:13] pexels \"stock brokerage Seoul traders\": 8 usable",
-    "[05:11:14] openverse \"stock brokerage Seoul traders\": 0 usable of 0",
-    "[05:11:14] image: dropped \"High contrast trading chart showing market trends and analysis indicat\" — names too little of stock, brokerage, traders",
-    "[05:11:14] image: dropped \"High-resolution candlestick chart showing forex trading trends and ana\" — names too little of stock, brokerage, traders",
-    "[05:11:14] image: dropped \"Financial candlestick chart showing market trends and data visualizati\" — names too little of stock, brokerage, traders",
-    "[05:11:14] image: dropped \"Detailed view of cryptocurrency trading charts on digital screens, sho\" — names too little of stock, brokerage, traders",
-    "[05:11:14] commons \"semiconductor stocks screen Korea\": 0 usable of 0",
-    "[05:11:15] commons \"semiconductor stocks\": 0 usable of 0",
-    "[05:11:15] commons \"Korea\": 2 usable of 24",
-    "[05:11:15] image: dropped \"War Memorial of Korea main building.JPG\" — names too little of semiconductor, stocks, screen",
-    "[05:11:15] image: dropped \"1894JoseonSeoul.jpg\" — names too little of semiconductor, stocks, screen",
-    "[05:11:16] pexels \"semiconductor stocks screen Korea\": 8 usable",
-    "[05:11:17] openverse \"semiconductor stocks screen Korea\": 0 usable of 0",
-    "[05:11:17] image: dropped \"Macro shot of an electronic circuit board with vivid purple and pink l\" — names too little of semiconductor, stocks, screen",
-    "[05:11:17] image: dropped \"Detailed view of SK hynix DRAM chips on a green circuit board featurin\" — names too little of semiconductor, stocks, screen",
-    "[05:11:17] commons \"semiconductor cleanroom South Korea\": 0 usable of 0",
-    "[05:11:18] commons \"semiconductor cleanroom\": 2 usable of 8",
-    "[05:11:18] image: dropped \"Clean room.jpg\" — dated 2004, an archival picture",
-    "[05:11:18] image: dropped \"Computer Memory Hard Drive Disk HDD Storage Technology.jpg\" — names too little of semiconductor, cleanroom",
-    "[05:11:18] pexels \"semiconductor cleanroom South Korea\": 8 usable",
-    "[05:11:20] openverse \"semiconductor cleanroom South Korea\": 0 usable of 0",
-    "[05:11:20] image: dropped \"Scientist in protective gear holding a transparent test sheet in a lab\" — names too little of semiconductor, cleanroom",
-    "[05:11:20] image: dropped \"Detailed close-up of a microprocessor circuit board showcasing intrica\" — names too little of semiconductor, cleanroom",
-    "[05:11:20] image: dropped \"Detailed shot of a computer circuit board showing components and golde\" — names too little of semiconductor, cleanroom",
-    "[05:11:20] image: dropped \"Detailed close-up of a green electronic circuit board, highlighting te\" — names too little of semiconductor, cleanroom",
-    "[05:11:20] image: dropped \"A scientist in protective gear enters a sterile laboratory environment\" — names too little of semiconductor, cleanroom",
-    "[05:11:20] commons \"chip factory workers Korea\": 0 usable of 0",
-    "[05:11:21] commons \"chip factory\": 16 usable of 24",
-    "[05:11:21] commons \"data center server racks\": 15 usable of 24",
-    "[05:11:21] image: dropped \"Wikimedia Foundation Servers-8055 15.jpg\" — another frame of a series a published story runs",
-    "[05:11:21] image: dropped \"Wikimedia Foundation Servers-8055 22.jpg\" — another frame of a series a published story runs",
-    "[05:11:28] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5096",
-    "[05:11:28] image: vision rejected all candidates (fallback pass) (None of the photos fit. 1 and 2 are screen and chart shots: one shows a Thai market app, the other is monochrome and Brazilian. 3 is a derelict Chernobyl facility, which is misleading. 4 is an amateur server close-up from the Epstein files, embarrassing provenance. 5 is a cartoon graphic. 6 is a potato-chip factory front, the wrong subject and a building front.)",
-    "[05:11:33] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3991",
-    "[05:11:33] image: \"Scientist in protective gear walking in a high-tech cleanroo\" names the story's topic without saying its point (A semiconductor cleanroom with a worker fits the chip sector as a generic illustration. It shows the sector but not the shelved listing. Photo 1 is a chart, whi); checked now and kept in reserve while the desk looks further",
-    "[05:11:37] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4172",
-    "[05:11:37] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Scientist in protective gear walking in a high-tech cleanroo\": A sharp, professional photograph of a worker in a semiconductor cleanroom shows the story's own chipmaking sector, and n",
-    "[05:11:37] image: the story's people first: Kwak Noh-jung 2026 | Kwak Noh-jung",
-    "[05:11:37] commons \"Kwak Noh-jung 2026\": 0 usable of 0",
-    "[05:11:38] commons \"Kwak Noh-jung\": 0 usable of 0",
-    "[05:11:38] commons \"2026\": 9 usable of 20",
-    "[05:11:38] image: dropped \"Castle Ponoviče, Municipality Litija, Slovenia (2026).jpg\" — names too little of kwak, noh-jung",
-    "[05:11:38] image: dropped \"Gefallenendenkmal Grüneberg 2026 SW.jpg\" — names too little of kwak, noh-jung",
-    "[05:11:38] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 22.jpg\" — names too little of kwak, noh-jung",
-    "[05:11:38] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 14.jpg\" — names too little of kwak, noh-jung",
-    "[05:11:38] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 25.jpg\" — names too little of kwak, noh-jung",
-    "[05:11:38] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 04.jpg\" — names too little of kwak, noh-jung",
-    "[05:11:38] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 08.jpg\" — names too little of kwak, noh-jung",
-    "[05:11:38] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 01.jpg\" — names too little of kwak, noh-jung",
-    "[05:11:38] image: dropped \"Ortstafel Bergsdorf (Zehdenick) 2026.jpg\" — names too little of kwak, noh-jung",
-    "[05:11:38] commons \"Kwak Noh-jung\": 0 usable of 0",
-    "[05:11:39] commons \"Noh-jung\": 3 usable of 19",
-    "[05:11:39] image: dropped \"Kim Jung-hoon, Roh Jeong-eui, Kasamatsu Show at 2026 Busan Internation\" — names too little of kwak, noh-jung",
-    "[05:11:39] image: dropped \"Kim Jung-hoon, Roh Jeong-eui, Kasamatsu Show at 2026 Busan Internation\" — names too little of kwak, noh-jung",
-    "[05:11:39] image: dropped \"Kim Jung-hoon, Roh Jeong-eui, Kasamatsu Show at 2026 Busan Internation\" — names too little of kwak, noh-jung",
-    "[05:11:39] image: no photograph of the story's people",
-    "[05:11:39] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"Scientist in protective gear walking in a high-tech cleanroo\"",
-    "[05:11:39] published \"إس كيه هاينكس تعلّق طرح وحدتها «سوليدايم» في أمريكا وتعزوه إلى تقلب الأسواق\" -> sk-hynix-halts-solidigm-us-ipo-f97d46"
+    "[09:50:37] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,lede,whyItMatters] rejected=[]",
+    "[09:50:37] desk \"لماذا يبيع المستثمرون الذهب بدل اللجوء إليه حين تهبط الأسهم؟\": rewrote subtitle, lede, whyItMatters",
+    "[09:51:13] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=35341",
+    "[09:51:13] critic (second pass) explainer: revise score=8",
+    "[09:51:40] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=27781",
+    "[09:52:03] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=22903",
+    "[09:52:03] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,lede,whyItMatters] rejected=[]",
+    "[09:52:03] desk \"لماذا يبيع المستثمرون الذهب بدل اللجوء إليه حين تهبط الأسهم؟\": rewrote subtitle, lede, whyItMatters",
+    "[09:52:03] mended explainer \"لماذا يبيع المستثمرون الذهب بدل اللجوء إليه حين تهبط الأسهم؟\": the second pass's 4 finding(s) sent back once more",
+    "[09:52:06] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3066",
+    "[09:52:06] image: the picture should say: Investors hit by falling stocks are selling gold to raise cash, not fleeing to it.",
+    "[09:52:06] image: tier 3, the writer's own subjects: gold bullion bars | New York Stock Exchange traders | trading floor screens",
+    "[09:52:07] commons \"gold bullion bars 2026\": 0 usable of 0",
+    "[09:52:07] commons \"gold bullion bars\": 8 usable of 12",
+    "[09:52:07] image: dropped \"Gold Ingots on white background.jpg\" — names too little of gold, bullion, bars",
+    "[09:52:07] image: dropped \"Gold ingot and bar of Banque de France.jpg\" — names too little of gold, bullion, bars",
+    "[09:52:08] commons \"New York Stock Exchange traders 2026\": 0 usable of 0",
+    "[09:52:08] commons \"New York Stock Exchange traders\": 9 usable of 12",
+    "[09:52:08] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[09:52:08] image: dropped \"New York - Docks-New York Harbor - NARA - 68146200 ed2.jpg\" — names too little of traders",
+    "[09:52:08] image: dropped \"New York - New York City - NARA - 68146147.jpg\" — dated 1928, an archival picture",
+    "[09:52:08] image: dropped \"New York - New York City - NARA - 68146131.jpg\" — dated 1924, an archival picture",
+    "[09:52:08] image: dropped \"New York - New York City - NARA - 68146159.jpg\" — names too little of traders",
+    "[09:52:09] commons \"trading floor screens 2026\": 0 usable of 0",
+    "[09:52:09] commons \"trading floor screens\": 0 usable of 12",
+    "[09:52:09] commons \"trading floor\": 5 usable of 12",
+    "[09:52:09] image: dropped \"80th floor of 3 World Trade Center - OHNY 13.jpg\" — names too little of trading, floor, screens",
+    "[09:52:09] image: dropped \"80th floor of 3 World Trade Center - OHNY 8.jpg\" — names too little of trading, floor, screens",
+    "[09:52:09] image: dropped \"80th floor of 3 World Trade Center - October 2025.jpg\" — names too little of trading, floor, screens",
+    "[09:52:10] image: dropped \"Bullion Gold bar at Swiss Money Museum (Ank Kumar, Infosys).jpg\" — taken in Switzerland, which the story does not name",
+    "[09:52:15] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4508",
+    "[09:52:15] image: \"Gaming-Wall-Street BTS Prodigium-266.jpg\" names the story's topic without saying its point (The 2022 NYSE trading floor fits a markets explainer on equity selloffs forcing liquidity sales, but it shows no gold being sold. The other candidates fail: #1 ); checked now and kept in reserve while the desk looks further",
+    "[09:52:20] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5859",
+    "[09:52:20] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Gaming-Wall-Street BTS Prodigium-266.jpg\": A clear, professional elevated view of the New York Stock Exchange trading floor fits this explainer about margin-driven",
+    "[09:52:20] image: tier 4, the story's point and its subject: traders watching screens | gold bars stack | stock traders worried | traders on trading floor | gold bullion bars | New York Stock Exchange traders",
+    "[09:52:21] commons \"traders watching screens\": 0 usable of 0",
+    "[09:52:22] commons \"traders watching\": 16 usable of 24",
+    "[09:52:22] image: dropped \"Eyes Watching You (136834777).jpeg\" — names too little of traders, watching, screens",
+    "[09:52:22] image: dropped \"1984 BIG BROTHER IS WATCHING YOU 02.jpg\" — names too little of traders, watching, screens",
+    "[09:52:22] image: dropped \"1984 BIG BROTHER IS WATCHING YOU 01.jpg\" — names too little of traders, watching, screens",
+    "[09:52:22] image: dropped \"Hey You Down There I M Watching You (123199847).jpeg\" — names too little of traders, watching, screens",
+    "[09:52:22] image: dropped \"I'm watching you 2013.jpg\" — names too little of traders, watching, screens",
+    "[09:52:22] image: dropped \"Watching me, watching you. - panoramio.jpg\" — names too little of traders, watching, screens",
+    "[09:52:22] image: dropped \"Watching Me, Watching You (16449045040).jpg\" — names too little of traders, watching, screens",
+    "[09:52:22] image: dropped \"Watching me watching you (3813593569).jpg\" — names too little of traders, watching, screens",
+    "[09:52:22] image: dropped \"Watching me, Watching you (9374768291).jpg\" — names too little of traders, watching, screens",
+    "[09:52:22] image: dropped \"Watching me watching you (2733022381).jpg\" — names too little of traders, watching, screens",
+    "[09:52:22] pexels \"traders watching screens\": 8 usable",
+    "[09:52:23] openverse \"traders watching screens\": 0 usable of 0",
+    "[09:52:23] image: dropped \"A professional examines financial graphs on a laptop, indicating marke\" — names too little of traders, watching, screens",
+    "[09:52:23] image: dropped \"Two men reviewing stock market data on a tablet, pointing at charts.\" — names too little of traders, watching, screens",
+    "[09:52:23] image: dropped \"Two businessmen discussing financial data on a tablet during a meeting\" — names too little of traders, watching, screens",
+    "[09:52:23] image: dropped \"Men in business attire discussing financial data on a tablet indoors.\" — names too little of traders, watching, screens",
+    "[09:52:23] image: dropped \"Two men discuss digital data on a tablet in a modern business setting.\" — names too little of traders, watching, screens",
+    "[09:52:23] commons \"gold bars stack\": 17 usable of 24",
+    "[09:52:23] image: dropped \"The Victoria Institute - Library and Museum - Foregate Street, Worcest\" — names too little of gold, bars, stack",
+    "[09:52:23] image: dropped \"California mines and minerals (1899) (14595804460).jpg\" — names too little of gold, bars, stack",
+    "[09:52:23] image: dropped \"The European Race Heat IId Anno Dom MDCCXXXVIII (BM 1868,0808.3606).jp\" — names too little of gold, bars, stack",
+    "[09:52:23] image: dropped \"A Skit on Britain (BM 1868,0808.3631).jpg\" — names too little of gold, bars, stack",
+    "[09:52:23] image: dropped \"Bronze Age torc with rings (FindID 538672).jpg\" — names too little of gold, bars, stack",
+    "[09:52:23] image: dropped \"Bronze Age twisted torc detail (FindID 538672).jpg\" — names too little of gold, bars, stack",
+    "[09:52:23] image: dropped \"Narrow bladed palstave (FindID 538672).jpg\" — names too little of gold, bars, stack",
+    "[09:52:23] image: dropped \"Bronze Age twisted torc (FindID 538672-424206).jpg\" — names too little of gold, bars, stack",
+    "[09:52:23] image: dropped \"Bronze Age armlet (FindID 538672-424218).jpg\" — names too little of gold, bars, stack",
+    "[09:52:23] image: dropped \"Bronze Age armlet (FindID 538672-424216).jpg\" — names too little of gold, bars, stack",
+    "[09:52:23] pexels \"gold bars stack\": 8 usable",
+    "[09:52:27] openverse \"gold bars stack\": 3 usable of 9",
+    "[09:52:27] image: dropped \"100_2202\" — names too little of gold, bars, stack",
+    "[09:52:27] image: dropped \"Silver bar and coins on blue surface, highlighting investment and coll\" — names too little of gold, bars, stack",
+    "[09:52:27] commons \"stock traders worried\": 0 usable of 0",
+    "[09:52:28] commons \"stock traders\": 5 usable of 24",
+    "[09:52:28] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[09:52:28] image: dropped \"Toronto Stock Exchange 1956.jpg\" — dated 1956, an archival picture",
+    "[09:52:28] image: dropped \"The diseases of live stock and their most efficient remedies; (1855) (\" — names too little of stock, traders, worried",
+    "[09:52:28] pexels \"stock traders worried\": 8 usable",
+    "[09:52:30] openverse \"stock traders worried\": 1 usable of 1",
+    "[09:52:30] image: dropped \"110613 Price hikes worry Tunisians | ارتفاع الأسعار يقلق التونسيين | L\" — names too little of stock, traders, worried",
+    "[09:52:30] image: dropped \"Frustrated man monitoring multiple trading graphs on computer screens \" — names too little of stock, traders, worried",
+    "[09:52:30] image: dropped \"Two businessmen reviewing financial data on a laptop indoors, analyzin\" — names too little of stock, traders, worried",
+    "[09:52:30] image: dropped \"Financial candlestick chart showing market trends and data visualizati\" — names too little of stock, traders, worried",
+    "[09:52:30] image: dropped \"High-resolution candlestick chart showing forex trading trends and ana\" — names too little of stock, traders, worried",
+    "[09:52:30] image: dropped \"Detailed view of cryptocurrency trading charts on digital screens, sho\" — names too little of stock, traders, worried",
+    "[09:52:30] commons \"traders on trading floor\": 14 usable of 24",
+    "[09:52:30] image: dropped \"Chicago Board of Trade traders cph.3d02377.jpg\" — dated 1949, an archival picture",
+    "[09:52:30] image: dropped \"Chicago Board of Trade traders cph.3d02368.jpg\" — dated 1949, an archival picture",
+    "[09:52:30] image: dropped \"1909 - Diehls Furniture House Main Floor - Trade Card.jpg\" — dated 1909, an archival picture",
+    "[09:52:30] image: dropped \"1910 - Farr Brothers - Main Floor - Trade Card - Allentown PA.jpg\" — dated 1910, an archival picture",
+    "[09:52:30] image: dropped \"20120105-OC-AMW-0425 (7042322619).jpg\" — dated 1973, an archival picture",
+    "[09:52:30] image: dropped \"Defense.gov News Photo 000706-N-1110A-505.jpg\" — dated 2000, an archival picture",
+    "[09:52:31] pexels \"traders on trading floor\": 8 usable",
+    "[09:52:32] openverse \"traders on trading floor\": 10 usable of 17",
+    "[09:52:32] image: dropped \"Reflection of the Corn Exchange in Selfridges Windows, Manchester, Eng\" — names too little of traders, trading, floor",
+    "[09:52:32] image: dropped \"Hubbell Trading Post National Historic Site, Ganado, Arizona\" — names too little of traders, trading, floor",
+    "[09:52:32] image: dropped \"Hubbell Trading Post National Historic Site, Ganado, Arizona\" — names too little of traders, trading, floor",
+    "[09:52:32] image: dropped \"Cambridgeport room for sublet, July 1 - Aug 31st,\" — names too little of traders, trading, floor",
+    "[09:52:32] image: dropped \"161010-N-PX557-001\" — names too little of traders, trading, floor",
+    "[09:52:32] image: dropped \"20180121_Philippines_3507 crop Vigan sRGB\" — names too little of traders, trading, floor",
+    "[09:52:32] image: dropped \"Columbus-Yankee Trader Building (OHPTC)\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[09:52:32] image: dropped \"Close-up of financial data on a computer screen showing stock market t\" — names too little of traders, trading, floor",
+    "[09:52:32] image: dropped \"Bright candlestick chart showing stock market trends and analysis.\" — names too little of traders, trading, floor",
+    "[09:52:32] image: dropped \"Man in a headset analyzing stock data on a computer monitor at his wor\" — names too little of traders, trading, floor",
+    "[09:52:32] image: dropped \"Colorful financial chart displaying market trends and analysis on a sc\" — names too little of traders, trading, floor",
+    "[09:52:32] image: dropped \"Market analysis with focus on cryptocurrency trends displayed. Ideal f\" — names too little of traders, trading, floor",
+    "[09:52:32] commons \"gold bullion bars\": 14 usable of 24",
+    "[09:52:32] image: dropped \"Gold Ingots on white background.jpg\" — names too little of gold, bullion, bars",
+    "[09:52:32] image: dropped \"Gold ingot and bar of Banque de France.jpg\" — names too little of gold, bullion, bars",
+    "[09:52:32] image: dropped \"Gold bar of Banque de France.jpg\" — names too little of gold, bullion, bars",
+    "[09:52:32] image: dropped \"Gold Ingot on white background.jpg\" — names too little of gold, bullion, bars",
+    "[09:52:32] image: dropped \"Laying your hand on '12.5Kg' Gold Ingot..JPG\" — names too little of gold, bullion, bars",
+    "[09:52:32] image: dropped \"Gold Ingot B 100g Ögussa.JPG\" — names too little of gold, bullion, bars",
+    "[09:52:32] image: dropped \"Lingote de oro - Feldioara.jpg\" — names too little of gold, bullion, bars",
+    "[09:52:32] pexels \"gold bullion bars\": 8 usable",
+    "[09:52:36] openverse \"gold bullion bars\": 8 usable of 20",
+    "[09:52:36] image: dropped \"DSC223861, Silver Legacy Casino Hotel, Reno, Nevada, USA\" — names too little of gold, bullion, bars",
+    "[09:52:36] image: dropped \"Pouring Liquid Gold\" — names too little of gold, bullion, bars",
+    "[09:52:36] image: dropped \"2011 IACA Conference in Winnipeg, Manitoba, Canada – Lifting the Bar a\" — an event's photograph, people and banners",
+    "[09:52:36] image: dropped \"Removing Liquid Gold from the Arc Furnace\" — names too little of gold, bullion, bars",
+    "[09:52:36] commons \"New York Stock Exchange traders\": 17 usable of 24",
+    "[09:52:36] image: dropped \"New York - Docks-New York Harbor - NARA - 68146200 ed2.jpg\" — names too little of traders",
+    "[09:52:36] image: dropped \"New York - New York City - NARA - 68146147.jpg\" — dated 1928, an archival picture",
+    "[09:52:36] image: dropped \"New York - New York City - NARA - 68146131.jpg\" — dated 1924, an archival picture",
+    "[09:52:36] image: dropped \"New York - New York City - NARA - 68146159.jpg\" — names too little of traders",
+    "[09:52:36] image: dropped \"New York - New York City - NARA - 68145654.jpg\" — dated 1937, an archival picture",
+    "[09:52:36] image: dropped \"New York - Docks-New York Harbor - NARA - 68146234.jpg\" — names too little of traders",
+    "[09:52:36] image: dropped \"How to know New York City - a serviceable and trustworthy guide, havin\" — names too little of traders",
+    "[09:52:37] pexels \"New York Stock Exchange traders\": 8 usable",
+    "[09:52:40] openverse \"New York Stock Exchange traders\": 6 usable of 9",
+    "[09:52:40] image: dropped \"No Known Restrictions: Traders on the Floor of the New York Stock Exch\" — dated 1936, an archival picture",
+    "[09:52:40] image: dropped \"Spirit of Freedom balloon - Smithsonian Air and Space Museum - 2012-05\" — names too little of traders",
+    "[09:52:40] image: dropped \"Close-up of a hand holding a smartphone displaying a stock trading app\" — names too little of traders",
+    "[09:52:40] image: dropped \"Ornate façade of the New York Stock Exchange featuring intricate stone\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[09:52:40] image: dropped \"Captured the iconic facade of the New York Stock Exchange with intrica\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[09:52:40] image: dropped \"Close-up of a digital stock market graph showing falling trends and fi\" — names too little of traders",
+    "[09:52:40] image: dropped \"Classic architecture of the New York Stock Exchange facade in NYC.\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[09:52:40] image: dropped \"Tempat uang di Brankas Museum De Javasche Bank.jpg\" — taken in Indonesia, which the story does not name",
+    "[09:52:40] image: dropped \"\"...is watching you!\".jpg\" — taken in Germany, which the story does not name",
+    "[09:52:40] image: dropped \"Dirk Müller Börsenmakler.jpg\" — taken in Germany, which the story does not name",
+    "[09:52:40] image: dropped \"Friedel Kantaut- \"Is watching You\".jpg\" — taken in Germany, which the story does not name",
+    "[09:52:40] image: dropped \"Bullion Gold bar at Swiss Money Museum (Ank Kumar, Infosys).jpg\" — taken in Switzerland, which the story does not name",
+    "[09:52:42] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/4244643524_9612863c82_n.jpg",
+    "[09:52:42] image: thumbnail HTTP 403 for https://live.staticflickr.com/2054/1511898686_6d92b2cfa8_n.jpg",
+    "[09:52:50] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6788",
+    "[09:52:50] image: vision rejected all candidates (fallback pass) (No candidate is usable. 1 and 2 are archival (vintage and a postcard). 3 is a 3D-rendered image of gold bars. 4 names an identifiable person, Andrew Aziz. 5 is a building front. 6 is a staged stock photo built around a chart on a screen.)",
+    "[09:52:50] image: thumbnail HTTP 403 for https://live.staticflickr.com/3361/3644055323_fea60160cd_n.jpg",
+    "[09:52:50] image: thumbnail HTTP 403 for https://live.staticflickr.com/4077/5440099040_7fbe9db699_n.jpg",
+    "[09:52:51] image: thumbnail HTTP 403 for https://live.staticflickr.com/3723/10304288674_fdde582ec5_n.jpg",
+    "[09:52:57] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6504",
+    "[09:52:57] image: \"A stressed trader in an office setting analyzes market data \" names the story's topic without saying its point; the desk already holds one such, and looks further",
+    "[09:52:57] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"Gaming-Wall-Street BTS Prodigium-266.jpg\"",
+    "[09:52:57] published explainer \"لماذا يبيع المستثمرون الذهب بدل اللجوء إليه حين تهبط الأسهم؟\" -> why-investors-sell-gold-when-stocks-fall-f9be16"
   ]
 }
