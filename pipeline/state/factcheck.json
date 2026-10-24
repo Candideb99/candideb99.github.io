@@ -12009,6 +12009,72 @@
         }
       ],
       "outcome": "clean"
+    },
+    "russian-diesel-tankers-head-to-america-634507": {
+      "at": "2026-10-24T16:02:12.822Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "checker": "7bb3653e29",
+      "publishedAt": "2026-10-24T11:46:00.558Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 19,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "الشحنات جزء من اتفاق أعلنه ترامب مع بوتين لإمداد الأسواق بالديزل الروسي سعياً إلى خفض أسعار الوقود",
+        "تكشف الشحنات مقايضة في السياسة الأمريكية: فكل برميل ديزل روسي يُستورد لخفض أسعار الوقود يعيد إلى موسكو جزءاً من الإيرادات التي صُممت العقوبات أصلاً لحرمانها منها.",
+        "ولأن رفع العقوبات مؤقت، فاستمرار هذه الإمدادات، وما قد تحمله من أثر في الأسعار، رهن بقرار واشنطن."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "egypt-chevron-narges-2-gas-well-results-44a207": {
+      "at": "2026-10-24T16:02:12.841Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "checker": "7bb3653e29",
+      "publishedAt": "2026-10-24T11:27:13.426Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 18,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "ولذلك يبقى أثر الاكتشاف في إنتاج مصر من الغاز رهناً بما تنتهي إليه الدراسات الفنية المقبلة."
+      ],
+      "weak": [],
+      "outcome": "clean"
     }
   }
 }

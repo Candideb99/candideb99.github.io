@@ -1067,6 +1067,50 @@
         "classes": [],
         "programmatic": 2
       }
+    },
+    {
+      "at": "2026-10-24T16:37:04.653Z",
+      "slug": "indonesia-cuts-gas-exports-to-singapore-e91659",
+      "checker": "7bb3653e29.2",
+      "lessons": "v34",
+      "lessonsHash": "1917f27221",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 17,
+        "notFound": 2,
+        "checked": 24,
+        "words": 313,
+        "keyFacts": 4,
+        "classes": [],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 24,
+        "notFound": 1,
+        "checked": 27,
+        "words": 358,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 24,
+        "notFound": 1,
+        "checked": 27,
+        "words": 358,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      }
     }
   ]
 }

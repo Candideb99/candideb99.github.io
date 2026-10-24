@@ -1,0 +1,422 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-24T16:03:07.964Z",
+  "durationSec": 2306,
+  "published": 2,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "برنت يتجاوز 117 دولاراً للبرميل لأول مرة منذ مارس",
+      "section": "energy",
+      "importance": 7,
+      "sources": [
+        "https://www.nytimes.com/2026/10/23/business/energy-environment/oil-prices-iran-war.html",
+        "https://www.annahar.com/economy/359926/%D8%A7%D9%84%D9%86%D9%81%D8%B7-%D9%82%D8%B1%D8%A8-117-%D8%AF%D9%88%D9%84%D8%A7%D8%B1%D8%A7-%D9%81%D8%A7%D8%AA%D9%88%D8%B1%D8%A9-%D8%A7%D9%84%D8%B7%D8%A7%D9%82%D8%A9-%D8%AA%D8%B1%D8%A8%D9%83-%D8%A7%D9%84%D8%A3%D8%B3%D9%87%D9%85-%D9%88%D8%A7%D9%84%D8%B0%D9%87%D8%A8",
+        "https://www.annahar.com/economy/359808/%D8%AE%D8%A7%D9%85-%D8%A8%D8%B1%D9%86%D8%AA-%D9%8A%D9%82%D9%81%D8%B2-355-%D8%AF%D9%88%D9%84%D8%A7%D8%B1%D8%A7-%D9%88%D8%A3%D8%B3%D9%88%D8%A3-%D8%B4%D9%87%D8%B1-%D9%84%D9%84%D9%87%D8%AC%D9%85%D8%A7%D8%AA-%D9%81%D9%8A-%D9%87%D8%B1%D9%85%D8%B2",
+        "https://www.aa.com.tr/ar/%D8%AF%D9%88%D9%84%D9%8A/%D8%A8%D8%B1%D9%86%D8%AA-%D9%8A%D8%AA%D8%AC%D8%A7%D9%88%D8%B2-117-%D8%AF%D9%88%D9%84%D8%A7%D8%B1%D9%8B%D8%A7-%D9%84%D9%84%D8%A8%D8%B1%D9%85%D9%8A%D9%84-%D9%84%D8%A3%D9%88%D9%84-%D9%85%D8%B1%D8%A9-%D9%85%D9%86%D8%B0-%D9%85%D8%A7%D8%B1%D8%B3-/4098948"
+      ],
+      "outcome": "skipped: repeats a recent story («برنت يتجاوز 112 دولاراً مع إعلان إيران إصابة سبع سفن في الخليج»)"
+    },
+    {
+      "headline": "رأس الخيمة تغلق شواطئها بعد تسرب نفطي من ناقلة عملاقة",
+      "section": "economy",
+      "importance": 6,
+      "sources": [
+        "https://www.independentarabia.com/node/661160/%D8%B3%D9%8A%D8%A7%D8%B3%D8%A9/%D9%85%D8%AA%D8%A7%D8%A8%D8%B9%D8%A7%D8%AA/%D8%B4%D9%88%D8%A7%D8%B7%D8%A6-%D8%B1%D8%A3%D8%B3-%D8%A7%D9%84%D8%AE%D9%8A%D9%85%D8%A9-%D9%85%D8%BA%D9%84%D9%82%D8%A9-%D8%A8%D8%B9%D8%AF-%D8%AA%D8%B3%D8%B1%D8%A8-%D9%86%D9%81%D8%B7%D9%8A",
+        "https://www.arabnews.com/middle-east/uaes-ras-al-khaimah-shuts-beaches-amid-tanker-oil-spill-3008025",
+        "https://www.thenationalnews.com/news/uae/2026/10/24/uae-oil-spill-ras-al-khaimah-closes-all-beaches-until-further-notice/",
+        "https://www.thenationalnews.com/news/uae/2026/10/24/swift-response-key-to-limiting-environmental-impact-of-uae-oil-spill-experts-say/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يوضحان ما تغيّر: إغلاق جميع شواطئ رأس الخيمة حتى إشعار آخر، بعد يوم من إغلاقات في أم القيوين والشارقة. والدقة تبيّن ما بقي مجهولاً: حجم البقعة واسم الناقلة رسمياً.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يغيب سياق الحرب على إيران والهجمات على السفن التجارية في الخليج (المصادر 1 و2 و3). وسياق «وين» مبتور من موعد الافتتاح المتوقع (المصدر 2). وفي «لماذا يهمّ» تنسب الجملة الأولى إبعاد الصيادين إلى إغلاق رأس الخيمة، والجملة الثانية عن توقف الكلفة على الاحتواء قبل وصول النفط إلى الساحل استدلال محدود ومقبول.",
+              "repair": "إضافة خلفية الهجمات بإسناد، وربط «وين» بالقرار مع ذكر موعد 2027، وتصحيح الجملة الأولى من «لماذا يهمّ»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات تتقدم منطقياً من القرار إلى التسرب فالمصدر فالاحتواء، لكن الخاتمة «تُعرف رأس الخيمة بشواطئها...» معلقة بلا صلة بما قبلها، و«كانت أم القيوين أول المتأثرين» جسر مصطنع.",
+              "repair": "نقل فقرة «وين» إلى قرب خبر رأس الخيمة، وحذف الجسر غير المسند، ودمج جملتي «وقالت» في الفقرة الأولى."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والتواريخ مطابقة: 21 أكتوبر يوم أربعاء، و25 كيلومتراً، و9 أكتوبر، و13 ميلاً بحرياً. لكن التقرير يغفل أن بيان رأس الخيمة لم يذكر سبباً (المصدر 1)، و«امتدت الروائح» تتجاوز صيغة بلاغات السكان.",
+              "repair": "إضافة «ولم يذكر البيان سبباً للإغلاق»، واستبدال «امتدت» بـ«أفاد سكان برصد»."
+            }
+          }
+        }
+      ],
+      "outcome": "rejected after revision: المقدمة طويلة (67 كلمة)؛ اجعلها جملتين إلى ثلاث بأقل من 45 كلمة: الفعل، الفاعل، الرقم، السبب."
+    },
+    {
+      "headline": "ترمب يعدّل الرسوم على سلع كندية قبل انتخابات التجديد النصفي",
+      "section": "economy",
+      "importance": 6,
+      "sources": [
+        "https://aawsat.com/node/5333018",
+        "https://www.bbc.co.uk/news/articles/c60qk573yzz8o",
+        "https://www.theguardian.com/us-news/2026/oct/23/susan-collins-maine-trump-tariffs-canada",
+        "https://www.bloomberg.com/news/articles/2026-10-23/coffins-and-canoes-from-canada-get-50-tariff-under-new-trump-order"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والمقدمة والفقرة الأولى تبيّن معاً أن التعديل إعفاء لبعض السلع يقابله إخضاع سلع أخرى، وأن إطار رسوم الـ50% باقٍ. لكن عبارة «منتجات زراعية وحرجية» لا تقول ما الذي أُعفي فعلاً، وأغلبه آلات ومعدات تبريد وعبوات تعبئة (SOURCE 1).",
+              "repair": "تُسمّى السلع المعفاة في الفقرة الأولى من المتن، ويُستبدل بعبارة «قبل الانتخابات» في العنوان «قبل انتخابات التجديد النصفي»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الخلفية عن رسوم أغسطس والرد الكندي وسحب الرسوم على المأكولات البحرية جيدة. يغيب عنها البعد الانتخابي في ميشيغان، وموقف روجرز من رسوم النفايات، وحاجة الجمهوريين إلى الولايتين (SOURCE 1، SOURCE 2). وفي «لماذا يهمّ» مقدمة سليمة، هي نقل عبء الرسوم من مدخلات الإنتاج إلى سلع أخرى، لكن الجملة الثانية تفترض دافعاً وتتوقع نتيجة لا تحملهما المقدمات.",
+              "repair": "تُضاف فقرة ميشيغان مسندةً، وتُعاد صياغة جملة «لماذا يهمّ» الثانية بحيث تكتفي بالقول إن التعديل لا يمس الخلاف الأشمل الذي تقول أوتاوا إنها مستعدة لانتظاره."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الأقسام مرتبة ترتيباً منطقياً: القرار، ثم كولينز، ثم الخلفية، ثم السباق، ثم أوتاوا. غير أن فقرة أرقام كارني («تراجعت 10%... هبطت بأكثر من 20%») معزولة لا تفسر شيئاً. وفقرة لقاءات كولينز بغرير ولوتنيك قصيرة ومنفصلة عن فقرة تصريحها.",
+              "repair": "تُضم أرقام كارني إلى فقرة الخلفية بوصفها أثراً للحرب التجارية، وتُدمج فقرة طلب كولينز الإعفاء في الفقرة التي تسبقها."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "التواريخ والأرقام مطابقة للمصادر: 30 أكتوبر، و3 نوفمبر، و22 أغسطس، و20 مليار دولار، و15–50%، و20 يوليو و8 سبتمبر. واقتباس وايدن منقول حرفياً من SOURCE 1. أما «تقوم عليها» و«مفتوحاً» فتغيّران دلالة المصدر قليلاً.",
+              "repair": "تُكتب «تدعم مجتمعات ريفية وساحلية» و«متكافئاً»، ويُوضَّح في جدول الحقائق والمتن أن تراجع الـ10% يخص صادرات السيارات الكندية."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة والفقرة الأولى تبيّن معاً أن الأمر أعفى سلعاً محددة، أغلبها آلات ومعدات تبريد وعبوات تعبئة، وأخضع في المقابل سلعاً أخرى للرسوم نفسها، وأن إطار رسوم الـ50% باقٍ. موعد السريان في 30 أكتوبر وموعد الانتخابات في 3 نوفمبر واضحان.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "التقرير يقدّم الدافع المعلن من البيت الأبيض (إعادة ضبط إجراءات 20 يوليو و8 سبتمبر، SOURCE 3)، وطلب كولينز وحاجة المنتجين إلى مدخلات كندية (SOURCE 1، SOURCE 3)، وخلفية رسوم أغسطس والرد الكندي، وأثر الحرب التجارية بحسب كارني. ويعرض البعد الانتخابي في مين وميشيغان. صندوق «لماذا يهمّ» يستنتج من هذه المقدمات أن الأمر ينقل العبء إلى سلع أخرى بينما يبقى الإطار والخلاف الأشمل على حالهما، وهو استنتاج محدود تسنده المقدمات.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "الفقرات تسير بترتيب يحتاجه القارئ: مضمون القرار ومقابله، ثم تبريره الرسمي، ثم مطالبة كولينز، ثم الخلفية وأثر الرسوم، ثم السباق وردود الفعل، ثم موقف أوتاوا وما ينتظر الاتفاق. فقرة كارني لم تعد معزولة، فهي تشرح أثر الحرب التجارية التي يعدّلها الأمر. جملة الصندوق الثانية تستند إلى ما يختم به المتن، لكنها تضيف أن التعديل لا يمس الخلاف الأشمل، فهي ليست صدى محضاً.",
+              "repair": "اختياري: تنويع افتتاح إحدى فقرات «وقال»."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام والتواريخ مطابقة للمصادر: 50%، و20 مليار دولار، و15–50%، و22 أغسطس، و20 يوليو و8 سبتمبر، و30 أكتوبر، و3 نوفمبر، و10% وأكثر من 20%. اقتباس وايدن حرفي من SOURCE 1. تراجع الـ10% منسوب صراحةً إلى صادرات السيارات الكندية. «متكافئ» يطابق toss-up، و«تدعم» تطابق SOURCE 1.",
+              "repair": "إضافة «بحسب كارني» إلى تسميتي رقمي التجارة في جدول الحقائق."
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "الأمر يعفي ألواح الخشب الرقائقي والمنتجات الورقية والآلات ومعدات التبريد وعبوات التعبئة ويضيف سلعاً أخرى منها السجاد والشامبو لتعويض أثر الإعفاءات",
+          "source": 1
+        },
+        {
+          "fact": "كولينز قالت إن مزارعين يعتمدون على معدات ومواد تعبئة كندية لا بديل أمريكياً لها أو يكلّف استبدالها كثيراً",
+          "source": 1
+        },
+        {
+          "fact": "البيت الأبيض قال إن ترامب يعيد ضبط نطاق إجراءات 20 يوليو و8 سبتمبر",
+          "source": 3
+        },
+        {
+          "fact": "كارني قال إن كندا منفتحة على اتفاق لكنها مستعدة للانتظار أشهراً أو حتى إدارة أمريكية أخرى",
+          "source": 2
+        }
+      ],
+      "slug": "trump-exempts-canadian-goods-tariffs-midterms-787322",
+      "title": "ترامب يعفي منتجات كندية من رسوم 50% قبل انتخابات التجديد النصفي الأمريكية",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "إندونيسيا تخفض صادرات الغاز إلى سنغافورة لصالح الطلب المحلي",
+      "section": "energy",
+      "importance": 6,
+      "sources": [
+        "https://aawsat.com/node/5333132",
+        "https://www.aljazeera.net/ebusiness/2026/10/24/%d8%a5%d9%86%d8%af%d9%88%d9%86%d9%8a%d8%b3%d9%8a%d8%a7-%d8%aa%d9%82%d9%84%d8%b5-%d8%b4%d8%ad%d9%86%d8%a7%d8%aa-%d8%a7%d9%84%d8%ba%d8%a7%d8%b2-%d8%a5%d9%84%d9%89",
+        "https://www.alborsaanews.com/2026/10/24/2001480"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والمقدمة يحددان حجم الخفض وبدايته وحصره في سنغافورة. لكن القارئ لا يعرف وزنه من الإمدادات (8% من غاز الأنابيب الإندونيسي في 2024، المصدر 1 والمصدر 2). كما تحذف المسودة كلمة «حالياً» التي تقيد بها المصدر 2 اقتصار القرار على سنغافورة.",
+              "repair": "تُضاف نسبة الـ8% في المقدمة أو الفقرة الثانية، ويُكتب «يقتصر القرار حالياً على سنغافورة»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الدافع المعلن موجود، أي حماية إمدادات الغاز لتوليد الكهرباء محلياً. لكن وجهة الغاز المحوَّل (باتام وبنتان وسومطرة عبر خط تي جي آي، المصدر 3) غائبة. وغائب كذلك تحذير الوزير من الدول التي «لا تحترم» إندونيسيا (المصدر 2). أما «لماذا يهمّ» فتنطلق من مقدمات صحيحة (95% وتنوع مصادر الاستيراد)، ثم تستنتج إخضاع الصادرات لطلب المحطات «لا لالتزاماتها مع المشترين»، وهذه مقدمة غير مسندة، ولا تذكر الشرط الذي يحد الاستنتاج.",
+              "repair": "تُضاف تفاصيل إعادة التوجيه والتحذير منسوبين. ويُعاد صوغ الصندوق على أساس نسبة الـ8% والاعتماد على الغاز، مع شرط صريح: إن لم يتراجع الطلب فالبديل من ماليزيا أو الغاز المسال، والحاسم هو حجم الخفض لاحقاً."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "فقرة ستريتس تايمز منفصلة عن فقرة الدافع، وهي تشرح الأمر نفسه. والخاتمة «ولم يربط المسؤولون الإندونيسيون قرار الغاز بالخلاف» إخبار عمّا لم يُقل، ويناقض ما في المصدر 2. فقرات الضباب الدخاني نفسها مترابطة ومرتبطة بالحدث.",
+              "repair": "تُدمج فقرتا الدافع في فقرة واحدة. وتُختم فقرة الخلاف بتحذير الوزير المنسوب، ثم بعبارة سيسوانتو عن المتابعة اليومية بوصفها الخطوة التالية."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الوحدات صحيحة، إذ اعتمدت المسودة «مليون قدم مكعب قياسي» كما في المصدر 2 والمصدر 3 وتجنبت وحدات المصدر 1 المضطربة. لكن هدف الخطوة منسوب إلى تصريح لفرانس برس، والمصدر 2 يورده بعد «في بيان». و«لماذا يهمّ» يجزم بتعويض الكميات من ماليزيا والغاز المسال، والمصدر 3 يقول إن الأثر على الكهرباء والأسعار غير واضح.",
+              "repair": "يُنسب الهدف إلى بيان سيسوانتو، ويُصاغ أثر الخفض على سنغافورة صياغة مشروطة."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "تقول المقدمة والفقرات الأولى ما تغيّر: خفض 31 مليون قدم مكعب قياسي يومياً بدأ السبت، ويعادل نحو 8% من غاز الأنابيب المصدَّر في 2024، ويُحوَّل إلى الكهرباء المحلية. وتقول ما بقي على حاله: يقتصر القرار حالياً على سنغافورة لاتصال الأنابيب بها مباشرة. فلا تناقض بين العنوان والعنوان الفرعي.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السياق متوفر من المصادر: نسبة الـ8% و145.3 مليار قدم مكعب (المصدر 2)، ووجهة الغاز المحوَّل (المصدر 3)، واعتماد سنغافورة على الغاز بنحو 95%، ووصف «إس كيه كيه ميغاس» بأنها الجهاز الحكومي المشرف على القطاع. ويبني صندوق «لماذا يهمّ» على مقدمات صحيحة استنتاجاً محدوداً بشرط صريح: إن لم يتراجع الطلب فالبديل من ماليزيا أو الغاز المسال، والحاسم هو اتساع الخفض. لكن «تقتطع ... الذي تلقته سنغافورة في 2024» تخلط أساس المقارنة بالكمية المخفوضة.",
+              "repair": "«يعادل الخفض نحو 8% من غاز الأنابيب الذي صدّرته إندونيسيا إلى سنغافورة في 2024»، و«في ضوء متابعتها اليومية» بدل «بعد متابعتها اليومية»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات مجمّعة حسب وظيفتها: الحجم في سياقه، ثم الدافع ونسبته، ثم التوزيع وإعادة التوجيه، ثم النطاق وأثره على سنغافورة، ثم الخلاف وخلفيته. غير أن «وقال سيسوانتو إن الجهاز سيتابع التطورات يومياً» تقف وحدها تحت عنوان الضباب الدخاني منفصلة عن قرار الغاز الذي تخصه.",
+              "repair": "تُضم إلى فقرة «يقتصر القرار حالياً على سنغافورة» ويُختم التقرير بتحذير الوزير المنسوب."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الوحدات والأرقام والإسناد مطابقة للمصادر: مليون قدم مكعب قياسي، و15 و16 مليوناً، و«في بيان»، ووكالة الأنباء الألمانية للنسبة، وإدارة معلومات الطاقة الأميركية، وقيد «حالياً». ويبقى عيبان. الأول أن العنوان الفرعي يقول «ويتحول إلى الكهرباء» بدل إعادة توجيه الغاز إلى توليد الكهرباء. والثاني أن العنوان يحذف حرف الجر قبل المقدار.",
+              "repair": "«ويُعاد توجيهه إلى توليد الكهرباء في باتام وبنتان وسومطرة»، و«بمقدار 31 مليون قدم مكعب يومياً»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 8,
+      "mendIssues": [
+        "عيب لغوي في العنوان: «إندونيسيا تخفض صادرات الغاز إلى سنغافورة 31 مليون قدم مكعب يومياً» حُذف منه حرف الجر اللازم قبل المقدار، فيتعلق الرقم بالفعل تعلقاً ركيكاً. الإصلاح: «إندونيسيا تخفض صادرات الغاز إلى سنغافورة بمقدار 31 مليون قدم مكعب يومياً». ويجوز «بـ31 مليون قدم مكعب يومياً».",
+        "عيب في الصياغة والدقة في العنوان الفرعي: عبارة «ويتحول إلى الكهرباء في باتام وبنتان وسومطرة» تعني حرفياً أن الغاز يصير كهرباء، أو أن الخفض نفسه يتحول. والمصدر 3 يقول إن الكميات يُعاد توجيهها إلى شركة الكهرباء في باتام وإلى احتياجات الكهرباء في باتام وبنتان وسومطرة. الإصلاح: «...ويُعاد توجيهه إلى توليد الكهرباء في باتام وبنتان وسومطرة».",
+        "عيب لغوي يتكرر مرتين: «إلى تقديم احتياجات الطاقة المحلية» و«لتقديم الاستهلاك المحلي». الفعل «تقديم» بلا مفضَّل عليه يحتمل معنى العرض أو التقدمة، والمصدران 1 و2 يقولان «إعطاء الأولوية». الإصلاح: «إلى إعطاء الأولوية لاحتياجات الطاقة المحلية» و«لإعطاء الأولوية للاستهلاك المحلي».",
+        "عيب في دقة «لماذا يهمّ»: عبارة «تقتطع الخطوة نحو 8% من غاز الأنابيب الإندونيسي الذي تلقته سنغافورة في 2024» تجعل كميات عام 2024 المنقضي هي ما يُقتطع. لكن رقم 2024 هو أساس المقارنة فقط، فالمصدران 1 و2 يقولان إن الخفض «يعادل» نحو 8% منها. كما أن «بعد متابعتها اليومية» تعبير غير مستقيم، لأن المتابعة مستمرة ولا يأتي شيء بعدها. الإصلاح: «يعادل الخفض نحو 8% من غاز الأنابيب الذي صدّرته إندونيسيا إلى سنغافورة في 2024...» و«ويبقى الحاسم هل تكتفي جاكرتا بهذا الحجم في ضوء متابعتها اليومية، أم توسّعه». الاستنتاج المشروط نفسه سليم ويبقى كما هو.",
+        "عيب في البناء: الجملة الختامية «وقال سيسوانتو إن الجهاز سيتابع التطورات يومياً» تتعلق بقرار الغاز (المصدر 2)، لكنها معزولة في فقرة من سطر واحد تحت عنوان «خلاف الضباب الدخاني». فيُفهم منها أن المتابعة تخص الخلاف الدبلوماسي. الإصلاح: تُنقل إلى الفقرة الرابعة بعد «يقتصر القرار حالياً على سنغافورة...» لتقترن قيود القرار الحالية بالخطوة التالية: «وقال سيسوانتو إن الهيئة ستتابع التطورات يومياً».",
+        "السياق متوفر من المصادر: نسبة الـ8% و145.3 مليار قدم مكعب (المصدر 2)، ووجهة الغاز المحوَّل (المصدر 3)، واعتماد سنغافورة على الغاز بنحو 95%، ووصف «إس كيه كيه ميغاس» بأنها الجهاز الحكومي المشرف على القطاع. ويبني صندوق «لماذا يهمّ» على مقدمات صحيحة استنتاجاً محدوداً بشرط صريح: إن لم يتراجع الطلب فالبديل من ماليزيا أو الغاز المسال، والحاسم هو اتساع الخفض. لكن «تقتطع ... الذي تلقته سنغافورة في 2024» تخلط أساس المقارنة بالكمية المخفوضة. — «يعادل الخفض نحو 8% من غاز الأنابيب الذي صدّرته إندونيسيا إلى سنغافورة في 2024»، و«في ضوء متابعتها اليومية» بدل «بعد متابعتها اليومية».",
+        "الفقرات مجمّعة حسب وظيفتها: الحجم في سياقه، ثم الدافع ونسبته، ثم التوزيع وإعادة التوجيه، ثم النطاق وأثره على سنغافورة، ثم الخلاف وخلفيته. غير أن «وقال سيسوانتو إن الجهاز سيتابع التطورات يومياً» تقف وحدها تحت عنوان الضباب الدخاني منفصلة عن قرار الغاز الذي تخصه. — تُضم إلى فقرة «يقتصر القرار حالياً على سنغافورة» ويُختم التقرير بتحذير الوزير المنسوب.",
+        "الوحدات والأرقام والإسناد مطابقة للمصادر: مليون قدم مكعب قياسي، و15 و16 مليوناً، و«في بيان»، ووكالة الأنباء الألمانية للنسبة، وإدارة معلومات الطاقة الأميركية، وقيد «حالياً». ويبقى عيبان. الأول أن العنوان الفرعي يقول «ويتحول إلى الكهرباء» بدل إعادة توجيه الغاز إلى توليد الكهرباء. والثاني أن العنوان يحذف حرف الجر قبل المقدار. — «ويُعاد توجيهه إلى توليد الكهرباء في باتام وبنتان وسومطرة»، و«بمقدار 31 مليون قدم مكعب يومياً»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تنتج سنغافورة نحو 95% من كهربائها بالغاز الطبيعي",
+          "source": 3
+        },
+        {
+          "fact": "تستورد سنغافورة الغاز بالأنابيب من إندونيسيا وماليزيا إضافة إلى شحنات غاز مسال من موردين دوليين",
+          "source": 3
+        },
+        {
+          "fact": "إجمالي الخفض 31 مليون قدم مكعب قياسي يومياً من غاز الأنابيب",
+          "source": 2
+        },
+        {
+          "fact": "قال سيسوانتو إن الهيئة ستتابع التطورات يومياً",
+          "source": 2
+        }
+      ],
+      "slug": "indonesia-cuts-gas-exports-to-singapore-e91659",
+      "title": "إندونيسيا تخفض صادرات الغاز إلى سنغافورة بمقدار 31 مليون قدم مكعب يومياً",
+      "score": 7,
+      "image": "photo"
+    }
+  ],
+  "llm": {
+    "calls": 63,
+    "failures": 5,
+    "promptTokens": 826603,
+    "completionTokens": 221386,
+    "cacheReadTokens": 265091,
+    "costUsd": 8.9725,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 63
+    }
+  },
+  "log": [
+    "[16:33:18] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=45242",
+    "[16:33:18] precheck \"إندونيسيا تخفض صادرات الغاز إلى سنغافورة بمقدار 31 مليون قدم مكعب يومياً\": clean",
+    "[16:33:25] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6759",
+    "[16:33:25] image: the picture should say: Indonesia is keeping more of its piped gas at home to fuel its own power plants, leaving Singapore to find the shortfall elsewhere.",
+    "[16:33:25] image: tier 1, the story's own place (Natuna Islands, Natuna, Batam): Natuna Islands | Natuna gas | Batam power plant",
+    "[16:33:26] commons \"Natuna Islands\": 9 usable of 24",
+    "[16:33:26] image: dropped \"An Indonesian F-16 jet fighter flying over a Chinese Navy Type 903 rep\" — a warship or weapon, and the story is not about the military",
+    "[16:33:27] pexels \"Natuna Islands\": 8 usable",
+    "[16:33:38] openverse \"Natuna Islands\": 6 usable of 6",
+    "[16:33:38] image: dropped \"The babies have golden fur\" — names too little of natuna, islands",
+    "[16:33:38] image: dropped \"Woman standing on idyllic Bangka Belitung beach, enjoying the serene o\" — names too little of natuna, islands",
+    "[16:33:38] image: dropped \"Group of people forming the letters 'IVT' on sand, viewed from above.\" — names too little of natuna, islands",
+    "[16:33:38] image: dropped \"Silhouette of a boat on the sea against a vibrant sunset sky.\" — names too little of natuna, islands",
+    "[16:33:38] commons \"Natuna gas\": 1 usable of 2",
+    "[16:33:39] pexels \"Natuna gas\": 8 usable",
+    "[16:33:42] openverse \"Natuna gas\": 0 usable of 0",
+    "[16:33:42] image: dropped \"Man in uniform loading red and blue propane tanks onto a truck in urba\" — names too little of gas",
+    "[16:33:42] image: dropped \"Industrial facility by the coast with a docked LNG tanker, set against\" — names too little of gas",
+    "[16:33:42] image: dropped \"Scenic view of industrial facility and large ship against mountainous \" — names too little of gas",
+    "[16:33:42] image: dropped \"Industrial buildings by the sea under a dramatic cloudy sky.\" — names too little of gas",
+    "[16:33:42] image: dropped \"Coastal industrial facility with a tanker ship against a mountainous b\" — names too little of gas",
+    "[16:33:42] image: dropped \"A detailed view of a blue flame on a stove, showcasing energy and heat\" — names too little of gas",
+    "[16:33:42] image: dropped \"Dramatic view of a large oil platform in Norway's North Sea, symbolizi\" — names too little of gas",
+    "[16:33:42] commons \"Batam power plant\": 0 usable of 0",
+    "[16:33:43] pexels \"Batam power plant\": 8 usable",
+    "[16:33:49] openverse \"Batam power plant\": 0 usable of 0",
+    "[16:33:49] image: dropped \"Aerial view from airplane showcasing a cityscape and coastline beneath\" — names too little of power, plant",
+    "[16:33:49] image: dropped \"A vibrant Chinese archway with a golden dragon sculpture under a clear\" — names too little of power, plant",
+    "[16:33:49] image: dropped \"Industrial skyline featuring a smokestack by a serene lake under a clo\" — names too little of power, plant",
+    "[16:33:49] image: dropped \"A view of an industrial waterfront with smokestacks, buildings, and sh\" — names too little of power, plant",
+    "[16:33:49] image: dropped \"A large industrial refinery complex with tall chimneys by the waterfro\" — names too little of power, plant",
+    "[16:33:49] image: 7 file(s) dropped for naming none of Natuna Islands, Natuna, Batam",
+    "[16:33:49] image: thumbnail HTTP 403 for https://live.staticflickr.com/8144/7479990938_430ae706b2_n.jpg",
+    "[16:34:14] image: could not inline https://api.openverse.org/v1/images/c0815dc8-1b86-4c70-a084-9ed81addebd2/thumb/: The operation was aborted due to timeout",
+    "[16:34:15] image: thumbnail HTTP 403 for https://live.staticflickr.com/7268/7480006082_8455fdf330_n.jpg",
+    "[16:34:40] image: could not inline https://api.openverse.org/v1/images/e9f5d1cb-ec8e-4546-898f-e99e80ea05aa/thumb/: The operation was aborted due to timeout",
+    "[16:34:43] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3386",
+    "[16:34:43] image: vision rejected all candidates (None of the Natuna candidates shows the story's subject (gas fields, pipelines, power plants or energy infrastructure): they show a mosque, a port gate with signage, a village street, a food dish, an aerial island view and a mountain landscape. These are place or tourist scenes, folkloric, or amateur snapshots, so the fallback should look further.)",
+    "[16:34:44] image: thumbnail HTTP 403 for https://live.staticflickr.com/8144/7479990938_430ae706b2_n.jpg",
+    "[16:35:01] image: thumbnail HTTP 403 for https://live.staticflickr.com/7268/7480006082_8455fdf330_n.jpg",
+    "[16:35:01] image: thumbnail HTTP 403 for https://live.staticflickr.com/6154/6197061274_ca17ca84ec_n.jpg",
+    "[16:35:05] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3320",
+    "[16:35:05] image: vision rejected all candidates (All four candidates are scenic landscapes of the Natuna area: a tropical island, a bay, a heavily filtered sunset sea view taken from Singapore, and a forested mountain. None shows gas fields, pipelines, platforms or power plants, so none pictures the story's subject at its place. They are also amateur tourist snapshots.)",
+    "[16:35:11] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6054",
+    "[16:35:11] image: the source's photograph (Asharq Al-Awsat) shows A blue LNG carrier with spherical tanks sails past a small-boat marina in calm coastal waters, with a hillside and high-; searching LNG tanker Singapore Strait | LNG carrier Batam | liquefied natural gas carrier | LNG tanker at sea",
+    "[16:35:11] image: tier 2, like the sources' own photograph: LNG tanker Singapore Strait | LNG carrier Batam | liquefied natural gas carrier | LNG tanker at sea",
+    "[16:35:12] commons \"LNG tanker Singapore Strait\": 0 usable of 0",
+    "[16:35:12] commons \"LNG tanker\": 11 usable of 20",
+    "[16:35:13] pexels \"LNG tanker Singapore Strait\": 8 usable",
+    "[16:35:16] openverse \"LNG tanker Singapore Strait\": 0 usable of 0",
+    "[16:35:16] image: dropped \"Vibrant night view of a cargo port with ships and cranes under bright \" — names too little of tanker",
+    "[16:35:16] image: dropped \"A tanker ship on turquoise water with urban skyscrapers in the backgro\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:35:17] commons \"LNG carrier Batam\": 0 usable of 0",
+    "[16:35:17] commons \"LNG carrier\": 11 usable of 20",
+    "[16:35:18] pexels \"LNG carrier Batam\": 8 usable",
+    "[16:35:21] openverse \"LNG carrier Batam\": 0 usable of 0",
+    "[16:35:21] image: dropped \"Scenic view of industrial facility and large ship against mountainous \" — names too little of carrier",
+    "[16:35:21] commons \"liquefied natural gas carrier\": 11 usable of 20",
+    "[16:35:21] image: dropped \"Kapal Pengangkut LNG dilihat dari Sembawang.jpg\" — names too little of liquefied, natural, gas, carrier",
+    "[16:35:21] image: dropped \"One layer of a LNG carrier membrane.jpg\" — names too little of liquefied, natural, gas, carrier",
+    "[16:35:22] pexels \"liquefied natural gas carrier\": 8 usable",
+    "[16:35:41] openverse \"liquefied natural gas carrier\": The operation was aborted due to timeout",
+    "[16:35:41] image: dropped \"A large blue cargo ship cruising on calm ocean waters under a clear bl\" — names too little of liquefied, natural, gas, carrier",
+    "[16:35:41] image: dropped \"A large cargo ship sails on the tranquil ocean near Vũng Tàu, Vietnam,\" — names too little of liquefied, natural, gas, carrier",
+    "[16:35:42] commons \"LNG tanker at sea\": 16 usable of 18",
+    "[16:35:42] image: dropped \"2023-05-20 01 LNG tanker, GULF ENERGY - IMO 7390143.jpg\" — taken in Norway, which the story does not name",
+    "[16:35:42] image: dropped \"Minerva Amorgos (LNG-Tanker).jpg\" — taken in Germany, which the story does not name",
+    "[16:35:42] image: 11 likeness(es) set aside for the country's own photographs",
+    "[16:35:42] image: tier 3, the writer's own subjects: gas pipeline Indonesia | Singapore power station | Natuna gas field",
+    "[16:35:42] commons \"gas pipeline Indonesia 2026\": 3 usable of 6",
+    "[16:35:43] commons \"gas pipeline Indonesia\": 8 usable of 12",
+    "[16:35:43] image: dropped \"Münster, Hollenbeckerstraße -- 2026 -- 0575.jpg\" — names too little of gas, pipeline",
+    "[16:35:43] commons \"Singapore power station 2026\": 0 usable of 0",
+    "[16:35:43] commons \"Singapore power station\": 6 usable of 12",
+    "[16:35:44] commons \"Natuna gas field 2026\": 0 usable of 0",
+    "[16:35:44] commons \"Natuna gas field\": 0 usable of 1",
+    "[16:35:44] commons \"Natuna gas\": 1 usable of 2",
+    "[16:35:44] image: dropped \"Шахта Цольферайн 03.jpg\" — taken in Germany, which the story does not name",
+    "[16:35:51] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5763",
+    "[16:35:51] image: \"Senoko Energy.jpg\" names the story's topic without saying its point (Senoko is a Singapore gas-fired power plant, the end user of the piped gas Indonesia is cutting, and this is a sharp, professional frame. Candidates 1 and 3 sho); checked now and kept in reserve while the desk looks further",
+    "[16:35:57] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6581",
+    "[16:35:57] image: second check (claude-cli/claude-opus-5-5) RECAPTION \"Senoko Energy.jpg\": The sharp, professional frame of a gas-fired power plant's stacks in Singapore fits a story about gas cuts to Singapore'",
+    "[16:36:01] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3526",
+    "[16:36:07] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5857",
+    "[16:36:07] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Senoko Energy.jpg\": A sharp, professional view of a gas-fired combined-cycle power station in Singapore shows the plants that burn the piped",
+    "[16:36:07] image: tier 4, the story's point and its subject: gas power plant Indonesia | power station Singapore | gas pipeline Sumatra | gas pipeline Indonesia | offshore gas platform Indonesia | gas power plant (home: Indonesia, Indonesian, Sumatra, Riau, Batam)",
+    "[16:36:07] commons \"gas power plant Indonesia\": 19 usable of 24",
+    "[16:36:07] image: dropped \"Pembangkit Listrik Tenaga Gas Tanjung Jabung Power - Tg. Jabung Barat,\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:36:07] image: dropped \"Lantern Slide - Tangyes Ltd, Suction Gas Producer Plant & Gas Engine, \" — dated 1910, an archival picture",
+    "[16:36:07] image: dropped \"Lantern Slide - Tangyes Ltd, Suction Gas Producer Plant & Gas Engine, \" — dated 1910, an archival picture",
+    "[16:36:07] image: dropped \"Lantern Slide - Tangyes Ltd, Illustration of Gas Engine & Suction Gas \" — dated 1910, an archival picture",
+    "[16:36:07] image: dropped \"Lantern Slide - Tangyes Ltd, Industrial Gas Engines Installation, circ\" — dated 1910, an archival picture",
+    "[16:36:07] image: dropped \"Bremo Bluff, Virginia USGS 1994.jpeg\" — dated 1994, an archival picture",
+    "[16:36:07] image: dropped \"Rampenoefening rond kerncentrale Borssele brandweerman gecontroleerd o\" — dated 1987, an archival picture",
+    "[16:36:07] image: dropped \"Rampenoefening rond kerncentrale Borssele brandweerman gecontroleerd o\" — dated 1987, an archival picture",
+    "[16:36:07] image: dropped \"Ammonia Oxidation Plant at Plum Brook Ordnance Works (GRC-2004-C-00105\" — names too little of gas, power, plant",
+    "[16:36:08] pexels \"gas power plant Indonesia\": 8 usable",
+    "[16:36:15] openverse \"gas power plant Indonesia\": 0 usable of 0",
+    "[16:36:15] image: dropped \"Drone aerial view of industrial silos and pipelines in Banten, Indones\" — names too little of gas, power, plant",
+    "[16:36:15] image: dropped \"A large industrial refinery complex with tall chimneys by the waterfro\" — names too little of gas, power, plant",
+    "[16:36:15] image: dropped \"Industrial buildings by the sea under a dramatic cloudy sky.\" — names too little of gas, power, plant",
+    "[16:36:16] commons \"power station Singapore\": 13 usable of 24",
+    "[16:36:16] image: dropped \"St. James Power Station, Sentosa Gateway, October 2025.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:36:16] image: dropped \"The Jinrikisha Station, Singapore. (12756406623).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:36:17] pexels \"power station Singapore\": 8 usable",
+    "[16:36:36] openverse \"power station Singapore\": The operation was aborted due to timeout",
+    "[16:36:36] image: dropped \"A stunning urban skyline at night with a striking lightning bolt illum\" — names too little of power, station",
+    "[16:36:36] image: dropped \"Panoramic view of Jewel Changi Airport's lush indoor rainforest with a\" — names too little of power, station",
+    "[16:36:37] commons \"gas pipeline Sumatra\": 0 usable of 1",
+    "[16:36:37] commons \"gas pipeline\": 12 usable of 24",
+    "[16:36:37] image: dropped \"Gas pipeline odourant injection facility.JPG\" — dated 2004, an archival picture",
+    "[16:36:37] commons \"gas pipeline Indonesia\": 19 usable of 24",
+    "[16:36:37] image: dropped \"Pipa gas methan yang keluar dari sampah menuju ke PLTSa bantargebang, \" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:36:37] image: dropped \"Jalur Pipa Gas Methan yang dihasilkan dari sampah yang difermentasikan\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:36:38] commons \"offshore gas platform Indonesia\": 5 usable of 5",
+    "[16:36:38] image: dropped \"Morgen begint in de RAI de Holland Offshore tentoonstelling een maquet\" — dated 1984, an archival picture",
+    "[16:36:38] image: dropped \"Drilling Platform In The Okhotsk Sea (172197429).jpeg\" — names too little of offshore, gas, platform",
+    "[16:36:38] image: dropped \"Westland Wessex 60 ‘G-AVNE’.jpg\" — names too little of offshore, gas, platform",
+    "[16:36:38] image: dropped \"ISS-38 Nighttime view of the United Arab Emirates.jpg\" — names too little of offshore, gas, platform",
+    "[16:36:38] pexels \"offshore gas platform Indonesia\": 8 usable",
+    "[16:36:42] openverse \"offshore gas platform Indonesia\": 0 usable of 0",
+    "[16:36:42] image: dropped \"Aerial view of a coastal industrial area in Banten, Indonesia, with fa\" — names too little of offshore, gas, platform",
+    "[16:36:43] commons \"gas power plant\": 12 usable of 24",
+    "[16:36:43] image: dropped \"Marmaraereğlisi Natural Gas Combined Cycle Power Plant.jpg\" — taken in Turkey, which the story does not name",
+    "[16:36:43] image: dropped \"2018. Sotavento. Planta de xeración de hidróxeno.jpg\" — taken in Spain, which the story does not name",
+    "[16:36:43] image: dropped \"2018. Sotavento. Planta de transformación de hidróxeno en enerxía eléc\" — taken in Spain, which the story does not name",
+    "[16:36:43] image: dropped \"Elgea - Señal de conducto de gas 02.jpg\" — taken in Spain, which the story does not name",
+    "[16:36:43] image: dropped \"WINDFALL ENGINEERING AT WORK OFFSHORE NIGERIA.jpg\" — taken in Nigeria, which the story does not name",
+    "[16:36:43] image: dropped \"Dramatic view of a large oil platform in Norway's North Sea, symbolizi\" — taken in Norway, which the story does not name",
+    "[16:36:48] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5003",
+    "[16:36:48] image: \"Modern gas plant operations with engineers in Lampung, Indon\" names the story's topic without saying its point; the desk already holds one such, and looks further",
+    "[16:36:56] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6816",
+    "[16:36:56] image: \"Offshore oil platform in urban harbor, showcasing industrial\" names the story's topic without saying its point; the desk already holds one such, and looks further",
+    "[16:36:56] image: the story's people first: Bahlil Lahadalia 2026 | Bahlil Lahadalia",
+    "[16:36:56] commons \"Bahlil Lahadalia 2026\": 1 usable of 4",
+    "[16:36:57] commons \"Bahlil Lahadalia\": 0 usable of 20",
+    "[16:36:57] commons \"Lahadalia\": 0 usable of 20",
+    "[16:36:57] image: people shortlist: 2026 Pelantikan Reshufle Kabinet Merah Putih Oktober 20",
+    "[16:37:04] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6746",
+    "[16:37:04] image: vision rejected all candidates (The only candidate shows Bahlil Lahadalia being sworn in at an October 2026 cabinet reshuffle, an event unrelated to the gas export cut. It also prominently shows other named officials. The story is about Indonesia's gas policy, not Bahlil personally, so a pipeline, gas field or power-plant image would say the story better.)",
+    "[16:37:04] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"Senoko Energy.jpg\"",
+    "[16:37:04] published \"إندونيسيا تخفض صادرات الغاز إلى سنغافورة بمقدار 31 مليون قدم مكعب يومياً\" -> indonesia-cuts-gas-exports-to-singapore-e91659",
+    "[16:37:47] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=43343",
+    "[16:38:19] llm fail role=desk provider=claude model=claude-opus-5-5 attempt=1: reader_context is not grounded in its source or copies its phrasing; rewrite it faithfully",
+    "[16:38:56] desk notes: 2 of 25 facts dropped (not in their source or copied from it)",
+    "[16:38:56] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=2 ms=34008",
+    "[16:39:41] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: why_basis needs one to four reported premises with source numbers",
+    "[16:40:25] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=2 ms=41228",
+    "[16:41:34] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=68716",
+    "[16:41:34] evidence pair \"إندونيسيا تخفض صادرات الغاز إلى سنغافورة بمقدار 31 مليون قدم مكعب يومياً\": 0 proved error(s) live (v34), 0 with the kept lessons (v0); the private drafts are not published"
+  ]
+}

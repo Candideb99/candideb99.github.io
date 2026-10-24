@@ -5848,6 +5848,74 @@
           "noted": []
         }
       ]
+    },
+    "trump-exempts-canadian-goods-tariffs-midterms-787322": {
+      "at": "2026-10-24T16:23:53.480Z",
+      "title": "ترامب يعفي منتجات كندية من رسوم 50% قبل انتخابات التجديد النصفي الأمريكية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 32,
+            "checked": 32,
+            "supported": 29,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 28,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وفي ميشيغان، أشاد المرشح الجمهوري لمجلس الشيوخ مايك روجرز (Mike Rogers) بفرض الرسوم على النفايات الكندية، رغم دعوته سابقاً إلى إنهاء الحرب التجارية مع كندا.",
+              "quote": "Michigan lawmaker Mike Rogers, also a Republican, has called on Trump to end the standoff after spending months supporting the policy in recent advertisements airing in his trade-reliant state.",
+              "source": "BBC News",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "indonesia-cuts-gas-exports-to-singapore-e91659": {
+      "at": "2026-10-24T16:37:04.642Z",
+      "title": "إندونيسيا تخفض صادرات الغاز إلى سنغافورة بمقدار 31 مليون قدم مكعب يومياً",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 19,
+            "weak": 3,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

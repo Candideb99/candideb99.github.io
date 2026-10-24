@@ -1705,10 +1705,10 @@
       "strikes": 1
     },
     "8dbb2ed007e47684": {
-      "at": "2026-10-23T17:14:53.150Z",
+      "at": "2026-10-24T16:03:51.815Z",
       "decision": "rejected",
-      "title": "Global Oil Price Hits $117 a Barrel, Highest Since April",
-      "strikes": 1
+      "title": "Global Oil Price Hits $116 a Barrel, Highest Since April",
+      "strikes": 2
     },
     "cd63a065fada7797": {
       "at": "2026-10-23T17:14:53.150Z",
@@ -1717,10 +1717,10 @@
       "strikes": 1
     },
     "030fbd8260ce0776": {
-      "at": "2026-10-23T17:14:53.150Z",
+      "at": "2026-10-24T16:03:51.815Z",
       "decision": "rejected",
       "title": "$120 Oil Is Almost Here, and Trump Has Few Good Options",
-      "strikes": 1
+      "strikes": 2
     },
     "9af472b1c6635e42": {
       "at": "2026-10-23T17:14:53.151Z",
@@ -1843,10 +1843,10 @@
       "strikes": 1
     },
     "2dd84dc56be42f64": {
-      "at": "2026-10-23T21:44:25.293Z",
+      "at": "2026-10-24T16:03:51.815Z",
       "decision": "rejected",
       "title": "خام برنت يقفز 3.55 دولاراً... وأسوأ شهر للهجمات في هرمز",
-      "strikes": 1
+      "strikes": 2
     },
     "8416e9aa1929bf67": {
       "at": "2026-10-23T21:44:25.293Z",
@@ -1855,10 +1855,10 @@
       "strikes": 1
     },
     "a2905af63a5d665e": {
-      "at": "2026-10-23T21:44:25.293Z",
+      "at": "2026-10-24T16:03:51.815Z",
       "decision": "rejected",
       "title": "برنت يتجاوز 117 دولارًا للبرميل لأول مرة منذ مارس",
-      "strikes": 1
+      "strikes": 2
     },
     "a7c0bfefa2db42ca": {
       "at": "2026-10-23T21:54:59.531Z",
@@ -2009,6 +2009,84 @@
       "decision": "published",
       "slug": "russian-diesel-tankers-head-to-america-634507",
       "title": "First Russian diesel shipment is heading to US under Trump-Putin deal"
+    },
+    "b39b3a2955059e06": {
+      "at": "2026-10-24T16:03:51.815Z",
+      "decision": "rejected",
+      "title": "النفط قرب 117 دولاراً... فاتورة الطاقة تربك الأسهم والذهب",
+      "strikes": 1
+    },
+    "0aaf1e62c6134490": {
+      "at": "2026-10-24T16:11:17.205Z",
+      "decision": "rejected",
+      "title": "شواطئ رأس الخيمة \"مغلقة\" بعد تسرب نفطي",
+      "strikes": 1
+    },
+    "f49362ef605edd1a": {
+      "at": "2026-10-24T16:11:17.205Z",
+      "decision": "rejected",
+      "title": "UAE’s Ras Al-Khaimah shuts beaches amid tanker oil spill",
+      "strikes": 1
+    },
+    "871176bf5982776b": {
+      "at": "2026-10-24T16:11:17.205Z",
+      "decision": "rejected",
+      "title": "UAE oil spill: Ras Al Khaimah closes all beaches 'until further notice'",
+      "strikes": 1
+    },
+    "7ea766211e8af55e": {
+      "at": "2026-10-24T16:11:17.205Z",
+      "decision": "rejected",
+      "title": "Swift response key to limiting environmental impact of UAE oil spill, experts say",
+      "strikes": 1
+    },
+    "39db91a57f09ba21": {
+      "at": "2026-10-24T16:23:53.495Z",
+      "decision": "published",
+      "slug": "trump-exempts-canadian-goods-tariffs-midterms-787322",
+      "title": "ترمب يخفف الرسوم على سلع كندية مع احتدام سباق انتخابي في مين"
+    },
+    "a732864d1bbe80e9": {
+      "at": "2026-10-24T16:23:53.495Z",
+      "decision": "published",
+      "slug": "trump-exempts-canadian-goods-tariffs-midterms-787322",
+      "title": "White House lifts tariffs on some Canadian goods as midterm elections loom"
+    },
+    "a64d51764e73ad74": {
+      "at": "2026-10-24T16:23:53.495Z",
+      "decision": "published",
+      "slug": "trump-exempts-canadian-goods-tariffs-midterms-787322",
+      "title": "Trump drops some Canada tariffs in bid to boost embattled Susan Collins in Maine"
+    },
+    "c0429058b02ccc07": {
+      "at": "2026-10-24T16:23:53.495Z",
+      "decision": "published",
+      "slug": "trump-exempts-canadian-goods-tariffs-midterms-787322",
+      "title": "Coffins and Canoes From Canada Get 50% Tariff Under New Trump Order"
+    },
+    "73ecc8e75020598c": {
+      "at": "2026-10-24T16:23:53.495Z",
+      "decision": "published",
+      "slug": "trump-exempts-canadian-goods-tariffs-midterms-787322",
+      "title": "Ahead of Tight Race, Trump Swaps Tariffs on Some Canadian Goods"
+    },
+    "7f5ba1cc31dda55f": {
+      "at": "2026-10-24T16:37:04.652Z",
+      "decision": "published",
+      "slug": "indonesia-cuts-gas-exports-to-singapore-e91659",
+      "title": "إندونيسيا تبدأ خفض صادرات الغاز الطبيعي إلى سنغافورة"
+    },
+    "6034f5ffcecd923f": {
+      "at": "2026-10-24T16:37:04.652Z",
+      "decision": "published",
+      "slug": "indonesia-cuts-gas-exports-to-singapore-e91659",
+      "title": "إندونيسيا تقلّص شحنات الغاز إلى سنغافورة لصالح الطلب المحلي"
+    },
+    "0e18779cab6b1de8": {
+      "at": "2026-10-24T16:37:04.652Z",
+      "decision": "published",
+      "slug": "indonesia-cuts-gas-exports-to-singapore-e91659",
+      "title": "إندونيسيا تخفض صادرات الغاز الطبيعي إلى سنغافورة لضمان تلبية الإمدادات المحلية"
     }
   }
 }
