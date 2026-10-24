@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The picture desk, tested on cases whose right answer is known (83 checks), with scripted stand-ins for Claude, Wikimedia Commons,
+ * The picture desk, tested on cases whose right answer is known (84 checks), with scripted stand-ins for Claude, Wikimedia Commons,
  * the other libraries and the thumbnails: no model call, no network. Written 2026-09-28 after the owner asked for the
  * image engine to be stress-tested ("it might still be buggy"), so that the cascade's order, its place filter, the
  * repeat guard, its behaviour when a service fails, and the reading of accented names cannot regress unseen. The gate
@@ -720,6 +720,7 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
     [rules.includes("is WRONG_SUBJECT, whatever the story: no pass of this paper runs one"), rules.includes("pictured by that country's economic life at work"), rules.includes("This piece explains or analyses a concept"), rules.includes("the people its headline names or refers to"), rules.includes("skyline or central bank is acceptable ONLY")],
     [true, true, true, true, false],
   );
+  check("another outlet's name or logo in the frame is refused by desk and audit alike", [rules.includes("another news outlet's or broadcaster's name or logo in the frame"), photoRules({ draft: economy, image: {} }).includes("another news outlet's or broadcaster's name or logo in the frame")], [true, true]);
   check(
     "the desk's own rubric carries none of the audit's notes",
     [photoRules({ draft: economy, image: {} }).includes("the people its headline names or refers to"), photoRules({ draft: economy, image: {} }).includes("photographed in the Canaries")],
