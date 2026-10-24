@@ -250,21 +250,31 @@
       "read": 3,
       "confirmedPerStory": 0,
       "photosPending": 1
+    },
+    {
+      "date": "2026-10-24",
+      "published": 16,
+      "news": 13,
+      "styleFaultsPerStory": 0,
+      "corrections": 0,
+      "read": 3,
+      "confirmedPerStory": 0,
+      "photosPending": 1
     }
   ],
-  "updatedAt": "2026-10-23T19:01:50.841Z",
+  "updatedAt": "2026-10-24T12:08:02.936Z",
   "week": {
-    "published": 92,
-    "news": 81,
-    "revisedShare": 0.88,
+    "published": 101,
+    "news": 89,
+    "revisedShare": 0.89,
     "styleFaultsPerStory": 0,
     "styleWarningsPerStory": 0.27,
     "corrections": 6,
     "usefulness": {
       "withLessons": {
-        "stories": 47,
-        "words": 498,
-        "keyFacts": 4.9
+        "stories": 55,
+        "words": 487,
+        "keyFacts": 4.7
       },
       "control": {
         "stories": 14,
@@ -273,8 +283,8 @@
       }
     },
     "precheck": {
-      "checked": 84,
-      "clean": 80,
+      "checked": 92,
+      "clean": 88,
       "repaired": 4,
       "held": 0,
       "errorsFound": 4,
@@ -288,16 +298,16 @@
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 30,
-      "clean": 20,
+      "read": 33,
+      "clean": 22,
       "corrected": 1,
       "stands": 0,
       "refused": 0,
-      "listed": 9,
+      "listed": 10,
       "unverifiable": 0,
       "confirmedPerStory": 0.03,
       "withLessons": {
-        "read": 16,
+        "read": 19,
         "confirmedPerStory": 0
       },
       "claudeWithout": {
@@ -308,16 +318,16 @@
     "runs": {
       "count": 24,
       "written": 44,
-      "refused": 8,
-      "callsPerStory": 20.8,
-      "tokensPerStory": 351123,
-      "costPerStory": 3.09,
+      "refused": 10,
+      "callsPerStory": 21.5,
+      "tokensPerStory": 365047,
+      "costPerStory": 3.17,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": [
       {
         "what": "newsroom: skipped: repeats a recent story («…»)",
-        "stories": 4,
+        "stories": 5,
         "examples": []
       }
     ]
@@ -441,7 +451,7 @@
     }
   },
   "evidence": {
-    "pairs": 23,
+    "pairs": 24,
     "vsKept": {
       "n": 0,
       "better": 0,
