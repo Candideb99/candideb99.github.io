@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The picture desk, tested on cases whose right answer is known (80 checks), with scripted stand-ins for Claude, Wikimedia Commons,
+ * The picture desk, tested on cases whose right answer is known (83 checks), with scripted stand-ins for Claude, Wikimedia Commons,
  * the other libraries and the thumbnails: no model call, no network. Written 2026-09-28 after the owner asked for the
  * image engine to be stress-tested ("it might still be buggy"), so that the cascade's order, its place filter, the
  * repeat guard, its behaviour when a service fails, and the reading of accented names cannot regress unseen. The gate
@@ -8,7 +8,7 @@
  *
  *   node scripts/images-selftest.mjs
  */
-import { withStandIns, pickImage, headlinePeople, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { withStandIns, pickImage, headlinePeople, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
 import { photoKey, sharedPhotos } from "../pipeline/lib/photo-key.mjs";
 
 let failed = 0;
@@ -702,6 +702,36 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
       { slug: "text-only", at: at("2026-10-18T00:00:00Z"), image: null },
     ]),
     [{ slug: "explainer", keeps: "oman" }],
+  );
+}
+
+// T. The audit of printed photographs reads the desk's own rulebook (photoRules(), audit mode) and the desk's checks in code
+// (publishedFault()), not a copy of its own that still took a capital's skyline for a whole economy (2026-10-24).
+{
+  const economy = { title: "كيف يحدد التصنيف السيادي كلفة اقتراض عُمان؟", subtitle: "", lede: "ليد", body: "نص", tags: ["عمان"], regions: ["الخليج"], kind: "explainer" };
+  const rules = photoRules({ draft: economy, image: { title: "Duqm DryDock.jpg" }, lastResort: true, audit: true });
+  check(
+    "the audit is told the desk's rules: no skyline in any pass, how an economy and a concept are pictured, the headline's people",
+    [rules.includes("is WRONG_SUBJECT, whatever the story: no pass of this paper runs one"), rules.includes("pictured by that country's economic life at work"), rules.includes("This piece explains or analyses a concept"), rules.includes("the people its headline names or refers to"), rules.includes("skyline or central bank is acceptable ONLY")],
+    [true, true, true, true, false],
+  );
+  check(
+    "the desk's own rubric carries none of the audit's notes",
+    [photoRules({ draft: economy, image: {} }).includes("the people its headline names or refers to"), photoRules({ draft: economy, image: {} }).includes("photographed in the Canaries")],
+    [false, false],
+  );
+  const story = { title: "شركات أمريكية ترفع أسعارها", subtitle: "", tags: ["الولايات المتحدة"] };
+  check(
+    "a printed front, an archival frame, a scan and a warship fail the desk's code; a central bank's building and a Panoramio pipeline do not",
+    [
+      Boolean(publishedFault({ title: "Department of the Treasury sign Washington DC 2025-12-17.jpg", description: "The Treasury building" }, story)),
+      Boolean(publishedFault({ title: "Wall Street traders 1998.jpg", date: "1998-03-02" }, story)),
+      Boolean(publishedFault({ title: "100 dollar note obverse.jpg" }, story)),
+      Boolean(publishedFault({ title: "USS Porter in the Strait of Hormuz.jpg" }, story)),
+      publishedFault({ title: "Federal Reserve Board building, Washington.jpg" }, story),
+      publishedFault({ title: "Oil pipe lines in saudi Arabia - panoramio.jpg" }, story),
+    ],
+    [true, true, true, true, null, null],
   );
 }
 

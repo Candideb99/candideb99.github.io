@@ -12,6 +12,12 @@
  * Secretary Bessent meeting He Lifeng ran a 2014 photo of John Kerry meeting Liu Yandong, because
  * the setting matched and nobody read the file's name. A photo that shows an identifiable person the
  * story does not mention is WRONG, however well the room matches.
+ *
+ * Since 2026-10-24 it holds a printed photograph to the desk's own rules (photoRules(), the rubric of the second check
+ * before publication, and publishedFault(), the desk's checks in code), reads the whole story as the desk does and looks
+ * at the frame itself. Its own copy of the rules had fallen behind: it still took a capital's skyline and a ministry's
+ * building for a story about a whole economy, knew nothing of how an economy, a concept, prices or trade are pictured,
+ * and judged from the file's record alone (a New York shop under a large Chinese sign passed).
  */
 import { readFile, readdir, writeFile, mkdir } from "node:fs/promises";
 import { existsSync, readFileSync } from "node:fs";
@@ -28,7 +34,7 @@ for (const line of existsSync(path.join(root, ".env")) ? readFileSync(path.join(
 const { chat } = await import("./lib/llm.mjs");
 // The same geography rule the newsroom's picture checks read (2026-09-23): one rule, not two copies,
 // and the same check in code, which overrides a model that passes a photo its own file places abroad.
-const { PLACE_RULE, placedAbroad, ILLUSTRATIVE, glanceFaults, GRAVITY_RULE, noveltyFault } = await import("./lib/images.mjs");
+const { photoRules, publishedFault, placedAbroad, ILLUSTRATIVE, noveltyFault, closeUpOfMaterial, storyText, inlineImage } = await import("./lib/images.mjs");
 const ARTICLES = path.join(root, "content", "articles");
 const CACHE = path.join(root, "pipeline", ".cache", "commons-meta.json");
 const OUT = path.join(root, "pipeline", "runs", "image-audit.json");
@@ -65,11 +71,11 @@ const files = (await readdir(ARTICLES)).filter((f) => f.endsWith(".md"));
 const articles = [];
 for (const f of files) {
   const raw = await readFile(path.join(ARTICLES, f), "utf8");
-  const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
   if (!m) continue;
   const d = YAML.parse(m[1]);
   if (d.draft || !d.image?.url) continue;
-  articles.push({ file: f, slug: d.slug, title: d.title, subtitle: d.subtitle ?? "", lede: d.lede ?? "", tags: d.tags ?? [], regions: d.regions ?? [], sources: (d.sources ?? []).map((s) => s.title).slice(0, 5), url: d.image.url, alt: d.image.alt ?? "", publishedAt: String(d.publishedAt), kind: d.kind ?? "news" });
+  articles.push({ file: f, slug: d.slug, title: d.title, subtitle: d.subtitle ?? "", lede: d.lede ?? "", body: m[2], whyItMatters: d.whyItMatters ?? "", keyFacts: d.keyFacts ?? [], tags: d.tags ?? [], regions: d.regions ?? [], sources: (d.sources ?? []).map((s) => s.title).slice(0, 5), url: d.image.url, alt: d.image.alt ?? "", publishedAt: String(d.publishedAt), kind: d.kind ?? "news", section: d.section });
 }
 articles.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 const chosen = SLUGS.size ? articles.filter((a) => SLUGS.has(a.slug)) : articles;
@@ -85,41 +91,49 @@ for (const a of todo) {
   } catch (e) {
     log(`${a.slug}: commons metadata failed (${e.message.slice(0, 60)})`);
   }
+  // The story as the desk reads it (storyText(): lede, body, «لماذا يهمّ», box), and the photograph as it would read a
+  // candidate: its record, the caption printed and, since the second check looks at the frame, the frame itself.
+  const draft = { title: a.title, subtitle: a.subtitle, lede: a.lede, body: a.body, whyItMatters: a.whyItMatters, keyFacts: a.keyFacts, tags: a.tags, regions: a.regions, kind: a.kind, section: a.section };
+  const record = { title: fileTitle ?? "", description: meta.description, categories: meta.categories, date: meta.date, alt: a.alt };
+  const illustrative = a.alt.includes(ILLUSTRATIVE);
+  const thumbnail = await inlineImage(String(a.url).replace(/\/1280px-/, "/500px-").replace(/([?&]w=)\d+/, "$1500"));
   const user = `STORY (Arabic economics newspaper):
 Headline: ${a.title}
 Standfirst: ${a.subtitle}
-Lede: ${a.lede}
+${storyText(draft, 1500)}
 Tags: ${a.tags.join(", ")}
+Regions: ${a.regions.join(", ") || "unknown"}
 Source headlines: ${a.sources.join(" | ")}
 
 PHOTOGRAPH the story currently runs with:
 File name: ${fileTitle ?? "(unknown)"}
-Commons description: ${meta.description || "(none)"}
-Commons date: ${meta.date || "(unknown)"}
+Description: ${meta.description || "(none)"}
 Categories: ${meta.categories || "(none)"}
+Date: ${meta.date || "(unknown)"}
 Caption the paper printed: ${a.alt}
 
-Judge whether this photograph belongs with this story, as a strict picture editor would:
-- WRONG_PERSON: the photo shows an identifiable person (a politician, official, executive) who is NOT one of the people the story is about, even if the setting is similar. This is the gravest error. The people a story is about are the ones its HEADLINE names or refers to (by name, by office, or by the institution or state they lead or speak for); a person the story mentions only in its standfirst or body, pictured without one of them, is WRONG_PERSON too, because a reader takes the person under the headline for the person the headline is about (the owner, 2026-10-24, on the head of Libya's State Council under a headline about the parliament accepting the central bank governor's resignation).
-- WRONG_SUBJECT: a different country or city than the story's; a different company or institution; a different sector, including a neighbouring one (electricity pylons on a gas story, a highway on a port story); a military vessel or weapon for a non-military story; ${glanceFaults(a.kind)}; a scene that merely lies NEAR the subject (a beach, a park, a street, a metro station, a coastline beside a refinery or port; a satellite view of a whole country); a landmark, flag, sign or building in the frame that identifies a country the story does not mention; a caption that names a place, company or person the story does not mention; a city skyline, panorama or street scene on a story about ONE company, plant, project, product, deal, commodity or technology (a Cairo panorama on a battery-plant story, a San Francisco skyline on an AI-company story). If your reason would contain "loosely", "broadly", "tangentially", "not specifically" or "reasonably", the verdict is WRONG_SUBJECT.
-- STALE_EVENT: the photo depicts a specific past event that the story is not about (an old summit, an old ceremony), not just an old photo of a place. The story's OWN people at an earlier occasion are not stale: a photograph of them from a previous summit, visit or conference, captioned with that occasion and its year or «(أرشيفية)», is how the desks illustrate a story about them, and it is RIGHT (the owner's rule, 2026-09-23). The audit of 2026-09-24 flagged five such photographs, Trump and Xi among them, against that rule.
-- GENERIC_OK: a neutral illustration whose frame shows the story's OWN institution or sector itself: the named company's or ministry's building, the sector's own object (a battery production line, a data-centre hall, an LNG tanker, a refinery, a pipeline, a trading floor, a port crane, a factory line, a branch of the named bank). The named capital's skyline or central bank is acceptable ONLY for a story about the country's economy as a whole (inflation, growth, budget, currency, rates, sovereign rating, trade balance, jobs). An anonymous scene of the story's sector — a production line, a refinery, a tanker at sea, a container port, a trading floor, a server hall — is acceptable as a stock photograph is, under the rule below: for a story about one country, only when nothing (the file name, description, categories or caption) places it in another country.
-- RIGHT: shows the actual people, place or event of the story.
-- UNSERIOUS, whatever else fits (2026-09-27): ${GRAVITY_RULE}
-${a.alt.includes(ILLUSTRATIVE) ? `The paper captions this photograph «${ILLUSTRATIVE}» (illustrative): it was chosen because no photograph from the story's own country passed. Judge it by what readers see (the frame as the file describes it, and the caption), not by where the file says it was taken: WRONG_SUBJECT only if the frame shows readable signs, lettering, a landmark, a flag, a skyline or a street, or the caption names a place. "The caption" is the line under "Caption the paper printed" above, never the file name or the Commons description: a file called "… at the oil terminal in Lisboa" printed as «ناقلة نفط (صورة تعبيرية)» names no place (the audit of 2026-09-24 confused the two).` : PLACE_RULE}
-Return JSON: {"verdict":"RIGHT|GENERIC_OK|STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON|UNSERIOUS","people_in_photo":"<names the file/description implies, or none>","reason":"<one short English sentence>"}`;
+${photoRules({ draft, image: record, neutral: illustrative, thumbnail, lastResort: true, audit: true })}Return JSON: {"verdict":"RIGHT|GENERIC_OK|${illustrative ? "" : "RECAPTION|"}STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON|UNSERIOUS|STOCK${thumbnail ? "|AMATEUR|UNCLEAR" : ""}","people_in_photo":"<names the file, the description or the frame give, or none>","reason":"<one short English sentence>"}`;
   try {
-    const { data, model } = await chat({ role: "critic", system: "You are a strict newspaper picture editor. Answer with one JSON object only.", user, json: true, maxTokens: 300, temperature: 0, log: () => {} });
+    const { data, model } = await chat({ role: "critic", system: "You are a strict newspaper picture editor. Answer with one JSON object only.", user, images: thumbnail ? [thumbnail] : [], json: true, maxTokens: 300, temperature: 0, log: () => {} });
     let verdict = String(data.verdict ?? "").toUpperCase();
-    const abroad = a.alt.includes(ILLUSTRATIVE) ? null : placedAbroad({ title: fileTitle, description: meta.description, categories: meta.categories }, { title: a.title, tags: a.tags, regions: a.regions });
-    if (abroad && (verdict === "GENERIC_OK" || verdict === "RIGHT")) {
+    const passed = verdict === "GENERIC_OK" || verdict === "RIGHT" || verdict === "RECAPTION";
+    // The desk's checks in code, which override a model that passes: where the file places the photograph (never for an
+    // illustration, a close-up of a material or the story's own people, as the desk exempts them), a curiosity, and what
+    // the desk drops before any judge (publishedFault(): a front or a skyline, a stock cliché, a scan, an archival frame).
+    const people = String(data.people_in_photo ?? "").trim();
+    const theirOwn = verdict === "RIGHT" && people && !/^none\b/i.test(people);
+    const abroad = illustrative || closeUpOfMaterial(record) || theirOwn ? null : placedAbroad(record, draft);
+    const odd = noveltyFault(record, draft);
+    const fault = publishedFault(record, draft);
+    if (passed && abroad) {
       verdict = "WRONG_SUBJECT";
       data.reason = `The file places the photo in ${abroad}, a country the story does not name (checked in code; the model said ${String(data.verdict)}).`;
-    }
-    const odd = noveltyFault({ title: fileTitle, description: meta.description, categories: meta.categories, alt: a.alt }, { title: a.title, subtitle: a.subtitle, lede: a.lede });
-    if (odd && (verdict === "GENERIC_OK" || verdict === "RIGHT")) {
+    } else if (passed && odd) {
       verdict = "UNSERIOUS";
       data.reason = `The photo shows «${odd}», which the story is not about (checked in code; the model said ${String(data.verdict)}).`;
+    } else if (passed && fault) {
+      verdict = /cliché|icons|defunct/.test(fault) ? "STOCK" : "WRONG_SUBJECT";
+      data.reason = `${fault[0].toUpperCase()}${fault.slice(1)} (checked in code, as the desk drops it; the model said ${String(data.verdict)}).`;
     }
     results.push({ slug: a.slug, file: a.file, title: a.title, image: a.url, fileTitle, verdict, people: data.people_in_photo ?? "", reason: data.reason ?? "", model });
     log(`${verdict.padEnd(13)} ${a.slug.slice(0, 48).padEnd(50)} ${String(data.reason ?? "").slice(0, 90)}`);
@@ -130,9 +144,10 @@ Return JSON: {"verdict":"RIGHT|GENERIC_OK|STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON
 }
 await mkdir(path.dirname(CACHE), { recursive: true });
 await writeFile(CACHE, JSON.stringify(cache, null, 1));
-// A --slugs run re-judges those stories in the last full audit and keeps every other entry.
-const earlier = SLUGS.size && existsSync(OUT) ? JSON.parse(await readFile(OUT, "utf8")).results ?? [] : [];
-const kept = earlier.filter((r) => !SLUGS.has(r.slug) && articles.some((a) => a.slug === r.slug));
+// A --slugs or --limit run re-judges those stories in the last audit and keeps every other entry of a story still photographed.
+const judged = new Set(results.map((r) => r.slug));
+const earlier = (SLUGS.size || LIMIT) && existsSync(OUT) ? JSON.parse(await readFile(OUT, "utf8")).results ?? [] : [];
+const kept = earlier.filter((r) => !judged.has(r.slug) && articles.some((a) => a.slug === r.slug));
 await writeFile(OUT, JSON.stringify({ at: new Date().toISOString(), results: [...kept, ...results] }, null, 2));
 const counts = {};
 for (const r of results) counts[r.verdict] = (counts[r.verdict] ?? 0) + 1;

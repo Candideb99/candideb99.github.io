@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-24T21:28:16.930Z",
+  "at": "2026-10-24T21:58:07.645Z",
   "results": [
     {
       "slug": "trump-exempts-canadian-goods-tariffs-midterms-787322",
@@ -54,17 +54,6 @@
       "verdict": "GENERIC_OK",
       "people": "none",
       "reason": "A Turkish drilling ship is the recognisable object at the centre of the East Mediterranean gas and maritime-boundary dispute, and the caption places it in Turkey, a country the story is about.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
-      "slug": "morocco-2027-budget-income-tax-relief-9d51d0",
-      "file": "morocco-2027-budget-income-tax-relief-9d51d0.md",
-      "title": "المغرب يقترح إعفاء الأجور الصافية دون 10 آلاف درهم شهرياً من الضريبة",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/O-DIRHAM.jpg/1280px-O-DIRHAM.jpg",
-      "fileTitle": "O-DIRHAM.jpg",
-      "verdict": "GENERIC_OK",
-      "people": "none",
-      "reason": "Moroccan dirham notes and coins are a neutral illustration of Morocco's own money for a story on its 2027 budget and income-tax exemption, though the frame should be checked to confirm it is not a staged product shot on a plain background.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
@@ -156,17 +145,6 @@
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "imf-cuts-middle-east-forecast-oil-shock-a9a490",
-      "file": "imf-cuts-middle-east-forecast-oil-shock-a9a490.md",
-      "title": "صندوق النقد يخفض توقعاته للشرق الأوسط إلى انكماش 1.3% في 2026",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/2/2d/US_DoD_ABOT_-_hrs_090827-A-9884M-007.jpg",
-      "fileTitle": "US DoD ABOT - hrs 090827-A-9884M-007.jpg",
-      "verdict": "GENERIC_OK",
-      "people": "none",
-      "reason": "A commercial oil tanker loading at Iraq's Al Basrah Oil Terminal illustrates the oil shock behind this regional forecast, and Iraq is named in the lede and tags, so the location matches the story.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
       "slug": "egypt-arrears-settlement-gas-output-test-27cfe4",
       "file": "egypt-arrears-settlement-gas-output-test-27cfe4.md",
       "title": "تسوية متأخرات الشركاء الأجانب لا تكفي وحدها لرفع إنتاج مصر من الغاز",
@@ -252,17 +230,6 @@
       "verdict": "GENERIC_OK",
       "people": "none",
       "reason": "The Shanghai Stock Exchange building, where much of the CSI 300 trades, is the story's own institution and works as a neutral illustration for a story about Chinese stocks entering a bear market.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
-      "slug": "meta-non-voting-shares-ai-funding-c16252",
-      "file": "meta-non-voting-shares-ai-funding-c16252.md",
-      "title": "ميتا تعتزم إصدار أسهم بلا حق تصويت لتمويل توسعها في الذكاء الاصطناعي",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Mark-Zuckerberg-2019.jpg/1280px-Mark-Zuckerberg-2019.jpg",
-      "fileTitle": "Mark-Zuckerberg-2019.jpg",
-      "verdict": "RIGHT",
-      "people": "Mark Zuckerberg",
-      "reason": "An archive portrait of Mark Zuckerberg, CEO of Meta, the company the headline names, captioned «(أرشيفية)», correctly illustrates a story about Meta's new share class.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
@@ -365,17 +332,6 @@
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "anthropic-net-loss-80-billion-ipo-draft-2a27c8",
-      "file": "anthropic-net-loss-80-billion-ipo-draft-2a27c8.md",
-      "title": "وول ستريت جورنال: خسارة أنثروبيك تتجاوز 80 مليار دولار في النصف الأول",
-      "image": "https://live.staticflickr.com/3096/2340202215_77aae06ebc_b.jpg",
-      "fileTitle": null,
-      "verdict": "GENERIC_OK",
-      "people": "none",
-      "reason": "Server racks in a data centre are the AI sector's own object, and neither the caption nor any file data names another place or company.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
       "slug": "spacex-returns-to-q3-profit-ai-ac728c",
       "file": "spacex-returns-to-q3-profit-ai-ac728c.md",
       "title": "سبايس إكس تحقق ربحاً فصلياً قدره 4.4 مليار دولار بعد خسارة قبل عام",
@@ -475,17 +431,6 @@
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "qatar-offers-lebanon-gas-power-plants-3d18d1",
-      "file": "qatar-offers-lebanon-gas-power-plants-3d18d1.md",
-      "title": "قطر تعرض على لبنان محطتين للكهرباء تغذيهما بالغاز المسال 20 عاماً",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Gas_Turbine_Power_Plant.JPG",
-      "fileTitle": "Gas Turbine Power Plant.JPG",
-      "verdict": "GENERIC_OK",
-      "people": "none",
-      "reason": "An anonymous gas-turbine power plant shows the story's own subject, gas-fired electricity generation, and nothing in the file name, description, categories or caption places it in a country other than Lebanon.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
       "slug": "saudi-postpones-fii-conference-2027-houthi-attacks-0bf9b5",
       "file": "saudi-postpones-fii-conference-2027-houthi-attacks-0bf9b5.md",
       "title": "السعودية تؤجل مؤتمر مبادرة مستقبل الاستثمار إلى 2027 مع تصاعد هجمات الحوثيين",
@@ -571,17 +516,6 @@
       "verdict": "GENERIC_OK",
       "people": "none",
       "reason": "The photo shows the entrance of the World Bank's headquarters, the institution the headline names as the report's author, and it is a neutral, serious illustration of the story's own institution.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
-      "slug": "qatari-diar-launches-alam-al-roum-investment-zone-82ae33",
-      "file": "qatari-diar-launches-alam-al-roum-investment-zone-82ae33.md",
-      "title": "الديار القطرية تطلق منطقة استثمارية في علم الروم بمصر لجذب الشركات",
-      "image": "https://live.staticflickr.com/2493/3824358100_44517351e5_b.jpg",
-      "fileTitle": null,
-      "verdict": "GENERIC_OK",
-      "people": "none",
-      "reason": "An anonymous scene of residential units being built at a tourist resort shows the story's own sector, a coastal resort real-estate development, and its caption names no other place or company.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
@@ -673,17 +607,6 @@
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "iraq-seeks-imf-financing-programme-talks-d17aa2",
-      "file": "iraq-seeks-imf-financing-programme-talks-d17aa2.md",
-      "title": "العراق يطلب بحث برنامج تمويلي محتمل مع صندوق النقد الدولي",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/International_Monetary_Fund_headquarters.jpg/1280px-International_Monetary_Fund_headquarters.jpg",
-      "fileTitle": "International Monetary Fund headquarters.jpg",
-      "verdict": "GENERIC_OK",
-      "people": "none",
-      "reason": "The photo shows the headquarters of the International Monetary Fund, the institution named in the headline, which works as a neutral illustration even though the building is in Washington rather than Iraq.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
       "slug": "dubai-real-gdp-first-half-contraction-507750",
       "file": "dubai-real-gdp-first-half-contraction-507750.md",
       "title": "ناتج دبي الحقيقي يتراجع 2.3% إلى نحو 473 مليار درهم",
@@ -769,17 +692,6 @@
       "verdict": "GENERIC_OK",
       "people": "none",
       "reason": "An anonymous moored oil tanker, captioned as illustrative and naming no place, fits a story whose contraction is driven mainly by falling oil activity.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
-      "slug": "boeing-wins-navy-f-a-xx-fighter-contract-054631",
-      "file": "boeing-wins-navy-f-a-xx-fighter-contract-054631.md",
-      "title": "بوينغ تفوز بعقد يتجاوز 20 مليار دولار لمقاتلة البحرية من الجيل السادس",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/USS_George_H_W_Bush_lands_a_F-A-18E_Super_Hornet_%289745698%29.jpg/1280px-USS_George_H_W_Bush_lands_a_F-A-18E_Super_Hornet_%289745698%29.jpg",
-      "fileTitle": "USS George H W Bush lands a F-A-18E Super Hornet (9745698).jpg",
-      "verdict": "GENERIC_OK",
-      "people": "none",
-      "reason": "A Boeing-built F/A-18E Super Hornet, the US Navy carrier fighter the F/A-XX is meant to succeed, landing on a US carrier shows the story's own company, customer and product line rather than the unbuilt F/A-XX itself.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
@@ -871,17 +783,6 @@
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "oil-rises-trump-denies-iran-sanctions-relief-60403e",
-      "file": "oil-rises-trump-denies-iran-sanctions-relief-60403e.md",
-      "title": "برنت يرتفع إلى 103.3 دولار بعد نفي ترامب تخفيف العقوبات على إيران",
-      "image": "https://images.pexels.com/photos/39012056/pexels-photo-39012056.jpeg?auto=compress&cs=tinysrgb&w=1280",
-      "fileTitle": null,
-      "verdict": "GENERIC_OK",
-      "people": "none",
-      "reason": "An anonymous oil tanker moored in a port is the oil sector's own object, nothing places it in a country the story does not mention, and it fits a world-market Brent price story.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
       "slug": "iraq-stock-exchange-joins-adx-tabadul-7fd321",
       "file": "iraq-stock-exchange-joins-adx-tabadul-7fd321.md",
       "title": "العراق يبدأ التداول عبر منصة «تبادُل» ثامنَ سوق مشارك",
@@ -967,17 +868,6 @@
       "verdict": "GENERIC_OK",
       "people": "none",
       "reason": "Going only by the caption, since the file has no metadata, anonymous software developers at work show the story's own sector with nothing placing them in a country the story does not mention; the frame still needs a visual check that it is a real, unstaged photograph.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
-      "slug": "fund-redemption-runs-forced-selling-explained-c71c08",
-      "file": "fund-redemption-runs-forced-selling-explained-c71c08.md",
-      "title": "كيف تضغط سحوبات المستثمرين من الصناديق على أسهم بورصة إسطنبول؟",
-      "image": "https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=1280",
-      "fileTitle": null,
-      "verdict": "GENERIC_OK",
-      "people": "none",
-      "reason": "A stock-price screen is the equity market's own object, and nothing in the file, description, categories or caption places it outside Turkey, so it runs as a neutral stock illustration for a Borsa Istanbul story.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
@@ -1069,6 +959,39 @@
       "model": "claude-cli/claude-opus-5-5"
     },
     {
+      "slug": "egypt-chevron-narges-2-gas-well-results-44a207",
+      "file": "egypt-chevron-narges-2-gas-well-results-44a207.md",
+      "title": "بئر «نرجس 2» تؤكد امتداد طبقات الغاز قبالة سواحل مصر",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Stena_Forth_%28IMO_9428932%29_Las_Palmas_2018.jpg/1280px-Stena_Forth_%28IMO_9428932%29_Las_Palmas_2018.jpg",
+      "fileTitle": "Stena Forth (IMO 9428932) Las Palmas 2018.jpg",
+      "verdict": "RIGHT",
+      "people": "none",
+      "reason": "The frame shows the drillship Stena Forth, which the story names as the vessel that drilled Nargis-2; it remains the story's own object despite being photographed in Las Palmas, and the caption names no other place or company.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "microsoft-exits-nscale-essex-datacentre-power-ce50c6",
+      "file": "microsoft-exits-nscale-essex-datacentre-power-ce50c6.md",
+      "title": "مايكروسوفت تنسحب من مركز بيانات في إسيكس وسط مخاوف من نقص الكهرباء",
+      "image": "https://live.staticflickr.com/3345/3639487285_25a487c19f_b.jpg",
+      "fileTitle": null,
+      "verdict": "GENERIC_OK",
+      "people": "none",
+      "reason": "A sharp, professional, neutral frame of an engineer at an electricity substation pictures the grid-power shortage the headline names as the deal's cause, with no place, logo or identifiable person, though a data-centre hall would picture the project itself more directly.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "what-is-sovereign-credit-rating-borrowing-cost-47175f",
+      "file": "what-is-sovereign-credit-rating-borrowing-cost-47175f.md",
+      "title": "هل يخفّض رفع توقع نمو عُمان كلفة اقتراض مسقط؟",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Duqm_DryDock.jpg/1280px-Duqm_DryDock.jpg",
+      "fileTitle": "Duqm DryDock.jpg",
+      "verdict": "GENERIC_OK",
+      "people": "none",
+      "reason": "A working Omani industrial port at Duqm, with ships, an LNG carrier, cranes and tugs, pictures the sultanate's own economy at work for a story about its growth outlook and borrowing costs, and the frame reads clearly at a glance.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
       "slug": "indonesia-cuts-gas-exports-to-singapore-e91659",
       "file": "indonesia-cuts-gas-exports-to-singapore-e91659.md",
       "title": "إندونيسيا تخفض صادرات الغاز إلى سنغافورة بمقدار 31 مليون قدم مكعب يومياً",
@@ -1076,18 +999,7 @@
       "fileTitle": null,
       "verdict": "GENERIC_OK",
       "people": "none",
-      "reason": "The caption places it in Indonesia and shows a power plant with fuel tanks, the domestic power generation the lede says the withheld gas will feed, though it shows no gas pipeline or export link to Singapore.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
-      "slug": "egypt-chevron-narges-2-gas-well-results-44a207",
-      "file": "egypt-chevron-narges-2-gas-well-results-44a207.md",
-      "title": "بئر «نرجس 2» تؤكد امتداد طبقات الغاز قبالة سواحل مصر",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Stena_Forth_%28IMO_9428932%29_Las_Palmas_2018.jpg/1280px-Stena_Forth_%28IMO_9428932%29_Las_Palmas_2018.jpg",
-      "fileTitle": "Stena Forth (IMO 9428932) Las Palmas 2018.jpg",
-      "verdict": "WRONG_SUBJECT",
-      "people": "none",
-      "reason": "The drillship is photographed in the Port of Las Palmas, Spain (per the file name, description and categories), so for a story about one Egyptian offshore gas well the photograph is placed in another country.",
+      "reason": "A sharp professional aerial of gas storage spheres, pipework and a power plant in Indonesia shows the story's own sector, gas for domestic power generation, in the story's own country.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
@@ -1098,7 +1010,29 @@
       "fileTitle": null,
       "verdict": "GENERIC_OK",
       "people": "none",
-      "reason": "Anonymous shoppers at a New York produce store are a neutral, serious US illustration for a story about American businesses raising prices and inflation pressure ahead of the Fed decision.",
+      "reason": "A sharp, professionally composed photograph of shoppers buying at an everyday New York fruit and vegetable shop pictures US consumer prices, and the caption correctly places it in the story's country.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "morocco-2027-budget-income-tax-relief-9d51d0",
+      "file": "morocco-2027-budget-income-tax-relief-9d51d0.md",
+      "title": "المغرب يقترح إعفاء الأجور الصافية دون 10 آلاف درهم شهرياً من الضريبة",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/O-DIRHAM.jpg/1280px-O-DIRHAM.jpg",
+      "fileTitle": "O-DIRHAM.jpg",
+      "verdict": "GENERIC_OK",
+      "people": "none",
+      "reason": "A sharp, well-exposed close-up of Moroccan dirham notes and coins suits a story about Moroccan wages and income tax, and the caption names only the story's own currency.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "imf-cuts-middle-east-forecast-oil-shock-a9a490",
+      "file": "imf-cuts-middle-east-forecast-oil-shock-a9a490.md",
+      "title": "صندوق النقد يخفض توقعاته للشرق الأوسط إلى انكماش 1.3% في 2026",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/2d/US_DoD_ABOT_-_hrs_090827-A-9884M-007.jpg",
+      "fileTitle": "US DoD ABOT - hrs 090827-A-9884M-007.jpg",
+      "verdict": "GENERIC_OK",
+      "people": "none",
+      "reason": "A sharp, professional frame of a crude tanker loading at Iraq's Al Basrah Oil Terminal pictures the oil-export shock through Hormuz that drives the story's Iraqi and regional contraction, and the neutral caption names nothing the story does not.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
@@ -1108,8 +1042,30 @@
       "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/NYC_-_Construction_worker_resting_-_1365_cropped.jpg/1280px-NYC_-_Construction_worker_resting_-_1365_cropped.jpg",
       "fileTitle": "NYC - Construction worker resting - 1365 cropped.jpg",
       "verdict": "GENERIC_OK",
-      "people": "none (an unnamed construction worker)",
-      "reason": "An anonymous American worker at a New York construction site is a fitting stock illustration of the US labour market on a story about national jobless claims, and nothing places it outside the United States.",
+      "people": "none (an anonymous construction worker)",
+      "reason": "A sharp, well-composed frame of an American worker in a hard hat and coveralls on a New York job site fits a story about US employers keeping their staff, and the caption names only what the file confirms.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "meta-non-voting-shares-ai-funding-c16252",
+      "file": "meta-non-voting-shares-ai-funding-c16252.md",
+      "title": "ميتا تعتزم إصدار أسهم بلا حق تصويت لتمويل توسعها في الذكاء الاصطناعي",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Mark-Zuckerberg-2019.jpg/1280px-Mark-Zuckerberg-2019.jpg",
+      "fileTitle": "Mark-Zuckerberg-2019.jpg",
+      "verdict": "RIGHT",
+      "people": "Mark Zuckerberg",
+      "reason": "Meta's founder and CEO, who leads the company the headline names and whose voting control the new share class protects, appears in a sharp, professional stage portrait correctly captioned as an archive photograph.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "anthropic-net-loss-80-billion-ipo-draft-2a27c8",
+      "file": "anthropic-net-loss-80-billion-ipo-draft-2a27c8.md",
+      "title": "وول ستريت جورنال: خسارة أنثروبيك تتجاوز 80 مليار دولار في النصف الأول",
+      "image": "https://live.staticflickr.com/3096/2340202215_77aae06ebc_b.jpg",
+      "fileTitle": null,
+      "verdict": "GENERIC_OK",
+      "people": "none",
+      "reason": "Server racks in a data centre, captioned without a place, are a neutral frame of the AI sector's own object for an AI-company story.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
@@ -1120,18 +1076,29 @@
       "fileTitle": "Casablanca container port 2023.jpg",
       "verdict": "GENERIC_OK",
       "people": "none",
-      "reason": "A container port in Casablanca is a neutral, serious picture of Morocco's modern economy, and nothing places it outside Morocco, so it fits a story about the country's growth, deficit and debt targets.",
+      "reason": "A clear, sharp view of cranes and container ships at the Port of Casablanca shows Morocco's own economic life at work, which suits a story on the government's growth programme, and the caption names nothing the story does not.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "microsoft-exits-nscale-essex-datacentre-power-ce50c6",
-      "file": "microsoft-exits-nscale-essex-datacentre-power-ce50c6.md",
-      "title": "مايكروسوفت تنسحب من مركز بيانات في إسيكس وسط مخاوف من نقص الكهرباء",
-      "image": "https://live.staticflickr.com/3345/3639487285_25a487c19f_b.jpg",
-      "fileTitle": null,
-      "verdict": "WRONG_SUBJECT",
+      "slug": "qatar-offers-lebanon-gas-power-plants-3d18d1",
+      "file": "qatar-offers-lebanon-gas-power-plants-3d18d1.md",
+      "title": "قطر تعرض على لبنان محطتين للكهرباء تغذيهما بالغاز المسال 20 عاماً",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Gas_Turbine_Power_Plant.JPG",
+      "fileTitle": "Gas Turbine Power Plant.JPG",
+      "verdict": "GENERIC_OK",
       "people": "none",
-      "reason": "An anonymous engineer at an electricity substation shows the power-grid sector, not Microsoft, Nscale or a data-centre hall, so it misses the story's subject: the collapsed data-centre deal.",
+      "reason": "A sharp, clearly composed gas-turbine power plant shows the story's own sector, gas-fired electricity generation, and neither the frame, file name, description nor categories place it in another country.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "qatari-diar-launches-alam-al-roum-investment-zone-82ae33",
+      "file": "qatari-diar-launches-alam-al-roum-investment-zone-82ae33.md",
+      "title": "الديار القطرية تطلق منطقة استثمارية في علم الروم بمصر لجذب الشركات",
+      "image": "https://live.staticflickr.com/2493/3824358100_44517351e5_b.jpg",
+      "fileTitle": null,
+      "verdict": "GENERIC_OK",
+      "people": "none",
+      "reason": "The caption describes construction of housing units at a tourist resort and names no place, a neutral illustration of the real-estate and resort development sector of the Alam Al Roum project, though the frame itself could not be checked for signs, lettering or landscape.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
@@ -1142,7 +1109,18 @@
       "fileTitle": "Alexander Novak on MGIMO 18 March 2026 02.jpg",
       "verdict": "RIGHT",
       "people": "Alexander Novak",
-      "reason": "The headline names Novak and the photo shows him at a 2026 MGIMO energy event, and the caption states that occasion and year, which the owner's rule accepts for a story about its own person.",
+      "reason": "The headline's own subject, Russian Deputy Prime Minister Alexander Novak, is shown in a sharp professional frame at an earlier occasion, captioned as such with its year.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "iraq-seeks-imf-financing-programme-talks-d17aa2",
+      "file": "iraq-seeks-imf-financing-programme-talks-d17aa2.md",
+      "title": "العراق يطلب بحث برنامج تمويلي محتمل مع صندوق النقد الدولي",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/International_Monetary_Fund_headquarters.jpg/1280px-International_Monetary_Fund_headquarters.jpg",
+      "fileTitle": "International Monetary Fund headquarters.jpg",
+      "verdict": "WRONG_SUBJECT",
+      "people": "none",
+      "reason": "A headquarters building front standing for the IMF says only whose, not what happened (Iraq's request for a financing programme), and it is not a central bank under its own rate or currency decision.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
@@ -1153,7 +1131,18 @@
       "fileTitle": null,
       "verdict": "GENERIC_OK",
       "people": "none",
-      "reason": "An anonymous crude tanker at sea illustrates the story's oil-export theme, and nothing in the caption or file places it outside Saudi Arabia.",
+      "reason": "A crude tanker's deck at sea, with nothing placing it outside the Gulf, pictures the oil exports and shipping routes at the centre of this Saudi budget explainer, and the caption names no one the story does not.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "boeing-wins-navy-f-a-xx-fighter-contract-054631",
+      "file": "boeing-wins-navy-f-a-xx-fighter-contract-054631.md",
+      "title": "بوينغ تفوز بعقد يتجاوز 20 مليار دولار لمقاتلة البحرية من الجيل السادس",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/USS_George_H_W_Bush_lands_a_F-A-18E_Super_Hornet_%289745698%29.jpg/1280px-USS_George_H_W_Bush_lands_a_F-A-18E_Super_Hornet_%289745698%29.jpg",
+      "fileTitle": "USS George H W Bush lands a F-A-18E Super Hornet (9745698).jpg",
+      "verdict": "RIGHT",
+      "people": "none",
+      "reason": "A sharp US Navy photograph of a Boeing F/A-18E Super Hornet landing on a carrier deck shows an aircraft the story names, the Navy jet F/A-XX will first support and then replace, and the caption names nothing outside the story.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
@@ -1164,18 +1153,29 @@
       "fileTitle": null,
       "verdict": "GENERIC_OK",
       "people": "none",
-      "reason": "A US filling station, which the caption places in California, is the sector's own object in the story's own country for a piece on US gasoline prices.",
+      "reason": "A clean, well-exposed night shot of a working US filling station with cars at the pumps, captioned in California, directly pictures the story's subject of American gasoline prices.",
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "what-is-sovereign-credit-rating-borrowing-cost-47175f",
-      "file": "what-is-sovereign-credit-rating-borrowing-cost-47175f.md",
-      "title": "هل يخفّض رفع توقع نمو عُمان كلفة اقتراض مسقط؟",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Duqm_DryDock.jpg/1280px-Duqm_DryDock.jpg",
-      "fileTitle": "Duqm DryDock.jpg",
+      "slug": "oil-rises-trump-denies-iran-sanctions-relief-60403e",
+      "file": "oil-rises-trump-denies-iran-sanctions-relief-60403e.md",
+      "title": "برنت يرتفع إلى 103.3 دولار بعد نفي ترامب تخفيف العقوبات على إيران",
+      "image": "https://images.pexels.com/photos/39012056/pexels-photo-39012056.jpeg?auto=compress&cs=tinysrgb&w=1280",
+      "fileTitle": null,
       "verdict": "WRONG_SUBJECT",
       "people": "none",
-      "reason": "A ship-repair dry dock in Duqm does not show the story's subject, which is Oman's sovereign rating and borrowing costs: the story never mentions Duqm or ship repair, and the growth it reports comes from oil and gas, so the frame matches neither the sovereign-finance subject nor the sector driving it.",
+      "reason": "The frame shows Odfjell Tankers' chemical tanker 'Bow Excellence' with the operator's name painted large on the hull, so it pictures a company the story never mentions and a chemical carrier rather than the crude trade through Hormuz, and a new caption cannot remove writing that is in the frame.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "fund-redemption-runs-forced-selling-explained-c71c08",
+      "file": "fund-redemption-runs-forced-selling-explained-c71c08.md",
+      "title": "كيف تضغط سحوبات المستثمرين من الصناديق على أسهم بورصة إسطنبول؟",
+      "image": "https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=1280",
+      "fileTitle": null,
+      "verdict": "WRONG_SUBJECT",
+      "people": "none",
+      "reason": "The price board lists Arabic company names such as Abu Dhabi firms, placing it on a UAE exchange rather than Borsa Istanbul, whose boards are in Turkish Latin script.",
       "model": "claude-cli/claude-opus-5-5"
     }
   ]
