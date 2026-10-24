@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-24T20:38:46.271Z",
+  "at": "2026-10-24T21:28:16.930Z",
   "results": [
     {
       "slug": "trump-exempts-canadian-goods-tariffs-midterms-787322",
@@ -706,17 +706,6 @@
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "uae-us-treasury-holdings-rise-august-c9ce2e",
-      "file": "uae-us-treasury-holdings-rise-august-c9ce2e.md",
-      "title": "الإمارات ترفع حيازتها من سندات الخزانة الأمريكية إلى 116.1 مليار دولار",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Department_of_the_Treasury_sign_Washington_DC_2025-12-17_10-40-05.jpg/1280px-Department_of_the_Treasury_sign_Washington_DC_2025-12-17_10-40-05.jpg",
-      "fileTitle": "Department of the Treasury sign Washington DC 2025-12-17 10-40-05.jpg",
-      "verdict": "GENERIC_OK",
-      "people": "none",
-      "reason": "The photo shows the US Treasury Department building in Washington, the institution that issues the bonds and publishes the holdings data the story reports, with nothing placing it outside the story's frame.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
       "slug": "us-budget-deficit-nears-two-trillion-eb4d1b",
       "file": "us-budget-deficit-nears-two-trillion-eb4d1b.md",
       "title": "عجز الموازنة الأمريكية يقترب من تريليوني دولار في 2026",
@@ -1176,6 +1165,17 @@
       "verdict": "GENERIC_OK",
       "people": "none",
       "reason": "A US filling station, which the caption places in California, is the sector's own object in the story's own country for a piece on US gasoline prices.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "what-is-sovereign-credit-rating-borrowing-cost-47175f",
+      "file": "what-is-sovereign-credit-rating-borrowing-cost-47175f.md",
+      "title": "هل يخفّض رفع توقع نمو عُمان كلفة اقتراض مسقط؟",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Duqm_DryDock.jpg/1280px-Duqm_DryDock.jpg",
+      "fileTitle": "Duqm DryDock.jpg",
+      "verdict": "WRONG_SUBJECT",
+      "people": "none",
+      "reason": "A ship-repair dry dock in Duqm does not show the story's subject, which is Oman's sovereign rating and borrowing costs: the story never mentions Duqm or ship repair, and the growth it reports comes from oil and gas, so the frame matches neither the sovereign-finance subject nor the sector driving it.",
       "model": "claude-cli/claude-opus-5-5"
     }
   ]

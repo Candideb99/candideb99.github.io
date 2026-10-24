@@ -28,14 +28,14 @@ readingMinutes: 3
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/%D9%85%D9%8A%D9%86%D8%A7%D8%A1_%D8%A7%D9%84%D8%AF%D9%82%D9%85_%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.jpg/1280px-%D9%85%D9%8A%D9%86%D8%A7%D8%A1_%D8%A7%D9%84%D8%AF%D9%82%D9%85_%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Duqm_DryDock.jpg/1280px-Duqm_DryDock.jpg
   width: 1280
-  height: 627
-  alt: ميناء في سلطنة عُمان
+  height: 569
+  alt: سفن راسية في الحوض الجاف بالدقم في سلطنة عُمان
   credit: AbdullahAlMaani · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3A%D9%85%D9%8A%D9%86%D8%A7%D8%A1_%D8%A7%D9%84%D8%AF%D9%82%D9%85_%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.jpg
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ADuqm_DryDock.jpg
 sources:
   - name: خازندار
     nameEn: Khazendar

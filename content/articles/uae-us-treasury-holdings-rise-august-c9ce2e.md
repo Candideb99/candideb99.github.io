@@ -27,15 +27,7 @@ regions:
 readingMinutes: 1
 chart: null
 table: null
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Department_of_the_Treasury_sign_Washington_DC_2025-12-17_10-40-05.jpg/1280px-Department_of_the_Treasury_sign_Washington_DC_2025-12-17_10-40-05.jpg
-  width: 1280
-  height: 1024
-  alt: مدخل مبنى وزارة الخزانة الأمريكية في واشنطن
-  credit: G. Edward Johnson · CC BY 4.0 · ويكيميديا كومنز
-  license: CC BY 4.0
-  licenseUrl: https://creativecommons.org/licenses/by/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ADepartment_of_the_Treasury_sign_Washington_DC_2025-12-17_10-40-05.jpg
+image: null
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat

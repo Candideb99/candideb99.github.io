@@ -33,15 +33,7 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Oil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_03.jpg/1280px-Oil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_03.jpg
-  width: 1280
-  height: 720
-  alt: ناقلة منتجات نفطية عند رصيف مصفاة (صورة تعبيرية)
-  credit: Calistemon · CC BY-SA 4.0 · ويكيميديا كومنز
-  license: CC BY-SA 4.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AOil_Products_Tanker_MP_MR_Tanker_2_at_BP_Oil_Refinery_Jetty%2C_Kwinana%2C_October_2023_03.jpg
+image: null
 sources:
   - name: الجزيرة الإنجليزية
     nameEn: Al Jazeera English
