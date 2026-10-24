@@ -289,12 +289,16 @@ export function prioritizeContext(notes) {
   notes.facts = [...reserved, ...notes.facts.filter((f) => !reserved.some((r) => r.fact === f?.fact && Number(r.source) === Number(f?.source)))];
 }
 
-/** For the writer: an Arabic source's text is withheld once the desk notes carry its facts, so the story cannot be assembled from its sentences. */
-function writerSourceBlock(notes, reveal = new Set()) {
+/**
+ * For the writer: an Arabic source's text is withheld once the desk notes carry its facts, so the story cannot be
+ * assembled from its sentences. `all` withholds an English one too: a paper reading's reviser rewrote from the paper and
+ * brought its English back («مقيّمون بشريون» for the critic's fix of "blind human rating", 2026-10-23).
+ */
+function writerSourceBlock(notes, reveal = new Set(), { all = false } = {}) {
   return (source, index) => {
-    if (notes && source.lang === "ar" && !reveal.has(index + 1)) {
+    if (notes && (all || source.lang === "ar") && !reveal.has(index + 1)) {
       return `SOURCE ${index + 1}: ${source.sourceNameEn} (${source.lang}) — "${source.title}" — published ${source.publishedAt ?? "unknown"}
-[Arabic text withheld: its facts are in the DESK NOTES above; attribute them to this source by name and write them in your own sentences.]`;
+[${source.lang === "ar" ? "Arabic" : "Its"} text withheld: its facts are in the ${all ? "READING" : "DESK"} NOTES above; ${all ? "write from them" : "attribute them to this source by name and write them in your own sentences"}.]`;
     }
     return sourceBlock(source, index);
   };
@@ -382,11 +386,12 @@ export async function reviseArticle({ draft, sources, issues, log, wordLimits, k
   const omissionNote = omissions.length
     ? "THE EDITOR'S OMISSION FINDINGS name facts a source carries that the desk notes left out. Add each one the story needs, as that source states it and attributed to it, in your own sentences, even though the notes lack it; the text of the sources they name is shown below. Never add anything else from outside the notes.\n\n"
     : "";
+  const paper = kind === "paper";
   const user = `You previously wrote this ${short ? "short story" : "article"} for خازندار:
 ${JSON.stringify(shown, null, 2)}
 
-${notesBlock(notes)}${omissionNote}SOURCE MATERIAL
-${sources.map(writerSourceBlock(notes, reveal)).join("\n\n")}
+${paper ? paperNotesBlock(notes) : notesBlock(notes)}${omissionNote}SOURCE MATERIAL
+${sources.map(writerSourceBlock(notes, reveal, { all: paper })).join("\n\n")}
 
 ${lessons}${lessons && news && !short ? "SCOPE OF THE LEARNED RULES: they protect reported facts and attribution; WHY IT MATTERS separately permits a bounded house inference from sourced premises. Never convert an analyst's opinion into an established fact.\n\n" : ""}${!news ? "" : short ? SHORT_STORY : newsDepthBrief(sources)}
 An editor found the following problems. Fix every one of them strictly using the source material. Remove any claim or number that the sources do not support. ${short ? `Keep everything else intact, and keep the story within 150-250 words (lede + body); never pad with unsupported material.` : `Preserve useful explanations, identification and developed comparisons; do not shrink the report into a digest during revision. Keep everything else intact, and keep the article at least ${wordLimits?.target ?? 350} words (lede + body)${wordLimits || kind ? " when the sources allow it" : `; a news story under ${NEWS_FLOOR} words is refused. When a problem says the report lacks an element («ينقص التقرير»), add it from the named source`}; never pad with unsupported material.`}
@@ -878,7 +883,13 @@ Short sentences, one idea each, none over 30 words. Paragraphs separated by blan
   return { draft: normalizeDraft(draft), model: frameModel || model };
 }
 
-const PAPER_SYSTEM = `You are the senior economics writer of خازندار (Khazendar), an Arabic-language economics and business publication for educated readers across the Arab world. You write Khazendar's readings of research (قراءة في ورقة بحثية): you take ONE recently published, freely available economics paper and report what it found to educated non-economists in plain Arabic, the way a science or economics reporter writes up a study: the finding first, in words a reader can picture, then how the researchers know, what else they found, what they cannot claim, and what it may mean for Arab economies. You are a careful reader, not a promoter: the paper's findings are reported exactly as the paper states them, with their magnitudes, units, samples and periods; its caveats are kept; nothing is added from memory; and no finding is ever described as proven (never «تثبت الدراسة»; write «تجد الورقة»، «تقدّر»، «تخلص إلى»). A statistic (a correlation, a coefficient, an elasticity) is translated into what it means before it is given, and only when the reader needs it; a term of art the reader does not need to follow the finding is left out. The implications for Arab economies are a hedged reading (marked once where that reading begins, then written plainly: at most one hedge in a paragraph, never the same hedge twice, never two sentences in a row opening with one), never asserted, and never attributed to the site.
+const PAPER_SYSTEM = `You are the senior economics writer of خازندار (Khazendar), an Arabic-language economics and business publication for educated readers across the Arab world. You write Khazendar's readings of research (قراءة في ورقة بحثية): you take ONE recently published, freely available economics paper and report what it found to educated non-economists in plain Arabic, the way a science or economics reporter writes up a study: the finding first, in words a reader can picture, then how the researchers know, what else they found, what they cannot claim, and what it may mean for Arab economies. You are a careful reader, not a promoter: the paper's findings are reported exactly as the paper states them, with their magnitudes, units, samples and periods; its caveats are kept; nothing is added from memory; and no finding is ever described as proven (never «تثبت الدراسة»). A statistic (a correlation, a coefficient, an elasticity) is translated into what it means before it is given, and only when the reader needs it; a term of art the reader does not need to follow the finding is left out. The implications for Arab economies are a hedged reading (marked once where that reading begins, then written plainly: at most one hedge in a paragraph, never the same hedge twice, never two sentences in a row opening with one), never asserted, and never attributed to the site.
+
+THE PAPER IS ENGLISH; THE READING IS ARABIC REPORTING, NOT ITS TRANSLATION (the owner, 2026-10-24, on a reading that followed its paper's abstract sentence by sentence: "sounds robotic and less human").
+- The sentences are about what the paper measures (workers, countries, prices, firms, households), never about the paper: «تنطلق الورقة من»، «تجد الورقة أن»، «تقول الورقة» are English academic prose in Arabic words. The study enters as attribution, as the Arab desks report one: «وخلص الباحثون إلى أن»، «وتوصلت الدراسة إلى أن»، «وتُظهر نتائجها أن»، «بحسب الدراسة»، with the verb in the authors' number (الباحث، الباحثان، الباحثون).
+- The paper's own coined terms are said as what they mean, never as a new Arabic noun: "delegability" is never «قابلية التفويض»; "human raters" are people («أشخاص»), never «مقيّمون بشريون»; "upper bound" is «حدّ أقصى», never «سقف أعلى»; "preregistered" is «حدّدها قبل أن يبدأ»; the paper's "contribution" is «ما يضيفه». English sentence shapes are rebuilt: "by having X do Y" is «كلّف X بـ», never «بأن جعل»; a clause wedged between commas («، مقيساً بـ…،») becomes its own sentence.
+- One word for one idea: once a term is chosen («التفويض» or «الإسناد»), it stays; two words for one thing tell the reader there are two things.
+- A number as plainly as the paper allows: where the paper itself says "about twelve minutes", so does the reading («نحو 12 دقيقة», never «11.8 دقيقة»); 31% not 31.0%; a count the reader cannot use (task statements, a sample, a version number) is left out.
 
 ${HOUSE_STYLE}`;
 
@@ -889,10 +900,10 @@ export const PAPER_WORDS = { minWords: 330, maxWords: 950, target: 500 };
 
 const PAPER_SCHEMA = `{
   "title": "Arabic title, 35-85 characters: the paper's central finding as a plain statement a reader understands without the paper (e.g. ورقة من الفيدرالي: الإيجارات المرتفعة تدفع المستأجرين إلى المدن الأرخص), ONE idea, no clickbait; a colon only to name the institution",
-  "subtitle": "Arabic dek: one sentence (max 160 chars) saying what the finding means for the reader's money, prices or country, with at most one figure he can picture (a share, an amount, a year); never a correlation, a coefficient or another statistic, and never «عوائد» for both returns and yields in one sentence",
+  "subtitle": "Arabic dek: one sentence (max 160 chars), complete on its own (no «هؤلاء/هذه» pointing back at the headline), saying what the finding means for the reader's money, prices or country, with at most one figure he can picture (a share, an amount, a year); never a correlation, a coefficient or another statistic, and never «عوائد» for both returns and yields in one sentence",
   "slug": "english-kebab-case-slug-4-to-7-words",
-  "lede": "Opening paragraph, 2-3 sentences, under 60 words: what the paper finds, in plain words, naming the authors, the institution and the year of publication",
-  "body": "Markdown, 400-600 words together with the lede. After the lede: why the question matters now (the event or the trend the paper itself names); how the researchers know, in a sentence or two and only as much as the reader needs to trust the result; the other findings, each statistic translated into what it means before its number; the paper's own caveats, in a paragraph of their own (required); and, only where the text supports it, what it may mean for Arab economies, hedged (otherwise nothing: never a paragraph on what the paper cannot tell about the region). Subheads are optional, at most three, each a plain statement or the reader's next question; never an academic paper's labels (السؤال، البيانات والطريقة، النتائج، الحدود). Paragraphs of one to three sentences separated by blank lines; no bullet lists.",
+  "lede": "Opening paragraph, 2-3 sentences, under 60 words: what the paper finds, in plain words, naming every author and institution; no day of posting and no repository name (the source list carries them)",
+  "body": "Markdown, 400-600 words together with the lede, in the order a reader's questions come, never the paper's own order (context, method, results, limits): what the finding means in practice (a case the notes give), how the researchers know in ONE sentence, the other findings, each statistic said as what it shows, the paper's own caveats (required: beside the finding they limit, or in a short paragraph), and a paragraph on Arab economies only from a note tagged region (otherwise nothing: never a paragraph on what the paper cannot tell about the region, and never one built on its income groups). Subheads are optional, at most three, each a plain statement or the reader's next question; never an academic paper's labels (السؤال، البيانات والطريقة، النتائج، الحدود). Paragraphs of one to three sentences separated by blank lines; no bullet lists.",
   "key_facts": [{"label": "short Arabic label (2-5 words) naming what the figure measures in plain words", "value": "a figure exactly as it appears in the paper's text that a reader can read without statistics (a share, an amount, a rate, a count, a year), e.g. 75% or 3,058 أسرة; never a correlation, a regression coefficient, a window length or a sample setting"}],
   "why_it_matters": "One Arabic paragraph (40-90 words): the one use this finding has for Arab policymakers, businesses or readers, hedged once as a reading, never by naming the site; never a chain of «قد…», never open with «يعكس/يمثل/يُعدّ»",
   "tags": ["3-5 Arabic tags: the topic, the institution, the country or region studied, and always the tag أوراق بحثية"],
@@ -905,28 +916,110 @@ Data visuals: include "chart" or "table" only when the paper's text itself gives
 ${FIGURES_RULE}`;
 
 /**
- * Writes a plain-Arabic reading of one open-access research paper. `paper` carries the editor's choice
- * (title_en, institutionEn/institutionAr, publishedAt, why_it_matters_ar, reading_angle_ar); `text` is the
- * paper's own text (abstract and whatever free full text its page gave), the only material allowed.
+ * Stage one of a paper reading (2026-10-24): the reading notes, the paper's facts in plain Arabic, each checked
+ * against its text. The owner found the first reading written under the rules of 2026-10-23 "robotic and less human",
+ * and it was the paper's abstract translated sentence by sentence and in its order: the writer had 24,000 characters
+ * of English in front of it and nothing between. A news story has had its desk notes since September; now a reading
+ * does too, and its writer sees the notes, never the English (`writePaperReading`). Returns null when no usable notes
+ * can be made, and the writer works from the text as before.
  */
-export async function writePaperReading({ paper, text, log }) {
+const PAPER_NOTES_SYSTEM = `You are the research desk of خازندار, an Arabic economics publication. Before the reading of a research paper is written, you take its notes: what the paper found and did, in plain Arabic, so that the writer works from what the paper means and never from how its English says it. You never add, infer or recall anything the paper does not state. You answer with one JSON object only.`;
+
+/** A note about Arab economies must name one (whole words: «مصرف» is not Egypt); «الاقتصادات العربية» is not a place. */
+const ARAB_COUNTRY = /(?<![\p{L}\p{M}])(?:و|ف|ب|ل|ك)?(?:ال)?(?:مصر|سعودي|إمارات|قطر|كويت|بحرين|عُ?مان|أردن|لبنان|سوري|عراق|يمن|فلسطين|ليبي|تونس|جزائر|مغرب|موريتاني|سودان|صومال|جيبوتي|خليج(?!\s+المكسيك))(?:ا|ي|ة|ية|يين|يون)?(?![\p{L}\p{M}])/u;
+
+export async function paperNotes({ paper, text, log, chatWith = chat }) {
+  const listed = (paper.authors ?? []).filter(Boolean);
+  const user = `PAPER: ${paper.title_en}
+Series: ${paper.institutionEn}${paper.note ? ` (${paper.note})` : ""}${listed.length ? `\nAuthors, as the repository records them (return every one, in this order): ${listed.join("; ")}` : ""}
+
+THE PAPER'S TEXT (English)
+${text}
+
+TASK
+Take the reading notes: 12 to 24 facts, each ONE Arabic sentence of at most 30 words, saying what the paper found or did the way an Arab economics reporter tells a study to an educated friend who has not read it.
+- About the world the paper measures (workers, countries, prices, firms), never «تجد الورقة» or «تنطلق الورقة».
+- Say what each statistic shows, never the statistic (no r, kappa, p-value, coefficient or elasticity): «جاءت أحكامهم قريبة من أحكام النموذجين», not a kappa.
+- Say each of the paper's coined terms as what it means: "delegable tasks" are «مهام يستطيع البرنامج أن يتولاها» or «يمكن تفويضها», never «قابلية التفويض»; "blind human raters" are «أشخاص لم يطّلعوا على أحكام النموذجين»; "upper bound" is «حدّ أقصى»; "preregistered" is «حدّدها قبل أن يبدأ»; "has access to" is «يستطيع الدخول إلى».
+- Never a sentence that follows an English sentence of the paper word for word: read it, then say it.
+- Each figure exactly as the paper gives it; where the paper also says it in words ("about twelve minutes"), give it that way («نحو 12 دقيقة»).
+Tag each fact with its job: "finding" (a result), "example" (a concrete case the paper itself gives), "method" (how the result was reached: two at most, only what a reader needs to trust it), "caveat" (what the paper says it cannot claim or does not measure), "context" (the trend or event the paper names as its reason), "region" (ONLY a fact the paper itself states about a named Arab country, with its figure; none when the paper names no Arab country).
+Return the authors exactly as the paper lists them, each with an Arabic transliteration as Arab business media write names and the institution, and whether the paper says it has been peer-reviewed or published in a journal (false for a preprint or a working paper, null when the text does not say).
+Return: {"finding":"<the paper's central finding as a reader would retell it to a friend: one plain Arabic sentence, at most one figure>","authors":[{"en":"<Latin name>","ar":"<Arabic>","institution_en":"...","institution_ar":"..."}],"peer_reviewed":true|false|null,"facts":[{"fact":"<one Arabic sentence>","job":"finding|example|method|caveat|context|region"}]}`;
+  try {
+    const { data, model } = await chatWith({
+      role: "desk",
+      system: PAPER_NOTES_SYSTEM,
+      user,
+      temperature: 0.2,
+      maxTokens: 8000,
+      log,
+      validate: (d) => {
+        if (!d || typeof d !== "object" || !Array.isArray(d.facts)) throw new Error("no facts");
+        if (!String(d.finding ?? "").trim()) throw new Error("finding missing");
+        if (!Array.isArray(d.authors) || !d.authors.some((a) => String(a?.en ?? "").trim() && String(a?.ar ?? "").trim())) throw new Error("authors missing (Latin and Arabic)");
+        if (d.authors.length < listed.length) throw new Error(`${d.authors.length} of the ${listed.length} authors the repository lists; return every one`);
+        if (ungroundedNumbers(d.finding, [text]).length || arabicRatio(d.finding) < 0.7) throw new Error("the finding carries a figure the paper does not, or is not Arabic");
+        let methods = 0;
+        const kept = d.facts.filter((f) => {
+          const fact = String(f?.fact ?? "").trim();
+          if (!fact || arabicRatio(fact) < 0.7 || ungroundedNumbers(fact, [text]).length) return false;
+          if (f.job === "method" && ++methods > 2) return false;
+          return f.job !== "region" || ARAB_COUNTRY.test(fact);
+        });
+        if (kept.length < 6) throw new Error(`${d.facts.length - kept.length} of ${d.facts.length} facts are not in the paper or not Arabic`);
+        if (kept.length < d.facts.length) log?.(`paper notes: ${d.facts.length - kept.length} of ${d.facts.length} facts dropped (a figure not in the paper, a third method fact or a regional note naming no Arab country)`);
+        d.facts = kept.slice(0, 24);
+      },
+    });
+    const authors = data.authors.filter((a) => String(a?.en ?? "").trim() && String(a?.ar ?? "").trim()).map((a) => ({ en: String(a.en).trim(), ar: String(a.ar).trim(), institutionEn: String(a.institution_en ?? "").trim(), institutionAr: String(a.institution_ar ?? "").trim() }));
+    log?.(`paper notes: ${data.facts.length} facts, ${authors.length} author(s)`);
+    return { notes: { finding: String(data.finding).trim(), authors, peerReviewed: typeof data.peer_reviewed === "boolean" ? data.peer_reviewed : null, facts: data.facts.map((f) => ({ fact: String(f.fact).trim(), job: String(f.job ?? "") })) }, model };
+  } catch (error) {
+    if (error.meta?.quota) throw error;
+    log?.(`paper notes failed: ${String(error.message).split("\n")[0]}; the writer works from the paper's text`);
+    return null;
+  }
+}
+
+/** The reading notes as the writer and the reviser see them, in place of the paper's English. */
+function paperNotesBlock(notes) {
+  if (!notes) return "";
+  const authors = notes.authors.map((a) => `${a.ar} (${a.en})${a.institutionAr || a.institutionEn ? `، ${a.institutionAr || a.institutionEn}` : ""}`).join("؛ ");
+  return `READING NOTES: the paper's facts in plain Arabic, each checked against the paper. Every figure, name and claim in the reading must come from them; nothing from memory. The paper's English is not shown, so that the reading is written, not translated: tell what the notes say in your own order and sentences, and leave out any note the reader does not need.
+Authors (${notes.authors.length}): ${authors}
+The central finding: ${notes.finding}
+${notes.facts.map((f, i) => `${i + 1}. ${f.fact} [${f.job}]`).join("\n")}
+
+`;
+}
+
+/**
+ * Writes a plain-Arabic reading of one open-access research paper. `paper` carries the editor's choice
+ * (title_en, institutionEn/institutionAr, publishedAt, why_it_matters_ar, reading_angle_ar, preprint); `text` is the
+ * paper's own text (abstract and whatever free full text its page gave); `notes`, when the research desk made them
+ * (`paperNotes`), stand in for the text, which the writer then never sees.
+ */
+export async function writePaperReading({ paper, text, notes = null, log, chatWith = chat }) {
+  // A preprint is said to be one, as science desks report them; a central bank's working paper needs no such line.
+  const status = paper.preprint && notes?.peerReviewed !== true ? "\nStatus: a preprint, not yet peer-reviewed: say so once, in the lede or the sentence after it («في دراسة لم تخضع بعد للتحكيم»)" : "";
   const user = `PAPER BRIEF FROM THE EDITOR
 Paper: ${paper.title_en}
-Institution / series: ${paper.institutionEn}${paper.institutionAr ? ` (${paper.institutionAr})` : ""}
+Institution / series: ${paper.institutionEn}${paper.institutionAr ? ` (${paper.institutionAr})` : ""}${status}${!notes && paper.authors?.length ? `\nAuthors (the repository's record): ${paper.authors.join("; ")}` : ""}
 Published: ${paper.publishedAt ? String(paper.publishedAt).slice(0, 10) : "date not given by the feed; take the year from the text if it states one"}
 Why it matters to Arab readers (editor): ${paper.why_it_matters_ar}
 Reading angle (editor): ${paper.reading_angle_ar}
 Today (UTC): ${new Date().toISOString().slice(0, 10)}
 
-THE PAPER'S TEXT (the only material you may use; every figure, name, date and claim must come from it)
+${notes ? paperNotesBlock(notes) : `THE PAPER'S TEXT (the only material you may use; every figure, name, date and claim must come from it)
 ${text}
-
+`}
 TASK
-Write the reading for خازندار. Name the authors (transliterated, with the Latin original in parentheses once), the institution and the year in the lede. Report the findings exactly as the paper states them: the same numbers, units, directions, samples and periods, attributed to the paper («تجد الورقة»، «يقدّر الباحثون»); if the text gives no number for something, leave it out rather than supplying one. Say what a statistic means before you give it («لم تعد السندات ترتفع حين تهبط الأسهم» before any correlation), and give the number only when the reader gains from it; a statistic in the headline, the dek or the box is never right. Explain a term only where the reader needs it to follow the finding, once, in a plain sentence; leave out the method's machinery (window lengths, survey frequencies, unit conversions) unless it changes how the finding should be read. Keep the paper's own caveats in a paragraph of their own. When the text gives nothing to connect to Arab economies, there is no such paragraph: never one explaining what the paper cannot tell about the region (that is the WHAT THE SOURCES DO NOT SAY habit). Where the text supports it, connect the finding to Arab economies only as a hedged reading (marked once where that reading begins, then written plainly: at most one hedge in a paragraph, never the same hedge twice, never two sentences in a row opening with one), and never generalise a result from one country to the region as fact. The editor's angle is direction only: where the text does not support it, drop it. Never write «تثبت الدراسة» or claim proof. No first person.
+Write the reading for خازندار${notes ? " from the notes" : ""}. Name every author (transliterated, with the Latin original in parentheses once; more than three: the first and «وزملاؤه») and the institution in the lede, with the verb in their number. Report the findings exactly as the ${notes ? "notes state" : "paper states"} them: the same numbers, units, directions, samples and periods, attributed as the Arab desks attribute a study («وخلص الباحثون إلى أن»، «بحسب الدراسة»), the sentences about what was found and never about the paper; if the ${notes ? "notes give" : "text gives"} no number for something, leave it out rather than supplying one. Say what a statistic means before you give it («لم تعد السندات ترتفع حين تهبط الأسهم» before any correlation), and give the number only when the reader gains from it; a statistic in the headline, the dek or the box is never right. Explain a term only where the reader needs it to follow the finding, once, in a plain sentence. The method takes ONE sentence; leave out its machinery (window lengths, survey frequencies, unit conversions, counts of task statements) unless it changes how the finding should be read. Keep the paper's own caveats. A paragraph on Arab economies is written only from a ${notes ? "note tagged region" : "passage of the text about a named Arab country"}, naming that country and its figure, as a hedged reading (marked once where that reading begins, then written plainly: at most one hedge in a paragraph, never the same hedge twice, never two sentences in a row opening with one), and never generalised from one country to the region as fact; without one there is no such paragraph, and never one built on the paper's income groups or on what the paper cannot tell about the region (that is the WHAT THE SOURCES DO NOT SAY habit). The editor's angle is direction only: where the ${notes ? "notes do" : "text does"} not support it, drop it. Never write «تثبت الدراسة» or claim proof. No first person.
 LENGTH: 400-600 words in the lede and body together. A draft under 380 words is sent back.
 Return one JSON object exactly in this shape:
 ${PAPER_SCHEMA}`;
-  const { data, model } = await chat({
+  const { data, model } = await chatWith({
     role: "writer",
     system: PAPER_SYSTEM,
     user,
@@ -940,6 +1033,15 @@ ${PAPER_SCHEMA}`;
         if (!tags.some((t) => /أوراق بحثية/.test(t))) d.tags = [...tags, "أوراق بحثية"];
       }
       validateDraft(d, PAPER_WORDS);
+      // Every author by name, the first alone above three (2026-10-24: the published reading and three of five rewrites
+      // named one of two authors, one of them with both in its notes). A name counts by any surname, in Latin.
+      const authors = (notes?.authors?.map((a) => a.en) ?? paper.authors ?? []).filter(Boolean);
+      const prose = `${d.lede}\n${d.body}`;
+      const missing = (authors.length > 3 ? authors.slice(0, 1) : authors).filter((name) => {
+        const parts = String(name).split(/\s+/).filter(Boolean);
+        return !(parts.length > 1 ? parts.slice(1) : parts).some((p) => prose.includes(p));
+      });
+      if (missing.length) throw new Error(`name every author in the lede (transliterated, with the Latin original in parentheses once): missing ${missing.join(", ")}`);
     },
   });
   return { draft: normalizeDraft(data), model };

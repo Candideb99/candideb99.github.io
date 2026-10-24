@@ -21,7 +21,7 @@ import { loadSources, settleDrift, verifyStory } from "../pipeline/lib/factcheck
 import { instrumentsOf, marketData, repeatsInstrument } from "../pipeline/lib/context.mjs";
 import { independentOutletCount } from "../pipeline/lib/news-evidence.mjs";
 import { boxFacts } from "../pipeline/lib/keyfacts.mjs";
-import { deskNotes, newsDepthBrief, newsFloor, normalizeChart, normalizeDraft, prioritizeContext, substantiveFacts, validateDraft, validateWhyBasis } from "../pipeline/lib/write.mjs";
+import { deskNotes, newsDepthBrief, newsFloor, normalizeChart, normalizeDraft, paperNotes, prioritizeContext, substantiveFacts, validateDraft, validateWhyBasis, writePaperReading } from "../pipeline/lib/write.mjs";
 import { NEWS_DEPTH, NEWS_FLOOR, SHORT_WORDS } from "../pipeline/lib/editorial.mjs";
 import { arabicEdition, bestPdf, editionKey, previousEdition, releaseDocument, releaseStory, reportExcerpts } from "../pipeline/lib/reports.mjs";
 import { mergeNewsRefresh, serializeArticle } from "../pipeline/lib/article.mjs";
@@ -649,6 +649,50 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("a wrong average beside its own inputs is a proved error, even when the source prints it", (await arithmetic("internal")).checks[1].status, "confirmed");
   check("a sentence still cannot prove itself wrong by any other class", (await arithmetic("figure")).checks[1].status, "unverified");
   check("an old explainer checked without its stories' text is not grounded",programmaticChecks({ title: pegged.title, subtitle: "", lede: pegged.lede, body: "بلغ التضخم 37%.", whyItMatters: "", keyFacts: [] }, [{ title: "x" }], { explainer: true, minWords: 0 }).issues.some((i) => i.startsWith("أرقام لا تظهر")), false);
+}
+
+// 2026-10-24: a paper reading is written from its notes, never from the paper's English (the owner, on the AI-agents
+// reading: "sounds robotic and less human"). The checker knows the paper's English; the notes keep only what the paper
+// carries, a regional note only when it names an Arab country, two method notes at most, and every author.
+{
+  const sent = (body, kind = "paper") => styleIssues({ title: "دراسة: الوكلاء يتولون أجزاء من الوظائف", subtitle: "", lede: "", body, whyItMatters: "", keyFacts: [] }, { kind }).issues.filter((i) => i.startsWith("إنجليزية الورقة")).length;
+  check("a reading's paper-English is sent back, one fault per pattern", sent("تنطلق الورقة من تغيّر في الأدوات. وتجد الورقة أن قابلية التفويض ترتفع مع الدخل.\n\nبنى الباحث مؤشره بأن جعل نموذجين يقيّمان المهام وفق قواعد سجّلها مسبقاً، وقيّم مقيّمون بشريون 300 مهمة.\n\nيصفه الباحث بأنه سقف أعلى، ويرتفع الاستخدام، مقيساً بمعدل الفرد، إلى 31.0% وفق إضافة مؤشره."), 9);
+  check("the same reading written as reporting passes", sent("وتتسع حصة العاملين في مهام يمكن تفويضها كلما ارتفع دخل البلد، بحسب الدراسة.\n\nوعُرضت 300 مهمة على أشخاص لم يطّلعوا على أحكام النموذجين، فجاءت أحكامهم قريبة منها، ويعدّه الباحثان حداً أقصى لما يمكن تفويضه."), 0);
+  check("a news story is not held to the reading's rule", sent("وقال المصرف إن التضخم بلغ 3.0% في سبتمبر.", "news"), 0);
+  const paperText = "35.2% of task time is at least partly delegable; 2.5% in full; 22.5% in low-income and 48.7% in high-income countries; 300 tasks; 146 countries; 101 countries.";
+  const answer = {
+    finding: "يمكن تفويض جزء على الأقل من مهام تشغل 35.2% من وقت العمل",
+    authors: [{ en: "Cristian Espinal Maya", ar: "كريستيان إسبينال مايا" }, { en: "Santiago Jiménez Londoño", ar: "سانتياغو خيمينيث لوندونيو" }],
+    peer_reviewed: false,
+    facts: [
+      { fact: "لا يتجاوز ما يمكن تفويضه كاملاً 2.5% من وقت العمل", job: "finding" },
+      { fact: "ترتفع الحصة من 22.5% في الدول منخفضة الدخل إلى 48.7% في مرتفعة الدخل", job: "finding" },
+      { fact: "تقيس الدراسة ما تسمح به التقنية لا ما يحدث فعلاً", job: "caveat" },
+      { fact: "عُرضت 300 مهمة على أشخاص لم يطّلعوا على أحكام النموذجين", job: "method" },
+      { fact: "شمل المؤشر 146 دولة", job: "method" },
+      { fact: "قورن المؤشر بالاستخدام الفعلي في 101 دولة", job: "method" },
+      { fact: "يبلغ المؤشر 99% في المغرب", job: "region" },
+      { fact: "قد تقترب الاقتصادات العربية من الدول الغنية", job: "region" },
+      { fact: "تعتمد المصارف في الدول الغنية على الوكلاء", job: "region" },
+      { fact: "يرتفع الاستخدام في الخليج كلما اتسعت المهام", job: "region" },
+    ],
+  };
+  const made = await paperNotes({ paper: { title_en: "The Delegation Divide", institutionEn: "arXiv" }, text: paperText, log: () => {}, chatWith: async ({ validate }) => { const d = structuredClone(answer); validate(d); return { data: d, model: "scripted" }; } });
+  const kept = made.notes.facts.map((f) => f.fact);
+  check("the notes drop a figure the paper lacks, a third method note and regional notes naming no Arab country («المصارف» is not Egypt)", [kept.some((f) => f.includes("99%")), kept.some((f) => f.includes("101 دولة")), kept.some((f) => f.includes("الاقتصادات العربية")), kept.some((f) => f.includes("المصارف")), kept.some((f) => f.includes("الخليج"))], [false, false, false, false, true]);
+  check("the notes keep every author and the preprint flag", [made.notes.authors.length, made.notes.peerReviewed], [2, false]);
+  // The writer is sent back when its draft leaves out an author (any surname counts, in Latin).
+  const filler = Array.from({ length: 70 }, () => "وتتسع حصة العاملين في مهام يمكن تفويضها كلما ارتفع الدخل.").join(" ");
+  const reading = (lede) => ({ title: "حصة العمل الذي يمكن تفويضه ترتفع مع دخل الدول", subtitle: "دك", slug: "a-b-c-d", lede, body: filler, key_facts: [], why_it_matters: "الأرجح أن الفجوة تعود إلى تركيبة الوظائف.", tags: ["الذكاء الاصطناعي"] });
+  const writes = async (lede) => {
+    try {
+      await writePaperReading({ paper: { title_en: "t", institutionEn: "arXiv", why_it_matters_ar: "", reading_angle_ar: "" }, text: "", notes: made.notes, log: () => {}, chatWith: async ({ validate }) => { const d = reading(lede); validate(d); return { data: d, model: "scripted" }; } });
+      return "accepted";
+    } catch (error) {
+      return /missing Santiago/.test(error.message) ? "sent back" : `error: ${error.message.slice(0, 60)}`;
+    }
+  };
+  check("a reading naming one of two authors is sent back; naming both is accepted", [await writes("خلص الباحث كريستيان إسبينال مايا (Cristian Espinal Maya) إلى أن الحصة ترتفع."), await writes("خلص كريستيان إسبينال مايا (Cristian Espinal Maya) وسانتياغو خيمينيث لوندونيو (Santiago Jiménez Londoño) إلى أن الحصة ترتفع.")], ["sent back", "accepted"]);
 }
 
 if (failed) {

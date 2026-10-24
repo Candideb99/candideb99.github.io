@@ -125,8 +125,9 @@ export const BANNED = [
  */
 const ABSENCE = [
   /(?<![؀-ۿ])(?:و|ف)?(?:لم|لا) (?:تتضمن|يتضمن|تتضمّن|يتضمّن|تذكر|يذكر|تحدد|يحدد|توضح|يوضح|تكشف|يكشف|تقدّم|يقدّم|تقدم|يقدم|تتطرق|يتطرق|تشر|يشر|تُشر|يُشر|تورد|يورد|تتناول|يتناول|تفصّل|يفصّل|تفصل|يفصل|تعرض|يعرض|تتضمنها|يحمل|تحمل)\s+(?:[؀-ۿ]+\s+)?(?:تصريحات|التصريحات|البيان|بيانه|بيانها|بيان|التقرير|تقرير|التقارير|المصادر|المصدر|ما نُشر|ما نشر|الأرقام المنشورة|المعلومات المنشورة|الإعلان|إعلان|الوثيقة|الرواية|الملخص|المادة)/,
-  /(?<![؀-ۿ])(?:لا|لن) (?:يكشف|تكشف|يبيّن|يبين|تبيّن|تبين|يوضح|توضح|يحسم|تحسم|يحدد|تحدد|يقول|تقول)(?: [؀-ۿ]+){0,2} (?:وحده|وحدها|بمفرده|بمفردها)(?![؀-ۿ])/,
-  /(?<![؀-ۿ])(?:وحده|وحدها|بمفرده|بمفردها) (?:لا|لن) (?:يكشف|تكشف|يبيّن|يبين|تبيّن|تبين|يوضح|توضح|يحسم|تحسم|يحدد|تحدد|يقول|تقول)(?![؀-ۿ])/,
+  // «يقدّر/يقيس» since 2026-10-24: a paper reading's box closed «فهو لا يقدّر وحده عدد الوظائف المعرضة للزوال» (none in the archive).
+  /(?<![؀-ۿ])(?:لا|لن) (?:يكشف|تكشف|يبيّن|يبين|تبيّن|تبين|يوضح|توضح|يحسم|تحسم|يحدد|تحدد|يقول|تقول|يقدّر|يقدر|تقدّر|تقدر|يقيس|تقيس)(?: [؀-ۿ]+){0,2} (?:وحده|وحدها|بمفرده|بمفردها)(?![؀-ۿ])/,
+  /(?<![؀-ۿ])(?:وحده|وحدها|بمفرده|بمفردها) (?:لا|لن) (?:يكشف|تكشف|يبيّن|يبين|تبيّن|تبين|يوضح|توضح|يحسم|تحسم|يحدد|تحدد|يقول|تقول|يقدّر|يقدر|تقدّر|تقدر|يقيس|تقيس)(?![؀-ۿ])/,
 ];
 export function absenceNotes(text) {
   return sentencesOf(text).filter((s) => ABSENCE.some((re) => re.test(s)));
@@ -184,6 +185,19 @@ const BOX_BANNED = /القارئ العربي|للقارئ العربي|للمو
 const BOX_OPENER = /^(?:و|ف)?(?:يعكس|تعكس|يمثل|تمثل|يُمثّل|يُعدّ|يعد|تعد|تُعد|يُعد)(?![؀-ۿ])/;
 
 const SENTENCE_SPLIT = /[.؟!]\s+|\n+/;
+
+/** The English of a research paper carried into its reading (see styleIssues, kind "paper"). */
+const PAPER_ENGLISH = [
+  { re: /(?<![\p{L}\p{M}])(?:و|ف)?(?:تجد|وجدت|يجد|وجد|تنطلق|انطلقت)\s+(?:الورقة|الدراسة|البحث|المذكرة)(?![\p{L}\p{M}])/gu, fix: "الجملة عن الورقة لا عمّا وجدته (the paper finds)؛ اكتب ما وُجد، والدراسة إسناد: «وخلص الباحثون إلى أن»، «وبحسب الدراسة»" },
+  { re: /(?<![\p{L}\p{M}])(?:و|ف|ب|ل)?قابلية\s+ال[\p{L}\p{M}]+/gu, fix: "اسم منحوت من الإنجليزية (-ability)؛ قل ما يعنيه («المهام التي يمكن تفويضها»)" },
+  { re: /(?<![\p{L}\p{M}])بأن جعل(?![\p{L}\p{M}])/gu, fix: "ترجمة لـ by having؛ «كلّف … بـ» أو جملة بفعلها" },
+  { re: /(?<![\p{L}\p{M}])(?:مقيّ?مون|مقيّ?مين)\s+بشري(?:ون|ين)(?![\p{L}\p{M}])|(?<![\p{L}\p{M}])تقييم(?:ات)?\s+بشري(?:ة)?(?![\p{L}\p{M}])/gu, fix: "ترجمة لـ human raters؛ «أشخاص»، أو «خبراء» إن وصفتهم الورقة بذلك" },
+  { re: /(?<![\p{L}\p{M}])سقف(?:اً|ا)?\s+أعلى(?![\p{L}\p{M}])/gu, fix: "ترجمة لـ upper bound؛ «حدّ أقصى»" },
+  { re: /،\s*(?:مقيساً|مقيسة|مقاساً|مقاسة|مقيسا|مقاسا)\s+ب/gu, fix: "جملة اعتراضية على الطريقة الإنجليزية (, measured by …,)؛ اجعلها جملة مستقلة" },
+  { re: /(?<![\p{L}\p{M}])إضافة\s+(?:المؤشر|مؤشره|مؤشرهما|مؤشرهم|الورقة|الدراسة|البحث)(?![\p{L}\p{M}])/gu, fix: "ترجمة لـ contribution؛ «ما يضيفه المؤشر»" },
+  { re: /(?<![\p{L}\p{M}])(?:سجّ?لها|سجّ?لهما|سجّ?له|سجّ?لاها|المسجّ?لة|المسجّ?ل)\s+(?:مسبقاً|مسبقا|سلفاً|سلفا)(?![\p{L}\p{M}])/gu, fix: "ترجمة لـ preregistered؛ «حدّدها قبل أن يبدأ»" },
+  { re: /(?<![\d.,])\d+\.0(?!\d)\s?%/gu, fix: "صفر عشري لا يقرؤه أحد؛ «31%» لا «31.0%»" },
+];
 const sentencesOf = (text) => String(text ?? "").split(SENTENCE_SPLIT).map((s) => s.trim()).filter((s) => s.split(/\s+/).length >= 3);
 
 /**
@@ -399,6 +413,24 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
     if (labels.length) issues.push(`عناوين فرعية من قالب جاهز («${labels.slice(0, 3).join("»، «")}»)؛ العنوان الفرعي سؤال يطرحه القارئ بعد الفقرة السابقة بكلماته («من يدفع الفرق؟») أو جملة تقول شيئاً، وأغلب القطع لا تحتاج إلا إلى عنوانين أو لا شيء.`);
     const glosses = (`${lede}\n${body}`.match(/[،,]\s*أي\s/g) ?? []).length;
     if (glosses > 3) issues.push(`شرح المصطلحات بسلسلة «، أي…» (${glosses} مرات)؛ اشرح المصطلح الذي يحتاجه القارئ مرة واحدة في جملة مستقلة حيث يحتاجه أول مرة، واحذف ما لا يحتاجه لفهم النتيجة.`);
+  }
+  // A paper reading translated rather than reported (the owner, 2026-10-24, on the AI-agents reading: "sounds robotic
+  // and less human"): its writer had the paper's English in front of it and followed the abstract sentence by sentence.
+  // Each pattern is a leftover found in that piece; over the archive they fired in 3 of the 5 readings and in none of
+  // 302 news stories, 13 analyses and 25 explainers.
+  if (kind === "paper") {
+    for (const rule of PAPER_ENGLISH) {
+      const hits = [...new Set((prose.match(rule.re) ?? []).map((h) => h.trim()))];
+      if (hits.length) issues.push(`إنجليزية الورقة منقولة إلى العربية: «${hits.slice(0, 2).join("»، «")}»؛ ${rule.fix}.`);
+    }
+    // A statistic the reader does not need: a test rewrite of 2026-10-24 printed the paper's regression slope («7.23 نقطة
+    // مئوية مع كل نقطة لوغاريتمية»); the archive has these words in 2 readings and nothing else.
+    const stats = prose.match(/(?:نقطة|نقاط) لوغاريتمية|(?<![\p{L}\p{M}])(?:ال|ب|و)?لوغاريتم[\p{L}\p{M}]*|(?:تحليل|معادلة|نموذج|معامل) (?:ال)?انحدار|(?<![\p{L}\p{M}])بالانحدار(?![\p{L}\p{M}])|معامل (?:ال)?ارتباط|دلالة إحصائية|(?<![\p{L}\p{M}])كابا(?![\p{L}\p{M}])/u);
+    if (stats) issues.push(`إحصاء لا يحتاجه القارئ («${stats[0]}»)؛ قل ما يُظهره بكلمات عادية («تتسع الحصة كلما ارتفع دخل البلد») واحذف الرقم ومصطلحه.`);
+    // What the paper cannot tell, which its writer is told never to write, box included (a rewrite of 2026-10-24 closed
+    // its «لماذا يهمّ» on «فهو لا يقدّر وحده عدد الوظائف المعرضة للزوال»).
+    const unsaid = absenceNotes(`${lede}\n${body}\n${box}`);
+    if (unsaid.length) issues.push(`جملة عمّا لا تقوله الورقة أو لا يقيسه رقمها وحده («${unsaid[0].slice(0, 70)}…»)؛ القراءة تقول ما وجدته الورقة وحدود ما تقيسه كما تذكرها، ولا تشرح ما «لا يكشفه» الرقم وحده: احذف الجملة.`);
   }
   // The analyses' four fixed labels: all 12 published analyses carried them and closed on «نراقب» (an audit of 2026-10-23).
   if (kind === "analysis") {

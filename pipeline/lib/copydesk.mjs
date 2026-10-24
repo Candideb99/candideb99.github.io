@@ -429,9 +429,22 @@ export async function copyEdit({ draft, includeBody = false, role = "desk", kind
   // away (2026-10-18; no explainer had been published since 1 October).
   const kindNote = kind === "explainer"
     ? "\nTHIS PIECE IS AN EXPLAINER. Its headline is the one question the piece answers and ends in «؟» (e.g. «لماذا يرتفع عائد السند كلما انخفض سعره؟»). Keep the headline a question; the rule against question headlines is for news. Its lede opens on the news fact that raised the question: keep that opening, never turn it into a definition.\n"
-    : "";
+    : kind === "paper"
+      // The AI-agents reading of 2026-10-23, "robotic and less human" (the owner): its paper's English, carried over.
+      ? `\nTHIS PIECE IS A READING OF AN ENGLISH RESEARCH PAPER, and what gives it away is the paper's English carried over: a sentence whose subject is the paper («تنطلق الورقة من»، «تجد الورقة أن») becomes one about what was found, the study entering as attribution («وخلص الباحثون إلى أن»، «وبحسب الدراسة»); a noun coined from English («قابلية التفويض») becomes what it means; an English sentence shape is rebuilt; one idea keeps one word, the one the box and the chart print (not «التسليم» here and «التفويض» there). Its headline states the finding (a colon only to name the institution); a subhead may be reworded, never added or removed. Before → after:
+- تجد الورقة أن حصة التشغيل في المهام القابلة للتفويض ترتفع مع الدخل → وتتسع حصة العاملين في مهام يمكن تفويضها كلما ارتفع دخل البلد
+- بنى الباحث مؤشره بأن جعل نموذجين لغويين يقيّمان 18,796 وصفاً لمهام العمل → ولبناء المؤشر كلّف الباحثان نموذجين لغويين بتقييم 18,796 مهمة
+- وقيّم مقيّمون بشريون 300 مهمة دون أن يطّلعوا على أحكام النموذجين، فجاءت تقييماتهم متفقة معها إلى حد كبير → وعُرضت 300 مهمة على أشخاص لم يطّلعوا على أحكام النموذجين، فجاءت أحكامهم قريبة منها
+- ولذلك يصفه الباحث بأنه سقف أعلى للتفويض تُقارن به بيانات الاستخدام → ولذلك يعدّه الباحثان حداً أقصى لما يمكن تفويضه، تُقارن به بيانات الاستخدام الفعلي
+- ففي 101 دولة، يرتفع الاستخدام الفعلي، مقيساً بمعدل استخدام نموذج «كلود» للفرد، كلما اتسعت المهام القابلة للتفويض → ففي 101 دولة، كلما اتسعت المهام التي يمكن تفويضها زاد استخدام الفرد لنموذج «كلود»
+`
+      : "";
+  // The box and the chart are not the desk's to rewrite, but it must see them: a reading's desk made its body say «التفويض»
+  // for one idea and left the box and the chart saying «التسليم» (2026-10-24), two words for one thing.
+  const printed = [...(Array.isArray(draft.keyFacts) ? draft.keyFacts : []).map((f) => `- ${f.label}: ${f.value}`), ...(draft.chart?.title ? [`- (chart) ${draft.chart.title}`] : [])];
+  const printedNote = printed.length ? `\nTHE BOX AND THE CHART AS PRINTED (read-only: you do not rewrite them, so where they name a thing, the fields you rewrite name it with the same word)\n${printed.join("\n")}\n` : "";
   const user = `${EXAMPLES}
-${kindNote}${problems.length ? `
+${kindNote}${printedNote}${problems.length ? `
 PROBLEMS THE CHECKER FOUND IN THIS DRAFT (fix every one):
 ${problems.map((x, i) => `${i + 1}. ${x}`).join("\n")}
 ` : ""}

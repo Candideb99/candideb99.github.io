@@ -81,6 +81,9 @@ function normalizeItems(doc) {
       summary: stripHtml(textOf(entry.summary) || textOf(entry.content)),
       publishedAt: safeIsoDate(textOf(entry.published) || textOf(entry.updated)),
       categories: asArray(entry.category).map((c) => c?.["@_term"] ?? textOf(c)).filter(Boolean),
+      // A paper's authors as its repository records them (2026-10-24: the page text kept only the first author's
+      // credit block, and a reading of a two-author paper named one).
+      authors: asArray(entry.author).map((a) => stripHtml(textOf(a?.name))).filter(Boolean),
     }));
   }
   // A Google News sitemap (2026-10-22, Independent Arabia): the list of a site's last two days of articles that it

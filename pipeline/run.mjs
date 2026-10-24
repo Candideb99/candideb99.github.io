@@ -27,7 +27,7 @@ import { collectNewsEvidence, eventSourcesOf, independentOutletCount } from "./l
 import { marketData, repeatsInstrument } from "./lib/context.mjs";
 import { MARKET_QUOTE_URL } from "./lib/quotes.mjs";
 import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectFeatureTopic, selectPaper, selectStories } from "./lib/select.mjs";
-import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, newsFloor, reviseArticle, substantiveFacts, writeAnalysis, writeArticle, writeExplainer, writeFeature, writePaperReading, writeWeekly } from "./lib/write.mjs";
+import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, newsFloor, paperNotes, reviseArticle, substantiveFacts, writeAnalysis, writeArticle, writeExplainer, writeFeature, writePaperReading, writeWeekly } from "./lib/write.mjs";
 import { NEWS_FLOOR, NEWS_MIN_FACTS, SHORT_DAILY_CAP, SHORT_WORDS } from "./lib/editorial.mjs";
 import { critique, CUTTABLE, cutToSources, programmaticChecks } from "./lib/verify.mjs";
 import { copyEdit } from "./lib/copydesk.mjs";
@@ -81,6 +81,8 @@ const DAILY_CAP = Number(process.env.KHAZENDAR_DAILY_CAP) || 20;
 const ONLY_SOURCE = option("source", null);
 /** `--report=<id>`: the reports desk looks at that report alone (lib/reports.mjs, pipeline/reports.json). */
 const ONLY_REPORT = option("report", null);
+/** `--paper=<arXiv id or address>`: the paper mode reads that one paper, chosen by hand (a reading written again, or a test). */
+const ONLY_PAPER = option("paper", null);
 const MIN_IMPORTANCE = (() => {
   const n = Number(option("min-importance", 6));
   return Number.isFinite(n) ? n : 6;
@@ -821,7 +823,7 @@ function internalSources(articles, { withText = false } = {}) {
  * against (the stories that raised an explainer's question, the related stories for an analysis, the research paper's text for a
  * paper reading); `sources` is what is filed.
  */
-async function finishHubPiece({ kind, section, draft: firstDraft, sources, checkSources, recentTitles, wordLimits, story, headlineHint, headline, models, existing, report }) {
+async function finishHubPiece({ kind, section, draft: firstDraft, sources, checkSources, recentTitles, wordLimits, story, headlineHint, headline, models, existing, report, notes = null }) {
   const deskKind = kind === "explainer" ? "explainer" : kind === "paper" ? "paper" : "analysis";
   const desk = await copyDeskPass(firstDraft, { kind: deskKind, sources: checkSources ?? [] });
   let draft = desk.draft;
@@ -851,8 +853,11 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   if (!straightOut) {
     const issues = [...checks.issues, ...review.issues];
     if (!issues.length) issues.push(`المحرر أعطى المسودة ${review.score}/10 (${review.verdict})${review.summary ? `: ${review.summary}` : ""}؛ راجع الدقة والعزو والعربية.`);
-    const revision = await reviseArticle({ draft, sources: checkSources, issues, log, wordLimits, kind });
-    draft = (await copyDeskPass(revision.draft, { includeBody: false, kind: deskKind, sources: checkSources ?? [] })).draft;
+    const revision = await reviseArticle({ draft, sources: checkSources, issues, log, wordLimits, kind, notes });
+    // The desk reads the revised body, as a news story's (2026-10-24): it had read a hub piece's body only in the first
+    // draft, so the text that went out was the reviser's and the mender's, never desked, in 40 of the 45 hub pieces then
+    // published (the AI-agents reading: «مقيّمون بشريون»، «سقف أعلى»، «تجد الورقة» written after the desk had passed).
+    draft = (await copyDeskPass(revision.draft, { kind: deskKind, sources: checkSources ?? [] })).draft;
     writerModel = `${writerModel} → ${revision.model}`;
     revised = true;
     checks = programmaticChecks(draft, checkSources, { ...flags, recentTitles });
@@ -875,8 +880,8 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
     // faults their own last review named («يبقى خطأ واحد يحوّل توقع البنك المركزي…»، «فتحتاج إلى مراجعة قبل النشر»).
     if (finalReview.verdict === "revise" && finalReview.issues.length) {
       try {
-        const mend = await reviseArticle({ draft, sources: checkSources, issues: finalReview.issues, log, wordLimits, kind });
-        const mended = (await copyDeskPass(mend.draft, { includeBody: false, kind: deskKind, sources: checkSources ?? [] })).draft;
+        const mend = await reviseArticle({ draft, sources: checkSources, issues: finalReview.issues, log, wordLimits, kind, notes });
+        const mended = (await copyDeskPass(mend.draft, { kind: deskKind, sources: checkSources ?? [] })).draft;
         const mendedChecks = programmaticChecks(mended, checkSources, { ...flags, recentTitles });
         if (mendedChecks.ok) {
           draft = mended;
@@ -916,7 +921,7 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
     await recordPrecheck({ slug: buildSlug(draft, { headlineHint }), title: draft.title, pre, writer: writerModel, lessons: null, held: false });
   }
   // The piece's kind tells the picture desk it explains or analyses: its subject at work, never a facade.
-  const image = await pickImage({ draft: { ...draft, kind }, story, log, exclude: usedImages(existing) });
+  const image = TEXT_ONLY ? null : await pickImage({ draft: { ...draft, kind }, story, log, exclude: usedImages(existing) });
   const slug = buildSlug(draft, { headlineHint });
   const markdown = serializeArticle({
     pending: DRAFT,
@@ -1087,6 +1092,23 @@ async function gatherPapers(sources, state, existing) {
   return capped;
 }
 
+/** The arXiv id in an address or a bare id («2610.30752v1»), without its version. */
+const arxivId = (text) => String(text ?? "").match(/(\d{4}\.\d{4,5})(?:v\d+)?/)?.[1] ?? null;
+
+/**
+ * `--paper=`: the one paper the mode reads, from arXiv's own API (title, abstract, date), filed under the research feed
+ * that reads arXiv. The research editor still writes the brief; nothing in the state stops a paper chosen by hand.
+ */
+async function paperByHand(papers) {
+  const id = String(ONLY_PAPER).match(/(\d{4}\.\d{4,5})(v\d+)?/);
+  if (!id) throw new Error(`--paper: not an arXiv id or address (${ONLY_PAPER})`);
+  const source = papers.find((s) => /arxiv\.org/.test(s.url));
+  if (!source) throw new Error("--paper: no research feed reads arXiv (sources.json papers)");
+  const [item] = await fetchFeed({ ...source, url: `https://export.arxiv.org/api/query?id_list=${id[1]}${id[2] ?? ""}`, maxAgeHours: 24 * 365 * 10, summaryChars: 4000 }, { log });
+  if (!item) throw new Error(`--paper: arXiv returned no paper ${id[0]}`);
+  return { arxiv: id[1], item: { ...item, id: "p1", sourceName: source.name, sourceNameEn: source.nameEn, reliability: source.reliability, kind: source.kind, lang: source.lang, abstractOnly: Boolean(source.abstractOnly), note: source.note ?? "" } };
+}
+
 /** Whether a fetched page is about this paper: a repository page that yields only "related items" is not. */
 function looksLikeThePaper(text, item) {
   const lower = text.toLowerCase();
@@ -1142,11 +1164,14 @@ function runPaper() {
   return runHub("paper", "explainers", async (report) => {
     const config = await readJson(path.join(root, "pipeline", "sources.json"), { papers: [] });
     const state = await loadState();
-    const existing = await loadExistingArticles();
+    const byHand = ONLY_PAPER ? await paperByHand(config.papers ?? []) : null;
+    // A paper chosen by hand may have been read before: that reading is set aside here, so the new one is not held as a
+    // repeat of it. Its file stays on the site until a person removes it.
+    const existing = (await loadExistingArticles()).filter((a) => !byHand || !(a.kind === "paper" && (a.sourceUrls ?? []).some((u) => arxivId(u) === byHand.arxiv)));
     const existingPapers = existing.filter((a) => a.kind === "paper").map((a) => a.title);
-    let candidates = await gatherPapers(config.papers ?? [], state, existing);
-    log(`paper candidates: ${candidates.length} recent research items`);
-    if (candidates.length < 3) {
+    let candidates = byHand ? [byHand.item] : await gatherPapers(config.papers ?? [], state, existing);
+    log(`paper candidates: ${candidates.length} ${byHand ? "chosen by hand" : "recent research items"}`);
+    if (candidates.length < (byHand ? 1 : 3)) {
       log("too few paper candidates; nothing to do");
       return { report, published: 0 };
     }
@@ -1173,7 +1198,11 @@ function runPaper() {
       return { report, published: 0 };
     }
 
-    const { item, choice, editorModel, text } = chosen;
+    const { item, choice, editorModel } = chosen;
+    // The repository's own list of authors heads the text everyone reads, the critic and the check before publication
+    // included (2026-10-24: the page text kept only the first author's credit, and in four of five test rewrites the critic
+    // called the second author an error and twice had him removed).
+    const text = `${item.authors?.length ? `Authors (as the repository records them): ${item.authors.join("; ")}\n\n` : ""}${chosen.text}`;
     // The paper itself is the single source: filed as read, and checked against as text.
     const source = {
       sourceId: item.sourceId,
@@ -1192,8 +1221,13 @@ function runPaper() {
       institutionEn: item.sourceNameEn,
       institutionAr: item.sourceName,
       publishedAt: item.publishedAt,
+      note: item.note,
+      preprint: /arxiv\.org/i.test(item.url),
+      authors: item.authors ?? [],
     };
-    const { draft, model: writerModel } = await writePaperReading({ paper: brief, text, log });
+    // The research desk's notes first; the writer and the reviser then see them in place of the paper's English.
+    const notes = (await paperNotes({ paper: brief, text, log }))?.notes ?? null;
+    const { draft, model: writerModel } = await writePaperReading({ paper: brief, text, notes, log });
     const result = await finishHubPiece({
       kind: "paper",
       section: "explainers",
@@ -1208,6 +1242,7 @@ function runPaper() {
       models: { editor: editorModel, writer: writerModel },
       existing,
       report,
+      notes,
     });
     markItems(state, [item], result.published ? "published" : "rejected", report.at(-1)?.slug);
     await saveState(state);
