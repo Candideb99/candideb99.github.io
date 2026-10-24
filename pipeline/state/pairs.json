@@ -1023,6 +1023,50 @@
         ],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-10-24T11:46:00.571Z",
+      "slug": "russian-diesel-tankers-head-to-america-634507",
+      "checker": "7bb3653e29.2",
+      "lessons": "v34",
+      "lessonsHash": "1917f27221",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 7,
+        "notFound": 14,
+        "checked": 21,
+        "words": 313,
+        "keyFacts": 4,
+        "classes": [],
+        "programmatic": 2
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 15,
+        "notFound": 10,
+        "checked": 25,
+        "words": 314,
+        "keyFacts": 5,
+        "classes": [],
+        "programmatic": 2
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 15,
+        "notFound": 10,
+        "checked": 25,
+        "words": 314,
+        "keyFacts": 5,
+        "classes": [],
+        "programmatic": 2
+      }
     }
   ]
 }

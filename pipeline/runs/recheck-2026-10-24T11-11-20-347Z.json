@@ -1,0 +1,47 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-24T11:11:20.347Z",
+  "durationSec": 57,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "sk-hynix-halts-solidigm-us-ipo-f97d46",
+      "title": "إس كيه هاينكس تعلّق طرح وحدتها «سوليدايم» في أمريكا وتعزوه إلى تقلب الأسواق",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 35,
+        "checked": 35,
+        "supported": 28,
+        "weak": 1,
+        "noEvidence": 6,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 9513,
+    "completionTokens": 7446,
+    "cacheReadTokens": 0,
+    "costUsd": 0.225,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[11:11:20] second look: 1 to read now (1 published pieces not yet read; 111 read clean before publication and left out of the audit sample)",
+    "[11:12:17] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=54751",
+    "[11:12:17] sk-hynix-halts-solidigm-us-ipo-f97d46: 35 of 35 sentences checked · 28 supported · 6 without a source · 0 confirmed error(s)"
+  ]
+}
