@@ -1,0 +1,61 @@
+---
+/**
+ * The reader's own text size (the owner, 2026-10-25, beside Asharq Al-Awsat's slider: "i also want the reader to be able
+ * to adjust font size"). A range of the story text's sizes between a small and a large «أ», with the size in pixels, as
+ * الشرق الأوسط prints it. It sets `--reader-size`, which the story's text, its lede and «لماذا يهمّ» read (the headline,
+ * the boxes and the furniture keep theirs); the choice stays in this browser alone and is put back by the line at the top
+ * of the article before the text is drawn, so the page never jumps. Without scripts there is no control and the text
+ * keeps the house size.
+ */
+import { TEXT_SIZE_KEY, TEXT_SIZE_MIN, TEXT_SIZE_MAX } from "@lib/text-size";
+---
+
+<div class="textsize ui" data-textsize hidden>
+  <label class="visually-hidden" for="textsize-range">حجم خط النص</label>
+  <span class="textsize__glyph textsize__glyph--small" aria-hidden="true">أ</span>
+  <input id="textsize-range" class="textsize__range" type="range" min={TEXT_SIZE_MIN} max={TEXT_SIZE_MAX} step="1" value="20" />
+  <span class="textsize__glyph textsize__glyph--large" aria-hidden="true">أ</span>
+  <output class="textsize__value" for="textsize-range" aria-hidden="true">20</output>
+</div>
+
+<script is:inline define:vars={{ key: TEXT_SIZE_KEY, min: TEXT_SIZE_MIN, max: TEXT_SIZE_MAX }}>
+  (function () {
+    var root = document.querySelector("[data-textsize]");
+    if (!root) return;
+    var range = root.querySelector("input");
+    var out = root.querySelector("output");
+    // The house size on this screen (the token, without the reader's choice), so the control starts where the text is.
+    var probe = document.createElement("span");
+    probe.style.fontSize = "var(--n-body)";
+    root.appendChild(probe);
+    var base = Math.round(parseFloat(getComputedStyle(probe).fontSize)) || 20;
+    root.removeChild(probe);
+    var saved = null;
+    try { saved = Number(localStorage.getItem(key)) || null; } catch (e) {}
+    function show(px) {
+      range.value = String(px);
+      out.textContent = String(px);
+      range.setAttribute("aria-valuetext", px + " بكسل");
+    }
+    show(saved && saved >= min && saved <= max ? saved : base);
+    range.addEventListener("input", function () {
+      var px = Number(range.value);
+      show(px);
+      document.documentElement.style.setProperty("--reader-size", px + "px");
+      // The house size is no choice to remember: a reader back at it follows the house size if it changes.
+      try { px === base ? localStorage.removeItem(key) : localStorage.setItem(key, String(px)); } catch (e) {}
+    });
+    root.hidden = false;
+  })();
+</script>
+
+<style>
+  .textsize { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.8rem; color: var(--ink-3); }
+  .textsize[hidden] { display: none; }
+  .textsize__glyph { font-family: var(--font-body); font-weight: 700; line-height: 1; color: var(--ink-2); }
+  .textsize__glyph--small { font-size: var(--fs-xs); }
+  .textsize__glyph--large { font-size: var(--t-module); }
+  /* The house colour fills the native track and thumb; the range runs right to left with the page, larger to the left. */
+  .textsize__range { inline-size: 7.5rem; accent-color: var(--green); margin: 0; cursor: pointer; }
+  .textsize__value { min-inline-size: 1.6em; font-weight: 700; font-size: var(--fs-sm); color: var(--ink-2); text-align: end; }
+</style>

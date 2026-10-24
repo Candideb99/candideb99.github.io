@@ -8,6 +8,8 @@ import StoryCard from "@components/StoryCard.astro";
 import Chart from "@components/Chart.astro";
 import DataTable from "@components/DataTable.astro";
 import Share from "@components/Share.astro";
+import TextSize from "@components/TextSize.astro";
+import { TEXT_SIZE_KEY, TEXT_SIZE_MIN, TEXT_SIZE_MAX } from "@lib/text-size";
 import { getArticles, related, articleHref, stripStories } from "@lib/articles";
 import { getSection, sectionHref, kindLabel, moreLabel, allLabel } from "@lib/sections";
 import { subTopicOf, topicHref, tagHref, kickerOf } from "@lib/topics";
@@ -110,6 +112,10 @@ const jsonLd = [articleLd, breadcrumbLd];
   {/* Search can list a story by its date (`data-pagefind-sort`, in milliseconds so no colon splits the value): «النفط»
       listed 7 September to 1 October first, by relevance alone, with that day's oil stories out of sight (2026-10-19). */}
   <article class="article wrap--article" data-section={d.section} data-pagefind-body data-pagefind-meta={`section:${d.section}`} data-pagefind-sort={`date:${Date.parse(d.publishedAt)}`}>
+    {/* The reader's own text size (TextSize.astro), put back before the text below is drawn so the page never jumps. */}
+    <script is:inline define:vars={{ key: TEXT_SIZE_KEY, min: TEXT_SIZE_MIN, max: TEXT_SIZE_MAX }}>
+      try { var px = Number(localStorage.getItem(key)); if (px >= min && px <= max) document.documentElement.style.setProperty("--reader-size", px + "px"); } catch (e) {}
+    </script>
     <header class:list={["article__head", { "article__head--kind": kindHead }]}>
       {/* The kicker, the meta lines, the share row and the photo credit are furniture and stay out of the search text
           (data-pagefind-ignore; the meta values inside are still read): a result's excerpt read «الطاقة › أوبك+
@@ -143,7 +149,10 @@ const jsonLd = [articleLd, breadcrumbLd];
           <span class="article__whole">{readingLabel(d.readingMinutes)}</span>
         </p>
       </div>
-      <div data-pagefind-ignore><Share url={new URL(path, site.url).toString()} title={d.title} /></div>
+      <div class="article__tools" data-pagefind-ignore>
+        <Share url={new URL(path, site.url).toString()} title={d.title} />
+        <TextSize />
+      </div>
     </header>
 
     {/* The photograph and its caption stay out of the search text: a stock refinery's «(صورة تعبيرية)» made a story
@@ -288,6 +297,8 @@ const jsonLd = [articleLd, breadcrumbLd];
     max-width: 44rem;
   }
   .article__meta { margin-top: 0.9rem; padding-top: 0.6rem; border-top: 1px solid var(--rule); display: grid; gap: 0.2rem; }
+  /* The share row at the start and the reader's text size at the end, on one line where they fit. */
+  .article__tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; column-gap: 1.5rem; }
   .article__whole { white-space: nowrap; }
   .article__byline { font-weight: 700; color: var(--ink-2); }
   .crumbs { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 0 0.35rem; }
@@ -310,7 +321,7 @@ const jsonLd = [articleLd, breadcrumbLd];
   .article__lede {
     font-family: var(--font-body);
     font-weight: 700;
-    font-size: var(--n-body);
+    font-size: var(--reader-size, var(--n-body));
     line-height: 1.85;
     margin-bottom: 1.25rem;
     max-width: var(--measure);
@@ -324,7 +335,7 @@ const jsonLd = [articleLd, breadcrumbLd];
      opens the corrections and the related line, its head, and a hairline under it. A step under the body (16px against
      20px, about 95 letters a line) it read as a footnote under the last paragraph (the critique of 2026-10-19). */
   .why { margin: 2.5rem 0 0.5rem; max-width: var(--measure); border-top: 1px solid var(--ink); padding-top: 0.85rem; border-bottom: 1px solid var(--rule); padding-bottom: 1.1rem; }
-  .why__text { margin: 0; font-family: var(--font-body); font-size: var(--n-body); line-height: 1.9; color: var(--ink); text-align: justify; text-align-last: start; }
+  .why__text { margin: 0; font-family: var(--font-body); font-size: var(--reader-size, var(--n-body)); line-height: 1.9; color: var(--ink); text-align: justify; text-align-last: start; }
   .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.5rem; }
   /* The correction note: a ruled line under the text, like اقرأ أيضاً, never a box. */
   .corrections { max-width: var(--measure); margin-top: 1.5rem; padding-block: 0.6rem; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); }

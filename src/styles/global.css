@@ -250,9 +250,10 @@ bdi:has(> .mark-dir) { white-space: nowrap; }
 .photo picture { display: contents; }
 
 /* ----- Prose (article body): justified naskh in a newspaper measure ----- */
+/* `--reader-size` is the reader's own text size, set on a story's page only (TextSize.astro); unset, the house size. */
 .prose {
   font-family: var(--font-body);
-  font-size: var(--n-body);
+  font-size: var(--reader-size, var(--n-body));
   line-height: 1.9;
   max-width: var(--measure);
 }
