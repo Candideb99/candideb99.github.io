@@ -169,6 +169,16 @@ prints one, the latest or the institution's own, never the disagreement («أم�
 their digits. The checks are in `pipeline/lib/style.mjs`; the copy desk's guard accepts the rounding
 (`roundingsOf()`) and lets an Arab outlet's tag leave the story (`ARAB_OUTLET_NAMES`).
 
+**Whose voice** (added 2026-10-25, when the Turkish, Iranian and Indian press joined "with ownership labels"). An
+outlet the story names is named the first time with its owner and country, as the desks introduce a foreign outlet:
+«وكالة «مهر» الإيرانية شبه الرسمية»، «صحيفة «طهران تايمز» الإيرانية الحكومية»، «وكالة «شانا» التابعة لوزارة النفط
+الإيرانية»، «صحيفة «ديلي صباح» التركية المقربة من الحكومة»، «وكالة الأناضول التركية الرسمية»، «قناة «إيران إنترناشيونال»
+المعارضة، ومقرها لندن»، «صحيفة «إيكونوميك تايمز» الهندية»; after that its short name. The labels are in
+`pipeline/sources.json` (on each source, and in `outletLabels` for the agencies the sources quote: IRNA, Fars, Tasnim,
+Press TV, TRT); the writer sees them beside the sources, and `pipeline/lib/outlets.mjs` sends back a story whose first
+mention of a state, ministry, pro-government or opposition outlet drops the words that say so. A private paper's
+country is a courtesy and is not checked.
+
 **Captions** (added 2026-09-23, the owner: "a human writer would not describe the sky"). A photo caption
 names; it does not paint. Three to ten words, a noun phrase: what the photograph shows and, when the file
 itself says so, where (مصفاة نفط في هيوستن بولاية تكساس الأميركية؛ مقر بورصة نيويورك في وول ستريت؛
