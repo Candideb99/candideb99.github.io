@@ -18,7 +18,15 @@ regions:
 readingMinutes: 1
 chart: null
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/2024%2C_Muslim_Baghdadis_flooded_the_Shorja_market_celebrating_the_Islamic_holy_month_of_Ramadan.jpg/1280px-2024%2C_Muslim_Baghdadis_flooded_the_Shorja_market_celebrating_the_Islamic_holy_month_of_Ramadan.jpg
+  width: 1280
+  height: 853
+  alt: متسوقون في سوق الشورجة ببغداد
+  credit: Chinese Horse From Kaso Mall · CC0 · ويكيميديا كومنز
+  license: CC0
+  licenseUrl: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+  pageUrl: https://commons.wikimedia.org/wiki/File%3A2024%2C_Muslim_Baghdadis_flooded_the_Shorja_market_celebrating_the_Islamic_holy_month_of_Ramadan.jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat

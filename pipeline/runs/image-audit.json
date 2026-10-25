@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-24T22:34:24.213Z",
+  "at": "2026-10-25T01:41:43.032Z",
   "results": [
     {
       "slug": "trump-exempts-canadian-goods-tariffs-midterms-787322",
@@ -1146,17 +1146,6 @@
       "model": "claude-cli/claude-opus-5-5"
     },
     {
-      "slug": "iraq-seeks-imf-financing-programme-talks-d17aa2",
-      "file": "iraq-seeks-imf-financing-programme-talks-d17aa2.md",
-      "title": "العراق يطلب بحث برنامج تمويلي محتمل مع صندوق النقد الدولي",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/NYCW_2025_-_Kristalina_Georgieva_02.jpg/1280px-NYCW_2025_-_Kristalina_Georgieva_02.jpg",
-      "fileTitle": "NYCW 2025 - Kristalina Georgieva 02.jpg",
-      "verdict": "RIGHT",
-      "people": "Kristalina Georgieva",
-      "reason": "The IMF named in the headline is led by Georgieva, and this sharp, professional frame of her at an earlier, correctly captioned 2025 occasion is how the desk illustrates a story about her institution.",
-      "model": "claude-cli/claude-opus-5-5"
-    },
-    {
       "slug": "oil-rises-trump-denies-iran-sanctions-relief-60403e",
       "file": "oil-rises-trump-denies-iran-sanctions-relief-60403e.md",
       "title": "برنت يرتفع إلى 103.3 دولار بعد نفي ترامب تخفيف العقوبات على إيران",
@@ -1165,6 +1154,17 @@
       "verdict": "GENERIC_OK",
       "people": "none",
       "reason": "A neutral crude tanker moored at a refinery jetty reads at a glance as the oil sector, has no legible lettering, flag or landmark, and carries a caption that names no place, so it works as an illustrative image for a Brent price story.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "iraq-seeks-imf-financing-programme-talks-d17aa2",
+      "file": "iraq-seeks-imf-financing-programme-talks-d17aa2.md",
+      "title": "العراق يطلب بحث برنامج تمويلي محتمل مع صندوق النقد الدولي",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/2024%2C_Muslim_Baghdadis_flooded_the_Shorja_market_celebrating_the_Islamic_holy_month_of_Ramadan.jpg/1280px-2024%2C_Muslim_Baghdadis_flooded_the_Shorja_market_celebrating_the_Islamic_holy_month_of_Ramadan.jpg",
+      "fileTitle": "2024, Muslim Baghdadis flooded the Shorja market celebrating the Islamic holy month of Ramadan.jpg",
+      "verdict": "GENERIC_OK",
+      "people": "none",
+      "reason": "The story concerns stabilising Iraq's economy as a whole, and a busy everyday market of shoppers and traders in Baghdad's Shorja pictures that economy at work, in the story's own country, with an accurate caption.",
       "model": "claude-cli/claude-opus-5-5"
     }
   ]
