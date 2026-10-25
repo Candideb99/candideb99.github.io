@@ -6460,6 +6460,215 @@
           ]
         }
       ]
+    },
+    "riyadh-airport-partial-reopening-houthi-missile-attacks-fe5c08": {
+      "at": "2026-10-25T21:13:58.446Z",
+      "title": "مطار الرياض يستأنف رحلاته جزئياً وسط هجمات حوثية بالصواريخ",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 38,
+            "checked": 38,
+            "supported": 30,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 2,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 4,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 36,
+              "field": "body",
+              "class": "period",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وكسب برنت 6.2% على مدار الأسبوع في ثالث مكسب أسبوعي متتالٍ، وارتفع خام غرب تكساس الوسيط 3.8% إلى 103.27 دولار للبرميل.",
+              "quote": "U.S. West Texas Intermediate added 3.8% to settle at $103.27 a barrel. Brent added 6.2% for the week, the third consecutive week of gains. WTI advanced 2.3% for the week.",
+              "source": "CNBC",
+              "sourceN": 3,
+              "correction": "WTI's 3.8% gain to $103.27 was Friday's daily move; WTI rose 2.3% for the week."
+            }
+          ],
+          "noted": [
+            {
+              "id": 6,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "مسيّرات اعتُرضت نحو الرياض بحسب المالكي: 2",
+              "quote": "It also reported intercepting a ballistic missile launched towards Riyadh and destroying a drone aimed at the capital.",
+              "source": "The National",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 7,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ضحايا هجوم 10 أكتوبر على المطار: 13 قتيلاً وأكثر من 300 جريح",
+              "quote": "The airport suspended operations on Oct. 10 following a strike that killed at least 13 people and injured around 300 others, making it the deadliest attack on Saudi Arabia in more than a decade.",
+              "source": "CNBC",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 17,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وكان المطار قد أُغلق في 10 أكتوبر إثر هجوم أعلن الحوثيون مسؤوليتهم عنه، وأوقع 13 قتيلاً وأكثر من 300 جريح، وهو الهجوم الأشد دموية على السعودية منذ أكثر من عقد، بحسب شبكة CNBC الأمريكية.",
+              "quote": "The airport suspended operations on Oct. 10 following a strike that killed at least 13 people and injured around 300 others, making it the deadliest attack on Saudi Arabia in more than a decade.",
+              "source": "CNBC",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 23,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "نقلت وكالة الأنباء السعودية عن تركي المالكي، المتحدث باسم تحالف دعم الشرعية في اليمن الذي تقوده السعودية، أن الدفاعات اعترضت ودمرت أيضاً صاروخاً باليستياً ومسيّرتين كانت متجهة نحو الرياض، وصاروخ كروز أُطلق باتجاه مدينة خميس مشيط.",
+              "quote": "It also reported intercepting a ballistic missile launched towards Riyadh and destroying a drone aimed at the capital.",
+              "source": "The National",
+              "sourceN": 4,
+              "correction": ""
+            }
+          ],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 39,
+            "checked": 39,
+            "supported": 31,
+            "weak": 0,
+            "noEvidence": 2,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 4,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 6,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "مسيّرات اعتُرضت نحو الرياض بحسب المالكي: 2",
+              "quote": "It also reported intercepting a ballistic missile launched towards Riyadh and destroying a drone aimed at the capital.",
+              "source": "The National",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 7,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ضحايا هجوم 10 أكتوبر على المطار: 13 قتيلاً وأكثر من 300 جريح",
+              "quote": "The airport suspended operations on Oct. 10 following a strike that killed at least 13 people and injured around 300 others, making it the deadliest attack on Saudi Arabia in more than a decade.",
+              "source": "CNBC",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 17,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وكان المطار قد أُغلق في 10 أكتوبر إثر هجوم أعلن الحوثيون مسؤوليتهم عنه، وأوقع 13 قتيلاً وأكثر من 300 جريح، وهو الهجوم الأشد دموية على السعودية منذ أكثر من عقد، بحسب شبكة CNBC الأمريكية.",
+              "quote": "The airport suspended operations on Oct. 10 following a strike that killed at least 13 people and injured around 300 others, making it the deadliest attack on Saudi Arabia in more than a decade.",
+              "source": "CNBC",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 23,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "نقلت وكالة الأنباء السعودية عن تركي المالكي، المتحدث باسم تحالف دعم الشرعية في اليمن الذي تقوده السعودية، أن الدفاعات اعترضت ودمرت أيضاً صاروخاً باليستياً ومسيّرتين كانت متجهة نحو الرياض، وصاروخ كروز أُطلق باتجاه مدينة خميس مشيط.",
+              "quote": "It also reported intercepting a ballistic missile launched towards Riyadh and destroying a drone aimed at the capital.",
+              "source": "The National",
+              "sourceN": 4,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "centcom-gulf-oil-exports-hormuz-billion-barrels-2011b9": {
+      "at": "2026-10-25T21:26:03.806Z",
+      "title": "سنتكوم: قواتها ساعدت دول الخليج على تصدير أكثر من 1.5 مليار برميل عبر هرمز",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v36",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 18,
+            "checked": 18,
+            "supported": 18,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "adnoc-local-manufacturing-60-billion-dirhams-002b80": {
+      "at": "2026-10-25T21:35:27.845Z",
+      "title": "أدنوك تطرح فرص تصنيع محلي بأكثر من 60 مليار درهم حتى 2030",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 38,
+            "checked": 38,
+            "supported": 34,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

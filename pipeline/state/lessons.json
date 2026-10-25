@@ -209,10 +209,12 @@
     "microsoft-exits-nscale-essex-datacentre-power-ce50c6:b9cc2c69",
     "france-secures-gulf-diesel-supplies-a5bb1f:ede0a439",
     "norway-wealth-fund-third-quarter-bond-loss-ebd227:ea51def9",
-    "ras-al-khaimah-closes-beaches-oil-spill-8c2ef2:9728acd8"
+    "ras-al-khaimah-closes-beaches-oil-spill-8c2ef2:9728acd8",
+    "saudi-utility-tariffs-monthly-support-2027-748f63:07d9ec5d",
+    "saudi-utility-tariffs-monthly-support-2027-748f63:29472625"
   ],
-  "version": 35,
-  "updatedAt": "2026-10-25T11:41:46.650Z",
+  "version": 36,
+  "updatedAt": "2026-10-25T20:57:25.422Z",
   "lessons": [
     {
       "id": "L1",
@@ -385,7 +387,7 @@
     {
       "id": "L4",
       "class": "scope",
-      "rule": "Tie each figure and claim to the exact item, place, day and instrument the source attaches it to. 'Some exports' is not all, energy diversification is not nuclear, one cargo's loading point is not another's, and Middle East flows are not Hormuz flows.",
+      "rule": "Tie each figure, share and claim to the exact item, group, place, day and instrument the source attaches it to: never fuse two conditions into one group, drop members of a list, or add 'only'. Middle East flows are not Hormuz flows.",
       "example": {
         "wrong": "ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها",
         "quote": "United States President Donald Trump has announced he’s creating an “AI Force” and will appoint a new “AI czar” to oversee development of the nation’s artificial intelligence industry.",
@@ -426,18 +428,20 @@
         "google-finland-13-billion-ai-nuclear-54b058:5004fbea",
         "brent-above-100-dollars-gulf-escalation-8281ef:950eae47",
         "microsoft-exits-nscale-essex-datacentre-power-ce50c6:b9cc2c69",
-        "france-secures-gulf-diesel-supplies-a5bb1f:ede0a439"
+        "france-secures-gulf-diesel-supplies-a5bb1f:ede0a439",
+        "saudi-utility-tariffs-monthly-support-2027-748f63:07d9ec5d",
+        "saudi-utility-tariffs-monthly-support-2027-748f63:29472625"
       ],
-      "seen": 34,
+      "seen": 36,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-10-21T21:48:49.270Z",
+      "lastSeen": "2026-10-25T20:57:25.422Z",
       "status": "active",
       "previous": [
-        "Keep a figure or role tied to the exact item, day and instrument the source names. Diesel is not all fuel. One day's count is not a daily rate. A futures-implied value is not the IPO valuation. An official does only what the source assigns.",
         "Keep a figure or claim tied to the exact item, place, day and instrument the source names. 'The stock market' is not global markets, one day's flow is not a daily rate, and diesel is not all fuel. An official does only what the source assigns.",
-        "Tie each figure to the exact item, place, day and instrument the source's sentence attaches it to. Flows from the broader Middle East are not Hormuz flows, one day's flow is not a daily rate, and diesel is not all fuel."
+        "Tie each figure to the exact item, place, day and instrument the source's sentence attaches it to. Flows from the broader Middle East are not Hormuz flows, one day's flow is not a daily rate, and diesel is not all fuel.",
+        "Tie each figure and claim to the exact item, place, day and instrument the source attaches it to. 'Some exports' is not all, energy diversification is not nuclear, one cargo's loading point is not another's, and Middle East flows are not Hormuz flows."
       ],
-      "sharpenedAt": "2026-09-25T23:25:28.192Z"
+      "sharpenedAt": "2026-10-25T20:57:25.422Z"
     },
     {
       "id": "L5",
@@ -1008,6 +1012,13 @@
       "mistakes": 1,
       "applied": [
         "reinforce L2 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-10-25T20:57:25.422Z",
+      "mistakes": 2,
+      "applied": [
+        "sharpen L4 (+2)"
       ]
     }
   ],
