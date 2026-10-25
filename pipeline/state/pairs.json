@@ -1111,6 +1111,50 @@
         "classes": [],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-10-25T12:14:40.188Z",
+      "slug": "egypt-targets-state-employees-minimum-wage-15000-pounds-1620b2",
+      "checker": "7bb3653e29.2",
+      "lessons": "v35",
+      "lessonsHash": "1917f27221",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 21,
+        "notFound": 1,
+        "checked": 27,
+        "words": 396,
+        "keyFacts": 5,
+        "classes": [],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 24,
+        "notFound": 0,
+        "checked": 27,
+        "words": 398,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 24,
+        "notFound": 0,
+        "checked": 27,
+        "words": 398,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }

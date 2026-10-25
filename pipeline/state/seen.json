@@ -2095,10 +2095,10 @@
       "strikes": 1
     },
     "18fa28268c03057b": {
-      "at": "2026-10-24T20:56:21.664Z",
-      "decision": "rejected",
-      "title": "Egypt Forum recommends raising minimum wage to EGP 15,000 by FY2029/30",
-      "strikes": 1
+      "at": "2026-10-25T12:14:40.187Z",
+      "decision": "published",
+      "slug": "egypt-targets-state-employees-minimum-wage-15000-pounds-1620b2",
+      "title": "Egypt Forum recommends raising minimum wage to EGP 15,000 by FY2029/30"
     },
     "0bf6f64660ef32e8": {
       "at": "2026-10-24T20:56:21.664Z",
@@ -2195,6 +2195,72 @@
       "decision": "published",
       "slug": "riyadh-airport-resumes-flights-two-terminals-d29856",
       "title": "الرياض.. مطار الملك خالد يعيد توزيع الرحلات بالصالات"
+    },
+    "48522e3fa03f98a9": {
+      "at": "2026-10-25T11:57:29.913Z",
+      "decision": "published",
+      "slug": "egyptian-exchange-halts-trading-index-drop-65632a",
+      "title": "البورصة توقف التداول نصف ساعة لأول مرة منذ 2011 وتراجع المؤشر المئوي 10%"
+    },
+    "2e3c0b04c9840088": {
+      "at": "2026-10-25T11:57:29.913Z",
+      "decision": "published",
+      "slug": "egyptian-exchange-halts-trading-index-drop-65632a",
+      "title": "المؤشر الرئيسي للبورصة يهبط دون 50 ألف نقطة اليوم لأول مرة منذ 8 أشهر"
+    },
+    "49fccb6e56f0b7a6": {
+      "at": "2026-10-25T11:57:29.913Z",
+      "decision": "published",
+      "slug": "egyptian-exchange-halts-trading-index-drop-65632a",
+      "title": "تفاقم الخسائر لـ 177 مليار جنيه.. خسائر حادة للبورصة خلال تعاملات الأحد"
+    },
+    "6737abf57a3874ee": {
+      "at": "2026-10-25T11:57:29.913Z",
+      "decision": "published",
+      "slug": "egyptian-exchange-halts-trading-index-drop-65632a",
+      "title": "واقعة تاريخية بالبورصة.. تعليق التداول للمرة الثالثة منذ عام 2021"
+    },
+    "4454af171ba18196": {
+      "at": "2026-10-25T11:57:29.913Z",
+      "decision": "published",
+      "slug": "egyptian-exchange-halts-trading-index-drop-65632a",
+      "title": "البورصة توقف التداول نصف ساعة بعد هبوط مؤشر EGX 100 EWI بنسبة 10%"
+    },
+    "bbaeb1e3086db3be": {
+      "at": "2026-10-25T12:02:33.513Z",
+      "decision": "rejected",
+      "title": "«سابك» تعود إلى الربحية في الربع الثالث بدعم من تحسن المبيعات والاستثمارات",
+      "strikes": 1
+    },
+    "d5a60c1b33d7fcd4": {
+      "at": "2026-10-25T12:02:33.513Z",
+      "decision": "rejected",
+      "title": "Sabic returns to profit in third quarter as revenue rises despite regional conflict",
+      "strikes": 1
+    },
+    "22ca231891e63f91": {
+      "at": "2026-10-25T12:02:33.513Z",
+      "decision": "rejected",
+      "title": "أرباح سابك تفوق التوقعات وتسجل أعلى مستوياتها في عامين",
+      "strikes": 1
+    },
+    "18071cef20568730": {
+      "at": "2026-10-25T12:02:33.513Z",
+      "decision": "rejected",
+      "title": "\"سابك\" تسجل ارتفاعا 40% في الأرباح المعدلة جراء التميز التشغيلي",
+      "strikes": 1
+    },
+    "de333e15e6f66534": {
+      "at": "2026-10-25T12:02:33.513Z",
+      "decision": "rejected",
+      "title": "أسعار البيع تدفع \"سابك\" لتحقيق أرباح فصلية ضعف التوقعات",
+      "strikes": 1
+    },
+    "1ba80a4f3d8f0c83": {
+      "at": "2026-10-25T12:14:40.187Z",
+      "decision": "published",
+      "slug": "egypt-targets-state-employees-minimum-wage-15000-pounds-1620b2",
+      "title": "الحكومة تكشف مستهدف الحد الأدنى للأجور وموقف المعلمين بحلول 2030"
     }
   }
 }

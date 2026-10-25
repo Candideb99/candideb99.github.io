@@ -12108,6 +12108,38 @@
       ],
       "weak": [],
       "outcome": "clean"
+    },
+    "ras-al-khaimah-closes-beaches-oil-spill-8c2ef2": {
+      "at": "2026-10-25T11:40:45.878Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "checker": "7bb3653e29",
+      "publishedAt": "2026-10-25T05:04:24.669Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 30,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "تتوقف كلفة الحادث إلى حد بعيد على بقاء النفط في عرض البحر؛ فإغلاق الشواطئ وتحذير الصيادين إجراءات مؤقتة قائمة."
+      ],
+      "weak": [],
+      "outcome": "clean"
     }
   }
 }

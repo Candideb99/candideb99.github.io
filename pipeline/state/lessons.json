@@ -208,10 +208,11 @@
     "banque-du-caire-share-offering-launch-f9a4ac:646d95c3",
     "microsoft-exits-nscale-essex-datacentre-power-ce50c6:b9cc2c69",
     "france-secures-gulf-diesel-supplies-a5bb1f:ede0a439",
-    "norway-wealth-fund-third-quarter-bond-loss-ebd227:ea51def9"
+    "norway-wealth-fund-third-quarter-bond-loss-ebd227:ea51def9",
+    "ras-al-khaimah-closes-beaches-oil-spill-8c2ef2:9728acd8"
   ],
-  "version": 34,
-  "updatedAt": "2026-10-22T17:17:20.500Z",
+  "version": 35,
+  "updatedAt": "2026-10-25T11:41:46.650Z",
   "lessons": [
     {
       "id": "L1",
@@ -324,11 +325,12 @@
         "anthropic-researcher-ai-human-extinction-risk-8aa7a2:57adc9ea",
         "trump-expands-trade-war-canada-import-ban-6088a2:2013a382",
         "egypt-ai-data-center-nvidia-billion-dollar-b0fc50:9cb6a47d",
-        "banque-du-caire-share-offering-launch-f9a4ac:646d95c3"
+        "banque-du-caire-share-offering-launch-f9a4ac:646d95c3",
+        "ras-al-khaimah-closes-beaches-oil-spill-8c2ef2:9728acd8"
       ],
-      "seen": 45,
+      "seen": 46,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-10-18T19:30:49.164Z",
+      "lastSeen": "2026-10-25T11:41:46.650Z",
       "status": "active",
       "previous": [
         "Credit each fact to whom the source credits; the outlet's own reporting is never 'informed sources', an official statement or analyst data. Name the originating outlet. Never make a reported line a quote, a private notice an announcement, or a reply the decree's aim.",
@@ -999,6 +1001,13 @@
       "applied": [
         "reinforce L11 (+1; reworded at most once a week)",
         "L11 now read by the writer (proved in 2 unrelated stories)"
+      ]
+    },
+    {
+      "at": "2026-10-25T11:41:46.650Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L2 (+1; reworded at most once a week)"
       ]
     }
   ],
