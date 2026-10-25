@@ -6062,6 +6062,69 @@
           "noted": []
         }
       ]
+    },
+    "ras-al-khaimah-closes-beaches-oil-spill-8c2ef2": {
+      "at": "2026-10-25T05:04:24.678Z",
+      "title": "رأس الخيمة تغلق جميع شواطئها حتى إشعار آخر إثر تسرب نفطي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 28,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 28,
+              "field": "body",
+              "class": "attribution",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وتفكك المشتتات النفط إلى قطرات دقيقة، لكن مورتيمر قال إن اللجوء إليها يستلزم تقدير سميتها، فبعض هذه المواد قد يضر بالكائنات البحرية، ومنها الشعاب المرجانية والأسماك والقشريات والعوالق.",
+              "quote": "However, using these substances requires careful assessment because some can harm marine organisms, including corals, fish, crustaceans and plankton.",
+              "source": "The National",
+              "sourceN": 3,
+              "correction": "The statement that some dispersants can harm corals, fish, crustaceans and plankton is The National's own reporting; Mortimer only said one must look at how toxic dispersants are and that some chemicals are \"not very nice\"."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 30,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

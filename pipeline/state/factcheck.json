@@ -12075,6 +12075,39 @@
       ],
       "weak": [],
       "outcome": "clean"
+    },
+    "iran-pezeshkian-war-food-struggle-blockade-ee5d4d": {
+      "at": "2026-10-25T04:51:00.351Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v34",
+      "checker": "7bb3653e29",
+      "publishedAt": "2026-10-24T21:33:18.044Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 30,
+        "checked": 30,
+        "supported": 28,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "حين يقيّد الحصار صادرات إيران النفطية وتجارتها معاً، تصبح صعوبة تأمين الغذاء التي تحدث عنها بزشكيان مؤشراً على أن كلفة الضغط الاقتصادي تصل إلى السكان، لا إلى القيادة وحدها.",
+        "لكن اشتراط طهران خلو المفاوضات من الضغوط يعني أن رفع هذه الكلفة لا يقود تلقائياً إلى طاولة التفاوض، وقد يطيل حالة الجمود."
+      ],
+      "weak": [],
+      "outcome": "clean"
     }
   }
 }
