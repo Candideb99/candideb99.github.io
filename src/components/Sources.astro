@@ -24,6 +24,10 @@ function host(url: string) {
 }
 /** A headline written in Latin letters (an English source's own title). */
 const latin = (t: string) => /[A-Za-z]/.test(t) && !/[؀-ۿ]/.test(t);
+/** A headline's language: its source's own when the story recorded one (a Turkish or Persian title is not English,
+ *  2026-10-25), else English for Latin letters. */
+const titleLang = (s: { title: string; lang?: string }) =>
+  s.lang && s.lang !== "ar" && /^[a-z]{2,3}(-[a-z0-9]+)*$/i.test(s.lang) ? s.lang : latin(s.title) ? "en" : undefined;
 ---
 
 <section class="sources" aria-labelledby="sources-title">
@@ -35,10 +39,10 @@ const latin = (t: string) => /[A-Za-z]/.test(t) && !/[؀-ۿ]/.test(t);
           <span class="sources__name ui">{s.name}</span>
           {s.url ? (
             <a class="sources__title" href={s.url} rel={s.url.startsWith("/") ? undefined : "noopener nofollow"} target={s.url.startsWith("/") ? undefined : "_blank"}>
-              <bdi lang={latin(s.title) ? "en" : undefined}>{s.title}</bdi>
+              <bdi lang={titleLang(s)}>{s.title}</bdi>
             </a>
           ) : (
-            <span class="sources__title"><bdi lang={latin(s.title) ? "en" : undefined}>{s.title}</bdi></span>
+            <span class="sources__title"><bdi lang={titleLang(s)}>{s.title}</bdi></span>
           )}
           <span class="sources__host ui">
             {host(s.url) && <bdi dir="ltr">{host(s.url)}</bdi>}

@@ -2,6 +2,7 @@ import { chat } from "./llm.mjs";
 import { EDITORIAL_CRAFT, EDITORIAL_READER_CHECK, NEWS_DEPTH, NEWS_FLOOR, SHORT_STORY } from "./editorial.mjs";
 import { arabicRatio, normalizeDigits, overlappingPhrases, phraseOverlap, suspiciousLatinWords, ungroundedNumbers, wordCount } from "./util.mjs";
 import { STITCH, styleIssues } from "./style.mjs";
+import { labelLine, unlabelledOutlets } from "./outlets.mjs";
 
 /** The three sections of the week's review, matched loosely against its "## " subheads. */
 const WEEKLY_SECTIONS = [
@@ -66,6 +67,9 @@ export function programmaticChecks(draft, sources, { recentTitles = [], newsTitl
   const style = styleIssues(draft, { kind: explainer ? "explainer" : analysis || weekly || feature ? "analysis" : paper ? "paper" : "news", sources: sourceNames, latin: false });
   issues.push(...style.issues);
   warnings.push(...style.warnings);
+  // Whose voice (lib/outlets.mjs; the owner, 2026-10-25): a state, ministry, pro-government or opposition outlet is
+  // named as such the first time; the desk can mend it, so it is not a writer's fault (run.mjs WRITERS_FAULT).
+  for (const outlet of unlabelledOutlets(draft)) issues.push(`ورد اسم «${outlet.name}» أول مرة بلا صفته؛ اكتب أول ذكر له: ${outlet.firstMention}.`);
 
   const words = wordCount(`${draft.lede}\n${draft.body}`);
   if (analysis) {
@@ -334,7 +338,7 @@ export async function critique({ draft, sources, explainer = false, analysis = f
   const full = news && !short;
   const rubric = CRITIC_RUBRIC[explainer ? "explainer" : analysis ? "analysis" : paper ? "paper" : weekly ? "weekly" : feature ? "feature" : short ? "short" : "news"];
   // Each source with its date: a timeline («في العمق») is checked row by row against its stories' dates.
-  const material = sources.map((s, i) => `SOURCE ${i + 1}: ${s.sourceNameEn} (${s.lang}) — "${s.title}"${s.publishedAt ? ` — published ${String(s.publishedAt).slice(0, 10)}` : ""}${s.kind === "official" ? " — PRIMARY INSTITUTIONAL DOCUMENT (stated aims remain attributed claims)" : ""}${s.kind === "report" ? " — THE PUBLISHER'S OWN REPORT (its estimates and forecasts are attributed to it; [p.N] marks its page; a figure read off a bare run of table numbers is unsupported)" : ""}\n${s.text || s.summary || ""}`).join("\n\n");
+  const material = sources.map((s, i) => `SOURCE ${i + 1}: ${s.sourceNameEn} (${s.lang}) — "${s.title}"${s.publishedAt ? ` — published ${String(s.publishedAt).slice(0, 10)}` : ""}${s.kind === "official" ? " — PRIMARY INSTITUTIONAL DOCUMENT (stated aims remain attributed claims)" : ""}${s.kind === "report" ? " — THE PUBLISHER'S OWN REPORT (its estimates and forecasts are attributed to it; [p.N] marks its page; a figure read off a bare run of table numbers is unsupported)" : ""}\n${labelLine(s)}${s.text || s.summary || ""}`).join("\n\n");
   const user = `SOURCE MATERIAL
 ${[rubric.material, material || (explainer ? "" : "(no sources supplied)")].filter(Boolean).join("\n\n")}
 
@@ -343,7 +347,7 @@ ${JSON.stringify({ title: draft.title, subtitle: draft.subtitle, lede: draft.led
 
 CHECK
 1. ${rubric.facts}
-2. Attribution: are claims attributed to the right source? Is anything presented as fact that the source presents as an estimate, forecast or opinion? The desks attribute a public fact (a decision, a published figure, a price) to the institution or news agency behind it: an Arab outlet (الشرق الأوسط، الجزيرة، العربية، سكاي نيوز عربية) cited for a public fact, or a sentence telling the reader that outlets reported different figures, is an attribution fault to fix (one figure, the latest or the institution's own).
+2. Attribution: are claims attributed to the right source? Is anything presented as fact that the source presents as an estimate, forecast or opinion? The desks attribute a public fact (a decision, a published figure, a price) to the institution or news agency behind it: an Arab outlet (الشرق الأوسط، الجزيرة، العربية، سكاي نيوز عربية) cited for a public fact, or a sentence telling the reader that outlets reported different figures, is an attribution fault to fix (one figure, the latest or the institution's own). An OUTLET line under a source is the house's own description of that outlet's owner and country («صحيفة «ديلي صباح» التركية المقربة من الحكومة»): naming the outlet that way is required and needs no source to say it.
 3. ${rubric.check}
 4. Arabic quality. A lesser-known person or company may carry its Latin spelling in parentheses ONCE for identification (e.g. «دون باير (Don Beyer)»); this is allowed by the house style and is not untranslated prose or a reason to revise. Untranslated English sentences or common words remain faults. Incomplete wording, unclear references, a string of disconnected dispatches, or a consequence that merely repeats the headline are concrete editorial defects under this point; quote the passage and explain the repair. Natural synonyms and ordinary short paragraphs are not defects. Translationese is a fault that requires "revise", never "publish": English syntax under Arabic words (an indefinite subject such as "إدارة أمريكية" where Arabic uses the definite or the name; "يعلن عن" + verbal noun; jargon rendered word for word such as "مستردات", "المعدل العقاري", "استئناف بيع", "للأضواء", "في زيارة دولة"; "من قبل"; "يقوم بـ"), wrong case endings on numbers and duals ("ألفين رحلة", "حل جزئي" as an object), a headline chaining two developments with "و", untranslated foreign words, sensational tone, repetition. Quote each offending phrase and give the idiomatic Arabic.
 5. Headline and construction: accurate, idiomatic and complete; state what a fear concerns rather than compressing it into «مخاوف الإمدادات». Does the report develop one point per paragraph, with related facts grouped, clear references and a supported economic consequence, or does it merely reproduce desk notes and separate incident dispatches? Quote a concrete editorial defect and request revision; do not invent defects to fill a list. Headline: accurate, specific, not misleading. One event per story: a draft that reports two unrelated events (Britain's grid investment and France's wine harvest; copper prices and Uganda's first crude cargo; a Dubai silver product and an Abu Dhabi skills card) is a roundup, not a story — verdict "reject", with the issue «قصتان في مقال واحد» naming both.

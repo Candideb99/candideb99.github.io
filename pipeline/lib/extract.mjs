@@ -74,6 +74,19 @@ function paragraphsFallback(html) {
     .join("\n\n");
 }
 
+/**
+ * The publisher's own word that a page is for subscribers: schema.org `isAccessibleForFree` set to false in its
+ * structured data or its microdata. Such a page counts as paywalled, its feed's headline and summary and never its text
+ * (the owner, 2026-10-25, with the Turkish, Iranian and Indian press: Expansión, NZZ and The Hindu serve a marked
+ * article's whole text to a reader that does not log in, and a 716-character SPIEGEL+ teaser passed the 400-character
+ * floor below).
+ */
+export function subscribersOnly(html) {
+  return /"isAccessibleForFree"\s*:\s*"?false"?/i.test(html)
+    || /<[^>]*\bitemprop=["']isAccessibleForFree["'][^>]*\bcontent=["']false["']/i.test(html)
+    || /<[^>]*\bcontent=["']false["'][^>]*\bitemprop=["']isAccessibleForFree["']/i.test(html);
+}
+
 function metaContent(html, name) {
   const m =
     html.match(new RegExp(`<meta[^>]+(?:property|name)=["']${name}["'][^>]+content=["']([^"']+)["']`, "i")) ??
@@ -263,6 +276,10 @@ export function readArticleHtml(html, url, { maxChars = 9000, log = () => {} } =
     }
     if (!title) title = metaContent(html, "og:title") || stripHtml(html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] ?? "");
     result.title = title;
+    if (subscribersOnly(html)) {
+      result.reason = "subscribers-only";
+      return result;
+    }
     result.text = text.slice(0, maxChars);
     result.ok = result.text.length >= 400;
     if (!result.ok) result.reason = "thin";

@@ -5,7 +5,7 @@
  *   node pipeline/run.mjs                 # select, write, verify and publish news stories
  *   node pipeline/run.mjs --dry-run       # everything except writing files/state
  *   node pipeline/run.mjs --limit=4       # cap the number of stories
- *   node pipeline/run.mjs --source=ecb    # restrict to one feed
+ *   node pipeline/run.mjs --source=ecb    # restrict to one feed, or to several: --source=shana,tehrantimes
  *   node pipeline/run.mjs --mode=explainer  # one evergreen explainer tied to recent coverage
  *   node pipeline/run.mjs --mode=analysis   # one house analysis connecting recent stories
  *   node pipeline/run.mjs --mode=paper      # one plain-Arabic reading of a recent open-access research paper
@@ -78,7 +78,8 @@ const LIMIT = Math.max(1, Math.min(Number(option("limit", 4)) || 4, 10));
  * filed 7 in all sections; he accepted the larger use of his Claude subscription that it costs.
  */
 const DAILY_CAP = Number(process.env.KHAZENDAR_DAILY_CAP) || 20;
-const ONLY_SOURCE = option("source", null);
+/** `--source=`: the feeds a run reads, one id or several; a story needs two outlets, so a test of new feeds names two or more. */
+const ONLY_SOURCES = option("source", null)?.split(",").map((s) => s.trim()).filter(Boolean) ?? null;
 /** `--report=<id>`: the reports desk looks at that report alone (lib/reports.mjs, pipeline/reports.json). */
 const ONLY_REPORT = option("report", null);
 /** `--paper=<arXiv id or address>`: the paper mode reads that one paper, chosen by hand (a reading written again, or a test). */
@@ -99,9 +100,11 @@ const REJECT_RETRY_HOURS = 12;
  * 300 until 2026-10-22, when the region's news desks joined for politics that moves money: the feeds then held about
  * 620 fresh items, and 300 gave each feed only its nine freshest). With the eight sources added the same evening the
  * feeds hold about 810 items over 36 hours; 450 still gives every feed its eleven freshest, about what the busiest
- * publishes between two runs.
+ * publishes between two runs. 600 since 2026-10-25, when sixteen Turkish, Iranian and Indian feeds joined (at most 172
+ * items between them, by their maxItems): measured that Sunday (641 fresh items, 141 of them new), they took 132 of 450
+ * places and left the current feeds 318 where they had held all 450; at 600 every new item fits beside 459 current ones.
  */
-const CANDIDATE_CAP = 450;
+const CANDIDATE_CAP = 600;
 /** The regional desks that are our readers' own economies (src/data/regions.json), and how many of their stories a day the region balance aims for. */
 const ARAB_REGIONS = ["الخليج", "مصر والمغرب العربي"];
 const ARAB_DAILY = 8;
@@ -163,7 +166,7 @@ function blocks(entry) {
 }
 
 async function gatherCandidates(sources, state, existing) {
-  const enabled = sources.filter((s) => !s.disabled && (!ONLY_SOURCE || s.id === ONLY_SOURCE));
+  const enabled = sources.filter((s) => !s.disabled && (!ONLY_SOURCES || ONLY_SOURCES.includes(s.id)));
   const queue = [...enabled];
   const all = [];
   async function worker() {
@@ -1064,7 +1067,7 @@ const PAPER_MAX_CHARS = 24000;
  * or the state already judged. The news editor never sees these; the research editor sees only these.
  */
 async function gatherPapers(sources, state, existing) {
-  const enabled = sources.filter((s) => !s.disabled && (!ONLY_SOURCE || s.id === ONLY_SOURCE));
+  const enabled = sources.filter((s) => !s.disabled && (!ONLY_SOURCES || ONLY_SOURCES.includes(s.id)));
   const all = [];
   await Promise.all(
     enabled.map(async (source) => {

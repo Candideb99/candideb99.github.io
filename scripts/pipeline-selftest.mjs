@@ -15,9 +15,11 @@ import { MAX_REPAIRS, checkSourcesOf, precheck } from "../pipeline/lib/precheck.
 import { repeatsRecent } from "../pipeline/lib/events.mjs";
 import { fetchFeed } from "../pipeline/lib/feeds.mjs";
 import { lessonRuleOk, loadLessons } from "../pipeline/lib/lessons.mjs";
-import { writeJsonAtomic } from "../pipeline/lib/util.mjs";
+import { sourceNumbers, ungroundedNumbers, writeJsonAtomic } from "../pipeline/lib/util.mjs";
 import { loadSnapshot, saveSnapshot } from "../pipeline/lib/snapshots.mjs";
-import { loadSources, settleDrift, verifyStory } from "../pipeline/lib/factcheck.mjs";
+import { loadSources, quoteFound, settleDrift, verifyStory } from "../pipeline/lib/factcheck.mjs";
+import { readArticleHtml } from "../pipeline/lib/extract.mjs";
+import { labelLine, outletLabels, quotedOutletsBlock, unlabelledOutlets } from "../pipeline/lib/outlets.mjs";
 import { instrumentsOf, marketData, repeatsInstrument } from "../pipeline/lib/context.mjs";
 import { independentOutletCount } from "../pipeline/lib/news-evidence.mjs";
 import { boxFacts } from "../pipeline/lib/keyfacts.mjs";
@@ -693,6 +695,69 @@ if (spawnSync("git", ["--version"]).status === 0) {
     }
   };
   check("a reading naming one of two authors is sent back; naming both is accepted", [await writes("خلص الباحث كريستيان إسبينال مايا (Cristian Espinal Maya) إلى أن الحصة ترتفع."), await writes("خلص كريستيان إسبينال مايا (Cristian Espinal Maya) وسانتياغو خيمينيث لوندونيو (Santiago Jiménez Londoño) إلى أن الحصة ترتفع.")], ["sent back", "accepted"]);
+}
+
+// 2026-10-25, the Turkish, Iranian and Indian press (the owner: "add the readable Turkish, Iranian and Indian outlets with
+// ownership labels, the subscribers-only check and the Persian quote fix").
+{
+  // A page its publisher marks subscribers-only gives no text, however much of the article it carries.
+  const body = `<p>${"The central bank raised its policy rate by 250 basis points on Thursday, the statement said. ".repeat(10)}</p>`;
+  const page = (marker) => `<html lang="en"><head><title>Rate decision</title>${marker}</head><body><article><h1>Rate decision</h1>${body}</article></body></html>`;
+  const read = (marker) => {
+    const r = readArticleHtml(page(marker), "https://example.com/a");
+    return [r.ok, r.reason, r.text.length > 0];
+  };
+  check("a page marked subscribers-only gives no text; one marked free, or unmarked, does", [
+    read('<script type="application/ld+json">{"@type":"NewsArticle","isAccessibleForFree":false}</script>'),
+    read('<script type="application/ld+json">{"@type":"NewsArticle","isAccessibleForFree":"False","hasPart":{"@type":"WebPageElement","isAccessibleForFree":"False","cssSelector":".paywall"}}</script>'),
+    read('<meta itemprop="isAccessibleForFree" content="false">'),
+    read('<script type="application/ld+json">{"@type":"NewsArticle","isAccessibleForFree":true}</script>'),
+    read(""),
+  ], [[false, "subscribers-only", false], [false, "subscribers-only", false], [false, "subscribers-only", false], [true, "", true], [true, "", true]]);
+
+  // A Turkish or Persian source's figures stand as its language writes them (the Audi story's notes and writer failed three
+  // times each over «4,2 milyar» and «4 bin 500»); a Persian date is not read as a decimal.
+  check("a story's 4.2 and 4500 stand in a Turkish source and 3.5 in a Persian one; a Persian date gives no decimal", [
+    ungroundedNumbers("تستثمر أودي 4.2 مليار دولار وتوفر 4500 وظيفة و1234.5 طناً", ["Audi 4,2 milyar dolar yatırım yapacak; 4 bin 500 kişiye iş; 1.234,5 ton"]),
+    ungroundedNumbers("نما الاقتصاد 3.5% وأنتج 2500000 برميل", ["اقتصاد ایران ۳/۵ درصد رشد کرد و تولید به ۲.۵ میلیون بشکه رسید"]),
+    [...sourceNumbers("گزارش تاریخ ۱۴۰۵/۰۸/۰۳ و نرخ 1,000 و 4,500")].filter((n) => n.includes(".")),
+  ], [[], [], []]);
+
+  // A quote from a Persian source is found when it comes back in Arabic letters (ي، ك), with Western digits, or with a
+  // space where the source has a zero-width non-joiner; a changed figure is still not found.
+  const persian = "به گزارش شانا، تولید نفت ایران در مهرماه به ۳٫۲ میلیون بشکه در روز رسید و صادرات گاز افزایش می‌یابد.";
+  check("a Persian sentence is found in Persian or Arabic letters; a changed figure is not", [
+    quoteFound("تولید نفت ایران در مهرماه به ۳٫۲ میلیون بشکه در روز رسید", persian),
+    quoteFound("تولید نفت ايران در مهرماه به ۳٫۲ ميليون بشكه در روز رسيد", persian),
+    quoteFound("تولید نفت ایران در مهرماه به 3.2 میلیون بشکه در روز رسید", persian),
+    quoteFound("صادرات گاز افزایش می یابد", persian),
+    quoteFound("تولید نفت ایران در مهرماه به ۴٫۱ میلیون بشکه در روز رسید", persian),
+  ], [true, true, true, true, false]);
+
+  // An outlet that speaks for a government, a ministry or its opponents is named as such the first time it is named;
+  // a private paper is not checked, and a region or a month that shares an outlet's name is not the outlet.
+  const story = (body) => ({ title: "عنوان", subtitle: "", lede: "", body, whyItMatters: "", keyFacts: [] });
+  const flagged = (body) => unlabelledOutlets(story(body)).map((o) => o.name);
+  check("a labelled outlet named bare is sent back; with its label, as a place or month, or unlabelled, it is not", [
+    flagged("وارتفعت صادرات النفط 5%، بحسب وكالة «مهر». وأضافت مهر أن الصادرات زادت."),
+    flagged("وارتفعت صادرات النفط 5%، بحسب وكالة «مهر» الإيرانية شبه الرسمية. وأضافت مهر أن الصادرات زادت."),
+    flagged("وتقع الحقول في شرق الأناضول، وبدأ الحفر في شهر مهر."),
+    flagged("وذكرت وكالة تسنيم أن الحكومة رفعت الأسعار، فيما أكدت صحيفة «ديلي صباح» أن أنقرة سترد."),
+    flagged("وقالت صحيفة «إيكونوميك تايمز» الهندية إن الواردات تراجعت."),
+  ], [["مهر"], [], [], ["ديلي صباح", "تسنيم"], []]);
+  check("every label names its outlet, carries one of its required words, and passes its own check", outletLabels()
+    .filter((o) => !o.firstMention.includes(o.name) || (o.mustSay.length && !o.mustSay.some((w) => o.firstMention.includes(w))) || unlabelledOutlets(story(`وارتفعت الصادرات، بحسب ${o.firstMention}.`)).length)
+    .map((o) => o.name), []);
+  const issues = programmaticChecks(story("وارتفعت صادرات النفط 5%، بحسب وكالة «مهر»."), [{ title: "صادرات", text: "صادرات النفط 5%" }], { minWords: 0 }).issues;
+  check("the checks send the story back with the label to write", issues.some((i) => i.includes("وكالة «مهر» الإيرانية شبه الرسمية")), true);
+  // The writer sees a source's label under its heading, and the label of an outlet its sources quote (not its own).
+  const sources = [{ sourceName: "تجارت نيوز", sourceNameEn: "Tejarat News", title: "قیمت نفت", text: "به گزارش تسنیم، قیمت نفت افزایش یافت." }];
+  check("the writer is shown a source's label and the labels of the outlets it quotes", [
+    labelLine({ sourceName: "مهر", sourceNameEn: "Mehr News Agency" }).includes("وكالة «مهر» الإيرانية شبه الرسمية"),
+    quotedOutletsBlock(sources).includes("وكالة «تسنيم» المقربة من الحرس الثوري"),
+    quotedOutletsBlock(sources).includes("تجارت نيوز"),
+    labelLine({ sourceName: "الشرق الأوسط", sourceNameEn: "Asharq Al-Awsat" }),
+  ], [true, true, false, ""]);
 }
 
 if (failed) {

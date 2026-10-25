@@ -17,7 +17,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { gunzipSync, gzipSync } from "node:zlib";
-import { extractNumbers } from "./util.mjs";
+import { extractNumbers, sourceNumbers } from "./util.mjs";
 
 export const SNAPSHOT_DIR = path.join(process.cwd(), "evidence");
 /** At most this much text a source: passages, never the page. */
@@ -27,9 +27,12 @@ const fileOf = (slug, dir) => path.join(dir, `${slug}.json.gz`);
 const sentencesOf = (text) => String(text ?? "").replace(/\s+/g, " ").split(/(?<=[.؟!?])\s+/).map((s) => s.trim()).filter(Boolean);
 const squash = (t) => String(t ?? "").replace(/\s+/g, " ").trim();
 
-/** The figures a reader would check: decimals, and whole numbers of 100 or more that are not years. */
-function figuresOf(text) {
-  return [...extractNumbers(text)].filter((n) => {
+/**
+ * The figures a reader would check: decimals, and whole numbers of 100 or more that are not years. A source's sentence
+ * is read as its language writes figures (`sourceNumbers`: a Turkish «4,2» carries the story's 4.2, 2026-10-25).
+ */
+function figuresOf(text, read = extractNumbers) {
+  return [...read(text)].filter((n) => {
     const v = Number(n);
     return Number.isFinite(v) && (n.includes(".") || (v >= 100 && !(Number.isInteger(v) && v >= 1900 && v <= 2100)));
   });
@@ -54,7 +57,7 @@ export function passagesOf(text, quotes, storyFigures) {
   }
   const wanted = new Set(storyFigures);
   sentences.forEach((s, i) => {
-    if (figuresOf(s).some((f) => wanted.has(f))) keep.add(i);
+    if (figuresOf(s, sourceNumbers).some((f) => wanted.has(f))) keep.add(i);
   });
   let out = "";
   for (const piece of [...[...keep].sort((a, b) => a - b).map((i) => sentences[i]), ...loose]) {

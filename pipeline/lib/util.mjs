@@ -115,6 +115,38 @@ export function extractNumbers(text) {
   return out;
 }
 
+/**
+ * A source's figures, as extractNumbers reads them and as its own language writes them (2026-10-25, when the Turkish
+ * and Persian press joined): a decimal comma («4,2 milyar» is 4.2), thousands set off by dots («4.500 kişi» is 4500),
+ * Turkish thousands in words («4 bin 500» is 4500) and, in Persian, a decimal slash («۳/۵ درصد» is 3.5). Read only on
+ * the source side: the Audi story of that day failed its notes and its writer three times each, because «4,2» counted
+ * as 42 and «4 bin 500» as 4 and 500, so the story's 4.2 and 4500 stood in no source.
+ */
+export function sourceNumbers(text) {
+  const out = extractNumbers(text);
+  const normalized = normalizeDigits(text).replace(/٫/g, ".").replace(/٬/g, ",");
+  const add = (value) => {
+    if (!Number.isFinite(value)) return;
+    const token = String(Number(value.toFixed(6)));
+    out.add(token);
+  };
+  for (const m of normalized.matchAll(/(?<![\d.,])(\d{1,3}(?:\.\d{3})+),(\d+)(?![\d.,])/g)) add(Number(`${m[1].replace(/\./g, "")}.${m[2]}`));
+  for (const m of normalized.matchAll(/(?<![\d.,])(\d+),(\d{1,2})(?![\d.,])/g)) add(Number(`${m[1]}.${m[2]}`));
+  for (const m of normalized.matchAll(/(?<![\d.,])(\d{1,3}(?:\.\d{3})+)(?![\d.,])/g)) add(Number(m[1].replace(/\./g, "")));
+  for (const m of normalized.matchAll(/(?<![\d.,])(\d{1,3})\s+bin\s+(\d{1,3})(?![\d.,])/gi)) add(Number(m[1]) * 1000 + Number(m[2]));
+  const persian = /[پچژگکی]/.test(normalized);
+  if (persian) for (const m of normalized.matchAll(/(?<![\d/])(\d+)\/(\d{1,2})(?![\d/])/g)) add(Number(`${m[1]}.${m[2]}`));
+  // A count in words of scale («4 bin», «1,2 milyar», «۲ هزار»), so a story's 4000 or 1200 million stands in it.
+  const SCALE = { bin: 1e3, milyon: 1e6, milyar: 1e9, trilyon: 1e12, "هزار": 1e3, "میلیون": 1e6, "میلیارد": 1e9 };
+  for (const m of normalized.matchAll(/(?<![\d.,/])(\d+(?:[.,/]\d+)?)\s*(bin|milyon|milyar|trilyon|هزار|میلیون|میلیارد)(?![\p{L}])/giu)) {
+    const [whole, fraction] = m[1].split(/[.,/]/);
+    const decimal = fraction != null && (fraction.length <= 2 || m[1].includes("/") || (m[1].includes(",") && fraction.length !== 3));
+    const value = decimal ? Number(`${whole}.${fraction}`) : Number(m[1].replace(/[.,/]/g, ""));
+    add(value * SCALE[m[2].toLowerCase()]);
+  }
+  return out;
+}
+
 /** A figure followed by one of these is a figure, never a day, an ordinal or a year: "12%", "25 نقطة أساس", "2,000 دولار". */
 const UNIT_AFTER = /(\d[\d,]*(?:\.\d+)?)\s*(?:%|٪|في المئة|في المائة|بالمئة|بالمائة|نقطة|نقاط|مليار|مليون|ألف|آلاف|دولار|ريال|جنيه|يورو|درهم|دينار)/g;
 
@@ -133,7 +165,7 @@ function unitBoundNumbers(text) {
 /** Numbers in `text` that do not appear in any of the `sources` texts, ignoring trivial values. */
 export function ungroundedNumbers(text, sources, { ignoreYears = true } = {}) {
   const pool = new Set();
-  for (const source of sources) for (const n of extractNumbers(source)) pool.add(n);
+  for (const source of sources) for (const n of sourceNumbers(source)) pool.add(n);
   const expanded = new Set(pool);
   for (const n of pool) {
     const value = Number(n);

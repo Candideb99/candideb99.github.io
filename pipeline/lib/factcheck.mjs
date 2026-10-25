@@ -33,7 +33,7 @@ import { createHash } from "node:crypto";
 import { chat, getActiveModel, getActiveProvider } from "./llm.mjs";
 import { extractArticle } from "./extract.mjs";
 import { ARTICLES_DIR } from "./article.mjs";
-import { extractNumbers, normalizeDigits, ungroundedNumbers } from "./util.mjs";
+import { extractNumbers, normalizeDigits, sourceNumbers, ungroundedNumbers } from "./util.mjs";
 import { loadSnapshot, snapshotSource } from "./snapshots.mjs";
 import { MARKET_QUOTE_URL } from "./quotes.mjs";
 
@@ -85,8 +85,11 @@ function tokens(text) {
     .replace(/(\d)[,٬](?=\d{3}(?!\d))/g, "$1")
     .replace(/[ً-ٰٟـ]/g, "")
     .replace(/[أإآٱ]/g, "ا")
-    .replace(/ى/g, "ي")
-    .replace(/ة/g, "ه")
+    // Persian writes ی and ک where Arabic writes ي and ك, and a quote from a Persian source often comes back in the
+    // Arabic letters (2026-10-25, when Persian sources joined); a zero-width non-joiner already parts words below.
+    .replace(/[ىی]/g, "ي")
+    .replace(/ک/g, "ك")
+    .replace(/[ةۀ]/g, "ه")
     .split(/[^\p{L}\p{N}.]+/u)
     .map((t) => t.replace(/^\.+|\.+$/g, ""))
     .filter(Boolean);
@@ -336,7 +339,8 @@ export async function verifyStory({ story, sources, log = () => {}, chatWith = c
  * verdict from being acted on.
  */
 export function missingFigures(text, pool) {
-  const have = new Set(pool.flatMap((t) => [...extractNumbers(t)]));
+  // A source's figures as its language writes them (util.mjs sourceNumbers, 2026-10-25): a Turkish «4,2» carries 4.2.
+  const have = new Set(pool.flatMap((t) => [...sourceNumbers(t)]));
   return [...extractNumbers(text)].filter((n) => {
     const v = Number(n);
     if (!Number.isFinite(v)) return false;
