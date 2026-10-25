@@ -1,26 +1,377 @@
 {
-  "mode": "reports",
-  "startedAt": "2026-10-25T13:13:55.783Z",
-  "durationSec": 14,
-  "published": 0,
+  "mode": "news",
+  "startedAt": "2026-10-25T16:31:06.308Z",
+  "durationSec": 2151,
+  "published": 2,
   "refreshed": 0,
-  "report": [],
+  "report": [
+    {
+      "headline": "السعودية ترفع تعريفتي الكهرباء والمياه في 2027 وتقرّ دعماً شهرياً لفئات من المواطنين",
+      "section": "economy",
+      "importance": 8,
+      "sources": [
+        "https://aawsat.com/node/5333462",
+        "https://www.aljazeera.net/ebusiness/2026/10/25/%d8%a7%d9%84%d8%b3%d8%b9%d9%88%d8%af%d9%8a%d8%a9-%d8%aa%d8%b1%d9%81%d8%b9-%d8%a3%d8%b3%d8%b9%d8%a7%d8%b1-%d8%a7%d9%84%d9%83%d9%87%d8%b1%d8%a8%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d9%85%d9%8a%d8%a7%d9%87",
+        "https://www.thenationalnews.com/news/gulf/2026/10/25/saudi-arabia-announces-support-measures-as-electricity-and-water-tariffs-rise/",
+        "https://www.arabnews.com/saudi-arabia/king-salman-orders-measures-to-support-citizens-following-crown-princes-proposal-3008205"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "الدسمة «يقتصر الدعم الشهري على موظفي الدولة المدنيين والعسكريين والمتقاعدين وأسر الضمان الاجتماعي» تُسقط أفراد أسر المشتركين والمتقاعدين المتوفين، وهم مشمولون في المصدرين 2 و3، فكلمة «يقتصر» غير دقيقة. وعبارة «ولا يشمل جميع المواطنين» صياغة نافية لا تخبر القارئ بما يتغير لمن هم خارج الدعم. كذلك لا يرد في المقدمة أن تعديل المياه لا يشمل الأنشطة الصناعية والزراعية.",
+              "repair": "دسمة أوضح: «يشمل الدعم موظفي الدولة والمتقاعدين وأسر الضمان الاجتماعي، فيما يقتصر نصيب العاملين في القطاع الخاص على رفع الأجر المحتسب في «نطاقات» إلى 5 آلاف ثم 6 آلاف ريال»، مع حذف «يقتصر» و«لا يشمل جميع المواطنين»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يشرح التقرير «نطاقات» شرحاً جيداً، لكنه يُغفل سياقين يوفرهما المصدر 1: استمرار الدعم الحكومي لأكثر من 50% من تكلفة المتر المكعب، وتوقع أثر تضخمي تقول الحكومة إن الحزمة ستحد منه. أما صندوق «لماذا يهمّ» فيستنتج استنتاجاً مفيداً من مقدمات صحيحة، هو الفجوة الزمنية بين سريان التعريفات في يناير وبدء أثر «نطاقات» في أبريل، لكنه يبني على مقدمة خاطئة هي تحمّل المزارع كلفة المياه. وفي why_basis نُسب كون «نطاقات» ليس حداً أدنى عاماً للأجور إلى المصدر 1، والصحيح أنه من المصدر 2.",
+              "repair": "تُضاف خلفية دعم المياه وتوقع التضخم منسوبين إلى الإعلان الرسمي. وتُصحَّح مقدمة الصندوق لتقول إن كلفة المياه لا تشمل الاستخدام الزراعي والصناعي وإن أثر الكهرباء على معظم الأنشطة متوقع أن يكون محدوداً، مع إبقاء استنتاج الفجوة الزمنية. ويُصحَّح مصدر البند الرابع في why_basis إلى 2."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "البناء يسير في ثلاث مراحل واضحة: الإعلان، ثم ما يتغير في الفاتورة، ثم من يحصل على التعويض. لكن عبارة «أما في المياه فالزيادة أكبر» تقارن دون أن تقدم الأرقام التي تثبت المقارنة، لأن الشريحتين الأساسيتين (18→21 هللة و0.15→1.5 ريال) غائبتان. وعبارة «توصيلات بأقطار تتراوح بين صفر و40» تبقى غامضة على القارئ بلا وحدة.",
+              "repair": "تُبنى فقرتا الفاتورة على الشريحة الأولى ثم العليا لكل خدمة، مع نسبتي الزيادة، فتقوم المقارنة على أرقام. وتُختصر جملة الأقطار إلى «لدى 99% من المستهلكين السكنيين توصيلات صغيرة القطر بحسب الإحصاءات الرسمية» دون اختلاق وحدة غير مذكورة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «سيرتفع هذا الأجر إلى 5 آلاف ريال على مرحلتين» تُسقط سقف الـ6000 ريال وموعد 2028. وعبارة «ولا ترتفع الفاتورة الكاملة بنسبة الزيادة في الشريحة نفسها» أقطع مما في المصدر 2، الذي يقول إن النسبة «لا تعني» ارتفاع الفاتورة بالنسبة نفسها. وبند key_facts «سقف زيادة فاتورة المياه حتى 30 متراً مكعباً: 67 ريالاً» يُسقط شرط قطر التوصيل وشمول ضريبة القيمة المضافة.",
+              "repair": "تُذكر المرحلتان بقيمتيهما وتاريخيهما. وتُصاغ الجملة: «ولا تعني نسبة الزيادة في الشريحة أن الفاتورة الكاملة ترتفع بالنسبة نفسها». ويُعدَّل البند إلى «حد زيادة فاتورة المياه لاستهلاك حتى 30 م³ (للتوصيلات الصغيرة، شاملة الضريبة)»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقرأ العنوان والدسمة والمقدمة معاً بوضوح. ترتفع التعريفتان من 1 يناير 2027، ويُصرف دعم نقدي قدره 500 ريال لموظفي الدولة والمتقاعدين وأسر الضمان. ويقتصر نصيب العاملين في القطاع الخاص على رفع أجر الاحتساب في «نطاقات» إلى 5 آلاف ثم 6 آلاف ريال. ويوضح المتن استثناء الاستخدام الصناعي والزراعي من تعديل المياه، وأن التعديل ليس حداً أدنى عاماً للأجور.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يورد التقرير هدف التعديل منسوباً إلى الإعلان الرسمي، ودعم أكثر من 50% من تكلفة المتر المكعب (المصدر 1)، والتوقع التضخمي بوصفه توقعاً لا نتيجة. ويعرّف «نطاقات» بوظيفته. ويستنتج صندوق «لماذا يهمّ» من مقدمات صحيحة أمرين: أن الكلفة واسعة والتعويض موجّه، وأن أثر «نطاقات» على القطاع الخاص مشروط بقرارات المنشآت ومتأخر نحو أربعة أشهر عن سريان التعريفات. وهذا استنتاج محدود ومفيد. وأُحسن ترك خلفية هجمات الحوثيين في المصدر 3 لأنها حدث آخر.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "يسير البناء في ثلاث مراحل: الإعلان وهدفه، ثم ما يتغير في الفاتورة، ثم من يحصل على التعويض، ويختم بتوقع التضخم. الفقرة القصيرة «ويستمر الدعم الحكومي لقطاع المياه...» مقبولة، وإن كان دمجها في فقرة المياه يقوّي الربط.",
+              "repair": "اختياري: دمج جملة دعم التكاليف الرأسمالية في نهاية فقرة شرائح المياه."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والتواريخ والشروط مطابقة للمصادر: 18→21 هللة، و0.15→1.5 ريال، وحد 67 ريالاً شاملاً الضريبة، و25 أبريل 2027 ثم 2028. لكن عبارة «الزيادة في المياه أكبر في الشرائح الدنيا» تقارن بشرائح عليا لا يذكر المصدر 2 أسعارها السابقة.",
+              "repair": "«والزيادة في المياه أكبر بكثير منها في الكهرباء، وأعلاها المعلن في الشريحة الأولى»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 2,
+      "mendIssues": [
+        "مقارنة لا تسندها المصادر: «الزيادة في المياه أكبر في الشرائح الدنيا». المصدر 2 يعطي نسبتي الزيادة للشريحتين الأولى (900%) والثانية (100%) فقط، ولا يذكر السعر السابق للشريحة الثالثة ولا لما يتجاوز 45 متراً مكعباً. لذلك لا يُعرف إن كانت الزيادة في الشرائح العليا أصغر. أما المقارنة المدعومة فهي بين المياه والكهرباء (900% مقابل 16.7%). التصحيح: «والزيادة في المياه أكبر بكثير منها في الكهرباء، وأعلاها المعلن في الشريحة الأولى».",
+        "الأرقام والتواريخ والشروط مطابقة للمصادر: 18→21 هللة، و0.15→1.5 ريال، وحد 67 ريالاً شاملاً الضريبة، و25 أبريل 2027 ثم 2028. لكن عبارة «الزيادة في المياه أكبر في الشرائح الدنيا» تقارن بشرائح عليا لا يذكر المصدر 2 أسعارها السابقة. — «والزيادة في المياه أكبر بكثير منها في الكهرباء، وأعلاها المعلن في الشريحة الأولى»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 2,
+        "rounds": 3,
+        "found": 2
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تعديل التعريفات يشمل القطاعات السكنية وغير السكنية والحكومية ويبدأ تطبيقه في 1 يناير 2027",
+          "source": 2
+        },
+        {
+          "fact": "تعديل تعريفة المياه لا يشمل الاستخدامات المرتبطة بالأنشطة الصناعية والزراعية",
+          "source": 1
+        },
+        {
+          "fact": "الدعم الشهري البالغ 500 ريال يُصرف للموظفين المدنيين والعسكريين والمتقاعدين وأسر الضمان الاجتماعي",
+          "source": 2
+        },
+        {
+          "fact": "تعديل «نطاقات» لا يتضمن صرف زيادة مالية مباشرة من الوزارة، ومرحلته الأولى تبدأ في 25 أبريل 2027",
+          "source": 1
+        }
+      ],
+      "slug": "saudi-utility-tariffs-monthly-support-2027-748f63",
+      "title": "السعودية تقر دعماً شهرياً بـ500 ريال لتخفيف أثر رفع تعريفتي الكهرباء والمياه",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "الجنيه المصري يسجل أدنى مستوى قياسي مع خروج الأموال الأجنبية من أذون الخزانة",
+      "section": "markets",
+      "importance": 8,
+      "sources": [
+        "https://aawsat.com/node/5333442",
+        "https://www.masrawy.com/news/news_economy/details/2026/10/25/3068492/%D8%A7%D9%84%D9%85%D8%A4%D8%B4%D8%B1-%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3%D9%8A-%D9%84%D9%84%D8%A8%D9%88%D8%B1%D8%B5%D8%A9-%D9%8A%D9%86%D8%AE%D9%81%D8%B6-3-56-%D9%81%D9%8A-%D8%AE%D8%AA%D8%A7%D9%85-%D8%AA%D8%B9%D8%A7%D9%85%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D9%8A%D9%88%D9%85-%D8%A7%D9%84%D8%A3%D8%AD%D8%AF",
+        "https://www.masrawy.com/news/news_economy/details/2026/10/25/3068470/%D8%AA%D9%87%D8%A7%D9%88%D9%8A-%D8%A7%D9%84%D8%AC%D9%86%D9%8A%D9%87-%D9%88%D8%AE%D8%B3%D8%A7%D8%A6%D8%B1-%D9%85%D9%84%D9%8A%D8%A7%D8%B1%D9%8A%D8%A9-%D8%A8%D8%A7%D9%84%D8%A8%D9%88%D8%B1%D8%B5%D8%A9-%D9%88%D8%AE%D8%B1%D9%88%D8%AC-%D8%A7%D9%84%D8%A3%D9%85%D9%88%D8%A7%D9%84-%D8%A7%D9%84%D8%B3%D8%A7%D8%AE%D9%86%D8%A9-%D9%85%D8%A7%D8%B0%D8%A7-%D8%AD%D8%AF%D8%AB-%D9%81%D9%8A-%D8%A7%D9%84%D8%B3%D9%88%D9%82-%D8%A7%D9%84%D9%85%D8%B5%D8%B1%D9%8A%D8%A9-",
+        "https://www.albayan.ae/economy/business/arab-economy/1560432"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والمقدمة يحددان الحدث بوضوح: مستوى قياسي للدولار عند 55.87 جنيه للبيع مقابل 53.52 قبل أسبوع. لكن عبارة «خروج جزئي للاستثمارات الأجنبية» تترك القارئ دون معرفة حجم الخروج ومن أين خرج، مع أن المصدر 3 يحدده بنحو 2.1 مليار دولار من أذون الخزانة.",
+              "repair": "يُكتب في العنوان الفرعي أو المقدمة: «مع صافي خروج أجنبي بنحو 2.1 مليار دولار من أذون الخزانة خلال الأسبوع، بحسب بيانات البورصة المصرية»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الخبراء معرّفون بأدوارهم، والمقارنات الأسبوعية حاضرة. غير أن المحرك الموسمي قبل رمضان (أنيس) وفاتورة النفط المحسوبة على 70 إلى 75 دولاراً مقابل 106 إلى 107 (عبد العال) غائبان، رغم ورودهما في المصدر 3. ومقدمات «لماذا يهمّ» صحيحة لكنها تعيد صياغة كلام عبد العال الوارد في المتن، وتعرض رأيه في الفجوة الزمنية حقيقةً مقررة.",
+              "repair": "يُضاف المحركان الموسمي والنفطي إلى المتن بإسنادهما. ويُبنى الصندوق على قيد مستخلص منهما، مثل: إذا ظلت أسعار النفط فوق الأسعار التي بُنيت عليها تقديرات الواردات، فلن يكفي انحسار التوترات وحده لتخفيف الطلب على الدولار. وتُنسب الفجوة الزمنية إلى ما يصفه الخبراء أو تُصاغ شرطياً."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الأقسام مرتبة منطقياً: الصرف، ثم الأسباب، ثم البورصة. لكن رأي النحاس في مسار الدولار يأتي ختاماً لقسم البورصة دون صلة به، ولا يوجد قسم يجيب عن سؤال القارئ الأخير: إلى أين يتجه الدولار، ومن يتضرر ومن يستفيد؟",
+              "repair": "يُخصص قسم ختامي يجمع سيناريوهات عبد العال (51 إلى 52.2 جنيه إن تراجعت التوترات)، ونطاق أنيس (54 إلى 56 جنيهاً)، ورأي النحاس، وأثر سعر الصرف على القطاعات بحسب رمسيس، وكلها من المصدر 3."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: 53.42 إلى 55.77 للشراء، و55.70 على الشاشات عند 13:51 بتوقيت غرينتش بارتفاع 0.81%، والمؤشرات وصافي التعاملات. لكن «يضاعف الضغط» تبالغ في قول المصدر «يزيد الضغوط». وتعريفات الإنتربنك والأموال الساخنة والاعتمادات المستندية لا ترد في المصادر، وتعريف الاعتمادات المستندية مبسّط إلى حد قد يضلل، فهي ضمان مصرفي للدفع وليست مجرد أداة دفع.",
+              "repair": "تُستبدل «يضاعف» بـ«يزيد». ويُبقى على تعريفي الإنتربنك والأموال الساخنة بصيغتهما الحالية الصحيحة، ويُحذف تعريف الاعتمادات المستندية أو يُصاغ بحذر: «وهي ضمانات مصرفية لسداد ثمن الواردات»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقول العنوان والعنوان الفرعي والمقدمة معاً ما الذي تغير: سعر بيع الدولار 55.87 جنيه في البنك الأهلي مقابل 53.52 قبل أسبوع، أي زيادة نحو 2.35 جنيه. ويقترن ذلك بصافي خروج أجنبي بنحو 2.1 مليار دولار من أذون الخزانة، وتصفه المسودة بفعل «تزامناً» دون ادعاء سببية لا يقيمها المصدر 3. ويُذكر سعر الشاشة 55.70 عند 13:51 بتوقيت غرينتش مقياساً منفصلاً بوقته، فلا يتعارض مع سعر البنك. وأُسقطت مادة المصدر 1 عن التعريفات السعودية لأنها حدث آخر، وهذا صحيح.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "المحركات التي يوردها المصدر 3 حاضرة بإسنادها: التوترات المرتبطة بالحرب الأمريكية الإيرانية، والتحول من متوسط صافي دخول نحو 300 مليون دولار، وتعجيل الاستيراد، وفاتورة النفط المحسوبة على 70 إلى 75 دولاراً مقابل 106 إلى 107، والطلب الموسمي قبل رمضان، وأثر قرارات الفيدرالي في الأموال الساخنة. والخبراء معرّفون بأدوارهم، وتعريفا الإنتربنك والأموال الساخنة صحيحان وموجزان. يقوم صندوق «لماذا يهمّ» على مقدمات مسندة، هي فاتورة النفط وخروج الأجانب وسيناريو عبد العال، ويستخلص منها قيداً مشروطاً بصيغة «قد لا يكفي»: إذا بقي النفط مرتفعاً فإن عودة الأجانب وحدها لا تكفي. هذا استنتاج متناسب يضيف معنى ولا يعيد خلاصة المتن.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "تجيب الأقسام عن أسئلة القارئ بالترتيب: ماذا حدث للسعر، ثم لماذا (التخارج والاستيراد والنفط والموسمية)، ثم كيف انعكس ذلك على البورصة مع مقارنة الأسبوع والمؤشرات الأصغر، ثم إلى أين يتجه الدولار ومن يتأثر. نُقل رأي النحاس إلى القسم الختامي كما طُلب، وتتنوع افتتاحيات الفقرات بحسب وظيفتها. الملاحظة الوحيدة أن تحفظ النحاس على تحديد القطاعات قبل وضوح الاتجاه يسبق تصنيف رمسيس للقطاعات، وهو تتابع مقبول لأن رمسيس تشترط بدورها «طبيعة تعاملات كل شركة».",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر: 53.42 إلى 55.77 للشراء، و3.56% عند 49234 نقطة، و3.41% عند 51052 نقطة يوم الخميس، ونزول 3039 نقطة من 52273، و280 مليار جنيه (من 4.05 إلى 3.77 تريليون)، و11.07% و8.88%، وصافي التعاملات 80.2 و47.6 و32.6 مليون جنيه، والإنتربنك 3.12 مقابل 1.93 مليار دولار. استُبدلت «يزيد» بـ«يضاعف»، وحُذف تعريف الاعتمادات المستندية، وبقيت التوقعات بصيغة الاحتمال والإسناد. وصياغة الصندوق «تقديرات واردات بترولية بلغت نحو 24 مليار دولار» تتبع المصدر 3 في جمعه بين الرقم الفعلي وأساس التقديرات، ويمكن تحسين التعبير دون تغيير الادعاء: «فاتورة واردات بترولية بلغت نحو 24 مليار دولار في العام المالي الماضي، بُنيت تقديراتها على 70 إلى 75 دولاراً للبرميل».",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "بلغت واردات مصر البترولية نحو 24 مليار دولار في العام المالي الماضي، وبُنيت التقديرات على سعر 70 إلى 75 دولاراً للبرميل مقابل نحو 106 إلى 107 دولارات حالياً، بحسب عبد العال",
+          "source": 3
+        },
+        {
+          "fact": "سجل الأجانب صافي خروج بنحو 2.1 مليار دولار من أذون الخزانة المحلية خلال الأسبوع، بحسب بيانات البورصة المصرية",
+          "source": 3
+        },
+        {
+          "fact": "قال عبد العال إن تراجع التوترات وتحسن تدفقات الاستثمار الأجنبي قد يدفعان الدولار إلى ما بين 51 و52.2 جنيه",
+          "source": 3
+        },
+        {
+          "fact": "ربط أنيس الارتفاع باستعداد الشركات والمستوردين لتلبية الطلب قبل رمضان، وقال عبد العال إن بعض التجار يعجّلون بالاستيراد",
+          "source": 3
+        }
+      ],
+      "slug": "egyptian-pound-record-low-near-56-8f43d1",
+      "title": "الجنيه المصري يهبط إلى مستوى قياسي قرب 56 جنيهاً للدولار",
+      "score": 9,
+      "image": "cover-art"
+    },
+    {
+      "headline": "أدنوك تطرح فرص تصنيع محلي بـ60 مليار درهم للموردين حتى 2030",
+      "section": "companies",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
+    },
+    {
+      "headline": "بنك إسرائيل يرفض خطة نتنياهو لاستخدام العملات المشفرة في تفادي العقوبات",
+      "section": "economy",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
   "llm": {
-    "calls": 0,
-    "failures": 0,
-    "promptTokens": 0,
-    "completionTokens": 0,
-    "cacheReadTokens": 0,
-    "costUsd": 0,
-    "byModel": {}
+    "calls": 49,
+    "failures": 1,
+    "promptTokens": 796201,
+    "completionTokens": 222027,
+    "cacheReadTokens": 146231,
+    "costUsd": 9.6691,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 49
+    }
   },
   "log": [
-    "[13:13:55] newsroom start mode=reports limit=4 dry-run=false",
-    "[13:14:02] report iea-omr: www.iea.org/reports/oil-market-report-october-2026 not read (http-403)",
-    "[13:14:02] report iea-omr: www.iea.org/reports/oil-market-report-september-2026 not read (http-403)",
-    "[13:14:02] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
-    "[13:14:02] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
-    "[13:14:05] report un-tourism-barometer: page not read (http-403)",
-    "[13:14:10] reports: 0 new edition(s)"
+    "[17:04:15] image: dropped \"Detailed financial trading screen with colorful charts and data repres\" — names too little of stock, price",
+    "[17:04:15] image: dropped \"A close-up view of a cryptocurrency trading chart displayed on a monit\" — names too little of stock, price",
+    "[17:04:15] image: dropped \"A detailed view of a cryptocurrency trading screen, featuring graphs a\" — names too little of stock, price",
+    "[17:04:15] image: dropped \"Closeup of hand analyzing financial graph on a digital screen for mark\" — names too little of stock, price",
+    "[17:04:15] image: dropped \"Close-up of a cryptocurrency trading chart displayed on a monitor, sho\" — names too little of stock, price",
+    "[17:04:15] image: 7 likeness(es) set aside for the country's own photographs",
+    "[17:04:18] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=2674",
+    "[17:04:18] image: vision rejected all candidates (All three candidates show Cairo Metro trains and stations, not the Egyptian Exchange trading floor or anything about the currency or foreign outflows. None fits the story or the sources' subject.)",
+    "[17:04:18] image: tier 3, the writer's own subjects: Egyptian pound banknotes | Egyptian Exchange traders | currency exchange Cairo",
+    "[17:04:18] commons \"Egyptian pound banknotes 2026\": 0 usable of 5",
+    "[17:04:19] commons \"Egyptian pound banknotes\": 2 usable of 12",
+    "[17:04:19] image: dropped \"One Egyptian pound note.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[17:04:19] image: dropped \"1 Egyptian Pound Backside.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[17:04:19] commons \"Egyptian Exchange traders 2026\": 0 usable of 0",
+    "[17:04:20] commons \"Egyptian Exchange traders\": 1 usable of 2",
+    "[17:04:20] image: dropped \"American Indians - first families of the Southwest (1920) (14796086043\" — names too little of traders",
+    "[17:04:20] commons \"currency exchange Cairo 2026\": 0 usable of 2",
+    "[17:04:20] commons \"currency exchange Cairo\": 0 usable of 2",
+    "[17:04:21] commons \"currency exchange\": 5 usable of 12",
+    "[17:04:21] image: dropped \"Money Changers in Hargeisa, Somaliland (30479697210).jpg\" — names too little of currency, exchange",
+    "[17:04:21] image: dropped \"Money Changer Tuka Peng.jpg\" — names too little of currency, exchange",
+    "[17:04:25] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3375",
+    "[17:04:25] image: vision rejected all candidates (This story is about Egypt. Every candidate shows a currency exchange outside Egypt: Moldova (Chișinău, with Romanian 'Schimb Valutar' signage), London (Oakwood tube station) and Hungary (a Csengersima roadside kiosk with a watermark). Each is wrong on geography. Candidates 2 and 3 are also amateur shop-front snapshots.)",
+    "[17:04:25] image: tier 4, the story's point and its subject: Egyptian pound dollar exchange | counting Egyptian pounds | Egyptian Exchange traders | Egyptian pound banknotes | currency exchange Egypt | US dollar banknotes (home: Egypt, Egyptian, Cairo, Alexandria)",
+    "[17:04:25] commons \"Egyptian pound dollar exchange\": 1 usable of 2",
+    "[17:04:25] pexels \"Egyptian pound dollar exchange\": 8 usable",
+    "[17:04:34] openverse \"Egyptian pound dollar exchange\": 0 usable of 0",
+    "[17:04:34] image: dropped \"Colorful assortment of international paper currencies from various cou\" — names too little of pound, dollar, exchange",
+    "[17:04:34] image: dropped \"Stack of assorted coins with financial documents on a white background\" — names too little of pound, dollar, exchange",
+    "[17:04:34] image: dropped \"Top view of assorted paper money with American greenback representing \" — names too little of pound, dollar, exchange",
+    "[17:04:35] commons \"counting Egyptian pounds\": 4 usable of 7",
+    "[17:04:35] image: dropped \"American bee journal (1918) (17928763999).jpg\" — names too little of counting, pounds",
+    "[17:04:35] image: dropped \"Allen's catalogue for 1906 - choice strawberry plants and hundreds of \" — names too little of counting, pounds",
+    "[17:04:35] image: dropped \"A collection of voyages and travels- consisting of authentic writers i\" — names too little of counting, pounds",
+    "[17:04:35] image: dropped \"Spring 1897 (1897) (20525382086).jpg\" — names too little of counting, pounds",
+    "[17:04:35] openverse \"counting Egyptian pounds\": 0 usable of 0",
+    "[17:04:35] pexels \"counting Egyptian pounds\": 8 usable",
+    "[17:04:35] image: dropped \"Close-up of British coins and banknotes, showcasing different denomina\" — names too little of counting, pounds",
+    "[17:04:35] image: dropped \"A close-up view of various British coins and banknotes, representing c\" — names too little of counting, pounds",
+    "[17:04:35] commons \"Egyptian Exchange traders\": 1 usable of 2",
+    "[17:04:35] image: dropped \"American Indians - first families of the Southwest (1920) (14796086043\" — names too little of traders",
+    "[17:04:35] pexels \"Egyptian Exchange traders\": 8 usable",
+    "[17:04:42] openverse \"Egyptian Exchange traders\": 0 usable of 0",
+    "[17:04:42] image: dropped \"Two businessmen discussing digital market trends with laptops and tabl\" — names too little of traders",
+    "[17:04:42] image: dropped \"A businessperson using dual monitors to analyze stock market trends wi\" — names too little of traders",
+    "[17:04:42] image: dropped \"Two businessmen discussing stock market trends with trading screens in\" — names too little of traders",
+    "[17:04:42] image: dropped \"A businessman in a suit looks at a screen displaying stock market char\" — names too little of traders",
+    "[17:04:42] image: dropped \"Business professionals analyzing charts on digital devices during a me\" — names too little of traders",
+    "[17:04:42] image: dropped \"Two professionals using a tablet and laptop to analyze market trends i\" — names too little of traders",
+    "[17:04:42] image: dropped \"Analyzing financial charts with a calculator and chocolate coins.\" — names too little of traders",
+    "[17:04:42] image: dropped \"Two businessmen analyzing stock market data on laptops and tablets in \" — names too little of traders",
+    "[17:04:43] commons \"Egyptian pound banknotes\": 3 usable of 24",
+    "[17:04:43] image: dropped \"One Egyptian pound note.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[17:04:43] image: dropped \"1 Egyptian Pound Backside.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[17:04:43] image: dropped \"Egypt 1 pound obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[17:04:43] pexels \"Egyptian pound banknotes\": 8 usable",
+    "[17:05:03] openverse \"Egyptian pound banknotes\": The operation was aborted due to timeout",
+    "[17:05:03] commons \"currency exchange Egypt\": 0 usable of 3",
+    "[17:05:05] commons \"currency exchange\": 9 usable of 24",
+    "[17:05:05] image: dropped \"Money Changers in Hargeisa, Somaliland (30479697210).jpg\" — names too little of currency, exchange",
+    "[17:05:05] image: dropped \"Money Changer Tuka Peng.jpg\" — names too little of currency, exchange",
+    "[17:05:05] image: dropped \"SAV Money Changer - panoramio.jpg\" — names too little of currency, exchange",
+    "[17:05:05] image: dropped \"Money changer in Tirana.jpg\" — names too little of currency, exchange",
+    "[17:05:05] commons \"US dollar banknotes\": 14 usable of 24",
+    "[17:05:05] image: dropped \"USA Ten Dollar Bill 1929 Whitney Bank New Orleans.jpg\" — dated 1929, an archival picture",
+    "[17:05:05] image: dropped \"United States paper currency, 1779, recto, from The Clark Digital Coll\" — a scan of a note's or a coin's face, not a photograph",
+    "[17:05:05] image: dropped \"Series 1953 US two-dollar bill reverse.jpg\" — dated 1953, an archival picture",
+    "[17:05:05] image: dropped \"Series 1953 US two-dollar bill obverse.jpg\" — dated 1953, an archival picture",
+    "[17:05:05] image: dropped \"1841 - Five Dollar Bill - Northampton Bank - PA.jpg\" — dated 1841, an archival picture",
+    "[17:05:05] image: dropped \"Grant 50-Dollar bill, 1913 issue.jpg\" — dated 1913, an archival picture",
+    "[17:05:05] image: dropped \"1844 - Five Dollar Bill - Lehigh County Bank - PA.jpg\" — dated 1844, an archival picture",
+    "[17:05:05] image: dropped \"1861 - One Dollar Bill - Allentown National Bank - PA.jpg\" — dated 1861, an archival picture",
+    "[17:05:05] image: dropped \"1857 - Five Dollar Bill - Allentown National Bank - PA.jpg\" — dated 1857, an archival picture",
+    "[17:05:05] image: dropped \"Confederate one hundred dollar bill (1875).jpg\" — dated 1875, an archival picture",
+    "[17:05:05] pexels \"US dollar banknotes\": 8 usable",
+    "[17:05:25] openverse \"US dollar banknotes\": The operation was aborted due to timeout",
+    "[17:05:25] image: dropped \"US-$2-SC-1896-Fr.247.jpg\" — taken in United States, which the story does not name",
+    "[17:05:29] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3414",
+    "[17:05:29] image: vision rejected all candidates (fallback pass) (None of the candidates fits. 1 and 2 show British pounds, the wrong currency. 3 is a chart with an old look. 4 is a street in Moldova and 5 is a UK shopfront, both in the wrong country, and 5 is also a building front. 6 is a historic Confederate banknote scan, which is archival and misleading.)",
+    "[17:05:35] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5731",
+    "[17:05:35] image: vision rejected all candidates (fallback pass) (None of the candidates shows Egyptian pounds or Egypt's market. Photo 1 is a staged shot of US dollar notes laid on a table, the snapshot look the desk has rejected. Photo 2 adds US flags, a staged cliché that points to the wrong country. Photo 3 shows British pounds, the wrong currency. Photo 4 is a studio close-up of a single dollar note's face. None says that Egypt's pound is falling as foreign money leaves.)",
+    "[17:05:37] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=2686",
+    "[17:05:37] image: last resort: Egyptian pound banknotes Egypt | Egyptian pound banknotes | Egyptian pound banknotes industrial",
+    "[17:05:38] commons \"Egyptian pound banknotes Egypt\": 4 usable of 24",
+    "[17:05:38] image: dropped \"1 Egyptian Pound Backside.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[17:05:38] image: dropped \"One Egyptian pound note.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[17:05:38] image: dropped \"Egypt 1 pound obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[17:05:38] commons \"Egyptian pound banknotes\": 3 usable of 24",
+    "[17:05:38] commons \"Egyptian pound banknotes industrial\": 0 usable of 0",
+    "[17:05:39] commons \"Egyptian pound\": 6 usable of 24",
+    "[17:05:39] image: dropped \"Obverse of Egyptian 20 piastres.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[17:05:42] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3583",
+    "[17:05:42] image: vision rejected all candidates (fallback pass) (Candidate 1 is a chart, and charts are rejected as a subject. It is also dated, ending in 2009. Candidate 2 is an amateur flash close-up of a single coin with poor colour and blur. A coin as the subject is not money being paid or counted, and the shot fails the publication standard. Neither photograph fits.)",
+    "[17:05:42] image: last pass, a neutral illustration: pound dollar exchange | counting pounds | pound banknotes | currency exchange | dollar banknotes",
+    "[17:05:43] commons \"pound dollar exchange\": 5 usable of 24",
+    "[17:05:43] image: dropped \"Exchange rate source of 16 Dec 1928.JPG\" — names too little of pound, dollar, exchange",
+    "[17:05:43] image: dropped \"Twenty years among the bulls and bears of Wall street (1870) (14778697\" — names too little of pound, dollar, exchange",
+    "[17:05:43] image: dropped \"Wall Street guide - (1902) (14597838468).jpg\" — names too little of pound, dollar, exchange",
+    "[17:05:43] image: dropped \"Bell telephone magazine (1922) (14569440700).jpg\" — names too little of pound, dollar, exchange",
+    "[17:05:43] pexels \"pound dollar exchange\": 8 usable",
+    "[17:06:03] openverse \"pound dollar exchange\": The operation was aborted due to timeout",
+    "[17:06:03] image: dropped \"Colorful assortment of international paper currencies from various cou\" — names too little of pound, dollar, exchange",
+    "[17:06:03] image: dropped \"Close-up of British coins and banknotes, showcasing different denomina\" — names too little of pound, dollar, exchange",
+    "[17:06:03] image: dropped \"Stack of assorted coins with financial documents on a white background\" — names too little of pound, dollar, exchange",
+    "[17:06:03] commons \"counting pounds\": 10 usable of 24",
+    "[17:06:03] image: dropped \"The Kaiser William II and Count von Moltke (the Younger) (14802236753)\" — names too little of counting, pounds",
+    "[17:06:03] image: dropped \"2CR conducts ammo draw training - Saber Strike 18 (4441567).jpg\" — names too little of counting, pounds",
+    "[17:06:03] image: dropped \"2CR conducts ammo draw training - Saber Strike 18 (4441570).jpg\" — names too little of counting, pounds",
+    "[17:06:03] image: dropped \"KFOR U S Army Soldiers conduct Army Combat Field Test at Camp Bondstee\" — soldiers or a patrol, and the story is not about the military",
+    "[17:06:03] image: dropped \"STS-135 Payload Overview.jpg\" — names too little of counting, pounds",
+    "[17:06:03] image: dropped \"Cejudo CISM World.jpg\" — names too little of counting, pounds",
+    "[17:06:03] image: dropped \"Airplane dusting in the control of malaria mosquitoes (1926) (17944872\" — names too little of counting, pounds",
+    "[17:06:03] openverse \"counting pounds\": 10 usable of 20",
+    "[17:06:03] pexels \"counting pounds\": 8 usable",
+    "[17:06:03] image: dropped \"mug shot (explore #178)\" — names too little of counting, pounds",
+    "[17:06:03] image: dropped \"Jess Eats a Scorpion\" — names too little of counting, pounds",
+    "[17:06:03] image: dropped \"The Duomo - Milan Cathedral 49\" — names too little of counting, pounds",
+    "[17:06:03] image: dropped \"Pasta with Greens & Tomato Sauce\" — names too little of counting, pounds",
+    "[17:06:03] image: dropped \"Condoms work\" — names too little of counting, pounds",
+    "[17:06:03] image: dropped \"Queen Street, Brisbane during the 1893 flood\" — names too little of counting, pounds",
+    "[17:06:03] image: dropped \"1200\" — names too little of counting, pounds",
+    "[17:06:03] image: dropped \"'CJP in Bact Lab, Turbot Street, Brisbane'\" — names too little of counting, pounds",
+    "[17:06:03] image: dropped \"The Window\" — names too little of counting, pounds",
+    "[17:06:03] image: dropped \"The Duomo - Milan Cathedral 18\" — names too little of counting, pounds",
+    "[17:06:03] image: dropped \"A close-up view of various British coins and banknotes, representing c\" — names too little of counting, pounds",
+    "[17:06:04] commons \"pound banknotes\": 5 usable of 24",
+    "[17:06:04] image: dropped \"AUS-4d-Commonwealth of Australia-One Pound (1918).jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[17:06:04] image: dropped \"OCE-4a-Oceania-Japanese Occupation-One Pound ND (1942).jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[17:06:04] image: dropped \"AUS-11b-Commonwealth Bank of Australia-One Pound (1923).jpg\" — dated 1923, an archival picture",
+    "[17:06:04] image: dropped \"One Egyptian pound note.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[17:06:04] image: dropped \"Egypt 1 pound obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[17:06:04] pexels \"pound banknotes\": 8 usable",
+    "[17:06:24] openverse \"pound banknotes\": The operation was aborted due to timeout",
+    "[17:06:24] commons \"currency exchange\": 9 usable of 24",
+    "[17:06:24] image: dropped \"Money Changers in Hargeisa, Somaliland (30479697210).jpg\" — names too little of currency, exchange",
+    "[17:06:24] image: dropped \"Money Changer Tuka Peng.jpg\" — names too little of currency, exchange",
+    "[17:06:24] image: dropped \"SAV Money Changer - panoramio.jpg\" — names too little of currency, exchange",
+    "[17:06:24] image: dropped \"Money changer in Tirana.jpg\" — names too little of currency, exchange",
+    "[17:06:25] commons \"dollar banknotes\": 4 usable of 24",
+    "[17:06:25] image: dropped \"Confederate 5 and 100 Dollars.jpg\" — an event's photograph, people and banners",
+    "[17:06:25] image: dropped \"MAL-M5c-Malaya-Japanese Occupation-One Dollar ND (1942).jpg\" — dated 1942, an archival picture",
+    "[17:06:25] pexels \"dollar banknotes\": 8 usable",
+    "[17:06:45] openverse \"dollar banknotes\": The operation was aborted due to timeout",
+    "[17:06:50] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4894",
+    "[17:06:50] image: vision rejected all candidates (fallback pass) (No candidate fits. 1 is a staged flat-lay of US dollar notes on a white surface, not Egyptian pounds being counted or handled. 2 shows UK currency in an amateur table shot. 3 is a Moldovan exchange-office street front with local signs. 4 is a London shop front. 5 shows a named activist at a protest. 6 is a museum display of a historic US note.)",
+    "[17:06:56] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6469",
+    "[17:06:56] image: vision rejected all candidates (fallback pass) (None fits. 1 shows British pounds, the wrong currency. 2 is a staged tabletop spread of US dollars, not Egypt's own currency handled as money. 3 is an archival drawing of a cannon. 4 is a chart. 5 is an amateur street snapshot of a Hungarian kiosk with signs. 6 is a flat scan of a historical banknote.)",
+    "[17:06:56] published \"الجنيه المصري يهبط إلى مستوى قياسي قرب 56 جنيهاً للدولار\" -> egyptian-pound-record-low-near-56-8f43d1",
+    "[17:06:56] run budget of 35 minutes spent; \"أدنوك تطرح فرص تصنيع محلي بـ60 مليار درهم للموردين حتى 2030\" waits for the next run",
+    "[17:06:56] run budget of 35 minutes spent; \"بنك إسرائيل يرفض خطة نتنياهو لاستخدام العملات المشفرة في تفادي العقوبات\" waits for the next run"
   ]
 }

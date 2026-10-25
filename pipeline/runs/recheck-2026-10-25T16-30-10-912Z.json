@@ -1,0 +1,47 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-25T16:30:10.912Z",
+  "durationSec": 55,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "egypt-targets-state-employees-minimum-wage-15000-pounds-1620b2",
+      "title": "مصر تستهدف رفع الحد الأدنى لأجور موظفي الدولة إلى 15 ألف جنيه",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 28,
+        "checked": 28,
+        "supported": 22,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 8527,
+    "completionTokens": 7180,
+    "cacheReadTokens": 0,
+    "costUsd": 0.2118,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[16:30:11] second look: 1 to read now (1 published pieces not yet read; 119 read clean before publication and left out of the audit sample)",
+    "[16:31:05] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=53253",
+    "[16:31:05] egypt-targets-state-employees-minimum-wage-15000-pounds-1620b2: 28 of 28 sentences checked · 22 supported · 2 without a source · 0 confirmed error(s)"
+  ]
+}

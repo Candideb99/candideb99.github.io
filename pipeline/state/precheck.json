@@ -6248,6 +6248,156 @@
           "noted": []
         }
       ]
+    },
+    "saudi-utility-tariffs-monthly-support-2027-748f63": {
+      "at": "2026-10-25T16:50:13.141Z",
+      "title": "السعودية تقر دعماً شهرياً بـ500 ريال لتخفيف أثر رفع تعريفتي الكهرباء والمياه",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v35",
+      "ok": true,
+      "repairs": 2,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 34,
+            "checked": 34,
+            "supported": 30,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 1,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 23,
+              "field": "body",
+              "class": "scope",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "ولن تتجاوز زيادة فاتورة المياه 67 ريالاً، شاملة ضريبة القيمة المضافة، لمن يستهلك 30 متراً مكعباً أو أقل عبر توصيلة صغيرة القطر، وهي حال 99% من المستهلكين السكنيين بحسب أحدث الإحصاءات.",
+              "quote": "وبحسب أحدث الإحصاءات، فإن 99 في المائة من مستهلكي المياه في القطاع السكني لديهم توصيلات بأقطار تتراوح بين صفر و40؛ لذلك لن تتجاوز الزيادة في الفاتورة 67 ريالاً، شاملة ضريبة القيمة المضافة، للمستهلكين الذين لا يتجاوز استهلاكهم 30 متراً مكعباً.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": "The 99% refers to residential consumers whose connections are 0–40 in diameter, not to consumers who both use 30 m³ or less and have small connections."
+            }
+          ],
+          "noted": [
+            {
+              "id": 29,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "unverified",
+              "sentence": "ويبدأ صرفه للعسكريين من ضباط وأفراد مع بدء تطبيق التعريفة الجديدة في 1 يناير 2027.",
+              "quote": "The measures, reported by the Saudi Press Agency on Sunday, will take effect ahead of tariff changes scheduled for January 1.",
+              "source": "The National",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 34,
+            "checked": 34,
+            "supported": 32,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 1,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 11,
+              "field": "whyItMatters",
+              "class": "scope",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "تقع زيادة الكهرباء على القطاعات السكنية وغير السكنية والحكومية، وزيادة المياه على المنازل والجهات غير السكنية والحكومية عدا الاستخدامات الصناعية والزراعية، لكن التعويض النقدي يقتصر على موظفي الدولة والمتقاعدين وأسر الضمان الاجتماعي.",
+              "quote": "وبالتزامن مع تعديل التعريفات، شملت التوجيهات الملكية زيادة بدل شهري بقيمة 500 ريال (نحو 133 دولارا) للموظفين المدنيين والعسكريين المشمولين بسلالم الخدمة المدنية وبنود برامج التشغيل، والمتقاعدين، وأفراد عائلة المشترك أو المتقاعد المتوفى الخاضع لنظام التأمينات الاجتماعية، وفق الآليات والضوابط المنظمة.",
+              "source": "Al Jazeera Arabic",
+              "sourceN": 2,
+              "correction": "The cash allowance is not limited to state employees, retirees and social security households: it also covers family members of deceased social insurance subscribers or retirees."
+            }
+          ],
+          "noted": [
+            {
+              "id": 29,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "unverified",
+              "sentence": "ويبدأ صرفه للعسكريين من ضباط وأفراد مع بدء تطبيق التعريفة الجديدة في 1 يناير 2027.",
+              "quote": "The measures, reported by the Saudi Press Agency on Sunday, will take effect ahead of tariff changes scheduled for January 1.",
+              "source": "The National",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ],
+          "repaired": {
+            "attempt": 2,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 34,
+            "checked": 34,
+            "supported": 32,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "egyptian-pound-record-low-near-56-8f43d1": {
+      "at": "2026-10-25T17:06:56.855Z",
+      "title": "الجنيه المصري يهبط إلى مستوى قياسي قرب 56 جنيهاً للدولار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v35",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 38,
+            "checked": 38,
+            "supported": 36,
+            "weak": 0,
+            "noEvidence": 2,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

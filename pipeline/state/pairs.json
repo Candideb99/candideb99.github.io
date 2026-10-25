@@ -1155,6 +1155,58 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-10-25T16:50:13.150Z",
+      "slug": "saudi-utility-tariffs-monthly-support-2027-748f63",
+      "checker": "7bb3653e29.2",
+      "lessons": "v35",
+      "lessonsHash": "1917f27221",
+      "keptVersion": 0,
+      "live": {
+        "errors": 3,
+        "drift": 0,
+        "severity": 6,
+        "supported": 29,
+        "notFound": 0,
+        "checked": 33,
+        "words": 496,
+        "keyFacts": 6,
+        "classes": [
+          "internal",
+          "scope",
+          "attribution"
+        ],
+        "programmatic": 3
+      },
+      "kept": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 3,
+        "supported": 26,
+        "notFound": 1,
+        "checked": 31,
+        "words": 479,
+        "keyFacts": 6,
+        "classes": [
+          "scope"
+        ],
+        "programmatic": 3
+      },
+      "none": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 3,
+        "supported": 26,
+        "notFound": 1,
+        "checked": 31,
+        "words": 479,
+        "keyFacts": 6,
+        "classes": [
+          "scope"
+        ],
+        "programmatic": 3
+      }
     }
   ]
 }
