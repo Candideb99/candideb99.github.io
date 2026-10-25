@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The picture desk, tested on cases whose right answer is known (84 checks), with scripted stand-ins for Claude, Wikimedia Commons,
+ * The picture desk, tested on cases whose right answer is known (86 checks), with scripted stand-ins for Claude, Wikimedia Commons,
  * the other libraries and the thumbnails: no model call, no network. Written 2026-09-28 after the owner asked for the
  * image engine to be stress-tested ("it might still be buggy"), so that the cascade's order, its place filter, the
  * repeat guard, its behaviour when a service fails, and the reading of accented names cannot regress unseen. The gate
@@ -74,7 +74,7 @@ const fileNameIn = (prompt) => String(prompt).match(/^File name: (.*)$/m)?.[1] ?
  * "throw"); `judge(titles, prompt)` returns the 1-based choice or 0; `verify(fileName, prompt)` returns a verdict or
  * throws; `brief` is the source-photo reader's answer. Returns the photo, every search asked, and the calls made.
  */
-async function scenario({ draft, world = {}, libs = {}, plan, judge, verify = () => "RIGHT", brief = null, byText = null, sources = [], exclude = new Set(), lastResort = { scene: null, country: null, institution: null, city: null }, handout = null, handoutWidth = 975, photoDir = null }) {
+async function scenario({ draft, world = {}, categoryWorld = {}, libs = {}, plan, judge, verify = () => "RIGHT", brief = null, byText = null, sources = [], exclude = new Set(), lastResort = { scene: null, country: null, institution: null, city: null }, handout = null, handoutWidth = 975, photoDir = null }) {
   const searched = [];
   const calls = [];
   const judgePrompts = [];
@@ -87,6 +87,10 @@ async function scenario({ draft, world = {}, libs = {}, plan, judge, verify = ()
     searchCommons: async (query) => {
       searched.push(query);
       return (world[query] ?? []).map((f) => ({ ...f }));
+    },
+    searchCommonsCategory: async (name) => {
+      searched.push(`category:${name}`);
+      return (categoryWorld[name] ?? []).map((f) => ({ ...f }));
     },
     searchLibraries: async (query) => (libs[query] ?? []).map((f) => ({ ...f, library: "pexels" })),
     inlineImage: async (url) => {
@@ -355,6 +359,9 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
 {
   const restore = withStandIns({
     searchCommons: async () => {
+      throw new Error("ECONNRESET");
+    },
+    searchCommonsCategory: async () => {
       throw new Error("ECONNRESET");
     },
     searchLibraries: async () => {
@@ -707,6 +714,33 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
       { slug: "text-only", at: at("2026-10-18T00:00:00Z"), image: null },
     ]),
     [{ slug: "explainer", keeps: "oman" }],
+  );
+}
+
+// U. A picture editor's search (2026-10-25: the Iraq–IMF story ran without a photograph while a 2024 photograph of a crowded
+// Shorja market sat on Commons). Soldiers never reach the judge of a civilian story; a Commons category the planner names
+// is looked through, and a photograph found only there, titled in Arabic, runs.
+{
+  const iraq = { ...developers, title: "العراق يطلب بحث برنامج تمويلي محتمل مع صندوق النقد الدولي", subtitle: "", tags: ["العراق", "صندوق النقد الدولي"], regions: ["المشرق وإيران وتركيا"] };
+  check(
+    "soldiers, a patrol or a DoD photograph are refused on a civilian story; a marine terminal is not soldiers",
+    [Boolean(publishedFault({ title: "Market patrol in Baghdad DVIDS151101.jpg" }, iraq)), Boolean(publishedFault({ title: "Troops Strengthen Local Baghdad Market.jpg" }, iraq)), Boolean(publishedFault({ title: "Defense.gov News Photo 050109-A-2703S-015.jpg" }, iraq)), publishedFault({ title: "Marine terminal at Fujairah.jpg" }, iraq)],
+    [true, true, true, null],
+  );
+  const patrol = file("Market patrol in Baghdad DVIDS151101.jpg", { categories: "Markets in Baghdad", date: "2009-03-02" });
+  const souq = file("سوق السراجين 2017.jpg", { categories: "Markets in Baghdad", date: "2017-12-29" });
+  const r = await scenario({
+    draft: iraq,
+    plan: planFor({ queries: [], place: ["Iraq", "Baghdad"], places: [], place_queries: [], categories: ["Markets in Baghdad"] }),
+    world: {},
+    categoryWorld: { "Markets in Baghdad": [patrol, souq] },
+    judge: (titles) => (titles.length ? 1 : 0),
+    verify: () => "GENERIC_OK",
+  });
+  check(
+    "a category is looked through; the patrol never reaches the judge and the souq, found only there, runs",
+    [r.searched.includes("category:Markets in Baghdad"), r.judgePrompts.some((p) => p.includes("Market patrol")), r.image?.title],
+    [true, false, souq.title],
   );
 }
 

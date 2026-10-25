@@ -45,6 +45,69 @@ export async function searchCommons(query, { limit = 10, log = () => {} } = {}) 
     // taking them in that order kept the oldest uploads (the lowest ids) and dropped the newest (2026-09-23:
     // for "Donald Trump Xi Jinping" the 2017 and 2018 files came first and May 2026's were cut).
     const pages = Object.values(payload?.query?.pages ?? {}).sort((a, b) => (a.index ?? 0) - (b.index ?? 0));
+    const out = photographs(pages);
+    log(`commons "${query}": ${out.length} usable of ${pages.length}`);
+    return out.slice(0, limit);
+  } catch (error) {
+    log(`commons "${query}": ${error.message}`);
+    return [];
+  }
+}
+
+const fold = (s) => String(s ?? "").normalize("NFD").replace(/\p{M}/gu, "").toLowerCase();
+const GENERIC_PLACE_WORDS = new Set(["the", "and", "of", "in", "at", "de", "al", "el"]);
+/**
+ * The photographs filed under a named place's own Commons category, as a person browses Commons rather than searching
+ * words: «Baghdad market shoppers» returned 2007-09 US Army patrols of Baghdad's markets, and the CC0 photograph of a
+ * crowded Shorja market in 2024 was found only under its name (2026-10-25). The category is taken from a search of category
+ * names, and only one whose name carries every distinctive word of the place («Port of Umm Qasr» for «Umm Qasr port»);
+ * newest additions first; the same filters as a search.
+ */
+export async function searchCommonsCategory(name, { limit = 20, log = () => {} } = {}) {
+  const words = fold(name).split(/[^\p{L}\p{N}]+/u).filter((w) => w.length >= 2 && !GENERIC_PLACE_WORDS.has(w));
+  if (!words.length) return [];
+  try {
+    const find = new URLSearchParams({ action: "query", format: "json", list: "search", srsearch: name, srnamespace: "14", srlimit: "8" });
+    const found = await fetchWithTimeout(`${API}?${find}`, { headers: { "user-agent": USER_AGENT } }, 20000);
+    if (!found.ok) return [];
+    const titles = ((await found.json())?.query?.search ?? []).map((hit) => String(hit.title ?? ""));
+    const category = titles.find((title) => {
+      const said = fold(title).split(/[^\p{L}\p{N}]+/u);
+      return words.every((w) => said.includes(w));
+    });
+    if (!category) {
+      log(`commons category "${name}": none carries its name`);
+      return [];
+    }
+    const params = new URLSearchParams({
+      action: "query",
+      format: "json",
+      generator: "categorymembers",
+      gcmtitle: category,
+      gcmtype: "file",
+      gcmsort: "timestamp",
+      gcmdir: "desc",
+      gcmlimit: String(Math.min(limit * 2, 50)),
+      prop: "imageinfo",
+      iiprop: "url|size|mime|extmetadata|timestamp",
+      iiurlwidth: "1280",
+      iiextmetadatafilter: "LicenseShortName|LicenseUrl|Artist|Credit|ImageDescription|DateTimeOriginal|Categories",
+    });
+    const response = await fetchWithTimeout(`${API}?${params}`, { headers: { "user-agent": USER_AGENT } }, 20000);
+    if (!response.ok) return [];
+    // Keyed by page id; the newest uploads first, as the category lists its newest additions.
+    const pages = Object.values((await response.json())?.query?.pages ?? {}).sort((a, b) => String(b.imageinfo?.[0]?.timestamp ?? "").localeCompare(String(a.imageinfo?.[0]?.timestamp ?? "")));
+    const out = photographs(pages);
+    log(`commons ${category}: ${out.length} usable of ${pages.length}`);
+    return out.slice(0, limit);
+  } catch (error) {
+    log(`commons category "${name}": ${error.message}`);
+    return [];
+  }
+}
+
+/** A query's pages that are photographs this paper may run (JPEG, a free licence, 1000 pixels wide, a photograph's shape), shaped as the desk reads them. */
+function photographs(pages) {
     const out = [];
     for (const page of pages) {
       const info = page.imageinfo?.[0];
@@ -77,12 +140,7 @@ export async function searchCommons(query, { limit = 10, log = () => {} } = {}) 
         categories: stripHtml(meta.Categories?.value ?? "").slice(0, 500),
       });
     }
-    log(`commons "${query}": ${out.length} usable of ${pages.length}`);
-    return out.slice(0, limit);
-  } catch (error) {
-    log(`commons "${query}": ${error.message}`);
-    return [];
-  }
+    return out;
 }
 
 /**

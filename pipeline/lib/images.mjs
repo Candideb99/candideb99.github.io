@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import path from "node:path";
-import { attributionLine, searchCommons } from "./commons.mjs";
+import { attributionLine, searchCommons, searchCommonsCategory } from "./commons.mjs";
 import { searchLibraries, noteUse } from "./photolibs.mjs";
 import { chat } from "./llm.mjs";
 // The house spellings the copy desk keeps («أمريكي»، «ترامب») hold under photographs too.
@@ -15,7 +15,7 @@ import { photoKey } from "./photo-key.mjs";
  * failures injected, and no Claude call (2026-09-28, the owner: "i think you have to further stress test it more").
  * Nothing else swaps them.
  */
-const outside = { chat, searchCommons, searchLibraries, noteUse, inlineImage, fetchHandout: (...a) => fetchHandout(...a), saveHandout: (...a) => saveHandout(...a) };
+const outside = { chat, searchCommons, searchCommonsCategory, searchLibraries, noteUse, inlineImage, fetchHandout: (...a) => fetchHandout(...a), saveHandout: (...a) => saveHandout(...a) };
 export function withStandIns(standIns) {
   const saved = { ...outside };
   Object.assign(outside, standIns);
@@ -487,6 +487,10 @@ function relevance(image, words) {
 // Porter's 2012 collision there, and the judges refused its six frames four times in one run (the photo trial of
 // 2026-09-27), crowding out every other candidate. Dropped in code unless the story is about the military.
 const WARSHIP = /\b(?:USS|USNS|HMS|HMAS|INS|destroyers?|frigates?|corvettes?|warships?|aircraft carriers?|submarines?|naval|navy|missiles?|fighter jets?|air force|military)\b/i;
+// Soldiers on a story that is not about the military read as war reporting: «Baghdad market shoppers» brought the US Army's
+// 2007-09 patrols of Baghdad's markets, which filled the Iraq–IMF story's shortlist until its judge refused them all and the
+// story ran without a photograph (2026-10-25). Dropped in code like a warship. «Marine» alone is a port's word: «Marines».
+const TROOPS = /\b(?:soldiers?|troops?|servicem[ae]n|marines|marine corps|usmc|infantry|platoons?|battalions?|brigades?|regiments?|paratroopers?|patrol(?:s|led|ling)?|army|dvids|defense\.gov|militiam[ae]n)\b/i;
 const MILITARY_STORY = /عسكري|البحرية|دفاع|الجيش|القوات|سلاح|أسلحة|مدمرة|مدمّرة|مدمرت|فرقاطة|غواصة|صاروخ|صواريخ|حربية|الناتو|البنتاغون|مقاتلة|مقاتلات|إف-35/;
 /**
  * A file that is the face of a note or a coin, or another depiction: Commons names note scans by side («… obverse», «…
@@ -539,24 +543,28 @@ export function commonsFileTitle(url) {
   }
 }
 
-export async function collect(queries, log, { perQuery = 6, max = 8, exclude = new Set(), people = "by-query", place = [], places = [], together = [], fresh: freshFirst = false, libraries = false, civilian = false, simplify = true, fronts = false, event = [] } = {}) {
+export async function collect(queries, log, { perQuery = 6, max = 8, exclude = new Set(), people = "by-query", place = [], places = [], categories = [], together = [], fresh: freshFirst = false, libraries = false, civilian = false, simplify = true, fronts = false, event = [] } = {}) {
   const surnames = together.map((name) => fold(String(name).trim().split(/\s+/).pop())).filter((s) => s.length >= 2);
   const seen = new Set(exclude);
   const candidates = [];
   const year = String(new Date().getUTCFullYear());
-  for (const query of queries) {
+  // A picture editor also opens the Commons category of a place or of the story's subject in its place («Markets in
+  // Baghdad», «Souqs in Iraq») and looks through it: its files need not repeat a search's words, and many are titled in
+  // Arabic («سوق باب السراي»), which no English search finds (2026-10-25). Its files go through every check below.
+  const searches = [...queries.map((query) => ({ query, category: false })), ...categories.map((query) => ({ query, category: true }))];
+  for (const { query, category } of searches) {
     // `fresh`: this year's photographs of the subject first (the owner, 2026-09-24, Task 3: "fresher, livelier
     // news photos"; of the newest 24 stories, 12 ran photographs taken 2007-2018, and one ran Albanese's 2022
     // portrait while Commons held nine 2026 photographs of him). The year in the search finds files dated in
     // their names, descriptions or "taken on" categories. Only for the writer's own subjects: on generic sector
     // scenes the year fetched fresh but unrelated files ("oil pipeline 2026" → fishing boats) that crowded the
     // four-photo shortlist, and a pipeline from 2015 looks like one from 2026.
-    const fresh = !freshFirst || query.includes(year) ? [] : await outside.searchCommons(`${query} ${year}`, { limit: perQuery, log });
-    let results = await outside.searchCommons(query, { limit: perQuery, log });
+    const fresh = category || !freshFirst || query.includes(year) ? [] : await outside.searchCommons(`${query} ${year}`, { limit: perQuery, log });
+    let results = category ? await outside.searchCommonsCategory(query, { limit: perQuery * 2, log }) : await outside.searchCommons(query, { limit: perQuery, log });
     // A place's search is never shortened: «Saltend chemical plant» became «plant» (vegetation) and «Hull» (Hull,
     // Illinois) on 2026-09-28; the place's name alone is already one of its searches.
     let used = query;
-    for (const alternative of simplify ? simplerQueries(query) : []) {
+    for (const alternative of simplify && !category ? simplerQueries(query) : []) {
       if (results.length || fresh.length) break;
       results = await outside.searchCommons(alternative, { limit: perQuery, log });
       used = alternative;
@@ -570,7 +578,7 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
     // Each search takes its share of the pass's candidates from each library, and every search is made: the pass used to
     // stop once it held `max`, so a planner's first two searches filled it. Morocco's growth target searched market
     // stalls and banknotes and never asked for "Tanger Med container port" or "car factory Tangier" (2026-10-22).
-    const share = Math.max(2, Math.ceil(max / queries.length));
+    const share = Math.max(category ? 4 : 2, Math.ceil(max / searches.length));
     const consider = (list) => {
     let added = 0;
     let taken = 0;
@@ -623,8 +631,9 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
         log(`image: dropped "${String(image.title).slice(0, 70)}" — a scan of a note's or a coin's face, not a photograph`);
         continue;
       }
-      if (civilian && WARSHIP.test(`${image.title ?? ""} ${image.description ?? ""}`)) {
-        log(`image: dropped "${String(image.title).slice(0, 70)}" — a warship or weapon, and the story is not about the military`);
+      const military = `${image.title ?? ""} ${image.description ?? ""}`;
+      if (civilian && (WARSHIP.test(military) || TROOPS.test(military))) {
+        log(`image: dropped "${String(image.title).slice(0, 70)}" — ${WARSHIP.test(military) ? "a warship or weapon" : "soldiers or a patrol"}, and the story is not about the military`);
         continue;
       }
       // A building's front, a branch or a skyline, and the stock cliché (frontOfBuilding(), stockFault()).
@@ -672,7 +681,7 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
       added += 1;
       if (taken >= share) continue;
       taken += 1;
-      candidates.push({ ...image, query, home, score: 6 * relevant + recencyScore(image) + (image.width >= 1600 ? 1 : 0) + (home ? 4 : 0) + (atThePlace ? 4 : 0) + withPeople + liveliness(image) });
+      candidates.push({ ...image, query, ...(category ? { category: query } : {}), home, score: 6 * relevant + recencyScore(image) + (image.width >= 1600 ? 1 : 0) + (home ? 4 : 0) + (atThePlace ? 4 : 0) + withPeople + liveliness(image) });
     }
     return added;
     };
@@ -681,7 +690,7 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
     // search, which keeps Openverse's 200 anonymous searches a day for the searches that need them.
     // The first two searches of a pass always ask them too: Commons' five "fitting" trading floors were named
     // traders the judges refuse, and the libraries were never asked (2026-09-24).
-    if (libraries && (added < 5 || queries.indexOf(query) < 2)) consider(await outside.searchLibraries(query, { log }));
+    if (libraries && !category && (added < 5 || queries.indexOf(query) < 2)) consider(await outside.searchLibraries(query, { log }));
   }
   candidates.sort((a, b) => b.score - a.score);
   return candidates;
@@ -908,7 +917,7 @@ async function shortlist(candidates, log) {
  * stands: the New Capital's towers are Egyptian real estate, not a skyline of Cairo.
  */
 function placeTierNote(places) {
-  return `THE STORY'S OWN PLACE: ${places.join(", ")}. These photographs were found by searching it, and the story's own place comes first for this paper, as it does for the agencies. A photograph taken there that shows the story's subject in it is the first choice: for real estate or construction the place's towers, compounds and new buildings, finished or going up (a new city's business or government district is its developers' work); for energy its field, plant or terminal; for a port or a canal its berths and ships; for a market its trading floor. Such a frame is not a generic skyline or cityscape, even for a story about one company, project or law: it is where the story's subject stands. A photograph of the place that shows something else does not picture the story: a stadium, a mosque or a church, a memorial, a park or a fountain, a road, a police station; nor does a satellite or aerial view from space.`;
+  return `THE STORY'S OWN PLACE: ${places.join(", ")}. These photographs were found by searching it, and the story's own place comes first for this paper, as it does for the agencies. A photograph taken there that shows the story's subject in it is the first choice: for real estate or construction the place's towers, compounds and new buildings, finished or going up (a new city's business or government district is its developers' work); for energy its field, plant or terminal; for a port or a canal its berths and ships; for a financial market its trading floor; for an everyday market its stalls and the people buying at them. Such a frame is not a generic skyline or cityscape, even for a story about one company, project or law: it is where the story's subject stands. A photograph of the place that shows something else does not picture the story: a stadium, a mosque or a church, a memorial, a park or a fountain, a road, a police station; nor does a satellite or aerial view from space.`;
 }
 
 /**
@@ -1133,10 +1142,10 @@ Give 4 English search phrases (2-4 words each, concrete nouns only) for generic 
 The photograph should be from the story's own place. When the story is about ONE country, the first two phrases name it with the object ("diesel pump United States", "gas station Texas", "LNG carrier Qatar", "wheat harvest Egypt"); the last two may leave it out. Also give "place": 2-6 English words a Wikimedia Commons title, description or category of a photo taken in that country would contain (the country's name and demonym, its main cities or states, e.g. ["United States", "USA", "American", "Texas", "California"]); [] when the story is about the world, a region or several countries.
 Also give "people": at most three people the HEADLINE is about, when it is about what named people did, said or agreed (heads of state or government, ministers, central bank governors, chief executives), for example Donald Trump and Xi Jinping for a story about their summit. When the headline reports what ONE institution decided, forecast or announced (a central bank, a ministry, the IMF, the OECD, OPEC, one company), give the person who leads it and speaks for it, for example Mathias Cormann for an OECD forecast or Amin H. Nasser for a Saudi Aramco result. When a court, a state or a regulator penalises a company, give the company's chief executive, and the official who brought the case only when the headline names them or their office. Each is {"name": the English full name as Wikipedia writes it, "ar": the name as this story writes it in Arabic, "headline": the exact words of the HEADLINE that name this person, their office, or the institution they lead («ترامب»، «محافظ المصرف المركزي»، «ميتا» for its chief executive)}. A place or a state is no one's office: under «قاضٍ في نيو مكسيكو يلزم ميتا…» a reader takes the man pictured for the judge, so New Mexico's attorney general is not one of them. Only the headline counts: a person the story names in its standfirst or body, however often it quotes them, is not one of them, because the photograph runs under the headline and a reader takes the person pictured for the person the headline is about (the owner, 2026-10-24, on a story headlined on the parliament accepting the central bank governor's resignation that ran the head of the State Council, named only further down). [] when the story is about markets, prices, data or a sector as a whole.
 And "focus": "people" when a named person is the news itself, the headline's actor who said, rejected, met or decided (for example «ترامب يرفض مقترح إيران»، «قمة ترامب وشي»، «باول: الفائدة ستبقى مرتفعة»); "subject" when the news is a thing, even one an official announced: a company's result, product or court case, a sector and what hits it, a project, a price, a figure (for example US sanctions on Iranian aviation are pictured by an Iranian airliner, not the Treasury secretary; an Apple patent verdict by an Apple product or store, not its chief executive at an unrelated meeting; a court's or a regulator's penalty on a company by the case itself, its chief executive answering for the matter at a hearing on it or the official who brought it, never a stock photograph of its app on a phone; Egypt's AI data centre by a data centre; a Fed rule for banks by the Fed or a bank). The leader's photograph, from an unrelated meeting years ago, is the weakest picture for a "subject" story.
-And "places": the story's own place at its most specific, the named sites where its subject physically stands and a camera could stand, in English as Wikimedia Commons names them: a project, a new city or district, a field, a port, a plant, a canal or strait (["Ras Laffan"] for Qatar's LNG expansion, ["Jafurah"] for Aramco's Jafurah gas, ["Suez Canal"] for the canal's revenue, ["Jorf Lasfar"] for Morocco's phosphate exports). When the story names no site but is about one country's sector, give the places where that sector of that country is best known and most photographed: Egypt's real-estate developers build the New Administrative Capital, New Cairo, New Alamein and Sheikh Zayed City, so a story about them or the laws that bind them gives ["New Administrative Capital", "New Capital", "New Alamein", "New Cairo"]; Dubai property ["Dubai Marina", "Downtown Dubai"]; Saudi giga-projects ["NEOM", "Diriyah"]. Give a place's short name beside its long one when both are used ("New Administrative Capital", "New Capital"), each spelled as in your searches below. A place is where the story's SUBJECT is, never where its news was decided, ruled, announced or discussed: not a court, a ministry, a parliament, a headquarters, an embassy or a conference venue; not an exchange, a bank, a company's offices or a business district, whose photographs are buildings and skylines (the Shanghai Stock Exchange's tower ran under China's bear market, 2026-10-22); not where something that caused the news happened (the airport an attack hit is not the place of a conference postponed because of it); and not an ordinary city by itself (its streets and skyline picture no one's subject; a new city being built is a project, and counts). Never a whole country or a region. [] when the story is about a price, a market, a world body, the world, a region, several countries or a country's economy as a whole, and [] for a company's result, product, valuation, lawsuit, verdict or deal unless the story is about one of its sites (Apple's patent verdict in a San Diego court: [], it is pictured by Apple's product; AMD's market value: []; a new plant or field of a company: its site). And "place_queries": 2 or 3 searches for those places, the first a place's name alone (Commons titles a place's photographs by its name: "Central business district, New Administrative Capital"), the others the place with what the story is about there ("New Administrative Capital construction", "New Alamein towers"); [] when "places" is [].
+And "places": the story's own place at its most specific, the named sites where its subject physically stands and a camera could stand, in English as Wikimedia Commons names them: a project, a new city or district, a field, a port, a plant, a canal or strait (["Ras Laffan"] for Qatar's LNG expansion, ["Jafurah"] for Aramco's Jafurah gas, ["Suez Canal"] for the canal's revenue, ["Jorf Lasfar"] for Morocco's phosphate exports). When the story names no site but is about one country's sector, give the places where that sector of that country is best known and most photographed: Egypt's real-estate developers build the New Administrative Capital, New Cairo, New Alamein and Sheikh Zayed City, so a story about them or the laws that bind them gives ["New Administrative Capital", "New Capital", "New Alamein", "New Cairo"]; Dubai property ["Dubai Marina", "Downtown Dubai"]; Saudi giga-projects ["NEOM", "Diriyah"]. Give a place's short name beside its long one when both are used ("New Administrative Capital", "New Capital"), each spelled as in your searches below. A place is where the story's SUBJECT is, never where its news was decided, ruled, announced or discussed: not a court, a ministry, a parliament, a headquarters, an embassy or a conference venue; not an exchange, a bank, a company's offices or a business district, whose photographs are buildings and skylines (the Shanghai Stock Exchange's tower ran under China's bear market, 2026-10-22); not where something that caused the news happened (the airport an attack hit is not the place of a conference postponed because of it); and not an ordinary city by itself (its streets and skyline picture no one's subject; a new city being built is a project, and counts). Never a whole country or a region. [] when the story is about a commodity's or a financial market's price, a world body, the world, a region or several countries, and [] for a company's result, product, valuation, lawsuit, verdict or deal unless the story is about one of its sites (Apple's patent verdict in a San Diego court: [], it is pictured by Apple's product; AMD's market value: []; a new plant or field of a company: its site). For ONE country's economy as a whole or what its households pay (growth, a budget, debt, an IMF programme, trade figures, inflation), the places where that economy is seen at work, named as the country's own press names them: its best-known everyday markets, where people buy food and goods (["Shorja market"] in Baghdad, ["Derb Sultan"] in Casablanca), and its main port, field or industrial city (["Umm Qasr port"] for Iraq's trade); never a tourist bazaar (Khan el-Khalili, the Grand Bazaar), a skyline or a government building (2026-10-25: a photograph of a crowded Shorja market in 2024, free to use, sat on Commons while the Iraq–IMF story ran without a picture). And "place_queries": 2 or 3 searches for those places, the first a place's name alone (Commons titles a place's photographs by its name: "Central business district, New Administrative Capital"), the others the place with what the story is about there ("New Administrative Capital construction", "New Alamein towers"); [] when "places" is []. And "categories": up to three Wikimedia Commons categories a picture editor would open and look through for this story, named as Commons names them: the story's subject in its own place ("Markets in Baghdad", "Souqs in Iraq" for Iraq's economy; "Fruit markets in Egypt" for Egypt's food prices; "Oil refineries in Saudi Arabia" for Saudi refining) or a named place's own ("Port of Jebel Ali"); [] for a story about a person, one company's result, a world body, the world or several countries.
 And "message": one short English sentence saying what the photograph should tell a reader at a glance about THIS story: its point, not its topic, in its tone, the way a picture editor reads the copy and asks what it is really saying. And "message_queries": 2 or 3 English searches of 2-5 words for photographs that would say it, things a camera can see that say the point: the people it is about doing what the story reports (investors watching prices at a brokerage for a market's fall, office staff at their desks for job cuts, the chief executive at a hearing on the matter, the official who brought a case), the event itself, the thing in the state the story describes; in the story's own country when it has one; never the topic's stock object (an app on a phone, a logo, a sign, a building's front, a skyline), which only names the topic. For example, and these are examples, not rules: a central bank holding its rates might say "Egypt's central bank keeps money tight" and search "Central Bank of Egypt", "Egyptian pound notes"; an analysis of how rising US yields raise the cost of cutting Egypt's rates might say "the dollar pulls money away from Egypt" and search "US dollar banknotes", "dollar pound exchange".
 And "event": when the story is about an event itself (a conference, a forum, an exhibition or a summit series that is postponed, opens, closes or is cancelled), its names as Wikimedia Commons titles its photographs, the full name and its short form (["Future Investment Initiative", "FII"]); [] otherwise, and [] for an event the story only mentions. And "event_queries": 2 or 3 searches for its photographs, its short name with its city or a recent year ("FII Riyadh", "Future Investment Initiative 2024"); [] when "event" is [].
-Return JSON: {"queries": ["...", "...", "...", "..."], "place": ["..."], "people": [{"name": "...", "ar": "...", "headline": "..."}], "focus": "people|subject", "places": ["..."], "place_queries": ["..."], "message": "...", "message_queries": ["..."], "event": ["..."], "event_queries": ["..."]}`,
+Return JSON: {"queries": ["...", "...", "...", "..."], "place": ["..."], "people": [{"name": "...", "ar": "...", "headline": "..."}], "focus": "people|subject", "places": ["..."], "place_queries": ["..."], "categories": ["..."], "message": "...", "message_queries": ["..."], "event": ["..."], "event_queries": ["..."]}`,
     // Models that think before answering spend their first tokens on reasoning; leave room for it.
     temperature: 0.2,
     maxTokens: 1500,
@@ -1146,7 +1155,7 @@ Return JSON: {"queries": ["...", "...", "...", "..."], "place": ["..."], "people
     // lost its person too when an empty `queries` failed the whole plan (found by scripts/images-selftest.mjs).
     validate: (d) => {
       const some = (v) => Array.isArray(v) && v.length > 0;
-      if (!Array.isArray(d?.queries) || (!some(d.queries) && !some(d.people) && !some(d.places))) throw new Error("queries missing");
+      if (!Array.isArray(d?.queries) || (!some(d.queries) && !some(d.people) && !some(d.places) && !some(d.categories))) throw new Error("queries missing");
       if (some(d.people) && d.people.some((p) => !p || typeof p !== "object")) throw new Error('each of "people" is {"name", "ar", "headline"}');
     },
   });
@@ -1167,6 +1176,9 @@ Return JSON: {"queries": ["...", "...", "...", "..."], "place": ["..."], "people
     // a place (the stress test of 2026-09-28: Apple's patent verdict searched its San Diego courthouse and ran its front).
     places: (Array.isArray(data.places) ? data.places : []).map((w) => String(w).trim()).filter((w) => /^[\p{L}\p{N}][\p{L}\p{M}\p{N} .,'’()&-]{2,60}$/u.test(w) && !NOT_A_PLACE.test(w)).slice(0, 5),
     placeQueries: (Array.isArray(data.place_queries) ? data.place_queries : []).map((q) => String(q).trim()).filter((q) => q.length >= 3 && q.split(/\s+/).length <= 7).slice(0, 3),
+    // Commons categories to look through, as Commons names them («Markets in Baghdad»); commons.mjs takes one only when a
+    // category of that name exists.
+    categories: (Array.isArray(data.categories) ? data.categories : []).map((c) => String(c).replace(/^category:\s*/i, "").trim()).filter((c) => /^[\p{L}\p{N}][\p{L}\p{M}\p{N} .,'’()&-]{2,80}$/u.test(c)).slice(0, 3),
     message: String(data.message ?? "").replace(/\s+/g, " ").trim().slice(0, 200),
     messageQueries: (Array.isArray(data.message_queries) ? data.message_queries : []).map((q) => String(q).trim()).filter((q) => q.length >= 3 && q.split(/\s+/).length <= 6).slice(0, 3),
     // The event a story is about (findImage()'s event pass): its names, at least three letters each («FII»).
@@ -1218,7 +1230,7 @@ export function publishedFault(image, draft) {
   const year = photoYear(image, { upload: false });
   if (year && year < 2005) return `dated ${year}, an archival picture`;
   if (SCAN.test(String(image.title ?? "")) || DEPICTION.test(String(image.categories ?? ""))) return "a scan of a note's or a coin's face, not a photograph";
-  if (civilianStory(draft) && WARSHIP.test(`${image.title ?? ""} ${image.description ?? ""}`)) return "a warship or weapon, and the story is not about the military";
+  if (civilianStory(draft) && (WARSHIP.test(`${image.title ?? ""} ${image.description ?? ""}`) || TROOPS.test(`${image.title ?? ""} ${image.description ?? ""}`))) return "a warship, a weapon or soldiers, and the story is not about the military";
   // A central bank's own building is left to the judge, who is told the one exception (its own decision on rates).
   if (frontOfBuilding(image) && !aboutBuildings(draft) && !CENTRAL_BANK.test(`${image.title ?? ""} ${image.description ?? ""} ${image.categories ?? ""}`)) return "a building's front, a branch or a skyline, which says whose or where, not what happened";
   return stockFault(image);
@@ -1752,12 +1764,13 @@ async function findImage({ draft, story, log, exclude = new Set(), sources = [],
   let focus = "subject";
   let places = [];
   let placeQueries = [];
+  let categories = [];
   let message = "";
   let messageQueries = [];
   let event = [];
   let eventQueries = [];
   try {
-    ({ queries, place, people, side = [], peopleAr = {}, focus, places, placeQueries, message = "", messageQueries = [], event = [], eventQueries = [] } = await genericQueries({ draft, story, log, sources }));
+    ({ queries, place, people, side = [], peopleAr = {}, focus, places, placeQueries, categories = [], message = "", messageQueries = [], event = [], eventQueries = [] } = await genericQueries({ draft, story, log, sources }));
   } catch (error) {
     log(`image: generic queries failed (${error.message.split("\n")[0]})`);
   }
@@ -1794,12 +1807,16 @@ async function findImage({ draft, story, log, exclude = new Set(), sources = [],
     const image = candidates.length ? await twoLooks({ candidates, draft, story, log, exclude, relaxed: false, tierNote: eventTierNote(event), event, filed: true, ...desk }) : null;
     if (image) return image;
   }
-  if (places.length && placeQueries.length) {
+  if ((places.length && placeQueries.length) || categories.length) {
     // The first place search is a place's name alone (genericQueries), however the planner spelled it in `places`.
-    places = [...new Set([...places, placeQueries[0]])];
-    log(`image: tier 1, the story's own place (${places.join(", ")}): ${placeQueries.join(" | ")}`);
-    const found = atHome(await collect(placeQueries, log, { perQuery: 12, max: 16, exclude, people: "none", place, places, libraries: true, civilian, simplify: false, fronts }), draft, log);
-    const candidates = found.filter((c) => namesAPlace(c, places));
+    if (places.length && placeQueries.length) places = [...new Set([...places, placeQueries[0]])];
+    else placeQueries = [];
+    // Each named place's own Commons category, then the categories of the story's subject in its place, looked through.
+    const browse = [...new Set([...places, ...categories])].slice(0, 5);
+    log(`image: tier 1, the story's own place (${places.join(", ") || "none named"}): ${placeQueries.join(" | ") || "no search"}; categories: ${browse.join(" | ")}`);
+    const found = atHome(await collect(placeQueries, log, { perQuery: 12, max: 16, exclude, people: "none", place, places, categories: browse, libraries: true, civilian, simplify: false, fronts }), draft, log);
+    // A file filed under one of those categories is there by Commons' own filing, whether or not its name repeats the place.
+    const candidates = found.filter((c) => c.category || namesAPlace(c, places));
     if (found.length > candidates.length) log(`image: ${found.length - candidates.length} file(s) dropped for naming none of ${places.join(", ")}`);
     const image = candidates.length ? await twoLooks({ candidates, draft, story, log, exclude, relaxed: false, places, ...desk }) : null;
     if (image) return image;
