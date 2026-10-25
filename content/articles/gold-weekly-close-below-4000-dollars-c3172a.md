@@ -32,7 +32,15 @@ regions:
 readingMinutes: 4
 chart: null
 table: null
-image: null
+image:
+  url: https://images.pexels.com/photos/38774780/pexels-photo-38774780.jpeg?auto=compress&cs=tinysrgb&w=1280
+  width: 1280
+  height: 853
+  alt: قلادة ذهبية معروضة في متجر للمجوهرات
+  credit: Saif photos · بيكسلز
+  license: Pexels License
+  licenseUrl: https://www.pexels.com/license/
+  pageUrl: https://www.pexels.com/photo/elegant-gold-necklace-with-gemstone-charms-on-display-38774780/
 sources:
   - name: البيان
     nameEn: Al Bayan
@@ -68,7 +76,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: null
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
   lessons: v34
 quality:

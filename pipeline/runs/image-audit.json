@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-25T01:41:43.032Z",
+  "at": "2026-10-25T03:25:32.603Z",
   "results": [
     {
       "slug": "trump-exempts-canadian-goods-tariffs-midterms-787322",
@@ -1165,6 +1165,61 @@
       "verdict": "GENERIC_OK",
       "people": "none",
       "reason": "The story concerns stabilising Iraq's economy as a whole, and a busy everyday market of shoppers and traders in Baghdad's Shorja pictures that economy at work, in the story's own country, with an accurate caption.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "gold-weekly-close-below-4000-dollars-c3172a",
+      "file": "gold-weekly-close-below-4000-dollars-c3172a.md",
+      "title": "الذهب ينهي الأسبوع دون 4000 دولار للأوقية لأول مرة منذ يوليو",
+      "image": "https://images.pexels.com/photos/38774780/pexels-photo-38774780.jpeg?auto=compress&cs=tinysrgb&w=1280",
+      "fileTitle": null,
+      "verdict": "GENERIC_OK",
+      "people": "none",
+      "reason": "A sharp, professional shot of a gold necklace in a jewellery display shows the story's own commodity, gold, with no place cues against a world-market story, and the caption names nothing the story does not.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "ai-agents-delegation-divide-rich-poor-countries-972617",
+      "file": "ai-agents-delegation-divide-rich-poor-countries-972617.md",
+      "title": "البلدان الغنية تستطيع تفويض حصة أكبر من عملها لبرامج الذكاء الاصطناعي",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Craftsman_shaping_wooden_piece_in_workshop_during_daytime.jpg/1280px-Craftsman_shaping_wooden_piece_in_workshop_during_daytime.jpg",
+      "fileTitle": "Craftsman shaping wooden piece in workshop during daytime.jpg",
+      "verdict": "WRONG_SUBJECT",
+      "people": "none",
+      "reason": "The story is about how much work can be delegated to AI agents, but the frame shows only a woodworker at a craft that the story names as the physical work AI cannot take on, so it pictures the exception rather than the headline's subject.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "moodys-holds-france-rating-negative-outlook-a08070",
+      "file": "moodys-holds-france-rating-negative-outlook-a08070.md",
+      "title": "موديز تبقي تصنيف فرنسا رغم تجاوز عائد سنداتها 5%",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Al_Jasrah_in_port_of_Le_Havre_%28France%29_2019.jpg/1280px-Al_Jasrah_in_port_of_Le_Havre_%28France%29_2019.jpg",
+      "fileTitle": "Al Jasrah in port of Le Havre (France) 2019.jpg",
+      "verdict": "GENERIC_OK",
+      "people": "none",
+      "reason": "A sharp, clearly composed photograph of a container ship at Port 2000 in Le Havre shows France's own economy at work for a story about its sovereign debt and rating, and the caption names only a French port.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "uae-pledges-17-billion-investment-greece-fc3cb8",
+      "file": "uae-pledges-17-billion-investment-greece-fc3cb8.md",
+      "title": "الإمارات تتعهد باستثمارات إضافية بنحو 17 مليار دولار في اليونان",
+      "image": "https://live.staticflickr.com/536/19612320294_4144cc7084_b.jpg",
+      "fileTitle": null,
+      "verdict": "GENERIC_OK",
+      "people": "none",
+      "reason": "A clean, professional frame of wind turbines in Greece, captioned in Florina, shows the renewable-energy sector in the story's own country, where the UAE's flagship Masdar–Terna Energy wind and solar deal sits.",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "uae-egypt-renew-dirham-pound-currency-swap-77af8a",
+      "file": "uae-egypt-renew-dirham-pound-currency-swap-77af8a.md",
+      "title": "الإمارات ومصر تجددان مقايضة عملات بـ5 مليارات درهم لخمس سنوات",
+      "image": "/photos/handouts/72efb0b6e224.jpg",
+      "fileTitle": null,
+      "verdict": "RIGHT",
+      "people": "خالد محمد بالعمى، حسن عبد الله (from the printed caption only; the frame, file name and record were not provided)",
+      "reason": "The caption shows the two central bank governors at the Abu Dhabi signing, which is the story's own people and event, though the image itself could not be checked against the caption.",
       "model": "claude-cli/claude-opus-5-5"
     }
   ]

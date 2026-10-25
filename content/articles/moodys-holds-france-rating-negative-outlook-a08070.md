@@ -29,7 +29,15 @@ regions:
 readingMinutes: 3
 chart: null
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Al_Jasrah_in_port_of_Le_Havre_%28France%29_2019.jpg/1280px-Al_Jasrah_in_port_of_Le_Havre_%28France%29_2019.jpg
+  width: 1280
+  height: 850
+  alt: سفينة حاويات راسية في أحد الموانئ الفرنسية
+  credit: Philipe Alès · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AAl_Jasrah_in_port_of_Le_Havre_(France)_2019.jpg
 sources:
   - name: نيويورك تايمز
     nameEn: The New York Times
@@ -64,7 +72,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: null
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
   lessons: v34
 quality:

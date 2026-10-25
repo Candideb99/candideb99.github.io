@@ -42,7 +42,15 @@ chart:
         - 31
         - 22.5
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Craftsman_shaping_wooden_piece_in_workshop_during_daytime.jpg/1280px-Craftsman_shaping_wooden_piece_in_workshop_during_daytime.jpg
+  width: 1280
+  height: 853
+  alt: حرفي يشكّل قطعة خشبية في ورشته
+  credit: Nenad Stojkovic · CC BY 4.0 · ويكيميديا كومنز
+  license: CC BY 4.0
+  licenseUrl: https://creativecommons.org/licenses/by/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ACraftsman_shaping_wooden_piece_in_workshop_during_daytime.jpg
 sources:
   - name: أرشيف أرخايف (الاقتصاد العام)
     nameEn: arXiv econ.GN

@@ -32,7 +32,13 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image: null
+image:
+  url: /photos/handouts/72efb0b6e224.jpg
+  width: 1200
+  height: 630
+  alt: محافظ مصرف الإمارات المركزي خالد محمد بالعمى (يمين) ومحافظ البنك المركزي المصري حسن عبد الله خلال توقيع اتفاقية مقايضة العملات في أبوظبي
+  credit: مصرف الإمارات العربية المتحدة المركزي
+  license: صورة رسمية
 sources:
   - name: أرابيان غلف بزنس إنسايت
     nameEn: AGBI (Arabian Gulf Business Insight)
@@ -62,7 +68,7 @@ models:
   editor: claude-cli
   writer: claude-cli → claude-cli
   critic: claude-cli
-  vision: null
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli
   lessons: control
 quality:

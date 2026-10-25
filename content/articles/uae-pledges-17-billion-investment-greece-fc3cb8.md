@@ -32,7 +32,15 @@ regions:
 readingMinutes: 3
 chart: null
 table: null
-image: null
+image:
+  url: https://live.staticflickr.com/536/19612320294_4144cc7084_b.jpg
+  width: 1024
+  height: 686
+  alt: توربينات رياح في فلورينا شمال اليونان
+  credit: ioarvanit · CC BY 2.0 · فليكر
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0/
+  pageUrl: https://www.flickr.com/photos/52394097@N02/19612320294
 sources:
   - name: أرابيان غلف بزنس إنسايت
     nameEn: AGBI (Arabian Gulf Business Insight)
