@@ -33,14 +33,12 @@ readingMinutes: 3
 chart: null
 table: null
 image:
-  url: https://live.staticflickr.com/2493/3824358100_44517351e5_b.jpg
-  width: 1024
-  height: 683
-  alt: أعمال بناء وحدات سكنية في منتجع سياحي (صورة تعبيرية)
-  credit: Vox Efx · CC BY 2.0 · فليكر
-  license: CC BY 2.0
-  licenseUrl: https://creativecommons.org/licenses/by/2.0/
-  pageUrl: https://www.flickr.com/photos/39096030@N00/3824358100
+  url: /photos/handouts/1eb8e6aca077.jpg
+  width: 770
+  height: 513
+  alt: جانب من احتفالية إطلاق المنطقة الاستثمارية في مشروع علم الروم
+  credit: شركة الديار القطرية
+  license: صورة رسمية
 sources:
   - name: الجزيرة نت
     nameEn: Al Jazeera Arabic
