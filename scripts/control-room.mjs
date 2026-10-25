@@ -44,13 +44,13 @@ const NEWS_SECTIONS = ["economy", "markets", "energy", "companies", "technology"
 const SECTION_NAME = { economy: "الاقتصاد", markets: "الأسواق", energy: "الطاقة", companies: "الشركات", technology: "التكنولوجيا", analysis: "تحليلات", explainers: "مدخل إلى الاقتصاد" };
 /** What the cloud runs on its own (newsroom.yml). UTC; the page shows it in the owner's local time. */
 const SCHEDULE = [
-  { what: "News stories", when: "every 3 hours, at :23", utc: null },
+  { what: "News stories", when: "every 3 hours, at :23 (GitHub keeps about four a day)", utc: null },
+  { what: "Morning fill-in: one more news round when the morning has a gap (news-fill.yml)", when: "mornings, 06:00-10:30 UTC, once the last round started 2.5 hours ago", utc: null },
   { what: "An explainer", when: "daily", utc: "05:41" },
   { what: "An analysis", when: "daily", utc: "14:07" },
   { what: "A research paper", when: "Tuesdays and Fridays", utc: "09:31" },
   { what: "The week's review", when: "Fridays", utc: "15:37" },
-  { what: "Defence and geopolitics reading", when: "Saturdays", utc: "10:07" },
-  { what: "In depth (في العمق)", when: "Sundays", utc: "07:47" },
+  { what: "The flagship reports: new editions, from their publishers' own pages", when: "daily", utc: "08:17" },
   { what: "Second look and learning: the earlier stories re-read against their sources, the proved mistakes corrected and learned", when: "every news round, before it writes", utc: null },
   { what: "Editor's round: photos, freshness, the week's numbers", when: "daily", utc: "07:17" },
   { what: "Weekly lessons test: keep the new lessons or put back the last approved ones", when: "Mondays", utc: "06:13" },

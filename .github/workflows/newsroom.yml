@@ -6,6 +6,8 @@ on:
     # the week's review on Fridays. The Saturday defence-and-geopolitics reading went with the defence section on
     # 2026-10-19 (folded into companies and economy at the owner's choice); in five weeks it never found enough stories to run.
     # GitHub fires these crons 1.5-5 hours late and drops some slots; README "How it runs" records the cadence it keeps.
+    # The morning fill-in (news-fill.yml, 2026-10-25) starts a news round here by hand (workflow_dispatch, mode news) when
+    # the morning has a gap: no news round started in the last 2.5 hours, between 06:00 and 10:30 UTC.
     - cron: "23 */3 * * *"
     - cron: "41 5 * * *"
     - cron: "7 14 * * *"

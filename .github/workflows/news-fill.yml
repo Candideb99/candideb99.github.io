@@ -1,0 +1,55 @@
+name: Morning news fill-in
+
+# The owner, 2026-10-25, after a morning without news: "is the schedule running normally or is there a bug?", then "add
+# the extra morning news triggers with the 2.5-hour guard, and measure it over the next few days".
+# GitHub fires each cron line about four times a day, three to five hours late, whatever the line asks for: from 21
+# September to 25 October newsroom.yml's three-hourly news line and deploy.yml's two-hourly line each got a run about
+# every six hours (median), while separate lines fired independently, minutes apart at times. So the news line left the
+# same hole every morning: no news story from about 05:30 to 12:00 UTC, 08:30-15:00 in Riyadh, the Arab business morning.
+# These lines ask for morning slots of their own. Each time GitHub fires one, scripts/news-fill.mjs decides whether to
+# start a news round (newsroom.yml, mode news): only inside the morning (06:00-10:30 UTC), only when the last news round
+# started 2.5 hours ago or more, and never while another newsroom run is running or waiting. Most firings start nothing,
+# at the cost of a minute of a free runner and no model call. The slots run from 02:13 to 09:43 because GitHub fires
+# them up to five hours late; a firing that lands outside the morning starts nothing.
+# Measured by scripts/cadence.mjs (the days before against the days after). Switch it off by deleting this file or with
+# "Disable workflow" in the repository's Actions tab; "Pause everything" in the control room pauses it too.
+
+on:
+  schedule:
+    - cron: "13 2-8/2 * * *"
+    - cron: "43 3-9/2 * * *"
+  workflow_dispatch:
+    inputs:
+      check_only:
+        description: decide and report, but start nothing (also proves the token may start a newsroom run)
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  actions: write  # to start newsroom.yml: what the workflow's own token does starts no workflow, except a dispatch like this
+
+jobs:
+  fill:
+    if: vars.KHAZENDAR_PAUSED != '1'
+    name: Start a news round if the morning has a gap
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Decide
+        id: decide
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CHECK_ONLY: ${{ inputs.check_only }}
+        run: node scripts/news-fill.mjs
+
+      - name: Start a news round
+        if: steps.decide.outputs.start == '1' && inputs.check_only != true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run newsroom.yml --repo "$GITHUB_REPOSITORY" --ref main -f mode=news
