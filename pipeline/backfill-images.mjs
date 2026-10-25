@@ -6,7 +6,14 @@
  * article's frontmatter.
  *
  * Usage: node pipeline/backfill-images.mjs [--dry-run] [--limit=N] [--redo=slug,slug] [--only=slug,slug] [--no-sources]
+ *        node pipeline/backfill-images.mjs --dry-run --save=picks.json [...]   the picks, kept to be looked at
+ *        node pipeline/backfill-images.mjs --apply=picks.json [--only=slug,slug] writes exactly those picks
  * Its model calls go to Claude (CLAUDE_CODE_OAUTH_TOKEN, from the environment or from .env).
+ *
+ * `--save` and `--apply` exist because the judges vary between runs: a dry run's pick, approved by the owner, was not what a
+ * second, real run would choose (2026-10-25, forty stories without a photograph shown to him before anything was written).
+ * A saved pick is written only to a story that still has no photograph, never a handout (a dry run stores none) and never a
+ * photograph another story runs by then.
  */
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -26,6 +33,7 @@ try {
 
 const { pickImage } = await import("./lib/images.mjs");
 const { extractArticle } = await import("./lib/extract.mjs");
+const { photoKey } = await import("./lib/photo-key.mjs");
 
 const args = process.argv.slice(2);
 const DRY_RUN = args.includes("--dry-run");
@@ -46,7 +54,20 @@ const REDO = new Set(redoArg ? redoArg.slice(7).split(",").map((s) => s.trim()).
 /** `--only=slug,slug`: work on these stories alone, instead of every story that has no picture. */
 const onlyArg = args.find((a) => a.startsWith("--only="));
 const ONLY = new Set(onlyArg ? onlyArg.slice(7).split(",").map((s) => s.trim()).filter(Boolean) : []);
+const SAVE = (args.find((a) => a.startsWith("--save=")) ?? "").slice(7);
+const APPLY = (args.find((a) => a.startsWith("--apply=")) ?? "").slice(8);
+if (SAVE && !DRY_RUN) {
+  console.error("--save keeps a dry run's picks; a real run writes them at once");
+  process.exit(1);
+}
 const log = (message) => console.log(`[backfill ${new Date().toISOString().slice(11, 19)}] ${message}`);
+/** The image block a story's frontmatter carries. */
+const record = (image) => ({ url: image.url, width: image.width, height: image.height, alt: image.alt, credit: image.credit, license: image.license, licenseUrl: image.licenseUrl || undefined, pageUrl: image.pageUrl });
+async function writeImage(full, match, data, image, model) {
+  data.image = image;
+  data.models = { ...(data.models ?? {}), vision: model };
+  await writeFile(full, `---\n${YAML.stringify(data, { lineWidth: 0 }).trimEnd()}\n---\n${match[2]}`);
+}
 
 const files = (await readdir(ARTICLES_DIR)).filter((f) => f.endsWith(".md")).sort();
 /** The photographs published now, read again before every story: another run writing at the same time (the newsroom, a
@@ -62,6 +83,41 @@ async function usedNow() {
   }
   return used;
 }
+if (APPLY) {
+  const saved = JSON.parse(await readFile(APPLY, "utf8"));
+  const taken = new Set([...(await usedNow())].map(photoKey));
+  let written = 0;
+  for (const entry of saved.picks ?? []) {
+    if (ONLY.size && !ONLY.has(entry.slug)) continue;
+    const full = path.join(ARTICLES_DIR, entry.file);
+    const match = (await readFile(full, "utf8").catch(() => "")).match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+    if (!match) {
+      log(`${entry.file}: no longer published; skipped`);
+      continue;
+    }
+    const data = YAML.parse(match[1]);
+    if (data.image) {
+      log(`${entry.file}: has a photograph now; skipped`);
+      continue;
+    }
+    if (entry.basis === "handout") {
+      log(`${entry.file}: a handout is kept on the site only by a real run; skipped`);
+      continue;
+    }
+    const key = photoKey(entry.image?.url);
+    if (!key || taken.has(key)) {
+      log(`${entry.file}: another story runs "${entry.fileTitle}" now; skipped`);
+      continue;
+    }
+    taken.add(key);
+    await writeImage(full, match, data, entry.image, entry.model);
+    written += 1;
+    log(`${entry.file}: wrote "${entry.fileTitle}"`);
+  }
+  log(`done: ${written} of ${(saved.picks ?? []).length} saved picks written`);
+  process.exit(0);
+}
+const savedPicks = [];
 let tried = 0;
 let found = 0;
 for (const file of files) {
@@ -118,19 +174,11 @@ ${match[2]}`);
   found += 1;
   picked.add(image.url);
   log(`${file}: "${image.title}" (${image.license})${DRY_RUN ? ` ${image.url}\n    caption: ${image.alt}\n    credit: ${image.credit}` : ""}`);
-  if (DRY_RUN) continue;
-  data.image = {
-    url: image.url,
-    width: image.width,
-    height: image.height,
-    alt: image.alt,
-    credit: image.credit,
-    license: image.license,
-    licenseUrl: image.licenseUrl || undefined,
-    pageUrl: image.pageUrl,
-  };
-  data.models = { ...(data.models ?? {}), vision: image.model };
-  const yaml = YAML.stringify(data, { lineWidth: 0 }).trimEnd();
-  await writeFile(full, `---\n${yaml}\n---\n${match[2]}`);
+  if (DRY_RUN) {
+    if (SAVE) savedPicks.push({ slug: data.slug, file, title: data.title, kind: data.kind ?? "news", fileTitle: image.title, basis: image.basis ?? null, model: image.model, image: record(image) });
+    continue;
+  }
+  await writeImage(full, match, data, record(image), image.model);
 }
-log(`done: ${found} of ${tried} stories got a photo${DRY_RUN ? " (dry run, nothing written)" : ""}`);
+if (SAVE) await writeFile(SAVE, JSON.stringify({ at: new Date().toISOString(), picks: savedPicks }, null, 1));
+log(`done: ${found} of ${tried} stories got a photo${DRY_RUN ? ` (dry run, nothing written${SAVE ? `; picks kept in ${SAVE}` : ""})` : ""}`);
