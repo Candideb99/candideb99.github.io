@@ -6669,6 +6669,103 @@
           "noted": []
         }
       ]
+    },
+    "bahri-contract-three-crude-tankers-saudi-9dd9dc": {
+      "at": "2026-10-25T23:32:30.800Z",
+      "title": "«البحري» توقع عقداً بـ1.7 مليار ريال لبناء 3 ناقلات نفط عملاقة في السعودية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v37",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 21,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 1,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 22,
+              "field": "body",
+              "class": "internal",
+              "verdict": "contradicted",
+              "status": "unverified",
+              "sentence": "وبلغت الزيادة 22% على أساس سنوي، بعدما أضافت الشركة 11 ناقلة جديدة واستبعدت ناقلة واحدة.",
+              "quote": "ورفعت «البحري» العام الماضي أسطولها من ناقلات النفط الخام العملاقة، المعروفة اختصاراً بـVLCC، بأسرع وتيرة في 11 عاماً، لتمتلك 50 ناقلة عملاقة بنهاية العام. وبلغت الزيادة 22% على أساس سنوي، بعدما أضافت الشركة 11 ناقلة جديدة واستبعدت ناقلة واحدة.",
+              "source": "the story itself",
+              "sourceN": 0,
+              "correction": "A net addition of 10 tankers (11 added, 1 removed) to reach 50 means growth from 40 to 50, which is a 25% year-on-year increase, not 22%."
+            }
+          ]
+        }
+      ]
+    },
+    "audi-plans-first-us-factory-georgia-f7d7c3": {
+      "at": "2026-10-25T23:49:14.006Z",
+      "title": "أودي تعتزم إنفاق 4 مليارات دولار على أول مصنع لها في أمريكا",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v37",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 37,
+            "checked": 37,
+            "supported": 34,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "egypt-world-bank-mining-charter-gdp-e12932": {
+      "at": "2026-10-25T23:59:49.589Z",
+      "title": "مصر والبنك الدولي يطلقان ميثاقاً لرفع حصة التعدين في الناتج إلى 6%",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v37",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 21,
+            "checked": 21,
+            "supported": 17,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 3,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

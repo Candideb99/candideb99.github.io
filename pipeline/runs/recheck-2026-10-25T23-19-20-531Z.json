@@ -1,0 +1,47 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-25T23:19:20.531Z",
+  "durationSec": 74,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "riyadh-airport-partial-reopening-houthi-missile-attacks-fe5c08",
+      "title": "مطار الرياض يستأنف رحلاته جزئياً وسط هجمات حوثية بالصواريخ",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 39,
+        "checked": 39,
+        "supported": 33,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 3,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 13455,
+    "completionTokens": 9725,
+    "cacheReadTokens": 0,
+    "costUsd": 0.3021,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[23:19:20] second look: 1 to read now (3 published pieces not yet read; 120 read clean before publication and left out of the audit sample)",
+    "[23:20:34] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=71133",
+    "[23:20:34] riyadh-airport-partial-reopening-houthi-missile-attacks-fe5c08: 39 of 39 sentences checked · 33 supported · 3 without a source · 0 confirmed error(s) · 3 listed for a person"
+  ]
+}

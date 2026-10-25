@@ -211,10 +211,11 @@
     "norway-wealth-fund-third-quarter-bond-loss-ebd227:ea51def9",
     "ras-al-khaimah-closes-beaches-oil-spill-8c2ef2:9728acd8",
     "saudi-utility-tariffs-monthly-support-2027-748f63:07d9ec5d",
-    "saudi-utility-tariffs-monthly-support-2027-748f63:29472625"
+    "saudi-utility-tariffs-monthly-support-2027-748f63:29472625",
+    "riyadh-airport-partial-reopening-houthi-missile-attacks-fe5c08:32216bd5"
   ],
-  "version": 36,
-  "updatedAt": "2026-10-25T20:57:25.422Z",
+  "version": 37,
+  "updatedAt": "2026-10-25T23:20:34.966Z",
   "lessons": [
     {
       "id": "L1",
@@ -514,11 +515,12 @@
         "ai-leaders-warn-openai-ipo-delay-b7d3e6:bba093b8",
         "ai-leaders-warn-openai-ipo-delay-b7d3e6:e9073376",
         "sp-affirms-saudi-sovereign-credit-rating-a-stable-outlook-e98730:dceab7ec",
-        "saudi-oil-disruption-growth-budget-outlook-1f48b3:25ba2543"
+        "saudi-oil-disruption-growth-budget-outlook-1f48b3:25ba2543",
+        "riyadh-airport-partial-reopening-houthi-missile-attacks-fe5c08:32216bd5"
       ],
-      "seen": 28,
+      "seen": 29,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-10-18T16:07:56.392Z",
+      "lastSeen": "2026-10-25T23:20:34.966Z",
       "status": "active",
       "previous": [
         "Take each event's day from the source's sentence about that event; convert a weekday by counting back from the publication date. Keep an announcement, a takeover, a later remark and a reply on their own days, with any time of day given.",
@@ -1019,6 +1021,13 @@
       "mistakes": 2,
       "applied": [
         "sharpen L4 (+2)"
+      ]
+    },
+    {
+      "at": "2026-10-25T23:20:34.966Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L6 (+1; reworded at most once a week)"
       ]
     }
   ],

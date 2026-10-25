@@ -12313,6 +12313,62 @@
         }
       ],
       "outcome": "listed"
+    },
+    "riyadh-airport-partial-reopening-houthi-missile-attacks-fe5c08": {
+      "at": "2026-10-25T23:19:20.881Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "7bb3653e29",
+      "publishedAt": "2026-10-25T21:13:58.440Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 39,
+        "checked": 39,
+        "supported": 33,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 3,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "مسيّرات اعتُرضت نحو الرياض بحسب المالكي: 2",
+          "quote": "It also reported intercepting a ballistic missile launched towards Riyadh and destroying a drone aimed at the capital.",
+          "source": "The National"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "نقلت وكالة الأنباء السعودية عن تركي المالكي، المتحدث باسم تحالف دعم الشرعية في اليمن الذي تقوده السعودية، أن الدفاعات اعترضت ودمرت أيضاً صاروخاً باليستياً ومسيّرتين كانت متجهة نحو الرياض، وصاروخ كروز أُطلق باتجاه مدينة خميس مشيط.",
+          "quote": "It also reported intercepting a ballistic missile launched towards Riyadh and destroying a drone aimed at the capital.",
+          "source": "The National"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وتجددت المواجهات بين الطرفين في يوليو الماضي بعد سقوط هدنة كانت سارية في اليمن منذ 2022.",
+          "quote": "The coalition resumed its military campaign in Yemen in support of the internationally recognised government last month, seeking to reverse the Houthis’ advances, after the rebels moved along the Red Sea coast towards the strategic Bab Al Mandab strait.",
+          "source": "The National"
+        }
+      ],
+      "notFound": [
+        "إعادة فتح مطار الرياض لا تعيد وحدها حركة السفر والفعاليات، فالقرار الفعلي يبقى لدى شركات الطيران ومنظمي الأحداث الذين ألغوا رحلات ونقلوا فعاليات.",
+        "وما دام الحوثيون يعلنون استهداف المطار ويهددون شركات الطيران بمواصلة الهجمات عليه، فالأرجح أن تبقى الحركة دون طاقتها.",
+        "وأعلن الاتحاد الدولي للسيارات أن رالي دكار 2027، المقرر بين 1 و15 يناير، سيقام في بلد لم يُعلن بعد بدلاً من السعودية، على أن تعود المملكة لاستضافته في 2028."
+      ],
+      "weak": [],
+      "outcome": "listed"
     }
   }
 }
