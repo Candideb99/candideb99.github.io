@@ -1,0 +1,505 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-26T04:56:43.073Z",
+  "durationSec": 2530,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "سابك تعود إلى الربح في الربع الثالث وتتجاوز التوقعات",
+      "section": "companies",
+      "importance": 7,
+      "sources": [
+        "https://www.aleqt.com/%D8%AA%D9%82%D8%A7%D8%B1%D9%8A%D8%B1-%D9%88%D8%AA%D8%AD%D9%84%D9%8A%D9%84%D8%A7%D8%AA/%D8%A3%D8%B1%D8%A8%D8%A7%D8%AD-%D8%B3%D8%A7%D8%A8%D9%83-%D8%AA%D9%81%D9%88%D9%82-%D8%A7%D9%84%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA-%D9%88%D8%AA%D8%B3%D8%AC%D9%84-%D8%A3%D8%B9%D9%84%D9%89-%D9%85%D8%B3%D8%AA%D9%88%D9%8A%D8%A7%D8%AA%D9%87%D8%A7-%D9%81%D9%8A-%D8%B9%D8%A7%D9%85%D9%8A%D9%86-15702",
+        "https://www.thenationalnews.com/business/energy/2026/10/25/sabic-returns-to-profit-in-third-quarter-as-revenue-rises-despite-regional-conflict/",
+        "https://www.aleqt.com/other/%D8%B3%D8%A7%D8%A8%D9%83-%D8%AA%D8%B3%D8%AC%D9%84-%D8%A7%D8%B1%D8%AA%D9%81%D8%A7%D8%B9%D8%A7-40-%D9%81%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%A8%D8%A7%D8%AD-%D8%A7%D9%84%D9%85%D8%B9%D8%AF%D9%84%D8%A9-%D8%AC%D8%B1%D8%A7%D8%A1-%D8%A7%D9%84%D8%AA%D9%85%D9%8A%D8%B2-%D8%A7%D9%84%D8%AA%D8%B4%D8%BA%D9%8A%D9%84%D9%8A-15694",
+        "https://www.aleqt.com/%D8%A7%D9%84%D8%B4%D8%B1%D9%83%D8%A7%D8%AA/%D8%A3%D8%B3%D8%B9%D8%A7%D8%B1-%D8%A7%D9%84%D8%A8%D9%8A%D8%B9-%D8%AA%D8%AF%D9%81%D8%B9-%D8%B3%D8%A7%D8%A8%D9%83-%D9%84%D8%AA%D8%AD%D9%82%D9%8A%D9%82-%D8%A3%D8%B1%D8%A8%D8%A7%D8%AD-%D9%81%D8%B5%D9%84%D9%8A%D8%A9-%D8%B6%D8%B9%D9%81-%D8%A7%D9%84%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA-15690"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة والموجز توضح معاً ما تغيّر: عودة سابك إلى الربح (499 مليون ريال) بعد خسارة الربع الثاني، وتجاوز الربح ضعف توقعات بلومبرغ. والموجز ينسب تفسير الكميات إلى «الاقتصادية». أما التحفظ الجوهري، وهو أن تفوق صافي الربح لا يعني تحسن الأنشطة الأساسية بالنسبة نفسها، فيأتي لاحقاً في القسم الثاني، وهذا مقبول.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "التقرير يغفل الآلية التي تفسّر قفزة الكميات: المسارات البديلة عبر البحر الأحمر والساحل الغربي ونيوم، وارتفاع الشحن البحري 38% (المصدر 1). ويغفل التباين بين البتروكيماويات والمغذيات الزراعية. أما «لماذا يهمّ» فمقدماتها عن الكميات والأسعار والمبيعات المؤجلة سليمة، لكنها تقيس استمرار التحسن على هجوم الظهران دون أساس في المصادر.",
+              "repair": "أدرج قصة المسارات البديلة ونتائج القطاعات، واجعل شرط «لماذا يهمّ» صمود الطلب واستدامة المسارات البديلة دون تضخم مصاريف التوزيع، في ظل فائض الطاقة العالمي (المصدر 1)."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "فقرة «وفي 13 أكتوبر، ألحق هجوم صاروخي حوثي...» تقف معزولة بين حدود التحسن وبيانات الأشهر التسعة. والختام بصافي الدين وبرنامج التحول إحصاءات متتالية لا تفسّر الحدث. واقتباس الرئيس التنفيذي ثناء عام يملأ فقرة كاملة.",
+              "repair": "انقل الهجوم إلى خلفية منسوبة عن المخاطر الأمنية. واختم بما يأتي لاحقاً: خفض الإنفاق الرأسمالي ومشروعات الأمونيا واليوريا والميثانول. واختصر الاقتباس أو احذفه."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«أثراً مستداماً ... على الأرباح المعدلة» يبدّل المقياس، والمصدر يقول EBITDA. وفي «بسبب انخفاض الكميات على أساس سنوي وارتفاع مصروفات التوزيع» يحوّل التقرير «مع» في المصدر 1 إلى سببية صريحة، ويقدّمه دون نسبة إلى تحليل الصحيفة. كما يُغفل عامل تراجع المغذيات الزراعية الذي يذكره المصدر نفسه.",
+              "repair": "صحّح المقياس إلى «الأرباح قبل الفوائد والضرائب والإهلاك والإطفاء». واكتب: «وبحسب الصحيفة، بقيت الأرباح المعدلة دون مستواها قبل عام مع انخفاض الكميات سنوياً وارتفاع مصروفات التوزيع، فيما حدّ تراجع المغذيات الزراعية من مكاسب البتروكيماويات»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يوضح العنوان والمقدمة ما تغير: عودة إلى الربح بـ499 مليون ريال تجاوزت ضعف توقعات بلومبرغ بعد خسارة الربع الثاني. ويحمل قسم «حدود التحسن» القيد الحاسم من المصدر 1: التفوق على التوقعات لا يعني تحسن الأنشطة الأساسية بالنسبة نفسها، وتبقى الأرباح المعدلة دون مستواها قبل عام.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "آلية الكميات والمسارات البديلة ونتائج القطاعات صارت حاضرة ومنسوبة. لكن «لماذا يهمّ» يبني استنتاجه على مقدمة محوّرة: «تعافت أرباح سابك بالكميات المباعة»، بينما يقصر المصدر 1 هذا التفسير على الإيرادات ويضيف عامل اللقيم والبنود المحاسبية. أما الاستنتاج نفسه فمحدود ومشروط ومسنود: صمود الطلب، والمسارات البديلة، ومصاريف التوزيع، وفائض الطاقة.",
+              "repair": "استبدل «أرباح» بـ«إيرادات» في الجملة الأولى من الصندوق، وأبقِ الشرط كما هو."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يتقدم التقرير من النتيجة إلى المحرك ثم القطاعات ثم الحدود ثم المشروعات. لكن فقرة الهجوم الحوثي واقتباس الفقير جاءت في ذيل قسم «حدود التحسن»، وهو قسم عن البنود المحاسبية، فقطعت تسلسل الفكرة.",
+              "repair": "انقل الفقرة إلى ما بعد ذكر خسارة الربع الثاني المرتبطة بالصراع الإقليمي في الفقرة الأولى، خلفيةً منسوبة إلى «ذا ناشونال» دون ربط سببي."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«يرفع طاقتها لإنتاج اليوريا 54%» و«بطاقة 1.8 مليون طن» تقدمان مشروعين مقبلين كأنهما قائمان، وصيغة نطاق الإنفاق الرأسمالي مربكة. أما المقياس (EBITDA) والنسبة «مع» في تراجع الأرباح المعدلة سنوياً فقد صُححا.",
+              "repair": "«سيرفع طاقتها لإنتاج اليوريا 54%»، و«ستبلغ طاقته 1.8 مليون طن متري سنوياً»، و«من 3.5–4 مليارات دولار إلى ما بين 3 و3.3 مليارات دولار»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 8,
+      "mendIssues": [
+        "مقدمة غير دقيقة في «لماذا يهمّ»: «تعافت أرباح سابك بالكميات المباعة لا بمتوسط أسعار البيع». المصدر 1 يقول إن «تحسن الإيرادات جاء أساسا من عودة حركة المنتجات». ويضيف أن تراجع تكاليف اللقيم رفع الربحية، وأن صافي الربح تأثر ببنود محاسبية مثل عكس انخفاض قيمة استثمار كلارينت. نسبة تعافي الأرباح كله إلى الكميات تبدّل المقياس. التصحيح: «تعافت إيرادات سابك بالكميات المباعة لا بالأسعار التي تراجع متوسطها 13%، وقد يكون جزء من هذه الكميات طلبات مؤجلة من الربع الثاني».",
+        "خطة لم تُنفذ بعد مكتوبة بفعل منجز: «يرفع طاقتها لإنتاج اليوريا 54%» و«لمصنع ميثانول جديد في الجبيل بطاقة 1.8 مليون طن متري سنوياً». المصدر 3 يتحدث عن قرار استثماري نهائي لمجمع سيُبنى وعن مصنع «ستصل طاقته» إلى 1.8 مليون طن. التصحيح: «سيرفع طاقتها لإنتاج اليوريا 54% عن مستواها الحالي»، و«لمصنع ميثانول جديد في الجبيل ستبلغ طاقته 1.8 مليون طن متري سنوياً».",
+        "المشكلة 8 من المراجعة السابقة باقية جزئياً. فقرة «وتواجه منشآت النفط والبتروكيماويات السعودية مخاطر أمنية متزايدة... وقال الرئيس التنفيذي فيصل الفقير...» ما زالت في قسم «حدود التحسن» بعد شرح البنود المحاسبية، فتبدو حادثة منفصلة لا صلة لها بموضوع القسم. التصحيح: انقلها خلفية مختصرة بعد الإشارة في الفقرة الأولى إلى خسارة الربع الثاني المرتبطة بالصراع الإقليمي (المصدر 2)، مع الإبقاء على نسبتها إلى «ذا ناشونال»، ودون أي ربط سببي بالنتائج لأن الهجوم وقع في 13 أكتوبر بعد انتهاء الربع.",
+        "صياغة عربية مربكة: «من نطاق 3.5 إلى 4 مليارات دولار إلى نطاق 3 إلى 3.3 مليار دولار». تكرار «إلى» يخلط بين حدود النطاق واتجاه الخفض، و«3.3 مليار» صوابها «مليارات». التصحيح: «خفضت سابك تقديراتها للإنفاق الرأسمالي وضخ رأس المال في مشروعات النمو لعام 2026 من 3.5–4 مليارات دولار إلى ما بين 3 و3.3 مليارات دولار» (المصدر 1).",
+        "مرجع ملتبس: «وكانت سابك، أكبر شركة بتروكيماويات في الشرق الأوسط التي تملك أرامكو السعودية 70% من أسهمها، قد سجلت...». الجملة الموصولة الطويلة تؤخر الخبر وتربك القارئ. التصحيح: «وكانت سابك، أكبر شركة بتروكيماويات في الشرق الأوسط وتملك أرامكو السعودية 70% منها، قد سجلت صافي خسارة قدرها 833 مليون ريال في الربع الثاني» (المصدر 2).",
+        "آلية الكميات والمسارات البديلة ونتائج القطاعات صارت حاضرة ومنسوبة. لكن «لماذا يهمّ» يبني استنتاجه على مقدمة محوّرة: «تعافت أرباح سابك بالكميات المباعة»، بينما يقصر المصدر 1 هذا التفسير على الإيرادات ويضيف عامل اللقيم والبنود المحاسبية. أما الاستنتاج نفسه فمحدود ومشروط ومسنود: صمود الطلب، والمسارات البديلة، ومصاريف التوزيع، وفائض الطاقة. — استبدل «أرباح» بـ«إيرادات» في الجملة الأولى من الصندوق، وأبقِ الشرط كما هو.",
+        "يتقدم التقرير من النتيجة إلى المحرك ثم القطاعات ثم الحدود ثم المشروعات. لكن فقرة الهجوم الحوثي واقتباس الفقير جاءت في ذيل قسم «حدود التحسن»، وهو قسم عن البنود المحاسبية، فقطعت تسلسل الفكرة. — انقل الفقرة إلى ما بعد ذكر خسارة الربع الثاني المرتبطة بالصراع الإقليمي في الفقرة الأولى، خلفيةً منسوبة إلى «ذا ناشونال» دون ربط سببي.",
+        "«يرفع طاقتها لإنتاج اليوريا 54%» و«بطاقة 1.8 مليون طن» تقدمان مشروعين مقبلين كأنهما قائمان، وصيغة نطاق الإنفاق الرأسمالي مربكة. أما المقياس (EBITDA) والنسبة «مع» في تراجع الأرباح المعدلة سنوياً فقد صُححا. — «سيرفع طاقتها لإنتاج اليوريا 54%»، و«ستبلغ طاقته 1.8 مليون طن متري سنوياً»، و«من 3.5–4 مليارات دولار إلى ما بين 3 و3.3 مليارات دولار»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "جاء تحسن الإيرادات أساساً من عودة حركة المنتجات: زادت الكميات المباعة 30% على أساس فصلي وانخفض متوسط أسعار البيع 13%.",
+          "source": 1
+        },
+        {
+          "fact": "لم تكشف سابك حجم الطلبات المتأخرة من الربع الثاني، وقد يعود جزء من قفزة الكميات إلى مبيعات مؤجلة.",
+          "source": 1
+        },
+        {
+          "fact": "ارتفعت مصاريف البيع والتوزيع مع زيادة الكميات واستمرار تحديات النقل، واستمر استخدام المسارات البديلة في الربع الثالث.",
+          "source": 1
+        },
+        {
+          "fact": "لا يزال فائض الطاقة الإنتاجية عالمياً يضغط على أسعار البتروكيماويات.",
+          "source": 1
+        }
+      ],
+      "slug": "sabic-returns-to-profit-third-quarter-92d313",
+      "title": "صافي ربح سابك يتجاوز ضعف التوقعات بعد خسارة الربع الثاني",
+      "score": 7,
+      "image": "photo"
+    },
+    {
+      "headline": "السعودية تخزن نفطها الخام في سنغافورة بدءاً من 2027",
+      "section": "energy",
+      "importance": 7,
+      "sources": [
+        "https://aawsat.com/node/5333655",
+        "https://www.masrawy.com/news/news_economy/details/2026/10/26/3068725/%D9%85%D8%AA%D9%8A-%D8%AA%D8%A8%D8%AF%D8%A3-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-%D8%AA%D8%AE%D8%B2%D9%8A%D9%86-%D8%A7%D9%84%D9%86%D9%81%D8%B7-%D8%A7%D9%84%D8%AE%D8%A7%D9%85-%D9%81%D9%8A-%D8%B3%D9%86%D8%BA%D8%A7%D9%81%D9%88%D8%B1%D8%A9-"
+      ],
+      "format": "short",
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يوضح العنوان واللِّيد أن ما أُعلن عزم مشترك على إبرام اتفاقية لتخزين الخام السعودي في كهوف جورونج اعتباراً من النصف الثاني من 2027، لا اتفاق موقَّع، وهذا يطابق نص التصريح في المصدر 2.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "لا يذكر المصدر 2 غرض التخزين ولا كمياته ولا شروطه. أما المصدر 1 فتقرير أسواق لا يربط تراجع برنت أو التوترات الإقليمية بهذا الإعلان، ولذلك أحسنت المسودة بعدم إقحامه. ووصف المنشأة بأنها «منشأة كهوف جورونج الصخرية بسنغافورة» هو كل ما يتيحه المصدر.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات الثلاث بعد اللِّيد تعيد الفكرة نفسها: النية لا التوقيع، وموعد 2027. ولا تضيف منها معلومة جديدة إلا الفقرة الأولى (مكان التصريح ونقل رويترز له). والفقرة الثانية («لا عن اتفاق مكتمل، وتبقى الخطوة بذلك في مرحلة النية») تعليق على ما لم يقله المصدر.",
+              "repair": "تُختصر القصة إلى لِيد وفقرة واحدة أو اثنتين: مكان الإعلان ونقل رويترز له، ثم أن الخطوة التالية إبرام الاتفاقية قبل بدء التخزين في النصف الثاني من 2027. ولا تُحشى بأي مادة من خارج المصدرين، فالقصة القصيرة تكتمل بما يتيحه المصدر."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "التوقيت «النصف الثاني من 2027» واليوم «الاثنين» واسم الوزير ومنصبه ونقل رويترز كلها مطابقة للمصدر 2. وعبارة «لم توقَّع بعد» استنتاج سليم من «عزمهما المشترك على إبرام اتفاقية»، وقد حافظت المسودة على الفرق بين النية والاتفاق.",
+              "repair": ""
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان واللِّيد يوضحان معاً ما تغيّر وحدوده. البلدان أعلنا عزمهما إبرام اتفاقية تخزين، ولم يُعلَن اتفاق موقّع. والتخزين مخطط له اعتباراً من النصف الثاني من 2027 بحسب الوزير السنغافوري.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "المصدر 2 لا يقدّم سوى المتحدث ومنصبه ومكان التصريح ونقل رويترز له، والمسودة تحتفظ بها كلها. المصدر 1 تقرير عن الأسواق لا يتناول الاتفاق رغم عنوانه، واستبعاده صحيح.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات الثلاث تعيد معلومة واحدة. الأولى تكرر اللِّيد، والثانية تعيد صياغة الاقتباس ثم تورده حرفياً، والثالثة تكرر «العزم» و«التوقيع».",
+              "repair": "فقرة أولى: «وجاء الإعلان على لسان وزير الطاقة والتجارة والصناعة السنغافوري تان سي لينج (Tan See Leng) خلال مؤتمر أسبوع الطاقة الدولي في سنغافورة، بحسب ما نقلته رويترز. وقال تان: «تعلن السعودية وسنغافورة عن عزمهما المشترك...2027»». ثم تُختم بجملة واحدة: «والخطوة التالية إبرام الاتفاقية قبل بدء التخزين». لا يُضاف شيء من خارج المصدر 2."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «في نص الإعلان المشترك» تنسب الاقتباس إلى وثيقة لا يذكرها المصدر 2. وعبارة «المنعقد هذا الأسبوع» غير واردة فيه.",
+              "repair": "استبدال «في نص الإعلان المشترك» بـ«خلال المؤتمر»، وحذف «المنعقد هذا الأسبوع»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 8,
+      "mendIssues": [
+        "خطأ في نسبة الاقتباس: «وقال الوزير في نص الإعلان المشترك: «تعلن السعودية وسنغافورة...»». المصدر 2 (مصراوي نقلاً عن رويترز) لا يذكر نصاً مكتوباً لإعلان مشترك. الاقتباس كلام قاله تان في مؤتمر أسبوع الطاقة الدولي. الإصلاح: «وقال تان خلال المؤتمر: «...»».",
+        "الملاحظتان 1 و5 السابقتان ما زالتا قائمتين. فكرة العزم لا الاتفاق المكتمل تتكرر في العنوان واللِّيد، ثم في الفقرة الثانية مرتين: إعادة صياغة («تعلنان نيتهما المشتركة إبرام اتفاقية») يليها الاقتباس نفسه حرفياً. وتتكرر مرة أخرى في الفقرة الثالثة: «ولم يوقّع البلدان الاتفاقية حتى الآن... ويظل توقيع الاتفاقية الخطوة التالية». الإصلاح: حذف إعادة الصياغة التي تسبق الاقتباس، والإبقاء على الاقتباس وحده، واختصار الفقرة الثالثة إلى جملة واحدة: «والخطوة التالية إبرام الاتفاقية قبل بدء التخزين».",
+        "الملاحظة 2 السابقة باقية في جوهرها رغم تغيير الصياغة. «فما أعلنه الوزير السنغافوري يبقى في مرحلة العزم على إبرامها» تعليق على صياغة التصريح وليس خبراً، والمعنى ثابت في «تعتزمان» و«عزمهما». تُحذف الجملة.",
+        "الملاحظة 4 السابقة لم تُعالَج كما طُلب. الفقرة الأولى ما زالت تبدأ بإعادة اللِّيد («قال... إن المملكة العربية السعودية تخطط لتخزين نفط خام في منشأة كهوف جورونج») ثم تنتقل إلى جملة إجرائية («وأدلى الوزير بتصريحاته الاثنين خلال مؤتمر...»). الإصلاح: «وجاء الإعلان على لسان وزير الطاقة والتجارة والصناعة السنغافوري تان سي لينج (Tan See Leng) خلال مؤتمر أسبوع الطاقة الدولي في سنغافورة، بحسب ما نقلته رويترز».",
+        "«المنعقد هذا الأسبوع» تفصيل لا يذكره المصدر 2. هو يذكر أن التصريح جاء الاثنين خلال المؤتمر في سنغافورة فقط. يُحذف لأنه لا يضيف شيئاً.",
+        "الملاحظة 3 السابقة (العنوان الفرعي) عولجت: العنوان الفرعي الآن يحمل تفصيلاً ثانوياً من الحدث نفسه بصياغة طبيعية.",
+        "الفقرات الثلاث تعيد معلومة واحدة. الأولى تكرر اللِّيد، والثانية تعيد صياغة الاقتباس ثم تورده حرفياً، والثالثة تكرر «العزم» و«التوقيع». — فقرة أولى: «وجاء الإعلان على لسان وزير الطاقة والتجارة والصناعة السنغافوري تان سي لينج (Tan See Leng) خلال مؤتمر أسبوع الطاقة الدولي في سنغافورة، بحسب ما نقلته رويترز. وقال تان: «تعلن السعودية وسنغافورة عن عزمهما المشترك...2027»». ثم تُختم بجملة واحدة: «والخطوة التالية إبرام الاتفاقية قبل بدء التخزين». لا يُضاف شيء من خارج المصدر 2.",
+        "عبارة «في نص الإعلان المشترك» تنسب الاقتباس إلى وثيقة لا يذكرها المصدر 2. وعبارة «المنعقد هذا الأسبوع» غير واردة فيه. — استبدال «في نص الإعلان المشترك» بـ«خلال المؤتمر»، وحذف «المنعقد هذا الأسبوع»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [],
+      "slug": "saudi-singapore-crude-storage-jurong-caverns-14f6a5",
+      "title": "السعودية تعتزم مع سنغافورة إبرام اتفاق لتخزين نفطها في كهوف جورونج",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "سبيس إكس تقترض 40 مليار دولار لشراء رقائق الذكاء الاصطناعي",
+      "section": "technology",
+      "importance": 7,
+      "sources": [
+        "https://www.dunya.com/ekonomi/musktan-40-milyar-dolarlik-hamle-yapay-zeka-icin-dev-borclanma-haberi-845254",
+        "https://www.skynewsarabia.com/business/1900586-%D9%85%D8%A7%D8%B3%D9%83-%D9%8A%D8%B9%D9%84%D9%86-%D8%A5%D8%BA%D9%84%D8%A7%D9%82-%D8%AA%D9%85%D9%88%D9%8A%D9%84-%D8%A840-%D9%85%D9%84%D9%8A%D8%A7%D8%B1-%D8%AF%D9%88%D9%84%D8%A7%D8%B1-%D9%84%D8%B4%D8%B1%D8%A7%D8%A1-%D8%A7%D9%84%D8%B1%D9%82%D8%A7%D8%A6%D9%82",
+        "https://www.marketwatch.com/story/musk-says-spacex-landed-a-40-billion-debt-deal-and-forecasts-doom-for-some-ai-rivals-a0a4991e?mod=mw_rss_topstories",
+        "https://www.cnbc.com/2026/10/26/spacex-closes-40-billion-debt-deal-for-ai-chips-elon-musk-.html"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان ينسب الإغلاق إلى ماسك («ماسك: سبيس إكس تغلق…»)، والعنوان الفرعي يقدّم القيد الحاسم مبكراً: التسعير لم يُحسم والمستثمرون يطالبون بعوائد أعلى. القارئ يفهم أن الإعلان قائم وأن الشروط لم تكتمل.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "تبقى «مخاوف المستثمرين» بلا مضمون. ويُعرض الكيان ذو الغرض الخاص دون الخلفية التي تفسره، أي تجربة إكس إيه آي وتسجيل نحو 13 مليار دولار في الميزانية (المصدر 2). وتبني «لماذا يهمّ» استنتاجاً على حجة ماسك كأنها حقيقة، وتقرر ارتفاع الكلفة رغم أن التسعير لم يُحسم.",
+              "repair": "إضافة سبب القلق (الإنفاق المتسارع مقابل الأرباح المحدودة) وخلفية إكس إيه آي من المصدر 2، وإعادة صياغة الصندوق بشرط صريح: الكلفة مرهونة بنتيجة التسعير."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات مجمّعة جيداً حول الصفقة ثم تحذير ماسك ثم أداء الوحدة. لكن جملة «فباتت تنافس شركات «السحابة الجديدة» في السوق نفسها» تصنع جسراً سببياً مختلَقاً، والخاتمة تنتهي بخيارات اقتراض إضافية دون ربطها بشرط الحفاظ على التصنيف الذي ذكره جونسن.",
+              "repair": "حذف جسر المنافسة، وختم الفقرة الأخيرة بقول جونسن إن الشركة واثقة من التوسع بشكل مدروس مع الحفاظ على تصنيفها الاستثماري (المصدر 2)."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام صحيحة: 40 مليار دولار، و7.56 مليار مقابل 813 مليون، وتسعة أضعاف، وأكثر من 200 شركة، والربعان الأول والثاني من 2027. لكن الصندوق يقرر أن «كلفة تمويل الرقائق ترتفع» بصيغة الواقع، والمصادر تقول إن المستثمرين يطالبون بعوائد أعلى بينما التسعير لم يُحسم حتى مساء الأحد.",
+              "repair": "التمييز بين مطالبة المستثمرين وتسعير لم يُحسم بعد: «يطالب المستثمرون بعوائد أعلى، وتبقى الكلفة النهائية رهن التسعير»."
+            }
+          }
+        }
+      ],
+      "outcome": "rejected after revision: المقدمة طويلة (57 كلمة)؛ اجعلها جملتين إلى ثلاث بأقل من 45 كلمة: الفعل، الفاعل، الرقم، السبب."
+    },
+    {
+      "headline": "الأسواق البرازيلية تتراجع بعد فوز لولا بولاية رابعة",
+      "section": "markets",
+      "importance": 6,
+      "sources": [
+        "https://aawsat.com/node/5333658",
+        "https://www.bloomberg.com/news/articles/2026-10-26/em-stocks-fall-before-key-earnings-brazil-in-focus-as-lula-wins",
+        "https://www.bloomberg.com/news/videos/2026-10-26/the-asia-trade-10-26-2026-video",
+        "https://www.bloomberg.com/news/articles/2026-10-26/brazil-markets-brace-for-rout-on-lula-s-improbable-election-win"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "يقدّم العنوان والمقدمة تراجع «عقود الريال الآجلة وصندوق متداول في اليابان» كأنه الحدث المكتمل، بينما يتحدث المصدران 1 و4 عن أسواق تستعد لخسائر حادة الاثنين بعد صعود بُني على رهان فوز بولسونارو. ويبقى الصندوق الياباني بلا تفسير.",
+              "repair": "بناء المقدمة على فوز لولا واستعداد الأسواق لتبدد مكاسب الرهان على اليمين (الأسهم نحو 7% والريال نحو 5%)، وحذف الصندوق الياباني."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الخبراء معرّفون بأدوارهم ومؤسساتهم، والفائض الأولي معرّف. لكن غرض الفائض الذي يذكره المصدر 1 (تغطية جزء من فاتورة الفائدة والحد من الاقتراض الجديد) غائب. وخلاصة «لماذا يهمّ» تعيد آلية العوائد التي شرحها المتن ثم تحوّل مؤشرات مبكرة إلى عوامل حاسمة.",
+              "repair": "إضافة غرض الفائض الأولي من المصدر 1، وجعل الخلاصة مشروطة: موازنة 2027 والوزير مؤشران مبكران لا محدِّدان."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات مرتبة منطقياً: الرهان، ثم تبدده، ثم الدين، ثم المؤشرات المقبلة. لكن المقدمة تبدأ بتفصيل أسعار غامض، ثم يعود المتن إلى وصف بلومبرغ للفوز. وخاتمة «لماذا يهمّ» صدى لفقرة «الدين وتكاليف الاقتراض».",
+              "repair": "تقديم معنى الحدث في المقدمة، ونقل وصف «العودة المذهلة» إلى الفقرة الأولى، ودمج الخلاصة المكررة في استنتاج واحد."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام (7% و5% و82% و1.3% و2030) مطابقة للمصدر 1. لكن «يصبح ثمن… عوائد أعلى» تحذف الشرط «قد»، و«يتوقف» تبالغ في اليقين. كما أن «قبل الإعادة» في البطاقة لا تحدد فترة القياس.",
+              "repair": "إعادة الشرط إلى عبارة العوائد، واستبدال «يتوقف» بـ«ستكون أولى الإشارات»، وتحديد الفترة: «منذ ما قبل الجولة الأولى حتى إغلاق الجمعة»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "The headline, dek and lede together explain what changed: Lula won, and the markets that rose about 7% (stocks) and 5% (the real) on a bet on the right are bracing for steep losses on Monday (Sources 1 and 4). The losses are presented as expected, not as a completed outcome, with only the slide in real futures attributed to Bloomberg as having happened.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "The experts are identified by role and institution. The primary surplus is defined, and its purpose (covering part of the interest bill and reducing new borrowing) is linked to the debt above 82%. The «لماذا يهمّ» box rests on supported premises: the bet was lost, the plan needs Congress, mandatory spending limits cuts, and lenders may demand higher yields. Its inference, that the budget and the minister are early signals of where borrowing costs are heading, is bounded and conditional.",
+              "repair": "The sentence from Source 1 on the finance minister's task could optionally be added to the Singaravelu paragraph: «توضيح كيفية التوفيق بين التعهدات الانتخابية والحدود المالية المتاحة». It is not a required defect, since the next step is already present."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "The order is logical: the bet, its unwinding, debt and borrowing costs, then the signals to watch. The exception is the first paragraph, which ends with a stray background sentence: «وفلافيو بولسونارو نجل الرئيس السابق… الذي صدرت بحقه إدانة سابقاً». The box is not a full echo of the body; it ties the lost bet to the constraints of Congress and mandatory spending in a single inference.",
+              "repair": "Move the identification of Flávio Bolsonaro to the second paragraph next to his first-round lead."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "The figures (7%, 5%, 82%, 1.3%, 2030) and the measurement period (from before the first round to Friday's close) match Source 1, and the conditional «قد» has been restored in the box. However, «ما يتبقى من الإيرادات بعد الإنفاق وقبل سداد فوائد الدين» does not state that interest is excluded from spending.",
+              "repair": "«بعد الإنفاق من دون احتساب مدفوعات فوائد الدين»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 4,
+      "mendIssues": [
+        "The opening body paragraph joins Bloomberg's description, the slide in futures and a family background sentence with no link between them: «وأفادت بأن عقود الريال البرازيلي الآجلة تراجعت عقب إعلان النتيجة. وفلافيو بولسونارو نجل الرئيس السابق جايير بولسونارو، الذي صدرت بحقه إدانة سابقاً». Flávio's identity cuts off the market reaction and has nothing to do with it. Repair: move the identification to the second paragraph, where Source 1 introduces it as he takes first place in the first round: «بعدما تصدّر فلافيو بولسونارو، نجل الرئيس السابق جايير بولسونارو الذي أُدين سابقاً، الجولة الأولى خلافاً للتوقعات قبل ثلاثة أسابيع». The opening paragraph then stays focused on Bloomberg's description and the slide in real futures.",
+        "The definition of the primary surplus is loose: «ما يتبقى من الإيرادات بعد الإنفاق وقبل سداد فوائد الدين». It can be read as subtracting all spending, interest included, whereas Source 1 specifies the balance «قبل احتساب مدفوعات الفائدة». Repair: «والفائض الأولي هو ما يتبقى من الإيرادات بعد الإنفاق من دون احتساب مدفوعات فوائد الدين».",
+        "The order is logical: the bet, its unwinding, debt and borrowing costs, then the signals to watch. The exception is the first paragraph, which ends with a stray background sentence: «وفلافيو بولسونارو نجل الرئيس السابق… الذي صدرت بحقه إدانة سابقاً». The box is not a full echo of the body; it ties the lost bet to the constraints of Congress and mandatory spending in a single inference. — Move the identification of Flávio Bolsonaro to the second paragraph next to his first-round lead.",
+        "The figures (7%, 5%, 82%, 1.3%, 2030) and the measurement period (from before the first round to Friday's close) match Source 1, and the conditional «قد» has been restored in the box. However, «ما يتبقى من الإيرادات بعد الإنفاق وقبل سداد فوائد الدين» does not state that interest is excluded from spending. — «بعد الإنفاق من دون احتساب مدفوعات فوائد الدين»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "ارتفعت الأسهم نحو 7% والريال نحو 5% رهاناً على انتقال الحكم إلى اليمين، ويتوقع مستثمرون تراجع هذه الرهانات بعد فوز لولا",
+          "source": 1
+        },
+        {
+          "fact": "لا يمكن إقرار أي خطة مالية من دون دعم الكونغرس الذي تميل المعارضة فيه نحو اليمين، وتقيّد المعاشات والنفقات الملزمة قانوناً خفض الإنفاق",
+          "source": 1
+        },
+        {
+          "fact": "إذا ضعفت الثقة بقدرة الحكومة على خفض تكاليف الاقتراض فقد يطلب المقرضون عوائد أعلى",
+          "source": 1
+        },
+        {
+          "fact": "اختيار وزير المالية المقبل وموازنة 2027 وقيود الإنفاق فيها مؤشرات مبكرة على توجهات الحكومة",
+          "source": 1
+        }
+      ],
+      "slug": "brazil-markets-brace-for-selloff-after-lula-win-fe29f4",
+      "title": "الأسواق البرازيلية تستعد لموجة بيع بعد فوز لولا على فلافيو بولسونارو",
+      "score": 9,
+      "image": "photo"
+    }
+  ],
+  "llm": {
+    "calls": 86,
+    "failures": 8,
+    "promptTokens": 1105908,
+    "completionTokens": 270888,
+    "cacheReadTokens": 359027,
+    "costUsd": 11.4641,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 86
+    }
+  },
+  "log": [
+    "[05:32:24] image: dropped \"Dynamic scene of a stadium celebration with fireworks and cheering cro\" — names too little of election",
+    "[05:32:24] image: dropped \"A politician waves to a crowd during a lively outdoor rally in a city \" — names too little of election",
+    "[05:32:24] image: dropped \"Protesters rally at night for public universities, holding signs and b\" — names too little of election",
+    "[05:32:24] image: dropped \"Lively celebration of fans in a stadium with banners and flags during \" — names too little of election",
+    "[05:32:24] image: dropped \"Father and child wrapped in Brazil flag at an outdoor gathering advoca\" — names too little of election",
+    "[05:32:24] commons \"Lula flag rally crowd\": 0 usable of 0",
+    "[05:32:25] commons \"Lula flag\": 10 usable of 20",
+    "[05:32:25] image: dropped \"Lula e Ahmadinejad 2010.jpg\" — shows luiz, luiz, not the story's people",
+    "[05:32:25] image: dropped \"Lula-Sarkozy-2.jpg\" — shows sarkozy, not the story's people",
+    "[05:32:25] commons \"Workers' Party supporters Brazil\": 0 usable of 3",
+    "[05:32:25] commons \"Workers Party supporters Brazil\": 0 usable of 3",
+    "[05:32:26] commons \"Workers Party\": 7 usable of 20",
+    "[05:32:26] image: dropped \"Singapore Workers' Party headquarters, Geylang Road 300522.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[05:32:26] image: dropped \"Workers' Party rally in Anchorvale, Sengkang on 24 April 2025.jpg\" — shows election, not the story's people",
+    "[05:32:26] image: dropped \"Korean Workers' Party Headquarters, Cheorwon (2026-05) (4).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[05:32:26] image: dropped \"Korean Workers' Party Headquarters, Cheorwon (2026-05) (6).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[05:32:26] image: dropped \"Korean Workers' Party Headquarters, Cheorwon (2026-05) (1).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[05:32:26] image: dropped \"Korean Workers' Party Headquarters, Cheorwon (2026-05) (3).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[05:32:26] pexels \"Workers' Party supporters Brazil\": 8 usable",
+    "[05:32:26] openverse \"Workers' Party supporters Brazil\": 0 usable of 0",
+    "[05:32:26] image: dropped \"Two women in Brazil football jerseys enjoying drinks at an outdoor bar\" — names too little of workers, party",
+    "[05:32:26] image: dropped \"A joyful celebration of diversity at the LGBT pride parade in São Paul\" — names too little of workers, party",
+    "[05:32:26] image: dropped \"Cheerful soccer fans in yellow jerseys celebrating outdoors with excit\" — names too little of workers, party",
+    "[05:32:26] image: dropped \"Casual group of young adults in Brazil jerseys relaxing outdoors with \" — names too little of workers, party",
+    "[05:32:26] image: dropped \"A dedicated football fan sport ing an Esporte Clube Bahia cap watches \" — names too little of workers, party",
+    "[05:32:26] image: dropped \"Workers' Party perambulating vehicle in Tampines GRC 20250427 134351.j\" — taken in Singapore, which the story does not name",
+    "[05:32:34] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6760",
+    "[05:32:34] image: vision rejected all candidates (None matches the source photo of Lula supporters rallying after the win. #3 shows other named politicians (Elmano Freitas, Camilo Santana) beside Lula. #6 shows Kirchner. #1 is Flamengo football fans, which would mislead. #4 is a square close-up of a hand on a flag. #2 is a product close-up, and #5 is amateur curtains.)",
+    "[05:32:34] image: tier 3, the writer's own subjects: Luiz Inácio Lula da Silva | Sao Paulo stock exchange traders | Brazilian real banknotes",
+    "[05:32:35] commons \"Luiz Inácio Lula da Silva 2026\": 8 usable of 12",
+    "[05:32:35] commons \"Luiz Inácio Lula da Silva\": 5 usable of 12",
+    "[05:32:35] image: dropped \"Posse Presidencial 2003 - Luiz Inácio Lula da Silva - 55490139175.jpg\" — dated 2003, an archival picture",
+    "[05:32:35] image: dropped \"Posse Presidencial 2003 - Luiz Inácio Lula da Silva - 55489921394.jpg\" — dated 2003, an archival picture",
+    "[05:32:35] image: dropped \"Posse Presidencial 2003 - Luiz Inácio Lula da Silva - 55488767477.jpg\" — dated 2003, an archival picture",
+    "[05:32:35] image: dropped \"Posse Presidencial 2003 - Luiz Inácio Lula da Silva - 55489921534.jpg\" — dated 2003, an archival picture",
+    "[05:32:35] image: dropped \"President Tarja Halonen and President Luiz Inácio Lula da Silva in 200\" — dated 2003, an archival picture",
+    "[05:32:35] image: dropped \"Luiz Inácio Lula da Silva and George W. Bush 20080709.jpg\" — shows george, not the story's people",
+    "[05:32:35] commons \"Sao Paulo stock exchange traders 2026\": 0 usable of 0",
+    "[05:32:36] commons \"Sao Paulo stock exchange traders\": 0 usable of 1",
+    "[05:32:36] commons \"Sao Paulo\": 10 usable of 12",
+    "[05:32:37] commons \"Brazilian real banknotes 2026\": 0 usable of 0",
+    "[05:32:37] commons \"Brazilian real banknotes\": 0 usable of 12",
+    "[05:32:37] commons \"Brazilian real\": 0 usable of 12",
+    "[05:32:39] commons \"banknotes\": 3 usable of 12",
+    "[05:32:39] image: dropped \"5000 rupiah bill, 2001 series (2009 date), processed, obverse and reve\" — a scan of a note's or a coin's face, not a photograph",
+    "[05:32:39] image: dropped \"BOH&MOR-10-Protectorate of Bohemia and Moravia-50 Korun (1944).jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[05:32:39] image: dropped \"CSA-T21-$20-1862.jpg\" — dated 1862, an archival picture",
+    "[05:32:47] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7990",
+    "[05:32:47] image: \"Posse Presidencial 2007 - Luiz Inácio Lula da Silva - 554901\" names the story's topic without saying its point (Only candidate that shows the story's own person, Lula, with no other named figure in the frame. It is an archival photo from his 2007 inauguration, a fitting n); checked now and kept in reserve while the desk looks further",
+    "[05:32:51] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4471",
+    "[05:32:51] image: second check (claude-cli/claude-opus-5-5) UNCLEAR — refused \"Posse Presidencial 2007 - Luiz Inácio Lula da Silva - 554901\": This distant wide view of Brazil's Congress chamber at the 2007 inauguration makes Lula a tiny, unrecognisable figure, s",
+    "[05:32:51] image: tier 4, the story's point and its subject: Bovespa traders screens | Brazilian real notes counting | São Paulo stock traders | Bovespa trading floor Brazil | Brazilian real banknotes Brazil | stock traders screens (home: Brazil, Brazilian, São Paulo, Brasília, Rio de Janeiro)",
+    "[05:32:52] commons \"Bovespa traders screens\": 0 usable of 0",
+    "[05:32:52] commons \"Bovespa traders\": 0 usable of 1",
+    "[05:32:52] commons \"screens\": 16 usable of 24",
+    "[05:32:52] image: dropped \"Olkiluoto Nuclear Power Plant production.jpg\" — names too little of screens",
+    "[05:32:52] image: dropped \"Amiga500 system.jpg\" — names too little of screens",
+    "[05:32:52] image: dropped \"Penn Station Clock Vane Display.jpg\" — names too little of screens",
+    "[05:32:53] pexels \"Bovespa traders screens\": 8 usable",
+    "[05:32:53] openverse \"Bovespa traders screens\": 0 usable of 0",
+    "[05:32:53] image: dropped \"A man celebrates success at a multi-monitor workstation while analyzin\" — names too little of screens",
+    "[05:32:53] image: dropped \"Trader in white shirt analyzing stock charts on multiple monitors duri\" — names too little of screens",
+    "[05:32:53] image: dropped \"Professional analyzing stock market graphs on multiple monitors at wor\" — names too little of screens",
+    "[05:32:53] image: dropped \"A professional in an office analyzing financial charts on multiple mon\" — names too little of screens",
+    "[05:32:55] commons \"Brazilian real notes counting\": 9 usable of 24",
+    "[05:32:55] image: dropped \"Ms Alice (312687194).jpg\" — names too little of real, notes, counting",
+    "[05:32:55] image: dropped \"Bougainvillea (variegated leaves) (397436135).jpg\" — names too little of real, notes, counting",
+    "[05:32:55] image: dropped \"Naturalis Biodiversity Center - RMNH.AVES.120678 - Hemitriccus striati\" — names too little of real, notes, counting",
+    "[05:32:55] image: dropped \"Naturalis Biodiversity Center - RMNH.AVES.153080 2 - Geothlypis aequin\" — names too little of real, notes, counting",
+    "[05:32:55] image: dropped \"Naturalis Biodiversity Center - RMNH.AVES.125908 1 - Todirostrum polio\" — names too little of real, notes, counting",
+    "[05:32:55] image: dropped \"Naturalis Biodiversity Center - RMNH.AVES.125907 2 - Todirostrum polio\" — names too little of real, notes, counting",
+    "[05:32:55] image: dropped \"Naturalis Biodiversity Center - RMNH.AVES.125908 2 - Todirostrum polio\" — names too little of real, notes, counting",
+    "[05:32:55] image: dropped \"Naturalis Biodiversity Center - RMNH.AVES.153080 1 - Geothlypis aequin\" — names too little of real, notes, counting",
+    "[05:32:55] image: dropped \"Naturalis Biodiversity Center - RMNH.AVES.125907 1 - Todirostrum polio\" — names too little of real, notes, counting",
+    "[05:32:55] pexels \"Brazilian real notes counting\": 8 usable",
+    "[05:32:55] openverse \"Brazilian real notes counting\": 0 usable of 0",
+    "[05:32:56] commons \"São Paulo stock traders\": 0 usable of 1",
+    "[05:32:56] commons \"São Paulo\": 18 usable of 24",
+    "[05:32:56] image: dropped \"Palácio das Indústrias (São Paulo city).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[05:32:57] commons \"Bovespa trading floor Brazil\": 0 usable of 0",
+    "[05:32:57] commons \"Bovespa trading\": 5 usable of 6",
+    "[05:32:57] image: dropped \"Foz do Iguaçú - Veículos de serviço da TAM Linhas Aéreas - Service veh\" — names too little of trading",
+    "[05:32:57] image: dropped \"Foz do Iguaçú - Airbus A320 - PT-MZZ em Aeroporto Internacional de Foz\" — names too little of trading",
+    "[05:32:57] image: dropped \"Foz do Iguaçú - Descarregando o Airbus A320 da TAM Linhas Aéreas - Unl\" — names too little of trading",
+    "[05:32:57] image: dropped \"Foz do Iguaçú - Passageiros embarcando no Airbus A320 da TAM Linhas Aé\" — names too little of trading",
+    "[05:32:57] image: dropped \"Viagem para Foz do Iguaçú - Trip to Foz do Iguaçu - Descida para aprox\" — names too little of trading",
+    "[05:32:57] pexels \"Bovespa trading floor Brazil\": 8 usable",
+    "[05:32:57] openverse \"Bovespa trading floor Brazil\": 0 usable of 0",
+    "[05:32:57] image: dropped \"Detailed close-up of a newspaper displaying global financial market st\" — names too little of trading",
+    "[05:32:57] image: dropped \"Close-up of stock market analysis charts on a monitor, showcasing mark\" — names too little of trading",
+    "[05:32:57] image: dropped \"Spacious corridor in a modern shopping center with minimal lighting an\" — names too little of trading",
+    "[05:32:57] image: dropped \"Colleagues in a modern office reviewing stock market trends and data o\" — names too little of trading",
+    "[05:32:57] image: dropped \"Man in a headset analyzing stock data on a computer monitor at his wor\" — names too little of trading",
+    "[05:32:57] image: dropped \"A solitary figure walks through a dimly lit metro station with modern \" — names too little of trading",
+    "[05:32:58] commons \"Brazilian real banknotes Brazil\": 0 usable of 24",
+    "[05:32:59] commons \"Brazilian real\": 0 usable of 24",
+    "[05:32:59] commons \"Brazil\": 7 usable of 24",
+    "[05:32:59] image: dropped \"Reflection of Parque Cultural Paulista building in Avenida Paulista, B\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[05:32:59] image: dropped \"Porto Alegre - Brazil Landscape-Night.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[05:32:59] image: dropped \"Rio de Janeiro skyline and Sugarloaf Mountain at sunset, Brazil 3.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[05:32:59] pexels \"Brazilian real banknotes Brazil\": 8 usable",
+    "[05:33:04] openverse \"Brazilian real banknotes Brazil\": 2 usable of 2",
+    "[05:33:05] commons \"stock traders screens\": 0 usable of 0",
+    "[05:33:06] commons \"stock traders\": 5 usable of 24",
+    "[05:33:06] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[05:33:06] image: dropped \"Toronto Stock Exchange 1956.jpg\" — dated 1956, an archival picture",
+    "[05:33:06] image: dropped \"The diseases of live stock and their most efficient remedies; (1855) (\" — dated 1855, an archival picture",
+    "[05:33:06] pexels \"stock traders screens\": 8 usable",
+    "[05:33:11] openverse \"stock traders screens\": 0 usable of 1",
+    "[05:33:11] image: dropped \"Frustrated man monitoring multiple trading graphs on computer screens \" — names too little of stock, traders",
+    "[05:33:11] image: dropped \"Traders on a break, NYSE (3961958594).jpg\" — taken in United States, which the story does not name",
+    "[05:33:11] image: dropped \"Ripon Cathedral Rood Screen, Nth Yorkshire, UK - Diliff.jpg\" — taken in United Kingdom, which the story does not name",
+    "[05:33:11] image: dropped \"Deutsche-boerse-parkett-ffm006.jpg\" — taken in Germany, which the story does not name",
+    "[05:33:11] image: thumbnail HTTP 403 for https://live.staticflickr.com/5291/5471385929_3b76ff263a_n.jpg",
+    "[05:33:17] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6086",
+    "[05:33:17] image: \"\" names the story's topic without saying its point (The story turns on the real and on Brazilian assets. Photo 1 shows real notes and coins spread as money, sharp and in the story's own currency, which fits a cur); checked now and kept in reserve while the desk looks further",
+    "[05:33:21] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3668",
+    "[05:33:21] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"\": A sharp, well-exposed frame of Brazilian real notes and coins pictures the story's own currency, whose sell-off is at th",
+    "[05:33:27] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6250",
+    "[05:33:27] image: \"Stack of 100 Brazilian real notes placed on a blue surface, \" names the story's topic without saying its point; the desk already holds one such, and looks further",
+    "[05:33:27] image: the story's people first: Luiz Inácio Lula da Silva Flávio Bolsonaro 2026 | Luiz Inácio Lula da Silva Flávio Bolsonaro | Luiz Inácio Lula da Silva and Flávio Bolsonaro | Luiz Inácio Lula da Silva 2026 | Flávio Bolsonaro 2026",
+    "[05:33:28] commons \"Luiz Inácio Lula da Silva Flávio Bolsonaro 2026\": 1 usable of 2",
+    "[05:33:28] commons \"Luiz Inácio Lula da Silva Flávio Bolsonaro\": 1 usable of 2",
+    "[05:33:29] commons \"Luiz Inácio Lula da Silva and Flávio Bolsonaro\": 1 usable of 2",
+    "[05:33:29] commons \"Luiz Inácio Lula da Silva 2026\": 16 usable of 20",
+    "[05:33:29] image: dropped \"Posse Presidencial 2003 - Luiz Inácio Lula da Silva - 55488767477.jpg\" — dated 2003, an archival picture",
+    "[05:33:29] image: dropped \"Posse Presidencial 2003 - Luiz Inácio Lula da Silva - 55490139175.jpg\" — dated 2003, an archival picture",
+    "[05:33:29] image: dropped \"Posse Presidencial 2003 - Luiz Inácio Lula da Silva - 55489921394.jpg\" — dated 2003, an archival picture",
+    "[05:33:29] image: dropped \"Posse Presidencial 2003 - Luiz Inácio Lula da Silva - 55489921534.jpg\" — dated 2003, an archival picture",
+    "[05:33:29] image: dropped \"Posse Presidencial 2003 - Luiz Inácio Lula da Silva - 55489921679.jpg\" — dated 2003, an archival picture",
+    "[05:33:29] image: dropped \"Posse Presidencial 2003 - Luiz Inácio Lula da Silva - 55489748956.jpg\" — dated 2003, an archival picture",
+    "[05:33:29] image: dropped \"Posse Presidencial 2003 - Luiz Inácio Lula da Silva - 55489748931.jpg\" — dated 2003, an archival picture",
+    "[05:33:29] image: dropped \"Posse Presidencial 2003 - Luiz Inácio Lula da Silva - 55489749006.jpg\" — dated 2003, an archival picture",
+    "[05:33:29] commons \"Flávio Bolsonaro 2026\": 7 usable of 20",
+    "[05:33:29] image: dropped \"Donald Trump, Eduardo Bolsonaro, Flávio Bolsonaro, and Paulo Figueired\" — shows donald, not the story's people",
+    "[05:33:29] image: dropped \"Donald Trump and Flávio Bolsonaro.jpg\" — shows donald, not the story's people",
+    "[05:33:29] image: people shortlist: 2026 23.10.2026 - Debate na Globo - 55608517678.jpg | 2026 Mikhail Mishustin and Luiz Inácio Lula da Silva (2 | 2026 Entrevista senador Flávio Bolsonaro - 55240860576. | 2026 Entrevista senador Flávio Bolsonaro - 55240399716.",
+    "[05:33:39] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=9461",
+    "[05:33:39] image: \"23.10.2026 - Debate na Globo - 55608517678.jpg\" names the story's topic without saying its point; the desk already holds one such, and looks further",
+    "[05:33:39] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"\"",
+    "[05:33:39] published \"الأسواق البرازيلية تستعد لموجة بيع بعد فوز لولا على فلافيو بولسونارو\" -> brazil-markets-brace-for-selloff-after-lula-win-fe29f4",
+    "[05:34:26] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=47523",
+    "[05:35:14] llm fail role=desk provider=claude model=claude-opus-5-5 attempt=1: an expert identification is not grounded or copies a long source phrase; rewrite it concisely and faithfully",
+    "[05:35:47] llm fail role=desk provider=claude model=claude-opus-5-5 attempt=2: an expert identification is not grounded or copies a long source phrase; rewrite it concisely and faithfully",
+    "[05:36:20] desk notes: 5 of 31 facts dropped (not in their source or copied from it)",
+    "[05:36:20] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=3 ms=30065",
+    "[05:37:22] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: why_basis needs one to four reported premises with source numbers",
+    "[05:38:17] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=2 ms=51931",
+    "[05:38:53] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=36090",
+    "[05:38:53] evidence pair \"الأسواق البرازيلية تستعد لموجة بيع بعد فوز لولا على فلافيو بولسونارو\": 0 proved error(s) live (v37), 0 with the kept lessons (v0); the private drafts are not published"
+  ]
+}

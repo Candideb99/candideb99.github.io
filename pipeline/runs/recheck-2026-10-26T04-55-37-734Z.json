@@ -1,0 +1,70 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-26T04:55:37.734Z",
+  "durationSec": 65,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "centcom-gulf-oil-exports-hormuz-billion-barrels-2011b9",
+      "title": "سنتكوم: قواتها ساعدت دول الخليج على تصدير أكثر من 1.5 مليار برميل عبر هرمز",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 16,
+        "weak": 0,
+        "noEvidence": 2,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "adnoc-local-manufacturing-60-billion-dirhams-002b80",
+      "title": "أدنوك تطرح فرص تصنيع محلي بأكثر من 60 مليار درهم حتى 2030",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 38,
+        "checked": 38,
+        "supported": 34,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 2,
+    "failures": 0,
+    "promptTokens": 16942,
+    "completionTokens": 13179,
+    "cacheReadTokens": 0,
+    "costUsd": 0.3991,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 2
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[04:55:38] second look: 2 to read now (2 published pieces not yet read; 123 read clean before publication and left out of the audit sample)",
+    "[04:56:12] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=34237",
+    "[04:56:12] centcom-gulf-oil-exports-hormuz-billion-barrels-2011b9: 18 of 18 sentences checked · 16 supported · 2 without a source · 0 confirmed error(s)",
+    "[04:56:42] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=63595",
+    "[04:56:42] adnoc-local-manufacturing-60-billion-dirhams-002b80: 38 of 38 sentences checked · 34 supported · 0 without a source · 0 confirmed error(s) · 1 listed for a person"
+  ]
+}

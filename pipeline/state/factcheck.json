@@ -12369,6 +12369,90 @@
       ],
       "weak": [],
       "outcome": "listed"
+    },
+    "centcom-gulf-oil-exports-hormuz-billion-barrels-2011b9": {
+      "at": "2026-10-26T04:55:38.235Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v36",
+      "checker": "7bb3653e29",
+      "publishedAt": "2026-10-25T21:26:03.803Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 16,
+        "weak": 0,
+        "noEvidence": 2,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "في بيان نشرته على منصة «إكس»، قالت القيادة إن أكثر من 3 آلاف سفينة تجارية اجتازت المضيق خلال الأشهر الستة الماضية بدعم من قواتها، وإن أكثر من 95% من السفن التي أبحرت فيه عبرته بأمان، رغم ما وصفته باعتداءات الحرس الثوري الإيراني.",
+        "تفقّد كوبر خلال زيارته القوات الأمريكية المنتشرة في المضيق، والتقى عسكريين شاركوا في مهمة نزع الألغام، وحلّق فوق الممر بمروحية «سي إتش-47 شينوك» تابعة للجيش الأمريكي."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "adnoc-local-manufacturing-60-billion-dirhams-002b80": {
+      "at": "2026-10-26T04:55:38.208Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "7bb3653e29",
+      "publishedAt": "2026-10-25T21:35:27.841Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 38,
+        "checked": 38,
+        "supported": 34,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وذكر في كلمته أمام المنتدى أن البرنامج الوطني للقيمة المحلية المضافة أعاد توجيه أكثر من 473 مليار درهم، منها 126 ملياراً العام الماضي، ووفر 28 ألف وظيفة للمواطنين.",
+          "quote": "He said the program has created 28,000 jobs for Emiratis and redirected more than 473 billion dirhams into the economy.",
+          "source": "Gulf News"
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "يُبقي إطار التقييم الجديد 70% من وزن العرض للشروط التجارية، فيتوقف تحوّل فرص الـ60 مليار درهم إلى إنتاج داخل الإمارات على قدرة المصنعين المحليين على منافسة الموردين في السعر والتنفيذ، لا على أفضلية القيمة المحلية وحدها.",
+          "quote": "From November 1, bids will be assessed using a formula weighted 70 per cent towards commercial terms and 30 per cent towards ICV, said Salama Alawadhi, senior vice president for group commercial, ICV and industrial development."
+        },
+        {
+          "sentence": "وتعتزم أدنوك أيضاً خفض متطلبات الوثائق إلى النصف، وإلغاء التأهيل المسبق لـ60% من فئات الخدمات، وتقليص مدة اعتماد الموردين وانضمامهم إلى منظومة مشترياتها بما يصل إلى 80%.",
+          "quote": "Adnoc is also simplifying how suppliers compete for contracts, aiming to shorten purchasing cycles by up to 40 per cent, halve documentation requirements and remove prequalification for 60 per cent of service categories."
+        },
+        {
+          "sentence": "وأضافت أن العروض التجارية وعروض القيمة المحلية ستُقيَّم معاً اعتباراً من 1 نوفمبر، بوزن 70% للشروط التجارية و30% للقيمة المحلية، وأن العقود التي تقل عن مليوني درهم ستُعفى من متطلبات القيمة المحلية.",
+          "quote": "Contracts below Dh2 million will be exempt from ICV requirements, while those below Dh50 million will no longer face ICV retention obligations, said Salama Al Awadhi, Adnoc’s senior vice president for group commercial, ICV and industrial development."
+        }
+      ],
+      "outcome": "listed"
     }
   }
 }

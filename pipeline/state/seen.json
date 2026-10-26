@@ -2233,28 +2233,28 @@
       "strikes": 1
     },
     "d5a60c1b33d7fcd4": {
-      "at": "2026-10-25T12:02:33.513Z",
-      "decision": "rejected",
-      "title": "Sabic returns to profit in third quarter as revenue rises despite regional conflict",
-      "strikes": 1
+      "at": "2026-10-26T05:10:06.308Z",
+      "decision": "published",
+      "slug": "sabic-returns-to-profit-third-quarter-92d313",
+      "title": "Sabic returns to profit in third quarter as revenue rises despite regional conflict"
     },
     "22ca231891e63f91": {
-      "at": "2026-10-25T12:02:33.513Z",
-      "decision": "rejected",
-      "title": "أرباح سابك تفوق التوقعات وتسجل أعلى مستوياتها في عامين",
-      "strikes": 1
+      "at": "2026-10-26T05:10:06.308Z",
+      "decision": "published",
+      "slug": "sabic-returns-to-profit-third-quarter-92d313",
+      "title": "أرباح سابك تفوق التوقعات وتسجل أعلى مستوياتها في عامين"
     },
     "18071cef20568730": {
-      "at": "2026-10-25T12:02:33.513Z",
-      "decision": "rejected",
-      "title": "\"سابك\" تسجل ارتفاعا 40% في الأرباح المعدلة جراء التميز التشغيلي",
-      "strikes": 1
+      "at": "2026-10-26T05:10:06.308Z",
+      "decision": "published",
+      "slug": "sabic-returns-to-profit-third-quarter-92d313",
+      "title": "\"سابك\" تسجل ارتفاعا 40% في الأرباح المعدلة جراء التميز التشغيلي"
     },
     "de333e15e6f66534": {
-      "at": "2026-10-25T12:02:33.513Z",
-      "decision": "rejected",
-      "title": "أسعار البيع تدفع \"سابك\" لتحقيق أرباح فصلية ضعف التوقعات",
-      "strikes": 1
+      "at": "2026-10-26T05:10:06.308Z",
+      "decision": "published",
+      "slug": "sabic-returns-to-profit-third-quarter-92d313",
+      "title": "أسعار البيع تدفع \"سابك\" لتحقيق أرباح فصلية ضعف التوقعات"
     },
     "1ba80a4f3d8f0c83": {
       "at": "2026-10-25T12:14:40.187Z",
@@ -2441,6 +2441,72 @@
       "decision": "published",
       "slug": "egypt-world-bank-mining-charter-gdp-e12932",
       "title": "Egypt, World Bank launch partnership to develop mining sector"
+    },
+    "caeacf2dba05967f": {
+      "at": "2026-10-26T05:19:01.418Z",
+      "decision": "published",
+      "slug": "saudi-singapore-crude-storage-jurong-caverns-14f6a5",
+      "title": "السعودية وسنغافورة ترتبان لتخزين النفط الخام بدءاً من 2027"
+    },
+    "95503fa17ce7caad": {
+      "at": "2026-10-26T05:19:01.418Z",
+      "decision": "published",
+      "slug": "saudi-singapore-crude-storage-jurong-caverns-14f6a5",
+      "title": "متي تبدأ السعودية تخزين النفط الخام في سنغافورة؟"
+    },
+    "641696419a78b390": {
+      "at": "2026-10-26T05:23:57.949Z",
+      "decision": "rejected",
+      "title": "Musk'tan 40 milyar dolarlık hamle: Yapay zekâ için dev borçlanma",
+      "strikes": 1
+    },
+    "443921a561a9cf6b": {
+      "at": "2026-10-26T05:23:57.949Z",
+      "decision": "rejected",
+      "title": "ماسك يعلن إغلاق تمويل بـ40 مليار دولار لشراء الرقائق",
+      "strikes": 1
+    },
+    "df98bea0a55a4512": {
+      "at": "2026-10-26T05:23:57.949Z",
+      "decision": "rejected",
+      "title": "Musk says SpaceX landed a $40 billion debt deal — and forecasts doom for some AI rivals",
+      "strikes": 1
+    },
+    "dd38ab92e3e248f9": {
+      "at": "2026-10-26T05:23:57.949Z",
+      "decision": "rejected",
+      "title": "SpaceX closes $40 billion debt deal for AI chips, Elon Musk says",
+      "strikes": 1
+    },
+    "21ddf71d5f3af362": {
+      "at": "2026-10-26T05:33:39.438Z",
+      "decision": "published",
+      "slug": "brazil-markets-brace-for-selloff-after-lula-win-fe29f4",
+      "title": "البرازيل أمام اختبار ثقة المستثمرين بعد فوز لولا"
+    },
+    "52798fd7325a61c3": {
+      "at": "2026-10-26T05:33:39.438Z",
+      "decision": "published",
+      "slug": "brazil-markets-brace-for-selloff-after-lula-win-fe29f4",
+      "title": "EM Stocks Fall Before Key Earnings, Brazil in Focus as Lula Wins"
+    },
+    "c39de0f103a5e6c6": {
+      "at": "2026-10-26T05:33:39.438Z",
+      "decision": "published",
+      "slug": "brazil-markets-brace-for-selloff-after-lula-win-fe29f4",
+      "title": "Lula Wins Brazil's Presidential Election, Real Futures, Japan ETF Slide"
+    },
+    "b6011b0c33ac4528": {
+      "at": "2026-10-26T05:33:39.438Z",
+      "decision": "published",
+      "slug": "brazil-markets-brace-for-selloff-after-lula-win-fe29f4",
+      "title": "Brazil Markets Brace for Rout on Lula’s Improbable Election Win"
+    },
+    "edd2782c8e936910": {
+      "at": "2026-10-26T05:33:39.438Z",
+      "decision": "published",
+      "slug": "brazil-markets-brace-for-selloff-after-lula-win-fe29f4",
+      "title": "Lula kazandı, Brezilya fonunda yüzde 16'lık düşüş"
     }
   }
 }

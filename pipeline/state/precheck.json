@@ -6766,6 +6766,103 @@
           "noted": []
         }
       ]
+    },
+    "sabic-returns-to-profit-third-quarter-92d313": {
+      "at": "2026-10-26T05:10:06.301Z",
+      "title": "صافي ربح سابك يتجاوز ضعف التوقعات بعد خسارة الربع الثاني",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v37",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 37,
+            "checked": 37,
+            "supported": 27,
+            "weak": 7,
+            "noEvidence": 2,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 1,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 12,
+              "field": "body",
+              "class": "attribution",
+              "verdict": "contradicted",
+              "status": "unverified",
+              "sentence": "أظهر إفصاح سابك للبورصة الأحد أن صافي ربح الأشهر الثلاثة المنتهية في سبتمبر ارتفع 16.3% مقارنة بالفترة نفسها من العام الماضي، وهو أعلى مستوى له منذ الربع الثالث من 2024.",
+              "quote": "صافي الربح العائد للمساهمين بلغ 499 مليون ريال، وهو أعلى مستوى منذ الربع الثالث 2024.",
+              "source": "Al Eqtisadiah",
+              "sourceN": 1,
+              "correction": "The 16.3% rise comes from the filing as reported by The National, but the 'highest since Q3 2024' comparison is Al Eqtisadiah's own reporting, not something the filing is quoted as saying."
+            }
+          ]
+        }
+      ]
+    },
+    "saudi-singapore-crude-storage-jurong-caverns-14f6a5": {
+      "at": "2026-10-26T05:19:01.403Z",
+      "title": "السعودية تعتزم مع سنغافورة إبرام اتفاق لتخزين نفطها في كهوف جورونج",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v37",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 9,
+            "checked": 9,
+            "supported": 7,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "brazil-markets-brace-for-selloff-after-lula-win-fe29f4": {
+      "at": "2026-10-26T05:33:39.432Z",
+      "title": "الأسواق البرازيلية تستعد لموجة بيع بعد فوز لولا على فلافيو بولسونارو",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v37",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 27,
+            "checked": 27,
+            "supported": 27,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

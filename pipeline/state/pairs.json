@@ -1207,6 +1207,50 @@
         ],
         "programmatic": 3
       }
+    },
+    {
+      "at": "2026-10-26T05:33:39.438Z",
+      "slug": "brazil-markets-brace-for-selloff-after-lula-win-fe29f4",
+      "checker": "7bb3653e29.2",
+      "lessons": "v37",
+      "lessonsHash": "747d5bc867",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 25,
+        "notFound": 3,
+        "checked": 29,
+        "words": 434,
+        "keyFacts": 4,
+        "classes": [],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 21,
+        "notFound": 3,
+        "checked": 24,
+        "words": 358,
+        "keyFacts": 2,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 21,
+        "notFound": 3,
+        "checked": 24,
+        "words": 358,
+        "keyFacts": 2,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }
