@@ -7076,6 +7076,34 @@
           "noted": []
         }
       ]
+    },
+    "saudi-morocco-electricity-costs-households-2027-e7c8c6": {
+      "at": "2026-10-26T20:02:05.277Z",
+      "title": "السعودية والمغرب يختاران طريقين لتوزيع كلفة الكهرباء على الأسر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 54,
+            "checked": 54,
+            "supported": 33,
+            "weak": 12,
+            "noEvidence": 0,
+            "notFound": 9,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
