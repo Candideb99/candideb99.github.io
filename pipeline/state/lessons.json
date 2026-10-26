@@ -1061,6 +1061,21 @@
       ],
       "falseFlags": 0,
       "checked": 33
+    },
+    {
+      "at": "2026-10-26T12:52:29.976Z",
+      "checker": "7bb3653e29",
+      "slug": "brazil-markets-brace-for-selloff-after-lula-win-fe29f4",
+      "knownClean": true,
+      "seeded": 3,
+      "found": 1,
+      "kinds": [
+        "period",
+        "hedge",
+        "figure"
+      ],
+      "falseFlags": 0,
+      "checked": 27
     }
   ],
   "tests": [
@@ -1255,6 +1270,55 @@
       "canary": {
         "seeded": 3,
         "found": 3,
+        "falseFlags": 0,
+        "alarm": false
+      },
+      "calls": 1
+    },
+    {
+      "at": "2026-10-26T12:52:29.979Z",
+      "checker": "7bb3653e29",
+      "live": 37,
+      "liveHash": "747d5bc867",
+      "kept": 0,
+      "decision": "keep",
+      "reason": "unproven so far: better in 0 pairs, worse in 2, tied in 6 (evidence ×0.3 of 20; harm ×2.3 of 10)",
+      "vsKept": {
+        "n": 8,
+        "better": 0,
+        "worse": 2,
+        "tied": 6,
+        "down": 3,
+        "up": 3,
+        "e": 0.3333333333333335,
+        "harm": 2.3333333333333353,
+        "saysLess": 0.4571428571428411
+      },
+      "own": {
+        "n": 2,
+        "better": 0,
+        "worse": 0,
+        "tied": 2,
+        "down": 0,
+        "up": 1,
+        "e": 1,
+        "harm": 1,
+        "saysLess": 0.5
+      },
+      "vsNone": {
+        "n": 8,
+        "better": 0,
+        "worse": 2,
+        "tied": 6,
+        "down": 3,
+        "up": 3,
+        "e": 0.3333333333333335,
+        "harm": 2.3333333333333353,
+        "saysLess": 0.4571428571428411
+      },
+      "canary": {
+        "seeded": 3,
+        "found": 1,
         "falseFlags": 0,
         "alarm": false
       },
