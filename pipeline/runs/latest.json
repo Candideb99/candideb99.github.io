@@ -1,472 +1,190 @@
 {
-  "mode": "news",
-  "startedAt": "2026-10-26T07:46:05.650Z",
-  "durationSec": 2260,
-  "published": 3,
+  "mode": "explainer",
+  "startedAt": "2026-10-26T11:30:41.365Z",
+  "durationSec": 498,
+  "published": 1,
   "refreshed": 0,
   "report": [
     {
-      "headline": "بنك القاهرة يسعّر طرحه عند أعلى النطاق بعد تغطية الشريحة الخاصة 19.8 مرة",
-      "section": "markets",
-      "importance": 8,
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-10-26/banque-du-caire-says-ipo-priced-at-top-end-of-range",
-        "https://www.youm7.com/story/2026/10/26/%D8%AA%D8%BA%D8%B7%D9%8A%D8%A9-%D8%B4%D8%B1%D9%8A%D8%AD%D8%A9-%D8%A7%D9%84%D8%B7%D8%B1%D8%AD-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5-%D9%84%D8%A8%D9%86%D9%83-%D8%A7%D9%84%D9%82%D8%A7%D9%87%D8%B1%D8%A9-%D8%AA%D9%82%D9%81%D8%B2-%D8%A5%D9%84%D9%89-19-8/7593698",
-        "https://www.masrawy.com/news/news_economy/details/2026/10/25/3068639/%D8%B1%D8%A6%D9%8A%D8%B3-%D8%A7%D9%84%D8%A8%D9%88%D8%B1%D8%B5%D8%A9-%D8%AA%D8%BA%D8%B7%D9%8A%D8%A9-%D8%B7%D8%B1%D8%AD-%D8%A8%D9%86%D9%83-%D8%A7%D9%84%D9%82%D8%A7%D9%87%D8%B1%D8%A9-6-%D9%85%D8%B1%D8%A7%D8%AA-%D8%AA%D8%A4%D9%83%D8%AF-%D8%AB%D9%82%D8%A9-%D8%A7%D9%84%D9%85%D8%A4%D8%B3%D8%B3%D8%A7%D8%AA-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF-%D8%A7%D9%84%D9%85%D8%B5%D8%B1%D9%8A"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "يوحي العنوان والدك والافتتاحية بأن التسعير يخص الطرح كله وأن العملية اكتملت. وتقول الفقرة الرابعة إن السعر «يدفعه المستثمرون الذين تُخصص لهم أسهم في الشريحة»، فيظن القارئ أنه سعر الشريحة الخاصة وحدها. والمصدر 2 يوضح أن شريحة الطرح العام ما زالت مفتوحة بالسعر نفسه حتى 28 أكتوبر.",
-              "repair": "ذكر في الدك أو الفقرة الثانية أن الاكتتاب في الشريحة العامة بسعر 5.30 جنيه مستمر حتى 28 أكتوبر، وأن ما أُغلق هو الطرح الخاص فقط."
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "السياق المتاح في المصادر هو اعتماد الهيئة العامة للرقابة المالية نشرة الطرح في 18 أكتوبر، وإفصاحات المستثمرين المؤهلين في 19 و22 أكتوبر، ووصف «بلومبرغ» للطرح بأنه الأكبر منذ أكثر من عقد. استُخدم الوصف الأخير، وغابت النشرة، وعُوِّض عنها بتعريفات عامة غير مسندة. صندوق «لماذا يهمّ» يستند إلى مقدمات مسندة: الطلب القوي (المصدر 1)، والتغطية (المصدر 2)، وقول رضوان إن الأجانب يجلبون أموالاً جديدة (المصدر 3). ويستنتج منها استنتاجاً مشروطاً بـ«إذا» عن بقاء هذه الأموال بعد الإدراج، وهو استنتاج مقبول. لكن «هو ما سيحدد» تجعل عاملاً واحداً حاسماً بأكثر مما تسمح به المقدمات.",
-              "repair": "استبدال شرح الآلية والتعريفات بتسلسل النشرة والإفصاحات (المصدر 2). وفي الصندوق تخفيف «هو ما سيحدد» إلى «سيكون من أهم ما يحدد»، مع إبقاء الشرط."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "تبدأ المسودة بخبر واضح، ثم تكرر شرح رقم 19.8 ثلاث مرات (الافتتاحية، والفقرة الأولى، والفقرة الثانية). تنقل بعد ذلك خبر «بلومبرغ» في فقرة منفصلة عن التسعير الذي تشرحه الفقرة الرابعة، مع أنهما معلومة واحدة. وتنتهي بتصريحات عامة لرضوان لا تخدم الحدث.",
-              "repair": "ترتيب مقترح: (1) السعر والحد الأعلى والطلب القوي وأنه الأكبر منذ عقد، بحسب البنك و«بلومبرغ». (2) التغطية بالرقمين وتواريخ الإفصاح في فقرة واحدة. (3) النشرة المعتمدة وآلية البناء السعري، ثم موعد الطرح العام في 28 أكتوبر. (4) رد فعل رئيس البورصة: الإقبال الأجنبي ومقارنة الأسعار بالأسواق المحيطة. تُحذف النصائح العامة."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الأرقام 5.30 جنيه و6 مرات و19.8 مرة، والتواريخ 19 و22 و23 أكتوبر، صحيحة. والاقتباسان من رضوان حرفيان من المصدر 3. لكن عبارة «محسوبة على الشريحة كاملة بما فيها الحصص المحجوزة... فيعبّر عن حجم المنافسة على ما عُرض فعلياً على بقية المستثمرين» تتجاوز ما يقوله المصدر 2، وهو أن التغطية «ترتفع إلى 19.8 مرة بعد استبعاد الأسهم المخصصة للمستثمرين المؤهلين». كما أن قصر السعر على المخصَّص لهم في الشريحة الخاصة يُغفل أنه السعر نفسه في الشريحة العامة.",
-              "repair": "صياغة الفرق بين الرقمين كما ورد في إخطار البنك: «6 مرات، وترتفع إلى 19.8 مرة عند استبعاد الأسهم المخصصة لمستثمرين مؤهلين أُفصح عنهم يومي 19 و22 أكتوبر»، دون تفسير إضافي لما «يعبّر» عنه الرقم. وذكر أن السعر النهائي ينطبق على الشريحة العامة أيضاً."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يوضح العنوان والدِّك والفقرة الرابعة أن ما أُغلق هو الطرح الخاص وحده، وأن شريحة الطرح العام مفتوحة بالسعر نفسه، 5.30 جنيه، حتى الأربعاء 28 أكتوبر (المصدر 2). والتاريخ يوافق يوم الأربعاء فعلاً. زال الإيحاء السابق بأن الطرح اكتمل.",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "صار السياق المسند حاضراً: اعتماد الهيئة العامة للرقابة المالية نشرة الطرح في 18 أكتوبر، وآلية البناء السعري (المصدر 2)، ووصف «بلومبرغ» للطرح بأنه الأكبر منذ أكثر من عقد (المصدر 1)، ورضوان معرَّف بمنصبه (المصدر 3). أما صندوق «لماذا يهمّ» فيبني على مقدمات مسندة: الطلب القوي، والتغطية، وقول رضوان إن الأجانب يجلبون أموالاً جديدة. ويستنتج منها استنتاجاً مشروطاً بـ«إذا» ومخففاً بـ«من أهم ما يحدد» عن بقاء السيولة بعد الإدراج. وهو استنتاج متناسب ولا يكرر خاتمة المتن.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "تتكرر تواريخ 19 و22 أكتوبر بين الفقرتين الثانية والثالثة. وتعيد جملة «فالطرح الخاص وحده أُغلق...» ما قالته الجملة التي قبلها. وتكرر الفقرة الأولى ما في الافتتاحية عن الحد الأعلى للنطاق. ويتوزع كلام رضوان على فقرتين تفصل بينهما فقرة مفتوحة بإحالة إلى ما سبق («جاءت تصريحات رئيس البورصة»).",
-              "repair": "إعادة البناء في أربع فقرات: (1) الإخطار وإغلاق الشريحة الخاصة في 23 أكتوبر. (2) النشرة وآلية البناء السعري والتغطية بالرقمين، مع ذكر تواريخ الإفصاح مرة واحدة. (3) الطرح العام حتى 28 أكتوبر بالسعر نفسه، في جملة واحدة. (4) رضوان مع سياق مداخلته ونسبتها إلى «مصراوي» عند أول ذكر، ثم الإقبال الأجنبي ومقارنة الأسعار."
-            },
-            "precision": {
-              "status": "clear",
-              "evidence": "الأرقام 5.30 جنيه و6 مرات و19.8 مرة، والتواريخ 18 و19 و22 و23 و28 أكتوبر، مطابقة للمصدر 2. والاقتباسان من رضوان حرفيان من المصدر 3. وحُذف التفسير الزائد لمعنى رقم 19.8. أما ربط رقم رضوان (6 مرات) برقم الشريحة الخاصة قبل الاستبعاد فقراءة معقولة، ولا تغيّر أي رقم.",
-              "repair": ""
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 5,
+      "headline": "لماذا تخزّن السعودية نفطها في سنغافورة بدل خزاناتها داخل المملكة؟",
+      "section": "explainers",
+      "outcome": "published",
+      "mendedAfterReview": 6,
       "mendIssues": [
-        "تكرار في المعنى (بقية من الملاحظتين 6 و9): تواريخ إفصاح المستثمرين المؤهلين ترد مرتين متتاليتين. تقول الفقرة الثانية: «وبعد اعتماد النشرة أفصح البنك عن مستثمرين مؤهلين خُصصت لهم أسهم في الطرح، في 19 أكتوبر ثم في 22 منه»، ثم تقول الفقرة الثالثة: «عند استبعاد الأسهم المخصصة للمستثمرين المؤهلين الذين سبق الإفصاح عنهم يومي 19 و22 أكتوبر». كذلك يصوغ المصدر 2 الإفصاح بالمبني للمجهول («سبق الإفصاح عنهم»)، فلا يُسند الفعل صراحة إلى البنك. الإصلاح: حذف جملة الإفصاح من الفقرة الثانية، وإبقاء التواريخ في جملة التغطية وحدها: «بلغت تغطية شريحة الطرح الخاص 6 مرات، وترتفع إلى 19.8 مرة عند استبعاد الأسهم المخصصة لمستثمرين مؤهلين سبق الإفصاح عنهم يومي 19 و22 أكتوبر». وتُضم هذه الجملة إلى فقرة التسعير والنشرة ليتصل التسلسل: 18 ثم 19 و22 ثم 23 أكتوبر.",
-        "صدى يكرر الجملة السابقة في الفقرة الرابعة: «فالطرح الخاص وحده أُغلق، أما الاكتتاب العام فيبقى مفتوحاً حتى ذلك الموعد، ويكتتب فيه المستثمرون بسعر معلوم سلفاً». الجملة التي قبلها قالت ذلك كله: السعر نفسه، وشريحة الطرح العام، وآخر موعد هو 28 أكتوبر. الإصلاح: حذف الجملة. ويكفي: «ويستمر تسجيل أوامر الاكتتاب في شريحة الطرح العام بالسعر نفسه، 5.30 جنيه للسهم، حتى الأربعاء 28 أكتوبر، بحسب إخطار البنك».",
-        "الفقرة الأولى تعيد ما في الافتتاحية: «قال البنك، بحسب «بلومبرغ»، إن شريحة الطرح الخاص ... أُغلقت عند الحد الأعلى للنطاق السعري»، بعد أن قالت الافتتاحية «في الحد الأعلى لنطاقه السعري». الإصلاح: نقل الإسناد إلى الافتتاحية نفسها، مثل «بحسب ما نقلته «بلومبرغ» عن البنك»، ثم تبدأ الفقرة الأولى بالإخطار الموجّه إلى إدارة الإفصاح وموعد إغلاق الشريحة الخاصة في 23 أكتوبر (المصدر 2).",
-        "تفكك في بناء رد الفعل: كلام رضوان موزع على فقرتين، ويفصل بينهما سياق المداخلة. تنقل الفقرة الخامسة تصريحه دون مصدره، ثم تبدأ السادسة بالإحالة إلى ما سبق: «جاءت تصريحات رئيس البورصة في مداخلة هاتفية ... أوردها موقع «مصراوي»»، وبعدها «وأضاف رضوان». الإصلاح: ذكر سياق التصريح ومصدره عند أول ذكر لرضوان، مثل «قال عمر رضوان، رئيس مجلس إدارة البورصة المصرية، في مداخلة هاتفية مع برنامج «حديث القاهرة» على قناة «القاهرة والناس» أوردها موقع «مصراوي»، إن...». ثم جمع التغطية والإقبال الأجنبي ومقارنة الأسعار بالأسواق المحيطة في فقرة واحدة (المصدر 3).",
-        "تتكرر تواريخ 19 و22 أكتوبر بين الفقرتين الثانية والثالثة. وتعيد جملة «فالطرح الخاص وحده أُغلق...» ما قالته الجملة التي قبلها. وتكرر الفقرة الأولى ما في الافتتاحية عن الحد الأعلى للنطاق. ويتوزع كلام رضوان على فقرتين تفصل بينهما فقرة مفتوحة بإحالة إلى ما سبق («جاءت تصريحات رئيس البورصة»). — إعادة البناء في أربع فقرات: (1) الإخطار وإغلاق الشريحة الخاصة في 23 أكتوبر. (2) النشرة وآلية البناء السعري والتغطية بالرقمين، مع ذكر تواريخ الإفصاح مرة واحدة. (3) الطرح العام حتى 28 أكتوبر بالسعر نفسه، في جملة واحدة. (4) رضوان مع سياق مداخلته ونسبتها إلى «مصراوي» عند أول ذكر، ثم الإقبال الأجنبي ومقارنة الأسعار."
+        "خطأ حقيقي (نسبة خاطئة): «ويبقى المخزون داخل الخليج خلف ممر تتعارض روايتا واشنطن وطهران عن السيطرة عليه». المصدر 2 لا ينقل رواية إيرانية. الرواية المقابلة لرواية روبيو تنسبها المادة إلى صحيفة «عرب نيوز»، وهي التي تقول إن إيران أحكمت قبضتها واشترطت الإذن. الإصلاح: «خلف ممر تتعارض الروايات عن السيطرة عليه، بين ما تنقله «عرب نيوز» عن اشتراط طهران الإذن وقول روبيو إنها فقدت السيطرة الكاملة عليه».",
+        "خلل في الآلية: «أما البراميل المخزنة في سنغافورة فلا يمسها أي تعطل في المضيق، لأنها أصبحت خارجه». التخزين لم يبدأ بعد، فهو مقرر في النصف الثاني من 2027 (المصدر 1)، فلا يصح «أصبحت». كما أن النفي المطلق «لا يمسها أي تعطل» غير دقيق، لأن ملء المخزون وتجديده يمرّان عبر هرمز. ويتكرر الإطلاق نفسه في العنوان الفرعي («ويبقى متاحاً إذا تعطل الممر») وفي الصندوق («من دون حاجة إلى تلك الحماية»). الإصلاح: «أما الخام الذي سيُخزَّن في سنغافورة فيبقى، بعد وصوله إليها، في متناول المشترين ولو تعطل المضيق، وإن ظل تجديده يمر عبر هرمز».",
+        "تكرار بين الصندوق والمتن: الجملة الثانية في الصندوق («تكمن قيمة البرميل السعودي المخزن في سنغافورة في أنه يصل إلى المشتري الآسيوي من دون حاجة إلى تلك الحماية») تعيد خلاصة الفقرة التي تختم قسم هرمز في المتن، ولا تضيف معنى جديداً. الإصلاح: الإبقاء على الخلاصة في موضع واحد. يحتفظ الصندوق بالاستنتاج المشروط، أي بقاء انتظام المرور معلقاً بالانتشار الأمريكي. ويضيف قيده المادي: المخزون الخارجي يحمي ما وصل منه فقط، وحجم هذه الحماية مرهون بالكميات التي لم تُكشف.",
+        "زمن الفعل في المقدمة: «ويضع التخزين هناك براميل سعودية خارج مضيق هرمز» يقدّم بصيغة الحاضر أمراً لم يحدث، فالاتفاقية لم توقَّع والتخزين يبدأ في 2027. الإصلاح: «وسيضع التخزين هناك، إن أُبرمت الاتفاقية، براميل سعودية خارج مضيق هرمز».",
+        "مبالغة في التعريف: في key_facts «ليسلّمه أسرع ويتجنب مخاطر طرق الشحن». المخزون القريب يخفف بعض مخاطر الطريق ولا يلغيها، لأن الخام يُشحن إليه أولاً. الإصلاح: «ليسلّمه أسرع ويقلّل تعرّضه لمخاطر طرق الشحن».",
+        "نسبة ناقصة: جملة «يمر عبر المضيق في الأحوال العادية خُمس صادرات النفط العالمية» جاءت بلا نسبة، ثم جاءت «بحسب صحيفة «عرب نيوز»» في آخر الجملة التالية فبدت مقصورة عليها. المصدر 2 ينسب الرقم إلى الصحيفة نفسها. الإصلاح: تقديم النسبة لتشمل الجملتين، مثل «وتقول صحيفة «عرب نيوز» السعودية الصادرة بالإنجليزية إن خُمس صادرات النفط العالمية يمر عبر المضيق في الأحوال العادية، وإن إيران…»."
       ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "بلومبرغ وصفت طرح بنك القاهرة بأنه أكبر طرح عام أولي في مصر منذ أكثر من عقد، وقالت إن التسعير جاء عقب طلب قوي",
-          "source": 1
-        },
-        {
-          "fact": "تغطية شريحة الطرح الخاص 6 مرات، وترتفع إلى 19.8 مرة باستبعاد حصص مستثمرين مؤهلين أُفصح عنهم يومي 19 و22 أكتوبر",
-          "source": 2
-        },
-        {
-          "fact": "رئيس البورصة المصرية قال إن المستثمرين الأجانب يجلبون أموالاً غير موجودة في السوق المحلية",
-          "source": 3
-        }
-      ],
-      "slug": "banque-du-caire-ipo-priced-top-range-0e7362",
-      "title": "بنك القاهرة يسعّر سهمه في الطرح الأولي عند 5.30 جنيه في أعلى النطاق",
-      "score": 8,
-      "image": "cover-art"
-    },
-    {
-      "headline": "برنت يتراجع 2% إلى 114 دولاراً بعد استبعاد ترامب هجوماً وشيكاً على إيران",
-      "section": "energy",
-      "importance": 7,
-      "sources": [
-        "https://www.ft.com/content/97a60042-f7b6-4c87-9387-8572968a7de0?syn-25a6b1a6=1",
-        "https://www.agbi.com/oil-and-gas/2026/10/oil-declines-after-trump-rules-out-imminent-attack-on-iran/",
-        "https://www.alborsaanews.com/2026/10/26/2001864",
-        "https://economymiddleeast.com/news/oil-prices-fall-to-114-5-as-mideast-de-escalation-hopes-ease-supply-concerns/"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "العنوان والمقدمة يحددان الحدث بوضوح، وهو تراجع النفط بعد استبعاد ترامب ضربة وشيكة رغم الهجمات الحوثية. لكن الدك يقدّم تفسير الأسواق كحقيقة، والرقم الرئيسي 110 دولارات لا يمثل عقد برنت الذي تقيس به المصادر قفزة الأسبوع الماضي.",
-              "repair": "اعتماد 114.5 دولار لعقد ديسمبر في العنوان والمقدمة، وإعادة صياغة الدك ليذكر الوقائع (استمرار الشحنات والهجمات الجديدة) دون الجزم بنية المتعاملين."
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "يقدم التقرير المحركات (تصريح ترامب، الوساطة القطرية، استمرار الشحنات)، والخلفية (صعود الأسبوع الماضي، الحرب منذ 28 فبراير، اضطراب هرمز وباب المندب)، والردود (بيرول بصفته مديراً لوكالة الطاقة الدولية)، وما بعدها (تخزين أرامكو في سنغافورة في النصف الثاني من 2027). أما «لماذا يهمّ» فينطلق من مقدمات مسندة: التراجع رهان على التهدئة واستمرار العبور لا على زوال الخطر. ويضع شرطاً واضحاً لاستنتاجه: تعثر الوساطة أو إصابة الهجمات تدفقات فعلية قد يعيد جزءاً من علاوة المخاطر.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "الفقرة الأولى تكدس قراءتين متطابقتين بوسمَين («ورأت خدمة إيه جي بي آي» و«وكتب موقع إيكونومي ميدل إيست»). وتصريح بيرول معزول في فقرة من جملة واحدة.",
-              "repair": "دمج القراءتين في جملة منسوبة إلى المصدرين مع خبر الوساطة القطرية، وضم تصريح بيرول إلى فقرة ممرات الشحن بوصفه تقديراً لمدى استمرار الاضطراب."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "التقرير يجمع «1.20% إلى 110.36 دولار» (السلسلة المتصلة في المصدر 5، وإغلاقها السابق 111.70) مع ذروة «117 دولاراً» ومكاسب 6% لعقد ديسمبر (المصادر 1 و3 و4)، وهما عقدان مختلفان. ونسبة هبوط عقد ديسمبر في المصادر نحو 1.9%. ويرد كذلك «استقرت... مرتفعة» بمعنى أغلقت.",
-              "repair": "استخدام سعر عقد ديسمبر: 114.5 دولار عند 05:02 بتوقيت غرينتش، بتراجع 2.23 دولار أو 1.91% (المصدر 4)، أو 114.51 دولار (المصدر 3). ويبقى خام غرب تكساس عند نحو 101 دولار بتراجع نحو 2.2%، أو آخر قراءة 101.56 دولار مع ذكر توقيتها."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "العنوان والمقدمة يحددان الحدث بدقة: تراجع برنت لعقد ديسمبر إلى 114.5 دولار بعد استبعاد ترامب ضربة وشيكة. لكن الدك يربط بـ«رغم» بين استمرار شحنات هرمز والهجمات على السعودية، والمصدر 2 لا يقيم هذا التقابل.",
-              "repair": "«التراجع جاء رغم هجمات حوثية جديدة على السعودية، فيما أفاد مسؤولون عسكريون أمريكيون باستمرار الشحنات عبر هرمز» (المصدر 2)."
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "السياق في المتن وافٍ: مكاسب الأسبوع (6% و2.3%)، والقفزة إلى 117 دولاراً، والوساطة القطرية، وحرب 28 فبراير، وتقدير بيرول، وخطة أرامكو. أما صندوق «لماذا يهمّ» فيبني استنتاجه على قراءة «إيه جي بي آي» بصيغة الجزم «يقوم تراجع الاثنين على رهان»، فيحوّل تقدير المصدر إلى حقيقة.",
-              "repair": "تليين الجملة الأولى إلى «يبدو التراجع رهاناً على...»، والإبقاء على الشرط («إذا تعثرت الوساطة أو أصابت الهجمات تدفقات فعلية») بوصفه حد الاستنتاج. ويُصحَّح مصدر بند ترامب في why_basis إلى المصدر 2."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "الفقرات صارت مجمعة حول وظائفها: الحدث، ثم المحرك، ثم المقارنة، ثم الهجمات، ثم ممرات الشحن. غير أن الخاتمة «ورأى الموقع أن هذه التطورات أبقت المستثمرين حذرين...» غامضة الإحالة بعد خبر أرامكو، وتنتهي بتلخيص عام. وفي الفقرة الثانية تكرار بجملة «ورأى الأول... يوحي أيضاً».",
-              "repair": "نقل جملة حذر المستثمرين إلى فقرة الهجمات وحذف التلخيص العام، ودمج إضافة «إيه جي بي آي» (صادرات الخليج) في جملة العزو الأولى."
-            },
-            "precision": {
-              "status": "clear",
-              "evidence": "الأرقام متسقة لعقد ديسمبر وتوقيت 05:02 بتوقيت غرينتش (المصدر 4): برنت 114.5 دولار بتراجع 2.23 دولار أو 1.91%، وغرب تكساس 101 دولار بتراجع 2.29 دولار أو 2.22%. والمقارنة بقفزة 117 دولاراً ومكاسب 6% صارت متسقة. وتصريح بيرول منسوب إلى رويترز، وخطة أرامكو بصيغة المستقبل «ستبدأ».",
-              "repair": ""
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 8,
-      "mendIssues": [
-        "خطأ في الإسناد داخل why_basis: البند «تراجعت العقود الآجلة لبرنت 1.91% إلى 114.5 دولار للبرميل بعد استبعاد ترامب ضربات وشيكة على إيران» منسوب إلى المصدر 4، وهذا المصدر لا يذكر ترامب. الربط بتصريح ترامب يرد في المصدر 2 وحده. الإصلاح: فصل البند إلى واقعتين، الرقم من المصدر 4 واستبعاد ترامب الضربات من المصدر 2.",
-        "يقين يتجاوز الدليل في «لماذا يهمّ»: عبارة «يقوم تراجع الاثنين على رهان بأن صادرات الخليج ستواصل عبورها مضيق هرمز وأن مسار التهدئة مع إيران سيصمد، لا على زوال الخطر...» تعرض قراءة «إيه جي بي آي» على أنها حقيقة ثابتة. والمصدر 2 يقول إن التراجع «يوحي» (suggests) بذلك فقط. الإصلاح: «يبدو تراجع الاثنين رهاناً على استمرار الصادرات عبر هرمز وصمود مسار التهدئة أكثر منه تراجعاً للخطر عن المنشآت السعودية التي ما زالت تتعرض للهجمات»، مع إبقاء الجملة الشرطية الثانية كما هي.",
-        "علاقة تقابل غير مسندة في الدك: «مسؤولون عسكريون أمريكيون يفيدون باستمرار شحنات النفط عبر هرمز رغم هجمات حوثية جديدة على السعودية». كلمة «رغم» توحي بأن الهجمات على السعودية كانت تهدد الشحنات في هرمز. أما المصدر 2 فيقابل بين الهجمات وتراجع الأسعار، لا بين الهجمات والشحنات. الإصلاح: «التراجع جاء رغم هجمات حوثية جديدة على السعودية، فيما أفاد مسؤولون عسكريون أمريكيون باستمرار الشحنات عبر هرمز».",
-        "إحالة غامضة وخاتمة عامة: «ورأى الموقع أن هذه التطورات أبقت المستثمرين حذرين... وأن استمرار الهجمات واضطرابات الشحن يظلان خطرين رئيسيين على أسواق النفط». الفقرة تأتي بعد خبر تخزين أرامكو، فتبدو «هذه التطورات» عائدة إليه. والمصدر 4 يقصد بها هجمات نهاية الأسبوع. الإصلاح: نقل «أبقت المستثمرين حذرين رغم الجهود الدبلوماسية» إلى فقرة «الهجمات مستمرة» بعد ذكر هجمات السبت والأحد، مع نسبتها إلى «إيكونومي ميدل إيست». وتُحذف الجملة الختامية العامة لأنها تلخيص مجرد يكرر ما سبق.",
-        "تكرار جزئي في الفقرة الثانية من المتن: بعد «وعزا موقعا... الهبوط إلى أن آمال خفض التوتر... تتقدم لدى المتعاملين على المخاوف من الهجمات» تأتي جملة «ورأى الأول أن التراجع يوحي أيضاً بأن المتعاملين يركزون... أكثر من التهديد المباشر للهجمات الحوثية»، وهي تعيد المعنى نفسه. الإصلاح: الاكتفاء بالإضافة الفعلية لـ«إيه جي بي آي»، أي استمرار صادرات الخليج: «وأضاف «إيه جي بي آي» إلى ذلك رهان المتعاملين على استمرار صادرات النفط الخليجية» (المصدر 2).",
-        "العنوان والمقدمة يحددان الحدث بدقة: تراجع برنت لعقد ديسمبر إلى 114.5 دولار بعد استبعاد ترامب ضربة وشيكة. لكن الدك يربط بـ«رغم» بين استمرار شحنات هرمز والهجمات على السعودية، والمصدر 2 لا يقيم هذا التقابل. — «التراجع جاء رغم هجمات حوثية جديدة على السعودية، فيما أفاد مسؤولون عسكريون أمريكيون باستمرار الشحنات عبر هرمز» (المصدر 2).",
-        "السياق في المتن وافٍ: مكاسب الأسبوع (6% و2.3%)، والقفزة إلى 117 دولاراً، والوساطة القطرية، وحرب 28 فبراير، وتقدير بيرول، وخطة أرامكو. أما صندوق «لماذا يهمّ» فيبني استنتاجه على قراءة «إيه جي بي آي» بصيغة الجزم «يقوم تراجع الاثنين على رهان»، فيحوّل تقدير المصدر إلى حقيقة. — تليين الجملة الأولى إلى «يبدو التراجع رهاناً على...»، والإبقاء على الشرط («إذا تعثرت الوساطة أو أصابت الهجمات تدفقات فعلية») بوصفه حد الاستنتاج. ويُصحَّح مصدر بند ترامب في why_basis إلى المصدر 2.",
-        "الفقرات صارت مجمعة حول وظائفها: الحدث، ثم المحرك، ثم المقارنة، ثم الهجمات، ثم ممرات الشحن. غير أن الخاتمة «ورأى الموقع أن هذه التطورات أبقت المستثمرين حذرين...» غامضة الإحالة بعد خبر أرامكو، وتنتهي بتلخيص عام. وفي الفقرة الثانية تكرار بجملة «ورأى الأول... يوحي أيضاً». — نقل جملة حذر المستثمرين إلى فقرة الهجمات وحذف التلخيص العام، ودمج إضافة «إيه جي بي آي» (صادرات الخليج) في جملة العزو الأولى."
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "تراجعت أسعار النفط الاثنين بعد أن استبعد الرئيس الأمريكي دونالد ترامب توجيه ضربات وشيكة إلى إيران، رغم هجمات حوثية جديدة على السعودية",
-          "source": 2
-        },
-        {
-          "fact": "أفاد مسؤولون عسكريون أمريكيون باستمرار شحنات النفط عبر مضيق هرمز",
-          "source": 2
-        },
-        {
-          "fact": "ظهرت آمال التهدئة الأحد مع تقارير عن توجه وسطاء قطريين إلى طهران بالتنسيق مع الولايات المتحدة",
-          "source": 4
-        },
-        {
-          "fact": "قفز خام برنت إلى 117 دولاراً للبرميل في أواخر الأسبوع الماضي",
-          "source": 1
-        }
-      ],
-      "slug": "brent-falls-trump-rules-out-iran-strike-778d21",
-      "title": "برنت يتراجع 1.2% إلى 110.36 دولار بعد استبعاد ترامب ضربة وشيكة لإيران",
-      "score": 8,
-      "image": "photo"
-    },
-    {
-      "headline": "ألفا ظبي تلتزم بمليار دولار في صندوق عالمي للذكاء الاصطناعي",
-      "section": "technology",
-      "importance": 7,
-      "sources": [
-        "https://www.agbi.com/ai/2026/10/alpha-dhabi-deepens-ai-investments-with-1bn-commitment/",
-        "https://www.skynewsarabia.com/business/1900584-%D8%A3%D9%84%D9%81%D8%A7-%D8%B8%D8%A8%D9%8A-%D8%A7%D9%84%D9%82%D8%A7%D8%A8%D8%B6%D8%A9-%D8%AA%D8%B3%D8%AA%D8%AB%D9%85%D8%B1-%D9%85%D9%84%D9%8A%D8%A7%D8%B1-%D8%AF%D9%88%D9%84%D8%A7%D8%B1-%D8%B5%D9%86%D8%AF%D9%88%D9%82-%D8%A3%D9%84%D9%81%D8%A7-%D9%88%D9%8A%D9%81-3"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "العنوان والافتتاحية يوضحان الالتزام ومبلغه وشرط الموافقات التنظيمية. لكن الافتتاحية تحصر الصندوق في الذكاء الاصطناعي، والمصدران يضيفان إليه الشركات سريعة النمو ذات التقنيات التحويلية. والعنوان الفرعي يقول «تموّله» بينما التمويل لا يزال خطة.",
-              "repair": "استبدال «المتخصص في الذكاء الاصطناعي» بـ«الذي يركز على الذكاء الاصطناعي والشركات سريعة النمو»، واستبدال «تموّله» بـ«تعتزم تمويله»."
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "التقرير يقدّم الخلفية الضرورية: التزام مايو 2022 بقيمة 9.2 مليار درهم في «ألفا ويف فينتشرز 2» عبر «شيميرا كابيتال»، والانكشاف على أوبن إيه آي وأنثروبيك وسبيس إكس، ويعرّف الرئيس التنفيذي بصفته. وصندوق «لماذا يهمّ» يستنتج من مقدمات مسنَدة (التمويل من توزيعات الصندوق السابق، والعوائد عبر التوزيعات والتخارج، ومخاوف التقييم) استنتاجاً محدوداً معقولاً هو تركّز الانكشاف على تقييمات الذكاء الاصطناعي.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "جملة «أغبي» عن مخاوف التقييم معزولة في فقرة مستقلة قبل الخاتمة، و«ولذلك» تفتعل ربطاً سببياً. والجملة الثانية في «لماذا يهمّ» تكرر خلاصة فقرة العوائد.",
-              "repair": "نقل سياق مخاوف التقييم إلى فقرة الدافع أو الخلفية، وحذف «ولذلك»، ودمج جملتي صندوق «لماذا يهمّ» في استنتاج واحد عن تركّز الانكشاف وتمويله الذاتي الجزئي في ظل مخاوف التقييم."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "المبالغ والتواريخ صحيحة: مليار دولار، 3.67 مليار درهم، 9.2 مليار درهم، مايو 2022. شرط الموافقات وتعهد الإفصاح محفوظان. لكن «إعادة تدوير» ترجمة حرفية، وعبارة «عند التخارج» في الصندوق تُسقط التوزيعات التي يذكرها المصدر 2 قناةً للعوائد.",
-              "repair": "استخدام «إعادة توظيف»، وكتابة «عبر التوزيعات وعمليات التخارج على امتداد عمر الصندوق»."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "publish",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يقول العنوان والافتتاحية ما الذي تغيّر: التزام بمليار دولار في «ألفا ويف 3» الذي يركز على الذكاء الاصطناعي والشركات سريعة النمو. ويحفظان القيد الحاسم: «ويبقى الاستثمار مشروطاً بالحصول على الموافقات التنظيمية اللازمة». ويقدّم العنوان الفرعي التمويل خطةً بفعل «تعتزم»، كما في المصدرين 1 و2.",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "يقدّم التقرير الدافع المعلن من بيان الشركة (المصدر 2)، ثم سياق تدفق الأموال الخليجية رغم مخاوف التقييم منسوباً إلى «أغبي» (المصدر 1)، ثم خلفية التزام 2022 بقيمة 9.2 مليار درهم في «ألفا ويف فينتشرز 2». ويعرّف «شيميرا كابيتال» ويشرح معنى الانكشاف غير المباشر. وتنطلق «لماذا يهمّ» من مقدمات مسندة، هي تمويل الصندوق الجديد جزئياً من توزيعات السابق ومخاوف التقييم، وتستنتج تركّز الانكشاف استنتاجاً مشروطاً بأداة «إن». وتضيف قيداً مادياً ذا صلة، هو أن السيولة لا تتحقق إلا عبر التوزيعات والتخارج.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "clear",
-              "evidence": "الفقرات تؤدي وظائف متمايزة: الإفصاح وهوية مدير الصندوق، ثم الدافع وسياقه، ثم تصريح العامري مع خلفية 2022، ثم آلية التمويل والعوائد، ثم الخطوة التالية (الموافقات وتعهد الإفصاح). ولا روابط سببية مفتعلة. وجملة «أغبي» لم تعد معزولة.",
-              "repair": ""
-            },
-            "precision": {
-              "status": "clear",
-              "evidence": "الأرقام مطابقة للمصدرين: مليار دولار، و3.67 مليار درهم، و9.2 مليار درهم، ومايو 2022. وقنوات العوائد مذكورة كاملة: «عبر التوزيعات وعمليات التخارج على امتداد عمر الصندوق». والتوظيف التدريجي لرأس المال والأثر المالي التدريجي منسوبان إلى بيان الشركة دون تحويل الهدف المعلن إلى نتيجة متحققة. واسم ودور العامري صحيحان.",
-              "repair": ""
-            }
-          }
-        }
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "تعتزم ألفا ظبي تمويل الالتزام بإعادة توظيف التوزيعات النقدية من «ألفا ويف فينتشرز 2» واستخدام مواردها القائمة",
-          "source": 1
-        },
-        {
-          "fact": "عوائد ألفا ظبي تتوقف على أداء أصول الصندوق وقيمتها وتُحصَّل عبر التوزيعات وعمليات التخارج طوال عمر الصندوق",
-          "source": 2
-        },
-        {
-          "fact": "منح «ألفا ويف فينتشرز 2» ألفا ظبي انكشافاً غير مباشر على سبيس إكس وأوبن إيه آي وأنثروبيك",
-          "source": 1
-        },
-        {
-          "fact": "المستثمرون الخليجيون يضخون أموالاً في الذكاء الاصطناعي رغم تزايد المخاوف بشأن التقييمات",
-          "source": 1
-        }
-      ],
-      "slug": "alpha-dhabi-1-billion-alpha-wave-ai-fund-4b7494",
-      "title": "ألفا ظبي القابضة تلتزم باستثمار مليار دولار في صندوق للذكاء الاصطناعي",
+      "slug": "why-saudi-arabia-stores-crude-in-singapore-9ff749",
+      "title": "لماذا تتجه السعودية إلى تخزين نفطها في سنغافورة؟",
       "score": 9,
       "image": "photo"
-    },
-    {
-      "headline": "الإمارات تحدد 30 أكتوبر موعداً للفوترة الإلكترونية وغرامة 5 آلاف درهم شهرياً للمتأخرين",
-      "section": "economy",
-      "importance": 6,
-      "outcome": "deferred: run budget spent"
     }
   ],
   "llm": {
-    "calls": 72,
-    "failures": 6,
-    "promptTokens": 907258,
-    "completionTokens": 242949,
-    "cacheReadTokens": 244667,
-    "costUsd": 10.2077,
+    "calls": 17,
+    "failures": 0,
+    "promptTokens": 188021,
+    "completionTokens": 42732,
+    "cacheReadTokens": 47555,
+    "costUsd": 1.9877,
     "byModel": {
-      "claude-cli/claude-opus-5-5": 72
+      "claude-cli/claude-opus-5-5": 17
     }
   },
   "log": [
-    "[08:18:06] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3167",
-    "[08:18:06] image: the sources' photographs give no brief (1: not a news photo; 2: not a news photo)",
-    "[08:18:06] image: tier 3, the writer's own subjects: data center servers | traders watching screens | artificial intelligence lab",
-    "[08:18:07] commons \"data center servers 2026\": 3 usable of 12",
-    "[08:18:07] commons \"data center servers\": 5 usable of 12",
-    "[08:18:07] image: dropped \"North Central Telephone Cooperative Rural Broadband keeps TN and KY Hi\" — names too little of data, center, servers",
-    "[08:18:08] commons \"traders watching screens 2026\": 0 usable of 0",
-    "[08:18:08] commons \"traders watching screens\": 0 usable of 0",
-    "[08:18:08] commons \"traders watching\": 7 usable of 12",
-    "[08:18:08] image: dropped \"1984 BIG BROTHER IS WATCHING YOU 02.jpg\" — dated 1992, an archival picture",
-    "[08:18:08] image: dropped \"1984 BIG BROTHER IS WATCHING YOU 01.jpg\" — dated 1992, an archival picture",
-    "[08:18:09] commons \"artificial intelligence lab 2026\": 1 usable of 7",
-    "[08:18:09] commons \"artificial intelligence lab\": 11 usable of 12",
-    "[08:18:09] image: dropped \"Rain Quail in Bhigwan August 2025 by Tisha Mukherjee 13.jpg\" — names too little of artificial, intelligence, lab",
-    "[08:18:09] image: dropped \"Painted Bush-Quail in Mahabaleshwar August 2025 by Tisha Mukherjee 13.\" — names too little of artificial, intelligence, lab",
-    "[08:18:17] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7467",
-    "[08:18:17] image: vision rejected all candidates (No candidate shows Hamad Al Ameri, Alpha Dhabi or an AI investment. 1 names an unrelated Bangladeshi minister. 3 is a close-up of a private individual. 5 is street art. 2 and 6 are amateur building exteriors. 4 is a 2013 server room of tower PCs on shelves that looks dated and would only name the sector, not the AI investment bet. Leave it to the fallback.)",
-    "[08:18:17] image: tier 4, the story's point and its subject: data center server racks | OpenAI Sam Altman | AI startup engineers | data center server hall | AI research lab | Falcon 9 rocket launch",
-    "[08:18:18] commons \"data center server racks\": 14 usable of 24",
-    "[08:18:18] image: dropped \"Wikimedia Foundation Servers-8055 15.jpg\" — another frame of a series a published story runs",
-    "[08:18:18] image: dropped \"Wikimedia Foundation Servers-8055 22.jpg\" — another frame of a series a published story runs",
-    "[08:18:18] pexels \"data center server racks\": 8 usable",
-    "[08:18:26] openverse \"data center server racks\": 7 usable of 20",
-    "[08:18:26] image: dropped \"Supercomputing\" — names too little of data, center, server, racks",
-    "[08:18:26] image: dropped \"Army unveils RDECOM laboratory to improve agile acquisition process\" — soldiers or a patrol, and the story is not about the military",
-    "[08:18:27] commons \"OpenAI Sam Altman\": 11 usable of 24",
-    "[08:18:27] image: dropped \"Sam Altman TechCrunch SF 2019 Day 2 Oct 3 (cropped).jpg\" — shows sam, not the story's people",
-    "[08:18:27] image: dropped \"Meeting with Masayoshi Son and Sam Altman (February 3, 2025).jpg\" — an event's photograph, people and banners",
-    "[08:18:27] image: dropped \"Isaac Herzog meeting with Sam Altman, June 2023 (GPOABG748).jpeg\" — an event's photograph, people and banners",
-    "[08:18:27] image: dropped \"Isaac Herzog meeting with Sam Altman, June 2023 (GPOABG647).jpeg\" — an event's photograph, people and banners",
-    "[08:18:27] image: dropped \"Isaac Herzog meeting with Sam Altman, June 2023 (GPOABG244).jpeg\" — an event's photograph, people and banners",
-    "[08:18:27] image: dropped \"Isaac Herzog meeting with Sam Altman, June 2023 (GPOABG539).jpeg\" — an event's photograph, people and banners",
-    "[08:18:27] image: dropped \"The Prime Minister meets with AI developers - 52923262083.jpg\" — shows rishi, deepmind, anthropic, openai, not the story's people",
-    "[08:18:27] image: dropped \"The Prime Minister meets with AI developers.jpg\" — shows rishi, deepmind, anthropic, openai, not the story's people",
-    "[08:18:27] pexels \"OpenAI Sam Altman\": 8 usable",
-    "[08:18:31] openverse \"OpenAI Sam Altman\": 10 usable of 12",
-    "[08:18:31] image: dropped \"TechCrunch Disrupt San Francisco 2019 - Day 2\" — names too little of openai, sam, altman",
-    "[08:18:31] image: dropped \"TechCrunch Disrupt San Francisco 2019 - Day 2\" — names too little of openai, sam, altman",
-    "[08:18:31] image: dropped \"TechCrunch Disrupt San Francisco 2019 - Day 2\" — names too little of openai, sam, altman",
-    "[08:18:31] image: dropped \"TechCrunch Disrupt San Francisco 2019 - Day 2\" — names too little of openai, sam, altman",
-    "[08:18:31] image: dropped \"The Prime Minister meets with AI developers\" — names too little of openai, sam, altman",
-    "[08:18:31] image: dropped \"The Prime Minister meets with AI developers\" — names too little of openai, sam, altman",
-    "[08:18:31] image: dropped \"The Prime Minister meets with AI developers\" — names too little of openai, sam, altman",
-    "[08:18:31] image: dropped \"The Prime Minister meets with AI developers\" — names too little of openai, sam, altman",
-    "[08:18:31] image: dropped \"The Prime Minister meets with AI developers\" — names too little of openai, sam, altman",
-    "[08:18:31] image: dropped \"Wooden Scrabble tiles spelling 'DEEPSEEK' with 'AI' on a wooden table,\" — names too little of openai, sam, altman",
-    "[08:18:31] image: dropped \"Close-up of wooden Scrabble tiles spelling OpenAI and DeepSeek on wood\" — a stock cliché («Scrabble»)",
-    "[08:18:31] image: dropped \"A hand holds a smartphone displaying Grok 3 announcement against a red\" — names too little of openai, sam, altman",
-    "[08:18:31] image: dropped \"Close-up of a robotic arm playing chess against a human, showcasing AI\" — names too little of openai, sam, altman",
-    "[08:18:31] image: dropped \"A robotic arm playing chess against a human hand on an electronic ches\" — names too little of openai, sam, altman",
-    "[08:18:31] image: dropped \"An articulated robotic arm competes in chess on a board against a dark\" — names too little of openai, sam, altman",
-    "[08:18:31] image: dropped \"A robotic arm engages in a chess match, showcasing AI and robotics in \" — names too little of openai, sam, altman",
-    "[08:18:31] image: dropped \"Calm male in casual clothes sitting at table with laptop with crossed \" — names too little of openai, sam, altman",
-    "[08:18:31] commons \"AI startup engineers\": 6 usable of 23",
-    "[08:18:31] image: dropped \"Associate Fellow Ali Ansari speaking to Fox News about Iran (713159157\" — names too little of startup, engineers",
-    "[08:18:31] image: dropped \"Ependymoma micro1.jpg\" — names too little of startup, engineers",
-    "[08:18:31] image: dropped \"Quartz-micro1.jpg\" — names too little of startup, engineers",
-    "[08:18:31] image: dropped \"Glioblastoma micro1.jpg\" — names too little of startup, engineers",
-    "[08:18:31] image: dropped \"Castleman micro1.jpg\" — names too little of startup, engineers",
-    "[08:18:31] image: dropped \"National awarded gopal prasad sharma with vice president hamid ali ans\" — names too little of startup, engineers",
-    "[08:18:32] pexels \"AI startup engineers\": 8 usable",
-    "[08:18:38] openverse \"AI startup engineers\": 1 usable of 20",
-    "[08:18:38] image: dropped \"Kai-Fu Lee's AI Superpowers Salon\" — names too little of startup, engineers",
-    "[08:18:38] image: dropped \"Two men in an office discussing and reviewing a tech prototype.\" — names too little of startup, engineers",
-    "[08:18:38] image: dropped \"A modern robot toy depicted in a studio environment with its reflectio\" — names too little of startup, engineers",
-    "[08:18:38] image: dropped \"Researchers working with advanced robotics technology in a laboratory \" — names too little of startup, engineers",
-    "[08:18:38] image: dropped \"Close-up of a white and blue robot against a dynamic, futuristic tech \" — names too little of startup, engineers",
-    "[08:18:38] image: dropped \"Autonomous delivery robot navigating indoors during a technology event\" — names too little of startup, engineers",
-    "[08:18:38] image: dropped \"Dynamic shot of a futuristic robot with glowing eyes in a dark studio,\" — names too little of startup, engineers",
-    "[08:18:38] commons \"data center server hall\": 8 usable of 19",
-    "[08:18:38] image: dropped \"UPComputerCenterjf3807 04.JPG\" — names too little of data, center, server, hall",
-    "[08:18:38] image: dropped \"UPComputerCenterjf3807 10.JPG\" — names too little of data, center, server, hall",
-    "[08:18:38] image: dropped \"UPComputerCenterjf3807 02.JPG\" — names too little of data, center, server, hall",
-    "[08:18:38] image: dropped \"UPComputerCenterjf3807 05.JPG\" — names too little of data, center, server, hall",
-    "[08:18:38] image: dropped \"UPComputerCenterjf3807 03.JPG\" — names too little of data, center, server, hall",
-    "[08:18:38] image: dropped \"UPComputerCenterjf3807 06.JPG\" — names too little of data, center, server, hall",
-    "[08:18:38] image: dropped \"UPComputerCenterjf3807 07.JPG\" — names too little of data, center, server, hall",
-    "[08:18:38] image: dropped \"UPComputerCenterjf3807 12.JPG\" — names too little of data, center, server, hall",
-    "[08:18:38] pexels \"data center server hall\": 8 usable",
-    "[08:18:40] openverse \"data center server hall\": 0 usable of 0",
-    "[08:18:41] commons \"AI research lab\": 14 usable of 24",
-    "[08:18:41] image: dropped \"AI research robots key to ‘democratizing and revolutionizing science’,\" — a warship or weapon, and the story is not about the military",
-    "[08:18:41] commons \"Falcon 9 rocket launch\": 22 usable of 24",
-    "[08:18:41] image: dropped \"2016 Falcon 9 at Vandenberg Air Force Base.jpg\" — a warship or weapon, and the story is not about the military",
-    "[08:18:41] image: dropped \"GRACE-FO Launch (NHQ201805220019).jpg\" — a warship or weapon, and the story is not about the military",
-    "[08:18:41] image: dropped \"45th Space Wing Supports Successful Falcon 9 SAOCOM 1B Launch 02.jpg\" — a warship or weapon, and the story is not about the military",
-    "[08:18:41] image: thumbnail HTTP 403 for https://live.staticflickr.com/2054/2414578731_82c451232d_n.jpg",
-    "[08:18:41] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/54444883782_007cdcd78f_n.jpg",
-    "[08:18:48] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6599",
-    "[08:18:48] image: \"Virginia Tech - data center\" names the story's topic without saying its point (The data-centre aisle is a clear, generic AI-sector scene, which the fallback pass allows. It shows only the sector, not Alpha Dhabi's bet. The others fail: the); checked now and kept in reserve while the desk looks further",
-    "[08:18:55] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7102",
-    "[08:18:55] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Virginia Tech - data center\": The frame is an old SGI-branded supercomputer cluster at Virginia Tech, so it pictures a different company and instituti",
-    "[08:18:55] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/54444883782_007cdcd78f_n.jpg",
-    "[08:18:56] image: thumbnail HTTP 403 for https://live.staticflickr.com/31/99991779_a7997fd239_n.jpg",
-    "[08:19:01] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5132",
-    "[08:19:01] image: vision rejected all candidates (fallback pass) (No candidate fits. 1 shows Sam Altman, a named person who is not one of the story's people, at a TED event. 2 is a dated Apple Xserve RAID close-up with logos, a texture-like pattern of an obsolete product. 3 and 4 are a named TechCrunch Disrupt panel with identified people. 5 is a derelict Chernobyl radar facility, eerie and misleading. 6 comes from the Epstein files, embarrassing beside the headline, and is an amateur cable-cluttered close-up.)",
-    "[08:19:01] image: the story's people first: Hamad Al Ameri 2026 | Hamad Al Ameri | حمد العامري",
-    "[08:19:01] commons \"Hamad Al Ameri 2026\": 0 usable of 0",
-    "[08:19:02] commons \"Hamad Al\": 8 usable of 20",
-    "[08:19:02] image: dropped \"Portraits of Tamim bin Hamad Al Thani and Khalifa bin Hamad Al Thani i\" — names none of the story's people",
-    "[08:19:02] image: dropped \"Hamad Al-Montashari.jpg\" — names none of the story's people",
-    "[08:19:02] image: dropped \"Steven Mnuchin and Jaber Al-Mubarak Al-Hamad Al-Sabah in October 2018.\" — shows jaber, not the story's people",
-    "[08:19:02] image: dropped \"Scottish First Minister meets Hamad bin Khalifa Al Thani, Emir of Qata\" — names none of the story's people",
-    "[08:19:02] image: dropped \"Secretary Blinken met with Amir of Qatar Tamim bin Hamad Al Thani in D\" — shows blinken, antony, not the story's people",
-    "[08:19:02] image: dropped \"Tamim bin Hamad Al Thani in October 2026.jpg\" — names none of the story's people",
-    "[08:19:02] image: dropped \"Sheikh Hamad bin Khalifa bin Ahmed Al Thani.jpg\" — names none of the story's people",
-    "[08:19:02] image: dropped \"Imam Khamenei met with Emir of Qatar, Feb. 19, 2025 1.jpg\" — shows tamim, not the story's people",
-    "[08:19:02] commons \"Hamad Al Ameri\": 9 usable of 9",
-    "[08:19:02] image: dropped \"IAEA United Arab Emirates Bilateral Meeting, Vienna, September 2024, 0\" — shows general, general, conferenc, not the story's people",
-    "[08:19:02] image: dropped \"IAEA United Arab Emirates Bilateral Meeting, Vienna, September 2024, 0\" — shows general, general, conferenc, not the story's people",
-    "[08:19:02] image: dropped \"IAEA United Arab Emirates Bilateral Meeting, Vienna, September 2024, 0\" — shows general, general, conferenc, not the story's people",
-    "[08:19:02] image: dropped \"IAEA United Arab Emirates Bilateral Meeting, Vienna, September 2024, 0\" — shows general, general, conferenc, not the story's people",
-    "[08:19:02] image: dropped \"IAEA United Arab Emirates Bilateral Meeting, Vienna, September 2024, 0\" — shows general, general, conferenc, not the story's people",
-    "[08:19:02] image: dropped \"IAEA United Arab Emirates Bilateral Meeting, Vienna, September 2024, 0\" — shows general, general, conferenc, not the story's people",
-    "[08:19:02] image: dropped \"IAEA United Arab Emirates Bilateral Meeting, Vienna, September 2024, 0\" — shows general, general, conferenc, not the story's people",
-    "[08:19:02] image: dropped \"IAEA United Arab Emirates Bilateral Meeting, Vienna, September 2024, 0\" — shows general, general, conferenc, not the story's people",
-    "[08:19:02] image: dropped \"IAEA United Arab Emirates Bilateral Meeting, Vienna, September 2024, 0\" — shows general, general, conferenc, not the story's people",
-    "[08:19:03] commons \"حمد العامري\": 0 usable of 6",
-    "[08:19:04] commons \"العامري\": 4 usable of 20",
-    "[08:19:04] image: dropped \"Rich Amiri, Clout Festival 2024.jpg\" — names too little of العامري",
-    "[08:19:04] image: dropped \"Hossein Khajeh Amiri 13971016 10.jpg\" — names too little of العامري",
-    "[08:19:04] image: dropped \"Bombardier Global Express (Qatar Amiri Flight), Amiri 5 (2685423794).j\" — names too little of العامري",
-    "[08:19:04] image: people shortlist: 2021 صورة للشيخ مسلم بن حم العامري.jpg",
-    "[08:19:08] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3348",
-    "[08:19:08] image: vision rejected all candidates (The only candidate shows Sheikh Muslim bin Ham Al Ameri, not Hamad Al Ameri, CEO of Alpha Dhabi; the search matched only the shared family name. It is also a posed studio-style portrait on a sofa. Running it would misidentify a person, so none is chosen.)",
-    "[08:19:11] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3530",
-    "[08:19:11] image: last resort: data center server racks United Arab Emirates | data center server racks | data center server racks industrial",
-    "[08:19:12] commons \"data center server racks United Arab Emirates\": 0 usable of 0",
-    "[08:19:13] commons \"data center\": 15 usable of 24",
-    "[08:19:13] image: dropped \"Utah Data Center Panorama (cropped).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[08:19:13] image: dropped \"Microsoft Data Center Middenmeer, the Netherlands - 1.jpg\" — another frame of a series a published story runs",
-    "[08:19:13] commons \"data center server racks\": 14 usable of 24",
-    "[08:19:13] image: dropped \"Wikimedia Foundation Servers-8055 15.jpg\" — another frame of a series a published story runs",
-    "[08:19:13] image: dropped \"Wikimedia Foundation Servers-8055 22.jpg\" — another frame of a series a published story runs",
-    "[08:19:13] commons \"data center server racks industrial\": 0 usable of 0",
-    "[08:19:13] commons \"data center\": 15 usable of 24",
-    "[08:19:19] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5293",
-    "[08:19:25] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6860",
-    "[08:19:25] image: second check (claude-cli/claude-opus-5-5) STOCK — refused \"Virginia Tech - data center.jpg\": The frame is a 2008 Virginia Tech supercomputer room branded with SGI's logo: outdated hardware carrying an unrelated co",
-    "[08:19:30] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4829",
-    "[08:19:37] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6677",
-    "[08:19:37] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"BalticServers data center.jpg\": A sharp, clearly readable server hall pictures AI computing for a story about a global AI fund, and the frame itself sho",
-    "[08:19:37] published \"ألفا ظبي القابضة تلتزم باستثمار مليار دولار في صندوق للذكاء الاصطناعي\" -> alpha-dhabi-1-billion-alpha-wave-ai-fund-4b7494",
-    "[08:20:29] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=51935",
-    "[08:21:12] llm fail role=desk provider=claude model=claude-opus-5-5 attempt=1: an expert identification is not grounded or copies a long source phrase; rewrite it concisely and faithfully",
-    "[08:21:48] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=2 ms=32490",
-    "[08:22:56] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=68449",
-    "[08:23:46] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=49187",
-    "[08:23:46] evidence pair \"ألفا ظبي القابضة تلتزم باستثمار مليار دولار في صندوق للذكاء الاصطناعي\": 0 proved error(s) live (v37), 0 with the kept lessons (v0); the private drafts are not published",
-    "[08:23:46] run budget of 35 minutes spent; \"الإمارات تحدد 30 أكتوبر موعداً للفوترة الإلكترونية وغرامة 5 آلاف درهم شهرياً للمتأخرين\" waits for the next run"
+    "[11:32:33] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,whyItMatters,body] rejected=[]",
+    "[11:32:33] desk \"لماذا تتجه السعودية إلى تخزين نفطها في سنغافورة؟\": rewrote title, subtitle, whyItMatters, body",
+    "[11:32:33] checks explainer \"لماذا تتجه السعودية إلى تخزين نفطها في سنغافورة؟\": 510 words, 0 issues, 0 warnings",
+    "[11:33:12] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=38898",
+    "[11:33:12] critic explainer: revise score=6 issues=6",
+    "[11:33:12]   · خطأ حقيقي (رأي مقدَّم كحقيقة، مع حذف الرواية المقابلة): يقول الصندوق «لكن طهران لم تتخلَّ عن شرط الإذن»، ويقول المتن «ممر تحرسه قوات أمريكية وتطالب طهران بالإذن",
+    "[11:33:12]   · خطأ حقيقي (سبب بلا نسبة): «ثم عادت الصادرات إلى التدفق بدعم عسكري أمريكي»، ومثلها في الصندوق «بدعم من الانتشار العسكري الأمريكي وإزالة الألغام». هذا قول سنتكوم ",
+    "[11:33:12]   · خطأ حقيقي (نتيجة مخترعة): «أما سنغافورة فتستضيف على أرضها كميات من الخام تقوّي إمداداتها هي أيضاً، فالمصلحة متبادلة». لا يذكر المصدر 1 أي حق لسنغافورة في هذا ال",
+    "[11:33:12]   · خطأ في الآلية: تعريف «كونتانجو» في المتن («يحقق تخزين الخام عائداً لأن بيعه لاحقاً يجلب سعراً أعلى») وفي key_facts («فيصبح تخزين الخام وبيعه لاحقاً مربحاً») غير",
+    "[11:33:51] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=38617",
+    "[11:34:22] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=31059",
+    "[11:34:22] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[11:34:22] desk \"لماذا تتجه السعودية إلى تخزين نفطها في سنغافورة؟\": rewrote body",
+    "[11:35:04] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=42498",
+    "[11:35:04] critic (second pass) explainer: revise score=9",
+    "[11:35:50] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=45144",
+    "[11:36:27] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=37781",
+    "[11:36:27] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,lede,whyItMatters,body] rejected=[]",
+    "[11:36:27] desk \"لماذا تتجه السعودية إلى تخزين نفطها في سنغافورة؟\": rewrote subtitle, lede, whyItMatters, body",
+    "[11:36:27] mended explainer \"لماذا تتجه السعودية إلى تخزين نفطها في سنغافورة؟\": the second pass's 6 finding(s) sent back once more",
+    "[11:36:37] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=9442",
+    "[11:36:37] image: the picture should say: Saudi crude parked beyond Hormuz sits on the sea lane, within quick reach of Asian buyers.",
+    "[11:36:37] image: tier 1, the story's own place (Jurong Rock Caverns, Jurong Island, Singapore Strait, Strait of Hormuz): Jurong Island | Jurong Island oil tanks | Singapore Strait oil tanker; categories: Jurong Rock Caverns | Jurong Island | Singapore Strait | Strait of Hormuz",
+    "[11:36:37] commons \"Jurong Island\": 16 usable of 24",
+    "[11:36:38] pexels \"Jurong Island\": 8 usable",
+    "[11:36:57] openverse \"Jurong Island\": The operation was aborted due to timeout",
+    "[11:36:57] image: dropped \"Scenic view of modern Chinese buildings by a tranquil lake in Xia Men \" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:36:57] image: dropped \"Dramatic aerial view of a sprawling cityscape under an overcast sky.\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:36:58] commons \"Jurong Island oil tanks\": 0 usable of 0",
+    "[11:36:58] pexels \"Jurong Island oil tanks\": 8 usable",
+    "[11:37:14] openverse \"Jurong Island oil tanks\": 7 usable of 7",
+    "[11:37:14] commons \"Singapore Strait oil tanker\": 1 usable of 1",
+    "[11:37:15] pexels \"Singapore Strait oil tanker\": 8 usable",
+    "[11:37:28] openverse \"Singapore Strait oil tanker\": 0 usable of 1",
+    "[11:37:28] image: dropped \"Top-down view of cargo ship and tugboats in turquoise waters near Butt\" — names too little of oil, tanker",
+    "[11:37:28] image: dropped \"Aerial shot of a red cargo ship navigating the Bosphorus Strait near I\" — names too little of oil, tanker",
+    "[11:37:28] image: dropped \"Cargo ship navigating through Bosphorus Strait, Istanbul under cloudy \" — names too little of oil, tanker",
+    "[11:37:28] image: dropped \"A large oil tanker navigates the Bosphorus Strait with Istanbul's skyl\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:37:28] image: dropped \"A tanker ship on turquoise water with urban skyscrapers in the backgro\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:37:28] image: dropped \"Cargo vessels and a tugboat navigate a foggy harbor, creating a serene\" — names too little of oil, tanker",
+    "[11:37:28] commons category \"Jurong Rock Caverns\": none carries its name",
+    "[11:37:28] commons Category:Jurong Island: 11 usable of 13",
+    "[11:37:29] commons Category:Singapore Strait: 34 usable of 39",
+    "[11:37:29] image: dropped \"USS Boxer Transits Singapore Strait (9716898).jpg\" — a warship or weapon, and the story is not about the military",
+    "[11:37:29] image: dropped \"Strait of Sincapore - publ. by A. Dalrymple ; writing by Harmar - btv1\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:37:29] image: dropped \"Near Singapore - MV PRINSESA SIRENA - panoramio.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:37:29] image: dropped \"Near Singapore 14 - panoramio.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:37:29] image: dropped \"Near Singapore 2014 - panoramio.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:37:29] image: dropped \"Near Singapore - panoramio (1).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:37:29] commons Category:Strait of Hormuz: 22 usable of 48",
+    "[11:37:29] image: dropped \"The Eisenhower Carrier Strike Group Transits the Strait of Hormuz (817\" — a warship or weapon, and the story is not about the military",
+    "[11:37:29] image: dropped \"Usv-escort-strait-of-hormuz.jpg\" — a warship or weapon, and the story is not about the military",
+    "[11:37:29] image: dropped \"Strait Of Hormuz Transit 230508-N-NH257-1076.jpg\" — a warship or weapon, and the story is not about the military",
+    "[11:37:29] image: dropped \"USS Tempest (PC 2) transits the Strait of Hormuz. (50679762106).jpg\" — a warship or weapon, and the story is not about the military",
+    "[11:37:29] image: dropped \"USS Essex (LHD 2), right, and USNS Wally Schirra (T-AKE 8) transit the\" — a warship or weapon, and the story is not about the military",
+    "[11:37:29] image: dropped \"171022-N-VR594-0093 (38245775971).jpg\" — a warship or weapon, and the story is not about the military",
+    "[11:37:29] image: dropped \"171022-N-VR594-0004 (38245776261).jpg\" — a warship or weapon, and the story is not about the military",
+    "[11:37:29] image: dropped \"140614-N-EI510-217 (14310331669).jpg\" — a warship or weapon, and the story is not about the military",
+    "[11:37:29] image: dropped \"CVN 69 transits the Strait of Hormuz (28465403076).jpg\" — a warship or weapon, and the story is not about the military",
+    "[11:37:29] image: dropped \"CG 56 transits the Strait of Hormuz (28465394986).jpg\" — a warship or weapon, and the story is not about the military",
+    "[11:37:29] image: dropped \"CVN 69 transits the Strait of Hormuz (28465400856).jpg\" — a warship or weapon, and the story is not about the military",
+    "[11:37:29] image: dropped \"HMS Middleton in the Strait of Hormuz (8315145316).jpg\" — a warship or weapon, and the story is not about the military",
+    "[11:37:29] image: dropped \"USS New York (LPD 21) 150120-N-XG464-004 (15724165494).jpg\" — a warship or weapon, and the story is not about the military",
+    "[11:37:29] image: dropped \"USS New York (LPD 21) 150120-N-XG464-036 (16320642216).jpg\" — a warship or weapon, and the story is not about the military",
+    "[11:37:29] image: 5 file(s) dropped for naming none of Jurong Rock Caverns, Jurong Island, Singapore Strait, Strait of Hormuz",
+    "[11:37:29] image: thumbnail HTTP 403 for https://live.staticflickr.com/3843/14966763291_16ec663951_n.jpg",
+    "[11:37:30] image: thumbnail HTTP 403 for https://live.staticflickr.com/5586/14783171670_c43ea04e9a_n.jpg",
+    "[11:37:41] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7750",
+    "[11:37:41] image: \"Oil tanks, Jurong Island\" names the story's topic without saying its point (Oil storage tanks, a loading jetty and a tanker on Jurong Island, the story's own place, place storage on the sea lane, and the scene is livelier than candidate); checked now and kept in reserve while the desk looks further",
+    "[11:37:45] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3829",
+    "[11:37:45] image: second check (claude-cli/claude-opus-5-5) RIGHT \"Oil tanks, Jurong Island\": A sharp, well-exposed view of oil storage tanks, a loading jetty and a tanker at Jurong Island shows the story's own Sin",
+    "[11:37:45] image: thumbnail HTTP 403 for https://live.staticflickr.com/3863/14969841185_25a1aff6b5_n.jpg",
+    "[11:37:55] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5551",
+    "[11:37:55] image: \"Oil tanks, Jurong Island\" names the story's topic without saying its point; the desk already holds one such, and looks further",
+    "[11:37:55] image: tier 3, the writer's own subjects: Jurong Island Singapore | oil tanker Singapore Strait | oil storage tanks",
+    "[11:37:56] commons \"Jurong Island Singapore 2026\": 1 usable of 2",
+    "[11:37:56] commons \"Jurong Island Singapore\": 10 usable of 12",
+    "[11:37:57] commons \"oil tanker Singapore Strait 2026\": 0 usable of 0",
+    "[11:37:57] commons \"oil tanker Singapore Strait\": 1 usable of 1",
+    "[11:37:57] commons \"oil storage tanks 2026\": 4 usable of 12",
+    "[11:37:58] commons \"oil storage tanks\": 0 usable of 12",
+    "[11:37:58] image: dropped \"Derelict Fuel Storage Tank at the Da Yang Oil Depot Recreation Park, T\" — a warship or weapon, and the story is not about the military",
+    "[11:37:58] image: dropped \"Sun Oil Refinery, Oregon, Ohio (approximately 1900) - DPLA - cc5f849e2\" — dated 1900, an archival picture",
+    "[11:37:58] image: dropped \"Irving Oil Terminal Charlottetown.jpg\" — taken in Canada, which the story does not name",
+    "[11:38:05] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6598",
+    "[11:38:05] image: \"Jurong Island, Singapore - 20110227-01.jpg\" names the story's topic without saying its point; the desk already holds one such, and looks further",
+    "[11:38:05] image: tier 4, the story's point and its subject: oil tankers Singapore Strait | tanker anchorage Singapore | oil tanker Strait of Hormuz | oil tanker Singapore | Jurong Island oil storage | crude oil tanker loading (home: Singapore, Singaporean, Jurong, Jurong Island)",
+    "[11:38:05] commons \"oil tankers Singapore Strait\": 1 usable of 1",
+    "[11:38:06] pexels \"oil tankers Singapore Strait\": 8 usable",
+    "[11:38:16] openverse \"oil tankers Singapore Strait\": 0 usable of 1",
+    "[11:38:16] image: dropped \"Top-down view of cargo ship and tugboats in turquoise waters near Butt\" — names too little of oil, tankers",
+    "[11:38:16] image: dropped \"Cargo vessels and a tugboat navigate a foggy harbor, creating a serene\" — names too little of oil, tankers",
+    "[11:38:16] image: dropped \"Aerial shot of a red cargo ship navigating the Bosphorus Strait near I\" — names too little of oil, tankers",
+    "[11:38:16] image: dropped \"Cargo ship navigating through Bosphorus Strait, Istanbul under cloudy \" — names too little of oil, tankers",
+    "[11:38:16] image: dropped \"A large oil tanker navigates the Bosphorus Strait with Istanbul's skyl\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:38:16] image: dropped \"A tanker ship on turquoise water with urban skyscrapers in the backgro\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:38:17] commons \"tanker anchorage Singapore\": 2 usable of 2",
+    "[11:38:17] pexels \"tanker anchorage Singapore\": 8 usable",
+    "[11:38:22] openverse \"tanker anchorage Singapore\": 0 usable of 0",
+    "[11:38:22] image: dropped \"A massive cargo ship named Hunter Freya anchored at a bustling sea por\" — names too little of tanker, anchorage",
+    "[11:38:22] image: dropped \"A stunning aerial view of ships silhouetted against a golden sunset ov\" — names too little of tanker, anchorage",
+    "[11:38:22] image: dropped \"A fleet of cargo ships anchored offshore against a serene ocean backdr\" — names too little of tanker, anchorage",
+    "[11:38:22] image: dropped \"Boats docked at Singapore Harbourfront Center with industrial port bac\" — names too little of tanker, anchorage",
+    "[11:38:22] image: dropped \"Close-up of a large cargo ship with prominent safety signage navigatin\" — names too little of tanker, anchorage",
+    "[11:38:22] commons \"oil tanker Strait of Hormuz\": 13 usable of 14",
+    "[11:38:22] image: dropped \"Flickr - DVIDSHUB - USS Porter damaged in collision with oil tanker (I\" — a warship or weapon, and the story is not about the military",
+    "[11:38:22] image: dropped \"Flickr - DVIDSHUB - USS Porter damaged in collision with oil tanker (I\" — a warship or weapon, and the story is not about the military",
+    "[11:38:22] image: dropped \"120812-N-XO436-116 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
+    "[11:38:22] image: dropped \"120812-N-XO436-093 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
+    "[11:38:22] image: dropped \"120812-N-XO436-314 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
+    "[11:38:22] image: dropped \"120812-N-XO436-152 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
+    "[11:38:22] image: dropped \"120812-N-XO436-025 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
+    "[11:38:22] image: dropped \"120812-N-XO436-114 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
+    "[11:38:22] image: dropped \"Khalig-fars-Persian-Gulf 05.jpg\" — names too little of oil, tanker",
+    "[11:38:22] image: dropped \"Khalig-fars-Persian-Gulf 02.jpg\" — names too little of oil, tanker",
+    "[11:38:22] image: dropped \"Khalig-fars-Persian-Gulf 01.jpg\" — names too little of oil, tanker",
+    "[11:38:22] image: dropped \"Khalig-fars-Persian-Gulf 04.jpg\" — names too little of oil, tanker",
+    "[11:38:23] pexels \"oil tanker Strait of Hormuz\": 8 usable",
+    "[11:38:35] openverse \"oil tanker Strait of Hormuz\": 3 usable of 3",
+    "[11:38:35] image: dropped \"Oliver Hazzard Perry Class Frigate - from an 'Island AIr' De Havilland\" — names too little of oil, tanker",
+    "[11:38:35] image: dropped \"USS Porter damaged in collision with oil tanker [Image 2 of 3]\" — a warship or weapon, and the story is not about the military",
+    "[11:38:35] image: dropped \"USS Porter damaged in collision with oil tanker [Image 1 of 3]\" — a warship or weapon, and the story is not about the military",
+    "[11:38:35] image: dropped \"Oil tanker navigating the Bosphorus Strait with the Istanbul cityscape\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:38:35] image: dropped \"Aerial view of a cargo ship navigating the Bosphorus in Istanbul, Türk\" — names too little of oil, tanker",
+    "[11:38:35] commons \"oil tanker Singapore\": 22 usable of 24",
+    "[11:38:35] image: dropped \"Maersk Murotsu IMO 9425514 (14375993424).jpg\" — names too little of oil, tanker",
+    "[11:38:35] image: dropped \"Maersk Murotsu IMO 9425514 (14375993424) (2).jpg\" — names too little of oil, tanker",
+    "[11:38:35] image: dropped \"STI Miracle at the Gore Bay Terminal in December 2020.jpg\" — names too little of oil, tanker",
+    "[11:38:35] image: dropped \"Stern of the STI Miracle at the Gore Bay Terminal December 2020.jpg\" — names too little of oil, tanker",
+    "[11:38:35] image: dropped \"Bow of the STI Miracle at the Gore Bay Terminal December 2020.jpg\" — names too little of oil, tanker",
+    "[11:38:35] commons \"Jurong Island oil storage\": 0 usable of 0",
+    "[11:38:35] commons \"Jurong Island\": 16 usable of 24",
+    "[11:38:36] commons \"crude oil tanker loading\": 7 usable of 12",
+    "[11:38:36] image: dropped \"Tanker offshore terminal.jpg\" — dated 2003, an archival picture",
+    "[11:38:36] image: dropped \"United States Strategic Petroleum Reserve 026.jpg\" — another frame of a series a published story runs",
+    "[11:38:36] image: dropped \"Iraq's petroleum and gas infrastructure. LOC 2007629280.jpg\" — dated 2003, an archival picture",
+    "[11:38:36] image: dropped \"Drift River Terminal 2009 3.jpg\" — names too little of crude, oil, tanker, loading",
+    "[11:38:36] image: dropped \"Swans in water between Forth bridges (Keven Law).jpg\" — names too little of crude, oil, tanker, loading",
+    "[11:38:36] image: dropped \"TAKEN FROM A POINT BETWEEN SAW ISLAND AND JACKSON POINT THIS VIEW LOOK\" — names too little of crude, oil, tanker, loading",
+    "[11:38:36] pexels \"crude oil tanker loading\": 8 usable",
+    "[11:38:49] openverse \"crude oil tanker loading\": 2 usable of 6",
+    "[11:38:49] image: dropped \"A busy industrial port featuring ships, cranes, and a loading dock und\" — names too little of crude, oil, tanker, loading",
+    "[11:38:49] image: dropped \"A large red cargo ship docked at an industrial port with scenic mounta\" — names too little of crude, oil, tanker, loading",
+    "[11:38:49] image: dropped \"Wide-angle view of a black tank truck with hazard warning, highlightin\" — names too little of crude, oil, tanker, loading",
+    "[11:38:49] image: dropped \"MT Alaskan Navigator at Valdez Marine Terminal (Deck).jpg\" — taken in United States, which the story does not name",
+    "[11:38:49] image: thumbnail HTTP 403 for https://live.staticflickr.com/5057/5544411419_02fcdd1115_n.jpg",
+    "[11:38:53] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3782",
+    "[11:38:59] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5177",
+    "[11:38:59] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Samco Redwood crude oil tanker (14783173609).jpg\": A clear, well-exposed shot of a crude oil tanker off Singapore, with storage tanks behind, pictures the story's own sect",
+    "[11:38:59] published explainer \"لماذا تتجه السعودية إلى تخزين نفطها في سنغافورة؟\" -> why-saudi-arabia-stores-crude-in-singapore-9ff749"
   ]
 }
