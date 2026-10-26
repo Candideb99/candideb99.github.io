@@ -1,0 +1,33 @@
+{
+  "mode": "reports",
+  "startedAt": "2026-10-26T15:16:29.299Z",
+  "durationSec": 19,
+  "published": 0,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "International Trade in Goods International trade in goods for Saudi Arabia in September 2026",
+      "section": "economy",
+      "outcome": "skipped: nothing readable in the report's pages"
+    }
+  ],
+  "llm": {
+    "calls": 0,
+    "failures": 0,
+    "promptTokens": 0,
+    "completionTokens": 0,
+    "cacheReadTokens": 0,
+    "costUsd": 0,
+    "byModel": {}
+  },
+  "log": [
+    "[15:16:29] newsroom start mode=reports limit=4 dry-run=false",
+    "[15:16:37] report iea-omr: www.iea.org/reports/oil-market-report-october-2026 not read (http-403)",
+    "[15:16:37] report iea-omr: www.iea.org/reports/oil-market-report-september-2026 not read (http-403)",
+    "[15:16:38] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
+    "[15:16:38] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
+    "[15:16:41] report un-tourism-barometer: page not read (http-403)",
+    "[15:16:47] reports: 1 new edition(s): sa-trade «International trade in goods for Saudi Arabia in September 2026»",
+    "[15:16:47] release sa-trade: International trade in goods for Saudi Arabia in September 2026 has no document yet"
+  ]
+}
