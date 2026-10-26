@@ -20,7 +20,15 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image: null
+image:
+  url: https://images.pexels.com/photos/5480781/pexels-photo-5480781.jpeg?auto=compress&cs=tinysrgb&w=1280
+  width: 1280
+  height: 852
+  alt: كابلات شبكة موصولة بخوادم مركز بيانات (صورة تعبيرية)
+  credit: Brett Sayles · بيكسلز
+  license: Pexels License
+  licenseUrl: https://www.pexels.com/license/
+  pageUrl: https://www.pexels.com/photo/server-racks-on-data-center-5480781/
 sources:
   - name: بلومبرغ
     nameEn: Bloomberg
@@ -44,7 +52,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: null
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
   lessons: v37
 quality:

@@ -31,7 +31,15 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image: null
+image:
+  url: https://images.pexels.com/photos/35883424/pexels-photo-35883424.jpeg?auto=compress&cs=tinysrgb&w=1280
+  width: 1280
+  height: 853
+  alt: عامل يلحم هيكل سفينة قيد البناء
+  credit: Saad Bin  Hasan · بيكسلز
+  license: Pexels License
+  licenseUrl: https://www.pexels.com/license/
+  pageUrl: https://www.pexels.com/photo/industrial-welder-working-on-ship-hull-outdoors-35883424/
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -49,7 +57,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: null
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
   lessons: v37
 quality:

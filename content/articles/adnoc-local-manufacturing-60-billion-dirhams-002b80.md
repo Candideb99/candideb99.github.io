@@ -31,7 +31,15 @@ regions:
 readingMinutes: 4
 chart: null
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/ADNOC_Refining_Ruwais_Site-96.jpg/1280px-ADNOC_Refining_Ruwais_Site-96.jpg
+  width: 1280
+  height: 777
+  alt: مصفاة أدنوك في الرويس بإمارة أبوظبي
+  credit: Rickmaj · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AADNOC_Refining_Ruwais_Site-96.jpg
 sources:
   - name: ذا ناشيونال
     nameEn: The National
@@ -61,7 +69,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: null
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
   lessons: control
 quality:
