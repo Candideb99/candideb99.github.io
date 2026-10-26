@@ -1,190 +1,467 @@
 {
-  "mode": "explainer",
-  "startedAt": "2026-10-26T11:30:41.365Z",
-  "durationSec": 498,
-  "published": 1,
+  "mode": "news",
+  "startedAt": "2026-10-26T13:13:16.531Z",
+  "durationSec": 2483,
+  "published": 3,
   "refreshed": 0,
   "report": [
     {
-      "headline": "لماذا تخزّن السعودية نفطها في سنغافورة بدل خزاناتها داخل المملكة؟",
-      "section": "explainers",
-      "outcome": "published",
-      "mendedAfterReview": 6,
-      "mendIssues": [
-        "خطأ حقيقي (نسبة خاطئة): «ويبقى المخزون داخل الخليج خلف ممر تتعارض روايتا واشنطن وطهران عن السيطرة عليه». المصدر 2 لا ينقل رواية إيرانية. الرواية المقابلة لرواية روبيو تنسبها المادة إلى صحيفة «عرب نيوز»، وهي التي تقول إن إيران أحكمت قبضتها واشترطت الإذن. الإصلاح: «خلف ممر تتعارض الروايات عن السيطرة عليه، بين ما تنقله «عرب نيوز» عن اشتراط طهران الإذن وقول روبيو إنها فقدت السيطرة الكاملة عليه».",
-        "خلل في الآلية: «أما البراميل المخزنة في سنغافورة فلا يمسها أي تعطل في المضيق، لأنها أصبحت خارجه». التخزين لم يبدأ بعد، فهو مقرر في النصف الثاني من 2027 (المصدر 1)، فلا يصح «أصبحت». كما أن النفي المطلق «لا يمسها أي تعطل» غير دقيق، لأن ملء المخزون وتجديده يمرّان عبر هرمز. ويتكرر الإطلاق نفسه في العنوان الفرعي («ويبقى متاحاً إذا تعطل الممر») وفي الصندوق («من دون حاجة إلى تلك الحماية»). الإصلاح: «أما الخام الذي سيُخزَّن في سنغافورة فيبقى، بعد وصوله إليها، في متناول المشترين ولو تعطل المضيق، وإن ظل تجديده يمر عبر هرمز».",
-        "تكرار بين الصندوق والمتن: الجملة الثانية في الصندوق («تكمن قيمة البرميل السعودي المخزن في سنغافورة في أنه يصل إلى المشتري الآسيوي من دون حاجة إلى تلك الحماية») تعيد خلاصة الفقرة التي تختم قسم هرمز في المتن، ولا تضيف معنى جديداً. الإصلاح: الإبقاء على الخلاصة في موضع واحد. يحتفظ الصندوق بالاستنتاج المشروط، أي بقاء انتظام المرور معلقاً بالانتشار الأمريكي. ويضيف قيده المادي: المخزون الخارجي يحمي ما وصل منه فقط، وحجم هذه الحماية مرهون بالكميات التي لم تُكشف.",
-        "زمن الفعل في المقدمة: «ويضع التخزين هناك براميل سعودية خارج مضيق هرمز» يقدّم بصيغة الحاضر أمراً لم يحدث، فالاتفاقية لم توقَّع والتخزين يبدأ في 2027. الإصلاح: «وسيضع التخزين هناك، إن أُبرمت الاتفاقية، براميل سعودية خارج مضيق هرمز».",
-        "مبالغة في التعريف: في key_facts «ليسلّمه أسرع ويتجنب مخاطر طرق الشحن». المخزون القريب يخفف بعض مخاطر الطريق ولا يلغيها، لأن الخام يُشحن إليه أولاً. الإصلاح: «ليسلّمه أسرع ويقلّل تعرّضه لمخاطر طرق الشحن».",
-        "نسبة ناقصة: جملة «يمر عبر المضيق في الأحوال العادية خُمس صادرات النفط العالمية» جاءت بلا نسبة، ثم جاءت «بحسب صحيفة «عرب نيوز»» في آخر الجملة التالية فبدت مقصورة عليها. المصدر 2 ينسب الرقم إلى الصحيفة نفسها. الإصلاح: تقديم النسبة لتشمل الجملتين، مثل «وتقول صحيفة «عرب نيوز» السعودية الصادرة بالإنجليزية إن خُمس صادرات النفط العالمية يمر عبر المضيق في الأحوال العادية، وإن إيران…»."
+      "headline": "فائض السعودية التجاري يتسع 17.8% في أغسطس رغم تراجع الصادرات",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://www.agbi.com/trade/2026/10/saudi-imports-hold-up-despite-houthi-shipping-attacks/",
+        "https://www.arabnews.com/business/saudi-arabias-trade-surplus-widens-178-to-416bn-in-august-gastat-3008323",
+        "https://www.annahar.com/economy/360330/%D8%B5%D8%A7%D8%AF%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-%D8%AA%D8%AA%D8%B1%D8%A7%D8%AC%D8%B9-115-%D9%81%D9%8A-%D8%A3%D8%BA%D8%B3%D8%B7%D8%B3-%D8%A8%D9%81%D8%B9%D9%84-%D8%A7%D9%86%D8%AE%D9%81%D8%A7%D8%B6-%D8%A5%D9%85%D8%AF%D8%A7%D8%AF%D8%A7%D8%AA-%D8%A7%D9%84%D9%86%D9%81%D8%B7-%D9%88%D8%B3%D9%84%D8%B9-%D8%A5%D8%B9%D8%A7%D8%AF%D8%A9-%D8%A7%D9%84%D8%AA%D8%B5%D8%AF%D9%8A%D8%B1",
+        "https://www.aleqt.com/%D8%AA%D9%82%D8%A7%D8%B1%D9%8A%D8%B1-%D9%88%D8%AA%D8%AD%D9%84%D9%8A%D9%84%D8%A7%D8%AA/%D8%B5%D8%A7%D8%AF%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-%D8%BA%D9%8A%D8%B1-%D8%A7%D9%84%D9%86%D9%81%D8%B7%D9%8A%D8%A9-%D8%AA%D8%A8%D9%84%D8%BA-%D8%A3%D8%B9%D9%84%D9%89-%D9%85%D8%B3%D8%AA%D9%88%D9%89-%D9%81%D9%8A-4-%D8%A3%D8%B4%D9%87%D8%B1-%D8%AE%D9%84%D8%A7%D9%84-%D8%A3%D8%BA%D8%B3%D8%B7%D8%B3-15725"
       ],
-      "slug": "why-saudi-arabia-stores-crude-in-singapore-9ff749",
-      "title": "لماذا تتجه السعودية إلى تخزين نفطها في سنغافورة؟",
-      "score": 9,
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان يذكر اتساع الفائض 17.8% دون «عن يوليو»، والعنوان الفرعي يذكر أنه أدنى 21% من مستواه قبل عام. يظهر التناقض للقارئ قبل أن تحسمه المقدمة.",
+              "repair": "إضافة «عن يوليو» أو «شهرياً» إلى العنوان، وإبقاء المقارنة السنوية في العنوان الفرعي."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "سياق هرمز وباب المندب وجدة موجود ومُسند. لكن سبب الاتساع الشهري (الصادرات الوطنية غير النفطية بنحو 99.7% من النمو، المصدر 4) غائب، وكذلك تركيب الواردات الوسيطة. وتنطلق مقدمة «لماذا يهمّ» من مقدمة مبالغ فيها، هي أن الخام كله يخرج عبر ينبع.",
+              "repair": "إضافة المحرك الشهري وواردات السلع الوسيطة مع قيدها من المصدر 4، وتخفيف مقدمة «لماذا يهمّ» إلى «جزء كبير من التجارة»، مع الإبقاء على الشرط «أي تصعيد قد يضغط…»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "تسير الأقسام الأولى بخط واضح: الشهري، ثم السنوي، ثم غير النفطي، ثم الطرق. لكن الختام يتحول إلى رقم تراكمي معزول، ثم يأتي تعليق دويك عن التنوع الجغرافي بعيداً عن فقرة الوجهات. وتضيف جملة «لماذا يهمّ» الثانية عن عجز الصادرات غير النفطية عن تعويض تراجع البترول معنى يقارب «محك» دويك، لكنها تبقى استدلالاً محدوداً مقبولاً.",
+              "repair": "ضم تعليق دويك عن التنوع الجغرافي إلى فقرة الوجهات، ونقل الفائض التراكمي إلى المقارنة السنوية، واستبدال «تراجع قيمة الصادرات البترولية» بـ«تراجع قيمة الخام» في مقدمة «لماذا يهمّ»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "أرقام الفائض والصادرات والواردات والحصص والفائض التراكمي مطابقة للمصادر 2 و3 و4. لكن عبارة «صادرات الآلات… 63.6%» تخص إعادة التصدير وحدها (المصدر 3)، وعبارة «الخام يخرج عبر ينبع» تعمم ما يذكره المصدر 2 جزئياً.",
+              "repair": "كتابة «إعادة تصدير الآلات…»، و«حُوّل جزء من الخام عبر خط شرق-غرب إلى ينبع»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يحدد أن اتساع الفائض 17.8% هو «عن يوليو». العنوان الفرعي يذكر التراجع السنوي 21% وأسبابه، فلا يبقى تناقض ظاهر. والمقدمة تذكر الرقم والمصدر وأن الصادرات نمت أسرع من الواردات.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يغيب سبب إغلاق هرمز، أي الحرب الأمريكية الإسرائيلية مع إيران كما في المصدر 2، ويغيب صوت كلابادان من شركة كيلفاد (المصدر 1) الذي يفسر صمود الواردات. أما مقدمة «لماذا يهمّ» فتنطلق من مقدمات مُسندة: جدة 46.7%، وتحويل جزء من الخام إلى ينبع، وهجمات الحوثيين. وتستدل منها استدلالاً مشروطاً بـ«قد». لكن جملتها الثانية تبدّل «الصادرات البترولية» إلى «الخام».",
+              "repair": "إضافة خلفية الحرب بجملة قصيرة عند ذكر هرمز، وإضافة تعليق كلابادان بصيغة غير مباشرة في فقرة الواردات، وكتابة «تراجع قيمة الصادرات البترولية» في «لماذا يهمّ»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يسير التقرير بخط واضح: الشهري، ثم السنوي والتراكمي، ثم النفط وإعادة التصدير، ثم غير النفطي، ثم الواردات، ثم الأسواق. لكن جملة «ومرّ عبر ميناء جدة الإسلامي 46.7%...» علقت في ذيل فقرة هرمز وينبع، بعيداً عن فقرة الواردات التي تفسرها.",
+              "repair": "ضم رقم جدة وتعليق كلابادان إلى فقرة صمود الواردات، وإبقاء فقرة هرمز وينبع للخلفية النفطية وحدها."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر 2 و3 و4: الفائض 15.59 مقابل 13.24، والصادرات 87.24 بزيادة 3.3%، والواردات 71.64 بزيادة 0.6%، والصادرات البترولية 61.1 بتراجع 12.5%، وإعادة التصدير 7.84 بتراجع 34%، والفائض التراكمي 183.6 بزيادة 31.2%، وواردات السلع الوسيطة 36.1 بزيادة 6.4%. ويوم الاثنين يوافق تاريخ الإصدار. يبقى خطأ واحد: «تراجع قيمة الخام» يضيّق نطاق «الصادرات البترولية».",
+              "repair": "استبدال «تراجع قيمة الخام» بـ«تراجع قيمة الصادرات البترولية»."
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "مرّ عبر ميناء جدة الإسلامي 46.7% من واردات المملكة في أغسطس",
+          "source": 3
+        },
+        {
+          "fact": "حوّلت السعودية مسار خامها عبر خط شرق-غرب إلى ميناء ينبع على البحر الأحمر لتفادي هرمز، فيما بلغ متوسط التدفقات عبر هرمز 4.9 مليون برميل يومياً في الربع الثاني",
+          "source": 2
+        },
+        {
+          "fact": "هاجم الحوثيون الشحن السعودي في باب المندب عند المدخل الجنوبي للبحر الأحمر بعد إعلانهم «حصاراً مقابل حصار» في يوليو",
+          "source": 1
+        },
+        {
+          "fact": "بلغت حصة الصادرات النفطية 70% من إجمالي الصادرات في أغسطس 2026",
+          "source": 2
+        }
+      ],
+      "slug": "saudi-trade-surplus-widens-august-2026-122212",
+      "title": "فائض السعودية التجاري يتسع 17.8% في أغسطس عن يوليو بدعم الصادرات غير النفطية",
+      "score": 7,
       "image": "photo"
+    },
+    {
+      "headline": "«تاسي» يقفز 3.4% في أكبر مكسب يومي منذ عام بعد قاع 2021",
+      "section": "markets",
+      "importance": 7,
+      "sources": [
+        "https://aawsat.com/node/5333829",
+        "https://www.independentarabia.com/node/661292/%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF/%D8%A3%D8%B3%D9%87%D9%85-%D9%88%D8%A8%D9%88%D8%B1%D8%B5%D8%A9/%D8%A7%D9%84%D8%A3%D8%B3%D9%87%D9%85-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-%D8%AA%D8%B1%D8%AA%D8%AF-%D9%85%D9%86-%D9%82%D8%A7%D8%B9-2021-%D9%88%D8%A7%D9%84%D8%B3%D9%8A%D9%88%D9%84%D8%A9-%D8%AA%D8%AE%D8%AA%D8%A8%D8%B1-%D8%B5%D9%85%D9%88%D8%AF-%D8%A7%D9%84%D9%85%D9%83%D8%A7%D8%B3%D8%A8"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة والفقرة الثانية توضح معاً ما تغير: ارتداد بنسبة 3.4% هو الأكبر منذ أكثر من عام. وتوضح ما بقي قائماً: ثمانية أسابيع خاسرة متتالية وأدنى مستوى منذ 2021. لا تناقض بين المكسب اليومي والاتجاه الأسبوعي.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يغيب اتساع الارتفاع يوم الاثنين، أي ارتفاع أسهم كثيرة بين 4 و7% وبلوغ عدد منها الحد الأعلى (المصدر 1). كما تغيب معايير عطا (المصدر 2). كلاهما يفسر شرط استمرار الارتداد الذي يختم به التقرير. وفي «لماذا يهمّ»، المقدمات صحيحة لكن وصف النفط بـ«المؤقت» استنتاج بلا أساس، و«قراراً أمريكياً» تسمية مبهمة لقرار الاحتياطي الفيدرالي.",
+              "repair": "إضافة اتساع الارتفاع ومقارنته بجلسة الأحد (257 تراجعاً مقابل 9) وبمكسب «أرامكو» الأقل من المؤشر. إضافة معايير عطا. في الصندوق: حذف «مؤقت» وتسمية الاحتياطي الفيدرالي، مع إبقاء الاستنتاج المشروط بعودة المشترين."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عبارة «تزداد أهمية معايير الأساسيات المالية» تحيل إلى معايير لم تُذكر بعد. وعبارة «بشروط كتبها بقوله» إطار إسنادي متكلف. بقية الفقرات تتدرج منطقياً من الجلسة إلى الخلفية إلى النفط إلى المحللين إلى المحطات المقبلة.",
+              "repair": "نقل معايير عطا إلى فقرته ثم البناء عليها، واستبدال إطار «كتبها بقوله» بإسناد مباشر: «ورأت «إندبندنت عربية» أن…»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«بحلول الساعة 12:19 بتوقيت غرينتش» تقدم رقم الإغلاق كأنه قراءة أثناء الجلسة، والمصدر 1 يصفه بالإغلاق. وعنوان الرسم «أسهم قيادية» يضم «مجموعة تداول» دون سند.",
+              "repair": "«أنهى المؤشر جلسة الاثنين مرتفعاً 3.4% إلى 9762 نقطة»، وتغيير عنوان الرسم إلى «أسهم مختارة»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقول العنوان والمقدمة والفقرة الأولى ما تغيّر: قفز المؤشر 3.4% إلى 9762 نقطة في أكبر مكسب يومي منذ أكثر من عام، واتسع الصعود (8 أسهم بين 4 و7% وأخرى عند الحد الأقصى أو قربه). ويقول الموجز ما لم يتغيّر: الارتداد يأتي بعد ثمانية أسابيع خسائر هي الأطول منذ 1994. ويبقى الشرط قائماً في المتن: صمود الارتداد موضع اختبار (المصدر 2).",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يضع التقرير الرقم في سياقه بخسارة 750 نقطة (7.4%) في خمس جلسات (المصدر 1)، وإغلاق الأحد عند 9438.50 وبنسبة تراجع 257 سهماً مقابل 9 (المصدر 2). ويعرّف الخبيرين بصفتيهما ومؤسستيهما كما وردت في المصدر، ويعرض تزامن الارتداد مع تراجع برنت دون ادعاء سببية. أما «لماذا يهمّ» فيستند إلى مقدمات ثابتة: الاتساع، وتأخر «أرامكو» عن المؤشر، والسلسلة الأسبوعية، والمحطتان الأمريكيتان. ويستنتج منها استنتاجاً مشروطاً بـ«قد»: الاتساع تحقق ليوم واحد، والحاسم عودة المشترين وتدفقات الاستثمار الأجنبي.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "تتدرج الفقرات من اتساع الجلسة، إلى الأسهم القيادية والاستثناء، إلى الخلفية، فالنفط، فقراءتي المحللين، فشروط الاستمرار، ثم المحطات المقبلة. وفقرة معايير عطا تمهّد لعبارة «يزيد وزن هذه المعايير» فتتضح الإحالة. ويضيف الصندوق ربطاً بين الاتساع المتحقق والقيد الخارجي المتبقي، فلا يكرر الخاتمة حرفياً.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر: 9762 و323 و5.2 مليار و750 نقطة و7.4% و9438.50 و2.65% و4.3 مليار (1.15 مليار دولار) و114.60 و116 و1.9% و1.4% و-2%. ويطابق «الأربعاء» 28 أكتوبر في why_basis عبارة «بعد غد» في المصدر 2 المنشور الاثنين 26 أكتوبر. ووصف الرقم بأنه إغلاق يوافق المصدر 1 والقراءة المتأخرة في المصدر 3.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "ارتفعت أسهم عدة بين 4 و7% وسجلت أخرى ارتفاعات بالنسبة القصوى أو قربها، فيما صعد سهم أرامكو 1.9% مقابل 3.4% للمؤشر",
+          "source": 1
+        },
+        {
+          "fact": "سجلت السوق ثماني خسائر أسبوعية متتالية هي الأطول منذ 1994 وبلغت أدنى مستوياتها منذ 2021",
+          "source": 2
+        },
+        {
+          "fact": "تترقب الأسواق قرار الاحتياطي الفيدرالي في 28 أكتوبر وانتخابات التجديد النصفي في 3 نوفمبر وأثرهما على الدولار وتدفقات الاستثمار الأجنبي",
+          "source": 2
+        },
+        {
+          "fact": "قدرة السيولة الشرائية على مساندة الارتفاعات لا تزال موضع اختبار مع استمرار الحذر تجاه الأسهم القيادية",
+          "source": 2
+        }
+      ],
+      "slug": "saudi-tasi-jumps-biggest-daily-gain-498504",
+      "title": "مؤشر الأسهم السعودية يقفز 3.4% في أكبر مكسب يومي منذ أكثر من عام",
+      "score": 9,
+      "image": "cover-art"
+    },
+    {
+      "headline": "أنثروبيك تتجه لتقديم ملف طرحها العام الأولي علناً",
+      "section": "technology",
+      "importance": 7,
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-10-26/anthropic-is-said-to-plan-public-filing-for-mega-ipo-monday",
+        "https://www.nytimes.com/2026/10/26/technology/anthropic-going-public-stakes.html",
+        "https://www.moneycontrol.com/news/business/ipo/anthropic-ipo-claude-maker-plans-public-filing-today-eyes-stock-market-debut-rivaling-spacex-14060415.html"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "المقدمة تحدد التغيير بوضوح: إيداع علني مزمع للاثنين، وسقف متوقع للحجم يعادل طرح سبيس إكس أو يتجاوزه. لكن العنوان «تتوقع أن يضاهي سبيس إكس» يقارن الملف بالشركة لا بحجم طرحها، ويغفل أن الإيداع علني.",
+              "repair": "«أنثروبيك تعتزم الإيداع العلني لطرحها العام الأولي وتتوقع أن يضاهي حجمُه طرح سبيس إكس»."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "السياق المقدَّم من المصادر حاضر قرب الحدث: موقع الشركة على قمة هرم الشركاء والموردين (المصدر 2)، وتعثر سوق الإدراجات (إيرترانك وفيرموس، المصدر 3)، ومخاوف السلامة. الصندوق يستنتج أن إقبال المستثمرين قد يُقرأ إشارة أوسع، ويقيّد ذلك بأن أثر مخاوف السلامة لم يُحسم، وهو استنتاج محدود ومشروع. العيب الوحيد فيه تعميم «أرجأت شركات»، وهو مُدرج ضمن المشكلات.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات مجمّعة حسب وظيفتها. لكن الخطوة التالية مكررة في الخاتمة («جولة التسويق ... في نوفمبر» ثم «وستبدأ الشركة التسويق الرسمي...»). كما أن الشروح المضافة غير المسندة تقطع السرد.",
+              "repair": "دمج موعد 9 نوفمبر مع توقيت الإيداع في الفقرة الثانية، وحذف التعريفات غير المسندة، وإنهاء التقرير بفقرة مخاوف السلامة وأثرها المحتمل في الإدراج."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«وأن تنشر الشركة معه نشرة إصدار طرحها» يفصل الملف عن النشرة خلافاً للمصدر 3. و«في أقرب تقدير» تحوّل as soon as إلى تخمين. وموعد التسويق مسند ضمنياً إلى «الوكالة» فقط.",
+              "repair": "جعل الإيداع هو نشر النشرة نفسها مع الإسناد «بحسب ما أفادت به التقارير»، وكتابة «قد تبدأ ... في أقرب موعد، بحسب بلومبرغ»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "المقدمة واضحة: إيداع علني مزمع يوم الاثنين، وحجم متوقع يعادل طرح «سبيس إكس» أو يتجاوزه، والدليل منسوب إلى أشخاص مطلعين عبر «بلومبرغ». لكن العنوان «لطرح تتوقع أن يضاهي «سبيس إكس»» يجعل المقارنة مع الشركة لا مع حجم طرحها.",
+              "repair": "«أنثروبيك تعتزم الإيداع العلني لطرحها العام الأولي وتتوقع أن يضاهي حجمُه طرح «سبيس إكس»»."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يقدّم التقرير السياق الذي توفره المصادر: موقع الشركة على قمة هرم من الشركاء والموردين (المصدر 2)، وتعثر الطروحات عالمياً مع حالتي «إيرترانك» و«فيرموس» (المصدر 3)، وتصاعد التدقيق في السلامة (المصدر 3). يربط صندوق «لماذا يهمّ» إقبال المستثمرين في جولة نوفمبر بشبكة الشركة الأوسع وبسوق تتوالى فيها التأجيلات. ويضع قيداً واضحاً هو أن أثر مخاوف السلامة لم يُحسم. المقدمات مسندة والاستنتاج محدود بـ«قد».",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يبدأ المتن بتعريف غير مسند («الطرح العام الأولي هو أول بيع لأسهم شركة للجمهور...»). وتعيد فقرة «سوق إدراجات متعثرة» مقارنة «سبيس إكس» الواردة في المقدمة بدل أن تطوّر فكرة تعثر السوق.",
+              "repair": "حذف التعريف، ودمج وصف «قد يحطم الأرقام القياسية» وقياسية طرح «سبيس إكس» في المقدمة، ثم بدء فقرة السوق مباشرة بـ«وطرح أنثروبيك المزمع من الصفقات القليلة التي تمضي قدماً رغم سلسلة تأجيلات...»."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "التوقيت (نحو التاسعة صباحاً بتوقيت نيويورك يوم الاثنين) والتسويق «في الأسبوع الذي يبدأ في 9 نوفمبر في أقرب موعد» منقولان بدقة مع إسنادهما. والتمييز صحيح بين إرجاء طرح «إيرترانك» وفشل طرح «فيرموس»، ويبقى الحجم توقعاً للشركة لا نتيجة.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 7,
+      "mendIssues": [
+        "عنوان ناقص التركيب (الملاحظتان 3 و7 من المراجعة السابقة لم تُعالجا كلياً): «أنثروبيك تعتزم الإيداع العلني لطرح تتوقع أن يضاهي «سبيس إكس»». أُضيف «العلني»، لكن العنوان ما زال يقارن الطرح بالشركة «سبيس إكس» لا بطرحها. كما يُسقط «العام الأولي» و«حجم». المصدر 3 يقول إن الشركة تتوقع أن يعادل حجم طرحها حجم طرح «سبيس إكس» أو يتجاوزه. الإصلاح: «أنثروبيك تعتزم الإيداع العلني لطرحها العام الأولي وتتوقع أن يضاهي حجمُه طرح «سبيس إكس»».",
+        "ينقص التقرير: الطول. المقدمة والمتن معاً نحو 290 كلمة دون العناوين الفرعية، أي أقل من حد الـ300. ولا تتيح المصادر 1 و2 و3 مادة إضافية ذات صلة سوى صياغة أوضح لما ورد. الإصلاح: تطوير المقارنة بطرح «سبيس إكس» القياسي (المصدر 3) ورؤية «نيويورك تايمز» لموقع أنثروبيك في سلسلة الموردين (المصدر 2) في سياق واحد مترابط. وإن تعذّر بلوغ الحد دون حشو أو تعريفات غير مسندة، فالقرار للمكتب بعدم النشر وفق القاعدة.",
+        "شرح غير مسند يفتتح المتن: «الطرح العام الأولي هو أول بيع لأسهم شركة للجمهور، ويمهّد لإدراجها في البورصة». لا يقدّم أي مصدر هذا التعريف. وبدء المتن بتعريف مدرسي يؤخر تطوير الخبر، وهو من نوع الشروح التي طلبت المراجعة السابقة (الملاحظة 5) حذفها. الإصلاح: حذف الجملة، وبدء الفقرة بـ«ويُنتظر أن تنشر أنثروبيك نحو التاسعة صباحاً بتوقيت نيويورك نشرة إصدار طرحها...».",
+        "تكرار وربط سببي غير مسند: «إذ سجّل طرح «سبيس إكس»، الذي تتوقع الشركة أن تعادله أو تتجاوزه، رقماً قياسياً بدوره» يعيد مقارنة المقدمة نفسها. وهو يقدّم قياسية طرح «سبيس إكس» تعليلاً لكلام «بلومبرغ» بأداة «إذ»، مع أن وصف طرح «سبيس إكس» بالقياسي ورد في موجز موقع «موني كنترول» الهندي (المصدر 3) لا في نص «بلومبرغ». الإصلاح: نقل الوصف إلى المقدمة: «...تمهيداً لإدراج قد يحطم الأرقام القياسية، إذ تتوقع الشركة أن يعادل حجمه طرح «سبيس إكس» القياسي أو يتجاوزه»، ثم حذف الجملة المكررة من فقرة «سوق إدراجات متعثرة».",
+        "صياغة منقولة عن الإنجليزية: «ولم يرد ممثلو أنثروبيك على الفور على طلبات للتعليق» نقلٌ لـ didn't immediately respond to requests for comment. الإصلاح: «ولم يردّ ممثلو أنثروبيك فوراً على طلبات التعليق».",
+        "المقدمة واضحة: إيداع علني مزمع يوم الاثنين، وحجم متوقع يعادل طرح «سبيس إكس» أو يتجاوزه، والدليل منسوب إلى أشخاص مطلعين عبر «بلومبرغ». لكن العنوان «لطرح تتوقع أن يضاهي «سبيس إكس»» يجعل المقارنة مع الشركة لا مع حجم طرحها. — «أنثروبيك تعتزم الإيداع العلني لطرحها العام الأولي وتتوقع أن يضاهي حجمُه طرح «سبيس إكس»».",
+        "يبدأ المتن بتعريف غير مسند («الطرح العام الأولي هو أول بيع لأسهم شركة للجمهور...»). وتعيد فقرة «سوق إدراجات متعثرة» مقارنة «سبيس إكس» الواردة في المقدمة بدل أن تطوّر فكرة تعثر السوق. — حذف التعريف، ودمج وصف «قد يحطم الأرقام القياسية» وقياسية طرح «سبيس إكس» في المقدمة، ثم بدء فقرة السوق مباشرة بـ«وطرح أنثروبيك المزمع من الصفقات القليلة التي تمضي قدماً رغم سلسلة تأجيلات...»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "أنثروبيك تقع على قمة هرم من الشركاء التجاريين والموردين، ما يجعلها مؤشراً على حال الاقتصاد الأوسع",
+          "source": 2
+        },
+        {
+          "fact": "قد تبدأ الشركة التسويق الرسمي لطرحها في الأسبوع الذي يبدأ في 9 نوفمبر في أقرب موعد",
+          "source": 3
+        },
+        {
+          "fact": "طرح أنثروبيك من الصفقات القليلة التي تمضي قدماً رغم سلسلة من التأجيلات في سوق الإدراجات الجديدة عالمياً",
+          "source": 3
+        },
+        {
+          "fact": "حوادث الاختراق زادت القلق من تأثيرها المحتمل في إدراج أنثروبيك",
+          "source": 3
+        }
+      ],
+      "slug": "anthropic-public-ipo-filing-rival-spacex-8c0f73",
+      "title": "أنثروبيك تتوقع إدراجاً يضاهي طرح «سبيس إكس» القياسي",
+      "score": 9,
+      "image": "cover-art"
+    },
+    {
+      "headline": "الرقابة المالية المصرية تخفض الملاءة المطلوبة من شركات السمسرة إلى 5% مؤقتاً",
+      "section": "markets",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
     }
   ],
   "llm": {
-    "calls": 17,
-    "failures": 0,
-    "promptTokens": 188021,
-    "completionTokens": 42732,
-    "cacheReadTokens": 47555,
-    "costUsd": 1.9877,
+    "calls": 69,
+    "failures": 6,
+    "promptTokens": 916374,
+    "completionTokens": 232433,
+    "cacheReadTokens": 244667,
+    "costUsd": 10.0708,
     "byModel": {
-      "claude-cli/claude-opus-5-5": 17
+      "claude-cli/claude-opus-5-5": 69
     }
   },
   "log": [
-    "[11:32:33] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,whyItMatters,body] rejected=[]",
-    "[11:32:33] desk \"لماذا تتجه السعودية إلى تخزين نفطها في سنغافورة؟\": rewrote title, subtitle, whyItMatters, body",
-    "[11:32:33] checks explainer \"لماذا تتجه السعودية إلى تخزين نفطها في سنغافورة؟\": 510 words, 0 issues, 0 warnings",
-    "[11:33:12] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=38898",
-    "[11:33:12] critic explainer: revise score=6 issues=6",
-    "[11:33:12]   · خطأ حقيقي (رأي مقدَّم كحقيقة، مع حذف الرواية المقابلة): يقول الصندوق «لكن طهران لم تتخلَّ عن شرط الإذن»، ويقول المتن «ممر تحرسه قوات أمريكية وتطالب طهران بالإذن",
-    "[11:33:12]   · خطأ حقيقي (سبب بلا نسبة): «ثم عادت الصادرات إلى التدفق بدعم عسكري أمريكي»، ومثلها في الصندوق «بدعم من الانتشار العسكري الأمريكي وإزالة الألغام». هذا قول سنتكوم ",
-    "[11:33:12]   · خطأ حقيقي (نتيجة مخترعة): «أما سنغافورة فتستضيف على أرضها كميات من الخام تقوّي إمداداتها هي أيضاً، فالمصلحة متبادلة». لا يذكر المصدر 1 أي حق لسنغافورة في هذا ال",
-    "[11:33:12]   · خطأ في الآلية: تعريف «كونتانجو» في المتن («يحقق تخزين الخام عائداً لأن بيعه لاحقاً يجلب سعراً أعلى») وفي key_facts («فيصبح تخزين الخام وبيعه لاحقاً مربحاً») غير",
-    "[11:33:51] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=38617",
-    "[11:34:22] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=31059",
-    "[11:34:22] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
-    "[11:34:22] desk \"لماذا تتجه السعودية إلى تخزين نفطها في سنغافورة؟\": rewrote body",
-    "[11:35:04] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=42498",
-    "[11:35:04] critic (second pass) explainer: revise score=9",
-    "[11:35:50] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=45144",
-    "[11:36:27] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=37781",
-    "[11:36:27] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,lede,whyItMatters,body] rejected=[]",
-    "[11:36:27] desk \"لماذا تتجه السعودية إلى تخزين نفطها في سنغافورة؟\": rewrote subtitle, lede, whyItMatters, body",
-    "[11:36:27] mended explainer \"لماذا تتجه السعودية إلى تخزين نفطها في سنغافورة؟\": the second pass's 6 finding(s) sent back once more",
-    "[11:36:37] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=9442",
-    "[11:36:37] image: the picture should say: Saudi crude parked beyond Hormuz sits on the sea lane, within quick reach of Asian buyers.",
-    "[11:36:37] image: tier 1, the story's own place (Jurong Rock Caverns, Jurong Island, Singapore Strait, Strait of Hormuz): Jurong Island | Jurong Island oil tanks | Singapore Strait oil tanker; categories: Jurong Rock Caverns | Jurong Island | Singapore Strait | Strait of Hormuz",
-    "[11:36:37] commons \"Jurong Island\": 16 usable of 24",
-    "[11:36:38] pexels \"Jurong Island\": 8 usable",
-    "[11:36:57] openverse \"Jurong Island\": The operation was aborted due to timeout",
-    "[11:36:57] image: dropped \"Scenic view of modern Chinese buildings by a tranquil lake in Xia Men \" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:36:57] image: dropped \"Dramatic aerial view of a sprawling cityscape under an overcast sky.\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:36:58] commons \"Jurong Island oil tanks\": 0 usable of 0",
-    "[11:36:58] pexels \"Jurong Island oil tanks\": 8 usable",
-    "[11:37:14] openverse \"Jurong Island oil tanks\": 7 usable of 7",
-    "[11:37:14] commons \"Singapore Strait oil tanker\": 1 usable of 1",
-    "[11:37:15] pexels \"Singapore Strait oil tanker\": 8 usable",
-    "[11:37:28] openverse \"Singapore Strait oil tanker\": 0 usable of 1",
-    "[11:37:28] image: dropped \"Top-down view of cargo ship and tugboats in turquoise waters near Butt\" — names too little of oil, tanker",
-    "[11:37:28] image: dropped \"Aerial shot of a red cargo ship navigating the Bosphorus Strait near I\" — names too little of oil, tanker",
-    "[11:37:28] image: dropped \"Cargo ship navigating through Bosphorus Strait, Istanbul under cloudy \" — names too little of oil, tanker",
-    "[11:37:28] image: dropped \"A large oil tanker navigates the Bosphorus Strait with Istanbul's skyl\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:37:28] image: dropped \"A tanker ship on turquoise water with urban skyscrapers in the backgro\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:37:28] image: dropped \"Cargo vessels and a tugboat navigate a foggy harbor, creating a serene\" — names too little of oil, tanker",
-    "[11:37:28] commons category \"Jurong Rock Caverns\": none carries its name",
-    "[11:37:28] commons Category:Jurong Island: 11 usable of 13",
-    "[11:37:29] commons Category:Singapore Strait: 34 usable of 39",
-    "[11:37:29] image: dropped \"USS Boxer Transits Singapore Strait (9716898).jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:37:29] image: dropped \"Strait of Sincapore - publ. by A. Dalrymple ; writing by Harmar - btv1\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:37:29] image: dropped \"Near Singapore - MV PRINSESA SIRENA - panoramio.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:37:29] image: dropped \"Near Singapore 14 - panoramio.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:37:29] image: dropped \"Near Singapore 2014 - panoramio.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:37:29] image: dropped \"Near Singapore - panoramio (1).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:37:29] commons Category:Strait of Hormuz: 22 usable of 48",
-    "[11:37:29] image: dropped \"The Eisenhower Carrier Strike Group Transits the Strait of Hormuz (817\" — a warship or weapon, and the story is not about the military",
-    "[11:37:29] image: dropped \"Usv-escort-strait-of-hormuz.jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:37:29] image: dropped \"Strait Of Hormuz Transit 230508-N-NH257-1076.jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:37:29] image: dropped \"USS Tempest (PC 2) transits the Strait of Hormuz. (50679762106).jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:37:29] image: dropped \"USS Essex (LHD 2), right, and USNS Wally Schirra (T-AKE 8) transit the\" — a warship or weapon, and the story is not about the military",
-    "[11:37:29] image: dropped \"171022-N-VR594-0093 (38245775971).jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:37:29] image: dropped \"171022-N-VR594-0004 (38245776261).jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:37:29] image: dropped \"140614-N-EI510-217 (14310331669).jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:37:29] image: dropped \"CVN 69 transits the Strait of Hormuz (28465403076).jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:37:29] image: dropped \"CG 56 transits the Strait of Hormuz (28465394986).jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:37:29] image: dropped \"CVN 69 transits the Strait of Hormuz (28465400856).jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:37:29] image: dropped \"HMS Middleton in the Strait of Hormuz (8315145316).jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:37:29] image: dropped \"USS New York (LPD 21) 150120-N-XG464-004 (15724165494).jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:37:29] image: dropped \"USS New York (LPD 21) 150120-N-XG464-036 (16320642216).jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:37:29] image: 5 file(s) dropped for naming none of Jurong Rock Caverns, Jurong Island, Singapore Strait, Strait of Hormuz",
-    "[11:37:29] image: thumbnail HTTP 403 for https://live.staticflickr.com/3843/14966763291_16ec663951_n.jpg",
-    "[11:37:30] image: thumbnail HTTP 403 for https://live.staticflickr.com/5586/14783171670_c43ea04e9a_n.jpg",
-    "[11:37:41] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7750",
-    "[11:37:41] image: \"Oil tanks, Jurong Island\" names the story's topic without saying its point (Oil storage tanks, a loading jetty and a tanker on Jurong Island, the story's own place, place storage on the sea lane, and the scene is livelier than candidate); checked now and kept in reserve while the desk looks further",
-    "[11:37:45] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3829",
-    "[11:37:45] image: second check (claude-cli/claude-opus-5-5) RIGHT \"Oil tanks, Jurong Island\": A sharp, well-exposed view of oil storage tanks, a loading jetty and a tanker at Jurong Island shows the story's own Sin",
-    "[11:37:45] image: thumbnail HTTP 403 for https://live.staticflickr.com/3863/14969841185_25a1aff6b5_n.jpg",
-    "[11:37:55] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5551",
-    "[11:37:55] image: \"Oil tanks, Jurong Island\" names the story's topic without saying its point; the desk already holds one such, and looks further",
-    "[11:37:55] image: tier 3, the writer's own subjects: Jurong Island Singapore | oil tanker Singapore Strait | oil storage tanks",
-    "[11:37:56] commons \"Jurong Island Singapore 2026\": 1 usable of 2",
-    "[11:37:56] commons \"Jurong Island Singapore\": 10 usable of 12",
-    "[11:37:57] commons \"oil tanker Singapore Strait 2026\": 0 usable of 0",
-    "[11:37:57] commons \"oil tanker Singapore Strait\": 1 usable of 1",
-    "[11:37:57] commons \"oil storage tanks 2026\": 4 usable of 12",
-    "[11:37:58] commons \"oil storage tanks\": 0 usable of 12",
-    "[11:37:58] image: dropped \"Derelict Fuel Storage Tank at the Da Yang Oil Depot Recreation Park, T\" — a warship or weapon, and the story is not about the military",
-    "[11:37:58] image: dropped \"Sun Oil Refinery, Oregon, Ohio (approximately 1900) - DPLA - cc5f849e2\" — dated 1900, an archival picture",
-    "[11:37:58] image: dropped \"Irving Oil Terminal Charlottetown.jpg\" — taken in Canada, which the story does not name",
-    "[11:38:05] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6598",
-    "[11:38:05] image: \"Jurong Island, Singapore - 20110227-01.jpg\" names the story's topic without saying its point; the desk already holds one such, and looks further",
-    "[11:38:05] image: tier 4, the story's point and its subject: oil tankers Singapore Strait | tanker anchorage Singapore | oil tanker Strait of Hormuz | oil tanker Singapore | Jurong Island oil storage | crude oil tanker loading (home: Singapore, Singaporean, Jurong, Jurong Island)",
-    "[11:38:05] commons \"oil tankers Singapore Strait\": 1 usable of 1",
-    "[11:38:06] pexels \"oil tankers Singapore Strait\": 8 usable",
-    "[11:38:16] openverse \"oil tankers Singapore Strait\": 0 usable of 1",
-    "[11:38:16] image: dropped \"Top-down view of cargo ship and tugboats in turquoise waters near Butt\" — names too little of oil, tankers",
-    "[11:38:16] image: dropped \"Cargo vessels and a tugboat navigate a foggy harbor, creating a serene\" — names too little of oil, tankers",
-    "[11:38:16] image: dropped \"Aerial shot of a red cargo ship navigating the Bosphorus Strait near I\" — names too little of oil, tankers",
-    "[11:38:16] image: dropped \"Cargo ship navigating through Bosphorus Strait, Istanbul under cloudy \" — names too little of oil, tankers",
-    "[11:38:16] image: dropped \"A large oil tanker navigates the Bosphorus Strait with Istanbul's skyl\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:38:16] image: dropped \"A tanker ship on turquoise water with urban skyscrapers in the backgro\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:38:17] commons \"tanker anchorage Singapore\": 2 usable of 2",
-    "[11:38:17] pexels \"tanker anchorage Singapore\": 8 usable",
-    "[11:38:22] openverse \"tanker anchorage Singapore\": 0 usable of 0",
-    "[11:38:22] image: dropped \"A massive cargo ship named Hunter Freya anchored at a bustling sea por\" — names too little of tanker, anchorage",
-    "[11:38:22] image: dropped \"A stunning aerial view of ships silhouetted against a golden sunset ov\" — names too little of tanker, anchorage",
-    "[11:38:22] image: dropped \"A fleet of cargo ships anchored offshore against a serene ocean backdr\" — names too little of tanker, anchorage",
-    "[11:38:22] image: dropped \"Boats docked at Singapore Harbourfront Center with industrial port bac\" — names too little of tanker, anchorage",
-    "[11:38:22] image: dropped \"Close-up of a large cargo ship with prominent safety signage navigatin\" — names too little of tanker, anchorage",
-    "[11:38:22] commons \"oil tanker Strait of Hormuz\": 13 usable of 14",
-    "[11:38:22] image: dropped \"Flickr - DVIDSHUB - USS Porter damaged in collision with oil tanker (I\" — a warship or weapon, and the story is not about the military",
-    "[11:38:22] image: dropped \"Flickr - DVIDSHUB - USS Porter damaged in collision with oil tanker (I\" — a warship or weapon, and the story is not about the military",
-    "[11:38:22] image: dropped \"120812-N-XO436-116 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:38:22] image: dropped \"120812-N-XO436-093 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:38:22] image: dropped \"120812-N-XO436-314 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:38:22] image: dropped \"120812-N-XO436-152 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:38:22] image: dropped \"120812-N-XO436-025 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:38:22] image: dropped \"120812-N-XO436-114 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:38:22] image: dropped \"Khalig-fars-Persian-Gulf 05.jpg\" — names too little of oil, tanker",
-    "[11:38:22] image: dropped \"Khalig-fars-Persian-Gulf 02.jpg\" — names too little of oil, tanker",
-    "[11:38:22] image: dropped \"Khalig-fars-Persian-Gulf 01.jpg\" — names too little of oil, tanker",
-    "[11:38:22] image: dropped \"Khalig-fars-Persian-Gulf 04.jpg\" — names too little of oil, tanker",
-    "[11:38:23] pexels \"oil tanker Strait of Hormuz\": 8 usable",
-    "[11:38:35] openverse \"oil tanker Strait of Hormuz\": 3 usable of 3",
-    "[11:38:35] image: dropped \"Oliver Hazzard Perry Class Frigate - from an 'Island AIr' De Havilland\" — names too little of oil, tanker",
-    "[11:38:35] image: dropped \"USS Porter damaged in collision with oil tanker [Image 2 of 3]\" — a warship or weapon, and the story is not about the military",
-    "[11:38:35] image: dropped \"USS Porter damaged in collision with oil tanker [Image 1 of 3]\" — a warship or weapon, and the story is not about the military",
-    "[11:38:35] image: dropped \"Oil tanker navigating the Bosphorus Strait with the Istanbul cityscape\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:38:35] image: dropped \"Aerial view of a cargo ship navigating the Bosphorus in Istanbul, Türk\" — names too little of oil, tanker",
-    "[11:38:35] commons \"oil tanker Singapore\": 22 usable of 24",
-    "[11:38:35] image: dropped \"Maersk Murotsu IMO 9425514 (14375993424).jpg\" — names too little of oil, tanker",
-    "[11:38:35] image: dropped \"Maersk Murotsu IMO 9425514 (14375993424) (2).jpg\" — names too little of oil, tanker",
-    "[11:38:35] image: dropped \"STI Miracle at the Gore Bay Terminal in December 2020.jpg\" — names too little of oil, tanker",
-    "[11:38:35] image: dropped \"Stern of the STI Miracle at the Gore Bay Terminal December 2020.jpg\" — names too little of oil, tanker",
-    "[11:38:35] image: dropped \"Bow of the STI Miracle at the Gore Bay Terminal December 2020.jpg\" — names too little of oil, tanker",
-    "[11:38:35] commons \"Jurong Island oil storage\": 0 usable of 0",
-    "[11:38:35] commons \"Jurong Island\": 16 usable of 24",
-    "[11:38:36] commons \"crude oil tanker loading\": 7 usable of 12",
-    "[11:38:36] image: dropped \"Tanker offshore terminal.jpg\" — dated 2003, an archival picture",
-    "[11:38:36] image: dropped \"United States Strategic Petroleum Reserve 026.jpg\" — another frame of a series a published story runs",
-    "[11:38:36] image: dropped \"Iraq's petroleum and gas infrastructure. LOC 2007629280.jpg\" — dated 2003, an archival picture",
-    "[11:38:36] image: dropped \"Drift River Terminal 2009 3.jpg\" — names too little of crude, oil, tanker, loading",
-    "[11:38:36] image: dropped \"Swans in water between Forth bridges (Keven Law).jpg\" — names too little of crude, oil, tanker, loading",
-    "[11:38:36] image: dropped \"TAKEN FROM A POINT BETWEEN SAW ISLAND AND JACKSON POINT THIS VIEW LOOK\" — names too little of crude, oil, tanker, loading",
-    "[11:38:36] pexels \"crude oil tanker loading\": 8 usable",
-    "[11:38:49] openverse \"crude oil tanker loading\": 2 usable of 6",
-    "[11:38:49] image: dropped \"A busy industrial port featuring ships, cranes, and a loading dock und\" — names too little of crude, oil, tanker, loading",
-    "[11:38:49] image: dropped \"A large red cargo ship docked at an industrial port with scenic mounta\" — names too little of crude, oil, tanker, loading",
-    "[11:38:49] image: dropped \"Wide-angle view of a black tank truck with hazard warning, highlightin\" — names too little of crude, oil, tanker, loading",
-    "[11:38:49] image: dropped \"MT Alaskan Navigator at Valdez Marine Terminal (Deck).jpg\" — taken in United States, which the story does not name",
-    "[11:38:49] image: thumbnail HTTP 403 for https://live.staticflickr.com/5057/5544411419_02fcdd1115_n.jpg",
-    "[11:38:53] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3782",
-    "[11:38:59] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5177",
-    "[11:38:59] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Samco Redwood crude oil tanker (14783173609).jpg\": A clear, well-exposed shot of a crude oil tanker off Singapore, with storage tanks behind, pictures the story's own sect",
-    "[11:38:59] published explainer \"لماذا تتجه السعودية إلى تخزين نفطها في سنغافورة؟\" -> why-saudi-arabia-stores-crude-in-singapore-9ff749"
+    "[13:51:48] image: dropped \"V20230504LJ-0199-2.jpg\" — shows kamala, not the story's people",
+    "[13:51:48] image: dropped \"The Prime Minister meets with AI developers - 52922965274.jpg\" — shows rishi, deepmind, anthropic, openai, not the story's people",
+    "[13:51:48] image: dropped \"The Prime Minister meets with AI developers - 52923262083.jpg\" — shows rishi, deepmind, anthropic, openai, not the story's people",
+    "[13:51:48] pexels \"Dario Amodei speaking\": 8 usable",
+    "[13:52:08] openverse \"Dario Amodei speaking\": The operation was aborted due to timeout",
+    "[13:52:08] image: dropped \"Man presenting with microphone at indoor conference, engaging audience\" — names too little of dario, amodei",
+    "[13:52:08] image: dropped \"A speaker holding a microphone addresses an audience indoors at a pres\" — names too little of dario, amodei",
+    "[13:52:08] image: dropped \"Man speaking into microphone during a presentation indoors.\" — names too little of dario, amodei",
+    "[13:52:08] image: dropped \"A presenter delivers a business presentation in a modern office enviro\" — names too little of dario, amodei",
+    "[13:52:08] image: dropped \"A businessman delivers a speech on stage with red curtains behind him.\" — names too little of dario, amodei",
+    "[13:52:08] image: dropped \"Energetic speaker delivering a talk at a corporate event\" — names too little of dario, amodei",
+    "[13:52:08] image: dropped \"A speaker using a microphone during a presentation on stage.\" — names too little of dario, amodei",
+    "[13:52:08] image: dropped \"A man presenting on stage with a microphone during a conference or eve\" — names too little of dario, amodei",
+    "[13:52:09] commons \"data center servers United States\": 15 usable of 24",
+    "[13:52:09] image: dropped \"Quick Thinking Saves USAFE Data Center (6361168).jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:52:09] image: dropped \"Quick Thinking Saves USAFE Data Center (6361167).jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:52:09] image: dropped \"DAF delivers lethality at the speed of data during Project Convergence\" — a warship or weapon, and the story is not about the military",
+    "[13:52:09] image: dropped \"Assignment- 59-CF-DS-012-03) Ribbon-cutting ceremony for Enterprise Se\" — dated 2002, an archival picture",
+    "[13:52:09] image: dropped \"A NASA computer server farm -a.jpg\" — names too little of data, center, servers",
+    "[13:52:09] image: dropped \"Aviation Technical Training Center 140318-G-XA025-015.jpg\" — names too little of data, center, servers",
+    "[13:52:10] commons \"traders New York Stock Exchange\": 17 usable of 24",
+    "[13:52:10] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[13:52:10] image: dropped \"New York - Docks-New York Harbor - NARA - 68146200 ed2.jpg\" — names too little of traders",
+    "[13:52:10] image: dropped \"New York - New York City - NARA - 68146147.jpg\" — dated 1928, an archival picture",
+    "[13:52:10] image: dropped \"New York - New York City - NARA - 68146131.jpg\" — dated 1924, an archival picture",
+    "[13:52:10] image: dropped \"New York - New York City - NARA - 68146159.jpg\" — names too little of traders",
+    "[13:52:10] image: dropped \"New York - New York City - NARA - 68145654.jpg\" — dated 1937, an archival picture",
+    "[13:52:10] image: dropped \"New York - Docks-New York Harbor - NARA - 68146234.jpg\" — names too little of traders",
+    "[13:52:10] image: dropped \"How to know New York City - a serviceable and trustworthy guide, havin\" — names too little of traders",
+    "[13:52:10] image: dropped \"Defense.gov News Photo 000706-N-1110A-505.jpg\" — dated 2000, an archival picture",
+    "[13:52:11] pexels \"traders New York Stock Exchange\": 8 usable",
+    "[13:52:30] openverse \"traders New York Stock Exchange\": The operation was aborted due to timeout",
+    "[13:52:30] image: dropped \"Close-up of a hand holding a smartphone displaying a stock trading app\" — names too little of traders",
+    "[13:52:30] image: dropped \"Close-up of a smartphone screen displaying a stock trading app with ca\" — names too little of traders",
+    "[13:52:30] image: dropped \"Two business professionals in suits smiling and viewing a cellphone ou\" — names too little of traders",
+    "[13:52:30] image: dropped \"Classic architecture of the New York Stock Exchange facade in NYC.\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[13:52:30] image: dropped \"High-resolution candlestick chart showing forex trading trends and ana\" — names too little of traders",
+    "[13:52:31] commons \"artificial intelligence developers conference\": 0 usable of 1",
+    "[13:52:31] commons \"artificial intelligence\": 6 usable of 24",
+    "[13:52:31] image: dropped \"Artificial intelligence prompt completion by dalle mini.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[13:52:31] image: dropped \"Sanae Takaichi and Dario Amodei in 2025 (2).jpg\" — taken in Japan, which the story does not name",
+    "[13:52:31] image: dropped \"Sanae Takaichi and Dario Amodei in 2025 (1).jpg\" — taken in Japan, which the story does not name",
+    "[13:52:31] image: dropped \"Artificial Intelligence (AI) and Robotics exhibition at the Heinz Nixd\" — taken in Germany, which the story does not name",
+    "[13:52:31] image: dropped \"Ornate temple bells hanging in Mathura, India, capturing the essence o\" — taken in India, which the story does not name",
+    "[13:52:31] image: dropped \"A vibrant collection of metallic bells hanging outdoors, captured in S\" — taken in Singapore, which the story does not name",
+    "[13:52:37] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5150",
+    "[13:52:37] image: vision rejected all candidates (fallback pass) (None fits. Photo 1 is a staged stock cliché of a phone showing a chart. Photo 2 is a chart screen as its subject. Photos 3 and 4 show named people (Peter Tuchman, Andrew Aziz) on the NYSE floor, and photo 3 also shows another company's (Bird) listing branding. Photo 5 is a cluttered 2009 street snapshot built around a private individual. Photo 6 is a document or certificate.)",
+    "[13:52:44] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4206",
+    "[13:52:44] image: vision rejected all candidates (fallback pass) (Photos 1 and 2 show SmileDirectClub's own Nasdaq IPO ceremony in 2019, with that company's name and logos on screen, so they would picture another company's event. Photos 3 and 4 are amateur, dark close-ups of a rack, not a recognisable data-centre scene, and they come from the Epstein files released by the DOJ, an embarrassing association beside this headline. No candidate is suitable.)",
+    "[13:52:44] image: the story's people first: Dario Amodei 2026 | Dario Amodei | داريو أمودي",
+    "[13:52:44] commons \"Dario Amodei 2026\": 0 usable of 1",
+    "[13:52:45] commons \"Dario Amodei\": 13 usable of 20",
+    "[13:52:45] image: dropped \"Dario Amodei at TechCrunch Disrupt 2023 05.jpg\" — another frame of a series a published story runs",
+    "[13:52:45] image: dropped \"Dario Amodei at TechCrunch Disrupt 2023 04.jpg\" — another frame of a series a published story runs",
+    "[13:52:45] image: dropped \"Dario Amodei at TechCrunch Disrupt 2023 08.jpg\" — another frame of a series a published story runs",
+    "[13:52:45] image: dropped \"Dario Amodei at TechCrunch Disrupt 2023 01.jpg\" — another frame of a series a published story runs",
+    "[13:52:45] image: dropped \"Dario Amodei at TechCrunch Disrupt 2023 07.jpg\" — another frame of a series a published story runs",
+    "[13:52:45] image: dropped \"V20230504LJ-0199-2.jpg\" — shows kamala, not the story's people",
+    "[13:52:45] image: dropped \"The Prime Minister meets with AI developers - 52922965274.jpg\" — shows rishi, deepmind, anthropic, openai, not the story's people",
+    "[13:52:45] commons \"Dario Amodei\": 13 usable of 20",
+    "[13:52:45] commons \"داريو أمودي\": 13 usable of 20",
+    "[13:52:45] image: people shortlist: 2025 Sanae Takaichi and Dario Amodei in 2025 (2).jpg",
+    "[13:52:50] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4139",
+    "[13:52:50] image: vision rejected all candidates (The only candidate shows Dario Amodei on a courtesy call to Japanese Prime Minister Sanae Takaichi in 2025. That diplomatic visit is unrelated to the IPO. The frame also prominently shows an identifiable politician who is not part of the story, and the faces are small in a formal seated room shot. None is better than this; the fallback can find a scene that says the listing.)",
+    "[13:52:53] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3585",
+    "[13:52:53] image: last resort: stock exchange trading floor United States | stock exchange trading floor | stock exchange trading floor industrial",
+    "[13:52:54] commons \"stock exchange trading floor United States\": 6 usable of 24",
+    "[13:52:54] image: dropped \"New Toronto Stock Exchange trading floor.jpg\" — dated 1937, an archival picture",
+    "[13:52:54] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[13:52:54] image: dropped \"Director Petraeus rings opening bell at NY Stock Exchange - Flickr - T\" — shows petraeus, david, not the story's people",
+    "[13:52:54] image: dropped \"President Ronald Reagan During a Trip to New York and a Visit to The N\" — dated 1985, an archival picture",
+    "[13:52:55] commons \"stock exchange trading floor\": 18 usable of 24",
+    "[13:52:55] commons \"stock exchange trading floor industrial\": 0 usable of 1",
+    "[13:52:55] commons \"stock exchange\": 17 usable of 24",
+    "[13:52:55] image: dropped \"Stock Exchange Yangon.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[13:52:55] image: dropped \"Frankfurt Stock Exchange (Ank Kumar) 05.jpg\" — taken in Germany, which the story does not name",
+    "[13:52:55] image: dropped \"Frankfurt Stock Exchange (Ank Kumar) 03.jpg\" — taken in Germany, which the story does not name",
+    "[13:52:55] image: dropped \"Frankfurt Stock Exchange (Ank Kumar) 08.jpg\" — taken in Germany, which the story does not name",
+    "[13:52:55] image: dropped \"Frankfurt Stock Exchange (Ank Kumar) 07.jpg\" — taken in Germany, which the story does not name",
+    "[13:52:55] image: dropped \"Frankfurt Stock Exchange (Ank Kumar, Infosys) 01.jpg\" — taken in Germany, which the story does not name",
+    "[13:52:55] image: dropped \"Frankfurt Stock Exchange (Ank Kumar, Infosys) 05.jpg\" — taken in Germany, which the story does not name",
+    "[13:52:55] image: dropped \"Frankfurt Stock Exchange (Ank Kumar, Infosys) 03.jpg\" — taken in Germany, which the story does not name",
+    "[13:52:59] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3275",
+    "[13:52:59] image: vision rejected all candidates (fallback pass) (None of the three fits. Photo 1 shows a named closing-bell ceremony with posed service members in 2013, which is someone else's event. Photo 2 is the outside of a New Zealand exchange building, a building front in the wrong country. Photo 3 is the NYSE facade, also a building front, and it shows no listing or trading activity.)",
+    "[13:52:59] image: last pass, a neutral illustration: trading floor traders | opening bell ceremony | data center servers | artificial intelligence developers conference",
+    "[13:52:59] commons \"trading floor traders\": 16 usable of 24",
+    "[13:52:59] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[13:52:59] image: dropped \"Chicago Board of Trade traders cph.3d02377.jpg\" — dated 1949, an archival picture",
+    "[13:52:59] image: dropped \"Chicago Board of Trade traders cph.3d02368.jpg\" — dated 1949, an archival picture",
+    "[13:52:59] image: dropped \"1909 - Diehls Furniture House Main Floor - Trade Card.jpg\" — dated 1909, an archival picture",
+    "[13:52:59] image: dropped \"1910 - Farr Brothers - Main Floor - Trade Card - Allentown PA.jpg\" — dated 1910, an archival picture",
+    "[13:52:59] image: dropped \"20120105-OC-AMW-0425 (7042322619).jpg\" — dated 1973, an archival picture",
+    "[13:52:59] image: dropped \"Defense.gov News Photo 000706-N-1110A-505.jpg\" — dated 2000, an archival picture",
+    "[13:53:00] pexels \"trading floor traders\": 8 usable",
+    "[13:53:14] openverse \"trading floor traders\": 10 usable of 17",
+    "[13:53:14] image: dropped \"Reflection of the Corn Exchange in Selfridges Windows, Manchester, Eng\" — names too little of trading, floor, traders",
+    "[13:53:14] image: dropped \"Hubbell Trading Post National Historic Site, Ganado, Arizona\" — names too little of trading, floor, traders",
+    "[13:53:14] image: dropped \"Hubbell Trading Post National Historic Site, Ganado, Arizona\" — names too little of trading, floor, traders",
+    "[13:53:14] image: dropped \"Cambridgeport room for sublet, July 1 - Aug 31st,\" — names too little of trading, floor, traders",
+    "[13:53:14] image: dropped \"161010-N-PX557-001\" — names too little of trading, floor, traders",
+    "[13:53:14] image: dropped \"20180121_Philippines_3507 crop Vigan sRGB\" — names too little of trading, floor, traders",
+    "[13:53:14] image: dropped \"Columbus-Yankee Trader Building (OHPTC)\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[13:53:14] image: dropped \"Close-up of financial data on a computer screen showing stock market t\" — names too little of trading, floor, traders",
+    "[13:53:14] image: dropped \"Bright candlestick chart showing stock market trends and analysis.\" — names too little of trading, floor, traders",
+    "[13:53:14] image: dropped \"A businessman in a suit looks at a screen displaying stock market char\" — names too little of trading, floor, traders",
+    "[13:53:14] image: dropped \"Man in a headset analyzing stock data on a computer monitor at his wor\" — names too little of trading, floor, traders",
+    "[13:53:14] image: dropped \"Market analysis with focus on cryptocurrency trends displayed. Ideal f\" — names too little of trading, floor, traders",
+    "[13:53:14] image: dropped \"Hand pointing at stock market graphs analyzed with financial metrics o\" — names too little of trading, floor, traders",
+    "[13:53:16] commons \"opening bell ceremony\": 14 usable of 24",
+    "[13:53:16] image: dropped \"Bradley Wiggins 2012 Summer Olympics opening ceremony (cropped).jpg\" — an event's photograph, people and banners",
+    "[13:53:16] image: dropped \"London Olympics Opening Ceremony - Mike Oldfield.jpg\" — an event's photograph, people and banners",
+    "[13:53:16] image: dropped \"Bradley Wiggins 2012 Summer Olympics opening ceremony.jpg\" — an event's photograph, people and banners",
+    "[13:53:16] image: dropped \"NYSE Opening Bell 10th PCH 121112-A-QM437-0114.jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[13:53:16] image: dropped \"2024-01-25 FIL World Luge Championships 2024 – Opening Ceremony by San\" — an event's photograph, people and banners",
+    "[13:53:16] image: dropped \"Opening ceremony of the Yamit monument for the fallen soldiers during \" — dated 1977, an archival picture",
+    "[13:53:16] image: dropped \"Opening Ceremony of the IAU General Assembly 2012 (ga2012 opening 012)\" — shows assembly, assembly, not the story's people",
+    "[13:53:16] image: dropped \"2024-01-25 FIL World Luge Championships 2024 – Opening Ceremony by San\" — an event's photograph, people and banners",
+    "[13:53:16] image: dropped \"2024-01-25 FIL World Luge Championships 2024 – Opening Ceremony by San\" — an event's photograph, people and banners",
+    "[13:53:16] pexels \"opening bell ceremony\": 8 usable",
+    "[13:53:35] openverse \"opening bell ceremony\": 10 usable of 20",
+    "[13:53:35] image: dropped \"Back to School 2012 - U.S. Army Garrison Humphreys, South Korea - 27 A\" — names too little of opening, bell, ceremony",
+    "[13:53:35] image: dropped \"Back to School 2012 - U.S. Army Garrison Humphreys, South Korea - 27 A\" — names too little of opening, bell, ceremony",
+    "[13:53:35] image: dropped \"Back to School 2012 - U.S. Army Garrison Humphreys, South Korea - 27 A\" — names too little of opening, bell, ceremony",
+    "[13:53:35] image: dropped \"Back to School 2012 - U.S. Army Garrison Humphreys, South Korea - 27 A\" — names too little of opening, bell, ceremony",
+    "[13:53:35] image: dropped \"Back to School 2012 - U.S. Army Garrison Humphreys, South Korea - 27 A\" — names too little of opening, bell, ceremony",
+    "[13:53:35] image: dropped \"Back to School 2012 - U.S. Army Garrison Humphreys, South Korea - 27 A\" — names too little of opening, bell, ceremony",
+    "[13:53:35] image: dropped \"Back to School 2012 - U.S. Army Garrison Humphreys, South Korea - 27 A\" — names too little of opening, bell, ceremony",
+    "[13:53:35] image: dropped \"Back to School 2012 - U.S. Army Garrison Humphreys, South Korea - 27 A\" — names too little of opening, bell, ceremony",
+    "[13:53:35] image: dropped \"Back to School 2012 - U.S. Army Garrison Humphreys, South Korea - 27 A\" — names too little of opening, bell, ceremony",
+    "[13:53:35] image: dropped \"Back to School 2012 - U.S. Army Garrison Humphreys, South Korea - 27 A\" — names too little of opening, bell, ceremony",
+    "[13:53:35] image: dropped \"A priest holding altar bells during a religious ceremony in a church.\" — an event's photograph, people and banners",
+    "[13:53:36] commons \"data center servers\": 14 usable of 24",
+    "[13:53:36] image: dropped \"Utah Data Center Panorama (cropped).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[13:53:36] image: dropped \"CAMPUS - Military Data Center (52106762896).jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:53:36] image: dropped \"Wikimedia Foundation Servers-8055 15.jpg\" — another frame of a series a published story runs",
+    "[13:53:36] pexels \"data center servers\": 8 usable",
+    "[13:53:56] openverse \"data center servers\": The operation was aborted due to timeout",
+    "[13:53:56] commons \"artificial intelligence developers conference\": 0 usable of 1",
+    "[13:53:56] commons \"artificial intelligence\": 6 usable of 24",
+    "[13:53:56] image: dropped \"Artificial intelligence prompt completion by dalle mini.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[13:53:56] image: thumbnail HTTP 403 for https://live.staticflickr.com/2054/1511898686_6d92b2cfa8_n.jpg",
+    "[13:54:21] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6095",
+    "[13:54:26] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5171",
+    "[13:54:33] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6768",
+    "[13:54:33] image: second check (claude-cli/claude-opus-5-5) UNCLEAR — refused \"Close-up of server racks in a data center highlighting moder\": A dark, teal-tinted, shallow-focus close-up dominated by a blurred drive panel, which at headline size reads as an abstr",
+    "[13:54:33] image: thumbnail HTTP 403 for https://live.staticflickr.com/2054/1511898686_6d92b2cfa8_n.jpg",
+    "[13:54:39] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5790",
+    "[13:54:39] image: vision rejected all candidates (fallback pass) (None fits an AI IPO story. 1 shows a UBS building front, not a trading floor. 2 is a stylised close-up of old tower servers that looks dated and says nothing about a listing. 3 is an amateur street snapshot. 4 is a document, 5 is a map, and 6 is a named Brazilian hearing.)",
+    "[13:54:39] published \"أنثروبيك تتوقع إدراجاً يضاهي طرح «سبيس إكس» القياسي\" -> anthropic-public-ipo-filing-rival-spacex-8c0f73",
+    "[13:54:39] run budget of 35 minutes spent; \"الرقابة المالية المصرية تخفض الملاءة المطلوبة من شركات السمسرة إلى 5% مؤقتاً\" waits for the next run"
   ]
 }

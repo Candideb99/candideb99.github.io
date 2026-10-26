@@ -6992,6 +6992,90 @@
           "noted": []
         }
       ]
+    },
+    "saudi-trade-surplus-widens-august-2026-122212": {
+      "at": "2026-10-26T13:27:19.966Z",
+      "title": "فائض السعودية التجاري يتسع 17.8% في أغسطس عن يوليو بدعم الصادرات غير النفطية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v37",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 35,
+            "checked": 35,
+            "supported": 28,
+            "weak": 5,
+            "noEvidence": 2,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "saudi-tasi-jumps-biggest-daily-gain-498504": {
+      "at": "2026-10-26T13:37:18.392Z",
+      "title": "مؤشر الأسهم السعودية يقفز 3.4% في أكبر مكسب يومي منذ أكثر من عام",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v37",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 28,
+            "checked": 28,
+            "supported": 26,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "anthropic-public-ipo-filing-rival-spacex-8c0f73": {
+      "at": "2026-10-26T13:54:39.788Z",
+      "title": "أنثروبيك تتوقع إدراجاً يضاهي طرح «سبيس إكس» القياسي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v37",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 18,
+            "checked": 18,
+            "supported": 16,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
