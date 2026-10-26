@@ -1,0 +1,47 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-26T20:33:54.941Z",
+  "durationSec": 44,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "saudi-tasi-jumps-biggest-daily-gain-498504",
+      "title": "مؤشر الأسهم السعودية يقفز 3.4% في أكبر مكسب يومي منذ أكثر من عام",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 28,
+        "checked": 28,
+        "supported": 19,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 8,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 11958,
+    "completionTokens": 5141,
+    "cacheReadTokens": 0,
+    "costUsd": 0.1985,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[20:33:55] second look: 1 to read now (2 published pieces not yet read; 129 read clean before publication and left out of the audit sample)",
+    "[20:34:38] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=41153",
+    "[20:34:38] saudi-tasi-jumps-biggest-daily-gain-498504: 28 of 28 sentences checked · 19 supported · 8 without a source · 0 confirmed error(s)"
+  ]
+}

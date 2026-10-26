@@ -1,0 +1,467 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-26T20:34:39.132Z",
+  "durationSec": 2106,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "فوز لولا يطلق أسوأ هبوط منذ عقود في أسواق البرازيل ويعطل طروحات بـ6 مليارات دولار",
+      "section": "markets",
+      "importance": 8,
+      "sources": [
+        "https://www.nytimes.com/2026/10/26/business/brazil-stock-markets-election-lula.html",
+        "https://www.bloomberg.com/news/articles/2026-10-26/one-day-wipeout-tops-60-for-the-hardest-hit-brazilian-stocks",
+        "https://www.aljazeera.com/economy/2026/10/26/brazils-real-sinks-after-lulas-re-election-victory",
+        "https://www.ft.com/content/bffe028e-838d-4e74-b05e-62f6db4978db?syn-25a6b1a6=1"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يوضحان ما تغيّر: هبط الريال 12% في المعاملات الفورية وتراجع بوفيسبا 10% عن إغلاقه السابق بعد فوز لولا غير المتوقع. ويحفظ المتن ما بقي معلّقاً: اعتراضات بولسونارو مقابل تقدير زيمبا بأن النتيجة ستصمد، واختيار وزير المالية.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يورد التقرير الدافع المسند إلى «فايننشال تايمز»: كان بولسونارو يُرى أكثر استعداداً لمعالجة العجز. ويضع الهبوط مقابل صعود ما بعد الجولة الأولى (7% للأسهم و5% للريال)، ويعرّف الخبيرتين بمنصبيهما ومؤسستيهما. وصندوق «لماذا يهمّ» يقوم على مقدمات ثابتة في المصدر 3: دين يتجاوز 82%، وإنفاق ملزم قانوناً، وارتفاع عقود الفائدة 3.1%، والتركيز على وزير المالية. ويستنتج منها استنتاجاً محدوداً مشروطاً بـ«قد»: مسار تكاليف الاقتراض يرتبط بمصداقية خطة الخفض لا بالنتيجة وحدها.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "الفقرات مجمّعة حسب وظيفتها: الهبوط واتساعه، ثم الرهان المسبق وانعكاسه، ثم سوق الفائدة، ثم قراءة زيمبا، ثم قيد الدين والخاتمة بوزير المالية. الصندوق يكرر ذكر وزير المالية الوارد في الخاتمة، لكنه يضيف ربطه بقيد الإنفاق الملزم وضغوط الريال والفائدة، فلا يُعد صدى خالصاً.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«ومحا هبوط الاثنين تلك المكاسب كلها» حساب غير مسند. و«مع إغلاق المستثمرين رهانات…» في العنوان الفرعي رأي لزيمبا قُدّم حقيقة. و«سوق الدين» وصف غير دقيق للعقود الآجلة لأسعار الفائدة. و«توقفت البورصة عن العمل» بدل تعليق التداول.",
+              "repair": "«وجاء هبوط الاثنين ليعكس ذلك الصعود»؛ «بعدما بنى المستثمرون مراكزهم على فوز منافسه اليميني»؛ «وارتفعت العقود الآجلة لأسعار الفائدة 3.1%…»؛ «فعلّقت البورصة البرازيلية التداول 30 دقيقة»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي والمقدمة تحدد ما تغيّر: هبط الريال 12% في التعاملات الفورية، وتراجع بوفيسبا 10% عن إغلاقه السابق، وعُلّق التداول 30 دقيقة (المصدر 3). وتقدّم السبب المباشر كما ورد: فوز لولا غير المتوقع بعد أن بنى المستثمرون مراكزهم على فوز فلافيو بولسونارو (المصدران 3 و4). ولا تضيف الصياغة إغلاقاً أو حساباً غير وارد.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يضع التقرير الهبوط في سياقه من الأدلة: ارتفاع الأسهم نحو 7% والريال نحو 5% منذ الجولة الأولى (المصدر 3)، ووصف «فايننشال تايمز» للموجة بأنها الأسوأ منذ عقود (المصدر 4)، واتساع البيع إلى معظم أسهم المؤشر (المصدر 2). ويعرّف زيمبا وسينغارافيلو بصفتيهما ومؤسستيهما. ويستند مربع «لماذا يهمّ» إلى مقدمات مسندة، هي الدين فوق 82% والإنفاق الملزم قانوناً وارتفاع عقود الفائدة واختيار وزير المالية. ثم يستنتج بصيغة احتمال («قد يتوقف») أن مسار تكاليف الاقتراض مرهون بخطة إنفاق محددة لا بنتيجة الانتخابات وحدها، وهو استنتاج محدود ومشروط.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "تتدرج الفقرات وفق سؤال القارئ: حجم الصدمة، ثم آلية وقف التداول، ثم الرهان المعاكس الذي انعكس، ثم سوق الفائدة، ثم قراءة المحللة، ثم القيد المالي وما يترقبه المستثمرون. ويضيف المربع ربط اختيار وزير المالية باستمرار الضغوط على الريال وعقود الفائدة أو انحسارها، فلا يكرر خاتمة المتن حرفياً.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر: 12% في التعاملات الفورية، و10% عن الإغلاق السابق، ونحو 15% للعقود الآجلة للمؤشر، و3.1% لعقود الفائدة، وأكثر من 82% للدين، ونحو 1.3% فائضاً مستهدفاً بحلول 2030. ويُقدَّم الفائض هدفاً لفريق لولا لا نتيجة متحققة، وتبقى توقعات زيمبا منسوبة إليها بصيغة الترجيح.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "الدين العام البرازيلي يتجاوز 82% من الناتج المحلي الإجمالي",
+          "source": 3
+        },
+        {
+          "fact": "معاشات التقاعد والإنفاق الملزم قانوناً تحدّ من البنود التي يمكن تحقيق الوفورات منها",
+          "source": 3
+        },
+        {
+          "fact": "العقود الآجلة لأسعار الفائدة ارتفعت 3.1% بعد فوز لولا",
+          "source": 3
+        },
+        {
+          "fact": "الاهتمام ينصب على اختيار لولا لوزير المالية وما يدل عليه بشأن نهجه المالي",
+          "source": 3
+        }
+      ],
+      "slug": "brazil-real-stocks-plunge-lula-victory-da493b",
+      "title": "الريال البرازيلي يهبط 12% بعد فوز لولا غير المتوقع بولاية جديدة",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "مصر توقع اتفاقات تمويل مبدئية لمشروع دندرة الشمسي بـ650 مليون دولار",
+      "section": "energy",
+      "importance": 7,
+      "sources": [
+        "https://www.aljazeera.net/ebusiness/2026/10/26/%d9%85%d8%b5%d8%b1-%d8%aa%d9%88%d9%82%d8%b9-%d8%a7%d8%aa%d9%81%d8%a7%d9%82%d8%a7-%d9%85%d8%a8%d8%af%d8%a6%d9%8a%d8%a7-%d9%84%d8%aa%d9%85%d9%88%d9%8a%d9%84-%d9%85%d8%b4%d8%b1%d9%88%d8%b9",
+        "https://www.alborsaanews.com/2026/10/26/2002105"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "يوضح التقرير أن ما وُقّع شروط أولية وأن التمويل لم يُستكمل، وهذا قيد صحيح. لكن عبارة «تُخصَّص كهرباؤها لشركة مصر للألومنيوم» توسّع الهدف المعلن، وهو نحو ثلث احتياجات الشركة، إلى تخصيص كامل للإنتاج.",
+              "repair": "حصر المعلومة في الهدف المعلن: توفير نحو ثلث احتياجات الشركة من الكهرباء، والإشارة إلى اتفاقية الربط بالشبكة القومية دون استنتاج طبيعة البيع."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الدافع موجود، وهو خفض استهلاك الغاز واستيراده وتلبية المتطلبات البيئية للتصدير. لكن هدف 42% من مزيج الكهرباء بحلول 2030 (المصدر 1) غائب، والبنوك الثلاثة غير مسماة. صندوق «لماذا يهمّ» يربط بين فائدتين ويشترطهما بإتمام التمويل وتشغيل المرحلتين، وهو استنتاج محدود ومقبول.",
+              "repair": "تسمية البنوك الثلاثة في المقدمة، وإضافة هدف 42% بحلول 2030 إلى فقرة خطة الطاقة المتجددة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات مجمّعة بحسب الوظيفة: الاتفاقيات، ثم المستفيد، ثم المراحل، ثم الخطة. لكن المقدمة تحمل تركيباً مرتبكاً («وجرى التوقيع... لمحطة»)، والفقرة الأخيرة تنتهي بمقارنة مخترعة مع «محطات البيع للشبكة العامة».",
+              "repair": "إعادة بناء الجملة الثانية في المقدمة، واختتام الفقرة الأخيرة بهدف 42% المسند إلى المصدر 1 بدل المقارنة غير الموثقة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام صحيحة: 650 مليون دولار استثمارات إجمالية، و1000 ميغاواط، و200 ميغاواط ساعة، ومرحلتان بقدرة 500 ميغاواط و100 ميغاواط ساعة لكل منهما. الخلل في الإسناد: نُسب نص من تقرير «البورصة نيوز» إلى «بيان مجلس الوزراء» باقتباس حرفي. والخلل في النطاق: حُوّل الثلث المستهدف إلى تخصيص كامل للكهرباء.",
+              "repair": "نقل العبارة بالمعنى دون علامات اقتباس ودون نسبتها إلى بيان رسمي، وتصحيح نطاق الاستفادة إلى نحو ثلث احتياجات الشركة."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "تقول المقدمة والفقرة الأولى بوضوح إن ما وُقّع هو الشروط الأولية وإن التمويل لم يُستكمل. والاستفادة محصورة في «نحو ثلث احتياجات» شركة مصر للألومنيوم، مع ذكر اتفاقية الربط بالشبكة القومية دون استنتاج طبيعة البيع.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "الدافعان المسندان موجودان: خفض استهلاك الغاز في محطات الكهرباء والحاجة إلى استيراده، وهدف 42% بحلول 2030 (المصدر 1)، ثم الانبعاثات والمتطلبات البيئية للتصدير (المصدر 2). صندوق «لماذا يهمّ» يقرن الفائدتين ويجعلهما مشروطتين باستكمال التمويل وتشغيل المرحلتين، وهو استنتاج محدود يستند إلى مقدمات موثقة.",
+              "repair": "يمكن إعادة ذكر أن التوقيع جرى في مقر الحكومة بالعاصمة الجديدة بحضور رئيس الوزراء مصطفى مدبولي (المصدر 2)، وقد سقط هذا التفصيل من المقدمة المعدلة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الترتيب منطقي: الاتفاقيات، ثم المستفيد، ثم المراحل، ثم الخطة. لكن الفقرة الأولى تكرر القيد نفسه في جملتين. وفقرة الموقّعين تقول «أما البنوك الثلاثة فوقّعت عنها» ثم تذكر اثنين فقط وتفصل الثالث في جملة مستقلة.",
+              "repair": "دمج جملتي القيد في جملة واحدة، وجمع الموقّعين الثلاثة عن البنوك في جملة واحدة بصفاتهم."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: 650 مليون دولار، و1000 ميغاواط، و200 ميغاواط ساعة، و500 ميغاواط و100 ميغاواط ساعة لكل مرحلة، و42% بحلول 2030. لكن «القدر نفسه من الألواح» تحوّل القدرة إلى عدد ألواح، و«صناعتها المصدِّرة» في العنوان الفرعي تدمج هدفين منفصلين بضمير ملتبس.",
+              "repair": "«وتضيف الثانية القدرة نفسها: 500 ميغاواط و100 ميغاواط ساعة»، وفي العنوان الفرعي «لخفض انبعاثات إنتاجها ودعم نفاذ صادراتها أمام متطلبات بيئية متزايدة»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 7,
+      "mendIssues": [
+        "البناء: الفقرة الأولى من المتن تقول المعنى نفسه مرتين: «تحدد الاتفاقية الشروط الأولية للتمويل، ولم تُستكمل ترتيباته بعد. وتُعد هذه التوقيعات، بحسب ما أُعلن خلال المراسم، خطوة نحو استكمال ترتيبات تمويل المشروع وتنفيذه». الجملة الثانية لا تضيف شيئاً إلى الأولى. والمصدر 2 لا يقول إن العبارة «أُعلنت خلال المراسم»، فهي من تقرير «البورصة نيوز» عن المراسم. الإصلاح: دمج الجملتين في جملة واحدة: «ولا تُكمل الاتفاقية ترتيبات التمويل، بل تحدد شروطه الأولية خطوةً نحو استكمال تمويل المشروع وتنفيذه، وفق ما أوردته الحكومة».",
+        "تركيب مرتبك في فقرة الموقّعين: «أما البنوك الثلاثة فوقّعت عنها جيلسومينا فيليوتي... ومارك ديفيس... ووقّع عن البنك الأفريقي للتنمية مديره القطري في مصر عبد الرحمن دياو». الجملة تُعلن البنوك الثلاثة ثم لا تذكر إلا اثنين، وتنقل الثالث إلى جملة مستقلة. الإصلاح: «ووقّع عن البنوك الثلاثة كلٌّ من جيلسومينا فيليوتي، نائبة رئيس مجلس إدارة البنك الأوروبي للاستثمار، ومارك ديفيس، المدير العام الإقليمي لمنطقة جنوب وشرق المتوسط بالبنك الأوروبي لإعادة الإعمار والتنمية، وعبد الرحمن دياو، المدير القطري للبنك الأفريقي للتنمية في مصر» (المصدر 2).",
+        "العنوان الفرعي: في «لخفض انبعاثات صناعتها المصدِّرة» يبقى مرجع الضمير ملتبساً بين المحطة والشركة. ووصف «صناعتها المصدِّرة» يدمج هدفين ذكرهما المصدر 2 منفصلين: خفض انبعاثات صناعة الألومنيوم، ودعم تنافسية الصادرات أمام المتطلبات البيئية. الإصلاح: «...تستهدف توفير نحو ثلث احتياجات شركة مصر للألومنيوم من الكهرباء، لخفض انبعاثات إنتاجها ودعم نفاذ صادراتها أمام متطلبات بيئية متزايدة».",
+        "العنوان: «توقّع شروطاً أولية لتمويل محطة» صياغة غير مألوفة، فالذي يُوقَّع اتفاقية لا شروط. الإصلاح: «\"سكاتك\" توقّع اتفاقية الشروط الأولية لتمويل محطة شمسية في مصر باستثمارات 650 مليون دولار» (المصدر 2).",
+        "دقة الصياغة: «وتضيف الثانية القدر نفسه من الألواح والبطاريات» توحي بعدد الألواح، والمصدران 1 و2 يتحدثان عن القدرة: 500 ميغاواط إضافية و100 ميغاواط ساعة. الإصلاح: «وتضيف الثانية القدرة نفسها: 500 ميغاواط و100 ميغاواط ساعة من البطاريات». وفي «أي غيغاواط واحداً» يجب نصب «غيغاواطاً» تبعاً لما قبلها.",
+        "الترتيب منطقي: الاتفاقيات، ثم المستفيد، ثم المراحل، ثم الخطة. لكن الفقرة الأولى تكرر القيد نفسه في جملتين. وفقرة الموقّعين تقول «أما البنوك الثلاثة فوقّعت عنها» ثم تذكر اثنين فقط وتفصل الثالث في جملة مستقلة. — دمج جملتي القيد في جملة واحدة، وجمع الموقّعين الثلاثة عن البنوك في جملة واحدة بصفاتهم.",
+        "الأرقام مطابقة للمصادر: 650 مليون دولار، و1000 ميغاواط، و200 ميغاواط ساعة، و500 ميغاواط و100 ميغاواط ساعة لكل مرحلة، و42% بحلول 2030. لكن «القدر نفسه من الألواح» تحوّل القدرة إلى عدد ألواح، و«صناعتها المصدِّرة» في العنوان الفرعي تدمج هدفين منفصلين بضمير ملتبس. — «وتضيف الثانية القدرة نفسها: 500 ميغاواط و100 ميغاواط ساعة»، وفي العنوان الفرعي «لخفض انبعاثات إنتاجها ودعم نفاذ صادراتها أمام متطلبات بيئية متزايدة»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "المشروع يستهدف توفير نحو ثلث احتياجات شركة مصر للألومنيوم من الكهرباء لخفض انبعاثات إنتاج الألومنيوم",
+          "source": 2
+        },
+        {
+          "fact": "الحكومة تقول إن المشروع يدعم نفاذ المنتجات المصرية إلى الأسواق العالمية مع تزايد المتطلبات البيئية للتصدير",
+          "source": 2
+        },
+        {
+          "fact": "مصر تزيد الاعتماد على الطاقة المتجددة لتقليص استهلاك محطات الكهرباء للغاز والحاجة إلى استيراده",
+          "source": 1
+        },
+        {
+          "fact": "التوقيعات خطوة نحو استكمال ترتيبات تمويل المشروع وتنفيذه، والمشروع يُنفَّذ على مرحلتين",
+          "source": 2
+        }
+      ],
+      "slug": "egypt-dendera-solar-financing-term-sheet-001b37",
+      "title": "«سكاتك» توقّع اتفاقاً مبدئياً لتمويل محطة شمسية في مصر استثماراتها 650 مليون دولار",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "أبولو تشتري حصة تقارب 10% في مبادلة كابيتال لدعم توسعها العالمي",
+      "section": "companies",
+      "importance": 7,
+      "sources": [
+        "https://www.thenationalnews.com/business/2026/10/26/mubadala-capital-apollo-minority-stake/",
+        "https://www.albayan.ae/economy/business/world-economy/1560747",
+        "https://www.cnbc.com/2026/10/26/apollo-mubadala-capital-stake.html"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "يقول العنوان «تستحوذ» وتقول المقدمة «حصولها على استثمار»، فيبدو الاستثمار منجزاً. والمصادر تقول إنه مرتقب ومتوقع إتمامه في الربع الرابع رهناً بالموافقات، ولا يظهر هذا القيد إلا في الفقرة الأخيرة وفي «لماذا يهمّ». ما لا يتغير واضح: بقاء أغلبية مبادلة للاستثمار واستقلالية الإدارة.",
+              "repair": "استعمال فعل نية في العنوان («تشتري/ستستحوذ»)، ووصف الاستثمار في المقدمة بأنه «مرتقب»، ويمكن ذكر موعد الإتمام المتوقع وشرط الموافقات في الفقرة الأولى."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "السياق مستمد من المصادر: الشراكة السابقة منذ 2022 وتمديدها، والمشروع المشترك البالغ 2.5 مليار دولار عام 2023، وعلاقة زيتو وبرهوش، وأهمية الحجم، وصفقات «أبولو» المشابهة. ويعرض «لماذا يهمّ» مقايضة حقيقية: رأس مال ملتزم من شريك كبير مقابل حصة أقلية، من دون التنازل عن القرار الاستثماري أو الأغلبية. وقيده واضح، وهو تحقق الالتزامات والموافقات.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "البناء متدرج إجمالاً: الصفقة، ثم الملكية والحوكمة، ثم الحجم، ثم الدافع، ثم التصريحات، ثم الخلفية، ثم الخطوة التالية. لكن رقم 755 مليار دولار جاء في الفقرة قبل الأخيرة بعيداً عن رقم 60 ملياراً، فيبقى القارئ أمام رقمين متضاربين ظاهرياً. وجملة «ولم تُكشف الشروط المالية…» تقطع فقرة الشروط بلا فائدة.",
+              "repair": "نقل وصف «سي إن بي سي» للأصول التي تقدم لها الشركة الاستشارات والخدمات الإدارية إلى الفقرة التي تذكر الستين ملياراً مع التمييز بينهما، وحذف جملة الشروط المالية."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «تتولى إدارتها» تحوّل الخدمات الإدارية (administering) إلى إدارة أصول. ونسبة «نحو 10%» واردة في key_facts بلا إسناد إلى المطلعين. وفي العنوان الفرعي يرد رقم الخمسة مليارات دون قيد «عند الإغلاق الأولي» الذي يذكره المصدر 2.",
+              "repair": "«تقدم الاستشارات والخدمات الإدارية لأصول تتجاوز 755 مليار دولار»؛ و«حصة أقلية (نحو 10% بحسب مطلعين)»؛ و«التزامات متوقعة بقيمة 5 مليارات دولار عند الإغلاق الأولي»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "يتضح ما تغير (دخول «أبولو» ومستثمرين آخرين بحصص أقلية والتزامات متوقعة بخمسة مليارات) وما يبقى (أغلبية مبادلة للاستثمار واستقلالية الإدارة) وشرط الإتمام في الربع الرابع. لكن العنوان والمقدمة يخلطان المعلن رسمياً («حصة أقلية») برواية المطلعين («تقارب 10%»).",
+              "repair": "الفصل بين الإعلان الرسمي والنسبة المنسوبة إلى المطلعين في العنوان والمقدمة، كما في الصيغة المقترحة في الملاحظة الأولى."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السياق متوفر: الشراكة الممتدة منذ 2022، والمشروع المشترك بقيمة 2.5 مليار دولار، والتمييز بين 60 ملياراً تديرها الشركة و755 ملياراً تقدم لها الاستشارات والخدمات الإدارية، ودافع الحجم. لكن «لماذا يهمّ» يقرر بفعل «تحصل» نتيجة متوقعة، وتأتي جملته الثانية تكراراً لشروط الإتمام.",
+              "repair": "صياغة الصندوق على أنه مقايضة مشروطة: حجم ووصول إلى مستثمرين مقابل حصص أقلية لا تمس السيطرة، رهناً بتحقق الالتزامات عند الإغلاق الأولي."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "التدرج سليم إجمالاً: الصفقة، ثم الالتزامات، ثم الملكية والحوكمة، ثم الحجم، ثم الدافع، ثم التصريحات، ثم الخلفية، ثم قراءة الشبكة. يكسره سطر «أما «أبولو» فبلغت الأصول التي تديرها نحو 1.05 تريليون دولار حتى أواخر يونيو.» المعزول في فقرة وحده.",
+              "repair": "دمج رقم أصول «أبولو» في فقرة الحجم مقارنةً بمبادلة كابيتال، أو ربطه بقول زيتو عن قاعدة المستثمرين الأوسع."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "صُحح التمييز بين الإدارة والخدمات الإدارية، وأُسند هدف «كابيتال سوليوشنز» إلى «أبولو»، وقُيد رقم الخمسة مليارات بالإغلاق الأولي. بقي «بدل الاكتفاء باستقطاب رؤوس أموالها» الذي يحور قراءة المصدر 3، و«تمويل بالدين والملكية» الذي يسقط عنصر البحث المشترك عن الفرص.",
+              "repair": "اعتماد الصيغتين المقترحتين في الملاحظتين الرابعة والخامسة."
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تتوقع مبادلة كابيتال أن تبلغ الالتزامات الرأسمالية من أبولو والمستثمرين الآخرين 5 مليارات دولار عند الإغلاق الأولي",
+          "source": 2
+        },
+        {
+          "fact": "تبقى مبادلة للاستثمار صاحبة الأغلبية ويحتفظ فريق الإدارة الحالي بكامل صلاحيات القرارات الاستثمارية",
+          "source": 2
+        },
+        {
+          "fact": "بلغت الأصول التي تديرها أبولو نحو 1.05 تريليون دولار حتى أواخر يونيو",
+          "source": 1
+        },
+        {
+          "fact": "يتوقع إتمام الصفقة في الربع الرابع من 2026 شرط الموافقات التنظيمية والقانونية",
+          "source": 1
+        }
+      ],
+      "slug": "apollo-buys-stake-in-mubadala-capital-e5bc9c",
+      "title": "«أبولو» تعتزم شراء حصة تقارب 10% في «مبادلة كابيتال» بحسب مطلعين",
+      "score": 9,
+      "image": "cover-art"
+    },
+    {
+      "headline": "الغاز الأوروبي يتجاوز 97 يورو للميغاواط ساعة في أعلى مستوى منذ 2022",
+      "section": "energy",
+      "importance": 7,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
+  "llm": {
+    "calls": 60,
+    "failures": 2,
+    "promptTokens": 797830,
+    "completionTokens": 188163,
+    "cacheReadTokens": 220968,
+    "costUsd": 8.4221,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 60
+    }
+  },
+  "log": [
+    "[21:07:28] image: dropped \"Assignment- 48-DPA-04-02-08 SOI K Coochise) Secretary Dirk Kempthorne \" — shows dirk, dirk, not the story's people",
+    "[21:07:28] image: dropped \"LSST Town Hall at AAS 233 (rubin-31699180487-23d83e80a8-o).jpg\" — an event's photograph, people and banners",
+    "[21:07:28] image: dropped \"Assignment- 48-DPA-04-02-08 SOI K Coochise) Secretary Dirk Kempthorne \" — shows dirk, dirk, not the story's people",
+    "[21:07:28] pexels \"fund managers meeting\": 8 usable",
+    "[21:07:48] openverse \"fund managers meeting\": The operation was aborted due to timeout",
+    "[21:07:48] image: dropped \"Diverse business professionals engaged in a lively office meeting, fos\" — an event's photograph, people and banners",
+    "[21:07:48] image: dropped \"Close-up image of stacked US dollar bills representing wealth and fina\" — names too little of fund, managers, meeting",
+    "[21:07:48] image: dropped \"A diverse group of professionals engaged in a dynamic meeting in a mod\" — an event's photograph, people and banners",
+    "[21:07:48] image: dropped \"An upward trend graph made from coins representing financial growth an\" — names too little of fund, managers, meeting",
+    "[21:07:48] image: dropped \"Group of diverse coworkers in formal wear gathering around table with \" — an event's photograph, people and banners",
+    "[21:07:48] image: dropped \"Euro banknotes and calculator on financial documents, focusing on busi\" — names too little of fund, managers, meeting",
+    "[21:07:48] image: dropped \"Three businessmen discussing documents in a modern office setting.\" — names too little of fund, managers, meeting",
+    "[21:07:48] image: dropped \"Black and white image of a business meeting with diverse professionals\" — an event's photograph, people and banners",
+    "[21:07:48] image: dropped \"Credit Suisse, Paradeplatz, Zürich, Switzerland (Ank Kumar, Infosys Li\" — taken in Switzerland, which the story does not name",
+    "[21:07:55] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4368",
+    "[21:07:55] image: vision rejected all candidates (fallback pass) (None of the photographs fits. 1 and 3 are Mubadala-sponsored tennis events: a sports event with branding, not asset management, and 3 also shows Land Rover branding and private individuals. 2 is an Abu Dhabi skyline, which is never chosen. 4 is an airport road, unrelated to the deal. 5 is Adam Blumenthal of Blue Wolf Capital, a named person who is not one of the story's people. 6 shows rowan berries, a pun on Marc Rowan's name, and would be misleading or comic.)",
+    "[21:08:01] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3073",
+    "[21:08:01] image: vision rejected all candidates (fallback pass) (Rowan berries are irrelevant (a name-search accident); both NEXT Finance photos show named, identifiable people (Patrick Bernau, Gero Quast) at someone else's 2011 event, not the story's people, so none fits.)",
+    "[21:08:01] image: the story's people first: Marc Rowan Hani Barhoush 2026 | Marc Rowan Hani Barhoush | Marc Rowan and Hani Barhoush | Marc Rowan 2026 | Hani Barhoush 2026 | مارك روان | هاني برهوش",
+    "[21:08:01] commons \"Marc Rowan Hani Barhoush 2026\": 0 usable of 0",
+    "[21:08:02] commons \"Marc Rowan\": 4 usable of 6",
+    "[21:08:02] commons \"Marc Rowan Hani Barhoush\": 0 usable of 0",
+    "[21:08:03] commons \"Marc Rowan\": 4 usable of 6",
+    "[21:08:03] commons \"Marc Rowan and Hani Barhoush\": 0 usable of 0",
+    "[21:08:03] commons \"Marc Rowan Hani Barhoush\": 0 usable of 0",
+    "[21:08:03] commons \"Marc Rowan\": 4 usable of 6",
+    "[21:08:04] commons \"Marc Rowan 2026\": 11 usable of 20",
+    "[21:08:04] image: dropped \"Iran-qom-Cactus-The greenhouse of the thorn world گلخانه کاکتوس \"دنیای\" — names too little of marc, rowan",
+    "[21:08:04] image: dropped \"Iran-qom-Cactus-The greenhouse of the thorn world گلخانه کاکتوس \"دنیای\" — names too little of marc, rowan",
+    "[21:08:04] image: dropped \"Iran-qom-Cactus-The greenhouse of the thorn world گلخانه کاکتوس \"دنیای\" — names too little of marc, rowan",
+    "[21:08:04] image: dropped \"Iran-qom-Cactus-The greenhouse of the thorn world گلخانه کاکتوس \"دنیای\" — names too little of marc, rowan",
+    "[21:08:04] image: dropped \"Iran-qom-Cactus-The greenhouse of the thorn world گلخانه کاکتوس \"دنیای\" — names too little of marc, rowan",
+    "[21:08:04] image: dropped \"Iran-qom-Cactus-The greenhouse of the thorn world گلخانه کاکتوس \"دنیای\" — names too little of marc, rowan",
+    "[21:08:04] image: dropped \"Iran-qom-Cactus-The greenhouse of the thorn world گلخانه کاکتوس \"دنیای\" — names too little of marc, rowan",
+    "[21:08:04] image: dropped \"Iran-qom-Cactus-The greenhouse of the thorn world گلخانه کاکتوس \"دنیای\" — names too little of marc, rowan",
+    "[21:08:04] image: dropped \"Iran-qom-Cactus-The greenhouse of the thorn world گلخانه کاکتوس \"دنیای\" — names too little of marc, rowan",
+    "[21:08:04] image: dropped \"Iran-qom-Cactus-The greenhouse of the thorn world گلخانه کاکتوس \"دنیای\" — names too little of marc, rowan",
+    "[21:08:04] commons \"Hani Barhoush 2026\": 0 usable of 0",
+    "[21:08:05] commons \"Hani Barhoush\": 0 usable of 0",
+    "[21:08:05] commons \"2026\": 10 usable of 20",
+    "[21:08:05] image: dropped \"Castle Ponoviče, Municipality Litija, Slovenia (2026).jpg\" — names none of the story's people",
+    "[21:08:05] image: dropped \"Saint Gregory the Illuminator Cathedral, Yerevan (2026).jpg\" — names none of the story's people",
+    "[21:08:05] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 14.jpg\" — names none of the story's people",
+    "[21:08:05] image: dropped \"Gefallenendenkmal Grüneberg 2026 SW.jpg\" — names none of the story's people",
+    "[21:08:05] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 08.jpg\" — names none of the story's people",
+    "[21:08:05] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 22.jpg\" — names none of the story's people",
+    "[21:08:05] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 25.jpg\" — names none of the story's people",
+    "[21:08:05] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 04.jpg\" — names none of the story's people",
+    "[21:08:05] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 01.jpg\" — names none of the story's people",
+    "[21:08:05] image: dropped \"Ortstafel Bergsdorf (Zehdenick) 2026.jpg\" — names none of the story's people",
+    "[21:08:05] commons \"مارك روان\": 0 usable of 2",
+    "[21:08:07] commons \"روان\": 10 usable of 20",
+    "[21:08:07] image: dropped \"Rouen France Panoramic-View-02.jpg\" — names too little of روان",
+    "[21:08:07] image: dropped \"Blick auf Rouen 2024-07-20.jpg\" — names too little of روان",
+    "[21:08:07] image: dropped \"Roanne Vue du Ciel.jpg\" — names too little of روان",
+    "[21:08:07] image: dropped \"Rouen (37903223574).jpg\" — names too little of روان",
+    "[21:08:07] image: dropped \"Church of Saint-Maclou in Rouen, France.jpg\" — names too little of روان",
+    "[21:08:07] image: dropped \"Pedestrian zone in Rouen 2025 (3).jpg\" — names too little of روان",
+    "[21:08:07] image: dropped \"Street in Rouen 2025 (2).jpg\" — names too little of روان",
+    "[21:08:07] image: dropped \"Pedestrian zone in Rouen 2025 (2).jpg\" — names too little of روان",
+    "[21:08:07] image: dropped \"Pedestrian zone in Rouen 2025 (1).jpg\" — names too little of روان",
+    "[21:08:07] image: dropped \"Street in Rouen 2025 (1).jpg\" — names too little of روان",
+    "[21:08:08] commons \"هاني برهوش\": 0 usable of 0",
+    "[21:08:08] commons \"برهوش\": 0 usable of 0",
+    "[21:08:08] image: people shortlist: 2018 Sorbus aucuparia R01.jpg | 2018 Sorbus aucuparia R03.jpg | 2018 Sorbus aucuparia R02.jpg",
+    "[21:08:12] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3012",
+    "[21:08:12] image: vision rejected all candidates (All three candidates are close-ups of rowan berries. The search matched the CEO name Marc Rowan to the tree name. None shows the story's people, Apollo, Mubadala Capital or anything related to finance.)",
+    "[21:08:16] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3849",
+    "[21:08:16] image: last resort: asset management office United Arab Emirates | asset management office | asset management office industrial",
+    "[21:08:16] commons \"asset management office United Arab Emirates\": 0 usable of 1",
+    "[21:08:18] commons \"asset management\": 6 usable of 24",
+    "[21:08:18] image: dropped \"Indosuez WealthManagement Geneva 14112020.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[21:08:20] commons \"asset management office\": 14 usable of 24",
+    "[21:08:20] image: dropped \"Ilham Aliyev met with Connor Teskey - 2026 WEF - 01.jpg\" — shows asset, not the story's people",
+    "[21:08:20] image: dropped \"Ilham Aliyev met with Connor Teskey - 2026 WEF - 02.jpg\" — shows asset, not the story's people",
+    "[21:08:20] image: dropped \"Ilham Aliyev met with Connor Teskey - 2026 WEF - 04.jpg\" — shows asset, not the story's people",
+    "[21:08:20] image: dropped \"Ilham Aliyev met with Connor Teskey - 2026 WEF - 03.jpg\" — shows asset, not the story's people",
+    "[21:08:20] image: dropped \"HK 中環 Central 渣打大廈 Chater House office directory December 2025 N13P 02\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[21:08:20] image: dropped \"HK 中環 Central 渣打大廈 Chater House office directory JP Morgan December 20\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[21:08:20] image: dropped \"A Soldier at the U.S. Army Intelligence Center plays the Collection As\" — a warship or weapon, and the story is not about the military",
+    "[21:08:20] image: dropped \"Management process invaded Ames as the Center shifted from NACA to NAS\" — names too little of asset, management, office",
+    "[21:08:20] image: dropped \"HK Central Chater House offices directory sign September 2025 N13P 03.\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[21:08:21] commons \"asset management office industrial\": 4 usable of 4",
+    "[21:08:21] image: dropped \"The Dean Hotel, Cork, Sept 2025 04.jpg\" — names too little of asset, management, office, industrial",
+    "[21:08:21] image: dropped \"The Dean Hotel, Cork, Sept 2025 02.jpg\" — names too little of asset, management, office, industrial",
+    "[21:08:21] image: dropped \"The Dean Hotel, Cork, Sept 2025 03.jpg\" — names too little of asset, management, office, industrial",
+    "[21:08:21] image: dropped \"Carte de la Basse-Égypte et de la province du Fayoum - Dresseìe sur l’\" — names too little of asset, management, office, industrial",
+    "[21:08:21] image: dropped \"Abaco Asset Management LLP (3 of 4).jpg\" — taken in United Kingdom, which the story does not name",
+    "[21:08:21] image: dropped \"Abaco Asset Management LLP (4 of 4).jpg\" — taken in United Kingdom, which the story does not name",
+    "[21:08:21] image: dropped \"Abaco Asset Management LLP (2 of 4).jpg\" — taken in United Kingdom, which the story does not name",
+    "[21:08:21] image: dropped \"003 Fidelity Investments asset management and financial services compa\" — taken in United Kingdom, which the story does not name",
+    "[21:08:29] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7307",
+    "[21:08:29] image: vision rejected all candidates (fallback pass) (No candidate fits. #1 is a named official meeting with Azerbaijan's president and another firm's CEO. #2 is a building front with another company's logo. #3 is a 2011 iPhone 4S snapshot of a different firm's office (Clarium Capital): amateur quality, dated, and unrelated to Apollo or Mubadala Capital.)",
+    "[21:08:29] image: last pass, a neutral illustration: finance conference | investment bankers | fund managers meeting",
+    "[21:08:29] commons \"finance conference\": 12 usable of 24",
+    "[21:08:29] image: dropped \"Finance Minister Abul Maal Abdul Muhith keynote address International \" — shows abul, abul, not the story's people",
+    "[21:08:29] image: dropped \"Minister and Deputy Ministers of Finance press conference.jpg\" — an event's photograph, people and banners",
+    "[21:08:29] image: dropped \"Minister of Finance of Bolivia addressing the Conference (23588020275)\" — an event's photograph, people and banners",
+    "[21:08:30] pexels \"finance conference\": 8 usable",
+    "[21:08:49] openverse \"finance conference\": The operation was aborted due to timeout",
+    "[21:08:49] image: dropped \"Professionals reviewing financial graphs and charts during a meeting.\" — an event's photograph, people and banners",
+    "[21:08:49] image: dropped \"Business professionals engaged in a strategic meeting in a modern offi\" — names too little of finance, conference",
+    "[21:08:49] image: dropped \"A focused businesswoman analyzing data in an office environment with a\" — names too little of finance, conference",
+    "[21:08:49] image: dropped \"Team of professionals discussing sales strategies with charts in a mod\" — names too little of finance, conference",
+    "[21:08:49] image: dropped \"Professionals reviewing data charts on paper during a business meeting\" — names too little of finance, conference",
+    "[21:08:49] image: dropped \"Two businessmen engaged in a strategy meeting with laptops and charts.\" — names too little of finance, conference",
+    "[21:08:49] commons \"investment bankers\": 13 usable of 24",
+    "[21:08:49] image: dropped \"Houssam Nasrawin during investment forum in Jordan.jpg\" — shows abdullah, not the story's people",
+    "[21:08:49] image: dropped \"Coolidge & investment bankers, 10-29-23 LOC npcc.09803.jpg\" — dated 1923, an archival picture",
+    "[21:08:49] image: dropped \"Pres. Coolidge addressing 1200 members of Investment Bankers Assoc. LC\" — dated 1923, an archival picture",
+    "[21:08:49] image: dropped \"Coolidge & investment bankers, 10-29-23 LOC npcc.09804.jpg\" — dated 1923, an archival picture",
+    "[21:08:49] image: dropped \"Investment Bankers Assoc. of America at White House with Coolidge LCCN\" — dated 1923, an archival picture",
+    "[21:08:49] image: dropped \"Coolidge & investment bankers, (10-29-23) LCCN2016848204.jpg\" — dated 1923, an archival picture",
+    "[21:08:49] image: dropped \"Investment Bankers Assoc. of Amer. at White House LCCN2016886922.jpg\" — dated 1923, an archival picture",
+    "[21:08:49] image: dropped \"Coolidge & Investment Bankers Assn., 10-29-23 LCCN2016848203.jpg\" — dated 1923, an archival picture",
+    "[21:08:49] image: dropped \"Morgan Stanley Headquarters (48105951892).jpg\" — names too little of investment, bankers",
+    "[21:08:50] pexels \"investment bankers\": 8 usable",
+    "[21:09:09] openverse \"investment bankers\": The operation was aborted due to timeout",
+    "[21:09:09] image: dropped \"A tablet with text 'To Invest or To Sell?' on a white background.\" — names too little of investment, bankers",
+    "[21:09:09] image: dropped \"Smartphone with stock market data in front of financial chart.\" — names too little of investment, bankers",
+    "[21:09:09] image: dropped \"A hand pointing at a crypto market chart displaying Bitcoin trading da\" — names too little of investment, bankers",
+    "[21:09:09] image: dropped \"Business professionals analyzing stock exchange data on a smartphone i\" — names too little of investment, bankers",
+    "[21:09:10] commons \"fund managers meeting\": 11 usable of 24",
+    "[21:09:10] image: dropped \"Kaola Swanson, Columbia Gorge Program Manager, The Conservation Fund, \" — an event's photograph, people and banners",
+    "[21:09:10] image: dropped \"FEMA - 42800 - FEMA meeting in Texas.jpg\" — an event's photograph, people and banners",
+    "[21:09:10] image: dropped \"FEMA - 42799 - FEMA meeting in Texas.jpg\" — an event's photograph, people and banners",
+    "[21:09:10] image: dropped \"Tom Vilsack makes remarks at the NACD annual meeting, New Orleans, 13 \" — names too little of fund, managers, meeting",
+    "[21:09:10] image: dropped \"Tom Vilsack makes remarks at the NACD annual meeting, New Orleans, 13 \" — names too little of fund, managers, meeting",
+    "[21:09:10] image: dropped \"LSST Town Hall at AAS 233 (rubin-39730666033-94e47a121e-o).jpg\" — an event's photograph, people and banners",
+    "[21:09:10] image: dropped \"LSST Town Hall at AAS 233 (rubin-45970936774-ecf72fc963-o).jpg\" — an event's photograph, people and banners",
+    "[21:09:10] image: dropped \"LSST Town Hall at AAS 233 (rubin-39730666503-0b449c5091-o).jpg\" — an event's photograph, people and banners",
+    "[21:09:10] image: dropped \"Assignment- 48-DPA-04-02-08 SOI K Coochise) Secretary Dirk Kempthorne \" — shows dirk, dirk, not the story's people",
+    "[21:09:10] image: dropped \"LSST Town Hall at AAS 233 (rubin-31699180487-23d83e80a8-o).jpg\" — an event's photograph, people and banners",
+    "[21:09:10] image: dropped \"Assignment- 48-DPA-04-02-08 SOI K Coochise) Secretary Dirk Kempthorne \" — shows dirk, dirk, not the story's people",
+    "[21:09:10] pexels \"fund managers meeting\": 8 usable",
+    "[21:09:30] openverse \"fund managers meeting\": The operation was aborted due to timeout",
+    "[21:09:30] image: dropped \"Diverse business professionals engaged in a lively office meeting, fos\" — an event's photograph, people and banners",
+    "[21:09:30] image: dropped \"Close-up image of stacked US dollar bills representing wealth and fina\" — names too little of fund, managers, meeting",
+    "[21:09:30] image: dropped \"A diverse group of professionals engaged in a dynamic meeting in a mod\" — an event's photograph, people and banners",
+    "[21:09:30] image: dropped \"An upward trend graph made from coins representing financial growth an\" — names too little of fund, managers, meeting",
+    "[21:09:30] image: dropped \"Group of diverse coworkers in formal wear gathering around table with \" — an event's photograph, people and banners",
+    "[21:09:30] image: dropped \"Euro banknotes and calculator on financial documents, focusing on busi\" — names too little of fund, managers, meeting",
+    "[21:09:30] image: dropped \"Three businessmen discussing documents in a modern office setting.\" — names too little of fund, managers, meeting",
+    "[21:09:30] image: dropped \"Black and white image of a business meeting with diverse professionals\" — an event's photograph, people and banners",
+    "[21:09:37] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5669",
+    "[21:09:37] image: vision rejected all candidates (fallback pass) (Photos 1 and 2 are staged stock clichés built around charts on screens, with posed models in a home or office. Photo 3 is a portrait of a named executive from another firm. Photos 4 to 6 show named people at a specific 2011 conference. None shows asset managers at work in a usable form, so it is better to run no photograph.)",
+    "[21:09:45] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5030",
+    "[21:09:45] image: vision rejected all candidates (fallback pass) (Every candidate fails. 1 is a staged stock shot built around charts. 2 has text on paper and is a cliché. 3 is a named 2011 conference event. 4 and 5 show Credit Suisse building fronts and signs in Zurich. 6 is a dated, staged Bitcoin cliché with text.)",
+    "[21:09:45] published \"«أبولو» تعتزم شراء حصة تقارب 10% في «مبادلة كابيتال» بحسب مطلعين\" -> apollo-buys-stake-in-mubadala-capital-e5bc9c",
+    "[21:09:45] run budget of 35 minutes spent; \"الغاز الأوروبي يتجاوز 97 يورو للميغاواط ساعة في أعلى مستوى منذ 2022\" waits for the next run"
+  ]
+}
