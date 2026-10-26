@@ -6863,6 +6863,135 @@
           "noted": []
         }
       ]
+    },
+    "banque-du-caire-ipo-priced-top-range-0e7362": {
+      "at": "2026-10-26T08:00:47.130Z",
+      "title": "بنك القاهرة يسعّر سهمه في الطرح الأولي عند 5.30 جنيه في أعلى النطاق",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v37",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 19,
+            "checked": 19,
+            "supported": 16,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "brent-falls-trump-rules-out-iran-strike-778d21": {
+      "at": "2026-10-26T08:11:40.474Z",
+      "title": "برنت يتراجع 1.2% إلى 110.36 دولار بعد استبعاد ترامب ضربة وشيكة لإيران",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v37",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 29,
+            "checked": 29,
+            "supported": 23,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 4,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 1,
+              "field": "title",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "برنت يتراجع 1.2% إلى 110.36 دولار بعد استبعاد ترامب ضربة وشيكة لإيران",
+              "quote": "By 5:02 GMT, Brent crude futures dropped $2.23, or 1.91 percent, to $114.5, while U.S. West Texas Intermediate crude futures fell $2.29, or 2.22 percent, to $101 per barrel.",
+              "source": "Economy Middle East",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 3,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تراجعت أسعار النفط الاثنين بعدما استبعد الرئيس الأمريكي دونالد ترامب توجيه ضربات وشيكة إلى إيران؛ فانخفضت العقود الآجلة لخام برنت 1.20% إلى 110.36 دولار للبرميل بحلول الساعة 07:50 بتوقيت غرينتش، ونزل خام غرب تكساس الوسيط 1.66% إلى 101.56 دولار للبرميل في التوقيت نفسه.",
+              "quote": "By 5:02 GMT, Brent crude futures dropped $2.23, or 1.91 percent, to $114.5, while U.S. West Texas Intermediate crude futures fell $2.29, or 2.22 percent, to $101 per barrel.",
+              "source": "Economy Middle East",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 4,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "سعر برنت الاثنين 07:50 غرينتش: 110.36 دولار للبرميل",
+              "quote": "By 5:02 GMT, Brent crude futures dropped $2.23, or 1.91 percent, to $114.5, while U.S. West Texas Intermediate crude futures fell $2.29, or 2.22 percent, to $101 per barrel.",
+              "source": "Economy Middle East",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 5,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تراجع برنت الاثنين: 1.20%",
+              "quote": "By 5:02 GMT, Brent crude futures dropped $2.23, or 1.91 percent, to $114.5, while U.S. West Texas Intermediate crude futures fell $2.29, or 2.22 percent, to $101 per barrel.",
+              "source": "Economy Middle East",
+              "sourceN": 4,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "alpha-dhabi-1-billion-alpha-wave-ai-fund-4b7494": {
+      "at": "2026-10-26T08:19:37.587Z",
+      "title": "ألفا ظبي القابضة تلتزم باستثمار مليار دولار في صندوق للذكاء الاصطناعي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v37",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 22,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

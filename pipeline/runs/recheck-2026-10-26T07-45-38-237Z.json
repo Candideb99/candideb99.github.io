@@ -1,0 +1,73 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-26T07:45:38.237Z",
+  "durationSec": 27,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "saudi-singapore-crude-storage-jurong-caverns-14f6a5",
+      "title": "السعودية تعتزم مع سنغافورة إبرام اتفاق لتخزين نفطها في كهوف جورونج",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 9,
+        "checked": 9,
+        "supported": 8,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "brazil-markets-brace-for-selloff-after-lula-win-fe29f4",
+      "title": "الأسواق البرازيلية تستعد لموجة بيع بعد فوز لولا على فلافيو بولسونارو",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 27,
+        "checked": 27,
+        "supported": 3,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 24,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 2,
+    "failures": 0,
+    "promptTokens": 13269,
+    "completionTokens": 5992,
+    "cacheReadTokens": 0,
+    "costUsd": 0.226,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 2
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[07:45:38] second look: 2 to read now (2 published pieces not yet read; 124 read clean before publication and left out of the audit sample)",
+    "[07:45:39] brazil-markets-brace-for-selloff-after-lula-win-fe29f4:   source https://www.bloomberg.com/news/articles/2026-10-26/em-stocks-fall-before-key-ear: http-403",
+    "[07:45:39] brazil-markets-brace-for-selloff-after-lula-win-fe29f4:   source https://www.bloomberg.com/news/videos/2026-10-26/the-asia-trade-10-26-2026-video: http-403",
+    "[07:45:39] brazil-markets-brace-for-selloff-after-lula-win-fe29f4:   source https://www.bloomberg.com/news/articles/2026-10-26/brazil-markets-brace-for-rout: http-403; read from the copy saved at publication (fetched then)",
+    "[07:46:01] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=22179",
+    "[07:46:01] saudi-singapore-crude-storage-jurong-caverns-14f6a5: 9 of 9 sentences checked · 8 supported · 1 without a source · 0 confirmed error(s)",
+    "[07:46:05] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=25596",
+    "[07:46:05] brazil-markets-brace-for-selloff-after-lula-win-fe29f4: 27 of 27 sentences checked · 3 supported · 24 without a source · 0 confirmed error(s)"
+  ]
+}

@@ -1251,6 +1251,50 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-10-26T08:19:37.593Z",
+      "slug": "alpha-dhabi-1-billion-alpha-wave-ai-fund-4b7494",
+      "checker": "7bb3653e29.2",
+      "lessons": "v37",
+      "lessonsHash": "747d5bc867",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 22,
+        "notFound": 5,
+        "checked": 27,
+        "words": 395,
+        "keyFacts": 3,
+        "classes": [],
+        "programmatic": 2
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 21,
+        "notFound": 5,
+        "checked": 26,
+        "words": 405,
+        "keyFacts": 3,
+        "classes": [],
+        "programmatic": 4
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 21,
+        "notFound": 5,
+        "checked": 26,
+        "words": 405,
+        "keyFacts": 3,
+        "classes": [],
+        "programmatic": 4
+      }
     }
   ]
 }

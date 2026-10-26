@@ -12453,6 +12453,78 @@
         }
       ],
       "outcome": "listed"
+    },
+    "saudi-singapore-crude-storage-jurong-caverns-14f6a5": {
+      "at": "2026-10-26T07:45:38.902Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v37",
+      "checker": "7bb3653e29",
+      "publishedAt": "2026-10-26T05:19:01.399Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 9,
+        "checked": 9,
+        "supported": 8,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "ولم يكشف الوزير السنغافوري الكميات المزمع تخزينها في المنشأة ولا مدة الاتفاقية."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "brazil-markets-brace-for-selloff-after-lula-win-fe29f4": {
+      "at": "2026-10-26T07:45:38.872Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v37",
+      "checker": "7bb3653e29",
+      "publishedAt": "2026-10-26T05:33:39.428Z",
+      "sourcesRead": 2,
+      "sourcesAll": 4,
+      "fromCopy": 1,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 27,
+        "checked": 27,
+        "supported": 3,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 24,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "المستثمرون يتوقعون تبدد مكاسب الأسهم والريال التي بنوها على رهان انتقال الحكم إلى اليمين، وينتظرون خطة لتثبيت الدين",
+        "صعود الأسهم البرازيلية منذ ما قبل الجولة الأولى حتى إغلاق الجمعة: نحو 7%",
+        "صعود الريال مقابل الدولار منذ ما قبل الجولة الأولى حتى إغلاق الجمعة: نحو 5%",
+        "الدين العام البرازيلي إلى الناتج: أكثر من 82%",
+        "الفائض الأولي المستهدف بحلول 2030: نحو 1.3% من الناتج",
+        "قام صعود الأسهم والريال في الأسابيع الأخيرة على رهان سياسي خسر بفوز لولا، وصار ما تنتظره السوق خطة مالية لا تُقرّ إلا بدعم كونغرس تميل معارضته إلى اليمين، في حين تضيّق النفقات الملزمة قانوناً هامش خفض الإنفاق.",
+        "وقد يدفع غياب خطة موثوقة المقرضين إلى طلب عوائد أعلى، وستكون موازنة 2027 واسم وزير المالية أولى الإشارات إلى اتجاه هذه الكلفة.",
+        "تحركت الأسواق بقوة قبل الاقتراع تحسباً لانتقال الحكم إلى اليمين، بعدما تصدّر فلافيو بولسونارو، نجل الرئيس السابق جايير بولسونارو الذي أُدين سابقاً، الجولة الأولى خلافاً للتوقعات قبل ثلاثة أسابيع."
+      ],
+      "weak": [],
+      "outcome": "clean"
     }
   }
 }
