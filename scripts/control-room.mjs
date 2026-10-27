@@ -25,6 +25,7 @@ import path from "node:path";
 import os from "node:os";
 import YAML from "yaml";
 import { codexStatus, CODEX_REASONING_EFFORT } from "../pipeline/lib/codex.mjs";
+import { CLAUDE_EFFORTS, claudeEffort } from "../pipeline/lib/claude-effort.mjs";
 import { accountById, listAccounts, beginAccountLogin, loginState, setAccountReminder, setAccountPool, readAccountStore } from "../pipeline/lib/codex-accounts.mjs";
 import { validateCodexAuth } from "../pipeline/lib/codex-cloud.mjs";
 import { readQuotaState, refreshAccountUsage } from "../pipeline/lib/codex-pool.mjs";
@@ -578,6 +579,7 @@ async function health() {
     },
     chatModel: local.KHAZENDAR_CHAT_MODEL || "default",
     thinkingBudget: local.KHAZENDAR_THINKING_BUDGET || "-1",
+    claudeEffort: claudeEffort(local),
     editorReal,
     deploy,
     chatReady: activeKeySet,
@@ -1078,6 +1080,16 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
         </select>
       </label>
 
+      <label id="effortRow"><span>How hard Claude thinks (effort)</span>
+        <select id="claudeEffort">
+          <option value="xhigh">Extra high — recommended</option>
+          <option value="max">Max (slowest)</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low (fastest)</option>
+        </select>
+      </label>
+
       <label><span>Model for the "Change the site" chat</span>
         <select id="chatModel">
           <option value="">Default (same as newsroom)</option>
@@ -1393,6 +1405,8 @@ function onProviderChange() {
   var prov = pSel ? pSel.value : 'gemini';
   var thinkRow = document.getElementById('thinkingRow');
   if (thinkRow) thinkRow.style.display = prov === 'gemini' ? 'block' : 'none';
+  var effortRow = document.getElementById('effortRow');
+  if (effortRow) effortRow.style.display = prov === 'claude' ? 'block' : 'none';
   updateModelOptions(HEALTH_DATA);
 }
 
@@ -1504,6 +1518,10 @@ function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(f
   if (tb && h.thinkingBudget) tb.value = h.thinkingBudget;
   var thinkRow = document.getElementById('thinkingRow');
   if (thinkRow) thinkRow.style.display = h.activeProvider === 'gemini' ? 'block' : 'none';
+  var ce = document.getElementById('claudeEffort');
+  if (ce && h.claudeEffort) ce.value = h.claudeEffort;
+  var effortRow = document.getElementById('effortRow');
+  if (effortRow) effortRow.style.display = h.activeProvider === 'claude' ? 'block' : 'none';
 
   var rs = document.getElementById('reviewSel');
   if (rs) rs.value = cloud.review ? '1' : '0';
@@ -1531,7 +1549,7 @@ function saveChatGPTDate(id){post('/accounts/reminder',{id:id,date:document.getE
 function useChatGPT(id,target){var n=document.getElementById('chatgpt-login');n.textContent='Connecting…';post(target==='cloud'?'/accounts/cloud':'/accounts/use',{id:id}).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
 function connectChatGPT(){post('/accounts/login',{target:document.getElementById('chatgpt-target').value,method:document.getElementById('chatgpt-method').value}).then(function(r){return r.json()}).then(function(r){if(r.error)document.getElementById('chatgpt-login').textContent=r.error;else pollChatGPTLogin()})}
 function pollChatGPTLogin(){fetch('/accounts').then(function(r){return r.json()}).then(function(r){var s=r.login,n=document.getElementById('chatgpt-login');if(s.complete){n.textContent='Account connected. Select Use this account or Use for GitHub scheduled publishing.';loadHealth()}else if(s.error)n.textContent=s.error;else{n.innerHTML=s.url?'Open <a href="'+esc(s.url)+'" target="_blank" rel="noopener noreferrer">ChatGPT sign-in</a>'+ (s.method==='browser'?' and complete the browser approval.':' and enter <b>'+esc(s.code||'the code shown shortly')+'</b>.'):'Starting ChatGPT sign-in…';if(s.running)setTimeout(pollChatGPTLogin,1500)}})}
-function saveWriters(localOnly){var n=document.getElementById('writersaved');n.textContent='applying…';var tb=document.getElementById('thinkingBudget')?document.getElementById('thinkingBudget').value:'-1';post('/writers',{provider:document.getElementById('activeProvider').value,model:document.getElementById('newsroomModel').value,chatModel:document.getElementById('chatModel').value,thinkingBudget:tb,localOnly:localOnly===true}).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
+function saveWriters(localOnly){var n=document.getElementById('writersaved');n.textContent='applying…';var tb=document.getElementById('thinkingBudget')?document.getElementById('thinkingBudget').value:'-1';var ce=document.getElementById('claudeEffort')?document.getElementById('claudeEffort').value:'';post('/writers',{provider:document.getElementById('activeProvider').value,model:document.getElementById('newsroomModel').value,chatModel:document.getElementById('chatModel').value,thinkingBudget:tb,claudeEffort:ce,localOnly:localOnly===true}).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
 function togglePause(){if(!PAUSED&&!confirm('Pause everything? The cloud will stop writing and publishing until you press Resume. Stories already live stay live.'))return;post('/pause?value='+(PAUSED?0:1)).then(function(r){return r.text()}).then(function(t){alert(t);loadHealth()})}
 function reveal(id){var w=document.getElementById('w_'+id);w.style.display=w.style.display==='none'?'grid':'none';if(w.style.display==='grid')document.getElementById(id).focus()}
 function saveReview(){var n=document.getElementById('reviewsaved');n.textContent='applying…';post('/review?value='+document.getElementById('reviewSel').value).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
@@ -1836,13 +1854,14 @@ const server = http.createServer(async (req, res) => {
       return json({ provider: prov, models: [] });
     }
     if (url.pathname === "/writers" && req.method === "POST") {
-      const { provider, model, newsroomModel, chatModel, thinkingBudget, localOnly } = await body(req);
+      const { provider, model, newsroomModel, chatModel, thinkingBudget, claudeEffort: effort, localOnly } = await body(req);
       const prov = ["codex", "gemini", "claude", "openai", "qwen", "openrouter"].includes(provider) ? provider : "gemini";
       const picked = model || newsroomModel;
       const actualModel = typeof picked === "string" ? picked.trim() : "";
       const cm = typeof chatModel === "string" ? chatModel.trim() : "";
       if ([actualModel, cm].some((m) => m && !MODEL_NAME.test(m))) return text(400, "That model name has characters no model name has.");
       if (thinkingBudget !== undefined && !(typeof thinkingBudget === "string" && /^-?\d{1,6}$/.test(thinkingBudget))) return text(400, "The thinking budget must be a whole number.");
+      if (effort !== undefined && effort !== "" && !CLAUDE_EFFORTS.includes(effort)) return text(400, `Claude's effort is one of ${CLAUDE_EFFORTS.join(", ")}.`);
 
       await setEnvKey("KHAZENDAR_PROVIDER", prov);
       if (actualModel) {
@@ -1858,9 +1877,11 @@ const server = http.createServer(async (req, res) => {
       if (typeof thinkingBudget === "string") {
         await setEnvKey("KHAZENDAR_THINKING_BUDGET", thinkingBudget);
       }
+      if (CLAUDE_EFFORTS.includes(effort)) await setEnvKey("KHAZENDAR_CLAUDE_EFFORT", effort);
 
       if (localOnly === true || prov === "codex") return text(200, `Saved on this laptop for testing: ${prov.toUpperCase()} (${actualModel || "default"}). Scheduled cloud runs are unchanged.`);
       if (typeof thinkingBudget === "string") await exec("gh", ["variable", "set", "KHAZENDAR_THINKING_BUDGET", "--repo", REPO, `--body=${thinkingBudget}`]);
+      if (CLAUDE_EFFORTS.includes(effort)) await exec("gh", ["variable", "set", "KHAZENDAR_CLAUDE_EFFORT", "--repo", REPO, `--body=${effort}`]);
 
       const b = await exec("gh", ["variable", "set", "KHAZENDAR_PROVIDER", "--repo", REPO, `--body=${prov}`]);
       if (actualModel) await exec("gh", ["variable", "set", "KHAZENDAR_MODEL", "--repo", REPO, `--body=${actualModel}`]);

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The picture desk, tested on cases whose right answer is known (86 checks), with scripted stand-ins for Claude, Wikimedia Commons,
+ * The picture desk, tested on cases whose right answer is known (90 checks), with scripted stand-ins for Claude, Wikimedia Commons,
  * the other libraries and the thumbnails: no model call, no network. Written 2026-09-28 after the owner asked for the
  * image engine to be stress-tested ("it might still be buggy"), so that the cascade's order, its place filter, the
  * repeat guard, its behaviour when a service fails, and the reading of accented names cannot regress unseen. The gate
@@ -10,6 +10,7 @@
  */
 import { withStandIns, pickImage, headlinePeople, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
 import { photoKey, sharedPhotos } from "../pipeline/lib/photo-key.mjs";
+import { BAD_TITLE } from "../pipeline/lib/commons.mjs";
 
 let failed = 0;
 function check(name, got, want) {
@@ -92,7 +93,7 @@ async function scenario({ draft, world = {}, categoryWorld = {}, libs = {}, plan
       searched.push(`category:${name}`);
       return (categoryWorld[name] ?? []).map((f) => ({ ...f }));
     },
-    searchLibraries: async (query) => (libs[query] ?? []).map((f) => ({ ...f, library: "pexels" })),
+    searchLibraries: async (query) => (libs[query] ?? []).map((f) => ({ library: "pexels", ...f })),
     inlineImage: async (url) => {
       inlined.push(url);
       return "data:image/jpeg;base64,AAAA";
@@ -773,6 +774,48 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
     ],
     [true, true, true, true, null, null],
   );
+}
+
+// U. Three search faults of 2026-10-27, each of which kept a fitting photograph from every judge: the title filter
+// matched inside words and refused every «banknotes» photograph; «gold bullion bars» dropped files that say «ingot» or
+// «bar»; a library's photograph was measured against Commons' last shortened phrase («exchange») instead of the phrase
+// the library was asked, and one Openverse found by the phrase's first words needs only a third of it.
+{
+  check(
+    "the title filter keeps photographs whose titles hold a refused word inside another, and banknotes in hand",
+    ["Vegetable market in Cairo.jpg", "Photograph of traders.jpg", "Covered market Tunis.jpg", "Egyptian pound banknotes in hand.jpg", "The Egyptian Exchange logo.png", "Map of Egypt.jpg"].map((t) => BAD_TITLE.test(t)),
+    [false, false, false, false, true, true],
+  );
+  const gold = { ...developers, title: "الذهب ينهي الأسبوع دون 4000 دولار للأوقية", tags: ["الذهب"], regions: ["عالمي"] };
+  const ingots = file("Gold Ingots on white background.jpg");
+  const vault = file("400-oz-Gold-Bars-AB-01.jpg", { categories: "Gold as an investment|Bank vaults|Gold ingots" });
+  const r = await scenario({
+    draft: gold,
+    plan: planFor({ queries: ["gold bullion bars"], place: [] }),
+    world: { "gold bullion bars": [ingots, vault] },
+    judge: pickTitle("400-oz"),
+    verify: () => "GENERIC_OK",
+  });
+  check("gold bars that say «ingot» or «bar» reach the judge for «gold bullion bars»", [r.judgePrompts.some((p) => p.includes(ingots.title)), r.image?.title], [true, vault.title]);
+  const pound = { ...developers, title: "الجنيه المصري يهبط إلى مستوى قياسي", tags: ["الجنيه المصري", "مصر"] };
+  const notes = { ...file("Egyptian pounds", { date: "2009-08-20" }), library: "flickr", searched: "Egyptian pound" };
+  const p = await scenario({
+    draft: pound,
+    plan: planFor({ queries: ["Egyptian pound dollar exchange"] }),
+    libs: { "Egyptian pound dollar exchange": [notes] },
+    judge: pickTitle("Egyptian pounds"),
+    verify: () => "GENERIC_OK",
+  });
+  check("a library's photograph is measured against the phrase it was asked, at a third when Openverse shortened it", p.image?.title, notes.title);
+  const students = { ...file("IMG_1945", { categories: "afs, egypt, egyptian, exchange, students" }), library: "flickr", searched: "Egyptian Exchange" };
+  const s = await scenario({
+    draft: pound,
+    plan: planFor({ queries: ["Egyptian Exchange trading floor"] }),
+    libs: { "Egyptian Exchange trading floor": [students] },
+    judge: () => 1,
+    verify: () => "GENERIC_OK",
+  });
+  check("exchange students found by «Egyptian Exchange» never reach the judge for its trading floor", s.judgePrompts.some((x) => x.includes("IMG_1945")), false);
 }
 
 console.log(failed ? `\n${failed} check(s) FAILED` : "\nall checks passed");

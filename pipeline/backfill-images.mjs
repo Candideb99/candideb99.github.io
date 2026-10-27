@@ -7,7 +7,8 @@
  *
  * Usage: node pipeline/backfill-images.mjs [--dry-run] [--limit=N] [--redo=slug,slug] [--only=slug,slug] [--no-sources]
  *        node pipeline/backfill-images.mjs --dry-run --save=picks.json [...]   the picks, kept to be looked at
- *        node pipeline/backfill-images.mjs --apply=picks.json [--only=slug,slug] writes exactly those picks
+ *        node pipeline/backfill-images.mjs --apply=picks.json [--only=slug,slug] [--redo=slug,slug] writes exactly those picks
+ *        (over a story's current photograph only when --redo names it)
  * Its model calls go to Claude (CLAUDE_CODE_OAUTH_TOKEN, from the environment or from .env).
  *
  * `--save` and `--apply` exist because the judges vary between runs: a dry run's pick, approved by the owner, was not what a
@@ -96,7 +97,8 @@ if (APPLY) {
       continue;
     }
     const data = YAML.parse(match[1]);
-    if (data.image) {
+    // A story named in --redo has its photograph replaced by the reviewed pick (the gold story's necklace, 2026-10-27).
+    if (data.image && !REDO.has(data.slug)) {
       log(`${entry.file}: has a photograph now; skipped`);
       continue;
     }

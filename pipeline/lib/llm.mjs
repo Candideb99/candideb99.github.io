@@ -5,6 +5,7 @@ import { jsonrepair } from "jsonrepair";
 import "./env.mjs";
 import { USER_AGENT, fetchWithTimeout, sleep } from "./util.mjs";
 import { runSubscription } from "./codex-pool.mjs";
+import { claudeEffort } from "./claude-effort.mjs";
 
 /**
  * Khazendar multi-provider LLM module.
@@ -169,7 +170,7 @@ async function callClaudeCli({ model, system, user, images = [], timeoutMs }) {
   const { spawn } = await import("node:child_process");
   const cliModel = model || process.env.KHAZENDAR_CLAUDE_MODEL || CLAUDE_MODEL;
   const seeing = images.length > 0;
-  const args = ["-p", "--output-format", seeing ? "stream-json" : "json", ...(seeing ? ["--input-format", "stream-json", "--verbose"] : []), "--tools", "", "--no-session-persistence", "--setting-sources", "", "--model", cliModel];
+  const args = ["-p", "--output-format", seeing ? "stream-json" : "json", ...(seeing ? ["--input-format", "stream-json", "--verbose"] : []), "--tools", "", "--no-session-persistence", "--setting-sources", "", "--model", cliModel, "--effort", claudeEffort()];
   // A long system prompt goes through a file: Windows caps a whole command line at 32,767 characters, and the house
   // style alone had reached 32,188 when the paper writer's own preamble took it over (2026-10-23: "spawn ENAMETOOLONG"
   // on every try; the analysis and «في العمق» writers sat as close). The file is the CLI's own --system-prompt-file.
@@ -244,7 +245,7 @@ async function callClaudeCli({ model, system, user, images = [], timeoutMs }) {
   usage.costUsd = Number((usage.costUsd + (Number(payload.total_cost_usd) || 0)).toFixed(4));
   const answered = Object.keys(payload.modelUsage ?? {})[0] ?? cliModel;
   usage.byModel[`claude-cli/${answered}`] = (usage.byModel[`claude-cli/${answered}`] ?? 0) + 1;
-  return { content: String(payload.result ?? ""), ms: Date.now() - started, usage: { completion_tokens: used.output_tokens }, model: `claude-cli/${answered}` };
+  return { content: String(payload.result ?? ""), ms: Date.now() - started, usage: { completion_tokens: used.output_tokens }, model: `claude-cli/${answered}`, effort: claudeEffort(), thinking: used.output_tokens_details?.thinking_tokens };
 }
 
 async function callClaudeApi({ model, system, user, images = [], timeoutMs, temperature, maxTokens }) {
@@ -717,7 +718,7 @@ export async function chat({ role, system, user, images = [], json = true, valid
         refusal = String(error.message).split("\n")[0].slice(0, 300);
         throw error;
       }
-      log(`llm ok role=${role} provider=${provider} model=${result.model || modelName} attempt=${attempt} ms=${result.ms}`);
+      log(`llm ok role=${role} provider=${provider} model=${result.model || modelName}${result.effort ? ` effort=${result.effort} thinking=${result.thinking ?? "?"}` : ""} attempt=${attempt} ms=${result.ms}`);
       return { data, text: result.content, model: result.model || modelName, ms: result.ms, usage: result.usage };
     } catch (error) {
       usage.failures += 1;

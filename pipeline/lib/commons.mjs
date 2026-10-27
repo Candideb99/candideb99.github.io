@@ -5,7 +5,15 @@ const API = "https://commons.wikimedia.org/w/api.php";
 const ALLOWED_LICENSE = /^(cc0(?:\s[\d.]+)?|public domain|pd(?:[\s-][\w. -]*)?|cc by(?:-sa)?(?:\s[\d.]+)?(?:\s\w+)?|no restrictions)$/i;
 /** Non-commercial and no-derivatives terms never run on a paper that carries advertising, whatever the rest of the name says. */
 const FORBIDDEN_LICENSE = /[\s-](nc|nd)\b|non-?commercial|no ?derivative/i;
-export const BAD_TITLE = /(logo|map|diagram|screenshot|chart|graph|flag|coat of arms|seal|icon|cover|poster|banner|table|infographic|meme|cartoon|drawing|sketch|painting|stamp|coin\b|banknote|passport|document|scan|text|book|page|plot|\.svg|\.tif|\.gif|\.pdf)/i;
+/**
+ * A title that names something other than a photograph. Whole words only: matched inside words, it dropped «Vegetable
+ * market» (table), «Photograph of …» (graph), «Covered market» (cover) and «Textile factory» (text) before any check saw
+ * them. «Banknote» and «table» are no longer in it: a note's printed face is refused by its own check (SCAN and DEPICTION
+ * in images.mjs), which lets money photographed as money through as the owner's rule of 2026-09-28 asks, and the filter
+ * had dropped every «… banknotes» photograph before that check could run (2026-10-27, the pound's record low ran without
+ * a photograph); a table is mostly furniture («gold bars on a table»), and a data table on Commons is a PNG, refused anyway.
+ */
+export const BAD_TITLE = /(?<!\p{L})(?:logos?|maps?|diagrams?|screenshots?|charts?|graphs?|flags?|coats? of arms|seals?|icons?|covers?|posters?|banners?|infographics?|memes?|cartoons?|drawings?|sketch(?:es)?|paintings?|stamps?|coin|passports?|documents?|scan(?:s|ned)?|texts?|books?|pages?|plots?)(?!\p{L})|\.(?:svg|tiff?|gif|pdf)\b/iu;
 
 /**
  * Searches Wikimedia Commons for editorial photographs matching `query`.

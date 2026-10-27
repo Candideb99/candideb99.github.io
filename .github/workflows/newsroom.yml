@@ -155,6 +155,7 @@ jobs:
           QWEN_API_KEY: ${{ secrets.QWEN_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           KHAZENDAR_CLAUDE_MODEL: ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'claude-opus-5-5' }}
+          KHAZENDAR_CLAUDE_EFFORT: ${{ vars.KHAZENDAR_CLAUDE_EFFORT || 'xhigh' }}
           REVIEW: ${{ steps.mode.outputs.review }}
           MODE: ${{ steps.mode.outputs.mode }}
         run: |
@@ -179,6 +180,7 @@ jobs:
           QWEN_API_KEY: ${{ secrets.QWEN_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           KHAZENDAR_CLAUDE_MODEL: ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'claude-opus-5-5' }}
+          KHAZENDAR_CLAUDE_EFFORT: ${{ vars.KHAZENDAR_CLAUDE_EFFORT || 'xhigh' }}
         run: node pipeline/learn.mjs
 
       - name: Run the newsroom
@@ -195,6 +197,7 @@ jobs:
           QWEN_API_KEY: ${{ secrets.QWEN_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           KHAZENDAR_CLAUDE_MODEL: ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'claude-opus-5-5' }}
+          KHAZENDAR_CLAUDE_EFFORT: ${{ vars.KHAZENDAR_CLAUDE_EFFORT || 'xhigh' }}
           # Photo libraries beside Commons (pipeline/lib/photolibs.mjs); each is used only when its free key is set.
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}

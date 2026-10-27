@@ -126,6 +126,7 @@ jobs:
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
           KHAZENDAR_CLAUDE_MODEL: ${{ vars.KHAZENDAR_CLAUDE_MODEL || 'claude-opus-5-5' }}
+          KHAZENDAR_CLAUDE_EFFORT: ${{ vars.KHAZENDAR_CLAUDE_EFFORT || 'xhigh' }}
         run: |
           if [ -n "$SLUGS" ]; then node pipeline/backfill-images.mjs --only="$SLUGS" || echo "The picture search failed; the stories run as text."; fi
           if [ -n "$REDO" ]; then node pipeline/backfill-images.mjs --redo="$REDO" --only="$REDO" || echo "The re-pick failed; tomorrow's round tries again."; fi

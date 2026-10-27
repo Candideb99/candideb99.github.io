@@ -33,14 +33,41 @@ const landscape = (w, h) => w > 0 && h > 0 && w / h >= 0.95 && w / h <= 2.6;
 export const NOT_A_PHOTO = /\b(?:ai[- ]generated|generated (?:by|with) ai|generative ai|midjourney|dall[- ]?e|stable diffusion|3d[- ](?:render|rendering|illustration|model|image)|rendered|cgi|illustration|illustrated|digital (?:art|painting|illustration|image)|vector|clip ?art|cartoon|mock-?up)\b/i;
 
 let openverseRefused = false;
+// A pass asks the libraries for all its searches at once (images.mjs collect()); Openverse allows 20 anonymous searches a
+// minute, so at most three are in flight and the rest wait their turn.
+let openverseInFlight = 0;
+const openverseQueue = [];
+async function openverseTurn(work) {
+  while (openverseInFlight >= 3) await new Promise((resolve) => openverseQueue.push(resolve));
+  openverseInFlight += 1;
+  try {
+    return await work();
+  } finally {
+    openverseInFlight -= 1;
+    openverseQueue.shift()?.();
+  }
+}
 
-/** Openverse, Flickr's openly licensed photographs among them; never its Wikimedia copies, which Commons already gives. */
-export async function searchOpenverse(query, { limit = 10, log = () => {} } = {}) {
+/**
+ * Openverse, Flickr's openly licensed photographs among them; never its Wikimedia copies, which Commons already gives.
+ * It answers in 10 to 50 seconds: at 20 seconds 36 of the 93 searches of the morning round of 2026-10-26 timed out. And
+ * it matches a library's short titles, so a long phrase finds nothing («Egyptian pound dollar exchange», 0 results) where
+ * its first words find the photograph («Egyptian pound»: a hand holding Egyptian notes, which the pound's record low
+ * needed and never saw, 2026-10-27). `simpler`: the shorter forms of the phrase (images.mjs simplerQueries()); when the
+ * phrase gives nothing usable, the first of them is asked once. Each result says which phrase found it (`searched`).
+ */
+export async function searchOpenverse(query, { limit = 10, log = () => {}, simpler = [] } = {}) {
   if (openverseRefused) return [];
   const params = new URLSearchParams({ q: query, license: "by,by-sa,cc0,pdm", page_size: "20", mature: "false", excluded_source: "wikimedia", extension: "jpg" });
   try {
-    const response = await fetchWithTimeout(`https://api.openverse.org/v1/images/?${params}`, { headers: { "user-agent": USER_AGENT } }, 20000);
+    const response = await openverseTurn(() => fetchWithTimeout(`https://api.openverse.org/v1/images/?${params}`, { headers: { "user-agent": USER_AGENT } }, 45000));
     if (response.status === 429) {
+      // A minute's limit says to wait seconds, the day's limit hours: only the second ends Openverse for the run.
+      const wait = Number(response.headers.get("retry-after"));
+      if (Number.isFinite(wait) && wait <= 120) {
+        log(`openverse "${query}": busy for ${wait} s; this search is left`);
+        return [];
+      }
       openverseRefused = true;
       log("openverse: the day's anonymous limit is reached; Commons alone for the rest of this run");
       return [];
@@ -80,10 +107,12 @@ export async function searchOpenverse(query, { limit = 10, log = () => {} } = {}
         thumb: flickrSize(url, "n") ?? String(r.thumbnail ?? url),
         // Openverse's own copy, asked for when Flickr refuses its thumbnail (images.mjs, shortlist).
         thumbAlt: r.thumbnail ? String(r.thumbnail) : undefined,
+        searched: query,
       });
       if (out.length >= limit) break;
     }
     log(`openverse "${query}": ${out.length} usable of ${(payload.results ?? []).length}`);
+    if (!out.length && simpler[0] && simpler[0] !== query) return await searchOpenverse(simpler[0], { limit, log });
     return out;
   } catch (error) {
     log(`openverse "${query}": ${error.message}`);
@@ -181,10 +210,17 @@ export async function searchUnsplash(query, { limit = 8, log = () => {} } = {}) 
   }
 }
 
-/** Every library beside Commons that is open to this run, for one search. */
-export async function searchLibraries(query, { log = () => {} } = {}) {
-  const [openverse, pexels, unsplash] = await Promise.all([searchOpenverse(query, { log }), searchPexels(query, { log }), searchUnsplash(query, { log })]);
-  return [...openverse, ...pexels, ...unsplash];
+/**
+ * Every library beside Commons that is open to this run, for one search (`simpler`: see searchOpenverse()), taken in turn,
+ * one of each: a search takes only its share of a pass's candidates (images.mjs collect()), and listed one library after
+ * another the first filled it. Once Openverse stopped timing out its Flickr snapshots took every place and Pexels' modern
+ * offices never reached the judges of the AI-agents reading (2026-10-27).
+ */
+export async function searchLibraries(query, { log = () => {}, simpler = [] } = {}) {
+  const lists = await Promise.all([searchOpenverse(query, { log, simpler }), searchPexels(query, { log }), searchUnsplash(query, { log })]);
+  const out = [];
+  for (let i = 0; i < Math.max(...lists.map((list) => list.length)); i += 1) for (const list of lists) if (list[i]) out.push(list[i]);
+  return out;
 }
 
 /** Unsplash counts a photo as used only when its download is reported; its terms ask for it. */
