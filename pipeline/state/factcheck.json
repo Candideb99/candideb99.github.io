@@ -12192,11 +12192,11 @@
       "outcome": "clean"
     },
     "saudi-utility-tariffs-monthly-support-2027-748f63": {
-      "at": "2026-10-25T20:55:56.558Z",
+      "at": "2026-10-27T14:42:07.220Z",
       "kind": "news",
       "writer": "claude-cli/claude-opus-5-5",
       "lessons": "v35",
-      "checker": "7bb3653e29",
+      "checker": "8abd70ec7f",
       "publishedAt": "2026-10-25T16:50:13.133Z",
       "sourcesRead": 4,
       "sourcesAll": 4,
@@ -12204,35 +12204,58 @@
       "counts": {
         "sentences": 34,
         "checked": 34,
-        "supported": 32,
+        "supported": 21,
         "weak": 1,
         "noEvidence": 0,
-        "notFound": 0,
-        "confirmed": 0,
+        "notFound": 11,
+        "confirmed": 1,
         "listed": 0,
         "drift": 0,
         "conflict": 0,
-        "unverified": 1,
+        "unverified": 0,
         "unchecked": 0
       },
-      "confirmed": [],
-      "listed": [
+      "confirmed": [
         {
-          "status": "unverified",
+          "id": 29,
           "field": "body",
           "sentence": "ويبدأ صرفه للعسكريين من ضباط وأفراد مع بدء تطبيق التعريفة الجديدة في 1 يناير 2027.",
+          "claim": "Payment to military officers and personnel starts with the new tariff on 1 January 2027.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 3,
+          "sourceName": "The National",
+          "sourceDate": "2026-10-25",
           "quote": "The measures, reported by the Saudi Press Agency on Sunday, will take effect ahead of tariff changes scheduled for January 1.",
-          "source": "The National"
+          "correction": "The National reports the support measures take effect ahead of the 1 January tariff changes, not at the same time.",
+          "class": "period"
         }
       ],
-      "notFound": [],
+      "listed": [],
+      "notFound": [
+        "حد زيادة فاتورة المياه لاستهلاك حتى 30 م³ (للتوصيلات الصغيرة، شاملة الضريبة): 67 ريالاً",
+        "أجر الاحتساب الكامل في «نطاقات»: 5,000 ريال من 25 أبريل 2027، ثم 6,000 ريال بعد 12 شهراً",
+        "وتهدف التعديلات، بحسب الإعلان الرسمي، إلى رفع كفاءة استهلاك الكهرباء والمياه والحد من الهدر وتعزيز استدامة الخدمات، وكذلك إلى رفع كفاءة الدعم وتحسين توجيهه إلى الفئات المستحقة.",
+        "ويستمر الدعم الحكومي لقطاع المياه لتغطية التكاليف الرأسمالية، التي تمثل أكثر من 50% من تكلفة كل متر مكعب يصل إلى المستفيد.",
+        "وبحسب أحدث الإحصاءات، فإن 99% من مستهلكي المياه السكنيين لديهم توصيلات بأقطار تتراوح بين صفر و40، لذلك لن تتجاوز زيادة فاتورة المياه 67 ريالاً، شاملة ضريبة القيمة المضافة، لمن لا يتجاوز استهلاكه 30 متراً مكعباً.",
+        "خارج المنازل، لا يشمل تعديل تعريفة المياه الاستخدامات المرتبطة بالأنشطة الصناعية والزراعية، ويُتوقع أن يكون أثر تعديل الكهرباء محدوداً على معظم الأنشطة الصناعية والتجارية والزراعية.",
+        "وفي المزارع، قد تتراوح الزيادة على فاتورة كهرباء قيمتها 5 آلاف ريال شهرياً بين 300 و400 ريال، ويمكن تقليصها بترشيد الكهرباء ومياه الري وتنظيم أوقات تشغيل المضخات.",
+        "ويضاف المبلغ لموظفي سلالم الخدمة المدنية والتشغيل إلى البدل المحدد لا إلى الراتب الأساسي، ولا يمس بقية البدلات والمزايا المالية."
+      ],
       "weak": [
         {
-          "sentence": "ويرتفع هذا الأجر إلى 5 آلاف ريال اعتباراً من 25 أبريل 2027، بعد ستة أشهر من القرار، ثم إلى 6 آلاف ريال بعد 12 شهراً من بدء المرحلة الأولى، أي في 25 أبريل 2028.",
-          "quote": "ويبدأ تطبيق المرحلة الأولى من رفع مستوى الأجر المعتمد لاحتساب العامل السعودي بواقع عامل واحد في برنامج «نطاقات» اعتباراً من 25 أبريل (نيسان) 2027، بعد استكمال مدة الستة أشهر المحددة من تاريخ الإعلان، على أن تبدأ المرحلة الثانية اعتباراً من التاريخ نفسه في العام المقبل 2028، وفق الضوابط وآليات الاحتساب المعتمدة في البرنامج."
+          "sentence": "السعودية تقر دعماً شهرياً بـ500 ريال لتخفيف أثر رفع تعريفتي الكهرباء والمياه",
+          "quote": "كما أقرت دعما شهريا بالقيمة نفسها للأسر المستفيدة من الضمان الاجتماعي، في إطار الإجراءات الرامية إلى تخفيف أثر ارتفاع تكاليف الكهرباء والماء على المواطنين."
         }
       ],
-      "outcome": "listed"
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن صرف الدعم للعسكريين من ضباط وأفراد يبدأ مع بدء تطبيق التعريفة الجديدة في 1 يناير 2027، والصحيح أن الدعم يسري قبل بدء تطبيق التعريفات الجديدة في ذلك التاريخ.",
+      "verified": {
+        "at": "2026-10-27T14:50:21.073Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
     },
     "foreign-exit-egypt-tbills-pound-pressure-b071e5": {
       "at": "2026-10-25T20:55:56.558Z",
@@ -12703,6 +12726,301 @@
       ],
       "weak": [],
       "outcome": "clean"
+    },
+    "bahri-contract-three-crude-tankers-saudi-9dd9dc": {
+      "at": "2026-10-27T14:40:56.743Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v37",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-25T23:32:30.794Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 24,
+        "checked": 24,
+        "supported": 21,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 22,
+          "field": "body",
+          "sentence": "وبلغت الزيادة 22% على أساس سنوي، بعدما أضافت الشركة 11 ناقلة جديدة واستبعدت ناقلة واحدة.",
+          "claim": "The VLCC fleet rose 22% year on year, after Bahri added 11 new tankers and removed one.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 0,
+          "sourceName": "the story itself",
+          "sourceDate": null,
+          "quote": "ورفعت «البحري» العام الماضي أسطولها من ناقلات النفط الخام العملاقة، المعروفة اختصاراً بـVLCC، بأسرع وتيرة في 11 عاماً، لتمتلك 50 ناقلة عملاقة بنهاية العام.",
+          "correction": "Reaching 50 VLCCs after adding 11 and removing one means a net gain of 10 from 40, a 25% increase, not 22%.",
+          "class": "internal"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "ويبقى هدف التوطين رهناً بقدرة الحوض على تسليم الناقلات في موعدها."
+      ],
+      "weak": [
+        {
+          "sentence": "وتموّل الشركة التكلفة البالغة 1.7 مليار ريال من مواردها النقدية ومن تسهيلات مصرفية، وأوضحت أن الأثر المالي للعقد سيظهر بعد تسلم الناقلات وبدء تشغيلها تجارياً.",
+          "quote": "الشركة مولت تكلفة العقد من مواردها النقدية وتسهيلات بنكية، فيما سيظهر الأثر المالي بعد تسلم الناقلات وبدء تشغيلها تجاريا، حيث سترفع الصفقة عدد السفن التي يجري بناؤها للشركة داخل المملكة إلى 9، تشمل أيضا 6 ناقلات بضائع سائبة."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أسطول «البحري» من ناقلات النفط العملاقة زاد 22% على أساس سنوي العام الماضي، وهي نسبة لا تتسق مع إضافة 11 ناقلة واستبعاد واحدة للوصول إلى 50 ناقلة. وقد حُذفت النسبة، والصحيح الثابت أن الشركة أضافت 11 ناقلة جديدة واستبعدت ناقلة واحدة لتمتلك 50 ناقلة بنهاية العام.",
+      "verified": {
+        "at": "2026-10-27T14:47:40.954Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
+    },
+    "aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210": {
+      "at": "2026-10-27T14:40:56.706Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-22T22:01:49.527Z",
+      "sourcesRead": 4,
+      "sourcesAll": 5,
+      "fromCopy": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 34,
+        "checked": 34,
+        "supported": 19,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 10,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 3,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 3,
+          "field": "lede",
+          "sentence": "أصدرت أرامكو السعودية تعليمات بإخلاء مقرها الرئيسي في الظهران والعمل عن بعد، بحسب ستة أشخاص مطلعين نقلت عنهم رويترز، دون ذكر سبب محدد، غداة هجومين قتلا أربعة أشخاص في المنطقة الشرقية.",
+          "claim": "Aramco instructed staff to evacuate its Dhahran headquarters and work remotely, according to six informed people cited by Reuters. The sentence also says, under the same attribution, that no specific reason was given. This came a day after two attacks killed four people in the Eastern Province.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "BBC Arabic",
+          "sourceDate": "2026-10-22",
+          "quote": "ولم يُذكر سبب محدد للإخلاء، بحسب المصادر. وكانت رويترز قد نقلت عن ستة أشخاص مطلعين صدور تعليمات بالإخلاء والعمل عن بُعد، مشيرة إلى أن الشركة لم تردّ فوراً على طلب التعليق.",
+          "correction": "The statement that no specific reason was given comes from the two sources cited by AFP; Reuters' six sources are cited only for the evacuation and remote-work instructions.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "قتلى هجومي الشيبة والدمام: 4 أشخاص",
+          "quote": "King Fahd International Airport in Dammam was targeted on Wednesday evening, leaving one person dead and eight injured, the state-run SPA news agency reported.",
+          "source": "AGBI (Arabian Gulf Business Insight)"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "ومساء الأربعاء، قتل هجوم على مطار الملك فهد الدولي في الدمام مواطناً سعودياً ومقيماً هندياً وأصاب ثمانية أشخاص، وفق الهيئة العامة للطيران المدني، التي أعلنت استئناف عمليات المطار صباح الخميس وعودة حركة الطيران إلى طبيعتها بعد تقييم الأضرار.",
+          "quote": "King Fahd International Airport in Dammam was targeted on Wednesday evening, leaving one person dead and eight injured, the state-run SPA news agency reported.",
+          "source": "AGBI (Arabian Gulf Business Insight)"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وأعلن تحالف دعم الشرعية في اليمن الخميس اعتراض خمس مسيّرات في منطقتي الرياض والمدينة المنورة، بعد إسقاط أربع أخرى فوق المنطقة الشرقية.",
+          "quote": "وأعلنت السعودية، الخميس، اعتراض أربع طائرات مسيّرة في منطقتَي الرياض والمدينة المنورة.",
+          "source": "BBC Arabic"
+        }
+      ],
+      "notFound": [
+        "المؤشر الرئيسي للأسهم السعودية يتراجع 2.5% بعد الأنباء، غداة هجومين قتلا أربعة أشخاص في المنطقة الشرقية",
+        "تراجع الأسهم السعودية الخميس: 2.5%",
+        "توقع صندوق النقد للاقتصاد السعودي هذا العام: انكماش 3.3%",
+        "يظل أثر الهجمات الحوثية على الاقتصاد السعودي محدوداً حتى الآن في تقدير صندوق النقد الدولي، ويستند هذا التقدير إلى استمرار شحنات النفط إلى جانب الطلب المحلي والقطاع العام.",
+        "واستهداف منشأة معالجة في حقل الشيبة، وإن لم تتأثر عملياته، يعني أن ضرراً أوسع في البنية النفطية قد يضيف كلفة الهجمات إلى انكماش يتوقعه الصندوق أصلاً بفعل تداعيات الحرب مع إيران.",
+        "وذكرت رويترز أن أسعار النفط بلغت أعلى مستوياتها منذ مايو وسط مخاوف من أثر التصعيد على الإمدادات، وقد ارتفع الخامان أكثر من 40% منذ بداية العام.",
+        "وتراجع المؤشر الرئيسي للأسهم السعودية 2.5% الخميس بعد أنباء الإخلاء، بحسب بيانات مجموعة بورصة لندن.",
+        "أما جهاد أزعور، مدير إدارة الشرق الأوسط وآسيا الوسطى في صندوق النقد الدولي، فقال في تصريحات لوكالة فرانس برس إن الأثر الاقتصادي للهجمات الحوثية على السعودية ما زال محدوداً حتى الآن بفضل الطلب المحلي والقطاع العام واستمرار شحنات النفط."
+      ],
+      "weak": [
+        {
+          "sentence": "صعد خام برنت 3.72% إلى 112.87 دولار للبرميل بحلول الساعة 20:59 بتوقيت غرينتش الخميس، وارتفع خام غرب تكساس الوسيط 2.01% إلى 99.10 دولار للبرميل في التوقيت نفسه.",
+          "quote": "خام غرب تكساس (futures, Yahoo Finance's continuous front-month series CL=F): 99.10 US dollars per barrel at 20:59 GMT on Thursday 22 October 2026 (delayed quote), up 1.95 or 2.01% from the previous close of 97.15."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن الأشخاص الستة الذين نقلت عنهم رويترز أفادوا بعدم ذكر سبب محدد لإخلاء مقر أرامكو في الظهران، والصحيح أن هذه المعلومة وردت عن مصدرين مطلعين نقلت عنهما وكالة فرانس برس. أما رويترز فنقلت عن الأشخاص الستة صدور تعليمات الإخلاء والعمل عن بعد فقط.",
+      "verified": {
+        "at": "2026-10-27T14:46:46.399Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
+    },
+    "french-bond-yields-jump-after-protests-1b64ee": {
+      "at": "2026-10-27T14:41:47.939Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-19T12:05:58.988Z",
+      "sourcesRead": 5,
+      "sourcesAll": 5,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 42,
+        "checked": 42,
+        "supported": 23,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 7,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 7,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 20,
+          "field": "body",
+          "sentence": "قالت وزارة الداخلية الفرنسية الأحد إن نحو 2400 شخص اعتُقلوا، بعد عنف اندلع عقب أسابيع من تظاهرات سلمية بشأن أوضاع المدارس وتكاليف المعيشة.",
+          "claim": "The French Interior Ministry said on Sunday that about 2,400 people were arrested, after violence that followed weeks of peaceful protests over schools and the cost of living.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "The Guardian",
+          "sourceDate": "2026-10-19",
+          "quote": "France protests escalate with riots, looting and 2,400 arrests - The Latest",
+          "correction": "The sources report about 2,400 arrests themselves and do not attribute the figure to a Sunday statement by the Interior Ministry.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "عائد السندات الفرنسية لعشر سنوات: نحو 4.85%",
+          "quote": "سجلت عوائد السندات الأوروبية لأجل 10 أعوام ارتفاعات جماعية؛ حيث صعد عائد سندات فرنسا بمقدار 11.2 نقطة أساس ليصل إلى 4.898%، كما ارتفع عائد سندات إيطاليا بمقدار 8.2 نقطة أساس مسجلاً 4.553%.",
+          "source": "Alborsa News",
+          "correction": "The French 10-year yield reached 4.898% (and as high as 4.94% per the Guardian), not about 4.85%."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "الفارق الفرنسي الألماني لعشر سنوات: 141 إلى 144 نقطة أساس",
+          "quote": "وبلغ الفارق بين العائد على السندات الفرنسية لأجل 10 سنوات ونظيرتها الألمانية 145 نقطة أساس، وهو أعلى مستوى له منذ أسبوعين، وإن كان لا يزال دون مستوى الـ 160 نقطة أساس الذي سُجل في أوائل أكتوبر.",
+          "source": "Alborsa News",
+          "correction": "The French-German 10-year spread reached 145 basis points."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "تراجع مؤشر كاك 40 صباح الاثنين: 1.34%",
+          "quote": "France’s Cac 40 index, which tracks the biggest companies listed in Paris, fell by 1.4% , compared with a 1.1% drop on the pan-European Stoxx 600 index.",
+          "source": "The Guardian",
+          "correction": "The CAC 40 fell by 1.4% (and 1.7% in afternoon trading per CNBC), not 1.34%."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "body",
+          "sentence": "صعد العائد القياسي إلى نحو 4.85% خلال تعاملات الاثنين.",
+          "quote": "سجلت عوائد السندات الأوروبية لأجل 10 أعوام ارتفاعات جماعية؛ حيث صعد عائد سندات فرنسا بمقدار 11.2 نقطة أساس ليصل إلى 4.898%، كما ارتفع عائد سندات إيطاليا بمقدار 8.2 نقطة أساس مسجلاً 4.553%.",
+          "source": "Alborsa News",
+          "correction": "The 10-year yield rose to 4.898% (as high as 4.94% per the Guardian), not about 4.85%."
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وكان ارتفاع عوائد الآجال الأخرى أقل، إذ زاد عائد السندات لأجل عامين 6 نقاط أساس، وعائد السندات لأجل ثلاثين عاماً 8 نقاط أساس.",
+          "quote": "The two-year French bond yield rose by nine basis points to 3.64%.",
+          "source": "The Guardian"
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "body",
+          "sentence": "واتسع الفارق بين العائدين الفرنسي والألماني لأجل عشر سنوات إلى ما بين 141 و144 نقطة أساس، بعد نحو 137 نقطة أساس يوم الجمعة.",
+          "quote": "وبلغ الفارق بين العائد على السندات الفرنسية لأجل 10 سنوات ونظيرتها الألمانية 145 نقطة أساس، وهو أعلى مستوى له منذ أسبوعين، وإن كان لا يزال دون مستوى الـ 160 نقطة أساس الذي سُجل في أوائل أكتوبر.",
+          "source": "Alborsa News",
+          "correction": "The spread reached 145 basis points; no source gives a Friday level of 137bp."
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "تلامس تكاليف الاقتراض القياسية لفرنسا أعلى مستوياتها منذ عام 2002، ويقف الفارق مع ألمانيا عند أعلى مستوى منذ أزمة الديون السيادية الأوروبية مطلع العقد الثاني من الألفية.",
+          "quote": "وبلغ الفارق بين العائد على السندات الفرنسية لأجل 10 سنوات ونظيرتها الألمانية 145 نقطة أساس، وهو أعلى مستوى له منذ أسبوعين، وإن كان لا يزال دون مستوى الـ 160 نقطة أساس الذي سُجل في أوائل أكتوبر.",
+          "source": "Alborsa News"
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "body",
+          "sentence": "هبط مؤشر «كاك 40» بنسبة 1.34% في تعاملات الصباح، وكانت أسهم البنوك بين أكبر الخاسرين، إذ تراجع سهما «سوسيتيه جنرال» و«بي إن بي باريبا» بأكثر من 2%.",
+          "quote": "France’s Cac 40 index, which tracks the biggest companies listed in Paris, fell by 1.4% , compared with a 1.1% drop on the pan-European Stoxx 600 index.",
+          "source": "The Guardian",
+          "correction": "The CAC 40 fell 1.4%, and Société Générale and BNP Paribas were down more than 3%."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "body",
+          "sentence": "وضغطت المخاوف من عدم الاستقرار السياسي على اليورو، فانخفض 0.28% أمام الدولار و0.24% أمام الجنيه الإسترليني، بعدما هبط صباحاً إلى أدنى مستوى أمام العملة البريطانية في 17 شهراً.",
+          "quote": "The euro was last seen down 0.15% against the U.S. dollar, and was 0.1% lower against the British pound.",
+          "source": "CNBC",
+          "correction": "The euro was down 0.15% against the dollar and 0.1% against the pound (and as much as 0.4% against the dollar at one stage per the Guardian)."
+        }
+      ],
+      "notFound": [
+        "حزمة التصحيح في موازنة 2027: 43 مليار يورو",
+        "وكان العائد لأجل عشر سنوات قد اقترب من 5% مطلع أكتوبر، ثم تراجع نسبياً الأسبوع الماضي قبل أن تعود الضغوط.",
+        "وأفادت تقارير بإصابة نحو ألف من أفراد الشرطة والدرك وتضرر أكثر من ألفي متجر، وقدّرت جهات تجارية الخسائر بمئات الملايين من اليوروات.",
+        "ورجّحت كاثلين بروكس، مديرة البحوث في شركة «إكس تي بي»، أن يتسع الفارق مع ألمانيا إلى نحو 150 نقطة أساس إذا تواصل تداخل الضغوط السياسية والاجتماعية مع الخلافات على التقشف.",
+        "تُعدّ حكومة الأقلية بقيادة رئيس الوزراء سيباستيان لوكورنو موازنة تستهدف خفض العجز إلى 5% من الناتج عبر حزمة تصحيح بقيمة 43 مليار يورو، تشمل تقليص الإنفاق على الرعاية الصحية والحد من الزيادة المرتبطة بالتضخم في بعض المعاشات وخفض تمويل الوزارات باستثناء الدفاع.",
+        "أعلن الاشتراكيون عزمهم التحرك لرفض شق الإيرادات في مشروع الموازنة عند بدء النقاش البرلماني، لكن حزب «التجمع الوطني» قال إنه لن يدعم هذا التحرك، ما يقلل فرص نجاحه.",
+        "وإن تعذّر جمع الأصوات، قد تلجأ الحكومة مجدداً إلى صلاحيات دستورية تتيح تمرير التشريع دون تصويت مباشر، كما فعلت العام السابق."
+      ],
+      "weak": [
+        {
+          "sentence": "قفز عائد السندات الحكومية الفرنسية لأجل عشر سنوات بأكثر من 10 نقاط أساس الاثنين، واتسع فارقه مع نظيره الألماني، بعدما عمّقت احتجاجات عنيفة في عطلة نهاية الأسبوع مخاوف المستثمرين من العجز ومن قدرة الحكومة على تمرير موازنة 2027.",
+          "quote": "Key concerns include uncertainty over next year's presidential election, in which far-right Marine Le Pen is topping many polls, and whether the minority government of Prime Minister Sébastien Lecornu can pass the 2027 budget currently under negotiation."
+        },
+        {
+          "sentence": "يملك المستثمرون الأجانب قرابة 60% من الدين الفرنسي، وشبكة الأمان لدى المركزي الأوروبي مشروطة باحترام الإطار المالي الأوروبي، فيتأثر بمسار موازنة 2027 أمران: حجم علاوة المخاطر التي يطلبها الدائنون، وقدرة فرنسا على الاستناد إلى تلك الشبكة إن اضطربت السوق.",
+          "quote": "In particular, the criteria include: (1) compliance with the EU fiscal framework: not being subject to an excessive deficit procedure (EDP), or not being assessed as having failed to take effective action in response to an EU Council recommendation under Article 126(7) of the Treaty on the Functioning of the European Union (TFEU);"
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن وزارة الداخلية الفرنسية أعلنت الأحد اعتقال نحو 2400 شخص، والصحيح أن نحو 2400 شخص اعتُقلوا خلال احتجاجات عطلة نهاية الأسبوع، من دون أن يُنسب الرقم إلى بيان للوزارة صدر الأحد.",
+      "verified": {
+        "at": "2026-10-27T14:49:12.801Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
     }
   }
 }

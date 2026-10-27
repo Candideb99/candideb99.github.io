@@ -1,0 +1,184 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-27T14:40:56.060Z",
+  "durationSec": 565,
+  "read": 4,
+  "corrected": 4,
+  "report": [
+    {
+      "slug": "bahri-contract-three-crude-tankers-saudi-9dd9dc",
+      "title": "«البحري» توقع عقداً بـ1.7 مليار ريال لبناء 3 ناقلات نفط عملاقة في السعودية",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 24,
+        "checked": 24,
+        "supported": 21,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "internal",
+          "sentence": "وبلغت الزيادة 22% على أساس سنوي، بعدما أضافت الشركة 11 ناقلة جديدة واستبعدت ناقلة واحدة.",
+          "quote": "ورفعت «البحري» العام الماضي أسطولها من ناقلات النفط الخام العملاقة، المعروفة اختصاراً بـVLCC، بأسرع وتيرة في 11 عاماً، لتمتلك 50 ناقلة عملاقة بنهاية العام.",
+          "source": "the story itself",
+          "correction": "Reaching 50 VLCCs after adding 11 and removing one means a net gain of 10 from 40, a 25% increase, not 22%."
+        }
+      ]
+    },
+    {
+      "slug": "aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210",
+      "title": "مصادر: أرامكو تأمر من بقي من موظفي مقرها في الظهران بالعمل عن بعد",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 34,
+        "checked": 34,
+        "supported": 19,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 10,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 3,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "attribution",
+          "sentence": "أصدرت أرامكو السعودية تعليمات بإخلاء مقرها الرئيسي في الظهران والعمل عن بعد، بحسب ستة أشخاص مطلعين نقلت عنهم رويترز، دون ذكر سبب محدد، غداة هجومين قتلا أربعة أشخاص في المنطقة الشرقية.",
+          "quote": "ولم يُذكر سبب محدد للإخلاء، بحسب المصادر. وكانت رويترز قد نقلت عن ستة أشخاص مطلعين صدور تعليمات بالإخلاء والعمل عن بُعد، مشيرة إلى أن الشركة لم تردّ فوراً على طلب التعليق.",
+          "source": "BBC Arabic",
+          "correction": "The statement that no specific reason was given comes from the two sources cited by AFP; Reuters' six sources are cited only for the evacuation and remote-work instructions."
+        }
+      ]
+    },
+    {
+      "slug": "saudi-utility-tariffs-monthly-support-2027-748f63",
+      "title": "السعودية تقر دعماً شهرياً بـ500 ريال لتخفيف أثر رفع تعريفتي الكهرباء والمياه",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 34,
+        "checked": 34,
+        "supported": 21,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 11,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "period",
+          "sentence": "ويبدأ صرفه للعسكريين من ضباط وأفراد مع بدء تطبيق التعريفة الجديدة في 1 يناير 2027.",
+          "quote": "The measures, reported by the Saudi Press Agency on Sunday, will take effect ahead of tariff changes scheduled for January 1.",
+          "source": "The National",
+          "correction": "The National reports the support measures take effect ahead of the 1 January tariff changes, not at the same time."
+        }
+      ]
+    },
+    {
+      "slug": "french-bond-yields-jump-after-protests-1b64ee",
+      "title": "عائد سندات فرنسا يقفز بأكثر من 10 نقاط أساس مع تعمّق المخاوف من العجز",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 42,
+        "checked": 42,
+        "supported": 23,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 7,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 7,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "attribution",
+          "sentence": "قالت وزارة الداخلية الفرنسية الأحد إن نحو 2400 شخص اعتُقلوا، بعد عنف اندلع عقب أسابيع من تظاهرات سلمية بشأن أوضاع المدارس وتكاليف المعيشة.",
+          "quote": "France protests escalate with riots, looting and 2,400 arrests - The Latest",
+          "source": "The Guardian",
+          "correction": "The sources report about 2,400 arrests themselves and do not attribute the figure to a Sunday statement by the Interior Ministry."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 8,
+    "failures": 0,
+    "promptTokens": 108255,
+    "completionTokens": 73096,
+    "cacheReadTokens": 40432,
+    "costUsd": 2.0125,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 8
+    },
+    "correctionsEditorCalls": 4
+  },
+  "log": [
+    "[14:40:56] second look: 4 to read now (1 published pieces not yet read; 136 read clean before publication and left out of the audit sample)",
+    "[14:40:57] aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210:   source https://www.ft.com/content/f39aa4d2-e290-451f-ae91-b19138b6172f?syn-25a6b1a6=1: http-403",
+    "[14:40:58] aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210:   source https://www.agbi.com/oil-and-gas/2026/10/oil-rises-further-after-dammam-airport-: subscribers-only; read from the copy saved at publication (fetched 2026-10-22T21:44:16.978Z)",
+    "[14:41:47] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1529 attempt=1 ms=48654",
+    "[14:41:47] bahri-contract-three-crude-tankers-saudi-9dd9dc: 24 of 24 sentences checked · 21 supported · 1 without a source · 1 confirmed error(s)",
+    "[14:41:47]   ✗ [internal] وبلغت الزيادة 22% على أساس سنوي، بعدما أضافت الشركة 11 ناقلة جديدة واستبعدت ناقلة واحدة. — Reaching 50 VLCCs after adding 11 and removing one means a net gain of 10 from 40, a 25% increase, not 22%.",
+    "[14:42:07] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3794 attempt=1 ms=67976",
+    "[14:42:07] aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210: 34 of 34 sentences checked · 19 supported · 10 without a source · 1 confirmed error(s) · 3 listed for a person",
+    "[14:42:07]   ✗ [attribution] أصدرت أرامكو السعودية تعليمات بإخلاء مقرها الرئيسي في الظهران والعمل عن بعد، بحسب ستة أشخاص مطلعين نقلت عنهم ر — The statement that no specific reason was given comes from the two sources cited by AFP; Reuters' six sources are cited only for the evacuation and remote-work ",
+    "[14:43:15] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2622 attempt=1 ms=66636",
+    "[14:43:15] saudi-utility-tariffs-monthly-support-2027-748f63: 34 of 34 sentences checked · 21 supported · 11 without a source · 1 confirmed error(s)",
+    "[14:43:15]   ✗ [period] ويبدأ صرفه للعسكريين من ضباط وأفراد مع بدء تطبيق التعريفة الجديدة في 1 يناير 2027. — The National reports the support measures take effect ahead of the 1 January tariff changes, not at the same time.",
+    "[14:43:23] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=5232 attempt=1 ms=90366",
+    "[14:43:23] french-bond-yields-jump-after-protests-1b64ee: 42 of 42 sentences checked · 23 supported · 7 without a source · 1 confirmed error(s) · 9 listed for a person",
+    "[14:43:23]   ✗ [attribution] قالت وزارة الداخلية الفرنسية الأحد إن نحو 2400 شخص اعتُقلوا، بعد عنف اندلع عقب أسابيع من تظاهرات سلمية بشأن أو — The sources report about 2,400 arrests themselves and do not attribute the figure to a Sunday statement by the Interior Ministry.",
+    "[14:43:23] corrections: 4 stories to the corrections editor",
+    "[14:43:23] [correct] bahri-contract-three-crude-tankers-saudi-9dd9dc: fetching 2 source(s)",
+    "[14:43:49] [correct] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1008 attempt=1 ms=24908",
+    "[14:43:49] [correct] bahri-contract-three-crude-tankers-saudi-9dd9dc: corrected; fields body",
+    "[14:43:49]     note: ذكرت نسخة سابقة من هذا الخبر أن أسطول «البحري» من ناقلات النفط العملاقة زاد 22% على أساس سنوي العام الماضي، وهي نسبة لا تتسق مع إضافة 11 ناقلة واستبعاد واحدة للوصول إلى 50 ناقلة. وقد حُذفت النسبة، والصحيح الثابت أن الشركة أضافت 11 ناقلة جديدة واستبعدت ناقلة واحدة لتمتلك 50 ناقلة بنهاية العام.",
+    "[14:43:49] [correct] aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210: fetching 5 source(s)",
+    "[14:43:49] [correct]   source https://www.ft.com/content/f39aa4d2-e290-451f-ae91-b19138b6172f?syn-25: http-403",
+    "[14:43:50] [correct]   source https://www.agbi.com/oil-and-gas/2026/10/oil-rises-further-after-damma: subscribers-only; read from the copy saved at publication",
+    "[14:44:18] [correct] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=670 attempt=1 ms=27075",
+    "[14:44:18] [correct] aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210: corrected; fields lede, body",
+    "[14:44:18]     note: ذكرت نسخة سابقة من هذا الخبر أن الأشخاص الستة الذين نقلت عنهم رويترز أفادوا بعدم ذكر سبب محدد لإخلاء مقر أرامكو في الظهران، والصحيح أن هذه المعلومة وردت عن مصدرين مطلعين نقلت عنهما وكالة فرانس برس. أما رويترز فنقلت عن الأشخاص الستة صدور تعليمات الإخلاء والعمل عن بعد فقط.",
+    "[14:44:18] [correct] saudi-utility-tariffs-monthly-support-2027-748f63: fetching 4 source(s)",
+    "[14:44:56] [correct] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1115 attempt=1 ms=35845",
+    "[14:44:56] [correct] saudi-utility-tariffs-monthly-support-2027-748f63: corrected; fields body",
+    "[14:44:56]     note: ذكرت نسخة سابقة من هذا الخبر أن صرف الدعم للعسكريين من ضباط وأفراد يبدأ مع بدء تطبيق التعريفة الجديدة في 1 يناير 2027، والصحيح أن الدعم يسري قبل بدء تطبيق التعريفات الجديدة في ذلك التاريخ.",
+    "[14:44:56] [correct] french-bond-yields-jump-after-protests-1b64ee: fetching 5 source(s)",
+    "[14:45:31] [correct] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=822 attempt=1 ms=33038",
+    "[14:45:31] [correct] french-bond-yields-jump-after-protests-1b64ee: corrected; fields body",
+    "[14:45:31]     note: ذكرت نسخة سابقة من هذا الخبر أن وزارة الداخلية الفرنسية أعلنت الأحد اعتقال نحو 2400 شخص، والصحيح أن نحو 2400 شخص اعتُقلوا خلال احتجاجات عطلة نهاية الأسبوع، من دون أن يُنسب الرقم إلى بيان للوزارة صدر الأحد.",
+    "[14:45:31] [correct] done: 4 corrected, 0 stand, 0 refused or failed; report pipeline\\runs\\corrections-2026-10-27T14-43-23-115Z.json",
+    "[14:45:32] aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210:   source https://www.ft.com/content/f39aa4d2-e290-451f-ae91-b19138b6172f?syn-25a6b1a6=1: http-403",
+    "[14:45:32] aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210:   source https://www.agbi.com/oil-and-gas/2026/10/oil-rises-further-after-dammam-airport-: subscribers-only; read from the copy saved at publication (fetched 2026-10-22T21:44:16.978Z)",
+    "[14:46:46] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=4841 attempt=1 ms=73349",
+    "[14:46:46] aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210: the correction reads clean where it wrote",
+    "[14:47:40] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2264 attempt=1 ms=52758",
+    "[14:47:40] bahri-contract-three-crude-tankers-saudi-9dd9dc: the correction reads clean where it wrote",
+    "[14:49:12] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=5371 attempt=1 ms=89625",
+    "[14:49:12] french-bond-yields-jump-after-protests-1b64ee: the correction reads clean where it wrote",
+    "[14:50:21] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2891 attempt=1 ms=67087",
+    "[14:50:21] saudi-utility-tariffs-monthly-support-2027-748f63: the correction reads clean where it wrote"
+  ]
+}
