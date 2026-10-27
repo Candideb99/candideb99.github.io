@@ -5,7 +5,6 @@ import { jsonrepair } from "jsonrepair";
 import "./env.mjs";
 import { USER_AGENT, fetchWithTimeout, sleep } from "./util.mjs";
 import { runSubscription } from "./codex-pool.mjs";
-import { claudeEffort } from "./claude-effort.mjs";
 
 /**
  * Khazendar multi-provider LLM module.
@@ -166,11 +165,13 @@ function claudeCliEnv() {
   return env;
 }
 
-async function callClaudeCli({ model, system, user, images = [], timeoutMs }) {
+async function callClaudeCli({ model, system, user, images = [], timeoutMs, effort }) {
   const { spawn } = await import("node:child_process");
   const cliModel = model || process.env.KHAZENDAR_CLAUDE_MODEL || CLAUDE_MODEL;
   const seeing = images.length > 0;
-  const args = ["-p", "--output-format", seeing ? "stream-json" : "json", ...(seeing ? ["--input-format", "stream-json", "--verbose"] : []), "--tools", "", "--no-session-persistence", "--setting-sources", "", "--model", cliModel, "--effort", claudeEffort()];
+  // `effort`: only a caller that asks for one gets it (the picture desk, lib/claude-effort.mjs); every other call runs at the
+  // subscription's default, as all did until 2026-10-27.
+  const args = ["-p", "--output-format", seeing ? "stream-json" : "json", ...(seeing ? ["--input-format", "stream-json", "--verbose"] : []), "--tools", "", "--no-session-persistence", "--setting-sources", "", "--model", cliModel, ...(effort ? ["--effort", effort] : [])];
   // A long system prompt goes through a file: Windows caps a whole command line at 32,767 characters, and the house
   // style alone had reached 32,188 when the paper writer's own preamble took it over (2026-10-23: "spawn ENAMETOOLONG"
   // on every try; the analysis and «في العمق» writers sat as close). The file is the CLI's own --system-prompt-file.
@@ -245,7 +246,7 @@ async function callClaudeCli({ model, system, user, images = [], timeoutMs }) {
   usage.costUsd = Number((usage.costUsd + (Number(payload.total_cost_usd) || 0)).toFixed(4));
   const answered = Object.keys(payload.modelUsage ?? {})[0] ?? cliModel;
   usage.byModel[`claude-cli/${answered}`] = (usage.byModel[`claude-cli/${answered}`] ?? 0) + 1;
-  return { content: String(payload.result ?? ""), ms: Date.now() - started, usage: { completion_tokens: used.output_tokens }, model: `claude-cli/${answered}`, effort: claudeEffort(), thinking: used.output_tokens_details?.thinking_tokens };
+  return { content: String(payload.result ?? ""), ms: Date.now() - started, usage: { completion_tokens: used.output_tokens }, model: `claude-cli/${answered}`, effort: effort || "default", thinking: used.output_tokens_details?.thinking_tokens };
 }
 
 async function callClaudeApi({ model, system, user, images = [], timeoutMs, temperature, maxTokens }) {
@@ -699,7 +700,7 @@ const ATTEMPTS = 3;
  * Runs one model call through the active provider (Gemini by default; Claude, OpenAI, Qwen in idle mode).
  * `validate(data)` may throw to reject a parsed answer, which is retried up to three times.
  */
-export async function chat({ role, system, user, images = [], json = true, validate, temperature, maxTokens, timeoutMs = 240000, log = () => {} }) {
+export async function chat({ role, system, user, images = [], json = true, validate, temperature, maxTokens, timeoutMs = 240000, effort, log = () => {} }) {
   const provider = getActiveProvider();
   const modelName = getActiveModel(provider);
   const errors = [];
@@ -709,7 +710,7 @@ export async function chat({ role, system, user, images = [], json = true, valid
     try {
       const told = attempt > 1 && refusal ? `\n\nYour previous answer was refused: ${refusal}. Correct exactly that in this answer.` : "";
       const nudge = attempt > 1 && json ? "\n\nIMPORTANT: Reply with ONE valid JSON value only. No prose, no markdown fences, no comments." : "";
-      const result = await dispatchCall({ system, user: user + told + nudge, images, timeoutMs, temperature, maxTokens, json });
+      const result = await dispatchCall({ system, user: user + told + nudge, images, timeoutMs, temperature, maxTokens, json, effort });
       let data = result.content;
       try {
         if (json) data = parseJsonLoose(result.content);

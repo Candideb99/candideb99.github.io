@@ -4,6 +4,7 @@ import path from "node:path";
 import { attributionLine, searchCommons, searchCommonsCategory } from "./commons.mjs";
 import { searchLibraries, noteUse } from "./photolibs.mjs";
 import { chat } from "./llm.mjs";
+import { claudeEffort } from "./claude-effort.mjs";
 // The house spellings the copy desk keeps («أمريكي»، «ترامب») hold under photographs too.
 import { fixNames } from "./copydesk.mjs";
 import { USER_AGENT, fetchWithTimeout } from "./util.mjs";
@@ -15,7 +16,8 @@ import { photoKey } from "./photo-key.mjs";
  * failures injected, and no Claude call (2026-09-28, the owner: "i think you have to further stress test it more").
  * Nothing else swaps them.
  */
-const outside = { chat, searchCommons, searchCommonsCategory, searchLibraries, noteUse, inlineImage, fetchHandout: (...a) => fetchHandout(...a), saveHandout: (...a) => saveHandout(...a) };
+// Every call of the picture desk thinks at the owner's chosen effort (lib/claude-effort.mjs); the newsroom's other calls do not.
+const outside = { chat: (options) => chat({ effort: claudeEffort(), ...options }), searchCommons, searchCommonsCategory, searchLibraries, noteUse, inlineImage, fetchHandout: (...a) => fetchHandout(...a), saveHandout: (...a) => saveHandout(...a) };
 export function withStandIns(standIns) {
   const saved = { ...outside };
   Object.assign(outside, standIns);

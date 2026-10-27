@@ -1080,7 +1080,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
         </select>
       </label>
 
-      <label id="effortRow"><span>How hard Claude thinks (effort)</span>
+      <label id="effortRow"><span>How hard Claude thinks when it chooses photographs (effort; writing runs at Claude's default, since at Extra the writer outran its time limit)</span>
         <select id="claudeEffort">
           <option value="low">Low</option>
           <option value="medium">Medium</option>
