@@ -5,6 +5,7 @@ import { jsonrepair } from "jsonrepair";
 import "./env.mjs";
 import { USER_AGENT, fetchWithTimeout, sleep } from "./util.mjs";
 import { runSubscription } from "./codex-pool.mjs";
+import { CLAUDE_EFFORTS } from "./claude-effort.mjs";
 
 /**
  * Khazendar multi-provider LLM module.
@@ -703,6 +704,14 @@ const ATTEMPTS = 3;
 export async function chat({ role, system, user, images = [], json = true, validate, temperature, maxTokens, timeoutMs = 240000, effort, log = () => {} }) {
   const provider = getActiveProvider();
   const modelName = getActiveModel(provider);
+  // KHAZENDAR_WRITING_EFFORT: the effort of every call that asks for none of its own (writing, the desk, the critic, the
+  // fact-check); unset, they run at the subscription's default. A higher effort thinks longer and is given longer: at Extra
+  // the writer thought past its four-minute timeout on every try (2026-10-27). Set for the blind test of that day only.
+  const writing = !effort && CLAUDE_EFFORTS.includes(process.env.KHAZENDAR_WRITING_EFFORT) ? process.env.KHAZENDAR_WRITING_EFFORT : null;
+  if (writing) {
+    effort = writing;
+    timeoutMs *= { high: 2, xhigh: 4, max: 6 }[writing] ?? 1;
+  }
   const errors = [];
   let refusal = "";
   for (let attempt = 1; attempt <= ATTEMPTS; attempt += 1) {
