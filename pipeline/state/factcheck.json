@@ -12629,6 +12629,80 @@
         }
       ],
       "outcome": "clean"
+    },
+    "pakistan-raises-key-rate-to-12-percent-8e0b9f": {
+      "at": "2026-10-27T07:46:15.956Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v37",
+      "checker": "7bb3653e29",
+      "publishedAt": "2026-10-27T00:54:36.627Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "fromCopy": 1,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 26,
+        "checked": 26,
+        "supported": 23,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "ويُقصد بآثار الجولة الثانية انتقال ارتفاع كلفة الطاقة إلى بقية الأسعار في الاقتصاد."
+      ],
+      "weak": [
+        {
+          "sentence": "المحافظ يتوقع أن تستغرق عودة التضخم إلى النطاق المستهدف البالغ 5-7% وقتاً أطول من المخطط له",
+          "quote": "SBP Governor Jameel Ahmad said it would take longer than planned for inflation to get within the target range and revised GDP growth to 3.7% for the current fiscal year ending June 30, 2027."
+        },
+        {
+          "sentence": "أما عودة التضخم إلى نطاق 5-7% فتبقى مرهونة بمدة بقاء أسعار الطاقة مرتفعة، ويتحمل التعافي الاقتصادي في الأثناء كلفة اقتراض أعلى.",
+          "quote": "Higher borrowing costs constrain Pakistan's economic recovery as it faces the impact of elevated energy prices on its import bill and domestic costs."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "taqa-prices-dual-tranche-bonds-oversubscribed-a32e1a": {
+      "at": "2026-10-27T07:46:15.925Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v37",
+      "checker": "7bb3653e29",
+      "publishedAt": "2026-10-27T01:14:55.557Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 30,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "تقول الشركة إن الشريحتين تدعمان «استراتيجية طاقة 2030» للنمو المستدام والمربح، التي استثمرت المجموعة بموجبها ما يقرب من 10 مليارات دولار في مشاريع تحول الطاقة بين 2021 و2025."
+      ],
+      "weak": [],
+      "outcome": "clean"
     }
   }
 }

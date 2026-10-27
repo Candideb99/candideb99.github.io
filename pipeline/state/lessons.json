@@ -212,10 +212,11 @@
     "ras-al-khaimah-closes-beaches-oil-spill-8c2ef2:9728acd8",
     "saudi-utility-tariffs-monthly-support-2027-748f63:07d9ec5d",
     "saudi-utility-tariffs-monthly-support-2027-748f63:29472625",
-    "riyadh-airport-partial-reopening-houthi-missile-attacks-fe5c08:32216bd5"
+    "riyadh-airport-partial-reopening-houthi-missile-attacks-fe5c08:32216bd5",
+    "taqa-prices-dual-tranche-bonds-oversubscribed-a32e1a:4593dc74"
   ],
-  "version": 37,
-  "updatedAt": "2026-10-25T23:20:34.966Z",
+  "version": 38,
+  "updatedAt": "2026-10-27T07:48:05.689Z",
   "lessons": [
     {
       "id": "L1",
@@ -329,11 +330,12 @@
         "trump-expands-trade-war-canada-import-ban-6088a2:2013a382",
         "egypt-ai-data-center-nvidia-billion-dollar-b0fc50:9cb6a47d",
         "banque-du-caire-share-offering-launch-f9a4ac:646d95c3",
-        "ras-al-khaimah-closes-beaches-oil-spill-8c2ef2:9728acd8"
+        "ras-al-khaimah-closes-beaches-oil-spill-8c2ef2:9728acd8",
+        "taqa-prices-dual-tranche-bonds-oversubscribed-a32e1a:4593dc74"
       ],
-      "seen": 46,
+      "seen": 47,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-10-25T11:41:46.650Z",
+      "lastSeen": "2026-10-27T07:48:05.689Z",
       "status": "active",
       "previous": [
         "Credit each fact to whom the source credits; the outlet's own reporting is never 'informed sources', an official statement or analyst data. Name the originating outlet. Never make a reported line a quote, a private notice an announcement, or a reply the decree's aim.",
@@ -431,11 +433,12 @@
         "microsoft-exits-nscale-essex-datacentre-power-ce50c6:b9cc2c69",
         "france-secures-gulf-diesel-supplies-a5bb1f:ede0a439",
         "saudi-utility-tariffs-monthly-support-2027-748f63:07d9ec5d",
-        "saudi-utility-tariffs-monthly-support-2027-748f63:29472625"
+        "saudi-utility-tariffs-monthly-support-2027-748f63:29472625",
+        "taqa-prices-dual-tranche-bonds-oversubscribed-a32e1a:4593dc74"
       ],
-      "seen": 36,
+      "seen": 37,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-10-25T20:57:25.422Z",
+      "lastSeen": "2026-10-27T07:48:05.689Z",
       "status": "active",
       "previous": [
         "Keep a figure or claim tied to the exact item, place, day and instrument the source names. 'The stock market' is not global markets, one day's flow is not a daily rate, and diesel is not all fuel. An official does only what the source assigns.",
@@ -1028,6 +1031,14 @@
       "mistakes": 1,
       "applied": [
         "reinforce L6 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-10-27T07:48:05.689Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L4 (+1; reworded at most once a week)",
+        "reinforce L2 (+1)"
       ]
     }
   ],

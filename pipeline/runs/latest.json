@@ -1,553 +1,75 @@
 {
   "mode": "news",
-  "startedAt": "2026-10-27T00:32:59.713Z",
-  "durationSec": 2516,
-  "published": 4,
+  "startedAt": "2026-10-27T07:48:18.258Z",
+  "durationSec": 2768,
+  "published": 0,
   "refreshed": 0,
   "report": [
     {
-      "headline": "الغاز الأوروبي يتجاوز 97 يورو للميغاواط/ساعة لأول مرة منذ 2022",
-      "section": "energy",
-      "importance": 7,
-      "sources": [
-        "https://www.dailysabah.com/business/energy/european-gas-prices-hit-nearly-110-per-mwh-highest-since-2022",
-        "https://www.aa.com.tr/en/economy/eu-gas-prices-hit-highest-level-since-2022/4100911",
-        "https://www.skynewsarabia.com/business/1900647-%D8%A3%D8%B3%D8%B9%D8%A7%D8%B1-%D8%A7%D9%84%D8%BA%D8%A7%D8%B2-%D8%A7%D9%84%D8%A3%D9%88%D8%B1%D9%88%D8%A8%D9%8A-%D8%AA%D8%AA%D8%AC%D8%A7%D9%88%D8%B2-97-%D9%8A%D9%88%D8%B1%D9%88-%D9%84%D8%A3%D9%88%D9%84-%D9%85%D8%B1%D8%A9-2022"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "العنوان والمقدمة يحددان ما تغيّر بوضوح: أعلى سعر منذ أواخر 2022، ويبقى السعر دون ذروة 300 يورو. لكن العنوان الفرعي يقول «تضاعف أكثر من ثلاث مرات» بصيغة ملتبسة، ويحذف «نحو» من نسبة الـ80%.",
-              "repair": "«زاد إلى أكثر من ثلاثة أمثاله منذ بداية العام مع تراجع تدفقات الغاز المسال من الخليج نحو 80%»."
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "يقدم التقرير المقارنة مع ذروة 2022 وآلية الاعتماد على الواردات البحرية وتأخر انتقال الأسعار عبر العقود. لكنه يغفل تراجع واردات الغاز المسال في أكتوبر عن العام الماضي (SOURCE 3)، وهي المعلومة التي تشرح عجز المخازن. ومقدمات صندوق «لماذا يهمّ» مسندة: المخزون دون المتوسط، وفقدان معظم الشحنات الخليجية، والمنافسة الآسيوية، وتأخر الانتقال إلى الفواتير. غير أن عبارة «الجزء الأكبر» تتجاوز ما تسنده هذه المقدمات.",
-              "repair": "إضافة معلومة واردات أكتوبر إلى فقرة التخزين، وجعل خلاصة الصندوق مشروطة: قد لا تظهر الكلفة كاملة في الفواتير إلا لاحقاً."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "الفقرات مجمّعة حسب وظيفتها: السعر في سياقه، ثم الحرب والإمدادات، ثم الطقس والتنافس، ثم التخزين، ثم الكهرباء والفواتير، ثم المخاطر الاقتصادية. الخلل في عبارة «وبدأ أثر الغلاء يظهر» التي تصطدم بالجملة التي تليها عن بطء انتقال الأسعار. ويضيف الصندوق استنتاجاً عن ضرورة مواصلة الشراء من سوق شحيحة، لا مجرد تكرار.",
-              "repair": "إعادة ترتيب الفقرة الخامسة لتبدأ بآلية العقود ثم تذكر رقم الـ22% مع مدته الزمنية."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "المعادل الدولاري 110.54 يخص نحو 100 يورو لا 97.64 يورو (SOURCE 1). وكلمة «قليلاً» مضافة إلى «أكثر من 61%». ووظيفة GIE غير مذكورة في المصادر. أما اختيار 97.64 يورو ونسبة «نحو 3%» فمتسق مع SOURCE 1.",
-              "repair": "حذف المعادل الدولاري أو استبدال تقدير الأناضول به (نحو 109 دولارات لـ97 يورو)، وكتابة «تتجاوز 61%»، وحذف الوصف الوظيفي لـGIE."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "publish",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يذكر العنوان والمقدمة ما تغيّر: أعلى سعر منذ أواخر 2022 عند 97.64 يورو، بارتفاع نحو 3% عن الجمعة (SOURCE 1). ويوضح الجسم ما بقي على حاله: السعر لا يزال أدنى بكثير من ذروة تجاوزت 300 يورو عند بداية حرب أوكرانيا. وصار العنوان الفرعي دقيقاً: «زاد إلى أكثر من ثلاثة أمثاله» و«بنحو 80%». ولا تناقض بين رقم 97 في العنوان ورقم 97.64 في المقدمة.",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "يشرح التقرير المحرّك، وهو حرب إيران وتوقف الملاحة فعلياً في هرمز وتراجع تدفقات الخليج نحو 80% (SOURCE 1). ويشرح آلية حساسية أوروبا، وهي اعتمادها المتزايد على الواردات البحرية منذ 2022 (SOURCE 3). ويضيف طلب التدفئة منسوباً إلى «بلومبرغ نيوز»، ثم التخزين مع المقارنة الألمانية السنوية، ثم واردات أكتوبر التي جاءت دون مستوى العام الماضي وقد أُضيفت كما طُلب. وأما ذكر SOURCE 3 أن المخزون الأوروبي هو الأدنى لهذه الفترة منذ 2009 فمصدره «البيانات المتداولة في الأسواق» دون جهة محددة، والاكتفاء برقم GIE مقارنةً بالمتوسطات الموسمية خيار سليم. ومقدمات الصندوق كلها مسندة: المخزون دون المتوسط، وفقدان معظم الشحنات الخليجية، والمنافسة الآسيوية، وتأخر انتقال الأسعار عبر العقود. والاستنتاج منها مشروط: «قد يتوقف»، «قد لا تظهر كاملةً».",
-              "repair": ""
-            },
-            "flow": {
-              "status": "clear",
-              "evidence": "لكل فقرة وظيفة واحدة، وتسير بالترتيب: السعر في سياقه التاريخي، ثم الحرب والإمدادات، ثم الطقس والتنافس، ثم التخزين والواردات، ثم امتداد الصعود إلى الكهرباء، ثم بطء انتقال الأسعار إلى الأسر مع رقم بادن-فورتمبيرغ، ثم المخاطر على النمو والتضخم. زال التعارض السابق في عبارة «بدأ أثر الغلاء يظهر»، إذ تبدأ الفقرة الآن بآلية العقود ثم تأتي «ومع ذلك» برقم الـ22%. ويضيف الصندوق استنتاجاً عن اضطرار أوروبا إلى الشراء من سوق شحيحة، ولا يكرر خاتمة الجسم.",
-              "repair": ""
-            },
-            "precision": {
-              "status": "clear",
-              "evidence": "حُذف المعادل الدولاري الخاطئ. وصار وصف المخزون الألماني «تتجاوز 61%» بلا «قليلاً». وحُذف الوصف الوظيفي غير المسند لـGIE. ونُسب رقم الـ22% إلى «فيريفوكس» مع مدته الزمنية (اثنا عشر شهراً). وجاء أثر التضخم بصيغة احتمال «قد يزيد» كما في SOURCE 3. وتطابق جدول الحقائق الرئيسية مع المصادر في الكيان والوحدة والفترة.",
-              "repair": ""
-            }
-          }
-        }
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "نسبة امتلاء مخازن الغاز في الاتحاد الأوروبي 74.6% وهي أدنى بكثير من المتوسطات الموسمية التاريخية",
-          "source": 1
-        },
-        {
-          "fact": "تدفقات الغاز المسال من الخليج تراجعت نحو 80% سنوياً مع توقف الملاحة فعلياً في مضيق هرمز",
-          "source": 1
-        },
-        {
-          "fact": "شح الإمدادات العالمية يفتح المجال لتنافس بين المشترين الأوروبيين والآسيويين على شحنات الغاز المسال، وتوقعات الطلب على التدفئة دفعت الأسعار إلى الصعود",
-          "source": 3
-        },
-        {
-          "fact": "إمدادات الغاز تُدار عادة بعقود طويلة الأجل فيستغرق وصول ارتفاع الأسعار إلى الأسر وقتاً",
-          "source": 1
-        }
-      ],
-      "slug": "european-gas-prices-highest-since-2022-868625",
-      "title": "الغاز الأوروبي يتجاوز 97 يورو للميغاواط/ساعة لأول مرة منذ 2022",
-      "score": 9,
-      "image": "photo"
+      "headline": "تغطية طرح «دي آي بي القابضة» البالغ 543 مليون دولار في دبي خلال دقائق",
+      "section": "markets",
+      "outcome": "error: Model (claude/claude-opus-5-5) failed for role writer:"
     },
     {
-      "headline": "باكستان ترفع الفائدة إلى 12% مع ضغط أسعار الطاقة على التضخم",
+      "headline": "أرباح الصناعة الصينية تسجل أسرع نمو في 3 أشهر بدعم الذكاء الاصطناعي وأسعار الطاقة",
       "section": "economy",
-      "importance": 7,
-      "sources": [
-        "https://aawsat.com/node/5333793",
-        "https://www.bloomberg.com/news/articles/2026-10-26/pakistan-hikes-interest-rate-to-curb-inflation-risks",
-        "https://www.gulf-times.com/article/736753/business/pakistan-raises-key-rate-to-12-as-gulf-conflict-stokes-inflation-risks"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان والتمهيد والافتتاحية تبيّن ما تغيّر: رفع الفائدة 50 نقطة أساس إلى 12%، وهو أول رفع منذ أبريل وينهي ثلاثة قرارات تثبيت متتالية. وتبيّن أيضاً ما لم يتغير: بقاء التضخم فوق المستهدف، ومخاطرة القرار بإبطاء النمو بحسب بلومبرغ. ولم يُستخدم المصدر 1، وموضوعه البرازيل رغم أن عنوانه يتحدث عن باكستان، وهذا صحيح.",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "يقدم التقرير السياق من المصادر: دافع القرار وهو كلفة الطاقة بسبب الصراع (المصدر 3)، وسابقة رفع أبريل بمقدار 100 نقطة أساس، والقيد على التعافي، ودعوة صندوق النقد واتفاق 7 أكتوبر. ويشرح «آثار الجولة الثانية» اعتماداً على ما يذكره المصدر عن انتشار الضغوط السعرية في الاقتصاد. أما صندوق «لماذا يهمّ» فينطلق من مقدمات ثابتة: صدمة طاقة خارجية، وهدف منع انتقالها إلى بقية الأسعار، وتأخر العودة إلى النطاق، وتقييد التعافي. ويستنتج منها استنتاجاً محدوداً معقولاً هو أن الفائدة لا تعالج مصدر الصدمة وأن العودة إلى النطاق مرهونة بمدة بقاء أسعار الطاقة مرتفعة، مع التصريح بالكلفة على التعافي.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "الفقرات مجمّعة جيداً حسب وظائفها في معظمها، لكن فقرة صندوق النقد التي تبدأ بـ«في المقابل» موضوعة تحت عنوان «كلفة التشديد على التعافي» مع أنها تؤيد التشديد. كما أن عبارة «ويعني ذلك...» تقطع العرض المنسوب باستنتاج من المحرر.",
-              "repair": "تُنقل دعوة صندوق النقد إلى فقرة دوافع القرار من دون «في المقابل»، ويُختم التقرير باتفاق الخبراء المشروط بموافقة المجلس التنفيذي، وتُحذف جملة «ويعني ذلك...»."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الأرقام والتواريخ مطابقة للمصادر: 12%، و50 و100 نقطة أساس، و10.3% و11.1%، و5-7%، و3.7%، و30 يونيو 2027، و7 أكتوبر، و1.21 مليار دولار مع شرط موافقة المجلس التنفيذي. لكن عبارة «بأكثر من ثلاث نقاط مئوية» حساب مضاف لا يذكره المصدر، وعبارة «دون تغيير يُذكر» توحي بتناقض مع «عدّل توقع نمو الناتج المحلي الإجمالي إلى 3.7%».",
-              "repair": "يُحذف الفارق المحسوب ويُذكر النطاق المستهدف وحده، ويُجمع موقف البيان وتقدير المحافظ للنمو في جملة واحدة تنسب كلاً منهما إلى قائله."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان والمقدمة يحددان التغيير بوضوح: رفع الفائدة 50 نقطة أساس إلى 12%، وهو أول زيادة منذ أبريل، والسبب كلفة الطاقة المرتبطة بالصراع. والعنوان الفرعي يضيف القيد الأهم: عودة التضخم إلى النطاق 5-7% ستتأخر. والمادة البرازيلية في المصدر 1، المنشورة خطأً تحت عنوان باكستاني، لم يُستعمل منها شيء.",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "دافع القرار حاضر في التقرير: بيان اللجنة عن أسعار الطاقة وأهدافها الثلاثة، مع شرح موجز لآثار الجولة الثانية يوافق عبارة المصدر 3 عن انتشار الضغوط السعرية في الاقتصاد. وكذلك المقارنة بزيادة أبريل وفترة التثبيت، ودعوة صندوق النقد في موضعها بين الدوافع. وصندوق «لماذا يهمّ» يبني على مقدمات مسندة، هي الصدمة الخارجية وهدف منع انتقال الكلفة وتأخر عودة التضخم، ليخلص إلى استنتاج محدود: الفائدة لا تعالج مصدر الصدمة، والتعافي يتحمل كلفة الاقتراض.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "الفقرات مجمّعة حسب وظائفها: الدافع، ثم التضخم والتوقعات، ثم الخلفية، ثم التمويل خطوةً تالية. لكن «لكن المحافظ عدّل توقع نمو الناتج...» تخلق تعارضاً ظاهراً يربك القارئ ولا يشرحه المصدر 3.",
-              "repair": "استبدال «لكن المحافظ عدّل» بـ«فيما قدّر المحافظ» للربط بين الجملتين من دون إيحاء بالتناقض."
-            },
-            "precision": {
-              "status": "clear",
-              "evidence": "الأرقام مطابقة للمصدرين: 12% و50 و100 نقطة أساس و10.3% و11.1% و5-7% و3.7% و30 يونيو 2027 و7 أكتوبر و1.21 مليار دولار. وشرط موافقة المجلس التنفيذي محفوظ، وفعل «قد يتيح» يبقي الصرف احتمالاً. وحُذف الفارق المحسوب الذي أُشير إليه سابقاً.",
-              "repair": ""
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 2,
-      "mendIssues": [
-        "لم تُحل الملاحظة 3 السابقة كلها. صارت الجملتان في موضع واحد مع نسبة كل منهما إلى قائلها، لكن عبارة «ووصف بيان اللجنة توقعات الحساب الخارجي والنمو بأنها بقيت دون تغيير كبير في مجملها، لكن المحافظ عدّل توقع نمو الناتج المحلي الإجمالي إلى 3.7%» ما زالت تقدّم الأمرين على أنهما متعارضان. فالمصدر 3 ينقلهما معاً، ولا يذكر اتجاه التعديل ولا يجعل بينهما تعارضاً. الإصلاح: «ووصف بيان اللجنة توقعات الحساب الخارجي والنمو بأنها لم تتغير كثيراً في مجملها، فيما قدّر المحافظ نمو الناتج المحلي الإجمالي بـ3.7% للسنة المالية الحالية التي تنتهي في 30 يونيو 2027».",
-        "الفقرات مجمّعة حسب وظائفها: الدافع، ثم التضخم والتوقعات، ثم الخلفية، ثم التمويل خطوةً تالية. لكن «لكن المحافظ عدّل توقع نمو الناتج...» تخلق تعارضاً ظاهراً يربك القارئ ولا يشرحه المصدر 3. — استبدال «لكن المحافظ عدّل» بـ«فيما قدّر المحافظ» للربط بين الجملتين من دون إيحاء بالتناقض."
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "قالت لجنة السياسة النقدية إن الصراع في الشرق الأوسط وضعف فرص حله قريباً يبقيان أسعار الطاقة العالمية مرتفعة باستمرار",
-          "source": 3
-        },
-        {
-          "fact": "هدف القرار تثبيت توقعات التضخم واحتواء آثار الجولة الثانية لصدمة العرض الجارية وإعادة التضخم إلى نطاق 5-7%",
-          "source": 3
-        },
-        {
-          "fact": "قال المحافظ إن عودة التضخم إلى النطاق المستهدف ستستغرق وقتاً أطول مما كان مخططاً له",
-          "source": 3
-        },
-        {
-          "fact": "تقيّد تكاليف الاقتراض الأعلى تعافي الاقتصاد الباكستاني الذي يواجه أثر ارتفاع أسعار الطاقة",
-          "source": 3
-        }
-      ],
-      "slug": "pakistan-raises-key-rate-to-12-percent-8e0b9f",
-      "title": "المركزي الباكستاني يرفع الفائدة إلى 12% في أول زيادة منذ أبريل",
-      "score": 9,
-      "image": "cover-art"
+      "outcome": "error: Model (claude/claude-opus-5-5) failed for role writer:"
     },
     {
-      "headline": "ليبيا تعلن رفع قيود الطيران الدولية عن مجالها الجوي بعد 11 عاماً",
-      "section": "economy",
-      "importance": 6,
-      "sources": [
-        "https://www.arabnews.com/middle-east/libya-says-international-aviation-restrictions-lifted-after-11-years-3008425",
-        "https://www.dailysabah.com/business/transportation/libya-says-intl-aviation-restrictions-removed-after-11-years"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "يوضح الاستهلال ما تغيّر، أي رفع قيود 2015، والرقم الحاسم للتصاريح مقارنة بالموسم الماضي. لكن العنوان يسقط أن الخبر منقول عن الوزارة الليبية وحدها.",
-              "repair": "نسبة العنوان إلى الوزارة كما في المسألة الأولى، والإبقاء على الاستهلال كما هو."
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "التقرير يورد تعليل الوزارة، ومقارنة التصاريح بمتوسط 2,000 رحلة، وخلفية الحرب وتضرر الطائرات عام 2014، والخطوة التالية: التعميم على 193 دولة والسريان من نوفمبر. وصندوق «لماذا يهمّ» يستند إلى مقدمات واردة في المصادر، ويستنتج استنتاجاً محدوداً بشرطين: تحوّل التصاريح إلى رحلات فعلية، وتطبيق الدول للقرار. ويضيف حدّاً معقولاً هو أن العبور لا يغيّر محدودية الرحلات من ليبيا وإليها.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "«وعزت الوزارة رفع القيود إلى ما وصفته بتقدم ملحوظ…» فقرة معزولة، وفقرة «وفي بيان منفصل…» مفصولة عن الأرقام التي تكمّلها، فيقرأ القارئ ملاحظات متتابعة بدل شرح متصل.",
-              "repair": "دمج التعليل مع فقرة القرار، ودمج الطلب والأرقام والإيرادات المتوقعة في فقرة واحدة، دون إضافة أي معلومة."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الأرقام مطابقة للمصدرين: 61,968 تقريباً إلى «نحو 62 ألف»، و2,000، و193، و23 أكتوبر، و«ما يصل إلى 20 طائرة». غير أن الضمير في «ومقرها طرابلس» ملتبس، وربط تاريخ 23 أكتوبر ببيان فيسبوك أدق مما يذكره المصدر 1.",
-              "repair": "«قالت الوزارة إن القرار صدر رسمياً في 23 أكتوبر»، و«الوزارة التي تتخذ من طرابلس مقراً» في موضع ذكر بيان فيسبوك."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "publish",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يقرأ العنوان والمقدمة والاستهلال معاً على نحو واضح. ما تغيّر هو رفع قيود إيكاو المفروضة عام 2015، والخبر منسوب إلى الوزارة. ويضيف التقرير أن تصاريح العبور قفزت إلى 61,968 رحلة شهرياً مقابل متوسط 2,000. ويحدّد ما لم يتغيّر: العبور لا يخص رحلات تقلع من ليبيا أو تهبط فيها، والشركات التي تسيّر رحلات من ليبيا وإليها قليلة ووجهاتها محدودة.",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "التعليل الذي قدّمته الوزارة، أي التقدم الملحوظ والثقة في قدرات القطاع، جاء ملاصقاً للقرار وظروف إعلانه في الدوحة. والخطوة التالية مذكورة: التعميم على 193 دولة وسريان التصاريح من نوفمبر. وخلفية الحرب وتضرر ما يصل إلى 20 طائرة عام 2014 مأخوذة من المصدرين 1 و2. ويربط صندوق «لماذا يهمّ» الإيرادات المتوقعة بشرطين ثابتين في المصدر: تحوّل التصاريح المسجلة إلى رحلات فعلية، وتطبيق الدول الأعضاء للقرار. ثم يضع حداً معقولاً لأثر العبور على الرحلات الليبية نفسها، ولا يدّعي رقماً أو أثراً لم يرد.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "clear",
-              "evidence": "تبدأ الفقرات بالقرار وتعليله، ثم الأرقام مع تعريف العبور، ثم وصف الطلب والإيرادات المتوقعة، ثم الخلفية. الفقرة الثالثة قصيرة لكنها تؤدي وظيفة واحدة متماسكة. وعبارة «ثم أصدرت إيكاو قيودها… في العام التالي» تسلسل زمني يثبته المصدر، لا ربط سببي مختلق. والصندوق لا يكرر خاتمة التقرير، بل يستخلص منها شرطاً وحداً.",
-              "repair": ""
-            },
-            "precision": {
-              "status": "clear",
-              "evidence": "الأرقام 61,968 (و«نحو 62 ألفاً» تقريب مقبول) و2,000 و193 و23 أكتوبر و2015 و2014 و«ما يصل إلى 20 طائرة» مطابقة كلها للمصدرين. وتوقع الإيرادات منسوب إلى الوزارة بصيغة «تتوقع» لا بصيغة الحقيقة. وموعد السريان «اعتباراً من نوفمبر» محفوظ.",
-              "repair": ""
-            }
-          }
-        }
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "قالت الوزارة إن التصاريح المسجلة لموسم شتاء 2026-2027 بلغت 61,968 رحلة شهرياً تسري اعتباراً من نوفمبر المقبل",
-          "source": 1
-        },
-        {
-          "fact": "قالت الوزارة إن الزيادة ستدر إيرادات مالية كبيرة من استخدام المجال الجوي الليبي",
-          "source": 1
-        },
-        {
-          "fact": "قالت الوزارة إن قرار إيكاو سيُعمَّم على 193 دولة عضواً لتنفيذه",
-          "source": 1
-        },
-        {
-          "fact": "تسيّر شركات طيران قليلة حالياً رحلات من ليبيا وإليها، وظلت وجهاتها مقتصرة على دول مثل تونس والأردن وتركيا ومصر والسعودية والسودان",
-          "source": 1
-        }
-      ],
-      "slug": "libya-icao-airspace-restrictions-lifted-11-years-254ef4",
-      "title": "ليبيا تعلن رفع «إيكاو» القيود عن مجالها الجوي بعد 11 عاماً",
-      "score": 9,
-      "image": "photo"
+      "headline": "«الدار» ترفع صافي ربحها الفصلي 25% وتحقق إيرادات 26 مليار درهم في 9 أشهر",
+      "section": "companies",
+      "outcome": "error: Model (claude/claude-opus-5-5) failed for role writer:"
     },
     {
-      "headline": "«طاقة» تسعّر سندات بـ1.75 مليار دولار بتغطية تفوق ثلاث مرات",
+      "headline": "«أدنوك للحفر» تحقق إيرادات قياسية بـ13.61 مليار درهم في 9 أشهر",
       "section": "companies",
       "importance": 6,
-      "sources": [
-        "https://economymiddleeast.com/news/taqa-prices-1-75-billion-dual-tranche-bond-offering-orderbook-over-three-times-oversubscribed/",
-        "https://www.skynewsarabia.com/business/1900621-%D8%B7%D8%A7%D9%82%D8%A9-%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA%D9%8A%D8%A9-%D8%AA%D9%86%D8%AC%D8%AD-%D8%AA%D8%B3%D8%B9%D9%8A%D8%B1-%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D8%B3%D9%86%D8%AF%D8%A7%D8%AA-%D8%B4%D8%B1%D9%8A%D8%AD%D8%AA%D9%8A%D9%86"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان والدك والمقدمة تقول بوضوح ما الذي حدث: تسعير إصدار بقيمة 1.75 مليار دولار على شريحتين، بتغطية تتجاوز ثلاث مرات، مع وجهة كل شريحة. ونُسب وصف «أول طرح مرجعي» إلى الشركة.",
-              "repair": "يُصلح ضمير الدك «تصفه/شريحته» كما في القائمة."
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "يغيب السياق الذي يفهم به القارئ الحدث: لا ذكر لنحو 10 مليارات دولار استُثمرت في إطار استراتيجية 2030، ولا للسندات الزرقاء البالغة 750 مليون دولار في يوليو 2026، ولا لغاية مبادئ الشبكات الخضراء في توسيع التمويل المتاح للشبكات. ويستند صندوق «لماذا يهمّ» إلى مقدمات صحيحة (أول طرح منذ مارس، الكوبونان، إجازة الإطار تمويل الشبكات)، لكنه يستنتج منها كلفة اقتراض لجهات أخرى، وهو ما لا تحتمله هذه المقدمات.",
-              "repair": "تُضاف العناصر الثلاثة من المصدرين 1 و2 مع نسبتها إلى الشركة، ويُعاد بناء الصندوق على قيد أن الكوبون يخص جدارة «طاقة» وحدها."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "جملة UNEZA معزولة في آخر فقرة ثابت. والفقرة الأخيرة تجمع التصنيف والتسوية والإدراج وأسماء المصارف في سرد إداري. وفي فقرة «قراءة الشركة للطلب» تتتابع أوصاف الشركة لنفسها دون رقم جديد.",
-              "repair": "تُجمع وجهة الحصيلة مع مبادئ الشبكات وUNEZA في فقرة واحدة، وتُضم الخلفية الاستثمارية والسندات الزرقاء إلى فقرة إجمالي الإصدارات، ويُختصر وصف الشركة للطلب إلى جملة واحدة منسوبة."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "عبارة «أن يُسوّى الإصدار في 26 أكتوبر» بصيغة المستقبل وقد مضى التاريخ. وعبارة «طلبات تجاوزت المبلغ المعروض بأكثر من ثلاث مرات» قد تُفهم أربعة أضعاف، والمصدر يقول إن التغطية تجاوزت ثلاث مرات. والكوبون في الصندوق قُدّم على أنه «كلفة الاقتراض»، والمصادر لا تذكر العائد.",
-              "repair": "«وكان مقرراً أن يُسوّى في 26 أكتوبر»، و«وتجاوزت الطلبات ثلاثة أضعاف المبلغ المعروض»، وفي الصندوق يُستعمل لفظ «الكوبون» لا «كلفة الاقتراض»."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "The headline, dek and lede make the event clear: a 1.75 billion dollar bond issue in two tranches, oversubscribed more than three times. The dek adds the deal's position as the first public benchmark issue since March and where the green tranche goes. The ratings are kept as expected ratings, not granted ones.",
-              "repair": ""
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "The context supplied by the sources is now present: the 2030 strategy and the 10 billion dollars, the blue bonds and the 3.7 billion total, and the green-grid principles and their aim. The box rests on correct premises: the first issue since March, the expected ratings, and the framework allowing grid financing. Its inference is bounded by «يمكن أن» and by the coupon not setting others' costs. However, it attributes the expected rating to the company's creditworthiness rather than to the bonds.",
-              "repair": "«لكن الكوبونين يخصان سندات يُتوقع تصنيفها عند Aa3 وAA تماشياً مع تصنيف «طاقة»، ولا يحددان كلفة غيرها»."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "The paragraphs on the tranches, the use of proceeds and the issuance record are well grouped. But the Thabet paragraph («وقال... وأضاف... وعزا... وقال») and the following paragraph on the company's reading of demand both repeat the competitive-funding idea.",
-              "repair": "Merge the two into one paragraph: the company's description of the deal and the market's appetite, then one quotation from Thabet on demand and grids, without repeating the competitive funding."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "All amounts, coupons, maturity dates, the 1.85 billion dollars for 2026 and the ratings match SOURCE 1 and SOURCE 2. «وكان مقرراً أن يُسوّى في 26 أكتوبر» fixes the earlier tense problem. But «ترى في حجم التغطية دليلاً على استمرار شهية المستثمرين» links the appetite to the size of the coverage. In the sources, the appetite rests on the deal being the first benchmark issue since March.",
-              "repair": "Link the appetite to the deal's position as the first public benchmark issue since March. Link the coverage to confidence in the company's creditworthiness, as in SOURCE 1."
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 7,
-      "mendIssues": [
-        "Status of the nine earlier points: 1, 2, 3, 5, 6, 7 and 9 are fixed. The 10 billion dollars, the July blue bonds, the green-grid principles linked to UNEZA, «وكان مقرراً أن يُسوّى», the masculine pronoun in the dek and «تجاوزت الطلبات ثلاثة أضعاف» are now in the draft. Point 4 is mostly fixed. Point 8 is partly fixed: the company's description of demand still repeats across two paragraphs, as explained below.",
-        "In «لماذا يهمّ» the wording «الكوبونين يخصان جدارة «طاقة» المتوقعة عند Aa3 وAA» is imprecise. SOURCE 1 and SOURCE 2 say the expected rating belongs to the bonds, «in line with TAQA's corporate credit ratings». The company's creditworthiness itself is not expected. Repair: «لكن الكوبونين يخصان سندات يُتوقع تصنيفها عند Aa3 وAA، تماشياً مع تصنيف «طاقة» نفسها، ولا يحددان كلفة غيرها».",
-        "Paragraphs three and four repeat the same meaning. The Thabet paragraph says «وعزا قدرة الشركة على الحصول على تمويل تنافسي إلى نهجها المنضبط...». The next paragraph repeats «وعلى قدرتها على الاقتراض بشروط تنافسية في مختلف ظروف السوق». The Thabet paragraph also lists general remarks one after another: «وقال... وأضاف... وعزا... وقال». «وأضاف» reverses his order, since in SOURCE 1 and SOURCE 2 he opened with the quality of demand. Repair: merge the two paragraphs. Open with the company's description of the deal as the first public benchmark issue since March. Keep from Thabet the confidence of investors and the idea that renewable power is worth nothing without grids. Put the competitive-funding idea in one sentence only.",
-        "«وترى في حجم التغطية دليلاً على استمرار شهية المستثمرين» moves the inference to the wrong premise. SOURCE 1 and SOURCE 2 tie the sustained investor appetite to the deal being «أول إصدار مرجعي عام لجهة مرتبطة بحكومة أبوظبي منذ مارس». They tie the oversubscription to confidence in TAQA's creditworthiness and strategy. Repair: «وتقول الشركة إن الصفقة، بوصفها أول طرح مرجعي عام لجهة مرتبطة بحكومة أبوظبي منذ مارس، تدل على استمرار شهية المستثمرين...». Keep the coverage linked to confidence in the company's creditworthiness, as in SOURCE 1.",
-        "The context supplied by the sources is now present: the 2030 strategy and the 10 billion dollars, the blue bonds and the 3.7 billion total, and the green-grid principles and their aim. The box rests on correct premises: the first issue since March, the expected ratings, and the framework allowing grid financing. Its inference is bounded by «يمكن أن» and by the coupon not setting others' costs. However, it attributes the expected rating to the company's creditworthiness rather than to the bonds. — «لكن الكوبونين يخصان سندات يُتوقع تصنيفها عند Aa3 وAA تماشياً مع تصنيف «طاقة»، ولا يحددان كلفة غيرها».",
-        "The paragraphs on the tranches, the use of proceeds and the issuance record are well grouped. But the Thabet paragraph («وقال... وأضاف... وعزا... وقال») and the following paragraph on the company's reading of demand both repeat the competitive-funding idea. — Merge the two into one paragraph: the company's description of the deal and the market's appetite, then one quotation from Thabet on demand and grids, without repeating the competitive funding.",
-        "All amounts, coupons, maturity dates, the 1.85 billion dollars for 2026 and the ratings match SOURCE 1 and SOURCE 2. «وكان مقرراً أن يُسوّى في 26 أكتوبر» fixes the earlier tense problem. But «ترى في حجم التغطية دليلاً على استمرار شهية المستثمرين» links the appetite to the size of the coverage. In the sources, the appetite rests on the deal being the first benchmark issue since March. — Link the appetite to the deal's position as the first public benchmark issue since March. Link the coverage to confidence in the company's creditworthiness, as in SOURCE 1."
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 1,
-        "rounds": 2,
-        "found": 1
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "تصف «طاقة» الصفقة بأنها أول طرح مرجعي عام من كيان مرتبط بحكومة أبوظبي منذ مارس 2026، وتقول إنها تشير إلى استمرار شهية المستثمرين لأدوات دين أبوظبي ذات الجودة العالية",
-          "source": 2
-        },
-        {
-          "fact": "يُتوقع أن تحصل السندات على تصنيف Aa3 من «موديز» وAA من «فيتش»، بما يتماشى مع التصنيف الائتماني للشركة، وكوبونا الشريحتين 5.875% و6.125%",
-          "source": 2
-        },
-        {
-          "fact": "إطار التمويل الأخضر والأزرق لدى «طاقة» يسمح باستخدام الحصيلة في البنية التحتية للشبكات، ويعكس مبادئ تمويل المناخ للشبكات الخضراء التي ترمي إلى توسيع التمويل المتاح للشبكات",
-          "source": 1
-        }
-      ],
-      "slug": "taqa-prices-dual-tranche-bonds-oversubscribed-a32e1a",
-      "title": "«طاقة» الإماراتية تسعّر سندات بـ1.75 مليار دولار بتغطية تتجاوز 3 مرات",
-      "score": 8,
-      "image": "photo"
+      "outcome": "deferred: run budget spent"
     }
   ],
   "llm": {
-    "calls": 89,
-    "failures": 3,
-    "promptTokens": 1107475,
-    "completionTokens": 231093,
-    "cacheReadTokens": 277527,
-    "costUsd": 11.3164,
+    "calls": 4,
+    "failures": 9,
+    "promptTokens": 113144,
+    "completionTokens": 66696,
+    "cacheReadTokens": 0,
+    "costUsd": 2.239,
     "byModel": {
-      "claude-cli/claude-opus-5-5": 89
+      "claude-cli/claude-opus-5-5": 4
     }
   },
   "log": [
-    "[01:05:15] llm fail role=desk provider=claude model=claude-opus-5-5 attempt=1: reader_context is not grounded in its source or copies its phrasing; rewrite it faithfully",
-    "[01:05:49] desk notes: 6 of 29 facts dropped (not in their source or copied from it)",
-    "[01:05:49] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=2 ms=31072",
-    "[01:05:49] desk notes: 23 facts (? 3, news 2, numbers 4, reaction 5, driver 3, remark 1, background 2, next 3), 3 quotes (claude-cli/claude-opus-5-5)",
-    "[01:07:09] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=79994",
-    "[01:07:42] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=33451",
-    "[01:07:42] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[lede:numbers changed (2)]",
-    "[01:07:42] desk \"«طاقة» الإماراتية تسعّر سندات بـ1.75 مليار دولار بتغطية تتجاوز 3 مرات\": rewrote body; refused lede (numbers changed (2))",
-    "[01:08:42] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=59841",
-    "[01:08:42] critic \"«طاقة» الإماراتية تسعّر سندات بـ1.75 مليار دولار بتغطية تتجاوز 3 مرات\": revise score=6 issues=9",
-    "[01:08:42]   · ينقص التقرير: الخلفية. يذكر المصدران 1 و2 أن الشريحتين تدعمان «استراتيجية طاقة 2030»، وأن المجموعة استثمرت في إطارها ما يقرب من 10 مليارات دولار في مشاريع تحول ",
-    "[01:08:42]   · ينقص التقرير: الأرقام في سياقها. يذكر المصدران 1 و2 أن الإصدار يأتي بعد سندات زرقاء بقيمة 750 مليون دولار طرحتها «طاقة» في يوليو 2026، وتصفها الشركة بأنها أكبر ",
-    "[01:08:42]   · ينقص التقرير: الآلية التي تفسر توجيه الحصيلة إلى الشبكات. يذكر المصدران 1 و2 أن الإطار يعكس «مبادئ تمويل المناخ للشبكات الخضراء» التي وضعتها مبادرة الشبكات الخض",
-    "[01:08:42]   · «لماذا يهمّ» يبالغ في الاستنتاج. جملة «يمنح ... الجهات المماثلة مؤشراً حديثاً على كلفة الاقتراض بالدولار: 5.875% حتى 2032 و6.125% حتى 2036» تخلط سعر الكوبون بكل",
-    "[01:09:31] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=48633",
-    "[01:09:58] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=26720",
-    "[01:09:58] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
-    "[01:09:58] desk \"«طاقة» الإماراتية تسعّر سندات بـ1.75 مليار دولار بتغطية تتجاوز 3 مرات\": rewrote body",
-    "[01:10:41] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=42930",
-    "[01:10:41] critic (second pass) \"«طاقة» الإماراتية تسعّر سندات بـ1.75 مليار دولار بتغطية تتجاوز 3 مرات\": revise score=8 issues=7",
-    "[01:11:14] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=33775",
-    "[01:11:48] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=34117",
-    "[01:11:48] desk model=claude-cli/claude-opus-5-5 applied=[lede,whyItMatters,body] rejected=[]",
-    "[01:11:48] desk \"«طاقة» الإماراتية تسعّر سندات بـ1.75 مليار دولار بتغطية تتجاوز 3 مرات\": rewrote lede, whyItMatters, body",
-    "[01:11:48] mended \"«طاقة» الإماراتية تسعّر سندات بـ1.75 مليار دولار بتغطية تتجاوز 3 مرات\": the second pass's 7 finding(s) sent back once more",
-    "[01:12:33] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=44840",
-    "[01:12:51] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=17772",
-    "[01:12:51] precheck: repair 1 accepted (1 sentence(s) changed); checking the repaired text again",
-    "[01:13:37] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=46125",
-    "[01:13:37] precheck \"«طاقة» الإماراتية تسعّر سندات بـ1.75 مليار دولار بتغطية تتجاوز 3 مرات\": 1 proved error(s) repaired (1 repair(s)); the repaired text checked clean",
-    "[01:13:45] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=8064",
-    "[01:13:45] image: the picture should say: Investors rushed to lend to Abu Dhabi's power utility, with most of the money going to solar power and the grids that carry it.",
-    "[01:13:50] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=3806",
-    "[01:13:50] image: the sources' photographs give no brief (1: not a news photo; 2: not a news photo)",
-    "[01:13:50] image: tier 3, the writer's own subjects: high voltage power lines | solar farm desert | electricity grid substation",
-    "[01:13:51] commons \"high voltage power lines 2026\": 9 usable of 12",
-    "[01:13:51] commons \"high voltage power lines\": 9 usable of 12",
-    "[01:13:52] commons \"solar farm desert 2026\": 0 usable of 0",
-    "[01:13:52] commons \"solar farm desert\": 12 usable of 12",
-    "[01:13:52] image: dropped \"Building a Great Solar Wall in China (153759 - 2 20241208 lrg).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[01:13:52] image: dropped \"Desert Sunlight Battery Energy Storage System (52945816430).jpg\" — names too little of solar, farm, desert",
-    "[01:13:52] commons \"electricity grid substation 2026\": 0 usable of 1",
-    "[01:13:53] commons \"electricity grid substation\": 0 usable of 12",
-    "[01:13:53] commons \"electricity grid\": 2 usable of 12",
-    "[01:13:53] image: dropped \"High-voltage overhead power lines @ Parc départemental de la Plage-Ble\" — taken in France, which the story does not name",
-    "[01:13:53] image: dropped \"Lalor with high-voltage power lines near Dalton Road in Lalor, Melbour\" — taken in Australia, which the story does not name",
-    "[01:13:53] image: dropped \"Desert Sunlight (52290008686).jpg\" — taken in United States, which the story does not name",
-    "[01:13:53] image: dropped \"California Solar Farms (ASTER).jpg\" — taken in United States, which the story does not name",
-    "[01:13:53] image: dropped \"Power Grid board game.jpg\" — taken in Finland, which the story does not name",
-    "[01:13:59] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4804",
-    "[01:13:59] image: vision rejected all candidates (None fits this Abu Dhabi story. Photo 1 is a residential street in Aktau, Kazakhstan, where the power lines are incidental. Photo 2 is a solar farm, but its file places it at Desert Sunlight in the US, the wrong country for a UAE story. Photo 3 is a building front of a grid office in Almaty, Kazakhstan, shot as an amateur street snapshot.)",
-    "[01:13:59] image: tier 4, the story's point and its subject: Noor Abu Dhabi solar plant | solar park Abu Dhabi | high voltage power lines UAE | solar power plant Abu Dhabi | power transmission lines UAE | solar panels desert (home: United Arab Emirates, UAE, Emirati, Abu Dhabi, Dubai)",
-    "[01:13:59] commons \"Noor Abu Dhabi solar plant\": 0 usable of 1",
-    "[01:14:00] commons \"Noor Abu\": 14 usable of 24",
-    "[01:14:00] image: dropped \"Nature love in Abu Dhabi.jpg\" — names too little of noor",
-    "[01:14:00] image: dropped \"Sheikh Hasina Munajat at Jatiya Sangsad Bhaban 2023-07-06 (PID-0015013\" — shows hasina, sheikh, not the story's people",
-    "[01:14:00] image: dropped \"Brunei State Constitution Committee (Seated).jpg\" — dated 1959, an archival picture",
-    "[01:14:00] image: dropped \"First Jalsa in the memory of Imam-E-Azam Abu Hanifa(R.A).jpg\" — names too little of noor",
-    "[01:14:00] image: dropped \"Brunei State Constitution Committee 1959.jpg\" — dated 1959, an archival picture",
-    "[01:14:00] image: dropped \"Members of the Constitutional Delegation 1959.jpg\" — dated 1959, an archival picture",
-    "[01:14:00] image: dropped \"AURORA, ICA, London (27000275993).jpg\" — names too little of noor",
-    "[01:14:00] image: dropped \"AURORA, ICA, London (27000033693).jpg\" — names too little of noor",
-    "[01:14:00] image: dropped \"Aurora at Rough Trade (48028994282).jpg\" — names too little of noor",
-    "[01:14:00] image: dropped \"Aurora at Sentrum Scene - Norway - Concert 2024-Mar-22 - Knut-N-Borgun\" — names too little of noor",
-    "[01:14:00] pexels \"Noor Abu Dhabi solar plant\": 8 usable",
-    "[01:14:09] openverse \"Noor Abu Dhabi solar plant\": 0 usable of 0",
-    "[01:14:09] image: dropped \"Sunlight filters through the geometric roof of Louvre Abu Dhabi, creat\" — names too little of noor",
-    "[01:14:09] image: dropped \"Stunning view of an artistic geometric dome ceiling in Abu Dhabi, Unit\" — names too little of noor",
-    "[01:14:09] image: dropped \"Sunny desert landscape with Abu Dhabi skyline in the background, showc\" — names too little of noor",
-    "[01:14:09] image: dropped \"Sunset in Abu Dhabi desert featuring silhouetted power lines against a\" — names too little of noor",
-    "[01:14:09] image: dropped \"A breathtaking view of golden sand dunes in Abu Dhabi, capturing the s\" — names too little of noor",
-    "[01:14:09] image: dropped \"A lone figure walks amidst the vast sand dunes of Abu Dhabi's desert, \" — names too little of noor",
-    "[01:14:09] image: dropped \"Close-up view of the modern architectural design of Louvre Abu Dhabi's\" — names too little of noor",
-    "[01:14:09] image: dropped \"Capture of Louvre Abu Dhabi's sleek, modern architecture against a cle\" — names too little of noor",
-    "[01:14:10] commons \"solar park Abu Dhabi\": 0 usable of 0",
-    "[01:14:10] commons \"solar park\": 22 usable of 24",
-    "[01:14:10] image: dropped \"Photovoltaic power station in Vila Nova de Famalicão (1).jpg\" — names too little of solar, park",
-    "[01:14:10] image: dropped \"A photovoltaic power station in the United States (36130544874).jpg\" — names too little of solar, park",
-    "[01:14:10] image: dropped \"Madeira-Canical-fuel depotand terminal-hill photovoltaic power station\" — names too little of solar, park",
-    "[01:14:10] image: dropped \"Photovoltaic-power-station-in-Gelemenovo.jpg\" — names too little of solar, park",
-    "[01:14:10] image: dropped \"Suzu Photovoltaic Power Station 1.jpg\" — names too little of solar, park",
-    "[01:14:10] image: dropped \"Photovoltaic power station Roßleben 2.JPG\" — names too little of solar, park",
-    "[01:14:10] image: dropped \"Photovoltaic power station Roßleben 1.JPG\" — names too little of solar, park",
-    "[01:14:10] image: dropped \"Photovoltaic power station, Glynn Co, GA, US.jpg\" — names too little of solar, park",
-    "[01:14:11] pexels \"solar park Abu Dhabi\": 8 usable",
-    "[01:14:15] openverse \"solar park Abu Dhabi\": 0 usable of 0",
-    "[01:14:15] image: dropped \"A stunning silhouette of palm trees against a vibrant Dubai sunset sky\" — names too little of solar, park",
-    "[01:14:15] image: dropped \"Captivating view of Abu Dhabi's skyline amidst lush palm trees on a su\" — names too little of solar, park",
-    "[01:14:15] image: dropped \"Stunning view of Abu Dhabi skyline with decorative fountain and park s\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[01:14:15] image: dropped \"Stunning view of the Abu Dhabi skyline reflecting in the calm Gulf wat\" — names too little of solar, park",
-    "[01:14:15] image: dropped \"Vibrant view of Abu Dhabi skyline from Corniche with palm trees and se\" — names too little of solar, park",
-    "[01:14:15] image: dropped \"Silhouettes of people against the Abu Dhabi skyline during a breathtak\" — names too little of solar, park",
-    "[01:14:15] commons \"high voltage power lines UAE\": 0 usable of 1",
-    "[01:14:16] commons \"high voltage\": 18 usable of 24",
-    "[01:14:16] image: dropped \"High Voltage (1929) 1.jpg\" — dated 1929, an archival picture",
-    "[01:14:16] image: dropped \"Plasma-lamp 2.jpg\" — names too little of high, voltage",
-    "[01:14:16] image: dropped \"High voltage electrical team with new cross arm structures (5449671).j\" — a warship or weapon, and the story is not about the military",
-    "[01:14:16] commons \"solar power plant Abu Dhabi\": 1 usable of 2",
-    "[01:14:16] pexels \"solar power plant Abu Dhabi\": 8 usable",
-    "[01:14:18] openverse \"solar power plant Abu Dhabi\": 0 usable of 0",
-    "[01:14:19] commons \"power transmission lines UAE\": 0 usable of 1",
-    "[01:14:19] commons \"power transmission\": 11 usable of 24",
-    "[01:14:20] commons \"solar panels desert\": 17 usable of 24",
-    "[01:14:20] image: dropped \"US Navy 090213-M-4820H-003 An array of solar panels supplies energy fo\" — a warship or weapon, and the story is not about the military",
-    "[01:14:20] image: dropped \"US Navy 090213-M-4820H-035 An array of solar panels supplies energy fo\" — a warship or weapon, and the story is not about the military",
-    "[01:14:20] image: dropped \"Building a Great Solar Wall in China (153759 - 2 20241208 lrg).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[01:14:20] image: dropped \"A village in the desert? (potw2226a).jpg\" — names too little of solar, panels, desert",
-    "[01:14:20] image: dropped \"Martian Dust Devil Trails.jpg\" — names too little of solar, panels, desert",
-    "[01:14:20] image: dropped \"Renewable Energy Development in the California Desert (29730316311).jp\" — names too little of solar, panels, desert",
-    "[01:14:20] image: dropped \"Transmission Tower in Lethbridge, Alberta, Canada.jpg\" — taken in Canada, which the story does not name",
-    "[01:14:20] image: dropped \"Solar Power Station at LaLaport Kadoma1.jpg\" — taken in Japan, which the story does not name",
-    "[01:14:20] image: dropped \"Solar Power Station at LaLaport Kadoma2.jpg\" — taken in Japan, which the story does not name",
-    "[01:14:20] image: dropped \"Electric transmission power tower.jpg\" — taken in Russia, which the story does not name",
-    "[01:14:20] image: dropped \"Vast array of solar panels at Ashalim Solar Plant in Israel's Negev De\" — taken in Israel, which the story does not name",
-    "[01:14:20] image: dropped \"Solar panels in the desert.jpg\" — taken in United States, which the story does not name",
-    "[01:14:20] image: dropped \"Hole-in-the-Wall solar panels 1.jpg\" — taken in United States, which the story does not name",
-    "[01:14:26] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5293",
-    "[01:14:26] image: \"Shams solar power plant.jpg\" names the story's topic without saying its point (Shams 1 solar plant in Abu Dhabi, a sharp, professional shot of renewable generation in the story's own country, fitting the green tranche's use of proceeds. Ph); checked now and kept in reserve while the desk looks further",
-    "[01:14:33] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=6570",
-    "[01:14:33] image: second check (claude-cli/claude-opus-5-5) RECAPTION \"Shams solar power plant.jpg\": A sharp, clear frame of a solar plant in Abu Dhabi fits the green tranche's renewable-energy purpose, but the caption na",
-    "[01:14:38] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=5347",
-    "[01:14:46] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=7671",
-    "[01:14:46] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Shams solar power plant.jpg\": A sharp, professional view of solar mirrors at Abu Dhabi's Shams plant pictures the renewable generation the green tranc",
-    "[01:14:46] image: the story's people first: Jasim Husain Thabet 2026 | Jasim Husain Thabet | جاسم حسين ثابت | جاسم ثابت",
-    "[01:14:46] commons \"Jasim Husain Thabet 2026\": 0 usable of 0",
-    "[01:14:47] commons \"Jasim Husain\": 0 usable of 0",
-    "[01:14:47] commons \"2026\": 11 usable of 20",
-    "[01:14:47] image: dropped \"Castle Ponoviče, Municipality Litija, Slovenia (2026).jpg\" — names none of the story's people",
-    "[01:14:47] image: dropped \"Saint Gregory the Illuminator Cathedral, Yerevan (2026).jpg\" — names none of the story's people",
-    "[01:14:47] image: dropped \"Gefallenendenkmal Grüneberg 2026 SW.jpg\" — names none of the story's people",
-    "[01:14:47] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 14.jpg\" — names none of the story's people",
-    "[01:14:47] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 22.jpg\" — names none of the story's people",
-    "[01:14:47] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 01.jpg\" — names none of the story's people",
-    "[01:14:47] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 04.jpg\" — names none of the story's people",
-    "[01:14:47] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 25.jpg\" — names none of the story's people",
-    "[01:14:47] image: dropped \"Ortstafel Bergsdorf (Zehdenick) 2026.jpg\" — names none of the story's people",
-    "[01:14:47] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 10.jpg\" — names none of the story's people",
-    "[01:14:48] commons \"Jasim Husain Thabet\": 0 usable of 0",
-    "[01:14:48] commons \"Jasim Husain\": 0 usable of 0",
-    "[01:14:49] commons \"Thabet\": 11 usable of 20",
-    "[01:14:49] image: dropped \"WIPO Director General Meets Fatma Thabet Chiboub Tunisia's Minister of\" — shows general, general, not the story's people",
-    "[01:14:49] image: dropped \"Didi Thabet jument 1912.jpg\" — dated 1912, an archival picture",
-    "[01:14:49] commons \"جاسم حسين ثابت\": 1 usable of 1",
-    "[01:14:49] image: dropped \"أهالي الأعظمية.jpg\" — names too little of جاسم, حسين, ثابت",
-    "[01:14:50] commons \"جاسم ثابت\": 1 usable of 1",
-    "[01:14:50] image: people shortlist: 2026 Sidi Thabet paysage.jpg | 2022 Thabet Habib2.jpg | 2023 Eglise de Sidi Thabet 2023.jpg | 2023 Eglise de Sidi Thabet implantation.jpg",
-    "[01:14:55] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=4174",
-    "[01:14:55] image: vision rejected all candidates (None of the candidates shows Jasim Husain Thabet, TAQA, or power and grid infrastructure. Image 1 is a Tunisian landscape. Images 2 and 5 show other people (Father Boulos Thabet Habib and Mohamed Thabet of Adiate), which would misidentify the CEO. Images 3 and 4 are casual tourist shots of a church and a town in Sidi Thabet, Tunisia. All are irrelevant, so choose none.)",
-    "[01:14:55] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"Shams solar power plant.jpg\"",
-    "[01:14:55] published \"«طاقة» الإماراتية تسعّر سندات بـ1.75 مليار دولار بتغطية تتجاوز 3 مرات\" -> taqa-prices-dual-tranche-bonds-oversubscribed-a32e1a"
+    "[07:48:18] newsroom start mode=news limit=4 dry-run=false",
+    "[07:48:18] lessons: version 38, 10 active, read by the desk notes and the writer",
+    "[07:48:27] candidates: 10 price-service items left out (gold, dollar and share price tables)",
+    "[07:48:27] candidates: 600 fresh unseen items",
+    "[07:49:26] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=5044 attempt=1 ms=58535",
+    "[07:49:26] editor raw: 4 stories; first ids=[\"c239\",\"c45\",\"c87\",\"c98\"] section=markets",
+    "[07:49:26] editor (claude-cli/claude-opus-5-5) selected 4 stories",
+    "[07:49:26]   [7] markets — تغطية طرح «دي آي بي القابضة» البالغ 543 مليون دولار في دبي خلال دقائق (c239,c45,c87,c98)",
+    "[07:49:26]   [6] economy — أرباح الصناعة الصينية تسجل أسرع نمو في 3 أشهر بدعم الذكاء الاصطناعي وأسعار الطاقة (c295,c268,c213,c131,c266)",
+    "[07:49:26]   [6] companies — «الدار» ترفع صافي ربحها الفصلي 25% وتحقق إيرادات 26 مليار درهم في 9 أشهر (c211,c120)",
+    "[07:49:26]   [6] companies — «أدنوك للحفر» تحقق إيرادات قياسية بـ13.61 مليار درهم في 9 أشهر (c193,c259)",
+    "[07:52:28] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=18401 attempt=1 ms=179547",
+    "[07:52:28] desk notes: 30 facts (? 3, news 5, reaction 2, numbers 7, next 6, background 7), 0 quotes (claude-cli/claude-opus-5-5)",
+    "[07:56:29] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: claude cli timeout after 240000ms",
+    "[08:00:32] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=2: claude cli timeout after 240000ms",
+    "[08:04:35] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=3: claude cli timeout after 240000ms",
+    "[08:04:35] story failed \"تغطية طرح «دي آي بي القابضة» البالغ 543 مليون دولار في دبي خلال دقائق\": Model (claude/claude-opus-5-5) failed for role writer:",
+    "[08:07:04] desk notes: 3 of 25 facts dropped (not in their source or copied from it)",
+    "[08:07:04] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=13713 attempt=1 ms=143308",
+    "[08:07:04] desk notes: 22 facts (? 2, news 2, driver 5, numbers 9, background 4), 0 quotes (claude-cli/claude-opus-5-5)",
+    "[08:11:04] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: claude cli timeout after 240000ms",
+    "[08:15:07] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=2: claude cli timeout after 240000ms",
+    "[08:19:10] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=3: claude cli timeout after 240000ms",
+    "[08:19:10] story failed \"أرباح الصناعة الصينية تسجل أسرع نمو في 3 أشهر بدعم الذكاء الاصطناعي وأسعار الطاقة\": Model (claude/claude-opus-5-5) failed for role writer:",
+    "[08:22:16] desk notes: 1 of 30 facts dropped (not in their source or copied from it)",
+    "[08:22:16] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=18681 attempt=1 ms=182121",
+    "[08:22:16] desk notes: 29 facts (? 3, news 4, background 4, numbers 13, driver 1, reaction 2, remark 1, next 1), 0 quotes (claude-cli/claude-opus-5-5)",
+    "[08:26:16] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: claude cli timeout after 240000ms",
+    "[08:30:19] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=2: claude cli timeout after 240000ms",
+    "[08:34:22] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=3: claude cli timeout after 240000ms",
+    "[08:34:22] story failed \"«الدار» ترفع صافي ربحها الفصلي 25% وتحقق إيرادات 26 مليار درهم في 9 أشهر\": Model (claude/claude-opus-5-5) failed for role writer:",
+    "[08:34:25] run budget of 35 minutes spent; \"«أدنوك للحفر» تحقق إيرادات قياسية بـ13.61 مليار درهم في 9 أشهر\" waits for the next run"
   ]
 }

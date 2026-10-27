@@ -1,0 +1,71 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-27T07:46:15.256Z",
+  "durationSec": 110,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "pakistan-raises-key-rate-to-12-percent-8e0b9f",
+      "title": "المركزي الباكستاني يرفع الفائدة إلى 12% في أول زيادة منذ أبريل",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 26,
+        "checked": 26,
+        "supported": 23,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "taqa-prices-dual-tranche-bonds-oversubscribed-a32e1a",
+      "title": "«طاقة» الإماراتية تسعّر سندات بـ1.75 مليار دولار بتغطية تتجاوز 3 مرات",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 30,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 2,
+    "failures": 0,
+    "promptTokens": 13426,
+    "completionTokens": 22024,
+    "cacheReadTokens": 0,
+    "costUsd": 0.5479,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 2
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[07:46:15] second look: 2 to read now (2 published pieces not yet read; 134 read clean before publication and left out of the audit sample)",
+    "[07:46:18] pakistan-raises-key-rate-to-12-percent-8e0b9f:   source https://www.bloomberg.com/news/articles/2026-10-26/pakistan-hikes-interest-rate-: subscribers-only; read from the copy saved at publication (fetched then)",
+    "[07:47:16] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=4336 attempt=1 ms=58207",
+    "[07:47:16] pakistan-raises-key-rate-to-12-percent-8e0b9f: 26 of 26 sentences checked · 23 supported · 1 without a source · 0 confirmed error(s)",
+    "[07:48:05] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=8726 attempt=1 ms=106843",
+    "[07:48:05] taqa-prices-dual-tranche-bonds-oversubscribed-a32e1a: 31 of 31 sentences checked · 30 supported · 1 without a source · 0 confirmed error(s)"
+  ]
+}
