@@ -7335,6 +7335,102 @@
           "noted": []
         }
       ]
+    },
+    "anthropic-ipo-filing-reveals-revenue-losses-5fc0da": {
+      "at": "2026-10-27T09:25:52.406Z",
+      "title": "نشرة طرح أنثروبيك تكشف إيرادات بـ16.3 مليار دولار في ستة أشهر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 35,
+            "checked": 35,
+            "supported": 28,
+            "weak": 7,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "aldar-nine-month-profit-rises-uae-sales-fall-ba8ef8": {
+      "at": "2026-10-27T09:41:39.238Z",
+      "title": "أرباح الدار ترتفع 19% في 9 أشهر رغم تراجع مبيعاتها في الإمارات",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v38",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 28,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 14,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وبلغت المبيعات التطويرية للمجموعة 18.9 مليار درهم في الأشهر التسعة، منها 6.8 مليار درهم في الربع الثالث، في حين بلغت مبيعاتها في الإمارات 14.4 مليار درهم.",
+              "quote": "وبذلك تجاوزت مبيعات الدار في دولة الإمارات 20 مليار درهم منذ بداية العام.",
+              "source": "Al Bayan",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "saudi-tadawul-group-q3-profit-falls-9b2148": {
+      "at": "2026-10-27T09:56:15.658Z",
+      "title": "أرباح مجموعة تداول السعودية تهبط 41.8% في الربع الثالث",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v38",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 22,
+            "checked": 22,
+            "supported": 18,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

@@ -1295,6 +1295,50 @@
         "classes": [],
         "programmatic": 4
       }
+    },
+    {
+      "at": "2026-10-27T09:56:15.677Z",
+      "slug": "saudi-tadawul-group-q3-profit-falls-9b2148",
+      "checker": "7bb3653e29.2",
+      "lessons": "v38",
+      "lessonsHash": "747d5bc867",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 15,
+        "notFound": 7,
+        "checked": 25,
+        "words": 363,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 17,
+        "notFound": 9,
+        "checked": 26,
+        "words": 342,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 17,
+        "notFound": 9,
+        "checked": 26,
+        "words": 342,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }
