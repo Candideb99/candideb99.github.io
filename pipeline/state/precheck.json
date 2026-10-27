@@ -7188,6 +7188,153 @@
           "noted": []
         }
       ]
+    },
+    "european-gas-prices-highest-since-2022-868625": {
+      "at": "2026-10-27T00:45:06.573Z",
+      "title": "الغاز الأوروبي يتجاوز 97 يورو للميغاواط/ساعة لأول مرة منذ 2022",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 27,
+            "checked": 27,
+            "supported": 25,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "pakistan-raises-key-rate-to-12-percent-8e0b9f": {
+      "at": "2026-10-27T00:54:36.632Z",
+      "title": "المركزي الباكستاني يرفع الفائدة إلى 12% في أول زيادة منذ أبريل",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v37",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 26,
+            "checked": 26,
+            "supported": 23,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "libya-icao-airspace-restrictions-lifted-11-years-254ef4": {
+      "at": "2026-10-27T01:04:35.379Z",
+      "title": "ليبيا تعلن رفع «إيكاو» القيود عن مجالها الجوي بعد 11 عاماً",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v37",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 19,
+            "checked": 19,
+            "supported": 15,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "taqa-prices-dual-tranche-bonds-oversubscribed-a32e1a": {
+      "at": "2026-10-27T01:14:55.562Z",
+      "title": "«طاقة» الإماراتية تسعّر سندات بـ1.75 مليار دولار بتغطية تتجاوز 3 مرات",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v37",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 28,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 23,
+              "field": "body",
+              "class": "scope",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وأضاف أن الإصدار يتجه إلى الشبكات تحديداً، لأن الطاقة المتجددة لا تحقق قيمتها إلا حين تقدر الشبكات على إيصالها إلى المنازل والشركات التي تحتاج إليها.",
+              "quote": "\"The quality of investor demand reflects confidence in our financial strength and our ability to deliver on our long-term strategy. It also underscores the importance of this issuance's purpose: renewable power only creates value when networks can deliver it to the homes and businesses that need it,\" said Jasim Husain Thabet, Group Chief Executive Officer and Managing Director, TAQA.",
+              "source": "Economy Middle East",
+              "sourceN": 1,
+              "correction": "Thabet said the demand underscores the importance of the issuance's purpose; he did not say the issuance is directed specifically at grids, and its green proceeds fund renewable generation as well as green grids, while the conventional tranche goes to general corporate purposes."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 29,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

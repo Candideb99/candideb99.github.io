@@ -1,0 +1,47 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-27T00:31:31.878Z",
+  "durationSec": 87,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "saudi-morocco-electricity-costs-households-2027-e7c8c6",
+      "title": "السعودية والمغرب يختاران طريقين لتوزيع كلفة الكهرباء على الأسر",
+      "kind": "analysis",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 54,
+        "checked": 54,
+        "supported": 36,
+        "weak": 11,
+        "noEvidence": 0,
+        "notFound": 7,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 13769,
+    "completionTokens": 12030,
+    "cacheReadTokens": 0,
+    "costUsd": 0.3507,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[00:31:32] second look: 1 to read now (1 published pieces not yet read; 132 read clean before publication and left out of the audit sample)",
+    "[00:32:59] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 attempt=1 ms=86618",
+    "[00:32:59] saudi-morocco-electricity-costs-households-2027-e7c8c6: 54 of 54 sentences checked · 36 supported · 7 without a source · 0 confirmed error(s)"
+  ]
+}
