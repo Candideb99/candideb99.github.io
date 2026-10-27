@@ -7515,6 +7515,34 @@
           "noted": []
         }
       ]
+    },
+    "political-pressure-fed-moves-near-term-rates-387cc7": {
+      "at": "2026-10-27T16:25:56.200Z",
+      "title": "ضغط السياسيين على الفيدرالي طلباً للتيسير يخفض توقعات الفائدة القريبة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 26,
+            "weak": 2,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

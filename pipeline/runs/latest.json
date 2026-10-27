@@ -1,169 +1,21 @@
 {
-  "mode": "news",
-  "startedAt": "2026-10-27T15:26:15.220Z",
-  "durationSec": 2910,
-  "published": 3,
+  "mode": "paper",
+  "startedAt": "2026-10-27T16:18:26.400Z",
+  "durationSec": 612,
+  "published": 1,
   "refreshed": 0,
   "report": [
     {
-      "headline": "حريق قرب رأس تنورة بعد هجوم حوثي استهدف منشآت لأرامكو",
-      "section": "energy",
-      "importance": 8,
-      "sources": [
-        "https://www.bbc.com/arabic/articles/c893zwn37xwxo",
-        "https://www.aljazeera.net/news/2026/10/27/%d8%b9%d8%a7%d8%ac%d9%84-%d8%a7%d9%84%d9%86%d8%a7%d8%b7%d9%82-%d8%a7%d9%84%d8%b9%d8%b3%d9%83%d8%b1%d9%8a-%d8%a8%d8%a7%d8%b3%d9%85-%d8%a3%d9%86%d8%b5%d8%a7%d8%b1-%d8%a7%d9%84%d9%84%d9%87-6",
-        "https://gulfnews.com/world/mena/middle-east-war-saudi-arabia-intercepts-houthi-missiles-drones-as-iran-talks-continue-1.500724842",
-        "https://www.thenationalnews.com/news/mena/2026/10/27/live-saudi-arabia-intercepts-houthi-missiles-riyadh-latest/"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يقدّم العنوان والمقدمة الحدث على أنه ادعاء حوثي («يعلنون»، «قالت إنه أشعل حريقاً»). ويقابلانه بإعلان التحالف اعتراض ثلاثة صواريخ نحو المنطقة الشرقية، ويذكران غياب تعليق سعودي على رواية المصفاة. بذلك لا يحوّلان الادعاء إلى ضرر مؤكد.",
-              "repair": ""
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "يشرح التقرير موقع رأس تنورة كأكبر مصفاة وأحد منفذي التصدير (المصدر 1)، ويربط تراجع النفط بسببه المعلن، ويضع الحدث في سياق تصعيد يوليو وعملية «فجر اليمن» والمسار الدبلوماسي في طهران. لكن صندوق «لماذا يهمّ» يبني على مقدمتين صحيحتين، هما منفذا التصدير وتقدم الحوثيين نحو باب المندب، استنتاجاً أوسع من الأدلة: «تتصاعد» و«يطال المنفذين معاً» و«طمأنة المشترين». كما أن الصندوق يناقض تراجع الأسعار الذي يورده المصدر 1.",
-              "repair": "حصر الاستنتاج في أن المنفذ الغربي البديل لهرمز يقع هو الآخر قرب مسرح التقدم الحوثي، مع شرط صريح («إذا اتسعت المواجهة»)، دون نسبة رد فعل إلى المشترين."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "الفقرة الأولى تكرر المقدمة («أصاب هدفه وتسبب في حرائق»). وجملة الأسعار تحاكي ترتيب المصدر 1 وصياغته، وفيها «في مواجهة» الملتبسة. ما عدا ذلك فالتجميع جيد: النفط والطيران معاً، والخلفية ثم الدبلوماسية.",
-              "repair": "دمج إسناد سريع في المقدمة، وافتتاح المتن بأهمية المصفاة والمنفذين. وإعادة صياغة سبب تراجع الأسعار بصيغة الموازنة: «وازن المتداولون بين… و…»."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الأسعار والنسب صحيحة (برنت 0.8% إلى 114.93 دولار، وغرب تكساس 0.9% إلى 100.90 دولار)، وكذلك 86% و13 قتيلاً والتواريخ. لكن ثلاثة مواضع تحتاج تصويباً: أُسقط تحفّظ «عُدّ الأوسع» (المصدر 2)، ونُسبت نصيحة المطارات إلى «المقيمين» (المصدر 3)، واعتُمدت حصيلة «إنذارين» الجزئية بدل سبعة إنذارات في ستة مواقع أوردها المصدر 2 عن الدفاع المدني.",
-              "repair": "استعادة «عُدّ»، وتصويب صياغة النصيحة الأسترالية بحسب المصدر 3، واعتماد حصيلة الإنذارات الأحدث مسندة إلى الدفاع المدني السعودي."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "publish",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يبقى العنوان في حدود ما أعلنه الحوثيون («يعلنون استهداف»). يضيف العنوان الفرعي موقف التحالف وأهمية المصفاة، ويُسند تقديرَ إصابة الهدف واندلاع الحرائق إلى يحيى سريع. ولا تقدّم المسودة اعتراض الصواريخ الثلاثة نحو المنطقة الشرقية على أنه نفي لإصابة المصفاة، فهي تنقل المعلنَين كما وردا في المصدر 1.",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "يفتتح المتن بموقع رأس تنورة: أكبر مصفاة، وأحد منفذي التصدير الرئيسيين مع ينبع (المصدر 1). ثم يربط تراجع برنت وغرب تكساس بسببه كما يذكره المصدر 1. ويضع الهجمات في سياقها: تصعيد يوليو الذي «عُدّ الأوسع» منذ هدنة 2022، وعملية «فجر اليمن» (المصدر 2)، وتقدم الحوثيين نحو باب المندب. ويعرض المسار الدبلوماسي في طهران وفق «إرنا» (المصدر 1) والإعلام الرسمي السعودي (المصدر 3). ويستند صندوق «لماذا يهمّ» إلى مقدمات واردة في المصادر، هي المنفذان (المصدر 1) ومخاطر هرمز (المصدرين 1 و3) والتقدم نحو باب المندب (المصدر 1)، ويستنتج منها أن المنفذ الغربي قد لا يكون بديلاً آمناً تماماً، ويقيّد ذلك بشرط صريح: «إذا اتسعت المواجهة». أما مرور صادرات الخليج عبر هرمز فحقيقة جغرافية عامة، لا خبر مستحدث.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "clear",
-              "evidence": "تؤدي كل فقرة وظيفة محددة: أهمية المصفاة، ثم رواية التحالف والدفاع المدني، ثم قائمة الأهداف الحوثية. بعدها النفط والطيران والتحذير الأسترالي بوصفها آثاراً للحدث نفسه، ثم خلفية التصعيد، ثم المسار الدبلوماسي. زال التكرار بين المقدمة والمتن، وزالت عبارة «في مواجهة» الملتبسة. ولا يكرر الصندوق خاتمة المتن، بل يضيف قيداً على بديل هرمز.",
-              "repair": ""
-            },
-            "precision": {
-              "status": "clear",
-              "evidence": "الأرقام والتواريخ مطابقة للمصادر: برنت تراجع 0.8% إلى 114.93 دولار، وغرب تكساس 0.9% إلى 100.90 دولار. وفي الطيران: 86% من الرحلات أُلغيت بين 8 و25 أكتوبر وفق «سيريم» نقلاً عن رويترز، وأسفر هجوم 10 أكتوبر عن 13 قتيلاً. أطلق الدفاع المدني سبعة إنذارات في ستة مواقع (المصدر 2)، وأُطلقت الصواريخ «الأحد» الموافق «أمس الأول» في المصدر 2. وصيغت النصيحة الأسترالية بنطاقيها الصحيحين (المصدر 3). يبقى تفصيل لفظي واحد هو «نتائج» بدل «مضمون» المحادثات.",
-              "repair": "استبدال «نتائج تلك المحادثات» بـ«مضمون تلك المحادثات»."
-            }
-          }
-        }
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
+      "headline": "Jawboning the Fed: Do Markets Listen When Administrations Talk?",
+      "section": "explainers",
       "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "صادرات النفط السعودي تتدفق عبر ميناءين رئيسيين: رأس تنورة على الخليج وينبع على البحر الأحمر",
-          "source": 1
-        },
-        {
-          "fact": "المتداولون يقيّمون الهجمات الحوثية على السعودية والمخاطر التي تكتنف العبور في مضيق هرمز",
-          "source": 1
-        },
-        {
-          "fact": "الحوثيون سيطروا الشهر الماضي على مناطق على ساحل البحر الأحمر وتقدموا نحو مضيق باب المندب",
-          "source": 1
-        }
-      ],
-      "slug": "houthis-claim-ras-tanura-refinery-strike-7d3679",
-      "title": "الحوثيون يعلنون استهداف مصفاة رأس تنورة السعودية بصاروخ باليستي",
-      "score": 9,
-      "image": "photo"
-    },
-    {
-      "headline": "السعودية تقر نظاماً للمعاملات التجارية من 271 مادة يتيح التجارة من سن 15 عاماً",
-      "section": "economy",
-      "importance": 7,
-      "sources": [
-        "https://aawsat.com/node/5334239",
-        "https://economymiddleeast.com/news/saudi-arabia-approves-271-article-commercial-transactions-law-to-modernize-business-framework/",
-        "https://www.aleqt.com/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1/%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-%D8%AA%D9%82%D8%B1-%D9%86%D8%B8%D8%A7%D9%85%D8%A7-%D9%84%D8%AA%D8%B7%D9%88%D9%8A%D8%B1-%D8%A8%D9%8A%D8%A6%D8%A9-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D9%8A%D8%B3%D9%85%D8%AD-%D9%84%D9%85%D9%86-%D8%A8%D9%84%D8%BA-15-%D8%B9%D8%A7%D9%85%D8%A7-%D8%A8%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D8%A9-15786"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "العنوان والتمهيد والمقدمة توضح الإقرار وحكم سن 15 بشرط الإذن ومهلة الـ180 يوماً. لكنها لا تقول ما الذي يتغير قانونياً: النظام يحل محل ثلاثة أنظمة ويجمع لأول مرة أربعة عقود تجارية في وثيقة واحدة (المصادر 1 و2 و3). كما توحي عبارة «حتى إقرار النظام، كانت» بأن الوضع القائم انتهى، مع أنه مستمر حتى النفاذ.",
-              "repair": "تُذكر الأنظمة الثلاثة المُلغاة والعقود الأربعة في الفقرة الأولى. ويُصاغ الوضع الراهن بصيغة الحاضر: «تخضع حالياً… إلى أن يبدأ العمل بالنظام»."
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "المسودة تعرض علاقة النظام بنظام المعاملات المدنية، وهدف الوزارة في تقليل المنازعات، وخلفية مراجعة 110 تشريعات، وتعرّف الخبيرين بصفتيهما مع نسبة تصريحاتهما إلى «الشرق الأوسط»، وهذا جيد. لكن «لماذا يهمّ» يستند إلى مقدمة خاطئة حين يدرج الأوراق التجارية ضمن ما يُنقل من النظام المدني العام، وهي محكومة بنظام خاص قائم (المصدر 2).",
-              "repair": "يُقصر استنتاج الصندوق على العقود والوكالة. ويُضاف إلى المتن السياق الغائب: الأنظمة الثلاثة التي يحل محلها النظام (المصادر 1 و2 و3)."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "معظم الفقرات تؤدي وظائف واضحة: التعريف، والعلاقة بالنظام المدني، وأحكام المنافسة والسجلات، وآراء المختصين، والخلفية، والنفاذ. الخلل في موضعين: قسم سن 15 جملة يتيمة مكررة المعنى، وشق سن 15 من اقتباس القصبي جاء في فقرة النظام المدني قبل القسم المخصص له. والشق الثاني من «لماذا يهمّ» («يبقى أثر حكم سن 15 عاماً محدوداً بشرط الإذن») يكرر ما في التمهيد والمتن دون معنى إضافي.",
-              "repair": "يُدمج اقتباس القصبي في قسم سن 15 مع شرط الإذن ورأي العبيدي. ويُختصر الصندوق إلى القيد الجوهري: أثر تقليل المنازعات رهن بالتطبيق بعد انقضاء المهلة، مع حذف تكرار شرط الإذن أو تقليصه."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الأرقام صحيحة كلها: 271 مادة، و15 عاماً بإذن الولي أو الوصي أو المحكمة، و180 يوماً من النشر في الجريدة الرسمية، و110 تشريعات، والمرتبة الثالثة والثالثة عشرة بين 70 اقتصاداً، وديسمبر 2023. والهدف منسوب إلى الوزارة لا مقدَّم كأثر متحقق. يبقى خطأ التوقيت في «حتى إقرار النظام، كانت»، وكلمة «كثيرة» غير المسندة في «لماذا يهمّ».",
-              "repair": "«تخضع المعاملات التجارية حالياً، وإلى حين بدء العمل بالنظام الجديد، لنظام المعاملات المدنية في كل مسألة لا يرد فيها نص خاص…»، مع حذف «كثيرة» من الصندوق."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان والتمهيد والمقدمة تقول ما تغيّر: إقرار نظام من 271 مادة يحل محل ثلاثة أنظمة ويتيح التجارة من سن 15 بإذن. وتقول ما لم يتغير بعد: لا نفاذ قبل 180 يوماً من النشر. والخاتمة توضح بقاء الأنظمة الثلاثة نافذة حتى ذلك الحين. ويأتي العنوان دون قيد الإذن، لكن التمهيد يحمله مباشرة، فلا تناقض.",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "المتن يشرح المادة التشريعية التي ينظمها النظام: الأنظمة الثلاثة الملغاة، والعقود الأربعة المجموعة لأول مرة، وعلاقته بنظام المعاملات المدنية النافذ منذ ديسمبر 2023 (المصدر 2). ويذكر هدف الوزارة في تقليل المنازعات ودعم توسع المنشآت الصغيرة والمتوسطة، وخلفية مراجعة 110 تشريعات. ويعرّف الخبيرين بصفتيهما مع نسبة تصريحاتهما إلى «الشرق الأوسط». أما الصندوق فيبني على مقدمة مسندة: النظام المدني يسد الفراغ اليوم (المصدر 2). ويستنتج أن النظام المتخصص يضيّق هذه المساحة، ويقيّد ذلك بالتطبيق بعد المهلة. وهذا استنتاج محدود ومشروط ولا يكرر خاتمة المتن.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "الفقرات تؤدي وظائف متمايزة، واجتمع تصريح القصبي وشرط الإذن ورأي العبيدي في قسم واحد. يبقى خلل في الفقرة الثانية: «وتقول إنها تستهدف بوضوح النصوص المنظمة لهذه العقود أن يسهل توقع الأحكام… وأن تقل المنازعات»، وهو تركيب ملتبس يعسر على القارئ.",
-              "repair": "«وتقول الوزارة إن النصوص الأوضح لهذه العقود تهدف إلى تسهيل توقع الأحكام في التعاملات التجارية وتقليل المنازعات…»."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الأرقام مطابقة للمصادر: 271 مادة، و15 عاماً، و180 يوماً، و110 تشريعات، والمرتبتان الثالثة والثالثة عشرة بين 70 اقتصاداً، وديسمبر 2023. ويُصاغ الوضع الراهن الآن بصيغة الحاضر «تخضع… حالياً، وإلى حين بدء العمل». لكن «فالوزارة تشترط» تجعل الوزارة صاحبة الشرط، وهو حكم في النظام (المصدر 3). وتُضيّق «لتأسيس نشاط تجاري» نطاق الحكم.",
-              "repair": "«إذ يشترط النظام، بحسب الوزارة، إذناً من الولي أو الوصي أو المحكمة لممارسة التجارة في هذه السن»."
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 4,
+      "mendedAfterReview": 5,
       "mendIssues": [
-        "خلل في البناء العربي (الفقرة الثانية من المتن): «وتقول إنها تستهدف بوضوح النصوص المنظمة لهذه العقود أن يسهل توقع الأحكام في التعاملات التجارية وأن تقل المنازعات». الجملة ملتبسة، إذ يُقرأ «بوضوح» حالاً للفعل «تستهدف» (أي تستهدف بشكل واضح)، لا وصفاً لوضوح النصوص. ثم يأتي مفعولا «تستهدف» مصدرين مؤولين متعاقبين. المعنى في المصدر 2 أن النصوص الأوضح يُقصد بها رفع القدرة على التنبؤ وتقليل المنازعات. الإصلاح: «وتقول الوزارة إن النصوص الأوضح لهذه العقود تهدف إلى تسهيل توقع الأحكام في التعاملات التجارية وتقليل المنازعات، وإن النظام يحمي تعاملات التجار…».",
-        "دقة في الإسناد (قسم «التجارة من سن 15 عاماً»): «فالوزارة تشترط أن يحصل صاحبه على إذن من وليه أو وصيه أو من المحكمة». الشرط حكم في النظام، والوزارة تنقله فقط. المصدر 3: «من أبرز أحكام النظام السماح للصغير… شريطة الحصول على إذن»، والمصدر 2: «according to the ministry». كذلك فإن «لتأسيس نشاط تجاري» أضيق من نطاق الحكم، وهو ممارسة التجارة. الإصلاح: «ولا يكفي بلوغ هذه السن وحده لممارسة التجارة، إذ يشترط النظام، بحسب الوزارة، إذناً من الولي أو الوصي أو المحكمة».",
-        "الفقرات تؤدي وظائف متمايزة، واجتمع تصريح القصبي وشرط الإذن ورأي العبيدي في قسم واحد. يبقى خلل في الفقرة الثانية: «وتقول إنها تستهدف بوضوح النصوص المنظمة لهذه العقود أن يسهل توقع الأحكام… وأن تقل المنازعات»، وهو تركيب ملتبس يعسر على القارئ. — «وتقول الوزارة إن النصوص الأوضح لهذه العقود تهدف إلى تسهيل توقع الأحكام في التعاملات التجارية وتقليل المنازعات…».",
-        "الأرقام مطابقة للمصادر: 271 مادة، و15 عاماً، و180 يوماً، و110 تشريعات، والمرتبتان الثالثة والثالثة عشرة بين 70 اقتصاداً، وديسمبر 2023. ويُصاغ الوضع الراهن الآن بصيغة الحاضر «تخضع… حالياً، وإلى حين بدء العمل». لكن «فالوزارة تشترط» تجعل الوزارة صاحبة الشرط، وهو حكم في النظام (المصدر 3). وتُضيّق «لتأسيس نشاط تجاري» نطاق الحكم. — «إذ يشترط النظام، بحسب الوزارة، إذناً من الولي أو الوصي أو المحكمة لممارسة التجارة في هذه السن»."
+        "العنوان الفرعي يحوّل الاقتران إلى سبب: «المطالبة بالتيسير تضعف الدولار». الورقة تقول إن الضغط نحو التيسير «يرافقه» تراجع الدولار («The response is accompanied by dollar depreciation»، و«dovish pressure days are accompanied by a depreciation of the USD»). المتن يصوغ ذلك صوغاً صحيحاً: «يتراجع الدولار في الأيام التي…». التصحيح: «المطالبة بالتيسير ترفع احتمال الخفض في الاجتماع التالي ويرافقها تراجع الدولار، دون أن تمسّ توقعات التضخم».",
+        "المشكلة الرابعة في الملاحظات السابقة عادت بصيغة أخرى: «فالأسواق تعيد حساب الخفض القريب ولا تغيّر نظرتها إلى الفائدة البعيدة». الورقة لا تقول إن الأسواق لا تغيّر نظرتها، بل إن الأثر في الآجال الأطول «statistically indistinguishable from zero»، أي إنه لا يمكن رصده. التصحيح: «فالأثر يتركز في توقعات الخفض القريب، ولا يظهر أثر يمكن رصده في الفائدة الأبعد أجلاً».",
+        "صندوق «لماذا يهمّ» يقدّم تفسير الباحثين على أنه حقيقة ثابتة: «ثبتت ثقة المستثمرين بهدف الفيدرالي للتضخم». الثابت في الورقة أن توقعات التضخم المستخلصة من الأسواق وتقلبات الأسواق لم تتحرك، وأن ذلك «consistent with markets retaining confidence». وعبارة «قبل أن تُختبر في مصداقية هدف التضخم» توحي بتسلسل زمني لا تقدمه المقدمات، ولا شيء في الورقة يدل على اختبار لاحق لمصداقية هدف التضخم. التصحيح: «لم تتحرك توقعات التضخم في أيام الضغط، لكن الفائدة المنتظرة في الأشهر المقبلة تراجعت. فإن كان البنك يأخذ ما تسعّره الأسواق في حسابه، فاستقلاليته تُختبر في مسار الفائدة القريب لا في مصداقية هدف التضخم».",
+        "تفكك وترتيب معكوس في الفقرتين الأخيرتين. فقرة «ويكون رد فعل الأسواق أكبر بوضوح حين يكون مجلس محافظي الفيدرالي متوافقاً…» جملة واحدة تجيب عن اعتراض لا يُطرح إلا في الفقرة التالية («لكنهم يقرّون بأن السياسيين قد يطالبون بالتيسير حين تستدعيه الظروف أصلاً…»). في الورقة يأتي الاعتراض أولاً ثم اختبار توافق المجلس رداً عليه. الإصلاح: فقرة واحدة تبدأ بالاحتمال الذي يقرّ به الباحثون، ثم تذكر أن الأثر أكبر حين يتوافق المجلس مع الإدارة، ثم تنقل تقديرهم أن ذلك يصعب تفسيره لو كان الضغط مجرد صدى للأوضاع الاقتصادية. ويبقى قيد «الضغط العلني الذي يذكر الفيدرالي بالاسم» جملة ختامية مستقلة.",
+        "عنوان بند في المعلومات الأساسية ركيك: «الأجل الذي لا يعود بعده للأثر وجود يمكن رصده». البديل: «الأجل الذي يتلاشى بعده الأثر المرصود»، أو «حدّ الأثر القابل للرصد»."
       ],
       "precheck": {
         "ok": true,
@@ -171,302 +23,173 @@
         "rounds": 1,
         "found": 0
       },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "تخضع المعاملات التجارية حالياً لنظام المعاملات المدنية في المسائل الخالية من نص تجاري خاص ما دام تطبيقه لا يتعارض مع طابعها التجاري، والنظام الجديد يضع إطاراً أكثر تخصصاً",
-          "source": 2
-        },
-        {
-          "fact": "ينظم النظام البيع التجاري والبيع بالتوريد والوكالة التجارية والوساطة في وثيقة تشريعية واحدة ويحدد حقوق الأطراف والتزاماتهم",
-          "source": 2
-        },
-        {
-          "fact": "قالت وزارة التجارة إن النظام يهدف إلى زيادة القدرة على توقع الأحكام وتقليل المنازعات",
-          "source": 3
-        },
-        {
-          "fact": "يبدأ العمل بالنظام بعد 180 يوماً من نشره في الجريدة الرسمية، ويحل حينها محل النظام التجاري ونظام الأوراق التجارية ونظام الدفاتر التجارية",
-          "source": 2
-        }
-      ],
-      "slug": "saudi-commercial-transactions-law-age-15-5712f9",
-      "title": "السعودية تقر نظاماً للمعاملات التجارية يتيح ممارسة التجارة من سن 15 عاماً",
-      "score": 8,
-      "image": "cover-art"
-    },
-    {
-      "headline": "قطر تضاعف تقريباً مبادرة إدارة الأصول النشطة إلى 5 مليارات ريال لتنشيط بورصتها",
-      "section": "markets",
-      "importance": 7,
-      "sources": [
-        "https://www.agbi.com/markets/2026/10/qatar-bulks-up-stock-market-fund-to-attract-investment/",
-        "https://www.gulf-times.com/article/736825/business/doha-investment-expands-qatars-active-asset-management-initiative-to-qr5bn"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يوضح العنوان والمقدمة أن ما تغير هو حجم المبادرة، من 2.6 إلى 5 مليارات ريال، بأموال نقدية جديدة متاحة لمديري الأصول المؤهلين. ولا يقدّم التقرير الخطوة على أنها أنعشت السوق.",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "يعرّف التقرير «الدوحة للاستثمار» بأنها تابعة لجهاز قطر للاستثمار، الصندوق السيادي. ويعرّف «كامكو إنفست» بأنها كويتية، ويذكر أهداف البرنامج ومديريه الأربعة وأداء السوق، وكلها من المصدرين 1 و2. الصندوق يقرأ الخطوة طلباً سيادياً مباشراً على الأسهم، ويقيّد أثرها بسرعة التوظيف واجتذاب مستثمرين آخرين، وهو استنتاج محدود قائم على مقدمات مسنودة.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "أرقام السوق موزعة بين المقدمة («وتراجع المؤشر الرئيسي...») والفقرة الثالثة. الفقرة الأولى من المتن تفتتح بإحالة إلى ما قبلها («بهذا القرار»). والتقرير يختم بثناء عام («دليلاً على الفرص الكبيرة»).",
-              "repair": "تُجمع أرقام المؤشر والقيمة السوقية والتداول في فقرة واحدة بعد القرار بصيغة تزامن. ثم تأتي فقرة الخلفية: إطلاق المبادرة في 2024، وتوظيف كامل الـ2.6 مليار، والمديرون الأربعة. ثم الأهداف المعلنة مع تصريح الوزير. ويُختم بضم مشاركين جدد بوصفه الخطوة التالية."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "عبارة «القيمة الإجمالية للسوق» تُرجمت ترجمة حرفية بدل «القيمة السوقية». وعبارة «ما يعني أن الأموال الإضافية مفتوحة لمديرين من خارج القائمة الحالية» تقدم استنتاج الكاتب على أنه خبر. ونسبة وكالة الأنباء القطرية مربوطة بمعادل الدولار، بينما نقلها المصدر 1 عن الوكالة بشأن الزيادة نفسها.",
-              "repair": "يُستخدم «القيمة السوقية». ويُحذف «ما يعني...» ويُكتفى بما ورد في المصدر 2. وتُربط نسبة «وكالة الأنباء القطرية» بالإعلان عن رفع الحجم إلى 5 مليارات ريال (نحو 1.4 مليار دولار)."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "المقدمة تبيّن بوضوح ما تغيّر: الحجم ارتفع من 2.6 إلى 5 مليارات ريال بتمويل نقدي جديد. والعنوان الفرعي يضيف شرط الأهلية. لكن العنوان يقول «ترفع مبادرة» لا «ترفع حجم مبادرة».",
-              "repair": "«\"الدوحة للاستثمار\" ترفع حجم مبادرة قطر لإدارة الأصول النشطة إلى 5 مليارات ريال»."
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "التقرير يعرّف «الدوحة للاستثمار» بتبعيتها لصندوق الثروة السيادي، ويضع القرار بصيغة تزامن في سياق تراجع المؤشر 18% وهو الأسوأ خليجياً، وتراجع القيمة السوقية 16%، وانخفاض التداول. ويذكر هدف المبادرة ومديريها الأربعة (المصدران 1 و2). مقدمات «لماذا يهمّ» مسندة: التمويل نقدي، وسوق تراجعت قيمتها وتداولها، وهدف زيادة التداول. والاستنتاج أن الصندوق يصبح مصدراً للطلب، مقيّداً بسرعة التوظيف وبقدرة المبادرة على اجتذاب مستثمرين آخرين، استنتاج محدود ومشروط ومعقول.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "التسلسل جيد في عمومه: القرار، ثم أداء السوق، ثم الخلفية، ثم الأهداف، ثم التصريح. لكن التقرير يُختم بعبارة التزام عامة («وأن المنصة ملتزمة بتطوير منظومة...») بدل الخطوة التالية، وتتكرر عبارة «كامل حجمها السابق» في العنوان الفرعي والمتن.",
-              "repair": "حذف عبارة الالتزام العامة، ونقل جملة ضم مشاركين جدد بانتظام إلى الخاتمة، وإعادة صياغة جملة التوظيف في المتن بحيث تضيف معنى لا تكرار."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الأرقام مطابقة للمصادر (5 و2.6 مليار ريال، 1.4 مليار دولار، 18%، 16%، 413 مقابل 431 مليوناً). لكن نسبة وكالة الأنباء القطرية تقع على معادل الدولار وحده، ووقائع الإطلاق والشراكات منسوبة إلى «أرابيان غلف بيزنس إنسايت» مع أن مصدرها بيان «الدوحة للاستثمار» (المصدر 2).",
-              "repair": "ربط نسبة الوكالة بالزيادة نفسها مع ذكر المعادل بالدولار بين قوسين، ونسبة الإطلاق والشراكات إلى بيان «الدوحة للاستثمار»."
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 9,
-      "mendIssues": [
-        "خطأ في النسبة. يرد في الفقرة الثالثة: «وبحسب «أرابيان غلف بيزنس إنسايت»، أطلق جهاز قطر للاستثمار المبادرة في 2024 ... وهي تعقد شراكات مع مديري أصول عالميين ومحليين يملكون خبرة راسخة في قطر ودول الخليج». إطلاق جهاز قطر للاستثمار للمبادرة وشراكاتها مع مديرين ذوي خبرة في قطر والخليج واردان في المصدر 2 (بيان «الدوحة للاستثمار» كما نشرته «غلف تايمز»). أما المصدر 1 فينسب إليه الهدف فقط، أي جذب الاستثمار وزيادة التداول وتطوير صناعة إدارة الأصول. الإصلاح: «وأطلق جهاز قطر للاستثمار المبادرة في 2024، وهي تعقد شراكات مع مديري أصول عالميين ومحليين ذوي خبرة في قطر ودول الخليج، بحسب بيان «الدوحة للاستثمار». ويهدف البرنامج، كما أورد «أرابيان غلف بيزنس إنسايت»، إلى جذب الاستثمار…» (المصدران 1 و2). ويُقسم الكلام إلى جملتين لأن الجملة الحالية تبلغ 41 كلمة.",
-        "الملاحظة السابقة رقم 2 لم تُعالج. العنوان «ترفع مبادرة قطر لإدارة الأصول النشطة إلى 5 مليارات ريال» ما زال يجعل المبادرة نفسها هي التي تُرفع. الإصلاح: «\"الدوحة للاستثمار\" ترفع حجم مبادرة قطر لإدارة الأصول النشطة إلى 5 مليارات ريال» (المصدر 2).",
-        "الملاحظة السابقة رقم 9 بقيت جزئياً. نسبة وكالة الأنباء القطرية ما زالت مربوطة بمعادل الدولار وحده: «وبحسب ما نقلته وكالة الأنباء القطرية الرسمية، تعادل الأموال المتاحة لمديري الاستثمار ضمن المبادرة بعد زيادتها 1.4 مليار دولار». المصدر 1 ينسب إلى الوكالة رفعَ الأموال المتاحة من 2.6 إلى 5 مليارات ريال، لا التحويل إلى الدولار وحده. الإصلاح: «وكانت وكالة الأنباء القطرية قد أوردت أن الأموال المتاحة لمديري الاستثمار ارتفعت من 2.6 مليار إلى 5 مليارات ريال (نحو 1.4 مليار دولار)، وهي مفتوحة لمديري الأصول المحليين والدوليين المؤهلين» (المصدران 1 و2).",
-        "الملاحظة السابقة رقم 1 بقيت. الجملة «وأورد موقع «أرابيان غلف بيزنس إنسايت» (AGBI) المتخصص في أخبار الأعمال الخليجية أن السوق تجد صعوبة ... مقارنة بـ431 مليوناً في 2025» تبلغ نحو 45 كلمة. الإصلاح: تُقسم إلى جملتين، الأولى عن صعوبة جذب المستثمرين، والثانية عن تراجع القيمة السوقية 16% وانخفاض متوسط التداول اليومي من 431 مليون ريال في 2025 إلى 413 مليوناً (المصدر 1).",
-        "الخاتمة ما زالت تنتهي بكلام عام بلا قرار ولا رقم: «وأن المنصة ملتزمة بتطوير منظومة إدارة الأصول وأسواق رأس المال بوصفها أداة لدفع النمو الاقتصادي». فتبقى الملاحظتان 7 و8 قائمتين جزئياً. كما أن الخطوة التالية مدفونة في الفقرة الرابعة مع حشو «إلى جانب المديرين الأربعة الحاليين». الإصلاح: حذف عبارة الالتزام العامة، والاكتفاء من تصريح الشيخ فيصل بالسوق الأكثر نشاطاً وتنوعاً والإقبال المتزايد من المديرين. ثم يُختم التقرير بأن المبادرة ستواصل ضم مشاركين محليين ودوليين جدد بانتظام (المصدر 2).",
-        "تكرار يعيد المعنى دون إضافة. عبارة «وظّفت ... كامل حجمها السابق البالغ 2.6 مليار ريال» ترد بلفظها تقريباً في العنوان الفرعي وفي الفقرة الثالثة. الإصلاح: يُبقى الرقم في العنوان الفرعي، وتُكتب العبارة في المتن بصيغة تضيف معنى، مثل «أي أنها استخدمت كل ما خُصص لها قبل مضاعفة حجمها تقريباً» (المصدر 2).",
-        "المقدمة تبيّن بوضوح ما تغيّر: الحجم ارتفع من 2.6 إلى 5 مليارات ريال بتمويل نقدي جديد. والعنوان الفرعي يضيف شرط الأهلية. لكن العنوان يقول «ترفع مبادرة» لا «ترفع حجم مبادرة». — «\"الدوحة للاستثمار\" ترفع حجم مبادرة قطر لإدارة الأصول النشطة إلى 5 مليارات ريال».",
-        "التسلسل جيد في عمومه: القرار، ثم أداء السوق، ثم الخلفية، ثم الأهداف، ثم التصريح. لكن التقرير يُختم بعبارة التزام عامة («وأن المنصة ملتزمة بتطوير منظومة...») بدل الخطوة التالية، وتتكرر عبارة «كامل حجمها السابق» في العنوان الفرعي والمتن. — حذف عبارة الالتزام العامة، ونقل جملة ضم مشاركين جدد بانتظام إلى الخاتمة، وإعادة صياغة جملة التوظيف في المتن بحيث تضيف معنى لا تكرار.",
-        "الأرقام مطابقة للمصادر (5 و2.6 مليار ريال، 1.4 مليار دولار، 18%، 16%، 413 مقابل 431 مليوناً). لكن نسبة وكالة الأنباء القطرية تقع على معادل الدولار وحده، ووقائع الإطلاق والشراكات منسوبة إلى «أرابيان غلف بيزنس إنسايت» مع أن مصدرها بيان «الدوحة للاستثمار» (المصدر 2). — ربط نسبة الوكالة بالزيادة نفسها مع ذكر المعادل بالدولار بين قوسين، ونسبة الإطلاق والشراكات إلى بيان «الدوحة للاستثمار»."
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "رفعت «الدوحة للاستثمار» حجم المبادرة من 2.6 مليار إلى 5 مليارات ريال بتمويل نقدي جديد",
-          "source": 2
-        },
-        {
-          "fact": "المبادرة وظّفت 2.6 مليار ريال منذ انطلاقها في 2024",
-          "source": 2
-        },
-        {
-          "fact": "القيمة السوقية للبورصة القطرية انخفضت 16% منذ بداية العام ومتوسط التداول اليومي تراجع إلى 413 مليون ريال من 431 مليوناً في 2025",
-          "source": 1
-        },
-        {
-          "fact": "يهدف البرنامج إلى جذب الاستثمار إلى الأسواق المالية القطرية وزيادة نشاط التداول",
-          "source": 1
-        }
-      ],
-      "slug": "qatar-expands-active-asset-management-initiative-576de3",
-      "title": "«الدوحة للاستثمار» ترفع حجم مبادرة قطر لإدارة الأصول النشطة إلى 5 مليارات ريال",
+      "slug": "political-pressure-fed-moves-near-term-rates-387cc7",
+      "title": "ضغط السياسيين على الفيدرالي طلباً للتيسير يخفض توقعات الفائدة القريبة",
       "score": 8,
       "image": "photo"
-    },
-    {
-      "headline": "سوريا تغلق معبر نصيب وتعلّق التبادل التجاري مع الأردن",
-      "section": "economy",
-      "importance": 6,
-      "outcome": "deferred: run budget spent"
     }
   ],
   "llm": {
-    "calls": 71,
-    "failures": 5,
-    "promptTokens": 954329,
-    "completionTokens": 229689,
-    "cacheReadTokens": 218580,
-    "costUsd": 10.5231,
+    "calls": 17,
+    "failures": 0,
+    "promptTokens": 243743,
+    "completionTokens": 59017,
+    "cacheReadTokens": 63132,
+    "costUsd": 2.6377,
     "byModel": {
-      "claude-cli/claude-opus-5-5": 71
+      "claude-cli/claude-opus-5-5": 17
     }
   },
   "log": [
-    "[16:10:42] image: dropped \"Detailed view of cryptocurrency trading charts on digital screens, sho\" — names too little of traders",
-    "[16:10:42] image: dropped \"High-resolution candlestick chart showing forex trading trends and ana\" — names too little of traders",
-    "[16:10:42] image: dropped \"Close-up of a smartphone screen displaying a stock trading app with ca\" — names too little of traders",
-    "[16:10:42] image: dropped \"Financial candlestick chart showing market trends and data visualizati\" — names too little of traders",
-    "[16:10:42] image: dropped \"Monitors displaying stock market charts in a dimly lit room, perfect f\" — names too little of traders",
-    "[16:10:42] image: dropped \"Colorful financial chart displaying market trends and analysis on a sc\" — names too little of traders",
-    "[16:10:42] commons \"Qatari riyal banknotes\": 0 usable of 0",
-    "[16:10:45] commons \"Qatari riyal\": 1 usable of 24",
-    "[16:10:45] image: dropped \"QAT001.JPG\" — names too little of riyal",
-    "[16:10:45] image: dropped \"Colorful assortment of international paper currencies from various cou\" — names too little of riyal, banknotes",
-    "[16:10:46] commons \"Qatar Exchange trading floor\": 1 usable of 1",
-    "[16:10:46] image: dropped \"2008 Summer Olympics - Opening Ceremony - Beijing, China 同一个世界 同一个梦想 -\" — names too little of trading, floor",
-    "[16:11:25] openverse \"Qatar Exchange trading floor\": The operation was aborted due to timeout",
-    "[16:11:25] image: dropped \"Close-up of a smartphone displaying stock market data over a dollar bi\" — names too little of trading, floor",
-    "[16:11:25] image: dropped \"Detailed view of a stock report displaying a market performance graph \" — names too little of trading, floor",
-    "[16:11:25] openverse \"stock investors Qatar\": The operation was aborted due to timeout",
-    "[16:11:25] openverse \"stock traders\": The operation was aborted due to timeout",
-    "[16:11:25] commons \"stock investors Qatar\": 0 usable of 1",
-    "[16:11:30] commons \"stock investors\": 9 usable of 24",
-    "[16:11:30] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
-    "[16:11:30] image: dropped \"Poulsen Wireless Telephone and Telegraph Company stock certificate.jpg\" — dated 1909, an archival picture",
-    "[16:11:30] image: dropped \"B&O RR common stock.jpg\" — dated 1903, an archival picture",
-    "[16:11:30] image: dropped \"Public transport share taxi in Maracaibo city, Zulia, Venezuela.jpg\" — names too little of stock, investors",
-    "[16:11:31] commons \"stock traders\": 5 usable of 24",
-    "[16:11:31] image: dropped \"Toronto Stock Exchange 1956.jpg\" — dated 1956, an archival picture",
-    "[16:11:31] image: dropped \"The diseases of live stock and their most efficient remedies; (1855) (\" — dated 1855, an archival picture",
-    "[16:11:31] image: dropped \"Two businessmen reviewing financial data on a laptop indoors, analyzin\" — names too little of stock, traders",
-    "[16:11:31] image: dropped \"Frustrated man monitoring multiple trading graphs on computer screens \" — names too little of stock, traders",
-    "[16:11:31] image: dropped \"UK Stock Market - Investing in the United Kingdom.jpg\" — taken in United Kingdom, which the story does not name",
-    "[16:11:31] image: dropped \"US Stock Market - Investing in the United States.jpg\" — taken in United States, which the story does not name",
-    "[16:11:31] image: dropped \"Traders on a break, NYSE (3961958594).jpg\" — taken in United States, which the story does not name",
-    "[16:11:31] image: dropped \"Deutsche-boerse-parkett-ffm006.jpg\" — taken in Germany, which the story does not name",
-    "[16:11:31] image: dropped \"Investors Group CANnwt vs USnwt centre pitch.JPG\" — taken in Canada, which the story does not name",
-    "[16:11:52] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1741 attempt=1 ms=21088",
-    "[16:11:52] image: vision rejected all candidates (fallback pass) (No candidate shows Qatar's sovereign fund putting cash into a falling market. Photo 1, the only plausible one, is an Arabic ticker board, but the legible company names (Abu Dhabi National and others) place it on a UAE exchange, which would mislead under a Qatar-only story. Photos 2 and 3 are chart close-ups. Photo 4 is a posed stock image with on-screen branding. Photos 5 and 6 show Kazakh and Jordanian notes, the wrong currencies, and 6 is a flat amateur shot.)",
-    "[16:11:52] image: the story's people first: Faisal bin Thani Al Thani 2026 | Faisal bin Thani Al Thani | الشيخ فيصل بن ثاني آل ثاني | الشيخ ثاني",
-    "[16:11:53] commons \"Faisal bin Thani Al Thani 2026\": 1 usable of 1",
-    "[16:11:53] image: dropped \"Visit of Josep Borrell Fontelles, to Luxembourg (P-063601-00-03).jpg\" — names none of the story's people",
-    "[16:11:54] commons \"Faisal bin Thani Al Thani\": 16 usable of 20",
-    "[16:11:54] commons \"الشيخ فيصل بن ثاني آل ثاني\": 0 usable of 0",
-    "[16:11:56] commons \"الشيخ فيصل\": 4 usable of 20",
-    "[16:11:56] image: dropped \"الشيخ محمد بن فيصل القاسمي - الشارقة.jpg\" — names none of the story's people",
-    "[16:11:56] image: dropped \"سمو الشيخ محمد بن فيصل القاسمي.jpg\" — names none of the story's people",
-    "[16:11:56] image: dropped \"فيصل المنصور أيمن ذو الغنى محمد نبيل حسني أحمد حسانين.jpg\" — names none of the story's people",
-    "[16:11:56] image: dropped \"مؤسس شركة ام بي اف، سمو الشيخ محمد القاسمي.jpg\" — names none of the story's people",
-    "[16:11:57] commons \"الشيخ ثاني\": 11 usable of 20",
-    "[16:11:57] image: dropped \"تميم بن حمد بن خليفة آل ثاني (49759678641).jpg\" — shows tamim, not the story's people",
-    "[16:11:57] image: dropped \"Scottish First Minister meets Hamad bin Khalifa Al Thani, Emir of Qata\" — shows hamad, not the story's people",
-    "[16:11:57] image: dropped \"Imam Khamenei met with Emir of Qatar, Feb. 19, 2025 1.jpg\" — shows tamim, not the story's people",
-    "[16:11:57] image: dropped \"Imam Khamenei met with Emir of Qatar, Feb. 19, 2025 6.jpg\" — shows tamim, not the story's people",
-    "[16:11:57] image: dropped \"Imam Khamenei met with Emir of Qatar, Feb. 19, 2025 4.jpg\" — shows tamim, not the story's people",
-    "[16:11:57] image: dropped \"HH The Amir Receives Pakistan’s Ambassador HE Syed Hassan Raza.jpg\" — names too little of الشيخ, ثاني",
-    "[16:11:57] image: dropped \"Rusia entregó el relevo de la antorcha de la Copa del Mundo a Qatar.jp\" — names too little of الشيخ, ثاني",
-    "[16:11:57] image: set aside \"سعادة الشيخ ثاني بن عبدالله آل ثاني - رئيس مجلس المديرين - م\" — a 2015 photograph of a person, older than 2018",
-    "[16:11:57] image: set aside \"Antique telephones in Sheikh Faisal bin Qassim Al Thani Muse\" — a 2013 photograph of a person, older than 2018",
-    "[16:11:57] image: set aside \"Arabic calligraphy hall in Sheikh Faisal bin Qassim Al Thani\" — a 2013 photograph of a person, older than 2018",
-    "[16:11:57] image: set aside \"Prayer beads on display in Sheikh Faisal bin Qassim Al Thani\" — a 2015 photograph of a person, older than 2018",
-    "[16:11:57] image: set aside \"Jewelry being shown at Sheikh Faisal bin Qassim Al Thani Mus\" — a 2015 photograph of a person, older than 2018",
-    "[16:11:57] image: set aside \"Reconstruction of a bedouin house in Sheikh Faisal bin Qassi\" — a 2013 photograph of a person, older than 2018",
-    "[16:11:57] image: people shortlist: 2025 الشيخ د. عبد العزيز آل ثاني يلقي محاضرة على المسرح | 2024 الشيخ شامان بن ثاني القلادي.jpg",
-    "[16:12:04] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=116 attempt=1 ms=4638",
-    "[16:12:04] image: vision rejected all candidates (Neither photograph shows Faisal bin Thani Al Thani or the story's subject. Candidate 1 shows a different person, Sheikh Dr. Abdulaziz Al Thani, lecturing at an unrelated event. Candidate 2 is a blurry projected drawing of another person, Sheikh Shaman bin Thani Al-Qaladi, not a news photograph. Choosing none lets the fallback find a scene of the Qatari market or traders.)",
-    "[16:12:04] image: nothing of them since 2018 fits; their newest older photographs, run as file photos: 2015 سعادة الشيخ ثاني بن عبدالله آل ثاني - رئ | 2013 Antique telephones in Sheikh Faisal bin  | 2013 Arabic calligraphy hall in Sheikh Faisal | 2015 Prayer beads on display in Sheikh Faisal",
-    "[16:12:11] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=167 attempt=1 ms=5239",
-    "[16:12:11] image: vision rejected all candidates (No candidate shows Faisal bin Thani Al Thani or Qatar's stock market. Photo 1 is a black-and-white studio portrait of a different person, Sheikh Thani bin Abdullah Al Thani of Sakk Holding, which would mislead readers. Photos 2-6 are amateur museum shots of antique phones, calligraphy, prayer beads, jewellery and a bedouin house at the Sheikh Faisal bin Qassim Al Thani Museum. They have nothing to do with sovereign-fund cash going into the Qatari stock market, and their folkloric look is wrong for a serious economics story. Choosing none lets the desk find a suitable picture, such as trading at the Qatar Stock Exchange.)",
-    "[16:12:16] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=300 attempt=1 ms=4964",
-    "[16:12:16] image: last resort: Qatar Stock Exchange screens Qatar | Qatar Stock Exchange screens | Qatar Stock Exchange screens industrial",
-    "[16:12:17] commons \"Qatar Stock Exchange screens Qatar\": 0 usable of 0",
-    "[16:12:17] commons \"Qatar Stock\": 18 usable of 24",
-    "[16:12:17] image: dropped \"Dsm headquarters heerlen netherlands 2011.jpg\" — names too little of stock",
-    "[16:12:17] image: dropped \"TourThuringe DSM bus.jpg\" — names too little of stock",
-    "[16:12:17] image: dropped \"DSM Produktionsstandort Sisseln, Aargau.jpg\" — names too little of stock",
-    "[16:12:17] image: dropped \"Sittard DSM-kantoor.jpg\" — names too little of stock",
-    "[16:12:17] image: dropped \"Krankenhaus DSM (48710226841).jpg\" — names too little of stock",
-    "[16:12:17] image: dropped \"Krankenhaus DSM (48710226831).jpg\" — names too little of stock",
-    "[16:12:17] image: dropped \"Hoofdkantoor DSM Heerlen.jpg\" — names too little of stock",
-    "[16:12:17] image: dropped \"Krankenhaus DSM (48709890003).jpg\" — names too little of stock",
-    "[16:12:17] image: dropped \"Lokomotif DSM 28.jpg\" — names too little of stock",
-    "[16:12:17] image: dropped \"Krankenhaus DSM (48710226746).jpg\" — names too little of stock",
-    "[16:12:17] image: dropped \"DSM Produktionsstandort in Sisseln, Aargau.jpg\" — names too little of stock",
-    "[16:12:17] image: dropped \"Krankenhaus DSM (48710226851).jpg\" — names too little of stock",
-    "[16:12:17] commons \"Qatar Stock Exchange screens\": 0 usable of 1",
-    "[16:12:17] commons \"Qatar Stock\": 18 usable of 24",
-    "[16:12:18] commons \"Qatar Stock Exchange screens industrial\": 0 usable of 0",
-    "[16:12:18] commons \"Qatar Stock\": 18 usable of 24",
-    "[16:12:18] image: last pass, a neutral illustration: investors watching screens | riyal banknotes | trading floor | stock investors | stock traders",
-    "[16:12:18] pexels \"stock traders\": 8 usable",
-    "[16:12:18] pexels \"riyal banknotes\": 8 usable",
-    "[16:12:18] pexels \"trading floor\": 8 usable",
-    "[16:12:18] commons \"investors watching screens\": 1 usable of 5",
-    "[16:12:18] image: dropped \"Bavariafilmplatz 7 (Grünwald).jpg\" — names too little of investors, watching, screens",
-    "[16:12:18] pexels \"investors watching screens\": 8 usable",
-    "[16:12:19] pexels \"stock investors\": 8 usable",
-    "[16:13:03] openverse \"investors watching screens\": The operation was aborted due to timeout",
-    "[16:13:03] image: dropped \"Two businessmen discussing financial data on a tablet during a meeting\" — names too little of investors, watching, screens",
-    "[16:13:03] openverse \"riyal banknotes\": The operation was aborted due to timeout",
-    "[16:13:03] openverse \"trading floor\": The operation was aborted due to timeout",
-    "[16:13:04] commons \"riyal banknotes\": 11 usable of 24",
-    "[16:13:04] image: dropped \"1968 Saudi 10 Riyal.jpg\" — dated 1968, an archival picture",
-    "[16:13:04] image: dropped \"2026. Río Sar. Padrón. Galiza.jpg\" — names too little of riyal, banknotes",
-    "[16:13:04] image: dropped \"2026. Río Sar. Padrón. Galiza-2.jpg\" — names too little of riyal, banknotes",
-    "[16:13:04] image: dropped \"Río Sar- Parque Eugenio Granell - Santiago de Compostela 1.jpg\" — names too little of riyal, banknotes",
-    "[16:13:04] image: dropped \"2026. Río Sar e Ponte de Santiago. Padrón. Galiza.jpg\" — names too little of riyal, banknotes",
-    "[16:13:04] image: dropped \"Colorful assortment of international paper currencies from various cou\" — names too little of riyal, banknotes",
-    "[16:13:04] commons \"trading floor\": 0 usable of 0",
-    "[16:13:05] commons \"floor\": 20 usable of 24",
-    "[16:13:05] image: dropped \"Dülmen, St.-Viktor-Kirche, Innenansicht -- 2020 -- 6115.jpg\" — names too little of floor",
-    "[16:13:05] image: dropped \"Dülmen, Alte Brennerei Löhning -- 2015 -- 8609-13.jpg\" — names too little of floor",
-    "[16:13:05] image: dropped \"Kopenhagen (DK), Nyhavn -- 2017 -- 1711.jpg\" — names too little of floor",
-    "[16:13:05] image: dropped \"Royal Albert Hall, London - Nov 2012.jpg\" — names too little of floor",
-    "[16:13:05] image: dropped \"Palais Garnier's grand salon, 12 February 2008.jpg\" — names too little of floor",
-    "[16:13:05] image: dropped \"Interior of St Andrew's Catholic Church in Roanoke, Virginia.jpg\" — names too little of floor",
-    "[16:13:05] image: dropped \"Pfarrkirche Ellmau, 160618, ako.jpg\" — names too little of floor",
-    "[16:13:05] image: dropped \"Monumento de Guerra, Jardín del Patio, Múnich, Alemania, 2017-07-07, D\" — names too little of floor",
-    "[16:13:05] image: dropped \"Metro MSK Line5 Novoslobodskaya.jpg\" — names too little of floor",
-    "[16:13:05] image: dropped \"2011-09-15 13-20-34-eglise-st-maimboeuf.jpg\" — names too little of floor",
-    "[16:13:05] image: dropped \"Four ladies wearing a yukata in front of the North Gate of Kiyomizu-de\" — names too little of floor",
-    "[16:13:05] image: dropped \"A person observing cryptocurrency trends on a laptop indoors.\" — names too little of trading, floor",
-    "[16:13:05] image: dropped \"Close-up of stock market analysis charts on a monitor, showcasing mark\" — names too little of trading, floor",
-    "[16:13:05] image: dropped \"Stacks of Bitcoin with a colorful financial graph in the background de\" — names too little of trading, floor",
-    "[16:13:05] image: dropped \"Iconic neoclassical facade of the New York Stock Exchange with America\" — names too little of trading, floor",
-    "[16:13:05] image: dropped \"Close-up of a smartphone displaying stock market data over a dollar bi\" — names too little of trading, floor",
-    "[16:13:05] image: dropped \"Man doing sit-ups near a laptop showing stock market trends in a brigh\" — names too little of trading, floor",
-    "[16:13:05] image: dropped \"A man analyzing stock market graphs on multiple screens at a workstati\" — names too little of trading, floor",
-    "[16:13:05] image: dropped \"Man in a headset analyzing stock data on a computer monitor at his wor\" — names too little of trading, floor",
-    "[16:13:05] commons \"stock investors\": 9 usable of 24",
-    "[16:13:05] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
-    "[16:13:05] image: dropped \"Poulsen Wireless Telephone and Telegraph Company stock certificate.jpg\" — dated 1909, an archival picture",
-    "[16:13:05] image: dropped \"B&O RR common stock.jpg\" — dated 1903, an archival picture",
-    "[16:13:05] image: dropped \"Public transport share taxi in Maracaibo city, Zulia, Venezuela.jpg\" — names too little of stock, investors",
-    "[16:13:05] commons \"stock traders\": 5 usable of 24",
-    "[16:13:05] image: dropped \"Toronto Stock Exchange 1956.jpg\" — dated 1956, an archival picture",
-    "[16:13:05] image: dropped \"The diseases of live stock and their most efficient remedies; (1855) (\" — dated 1855, an archival picture",
-    "[16:13:48] openverse \"stock investors\": The operation was aborted due to timeout",
-    "[16:13:48] openverse \"stock traders\": The operation was aborted due to timeout",
-    "[16:13:48] image: dropped \"Two businessmen reviewing financial data on a laptop indoors, analyzin\" — names too little of stock, traders",
-    "[16:13:48] image: dropped \"Frustrated man monitoring multiple trading graphs on computer screens \" — names too little of stock, traders",
-    "[16:13:48] image: dropped \"High-resolution candlestick chart showing forex trading trends and ana\" — names too little of stock, traders",
-    "[16:13:48] image: dropped \"Detailed view of cryptocurrency trading charts on digital screens, sho\" — names too little of stock, traders",
-    "[16:13:48] image: dropped \"Financial candlestick chart showing market trends and data visualizati\" — names too little of stock, traders",
-    "[16:14:01] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=872 attempt=1 ms=12602",
-    "[16:14:04] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=105 attempt=1 ms=2801",
-    "[16:14:12] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=545 attempt=1 ms=8228",
-    "[16:14:12] image: second check (claude-cli/claude-opus-5-5) STOCK — refused \"Trader in white shirt analyzing stock charts on multiple mon\": A posed stock photograph of a grimacing model holding a tablet chart, with a hand-drawn red question mark on the screens",
-    "[16:14:26] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1018 attempt=1 ms=13472",
-    "[16:14:32] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=555 attempt=1 ms=6687",
-    "[16:14:45] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=846 attempt=1 ms=12640",
-    "[16:14:45] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Professional analyzing stock market graphs on multiple monit\": An anonymous analyst working at several monitors of market charts, with no readable logos or place markers, is a neutral",
-    "[16:14:45] published \"«الدوحة للاستثمار» ترفع حجم مبادرة قطر لإدارة الأصول النشطة إلى 5 مليارات ريال\" -> qatar-expands-active-asset-management-initiative-576de3",
-    "[16:14:45] run budget of 35 minutes spent; \"سوريا تغلق معبر نصيب وتعلّق التبادل التجاري مع الأردن\" waits for the next run"
+    "[16:18:39]   why: معظم عملات الخليج والأردن مربوطة بالدولار، فتستورد أسعار الفائدة الأمريكية كما هي، ولذلك يهمّ القارئ العربي أن يعرف هل يحرّك الضغط السياسي على الفيدرالي توقعات الفائدة والدولار فعلاً، وبكم.",
+    "[16:18:40] paper [p10]: 24000 chars of text (abstract + https://arxiv.org/html/2610.32300v1)",
+    "[16:19:26] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2702 attempt=1 ms=46449",
+    "[16:19:26] paper notes: 20 facts, 3 author(s)",
+    "[16:20:16] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3354 attempt=1 ms=49765",
+    "[16:21:21] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=4767 attempt=1 ms=64270",
+    "[16:21:21] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,lede,whyItMatters,body] rejected=[]",
+    "[16:21:21] desk \"الضغط السياسي على الفيدرالي يخفض توقعات الفائدة القريبة فقط\": rewrote subtitle, lede, whyItMatters, body",
+    "[16:21:21] checks paper \"الضغط السياسي على الفيدرالي يخفض توقعات الفائدة القريبة فقط\": 471 words, 0 issues, 0 warnings",
+    "[16:21:59] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2253 attempt=1 ms=37977",
+    "[16:21:59] critic paper: revise score=7 issues=6",
+    "[16:21:59]   · خطأ في الانتساب: تقول المقدمة «خلص ثلاثة باحثين في البنك المركزي المالطي»، والورقة على arXiv لا تنسب إلى البنك المركزي المالطي إلا أومبرتو كولوديل (Senior Econo",
+    "[16:21:59]   · العنوان يقول أكثر من الورقة: «الضغط السياسي على الفيدرالي يخفض توقعات الفائدة القريبة فقط» يعمّم الأثر على كل ضغط سياسي. والورقة تقول إن الضغط نحو التشديد «لا أ",
+    "[16:21:59]   · تحويل تفسير مشروط إلى آلية مقررة: «ويفسر الباحثون ذلك بأن التيسير يصل إلى قرار الفيدرالي عبر ما تسعّره الأسواق، لأن البنك يتابع توقعاتها، لا لأنه يقتنع بتصريح ا",
+    "[16:21:59]   · صياغة أقوى من النتيجة الإحصائية: «حتى يختفي تماماً بعد ثلاثة أشهر». الورقة تقول إن الأثر يصبح «statistically indistinguishable from zero» في الآجال الأطول، أي أ",
+    "[16:22:33] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1858 attempt=1 ms=34639",
+    "[16:23:14] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2331 attempt=1 ms=40955",
+    "[16:23:14] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,lede,whyItMatters,body] rejected=[]",
+    "[16:23:14] desk \"ضغط السياسيين على الفيدرالي للتيسير يخفض توقعات الفائدة القريبة\": rewrote subtitle, lede, whyItMatters, body",
+    "[16:23:54] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2767 attempt=1 ms=39663",
+    "[16:23:54] critic (second pass) paper: revise score=8",
+    "[16:24:20] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=669 attempt=1 ms=26136",
+    "[16:25:13] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3699 attempt=1 ms=52541",
+    "[16:25:13] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,lede,whyItMatters,body] rejected=[]",
+    "[16:25:13] desk \"ضغط السياسيين على الفيدرالي طلباً للتيسير يخفض توقعات الفائدة القريبة\": rewrote title, subtitle, lede, whyItMatters, body",
+    "[16:25:13] mended paper \"ضغط السياسيين على الفيدرالي طلباً للتيسير يخفض توقعات الفائدة القريبة\": the second pass's 5 finding(s) sent back once more",
+    "[16:25:56] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1539 attempt=1 ms=43002",
+    "[16:25:56] precheck paper \"ضغط السياسيين على الفيدرالي طلباً للتيسير يخفض توقعات الفائدة القريبة\": clean",
+    "[16:26:19] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1880 attempt=1 ms=23729",
+    "[16:26:19] image: the picture should say: Public pressure on the Fed to ease makes markets price an earlier rate cut, while their faith in its inflation target holds.",
+    "[16:26:19] image: tier 1, the story's own place (none named): no search; categories: Federal Open Market Committee | Chicago Board of Trade | Trading floors",
+    "[16:26:20] commons Category:Federal Open Market Committee: 10 usable of 16",
+    "[16:26:20] image: dropped \"CP FOMC Group 7.5x10 11142022 DSCF5769 (52563724010).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:26:20] image: dropped \"FOMC D4A4501 (11439897774).jpg\" — shows ben, not the story's people",
+    "[16:26:20] image: dropped \"FOMC BKL2522 (12620086523).jpg\" — an event's photograph, people and banners",
+    "[16:26:20] image: dropped \"FOMC D4A0475 (13724861975).jpg\" — an event's photograph, people and banners",
+    "[16:26:20] image: dropped \"FOMC D4A2699 (14306047845).jpg\" — an event's photograph, people and banners",
+    "[16:26:20] image: dropped \"CB PC 121212 DE 5197 (8548486247).jpg\" — shows ben, not the story's people",
+    "[16:26:20] image: dropped \"CB PC 032013 16066 (8577655358).jpg\" — shows ben, not the story's people",
+    "[16:26:20] image: dropped \"CY FOMC 031814-3066 (13272861314).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:26:20] image: dropped \"Federal Open Market Committee (FOMC) in Washington DC April 26-27, 201\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:26:22] commons Category:Chicago Board of Trade: 2 usable of 48",
+    "[16:26:22] commons category \"Trading floors\": none carries its name",
+    "[16:26:37] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=943 attempt=1 ms=14303",
+    "[16:26:37] image: vision rejected all candidates (Photo 2 is a Chicago skyline, which is refused. Photo 3 shows a named Fed economist, Matthew Eichner, who is not one of the story's people, beside a slide full of text. Photo 1, a 2006 CBOT trading pit, matches the rate-markets subject, but it is a low-resolution amateur Flickr shot with an old camera's yellow-green colour cast. It also shows an open-outcry pit that no longer exists, so it looks dated rather than contemporary. Better to let the fallback find a current trading-floor or Fed image.)",
+    "[16:26:37] image: tier 3, the writer's own subjects: traders trading floor | Jerome Powell | New York Stock Exchange traders",
+    "[16:26:38] commons \"traders trading floor 2026\": 0 usable of 0",
+    "[16:26:39] commons \"traders trading floor\": 9 usable of 12",
+    "[16:26:39] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[16:26:39] image: dropped \"Chicago Board of Trade traders cph.3d02377.jpg\" — dated 1949, an archival picture",
+    "[16:26:39] image: dropped \"Chicago Board of Trade traders cph.3d02368.jpg\" — dated 1949, an archival picture",
+    "[16:26:39] image: dropped \"1909 - Diehls Furniture House Main Floor - Trade Card.jpg\" — dated 1909, an archival picture",
+    "[16:26:39] image: dropped \"1910 - Farr Brothers - Main Floor - Trade Card - Allentown PA.jpg\" — dated 1910, an archival picture",
+    "[16:26:40] commons \"Jerome Powell 2026\": 12 usable of 12",
+    "[16:26:40] commons \"Jerome Powell\": 8 usable of 12",
+    "[16:26:40] image: dropped \"Mairead McGuinness Jerome Powell,.jpg\" — shows mairead, not the story's people",
+    "[16:26:40] image: dropped \"Powell Jerome FOMC 01302024 Vetted DSC9720 (53500790669).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:26:40] image: dropped \"Powell Jerome FOMC 01302024 Vetted DSC9794 (53500489926).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:26:40] image: dropped \"Powell Jerome FOMC 01302024 Vetted DSC9849 (53500489891).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:26:41] commons \"New York Stock Exchange traders 2026\": 0 usable of 0",
+    "[16:26:41] commons \"New York Stock Exchange traders\": 9 usable of 12",
+    "[16:26:41] image: dropped \"New York - Docks-New York Harbor - NARA - 68146200 ed2.jpg\" — names too little of traders",
+    "[16:26:41] image: dropped \"New York - New York City - NARA - 68146147.jpg\" — dated 1928, an archival picture",
+    "[16:26:41] image: dropped \"New York - New York City - NARA - 68146131.jpg\" — dated 1924, an archival picture",
+    "[16:26:41] image: dropped \"New York - New York City - NARA - 68146159.jpg\" — names too little of traders",
+    "[16:26:41] image: dropped \"Deutsche-boerse-parkett-ffm006.jpg\" — taken in Germany, which the story does not name",
+    "[16:26:52] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=709 attempt=1 ms=9753",
+    "[16:26:52] image: \"Chairman Jerome Powell answers reporters' questions at the F\" names the story's topic without saying its point (Powell, the Fed chair the political pressure targets, speaks at an FOMC press conference. This is the story's own person and institution, in a lively landscape ); checked now and kept in reserve while the desk looks further",
+    "[16:26:58] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=428 attempt=1 ms=6398",
+    "[16:26:58] image: second check (claude-cli/claude-opus-5-5) RIGHT \"Chairman Jerome Powell answers reporters' questions at the F\": The photo shows Fed Chair Jerome Powell, whom the story names as the target of the pressure, at the Fed's own FOMC press",
+    "[16:26:58] image: tier 4, the story's point and its subject: bond traders New York | interest rate futures traders Chicago | FOMC meeting Federal Reserve | trading floor New York | Federal Reserve FOMC meeting | dollar bills (home: United States, USA, American, New York, Washington, Chicago)",
+    "[16:26:58] pexels \"bond traders New York\": 8 usable",
+    "[16:26:59] pexels \"dollar bills\": 8 usable",
+    "[16:26:59] pexels \"Federal Reserve FOMC meeting\": 8 usable",
+    "[16:26:59] pexels \"trading floor New York\": 8 usable",
+    "[16:26:59] pexels \"interest rate futures traders Chicago\": 8 usable",
+    "[16:26:59] commons \"bond traders New York\": 3 usable of 3",
+    "[16:26:59] image: dropped \"Bell telephone magazine (1941) (14776062563).jpg\" — names too little of bond, traders",
+    "[16:26:59] image: dropped \"Bell telephone magazine (1941) (14569746637).jpg\" — names too little of bond, traders",
+    "[16:26:59] pexels \"FOMC meeting Federal Reserve\": 8 usable",
+    "[16:27:43] openverse \"bond traders New York\": The operation was aborted due to timeout",
+    "[16:27:43] image: dropped \"Black and white photo of the New York Stock Exchange facade with USA f\" — names too little of bond, traders",
+    "[16:27:43] image: dropped \"A hand points to a financial graph on a digital screen, indicating mar\" — names too little of bond, traders",
+    "[16:27:43] image: dropped \"A breathtaking night view featuring the New York City skyline and icon\" — names too little of bond, traders",
+    "[16:27:43] image: dropped \"View of Trinity Church between skyscrapers on Broad Street, NYC, showc\" — names too little of bond, traders",
+    "[16:27:43] image: dropped \"A dramatic view of the skyscrapers of New York City captured from the \" — names too little of bond, traders",
+    "[16:27:43] image: dropped \"Detailed view of financial trading graphs on a monitor, illustrating s\" — names too little of bond, traders",
+    "[16:27:43] image: dropped \"Skyline of Brooklyn, NY featuring iconic historic skyscrapers against \" — names too little of bond, traders",
+    "[16:27:43] image: dropped \"Classic architecture of the New York Stock Exchange facade in NYC.\" — names too little of bond, traders",
+    "[16:27:43] openverse \"interest rate futures traders Chicago\": The operation was aborted due to timeout",
+    "[16:27:43] openverse \"FOMC meeting Federal Reserve\": The operation was aborted due to timeout",
+    "[16:27:46] commons \"interest rate futures traders Chicago\": 0 usable of 0",
+    "[16:27:47] commons \"interest rate\": 0 usable of 24",
+    "[16:27:48] commons \"Chicago\": 15 usable of 24",
+    "[16:27:48] image: dropped \"Skyline de Chicago desde el centro, Illinois, Estados Unidos, 2012-10-\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:27:48] image: dropped \"Chicago 2007-21a.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:27:48] image: dropped \"Chicago Union Station 1943.jpg\" — dated 1943, an archival picture",
+    "[16:27:48] image: dropped \"Chicago Skyline Sunrise March 15 2026 - 02.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:27:48] image: dropped \"Morning view of the downtown skyline from near Morgan Point along Lake\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:27:48] image: dropped \"The City of Chicago, showing the burnt district (1874).jpg\" — dated 1874, an archival picture",
+    "[16:27:48] image: dropped \"Close-up of a digital screen displaying stock trading graphs and crypt\" — names too little of interest, rate, futures, traders",
+    "[16:27:48] image: dropped \"Detailed view of a stock market candlestick chart showing trends and i\" — names too little of interest, rate, futures, traders",
+    "[16:27:48] image: dropped \"Flat lay showing coins, calculator, and charts on a red background for\" — names too little of interest, rate, futures, traders",
+    "[16:27:48] image: dropped \"High contrast trading chart showing market trends and analysis indicat\" — names too little of interest, rate, futures, traders",
+    "[16:27:48] image: dropped \"Flat lay of financial analysis tools including phone, clock, and calcu\" — names too little of interest, rate, futures, traders",
+    "[16:27:48] image: dropped \"Vibrant stock market display showing exchange rates for USD, EUR, and \" — names too little of interest, rate, futures, traders",
+    "[16:27:48] image: dropped \"Analyze financial trends using charts, calculator, and data tools.\" — names too little of interest, rate, futures, traders",
+    "[16:27:48] commons \"FOMC meeting Federal Reserve\": 23 usable of 24",
+    "[16:27:48] image: dropped \"Federal Open Market Committee (FOMC) in Washington DC April 26-27, 201\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:27:48] image: dropped \"June 10, 2020 FOMC Meeting NZ73153CP FOMC remote -20200610- DSC1246 (4\" — an event's photograph, people and banners",
+    "[16:27:48] image: dropped \"June 10 , 2020 FOMC Meeting NZ73153CP FOMC remote -20200610- DSC3291 (\" — an event's photograph, people and banners",
+    "[16:27:48] image: dropped \"June 10, 2020 FOMC Meeting NZ73153CP FOMC remote -20200610- DSC1254 (4\" — an event's photograph, people and banners",
+    "[16:27:48] image: dropped \"Chair Yellen opens FOMC Board meeting.jpg\" — an event's photograph, people and banners",
+    "[16:27:48] image: dropped \"FOMC 00201 (14083177135).jpg\" — an event's photograph, people and banners",
+    "[16:27:48] image: dropped \"FOMC BKL2522 (12620086523).jpg\" — an event's photograph, people and banners",
+    "[16:27:48] image: dropped \"FOMC D4A0475 (13724861975).jpg\" — an event's photograph, people and banners",
+    "[16:27:48] image: dropped \"FOMC 042616 12969 (26605966702).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:27:48] image: dropped \"CY FOMC 031814-3066 (13272861314).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:27:48] image: dropped \"FOMC 01302024 vetted 9681 (53499605577).jpg\" — shows neel, austan, not the story's people",
+    "[16:27:48] image: dropped \"FOMC 03152022 3000px Edited-78069 (51942669420).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:27:48] image: dropped \"Close-up of multiple US twenty dollar bills depicting wealth and finan\" — names too little of meeting",
+    "[16:27:48] image: dropped \"Detailed view of the US Federal Reserve System seal on currency with y\" — names too little of meeting",
+    "[16:27:48] image: dropped \"High-resolution close-up of a hundred dollar bill showing intricate se\" — names too little of meeting",
+    "[16:27:48] image: dropped \"Detailed image of multiple US dollar bills in various denominations ar\" — names too little of meeting",
+    "[16:27:48] image: dropped \"Detailed macro shot of a U.S. dollar bill showing intricate texture an\" — names too little of meeting",
+    "[16:27:48] image: dropped \"Detailed shot of a one dollar bill highlighting currency and finance t\" — names too little of meeting",
+    "[16:27:48] image: dropped \"Detailed image of US hundred-dollar bills featuring Benjamin Franklin.\" — names too little of meeting",
+    "[16:27:48] image: dropped \"Detailed view of multiple US dollar bills against a black background, \" — names too little of meeting",
+    "[16:27:49] commons \"trading floor New York\": 14 usable of 24",
+    "[16:27:49] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[16:27:50] commons \"Federal Reserve FOMC meeting\": 23 usable of 24",
+    "[16:28:28] openverse \"trading floor New York\": The operation was aborted due to timeout",
+    "[16:28:28] openverse \"Federal Reserve FOMC meeting\": The operation was aborted due to timeout",
+    "[16:28:28] image: dropped \"Scattered US $100 bills on a vibrant orange surface symbolizing wealth\" — names too little of meeting",
+    "[16:28:28] image: dropped \"A detailed shot of a pile of U.S. one-dollar bills showcasing currency\" — names too little of meeting",
+    "[16:28:28] openverse \"dollar bills\": The operation was aborted due to timeout",
+    "[16:28:29] commons \"dollar bills\": 16 usable of 24",
+    "[16:28:29] image: dropped \"Half A Dollar Bill lobby card.jpg\" — dated 1924, an archival picture",
+    "[16:28:29] image: dropped \"Half-a-Dollar Bill (1924) - 1.jpg\" — dated 1924, an archival picture",
+    "[16:28:29] image: dropped \"1907 Series United States five-dollar bill obverse.jpg\" — dated 1907, an archival picture",
+    "[16:28:29] image: dropped \"1907 Series United States five-dollar bill reverse.jpg\" — dated 1907, an archival picture",
+    "[16:28:29] image: dropped \"Grant 50-Dollar bill, 1913 issue.jpg\" — dated 1913, an archival picture",
+    "[16:28:29] image: dropped \"United States one dollar bill, obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[16:28:29] image: dropped \"Three Dollar Bill.jpg\" — dated 2004, an archival picture",
+    "[16:28:34] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=140 attempt=1 ms=4599",
+    "[16:28:34] image: vision rejected all candidates (fallback pass) (No candidate fits. Photos 1 and 3 are Chicago skylines. Photo 2 is the front of a Dollar General store, which has nothing to do with the dollar. Photo 4 shows visitors on an empty office floor. Photo 5 is an abstract 2001 light installation that is hard to read and looks dated. Photo 6 is a 9/11 memorial, which would be inappropriate here. None shows the Fed, traders or dollar notes.)",
+    "[16:28:38] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=0 attempt=1 ms=3233",
+    "[16:28:38] image: vision rejected all candidates (fallback pass) (The only candidate is a flat scan of an 1862 Confederate banknote showing slaves hoeing cotton. It is archival, a banknote face as the subject, not the story's currency in use, and offensive next to a Fed-pressure headline. None is better.)",
+    "[16:28:38] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"Chairman Jerome Powell answers reporters' questions at the F\"",
+    "[16:28:38] published paper \"ضغط السياسيين على الفيدرالي طلباً للتيسير يخفض توقعات الفائدة القريبة\" -> political-pressure-fed-moves-near-term-rates-387cc7"
   ]
 }
