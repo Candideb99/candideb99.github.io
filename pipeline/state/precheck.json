@@ -7543,6 +7543,69 @@
           "noted": []
         }
       ]
+    },
+    "qatar-saudi-stock-markets-liquidity-test-6421f7": {
+      "at": "2026-10-27T19:35:47.219Z",
+      "title": "قيمة التداول اليومي أولى بالمتابعة من المؤشر في البورصتين القطرية والسعودية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 50,
+            "checked": 50,
+            "supported": 39,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 6,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 30,
+              "field": "body",
+              "class": "internal",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وتراجعت الإيرادات التشغيلية للمجموعة 8.1% إلى 292.2 مليون ريال، وانخفضت الإيرادات المرتبطة بأنشطة التداول 14.6%؛ فقد خسر قطاع أسواق المال، المسؤول عن الإدراج والتداول، 12.5% من إيراداته، وخسر قطاع خدمات ما بعد التداول، من مقاصة وتسوية وحفظ، 7.2%.",
+              "quote": "وتراجعت الإيرادات التشغيلية للمجموعة 8.1% إلى 292.2 مليون ريال، وانخفضت الإيرادات المرتبطة بأنشطة التداول 14.6%؛ فقد خسر قطاع أسواق المال، المسؤول عن الإدراج والتداول، 12.5% من إيراداته، وخسر قطاع خدمات ما بعد التداول، من مقاصة وتسوية وحفظ، 7.2%.",
+              "source": "the story itself",
+              "sourceN": 0,
+              "correction": "Combined revenue of two segments that fell 12.5% and 7.2% must have fallen by between 7.2% and 12.5%, so a 14.6% drop cannot be explained by those two segment declines, even though the source prints the same figures."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 2
+          }
+        },
+        {
+          "counts": {
+            "sentences": 49,
+            "checked": 49,
+            "supported": 37,
+            "weak": 5,
+            "noEvidence": 0,
+            "notFound": 7,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
