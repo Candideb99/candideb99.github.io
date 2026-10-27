@@ -33,14 +33,14 @@ readingMinutes: 4
 chart: null
 table: null
 image:
-  url: https://images.pexels.com/photos/38774780/pexels-photo-38774780.jpeg?auto=compress&cs=tinysrgb&w=1280
+  url: https://images.pexels.com/photos/342950/pexels-photo-342950.jpeg?auto=compress&cs=tinysrgb&w=1280
   width: 1280
   height: 853
-  alt: قلادة ذهبية معروضة في متجر للمجوهرات
-  credit: Saif photos · بيكسلز
+  alt: سبائك ذهبية (صورة تعبيرية)
+  credit: Michael Steinberg · بيكسلز
   license: Pexels License
   licenseUrl: https://www.pexels.com/license/
-  pageUrl: https://www.pexels.com/photo/elegant-gold-necklace-with-gemstone-charms-on-display-38774780/
+  pageUrl: https://www.pexels.com/photo/assorted-weight-gold-colored-gold-plated-bars-342950/
 sources:
   - name: البيان
     nameEn: Al Bayan

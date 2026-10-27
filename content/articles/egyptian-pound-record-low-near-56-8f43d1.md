@@ -46,7 +46,15 @@ chart:
         - 8.88
         - 3.56
 table: null
-image: null
+image:
+  url: https://live.staticflickr.com/2535/3868043662_e33cc7b624_b.jpg
+  width: 1024
+  height: 683
+  alt: أوراق نقدية وعملات معدنية من الجنيه المصري
+  credit: emiemihuimei · CC BY-SA 2.0 · فليكر
+  license: CC BY-SA 2.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/2.0/
+  pageUrl: https://www.flickr.com/photos/42851488@N00/3868043662
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -82,7 +90,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: null
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
   lessons: v35
 quality:

@@ -43,14 +43,14 @@ chart:
         - 22.5
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Craftsman_shaping_wooden_piece_in_workshop_during_daytime.jpg/1280px-Craftsman_shaping_wooden_piece_in_workshop_during_daytime.jpg
+  url: https://images.pexels.com/photos/6804068/pexels-photo-6804068.jpeg?auto=compress&cs=tinysrgb&w=1280
   width: 1280
   height: 853
-  alt: حرفي يشكّل قطعة خشبية في ورشته
-  credit: Nenad Stojkovic · CC BY 4.0 · ويكيميديا كومنز
-  license: CC BY 4.0
-  licenseUrl: https://creativecommons.org/licenses/by/4.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ACraftsman_shaping_wooden_piece_in_workshop_during_daytime.jpg
+  alt: مطورو برمجيات يعملون على الحواسيب في مكتب شركة تقنية
+  credit: cottonbro studio · بيكسلز
+  license: Pexels License
+  licenseUrl: https://www.pexels.com/license/
+  pageUrl: https://www.pexels.com/photo/men-sitting-at-the-desks-in-an-office-and-using-computers-6804068/
 sources:
   - name: أرشيف أرخايف (الاقتصاد العام)
     nameEn: arXiv econ.GN

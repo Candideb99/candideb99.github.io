@@ -1082,11 +1082,11 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
 
       <label id="effortRow"><span>How hard Claude thinks (effort)</span>
         <select id="claudeEffort">
-          <option value="xhigh">Extra high — recommended</option>
-          <option value="max">Max (slowest)</option>
-          <option value="high">High</option>
+          <option value="low">Low</option>
           <option value="medium">Medium</option>
-          <option value="low">Low (fastest)</option>
+          <option value="high">High</option>
+          <option value="xhigh">Extra</option>
+          <option value="max">Max (3.5× or more usage)</option>
         </select>
       </label>
 

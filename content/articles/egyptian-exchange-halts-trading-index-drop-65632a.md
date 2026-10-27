@@ -51,7 +51,15 @@ chart:
         - 2.57
         - 2.26
 table: null
-image: null
+image:
+  url: https://images.pexels.com/photos/5831253/pexels-photo-5831253.jpeg?auto=compress&cs=tinysrgb&w=1280
+  width: 1280
+  height: 854
+  alt: متداول يتابع حركة الأسهم على شاشات الحاسوب
+  credit: AlphaTradeZone · بيكسلز
+  license: Pexels License
+  licenseUrl: https://www.pexels.com/license/
+  pageUrl: https://www.pexels.com/photo/trader-looking-at-charts-in-the-monitors-5831253/
 sources:
   - name: مصراوي
     nameEn: Masrawy
@@ -87,7 +95,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: null
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
   lessons: v35
 quality:
