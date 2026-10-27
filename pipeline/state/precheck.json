@@ -7431,6 +7431,90 @@
           "noted": []
         }
       ]
+    },
+    "houthis-claim-ras-tanura-refinery-strike-7d3679": {
+      "at": "2026-10-27T15:42:19.620Z",
+      "title": "الحوثيون يعلنون استهداف مصفاة رأس تنورة السعودية بصاروخ باليستي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v39",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 28,
+            "checked": 28,
+            "supported": 27,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "saudi-commercial-transactions-law-age-15-5712f9": {
+      "at": "2026-10-27T15:59:48.275Z",
+      "title": "السعودية تقر نظاماً للمعاملات التجارية يتيح ممارسة التجارة من سن 15 عاماً",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v39",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 32,
+            "checked": 32,
+            "supported": 28,
+            "weak": 3,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "qatar-expands-active-asset-management-initiative-576de3": {
+      "at": "2026-10-27T16:14:45.605Z",
+      "title": "«الدوحة للاستثمار» ترفع حجم مبادرة قطر لإدارة الأصول النشطة إلى 5 مليارات ريال",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v39",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 23,
+            "checked": 23,
+            "supported": 20,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

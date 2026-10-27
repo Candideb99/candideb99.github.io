@@ -13021,6 +13021,49 @@
         "remaining": [],
         "newFound": []
       }
+    },
+    "aldar-nine-month-profit-rises-uae-sales-fall-ba8ef8": {
+      "at": "2026-10-27T15:24:52.841Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v38",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-27T09:41:39.233Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "fromCopy": 1,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 33,
+        "checked": 33,
+        "supported": 29,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "ومع استهلاك هذا الرصيد، فالأرجح أن يتوقف تجديد حصته الإماراتية على قدرة المشاريع التي سرّعت الشركة طرحها في الربع الثالث على استعادة وتيرة المبيعات المحلية.",
+        "والإيرادات المتراكمة قيمة مبيعات سابقة لم تتحول بعد إلى إيرادات مسجلة في الحسابات."
+      ],
+      "weak": [
+        {
+          "sentence": "ترجّح AGBI أن يظهر هبوط مبيعات الشركة في الإمارات بنسبة 46% في نتائجها الفصلية المقبلة، لأن أرباحها الحالية تعكس في معظمها مبيعات سابقة",
+          "quote": "The latest earnings largely reflect revenue from previous sales, so the reduced sales this year are likely to be reflected in future quarterly results."
+        },
+        {
+          "sentence": "أظهر بيان الدار على سوق أبوظبي للأوراق المالية أن إيرادات المجموعة زادت 11% على أساس سنوي إلى 26 مليار درهم (7 مليارات دولار) بين يناير وسبتمبر، وأن ربحية السهم صعدت 20% إلى 0.77 درهم في الفترة نفسها.",
+          "quote": "Group revenue rose 11 percent year on year to AED 26 billion ($7 billion) between January and September, driving net profit up 19 percent to AED7 billion, the developer said in a statement on the Abu Dhabi Securities Exchange (ADX) on Tuesday."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }

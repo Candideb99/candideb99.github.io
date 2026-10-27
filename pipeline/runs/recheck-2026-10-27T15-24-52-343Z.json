@@ -1,0 +1,48 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-27T15:24:52.343Z",
+  "durationSec": 66,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "aldar-nine-month-profit-rises-uae-sales-fall-ba8ef8",
+      "title": "أرباح الدار ترتفع 19% في 9 أشهر رغم تراجع مبيعاتها في الإمارات",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 33,
+        "checked": 33,
+        "supported": 29,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 8189,
+    "completionTokens": 8484,
+    "cacheReadTokens": 0,
+    "costUsd": 0.2352,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[15:24:52] second look: 1 to read now (1 published pieces not yet read; 136 read clean before publication and left out of the audit sample)",
+    "[15:24:53] aldar-nine-month-profit-rises-uae-sales-fall-ba8ef8:   source https://www.agbi.com/real-estate/2026/10/aldar-revenue-up-despite-uae-property-s: subscribers-only; read from the copy saved at publication (fetched then)",
+    "[15:25:58] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2471 attempt=1 ms=64213",
+    "[15:25:58] aldar-nine-month-profit-rises-uae-sales-fall-ba8ef8: 33 of 33 sentences checked · 29 supported · 2 without a source · 0 confirmed error(s)"
+  ]
+}
