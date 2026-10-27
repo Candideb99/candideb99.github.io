@@ -13064,6 +13064,32 @@
         }
       ],
       "outcome": "clean"
+    },
+    "qatar-saudi-stock-markets-liquidity-test-6421f7": {
+      "at": "2026-10-27T22:20:45.686Z",
+      "kind": "analysis",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-27T19:40:33.753Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "outcome": "failed",
+      "failures": 1,
+      "error": "Model (claude/claude-opus-5-5) failed for role checker:"
+    },
+    "qatar-expands-active-asset-management-initiative-576de3": {
+      "at": "2026-10-27T22:20:45.686Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v39",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-27T16:14:45.601Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "outcome": "failed",
+      "failures": 1,
+      "error": "Model (claude/claude-opus-5-5) failed for role checker:"
     }
   }
 }

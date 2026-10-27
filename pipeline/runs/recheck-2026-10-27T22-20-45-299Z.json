@@ -1,0 +1,47 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-27T22:20:45.299Z",
+  "durationSec": 12,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "qatar-saudi-stock-markets-liquidity-test-6421f7",
+      "title": "قيمة التداول اليومي أولى بالمتابعة من المؤشر في البورصتين القطرية والسعودية",
+      "kind": "analysis",
+      "outcome": "failed",
+      "counts": null,
+      "confirmed": []
+    },
+    {
+      "slug": "qatar-expands-active-asset-management-initiative-576de3",
+      "title": "«الدوحة للاستثمار» ترفع حجم مبادرة قطر لإدارة الأصول النشطة إلى 5 مليارات ريال",
+      "kind": "news",
+      "outcome": "failed",
+      "counts": null,
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 0,
+    "failures": 6,
+    "promptTokens": 0,
+    "completionTokens": 0,
+    "cacheReadTokens": 0,
+    "costUsd": 0,
+    "byModel": {},
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[22:20:45] second look: 2 to read now (2 published pieces not yet read; 139 read clean before publication and left out of the audit sample)",
+    "[22:20:47] llm fail role=checker provider=claude model=claude-opus-5-5 attempt=1: claude cli: You've hit your 5-hour limit · resets 10:40pm (UTC)",
+    "[22:20:48] qatar-expands-active-asset-management-initiative-576de3:   source https://www.agbi.com/markets/2026/10/qatar-bulks-up-stock-market-fund-to-attract: subscribers-only; read from the copy saved at publication (fetched then)",
+    "[22:20:49] llm fail role=checker provider=claude model=claude-opus-5-5 attempt=1: claude cli: You've hit your 5-hour limit · resets 10:40pm (UTC)",
+    "[22:20:51] llm fail role=checker provider=claude model=claude-opus-5-5 attempt=2: claude cli: You've hit your 5-hour limit · resets 10:40pm (UTC)",
+    "[22:20:53] llm fail role=checker provider=claude model=claude-opus-5-5 attempt=2: claude cli: You've hit your 5-hour limit · resets 10:40pm (UTC)",
+    "[22:20:55] llm fail role=checker provider=claude model=claude-opus-5-5 attempt=3: claude cli: You've hit your 5-hour limit · resets 10:40pm (UTC)",
+    "[22:20:55] qatar-saudi-stock-markets-liquidity-test-6421f7: the check failed (Model (claude/claude-opus-5-5) failed for role checker:)",
+    "[22:20:57] llm fail role=checker provider=claude model=claude-opus-5-5 attempt=3: claude cli: You've hit your 5-hour limit · resets 10:40pm (UTC)",
+    "[22:20:57] qatar-expands-active-asset-management-initiative-576de3: the check failed (Model (claude/claude-opus-5-5) failed for role checker:)"
+  ]
+}
