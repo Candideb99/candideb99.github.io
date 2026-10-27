@@ -90,6 +90,11 @@ function tokens(text) {
     .replace(/[ىی]/g, "ي")
     .replace(/ک/g, "ك")
     .replace(/[ةۀ]/g, "ه")
+    // A full stop with a word right after it ends a sentence the page reader glued to the next one («…to 84.8.Weaker
+    // demand…», «…of the economy.Türkiye's…»): read as one word, the figure 84.8 was missing and a quote copied word for
+    // word from the source was not found (2026-10-27: about two thirds of the sentences the check calls unsupported had
+    // a true quote). A decimal point stands between two digits and stays.
+    .replace(/(?<=[\p{L}\p{N}])\.(?=\p{L})/gu, ". ")
     .split(/[^\p{L}\p{N}.]+/u)
     .map((t) => t.replace(/^\.+|\.+$/g, ""))
     .filter(Boolean);
@@ -234,10 +239,12 @@ Answer with one JSON object:
 /**
  * The fact-check's own version: its instructions, the code that judges its answers and the model, hashed. Every test,
  * private pair and second-look record carries it, so results are pooled only while the judge stays the same (a
- * review of the design, 2026-09-25: an evaluator the loop cannot touch, with its version recorded).
+ * review of the design, 2026-09-25: an evaluator the loop cannot touch, with its version recorded). `tokens()` is the
+ * matcher's reading of a text and is hashed with it since 2026-10-27, when reading glued sentences turned contradictions
+ * the old reading had left «unverified» into confirmed errors, which changes what a pair counts.
  */
 export const CHECKER_VERSION = createHash("sha1")
-  .update([SYSTEM, prompt.toString(), quoteFound.toString(), validateChecks.toString(), verifyStory.toString(), getActiveProvider(), getActiveModel()].join(" | "))
+  .update([SYSTEM, prompt.toString(), tokens.toString(), quoteFound.toString(), validateChecks.toString(), verifyStory.toString(), getActiveProvider(), getActiveModel()].join(" | "))
   .digest("hex")
   .slice(0, 10);
 
