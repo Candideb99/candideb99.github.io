@@ -124,9 +124,9 @@
       "edition": 202609,
       "label": "International trade in goods for Saudi Arabia in September 2026",
       "url": "https://www.stats.gov.sa/en/statistics-tabs?tab=436312&category=123481#",
-      "at": "2026-10-26T15:16:47.817Z",
+      "at": "2026-10-27T14:37:59.038Z",
       "outcome": "retry",
-      "tries": 1
+      "tries": 2
     },
     "sa-gdp": {
       "edition": 202606,
