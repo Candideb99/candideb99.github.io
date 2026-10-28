@@ -56,7 +56,7 @@ image:
   width: 1280
   height: 960
   alt: رزمة من أوراق الجنيه المصري النقدية
-  credit: Mo7amedsalim at Arabic Wikipedia · Public domain · ويكيميديا كومنز
+  credit: Mo7amedsalim · Public domain · ويكيميديا كومنز
   license: Public domain
   pageUrl: https://commons.wikimedia.org/wiki/File%3AEgyptianPounds.jpg
 sources:

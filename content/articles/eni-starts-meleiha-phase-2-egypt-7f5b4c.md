@@ -29,7 +29,7 @@ image:
   width: 1280
   height: 853
   alt: شعلة غاز في منشأة صناعية
-  credit: Yerevan  Malerva · بيكسلز
+  credit: Yerevan Malerva · بيكسلز
   license: Pexels License
   licenseUrl: https://www.pexels.com/license/
   pageUrl: https://www.pexels.com/photo/industrial-flame-tower-emission-against-blue-sky-31316362/

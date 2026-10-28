@@ -66,7 +66,7 @@ image:
   width: 1280
   height: 863
   alt: مبانٍ في مدينة الرياض العاصمة السعودية
-  credit: mo -- ( Talk · Public domain · ويكيميديا كومنز
+  credit: mo · Public domain · ويكيميديا كومنز
   license: Public domain
   pageUrl: https://commons.wikimedia.org/wiki/File%3ARiyadh_Skyline_New.jpg
 sources:

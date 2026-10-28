@@ -31,7 +31,7 @@ image:
   width: 1280
   height: 720
   alt: متسوقون أمام متجر للخضار والفواكه في نيويورك
-  credit: SilBaBum _ · بيكسلز
+  credit: SilBaBum · بيكسلز
   license: Pexels License
   licenseUrl: https://www.pexels.com/license/
   pageUrl: https://www.pexels.com/photo/nyc-through-my-eyes-21-27283278/

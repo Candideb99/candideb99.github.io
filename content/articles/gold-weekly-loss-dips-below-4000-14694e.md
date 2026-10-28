@@ -37,7 +37,7 @@ image:
   width: 1280
   height: 853
   alt: سبائك ذهب بوزن 400 أونصة في خزنة مصرفية
-  credit: Chepry 💬 ( Andrzej Barabasz ) 📷 🇵🇱 · CC BY-SA 4.0 · ويكيميديا كومنز
+  credit: Chepry (Andrzej Barabasz) · CC BY-SA 4.0 · ويكيميديا كومنز
   license: CC BY-SA 4.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
   pageUrl: https://commons.wikimedia.org/wiki/File%3A400-oz-Gold-Bars-AB-01.jpg

@@ -36,7 +36,7 @@ image:
   width: 1280
   height: 853
   alt: عامل يلحم هيكل سفينة قيد البناء
-  credit: Saad Bin  Hasan · بيكسلز
+  credit: Saad Bin Hasan · بيكسلز
   license: Pexels License
   licenseUrl: https://www.pexels.com/license/
   pageUrl: https://www.pexels.com/photo/industrial-welder-working-on-ship-hull-outdoors-35883424/

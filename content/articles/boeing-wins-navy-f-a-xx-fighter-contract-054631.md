@@ -28,7 +28,7 @@ image:
   width: 1280
   height: 853
   alt: مقاتلة إف/إيه-18 إي سوبر هورنت تهبط على حاملة طائرات
-  credit: "[null Courtesy] · Public domain · ويكيميديا كومنز"
+  credit: "United States Department of Defense · Public domain · ويكيميديا كومنز"
   license: Public domain
   pageUrl: https://commons.wikimedia.org/wiki/File%3AUSS_George_H_W_Bush_lands_a_F-A-18E_Super_Hornet_(9745698).jpg
 sources:

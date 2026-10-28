@@ -30,7 +30,7 @@ image:
   width: 1280
   height: 1281
   alt: مارك زوكربيرغ خلال مؤتمر فيسبوك للمطورين F8 عام 2018
-  credit: Anthony Quintano from Honolulu, HI, United States · CC BY 2.0 · ويكيميديا كومنز
+  credit: Anthony Quintano · CC BY 2.0 · ويكيميديا كومنز
   license: CC BY 2.0
   licenseUrl: https://creativecommons.org/licenses/by/2.0
   pageUrl: https://commons.wikimedia.org/wiki/File%3AMark_Zuckerberg_F8_2018_Keynote_(cropped).jpg

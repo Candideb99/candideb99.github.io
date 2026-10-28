@@ -56,7 +56,7 @@ image:
   width: 1280
   height: 960
   alt: حاويات شحن ورافعات في ميناء
-  credit: Bilal  Ahmed · بيكسلز
+  credit: Bilal Ahmed · بيكسلز
   license: Pexels License
   licenseUrl: https://www.pexels.com/license/
   pageUrl: https://www.pexels.com/photo/cargo-containers-in-harbor-14020705/

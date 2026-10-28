@@ -36,7 +36,7 @@ image:
   width: 1280
   height: 852
   alt: ناقلة غاز طبيعي مسال في عرض البحر
-  credit: Oleksiy Yeshtokyn,🌻🇺🇦🌻 · بيكسلز
+  credit: Oleksiy Yeshtokyn · بيكسلز
   license: Pexels License
   licenseUrl: https://www.pexels.com/license/
   pageUrl: https://www.pexels.com/photo/red-lng-ship-navigating-open-waters-35860170/

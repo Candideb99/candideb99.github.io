@@ -31,7 +31,7 @@ image:
   width: 1280
   height: 853
   alt: صورة فضائية لجنوب غرب السعودية من محطة الفضاء الدولية
-  credit: NASA Goddard Space Flight Center from Greenbelt, MD, USA · Public domain · ويكيميديا كومنز
+  credit: NASA Goddard Space Flight Center · Public domain · ويكيميديا كومنز
   license: Public domain
   pageUrl: https://commons.wikimedia.org/wiki/File%3ASouthwestern_Saudi_Arabia_at_Night_(9495028083).jpg
 sources:

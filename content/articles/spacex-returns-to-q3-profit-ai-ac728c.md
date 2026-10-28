@@ -52,7 +52,7 @@ image:
   width: 1280
   height: 853
   alt: مركبة الشحن «دراغون» التابعة لسبايس إكس تقترب من محطة الفضاء الدولية عام 2020 (أرشيفية)
-  credit: "Original: NASA Johnson Space Center Derivative work: Nythar · Public domain · ويكيميديا كومنز"
+  credit: "NASA Johnson Space Center · Public domain · ويكيميديا كومنز"
   license: Public domain
   pageUrl: https://commons.wikimedia.org/wiki/File%3ACRS-20_Dragon%E2%80%93Enhanced.jpg
 sources:

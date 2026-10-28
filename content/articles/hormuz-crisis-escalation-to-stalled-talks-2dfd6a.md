@@ -77,7 +77,7 @@ image:
   width: 1280
   height: 689
   alt: ناقلة نفط (صورة تعبيرية)
-  credit: "Photographer: Mosbatho · CC BY 4.0 · ويكيميديا كومنز"
+  credit: "Mosbatho · CC BY 4.0 · ويكيميديا كومنز"
   license: CC BY 4.0
   licenseUrl: https://creativecommons.org/licenses/by/4.0
   pageUrl: https://commons.wikimedia.org/wiki/File%3ARio_Arauca_at_the_oil_terminal_in_Lisboa_(2017).jpg

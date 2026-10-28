@@ -37,7 +37,7 @@ image:
   width: 1280
   height: 853
   alt: عسكريون أمريكيون يركّبون صاروخ «أمرام» على مقاتلة F-15 في قاعدة إغلين الجوية بفلوريدا
-  credit: Samuel King Jr. Jr · Public domain · ويكيميديا كومنز
+  credit: Samuel King Jr. · Public domain · ويكيميديا كومنز
   license: Public domain
   pageUrl: https://commons.wikimedia.org/wiki/File%3AU.S._Airmen_with_the_96th_Aircraft_Maintenance_Squadron_connect_an_AIM-120_Advanced_Medium-Range_Air-to-Air_Missile_to_an_F-15_Eagle_aircraft_during_a_weapons_load_crew_competition_at_Eglin_Air_Force_Base%2C_Fla_140214-F-OC707-509.jpg
 sources:

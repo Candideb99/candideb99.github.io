@@ -27,7 +27,7 @@ image:
   width: 1280
   height: 960
   alt: خط التجميع النهائي لطائرات إيه321 في مصنع إيرباص بمدينة هامبورغ الألمانية
-  credit: DearEdward from New York, NY, USA · CC BY 2.0 · ويكيميديا كومنز
+  credit: DearEdward · CC BY 2.0 · ويكيميديا كومنز
   license: CC BY 2.0
   licenseUrl: https://creativecommons.org/licenses/by/2.0
   pageUrl: https://commons.wikimedia.org/wiki/File%3AA321_final_assembly_(9351765668).jpg

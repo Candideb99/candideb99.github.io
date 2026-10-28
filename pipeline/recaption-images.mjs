@@ -10,7 +10,9 @@
  *   node pipeline/recaption-images.mjs --limit=10   the ten newest
  *   node pipeline/recaption-images.mjs --slugs=a,b  named articles only
  *   node pipeline/recaption-images.mjs --spellings  the house spellings («أمريكي»، «ترامب») in every caption and a clean
- *                                                   author in every credit (lib/commons.mjs cleanArtist), no model
+ *                                                   author in every credit, no model: a Commons photo's from its record
+ *                                                   as the desk reads it now (lib/commons.mjs creditName), any other's
+ *                                                   from the credit as printed (cleanArtist)
  *
  * Nothing is edited by hand: the caption comes from the file's own record and the story, is checked in
  * code (Arabic, at most twelve words, nothing painted), and the frontmatter is rewritten through the YAML
@@ -25,7 +27,7 @@ import YAML from "yaml";
 import { writeCaption, captionFlaws, placedAbroad, ILLUSTRATIVE } from "./lib/images.mjs";
 import { ARTICLES_DIR } from "./lib/article.mjs";
 import { fixNames } from "./lib/copydesk.mjs";
-import { cleanArtist } from "./lib/commons.mjs";
+import { cleanArtist, creditName } from "./lib/commons.mjs";
 
 const args = process.argv.slice(2);
 const DRY = args.includes("--dry-run");
@@ -62,6 +64,38 @@ async function commonsMeta(title) {
   return {};
 }
 
+/**
+ * The credit fields of Commons files (Artist, Attribution, Credit), fifty to a request, keyed by the title asked. A file
+ * whose request fails is left out, and its credit is cleaned from what is printed.
+ */
+async function creditRecords(titles) {
+  const out = {};
+  for (let i = 0; i < titles.length; i += 50) {
+    const batch = titles.slice(i, i + 50);
+    const api = new URL("https://commons.wikimedia.org/w/api.php");
+    for (const [k, v] of Object.entries({ action: "query", format: "json", formatversion: "2", prop: "imageinfo", iiprop: "extmetadata", iiextmetadatafilter: "Artist|Attribution|Credit", redirects: "1", titles: batch.map((t) => `File:${t}`).join("|") })) api.searchParams.set(k, v);
+    for (let attempt = 0; attempt < 4; attempt++) {
+      await new Promise((r) => setTimeout(r, attempt ? 8000 * attempt : 800));
+      try {
+        const r = await fetch(api, { headers: { "User-Agent": "Khazendar captions (khazendar.pages.dev)" }, signal: AbortSignal.timeout(30000) });
+        const query = JSON.parse(await r.text()).query ?? {};
+        // The title asked, through the API's own normalising and redirects, to the page that answered.
+        const to = new Map([...(query.normalized ?? []), ...(query.redirects ?? [])].map((x) => [x.from, x.to]));
+        const pages = new Map((query.pages ?? []).map((p) => [p.title, p.imageinfo?.[0]?.extmetadata]));
+        for (const title of batch) {
+          let name = `File:${title}`;
+          for (let hops = 0; hops < 3 && to.has(name); hops++) name = to.get(name);
+          if (pages.get(name)) out[title] = pages.get(name);
+        }
+        break;
+      } catch {
+        /* "too many requests" arrives as plain text: wait and try again */
+      }
+    }
+  }
+  return out;
+}
+
 const files = (await readdir(ARTICLES_DIR)).filter((f) => f.endsWith(".md"));
 const queue = [];
 for (const file of files) {
@@ -80,15 +114,21 @@ queue.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 // `--spellings`: the copy desk's spelling table («أمريكي»، «ترامب») over every caption, in code, no model. Captions
 // had never passed through it: eleven printed «الأميركية» or «ترمب» on 2026-09-24. And the author in every credit as
 // the credit line names them (2026-09-27: «No machine-readable author provided. MatthiasKabel assumed (based on
-// copyright c», and six more cut mid-word).
+// copyright c», and six more cut mid-word). A Commons photo's author is read again from its record (2026-10-28: the
+// attribution its author asked for, «[null Courtesy]» and a licence sentence never printed as a name).
 if (args.includes("--spellings")) {
   let fixed = 0;
   let credits = 0;
+  const onCommons = (a) => String(a.doc.getIn(["image", "credit"]) ?? "").endsWith(" · ويكيميديا كومنز") && fileTitle(a.url);
+  const records = await creditRecords([...new Set(queue.filter(onCommons).map((a) => fileTitle(a.url)))]);
+  log(`${Object.keys(records).length} Commons record(s) read`);
   for (const a of queue) {
     const next = fixNames(a.alt);
     const credit = String(a.doc.getIn(["image", "credit"]) ?? "");
     const parts = credit.split(" · ");
-    const author = parts.length >= 2 ? cleanArtist(parts[0]) || (parts.at(-1) === "ويكيميديا كومنز" ? "Wikimedia Commons" : parts[0]) : parts[0];
+    const record = onCommons(a) ? records[fileTitle(a.url)] : undefined;
+    const named = record ? creditName(record) : cleanArtist(parts[0]);
+    const author = parts.length >= 2 ? named || (parts.at(-1) === "ويكيميديا كومنز" ? "Wikimedia Commons" : parts[0]) : parts[0];
     const nextCredit = parts.length >= 2 ? [author, ...parts.slice(1)].join(" · ") : credit;
     if (next === a.alt && nextCredit === credit) continue;
     if (next !== a.alt) {

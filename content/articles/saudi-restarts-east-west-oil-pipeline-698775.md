@@ -35,7 +35,7 @@ image:
   width: 1280
   height: 848
   alt: صورة فضائية للسعودية من محطة الفضاء الدولية
-  credit: Earth Science and Remote Sensing Unit , Lyndon B. Johnson Space Center · Public domain · ويكيميديا كومنز
+  credit: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center · Public domain · ويكيميديا كومنز
   license: Public domain
   pageUrl: https://commons.wikimedia.org/wiki/File%3AISS015-E-18748_-_View_of_Saudi_Arabia.jpg
 sources:

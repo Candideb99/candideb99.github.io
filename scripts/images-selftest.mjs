@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The picture desk, tested on cases whose right answer is known (90 checks), with scripted stand-ins for Claude, Wikimedia Commons,
+ * The picture desk, tested on cases whose right answer is known (94 checks), with scripted stand-ins for Claude, Wikimedia Commons,
  * the other libraries and the thumbnails: no model call, no network. Written 2026-09-28 after the owner asked for the
  * image engine to be stress-tested ("it might still be buggy"), so that the cascade's order, its place filter, the
  * repeat guard, its behaviour when a service fails, and the reading of accented names cannot regress unseen. The gate
@@ -10,7 +10,7 @@
  */
 import { withStandIns, pickImage, headlinePeople, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
 import { photoKey, sharedPhotos } from "../pipeline/lib/photo-key.mjs";
-import { BAD_TITLE } from "../pipeline/lib/commons.mjs";
+import { BAD_TITLE, cleanArtist, creditName, attributionLine } from "../pipeline/lib/commons.mjs";
 
 let failed = 0;
 function check(name, got, want) {
@@ -816,6 +816,51 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
     verify: () => "GENERIC_OK",
   });
   check("exchange students found by «Egyptian Exchange» never reach the judge for its trading floor", s.judgePrompts.some((x) => x.includes("IMG_1945")), false);
+}
+
+// V. Credits that printed words which are not a name (2026-10-28): a licence sentence in a file's Artist field, found
+// in the blind photo test, and twenty published credits with a placeholder, a label, a talk link, a wiki, a Flickr
+// city with its state, a derivative's second author, emoji and doubled marks. Each case is a published credit or a
+// file's real record.
+{
+  check(
+    "a credit's author is the name alone",
+    [
+      "Photographer: Mosbatho",
+      "mo -- ( Talk",
+      "Mo7amedsalim at Arabic Wikipedia",
+      "NASA Goddard Space Flight Center from Greenbelt, MD, USA",
+      "Original: NASA Johnson Space Center Derivative work: Nythar",
+      "Chepry 💬 ( Andrzej Barabasz ) 📷 🇵🇱",
+      "Oleksiy Yeshtokyn,🌻🇺🇦🌻",
+      "Samuel King Jr. Jr.",
+      "Bilal  Ahmed",
+      "SilBaBum _",
+      "© Raimond Spekking / CC BY-SA 4.0 (via Wikimedia Commons)",
+    ].map(cleanArtist),
+    ["Mosbatho", "mo", "Mo7amedsalim", "NASA Goddard Space Flight Center", "NASA Johnson Space Center", "Chepry (Andrzej Barabasz)", "Oleksiy Yeshtokyn", "Samuel King Jr.", "Bilal Ahmed", "SilBaBum", "Raimond Spekking"],
+  );
+  check(
+    "a licence sentence or a placeholder is no name, and names that only look like one stay whole",
+    ["You may select the license of your choice.", "Public domain: Use pics for any purpose", "[null Courtesy]", "Unknown photographer", "Free To Use Sounds", "CC Chapman", "Byron Smith", "Se.By."].map(cleanArtist),
+    ["", "", "", "", "Free To Use Sounds", "CC Chapman", "Byron Smith", "Se.By."],
+  );
+  const v = (value) => ({ value });
+  check(
+    "a Commons file's credit is its Artist field, else the attribution asked for, else the body a release names",
+    [
+      { Artist: v("You may select the license of your choice."), Attribution: v('<a href="https://www.tasnimnews.ir">Tasnim News Agency</a>') },
+      { Artist: v("[null Courtesy]"), Credit: v("<table><tr><td>This image was released by the United States Department of Defense with the ID 260604-D-D0477-1112 (next) .</td></tr></table>") },
+      { Artist: v('<a href="https://www.flickr.com/people/102748040@N03">Public domain: Use pics for any purpose</a>'), Credit: v("<a>Samco Redwood crude oil tanker</a>") },
+      { Artist: v("CEphoto, Uwe Aranas"), Attribution: v("CEphoto, Uwe Aranas or alternatively © CEphoto, Uwe Aranas") },
+    ].map(creditName),
+    ["Tasnim News Agency", "United States Department of Defense", "", "CEphoto, Uwe Aranas"],
+  );
+  check(
+    "a library photograph with no photographer named is credited to the library once",
+    [attributionLine({ library: "pexels", artist: "" }), attributionLine({ library: "pexels", artist: "Tom Fisk" }), attributionLine({ artist: "", license: "CC BY 2.0" })],
+    ["بيكسلز", "Tom Fisk · بيكسلز", "Wikimedia Commons · CC BY 2.0 · ويكيميديا كومنز"],
+  );
 }
 
 console.log(failed ? `\n${failed} check(s) FAILED` : "\nall checks passed");

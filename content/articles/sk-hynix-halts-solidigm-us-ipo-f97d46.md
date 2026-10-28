@@ -37,7 +37,7 @@ image:
   width: 1280
   height: 854
   alt: عامل في غرفة نظيفة داخل منشأة لتصنيع الرقائق
-  credit: Российский центр  гибкой электроники · بيكسلز
+  credit: Российский центр гибкой электроники · بيكسلز
   license: Pexels License
   licenseUrl: https://www.pexels.com/license/
   pageUrl: https://www.pexels.com/photo/a-worker-in-a-lab-5118462/

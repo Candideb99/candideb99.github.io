@@ -31,7 +31,7 @@ image:
   width: 1280
   height: 960
   alt: ناقلة نفط قرب الساحل
-  credit: G.isle  px. · بيكسلز
+  credit: G.isle px. · بيكسلز
   license: Pexels License
   licenseUrl: https://www.pexels.com/license/
   pageUrl: https://www.pexels.com/photo/view-of-a-large-tanker-on-the-sea-near-a-shore-at-sunset-15647002/

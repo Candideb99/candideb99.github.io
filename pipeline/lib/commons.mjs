@@ -43,7 +43,7 @@ export async function searchCommons(query, { limit = 10, log = () => {} } = {}) 
     prop: "imageinfo",
     iiprop: "url|size|mime|extmetadata|timestamp",
     iiurlwidth: "1280",
-    iiextmetadatafilter: "LicenseShortName|LicenseUrl|Artist|Credit|ImageDescription|DateTimeOriginal|Categories",
+    iiextmetadatafilter: "LicenseShortName|LicenseUrl|Artist|Attribution|Credit|ImageDescription|DateTimeOriginal|Categories",
   });
   try {
     const response = await fetchWithTimeout(`${API}?${params}`, { headers: { "user-agent": USER_AGENT } }, 20000);
@@ -99,7 +99,7 @@ export async function searchCommonsCategory(name, { limit = 20, log = () => {} }
       prop: "imageinfo",
       iiprop: "url|size|mime|extmetadata|timestamp",
       iiurlwidth: "1280",
-      iiextmetadatafilter: "LicenseShortName|LicenseUrl|Artist|Credit|ImageDescription|DateTimeOriginal|Categories",
+      iiextmetadatafilter: "LicenseShortName|LicenseUrl|Artist|Attribution|Credit|ImageDescription|DateTimeOriginal|Categories",
     });
     const response = await fetchWithTimeout(`${API}?${params}`, { headers: { "user-agent": USER_AGENT } }, 20000);
     if (!response.ok) return [];
@@ -130,7 +130,7 @@ function photographs(pages) {
       if ((info.width ?? 0) < 1000 || (info.height ?? 0) < 600) continue;
       const ratio = info.width / info.height;
       if (ratio < 0.95 || ratio > 2.6) continue;
-      const artist = cleanArtist(stripHtml(meta.Artist?.value ?? ""));
+      const artist = creditName(meta);
       const cleanUrl = (u) => String(u ?? "").replace(/^https:\/\/thumb\.wikimedia\.org\//, "https://upload.wikimedia.org/").replace(/\?.*$/, "");
       out.push({
         title: title.replace(/^File:/, ""),
@@ -157,16 +157,37 @@ function photographs(pages) {
  * Commons' own placeholders and whole sentences, and was cut at 80 characters mid-word. Now the name Commons assumes,
  * the creator a sentence names, an uploader without the city Flickr adds («Andrew A. Shenouda from Cairo, Egypt»),
  * and a long credit ended at a clause, never inside a word; nothing when Commons knows no author.
+ *
+ * And never words that are not a name (2026-10-28). A file's Artist field read «You may select the license of your
+ * choice.», and published credits carried «[null Courtesy]», «mo -- ( Talk», «Photographer: Mosbatho», «Original: NASA
+ * Johnson Space Center Derivative work: Nythar», «Mo7amedsalim at Arabic Wikipedia», a Flickr city with its state
+ * («from Greenbelt, MD, USA»), emoji, «Jr. Jr.» and doubled spaces. A licence statement or a placeholder now gives
+ * nothing, so the credit takes the next name the record holds (creditName()); a label, a talk link, a wiki, a
+ * derivative's second author and a licence after the name are cut.
  */
+const PLACEHOLDER = /^(?:\[[^\]]*\]|unknown(?: (?:author|photographer|artist))?|author unknown|anonymous(?: photographer)?|not provided|unattributed|none|n\/a)$/i;
+const LICENCE_TEXT = /^(?:you (?:may|can|are free)\b|licen[cs]ed?\b|released (?:under|into)\b|(?:this|the) (?:file|work|image|photo(?:graph)?|picture)\b.*\b(?:licen[cs]ed|released|public domain|copyright)\b|public domain\b|cc[ -]?(?:by|0)\b|creative commons\b|gfdl\b|no (?:known )?copyright\b|copyrighted free use\b|attribution\b|own work\b|free (?:to use|for any use)\b.*\b(?:credit|attribution|licen[cs]e|purpose|commercial)\b)/i;
+const EMOJI = /[\p{Extended_Pictographic}\u{1F1E6}-\u{1F1FF}\u{FE0F}\u{200D}\u{20E3}]/gu;
+
 export function cleanArtist(raw) {
   let a = String(raw ?? "").replace(/\s+/g, " ").trim();
+  a = a.replace(/^(?:©|\(c\)|copyright\b)\s*(?:(?:19|20)\d\d\b[\s,]*)?/i, "").replace(EMOJI, " ").replace(/\s+/g, " ").trim();
   const assumed = a.match(/^No machine-readable author provided\.\s*(.+?)\s+assumed\b/i);
   if (assumed) a = assumed[1];
   const created = a.match(/^This (?:photograph|photo|picture|image|file) (?:is|was) (?:created|taken|made) by\s+(.+?)\s*\.(?:\s|$)/i);
   if (created) a = created[1];
-  a = a.replace(/^User:\s*/i, "").replace(/\s*\((?:talk|contribs)[^)]*\)\s*/gi, " ").trim();
-  a = a.replace(/^(.{2,48}?) from [A-Z][^,]{1,30}(?:, [A-Z][^,]{1,30})?$/u, "$1");
-  if (/^(?:unknown(?: author| photographer)?|anonymous|not provided|none)$/i.test(a)) return "";
+  const derived = a.match(/^Original:\s*(.+?)\s+Derivative work:/i);
+  if (derived) a = derived[1];
+  const creditTo = a.match(/\bcredit(?:ed)? to (?:the )?(?:photographer|author|creator)?\s*:?\s*(.+)$/i);
+  if (creditTo) a = creditTo[1];
+  a = a.replace(/^(?:(?:photographer|photograph|photo|picture|image|credit|author|attribution|foto|fotograf|autor|auteur)\s*:|(?:photo(?:graph)?|picture|image)s?\s+by\b)\s*/i, "").replace(/^[Bb]y\s+(?=\p{Lu})/u, "");
+  a = a.replace(/^User:\s*/i, "").replace(/\s*-*\s*\(\s*(?:talk|contribs)\b[^)]*\)?/gi, " ").trim();
+  a = a.replace(/\s+at\s+(?:(?:\p{L}+ )?Wikipedia|[a-z]{2,3}\.wikipedia(?:\.org)?)$/iu, "");
+  a = a.replace(/^(.{2,48}?) from [A-Z][^,]{1,30}(?:, [A-Z][^,]{1,30}){0,2}$/u, "$1");
+  a = a.replace(/(?:\s*[,/|;(–-]\s*|\s+)(?:licen[cs]e[ds]?\b|cc[ -]?(?:by|0)\b|creative commons\b|gfdl\b|(?:via )?wikimedia commons\b)[\s\S]*$/i, "");
+  a = a.replace(/\s+([,;:])/g, "$1").replace(/\(\s+/g, "(").replace(/\s+\)/g, ")").replace(/\(\s*\)/g, "").replace(/\s*\($/, "");
+  a = a.replace(/\b(Jr|Sr)\.?\s+\1\b\.?/g, "$1.").replace(/\s+/g, " ").replace(/^[\s,;:\-–_]+/, "").trim();
+  if (PLACEHOLDER.test(a) || LICENCE_TEXT.test(a)) return "";
   if (a.length > 72) {
     const cut = a.slice(0, 72);
     // A list of names breaks at its commas first; a dash or a full stop only when there is no comma.
@@ -174,7 +195,27 @@ export function cleanArtist(raw) {
     const at = comma >= 20 ? comma : Math.max(cut.lastIndexOf(" - "), cut.lastIndexOf(". "));
     a = at >= 20 ? cut.slice(0, at) : cut.replace(/\s+\S*$/, "");
   }
-  return a.replace(/[\s.,;:\-–]+$/, "").trim();
+  // A full stop that ends an abbreviation or a dotted handle stays («Samuel King Jr.», «Se.By.»); any other trailing mark goes.
+  a = a.replace(/[\s,;:\-–_]+$/, "");
+  return /(?:^|[\s.])\p{L}{1,3}\.$/u.test(a) ? a : a.replace(/[\s.,;:\-–_]+$/, "").trim();
+}
+
+/** The body a release names in Commons' Credit field («This image was released by the United States Department of Defense with the ID …»). */
+function releasedBy(credit) {
+  return String(credit ?? "").match(/\breleased by (?:the )?([A-Z][\w.,' -]{3,60}?) with the ID\b/)?.[1] ?? "";
+}
+
+/**
+ * The name a credit line prints for a Commons file, from its record: the Artist field; when that names no one, the
+ * attribution its author asked for («Tasnim News Agency» where the Artist field held «You may select the license of
+ * your choice.»), then the body a release names («[null Courtesy]» on a Department of Defense photograph); "" when
+ * the record names no one. The attribution comes second because it is often longer than a name («CEphoto, Uwe Aranas
+ * or alternatively © CEphoto, Uwe Aranas», «© European Union, 2026» for a named photographer); tried first, it changed
+ * eight good credits of 276.
+ */
+export function creditName(meta = {}) {
+  const field = (name) => stripHtml(meta?.[name]?.value ?? "");
+  return cleanArtist(field("Artist")) || cleanArtist(field("Attribution")) || releasedBy(field("Credit"));
 }
 
 /** Where a photo came from, as the credit line names it (pipeline/lib/photolibs.mjs gives each candidate its `library`). */
@@ -184,6 +225,8 @@ export function attributionLine(image) {
   const library = String(image.library ?? "");
   const where = LIBRARIES[library] ?? (library.startsWith("openverse:") ? "أوبن فيرس" : "ويكيميديا كومنز");
   const author = image.artist || (where === "ويكيميديا كومنز" ? "Wikimedia Commons" : where);
-  // Pexels and Unsplash name no licence of the CC kind; their own licence is linked from the credit.
-  return library === "pexels" || library === "unsplash" ? `${author} · ${where}` : `${author} · ${image.license} · ${where}`;
+  // Pexels and Unsplash name no licence of the CC kind; their own licence is linked from the credit. With no
+  // photographer named, the library alone («بيكسلز», not «بيكسلز · بيكسلز»).
+  if (library === "pexels" || library === "unsplash") return image.artist ? `${author} · ${where}` : where;
+  return `${author} · ${image.license} · ${where}`;
 }

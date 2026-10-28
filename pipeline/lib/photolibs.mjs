@@ -14,7 +14,7 @@
  * them alike. `library` says where each came from; `thumb` is a small copy for the judge to look at. Licences
  * that forbid commercial use or changes (NC, ND) are never asked for.
  */
-import { BAD_TITLE } from "./commons.mjs";
+import { BAD_TITLE, cleanArtist } from "./commons.mjs";
 import { USER_AGENT, fetchWithTimeout } from "./util.mjs";
 
 /** A Flickr static URL at another of its sizes (n 320, w 400, z 640, c 800, b 1024); null for any other address. */
@@ -98,7 +98,7 @@ export async function searchOpenverse(query, { limit = 10, log = () => {}, simpl
         license,
         licenseUrl: String(r.license_url ?? ""),
         // A file with no photographer named is credited to the collection it came from (rawpixel, not «أوبن فيرس» twice).
-        artist: String(r.creator ?? "").trim().slice(0, 80) || String(r.source ?? ""),
+        artist: cleanArtist(r.creator) || String(r.source ?? ""),
         description: "",
         date: "",
         uploaded: "",
@@ -146,7 +146,8 @@ export async function searchPexels(query, { limit = 8, log = () => {} } = {}) {
         height: Math.round((1280 * p.height) / p.width),
         license: "Pexels License",
         licenseUrl: "https://www.pexels.com/license/",
-        artist: String(p.photographer ?? "").trim().slice(0, 80),
+        // A name as its owner typed it can carry emoji, doubled spaces or a trailing «_» («Oleksiy Yeshtokyn,🌻🇺🇦🌻»).
+        artist: cleanArtist(p.photographer),
         description: String(p.alt ?? ""),
         date: "",
         uploaded: "",
@@ -191,7 +192,7 @@ export async function searchUnsplash(query, { limit = 8, log = () => {} } = {}) 
         height: Math.round((1280 * p.height) / p.width),
         license: "Unsplash License",
         licenseUrl: "https://unsplash.com/license",
-        artist: String(p.user?.name ?? "").trim().slice(0, 80),
+        artist: cleanArtist(p.user?.name),
         description: String(p.description ?? ""),
         date: "",
         uploaded: String(p.created_at ?? "").slice(0, 10),

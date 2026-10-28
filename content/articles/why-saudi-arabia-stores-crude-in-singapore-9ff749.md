@@ -31,7 +31,7 @@ image:
   width: 1280
   height: 716
   alt: ناقلة نفط خام في سنغافورة
-  credit: "Public domain: Use pics for any purpose · CC BY 2.0 · ويكيميديا كومنز"
+  credit: "Wikimedia Commons · CC BY 2.0 · ويكيميديا كومنز"
   license: CC BY 2.0
   licenseUrl: https://creativecommons.org/licenses/by/2.0
   pageUrl: https://commons.wikimedia.org/wiki/File%3ASamco_Redwood_crude_oil_tanker_(14783173609).jpg
