@@ -1,0 +1,467 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-28T13:05:35.492Z",
+  "durationSec": 2774,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "أرباح البحري الفصلية تقفز 891% إلى 5.09 مليار ريال مع ارتفاع أسعار الشحن",
+      "section": "companies",
+      "importance": 8,
+      "sources": [
+        "https://oilprice.com/Latest-Energy-News/World-News/Bahri-Profit-Hits-136-Billion-as-the-World-Scrambles-for-Tankers.html",
+        "https://www.aleqt.com/%D8%AA%D9%82%D8%A7%D8%B1%D9%8A%D8%B1-%D9%88%D8%AA%D8%AD%D9%84%D9%8A%D9%84%D8%A7%D8%AA/%D8%A3%D8%B1%D8%A8%D8%A7%D8%AD-%D8%A7%D9%84%D8%A8%D8%AD%D8%B1%D9%8A-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-%D8%A7%D9%84%D9%82%D9%8A%D8%A7%D8%B3%D9%8A%D8%A9-%D8%AA%D8%AA%D8%B3%D8%A7%D8%B1%D8%B9-%D8%A7%D9%84%D9%87%D9%88%D8%A7%D9%85%D8%B4-%D9%88%D8%A7%D9%84%D9%86%D9%82%D8%AF-%D9%8A%D8%AE%D8%AA%D8%A8%D8%B1%D8%A7%D9%86-%D8%A7%D9%84%D9%86%D9%85%D9%88-15825",
+        "https://www.arabnews.com/business/bahris-quarterly-profit-jumps-891-as-freight-rates-climb-3008652"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "يوضح العنوان والعنوان الفرعي والمقدمة قفزة الربح وتراجع النقد التشغيلي، لكنها لا تذكر أن النتائج هي الأعلى في تاريخ الشركة (المصدر 2). كما توحي عبارة «قلّصت... عدد الناقلات» بنقص في عدد السفن، والمقصود محدودية توافرها.",
+              "repair": "إضافة «في أعلى أرباح فصلية في تاريخها» إلى المقدمة، وتصحيح العبارة إلى «عدد الناقلات المتاحة»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "آلية ارتفاع الأسعار مشروحة جيداً: الاضطرابات، وعمليات النقل من سفينة إلى أخرى في خليج عُمان، وبيانات «كبلر». أما سياق السيولة فناقص، إذ غابت التدفقات الحرة السالبة وارتفاع الإنفاق الرأسمالي وصافي الدين والتوزيعات الاستثنائية (المصدر 2)، وغاب عقد بناء الناقلات العملاقة (المصدر 3). وفي الصندوق مقدمتان صحيحتان: هوامش السفن المستأجرة أدنى، والأسعار رهن التطورات الجيوسياسية. والاستنتاج بأن جزءاً أصغر من كل ريال إيرادات إضافي يتحول إلى ربح معقول ومحدود. لكن عبارة «لا من أسطول مملوك» تخالف تحسن هوامش الأسطول المملوك.",
+              "repair": "إدراج أرقام التدفقات الحرة والدين في قسم الهوامش والسيولة، وإدراج عقد «الصناعات البحرية الدولية» في قسم الأسطول، وتصحيح الصندوق إلى «لا من توسيع الأسطول المملوك»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات مجمعة حسب وظيفتها: الدافع، ثم الوحدة النفطية، ثم الهوامش، ثم المخاطر. لكن المتن يبدأ بجملة إجرائية («شملت الأرقام...»)، ويضع «ورغم ذلك» تقابلاً بين ربح الأشهر التسعة ونقد الربع. والصندوق يكرر جزئياً خاتمة قسم الهوامش، ويتميز عنها بربط الربحية بالاعتماد على الاستئجار.",
+              "repair": "يبدأ المتن بمقارنة الربح مع العام السابق، ويُجعل التقابل بين ربح الربع ونقده، ويختم قسم السيولة بأرقام الدين بدل تفسير «الاقتصادية» المحتمل."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: 890.7%، و5.09 مليار، و14.83 مليار، و913%، و28.28 دولاراً، و204 ملايين، و9.98 مليار، و10.82 ريال، وقيم الرسم البياني 21 و43.6 و34. لكن الفعل «رجّحت» يحول احتمالاً متحفظاً إلى ترجيح. كما ذُكر هامش 39% دون مستوى المقارنة، وذُكر ارتفاع تكلفة الإيرادات 174% دون تحديد أساس المقارنة.",
+              "repair": "استبدال «رجّحت» بـ«أشارت إلى أن... قد يرتبط» مع إبقاء قيد عدم دقة الإفصاحات، وإضافة «من 51% قبل عام»، وتحديد أن ارتفاع 174% مقارنة فصلية كما يسوقها المصدر 2."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقرأ القارئ العنوان والعنوان الفرعي والمقدمة معاً فيفهم ما تغير. الربح قفز 890.7% إلى 5.09 مليار ريال، وهو أعلى ربح فصلي في تاريخ الشركة. والإيرادات بلغت مستوى قياسياً عند 14.83 مليار. ويأتي القيد الحاسم في العنوان الفرعي: النقد التشغيلي في الربع تراجع 81% إلى 204 ملايين ريال. لا يوجد تناقض ظاهر، وتُفسَّر الفجوة بين الربح والنقد في قسم «هوامش أضيق وسيولة أبطأ».",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "آلية ارتفاع الأسعار مسندة إلى مصادرها: الشركة (المصدر 3)، وبيانات «كبلر» مع تعريفها، وعمليات النقل من سفينة إلى أخرى في خليج عُمان (المصدر 1). والمقارنات حاضرة: الربع المماثل، والربع الثاني، وتقديرات بلومبرغ. وسياق السيولة مكتمل: التدفقات الحرة، والإنفاق الرأسمالي، وصافي الدين مع التوزيعات الاستثنائية ونسبة 0.59 مرة (المصدر 2). أما الصندوق فيبني على مقدمات مسندة: نمو الإيرادات جاء من الأسعار والاستئجار لا من أصول مملوكة جديدة (المصدر 2)، وهوامش السفن المستأجرة أدنى (المصدر 3)، والأسعار رهن التطورات الجيوسياسية مع تسليم الناقلات الجديدة بين 2029 و2030 (المصدر 3). ومن هذه المقدمات يستنتج استنتاجاً محدوداً: كل ريال إيرادات إضافي يترك ربحاً أقل ما دام الاستئجار هو أداة التوسع. هذا الاستنتاج مشروط صراحة بـ«ما دام»، ويضيف معنى لا يرد في خاتمة المتن.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "المتن يبدأ بالمقارنة السنوية لا بجملة إجرائية. ثم ينتقل إلى الدافع، فوحدة النفط، فالهوامش، فالسيولة والدين، فالأشهر التسعة، ثم الأسطول والمخاطر، ويختم بتوقعات الشركة. والتقابل في «ورغم قفزة ربح الربع» صار صحيحاً. فقرة «أويل برايس» قصيرة، لكنها تشرح الآلية نفسها التي تتناولها الفقرة السابقة، فلها مكانها. ويمكن دمجها بها اختيارياً دون أن يكون ذلك عيباً.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر. تحققتُ من اتساق الحسابات: 174% فصلية، إذ ارتفعت تكلفة الإيرادات من نحو 3.5 إلى نحو 9.6 مليار ريال. وهوامش 21% و43.6% و34% في الرسم البياني متسقة مع الأرباح والإيرادات. ويوم 28 أكتوبر 2026 يوافق الأربعاء. والتحوط في تفسير «الاقتصادية» محفوظ. ووعود التسليم مصاغة بصيغة الجدول المتوقع لا الإنجاز، وكذلك «يُتوقع تسلم» و«على أن تُسلَّم».",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "عزت البحري ارتفاع أسعار الناقلات إلى اضطرابات الشحن الإقليمية والمخاطر الأمنية التي حدّت من توافر السفن، واستأجرت سفناً إضافية لتلبية الطلب",
+          "source": 3
+        },
+        {
+          "fact": "بقي أسطول ناقلات النفط عند 49 ناقلة دون تغيير عن الربع الثاني مقابل 50 قبل عام، وجاء نمو الإيرادات من ارتفاع العائد وزيادة النشاط عبر ناقلات مستأجرة لا من إضافة أصول مملوكة جديدة",
+          "source": 2
+        },
+        {
+          "fact": "تراجع هامش الأرباح قبل الفوائد والضرائب والإهلاك والإطفاء إلى 39% من 51% قبل عام بسبب زيادة مساهمة السفن المستأجرة ذات الهوامش الأدنى",
+          "source": 3
+        },
+        {
+          "fact": "قالت البحري إن أسعار الشحن ستعتمد بدرجة كبيرة على التطورات الجيوسياسية، ووقّعت عقداً لبناء ثلاث ناقلات خام عملاقة تُسلَّم بين 2029 و2030",
+          "source": 3
+        }
+      ],
+      "slug": "bahri-q3-profit-jumps-freight-rates-cb125d",
+      "title": "أرباح البحري الفصلية تقفز 890.7% إلى 5.09 مليار ريال بدعم أسعار الشحن",
+      "score": 10,
+      "image": "photo"
+    },
+    {
+      "headline": "سهم جيو يقفز 21% في أول تداول بعد أكبر طرح أولي في تاريخ الهند",
+      "section": "markets",
+      "importance": 7,
+      "sources": [
+        "https://www.nytimes.com/2026/10/28/business/india-jio-ipo.html",
+        "https://www.ft.com/content/32f2864d-c122-4d83-b0c5-8d2f1fcc63bd?syn-25a6b1a6=1",
+        "https://www.thenationalnews.com/business/markets/2026/10/28/reliances-jio-soars-on-market-debut-after-indias-record-31bn-ipo/",
+        "https://www.dailysabah.com/business/economy/ambanis-jio-emerges-as-indias-second-most-valuable-firm-after-ipo"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة والفقرة الأولى تبيّن ما حدث بوضوح: صعود 27% عند الإغلاق مقابل سعر طرح 1119 روبية، وتقييم بنحو 137 مليار دولار. وتفرق الفقرة الثانية بين ارتفاع الافتتاح (حتى 21%) ومكاسب الإغلاق، فلا يظهر تناقض.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "مقارنة جيو بالطروحات الكبرى السابقة وبطرح هيونداي حاضرة ومفيدة. لكن توصية نومورا تُقدَّم دون بيان أن سعرها المستهدف أدنى من سعر الإغلاق. وفي الصندوق، المقدمة الأولى تنسب العلاوة إلى طلب الاكتتاب، مع أن العلاوة نشأت من التداول. أما الاستدلال الثاني (إغلاق السهم فوق السعر المستهدف لدى نومورا يربط العوائد اللاحقة بالأداء والتراخيص) فإضافة مقبولة ومحدودة.",
+              "repair": "إدراج المقارنة بين 1340 و1417.50 روبية في المتن، وتصحيح المقدمة الأولى في الصندوق كما في القائمة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "تأتي فقرة الخلفية متأخرة وتجمع أموراً شتى (التحول الاستراتيجي، والعملاء، والداعمون، وآكاش، وطرح 1977)، ثم تنتهي المادة بفقرة يتيمة عن تحذير ريليغير بعيداً عن قسم التقييم.",
+              "repair": "تقديم الخلفية الاستراتيجية إلى ما قبل جدل التقييم، وجمع المخاطر (ريليغير من المصدر 3، والمنافسة والإنفاق الرأسمالي والقواعد التنظيمية من المصدر 4) في فقرة واحدة تختم قسم التقييم."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: 3.1 مليار دولار، و1417.50 روبية، و1119 روبية، و137 مليار دولار، و9.9%، و279 مليار روبية، و3.2%، و246 إدراجاً، و13.5 و15.4 مليار دولار. يوم الأربعاء يوافق 28 أكتوبر. لكن «نقطة دخول مناسبة» تضيف حكماً لم يقله المصدر، و«أثبت الطلب... علاوة» تتجاوز ما تسنده المقدمات.",
+              "repair": "حذف «مناسبة»، واستبدال «أثبت» بـ«كشف»، والفصل بين الطلب عند سعر الطرح وعلاوة التداول."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يحددان الحدث بدقة: قفزة 27% عند الإغلاق في أول جلسة، بعد طرح بـ3.1 مليار دولار بسعر 1119 روبية. ويوضح المتن الفرق بين أعلى ارتفاع في مستهل الجلسة (21%) والإغلاق، ويبيّن أن سهم الشركة الأم تراجع 3.2% في اليوم نفسه. لا تناقض ولا مبالغة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "مقارنة جيو بالطروحات الكبرى السابقة وبطرح هيونداي، وتوصية نومورا مقارنةً بسعري الطرح والإغلاق، حاضرة ومفيدة. لكن عبارة «دون بعض التوقعات السابقة» تبقى بلا رقم، مع أن المصدر 2 يذكر تقييم الطرح البالغ 108 مليارات دولار. وجملة 1977 لا تفسر شيئاً لأنها حُذف منها ما يربطها بثقافة الاستثمار لدى صغار المستثمرين (المصدر 4). أما صندوق «لماذا يهمّ» فمقدماته مسندة إلى المصدر 3. وقد صُحح استدلاله الأول بالفصل بين الطلب عند سعر الطرح وصعود السهم في التداول. واستدلاله الثاني محدود ومقبول: إغلاق السهم فوق السعر المستهدف يجعل العوائد اللاحقة رهن الأداء والتراخيص، ولا ينقلب إلى توقع.",
+              "repair": "أضف تقييم الطرح البالغ نحو 108 مليارات دولار منسوباً إلى «فايننشال تايمز»، واربط طرح 1977 بثقافة الاستثمار وبعائد ريلاينس (900% منذ 2006 مقابل 685% لنيفتي) من المصدر 4."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "صار ترتيب المادة أفضل: الخلفية قبل جدل التقييم، والمخاطر مجتمعة في فقرة تختم القسم. لكن الفقرة الثالثة ما زالت قائمة مواد مكدّسة تنتهي بجملة 1977 المعلّقة. وفقرة بيانات مجموعة بورصة لندن عن سوق الطروحات تقع تحت عنوان «ترتيب جديد للشركات الكبرى» فتقطع موضوعه.",
+              "repair": "قسّم فقرة الخلفية واربط جملة 1977 بإقبال صغار المستثمرين، وانقل فقرة بيانات مجموعة بورصة لندن إلى ما بعد مقارنة الطروحات الكبرى."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "المقادير صحيحة: 1417.50 روبية (14.90 دولار)، و1119 و1358 روبية، و21% و27%، و137 مليار دولار، و78 مليار دولار و14 مليون طلب، و9.9%، و279 مليار روبية و4%، و3.2%، و30 تريليون روبية، و246 إدراجاً و13.5 و15.4 مليار دولار. والآراء منسوبة إلى أصحابها (سينغ، وداديتش، وباتيني، ونومورا، وريليغير). وحُذفت كلمة «مناسبة» من تصريح داديتش، وصُحح تعبير «تُتداول أسهم الشركات الخمس».",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 7,
+      "mendIssues": [
+        "ما بقي من الملاحظة 7 السابقة، وهو خلل في البناء: نُقلت فقرة الخلفية إلى موضع أبكر، لكنها ما زالت تجمع أموراً شتى: خطة التحول، وآكاش، و530 مليون عميل، وميتا وغوغل، ثم تنتهي بجملة معلّقة لا تؤدي وظيفة: «وكان ديروباي أمباني، والد موكيش ومؤسس ريلاينس، قد أدرج الشركة الأم عام 1977 بطرح موجّه لصغار المستثمرين». الإصلاح: قسّم الفقرة. تبقى الأولى عن الاستراتيجية وتقديم جيو شركةَ تكنولوجيا (العملاء والداعمون). وتُربط جملة 1977 بما يفسر إقبال صغار المستثمرين (المصدر 4): «...بطرح يُنسب إليه على نطاق واسع الإسهام في بناء ثقافة الاستثمار في الأسهم بالهند، وقد حقق سهم ريلاينس عائداً بنحو 900% منذ 2006 مقابل 685% لمؤشر نيفتي، بحسب بيانات مجموعة بورصة لندن». وتوضع هذه الفقرة قرب رقم الـ14 مليون طلب.",
+        "خلل في البناء: فقرة «وأظهرت بيانات مجموعة بورصة لندن أن الهند أكثر أسواق الطرح الأولي نشاطاً هذا العام بـ246 إدراجاً...» وُضعت تحت عنوان «ترتيب جديد للشركات الكبرى»، وهي لا تتحدث عن ترتيب الشركات بل عن سوق الطروحات (المصدر 4). الإصلاح: انقلها إلى ما بعد فقرة مقارنة جيو بالطروحات الكبرى السابقة، فتكتمل بها صورة سوق الطروحات الهندية، ويبقى القسم المعنون مقصوراً على القيمة السوقية لجيو وريلاينس وتاتا.",
+        "مقارنة مفيدة غائبة: يقول التقرير «وانتهى تقييم جيو دون بعض التوقعات السابقة» ولا يذكر تقييم الطرح نفسه. «فايننشال تايمز» (المصدر 2) تذكر أن الطرح قيّم جيو بنحو 108 مليارات دولار، وهو الرقم الذي يبيّن حجم القفزة إلى نحو 137 مليار دولار عند الإغلاق (المصدر 3). الإصلاح: «وكان سعر الطرح قد قيّم الشركة بنحو 108 مليارات دولار، بحسب «فايننشال تايمز»، دون بعض التوقعات السابقة، مع تراجع الأسهم الهندية وتقلب الأسواق العالمية».",
+        "ترجمة حرفية: في «وهو طلب رفع توقعات بداية قوية للسهم» سلسلة إضافات منقولة عن عبارة raised expectations of a robust start. الإصلاح: «وهو إقبال رفع التوقعات بأن يبدأ السهم تداوله بقوة».",
+        "صياغة قابلة للتحسين: «بوصفها شركة تكنولوجيا وليست ذراع اتصالات لريلاينس فحسب» تركيب ثقيل. الإصلاح: «بوصفها شركة تكنولوجيا متكاملة، لا مجرد ذراع اتصالات لريلاينس».",
+        "مقارنة جيو بالطروحات الكبرى السابقة وبطرح هيونداي، وتوصية نومورا مقارنةً بسعري الطرح والإغلاق، حاضرة ومفيدة. لكن عبارة «دون بعض التوقعات السابقة» تبقى بلا رقم، مع أن المصدر 2 يذكر تقييم الطرح البالغ 108 مليارات دولار. وجملة 1977 لا تفسر شيئاً لأنها حُذف منها ما يربطها بثقافة الاستثمار لدى صغار المستثمرين (المصدر 4). أما صندوق «لماذا يهمّ» فمقدماته مسندة إلى المصدر 3. وقد صُحح استدلاله الأول بالفصل بين الطلب عند سعر الطرح وصعود السهم في التداول. واستدلاله الثاني محدود ومقبول: إغلاق السهم فوق السعر المستهدف يجعل العوائد اللاحقة رهن الأداء والتراخيص، ولا ينقلب إلى توقع. — أضف تقييم الطرح البالغ نحو 108 مليارات دولار منسوباً إلى «فايننشال تايمز»، واربط طرح 1977 بثقافة الاستثمار وبعائد ريلاينس (900% منذ 2006 مقابل 685% لنيفتي) من المصدر 4.",
+        "صار ترتيب المادة أفضل: الخلفية قبل جدل التقييم، والمخاطر مجتمعة في فقرة تختم القسم. لكن الفقرة الثالثة ما زالت قائمة مواد مكدّسة تنتهي بجملة 1977 المعلّقة. وفقرة بيانات مجموعة بورصة لندن عن سوق الطروحات تقع تحت عنوان «ترتيب جديد للشركات الكبرى» فتقطع موضوعه. — قسّم فقرة الخلفية واربط جملة 1977 بإقبال صغار المستثمرين، وانقل فقرة بيانات مجموعة بورصة لندن إلى ما بعد مقارنة الطروحات الكبرى."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "اجتذب الطرح عروض اكتتاب تجاوزت 78 مليار دولار، وارتفع السهم 27% في أول جلسة ليغلق عند 1417.50 روبية",
+          "source": 3
+        },
+        {
+          "fact": "بدأت نومورا تغطية السهم بتوصية شراء وسعر مستهدف 1340 روبية",
+          "source": 3
+        },
+        {
+          "fact": "يتداول كل من أكبر خمسة طروحات أولية سابقة في الهند دون سعر طرحه",
+          "source": 3
+        },
+        {
+          "fact": "حذرت ريليغير بروكينغ من أن تأخر الموافقات أو عدم تجديد التراخيص أو صعوبة الحصول على طيف إضافي قد يثقل أعمال جيو",
+          "source": 3
+        }
+      ],
+      "slug": "jio-platforms-shares-jump-india-record-ipo-281437",
+      "title": "سهم جيو يقفز 27% في أول تداول بعد أكبر طرح أولي في الهند",
+      "score": 9,
+      "image": "cover-art"
+    },
+    {
+      "headline": "أدنوك للحفر تحقق ربحاً قياسياً في 9 أشهر وتتوقع رفع توزيعاتها 22.5%",
+      "section": "companies",
+      "importance": 6,
+      "sources": [
+        "https://gulfnews.com/business/markets/adnoc-drilling-posts-107-billion-nine-month-profit-1.500726796",
+        "https://economymiddleeast.com/news/adnoc-drilling-eyes-22-5-percent-dividend-rise-to-1-225-billion-in-2026-as-profit-hits-record-nine-month-revenue-reaches-3-7-billion/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يقول «تتوقع رفع توزيعات 2026»، والموجز والمقدمة يوضحان أن بلوغ 1.225 مليار دولار مشروط بموافقة المساهمين على الشريحة الثانية، مع المقارنة بمليار دولار عن 2025. فيفهم القارئ ما أُقرّ (350 مليون دولار عن الربع الثالث) وما لا يزال معلقاً.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السياق متوفر في المتن: الحد الأدنى المتصاعد 1.05 مليار دولار، ومحركات الإيرادات البرية والبحرية، والمقارنة بتوقعات النصف الأول. لكن صندوق «لماذا يهمّ» يأخذ مقدمتين صحيحتين، هما التدفق الحر المتوقع والتوزيعات المتوقعة، ثم يستنتج شرطاً أضيق مما في المصدر 2: يُسقط «قدرة الميزانية» وينسب النقد الإضافي إلى الحفارات الجديدة وخدمات الحقول دون سند. كما يتجاهل توقعات 2027 التي يوردها المصدر نفسه.",
+              "repair": "«إذا تحقق تدفق نقدي حر بين 1.2 و1.3 مليار دولار كما تتوقع الشركة، فإن توزيعات 1.225 مليار دولار تستهلكه تقريباً كله. ومع توقعها استقرار صافي الربح في 2027 بفعل ارتفاع الإهلاك وتكاليف التمويل، يصبح أي توزيع فوق الحد الأدنى مشروطاً بفائض نقدي أو بقدرة الميزانية لا بالنمو التشغيلي وحده.»"
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات مجمّعة حسب وظيفتها: النتائج، ثم التوزيع، ثم السياسة، ثم المحركات، ثم التوقعات. لكن فقرة الرئيس التنفيذي تكرر جملة الشركة السابقة عن توليد النقد وتضيف ثناءً عاماً. والتقرير ينتهي بأرقام الإنفاق الرأسمالي والتدفق الحر، دون الخطوة التالية التي يوفرها المصدر 2: موعد الصرف وتصويت المساهمين في أبريل 2027 وتوقعات 2027.",
+              "repair": "ادمج جملة الشركة وتصريح المصبي في جملة واحدة واحذف الثناء العام. انقل موعدي الصرف إلى فقرة الشريحة الثانية. اختم بفقرة قصيرة عن توقعات 2027 وأسبابها كما يوردها المصدر 2."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والشروط مطابقة للمصادر، ومنها: 3.71 مقابل 3.63 مليار دولار، و350 مليون دولار تساوي 262.5 مليوناً زائد 87.5 مليوناً، والحد الأدنى 1.05 مليار دولار يرتفع 5% على الأقل حتى 2030، والتدفق الحر من دون احتساب الاستحواذات. لكن «بلغ هامش صافي الربح 29%» يُسقط معنى الثبات الذي يذكره المصدر 2، وصندوق «لماذا يهمّ» يحذف أحد شرطي التوزيع الإضافي.",
+              "repair": "اكتب «ظل الهامشان عند 29% و45%». وفي الصندوق أعد الشرط كما ورد في المصدر 2: «فائض التدفق النقدي الحر وقدرة الميزانية»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يقول «تتوقع رفع توزيعات 2026»، والعنوان الفرعي والمقدمة يقيدان الزيادة بموافقة المساهمين على الشريحة الثانية. ويفصل المتن بين ما أُقر (350 مليون دولار تُصرف في نوفمبر) وما ينتظر التصويت (87.5 مليون دولار في أبريل 2027 أو قرابته). فلا تناقض ولا مبالغة على المصدرين 1 و2.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يضع المتن الأرقام في سياقها: 3.71 مقابل 3.63 مليار دولار، وتوزيعات 2025 البالغة مليار دولار، والحد الأدنى المتصاعد 1.05 مليار دولار وشروط التوزيع الإضافي، ومحركات الإيرادات البرية والبحرية، ونطاقات توقعات النصف الأول. والصندوق يأخذ مقدمتين موثقتين، هما التدفق الحر المتوقع والتوزيعات المتوقعة، ويستنتج أن التوزيعات تكاد تستنفد التدفق الحر. ثم يقيد أي زيادة لاحقة بفائض التدفق الحر وقدرة الميزانية في ظل ربح مستقر تقريباً في 2027. وهذا استنتاج محدود يسنده المصدر 2 ولا يكرر خاتمة المتن.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "الفقرات مجمّعة حسب وظيفتها: النتائج وتفسير الرقم القياسي، ثم التوزيع وموعده، ثم الشريحة المشروطة، ثم السياسة، ثم المحركات والاستراتيجية، ثم توقعات 2026 و2027. وزال التكرار بين جملة الشركة وتصريح الرئيس التنفيذي، وزال الثناء العام. ويُختم التقرير بالخطوة التالية (2027) لا بأرقام معزولة.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والشروط مطابقة للمصادر، ومنها 262.5 + 87.5 = 350 مليون دولار، و5 نوفمبر، وأبريل 2027، وقيد «من دون احتساب الاستحواذات»، وثبات الهامشين. لكن «الأرباح التشغيلية» تسمية غير دقيقة لـEBITDA، وقد تُفهم ربحاً بعد الإهلاك.",
+              "repair": "استبدل «الأرباح التشغيلية» بـ«هذه الأرباح» أو «الأرباح قبل الفوائد والضرائب والإهلاك والاستهلاك» في المواضع الثلاثة."
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تتوقع أدنوك للحفر تدفقاً نقدياً حراً بين 1.2 و1.3 مليار دولار في 2026 من دون احتساب الاستحواذات",
+          "source": 2
+        },
+        {
+          "fact": "التوزيعات المتوقعة عن 2026 تبلغ 1.225 مليار دولار إذا وافق المساهمون على الشريحة الثانية",
+          "source": 1
+        },
+        {
+          "fact": "يسمح الإطار التصاعدي بتوزيعات إضافية فوق الحد الأدنى حين يدعمها فائض التدفق النقدي الحر وقدرة الميزانية",
+          "source": 2
+        },
+        {
+          "fact": "تتوقع الشركة استقرار صافي الربح تقريباً في 2027 لأن ارتفاع الإهلاك وتكاليف التمويل يعوّض النمو التشغيلي",
+          "source": 2
+        }
+      ],
+      "slug": "adnoc-drilling-dividend-rise-record-profit-3f9d4a",
+      "title": "أدنوك للحفر تتوقع رفع توزيعات 2026 بنسبة 22.5% إلى 1.225 مليار دولار",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "مصر تستهدف رفع حصة الطاقة المتجددة في الكهرباء إلى 45% بحلول 2028",
+      "section": "energy",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
+  "llm": {
+    "calls": 62,
+    "failures": 4,
+    "promptTokens": 933736,
+    "completionTokens": 252828,
+    "cacheReadTokens": 241221,
+    "costUsd": 10.6442,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 62
+    }
+  },
+  "log": [
+    "[13:45:40] desk \"أدنوك للحفر تتوقع رفع توزيعات 2026 بنسبة 22.5% إلى 1.225 مليار دولار\": rewrote lede, body",
+    "[13:45:40] mend refused by the checks (جمل طويلة جداً (1): «وانضمت حفارة جزرية ثانية إلى الأسطول في); the reviewed draft goes on",
+    "[13:46:40] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2655 attempt=1 ms=59861",
+    "[13:46:40] precheck \"أدنوك للحفر تتوقع رفع توزيعات 2026 بنسبة 22.5% إلى 1.225 مليار دولار\": clean",
+    "[13:46:40] image: handout passed over (Economy Middle East): credited to «ADNOC Drilling», not an official body or a company",
+    "[13:46:49] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=596 attempt=1 ms=9154",
+    "[13:46:49] image: the picture should say: ADNOC Drilling's busy rig fleet generates the cash behind its bigger shareholder payout.",
+    "[13:46:57] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=363 attempt=1 ms=7723",
+    "[13:46:57] image: the source's photograph (Gulf News) shows An aerial view of an offshore oil and gas artificial island ringed by a rock breakwater, with drilling rigs, process mod; searching Abu Dhabi offshore drilling rig | ADNOC artificial island rig | artificial island oil field UAE | offshore oil island aerial",
+    "[13:46:57] image: tier 2, like the sources' own photograph: Abu Dhabi offshore drilling rig | ADNOC artificial island rig | artificial island oil field UAE | offshore oil island aerial",
+    "[13:46:57] pexels \"Abu Dhabi offshore drilling rig\": 8 usable",
+    "[13:46:57] pexels \"offshore oil island aerial\": 8 usable",
+    "[13:46:57] pexels \"ADNOC artificial island rig\": 8 usable",
+    "[13:46:57] pexels \"artificial island oil field UAE\": 8 usable",
+    "[13:46:57] commons \"Abu Dhabi offshore drilling rig\": 2 usable of 3",
+    "[13:47:42] openverse \"Abu Dhabi offshore drilling rig\": The operation was aborted due to timeout",
+    "[13:47:42] openverse \"ADNOC artificial island rig\": The operation was aborted due to timeout",
+    "[13:47:42] openverse \"artificial island oil field UAE\": The operation was aborted due to timeout",
+    "[13:47:43] commons \"ADNOC artificial island rig\": 0 usable of 0",
+    "[13:47:43] commons \"ADNOC artificial\": 0 usable of 0",
+    "[13:47:44] commons \"rig\": 14 usable of 20",
+    "[13:47:44] image: dropped \"Scenic long exposure photo capturing industrial lights and reflections\" — names too little of artificial, island, rig",
+    "[13:47:44] image: dropped \"Oil platform in the sea under clear skies, showcasing industrial seasc\" — names too little of artificial, island, rig",
+    "[13:47:44] image: dropped \"Stunning aerial view of Palm Jumeirah in Dubai under a clear blue sky.\" — names too little of artificial, island, rig",
+    "[13:47:44] image: dropped \"Workers on an offshore oil platform in Mozambique, performing maintena\" — names too little of artificial, island, rig",
+    "[13:47:45] commons \"artificial island oil field UAE\": 0 usable of 0",
+    "[13:47:46] commons \"artificial island\": 12 usable of 20",
+    "[13:47:47] commons \"offshore oil island aerial\": 1 usable of 1",
+    "[13:47:47] image: dropped \"CAMPOBELLO ISLAND WITH ITS LIGHTHOUSE. IF PLANS FOR AN OFFSHORE OIL PO\" — dated 1973, an archival picture",
+    "[13:48:27] openverse \"offshore oil island aerial\": The operation was aborted due to timeout",
+    "[13:48:27] image: dropped \"Aerial shot of heavy equipment on a barge in the sea, supported by tug\" — names too little of offshore, oil, island, aerial",
+    "[13:48:27] image: dropped \"Drone shot of large tanker ship with helipads in ocean waters.\" — names too little of offshore, oil, island, aerial",
+    "[13:48:27] image: dropped \"Drilling rig and a digger at a construction site in Tuntorp.jpg\" — taken in Sweden, which the story does not name",
+    "[13:48:27] image: dropped \"Rig, West Virginia 2020.jpg\" — taken in United States, which the story does not name",
+    "[13:48:27] image: dropped \"Northstar Offshore Island Beaufort Sea.jpg\" — taken in United States, which the story does not name",
+    "[13:48:27] image: dropped \"Stunning aerial view of a vibrant offshore oil rig with crane and heli\" — taken in Indonesia, which the story does not name",
+    "[13:48:27] image: 8 likeness(es) set aside for the country's own photographs",
+    "[13:48:38] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=783 attempt=1 ms=10832",
+    "[13:48:38] image: \"\"Sagadril-1\" Oil rig @ Corniche @ Abu Dhabi (16044160715).jp\" names the story's topic without saying its point (This jackup drilling rig with an offshore tug off Abu Dhabi matches the sources' subject (offshore drilling rigs in Abu Dhabi waters). It is sharper and more re); checked now and kept in reserve while the desk looks further",
+    "[13:48:48] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=687 attempt=1 ms=10368",
+    "[13:48:48] image: second check (claude-cli/claude-opus-5-5) RECAPTION \"\"Sagadril-1\" Oil rig @ Corniche @ Abu Dhabi (16044160715).jp\": A sharp jack-up drilling rig in Abu Dhabi waters fits ADNOC Drilling's sector and place, but the caption names the Sagad",
+    "[13:48:57] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=736 attempt=1 ms=9031",
+    "[13:49:06] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=666 attempt=1 ms=8518",
+    "[13:49:06] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"\"Sagadril-1\" Oil rig @ Corniche @ Abu Dhabi (16044160715).jp\": A sharp, well-composed frame of a jack-up drilling rig and an offshore supply tug in Abu Dhabi waters shows ADNOC Drilli",
+    "[13:49:06] image: tier 3, the writer's own subjects: offshore drilling rig | oil drilling rig workers | jack-up rig",
+    "[13:49:07] commons \"offshore drilling rig 2026\": 0 usable of 0",
+    "[13:49:08] commons \"offshore drilling rig\": 8 usable of 12",
+    "[13:49:08] image: dropped \"Oil platform P-51 (Brazil).jpg\" — names too little of offshore, drilling, rig",
+    "[13:49:08] image: dropped \"00 3783 Oil and gas platform in Norway.jpg\" — names too little of offshore, drilling, rig",
+    "[13:49:08] commons \"oil drilling rig workers 2026\": 0 usable of 0",
+    "[13:49:09] commons \"oil drilling rig workers\": 3 usable of 12",
+    "[13:49:09] image: dropped \"Title- Life - Oil (8552972044).jpg\" — dated 1937, an archival picture",
+    "[13:49:09] commons \"jack-up rig 2026\": 0 usable of 4",
+    "[13:49:10] commons \"jack-up rig\": 0 usable of 12",
+    "[13:49:10] commons \"rig\": 0 usable of 0",
+    "[13:49:10] image: dropped \"Oil Platform Crew Transfer.jpg\" — taken in Mexico, which the story does not name",
+    "[13:49:10] image: dropped \"Refurbishment Platform for Drilling Rigs -- Corpus Christi.jpg\" — taken in United States, which the story does not name",
+    "[13:49:10] image: dropped \"Deepwater Horizon offshore drilling unit on fire 2010.jpg\" — taken in Mexico, which the story does not name",
+    "[13:49:10] image: dropped \"The repairing and rebuilding of the damaged containment dome for the A\" — taken in United States, which the story does not name",
+    "[13:49:10] image: dropped \"The UK's 2015 Oil Reality (17918967973).jpg\" — taken in United Kingdom, which the story does not name",
+    "[13:49:10] image: no candidates for the specific queries",
+    "[13:49:10] image: tier 4, the story's point and its subject: ADNOC drilling rig | rig crew drilling UAE | onshore drilling rig desert | drilling rig Abu Dhabi | jack-up rig UAE | drilling rig (home: United Arab Emirates, UAE, Emirati, Abu Dhabi, Dubai)",
+    "[13:49:11] pexels \"ADNOC drilling rig\": 8 usable",
+    "[13:49:11] pexels \"drilling rig Abu Dhabi\": 8 usable",
+    "[13:49:11] pexels \"drilling rig\": 8 usable",
+    "[13:49:11] pexels \"jack-up rig UAE\": 8 usable",
+    "[13:49:11] pexels \"onshore drilling rig desert\": 8 usable",
+    "[13:49:11] commons \"ADNOC drilling rig\": 0 usable of 0",
+    "[13:49:11] pexels \"rig crew drilling UAE\": 8 usable",
+    "[13:49:11] commons \"ADNOC drilling\": 0 usable of 0",
+    "[13:49:11] commons \"rig\": 0 usable of 0",
+    "[13:49:43] openverse \"onshore drilling rig desert\": 0 usable of 0",
+    "[13:49:52] openverse \"drilling rig Abu Dhabi\": 0 usable of 0",
+    "[13:49:55] openverse \"ADNOC drilling rig\": The operation was aborted due to timeout",
+    "[13:49:55] image: dropped \"High-angle view of an offshore oil platform with helipad surrounded by\" — names too little of drilling, rig",
+    "[13:49:55] image: dropped \"Offshore oil platform in urban harbor, showcasing industrial scenery a\" — names too little of drilling, rig",
+    "[13:49:55] image: dropped \"Offshore oil platform with cranes in Palermo harbor, capturing industr\" — names too little of drilling, rig",
+    "[13:49:55] openverse \"rig crew drilling UAE\": The operation was aborted due to timeout",
+    "[13:49:56] commons \"rig crew drilling UAE\": 0 usable of 0",
+    "[13:49:58] commons \"rig crew\": 20 usable of 24",
+    "[13:49:58] image: dropped \"Rig Crew near Henderson, Texas (7590787016).jpg\" — dated 1910, an archival picture",
+    "[13:49:58] image: dropped \"US Navy 030123-N-4142G-013 Flight deck crew members rig the emergency \" — dated 2003, an archival picture",
+    "[13:49:58] image: dropped \"US Navy 030123-N-4142G-014 Flight deck crew members rig the emergency \" — dated 2003, an archival picture",
+    "[13:49:58] image: dropped \"Leaving The Prinos field on a Crew boat. (16449580930).jpg\" — dated 1982, an archival picture",
+    "[13:49:58] image: dropped \"Workers on an offshore platform demonstrate teamwork using water hoses\" — names too little of rig, crew, drilling",
+    "[13:49:58] image: dropped \"Supply vessel approaching offshore oil platform in Danish waters, show\" — names too little of rig, crew, drilling",
+    "[13:49:58] commons \"onshore drilling rig desert\": 0 usable of 0",
+    "[13:49:59] commons \"onshore drilling\": 14 usable of 24",
+    "[13:49:59] image: dropped \"Oiled Pelican.jpg\" — shows bobby, not the story's people",
+    "[13:49:59] image: dropped \"California Oil and Gas (35172405674).jpg\" — names too little of onshore, drilling",
+    "[13:49:59] image: dropped \"California Oil and Gas (33990563082).jpg\" — names too little of onshore, drilling",
+    "[13:49:59] image: dropped \"California Oil and Gas (35622729120).jpg\" — names too little of onshore, drilling",
+    "[13:49:59] image: dropped \"California Oil and Gas (35622739240).jpg\" — names too little of onshore, drilling",
+    "[13:49:59] image: dropped \"California Oil and Gas (34107101706).jpg\" — names too little of onshore, drilling",
+    "[13:49:59] image: dropped \"California Oil and Gas (36012074135).jpg\" — names too little of onshore, drilling",
+    "[13:49:59] image: dropped \"California Oil and Gas (33336725973).jpg\" — names too little of onshore, drilling",
+    "[13:49:59] image: dropped \"California Oil and Gas (33990613362).jpg\" — names too little of onshore, drilling",
+    "[13:49:59] image: dropped \"California Oil and Gas (35855997482).jpg\" — names too little of onshore, drilling",
+    "[13:49:59] image: dropped \"California Oil and Gas (34107057826).jpg\" — names too little of onshore, drilling",
+    "[13:50:37] openverse \"jack-up rig UAE\": The operation was aborted due to timeout",
+    "[13:50:40] openverse \"drilling rig\": The operation was aborted due to timeout",
+    "[13:50:40] openverse \"onshore drilling\": The operation was aborted due to timeout",
+    "[13:50:40] image: dropped \"Oil pumpjack surrounded by barren landscape under overcast skies, show\" — names too little of onshore, drilling, rig, desert",
+    "[13:50:40] image: dropped \"Dramatic silhouette of an oil pump jack against a vibrant sunset sky, \" — names too little of onshore, drilling, rig, desert",
+    "[13:50:40] image: dropped \"Oil platform silhouetted against a vibrant sunset in Huntington Beach,\" — names too little of onshore, drilling, rig, desert",
+    "[13:50:41] commons \"drilling rig Abu Dhabi\": 4 usable of 8",
+    "[13:51:22] openverse \"drilling rig\": The operation was aborted due to timeout",
+    "[13:51:22] image: dropped \"Oil platform in the sea under clear skies, showcasing industrial seasc\" — names too little of drilling, rig",
+    "[13:51:23] commons \"jack-up rig UAE\": 0 usable of 0",
+    "[13:51:24] commons \"jack-up rig\": 3 usable of 24",
+    "[13:51:24] image: dropped \"High angle view of offshore oil platforms in Ras Laffan, Qatar under c\" — names too little of jack-up, rig",
+    "[13:51:24] image: dropped \"Coastal construction platform with crane in misty Barcelona harbor.\" — names too little of jack-up, rig",
+    "[13:51:25] commons \"drilling rig\": 18 usable of 24",
+    "[13:51:25] image: dropped \"Onshore drilling rig.jpg\" — taken in Nigeria, which the story does not name",
+    "[13:51:25] image: dropped \"Soils crew walking back to the rig Custer Gallatin NF IMG 4320 (532804\" — taken in United States, which the story does not name",
+    "[13:51:25] image: dropped \"Drilling rig and a digger at a construction site in Tuntorp.jpg\" — taken in Sweden, which the story does not name",
+    "[13:51:25] image: dropped \"Refurbishment Platform for Drilling Rigs -- Corpus Christi.jpg\" — taken in United States, which the story does not name",
+    "[13:51:25] image: dropped \"Rig Crew on Halmahera Island.jpg\" — taken in Indonesia, which the story does not name",
+    "[13:51:25] image: dropped \"Jack-up-rig-in-the-caspian-sea.JPG\" — taken in Iran, which the story does not name",
+    "[13:51:36] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=510 attempt=1 ms=10923",
+    "[13:51:36] image: \"\"Sagadril-1\" Oil rig @ Corniche @ Abu Dhabi (16044160715).jp\" names the story's topic without saying its point; the desk already holds one such, and looks further",
+    "[13:51:42] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=186 attempt=1 ms=5512",
+    "[13:51:42] image: vision rejected all candidates (fallback pass) (Neither photo fits. Photo 1 shows an auger piling rig on a building site, which is construction foundation work and not oil and gas well drilling, so it would mislead readers about ADNOC Drilling. It also has no link to the UAE. Photo 2 is a small jack-up in front of Tower Bridge in London, a landmark in another country, shot in 2009 as an amateur snapshot. Neither shows ADNOC Drilling's rig fleet at work.)",
+    "[13:51:42] image: the story's people first: Abdulla Ateya Al Messabi 2026 | Abdulla Ateya Al Messabi | عبدالله ناجي عطية المسعبي | عبدالله المسعبي",
+    "[13:51:43] commons \"Abdulla Ateya Al Messabi 2026\": 0 usable of 0",
+    "[13:51:44] commons \"Abdulla Ateya\": 0 usable of 0",
+    "[13:51:45] commons \"2026\": 12 usable of 20",
+    "[13:51:45] image: dropped \"Castle Ponoviče, Municipality Litija, Slovenia (2026).jpg\" — names none of the story's people",
+    "[13:51:45] image: dropped \"Saint Gregory the Illuminator Cathedral, Yerevan (2026).jpg\" — names none of the story's people",
+    "[13:51:45] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 14.jpg\" — names none of the story's people",
+    "[13:51:45] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 04.jpg\" — names none of the story's people",
+    "[13:51:45] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 25.jpg\" — names none of the story's people",
+    "[13:51:45] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 22.jpg\" — names none of the story's people",
+    "[13:51:45] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 17.jpg\" — names none of the story's people",
+    "[13:51:45] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 21.jpg\" — names none of the story's people",
+    "[13:51:45] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 08.jpg\" — names none of the story's people",
+    "[13:51:45] image: dropped \"Palastblühen 2026 im Museum Kunstpalast 01.jpg\" — names none of the story's people",
+    "[13:51:46] commons \"Abdulla Ateya Al Messabi\": 0 usable of 0",
+    "[13:51:46] commons \"Abdulla Ateya\": 0 usable of 0",
+    "[13:51:46] commons \"Messabi\": 1 usable of 3",
+    "[13:51:46] image: dropped \"Leonidas Merritt and family 1892 Mountain Iron MN IMG 1495.JPG\" — dated 1892, an archival picture",
+    "[13:51:47] commons \"عبدالله ناجي عطية المسعبي\": 0 usable of 0",
+    "[13:51:48] commons \"عبدالله ناجي\": 0 usable of 0",
+    "[13:51:48] commons \"المسعبي\": 0 usable of 0",
+    "[13:51:49] commons \"عبدالله المسعبي\": 0 usable of 0",
+    "[13:51:49] commons \"المسعبي\": 0 usable of 0",
+    "[13:51:49] image: no photograph of the story's people",
+    "[13:51:49] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"\"Sagadril-1\" Oil rig @ Corniche @ Abu Dhabi (16044160715).jp\"",
+    "[13:51:49] published \"أدنوك للحفر تتوقع رفع توزيعات 2026 بنسبة 22.5% إلى 1.225 مليار دولار\" -> adnoc-drilling-dividend-rise-record-profit-3f9d4a",
+    "[13:51:49] run budget of 35 minutes spent; \"مصر تستهدف رفع حصة الطاقة المتجددة في الكهرباء إلى 45% بحلول 2028\" waits for the next run"
+  ]
+}

@@ -7780,6 +7780,113 @@
           "noted": []
         }
       ]
+    },
+    "bahri-q3-profit-jumps-freight-rates-cb125d": {
+      "at": "2026-10-28T13:21:06.087Z",
+      "title": "أرباح البحري الفصلية تقفز 890.7% إلى 5.09 مليار ريال بدعم أسعار الشحن",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v40",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 35,
+            "checked": 35,
+            "supported": 30,
+            "weak": 5,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "jio-platforms-shares-jump-india-record-ipo-281437": {
+      "at": "2026-10-28T13:35:52.345Z",
+      "title": "سهم جيو يقفز 27% في أول تداول بعد أكبر طرح أولي في الهند",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v40",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 38,
+            "checked": 38,
+            "supported": 32,
+            "weak": 3,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 3,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "قفزت أسهم جيو بلاتفورمز، شركة الاتصالات والخدمات الرقمية التابعة للملياردير موكيش أمباني، 27% عند إغلاق أول يوم تداول لها في مومباي الأربعاء، بعدما جمعت 3.1 مليار دولار في أكبر طرح عام أولي في تاريخ الهند.",
+              "quote": "Telecoms business raises $3.2bn at $108bn valuation in relief to stock market hit by war in Iran",
+              "source": "Financial Times",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 5,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "حصيلة طرح جيو: 3.1 مليار دولار",
+              "quote": "Telecoms business raises $3.2bn at $108bn valuation in relief to stock market hit by war in Iran",
+              "source": "Financial Times",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "adnoc-drilling-dividend-rise-record-profit-3f9d4a": {
+      "at": "2026-10-28T13:51:49.044Z",
+      "title": "أدنوك للحفر تتوقع رفع توزيعات 2026 بنسبة 22.5% إلى 1.225 مليار دولار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v40",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 41,
+            "checked": 41,
+            "supported": 37,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
