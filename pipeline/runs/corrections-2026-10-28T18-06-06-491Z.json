@@ -1,0 +1,221 @@
+{
+  "startedAt": "2026-10-28T18:06:06.491Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "saudi-tadawul-group-q3-profit-falls-9b2148",
+      "issue": "Two faults. (1) The body says «ومع تراجع القطاعين معاً، انخفضت الإيرادات المرتبطة بأنشطة التداول 14.6% خلال الربع»: it presents the 14.6% fall as the result of the capital-markets segment falling 12.5% and the post-trade segment 7.2%, but two segment falls of 12.5% and 7.2% cannot add up to a deeper 14.6% fall, so the 14.6% is a separate measure. Check in the sources what exactly fell 14.6% and state it as its own figure, without the causal link «ومع تراجع القطاعين معاً». The box label «تراجع إيرادات أنشطة التداول في الربع» must name the same measure. (2) «909 ملايين ريال (243 مليون دولار)»: at the riyal's peg of 3.75 to the dollar, 909 million riyals is 242 million dollars, not 243.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن تراجع الإيرادات المرتبطة بأنشطة التداول 14.6% في الربع الثالث جاء محصلةً لانخفاض إيرادات قطاعي أسواق المال وخدمات ما بعد التداول معاً، والصحيح أن نسبة 14.6% مقياس مستقل لا ينتج عن تراجع القطاعين بنسبتي 12.5% و7.2%.",
+      "model": "claude-cli/claude-opus-5-5",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "ومع تراجع القطاعين معاً، انخفضت الإيرادات المرتبطة بأنشطة التداول 14.6% خلال الربع، وهو تراجع أعمق من انخفاض الإيرادات التشغيلية الإجمالية.",
+        "تراجع إيرادات أنشطة التداول في الربع 14.6%"
+      ],
+      "newSentences": [
+        "وانخفضت الإيرادات المرتبطة بأنشطة التداول 14.6% خلال الربع، وهو تراجع أعمق من انخفاض الإيرادات التشغيلية الإجمالية.",
+        "تراجع الإيرادات المرتبطة بأنشطة التداول في الربع 14.6%"
+      ]
+    },
+    {
+      "slug": "apollo-buys-stake-in-mubadala-capital-e5bc9c",
+      "issue": "Two faults. (1) The lede says «أعلنت «مبادلة كابيتال» … أن «أبولو غلوبال مانجمنت» ستشتري حصة أقلية فيها تقارب 10%، بحسب مطلعين»: it puts the figure of about 10%, which came only from people familiar with the deal, inside Mubadala Capital's official announcement, which disclosed a minority stake without a percentage. Separate the two: the announcement of a minority stake, then the roughly 10% credited to the insiders. (2) «لماذا يهمّ» says the deal comes «من دون أن تتخلى عن القرار الاستثماري… ولا عن أغلبية مبادلة للاستثمار»: Mubadala Capital cannot give up a majority it does not hold; the majority belongs to its parent, Mubadala Investment Company, which keeps it. The box also states the 5 billion dollars of commitments with «تحصل» as if received, while the sources expect them at the initial close: keep the condition.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "lede",
+        "whyItMatters"
+      ],
+      "note": "نسبت نسخة سابقة من هذا الخبر نسبة الحصة التي تقارب 10% إلى إعلان «مبادلة كابيتال»، والصحيح أن الإعلان تحدث عن حصة أقلية من دون نسبة، وأن الرقم مصدره مطلعون تحدثوا إلى «سي إن بي سي». كما أوحت فقرة «لماذا يهمّ» بأن «مبادلة كابيتال» تملك الأغلبية وأنها حصلت على الالتزامات، والصحيح أن الأغلبية للشركة الأم مبادلة للاستثمار وأن الالتزامات البالغة 5 مليارات دولار متوقعة عند الإغلاق الأولي.",
+      "model": "claude-cli/claude-opus-5-5",
+      "before": {
+        "lede": "أعلنت «مبادلة كابيتال»، ذراع الأصول البديلة لمبادلة للاستثمار، صندوق الثروة السيادي في أبوظبي، الاثنين أن «أبولو غلوبال مانجمنت» ستشتري حصة أقلية فيها تقارب 10%، بحسب مطلعين تحدثوا إلى «سي إن بي سي» الأمريكية. ويُنتظر إتمام الصفقة في الربع الرابع رهناً بالموافقات التنظيمية والقانونية.",
+        "whyItMatters": "تحصل «مبادلة كابيتال» على رأس مال ملتزم لاستراتيجياتها من شريك يدير نحو 1.05 تريليون دولار، من دون أن تتخلى عن القرار الاستثماري الذي يبقى بيد إدارتها ولا عن أغلبية مبادلة للاستثمار. ويبقى أثر الصفقة الفعلي معلقاً على تحقق الالتزامات المتوقعة البالغة 5 مليارات دولار عند الإغلاق الأولي وعلى الموافقات التنظيمية المنتظرة قبل الإتمام في الربع الرابع."
+      },
+      "after": {
+        "lede": "أعلنت «مبادلة كابيتال»، ذراع الأصول البديلة لمبادلة للاستثمار، صندوق الثروة السيادي في أبوظبي، الاثنين أن «أبولو غلوبال مانجمنت» ستشتري حصة أقلية فيها، قال مطلعون تحدثوا إلى «سي إن بي سي» الأمريكية إنها تقارب 10%. ويُنتظر إتمام الصفقة في الربع الرابع رهناً بالموافقات التنظيمية والقانونية.",
+        "whyItMatters": "تتوقع «مبادلة كابيتال» أن تحصل عند الإغلاق الأولي على رأس مال ملتزم لاستراتيجياتها من شريك يدير نحو 1.05 تريليون دولار ومن مستثمرين آخرين، من دون أن تتخلى إدارتها عن القرار الاستثماري، ومع احتفاظ الشركة الأم مبادلة للاستثمار بحصة الأغلبية. ويبقى أثر الصفقة الفعلي معلقاً على تحقق الالتزامات المتوقعة البالغة 5 مليارات دولار عند الإغلاق الأولي وعلى الموافقات التنظيمية المنتظرة قبل الإتمام في الربع الرابع."
+      },
+      "changedSentences": [
+        "أعلنت «مبادلة كابيتال»، ذراع الأصول البديلة لمبادلة للاستثمار، صندوق الثروة السيادي في أبوظبي، الاثنين أن «أبولو غلوبال مانجمنت» ستشتري حصة أقلية فيها تقارب 10%، بحسب مطلعين تحدثوا إلى «سي إن بي سي» الأمريكية.",
+        "تحصل «مبادلة كابيتال» على رأس مال ملتزم لاستراتيجياتها من شريك يدير نحو 1.05 تريليون دولار، من دون أن تتخلى عن القرار الاستثماري الذي يبقى بيد إدارتها ولا عن أغلبية مبادلة للاستثمار."
+      ],
+      "newSentences": [
+        "أعلنت «مبادلة كابيتال»، ذراع الأصول البديلة لمبادلة للاستثمار، صندوق الثروة السيادي في أبوظبي، الاثنين أن «أبولو غلوبال مانجمنت» ستشتري حصة أقلية فيها، قال مطلعون تحدثوا إلى «سي إن بي سي» الأمريكية إنها تقارب 10%.",
+        "تتوقع «مبادلة كابيتال» أن تحصل عند الإغلاق الأولي على رأس مال ملتزم لاستراتيجياتها من شريك يدير نحو 1.05 تريليون دولار ومن مستثمرين آخرين، من دون أن تتخلى إدارتها عن القرار الاستثماري، ومع احتفاظ الشركة الأم مبادلة للاستثمار بحصة الأغلبية."
+      ]
+    },
+    {
+      "slug": "qatarenergy-extends-force-majeure-edison-italy-e4653e",
+      "issue": "Two faults. (1) «أما ما تسلّمته إديسون بموجبه فبلغ 1.6 مليار متر مكعب من الغاز المسال»: beside a contract of 6.4 billion cubic metres a year running since 2009, this reads as everything Edison has received under the contract in its life, which is impossible. Check in the sources what period the 1.6 billion cubic metres covers (this year, before the shipments stopped after March) and say so. (2) «لكنها تفوق 1.6 مليار متر مكعب تسلّمتها الشركة من قطر قبل توقف الشحنات بعد مارس»: a comparison of the replacement gas with the gas already delivered, which no source makes and which tells the reader nothing; remove that clause.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن إديسون تسلّمت 1.6 مليار متر مكعب من الغاز المسال بموجب العقد القطري دون تحديد الفترة، والصحيح أن هذه الكمية هي ما تسلّمته الشركة هذا العام قبل توقف الشحنات بعد مارس. وحُذفت من الخبر مقارنة بين الغاز البديل والكمية المسلّمة لم يرد ما يسندها.",
+      "model": "claude-cli/claude-opus-5-5",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "أما ما تسلّمته إديسون بموجبه فبلغ 1.6 مليار متر مكعب من الغاز المسال بحسب «أرابيان غلف بزنس إنسايت»، ووصلتها آخر شحنة قطرية في مارس.",
+        "تبقى الكميات البديلة التي أمّنتها إديسون حتى ذلك التاريخ أقل من حجم الغاز الذي شمله التعليق، البالغ 5 مليارات متر مكعب، لكنها تفوق 1.6 مليار متر مكعب تسلّمتها الشركة من قطر قبل توقف الشحنات بعد مارس."
+      ],
+      "newSentences": [
+        "أما ما تسلّمته إديسون بموجبه هذا العام قبل توقف الشحنات فبلغ 1.6 مليار متر مكعب من الغاز المسال بحسب «أرابيان غلف بزنس إنسايت»، ووصلتها آخر شحنة قطرية في مارس.",
+        "تبقى الكميات البديلة التي أمّنتها إديسون حتى ذلك التاريخ أقل من حجم الغاز الذي شمله التعليق، البالغ 5 مليارات متر مكعب."
+      ]
+    },
+    {
+      "slug": "qatarenergy-edison-force-majeure-compensation-1b7067",
+      "issue": "«وكانت إديسون قد تسلّمت 1.6 مليار متر مكعب من الغاز المسال بموجب العقد، ووصلتها آخر شحنة قطرية في مارس»: beside a contract of 6.4 billion cubic metres a year running since 2009, this reads as everything Edison has received under the contract in its life, which is impossible. Check in the sources what period the 1.6 billion cubic metres covers (this year, before the shipments stopped after March) and say so wherever the figure appears.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن إديسون تسلّمت 1.6 مليار متر مكعب من الغاز المسال بموجب العقد، بما يوحي بأنها كل ما تسلّمته منذ توقيعه عام 2009، والصحيح أن هذه الكمية هي ما تسلّمته الشركة هذا العام قبل توقف الشحنات بعد مارس.",
+      "model": "claude-cli/claude-opus-5-5",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وكانت إديسون قد تسلّمت 1.6 مليار متر مكعب من الغاز المسال بموجب العقد، ووصلتها آخر شحنة قطرية في مارس، بحسب موقع «أرابيان غلف بزنس إنسايت» (Arabian Gulf Business Insight) المتخصص في أخبار الأعمال الخليجية."
+      ],
+      "newSentences": [
+        "وكانت إديسون قد تسلّمت هذا العام، قبل توقف الشحنات، 1.6 مليار متر مكعب من الغاز المسال بموجب العقد، ووصلتها آخر شحنة قطرية في مارس، بحسب موقع «أرابيان غلف بزنس إنسايت» (Arabian Gulf Business Insight) المتخصص في أخبار الأعمال الخليجية."
+      ]
+    },
+    {
+      "slug": "pakistan-raises-key-rate-to-12-percent-8e0b9f",
+      "issue": "Two faults. (1) The body says the committee described the growth outlook as «لم تتغير كثيراً» and then «وعدّل المحافظ توقع نمو الناتج المحلي الإجمالي إلى 3.7%» without saying from what or in which direction: check the previous forecast or range in the sources and give the direction (raised or lowered from what), or, if the sources give no earlier figure, say the governor put growth at 3.7% instead of «عدّل». (2) The lede blames energy costs on «الصراع في الخليج» while the body says «الصراع في الشرق الأوسط»: use the sources' term in both places.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "lede",
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن المحافظ «عدّل» توقع النمو إلى 3.7% من دون بيان التقدير السابق، والصحيح أنه وضع توقع النمو عند 3.7% للسنة المالية الحالية، إذ لم تتضمن المصادر تقديراً سابقاً. كما نسبت النسخة السابقة ارتفاع كلفة الطاقة في مقدمة الخبر إلى «الصراع في الخليج»، والصحيح «الصراع في الشرق الأوسط» كما ورد في بيان لجنة السياسة النقدية.",
+      "model": "claude-cli/claude-opus-5-5",
+      "before": {
+        "lede": "رفع بنك الدولة الباكستاني سعر الفائدة الرئيسي 50 نقطة أساس إلى 12% الاثنين، في أول زيادة منذ أبريل، مع بقاء التضخم فوق المستهدف بفعل ارتفاع كلفة الطاقة المرتبطة بالصراع في الخليج. واختار صانعو السياسة النقدية التشديد رغم خطر أن يزيد تباطؤ النمو الاقتصادي، بحسب بلومبرغ."
+      },
+      "after": {
+        "lede": "رفع بنك الدولة الباكستاني سعر الفائدة الرئيسي 50 نقطة أساس إلى 12% الاثنين، في أول زيادة منذ أبريل، مع بقاء التضخم فوق المستهدف بفعل ارتفاع كلفة الطاقة المرتبطة بالصراع في الشرق الأوسط. واختار صانعو السياسة النقدية التشديد رغم خطر أن يزيد تباطؤ النمو الاقتصادي، بحسب بلومبرغ."
+      },
+      "changedSentences": [
+        "رفع بنك الدولة الباكستاني سعر الفائدة الرئيسي 50 نقطة أساس إلى 12% الاثنين، في أول زيادة منذ أبريل، مع بقاء التضخم فوق المستهدف بفعل ارتفاع كلفة الطاقة المرتبطة بالصراع في الخليج.",
+        "وعدّل المحافظ توقع نمو الناتج المحلي الإجمالي إلى 3.7% للسنة المالية الحالية التي تنتهي في 30 يونيو 2027."
+      ],
+      "newSentences": [
+        "رفع بنك الدولة الباكستاني سعر الفائدة الرئيسي 50 نقطة أساس إلى 12% الاثنين، في أول زيادة منذ أبريل، مع بقاء التضخم فوق المستهدف بفعل ارتفاع كلفة الطاقة المرتبطة بالصراع في الشرق الأوسط.",
+        "ووضع المحافظ توقعه لنمو الناتج المحلي الإجمالي عند 3.7% للسنة المالية الحالية التي تنتهي في 30 يونيو 2027."
+      ]
+    },
+    {
+      "slug": "almarai-enters-red-meat-market-hboor-6db774",
+      "issue": "«لماذا يهمّ» opens «تحصل «المراعي» عبر «هبور» على مصدر إيرادات خارج فئات منتجاتها الحالية» as a fact, while the body, following Al-Eqtisadiah, calls it «مصدراً محتملاً للإيرادات» whose contribution depends on sales, costs and margins. The box must keep that hedge: a possible new source of revenue, not one already gained.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "whyItMatters"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر في فقرة «لماذا يهمّ» أن «المراعي» تحصل عبر «هبور» على مصدر إيرادات جديد، والصحيح أن العلامة تضيف مصدراً محتملاً للإيرادات تتوقف مساهمته على حجم المبيعات والتكاليف وهوامش الربح.",
+      "model": "claude-cli/claude-opus-5-5",
+      "before": {
+        "whyItMatters": "تحصل «المراعي» عبر «هبور» على مصدر إيرادات خارج فئات منتجاتها الحالية في وقت لم يتجاوز فيه نمو أرباحها الفصلية 0.7%، وقد يخفف اعتماد العلامة على منظومة إمداد وتوزيع تملكها الشركة أصلاً كلفة دخول سوق جديدة. لكن جدوى هذا التنويع تبقى غير مثبتة إلى أن تحقق المبيعات هوامش تبرر استثماراً يقارب نصف مليار ريال."
+      },
+      "after": {
+        "whyItMatters": "تضيف «هبور» إلى «المراعي» مصدراً محتملاً للإيرادات خارج فئات منتجاتها الحالية في وقت لم يتجاوز فيه نمو أرباحها الفصلية 0.7%، وقد يخفف اعتماد العلامة على منظومة إمداد وتوزيع تملكها الشركة أصلاً كلفة دخول سوق جديدة. لكن جدوى هذا التنويع تبقى غير مثبتة إلى أن تحقق المبيعات هوامش تبرر استثماراً يقارب نصف مليار ريال."
+      },
+      "changedSentences": [
+        "تحصل «المراعي» عبر «هبور» على مصدر إيرادات خارج فئات منتجاتها الحالية في وقت لم يتجاوز فيه نمو أرباحها الفصلية 0.7%، وقد يخفف اعتماد العلامة على منظومة إمداد وتوزيع تملكها الشركة أصلاً كلفة دخول سوق جديدة."
+      ],
+      "newSentences": [
+        "تضيف «هبور» إلى «المراعي» مصدراً محتملاً للإيرادات خارج فئات منتجاتها الحالية في وقت لم يتجاوز فيه نمو أرباحها الفصلية 0.7%، وقد يخفف اعتماد العلامة على منظومة إمداد وتوزيع تملكها الشركة أصلاً كلفة دخول سوق جديدة."
+      ]
+    },
+    {
+      "slug": "houthis-claim-ras-tanura-refinery-strike-7d3679",
+      "issue": "«ورأس تنورة أكبر مصفاة نفط في المملكة، وتقع على ساحل الخليج، وهي أحد ميناءين رئيسيين تتدفق عبرهما صادرات النفط السعودي»: the sentence makes the refinery itself the export port. Ras Tanura is both a refinery and an export terminal; say that the refinery stands at Ras Tanura, whose terminal is one of the two main outlets for Saudi crude exports (the other Yanbu on the Red Sea), as the sources put it.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن مصفاة رأس تنورة نفسها أحد الميناءين الرئيسيين لتصدير النفط السعودي، والصحيح أن المصفاة تقع في رأس تنورة، وأن ميناءها هو أحد منفذي التصدير الرئيسيين، والثاني ميناء ينبع على البحر الأحمر.",
+      "model": "claude-cli/claude-opus-5-5",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "ورأس تنورة أكبر مصفاة نفط في المملكة، وتقع على ساحل الخليج، وهي أحد ميناءين رئيسيين تتدفق عبرهما صادرات النفط السعودي، والثاني ينبع على البحر الأحمر."
+      ],
+      "newSentences": [
+        "ومصفاة رأس تنورة أكبر مصفاة نفط في المملكة، وتقع على ساحل الخليج.",
+        "وميناء رأس تنورة أحد ميناءين رئيسيين تتدفق عبرهما صادرات النفط السعودي، والثاني ينبع على البحر الأحمر."
+      ]
+    },
+    {
+      "slug": "brent-rises-iran-washington-houthi-attacks-1c1e85",
+      "issue": "The dek reads «محللو «آي إن جي»: مرور الانتخابات دون تجدد الضربات على إيران قد يكفي لبدء تراجع علاوة المخاطر» without saying which election, while the body speaks of both Israel's vote and the US midterm elections of 3 November; a reader cannot tell which one the analysts meant. Check in the sources which election ING named and name it in the dek and in the body sentence «ورأوا أن مرور الانتخابات…».",
+      "outcome": "stands",
+      "reason": "Khazendar cannot correct this from the sources: none of the re-fetched pages ([1], [3], [4], [5]) contains the ING analysts' statement, and the page that may have carried it ([2] البيان) could not be fetched, so naming either the Israeli vote or the 3 November US midterms would be a guess; the editor should check ING's original note before changing the dek or the sentence «ورأوا أن مرور الانتخابات…».",
+      "model": "claude-cli/claude-opus-5-5"
+    },
+    {
+      "slug": "saudi-commercial-transactions-law-age-15-5712f9",
+      "issue": "The «الأرقام» box breaks its rule twice: «3 أنظمة: التجاري والأوراق التجارية والدفاتر التجارية» puts a list of names in a figure's value (the value should be the figure alone), and «التشريعات التي راجعتها المملكة وطورتها: 110» is a figure about the kingdom's legislative programme as a whole, not about the law the headline reports. Keep the first as a figure only and take the second out of the box; the body keeps its own sentences.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "keyFacts"
+      ],
+      "note": "أدرجت نسخة سابقة من هذا الخبر في خانة الأرقام أسماء الأنظمة الثلاثة التي يحل محلها النظام إلى جانب عددها، ورقم 110 تشريعات راجعتها المملكة، وهو رقم يخص برنامج تطوير التشريعات التجارية عامة لا نظام المعاملات التجارية. والصحيح أن الخانة تقتصر على أرقام النظام نفسه، فيما يبقى ذكر التشريعات الـ110 في متن الخبر.",
+      "model": "claude-cli/claude-opus-5-5",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "الأنظمة التي يحل محلها 3 أنظمة: التجاري والأوراق التجارية والدفاتر التجارية",
+        "التشريعات التي راجعتها المملكة وطورتها 110 تشريعات"
+      ],
+      "newSentences": [
+        "عدد الأنظمة التي يحل محلها 3 أنظمة"
+      ]
+    },
+    {
+      "slug": "qatar-saudi-stock-markets-liquidity-test-6421f7",
+      "issue": "Attribution: «عزت المجموعة هبوط ربحها إلى ارتفاع مصاريفها … ومع تراجع الإيرادات 8.1% … جاء هبوط الربح أعمق بكثير» runs Khazendar's own comparison of the two falls on inside the sentence that reports what Tadawul Group attributed its fall to, so the comparison reads as the company's. Keep the company's attribution to its own sentence and state the comparison separately as the piece's reading. Also, «لماذا يهمّ» speaks of «ارتفاع هذا المتوسط» after a sentence about «قيمة التداول اليومي»: name the average it means.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "whyItMatters",
+        "body"
+      ],
+      "note": "جمعت نسخة سابقة من هذا الخبر في جملة واحدة ما عزت إليه مجموعة تداول السعودية هبوط ربحها ومقارنةً بين هبوط الربح وتراجع الإيرادات، فبدت المقارنة كأنها من المجموعة. والصحيح أن المجموعة عزت الهبوط إلى ارتفاع مصاريفها التشغيلية، أما المقارنة فقراءة خازندار. وقد سُمّي في «لماذا يهمّ» المتوسط المقصود، وهو متوسط قيمة التداول اليومي.",
+      "model": "claude-cli/claude-opus-5-5",
+      "before": {
+        "whyItMatters": "تراجعت قيمة التداول اليومي هذا العام في قطر والسعودية، وهي نفسها ما تسعى المبادرة القطرية إلى زيادته وما يرتبط به تعافي أرباح «تداول». لذلك تتوقف متانة أي ارتداد في السوقين، على الأرجح، على ارتفاع هذا المتوسط واستمراره عبر الجلسات والأسابيع، أكثر مما تتوقف على حجم التزام سيادي أو مكسب المؤشر في جلسة واحدة."
+      },
+      "after": {
+        "whyItMatters": "تراجعت قيمة التداول اليومي هذا العام في قطر والسعودية، وهي نفسها ما تسعى المبادرة القطرية إلى زيادته وما يرتبط به تعافي أرباح «تداول». لذلك تتوقف متانة أي ارتداد في السوقين، على الأرجح، على ارتفاع متوسط قيمة التداول اليومي واستمراره عبر الجلسات والأسابيع، أكثر مما تتوقف على حجم التزام سيادي أو مكسب المؤشر في جلسة واحدة."
+      },
+      "changedSentences": [
+        "لذلك تتوقف متانة أي ارتداد في السوقين، على الأرجح، على ارتفاع هذا المتوسط واستمراره عبر الجلسات والأسابيع، أكثر مما تتوقف على حجم التزام سيادي أو مكسب المؤشر في جلسة واحدة.",
+        "عزت المجموعة هبوط ربحها إلى ارتفاع مصاريفها التشغيلية 3.1% بفعل الإهلاك والإطفاء، ومع تراجع الإيرادات 8.1% في الوقت نفسه جاء هبوط الربح أعمق بكثير من هبوط الإيرادات.",
+        "وباستبعاد هذين البندين انخفضت المصاريف 3.8%، ما يجعل التعافي على الأرجح مرهوناً بعودة النشاط أكثر من خفض إضافي للنفقات."
+      ],
+      "newSentences": [
+        "لذلك تتوقف متانة أي ارتداد في السوقين، على الأرجح، على ارتفاع متوسط قيمة التداول اليومي واستمراره عبر الجلسات والأسابيع، أكثر مما تتوقف على حجم التزام سيادي أو مكسب المؤشر في جلسة واحدة.",
+        "عزت المجموعة هبوط ربحها إلى ارتفاع مصاريفها التشغيلية 3.1% بفعل الإهلاك والإطفاء.",
+        "ومع تراجع الإيرادات 8.1% في الوقت نفسه، جاء هبوط الربح أعمق بكثير من هبوط الإيرادات.",
+        "وباستبعاد الإهلاك والإطفاء انخفضت المصاريف 3.8%، ما يجعل التعافي على الأرجح مرهوناً بعودة النشاط أكثر من خفض إضافي للنفقات."
+      ]
+    }
+  ]
+}
