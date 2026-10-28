@@ -1383,6 +1383,54 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-10-28T20:58:02.580Z",
+      "slug": "uae-central-bank-holds-base-rate-after-fed-63bcb3",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v40",
+      "lessonsHash": "5bcfeb9fba",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 31,
+        "notFound": 0,
+        "checked": 33,
+        "words": 543,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 3,
+        "supported": 38,
+        "notFound": 1,
+        "checked": 40,
+        "words": 516,
+        "keyFacts": 6,
+        "classes": [
+          "scope"
+        ],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 3,
+        "supported": 38,
+        "notFound": 1,
+        "checked": 40,
+        "words": 516,
+        "keyFacts": 6,
+        "classes": [
+          "scope"
+        ],
+        "programmatic": 0
+      }
     }
   ]
 }

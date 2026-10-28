@@ -13159,6 +13159,120 @@
       ],
       "weak": [],
       "outcome": "clean"
+    },
+    "jio-platforms-shares-jump-india-record-ipo-281437": {
+      "at": "2026-10-28T20:20:39.049Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v40",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-28T13:35:52.341Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "fromCopy": 1,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 38,
+        "checked": 38,
+        "supported": 31,
+        "weak": 5,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "lede",
+          "sentence": "قفزت أسهم جيو بلاتفورمز، شركة الاتصالات والخدمات الرقمية التابعة للملياردير موكيش أمباني، 27% عند إغلاق أول يوم تداول لها في مومباي الأربعاء، بعدما جمعت 3.1 مليار دولار في أكبر طرح عام أولي في تاريخ الهند.",
+          "quote": "Telecoms business raises $3.2bn at $108bn valuation in relief to stock market hit by war in Iran",
+          "source": "Financial Times"
+        },
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "حصيلة طرح جيو: 3.1 مليار دولار",
+          "quote": "Telecoms business raises $3.2bn at $108bn valuation in relief to stock market hit by war in Iran",
+          "source": "Financial Times"
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "وأغلق السهم عند 1417.50 روبية (14.90 دولار) مقابل سعر طرح بلغ 1119 روبية، ما قيّم الشركة بنحو 137 مليار دولار.",
+          "quote": "Shares of billionaire Mukesh Ambani’s telecoms and digital services company jumped 27 per cent to 1,417.50 rupees ($14.90) at the close, after it raised a record $3.1 billion in India’s biggest initial public offering. The rally valued Jio at $137 billion, making it India’s second-most valuable listed company after parent Reliance Industries and lifting the Ambani empire past Tata Group as the country’s most valuable conglomerate."
+        },
+        {
+          "sentence": "كشف الإقبال على الاكتتاب، بعروض تجاوزت 78 مليار دولار، ثم صعود السهم 27% في أولى جلساته، عن استعداد المستثمرين لدفع علاوة على سهم كبير وسط موجة بيع.",
+          "quote": "Jio Platforms has bucked the poor track record of India’s biggest share sales, handing investors a rare bright spot amid a bruising equity sell-off as it began trading in Mumbai."
+        },
+        {
+          "sentence": "اجتذب الطرح عروض اكتتاب تجاوزت 78 مليار دولار ونحو 14 مليون طلب، وهو إقبال رفع التوقعات بأن يبدأ السهم تداوله بقوة.",
+          "quote": "Still, strong demand for the offering had raised expectations of a robust start."
+        },
+        {
+          "sentence": "وافتُتح التداول عند 1358 روبية، وارتفع السهم بما يصل إلى 21% في مستهل الجلسة، ثم أنهاها على مكاسب أكبر.",
+          "quote": "Shares of billionaire Mukesh Ambani's Reliance Jio ⁠Platforms climbed as much as 21% at the start of trading on the Mumbai stock exchange on Wednesday, making ⁠it India's second-largest company by market capitalization, valued at about $131.5 billion."
+        },
+        {
+          "sentence": "وكان سعر الطرح قد قيّم الشركة بنحو 108 مليارات دولار، بحسب صحيفة «فايننشال تايمز» البريطانية، دون بعض التوقعات السابقة، مع تراجع الأسهم الهندية وتقلب الأسواق العالمية.",
+          "quote": "Its valuation ultimately fell short of some earlier expectations as Indian stocks fell and global markets turned volatile."
+        }
+      ],
+      "outcome": "listed"
+    },
+    "adnoc-drilling-dividend-rise-record-profit-3f9d4a": {
+      "at": "2026-10-28T20:20:39.011Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v40",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-28T13:51:49.040Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 41,
+        "checked": 41,
+        "supported": 37,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "توقعت أدنوك للحفر، المدرجة في أبوظبي، ارتفاع توزيعاتها النقدية عن 2026 بنسبة 22.5% إلى 1.225 مليار دولار، مقارنة بمليار دولار عن 2025، شرط موافقة المساهمين على الشريحة الثانية من توزيع استثنائي.",
+          "quote": "The second $87.5 million discretionary tranche has been endorsed by the board but remains subject to shareholder approval. If approved, total dividends in respect of 2026 will reach $1.225 billion, compared with $1 billion for 2025."
+        },
+        {
+          "sentence": "إذا تحقق تدفق نقدي حر بين 1.2 و1.3 مليار دولار من دون الاستحواذات كما تتوقع الشركة، فإن توزيعات 1.225 مليار دولار عن 2026 تكاد تساويه.",
+          "quote": "Cash capital expenditure excluding acquisitions is expected to total approximately $600 million, while free cash flow excluding M&A is forecast at $1.2 billion to $1.3 billion."
+        },
+        {
+          "sentence": "المؤشر: صافي الربح · توقعات النصف الأول: 1.45 إلى 1.50 مليار دولار · التوقعات المحدثة: نحو 1.45 مليار دولار",
+          "quote": "Full-year EBITDA is expected to reach around $2.2 billion, representing a margin of approximately 44 percent, while net profit is projected at around $1.45 billion with a margin of about 29 percent."
+        },
+        {
+          "sentence": "المؤشر: الإنفاق الرأسمالي · توقعات النصف الأول: 600 إلى 800 مليون دولار · التوقعات المحدثة: نحو 600 مليون دولار",
+          "quote": "Cash capital expenditure excluding acquisitions is expected to total approximately $600 million, while free cash flow excluding M&A is forecast at $1.2 billion to $1.3 billion."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }

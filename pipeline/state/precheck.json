@@ -7915,6 +7915,62 @@
           "noted": []
         }
       ]
+    },
+    "fed-holds-rates-two-dissents-hike-ae3a21": {
+      "at": "2026-10-28T20:38:36.926Z",
+      "title": "الفيدرالي الأمريكي يبقي الفائدة بين 3.75% و4% رغم مطالبة عضوتين برفعها",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 26,
+            "weak": 6,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "uae-central-bank-holds-base-rate-after-fed-63bcb3": {
+      "at": "2026-10-28T20:58:02.573Z",
+      "title": "المركزي الإماراتي يبقي سعر الأساس عند 3.90% بعد تثبيت الفيدرالي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v40",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 27,
+            "checked": 27,
+            "supported": 27,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

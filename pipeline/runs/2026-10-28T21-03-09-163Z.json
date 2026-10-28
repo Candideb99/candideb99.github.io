@@ -1,0 +1,425 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-28T20:21:38.639Z",
+  "durationSec": 2491,
+  "published": 2,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "الفيدرالي يثبت الفائدة عند 3.75%-4% وعضوتان تطالبان برفعها",
+      "section": "economy",
+      "importance": 9,
+      "sources": [
+        "https://www.theguardian.com/business/2026/oct/28/fed-interest-rates-midterms",
+        "https://aawsat.com/node/5334868",
+        "https://www.bloomberg.com/news/videos/2026-10-28/fed-leaves-rates-unchanged-cook-and-hammack-dissent-video",
+        "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يحددان ما تغيّر وما بقي: تثبيت النطاق 3.75%-4% بأغلبية 10 مقابل 2، مع اسمي المعارضتين وتفضيلهما رفعاً بربع نقطة (المصدران 3 و4). والعنوان الفرعي يضع القرار بعد أول رفع منذ 2023.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "تفتتح الفقرة الأولى من المتن بتعريف عام لوظيفة الفائدة قبل الإجابة عن سؤال القارئ: لماذا التثبيت رغم صعود التضخم؟ وتغيب مقارنة البيان «من متين إلى قوي» وبقاء التضخم فوق الهدف نحو خمس سنوات ونصف (المصدر 2). أما «لماذا يهمّ» فمقدماته صحيحة (المصدر 1)، لكن نتيجته لا تلزم عنها.",
+              "repair": "تقديم مبرر التثبيت (الحاجة إلى مزيد من المعلومات) مع مقارنة تقييم الاقتصاد وطول تجاوز التضخم للهدف إلى الفقرة الثانية، ونقل التعريف إلى موضع لاحق. وإعادة صياغة الصندوق على أنه مفاضلة مشروطة بمسار الطاقة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "تصريحات وارش موزعة على أربع فقرات متفرقة (الطاقة، ثم السياسة، ثم الخطوة التالية، ثم الجدول). وفقرة الطاقة جملة واحدة معزولة، وفقرة الأسواق قائمة أسعار منفصلة عن الحدث. وذكر توقيت البيان «الساعة 2:00 بعد الظهر بالتوقيت الصيفي» تفصيل إجرائي يثقل الفقرة.",
+              "repair": "جمع قول وارش عن الطاقة مع فقرة التضخم والنفط، وجمع حديثه عن الخطوة التالية مع توقعات الرفع قبل نهاية العام وتوقعات المستثمرين لديسمبر (المصدر 2). وربط الأسعار بحركة العوائد والدولار وقت التصريحات، وحذف توقيت الإصدار."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«لأنه يعقّد مهمة السياسة النقدية» تجعل تعقيد المهمة تعليلاً صريحاً على لسان وارش، بينما ترد في المصدر 2 جملة حالية ملتبسة النسبة («في وقت لا تزال فيه تكاليف الطاقة...»). و«المجلس يضم أعضاء عيّنهم الديمقراطيون» تُضعف قول ترامب كما نقله المصدر 1: إن المجلس «مليء» بأعضاء عيّنهم الديمقراطيون «يريدون أن يسوء حال البلاد».",
+              "repair": "«...تطور يجب أخذه في الحسبان، في وقت لا تزال فيه تكاليف الطاقة تضغط على الأسعار»، دون «لأنه». و«رفض التعليق على قول ترامب إن المجلس، باستثناء وارش، مليء بأعضاء عيّنهم الديمقراطيون يريدون أن يسوء حال البلاد»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقول العنوان والمقدمة بوضوح إن النطاق بقي عند 3.75%-4% بأغلبية 10 مقابل 2، وإن كوك وهاماك فضّلتا الرفع ربع نقطة. ويوضح العنوان الفرعي أن التثبيت جاء بعد أول رفع منذ 2023 مع صعود التضخم إلى 3.7%، دون نسبة سببية مباشرة إلى النفط.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "مبرر التثبيت ورفع تقييم الاقتصاد من «متين» إلى «قوي» يأتيان الآن في أول المتن، وهذا تحسن. لكن صندوق «لماذا يهمّ» يستند إلى ترسخ التضخم، ومخاوف اعتياد الأسر والشركات وتيرة أعلى للأسعار (المصدر 2) غائبة عن المتن. أما بقية المقدمات (صدمة العرض، وحدود رفع الفائدة، وترقب ديسمبر) فمدعومة، والاستدلال مشروط بمسار الطاقة كما ينبغي.",
+              "repair": "إضافة جملة الترسخ من المصدر 2 إلى فقرة التضخم، وإلى why_basis."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "صار ترتيب الفقرات يخدم سؤال القارئ: المبرر، ثم التضخم والنفط، ثم الخلفية، ثم ردود الفعل، ثم الخطوة التالية. لكن فقرة «تحدد أسعار الفائدة كلفة الاقتراض...» بقيت معزولة بين فقرة ترامب وفقرة الانتخابات.",
+              "repair": "دمج التعريف في فقرة إيكونوميدس ليشرح الآلية التي ينتقدها."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «بعد أن بقي أعلى من هدف البنك نحو خمس سنوات ونصف السنة» تخرج هذا العام من المدة، خلافاً للمصدر 2. وعبارة «مؤشر الدولار 0.21% إلى 102.11» تختلط بمؤشر بلومبرغ الفوري الوارد في الجملة السابقة. أما بقية التوقيتات (18:59 و20:12 و20:20 بتوقيت غرينتش) فمطابقة للمصدر 5 وتقع بعد صدور البيان.",
+              "repair": "«ولم يعد إلى هدف البنك منذ نحو خمس سنوات ونصف السنة»، وتسمية المؤشر الثاني «مؤشر الدولار الأمريكي (DXY)» لتمييزه عن مؤشر بلومبرغ."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 8,
+      "mendIssues": [
+        "ينقص التقرير: الأرقام في سياقها. لم تُستعد من الملاحظة السابقة رقم 3 خشيةُ أن تعتاد الشركات والأسر وتيرة أعلى لارتفاع الأسعار، فتصبح إعادة التضخم إلى الهدف أصعب (المصدر 2). يقوم صندوق «لماذا يهمّ» على هذه المقدمة حين يقول «وترك تضخم ... يترسخ»، ولا يرد لها أصل في المتن ولا في why_basis. الإصلاح: إضافة جملة في فقرة التضخم: «ويثير استمرار الضغوط مخاوف من أن تعتاد الشركات والأسر وتيرة أعلى لارتفاع الأسعار، ما قد يصعّب إعادة التضخم إلى الهدف»، وإدراجها في why_basis (المصدر 2).",
+        "ينقص التقرير: صندوق «الأرقام» يضم رقماً خلفياً لا يخص حدث العنوان، وهو «التضخم الأمريكي في سبتمبر: 3.7%». هذه قراءة بيانات صدرت في شهر سابق، وهي من أسباب القرار وليست من أرقامه. الإصلاح: حذفها من الصندوق مع إبقائها في المتن والعنوان الفرعي، ووضع «صوتان معارضان فضّلا رفع الفائدة ربع نقطة مئوية» مكانها (المصدر 4).",
+        "خلل في التسلسل الزمني: «وظل معدله السنوي فوق 3% في معظم هذا العام، بعد أن بقي أعلى من هدف البنك نحو خمس سنوات ونصف السنة». توحي «بعد أن» بأن مدة الخمس سنوات ونصف انتهت قبل هذا العام. المصدر 2 يقول إن التضخم لم يعد إلى الهدف طوال نحو خمس سنوات ونصف، وهذه المدة تشمل العام الحالي. الإصلاح: «وظل معدله السنوي فوق 3% في معظم هذا العام، ولم يعد إلى هدف البنك البالغ 2% منذ نحو خمس سنوات ونصف السنة».",
+        "التباس في فقرة الأسواق: «وهبط مؤشر «بلومبرغ» للدولار الفوري إلى أدنى مستوى في الجلسة ... وتراجع مؤشر الدولار 0.21% إلى 102.11». هذان مؤشران مختلفان. الأول ورد في المصدر 2، والثاني هو مؤشر DX-Y.NYB في المصدر 5، والصياغة تجعل القارئ يظنهما مؤشراً واحداً. الإصلاح: تسمية الثاني بوضوح، مثل «وتراجع مؤشر الدولار الأمريكي (DXY) 0.21% إلى 102.11 بحلول 20:12 بتوقيت غرينتش»، دون الإيحاء بأن الرقم قراءة لمؤشر بلومبرغ.",
+        "بناء مفكك: فقرة التعريف «تحدد أسعار الفائدة كلفة الاقتراض عبر بطاقات الائتمان والرهون العقارية...» معزولة بين فقرة غضب ترامب وفقرة الانتخابات، ولا تجيب في هذا الموضع عن سؤال. الإصلاح: دمجها في فقرة إيكونوميدس قبل حجته، فيصير السياق: الرفع يبطئ الأسعار عادة لأنه يرفع كلفة الاقتراض، لكنه بحسب إيكونوميدس لا يعالج تضخماً مصدره صدمة العرض (المصدر 1).",
+        "مبرر التثبيت ورفع تقييم الاقتصاد من «متين» إلى «قوي» يأتيان الآن في أول المتن، وهذا تحسن. لكن صندوق «لماذا يهمّ» يستند إلى ترسخ التضخم، ومخاوف اعتياد الأسر والشركات وتيرة أعلى للأسعار (المصدر 2) غائبة عن المتن. أما بقية المقدمات (صدمة العرض، وحدود رفع الفائدة، وترقب ديسمبر) فمدعومة، والاستدلال مشروط بمسار الطاقة كما ينبغي. — إضافة جملة الترسخ من المصدر 2 إلى فقرة التضخم، وإلى why_basis.",
+        "صار ترتيب الفقرات يخدم سؤال القارئ: المبرر، ثم التضخم والنفط، ثم الخلفية، ثم ردود الفعل، ثم الخطوة التالية. لكن فقرة «تحدد أسعار الفائدة كلفة الاقتراض...» بقيت معزولة بين فقرة ترامب وفقرة الانتخابات. — دمج التعريف في فقرة إيكونوميدس ليشرح الآلية التي ينتقدها.",
+        "عبارة «بعد أن بقي أعلى من هدف البنك نحو خمس سنوات ونصف السنة» تخرج هذا العام من المدة، خلافاً للمصدر 2. وعبارة «مؤشر الدولار 0.21% إلى 102.11» تختلط بمؤشر بلومبرغ الفوري الوارد في الجملة السابقة. أما بقية التوقيتات (18:59 و20:12 و20:20 بتوقيت غرينتش) فمطابقة للمصدر 5 وتقع بعد صدور البيان. — «ولم يعد إلى هدف البنك منذ نحو خمس سنوات ونصف السنة»، وتسمية المؤشر الثاني «مؤشر الدولار الأمريكي (DXY)» لتمييزه عن مؤشر بلومبرغ."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "زيادات الأسعار هذا العام تعود في معظمها إلى الحرب مع إيران وارتفاع النفط بعد إغلاق مضيق هرمز",
+          "source": 1
+        },
+        {
+          "fact": "إيكونوميدس: رفع الفائدة يفيد حين يتجاوز الطلب المعروض ولا يعالج تضخماً سببه صدمات العرض",
+          "source": 1
+        },
+        {
+          "fact": "استمرار الضغوط يثير مخاوف من أن تعتاد الشركات والأسر وتيرة أعلى لارتفاع الأسعار بعد نحو خمس سنوات ونصف من بقاء التضخم فوق الهدف",
+          "source": 2
+        },
+        {
+          "fact": "الأسواق تترقب هل يعود البنك إلى رفع الفائدة في ديسمبر كما تشير توقعات المستثمرين",
+          "source": 2
+        }
+      ],
+      "slug": "fed-holds-rates-two-dissents-hike-ae3a21",
+      "title": "الفيدرالي الأمريكي يبقي الفائدة بين 3.75% و4% رغم مطالبة عضوتين برفعها",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "البنك الدولي يتوقع قفزة 23% في أسعار السلع الأولية خلال 2026",
+      "section": "economy",
+      "importance": 8,
+      "sources": [
+        "https://economymiddleeast.com/news/world-bank-raises-2026-commodity-price-forecast-to-23-percent-as-energy-costs-surge/",
+        "https://www.thenationalnews.com/business/economy/2026/10/28/energy-prices-climb-world-bank/",
+        "https://www.aa.com.tr/en/economy/global-commodity-prices-projected-to-surge-23-in-2026-on-middle-east-conflict-world-bank/4104085",
+        "https://www.alborsaanews.com/2026/10/28/2002653"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقدم العنوان والمقدمة ما تغيّر بوضوح: رفع البنك توقعه من 16% في أبريل إلى 23%. وتذكر المقدمة الأسباب، ويوضح المتن أن السيناريو الأساسي يفترض غياب تصعيد كبير وأن الأسعار يُتوقع أن تتراجع 7% في 2027.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المقارنة بتوقعات أبريل وافتراض انحسار اضطرابات هرمز سياق جيد، والمسؤول أيهان كوسه معرَّف بمنصبه. لكن صندوق «لماذا يهمّ» يبني على مقدمات صحيحة (استنزاف المخزونات، وشرط غياب التصعيد، وآفاق مستوردي الطاقة) استنتاجاً عن «فاتورة استيراد النفط» بصيغة الجزم. ويغيب عن الخاتمة سقف الدعم القابل للتوسع إلى 80–100 مليار دولار (SOURCE 2).",
+              "repair": "تُصاغ نتيجة الصندوق على أساس السعر وبصيغة الاحتمال، ويُضاف سقف الدعم الموسع إلى الفقرة الأخيرة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات مجمّعة حسب الموضوع (الطاقة، والغذاء، والمعادن، والمخاطر)، والانتقالات طبيعية. لكن الفقرة الأخيرة تُدخل تعبير «حرب إيران» دون تمهيد. وعبارة «تزامن هذه المخاطر» تحيل إلى مجموعة مخاطر غير المجموعة التي تقصدها.",
+              "repair": "توحيد تسمية الصراع، وفصل شروط سيناريو الغذاء عن شروط سيناريو النفط صراحةً."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر في معظمها: 23%، و32%، و91 و79 و70 دولاراً، و5.5 مليون برميل يومياً، و58.3%، و39.9%، و4600 دولار. لكن الزيادة البالغة 12% في أسعار الغذاء مربوطة بشروط ناقصة، ورقم 779 مليوناً عن عام 2025 موضوع في صندوق أرقام الحدث.",
+              "repair": "ذكر الشروط الثلاثة لسيناريو الغذاء، وحذف رقم 779 مليوناً من الصندوق."
+            }
+          }
+        }
+      ],
+      "outcome": "rejected after revision: جمل طويلة جداً (1): «فإذا اجتمع ارتفاع تكاليف الطاقة فوق المتوقع مع هجمات على شحنات الحبوب…»؛ اقسم كل جملة تتجاوز 40 كلمة إلى جملتين، فكرة واحدة في كل جملة."
+    },
+    {
+      "headline": "المركزي الإماراتي يثبت الفائدة عند 3.9% تماشياً مع الفيدرالي",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://aawsat.com/node/5334881",
+        "https://economymiddleeast.com/news/uae-keeps-interest-rate-at-3-9-percent-as-fed-votes-10-2-to-hold-amid-elevated-inflation/",
+        "https://www.albayan.ae/economy/business/uae-economy/1561276",
+        "https://gulfnews.com/business/markets/uae-keeps-key-interest-rate-unchanged-in-october-mirroring-us-fed-move-1.500727495"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التمهيدي والمقدمة توضح ما لم يتغير: سعر الأساس عند 3.90% وسعر الاقتراض قصير الأجل عند 4.40%. وتوضح أن زيادة سبتمبر تبقى قائمة، وأن المقترضين لا يحصلون على خفض فوري، وذلك كله من المصدر 2. ولا يظهر تناقض بين العنوان والسطر التمهيدي.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الآلية حاضرة ومشروحة من المصدر 2: ربط الدرهم بالدولار، وانتقال سعر الفائدة على أرصدة الاحتياطي، وتعريف إيبور. لكن دافع الفيدرالي ناقص: التضخم فوق هدف 2% منذ نحو خمس سنوات ونصف، وقلق وارش من تعوّد الأسر والشركات على تضخم أعلى (المصدر 1). كما أن ردّ فعل الذهب غائب. والصندوق يستند إلى آلية صحيحة، لكن يقينه يتجاوز المقدمات في جملة «هم أول من يشعر بذلك».",
+              "repair": "إضافة سياق التضخم من المصدر 1 إلى فقرة الفيدرالي، وإضافة الذهب إلى فقرة الأسواق، وتلطيف ختام الصندوق إلى «وقد ينعكس ذلك...» مع شرط إعادة التسعير."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "جملة «وقال وارش إن اللجنة تحتاج إلى مزيد من المعلومات...» معزولة داخل قسم المقترضين بعد فقرة القروض الثابتة، فيقفز القارئ من الإقراض المحلي إلى الفيدرالي ثم يعود إليه.",
+              "repair": "جمع تصريحات وارش في قسم الفيدرالي، وجعل خاتمة قسم المقترضين ربطاً بين توقع رفع ديسمبر وانتقاله المحتمل إلى سعر الأساس."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "القيمة 102.14 تعود إلى مؤشر الدولار (DX-Y.NYB) لا إلى مؤشر بلومبرغ للدولار الفوري (المصدر 5 مقابل المصدر 1). كما أن قيمة 5.04% تُعرض بعد «تراجعت العوائد» دون ذكر أنها أعلى من الإغلاق السابق 4.99%.",
+              "repair": "تسمية مؤشر الدولار صراحة مع توقيته، وتوضيح أن العائد تراجع عن ذروة الجلسة لكنه ظل مرتفعاً 0.052 نقطة مئوية على أساس يومي حتى الساعة 18:59 بتوقيت غرينتش."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والمقدمة واضحان: ما تغيّر هو لا شيء في سعر الأساس، وما بقي قائماً هو زيادة سبتمبر وهامش الخمسين نقطة. لكن العنوان الفرعي والمقدمة والمتن يكرر كل منها المعنى نفسه، بدل أن يضيف العنوان الفرعي ما يحتاجه القارئ.",
+              "repair": "إعادة صياغة العنوان الفرعي كما في الملاحظة الثانية، وحذف الجملة الأخيرة من المقدمة."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "آلية ربط الدرهم بالدولار وانتقال سعر الفائدة على أرصدة الاحتياطي مشروحة من المصدر 2، ومعها نطاق التدخل في سوق الصرف. والمقارنة بمستوى 3.65% ورفع سبتمبر حاضرة، وكذلك دافع الفيدرالي، أي التضخم المرتفع وأسعار الطاقة (المصدر 1). صندوق «لماذا يهمّ» يبني على فرضيات مسندة، هي الربط وتوقع الأسواق وإعادة تسعير القروض المتغيرة، ويستنتج منها استنتاجاً مشروطاً بـ«إذا» و«قد» عن اتجاه كلفة الاقتراض ومن يتأثر بها، وهو مضمون لا يكرر المتن.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الأقسام مرتبة الآن: القرار، ثم الآلية، ثم الفيدرالي ودوافعه، ثم الأسواق، ثم المقترضون. لكن الخاتمة تنتهي بجملة «وأضاف الموقع أن المقترضين والمدخرين... سيواصلون التعامل وفق السعر الحالي»، وهي تحصيل حاصل يسبق الصندوق ويكرر المقدمة.",
+              "repair": "ختم قسم المقترضين بتوقع رفع ديسمبر غير المُلزِم، دون وسم الموقع، وحذف الجملة التكرارية."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر. وتوقيتات أسعار المصدر 5 مذكورة، ومؤشر الدولار مسمى تمييزاً له عن مؤشر بلومبرغ. والعائد موضّح بأنه تراجع عن ذروة الجلسة لكنه بقي فوق إغلاق 4.99%. وسريان سعر أرصدة الاحتياطي يوم الخميس 29 أكتوبر صحيح. والفرق بين القروض المتغيرة والقروض الثابتة القائمة محفوظ بصيغة احتمالية.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 5,
+      "mendIssues": [
+        "مربع «الأرقام» يضم أرقاماً لا تخص قرار العنوان، وهو إبقاء المركزي الإماراتي سعر الأساس عند 3.90%. «سعر الأساس قبل زيادة سبتمبر: 3.65%» خلفية. و«سعر الإيداع لدى مصرف قطر المركزي: 4.10%» رقم بلد آخر. و«إيبور لثلاثة أشهر في 28 أكتوبر: 4.31471%» سعر سوق وليس القرار نفسه (المصدر 2). تُحذف الثلاثة من المربع وتبقى في النص. ويُكتفى بسعر الأساس وسعر اقتراض السيولة (4.40%) ونطاق الفيدرالي الذي استند إليه القرار.",
+        "تكرار المعنى وترجمة حرفية بين العنوان الفرعي والمقدمة والمتن: العنوان الفرعي يقول «التثبيت يُبقي زيادة سبتمبر قائمة، ولا يحمل للأسر والشركات في الإمارات خفضاً فورياً في كلفة الاقتراض من جهة السياسة النقدية». ثم تعيد المقدمة الشطر الأول («وبذلك تبقى الزيادة التي أقرها المصرف في سبتمبر قائمة كاملة»)، ويعيد المتن الشطر الثاني بالحرف تقريباً («تثبيت أكتوبر لا يحمل للأسر والشركات أي خفض فوري في كلفة الاقتراض المحلية من جهة السياسة النقدية»). وعبارة «من جهة السياسة النقدية» نقل حرفي لـ monetary-policy-driven. الإصلاح: يُصاغ العنوان الفرعي هكذا: «القرار يُبقي زيادة سبتمبر سارية ولا يخفّض كلفة الاقتراض على الأسر والشركات في المدى القريب». وتُحذف الجملة الأخيرة من المقدمة. ويبدأ قسم المقترضين بالشرح مباشرة: «فسعر الأساس سعر سياسة لليلة واحدة لدى المصرف المركزي، وليس الفائدة التي تتقاضاها البنوك على الرهون العقارية...».",
+        "الفقرة الختامية ضعيفة البناء: «وبحسب موقع «إيكونومي ميدل إيست»، لا تزال الأسواق تتوقع رفعاً آخر... وأضاف الموقع أن المقترضين والمدخرين في الإمارات سيواصلون التعامل وفق السعر الحالي البالغ 3.90% ما لم يغيّر الفيدرالي موقفه». توقع الأسواق يورده المصدران 1 و2 معاً، فلا حاجة إلى ربطه بموقع واحد. والجملة الثانية تحصيل حاصل يكرر المقدمة، وتسبق ما يقوله صندوق «لماذا يهمّ» بدقة أكبر، وتفتتح بـ«وأضاف» على نحو آلي. الإصلاح: «ويتوقع المستثمرون أن يعود الفيدرالي إلى رفع الفائدة في اجتماعه المقبل في ديسمبر، مع أن بيانه لم يلتزم بذلك ولم يحدد مساراً مسبقاً للفائدة»، مع حذف جملة «وأضاف الموقع...».",
+        "العنوان والمقدمة واضحان: ما تغيّر هو لا شيء في سعر الأساس، وما بقي قائماً هو زيادة سبتمبر وهامش الخمسين نقطة. لكن العنوان الفرعي والمقدمة والمتن يكرر كل منها المعنى نفسه، بدل أن يضيف العنوان الفرعي ما يحتاجه القارئ. — إعادة صياغة العنوان الفرعي كما في الملاحظة الثانية، وحذف الجملة الأخيرة من المقدمة.",
+        "الأقسام مرتبة الآن: القرار، ثم الآلية، ثم الفيدرالي ودوافعه، ثم الأسواق، ثم المقترضون. لكن الخاتمة تنتهي بجملة «وأضاف الموقع أن المقترضين والمدخرين... سيواصلون التعامل وفق السعر الحالي»، وهي تحصيل حاصل يسبق الصندوق ويكرر المقدمة. — ختم قسم المقترضين بتوقع رفع ديسمبر غير المُلزِم، دون وسم الموقع، وحذف الجملة التكرارية."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تنتقل تغييرات سعر الفائدة على أرصدة الاحتياطي لدى الفيدرالي عادة إلى سعر الأساس الإماراتي بسبب ربط الدرهم بالدولار",
+          "source": 2
+        },
+        {
+          "fact": "قال وارش إن ارتفاع أسعار الطاقة تطور يتعين أخذه في الحسبان، وإن اللجنة تحتاج إلى مزيد من المعلومات لتحديد خطوتها المقبلة",
+          "source": 1
+        },
+        {
+          "fact": "لا تزال الأسواق تتوقع رفعاً آخر في الاجتماع المقبل للفيدرالي",
+          "source": 2
+        },
+        {
+          "fact": "قد يُعاد تسعير القروض المتغيرة المرتبطة بإيبور مع تحرك مؤشرها، ولا تتغير القروض الثابتة القائمة تلقائياً",
+          "source": 2
+        }
+      ],
+      "slug": "uae-central-bank-holds-base-rate-after-fed-63bcb3",
+      "title": "المركزي الإماراتي يبقي سعر الأساس عند 3.90% بعد تثبيت الفيدرالي",
+      "score": 8,
+      "image": "cover-art"
+    },
+    {
+      "headline": "العراق وسوريا يبحثان تصدير مليوني برميل نفط يومياً عبر بانياس",
+      "section": "energy",
+      "importance": 7,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
+  "llm": {
+    "calls": 59,
+    "failures": 6,
+    "promptTokens": 947843,
+    "completionTokens": 272101,
+    "cacheReadTokens": 276326,
+    "costUsd": 10.869,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 59
+    }
+  },
+  "log": [
+    "[20:52:33] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=4027 attempt=1 ms=59644",
+    "[20:52:33] critic (second pass) \"المركزي الإماراتي يبقي سعر الأساس عند 3.90% بعد تثبيت الفيدرالي\": revise score=8 issues=5",
+    "[20:53:03] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=693 attempt=1 ms=29886",
+    "[20:53:52] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3247 attempt=1 ms=48824",
+    "[20:54:09] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=219 attempt=1 ms=17434",
+    "[20:54:09] desk: body accepted on the second try",
+    "[20:54:09] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[20:54:09] desk \"المركزي الإماراتي يبقي سعر الأساس عند 3.90% بعد تثبيت الفيدرالي\": rewrote body",
+    "[20:54:09] mended \"المركزي الإماراتي يبقي سعر الأساس عند 3.90% بعد تثبيت الفيدرالي\": the second pass's 5 finding(s) sent back once more",
+    "[20:54:57] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2419 attempt=1 ms=48082",
+    "[20:54:57] precheck \"المركزي الإماراتي يبقي سعر الأساس عند 3.90% بعد تثبيت الفيدرالي\": clean",
+    "[20:54:57] image: handout passed over (Asharq Al-Awsat): credited to «قنا», not an official body or a company",
+    "[20:54:57] image: handout passed over (Asharq Al-Awsat): credited to «أ.ب», not an official body or a company",
+    "[20:54:57] image: handout passed over (Asharq Al-Awsat): credited to «أ.ف.ب», not an official body or a company",
+    "[20:55:13] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1284 attempt=1 ms=15561",
+    "[20:55:13] image: the picture should say: The UAE's borrowing costs stay put because the dirham's dollar peg ties its central bank to the Fed.",
+    "[20:55:13] image: tier 1, the story's own place (none named): no search; categories: Central Bank of the United Arab Emirates | Banknotes of the United Arab Emirates",
+    "[20:55:13] commons category \"Central Bank of the United Arab Emirates\": none carries its name",
+    "[20:55:14] commons Category:Banknotes of the United Arab Emirates: 0 usable of 1",
+    "[20:55:14] image: no photograph of the story's own place",
+    "[20:55:26] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=483 attempt=1 ms=8787",
+    "[20:55:26] image: the sources' photographs give no brief (1: The Qatar Central Bank headquarters tower in Doha, seen from; 2: not a news photo; 3: The Central Bank of the UAE headquarters in Abu Dhabi at dus)",
+    "[20:55:26] image: tier 3, the writer's own subjects: Kevin Warsh | Dubai bank customers | UAE dirham banknotes",
+    "[20:55:26] commons \"Kevin Warsh 2026\": 6 usable of 12",
+    "[20:55:26] commons \"Kevin Warsh\": 2 usable of 12",
+    "[20:55:26] image: dropped \"Swearing-in ceremony for Federal Reserve Chair Kevin Warsh at the Whit\" — shows donald, not the story's people",
+    "[20:55:26] image: dropped \"Swearing-in ceremony for Federal Reserve Chair Kevin Warsh at the Whit\" — shows donald, not the story's people",
+    "[20:55:27] commons \"Dubai bank customers 2026\": 0 usable of 0",
+    "[20:55:27] commons \"Dubai bank customers\": 0 usable of 1",
+    "[20:55:28] commons \"Dubai bank\": 11 usable of 12",
+    "[20:55:29] commons \"UAE dirham banknotes 2026\": 0 usable of 0",
+    "[20:55:30] commons \"UAE dirham banknotes\": 0 usable of 0",
+    "[20:55:31] commons \"UAE dirham\": 3 usable of 12",
+    "[20:55:39] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=434 attempt=1 ms=6799",
+    "[20:55:39] image: vision rejected all candidates (None fits. The story is about Governor Balama and the UAE central bank. Photos 1-3 show Warsh's White House swearing-in with Justice Thomas, his wife and, in photo 2, Trump, none of whom is the story's listed person. Photo 4 is an amateur close-up of commemorative dirham coins on a plain surface. Photo 5 is a 2009 phone shot of an ATM screen. Photo 6 is a bank building front in Okara, Pakistan, the wrong country.)",
+    "[20:55:39] image: tier 4, the story's point and its subject: Central Bank of the UAE | UAE dirham notes | dirham dollar exchange | Central Bank UAE | UAE dirham banknotes | dirham notes (home: United Arab Emirates, UAE, Emirati, Abu Dhabi, Dubai)",
+    "[20:55:40] pexels \"Central Bank of the UAE\": 8 usable",
+    "[20:55:40] commons \"Central Bank of the UAE\": 2 usable of 6",
+    "[20:55:40] image: dropped \"104年5月19日 馬英九總統接見阿拉伯聯合大公國（UAE）前中央銀行總裁Sultan Bin Nasser Al-Suwaidi伉儷等一行\" — shows bin, ma, bin, not the story's people",
+    "[20:55:40] pexels \"UAE dirham notes\": 8 usable",
+    "[20:55:40] pexels \"Central Bank UAE\": 8 usable",
+    "[20:55:40] pexels \"UAE dirham banknotes\": 8 usable",
+    "[20:55:40] pexels \"dirham notes\": 8 usable",
+    "[20:55:40] pexels \"dirham dollar exchange\": 8 usable",
+    "[20:56:24] openverse \"Central Bank of the UAE\": The operation was aborted due to timeout",
+    "[20:56:24] image: dropped \"Beautiful Dubai cityscape at night showcasing skyline and waterfront r\" — names too little of central, bank",
+    "[20:56:24] image: dropped \"A tranquil view of the Dubai waterfront with modern architecture and a\" — names too little of central, bank",
+    "[20:56:24] image: dropped \"Low-angle view of modern Dubai skyscrapers with glass facades against \" — names too little of central, bank",
+    "[20:56:24] image: dropped \"Interior view of Dubai shopping mall with a modern circular skylight f\" — names too little of central, bank",
+    "[20:56:24] image: dropped \"View of Dubai's impressive skyline featuring modern skyscrapers and ar\" — names too little of central, bank",
+    "[20:56:24] image: dropped \"Impressive low angle view of towering high-rise buildings against a cl\" — names too little of central, bank",
+    "[20:56:24] openverse \"UAE dirham notes\": The operation was aborted due to timeout",
+    "[20:56:24] openverse \"dirham dollar exchange\": The operation was aborted due to timeout",
+    "[20:56:24] openverse: 3 failures in a row; left alone for 10 minutes",
+    "[20:56:25] commons \"UAE dirham notes\": 0 usable of 24",
+    "[20:56:26] commons \"UAE dirham\": 3 usable of 24",
+    "[20:56:26] image: dropped \"A wicker basket filled with various coins, symbolizing wealth and econ\" — names too little of dirham, notes",
+    "[20:56:27] commons \"dirham dollar exchange\": 0 usable of 0",
+    "[20:56:27] commons \"dirham dollar\": 2 usable of 3",
+    "[20:56:27] image: dropped \"Replica of the first license plate of Abu Dhabi.jpg\" — names too little of dirham, dollar",
+    "[20:56:28] commons \"Central Bank UAE\": 2 usable of 6",
+    "[20:57:09] openverse \"Central Bank UAE\": The operation was aborted due to timeout",
+    "[20:57:09] image: dropped \"Vibrant street scene at Meena Bazaar, Dubai with cars and shops under \" — names too little of central, bank",
+    "[20:57:09] image: dropped \"A stunning aerial view of Frankfurt's skyscrapers under dramatic skies\" — names too little of central, bank",
+    "[20:57:09] openverse \"UAE dirham banknotes\": The operation was aborted due to timeout",
+    "[20:57:09] openverse \"dirham notes\": The operation was aborted due to timeout",
+    "[20:57:10] commons \"UAE dirham banknotes\": 0 usable of 0",
+    "[20:57:10] commons \"UAE dirham\": 3 usable of 24",
+    "[20:57:10] image: dropped \"Colorful assortment of international paper currencies from various cou\" — names too little of dirham, banknotes",
+    "[20:57:10] commons \"dirham notes\": 3 usable of 24",
+    "[20:57:10] image: dropped \"Reserve currency symbols with Moroccan dirham design.jpg\" — taken in Morocco, which the story does not name",
+    "[20:57:17] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=282 attempt=1 ms=5641",
+    "[20:57:17] image: vision rejected all candidates (fallback pass) (None fits. 1 is a night view of a Sharjah souq building, a landmark facade unrelated to the central bank. 2 shows Brazilian banknotes and 6 a black-and-white Moroccan note, both the wrong country. 3 and 4 are flat amateur shots of commemorative UAE coins on a white table, coins as the subject. 5 is a named 2017 meeting of Mnuchin with al-Tayer and former governor al-Mansoori, not the story's governor Khaled Mohamed Balama.)",
+    "[20:57:26] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=462 attempt=1 ms=9101",
+    "[20:57:26] image: vision rejected all candidates (fallback pass) (None of the photos shows the UAE dirham or the UAE central bank. Photos 1 and 2 are flat scans of Jordanian dinar notes laid out as the subject. Photo 3 shows Kazakhstani tenge and photo 6 shows Ukrainian hryvnia, both wrong countries. Photo 4 shows another country's notes (captioned as Jordanian) and would mislead readers on a UAE story. Photo 5 is a staged flat lay of a dollar over mixed foreign notes, including Omani ones, with no dirham. None illustrates the dirham's dollar peg.)",
+    "[20:57:26] image: the story's people first: Khaled Mohamed Balama 2026 | Khaled Mohamed Balama | خالد محمد بالعمى | خالد بالعمى",
+    "[20:57:27] commons \"Khaled Mohamed Balama 2026\": 0 usable of 0",
+    "[20:57:29] commons \"Khaled Mohamed\": 2 usable of 20",
+    "[20:57:29] image: dropped \"Alexanria Sidi Gaber demonstration for Khaled Said.jpg\" — names none of the story's people",
+    "[20:57:29] image: dropped \"Lawatan Rasmi Dato' Seri Mohamed Khaled Bin Nordin, Menteri Pendidikan\" — names none of the story's people",
+    "[20:57:29] commons \"Khaled Mohamed Balama\": 0 usable of 0",
+    "[20:57:29] commons \"Khaled Mohamed\": 2 usable of 20",
+    "[20:57:30] commons \"خالد محمد بالعمى\": 0 usable of 0",
+    "[20:57:33] commons \"خالد محمد\": 6 usable of 20",
+    "[20:57:33] image: dropped \"خالد محمد الشيخ.jpg\" — names none of the story's people",
+    "[20:57:33] image: dropped \"لوحة الفنان محمد خالد.jpg\" — names none of the story's people",
+    "[20:57:33] image: dropped \"Qatar v Japan AFC Asian Cup 20190201 34.jpg\" — names too little of خالد, محمد",
+    "[20:57:33] image: dropped \"محمد القرقاوي مع خالد الفيصل.jpg\" — names none of the story's people",
+    "[20:57:33] image: dropped \"معالي محمد القرقاوي وسمو الشيخ خالد بن محمد بن زايد.jpg\" — shows khalid, not the story's people",
+    "[20:57:33] image: dropped \"محمد باجنيد أحمد محمد باجنيد خالد الدريس أيمن ذو الغنى.jpg\" — names none of the story's people",
+    "[20:57:33] commons \"خالد بالعمى\": 0 usable of 0",
+    "[20:57:34] commons \"بالعمى\": 4 usable of 4",
+    "[20:57:34] image: dropped \"الشبل 02.jpg\" — names too little of بالعمى",
+    "[20:57:34] image: dropped \"الشبل 01.jpg\" — names too little of بالعمى",
+    "[20:57:34] image: dropped \"الشبل 03.jpg\" — names too little of بالعمى",
+    "[20:57:34] image: set aside \"صورة أخرى لنبات العورور ووالذي يمكن ان يصيب العين بالعمى لمد\" — a 2008 photograph of a person, older than 2018",
+    "[20:57:34] image: no photograph of the story's people",
+    "[20:57:37] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=172 attempt=1 ms=3695",
+    "[20:57:37] image: last resort: UAE dirham banknotes United Arab Emirates | UAE dirham banknotes | UAE dirham banknotes industrial | Central Bank of the UAE headquarters | Central Bank of the UAE building",
+    "[20:57:38] commons \"UAE dirham banknotes United Arab Emirates\": 0 usable of 0",
+    "[20:57:38] commons \"UAE dirham\": 3 usable of 24",
+    "[20:57:38] commons \"UAE dirham banknotes\": 0 usable of 0",
+    "[20:57:38] commons \"UAE dirham\": 3 usable of 24",
+    "[20:57:39] commons \"UAE dirham banknotes industrial\": 0 usable of 0",
+    "[20:57:39] commons \"UAE dirham\": 3 usable of 24",
+    "[20:57:39] commons \"Central Bank of the UAE headquarters\": 0 usable of 0",
+    "[20:57:40] commons \"Central Bank UAE headquarters\": 0 usable of 0",
+    "[20:57:41] commons \"Central Bank\": 12 usable of 24",
+    "[20:57:41] image: dropped \"CZE-22-Czechoslovak National Bank-50 Korun (1929).jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:57:41] image: dropped \"Hong Kong Monetary Authority Reception.jpg\" — names too little of central, bank",
+    "[20:57:42] commons \"Central Bank of the UAE building\": 0 usable of 1",
+    "[20:57:42] commons \"Central Bank UAE\": 2 usable of 6",
+    "[20:57:42] image: dropped \"104年5月19日 馬英九總統接見阿拉伯聯合大公國（UAE）前中央銀行總裁Sultan Bin Nasser Al-Suwaidi伉儷等一行\" — shows bin, ma, bin, not the story's people",
+    "[20:57:42] image: dropped \"Rostov-on-Don, State Bank, Central Bank, Russia.jpg\" — taken in Russia, which the story does not name",
+    "[20:57:42] image: dropped \"Central bank nigeria.jpg\" — taken in Nigeria, which the story does not name",
+    "[20:57:47] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=226 attempt=1 ms=5149",
+    "[20:57:47] image: vision rejected all candidates (fallback pass) (None fits. Photo 1 is El Salvador's central bank, a building front in the wrong country. Photos 2-4 are amateur shots of commemorative dirham coins on a white surface: coins as the subject, flat-scan style, not of publication standard. Photo 5 is a named 2017 meeting showing Mnuchin and former governor al-Mansoori, not Governor Khaled Mohamed Balama.)",
+    "[20:57:47] image: last pass, a neutral illustration: dirham notes | dirham dollar exchange | dirham banknotes",
+    "[20:57:47] commons \"dirham notes\": 3 usable of 24",
+    "[20:57:48] pexels \"dirham notes\": 8 usable",
+    "[20:57:48] commons \"dirham dollar exchange\": 0 usable of 0",
+    "[20:57:48] commons \"dirham dollar\": 2 usable of 3",
+    "[20:57:48] image: dropped \"Replica of the first license plate of Abu Dhabi.jpg\" — names too little of dirham, dollar",
+    "[20:57:48] pexels \"dirham dollar exchange\": 8 usable",
+    "[20:57:48] image: dropped \"A wicker basket filled with various coins, symbolizing wealth and econ\" — names too little of dirham, dollar, exchange",
+    "[20:57:48] pexels \"dirham banknotes\": 8 usable",
+    "[20:57:49] commons \"dirham banknotes\": 10 usable of 24",
+    "[20:57:49] image: dropped \"Dirhams marocains (MAD).jpeg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:57:49] image: dropped \"Back 100 Dirham.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:57:49] image: dropped \"Back 200 Dirham.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:57:49] image: dropped \"Front 200 Dirham.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:57:49] image: dropped \"Front 100 Dirham.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:57:49] image: dropped \"Back 50 Dirham.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:57:49] image: dropped \"Back 20 Dirham.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:57:49] image: dropped \"Front 20 Dirham.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:57:49] image: dropped \"Front 50 Dirham.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:57:49] image: dropped \"Colorful assortment of international paper currencies from various cou\" — names too little of dirham, banknotes",
+    "[20:57:54] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=194 attempt=1 ms=5438",
+    "[20:57:54] image: vision rejected all candidates (fallback pass) (None fits. Photos 1, 2 and 4 show Moroccan and Jordanian money, not the UAE dirham. Photo 1 also shows a recognisable royal portrait, and photos 2 and 4 are amateur shots of notes on a table. Photo 3 is a graphic of currency symbols. Photos 5 and 6 are UAE coins, but they are commemorative coins carrying other banks' logos, laid flat on a white surface in an amateur snapshot rather than money changing hands. None of them shows the UAE's borrowing costs tied to the Fed through the dirham peg.)",
+    "[20:58:02] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=399 attempt=1 ms=7105",
+    "[20:58:02] image: vision rejected all candidates (fallback pass) (No candidate fits. Photos 1, 2, 4, 5 and 6 show other countries' currencies (Omani, Jordanian, mixed foreign, Kazakh, Cambodian), which would mislead under a UAE rate story. Photo 5 also has Cyrillic keyboard lettering, and photo 6 is an abstract macro. Photo 3 is the only UAE money, but it shows commemorative dirham coins laid flat on a white surface in an amateur phone shot, with a bank building printed on one coin. That is coins as the subject, not money in use.)",
+    "[20:58:02] published \"المركزي الإماراتي يبقي سعر الأساس عند 3.90% بعد تثبيت الفيدرالي\" -> uae-central-bank-holds-base-rate-after-fed-63bcb3",
+    "[20:58:46] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=985 attempt=1 ms=43486",
+    "[20:59:29] llm fail role=desk provider=claude model=claude-opus-5-5 attempt=1: an expert identification is not grounded or copies a long source phrase; rewrite it concisely and faithfully",
+    "[21:00:05] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=931 attempt=2 ms=32917",
+    "[21:01:20] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: why_basis needs one to four reported premises with source numbers",
+    "[21:02:07] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1885 attempt=2 ms=43826",
+    "[21:03:09] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2836 attempt=1 ms=61816",
+    "[21:03:09] evidence pair \"المركزي الإماراتي يبقي سعر الأساس عند 3.90% بعد تثبيت الفيدرالي\": 0 proved error(s) live (v40), 1 with the kept lessons (v0); the private drafts are not published",
+    "[21:03:09] run budget of 35 minutes spent; \"العراق وسوريا يبحثان تصدير مليوني برميل نفط يومياً عبر بانياس\" waits for the next run"
+  ]
+}
