@@ -392,6 +392,28 @@ const NAME_FIXES = [
   [/(?<![؀-ۿ])([وفبل]?)وورش(?![؀-ۿ])/g, "$1وارش"],
   // «الشرق بلومبرغ» and «بلومبرج» in one story (the Saudi market story, 2026-10-19); the outlet writes «بلومبرغ».
   [/بلومبرج|بلومبيرغ|بلومبيرج/g, "بلومبرغ"],
+  // One outlet, one spelling, the one its entry in pipeline/sources.json prints in the source list (2026-10-28: AGBI ran
+  // as «إيه جي بي آي» in 12 stories and «أرابيان غلف بيزنس إنسايت» in 10, under a source list saying «… بزنس …»; the FT,
+  // AP, JPMorgan, Morgan Stanley and Nvidia ran two ways each).
+  [/إيه جي بي آي|أرابيان غلف بيزنس إنسايت/g, "أرابيان غلف بزنس إنسايت"],
+  // …and in Latin letters as the outlet's name in an Arabic sentence («يرجّح موقع AGBI أن…», «ترجّح AGBI»); a gloss in
+  // brackets after the Arabic name stays.
+  [/«AGBI»|(?<![(«A-Za-z])AGBI(?![A-Za-z)»])/g, "«أرابيان غلف بزنس إنسايت»"],
+  [/فاينانشال تايمز/g, "فايننشال تايمز"],
+  [/ذا ناشونال/g, "ذا ناشيونال"],
+  [/ديلي نيوز إيجبت/g, "ديلي نيوز إيجيبت"],
+  [/سبايس إكس|سبيس اكس/g, "سبيس إكس"],
+  [/أوبن أيه آي/g, "أوبن إيه آي"],
+  [/أسوشييتد برس/g, "أسوشيتد برس"],
+  [/جيه بي مورغان/g, "جي بي مورغان"],
+  [/مورجان/g, "مورغان"],
+  [/(?<![؀-ۿ])([وفبل]?)نفيديا/g, "$1إنفيديا"],
+  // A name glossed with itself, as the AGBI respelling left «أرابيان غلف بزنس إنسايت» (أرابيان غلف بزنس إنسايت).
+  [/«([^«»]+)»\s*\(\1\)/g, "«$1»"],
+  // A decimal comma reads as a thousands group under the house's own comma: «2,22 مليون برميل», copied from an Arabic
+  // source that writes it so (the Russian diesel story, 2026-10-18), is 2.22 million and not 222. The house writes the
+  // decimal point; three digits after a comma stay a thousands group.
+  [/(?<![\d.,٫])(\d{1,3}),(\d{1,2})(?!\d)(?![.,٫]\d)/g, "$1.$2"],
 ];
 export function fixNames(text) {
   let out = String(text ?? "");

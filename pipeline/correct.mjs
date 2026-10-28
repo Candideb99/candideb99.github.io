@@ -83,7 +83,8 @@ You are now the corrections editor. A reader or an audit has reported an error i
 
 const FIELDS = ["title", "subtitle", "lede", "whyItMatters", "body"];
 const sentencesOf = (t) => String(t ?? "").split(/(?<=[.؟!])\s+|\n+/).map((s) => s.trim()).filter(Boolean);
-const numbersOf = (t) => (normalizeDigits(String(t ?? "")).match(/\d[\d.,]*\d|\d/g) ?? []).map((n) => n.replace(/[.,]+$/, "").replace(/,(?=\d{3}(?!\d))/g, ""));
+// Read through the house spelling table, which writes the decimal point: a «2,22» set right as «2.22» is the same figure.
+const numbersOf = (t) => (normalizeDigits(fixNames(String(t ?? ""))).match(/\d[\d.,]*\d|\d/g) ?? []).map((n) => n.replace(/[.,]+$/, "").replace(/,(?=\d{3}(?!\d))/g, ""));
 
 async function sourcesOf(story, slug) {
   // A page that no longer answers is read from the copy saved at publication (lib/snapshots.mjs, 2026-09-26): the same

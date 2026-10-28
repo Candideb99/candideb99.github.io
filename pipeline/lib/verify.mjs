@@ -1,8 +1,12 @@
 import { chat } from "./llm.mjs";
 import { EDITORIAL_CRAFT, EDITORIAL_READER_CHECK, NEWS_DEPTH, NEWS_FLOOR, SHORT_STORY } from "./editorial.mjs";
-import { arabicRatio, normalizeDigits, overlappingPhrases, phraseOverlap, suspiciousLatinWords, ungroundedNumbers, wordCount } from "./util.mjs";
+import { arabicRatio, normalizeDigits, overlappingPhrases, phraseOverlap, refersBack, suspiciousLatinWords, ungroundedNumbers, wordCount } from "./util.mjs";
 import { STITCH, styleIssues } from "./style.mjs";
 import { labelLine, unlabelledOutlets } from "./outlets.mjs";
+import { quoteFound } from "./factcheck.mjs";
+
+/** «…» after a verb of saying, within a few words: «وقال إن «…»»، «وصف القرار بأنه «…»»، «قائلاً: «…»». */
+const SPEECH_QUOTE = /(?<![؀-ۿ])[وف]?(?:قال|قالت|يقول|تقول|أضاف|أضافت|أكد|أكدت|ذكر|ذكرت|كتب|كتبت|تابع|تابعت|أوضح|أوضحت|وصف|وصفت|اعتبر|اعتبرت|صرح|صرّح|صرحت|صرّحت|شدد|شدّد|شددت|شدّدت|حذر|حذّر|حذرت|حذّرت|قائلا|قائلاً|قائلة|بقوله|بقولها)(?![؀-ۿ])[^«».؟!\n]{0,40}?«([^«»\n]{20,})»/g;
 
 /** The three sections of the week's review, matched loosely against its "## " subheads. */
 const WEEKLY_SECTIONS = [
@@ -70,6 +74,21 @@ export function programmaticChecks(draft, sources, { recentTitles = [], newsTitl
   // Whose voice (lib/outlets.mjs; the owner, 2026-10-25): a state, ministry, pro-government or opposition outlet is
   // named as such the first time; the desk can mend it, so it is not a writer's fault (run.mjs WRITERS_FAULT).
   for (const outlet of unlabelledOutlets(draft)) issues.push(`ورد اسم «${outlet.name}» أول مرة بلا صفته؛ اكتب أول ذكر له: ${outlet.firstMention}.`);
+  // Speech inside «» is the speaker's own Arabic, read in an Arabic source (write.mjs QUOTATIONS): a translation in «»
+  // claims words nobody said. The prompt alone did not hold it: of 85 stories read on 2026-10-28, four set translated
+  // speech in «» (Gulf News's English for Pezeshkian, Senator Wyden's words, a Russian minister's). A quote whose words
+  // no Arabic source carries goes back to the desk, which reports it instead («قال إن…»).
+  const arabicTexts = sources.map((s) => `${s.title ?? ""}\n${s.text || ""}\n${s.summary || ""}`).filter((t) => arabicRatio(t.slice(0, 3000)) > 0.5);
+  if (grounded) {
+    for (const m of prose.matchAll(SPEECH_QUOTE)) {
+      // A name in «» after a verb of saying is four words at most («قالت شركة «غلف تاكس أكاونتينغ غروب»»); speech is longer.
+      if (m[1].trim().split(/\s+/).length < 5) continue;
+      const parts = m[1].split(/\.{2,}|…/).map((p) => p.trim()).filter((p) => p.split(/\s+/).length >= 4);
+      if (!parts.length || parts.every((p) => arabicTexts.some((t) => quoteFound(p, t)))) continue;
+      issues.push(`كلام مترجم بين علامتي تنصيص («${m[1].slice(0, 60)}»): لا يرد بنصه في أي مصدر عربي. انقله بصيغة «قال إن…» بلا علامات تنصيص؛ «» للاقتباس العربي الحرفي وحده.`);
+      break;
+    }
+  }
 
   const words = wordCount(`${draft.lede}\n${draft.body}`);
   if (analysis) {
@@ -248,13 +267,17 @@ export function cutToSources(draft, sources) {
         continue;
       }
       const out = [];
+      // A sentence that points back at one just cut («وهذه الزيادة…») builds on the figure that went: it goes with it
+      // (2026-10-28, util.mjs refersBack), within its paragraph.
+      let cutLast = false;
       for (const sentence of sentencesIn(line)) {
         if (stitches && STITCH.test(sentence)) {
           // The second event runs from its joint to the end of the paragraph.
           cut.push(sentencesIn(line).slice(sentencesIn(line).indexOf(sentence)).join(" "));
           break;
         }
-        if (missing.size && ungrounded(sentence)) cut.push(sentence);
+        cutLast = (missing.size > 0 && ungrounded(sentence)) || (cutLast && refersBack(sentence));
+        if (cutLast) cut.push(sentence);
         else out.push(sentence);
       }
       kept.push(out.join(" ").trimEnd());
@@ -282,12 +305,15 @@ You answer with one JSON object only.`;
 /** What the critic is told about the material, its first (facts) check and its third (kind-specific) check, per kind of piece. */
 const FACTS_CHECK = "Every number, date, name, quote and causal claim in the draft: is it supported by the sources? List each unsupported or altered item.";
 const CRITIC_RUBRIC = {
+  // The box line (2026-10-28): 16 of 108 stories read that day carried a figure of another event under «الأرقام» (a past
+  // Brent close, another company's funding round, a PMI's 50-point threshold); the writer's rule alone had not held it.
   news: {
     material: "",
     facts: `${FACTS_CHECK} The synthesis box's reported premises must be grounded; its bounded inference is evaluated separately under WHY IT MATTERS, not penalised merely for not being a source's own conclusion.`,
     check: `Is this ONE story? An article stitching unrelated developments together is a roundup and must be rejected. The headline, lede and body report supplied facts. The synthesis box draws a bounded house inference from those facts: check its economic logic and limiting conditions. Identify invented premises or overstated certainty as concrete errors under the existing scoring rules, and request revision for an attributed recap or empty generality.
 DEPTH. ${NEWS_DEPTH}
-Count the lede and body words; under ${NEWS_FLOOR} is a depth defect in itself. Then go through the six elements (the news, the driver, the numbers in perspective, the reaction, the background, what comes next). For each element a SOURCE supplies and the draft omits or reduces to a bare mention, write one issue in Arabic beginning «ينقص التقرير:», naming the element, the supplied fact and its SOURCE number. An element no source supplies is not a defect; never ask for invented material, and never ask the draft to say that it is missing. A sentence telling the reader what the sources or a statement do not contain, a paragraph of a speaker's general calls and praise, and a sentence that sums up in abstract nouns are padding, not depth: quote each and ask for it to be cut. Read the headline and dek as the Financial Times' desk would: does the headline lead on the number that matters (Brent before WTI for oil, never a contract the source says is expiring, the latest-timed price), does the dek say what the news changes when a SOURCE gives the consequence, does a pending plan carry a verb of intent rather than of accomplishment («تعتزم» not «تخصص»), and does a recent result the SOURCES give (a company's latest profit, the quarter-on-quarter rate, the market's reaction) come before old background? Each failure is one issue naming the SOURCE. A «لماذا يهمّ» box about something other than the event's economic consequence (a casualty count, a human-interest detail, a restated headline) is also a depth defect.`,
+Count the lede and body words; under ${NEWS_FLOOR} is a depth defect in itself. Then go through the six elements (the news, the driver, the numbers in perspective, the reaction, the background, what comes next). For each element a SOURCE supplies and the draft omits or reduces to a bare mention, write one issue in Arabic beginning «ينقص التقرير:», naming the element, the supplied fact and its SOURCE number. An element no source supplies is not a defect; never ask for invented material, and never ask the draft to say that it is missing. A sentence telling the reader what the sources or a statement do not contain, a paragraph of a speaker's general calls and praise, and a sentence that sums up in abstract nouns are padding, not depth: quote each and ask for it to be cut. Read the headline and dek as the Financial Times' desk would: does the headline lead on the number that matters (Brent before WTI for oil, never a contract the source says is expiring, the latest-timed price), does the dek say what the news changes when a SOURCE gives the consequence, does a pending plan carry a verb of intent rather than of accomplishment («تعتزم» not «تخصص»), and does a recent result the SOURCES give (a company's latest profit, the quarter-on-quarter rate, the market's reaction) come before old background? Each failure is one issue naming the SOURCE. A «لماذا يهمّ» box about something other than the event's economic consequence (a casualty count, a human-interest detail, a restated headline) is also a depth defect.
+THE «الأرقام» BOX (key_facts) prints figures of the headline's event only. Name each key fact that is something else (background, a price of another day or another market, another company's or country's figure, a forecast about something else, a definition or a threshold such as 50 points on a PMI) and ask for it to be taken out of the box; the text keeps it.`,
   },
   // A short story (editorial.mjs SHORT_STORY): judged as one, never against the developed report's checklist.
   short: {

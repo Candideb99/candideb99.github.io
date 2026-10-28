@@ -6,7 +6,8 @@
  *   - Federal Reserve: FOMC meeting dates (the decision falls on the last day)
  *   - European Central Bank: monetary policy meetings of the Governing Council (the day with the press conference)
  *   - Bank of England: MPC announcement dates
- *   - US Bureau of Labor Statistics: the CPI and the Employment Situation release dates
+ *   - US Bureau of Labor Statistics: the CPI and the Employment Situation release dates (from FRED, the St. Louis Fed's
+ *     copy of the BLS schedule, when bls.gov refuses the reader)
  *
  * Best effort, like the market quotes: a source that cannot be read keeps its stored events, the
  * script never fails a build, and a date that does not parse is dropped rather than guessed.
@@ -16,10 +17,13 @@
  */
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
+import { USER_AGENT } from "./lib/util.mjs";
 
 const OUT = path.resolve("src/data/calendar.json");
 const CHECK = process.argv.includes("--check");
-const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36";
+// The newsroom's own reader, never a browser's name (2026-10-28: the Fed, the ECB and the Bank of England answer it; bls.gov
+// refused the disguise as well).
+const UA = USER_AGENT;
 
 const MONTHS_EN = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
 const MONTHS_AR = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
@@ -124,8 +128,11 @@ const SOURCES = [
     url: "https://www.bls.gov/schedule/news_release/cpi.htm",
     local: "08:30",
     zone: "America/New_York",
+    title: (ref) => (ref ? `التضخم الأمريكي (مؤشر أسعار المستهلكين) عن ${ref}` : "التضخم الأمريكي (مؤشر أسعار المستهلكين)"),
+    short: (ref) => (ref ? `التضخم الأمريكي عن ${ref}` : "التضخم الأمريكي"),
+    fred: 10,
     async parse(html) {
-      return blsTable(html, this, (ref) => `التضخم الأمريكي (مؤشر أسعار المستهلكين) عن ${ref}`, (ref) => `التضخم الأمريكي عن ${ref}`);
+      return blsTable(html, this);
     },
   },
   {
@@ -133,14 +140,17 @@ const SOURCES = [
     url: "https://www.bls.gov/schedule/news_release/empsit.htm",
     local: "08:30",
     zone: "America/New_York",
+    title: (ref) => (ref ? `تقرير الوظائف الأمريكي عن ${ref}` : "تقرير الوظائف الأمريكي"),
+    short: (ref) => (ref ? `الوظائف الأمريكية عن ${ref}` : "الوظائف الأمريكية"),
+    fred: 50,
     async parse(html) {
-      return blsTable(html, this, (ref) => `تقرير الوظائف الأمريكي عن ${ref}`, (ref) => `الوظائف الأمريكية عن ${ref}`);
+      return blsTable(html, this);
     },
   },
 ];
 
 /** BLS release tables: reference month | "Sep. 11, 2026" | 08:30 AM (Eastern). */
-function blsTable(html, source, title, short = title) {
+function blsTable(html, source) {
   const events = [];
   const table = html.match(/<table class="release-list">[\s\S]*?<\/table>/);
   if (!table) return events;
@@ -152,9 +162,39 @@ function blsTable(html, source, title, short = title) {
     const relM = monthIndex(rel[1]);
     if (refM < 0 || relM < 0) continue;
     const date = iso(Number(rel[3]), relM, Number(rel[2]));
-    events.push({ date, title: title(MONTHS_AR[refM]), short: short(MONTHS_AR[refM]), org: "مكتب إحصاءات العمل الأمريكي", kind: "data", region: "الأمريكتان", time: utcTime(date, source.local, source.zone), url: source.url });
+    events.push(blsEvent(source, date, MONTHS_AR[refM], source.url));
   }
   return events;
+}
+
+const blsEvent = (source, date, ref, url) => ({ date, title: source.title(ref), short: source.short(ref), org: "مكتب إحصاءات العمل الأمريكي", kind: "data", region: "الأمريكتان", time: utcTime(date, source.local, source.zone), url });
+
+/**
+ * The same release days from FRED, the St. Louis Fed's release calendar, when bls.gov refuses the reader: from October
+ * 2026 it answered every request with 403, its robots.txt included, so the agenda ran on stored dates that end on 10
+ * December. FRED republishes BLS's schedule (the dates matched the stored ones exactly) and allows readers. It gives the
+ * days only: the reference month is the one before the release, as on BLS's normal schedule, and a month holding two
+ * releases (a disrupted schedule, as in the shutdown of 2025) names none rather than guess.
+ */
+async function fredEvents(source) {
+  const year = new Date().getUTCFullYear();
+  const days = [];
+  for (const y of [year, year + 1]) {
+    const url = `https://fred.stlouisfed.org/releases/calendar?rid=${source.fred}&y=${y}`;
+    const html = await get(url);
+    for (const m of html.matchAll(/(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday) ([A-Z][a-z]+) (\d{1,2}), (\d{4})/g)) {
+      const month = monthIndex(m[1]);
+      if (month >= 0) days.push({ date: iso(Number(m[3]), month, Number(m[2])), url });
+    }
+  }
+  const unique = [...new Map(days.map((d) => [d.date, d])).values()].sort((a, b) => a.date.localeCompare(b.date));
+  const perMonth = new Map();
+  for (const d of unique) perMonth.set(d.date.slice(0, 7), (perMonth.get(d.date.slice(0, 7)) ?? 0) + 1);
+  return unique.map((d) => {
+    const month = Number(d.date.slice(5, 7)) - 1;
+    const ref = perMonth.get(d.date.slice(0, 7)) === 1 ? MONTHS_AR[(month + 11) % 12] : null;
+    return blsEvent(source, d.date, ref, d.url);
+  });
 }
 
 async function main() {
@@ -164,10 +204,19 @@ async function main() {
   } catch {}
   const fresh = new Map();
   const failed = [];
+  const valid = (list) => list.filter((e) => /^\d{4}-\d{2}-\d{2}$/.test(e.date) && !Number.isNaN(Date.parse(e.date)));
   for (const source of SOURCES) {
     try {
-      const events = (await source.parse(await get(source.url))).filter((e) => /^\d{4}-\d{2}-\d{2}$/.test(e.date) && !Number.isNaN(Date.parse(e.date)));
-      if (!events.length) throw new Error("no events parsed");
+      let events;
+      try {
+        events = valid(await source.parse(await get(source.url)));
+        if (!events.length) throw new Error("no events parsed");
+      } catch (error) {
+        if (!source.fred) throw error;
+        events = valid(await fredEvents(source));
+        if (!events.length) throw new Error(`${error.message}; FRED: no events parsed`);
+        console.log(`calendar: ${source.id}: ${error.message} at bls.gov; read from FRED`);
+      }
       fresh.set(source.id, events.map((e) => ({ ...e, source: source.id })));
       console.log(`calendar: ${source.id}: ${events.length} events`);
     } catch (error) {

@@ -17,6 +17,7 @@
 import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import YAML from "yaml";
+import { fixNames } from "./copydesk.mjs";
 
 // Arabic letters and marks, the edges of a word: not the whole Unicode block, whose «،» «؛» «؟» end a word.
 const AR = "ء-ٟٮ-ۓۺ-ۿ";
@@ -110,14 +111,15 @@ function spellings(dir) {
   return known;
 }
 
-/** The house spelling of a tag: «أمريكي», «ترامب», «أوبن إيه آي», no shadda. */
+/**
+ * The house spelling of a tag: the text's own table (copydesk.mjs fixNames: «أمريكي», «ترامب», «سبيس إكس»…), no shadda.
+ * One table for both since 2026-10-28: a tag kept «سبايس إكس» after the text had been respelled, and split SpaceX's
+ * subject page in two.
+ */
 function houseSpelling(tag) {
-  return String(tag ?? "")
+  return fixNames(String(tag ?? ""))
     // Shadda, sukun and tatweel go («النصفيّة»); the other marks stay, so «عُمان» is never read as Amman.
     .replace(/[ّْـ]/g, "")
-    .replace(/أميرك/g, "أمريك")
-    .replace(/ترمب/g, "ترامب")
-    .replace(/أوبن أيه آي/g, "أوبن إيه آي")
     .replace(/\s+/g, " ")
     .trim();
 }

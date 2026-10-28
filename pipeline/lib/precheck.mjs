@@ -20,7 +20,7 @@
 import { chat } from "./llm.mjs";
 import { correctionIssue, quoteFound, verifyStory } from "./factcheck.mjs";
 import { WRITER_SYSTEM } from "./write.mjs";
-import { arabicRatio, normalizeDigits, ungroundedNumbers, writeJsonAtomic } from "./util.mjs";
+import { arabicRatio, normalizeDigits, refersBack, ungroundedNumbers, writeJsonAtomic } from "./util.mjs";
 import { fixNames } from "./copydesk.mjs";
 
 export const MAX_REPAIRS = 3;
@@ -193,6 +193,18 @@ function dropSentences(text, targets) {
   return { text: lines.join("\n").replace(/\n{3,}/g, "\n\n").trim(), dropped };
 }
 
+/**
+ * The prose sentences of a field in reading order, squashed as `dropSentences` compares them; a subhead, a table row, a
+ * list item or a quotation is a null, so a reference never reaches across it.
+ */
+function proseSentences(text) {
+  return String(text ?? "").split("\n").flatMap((line) => {
+    if (!line.trim()) return [];
+    if (/^\s*(?:#|\||[-*>]\s)/.test(line)) return [null];
+    return line.split(/(?<=[.؟!])\s+/).map(squash).filter(Boolean);
+  });
+}
+
 /** A "## " subhead with no prose under it before the next subhead or the end. */
 function orphanSubhead(body) {
   const lines = String(body ?? "").split("\n").map((l) => l.trim()).filter(Boolean);
@@ -235,6 +247,24 @@ async function trimUnsourced({ draft, sources, checks, validate, log, judgeWith 
     if (reason) record.kept.push({ sentence: c.sentence, reason });
     // The verdict stays with a cut sentence: "sourced" there means a quote code could not find.
     else cut.push({ ...c, said: a.verdict ?? "no verdict" });
+  }
+  // A sentence the next one points back at («وهذه الخطوة…»، «قيود الاستخدام هذه…») stays, since cutting it would leave
+  // the reference hanging (util.mjs refersBack). Kept until nothing changes: keeping one may anchor the one before it.
+  for (let changed = true; changed; ) {
+    changed = false;
+    const doomed = new Set(cut.map((c) => squash(c.sentence)));
+    for (const field of UNSOURCED_FIELDS) {
+      const order = proseSentences(draft[field]);
+      for (let i = 0; i < order.length - 1; i++) {
+        if (!order[i] || !order[i + 1] || !doomed.has(order[i]) || doomed.has(order[i + 1]) || !refersBack(order[i + 1])) continue;
+        const at = cut.findIndex((c) => squash(c.sentence) === order[i]);
+        if (at < 0) continue;
+        record.kept.push({ sentence: cut[at].sentence, reason: "the next sentence refers back to it" });
+        cut.splice(at, 1);
+        doomed.delete(order[i]);
+        changed = true;
+      }
+    }
   }
   if (!cut.length) {
     log(`precheck: ${asked.length} sentence(s) no source bears on, all kept (${record.kept.map((k) => k.reason).join(", ")})`);

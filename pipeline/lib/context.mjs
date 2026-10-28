@@ -116,14 +116,25 @@ function gmt(iso) {
 const UNIT_EN = { "دولار/برميل": "US dollars per barrel", "دولار/أونصة": "US dollars per troy ounce", "دولار/مليون وحدة حرارية": "US dollars per million British thermal units", "دولار/رطل": "US dollars per pound", "سنت/بوشل": "US cents per bushel", "%": "percent", "دولار": "US dollars" };
 const FUTURES = new Set(["brent", "wti", "natgas", "gold", "silver", "copper", "wheat"]);
 
-/** One instrument's line: price, unit, time, and the move from the previous close when the feed gives one. */
+/**
+ * One instrument's line: price, unit, time, and the move from the previous close when the feed gives one it can stand
+ * behind. Yahoo keeps no daily history for the Saudi and Egyptian indices (one bar in three months, 2026-10-28), so their
+ * previous close cannot be checked, and on Sunday 25 October it was a session stale: the EGX30 story printed a 6.85% fall
+ * from Wednesday's close where the index had lost 3.56% from Thursday's. With fewer than five daily closes the line gives
+ * the price alone, and the move comes from the reports.
+ */
 export function quoteLine(inst, q, now = Date.now()) {
   const price = Number(q.price).toFixed(inst.decimals);
   const unit = UNIT_EN[inst.unit] ?? (inst.group === "fx" ? "" : "points");
-  const series = FUTURES.has(inst.id) ? ` (futures, Yahoo Finance's continuous front-month series ${inst.symbol})` : ` (${inst.symbol})`;
+  const month = q.delivery ? `, the contract for ${q.delivery} delivery` : "";
+  const series = q.contract
+    ? ` (futures for ${q.delivery} delivery, ${q.contract}; the contract nearest delivery, which wire reports quote until it expires)`
+    : FUTURES.has(inst.id) ? ` (futures, Yahoo Finance's continuous front-month series ${inst.symbol}${month})` : ` (${inst.symbol})`;
   const label = inst.group === "fx" ? `${inst.name} exchange rate` : inst.name;
   let line = `${label}${series}: ${price}${unit ? ` ${unit}` : ""} at ${gmt(q.time)} (delayed quote)`;
-  if (Number.isFinite(q.change) && Number.isFinite(q.pct) && Number.isFinite(q.prev)) {
+  const unchecked = Array.isArray(q.history) && q.history.length < 5;
+  if (unchecked) line += "; the feed keeps no daily closes for this index, so its previous close cannot be checked and no move is given";
+  else if (Number.isFinite(q.change) && Number.isFinite(q.pct) && Number.isFinite(q.prev)) {
     const dir = q.change >= 0 ? "up" : "down";
     line += inst.changeMode === "abs"
       ? `, ${dir} ${Math.abs(q.change).toFixed(3)} percentage points from the previous close of ${Number(q.prev).toFixed(inst.decimals)}`
@@ -131,6 +142,41 @@ export function quoteLine(inst, q, now = Date.now()) {
   }
   if (now - new Date(q.time) > 18 * 3600000) line += ". The market has not traded since this quote";
   return `${line}.`;
+}
+
+/**
+ * Monthly energy contracts on Yahoo (NYMEX symbols: root, month code, two-digit year). Yahoo's continuous series rolls
+ * to the next delivery month days before the wires stop quoting the expiring one: on 26 October 2026 a story led on BZ=F's
+ * 110.36, already January's contract, beside its sources' December figures (about 114.5, a peak of 117, a 6% weekly gain),
+ * two contracts in one story. Gold, silver, copper and wheat roll between active months the wires name less strictly.
+ */
+const MONTHLY_FUTURES = { brent: "BZ", wti: "CL", natgas: "NG" };
+const MONTH_CODES = "FGHJKMNQUVXZ";
+
+/**
+ * Which delivery month the continuous series holds (the contract whose price it repeats), and the nearer contract when
+ * one still trades: { tracked: "January 2027", nearer: quote of that contract, with its `contract` and `delivery` } or
+ * null when no contract repeats the series' price.
+ */
+async function deliveryMonths(inst, q, { now, fetchQuote }) {
+  const start = new Date(now);
+  const candidates = [1, 2, 3].map((k) => {
+    const d = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth() + k, 1));
+    return { symbol: `${MONTHLY_FUTURES[inst.id]}${MONTH_CODES[d.getUTCMonth()]}${String(d.getUTCFullYear()).slice(2)}.NYM`, delivery: `${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}` };
+  });
+  const quotes = [];
+  for (const c of candidates) {
+    try {
+      quotes.push({ ...c, q: withChange(inst, await fetchQuote(c.symbol)) });
+    } catch {
+      /* a month Yahoo does not list */
+    }
+  }
+  const tracked = quotes.findIndex((c) => Math.abs(c.q.price - q.price) <= q.price * 0.0005 && Math.abs(new Date(c.q.time) - new Date(q.time)) < 3600000);
+  if (tracked < 0) return null;
+  // The nearer month still trades when its last quote is as fresh as the series' own.
+  const nearer = quotes.slice(0, tracked).find((c) => Math.abs(new Date(c.q.time) - new Date(q.time)) < 6 * 3600000);
+  return { tracked: quotes[tracked].delivery, nearer: nearer ? { ...nearer.q, contract: nearer.symbol, delivery: nearer.delivery } : null };
 }
 
 /**
@@ -144,7 +190,9 @@ export async function marketData({ story, sources = [], now = Date.now(), fetchQ
   for (const inst of instruments) {
     try {
       const q = withChange(inst, await fetchQuote(inst.symbol));
-      lines.push(quoteLine(inst, q, now));
+      const near = MONTHLY_FUTURES[inst.id] ? await deliveryMonths(inst, q, { now, fetchQuote }) : null;
+      lines.push(quoteLine(inst, near ? { ...q, delivery: near.tracked } : q, now));
+      if (near?.nearer) lines.push(quoteLine(inst, near.nearer, now));
     } catch (error) {
       log(`market data: ${inst.symbol} did not answer (${String(error.message ?? error).slice(0, 80)})`);
     }

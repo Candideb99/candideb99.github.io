@@ -517,8 +517,18 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     if (review.verdict === "revise" && review.issues.length) {
       try {
         const mend = await reviseArticle({ draft, sources, issues: review.issues, log, notes, lessons, short });
-        const mended = (await copyDeskPass(mend.draft, { includeBody: true, sources, minWords })).draft;
-        const mendedChecks = programmaticChecks(mended, sources, { recentTitles, minWords });
+        const recheck = (d) => programmaticChecks(d, sources, { recentTitles, minWords });
+        let mended = (await copyDeskPass(mend.draft, { includeBody: true, sources, minWords })).draft;
+        let mendedChecks = recheck(mended);
+        // A mend the checks refuse for a fault of the desk's trade gets the revision's own rescue, the last cut and the
+        // last desk pass, before it is thrown away (2026-10-28): from 25 to 28 October five mends that had put right all
+        // the second pass's findings were discarded for one long sentence or a long lede, and the drafts that went out
+        // still carried them (Apollo's stake credited to Mubadala Capital's announcement instead of to insiders, among
+        // nine; Almarai's possible revenue stated as certain).
+        if (!mendedChecks.ok) {
+          ({ draft: mended, checks: mendedChecks } = lastCut(mended, mendedChecks, { sources, recheck }));
+          ({ draft: mended, checks: mendedChecks } = await lastDeskPass(mended, mendedChecks, { sources, minWords, recheck }));
+        }
         if (mendedChecks.ok) {
           draft = mended;
           checks = mendedChecks;
@@ -897,8 +907,11 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
     if (finalReview.verdict === "revise" && finalReview.issues.length) {
       try {
         const mend = await reviseArticle({ draft, sources: checkSources, issues: finalReview.issues, log, wordLimits, kind, notes });
-        const mended = (await copyDeskPass(mend.draft, { kind: deskKind, sources: checkSources ?? [] })).draft;
-        const mendedChecks = programmaticChecks(mended, checkSources, { ...flags, recentTitles });
+        const recheck = (d) => programmaticChecks(d, checkSources, { ...flags, recentTitles });
+        let mended = (await copyDeskPass(mend.draft, { kind: deskKind, sources: checkSources ?? [] })).draft;
+        let mendedChecks = recheck(mended);
+        // As a news story's mend (2026-10-28): one more desk pass before a mend is thrown away for the desk's fault.
+        if (!mendedChecks.ok) ({ draft: mended, checks: mendedChecks } = await lastDeskPass(mended, mendedChecks, { sources: checkSources ?? [], kind: deskKind, recheck }));
         if (mendedChecks.ok) {
           draft = mended;
           checks = mendedChecks;

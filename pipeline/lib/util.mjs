@@ -221,6 +221,19 @@ export function wordCount(text) {
   return String(text ?? "").split(/\s+/).filter(Boolean).length;
 }
 
+// A demonstrative or «كذلك» among a sentence's first four words, with its attached و/ف/ب/ل/ك: «وهذه الخطوة…»، «ومع
+// ذلك…»، «وكانت قيود الاستخدام هذه…». Deeper in («وارتفع المؤشر 2% في هذه الجلسة») it is the sentence's own business.
+const BACK_REFERENCE = /^(?:[وفبلك]{0,2})(?:هذا|هذه|ذلك|تلك|هؤلاء|أولئك|هذان|هاتان|هذين|هاتين|ذاك|كذلك)$/;
+/**
+ * Whether a sentence points back at the one before it. A cut that takes out the sentence before one of these leaves the
+ * reference hanging: «وكانت قيود الاستخدام هذه قد أوقعت الشركة في خلاف…» stood in the Anthropic story of 27 October with
+ * no restrictions named before it, and both of the newsroom's sentence cutters (the last cut and the trim of what no
+ * source bears on) read sentence by sentence.
+ */
+export function refersBack(sentence) {
+  return String(sentence ?? "").trim().split(/\s+/).slice(0, 4).some((w) => BACK_REFERENCE.test(w.replace(/[^\p{L}]/gu, "")));
+}
+
 /** Share of 6-word shingles of `text` that appear verbatim in `source`. */
 export function phraseOverlap(text, source, size = 6) {
   const tokens = (t) => normalizeDigits(t).toLowerCase().replace(/[\p{P}\p{S}]/gu, " ").split(/\s+/).filter(Boolean);

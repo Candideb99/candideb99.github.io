@@ -5,9 +5,10 @@ import { DESK_NAMES, groundedRegions } from "./regions.mjs";
 const REGION_NAMES = DESK_NAMES.join("، ");
 import { chat } from "./llm.mjs";
 import { EDITORIAL_CRAFT, NEWS_DEPTH, NEWS_FLOOR, SHORT_STORY, SHORT_WORDS } from "./editorial.mjs";
-import { boxFacts, FIGURES_RULE, isFigure } from "./keyfacts.mjs";
+import { boxFacts, figureOnly, FIGURES_RULE, isFigure } from "./keyfacts.mjs";
 import { cleanTags, storyText as taggedText } from "./tags.mjs";
 import { labelLine, quotedOutletsBlock } from "./outlets.mjs";
+import { fixNames } from "./copydesk.mjs";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { arabicRatio, domainOf, overlappingPhrases, truncate, ungroundedNumbers, wordCount } from "./util.mjs";
@@ -128,7 +129,7 @@ const NEWS_MAX_TOKENS = 12000;
 function sourceBlock(source, index) {
   const text = source.text || source.summary || "";
   return `SOURCE ${index + 1}: ${source.sourceNameEn} (${source.lang}) — "${source.title}" — published ${source.publishedAt ?? "unknown"}
-${labelLine(source)}${source.kind === "official" ? "[PRIMARY INSTITUTIONAL DOCUMENT: authoritative for its own provisions/announcement; stated benefits remain attributed claims.]\n" : ""}${source.kind === "reference" ? "[REFERENCE DEFINITIONS ONLY: explain the terms and scale; this does NOT report or corroborate the current event. No unrelated examples or investment advice.]\n" : ""}${source.kind === "report" ? "[THE PUBLISHER'S OWN REPORT, read from its pages: authoritative for what it says; its estimates, forecasts and rankings are the report's own and are attributed to it («بحسب التقرير»). [p.N] marks the report's page; a run of bare numbers is a table whose columns you cannot see, so take no figure from it unless a sentence states it.]\n" : ""}${source.kind === "market" ? "[MARKET DATA: delayed quotes read by Khazendar just before writing, each with its time. When a quote here is later than a price in the news reports, report THIS price with its time («وتراجع برنت 1.12% إلى 108.63 دولار للبرميل بحلول الساعة 10:25 بتوقيت غرينتش»), and keep the reports' explanation of the move attributed to them; never mix this feed's price with a report's percentage change. Yahoo Finance's futures series follows the front-month contract: when a report says that contract is about to expire, lead on the report's most-traded contract instead. A price is a public fact and needs no source tag in the text. For an economic release or a central-bank decision, these quotes show where the country's market and currency stood: report them in one sentence, only when their time is after the release, as concurrent («وارتفع اليوان إلى … بحلول الساعة …»), never as caused by the release unless a report says so; a quote older than the release is left out. These quotes are never news in themselves and never an outlet confirming the event.]\n" : ""}${source.discoveredFrom ? `[Document linked in ${source.discoveredFrom}; this is evidence provenance, not independent confirmation.]\n` : ""}${text}`;
+${labelLine(source)}${source.kind === "official" ? "[PRIMARY INSTITUTIONAL DOCUMENT: authoritative for its own provisions/announcement; stated benefits remain attributed claims.]\n" : ""}${source.kind === "reference" ? "[REFERENCE DEFINITIONS ONLY: explain the terms and scale; this does NOT report or corroborate the current event. No unrelated examples or investment advice.]\n" : ""}${source.kind === "report" ? "[THE PUBLISHER'S OWN REPORT, read from its pages: authoritative for what it says; its estimates, forecasts and rankings are the report's own and are attributed to it («بحسب التقرير»). [p.N] marks the report's page; a run of bare numbers is a table whose columns you cannot see, so take no figure from it unless a sentence states it.]\n" : ""}${source.kind === "market" ? "[MARKET DATA: delayed quotes read by Khazendar just before writing, each with its time. When a quote here is later than a price in the news reports, report THIS price with its time («وتراجع برنت 1.12% إلى 108.63 دولار للبرميل بحلول الساعة 10:25 بتوقيت غرينتش»), and keep the reports' explanation of the move attributed to them; never mix this feed's price with a report's percentage change. Each futures line names its delivery month. When two lines give two months of one future, report the month the news reports quote (the wires quote the contract nearest delivery until it expires), and never set one month's price beside another month's peak, weekly change or record. A price is a public fact and needs no source tag in the text. For an economic release or a central-bank decision, these quotes show where the country's market and currency stood: report them in one sentence, only when their time is after the release, as concurrent («وارتفع اليوان إلى … بحلول الساعة …»), never as caused by the release unless a report says so; a quote older than the release is left out. These quotes are never news in themselves and never an outlet confirming the event.]\n" : ""}${source.discoveredFrom ? `[Document linked in ${source.discoveredFrom}; this is evidence provenance, not independent confirmation.]\n` : ""}${text}`;
 }
 
 /** Some models return the body as paragraphs or as sections ({heading, text} or heading → text); fold it into Markdown. */
@@ -429,9 +430,11 @@ export function normalizeDraft(d, { kind = "news" } = {}) {
   // A figure without a label says nothing in the box, and the checker refused the whole story for one
   // (2026-09-23: a gas-supply story scored 8 was thrown away after its revision); the figure is dropped instead.
   // So is a value that is not a figure (a place, a name, a date) under «الأرقام» (the owner, 2026-09-27).
+  // The house spelling table reads the box too (2026-10-28: «2,22 مليون برميل» stood under «الأرقام»; the desk's table
+  // had read only the text).
   const keyFacts = boxFacts(
     (Array.isArray(d.key_facts) ? d.key_facts : [])
-      .map((f) => (typeof f === "string" ? { label: "", value: f } : { label: String(f.label ?? "").trim(), value: String(f.value ?? "").trim() }))
+      .map((f) => (typeof f === "string" ? { label: "", value: fixNames(f).trim() } : { label: fixNames(String(f.label ?? "")).trim(), value: figureOnly(fixNames(String(f.value ?? "")), f.label) }))
       .filter((f) => f.value && f.label),
     kind,
   ).slice(0, 6);

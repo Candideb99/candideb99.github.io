@@ -48,7 +48,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       KHAZENDAR_CODEX_MODEL: ${{ vars.KHAZENDAR_CODEX_MODEL || 'gpt-6.1-sol' }}
-    timeout-minutes: 45
+    # The free checks (about 5 minutes), the capped picture step (25), the commit with its build, then the editor's turns.
+    timeout-minutes: 75
     if: vars.KHAZENDAR_EDITOR == '1' && vars.KHAZENDAR_PAUSED != '1'
     steps:
       - uses: actions/checkout@v4
@@ -109,8 +110,13 @@ jobs:
           KHAZENDAR_CODEX_SESSION: ${{ vars.KHAZENDAR_CODEX_SESSION }}
         run: node scripts/codex-cloud-auth.mjs restore
 
+      # Capped, and never the end of the round (2026-10-28): with Openverse timing out, seven stories took 38 minutes and
+      # the job hit its limit inside the commit below, three days running, so the pictures found and the photo checks were
+      # never saved. A story the search did not reach waits for tomorrow's round.
       - name: Fill missing pictures and replace lost ones (the pipeline's own search)
         if: steps.precheck.outputs.pictures != '' || steps.precheck.outputs.redo != ''
+        timeout-minutes: 25
+        continue-on-error: true
         env:
           SLUGS: ${{ steps.precheck.outputs.pictures }}
           REDO: ${{ steps.precheck.outputs.redo }}

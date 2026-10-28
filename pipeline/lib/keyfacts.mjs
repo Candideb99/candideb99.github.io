@@ -132,6 +132,17 @@ export function isFigure(value, label = "") {
 }
 
 /**
+ * A figure with a list or an explanation tacked on after a colon keeps the figure alone: «3 أنظمة: التجاري والأوراق
+ * التجارية والدفاتر التجارية» (the Saudi commercial-law story, 2026-10-27) passed as a figure because it opens with one,
+ * and printed three names under «الأرقام». A clock time («02:22») has no space after its colon and is left alone.
+ */
+export function figureOnly(value, label = "") {
+  const v = String(value ?? "").trim();
+  const m = v.match(/^(.+?)\s*[:：]\s+(?=[؀-ۿ«"])/);
+  return m && isFigure(m[1], label) ? m[1].trim() : v;
+}
+
+/**
  * The facts a piece's box keeps. For every kind but an explainer, the figures only (see above); an explainer's box is
  * its glossary and keeps every entry with a value. Order is kept.
  */

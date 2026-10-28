@@ -28,6 +28,16 @@ export const BANNED = [
   // The site quoting itself («في قراءة خازندار، تهمّ الورقة…»): nine hub pieces of 2026-10-23 did, because the briefs
   // asked for "Khazendar's reading" to be marked. A reading is marked by its hedge; a reporter never cites his paper.
   { re: /(?:في|بحسب|وفق(?:اً)?) قراءة خازندار|(?:ترى|تقرأ|تقدّر|تقدر|ترجّح|ترجح|تتوقع) خازندار/g, fix: "الموقع لا يقتبس نفسه؛ علّم القراءة بتحوّط واحد («قد»، «يُرجَّح») ثم اكتبها مباشرة", hard: true },
+  // A job title translated word for word: "senior economist" is «كبير الاقتصاديين» on the Arab desks, never «الاقتصادي
+  // الأول في …» (seven stories by 2026-10-28, against fifteen in the desks' form). Only before «في»/«لـ»/«لدى»/«بـ», where
+  // it is a title, and after a name's comma: «المحلل الأول الذي توقع…» is a first analyst, «الشريك الاقتصادي الأول للصين»
+  // a top partner.
+  { re: /(?<=[،,]\s*)(?:ال)?(?:اقتصادي|اقتصادية|محلل|محللة|خبير|خبيرة|استراتيجي|استراتيجية)(?:\s+(?:ال)?(?:اقتصادي|اقتصادية))?\s+(?:ال)?(?:أول|أولى)(?=\s+(?:في|لدى)(?![؀-ۿ])|\s+[لب][؀-ۿ])/g, fix: "لقب وظيفي مترجم حرفياً؛ اكتب «كبير الاقتصاديين في…» أو «كبير المحللين لدى…» أو «كبيرة الاقتصاديين…» كما تكتبه الصحف", hard: true },
+  // "Low single digit" as «بنسبة أحادية منخفضة» (ADNOC Drilling's guidance, 2026-10-28): the desks give the range.
+  { re: /أحادية (?:منخفضة|متوسطة|مرتفعة)/g, fix: "تعبير مترجم حرفياً؛ اكتب المعنى بالأرقام («أقل من 5%»، «بين 5% و9%») أو «نمواً محدوداً»" },
+  // A market's proper name translated word for word: the Dutch gas benchmark, the Title Transfer Facility, ran as «عقد
+  // «مرفق تحويل الملكية» (TTF)» (2026-10-27); the Arabic desks write «عقود TTF الهولندية».
+  { re: /مرفق (?:تحويل|نقل) الملكية/g, fix: "اسم المؤشر مترجم حرفياً؛ اكتب «عقود TTF الهولندية» أو «مؤشر TTF الهولندي» كما تكتبه الصحف", hard: true },
   // Significance asserted instead of shown (Wikipedia's «Signs of AI writing», 1.1, said the Arabic way): the fact that
   // makes a thing matter is written, not a sentence saying that it does. Rare here (six in 335 pieces), so a warning.
   { re: /يكتسب(?:ان)? أهمية|تكتسب أهمية|يحمل(?: في طياته)? دلالات|تحمل(?: في طياتها)? دلالات|محطة (?:مفصلية|فارقة)|دور(?:اً|ا)? محوري(?:اً|ا)?|نقلة نوعية/g, fix: "عبارة تقول إن الأمر مهم بدل أن تذكر ما يجعله مهماً؛ اكتب الواقعة أو الرقم واحذف العبارة" },
@@ -231,6 +241,20 @@ function grams(words, n = 4) {
   const out = new Set();
   for (let i = 0; i + n <= words.length; i++) out.add(words.slice(i, i + n).join(" "));
   return out;
+}
+/**
+ * The first run of `n` words two of the fields share word for word (subheads aside, marks and the hamza's forms folded):
+ * { fields: [the two names], words } or null. `fields` is a list of [name, text].
+ */
+function sharedRun(fields, n) {
+  const words = (t) => String(t ?? "").replace(/^#.*$/gm, " ").replace(/[ً-ْـ]/g, "").replace(/[أإآ]/g, "ا").match(/[\p{L}\p{N}%]+(?:\.\d+)?/gu) ?? [];
+  const runs = fields.map(([name, text]) => [name, grams(words(text), n)]);
+  for (let i = 0; i < runs.length; i++) {
+    for (let j = i + 1; j < runs.length; j++) {
+      for (const g of runs[i][1]) if (runs[j][1].has(g)) return { fields: [runs[i][0], runs[j][0]], words: g };
+    }
+  }
+  return null;
 }
 
 /** The counted nouns whose number the desks keep: 3 to 10 take the plural, 11 to 99 and decimals the singular. */
@@ -439,7 +463,9 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
   }
   // «رفع الدعم» is the removal of a subsidy in the Arab economics desks' usage; raised to a level it reads backwards
   // (2026-10-23: «يُرجَّح ألا يُموَّل رفع الدعم الاجتماعي إلى مثليه», meaning its doubling, four times in one analysis).
-  const subsidy = prose.match(/رفع (?:ال)?دعم(?:\s+[\p{L}\p{M}]+)?\s+إلى/u);
+  // Up to three words and a «من …» between them since 2026-10-28: «رفع الدعم الاجتماعي المباشر من 500 إلى 600 درهم»
+  // passed; «إلى جانب» joins, it raises nothing.
+  const subsidy = prose.match(/رفع (?:ال)?دعم(?:\s+[\p{L}\p{M}]+){0,3}(?:\s+من\s+[\d.,]+(?:\s+[\p{L}\p{M}]+)?)?\s+إلى(?!\s*جانب)/u);
   if (subsidy) issues.push(`«${subsidy[0]}» تقرأ إلغاءً للدعم؛ «رفع الدعم» في لغة الاقتصاد يعني إلغاءه، وللزيادة «زيادة الدعم» أو «مضاعفته».`);
   if (kind === "explainer") {
     // A reader asks his question after the news, never about a definition: the lede opens on what happened.
@@ -487,6 +513,13 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
   if (duals.length) warnings.push(`المثنى قبل فعله يُثنّى الفعل معه («${duals.slice(0, 3).join("»، «")}»)؛ قل «اثنتان منها عبرتا»، «الشركتان أعلنتا».`);
 
   // Each field adds something: the dek, the first paragraph and the box never retell the lede.
+  // Eight words running word for word in two of dek, lede and body are one sentence printed twice (2026-10-28: «غداة
+  // هجومين قتلا أربعة أشخاص في المنطقة الشرقية» in Aramco's dek and lede; 18 of the 129 news stories since 18 October,
+  // each a real repeat on reading; six words fired on 49, catching set phrases).
+  if (news) {
+    const run = sharedRun([["الوصف", dek], ["المقدمة", lede], ["المتن", body]], 8);
+    if (run) warnings.push(`عبارة مكررة حرفياً بين ${run.fields.join(" و")} («${run.words}»)؛ قلها مرة واحدة، وليحمل كل حقل معلومة لا يحملها غيره.`);
+  }
   const ledeFigures = new Set(figuresOf(lede));
   const dekShared = [...new Set(figuresOf(dek))].filter((f) => ledeFigures.has(f));
   if (news && dekShared.length >= 2) warnings.push(`الوصف الفرعي يكرر أرقام المقدمة (${dekShared.join("، ")})؛ ليحمل ثاني أهم معلومة لا رقم المقدمة.`);

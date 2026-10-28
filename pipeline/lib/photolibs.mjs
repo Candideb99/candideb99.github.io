@@ -33,6 +33,22 @@ const landscape = (w, h) => w > 0 && h > 0 && w / h >= 0.95 && w / h <= 2.6;
 export const NOT_A_PHOTO = /\b(?:ai[- ]generated|generated (?:by|with) ai|generative ai|midjourney|dall[- ]?e|stable diffusion|3d[- ](?:render|rendering|illustration|model|image)|rendered|cgi|illustration|illustrated|digital (?:art|painting|illustration|image)|vector|clip ?art|cartoon|mock-?up)\b/i;
 
 let openverseRefused = false;
+// Openverse down (2026-10-28): 89 of the morning round's 97 searches timed out at 45 seconds each, and the 8 answers held
+// nothing. Seven stories took 38 minutes, so the round hit its 45-minute limit while committing and lost its pictures and
+// photo checks, three days running. The newsroom's own runs waited the same way (27 timeouts in one). So three failures in a
+// row, with no answer between them, stand Openverse down for ten minutes, and the next search after that tries it again.
+const OPENVERSE_FAILURES = 3;
+const OPENVERSE_REST_MS = 10 * 60 * 1000;
+let openverseFailures = 0;
+let openverseRestUntil = 0;
+const openverseResting = () => Date.now() < openverseRestUntil;
+function openverseFailed(log) {
+  openverseFailures += 1;
+  if (openverseFailures < OPENVERSE_FAILURES || openverseResting()) return;
+  openverseFailures = 0;
+  openverseRestUntil = Date.now() + OPENVERSE_REST_MS;
+  log(`openverse: ${OPENVERSE_FAILURES} failures in a row; left alone for ${OPENVERSE_REST_MS / 60000} minutes`);
+}
 // A pass asks the libraries for all its searches at once (images.mjs collect()); Openverse allows 20 anonymous searches a
 // minute, so at most three are in flight and the rest wait their turn.
 let openverseInFlight = 0;
@@ -57,10 +73,18 @@ async function openverseTurn(work) {
  * phrase gives nothing usable, the first of them is asked once. Each result says which phrase found it (`searched`).
  */
 export async function searchOpenverse(query, { limit = 10, log = () => {}, simpler = [] } = {}) {
-  if (openverseRefused) return [];
+  if (openverseRefused || openverseResting()) return [];
   const params = new URLSearchParams({ q: query, license: "by,by-sa,cc0,pdm", page_size: "20", mature: "false", excluded_source: "wikimedia", extension: "jpg" });
   try {
-    const response = await openverseTurn(() => fetchWithTimeout(`https://api.openverse.org/v1/images/?${params}`, { headers: { "user-agent": USER_AGENT } }, 45000));
+    // A search queued behind three that failed is not sent once the breaker has opened.
+    const response = await openverseTurn(() => (openverseResting() ? null : fetchWithTimeout(`https://api.openverse.org/v1/images/?${params}`, { headers: { "user-agent": USER_AGENT } }, 45000)));
+    if (!response) return [];
+    if (response.status >= 500) {
+      log(`openverse "${query}": HTTP ${response.status}`);
+      openverseFailed(log);
+      return [];
+    }
+    openverseFailures = 0;
     if (response.status === 429) {
       // A minute's limit says to wait seconds, the day's limit hours: only the second ends Openverse for the run.
       const wait = Number(response.headers.get("retry-after"));
@@ -116,6 +140,7 @@ export async function searchOpenverse(query, { limit = 10, log = () => {}, simpl
     return out;
   } catch (error) {
     log(`openverse "${query}": ${error.message}`);
+    openverseFailed(log);
     return [];
   }
 }

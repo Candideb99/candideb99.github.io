@@ -15,14 +15,14 @@ import { MAX_REPAIRS, checkSourcesOf, precheck } from "../pipeline/lib/precheck.
 import { repeatsRecent } from "../pipeline/lib/events.mjs";
 import { fetchFeed } from "../pipeline/lib/feeds.mjs";
 import { lessonRuleOk, loadLessons } from "../pipeline/lib/lessons.mjs";
-import { sourceNumbers, ungroundedNumbers, writeJsonAtomic } from "../pipeline/lib/util.mjs";
+import { refersBack, sourceNumbers, ungroundedNumbers, writeJsonAtomic } from "../pipeline/lib/util.mjs";
 import { loadSnapshot, saveSnapshot } from "../pipeline/lib/snapshots.mjs";
 import { loadSources, quoteFound, settleDrift, verifyStory } from "../pipeline/lib/factcheck.mjs";
 import { readArticleHtml } from "../pipeline/lib/extract.mjs";
 import { labelLine, outletLabels, quotedOutletsBlock, unlabelledOutlets } from "../pipeline/lib/outlets.mjs";
 import { instrumentsOf, marketData, repeatsInstrument } from "../pipeline/lib/context.mjs";
 import { independentOutletCount } from "../pipeline/lib/news-evidence.mjs";
-import { boxFacts } from "../pipeline/lib/keyfacts.mjs";
+import { boxFacts, figureOnly } from "../pipeline/lib/keyfacts.mjs";
 import { deskNotes, newsDepthBrief, newsFloor, normalizeChart, normalizeDraft, paperNotes, prioritizeContext, substantiveFacts, validateDraft, validateWhyBasis, writePaperReading } from "../pipeline/lib/write.mjs";
 import { NEWS_DEPTH, NEWS_FLOOR, SHORT_WORDS } from "../pipeline/lib/editorial.mjs";
 import { arabicEdition, bestPdf, editionKey, previousEdition, releaseDocument, releaseStory, reportExcerpts } from "../pipeline/lib/reports.mjs";
@@ -247,6 +247,31 @@ for (const [name, checks] of [
   }, { calls: 0 });
   const clean = await precheck({ draft, sources, verify: v, judgeWith: plain, unsourced: true });
   check("a story every source bears on is not read again", [clean.ok, clean.trimmed, v.calls, plain.calls], [true, 0, 1, 0]);
+  // 2026-10-28: «وكانت قيود الاستخدام هذه…» stood with nothing named before it; a cut must not make one.
+  const pointed = { title: "عنوان", lede: "رفع البنك الفائدة.", body: "نص أول. وتفرض الشركة قيوداً على استخدام نماذجها.\n\nوكانت هذه القيود قد أوقعتها في خلاف. والخطوة التالية خفض الدعم.", keyFacts: [] };
+  const nfb = (id, sentence) => ({ id, field: "body", verdict: "not_found", status: "not_found", sentence, quote: "" });
+  const anchored = await precheck({ draft: pointed, sources, verify: async () => ({ counts: {}, checks: [nfb(5, "وتفرض الشركة قيوداً على استخدام نماذجها."), nfb(6, "والخطوة التالية خفض الدعم.")] }), judgeWith: judgeAll("unsourced"), unsourced: true });
+  check(
+    "a sentence the next one points back at stays; the rest of the cut goes on",
+    [anchored.trimmed, anchored.draft.body.includes("وتفرض الشركة"), anchored.draft.body.includes("والخطوة التالية"), anchored.rounds[0].unsourced.kept[0]?.reason],
+    [1, true, false, "the next sentence refers back to it"],
+  );
+}
+{
+  // The last cut takes a sentence that points back at a cut figure with it, within its paragraph.
+  const draft = { title: "عنوان", subtitle: "وصف", lede: "رفع البنك الفائدة إلى 5%.", body: "وبلغ التضخم 9.7% في سبتمبر. وهذه أعلى نسبة منذ عامين. ويجتمع البنك مجدداً في ديسمبر.", whyItMatters: "", keyFacts: [] };
+  const out = cutToSources(draft, [{ title: "Rate decision", text: "The bank raised its policy rate to 5%. It meets again in December." }]);
+  check("the last cut takes the sentence pointing back at a cut figure", [out?.cut.length, out?.draft.body], [2, "ويجتمع البنك مجدداً في ديسمبر."]);
+  check("a sentence that points back is told from one that does not", [refersBack("وكانت قيود الاستخدام هذه قد أوقعت الشركة"), refersBack("ومع ذلك ارتفع المؤشر"), refersBack("وارتفع المؤشر 2% في هذه الجلسة الطويلة جداً")], [true, true, false]);
+}
+{
+  // The house spelling table (lib/copydesk.mjs), 2026-10-28.
+  check("a decimal comma becomes the decimal point; a thousands group stays", [fixNames("2,22 مليون برميل"), fixNames("4,000 دولار"), fixNames("1,234,567")], ["2.22 مليون برميل", "4,000 دولار", "1,234,567"]);
+  check("one outlet, one spelling", [fixNames("بحسب «إيه جي بي آي»"), fixNames("يرجّح موقع AGBI أن"), fixNames("«أرابيان غلف بزنس إنسايت» (AGBI)"), fixNames("فاينانشال تايمز")], ["بحسب «أرابيان غلف بزنس إنسايت»", "يرجّح موقع «أرابيان غلف بزنس إنسايت» أن", "«أرابيان غلف بزنس إنسايت» (AGBI)", "فايننشال تايمز"]);
+  check("a name glossed with itself loses the gloss", fixNames("وقال موقع «إيه جي بي آي» (أرابيان غلف بيزنس إنسايت) إنه"), "وقال موقع «أرابيان غلف بزنس إنسايت» إنه");
+  check("a box value keeps its figure, not a list after a colon", [figureOnly("3 أنظمة: التجاري والأوراق التجارية والدفاتر التجارية"), figureOnly("02:22"), figureOnly("نحو 70%")], ["3 أنظمة", "02:22", "نحو 70%"]);
+  const box = normalizeDraft({ title: "t", key_facts: [{ label: "ديزل المرحلة الأولى", value: "2,22 مليون برميل" }, { label: "الأنظمة الملغاة", value: "3 أنظمة: التجاري والأوراق التجارية" }] }).keyFacts;
+  check("the writer's box goes through the spelling table and keeps figures only", box.map((f) => f.value), ["2.22 مليون برميل", "3 أنظمة"]);
 }
 
 // 2. A story is not written twice: a retry of the same event, or the same event from another outlet.
@@ -696,9 +721,25 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("the same instrument's move twice in four hours is held", Boolean(again("برنت يقفز فوق 109 دولارات مع تعطل صادرات ينبع", 4)), true);
   check("twelve hours on, or with a record, it is news again", [again("برنت يقترب من 100 دولار بعد هجمات حوثية", 12), again("برنت يصعد إلى أعلى مستوى منذ مايو", 2)], [null, null]);
   const now = Date.parse("2026-10-19T10:35:00Z");
-  const quote = async (symbol) => ({ price: symbol === "BZ=F" ? 108.63 : 98.36, prev: symbol === "BZ=F" ? 109.86 : 99.02, time: "2026-10-19T10:25:00Z", history: [] });
+  const days = Array.from({ length: 60 }, (_, i) => ({ d: `2026-08-${String((i % 28) + 1).padStart(2, "0")}`, c: 100 }));
+  const quote = async (symbol) => ({ price: symbol === "BZ=F" ? 108.63 : 98.36, prev: symbol === "BZ=F" ? 109.86 : 99.02, time: "2026-10-19T10:25:00Z", history: days });
   const market = await marketData({ story: { headlineHint: "برنت يتراجع بعد إعفاء روسيا", section: "energy" }, now, fetchQuote: quote });
   check("market data carries each price with its time and its move", [market.kind, /108\.63 US dollars per barrel at 10:25 GMT on Monday 19 October 2026/.test(market.text), /down 1\.23 or 1\.12% from the previous close of 109\.86/.test(market.text)], ["market", true, true]);
+  // 2026-10-25: Yahoo keeps one daily bar for the EGX30, and its previous close was a session stale (6.85% printed for 3.56%).
+  const egx = await marketData({ story: { headlineHint: "البورصة المصرية توقف التداول بعد هبوط مؤشرها", section: "markets" }, now, fetchQuote: async () => ({ price: 49234.3, prev: 52854.9, time: "2026-10-25T11:25:00Z", history: [{ d: "2026-10-25", c: 49234.3 }] }) });
+  check("an index whose feed keeps no daily closes gets its price, not a move", [/49234\.30 points/.test(egx?.text ?? ""), /from the previous close/.test(egx?.text ?? ""), /no move is given/.test(egx?.text ?? "")], [true, false, true]);
+  // 2026-10-26: Yahoo's BZ=F had rolled to January while the wires quoted December; the story mixed the two.
+  const t28 = "2026-10-28T18:20:00Z";
+  const brentBook = { "BZ=F": [111.87, 109.41], "BZZ26.NYM": [115.55, 113.88], "BZF27.NYM": [111.87, 109.41] };
+  const rolled = await marketData({ story: { headlineHint: "برنت يرتفع وسط ترقب قرار واشنطن", section: "energy" }, now: Date.parse("2026-10-28T18:30:00Z"), fetchQuote: async (symbol) => {
+    if (!brentBook[symbol]) throw new Error("no such contract");
+    return { price: brentBook[symbol][0], prev: brentBook[symbol][1], time: t28, history: days };
+  } });
+  check(
+    "a rolled futures series names its month, and the nearer contract the wires quote is given beside it",
+    [/BZ=F, the contract for January 2027 delivery\): 111\.87/.test(rolled?.text ?? ""), /December 2026 delivery, BZZ26\.NYM.*115\.55/.test(rolled?.text ?? "")],
+    [true, true],
+  );
   const weekend = await marketData({ story: { headlineHint: "الذهب يرتفع", section: "markets" }, now, fetchQuote: async () => ({ price: 4186.3, prev: 4181.2, time: "2026-10-16T21:00:00Z" }) });
   check("a quote from a closed market says so", /has not traded since/.test(weekend.text), true);
   check("no priced instrument, no market source", await marketData({ story: { headlineHint: "«فيرتيجلوب» تدرس إنشاء مجمع أسمدة في مصر", section: "companies" }, fetchQuote: quote }), null);
