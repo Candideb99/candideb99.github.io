@@ -7724,6 +7724,62 @@
           "noted": []
         }
       ]
+    },
+    "qatarenergy-extends-force-majeure-edison-italy-e4653e": {
+      "at": "2026-10-28T08:46:59.177Z",
+      "title": "قطر للطاقة تمدد إشعار القوة القاهرة لإديسون الإيطالية للمرة الخامسة هذا العام",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v40",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 23,
+            "checked": 23,
+            "supported": 20,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "sk-hynix-shares-jump-record-quarterly-profit-93f73e": {
+      "at": "2026-10-28T08:59:11.996Z",
+      "title": "سهم «إس كيه هاينكس» يقفز 11% بعد أرباح فصلية قياسية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v40",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 10,
+            "checked": 10,
+            "supported": 7,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

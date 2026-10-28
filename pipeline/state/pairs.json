@@ -1339,6 +1339,50 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-10-28T08:46:59.208Z",
+      "slug": "qatarenergy-extends-force-majeure-edison-italy-e4653e",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v40",
+      "lessonsHash": "5bcfeb9fba",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 1,
+        "notFound": 22,
+        "checked": 23,
+        "words": 304,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 0,
+        "notFound": 26,
+        "checked": 26,
+        "words": 325,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 0,
+        "notFound": 26,
+        "checked": 26,
+        "words": 325,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }
