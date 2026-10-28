@@ -1,4 +1,5 @@
 import { extractArticle } from "./extract.mjs";
+import { reportingOrigin } from "./outlets.mjs";
 import { canonicalUrl, fingerprint, hoursSince, isoNow } from "./util.mjs";
 
 // Only cited public documents on these exact institutional hosts are followed.
@@ -72,8 +73,9 @@ function removeRepeatedReports(sources, log) {
 }
 
 /**
- * Count distinct non-official reporting origins. Repeated feeds from one publisher and near-copy
- * syndicated bodies do not add a second independent confirmation.
+ * Count distinct non-official reporting origins. Repeated feeds from one publisher, an outlet running another's
+ * reporting under licence (`reportingOrigin()`) and near-copy syndicated bodies do not add a second independent
+ * confirmation.
  */
 export function independentOutletCount(sources) {
   const publishers = new Set();
@@ -81,7 +83,7 @@ export function independentOutletCount(sources) {
   let independent = 0;
   for (const source of sources) {
     if (source.kind === "official" || source.kind === "reference" || source.kind === "market") continue;
-    const publisher = String(source.sourceNameEn ?? source.sourceName ?? "").normalize("NFKC").trim().toLowerCase();
+    const publisher = String(reportingOrigin(source)).normalize("NFKC").trim().toLowerCase();
     const newPublisher = !publishers.has(publisher);
     publishers.add(publisher);
     reports.push(source.text ?? "");

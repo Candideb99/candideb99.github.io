@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { readArticleHtml, extractArticle } from "../pipeline/lib/extract.mjs";
 import { collectNewsEvidence, eventSourcesOf, independentOutletCount, needsRatingsReference, officialDocument } from "../pipeline/lib/news-evidence.mjs";
 import { checkSourcesOf } from "../pipeline/lib/precheck.mjs";
+import { reportingOrigin } from "../pipeline/lib/outlets.mjs";
 
 const primary = "https://www.whitehouse.gov/presidential-actions/2026/10/implementing-russia-sanctions/";
 const unrelated = "https://www.whitehouse.gov/briefings/2026/10/housing-programme/";
@@ -62,6 +63,21 @@ assert.equal(independentOutletCount([
   item(1, { text: syndicatedBody }),
   item(2, { sourceNameEn: "Another Publisher", kind: "official", reliability: 3, text: syndicatedBody }),
 ]), 1, "official sources do not count as non-official reporting origins");
+// An outlet running another's reporting under licence is that outlet (sources.json `origin`, 2026-10-29).
+assert.equal(independentOutletCount([
+  item(1, { sourceName: "بلومبرغ", sourceNameEn: "Bloomberg", text: "", summary: "Saudi crude exports near wartime high" }),
+  item(2, { sourceName: "الشرق بلومبرغ", sourceNameEn: "Asharq Business", text: independentBody }),
+]), 1, "Asharq Business is Bloomberg's reporting, never a second outlet beside it");
+assert.equal(independentOutletCount([
+  item(1, { sourceName: "بلومبرغ إتش تي", sourceNameEn: "Bloomberg HT", text: syndicatedBody }),
+  item(2, { sourceName: "الشرق بلومبرغ", sourceNameEn: "Asharq Business", text: independentBody }),
+]), 1, "two licensees of one outlet are one reporting origin");
+assert.equal(independentOutletCount([
+  item(1, { sourceName: "الشرق بلومبرغ", sourceNameEn: "Asharq Business", text: syndicatedBody }),
+  item(2, { sourceName: "الشرق الأوسط", sourceNameEn: "Asharq Al-Awsat", text: independentBody }),
+]), 2, "Asharq Business beside an independent outlet still counts");
+assert.equal(reportingOrigin({ name: "الشرق بلومبرغ", nameEn: "Asharq Business" }), "Bloomberg", "a story's stored source resolves by name");
+assert.equal(reportingOrigin({ sourceNameEn: "Asharq Al-Awsat" }), "Asharq Al-Awsat", "an outlet without `origin` is itself");
 const calls = [];
 const fake = async (url, options) => {
   calls.push(url);

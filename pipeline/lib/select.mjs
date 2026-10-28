@@ -1,6 +1,7 @@
 import { chat } from "./llm.mjs";
 import { hoursSince, truncate } from "./util.mjs";
 import { DESK_NAMES } from "./regions.mjs";
+import { reportingOrigin } from "./outlets.mjs";
 
 const EDITOR_SYSTEM = `You are the managing editor of خازندار (Khazendar), an Arabic-language economics and business publication read across the Gulf, Egypt, the Levant, North Africa and the diaspora.
 You decide which stories the newsroom will write in the next hours. You are rigorous, allergic to fluff, and you think about what an educated Arab reader needs to understand the economy today.
@@ -15,7 +16,10 @@ export const newsSectionsOf = (sections) => sections.filter((s) => !HUB_SECTIONS
 function formatCandidate(c) {
   const age = Number.isFinite(hoursSince(c.publishedAt)) ? `${Math.round(hoursSince(c.publishedAt))}h` : "?";
   const tier = c.reliability === 3 ? "A" : c.reliability === 2 ? "B" : "C";
-  return `[${c.id}] (${c.sourceNameEn}; tier ${tier}; ${c.kind}; ${c.lang}; ${age} ago) ${truncate(c.title, 140)}${c.summary ? ` — ${truncate(c.summary, 220)}` : ""}`;
+  // An outlet running another's reporting is named with it, so a cluster of the two is seen as one outlet.
+  const origin = reportingOrigin(c);
+  const outlet = origin && origin !== c.sourceNameEn ? `${c.sourceNameEn}, ${origin}'s reporting` : c.sourceNameEn;
+  return `[${c.id}] (${outlet}; tier ${tier}; ${c.kind}; ${c.lang}; ${age} ago) ${truncate(c.title, 140)}${c.summary ? ` — ${truncate(c.summary, 220)}` : ""}`;
 }
 
 /**

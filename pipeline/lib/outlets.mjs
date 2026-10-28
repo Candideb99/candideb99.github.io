@@ -26,6 +26,24 @@ export function outletLabels() {
   return labels;
 }
 
+let origins = null;
+
+/**
+ * The reporting origin a source speaks for (2026-10-29, when Asharq Business joined the feeds). An outlet that runs
+ * another's reporting under licence carries `origin` on its sources.json entry and counts as that outlet: Asharq
+ * Business publishes Bloomberg's stories in Arabic, Bloomberg HT in Turkish, so a Bloomberg headline beside its Arabic
+ * version is one report, never two outlets. Read by name, so a story's stored sources resolve as its feed items do.
+ */
+export function reportingOrigin(source) {
+  if (!origins) {
+    const config = JSON.parse(readFileSync(SOURCES_FILE, "utf8"));
+    origins = new Map();
+    for (const s of config.sources ?? []) if (s.origin) for (const name of [s.name, s.nameEn]) if (name) origins.set(name, s.origin);
+  }
+  const names = [source.sourceNameEn ?? source.nameEn, source.sourceName ?? source.name].filter(Boolean);
+  return names.map((name) => origins.get(name)).find(Boolean) ?? names[0] ?? "";
+}
+
 /** The label of the outlet a source comes from, or null. */
 export function labelOf(source) {
   const names = [source.sourceName ?? source.name, source.sourceNameEn ?? source.nameEn];
