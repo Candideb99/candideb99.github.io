@@ -12,7 +12,11 @@
  * KHAZENDAR_CLAUDE_EFFORT overrides it, set from the control room's Settings (.env and the repository variable the
  * workflows pass). Its own module, without side effects, so the control room can read it without loading the newsroom's
  * keys (llm.mjs loads .env on import).
+ *
+ * Max is left out of the levels (the owner, 2026-10-28: "make photo selection on extra not max when using claude, as max
+ * consumes the plan very fast"): the control room does not offer it, and a «max» in .env or the repository variable reads
+ * as the default, Extra. KHAZENDAR_WRITING_EFFORT (llm.mjs) takes the same levels.
  */
-export const CLAUDE_EFFORTS = ["low", "medium", "high", "xhigh", "max"];
+export const CLAUDE_EFFORTS = ["low", "medium", "high", "xhigh"];
 export const CLAUDE_EFFORT = "xhigh";
 export const claudeEffort = (env = process.env) => (CLAUDE_EFFORTS.includes(env.KHAZENDAR_CLAUDE_EFFORT) ? env.KHAZENDAR_CLAUDE_EFFORT : CLAUDE_EFFORT);

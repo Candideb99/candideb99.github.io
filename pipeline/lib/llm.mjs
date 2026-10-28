@@ -710,7 +710,7 @@ export async function chat({ role, system, user, images = [], json = true, valid
   const writing = !effort && CLAUDE_EFFORTS.includes(process.env.KHAZENDAR_WRITING_EFFORT) ? process.env.KHAZENDAR_WRITING_EFFORT : null;
   if (writing) {
     effort = writing;
-    timeoutMs *= { high: 2, xhigh: 4, max: 6 }[writing] ?? 1;
+    timeoutMs *= { high: 2, xhigh: 4 }[writing] ?? 1;
   }
   const errors = [];
   let refusal = "";
