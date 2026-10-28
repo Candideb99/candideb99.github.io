@@ -7887,6 +7887,34 @@
           "noted": []
         }
       ]
+    },
+    "saudi-q3-earnings-bahri-sabic-tadawul-6e3944": {
+      "at": "2026-10-28T19:37:53.958Z",
+      "title": "ثلاثة محركات مختلفة تحكم أرباح البحري وسابك وتداول",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 47,
+            "checked": 47,
+            "supported": 35,
+            "weak": 8,
+            "noEvidence": 0,
+            "notFound": 4,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

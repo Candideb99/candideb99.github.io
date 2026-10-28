@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-28T15:11:48.068Z",
+  "updatedAt": "2026-10-28T19:41:22.582Z",
   "events": [
     {
       "date": "2021-01-27",
@@ -494,28 +494,6 @@
       "source": "fed"
     },
     {
-      "date": "2025-12-16",
-      "title": "تقرير الوظائف الأمريكي عن نوفمبر",
-      "short": "الوظائف الأمريكية عن نوفمبر",
-      "org": "مكتب إحصاءات العمل الأمريكي",
-      "kind": "data",
-      "region": "الأمريكتان",
-      "time": "13:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
-      "source": "bls-jobs"
-    },
-    {
-      "date": "2025-12-18",
-      "title": "التضخم الأمريكي (مؤشر أسعار المستهلكين) عن نوفمبر",
-      "short": "التضخم الأمريكي عن نوفمبر",
-      "org": "مكتب إحصاءات العمل الأمريكي",
-      "kind": "data",
-      "region": "الأمريكتان",
-      "time": "13:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
-      "source": "bls-cpi"
-    },
-    {
       "date": "2026-01-09",
       "title": "تقرير الوظائف الأمريكي عن ديسمبر",
       "short": "الوظائف الأمريكية عن ديسمبر",
@@ -523,7 +501,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "13:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=50&y=2026",
       "source": "bls-jobs"
     },
     {
@@ -534,7 +512,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "13:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=10&y=2026",
       "source": "bls-cpi"
     },
     {
@@ -568,7 +546,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "13:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=50&y=2026",
       "source": "bls-jobs"
     },
     {
@@ -579,7 +557,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "13:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=10&y=2026",
       "source": "bls-cpi"
     },
     {
@@ -590,7 +568,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "13:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=50&y=2026",
       "source": "bls-jobs"
     },
     {
@@ -601,7 +579,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "12:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=10&y=2026",
       "source": "bls-cpi"
     },
     {
@@ -635,7 +613,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "12:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=50&y=2026",
       "source": "bls-jobs"
     },
     {
@@ -646,7 +624,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "12:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=10&y=2026",
       "source": "bls-cpi"
     },
     {
@@ -680,7 +658,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "12:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=50&y=2026",
       "source": "bls-jobs"
     },
     {
@@ -691,7 +669,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "12:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=10&y=2026",
       "source": "bls-cpi"
     },
     {
@@ -702,7 +680,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "12:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=50&y=2026",
       "source": "bls-jobs"
     },
     {
@@ -713,7 +691,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "12:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=10&y=2026",
       "source": "bls-cpi"
     },
     {
@@ -747,7 +725,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "12:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=50&y=2026",
       "source": "bls-jobs"
     },
     {
@@ -758,7 +736,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "12:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=10&y=2026",
       "source": "bls-cpi"
     },
     {
@@ -792,7 +770,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "12:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=50&y=2026",
       "source": "bls-jobs"
     },
     {
@@ -803,7 +781,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "12:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=10&y=2026",
       "source": "bls-cpi"
     },
     {
@@ -814,7 +792,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "12:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=50&y=2026",
       "source": "bls-jobs"
     },
     {
@@ -825,7 +803,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "12:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=10&y=2026",
       "source": "bls-cpi"
     },
     {
@@ -859,7 +837,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "12:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=50&y=2026",
       "source": "bls-jobs"
     },
     {
@@ -870,7 +848,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "12:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=10&y=2026",
       "source": "bls-cpi"
     },
     {
@@ -916,7 +894,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "13:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=50&y=2026",
       "source": "bls-jobs"
     },
     {
@@ -927,7 +905,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "13:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=10&y=2026",
       "source": "bls-cpi"
     },
     {
@@ -938,7 +916,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "13:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=50&y=2026",
       "source": "bls-jobs"
     },
     {
@@ -961,7 +939,7 @@
       "kind": "data",
       "region": "الأمريكتان",
       "time": "13:30 UTC",
-      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "url": "https://fred.stlouisfed.org/releases/calendar?rid=10&y=2026",
       "source": "bls-cpi"
     },
     {
