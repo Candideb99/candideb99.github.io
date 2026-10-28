@@ -7606,6 +7606,124 @@
           "noted": []
         }
       ]
+    },
+    "brent-rises-iran-washington-houthi-attacks-1c1e85": {
+      "at": "2026-10-28T06:09:58.238Z",
+      "title": "برنت يرتفع 1.4% إلى 115.47 دولار وسط ترقب قرار واشنطن بشأن إيران",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v40",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 37,
+            "checked": 37,
+            "supported": 32,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 3,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 1,
+              "field": "title",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "برنت يرتفع 1.4% إلى 115.47 دولار وسط ترقب قرار واشنطن بشأن إيران",
+              "quote": "خام برنت (futures, Yahoo Finance's continuous front-month series BZ=F): 111.21 US dollars per barrel at 05:42 GMT on Wednesday 28 October 2026 (delayed quote), up 1.80 or 1.65% from the previous close of 109.41.",
+              "source": "Yahoo Finance",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 3,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "صعدت العقود الآجلة لخام برنت 1.4% إلى 115.47 دولار للبرميل بحلول الساعة 04:35 بتوقيت غرينتش الأربعاء، وسط ترقب المتعاملين خطوة واشنطن التالية تجاه إيران وبعد هجمات حوثية جديدة على السعودية.",
+              "quote": "خام برنت (futures, Yahoo Finance's continuous front-month series BZ=F): 111.21 US dollars per barrel at 05:42 GMT on Wednesday 28 October 2026 (delayed quote), up 1.80 or 1.65% from the previous close of 109.41.",
+              "source": "Yahoo Finance",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 5,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "سعر برنت (04:35 غرينتش الأربعاء): 115.47 دولار للبرميل",
+              "quote": "خام برنت (futures, Yahoo Finance's continuous front-month series BZ=F): 111.21 US dollars per barrel at 05:42 GMT on Wednesday 28 October 2026 (delayed quote), up 1.80 or 1.65% from the previous close of 109.41.",
+              "source": "Yahoo Finance",
+              "sourceN": 4,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "uae-canada-sign-cepa-trade-deal-081371": {
+      "at": "2026-10-28T06:19:16.187Z",
+      "title": "الإمارات وكندا توقعان اتفاقية الشراكة الاقتصادية الشاملة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 23,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "almarai-enters-red-meat-market-hboor-6db774": {
+      "at": "2026-10-28T06:32:03.208Z",
+      "title": "«المراعي» تستثمر نحو نصف مليار ريال لدخول سوق اللحوم الحمراء",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v40",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 20,
+            "checked": 20,
+            "supported": 18,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

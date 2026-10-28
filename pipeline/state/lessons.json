@@ -217,10 +217,11 @@
     "aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210:f2007844",
     "bahri-contract-three-crude-tankers-saudi-9dd9dc:cd0bd264",
     "french-bond-yields-jump-after-protests-1b64ee:1cdf42b9",
-    "saudi-utility-tariffs-monthly-support-2027-748f63:862951ed"
+    "saudi-utility-tariffs-monthly-support-2027-748f63:862951ed",
+    "qatar-saudi-stock-markets-liquidity-test-6421f7:4bf6e2c6"
   ],
-  "version": 39,
-  "updatedAt": "2026-10-27T15:25:58.750Z",
+  "version": 40,
+  "updatedAt": "2026-10-28T05:52:18.463Z",
   "lessons": [
     {
       "id": "L1",
@@ -691,8 +692,28 @@
       "seen": 2,
       "createdAt": "2026-09-30T12:51:35.701Z",
       "lastSeen": "2026-10-22T17:17:20.500Z",
-      "status": "active",
-      "activatedAt": "2026-10-22T17:17:20.500Z"
+      "status": "retired",
+      "activatedAt": "2026-10-22T17:17:20.500Z",
+      "retiredAt": "2026-10-28T05:52:18.463Z",
+      "retiredWhy": "Duplicates the sharpened L4, which now covers keeping a ranking exactly as worded ('among the largest' is not 'the largest', no added 'only'). Retiring it frees a slot for the new internal-consistency"
+    },
+    {
+      "id": "L12",
+      "class": "internal",
+      "rule": "Before linking figures with 'because', 'as' or فقد, check the arithmetic: a total cannot fall more than all its parts, nor shares exceed 100%. If the source's numbers clash, keep every figure but drop the explanatory link and flag the clash to the desk.",
+      "example": {
+        "wrong": "وتراجعت الإيرادات التشغيلية للمجموعة 8.1% إلى 292.2 مليون ريال، وانخفضت الإيرادات المرتبطة بأنشطة التداول 14.6%؛ فقد خسر قطاع أسواق المال، المسؤول عن الإدراج والتداول، 12.5% من إيراداته، وخسر قطاع خدمات ما بعد التداول، من مقاصة وتسوية وحفظ، 7.2%.",
+        "quote": "وتراجعت الإيرادات التشغيلية للمجموعة 8.1% إلى 292.2 مليون ريال، وانخفضت الإيرادات المرتبطة بأنشطة التداول 14.6%؛ فقد خسر قطاع أسواق المال، المسؤول عن الإدراج والتداول، 12.5% من إيراداته، وخسر قطاع خدمات ما بعد التداول، من مقاصة وتسوية وحفظ، 7.2%.",
+        "source": "the story itself",
+        "slug": "qatar-saudi-stock-markets-liquidity-test-6421f7"
+      },
+      "evidence": [
+        "qatar-saudi-stock-markets-liquidity-test-6421f7:4bf6e2c6"
+      ],
+      "seen": 1,
+      "createdAt": "2026-10-28T05:52:18.463Z",
+      "lastSeen": "2026-10-28T05:52:18.463Z",
+      "status": "pending"
     }
   ],
   "model": "claude-cli/claude-opus-5-5",
@@ -1057,6 +1078,14 @@
         "sharpen L2 (+2)",
         "sharpen L6 (+2)",
         "reinforce L8 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-10-28T05:52:18.463Z",
+      "mistakes": 1,
+      "applied": [
+        "add L12 [internal] from 1 mistake(s)",
+        "retire L11"
       ]
     }
   ],

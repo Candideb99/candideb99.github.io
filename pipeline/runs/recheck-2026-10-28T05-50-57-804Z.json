@@ -1,0 +1,71 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-28T05:50:57.804Z",
+  "durationSec": 80,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "qatar-expands-active-asset-management-initiative-576de3",
+      "title": "«الدوحة للاستثمار» ترفع حجم مبادرة قطر لإدارة الأصول النشطة إلى 5 مليارات ريال",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 19,
+        "weak": 0,
+        "noEvidence": 2,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "qatar-saudi-stock-markets-liquidity-test-6421f7",
+      "title": "قيمة التداول اليومي أولى بالمتابعة من المؤشر في البورصتين القطرية والسعودية",
+      "kind": "analysis",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 49,
+        "checked": 49,
+        "supported": 36,
+        "weak": 6,
+        "noEvidence": 0,
+        "notFound": 7,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 2,
+    "failures": 0,
+    "promptTokens": 17353,
+    "completionTokens": 16055,
+    "cacheReadTokens": 0,
+    "costUsd": 0.4599,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 2
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[05:50:58] second look: 2 to read now (0 published pieces not yet read; 139 read clean before publication and left out of the audit sample)",
+    "[05:50:59] qatar-expands-active-asset-management-initiative-576de3:   source https://www.agbi.com/markets/2026/10/qatar-bulks-up-stock-market-fund-to-attract: subscribers-only; read from the copy saved at publication (fetched then)",
+    "[05:51:38] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1712 attempt=1 ms=38295",
+    "[05:51:38] qatar-expands-active-asset-management-initiative-576de3: 23 of 23 sentences checked · 19 supported · 4 without a source · 0 confirmed error(s)",
+    "[05:52:18] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2490 attempt=1 ms=79722",
+    "[05:52:18] qatar-saudi-stock-markets-liquidity-test-6421f7: 49 of 49 sentences checked · 36 supported · 7 without a source · 0 confirmed error(s)"
+  ]
+}
