@@ -536,11 +536,13 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
 
   // The check before publication (the owner, 2026-09-26: "check, repair, hold"; lib/precheck.mjs). The final text is
   // read against its sources by the blind fact-check; what the sources disprove is repaired and read again, at most
-  // three times. A story still wrong, or one the check could not read, is held: not published, tried again later.
+  // three times. A story still wrong, or one the check could not read, is held: not published, tried again later. Once
+  // clean, the sentences of its dek, lede and body that no source bears on are cut, but for a definition, a quote code
+  // finds or the wires' clause on a withheld term (2026-10-28); such a cut may take the story a tenth under the floor.
   const lessonsTag = control ? "control" : LESSONS_VERSION ? `v${LESSONS_VERSION}` : null;
-  const pre = await precheck({ draft, sources, log, validate: (d) => programmaticChecks(d, sources, { recentTitles, minWords }) });
+  const pre = await precheck({ draft, sources, log, validate: (d, { cut = false } = {}) => programmaticChecks(d, sources, { recentTitles, minWords: cut ? Math.floor(minWords * 0.9) : minWords }), unsourced: true });
   const found = pre.rounds.reduce((n, r) => n + r.found.length, 0);
-  entry.precheck = { ok: pre.ok, repairs: pre.repairs, rounds: pre.rounds.length, found };
+  entry.precheck = { ok: pre.ok, repairs: pre.repairs, rounds: pre.rounds.length, found, ...(pre.trimmed ? { unsourcedCut: pre.trimmed } : {}) };
   await checkpoint(pre.ok ? "checked" : "held", { finalDraft: pre.ok ? pre.draft ?? draft : draft, finalReview: review, precheck: entry.precheck });
   if (!pre.ok) {
     entry.outcome = `held by the check before publication: ${pre.held}`;
@@ -550,11 +552,12 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     await recordPrecheck({ slug: buildSlug(draft, story), title: draft.title, pre, writer: writerModel, lessons: lessonsTag, held: true });
     return { rejected: true, items };
   }
-  if (pre.repairs) {
+  if (pre.repairs || pre.trimmed) {
     // A repair rewrites the fields it was shown; a short story still carries no boxes.
     draft = short ? { ...pre.draft, keyFacts: [], whyItMatters: "", whyBasis: [] } : pre.draft;
     checks = programmaticChecks(draft, sources, { recentTitles, minWords });
-    log(`precheck "${draft.title}": ${found} proved error(s) repaired (${pre.repairs} repair(s)); the repaired text checked clean`);
+    const done = [pre.repairs ? `${found} proved error(s) repaired (${pre.repairs} repair(s)); the repaired text checked clean` : "", pre.trimmed ? `${pre.trimmed} sentence(s) no source bears on cut` : ""];
+    log(`precheck "${draft.title}": ${done.filter(Boolean).join("; ")}`);
   } else log(`precheck "${draft.title}": clean`);
 
   // The whole story and its sources' own lead photographs go to the picture desk: the cascade's place and the
@@ -579,6 +582,8 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
       revised,
       // "clean" or "repaired": the second look audits a sample of the clean ones and every repaired one.
       precheck: pre.repairs ? "repaired" : "clean",
+      // Sentences no source bears on, cut once the story read clean (lib/precheck.mjs trimUnsourced).
+      ...(pre.trimmed ? { unsourcedCut: pre.trimmed } : {}),
       // The verdict and summary are the second review's, written before the mend (2026-10-23).
       ...(entry.mendedAfterReview ? { mended: entry.mendedAfterReview } : {}),
       importance: story.importance,

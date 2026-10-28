@@ -132,7 +132,9 @@ function windowOf(from, to) {
       const passed = Object.values(precheckState.stories ?? {}).filter((e) => within(e.at, from, to));
       const held = (precheckState.held ?? []).filter((e) => within(e.at, from, to));
       const errors = (list) => list.reduce((n, e) => n + (e.rounds?.[0]?.found?.length ?? 0), 0);
-      return { checked: passed.length + held.length, clean: passed.filter((e) => !e.repairs).length, repaired: passed.filter((e) => e.repairs).length, held: held.length, errorsFound: errors(passed) + errors(held), heldTitles: held.map((e) => e.title).slice(0, 5) };
+      // Sentences no source bears on, cut once a news story read clean (lib/precheck.mjs, since 2026-10-28): not errors.
+      const unsourcedCut = passed.reduce((n, e) => n + (e.rounds?.at(-1)?.unsourced?.removed?.length ?? 0), 0);
+      return { checked: passed.length + held.length, clean: passed.filter((e) => !e.repairs).length, repaired: passed.filter((e) => e.repairs).length, held: held.length, errorsFound: errors(passed) + errors(held), unsourcedCut, heldTitles: held.map((e) => e.title).slice(0, 5) };
     })(),
     outcomes: (() => {
       // Fixed and verified: an error repaired before publication and read clean again; a correction printed and, when
@@ -195,6 +197,7 @@ const md = [
   `| **flagged, not fixed**: stories held · corrections left unresolved · corrections not read again | ${week.outcomes.heldBeforePublication} · ${week.outcomes.correctionsStuck} · ${week.outcomes.correctionsNotVerifiedYet} | ${before.outcomes.heldBeforePublication} · ${before.outcomes.correctionsStuck} · ${before.outcomes.correctionsNotVerifiedYet} |`,
   `| checked before publication: stories · clean · repaired · held | ${week.precheck.checked} · ${week.precheck.clean} · ${week.precheck.repaired} · ${week.precheck.held} | ${before.precheck.checked} · ${before.precheck.clean} · ${before.precheck.repaired} · ${before.precheck.held} |`,
   `| … proved errors caught before readers saw them | ${week.precheck.errorsFound} | ${before.precheck.errorsFound} |`,
+  `| … sentences no source bears on, cut before readers saw them | ${week.precheck.unsourcedCut} | ${before.precheck.unsourcedCut} |`,
   `| second look: stories read · clean · corrected · overruled | ${week.secondLook.read} · ${week.secondLook.clean} · ${week.secondLook.corrected} · ${week.secondLook.stands} | ${before.secondLook.read} · ${before.secondLook.clean} · ${before.secondLook.corrected} · ${before.secondLook.stands} |`,
   `| confirmed errors per story read | ${week.secondLook.confirmedPerStory ?? "–"}${arrow(week.secondLook.confirmedPerStory, before.secondLook.confirmedPerStory)} | ${before.secondLook.confirmedPerStory ?? "–"} |`,
   `| … Claude's stories written with the lessons (read) | ${week.secondLook.withLessons.confirmedPerStory ?? "–"} (${week.secondLook.withLessons.read}) | ${before.secondLook.withLessons.confirmedPerStory ?? "–"} (${before.secondLook.withLessons.read}) |`,

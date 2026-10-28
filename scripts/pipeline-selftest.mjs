@@ -162,6 +162,93 @@ for (const [name, checks] of [
   check("a repair that brings a new error is checked and repaired again", [r.ok, r.repairs, v.calls], [true, 2, 3]);
 }
 
+// 1b. The sentences of a clean news story that no source bears on (2026-10-28): cut, but for a definition, a quote code
+// finds and the wires' one clause on a withheld term; «لماذا يهمّ» never read, the lede never emptied, nothing held.
+{
+  const nf = (id, field, sentence) => ({ id, field, verdict: "not_found", status: "not_found", sentence, quote: "" });
+  const judge = (answers) => {
+    const fn = async ({ sentences }) => {
+      fn.asked = sentences.map((c) => c.id);
+      return { answers };
+    };
+    return fn;
+  };
+  const story = {
+    title: "عنوان",
+    subtitle: "وصف.",
+    lede: "رفع البنك الفائدة إلى 5%.",
+    whyItMatters: "قد يبطئ ذلك الإقراض.",
+    keyFacts: [],
+    body: "وقال المحافظ إن القرار يكبح التضخم. والخطوة التالية خفض الدعم.\n\nوتوصف السوق بالهابطة حين يتراجع المؤشر 20%.\n\nولم يكشف البنك موعد القرار المقبل. ولم يكشف البنك حجم السيولة.",
+  };
+  const src = [{ sourceName: "رويترز", title: "Rate decision", url: "https://example.com/a", text: "The bank raised its policy rate to 5%. The governor said the decision curbs inflation." }];
+  const checks = [
+    { id: 1, field: "lede", verdict: "supported", status: "supported", sentence: story.lede, quote: "The bank raised its policy rate to 5%.", source: 1 },
+    nf(2, "whyItMatters", "قد يبطئ ذلك الإقراض."),
+    nf(3, "body", "والخطوة التالية خفض الدعم."),
+    nf(4, "body", "وتوصف السوق بالهابطة حين يتراجع المؤشر 20%."),
+    nf(5, "body", "ولم يكشف البنك موعد القرار المقبل."),
+    nf(6, "body", "ولم يكشف البنك حجم السيولة."),
+    nf(7, "body", "وقال المحافظ إن القرار يكبح التضخم."),
+  ];
+  const verify = async () => ({ counts: { checked: checks.length }, checks });
+  const verdicts = [
+    { id: 3, verdict: "unsourced" },
+    { id: 4, verdict: "definition" },
+    { id: 5, verdict: "withheld" },
+    { id: 6, verdict: "withheld" },
+    { id: 7, verdict: "sourced", source: 1, quote: "The governor said the decision curbs inflation." },
+  ];
+  const j = judge(verdicts);
+  const r = await precheck({ draft: story, sources: src, verify, judgeWith: j, unsourced: true });
+  check("sentences no source bears on: «لماذا يهمّ» is never read", j.asked, [3, 4, 5, 6, 7]);
+  check(
+    "an unsourced claim and a second withheld term are cut; a definition, a found quote and one withheld term stay",
+    [r.ok, r.trimmed, r.draft.body],
+    [true, 2, "وقال المحافظ إن القرار يكبح التضخم.\n\nوتوصف السوق بالهابطة حين يتراجع المؤشر 20%.\n\nولم يكشف البنك موعد القرار المقبل."],
+  );
+  check("a cut sentence leaves the evidence map with it", r.checks.map((c) => c.id), [1, 2, 4, 5, 7]);
+  const unfound = await precheck({ draft: story, sources: src, verify, judgeWith: judge([...verdicts.slice(0, 4), { id: 7, verdict: "sourced", source: 1, quote: "The governor said the decision will cut prices next year." }]), unsourced: true });
+  check("support counts only on a quote code finds", unfound.draft.body.includes("وقال المحافظ"), false);
+  const off = judge(verdicts);
+  const hub = await precheck({ draft: story, sources: src, verify, judgeWith: off });
+  check("an analysis is not read for it (unsourced off)", [hub.trimmed, hub.draft === story, off.asked ?? null], [0, true, null]);
+  const floor = await precheck({ draft: story, sources: src, verify, judgeWith: judge(verdicts), unsourced: true, validate: () => ({ ok: false, issues: ["under the floor"] }) });
+  check("a cut the newsroom's own checks refuse leaves the story as written", [floor.ok, floor.trimmed, floor.draft === story, /under the floor/.test(floor.rounds[0].unsourced.refused)], [true, 0, true, true]);
+  const told = await precheck({ draft: story, sources: src, verify, judgeWith: judge(verdicts), unsourced: true, validate: (d, { cut = false } = {}) => ({ ok: cut, issues: cut ? [] : ["under the floor"] }) });
+  check("the checks are told the draft is a cut (the floor gives it a tenth)", told.trimmed, 2);
+  const failing = await precheck({ draft: story, sources: src, verify, judgeWith: async () => { throw new Error("Claude failed for role checker"); }, unsourced: true });
+  check("a reading that cannot run cuts nothing and holds nothing", [failing.ok, failing.trimmed, failing.draft === story], [true, 0, true]);
+  const quota = Object.assign(new Error("out of credits"), { meta: { quota: true } });
+  let stopped = false;
+  try {
+    await precheck({ draft: story, sources: src, verify, judgeWith: async () => { throw quota; }, unsourced: true });
+  } catch (error) {
+    stopped = error === quota;
+  }
+  check("quota exhaustion in that reading stops the round", stopped, true);
+  let calls = 0;
+  const afterRepair = async () => (calls++ === 0 ? { counts: {}, checks: [{ id: 3, field: "body", class: "figure", status: "confirmed", verdict: "contradicted", sentence: "x", quote: "y", correction: "fix" }] } : { counts: {}, checks: [nf(3, "body", "والخطوة التالية خفض الدعم.")] });
+  const repaired = await precheck({ draft: story, sources: src, verify: afterRepair, repairWith: repairer(true), judgeWith: judge([{ id: 3, verdict: "unsourced" }]), unsourced: true });
+  check("after a repair, the repaired text is the one cut", [repaired.repairs, repaired.trimmed, repaired.draft.body.includes("(repaired)"), repaired.draft.body.includes("والخطوة التالية")], [1, 1, true, false]);
+}
+{
+  const judgeAll = (verdict) => async ({ sentences }) => ({ answers: sentences.map((c) => ({ id: c.id, verdict })) });
+  const lede = { title: "عنوان", lede: "تقول المصادر إن البنك سيرفع الفائدة.", body: "نص أول. نص ثان.", keyFacts: [] };
+  const one = await precheck({ draft: lede, sources, verify: async () => ({ counts: {}, checks: [{ id: 2, field: "lede", verdict: "not_found", status: "not_found", sentence: lede.lede, quote: "" }] }), judgeWith: judgeAll("unsourced"), unsourced: true });
+  check("the lede's only sentence is never cut", [one.trimmed, one.draft.lede, one.rounds[0].unsourced.kept[0]?.reason], [0, lede.lede, "the only sentence of the lede"]);
+  const headed = { title: "عنوان", lede: "رفع البنك الفائدة.", body: "نص أول.\n\n## ما التالي\n\nوالخطوة التالية خفض الدعم.", keyFacts: [] };
+  const orphan = await precheck({ draft: headed, sources, verify: async () => ({ counts: {}, checks: [{ id: 4, field: "body", verdict: "not_found", status: "not_found", sentence: "والخطوة التالية خفض الدعم.", quote: "" }] }), judgeWith: judgeAll("unsourced"), unsourced: true });
+  check("a cut that would leave a subhead with nothing under it leaves the story as written", [orphan.trimmed, orphan.draft === headed], [0, true]);
+  const v = verifier([[]]);
+  const plain = Object.assign(async () => {
+    plain.calls += 1;
+    return { answers: [] };
+  }, { calls: 0 });
+  const clean = await precheck({ draft, sources, verify: v, judgeWith: plain, unsourced: true });
+  check("a story every source bears on is not read again", [clean.ok, clean.trimmed, v.calls, plain.calls], [true, 0, 1, 0]);
+}
+
 // 2. A story is not written twice: a retry of the same event, or the same event from another outlet.
 check("the same headline again (a retried round) is caught", repeatsRecent("ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول للإشراف على القطاع", ["ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول للإشراف على القطاع"]) !== null, true);
 check("the same event under another headline is caught", repeatsRecent("ترامب يعلن إنشاء «قوة للذكاء الاصطناعي» على غرار «قوة الفضاء»", ["ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول للإشراف على القطاع"]) !== null, true);
