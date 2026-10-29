@@ -281,6 +281,12 @@ check("a different event is not", repeatsRecent("السعودية تعيد تش�
 check("one oil move under two names is still one event", repeatsRecent("برنت يقفز فوق 108 دولارات بعد إغلاق خط الأنابيب السعودي", ["النفط يقفز فوق 107 دولارات مع إغلاق خط الأنابيب السعودي"]) !== null, true);
 check("two subjects sharing only a running war are two events", repeatsRecent("برنت عند أعلى مستوى في 5 أشهر فوق 111 دولاراً مع هجمات الحوثيين على السعودية", ["السعودية تؤجل مؤتمر مبادرة مستقبل الاستثمار إلى 2027 مع تصاعد هجمات الحوثيين"]), null);
 check("two institutions' different forecasts are two events", repeatsRecent("صندوق النقد يتوقع انكماش اقتصادات الخليج 4.8% في 2026 قبل تعافيها 9.1% في 2027", ["البنك الدولي يتوقع انكماش اقتصادات الخليج 4.3% هذا العام"]), null);
+// The earnings season of October 2026: Etisalat's results skipped twice and Bahri's once as repeats of Aldar's.
+check("two companies' results are two events; one company's twice is one", [
+  repeatsRecent("أرباح «اتصالات» ترتفع 46% إلى 17.2 مليار درهم في تسعة أشهر", ["أرباح الدار ترتفع 19% في 9 أشهر رغم تراجع مبيعاتها في الإمارات"]),
+  repeatsRecent("أرباح البحري ترتفع 587% إلى 9.98 مليار ريال في 9 أشهر", ["أرباح الدار ترتفع 19% في 9 أشهر رغم تراجع مبيعاتها في الإمارات"]),
+  Boolean(repeatsRecent("أرباح «الدار» العقارية ترتفع 19% في تسعة أشهر", ["أرباح الدار ترتفع 19% في 9 أشهر رغم تراجع مبيعاتها في الإمارات"])),
+], [null, null, true]);
 // 2026-10-29: Egypt's first rate rise since March 2024 was skipped as Pakistan's.
 check("two countries' central banks are two events; one country's twice is one", [repeatsRecent("المركزي المصري يرفع الفائدة 1% في أول زيادة منذ مارس 2024", ["المركزي الباكستاني يرفع الفائدة إلى 12% في أول زيادة منذ أبريل"]), Boolean(repeatsRecent("المركزي المصري يرفع الفائدة 1% لأول مرة منذ مارس 2024 لكبح التضخم", ["المركزي المصري يرفع الفائدة 1% في أول زيادة منذ مارس 2024"]))], [null, true]);
 
@@ -630,6 +636,10 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("synthesis premises need real source numbers", refuses([{ fact: "الدين مرتفع", source: 2 }]), true);
   check("a premise cannot borrow a figure absent from its source", refuses([{ fact: "بلغ الدين 60% من الناتج المحلي", source: 1 }]), true);
   check("a sourced premise is accepted for semantic review", refuses([{ fact: "بلغ الدين 81.9% من الناتج المحلي", source: 1 }]), false);
+  // 2026-10-29: eleven drafts in six runs were refused and written again over the count alone.
+  const six = { why_basis: Array.from({ length: 6 }, () => ({ fact: "بلغ الدين 81.9% من الناتج المحلي", source: 1 })) };
+  validateWhyBasis(six, sources);
+  check("more than four premises keep the first four; none is still refused", [six.why_basis.length, refuses([])], [4, true]);
 }
 
 // News depth (the owner, 2026-10-18: "low quality articles (also too short)"): a news story is a developed report of at
@@ -875,6 +885,10 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const marked = readArticleHtml(scroll(true), "https://aawsat.com/node/1");
   check("an appended story is never read as the page's own; the block marked first is", [marked.text.includes("عضوتان"), marked.text.includes("صندوق النقد")], [true, false]);
   check("without the publisher's mark nothing is removed", readArticleHtml(scroll(false), "https://aawsat.com/node/1").text.includes("صندوق النقد"), true);
+  // 2026-10-29: the Federal Register's notice to robots was read as a source.
+  const wall = `<html><head><title>Notice</title></head><body><article><p>${"Due to aggressive automated scraping of FederalRegister.gov and eCFR.gov, programmatic access to these sites is limited to access to our extensive developer APIs. ".repeat(4)}</p></article></body></html>`;
+  const blockedRead = readArticleHtml(wall, "https://www.federalregister.gov/documents/x");
+  check("a notice refusing robots is no source text", [blockedRead.ok, blockedRead.reason], [false, "blocked"]);
 
   // A Turkish or Persian source's figures stand as its language writes them (the Audi story's notes and writer failed three
   // times each over «4,2 milyar» and «4 bin 500»); a Persian date is not read as a decimal.

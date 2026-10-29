@@ -94,7 +94,7 @@ const SCHEMA_TEXT = `{
   "body": "The rest of the article in Markdown, with blank lines between coherent paragraphs, developed as NEWS DEPTH requires: the driver, the numbers in perspective, the reaction, the background and what comes next, each from the sources. No fixed paragraph count or one-provision-per-paragraph template. Lede plus body 350-650 words; under ${NEWS_FLOOR} the story is refused. Never pad or invent. May include one or two '## ' subheads if the piece is long.",
   "key_facts": [{"label": "short Arabic label (2-5 words) naming what is measured, where and when, e.g. الوظائف المباشرة في المصانع الثلاثة; no source in brackets", "value": "a FIGURE exactly as sourced, with its unit, e.g. 4,000 or 1.7 مليار جنيه or 2.25%; never a name, a place, a date or a weekday"}],
   "why_it_matters": "One or two fluent Arabic sentences in Khazendar's own voice: the wider economic significance, decisive constraint or trade-off inferred from supplied facts. No attributed analyst recap, vague reference, generic moral or invented outcome. Preserve the inference's conditions. Follow WHY IT MATTERS in the house brief; do not repeat the body's completed conclusion just to fill a second sentence.",
-  "why_basis": [{"fact": "one concise reported premise underpinning the synthesis, not a new inference", "source": 1}],
+  "why_basis": [{"fact": "one to four entries, each one concise reported premise underpinning the synthesis, not a new inference", "source": 1}],
   "tags": ["3-5 Arabic tags: institutions, countries, sectors, indicators"],
   "regions": ["1-3 region names, only from: ${REGION_NAMES}"],
   "image_queries": ["2-3 short English search terms (2-4 words each) naming a concrete subject that exists as a photo on Wikimedia Commons. When named people are the news itself (a summit, talks, a statement, a head of state's or central banker's own decision), the FIRST term is their full names, together when there are two (e.g. 'Donald Trump Xi Jinping', 'Jerome Powell'): the desks illustrate such a story with a photo of those people, from an earlier occasion if need be. When the news is a thing an official announced (sanctions on an airline, a verdict on a product, a rule for banks), the first term is that thing ('Iran Air Airbus', 'iPhone in use', 'bank tellers'), never the official. Otherwise, and for the other terms: what the story says, as a camera sees it: the people it is about at work, a port, a plant, a product in use, a commodity (e.g. 'traders watching screens', 'Ras Laffan', 'oil tanker', 'office staff desks'); never a headquarters, a branch, a building's front, a sign, a logo, a skyline or a phone of app icons, which say whose or where and never what happened. A sector's exports or imports: its best-known goods being packed, loaded or sold ('orange packing Egypt', 'citrus fruit crates', 'container ship Port Said'), never a factory of a product the story does not name; no adjectives, no abstract concepts"],
@@ -331,8 +331,15 @@ ${substantial ? "The evidence here is substantial: aim for 450-650 words. " : ""
 
 /** Premises, not private reasoning: a small source-indexed audit trail for the synthesis. */
 export function validateWhyBasis(d, sources) {
-  const basis = d.why_basis ?? d.whyBasis;
-  if (!Array.isArray(basis) || basis.length < 1 || basis.length > 4) throw new Error("why_basis needs one to four reported premises with source numbers");
+  let basis = d.why_basis ?? d.whyBasis;
+  if (!Array.isArray(basis) || basis.length < 1) throw new Error(`why_basis needs one to four reported premises with source numbers (${Array.isArray(basis) ? "an empty list" : "none"} given)`);
+  // More than four is a fuller audit trail, not a fault: the first four are kept (2026-10-29: in six runs eleven drafts,
+  // first drafts and revisions alike, were refused and written again over this count alone; the schema had never said four).
+  if (basis.length > 4) {
+    basis = basis.slice(0, 4);
+    if (d.why_basis) d.why_basis = basis;
+    else d.whyBasis = basis;
+  }
   for (const p of basis) {
     const source = sources[Number(p?.source) - 1];
     const fact = String(p?.fact ?? "").trim();

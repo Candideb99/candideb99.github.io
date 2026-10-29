@@ -1602,7 +1602,16 @@ function runReports() {
         log(`report ${r.id}: «${edition.label}» already told in ${covered.slug}`);
         continue;
       }
-      const { sources } = await readEdition(r, edition, { log });
+      const { sources, pending } = await readEdition(r, edition, { log });
+      // A release listed before its document is posted waits without spending a try, while it is still news (its period
+      // ended within 45 days): GASTAT listed September's trade on 27 October with no document, the two tries went on two
+      // days of waiting, and the edition was left for good (2026-10-29).
+      if (!sources.length && pending && edition.key >= monthKey(new Date(Date.now() - 45 * 86400000))) {
+        mark("retry", { waiting: true });
+        log(`report ${r.id}: «${edition.label}» is listed without its document; it waits`);
+        await save();
+        continue;
+      }
       if (!sources.length) {
         mark("retry", { tries: tries + 1 });
         report.push({ headline: `${r.nameEn} ${edition.label}`, section: r.section, outcome: "skipped: nothing readable in the report's pages" });

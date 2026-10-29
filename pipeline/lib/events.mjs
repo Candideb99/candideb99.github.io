@@ -19,12 +19,22 @@ const causeWords = (title) => {
   const at = text.search(CAUSE);
   return at < 0 ? new Set() : distinctiveWords(text.slice(at));
 };
-/** A headline's figures, years left out (a forecast for 2027 is not a figure of the event). */
-const figuresOf = (title) => new Set((normalizeDigits(String(title ?? "")).match(/\d+(?:[.,]\d+)?/g) ?? []).filter((n) => !/^(?:19|20)\d\d$/.test(n)));
-/** A headline's leading subject, its first word; oil goes by several names («برنت يقفز…»، «النفط يقفز…»). */
+/**
+ * A headline's figures, years left out (a forecast for 2027 is not a figure of the event), and a period's length too:
+ * «في 9 أشهر» is in every nine-month result of the season, and Bahri's 587% shared it with Aldar's 19% (2026-10-28).
+ */
+const figuresOf = (title) => new Set((normalizeDigits(String(title ?? "")).match(/\d+(?:[.,]\d+)?(?!\d|[.,]\d)(?!\s*(?:أشهر|شهراً|شهرا|شهور|أسابيع|أسبوعاً|أيام|يوماً|سنوات|أعوام|عاماً))/g) ?? []).filter((n) => !/^(?:19|20)\d\d$/.test(n)));
+/**
+ * A headline's leading subject, its first word; oil goes by several names («برنت يقفز…»، «النفط يقفز…»). A word that
+ * names the kind of story, not its actor, is passed over for the next («أرباح «اتصالات» ترتفع…» is Etisalat's, «أرباح
+ * الدار ترتفع…» Aldar's): in the earnings season of October 2026 Etisalat's results were skipped twice and Bahri's once
+ * as repeats of Aldar's, each led by «أرباح».
+ */
 const SUBJECT_ALIAS = new Map([["برنت", "النفط"], ["خام", "النفط"], ["الخام", "النفط"]]);
+const KIND_WORDS = new Set(["أرباح", "إيرادات", "صافي", "خسائر", "مبيعات", "نتائج", "توزيعات", "سهم", "أسهم", "طرح", "تصنيف", "ديون", "صادرات", "واردات", "عائد", "عوائد"]);
 const subjectOf = (title) => {
-  const first = String(title ?? "").replace(/[^\p{L}\p{N}\s]/gu, " ").split(/\s+/).find(Boolean) ?? "";
+  const words = String(title ?? "").replace(/[^\p{L}\p{N}\s]/gu, " ").split(/\s+/).filter(Boolean);
+  const first = words.find((w) => !KIND_WORDS.has(w)) ?? words[0] ?? "";
   return SUBJECT_ALIAS.get(first) ?? first;
 };
 
@@ -53,7 +63,8 @@ export function sameEvent(a, b) {
     const fb = figuresOf(b);
     if (fa.size && fb.size && ![...fa].some((n) => fb.has(n))) return false;
   }
-  const running = sameSubject ? new Set() : new Set([...causeWords(a), ...causeWords(b)]);
+  // Two subjects never share an event through their cause clause, nor through the word naming the kind of story.
+  const running = sameSubject ? new Set() : new Set([...causeWords(a), ...causeWords(b), ...KIND_WORDS]);
   let shared = 0;
   for (const w of x) if (y.has(w) && !running.has(w)) shared += 1;
   return shared >= 3 && shared / Math.max(1, Math.min(x.size, y.size)) >= 0.5;

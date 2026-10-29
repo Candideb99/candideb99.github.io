@@ -41,8 +41,10 @@ export function programmaticChecks(draft, sources, { recentTitles = [], newsTitl
 
   const ratio = arabicRatio(prose);
   if (ratio < 0.88) issues.push(`نسبة النص العربي منخفضة (${(ratio * 100).toFixed(0)}%): ترجم كل الجمل والاقتباسات الأجنبية إلى العربية.`);
+  // Names a company writes only in Latin letters stay so in a headline (2026-10-29: Saudi Telecom's nine-month record,
+  // «stc تحقق إيرادات قياسية…», was refused after revision for «stc», its own brand; Etisalat's is «e&»).
 
-  const ALLOWED_LATIN = /^(S&P|OPEC\+?|IMF|ECB|GDP|AI|iPhone|Nvidia|OpenAI|Meta|Google|Apple|Amazon|Microsoft|Tesla|Brent|WTI|Fed|ETF|IPO|EU|UAE|US|UK|G7|G20|CEO|NYSE|Nasdaq|Dow|FTSE|DAX|Bitcoin|X|JLR|BMW|GM|IBM|LNG|OECD|WTO|BIS|SEC|EIA|AfD|SPD|CDU|SAMA|ADNOC|PIF|QIA|KIA|CNBC|BBC|CNN|ABC|NBC|CBS|AP|AFP|Reuters|Bloomberg|Eurostat|Destatis|Sentix|ZEW|Ifo|PMI|CPI|PPI|ISM|OPEC)$/i;
+  const ALLOWED_LATIN = /^(S&P|OPEC\+?|IMF|ECB|GDP|AI|iPhone|Nvidia|OpenAI|Meta|Google|Apple|Amazon|Microsoft|Tesla|Brent|WTI|Fed|ETF|IPO|EU|UAE|US|UK|G7|G20|CEO|NYSE|Nasdaq|Dow|FTSE|DAX|Bitcoin|X|JLR|BMW|GM|IBM|LNG|OECD|WTO|BIS|SEC|EIA|AfD|SPD|CDU|SAMA|ADNOC|PIF|QIA|KIA|CNBC|BBC|CNN|ABC|NBC|CBS|AP|AFP|Reuters|Bloomberg|Eurostat|Destatis|Sentix|ZEW|Ifo|PMI|CPI|PPI|ISM|OPEC|stc|e&)$/i;
   // Latin outside parentheses (parenthesised originals of names are allowed once).
   const outsideParens = prose.replace(/\([^)]*\)/g, " ");
   const latinAll = [...new Set((outsideParens.match(/\b[A-Za-z][A-Za-z'&.-]{2,}\b/g) ?? []).filter((w) => !ALLOWED_LATIN.test(w)))];

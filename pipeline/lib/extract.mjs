@@ -66,6 +66,7 @@ export async function allowedByRobots(url) {
 }
 
 const BOILERPLATE = /(cookie|subscribe|newsletter|sign up|advertisement|read more:|related:|follow us|share this|©|all rights reserved)/i;
+const BLOCK_NOTICE = /automated scraping|programmatic access|complete the captcha|verify (?:that )?you are (?:a )?human|unusual traffic from your|are you a robot|checking your browser before|enable javascript and cookies to continue|request unsuccessful\. incapsula/i;
 
 function paragraphsFallback(html) {
   return [...html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)]
@@ -317,6 +318,13 @@ export function readArticleHtml(html, url, { maxChars = 9000, log = () => {} } =
     result.title = title;
     if (subscribersOnly(html)) {
       result.reason = "subscribers-only";
+      return result;
+    }
+    // A page that says it refuses robots is not an article, however long its notice (2026-10-29: the Federal Register
+    // answers «Due to aggressive automated scraping of FederalRegister.gov and eCFR.gov, programmatic access…» in 825
+    // characters, and it was read as a source). Only a short page is judged so: a report about captchas is not a wall.
+    if (text.length < 2000 && BLOCK_NOTICE.test(text)) {
+      result.reason = "blocked";
       return result;
     }
     result.text = text.slice(0, maxChars);

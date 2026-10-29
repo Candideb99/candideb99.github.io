@@ -367,6 +367,8 @@ async function readRelease(report, edition, { log = () => {} } = {}) {
   const pages = pdfUrl ? await pdfPages(pdfUrl, log) : null;
   const text = (pages ?? []).map((p, i) => `[p.${i + 1}] ${p}`).join("\n").slice(0, 12000);
   log(`release ${report.id}: ${edition.label} ${pdfUrl ? `read (${pages ? `${pages.length} pages, ${text.length} chars` : "PDF unread"})` : "has no document yet"}`);
+  // Listed before its document is posted: the edition waits, which is not a failed read (run.mjs spends no try on it).
+  if (!pdfUrl && html.ok) return { sources: [], pdfUrl, pending: true };
   if (text.length < 400) return { sources: [], pdfUrl };
   const common = { sourceName: report.publisher, sourceNameEn: report.publisherEn, lang: "en", kind: "official", reliability: 3, publishedAt: null, summary: "" };
   const sources = [{ ...common, title: `${report.nameEn} — ${edition.label}`, url: pdfUrl, text }];
