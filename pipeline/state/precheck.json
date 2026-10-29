@@ -8412,6 +8412,102 @@
           "noted": []
         }
       ]
+    },
+    "us-economy-grows-third-quarter-ai-investment-fe5e9f": {
+      "at": "2026-10-29T18:44:42.285Z",
+      "title": "الاقتصاد الأمريكي ينمو 3.4% في الربع الثالث بأسرع وتيرة منذ عام",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v42",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 25,
+            "weak": 5,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "ecb-holds-deposit-rate-energy-inflation-risks-4145da": {
+      "at": "2026-10-29T18:56:54.163Z",
+      "title": "المركزي الأوروبي يثبّت الفائدة عند 2.5% محذراً من تصاعد مخاطر التضخم",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v42",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 28,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "qatarenergy-woodside-louisiana-lng-20-year-deal-8e5fed": {
+      "at": "2026-10-29T19:11:05.570Z",
+      "title": "قطر للطاقة تشتري 3 ملايين طن سنوياً من الغاز المسال الأمريكي لعقدين",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 27,
+            "weak": 0,
+            "noEvidence": 2,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 18,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وقال وزير الدولة لشؤون الطاقة والرئيس التنفيذي لقطر للطاقة سعد شريدة الكعبي إن الكميات الإضافية تجعل الشركة أكبر مشترٍ للغاز الطبيعي المسال الأمريكي، وتعزز قدرتها على تلبية الطلب العالمي المتزايد.",
+              "quote": "Anlaşmayla tedarik edilecek ilave LNG miktarının Katar’ı ABD menşeli LNG’nin en büyük alıcılarından biri haline getireceğini vurgulayan Kaabi, bunun aynı zamanda artan küresel LNG talebini karşılamada ülkesinin konumunu güçlendireceğini ifade etti.",
+              "source": "Bloomberg HT",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []

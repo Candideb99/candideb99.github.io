@@ -13380,6 +13380,122 @@
         }
       ],
       "outcome": "listed"
+    },
+    "microsoft-revenue-record-azure-growth-3a126f": {
+      "at": "2026-10-29T18:31:40.891Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v42",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-29T10:41:22.267Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 38,
+        "checked": 38,
+        "supported": 29,
+        "weak": 9,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "إيرادات مايكروسوفت ترتفع 19% إلى 92.3 مليار دولار بدعم نمو أزور 48%",
+          "quote": "The office software giant’s growth was fueled by its Azure cloud computing division, which grew by 48% in the September quarter."
+        },
+        {
+          "sentence": "التدفق النقدي الحر لمايكروسوفت يتراجع 27% لكنه يبقى موجباً رغم إنفاق رأسمالي بلغ 45.2 مليار دولار، بخلاف ألفابت التي سجلت تدفقاً سالباً تجاوز 9 مليارات دولار",
+          "quote": "Free cash flow for the fiscal first quarter declined 27% to $18.63 billion. Cloud rival Alphabet reported more than $9 billion in negative free cash flow in the quarter after Meta said last week its cash flow turned negative for the first time."
+        },
+        {
+          "sentence": "أعلنت مايكروسوفت الأربعاء أن إيراداتها ارتفعت 19% إلى 92.3 مليار دولار في الربع المنتهي في 30 سبتمبر، الأول من سنتها المالية 2027، مقابل 77.7 مليار قبل عام، مسجلة رقماً قياسياً لإيراداتها الفصلية بدعم نمو أزور 48%.",
+          "quote": "Buna göre, şirketin geliri temmuz-eylülde geçen yılın aynı dönemine kıyasla yüzde 19 artarak 92,3 milyar dolara ulaştı. Microsoft, geçen yılın aynı döneminde 77,7 milyar dolar gelir elde etmişti."
+        },
+        {
+          "sentence": "ومع إنفاق مخطط يتجاوز 50 مليار دولار في الربع المقبل بعد تراجع التدفق الحر 27%، يضيق هامش التمويل الذاتي ما لم تتحول الأصول قصيرة العمر سريعاً إلى إيرادات، وإن كانت الشركة تتوقع بقاء التدفق موجباً هذه السنة المالية.",
+          "quote": "Microsoft will continue to generate free cash flow through the 2027 fiscal year, but the company will access additional sources of funding when it's attractive to do so, Hood said."
+        },
+        {
+          "sentence": "بلغت ربحية السهم المعدلة 4.89 دولار مقابل 4.73 دولار في إجماع LSEG، وهي تستثني خسارة بنحو 200 مليون دولار على استثمار مايكروسوفت في OpenAI.",
+          "quote": "Here's how the company fared relative to LSEG consensus:Earnings per share: $4.89 adjusted vs. $4.73 expected"
+        }
+      ],
+      "outcome": "clean"
+    },
+    "samsung-raises-capex-despite-investor-disappointment-55895a": {
+      "at": "2026-10-29T18:31:40.922Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v41",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-29T09:17:40.366Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 39,
+        "checked": 39,
+        "supported": 33,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 3,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "لكنها جاءت دون متوسط تقديرات المحللين البالغ 107.3 تريليون وون، وفق بيانات مجموعة بورصات لندن «إل إس إي جي».",
+          "quote": "وجاء أداء وحدة الرقائق أقل بقليل من متوسط تقديرات المحللين البالغ 108.5 تريليون وون.",
+          "source": "Asharq Business"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "ورأى لي مين هي، المحلل في شركة «بي إن كيه إنفستمنت آند سيكيوريتيز»، أن «إس كي هاينكس» تجاوزت توقعات السوق وكشفت عن خطط لإعادة نحو 75 مليار دولار للمساهمين هذا العام، بينما لم تغيّر «سامسونغ» توجيهاتها السابقة جوهرياً.",
+          "quote": "وقدمت \"إس كيه هاينكس\" يوم الأربعاء تقرير أرباح قوياً للغاية، مدعوماً بخطط لإعادة نحو 45 مليار دولار إضافية إلى المساهمين.",
+          "source": "Asharq Business"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وأغلق سهم «سامسونغ» الخميس منخفضاً 4.13% بعدما بلغ هبوطه خلال الجلسة 6.61%، في حين صعد سهم «إس كي هاينكس» 2.62%.",
+          "quote": "South Korean tech giant Samsung Electronics closed 4.13% lower on Thursday, paring earlier losses of as much as 5%, after the company reported third-quarter operating profit broadly in line with analysts' estimates.",
+          "source": "CNBC"
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "رفعت «سامسونغ إلكترونيكس» الخميس خطط إنفاقها الرأسمالي لهذا العام بنحو 60% إلى 84.4 تريليون وون (63 مليار دولار)، بعدما دفع الطلب المتواصل على البنية التحتية للذكاء الاصطناعي أسعار رقائق الذاكرة إلى الارتفاع.",
+          "quote": "رفعت \"سامسونغ إلكترونيكس\" خطط إنفاقها بعدما دفع الطلب المتواصل على البنية التحتية للذكاء الاصطناعي أسعار رقائق الذاكرة إلى الارتفاع، رغم أن أرباح وحدة الرقائق لديها جاءت دون توقعات المستثمرين المرتفعة."
+        },
+        {
+          "sentence": "وتشمل الخطة البالغة 84.4 تريليون وون إنفاق الشركة كلها، أما قطاع الرقائق وحده فارتفع إنفاقه الرأسمالي هذا العام 62% إلى 76.8 تريليون وون، وتتوقع «سامسونغ» زيادة كبيرة أخرى فيه العام المقبل.",
+          "quote": "وارتفعت النفقات الرأسمالية لقطاع الرقائق لدى الشركة بنسبة 62 في المائة هذا العام، إلى 76.8 تريليون وون، مع توقعات بزيادة حادة أخرى في العام المقبل."
+        },
+        {
+          "sentence": "وتراجع مؤشر كوسبي المركب 74.78 نقطة أو 1.24% ليغلق عند 5937 نقطة، بعد جلسة ارتفع فيها نحو 1.5% ثم هبط أكثر من 3%.",
+          "quote": "أغلقت الأسهم الكورية الجنوبية تعاملاتها على تراجع جماعي؛ حيث هبط مؤشر كوسبي المركب بمقدار 74.78 نقطة، مسجلاً نسبة انخفاض بلغت %1.24 ليغلق عند مستوى 5937 نقطة."
+        }
+      ],
+      "outcome": "listed"
     }
   }
 }

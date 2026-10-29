@@ -1,0 +1,70 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-29T18:31:40.154Z",
+  "durationSec": 77,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "microsoft-revenue-record-azure-growth-3a126f",
+      "title": "إيرادات مايكروسوفت ترتفع 19% إلى 92.3 مليار دولار بدعم نمو أزور 48%",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 38,
+        "checked": 38,
+        "supported": 29,
+        "weak": 9,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "samsung-raises-capex-despite-investor-disappointment-55895a",
+      "title": "سامسونغ ترفع إنفاقها الرأسمالي نحو 60% إلى 63 مليار دولار",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 39,
+        "checked": 39,
+        "supported": 33,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 3,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 2,
+    "failures": 0,
+    "promptTokens": 21909,
+    "completionTokens": 18988,
+    "cacheReadTokens": 0,
+    "costUsd": 0.555,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 2
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[18:31:40] second look: 2 to read now (2 published pieces not yet read; 154 read clean before publication and left out of the audit sample)",
+    "[18:32:50] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3678 attempt=1 ms=67588",
+    "[18:32:50] microsoft-revenue-record-azure-growth-3a126f: 38 of 38 sentences checked · 29 supported · 0 without a source · 0 confirmed error(s)",
+    "[18:32:56] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1920 attempt=1 ms=72111",
+    "[18:32:56] samsung-raises-capex-despite-investor-disappointment-55895a: 39 of 39 sentences checked · 33 supported · 0 without a source · 0 confirmed error(s) · 3 listed for a person"
+  ]
+}

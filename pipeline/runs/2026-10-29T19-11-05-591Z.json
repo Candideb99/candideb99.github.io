@@ -1,0 +1,481 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-29T18:32:57.394Z",
+  "durationSec": 2288,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "المركزي المصري يرفع الفائدة 1% في أول زيادة منذ مارس 2024",
+      "section": "economy",
+      "importance": 9,
+      "sources": [
+        "https://asharqbusiness.com/economics/153529/%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%8A-%D8%A7%D9%84%D9%85%D8%B5%D8%B1%D9%8A-%D9%8A%D8%B4%D8%AF%D8%AF-%D8%AA%D9%82%D9%8A%D9%8A%D9%85%D9%87-%D9%84%D9%85%D8%AE%D8%A7%D8%B7%D8%B1-%D8%A7%D9%84%D8%AA%D8%B6%D8%AE%D9%85/",
+        "https://aawsat.com/node/5335242",
+        "https://www.youm7.com/story/2026/10/29/%D8%A7%D9%84%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84-%D8%A7%D9%84%D9%83%D8%A7%D9%85%D9%84%D8%A9-%D9%84%D9%82%D8%B1%D8%A7%D8%B1-%D8%A7%D9%84%D8%A8%D9%86%D9%83-%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%89-%D8%A8%D8%B1%D9%81%D8%B9-%D8%A3%D8%B3%D8%B9%D8%A7%D8%B1-%D8%A7%D9%84%D9%81%D8%A7%D8%A6%D8%AF%D8%A9-%D8%A8%D9%86%D8%B3%D8%A8%D8%A9-1/7598884",
+        "https://www.aleqt.com/%D8%A7%D9%84%D8%A3%D8%B3%D9%88%D8%A7%D9%82/%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%8A-%D8%A7%D9%84%D9%85%D8%B5%D8%B1%D9%8A-%D9%8A%D9%81%D8%A7%D8%AC%D8%A6-%D8%A7%D9%84%D8%A3%D8%B3%D9%88%D8%A7%D9%82-%D8%A8%D8%A3%D9%88%D9%84-%D8%B1%D9%81%D8%B9-%D9%84%D9%84%D9%81%D8%A7%D8%A6%D8%AF%D8%A9-%D9%85%D9%86%D8%B0-%D9%85%D8%A7%D8%B1%D8%B3-2024-15880"
+      ],
+      "outcome": "skipped: repeats a recent story («المركزي الباكستاني يرفع الفائدة إلى 12% في أول زيادة منذ أبريل»)"
+    },
+    {
+      "headline": "الاقتصاد الأمريكي ينمو 3.4% في الربع الثالث والتضخم يتسارع",
+      "section": "economy",
+      "importance": 8,
+      "sources": [
+        "https://www.nytimes.com/2026/10/29/business/economy/us-economy-gdp.html",
+        "https://www.ft.com/content/f2de9f3c-3290-4e87-bbc2-55430025f2ab?syn-25a6b1a6=1",
+        "https://aawsat.com/node/5335165",
+        "https://asharqbusiness.com/economics/153499/%D9%86%D9%85%D9%88-%D8%A7%D9%84%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF-%D8%A7%D9%84%D8%A3%D9%85%D9%8A%D8%B1%D9%83%D9%8A-%D9%8A%D8%AA%D8%AC%D8%A7%D9%88%D8%B2-%D8%A7%D9%84%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA-%D9%88%D8%A7%D9%84%D8%AA%D8%B6%D8%AE%D9%85-%D9%8A%D8%AA%D8%B3%D8%A7%D8%B1%D8%B9/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والتمهيد والفقرة الأولى تحدد الحدث بوضوح: تقدير أولي لنمو 3.4% بمعدل سنوي هو الأسرع في عام، يتجاوز التوقع البالغ 3.2% بعد 2.2% في الربع الثاني، بدفع من الاستثمار والاستهلاك. وصفة «تقديرات أولية» محفوظة في التمهيد.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المسودة تشرح دوافع النمو وأثر التجارة والمخزونات وتربط الحدث بالانتخابات. لكنها تُسقط سبب تسارع التضخم الذي يورده SOURCE 4 (أسعار الوقود بفعل الصراع في الشرق الأوسط والحرب في أوكرانيا). وتحمل خلاصة «لماذا يهمّ» استنتاجاً معقولاً من مقدمات ثابتة (نمو قوي مع أكبر زيادة شهرية في مؤشر الأسعار منذ مارس، والصندوق يؤيد تركيز الفيدرالي على استقرار الأسعار)، لكنها لا تذكر القيد المتمثل في ركود الإنفاق الحقيقي في سبتمبر.",
+              "repair": "إضافة دافع أسعار الوقود من SOURCE 4 إلى فقرة التضخم، وإدراج ركود الإنفاق الحقيقي في سبتمبر شرطاً مقيِّداً في خلاصة «لماذا يهمّ» بدل جملة الرسوم الملحقة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات الثلاث الأولى تبني حجة واضحة: الاستثمار، ثم الاستهلاك، ثم سحب التجارة للنمو. أما الفقرة «وتسهم الرسوم الجمركية... وأظهرت البيانات أن الإنفاق الشخصي الحقيقي...» فتجمع معلومتين منفصلتين بلا رابط. وفي الخلاصة جاءت «فيما ترفع الرسوم الجمركية أسعار بعض السلع» ذيلاً غير مندمج في الاستدلال.",
+              "repair": "نقل جملة الرسوم إلى فقرة التضخم مع أسعار الوقود، وضم ركود الإنفاق في سبتمبر إلى فقرة إنفاق الأسر، وإعادة صوغ الجملة الثانية في «لماذا يهمّ» حول شرط استمرار ضغوط الأسعار وفتور الإنفاق."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «اقتطع صافي الصادرات 3.3 نقطة مئوية من الناتج» تخلط معدل النمو بمستوى الناتج. وبند «مؤشر نفقات الاستهلاك الشخصي في سبتمبر» في صندوق الأرقام يحذف كلمة «أسعار». بقية الأرقام مطابقة: 12.7% و3.8% مقابل 3.4% متوقعة، و1.6 نقطة للمخزونات، و0.5% و0.3% مطابقتان للتوقعات، وقراءات السوق في توقيتاتها.",
+              "repair": "كتابة «من نمو الناتج»، وتصحيح وصف البند إلى «مؤشر أسعار نفقات الاستهلاك الشخصي (شهري)»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقرأ القارئ في العنوان والمقدمة والفقرة الأولى ما تغير: نمو 3.4% بمعدل سنوي هو الأسرع منذ عام، مقابل 2.2% في الربع الثاني و3.2% متوقعة. ويقرأ القيد المهم أيضاً: التقديرات أولية (SOURCE 4)، ومحرك النمو هو الاستثمار المرتبط بالذكاء الاصطناعي.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يورد التقرير من SOURCE 4 آلية النمو: الاستثمار 12.7% والمعدات في أعلى مساهمة منذ 2011، والاستهلاك 3.8%، وصافي الصادرات يقتطع 3.3 نقطة مقابل 1.6 نقطة من المخزونات. ويورد دافع الأسعار (الوقود والرسوم)، وموقف صندوق النقد من الفيدرالي (SOURCE 3)، والانتخابات (SOURCE 1 و4). وتستند خلاصة «لماذا يهمّ» إلى مقدمات ثابتة: نمو يقوده الطلب، وأكبر زيادة في مؤشر الأسعار منذ مارس، وركود الإنفاق في سبتمبر. وتستنتج منها حدود تخفيف التركيز على الأسعار، وتربط الاستنتاج بشرطين صريحين.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "تتدرج الفقرات من الاستثمار إلى الاستهلاك وفتوره في سبتمبر، ثم سحب التجارة للنمو، ثم التضخم ومحركاته، ثم الفيدرالي، ثم الأسواق، ثم الانتخابات. وأُدمج ركود الإنفاق في فقرة الأسر كما طُلب. وتُعرض فقرة الأسواق دون ربط سببي بالبيانات، وهذا سليم لأن SOURCE 5 لا يربطها.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «في أواخر تعاملات الخميس» لا يدعمها توقيت القراءات في SOURCE 5 (18:18 إلى 18:33 بتوقيت غرينتش، أي منتصف بعد الظهر في نيويورك). وبندا 12.7% و3.8% في صندوق الأرقام بلا «(معدل سنوي)». أما بقية الأرقام والتحوطات («والأرجح أن يعكس»، «تقديرات أولية») فمطابقة.",
+              "repair": "استبدال «أواخر تعاملات الخميس» بـ«تعاملات بعد ظهر الخميس»، وإضافة «(معدل سنوي)» إلى بندي الاستثمار وإنفاق الأسر."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 3,
+      "mendIssues": [
+        "دقة التوقيت في فقرة الأسواق: «وفي أواخر تعاملات الخميس، تراجع مؤشر الدولار…». يحدد SOURCE 5 القراءات بين 18:18 و18:33 بتوقيت غرينتش، أي نحو 14:20 إلى 14:33 بتوقيت نيويورك (التوقيت الصيفي ساري حتى 1 نوفمبر). الجلسة لم تكن في أواخرها، وتبقى حتى إغلاقها قرابة ساعة ونصف. كما أن القراءات متأخرة وليست إغلاقاً. تُكتب: «وفي تعاملات بعد ظهر الخميس، تراجع مؤشر الدولار…»، مع الإبقاء على التوقيتات كما هي.",
+        "صندوق «الأرقام»: البندان «نمو استثمارات الشركات في الربع الثالث: 12.7%» و«نمو إنفاق الأسر في الربع الثالث: 3.8%» لا يحددان القياس. قد يقرؤهما القارئ نمواً على أساس سنوي مقارن، والرقمان في SOURCE 4 معدلان سنويان لنمو ربعي، كبند الناتج نفسه. يُضاف «(معدل سنوي)» إلى الوصفين.",
+        "عبارة «في أواخر تعاملات الخميس» لا يدعمها توقيت القراءات في SOURCE 5 (18:18 إلى 18:33 بتوقيت غرينتش، أي منتصف بعد الظهر في نيويورك). وبندا 12.7% و3.8% في صندوق الأرقام بلا «(معدل سنوي)». أما بقية الأرقام والتحوطات («والأرجح أن يعكس»، «تقديرات أولية») فمطابقة. — استبدال «أواخر تعاملات الخميس» بـ«تعاملات بعد ظهر الخميس»، وإضافة «(معدل سنوي)» إلى بندي الاستثمار وإنفاق الأسر."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "الناتج المحلي الأمريكي نما بمعدل سنوي 3.4% في الربع الثالث بقيادة استثمارات الشركات المرتبطة بالذكاء الاصطناعي وإنفاق استهلاكي قوي",
+          "source": 4
+        },
+        {
+          "fact": "مؤشر أسعار نفقات الاستهلاك الشخصي صعد 0.5% في سبتمبر، أكبر زيادة منذ مارس، وأسعار الوقود ارتفعت بفعل الصراع في الشرق الأوسط والحرب الروسية الأوكرانية، والرسوم الجمركية تسهم في رفع أسعار بعض السلع",
+          "source": 4
+        },
+        {
+          "fact": "الإنفاق الشخصي الحقيقي على السلع والخدمات لم يتغير تغيراً يُذكر في سبتمبر بعد زيادة كبيرة على نحو استثنائي في أغسطس",
+          "source": 4
+        },
+        {
+          "fact": "الفيدرالي أبقى الفائدة دون تغيير هذا الأسبوع، وصندوق النقد يؤيد تصريحات وارش عن تركيز البنك على استقرار الأسعار",
+          "source": 3
+        }
+      ],
+      "slug": "us-economy-grows-third-quarter-ai-investment-fe5e9f",
+      "title": "الاقتصاد الأمريكي ينمو 3.4% في الربع الثالث بأسرع وتيرة منذ عام",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "المركزي الأوروبي يثبت الفائدة عند 2.5% ويلوّح برفعها في ديسمبر",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-10-29/ecb-officials-are-ready-to-raise-interest-rates-in-december",
+        "https://aawsat.com/node/5335170",
+        "https://www.alborsaanews.com/2026/10/29/2002883",
+        "https://www.cnbc.com/2026/10/29/european-central-bank-interest-rates.html"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقرأ العنوان والمقدمة والفقرة الأولى معاً بوضوح: بقي سعر الإيداع عند 2.5%، وناقش المجلس الرفع ثم قرر التثبيت بالإجماع. ويبقى الرفع في ديسمبر احتمالاً مشروطاً، تسعّره الأسواق بنحو 67% وتنقله «بلومبرغ» عن أشخاص مطلعين، لا قراراً متخذاً.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يقدّم التقرير السياق من المصادر: الرفعان السابقان في يونيو وسبتمبر وسببهما صدمة الطاقة منذ حرب فبراير، والتضخم عند أعلى مستوى منذ سبتمبر 2023، وتشدد أوضاع التمويل، وقرب رحيل لاغارد. ويحمل الخبيران صفتيهما ومؤسستيهما. أما مربع «لماذا يهمّ» فيستند إلى مقدمات مسندة، هي الأجور والتضخم الأساسي وشرط تحسن التوقعات وصعود العوائد، ويستنتج منها استنتاجاً محدوداً: أي رفع إضافي سيأتي فوق أوضاع تمويلية متشددة أصلاً، مع شرط واضح هو «إذا لم تتحسن توقعات التضخم».",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "تتدرج الفقرات من القرار إلى الأرقام ثم التمويل ثم ديسمبر بخط مفهوم. لكن جملة سعر اليورو تأتي معزولة في آخر فقرة التسعير، ويقطع تيرنر فقرة فرنسا قبل أن يُعرَّف مصدر تعليقه.",
+              "repair": "دمج رد فعل العملة في جملة واحدة تجمع اتجاهه بعد القرار (المصدر 4) وحركته اليومية (المصدر 5)، ونقل إسناد «سي إن بي سي» إلى أول ذكر لتيرنر."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «أعلى تكاليف الاقتراض في فرنسا» تحوّل وصف «الأعلى منذ عقود» إلى تفاضل بين الدول. وعبارة «بارتفاع 0.06%» تخلط حركة اليوم مقارنة بالإغلاق السابق برد الفعل على القرار، مع أن المصدر 4 يذكر أن الدولار وسّع مكاسبه بعده.",
+              "repair": "حصر الوصف في أن علاوة فرنسا هي أعلى علاوة لها منذ عقود، وتحديد مرجع نسبة 0.06% (إغلاق الجلسة السابقة) مع إضافة اتجاه العملة بعد القرار."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقول العنوان إن البنك ثبّت الفائدة عند 2.5% وحذّر من مخاطر التضخم. وتوضح المقدمة أن المجلس ناقش الرفع ثم قرر التثبيت بالإجماع (المصدر 4). ويحمل العنوان الفرعي النتيجة العملية: سعّرت أسواق النقد احتمالاً بنحو 67% لرفع الفائدة في ديسمبر (المصدر 4). أما رفعا يونيو وسبتمبر فيأتيان في المتن بوصفهما خلفية، فلا تناقض بين التثبيت وتوقع الرفع.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يقدم التقرير سبب التثبيت بلسان لاغارد: تراكم عدم اليقين واستقرار التضخم الأساسي (المصدر 4)، وغياب استجابة الأجور (المصدر 3). ويضع الأرقام في سياقها: تضخم 3.8% هو الأعلى منذ سبتمبر 2023، وارتفع عائد السندات السيادية لأجل 10 سنوات بنحو 35 نقطة أساس، وبلغت علاوة فرنسا أعلى مستوى لها منذ عقود. ويعرّف الخبيرين بصفتيهما ومؤسستيهما، ويسند تعليقات تيرنر إلى «سي إن بي سي» عند أول ذكر له. وفي خانة «لماذا يهمّ» تقوم المقدمات على مصادر: استقرار الأجور والتضخم الأساسي (المصدر 3)، وشرط بلومبرغ لرفع ديسمبر (المصدر 1)، وتشدد الأوضاع التمويلية (المصدرين 3 و4). ويُبنى عليها استنتاج عن المفاضلة بين كبح التضخم وإثقال النمو، مقيّد بشرط «إذا لم تتحسن توقعات التضخم».",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "يتدرج التقرير من القرار وأسبابه إلى الأرقام، ثم إلى تشدد التمويل وضغوط فرنسا، ثم إلى خلفية الرفعين واحتمال ديسمبر وتقديرات المحللين، ويختم برحيل لاغارد وأثره المرتقب على صنع القرار. دُمج رد فعل العملة في جملة واحدة تجمع اتجاهه بعد القرار (المصدر 4) وحركته اليومية (المصدر 5). أما تكرار مطلع «وتبدو الضغوط» في فقرتين فهو تكرار خفيف لا يربك القراءة.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "صارت علاوة فرنسا «أعلى علاوة لها منذ عقود» بدلاً من التفاضل بين الدول الذي لا يسنده مصدر. وحُدد مرجع نسبة 0.06% بإغلاق الجلسة السابقة، وتوقيتها بالساعة 18:44 بتوقيت غرينتش. وبقي خبر بلومبرغ مشروطاً ومنسوباً إلى أشخاص مطلعين، وبقي توقع وول (2.75% في ديسمبر) رأياً منسوباً إليه لا حقيقة مقررة. وتطابق الأرقام كلها مصادرها: 2.5% و3.8% و18.8% و67% و35 و155 و25 نقطة أساس.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قال البنك إن التضخم الأساسي بقي مستقراً إلى حد بعيد وإن الأجور لم تتفاعل تفاعلاً ملموساً مع ارتفاع الأسعار",
+          "source": 3
+        },
+        {
+          "fact": "مسؤولو المركزي الأوروبي مستعدون لرفع الفائدة في ديسمبر إذا لم تتحسن توقعات التضخم، بحسب أشخاص مطلعين",
+          "source": 1
+        },
+        {
+          "fact": "ارتفع متوسط عائد السندات السيادية لأجل 10 سنوات بنحو 35 نقطة أساس منذ الاجتماع السابق",
+          "source": 4
+        },
+        {
+          "fact": "قال البنك إن الأوضاع التمويلية تشددت منذ آخر اجتماع ورجّح أن ينعكس ذلك سلباً على التضخم والنمو",
+          "source": 3
+        }
+      ],
+      "slug": "ecb-holds-deposit-rate-energy-inflation-risks-4145da",
+      "title": "المركزي الأوروبي يثبّت الفائدة عند 2.5% محذراً من تصاعد مخاطر التضخم",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "قطر للطاقة تشتري 3 ملايين طن سنوياً من الغاز الأمريكي لمدة 20 عاماً",
+      "section": "energy",
+      "importance": 7,
+      "sources": [
+        "https://www.agbi.com/oil-and-gas/2026/10/qatarenergy-makes-further-deal-for-us-lng/",
+        "https://www.alborsaanews.com/2026/10/29/2002886",
+        "https://www.bloomberght.com/katar-abdden-20-yil-boyunca-yilda-3-milyon-ton-lng-satin-alacak-3792805",
+        "https://www.thenationalnews.com/business/2026/10/29/qatarenergy-turns-to-us-lng-with-woodside-deal-as-hormuz-force-majeure-drags-on/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "يوضح العنوان الفرعي أن الصفقة لا تعوّض الإنتاج المتعطل قريباً، وهذا هو القيد الجوهري (SOURCE 1). لكن الافتتاحية تنسب تعطل العبور في هرمز إلى «ضربة إيرانية في مارس»، فتخلط تضرر راس لفان بإغلاق المضيق.",
+              "repair": "الفصل بين السببين في الافتتاحية، وصياغة البدء في 2030 توقعاً لا أمراً محسوماً."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السياق غني: الفجوة البالغة 30 مليون طن مقابل صادرات 81 مليوناً، والقوة القاهرة، ومؤشر TTF، وصفقة شينيير. ويربط «لماذا يهمّ» بين غياب الإنفاق الرأسمالي وتجنب البنية القابلة للاستهداف وبين الشرط الحاسم (السلام، السفن، الإصلاح)، وهو استنتاج مقبول. لكن التقرير يسقط وزن الصفقة في سوق الغاز الأمريكي كما قدّمه الكعبي («أكبر مشترٍ»، SOURCE 2 وSOURCE 4).",
+              "repair": "إدراج تصريح «أكبر مشترٍ» مبكراً، وتصويب الإشارة في الصندوق لتخص شحنات وودسايد."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "البناء يجيب عن سؤال القارئ: لماذا تشتري قطر الغاز الأمريكي ومتى يفيدها ذلك، ويختم بشروط عودة الإنتاج المحلي. غير أن فقرة «حل بعيد المدى» تحشو كلاماً عاماً عن الاستراتيجية، وتصل كلام الكعبي بـ«لأن» غير مسندة.",
+              "repair": "استبدال جملة الاستراتيجية بتصريح «أكبر مشترٍ»، وفصل أقوال الكعبي كما وردت."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«الذي تملكه قطر للطاقة» تزيد على المصدر الذي يقول «مشروع الشركة» (SOURCE 4). و«مطلع الشهر» غامضة. ويذكر SOURCE 3 أن البدء متوقع «نهاية 2030»، ويقول SOURCE 4 «حتى 3 ملايين طن» مع زيادة تدريجية تبلغ الكمية الكاملة عند تشغيل الخط الثالث، والمقال نقل هذه الزيادة التدريجية في المتن.",
+              "repair": "كتابة «مشروعها غولدن باس في تكساس» و«مطلع ديسمبر»، واستعمال فعل التوقع للبدء في 2030."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقرأ العنوان والعنوان الفرعي والافتتاحية معاً بوضوح: صفقة لعشرين عاماً بثلاثة ملايين طن سنوياً، ويُتوقع بدؤها في 2030، فلا تعوّض الإنتاج المتعطل قريباً. والافتتاحية تفصل الآن بين ضربة راس لفان وإغلاق هرمز.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السياق غني: الخُمس المار عبر هرمز، ونسبة 17%، وفجوة 30 مليون طن مقابل 81 مليوناً، والقوة القاهرة، ومؤشر TTF، وصفقة شينيير. لكن المتن لا يشرح أن الغاز موجّه إلى زبائن قطر الدوليين لا إلى السوق القطرية (SOURCE 3، وSOURCE 2). ويستعمل «لماذا يهمّ» هذه المقدمة («منفذاً إلى زبائنها») دون أن تُقرَّر في المتن. أما استنتاج الصندوق (طريق لا يمر بهرمز ولا يحتاج إنفاقاً رأسمالياً، مع بقاء الصادرات رهن السلام والسفن والإصلاح حتى 2030) فمقدماته مسندة إلى SOURCE 3 وSOURCE 4، والاستنتاج محدود بشروطه.",
+              "repair": "إضافة جملة منسوبة إلى قناة «بلومبرغ إتش تي» التركية عن ضم الغاز الأمريكي إلى المحفظة التجارية الدولية وبيعه لزبائن الشركة في أسواق مختلفة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الخط العام واضح: الصفقة، ثم الحجم الأمريكي المجمّع، ثم المشروع، ثم أسباب التحوط، ثم الضغط الراهن، ثم الأفق والإنتاج المحلي. لكن جملة AGBI تقف منفصلة، و«وتعتزم الشركة توسيع هذه المحفظة» تحيل إلى شيء لم يُذكر.",
+              "repair": "دمج رأي AGBI في فقرة التوقيت، وتسمية المحفظة صراحة: «محفظة مشترياتها من الغاز الأمريكي»."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام والتواريخ مطابقة للمصادر: 3 ملايين و20 عاماً، و2030 مع الخطين الثاني والثالث، و4 ملايين حتى 2054، والمجموع 7 ملايين، و16.5 مليوناً، وقرار الاستثمار في أبريل من العام الماضي، و17%، ونحو 30 مليوناً، و81 مليوناً، وتمديد القوة القاهرة من مطلع ديسمبر إلى نهايته، و95 يورو. التوقع مصوغ بفعل توقع، وفجوة الثلاثين مليوناً منسوبة إلى تحليلات قطاعية.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 6,
+      "mendIssues": [
+        "ينقص التقرير: الغرض من الصفقة، أي لماذا تشتري دولة مصدّرة للغاز غازاً أمريكياً. يذكر SOURCE 3 أن الشراء مرتبط بمواصلة إمداد زبائن قطر العالميين لا بحاجة الاستهلاك المحلي، وأن قطر للطاقة تعتزم ضم الغاز الأمريكي إلى محفظتها التجارية الدولية وبيعه لزبائنها في أسواق مختلفة. ويتحدث SOURCE 2 عن «تعزيز المحفظة التجارية العالمية» و«تلبية الطلب العالمي المتزايد». المتن لا يقول ذلك، مع أن «لماذا يهمّ» يبني عليه («منفذاً إلى زبائنها»). الإصلاح: إضافة جملة منسوبة في الفقرة الثانية بعد تصريح «أكبر مشترٍ»، مثل: «ولا يُوجَّه هذا الغاز إلى السوق القطرية، بل تعتزم الشركة ضمّه إلى محفظتها التجارية الدولية وبيعه لزبائنها في أسواق مختلفة، بعيداً عن الاعتماد على مضيق هرمز، بحسب قناة «بلومبرغ إتش تي» التركية».",
+        "إحالة بلا مرجع: «وتعتزم الشركة توسيع هذه المحفظة». لم يرد ذكر «المحفظة» في المتن قبل هذه الجملة، والفقرة السابقة رأي منصة AGBI عن التوقيت، فيبقى القارئ دون معرفة ما يُشار إليه. الإصلاح: «وتعتزم الشركة توسيع محفظة مشترياتها من الغاز الأمريكي»، أو تعريف المحفظة مبكراً كما في الملاحظة الأولى (SOURCE 2، SOURCE 3).",
+        "صندوق الأرقام: «الطاقة الإجمالية لمشروع لويزيانا: 16.5 مليون طن سنوياً» رقم يخص مشروع وودسايد كله، لا الصفقة نفسها (SOURCE 4). الإصلاح: حذفه من الصندوق مع إبقائه في المتن، ووضع رقم من الحدث مكانه: «بدء التسليمات المتوقع: 2030» (SOURCE 2، SOURCE 4).",
+        "بناء: فقرة «رأت منصة «أرابيان غلف بزنس إنسايت»… يحدّ من قدرتها على تعويض الإنتاج المفقود في المدى القريب» تقف وحدها في جملة واحدة. وهي تكرر ما قاله العنوان الفرعي دون إضافة. الإصلاح: دمجها في فقرة التوقيت الأولى بعد «ثم ترتفع إلى الكمية الكاملة عند تشغيل الخط الثالث»، لتوضيح أن البدء في 2030 يحدّ من التعويض القريب. ثم يبدأ قسم «حل بعيد المدى» مباشرة بخطط الكعبي لصفقات إضافية.",
+        "السياق غني: الخُمس المار عبر هرمز، ونسبة 17%، وفجوة 30 مليون طن مقابل 81 مليوناً، والقوة القاهرة، ومؤشر TTF، وصفقة شينيير. لكن المتن لا يشرح أن الغاز موجّه إلى زبائن قطر الدوليين لا إلى السوق القطرية (SOURCE 3، وSOURCE 2). ويستعمل «لماذا يهمّ» هذه المقدمة («منفذاً إلى زبائنها») دون أن تُقرَّر في المتن. أما استنتاج الصندوق (طريق لا يمر بهرمز ولا يحتاج إنفاقاً رأسمالياً، مع بقاء الصادرات رهن السلام والسفن والإصلاح حتى 2030) فمقدماته مسندة إلى SOURCE 3 وSOURCE 4، والاستنتاج محدود بشروطه. — إضافة جملة منسوبة إلى قناة «بلومبرغ إتش تي» التركية عن ضم الغاز الأمريكي إلى المحفظة التجارية الدولية وبيعه لزبائن الشركة في أسواق مختلفة.",
+        "الخط العام واضح: الصفقة، ثم الحجم الأمريكي المجمّع، ثم المشروع، ثم أسباب التحوط، ثم الضغط الراهن، ثم الأفق والإنتاج المحلي. لكن جملة AGBI تقف منفصلة، و«وتعتزم الشركة توسيع هذه المحفظة» تحيل إلى شيء لم يُذكر. — دمج رأي AGBI في فقرة التوقيت، وتسمية المحفظة صراحة: «محفظة مشترياتها من الغاز الأمريكي»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تعتزم قطر للطاقة ضم الغاز الأمريكي إلى محفظتها التجارية الدولية وبيعه لزبائنها في أسواق مختلفة من مصادر لا تعتمد على مضيق هرمز",
+          "source": 3
+        },
+        {
+          "fact": "قال الكعبي إن شراء الغاز لا يتطلب إنفاقاً رأسمالياً، واستبعد أنابيب تتجاوز هرمز لأن أي بنية تحتية في المنطقة قد تُستهدف",
+          "source": 4
+        },
+        {
+          "fact": "تتوقع قطر للطاقة أن تبدأ تسليمات وودسايد في عام 2030 وتستمر 20 عاماً",
+          "source": 2
+        },
+        {
+          "fact": "قال الكعبي إن إصلاح الخطين المتضررين يستغرق نحو ثلاث سنوات، وإن المنشآت السليمة قد تستأنف الإنتاج الكامل خلال أسبوع من اتفاق سلام إذا توفرت السفن",
+          "source": 4
+        }
+      ],
+      "slug": "qatarenergy-woodside-louisiana-lng-20-year-deal-8e5fed",
+      "title": "قطر للطاقة تشتري 3 ملايين طن سنوياً من الغاز المسال الأمريكي لعقدين",
+      "score": 8,
+      "image": "photo"
+    }
+  ],
+  "llm": {
+    "calls": 66,
+    "failures": 5,
+    "promptTokens": 959175,
+    "completionTokens": 229520,
+    "cacheReadTokens": 232217,
+    "costUsd": 10.4519,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 66
+    }
+  },
+  "log": [
+    "[19:08:34] image: dropped \"President Trump Visits the Cameron LNG Export Facility (47851797971).j\" — shows trump, donald, not the story's people",
+    "[19:08:34] image: dropped \"President Trump Visits Cameron LNG Export Terminal (47851142861).jpg\" — shows trump, donald, not the story's people",
+    "[19:08:46] openverse \"Driftwood LNG construction\": 0 usable of 0",
+    "[19:08:49] openverse \"LNG terminal Louisiana\": 0 usable of 0",
+    "[19:08:57] openverse \"Louisiana LNG\": 0 usable of 0",
+    "[19:09:31] openverse \"Driftwood LNG\": The operation was aborted due to timeout",
+    "[19:09:34] openverse \"LNG terminal\": The operation was aborted due to timeout",
+    "[19:09:42] openverse \"LNG\": The operation was aborted due to timeout",
+    "[19:09:42] openverse: 3 failures in a row; left alone for 10 minutes",
+    "[19:09:42] image: dropped \"Vibrant night view of a cargo port with ships and cranes under bright \" — names too little of lng",
+    "[19:09:42] image: dropped \"Scenic view of industrial facility and large ship against mountainous \" — names too little of lng",
+    "[19:09:42] image: dropped \"Coastal industrial facility with a tanker ship against a mountainous b\" — names too little of lng",
+    "[19:09:43] commons \"Driftwood LNG construction\": 0 usable of 0",
+    "[19:09:43] image: dropped \"Illuminated industrial gas facility in Rotterdam, showcasing equipment\" — names too little of construction",
+    "[19:09:43] image: dropped \"A large LNG powered ship passing under the Astoria-Megler Bridge on a \" — names too little of construction",
+    "[19:09:44] commons \"LNG terminal Louisiana\": 16 usable of 22",
+    "[19:09:44] image: dropped \"Vivid view of a large CMA CGM container ship at Hamburg port, highligh\" — names too little of terminal",
+    "[19:09:44] commons category \"Louisiana LNG\": none carries its name",
+    "[19:09:44] commons category \"Driftwood LNG\": none carries its name",
+    "[19:09:44] commons category \"LNG terminals in the United States\": none carries its name",
+    "[19:09:45] commons category \"LNG tankers\": none carries its name",
+    "[19:09:45] image: 4 file(s) dropped for naming none of Louisiana LNG, Driftwood LNG",
+    "[19:09:45] image: no photograph of the story's own place",
+    "[19:10:02] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1134 attempt=1 ms=15114",
+    "[19:10:02] image: the source's photograph (Bloomberg HT) shows Insulated white pipes and steel structures at an LNG terminal, with a yellow 'LNG recondenser by-pass' warning label on ; searching Driftwood LNG site Louisiana | Louisiana LNG construction | LNG export terminal Louisiana | LNG plant pipes",
+    "[19:10:02] image: tier 2, like the sources' own photograph: Driftwood LNG site Louisiana | Louisiana LNG construction | LNG export terminal Louisiana | LNG plant pipes",
+    "[19:10:02] pexels \"Driftwood LNG site Louisiana\": 8 usable",
+    "[19:10:02] pexels \"LNG plant pipes\": 8 usable",
+    "[19:10:02] pexels \"LNG export terminal Louisiana\": 8 usable",
+    "[19:10:02] pexels \"Louisiana LNG construction\": 8 usable",
+    "[19:10:02] commons \"Driftwood LNG site Louisiana\": 0 usable of 0",
+    "[19:10:03] commons \"Driftwood LNG\": 0 usable of 0",
+    "[19:10:04] commons \"Louisiana\": 13 usable of 20",
+    "[19:10:04] image: dropped \"Louisiana, Missouri 4-17-2010.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[19:10:04] image: dropped \"Louisiana National Guard - Wildfire response August 2023 01.jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[19:10:04] image: dropped \"Louisiana National Guard - Wildfire response August 2023 04.jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[19:10:04] image: dropped \"Louisiana National Guard - Wildfire response August 2023 05.jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[19:10:04] image: dropped \"Vibrant night view of a cargo port with ships and cranes under bright \" — names too little of site",
+    "[19:10:04] image: dropped \"Industrial facility by the coast with a docked LNG tanker, set against\" — names too little of site",
+    "[19:10:04] image: dropped \"A large LNG tanker ship on the ocean at sunset, capturing the tranquil\" — names too little of site",
+    "[19:10:04] image: dropped \"Scenic view of industrial facility and large ship against mountainous \" — names too little of site",
+    "[19:10:04] image: dropped \"LNG tanker at an industrial port with lush mountains in the background\" — names too little of site",
+    "[19:10:04] image: dropped \"Coastal industrial facility with a tanker ship against a mountainous b\" — names too little of site",
+    "[19:10:04] image: dropped \"A large LNG tanker at sea during a serene sunset, depicting maritime i\" — names too little of site",
+    "[19:10:05] commons \"Louisiana LNG construction\": 0 usable of 0",
+    "[19:10:05] commons \"Louisiana LNG\": 17 usable of 20",
+    "[19:10:05] image: dropped \"President Trump Visits Cameron LNG Export Terminal (40884405043).jpg\" — shows trump, donald, not the story's people",
+    "[19:10:05] image: dropped \"President Trump Visits Cameron LNG Export Terminal (47799045672).jpg\" — shows trump, donald, not the story's people",
+    "[19:10:05] image: dropped \"President Trump Visits Cameron LNG Export Terminal (40884405233).jpg\" — shows trump, donald, not the story's people",
+    "[19:10:05] image: dropped \"President Trump Visits Cameron LNG Export Terminal (40884404963).jpg\" — shows trump, donald, not the story's people",
+    "[19:10:05] image: dropped \"President Trump Visits Cameron LNG Export Terminal (40884405273).jpg\" — shows trump, donald, not the story's people",
+    "[19:10:05] image: dropped \"President Trump Visits the Cameron LNG Export Facility (47062327064).j\" — shows trump, donald, not the story's people",
+    "[19:10:05] image: dropped \"President Trump Visits the Cameron LNG Export Facility (47062327054).j\" — shows trump, donald, not the story's people",
+    "[19:10:05] image: dropped \"President Trump Visits Cameron LNG Export Terminal (47851142661).jpg\" — shows trump, donald, not the story's people",
+    "[19:10:05] image: dropped \"President Trump Visits Cameron LNG Export Terminal (47061695934).jpg\" — shows trump, donald, not the story's people",
+    "[19:10:05] image: dropped \"Calm view of bridge over Mississippi River with cityscape and blue sky\" — names too little of construction",
+    "[19:10:05] image: dropped \"Illuminated industrial gas facility in Rotterdam, showcasing equipment\" — names too little of construction",
+    "[19:10:06] commons \"LNG export terminal Louisiana\": 15 usable of 20",
+    "[19:10:06] image: dropped \"President Trump Visits Cameron LNG Export Terminal (47851142861).jpg\" — shows trump, donald, not the story's people",
+    "[19:10:06] image: dropped \"Vivid view of a large CMA CGM container ship at Hamburg port, highligh\" — names too little of export, terminal",
+    "[19:10:06] image: dropped \"A cargo ship loading at an industrial port under a clear summer sky.\" — names too little of export, terminal",
+    "[19:10:06] image: dropped \"From above of many cargo containers on ship moored on calm water of ri\" — names too little of export, terminal",
+    "[19:10:06] image: dropped \"Rusty barges and cranes at a sand-covered port in Montevideo, Uruguay.\" — names too little of export, terminal",
+    "[19:10:06] image: dropped \"High angle view of a bustling shipping port with moored cargo ships an\" — names too little of export, terminal",
+    "[19:10:07] commons \"LNG plant pipes\": 0 usable of 0",
+    "[19:10:08] commons \"LNG plant\": 7 usable of 20",
+    "[19:10:08] image: dropped \"Germany’s dependence on natural gas and the associated financing of ty\" — an event's photograph, people and banners",
+    "[19:10:08] image: dropped \"Germany’s dependence on natural gas and the associated financing of ty\" — names too little of plant",
+    "[19:10:08] image: dropped \"Exterior of the Nigeria Liquefied Natural Gas (NLNG) building.jpg\" — names too little of plant",
+    "[19:10:08] image: dropped \"Engineer with safety gear inspecting red industrial piping system indo\" — names too little of plant, pipes",
+    "[19:10:08] image: dropped \"LNG terminal ship in the Wilhelmina harbour the Netherlands.jpg\" — taken in Netherlands, which the story does not name",
+    "[19:10:08] image: 5 likeness(es) set aside for the country's own photographs",
+    "[19:10:11] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=0 attempt=1 ms=2828",
+    "[19:10:11] image: vision rejected all candidates (None of the candidates shows LNG. 1 is a pier on Lake Pontchartrain, a leisure scene. 2 and 3 are cemeteries in St. James Parish, which would be grave and misleading beside the headline. None matches the source's LNG terminal subject.)",
+    "[19:10:11] image: tier 3, the writer's own subjects: LNG tanker | Ras Laffan | Lake Charles Louisiana",
+    "[19:10:12] commons \"LNG tanker 2026\": 8 usable of 9",
+    "[19:10:12] commons \"LNG tanker\": 5 usable of 12",
+    "[19:10:13] commons \"Ras Laffan 2026\": 0 usable of 2",
+    "[19:10:13] commons \"Ras Laffan\": 10 usable of 12",
+    "[19:10:14] commons \"Lake Charles Louisiana 2026\": 0 usable of 0",
+    "[19:10:15] commons \"Lake Charles Louisiana\": 9 usable of 12",
+    "[19:10:29] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=961 attempt=1 ms=13766",
+    "[19:10:29] image: \"Aristarchos (LNG Tanker).jpg\" names the story's topic without saying its point (This is a sharp, side-on view of a whole LNG carrier under way at sea, the plain agency image for an LNG supply deal. The story spans Qatar, the US and the worl); checked now and kept in reserve while the desk looks further",
+    "[19:10:37] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=574 attempt=1 ms=8381",
+    "[19:10:37] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Aristarchos (LNG Tanker).jpg\": The hull's large «CAPITAL GAS» lettering names a shipowner the story never mentions, and the caption and file place the ",
+    "[19:10:37] image: tier 4, the story's point and its subject: LNG tanker loading United States | LNG terminal construction Louisiana | LNG carrier Gulf of Mexico | LNG carrier Louisiana | LNG terminal United States | LNG carrier (home: United States, USA, American, Louisiana, Gulf Coast)",
+    "[19:10:38] pexels \"LNG carrier\": 8 usable",
+    "[19:10:38] pexels \"LNG terminal United States\": 8 usable",
+    "[19:10:38] pexels \"LNG terminal construction Louisiana\": 8 usable",
+    "[19:10:38] pexels \"LNG carrier Gulf of Mexico\": 8 usable",
+    "[19:10:38] pexels \"LNG carrier Louisiana\": 8 usable",
+    "[19:10:38] pexels \"LNG tanker loading United States\": 8 usable",
+    "[19:10:38] commons \"LNG tanker loading United States\": 0 usable of 0",
+    "[19:10:39] commons \"LNG tanker\": 13 usable of 24",
+    "[19:10:39] image: dropped \"Vibrant night view of a cargo port with ships and cranes under bright \" — names too little of tanker, loading",
+    "[19:10:39] commons \"LNG terminal construction Louisiana\": 0 usable of 3",
+    "[19:10:40] commons \"LNG terminal\": 17 usable of 24",
+    "[19:10:40] image: dropped \"President Trump Visits Cameron LNG Export Terminal (47799045672).jpg\" — shows trump, donald, not the story's people",
+    "[19:10:40] image: dropped \"President Trump Visits Cameron LNG Export Terminal (40884405043).jpg\" — shows trump, donald, not the story's people",
+    "[19:10:40] image: dropped \"Vivid view of a large CMA CGM container ship at Hamburg port, highligh\" — names too little of terminal, construction",
+    "[19:10:40] image: dropped \"Calm view of bridge over Mississippi River with cityscape and blue sky\" — names too little of terminal, construction",
+    "[19:10:40] image: dropped \"Aerial shot of industrial port facilities and structures in Oshawa, Ca\" — names too little of terminal, construction",
+    "[19:10:40] image: dropped \"Scenic industrial factory by the river at sunset with a distant urban \" — names too little of terminal, construction",
+    "[19:10:40] commons \"LNG carrier Gulf of Mexico\": 0 usable of 0",
+    "[19:10:41] commons \"LNG carrier Gulf Mexico\": 0 usable of 0",
+    "[19:10:41] commons \"LNG carrier\": 14 usable of 24",
+    "[19:10:41] image: dropped \"Aerial shot of an oil tanker on the ocean at sunset in Galveston, Texa\" — names too little of carrier",
+    "[19:10:41] image: dropped \"Two cargo ships navigating the serene blue waters under a clear sky.\" — names too little of carrier",
+    "[19:10:43] commons \"LNG carrier Louisiana\": 0 usable of 0",
+    "[19:10:43] commons \"LNG carrier\": 14 usable of 24",
+    "[19:10:43] image: dropped \"Cargo ship 'Bulk Promise' docked at an industrial port under a bright \" — names too little of carrier",
+    "[19:10:44] commons \"LNG terminal United States\": 16 usable of 24",
+    "[19:10:44] image: dropped \"President Trump Visits Cameron LNG Export Terminal (47851142661).jpg\" — shows trump, donald, not the story's people",
+    "[19:10:44] image: dropped \"President Trump Visits Cameron LNG Export Terminal (40884405273).jpg\" — shows trump, donald, not the story's people",
+    "[19:10:44] image: dropped \"President Trump Visits Cameron LNG Export Terminal (40884405233).jpg\" — shows trump, donald, not the story's people",
+    "[19:10:44] image: dropped \"President Trump Visits Cameron LNG Export Terminal (47851143051).jpg\" — shows trump, donald, not the story's people",
+    "[19:10:44] image: dropped \"President Trump Visits Cameron LNG Export Terminal (47851142861).jpg\" — shows trump, donald, not the story's people",
+    "[19:10:44] image: dropped \"President Trump Visits Cameron LNG Export Terminal (40884404963).jpg\" — shows trump, donald, not the story's people",
+    "[19:10:44] image: dropped \"President Trump Visits Cameron LNG Export Terminal (47061695934).jpg\" — shows trump, donald, not the story's people",
+    "[19:10:44] image: dropped \"President Trump Visits the Cameron LNG Export Facility (47851797811).j\" — shows trump, donald, not the story's people",
+    "[19:10:44] image: dropped \"President Trump Visits the Cameron LNG Export Facility (47062327064).j\" — shows trump, donald, not the story's people",
+    "[19:10:44] image: dropped \"President Trump Visits the Cameron LNG Export Facility (40885121913).j\" — shows trump, donald, not the story's people",
+    "[19:10:44] image: dropped \"Scenic view of industrial facility and large ship against mountainous \" — names too little of terminal",
+    "[19:10:44] commons \"LNG carrier\": 14 usable of 24",
+    "[19:10:44] image: dropped \"2023-05-20 01 LNG tanker, GULF ENERGY - IMO 7390143.jpg\" — taken in Norway, which the story does not name",
+    "[19:10:44] image: dropped \"LNG Carriers dilihat dari Sembawang 2021.jpg\" — taken in Singapore, which the story does not name",
+    "[19:10:44] image: dropped \"Negishi LNG Terminal 01.jpg\" — taken in Japan, which the story does not name",
+    "[19:10:52] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=463 attempt=1 ms=7780",
+    "[19:10:52] image: \"A large LNG tanker ship on the ocean at sunset, capturing th\" names the story's topic without saying its point (A generic LNG carrier under way at sea, shown whole and clearly, with no place clue. It suits a story about LNG cargoes that avoid Hormuz, but it does not show ); checked now and kept in reserve while the desk looks further",
+    "[19:10:58] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=299 attempt=1 ms=5680",
+    "[19:10:58] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"A large LNG tanker ship on the ocean at sunset, capturing th\": A sharp, professional shot of an unidentified LNG carrier at sea shows the story's own sector, with nothing placing it i",
+    "[19:10:58] image: the story's people first: Saad Sherida al-Kaabi 2026 | Saad Sherida al-Kaabi | سعد شريدة الكعبي | سعد الكعبي",
+    "[19:10:58] commons \"Saad Sherida al-Kaabi 2026\": 0 usable of 0",
+    "[19:10:59] commons \"Saad Sherida\": 8 usable of 11",
+    "[19:10:59] image: dropped \"2019-10-30 State Minister Nasrul Hamid and Qatar Minister Saad Sherida\" — shows nasrul, affairs, not the story's people",
+    "[19:10:59] image: dropped \"Saad Bin Sherida Al Kaabi Meets Muhammad Yunus Four Seasons Hotel Qata\" — names none of the story's people",
+    "[19:10:59] image: dropped \"Qatar Minister of State for Energy Affairs Saad Sherida Al-Kaabi meets\" — shows sheikh, sheikh, not the story's people",
+    "[19:10:59] image: dropped \"Saad bin Sherida Al Kaabi Meeting with Muhammad Yunus in Qatar Four Se\" — names none of the story's people",
+    "[19:10:59] image: dropped \"Qatar Minister of Energy Affairs Saad Sherida Al-Kaabi meets Nasrul Ha\" — shows affairs, not the story's people",
+    "[19:10:59] image: dropped \"2023-05-23 Qatari Minister of State for Energy Affairs Saad bin Sherid\" — shows sheikh, sheikh, not the story's people",
+    "[19:10:59] commons \"Saad Sherida al-Kaabi\": 8 usable of 11",
+    "[19:11:00] commons \"سعد شريدة الكعبي\": 5 usable of 8",
+    "[19:11:00] commons \"سعد الكعبي\": 2 usable of 5",
+    "[19:11:00] image: set aside \"Ilham Aliyev met with President and CEO of Qatar Petroleum, \" — a 2017 photograph of a person, older than 2018",
+    "[19:11:00] image: set aside \"Ilham Aliyev met with President and CEO of Qatar Petroleum, \" — a 2017 photograph of a person, older than 2018",
+    "[19:11:00] image: nothing of them since 2018 fits; their newest older photographs, run as file photos: 2017 Ilham Aliyev met with President and CEO  | 2017 Ilham Aliyev met with President and CEO ",
+    "[19:11:05] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=167 attempt=1 ms=4647",
+    "[19:11:05] image: vision rejected all candidates (Both candidates show al-Kaabi with Azerbaijan's President Ilham Aliyev, who has nothing to do with this story. They come from an unrelated 2017 visit and say nothing about Qatar buying US LNG to avoid Hormuz. The desk should find an LNG tanker or terminal scene instead.)",
+    "[19:11:05] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"A large LNG tanker ship on the ocean at sunset, capturing th\"",
+    "[19:11:05] published \"قطر للطاقة تشتري 3 ملايين طن سنوياً من الغاز المسال الأمريكي لعقدين\" -> qatarenergy-woodside-louisiana-lng-20-year-deal-8e5fed"
+  ]
+}
