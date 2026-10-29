@@ -13323,6 +13323,63 @@
         }
       ],
       "outcome": "clean"
+    },
+    "alphabet-shares-fall-after-earnings-miss-7ca1aa": {
+      "at": "2026-10-29T08:24:54.572Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v40",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-29T01:52:25.889Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 40,
+        "checked": 40,
+        "supported": 34,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وأرجعت رويترز إخفاق الإيرادات إلى الأعمال الإعلانية لجوجل، التي بلغت إيراداتها 82.01 مليار دولار، أي أقل من التوقعات بنحو 1.41 مليار دولار.",
+          "quote": "وبلغت إيرادات الإعلانات لدى الشركة، التي تعتمد عليها لتمويل استثماراتها في الذكاء الاصطناعي، 82 مليار دولار، دون التقديرات البالغة 83.6 مليار دولار.",
+          "source": "Asharq Business"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "ارتفعت إيرادات «جوجل كلاود»، وحدة الحوسبة السحابية في الشركة، إلى أكثر من الضعف لتبلغ 30.71 مليار دولار، متجاوزة 28.7 مليار دولار توقعها المحللون بحسب «سي إن بي سي»، لكن هذا النمو لم يكن كافياً لتعويض ضعف الإعلانات.",
+          "quote": "وسجلت الوحدة مبيعات بقيمة 30.7 مليار دولار وأرباحاً بلغت 11.1 مليار دولار، متجاوزة تقديرات المحللين البالغة 29.1 مليار دولار للإيرادات و9.8 مليار دولار للأرباح.",
+          "source": "Asharq Business"
+        }
+      ],
+      "notFound": [
+        "ويبقى الحاسم قبل زيادة إنفاق 2027 أن تلحق الإيرادات بالإنفاق: أن يدرّ البحث المدعوم بالذكاء الاصطناعي عائداً أقرب إلى البحث التقليدي، وأن يتسع نمو السحابة بما يكفي لتعويض ضعف الإعلانات، وإلا اتسعت الحاجة إلى الاقتراض.",
+        "والتدفق النقدي الحر هو، بوجه عام، ما يتبقى من النقد الذي تولده الأعمال بعد الإنفاق الرأسمالي."
+      ],
+      "weak": [
+        {
+          "sentence": "فقد بلغت إيرادات ألفابت 127.58 مليار دولار في الربع، بنمو 25% على أساس سنوي، مقابل توقعات عند 128.22 مليار دولار، وسجلت ربحية السهم المعدلة 2.67 دولار مقابل 3.02 دولار متوقعة.",
+          "quote": "Revenue grew 25% from a year ago, but the company posted its first top-and-bottom-line miss in nearly four years."
+        },
+        {
+          "sentence": "سجلت ألفابت تدفقاً نقدياً حراً سالباً بقيمة 9.07 مليار دولار في الربع الثالث، بعد تدفق سالب بلغ 5.9 مليار دولار في الربع الثاني.",
+          "quote": "The quarterly cash burn is an increase from $5.9 billion in the prior quarter, which was the first time the company went into the negative in its 22-year history as a public company."
+        }
+      ],
+      "outcome": "listed"
     }
   }
 }

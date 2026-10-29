@@ -218,10 +218,11 @@
     "bahri-contract-three-crude-tankers-saudi-9dd9dc:cd0bd264",
     "french-bond-yields-jump-after-protests-1b64ee:1cdf42b9",
     "saudi-utility-tariffs-monthly-support-2027-748f63:862951ed",
-    "qatar-saudi-stock-markets-liquidity-test-6421f7:4bf6e2c6"
+    "qatar-saudi-stock-markets-liquidity-test-6421f7:4bf6e2c6",
+    "alphabet-shares-fall-after-earnings-miss-7ca1aa:02d23766"
   ],
-  "version": 40,
-  "updatedAt": "2026-10-28T05:52:18.463Z",
+  "version": 41,
+  "updatedAt": "2026-10-29T08:26:05.250Z",
   "lessons": [
     {
       "id": "L1",
@@ -607,11 +608,12 @@
         "saudi-oil-exports-13-year-low-shipping-routes-closed-c0a8f2:8d6816f3",
         "egypt-ewallets-h1-2026-transactions-growth-9789a5:4d005a34",
         "brent-above-100-dollars-gulf-escalation-8281ef:e4379e59",
-        "bahri-contract-three-crude-tankers-saudi-9dd9dc:cd0bd264"
+        "bahri-contract-three-crude-tankers-saudi-9dd9dc:cd0bd264",
+        "alphabet-shares-fall-after-earnings-miss-7ca1aa:02d23766"
       ],
-      "seen": 20,
+      "seen": 21,
       "createdAt": "2026-09-25T12:04:58.585Z",
-      "lastSeen": "2026-10-27T15:25:58.750Z",
+      "lastSeen": "2026-10-29T08:26:05.250Z",
       "status": "active",
       "previous": [
         "Copy every number and ranking with its own qualifier. 500 is not 'more than 500', 'nearly 4,000' is not 4,000, and 'one of the most important' is not 'the most important'. Never move a qualifier from one figure onto its neighbour."
@@ -1086,6 +1088,13 @@
       "applied": [
         "add L12 [internal] from 1 mistake(s)",
         "retire L11"
+      ]
+    },
+    {
+      "at": "2026-10-29T08:26:05.250Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L8 (+1; reworded at most once a week)"
       ]
     }
   ],

@@ -8100,6 +8100,234 @@
           }
         }
       ]
+    },
+    "shell-q3-profit-doubles-refining-margins-3ca7c2": {
+      "at": "2026-10-29T08:37:40.203Z",
+      "title": "أرباح شل تتضاعف تقريباً إلى 10.8 مليار دولار مدفوعة بهوامش تكرير قياسية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v41",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 29,
+            "checked": 29,
+            "supported": 26,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 14,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وزادت الأرباح على مستواها في الربع الثاني من العام الجاري البالغ 9.836 مليار دولار، وفاقت متوسط توقعات المحللين الذي جمعته «إل إس إي جي» والبالغ 9.92 مليار دولار.",
+              "quote": "The results beat analyst expectations for a rise to $10.33bn.",
+              "source": "The Guardian",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "fab-raises-iran-war-loan-provisions-ce7c47": {
+      "at": "2026-10-29T08:47:30.933Z",
+      "title": "أبوظبي الأول يرفع مخصصات مخاطر الحرب مع إيران 350 مليون درهم",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 35,
+            "checked": 35,
+            "supported": 30,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 32,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "في الربع الثالث وحده بلغ صافي الربح مستوى قياسياً عند 5.74 مليار درهم بزيادة 6%، وارتفعت الأرباح قبل الضريبة 9% إلى 7.01 مليار درهم.",
+              "quote": "Net profit attributable to shareholders of the bank for three months to the end of September climbed to 5.73 billion ($1.5 billion), the largest lender in the UAE by assets said in a statement on Thursday to the Abu Dhabi Securities Exchange, where its shares trade.",
+              "source": "The National",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "acwa-eig-plenum-power-us-electricity-b01dc6": {
+      "at": "2026-10-29T08:58:13.864Z",
+      "title": "«أكوا» و«إي آي جي» تؤسسان منصة كهرباء أمريكية برأسمال مستهدف 4 مليارات دولار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v41",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 28,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 30,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وقد ضخت أكثر من 55 مليار دولار في قطاع الطاقة عبر 429 مشروعاً وشركة في 44 دولة خلال 44 عاماً، كما التزمت بأكثر من 14.2 مليار دولار في التوليد والطاقة المتجددة والتخزين والبنية المرتبطة بتحول الطاقة.",
+              "quote": "أما \"إي آي جي\"، التي تتخذ من واشنطن مقراً رئيسياً، فتدير أصولاً بقيمة 27.1 مليار دولار حتى نهاية يونيو 2026، وسبق أن التزمت باستثمارات تتجاوز 55 مليار دولار في قطاع الطاقة عبر 429 مشروعاً وشركة في 44 دولة خلال 44 عاماً.",
+              "source": "Asharq Business",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ],
+          "unsourced": {
+            "asked": 1,
+            "kept": [],
+            "removed": [
+              {
+                "sentence": "ويفوق حجم أعمال كل من الشريكين رأس المال المستهدف للمنصة بكثير.",
+                "said": "unsourced"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "samsung-raises-capex-despite-investor-disappointment-55895a": {
+      "at": "2026-10-29T09:17:40.373Z",
+      "title": "سامسونغ ترفع إنفاقها الرأسمالي نحو 60% إلى 63 مليار دولار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v41",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 39,
+            "checked": 39,
+            "supported": 34,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 14,
+              "field": "body",
+              "class": "attribution",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وعزت «سامسونغ» هذه القفزة إلى الطلب القوي على رقائق الذكاء الاصطناعي، وارتفع صافي دخل المجموعة كلها 39%.",
+              "quote": "حققت «سامسونغ إلكترونيكس» قفزة كبيرة في أرباحها التشغيلية خلال الربع الثالث، مدفوعة بالطلب القوي على رقائق الذكاء الاصطناعي، لكن أسهم الشركة تراجعت بنحو 6 في المائة، الخميس، بعدما خيّبت آمال المستثمرين لعدم الإعلان عن خطط جديدة لعوائد المساهمين، إلى جانب تقديم توقعات أكثر تحفظاً بشأن استمرار نقص رقائق الذاكرة مقارنة بمنافستها «إس كي هاينكس».",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": "Asharq Al-Awsat itself reports that the jump was driven by AI chip demand; no source quotes Samsung giving this explanation (the 39% net income rise is supported by source 2)."
+            }
+          ],
+          "noted": [
+            {
+              "id": 16,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "لكنها جاءت دون متوسط تقديرات المحللين البالغ 107.3 تريليون وون، وفق بيانات مجموعة بورصات لندن «إل إس إي جي».",
+              "quote": "وجاء أداء وحدة الرقائق أقل بقليل من متوسط تقديرات المحللين البالغ 108.5 تريليون وون.",
+              "source": "Asharq Business",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 39,
+            "checked": 39,
+            "supported": 34,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 16,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "لكنها جاءت دون متوسط تقديرات المحللين البالغ 107.3 تريليون وون، وفق بيانات مجموعة بورصات لندن «إل إس إي جي».",
+              "quote": "وجاء أداء وحدة الرقائق أقل بقليل من متوسط تقديرات المحللين البالغ 108.5 تريليون وون.",
+              "source": "Asharq Business",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 26,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ورأى لي مين هي، المحلل في شركة «بي إن كيه إنفستمنت آند سيكيوريتيز»، أن «إس كي هاينكس» تجاوزت توقعات السوق وكشفت عن خطط لإعادة نحو 75 مليار دولار للمساهمين هذا العام، بينما لم تغيّر «سامسونغ» توجيهاتها السابقة جوهرياً.",
+              "quote": "وقدمت \"إس كيه هاينكس\" يوم الأربعاء تقرير أرباح قوياً للغاية، مدعوماً بخطط لإعادة نحو 45 مليار دولار إضافية إلى المساهمين.",
+              "source": "Asharq Business",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []
