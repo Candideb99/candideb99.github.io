@@ -280,132 +280,152 @@
       "read": 8,
       "confirmedPerStory": 0,
       "photosPending": 1
+    },
+    {
+      "date": "2026-10-29",
+      "published": 14,
+      "news": 12,
+      "styleFaultsPerStory": 0,
+      "corrections": 9,
+      "read": 4,
+      "confirmedPerStory": 0,
+      "photosPending": 1
     }
   ],
-  "updatedAt": "2026-10-26T14:25:53.706Z",
+  "updatedAt": "2026-10-29T14:32:52.469Z",
   "week": {
-    "published": 96,
+    "published": 97,
     "news": 82,
     "revisedShare": 1,
-    "styleFaultsPerStory": 0,
-    "styleWarningsPerStory": 0.27,
-    "corrections": 6,
+    "styleFaultsPerStory": 0.02,
+    "styleWarningsPerStory": 0.46,
+    "corrections": 19,
     "usefulness": {
       "withLessons": {
         "stories": 67,
-        "words": 473,
+        "words": 464,
         "keyFacts": 4.5
       },
       "control": {
         "stories": 15,
-        "words": 522,
-        "keyFacts": 5.7
+        "words": 513,
+        "keyFacts": 5.3
       }
     },
     "precheck": {
-      "checked": 88,
-      "clean": 83,
-      "repaired": 5,
+      "checked": 92,
+      "clean": 85,
+      "repaired": 7,
       "held": 0,
-      "errorsFound": 5,
+      "errorsFound": 7,
+      "unsourcedCut": 1,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 5,
-      "correctionsVerifiedClean": 0,
+      "repairedBeforePublication": 7,
+      "correctionsVerifiedClean": 4,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 32,
-      "clean": 20,
-      "corrected": 0,
+      "read": 33,
+      "clean": 22,
+      "corrected": 4,
       "stands": 0,
       "refused": 0,
-      "listed": 12,
+      "listed": 7,
       "unverifiable": 0,
-      "confirmedPerStory": 0,
+      "confirmedPerStory": 0.12,
       "withLessons": {
-        "read": 25,
-        "confirmedPerStory": 0
+        "read": 24,
+        "confirmedPerStory": 0.08
       },
       "claudeWithout": {
-        "read": 7,
-        "confirmedPerStory": 0
+        "read": 9,
+        "confirmedPerStory": 0.22
       }
     },
     "runs": {
       "count": 24,
-      "written": 57,
-      "refused": 7,
-      "callsPerStory": 19,
-      "tokensPerStory": 328669,
-      "costPerStory": 2.79,
+      "written": 43,
+      "refused": 8,
+      "callsPerStory": 22.8,
+      "tokensPerStory": 392560,
+      "costPerStory": 3.46,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": [
       {
-        "what": "newsroom: skipped: repeats a recent story («…»)",
+        "what": "second look: attribution errors",
         "stories": 2,
+        "examples": [
+          "aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210: أصدرت أرامكو السعودية تعليمات بإخلاء مقرها الرئيسي في الظهران والعمل عن بعد، بحسب ستة أشخاص مطلعين نقلت عنهم رويترز، دون",
+          "french-bond-yields-jump-after-protests-1b64ee: قالت وزارة الداخلية الفرنسية الأحد إن نحو 2400 شخص اعتُقلوا، بعد عنف اندلع عقب أسابيع من تظاهرات سلمية بشأن أوضاع المدار"
+        ]
+      },
+      {
+        "what": "newsroom: skipped: nothing readable in the report's pages",
+        "stories": 3,
         "examples": []
       },
       {
-        "what": "newsroom: rejected after revision: المقدمة طويلة (# كلمة)؛ اجعلها جملتين إلى ثلاث بأقل من # كلمة",
-        "stories": 2,
+        "what": "newsroom: skipped: repeats a recent story («…»)",
+        "stories": 3,
         "examples": []
       }
     ]
   },
   "weekBefore": {
-    "published": 34,
-    "news": 33,
-    "revisedShare": 0.7,
-    "styleFaultsPerStory": 0,
-    "styleWarningsPerStory": 0.3,
+    "published": 73,
+    "news": 66,
+    "revisedShare": 0.85,
+    "styleFaultsPerStory": 0.02,
+    "styleWarningsPerStory": 0.33,
     "corrections": 0,
     "usefulness": {
       "withLessons": {
-        "stories": 10,
-        "words": 505,
-        "keyFacts": 4.9
+        "stories": 36,
+        "words": 489,
+        "keyFacts": 4.7
       },
       "control": {
-        "stories": 3,
-        "words": 607,
+        "stories": 10,
+        "words": 529,
         "keyFacts": 6
       }
     },
     "precheck": {
-      "checked": 34,
-      "clean": 32,
-      "repaired": 2,
+      "checked": 67,
+      "clean": 63,
+      "repaired": 4,
       "held": 0,
-      "errorsFound": 2,
+      "errorsFound": 4,
+      "unsourcedCut": 0,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 2,
+      "repairedBeforePublication": 4,
       "correctionsVerifiedClean": 1,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 13,
-      "clean": 10,
+      "read": 26,
+      "clean": 17,
       "corrected": 1,
       "stands": 0,
       "refused": 0,
-      "listed": 2,
+      "listed": 8,
       "unverifiable": 0,
-      "confirmedPerStory": 0.08,
+      "confirmedPerStory": 0.04,
       "withLessons": {
-        "read": 3,
+        "read": 13,
         "confirmedPerStory": 0
       },
       "claudeWithout": {
-        "read": 4,
+        "read": 7,
         "confirmedPerStory": 0
       }
     },
@@ -421,9 +441,9 @@
     "recurring": []
   },
   "lessons": {
-    "version": 37,
-    "active": 10,
-    "learnedFrom": 213,
+    "version": 42,
+    "active": 9,
+    "learnedFrom": 221,
     "kept": null,
     "lastTest": {
       "at": "2026-10-26T12:52:29.979Z",
@@ -476,7 +496,7 @@
     }
   },
   "evidence": {
-    "pairs": 29,
+    "pairs": 33,
     "vsKept": {
       "n": 0,
       "better": 0,

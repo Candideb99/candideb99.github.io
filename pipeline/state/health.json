@@ -13,10 +13,8 @@
   },
   "pagesCheckedAt": "2026-10-23T18:59:45.052Z",
   "last": {
-    "at": "2026-10-26T14:25:53.502Z",
-    "findings": [
-      "The same event was filed twice in the last two days: «لماذا تتجه السعودية إلى تخزين نفطها في سنغافورة؟» / «السعودية تعتزم مع سنغافورة إبرام اتفاق لتخزين نفطها في كهوف جورونج». That is a de-duplication weakness in pipeline/lib/select.mjs: tighten the rule; do not delete or edit the articles."
-    ],
+    "at": "2026-10-29T14:32:52.207Z",
+    "findings": [],
     "owner": [
       "خازندار: published stories with a proved error the corrections desk could not fix"
     ],
@@ -25,7 +23,5 @@
       "redo": []
     }
   },
-  "tries": {
-    "dup:ab62f72506": 1
-  }
+  "tries": {}
 }
