@@ -8508,6 +8508,34 @@
           ]
         }
       ]
+    },
+    "qatarenergy-us-lng-europe-force-majeure-d22b34": {
+      "at": "2026-10-29T19:42:05.663Z",
+      "title": "مشتريات «قطر للطاقة» الأمريكية لا تعوّض شحناتها المعلقة قبل 2030",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 45,
+            "checked": 45,
+            "supported": 44,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
