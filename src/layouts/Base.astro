@@ -198,7 +198,8 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
         }
         tick();
         masthead();
-        setInterval(tick, 60000);
+        // The date line turns with the clock too: a page left open past midnight kept yesterday's date (2026-10-29).
+        setInterval(function () { tick(); masthead(); }, 60000);
       })();
     </script>
     <script is:inline>

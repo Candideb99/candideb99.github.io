@@ -217,7 +217,14 @@ for (const s of sections) {
         const start = Math.max(0, Math.min(wanted, box.width - width));
         panel.style.insetInlineStart = `${Math.round(start)}px`;
       });
+      // A panel opened by hover covers the page, so Escape puts it away until the pointer leaves its section
+      // (content on hover must be dismissible without moving the pointer, 2026-10-29).
+      item.addEventListener("mouseleave", () => item.classList.remove("is-dismissed"));
     }
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      for (const open of document.querySelectorAll<HTMLElement>(".nav__item--panel:hover")) open.classList.add("is-dismissed");
+    });
   }
 
   // The phone menu is a native disclosure; it also closes on Escape (focus back on its button) and on
@@ -273,11 +280,17 @@ for (const s of sections) {
     flex: 1 1 auto;
     min-width: 0;
     display: flex;
-    justify-content: center;
     overflow-x: auto;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
   }
+  /* Centred while the sections fit, from their start when they do not. `justify-content: center` in a row that
+     scrolls pushed its start past any scroll position: from about 720 to 790px (iPad portrait among them) 15-37px
+     of «الرئيسية» or «الاقتصاد» could not be reached (2026-10-29). Two empty items with auto margins centre the row
+     and shrink to nothing when it overflows, whichever section is hidden in the pinned bar. */
+  .nav::before, .nav::after { content: ""; flex: none; }
+  .nav::before { margin-inline-start: auto; }
+  .nav::after { margin-inline-end: auto; }
   .nav::-webkit-scrollbar { display: none; }
   .nav__link {
     display: block;
@@ -352,6 +365,7 @@ for (const s of sections) {
     .nav__panel { display: flex; align-items: flex-start; visibility: hidden; transition: visibility 0s linear 0.1s; }
     .nav__item--panel:hover > .nav__link { background: var(--paper); color: var(--green); }
     .nav__item--panel:hover .nav__panel { visibility: visible; transition-delay: 0.15s; }
+    .nav__item--panel.is-dismissed .nav__panel { visibility: hidden; transition: none; }
   }
 
   /* Between a phone and a laptop the ears would squeeze the date into three lines: the date and the tools run as a
@@ -378,7 +392,7 @@ for (const s of sections) {
     .masthead--compact + .masthead__nav .nav__item--home { display: none; }
     /* …and is already in its pinned state, so nothing arrives when the hidden header is reported off screen. */
     .masthead--compact + .masthead__nav .bar__brand, .masthead--compact + .masthead__nav .bar__search { animation: none; }
-    .nav { justify-content: flex-start; }
+    .nav::before, .nav::after { display: none; }
     .nav__link { padding: 0.55rem 0.8rem 0.42rem; font-size: 0.92rem; }
     .bar__brand { padding-inline: 0 0.6rem; }
     .bar__brand img { height: 26px; }

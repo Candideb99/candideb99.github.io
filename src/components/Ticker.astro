@@ -79,6 +79,13 @@ const { items, label = "آخر الأخبار", lead = "time" } = Astro.props;
     var half = period();
     if (half < 200) return;
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { half = period(); });
+    // …and again when the width crosses a type step (720px changes the strip's size: 4112 against 4134px, so every
+    // wrap after a phone was turned jumped 22px, 2026-10-29).
+    var measuring;
+    window.addEventListener("resize", function () {
+      clearTimeout(measuring);
+      measuring = setTimeout(function () { var p = period(); if (p >= 200) { half = p; pos = pos % half; } }, 200);
+    });
     // The strip is scrolled by whole pixels, not transformed: text on a moving compositing layer
     // blurs at fractional positions. Sixty pixels a second; at the end of one period the scroll
     // position jumps back by exactly that period and the loop is seamless. In a right-to-left
@@ -96,15 +103,20 @@ const { items, label = "آخر الأخبار", lead = "time" } = Astro.props;
       pos = Math.abs(vp.scrollLeft) % half;
       last = null;
     }
-    vp.addEventListener("mouseenter", function () { hover = true; });
-    vp.addEventListener("mouseleave", function () { hover = false; adopt(); });
+    // Only a mouse hovers: a tap fires an emulated mouseenter with no mouseleave until the next tap elsewhere, and the
+    // strip stood still after a finger had left it (2026-10-29).
+    vp.addEventListener("pointerenter", function (e) { if (e.pointerType === "mouse") hover = true; });
+    vp.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") { hover = false; adopt(); } });
     vp.addEventListener("focusin", function () { focus = true; });
     vp.addEventListener("focusout", function () { focus = false; adopt(); });
     vp.addEventListener("touchstart", function () { touch = true; clearTimeout(touchTimer); }, { passive: true });
-    vp.addEventListener("touchend", function () {
+    function released() {
       clearTimeout(touchTimer);
       touchTimer = setTimeout(function () { touch = false; adopt(); }, 3000);
-    }, { passive: true });
+    }
+    vp.addEventListener("touchend", released, { passive: true });
+    // A touch the browser takes over (a long press opens the link menu) ends in touchcancel, never touchend.
+    vp.addEventListener("touchcancel", released, { passive: true });
     wrap.classList.add("ticker--moving");
     function frame(now) {
       if (!held() && !document.hidden) {

@@ -266,7 +266,8 @@ import Base from "@layouts/Base.astro";
   .search__results { margin-top: 1.5rem; max-width: 46rem; }
   .search__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 1rem; }
   .search__status { font-size: var(--fs-sm); color: var(--ink-3); }
-  .search__status:empty { display: none; }
+  /* An empty live region stays in the accessibility tree, so the first count is announced (display: none removed it). */
+  .search__status:empty { margin: 0; }
   .search__sort { display: flex; align-items: center; font-size: var(--fs-sm); }
   .search__sort[hidden] { display: none; }
   .search__sort-label { color: var(--ink-3); margin-inline-end: 0.2rem; }

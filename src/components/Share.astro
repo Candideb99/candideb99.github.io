@@ -38,14 +38,17 @@ const targets = [
     var url = root.getAttribute("data-share-url");
     var status = root.querySelector("[data-share-status]");
     var copy = root.querySelector("[data-copy]");
+    // Without a clipboard the button would do nothing, so it goes; a refused copy says so (2026-10-29).
+    if (copy && !navigator.clipboard) copy.closest("li").hidden = true;
     if (copy && navigator.clipboard) {
       copy.addEventListener("click", function () {
-        navigator.clipboard.writeText(url).then(function () {
-          var old = copy.textContent;
-          copy.textContent = "تم النسخ";
-          if (status) status.textContent = "تم نسخ الرابط";
+        var old = copy.textContent;
+        function say(button, line) {
+          copy.textContent = button;
+          if (status) status.textContent = line;
           setTimeout(function () { copy.textContent = old; if (status) status.textContent = ""; }, 2000);
-        });
+        }
+        navigator.clipboard.writeText(url).then(function () { say("تم النسخ", "تم نسخ الرابط"); }, function () { say("تعذّر النسخ", "تعذّر نسخ الرابط"); });
       });
     }
     var native = root.querySelector("[data-native]");

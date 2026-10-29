@@ -126,7 +126,8 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
       var tabs = root.querySelectorAll(".cover__tab");
       if (slides.length < 2 || tabs.length !== slides.length) return;
       var interval = Number(root.getAttribute("data-interval")) || 6000;
-      var phone = window.matchMedia("(max-width: 719px)").matches;
+      var narrow = window.matchMedia("(max-width: 719px)");
+      var phone = narrow.matches;
       var current = 0;
       var timer = null;
       var auto = !phone;
@@ -247,6 +248,23 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
       var resizing;
       window.addEventListener("resize", function () { clearTimeout(resizing); resizing = setTimeout(fit, 150); });
+      // A phone turned between landscape and portrait crosses the phone width: in portrait the stage holds the first
+      // story and stands still, as it does when the page opens there (2026-10-29: turned from landscape it kept
+      // turning, and the story on the stage was listed again under it).
+      function crossed() {
+        phone = narrow.matches;
+        auto = !phone;
+        if (phone) {
+          stop();
+          show(0);
+          if (box) box.style.minHeight = "";
+        } else {
+          fit();
+          resume();
+        }
+      }
+      if (narrow.addEventListener) narrow.addEventListener("change", crossed);
+      else if (narrow.addListener) narrow.addListener(crossed);
       start();
     }
   })();
