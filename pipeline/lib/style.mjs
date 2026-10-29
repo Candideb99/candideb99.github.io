@@ -15,6 +15,7 @@
  * file checks those.
  */
 import { normalizeDigits } from "./util.mjs";
+import { unplacedActors } from "./regions.mjs";
 
 const AR = "؀-ۿ";
 
@@ -422,6 +423,13 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
   const rootTwice = roots.filter((w, i) => roots.indexOf(w) !== i);
   if (twice.length) issues.push(`كلمة مكررة في العنوان («${twice[0]}»)؛ العنوان يقول الكلمة مرة.`);
   else if (rootTwice.length) warnings.push(`الكلمة نفسها مرتين في العنوان («${rootTwice[0]}»)؛ أعد صياغته بلا تكرار إن أمكن.`);
+  // Who the headline's actors are (lib/regions.mjs unplacedActors): the story gives «أكوا» its country, the headline
+  // and the dek leave it out, and a reader of the card cannot tell where the news happened.
+  const unplaced = news ? unplacedActors({ title, subtitle: dek, lede, body }) : [];
+  if (unplaced.length) {
+    const named = unplaced.map((a) => `«${a.name}» ${a.nisba}`);
+    issues.push(`العنوان والوصف يسمّيان ${unplaced.map((a) => `«${a.name}»`).join(" و")} دون بلدها، والخبر نفسه يقول ${named.join(" و")}؛ الصحف تعرّف في العنوان من قد لا يعرفه القارئ ببلده («"جي إي فيرنوفا" الأميركية تضخ 9 مليارات دولار…»، «أرباح "البحري" السعودية…»): اكتب ${named[0]} في العنوان، أو في أول الوصف إن ضاق العنوان.`);
+  }
   // An explainer is titled with the question it answers (the owner, 2026-09-24, on «عائد السند يرتفع كلما انخفض
   // سعره والعكس صحيح»: "i would opt in giving the headline as question").
   if (kind === "explainer" && !/؟\s*$/.test(title.trim())) issues.push(`عنوان الشرح سؤال واحد واضح ينتهي بـ«؟» يجيب عنه النص (مثل «لماذا يرتفع عائد السند كلما انخفض سعره؟»)، لا جملة خبرية ولا عنوان بنقطتين.`);

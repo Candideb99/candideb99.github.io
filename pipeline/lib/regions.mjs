@@ -73,6 +73,52 @@ function namesDesk(desk, text) {
 }
 
 /**
+ * Who the headline's actors are (the owner, 2026-10-29, on «أكوا» و«إي آي جي» تؤسسان منصة كهرباء أمريكية…: "confusing
+ * … no keywords for the location"). A desk gives a company, fund or bank its reader may not place its country in the
+ * headline: «"جي إي فيرنوفا" الأميركية تضخ 9 مليارات دولار بشركة معدات كهرباء ألمانية» (الشرق بلومبرغ), «أرباح "البحري"
+ * السعودية» (الاقتصادية), "Oman's Asyad Group", "Saudi dairy giant Almarai" (Reuters, on Zawya), all of 28 October.
+ * Code sees one case for certain: the story itself gives a name its nationality («أكوا» السعودية, «إي آي جي» (EIG)
+ * الأمريكية) and the headline carries the name while neither it nor the dek says the country (3 of 144 news stories of
+ * 18-29 October: ACWA, Scatec, SK Hynix). Each nationality, with the words that place it in a headline.
+ */
+const NATIONALITIES = {
+  "سعودي": ["سعودي", "المملكة", "الرياض", "جدة", "مكة", "المدينة المنورة", "الدمام", "نيوم"],
+  "إماراتي": ["إمارات", "أبوظبي", "أبو ظبي", "دبي", "الشارقة", "رأس الخيمة", "الفجيرة", "عجمان"], "قطري": ["قطر", "الدوحة"], "كويتي": ["كويت"],
+  "بحريني": ["بحرين", "المنامة"], "عماني": ["عمان", "مسقط"], "مصري": ["مصر", "القاهرة", "الإسكندرية"], "مغربي": ["مغرب"], "جزائري": ["جزائر"], "تونسي": ["تونس"],
+  "ليبي": ["ليبي"], "إيراني": ["إيران"], "عراقي": ["عراق"], "تركي": ["ترك"], "إسرائيلي": ["إسرائيل"], "أردني": ["أردن"],
+  "لبناني": ["لبنان"], "سوري": ["سوري"], "يمني": ["يمن"], "فلسطيني": ["فلسطين"], "أمريكي": ["أمريك", "أميرك", "الولايات المتحدة", "واشنطن"],
+  "أميركي": ["أمريك", "أميرك", "الولايات المتحدة", "واشنطن"], "كندي": ["كند"], "مكسيكي": ["مكسيك"], "برازيلي": ["برازيل"],
+  "صيني": ["صين", "بكين"], "ياباني": ["يابان", "طوكيو"], "هندي": ["هند"], "كوري": ["كوري"], "تايواني": ["تايوان"], "سنغافوري": ["سنغافور"],
+  "إندونيسي": ["إندونيسي"], "ماليزي": ["ماليزي"], "باكستاني": ["باكستان"], "أسترالي": ["أسترالي"], "روسي": ["روسي"],
+  "أوكراني": ["أوكراني"], "بريطاني": ["بريطاني", "المملكة المتحدة", "لندن"], "ألماني": ["ألماني"], "فرنسي": ["فرنس", "باريس"],
+  "إيطالي": ["إيطالي"], "إسباني": ["إسباني"], "هولندي": ["هولند"], "سويسري": ["سويسر"], "سويدي": ["سويد"], "نرويجي": ["نرويج"],
+  "دنماركي": ["دنمار"], "فنلندي": ["فنلند"], "بلجيكي": ["بلجيك"], "نمساوي": ["نمسا"], "نيجيري": ["نيجيري"], "فنزويلي": ["فنزويل"],
+};
+// Household names, whose country no Arab reader needs told (the writer's rule says the same; «مصر تبحث مع «بي بي»…»
+// was the one other hit of the first calibration).
+const HOUSEHOLD = new Set(["بي بي", "شل", "توتال إنرجيز", "إكسون موبيل", "شيفرون", "أرامكو", "أدنوك", "أبل", "مايكروسوفت", "ألفابت",
+  "غوغل", "جوجل", "أمازون", "ميتا", "إنفيديا", "تسلا", "سامسونغ", "تويوتا", "بوينغ", "إيرباص"].map(normalizePlace));
+const nationalityKey = (word) => normalizePlace(word).replace(/(?:يه|يين|يون|ين|ي)$/, "");
+const NATIONALITY_BY_KEY = new Map(Object.entries(NATIONALITIES).map(([nisba, places]) => [nationalityKey(nisba), places.map(normalizePlace)]));
+// A name in «», a Latin gloss in brackets allowed, then its nisba: «أكوا» السعودية، «إي آي جي» (EIG) الأمريكية.
+const NAMED_NATIONALITY = /«([^»]{2,40})»(?:\s*\([^)]{1,60}\))?\s+(ال[ء-ي]+)/g;
+
+/** The names the headline carries without the nationality the story itself gives them: [{ name, nisba }]. */
+export function unplacedActors({ title = "", subtitle = "", lede = "", body = "" } = {}) {
+  const head = normalizePlace(title);
+  const shown = normalizePlace(`${title}\n${subtitle}`);
+  const out = [];
+  for (const m of `${lede}\n${body}`.matchAll(NAMED_NATIONALITY)) {
+    const [, name, nisba] = m;
+    const places = NATIONALITY_BY_KEY.get(nationalityKey(nisba.slice(2)));
+    if (!places || HOUSEHOLD.has(normalizePlace(name)) || !head.includes(normalizePlace(name)) || out.some((o) => o.name === name)) continue;
+    if (places.some((p) => shown.includes(p))) continue;
+    out.push({ name, nisba });
+  }
+  return out;
+}
+
+/**
  * The story's regions held to where its event happens: an Arab desk stays only when the headline, dek or lede names
  * one of its places, and joins when the headline names one the writer left out; a story left with none is the world
  * desk's. The other regions (Europe, the Americas, Asia, Africa, the world) all fold into the site's العالم and pass.
