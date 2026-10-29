@@ -7971,6 +7971,135 @@
           "noted": []
         }
       ]
+    },
+    "world-bank-raises-commodity-price-forecasts-2026-9559f0": {
+      "at": "2026-10-29T01:16:55.305Z",
+      "title": "البنك الدولي يتوقع ارتفاع أسعار الطاقة 32% في 2026",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v40",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 29,
+            "checked": 29,
+            "supported": 26,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "iraq-syria-discuss-banias-oil-exports-6a6a92": {
+      "at": "2026-10-29T01:35:13.217Z",
+      "title": "بغداد ودمشق تبحثان تصدير ما يصل إلى مليوني برميل نفط يومياً عبر بانياس",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v40",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 20,
+            "checked": 20,
+            "supported": 20,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "alphabet-shares-fall-after-earnings-miss-7ca1aa": {
+      "at": "2026-10-29T01:52:25.893Z",
+      "title": "سهم ألفابت يهبط بأكثر من 10% بعد نتائج دون التوقعات",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v40",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 40,
+            "checked": 40,
+            "supported": 36,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 33,
+              "field": "body",
+              "class": "hedge",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وكانت ألفابت قد قالت في يوليو إن إنفاقها هذا العام سيصل إلى 205 مليارات دولار، أي أكثر من ضعف ما أنفقته العام الماضي.",
+              "quote": "وقالت \"ألفابت\" في يوليو إن إنفاقها الرأسمالي سيصل إلى ما يصل إلى 205 مليارات دولار هذا العام، أي أكثر من ضعف ما أنفقته العام الماضي.",
+              "source": "Asharq Business",
+              "sourceN": 1,
+              "correction": "Alphabet said in July that capex would be up to $205 billion this year (the top of a range), not that it would reach $205 billion."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 40,
+            "checked": 40,
+            "supported": 37,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [],
+          "unsourced": {
+            "asked": 1,
+            "kept": [
+              {
+                "sentence": "والتدفق النقدي الحر هو، بوجه عام، ما يتبقى من النقد الذي تولده الأعمال بعد الإنفاق الرأسمالي.",
+                "reason": "definition"
+              }
+            ],
+            "removed": []
+          }
+        }
+      ]
     }
   },
   "held": []

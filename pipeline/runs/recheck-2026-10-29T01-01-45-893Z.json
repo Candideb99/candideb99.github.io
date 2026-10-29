@@ -1,0 +1,48 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-29T01:01:45.893Z",
+  "durationSec": 64,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "fed-holds-rates-two-dissents-hike-ae3a21",
+      "title": "الفيدرالي الأمريكي يبقي الفائدة بين 3.75% و4% رغم مطالبة عضوتين برفعها",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 33,
+        "checked": 33,
+        "supported": 28,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 10319,
+    "completionTokens": 8162,
+    "cacheReadTokens": 0,
+    "costUsd": 0.2458,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[01:01:46] second look: 1 to read now (1 published pieces not yet read; 147 read clean before publication and left out of the audit sample)",
+    "[01:01:47] fed-holds-rates-two-dissents-hike-ae3a21:   source https://www.bloomberg.com/news/videos/2026-10-28/fed-leaves-rates-unchanged-cook: http-403; read from the copy saved at publication (fetched then)",
+    "[01:02:49] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2968 attempt=1 ms=61499",
+    "[01:02:49] fed-holds-rates-two-dissents-hike-ae3a21: 33 of 33 sentences checked · 28 supported · 1 without a source · 0 confirmed error(s)"
+  ]
+}

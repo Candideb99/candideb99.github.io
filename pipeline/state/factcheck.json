@@ -13273,6 +13273,56 @@
         }
       ],
       "outcome": "clean"
+    },
+    "fed-holds-rates-two-dissents-hike-ae3a21": {
+      "at": "2026-10-29T01:01:46.296Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-28T20:38:36.917Z",
+      "sourcesRead": 5,
+      "sourcesAll": 5,
+      "fromCopy": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 33,
+        "checked": 33,
+        "supported": 28,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "ومسار أسعار الطاقة حتى ديسمبر سيحدد ثمن كل منهما، من دون أن يحسم وحده اتجاه القرار."
+      ],
+      "weak": [
+        {
+          "sentence": "التثبيت يلي أول رفع للفائدة منذ 2023، والتضخم صعد إلى 3.7% في سبتمبر مع ارتفاع أسعار النفط",
+          "quote": "Last month, Fed officials raised rates for the first time since 2023, citing rising inflation, bringing rates to a range of 3.75% to 4%."
+        },
+        {
+          "sentence": "أبقى الاحتياطي الفيدرالي الأمريكي الأربعاء النطاق المستهدف لسعر الفائدة عند 3.75% إلى 4%، بأغلبية 10 أصوات مقابل صوتين، في آخر اجتماع له قبل الانتخابات النصفية المقررة الأسبوع المقبل.",
+          "quote": "The US Federal Reserve left interest rates unchanged on Wednesday during its last board meeting before the midterm elections, keeping rates at one of the highest pre-election levels seen in over 20 years.Two out of 12 board members voted against the pause, preferring to raise rates by a quarter point this meeting, the Fed board said in a statement."
+        },
+        {
+          "sentence": "إذا ظل النفط يدفع الأسعار صعوداً بعد إغلاق مضيق هرمز، فسيقف الاحتياطي الفيدرالي بين خيارين لكلٍّ منهما ثمن: رفع للفائدة يكبح الطلب وقد لا يطال صدمة المعروض، أو تمهّل يترك تضخماً فوق هدف 2% منذ نحو خمس سنوات ونصف يترسخ في توقعات الأسر والشركات.",
+          "quote": "ويأتي هذا الحذر في ظل استمرار التضخم أعلى من المستوى المستهدف، بعد نحو خمس سنوات ونصف السنة من عدم عودته إلى هدف البنك المركزي."
+        },
+        {
+          "sentence": "أما الذهب فقلّص خسائره لكنه ظل منخفضاً بنحو 0.1% عند 4054.53 دولار للأونصة، في حين ارتفع مؤشر ستاندرد آند بورز 500 بنسبة 0.28% إلى 7743.98 نقطة بحلول 20:20 بتوقيت غرينتش.",
+          "quote": "وتزامنت التصريحات مع تحركات في الأسواق المالية، إذ قلّص الذهب خسائره خلال الجلسة، لكنه ظل منخفضاً بنحو 0.1 في المائة إلى 4054.53 دولار للأونصة."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }
