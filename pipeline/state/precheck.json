@@ -8328,6 +8328,90 @@
           ]
         }
       ]
+    },
+    "iran-guards-three-tankers-mines-hormuz-0a00e6": {
+      "at": "2026-10-29T10:18:30.911Z",
+      "title": "الحرس الثوري: ألغام بحرية تفجّر 3 ناقلات نفط جنوبي مضيق هرمز",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v42",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 24,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "lagarde-to-step-down-ecb-february-2027-5994fe": {
+      "at": "2026-10-29T10:27:42.669Z",
+      "title": "لاغارد تتنحى عن رئاسة المركزي الأوروبي في 7 فبراير 2027",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v42",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 7,
+            "checked": 7,
+            "supported": 6,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "microsoft-revenue-record-azure-growth-3a126f": {
+      "at": "2026-10-29T10:41:22.271Z",
+      "title": "إيرادات مايكروسوفت ترتفع 19% إلى 92.3 مليار دولار بدعم نمو أزور 48%",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v42",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 38,
+            "checked": 38,
+            "supported": 30,
+            "weak": 8,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

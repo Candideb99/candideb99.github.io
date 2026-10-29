@@ -1,0 +1,463 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-29T10:06:39.556Z",
+  "durationSec": 2301,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "احتراق 3 ناقلات نفط بألغام بحرية في مضيق هرمز",
+      "section": "energy",
+      "importance": 8,
+      "sources": [
+        "https://www.aljazeera.net/news/2026/10/29/%d8%b9%d8%a7%d8%ac%d9%84-%d8%a8%d8%ad%d8%b1%d9%8a%d8%a9-%d8%a7%d9%84%d8%ad%d8%b1%d8%b3-%d8%a7%d9%84%d8%ab%d9%88%d8%b1%d9%8a-%d8%a7%d9%84%d8%a5%d9%8a%d8%b1%d8%a7%d9%86%d9%8a",
+        "https://www.arabnews.com/middle-east/irans-revolutionary-guards-say-three-oil-tankers-hit-mines-in-strait-of-hormuz-3008795"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والمقدمة ينسبان الانفجارات بوضوح إلى إعلان الحرس الثوري. لكن فقرة UKMTO تُفهم كأنها تأكيد مستقل للحادث نفسه، والمصدر 2 لا يربط السفينة المشتعلة بالألغام ولا يذكر سبب الحريق.",
+              "repair": "إضافة أن الهيئة لم توضح سبب الحريق أو الإصابات، وعدم تقديم السفينة المشتعلة على أنها إحدى الناقلات الثلاث."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "خلفية الحصار المضاد ومحاولة إيران السيطرة على المضيق حاضرة (المصدر 2). لكن قسم الضربات المحتملة يفتقد ما يوفره المصدر 1: لا ضربات منذ أوائل سبتمبر، ونشر حاملة «ثيودور روزفلت» ونحو 9000 جندي. وصندوق «لماذا يهمّ» لا يربط الحدث بإمدادات النفط والغاز.",
+              "repair": "إدراج معلومات الحشد العسكري ومدة التوقف عن الضربات في قسم «احتمال تجدد الضربات»، وبناء الصندوق على قناة الإمدادات العالمية بدل تكرار تحذير المسؤولين الأمريكيين."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرة الثانية تبدأ بإحالة إلى ما قبلها («وبهذا التحذير») وتكرر العنوان الفرعي باستنتاج تحريري. وجملة الصندوق الثانية تعيد خلاصة الفقرة قبل الأخيرة بإسناد.",
+              "repair": "دمج اقتباس الألغام وتحميل المسؤولية في الفقرة الأولى، وحذف الاستنتاج، وتوحيد خلاصة خطر منشآت الطاقة في موضع واحد دون إسناد داخل الصندوق."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام (3 ناقلات، 24 ساعة، 9 أميال/17 كم، 3 نوفمبر) مطابقة للمصادر. لكن وصف وظيفة UKMTO غير مسند، و«المسار الجنوبي البديل» صفة غير مسندة، وخانة الأميال التسعة في صندوق الأرقام لا تخص الحدث الرئيسي بشكل ثابت.",
+              "repair": "حذف وصف وظيفة الهيئة وكلمة «البديل»، وإخراج خانة الأميال من صندوق الأرقام مع إبقائها في النص."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة ينسبان الانفجارات صراحة إلى إعلان الحرس الثوري. وفقرة UKMTO تحمل الآن القيد «من دون أن توضح سبب الحريق أو تذكر إصابات»، فلا تُقدَّم السفينة المشتعلة على أنها إحدى الناقلات الثلاث. وقسم الضربات يحافظ على أن ترامب «لم يتخذ قراراً نهائياً»، ويفصل الحادثين بعبارة «تتزامن» دون اختلاق رابط سببي.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يورد المتن العناصر التي تجعل الحدث مفهوماً، وكلها مما توفره المصادر: أهمية المضيق لإمدادات النفط والغاز (المصدر 2)، وهجمات إيران منذ فبراير والحصار المضاد (المصدر 2)، والتوقف عن الضربات منذ أوائل سبتمبر، وحشد «روزفلت» ونحو 9000 جندي، وتقدير مسؤول أمريكي بوجود بحري يتجاوز 20 ألفاً، ورفض البيت الأبيض التعليق، ومقترح عراقجي (المصدر 1). ويبني صندوق «لماذا يهمّ» على مقدمات مسندة، هي إعلان تلغيم المسار وربط الفتح بالشروط وكون المضيق ممراً رئيسياً، ثم يستنتج أن العبور صار مرهوناً بإذن طهران. ويقيّد امتداد الخطر إلى منشآت الطاقة بشرطَي استئناف الضربات وحدوث رد إيراني، وهو استنتاج محدود ومشروط.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "حُذفت الإحالة الافتتاحية «وبهذا التحذير» والاستنتاج التحريري من المتن. ودُمج اقتباس الألغام مع تحميل المسؤولية في الفقرة الأولى. وتنتقل الفقرات من رواية الحرس إلى موقف الجيش، ثم إلى البلاغ البريطاني والخلفية، ثم إلى احتمال الضربات وحجم الحشد، وتنتهي بالمسار الدبلوماسي. وجملة الصندوق الثانية لم تعد تكرر خلاصة المتن بإسناد، بل تضع شرطاً لانتقال الخطر.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والتواريخ مطابقة للمصادر: 3 ناقلات، و24 ساعة، و9 أميال (17 كم)، و3 نوفمبر، وأوائل سبتمبر، و«أواخر سبتمبر» المحسوبة صحيحاً من «الشهر الماضي» في نص منشور يوم 29 أكتوبر، ونحو 9000، وأكثر من 20 ألفاً. لكن صندوق الأرقام يضم «نحو 9000 جندي»، وهو رقم من خلفية الحشد لا من حادث العنوان.",
+              "repair": "حذف خانة «نحو 9000 جندي» من key_facts مع إبقائها في الفقرة الخاصة بالحشد العسكري."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 3,
+      "mendIssues": [
+        "صندوق «الأرقام» يضم رقماً من خارج حدث العنوان: «القوات المرسلة مع حاملة «ثيودور روزفلت» والسفن البرمائية: نحو 9000 جندي». هذا الرقم خلفية للحشد العسكري الأمريكي في أواخر سبتمبر (المصدر 1)، وليس من حادث الألغام والناقلات الذي يحمله العنوان. يُخرج من الصندوق ويبقى في النص، ويكتفى في الصندوق بخانتي «3 ناقلات» و«24 ساعة».",
+        "تكرار ثقيل في الفقرة الأولى من المتن: «ثم حاولت العبور عبر المسار الجنوبي المحظور». المصدر 1 يقول «حاولت الخروج عبر المسار الجنوبي المحظور». الصياغة المقترحة: «ثم حاولت الخروج من المسار الجنوبي المحظور» أو «ثم سلكت المسار الجنوبي المحظور».",
+        "الأرقام والتواريخ مطابقة للمصادر: 3 ناقلات، و24 ساعة، و9 أميال (17 كم)، و3 نوفمبر، وأوائل سبتمبر، و«أواخر سبتمبر» المحسوبة صحيحاً من «الشهر الماضي» في نص منشور يوم 29 أكتوبر، ونحو 9000، وأكثر من 20 ألفاً. لكن صندوق الأرقام يضم «نحو 9000 جندي»، وهو رقم من خلفية الحشد لا من حادث العنوان. — حذف خانة «نحو 9000 جندي» من key_facts مع إبقائها في الفقرة الخاصة بالحشد العسكري."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قال بيان بحرية الحرس الثوري إن المسار غير المصرح به في مضيق هرمز يحتوي على ألغام بحرية، وحمّل ملاك السفن وطواقمها مسؤولية عبوره",
+          "source": 1
+        },
+        {
+          "fact": "قال الجيش الإيراني إن المضيق لن يُفتح حتى تتحقق شروط إيران بالكامل",
+          "source": 1
+        },
+        {
+          "fact": "مضيق هرمز نقطة عبور رئيسية لإمدادات النفط والغاز الطبيعي العالمية",
+          "source": 2
+        },
+        {
+          "fact": "حث مسؤولون أمريكيون الحلفاء على تدابير احترازية تحسباً لرد إيراني قد يشمل ضربات على منشآت الطاقة، مع احتمال تجدد العمليات بعد انتخابات 3 نوفمبر",
+          "source": 1
+        }
+      ],
+      "slug": "iran-guards-three-tankers-mines-hormuz-0a00e6",
+      "title": "الحرس الثوري: ألغام بحرية تفجّر 3 ناقلات نفط جنوبي مضيق هرمز",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "لاغارد تتنحى عن رئاسة المركزي الأوروبي في فبراير 2027",
+      "section": "economy",
+      "importance": 8,
+      "sources": [
+        "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr261029~abbb6dc64b.en.html",
+        "https://www.bloomberg.com/news/articles/2026-10-29/lagarde-will-step-down-as-ecb-president-in-february"
+      ],
+      "format": "short",
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي والمقدمة تبيّن معاً ما الذي تغيّر: لاغارد أبلغت مجلس المحافظين وكوستا بأنها ستتنحى في 7 فبراير 2027، وسيعيّن المجلس الأوروبي خليفتها. يوم 29 أكتوبر 2026 خميس فعلاً.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يحسب للتقرير أنه شرح أن البنك لا يختار رئيسه بنفسه. لكنه بنى على وصف بلومبرغ نتيجة غير مسندة: «محل متابعة تتجاوز البنك في فرانكفورت».",
+              "repair": "الاكتفاء بما يذكره المصدر 2: الإعلان يزيد حدة الصراع على خلافة واحدة من أقوى صانعي السياسة النقدية في العالم، دون أي إضافة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الجملة «وبذلك تبقى لاغارد…» تعيد ما قيل قبلها. والخاتمة «ولم يكشف سبب التنحي» تملأ الفراغ بما لا تقوله المصادر.",
+              "repair": "حذف الجملتين وختم التقرير بتفصيل موثق: شكر المجلس لاغارد بحرارة وتصفيقه لها طويلاً وقوفاً (المصدر 1)."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«تنطلق عملية اختيار من يخلفها» تنسب إلى الحاضر بدء عملية لم يحدد المصدر 1 موعدها. أما عبارة «عقب إبلاغه بقرارها» فمقبولة.",
+              "repair": "حذف عبارة الانطلاق، والإبقاء على أن التعيين سيجري وفق إجراءات المادة 283 دون تحديد توقيت."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي والمقدمة تبيّن معاً ما تغيّر: لاغارد ستتنحى في 7 فبراير 2027 ويعيّن المجلس الأوروبي خليفتها. ويُنسب اشتداد التنافس إلى «بلومبرغ»، ولا يرد ما يوحي بأن الخليفة اختير أو أن العملية بدأت.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يشرح التقرير أن البنك لا يعيّن رئيسه بنفسه، وأن التعيين يجري وفق المادة 283 (المصدر 1)، وينقل تقدير «بلومبرغ» لثقل المنصب (المصدر 2). لا تقدّم المصادر سبباً للتنحي ولا سياقاً آخر، والقصة القصيرة لا تحتاج أكثر من ذلك.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "تعيين المجلس الأوروبي للخليفة يتكرر في المقدمة ثم مرتين في الفقرة الثانية («وبذلك يصدر قرار الخلافة...»). والفقرة الأولى تربط التصفيق ببقاء لاغارد بأداة تباين «مع أنها» لا يسندها المصدر. والفقرة الأخيرة تصف المنصب بصفة شاغلته في جملة مثقلة باعتراض.",
+              "repair": "حذف جملة «وبذلك...» و«مع أنها باقية في منصبها...»، ثم إعادة صياغة سطر «بلومبرغ»: «ورأت وكالة «بلومبرغ» الأمريكية أن الإعلان يزيد حدة التنافس على خلافة واحدة من أقوى صانعي السياسة النقدية في العالم.»"
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "التاريخ 7 فبراير 2027، ويوم الإعلان (الخميس 29 أكتوبر 2026)، والمادة 283، واسم كوستا وصفته، كلها مطابقة للمصدر 1. وعبارة «مطلع 2027» منسوبة إلى «بلومبرغ» ومتسقة مع التاريخ الدقيق.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 5,
+      "mendIssues": [
+        "تباين غير مسند: «ووقف أعضاؤه يصفقون لها طويلاً، مع أنها باقية في منصبها حتى 7 فبراير 2027». المصدر 1 يذكر الشكر والتصفيق دون أي مقابلة بينهما وبين بقائها في المنصب، فأداة «مع أنها» تصنع تناقضاً لا يقوله المصدر، كما يتكرر التاريخ للمرة الثالثة. الإصلاح: «وقال البنك إن مجلس المحافظين شكرها بحرارة، ووقف أعضاؤه يصفقون لها طويلاً.»",
+        "ما زال التكرار في المعنى قائماً جزئياً (الملاحظتان 4 و6 السابقتان): تعيين المجلس الأوروبي للخليفة يرد في المقدمة، ثم مرتين في الفقرة الثانية. وحلّت عبارة «وبذلك يصدر قرار الخلافة عن المجلس الذي يرأسه كوستا، أحد الطرفين اللذين أبلغتهما لاغارد بتنحيها» محل «وبذلك تبقى...» المحذوفة، وهي صدى من النوع نفسه. الإصلاح: حذف جملة «وبذلك...» والاكتفاء بـ«ولا يعيّن البنك المركزي الأوروبي رئيسه بنفسه، إذ يتولى المجلس الأوروبي تعيين خليفة لاغارد وفق إجراءات الترشيح التي تنص عليها المادة 283 من معاهدة عمل الاتحاد الأوروبي.»",
+        "بناء متعثر في الفقرة الأخيرة: «ووصفت وكالة «بلومبرغ» الأمريكية، التي أشارت إلى أن لاغارد ستغادر البنك في مطلع 2027، المنصب المتنافس عليه بأن شاغلته الحالية واحدة من أقوى صانعي السياسة النقدية في العالم». الجملة تصف المنصب بصفة شاغلته، وتعترضها جملة وصل تكرر موعداً سبق ذكره بدقة. الإصلاح: «ورأت وكالة «بلومبرغ» الأمريكية أن الإعلان يزيد حدة التنافس على خلافة واحدة من أقوى صانعي السياسة النقدية في العالم.»",
+        "تعدية غير مألوفة: «وأبلغت لاغارد قرارها الخميس إلى مجلس محافظي البنك، وإلى أنطونيو كوستا». الإصلاح: «وأبلغت لاغارد بقرارها مجلسَ محافظي البنك ورئيسَ المجلس الأوروبي أنطونيو كوستا»، مع حذف «الخميس» المكررة من المقدمة.",
+        "تعيين المجلس الأوروبي للخليفة يتكرر في المقدمة ثم مرتين في الفقرة الثانية («وبذلك يصدر قرار الخلافة...»). والفقرة الأولى تربط التصفيق ببقاء لاغارد بأداة تباين «مع أنها» لا يسندها المصدر. والفقرة الأخيرة تصف المنصب بصفة شاغلته في جملة مثقلة باعتراض. — حذف جملة «وبذلك...» و«مع أنها باقية في منصبها...»، ثم إعادة صياغة سطر «بلومبرغ»: «ورأت وكالة «بلومبرغ» الأمريكية أن الإعلان يزيد حدة التنافس على خلافة واحدة من أقوى صانعي السياسة النقدية في العالم.»"
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [],
+      "slug": "lagarde-to-step-down-ecb-february-2027-5994fe",
+      "title": "لاغارد تتنحى عن رئاسة المركزي الأوروبي في 7 فبراير 2027",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "أرباح اتصالات ترتفع 45.9% إلى 17.2 مليار درهم في 9 أشهر بدعم بيع حصة فودافون",
+      "section": "companies",
+      "importance": 7,
+      "sources": [
+        "https://www.agbi.com/telecoms/2026/10/vodafone-stake-sale-boosts-etisalat-profit/",
+        "https://www.skynewsarabia.com/business/1901159-15-7-%D9%85%D9%84%D9%8A%D8%A7%D8%B1-%D8%AF%D9%88%D9%84%D8%A7%D8%B1-%D8%A5%D9%8A%D8%B1%D8%A7%D8%AF%D8%A7%D8%AA-%D8%A7%D8%AA%D8%B5%D8%A7%D9%84%D8%A7%D8%AA-9-%D8%A3%D8%B4%D9%87%D8%B1-%D8%A8%D9%86%D9%85%D9%88-10"
+      ],
+      "outcome": "skipped: repeats a recent story («أرباح الدار ترتفع 19% في 9 أشهر رغم تراجع مبيعاتها في الإمارات»)"
+    },
+    {
+      "headline": "إيرادات مايكروسوفت ترتفع 19% إلى 92.3 مليار دولار بدعم نمو أزور 48%",
+      "section": "technology",
+      "importance": 7,
+      "sources": [
+        "https://www.theguardian.com/technology/2026/oct/28/microsoft-earnings",
+        "https://www.haberturk.com/ekonomi/microsoft-tan-3-ayda-36-6-milyar-dolar-net-kr-3923411",
+        "https://www.cnbc.com/2026/10/28/microsoft-msft-q1-earnings-report-2027.html",
+        "https://techcrunch.com/2026/10/28/microsoft-hits-10-quarters-of-record-breaking-revenue-in-a-row/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والمقدمة يحددان الحدث بدقة: إيرادات قياسية بلغت 92.3 مليار دولار بنمو 19%، بدعم نمو أزور 48%. أما العنوان الفرعي فيقدم التدفق الحر على أنه «يبقى موجباً» دون ذكر تراجعه 27%.",
+              "repair": "إدراج «يتراجع 27% لكنه يبقى موجباً» في العنوان الفرعي."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المقال يقارن الأرقام بالتوقعات وبالعام السابق، ويقارن بألفابت وميتا. لكنه لا يذكر أن قطاعي «الوكلاء والبنية التحتية» و«الأجهزة والمستهلك» تقسيم جديد يحل محل ثلاثة قطاعات استمرت 11 عاماً (SOURCE 3). ولا يذكر حجم عرض المغادرة نسبة إلى القوة العاملة (SOURCE 1). ويغيب كذلك تفسير التحول إلى الأصول قصيرة العمر (SOURCE 3). وفي «لماذا يهمّ» تأتي المقدمات من المصادر، لكن الاستنتاج يحصر التدفق في أزور ويتجاهل توقع الشركة.",
+              "repair": "إضافة جملة عن التقسيم الجديد للقطاعات، وعبارة «نحو ربع موظفيها البالغين 223 ألفاً»، وتفسير CNBC للأصول قصيرة العمر. وتلطيف الاستنتاج في «لماذا يهمّ» على النحو المقترح في القضايا."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات مجمعة حسب وظيفتها: النتائج، ثم أزور، ثم الإنفاق والتدفق، ثم التوقعات. غير أن جملة «وكانت الإيرادات قبل عام 77.7 مليار دولار» ملحقة بعد إسناد FactSet بلا رابط، وفقرة الـ75% معزولة.",
+              "repair": "نقل مقارنة الـ77.7 مليار إلى المقدمة بجانب نمو الـ19%، ودمج فقرة الأصول قصيرة العمر مع فقرة الإنفاق الرأسمالي مع تفسيرها."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «170 مليار دولار لكامل عام 2027» تخص العام الميلادي في SOURCE 3، بينما يستخدم المقال السنة المالية في مواضع أخرى. أما بقية الأرقام والمقارنات والإسنادات (FactSet وLSEG وStreetAccount) فمطابقة للمصادر.",
+              "repair": "كتابة «للعام الميلادي 2027»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يحدد العنوان والمقدمة الحدث بدقة: إيرادات قياسية بلغت 92.3 مليار دولار بنمو 19% مقابل 77.7 مليار قبل عام، بدعم نمو أزور 48%. ويضيف العنوان الفرعي القيد اللازم، وهو أن التدفق الحر «يتراجع 27% لكنه يبقى موجباً». ويقرأ القارئ الثلاثة معاً دون تناقض.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يضع المقال كل رقم في سياقه من المصادر. يقارن نمو أزور بـ42% في ربع يونيو، ويقارن النتائج بتوقعات FactSet وLSEG وStreetAccount، والتدفق الحر بألفابت وميتا (SOURCE 3). ويشرح التقسيم الجديد للقطاعات بدل ثلاثة قطاعات استمرت 11 عاماً، ويقدم تفسير CNBC للتحول إلى الأصول قصيرة العمر، ويبين أن عرض المغادرة يشمل نحو ربع الموظفين وأنه الثاني هذا العام (SOURCE 1). وفي «لماذا يهمّ» مقدمات مسندة إلى المصادر: التدفق الموجب، والسالب لدى المنافسين، والإنفاق المخطط فوق 50 مليار دولار. يستنتج الموقع منها أن هامش التمويل الذاتي يضيق، ويقيد الاستنتاج بشرط سرعة تحويل الأصول إلى إيرادات، ويذكر توقع الشركة ببقاء التدفق موجباً.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الفقرات مرتبة حسب وظيفتها: النتائج ورد فعل السهم، ثم أزور والقطاعات، ثم الإنفاق والتدفق والتمويل والوظائف، ثم التوقعات. والصندوق يضيف استنتاجاً عن هامش التمويل الذاتي ولا يكرر خاتمة المتن. الخلل الوحيد في «...وفق إفصاحات تنظيمية، وهو ثاني عرض مغادرة طوعية تقدمه هذا العام»، إذ لا يعود الضمير بوضوح إلى العرض.",
+              "repair": "دمج وصف «ثاني عرض هذا العام» في جملة العرض نفسها، وجعل نسبة الربع وعدد الـ223 ألفاً جملة مستقلة بعدها."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "عُدّلت عبارة «170 مليار دولار للعام الميلادي 2027» فصارت تميز العام الميلادي عن السنة المالية. ويفرق المقال بين ربحية السهم المعدلة (4.89 دولار) وغير المعدلة (4.92 دولار)، ويذكر استثناء خسارة OpenAI. ويوضح أن الإنفاق الرأسمالي يشمل عقود التأجير التمويلي، وأن توقع نمو أزور محسوب بأسعار صرف ثابتة. ويقدم توقعات هود بصيغ التوقع والترجيح لا بصيغ الإنجاز.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 2,
+      "mendIssues": [
+        "مرجع ضمير غير واضح في فقرة الوظائف (SOURCE 1): «ويعادل هؤلاء نحو ربع القوة العاملة للشركة، التي بلغ عدد موظفيها 223 ألفاً في نهاية يونيو وفق إفصاحات تنظيمية، وهو ثاني عرض مغادرة طوعية تقدمه هذا العام». يأتي الضمير «وهو» بعد جملة عن عدد الموظفين، فيبدو عائداً إلى الرقم لا إلى عرض المغادرة. والإصلاح نقل الوصف إلى جملة العرض نفسها: «ثم عرضت الاثنين تعويضات مغادرة طوعية على ما يصل إلى 60 ألف موظف، في ثاني عرض من هذا النوع هذا العام، سعياً إلى الموازنة بين بناء مكلف لبنية الذكاء الاصطناعي وكفاءة رأس المال، بحسب CNBC. ويمثل هذا العدد نحو ربع موظفي الشركة البالغين 223 ألفاً في نهاية يونيو وفق إفصاحات تنظيمية».",
+        "الفقرات مرتبة حسب وظيفتها: النتائج ورد فعل السهم، ثم أزور والقطاعات، ثم الإنفاق والتدفق والتمويل والوظائف، ثم التوقعات. والصندوق يضيف استنتاجاً عن هامش التمويل الذاتي ولا يكرر خاتمة المتن. الخلل الوحيد في «...وفق إفصاحات تنظيمية، وهو ثاني عرض مغادرة طوعية تقدمه هذا العام»، إذ لا يعود الضمير بوضوح إلى العرض. — دمج وصف «ثاني عرض هذا العام» في جملة العرض نفسها، وجعل نسبة الربع وعدد الـ223 ألفاً جملة مستقلة بعدها."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تراجع التدفق النقدي الحر لمايكروسوفت 27% إلى 18.63 مليار دولار في الربع الأول من السنة المالية",
+          "source": 3
+        },
+        {
+          "fact": "سجلت ألفابت تدفقاً نقدياً حراً سالباً تجاوز 9 مليارات دولار، بعدما قالت ميتا إن تدفقها النقدي أصبح سالباً للمرة الأولى",
+          "source": 3
+        },
+        {
+          "fact": "تستهدف مايكروسوفت إنفاقاً رأسمالياً يتجاوز 50 مليار دولار في الربع الثاني، ونحو 75% من إنفاقها مرتبط بأصول قصيرة العمر",
+          "source": 3
+        },
+        {
+          "fact": "قالت هود إن الشركة ستواصل توليد تدفق نقدي حر طوال السنة المالية 2027 وستلجأ إلى تمويل إضافي عندما يكون جذاباً",
+          "source": 3
+        }
+      ],
+      "slug": "microsoft-revenue-record-azure-growth-3a126f",
+      "title": "إيرادات مايكروسوفت ترتفع 19% إلى 92.3 مليار دولار بدعم نمو أزور 48%",
+      "score": 9,
+      "image": "photo"
+    }
+  ],
+  "llm": {
+    "calls": 71,
+    "failures": 3,
+    "promptTokens": 928000,
+    "completionTokens": 238959,
+    "cacheReadTokens": 284129,
+    "costUsd": 9.986,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 71
+    }
+  },
+  "log": [
+    "[10:24:24] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1507 attempt=1 ms=32144",
+    "[10:24:24] critic (second pass) \"لاغارد تتنحى عن رئاسة المركزي الأوروبي في 7 فبراير 2027\": revise score=8 issues=5",
+    "[10:24:45] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: body word count out of range (120-320): 97",
+    "[10:26:30] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=10677 attempt=2 ms=101788",
+    "[10:26:49] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1131 attempt=1 ms=18911",
+    "[10:26:59] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=788 attempt=1 ms=10682",
+    "[10:26:59] desk: body accepted on the second try",
+    "[10:26:59] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,lede,body] rejected=[]",
+    "[10:26:59] desk \"لاغارد تتنحى عن رئاسة المركزي الأوروبي في 7 فبراير 2027\": rewrote subtitle, lede, body",
+    "[10:26:59] mended \"لاغارد تتنحى عن رئاسة المركزي الأوروبي في 7 فبراير 2027\": the second pass's 5 finding(s) sent back once more",
+    "[10:27:13] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=691 attempt=1 ms=13745",
+    "[10:27:13] precheck \"لاغارد تتنحى عن رئاسة المركزي الأوروبي في 7 فبراير 2027\": clean",
+    "[10:27:22] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=615 attempt=1 ms=8793",
+    "[10:27:22] image: the picture should say: Lagarde, one of the world's most powerful central bankers, is leaving the ECB, and the race to succeed her is on.",
+    "[10:27:22] image: the story's people first: Christine Lagarde 2026 | Christine Lagarde | كريستين لاغارد",
+    "[10:27:23] commons \"Christine Lagarde 2026\": 19 usable of 20",
+    "[10:27:23] commons \"Christine Lagarde\": 4 usable of 20",
+    "[10:27:24] commons \"كريستين لاغارد\": 4 usable of 20",
+    "[10:27:24] image: set aside \"Christine Lagarde at the Singapore Fintech Festival.jpg\" — a 2017 photograph of a person, older than 2018",
+    "[10:27:24] image: set aside \"Christine Lagarde at Albright Institute public forum.jpg\" — a 2016 photograph of a person, older than 2018",
+    "[10:27:24] image: set aside \"George Osborne and Christine Lagarde in London (2011).jpg\" — a 2011 photograph of a person, older than 2018",
+    "[10:27:24] image: set aside \"Christine Lagarde-Joaquim Levy-2015 05 21.jpg\" — a 2015 photograph of a person, older than 2018",
+    "[10:27:24] image: people shortlist: 2026 AC SO Karlspreisverleihung 2026 14. Mai Dom Christ | 2026 AC SO Karlspreisverleihung 2026 14. Mai Dom Christ | 2026 AC SO Karlspreisverleihung 2026 14. Mai Krönungssa | 2025 Visit of Christine Lagarde, President of the Europ",
+    "[10:27:35] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=721 attempt=1 ms=10608",
+    "[10:27:42] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=442 attempt=1 ms=7117",
+    "[10:27:42] image: second check (claude-cli/claude-opus-5-5) RIGHT \"AC SO Karlspreisverleihung 2026 14. Mai Krönungssaal Christi\": A sharp, well-exposed portrait of Christine Lagarde herself, correctly captioned with the earlier 2026 Charlemagne Prize",
+    "[10:27:42] published \"لاغارد تتنحى عن رئاسة المركزي الأوروبي في 7 فبراير 2027\" -> lagarde-to-step-down-ecb-february-2027-5994fe",
+    "[10:27:43] evidence agbi: subscribers-only",
+    "[10:27:44] skip \"أرباح اتصالات ترتفع 45.9% إلى 17.2 مليار درهم في 9 أشهر بدعم بيع حصة فودافون\": repeats \"أرباح الدار ترتفع 19% في 9 أشهر رغم تراجع مبيعاتها في الإمارات\"; items marked as seen",
+    "[10:28:48] desk notes: 1 of 31 facts dropped (not in their source or copied from it)",
+    "[10:28:48] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3885 attempt=1 ms=62874",
+    "[10:28:48] desk notes: 30 facts (? 2, news 2, numbers 16, driver 3, reaction 1, next 5, background 1), 0 quotes (claude-cli/claude-opus-5-5)",
+    "[10:30:05] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=6172 attempt=1 ms=76433",
+    "[10:31:08] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2357 attempt=1 ms=63419",
+    "[10:31:08] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,whyItMatters,body] rejected=[]",
+    "[10:31:08] desk \"إيرادات مايكروسوفت ترتفع 19% إلى 92.3 مليار دولار بدعم نمو أزور 48%\": rewrote subtitle, whyItMatters, body",
+    "[10:32:18] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=5344 attempt=1 ms=69841",
+    "[10:32:18] critic \"إيرادات مايكروسوفت ترتفع 19% إلى 92.3 مليار دولار بدعم نمو أزور 48%\": revise score=9 issues=10",
+    "[10:32:18]   · مبالغة في يقين الاستنتاج في «لماذا يهمّ»: تقول الجملة إن الإنفاق «يجعل بقاء هذا التدفق موجباً مرهوناً بسرعة تحويل السعة المؤجلة إلى إيرادات من أزور». أزور يمثل ",
+    "[10:32:18]   · خلل في الدقة الزمنية: عبارة «و170 مليار دولار لكامل عام 2027» تشير في SOURCE 3 إلى العام الميلادي (calendar 2027). أما المقال فيستخدم «السنة المالية 2027» في مو",
+    "[10:32:18]   · العنوان الفرعي «التدفق النقدي الحر لمايكروسوفت يبقى موجباً» يُسقط قيداً جوهرياً، هو تراجع هذا التدفق 27% إلى 18.63 مليار دولار (SOURCE 3). الإصلاح: «التدفق النق",
+    "[10:32:18]   · ترجمة حرفية: «مزودي معالجات الرسومات بنظام الخدمة» تنقل مصطلح GPU-as-a-service كلمة بكلمة. الصيغة العربية الأوضح: «الشركات التي تؤجّر قدرات معالجات الرسومات كخد",
+    "[10:33:03] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: why_basis needs one to four reported premises with source numbers",
+    "[10:33:45] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1476 attempt=2 ms=39429",
+    "[10:34:17] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=855 attempt=1 ms=31716",
+    "[10:34:17] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[10:34:17] desk \"إيرادات مايكروسوفت ترتفع 19% إلى 92.3 مليار دولار بدعم نمو أزور 48%\": rewrote body",
+    "[10:35:04] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3212 attempt=1 ms=46996",
+    "[10:35:04] critic (second pass) \"إيرادات مايكروسوفت ترتفع 19% إلى 92.3 مليار دولار بدعم نمو أزور 48%\": revise score=9 issues=2",
+    "[10:35:39] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1014 attempt=1 ms=34689",
+    "[10:36:06] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=667 attempt=1 ms=27236",
+    "[10:36:06] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[10:36:06] desk \"إيرادات مايكروسوفت ترتفع 19% إلى 92.3 مليار دولار بدعم نمو أزور 48%\": rewrote body",
+    "[10:36:06] last desk pass for 1 fault(s): جمل طويلة جداً (1): «أعلنت الشركة خلال الربع خفض 4800 وظيفة،",
+    "[10:36:35] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=877 attempt=1 ms=29531",
+    "[10:36:35] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[10:36:35] desk \"إيرادات مايكروسوفت ترتفع 19% إلى 92.3 مليار دولار بدعم نمو أزور 48%\": rewrote body",
+    "[10:36:35] last desk pass: clean",
+    "[10:36:35] mended \"إيرادات مايكروسوفت ترتفع 19% إلى 92.3 مليار دولار بدعم نمو أزور 48%\": the second pass's 2 finding(s) sent back once more",
+    "[10:37:40] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3388 attempt=1 ms=64838",
+    "[10:37:40] precheck \"إيرادات مايكروسوفت ترتفع 19% إلى 92.3 مليار دولار بدعم نمو أزور 48%\": clean",
+    "[10:37:53] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=893 attempt=1 ms=12829",
+    "[10:37:53] image: the picture should say: Microsoft's Azure cloud is booming, and the company is still paying for its costly AI data-centre build-out from its own cash.",
+    "[10:38:01] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=358 attempt=1 ms=7089",
+    "[10:38:01] image: the sources' photographs give no brief (1: A pedestrian walks past the Microsoft logo sign set in a hed; 2: A silhouetted man with a backpack walks past an illuminated ; 3: Microsoft CEO Satya Nadella stands on stage, hand to chin, i)",
+    "[10:38:01] image: tier 3, the writer's own subjects: data center server racks | GPU servers | cloud data center",
+    "[10:38:02] commons \"data center server racks 2026\": 0 usable of 1",
+    "[10:38:02] commons \"data center server racks\": 0 usable of 0",
+    "[10:38:03] commons \"data center\": 7 usable of 12",
+    "[10:38:03] image: dropped \"Utah Data Center Panorama (cropped).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:38:05] commons \"GPU servers 2026\": 0 usable of 12",
+    "[10:38:05] commons \"GPU servers\": 0 usable of 12",
+    "[10:38:06] commons \"servers\": 0 usable of 0",
+    "[10:38:10] commons \"cloud data center 2026\": 9 usable of 12",
+    "[10:38:11] commons \"cloud data center\": 10 usable of 12",
+    "[10:38:11] image: dropped \"GRACE-FO Launch (NHQ201805220019).jpg\" — a warship or weapon, and the story is not about the military",
+    "[10:38:11] image: dropped \"Newman Center, St. Cloud State University, St. Cloud, Minnesota - DPLA\" — dated 1964, an archival picture",
+    "[10:38:11] image: dropped \"STS-135 Atlantis' final tow back.jpg\" — names too little of cloud, data, center",
+    "[10:38:11] image: dropped \"Clouds in the Bering Sea (MODIS 2026-06-10).jpg\" — names too little of cloud, data, center",
+    "[10:38:11] image: dropped \"Cloud Streets Over the Great Lakes (MODIS 2026-01-24).jpg\" — names too little of cloud, data, center",
+    "[10:38:11] image: dropped \"Nes (NL), Natuurcentrum Ameland -- 2026 -- 1823.jpg\" — names too little of cloud, data, center",
+    "[10:38:11] image: dropped \"Center of the Milky Way Galaxy IV – Composite.jpg\" — names too little of cloud, data, center",
+    "[10:38:11] image: dropped \"Large Magellanic Cloud.jpg\" — names too little of cloud, data, center",
+    "[10:38:18] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=372 attempt=1 ms=7005",
+    "[10:38:18] image: vision rejected all candidates (None fits. 1 is a map. 2 and 3 are building fronts of a Boston University computing centre, which has nothing to do with Microsoft. 5 is a space shuttle launch, a different subject. 4 is the only sector scene, but it is a 2008 university supercomputer hall with another company's SGI logo at the centre of the frame. It looks dated and would misidentify the hardware under a Microsoft Azure story. Better to let the fallback find a current data-centre scene or Satya Nadella.)",
+    "[10:38:18] image: tier 4, the story's point and its subject: Microsoft Azure data center | Microsoft data center construction | cloud data center servers | Microsoft data center | data center | data center server hall (home: United States, USA, American, Washington, Redmond)",
+    "[10:38:18] pexels \"Microsoft data center\": 8 usable",
+    "[10:38:18] pexels \"data center\": 8 usable",
+    "[10:38:18] pexels \"data center server hall\": 8 usable",
+    "[10:38:18] pexels \"cloud data center servers\": 8 usable",
+    "[10:38:18] pexels \"Microsoft Azure data center\": 8 usable",
+    "[10:38:19] commons \"Microsoft Azure data center\": 4 usable of 4",
+    "[10:38:19] pexels \"Microsoft data center construction\": 8 usable",
+    "[10:39:02] openverse \"Microsoft Azure data center\": 0 usable of 0",
+    "[10:39:03] openverse \"Microsoft data center construction\": The operation was aborted due to timeout",
+    "[10:39:03] openverse \"cloud data center servers\": The operation was aborted due to timeout",
+    "[10:39:40] openverse \"data center server hall\": 0 usable of 0",
+    "[10:39:47] openverse \"Microsoft data center\": The operation was aborted due to timeout",
+    "[10:39:48] openverse \"data center\": The operation was aborted due to timeout",
+    "[10:40:04] openverse \"Microsoft Azure\": HTTP 502",
+    "[10:40:04] openverse: 3 failures in a row; left alone for 10 minutes",
+    "[10:40:04] image: dropped \"From below of fiber optic equipment with similar colorful rubber cable\" — names too little of data, center",
+    "[10:40:04] commons \"Microsoft data center construction\": 1 usable of 2",
+    "[10:40:04] image: dropped \"P20211007AS-1151 (51761622783).jpg\" — shows joe, not the story's people",
+    "[10:40:04] image: dropped \"Empty industrial warehouse interior with polished concrete floor in Ho\" — names too little of data, center, construction",
+    "[10:40:04] image: dropped \"Empty modern warehouse interior with polished floor and ample space lo\" — names too little of data, center, construction",
+    "[10:40:04] image: dropped \"Detailed view of fiber optic patch cables connecting to a blue patch p\" — an event's photograph, people and banners",
+    "[10:40:05] commons \"cloud data center servers\": 14 usable of 24",
+    "[10:40:05] image: dropped \"North Central Telephone Cooperative Rural Broadband keeps TN and KY Hi\" — names too little of cloud, data, center, servers",
+    "[10:40:05] image: dropped \"North Central Telephone Cooperative Rural Broadband keeps TN and KY Hi\" — names too little of cloud, data, center, servers",
+    "[10:40:06] image: dropped \"North Central Telephone Cooperative Rural Broadband keeps TN and KY Hi\" — names too little of cloud, data, center, servers",
+    "[10:40:06] image: dropped \"North Central Telephone Cooperative Rural Broadband keeps TN and KY Hi\" — names too little of cloud, data, center, servers",
+    "[10:40:06] image: dropped \"North Central Telephone Cooperative Rural Broadband keeps TN and KY Hi\" — names too little of cloud, data, center, servers",
+    "[10:40:06] commons \"Microsoft data center\": 22 usable of 24",
+    "[10:40:06] image: dropped \"Microsoft Data Center Middenmeer, the Netherlands - 1.jpg\" — another frame of a series a published story runs",
+    "[10:40:06] image: dropped \"Microsoft and NASA Space Education Day (NHQ202306200050).jpg\" — shows manager, not the story's people",
+    "[10:40:07] commons \"data center\": 15 usable of 24",
+    "[10:40:07] image: dropped \"Utah Data Center Panorama (cropped).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:40:08] commons \"data center server hall\": 0 usable of 0",
+    "[10:40:08] commons \"data center\": 15 usable of 24",
+    "[10:40:32] openverse \"data center\": The operation was aborted due to timeout",
+    "[10:40:32] image: dropped \"Detailed image of illuminated server racks showcasing modern technolog\" — names too little of data, center, server, hall",
+    "[10:40:32] image: dropped \"Microsoft Data Center Middenmeer, the Netherlands - 1 (cropped).jpg\" — taken in Netherlands, which the story does not name",
+    "[10:40:40] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=349 attempt=1 ms=6921",
+    "[10:40:40] image: \"Detailed image of a server rack with glowing lights in a mod\" names the story's topic without saying its point (Photo 2 is the clearest generic data-centre scene: a lit server rack with cables, fitting Azure's cloud infrastructure. Photo 1 is a similar but less legible bl); checked now and kept in reserve while the desk looks further",
+    "[10:40:52] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=904 attempt=1 ms=11995",
+    "[10:40:52] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Detailed image of a server rack with glowing lights in a mod\": A sharp, professional shot of lit server racks reads at a glance as a data centre, Azure's own sector object, and nothin",
+    "[10:41:07] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=933 attempt=1 ms=14284",
+    "[10:41:07] image: \"Close-up of server racks in a data center highlighting moder\" names the story's topic without saying its point; the desk already holds one such, and looks further",
+    "[10:41:07] image: the story's people first: Satya Nadella 2026 | Satya Nadella | ساتيا ناديلا",
+    "[10:41:07] commons \"Satya Nadella 2026\": 1 usable of 1",
+    "[10:41:07] image: dropped \"President Donald J Trump attends the “New Golden Age” summit with tech\" — shows donald, donald, not the story's people",
+    "[10:41:08] commons \"Satya Nadella\": 6 usable of 20",
+    "[10:41:08] commons \"ساتيا ناديلا\": 0 usable of 0",
+    "[10:41:09] commons \"ناديلا\": 0 usable of 0",
+    "[10:41:09] image: set aside \"Satya Nadella Gears of War 4 Gold Master.jpg\" — a 2016 photograph of a person, older than 2018",
+    "[10:41:09] image: set aside \"Satya smiling-print.jpg\" — a 2017 photograph of a person, older than 2018",
+    "[10:41:09] image: set aside \"Satya bookcover-print.jpg\" — a 2017 photograph of a person, older than 2018",
+    "[10:41:09] image: set aside \"MM SatyaNadella.jpg\" — a 2016 photograph of a person, older than 2018",
+    "[10:41:09] image: set aside \"Satya Nadella, CEO of Microsoft, with former CEOs Bill Gates\" — a 2014 photograph of a person, older than 2018",
+    "[10:41:09] image: nothing of them since 2018 fits; their newest older photographs, run as file photos: 2016 Satya Nadella Gears of War 4 Gold Master | 2017 Satya smiling-print.jpg | 2017 Satya bookcover-print.jpg | 2016 MM SatyaNadella.jpg",
+    "[10:41:22] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=918 attempt=1 ms=12330",
+    "[10:41:22] image: \"Satya smiling-print.jpg\" names the story's topic without saying its point; the desk already holds one such, and looks further",
+    "[10:41:22] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"Detailed image of a server rack with glowing lights in a mod\"",
+    "[10:41:22] published \"إيرادات مايكروسوفت ترتفع 19% إلى 92.3 مليار دولار بدعم نمو أزور 48%\" -> microsoft-revenue-record-azure-growth-3a126f",
+    "[10:42:18] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2470 attempt=1 ms=56658",
+    "[10:43:08] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2360 attempt=1 ms=49941",
+    "[10:44:07] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3414 attempt=1 ms=59023",
+    "[10:45:00] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1913 attempt=1 ms=52529",
+    "[10:45:00] evidence pair \"إيرادات مايكروسوفت ترتفع 19% إلى 92.3 مليار دولار بدعم نمو أزور 48%\": 1 proved error(s) live (v42), 0 with the kept lessons (v0); the private drafts are not published"
+  ]
+}

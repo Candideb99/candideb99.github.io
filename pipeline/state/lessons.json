@@ -219,10 +219,11 @@
     "french-bond-yields-jump-after-protests-1b64ee:1cdf42b9",
     "saudi-utility-tariffs-monthly-support-2027-748f63:862951ed",
     "qatar-saudi-stock-markets-liquidity-test-6421f7:4bf6e2c6",
-    "alphabet-shares-fall-after-earnings-miss-7ca1aa:02d23766"
+    "alphabet-shares-fall-after-earnings-miss-7ca1aa:02d23766",
+    "samsung-raises-capex-despite-investor-disappointment-55895a:c5a20c49"
   ],
-  "version": 41,
-  "updatedAt": "2026-10-29T08:26:05.250Z",
+  "version": 42,
+  "updatedAt": "2026-10-29T10:06:30.224Z",
   "lessons": [
     {
       "id": "L1",
@@ -339,11 +340,12 @@
         "ras-al-khaimah-closes-beaches-oil-spill-8c2ef2:9728acd8",
         "taqa-prices-dual-tranche-bonds-oversubscribed-a32e1a:4593dc74",
         "aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210:f2007844",
-        "french-bond-yields-jump-after-protests-1b64ee:1cdf42b9"
+        "french-bond-yields-jump-after-protests-1b64ee:1cdf42b9",
+        "samsung-raises-capex-despite-investor-disappointment-55895a:c5a20c49"
       ],
-      "seen": 49,
+      "seen": 50,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-10-27T15:25:58.750Z",
+      "lastSeen": "2026-10-29T10:06:30.224Z",
       "status": "active",
       "previous": [
         "Credit each fact to whom the source credits and name the originating outlet. An outlet's inference ('implying', 'suggesting') is not the official's own statement. An interview is not a statement. Add no conclusion the speaker did not draw.",
@@ -1095,6 +1097,13 @@
       "mistakes": 1,
       "applied": [
         "reinforce L8 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-10-29T10:06:30.224Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L2 (+1; reworded at most once a week)"
       ]
     }
   ],

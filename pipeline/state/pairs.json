@@ -1431,6 +1431,52 @@
         ],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-10-29T10:41:22.286Z",
+      "slug": "microsoft-revenue-record-azure-growth-3a126f",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v42",
+      "lessonsHash": "5bcfeb9fba",
+      "keptVersion": 0,
+      "live": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 4,
+        "supported": 31,
+        "notFound": 0,
+        "checked": 38,
+        "words": 592,
+        "keyFacts": 6,
+        "classes": [
+          "superlative"
+        ],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 28,
+        "notFound": 2,
+        "checked": 36,
+        "words": 554,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 28,
+        "notFound": 2,
+        "checked": 36,
+        "words": 554,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      }
     }
   ]
 }
