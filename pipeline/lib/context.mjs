@@ -66,9 +66,21 @@ const MARKET_OF = [
   { place: /منطقة اليورو|المركزي الأوروبي|ألمانيا|الألماني|الألمانية/, ids: ["sx5e", "eurusd"] },
   { place: /بريطانيا|البريطاني|البريطانية|بنك إنجلترا/, ids: ["ftse", "gbpusd"] },
 ];
+/**
+ * Places whose markets the quote feed does not carry. A decision of theirs that names the Fed is still theirs: «المركزي
+ * الإماراتي يبقي سعر الأساس عند 3.90% بعد تثبيت الفيدرالي» (2026-10-28) was given the S&P 500, the ten-year yield and the
+ * dollar index through «الفيدرالي», and a third of the story went on them and on the Fed's own decision.
+ */
+const NO_MARKET = /الإمارات|الإماراتي|الإماراتية|قطر|القطري|القطرية|الكويت|الكويتي|الكويتية|البحرين|البحريني|البحرينية|سلطنة عمان|العماني|العمانية|المغرب|المغربي|المغربية|الأردن|الأردني|الأردنية|العراق|العراقي|العراقية|لبنان|اللبناني|اللبنانية|تونس|التونسي|التونسية|الجزائر|الجزائري|الجزائرية|باكستان|الباكستاني|الباكستانية|الهند|الهندي|الهندية/;
+/** The market of the place the headline names first; none when that place's markets are not quoted. */
 export function macroMarketOf(headline) {
   if (!MACRO.test(headline) || FORECAST.test(headline)) return [];
-  return MARKET_OF.find((m) => m.place.test(headline))?.ids ?? [];
+  let first = null;
+  for (const m of [...MARKET_OF, { place: NO_MARKET, ids: [] }]) {
+    const at = headline.search(m.place);
+    if (at >= 0 && (!first || at < first.at)) first = { at, ids: m.ids };
+  }
+  return first?.ids ?? [];
 }
 
 /** The instruments a story is about: named in its headline, or for a market or energy story in its reports' titles. */

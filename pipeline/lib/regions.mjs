@@ -119,6 +119,20 @@ export function unplacedActors({ title = "", subtitle = "", lede = "", body = ""
 }
 
 /**
+ * The countries a headline names, by a place or a nisba, as NATIONALITIES lists them («مصري» for «المركزي المصري» and
+ * «القاهرة»). A place is read from a word's start, after a clitic and the article: «تركيا» and «التركي» are Turkish,
+ * «مشتركة» is not. lib/events.mjs reads it to keep two countries' decisions two events.
+ */
+const PLACE_AT_START = new Map(Object.entries(NATIONALITIES).map(([nisba, places]) => [
+  nationalityKey(nisba),
+  new RegExp(`(?<![ء-ي])(?:[وفبل])?(?:ال)?(?:${places.map((p) => normalizePlace(p).replace(/^ال/, "")).join("|")})`),
+]));
+export function countriesNamed(text) {
+  const hay = normalizePlace(text);
+  return new Set([...PLACE_AT_START].filter(([, re]) => re.test(hay)).map(([key]) => key));
+}
+
+/**
  * The story's regions held to where its event happens: an Arab desk stays only when the headline, dek or lede names
  * one of its places, and joins when the headline names one the writer left out; a story left with none is the world
  * desk's. The other regions (Europe, the Americas, Asia, Africa, the world) all fold into the site's العالم and pass.

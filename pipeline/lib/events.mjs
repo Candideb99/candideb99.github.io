@@ -5,6 +5,7 @@
  * here from run.mjs on 2026-09-26 so that one rule serves both and a test can reach it (scripts/pipeline-selftest.mjs).
  */
 import { normalizeDigits } from "./util.mjs";
+import { countriesNamed } from "./regions.mjs";
 
 export const TITLE_STOPWORDS = new Set(["على", "إلى", "بعد", "قبل", "خلال", "بسبب", "بنسبة", "مليار", "مليون", "دولار", "دولارات", "الولايات", "المتحدة", "أسعار", "الاقتصاد", "الأسواق", "النفط", "الفائدة", "ارتفاع", "تراجع", "2026", "سبتمبر", "أغسطس", "أكتوبر", "الأول", "الثاني", "الأمريكي", "الأمريكية", "الأميركي", "الأميركية", "العالمي", "العالمية", "الشرق", "الأوسط", "نقطة", "أساس", "مستوى", "أعلى", "أدنى", "منذ"]);
 
@@ -35,6 +36,13 @@ const subjectOf = (title) => {
  * either cause clause do not count; one subject's repeats (Brent above 107, Brent above 108) are matched as before.
  */
 export function sameEvent(a, b) {
+  // Two countries' decisions are two events, however alike their words (2026-10-29: «المركزي المصري يرفع الفائدة 1% في
+  // أول زيادة منذ مارس 2024», Egypt's first rise in two and a half years, was skipped as a repeat of «المركزي الباكستاني
+  // يرفع الفائدة إلى 12% في أول زيادة منذ أبريل»: «المركزي» led both, and no story of it ran). Headlines that each name a
+  // country, and no country in common, never match.
+  const ca = countriesNamed(a);
+  const cb = countriesNamed(b);
+  if (ca.size && cb.size && ![...ca].some((c) => cb.has(c))) return false;
   const x = distinctiveWords(a);
   const y = distinctiveWords(b);
   const sameSubject = subjectOf(a) === subjectOf(b);

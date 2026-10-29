@@ -281,6 +281,8 @@ check("a different event is not", repeatsRecent("السعودية تعيد تش�
 check("one oil move under two names is still one event", repeatsRecent("برنت يقفز فوق 108 دولارات بعد إغلاق خط الأنابيب السعودي", ["النفط يقفز فوق 107 دولارات مع إغلاق خط الأنابيب السعودي"]) !== null, true);
 check("two subjects sharing only a running war are two events", repeatsRecent("برنت عند أعلى مستوى في 5 أشهر فوق 111 دولاراً مع هجمات الحوثيين على السعودية", ["السعودية تؤجل مؤتمر مبادرة مستقبل الاستثمار إلى 2027 مع تصاعد هجمات الحوثيين"]), null);
 check("two institutions' different forecasts are two events", repeatsRecent("صندوق النقد يتوقع انكماش اقتصادات الخليج 4.8% في 2026 قبل تعافيها 9.1% في 2027", ["البنك الدولي يتوقع انكماش اقتصادات الخليج 4.3% هذا العام"]), null);
+// 2026-10-29: Egypt's first rate rise since March 2024 was skipped as Pakistan's.
+check("two countries' central banks are two events; one country's twice is one", [repeatsRecent("المركزي المصري يرفع الفائدة 1% في أول زيادة منذ مارس 2024", ["المركزي الباكستاني يرفع الفائدة إلى 12% في أول زيادة منذ أبريل"]), Boolean(repeatsRecent("المركزي المصري يرفع الفائدة 1% لأول مرة منذ مارس 2024 لكبح التضخم", ["المركزي المصري يرفع الفائدة 1% في أول زيادة منذ مارس 2024"]))], [null, true]);
 
 // 2a. A Google News sitemap is read like a feed, and an Arabic address is filtered decoded (2026-10-22, Independent Arabia).
 {
@@ -506,6 +508,12 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("a complete fears phrase passes", styleIssues({ ...brief, title: naturalTitle }).issues.some((i) => i.startsWith("العنوان يختزل المعنى")), false);
   check("whose fears they are is a valid possessive", styleIssues({ ...brief, title: "مخاوف المستثمرين تدفع الذهب إلى الصعود" }).issues.some((i) => i.startsWith("العنوان يختزل المعنى")), false);
   check("three detached dispatches prompt a flow review", styleIssues(brief).warnings.some((i) => i.startsWith("ثلاث فقرات قصيرة")), true);
+  // The Fed story of 2026-10-28 closed its box by taking the inference back; five more boxes argued «لا… وحده».
+  const takesBack = (whyItMatters) => styleIssues({ ...brief, whyItMatters }).warnings.some((i) => i.startsWith("«لماذا يهمّ» تنفي"));
+  check("a box that takes its inference back goes to the desk", takesBack("إذا ظل النفط يدفع الأسعار صعوداً، فسيقف الاحتياطي الفيدرالي بين خيارين. ومسار أسعار الطاقة سيحدد ثمن كل منهما، من دون أن يحسم وحده اتجاه القرار."), true);
+  check("a box arguing what a thing does not do «وحده» goes to the desk", [takesBack("حجم الاستثمارات وحده لا يحدد سرعة زيادة الإنتاج."), takesBack("إعادة فتح المطار لا تعيد وحدها حركة السفر.")], [true, true]);
+  check("so does a box correcting a claim nobody made, «، لا بـ…»", takesBack("فإن حجم ما ستضخه المنصة في الكهرباء الأمريكية يتحدد صفقة بصفقة، لا بإعلان التأسيس."), true);
+  check("a box that ends on its inference passes, and «وحده» as an amount is no take-back", [takesBack("إذا ظل النفط يدفع الأسعار صعوداً، فسيقف الاحتياطي الفيدرالي بين رفع يكبح الطلب وتمهّل يترك التضخم يترسخ."), takesBack("ويمثل النفط وحده ثلث صادرات البلاد، فكل تراجع في سعره يضغط على الموازنة.")], [false, false]);
   check("a short brief is not automatically a flow defect", styleIssues({ ...brief, body: dispatches.slice(0, 2).join("\n\n") }).warnings.some((i) => i.startsWith("ثلاث فقرات قصيرة")), false);
   check("grouped related dispatches do not trigger the same warning", styleIssues({ ...brief, body: dispatches.join(" ") }).warnings.some((i) => i.startsWith("ثلاث فقرات قصيرة")), false);
   check("literal news bullet lists are sent for editing", styleIssues({ ...brief, body: dispatches.map((p) => `- ${p}`).join("\n") }).issues.some((i) => i.startsWith("متن الخبر قائمة")), true);
@@ -514,6 +522,11 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("the fact guard permits regrouping without losing facts", Object.keys(regrouped.accepted).sort(), ["body", "title"]);
   const changedFigure = judgeRewrite(brief, { title: naturalTitle.replace("110", "120") }, ["title"]);
   check("improving the headline cannot change its figure", changedFigure.rejected.some((r) => r.field === "title"), true);
+  // 2026-10-29: the World Bank's 105-dollar scenario went out without its «إذا».
+  const scenario = { title: "البنك الدولي يرفع توقعاته لأسعار السلع الأولية", subtitle: "", lede: "رفع البنك الدولي توقعاته لأسعار السلع.", body: "وحذّر البنك من أن يرتفع متوسط سعر برنت إلى 105 دولارات للبرميل في 2027 إذا تعطلت إمدادات إضافية بنحو 5 ملايين برميل يومياً." };
+  const bare = "وحذّر البنك من أن يرتفع متوسط سعر برنت إلى 105 دولارات للبرميل في 2027، مع تعطل إمدادات إضافية بنحو 5 ملايين برميل يومياً.";
+  const reworded = "وحذّر البنك من ارتفاع متوسط سعر برنت إلى 105 دولارات للبرميل في 2027 في حال تعطلت إمدادات إضافية بنحو 5 ملايين برميل يومياً.";
+  check("a forecast's condition may be reworded, never dropped", [judgeRewrite(scenario, { body: bare }, ["body"]).rejected.some((r) => r.field === "body"), judgeRewrite(scenario, { body: reworded }, ["body"]).rejected.some((r) => r.field === "body")], [true, false]);
   // 2026-10-18: no explainer or analysis had been published since 1 October; the two of that day were thrown away by
   // rules that contradicted each other or a sound phrase.
   const hedgedExplainer = { title: "إعادة تمويل الدين العام قد تغيّر كلفته حتى مع ثبات أصله", subtitle: "تستبدل الحكومة ديناً يحل أجله بدين جديد", lede: "تلجأ الحكومات إلى إعادة تمويل ديونها حين يحل أجل السندات.", body: "تصدر الحكومة سندات جديدة تسدد بها القديمة." };
@@ -723,6 +736,8 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("a rating agency is not the S&P 500", ids("«ستاندرد آند بورز» تثبّت تصنيف السعودية الائتماني مع نظرة مستقرة"), []);
   check("a data release is read with its country's market", [ids("نمو الاقتصاد الصيني يتسارع إلى 4.5% في الربع الثالث", "economy"), ids("المركزي المصري يثبّت الفائدة عند 19% و20%", "economy")], [["sse", "usdcny"], ["egx30", "usdegp"]]);
   check("a forecast is not a release", ids("«غولدمان ساكس» و«جي بي مورغان» يرجّحان رفع الفائدة الأمريكية هذا الأسبوع", "economy"), []);
+  // 2026-10-28: the UAE's hold «بعد تثبيت الفيدرالي» was given US markets; the place named first is the story's.
+  check("a decision is read with the market of the place named first, or none", [ids("المركزي الإماراتي يبقي سعر الأساس عند 3.90% بعد تثبيت الفيدرالي", "economy"), ids("الفيدرالي الأمريكي يبقي الفائدة بين 3.75% و4% رغم مطالبة عضوتين برفعها", "economy"), ids("المركزي المصري يرفع الفائدة 100 نقطة أساس بعد تثبيت الفيدرالي", "economy")], [[], ["spx", "us10y", "dxy"], ["egx30", "usdegp"]]);
   const at = (h) => new Date(Date.parse("2026-09-15T12:00:00Z") + h * 3600000).toISOString();
   const ran = [{ kind: "news", section: "energy", title: "أرامكو تعلّق تحميلات ينبع بعد إغلاق خط الشرق-الغرب.. برنت يرتفع 3%", publishedAt: at(0) }];
   const again = (headlineHint, h) => repeatsInstrument({ headlineHint, section: "energy" }, ran, { now: Date.parse(at(h)) });
@@ -850,6 +865,16 @@ if (spawnSync("git", ["--version"]).status === 0) {
     read('<script type="application/ld+json">{"@type":"NewsArticle","isAccessibleForFree":true}</script>'),
     read(""),
   ], [[false, "subscribers-only", false], [false, "subscribers-only", false], [false, "subscribers-only", false], [true, "", true], [true, "", true]]);
+
+  // A page that appends the next stories below its own, as Asharq Al-Awsat's does (2026-10-29: its Fed, ECB and GDP pages
+  // all read as one longer IMF story): the block marked first is the page's article, the longer followers are not.
+  const own = `<p>${"خالفت عضوتان في مجلس الاحتياطي الفيدرالي توجه الأغلبية إلى تثبيت الفائدة ودعتا إلى رفعها ربع نقطة. ".repeat(6)}</p>`;
+  const next = `<p>${"يتحرك صندوق النقد الدولي على ثلاثة مسارات اقتصادية متزامنة في المنطقة والاقتصاد العالمي. ".repeat(20)}</p>`;
+  const scroll = (marked) => `<html lang="ar"><head><title>معارضتان في الفيدرالي</title></head><body><div class="block-main"><div class="printable-area shareable"><article><div class="entry-content${marked ? " first-article-node" : ""}">${own}</div></article></div></div>`
+    + [1, 2].map(() => `<div class="cell large-auto"><div class="printable-area shareable"><div class="entry-content">${next}</div></div></div>`).join("") + `</body></html>`;
+  const marked = readArticleHtml(scroll(true), "https://aawsat.com/node/1");
+  check("an appended story is never read as the page's own; the block marked first is", [marked.text.includes("عضوتان"), marked.text.includes("صندوق النقد")], [true, false]);
+  check("without the publisher's mark nothing is removed", readArticleHtml(scroll(false), "https://aawsat.com/node/1").text.includes("صندوق النقد"), true);
 
   // A Turkish or Persian source's figures stand as its language writes them (the Audi story's notes and writer failed three
   // times each over «4,2 milyar» and «4 bin 500»); a Persian date is not read as a decimal.

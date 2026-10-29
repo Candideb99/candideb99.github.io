@@ -235,17 +235,56 @@ export function photosOf(html, url, document = null) {
   return [...found.values()].slice(0, 8);
 }
 
+/**
+ * A page that carries the next articles below its own (infinite scroll). Asharq Al-Awsat marks its own body
+ * `entry-content first-article-node` and appends three more stories in plain `entry-content` blocks, each in its own
+ * `printable-area`; Readability took the longest, another story, under the page's own title (2026-10-29: its pages on
+ * the Fed's hold, the ECB's hold and US growth all read as one IMF story on Iraq and Egypt, and the GDP story printed
+ * the IMF's comment on Warsh as Asharq Al-Awsat's report of that day; of 53 of its pages kept as evidence since
+ * September, 12 shared almost no word with their own headline). Where the page marks its first article, every block
+ * that repeats one of the marked article's containers without holding it is another story, and goes.
+ */
+export function ownArticleOnly(document) {
+  const own = document.querySelector("[class*='first-article']");
+  if (!own) return 0;
+  let removed = 0;
+  for (let level = own; level && level.tagName !== "BODY"; level = level.parentElement) {
+    const cls = level.getAttribute("class");
+    if (!cls || /["\\]/.test(cls)) continue;
+    const twins = [...document.querySelectorAll(`[class="${cls}"]`)].filter((el) => el !== level && !el.contains(own) && !own.contains(el));
+    for (const twin of twins) twin.remove();
+    removed += twins.length;
+  }
+  // The block marked first may share no class with its followers (`entry-content first-article-node` against
+  // `entry-content`): its plain sister class is matched too.
+  for (const cls of [...own.classList].filter((c) => !/first-article/.test(c))) {
+    for (const twin of [...document.getElementsByClassName(cls)].filter((el) => el !== own && !el.contains(own) && !own.contains(el))) {
+      twin.remove();
+      removed++;
+    }
+  }
+  return removed;
+}
+
 /** Pure extraction, shared with offline evidence tests. No inferred publication date. */
 export function readArticleHtml(html, url, { maxChars = 9000, log = () => {} } = {}) {
+    // Parsed once and stripped of any appended stories before the text, the photographs or the fallback read it.
+    let document = null;
+    let pageHtml = html;
+    try {
+      ({ document } = parseHTML(html));
+      if (ownArticleOnly(document)) pageHtml = document.toString();
+    } catch {
+      document = null;
+    }
     const result = { ok: false, text: "", title: "", ogImage: metaContent(html, "og:image"),
-      photos: photosOf(html, url),
+      photos: photosOf(html, url, document),
       lang: (html.match(/<html[^>]+lang=["']([a-zA-Z-]+)["']/i)?.[1] ?? "").toLowerCase(),
       links: [], publishedAt: null, reason: "" };
     let text = "";
     let title = "";
     try {
-      const { document } = parseHTML(html);
-      const article = new Readability(document, { charThreshold: 300 }).parse();
+      const article = new Readability(document ?? parseHTML(html).document, { charThreshold: 300 }).parse();
       const published = article?.publishedTime || metaContent(html, "article:published_time") || metaContent(html, "datePublished");
       if (published && Number.isFinite(Date.parse(published))) result.publishedAt = new Date(published).toISOString();
       if (article?.textContent) {
@@ -271,7 +310,7 @@ export function readArticleHtml(html, url, { maxChars = 9000, log = () => {} } =
       log(`readability failed for ${url}: ${error.message}`);
     }
     if (text.length < 400) {
-      const fallback = paragraphsFallback(html);
+      const fallback = paragraphsFallback(pageHtml);
       if (fallback.length > text.length) text = fallback;
     }
     if (!title) title = metaContent(html, "og:title") || stripHtml(html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] ?? "");

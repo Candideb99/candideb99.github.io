@@ -36,6 +36,9 @@ export const BANNED = [
   { re: /(?<=[،,]\s*)(?:ال)?(?:اقتصادي|اقتصادية|محلل|محللة|خبير|خبيرة|استراتيجي|استراتيجية)(?:\s+(?:ال)?(?:اقتصادي|اقتصادية))?\s+(?:ال)?(?:أول|أولى)(?=\s+(?:في|لدى)(?![؀-ۿ])|\s+[لب][؀-ۿ])/g, fix: "لقب وظيفي مترجم حرفياً؛ اكتب «كبير الاقتصاديين في…» أو «كبير المحللين لدى…» أو «كبيرة الاقتصاديين…» كما تكتبه الصحف", hard: true },
   // "Low single digit" as «بنسبة أحادية منخفضة» (ADNOC Drilling's guidance, 2026-10-28): the desks give the range.
   { re: /أحادية (?:منخفضة|متوسطة|مرتفعة)/g, fix: "تعبير مترجم حرفياً؛ اكتب المعنى بالأرقام («أقل من 5%»، «بين 5% و9%») أو «نمواً محدوداً»" },
+  // "Weigh on inflation" as «ينعكس سلباً على التضخم» (the ECB story, 2026-10-29: tighter financing would dampen
+  // inflation, and the sentence read as worse inflation). An effect on prices says its direction.
+  { re: /(?:ي|ت|س[يت])?(?:نعكس|ؤثر|أثر|انعكس)\s+(?:ذلك\s+)?(?:سلباً|سلبًا|سلبا)\s+على\s+(?:التضخم|الأسعار|معدل التضخم)/g, fix: "«سلباً على التضخم» تُقرأ تضخماً أسوأ؛ قل الاتجاه: «يكبح التضخم» أو «يدفعه إلى الارتفاع»" },
   // A market's proper name translated word for word: the Dutch gas benchmark, the Title Transfer Facility, ran as «عقد
   // «مرفق تحويل الملكية» (TTF)» (2026-10-27); the Arabic desks write «عقود TTF الهولندية».
   { re: /مرفق (?:تحويل|نقل) الملكية/g, fix: "اسم المؤشر مترجم حرفياً؛ اكتب «عقود TTF الهولندية» أو «مؤشر TTF الهولندي» كما تكتبه الصحف", hard: true },
@@ -194,6 +197,15 @@ export const WRITER_ONLY = /يقارن بين ما أوردته المصادر/;
 /** What «لماذا يهمّ» must never say: the region as a formula, the reader addressed, a chain of maybes. */
 const BOX_BANNED = /القارئ العربي|للقارئ العربي|للمواطنين العرب|(?<![؀-ۿ])يجب على|بما في ذلك الشرق الأوسط|المنطقة العربية الأوسع|ما قد يعيد تشكيل/g;
 const BOX_OPENER = /^(?:و|ف)?(?:يعكس|تعكس|يمثل|تمثل|يُمثّل|يُعدّ|يعد|تعد|تُعد|يُعد)(?![؀-ۿ])/;
+/**
+ * A box that takes its inference back or argues against a claim nobody made: the Fed story of 2026-10-28 closed
+ * «…سيحدد ثمن كل منهما، من دون أن يحسم وحده اتجاه القرار», and five more of the published boxes say what a thing does
+ * not do «وحده» («لا يضمن وحده»، «وحده لا يحدد»). Six of some 300 boxes, every one this construction; a warning, since
+ * the copy desk can say the limit as what does decide without touching a fact.
+ */
+// Since 2026-10-29 also the contrast with a claim nobody made, «، لا بـ…» («يتحدد صفقة بصفقة، لا بإعلان التأسيس»،
+// «لا بزخم يوم الإدراج»، «لا بنمو الأرباح وحده»): the same correction of no one, said without «وحده».
+const BOX_TAKEBACK = new RegExp(`(?:(?:من\\s+)?دون أن|(?<![${AR}])(?:لا|لن)) (?:ي|ت)[${AR}]+(?: [${AR}]+){0,2} (?:وحده|وحدها|بمفرده|بمفردها)(?![${AR}])|(?<![${AR}])(?:وحده|وحدها|بمفرده|بمفردها) (?:لا|لن) (?:ي|ت)[${AR}]+|،\\s*لا ب[${AR}]+(?: [${AR}]+){0,4}`);
 
 const SENTENCE_SPLIT = /[.؟!]\s+|\n+/;
 
@@ -545,6 +557,8 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
     const boxHits = [...new Set(box.match(BOX_BANNED) ?? [])];
     if (boxHits.length) issues.push(`«لماذا يهمّ» تستعمل قالباً («${boxHits.join("»، «")}»)؛ اذكر بلداً عربياً أو شركة أو سعراً فقط إن ربطه مصدر بالخبر، وإلا قل ما يغيّره الحدث في سوقه، ولا تخاطب القارئ.`);
     if (BOX_OPENER.test(box.trim())) issues.push(`«لماذا يهمّ» تبدأ بـ«يعكس/يمثل/يُعدّ»؛ ابدأ بالنتيجة نفسها.`);
+    const takeback = box.match(BOX_TAKEBACK);
+    if (takeback) warnings.push(`«لماذا يهمّ» تنفي ما لم يقله أحد أو تسحب نتيجتها («${takeback[0]}»)؛ قل الحد بما يحسم فعلاً («القرار الفعلي بيد شركات الطيران»)، واذكر الشرط مرة في «إذا»، واختم بالنتيجة.`);
     if ((box.match(/(?<![؀-ۿ])(?:و|ف)?قد(?![؀-ۿ])/g) ?? []).length > 2) warnings.push(`«لماذا يهمّ» سلسلة من «قد يؤدي… مما قد…»؛ نتيجة واحدة يذكرها مصدر أو تنتج عن أرقام الخبر.`);
   }
 

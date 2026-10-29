@@ -186,11 +186,14 @@ const STUTTER = /(?<![؀-ۿ])([؀-ۿ]{3,})\s+\1(?![؀-ۿ])/;
  * read through («يُتوقع» is «يتوقع»).
  */
 // Word edges are letters and marks, not the Arabic block: «،» and «؛» sit inside it, and «والأرجح،» must count.
-const HEDGES = new RegExp(`(?<![\\p{L}\\p{M}])${CLITIC}(?:ال)?(يتجه|تتجه|قد(?<!لقد)(?= (?:ي|ت(?![\\p{L}\\p{M}]*ت(?![\\p{L}\\p{M}]))))|من المتوقع|متوقع|متوقعة|مرشح|مرشحة|محتمل|محتملة|من المحتمل|أرجح|مرجح|يرجح|ترجح|ربما|يبدو|تبدو|يستبعد|يتوقع|تتوقع|توقعات|توقع|يقدر|تقدر|يقدرون|تقديرات|تعهد|تعهدت|يعد(?=(?: [؀-ۿ]+){0,2} ب[؀-ۿ])|تعد(?=(?: [؀-ۿ]+){0,2} ب[؀-ۿ])|وعد|وعدت|يعتزم|تعتزم|يخطط|تخطط|قريبا)(?![\\p{L}\\p{M}])`, "gu");
-// Two kinds: what is uncertain (a forecast or a possibility: «تتوقع المنظمة» may become «ترجّح المنظمة», both
-// leave the claim open) and what is promised (a pledge or a plan is not a likelihood).
+const HEDGES = new RegExp(`(?<![\\p{L}\\p{M}])${CLITIC}(?:ال)?(يتجه|تتجه|قد(?<!لقد)(?= (?:ي|ت(?![\\p{L}\\p{M}]*ت(?![\\p{L}\\p{M}]))))|من المتوقع|متوقع|متوقعة|مرشح|مرشحة|محتمل|محتملة|من المحتمل|أرجح|مرجح|يرجح|ترجح|ربما|يبدو|تبدو|يستبعد|يتوقع|تتوقع|توقعات|توقع|يقدر|تقدر|يقدرون|تقديرات|تعهد|تعهدت|يعد(?=(?: [؀-ۿ]+){0,2} ب[؀-ۿ])|تعد(?=(?: [؀-ۿ]+){0,2} ب[؀-ۿ])|وعد|وعدت|يعتزم|تعتزم|يخطط|تخطط|قريبا|إذا|في حال|افتراض|سيناريو|ما لم|ما دام|ما دامت|طالما|شريطة|بشرط)(?![\\p{L}\\p{M}])`, "gu");
+// Three kinds: what is uncertain (a forecast or a possibility: «تتوقع المنظمة» may become «ترجّح المنظمة», both
+// leave the claim open), what is promised (a pledge or a plan is not a likelihood), and what holds only on a condition
+// (2026-10-29: the World Bank's 79 dollars «في ظل افتراض… عودة تدفقات النفط عبر الممرات البحرية» and 105 «إذا تعطلت
+// إمدادات إضافية بنحو 5 ملايين برميل يومياً» went out bare; «إذا» may become «في حال», never nothing).
 function hedgeKind(word) {
   if (/^(?:تعهد|تعهدت|يعد|تعد|وعد|وعدت|يعتزم|تعتزم|يخطط|تخطط|قريبا)$/.test(word)) return "promised";
+  if (/^(?:إذا|في حال|افتراض|سيناريو|ما لم|ما دام|ما دامت|طالما|شريطة|بشرط)$/.test(word)) return "conditional";
   return "uncertain";
 }
 const hedgeKinds = (text) => new Set([...String(text ?? "").replace(/\p{M}/gu, "").matchAll(HEDGES)].map((m) => hedgeKind(m[1])));
@@ -399,6 +402,11 @@ const NAME_FIXES = [
   // …and in Latin letters as the outlet's name in an Arabic sentence («يرجّح موقع AGBI أن…», «ترجّح AGBI»); a gloss in
   // brackets after the Arabic name stays.
   [/«AGBI»|(?<![(«A-Za-z])AGBI(?![A-Za-z)»])/g, "«أرابيان غلف بزنس إنسايت»"],
+  // Asharq Business ran three ways in the week it joined (2026-10-29: «الشرق للأعمال»، «اقتصاد الشرق مع بلومبرغ»، «الشرق
+  // بلومبرغ»), its English name and its old programme's name translated; sources.json prints «الشرق بلومبرغ».
+  [/الشرق للأعمال|اقتصاد الشرق مع بلومبرغ/g, "الشرق بلومبرغ"],
+  // Google: «جوجل» in 28 stories, «غوغل» in 6 (2026-10-29).
+  [/غوغل/g, "جوجل"],
   [/فاينانشال تايمز/g, "فايننشال تايمز"],
   [/ذا ناشونال/g, "ذا ناشيونال"],
   [/ديلي نيوز إيجبت/g, "ديلي نيوز إيجيبت"],

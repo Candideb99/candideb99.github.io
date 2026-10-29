@@ -121,6 +121,31 @@ transition; no extra words just to make the article longer. A useful consequence
 «ارتفاع السعر يرفع كلفة الشراء» alone merely repeats it. The writer, copy desk and critic share this
 brief in `pipeline/lib/editorial.mjs`; the critic names concrete defects in construction as well as facts.
 
+**The headline is the spine** (the owner, 2026-10-29, on «الفيدرالي الأمريكي يبقي الفائدة بين 3.75% و4% رغم
+مطالبة عضوتين برفعها»: "check if this article is just a mish-mash/mix of info that look disconnected"). Every
+sentence was sourced, yet the story read as two source reports laid side by side: the two dissenters were named in
+the lede and never again, while what explained the split (the statement calling growth «قوية», the chair's "family
+fight", a governor on further hikes, December's pricing) sat in four distant paragraphs between background, prices
+and a textbook definition. Whatever the headline says is new is developed right after the lede, every supplied fact
+that bears on it gathered there; a speaker's remarks sit beside the facts they explain. When the sources cannot
+develop it, the headline leads on what the story can. Markets reacting to a decision are told as that reaction: one
+measure per instrument (never two dollar indices as one dollar), timed against the event rather than each at its own
+minute, a retreat from the session's high said with where the day stands, and no market a source does not tie to the
+event. A news story does not define the basic words of economics for a reader who has never followed it. «لماذا
+يهمّ» ends on its inference: no closing clause that takes it back, no «لا… وحده» against a claim nobody made (six of
+some 300 boxes; a warning to the desk in `style.mjs`). The vote under «الأرقام» is printed whole («10 مقابل 2»). The
+critic writes a headline the body abandons as «العنوان بلا متن:», a depth defect, and the reviser is shown the
+sources it names.
+
+**Padding is not depth; results keep their labels** (the audit of 2026-10-29, 21 pieces). A company's description of
+itself, an executive's praise, a communiqué's list of topics, diplomacy that does not touch the economic consequence and
+the previous event retold never fill a report, and the critic may not ask for them: a thin event runs short. In company
+results each measure keeps the company's own name for it (EBITDA is not operating profit), every comparison names its
+base and never sits a year-on-year change beside a quarter-on-quarter one, growth on last year is not a raised plan, and
+new guidance is told against the range it replaces. A forecast keeps its assumption wherever it is printed; the copy
+desk's guard now treats a condition as it treats a hedge. «لماذا يهمّ» says the consequence in the event's own terms,
+in proportion to the story's figures, and no longer by formula («يبقى رهناً بـ…»، «، لا بـ…»).
+
 **Meaning before machinery** (2026-10-17, after reading eight reports from four Arabic desks).
 The headline, dek and opening together must establish what changed, who is affected and the
 qualification needed to understand the event. Distinguish a waiver of new sanctions from lifting
