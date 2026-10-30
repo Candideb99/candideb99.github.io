@@ -83,6 +83,17 @@ const sources = [{ sourceName: "رويترز", title: "t", url: "https://example
   } });
   check("notes whose facts carry no job are asked again", refusals.length === 1 && /carry no job/.test(refusals[0]), true);
   check("…and a job is read whatever its case or spacing", tagged?.notes && explainingFacts(tagged.notes), 6);
+  // Asked once: notes still untagged on the second answer are kept (they explain nothing, so the event runs short) rather
+  // than lost to a third refusal, which would leave the writer with the raw sources and no depth gate.
+  const stubborn = [];
+  const kept = await deskNotes({ story: {}, sources, chatWith: async ({ validate }) => {
+    for (let i = 0; i < 3; i += 1) {
+      const data = { event: "e", reader_context: null, facts: facts() };
+      try { validate(data); return { data, model: "stand-in" }; } catch (error) { stubborn.push(error.message); }
+    }
+    throw new Error(stubborn.at(-1));
+  } });
+  check("…once only: untagged notes on the second answer are kept, and explain nothing", [stubborn.length, kept?.notes?.facts.length, kept && explainingFacts(kept.notes)], [1, 6, 0]);
 }
 
 // Exercise the real checker response boundary; a nonempty array is not necessarily a completed check.
@@ -575,6 +586,11 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const repeated = { reader_context: context, facts: [context, { ...context }, { fact: "تفصيل آخر", source: 1 }] };
   prioritizeContext(repeated);
   check("the context fact is not counted twice", repeated.facts.length, 2);
+  // The context is often the event's driver: listed among the facts as well, it keeps that job (2026-10-30, the review).
+  const asDriver = { fact: "ارتفعت الصادرات بعد خفض الرسوم الجمركية", source: 1 };
+  const tagged = { reader_context: asDriver, facts: [{ ...asDriver, job: "driver" }, { fact: "رحّب المصدّرون بالقرار", source: 1, job: "reaction" }] };
+  prioritizeContext(tagged);
+  check("a context fact the notes also list keeps its job, so it still explains the event", [explainingFacts(tagged), tagged.facts[0] === asDriver], [2, true]);
   const thin = { reader_context: null, facts: [{ fact: "خبر مقتضب", source: 1 }] };
   prioritizeContext(thin);
   check("thin sources do not force invented context", thin.facts.length, 1);

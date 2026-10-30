@@ -34,7 +34,7 @@ for (const line of existsSync(path.join(root, ".env")) ? readFileSync(path.join(
 const { chat } = await import("./lib/llm.mjs");
 // The same geography rule the newsroom's picture checks read (2026-09-23): one rule, not two copies,
 // and the same check in code, which overrides a model that passes a photo its own file places abroad.
-const { photoRules, publishedFault, placedAbroad, ILLUSTRATIVE, noveltyFault, closeUpOfMaterial, storyText, inlineImage } = await import("./lib/images.mjs");
+const { photoRules, publishedFault, placedAbroad, namesCompany, ILLUSTRATIVE, noveltyFault, closeUpOfMaterial, storyText, inlineImage } = await import("./lib/images.mjs");
 const ARTICLES = path.join(root, "content", "articles");
 const CACHE = path.join(root, "pipeline", ".cache", "commons-meta.json");
 const OUT = path.join(root, "pipeline", "runs", "image-audit.json");
@@ -121,12 +121,14 @@ ${photoRules({ draft, image: record, neutral: illustrative, thumbnail, lastResor
     // illustration, a close-up of a material or the story's own people, as the desk exempts them), a curiosity, and what
     // the desk drops before any judge (publishedFault(): a front or a skyline, a stock cliché, a scan, an archival frame).
     const people = String(data.people_in_photo ?? "").trim();
-    // The story's own company too (AUDIT_BRAND): its brand and its sites are its own wherever they stand (2026-10-30).
-    const company = String(data.own_company ?? "").trim();
-    const theirOwn = verdict === "RIGHT" && ((people && !/^none\b/i.test(people)) || (company && !/^none\b/i.test(company)));
+    // The story's own company too (AUDIT_BRAND): its brand and its sites are its own wherever they stand (2026-10-30). The
+    // model's answer holds only when the file's own record names that company, as the desk holds it (namesCompany()).
+    const answered = String(data.own_company ?? "").trim();
+    const company = answered && !/^none\b/i.test(answered) && namesCompany(record, answered) ? answered : "";
+    const theirOwn = verdict === "RIGHT" && ((people && !/^none\b/i.test(people)) || Boolean(company));
     const abroad = illustrative || closeUpOfMaterial(record) || theirOwn ? null : placedAbroad(record, draft);
     const odd = noveltyFault(record, draft);
-    const fault = publishedFault(record, draft);
+    const fault = publishedFault(record, company ? { ...draft, imageCompany: company } : draft);
     if (passed && abroad) {
       verdict = "WRONG_SUBJECT";
       data.reason = `The file places the photo in ${abroad}, a country the story does not name (checked in code; the model said ${String(data.verdict)}).`;

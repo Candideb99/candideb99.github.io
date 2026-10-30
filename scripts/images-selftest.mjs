@@ -8,7 +8,7 @@
  *
  *   node scripts/images-selftest.mjs
  */
-import { withStandIns, pickImage, headlinePeople, headlineCompany, namesCompany, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { withStandIns, pickImage, headlinePeople, headlineCompany, namesCompany, namesPerson, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
 import { photoKey, sharedPhotos } from "../pipeline/lib/photo-key.mjs";
 import { BAD_TITLE, cleanArtist, creditName, attributionLine } from "../pipeline/lib/commons.mjs";
 
@@ -327,6 +327,22 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
     verify: () => "RIGHT",
   });
   check("an accented name survives the planner and her photo is chosen", r.image?.title, kaya.title);
+}
+// I2. A surname alone is not the person (2026-10-30): «Lorie Logan» of the Dallas Fed brought the town of Logan, West
+// Virginia, through the Arabic search shortened to «لوغان», and a diorama whose record names a Lorie Shaull and Logan.
+{
+  const town = file("Logan-downtown-from-hospital-wv.jpg", { date: "2018-05-01", description: "مدينة لوغان، فيرجينيا الغربية" });
+  const diorama = file("Nutshell Studies of Unexplained Death, Blue Bedroom diorama.jpg", { date: "2024-05-01", description: "Photographed by Lorie Shaull, Logan collection" });
+  const her = file("Dallas Fed President Lorie K. Logan speaks, 2025.jpg", { date: "2025-04-01" });
+  const r = await scenario({
+    draft: { ...developers, title: "رئيسة فيدرالي دالاس لوري لوغان ترى حاجة إلى رفع الفائدة", tags: ["الفيدرالي الأمريكي"], regions: ["أمريكا الشمالية"] },
+    plan: planFor({ queries: [], place: ["United States"], people: [{ name: "Lorie Logan", ar: "لوري لوغان", headline: "لوري لوغان" }], focus: "people" }),
+    world: { "Lorie Logan 2026": [diorama], "Lorie Logan": [her, diorama], "لوري لوغان": [], "لوغان": [town] },
+    judge: (titles) => titles.findIndex((t) => t.includes("Lorie K. Logan")) + 1,
+    verify: () => "RIGHT",
+  });
+  check("a person's search is never cut to the surname, and a file naming only the surname never reaches the judge", [r.searched.includes("لوغان"), r.judgePrompts.some((p) => p.includes("Nutshell") || p.includes("Logan-downtown")), r.image?.title], [false, false, her.title]);
+  check("a name with an initial, and a rank with the surname, name the person; the surname or the first name elsewhere does not", [namesPerson(fold("Dallas Fed President Lorie K. Logan"), "Lorie Logan"), namesPerson(fold("secretary kerry poses"), "John Kerry", [["kerry", "poses"]]), namesPerson(fold("Logan, West Virginia"), "Lorie Logan"), namesPerson(fold("Photographed by Lorie Shaull, Logan collection"), "Lorie Logan"), namesPerson(fold("ناجي عيسى مع جيرمي برنت"), "ناجي محمد عيسى")], [true, true, false, false, true]);
 }
 // J. «Erdogan» in a file name is Erdoğan; a file that pairs him with someone else is not taken for another man alone.
 {
@@ -885,6 +901,23 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
     "a company is named as a whole word, a short name in either case",
     [namesCompany({ title: "Shell petrol station, Dubai.jpg" }, "Shell"), namesCompany({ title: "Seashell on a beach.jpg" }, "Shell"), namesCompany({ title: "bp pulse charger.jpg" }, "BP"), namesCompany({ title: "BPCL fuel depot.jpg" }, "BP")],
     [true, false, true, false],
+  );
+  // The review of 2026-10-30: a name that is also a word or a place is not the company without one of its own things.
+  check(
+    "a name that is a word or a place is not the company: a fruit tree, a beach, an arm, a mountain gap",
+    [namesCompany({ title: "Apple tree in bloom, Normandy.jpg" }, "Apple"), namesCompany({ title: "Shell Beach, Western Australia.jpg" }, "Shell"), namesCompany({ title: "Raised arm.jpg" }, "Arm"), namesCompany({ title: "Mountain gap at dawn.jpg" }, "Gap"), namesCompany({ title: "x.jpg", categories: "Shell Beach|BP petrol stations in Australia" }, "BP"), namesCompany({ title: "Apple tree" }, "Apple", { query: true })],
+    [false, false, false, false, true, true],
+  );
+  check(
+    "a camera's tag is dropped alone: the library's other tags still place the photograph",
+    placedAbroad({ title: "Refinery at dusk", categories: "Germany, Hamburg, refinery, taken with iPhone" }, { title: "مصر ترفع إنتاج التكرير", tags: ["مصر"] }),
+    "Germany",
+  );
+  const branchSign = file("Barclays bank branch sign, Leeds.jpg", { categories: "Barclays branches in England" });
+  check(
+    "the audit's code leaves the company's own sign to the judge under its own news, and still drops a front otherwise",
+    [publishedFault(branchSign, { title: "باركليز تلغي 5 آلاف وظيفة", imageCompany: "Barclays" }), Boolean(publishedFault(branchSign, { title: "باركليز تلغي 5 آلاف وظيفة" }))],
+    [null, true],
   );
 
   const generic = file("Coryton Oil Refinery, Essex.jpg", { categories: "Oil refineries in England" });

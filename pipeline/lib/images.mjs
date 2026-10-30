@@ -170,18 +170,34 @@ export function headlineCompany(title, company) {
   const norm = (s) => String(s ?? "").replace(/[ً-ٰٟـ]/g, "").replace(/[أإآٱ]/g, "ا").replace(/ى/g, "ي").replace(/ة/g, "ه").replace(/[«»"“”'’]/g, " ").replace(/\s+/g, " ").trim();
   const phrase = norm(company.headline);
   if (!/^[\p{L}\p{N}][\p{L}\p{M}\p{N} .&'’-]{1,40}$/u.test(name) || phrase.length < 2) return null;
-  const re = new RegExp(`(?<![\\p{L}\\p{M}])[وف]?[بكل]?(?:ال)?${escapeRe(phrase)}(?![\\p{L}\\p{M}])`, "u");
+  // No clitic before a phrase of two letters: «بي» would be read inside «لبّى».
+  const clitic = phrase.replace(/\s/g, "").length > 2 ? "[وف]?[بكل]?(?:ال)?" : "";
+  const re = new RegExp(`(?<![\\p{L}\\p{M}])${clitic}${escapeRe(phrase)}(?![\\p{L}\\p{M}])`, "u");
   return re.test(norm(title)) ? { name, headline: String(company.headline).trim() } : null;
 }
 
 /**
  * Whether a file's record names the company: its name as a whole word, as written (Commons titles a brand «Shell»; a
- * lower-case «shell» is a seashell), and a short name in capitals or lower case too («BP», «bp pulse»).
+ * lower-case «shell» is a seashell), a short name in capitals too, and a two-letter one in lower case («bp pulse»); and,
+ * for a file, with one of the company's own things within three words of it, in the same title, description or category
+ * («Shell petrol station», «BP Whiting Refinery», «Emirates Airbus A380»). A name alone is often a word or a place:
+ * «Apple tree in bloom», «Shell Beach, Western Australia», «arm», «Mountain gap» all read as the company, and their files
+ * were let off the country rule under that company's news (the review of 2026-10-30). A search (`query`) needs no context.
  */
-export function namesCompany(image, name) {
-  const forms = [...new Set([name, ...(name.length <= 4 ? [name.toUpperCase(), name.toLowerCase()] : [])])].map(escapeRe);
-  const re = new RegExp(`(?<![\\p{L}\\p{N}])(?:${forms.join("|")})(?![\\p{L}\\p{N}])`, "u");
-  return re.test(`${image?.title ?? ""} | ${image?.description ?? ""} | ${image?.categories ?? ""}`.replace(/_/g, " "));
+const COMPANY_THINGS = /\b(?:stations?|petrol|gas|fuel|filling|service|forecourts?|garages?|pumps?|chargers?|charging|refinery|refineries|plants?|terminals?|depots?|sites?|platforms?|rigs?|fields?|pipelines?|tankers?|ships?|vessels?|fleet|stores?|shops?|outlets?|branch(?:es)?|offices?|headquarters|HQ|tower|building|campus|factory|factories|facility|facilities|warehouse|logos?|signs?|signage|pylons?|totems?|canopy|brand(?:ed|ing)?|livery|aircraft|airliners?|airbus|boeing|planes?|jets?|trucks?|lorry|lorries|vans?|cars?|vehicles?|dealership|showroom|bank|ATMs?|cards?|plc|inc|ltd|company|corporation|group|employees|workers|staff|mine|mines|smelter|works)\b/i;
+export function namesCompany(image, name, { query = false } = {}) {
+  const forms = [...new Set([name, ...(name.length <= 4 ? [name.toUpperCase()] : []), ...(name.length <= 2 ? [name.toLowerCase()] : [])])].map(escapeRe);
+  const re = new RegExp(`(?<![\\p{L}\\p{N}])(?:${forms.join("|")})(?![\\p{L}\\p{N}])`, "gu");
+  const segments = [image?.title, image?.description, ...String(image?.categories ?? "").split("|")].map((s) => String(s ?? "").replace(/_/g, " "));
+  for (const segment of segments) {
+    for (const m of segment.matchAll(re)) {
+      if (query) return true;
+      const before = segment.slice(0, m.index).split(/\s+/).filter(Boolean).slice(-3).join(" ");
+      const after = segment.slice(m.index + m[0].length).split(/\s+/).filter(Boolean).slice(0, 3).join(" ");
+      if (COMPANY_THINGS.test(`${before} ${after}`)) return true;
+    }
+  }
+  return false;
 }
 
 /** The Arabic searches for a person: the name as the story writes it, and its first and last words when longer (the
@@ -190,6 +206,24 @@ export function arabicSearches(name) {
   const words = String(name ?? "").trim().split(/\s+/).filter(Boolean);
   return [...new Set([words.join(" "), ...(words.length > 2 ? [`${words[0]} ${words.at(-1)}`] : [])])].filter((q) => q.length >= 3);
 }
+/**
+ * Whether a file's folded text names a person: their first and last words as one name, with no more words between than
+ * their own middle names, or one where they have none (an initial: «Jerome H. Powell»; «ناجي محمد عيسى»; «Fatma Betül
+ * Sayan Kaya»), or the surname after a rank («Secretary Kerry Poses»,
+ * namedPeople()). A surname alone is not the person: «Lorie Logan» of the Dallas Fed brought the town of Logan, West
+ * Virginia and a crime-scene diorama to the judges (2026-10-30), «Logan» standing in its record for a place.
+ */
+export function namesPerson(said, name, ranked = []) {
+  const words = fold(String(name ?? "").trim()).split(/[^\p{L}\p{N}'’-]+/u).filter(Boolean);
+  if (!words.length) return false;
+  const last = escapeRe(words.at(-1));
+  if (words.length === 1) return new RegExp(`(?<!\\p{L})${last}(?!\\p{L})`, "u").test(said);
+  const first = escapeRe(words[0]);
+  const between = Math.max(1, words.length - 2);
+  if (new RegExp(`(?<!\\p{L})${first}(?:[\\s_-]+\\p{L}[\\p{L}.'’-]*){0,${between}}[\\s_-]+${last}(?!\\p{L})`, "u").test(said)) return true;
+  return ranked.some((rankedWords) => rankedWords.includes(words.at(-1)));
+}
+
 /** Words that make a rank-plus-name a place or an institution, not a person: "King Abdulaziz International Airport", "General Motors", "Prince Sultan Air Base". */
 const NOT_A_PERSON = new Set(["international", "airport", "university", "hospital", "stadium", "bridge", "street", "road", "avenue", "boulevard", "highway", "causeway", "center", "centre", "city", "port", "base", "district", "foundation", "medical", "park", "square", "tower", "towers", "mosque", "library", "museum", "school", "college", "institute", "financial", "economic", "cup", "trophy", "league", "motors", "electric", "mills", "hotel", "terminal", "station", "line", "dam", "canal", "complex", "hall", "building", "plaza", "mall", "gardens", "memorial", "academy", "company", "corporation", "bank", "fund", "award", "prize", "air", "naval", "military", "sports", "convention", "exhibition", "expo", "industrial", "village", "island", "islands", "bay", "beach", "harbour", "harbor", "refinery", "oil", "gas", "petroleum", "energy", "campus", "palace", "monument", "statue"]);
 
@@ -448,7 +482,9 @@ export function placedAbroad(image, story) {
   // A camera's category names the uploader's habit, not the place: "Germany photos taken with Canon PowerShot SX60 HS" sat
   // on a photograph of BP's jetty at Kwinana, Western Australia, which was read as taken in Germany (2026-10-30). "Finland
   // photographs taken on 2016-08-19" is a date's category, and does place it.
-  const categories = String(image?.categories ?? "").split("|").filter((c) => !/\btaken with\b/i.test(c)).join("|");
+  // Only that category or tag: Openverse joins a photograph's tags with commas, and one tag «taken with iPhone» had wiped
+  // «Germany, Hamburg, refinery» with it (the review of 2026-10-30).
+  const categories = String(image?.categories ?? "").replace(/(?:^|[|,])[^|,]*\btaken with\b[^|,]*/gi, "");
   // "Ships built in South Korea", "Builder: Daewoo …, South Korea", "under the flag of Singapore" say where a
   // ship was made or registered, not where the photograph was taken.
   const said = `${image?.title ?? ""} | ${image?.description ?? ""} | ${categories}`
@@ -603,7 +639,7 @@ export function commonsFileTitle(url) {
 }
 
 export async function collect(queries, log, { perQuery = 6, max = 8, exclude = new Set(), people = "by-query", place = [], places = [], categories = [], together = [], fresh: freshFirst = false, libraries = false, civilian = false, simplify = true, fronts = false, event = [] } = {}) {
-  const surnames = together.map((name) => fold(String(name).trim().split(/\s+/).pop())).filter((s) => s.length >= 2);
+  const theirNames = together.filter((name) => fold(String(name).trim().split(/\s+/).pop()).length >= 2);
   const seen = new Set(exclude);
   const candidates = [];
   const year = String(new Date().getUTCFullYear());
@@ -639,7 +675,9 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
     // A place's search is never shortened: «Saltend chemical plant» became «plant» (vegetation) and «Hull» (Hull,
     // Illinois) on 2026-09-28; the place's name alone is already one of its searches.
     let used = query;
-    for (const alternative of simplify && !category ? simplerQueries(query) : []) {
+    // A search for a person is never shortened to one word: «لوري لوغان» became «لوغان», which fetched the town of Logan,
+    // West Virginia (2026-10-30). Two people searched together may still fall to the first of them.
+    for (const alternative of simplify && !category ? simplerQueries(query).filter((q) => simplify !== "names" || q.split(/\s+/).length >= 2) : []) {
       if (results.length || fresh.length) break;
       results = await outside.searchCommons(alternative, { limit: perQuery, log });
       used = alternative;
@@ -685,8 +723,10 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
       if (atThePlace) relevant = Math.max(relevant, 0.75);
       // A search for the story's people takes a file that names one of them in either script: the governor's photograph,
       // titled «ناجي عيسى مع جيرمي برنت.jpg», was dropped by the Latin search before the Arabic one could see it (2026-10-24).
-      const theirName = surnames.length > 0 && surnames.some((s) => new RegExp(`(?<!\\p{L})${escapeRe(s)}(?!\\p{L})`, "u").test(fold(`${image.title ?? ""} ${image.description ?? ""} ${image.categories ?? ""}`)));
-      if (theirName) relevant = Math.max(relevant, 0.75);
+      const said = fold(`${image.title ?? ""} ${image.description ?? ""} ${image.categories ?? ""}`).replace(/_/g, " ");
+      const named = namedPeople(image);
+      const ofTheirs = theirNames.filter((name) => namesPerson(said, name, named)).length;
+      if (ofTheirs) relevant = Math.max(relevant, 0.75);
       // Pexels and Unsplash describe a photograph in one plain sentence and match a search by meaning, so half the
       // search's words is too high a bar there: sixteen of their trader photographs never reached the judges of the
       // sovereign-rating explainer, which ran without a picture (the stress test of 2026-09-28). A third is theirs. So is
@@ -729,7 +769,6 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
         log(`image: dropped "${String(image.title).slice(0, 70)}" — ${cliche}`);
         continue;
       }
-      const named = namedPeople(image);
       // An explicit list comes from the story planner AND source-photo reader agreeing. Match surnames,
       // not a shared first name (Donald Tusk must never stand in for Donald Trump).
       const allowedSurnames = Array.isArray(people) ? people.map((name) => fold(String(name).trim().split(/\s+/).pop())) : null;
@@ -747,18 +786,16 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
         log(`image: dropped "${String(image.title).slice(0, 70)}" — an event's photograph, people and banners`);
         continue;
       }
-      const said = fold(`${image.title ?? ""} ${image.description ?? ""} ${image.categories ?? ""}`);
       const home = place.some((word) => word && said.includes(fold(word)));
-      const ofTheirs = surnames.filter((s) => new RegExp(`(?<!\\p{L})${escapeRe(s)}(?!\\p{L})`, "u").test(said)).length;
-      // A search for the story's people keeps only files that name one of them: «Amin H. Nasser» brought tombs in
-      // South Kalimantan and Indonesia's vice-president, Ma'ruf Amin (2026-09-24).
-      if (surnames.length && !ofTheirs) {
+      // A search for the story's people keeps only files that name one of them (namesPerson()): «Amin H. Nasser» brought
+      // tombs in South Kalimantan and Indonesia's vice-president, Ma'ruf Amin (2026-09-24).
+      if (theirNames.length && !ofTheirs) {
         log(`image: dropped "${String(image.title).slice(0, 70)}" — names none of the story's people`);
         continue;
       }
       // A story about one person: a file that pairs them with someone else («… and Mike Johnson», «Nicki Minaj with
       // Donald Trump») comes after one of them alone, since the judges refuse the other face anyway.
-      const company = surnames.length === 1 && ofTheirs === 1 && /\b(?:and|with|meets?|&)\b/i.test(String(image.title ?? "")) ? -3 : 0;
+      const company = theirNames.length === 1 && ofTheirs === 1 && /\b(?:and|with|meets?|&)\b/i.test(String(image.title ?? "")) ? -3 : 0;
       const withPeople = (ofTheirs >= 2 ? 6 : ofTheirs === 1 ? 2 : 0) + company;
       // Relevance weighs as much as the newest year: a fitting 2019 tanker comes before a 2026 beach.
       added += 1;
@@ -1304,7 +1341,7 @@ Return JSON: {"queries": ["...", "...", "...", "..."], "place": ["..."], "people
     event: (Array.isArray(data.event) ? data.event : []).map((w) => String(w).trim()).filter((w) => /^[\p{L}\p{N}][\p{L}\p{M}\p{N} .,'’&-]{2,60}$/u.test(w)).slice(0, 3),
     eventQueries: (Array.isArray(data.event_queries) ? data.event_queries : []).map((q) => String(q).trim()).filter((q) => q.length >= 3 && q.split(/\s+/).length <= 6).slice(0, 3),
     company,
-    brandQueries: company ? (Array.isArray(data.brand_queries) ? data.brand_queries : []).map((q) => String(q).trim()).filter((q) => q.length >= 3 && q.split(/\s+/).length <= 6 && namesCompany({ title: q }, company.name)).slice(0, 3) : [],
+    brandQueries: company ? (Array.isArray(data.brand_queries) ? data.brand_queries : []).map((q) => String(q).trim()).filter((q) => q.length >= 3 && q.split(/\s+/).length <= 6 && namesCompany({ title: q }, company.name, { query: true })).slice(0, 3) : [],
   };
 }
 
@@ -1357,7 +1394,10 @@ export function publishedFault(image, draft) {
   if (SCAN.test(String(image.title ?? "")) || DEPICTION.test(String(image.categories ?? ""))) return "a scan of a note's or a coin's face, not a photograph";
   if (civilianStory(draft) && (WARSHIP.test(`${image.title ?? ""} ${image.description ?? ""}`) || TROOPS.test(`${image.title ?? ""} ${image.description ?? ""}`))) return "a warship, a weapon or soldiers, and the story is not about the military";
   // A central bank's own building is left to the judge, who is told the one exception (its own decision on rates).
-  if (frontOfBuilding(image) && !aboutBuildings(draft) && !CENTRAL_BANK.test(`${image.title ?? ""} ${image.description ?? ""} ${image.categories ?? ""}`)) return "a building's front, a branch or a skyline, which says whose or where, not what happened";
+  // So is the company's own sign or site under its own news (BRAND_RULE): the brand pass takes them, and the audit had
+  // turned its picks into WRONG_SUBJECT ("Barclays bank branch sign", the review of 2026-10-30).
+  const ownBrand = Boolean(draft?.imageCompany) && namesCompany(image, draft.imageCompany);
+  if (frontOfBuilding(image) && !aboutBuildings(draft) && !ownBrand && !CENTRAL_BANK.test(`${image.title ?? ""} ${image.description ?? ""} ${image.categories ?? ""}`)) return "a building's front, a branch or a skyline, which says whose or where, not what happened";
   return stockFault(image);
 }
 
@@ -2088,7 +2128,7 @@ async function peoplePhoto({ people, ar = {}, draft, story, log, exclude, ...des
   // the New York Fed's John C. Williams was taken in 2008): such a file is dropped and the story falls back to a
   // scene of its sector.
   const oldest = year - 8;
-  const found = (await collect(queries, log, { perQuery: 10, max: 20, exclude, people: "by-query", together: [...people, ...arabic], fronts: true })).filter((c) => !excluded(exclude, c));
+  const found = (await collect(queries, log, { perQuery: 10, max: 20, exclude, people: "by-query", together: [...people, ...arabic], fronts: true, simplify: "names" })).filter((c) => !excluded(exclude, c));
   const recent = found.filter((c) => {
     const taken = photoYear(c);
     if (taken && taken < oldest) {
