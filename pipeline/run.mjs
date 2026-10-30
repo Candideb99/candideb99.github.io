@@ -27,8 +27,8 @@ import { collectNewsEvidence, eventSourcesOf, independentOutletCount } from "./l
 import { marketData, repeatsInstrument } from "./lib/context.mjs";
 import { MARKET_QUOTE_URL } from "./lib/quotes.mjs";
 import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectFeatureTopic, selectPaper, selectStories } from "./lib/select.mjs";
-import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, newsFloor, paperNotes, reviseArticle, substantiveFacts, writeAnalysis, writeArticle, writeExplainer, writeFeature, writePaperReading, writeWeekly } from "./lib/write.mjs";
-import { NEWS_FLOOR, NEWS_MIN_FACTS, SHORT_DAILY_CAP, SHORT_WORDS } from "./lib/editorial.mjs";
+import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, explainingFacts, newsFloor, paperNotes, reviseArticle, substantiveFacts, writeAnalysis, writeArticle, writeExplainer, writeFeature, writePaperReading, writeWeekly } from "./lib/write.mjs";
+import { NEWS_FLOOR, NEWS_MIN_EXPLAINING, NEWS_MIN_FACTS, SHORT_DAILY_CAP, SHORT_WORDS } from "./lib/editorial.mjs";
 import { critique, CUTTABLE, cutToSources, programmaticChecks } from "./lib/verify.mjs";
 import { copyEdit } from "./lib/copydesk.mjs";
 import { keptBlock, lessonsBlock, lessonsHash, loadLessons } from "./lib/lessons.mjs";
@@ -441,24 +441,27 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   // the cap, or for a refresh, it is not written and its items take the short mark, so the event is tried again when
   // more outlets have reported it.
   let short = false;
-  // Remarks (calls, emphasis, praise) are kept for the writer but never count toward a developed report.
+  // Remarks (calls, emphasis, praise) are kept for the writer but never count toward a developed report, and neither
+  // does a pile of figures nothing explains (NEWS_MIN_EXPLAINING: the euro-area GDP story of 2026-10-30).
   const substantive = substantiveFacts(notes);
+  const explaining = explainingFacts(notes);
+  const thin = substantive < NEWS_MIN_FACTS ? `${substantive} substantive facts (remarks not counted), fewer than ${NEWS_MIN_FACTS}` : `${explaining} facts explaining it (causes and reactions), fewer than ${NEWS_MIN_EXPLAINING}`;
   if (story.format === "short") {
     // An official data release (lib/reports.mjs releaseStory) is told short, however many figures its release carries.
     short = true;
     entry.format = "short";
     log(`short story: "${story.headlineHint}" is a data release`);
-  } else if (notes && substantive < NEWS_MIN_FACTS) {
+  } else if (notes && (substantive < NEWS_MIN_FACTS || explaining < NEWS_MIN_EXPLAINING)) {
     const shortToday = existing.filter((a) => a.kind === "news" && a.format === "short" && hoursSince(a.publishedAt) < 24).length + SHORT_PUBLISHED;
     if (refresh || shortToday >= SHORT_DAILY_CAP) {
-      entry.outcome = `skipped: too little material for a developed report (${substantive} substantive facts (remarks not counted), ${NEWS_MIN_FACTS} needed)${refresh ? "" : `; ${SHORT_DAILY_CAP} short stories already in 24 hours`}`;
+      entry.outcome = `skipped: too little material for a developed report (${thin})${refresh ? "" : `; ${SHORT_DAILY_CAP} short stories already in 24 hours`}`;
       report.push(entry);
-      log(`skip "${story.headlineHint}": ${substantive} substantive facts (remarks not counted), fewer than ${NEWS_MIN_FACTS}; items marked for one retry`);
+      log(`skip "${story.headlineHint}": ${thin}; items marked for one retry`);
       return { rejected: true, items };
     }
     short = true;
     entry.format = "short";
-    log(`short story: "${story.headlineHint}" has ${substantive} substantive facts (remarks not counted), fewer than ${NEWS_MIN_FACTS} (${shortToday + 1} of ${SHORT_DAILY_CAP} short stories in 24 hours)`);
+    log(`short story: "${story.headlineHint}" has ${thin} (${shortToday + 1} of ${SHORT_DAILY_CAP} short stories in 24 hours)`);
   }
   let { draft, model: writerModel } = await writeArticle({ story, sources, notes, log, lessons, short });
   // The writer's own draft, before the desk and the critic touch it: what a private pair compares.

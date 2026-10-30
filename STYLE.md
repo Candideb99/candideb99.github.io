@@ -368,6 +368,18 @@ never against the six elements), revision and check before publication, and gets
 developed report stays the paper's form. Past that cap a thin event is not written and returns when more outlets
 have reported it. A daily briefs page was built first and dropped the same day: the owner did not like it.
 
+**Figures nothing explains are a short story too** (the owner, 2026-10-30, on the euro-area GDP story: "is this a
+well written article or just spits information without context?"). Every figure in it was right, but its only
+readable source was Eurostat's release (the FT and Bloomberg were paywalled one-liners), so it never said why France
+shrank, what had been expected or what it meant; its 300 words were the country table read out row by row and
+Eurostat's coverage and revision calendar. Its notes held 25 facts, 11 of them figures, and passed the 12-fact bar.
+Now an event whose notes hold fewer than two facts that explain it (`NEWS_MIN_EXPLAINING`: a cause of this change,
+or a named party's reaction, a forecast it beat or missed included) runs short as well; the notes tag a backdrop the
+event happened despite as background, an outlet's one-word framing («غير متوقع») as news, and a statistics office's
+method and calendar as a remark. A statistics office's method and calendar, and a table's rows read out in the
+text, are padding in `NEWS_DEPTH`, and the critic's context check names which explanations the sources supply,
+counting more figures from the same table for none of them.
+
 A finished story is mended, not thrown away (2026-09-24). In the 24 runs before that day, 19 drafts were
 rejected after their revision against 30 published, most for one stock phrase or a lede a few words long,
 after the writer, the desk and the critic had been paid for. Now a revised draft whose remaining faults are

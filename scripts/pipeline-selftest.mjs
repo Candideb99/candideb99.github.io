@@ -23,8 +23,8 @@ import { labelLine, outletLabels, quotedOutletsBlock, unlabelledOutlets } from "
 import { instrumentsOf, marketData, repeatsInstrument } from "../pipeline/lib/context.mjs";
 import { independentOutletCount } from "../pipeline/lib/news-evidence.mjs";
 import { boxFacts, figureOnly } from "../pipeline/lib/keyfacts.mjs";
-import { deskNotes, newsDepthBrief, newsFloor, normalizeChart, normalizeDraft, paperNotes, prioritizeContext, substantiveFacts, validateDraft, validateWhyBasis, writePaperReading } from "../pipeline/lib/write.mjs";
-import { NEWS_DEPTH, NEWS_FLOOR, SHORT_WORDS } from "../pipeline/lib/editorial.mjs";
+import { deskNotes, explainingFacts, newsDepthBrief, newsFloor, normalizeChart, normalizeDraft, paperNotes, prioritizeContext, substantiveFacts, validateDraft, validateWhyBasis, writePaperReading } from "../pipeline/lib/write.mjs";
+import { NEWS_DEPTH, NEWS_FLOOR, NEWS_MIN_EXPLAINING, NEWS_MIN_FACTS, SHORT_WORDS } from "../pipeline/lib/editorial.mjs";
 import { arabicEdition, bestPdf, editionKey, previousEdition, releaseDocument, releaseStory, reportExcerpts } from "../pipeline/lib/reports.mjs";
 import { mergeNewsRefresh, serializeArticle } from "../pipeline/lib/article.mjs";
 import { cleanTags } from "../pipeline/lib/tags.mjs";
@@ -73,6 +73,16 @@ const sources = [{ sourceName: "رويترز", title: "t", url: "https://example
   check("notes quota exhaustion stops before another writer call", stopped, true);
   const fallback = await deskNotes({ story: {}, sources, chatWith: async () => { throw new Error("temporary notes failure"); } });
   check("ordinary notes failure retains the existing source-only fallback", fallback, null);
+  // Untagged notes would read as nothing explaining the event and send it short: they are asked again (2026-10-30).
+  const facts = (job) => Array.from({ length: 6 }, (_, i) => ({ fact: `حقيقة رقم ${["أولى", "ثانية", "ثالثة", "رابعة", "خامسة", "سادسة"][i]} من المصدر`, source: 1, ...(job ? { job } : {}) }));
+  const refusals = [];
+  const tagged = await deskNotes({ story: {}, sources, chatWith: async ({ validate }) => {
+    for (const data of [{ event: "e", reader_context: null, facts: facts() }, { event: "e", reader_context: null, facts: facts(" Driver ") }]) {
+      try { validate(data); return { data, model: "stand-in" }; } catch (error) { refusals.push(error.message); }
+    }
+  } });
+  check("notes whose facts carry no job are asked again", refusals.length === 1 && /carry no job/.test(refusals[0]), true);
+  check("…and a job is read whatever its case or spacing", tagged?.notes && explainingFacts(tagged.notes), 6);
 }
 
 // Exercise the real checker response boundary; a nonempty array is not necessarily a completed check.
@@ -731,6 +741,11 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const relayed = "وقالت شينا يو في تصريحات أوردتها «سي إن بي سي» إن النمو تسارع. وأضاف محلل آخر في تصريحات أوردتها «رويترز» أن الصادرات قادت النمو. ورأت يو في تصريحات أوردتها «بلومبرغ» أن الاستهلاك ضعيف.";
   check("one attribution formula three times is sent back", said(flagged({ body: relayed }), /صيغة الإسناد نفسها/), true);
   check("remarks never count toward a developed report", substantiveFacts({ facts: [{ job: "news" }, { job: "remark" }, { job: "numbers" }, { job: "remark" }] }), 2);
+  // The euro-area GDP story of 2026-10-30: 25 notes, 11 of them figures from Eurostat's table, one driver, no reaction.
+  const euro = { facts: [...Array(3).fill({ job: "news" }), { job: "driver" }, ...Array(11).fill({ job: "numbers" }), ...Array(6).fill({ job: "background" }), ...Array(2).fill({ job: "next" }), { job: "remark" }] };
+  check("a pile of figures counts as substantive", substantiveFacts(euro) >= NEWS_MIN_FACTS, true);
+  check("…but one driver and no reaction do not explain it", explainingFacts(euro) < NEWS_MIN_EXPLAINING, true);
+  check("causes and reactions are what explain an event", explainingFacts({ facts: [{ job: "driver" }, { job: "reaction" }, { job: "numbers" }, { job: "background" }, { job: "remark" }] }), 2);
   check("one spelling of Bloomberg", fixNames("قالت المحللة في «الشرق بلومبرج» لـ«بلومبيرغ»"), "قالت المحللة في «الشرق بلومبرغ» لـ«بلومبرغ»");
 }
 
