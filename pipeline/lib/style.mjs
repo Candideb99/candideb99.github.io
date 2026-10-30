@@ -33,7 +33,11 @@ export const BANNED = [
   // الأول في …» (seven stories by 2026-10-28, against fifteen in the desks' form). Only before «في»/«لـ»/«لدى»/«بـ», where
   // it is a title, and after a name's comma: «المحلل الأول الذي توقع…» is a first analyst, «الشريك الاقتصادي الأول للصين»
   // a top partner.
-  { re: /(?<=[،,]\s*)(?:ال)?(?:اقتصادي|اقتصادية|محلل|محللة|خبير|خبيرة|استراتيجي|استراتيجية)(?:\s+(?:ال)?(?:اقتصادي|اقتصادية))?\s+(?:ال)?(?:أول|أولى)(?=\s+(?:في|لدى)(?![؀-ۿ])|\s+[لب][؀-ۿ])/g, fix: "لقب وظيفي مترجم حرفياً؛ اكتب «كبير الاقتصاديين في…» أو «كبير المحللين لدى…» أو «كبيرة الاقتصاديين…» كما تكتبه الصحف", hard: true },
+  // "Senior researcher/fellow" the same way («تيم صن، الباحث الأول في مجموعة…», three stories by 2026-10-30).
+  { re: /(?<=[،,]\s*)(?:ال)?(?:اقتصادي|اقتصادية|محلل|محللة|خبير|خبيرة|استراتيجي|استراتيجية|باحث|باحثة)(?:\s+(?:ال)?(?:اقتصادي|اقتصادية))?\s+(?:ال)?(?:أول|أولى)(?=\s+(?:في|لدى)(?![؀-ۿ])|\s+[لب][؀-ۿ])/g, fix: "لقب وظيفي مترجم حرفياً؛ اكتب «كبير الاقتصاديين في…» أو «كبير المحللين لدى…» أو «كبير الباحثين في…» أو «كبيرة الاقتصاديين…» كما تكتبه الصحف", hard: true },
+  // "Pipelines that bypass the strait" as «أنابيب تتجاوز مضيق هرمز» (three stories by 2026-10-30): «تتجاوز» reads
+  // "exceed" or "go beyond"; the desks write «تتفادى» or «تلتف على».
+  { re: /(?<![؀-ۿ])(?:ت|ي)تجاوز(?:ان)? (?:ال)?مضيق/g, fix: "«تتجاوز المضيق» تُقرأ «تفوقه»؛ اكتب «تتفادى مضيق…» أو «تلتف على مضيق…»" },
   // "Low single digit" as «بنسبة أحادية منخفضة» (ADNOC Drilling's guidance, 2026-10-28): the desks give the range.
   { re: /أحادية (?:منخفضة|متوسطة|مرتفعة)/g, fix: "تعبير مترجم حرفياً؛ اكتب المعنى بالأرقام («أقل من 5%»، «بين 5% و9%») أو «نمواً محدوداً»" },
   // "Weigh on inflation" as «ينعكس سلباً على التضخم» (the ECB story, 2026-10-29: tighter financing would dampen
@@ -442,6 +446,15 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
     const named = unplaced.map((a) => `«${a.name}» ${a.nisba}`);
     issues.push(`العنوان والوصف يسمّيان ${unplaced.map((a) => `«${a.name}»`).join(" و")} دون بلدها، والخبر نفسه يقول ${named.join(" و")}؛ الصحف تعرّف في العنوان من قد لا يعرفه القارئ ببلده («"جي إي فيرنوفا" الأميركية تضخ 9 مليارات دولار…»، «أرباح "البحري" السعودية…»): اكتب ${named[0]} في العنوان، أو في أول الوصف إن ضاق العنوان.`);
   }
+  // A nationality is the country's adjective, never one coined from a city or an emirate (the owner, 2026-10-30, on
+  // «مجموعة «2 بوينت زيرو» الأبوظبية»: "weird arabic"). The city itself takes no article («سوق أبوظبي»), so «الأبوظبي…»
+  // with it is the coined adjective; «الظبياني»، «الدبوي» likewise.
+  const coined = `${title}\n${dek}\n${lede}\n${body}`.match(new RegExp(`(?<![${AR}])[وفبل]?(?:الأبو ?ظبي|الابو ?ظبي|(?:ال)?ظبياني|(?:ال)?دبوي|(?:ال)?دبياني|(?:ال)?شارقي)(?:ة|ون|ين|ان)?(?![${AR}])`));
+  if (coined) issues.push(`«${coined[0]}» صفة منحوتة من اسم مدينة لا تكتبها الصحف؛ الصفة صفة البلد («الإماراتية»)، والمدينة تُذكر مكاناً («ومقرها أبوظبي»).`);
+  // A dek is a statement of its own, never a reply to its headline: an explainer's «…فهل الفارق بهذا الحجم فعلاً؟» over
+  // «لا، فالرقم الأمريكي معدل سنوي…» read as a chat answer (the owner, 2026-10-30: "weird").
+  const reply = dek.trim().match(/^(?:لا|نعم|بلى|كلا|أجل|الجواب|الإجابة|باختصار)\s*[،,:؛.]/);
+  if (reply) issues.push(`الوصف الفرعي يبدأ بردّ على العنوان («${reply[0]}»)؛ الوصف جملة خبرية قائمة بذاتها تقول ما الصحيح، مثل «الرقم الأمريكي معدل سنوي يعادل نحو 0.8% في الربع، أي قرابة ضعف نمو منطقة اليورو».`);
   // An explainer is titled with the question it answers (the owner, 2026-09-24, on «عائد السند يرتفع كلما انخفض
   // سعره والعكس صحيح»: "i would opt in giving the headline as question").
   if (kind === "explainer" && !/؟\s*$/.test(title.trim())) issues.push(`عنوان الشرح سؤال واحد واضح ينتهي بـ«؟» يجيب عنه النص (مثل «لماذا يرتفع عائد السند كلما انخفض سعره؟»)، لا جملة خبرية ولا عنوان بنقطتين.`);

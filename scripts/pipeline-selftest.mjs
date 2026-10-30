@@ -911,6 +911,12 @@ if (spawnSync("git", ["--version"]).status === 0) {
   // wrong arithmetic, which the fact-check had passed as supported.
   check("an analysis's fixed labels are sent back; the same words in news prose are not", [has({ ...pegged, body: "## ما الذي تغيّر\n\nنص.\n\n## السيناريوهات\n\nنص." }, "analysis", "عناوين فرعية من قالب"), has({ ...pegged, body: "## من يدفع الفرق؟\n\nنص." }, "analysis", "عناوين فرعية من قالب")], [true, false]);
   check("«رفع الدعم» raised to a level is sent back; its removal is not", [has({ ...pegged, body: "يُرجَّح ألا يُموَّل رفع الدعم الاجتماعي إلى مثليه." }, "analysis", "«رفع الدعم"), has({ ...pegged, body: "قررت الحكومة رفع الدعم عن الوقود تدريجياً." }, "news", "«رفع الدعم")], [true, false]);
+  // The owner, 2026-10-30: «الأبوظبية» is weird Arabic, and a dek opening «لا،» replies to its headline like a chat.
+  check(
+    "a nationality coined from a city goes back, the city as a place does not; a dek that replies to its headline goes back",
+    [has({ ...pegged, title: "أرباح «2 بوينت زيرو» الأبوظبية تتضاعف" }, "news", "«الأبوظبية» صفة منحوتة"), has({ ...pegged, body: "أعلنت الشركة في بيان إلى سوق أبوظبي للأوراق المالية." }, "news", "«أبوظبي» صفة منحوتة"), has({ ...pegged, subtitle: "لا، فالرقم الأمريكي معدل سنوي يعادل نحو 0.8% خلال الربع" }, "explainer", "الوصف الفرعي يبدأ بردّ"), has({ ...pegged, subtitle: "الرقم الأمريكي معدل سنوي يعادل نحو 0.8% في الربع" }, "explainer", "الوصف الفرعي يبدأ بردّ")],
+    [true, false, true, false],
+  );
   // The review of 2026-10-30: a removal followed by «إلى» of something else is not a raise to a level.
   check(
     "«رفع الدعم … إلى» is a calque only with a figure or a multiple, never across «عن»",
