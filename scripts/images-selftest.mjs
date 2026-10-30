@@ -8,7 +8,7 @@
  *
  *   node scripts/images-selftest.mjs
  */
-import { withStandIns, pickImage, headlinePeople, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { withStandIns, pickImage, headlinePeople, headlineCompany, namesCompany, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
 import { photoKey, sharedPhotos } from "../pipeline/lib/photo-key.mjs";
 import { BAD_TITLE, cleanArtist, creditName, attributionLine } from "../pipeline/lib/commons.mjs";
 
@@ -863,5 +863,74 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   );
 }
 
-console.log(failed ? `\n${failed} check(s) FAILED` : "\nall checks passed");
+// ---------------------------------------------------------------------------------------------------------------
+// The company's own news (the owner, 2026-10-30, on BP's 18-year profit high under a stock refinery: "would not a picture
+// that shows the company logo be better for this article?"). Its brand has a pass of its own; its sites abroad are its own;
+// a camera's category is not a place.
+{
+  const bpDraft = { title: "أرباح «بي بي» البريطانية تقفز إلى أعلى مستوى منذ 18 عاماً", subtitle: "بفضل هوامش التكرير", lede: "قفز الربح.", body: "فقرة.", tags: ["بي بي", "التكرير"], regions: ["أوروبا"], kind: "news", section: "companies", imageQueries: [] };
+  const kwinana = file("BP Oil Refinery Jetty, Kwinana, January 2024 01.jpg", { categories: "2024 at BP Oil Refinery Jetty, Kwinana|Germany photos taken with Canon PowerShot SX60 HS|January 2024 in Kwinana, Western Australia" });
+  check("a camera's category is not where the photograph was taken", placedAbroad(kwinana, { title: "ألمانيا تخفض توقعات النمو", tags: ["ألمانيا"] }), "Australia");
+  check(
+    "the company's own site abroad is home under its own news, and only there",
+    [placedAbroad(kwinana, { ...bpDraft, imageCompany: "BP" }), placedAbroad(kwinana, bpDraft)],
+    [null, "Australia"],
+  );
+  check(
+    "the planner's company holds only when the headline names it",
+    [headlineCompany(bpDraft.title, { name: "BP", headline: "«بي بي»" })?.name ?? null, headlineCompany(bpDraft.title, { name: "Shell", headline: "شل" }), headlineCompany(bpDraft.title, null)],
+    ["BP", null, null],
+  );
+  check(
+    "a company is named as a whole word, a short name in either case",
+    [namesCompany({ title: "Shell petrol station, Dubai.jpg" }, "Shell"), namesCompany({ title: "Seashell on a beach.jpg" }, "Shell"), namesCompany({ title: "bp pulse charger.jpg" }, "BP"), namesCompany({ title: "BPCL fuel depot.jpg" }, "BP")],
+    [true, false, true, false],
+  );
+
+  const generic = file("Coryton Oil Refinery, Essex.jpg", { categories: "Oil refineries in England" });
+  const whiting = file("BP Whiting Refinery, Indiana.jpg", { categories: "Whiting, Indiana|Oil refineries in Indiana" });
+  const station = { ...file("Illuminated BP gas station at night in Melbourne"), url: "https://images.pexels.com/photos/32133560/bp.jpeg", description: "Illuminated BP gas station at night in Melbourne, Australia." };
+  const pko = file("Bank PKO BP w Białymstoku.jpg", { categories: "PKO Bank Polski" });
+  const plan = { queries: ["oil refinery"], place: ["United Kingdom", "British"], people: [], focus: "subject", places: [], place_queries: [], message: "BP's refineries made its biggest profit in 18 years", message_queries: ["BP refinery"], company: { name: "BP", headline: "بي بي" }, brand_queries: ["BP gas station", "BP sign", "Shell station"] };
+
+  // Its own refinery in the United States reaches the judge under its own news, and runs captioned where it is.
+  const own = await scenario({ draft: bpDraft, plan, world: { "BP refinery": [whiting], "oil refinery": [generic] }, judge: (titles) => ({ choice: pickTitle("Whiting")(titles), says: true }), verify: () => "RIGHT" });
+  const without = await scenario({ draft: bpDraft, plan: { ...plan, company: null }, world: { "BP refinery": [whiting], "oil refinery": [generic] }, judge: (titles) => ({ choice: pickTitle("Whiting")(titles), says: true }), verify: () => "RIGHT" });
+  check("the company's own refinery abroad reaches the judge and runs as itself", [own.image?.title, own.image?.alt?.includes(ILLUSTRATIVE)], [whiting.title, false]);
+  check("…but not when the story is not that company's own", without.judgePrompts.some((p) => p.includes("Whiting")), false);
+  check("every judge and the second check are told the company's sites are its own", [own.judgePrompts.every((p) => p.includes("THE STORY'S COMPANY: BP")), own.verifyPrompts.every((p) => p.includes("THE STORY'S COMPANY: BP"))], [true, true]);
+
+  // No photograph says its point and none is its own: its brand, from wherever, before the stand-in waiting in reserve.
+  const brandJudge = (titles, prompt) => (prompt.includes("THE COMPANY'S OWN BRAND") ? pickTitle("gas station")(titles) : { choice: pickTitle("Coryton")(titles), says: false });
+  const r = await scenario({ draft: bpDraft, plan, world: { "oil refinery": [generic], "BP sign": [pko] }, libs: { "BP gas station": [station] }, judge: brandJudge, verify: () => "RIGHT" });
+  check("the brand pass runs BP's forecourt, not the stand-in refinery in reserve", [r.image?.title, r.image?.alt?.includes(ILLUSTRATIVE)], [station.title, false]);
+  const brandPrompt = r.judgePrompts.find((p) => p.includes("THE COMPANY'S OWN BRAND")) ?? "";
+  check("the brand judge may take a logo from anywhere, and is told to refuse a former one", [brandPrompt.includes("logos as the main subject"), brandPrompt.includes("WHERE IT WAS TAKEN"), brandPrompt.includes("former logo")], [false, false, true]);
+  check("a brand search must name the company", r.searched.includes("Shell station"), false);
+  const wrongCompany = await scenario({ draft: bpDraft, plan: { ...plan, company: { name: "Shell", headline: "شل" } }, world: { "oil refinery": [generic] }, libs: { "BP gas station": [station] }, judge: brandJudge, verify: () => "RIGHT" });
+  check("a company the headline does not name gets no brand pass", wrongCompany.judgePrompts.some((p) => p.includes("THE COMPANY'S OWN BRAND")), false);
+
+  // The sign before the station (the owner, 2026-10-30: "some photos are very unclear or too far away"): the brand judge is
+  // shown the files that call themselves a sign first, whatever order the search gave.
+  const far = file("BP Petrol Station, Welling - geograph.org.uk - 2545993.jpg");
+  const sign = file("BP sign on the A1, Chesterton - geograph.org.uk - 6236712.jpg");
+  const order = await scenario({ draft: bpDraft, plan: { ...plan, brand_queries: ["BP gas station", "BP sign"] }, world: { "oil refinery": [generic], "BP gas station": [far], "BP sign": [sign] }, judge: brandJudge, verify: () => "RIGHT" });
+  check("the brand judge sees the sign before the station", titlesIn(order.judgePrompts.find((p) => p.includes("THE COMPANY'S OWN BRAND")) ?? "").slice(0, 2), [sign.title, far.title]);
+}
+
+// Amateur photographs are the last resort (the owner, 2026-10-30: "make amateur photos last resort, and optimize for clear
+// photos"): a snapshot the second check calls AMATEUR is held back, and runs only when no professional photograph is found.
+{
+  const draft = { title: "مصافي النفط تعمل بطاقتها القصوى", subtitle: "", lede: "قفزت هوامش التكرير.", body: "فقرة.", tags: ["النفط"], regions: ["عالمي"], kind: "news", section: "energy", imageQueries: [] };
+  const snap = file("Refinery seen from the road.jpg");
+  const pro = file("Refinery towers at dusk.jpg");
+  const amateurVerdict = (name) => (name.includes("from the road") ? "AMATEUR" : "RIGHT");
+  const alone = await scenario({ draft, plan: { queries: ["oil refinery"], place: [], people: [], focus: "subject", places: [], place_queries: [] }, world: { "oil refinery": [snap] }, judge: (titles) => (titles.length ? 1 : 0), verify: amateurVerdict });
+  check("with nothing professional, the snapshot held back runs at the end", alone.image?.title, snap.title);
+  const both = await scenario({ draft, plan: { queries: ["oil refinery"], place: [], people: [], focus: "subject", places: [], place_queries: [] }, world: { "oil refinery": [snap, pro] }, judge: (titles) => (titles.length ? 1 : 0), verify: amateurVerdict });
+  check("a professional photograph found later runs before it", both.image?.title, pro.title);
+  check("every judge is told amateur photographs come last, and to prefer the nearest, clearest subject", [both.judgePrompts.every((p) => p.includes("AMATEUR LAST")), both.judgePrompts.every((p) => p.includes("nearest, largest and sharpest"))], [true, true]);
+}
+
+console.log(failed ?`\n${failed} check(s) FAILED` : "\nall checks passed");
 process.exit(failed ? 1 : 0);

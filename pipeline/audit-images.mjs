@@ -112,7 +112,7 @@ Categories: ${meta.categories || "(none)"}
 Date: ${meta.date || "(unknown)"}
 Caption the paper printed: ${a.alt}
 
-${photoRules({ draft, image: record, neutral: illustrative, thumbnail, lastResort: true, audit: true })}Return JSON: {"verdict":"RIGHT|GENERIC_OK|${illustrative ? "" : "RECAPTION|"}STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON|UNSERIOUS|STOCK${thumbnail ? "|AMATEUR|UNCLEAR" : ""}","people_in_photo":"<names the file, the description or the frame give, or none>","reason":"<one short English sentence>"}`;
+${photoRules({ draft, image: record, neutral: illustrative, thumbnail, lastResort: true, audit: true })}Return JSON: {"verdict":"RIGHT|GENERIC_OK|${illustrative ? "" : "RECAPTION|"}STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON|UNSERIOUS|STOCK${thumbnail ? "|AMATEUR|UNCLEAR" : ""}","people_in_photo":"<names the file, the description or the frame give, or none>","own_company":"<the company whose own news the headline is, when the frame shows its own brand or site, or none>","reason":"<one short English sentence>"}`;
   try {
     const { data, model } = await chat({ role: "critic", system: "You are a strict newspaper picture editor. Answer with one JSON object only.", user, images: thumbnail ? [thumbnail] : [], json: true, maxTokens: 300, temperature: 0, log: () => {} });
     let verdict = String(data.verdict ?? "").toUpperCase();
@@ -121,7 +121,9 @@ ${photoRules({ draft, image: record, neutral: illustrative, thumbnail, lastResor
     // illustration, a close-up of a material or the story's own people, as the desk exempts them), a curiosity, and what
     // the desk drops before any judge (publishedFault(): a front or a skyline, a stock cliché, a scan, an archival frame).
     const people = String(data.people_in_photo ?? "").trim();
-    const theirOwn = verdict === "RIGHT" && people && !/^none\b/i.test(people);
+    // The story's own company too (AUDIT_BRAND): its brand and its sites are its own wherever they stand (2026-10-30).
+    const company = String(data.own_company ?? "").trim();
+    const theirOwn = verdict === "RIGHT" && ((people && !/^none\b/i.test(people)) || (company && !/^none\b/i.test(company)));
     const abroad = illustrative || closeUpOfMaterial(record) || theirOwn ? null : placedAbroad(record, draft);
     const odd = noveltyFault(record, draft);
     const fault = publishedFault(record, draft);
