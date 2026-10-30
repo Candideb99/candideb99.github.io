@@ -52,8 +52,8 @@
       "edition": 202610,
       "label": "Commodity Markets Outlook, October 2026",
       "url": "https://openknowledge.worldbank.org/bitstreams/b89c473c-d071-4aa4-9f4d-174281aaf0be/download",
-      "at": "2026-10-29T15:17:15.452Z",
-      "outcome": "retry",
+      "at": "2026-10-30T15:06:30.765Z",
+      "outcome": "left after two tries",
       "tries": 2
     },
     "ec-forecast": {
@@ -124,10 +124,10 @@
       "edition": 202609,
       "label": "International trade in goods for Saudi Arabia in September 2026",
       "url": "https://www.stats.gov.sa/en/statistics-tabs?tab=436312&category=123481#",
-      "at": "2026-10-29T21:38:45.673Z",
+      "at": "2026-10-30T15:06:32.071Z",
       "outcome": "retry",
       "tries": 0,
-      "note": "reopened 2026-10-29: its two tries were spent waiting for a document GASTAT had not posted"
+      "waiting": true
     },
     "sa-gdp": {
       "edition": 202606,

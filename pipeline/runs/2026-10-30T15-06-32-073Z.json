@@ -1,0 +1,29 @@
+{
+  "mode": "reports",
+  "startedAt": "2026-10-30T15:06:14.471Z",
+  "durationSec": 18,
+  "published": 0,
+  "refreshed": 0,
+  "report": [],
+  "llm": {
+    "calls": 0,
+    "failures": 0,
+    "promptTokens": 0,
+    "completionTokens": 0,
+    "cacheReadTokens": 0,
+    "costUsd": 0,
+    "byModel": {}
+  },
+  "log": [
+    "[15:06:14] newsroom start mode=reports limit=4 dry-run=false",
+    "[15:06:22] report iea-omr: www.iea.org/reports/oil-market-report-october-2026 not read (http-403)",
+    "[15:06:22] report iea-omr: www.iea.org/reports/oil-market-report-september-2026 not read (http-403)",
+    "[15:06:22] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
+    "[15:06:22] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
+    "[15:06:25] report un-tourism-barometer: page not read (http-403)",
+    "[15:06:30] reports: 2 new edition(s): wb-cmo «Commodity Markets Outlook, October 2026», sa-trade «International trade in goods for Saudi Arabia in September 2026»",
+    "[15:06:30] report wb-cmo: «Commodity Markets Outlook, October 2026» failed twice; left",
+    "[15:06:32] release sa-trade: International trade in goods for Saudi Arabia in September 2026 has no document yet",
+    "[15:06:32] report sa-trade: «International trade in goods for Saudi Arabia in September 2026» is listed without its document; it waits"
+  ]
+}
