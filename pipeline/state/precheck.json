@@ -8536,6 +8536,103 @@
           "noted": []
         }
       ]
+    },
+    "egypt-central-bank-raises-rates-first-since-2024-c23a72": {
+      "at": "2026-10-30T01:21:48.498Z",
+      "title": "المركزي المصري يرفع الفائدة 100 نقطة أساس في أول زيادة منذ مارس 2024",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v42",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 30,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 1,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 10,
+              "field": "whyItMatters",
+              "class": "cause",
+              "verdict": "contradicted",
+              "status": "listed",
+              "sentence": "إذا كان جانب من الضغوط السعرية آتياً من تكلفة السلع المستوردة والطاقة، فالفائدة الأعلى لا تبلغه بكبح الطلب، بل بقدرتها على إبقاء الأموال الأجنبية في أدوات الدين الحكومية وتخفيف الضغط على الجنيه.",
+              "quote": "وأوضح أنيس أن القرار يستهدف امتصاص جانب من السيولة المتاحة في السوق والحد من الطلب، بما يساعد على تخفيف الأثر التضخمي المحتمل لارتفاع تكاليف المعروض، مشيرًا إلى أن بعض الضغوط السعرية لا ترتبط بزيادة الطلب فقط، وإنما بارتفاع تكلفة السلع أيضًا.",
+              "source": "Masrawy",
+              "sourceN": 1,
+              "correction": "The source says curbing demand helps offset the potential inflationary effect of rising supply costs, so it does not say the demand channel fails to reach cost-driven pressure."
+            }
+          ]
+        }
+      ]
+    },
+    "houthis-claim-six-attacks-saudi-oil-facilities-airports-ras-a2c135": {
+      "at": "2026-10-30T01:38:33.558Z",
+      "title": "الحوثيون يعلنون ست هجمات على منشآت نفطية ومطارات سعودية بينها رأس تنورة وبقيق",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 28,
+            "checked": 28,
+            "supported": 28,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "binance-freezes-3-billion-potential-hack-647d53": {
+      "at": "2026-10-30T01:50:07.673Z",
+      "title": "بينانس تجمّد نحو 3 مليارات دولار لمنع سرقتها وسط تحقيق في اختراق محتمل",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v42",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 34,
+            "checked": 34,
+            "supported": 31,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

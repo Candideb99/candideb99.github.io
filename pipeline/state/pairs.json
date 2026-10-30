@@ -1477,6 +1477,94 @@
         "classes": [],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-10-30T01:21:48.508Z",
+      "slug": "egypt-central-bank-raises-rates-first-since-2024-c23a72",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v42",
+      "lessonsHash": "5bcfeb9fba",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 25,
+        "notFound": 0,
+        "checked": 30,
+        "words": 494,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 30,
+        "notFound": 0,
+        "checked": 34,
+        "words": 531,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 30,
+        "notFound": 0,
+        "checked": 34,
+        "words": 531,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      }
+    },
+    {
+      "at": "2026-10-30T01:50:07.681Z",
+      "slug": "binance-freezes-3-billion-potential-hack-647d53",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v42",
+      "lessonsHash": "5bcfeb9fba",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 29,
+        "notFound": 1,
+        "checked": 33,
+        "words": 457,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 32,
+        "notFound": 0,
+        "checked": 35,
+        "words": 531,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 32,
+        "notFound": 0,
+        "checked": 35,
+        "words": 531,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }

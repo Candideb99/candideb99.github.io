@@ -1,0 +1,477 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-30T01:07:04.274Z",
+  "durationSec": 2862,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "المركزي المصري يرفع الفائدة 1% في أول زيادة منذ مارس 2024",
+      "section": "economy",
+      "importance": 8,
+      "sources": [
+        "https://www.masrawy.com/news/news_economy/details/2026/10/29/3070719/%D9%83%D9%8A%D9%81-%D9%8A%D8%A4%D8%AB%D8%B1-%D8%B1%D9%81%D8%B9-%D8%A7%D9%84%D9%81%D8%A7%D8%A6%D8%AF%D8%A9-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D8%AA%D8%B6%D8%AE%D9%85-%D9%88%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%AB%D9%85%D8%A7%D8%B1-%D9%88%D8%A7%D9%84%D9%85%D9%88%D8%A7%D8%B2%D9%86%D8%A9-%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D8%A9-%D8%AE%D8%A8%D8%B1%D8%A7%D8%A1-%D9%8A%D9%88%D8%B6%D8%AD%D9%88%D9%86",
+        "https://www.masrawy.com/news/news_economy/details/2026/10/29/3070702/%D9%85%D8%A7-%D8%AA%D8%A3%D8%AB%D9%8A%D8%B1-%D8%B1%D9%81%D8%B9-%D8%B3%D8%B9%D8%B1-%D8%A7%D9%84%D9%81%D8%A7%D8%A6%D8%AF%D8%A9-%D8%B9%D9%84%D9%89-%D8%A3%D8%AF%D8%A7%D8%A1-%D8%A7%D9%84%D8%A8%D9%88%D8%B1%D8%B5%D8%A9-%D8%A7%D9%84%D9%85%D8%B5%D8%B1%D9%8A%D8%A9-",
+        "https://www.independentarabia.com/node/661607/%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF/%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1-%D9%88%D8%AA%D9%82%D8%A7%D8%B1%D9%8A%D8%B1-%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%D9%8A%D8%A9/%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%8A-%D8%A7%D9%84%D9%85%D8%B5%D8%B1%D9%8A-%D9%8A%D8%B1%D9%81%D8%B9-%D8%A7%D9%84%D9%81%D8%A7%D8%A6%D8%AF%D8%A9-1-%D9%84%D9%85%D9%88%D8%A7%D8%AC%D9%87%D8%A9-%D8%A7%D9%84%D8%B6%D8%BA%D9%88%D8%B7-%D8%A7%D9%84%D8%AA%D8%B6%D8%AE%D9%85%D9%8A%D8%A9",
+        "https://www.annahar.com/economy/361686/%D9%85%D8%B5%D8%B1-%D8%AA%D8%B1%D9%81%D8%B9-%D8%A7%D9%84%D9%81%D8%A7%D8%A6%D8%AF%D8%A9-100-%D9%86%D9%82%D8%B7%D8%A9-%D8%A3%D8%B3%D8%A7%D8%B3-%D8%A3%D9%88%D9%84-%D8%B2%D9%8A%D8%A7%D8%AF%D8%A9-%D9%85%D9%86%D8%B0-%D8%B0%D8%A7%D8%B1-2024"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التمهيدي يحددان البلد والمؤسسة (المركزي المصري) وحجم الرفع 100 نقطة أساس وأنه انعكاس لمسار التيسير بعد خفض فبراير وخمسة اجتماعات تثبيت. لا تناقض بينهما.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الفقرات تذكر هدف البنك (ترسيخ توقعات التضخم) دون أرقام التضخم الأخيرة التي توضح المفارقة بين التراجع السنوي والارتفاع الشهري (المصدر 1). وتذكر مارس 2024 دون حجم الزيادة حينها أو صلتها بتحرير سعر الصرف (المصدران 2 و3). وفي «لماذا يهمّ» المقدمات آراء أنيس، وتُعرض كأنها وقائع ثابتة.",
+              "repair": "إضافة أرقام سبتمبر 2026 السنوية والشهرية إلى فقرة الدافع، وإضافة زيادة الـ600 نقطة أساس ومناسبتها إلى فقرة الخلفية، وصياغة مقدمات الصندوق بلغة الاحتمال."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "ما يقول العنوان إنه جديد، أي أول زيادة منذ مارس 2024 وانعكاس الاتجاه، يتناوله المتن في الفقرة الثانية لكن بلا خلفية الزيادة السابقة. والمفاجأة مقسومة بين الفقرة الثانية ووصف البهواشي في الفقرة الثامنة. فقرة الناتج المحلي معلقة بين المستهدف وآراء الخبراء. وحجة الأموال الساخنة موزعة بين أنيس والبهواشي في فقرتين متباعدتين. وصندوق «لماذا يهمّ» يكرر جملة «لهذه الميزة ثمن على الموازنة».",
+              "repair": "جمع المفاجأة في فقرة واحدة، وتجميع الآراء حسب ما تفسره لا حسب المتحدث (التضخم، ثم الأجانب والموازنة، ثم الاستثمار والمدخرون)، ونقل فقرة النمو إلى جوار حديث الاستثمار، وجعل الصندوق يضيف استنتاجاً لا يكرر المتن."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«مع اقتراب الاقتصاد من طاقته القصوى» تُسقط كلمة «توقعات» الواردة في المصدر 1. و«يحمّل القرار الموازنة كلفة خدمة دين أعلى» تُسقط وصف التقدير بأنه «نظري». و«ويخف إذا تزامن مع تراجع الجنيه» غامضة الفاعل. وفي صندوق الأرقام يرد مستهدف التضخم 7% (±2)، وهو مستهدف قائم وليس رقماً من القرار نفسه.",
+              "repair": "إعادة كلمة «يتوقع» إلى جملة النمو، وإبقاء «نظرياً» و«قد» في الصندوق، وتسمية الفاعل: «إذا تزامن رفع الفائدة مع تراجع الجنيه». ويُفضَّل نقل المستهدف من صندوق الأرقام إلى المتن."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التمهيدي يحددان البلد والجهة («المركزي المصري») وحجم الرفع (100 نقطة أساس)، ويوضحان أنه أول زيادة منذ مارس 2024 وأنه يعكس اتجاه التيسير بعد خفض فبراير وخمسة اجتماعات من التثبيت.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الدافع والخلفية حاضران: تحذير بيان سبتمبر، والتضخم السنوي المتراجع مقابل المعدلات الشهرية المرتفعة، وزيادة الـ600 نقطة أساس مع تحرير سعر الصرف. لكن صندوق «لماذا يهمّ» يقول إن الفائدة لا تخفض التكلفة المستوردة، متجاهلاً قناة الجنيه والتدفقات الأجنبية التي يذكرها المتن (أنيس، عبد العال) والمصدر 3.",
+              "repair": "إعادة بناء الصندوق على قناتين: الطلب لا يطال الشق المستورد، والأثر عليه يمر عبر الاحتفاظ بالأموال الأجنبية ودعم الجنيه، والكلفة يتحملها المقترضون والاستثمار. مع حذف خاتمة «يظل… مرتبطاً بـ»."
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "يتطور ما يقول العنوان إنه جديد مباشرة بعد السطر التمهيدي: انقلاب الاتجاه وزيادة مارس 2024 ومناسبتها، ثم المفاجأة. وتُجمع الآراء بعد ذلك حسب ما تفسره: التضخم، ثم الأجانب والموازنة، ثم الاستثمار والنمو، ثم المدخرون والبورصة. أما الصندوق فلم يعد يكرر جملة الموازنة.",
+              "repair": "يُفصل الاتصال بالفاصلة في فقرة الاستثمار، وتُحذف أو تُعاد صياغة فقرة الدولار الختامية حتى لا تُقرأ رد فعل على القرار."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«ويتوقع البنك أن يقترب الاقتصاد…» صحيحة الآن، و«نظرياً» محفوظة في تقدير الـ120 ملياراً. لكن «رجّح… ألا تنعكس» تغيّر درجة اليقين في المصدر 3، و«استقر بعد القرار… دون تغيير عن إغلاقه السابق» مقارنة لا تقيس أثر القرار (المصدر 5)، ورقم 13.9% في صندوق الأرقام ليس من الحدث.",
+              "repair": "صياغة «لا يعني زيادة تلقائية ومتماثلة»، وحذف إيحاء رد الفعل في فقرة الدولار، وإخراج 13.9% من key_facts."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 8,
+      "mendIssues": [
+        "خطأ في استدلال «لماذا يهمّ»: «فإن الفائدة الأعلى تكبح الطلب من دون أن تخفض هذه التكلفة» يُسقط قناة يذكرها المتن والمصادر. فعبد العال (المصدر 1) يرى في القرار رسالة استعداد للتعامل مع الضغوط على سعر الصرف، وأنيس والبهواشي (المصدر 1) يربطانه بالاحتفاظ بالأموال الأجنبية في أدوات الدين، والمصدر 3 يقول إن الرفع قد يدعم الطلب على الجنيه ويحد من الضغوط عليه. ثم يعود الصندوق نفسه فيربط الشق المستورد بسعر الصرف، فيناقض مقدمته. الإصلاح: «إذا كان جانب من الضغوط آتياً من تكلفة الاستيراد والطاقة، فالفائدة الأعلى لا تبلغه بكبح الطلب، بل بقدرتها على إبقاء الأموال الأجنبية في أدوات الدين وتخفيف الضغط على الجنيه؛ أما كلفة التمويل الأعلى فيدفعها المقترضون والشركات التي تؤجل مشروعاتها». وتُضاف إلى why_basis جملة المصدر 3 عن دعم الجنيه.",
+        "خاتمة الصندوق «ويظل الشق المستورد من التضخم مرتبطاً بسعر الصرف وأسعار الطاقة العالمية» صيغة من عائلة «يبقى رهناً بـ» التي تنهي الصندوق على ارتباط عام بدل النتيجة. تُستبدل بالنتيجة نفسها كما في الصياغة المقترحة أعلاه: من يدفع الكلفة وعبر أي قناة يعمل القرار.",
+        "صندوق الأرقام: «التضخم السنوي العام في سبتمبر 2026: 13.9%» رقم خلفية سابق للقرار، لا رقم من الحدث نفسه. يُحذف من key_facts ويبقى في المتن.",
+        "فقرة السوق: «وبعد القرار، استقر الدولار عند 55.95 جنيه بحلول الساعة 00:48 بتوقيت غرينتش الجمعة، دون تغيير عن إغلاقه السابق» توحي بأن السوق لم يتفاعل مع القرار. لكن المقارنة في المصدر 5 مع إغلاق سابق لاحق للقرار على الأرجح، والتسعير جرى ليلاً في عطلة الجمعة، فلا يقيس رد الفعل. كما أن ذكر الدقيقة زائد بعد «بعد القرار». الإصلاح: حذف الفقرة، أو الاكتفاء بمستوى السعر دون إيحاء بالاستقرار عقب القرار: «وكان الدولار عند 55.95 جنيه في أحدث تسعير فجر الجمعة».",
+        "تغيير في درجة اليقين: «ورجّح موقع «إندبندنت عربية» ألا تنعكس زيادة الفائدة الأساسية تلقائياً وبالقدر نفسه» يحوّل نفي الآلية في المصدر 3 («لا يعني رفع سعر الفائدة الأساس زيادة تلقائية ومتماثلة») إلى توقع بعدم الانعكاس. الإصلاح: «ولا يعني رفع الفائدة الأساسية زيادة تلقائية ومتماثلة في عوائد جميع الشهادات والودائع، إذ يتوقف العائد الفعلي على قرارات البنوك وشروط كل منتج».",
+        "جملة متصلة بفاصلة: «أما الاستثمار الإنتاجي فلا تحفزه الخطوة في رأي البهواشي، لأن تكلفة التمويل ترتفع، وتوقع عبد العال…» تُقسم بنقطة: «…لأنها ترفع تكلفة التمويل. وتوقع عبد العال…».",
+        "الدافع والخلفية حاضران: تحذير بيان سبتمبر، والتضخم السنوي المتراجع مقابل المعدلات الشهرية المرتفعة، وزيادة الـ600 نقطة أساس مع تحرير سعر الصرف. لكن صندوق «لماذا يهمّ» يقول إن الفائدة لا تخفض التكلفة المستوردة، متجاهلاً قناة الجنيه والتدفقات الأجنبية التي يذكرها المتن (أنيس، عبد العال) والمصدر 3. — إعادة بناء الصندوق على قناتين: الطلب لا يطال الشق المستورد، والأثر عليه يمر عبر الاحتفاظ بالأموال الأجنبية ودعم الجنيه، والكلفة يتحملها المقترضون والاستثمار. مع حذف خاتمة «يظل… مرتبطاً بـ».",
+        "«ويتوقع البنك أن يقترب الاقتصاد…» صحيحة الآن، و«نظرياً» محفوظة في تقدير الـ120 ملياراً. لكن «رجّح… ألا تنعكس» تغيّر درجة اليقين في المصدر 3، و«استقر بعد القرار… دون تغيير عن إغلاقه السابق» مقارنة لا تقيس أثر القرار (المصدر 5)، ورقم 13.9% في صندوق الأرقام ليس من الحدث. — صياغة «لا يعني زيادة تلقائية ومتماثلة»، وحذف إيحاء رد الفعل في فقرة الدولار، وإخراج 13.9% من key_facts."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "نبّه محمد أنيس إلى أن جانباً من الضغوط السعرية مصدره ارتفاع تكلفة السلع لا زيادة الطلب وحدها، وأن القرار يستهدف كبح الطلب.",
+          "source": 1
+        },
+        {
+          "fact": "قال أنيس إن الرفع قد يحد من خروج الأجانب من أدوات الدين الحكومية بزيادة جاذبية العائد الحقيقي، ما يدعم تدفقات النقد الأجنبي.",
+          "source": 1
+        },
+        {
+          "fact": "عدّ محمد عبد العال الرفع خطوة احترازية إزاء تقلب أسعار الطاقة عالمياً وارتفاع تكلفة الاستيراد، ورسالة باستعداد المركزي لحماية سعر الصرف.",
+          "source": 1
+        },
+        {
+          "fact": "قدّر أنيس أن زيادة أعباء خدمة الدين الحكومي قد تبلغ نظرياً نحو 120 مليار جنيه.",
+          "source": 1
+        }
+      ],
+      "slug": "egypt-central-bank-raises-rates-first-since-2024-c23a72",
+      "title": "المركزي المصري يرفع الفائدة 100 نقطة أساس في أول زيادة منذ مارس 2024",
+      "score": 8,
+      "image": "cover-art"
+    },
+    {
+      "headline": "الحوثيون يوسعون هجماتهم إلى بقيق ورابغ ومطاري الرياض والدمام",
+      "section": "energy",
+      "importance": 7,
+      "sources": [
+        "https://www.aljazeera.com/news/2026/10/30/houthi-forces-claim-six-attacks-on-saudi-airports-oil-facilities",
+        "https://www.agbi.com/business-of-sport/2026/10/saudi-arabias-sporting-ambitions-tested-by-houthi-barrage/",
+        "https://www.bbc.com/arabic/articles/cw4g1vz4dxgzo",
+        "https://www.aljazeera.net/news/liveblog/2026/10/30/%d8%a7%d9%84%d9%8a%d9%85%d9%86-%d9%85%d8%a8%d8%a7%d8%b4%d8%b1-%d8%a7%d9%84%d8%ad%d9%88%d8%ab%d9%8a%d9%88%d9%86-%d9%8a%d8%b9%d9%84%d9%86%d9%88%d9%86-%d8%a7%d8%b3%d8%aa%d9%87%d8%af%d8%a7%d9%81-2"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد والجهات: الحوثيون والتحالف بقيادة السعودية والمملكة. لكن «مصافٍ ومطارات... بينها بقيق» يضع منشأة أرامكو في بقيق ضمن المصافي أو المطارات.",
+              "repair": "«الحوثيون يعلنون ست هجمات على منشآت نفطية ومطارات سعودية بينها رأس تنورة وبقيق»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المقارنة بإعلان الأربعاء مفيدة، ونفي التحقق المستقل حاضر. ينقص التقرير أمران: أن الهجمات جاءت رغم اجتماع طهران الذي هدف إلى تهدئة التوتر (SOURCE 1)، وأن الجماعة مدعومة من إيران. في الصندوق، المقدمات (تعليق رحلات، نقل فعاليات، موعد قرار الاتحاد الآسيوي) صحيحة في معظمها، لكن الاستدلال يضيف وجهة الرالي ويقطع بموعد 2028.",
+              "repair": "تُربط فقرة طهران بالهجمات بعبارة «رغم»، ويُحذف «خارج المملكة»، ويُصاغ التأجيل إلى 2028 احتمالاً لا نتيجة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان (ست هجمات) يتطور مباشرة بعد المقدمة، وهذا جيد. أما فقرة الاجتماع فمعزولة بين مزاعم الغارات وفقرة الطيران، وفقرة «إير فرانس» جملة يتيمة لا يربطها مصدر بالهجمات.",
+              "repair": "تُقدَّم فقرة طهران إلى ما بعد الأهداف. تُدمج «إير فرانس» في فقرة الطيران والفعاليات بصيغة «في ظل اضطراب الطيران في المنطقة»، أو تُختصر."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«بسبب استمرار اضطراب حركة الطيران» تحويل لصيغة «في ظل» إلى علة. «نُقل خارج المملكة» إضافة لا يذكرها المصدر. «فسينتقل... إلى 2028» تُسقط شرط «if we need to».",
+              "repair": "«في ظل»، «ونُقل رالي داكار»، «وقد تُرجأ البطولة عاماً إلى 2028 إذا اقتضى الأمر»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد (السعودية) والجهة (الحوثيون). لكن «ست هجمات على منشآت نفطية» يوهم بأن الأهداف الست نفطية. العنوان الفرعي يقول إنها «طالت أيضاً مطاري الرياض والدمام»، فيبدو العدد متناقضاً لقارئ البطاقة. أما القيد الأساسي، أي عدم التأكيد الرسمي، فحاضر.",
+              "repair": "«الحوثيون يعلنون ست هجمات على منشآت نفطية ومطارات سعودية بينها رأس تنورة وبقيق»، مع عنوان فرعي يحمل غياب التأكيد واعتراض الصاروخين."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يقدم التقرير السياق الذي توفره المصادر في مواضعه: مقارنة بإعلان الأربعاء، ورأس تنورة أكبر مصفاة في المملكة، والهجمات جاءت رغم اجتماع طهران الهادف إلى التهدئة، والجماعة مدعومة من إيران. ويقدم الأثر الاقتصادي من SOURCE 2: نقل رالي داكار، وتأجيل الألعاب الآسيوية، وتساؤلات السياحة والرعاة، وموعد قرار الاتحاد الآسيوي. صندوق «لماذا يهمّ» يستند إلى مقدمات صحيحة، ويستنتج أن الكلفة ظهرت في روزنامة الفعاليات، ويضع التأجيل إلى 2028 في صيغة شرط.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "عنصر العنوان (الهجمات الست وأهدافها) يُطوَّر مباشرة بعد المقدمة: تفصيل البيان، ثم المقارنة بالأربعاء وغياب التحقق، ثم إطار اجتماع طهران. بعد ذلك يأتي الاعتراض فوق الرياض وأضراره، ثم الأثر على الطيران والفعاليات، وينتهي التقرير بالخطوة التالية (قرار الاتحاد الآسيوي قرب نهاية نوفمبر). الصندوق يضيف قراءة ولا يكتفي بتكرار الخاتمة.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "صيغ الاحتمال محفوظة: «قد يُتخذ»، «إذا اقتضى الأمر»، «احتمال طرحه». قرار إير فرانس مقدَّم «في ظل» الاضطراب وليس بسببه. أرقام الحوثيين عن الغارات منسوبة إليهم. ملاحظة غير جوهرية: المصدر يقول إن إير فرانس علّقت رحلاتها «من دبي وإليها»، والمسودة تكتفي بـ«إلى دبي».",
+              "repair": "يُستحسن «رحلاتها من دبي وإليها حتى 7 نوفمبر» (SOURCE 3)."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 3,
+      "mendIssues": [
+        "خطأ في العنوان: «الحوثيون يعلنون ست هجمات على منشآت نفطية سعودية بينها رأس تنورة وبقيق» يجعل الهجمات الست كلها على منشآت نفطية. بيان سريع (SOURCE 1) يوزعها هكذا: ثلاث على منشآت نفطية (رأس تنورة ورابغ وبقيق)، واثنتان على مطاري الرياض والدمام، وواحدة على مقر عسكري في نجران. بقيت المشكلة 4 و7 من المراجعة السابقة قائمة بصيغة جديدة: صُحح وصف بقيق لكن سقطت كلمة «ومطارات» التي اقترحها التصحيح. وتزيد كلمة «أيضاً» في العنوان الفرعي التناقض مع العدد ست. التصحيح: «الحوثيون يعلنون ست هجمات على منشآت نفطية ومطارات سعودية بينها رأس تنورة وبقيق».",
+        "العنوان الفرعي يكرر ما سيقوله العنوان بعد تصحيحه. «الهجمات المعلنة طالت أيضاً مطاري الرياض والدمام» تصبح تكراراً حين يُذكر «ومطارات» في العنوان. التصحيح: يحمل العنوان الفرعي القيد الحاسم والتفصيل الثاني من الحدث نفسه: «لم تؤكدها السلطات السعودية ولا مصدر مستقل، واعترض التحالف صاروخين باليستيين فوق الرياض» (SOURCE 1، SOURCE 3).",
+        "العنوان والعنوان الفرعي يحددان البلد (السعودية) والجهة (الحوثيون). لكن «ست هجمات على منشآت نفطية» يوهم بأن الأهداف الست نفطية. العنوان الفرعي يقول إنها «طالت أيضاً مطاري الرياض والدمام»، فيبدو العدد متناقضاً لقارئ البطاقة. أما القيد الأساسي، أي عدم التأكيد الرسمي، فحاضر. — «الحوثيون يعلنون ست هجمات على منشآت نفطية ومطارات سعودية بينها رأس تنورة وبقيق»، مع عنوان فرعي يحمل غياب التأكيد واعتراض الصاروخين."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "لم يتسنَّ التحقق من مزاعم الحوثيين من مصدر مستقل",
+          "source": 1
+        },
+        {
+          "fact": "الهجمات دفعت المنظمين إلى نقل رالي داكار وتأجيل الألعاب الآسيوية للصالات والفنون القتالية، مع تساؤلات عن السياحة والرعاة",
+          "source": 2
+        },
+        {
+          "fact": "كأس آسيا في يناير وفبراير ستكون أكبر بطولة كروية تقام في المملكة حتى الآن",
+          "source": 2
+        },
+        {
+          "fact": "رئيس الاتحاد الآسيوي قال إن القرار قد يُتخذ قرب نهاية نوفمبر وإن البطولة قد تُرجأ عاماً إلى 2028 إذا اقتضى الأمر",
+          "source": 2
+        }
+      ],
+      "slug": "houthis-claim-six-attacks-saudi-oil-facilities-airports-ras-a2c135",
+      "title": "الحوثيون يعلنون ست هجمات على منشآت نفطية ومطارات سعودية بينها رأس تنورة وبقيق",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "بينانس تعلق السحوبات وتجميد 2.54 مليار دولار بعد اختراق محتمل",
+      "section": "technology",
+      "importance": 7,
+      "sources": [
+        "https://www.ft.com/content/c7f5e395-c3a9-430e-b757-5014527b4d49?syn-25a6b1a6=1",
+        "https://www.bbc.co.uk/news/articles/cwg7xp8kx4v5o",
+        "https://www.aljazeera.com/economy/2026/10/30/binance-says-2-54bn-in-crypto-funds-frozen-amid-potential-security-issue",
+        "https://asharqbusiness.com/crypto/153561/%D8%A8%D9%8A%D9%86%D8%A7%D9%86%D8%B3-%D8%AA%D8%AD%D9%82%D9%82-%D9%81%D9%8A-%D8%A7%D8%AE%D8%AA%D8%B1%D8%A7%D9%82-%D9%85%D8%AD%D8%AA%D9%85%D9%84-%D9%88%D8%B3%D8%B7-%D8%AA%D8%AC%D9%85%D9%8A%D8%AF-%D8%B9%D9%85%D9%84%D8%A7%D8%AA-%D8%A8%D9%85%D9%84%D9%8A%D8%A7%D8%B1%D8%A7%D8%AA/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "يقول العنوان والعنوان الفرعي ما تغيّر: تجميد نحو 3 مليارات دولار، وتعليق الإيداعات والسحوبات، والتعهد بتغطية الخسائر. لكنهما لا يبيّنان أن التعليق مؤقت واحترازي، ولا أن التجميد يهدف إلى منع سرقة الأصول. لذلك قد يفهم القارئ أن أموال المستخدمين نفسها هي المحتجزة.",
+              "repair": "«علّقت المنصة مؤقتاً جميع الإيداعات والسحوبات…»، مع إضافة «لمنع سرقتها» في المقدمة (المصدران 2 و4)."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يعرض التقرير السياق اللازم من المصادر: مقارنة بسرقة «بايبت» وحصيلة عام 2025 (المصدر 3)، ووظيفة صندوق الطوارئ وتركيبه بالبتكوين (المصدر 4)، ودور تيثر وسيركل كمصدرين لعملات مستقرة. أما مربع «لماذا يهمّ» فمقدماته ثابتة في المصادر: الصندوق بالبتكوين، والتعهد، وهبوط بتكوين 5%. واستنتاجه محدود ومفيد: السند المفترض للتعهد مقوّم بالأصل الذي هبط بسبب الحادث نفسه.",
+              "repair": "يمكن تخفيف اليقين في «فسيُموَّل الفارق» إلى «فإن تعهدها يحمّل الفارق على ميزانيتها هي»، لأن الالتزام تعهد معلن وليس نتيجة متحققة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يطوّر المتن ما يعلنه العنوان، أي التجميد، بعد المقدمة مباشرة، وهذا جيد. لكن أدلة طبيعة الحادث موزعة بين الفقرة الثالثة وفقرة تشاو، وتوقع تشاو بتغطية الأموال بعيد عن فقرة التعهد. والفقرة الأخيرة («أوقفت بينانس كذلك… وحذّرت… وتعتزم…») ملاحظات متفرقة لا رابط بينها.",
+              "repair": "تُجمع أدلة الاختراق مع تقدير تشاو، ويُضم توقعه إلى فقرة التعهد والصندوق، ويُنقل «بينانس ألفا» إلى فقرة التعليق. ويُختم التقرير بالخطوة التالية: تقرير كامل بعد التحقيق، ومبلغ مجمّد قد يرتفع."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «قبل ساعات من تأكيد المنصة للهجوم» تناقض وصف المنصة للحادث بأنه محتمل (المصدران 3 و4). وعبارة «وإذا تأكد الاختراق، فسيكون أكبر سرقة» تجعل الرقم القياسي مشروطاً بوقوع الاختراق وحده، مع أن حجم المسروق غير معروف.",
+              "repair": "«قبل ساعات من إعلان المنصة الحادث الأمني»، و«وإذا تأكد أن المسروق يتجاوز 1.5 مليار دولار، فسيكون…»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقول العنوان والعنوان الفرعي إن بينانس جمّدت نحو 3 مليارات دولار «لمنع سرقتها»، وإنها علّقت الإيداعات والسحوبات «مؤقتاً على سبيل الاحتياط»، وإن الاختراق «محتمل». بذلك يفهم القارئ أن الأموال المجمّدة ليست أموال المستخدمين المحتجزة، وأن الاختراق لم يتأكد بعد (المصادر 2 و3 و4). ويعرّف الوصفُ بينانس وتيثر وسيركل في المقدمة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يضع التقرير الرقم في سياقه: ارتفع من 2.54 مليار دولار ويُتوقع أن يزيد (المصدر 4). ويذكر رقم أركام مع تحفظه، ويعرّف بـ«صندوق الأصول الآمنة للمستخدمين» (SAFU) ووظيفته واحتياطيه بالبتكوين، ويقارن الحادث بسرقة بايبت وبحصيلة TRM لعام 2025 (المصدر 3). كما يعرّف تشاو بدوره، وأردوينو وألاير بمنصبيهما. وفي «لماذا يهمّ» مقدمات مسندة إلى مصادرها: الصندوق محفوظ بالبتكوين، والبتكوين هبطت 5%، وقيمة الصندوق نحو مليار دولار، والمنصة تعهدت بتغطية الخسائر. ومنها استدلال محدود: قيمة الصندوق تنكمش مع هبوط العملة، وأي فارق يزيد على قيمته تتحمله موارد بينانس الأخرى. الشرط مذكور في «إذا»، ولا يضخّم الاستدلال الأثر.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "يقول العنوان إن الجديد هو التجميد لمنع السرقة، ويطوّره المتن بعد المقدمة مباشرة: ارتفاع المبلغ والتعاون مع جهات إنفاذ القانون، ثم تجميد تيثر وسيركل. وتجتمع أدلة طبيعة الحادث (حجمه غير الواضح، ورصد أركام، وتنبيه المراقبين، وتقدير تشاو) في فقرتين متجاورتين. ويجاور توقعُ تشاو تعهدَ المنصة وفقرةَ الصندوق، وتروي فقرة السوق رد الفعل على الحادث، ويُختم التقرير بالتقرير الكامل المنتظر وتحذير المستخدمين.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة لمصادرها: تيثر 1.6 مليار دولار وسيركل أكثر من 800 مليون (المصدر 2)، وBNB أكثر من 8% في 24 ساعة إلى 694 دولاراً (المصدر 4)، وبتكوين نحو 5% دون 77 ألف دولار (المصدران 3 و4). والرقم القياسي مشروط بتأكد الاختراق وبتجاوز المسروق 1.5 مليار دولار. ورقم أركام مقيّد بأنه «لا يعني بالضرورة قيمة ما سُرق»، وقيمة الصندوق منسوبة إلى بيان بينانس عام 2024.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تُحفظ احتياطيات صندوق الأصول الآمنة للمستخدمين (SAFU) بالكامل بعملة بتكوين، وتقلبت قيمته مع تحركات السوق",
+          "source": 4
+        },
+        {
+          "fact": "ذكرت بينانس عام 2024 أنها تُبقي قيمة الصندوق عموماً قرب مليار دولار",
+          "source": 4
+        },
+        {
+          "fact": "تراجعت بتكوين نحو 5% عقب الحادث",
+          "source": 3
+        },
+        {
+          "fact": "تعهدت بينانس بتغطية جميع الخسائر",
+          "source": 3
+        }
+      ],
+      "slug": "binance-freezes-3-billion-potential-hack-647d53",
+      "title": "بينانس تجمّد نحو 3 مليارات دولار لمنع سرقتها وسط تحقيق في اختراق محتمل",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "الذهب يتجه لخسارة شهرية ثانية قرب 4000 دولار مع رهانات رفع الفائدة الأمريكية",
+      "section": "markets",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
+  "llm": {
+    "calls": 77,
+    "failures": 6,
+    "promptTokens": 1122169,
+    "completionTokens": 293056,
+    "cacheReadTokens": 265425,
+    "costUsd": 12.7676,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 77
+    }
+  },
+  "log": [
+    "[01:38:03] image: dropped \"High angle view of offshore oil platforms in Ras Laffan, Qatar under c\" — taken in Qatar, which the story does not name",
+    "[01:38:03] image: dropped \"Aerial shot of oil tankers and storage facility in North Jakarta, Indo\" — taken in Indonesia, which the story does not name",
+    "[01:38:13] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=641 attempt=1 ms=9916",
+    "[01:38:13] image: \"A large oil refinery complex next to the water with cloudy s\" names the story's topic without saying its point; the desk already holds one such, and looks further",
+    "[01:38:13] image: the story's people first: Yahya Saree 2026 | Yahya Saree | يحيى سريع",
+    "[01:38:14] commons \"Yahya Saree 2026\": 1 usable of 2",
+    "[01:38:14] commons \"Yahya Saree\": 2 usable of 5",
+    "[01:38:15] commons \"يحيى سريع\": 3 usable of 6",
+    "[01:38:15] image: dropped \"تمبكتو المدينة الاسطورة.jpg\" — names too little of يحيى, سريع",
+    "[01:38:15] image: people shortlist: 2026 2026. Yahya Saree.jpg | 2019 Yahya Sarea 02.jpg",
+    "[01:38:29] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1022 attempt=1 ms=12844",
+    "[01:38:33] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=160 attempt=1 ms=4461",
+    "[01:38:33] image: second check (claude-cli/claude-opus-5-5) RIGHT \"2026. Yahya Saree.jpg\": A sharp, professional frame of Yahya Saree, the Houthi military spokesman whose statement the story reports, at his brie",
+    "[01:38:33] published \"الحوثيون يعلنون ست هجمات على منشآت نفطية ومطارات سعودية بينها رأس تنورة وبقيق\" -> houthis-claim-six-attacks-saudi-oil-facilities-airports-ras-a2c135",
+    "[01:39:08] llm fail role=desk provider=claude model=claude-opus-5-5 attempt=1: an expert identification is not grounded or copies a long source phrase; rewrite it concisely and faithfully",
+    "[01:39:47] llm fail role=desk provider=claude model=claude-opus-5-5 attempt=2: reader_context is not grounded in its source or copies its phrasing; rewrite it faithfully",
+    "[01:40:27] desk notes: 3 of 32 facts dropped (not in their source or copied from it)",
+    "[01:40:27] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1420 attempt=3 ms=36593",
+    "[01:40:27] desk notes: 29 facts (? 29), 3 quotes (claude-cli/claude-opus-5-5)",
+    "[01:41:26] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=4231 attempt=1 ms=59815",
+    "[01:41:26] desk: spelling table fixed body",
+    "[01:41:49] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=654 attempt=1 ms=22462",
+    "[01:41:49] desk model=claude-cli/claude-opus-5-5 applied=[title,body] rejected=[]",
+    "[01:41:49] desk \"بينانس تجمّد نحو 3 مليارات دولار وسط تحقيق في اختراق محتمل\": rewrote title, body",
+    "[01:43:17] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=6618 attempt=1 ms=87761",
+    "[01:43:17] critic \"بينانس تجمّد نحو 3 مليارات دولار وسط تحقيق في اختراق محتمل\": revise score=9 issues=9",
+    "[01:43:17]   · ينقص التقرير: الغرض من التجميد. يقول المصدر 2 إن بينانس جمّدت الأصول «لمنع سرقتها»، ويذكر المصدر 4 أنها تعمل على تتبع الأموال وتجميدها بالتنسيق مع جهات إنفاذ ال",
+    "[01:43:17]   · تناقض في الدقة: «قبل ساعات من تأكيد المنصة للهجوم» تنقل صياغة BBC (المصدر 2)، بينما يصف العنوان والمقدمة الحادث بأنه «اختراق محتمل». والمنصة نفسها تتحدث عن «مشك",
+    "[01:43:17]   · شرط ناقص: «وإذا تأكد الاختراق، فسيكون أكبر سرقة لأصول مشفرة في التاريخ». تأكيد الاختراق وحده لا يجعله الأكبر، لأن المسودة نفسها تقول إن المنصة لم تكشف حجم الأمو",
+    "[01:43:17]   · بناء مفكك في الفقرة الأخيرة: «أوقفت بينانس كذلك، في إجراء منفصل، التداول مؤقتاً عبر خدمة «بينانس ألفا». وحذّرت المستخدمين… وتعتزم المنصة نشر تقرير كامل…». تجمع ",
+    "[01:43:58] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2172 attempt=1 ms=41763",
+    "[01:44:27] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1093 attempt=1 ms=28850",
+    "[01:44:27] desk model=claude-cli/claude-opus-5-5 applied=[lede,body] rejected=[]",
+    "[01:44:27] desk \"بينانس تجمّد نحو 3 مليارات دولار لمنع سرقتها وسط تحقيق في اختراق محتمل\": rewrote lede, body",
+    "[01:45:30] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=5508 attempt=1 ms=62255",
+    "[01:45:30] critic (second pass) \"بينانس تجمّد نحو 3 مليارات دولار لمنع سرقتها وسط تحقيق في اختراق محتمل\": publish score=9 issues=0",
+    "[01:46:26] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2344 attempt=1 ms=56637",
+    "[01:46:26] precheck \"بينانس تجمّد نحو 3 مليارات دولار لمنع سرقتها وسط تحقيق في اختراق محتمل\": clean",
+    "[01:46:43] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1357 attempt=1 ms=16980",
+    "[01:46:43] image: the picture should say: The world's biggest crypto exchange has shut its doors to deposits and withdrawals while billions are traced after a suspected hack.",
+    "[01:46:49] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=217 attempt=1 ms=5280",
+    "[01:46:49] image: the sources' photographs give no brief (1: not a news photo; 2: not a news photo; 3: not a news photo)",
+    "[01:46:49] image: tier 3, the writer's own subjects: Changpeng Zhao | bitcoin trading screen | cryptocurrency traders",
+    "[01:46:50] commons \"Changpeng Zhao 2026\": 0 usable of 0",
+    "[01:46:50] commons \"Changpeng Zhao\": 9 usable of 12",
+    "[01:46:53] commons \"bitcoin trading screen 2026\": 0 usable of 0",
+    "[01:46:53] commons \"bitcoin trading screen\": 0 usable of 0",
+    "[01:46:54] commons \"bitcoin trading\": 2 usable of 12",
+    "[01:46:56] commons \"cryptocurrency traders 2026\": 0 usable of 1",
+    "[01:46:56] commons \"cryptocurrency traders\": 0 usable of 3",
+    "[01:46:57] commons \"traders\": 7 usable of 12",
+    "[01:47:05] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=439 attempt=1 ms=7194",
+    "[01:47:05] image: vision rejected all candidates (None of the candidates can run. Photos 1–3 show Changpeng Zhao, who is not the story's named person (Richard Teng); their 2022 captions also call him CEO, which would mislead because he stepped down in 2023. Photos 4–5 show a resale shop in Indiana and photo 6 a textile market in Ghana; neither has anything to do with crypto or Binance.)",
+    "[01:47:05] image: tier 4, the story's point and its subject: cryptocurrency traders watching screens | security operations center | Bitcoin price chart screen | cryptocurrency trader screens | Bitcoin ATM | data center server hall",
+    "[01:47:06] pexels \"Bitcoin ATM\": 8 usable",
+    "[01:47:06] pexels \"cryptocurrency traders watching screens\": 8 usable",
+    "[01:47:06] pexels \"data center server hall\": 8 usable",
+    "[01:47:06] pexels \"Bitcoin price chart screen\": 8 usable",
+    "[01:47:06] pexels \"cryptocurrency trader screens\": 8 usable",
+    "[01:47:06] pexels \"security operations center\": 8 usable",
+    "[01:47:06] commons \"cryptocurrency traders watching screens\": 0 usable of 0",
+    "[01:47:07] commons \"cryptocurrency traders\": 0 usable of 3",
+    "[01:47:08] commons \"screens\": 15 usable of 24",
+    "[01:47:37] openverse \"Bitcoin price chart screen\": 0 usable of 0",
+    "[01:47:38] openverse \"cryptocurrency traders watching screens\": 0 usable of 0",
+    "[01:47:50] openverse \"security operations center\": The operation was aborted due to timeout",
+    "[01:48:18] openverse \"cryptocurrency trader screens\": 0 usable of 0",
+    "[01:48:23] openverse \"Bitcoin ATM\": The operation was aborted due to timeout",
+    "[01:48:35] openverse \"data center server hall\": The operation was aborted due to timeout",
+    "[01:49:03] openverse \"Bitcoin price\": The operation was aborted due to timeout",
+    "[01:49:03] openverse: 3 failures in a row; left alone for 10 minutes",
+    "[01:49:08] openverse \"cryptocurrency traders\": The operation was aborted due to timeout",
+    "[01:49:08] image: dropped \"A professional examines financial graphs on a laptop, indicating marke\" — names too little of cryptocurrency, traders, watching, screens",
+    "[01:49:08] image: dropped \"Market analysis with focus on cryptocurrency trends displayed. Ideal f\" — names too little of cryptocurrency, traders, watching, screens",
+    "[01:49:08] image: dropped \"Close-up of a digital tablet displaying a bitcoin chart, with a hand n\" — names too little of cryptocurrency, traders, watching, screens",
+    "[01:49:08] image: dropped \"Adult male reviewing stock market data on a large display screen indoo\" — names too little of cryptocurrency, traders, watching, screens",
+    "[01:49:08] image: dropped \"Analyzing financial market trends with a candlestick chart on a digita\" — names too little of cryptocurrency, traders, watching, screens",
+    "[01:49:10] commons \"security operations center\": 21 usable of 24",
+    "[01:49:10] image: dropped \"NSOC-2012.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[01:49:10] image: dropped \"Secretary of State Colin Powell and National Security Advisor Condolee\" — dated 2001, an archival picture",
+    "[01:49:10] image: dropped \"Secretary of State Colin Powell and National Security Advisor Condolee\" — dated 2001, an archival picture",
+    "[01:49:10] image: dropped \"Secretary of State Colin Powell and National Security Advisor Condolee\" — dated 2001, an archival picture",
+    "[01:49:10] image: dropped \"Vice President Cheney with National Security Advisor Condoleezza Rice \" — dated 2001, an archival picture",
+    "[01:49:10] image: dropped \"Vice President Cheney with National Security Advisor Condoleezza Rice \" — dated 2001, an archival picture",
+    "[01:49:10] image: dropped \"Vice President Cheney with National Security Advisor Condoleezza Rice \" — dated 2001, an archival picture",
+    "[01:49:10] image: dropped \"Vice President Cheney with National Security Advisor Condoleezza Rice \" — dated 2001, an archival picture",
+    "[01:49:10] image: dropped \"Vice President Cheney with National Security Advisor Condoleezza Rice \" — dated 2001, an archival picture",
+    "[01:49:10] image: dropped \"Modern control room with people monitoring large digital displays and \" — names too little of security, operations, center",
+    "[01:49:10] image: dropped \"Operator in a modern control room managing technological systems in El\" — names too little of security, operations, center",
+    "[01:49:10] image: dropped \"A modern server room featuring network equipment with blue illuminatio\" — names too little of security, operations, center",
+    "[01:49:10] commons \"Bitcoin price chart screen\": 0 usable of 0",
+    "[01:49:11] commons \"Bitcoin price\": 2 usable of 24",
+    "[01:49:11] commons \"cryptocurrency trader screens\": 0 usable of 0",
+    "[01:49:11] commons \"cryptocurrency trader\": 0 usable of 3",
+    "[01:49:11] commons \"screens\": 15 usable of 24",
+    "[01:49:20] openverse \"cryptocurrency trader\": The operation was aborted due to timeout",
+    "[01:49:21] commons \"Bitcoin ATM\": 3 usable of 24",
+    "[01:49:21] image: dropped \"A woman interacts with a CoinCloud machine indoors, showcasing modern \" — names too little of bitcoin, atm",
+    "[01:49:22] commons \"data center server hall\": 8 usable of 19",
+    "[01:49:22] image: dropped \"UPComputerCenterjf3807 12.JPG\" — names too little of data, center, server, hall",
+    "[01:49:22] image: dropped \"UPComputerCenterjf3807 06.JPG\" — names too little of data, center, server, hall",
+    "[01:49:22] image: dropped \"UPComputerCenterjf3807 05.JPG\" — names too little of data, center, server, hall",
+    "[01:49:22] image: dropped \"UPComputerCenterjf3807 02.JPG\" — names too little of data, center, server, hall",
+    "[01:49:22] image: dropped \"UPComputerCenterjf3807 03.JPG\" — names too little of data, center, server, hall",
+    "[01:49:22] image: dropped \"UPComputerCenterjf3807 10.JPG\" — names too little of data, center, server, hall",
+    "[01:49:22] image: dropped \"UPComputerCenterjf3807 04.JPG\" — names too little of data, center, server, hall",
+    "[01:49:22] image: dropped \"UPComputerCenterjf3807 07.JPG\" — names too little of data, center, server, hall",
+    "[01:49:22] image: dropped \"Detailed image of illuminated server racks showcasing modern technolog\" — names too little of data, center, server, hall",
+    "[01:49:31] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=456 attempt=1 ms=8087",
+    "[01:49:31] image: vision rejected all candidates (fallback pass) (No candidate fits. Photos 1, 2 and 6 have a chart or screen interface as their subject, which the rules exclude. Photo 1 also shows a rising market, which misleads beside a hack story in which bitcoin fell. Photo 6 looks like a stock composite. Photo 3 is an amateur shot of a Bitcoin ATM shopfront in Poland, a building front. Photo 4 is a staged stock cliché of bitcoin coins and dollars on a scale. Photo 5 is a 2016 amateur flash snapshot of an ATM in Prague. None shows Binance, Richard Teng, or a frozen platform or hack in a serious, professional frame.)",
+    "[01:49:41] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=632 attempt=1 ms=9499",
+    "[01:49:41] image: \"Close-up of server racks in a data center highlighting moder\" names the story's topic without saying its point (A generic but readable server-rack image fits a suspected exchange hack. It does not show the halted withdrawals or the frozen funds. Photos 1 and 2 show anothe); checked now and kept in reserve while the desk looks further",
+    "[01:49:48] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=396 attempt=1 ms=7011",
+    "[01:49:48] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Close-up of server racks in a data center highlighting moder\": A tinted close-up of an anonymous server drive bay pictures data-centre hardware, a neighbouring sector, and shows nothi",
+    "[01:49:48] image: the story's people first: Richard Teng 2026 | Richard Teng | ريتشارد تنغ",
+    "[01:49:49] commons \"Richard Teng 2026\": 1 usable of 4",
+    "[01:49:49] image: dropped \"Où allons-nous, où allons-nous? Nous marchons sur un volcan... - DPLA \" — names too little of richard, teng",
+    "[01:49:49] commons \"Richard Teng\": 18 usable of 20",
+    "[01:49:49] image: dropped \"Oryctes nasicornis male 2012 G1.jpg\" — names too little of richard, teng",
+    "[01:49:49] image: dropped \"Panorpa alpina 2 Luc Viatour.jpg\" — names too little of richard, teng",
+    "[01:49:49] image: dropped \"Emerald damselfly (Lestes sponsa) male 3.jpg\" — names too little of richard, teng",
+    "[01:49:49] image: dropped \"Fly November 2007-10.jpg\" — names too little of richard, teng",
+    "[01:49:49] image: dropped \"Cetonia-aurata.jpg\" — names too little of richard, teng",
+    "[01:49:49] image: dropped \"Apis florea worker 1.jpg\" — names too little of richard, teng",
+    "[01:49:49] image: dropped \"Oxysternon-conspicillatum male.jpg\" — names none of the story's people",
+    "[01:49:49] image: dropped \"Trithemis kirbyi.jpg\" — names too little of richard, teng",
+    "[01:49:49] image: dropped \"Anthomyiidae sp. 1 (aka).jpg\" — names too little of richard, teng",
+    "[01:49:49] commons \"ريتشارد تنغ\": 0 usable of 0",
+    "[01:49:52] commons \"تنغ\": 6 usable of 20",
+    "[01:49:52] image: dropped \"BYD Tang L EV IAA 2025 DSC 2306.jpg\" — names too little of تنغ",
+    "[01:49:52] image: dropped \"Tanger Railway Station.jpg\" — names too little of تنغ",
+    "[01:49:52] image: dropped \"Comercio en la plaza del 9 de abril de 1947, Tánger, Marruecos, 2015-1\" — names too little of تنغ",
+    "[01:49:52] image: dropped \"Pacific sailfin tang (Zebrasoma velifer) Moorea.jpg\" — names too little of تنغ",
+    "[01:49:52] image: dropped \"Statue of Deng Xiaoping in Lotus Hill Park7.jpg\" — names too little of تنغ",
+    "[01:49:52] image: dropped \"Statue of Deng Xiaoping in Lotus Hill Park1.jpg\" — names too little of تنغ",
+    "[01:49:52] image: people shortlist: 2023 RichardTeng BBW2023 Istanbul1.jpg",
+    "[01:50:00] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=539 attempt=1 ms=8102",
+    "[01:50:00] image: \"RichardTeng BBW2023 Istanbul1.jpg\" names the story's topic without saying its point (The only candidate shows Richard Teng, named as the story's person and now Binance's chief executive, speaking at Binance's own event. It is sharp, landscape an); checked now and kept in reserve while the desk looks further",
+    "[01:50:07] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=517 attempt=1 ms=7034",
+    "[01:50:07] image: second check (claude-cli/claude-opus-5-5) RIGHT \"RichardTeng BBW2023 Istanbul1.jpg\": Binance's own chief executive, Richard Teng, is shown sharp on stage at a Binance event and captioned as a dated earlier",
+    "[01:50:07] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"RichardTeng BBW2023 Istanbul1.jpg\"",
+    "[01:50:07] published \"بينانس تجمّد نحو 3 مليارات دولار لمنع سرقتها وسط تحقيق في اختراق محتمل\" -> binance-freezes-3-billion-potential-hack-647d53",
+    "[01:51:00] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2071 attempt=1 ms=53005",
+    "[01:51:35] llm fail role=desk provider=claude model=claude-opus-5-5 attempt=1: reader_context is not grounded in its source or copies its phrasing; rewrite it faithfully",
+    "[01:52:16] desk notes: 2 of 31 facts dropped (not in their source or copied from it)",
+    "[01:52:16] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1322 attempt=2 ms=37632",
+    "[01:53:36] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=5714 attempt=1 ms=79646",
+    "[01:54:45] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3942 attempt=1 ms=69730",
+    "[01:54:46] evidence pair \"بينانس تجمّد نحو 3 مليارات دولار لمنع سرقتها وسط تحقيق في اختراق محتمل\": 0 proved error(s) live (v42), 0 with the kept lessons (v0); the private drafts are not published",
+    "[01:54:46] run budget of 35 minutes spent; \"الذهب يتجه لخسارة شهرية ثانية قرب 4000 دولار مع رهانات رفع الفائدة الأمريكية\" waits for the next run"
+  ]
+}

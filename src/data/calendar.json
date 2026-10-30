@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-29T19:44:48.695Z",
+  "updatedAt": "2026-10-30T01:54:49.287Z",
   "events": [
     {
       "date": "2021-01-27",
@@ -862,18 +862,6 @@
       "time": "18:00 UTC",
       "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
       "source": "fed"
-    },
-    {
-      "date": "2026-10-29",
-      "title": "قرار الفائدة: البنك المركزي الأوروبي",
-      "short": "المركزي الأوروبي: قرار الفائدة",
-      "org": "البنك المركزي الأوروبي",
-      "kind": "rates",
-      "region": "أوروبا",
-      "note": "يليه مؤتمر صحفي",
-      "time": "13:15 UTC",
-      "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
-      "source": "ecb"
     },
     {
       "date": "2026-11-05",
