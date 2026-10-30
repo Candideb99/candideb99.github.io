@@ -8949,6 +8949,34 @@
           }
         }
       ]
+    },
+    "oil-futures-overstate-expected-prices-wartime-4c6e28": {
+      "at": "2026-10-30T16:19:15.713Z",
+      "title": "أسعار النفط الآجلة تفوق على الأرجح توقعات المستثمرين حين تقيّد النزاعات الإمدادات",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 30,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
