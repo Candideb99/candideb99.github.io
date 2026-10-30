@@ -9084,6 +9084,34 @@
           "noted": []
         }
       ]
+    },
+    "egypt-rate-hike-inflation-budget-cost-6ac5e9": {
+      "at": "2026-10-30T19:22:42.887Z",
+      "title": "رفع الفائدة في مصر رهان على الأموال الأجنبية تدفع الموازنة ثمنه",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 48,
+            "checked": 48,
+            "supported": 45,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
