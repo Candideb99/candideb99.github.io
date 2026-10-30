@@ -9140,6 +9140,147 @@
           "noted": []
         }
       ]
+    },
+    "egypt-budget-deficit-narrows-first-two-months-f8c9f8": {
+      "at": "2026-10-30T22:39:13.952Z",
+      "title": "عجز موازنة مصر يتقلص إلى 1.3% من الناتج في أول شهرين من عامها المالي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v45",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 18,
+            "weak": 5,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "oil-highest-settlement-since-april-hormuz-tanker-3779a4": {
+      "at": "2026-10-30T22:53:16.504Z",
+      "title": "النفط يغلق عند أعلى تسوية منذ أبريل مع تصاعد مخاطر هرمز",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v45",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 26,
+            "checked": 26,
+            "supported": 23,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 3,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 2,
+              "field": "subtitle",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "برنت يربح 13.6% في أكتوبر والخام الأمريكي 15.2%، في رابع مكسب شهري على التوالي للنفط",
+              "quote": "On a monthly basis, the benchmarks are on track to spike by about 15 per cent and 12 per cent, respectively.",
+              "source": "The National",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 7,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "مكسب برنت في أكتوبر: 13.6%",
+              "quote": "On a monthly basis, the benchmarks are on track to spike by about 15 per cent and 12 per cent, respectively.",
+              "source": "The National",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 8,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "مكسب الخام الأمريكي في أكتوبر: 15.2%",
+              "quote": "On a monthly basis, the benchmarks are on track to spike by about 15 per cent and 12 per cent, respectively.",
+              "source": "The National",
+              "sourceN": 4,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "exxon-chevron-q3-refining-profits-beat-069e13": {
+      "at": "2026-10-30T23:08:43.814Z",
+      "title": "إكسون وشيفرون الأمريكيتان تتجاوزان التوقعات بأرباح تكرير قياسية مع حرب إيران",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v45",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 37,
+            "checked": 37,
+            "supported": 31,
+            "weak": 2,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 23,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "بلغ ربح شيفرون 5.06 دولار للسهم مقابل 1.82 دولار قبل عام، وسجلت أرباحاً معدلة قدرها 10.4 مليار دولار، أو 5.28 دولار للسهم، متجاوزة تقديرات وول ستريت البالغة 4.89 دولار.",
+              "quote": "أما \"شيفرون\"، فسجلت أرباحاً معدلة بلغت 5.28 دولار للسهم، بزيادة قدرها 35 سنتاً على التوقعات.",
+              "source": "Asharq Business",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 27,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وارتفع سهم إكسون 2% وسهم شيفرون 1% في تعاملات ما قبل افتتاح السوق الجمعة.",
+              "quote": "وارتفعت أسهم \"إكسون موبيل\" بنسبة 1.6% قبل بدء التداولات في نيويورك، فيما صعدت أسهم \"شيفرون\" بنسبة 1.5%.",
+              "source": "Asharq Business",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []
