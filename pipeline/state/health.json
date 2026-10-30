@@ -6,20 +6,26 @@
       "lastCheckedAt": "2026-10-25T12:37:47.866Z",
       "checks": 3,
       "reason": "its page at the photo library is gone"
+    },
+    "strategic-petroleum-reserve-emergency-oil-stocks-explained-c1ebfc": {
+      "firstBadAt": "2026-10-30T14:20:37.462Z",
+      "lastCheckedAt": "2026-10-30T14:20:37.462Z",
+      "checks": 1,
+      "reason": "its page at the photo library is gone"
     }
   },
   "woken": {
     "dup:ab62f72506": "2026-10-26T14:25:52.317Z"
   },
-  "pagesCheckedAt": "2026-10-23T18:59:45.052Z",
+  "pagesCheckedAt": "2026-10-30T14:20:37.462Z",
   "last": {
-    "at": "2026-10-29T14:32:52.207Z",
+    "at": "2026-10-30T14:24:37.862Z",
     "findings": [],
     "owner": [
       "خازندار: published stories with a proved error the corrections desk could not fix"
     ],
     "photos": {
-      "pending": 1,
+      "pending": 2,
       "redo": []
     }
   },
