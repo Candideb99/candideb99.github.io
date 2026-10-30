@@ -118,6 +118,8 @@ function spellings(dir) {
  */
 function houseSpelling(tag) {
   return fixNames(String(tag ?? ""))
+    // A tag is a bare name: the table puts an outlet named in Latin letters in «» («AGBI»), the review of 2026-10-30.
+    .replace(/[«»]/g, "")
     // Shadda, sukun and tatweel go («النصفيّة»); the other marks stay, so «عُمان» is never read as Amman.
     .replace(/[ّْـ]/g, "")
     .replace(/\s+/g, " ")

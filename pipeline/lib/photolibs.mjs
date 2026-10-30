@@ -50,17 +50,19 @@ function openverseFailed(log) {
   log(`openverse: ${OPENVERSE_FAILURES} failures in a row; left alone for ${OPENVERSE_REST_MS / 60000} minutes`);
 }
 // A pass asks the libraries for all its searches at once (images.mjs collect()); Openverse allows 20 anonymous searches a
-// minute, so at most three are in flight and the rest wait their turn.
+// minute, so at most three are in flight and the rest wait their turn. After a failure the next waits for the searches in
+// flight to answer: three timeouts land together when Openverse is down, and searches started after the first and second
+// went out a moment before the third opened the breaker (2026-10-30).
 let openverseInFlight = 0;
 const openverseQueue = [];
 async function openverseTurn(work) {
-  while (openverseInFlight >= 3) await new Promise((resolve) => openverseQueue.push(resolve));
+  while (openverseInFlight >= 3 || (openverseFailures > 0 && openverseInFlight > 0)) await new Promise((resolve) => openverseQueue.push(resolve));
   openverseInFlight += 1;
   try {
     return await work();
   } finally {
     openverseInFlight -= 1;
-    openverseQueue.shift()?.();
+    for (const wake of openverseQueue.splice(0)) wake();
   }
 }
 
@@ -76,15 +78,27 @@ export async function searchOpenverse(query, { limit = 10, log = () => {}, simpl
   if (openverseRefused || openverseResting()) return [];
   const params = new URLSearchParams({ q: query, license: "by,by-sa,cc0,pdm", page_size: "20", mature: "false", excluded_source: "wikimedia", extension: "jpg" });
   try {
-    // A search queued behind three that failed is not sent once the breaker has opened.
-    const response = await openverseTurn(() => (openverseResting() ? null : fetchWithTimeout(`https://api.openverse.org/v1/images/?${params}`, { headers: { "user-agent": USER_AGENT } }, 45000)));
+    // A search queued behind three that failed is not sent once the breaker has opened. A failure is counted before the
+    // turn is handed on: counted after it, the three searches waiting behind the third timeout started a moment before the
+    // breaker opened, and each pass lost another 45 seconds (the cloud logs of 2026-10-30, 19:24:17 → 19:25:02).
+    const response = await openverseTurn(async () => {
+      if (openverseResting()) return null;
+      try {
+        const answer = await fetchWithTimeout(`https://api.openverse.org/v1/images/?${params}`, { headers: { "user-agent": USER_AGENT } }, 45000);
+        if (answer.status >= 500) {
+          log(`openverse "${query}": HTTP ${answer.status}`);
+          openverseFailed(log);
+          return null;
+        }
+        openverseFailures = 0;
+        return answer;
+      } catch (error) {
+        log(`openverse "${query}": ${error.message}`);
+        openverseFailed(log);
+        return null;
+      }
+    });
     if (!response) return [];
-    if (response.status >= 500) {
-      log(`openverse "${query}": HTTP ${response.status}`);
-      openverseFailed(log);
-      return [];
-    }
-    openverseFailures = 0;
     if (response.status === 429) {
       // A minute's limit says to wait seconds, the day's limit hours: only the second ends Openverse for the run.
       const wait = Number(response.headers.get("retry-after"));

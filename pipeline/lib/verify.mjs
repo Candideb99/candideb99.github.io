@@ -1,9 +1,10 @@
 import { chat } from "./llm.mjs";
 import { EDITORIAL_CRAFT, EDITORIAL_READER_CHECK, NEWS_DEPTH, NEWS_FLOOR, SHORT_STORY } from "./editorial.mjs";
-import { arabicRatio, normalizeDigits, overlappingPhrases, phraseOverlap, refersBack, suspiciousLatinWords, ungroundedNumbers, wordCount } from "./util.mjs";
+import { arabicRatio, normalizeDigits, overlappingPhrases, phraseOverlap, refersBack, sentenceUnits, suspiciousLatinWords, ungroundedNumbers, wordCount } from "./util.mjs";
 import { STITCH, styleIssues } from "./style.mjs";
 import { labelLine, unlabelledOutlets } from "./outlets.mjs";
 import { quoteFound } from "./factcheck.mjs";
+import { fixNames } from "./copydesk.mjs";
 
 /** «…» after a verb of saying, within a few words: «وقال إن «…»»، «وصف القرار بأنه «…»»، «قائلاً: «…»». */
 const SPEECH_QUOTE = /(?<![؀-ۿ])[وف]?(?:قال|قالت|يقول|تقول|أضاف|أضافت|أكد|أكدت|ذكر|ذكرت|كتب|كتبت|تابع|تابعت|أوضح|أوضحت|وصف|وصفت|اعتبر|اعتبرت|صرح|صرّح|صرحت|صرّحت|شدد|شدّد|شددت|شدّدت|حذر|حذّر|حذرت|حذّرت|قائلا|قائلاً|قائلة|بقوله|بقولها)(?![؀-ۿ])[^«».؟!\n]{0,40}?«([^«»\n]{20,})»/g;
@@ -80,7 +81,9 @@ export function programmaticChecks(draft, sources, { recentTitles = [], newsTitl
   // claims words nobody said. The prompt alone did not hold it: of 85 stories read on 2026-10-28, four set translated
   // speech in «» (Gulf News's English for Pezeshkian, Senator Wyden's words, a Russian minister's). A quote whose words
   // no Arabic source carries goes back to the desk, which reports it instead («قال إن…»).
-  const arabicTexts = sources.map((s) => `${s.title ?? ""}\n${s.text || ""}\n${s.summary || ""}`).filter((t) => arabicRatio(t.slice(0, 3000)) > 0.5);
+  // In the house spelling, as the copy desk has written the draft (fixNames(): «الأميركية» → «الأمريكية», «ترمب» →
+  // «ترامب», «2,5» → «2.5»): a verbatim quote from Asharq Al-Awsat no longer matched its own source (the review of 2026-10-30).
+  const arabicTexts = sources.map((s) => `${s.title ?? ""}\n${s.text || ""}\n${s.summary || ""}`).filter((t) => arabicRatio(t.slice(0, 3000)) > 0.5).map(fixNames);
   if (grounded) {
     for (const m of prose.matchAll(SPEECH_QUOTE)) {
       // A name in «» after a verb of saying is four words at most («قالت شركة «غلف تاكس أكاونتينغ غروب»»); speech is longer.
@@ -257,7 +260,7 @@ export function cutToSources(draft, sources) {
   const ungrounded = (text) => ungroundedNumbers(text, sourceTexts).some((n) => missing.has(n));
   if (ungrounded(`${draft.title}\n${draft.subtitle}`)) return null;
   const cut = [];
-  const sentencesIn = (line) => line.split(/(?<=[.؟!])\s+/);
+  const sentencesIn = (line) => sentenceUnits(line);
   const cutField = (text, { stitches = false } = {}) => {
     const lines = String(text ?? "").split("\n");
     const kept = [];

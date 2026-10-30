@@ -247,7 +247,9 @@ export function photosOf(html, url, document = null) {
  */
 export function ownArticleOnly(document) {
   const own = document.querySelector("[class*='first-article']");
-  if (!own) return 0;
+  // The mark must hold an article's text: on another publisher's page a short sidebar item classed «first-article», with
+  // layout sections that shared a class, took the whole article away (the review of 2026-10-30).
+  if (!own || String(own.textContent ?? "").replace(/\s+/g, " ").trim().length < 300) return 0;
   let removed = 0;
   for (let level = own; level && level.tagName !== "BODY"; level = level.parentElement) {
     const cls = level.getAttribute("class");

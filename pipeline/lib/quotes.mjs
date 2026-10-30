@@ -91,10 +91,14 @@ export async function yahooQuote(symbol) {
   let prev = Number(meta.chartPreviousClose);
   if (!Number.isFinite(prev) || prev <= 0) prev = null;
   let history = barsOf(today);
+  // Whether the three months were read: a one-day bar is not evidence that a feed keeps no daily closes (context.mjs
+  // quoteLine(); the review of 2026-10-30: a failed call took gold's and Brent's moves away).
+  let historyRead = false;
   try {
     history = barsOf(await yahooChart(symbol, "3mo"));
+    historyRead = true;
   } catch {}
-  return { price, prev, time: new Date(time * 1000).toISOString(), currency: meta.currency || null, history };
+  return { price, prev, time: new Date(time * 1000).toISOString(), currency: meta.currency || null, history, historyRead };
 }
 
 export function withChange(inst, quote) {

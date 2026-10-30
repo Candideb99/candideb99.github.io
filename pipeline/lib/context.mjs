@@ -56,13 +56,16 @@ const MARKET_SECTIONS = new Set(["markets", "energy"]);
  */
 const MACRO = /الناتج المحلي|الناتج الإجمالي|نمو الاقتصاد|النمو الاقتصادي|الاقتصاد [؀-ۿ]+ (?:ينمو|ينكمش|يتسارع|يتباطأ)|(?<![؀-ۿ])(?:و|ل|ب)?التضخم(?![؀-ۿ])|أسعار المستهلكين|البطالة|الوظائف|مبيعات التجزئة|الإنتاج الصناعي|مديري المشتريات|الميزان التجاري|الفائض التجاري|العجز التجاري|(?<![؀-ۿ])(?:و|ل|ب)?الفائدة(?![؀-ۿ])/;
 const FORECAST = /(?<![؀-ۿ])(?:يتوقع|تتوقع|يتوقعان|تتوقعان|يتوقعون|توقعات|يرجح|ترجح|يرجّح|ترجّح|يُرجّح|تُرجّح|يرجحان|يرجّحان|ترجحان|ترجّحان|يرجحون|يرجّحون)(?![؀-ۿ])/;
+// A place as a whole word, through its clitics and nisba: «مصر» inside «مصرف» gave «مصرف الإمارات المركزي» and «مصرف قطر
+// المركزي» Egypt's index and pound (the review of 2026-10-30), «ترك» inside «مشتركة» Turkey's lira.
+const placeWord = (...stems) => new RegExp(`(?<![؀-ۿ])[وفبلك]?(?:ال|لل)?(?:${stems.join("|")})(?:ية|ي|ة|يا|ا)?(?![؀-ۿ])`);
 const MARKET_OF = [
-  { place: /الصين|الصيني|بكين|بنك الشعب/, ids: ["sse", "usdcny"] },
-  { place: /مصر|المصري|المصرية/, ids: ["egx30", "usdegp"] },
-  { place: /السعودية|السعودي|ساما/, ids: ["tasi"] },
-  { place: /الأمريكي|الأمريكية|الولايات المتحدة|الفيدرالي/, ids: ["spx", "us10y", "dxy"] },
-  { place: /اليابان|الياباني|اليابانية/, ids: ["n225", "usdjpy"] },
-  { place: /تركيا|التركي|التركية/, ids: ["usdtry"] },
+  { place: placeWord("صين", "بكين", "بنك الشعب"), ids: ["sse", "usdcny"] },
+  { place: placeWord("مصر"), ids: ["egx30", "usdegp"] },
+  { place: placeWord("سعودي", "ساما"), ids: ["tasi"] },
+  { place: placeWord("أمريكي", "أميركي", "ولايات المتحدة", "فيدرالي"), ids: ["spx", "us10y", "dxy"] },
+  { place: placeWord("يابان", "ياباني"), ids: ["n225", "usdjpy"] },
+  { place: placeWord("ترك", "تركي"), ids: ["usdtry"] },
   { place: /منطقة اليورو|المركزي الأوروبي|ألمانيا|الألماني|الألمانية/, ids: ["sx5e", "eurusd"] },
   { place: /بريطانيا|البريطاني|البريطانية|بنك إنجلترا/, ids: ["ftse", "gbpusd"] },
 ];
@@ -71,7 +74,7 @@ const MARKET_OF = [
  * الإماراتي يبقي سعر الأساس عند 3.90% بعد تثبيت الفيدرالي» (2026-10-28) was given the S&P 500, the ten-year yield and the
  * dollar index through «الفيدرالي», and a third of the story went on them and on the Fed's own decision.
  */
-const NO_MARKET = /الإمارات|الإماراتي|الإماراتية|قطر|القطري|القطرية|الكويت|الكويتي|الكويتية|البحرين|البحريني|البحرينية|سلطنة عمان|العماني|العمانية|المغرب|المغربي|المغربية|الأردن|الأردني|الأردنية|العراق|العراقي|العراقية|لبنان|اللبناني|اللبنانية|تونس|التونسي|التونسية|الجزائر|الجزائري|الجزائرية|باكستان|الباكستاني|الباكستانية|الهند|الهندي|الهندية/;
+const NO_MARKET = placeWord("إمارات", "قطر", "كويت", "بحرين", "سلطنة عمان", "عماني", "مغرب", "أردن", "عراق", "لبنان", "لبناني", "تونس", "جزائر", "باكستان", "هند");
 /** The market of the place the headline names first; none when that place's markets are not quoted. */
 export function macroMarketOf(headline) {
   if (!MACRO.test(headline) || FORECAST.test(headline)) return [];
@@ -144,7 +147,8 @@ export function quoteLine(inst, q, now = Date.now()) {
     : FUTURES.has(inst.id) ? ` (futures, Yahoo Finance's continuous front-month series ${inst.symbol}${month})` : ` (${inst.symbol})`;
   const label = inst.group === "fx" ? `${inst.name} exchange rate` : inst.name;
   let line = `${label}${series}: ${price}${unit ? ` ${unit}` : ""} at ${gmt(q.time)} (delayed quote)`;
-  const unchecked = Array.isArray(q.history) && q.history.length < 5;
+  // When the three months could not be read, only the Arab indices, whose feed is known to keep none, lose their move.
+  const unchecked = Array.isArray(q.history) && (q.historyRead === false ? inst.group === "arab" : q.history.length < 5);
   if (unchecked) line += "; the feed keeps no daily closes for this index, so its previous close cannot be checked and no move is given";
   else if (Number.isFinite(q.change) && Number.isFinite(q.pct) && Number.isFinite(q.prev)) {
     const dir = q.change >= 0 ? "up" : "down";
@@ -184,10 +188,23 @@ async function deliveryMonths(inst, q, { now, fetchQuote }) {
       /* a month Yahoo does not list */
     }
   }
-  const tracked = quotes.findIndex((c) => Math.abs(c.q.price - q.price) <= q.price * 0.0005 && Math.abs(new Date(c.q.time) - new Date(q.time)) < 3600000);
+  // The contract whose price is nearest the series', not the first within the tolerance: on a flat curve (December 65.10,
+  // January 65.12, the series on January) the first was December, the series was labelled December and the nearer
+  // contract was never offered (the review of 2026-10-30).
+  let tracked = -1;
+  let best = Infinity;
+  quotes.forEach((c, i) => {
+    const gap = Math.abs(c.q.price - q.price);
+    if (gap <= q.price * 0.0005 && Math.abs(new Date(c.q.time) - new Date(q.time)) < 3600000 && gap < best) {
+      best = gap;
+      tracked = i;
+    }
+  });
   if (tracked < 0) return null;
-  // The nearer month still trades when its last quote is as fresh as the series' own.
-  const nearer = quotes.slice(0, tracked).find((c) => Math.abs(new Date(c.q.time) - new Date(q.time)) < 6 * 3600000);
+  // The nearer month still trades when its last quote is as fresh as the series' own, within half an hour: one that
+  // expired at 19:30 on Friday, beside the series' close at 21:00, was offered as "the contract the wires quote" until
+  // Monday (six hours had been the bar; the review of 2026-10-30, with Brent's December expiring that Friday).
+  const nearer = quotes.slice(0, tracked).find((c) => Math.abs(new Date(c.q.time) - new Date(q.time)) < 30 * 60000);
   return { tracked: quotes[tracked].delivery, nearer: nearer ? { ...nearer.q, contract: nearer.symbol, delivery: nearer.delivery } : null };
 }
 

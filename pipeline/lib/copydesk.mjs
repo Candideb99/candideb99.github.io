@@ -186,14 +186,16 @@ const STUTTER = /(?<![؀-ۿ])([؀-ۿ]{3,})\s+\1(?![؀-ۿ])/;
  * read through («يُتوقع» is «يتوقع»).
  */
 // Word edges are letters and marks, not the Arabic block: «،» and «؛» sit inside it, and «والأرجح،» must count.
-const HEDGES = new RegExp(`(?<![\\p{L}\\p{M}])${CLITIC}(?:ال)?(يتجه|تتجه|قد(?<!لقد)(?= (?:ي|ت(?![\\p{L}\\p{M}]*ت(?![\\p{L}\\p{M}]))))|من المتوقع|متوقع|متوقعة|مرشح|مرشحة|محتمل|محتملة|من المحتمل|أرجح|مرجح|يرجح|ترجح|ربما|يبدو|تبدو|يستبعد|يتوقع|تتوقع|توقعات|توقع|يقدر|تقدر|يقدرون|تقديرات|تعهد|تعهدت|يعد(?=(?: [؀-ۿ]+){0,2} ب[؀-ۿ])|تعد(?=(?: [؀-ۿ]+){0,2} ب[؀-ۿ])|وعد|وعدت|يعتزم|تعتزم|يخطط|تخطط|قريبا|إذا|في حال|افتراض|سيناريو|ما لم|ما دام|ما دامت|طالما|شريطة|بشرط)(?![\\p{L}\\p{M}])`, "gu");
+const HEDGES = new RegExp(`(?<![\\p{L}\\p{M}])${CLITIC}(?:ال)?(يتجه|تتجه|قد(?<!لقد)(?= (?:ي|ت(?![\\p{L}\\p{M}]*ت(?![\\p{L}\\p{M}]))))|من المتوقع|متوقع|متوقعة|مرشح|مرشحة|محتمل|محتملة|من المحتمل|أرجح|مرجح|يرجح|ترجح|ربما|يبدو|تبدو|يستبعد|يتوقع|تتوقع|توقعات|توقع|يقدر|تقدر|يقدرون|تقديرات|تعهد|تعهدت|يعد(?=(?: [؀-ۿ]+){0,2} ب[؀-ۿ])|تعد(?=(?: [؀-ۿ]+){0,2} ب[؀-ۿ])|وعد|وعدت|يعتزم|تعتزم|يخطط|تخطط|قريبا|إذا(?<!ما إذا)|في حالة|في حال|لو|افتراض|سيناريو|ما لم|ما دام|ما دامت|طالما|شريطة|بشرط)(?![\\p{L}\\p{M}])`, "gu");
 // Three kinds: what is uncertain (a forecast or a possibility: «تتوقع المنظمة» may become «ترجّح المنظمة», both
 // leave the claim open), what is promised (a pledge or a plan is not a likelihood), and what holds only on a condition
 // (2026-10-29: the World Bank's 79 dollars «في ظل افتراض… عودة تدفقات النفط عبر الممرات البحرية» and 105 «إذا تعطلت
-// إمدادات إضافية بنحو 5 ملايين برميل يومياً» went out bare; «إذا» may become «في حال», never nothing).
+// إمدادات إضافية بنحو 5 ملايين برميل يومياً» went out bare; «إذا» may become «في حال», never nothing). «ما إذا» is
+// "whether", no condition: the desk is told to write it «هل», and the guard had refused that very fix; «في حالة» and
+// «لو» keep a condition as «في حال» does (the review of 2026-10-30).
 function hedgeKind(word) {
   if (/^(?:تعهد|تعهدت|يعد|تعد|وعد|وعدت|يعتزم|تعتزم|يخطط|تخطط|قريبا)$/.test(word)) return "promised";
-  if (/^(?:إذا|في حال|افتراض|سيناريو|ما لم|ما دام|ما دامت|طالما|شريطة|بشرط)$/.test(word)) return "conditional";
+  if (/^(?:إذا|في حالة|في حال|لو|افتراض|سيناريو|ما لم|ما دام|ما دامت|طالما|شريطة|بشرط)$/.test(word)) return "conditional";
   return "uncertain";
 }
 const hedgeKinds = (text) => new Set([...String(text ?? "").replace(/\p{M}/gu, "").matchAll(HEDGES)].map((m) => hedgeKind(m[1])));

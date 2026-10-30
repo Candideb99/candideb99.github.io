@@ -117,6 +117,16 @@ const redo = [];
 if (!OFFLINE) {
   const renamed = [];
   const withPhotos = stories.filter((s) => s.image?.url);
+  // A record belongs to the photograph it was made for: the Qatari Diar story's lost Flickr photo was replaced on 25
+  // October by the developer's handout, which has no library page to ask, and the old record was reported every morning
+  // after as "found gone once, to be checked again tomorrow" (2026-10-30). A story whose photo has changed starts afresh.
+  for (const s of withPhotos) if (state.photos[s.slug]?.url && state.photos[s.slug].url !== s.image.url) delete state.photos[s.slug];
+  const lost = (s, bad, reason) => {
+    const { entry, confirmed } = confirmLoss(state.photos[s.slug], bad, reason);
+    if (entry) state.photos[s.slug] = { ...entry, url: s.image.url };
+    else delete state.photos[s.slug];
+    if (confirmed) redo.push(s.slug);
+  };
   const commons = withPhotos.map((s) => ({ s, title: commonsTitle(s.image) })).filter((x) => x.title);
   const answers = await checkCommons(commons.map((x) => x.title), { log: (m) => console.log(m) });
   let asked = 0;
@@ -137,10 +147,7 @@ if (!OFFLINE) {
       delete state.photos[s.slug];
       continue;
     }
-    const { entry, confirmed } = confirmLoss(state.photos[s.slug], a.status === "missing", "the file is gone from Commons");
-    if (entry) state.photos[s.slug] = entry;
-    else delete state.photos[s.slug];
-    if (confirmed) redo.push(s.slug);
+    lost(s, a.status === "missing", "the file is gone from Commons");
   }
   const others = withPhotos.filter((s) => !commonsTitle(s.image) && s.image.pageUrl);
   const weekly = !state.pagesCheckedAt || hoursAgo(state.pagesCheckedAt) > 6.5 * 24;
@@ -150,14 +157,16 @@ if (!OFFLINE) {
     for (const s of pageChecks) {
       const status = pages.get(s.image.pageUrl);
       if (status === "unknown") continue;
-      const { entry, confirmed } = confirmLoss(state.photos[s.slug], status === "gone", "its page at the photo library is gone");
-      if (entry) state.photos[s.slug] = entry;
-      else delete state.photos[s.slug];
-      if (confirmed) redo.push(s.slug);
+      lost(s, status === "gone", "its page at the photo library is gone");
     }
   }
   if (weekly) state.pagesCheckedAt = new Date().toISOString();
-  for (const slug of Object.keys(state.photos)) if (!withPhotos.some((s) => s.slug === slug)) delete state.photos[slug];
+  // Kept only for a story still running a photo that can be asked (a Commons file or a library page); a handout kept on
+  // the site has neither.
+  for (const slug of Object.keys(state.photos)) {
+    const s = withPhotos.find((x) => x.slug === slug);
+    if (!s || (!commonsTitle(s.image) && !s.image.pageUrl)) delete state.photos[slug];
+  }
   const pending = Object.keys(state.photos).filter((slug) => !redo.includes(slug));
   fine.push(`Photos: Commons answered for ${asked} of ${commons.length}${pageChecks.length ? `, and ${pageChecks.length} other librar${pageChecks.length === 1 ? "y's page was" : "ies' pages were"} asked` : ""}.${renamed.length ? ` Re-addressed after a rename: ${renamed.join(", ")}.` : ""}${pending.length ? ` Found gone once, to be checked again tomorrow: ${pending.join(", ")}.` : ""}${redo.length ? ` Gone on two checks, a new photo is sought: ${redo.join(", ")}.` : ""}${!renamed.length && !pending.length && !redo.length ? " Every one is in place." : ""}`);
 }

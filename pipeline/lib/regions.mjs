@@ -54,10 +54,13 @@ const normalizePlace = (s) => String(s ?? "").replace(/[ً-ٰٟـ]/g, "").replac
 // Arabic letters and marks only: the Arabic comma, semicolon and question mark sit in the same Unicode block and end
 // a word («مضيق هرمز؟»).
 const LETTER = "\\u0621-\\u065F\\u066E-\\u06D3\\u06FA-\\u06FF";
-const placeRe = (w) => {
+// «ه» ends only a nisba's «ي» (السعودية، الروسية): after a city it makes another word, and «الرياضة» had read as «الرياض»
+// (the review of 2026-10-30). A country's name may also end «يا» (`country`: «تركيا» from «ترك»).
+const placeRe = (w, { country = false } = {}) => {
   const n = escapeRe(normalizePlace(w));
   const forms = n.startsWith("ال") ? `[وفبك]?(?:${n}|لل${n.slice(2)})` : `[وفبلك]?(?:ال|لل)?${n}`;
-  return new RegExp(`(?<![${LETTER}])${forms}(?:ي|يه|ين|يون|يين|ون|ات|ه|ا)?(?![${LETTER}])`);
+  const ends = [...(n.endsWith("ي") ? ["ه"] : []), "ي", "يه", "ين", "يون", "يين", "ون", ...(country ? ["يا"] : ["ات"]), "ا"];
+  return new RegExp(`(?<![${LETTER}])${forms}(?:${ends.join("|")})?(?![${LETTER}])`);
 };
 const DESK_PLACES = new Map(DESKS.filter((d) => PLACES[d.name]).map((d) => [d.name, [d.name, ...d.match, ...PLACES[d.name]].map(placeRe)]));
 
@@ -81,38 +84,45 @@ function namesDesk(desk, text) {
  * الأمريكية) and the headline carries the name while neither it nor the dek says the country (3 of 144 news stories of
  * 18-29 October: ACWA, Scatec, SK Hynix). Each nationality, with the words that place it in a headline.
  */
+// Each a whole word (placeRe()), so a country's main cities, ports and fields are listed by name: «معادن» السعودية under a
+// headline ending «في ينبع» was flagged as unplaced (the review of 2026-10-30). Not the seats of world bodies (Vienna,
+// Geneva): an OPEC meeting there is no Austrian event.
 const NATIONALITIES = {
-  "سعودي": ["سعودي", "المملكة", "الرياض", "جدة", "مكة", "المدينة المنورة", "الدمام", "نيوم"],
-  "إماراتي": ["إمارات", "أبوظبي", "أبو ظبي", "دبي", "الشارقة", "رأس الخيمة", "الفجيرة", "عجمان"], "قطري": ["قطر", "الدوحة"], "كويتي": ["كويت"],
-  "بحريني": ["بحرين", "المنامة"], "عماني": ["عمان", "مسقط"], "مصري": ["مصر", "القاهرة", "الإسكندرية"], "مغربي": ["مغرب"], "جزائري": ["جزائر"], "تونسي": ["تونس"],
-  "ليبي": ["ليبي"], "إيراني": ["إيران"], "عراقي": ["عراق"], "تركي": ["ترك"], "إسرائيلي": ["إسرائيل"], "أردني": ["أردن"],
-  "لبناني": ["لبنان"], "سوري": ["سوري"], "يمني": ["يمن"], "فلسطيني": ["فلسطين"], "أمريكي": ["أمريك", "أميرك", "الولايات المتحدة", "واشنطن"],
-  "أميركي": ["أمريك", "أميرك", "الولايات المتحدة", "واشنطن"], "كندي": ["كند"], "مكسيكي": ["مكسيك"], "برازيلي": ["برازيل"],
-  "صيني": ["صين", "بكين"], "ياباني": ["يابان", "طوكيو"], "هندي": ["هند"], "كوري": ["كوري"], "تايواني": ["تايوان"], "سنغافوري": ["سنغافور"],
-  "إندونيسي": ["إندونيسي"], "ماليزي": ["ماليزي"], "باكستاني": ["باكستان"], "أسترالي": ["أسترالي"], "روسي": ["روسي"],
-  "أوكراني": ["أوكراني"], "بريطاني": ["بريطاني", "المملكة المتحدة", "لندن"], "ألماني": ["ألماني"], "فرنسي": ["فرنس", "باريس"],
-  "إيطالي": ["إيطالي"], "إسباني": ["إسباني"], "هولندي": ["هولند"], "سويسري": ["سويسر"], "سويدي": ["سويد"], "نرويجي": ["نرويج"],
-  "دنماركي": ["دنمار"], "فنلندي": ["فنلند"], "بلجيكي": ["بلجيك"], "نمساوي": ["نمسا"], "نيجيري": ["نيجيري"], "فنزويلي": ["فنزويل"],
+  "سعودي": ["سعودي", "المملكة", "الرياض", "جدة", "مكة", "المدينة المنورة", "الدمام", "نيوم", "ينبع", "الجبيل", "رأس تنورة", "تبوك", "العلا", "جازان", "الخفجي", "الطائف"],
+  "إماراتي": ["إمارات", "أبوظبي", "أبو ظبي", "دبي", "الشارقة", "رأس الخيمة", "الفجيرة", "عجمان", "جبل علي", "الرويس"], "قطري": ["قطر", "الدوحة", "رأس لفان"], "كويتي": ["كويت"],
+  "بحريني": ["بحرين", "المنامة"], "عماني": ["عمان", "مسقط", "الدقم", "صلالة", "صحار"], "مصري": ["مصر", "القاهرة", "الإسكندرية", "السويس", "بورسعيد", "السخنة", "العلمين", "الغردقة", "أسوان", "الجيزة", "شرم الشيخ"], "مغربي": ["مغرب", "الدار البيضاء", "الرباط", "طنجة", "مراكش"], "جزائري": ["جزائر", "وهران"], "تونسي": ["تونس", "صفاقس"],
+  "ليبي": ["ليبي", "بنغازي", "مصراتة"], "إيراني": ["إيران", "طهران", "بندر عباس"], "عراقي": ["عراق", "بغداد", "البصرة", "أربيل", "كركوك", "الموصل", "كردستان"], "تركي": ["ترك", "إسطنبول", "أنقرة", "إزمير"], "إسرائيلي": ["إسرائيل", "تل أبيب"], "أردني": ["أردن", "العقبة"],
+  "لبناني": ["لبنان", "بيروت"], "سوري": ["سوري", "دمشق", "حلب", "بانياس"], "يمني": ["يمن", "صنعاء", "عدن", "الحديدة"], "فلسطيني": ["فلسطين", "غزة", "الضفة الغربية"], "أمريكي": ["أمريك", "أميرك", "الولايات المتحدة", "واشنطن", "نيويورك", "وول ستريت", "تكساس", "كاليفورنيا"],
+  "أميركي": ["أمريك", "أميرك", "الولايات المتحدة", "واشنطن", "نيويورك", "وول ستريت", "تكساس", "كاليفورنيا"], "كندي": ["كند"], "مكسيكي": ["مكسيك"], "برازيلي": ["برازيل"],
+  "صيني": ["صين", "بكين", "شنغهاي", "شنتشن", "هونغ كونغ"], "ياباني": ["يابان", "طوكيو"], "هندي": ["هند", "مومباي", "نيودلهي"], "كوري": ["كوري", "سيول"], "تايواني": ["تايوان"], "سنغافوري": ["سنغافور"],
+  "إندونيسي": ["إندونيسي"], "ماليزي": ["ماليزي"], "باكستاني": ["باكستان"], "أسترالي": ["أسترالي"], "روسي": ["روسي", "موسكو"],
+  "أوكراني": ["أوكراني"], "بريطاني": ["بريطاني", "المملكة المتحدة", "لندن"], "ألماني": ["ألماني", "الألماني", "برلين", "فرانكفورت"], "فرنسي": ["فرنس", "باريس"],
+  "إيطالي": ["إيطالي", "روما", "ميلانو"], "إسباني": ["إسباني", "مدريد"], "هولندي": ["هولند", "أمستردام", "روتردام"], "سويسري": ["سويسر", "زيورخ"], "سويدي": ["سويد"], "نرويجي": ["نرويج"],
+  "دنماركي": ["دنمارك"], "فنلندي": ["فنلند"], "بلجيكي": ["بلجيك"], "نمساوي": ["نمسا", "نمساو"], "نيجيري": ["نيجيري"], "فنزويلي": ["فنزويل"],
 };
 // Household names, whose country no Arab reader needs told (the writer's rule says the same; «مصر تبحث مع «بي بي»…»
 // was the one other hit of the first calibration).
 const HOUSEHOLD = new Set(["بي بي", "شل", "توتال إنرجيز", "إكسون موبيل", "شيفرون", "أرامكو", "أدنوك", "أبل", "مايكروسوفت", "ألفابت",
   "غوغل", "جوجل", "أمازون", "ميتا", "إنفيديا", "تسلا", "سامسونغ", "تويوتا", "بوينغ", "إيرباص"].map(normalizePlace));
 const nationalityKey = (word) => normalizePlace(word).replace(/(?:يه|يين|يون|ين|ي)$/, "");
-const NATIONALITY_BY_KEY = new Map(Object.entries(NATIONALITIES).map(([nisba, places]) => [nationalityKey(nisba), places.map(normalizePlace)]));
+const NATIONALITY_BY_KEY = new Map(Object.entries(NATIONALITIES).map(([nisba, places]) => [nationalityKey(nisba), places.map((p) => placeRe(p, { country: true }))]));
+/** Text as the country readers read it: «المملكة المتحدة» is Britain, never also «المملكة»; «عمّان» with its shadda is
+ *  Amman, never Oman. */
+const countryText = (text) => normalizePlace(String(text ?? "").replace(/عمّان/g, "الأردن")).replace(/المملكه المتحده/g, "بريطانيا");
 // A name in «», a Latin gloss in brackets allowed, then its nisba: «أكوا» السعودية، «إي آي جي» (EIG) الأمريكية.
 const NAMED_NATIONALITY = /«([^»]{2,40})»(?:\s*\([^)]{1,60}\))?\s+(ال[ء-ي]+)/g;
 
 /** The names the headline carries without the nationality the story itself gives them: [{ name, nisba }]. */
 export function unplacedActors({ title = "", subtitle = "", lede = "", body = "" } = {}) {
   const head = normalizePlace(title);
-  const shown = normalizePlace(`${title}\n${subtitle}`);
+  // Each place as a whole word: «ترك» inside «مشتركة» had placed a Turkish company (the review of 2026-10-30).
+  const shown = countryText(`${title}\n${subtitle}`);
   const out = [];
   for (const m of `${lede}\n${body}`.matchAll(NAMED_NATIONALITY)) {
     const [, name, nisba] = m;
     const places = NATIONALITY_BY_KEY.get(nationalityKey(nisba.slice(2)));
     if (!places || HOUSEHOLD.has(normalizePlace(name)) || !head.includes(normalizePlace(name)) || out.some((o) => o.name === name)) continue;
-    if (places.some((p) => shown.includes(p))) continue;
+    if (places.some((re) => re.test(shown))) continue;
     out.push({ name, nisba });
   }
   return out;
@@ -120,16 +130,14 @@ export function unplacedActors({ title = "", subtitle = "", lede = "", body = ""
 
 /**
  * The countries a headline names, by a place or a nisba, as NATIONALITIES lists them («مصري» for «المركزي المصري» and
- * «القاهرة»). A place is read from a word's start, after a clitic and the article: «تركيا» and «التركي» are Turkish,
- * «مشتركة» is not. lib/events.mjs reads it to keep two countries' decisions two events.
+ * «القاهرة»). Each as a whole word through its clitics and endings (placeRe()): «تركيا» and «التركي» are Turkish,
+ * «مشتركة» and «التركيز» are not, nor is «مصرف» Egypt or «يمنح» Yemen; «للسعودية» is Saudi. Read from a word's start
+ * until the review of 2026-10-30, which found all of those wrong: «مصرف البحرين المركزي» and «المركزي المصري» were one
+ * country. lib/events.mjs reads it to keep two countries' decisions two events.
  */
-const PLACE_AT_START = new Map(Object.entries(NATIONALITIES).map(([nisba, places]) => [
-  nationalityKey(nisba),
-  new RegExp(`(?<![ء-ي])(?:[وفبل])?(?:ال)?(?:${places.map((p) => normalizePlace(p).replace(/^ال/, "")).join("|")})`),
-]));
 export function countriesNamed(text) {
-  const hay = normalizePlace(text);
-  return new Set([...PLACE_AT_START].filter(([, re]) => re.test(hay)).map(([key]) => key));
+  const hay = countryText(text);
+  return new Set([...NATIONALITY_BY_KEY].filter(([, res]) => res.some((re) => re.test(hay))).map(([key]) => key));
 }
 
 /**

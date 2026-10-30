@@ -224,6 +224,11 @@ export function wordCount(text) {
 // A demonstrative or «كذلك» among a sentence's first four words, with its attached و/ف/ب/ل/ك: «وهذه الخطوة…»، «ومع
 // ذلك…»، «وكانت قيود الاستخدام هذه…». Deeper in («وارتفع المؤشر 2% في هذه الجلسة») it is the sentence's own business.
 const BACK_REFERENCE = /^(?:[وفبلك]{0,2})(?:هذا|هذه|ذلك|تلك|هؤلاء|أولئك|هذان|هاتان|هذين|هاتين|ذاك|كذلك)$/;
+// A demonstrative before a word of time names the time, not the sentence before: «وتتوقع الشركة هذا العام نمواً…»,
+// «في هذه الأثناء» (the review of 2026-10-30: the last cut took a sourced forecast with the unsourced figure before it).
+const TIME_WORD = /^(?:ال)?(?:عام|أسبوع|شهر|يوم|ربع|فصل|موسم|أثناء|سنة|صباح|مساء|ليلة|أيام|أسابيع|أشهر|شهور)$/;
+// A pronoun opening that takes up the sentence before: «وهو ما يعني…»، «وهي أعلى نسبة…»، «مما يرفع…».
+const PRONOUN_OPENING = /^(?:[وف]?(?:هو|هي|هما|هم)\s|مما\s|ما يعني\s)/;
 /**
  * Whether a sentence points back at the one before it. A cut that takes out the sentence before one of these leaves the
  * reference hanging: «وكانت قيود الاستخدام هذه قد أوقعت الشركة في خلاف…» stood in the Anthropic story of 27 October with
@@ -231,7 +236,26 @@ const BACK_REFERENCE = /^(?:[وفبلك]{0,2})(?:هذا|هذه|ذلك|تلك|ه�
  * source bears on) read sentence by sentence.
  */
 export function refersBack(sentence) {
-  return String(sentence ?? "").trim().split(/\s+/).slice(0, 4).some((w) => BACK_REFERENCE.test(w.replace(/[^\p{L}]/gu, "")));
+  const text = String(sentence ?? "").trim();
+  if (PRONOUN_OPENING.test(text)) return true;
+  const words = text.split(/\s+/).slice(0, 5).map((w) => w.replace(/[^\p{L}]/gu, ""));
+  return words.slice(0, 4).some((w, i) => BACK_REFERENCE.test(w) && !TIME_WORD.test(words[i + 1] ?? ""));
+}
+
+/**
+ * A line's sentences, a quotation that runs over several kept as one unit: «قال الوزير «سنرفع الإنتاج. وسنخفض
+ * الأسعار» في مؤتمر صحفي.» is one, so neither cutter can take half a quotation and leave its marks unbalanced (the
+ * review of 2026-10-30). A fact-check sentence that is half of one matches no unit, and stays.
+ */
+export function sentenceUnits(line) {
+  const units = [];
+  let open = 0;
+  for (const part of String(line ?? "").split(/(?<=[.؟!])\s+/)) {
+    if (open > 0 && units.length) units[units.length - 1] += ` ${part}`;
+    else units.push(part);
+    open = Math.max(0, open + (part.match(/«/g) ?? []).length - (part.match(/»/g) ?? []).length);
+  }
+  return units;
 }
 
 /** Share of 6-word shingles of `text` that appear verbatim in `source`. */

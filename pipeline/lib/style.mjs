@@ -205,7 +205,7 @@ const BOX_OPENER = /^(?:و|ف)?(?:يعكس|تعكس|يمثل|تمثل|يُمثّ
  */
 // Since 2026-10-29 also the contrast with a claim nobody made, «، لا بـ…» («يتحدد صفقة بصفقة، لا بإعلان التأسيس»،
 // «لا بزخم يوم الإدراج»، «لا بنمو الأرباح وحده»): the same correction of no one, said without «وحده».
-const BOX_TAKEBACK = new RegExp(`(?:(?:من\\s+)?دون أن|(?<![${AR}])(?:لا|لن)) (?:ي|ت)[${AR}]+(?: [${AR}]+){0,2} (?:وحده|وحدها|بمفرده|بمفردها)(?![${AR}])|(?<![${AR}])(?:وحده|وحدها|بمفرده|بمفردها) (?:لا|لن) (?:ي|ت)[${AR}]+|،\\s*لا ب[${AR}]+(?: [${AR}]+){0,4}`);
+const BOX_TAKEBACK = new RegExp(`(?:(?:من\\s+)?دون أن|(?<![${AR}])(?:لا|لن)) (?:ي|ت)[${AR}]+(?: [${AR}]+){0,2} (?:وحده|وحدها|بمفرده|بمفردها)(?![${AR}])|(?<![${AR}])(?:وحده|وحدها|بمفرده|بمفردها) (?:لا|لن) (?:ي|ت)[${AR}]+|،\\s*لا ب(?!د(?![${AR}])|ل(?![${AR}]))[${AR}]+(?: [${AR}]+){0,4}`);
 
 const SENTENCE_SPLIT = /[.؟!]\s+|\n+/;
 
@@ -484,8 +484,10 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
   // «رفع الدعم» is the removal of a subsidy in the Arab economics desks' usage; raised to a level it reads backwards
   // (2026-10-23: «يُرجَّح ألا يُموَّل رفع الدعم الاجتماعي إلى مثليه», meaning its doubling, four times in one analysis).
   // Up to three words and a «من …» between them since 2026-10-28: «رفع الدعم الاجتماعي المباشر من 500 إلى 600 درهم»
-  // passed; «إلى جانب» joins, it raises nothing.
-  const subsidy = prose.match(/رفع (?:ال)?دعم(?:\s+[\p{L}\p{M}]+){0,3}(?:\s+من\s+[\d.,]+(?:\s+[\p{L}\p{M}]+)?)?\s+إلى(?!\s*جانب)/u);
+  // passed; «إلى جانب» joins, it raises nothing. Raised TO A LEVEL only, a figure or a multiple, and never across «عن»,
+  // which marks the removal («رفع الدعم عن البنزين أدى إلى…»، «ويقود رفع الدعم عن الكهرباء التضخم إلى مستويات أعلى»
+  // were sent back as hard faults; the review of 2026-10-30).
+  const subsidy = prose.match(/رفع (?:ال)?دعم(?:\s+(?!عن(?![\p{L}\p{M}]))[\p{L}\p{M}]+){0,3}(?:\s+من\s+[\d.,]+(?:\s+[\p{L}\p{M}]+)?)?\s+إلى\s+(?:نحو\s+|حوالي\s+)?(?:[\d.,]+|مثلي|مثليه|مثليها|مثليهما|ضعف|ضعفي|أضعاف|ثلاثة أمثال)/u);
   if (subsidy) issues.push(`«${subsidy[0]}» تقرأ إلغاءً للدعم؛ «رفع الدعم» في لغة الاقتصاد يعني إلغاءه، وللزيادة «زيادة الدعم» أو «مضاعفته».`);
   if (kind === "explainer") {
     // A reader asks his question after the news, never about a definition: the lede opens on what happened.

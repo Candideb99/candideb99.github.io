@@ -20,7 +20,7 @@
 import { chat } from "./llm.mjs";
 import { correctionIssue, quoteFound, verifyStory } from "./factcheck.mjs";
 import { WRITER_SYSTEM } from "./write.mjs";
-import { arabicRatio, normalizeDigits, refersBack, ungroundedNumbers, writeJsonAtomic } from "./util.mjs";
+import { arabicRatio, normalizeDigits, refersBack, sentenceUnits, ungroundedNumbers, writeJsonAtomic } from "./util.mjs";
 import { fixNames } from "./copydesk.mjs";
 
 export const MAX_REPAIRS = 3;
@@ -182,7 +182,7 @@ function dropSentences(text, targets) {
   const dropped = new Set();
   const lines = String(text ?? "").split("\n").map((line) => {
     if (!line.trim() || /^\s*(?:#|\||[-*>]\s)/.test(line)) return line;
-    const parts = line.split(/(?<=[.؟!])\s+/);
+    const parts = sentenceUnits(line);
     const kept = [];
     for (const part of parts) {
       if (targets.has(squash(part))) dropped.add(squash(part));
@@ -201,7 +201,7 @@ function proseSentences(text) {
   return String(text ?? "").split("\n").flatMap((line) => {
     if (!line.trim()) return [];
     if (/^\s*(?:#|\||[-*>]\s)/.test(line)) return [null];
-    return line.split(/(?<=[.؟!])\s+/).map(squash).filter(Boolean);
+    return sentenceUnits(line).map(squash).filter(Boolean);
   });
 }
 
@@ -253,8 +253,9 @@ async function trimUnsourced({ draft, sources, checks, validate, log, judgeWith 
   for (let changed = true; changed; ) {
     changed = false;
     const doomed = new Set(cut.map((c) => squash(c.sentence)));
-    for (const field of UNSOURCED_FIELDS) {
-      const order = proseSentences(draft[field]);
+    // The lede and the body are read on: a body that opens «وهذه الخطوة…» points at the lede's last sentence (the
+    // review of 2026-10-30). The dek stands apart.
+    for (const order of [proseSentences(draft.subtitle), [...proseSentences(draft.lede), ...proseSentences(draft.body)]]) {
       for (let i = 0; i < order.length - 1; i++) {
         if (!order[i] || !order[i + 1] || !doomed.has(order[i]) || doomed.has(order[i + 1]) || !refersBack(order[i + 1])) continue;
         const at = cut.findIndex((c) => squash(c.sentence) === order[i]);

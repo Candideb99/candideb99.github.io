@@ -95,6 +95,7 @@ async function main() {
     }
     const history = mergeHistory(inst, old?.history, quote.history, quote.stale ? null : quote);
     delete quote.history;
+    delete quote.historyRead;
     quotes.push({ id: inst.id, symbol: inst.symbol, name: inst.name, short: inst.short ?? inst.name, note: inst.note ?? null, group: inst.group, unit: inst.unit ?? null, decimals: inst.decimals, changeMode: inst.changeMode ?? "pct", ...quote, history });
   }
 

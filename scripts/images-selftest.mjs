@@ -965,5 +965,39 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   check("every judge is told amateur photographs come last, and to prefer the nearest, clearest subject", [both.judgePrompts.every((p) => p.includes("AMATEUR LAST")), both.judgePrompts.every((p) => p.includes("nearest, largest and sharpest"))], [true, true]);
 }
 
+// Openverse down (2026-10-30): six searches of one pass, every one timing out. Three go out; the breaker opens on the third
+// failure and the three queued behind them are never sent. Counted after the turn was handed on, all six went out. Last in
+// this file: the breaker it opens rests Openverse for ten minutes in this process.
+{
+  const { searchOpenverse } = await import("../pipeline/lib/photolibs.mjs");
+  const realFetch = globalThis.fetch;
+  let sent = 0;
+  // Healthy first, one failure among the answers: every search is still sent.
+  let answered = 0;
+  globalThis.fetch = async () => {
+    answered += 1;
+    await new Promise((resolve) => setTimeout(resolve, 5));
+    if (answered === 2) throw new Error("The operation was aborted due to timeout");
+    return new Response(JSON.stringify({ results: [] }), { status: 200, headers: { "content-type": "application/json" } });
+  };
+  try {
+    await Promise.all(["m n", "o p", "q r", "s t", "u v", "w x"].map((q) => searchOpenverse(q, { log: () => {} })));
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+  check("Openverse answering, with one timeout among its answers: every search is sent", answered, 6);
+  globalThis.fetch = async () => {
+    sent += 1;
+    await new Promise((resolve) => setTimeout(resolve, 20));
+    throw new Error("The operation was aborted due to timeout");
+  };
+  try {
+    await Promise.all(["a b", "c d", "e f", "g h", "i j", "k l"].map((q) => searchOpenverse(q, { log: () => {} })));
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+  check("Openverse timing out: three searches are sent, and none queued behind them once the breaker opens", sent, 3);
+}
+
 console.log(failed ?`\n${failed} check(s) FAILED` : "\nall checks passed");
 process.exit(failed ? 1 : 0);

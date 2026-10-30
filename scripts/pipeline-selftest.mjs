@@ -15,12 +15,12 @@ import { MAX_REPAIRS, checkSourcesOf, precheck } from "../pipeline/lib/precheck.
 import { repeatsRecent } from "../pipeline/lib/events.mjs";
 import { fetchFeed } from "../pipeline/lib/feeds.mjs";
 import { lessonRuleOk, loadLessons } from "../pipeline/lib/lessons.mjs";
-import { refersBack, sourceNumbers, ungroundedNumbers, writeJsonAtomic } from "../pipeline/lib/util.mjs";
+import { refersBack, sentenceUnits, sourceNumbers, ungroundedNumbers, writeJsonAtomic } from "../pipeline/lib/util.mjs";
 import { loadSnapshot, saveSnapshot } from "../pipeline/lib/snapshots.mjs";
 import { loadSources, quoteFound, settleDrift, verifyStory } from "../pipeline/lib/factcheck.mjs";
 import { readArticleHtml } from "../pipeline/lib/extract.mjs";
 import { labelLine, outletLabels, quotedOutletsBlock, unlabelledOutlets } from "../pipeline/lib/outlets.mjs";
-import { instrumentsOf, marketData, repeatsInstrument } from "../pipeline/lib/context.mjs";
+import { instrumentsOf, macroMarketOf, marketData, repeatsInstrument } from "../pipeline/lib/context.mjs";
 import { independentOutletCount } from "../pipeline/lib/news-evidence.mjs";
 import { boxFacts, figureOnly } from "../pipeline/lib/keyfacts.mjs";
 import { deskNotes, explainingFacts, newsDepthBrief, newsFloor, normalizeChart, normalizeDraft, paperNotes, prioritizeContext, substantiveFacts, validateDraft, validateWhyBasis, writePaperReading } from "../pipeline/lib/write.mjs";
@@ -28,7 +28,7 @@ import { NEWS_DEPTH, NEWS_FLOOR, NEWS_MIN_EXPLAINING, NEWS_MIN_FACTS, SHORT_WORD
 import { arabicEdition, bestPdf, editionKey, previousEdition, releaseDocument, releaseStory, reportExcerpts } from "../pipeline/lib/reports.mjs";
 import { mergeNewsRefresh, serializeArticle } from "../pipeline/lib/article.mjs";
 import { cleanTags } from "../pipeline/lib/tags.mjs";
-import { groundedRegions } from "../pipeline/lib/regions.mjs";
+import { countriesNamed, groundedRegions, unplacedActors } from "../pipeline/lib/regions.mjs";
 import { styleIssues } from "../pipeline/lib/style.mjs";
 import { fixNames, judgeRewrite } from "../pipeline/lib/copydesk.mjs";
 import { CUTTABLE, cutToSources, normalizeCritique, programmaticChecks } from "../pipeline/lib/verify.mjs";
@@ -284,6 +284,29 @@ for (const [name, checks] of [
   const out = cutToSources(draft, [{ title: "Rate decision", text: "The bank raised its policy rate to 5%. It meets again in December." }]);
   check("the last cut takes the sentence pointing back at a cut figure", [out?.cut.length, out?.draft.body], [2, "ويجتمع البنك مجدداً في ديسمبر."]);
   check("a sentence that points back is told from one that does not", [refersBack("وكانت قيود الاستخدام هذه قد أوقعت الشركة"), refersBack("ومع ذلك ارتفع المؤشر"), refersBack("وارتفع المؤشر 2% في هذه الجلسة الطويلة جداً")], [true, true, false]);
+  // The review of 2026-10-30: a demonstrative before a word of time names the time; a pronoun opening takes up the sentence before.
+  check("«هذا العام» is a time, «وهو ما يعني» a reference", [refersBack("وتتوقع الشركة هذا العام نمواً بنسبة 7%."), refersBack("وفي هذه الأثناء ارتفع المؤشر"), refersBack("وهو ما يعني ارتفاع الكلفة"), refersBack("مما يرفع الكلفة")], [false, false, true, true]);
+  const forecast = { title: "عنوان", subtitle: "وصف", lede: "ارتفعت مبيعات الشركة.", body: "وارتفعت المبيعات 13% في الربع. وتتوقع الشركة هذا العام نمواً بنسبة 7%.", whyItMatters: "", keyFacts: [] };
+  check("the last cut keeps a sourced forecast after a cut figure", cutToSources(forecast, [{ title: "Results", text: "The company expects growth of 7% this year." }])?.draft.body, "وتتوقع الشركة هذا العام نمواً بنسبة 7%.");
+  check("a quotation over two sentences is one unit", sentenceUnits("قال الوزير «سنرفع الإنتاج إلى 5 ملايين برميل. وسنخفض الأسعار قريباً جداً» في مؤتمر صحفي. ثم غادر."), ["قال الوزير «سنرفع الإنتاج إلى 5 ملايين برميل. وسنخفض الأسعار قريباً جداً» في مؤتمر صحفي.", "ثم غادر."]);
+}
+{
+  // The review of 2026-10-30: a verbatim Arabic quote the copy desk has put in the house spelling is still found in its
+  // source («الأميركية» → «الأمريكية»), and translated speech is still sent back.
+  const aawsat = [{ sourceName: "الشرق الأوسط", title: "رسوم جديدة", text: "وقال المتحدث إن الإدارة الأميركية ستفرض رسوماً جديدة على واردات الصلب قريباً. وأضاف أن القرار نهائي." }];
+  const quoting = (q) => ({ title: "الإدارة الأمريكية تفرض رسوماً جديدة", subtitle: "", lede: `وقال المتحدث إن «${q}».`, body: "نص.", whyItMatters: "", keyFacts: [] });
+  const speech = (d) => programmaticChecks(d, aawsat, { minWords: 0 }).issues.some((i) => i.startsWith("كلام مترجم"));
+  check("a quote in the house spelling is found in its source; translated speech still goes back", [speech(quoting("الإدارة الأمريكية ستفرض رسوماً جديدة")), speech(quoting("سنواجه هذه الرسوم بكل الوسائل المتاحة لدينا"))], [false, true]);
+}
+{
+  // The review of 2026-10-30: half a quotation is never cut, and a body that points back reaches into the lede.
+  const judgeAll = (verdict) => async ({ sentences }) => ({ answers: sentences.map((c) => ({ id: c.id, verdict })) });
+  const quoted = { title: "عنوان", lede: "رفع البنك الفائدة.", body: "نص أول. قال الوزير «سنرفع الإنتاج إلى 5 ملايين برميل. وسنخفض الأسعار قريباً جداً» في مؤتمر صحفي.", keyFacts: [] };
+  const half = await precheck({ draft: quoted, sources, verify: async () => ({ counts: {}, checks: [{ id: 3, field: "body", verdict: "not_found", status: "not_found", sentence: "وسنخفض الأسعار قريباً جداً» في مؤتمر صحفي.", quote: "" }] }), judgeWith: judgeAll("unsourced"), unsourced: true });
+  check("half a quotation is never cut", half.draft.body, quoted.body);
+  const across = { title: "عنوان", lede: "رفع البنك الفائدة. والخطوة التالية خفض الدعم.", body: "وهذه الخطوة تثير قلق الأسر.", keyFacts: [] };
+  const crossing = await precheck({ draft: across, sources, verify: async () => ({ counts: {}, checks: [{ id: 2, field: "lede", verdict: "not_found", status: "not_found", sentence: "والخطوة التالية خفض الدعم.", quote: "" }] }), judgeWith: judgeAll("unsourced"), unsourced: true });
+  check("the lede's last sentence stays when the body points back at it", crossing.draft.lede, across.lede);
 }
 {
   // The house spelling table (lib/copydesk.mjs), 2026-10-28.
@@ -310,6 +333,32 @@ check("two companies' results are two events; one company's twice is one", [
 ], [null, null, true]);
 // 2026-10-29: Egypt's first rate rise since March 2024 was skipped as Pakistan's.
 check("two countries' central banks are two events; one country's twice is one", [repeatsRecent("المركزي المصري يرفع الفائدة 1% في أول زيادة منذ مارس 2024", ["المركزي الباكستاني يرفع الفائدة إلى 12% في أول زيادة منذ أبريل"]), Boolean(repeatsRecent("المركزي المصري يرفع الفائدة 1% لأول مرة منذ مارس 2024 لكبح التضخم", ["المركزي المصري يرفع الفائدة 1% في أول زيادة منذ مارس 2024"]))], [null, true]);
+// The review of 2026-10-30: countries are whole words, read in the main clause; a move before the subject is passed over.
+check(
+  "a country is a whole word: «مصرف» is no Egypt, «مشتركة» no Turkey, «للسعودية» Saudi, «المملكة المتحدة» Britain alone, «عمّان» Jordan",
+  [[...countriesNamed("مصرف البحرين المركزي يبقي الفائدة")], [...countriesNamed("تأسيس شركة مشتركة للتركيز على يمنح العراقيل")], [...countriesNamed("توقعات النمو للسعودية")], [...countriesNamed("المملكة المتحدة ترفع الضرائب")], [...countriesNamed("عمّان ترفع أسعار الوقود")]],
+  [["بحرين"], [], ["سعود"], ["بريطان"], ["اردن"]],
+);
+check(
+  "an Egyptian and a Bahraini decision are two events; a cause clause's country does not split one",
+  [repeatsRecent("المركزي المصري يبقي الفائدة دون تغيير", ["مصرف البحرين المركزي يبقي الفائدة دون تغيير"]), Boolean(repeatsRecent("أرامكو ترفع سعر البيع الرسمي لآسيا في ديسمبر مع تراجع صادرات العراق", ["أرامكو السعودية ترفع سعر البيع الرسمي لآسيا في ديسمبر"]))],
+  [null, true],
+);
+check(
+  "one company's results told two ways are one event; two banks' «ارتفاع أرباح» are two",
+  [Boolean(repeatsRecent("ارتفاع أرباح سابك 30% إلى 1.2 مليار ريال", ["أرباح سابك ترتفع 30% إلى 1.2 مليار ريال"])), repeatsRecent("ارتفاع أرباح الراجحي 20% في الربع الثالث", ["ارتفاع أرباح الأهلي 18% في الربع الثالث"])],
+  [true, null],
+);
+check(
+  "a central bank called «مصرف» is not given Egypt's markets",
+  [macroMarketOf("مصرف الإمارات المركزي يخفض الفائدة"), macroMarketOf("مصرف قطر المركزي يبقي الفائدة"), macroMarketOf("المركزي المصري يرفع الفائدة")],
+  [[], [], ["egx30", "usdegp"]],
+);
+check(
+  "an actor is placed by a whole word: «مشتركة» places no Turkish company, a Saudi city places a Saudi one",
+  [unplacedActors({ title: "«أسيلسان» تؤسس شركة مشتركة لصناعة الرادارات", lede: "أعلنت «أسيلسان» التركية تأسيس شركة." }).length, unplacedActors({ title: "«معادن» توسّع مصهر الألمنيوم في ينبع", lede: "قالت «معادن» السعودية إنها توسّع." }).length],
+  [1, 0],
+);
 
 // 2a. A Google News sitemap is read like a feed, and an Arabic address is filtered decoded (2026-10-22, Independent Arabia).
 {
@@ -554,6 +603,14 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const bare = "وحذّر البنك من أن يرتفع متوسط سعر برنت إلى 105 دولارات للبرميل في 2027، مع تعطل إمدادات إضافية بنحو 5 ملايين برميل يومياً.";
   const reworded = "وحذّر البنك من ارتفاع متوسط سعر برنت إلى 105 دولارات للبرميل في 2027 في حال تعطلت إمدادات إضافية بنحو 5 ملايين برميل يومياً.";
   check("a forecast's condition may be reworded, never dropped", [judgeRewrite(scenario, { body: bare }, ["body"]).rejected.some((r) => r.field === "body"), judgeRewrite(scenario, { body: reworded }, ["body"]).rejected.some((r) => r.field === "body")], [true, false]);
+  // The review of 2026-10-30: «ما إذا» is "whether", and its fix «هل» drops no condition; «في حالة» keeps one.
+  const whether = { ...scenario, body: "وقال البنك إن لجنته ستدرس ما إذا كان التضخم يتراجع بما يكفي قبل اجتماعها المقبل." };
+  const inCase = scenario.body.replace(/إذا|في حال(?!ة)/, "في حالة");
+  check(
+    "«ما إذا» rewritten «هل» drops no condition; «في حالة» keeps one",
+    [judgeRewrite(whether, { body: "وقال البنك إن لجنته ستدرس هل يتراجع التضخم بما يكفي قبل اجتماعها المقبل." }, ["body"]).rejected.some((r) => r.field === "body"), judgeRewrite(scenario, { body: inCase }, ["body"]).rejected.some((r) => r.field === "body")],
+    [false, false],
+  );
   // 2026-10-18: no explainer or analysis had been published since 1 October; the two of that day were thrown away by
   // rules that contradicted each other or a sound phrase.
   const hedgedExplainer = { title: "إعادة تمويل الدين العام قد تغيّر كلفته حتى مع ثبات أصله", subtitle: "تستبدل الحكومة ديناً يحل أجله بدين جديد", lede: "تلجأ الحكومات إلى إعادة تمويل ديونها حين يحل أجل السندات.", body: "تصدر الحكومة سندات جديدة تسدد بها القديمة." };
@@ -804,6 +861,22 @@ if (spawnSync("git", ["--version"]).status === 0) {
     [/BZ=F, the contract for January 2027 delivery\): 111\.87/.test(rolled?.text ?? ""), /December 2026 delivery, BZZ26\.NYM.*115\.55/.test(rolled?.text ?? "")],
     [true, true],
   );
+  // The review of 2026-10-30: the nearest-priced contract is the one the series repeats (a flat curve), and a contract that
+  // expired before the series' last quote is not offered as the one the wires quote.
+  const flatBook = { "BZ=F": [65.12, 64.5, t28], "BZZ26.NYM": [65.1, 64.48, t28], "BZF27.NYM": [65.12, 64.5, t28] };
+  const flat = await marketData({ story: { headlineHint: "برنت يرتفع", section: "energy" }, now: Date.parse("2026-10-28T18:30:00Z"), fetchQuote: async (symbol) => {
+    if (!flatBook[symbol]) throw new Error("no such contract");
+    return { price: flatBook[symbol][0], prev: flatBook[symbol][1], time: flatBook[symbol][2], history: days };
+  } });
+  check("on a flat curve the series is named by the contract it repeats", [/BZ=F, the contract for January 2027 delivery/.test(flat?.text ?? ""), /December 2026 delivery, BZZ26/.test(flat?.text ?? "")], [true, true]);
+  const expiredBook = { "BZ=F": [111.87, 109.41, "2026-10-30T21:00:00Z"], "BZZ26.NYM": [115.55, 113.88, "2026-10-30T19:30:00Z"], "BZF27.NYM": [111.87, 109.41, "2026-10-30T21:00:00Z"] };
+  const expired = await marketData({ story: { headlineHint: "برنت يرتفع", section: "energy" }, now: Date.parse("2026-10-31T09:00:00Z"), fetchQuote: async (symbol) => {
+    if (!expiredBook[symbol]) throw new Error("no such contract");
+    return { price: expiredBook[symbol][0], prev: expiredBook[symbol][1], time: expiredBook[symbol][2], history: days };
+  } });
+  check("a contract that stopped trading before the series is not given beside it", /BZZ26/.test(expired?.text ?? ""), false);
+  const noHistory = await marketData({ story: { headlineHint: "الذهب يرتفع", section: "markets" }, now, fetchQuote: async () => ({ price: 4186.3, prev: 4181.2, time: "2026-10-19T10:25:00Z", history: [{ d: "2026-10-19", c: 4186.3 }], historyRead: false }) });
+  check("a failed history call takes no move from gold", /from the previous close/.test(noHistory?.text ?? ""), true);
   const weekend = await marketData({ story: { headlineHint: "الذهب يرتفع", section: "markets" }, now, fetchQuote: async () => ({ price: 4186.3, prev: 4181.2, time: "2026-10-16T21:00:00Z" }) });
   check("a quote from a closed market says so", /has not traded since/.test(weekend.text), true);
   check("no priced instrument, no market source", await marketData({ story: { headlineHint: "«فيرتيجلوب» تدرس إنشاء مجمع أسمدة في مصر", section: "companies" }, fetchQuote: quote }), null);
@@ -838,6 +911,12 @@ if (spawnSync("git", ["--version"]).status === 0) {
   // wrong arithmetic, which the fact-check had passed as supported.
   check("an analysis's fixed labels are sent back; the same words in news prose are not", [has({ ...pegged, body: "## ما الذي تغيّر\n\nنص.\n\n## السيناريوهات\n\nنص." }, "analysis", "عناوين فرعية من قالب"), has({ ...pegged, body: "## من يدفع الفرق؟\n\nنص." }, "analysis", "عناوين فرعية من قالب")], [true, false]);
   check("«رفع الدعم» raised to a level is sent back; its removal is not", [has({ ...pegged, body: "يُرجَّح ألا يُموَّل رفع الدعم الاجتماعي إلى مثليه." }, "analysis", "«رفع الدعم"), has({ ...pegged, body: "قررت الحكومة رفع الدعم عن الوقود تدريجياً." }, "news", "«رفع الدعم")], [true, false]);
+  // The review of 2026-10-30: a removal followed by «إلى» of something else is not a raise to a level.
+  check(
+    "«رفع الدعم … إلى» is a calque only with a figure or a multiple, never across «عن»",
+    [has({ ...pegged, body: "رفع الدعم الاجتماعي المباشر من 500 إلى 600 درهم." }, "news", "«رفع الدعم"), has({ ...pegged, body: "ويقود رفع الدعم عن الكهرباء التضخم إلى مستويات أعلى." }, "news", "«رفع الدعم"), has({ ...pegged, body: "رفع الدعم عن البنزين أدى إلى احتجاجات." }, "news", "«رفع الدعم")],
+    [true, false, false],
+  );
   const sum = "The three indices moved 2.03%, 2.2% and -1.9%, an average of 0.6%.";
   const arithmetic = (cls) => verifyStory({ story: { title: "Markets end mixed", body: sum }, sources: [{ n: 1, name: "CNBC", title: "Markets", text: sum }], chatWith: checkerReply([{ id: 1, verdict: "not_found", source: null, quote: "" }, { id: 2, verdict: "contradicted", source: 0, quote: sum, class: cls }]) });
   check("a wrong average beside its own inputs is a proved error, even when the source prints it", (await arithmetic("internal")).checks[1].status, "confirmed");
@@ -916,6 +995,9 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const marked = readArticleHtml(scroll(true), "https://aawsat.com/node/1");
   check("an appended story is never read as the page's own; the block marked first is", [marked.text.includes("عضوتان"), marked.text.includes("صندوق النقد")], [true, false]);
   check("without the publisher's mark nothing is removed", readArticleHtml(scroll(false), "https://aawsat.com/node/1").text.includes("صندوق النقد"), true);
+  // The review of 2026-10-30: a short sidebar item classed «first-article» on another publisher's page removes nothing.
+  const sidebar = `<html lang="ar"><head><title>عنوان</title></head><body><section class="layout"><article><p>${"ارتفعت صادرات المملكة غير النفطية بنسبة كبيرة في الربع الثالث وفق البيانات الرسمية. ".repeat(12)}</p></article></section><section class="layout"><ul><li class="item first-article">خبر آخر قصير</li></ul></section></body></html>`;
+  check("a short sidebar item classed «first-article» takes nothing away", readArticleHtml(sidebar, "https://example.com/a").text.includes("صادرات المملكة"), true);
   // 2026-10-29: the Federal Register's notice to robots was read as a source.
   const wall = `<html><head><title>Notice</title></head><body><article><p>${"Due to aggressive automated scraping of FederalRegister.gov and eCFR.gov, programmatic access to these sites is limited to access to our extensive developer APIs. ".repeat(4)}</p></article></body></html>`;
   const blockedRead = readArticleHtml(wall, "https://www.federalregister.gov/documents/x");
