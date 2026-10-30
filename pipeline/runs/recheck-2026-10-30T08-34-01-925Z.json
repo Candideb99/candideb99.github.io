@@ -1,0 +1,84 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-30T08:34:01.925Z",
+  "durationSec": 164,
+  "read": 1,
+  "corrected": 1,
+  "report": [
+    {
+      "slug": "binance-freezes-3-billion-potential-hack-647d53",
+      "title": "بينانس تجمّد نحو 3 مليارات دولار لمنع سرقتها وسط تحقيق في اختراق محتمل",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 34,
+        "checked": 34,
+        "supported": 26,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 3,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "figure",
+          "sentence": "الرقم في إعلان بينانس السابق: نحو 2.54 مليار دولار",
+          "quote": "وكانت \"بينانس\" أعلنت في وقت سابق تجميد أصول بقيمة 3 مليارات دولار، مشيرة إلى أن هذا الرقم قد يستمر في الارتفاع، من دون تحديد القيمة النهائية للأموال المسروقة.",
+          "source": "Asharq Business",
+          "correction": "The source gives $3bn as the figure in Binance's earlier announcement; no source presents $2.54bn as an earlier figure that was later raised."
+        },
+        {
+          "class": "figure",
+          "sentence": "رفعت بينانس قيمة الأصول التي جمّدتها إلى نحو 3 مليارات دولار حتى الآن، بعدما أعلنت في وقت سابق رقماً يقارب 2.54 مليار دولار، وقالت إنه «قد يستمر في الارتفاع».",
+          "quote": "وكانت \"بينانس\" أعلنت في وقت سابق تجميد أصول بقيمة 3 مليارات دولار، مشيرة إلى أن هذا الرقم قد يستمر في الارتفاع، من دون تحديد القيمة النهائية للأموال المسروقة.",
+          "source": "Asharq Business",
+          "correction": "The source says Binance's earlier announcement was $3bn and that this $3bn figure may keep rising; it reports no increase from $2.54bn."
+        },
+        {
+          "class": "attribution",
+          "sentence": "وأوضح تشاو أنه لم يعد يدير المنصة، لكنه يتوقع بصفته مساهماً أن تُغطى أموال المستخدمين بالكامل.",
+          "quote": "وكان تشانغبينغ تشاو، الشريك المؤسس للمنصة والمعروف باسم \"سي زد\"، قد كشف في وقت سابق أن \"بينانس\" ربما تعرضت للاختراق، لكنه توقع تغطية أموال المستخدمين بالكامل. ولم يعد تشاو يدير الشركة، لكنه لا يزال أكبر مساهم فيها.",
+          "source": "Asharq Business",
+          "correction": "Zhao expected user funds to be fully covered, but the statement that he no longer runs the company and remains its largest shareholder is the outlet's own background, not something Zhao said."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 2,
+    "failures": 0,
+    "promptTokens": 19657,
+    "completionTokens": 17688,
+    "cacheReadTokens": 0,
+    "costUsd": 0.511,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 2
+    },
+    "correctionsEditorCalls": 1
+  },
+  "log": [
+    "[08:34:02] second look: 1 to read now (1 published pieces not yet read; 160 read clean before publication and left out of the audit sample)",
+    "[08:34:02] binance-freezes-3-billion-potential-hack-647d53:   source https://www.ft.com/content/c7f5e395-c3a9-430e-b757-5014527b4d49?syn-25a6b1a6=1: http-403",
+    "[08:35:13] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3494 attempt=1 ms=68987",
+    "[08:35:13] binance-freezes-3-billion-potential-hack-647d53: 34 of 34 sentences checked · 26 supported · 1 without a source · 3 confirmed error(s) · 1 listed for a person",
+    "[08:35:13]   ✗ [figure] الرقم في إعلان بينانس السابق: نحو 2.54 مليار دولار — The source gives $3bn as the figure in Binance's earlier announcement; no source presents $2.54bn as an earlier figure that was later raised.",
+    "[08:35:13]   ✗ [figure] رفعت بينانس قيمة الأصول التي جمّدتها إلى نحو 3 مليارات دولار حتى الآن، بعدما أعلنت في وقت سابق رقماً يقارب 2.5 — The source says Binance's earlier announcement was $3bn and that this $3bn figure may keep rising; it reports no increase from $2.54bn.",
+    "[08:35:13]   ✗ [attribution] وأوضح تشاو أنه لم يعد يدير المنصة، لكنه يتوقع بصفته مساهماً أن تُغطى أموال المستخدمين بالكامل. — Zhao expected user funds to be fully covered, but the statement that he no longer runs the company and remains its largest shareholder is the outlet's own backg",
+    "[08:35:13] corrections: 1 story to the corrections editor",
+    "[08:35:13] [correct] binance-freezes-3-billion-potential-hack-647d53: fetching 4 source(s)",
+    "[08:35:13] [correct]   source https://www.ft.com/content/c7f5e395-c3a9-430e-b757-5014527b4d49?syn-25: http-403",
+    "[08:35:39] [correct] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=632 attempt=1 ms=24913",
+    "[08:35:39] [correct] binance-freezes-3-billion-potential-hack-647d53: corrected; fields body, keyFacts",
+    "[08:35:39]     note: ذكرت نسخة سابقة من هذا الخبر أن بينانس رفعت قيمة الأصول المجمدة إلى نحو 3 مليارات دولار بعد إعلان سابق بنحو 2.54 مليار دولار، والصحيح أنها أعلنت تجميد نحو 3 مليارات دولار وقالت إن هذا الرقم قد يستمر في الارتفاع. ونسبت النسخة السابقة إلى تشاو قوله إنه لم يعد يدير المنصة، والصحيح أنه توقع تغطية أموال المستخدمين بالكامل، أما خروجه من إدارتها فمعلومة خلفية لم ترد على لسانه.",
+    "[08:35:39] [correct] done: 1 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-10-30T08-35-13-589Z.json",
+    "[08:35:40] binance-freezes-3-billion-potential-hack-647d53:   source https://www.ft.com/content/c7f5e395-c3a9-430e-b757-5014527b4d49?syn-25a6b1a6=1: http-403",
+    "[08:35:40] binance-freezes-3-billion-potential-hack-647d53:   source https://asharqbusiness.com/crypto/153561/%D8%A8%D9%8A%D9%86%D8%A7%D9%86%D8%B3-%D: thin; read from the copy saved at publication (fetched 2026-10-30T01:38:35.017Z)",
+    "[08:36:46] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3403 attempt=1 ms=65500",
+    "[08:36:46] binance-freezes-3-billion-potential-hack-647d53: the correction left 1 error(s) in what it wrote: listed for a person"
+  ]
+}

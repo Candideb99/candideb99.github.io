@@ -1,0 +1,478 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-30T08:37:02.589Z",
+  "durationSec": 2361,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "موجة بيع في أسهم التكنولوجيا عالمياً بعد نتائج أمازون وإنتل",
+      "section": "markets",
+      "importance": 8,
+      "sources": [
+        "https://www.ft.com/content/3ba953ae-84bb-4de4-959e-baec3e908fb3?syn-25a6b1a6=1",
+        "https://aawsat.com/node/5335479",
+        "https://www.cnbc.com/2026/10/30/amazon-intel-earnings-big-tech-ai-spending-concerns.html",
+        "https://economymiddleeast.com/news/stock-market-today-asian-shares-wall-street-futures-dip-as-ai-spending-fears-wipe-500-billion-off-alphabet/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "يقول العنوان «مع هبوط إنتل 25% وأمازون 7%» دون أن يحدد أن الهبوط وقع في تداولات ما قبل الافتتاح، والصدارة وحدها توضح ذلك. والعنوان الفرعي يعطي كوسبي 3.48% بينما لا يحدد التوقيت، وأسوشيتد برس تذكر نحو 4%.",
+              "repair": "«موجة بيع أسهم التكنولوجيا تتسع عالمياً مع هبوط إنتل 25% وأمازون 7% قبل افتتاح وول ستريت»، مع توحيد رقم كوسبي على مرجع واحد."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يشرح التقرير الدافع من المصدرين 3 و4: نتائج دون التوقعات، وإنفاق رأسمالي قدره 220 مليار دولار، وتدفق نقدي حر سالب. ويضع التقرير صعود مايكروسوفت، بتدفقها الموجب، في مقابل ذلك. أما «لماذا يهمّ» فتستخلص استدلالاً محدوداً مقبولاً: السوق تحاسب الشركات على ما يبقى من النقد بعد الإنفاق.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يتطور الخط من الشركات إلى آسيا ثم إلى الملاذات الآمنة تطوراً سليماً، لكن الفقرة الرابعة تعود إلى جملة الصدارة نفسها عن العقود الآجلة وفايننشال تايمز، وتبقى فقرة الفائدة ناقصة بلا عائد السنتين وتوقعات الفيدرالي.",
+              "repair": "تُحذف الجملة المكررة، وتُضم بيانات عائد السنتين والعقود الآجلة لسعر الأموال الفيدرالية (المصدر 4) إلى فقرة قرار الفيدرالي."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "تخلط الأرقام بين مرجعين وتوقيتين: نيكي 2.3% من أسوشيتد برس مقابل 2.12% في المصدر 4، وكوسبي 3.48% مقابل نحو 4%. ويُسند الرسم البياني إلى «رويترز» دون سند، وتُقدَّم مخاوف الطلب الاستهلاكي حقيقةً ثابتة.",
+              "repair": "يُوحَّد كل مؤشر على رقم واحد ومرجع واحد في المتن والرسم البياني، ويُصحَّح مصدر الرسم، وتُعاد صياغة جملة المستهلكين بصيغة المخاوف."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والعنوان الفرعي يحددان الحدث: هبوط إنتل وأمازون، وامتداد البيع إلى الرقائق الآسيوية مع كوسبي 3.48%. لكن «قبل الافتتاح» في العنوان لا تذكر السوق، فلا يعرف قارئ البطاقة أنها وول ستريت.",
+              "repair": "«…قبل افتتاح وول ستريت» في العنوان."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "الدافع واضح في المتن: نتائج أمازون دون التوقعات، والتدفق النقدي الحر السالب، والإنفاق الرأسمالي البالغ 220 مليار دولار، والتشكيك في عوائد الذكاء الاصطناعي (المصدران 3 و4). والمقارنة واضحة أيضاً: ألفابت الأسوأ منذ إدراجها، ومايكروسوفت تصعد بتدفق موجب. صندوق «لماذا يهمّ» يستنتج استنتاجاً محدوداً ومعقولاً، هو أن المستثمرين يحاسبون الشركات على النقد المتبقي بعد الإنفاق، لكن جملته الثانية تكرر المتن.",
+              "repair": "حذف الجملة الثانية من الصندوق أو استبدالها، وتصحيح «إنفاقها» إلى «توقعات إنفاقها»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الخط سليم: من الشركات، إلى العقود الآجلة، إلى خلفية الأسبوع، إلى آسيا، إلى الملاذات. لكن بتكوين تقع تحت عنوان الملاذات الآمنة ويُختم بها التقرير. وفقرة «عزز هذا التحول» تفصل عائد العشر سنوات عن عائد السنتين وتبدأ بإحالة إلى ما قبلها. والفقرة الثالثة تتحدث عن «شركات كبرى» قبل أن تقدّم ألفابت.",
+              "repair": "نقل بتكوين إلى فقرة البيع أو حذفها، وضم العائدين في فقرة واحدة ثم قرار الفيدرالي، وتقديم فقرة ألفابت ومايكروسوفت قبل فقرة التشكيك في العوائد."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: إنتل 25% وأمازون 7% قبل الافتتاح (المصدر 3)، والعقود الآجلة 2.01% و0.91%، وكوسبي 3.48%، ونيكي 2.12%، وCSI300 1.39%، وعائد العشر سنوات 4.91% وعائد السنتين 4.57% (المصدر 4)، وإغلاقات الخميس (المصدر 2). لكن نسبة التدفق السالب الناتج عن الإنفاق إلى «شركات كبرى» تعمّم ما يقوله المصدر 4 عن ألفابت وحدها، والصندوق يحوّل توقع أمازون إلى إنفاق قائم.",
+              "repair": "تسمية ألفابت في جملة التدفق السالب، وكتابة «توقعات إنفاق رأسمالي» في الصندوق."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 9,
+      "mendIssues": [
+        "ترجمة حرفية في افتتاح المتن: «سحب هبوط السهمين العقود الآجلة لمؤشر ناسداك 100 إلى تراجع بنسبة 2.01%، والعقود الآجلة لمؤشر ستاندرد آند بورز 500 إلى انخفاض بنسبة 0.91%» تنقل التركيب الإنجليزي «sent futures down» كلمة بكلمة، والجملة ثقيلة في العربية (المصدر 4). الصيغة المقترحة: «وتحت ضغط السهمين، هبطت العقود الآجلة لمؤشر ناسداك 100 بنسبة 2.01% والعقود الآجلة لمؤشر ستاندرد آند بورز 500 بنسبة 0.91%».",
+        "بقي جزء من الملاحظة 8 السابقة: العنوان يقول «قبل الافتتاح» ولا يذكر أي سوق. قارئ البطاقة لا يعرف أن المقصود افتتاح وول ستريت، والمعلومة تأتي في الصدارة وحدها (المصدر 3). الإصلاح: «بيع أسهم التكنولوجيا يتسع مع هبوط إنتل 25% وأمازون 7% قبل افتتاح وول ستريت».",
+        "خلل في البناء تحت عنوان «إقبال على الملاذات الآمنة»: تأتي جملة «ولامست بتكوين أدنى مستوى في ستة أسابيع… منخفضة 0.9%» في الفقرة نفسها مع الفرنك السويسري، وبتكوين ليست ملاذاً آمناً هنا، فالمصدر 4 يقدّمها سوقاً تحت الضغط. ويُختم التقرير بها كإحصاء معلّق. الإصلاح: تُنقل جملة بتكوين إلى فقرة البيع، بعد العقود الآجلة الأوروبية، بصيغة «وامتد الضغط إلى العملات المشفرة…»، أو تُحذف. ويُختم التقرير بفقرة السندات والفرنك.",
+        "تشتت فقرتي السندات: قرار الفيدرالي يقع بين عائد العشر سنوات وعائد السنتين، والفقرة الثانية تبدأ بإحالة إلى ما قبلها: «عزز هذا التحول». الإصلاح: يُضم عائد السنتين (4.57%) إلى عائد العشر سنوات في فقرة واحدة، ثم يأتي قرار الفيدرالي الأربعاء والعقود الآجلة لسعر الأموال الفيدرالية جملةً تبدأ بفاعلها: «وكان الاحتياطي الفيدرالي قد أبقى الأربعاء…» (المصدر 4).",
+        "دقة الإسناد السببي في الفقرة الثالثة: «بعدما جعل هذا الإنفاق التدفقات النقدية الحرة لشركات كبرى سالبة». المصدر 4 ينسب التدفق السالب الناتج عن إنفاق الذكاء الاصطناعي إلى ألفابت وحدها. المصدر 3 يذكر تدفق أمازون الحر السالب دون أن يحدد سببه. والقارئ لم يلتقِ ألفابت بعد في هذه الفقرة. الإصلاح: تُقدَّم فقرة ألفابت ومايكروسوفت قبلها، أو تُكتب: «بعدما دفع الإنفاق على الذكاء الاصطناعي التدفق النقدي الحر لألفابت إلى السالب، وسجلت أمازون تدفقاً حراً سالباً للربع الثاني على التوالي».",
+        "في «لماذا يهمّ» صدى للمتن: الجملة الثانية «وتنتقل الكلفة إلى أسهم الرقائق في كوريا الجنوبية والأسهم الصينية… التي تتراجع مع المخاوف من ضعف الطلب على الرقائق ومعدات مراكز البيانات» تكرر فقرة آسيا ولا تضيف معنى. وكلمة «الكلفة» غير دقيقة، فالمنتقل هو الخسائر لا كلفة الإنفاق. وفي الجملة الأولى «إبقاء أمازون إنفاقها الرأسمالي عند 220 مليار دولار» تحوّل التوقع إلى إنفاق قائم. الإصلاح: «إبقاء أمازون توقعاتها لإنفاق رأسمالي قدره 220 مليار دولار في 2026»، مع حذف الجملة الثانية أو استبدالها باستنتاج محدود من المعطيات، مثل أن الضغط ينتقل إلى موردي الرقائق الآسيويين عبر الطلب على الرقائق ومعدات مراكز البيانات.",
+        "العنوان والعنوان الفرعي يحددان الحدث: هبوط إنتل وأمازون، وامتداد البيع إلى الرقائق الآسيوية مع كوسبي 3.48%. لكن «قبل الافتتاح» في العنوان لا تذكر السوق، فلا يعرف قارئ البطاقة أنها وول ستريت. — «…قبل افتتاح وول ستريت» في العنوان.",
+        "الخط سليم: من الشركات، إلى العقود الآجلة، إلى خلفية الأسبوع، إلى آسيا، إلى الملاذات. لكن بتكوين تقع تحت عنوان الملاذات الآمنة ويُختم بها التقرير. وفقرة «عزز هذا التحول» تفصل عائد العشر سنوات عن عائد السنتين وتبدأ بإحالة إلى ما قبلها. والفقرة الثالثة تتحدث عن «شركات كبرى» قبل أن تقدّم ألفابت. — نقل بتكوين إلى فقرة البيع أو حذفها، وضم العائدين في فقرة واحدة ثم قرار الفيدرالي، وتقديم فقرة ألفابت ومايكروسوفت قبل فقرة التشكيك في العوائد.",
+        "الأرقام مطابقة للمصادر: إنتل 25% وأمازون 7% قبل الافتتاح (المصدر 3)، والعقود الآجلة 2.01% و0.91%، وكوسبي 3.48%، ونيكي 2.12%، وCSI300 1.39%، وعائد العشر سنوات 4.91% وعائد السنتين 4.57% (المصدر 4)، وإغلاقات الخميس (المصدر 2). لكن نسبة التدفق السالب الناتج عن الإنفاق إلى «شركات كبرى» تعمّم ما يقوله المصدر 4 عن ألفابت وحدها، والصندوق يحوّل توقع أمازون إلى إنفاق قائم. — تسمية ألفابت في جملة التدفق السالب، وكتابة «توقعات إنفاق رأسمالي» في الصندوق."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0,
+        "unsourcedCut": 1
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "أبقت أمازون على توقعاتها لإنفاق رأسمالي قدره 220 مليار دولار في 2026 وسجلت تدفقاً نقدياً حراً سالباً للربع الثاني على التوالي",
+          "source": 3
+        },
+        {
+          "fact": "ارتفع سهم مايكروسوفت بعد أن حافظت على تدفق نقدي موجب في الربع المنتهي في سبتمبر",
+          "source": 3
+        },
+        {
+          "fact": "أطلق تراجع أمازون وإنتل موجة بيع في أسهم أشباه الموصلات الآسيوية، وتعرضت الأسهم الصينية المرتبطة بالذكاء الاصطناعي لضغوط مع هبوط مؤشر CSI300 وسط مخاوف من ضعف الطلب على الرقائق ومعدات مراكز البيانات",
+          "source": 4
+        },
+        {
+          "fact": "ضغط تراجع سهمي إس كيه هاينكس وسامسونغ إلكترونيكس على مؤشر كوسبي",
+          "source": 2
+        }
+      ],
+      "slug": "global-tech-selloff-amazon-intel-results-c3f7eb",
+      "title": "بيع أسهم التكنولوجيا يتسع مع هبوط إنتل 25% وأمازون 7% قبل افتتاح وول ستريت",
+      "score": 8,
+      "image": "cover-art"
+    },
+    {
+      "headline": "بنك اليابان يثبت الفائدة عند 1.25% ويعلن بلوغ التضخم مستهدف 2%",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://aawsat.com/node/5335488",
+        "https://www.bloomberg.com/news/videos/2026-10-30/boj-holds-rate-as-underlying-inflation-hits-target-video",
+        "https://www.hurriyetdailynews.com/bank-of-japan-says-inflation-hit-2-percent-target-after-13-years-228790",
+        "https://www.euronews.com/2026/10/30/bank-of-japan-says-inflation-hit-2-target-after-13-years"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والسطر التالي يحددان البلد والمؤسسة: بلغ التضخم الأساسي المستهدف، وثُبّتت الفائدة عند 1.25% بتصويت 8 مقابل 1، ودخلت السياسة مرحلة أكثر تشدداً. لكن القارئ لا يعرف ما الذي يُنتظر بعد ذلك، فلا ذكر لديسمبر في أي موضع. ويغيب كذلك قرار تسريع بيع صناديق المؤشرات، وهو تغيير فعلي اتُّخذ في الاجتماع نفسه.",
+              "repair": "يُضاف توقع الرفع إلى 1.5% في ديسمبر من استطلاع «رويترز» (SOURCES 1, 3, 4)، وقرار مبيعات صناديق المؤشرات بقيمة 860 مليار ين سنوياً من يناير (SOURCE 1)."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السياق التاريخي جيد ومسنود: مستهدف 2013، والاستقلال عام 1998، وبدء التشديد في مارس 2024، والمقارنة بتقرير يوليو، وتحفظ الحكومة. والخبير معرَّف بمؤسسته وبالوسيلة التي نقلت تعليقه. في المقابل، تُعرّف الجملة «وهو تراجع متواصل في الأسعار يضر بالنمو» الانكماشَ، وهو مصطلح أساسي لقارئ «خازندار». ويغيب أن الفيدرالي والمركزي الأوروبي يترقبان رفعاً قريباً، كما يغيب أثر الغلاء على استهلاك الأسر. وفي «لماذا يهمّ» استنتاج معقول، لكنه يقدّم الإمكانية على أنها حتمية.",
+              "repair": "يُحذف تعريف الانكماش. وتُضاف من SOURCE 1 مقارنة النظيرين اللذين يترقبان زيادات، وضغط الأسعار على الاستهلاك. ويُعاد صوغ المربع بصيغة الإتاحة («يفتح الباب»)، مع المقايضة بين كلفة الاقتراض والإنفاق."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان، أي بلوغ المستهدف، يتطور مباشرة بعد المقدمة: تاريخ المستهدف، ثم تحفظ أويدا بأن الهدف النهائي لم يتحقق، ثم مقارنة تقرير يوليو. هذا بناء جيد. لكن موقف الحكومة («لم تبلغ ذلك بعد») يتناول الإعلان نفسه، ومع ذلك جاء في الفقرة قبل الأخيرة ضمن خلفية عامة. وفقرة الأسواق ملحقة بجملة تثبيت الفيدرالي والمركزي الأوروبي في فقرة واحدة لا يجمعها موضوع. والتقرير ينتهي بتوقع محلل منفرد بدل الخطوة التالية التي يتفق عليها المحللون.",
+              "repair": "يُنقل تحفظ حكومة تاكايتشي وقول كيوتشي إلى جوار فقرة أويدا الثانية، لأنهما قراءتان للإعلان ذاته. وتُفصل فقرة الأسواق عن جملة النظيرين. ويُختم بتوقع ديسمبر والمستوى النهائي من استطلاع «رويترز»، ثم تعليق ثيليانت."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: 1.25%، و8 مقابل 1، و1.5%، و2.1% مقابل 1.7%، و2.6% مقابل 2.4%، و157.21 ين، و-2.12%. الخلل في التسمية: «التضخم الأساسي» يُطلق على الاتجاه الأساسي وعلى مؤشر الأسعار باستثناء الأغذية الطازجة معاً، فيبدو التوقعان (البقاء قرب 2% والتسارع فوقها بوضوح) متناقضين. وعبارة «بعد 13 عاماً» مقبولة لأنها تقريب عنوان المصدر، وإن قال نصه «أكثر من 13 عاماً».",
+              "repair": "يُوحَّد اسم المقياس للأرقام 2.1% و2.6% وللتحذير من التسارع: «مؤشر أسعار المستهلكين الأساسي (باستثناء الأغذية الطازجة)». ويُحتفظ بـ«التضخم الأساسي» لتقييم البنك أنه بلغ المستهدف. ويمكن أن تصبح العبارة في المقدمة «بعد أكثر من 13 عاماً»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التالي يحددان البلد والمؤسسة («بنك اليابان»). ويقولان ما تغيّر: إقرار البنك ببلوغ التضخم الأساسي المستهدف. ويقولان ما بقي على حاله: الفائدة عند 1.25% بتصويت 8 مقابل 1. ويضيفان الخطوة المنتظرة: توقع الرفع إلى 1.5% في ديسمبر وفق استطلاع رويترز (SOURCES 1, 3, 4). وتحفظ أويدا بأن «الهدف النهائي» لم يتحقق يأتي في الفقرة الثالثة، ويليه موقف حكومة تاكايتشي، فلا يبقى الإقرار بلا قيده.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يقدم التقرير السياق المسنود في مواضعه: تعريف المقياس من المصدر («يستبعد العوامل المؤقتة ليرصد تحركات الأسعار التي يدفعها الطلب المحلي»)، ومستهدف 2013، واستقلال البنك عام 1998، والمقارنة بتقرير يوليو، ومسار الزيادات منذ مارس 2024. ويضيف ترقب الفيدرالي والمركزي الأوروبي زيادات قريبة، وضغط الغلاء على استهلاك الأسر، وقرار صناديق المؤشرات المتداولة (SOURCE 1). وحُذف تعريف الانكماش، والمحلل معرَّف بمؤسسته وبالوسيلة التي نقلت تعليقه. وفي «لماذا يهمّ» مقدمات من المصادر: التحول نحو منع تجاوز 2%، وإتاحة الرفع كل بضعة أشهر، وأثر الغلاء على الإنفاق، والين بوصفه أحد أسباب التسارع. ومنها استنتاج محدود هو المقايضة بين كلفة الاقتراض والاستهلاك، مع شرط تراجع الين.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "عنصر العنوان، بلوغ المستهدف، يتطور فور المقدمة بهذا الترتيب: معنى المقياس، ثم تاريخ المستهدف، ثم تحفظ أويدا ومقارنة تقرير يوليو، ثم تحفظ الحكومة. بعدها تأتي أرقام المؤشر وأسباب تسارعه، فقسم «مرحلة أكثر تشدداً» الذي يجمع المعارضة وسبب التثبيت ومسار الزيادات ومبيعات الصناديق. وفُصلت فقرة الأسواق عن جملة النظيرين، ويُختتم التقرير بتوقع ديسمبر من استطلاع رويترز ثم تعليق ثيليانت مقارنةً به.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "صار المقياسان متمايزين. «التضخم الأساسي» يخص تقييم البنك أنه بلغ المستهدف وسيبقى قريباً منه. و«مؤشر أسعار المستهلكين الأساسي، الذي يستبعد الأغذية الطازجة» يخص أرقام 2.1% و2.6% والتحذير من التسارع فوق 2% بوضوح، فزال التناقض الظاهر. والمقدمة تقول «بعد أكثر من 13 عاماً». والأرقام مطابقة للمصادر: 860 مقابل 330 مليار ين، و5.45 مليار دولار، و157.21 ين بتراجع 0.28%، و63290.11 نقطة بهبوط 2.12%، والنطاق 1.75–2%. وصيغة «تتيح» محفوظة في المتن، وصيغة «احتمال» في المربع.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 1,
+        "rounds": 2,
+        "found": 1
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قال البنك إن المرحلة المقبلة يتركز فيها الاهتمام على منع تجاوز التضخم الأساسي مستهدف 2%، وإن سياسته تدخل مرحلة أكثر تشدداً تتيح رفع الفائدة مرة كل بضعة أشهر",
+          "source": 1
+        },
+        {
+          "fact": "قد يضغط ارتفاع الأسعار على الاستهلاك بدفع الأسر اليابانية إلى البحث عن السلع المخفضة والحد من الإنفاق",
+          "source": 1
+        },
+        {
+          "fact": "عزا البنك التسارع المرجح للتضخم إلى ارتفاع تكاليف النفط وأسعار أشباه الموصلات وتراجع الين",
+          "source": 4
+        }
+      ],
+      "slug": "boj-holds-rate-inflation-hits-target-728e78",
+      "title": "بنك اليابان يقرّ ببلوغ التضخم الأساسي مستهدف 2% بعد 13 عاماً",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "أرباح بي بي تقفز إلى 8.46 مليار دولار في أعلى مستوى منذ 18 عاماً",
+      "section": "companies",
+      "importance": 7,
+      "sources": [
+        "https://www.theguardian.com/business/2026/oct/30/bp-profits-jump-as-middle-east-conflict-drives-up-oil-refining-margins",
+        "https://www.bloomberg.com/news/videos/2026-10-30/bp-s-refining-business-had-a-banner-quarter-ceo-says-video",
+        "https://www.ft.com/content/979e4cd0-1683-4a9f-a528-bb03c1b4ad45?syn-25a6b1a6=1",
+        "https://www.bloomberg.com/news/articles/2026-10-30/bp-profit-surges-as-refining-windfall-aids-o-neill-turnaround"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يحدد الشركة وبلدها («بي بي» البريطانية) والإنجاز (أعلى مستوى منذ 18 عاماً بحسب المصدرين 2 و4). المقدمة الصغيرة تحدد الفترة (الربع الثالث) والرقم والمقارنة بالتوقعات.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الدافع موجود، لكنه مشروح بآلية غير مسندة: «فاتسعت المسافة بين الخام والوقود التي تصنع منها هوامش التكرير». كما أن تسوية التزامات التسرب مقدمة على أنها سداد ديون. أما «لماذا يهمّ» فاستدلاله الأول صالح: هوامش تلين (المصدر 2) مقابل ميزانية أخف (المصادر 1 و3 و4). ذلك استدلال محدود ومشروط، لكن جملته الثالثة صدى للمتن.",
+              "repair": "استبدل الآلية بما يقوله المصدر 1 عن اضطرابات المصافي في الخليج وروسيا، وافصل التزامات التسرب عن خفض صافي الدين، واحذف الجملة الثالثة من الصندوق."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان (أعلى ربح منذ 18 عاماً) يتطوّر بعد المقدمة عبر الدافع، وهذا سليم. غير أن سبب الحرب يتكرر في المقدمة ثم في آخر الفقرة الثانية بجملة «وبحسب صحيفة «الغارديان»...». وجملة ثناء أونيل تفصل بين بيان الشركة وشرح السوق.",
+              "repair": "اجمع الدافع في فقرة واحدة تضم بيان الشركة واضطرابات المصافي وتصريح أونيل عن عمل المصافي بطاقة قريبة من قصواها. وانقل جملة أرباح الشركات الكبرى بسبب الحرب إلى فقرة «شل» و«توتال إنرجيز»، واحذف جملة الثناء."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«المقياس الرئيسي لدخلها» يغيّر «a key measure». و«نشاط تداول أعلى بكثير» يحوّل نتائج تداول «بي بي» إلى نشاط القطاع. و«توجّه سيولتها الإضافية إلى الديون» يدمج التزامات التسرب في الديون.",
+              "repair": "اكتب «مقياس رئيسي لدخلها»، و«نتائج تداول الغاز والتسويق لدى الشركة»، و«تسوية التزامات التسرب بالكامل، وخفض صافي الدين» كأمرين منفصلين."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يحدد العنوان والسطر التمهيدي الشركة وبلدها («بي بي» البريطانية) والفترة (الربع الثالث) والرقم (8.46 مليار دولار) والسبب (هوامش التكرير) والأثر (تراجع صافي الدين يقرّبها من إعادة الشراء، المصدر 4). وتحافظ عبارة «يقرّبها من استئناف» على أن إعادة الشراء لم تُستأنف بعد.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المقارنات كلها حاضرة: ما قبل عام، وتوقعات المحللين، وأعلى مستوى منذ 18 عاماً، و«شل» و«توتال إنرجيز» (المصادر 1 و2 و4). والدافع مشروح بما يقوله المصدر 1 عن اضطرابات المصافي وتصريح أونيل. أما صندوق «لماذا يهمّ» فمقدماته سليمة واستدلاله محدود، إذ يقابل هوامش مؤقتة بميزانية أخف. لكن خاتمته «على حساب عوائد يقدّمها منافسوها» تقلب صاحب الثمن، وجملة «بدأت تلين» تقدم تقدير أونيل واقعاً.",
+              "repair": "«...على حساب عوائد فورية لمساهميها، في وقت يعيد فيه منافسوها مزيداً من الأموال إلى مساهميهم»، و«هوامش تتوقع إدارة الشركة أن تلين في الربع الرابع»."
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "العنصر الجديد في العنوان هو «أعلى مستوى منذ 18 عاماً»، ويتطور مباشرة بعد المقدمة: بيان الشركة عن مصدر القفزة، ثم اضطرابات المصافي وتصريح أونيل، ثم تراجع الهوامش المتوقع في الربع الرابع، ثم المقارنة بالمنافسين. وتجمع فقرة «الالتزامات والديون قبل المساهمين» استخدامات السيولة ثم موعد 15 ديسمبر. أما ختم التقرير بانتقاد «أصدقاء الأرض» فهو رد فعل على الحدث نفسه وليس حدثاً ملحقاً.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والتواريخ مطابقة للمصادر: 8.46 و2.2 و7.33 و5.94 مليار دولار، و15 ديسمبر. والمقياس مسمى «مقياس رئيسي» كما في المصدر 1، وتوقعات المراقبين باقية بصيغة الترجيح («ربما استئناف... بدءاً من العام المقبل»). يبقى أن «توزيع الشركات للسيولة الإضافية» يضيّق معنى «allocate»، وأن ترتيب كلمات المقدمة يفصل اسم المقياس عن مضافه.",
+              "repair": "«الكيفية التي ستستخدم بها الشركات السيولة الإضافية»، و«الربح الأساسي على أساس تكلفة الإحلال لدى «بي بي»»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 6,
+      "mendIssues": [
+        "صياغة المقدمة مفككة: «قفز الربح الأساسي لشركة «بي بي» البريطانية للطاقة على أساس تكلفة الإحلال». فصلُ اسم الشركة بين «الربح الأساسي» و«على أساس تكلفة الإحلال» يفكك اسم المقياس، ثم تتكرر المادة نفسها في «قفز ... بفضل قفزة». الإصلاح: «قفز الربح الأساسي على أساس تكلفة الإحلال لدى «بي بي» البريطانية للطاقة، وهو مقياس رئيسي لدخلها، إلى 8.46 مليار دولار في الربع الثالث، مقابل 2.2 مليار دولار قبل عام، مدفوعاً بارتفاع هوامش التكرير».",
+        "مرجع ملتبس في «لماذا يهمّ»: «على حساب عوائد يقدّمها منافسوها لمساهميهم الآن بسخاء أكبر». ظاهر العبارة أن ميزانية «بي بي» الأخف جاءت على حساب عوائد منافسيها. والمقصود، وفق المصدر 3، أن الثمن تأجيل العوائد لمساهمي «بي بي» أنفسهم، بينما يعيد المنافسون مزيداً من الأموال إلى مساهميهم. الإصلاح: «...على حساب عوائد فورية لمساهميها، في وقت يعيد فيه منافسوها مزيداً من الأموال إلى مساهميهم».",
+        "في «لماذا يهمّ» يتحول تقدير الرئيسة التنفيذية إلى واقع ثابت: «وقد بدأت تلين مع التطلع إلى الربع الرابع». المصدر 2 ينقل هذا عن أونيل تقديراً لما تراه في الربع الرابع. كما أن «مصدر قفزة هذا الربع هوامش تكرير» يُسقط نتائج تداول الغاز والتسويق التي ذكرها بيان الشركة (المصدر 1). الإصلاح: «مصدر قفزة هذا الربع أساساً هوامش تكرير...، وهوامش تتوقع إدارة الشركة أن تلين في الربع الرابع».",
+        "دقة في اللفظ: «وأثارت هذه المكاسب تساؤلات عن طريقة توزيع الشركات للسيولة الإضافية». في السياق المالي توحي كلمة «توزيع» بتوزيعات الأرباح على المساهمين. أما المصدر 1 فيقول «allocate»، أي أوجه الاستخدام كلها، ومنها سداد الديون والالتزامات. الإصلاح: «تساؤلات عن الكيفية التي ستستخدم بها الشركات السيولة الإضافية».",
+        "المقارنات كلها حاضرة: ما قبل عام، وتوقعات المحللين، وأعلى مستوى منذ 18 عاماً، و«شل» و«توتال إنرجيز» (المصادر 1 و2 و4). والدافع مشروح بما يقوله المصدر 1 عن اضطرابات المصافي وتصريح أونيل. أما صندوق «لماذا يهمّ» فمقدماته سليمة واستدلاله محدود، إذ يقابل هوامش مؤقتة بميزانية أخف. لكن خاتمته «على حساب عوائد يقدّمها منافسوها» تقلب صاحب الثمن، وجملة «بدأت تلين» تقدم تقدير أونيل واقعاً. — «...على حساب عوائد فورية لمساهميها، في وقت يعيد فيه منافسوها مزيداً من الأموال إلى مساهميهم»، و«هوامش تتوقع إدارة الشركة أن تلين في الربع الرابع».",
+        "الأرقام والتواريخ مطابقة للمصادر: 8.46 و2.2 و7.33 و5.94 مليار دولار، و15 ديسمبر. والمقياس مسمى «مقياس رئيسي» كما في المصدر 1، وتوقعات المراقبين باقية بصيغة الترجيح («ربما استئناف... بدءاً من العام المقبل»). يبقى أن «توزيع الشركات للسيولة الإضافية» يضيّق معنى «allocate»، وأن ترتيب كلمات المقدمة يفصل اسم المقياس عن مضافه. — «الكيفية التي ستستخدم بها الشركات السيولة الإضافية»، و«الربح الأساسي على أساس تكلفة الإحلال لدى «بي بي»»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قالت بي بي إن القفزة تعكس أساساً ارتفاعاً كبيراً في هوامش التكرير المحققة وفي نتائج تداول الغاز والتسويق",
+          "source": 1
+        },
+        {
+          "fact": "قالت أونيل لتلفزيون بلومبرغ إن هوامش التكرير بدأت تتراجع قليلاً مع التطلع إلى الربع الرابع",
+          "source": 2
+        },
+        {
+          "fact": "قفزت أسعار الوقود عند المحطات إلى مستويات قياسية بسبب اضطرابات حادة أصابت المصافي في الخليج وروسيا",
+          "source": 1
+        },
+        {
+          "fact": "أفادت بلومبرغ بأن تراجعاً حاداً في صافي ديون بي بي قرّبها من استئناف إعادة شراء الأسهم",
+          "source": 4
+        }
+      ],
+      "slug": "bp-profit-18-year-high-refining-7b282d",
+      "title": "أرباح «بي بي» البريطانية تقفز إلى أعلى مستوى منذ 18 عاماً",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "تراجع أرباح سوق دبي المالي الفصلية مع انخفاض عمولات التداول",
+      "section": "companies",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
+  "llm": {
+    "calls": 73,
+    "failures": 0,
+    "promptTokens": 962839,
+    "completionTokens": 237548,
+    "cacheReadTokens": 224762,
+    "costUsd": 10.7002,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 73
+    }
+  },
+  "log": [
+    "[09:03:47] image: \"Interior of Supermarket in Japan 05.jpg\" names the story's topic without saying its point; the desk already holds one such, and looks further",
+    "[09:03:47] image: the story's people first: Kazuo Ueda 2026 | Kazuo Ueda | كازو أويدا",
+    "[09:03:48] commons \"Kazuo Ueda 2026\": 5 usable of 5",
+    "[09:03:49] commons \"Kazuo Ueda\": 16 usable of 20",
+    "[09:03:49] image: dropped \"Prime Minister Fumio Kishida and Governor Kazuo Ueda of the Bank of Ja\" — shows fumio, kishida, kishida, not the story's people",
+    "[09:03:49] image: dropped \"Kazuo Ueda.jpg\" — dated 1971, an archival picture",
+    "[09:03:49] commons \"كازو أويدا\": 16 usable of 20",
+    "[09:03:49] image: people shortlist: 2026 Sanae Takaichi and Kazuo Ueda in February 2026.jpg | 2026 20260225 月例経済報告等に関する関係閣僚会議 (2).jpg | 2026 令和8年第2回経済財政諮問会議 (5).jpg | 2026 令和8年第2回経済財政諮問会議 (3).jpg",
+    "[09:04:11] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=2026 attempt=1 ms=21710",
+    "[09:04:11] image: \"Sanae Takaichi and Kazuo Ueda in February 2026.jpg\" names the story's topic without saying its point; the desk already holds one such, and looks further",
+    "[09:04:19] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=307 attempt=1 ms=6384",
+    "[09:04:19] image: vision rejected all candidates (Every candidate pairs Governor Ueda with other identifiable politicians who are not in this story (Kishida, Ishiba, Hayashi, Suzuki and others). Photos 1 and 2 are council meetings where Ueda is hard to find. Photos 3 to 6 are courtesy calls on former prime ministers, not the BoJ's rate decision. Showing Ishiba or Kishida under a story that names PM Takaichi's government would mislead, so the fallback should find a BoJ or Japanese-economy image instead.)",
+    "[09:04:19] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"Vibrant street market scene in Ameyoko, Tokyo with colorful \"",
+    "[09:04:19] published \"بنك اليابان يقرّ ببلوغ التضخم الأساسي مستهدف 2% بعد 13 عاماً\" -> boj-holds-rate-inflation-hits-target-728e78",
+    "[09:04:56] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1629 attempt=1 ms=36223",
+    "[09:04:56] desk notes: 26 facts (? 3, news 4, background 3, numbers 4, driver 4, remark 2, next 3, reaction 3), 0 quotes (claude-cli/claude-opus-5-5)",
+    "[09:06:10] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=5616 attempt=1 ms=74738",
+    "[09:07:05] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3666 attempt=1 ms=54728",
+    "[09:07:05] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,lede,whyItMatters,body] rejected=[]",
+    "[09:07:05] desk \"أرباح «بي بي» البريطانية تقفز إلى أعلى مستوى منذ 18 عاماً\": rewrote subtitle, lede, whyItMatters, body",
+    "[09:08:09] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3980 attempt=1 ms=63807",
+    "[09:08:09] critic \"أرباح «بي بي» البريطانية تقفز إلى أعلى مستوى منذ 18 عاماً\": revise score=8 issues=9",
+    "[09:08:09]   · المقدمة طويلة (60 كلمة)؛ اجعلها جملتين إلى ثلاث بأقل من 45 كلمة: الفعل، الفاعل، الرقم، السبب.",
+    "[09:08:09]   · سببية لا يقدمها مصدر: «فاتسعت المسافة بين الخام والوقود التي تصنع منها هوامش التكرير». المصدر 1 يذكر أن أسعار الخام بقيت دون ذروة 2022 وأن أسعار الوقود عند المح",
+    "[09:08:09]   · خلط بين الديون والالتزامات: «اختارت «بي بي» أن توجّه سيولتها الإضافية إلى الديون؛ فقد أعلنت ... لتسوية الالتزامات المتبقية ... من تسرب «ديبووتر هورايزون»». مستح",
+    "[09:08:09]   · تعميم لنتيجة خاصة بالشركة: «رفعت الحرب ... أسعار النفط والغاز وأدت إلى نشاط تداول أعلى بكثير، فعززت أرباح شركات النفط الكبرى». في المصدر 1 «significantly higher",
+    "[09:09:01] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3810 attempt=1 ms=51803",
+    "[09:09:31] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1160 attempt=1 ms=30419",
+    "[09:09:31] desk model=claude-cli/claude-opus-5-5 applied=[lede,body] rejected=[]",
+    "[09:09:31] desk \"أرباح «بي بي» البريطانية تقفز إلى أعلى مستوى منذ 18 عاماً\": rewrote lede, body",
+    "[09:10:46] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=6064 attempt=1 ms=74442",
+    "[09:10:46] critic (second pass) \"أرباح «بي بي» البريطانية تقفز إلى أعلى مستوى منذ 18 عاماً\": revise score=8 issues=6",
+    "[09:11:15] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1199 attempt=1 ms=29458",
+    "[09:11:56] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2213 attempt=1 ms=40634",
+    "[09:11:56] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,lede,body] rejected=[whyItMatters:a hedge was dropped («مصدر قفزة هذا الربع أساساً هوامش تكرير غذّتها اضطرابات المصا»)]",
+    "[09:11:56] desk \"أرباح «بي بي» البريطانية تقفز إلى أعلى مستوى منذ 18 عاماً\": rewrote subtitle, lede, body; refused whyItMatters (a hedge was dropped («مصدر قفزة هذا الربع أساساً هوامش تكرير غذّتها اضطرابات المصا»))",
+    "[09:11:56] mended \"أرباح «بي بي» البريطانية تقفز إلى أعلى مستوى منذ 18 عاماً\": the second pass's 6 finding(s) sent back once more",
+    "[09:12:34] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1389 attempt=1 ms=37859",
+    "[09:12:34] precheck \"أرباح «بي بي» البريطانية تقفز إلى أعلى مستوى منذ 18 عاماً\": clean",
+    "[09:12:46] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=925 attempt=1 ms=12530",
+    "[09:12:46] image: Meg O'Neill is named in the story but not in its headline: never its photograph alone",
+    "[09:12:46] image: the picture should say: BP's refineries, running flat out on record fuel margins, delivered its biggest profit in 18 years.",
+    "[09:12:51] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=271 attempt=1 ms=4760",
+    "[09:12:51] image: the sources' photographs give no brief (1: not a news photo)",
+    "[09:12:51] image: tier 3, the writer's own subjects: oil refinery | diesel fuel pump | BP refinery",
+    "[09:12:52] commons \"oil refinery 2026\": 8 usable of 12",
+    "[09:12:52] commons \"oil refinery\": 7 usable of 12",
+    "[09:12:52] image: dropped \"Waterloo, NSW - NSW Shale & Oil Co.'s refinery in Botany Rd (Aust. Tow\" — dated 1875, an archival picture",
+    "[09:12:53] commons \"diesel fuel pump 2026\": 2 usable of 3",
+    "[09:12:53] commons \"diesel fuel pump\": 7 usable of 12",
+    "[09:12:53] image: dropped \"Petrol pump diesel sweden.JPG\" — dated 2003, an archival picture",
+    "[09:12:54] commons \"BP refinery 2026\": 1 usable of 9",
+    "[09:12:54] commons \"BP refinery\": 11 usable of 12",
+    "[09:12:54] image: dropped \"Fire at the Moscow Oil Refinery on June 18, 2026 (20260618 131954).jpg\" — taken in Russia, which the story does not name",
+    "[09:12:54] image: dropped \"Fire at the Moscow Oil Refinery on June 18, 2026 (20260618 132423).jpg\" — taken in Russia, which the story does not name",
+    "[09:12:54] image: dropped \"Pump at RaceTrac, Bradford County, Florida.jpg\" — taken in United States, which the story does not name",
+    "[09:12:54] image: dropped \"Bharat Petroleum Fuel Filling Station Chengannor (Joseph Joseph).jpg\" — taken in India, which the story does not name",
+    "[09:12:54] image: dropped \"BP Oil Refinery Jetty, Kwinana, January 2024 01.jpg\" — taken in Germany, which the story does not name",
+    "[09:12:54] image: dropped \"BP Oil Refinery Jetty, Kwinana, January 2024 02.jpg\" — taken in Germany, which the story does not name",
+    "[09:12:54] image: dropped \"CSB 080114 BP death Wideview.jpg\" — taken in United States, which the story does not name",
+    "[09:13:03] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=529 attempt=1 ms=8164",
+    "[09:13:03] image: vision rejected all candidates (Neither photo is usable. The Geelong refinery fits the sector, but it is an amateur shot through a train window with heavy sun glare and haze. It also shows Viva Energy's Australian plant, and a caption naming it beside a BP headline could mislead. The canal-wharf diesel pump is a small, picturesque detail with no link to BP or refining margins.)",
+    "[09:13:03] image: tier 4, the story's point and its subject: BP refinery workers | BP refinery Gelsenkirchen | oil refinery at night | BP oil refinery | oil refinery | BP Whiting Refinery",
+    "[09:13:03] pexels \"oil refinery at night\": 8 usable",
+    "[09:13:03] commons \"BP refinery workers\": 0 usable of 0",
+    "[09:13:03] pexels \"BP oil refinery\": 8 usable",
+    "[09:13:03] pexels \"oil refinery\": 8 usable",
+    "[09:13:03] pexels \"BP Whiting Refinery\": 8 usable",
+    "[09:13:04] pexels \"BP refinery workers\": 8 usable",
+    "[09:13:04] pexels \"BP refinery Gelsenkirchen\": 8 usable",
+    "[09:13:04] commons \"BP refinery\": 23 usable of 24",
+    "[09:13:13] openverse \"BP refinery workers\": 0 usable of 0",
+    "[09:13:48] openverse \"BP refinery Gelsenkirchen\": The operation was aborted due to timeout",
+    "[09:13:48] openverse \"oil refinery at night\": The operation was aborted due to timeout",
+    "[09:13:58] openverse \"BP oil refinery\": The operation was aborted due to timeout",
+    "[09:13:58] openverse: 3 failures in a row; left alone for 10 minutes",
+    "[09:14:33] openverse \"oil refinery\": The operation was aborted due to timeout",
+    "[09:14:33] openverse \"BP Whiting Refinery\": The operation was aborted due to timeout",
+    "[09:14:43] openverse \"BP refinery\": The operation was aborted due to timeout",
+    "[09:14:43] image: dropped \"Modern gas plant operations with engineers in Lampung, Indonesia.\" — names too little of refinery, workers",
+    "[09:14:43] image: dropped \"A striking view of an industrial facility in Zuid-Holland, illuminated\" — names too little of refinery, workers",
+    "[09:14:43] image: dropped \"A modern industrial plant in Zuid-Holland captured during twilight wit\" — names too little of refinery, workers",
+    "[09:14:44] commons \"BP refinery Gelsenkirchen\": 1 usable of 1",
+    "[09:14:44] image: dropped \"Large industrial storage tanks with green railings against a clear blu\" — names too little of refinery",
+    "[09:14:44] image: dropped \"Close-up view of metal industrial silos with a connecting staircase ag\" — names too little of refinery",
+    "[09:14:44] image: dropped \"A large industrial factory with chimneys by a river, surrounded by tre\" — names too little of refinery",
+    "[09:14:44] image: dropped \"Close-up of an industrial metal structure with pipes and steel framewo\" — names too little of refinery",
+    "[09:14:44] image: dropped \"View of heavy industry and lush forest in Duisburg, Germany.\" — names too little of refinery",
+    "[09:14:44] commons \"oil refinery at night\": 17 usable of 24",
+    "[09:14:45] commons \"BP oil refinery\": 24 usable of 24",
+    "[09:14:46] commons \"oil refinery\": 12 usable of 24",
+    "[09:14:46] image: dropped \"Waterloo, NSW - NSW Shale & Oil Co.'s refinery in Botany Rd (Aust. Tow\" — dated 1875, an archival picture",
+    "[09:14:46] commons \"BP Whiting Refinery\": 11 usable of 14",
+    "[09:14:46] image: dropped \"Arrival and mooring of the Oil & Chemical Tanker Golden Aspirant at th\" — taken in Australia, which the story does not name",
+    "[09:14:46] image: dropped \"BP Oil Refinery Jetty, Kwinana, January 2024 01.jpg\" — taken in Germany, which the story does not name",
+    "[09:14:46] image: dropped \"BP Oil Refinery Jetty, Kwinana, January 2024 02.jpg\" — taken in Germany, which the story does not name",
+    "[09:14:46] image: dropped \"Moscow Oil Refinery 01.jpg\" — taken in Russia, which the story does not name",
+    "[09:14:46] image: dropped \"Altona Oil Refinery Victoria.jpg\" — taken in Australia, which the story does not name",
+    "[09:14:46] image: dropped \"Altona oil refinery 2.jpg\" — taken in Australia, which the story does not name",
+    "[09:14:46] image: dropped \"Snowfall at night over Brofjorden and Preemraff oil refinery.jpg\" — taken in Sweden, which the story does not name",
+    "[09:14:46] image: dropped \"BP Oil Refinery Jetty, Kwinana, August 2019.jpg\" — taken in Australia, which the story does not name",
+    "[09:14:46] image: dropped \"Protected (220141649).jpeg\" — taken in Germany, which the story does not name",
+    "[09:14:46] image: dropped \"Coast Guard responds to BP oil discharge in Indiana 140330-G-PL299-296\" — taken in United States, which the story does not name",
+    "[09:14:46] image: dropped \"Coast Guard responds to BP oil discharge in Indiana 140330-G-PL299-264\" — taken in United States, which the story does not name",
+    "[09:14:46] image: dropped \"Stunning aerial view of a brightly lit refinery in El Dorado, Kansas s\" — taken in United States, which the story does not name",
+    "[09:15:00] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=948 attempt=1 ms=13024",
+    "[09:15:00] image: \"A large industrial refinery with pipes and towers under a cl\" names the story's topic without saying its point (Photo 2 shows a working refinery, with steam rising from its units, and reads plainly as the refining sector behind BP's margin-driven profit. Its flaws are the); checked now and kept in reserve while the desk looks further",
+    "[09:15:06] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=324 attempt=1 ms=5868",
+    "[09:15:06] image: second check (claude-cli/claude-opus-5-5) AMATEUR — refused \"A large industrial refinery with pipes and towers under a cl\": The refinery fits the story, but this is a passer-by's roadside snapshot with a street lamp cutting through the middle, ",
+    "[09:15:16] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=832 attempt=1 ms=10620",
+    "[09:15:16] image: vision rejected all candidates (fallback pass) (The only candidate is BP's own Gelsenkirchen refinery in Europe, but it shows a single column under construction, shot from below and crowded with scaffolding. It reads as a construction site, not a refinery running flat out on record margins. It also looks like a casual phone snapshot rather than an agency-standard picture of a working refinery.)",
+    "[09:15:19] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=93 attempt=1 ms=2601",
+    "[09:15:19] image: last resort: oil refinery towers United Kingdom | oil refinery towers | oil refinery towers industrial",
+    "[09:15:20] commons \"oil refinery towers United Kingdom\": 0 usable of 11",
+    "[09:15:20] commons \"oil refinery\": 12 usable of 24",
+    "[09:15:20] image: dropped \"Waterloo, NSW - NSW Shale & Oil Co.'s refinery in Botany Rd (Aust. Tow\" — dated 1875, an archival picture",
+    "[09:15:20] commons \"oil refinery towers\": 16 usable of 24",
+    "[09:15:21] commons \"oil refinery towers industrial\": 1 usable of 4",
+    "[09:15:21] image: dropped \"Oil refinery, Port Dickson.jpg\" — taken in Malaysia, which the story does not name",
+    "[09:15:21] image: dropped \"Altona Oil Refinery Victoria.jpg\" — taken in Australia, which the story does not name",
+    "[09:15:21] image: dropped \"Altona oil refinery 2.jpg\" — taken in Australia, which the story does not name",
+    "[09:15:21] image: dropped \"Fog over Preemraff oil refinery by Brofjorden 1.jpg\" — taken in Sweden, which the story does not name",
+    "[09:15:21] image: dropped \"Fog over Preemraff oil refinery by Brofjorden 2.jpg\" — taken in Sweden, which the story does not name",
+    "[09:15:21] image: dropped \"PikiWiki Israel 5904 haifa oil refinery.jpg\" — taken in Israel, which the story does not name",
+    "[09:15:21] image: dropped \"Haifa Refinery by David Shankbone.jpg\" — taken in Israel, which the story does not name",
+    "[09:15:29] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=552 attempt=1 ms=8200",
+    "[09:15:55] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=2286 attempt=1 ms=25331",
+    "[09:15:55] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Coryton Oil Refinery - geograph.org.uk - 2191154.jpg\": The frame is Coryton, a refinery the story never mentions, owned by Petroplus when photographed in 2010 and closed in 20",
+    "[09:15:58] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=48 attempt=1 ms=3460",
+    "[09:15:58] image: vision rejected all candidates (fallback pass) (The only candidate is a labelled textbook diagram of a petroleum distillation tower. It is a drawing with text, not a real photograph of a working refinery, so it fails the rules on diagrams, infographics, text overlays and real images.)",
+    "[09:15:58] image: last pass, a neutral illustration: refinery workers | oil refinery night | oil refinery",
+    "[09:15:59] pexels \"oil refinery night\": 8 usable",
+    "[09:15:59] pexels \"refinery workers\": 8 usable",
+    "[09:15:59] pexels \"oil refinery\": 8 usable",
+    "[09:16:00] commons \"refinery workers\": 20 usable of 24",
+    "[09:16:00] image: dropped \"Modern gas plant operations with engineers in Lampung, Indonesia.\" — names too little of refinery, workers",
+    "[09:16:00] image: dropped \"Large industrial storage tanks with green railings against a clear blu\" — names too little of refinery, workers",
+    "[09:16:00] image: dropped \"A striking view of an industrial facility in Zuid-Holland, illuminated\" — names too little of refinery, workers",
+    "[09:16:00] image: dropped \"A coastal industrial petrochemical plant with storage tanks and factor\" — names too little of refinery, workers",
+    "[09:16:00] commons \"oil refinery night\": 17 usable of 24",
+    "[09:16:00] image: dropped \"Aerial view of an illuminated factory with chimneys at sunset, showcas\" — names too little of oil, refinery, night",
+    "[09:16:00] commons \"oil refinery\": 12 usable of 24",
+    "[09:16:00] image: dropped \"Waterloo, NSW - NSW Shale & Oil Co.'s refinery in Botany Rd (Aust. Tow\" — dated 1875, an archival picture",
+    "[09:16:10] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=458 attempt=1 ms=8603",
+    "[09:16:14] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=317 attempt=1 ms=4497",
+    "[09:16:19] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=284 attempt=1 ms=4755",
+    "[09:16:19] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Dramatic aerial shot of an illuminated oil refinery at night\": A sharp, professional night view of an illuminated refinery with no readable logos or place in the caption neutrally pic",
+    "[09:16:23] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=247 attempt=1 ms=3563",
+    "[09:16:23] published \"أرباح «بي بي» البريطانية تقفز إلى أعلى مستوى منذ 18 عاماً\" -> bp-profit-18-year-high-refining-7b282d",
+    "[09:16:23] run budget of 35 minutes spent; \"تراجع أرباح سوق دبي المالي الفصلية مع انخفاض عمولات التداول\" waits for the next run"
+  ]
+}

@@ -13496,6 +13496,117 @@
         }
       ],
       "outcome": "listed"
+    },
+    "binance-freezes-3-billion-potential-hack-647d53": {
+      "at": "2026-10-30T08:34:02.587Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v42",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-30T01:50:07.666Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 34,
+        "checked": 34,
+        "supported": 26,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 3,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 6,
+          "field": "keyFacts",
+          "sentence": "الرقم في إعلان بينانس السابق: نحو 2.54 مليار دولار",
+          "claim": "Binance's earlier announcement put the frozen figure at about $2.54bn.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "Asharq Business",
+          "sourceDate": "2026-10-29",
+          "quote": "وكانت \"بينانس\" أعلنت في وقت سابق تجميد أصول بقيمة 3 مليارات دولار، مشيرة إلى أن هذا الرقم قد يستمر في الارتفاع، من دون تحديد القيمة النهائية للأموال المسروقة.",
+          "correction": "The source gives $3bn as the figure in Binance's earlier announcement; no source presents $2.54bn as an earlier figure that was later raised.",
+          "class": "figure"
+        },
+        {
+          "id": 13,
+          "field": "body",
+          "sentence": "رفعت بينانس قيمة الأصول التي جمّدتها إلى نحو 3 مليارات دولار حتى الآن، بعدما أعلنت في وقت سابق رقماً يقارب 2.54 مليار دولار، وقالت إنه «قد يستمر في الارتفاع».",
+          "claim": "Binance raised its frozen-assets figure to about $3bn from an earlier figure of about $2.54bn, and said the earlier figure 'may keep rising'.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "Asharq Business",
+          "sourceDate": "2026-10-29",
+          "quote": "وكانت \"بينانس\" أعلنت في وقت سابق تجميد أصول بقيمة 3 مليارات دولار، مشيرة إلى أن هذا الرقم قد يستمر في الارتفاع، من دون تحديد القيمة النهائية للأموال المسروقة.",
+          "correction": "The source says Binance's earlier announcement was $3bn and that this $3bn figure may keep rising; it reports no increase from $2.54bn.",
+          "class": "figure"
+        },
+        {
+          "id": 24,
+          "field": "body",
+          "sentence": "وأوضح تشاو أنه لم يعد يدير المنصة، لكنه يتوقع بصفته مساهماً أن تُغطى أموال المستخدمين بالكامل.",
+          "claim": "Zhao himself explained that he no longer runs the platform but, as a shareholder, expects user funds to be fully covered.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "Asharq Business",
+          "sourceDate": "2026-10-29",
+          "quote": "وكان تشانغبينغ تشاو، الشريك المؤسس للمنصة والمعروف باسم \"سي زد\"، قد كشف في وقت سابق أن \"بينانس\" ربما تعرضت للاختراق، لكنه توقع تغطية أموال المستخدمين بالكامل. ولم يعد تشاو يدير الشركة، لكنه لا يزال أكبر مساهم فيها.",
+          "correction": "Zhao expected user funds to be fully covered, but the statement that he no longer runs the company and remains its largest shareholder is the outlet's own background, not something Zhao said.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "ما زال حجم الهجوم غير واضح، ولم تكشف بينانس حجم الأموال التي ربما سُرقت.",
+          "quote": "Cryptocurrency exchange Binance has said that about $6.3bn in funds have been stolen in a “security incident” that looks to be the biggest crypto heist in history.",
+          "source": "Al Jazeera English"
+        }
+      ],
+      "notFound": [
+        "وحذّرتهم في بيان من عمليات الاحتيال ومن الوثوق بأي روابط أو رسائل أو طلبات غير رسمية لبيانات حساباتهم."
+      ],
+      "weak": [
+        {
+          "sentence": "وجمّدت أصولاً بنحو 3 مليارات دولار لمنع سرقتها، كما جمّدت تيثر وسيركل، المصدرتان لأكبر العملات المستقرة، نحو 2.4 مليار دولار.",
+          "quote": "Two other major crypto platforms, Tether and Circle, said they have frozen a total of about $2.4bn of assets in response to the potential Binance hack."
+        },
+        {
+          "sentence": "صندوق الطوارئ الذي يُفترض أن يسند تعهد بينانس بتغطية الخسائر محفوظ بالكامل ببتكوين، فقيمته تنكمش مع هبوط العملة نفسها نحو 5% عقب الحادث.",
+          "quote": "ويُحتفظ باحتياطيات الصندوق بالكامل بعملة \"بتكوين\"، بحسب موقع \"بينانس\"، بهدف توفير حماية لأصول المستخدمين في حالات الاختراق الأمني."
+        },
+        {
+          "sentence": "تراجعت بتكوين نحو 5% عقب الحادث وهبطت دون 77 ألف دولار، مسجلة أدنى مستوياتها منذ سبتمبر، بحسب بلومبرغ.",
+          "quote": "وهبطت عملة \"بتكوين\" إلى أقل من 77 ألف دولار، مسجلة أدنى مستوياتها منذ سبتمبر، بحسب \"بلومبرغ\"، لتعوض بعض خسائرها."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن بينانس رفعت قيمة الأصول المجمدة إلى نحو 3 مليارات دولار بعد إعلان سابق بنحو 2.54 مليار دولار، والصحيح أنها أعلنت تجميد نحو 3 مليارات دولار وقالت إن هذا الرقم قد يستمر في الارتفاع. ونسبت النسخة السابقة إلى تشاو قوله إنه لم يعد يدير المنصة، والصحيح أنه توقع تغطية أموال المستخدمين بالكامل، أما خروجه من إدارتها فمعلومة خلفية لم ترد على لسانه.",
+      "verified": {
+        "at": "2026-10-30T08:36:46.414Z",
+        "resolved": false,
+        "remaining": [
+          {
+            "class": "figure",
+            "field": "body",
+            "sentence": "أعلنت بينانس أنها جمّدت أصولاً بنحو 3 مليارات دولار حتى الآن، وقالت إن هذا الرقم «قد يستمر في الارتفاع».",
+            "quote": "وقبل أن ترفع الرقم إلى نحو 3 مليارات دولار، قالت الشركة إن قيمة الأصول المجمدة بلغت نحو 2.54 مليار دولار، مشيرة إلى أن هذا الرقم \"قد يستمر في الارتفاع\"، من دون تحديد حجم الأموال التي ربما سُرقت نتيجة الحادث الأمني.",
+            "correction": "Binance's remark that the figure 'may continue to rise' was made about the earlier $2.54bn figure, before the total was raised to about $3bn."
+          }
+        ],
+        "newFound": []
+      }
     }
   }
 }

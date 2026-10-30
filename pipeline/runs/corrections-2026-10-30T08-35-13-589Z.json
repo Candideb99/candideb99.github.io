@@ -1,0 +1,29 @@
+{
+  "startedAt": "2026-10-30T08:35:13.783Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "binance-freezes-3-billion-potential-hack-647d53",
+      "issue": "1. The key fact says «الرقم في إعلان بينانس السابق: نحو 2.54 مليار دولار» (Binance's earlier announcement put the frozen figure at about $2.54bn.). Source Asharq Business says: \"وكانت \"بينانس\" أعلنت في وقت سابق تجميد أصول بقيمة 3 مليارات دولار، مشيرة إلى أن هذا الرقم قد يستمر في الارتفاع، من دون تحديد القيمة النهائية للأموال المسروقة.\". The source gives $3bn as the figure in Binance's earlier announcement; no source presents $2.54bn as an earlier figure that was later raised.\n2. The body says «رفعت بينانس قيمة الأصول التي جمّدتها إلى نحو 3 مليارات دولار حتى الآن، بعدما أعلنت في وقت سابق رقماً يقارب 2.54 مليار دولار، وقالت إنه «قد يستمر في الارتفاع».» (Binance raised its frozen-assets figure to about $3bn from an earlier figure of about $2.54bn, and said the earlier figure 'may keep rising'.). Source Asharq Business says: \"وكانت \"بينانس\" أعلنت في وقت سابق تجميد أصول بقيمة 3 مليارات دولار، مشيرة إلى أن هذا الرقم قد يستمر في الارتفاع، من دون تحديد القيمة النهائية للأموال المسروقة.\". The source says Binance's earlier announcement was $3bn and that this $3bn figure may keep rising; it reports no increase from $2.54bn.\n3. The body says «وأوضح تشاو أنه لم يعد يدير المنصة، لكنه يتوقع بصفته مساهماً أن تُغطى أموال المستخدمين بالكامل.» (Zhao himself explained that he no longer runs the platform but, as a shareholder, expects user funds to be fully covered.). Source Asharq Business says: \"وكان تشانغبينغ تشاو، الشريك المؤسس للمنصة والمعروف باسم \"سي زد\"، قد كشف في وقت سابق أن \"بينانس\" ربما تعرضت للاختراق، لكنه توقع تغطية أموال المستخدمين بالكامل. ولم يعد تشاو يدير الشركة، لكنه لا يزال أكبر مساهم فيها.\". Zhao expected user funds to be fully covered, but the statement that he no longer runs the company and remains its largest shareholder is the outlet's own background, not something Zhao said.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body",
+        "keyFacts"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن بينانس رفعت قيمة الأصول المجمدة إلى نحو 3 مليارات دولار بعد إعلان سابق بنحو 2.54 مليار دولار، والصحيح أنها أعلنت تجميد نحو 3 مليارات دولار وقالت إن هذا الرقم قد يستمر في الارتفاع. ونسبت النسخة السابقة إلى تشاو قوله إنه لم يعد يدير المنصة، والصحيح أنه توقع تغطية أموال المستخدمين بالكامل، أما خروجه من إدارتها فمعلومة خلفية لم ترد على لسانه.",
+      "model": "claude-cli/claude-opus-5-5",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "رفعت بينانس قيمة الأصول التي جمّدتها إلى نحو 3 مليارات دولار حتى الآن، بعدما أعلنت في وقت سابق رقماً يقارب 2.54 مليار دولار، وقالت إنه «قد يستمر في الارتفاع».",
+        "وأوضح تشاو أنه لم يعد يدير المنصة، لكنه يتوقع بصفته مساهماً أن تُغطى أموال المستخدمين بالكامل.",
+        "الرقم في إعلان بينانس السابق نحو 2.54 مليار دولار"
+      ],
+      "newSentences": [
+        "أعلنت بينانس أنها جمّدت أصولاً بنحو 3 مليارات دولار حتى الآن، وقالت إن هذا الرقم «قد يستمر في الارتفاع».",
+        "وتوقع تشاو أن تُغطى أموال المستخدمين بالكامل."
+      ]
+    }
+  ]
+}

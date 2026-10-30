@@ -220,10 +220,13 @@
     "saudi-utility-tariffs-monthly-support-2027-748f63:862951ed",
     "qatar-saudi-stock-markets-liquidity-test-6421f7:4bf6e2c6",
     "alphabet-shares-fall-after-earnings-miss-7ca1aa:02d23766",
-    "samsung-raises-capex-despite-investor-disappointment-55895a:c5a20c49"
+    "samsung-raises-capex-despite-investor-disappointment-55895a:c5a20c49",
+    "binance-freezes-3-billion-potential-hack-647d53:2997c61e",
+    "binance-freezes-3-billion-potential-hack-647d53:3630c5b4",
+    "binance-freezes-3-billion-potential-hack-647d53:86705fb7"
   ],
-  "version": 42,
-  "updatedAt": "2026-10-29T10:06:30.224Z",
+  "version": 43,
+  "updatedAt": "2026-10-30T08:36:46.654Z",
   "lessons": [
     {
       "id": "L1",
@@ -341,11 +344,12 @@
         "taqa-prices-dual-tranche-bonds-oversubscribed-a32e1a:4593dc74",
         "aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210:f2007844",
         "french-bond-yields-jump-after-protests-1b64ee:1cdf42b9",
-        "samsung-raises-capex-despite-investor-disappointment-55895a:c5a20c49"
+        "samsung-raises-capex-despite-investor-disappointment-55895a:c5a20c49",
+        "binance-freezes-3-billion-potential-hack-647d53:86705fb7"
       ],
-      "seen": 50,
+      "seen": 51,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-10-29T10:06:30.224Z",
+      "lastSeen": "2026-10-30T08:36:46.654Z",
       "status": "active",
       "previous": [
         "Credit each fact to whom the source credits and name the originating outlet. An outlet's inference ('implying', 'suggesting') is not the official's own statement. An interview is not a statement. Add no conclusion the speaker did not draw.",
@@ -583,7 +587,7 @@
     {
       "id": "L8",
       "class": "figure",
-      "rule": "Copy every number with its own qualifier, hedge and condition, in data lines too. 'Around $207' is not 'over $207', 'could take six to eight weeks' is not a set duration, and '120 million barrels if closed a month' is not '120 million a month'.",
+      "rule": "Copy every number with its own qualifier, hedge and condition, in data lines too: 'around $207' is not 'over $207'. Keep each figure with the announcement that gave it, and never build a 'raised from X to Y' sequence the source doesn't report.",
       "example": {
         "wrong": "كما أن إلغاء أكثر من 500 رحلة وتأخير 4000 أخرى يرفع تكاليف التشغيل على الشركات الجوية ويؤثر على ثقة المسافرين في موثوقية البنية التحتية للنقل الجوي، وهو ما قد يترتب عليه إعادة تقييم لاستثمارات الصيانة والاحتياطي في أنظمة المراقبة الجوية.",
         "quote": "Throughout the US, there were nearly 4,000 delayed flights and 500 cancelled.",
@@ -611,16 +615,19 @@
         "egypt-ewallets-h1-2026-transactions-growth-9789a5:4d005a34",
         "brent-above-100-dollars-gulf-escalation-8281ef:e4379e59",
         "bahri-contract-three-crude-tankers-saudi-9dd9dc:cd0bd264",
-        "alphabet-shares-fall-after-earnings-miss-7ca1aa:02d23766"
+        "alphabet-shares-fall-after-earnings-miss-7ca1aa:02d23766",
+        "binance-freezes-3-billion-potential-hack-647d53:2997c61e",
+        "binance-freezes-3-billion-potential-hack-647d53:3630c5b4"
       ],
-      "seen": 21,
+      "seen": 23,
       "createdAt": "2026-09-25T12:04:58.585Z",
-      "lastSeen": "2026-10-29T08:26:05.250Z",
+      "lastSeen": "2026-10-30T08:36:46.654Z",
       "status": "active",
       "previous": [
-        "Copy every number and ranking with its own qualifier. 500 is not 'more than 500', 'nearly 4,000' is not 4,000, and 'one of the most important' is not 'the most important'. Never move a qualifier from one figure onto its neighbour."
+        "Copy every number and ranking with its own qualifier. 500 is not 'more than 500', 'nearly 4,000' is not 4,000, and 'one of the most important' is not 'the most important'. Never move a qualifier from one figure onto its neighbour.",
+        "Copy every number with its own qualifier, hedge and condition, in data lines too. 'Around $207' is not 'over $207', 'could take six to eight weeks' is not a set duration, and '120 million barrels if closed a month' is not '120 million a month'."
       ],
-      "sharpenedAt": "2026-09-25T23:25:28.192Z"
+      "sharpenedAt": "2026-10-30T08:36:46.654Z"
     },
     {
       "id": "L9",
@@ -1103,6 +1110,14 @@
       "at": "2026-10-29T10:06:30.224Z",
       "mistakes": 1,
       "applied": [
+        "reinforce L2 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-10-30T08:36:46.654Z",
+      "mistakes": 3,
+      "applied": [
+        "sharpen L8 (+2)",
         "reinforce L2 (+1; reworded at most once a week)"
       ]
     }

@@ -8633,6 +8633,181 @@
           "noted": []
         }
       ]
+    },
+    "global-tech-selloff-amazon-intel-results-c3f7eb": {
+      "at": "2026-10-30T08:50:15.675Z",
+      "title": "بيع أسهم التكنولوجيا يتسع مع هبوط إنتل 25% وأمازون 7% قبل افتتاح وول ستريت",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 20,
+            "weak": 5,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 1,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 2,
+              "field": "subtitle",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "مؤشر كوسبي الكوري الجنوبي يهبط 3.48% مع امتداد البيع إلى أسهم الرقائق الآسيوية وتزايد تشكيك المستثمرين في عوائد الإنفاق على الذكاء الاصطناعي",
+              "quote": "في المقابل، تراجع مؤشر «كوسبي» الكوري الجنوبي بنحو 4 في المائة إلى 5701.71 نقطة، مع انخفاض سهمي «إس كيه هاينكس» و«سامسونغ إلكترونيكس».",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 8,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تراجع مؤشر كوسبي الكوري الجنوبي الجمعة: 3.48%",
+              "quote": "في المقابل، تراجع مؤشر «كوسبي» الكوري الجنوبي بنحو 4 في المائة إلى 5701.71 نقطة، مع انخفاض سهمي «إس كيه هاينكس» و«سامسونغ إلكترونيكس».",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 23,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "unverified",
+              "sentence": "وهبط مؤشر كوسبي الكوري الجنوبي 3.48% الجمعة تحت ضغط سهمي إس كيه هاينكس وسامسونغ إلكترونيكس، لتقترب خسائره في أكتوبر من 16%، فيما تراجع مؤشر نيكي 225 الياباني 2.12%.",
+              "quote": "وفي اليابان، تراجع مؤشر «نيكي 225» القياسي بنسبة 2.3 في المائة خلال تعاملات بعد الظهر، ليصل إلى 63155.94 نقطة. في المقابل، تراجع مؤشر «كوسبي» الكوري الجنوبي بنحو 4 في المائة إلى 5701.71 نقطة، مع انخفاض سهمي «إس كيه هاينكس» و«سامسونغ إلكترونيكس».",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ],
+          "unsourced": {
+            "asked": 1,
+            "kept": [],
+            "removed": [
+              {
+                "sentence": "وخالفت سوقان الاتجاه، فارتفع مؤشر هانغ سنغ في هونغ كونغ 1.7% إلى 23359.06 نقطة، وصعد مؤشر ستاندرد آند بورز-إيه إس إكس 200 الأسترالي 0.2%، بحسب وكالة أسوشيتد برس.",
+                "said": "unsourced"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "boj-holds-rate-inflation-hits-target-728e78": {
+      "at": "2026-10-30T09:04:19.340Z",
+      "title": "بنك اليابان يقرّ ببلوغ التضخم الأساسي مستهدف 2% بعد 13 عاماً",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v43",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 39,
+            "checked": 39,
+            "supported": 34,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 36,
+              "field": "body",
+              "class": "period",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وبعد القرار، تراجع الدولار 0.28% إلى 157.21 ين، وهبط مؤشر نيكاي 225 بنسبة 2.12% إلى 63290.11 نقطة.",
+              "quote": "نيكاي 225 (^N225): 63290.11 points at 06:45 GMT on Friday 30 October 2026 (delayed quote), down 1369.36 or 2.12% from the previous close of 64659.47.",
+              "source": "Yahoo Finance",
+              "sourceN": 5,
+              "correction": "The 2.12% Nikkei fall and the 0.28% dollar fall are changes from the previous close, covering the whole session including trading before the decision; they are not moves after the decision, and the source gives no cause for them."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 39,
+            "checked": 39,
+            "supported": 34,
+            "weak": 4,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "bp-profit-18-year-high-refining-7b282d": {
+      "at": "2026-10-30T09:16:23.204Z",
+      "title": "أرباح «بي بي» البريطانية تقفز إلى أعلى مستوى منذ 18 عاماً",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v43",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 27,
+            "checked": 27,
+            "supported": 25,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 1,
+              "field": "title",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "أرباح «بي بي» البريطانية تقفز إلى أعلى مستوى منذ 18 عاماً",
+              "quote": "BP’s profits surge to new record on high fuel prices",
+              "source": "Financial Times",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []
