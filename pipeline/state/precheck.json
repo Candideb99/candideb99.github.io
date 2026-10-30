@@ -8808,6 +8808,147 @@
           ]
         }
       ]
+    },
+    "binance-hack-6-3-billion-losses-d179ad": {
+      "at": "2026-10-30T10:25:27.770Z",
+      "title": "«بينانس» تقدّر خسائر اختراق أمني بنحو 6.3 مليار دولار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v44",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 44,
+            "checked": 44,
+            "supported": 37,
+            "weak": 5,
+            "noEvidence": 2,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "euro-area-gdp-grows-q3-france-contracts-65e2be": {
+      "at": "2026-10-30T10:35:53.191Z",
+      "title": "اقتصاد منطقة اليورو ينمو 0.4% في الربع الثالث رغم انكماش فرنسا",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v44",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 37,
+            "checked": 37,
+            "supported": 28,
+            "weak": 6,
+            "noEvidence": 2,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 17,
+              "field": "body",
+              "class": "internal",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "ونما الاقتصادان الألماني والإيطالي بدورهما بأقل من وتيرة المنطقة.",
+              "quote": "ولم يسجل الناتج الإيطالي أي نمو فصلي (0.0%) بعد 0.2% في الربع السابق، وبلغ نموه السنوي 0.8%.",
+              "source": "the story itself",
+              "sourceN": 0,
+              "correction": "Germany grew 0.2%, but Italy did not grow at all in Q3 (0.0% quarter on quarter), so both economies did not 'grow'; both were below the euro area's 0.4%."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 37,
+            "checked": 37,
+            "supported": 31,
+            "weak": 6,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "2pointzero-nine-month-profit-triples-117622": {
+      "at": "2026-10-30T10:45:50.016Z",
+      "title": "أرباح مالكي «2 بوينت زيرو» الأبوظبية تتجاوز ثلاثة أمثالها في 9 أشهر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v44",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 34,
+            "checked": 34,
+            "supported": 26,
+            "weak": 1,
+            "noEvidence": 4,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 23,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "واتفقت الذراع نفسها خلال الربع الثالث على شراء 90% من «أزورا باور القابضة» (Azura Power Holding)، وهي منتج مستقل للكهرباء يعمل في أنحاء أفريقيا.",
+              "quote": "In August, the company’s wholly owned subsidiary ePointZero acquired a 90 per cent stake in Azura Power Holding, a pan-African independent power producer.",
+              "source": "The National",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ],
+          "unsourced": {
+            "asked": 1,
+            "kept": [],
+            "removed": [
+              {
+                "sentence": "وهي أول فترة مماثلة تقارن فيها المجموعة نتائجها بما قبل الاندماج الذي أسسها.",
+                "said": "unsourced"
+              }
+            ]
+          }
+        }
+      ]
     }
   },
   "held": []

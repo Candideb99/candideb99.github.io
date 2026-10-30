@@ -1,0 +1,475 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-30T10:09:26.792Z",
+  "durationSec": 2183,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "بينانس تؤكد اختراقاً بـ6.3 مليار دولار والبتكوين يهبط دون 77 ألف دولار",
+      "section": "technology",
+      "importance": 7,
+      "sources": [
+        "https://www.nytimes.com/2026/10/29/technology/binance-hack-crypto.html",
+        "https://aawsat.com/node/5335429",
+        "https://www.marketwatch.com/story/heres-when-binance-plans-to-reopen-after-whats-believed-to-be-the-largest-ever-6-3-billion-hack-d3cb8154?mod=mw_rss_topstories",
+        "https://www.dailysabah.com/business/economy/binance-hit-by-63-billion-hack-in-worlds-biggest-crypto-heist"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "يوضح العنوان والعنوان الفرعي حجم الخسائر وتعهد التغطية واستئناف السحب. لكنهما لا يقولان إن بينانس أكبر بورصة للعملات المشفرة في العالم، ولا إن السحب معلّق، فيبدو «استئناف السحب» بلا سياق.",
+              "repair": "في المقدمة: «أعلنت «بينانس»، أكبر بورصة للعملات المشفرة في العالم...». وفي العنوان الفرعي: «وتتوقع استئناف السحب المعلّق خلال 48 ساعة»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "صندوق أصول المستخدمين معرَّف بوظيفته، وهذا جيد، وكذلك آلية الاختراق ونسبته إلى كوريا الشمالية. أما المقارنة القياسية التي تمنحه وزنه («قد تكون أكبر عملية سرقة» بحسب «تشيناليسيس»، المصدر 2) فغائبة عن المقدمة ومبعثرة في المتن. صندوق «لماذا يهمّ» يستنتج استنتاجاً محدوداً ومقبولاً: عبء التغطية يقع على أموال الشركة فيما يتجاوز المليار، واستئناف السحب اختبار ثقة. لكنه يحتاج تصحيح نطاق الصندوق وتاريخ رقم 162.8 مليار.",
+              "repair": "إدخال الصفة القياسية إلى المقدمة منسوبة إلى «تشيناليسيس» مع «قد»، وتصحيح صياغة الصندوق كما في القضايا."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يتحدث عن الخسائر وتقديرها، والمتن يطوّر ذلك مباشرة بعد المقدمة (تحديد 3 مليارات، والمتبقي 3.3 مليار، والتجميد، والتغطية)، وهذا جيد. لكن الفقرة الثالثة خليط: قول سرينيفاسان، وعدد المستخدمين، وسرقات العام الماضي، وحادثة «بيتغت». وتعليق الإيداع والسحب مؤجل إلى الخاتمة، والإيثر في فقرة الأسواق مذكور بعد سعر البتكوين الأخير.",
+              "repair": "جعل الفقرة الثالثة فقرة حجم الحادث وموقعه بين السرقات السابقة، ونقل فقرة التعليق لتلي فقرة التغطية، وإعادة ترتيب فقرة الأسواق: الهبوط الأولي للبتكوين والإيثر و«بي.إن.بي»، ثم الاستقرار والسعر الأخير."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام تطابق المصادر: 6.3 و3 و3.3 و1.57 مليار، و800 مليون، و76368 و77333 و2178 دولاراً، و4.8% ونحو 6%. لكن تحفظ «يبدو» عند كاربيليس سقط، وتوقيت «أواخر الخميس» نُسب إلى بينانس بدل شركتي التحليل، ورقم 162.8 مليار في الصندوق بلا تاريخه.",
+              "repair": "استعادة تحفظ كاربيليس واستدراكه، ونسبة التوقيت إلى «تي آر إم لابز» و«تشيناليسيس»، وتأريخ رقم الأصول المودعة بتقرير 2025."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والمقدمة يحددان الحدث: خسائر تقدَّر بنحو 6.3 مليار دولار في أكبر بورصة للعملات المشفرة، مع تعهد بالتغطية وسحب معلّق يُتوقع استئنافه خلال 48 ساعة، وقد يكون الحادث أكبر سرقة بحسب «تشيناليسيس». لكن «رغم أن احتياطي صندوق أصول المستخدمين لا يتجاوز مليار دولار» في العنوان الفرعي يوحي بتعارض غير قائم.",
+              "repair": "«وتتعهد بتغطية الخسائر بأموالها إلى جانب صندوق حماية لا يتجاوز مليار دولار»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "صندوق أصول المستخدمين معرَّف بوظيفته، وحجم الحادث مقارن بسرقات العام الماضي و«بيتغت»، والضغوط السابقة على السوق حاضرة. أما «وورلد ليبرتي فايننشال» فبلا تعريف. وصندوق «لماذا يهمّ» يقيم استنتاجاً محدوداً من مقدمات صحيحة: ما يتجاوز المليار ولا يُستعاد يقع على أموال المنصة، ويأتي شرط الـ48 ساعة صريحاً في «إذا».",
+              "repair": "تعريف «وورلد ليبرتي فايننشال» بما يرد في المصدر 4."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "المتن يطوّر العنوان بعد المقدمة مباشرة بالترتيب التالي: الأصول المحددة والمجمّدة، ثم التغطية، ثم التعليق، ثم الحجم القياسي. لكن «فقد تمكن المهاجمون» تلي جملة الحاسوب لا جملة التشابه، ونسبة الهجوم إلى كوريا الشمالية مؤجلة إلى ما بعد فقرة كاربيليس. وفي الأسواق يأتي هبوط أسهم «كوين بيس» و«ستراتيجي» بعد «ثم استقرت الأسواق».",
+              "repair": "جمع وقائع النسبة إلى كوريا الشمالية في فقرة واحدة تلي فقرة المسار، ونقل الأسهم إلى فقرة الهبوط الأولي."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام تطابق المصادر، والتحفظات محفوظة: «قد تكون»، و«ربما بدأ»، و«يبدو». لكن «جزءاً كبيراً من هذه الأصول» يميّع «نحو نصف الأصول المسروقة» ويجعل المرجع غامضاً.",
+              "repair": "«وجمّدت جهات مصدرة للعملات المستقرة نحو نصف الأصول المسروقة سريعاً»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 9,
+      "mendIssues": [
+        "خلل في البناء والتسلسل الزمني (المصدر 4): في فقرة الأسواق تأتي جملة «ثم استقرت الأسواق، فسجل البتكوين 77333 دولاراً بحلول الساعة 10:09 بتوقيت غرينتش» قبل جملة «وفي التداولات الأمريكية الممتدة، انخفضت أسهم «كوين بيس غلوبال»... 4.8%، وتراجعت أسهم «ستراتيجي»... نحو 6%». بهذا الترتيب يبدو هبوط الأسهم لاحقاً للاستقرار. والمصدر 4 يضع هبوطها ضمن ردّ الفعل الأول، إذ «ضربت الثقة المهتزة أسهم بورصات العملات المشفرة المدرجة». الإصلاح: نقل جملة الأسهم إلى الفقرة الأولى للأسواق بعد «بي.إن.بي»، وإنهاء الفقرة الثانية بالاستقرار والسعر الأخير وحدهما. ويُستحسن أيضاً «ستراتيجي» التي تشتري البتكوين بدل «المشترية للبتكوين».",
+        "العنوان بلا متن في محور الفاعل (المصدر 4): الوقائع المتعلقة بنسبة الهجوم إلى كوريا الشمالية موزعة على ثلاث فقرات بعيدة. التشابه مع هجمات سابقة يرد في فقرة «كيف وقع الاختراق»، تليه جملة الحاسوب المحمول، ثم تبدأ الفقرة التالية بـ«فقد تمكن المهاجمون، بحسب «تي آر إم»...». فتبدو «فقد» شرحاً لجملة الحاسوب لا للتشابه. أما نسبة الهجوم إلى «وحدة القرصنة النخبوية» ونفي بيونغ يانغ وتحفظ تنغ فمؤجلة إلى ما بعد فقرة كاربيليس. الإصلاح: فقرة لمسار الاختراق تضم رواية بينانس عن الحاسوب ثم تقدير كاربيليس للمفاتيح الخاصة، وفقرة واحدة للنسبة تضم 20 دقيقة والتشابه، وآلية تفريغ المحافظ على غرار «بايبت»، وثقة «تي آر إم» و«تشيناليسيس» العالية، ونفي كوريا الشمالية، وقول تنغ إن التحقيق لم يحمّل أحداً المسؤولية.",
+        "ربط غير مدعوم في العنوان الفرعي (المصدر 4): «وتتعهد بتحمّل الخسائر من أموالها رغم أن احتياطي صندوق أصول المستخدمين لا يتجاوز مليار دولار». أداة «رغم» تصنع تعارضاً غير قائم. صِغر الصندوق هو سبب اللجوء إلى أموال الشركة، وقد قال تنغ إن الصندوق «وأموال الشركة» ستغطي الخسائر. الإصلاح: «وتتعهد بتغطية الخسائر بأموالها إلى جانب صندوق حماية لا يتجاوز مليار دولار».",
+        "دقة في المقدار والمرجع (المصدر 4): «وجمدت الشركات المصدرة للعملات المستقرة جزءاً كبيراً من هذه الأصول». المصدر يحدد أن الجهات المصدرة جمّدت «نحو نصف الأصول المسروقة». و«هذه الأصول» لا يُعرف أهي الثلاثة مليارات المحدد موقعها أم الخسائر كلها. الإصلاح: «وجمّدت جهات مصدرة للعملات المستقرة نحو نصف الأصول المسروقة سريعاً».",
+        "تعريف ناقص (المصدر 4): «وورلد ليبرتي فايننشال» ترد بلا تعريف، والمصدر يقدمها بوصفها جهة مصدرة لعملات مستقرة مدعومة من ترامب، وقد عملت مع جهة الحفظ «بيتغو» لتجميد الأموال. الإصلاح: «شركة «وورلد ليبرتي فايننشال» المصدرة لعملات مستقرة والمدعومة من ترامب» عند أول ذكر.",
+        "العنوان والمقدمة يحددان الحدث: خسائر تقدَّر بنحو 6.3 مليار دولار في أكبر بورصة للعملات المشفرة، مع تعهد بالتغطية وسحب معلّق يُتوقع استئنافه خلال 48 ساعة، وقد يكون الحادث أكبر سرقة بحسب «تشيناليسيس». لكن «رغم أن احتياطي صندوق أصول المستخدمين لا يتجاوز مليار دولار» في العنوان الفرعي يوحي بتعارض غير قائم. — «وتتعهد بتغطية الخسائر بأموالها إلى جانب صندوق حماية لا يتجاوز مليار دولار».",
+        "صندوق أصول المستخدمين معرَّف بوظيفته، وحجم الحادث مقارن بسرقات العام الماضي و«بيتغت»، والضغوط السابقة على السوق حاضرة. أما «وورلد ليبرتي فايننشال» فبلا تعريف. وصندوق «لماذا يهمّ» يقيم استنتاجاً محدوداً من مقدمات صحيحة: ما يتجاوز المليار ولا يُستعاد يقع على أموال المنصة، ويأتي شرط الـ48 ساعة صريحاً في «إذا». — تعريف «وورلد ليبرتي فايننشال» بما يرد في المصدر 4.",
+        "المتن يطوّر العنوان بعد المقدمة مباشرة بالترتيب التالي: الأصول المحددة والمجمّدة، ثم التغطية، ثم التعليق، ثم الحجم القياسي. لكن «فقد تمكن المهاجمون» تلي جملة الحاسوب لا جملة التشابه، ونسبة الهجوم إلى كوريا الشمالية مؤجلة إلى ما بعد فقرة كاربيليس. وفي الأسواق يأتي هبوط أسهم «كوين بيس» و«ستراتيجي» بعد «ثم استقرت الأسواق». — جمع وقائع النسبة إلى كوريا الشمالية في فقرة واحدة تلي فقرة المسار، ونقل الأسهم إلى فقرة الهبوط الأولي.",
+        "الأرقام تطابق المصادر، والتحفظات محفوظة: «قد تكون»، و«ربما بدأ»، و«يبدو». لكن «جزءاً كبيراً من هذه الأصول» يميّع «نحو نصف الأصول المسروقة» ويجعل المرجع غامضاً. — «وجمّدت جهات مصدرة للعملات المستقرة نحو نصف الأصول المسروقة سريعاً»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "صندوق أصول المستخدمين الآمنة لدى بينانس احتياطي بقيمة مليار دولار، أقل كثيراً من حجم الاختراق البالغ نحو 6.3 مليار دولار",
+          "source": 4
+        },
+        {
+          "fact": "بينانس حددت موقع نحو 3 مليارات دولار ولم تذكر وضع 3.3 مليار دولار المتبقية، وتعهدت بتحمل جميع الخسائر من أموالها",
+          "source": 4
+        },
+        {
+          "fact": "بينانس تتوقع استئناف خدمات السحب خلال 48 ساعة بعد تعليق الإيداع والسحب احترازياً",
+          "source": 4
+        },
+        {
+          "fact": "بلغت الأصول المودعة لدى بينانس نحو 162.8 مليار دولار بحسب تقريرها السنوي لعام 2025",
+          "source": 2
+        }
+      ],
+      "slug": "binance-hack-6-3-billion-losses-d179ad",
+      "title": "«بينانس» تقدّر خسائر اختراق أمني بنحو 6.3 مليار دولار",
+      "score": 8,
+      "image": "cover-art"
+    },
+    {
+      "headline": "اقتصاد منطقة اليورو ينمو 0.4% في الربع الثالث رغم انكماش فرنسا",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://www.ft.com/content/6f879bc5-be07-4a66-afea-bcbe73723a9f?syn-25a6b1a6=1",
+        "https://ec.europa.eu/eurostat/product?code=2-30102026-ap",
+        "https://www.bloomberg.com/news/articles/2026-10-30/french-economy-unexpectedly-shrinks-as-headwinds-gain-strength"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والدكتور يحددان البلد والفترة والمصدر بوضوح: منطقة اليورو، الربع الثالث، تقدير أولي ليوروستات قابل للمراجعة. لكن المتن ينقل عن بلومبرغ أن الاقتصاد «قفز» بعد أن قال الدكتور إنه «تباطأ»، دون تفسير الفارق بين الوصفين.",
+              "repair": "يُقرن وصف بلومبرغ بتقييم فايننشال تايمز «أفضل من المتوقع» في جملة واحدة توضح أن الوصف مقيس على التوقعات والضغوط، لا على الربع الثاني (SOURCE 1، 3)."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يضع التقرير الرقم في سياقه: مقارنة بالربع الثاني والفصلين السابقين له، والنمو السنوي، والاتحاد الأوروبي، والدول الكبرى. ويذكر الضغوط التي نسبتها بلومبرغ (التضخم وبيع السندات)، ونسبة التغطية، ومواعيد المراجعة. صندوق «لماذا يهمّ» يستنتج من مقدمات مسنودة استنتاجاً محدوداً: نمو الاقتصادات الثلاثة الكبرى دون 0.4%، فالوتيرة صنعتها دول أخرى منها أيرلندا ذات التقدير التجريبي، ومراجعة رقمها تنتقل إلى رقم المنطقة. وهو استنتاج حسابي سليم لا يكرر المتن.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "عنصر العنوان الجديد «رغم انكماش فرنسا» يُطوَّر في الفقرة الأولى بعد الافتتاحية مباشرة (الفصلي والسنوي، والمقارنة بليتوانيا)، ثم يأتي إطار التوقعات، ثم بقية الدول، ثم مسار المنطقة، ثم المراجعات. كل فقرة لها وظيفة واحدة، والخاتمة تقدّم الخطوة التالية (13 نوفمبر).",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "جميع الأرقام والمواعيد والنسب في المتن والجدول والرسم مطابقة لـ SOURCE 2، والتنبيه على التقدير الأيرلندي التجريبي محفوظ. لكن «قفز» ترجمة تبالغ في وصف رقم متباطئ، و«الضعف» بشأن ألمانيا وتفضيل إسبانيا «بين الاقتصادات الكبرى» حكمان لا يسندهما المصدر.",
+              "repair": "استبدال «قفز» بصياغة منسوبة غير مضللة، ووصف ألمانيا وإيطاليا بمقارنة مقيسة بمتوسط المنطقة، وذكر رقم إسبانيا مع مقارنة صريحة بدل التفضيل غير المعرّف."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والدكتور يحددان المنطقة (اليورو) والفترة (الربع الثالث) والرقم (0.4%) والاستثناء الفرنسي. ويذكران أن التقدير أولي من يوروستات وقابل للمراجعة، وأن النمو تباطأ من 0.6%.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المقارنات المسنودة حاضرة: الربع الثاني، والفصلان السابقان، والتوقعات بحسب FT، والعوامل الضاغطة بحسب بلومبرغ. لكن التوفيق بين «نمو قوي» و«تباطأ» جاء بتأويل غير مسنود («تُقاس بالتوقعات لا بالربع الثاني»). أما «لماذا يهمّ» فيستنتج استنتاجاً محدوداً ومقبولاً: الاقتصادات الثلاثة الكبرى جاءت دون رقم المنطقة، فالوتيرة صنعتها دول أخرى بينها قراءة أيرلندية تجريبية، وأي مراجعة لها تنتقل إلى رقم المنطقة. المقدمات مسنودة من SOURCE 2 والاستنتاج لا يتجاوزها.",
+              "repair": "حذف الجملة التأويلية، والاكتفاء بوصفي بلومبرغ وFT منسوبين، مع إسناد رقم التباطؤ إلى يوروستات."
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "ما يقول العنوان إنه جديد، أي انكماش فرنسا، يطوَّر مباشرة بعد المقدمة: المسار الفصلي والسنوي، والانفراد بالمعدل السنوي السالب، والمقارنة بليتوانيا. يليه وصف بلومبرغ للتراجع بأنه غير متوقع. ثم تنتقل الفقرات بخط واضح إلى الاقتصادات الكبرى، فالأعلى نمواً، فالاتجاه الزمني، فقابلية المراجعة والموعد التالي.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "جميع الأرقام والمواعيد (13 نوفمبر، و7 ديسمبر، و19 يناير 2027) ونسب التغطية (96% و94%) مطابقة لـSOURCE 2، والتحفظ على التقدير الأيرلندي محفوظ. لكن «متوسط المنطقة» يصف الناتج المجمع بغير اسمه، و«لكنه بقي أبطأ» منسوبة نحوياً إلى «فايننشال تايمز» بدل يوروستات.",
+              "repair": "«دون نمو المنطقة البالغ 0.4%»، وإسناد التباطؤ صراحة إلى يوروستات."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 5,
+      "mendIssues": [
+        "خطأ في المضمون: «وهذه القوة تُقاس بالتوقعات لا بالربع الثاني». العبارة تنسب إلى «بلومبرغ» معياراً لم تذكره، فالمصدر (SOURCE 3) يقول فقط إن الاقتصاد نما بقوة رغم التضخم المرتفع وموجة البيع في أسواق السندات، ولا يحدد أساس المقارنة. هي أيضاً جملة تشرح ما يقصده المصدر بدل أن تنقل خبراً. الإصلاح: حذف الجملة، وترك الوصفين المنسوبين جنباً إلى جنب مع رقم التباطؤ منسوباً إلى يوروستات، فيفهم القارئ الفارق دون تأويل.",
+        "خطأ في الإسناد: «فقد أفادت صحيفة «فايننشال تايمز» البريطانية بأن نمو التكتل… جاء أفضل من المتوقع رغم ضعف فرنسا…، لكنه بقي أبطأ من نمو الربع الثاني». صياغة الجملة تجعل التباطؤ عن الربع الثاني جزءاً مما أوردته الصحيفة، والصحيفة لم تقله (SOURCE 1). مصدر هذا الرقم يوروستات (SOURCE 2). الإصلاح: «وأفادت «فايننشال تايمز» بأن نمو التكتل المؤلف من 21 دولة جاء أفضل من المتوقع رغم ضعف فرنسا، ثاني أكبر اقتصاد فيه، وإن ظل أبطأ من نمو 0.6% الذي سجله في الربع الثاني بحسب يوروستات».",
+        "دقة في المصطلح: «جاء نمو ألمانيا وإيطاليا دون متوسط المنطقة البالغ 0.4%». رقم 0.4% هو نمو الناتج المجمع لمنطقة اليورو، وليس متوسطاً حسابياً لمعدلات الدول (SOURCE 2). الإصلاح: «جاء نمو ألمانيا وإيطاليا دون نمو المنطقة البالغ 0.4%».",
+        "المقارنات المسنودة حاضرة: الربع الثاني، والفصلان السابقان، والتوقعات بحسب FT، والعوامل الضاغطة بحسب بلومبرغ. لكن التوفيق بين «نمو قوي» و«تباطأ» جاء بتأويل غير مسنود («تُقاس بالتوقعات لا بالربع الثاني»). أما «لماذا يهمّ» فيستنتج استنتاجاً محدوداً ومقبولاً: الاقتصادات الثلاثة الكبرى جاءت دون رقم المنطقة، فالوتيرة صنعتها دول أخرى بينها قراءة أيرلندية تجريبية، وأي مراجعة لها تنتقل إلى رقم المنطقة. المقدمات مسنودة من SOURCE 2 والاستنتاج لا يتجاوزها. — حذف الجملة التأويلية، والاكتفاء بوصفي بلومبرغ وFT منسوبين، مع إسناد رقم التباطؤ إلى يوروستات.",
+        "جميع الأرقام والمواعيد (13 نوفمبر، و7 ديسمبر، و19 يناير 2027) ونسب التغطية (96% و94%) مطابقة لـSOURCE 2، والتحفظ على التقدير الأيرلندي محفوظ. لكن «متوسط المنطقة» يصف الناتج المجمع بغير اسمه، و«لكنه بقي أبطأ» منسوبة نحوياً إلى «فايننشال تايمز» بدل يوروستات. — «دون نمو المنطقة البالغ 0.4%»، وإسناد التباطؤ صراحة إلى يوروستات."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 1,
+        "rounds": 2,
+        "found": 1
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "نما ناتج منطقة اليورو 0.4% على أساس فصلي في الربع الثالث من 2026",
+          "source": 2
+        },
+        {
+          "fact": "نمت ألمانيا 0.2% واستقرت إيطاليا عند 0.0% وانكمشت فرنسا 0.1% على أساس فصلي في الربع الثالث",
+          "source": 2
+        },
+        {
+          "fact": "سجلت أيرلندا نمواً فصلياً 5.5%، وتقديرها تجريبي يعتمد على بيانات غير مكتملة وسيخضع للمراجعة",
+          "source": 2
+        },
+        {
+          "fact": "يصدر التقدير التالي للربع الثالث في 13 نوفمبر 2026، وقد تُراجع الأرقام في 7 ديسمبر 2026 و19 يناير 2027",
+          "source": 2
+        }
+      ],
+      "slug": "euro-area-gdp-grows-q3-france-contracts-65e2be",
+      "title": "اقتصاد منطقة اليورو ينمو 0.4% في الربع الثالث رغم انكماش فرنسا",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "أرباح «2 بوينت زيرو» تتضاعف ثلاث مرات إلى 9.5 مليار درهم في 9 أشهر",
+      "section": "companies",
+      "importance": 6,
+      "sources": [
+        "https://www.thenationalnews.com/business/2026/10/30/2pointzero-groups-nine-month-profit-triples-as-global-expansion-gathers-pace/",
+        "https://www.albayan.ae/economy/business/uae-economy/1561623",
+        "https://economymiddleeast.com/news/2pointzero-group-delivers-9-18-billion-revenue-2-59-billion-net-profit-in-9m-2026-as-global-expansion-accelerates/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والسطر الثاني يحددان البلد («الأبوظبية») والفترة (9 أشهر). لكن قارئ البطاقة يرى الربح يتضاعف ثلاث مرات دون أن يعرف أن فترة المقارنة تسبق الاندماج، وأن النمو على أساس افتراضي 33% فقط (المصدران 2 و3). ويرى رقمين للربح (8.59 و9.5) دون تفسير.",
+              "repair": "إدخال قيد الاندماج والنمو الافتراضي 33% في السطر الثاني أو المقدمة، وربط الرقمين صراحة: الربح العائد للمالكين مقابل صافي ربح المجموعة."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السياق الصحيح لتفسير الزيادة موجود في المصادر: الاندماج في نوفمبر (المصدر 1)، والأساس الافتراضي وضم «تندام» (المصدران 2 و3). لكن المقدمة تستبدل به تفسيراً غير مسند. وفي «لماذا يهمّ» مقدمات صحيحة: 5.8 من 9.5 مليار من القيمة العادلة، والصفقتان تضيفان وضوحاً للتدفقات النقدية بحسب الرئيسة التنفيذية. والاستدلال منها مقبول ومتناسب، وهو أن الأرباح تتبع قيم الأصول وأن اختبار الصفقتين هو التدفقات المتكررة، لكن جملة الربع الثالث فيه صدى للمتن.",
+              "repair": "تصحيح المقدمة بسياق الاندماج، وحذف تكرار الربع الثالث من الصندوق أو ربطه بالاستدلال عن التكاليف والتدفقات النقدية."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان الجديد («ثلاثة أمثالها») يُفسَّر في فقرات متباعدة: الأساس الافتراضي، ثم الخلفية عن الاندماج، ثم الربع الثالث بعد الخلفية. وتنتهي المقالة بفقرة العقود المستقبلية وتغطية المحللين كموضوع منفصل.",
+              "repair": "ترتيب المتن هكذا: المقدمة، ثم الاندماج والأساس الافتراضي، ثم تركيبة الربح (القيمة العادلة، والأرباح التشغيلية 33%، وEBITDA المعدلة)، ثم الربع الثالث، ثم صفقات الطاقة والتخارج من «طاقة» والمركز المالي، ثم ردود السوق والمحللين بإيجاز."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «إلى ست عقود» تحرّف الإدراج الذي ذكره المصدر 3. وعبارة «من دون بيعها» تحديد غير موجود في المصادر. وكلمة «في الخارج» تضيّق «globally». أما تراجع الربع الثالث «نحو 25%» فبلا أساس مقارنة لأن المصدر 1 نفسه لا يذكره، وهذا مقبول.",
+              "repair": "«ضمن ستة عقود مستقبلية جديدة»، وحذف «من دون بيعها»، و«في مختلف الأسواق العالمية»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والسطر الثاني يحددان البلد (أبوظبي) والفترة، ويذكر السطر الثاني أن المقارنة تسبق الاندماج وأن النمو الافتراضي 33%، فزالت الملاحظات 6 و7 السابقة في جوهرها. لكن المقدمة تضيف «أول فترة مماثلة تقارن فيها المجموعة نتائجها بما قبل الاندماج»، وهو قيد مخترع، والعنوان ينقصه فعل الارتفاع.",
+              "repair": "استبدال الجملة الثانية في المقدمة بربط فترة المقارنة باندماج نوفمبر الماضي، وصياغة العنوان: «أرباح مساهمي «2 بوينت زيرو» الأبوظبية ترتفع إلى أكثر من ثلاثة أمثالها في 9 أشهر»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "سياق التفسير الصحيح حاضر: الاندماج (المصدر 1)، والأساس الافتراضي و«تندام» (المصدران 2 و3)، ومكاسب القيمة العادلة 5.8 مليار، والأرباح التشغيلية 33%. لكن «لِماد» تأتي بلا التعريف الذي يورده المصدر 1. وفي «لماذا يهمّ» مقدمات صحيحة (5.8 من 9.5 مليار، وقول الرئيسة التنفيذية إن الصفقتين تضيفان وضوحاً للتدفقات النقدية)، غير أن الاستنتاج «هما ما يُفترض أن ينقل الثقل» أكبر من حجم الصفقتين قياساً إلى أصول قدرها 155 مليار درهم.",
+              "repair": "إضافة «الذراع الاستثمارية السيادية لأبوظبي» بعد «لِماد»، وإعادة صياغة الصندوق بحيث يقول إن تراجع التقييمات يقتطع من الربح المعلن مباشرة، وإن تدفقات الصفقتين تقوّي الجزء التشغيلي دون أن توازي المكاسب الدفترية."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان («ثلاثة أمثالها») يُشرح الآن مباشرة بعد المقدمة: الاندماج والأساس الافتراضي، ثم تركيبة الربح، ثم الربع الثالث، ثم صفقات الطاقة والمركز المالي، ثم المحللون. هذا يعالج الملاحظتين 4 و9 السابقتين. يبقى سطر الأرباح المعدلة فقرةً مستقلة من جملة واحدة منفصلة عن تركيبة الربح التي يفسرها.",
+              "repair": "دمج جملة الأرباح المعدلة (7.5 مليار درهم) في فقرة مكاسب القيمة العادلة وحصة الأرباح التشغيلية."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: 8.59 و2.64 و9.5 و33% و106% و5.8 و7.5 و1.5 و11.8 و2.25 مليار دولار و15.7 و155 و0.21، والعقود المستقبلية 17. لكن «وعزت المجموعة نمو الإيرادات إلى الاندماج» تحوّل «following/عقب» إلى سبب، وتناقض معنى الأساس الافتراضي. و«التكاليف تضغط على ربح الأعمال نفسها» في الصندوق تجعل تراجع ربح الربع الثالث الإجمالي تراجعاً تشغيلياً.",
+              "repair": "«وجاءت هذه الأرقام بعد الاندماج وضم «تندام»»، وحذف وصف ضغط التكاليف على «ربح الأعمال نفسها» من الصندوق أو نسبته إلى ربح الربع الثالث كما ورد في المصدر 1."
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0,
+        "unsourcedCut": 1
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "صافي ربح المجموعة البالغ 9.5 مليار درهم يتضمن 5.8 مليار درهم مكاسب صافية من إعادة تقييم الاستثمارات بالقيمة العادلة",
+          "source": 3
+        },
+        {
+          "fact": "تراجع ربح الربع الثالث نحو 25% إلى 1.5 مليار درهم بسبب ارتفاع التكاليف والمصروفات",
+          "source": 1
+        },
+        {
+          "fact": "قالت الرئيسة التنفيذية إن صفقتي ترافيرس وأزورا تضيفان وضوحاً للتدفقات النقدية طويلة الأجل",
+          "source": 3
+        }
+      ],
+      "slug": "2pointzero-nine-month-profit-triples-117622",
+      "title": "أرباح مالكي «2 بوينت زيرو» الأبوظبية تتجاوز ثلاثة أمثالها في 9 أشهر",
+      "score": 7,
+      "image": "photo"
+    },
+    {
+      "headline": "تراجع رسوم التداول يضغط على أرباح سوق دبي المالي في الربع الثالث",
+      "section": "markets",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
+  "llm": {
+    "calls": 56,
+    "failures": 0,
+    "promptTokens": 905827,
+    "completionTokens": 230095,
+    "cacheReadTokens": 287519,
+    "costUsd": 9.6053,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 56
+    }
+  },
+  "log": [
+    "[10:28:34]   · «لم يقتصر الضعف على فرنسا بين الاقتصادات الكبرى. فقد نما الاقتصاد الألماني 0.2%... وبلغ نموه السنوي 1.2%». وصف ألمانيا بالضعف غير مسنود بمصدر، والجملة نفسها تذك",
+    "[10:28:34]   · «وسجلت إسبانيا أقوى نمو سنوي بين الاقتصادات الكبرى عند 2.7%». هذا ترتيب استخرجه الكاتب من الجدول بمجموعة لم يحددها المصدر، فعبارة «الاقتصادات الكبرى» غير معرّفة",
+    "[10:29:14] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1829 attempt=1 ms=39949",
+    "[10:29:39] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=878 attempt=1 ms=25175",
+    "[10:29:39] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,body] rejected=[]",
+    "[10:29:39] desk \"اقتصاد منطقة اليورو ينمو 0.4% في الربع الثالث رغم انكماش فرنسا\": rewrote subtitle, body",
+    "[10:30:32] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3890 attempt=1 ms=52524",
+    "[10:30:32] critic (second pass) \"اقتصاد منطقة اليورو ينمو 0.4% في الربع الثالث رغم انكماش فرنسا\": revise score=8 issues=5",
+    "[10:30:59] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=882 attempt=1 ms=27628",
+    "[10:31:42] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2544 attempt=1 ms=42299",
+    "[10:31:42] desk model=claude-cli/claude-opus-5-5 applied=[whyItMatters,body] rejected=[]",
+    "[10:31:42] desk \"اقتصاد منطقة اليورو ينمو 0.4% في الربع الثالث رغم انكماش فرنسا\": rewrote whyItMatters, body",
+    "[10:31:42] mended \"اقتصاد منطقة اليورو ينمو 0.4% في الربع الثالث رغم انكماش فرنسا\": the second pass's 5 finding(s) sent back once more",
+    "[10:32:32] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1833 attempt=1 ms=50595",
+    "[10:32:48] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=129 attempt=1 ms=16182",
+    "[10:32:48] precheck: repair 1 accepted (1 sentence(s) changed); checking the repaired text again",
+    "[10:33:36] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1615 attempt=1 ms=47301",
+    "[10:33:36] precheck \"اقتصاد منطقة اليورو ينمو 0.4% في الربع الثالث رغم انكماش فرنسا\": 1 proved error(s) repaired (1 repair(s)); the repaired text checked clean",
+    "[10:33:47] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=838 attempt=1 ms=11067",
+    "[10:33:47] image: the picture should say: The euro-area economy keeps growing even as France slips into contraction.",
+    "[10:33:51] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=143 attempt=1 ms=3188",
+    "[10:33:51] image: the sources' photographs give no brief (1: not a news photo)",
+    "[10:33:51] image: tier 3, the writer's own subjects: Frankfurt container port | Paris factory workers | euro banknotes",
+    "[10:33:52] commons \"Frankfurt container port 2026\": 0 usable of 0",
+    "[10:33:52] commons \"Frankfurt container port\": 5 usable of 8",
+    "[10:33:52] image: dropped \"Haba f 01-101.jpg\" — dated 2002, an archival picture",
+    "[10:33:54] commons \"Paris factory workers 2026\": 1 usable of 1",
+    "[10:33:57] commons \"Paris factory workers\": 6 usable of 12",
+    "[10:33:57] image: dropped \"Fabrieksarbeiders (Revolutionaire menigte) in Parijs, 1930, 1930 - Cha\" — dated 1930, an archival picture",
+    "[10:33:57] image: dropped \"Helene Schjerfbeck - Factory Workers on the Way to Work.jpg\" — dated 1921, an archival picture",
+    "[10:33:57] image: dropped \"Boulevard de Vaugirard.jpg\" — dated 1905, an archival picture",
+    "[10:33:57] image: dropped \"Boulevard Brune fabrique d'obus Maison Ballot, PH25520.jpg\" — dated 1914, an archival picture",
+    "[10:33:57] image: dropped \"Embauche aux usines Citroën (Paris, Quai de Javel, 15e arrondissement)\" — dated 1928, an archival picture",
+    "[10:33:57] image: dropped \"Embauche aux usines Citroën, année 1928 (Paris, Quai de Javel, 15e arr\" — dated 1928, an archival picture",
+    "[10:33:59] commons \"euro banknotes 2026\": 9 usable of 12",
+    "[10:33:59] commons \"euro banknotes\": 4 usable of 12",
+    "[10:33:59] image: dropped \"Croatian euro coins (2).jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[10:34:16] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1073 attempt=1 ms=14491",
+    "[10:34:16] image: \"Frankfurt Express (ship, 2010) 001.jpg\" names the story's topic without saying its point (The story is about the euro area's economy as a whole, so a scene of economic activity fits best. A container ship under way off Rotterdam, in a euro-area membe); checked now and kept in reserve while the desk looks further",
+    "[10:34:25] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=836 attempt=1 ms=9217",
+    "[10:34:25] image: second check (claude-cli/claude-opus-5-5) RECAPTION \"Frankfurt Express (ship, 2010) 001.jpg\": A laden container ship off a euro-area country mentioned in the story suits a eurozone growth story, but the caption nam",
+    "[10:34:31] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=428 attempt=1 ms=5576",
+    "[10:34:39] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=683 attempt=1 ms=8598",
+    "[10:34:39] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Frankfurt Express (ship, 2010) 001.jpg\": A sharp, professional shot of a laden container ship entering Rotterdam, in the Netherlands, which the story names, neut",
+    "[10:34:39] image: tier 4, the story's point and its subject: container ships Port of Rotterdam | shoppers busy street Madrid | factory assembly line Germany | Rotterdam container terminal | car factory Germany | shopping street Madrid",
+    "[10:34:39] pexels \"container ships Port of Rotterdam\": 8 usable",
+    "[10:34:39] pexels \"Rotterdam container terminal\": 8 usable",
+    "[10:34:39] pexels \"shopping street Madrid\": 8 usable",
+    "[10:34:39] pexels \"car factory Germany\": 8 usable",
+    "[10:34:40] pexels \"factory assembly line Germany\": 8 usable",
+    "[10:34:40] pexels \"shoppers busy street Madrid\": 8 usable",
+    "[10:34:40] commons \"container ships Port of Rotterdam\": 24 usable of 24",
+    "[10:35:24] openverse \"container ships Port of Rotterdam\": The operation was aborted due to timeout",
+    "[10:35:24] openverse: 3 failures in a row; left alone for 10 minutes",
+    "[10:35:24] image: dropped \"Silhouettes of cranes at Rotterdam port during a vibrant sunset.\" — names too little of container, ships",
+    "[10:35:24] openverse \"shoppers busy street Madrid\": The operation was aborted due to timeout",
+    "[10:35:24] openverse \"factory assembly line Germany\": The operation was aborted due to timeout",
+    "[10:35:25] commons \"shoppers busy street Madrid\": 0 usable of 1",
+    "[10:35:28] commons \"shoppers busy\": 17 usable of 24",
+    "[10:35:28] image: dropped \"James McNeill Whistler, The Fish Shop, Busy Chelsea, 1887, NGA 70125.j\" — dated 1887, an archival picture",
+    "[10:35:28] image: dropped \"Viswinkel in Chelsea The Fish-Shop, Busy Chelsea, RP-P-1940-233.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[10:35:28] image: dropped \"Whistler - The Fish-Shop, Busy Chelsea.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[10:35:28] image: dropped \"James McNeill Whistler, The Fish-Shop, Busy Chelsea, 1887, NGA 11076.j\" — dated 1887, an archival picture",
+    "[10:35:28] image: dropped \"James McNeill Whistler - The Fish Shop, Busy Chelsea, London - 1941.62\" — dated 1941, an archival picture",
+    "[10:35:28] image: dropped \"Busy Yuen Long Town.jpg\" — dated 2003, an archival picture",
+    "[10:35:28] image: dropped \"People walking down a vibrant European street lined with historic buil\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:35:28] image: dropped \"Crowded Puerta del Sol in Madrid with iconic Tio Pepe sign under a bri\" — names too little of shoppers, busy, street",
+    "[10:35:29] commons \"factory assembly line Germany\": 10 usable of 24",
+    "[10:35:29] image: dropped \"Wolfsburg - Volkswagen Assembly Line.jpg\" — dated 1960, an archival picture",
+    "[10:35:29] image: dropped \"Messier51.jpg\" — names too little of factory, assembly, line",
+    "[10:35:29] image: dropped \"Wolfsburg - Inside the Volkswagen Plant.jpg\" — dated 1960, an archival picture",
+    "[10:35:29] image: dropped \"Buchenwald Factories 85867.jpg\" — dated 1945, an archival picture",
+    "[10:35:29] image: dropped \"Coating Plant Progress (rubin-img-7724).jpg\" — names too little of factory, assembly, line",
+    "[10:35:29] image: dropped \"Mercedes-Benz S350 Bluetec 4Matic (US) - Flickr - skinnylawyer.jpg\" — names too little of factory, assembly, line",
+    "[10:35:29] image: dropped \"USS Eagle (PE-19) Navy Yard, Marine Railway, Between Piers 2 & 3, in B\" — names too little of factory, assembly, line",
+    "[10:35:29] image: dropped \"Mercedes C Class (W204 C-Class) front.jpg\" — names too little of factory, assembly, line",
+    "[10:35:29] image: dropped \"Alpine Renault (8413756575).jpg\" — names too little of factory, assembly, line",
+    "[10:35:29] image: dropped \"Tupolev SB High-Speed Bomber. 1934. Скоростной бомбардировщик Туполева\" — names too little of factory, assembly, line",
+    "[10:35:29] image: dropped \"Modern industrial machine in operation in a manufacturing facility sho\" — names too little of factory, assembly, line",
+    "[10:35:29] image: dropped \"Industrial machinery with robotic arm in a modern manufacturing facili\" — names too little of factory, assembly, line",
+    "[10:35:29] commons \"Rotterdam container terminal\": 23 usable of 24",
+    "[10:35:32] commons \"car factory Germany\": 19 usable of 24",
+    "[10:35:32] image: dropped \"Mosel bei Zwickau mit Volkswagenwerk und Windkraftanlagen.jpg\" — names too little of car, factory",
+    "[10:35:32] image: dropped \"Glaeserne manufaktur dresden.jpg\" — names too little of car, factory",
+    "[10:35:32] image: dropped \"20161114220DR Dresden Gläserne Manufaktur.jpg\" — names too little of car, factory",
+    "[10:35:32] image: dropped \"20190617.VW-Manufaktur.-091.jpg\" — names too little of car, factory",
+    "[10:35:32] image: dropped \"20040913360DR Dresden Straßburger Platz Gläserne Manufaktur.jpg\" — names too little of car, factory",
+    "[10:35:32] image: dropped \"20051026235DR Dresden Gläserne Manufaktur.jpg\" — names too little of car, factory",
+    "[10:35:32] image: dropped \"20190617.VW-Manufaktur.-050.jpg\" — names too little of car, factory",
+    "[10:35:32] image: dropped \"20051026225DR Dresden Gläserne Manufaktur.jpg\" — names too little of car, factory",
+    "[10:35:32] image: dropped \"20051026205DR Dresden Gläserne Manufaktur.jpg\" — names too little of car, factory",
+    "[10:35:32] image: dropped \"20051026215DR Dresden Gläserne Manufaktur.jpg\" — names too little of car, factory",
+    "[10:35:32] image: dropped \"20051026220DR Dresden Gläserne Manufaktur.jpg\" — names too little of car, factory",
+    "[10:35:32] image: dropped \"Scenic view of the Volkswagen plant in Wolfsburg, Germany along the Mi\" — names too little of car, factory",
+    "[10:35:32] image: dropped \"Explore the picturesque town of Glashütte, Saxony with its classic str\" — names too little of car, factory",
+    "[10:35:32] image: dropped \"Aerial view of industrial buildings in Frankfurt am Main during sunset\" — names too little of car, factory",
+    "[10:35:32] image: dropped \"Explore the historic charm of Glashütte, a renowned watchmaking town i\" — names too little of car, factory",
+    "[10:35:32] image: dropped \"Quaint street scene in Glashütte, Saxony showcasing classic architectu\" — names too little of car, factory",
+    "[10:35:33] commons \"shopping street Madrid\": 15 usable of 24",
+    "[10:35:33] image: dropped \"Madrid shops.jpg\" — names too little of shopping, street",
+    "[10:35:33] image: dropped \"Madrid (49191258433).jpg\" — names too little of shopping, street",
+    "[10:35:33] image: dropped \"Real Madrid Football Club Shop 3 @moveinblue.JPG\" — names too little of shopping, street",
+    "[10:35:33] image: dropped \"Madrid (31297275927).jpg\" — names too little of shopping, street",
+    "[10:35:33] image: dropped \"01a Madrid Calle de Serrano 8 by Lou.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:35:33] image: dropped \"01 Madrid Calle de Serrano 8 by Lou.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:35:43] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=571 attempt=1 ms=9384",
+    "[10:35:43] image: \"Container Ship ‘Henry Hudson Bridge’ - Maasmond - Port of Ro\" names the story's topic without saying its point; the desk already holds one such, and looks further",
+    "[10:35:53] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=483 attempt=1 ms=8436",
+    "[10:35:53] image: \"A COSCO shipping cargo vessel docked at Maasvlakte port, ill\" names the story's topic without saying its point; the desk already holds one such, and looks further",
+    "[10:35:53] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"Frankfurt Express (ship, 2010) 001.jpg\"",
+    "[10:35:53] published \"اقتصاد منطقة اليورو ينمو 0.4% في الربع الثالث رغم انكماش فرنسا\" -> euro-area-gdp-grows-q3-france-contracts-65e2be",
+    "[10:36:02] openverse \"Rotterdam container terminal\": 10 usable of 20",
+    "[10:36:43] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1350 attempt=1 ms=37640",
+    "[10:36:43] desk notes: 28 facts (? 1, news 2, numbers 9, driver 6, remark 2, background 3, next 2, reaction 3), 2 quotes (claude-cli/claude-opus-5-5)",
+    "[10:37:40] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3169 attempt=1 ms=57308",
+    "[10:38:36] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3459 attempt=1 ms=55723",
+    "[10:38:36] desk model=claude-cli/claude-opus-5-5 applied=[lede,whyItMatters,body] rejected=[]",
+    "[10:38:36] desk \"أرباح «2 بوينت زيرو» الأبوظبية للمساهمين ترتفع إلى ثلاثة أمثالها في 9 أشهر\": rewrote lede, whyItMatters, body",
+    "[10:39:47] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=4559 attempt=1 ms=71073",
+    "[10:39:47] critic \"أرباح «2 بوينت زيرو» الأبوظبية للمساهمين ترتفع إلى ثلاثة أمثالها في 9 أشهر\": revise score=5 issues=10",
+    "[10:39:47]   · خطأ في السبب: تقول المقدمة «ويعود الجزء الأكبر من القفزة إلى إعادة تقييم استثماراتها»، ولا يقول أي مصدر ذلك. المصدر 1 يذكر أن المجموعة تأسست باندماج في نوفمبر م",
+    "[10:39:47]   · خطأ في المعنى والعدد: «وأضاف سوق أبوظبي للأوراق المالية سهم المجموعة إلى ست عقود مستقبلية جديدة» تحرّف الخبر. المصدر 3 يقول إن السوق أضاف المجموعة بوصفها واحدة ",
+    "[10:39:47]   · إسناد: عبارة «واستمدت المجموعة جانباً من مرونتها المالية من التخارج من «طاقة»» تقدّم تقدير الشركة كأنه حقيقة ثابتة. المصدر 3 ينسب ذلك إلى المجموعة: يعزز التخارج",
+    "[10:39:47]   · العنوان بلا متن: العنوان يقول إن الأرباح «ترتفع إلى ثلاثة أمثالها». لكن الحقائق التي تفسّر هذه الزيادة متفرقة: الأساس الافتراضي (+33%) في الفقرة الثالثة، والاند",
+    "[10:40:39] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3139 attempt=1 ms=51873",
+    "[10:41:15] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1385 attempt=1 ms=35848",
+    "[10:41:15] desk model=claude-cli/claude-opus-5-5 applied=[title,lede,whyItMatters,body] rejected=[]",
+    "[10:41:15] desk \"أرباح مالكي «2 بوينت زيرو» الأبوظبية تتجاوز ثلاثة أمثالها في 9 أشهر\": rewrote title, lede, whyItMatters, body",
+    "[10:42:47] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=6709 attempt=1 ms=91862",
+    "[10:42:47] critic (second pass) \"أرباح مالكي «2 بوينت زيرو» الأبوظبية تتجاوز ثلاثة أمثالها في 9 أشهر\": revise score=7 issues=10",
+    "[10:43:27] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1819 attempt=1 ms=40152",
+    "[10:44:05] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1578 attempt=1 ms=38597",
+    "[10:44:05] desk model=claude-cli/claude-opus-5-5 applied=[title,whyItMatters,body] rejected=[]",
+    "[10:44:05] desk \"أرباح مساهمي «2 بوينت زيرو» الأبوظبية ترتفع إلى أكثر من ثلاثة أمثالها في 9 أشهر\": rewrote title, whyItMatters, body",
+    "[10:44:06] last desk pass for 1 fault(s): عبارة مترجمة أو حشو: «قام ب»؛ الفعل نفسه («زار» لا «قام بزيا",
+    "[10:44:37] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1036 attempt=1 ms=31080",
+    "[10:44:37] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[10:44:37] desk \"أرباح مساهمي «2 بوينت زيرو» الأبوظبية ترتفع إلى أكثر من ثلاثة أمثالها في 9 أشهر\": rewrote body",
+    "[10:44:37] last desk pass: still 1 fault(s)",
+    "[10:44:37] mend refused by the checks (عبارة مترجمة أو حشو: «قام ب»؛ الفعل نفسه («زار» لا «قام بزيا); the reviewed draft goes on",
+    "[10:45:38] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3133 attempt=1 ms=61847",
+    "[10:45:40] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=0 attempt=1 ms=2032",
+    "[10:45:41] precheck: 1 sentence(s) no source bears on cut",
+    "[10:45:41]   ✂ [unsourced] وهي أول فترة مماثلة تقارن فيها المجموعة نتائجها بما قبل الاندماج الذي أسسها.",
+    "[10:45:41] precheck \"أرباح مالكي «2 بوينت زيرو» الأبوظبية تتجاوز ثلاثة أمثالها في 9 أشهر\": 1 sentence(s) no source bears on cut",
+    "[10:45:41] image: handout passed over (The National): credited to an agency («Unsplash»)",
+    "[10:45:50] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=672 attempt=1 ms=8620",
+    "[10:45:50] image: handout from The National, credited to مجموعة 2 بوينت زيرو: مقر مجموعة «2 بوينت زيرو» في سوق أبوظبي العالمي",
+    "[10:45:50] published \"أرباح مالكي «2 بوينت زيرو» الأبوظبية تتجاوز ثلاثة أمثالها في 9 أشهر\" -> 2pointzero-nine-month-profit-triples-117622",
+    "[10:45:50] run budget of 35 minutes spent; \"تراجع رسوم التداول يضغط على أرباح سوق دبي المالي في الربع الثالث\" waits for the next run"
+  ]
+}

@@ -223,10 +223,11 @@
     "samsung-raises-capex-despite-investor-disappointment-55895a:c5a20c49",
     "binance-freezes-3-billion-potential-hack-647d53:2997c61e",
     "binance-freezes-3-billion-potential-hack-647d53:3630c5b4",
-    "binance-freezes-3-billion-potential-hack-647d53:86705fb7"
+    "binance-freezes-3-billion-potential-hack-647d53:86705fb7",
+    "boj-holds-rate-inflation-hits-target-728e78:91475147"
   ],
-  "version": 43,
-  "updatedAt": "2026-10-30T08:36:46.654Z",
+  "version": 44,
+  "updatedAt": "2026-10-30T10:09:17.581Z",
   "lessons": [
     {
       "id": "L1",
@@ -535,11 +536,12 @@
         "saudi-oil-disruption-growth-budget-outlook-1f48b3:25ba2543",
         "riyadh-airport-partial-reopening-houthi-missile-attacks-fe5c08:32216bd5",
         "saudi-utility-tariffs-monthly-support-2027-748f63:862951ed",
-        "french-bond-yields-jump-after-protests-1b64ee:1cdf42b9"
+        "french-bond-yields-jump-after-protests-1b64ee:1cdf42b9",
+        "boj-holds-rate-inflation-hits-target-728e78:91475147"
       ],
-      "seen": 31,
+      "seen": 32,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-10-27T15:25:58.750Z",
+      "lastSeen": "2026-10-30T10:09:17.581Z",
       "status": "active",
       "previous": [
         "Take each event's day from the source's sentence about that event: 'this weekend' is not 'this week', and the event's day is not the report's publication date. Convert a weekday by counting back from publication. Keep announcements, remarks and replies on their own days.",
@@ -644,11 +646,12 @@
         "oecd-raises-2026-global-growth-forecast-e97fa1:a946a910",
         "saudi-east-west-pipeline-closure-brent-d9de59:dffb331f",
         "hormuz-shipping-traffic-plunges-tensions-5c1d93:72f5ffc3",
-        "egypt-offers-mining-incentives-equity-partnerships-42b042:f01d20ee"
+        "egypt-offers-mining-incentives-equity-partnerships-42b042:f01d20ee",
+        "boj-holds-rate-inflation-hits-target-728e78:91475147"
       ],
-      "seen": 5,
+      "seen": 6,
       "createdAt": "2026-09-25T16:38:55.969Z",
-      "lastSeen": "2026-09-29T22:29:37.734Z",
+      "lastSeen": "2026-10-30T10:09:17.581Z",
       "status": "active",
       "activatedAt": "2026-09-25T23:25:28.192Z"
     },
@@ -1119,6 +1122,14 @@
       "applied": [
         "sharpen L8 (+2)",
         "reinforce L2 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-10-30T10:09:17.581Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L6 (+1; reworded at most once a week)",
+        "reinforce L9 (+1)"
       ]
     }
   ],

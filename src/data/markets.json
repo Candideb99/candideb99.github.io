@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-30T09:16:23.880Z",
+  "updatedAt": "2026-10-30T10:45:50.890Z",
   "source": "Yahoo Finance",
   "quotes": [
     {
@@ -717,12 +717,12 @@
       "unit": null,
       "decimals": 2,
       "changeMode": "pct",
-      "price": 6173.55,
+      "price": 6152.93,
       "prev": 6207.07,
-      "time": "2026-10-30T09:01:15.000Z",
-      "currency": "EUR",
-      "change": -33.52,
-      "pct": -0.54,
+      "time": "2026-10-30T10:30:45.000Z",
+      "currency": null,
+      "change": -54.14,
+      "pct": -0.8722,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -844,7 +844,7 @@
         },
         {
           "d": "2026-10-30",
-          "c": 6173.55
+          "c": 6152.93
         }
       ]
     },
@@ -858,12 +858,12 @@
       "unit": null,
       "decimals": 2,
       "changeMode": "pct",
-      "price": 10763.06,
+      "price": 10744.91,
       "prev": 10722.07,
-      "time": "2026-10-30T09:01:22.000Z",
+      "time": "2026-10-30T10:30:49.000Z",
       "currency": "GBP",
-      "change": 40.99,
-      "pct": 0.3823,
+      "change": 22.84,
+      "pct": 0.213,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -985,7 +985,7 @@
         },
         {
           "d": "2026-10-30",
-          "c": 10763.06
+          "c": 10744.91
         }
       ]
     },
@@ -1281,12 +1281,12 @@
       "unit": null,
       "decimals": 4,
       "changeMode": "pct",
-      "price": 1.1196,
+      "price": 1.1203,
       "prev": 1.1181,
-      "time": "2026-10-30T09:15:42.000Z",
+      "time": "2026-10-30T10:45:44.000Z",
       "currency": "USD",
-      "change": 0.0015,
-      "pct": 0.1342,
+      "change": 0.0022,
+      "pct": 0.1968,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -1408,7 +1408,7 @@
         },
         {
           "d": "2026-10-30",
-          "c": 1.1196
+          "c": 1.1203
         }
       ]
     },
@@ -1422,12 +1422,12 @@
       "unit": null,
       "decimals": 4,
       "changeMode": "pct",
-      "price": 1.3419,
+      "price": 1.3426,
       "prev": 1.3375,
-      "time": "2026-10-30T09:15:42.000Z",
+      "time": "2026-10-30T10:45:44.000Z",
       "currency": "USD",
-      "change": 0.0044,
-      "pct": 0.329,
+      "change": 0.0051,
+      "pct": 0.3813,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -1549,7 +1549,7 @@
         },
         {
           "d": "2026-10-30",
-          "c": 1.3419
+          "c": 1.3426
         }
       ]
     },
@@ -1563,12 +1563,12 @@
       "unit": null,
       "decimals": 2,
       "changeMode": "pct",
-      "price": 157.367,
+      "price": 157.334,
       "prev": 157.649,
-      "time": "2026-10-30T09:16:23.000Z",
+      "time": "2026-10-30T10:45:49.000Z",
       "currency": "JPY",
-      "change": -0.282,
-      "pct": -0.1789,
+      "change": -0.315,
+      "pct": -0.1998,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -1690,7 +1690,7 @@
         },
         {
           "d": "2026-10-30",
-          "c": 157.367
+          "c": 157.334
         }
       ]
     },
@@ -1845,12 +1845,12 @@
       "unit": null,
       "decimals": 2,
       "changeMode": "pct",
-      "price": 49.9391,
+      "price": 49.9426,
       "prev": 49.9095,
-      "time": "2026-10-30T09:16:21.000Z",
+      "time": "2026-10-30T10:45:49.000Z",
       "currency": "TRY",
-      "change": 0.0296,
-      "pct": 0.0593,
+      "change": 0.0331,
+      "pct": 0.0663,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -1972,7 +1972,7 @@
         },
         {
           "d": "2026-10-30",
-          "c": 49.9391
+          "c": 49.9426
         }
       ]
     },
@@ -1986,12 +1986,12 @@
       "unit": null,
       "decimals": 4,
       "changeMode": "pct",
-      "price": 6.6417,
+      "price": 6.6419,
       "prev": 6.6605,
-      "time": "2026-10-30T09:16:15.000Z",
+      "time": "2026-10-30T10:44:38.000Z",
       "currency": "CNY",
-      "change": -0.0188,
-      "pct": -0.2823,
+      "change": -0.0186,
+      "pct": -0.2793,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -2113,7 +2113,7 @@
         },
         {
           "d": "2026-10-30",
-          "c": 6.6417
+          "c": 6.6419
         }
       ]
     },
@@ -2127,12 +2127,12 @@
       "unit": null,
       "decimals": 2,
       "changeMode": "pct",
-      "price": 101.734,
+      "price": 101.622,
       "prev": 102.037,
-      "time": "2026-10-30T09:06:21.000Z",
+      "time": "2026-10-30T10:35:48.000Z",
       "currency": "USD",
-      "change": -0.303,
-      "pct": -0.297,
+      "change": -0.415,
+      "pct": -0.4067,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -2254,7 +2254,7 @@
         },
         {
           "d": "2026-10-30",
-          "c": 101.734
+          "c": 101.622
         }
       ]
     },
@@ -2268,12 +2268,12 @@
       "unit": "دولار/برميل",
       "decimals": 2,
       "changeMode": "pct",
-      "price": 112.41,
+      "price": 113.42,
       "prev": 110.8,
-      "time": "2026-10-30T09:06:18.000Z",
+      "time": "2026-10-30T10:34:58.000Z",
       "currency": "USD",
-      "change": 1.61,
-      "pct": 1.4531,
+      "change": 2.62,
+      "pct": 2.3646,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -2395,7 +2395,7 @@
         },
         {
           "d": "2026-10-30",
-          "c": 112.41
+          "c": 113.42
         }
       ]
     },
@@ -2409,12 +2409,12 @@
       "unit": "دولار/برميل",
       "decimals": 2,
       "changeMode": "pct",
-      "price": 103.42,
+      "price": 104.06,
       "prev": 102,
-      "time": "2026-10-30T09:06:18.000Z",
+      "time": "2026-10-30T10:35:50.000Z",
       "currency": "USD",
-      "change": 1.42,
-      "pct": 1.3922,
+      "change": 2.06,
+      "pct": 2.0196,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -2536,7 +2536,7 @@
         },
         {
           "d": "2026-10-30",
-          "c": 103.42
+          "c": 104.06
         }
       ]
     },
@@ -2550,12 +2550,12 @@
       "unit": "دولار/مليون وحدة حرارية",
       "decimals": 3,
       "changeMode": "pct",
-      "price": 2.916,
+      "price": 2.906,
       "prev": 2.952,
-      "time": "2026-10-30T09:06:10.000Z",
+      "time": "2026-10-30T10:35:25.000Z",
       "currency": "USD",
-      "change": -0.036,
-      "pct": -1.2195,
+      "change": -0.046,
+      "pct": -1.5583,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -2677,7 +2677,7 @@
         },
         {
           "d": "2026-10-30",
-          "c": 2.916
+          "c": 2.906
         }
       ]
     },
@@ -2691,12 +2691,12 @@
       "unit": "دولار/أونصة",
       "decimals": 2,
       "changeMode": "pct",
-      "price": 4004.1,
+      "price": 3991.7,
       "prev": 4031.4,
-      "time": "2026-10-30T09:06:20.000Z",
+      "time": "2026-10-30T10:35:47.000Z",
       "currency": "USD",
-      "change": -27.3,
-      "pct": -0.6772,
+      "change": -39.7,
+      "pct": -0.9848,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -2818,7 +2818,7 @@
         },
         {
           "d": "2026-10-30",
-          "c": 4004.1
+          "c": 3991.7
         }
       ]
     },
@@ -2832,12 +2832,12 @@
       "unit": "دولار/أونصة",
       "decimals": 2,
       "changeMode": "pct",
-      "price": 50.945,
+      "price": 50.645,
       "prev": 52.38,
-      "time": "2026-10-30T09:06:20.000Z",
+      "time": "2026-10-30T10:35:46.000Z",
       "currency": "USD",
-      "change": -1.435,
-      "pct": -2.7396,
+      "change": -1.735,
+      "pct": -3.3123,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -2959,7 +2959,7 @@
         },
         {
           "d": "2026-10-30",
-          "c": 50.945
+          "c": 50.645
         }
       ]
     },
@@ -2973,12 +2973,12 @@
       "unit": "دولار/رطل",
       "decimals": 3,
       "changeMode": "pct",
-      "price": 6.5405,
+      "price": 6.519,
       "prev": 6.6025,
-      "time": "2026-10-30T09:06:15.000Z",
+      "time": "2026-10-30T10:35:31.000Z",
       "currency": "USD",
-      "change": -0.062,
-      "pct": -0.939,
+      "change": -0.0835,
+      "pct": -1.2647,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -3100,7 +3100,7 @@
         },
         {
           "d": "2026-10-30",
-          "c": 6.5405
+          "c": 6.519
         }
       ]
     },
@@ -3114,12 +3114,12 @@
       "unit": "سنت/بوشل",
       "decimals": 2,
       "changeMode": "pct",
-      "price": 604,
+      "price": 606,
       "prev": 603.75,
-      "time": "2026-10-30T09:06:12.000Z",
+      "time": "2026-10-30T10:35:31.000Z",
       "currency": "USX",
-      "change": 0.25,
-      "pct": 0.0414,
+      "change": 2.25,
+      "pct": 0.3727,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -3241,7 +3241,7 @@
         },
         {
           "d": "2026-10-30",
-          "c": 604
+          "c": 606
         }
       ]
     },
@@ -3537,12 +3537,12 @@
       "unit": "دولار",
       "decimals": 0,
       "changeMode": "pct",
-      "price": 77727.14,
+      "price": 77527.7,
       "prev": 77791.375,
-      "time": "2026-10-30T09:16:19.000Z",
+      "time": "2026-10-30T10:45:44.000Z",
       "currency": "USD",
-      "change": -64.235,
-      "pct": -0.0826,
+      "change": -263.675,
+      "pct": -0.339,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -3664,7 +3664,7 @@
         },
         {
           "d": "2026-10-30",
-          "c": 77727.14
+          "c": 77527.7
         }
       ]
     }
