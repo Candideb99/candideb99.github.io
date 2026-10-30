@@ -9112,6 +9112,34 @@
           "noted": []
         }
       ]
+    },
+    "week-in-review-2026-10-30-9577a4": {
+      "at": "2026-10-30T20:30:52.223Z",
+      "title": "حصاد الأسبوع: المركزي المصري يرفع الفائدة 100 نقطة أساس بعد تثبيت الفيدرالي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 73,
+            "checked": 73,
+            "supported": 66,
+            "weak": 6,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
