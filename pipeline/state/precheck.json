@@ -8977,6 +8977,113 @@
           "noted": []
         }
       ]
+    },
+    "fed-officials-logan-musalem-more-rate-hikes-249b0d": {
+      "at": "2026-10-30T18:27:34.726Z",
+      "title": "مسؤولان في الفيدرالي الأمريكي يريان حاجة إلى رفع الفائدة مجدداً",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v45",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 28,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "gold-falls-below-4000-rate-hike-bets-a278bb": {
+      "at": "2026-10-30T18:40:43.370Z",
+      "title": "الذهب يهبط إلى ما دون 4000 دولار مع تعزّز رهانات رفع الفائدة الأمريكية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v45",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 18,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 8,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "خسائر الذهب منذ مطلع أكتوبر: نحو 3.8%",
+              "quote": "ويتجه الذهب إلى تسجيل ثاني خسارة شهرية متتالية خلال أكتوبر/ تشرين الأول الجاري، بنحو 3.5 بالمئة، مقارنة مع سبتمبر/ أيلول الماضي في ظل ارتفاع أسعار النفط واستمرار المخاوف التضخمية.",
+              "source": "Anadolu Agency",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 15,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وخسر المعدن نحو 3.8% من قيمته منذ مطلع أكتوبر، ويتجه إلى خسارة للشهر الثاني على التوالي.",
+              "quote": "ويتجه الذهب إلى تسجيل ثاني خسارة شهرية متتالية خلال أكتوبر/ تشرين الأول الجاري، بنحو 3.5 بالمئة، مقارنة مع سبتمبر/ أيلول الماضي في ظل ارتفاع أسعار النفط واستمرار المخاوف التضخمية.",
+              "source": "Anadolu Agency",
+              "sourceN": 4,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "uae-central-bank-fines-foreign-bank-branch-bc9e7e": {
+      "at": "2026-10-30T18:51:52.977Z",
+      "title": "المركزي الإماراتي يغرّم فرع بنك أجنبي 200 مليون درهم لمخالفات غسل الأموال",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v45",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 20,
+            "checked": 20,
+            "supported": 18,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

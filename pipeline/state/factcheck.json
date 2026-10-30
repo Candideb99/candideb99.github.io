@@ -13607,6 +13607,162 @@
         ],
         "newFound": []
       }
+    },
+    "2pointzero-nine-month-profit-triples-117622": {
+      "at": "2026-10-30T18:04:01.926Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v44",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-30T10:45:50.010Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 33,
+        "checked": 33,
+        "supported": 27,
+        "weak": 2,
+        "noEvidence": 3,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "صافي ربح المجموعة في 9 أشهر: 9.5 مليار درهم",
+        "وصفقتا الغاز الأمريكي والكهرباء الأفريقية هما ما يُفترض أن ينقل الثقل إلى دخل نقدي متكرر يصمد إذا تراجعت تقييمات المحفظة.",
+        "تأسست المجموعة في نوفمبر من العام الماضي باندماج «ملتيبلاي» و«غذاء» و«2 بوينت زيرو»، وتركز على قطاعي الطاقة والاستهلاك.",
+        "وتبلغ نسبة صافي دينها إلى حقوق الملكية 0.21 مرة، أي أن ديونها بعد خصم النقد تعادل نحو خُمس أموال مساهميها."
+      ],
+      "weak": [
+        {
+          "sentence": "حين تأتي 5.8 مليار درهم من أصل 9.5 مليار من إعادة تقييم الاستثمارات، تتبع أرباح المجموعة قيم محفظتها أكثر من نشاطها التشغيلي، والتكاليف تضغط على ربح الأعمال نفسها.",
+          "quote": "Net profit includes AED5.8 billion of net fair value gains on investments."
+        },
+        {
+          "sentence": "وحين تُعامل الشركات المندمجة كأنها كانت مجموعة واحدة في فترة المقارنة، يأتي النمو أكثر اعتدالاً: فعلى هذا الأساس الافتراضي ارتفع صافي ربح المجموعة المعلن 33% على أساس سنوي إلى 9.5 مليار درهم (2.59 مليار دولار)، ونمت الإيرادات 106% إلى 33.7 مليار درهم (9.18 مليار دولار).",
+          "quote": "Reported net profit rose 33 percent pro forma year on year to AED9.5 billion, while revenue grew 106 percent on a pro forma basis, following the successful mega-merger to form the 2PointZero Group and the integration of Tendam into the group."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "euro-area-gdp-grows-q3-france-contracts-65e2be": {
+      "at": "2026-10-30T18:04:01.956Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v44",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-30T10:35:53.185Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "fromCopy": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 37,
+        "checked": 37,
+        "supported": 31,
+        "weak": 6,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "تباطأ النمو من 0.6% في الربع الثاني، بحسب تقدير أولي ليوروستات يخضع للمراجعة في 13 نوفمبر",
+          "quote": "All figures presented in this release may be revised with the GDP t+45 flash estimate scheduled for 13 November 2026 and subsequently by Eurostat’s regular estimates of GDP and main aggregates (including employment) scheduled for 7 December 2026 and 19 January 2027."
+        },
+        {
+          "sentence": "نما الناتج المحلي الإجمالي لمنطقة اليورو 0.4% في الربع الثالث مقارنة بالربع السابق، رغم انكماش الاقتصاد الفرنسي 0.1%، وفق تقدير أولي سريع أصدره الجمعة مكتب الإحصاء التابع للاتحاد الأوروبي (يوروستات).",
+          "quote": "Among the Member States for which data are available for the third quarter of 2026, Ireland (+5.5%) recorded the highest increase compared to the previous quarter, followed by Estonia, Spain and Netherlands (all +0.6%). Declines were recorded in Lithuania (-1.0%) and France (-0.1%)."
+        },
+        {
+          "sentence": "جاءت قراءة 0.4% فوق نمو ألمانيا (0.2%) وإيطاليا (صفر) وفرنسا (-0.1%).",
+          "quote": "Germany 0.3 0.4 0.3 0.2 0.3 0.6 1.0 1.2"
+        },
+        {
+          "sentence": "فوتيرة المنطقة في هذا الربع صنعتها اقتصادات أخرى في التكتل، بينها قفزة أيرلندية بنسبة 5.5% في تقدير تجريبي سيخضع للمراجعة، وأي تعديل لها في 13 نوفمبر أو بعده ينتقل إلى رقم المنطقة نفسه.",
+          "quote": "Particular care must be taken when interpreting this estimate as it is experimental work and uses data sources which are incomplete. This preliminary estimate is based predominantly on output data and therefore it will be subject to revision over time when results from the expenditure side will be incorporated."
+        },
+        {
+          "sentence": "وعلى أساس سنوي هبط الناتج الفرنسي 0.1% بعد نمو 0.5% في الربع الثاني، فكانت فرنسا الدولة الوحيدة التي سجلت معدلاً سنوياً سلبياً بين الدول التي نُشرت بياناتها، مقابل معدلات إيجابية في أربع عشرة دولة.",
+          "quote": "The year-on-year growth rate was positive for fourteen countries and negative for one country."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "boj-holds-rate-inflation-hits-target-728e78": {
+      "at": "2026-10-30T18:04:50.940Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v43",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-30T09:04:19.334Z",
+      "sourcesRead": 5,
+      "sourcesAll": 5,
+      "fromCopy": 1,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 39,
+        "checked": 39,
+        "supported": 33,
+        "weak": 5,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "title",
+          "sentence": "بنك اليابان يقرّ ببلوغ التضخم الأساسي مستهدف 2% بعد 13 عاماً",
+          "quote": "أبقى بنك اليابان أسعار الفائدة دون تغيير، الجمعة، عند 1.25 في المائة، لكنه أعلن بلوغ التضخم الأساسي مستويات تتوافق مع مستهدفه البالغ 2 في المائة، في تحول مفصلي في مسار سياسته النقدية بعد معركة امتدت نحو 14 عاماً للوصول إلى هذا الهدف، محذراً في الوقت نفسه من مخاطر تجاوز التضخم المستويات المستهدفة، في إشارة إلى احتمال رفع أسعار الفائدة مجدداً في وقت قريب قد يكون ديسمبر (كانون الأول).",
+          "source": "Asharq Al-Awsat"
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "ثبّت البنك الفائدة عند 1.25% بتصويت 8 مقابل 1، ويتوقع معظم المحللين في استطلاع لرويترز رفعها إلى 1.5% في ديسمبر",
+          "quote": "ويتوقع معظم المحللين الذين استطلعت «رويترز» آراءهم أن يرفع بنك اليابان سعر الفائدة إلى 1.5 في المائة خلال ديسمبر، على أن تتبع ذلك زيادات إضافية في العام المقبل."
+        },
+        {
+          "sentence": "أعلن بنك اليابان الجمعة أن التضخم الأساسي بلغ مستوى يتوافق عموماً مع مستهدفه البالغ 2%، بعد أكثر من 13 عاماً من اعتماد هذا الهدف، وأبقى سعر الفائدة الرئيسي عند 1.25% بأغلبية ثمانية أصوات مقابل صوت واحد.",
+          "quote": "The Bank of Japan said on Oct. 30 inflation had hit its 2 percent target, more than 13 years after it adopted the goal in a bid to pull the economy out of deflation."
+        },
+        {
+          "sentence": "وتجاوز مؤشر أسعار المستهلكين الأساسي مستوى 2% أحياناً في مطلع العقد الحالي، لكن الجمعة كانت المرة الأولى التي يؤكد فيها البنك أن الاتجاه طويل الأجل للأسعار بلغ المستهدف.",
+          "quote": "While core consumer inflation intermittently topped the level in the early 2020s, Friday marked the first time that the central bank confirmed the long-term price trend had been achieved."
+        },
+        {
+          "sentence": "وحذر البنك من أن الزيادة السنوية في المؤشر يُرجح أن تتسارع إلى مستوى يتجاوز 2% بوضوح.",
+          "quote": "The BoJ warned Friday that the year-on-year rate of increase in CPI excluding fresh food \"is likely to accelerate to a level clearly above two percent\"."
+        },
+        {
+          "sentence": "وتوقع أن يبلغ سعر الفائدة 2% بحلول منتصف العام المقبل، مع ميل المخاطر بعدها نحو تشديد إضافي.",
+          "quote": "\"If anything, the risks are tilted towards further tightening thereafter,\" he added."
+        }
+      ],
+      "outcome": "listed"
     }
   }
 }

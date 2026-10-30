@@ -1,0 +1,95 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-30T18:04:01.235Z",
+  "durationSec": 131,
+  "read": 3,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "2pointzero-nine-month-profit-triples-117622",
+      "title": "أرباح مالكي «2 بوينت زيرو» الأبوظبية تتجاوز ثلاثة أمثالها في 9 أشهر",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 33,
+        "checked": 33,
+        "supported": 27,
+        "weak": 2,
+        "noEvidence": 3,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "euro-area-gdp-grows-q3-france-contracts-65e2be",
+      "title": "اقتصاد منطقة اليورو ينمو 0.4% في الربع الثالث رغم انكماش فرنسا",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 37,
+        "checked": 37,
+        "supported": 31,
+        "weak": 6,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "boj-holds-rate-inflation-hits-target-728e78",
+      "title": "بنك اليابان يقرّ ببلوغ التضخم الأساسي مستهدف 2% بعد 13 عاماً",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 39,
+        "checked": 39,
+        "supported": 33,
+        "weak": 5,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 3,
+    "failures": 0,
+    "promptTokens": 30137,
+    "completionTokens": 23876,
+    "cacheReadTokens": 0,
+    "costUsd": 0.7185,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 3
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[18:04:01] second look: 3 to read now (3 published pieces not yet read; 163 read clean before publication and left out of the audit sample)",
+    "[18:04:02] euro-area-gdp-grows-q3-france-contracts-65e2be:   source https://www.ft.com/content/6f879bc5-be07-4a66-afea-bcbe73723a9f?syn-25a6b1a6=1: http-403; read from the copy saved at publication (fetched then)",
+    "[18:04:03] euro-area-gdp-grows-q3-france-contracts-65e2be:   source https://www.bloomberg.com/news/articles/2026-10-30/french-economy-unexpectedly-s: subscribers-only; read from the copy saved at publication (fetched then)",
+    "[18:04:50] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1415 attempt=1 ms=46576",
+    "[18:04:50] 2pointzero-nine-month-profit-triples-117622: 33 of 33 sentences checked · 27 supported · 4 without a source · 0 confirmed error(s)",
+    "[18:04:52] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1780 attempt=1 ms=48880",
+    "[18:04:52] euro-area-gdp-grows-q3-france-contracts-65e2be: 37 of 37 sentences checked · 31 supported · 0 without a source · 0 confirmed error(s)",
+    "[18:06:12] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2970 attempt=1 ms=78518",
+    "[18:06:12] boj-holds-rate-inflation-hits-target-728e78: 39 of 39 sentences checked · 33 supported · 0 without a source · 0 confirmed error(s) · 1 listed for a person"
+  ]
+}
