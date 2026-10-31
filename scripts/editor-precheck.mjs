@@ -178,7 +178,9 @@ for (const x of shared) redo.push(x.slug);
 if (shared.length) fine.push(`One photo on two stories; the newer is given another: ${shared.map((x) => `${x.slug} (${x.keeps} runs it)`).join(", ")}.`);
 
 // 5. The same event twice in the last two days: four shared headline words and 60% of the shorter headline's, as
-// src/lib/articles.ts decides it for the front page.
+// src/lib/articles.ts decides it for the front page. News stories only: a weekly, an explainer or an analysis is written
+// from the week's stories and names their events by design (2026-10-31: the weekly led on Egypt's rate rise and was
+// reported as that story filed twice), and the newsroom's de-duplication (select.mjs, events.mjs) is a news rule.
 const STOP = new Set(["علي", "بعد", "قبل", "حول", "دون", "منذ", "بين", "عبر", "خلال", "وسط", "امام", "عند", "حتي", "التي", "الذي", "هذا", "هذه", "اول", "اكثر", "اقل", "مع"]);
 function headlineWords(title) {
   const text = title.replace(/[ً-ٰٟـ]/g, "").replace(/[أإآ]/g, "ا").replace(/ة/g, "ه").replace(/ى/g, "ي").replace(/ترامب/g, "ترمب").replace(/اميرك/g, "امريك");
@@ -190,13 +192,14 @@ function headlineWords(title) {
   return new Set(words.filter((w) => w.length > 2 && !STOP.has(w)));
 }
 const pairs = [];
-for (let i = 0; i < lastTwo.length; i++) {
-  for (let j = i + 1; j < lastTwo.length; j++) {
-    const a = headlineWords(lastTwo[i].title);
-    const b = headlineWords(lastTwo[j].title);
+const lastTwoNews = lastTwo.filter((s) => s.kind === "news");
+for (let i = 0; i < lastTwoNews.length; i++) {
+  for (let j = i + 1; j < lastTwoNews.length; j++) {
+    const a = headlineWords(lastTwoNews[i].title);
+    const b = headlineWords(lastTwoNews[j].title);
     let shared = 0;
     for (const w of a) if (b.has(w)) shared++;
-    if (shared >= 4 && shared / Math.min(a.size, b.size) >= 0.6) pairs.push(`«${lastTwo[i].title}» / «${lastTwo[j].title}»`);
+    if (shared >= 4 && shared / Math.min(a.size, b.size) >= 0.6) pairs.push(`«${lastTwoNews[i].title}» / «${lastTwoNews[j].title}»`);
   }
 }
 if (pairs.length) findings.push({ key: `dup:${createHash("sha1").update([...pairs].sort().join("|")).digest("hex").slice(0, 10)}`, text: `The same event was filed twice in the last two days: ${pairs.join("; ")}. That is a de-duplication weakness in pipeline/lib/select.mjs: tighten the rule; do not delete or edit the articles.` });
