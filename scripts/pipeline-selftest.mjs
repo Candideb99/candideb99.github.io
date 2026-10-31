@@ -1181,6 +1181,26 @@ if (spawnSync("git", ["--version"]).status === 0) {
   // (3) A minus typed after a box's figure is its sign; a spaced range is not touched.
   check("a trailing minus in a box value is the figure's sign", ["46%-", "46% -", "12 - 15%", "2025-2026"].map((v) => figureOnly(v)), ["−46%", "−46%", "12 - 15%", "2025-2026"]);
   // (4) One measure per chart: a company's revenue beside its net profit is two (SpaceX's results).
+  // (5) The China factory explainer (the owner, 2026-10-31: "feels like this article is badly written"): a list of
+  // questions and answers, a dek and a body built on what things are not, and Reuters' forecast in its glossary.
+  const { styleIssues, negativeTurns } = await import("../pipeline/lib/style.mjs");
+  const explainer = {
+    title: "ماذا يعني تراجع مؤشر المصانع الصينية إلى 49.3 نقطة؟",
+    subtitle: "القراءة تقيس انتشار التراجع بين المصانع، لا مقدار انكماش إنتاجها",
+    lede: "تراجع مؤشر مديري المشتريات في الصين إلى 49.3 نقطة في أكتوبر من 50.1 نقطة في سبتمبر.",
+    body: "لا يأتي المؤشر من عدّ السلع المنتجة، بل من استبيان شهري.\n\n## ما الذي لا يقيسه الرقم؟\n\nلا يقيس المؤشر حجم تراجع الإنتاج.\n\n## هل تراجعت المصانع كلها؟\n\nلا. فالمتوسط يخفي قطاعات نمت.\n\n## هل يعني ذلك أن الاقتصاد يتباطأ؟\n\nلا يزال النمو عند 4.5%.",
+    whyItMatters: "",
+    keyFacts: [],
+  };
+  const flags = styleIssues(explainer, { kind: "explainer" }).issues;
+  const plain = styleIssues({ ...explainer, subtitle: "القراءة تقيس انتشار التراجع بين المصانع", body: "يأتي المؤشر من استبيان شهري.\n\n## عتبة 50 نقطة نقطة التوازن\n\nيقيس المؤشر الاتجاه.\n\n## لماذا تتقارب الكفتان؟\n\nلا يزال النمو عند 4.5%." }, { kind: "explainer" }).issues;
+  check("an explainer of questions and answers, a contrasting dek and a body of «لا» turns are sent back; a plain one is not", [
+    flags.some((i) => i.includes("كلها أسئلة")), flags.some((i) => i.includes("الوصف الفرعي يقول ما ليس")), flags.some((i) => i.includes("جمل تقول ما ليس")),
+    plain.some((i) => /كلها أسئلة|يقول ما ليس|تقول ما ليس/.test(i)),
+    negativeTurns("لا يزال النمو قوياً، لا سيما في الصناعة، ولا بد من الحذر").length,
+  ], [true, true, true, false, 0]);
+  const glossary = normalizeDraft({ title: "ماذا يعني المؤشر؟", subtitle: "د", slug: "x", lede: "ل", body: "ب", key_facts: [{ label: "مؤشر الانتشار", value: "نسبة المتحسنين مضافاً إليها نصف من لم يتغير" }, { label: "توقع استطلاع رويترز لأكتوبر", value: "50 نقطة، مقابل قراءة فعلية عند 49.3 نقطة" }, { label: "النمو بمعدل سنوي", value: "نمو الربع عن الربع السابق مفترضاً تكراره أربعة فصول" }], tags: ["الصين"], regions: ["آسيا"] }, { kind: "explainer" }).keyFacts.map((k) => k.label);
+  check("an explainer's glossary keeps terms and drops a figure of the news", glossary, ["مؤشر الانتشار", "النمو بمعدل سنوي"]);
   check("a chart of revenue beside net profit is dropped; profit over time is kept", [
     normalizeChart({ type: "bar", categories: ["الإيرادات", "صافي الربح"], series: [{ name: "فعلي", values: [14.6, 4.4] }, { name: "متوقع", values: [12.72, 1.57] }] }),
     Boolean(normalizeChart({ type: "bar", categories: ["الربع الثالث 2024", "الربع الثالث 2025", "الربع الثالث 2026"], series: [{ name: "صافي الربح", values: [1, 2, 3] }] })),

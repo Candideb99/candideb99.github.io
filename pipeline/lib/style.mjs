@@ -154,6 +154,24 @@ export function absenceNotes(text) {
 }
 
 /**
+ * The turns that say what a thing is not (2026-10-31): «لا X، بل Y» in one sentence; a contrast tail «…، لا Y»; a sentence
+ * that opens on «لا/ليس»; a bare «لا.» answering a question; «ما الذي لا يقيسه…». Never «لا يزال»، «لا سيما»، «لا بد»،
+ * «لا يقل عن»، «لا يتجاوز»، «لا يُستبعد»، «لا يمكن»، «لا يوجد». Each match is returned with a few words around it.
+ */
+const NOT_EXCEPT = "(?!سيما|سيّما|بد|يزال|تزال|يزالون|يقل|تقل|يتجاوز|تتجاوز|يُستبعد|يستبعد|تُستبعد|يمكن|يُمكن|تستطيع|يستطيع|توجد|يوجد)";
+const NEGATIVE_TURNS = [
+  new RegExp(`(?:^|[\\s«(])(?:و|ف)?(?:لا|ليس|ليست|لم|لن)\\s${NOT_EXCEPT}[^.؟!\\n]{1,140}?\\s(?:بل|وإنما|إنما)\\s`, "gu"),
+  new RegExp(`[،,]\\s*(?:لا|وليس|ليس|لا أن)\\s${NOT_EXCEPT}`, "gu"),
+  /(?:^|\n)\s*(?:لا|كلا)[.،]/gu,
+  new RegExp(`(?:^|[.؟!:]\\s+|\\n)(?:و|ف)?(?:لا|ليس|ليست)\\s${NOT_EXCEPT}`, "gu"),
+  /ما (?:الذي )?لا (?:يقيس|يقول|يعني|يكشف|يظهر|يُظهر|تقيس|تقول|تعني)/gu,
+];
+export function negativeTurns(text) {
+  const t = String(text ?? "");
+  return NEGATIVE_TURNS.flatMap((re) => [...t.matchAll(re)].map((m) => t.slice(m.index, m.index + 50).replace(/\s+/g, " ")));
+}
+
+/**
  * A paragraph that opens by pointing back at the one before («ولتطوير هذه الحلول، …»، «إلى جانب الأدوات التقنية، …»،
  * «ووضع الوزير ذلك في تصور أوسع»): the bridge a model builds between its notes, which a desk does not write. A
  * paragraph that opens with its own actor, figure or date needs no bridge. Time phrases («هذا العام») are not one.
@@ -517,7 +535,20 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
     if (units) issues.push(`مثال بعملة مخترعة («${units[0]}»)؛ احسب بالعملة الحقيقية وبالأرقام التي في القصص المرفقة، أو بالدولار إن كان الموضوع عالمياً.`);
     const last = body.split(/\n\s*\n/).map((p) => p.trim()).filter((p) => p && !p.startsWith("## ")).pop() ?? "";
     if (/^(?:و|ف)?(?:للمتابعة|أفضل ما يُ?تابَ?ع|ما يُ?تابَ?ع|ما يجب (?:متابعته|مراقبته)|من يريد (?:الحكم|متابعة|تقدير)|ومن يريد|يبقى على (?:القارئ|المتابع))/.test(last)) issues.push("الشرح يُختم بقائمة مؤشرات للمتابعة؛ اختمه بآخر ما يحتاجه القارئ من الجواب، أو بالموعد التالي الذي تذكره القصص.");
+    // A list of questions and answers (the owner, 2026-10-31, on the China factory explainer: "feels like this article is
+    // badly written"): every subhead a question, in 32 of the 33 explainers published, as the schema had asked.
+    const questions = [...body.matchAll(/^##\s+(.+)$/gm)].filter((m) => /[؟?]\s*$/.test(m[1])).length;
+    if (questions >= 2) issues.push(`${questions} عناوين فرعية كلها أسئلة، فصار الشرح قائمة أسئلة وأجوبة؛ العنوان الفرعي يقول ما يُظهره القسم («عتبة 50 نقطة نقطة التوازن»)، وسؤال واحد على الأكثر.`);
+    // The dek says what the answer is, never what it is not («القراءة تقيس انتشار التراجع بين المصانع، لا مقدار انكماش
+    // إنتاجها», the same explainer).
+    const dekTurn = negativeTurns(dek);
+    if (dekTurn.length) issues.push(`الوصف الفرعي يقول ما ليس عليه الجواب («${dekTurn[0].trim()}…»)؛ قل الجواب نفسه في جملة مثبتة.`);
   }
+  // Built on what things are not: «لا يأتي… بل…»، «…، لا مقدار…»، «لا يقيس…»، «لا.» (one of the signs of machine writing on
+  // the list the owner sent on 2026-10-23). Over the 451 pieces of 2026-10-31, four or more such turns stood in 7 of 33
+  // explainers (the China factory explainer seven) and in the "robotic" AI-agents reading, and in no news story or analysis.
+  const turns = negativeTurns(`${dek}\n${lede}\n${body}`);
+  if (turns.length >= 4) issues.push(`${turns.length} جمل تقول ما ليس عليه الشيء («${turns.slice(0, 2).map((t) => t.trim()).join("»، «")}…»)؛ قل ما هو: جملة نفي واحدة على الأكثر، حيث يخطئ القارئ دونها، والباقي مثبت.`);
 
   // Dates the desks write: the weekday this week, the month this year, the year only when it is not this one.
   const year = new Date().getUTCFullYear();

@@ -479,7 +479,10 @@ export function normalizeDraft(d, { kind = "news" } = {}) {
   const keyFacts = boxFacts(
     (Array.isArray(d.key_facts) ? d.key_facts : [])
       .map((f) => (typeof f === "string" ? { label: "", value: fixNames(f).trim() } : { label: fixNames(String(f.label ?? "")).trim(), value: figureOnly(fixNames(String(f.value ?? "")), f.label) }))
-      .filter((f) => f.value && f.label),
+      .filter((f) => f.value && f.label)
+      // An explainer's box is its glossary, «مفاهيم أساسية»: a term and its meaning, never a figure of the news (the China
+      // PMI explainer of 2026-10-31 listed Reuters' forecast there; 5 of 124 published entries were such figures).
+      .filter((f) => kind !== "explainer" || !(isFigure(f.value, f.label) && /\d/.test(normalizeDigits(f.value)))),
     kind,
   ).slice(0, 6);
   const draft = {
@@ -609,11 +612,11 @@ const HUB_IMAGE_QUERIES = `"image_queries": ["2-3 short English search terms (2-
 
 const EXPLAINER_SCHEMA = `{
   "title": "Arabic title: the reader's question itself, ending with «؟» (30-85 chars), in the everyday words of someone who has just read the news; it may carry the news fact or its figure first, as the wires title their explainers («النفط فوق 100 دولار، فلماذا لم يرتفع أكثر؟»); never a term the piece has to teach (unless the news headline already used it), never a statement, never a colon hinge (the owner, 2026-09-24 and 2026-10-23)",
-  "subtitle": "Arabic dek: the answer, in one sentence (max 160 chars), as a statement of its own, never a reply to the headline: no opening «لا،»، «نعم،»، «الجواب:» (2026-10-30: «لا، فالرقم الأمريكي معدل سنوي…» under a question read as a chat answer; write «الرقم الأمريكي معدل سنوي يعادل نحو 0.8% في الربع…»), and never the lede's own sentence; never what the piece does («يشرح…»، «نوضح…»), never a list of factors",
+  "subtitle": "Arabic dek: the answer, in one sentence (max 160 chars), as a statement of its own, never a reply to the headline: no opening «لا،»، «نعم،»، «الجواب:» (2026-10-30: «لا، فالرقم الأمريكي معدل سنوي…» under a question read as a chat answer; write «الرقم الأمريكي معدل سنوي يعادل نحو 0.8% في الربع…»), and never the lede's own sentence; never what the piece does («يشرح…»، «نوضح…»), never a list of factors; what the answer IS, never a contrast with what it is not («…، لا مقدار…»)",
   "slug": "english-kebab-case-slug",
   "lede": "2-3 sentences, under 60 words: the fact from the stories that raised the question, with its figure and its day or date as the story gives them, then the answer in plain words; never a definition («X هو…»، «يُقصد بـ…»، «يطلق الاقتصاديون على…»)",
-  "body": "400-650 words in Markdown after the lede: the answer developed in the order the reader's next questions come, carried by the stories' real figures. At most four '## ' subheads, each the reader's next question in his own words («من يدفع الفرق؟») or its answer stated as a fact, as Reuters heads its explainers; a short piece needs two or none. No label subheads (تعريف، مثال توضيحي، أخطاء شائعة، ما يجب متابعته), no closing list of indicators, no recap. No bullet lists.",
-  "key_facts": [{"label": "a term the piece uses", "value": "its meaning in one short line"}],
+  "body": "400-650 words in Markdown after the lede: the answer developed, deeper into the same question (how the thing works, why the figure reads as it does, what would change the answer), carried by the stories' real figures. At most three '## ' subheads, each saying what its section shows as a statement («عتبة 50 نقطة نقطة التوازن»); at most ONE of them a question: every subhead a question turns the piece into a list of questions and answers, which all 32 explainers of October had become (the owner, 2026-10-31). A short piece needs two subheads or none. No label subheads (تعريف، مثال توضيحي، أخطاء شائعة، ما يجب متابعته), no closing list of indicators, no recap. No bullet lists.",
+  "key_facts": [{"label": "a term the piece uses", "value": "its meaning in one short line, never a figure, a forecast or a fact of the news"}],
   "why_it_matters": "One Arabic paragraph (40-80 words): what the answer changes for the reader's money, prices or country, or for how he reads the next news of this kind, from the stories' facts; not a summary of the piece; never address the reader, never open with «يعكس/يمثل/يُعدّ»",
   "tags": ["3-5 Arabic tags"],
   "regions": ["1-2 region names, only from: ${REGION_NAMES}"],
@@ -640,8 +643,11 @@ HOW TO WRITE IT
 - Write as the reporter who covers this beat explains it to a colleague who missed the news: plain, specific, sure of the facts, never a lecture and never a textbook entry.
 - Open on the news, never on a definition: the fact from the first story, with its figure and its day or date, then the answer in a sentence. The headline is the question as the reader would ask it; the dek is the answer.
 - The stories' real figures carry the explanation; the explainers of Reuters, الشرق بلومبرغ and the FT use real, sourced numbers and no invented example, and where a figure is missing they tell the mechanism in plain prose. Only when arithmetic itself is the answer, build it on the stories' figures, in the story's own currency, and say plainly where it becomes a hypothesis («لو مرّر التاجر الزيادة كاملة…»); never an invented currency unit («وحدات نقدية») and never a made-up scenario when the story gives the real numbers.
-- Standard definitions and mechanisms are stated directly and briefly, without a source; anything about these weeks comes from the material. A term is explained once, where the reader first needs it.
-- Answer the question in the first two paragraphs, then take the reader's next questions in turn. Stop when the answer is complete: the last paragraph is the last thing the reader needs, or the next dated decision or release the stories name; never a recap, never a list of indicators to watch, never advice.
+- Standard definitions and mechanisms are stated directly and briefly, without a source; anything about these weeks comes from the material. A term is explained once, where the reader first needs it. A definition or a method is stated as the figure is really built, or in words general enough to stay true: a composite index combines its parts with their weights and is never reduced to one count (China's official factory index weighs five sub-indices).
+- Answer the question in the first two paragraphs, then go deeper into the same question: how the thing works, why this figure reads as it does, what would change the answer. Stop when the answer is complete: the last paragraph is the last thing the reader needs, or the next dated decision or release the stories name; never a recap, never a list of indicators to watch, never advice.
+- NEVER RETELL THE STORY. The reader has read it, and it is a link away. A story's fact enters only where it carries the explanation: the figure the question is about, the number that shows the mechanism, each once. Its causes, reactions, quotes, sector details, forecasts and outlook stay in the story; the China factory explainer of 2026-10-31 retold its news story of 35 minutes before, Reuters' forecast, the holiday spending, the analyst's words and the GDP figures, under questions of its own, and readers met the same story twice. When the question cannot be answered without them, it is not an explainer's question.
+- SAY WHAT A THING IS. A sentence about what something is not, or a turn «لا X، بل Y» / «…، لا Y», appears once in a piece at most, where the reader would otherwise go wrong, and never in the dek; the rest says what it is («يقيس المؤشر انتشار التراجع بين المصانع»). A piece built on «لا يقيس… لا يعني… لا أن…» reads as a machine (the same explainer had seven).
+- One idea is said once: a point the lede made is developed, never restated in other words further down.
 - One story's facts never become another's: a figure stays with its own event and date.
 LENGTH: 450-700 words in the lede and body together (Reuters' explainers run 640-810).
 Return one JSON object exactly in this shape:
