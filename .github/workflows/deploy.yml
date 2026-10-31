@@ -33,7 +33,7 @@ jobs:
           # to the runners' cached 22.23.3, under Astro 7.4's floor of 22.23.4, the security release of 2026-10-20, and
           # the deploy stopped (2026-10-23). Raise it there, once, when a new release is wanted.
           node-version-file: .node-version
-          cache: npm
+          # No npm cache: on 2026-10-30 its restore stalled the weekly review ten minutes ("Egress is over the account limit"), where npm ci takes seconds.
       - run: npm ci --no-audit --no-fund
       - name: Refresh market quotes and the calendar (best effort; the committed files are the fallback)
         timeout-minutes: 5

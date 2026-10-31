@@ -24,6 +24,16 @@ export function withStandIns(standIns) {
   return () => Object.assign(outside, saved);
 }
 
+/** A photograph's type from its opening bytes, or null. */
+export function sniffImage(bytes) {
+  const b = Buffer.from(bytes ?? []);
+  if (b.length >= 3 && b[0] === 0xff && b[1] === 0xd8 && b[2] === 0xff) return "image/jpeg";
+  if (b.length >= 8 && b.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))) return "image/png";
+  if (b.length >= 12 && b.subarray(0, 4).toString("latin1") === "RIFF" && b.subarray(8, 12).toString("latin1") === "WEBP") return "image/webp";
+  if (b.length >= 6 && /^GIF8[79]a$/.test(b.subarray(0, 6).toString("latin1"))) return "image/gif";
+  return null;
+}
+
 /** Vision providers cannot fetch Wikimedia URLs themselves; inline the thumbnails as data URLs. */
 export async function inlineImage(url, log = () => {}) {
   try {
@@ -32,11 +42,15 @@ export async function inlineImage(url, log = () => {}) {
       log(`image: thumbnail HTTP ${response.status} for ${url.slice(0, 90)}`);
       return null;
     }
-    const type = response.headers.get("content-type") ?? "image/jpeg";
+    let type = (response.headers.get("content-type") ?? "image/jpeg").split(";")[0].trim();
+    // A server that labels its photographs as bare bytes (Asharq Business's CDN answers `application/octet-stream` for
+    // its JPEGs, so its lead photograph never reached the sources'-photo tier; the audit of 2026-10-31) is read by the
+    // file's own opening bytes.
+    const unlabelled = !type || /^(?:application\/octet-stream|binary\/octet-stream)$/i.test(type);
     // Only what the vision model reads: a site that answers a photo request with a page (hotlink protection) or an
     // AVIF or SVG file would fail the whole call (found in the photo trials of 2026-09-27).
-    if (!/^image\/(?:jpeg|jpg|png|webp|gif)\b/i.test(type)) {
-      log(`image: ${type.split(";")[0] || "no content type"} is not a photograph the judge can read (${url.slice(0, 90)})`);
+    if (!unlabelled && !/^image\/(?:jpeg|jpg|png|webp|gif)$/i.test(type)) {
+      log(`image: ${type || "no content type"} is not a photograph the judge can read (${url.slice(0, 90)})`);
       return null;
     }
     const bytes = Buffer.from(await response.arrayBuffer());
@@ -44,7 +58,14 @@ export async function inlineImage(url, log = () => {}) {
       log(`image: thumbnail too large (${bytes.length} bytes)`);
       return null;
     }
-    return `data:${type.split(";")[0]};base64,${bytes.toString("base64")}`;
+    if (unlabelled) {
+      type = sniffImage(bytes);
+      if (!type) {
+        log(`image: unlabelled bytes that are not a JPEG, PNG, WebP or GIF (${url.slice(0, 90)})`);
+        return null;
+      }
+    }
+    return `data:${type};base64,${bytes.toString("base64")}`;
   } catch (error) {
     log(`image: could not inline ${url.slice(0, 90)}: ${error.message}`);
     return null;
@@ -203,7 +224,13 @@ export function namesCompany(image, name, { query = false } = {}) {
 /** The Arabic searches for a person: the name as the story writes it, and its first and last words when longer (the
  *  story's «ناجي محمد عيسى» against a Commons file named «ناجي عيسى»). */
 export function arabicSearches(name) {
-  const words = String(name ?? "").trim().split(/\s+/).filter(Boolean);
+  // «عبد الله», «أبو ظبي», «بن سعيد», «آل خليفة» are one name each: split, «حسن عبد الله» was searched as «حسن الله» and
+  // «عبد الرحمن بن سعيد آل خليفة» as «عبد خليفة» (the audit of 2026-10-31).
+  const words = [];
+  for (const w of String(name ?? "").trim().split(/\s+/).filter(Boolean)) {
+    if (words.length && /^(?:عبد|أبو|ابو|بن|ابن|آل)$/.test(words.at(-1).split(" ").at(-1))) words[words.length - 1] += ` ${w}`;
+    else words.push(w);
+  }
   return [...new Set([words.join(" "), ...(words.length > 2 ? [`${words[0]} ${words.at(-1)}`] : [])])].filter((q) => q.length >= 3);
 }
 /**
@@ -586,7 +613,10 @@ const WARSHIP = /\b(?:USS|USNS|HMS|HMAS|INS|destroyers?|frigates?|corvettes?|war
 // 2007-09 patrols of Baghdad's markets, which filled the Iraq–IMF story's shortlist until its judge refused them all and the
 // story ran without a photograph (2026-10-25). Dropped in code like a warship. «Marine» alone is a port's word: «Marines».
 const TROOPS = /\b(?:soldiers?|troops?|servicem[ae]n|marines|marine corps|usmc|infantry|platoons?|battalions?|brigades?|regiments?|paratroopers?|patrol(?:s|led|ling)?|army|dvids|defense\.gov|militiam[ae]n)\b/i;
-const MILITARY_STORY = /عسكري|البحرية|دفاع|الجيش|القوات|سلاح|أسلحة|مدمرة|مدمّرة|مدمرت|فرقاطة|غواصة|صاروخ|صواريخ|حربية|الناتو|البنتاغون|مقاتلة|مقاتلات|إف-35/;
+// A mine, the Revolutionary Guard or its boats make a story about force at sea: «الحرس الثوري: ألغام بحرية تفجّر 3 ناقلات
+// نفط جنوبي مضيق هرمز» read as civilian, and 85 files went as "a warship, and the story is not about the military", among them the IRGC's
+// speedboats closing on merchant ships that its planner had asked for (2026-10-29, the audit of 31 October).
+const MILITARY_STORY = /عسكري|البحرية|دفاع|الجيش|القوات|سلاح|أسلحة|مدمرة|مدمّرة|مدمرت|فرقاطة|غواصة|صاروخ|صواريخ|حربية|الناتو|البنتاغون|مقاتلة|مقاتلات|إف-35|لغم|ألغام|يلغّم|يلغم|تلغيم|الحرس الثوري|زوارق|زورق/;
 /**
  * A file that is the face of a note or a coin, or another depiction: Commons names note scans by side («… obverse», «…
  * Backside») and files them under a depicted subject «in art» and «Banknotes with a face value of …»; «One Egyptian
@@ -814,7 +844,11 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
       // An explicit list comes from the story planner AND source-photo reader agreeing. Match surnames,
       // not a shared first name (Donald Tusk must never stand in for Donald Trump).
       const allowedSurnames = Array.isArray(people) ? people.map((name) => fold(String(name).trim().split(/\s+/).pop())) : null;
-      const unwanted = people === "none" ? named : named.filter((words) => allowedSurnames ? !words.some((w) => allowedSurnames.includes(w)) : !words.some((w) => asked.has(w)));
+      // A person the file ranks is one of the story's own when the search is for them, whichever script it was asked in:
+      // the Arabic search («سندار بيتشاي») never shares a word with «CEO Sundar Pichai», and dropped his own photographs as
+      // "not the story's people" (the audit of 2026-10-31).
+      const theirs = (words) => theirNames.some((name) => namesPerson(words.join(" "), name));
+      const unwanted = people === "none" ? named : named.filter((words) => (allowedSurnames ? !words.some((w) => allowedSurnames.includes(w)) : !words.some((w) => asked.has(w))) && !theirs(words));
       if (unwanted.length) {
         log(`image: dropped "${String(image.title).slice(0, 70)}" — shows ${unwanted.map((w) => w[0]).join(", ")}, not the story's people`);
         continue;
@@ -1334,7 +1368,7 @@ Tags: ${(draft.tags ?? []).join(", ")}
 
 Give 4 English search phrases (2-4 words each, concrete nouns only) for generic photographs that this newspaper could run with the story, each a subject a reader recognises at a glance (never a part, a detail or a close-up of equipment). Photographers title their pictures plainly, so one of the four is the subject in two plain words as a photographer would title it ("Egyptian pounds", "gold bars", "oil tanker"): Openverse answered «Egyptian pound banknotes» with a collector's scans and only «Egyptian pound» with a photograph of the notes in hand (2026-10-27). ${CONCEPT_KINDS.has(draft.kind) ? "This piece explains or analyses a concept rather than reporting one event: all four phrases picture the concept at work (traders on a trading floor for bonds, rates and markets; shoppers in a supermarket for prices and inflation; a container port for trade; a factory floor for industry), and none is a building or a skyline. " : ""}First the story's OWN sector at work, the way the news agencies picture it (a lithium battery production line, an LNG carrier ship, container ship loading, traders on a trading floor, a data-centre server hall, an oil pipeline in the desert, a wheat harvest, shoppers in a market). A story about the economy as a whole (growth, a forecast, inflation, trade figures) is pictured by economic life in its own place (a container port, a factory floor, shoppers in a market, a busy commercial street), never by one commodity it mentions in passing. A story about the state's own accounts (its budget, a deficit, tax revenue, public spending, the public debt or its interest) is not: a market, a street or a port pictures the people's economy, not the treasury's (a crowded Cairo street market ran under Egypt's budget deficit, 2026-10-31). Search the country's money as the agencies photograph it, notes counted, stacked or in hand ("Egyptian pounds", "counting Egyptian pounds"), and its finance minister only when the headline names the minister or the ministry; a market only when the story is about what households pay (a subsidy, a price or a fee the state sets). A story about ONE sector's exports or imports, or its trade with a country, is pictured by the sector's goods on their way, the picture the desks run: the country's best-known products of that sector being sorted, packed or loaded for export, or on sale (Egypt's food and farm exports: "orange packing Egypt", "citrus fruit crates", "fruit packing line", "vegetable market Egypt"; Saudi petrochemicals: "petrochemical plant Jubail"; Moroccan phosphates: "phosphate port Morocco"), or containers loading at the country's port; never a factory of one product the story does not name (a cheese dairy's curd vat ran under Egypt's food exports on 2026-09-27, where the other desks ran oranges on a packing line and crates of citrus). Among the phrases, always one of those goods in the country's own markets or fields ("fruit market Cairo", "vegetable market Egypt", "orange harvest Egypt"): Wikimedia Commons holds far more of a country's markets and farms than of its packing houses (it had crates of fruit at a Cairo market and a vegetable market at Esna, and no Egyptian packing house). A central bank's decision on interest rates is pictured by the central bank itself, as the agencies picture monetary policy: its own building ("Central Bank of Egypt"), its governor or its committee at work, or the country's money as the agencies photograph it, notes counted, stacked or in hand ("Egyptian pound banknotes stack", "counting Egyptian pounds"), never a flat scan of one note. An everyday market where ordinary people buy food ("vegetable market Cairo") belongs to a story about prices and what households pay (an inflation figure, a jump in food or fuel prices, a subsidy cut), and to a rate decision only when its own text dwells on that; never a tourist bazaar of souvenirs (Khan el-Khalili is tourism, not prices; the owner, 2026-09-24). These are examples of what fits, not rules: read the story and picture what it is about, as seriously as its headline (the owner, 2026-09-28, on a Cairo market under the rate decision: "relevant but i am not sure if serious enough ... this was just an example, not a rule"). Never a skyline, a landmark, a cityscape, a building's front, a branch, a headquarters, a sign or a logo, whatever the story: they say where or whose, never what happened (the owner, 2026-10-22, on a Barclays branch under the bank's job cuts, the Shanghai exchange's tower under a bear market and Morocco's parliament under its growth target; the one exception is a central bank's own building under its decision on rates; a company's own news has a pass of its own for its brand, "company" below). A company's news is pictured by its people, its product in use or its work, never its premises; a market's fall by investors and traders at their screens; job cuts by the staff whose work is going; a story about buildings (property, construction) by its buildings. ${PRICE_FORM_RULE} A story that sets two sides against each other is pictured by the side its headline is about. Never a stock cliché: a phone of app icons, a gavel, a piggy bank, a handshake. Prefer subjects that certainly exist as photos on Wikimedia Commons (e.g. "lithium battery factory", "LNG carrier ship", "data center server racks", "Ras Tanura refinery", "container terminal cranes", "Central Bank of Egypt").
 The photograph should be from the story's own place. When the story is about ONE country, the first two phrases name it with the object ("diesel pump United States", "gas station Texas", "LNG carrier Qatar", "wheat harvest Egypt"); the last two may leave it out. Also give "place": 2-6 English words a Wikimedia Commons title, description or category of a photo taken in that country would contain (the country's name and demonym, its main cities or states, e.g. ["United States", "USA", "American", "Texas", "California"]); [] when the story is about the world, a region or several countries.
-Also give "people": at most three people the HEADLINE is about, when it is about what named people did, said or agreed (heads of state or government, ministers, central bank governors, chief executives), for example Donald Trump and Xi Jinping for a story about their summit. When the headline reports what ONE institution decided, forecast or announced (a central bank, a ministry, the IMF, the OECD, OPEC, one company), give the person who leads it and speaks for it, for example Mathias Cormann for an OECD forecast or Amin H. Nasser for a Saudi Aramco result. When a court, a state or a regulator penalises a company, give the company's chief executive, and the official who brought the case only when the headline names them or their office. Each is {"name": the English full name as Wikipedia writes it, "ar": the name as this story writes it in Arabic, "headline": the exact words of the HEADLINE that name this person, their office, or the institution they lead («ترامب»، «محافظ المصرف المركزي»، «ميتا» for its chief executive)}. A place or a state is no one's office: under «قاضٍ في نيو مكسيكو يلزم ميتا…» a reader takes the man pictured for the judge, so New Mexico's attorney general is not one of them. Only the headline counts: a person the story names in its standfirst or body, however often it quotes them, is not one of them, because the photograph runs under the headline and a reader takes the person pictured for the person the headline is about (the owner, 2026-10-24, on a story headlined on the parliament accepting the central bank governor's resignation that ran the head of the State Council, named only further down). [] when the story is about markets, prices, data or a sector as a whole.
+Also give "people": at most three people the HEADLINE is about, when it is about what named people did, said or agreed (heads of state or government, ministers, central bank governors, chief executives), for example Donald Trump and Xi Jinping for a story about their summit. When the headline reports what ONE institution decided, forecast or announced (a central bank, a ministry, the IMF, the OECD, OPEC, one company), give the person who leads it and speaks for it, for example Mathias Cormann for an OECD forecast or Amin H. Nasser for a Saudi Aramco result. When a court, a state or a regulator penalises a company, give the company's chief executive, and the official who brought the case only when the headline names them or their office. An armed group, a militia or an army is not such an institution: its attack, claim or threat is pictured by what it hit or threatens, never by its spokesman, commander or fighters (the Houthis' claimed attacks on Saudi oil sites ran their military spokesman in uniform, 2026-10-30), so give [] for it. Each is {"name": the English full name as Wikipedia writes it, "ar": the name as this story writes it in Arabic, "headline": the exact words of the HEADLINE that name this person, their office, or the institution they lead («ترامب»، «محافظ المصرف المركزي»، «ميتا» for its chief executive)}. A place or a state is no one's office: under «قاضٍ في نيو مكسيكو يلزم ميتا…» a reader takes the man pictured for the judge, so New Mexico's attorney general is not one of them. Only the headline counts: a person the story names in its standfirst or body, however often it quotes them, is not one of them, because the photograph runs under the headline and a reader takes the person pictured for the person the headline is about (the owner, 2026-10-24, on a story headlined on the parliament accepting the central bank governor's resignation that ran the head of the State Council, named only further down). [] when the story is about markets, prices, data or a sector as a whole.
 And "focus": "people" when a named person is the news itself, the headline's actor who said, rejected, met or decided (for example «ترامب يرفض مقترح إيران»، «قمة ترامب وشي»، «باول: الفائدة ستبقى مرتفعة»); "subject" when the news is a thing, even one an official announced: a company's result, product or court case, a sector and what hits it, a project, a price, a figure (for example US sanctions on Iranian aviation are pictured by an Iranian airliner, not the Treasury secretary; an Apple patent verdict by an Apple product or store, not its chief executive at an unrelated meeting; a court's or a regulator's penalty on a company by the case itself, its chief executive answering for the matter at a hearing on it or the official who brought it, never a stock photograph of its app on a phone; Egypt's AI data centre by a data centre; a Fed rule for banks by the Fed or a bank). The leader's photograph, from an unrelated meeting years ago, is the weakest picture for a "subject" story.
 And "places": the story's own place at its most specific, the named sites where its subject physically stands and a camera could stand, in English as Wikimedia Commons names them: a project, a new city or district, a field, a port, a plant, a canal or strait (["Ras Laffan"] for Qatar's LNG expansion, ["Jafurah"] for Aramco's Jafurah gas, ["Suez Canal"] for the canal's revenue, ["Jorf Lasfar"] for Morocco's phosphate exports). When the story names no site but is about one country's sector, give the places where that sector of that country is best known and most photographed: Egypt's real-estate developers build the New Administrative Capital, New Cairo, New Alamein and Sheikh Zayed City, so a story about them or the laws that bind them gives ["New Administrative Capital", "New Capital", "New Alamein", "New Cairo"]; Dubai property ["Dubai Marina", "Downtown Dubai"]; Saudi giga-projects ["NEOM", "Diriyah"]. Give a place's short name beside its long one when both are used ("New Administrative Capital", "New Capital"), each spelled as in your searches below. A place is where the story's SUBJECT is, never where its news was decided, ruled, announced or discussed: not a court, a ministry, a parliament, a headquarters, an embassy or a conference venue; not an exchange, a bank, a company's offices or a business district, whose photographs are buildings and skylines (the Shanghai Stock Exchange's tower ran under China's bear market, 2026-10-22); not where something that caused the news happened (the airport an attack hit is not the place of a conference postponed because of it); and not an ordinary city by itself (its streets and skyline picture no one's subject; a new city being built is a project, and counts). Never a whole country or a region. [] when the story is about a commodity's or a financial market's price, a world body, the world, a region or several countries, and [] for a company's result, product, valuation, lawsuit, verdict or deal unless the story is about one of its sites (Apple's patent verdict in a San Diego court: [], it is pictured by Apple's product; AMD's market value: []; a new plant or field of a company: its site). For ONE country's economy as a whole or what its households pay (growth, an IMF programme, trade figures, inflation, a subsidy), the places where that economy is seen at work, named as the country's own press names them: its best-known everyday markets, where people buy food and goods (["Shorja market"] in Baghdad, ["Derb Sultan"] in Casablanca), and its main port, field or industrial city (["Umm Qasr port"] for Iraq's trade); never a tourist bazaar (Khan el-Khalili, the Grand Bazaar), a skyline or a government building (2026-10-25: a photograph of a crowded Shorja market in 2024, free to use, sat on Commons while the Iraq–IMF story ran without a picture). [] for the state's own accounts (a budget, a deficit, tax revenue, the public debt), which happen in no market, street or port (2026-10-31: Cairo's Ataba market, made the budget deficit's place, ran under it). And "place_queries": 2 or 3 searches for those places, the first a place's name alone (Commons titles a place's photographs by its name: "Central business district, New Administrative Capital"), the others the place with what the story is about there ("New Administrative Capital construction", "New Alamein towers"); [] when "places" is []. And "categories": up to three Wikimedia Commons categories a picture editor would open and look through for this story, named as Commons names them: the story's subject in its own place ("Markets in Baghdad", "Souqs in Iraq" for Iraq's economy; "Fruit markets in Egypt" for Egypt's food prices; "Oil refineries in Saudi Arabia" for Saudi refining) or a named place's own ("Port of Jebel Ali"); [] for a story about a person, one company's result, the state's accounts, a world body, the world or several countries.
 And "message": one short English sentence saying what the photograph should tell a reader at a glance about THIS story: its point, not its topic, in its tone, the way a picture editor reads the copy and asks what it is really saying. When the story sets two sides against each other, the message and every search are about the side its headline is about, never the other (under «البلدان الغنية تستطيع تفويض حصة أكبر من عملها لبرامج الذكاء الاصطناعي», office staff at their screens, never farm hands). And "message_queries": 2 or 3 English searches of 2-5 words for photographs that would say it, things a camera can see that say the point: the people it is about doing what the story reports (investors watching prices at a brokerage for a market's fall, office staff at their desks for job cuts, the chief executive at a hearing on the matter, the official who brought a case), the event itself, the thing in the state the story describes; in the story's own country when it has one; never the topic's stock object (an app on a phone, a logo, a sign, a building's front, a skyline), which only names the topic. For example, and these are examples, not rules: a central bank holding its rates might say "Egypt's central bank keeps money tight" and search "Central Bank of Egypt", "Egyptian pound notes"; an analysis of how rising US yields raise the cost of cutting Egypt's rates might say "the dollar pulls money away from Egypt" and search "US dollar banknotes", "dollar pound exchange".
@@ -1414,7 +1448,7 @@ export function photoRules({ draft, image = {}, neutral = false, people = [], pl
   const sideRule = side.length ? ` ${sideNote(side)}` : audit ? AUDIT_SIDE : "";
   return `Judge as a strict picture editor of a paper read across the Arab world. ${neutral ? "The test is what readers will see: the frame and the caption" : "The test is what is in the frame, what the caption says, and where the photograph was taken; the file name, description and categories say where, even when readers never see them"}:
 - WRONG_PERSON: an identifiable person (official, politician, executive) who is not one of the story's own people${personRule}, whatever the setting.${sideRule}
-- WRONG_SUBJECT: ${neutral ? "a caption that names a place; a frame the file describes with readable signs, lettering, a landmark, a flag, a skyline, a street or a famous building a reader would recognise" : "a different country or city than the story's when the frame, the caption, the writing in the frame, the file name, the description or the categories identify it"}; a different company or institution${neutral ? " whose name or logo a reader can see in the frame (one named only in the file's record does not count in this pass)" : ""}; a different sector, including a neighbouring one (electricity pylons on a gas story, a highway on a port story, a bank branch on a factory story); a military vessel or weapon for a non-military story; ${glanceFaults(draft.kind)}; a tourist bazaar or souvenir market (Khan el-Khalili) for a story about prices, inflation, rates or the economy, which it does not picture: it pictures tourism; a scene that merely lies NEAR the subject (a beach, a park, a street, a metro station, a hillside or a coastline beside a refinery, port or pipeline; a satellite view of a whole country); a landmark, flag, sign or building in the frame that identifies a country the story does not mention; a caption that names a place the story does not mention where the place itself matters (a tanker depot captioned "at Eilat" is WRONG_SUBJECT on a Gulf oil story, however good a tanker depot it is); a city skyline, panorama or street scene on a story about ONE company, plant, project, product, deal, commodity or technology (a Cairo panorama on a battery-plant story, a San Francisco skyline on an AI-company story) — such a story needs its sector's own object; ${aboutBuildings(draft) ? "" : `a building's front, a branch, a headquarters, an office tower, an exchange's or a parliament's building, or a sign or logo on a wall standing for a company, a bank, a market or a government: it says whose or where, never what happened (a small-town Barclays branch under the bank's job cuts, the Shanghai Stock Exchange's tower under China's bear market, Morocco's parliament under its growth target, the owner's cover of 2026-10-22)${lastResort ? "; a central bank's own building under its own decision on rates or its currency is an exception" : ""}; ${company || audit ? "for ONE company's own news, that company's current logo or brand as the clear subject on its own sign, forecourt, store, vehicle or site is not a front but its standard picture (RIGHT, below); " : ""}`}a frame where other companies' logos or app icons share the space with the story's own; another news outlet's or broadcaster's name or logo in the frame (an interview set with «WSJ» on its shelf behind the IMF's head, a channel's logo on a backdrop or a microphone), which reads as that outlet's own picture under this paper's headline (2026-10-25); an advertisement, a billboard or a shop sign for a brand or product the story does not name that is among the most legible things in the frame (an Infinix phone billboard over a Cairo street under Egypt's budget deficit, 2026-10-31), which reads as that brand's picture. If your reason would contain "loosely", "broadly", "tangentially", "not specifically", "though it shows" or "reasonably", the verdict is WRONG_SUBJECT.
+- WRONG_SUBJECT: ${neutral ? "a caption that names a place; a frame the file describes with readable signs, lettering, a landmark, a flag, a skyline, a street or a famous building a reader would recognise" : "a different country or city than the story's when the frame, the caption, the writing in the frame, the file name, the description or the categories identify it"}; a different company or institution${neutral ? " whose name or logo a reader can see in the frame (one named only in the file's record does not count in this pass)" : ""}; a different sector, including a neighbouring one (electricity pylons on a gas story, a highway on a port story, a bank branch on a factory story); a military vessel or weapon for a non-military story; ${glanceFaults(draft.kind)}; a tourist bazaar or souvenir market (Khan el-Khalili) for a story about prices, inflation, rates or the economy, which it does not picture: it pictures tourism; a scene that merely lies NEAR the subject (a beach, a park, a street, a metro station, a hillside or a coastline beside a refinery, port or pipeline; a satellite view of a whole country); a landmark, flag, sign or building in the frame that identifies a country the story does not mention; a caption that names a place the story does not mention where the place itself matters (a tanker depot captioned "at Eilat" is WRONG_SUBJECT on a Gulf oil story, however good a tanker depot it is); a city skyline, panorama or street scene on a story about ONE company, plant, project, product, deal, commodity or technology (a Cairo panorama on a battery-plant story, a San Francisco skyline on an AI-company story) — such a story needs its sector's own object; ${aboutBuildings(draft) ? "" : `a building's front, a branch, a headquarters, an office tower, an exchange's or a parliament's building, or a sign or logo on a wall standing for a company, a bank, a market or a government: it says whose or where, never what happened (a small-town Barclays branch under the bank's job cuts, the Shanghai Stock Exchange's tower under China's bear market, Morocco's parliament under its growth target, the owner's cover of 2026-10-22)${lastResort ? "; a central bank's own building under its own decision on rates or its currency is an exception" : ""}; ${company || audit ? "for ONE company's own news, that company's current logo or brand as the clear subject on its own sign, forecourt, store, vehicle or site is not a front but its standard picture (RIGHT, below); " : ""}`}a frame where other companies' logos or app icons share the space with the story's own; another news outlet's or broadcaster's name or logo in the frame (an interview set with «WSJ» on its shelf behind the IMF's head, a channel's logo on a backdrop or a microphone), which reads as that outlet's own picture under this paper's headline (2026-10-25); an advertisement, a billboard or a shop sign for a brand or product the story does not name that is among the most legible things in the frame (an Infinix phone billboard over a Cairo street under Egypt's budget deficit, 2026-10-31), which reads as that brand's picture; another company's name or logo painted large on a ship, a vehicle, a plant or a site, among the most legible things in the frame («HAPAG-LLOYD» across a container ship under the euro area's growth, 2026-10-30), unless the story is about that model of aircraft, ship or vehicle itself, whose every photograph wears some operator's livery (an airline's A321neo under the A321neo's own story stays RECAPTION), and another company's site under ONE company's own news (Valero's refinery under Exxon's and Chevron's results), which a new caption cannot mend: RECAPTION is for a name the caption or the record carries, never one the reader sees; an armed group's spokesman, commander or fighters under a story about what its attack hit (the Houthis' military spokesman in uniform under their claimed strikes on Saudi oil sites, 2026-10-30). If your reason would contain "loosely", "broadly", "tangentially", "not specifically", "though it shows" or "reasonably", the verdict is WRONG_SUBJECT.
 - ${PRICE_FORM_RULE} A frame in another form is WRONG_SUBJECT, and so is one showing the side of a contrast the headline is not about (manual work under a headline that rich countries can hand more of their work to AI).
 - STALE_EVENT: a specific past event (a summit, a ceremony, a visit) that the story is not about, unless the frame shows the story's own people${people.length || known.length ? ` (${(people.length ? people : known).join(", ")})` : ""}: a photograph of them at an earlier occasion, captioned with that occasion and its year or «(أرشيفية)», is how the desks illustrate a story about them, and it is RIGHT.${event.length ? ` The story is about «${event[0]}» itself: a photograph of an earlier edition of that same event (its hall, its stage, its sessions), captioned with the edition's year, is RIGHT; another event stays STALE_EVENT.` : audit ? AUDIT_EVENT : ""}
 ${CONCEPT_KINDS.has(draft.kind) ? "- This piece explains or analyses a concept: its subject at work is GENERIC_OK even where a news story would call it a neighbouring sector. A trading floor, traders at their screens or a price board in a trading hall pictures bonds, rates and markets alike (a Treasury-bond explainer lost an NYSE floor as \"equity trading\", 2026-09-24); an everyday food market pictures prices and inflation.\n" : ""}- GENERIC_OK: a neutral illustration whose frame shows the story's OWN sector or institution at work: the sector's own object (a battery production line, a data-centre hall, an LNG tanker, a refinery, a pipeline, a pumpjack, a trading floor, a port crane, a factory line, the named bank's or company's staff at work), never its building's front; for prices, inflation, a currency, wages or remittances, people paying or counting money, or the notes of the story's own currency. ${skyline ? "The named capital's skyline or central bank is acceptable ONLY for a story about the country's economy as a whole (inflation, growth, budget, currency, rates, sovereign rating, trade balance, jobs)." : "The named country's central bank is acceptable ONLY for a story about its own decision on interest rates or its currency, and its building only as the last resort. A skyline, a panorama, a landmark or a cityscape of a capital is WRONG_SUBJECT, whatever the story: no pass of this paper runs one (the story's own place, when one is named below and the file is taken there, is not a skyline)."} An anonymous scene of the story's sector — a battery production line, a refinery, a tanker at sea, a container port, a trading floor, a server hall — is acceptable as a stock photograph is, under the rule below${neutral ? "." : ": for a story about one country, only when nothing (frame, writing, caption, file name, description, categories) places it in another country."} A story about a sector's exports or imports named broadly (food, farm goods, textiles, building materials, manufactured goods) is pictured by the country's own goods of that kind, and such a frame is GENERIC_OK even when the story's figures cover a narrower part of the trade: fruit and vegetables in crates at the country's markets or fields, cartons on a packing line, containers at its port (the owner, 2026-09-27: the other desks pictured Egypt's food-industry exports with its oranges and crates of citrus, where this paper ran a cheese dairy's vat). ${ECONOMY_RULE}
@@ -1660,16 +1694,38 @@ async function chooseVerified(opts) {
     // The first such photograph is checked at once: a refusal excludes it, and twoLooks() then shows its companions again
     // (Morocco's dry run lost Tanger Med's port to an unchecked market snapshot that the check refused later, 2026-10-22).
     // One that passes waits as the fallback; later ones are passed over.
+    // Later ones are kept, unchecked, for one comparison at the end (bestOfReserve()): until 2026-10-31 the first held the
+    // place whatever came after it, so the order of the passes chose 15 of 26 photographs (the Bank of Japan's decision ran
+    // a market street from the first pass while the governor's 2026 photograph, found later, was dropped unseen).
     if (reserve?.ready) {
-      log(`image: "${String(chosen.title ?? "").slice(0, 60)}" names the story's topic without saying its point; the desk already holds one such, and looks further`);
+      if ((reserve.later ??= []).length < 3 && thumbnail && !reserve.later.some((l) => l.chosen.url === chosen.url)) reserve.later.push({ image, chosen, thumbnail, opts });
+      log(`image: "${String(chosen.title ?? "").slice(0, 60)}" names the story's topic without saying its point; kept beside the one the desk holds, and it looks further`);
       return null;
     }
     log(`image: "${String(chosen.title ?? "").slice(0, 60)}" names the story's topic without saying its point (${image.reason ?? ""}); checked now and kept in reserve while the desk looks further`);
     const checked = await settle({ ...opts, image, chosen, thumbnail });
-    if (checked && reserve) reserve.ready = checked;
+    if (checked && reserve) Object.assign(reserve, { ready: checked, file: chosen, thumbnail, opts });
     return null;
   }
   return settle({ ...opts, image, chosen, thumbnail });
+}
+
+/**
+ * When nothing said the story's point: the photograph the desk holds against the others that only named its topic, side
+ * by side in one look. The one chosen goes through the second check if it has not yet; null keeps the one held.
+ */
+const RESERVE_NOTE = "Each of these photographs was found by a different search and fits the story's topic; none was found to say its point. Choose the one a picture editor would run under this headline: the one that tells a reader most about THIS story at a glance (its own institution, people, place or object before a general scene), nearest, largest and clearest at the printed size. Photograph 1 is the one held so far: choose it, or 0, when none of the others is plainly better.";
+async function bestOfReserve({ reserve, draft, story, log }) {
+  const later = (reserve.later ?? []).filter((l) => !excluded(l.opts.exclude, l.chosen));
+  if (!later.length || !reserve.file || !reserve.thumbnail) return null;
+  const list = [reserve.file, ...later.map((l) => l.chosen)];
+  const inlined = [reserve.thumbnail, ...later.map((l) => l.thumbnail)];
+  const { people = [], known = [], side = [] } = reserve.opts ?? {};
+  const pick = await judge({ list, inlined, draft, story, log, relaxed: false, people, known, side, tierNote: RESERVE_NOTE });
+  const entry = pick && later.find((l) => l.chosen.url === pick.url);
+  if (!entry) return null;
+  log(`image: of ${list.length} photographs of the story's topic, "${String(entry.chosen.title ?? "").slice(0, 60)}" is chosen over the one held`);
+  return settle({ ...entry.opts, image: { ...pick, says: true }, chosen: entry.chosen, thumbnail: entry.thumbnail });
 }
 
 /** The second lock on a chosen photograph (verifyImage()), with its caption made right; null when refused, and excluded. */
@@ -1734,7 +1790,23 @@ export async function asIllustrationIfElsewhere(image, file, story, log = () => 
   return { ...image, alt: caption ? `${caption} (${ILLUSTRATIVE})` : `(${ILLUSTRATIVE})` };
 }
 
-const excluded = (exclude, c) => exclude.has(c.url) || exclude.has(`key:${photoKey(c.url)}`) || exclude.has(`title:${c.title}`) || inUsedSeries(exclude, c.title);
+const excluded = (exclude, c) => exclude.has(c.url) || exclude.has(`key:${photoKey(c.url)}`) || exclude.has(`title:${c.title}`) || inUsedSeries(exclude, c.title) || pexelsShoot(exclude, c.url);
+/**
+ * A Pexels photographer's frames of one shoot are uploaded together, so their numbers sit a few apart: Qatar's LNG deal
+ * and the analysis beside it ran 38646186 and 38646168, the same carrier at the same sunset (2026-10-29), and six market
+ * stories ran one photographer's near-consecutive frames. Commons' series are read from file names (seriesKey()); a
+ * Pexels photograph within 60 numbers of one another story runs counts as the same picture.
+ */
+const PEXELS_SHOOT = 60;
+function pexelsShoot(exclude, url) {
+  const id = Number(String(photoKey(url)).match(/^pexels:(\d+)$/)?.[1]);
+  if (!id) return false;
+  for (const k of exclude) {
+    const m = typeof k === "string" ? k.match(/^key:pexels:(\d+)$/) : null;
+    if (m && Math.abs(Number(m[1]) - id) <= PEXELS_SHOOT) return true;
+  }
+  return false;
+}
 
 /**
  * Two looks at a pass's candidates, four photographs at a time. A photo the second check refused is excluded
@@ -1918,9 +1990,10 @@ Answer as a strict picture editor:
 - this_story: it shows THIS story's own event, people, place or subject (the meeting, the signing, the site or the product the story reports), not another occasion.
 - watermark: a news outlet's or an agency's logo or watermark shows in the frame.
 - clear: its subject reads at a glance, as a small picture beside the headline (not hazy, dark, blurred or cluttered).
+- front: the frame is a building's front, an office tower, a headquarters, a branch or a skyline standing for the company or institution, with no people and nothing happening in it${aboutBuildings(draft) ? " (false here: this story is about buildings, and its buildings are its subject)" : ""}; a company's current logo, large and legible on its own site or sign, is not a front. Such a frame says whose, never what happened.
 - caption_ar: one short Arabic caption in the Arab desks' style saying what the frame shows. Name only people, institutions and places that the outlet's caption or the story names, and never put a name to a face the caption does not identify (for example «جانب من اجتماع وزير البترول مع رئيس «فيرتيجلوب»»).
 - credit_ar: the credited body's name in Arabic as an Arabic news site prints it (for example «وزارة البترول المصرية»).
-Return JSON: {"news_photo":true,"this_story":true,"watermark":false,"clear":true,"caption_ar":"...","credit_ar":"...","reason":"<one short English sentence>"}`,
+Return JSON: {"news_photo":true,"this_story":true,"watermark":false,"clear":true,"front":false,"caption_ar":"...","credit_ar":"...","reason":"<one short English sentence>"}`,
         images: [got.preview],
         temperature: 0,
         maxTokens: 500,
@@ -1940,6 +2013,13 @@ Return JSON: {"news_photo":true,"this_story":true,"watermark":false,"clear":true
     const credit = String(v.credit_ar ?? "").replace(/^«|»$/g, "").trim();
     if (!v.news_photo || !v.this_story || v.watermark || v.clear === false || !/[؀-ۿ]/.test(caption) || !/[؀-ۿ]/.test(credit)) {
       log(`image: handout from ${outlet} refused: ${String(v.reason ?? "").slice(0, 140)}`);
+      continue;
+    }
+    // A building's front from a company's own press kit is still a front (FRONT_RULE): 2PointZero's office towers ran
+    // under its nine-month profit as a handout, captioned as its headquarters, the one tier the rule never reached
+    // (2026-10-30, the audit of 31 October).
+    if (v.front === true && !aboutBuildings(draft)) {
+      log(`image: handout from ${outlet} refused: a building's front, which says whose, never what happened (${String(v.reason ?? "").slice(0, 100)})`);
       continue;
     }
     const name = `${createHash("sha1").update(photo.url).digest("hex").slice(0, 12)}.jpg`;
@@ -2122,8 +2202,11 @@ async function findImage({ draft, story, log, exclude = new Set(), sources = [],
     const image = await peoplePhoto({ people, ar: peopleAr, draft, story, log, exclude, ...desk });
     if (image) return image;
   }
-  // Nothing said the story's point: the first photograph of its topic that passed the check, from the earliest pass.
+  // Nothing said the story's point: the photograph of its topic that passed the check first, or one found after it that a
+  // look at them side by side prefers (bestOfReserve()).
   if (reserve.ready) {
+    const better = await bestOfReserve({ reserve, draft, story, log });
+    if (better) return better;
     log(`image: nothing said the story's point; the earlier pass's photograph of its topic runs: "${String(reserve.ready.title ?? "").slice(0, 60)}"`);
     return reserve.ready;
   }
@@ -2189,7 +2272,7 @@ async function peoplePhoto({ people, ar = {}, draft, story, log, exclude, ...des
   // the New York Fed's John C. Williams was taken in 2008): such a file is dropped and the story falls back to a
   // scene of its sector.
   const oldest = year - 8;
-  const found = (await collect(queries, log, { perQuery: 10, max: 20, exclude, people: "by-query", together: [...people, ...arabic], fronts: true, simplify: "names" })).filter((c) => !excluded(exclude, c));
+  const found = (await collect(queries, log, { perQuery: 10, max: 20, exclude, people: "by-query", together: [...people, ...arabic], fronts: true, simplify: "names", civilian: civilianStory(draft) })).filter((c) => !excluded(exclude, c));
   const recent = found.filter((c) => {
     const taken = photoYear(c);
     if (taken && taken < oldest) {
@@ -2226,12 +2309,15 @@ async function peoplePhoto({ people, ar = {}, draft, story, log, exclude, ...des
  * captioned «صورة تعبيرية». Neutral is judged on what a reader can see (no writing, flag, landmark,
  * skyline or street), which is what would have kept the Finnish pump out: its lettering is in the frame.
  */
+const CURRENCY = /\b(?:pounds?|dirhams?|riyals?|rials?|dinars?|liras?|rupees?|yuan|renminbi|yen|euros?|dollars?|banknotes?|currency)\b/i;
 async function neutralScene({ draft, story, log, exclude, queries, place, fronts = false }) {
   // The subject alone, never its place or its company («oil tanker Persian Gulf» → «oil tanker»), and only a
   // subject of two words or more: stripping the place from «Yanbu port Saudi Arabia» left «port», which
   // fetched ferries at Piraeus and a marina in Mallorca (2026-09-24).
   const words = (place ?? []).map((w) => new RegExp(`(?<![A-Za-z])${escapeRe(w)}(?![A-Za-z])`, "gi"));
-  const neutral = [...new Set(queries.map((q) => subjectWords(words.reduce((s, re) => s.replace(re, " "), q)).join(" ")).filter((q) => q.split(" ").length >= 2))];
+  // A currency keeps its country: «Egyptian pounds» stripped to «pound notes» brought British notes, and «UAE dirham» to
+  // «dirham» Moroccan and Kazakh ones, so this pass could never succeed for a monetary story (the audit of 2026-10-31).
+  const neutral = [...new Set(queries.map((q) => (CURRENCY.test(q) ? q : subjectWords(words.reduce((s, re) => s.replace(re, " "), q)).join(" "))).filter((q) => q.split(" ").length >= 2))];
   if (!neutral.length) return null;
   log(`image: last pass, a neutral illustration: ${neutral.join(" | ")}`);
   const candidates = (await collect(neutral, log, { perQuery: 12, max: 12, exclude, people: "none", libraries: true, civilian: civilianStory(draft), fronts })).filter((c) => !treasuryFault(c, draft));
@@ -2247,6 +2333,8 @@ async function neutralScene({ draft, story, log, exclude, queries, place, fronts
  * 2026-10-22 (frontOfBuilding()).
  */
 const CENTRAL_BANK = /\b(?:central bank|reserve bank|federal reserve|monetary (?:authority|agency)|bundesbank|bank of (?:england|japan|canada|korea|israel|russia|thailand|mexico|italy|france|spain)|people'?s bank of china|swiss national bank|riksbank|norges bank|banque centrale|bank al-maghrib|banque du liban)\b/i;
+/** A headline stating a decision on rates or a currency («يثبّت الفائدة»، «يُبقي سعر الأساس»، «يحرر الجنيه»). */
+export const RATE_DECISION = /(?:^|[^\p{L}])[وف]?[يت](?:ثبّ?ت|ُ?بقي|رفع|خفّ?ض|قرّ?ر|حرّ?ر|عوّ?م)(?![\p{L}])\s+(?:(?!توقعات|رهانات)\S+\s+){0,3}?(?:الفائدة|أسعار الفائدة|سعر الفائدة|سعر الأساس|سعر الصرف|الجنيه|العملة|الليرة|الروبية|الريال|الدينار)(?![\p{L}])/u;
 async function lastResort({ draft, story, log, exclude, known = [], side = [] }) {
   let queries = [];
   let institution = null;
@@ -2274,6 +2362,12 @@ Return JSON: {"scene": "<search or null>", "country": "<name or null>", "institu
     institution = clean(data?.institution);
     if (institution && !CENTRAL_BANK.test(institution)) {
       log(`image: last resort: «${institution}» is not a central bank, and no other institution's building is searched`);
+      institution = null;
+    }
+    // And only under its own decision as the headline states it: two regional Fed presidents calling for more rises ran
+    // the Eccles Building's front as "the last-resort exception" (2026-10-30, the audit of 31 October).
+    if (institution && !RATE_DECISION.test(draft.title ?? "")) {
+      log(`image: last resort: the headline is not ${institution}'s own decision on rates or its currency, so its building is not searched`);
       institution = null;
     }
     const city = clean(data?.city);

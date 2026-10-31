@@ -14,7 +14,9 @@
 const NUMBER_SRC = String.raw`(?:(?<=^|[\s(\[«"'،])[+\-−])?\d[\d.,]*(?:[\/:\-–]\d[\d.,]*)*(?:\s?[%٪])?`;
 // Any Latin-script letter, accents included (2026-10-24: «(Santiago Jiménez Londoño)» was cut at «é» and «ñ», and the
 // pieces were laid out right to left as «(o، énez Londoñ(Santiago Jim»).
-const LATIN_SRC = String.raw`(?<![&\p{Script=Latin}\p{M}0-9])\(?(?:\d+(?=\p{Script=Latin}))?\p{Script=Latin}[\p{Script=Latin}\p{M}0-9'’.\-]*(?:\s+[\p{Script=Latin}\p{M}0-9'’.\-]+)*\)?`;
+// «&» joins a run («S&P 500», «AT&T»): split at it, «S» stood alone and «P» was left to the Arabic line, which printed
+// «500 P&S» on six pages (2026-10-31).
+const LATIN_SRC = String.raw`(?<![&\p{Script=Latin}\p{M}0-9])\(?(?:\d+(?=\p{Script=Latin}))?\p{Script=Latin}[\p{Script=Latin}\p{M}0-9'’.\-&]*(?:\s+[\p{Script=Latin}\p{M}0-9'’.\-&]+)*\)?`;
 const RUN = new RegExp(`(${LATIN_SRC})|(${NUMBER_SRC})`, "gu");
 
 export const NUMBER_PATTERN = new RegExp(NUMBER_SRC, "gu");

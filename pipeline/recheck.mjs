@@ -28,7 +28,8 @@ import os from "node:os";
 import path from "node:path";
 import YAML from "yaml";
 import { ARTICLES_DIR } from "./lib/article.mjs";
-import { CHECKABLE_KINDS, CHECKER_VERSION, correctionIssue, loadSources, settleDrift, verifyStory } from "./lib/factcheck.mjs";
+import { CHECKABLE_KINDS, CHECKER_VERSION, correctionIssue, loadSources, settleChanged, settleDrift, verifyStory } from "./lib/factcheck.mjs";
+import { loadSnapshot } from "./lib/snapshots.mjs";
 import { usage as llmUsage } from "./lib/llm.mjs";
 import { fingerprint, hoursSince, isoNow, writeJsonAtomic } from "./lib/util.mjs";
 
@@ -147,8 +148,11 @@ async function check(story, ledger, report, corrections) {
       // A figure no page carries now is read against the copy saved at publication (lib/snapshots.mjs): changed page,
       // or a figure the story never had a source for.
       const saved = sources.map((s) => s.saved).filter(Boolean);
-      if (saved.length) {
-        result.checks = settleDrift(result.checks, saved);
+      // So is a sentence the check before publication found supported, when only a rewritten page now contradicts it
+      // (settleChanged()).
+      const claims = loadSnapshot(story.slug)?.claims;
+      if (saved.length || claims?.length) {
+        result.checks = settleChanged(settleDrift(result.checks, saved), claims, saved);
         result.counts = { ...result.counts, confirmed: result.checks.filter((c) => c.status === "confirmed").length, drift: result.checks.filter((c) => c.status === "drift").length };
       }
       entry.fromCopy = sources.filter((s) => s.snapshot).length || undefined;

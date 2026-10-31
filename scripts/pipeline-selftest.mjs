@@ -15,9 +15,9 @@ import { MAX_REPAIRS, checkSourcesOf, precheck } from "../pipeline/lib/precheck.
 import { repeatsRecent } from "../pipeline/lib/events.mjs";
 import { fetchFeed } from "../pipeline/lib/feeds.mjs";
 import { lessonRuleOk, loadLessons } from "../pipeline/lib/lessons.mjs";
-import { refersBack, sentenceUnits, sourceNumbers, ungroundedNumbers, writeJsonAtomic } from "../pipeline/lib/util.mjs";
+import { refersBack, restoredFigures, sentenceUnits, sourceNumbers, ungroundedNumbers, writeJsonAtomic } from "../pipeline/lib/util.mjs";
 import { loadSnapshot, saveSnapshot } from "../pipeline/lib/snapshots.mjs";
-import { loadSources, quoteFound, settleDrift, verifyStory } from "../pipeline/lib/factcheck.mjs";
+import { loadSources, quoteFound, settleChanged, settleDrift, verifyStory } from "../pipeline/lib/factcheck.mjs";
 import { readArticleHtml } from "../pipeline/lib/extract.mjs";
 import { labelLine, outletLabels, quotedOutletsBlock, unlabelledOutlets } from "../pipeline/lib/outlets.mjs";
 import { instrumentsOf, macroMarketOf, marketData, repeatsInstrument } from "../pipeline/lib/context.mjs";
@@ -94,6 +94,23 @@ const sources = [{ sourceName: "رويترز", title: "t", url: "https://example
     throw new Error(stubborn.at(-1));
   } });
   check("…once only: untagged notes on the second answer are kept, and explain nothing", [stubborn.length, kept?.notes?.facts.length, kept && explainingFacts(kept.notes)], [1, 6, 0]);
+  // An ungrounded context fact or identification leaves the notes, never takes them all (30 October: six whole answers
+  // refused for one such line); and the job is never asked for on the last try.
+  const loose = [];
+  const looseKept = await deskNotes({ story: {}, sources, chatWith: async ({ validate }) => {
+    const data = { event: "e", reader_context: { fact: "سياق لم يرد في أي مصدر 999", source: 1 }, identifications: [{ fact: "خبير مجهول 777", source: 1 }], facts: facts("driver") };
+    try { validate(data); return { data, model: "stand-in" }; } catch (error) { loose.push(error.message); throw error; }
+  } });
+  check("an ungrounded context fact or identification is left out, the notes kept", [loose.length, looseKept?.notes?.facts.length], [0, 6]);
+  const late = [];
+  const lateKept = await deskNotes({ story: {}, sources, chatWith: async ({ validate }) => {
+    const answers = [{ event: "e", reader_context: null, facts: facts().slice(0, 3) }, { event: "e", reader_context: null, facts: facts().slice(0, 3) }, { event: "e", reader_context: null, facts: facts() }];
+    for (const data of answers) {
+      try { validate(data); return { data, model: "stand-in" }; } catch (error) { late.push(error.message); }
+    }
+    throw new Error(late.at(-1));
+  } });
+  check("…and untagged notes on the third and last try are kept", [late.length, lateKept?.notes?.facts.length], [2, 6]);
 }
 
 // Exercise the real checker response boundary; a nonempty array is not necessarily a completed check.
@@ -316,6 +333,8 @@ for (const [name, checks] of [
   check("a box value keeps its figure, not a list after a colon", [figureOnly("3 أنظمة: التجاري والأوراق التجارية والدفاتر التجارية"), figureOnly("02:22"), figureOnly("نحو 70%")], ["3 أنظمة", "02:22", "نحو 70%"]);
   const box = normalizeDraft({ title: "t", key_facts: [{ label: "ديزل المرحلة الأولى", value: "2,22 مليون برميل" }, { label: "الأنظمة الملغاة", value: "3 أنظمة: التجاري والأوراق التجارية" }] }).keyFacts;
   check("the writer's box goes through the spelling table and keeps figures only", box.map((f) => f.value), ["2.22 مليون برميل", "3 أنظمة"]);
+  const both = normalizeDraft({ title: "t", key_facts: [{ label: "الفائدة على الإيداع", value: "20%" }, { label: "التضخم", value: "12.5%" }], table: { title: "أرقام الأسبوع", columns: ["المؤشر", "القيمة"], rows: [["الفائدة على الإيداع", "20%"], ["سعر برنت", "113 دولاراً"], ["الذهب", "3890 دولاراً"]] } });
+  check("the box never repeats a value its own table prints (the week's review, 2026-10-30)", both.keyFacts.map((f) => f.value), ["12.5%"]);
 }
 
 // 2. A story is not written twice: a retry of the same event, or the same event from another outlet.
@@ -353,6 +372,11 @@ check(
   "a central bank called «مصرف» is not given Egypt's markets",
   [macroMarketOf("مصرف الإمارات المركزي يخفض الفائدة"), macroMarketOf("مصرف قطر المركزي يبقي الفائدة"), macroMarketOf("المركزي المصري يرفع الفائدة")],
   [[], [], ["egx30", "usdegp"]],
+);
+check(
+  "rates fetch a market only as a central bank's decision: officials' remarks and a bank's card rates fetch none",
+  [macroMarketOf("مسؤولان في الفيدرالي الأمريكي يريان حاجة إلى رفع الفائدة مجدداً"), macroMarketOf("بنك أمريكي يرفع الفائدة على بطاقات الائتمان"), macroMarketOf("الفيدرالي الأمريكي يبقي الفائدة بين 3.75% و4%")],
+  [[], [], ["spx", "us10y", "dxy"]],
 );
 check(
   "an actor is placed by a whole word: «مشتركة» places no Turkish company, a Saudi city places a Saudi one",
@@ -509,6 +533,40 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("a page that changed is read as it is now, with its publication text alongside", [changed[0].text.includes("96.80"), changed[0].saved.includes("97.55")], [true, true]);
   const settled = settleDrift([{ status: "drift", class: "figure", sentence: "تراجع برنت إلى 97.55 دولار" }, { status: "drift", class: "figure", sentence: "تراجع برنت إلى 91.25 دولار" }], [changed[0].saved]);
   check("a figure the saved copy carries is a changed page; one it never carried is an error", settled.map((c) => c.status), ["drift", "confirmed"]);
+  // A sentence supported at publication, contradicted only by a page rewritten since (Binance's earlier 2.54 billion,
+  // 2026-10-30): never corrected. With the contradicting quote in the saved copy too, or the story's own arithmetic, or a
+  // sentence the check before publication never saw supported, it stays an error.
+  const claims = [{ sentence: "قالت بينانس في وقت سابق إن الأصول المجمدة بلغت 2.54 مليار دولار", status: "supported" }, { sentence: "تراجع برنت 2.8%", status: "supported" }];
+  const savedCopy = ["Before raising it to 3 billion, the company said the frozen assets were worth about 2.54 billion dollars.", "Brent fell 2.8% to 97.55 dollars a barrel, traders said. Brent fell 3.1% on the week, not 2.8%."];
+  const confirmed = (sentence, quote, source = 1) => ({ status: "confirmed", class: "figure", sentence, quote, source });
+  check(
+    "a rewritten page never corrects what was supported at publication; an error the saved copy proves still does",
+    settleChanged(
+      [
+        confirmed("قالت بينانس في وقت سابق إن الأصول المجمدة بلغت 2.54 مليار دولار", "Binance earlier announced it had frozen 3 billion dollars of assets."),
+        confirmed("تراجع برنت 2.8%", "Brent fell 3.1% on the week, not 2.8%."),
+        confirmed("قالت بينانس في وقت سابق إن الأصول المجمدة بلغت 2.54 مليار دولار", "the story's own sum", 0),
+        confirmed("ارتفع الذهب 3%", "Gold rose 2% on Friday, dealers said in London."),
+      ],
+      claims,
+      savedCopy,
+    ).map((c) => c.status),
+    ["drift", "confirmed", "confirmed", "confirmed"],
+  );
+}
+
+// The mend keeps the revision's fixes (2026-10-30): gold's October loss of 3.8%, cut for a later price, came back into the
+// box, and Exxon's and Chevron's share moves went back from 1.6% and 1.5% to 2% and 1%. A figure the later findings ask for
+// is not "undone"; a year and a small bare number are not counted.
+{
+  const before = { body: "فقد الذهب نحو 3.8% منذ مطلع أكتوبر. وارتفع سهم إكسون 2% وسهم شيفرون 1% في 2026.", keyFacts: [{ label: "خسائر أكتوبر", value: "نحو 3.8%" }] };
+  const revised = { body: "تراجع الذهب إلى 3890 دولاراً. وارتفع سهم إكسون 1.6% وسهم شيفرون 1.5%.", keyFacts: [] };
+  const mended = { body: "تراجع الذهب إلى 3890 دولاراً في 2026. وارتفع سهم إكسون 2% وسهم شيفرون 1%. وارتفعت 3 ناقلات.", keyFacts: [{ label: "خسائر أكتوبر", value: "نحو 3.8%" }] };
+  check(
+    "a figure the revision took out and the mend puts back is named; one the findings ask for, a year or a bare small number is not",
+    [restoredFigures(before, revised, mended), restoredFigures(before, revised, mended, "ينقص التقرير: خسائر أكتوبر نحو 3.8% (المصدر 2)"), restoredFigures(before, revised, revised)],
+    [["2%", "1%", "3.8%"], ["2%", "1%"], []],
+  );
 }
 
 // 7. The «الأرقام» box holds figures (the owner, 2026-09-27, on «بغداد ومسقط», «النجف» and «الإقصاء من نظام الدولار»

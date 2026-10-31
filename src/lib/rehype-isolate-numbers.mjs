@@ -6,7 +6,8 @@
 // One run per figure however many groups it has (2026/27, 2026-09-19, 14:30, 2020–2025); see src/lib/bidi.ts.
 const NUMBER_SRC = String.raw`(?:(?<=^|[\s(\[«"'،])[+\-−])?\d[\d.,]*(?:[\/:\-–]\d[\d.,]*)*(?:\s?[%٪])?`;
 // Any Latin-script letter, accents included: an ASCII class cut «Jiménez» at «é» (2026-10-24; see src/lib/bidi.ts).
-const LATIN_SRC = String.raw`(?<![&\p{Script=Latin}\p{M}0-9])\(?(?:\d+(?=\p{Script=Latin}))?\p{Script=Latin}[\p{Script=Latin}\p{M}0-9'’.\-]*(?:\s+[\p{Script=Latin}\p{M}0-9'’.\-]+)*\)?`;
+// «&» joins a run («S&P 500»; see src/lib/bidi.ts).
+const LATIN_SRC = String.raw`(?<![&\p{Script=Latin}\p{M}0-9])\(?(?:\d+(?=\p{Script=Latin}))?\p{Script=Latin}[\p{Script=Latin}\p{M}0-9'’.\-&]*(?:\s+[\p{Script=Latin}\p{M}0-9'’.\-&]+)*\)?`;
 const RUN = new RegExp(`(${LATIN_SRC})|(${NUMBER_SRC})`, "gu");
 const SKIP = new Set(["code", "pre", "bdi", "script", "style", "svg", "a"]);
 

@@ -54,7 +54,12 @@ const MARKET_SECTIONS = new Set(["markets", "energy"]);
  * steps): Bloomberg and Reuters gave China's third-quarter growth with the yuan and the bond yield; ours had no market at
  * all. A forecast is not a release and fetches nothing.
  */
-const MACRO = /الناتج المحلي|الناتج الإجمالي|نمو الاقتصاد|النمو الاقتصادي|الاقتصاد [؀-ۿ]+ (?:ينمو|ينكمش|يتسارع|يتباطأ)|(?<![؀-ۿ])(?:و|ل|ب)?التضخم(?![؀-ۿ])|أسعار المستهلكين|البطالة|الوظائف|مبيعات التجزئة|الإنتاج الصناعي|مديري المشتريات|الميزان التجاري|الفائض التجاري|العجز التجاري|(?<![؀-ۿ])(?:و|ل|ب)?الفائدة(?![؀-ۿ])/;
+const MACRO = /الناتج المحلي|الناتج الإجمالي|نمو الاقتصاد|النمو الاقتصادي|الاقتصاد [؀-ۿ]+ (?:ينمو|ينكمش|يتسارع|يتباطأ)|(?<![؀-ۿ])(?:و|ل|ب)?التضخم(?![؀-ۿ])|أسعار المستهلكين|البطالة|الوظائف|مبيعات التجزئة|الإنتاج الصناعي|مديري المشتريات|الميزان التجاري|الفائض التجاري|العجز التجاري/;
+// Rates fetch the market only as a central bank's own decision: «الفائدة» anywhere gave two Fed presidents' remarks the S&P
+// 500, the ten-year yield and the dollar index, whose day the story then printed as the remarks' reaction (2026-10-30),
+// and would have given a bank's card rates the same.
+const RATE_MOVE = /(?:^|[^\p{L}])[وف]?[يت](?:ثبّ?ت|ُ?بقي|رفع|خفّ?ض|قرّ?ر)(?![\p{L}])\s+(?:(?!توقعات|رهانات)\S+\s+){0,3}?(?:الفائدة|أسعار الفائدة|سعر الفائدة|سعر الأساس)(?![\p{L}])/u;
+const RATE_SETTER = /المركزي|الفيدرالي|الاحتياطي|بنك (?:اليابان|إنجلترا|كندا|الشعب)/;
 const FORECAST = /(?<![؀-ۿ])(?:يتوقع|تتوقع|يتوقعان|تتوقعان|يتوقعون|توقعات|يرجح|ترجح|يرجّح|ترجّح|يُرجّح|تُرجّح|يرجحان|يرجّحان|ترجحان|ترجّحان|يرجحون|يرجّحون)(?![؀-ۿ])/;
 // A place as a whole word, through its clitics and nisba: «مصر» inside «مصرف» gave «مصرف الإمارات المركزي» and «مصرف قطر
 // المركزي» Egypt's index and pound (the review of 2026-10-30), «ترك» inside «مشتركة» Turkey's lira.
@@ -77,7 +82,8 @@ const MARKET_OF = [
 const NO_MARKET = placeWord("إمارات", "قطر", "كويت", "بحرين", "سلطنة عمان", "عماني", "مغرب", "أردن", "عراق", "لبنان", "لبناني", "تونس", "جزائر", "باكستان", "هند");
 /** The market of the place the headline names first; none when that place's markets are not quoted. */
 export function macroMarketOf(headline) {
-  if (!MACRO.test(headline) || FORECAST.test(headline)) return [];
+  const decision = RATE_MOVE.test(headline) && RATE_SETTER.test(headline);
+  if (!(MACRO.test(headline) || decision) || FORECAST.test(headline)) return [];
   let first = null;
   for (const m of [...MARKET_OF, { place: NO_MARKET, ids: [] }]) {
     const at = headline.search(m.place);

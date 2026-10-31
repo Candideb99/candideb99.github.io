@@ -8,7 +8,7 @@
  *
  *   node scripts/images-selftest.mjs
  */
-import { withStandIns, pickImage, headlinePeople, headlineCompany, namesCompany, namesPerson, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { withStandIns, pickImage, headlinePeople, headlineCompany, namesCompany, namesPerson, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
 import { photoKey, sharedPhotos } from "../pipeline/lib/photo-key.mjs";
 import { BAD_TITLE, cleanArtist, creditName, attributionLine } from "../pipeline/lib/commons.mjs";
 
@@ -487,6 +487,9 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
   );
   const w = await scenario({ draft, sources, photoDir: "C:/site/public/photos/handouts", handout: { news_photo: true, this_story: true, watermark: true, clear: true, caption_ar: "جانب من الاجتماع", credit_ar: "وزارة البترول", reason: "logo" }, plan: planFor(), world: { "construction site Egypt": [dahab] }, judge: pickTitle("Dahab") });
   check("a watermarked handout is refused and the cascade goes on", [w.image?.basis ?? null, w.saved.length, w.calls.includes("planner")], [null, 0, true]);
+  // A company's office towers from its press kit are a building's front (2PointZero, 2026-10-30).
+  const f = await scenario({ draft, sources, photoDir: "C:/site/public/photos/handouts", handout: { news_photo: true, this_story: true, watermark: false, clear: true, front: true, caption_ar: "مقر الشركة", credit_ar: "الشركة", reason: "towers" }, plan: planFor(), world: { "construction site Egypt": [dahab] }, judge: pickTitle("Dahab") });
+  check("a handout of a building's front is refused and the cascade goes on", [f.image?.basis ?? null, f.saved.length, f.calls.includes("planner")], [null, 0, true]);
   const s = await scenario({ draft, sources, handoutWidth: 640, plan: planFor(), world: {}, judge: () => 1 });
   check("a handout under 700 pixels is never looked at", [s.calls.includes("handout"), s.image?.basis ?? null], [false, null]);
 }
@@ -589,6 +592,20 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   check("the second check reads the whole-economy rule the planner and the judge read", [says.verifyPrompts.every((p) => p.includes("economy as a whole") && p.includes("container port")), says.judgePrompts.every((p) => p.includes("economy as a whole"))], [true, true]);
   const none = await scenario({ draft: morocco, plan, world, judge: (titles) => ({ choice: titles.length ? 1 : 0, says: false }), verify: () => "GENERIC_OK" });
   check("when nothing says it, the first photograph of the topic runs, checked once", [none.image?.title, none.calls.filter((c) => c.startsWith("verify:")).length], [port.title, 1]);
+  // One found after it is no longer thrown away unseen (the Bank of Japan's market street, held from the first pass, beat
+  // the governor's 2026 photograph found later, 2026-10-30): the two are compared at the end, and the better runs, checked.
+  const compared = await scenario({
+    draft: morocco,
+    plan,
+    world,
+    judge: (titles, prompt) => (prompt.includes("Photograph 1 is the one held so far") ? { choice: titles.indexOf(souk.title) + 1, says: false } : { choice: titles.length ? 1 : 0, says: false }),
+    verify: () => "GENERIC_OK",
+  });
+  check(
+    "a photograph of the topic found after the one held is compared with it at the end, and runs when it is better",
+    [compared.image?.title, compared.calls.filter((c) => c.startsWith("verify:")), compared.judgePrompts.filter((p) => p.includes("Photograph 1 is the one held so far")).length],
+    [souk.title, [`verify:${port.title}`, `verify:${souk.title}`], 1],
+  );
   // A held photograph the check refuses brings its companions back: Morocco's dry run lost Tanger Med's port to an amateur
   // market snapshot that was refused only after the port's shortlist had been passed over (2026-10-22).
   const snapshot = file("New market in Tata, Morocco.jpg", { categories: "Markets in Morocco" });
@@ -1011,6 +1028,56 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
     [r.judgePrompts.length > 0 && r.judgePrompts.every((p) => p.includes("an advertisement, a billboard or a shop sign")), photoRules({ draft: budget, image: {} }).includes("an advertisement, a billboard or a shop sign")],
     [true, true],
   );
+}
+
+// W. One Pexels shoot is one picture: Qatar's LNG deal and the analysis beside it ran 38646186 and 38646168, the same carrier
+// at the same sunset (2026-10-29).
+{
+  const lng = { ...developers, title: "قطر للطاقة توقع عقداً لتوريد الغاز المسال 20 عاماً", tags: ["قطر"], regions: ["الخليج"] };
+  const sibling = { ...file("LNG carrier ship at sunset in the ocean"), url: "https://images.pexels.com/photos/38646168/pexels-photo-38646168.jpeg", library: "pexels" };
+  const other = { ...file("LNG carrier ship at a loading terminal"), url: "https://images.pexels.com/photos/31000000/pexels-photo-31000000.jpeg", library: "pexels" };
+  const r = await scenario({
+    draft: lng,
+    plan: planFor({ queries: ["LNG carrier ship"], place: [] }),
+    libs: { "LNG carrier ship": [sibling, other] },
+    exclude: new Set(["https://images.pexels.com/photos/38646186/pexels-photo-38646186.jpeg?auto=compress&cs=tinysrgb&w=1280"]),
+    judge: (titles) => (titles.length ? 1 : 0),
+    verify: () => "GENERIC_OK",
+  });
+  check("a frame of the Pexels shoot another story runs never reaches the judge; another photograph runs", [r.judgePrompts.some((p) => p.includes("at sunset")), r.image?.url], [false, other.url]);
+}
+
+// X. A person's own photograph found by the search in Arabic is theirs: «سوندار بيتشاي» shares no word with «Google CEO
+// Sundar Pichai», and the people pass dropped him as "not the story's people" (the audit of 2026-10-31).
+{
+  const { collect } = await import("../pipeline/lib/images.mjs");
+  const pichai = file("Google CEO Sundar Pichai and Supermodel Karlie Kloss.jpg", { description: "Google CEO Sundar Pichai at an event, 2024" });
+  const restore = withStandIns({ searchCommons: async (q) => (/[؀-ۿ]/.test(q) ? [pichai] : []), searchCommonsCategory: async () => [], searchLibraries: async () => [] });
+  try {
+    const found = await collect(["Sundar Pichai", "سوندار بيتشاي"], () => {}, { perQuery: 10, max: 20, people: "by-query", together: ["Sundar Pichai", "سوندار بيتشاي"], fronts: true, simplify: "names" });
+    check("a person's own photograph found by the Arabic search is kept", found.map((f) => f.title), [pichai.title]);
+  } finally {
+    restore();
+  }
+}
+
+// Y. The smaller picture faults of the audit of 2026-10-31.
+{
+  check("compound Arabic names stay whole", [arabicSearches("حسن عبد الله"), arabicSearches("عبد الرحمن بن سعيد آل خليفة")], [["حسن عبد الله"], ["عبد الرحمن بن سعيد آل خليفة", "عبد الرحمن آل خليفة"]]);
+  check("a JPEG served as bare bytes is read by its opening bytes; a page is not", [sniffImage(Buffer.from([0xff, 0xd8, 0xff, 0xe0])), sniffImage(Buffer.from("<html>"))], ["image/jpeg", null]);
+  check(
+    "a decision on rates is read from the headline; officials' remarks and a market's expectations are not one",
+    [RATE_DECISION.test("المركزي المصري يرفع الفائدة 100 نقطة أساس في أول زيادة منذ مارس 2024"), RATE_DECISION.test("المركزي الإماراتي يبقي سعر الأساس عند 3.90% بعد تثبيت الفيدرالي"), RATE_DECISION.test("مسؤولان في الفيدرالي الأمريكي يريان حاجة إلى رفع الفائدة مجدداً"), RATE_DECISION.test("ضغط السياسيين على الفيدرالي طلباً للتيسير يخفض توقعات الفائدة القريبة")],
+    [true, true, false, false],
+  );
+  const fed = { ...developers, title: "مسؤولان في الفيدرالي الأمريكي يريان حاجة إلى رفع الفائدة مجدداً", tags: ["الاحتياطي الفيدرالي"], regions: ["الأمريكتان"] };
+  const r = await scenario({ draft: fed, plan: planFor({ queries: ["traders screens"], place: [] }), world: {}, judge: () => 0, lastResort: { scene: null, country: "United States", institution: "Federal Reserve", city: null } });
+  check("a central bank's building is searched only under its own decision", r.searched.some((q) => /Federal Reserve/.test(q)), false);
+  const mines = { title: "الحرس الثوري: ألغام بحرية تفجّر 3 ناقلات نفط جنوبي مضيق هرمز", subtitle: "", tags: [] };
+  const rates = { ...developers, title: "المركزي المصري يرفع الفائدة 100 نقطة أساس في أول زيادة منذ مارس 2024", tags: ["مصر"] };
+  const money = await scenario({ draft: rates, plan: planFor({ queries: ["counting Egyptian pounds", "Egyptian pound notes"], place: ["Egypt", "Egyptian", "Cairo"] }), world: {}, judge: () => 0 });
+  check("the last neutral pass keeps a currency's country", money.searched.filter((q) => /^(?:counting pounds|pound notes)$/.test(q)), []);
+  check("a story of mines and the Revolutionary Guard may show the Guard's boats", publishedFault({ title: "Iranian IRGC speedboat approaching US vessels (1).jpg", description: "Iranian naval forces" }, mines), null);
 }
 
 // Openverse down (2026-10-30): six searches of one pass, every one timing out. Three go out; the breaker opens on the third

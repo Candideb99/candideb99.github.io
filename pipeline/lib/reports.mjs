@@ -141,7 +141,7 @@ export function arabicEdition(edition) {
  * Markdown version (the IMF offers «Full Report (Markdown version)», 2026-10-18) is read as it is, in page-sized parts.
  * A publisher that asks us to slow down (HTTP 429: the IMF did after a few requests) is asked once more after a pause.
  */
-async function pdfPages(url, log) {
+export async function pdfPages(url, log) {
   try {
     if (!(await allowedByRobots(url))) return null;
     const get = () => fetchWithTimeout(url, { headers: { "user-agent": USER_AGENT, accept: "application/pdf,text/markdown,text/plain;q=0.9,*/*;q=0.5" } }, 60000);

@@ -372,6 +372,28 @@ export function settleDrift(checks, savedPool) {
   });
 }
 
+/**
+ * A "confirmed" contradiction of a sentence the check before publication found supported, read against what was saved
+ * then (lib/snapshots.mjs: its verdicts and the source passages). When the saved passages do not carry the contradicting
+ * quote, the source said what the story says when it was written and its page has been rewritten since: the verdict
+ * becomes drift, noted `atPublication: "supported"`, and nothing is corrected. Until 2026-10-31 settleDrift() read only
+ * figures no page carries, and the second look printed corrections telling readers that true facts were wrong: Binance's
+ * earlier 2.54 billion and Zhao's "I don't manage Binance anymore", quoted from Asharq Business and Al Jazeera at
+ * publication, after both pages were rewritten at the same addresses; a French ministry's arrests, after the Guardian's
+ * live blog was retitled. When the saved passages carry the quote too, the check before publication missed a real error,
+ * and it stays confirmed.
+ */
+export function settleChanged(checks, claims, savedPool) {
+  if (!claims?.length) return checks;
+  const norm = (s) => String(s ?? "").replace(/\s+/g, " ").trim();
+  const supported = new Set(claims.filter((c) => c.status === "supported").map((c) => norm(c.sentence)));
+  return checks.map((c) => {
+    if (c.status !== "confirmed" || c.source === 0 || !supported.has(norm(c.sentence))) return c;
+    if (c.quote && savedPool.some((t) => quoteFound(c.quote, t))) return c;
+    return { ...c, status: "drift", atPublication: "supported" };
+  });
+}
+
 /** The error classes a correction may act on wherever they stand: facts a source states one way and the story another. */
 const HARD = new Set(["figure", "period", "scope", "actor", "attribution", "hedge", "term", "internal"]);
 /** A sentence that puts its claim in someone's mouth: its cause or superlative is then that source's, and checkable. */

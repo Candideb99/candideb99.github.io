@@ -11,7 +11,7 @@ import { labelLine, quotedOutletsBlock } from "./outlets.mjs";
 import { fixNames } from "./copydesk.mjs";
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { arabicRatio, domainOf, overlappingPhrases, truncate, ungroundedNumbers, wordCount } from "./util.mjs";
+import { arabicRatio, domainOf, normalizeDigits, overlappingPhrases, truncate, ungroundedNumbers, wordCount } from "./util.mjs";
 
 const HOUSE_STYLE = `HOUSE STYLE (the practice of the Arabic economics desks: الشرق الأوسط، الاقتصادية، الشرق بلومبرغ، CNBC عربية، الجزيرة)
 ${EDITORIAL_CRAFT}
@@ -228,6 +228,7 @@ In identifications, reserve up to three source-backed sentences identifying unfa
 Tag each fact with its job honestly, because the tags decide whether the event can be written long (2026-10-30: the euro-area GDP story was 300 words of Eurostat's table with nothing explaining it). "driver" is a cause the sources give for THIS change: why the figure rose or fell, why the decision came now; a condition the event happened despite, or a general backdrop the source does not tie to this change, is "background". "reaction" is a named party's response to or assessment of this event: a market move timed to it, an official, a company, an analyst, or the forecast the figure beat or missed, with the forecast's figure. An outlet's one-word framing of its own headline («غير متوقع»، «أفضل من المتوقع»، «قفز») with no reason, figure or voice is how the news is told: tag it "news". A statistics office's coverage, method and revision calendar is a "remark"; its next release date is "next". "remark" is a speaker's general statement with no decision, figure, date, commitment or named consequence: a call («دعا إلى»), an emphasis («شدد على أهمية»), praise («أشاد»), a hope or a description of something as important. So is padding that only looks like a fact (NEWS DEPTH): a company's standing description of itself (founded, countries, project count, assets under management), an executive's praise of the results or of a partner, and the list of topics a communiqué says a meeting covered. In a story told for its economic consequence, political, diplomatic and security facts that do not bear on that consequence are left out of the notes: they are another story. The political setting that frames it (a first visit since a change of government, where the leaders met before, how warm or cautious relations have been, a shared border, who received whom at the airport) is a "remark" at most (2026-10-29: the Iraq–Syria pipeline talks held one figure and fifteen such "facts", and the critic rejected the 300 words they made). Keep at most two remarks, the ones that best show the speaker's position; a fact carrying a decision, figure, date or commitment is never a remark, whatever verb reports it. Who attended a ceremony is not a fact of the event.
 Return: {"event":"<one Arabic sentence naming the one event>","reader_context":{"fact":"<one contextual fact, or null instead of this object if none is supplied>","source":<source number>},"identifications":[{"fact":"<name and concise sourced role or function>","source":<source number>}],"facts":[{"fact":"<sentence>","source":<source number>,"job":"news|driver|numbers|reaction|background|next|remark"}],"quotes":[{"text":"<verbatim Arabic>","source":<source number>}]}`;
   let tagsAsked = false;
+  let answers = 0;
   try {
     const { data, model } = await chatWith({
       role: "desk",
@@ -237,6 +238,7 @@ Return: {"event":"<one Arabic sentence naming the one event>","reader_context":{
       maxTokens: 8000,
       log,
       validate: (d) => {
+        answers += 1;
         if (d && typeof d === "object") {
           d.facts = d.facts ?? d.key_facts ?? d.desk_notes ?? d.atomic_facts ?? [];
         }
@@ -246,8 +248,9 @@ Return: {"event":"<one Arabic sentence naming the one event>","reader_context":{
         // the writer with no notes, writing long from the raw sources past every depth gate; untagged notes run short.
         for (const f of d.facts) if (f && typeof f.job === "string") f.job = f.job.trim().toLowerCase();
         const untagged = d.facts.filter((f) => !FACT_JOBS.has(f?.job)).length;
+        // Asked only while a try remains (llm.mjs gives three): on the last, the notes are kept as they are.
         if (untagged > d.facts.length / 4) {
-          if (!tagsAsked) {
+          if (!tagsAsked && answers < 3) {
             tagsAsked = true;
             throw new Error(`${untagged} of ${d.facts.length} facts carry no job; tag every fact with one of ${[...FACT_JOBS].join("|")}`);
           }
@@ -264,8 +267,12 @@ Return: {"event":"<one Arabic sentence naming the one event>","reader_context":{
           // A fact lifted from an Arabic source would carry its sentence into the story.
           return sources[n - 1].lang !== "ar" || overlappingPhrases(text, texts[n - 1], 8, 1).length === 0;
         });
-        if (d.reader_context && !kept.includes(d.reader_context)) throw new Error("reader_context is not grounded in its source or copies its phrasing; rewrite it faithfully");
-        if ((d.identifications ?? []).some((f) => !kept.includes(f))) throw new Error("an expert identification is not grounded or copies a long source phrase; rewrite it concisely and faithfully");
+        // An ungrounded reader_context or identification leaves the notes with the other facts, never takes them all: six
+        // whole answers of about thirty facts each were refused for one such line on 30 October, about four minutes, and two
+        // refusals in a row left the third try's untagged notes as the only ones (the audit of 2026-10-31).
+        if (d.reader_context && !kept.includes(d.reader_context)) log?.("desk notes: the context fact is not grounded in its source or copies it; left out");
+        const loose = (d.identifications ?? []).filter((f) => !kept.includes(f)).length;
+        if (loose) log?.(`desk notes: ${loose} identification(s) not grounded in their source or copied; left out`);
         if (kept.length < 5) throw new Error(`${d.facts.length - kept.length} of ${d.facts.length} facts are not in their sources`);
         if (kept.length < d.facts.length) log?.(`desk notes: ${d.facts.length - kept.length} of ${d.facts.length} facts dropped (not in their source or copied from it)`);
         // Two remarks at most reach the writer, so a speech cannot be told call by call (the Egypt exports story, 2026-10-19).
@@ -407,7 +414,13 @@ ${short ? SHORT_SCHEMA_TEXT : SCHEMA_TEXT}`;
  * Sends critic findings back to the writer for one revision. `wordLimits` (analyses, paper readings) overrides the
  * news word bounds; `kind` picks the brief the revision is written under ("paper" for a reading of a research paper).
  */
-export async function reviseArticle({ draft, sources, issues, log, wordLimits, kind = "", notes = null, lessons = "", short = false }) {
+export async function reviseArticle({ draft, sources, issues, log, wordLimits, kind = "", notes = null, lessons = "", short = false, settled = [] }) {
+  // A mend sees the findings the revision before it already put right, so it keeps those fixes (2026-10-30: a gold story's
+  // October loss, cut for a later price, came back into the box from the notes; Exxon's shares, corrected to 1.6% and
+  // 1.5%, went back to 2% and 1%).
+  const settledNote = settled.length
+    ? `ALREADY PUT RIGHT. The revision before this one fixed these earlier findings. Keep every one of those fixes: never bring back a figure, a claim or a wording they removed or corrected, from the notes, the sources or anywhere else.\n${settled.map((i, n) => `${n + 1}. ${String(i).slice(0, 400)}`).join("\n")}\n\n`
+    : "";
   const news = !wordLimits && !kind;
   const shown = short ? { title: draft.title, subtitle: draft.subtitle, slug: draft.slug, lede: draft.lede, body: draft.body, tags: draft.tags, regions: draft.regions, image_queries: draft.imageQueries ?? draft.image_queries } : draft;
   // An editor's «ينقص التقرير:» names a fact a source carries and the story lacks. With desk notes the reviser saw only
@@ -429,7 +442,7 @@ ${sources.map(writerSourceBlock(notes, reveal, { all: paper })).join("\n\n")}
 
 ${quotedOutletsBlock(sources)}${lessons}${lessons && news && !short ? "SCOPE OF THE LEARNED RULES: they protect reported facts and attribution; WHY IT MATTERS separately permits a bounded house inference from sourced premises. Never convert an analyst's opinion into an established fact.\n\n" : ""}${!news ? "" : short ? SHORT_STORY : newsDepthBrief(sources)}
 An editor found the following problems. Fix every one of them strictly using the source material. Remove any claim or number that the sources do not support. A wording the editor suggests is a direction, not copy to paste: write the repair in your own construction, keep every condition and period it must carry, and read it against the headline and the box (2026-10-29: an analysis whose box, pasted from its critic, contradicted its own headline). Before adding a fact a problem calls missing, check that the draft does not already state it in other words; if it does, leave the draft as it is rather than telling it twice. ${short ? `Keep everything else intact, and keep the story within 150-250 words (lede + body); never pad with unsupported material.` : `Preserve useful explanations, identification and developed comparisons; do not shrink the report into a digest during revision. Keep everything else intact, and keep the article at least ${wordLimits?.target ?? 350} words (lede + body)${wordLimits || kind ? " when the sources allow it" : `; a news story under ${NEWS_FLOOR} words is refused. When a problem says the report lacks an element («ينقص التقرير»), add it from the named source`}; never pad with unsupported material.`}
-PROBLEMS
+${settledNote}PROBLEMS
 ${issues.map((i, n) => `${n + 1}. ${i}`).join("\n")}
 
 Return the complete corrected ${short ? "story" : "article"} as one JSON object with the same keys as before (${short ? "title, subtitle, slug, lede, body, tags, regions, image_queries" : `title, subtitle, slug, lede, body, key_facts, why_it_matters, ${news ? "why_basis, " : ""}tags, regions, image_queries${draft.chart || draft.table ? ", chart, table" : ""}`}).`;
@@ -484,6 +497,10 @@ export function normalizeDraft(d, { kind = "news" } = {}) {
     chart: normalizeChart(d.chart),
     table: normalizeTable(d.table),
   };
+  // The box never repeats the piece's own table: in the week's review five of six values sat again in «أرقام الأسبوع»,
+  // and 21 of the 44 pieces with both printed two or more values twice (the audit of 2026-10-31).
+  const cells = new Set((draft.table?.rows ?? []).flat().map((c) => normalizeDigits(String(c)).replace(/\s+/g, " ").trim()));
+  if (cells.size) draft.keyFacts = draft.keyFacts.filter((f) => !cells.has(normalizeDigits(String(f.value)).replace(/\s+/g, " ").trim()));
   // A tag the story never mentions files it under a subject it does not cover, and a region named only as a cause
   // puts it on a desk it is not about (the audit of 2026-09-27; lib/tags.mjs, lib/regions.mjs).
   draft.tags = cleanTags(Array.isArray(d.tags) ? d.tags : [], taggedText(draft)).slice(0, 6);
@@ -858,7 +875,7 @@ ${calendarText || "(none)"}
 TASK
 Return one JSON object:
 {
-  "title": "Arabic, 40-90 characters, beginning with 'حصاد الأسبوع:' then the two or three developments that defined the week, each with the verb and figure its paragraph uses, never a stronger verb",
+  "title": "Arabic, 40-90 characters: the two or three developments that defined the week, each with the verb and figure its paragraph uses, never a stronger verb; no 'حصاد الأسبوع:' before them, which the site prints above every headline of this kind",
   "subtitle": "one Arabic sentence (max 170 chars): what the week changed for Arab economies, hedged where it is a reading",
   "slug": "week-in-review-${date}",
   "lede": "the opening paragraph, at most 45 words: the week's thread, anchored in its two biggest facts from the paragraphs",
@@ -905,7 +922,10 @@ Short sentences, one idea each, none over 30 words. Paragraphs separated by blan
   // The box (and the week's table of figures) holds figures only: a date named as a story's figure stays out.
   const figures = parts.filter((p) => p.figure && isFigure(p.figure.value, p.figure.label));
   const draft = {
-    title: /^حصاد الأسبوع/.test(String(frame.title).trim()) ? String(frame.title).trim() : `حصاد الأسبوع: ${String(frame.title).trim()}`,
+    // The site prints «حصاد الأسبوع» above the headline (kindLabel()), so the headline does not open with it: forced in
+    // here, the review of 30 October read «حصاد الأسبوع» twice in a row on every page that listed it (the audit of 31
+    // October).
+    title: String(frame.title).trim().replace(/^حصاد الأسبوع\s*[:：،-]\s*/, ""),
     subtitle: String(frame.subtitle).trim(),
     slug: `week-in-review-${date}`,
     lede: String(frame.lede).trim(),

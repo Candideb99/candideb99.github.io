@@ -69,7 +69,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .node-version  # the one release every workflow and Cloudflare use (deploy.yml says why)
-          cache: npm
+          # No npm cache: on 2026-10-30 its restore stalled the weekly review ten minutes ("Egress is over the account limit"), where npm ci takes seconds.
 
       - run: npm ci --no-audit --no-fund
 

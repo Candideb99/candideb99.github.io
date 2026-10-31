@@ -22,7 +22,7 @@ import os from "node:os";
 import process from "node:process";
 import YAML from "yaml";
 import { fetchFeed } from "./lib/feeds.mjs";
-import { extractArticle } from "./lib/extract.mjs";
+import { allowedByRobots, extractArticle } from "./lib/extract.mjs";
 import { collectNewsEvidence, eventSourcesOf, independentOutletCount } from "./lib/news-evidence.mjs";
 import { marketData, repeatsInstrument } from "./lib/context.mjs";
 import { MARKET_QUOTE_URL } from "./lib/quotes.mjs";
@@ -37,11 +37,12 @@ import { checkSourcesOf, precheck, writeJsonAtomic } from "./lib/precheck.mjs";
 import { repeatsRecent } from "./lib/events.mjs";
 import { saveSnapshot } from "./lib/snapshots.mjs";
 import { pickImage } from "./lib/images.mjs";
+import { cleanTags, storyText as tagsText } from "./lib/tags.mjs";
 import { ARTICLES_DIR, buildSlug, loadExistingArticles, mergeNewsRefresh, mergeRewrite, serializeArticle } from "./lib/article.mjs";
 import { usage as llmUsage } from "./lib/llm.mjs";
-import { domainOf, fingerprint, hoursSince, isoNow, sleep } from "./lib/util.mjs";
+import { USER_AGENT, domainOf, fetchWithTimeout, fingerprint, hoursSince, isoNow, restoredFigures, sleep } from "./lib/util.mjs";
 import { pickDataChart } from "./lib/datacharts.mjs";
-import { latestEdition, loadRegistry, monthKey, readEdition, releaseStory, reportStory } from "./lib/reports.mjs";
+import { latestEdition, loadRegistry, monthKey, pdfPages, readEdition, releaseStory, reportStory } from "./lib/reports.mjs";
 
 const root = process.cwd();
 const STATE_PATH = path.join(root, "pipeline", "state", "seen.json");
@@ -487,6 +488,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   if (!straightOut) {
     const issues = [...checks.issues, ...review.issues];
     if (!issues.length) issues.push(`المحرر أعطى المسودة ${review.score}/10 (${review.verdict})${review.summary ? `: ${review.summary}` : ""}؛ راجع الدقة والعزو والعربية.`);
+    const reviewed = draft;
     const revision = await reviseArticle({ draft, sources, issues, log, notes, lessons, short });
     draft = (await copyDeskPass(revision.draft, { includeBody: true, sources, minWords })).draft;
     writerModel = `${writerModel} → ${revision.model}`;
@@ -519,8 +521,15 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     // fact-check passed both). The thresholds above are unchanged; a repair the checks refuse leaves the reviewed draft.
     if (review.verdict === "revise" && review.issues.length) {
       try {
-        const mend = await reviseArticle({ draft, sources, issues: review.issues, log, notes, lessons, short });
-        const recheck = (d) => programmaticChecks(d, sources, { recentTitles, minWords });
+        const mend = await reviseArticle({ draft, sources, issues: review.issues, log, notes, lessons, short, settled: issues });
+        // A figure the revision took out that the mend puts back is an earlier finding undone (restoredFigures()): refused,
+        // rescue or not.
+        const revisedDraft = draft;
+        const recheck = (d) => {
+          const c = programmaticChecks(d, sources, { recentTitles, minWords });
+          const back = restoredFigures(reviewed, revisedDraft, d, review.issues.join(" "));
+          return back.length ? { ...c, ok: false, issues: [...c.issues, `الإصلاح الأخير أعاد رقماً حذفته المراجعة: ${back.join("، ")}`] } : c;
+        };
         let mended = (await copyDeskPass(mend.draft, { includeBody: true, sources, minWords })).draft;
         let mendedChecks = recheck(mended);
         // A mend the checks refuse for a fault of the desk's trade gets the revision's own rescue, the last cut and the
@@ -572,6 +581,9 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     const done = [pre.repairs ? `${found} proved error(s) repaired (${pre.repairs} repair(s)); the repaired text checked clean` : "", pre.trimmed ? `${pre.trimmed} sentence(s) no source bears on cut` : ""];
     log(`precheck "${draft.title}": ${done.filter(Boolean).join("; ")}`);
   } else log(`precheck "${draft.title}": clean`);
+  // The tags are held to the text that goes out, not the writer's first: a desk pass, a mend or a cut can take away the
+  // only word a tag stood on (2PointZero kept «نتائج الشركات» and filed under it, the audit of 2026-10-31).
+  draft = { ...draft, tags: cleanTags(draft.tags ?? [], tagsText(draft)).slice(0, 6) };
 
   // The whole story and its sources' own lead photographs go to the picture desk: the cascade's place and the
   // subject of the sources' photographs come before the writer's searches (lib/images.mjs findImage()).
@@ -882,6 +894,7 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   if (!straightOut) {
     const issues = [...checks.issues, ...review.issues];
     if (!issues.length) issues.push(`المحرر أعطى المسودة ${review.score}/10 (${review.verdict})${review.summary ? `: ${review.summary}` : ""}؛ راجع الدقة والعزو والعربية.`);
+    const reviewed = draft;
     const revision = await reviseArticle({ draft, sources: checkSources, issues, log, wordLimits, kind, notes });
     // The desk reads the revised body, as a news story's (2026-10-24): it had read a hub piece's body only in the first
     // draft, so the text that went out was the reviser's and the mender's, never desked, in 40 of the 45 hub pieces then
@@ -909,8 +922,14 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
     // faults their own last review named («يبقى خطأ واحد يحوّل توقع البنك المركزي…»، «فتحتاج إلى مراجعة قبل النشر»).
     if (finalReview.verdict === "revise" && finalReview.issues.length) {
       try {
-        const mend = await reviseArticle({ draft, sources: checkSources, issues: finalReview.issues, log, wordLimits, kind, notes });
-        const recheck = (d) => programmaticChecks(d, checkSources, { ...flags, recentTitles });
+        const mend = await reviseArticle({ draft, sources: checkSources, issues: finalReview.issues, log, wordLimits, kind, notes, settled: issues });
+        // As a news story's mend: a figure the revision took out does not come back (restoredFigures()).
+        const revisedDraft = draft;
+        const recheck = (d) => {
+          const c = programmaticChecks(d, checkSources, { ...flags, recentTitles });
+          const back = restoredFigures(reviewed, revisedDraft, d, finalReview.issues.join(" "));
+          return back.length ? { ...c, ok: false, issues: [...c.issues, `الإصلاح الأخير أعاد رقماً حذفته المراجعة: ${back.join("، ")}`] } : c;
+        };
         let mended = (await copyDeskPass(mend.draft, { kind: deskKind, sources: checkSources ?? [] })).draft;
         let mendedChecks = recheck(mended);
         // As a news story's mend (2026-10-28): one more desk pass before a mend is thrown away for the desk's fault.
@@ -1192,9 +1211,38 @@ async function readPaper(item) {
       break;
     }
   }
+  // A landing page that carries only the abstract, with the paper's own PDF linked from it: the Federal Reserve's FEDS and
+  // IFDP pages (2026-10-30: the research editor's first choice, a sovereign-bank paper picked for Egypt, Lebanon, Tunisia
+  // and Jordan, read 2,997 characters and was passed over, while /econres/ifdp/files/ifdp1448.pdf held the paper).
+  if (!item.abstractOnly && abstract.length + pageText.length < PAPER_MIN_CHARS) {
+    const pdf = await paperPdf(item.url);
+    if (pdf) {
+      const pages = await pdfPages(pdf, log);
+      const full = (pages ?? []).join("\n\n").slice(0, PAPER_MAX_CHARS);
+      if (full.length >= PAPER_MIN_CHARS && looksLikeThePaper(full, item)) {
+        log(`paper pdf ${pdf}: ${full.length} chars`);
+        pageText = full;
+        pageUrl = pdf;
+      } else log(`paper pdf ${pdf}: ${full ? "not this paper's text" : "not read"}`);
+    }
+  }
   // The page text stands alone when it already carries the abstract; otherwise the abstract leads it.
   const text = pageText && pageText.includes(abstract.slice(0, 100)) ? pageText : [abstract, pageText].filter(Boolean).join("\n\n");
   return { text, pageUrl, ogImage };
+}
+
+/** The one PDF a paper's own landing page links to on its own site («files/ifdp1448.pdf»), or null. */
+async function paperPdf(url) {
+  try {
+    if (!(await allowedByRobots(url))) return null;
+    const response = await fetchWithTimeout(url, { headers: { "user-agent": USER_AGENT } }, 20000);
+    if (!response.ok) return null;
+    const html = await response.text();
+    const links = [...new Set([...html.matchAll(/href="([^"#?]+\.pdf)"/gi)].map((m) => new URL(m[1], url).href))].filter((href) => new URL(href).host === new URL(url).host);
+    return links.length === 1 ? links[0] : null;
+  } catch {
+    return null;
+  }
 }
 
 /**

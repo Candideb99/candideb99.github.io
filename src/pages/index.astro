@@ -62,7 +62,9 @@ place(digest);
 // list (lead, seconds, then a list). Until 2026-10-19 they ran under «مختارات المحرر», a label that promised a hand-picked
 // selection over the same ranking as the cover; the owner chose to fold them in. Ranked by importance alone they had
 // reached back a week, and one said the Saudi pipeline had closed beside a lead saying it had reopened.
-const picks = byImportance(unplaced(news).filter((a) => hoursOld(a) < 72)).slice(0, 4);
+// Not a short story, as on the cover and the secondaries: Lagarde's short item took a place Egypt's first rate rise since
+// 2024 lost, and the rise appeared nowhere on the front but in the figures (the audit of 2026-10-31).
+const picks = byImportance(unplaced(news).filter((a) => hoursOld(a) < 72 && a.data.format !== "short")).slice(0, 4);
 place(picks);
 // The strip above the first screen is the layout's «آخر الأخبار», the same on every page since 2026-09-28 (the owner
 // chose one strip everywhere over the front's own «أيضاً على خازندار», which carried stories not on the first screen).
@@ -95,6 +97,8 @@ const figures = unplaced(articles)
       .sort((x, y) => y.score - x.score)[0];
     return best ? [best] : [];
   })
+  // One figure once: an analysis and its own news story gave «20% عائد الإيداع لليلة واحدة بعد القرار» twice (2026-10-30).
+  .filter((f, i, all) => all.findIndex((g) => g.value.trim() === f.value.trim()) === i)
   .slice(0, 3);
 place(figures.map((f) => f.article));
 // ملفات نتابعها runs as a row under the section bar: what the paper is following this week, subjects and running

@@ -116,6 +116,32 @@ export function extractNumbers(text) {
 }
 
 /**
+ * Figures a revision took out of a story that a later pass puts back: in `before`, gone from `revised`, back in `after`.
+ * Counted are percentages, decimals and whole numbers of 10 or more that are not years; a bare small number recurs for
+ * too many reasons. The mend after the second review had put back a gold story's October loss of 3.8%, cut for a later
+ * price, and Exxon's and Chevron's share moves of 2% and 1%, corrected to 1.6% and 1.5% (2026-10-30, the audit of 31
+ * October).
+ */
+export function restoredFigures(before, revised, after, asked = "") {
+  const text = (d) => [d?.title, d?.subtitle, d?.lede, d?.body, d?.whyItMatters, ...(d?.keyFacts ?? d?.key_facts ?? []).map((f) => `${f?.label ?? ""} ${f?.value ?? ""}`)].join(" ");
+  const figures = (d) => {
+    const out = new Set();
+    for (const m of normalizeDigits(text(d)).replace(/٫/g, ".").replace(/٬/g, ",").matchAll(/(\d[\d,]*(?:\.\d+)?)(\s?[%٪])?/g)) {
+      const n = m[1].replace(/,/g, "");
+      const v = Number(n);
+      if (m[2]) out.add(`${n}%`);
+      else if (n.includes(".") || (v >= 10 && !(Number.isInteger(v) && v >= 1900 && v <= 2100))) out.add(n);
+    }
+    return out;
+  };
+  const had = figures(before);
+  const kept = figures(revised);
+  // A figure the later findings themselves name (`asked`: «ينقص التقرير: …») was asked back, not undone.
+  const wanted = figures({ body: asked });
+  return [...figures(after)].filter((n) => had.has(n) && !kept.has(n) && !wanted.has(n));
+}
+
+/**
  * A source's figures, as extractNumbers reads them and as its own language writes them (2026-10-25, when the Turkish
  * and Persian press joined): a decimal comma («4,2 milyar» is 4.2), thousands set off by dots («4.500 kişi» is 4500),
  * Turkish thousands in words («4 bin 500» is 4500) and, in Persian, a decimal slash («۳/۵ درصد» is 3.5). Read only on

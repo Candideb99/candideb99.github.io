@@ -407,7 +407,10 @@ const NAME_FIXES = [
   [/«AGBI»|(?<![(«A-Za-z])AGBI(?![A-Za-z)»])/g, "«أرابيان غلف بزنس إنسايت»"],
   // Asharq Business ran three ways in the week it joined (2026-10-29: «الشرق للأعمال»، «اقتصاد الشرق مع بلومبرغ»، «الشرق
   // بلومبرغ»), its English name and its old programme's name translated; sources.json prints «الشرق بلومبرغ».
+  // and a fourth on 30 October, «منصة «اقتصاد الشرق»» (three stories): the quoted name only, since «اقتصاد الشرق الأوسط»
+  // is the region's economy.
   [/الشرق للأعمال|اقتصاد الشرق مع بلومبرغ/g, "الشرق بلومبرغ"],
+  [/(?:منصة\s+)?«اقتصاد الشرق»/g, "«الشرق بلومبرغ»"],
   // Google: «جوجل» in 28 stories, «غوغل» in 6 (2026-10-29).
   [/غوغل/g, "جوجل"],
   // Kevin Warsh ran two ways in fourteen stories, and «وورش» once (2026-10-30): the site's most used spelling.
