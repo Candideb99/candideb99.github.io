@@ -9281,6 +9281,118 @@
           ]
         }
       ]
+    },
+    "saudi-oil-exports-rise-october-trackers-59245b": {
+      "at": "2026-10-31T06:11:27.349Z",
+      "title": "شركتان لتتبع الناقلات ترصدان ارتفاع صادرات النفط السعودية رغم الهجمات",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v45",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 32,
+            "checked": 32,
+            "supported": 27,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 5,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 2,
+              "field": "subtitle",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "شركة ثالثة هي «كبلر» تقدّر متوسط الصادرات منذ بداية أكتوبر بـ5.72 مليون برميل يومياً مقابل 6.70 مليون في سبتمبر",
+              "quote": "Kpler has 5.4 million, below September.",
+              "source": "Gulf News",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 4,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "صادرات أكتوبر حتى 29 منه وفق تانكر تراكرز: 7.9 مليون برميل يومياً",
+              "quote": "TankerTrackers.com estimates 6.99 million, a prewar level.",
+              "source": "Gulf News",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 6,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "متوسط صادرات أكتوبر منذ بدايته وفق كبلر: 5.72 مليون برميل يومياً",
+              "quote": "Kpler has 5.4 million, below September.",
+              "source": "Gulf News",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 10,
+              "field": "whyItMatters",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وإلى أن تصدر الأرقام السعودية الرسمية، تقوم حسابات أسعار النفط والإيرادات السعودية على تقديرات أولية تتراوح بين 5.72 مليون برميل يومياً لدى «كبلر» و7.9 مليون لدى «تانكر تراكرز».",
+              "quote": "Saudi barrels are a main buffer against the Hormuz disruption, and the estimates differ by about 1.6 million barrels a day.",
+              "source": "Gulf News",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 11,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "قدّر موقع «تانكر تراكرز» (TankerTrackers.com) متوسط الصادرات السعودية بنحو 7.9 مليون برميل يومياً حتى 29 أكتوبر، مقابل 5.8 مليون في سبتمبر.",
+              "quote": "TankerTrackers.com estimates 6.99 million, a prewar level.",
+              "source": "Gulf News",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "uae-caps-einvoicing-fines-50000-dirhams-3da2f9": {
+      "at": "2026-10-31T06:34:30.449Z",
+      "title": "الإمارات تضع سقفاً قدره 50 ألف درهم لغرامات تطبيق الفوترة الإلكترونية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v45",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 29,
+            "checked": 29,
+            "supported": 24,
+            "weak": 5,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

@@ -1,0 +1,118 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-31T05:52:35.357Z",
+  "durationSec": 178,
+  "read": 4,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "oil-highest-settlement-since-april-hormuz-tanker-3779a4",
+      "title": "النفط يغلق عند أعلى تسوية منذ أبريل مع تصاعد مخاطر هرمز",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 26,
+        "checked": 26,
+        "supported": 22,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 4,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "exxon-chevron-q3-refining-profits-beat-069e13",
+      "title": "إكسون وشيفرون الأمريكيتان تتجاوزان التوقعات بأرباح تكرير قياسية مع حرب إيران",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 37,
+        "checked": 37,
+        "supported": 31,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "egypt-budget-deficit-narrows-first-two-months-f8c9f8",
+      "title": "عجز موازنة مصر يتقلص إلى 1.3% من الناتج في أول شهرين من عامها المالي",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 24,
+        "checked": 24,
+        "supported": 18,
+        "weak": 6,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "week-in-review-2026-10-30-9577a4",
+      "title": "حصاد الأسبوع: المركزي المصري يرفع الفائدة 100 نقطة أساس بعد تثبيت الفيدرالي",
+      "kind": "weekly",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 73,
+        "checked": 73,
+        "supported": 59,
+        "weak": 7,
+        "noEvidence": 0,
+        "notFound": 7,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 4,
+    "failures": 0,
+    "promptTokens": 72195,
+    "completionTokens": 38196,
+    "cacheReadTokens": 0,
+    "costUsd": 1.3414,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 4
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[05:52:35] second look: 4 to read now (4 published pieces not yet read; 167 read clean before publication and left out of the audit sample)",
+    "[05:52:38] oil-highest-settlement-since-april-hormuz-tanker-3779a4:   source https://finance.yahoo.com/quote/BZ%3DF/: a market quote of its moment, with no copy saved at publication",
+    "[05:52:38] exxon-chevron-q3-refining-profits-beat-069e13:   source https://www.ft.com/content/e934d2dd-9d6c-4099-95a5-1c300ed28cbb?syn-25a6b1a6=1: http-403",
+    "[05:53:31] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2342 attempt=1 ms=52872",
+    "[05:53:31] oil-highest-settlement-since-april-hormuz-tanker-3779a4: 26 of 26 sentences checked · 22 supported · 0 without a source · 0 confirmed error(s) · 4 listed for a person",
+    "[05:53:45] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2746 attempt=1 ms=66616",
+    "[05:53:45] exxon-chevron-q3-refining-profits-beat-069e13: 37 of 37 sentences checked · 31 supported · 1 without a source · 0 confirmed error(s) · 2 listed for a person",
+    "[05:54:25] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1908 attempt=1 ms=52045",
+    "[05:54:25] egypt-budget-deficit-narrows-first-two-months-f8c9f8: 24 of 24 sentences checked · 18 supported · 0 without a source · 0 confirmed error(s)",
+    "[05:55:33] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2417 attempt=1 ms=107734",
+    "[05:55:33] week-in-review-2026-10-30-9577a4: 73 of 73 sentences checked · 59 supported · 7 without a source · 0 confirmed error(s)"
+  ]
+}

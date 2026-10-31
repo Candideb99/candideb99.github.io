@@ -1,0 +1,449 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-31T05:55:33.834Z",
+  "durationSec": 2337,
+  "published": 2,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "صادرات النفط السعودية ترتفع في أكتوبر رغم الهجمات على منشآتها",
+      "section": "energy",
+      "importance": 7,
+      "sources": [
+        "https://gulfnews.com/business/energy/saudi-oil-keeps-flowing-despite-attacks-say-trackers-why-counting-barrels-is-not-easy-1.500730059",
+        "https://www.annahar.com/economy/361952/%D8%A7%D8%B1%D8%AA%D9%81%D8%A7%D8%B9-%D8%B5%D8%A7%D8%AF%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D9%86%D9%81%D8%B7-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-%D9%81%D9%8A-%D8%AA%D8%B4%D8%B1%D9%8A%D9%86-%D8%A7%D9%84%D8%A3%D9%88%D9%84-%D8%B1%D8%BA%D9%85-%D8%A7%D9%84%D9%87%D8%AC%D9%85%D8%A7%D8%AA"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "يحدد العنوان البلد بوضوح، لكن الصفحة الأولى تذكر «كبلر» في العنوان الفرعي اسماً مجرداً لا يعرفه القارئ العام. ومعنى «شركتين من ثلاث» يضيع حين يضع الرسم «فورتكسا» بين الثلاث.",
+              "repair": "يُكتب في العنوان الفرعي «بيانات شركة «كبلر» لتتبع الناقلات تخالف الاتجاه…»، ويُصحح تعريف الشركات الثلاث كما ورد في المصدر 2."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يورد التقرير السبب كما في المصادر: البحر الأحمر وزيادة الشحن عبر هرمز وأسباب «تانكر تراكرز». لكنه يغفل ارتفاع صادرات ينبع وتوزيع الصادرات بين الساحلين الغربي والشرقي (المصدر 2)، ويغفل حركة برنت (المصدر 1). وصندوق «لماذا يهمّ» يبني استنتاجاً معقولاً، هو اعتماد التعويض على منفذ البحر الأحمر العامل بتدفقات أقل، لكنه يختم برقم خاطئ.",
+              "repair": "تُضاف معلومة ينبع وأرقام الساحلين إلى فقرة «منافذ بديلة»، وتُضاف جملة برنت إلى فقرة المخاطر، ويُصحح رقم الفارق في الصندوق."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "ما يقول العنوان إنه جديد هو الارتفاع. لكن الشاهد الثاني عليه («بيترو-لوجيستيكس») يأتي بعد فقرتين عن «فورتكسا» التي تخالف الاتجاه، فينتقل النص بين المؤيد والمخالف ثم يعود إلى المؤيد.",
+              "repair": "يُرتب النص هكذا: الشركتان اللتان رصدتا الارتفاع، ثم «كبلر» المخالفة، ثم تعارض تقديرَي «فورتكسا» وسبب صعوبة العدّ، ثم المنافذ، ثم المخاطر وما بعد أكتوبر."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "رقم «نحو 1.6 مليون برميل يومياً» مأخوذ من مقارنة أرقام أخرى (6.99 و5.4) في المصدر 1، ولا يطابق 7.9 و5.72 المنشورين في الرسم والنص. ويختلف كذلك الإطار الزمني لكل تقدير (حتى 29 أكتوبر، وحتى تاريخ تقرير بلومبرغ، ومنذ بداية الشهر)، والرسم يجمعها تحت «أكتوبر (أولي)».",
+              "repair": "يُحذف رقم 1.6، ويُكتب الإطار الزمني لكل شركة في تسميات الرسم، مثل «تانكر تراكرز (حتى 29 أكتوبر)»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يحدد العنوان البلد (السعودية) وطبيعة الفاعلين (شركتان لتتبع الناقلات)، ويعرّف العنوان الفرعي «كبلر» بأنها شركة لتتبع الناقلات. ويفرّق المتن بين الشركتين اللتين رصدتا الارتفاع والشركة الثالثة المخالفة، ثم «فورتكسا» بوصفها شركة رابعة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يورد التقرير ما تقدمه المصادر من تفسير. السبب: البحر الأحمر منذ 22 سبتمبر، وزيادة الشحن عبر هرمز، وارتفاع ينبع، وأسباب «تانكر تراكرز». المقارنة: سبتمبر لكل شركة. الأثر: برنت عند أعلى مستوى في نحو ستة أشهر. وما بعد أكتوبر: بيانات نوفمبر والأرقام الرسمية. ويستنتج صندوق «لماذا يهمّ» من مقدمات مسندة أن جزءاً من التعويض يمر عبر ينبع والبحر الأحمر العامل بتدفقات أقل، وهو استنتاج محدود ومعقول.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يطوّر المتن ما يقول العنوان إنه جديد، أي الارتفاع، مباشرة بعد الاستهلال: «تانكر تراكرز» ثم «بيترو-لوجيستيكس»، ثم «كبلر» المخالفة، ثم «فورتكسا». لكن فقرة «منافذ بديلة» تقابل بـ«في المقابل» رقم «كبلر» لرأس تنورة بتوزيع «تانكر تراكرز» بين الساحلين، فتنشأ مقارنة بين شركتين لا تصح.",
+              "repair": "تُبنى فقرة المنافذ على الساحل الغربي: ينبع («بيترو-لوجيستيكس»)، و3.32 مليون («تانكر تراكرز»)، والبحر الأحمر. ثم يُذكر تراجع رأس تنورة منسوباً إلى «كبلر» وحدها، من دون «في المقابل»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«يعود جانب من هذا التباين» يوحي بتفسير لتعارض قراءتي «فورتكسا» يقول المصدر 1 إنه لم يُفسَّر. والعنوان الفرعي «تراجع الصادرات منذ بداية أكتوبر إلى 5.72» يصف متوسطاً بأنه مسار هبوط. والرسم يقدّم 6.5 مليون على أنه تقدير «فورتكسا» وحده.",
+              "repair": "يُربط إطفاء الإشارات بصعوبة العدّ وعدم تطابق الشركات عموماً، ويُذكر أن فارق «فورتكسا» لم يُفسَّر. يُكتب «في المتوسط منذ بداية أكتوبر» في العنوان الفرعي. وتُضاف إلى الرسم حاشية تذكر القراءة الأخرى لبيانات «فورتكسا»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 8,
+      "mendIssues": [
+        "مرجع غامض يوحي بسبب ينفيه المصدر: «يعود جانب من هذا التباين إلى أن ناقلات كثيرة أوقفت إشارات التتبع». تأتي الجملة مباشرة بعد فقرة قراءتي «فورتكسا» (6.5 مليون، وأكثر من 7 ملايين)، فيفهم القارئ أن «هذا التباين» هو تعارضهما. لكن المصدر 1 يقول صراحة إن ذلك الفارق «has not been explained». أما المصدر 2 فيربط إطفاء الإشارات بصعوبة العدّ وبعدم تطابق أرقام الشركات عموماً. الإصلاح: «يصعّب إطفاء ناقلات كثيرة إشارات تتبعها، في أعقاب المخاطر الأمنية، تقدير الكميات، فلا تتطابق أرقام شركات التتبع دائماً». ويُضاف إلى فقرة «فورتكسا» أن الفارق بين قراءتيها لم يُفسَّر (المصدر 1). كذلك فإن «بسبب المخاطر الأمنية» أقوى من «في أعقاب» الواردة في المصدر 2.",
+        "بناء فقرة «منافذ بديلة»: «تُظهر بيانات «كبلر» أن ميناء رأس تنورة حمّل 2.95 مليون… في المقابل، يتوزع تقدير «تانكر تراكرز» البالغ 7.9 مليون… بين 3.32 مليون من الساحل الغربي و4.55 مليون من الساحل الشرقي». تضع «في المقابل» رقماً من شركة بجوار رقم من شركة أخرى يختلف مجموعها اختلافاً كبيراً، فتوحي بمقارنة لا تصح. ثم إن الساحل الشرقي هو الأكبر في تقدير «تانكر تراكرز»، فلا يدعم ذلك عنوان «منافذ بديلة» كما توحي الجملة. الإصلاح: تُحذف «في المقابل». تُقدَّم فقرة الساحل الغربي بما يسنده: صادرات ينبع ارتفعت بعد انخفاضها في سبتمبر بحسب «بيترو-لوجيستيكس»، والساحل الغربي 3.32 مليون من تقدير «تانكر تراكرز»، والبحر الأحمر يعمل منذ 22 سبتمبر بتدفقات أقل. ثم يُذكر تراجع رأس تنورة على أنه رقم «كبلر» وحدها، من دون حساب للتعويض.",
+        "دقة العنوان الفرعي: «وتُظهر تراجع الصادرات منذ بداية أكتوبر إلى 5.72 مليون برميل يومياً». الرقم في المصدر 2 متوسط الصادرات منذ بداية الشهر، لا مسار هبوط يبدأ من مطلع أكتوبر وينتهي عند 5.72. الإصلاح: «بيانات شركة «كبلر» لتتبع الناقلات تخالفهما: 5.72 مليون برميل يومياً في المتوسط منذ بداية أكتوبر مقابل 6.70 مليون في سبتمبر».",
+        "صندوق الأرقام: بند «عقد برنت لشهر ديسمبر في تعاملات الجمعة: 117.5 دولار (+2.25%)» سعر سوق أخرى، وليس رقماً من حدث الصادرات السعودية (المصدر 1). يُحذف من الصندوق ويبقى في فقرة المخاطر.",
+        "الرسم: يُظهر عمود «فورتكسا» 6.5 مليون على أنه تقدير الشركة، بينما يقول المتن إن قراءتين متعارضتين لبياناتها متداولتان (6.5 مليون بحسب بلومبرغ، وأكثر من 7 ملايين في ملخص «نيوزسكواك» لتقرير بلاس، المصدر 1). الإصلاح: تُكتب التسمية «فورتكسا بحسب بلومبرغ (حتى الآن في أكتوبر)»، وتضاف حاشية تذكر القراءة الأخرى، أو يُحذف عمود «فورتكسا» من الرسم ويبقى في المتن.",
+        "تكرار وسم المصدر: «وبحسب صحيفة «غلف نيوز» الإماراتية…» ثم «ترى «غلف نيوز»…» ثم «وتقول الصحيفة…». تُعرَّف الصحيفة مرة واحدة، وتُدمج جملتا الاختبار التالي والضربة المحتملة تحت نسبة واحدة: «وترى «غلف نيوز» أن الاختبار التالي… وأن ضربة أمريكية محتملة… قد تقلب التدفقات».",
+        "يطوّر المتن ما يقول العنوان إنه جديد، أي الارتفاع، مباشرة بعد الاستهلال: «تانكر تراكرز» ثم «بيترو-لوجيستيكس»، ثم «كبلر» المخالفة، ثم «فورتكسا». لكن فقرة «منافذ بديلة» تقابل بـ«في المقابل» رقم «كبلر» لرأس تنورة بتوزيع «تانكر تراكرز» بين الساحلين، فتنشأ مقارنة بين شركتين لا تصح. — تُبنى فقرة المنافذ على الساحل الغربي: ينبع («بيترو-لوجيستيكس»)، و3.32 مليون («تانكر تراكرز»)، والبحر الأحمر. ثم يُذكر تراجع رأس تنورة منسوباً إلى «كبلر» وحدها، من دون «في المقابل».",
+        "«يعود جانب من هذا التباين» يوحي بتفسير لتعارض قراءتي «فورتكسا» يقول المصدر 1 إنه لم يُفسَّر. والعنوان الفرعي «تراجع الصادرات منذ بداية أكتوبر إلى 5.72» يصف متوسطاً بأنه مسار هبوط. والرسم يقدّم 6.5 مليون على أنه تقدير «فورتكسا» وحده. — يُربط إطفاء الإشارات بصعوبة العدّ وعدم تطابق الشركات عموماً، ويُذكر أن فارق «فورتكسا» لم يُفسَّر. يُكتب «في المتوسط منذ بداية أكتوبر» في العنوان الفرعي. وتُضاف إلى الرسم حاشية تذكر القراءة الأخرى لبيانات «فورتكسا»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "حمّل ميناء رأس تنورة 2.95 مليون برميل يومياً بين 1 و25 أكتوبر، أقل بنحو 29% من 4.16 مليون في سبتمبر، بحسب بيانات كبلر",
+          "source": 1
+        },
+        {
+          "fact": "البحر الأحمر يساعد الصادرات بعد استئناف الحركة فيه في 22 سبتمبر بتدفقات أقل من طاقته، ومن المخاطر المتابعة أي ضربات على ينبع أو رأس تنورة أو الملاحة في هرمز",
+          "source": 1
+        },
+        {
+          "fact": "تقدير تانكر تراكرز يشمل 3.32 مليون برميل يومياً من الساحل الغربي، وصادرات ينبع ارتفعت بعد انخفاضها في سبتمبر بحسب بيترو-لوجيستيكس",
+          "source": 2
+        },
+        {
+          "fact": "قدّرت تانكر تراكرز الصادرات بنحو 7.9 مليون برميل يومياً حتى 29 أكتوبر، وكبلر بـ5.72 مليون منذ بداية الشهر، والبيانات أولية ومن المرجح أن تُعدَّل",
+          "source": 2
+        }
+      ],
+      "slug": "saudi-oil-exports-rise-october-trackers-59245b",
+      "title": "شركتان لتتبع الناقلات ترصدان ارتفاع صادرات النفط السعودية رغم الهجمات",
+      "score": 8,
+      "image": "cover-art"
+    },
+    {
+      "headline": "فيتش تحوّل نظرتها المستقبلية لتصنيف فرنسا إلى سلبية مع تفاقم الدين",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://asharqbusiness.com/economics/153693/%D9%81%D9%8A%D8%AA%D8%B4-%D8%AA%D8%AD%D9%88-%D9%84-%D9%86%D8%B8%D8%B1%D8%AA%D9%87%D8%A7-%D9%84%D9%81%D8%B1%D9%86%D8%B3%D8%A7-%D8%A5%D9%84%D9%89-%D8%B3%D9%84%D8%A8%D9%8A%D8%A9-%D9%88%D8%B3%D8%B7-%D8%AA%D9%81%D8%A7%D9%82%D9%85-%D8%A3%D8%B2%D9%85%D8%A9-%D8%A7%D9%84%D8%AF%D9%8A%D9%88%D9%86/",
+        "https://www.bloomberg.com/news/articles/2026-10-30/france-gets-budget-warning-as-fitch-turns-negative-on-rating",
+        "https://www.bloomberght.com/fitch-fransa-nin-kredi-notu-gorunumunu-negatife-revize-etti-3792981",
+        "https://www.fidelity.com/learning-center/investment-products/fixed-income-bonds/bond-ratings"
+      ],
+      "outcome": "skipped: a single independent non-official reporting origin (needs a second independently reported outlet, or an official primary source)"
+    },
+    {
+      "headline": "الغاز الأوروبي يتجاوز 101 يورو لأول مرة منذ 2022",
+      "section": "energy",
+      "importance": 7,
+      "sources": [
+        "https://oilprice.com/Latest-Energy-News/World-News/European-Gas-Tops-101-Euros-for-First-Time-Since-2022.html",
+        "https://www.aleqt.com/%D8%A7%D9%84%D8%B7%D8%A7%D9%82%D8%A9/%D8%B3%D8%B9%D8%B1-%D8%A7%D9%84%D8%BA%D8%A7%D8%B2-%D8%A7%D9%84%D8%A3%D9%88%D8%B1%D9%88%D8%A8%D9%8A-%D9%8A%D8%B9%D8%A7%D9%88%D8%AF-%D8%A7%D9%84%D8%B5%D8%B9%D9%88%D8%AF-%D9%81%D9%88%D9%82-100-%D9%8A%D9%88%D8%B1%D9%88-%D9%85%D8%B9-%D8%AF%D8%B1%D8%A7%D8%B3%D8%A9-%D8%AA%D8%B1%D9%85%D8%A8-%D8%AE%D9%8A%D8%A7%D8%B1%D8%A7%D8%AA%D9%87-%D8%A8%D8%B4%D8%A3%D9%86-%D8%A5%D9%8A%D8%B1%D8%A7%D9%86-15895"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والعنوان الفرعي يحددان أوروبا وقطر بوضوح. لكن «للمرة الأولى منذ أزمة 2022» مربوطة بمستوى 100 يورو، والمصدر 2 يصف الصعود فوق 100 بأنه عودة بعد تراجع وجيز.",
+              "repair": "ربط «المرة الأولى منذ 2022» بمستوى 101 يورو كما في عنوان المصدر 1، وإبقاء 101.25 يورو سعراً أخيراً عند 9:36."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السبب موجود: تمديد القوة القاهرة القطرية، ومخاطر الضربات، والبرد. ورد الفعل موجود: باترسون، والمسؤول الإيطالي، ومولر. لكن ينقص وزن صادرات الشرق الأوسط (نحو خُمس الطاقة العالمية) وأفق الاضطراب حتى الربع الأول من 2027 (المصدر 2). وصندوق «لماذا يهمّ» يستنتج مزايدة مع آسيا تتحمل كلفتها جنوب آسيا أولاً، وهو استدلال محدود مقبول، لكنه يكاد يكرر فقرة «بلومبرغ إن إي إف» الختامية.",
+              "repair": "إضافة رقم الخُمس وتوقع 2027 في فقرة الخليج. ويُبنى الصندوق على ما يضيفه: أن أوروبا، بمخزون دون 75% وبلا شحنات قطرية تعاقدية، تتحمل كلفة كل موجة برد أو ضعف رياح بالشراء الفوري. ويُختصر التكرار مع الفقرة الأخيرة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الجديد في العنوان هو بلوغ مستوى غير مسبوق منذ 2022. المتن يفتتح بخلفية روسيا ثم ينتقل فجأة إلى توقيت 9:36. وأسباب صعود الشهر موزعة بين الفقرة الثانية وفقرة المخزونات.",
+              "repair": "وضع مقارنة 2022 مع السعر في المقدمة، ثم فقرة واحدة للمكسب الشهري والأسبوعي وأسبابه، ثم الخليج ومخاطر الضربات بعد الانتخابات، ثم المخزونات والخلاف الألماني الإيطالي، ثم التوقعات."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "تسلسل «مارس الذي اندلعت بعده بوقت قصير حرب إيران» معكوس. وخطر الضربات منقول بلا شرطه الزمني «بعد انتخابات التجديد النصفي الأسبوع المقبل». أما الأرقام 74.89% ونحو 86% وأقل من 62% و3.4% و101.25 فمطابقة للمصادر.",
+              "repair": "تصحيح التسلسل إلى «بعد وقت قصير من اندلاع حرب إيران»، وإعادة الشرط الزمني إلى كلام باترسون."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والعنوان الفرعي يحددان أوروبا وقطر، والمقدمة تربط «المرة الأولى منذ 2022» بمستوى 101 يورو كما في المصدر 1، وتذكر العودة بعد تراجع الجلسة السابقة. لكن العنوان الفرعي يقول إن التمديد «يحرم أوروبا من إمدادات تعاقدية مؤكدة»، والمصدر 1 يقول إنه يحرمها من جزء من إمداداتها التعاقدية.",
+              "repair": "«يحرم أوروبا وآسيا من جزء من إمداداتهما التعاقدية قبيل الشتاء»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المصادر تقدم ثلاثة أنواع من التفسير والمسودة تحملها كلها. السبب: البرد، والطلب على التدفئة، والسحب من المخزون، والمخاطر الجيوسياسية، وتمديد القوة القاهرة، ووزن صادرات الشرق الأوسط بنحو خُمس الطاقة العالمية. ردود الأطراف: باترسون من ING، والمسؤول الإيطالي، ومولر. المقارنة: المخزون 74.89% مقابل نحو 86%، وألمانيا دون 62%. لكن جملة «مصدر الضغط الأكبر… هو الخليج» تضيف ترتيباً لا تقوله المصادر. وصندوق «لماذا يهمّ» يستنتج الشراء خارج العقود، وهو استدلال مقبول في أصله، إلا أنه يمده إلى «طوال موسم التدفئة» ويعممه على «كل زيادة في الطلب».",
+              "repair": "حذف صيغة التفضيل، وحصر استنتاج الصندوق في الفترة حتى نهاية العام ومن دون تعميم «كل»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الجديد في العنوان، أي أعلى مستوى منذ 2022، تطوره المقدمة والفقرة الأولى مع خلفية أزمة روسيا. يليه المكسب الشهري والأسبوعي مع أسبابه في فقرة واحدة، ثم الخليج وباترسون وتقرير «وول ستريت جورنال»، ثم المخزونات، ثم التوقعات. هذا البناء متماسك. يبقى عيبان: «ورد كلاوس مولر» يخلق حواراً لا تذكره المصادر، والصندوق لم يعد يكرر فقرة «بلومبرغ إن إي إف»، لكنه يعيد رقم 74.89% المذكور في المتن.",
+              "repair": "«وقال كلاوس مولر…» بدل «ورد»، والاكتفاء في الصندوق بـ«بمخزون دون 75%» من دون تكرار الرقم العشري."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: 101.25 يورو، و3.4%، والساعة 9:36، ونحو 40%، و8%، و74.89%، ونحو 86%، وأقل من 62%. وعقد ديسمبر هو نفسه عقد الشهر الأقرب. لكن «الحادة» سقطت من توقع «إنرجي أسبكتس»، و«مؤكدة» تغير معنى «certain term supply»، والصندوق يمد غياب الشحنات القطرية التعاقدية إلى ما بعد نهاية العام.",
+              "repair": "إعادة «الحادة»، وكتابة «جزء من إمداداتها التعاقدية»، وحصر أثر القوة القاهرة في الفترة «حتى نهاية العام»."
+            }
+          }
+        }
+      ],
+      "outcome": "rejected by critic after revision (5): عالجت المراجعة معظم الملاحظات السابقة: التسلسل الزمني لحرب إيران، والعنوان على مستوى 101 يورو، وتوقيت الانتخابات، وأفق 2027، ورقم الخُمس، وإعادة البناء. لكن المسودة أضافت ترتيباً غير مسنود للضغوط وصلة رد مخترعة بين مولر والمسؤول الإيطالي، ويتجاوز صندوق «لماذا يهمّ» مدى القوة القاهرة، ولا يزال «TTF» غير معرّب."
+    },
+    {
+      "headline": "الإمارات تحدد سقف غرامات الفوترة الإلكترونية عند 50 ألف درهم",
+      "section": "economy",
+      "importance": 6,
+      "sources": [
+        "https://gulfnews.com/business/tax-news/uae-limits-e-invoicing-fines-at-dh50000-removes-dh1000-daily-penaltyhow-it-works-now-1.500730246",
+        "https://economymiddleeast.com/news/uae-updates-einvoicing-penalties-with-aed50000-cap-for-implementation-breaches/",
+        "https://gulfnews.com/business/tax-news/uae-revises-einvoicing-fines-after-business-feedback-1.500729799"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والمقدمة يحددان البلد والجهة والتغيير بوضوح: سقف 50 ألف درهم، وإلغاء الغرامة اليومية، مع بقاء الغرامة الشهرية. لكن الموجز يقطع بأن القرار «لا يغيّر مواعيد التطبيق… التي تبدأ في يناير»، والمصدر 1 لا يقول إلا إن الإعلان لم يتضمن تغييراً، كما أن يناير موعد الشركات الكبرى وحدها.",
+              "repair": "يُقيَّد الموجز بموعد الفئة الأولى ويُنسب بقاء المواعيد إلى ما خلا منه إعلان الوزارة، ويُطوَّر ذلك في فقرة المواعيد."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يحمل التقرير السبب المعلن (ملاحظات قطاع الأعمال، وموافقة الغرامات لطبيعة الالتزامات؛ المصدران 2 و3). ويحمل المقارنة (60 ألف درهم سابقاً مقابل 50 ألفاً؛ المصدر 1)، ومواءمة إلغاء غرامة العطل مع القرار 197 (المصدر 2). لا تورد المصادر رد فعل من الشركات. صندوق «لماذا يهمّ» يبني على مقدمات صحيحة: السقف، وامتداد الالتزامات إلى المستلِم، وحصر الغرامة السابقة بإخفاق المُصدِر. ويستنتج منها انتقال جزء من المخاطر إلى مستلمي الفواتير، وهو استنتاج محدود ومتناسب. أما جملته الأولى فتقترب من تكرار الموجز.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان، أي السقف، يُطوَّر مباشرة بعد المقدمة في الفقرتين الأولى والثانية، وهذا سليم. لكن الخلفية متفرقة: القرار 197 يرد في الفقرة الخامسة ثم يُعاد تقديمه في السابعة تحت عنوان «مواعيد التطبيق» الذي لا يطابق محتواها. وتُختم القصة بقراءة صفوف الجدول.",
+              "repair": "دمج خلفية تعديلات 2026 في فقرة واحدة بعد فقرة العطل، وحذف فقرة PDF، واختصار فقرة المواعيد إلى ما لا يعرضه الجدول، أي التمديد وتزامن المهلة مع الإعلان."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والشروط مطابقة للمصادر: 5 آلاف درهم أولية ثم عن كل شهر أو جزء منه، وسقف في أي 12 شهراً متتالية، وألف درهم يومياً ملغاة، وغرامة واحدة للمخالفة نفسها مع جواز تعدد الغرامات عن مخالفات مختلفة. الخلل في عبارة الموجز «التي تبدأ في يناير» التي تعمم موعد الفئة الأولى على الجميع، وفي نسبة الجدول إلى موقع إخباري بدلاً من الهيئة الاتحادية للضرائب.",
+              "repair": "حصر موعد يناير بالشركات التي تبلغ إيراداتها 50 مليون درهم فأكثر، ونسب الجدول إلى الهيئة الاتحادية للضرائب."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والموجز يحددان البلد والجهة: سقف 50 ألف درهم مع إبقاء الغرامة الشهرية. والموجز صار يقصر موعد 1 يناير 2027 على الشركات الكبرى. والمقدمة تضيف إلغاء الغرامة اليومية.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "الدافع مذكور ومنسوب إلى الوزارة، وهو ملاحظات قطاع الأعمال ومواءمة الغرامة مع طبيعة الالتزام (المصدران 2 و3). المقارنة بالـ60 ألفاً منسوبة إلى «غلف نيوز». الخلفية حاضرة: القرار 197 الذي ألغى واجب الإبلاغ، وتمديد المهلة من 31 يوليو. والصندوق يضيف معنى غير مكرر، فالسقف يقابله توسيع الالتزامات إلى المستلم.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان، أي السقف، يُطوَّر مباشرة بعد المقدمة، وخلفية تعديلات 2026 مجموعة بعد فقرة العطل. لكن رقم السقف وشرطه يتكرران ثلاث مرات بين المقدمة والفقرتين الأولى والثانية دون إضافة.",
+              "repair": "حذف تكرار «50 ألف درهم في أي اثني عشر شهراً متتالية» من آخر الفقرة الأولى، والاكتفاء بذكره في المقارنة بالـ60 ألفاً."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والشروط في المتن مطابقة للمصادر: 5 آلاف عن المخالفة الأولى ثم عن كل شهر أو جزء منه، وألف درهم يومياً ملغاة، وغرامة واحدة للمخالفة نفسها. لكن «كلفة قصوى معروفة سلفاً» في صندوق «لماذا يهمّ» تحذف نافذة الأشهر الاثني عشر المتتالية.",
+              "repair": "إضافة «في أي 12 شهراً متتالية» إلى جملة الصندوق."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 6,
+      "mendIssues": [
+        "تكرار للرقم نفسه: سقف «50 ألف درهم في أي 12 شهراً متتالية» يرد في العنوان والمقدمة، ثم يعاد بالصيغة نفسها في آخر الفقرة الأولى («إلى أن يبلغ المجموع 50 ألف درهم في أي اثني عشر شهراً متتالية»)، ثم مرة ثالثة في الفقرة الثانية («مقابل حد أقصى قدره 50 ألف درهم للفترة نفسها الآن»). الإصلاح: تُختم الفقرة الأولى بـ«…حتى بلوغ السقف»، وتبقى الفقرة الثانية وحدها تذكر الرقم لأنها تقارنه بالـ60 ألفاً (المصدر 1).",
+        "دقة في «لماذا يهمّ»: عبارة «حوّل السقف غرامة التأخر في التطبيق من مبلغ يتراكم شهراً بعد شهر إلى كلفة قصوى معروفة سلفاً» تسقط شرط المدة. السقف يسري في أي 12 شهراً متتالية (المصادر 1 و2 و3)، أي أن المخالفة الأطول من سنة قد تتجاوزه. الإصلاح: «…إلى حد أقصى معروف سلفاً قدره 50 ألف درهم في أي 12 شهراً متتالية».",
+        "إسناد: «وسّع الإطار الجديد التزامات التطبيق لتشمل المُصدِرين والمستلِمين معاً… بحسب موقع «إيكونومي ميدل إيست»». سريان الالتزامات على المُصدِر والمستلِم معاً منصوص عليه في إعلان وزارة المالية نفسه (المصدر 3: «non-compliance by the Issuer and the Recipient»)، فيُنسب إلى القرار أو الوزارة. أما وصف المسؤوليات بأنها صارت «أوضح» فتقدير الموقع، فيبقى الإسناد إليه على هذا الوصف وحده.",
+        "صياغة: «فالمنشأة التي تبقى غير ممتثلة 12 شهراً كانت قد تتراكم عليها 60 ألف درهم» تركيب ركيك، والأفصح «كان يمكن أن تتراكم عليها». وعبارة «يبدأ الحساب الجديد» غامضة المرجع، والأوضح «تبدأ الغرامة في الإطار الجديد بـ5 آلاف درهم…».",
+        "عنصر العنوان، أي السقف، يُطوَّر مباشرة بعد المقدمة، وخلفية تعديلات 2026 مجموعة بعد فقرة العطل. لكن رقم السقف وشرطه يتكرران ثلاث مرات بين المقدمة والفقرتين الأولى والثانية دون إضافة. — حذف تكرار «50 ألف درهم في أي اثني عشر شهراً متتالية» من آخر الفقرة الأولى، والاكتفاء بذكره في المقارنة بالـ60 ألفاً.",
+        "الأرقام والشروط في المتن مطابقة للمصادر: 5 آلاف عن المخالفة الأولى ثم عن كل شهر أو جزء منه، وألف درهم يومياً ملغاة، وغرامة واحدة للمخالفة نفسها. لكن «كلفة قصوى معروفة سلفاً» في صندوق «لماذا يهمّ» تحذف نافذة الأشهر الاثني عشر المتتالية. — إضافة «في أي 12 شهراً متتالية» إلى جملة الصندوق."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "القرار الجديد يحدد مجموع غرامات مخالفات التطبيق بـ50 ألف درهم خلال أي 12 شهراً متتالية مع إبقاء الغرامة الشهرية البالغة 5 آلاف درهم",
+          "source": 3
+        },
+        {
+          "fact": "القواعد السابقة كانت تفرض 5 آلاف درهم عن كل شهر تأخير دون سقف إجمالي معلن، بحسب غلف نيوز",
+          "source": 1
+        },
+        {
+          "fact": "الإطار السابق كان يفرض الغرامة إذا أخفق المُصدِر في التطبيق، والقرار الجديد يطبق الغرامة على عدم امتثال المُصدِر والمستلِم معاً",
+          "source": 3
+        }
+      ],
+      "slug": "uae-caps-einvoicing-fines-50000-dirhams-3da2f9",
+      "title": "الإمارات تضع سقفاً قدره 50 ألف درهم لغرامات تطبيق الفوترة الإلكترونية",
+      "score": 8,
+      "image": "photo"
+    }
+  ],
+  "llm": {
+    "calls": 60,
+    "failures": 0,
+    "promptTokens": 938364,
+    "completionTokens": 230426,
+    "cacheReadTokens": 264649,
+    "costUsd": 10.0509,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 60
+    }
+  },
+  "log": [
+    "[06:31:10] image: dropped \"Edward Noel Barraud - English Country Scene - Sarjeant Gallery.jpg\" — names too little of accountant, computer",
+    "[06:31:10] image: dropped \"Edward Noel Barraud - Fishermen 1920 - Sarjeant Gallery.jpg\" — names too little of accountant, computer",
+    "[06:31:10] image: dropped \"Edward Noel Barraud - Coast Scene - Sarjeant Gallery.jpg\" — names too little of accountant, computer",
+    "[06:31:10] image: dropped \"Francis Philip Barraud - Wells Cathedral - Sarjeant Gallery.jpg\" — names too little of accountant, computer",
+    "[06:31:10] image: dropped \"Edward Noel Barraud - Moonlit Landscape - Sarjeant Gallery.jpg\" — names too little of accountant, computer",
+    "[06:31:10] image: dropped \"Edward Noel Barraud - Under the Arch of Titus, Rome - Sarjeant Gallery\" — names too little of accountant, computer",
+    "[06:31:10] image: dropped \"Edward Noel Barraud - River Scene, Otaki - Sarjeant Gallery.jpg\" — names too little of accountant, computer",
+    "[06:31:10] image: dropped \"Asian woman working in a bright office, calculating finance on a desk \" — names too little of accountant, computer",
+    "[06:31:10] image: dropped \"Two business professionals collaborating with a laptop and calculator \" — names too little of accountant, computer",
+    "[06:31:10] image: dropped \"Young woman in office using a calculator for financial calculations.\" — names too little of accountant, computer",
+    "[06:31:10] image: dropped \"Dedicated woman using laptop and calculator in modern office setting.\" — names too little of accountant, computer",
+    "[06:31:10] image: dropped \"Two professionals analyzing financial documents with a calculator.\" — names too little of accountant, computer",
+    "[06:31:10] image: dropped \"Close-up of a person using a calculator with a laptop, symbolizing hom\" — names too little of accountant, computer",
+    "[06:31:10] image: dropped \"Top view of a desk with a laptop, calculator, and open notepad for wor\" — names too little of accountant, computer",
+    "[06:31:11] commons \"UAE dirhams\": 3 usable of 24",
+    "[06:31:11] image: dropped \"WHERE OLD MEET NEW\" — names too little of dirhams",
+    "[06:31:11] image: dropped \"Gold Class car in Dubai Metro in Dubai, United Arab Emirates\" — names too little of dirhams",
+    "[06:31:11] image: dropped \"Numerous UAE flags on a sunny beach in Dubai, United Arab Emirates.\" — names too little of dirhams",
+    "[06:31:11] image: dropped \"The Aldar building in Abu Dhabi\" — names too little of dirhams",
+    "[06:31:11] image: dropped \"Traditional boats carry passengers on Dubai Creek with the city skylin\" — names too little of dirhams",
+    "[06:31:11] image: dropped \"Rows of UAE flags on a sunny beach in Dubai, with Burj Al Arab in the \" — names too little of dirhams",
+    "[06:31:11] image: dropped \"On an abra crossing the creek\" — names too little of dirhams",
+    "[06:31:11] image: dropped \"Modern skyline of UAE cityscape with national flag waving against clea\" — names too little of dirhams",
+    "[06:31:11] image: dropped \"Traditional boats on a bustling Dubai waterway with cityscape and mina\" — names too little of dirhams",
+    "[06:31:11] image: dropped \"A stunning view of modern skyscrapers contrasted with traditional boat\" — names too little of dirhams",
+    "[06:31:12] commons \"counting dirham notes\": 0 usable of 1",
+    "[06:31:12] commons \"counting dirham\": 0 usable of 1",
+    "[06:31:14] commons \"notes\": 7 usable of 24",
+    "[06:31:14] image: dropped \"BOH&MOR-10-Protectorate of Bohemia and Moravia-50 Korun (1944).jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[06:31:14] image: dropped \"5000 rupiah bill, 2001 series (2009 date), processed, obverse and reve\" — a scan of a note's or a coin's face, not a photograph",
+    "[06:31:14] image: dropped \"US-NBN-ND-Bismarck-2434-1875-10-2238-C.jpg\" — shows henry, not the story's people",
+    "[06:31:14] image: dropped \"Sudan University of Science and Technology.jpg\" — names too little of notes",
+    "[06:31:15] commons \"accountants at work\": 4 usable of 24",
+    "[06:31:15] image: dropped \"Chinese accountants at work in their store in San Francisco, 1892.jpg\" — dated 1892, an archival picture",
+    "[06:31:15] image: dropped \"Accountants, SFA022807592.jpg\" — dated 1914, an archival picture",
+    "[06:31:15] image: dropped \"Calculator\" — names too little of accountants, work",
+    "[06:31:15] image: dropped \"A woman reviewing documents and using a calculator on a wooden table.\" — names too little of accountants, work",
+    "[06:31:15] image: dropped \"Piggy Bank\" — names too little of accountants, work",
+    "[06:31:15] image: dropped \"Black and white office scene featuring accounting documents, calculato\" — names too little of accountants, work",
+    "[06:31:15] image: dropped \"Two professionals analyzing financial documents in a modern office set\" — names too little of accountants, work",
+    "[06:31:15] image: dropped \"Close-up of a person analyzing financial documents using a calculator \" — names too little of accountants, work",
+    "[06:31:15] image: dropped \"Legal education in Democratic Republic of Congo 2010\" — names too little of accountants, work",
+    "[06:31:15] image: dropped \"Camp - Notes on Fashion at the Met (73884).jpg\" — taken in United States, which the story does not name",
+    "[06:31:15] image: thumbnail HTTP 403 for https://live.staticflickr.com/3673/19771244895_780ab17a97_n.jpg",
+    "[06:31:40] image: could not inline https://api.openverse.org/v1/images/0cb2feaf-f946-40f5-b08c-b3e81463e22e/thumb/: The operation was aborted due to timeout",
+    "[06:31:40] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/51690584916_10e0b767f3_n.jpg",
+    "[06:32:05] image: could not inline https://api.openverse.org/v1/images/a14ed501-2869-430e-8c8a-795b37c6fa3f/thumb/: The operation was aborted due to timeout",
+    "[06:32:11] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=146 attempt=1 ms=5029",
+    "[06:32:11] image: vision rejected all candidates (fallback pass) (Nothing fits. 1 shows Kazakhstani tenge, a foreign currency on a UAE story. 2 and 3 are amateur flat shots of commemorative dirham coins on a white sheet, with coins as the subject. 4 is a text document, 5 is a British accountancy shopfront, and 6 is a cartoon. The story runs better without a photograph.)",
+    "[06:32:11] image: thumbnail HTTP 403 for https://live.staticflickr.com/3673/19771244895_780ab17a97_n.jpg",
+    "[06:32:12] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/51690584916_10e0b767f3_n.jpg",
+    "[06:32:12] image: thumbnail HTTP 403 for https://live.staticflickr.com/44/176614354_aa33768a37_n.jpg",
+    "[06:32:37] image: could not inline https://api.openverse.org/v1/images/22749356-0d20-4de3-9533-72cfef838e05/thumb/: The operation was aborted due to timeout",
+    "[06:32:37] image: thumbnail HTTP 403 for https://live.staticflickr.com/352/19803756874_d0eeac38c7_n.jpg",
+    "[06:32:37] image: thumbnail HTTP 403 for https://live.staticflickr.com/47/176618670_2a794fe99f_n.jpg",
+    "[06:32:50] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=871 attempt=1 ms=12261",
+    "[06:32:50] image: \"5 AED\" names the story's topic without saying its point (Last-resort amateur pick: the frame has a yellow cast and looks like a flash shot. Still, it shows fanned UAE dirham notes (the currency the fines are set in) o); checked now and kept in reserve while the desk looks further",
+    "[06:32:54] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=148 attempt=1 ms=3422",
+    "[06:32:54] image: second check (claude-cli/claude-opus-5-5) AMATEUR — refused \"5 AED\": A phone snapshot of 5-dirham notes lying on a receipt, with a heavy yellow cast, flat light and a cluttered tabletop, is",
+    "[06:32:54] image: \"5 AED\" held back as the last resort, should no professional photograph be found",
+    "[06:32:58] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=334 attempt=1 ms=4611",
+    "[06:32:58] image: last resort: electronic invoice computer screen United Arab Emirates | electronic invoice computer screen | electronic invoice computer screen industrial",
+    "[06:32:59] commons \"electronic invoice computer screen United Arab Emirates\": 0 usable of 0",
+    "[06:33:02] commons \"electronic invoice\": 8 usable of 24",
+    "[06:33:02] image: dropped \"E-Invoicing Exchange Summit Kuala Lumpur 2024, from 26th to 27th Novem\" — an event's photograph, people and banners",
+    "[06:33:02] image: dropped \"National Board of Revenue EFDMS invoice lottery draw 2021-02-05 (PID-0\" — an event's photograph, people and banners",
+    "[06:33:02] image: dropped \"M. J. Shields & Company, Letterhead, 1891 - Moscow, Idaho (5527420595)\" — names too little of electronic, invoice",
+    "[06:33:02] image: dropped \"M. J. Shields & Company, Letterhead, 1891 - Moscow, Idaho (5527405683)\" — names too little of electronic, invoice",
+    "[06:33:02] image: dropped \"PAR-T-PAK Beverages, circa 1970 - Advertising Postcard (4727257114).jp\" — names too little of electronic, invoice",
+    "[06:33:02] commons \"electronic invoice computer screen\": 0 usable of 0",
+    "[06:33:02] commons \"electronic invoice\": 8 usable of 24",
+    "[06:33:03] commons \"electronic invoice computer screen industrial\": 0 usable of 0",
+    "[06:33:03] commons \"electronic invoice\": 8 usable of 24",
+    "[06:33:03] image: dropped \"Standard Fapiao.jpg\" — taken in China, which the story does not name",
+    "[06:33:03] image: dropped \"T. S. Bull and Sons' Blank Invoice, circa 1880s - Valparaiso, Indiana \" — taken in United States, which the story does not name",
+    "[06:33:06] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=0 attempt=1 ms=2533",
+    "[06:33:06] image: vision rejected all candidates (fallback pass) (The only candidate is an amateur 2006 snapshot of a homemade 12V fluorescent lamp with its ballast opened on a table. It is unrelated to UAE e-invoicing or fines, is a product close-up off the story's subject, and falls below publication standard. The story runs better without a photograph.)",
+    "[06:33:06] image: last pass, a neutral illustration: office workers | UAE dirham notes | accountant computer | UAE dirhams | counting dirham notes | accountants work",
+    "[06:33:06] openverse \"office workers\": 10 usable of 20",
+    "[06:33:06] openverse \"UAE dirham notes\": 1 usable of 1",
+    "[06:33:06] openverse \"UAE dirhams\": 8 usable of 15",
+    "[06:33:06] openverse \"accountant computer\": 10 usable of 20",
+    "[06:33:06] openverse \"counting dirham notes\": 1 usable of 1",
+    "[06:33:06] pexels \"UAE dirhams\": 8 usable",
+    "[06:33:06] pexels \"UAE dirham notes\": 8 usable",
+    "[06:33:06] pexels \"counting dirham notes\": 8 usable",
+    "[06:33:06] pexels \"accountant computer\": 8 usable",
+    "[06:33:06] pexels \"accountants work\": 8 usable",
+    "[06:33:06] commons \"office workers\": 9 usable of 24",
+    "[06:33:06] image: dropped \"Harish Jagtani Office Pic.jpg\" — dated 1975, an archival picture",
+    "[06:33:06] image: dropped \"Rescue workers near the semi-collapsed ten-story Uranus Building on Xu\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[06:33:06] image: dropped \"Голова Тернопільської обласної державної адміністрації Володимир Труш \" — names too little of office, workers",
+    "[06:33:06] image: dropped \"Communications Workers Union Office, Wimbledon.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[06:33:06] image: dropped \"World War II woman aircraft worker, Vega Aircraft Corporation, Burbank\" — dated 1942, an archival picture",
+    "[06:33:06] image: dropped \"Ukrainiansmanagersshare19301933.jpg\" — dated 1935, an archival picture",
+    "[06:33:07] pexels \"office workers\": 8 usable",
+    "[06:33:07] image: dropped \"City Light office workers, 1973\" — dated 1973, an archival picture",
+    "[06:33:07] image: dropped \"Two professionals engaged in planning during a business meeting, focus\" — names too little of office, workers",
+    "[06:33:07] commons \"UAE dirham notes\": 0 usable of 24",
+    "[06:33:07] commons \"UAE dirham\": 3 usable of 24",
+    "[06:33:07] image: dropped \"A wicker basket filled with various coins, symbolizing wealth and econ\" — names too little of dirham, notes",
+    "[06:33:07] commons \"accountant computer\": 10 usable of 24",
+    "[06:33:07] image: dropped \"Edward Noel Barraud - Harvest Scene - Sarjeant Gallery.jpg\" — names too little of accountant, computer",
+    "[06:33:07] image: dropped \"Edward Noel Barraud - English Country Scene - Sarjeant Gallery.jpg\" — names too little of accountant, computer",
+    "[06:33:07] image: dropped \"Edward Noel Barraud - Fishermen 1920 - Sarjeant Gallery.jpg\" — names too little of accountant, computer",
+    "[06:33:07] image: dropped \"Edward Noel Barraud - Coast Scene - Sarjeant Gallery.jpg\" — names too little of accountant, computer",
+    "[06:33:07] image: dropped \"Francis Philip Barraud - Wells Cathedral - Sarjeant Gallery.jpg\" — names too little of accountant, computer",
+    "[06:33:07] image: dropped \"Edward Noel Barraud - Moonlit Landscape - Sarjeant Gallery.jpg\" — names too little of accountant, computer",
+    "[06:33:07] image: dropped \"Edward Noel Barraud - Under the Arch of Titus, Rome - Sarjeant Gallery\" — names too little of accountant, computer",
+    "[06:33:07] image: dropped \"Edward Noel Barraud - River Scene, Otaki - Sarjeant Gallery.jpg\" — names too little of accountant, computer",
+    "[06:33:07] image: dropped \"Asian woman working in a bright office, calculating finance on a desk \" — names too little of accountant, computer",
+    "[06:33:07] image: dropped \"Two business professionals collaborating with a laptop and calculator \" — names too little of accountant, computer",
+    "[06:33:07] image: dropped \"Young woman in office using a calculator for financial calculations.\" — names too little of accountant, computer",
+    "[06:33:07] image: dropped \"A young woman calculates finances in a modern office setting with natu\" — names too little of accountant, computer",
+    "[06:33:07] image: dropped \"Confident woman working with calculator in bright office setting, surr\" — names too little of accountant, computer",
+    "[06:33:07] image: dropped \"Dedicated woman using laptop and calculator in modern office setting.\" — names too little of accountant, computer",
+    "[06:33:07] image: dropped \"Top view of a desk with a laptop, calculator, and open notepad for wor\" — names too little of accountant, computer",
+    "[06:33:07] commons \"UAE dirhams\": 3 usable of 24",
+    "[06:33:07] image: dropped \"The Aldar building in Abu Dhabi\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[06:33:07] image: dropped \"Traditional boats carry passengers on Dubai Creek with the city skylin\" — names too little of dirhams",
+    "[06:33:07] image: dropped \"Modern skyline of UAE cityscape with national flag waving against clea\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[06:33:07] image: dropped \"Traditional boats on a bustling Dubai waterway with cityscape and mina\" — names too little of dirhams",
+    "[06:33:07] image: dropped \"A stunning view of modern skyscrapers contrasted with traditional boat\" — names too little of dirhams",
+    "[06:33:07] commons \"counting dirham notes\": 0 usable of 1",
+    "[06:33:07] commons \"counting dirham\": 0 usable of 1",
+    "[06:33:07] commons \"notes\": 7 usable of 24",
+    "[06:33:07] image: dropped \"BOH&MOR-10-Protectorate of Bohemia and Moravia-50 Korun (1944).jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[06:33:07] image: dropped \"5000 rupiah bill, 2001 series (2009 date), processed, obverse and reve\" — a scan of a note's or a coin's face, not a photograph",
+    "[06:33:07] image: dropped \"US-NBN-ND-Bismarck-2434-1875-10-2238-C.jpg\" — shows henry, not the story's people",
+    "[06:33:07] image: dropped \"Sudan University of Science and Technology.jpg\" — names too little of notes",
+    "[06:33:08] commons \"accountants work\": 4 usable of 24",
+    "[06:33:08] image: dropped \"Accountants, SFA022807592.jpg\" — dated 1914, an archival picture",
+    "[06:33:08] image: dropped \"Chinese accountants at work in their store in San Francisco, 1892.jpg\" — dated 1892, an archival picture",
+    "[06:33:33] openverse \"accountants work\": 6 usable of 20",
+    "[06:33:33] image: dropped \"Calculator\" — names too little of accountants, work",
+    "[06:33:33] image: dropped \"A woman reviewing documents and using a calculator on a wooden table.\" — names too little of accountants, work",
+    "[06:33:33] image: dropped \"Piggy Bank\" — names too little of accountants, work",
+    "[06:33:33] image: dropped \"Businesswoman calculates expenses using receipts and calculator at des\" — names too little of accountants, work",
+    "[06:33:33] image: dropped \"Two professionals analyzing financial documents with a calculator.\" — names too little of accountants, work",
+    "[06:33:33] image: dropped \"Close-up of a person analyzing financial documents using a calculator \" — names too little of accountants, work",
+    "[06:33:33] image: thumbnail HTTP 403 for https://live.staticflickr.com/7175/6759451347_99ddaa5b62_n.jpg",
+    "[06:33:51] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=229 attempt=1 ms=5342",
+    "[06:33:51] image: vision rejected all candidates (fallback pass) (None fits. 1 is a posed model shot. 2 shows Kazakh tenge, another country's currency, so it would mislead under a UAE dirham fines story. 3 and 4 are amateur flat shots of commemorative coins as the subject. 5 is a screenshot of unrelated text. 6 is a fashion exhibit at the Met. None shows e-invoicing or business compliance.)",
+    "[06:33:51] image: thumbnail HTTP 403 for https://live.staticflickr.com/207/474833111_6daea27fbf_n.jpg",
+    "[06:34:21] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1137 attempt=1 ms=15271",
+    "[06:34:25] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=210 attempt=1 ms=3837",
+    "[06:34:30] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=302 attempt=1 ms=4788",
+    "[06:34:30] image: second check (claude-cli/claude-opus-5-5) AMATEUR — refused \"OpenPlanRedBalloon1.jpg\": A 2009 compact-camera snapshot of a cluttered office with a blown-out ceiling, flat light, old monitors and no clear sub",
+    "[06:34:30] image: no professional photograph was found; the snapshot held back runs as the last resort: \"5 AED\"",
+    "[06:34:30] published \"الإمارات تضع سقفاً قدره 50 ألف درهم لغرامات تطبيق الفوترة الإلكترونية\" -> uae-caps-einvoicing-fines-50000-dirhams-3da2f9"
+  ]
+}
