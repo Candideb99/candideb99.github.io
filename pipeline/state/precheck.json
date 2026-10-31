@@ -9393,6 +9393,90 @@
           "noted": []
         }
       ]
+    },
+    "uae-cuts-petrol-prices-november-2026-55d905": {
+      "at": "2026-10-31T10:11:53.674Z",
+      "title": "الإمارات تخفض أسعار البنزين 5.6% لنوفمبر رغم صعود النفط",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v45",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 21,
+            "weak": 11,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "banque-du-liban-paris-meetings-deposits-recapitalization-910315": {
+      "at": "2026-10-31T10:29:46.159Z",
+      "title": "مصرف لبنان يقيّم مع المصارف في باريس حجم الودائع الممكن ردها",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v45",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 16,
+            "checked": 16,
+            "supported": 15,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "china-factory-pmi-contracts-october-64c344": {
+      "at": "2026-10-31T10:43:44.007Z",
+      "title": "مؤشر المصانع الصينية يتراجع إلى 49.3 نقطة مع ضعف الطلب المحلي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v45",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 27,
+            "checked": 27,
+            "supported": 23,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

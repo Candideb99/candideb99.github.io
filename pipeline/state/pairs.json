@@ -1565,6 +1565,50 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-10-31T10:43:44.012Z",
+      "slug": "china-factory-pmi-contracts-october-64c344",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v45",
+      "lessonsHash": "83821b3473",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 25,
+        "notFound": 3,
+        "checked": 29,
+        "words": 386,
+        "keyFacts": 5,
+        "classes": [],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 22,
+        "notFound": 2,
+        "checked": 26,
+        "words": 368,
+        "keyFacts": 5,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 22,
+        "notFound": 2,
+        "checked": 26,
+        "words": 368,
+        "keyFacts": 5,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }

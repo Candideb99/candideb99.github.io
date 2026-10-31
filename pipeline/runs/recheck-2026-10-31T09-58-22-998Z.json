@@ -1,0 +1,47 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-31T09:58:22.998Z",
+  "durationSec": 48,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "uae-caps-einvoicing-fines-50000-dirhams-3da2f9",
+      "title": "الإمارات تضع سقفاً قدره 50 ألف درهم لغرامات تطبيق الفوترة الإلكترونية",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 23,
+        "weak": 6,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 9796,
+    "completionTokens": 6094,
+    "cacheReadTokens": 0,
+    "costUsd": 0.2002,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[09:58:23] second look: 1 to read now (1 published pieces not yet read; 168 read clean before publication and left out of the audit sample)",
+    "[09:59:10] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1840 attempt=1 ms=45143",
+    "[09:59:10] uae-caps-einvoicing-fines-50000-dirhams-3da2f9: 29 of 29 sentences checked · 23 supported · 0 without a source · 0 confirmed error(s)"
+  ]
+}

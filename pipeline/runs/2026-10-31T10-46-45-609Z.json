@@ -1,0 +1,471 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-31T09:59:11.210Z",
+  "durationSec": 2854,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "الإمارات تخفض أسعار البنزين 5.6% لشهر نوفمبر وسوبر 98 عند 4.16 درهم",
+      "section": "energy",
+      "importance": 7,
+      "sources": [
+        "https://economymiddleeast.com/news/uae-fuel-prices-fall-5-6-percent-in-november-as-super-98-drops-to-aed4-16/",
+        "https://www.thenationalnews.com/business/energy/2026/10/31/uae-petrol-prices-defy-expectations-with-surprise-drop-in-november/",
+        "https://gulfnews.com/business/markets/uae-fuel-prices-out-today-how-much-will-motorists-save-after-november-cut-1.500730214",
+        "https://www.albayan.ae/economy/business/uae-economy/1561813"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والدِّيك يحددان البلد (الإمارات) والتغيير (خفض البنزين 5.6% والديزل 1.04% لنوفمبر)، ويضعان القيد الأساسي، وهو أن الأسعار تبقى أعلى من سبتمبر. والمقدمة تذكر الجهة (لجنة متابعة أسعار البنزين والديزل) وموعد السريان.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المسودة تحمل التوقع الذي خالفه القرار (محللون لـ«ذا ناشيونال» توقعوا ارتفاعاً)، وتحمل آلية التسعير من SOURCE 1 وSOURCE 3، ومقارنات سبتمبر وذروة 2022. لكنها تُسقط مقارنة SOURCE 2 بفبراير (أعلى بنحو 80% قبل حرب إيران)، فتبقى الإشارة إلى إيران بلا خلفية. وفي «لماذا يهمّ» مقدمة غير مسندة عن ضغوط على المنتجات المكررة.",
+              "repair": "إضافة مقارنة فبراير وحرب إيران من SOURCE 2، وقصر مقدمات «لماذا يهمّ» على برنت وتكاليف الشحن."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر «رغم صعود النفط» يُطوَّر مباشرة بعد المقدمة: التوقعات، ثم صعود الخام، ثم الآلية. وهذا بناء جيد. لكن الفقرة الثالثة تنتهي بحشو «ولم تفصّل اللجنة...»، وفقرتا الأنواع وأغسطس تقرآن صفوف الجدول والرسم. وجملة «لماذا يهمّ» الأولى تكرر المتن.",
+              "repair": "حذف جملة «ولم تفصّل اللجنة»، وتحويل الصفوف إلى ما تظهره الأرقام، ودمج تلخيص «لماذا يهمّ» في الاستنتاج المشروط."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والتواريخ مطابقة للمصادر (4.16 و4.04 و3.97 و4.75 درهم، تحرير الأسعار في أغسطس 2015، ذروة يوليو 2022)، ويُقتبس برنت بعقد واحد وتسوية واحدة. لكن why_basis يسند تأثير أسعار المنتجات المكررة إلى SOURCE 1 وهو من SOURCE 3، و«لماذا يهمّ» يفترض ضغوطاً على المنتجات المكررة لا يذكرها مصدر.",
+              "repair": "تصحيح نسبة البند في why_basis إلى SOURCE 3 وحذف الضغوط على المنتجات المكررة من الاستنتاج."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والديك يحددان البلد (الإمارات) والتغيير: خفض البنزين 5.6% والديزل 1.04% لنوفمبر. ويحملان القيد الحاسم: الأسعار تبقى أعلى من سبتمبر. وتضيف المقدمة أنه أول خفض منذ أربعة أشهر (SOURCE 2) وأن التطبيق يبدأ في الأول من نوفمبر.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "تحمل المسودة التوقع الذي خالفه القرار، أي محللين لـ«ذا ناشيونال» توقعوا ارتفاعاً، مع سببهم. وتحمل الآلية التي تفسر انفصال السعر المحلي عن الخام: عدم الاعتماد على سوق واحدة، وهوامش التوزيع، وأسعار المنتجات المكررة (SOURCE 1 وSOURCE 3). وتحمل الخلفية: الزيادة بنحو 80% عن فبراير قبل حرب إيران، وتحرير الأسعار في 2015 وهدف السياسة المعلن منسوباً إلى البوابة الرسمية. ويقدّم المستشار أحمد ظهير بصفته ومؤسسته. ولم يفصّل أي مصدر سبب الخفض، والمسودة لا تملأ هذا الفراغ بحشو. وفي «لماذا يهمّ» المقدمات هي برنت قرب أعلى مستوى في ستة أشهر وتكاليف الشحن، والاستنتاج مشروط بـ«إذا» ومحدود بـ«قد».",
+              "repair": "إدراج مقدمة تكاليف الشحن في why_basis مع SOURCE 3."
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "عنصر العنوان «رغم صعود النفط» يُطوَّر في الفقرات الثلاث التالية للمقدمة: صعود الخام وأسبابه، ثم التوقعات التي خالفها الخفض، ثم آلية التسعير. بعد ذلك يُشرح ما تظهره الأرقام (خفض متساوٍ للأنواع الثلاثة ونزول إي-بلس 91 دون 4 دراهم) من دون قراءة صفوف الجدول. وتليها المقارنات الزمنية، وتختم الفقرة الأخيرة بالشحن ونظرة ظهير المستقبلية في كتلة واحدة متسقة. ويمكن اختيارياً ضم فقرة تحرير الأسعار في 2015 إلى فقرة الآلية، لكن موضعها الحالي خلفية مقبولة.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة: 4.16 و4.40، و0.24 و0.05 درهم، و12 و2.50 درهم لخزان 50 لتراً، و+0.36 و+0.45 عن سبتمبر، و47 فلساً دون ذروة يوليو 2022 و23-24 فلساً في أكتوبر. ويُقتبس برنت بتسوية واحدة عند 117.64 دولار مع أعلى مستوى في ستة أشهر من SOURCE 2، من دون خلطه بعقد يناير أو بأرقام SOURCE 3. والهدف المعلن للسياسة منسوب ولا يُقدَّم على أنه أثر محقق، والجدول والرسم مطابقان لـSOURCE 1.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "ارتفعت أسعار البنزين في أكتوبر بنحو 16% مقارنة بسبتمبر",
+          "source": 3
+        },
+        {
+          "fact": "استقر برنت الجمعة عند 117.64 دولار للبرميل، أعلى مستوى في ستة أشهر",
+          "source": 2
+        },
+        {
+          "fact": "تراجع لجنة حكومية أسعار الوقود شهرياً بآلية مرتبطة بالأسواق العالمية لا تعتمد على سوق دولية واحدة",
+          "source": 1
+        },
+        {
+          "fact": "تؤثر أسعار المنتجات المكررة وظروف السوق الأوسع في تسعير التجزئة، فلا تنتقل تحركات الخام مباشرة إلى المضخات",
+          "source": 3
+        }
+      ],
+      "slug": "uae-cuts-petrol-prices-november-2026-55d905",
+      "title": "الإمارات تخفض أسعار البنزين 5.6% لنوفمبر رغم صعود النفط",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "مصرف لبنان يبحث مع المصارف في باريس إعادة الرسملة واسترداد الودائع",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://aawsat.com/node/5335873",
+        "https://www.annahar.com/economy/362072/%D9%85%D8%B5%D9%8A%D8%B1-%D8%A7%D9%84%D9%88%D8%AF%D8%A7%D8%A6%D8%B9-%D9%85%D8%AD%D9%88%D8%B1-%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D8%A7%D8%AA-%D9%85%D8%B5%D8%B1%D9%81-%D9%84%D8%A8%D9%86%D8%A7%D9%86-%D8%A7%D9%84%D9%85%D8%BA%D9%84%D9%82%D8%A9-%D9%81%D9%8A-%D8%A8%D8%A7%D8%B1%D9%8A%D8%B3"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والعنوان الفرعي يوضحان البلد والفاعل (مصرف لبنان، والمصارف، وباريس). لكنهما لا يوضحان أن الأمر تقييم تمهيدي لم يُفضِ إلى أرقام أو مهل بعد، ولا أنه تحضير لتطبيق قانون لم يصدر.",
+              "repair": "ذكر في المقدمة أن الاجتماعات تحضير لتطبيق القانون المرتقب للاستقرار المالي واسترداد الودائع (المصدر 1، والمصدر 2)، وأن المراجعة لم تُعلن حجماً ولا مهلة بعد."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المصدران يقدمان سبباً واضحاً لعقد الاجتماعات الآن، هو التحضير لتطبيق القانون المرتقب، والمسودة لا تحمله إلا عرضاً في الخاتمة. والآلية (جمع الأصول القابلة للتسييل لدى المصرف المركزي والمصارف) حاضرة. أما الصندوق فيستنتج سقفاً للسداد من النقد المتاح، وتوتراً بين دور المصارف في السداد وحاجتها إلى الرسملة، وهو استنتاج محدود ومقبول من مقدمات موثقة.",
+              "repair": "إدخال القانون المرتقب في المقدمة، ونقل الخسائر التي سبق لمصرف لبنان تحديدها إلى فقرة الرسملة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يقول إن الجديد هو تقييم «حجم الودائع الممكن ردها». الفقرتان الأولى والثالثة من المتن تطورانه، لكن الفقرة الأولى تكرر العنوان الفرعي. وجملة «ويجعل هذا الموقف...» تكرر استنتاج الصندوق. والخاتمة المنفصلة عن القانون تفصل الخسائر عن محور الرسملة الذي تنتمي إليه.",
+              "repair": "ترتيب المتن هكذا: المقدمة مع القانون المرتقب، ثم المراجعة ومهلها مرة واحدة، ثم المحور الأول ومعه الخسائر، ثم المحور الثاني، ثم المشاركون والنفي، ثم موقع المصارف بلا جملة الكلفة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«لن يكتمل قبل صدوره» تُسقط أن مصرف لبنان سبق أن حدد الاختلالات والمطالبات. و«طرفاً في تحمّل كلفة رد الودائع» تحوّل وصف الشريك في العملية إلى تحمّل للكلفة. أما التواريخ (27 و28 أكتوبر، والبيان يوم السبت) والأسماء (كريم سعيد، و«روتشيلد وشركاه») والاقتباس فمطابقة للمصادر.",
+              "repair": "استعادة قيد «سبق لمصرف لبنان تحديدها»، واستبدال «شريكاً كاملاً في عملية إعادة الودائع» بجملة الكلفة."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد والفاعل: مصرف لبنان، ومعه المصارف، في باريس. والمقدمة تقول إن الأمر تحضير لتطبيق «أي قانون مرتقب» (المصدر 1، والمصدر 2). لكن العنوان الفرعي يكرر الاقتباس، ويذكر «روتشيلد وشركاه» من دون أن يبيّن أنها مستشار مصرف لبنان، ولا يقول إن القانون لم يصدر بعد.",
+              "repair": "صياغة العنوان الفرعي حول محوري الرسملة والسيولة والتحضير للقانون المرتقب، ونقل ذكر المستشار إلى المتن."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "المسودة تحمل ما يقدمه المصدران من سياق. الدافع: التحضير للقانون المرتقب، والمراجعة التحوطية التي تتفادى وعوداً تفوق الإمكانات. الآلية: إعادة الرسملة، واستيعاب الخسائر المحددة سابقاً، وحصر الأصول القابلة للتسييل. ردّ الفعل: نفي مشاركة أطراف أخرى. وليس في المصدرين أرقام ولا مقارنات. ولقاءات الحاكم مع مصرف فرنسا والخزانة الأميركية ومكاتب المحاماة لا يربطها المصدران بالودائع، فإغفالها مقبول. والصندوق يستنتج أمرين من مقدمات موثقة: سقفاً للسداد يحدده النقد المتاح، وتوتراً بين دور المصارف شريكاً في السداد وحاجتها إلى الرسملة كي تعود إلى الإقراض. وهو استنتاج محدود ومقبول.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يقول العنوان إن الجديد هو تقييم «حجم الودائع الممكن ردها»، والفقرات الثلاث الأولى تطوّره مباشرة بعد المقدمة. ثم يأتي موقع المصارف، فالمشاركون، فالنفي، وهو ترتيب متماسك. لكن الجملة الختامية لفقرة المحور الثاني («ومن حجم هذه الموارد ينطلق أي تقدير...») ترجع إلى ما قيل في الفقرة الأولى، وتسبق استنتاج الصندوق.",
+              "repair": "حذف الجملة الختامية لفقرة المحور الثاني، لتنتهي الفقرة عند «الموارد الفعلية المتاحة لتسديد الودائع»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "التواريخ مطابقة للمصدرين: 27 و28 أكتوبر، والبيان يوم السبت 31 أكتوبر. وكذلك الأسماء (كريم سعيد، و«روتشيلد وشركاه»)، والاقتباسان منقولان حرفياً عن المصدر 2. وقيد «سبق أن حددها مصرف لبنان» استُعيد. يبقى أمران: «في حساب واحد» في الصندوق توحي بدمج فعلي للأصول، ووصف الجمعية بـ«الهيئة التي تمثل القطاع» إضافة غير مسندة.",
+              "repair": "استبدال «في حساب واحد» بـ«معاً»، وحذف وصف الجمعية."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 7,
+      "mendIssues": [
+        "التكرار (يُقال مرة واحدة)، وهي ملاحظة باقية من المراجعة السابقة جزئياً: فكرة «كم يُردّ ومتى» تتكرر أربع مرات. يطرحها العنوان («حجم الودائع الممكن ردها»)، ثم العنوان الفرعي («تحديد ما يُردّ إلى المودعين ومهلته الواقعية من دون وعود تفوق الإمكانات»)، ثم الفقرة الأولى من المتن بالاقتباس، ثم تعود جملة جديدة في ختام فقرة المحور الثاني: «ومن حجم هذه الموارد ينطلق أي تقدير لما يُعاد إلى المودعين وللوقت الذي يستغرقه ذلك». وهذه الجملة الأخيرة تلخيص يسبق استنتاج الصندوق نفسه («يضع مصرف لبنان سقفاً لما يمكن أن يعود إلى المودعين يحدده النقد المتاح فعلاً»). الإصلاح: حذفها من المتن، وترك الاستنتاج للصندوق. ويُستحسن أن يحمل العنوان الفرعي تفصيلاً مكمّلاً بدل تكرار الاقتباس (انظر الملاحظة التالية).",
+        "العنوان الفرعي: «بمشاركة المستشار المالي «روتشيلد وشركاه»» لا يقول مستشارُ مَن هي المؤسسة، ويُلحق بالجملة تفصيلاً إجرائياً. ثم إنه يغفل القيد الأهم، وهو أن الاجتماعات تحضير لتطبيق قانون لم يصدر بعد (المصدر 1، والمصدر 2). الإصلاح المقترح: «اجتماعات مغلقة تبحث رسملة المصارف والسيولة المتاحة لسداد الودائع، تحضيراً لتطبيق قانون مرتقب للاستقرار المالي واسترداد الودائع». ويُذكر المستشار في المتن وحده بصفته «المستشار المالي لمصرف لبنان».",
+        "دقة في صندوق «لماذا يهمّ»: «بجمع أصول المصرف المركزي والمصارف القابلة للتسييل في حساب واحد» توحي بدمج فعلي للأصول في حساب مشترك. المصدران 1 و2 يقولان فقط إن تقييم السيولة «يشمل الأصول التي يمتلكها مصرف لبنان والمصارف ويمكن تحويلها إلى سيولة». الإصلاح: «بحصر الأصول القابلة للتسييل لدى المصرف المركزي والمصارف معاً، يجعل مصرف لبنان النقد المتاح فعلاً سقفاً لما يمكن أن يعود إلى المودعين».",
+        "إضافة غير مسندة وإن كانت طفيفة: «جمعية مصارف لبنان، الهيئة التي تمثل القطاع». المصدران لا يصفان الجمعية. وهي اسم مألوف لقارئ الشأن اللبناني، فالأسلم حذف الوصف والاكتفاء بـ«أما المصارف المشاركة فاختارتها جمعية مصارف لبنان».",
+        "العنوان والعنوان الفرعي يحددان البلد والفاعل: مصرف لبنان، ومعه المصارف، في باريس. والمقدمة تقول إن الأمر تحضير لتطبيق «أي قانون مرتقب» (المصدر 1، والمصدر 2). لكن العنوان الفرعي يكرر الاقتباس، ويذكر «روتشيلد وشركاه» من دون أن يبيّن أنها مستشار مصرف لبنان، ولا يقول إن القانون لم يصدر بعد. — صياغة العنوان الفرعي حول محوري الرسملة والسيولة والتحضير للقانون المرتقب، ونقل ذكر المستشار إلى المتن.",
+        "يقول العنوان إن الجديد هو تقييم «حجم الودائع الممكن ردها»، والفقرات الثلاث الأولى تطوّره مباشرة بعد المقدمة. ثم يأتي موقع المصارف، فالمشاركون، فالنفي، وهو ترتيب متماسك. لكن الجملة الختامية لفقرة المحور الثاني («ومن حجم هذه الموارد ينطلق أي تقدير...») ترجع إلى ما قيل في الفقرة الأولى، وتسبق استنتاج الصندوق. — حذف الجملة الختامية لفقرة المحور الثاني، لتنتهي الفقرة عند «الموارد الفعلية المتاحة لتسديد الودائع».",
+        "التواريخ مطابقة للمصدرين: 27 و28 أكتوبر، والبيان يوم السبت 31 أكتوبر. وكذلك الأسماء (كريم سعيد، و«روتشيلد وشركاه»)، والاقتباسان منقولان حرفياً عن المصدر 2. وقيد «سبق أن حددها مصرف لبنان» استُعيد. يبقى أمران: «في حساب واحد» في الصندوق توحي بدمج فعلي للأصول، ووصف الجمعية بـ«الهيئة التي تمثل القطاع» إضافة غير مسندة. — استبدال «في حساب واحد» بـ«معاً»، وحذف وصف الجمعية."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "شمل تقييم السيولة الأصول التي يملكها مصرف لبنان والمصارف ويمكن تحويلها إلى نقد لتحديد الموارد الفعلية المتاحة لتسديد الودائع",
+          "source": 1
+        },
+        {
+          "fact": "يعد مصرف لبنان المصارف شريكاً كاملاً في إعادة الودائع إلى جانب الدولة والمصرف المركزي",
+          "source": 2
+        },
+        {
+          "fact": "بحثت الاجتماعات ما تحتاجه المصارف من إعادة رسملة كي تتمكن من استئناف نشاطها",
+          "source": 1
+        },
+        {
+          "fact": "قال المصرف إن النمو المستدام يتطلب دورة ائتمانية فاعلة تمول الاستثمار والإنتاج",
+          "source": 1
+        }
+      ],
+      "slug": "banque-du-liban-paris-meetings-deposits-recapitalization-910315",
+      "title": "مصرف لبنان يقيّم مع المصارف في باريس حجم الودائع الممكن ردها",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "نشاط المصانع الصينية ينكمش في أكتوبر مع ضعف الطلب المحلي",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-10-31/china-factory-activity-manufacturing-purchasing-managers-index-services",
+        "https://www.independentarabia.com/node/661694/%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF/%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1-%D9%88%D8%AA%D9%82%D8%A7%D8%B1%D9%8A%D8%B1-%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%D9%8A%D8%A9/%D8%A7%D9%84%D8%B5%D8%A7%D8%AF%D8%B1%D8%A7%D8%AA-%D9%84%D9%85-%D8%AA%D8%B9%D8%AF-%D9%83%D8%A7%D9%81%D9%8A%D8%A9-%D8%A7%D9%86%D9%83%D9%85%D8%A7%D8%B4-%D8%A7%D9%84%D9%85%D8%B5%D8%A7%D9%86%D8%B9-%D8%A7%D9%84%D8%B5%D9%8A%D9%86%D9%8A%D8%A9-%D9%8A%D9%83%D8%B4%D9%81-%D8%A3%D8%B2%D9%85%D8%A9"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التمهيدي يحددان البلد (الصين) والمؤشر والرقم 49.3، ويذكر السطر التمهيدي أنها ثالث قراءة انكماشية في أربعة أشهر ودون توقع رويترز. لكن «مؤشر المصانع الصينية» تسمية فضفاضة.",
+              "repair": "يُفضَّل «مؤشر مديري المشتريات الصناعي في الصين يتراجع إلى 49.3 نقطة مع ضعف الطلب المحلي»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المسودة تحمل السبب (تقديم شحنات عيد الميلاد وتلاشي إنفاق العطلة) والتوقع الذي لم تبلغه القراءة (50 نقطة) ورد فعل محلل الاتحاد واقتصاديين. لكنها تغفل ما يقوله SOURCE 2 عن توقع بلوغ هدف النمو من دون تحفيز إضافي، وتغفل مؤشرَي الطلبيات الجديدة وطلبيات التصدير في الانكماش. أما الصندوق فيقدم مقدمات صحيحة لكنه يستنتج اعتماداً كاملاً على إنفاق الأسر لا تسنده المصادر.",
+              "repair": "أضف توقع بلوغ الهدف من دون تحفيز وتقديرات المحللين الغربيين، وأضف مؤشرات الطلبيات من SOURCE 2. واحصر استنتاج الصندوق في أن الطلبيات الخارجية المقدَّمة لن تعوّض ضعف الاستهلاك في الأشهر المقبلة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان، أي ضعف الطلب المحلي، يتطور مباشرة في الفقرة الأولى من المتن، وهذا جيد. لكن التحفظ الموسمي «ويكون الشهر الأول من كل فصل...» يقع بعد اقتباس لا علاقة له به. ومطالبة الاقتصاديين بالدعم منفصلة عن الفقرة التالية التي تذكر هدف النمو، فلا يتصل الجدل بشأن التحفيز.",
+              "repair": "انقل التحفظ الموسمي إلى جانب مقارنة توقع رويترز. وادمج فقرة الاقتصاديين مع فقرة النمو والهدف وتوقع بلوغه من دون تحفيز في سياق واحد."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «تباطأت لأنها شُحنت مسبقاً في سبتمبر» تجعل السببية صريحة، بينما SOURCE 2 يصفها بأنها «التي شُحنت مسبقاً». وفي الصندوق «لا يتجاوز نحو 40%» تحوّط مزدوج. وعبارة «الشركات الصناعية التقليدية والعقارية» تضيّق ما يسميه المصدر الشركات «المرتبطة بقطاع العقارات».",
+              "repair": "اكتب «تباطأت الطلبيات الخارجية المرتبطة بعيد الميلاد، التي شُحنت مسبقاً في سبتمبر»، و«لا يمثل سوى نحو 40%»، و«الشركات المرتبطة بقطاع العقارات»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد (الصين)، والمؤشر وقيمته (49.3)، وأنه ثالث انكماش في أربعة أشهر، وبقاء الطلبيات الجديدة وطلبيات التصدير في الانكماش. والمقدمة تعطي المقارنة بسبتمبر (50.1) ومعنى عتبة 50.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المصادر تقدم ثلاثة تفسيرات، والمسودة تحملها كلها: السبب (تقديم شحنات عيد الميلاد إلى سبتمبر وتلاشي إنفاق العطلة)، والتوقع الذي لم تبلغه القراءة (50 نقطة في استطلاع رويترز مع التحفظ الموسمي)، ورد الفعل (محلل الاتحاد الصيني للوجيستيات والمشتريات بصفته، ومطالبة الاقتصاديين، وتوقع بلوغ الهدف). لكنها تُسقط تقديرات المحللين الغربيين بين صفر و3% (SOURCE 2). والصندوق يبني على مقدمات صحيحة، ثم يعمّم من الطلبيات الموسمية إلى «موجة طلب خارجي» عامة.",
+              "repair": "أضف تقديرات المحللين الغربيين إلى فقرة الهدف، واحصر استنتاج الصندوق في الطلبيات الموسمية المقدَّمة وفي «ضعف» الاستهلاك."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان، أي ضعف الطلب المحلي، يتطور بعد المقدمة مباشرة في فقرة الطلب من الداخل والخارج، ثم في فقرة تفاوت القطاعات، وهذا مقبول. لكن جدل الدعم موزع على «ويرى اقتصاديون…» ثم جملة بلومبرغ المنفردة ثم «وطالب اقتصاديون…».",
+              "repair": "ادمج جملة بلومبرغ ومطالبة الاقتصاديين وتوقع بلوغ الهدف وتقديرات المحللين الغربيين في فقرة واحدة عن الحاجة إلى التحفيز، بعد فقرة الصادرات والفائض."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر: 49.3 و50.1 و50، والقطاعات عند 53 أو أعلى، و4.5% من 4.3%، والهدف بين 4.5% و5%، والفائض 1.2 تريليون، ونسب 70% و80% و40%. والسبببية في طلبيات عيد الميلاد صيغت كما في المصدر («التي شُحنت مسبقاً»). وصيغة «الشركات المرتبطة بقطاع العقارات» صُححت. ويوم السبت يوافق 31 أكتوبر 2026.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "lastCut": 1,
+      "mendedAfterReview": 5,
+      "mendIssues": [
+        "ينقص التقرير (بقية الملاحظة 1 من المراجعة السابقة): نقلت المسودة توقع بلوغ الهدف من دون تحفيز إضافي، لكنها أسقطت ما يورده SOURCE 2 من أن «تقديرات بعض المحللين الغربيين لنمو الاقتصاد الصيني خلال العام بأكمله» تتراوح «ما بين صفر وثلاثة في المئة»، أي أقل بكثير من نمو 4.5% الذي أعلنته بكين للربع الثالث. هذا الرقم هو الطرف المقابل في الجدل حول الحاجة إلى التحفيز. الإصلاح: أضف بعد جملة «بعدما تسارع النمو إلى 4.5% في الربع الثالث…» جملة منسوبة: «في حين تقدّر بعض المحللين الغربيين نمو العام كله بين صفر و3%، وهو أقل بكثير من 4.5% التي أعلنتها بكين للربع الثالث».",
+        "بناء: الكلام على الاقتصاديين والتحفيز موزع على ثلاث فقرات متتالية تقطعها جملة معلقة. الأولى «ويرى اقتصاديون أن قراءة أكتوبر تُظهر أن الصادرات…»، ثم الجملة المنفردة «يبيّن تباطؤ نشاط المصانع، بحسب وكالة بلومبرغ، صعوبة المهمة أمام صانعي السياسات…»، ثم «وطالب اقتصاديون الحكومة…». والمصدر واحد (SOURCE 2) يربط المطالبة بالدعم بقراءة الصادرات. الإصلاح: اجمع الفقرات الثلاث في فقرتين. الأولى للصادرات والفائض وقصورهما عن تعويض الاستهلاك. والثانية لجدل التحفيز: إطار بلومبرغ عن صعوبة ضمان هدف العام (SOURCE 1)، ثم مطالبة الاقتصاديين، ثم توقع بلوغ الهدف من دون تحفيز، ثم تقديرات المحللين الغربيين. ولا تذكر الاقتصاديين مرتين.",
+        "لماذا يهمّ: «لن تجد المصانع الصينية في الأشهر المتبقية من العام موجة طلب خارجي تعوّض استهلاكاً أسرياً…» يعمّم من طلبيات عيد الميلاد إلى كل الطلب الخارجي. وSOURCE 2 يقول إن الصادرات قوية ويتجه الفائض لتجاوز 1.2 تريليون دولار. ثم إن الطلب الخارجي لا يعوّض «استهلاكاً»، وإنما يعوّض ضعفه. الإصلاح: «بعد أن شُحنت طلبيات عيد الميلاد مبكراً في سبتمبر وبقيت طلبيات التصدير الجديدة في الانكماش، لن تأتي المصانع في الأشهر المتبقية موجة طلبيات موسمية تعوّض ضعف استهلاك أسري لا يمثل سوى نحو 40% من الناتج…».",
+        "المصادر تقدم ثلاثة تفسيرات، والمسودة تحملها كلها: السبب (تقديم شحنات عيد الميلاد إلى سبتمبر وتلاشي إنفاق العطلة)، والتوقع الذي لم تبلغه القراءة (50 نقطة في استطلاع رويترز مع التحفظ الموسمي)، ورد الفعل (محلل الاتحاد الصيني للوجيستيات والمشتريات بصفته، ومطالبة الاقتصاديين، وتوقع بلوغ الهدف). لكنها تُسقط تقديرات المحللين الغربيين بين صفر و3% (SOURCE 2). والصندوق يبني على مقدمات صحيحة، ثم يعمّم من الطلبيات الموسمية إلى «موجة طلب خارجي» عامة. — أضف تقديرات المحللين الغربيين إلى فقرة الهدف، واحصر استنتاج الصندوق في الطلبيات الموسمية المقدَّمة وفي «ضعف» الاستهلاك.",
+        "عنصر العنوان، أي ضعف الطلب المحلي، يتطور بعد المقدمة مباشرة في فقرة الطلب من الداخل والخارج، ثم في فقرة تفاوت القطاعات، وهذا مقبول. لكن جدل الدعم موزع على «ويرى اقتصاديون…» ثم جملة بلومبرغ المنفردة ثم «وطالب اقتصاديون…». — ادمج جملة بلومبرغ ومطالبة الاقتصاديين وتوقع بلوغ الهدف وتقديرات المحللين الغربيين في فقرة واحدة عن الحاجة إلى التحفيز، بعد فقرة الصادرات والفائض."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تباطأت في أكتوبر الطلبيات الخارجية المرتبطة بعيد الميلاد، التي شُحنت مسبقاً في سبتمبر، وبقي مؤشر طلبيات التصدير الجديدة في منطقة الانكماش.",
+          "source": 2
+        },
+        {
+          "fact": "لا يمثل استهلاك الأسر سوى نحو 40% من الناتج المحلي الإجمالي للصين، بحسب بنك قطر الوطني.",
+          "source": 2
+        },
+        {
+          "fact": "طالب اقتصاديون الحكومة بمزيد من الجهود لدعم النمو، فيما تشير التوقعات إلى بلوغ هدف النمو من دون تدابير تحفيز إضافية.",
+          "source": 2
+        }
+      ],
+      "slug": "china-factory-pmi-contracts-october-64c344",
+      "title": "مؤشر المصانع الصينية يتراجع إلى 49.3 نقطة مع ضعف الطلب المحلي",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "منظم أبوظبي المالي يتابع بينانس بعد اختراق بقيمة 6.3 مليار دولار",
+      "section": "technology",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
+  "llm": {
+    "calls": 74,
+    "failures": 1,
+    "promptTokens": 1095288,
+    "completionTokens": 250678,
+    "cacheReadTokens": 346693,
+    "costUsd": 11.0714,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 74
+    }
+  },
+  "log": [
+    "[10:38:40] image: the picture should say: China's factories are slowing as orders dry up at home and abroad.",
+    "[10:38:40] image: tier 1, the story's own place (Dongguan, Yangshan Port, Port of Shanghai): Dongguan | Dongguan factory | Yangshan Port containers; categories: Dongguan | Yangshan Port | Port of Shanghai | Factories in China | Manufacturing in China",
+    "[10:38:41] pexels \"Yangshan Port containers\": 8 usable",
+    "[10:38:41] pexels \"Dongguan\": 8 usable",
+    "[10:38:41] pexels \"Dongguan factory\": 8 usable",
+    "[10:38:42] commons \"Dongguan\": 19 usable of 24",
+    "[10:39:25] openverse \"Dongguan\": The operation was aborted due to timeout",
+    "[10:39:25] image: dropped \"Panoramic view of a cable-stayed bridge in China crossing a vast body \" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:39:25] image: dropped \"Scenic view of traditional Chinese buildings beside a serene pond with\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:39:25] image: dropped \"Stunning aerial view of Xiamen city skyline and river, capturing moder\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:39:25] image: dropped \"Aerial view of Huizhou cityscape with modern skyscrapers and vibrant u\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:39:25] image: dropped \"Aerial view of Changsha's skyline with river and greenery under a clou\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:39:25] image: dropped \"Stunning aerial view of Qingdao's modern skyline with mountains in the\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:39:25] image: dropped \"Explore the urban skyline contrasted with lush green foothills.\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:39:25] image: dropped \"A stunning aerial view of Xiamen city skyline and river, capturing mod\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:39:26] commons \"Dongguan factory\": 8 usable of 9",
+    "[10:39:26] image: dropped \"Dongguan Factors.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:39:26] image: dropped \"EGLO Production in China.jpg\" — dated 2003, an archival picture",
+    "[10:40:02] openverse \"Dongguan factory\": 10 usable of 20",
+    "[10:40:02] image: dropped \"A stunning aerial view of an industrial area at sunset in Jiujiang, Ch\" — names too little of factory",
+    "[10:40:02] image: dropped \"Aerial view showcasing the vast industrial park landscape under a clea\" — names too little of factory",
+    "[10:40:02] image: dropped \"Dormitory buildings\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:40:02] image: dropped \"Aerial shot showcasing a large industrial park in Thành phố Thủ Dầu Mộ\" — names too little of factory",
+    "[10:40:02] image: dropped \"Aerial shot of industrial warehouses under blue sky in Bình Dương, Vie\" — names too little of factory",
+    "[10:40:02] image: dropped \"Aerial view of a power plant in Banten, Indonesia emitting smoke again\" — names too little of factory",
+    "[10:40:02] image: dropped \"Aerial view of industrial buildings in Thành phố Thủ Dầu Một, Bình Dươ\" — names too little of factory",
+    "[10:40:02] image: dropped \"A detailed aerial view of an industrial facility in Banten, Indonesia,\" — names too little of factory",
+    "[10:40:03] commons \"Yangshan Port containers\": 6 usable of 6",
+    "[10:40:04] commons Category:Dongguan: 7 usable of 48",
+    "[10:40:05] commons Category:Yangshan Deepwater Port: 24 usable of 35",
+    "[10:40:05] commons Category:Port of Shanghai: 20 usable of 33",
+    "[10:40:05] image: dropped \"China 1976-036 Shanghai.jpg\" — dated 1976, an archival picture",
+    "[10:40:05] image: dropped \"China 1976-035 Shanghai.jpg\" — dated 1976, an archival picture",
+    "[10:40:05] image: dropped \"Shanghai 09-1991.jpg\" — dated 1991, an archival picture",
+    "[10:40:05] image: dropped \"A Jetty at Shanghue, with Sampans.jpg\" — dated 1900, an archival picture",
+    "[10:40:05] image: dropped \"USCGC Boutwell leaving Shanghai after visit.jpg\" — an event's photograph, people and banners",
+    "[10:40:05] image: dropped \"USCGC Rush departing from Shanghai after visit.jpg\" — an event's photograph, people and banners",
+    "[10:40:05] image: dropped \"Port of Shanghai, 2004.jpg\" — dated 2004, an archival picture",
+    "[10:40:05] image: dropped \"Jiangwei class frigate -Sanming-.jpg\" — a warship or weapon, and the story is not about the military",
+    "[10:40:06] commons Category:Factories in China: 20 usable of 48",
+    "[10:40:06] image: dropped \"兰州石化炼油厂夜间全景.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:40:06] image: dropped \"Hangzhou, panorámicas 1978 08.jpg\" — dated 1978, an archival picture",
+    "[10:40:06] commons Category:Manufacturing in China: 0 usable of 2",
+    "[10:40:07] image: thumbnail HTTP 403 for https://live.staticflickr.com/8296/8000595286_d10e501f56_n.jpg",
+    "[10:40:13] openverse \"Yangshan Port containers\": 3 usable of 5",
+    "[10:40:32] image: could not inline https://api.openverse.org/v1/images/54bad7e7-31d3-4c8c-8f28-30dc8b45d075/thumb/: The operation was aborted due to timeout",
+    "[10:40:32] image: thumbnail HTTP 403 for https://live.staticflickr.com/8178/8000362282_faa3cfa113_n.jpg",
+    "[10:40:40] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=128 attempt=1 ms=4259",
+    "[10:40:40] image: vision rejected all candidates (None fits. Photo 1 shows factory workers in Dongguan, but it is a blurry, low-quality amateur frame with a burned-in timestamp, and its file title frames it as child labour, which would be misleading beside this headline. Photos 2–5 are close-ups of phones on store displays, product shots with brand logos and screen text. Photo 6 is a 19th-century woodcut, historical and not a photograph.)",
+    "[10:40:40] image: thumbnail HTTP 403 for https://live.staticflickr.com/8296/8000595286_d10e501f56_n.jpg",
+    "[10:40:51] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=640 attempt=1 ms=10111",
+    "[10:40:51] image: \"201704 Freight Yard of Jungonglu Port.jpg\" names the story's topic without saying its point (Only the container yard at Port of Shanghai fits the story's export and manufacturing angle. It is an amateur 2017 roadside shot that shows the sector but not f); checked now and kept in reserve while the desk looks further",
+    "[10:40:57] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=363 attempt=1 ms=6182",
+    "[10:40:57] image: second check (claude-cli/claude-opus-5-5) AMATEUR — refused \"201704 Freight Yard of Jungonglu Port.jpg\": A passer-by's roadside snapshot with a road and guardrail filling the foreground and distant containers bearing a large ",
+    "[10:40:57] image: \"201704 Freight Yard of Jungonglu Port.jpg\" held back as the last resort, should no professional photograph be found",
+    "[10:40:57] image: tier 3, the writer's own subjects: Chinese factory assembly line | factory workers China | container ship loading China",
+    "[10:40:57] commons \"Chinese factory assembly line 2026\": 1 usable of 2",
+    "[10:40:58] commons \"Chinese factory assembly line\": 5 usable of 8",
+    "[10:40:58] image: dropped \"Tupolev SB High-Speed Bomber. 1934. Скоростной бомбардировщик Туполева\" — names too little of factory, assembly, line",
+    "[10:40:58] commons \"factory workers China 2026\": 0 usable of 1",
+    "[10:40:58] commons \"factory workers China\": 10 usable of 12",
+    "[10:40:58] image: dropped \"BML Bamailong factory workers 1-014.jpg\" — dated 2002, an archival picture",
+    "[10:40:58] image: dropped \"BML Bamailong factory workers 1-013.jpg\" — dated 2002, an archival picture",
+    "[10:40:58] image: dropped \"BML Bamailong factory workers 1-007.jpg\" — dated 2002, an archival picture",
+    "[10:40:58] image: dropped \"BML Bamailong factory workers 1-015.jpg\" — dated 2002, an archival picture",
+    "[10:40:58] image: dropped \"BML Bamailong factory workers 1-017.jpg\" — dated 2002, an archival picture",
+    "[10:40:58] image: dropped \"BML Bamailong factory workers 1-021.jpg\" — dated 2002, an archival picture",
+    "[10:40:59] commons \"container ship loading China 2026\": 0 usable of 6",
+    "[10:40:59] commons \"container ship loading China\": 2 usable of 12",
+    "[10:40:59] image: dropped \"Black Lives Matter at Norwich anti Trump protest outside City Hall (32\" — names too little of container, ship, loading",
+    "[10:41:13] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=926 attempt=1 ms=13119",
+    "[10:41:13] image: \"Starker Gezeitenstrom, Ladungsarbeiten bei schwierigen Arbei\" names the story's topic without saying its point (This is the only candidate that shows China's export and manufacturing economy at work, with containers being loaded onto a ship, which ties to the weak export ); checked now and kept in reserve while the desk looks further",
+    "[10:41:21] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=485 attempt=1 ms=7739",
+    "[10:41:21] image: second check (claude-cli/claude-opus-5-5) AMATEUR — refused \"Starker Gezeitenstrom, Ladungsarbeiten bei schwierigen Arbei\": A hazy, washed-out 2005 snapshot taken from a crane ship on an old Nikon Coolpix 950 is not publication standard, and it",
+    "[10:41:21] image: tier 4, the story's point and its subject: factory production line China | stacked containers Yangshan Port | shoppers supermarket China | Chinese factory | factory workers China | assembly line workers (home: China, Chinese, Guangdong, Shenzhen, Dongguan, Shanghai)",
+    "[10:41:21] pexels \"assembly line workers\": 8 usable",
+    "[10:41:21] pexels \"factory production line China\": 8 usable",
+    "[10:41:21] pexels \"Chinese factory\": 8 usable",
+    "[10:41:21] pexels \"factory workers China\": 8 usable",
+    "[10:41:21] pexels \"stacked containers Yangshan Port\": 8 usable",
+    "[10:41:21] pexels \"shoppers supermarket China\": 8 usable",
+    "[10:41:21] commons \"factory production line China\": 24 usable of 24",
+    "[10:41:32] openverse \"stacked containers Yangshan Port\": 0 usable of 0",
+    "[10:41:39] openverse \"shoppers supermarket China\": 2 usable of 2",
+    "[10:41:43] openverse \"Chinese factory\": 7 usable of 20",
+    "[10:42:06] openverse \"factory production line China\": The operation was aborted due to timeout",
+    "[10:42:06] image: dropped \"Tall industrial chimney with red and white stripes against a clear blu\" — names too little of factory, production, line",
+    "[10:42:06] image: dropped \"A stunning aerial view of an industrial area at sunset in Jiujiang, Ch\" — names too little of factory, production, line",
+    "[10:42:06] commons \"stacked containers Yangshan Port\": 0 usable of 0",
+    "[10:42:08] commons \"stacked containers\": 14 usable of 24",
+    "[10:42:08] image: dropped \"Double stacked containers (195619616).jpg\" — dated 2002, an archival picture",
+    "[10:42:13] openverse \"assembly line workers\": 10 usable of 20",
+    "[10:42:24] openverse \"factory workers China\": The operation was aborted due to timeout",
+    "[10:42:58] openverse \"stacked containers\": The operation was aborted due to timeout",
+    "[10:42:59] commons \"shoppers supermarket China\": 11 usable of 24",
+    "[10:43:00] commons \"Chinese factory\": 24 usable of 24",
+    "[10:43:01] commons \"factory workers China\": 18 usable of 24",
+    "[10:43:01] image: dropped \"BML Bamailong factory workers 1-014.jpg\" — dated 2002, an archival picture",
+    "[10:43:01] image: dropped \"BML Bamailong factory workers 1-013.jpg\" — dated 2002, an archival picture",
+    "[10:43:01] image: dropped \"BML Bamailong factory workers 1-007.jpg\" — dated 2002, an archival picture",
+    "[10:43:01] image: dropped \"BML Bamailong factory workers 1-021.jpg\" — dated 2002, an archival picture",
+    "[10:43:01] image: dropped \"BML Bamailong factory workers 1-015.jpg\" — dated 2002, an archival picture",
+    "[10:43:01] image: dropped \"BML Bamailong factory workers 1-017.jpg\" — dated 2002, an archival picture",
+    "[10:43:01] image: dropped \"BML Bamailong factory workers 1-016.jpg\" — dated 2002, an archival picture",
+    "[10:43:01] image: dropped \"China-1978 Jade worker Art Factory Paul Burns.jpg\" — dated 1978, an archival picture",
+    "[10:43:01] image: dropped \"SZ 深圳博物館 Shenzhen Museum 深圳改革開放史展廳 Reform and Opening-up History Sept \" — a scan of a note's or a coin's face, not a photograph",
+    "[10:43:01] image: dropped \"China-1978 Lacquerware Art Factory Paul Burns.jpg\" — dated 1978, an archival picture",
+    "[10:43:01] image: dropped \"Two women focused on machinery work in a cluttered industrial workshop\" — names too little of factory, workers",
+    "[10:43:02] commons \"assembly line workers\": 9 usable of 24",
+    "[10:43:02] image: dropped \"Ford assembly line - 1913.jpg\" — dated 1913, an archival picture",
+    "[10:43:02] image: dropped \"Experienced assembly line workers of both sexes contribute to the prod\" — dated 1942, an archival picture",
+    "[10:43:02] image: dropped \"Ford assembly line - 1913 (restored).jpg\" — dated 1913, an archival picture",
+    "[10:43:02] image: dropped \"Secretary Kerry Chats With Worker on Engine Assembly Line (12538366364\" — shows kerry, john, not the story's people",
+    "[10:43:02] image: dropped \"Valmet 604 assembly line in Kibaha, Tanzania.jpg\" — dated 1983, an archival picture",
+    "[10:43:02] image: dropped \"ON THE CADILLAC ASSEMBLY LINE-WIRING IS COMPLETE ON THIS BODY, AND NOW\" — dated 1973, an archival picture",
+    "[10:43:02] image: dropped \"M18 Assembly Line.jpg\" — shows brig, not the story's people",
+    "[10:43:02] image: dropped \"Teachers listening carefully to a speaker at their strike rally in fro\" — names too little of assembly, line, workers",
+    "[10:43:02] image: dropped \"Woman in blue uniform handling textiles in a modern industrial factory\" — names too little of assembly, line, workers",
+    "[10:43:02] image: dropped \"Teachers applauding a speaker at their strike rally in front of the Fo\" — names too little of assembly, line, workers",
+    "[10:43:02] image: dropped \"Teachers in bouyant mood at the start of their strike rally in front o\" — names too little of assembly, line, workers",
+    "[10:43:02] image: dropped \"A woman in a blue uniform folding textiles in a brightly lit factory.\" — names too little of assembly, line, workers",
+    "[10:43:02] image: dropped \"Care UK strikers from Doncaster District & Bassetlaw UNISON Health Bra\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:43:02] image: dropped \"Weekend at Work: June 28 - June 30, 2014\" — names too little of assembly, line, workers",
+    "[10:43:02] image: dropped \"Belalie North. Old steel ringed wooden bullock cart wheel from the 19t\" — names too little of assembly, line, workers",
+    "[10:43:02] image: dropped \"Belalie North. Spring crop of canola in flower.\" — names too little of assembly, line, workers",
+    "[10:43:02] image: dropped \"Berlin Wall and Trabant 601 S 'Delux'\" — names too little of assembly, line, workers",
+    "[10:43:02] image: dropped \"MTACC Update 2012-12 Photo 1\" — names too little of assembly, line, workers",
+    "[10:43:02] image: dropped \"A Weekend at Work: November 16 - 17\" — names too little of assembly, line, workers",
+    "[10:43:02] image: dropped \"Salt workers of Marakkanam.jpg\" — taken in India, which the story does not name",
+    "[10:43:02] image: dropped \"Stacks of lobster traps in Norra Grundsund 7.jpg\" — taken in Norway, which the story does not name",
+    "[10:43:02] image: dropped \"MOTHER OF THE ASSEMBLY LINE - Clip spring and bodt assembly for .30 ca\" — taken in United States, which the story does not name",
+    "[10:43:02] image: dropped \"Trunk room.jpg\" — taken in Japan, which the story does not name",
+    "[10:43:17] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1082 attempt=1 ms=13778",
+    "[10:43:17] image: \"Colorful shipping containers stacked in a port for transport\" names the story's topic without saying its point (Fallback choice: stacked shipping containers fit the story's weak export orders and read clearly at a glance. It does not show factories slowing. The other cand); checked now and kept in reserve while the desk looks further",
+    "[10:43:26] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=794 attempt=1 ms=9569",
+    "[10:43:26] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Colorful shipping containers stacked in a port for transport\": A flat, texture-like wall of container doors whose most legible marks are MSC and CAI logos, with nothing placing it in ",
+    "[10:43:34] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=494 attempt=1 ms=7557",
+    "[10:43:34] image: \"Three workers in safety helmets collaborate inside a factory\" names the story's topic without saying its point (Workers on a factory floor: a lively, professional scene that fits a story about Chinese manufacturing. It shows the sector but not the drop in orders. The othe); checked now and kept in reserve while the desk looks further",
+    "[10:43:44] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=639 attempt=1 ms=9253",
+    "[10:43:44] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Three workers in safety helmets collaborate inside a factory\": A professional, real shot of East Asian factory workers handling steel coil at work is an anonymous scene of the manufac",
+    "[10:43:44] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"Three workers in safety helmets collaborate inside a factory\"",
+    "[10:43:44] published \"مؤشر المصانع الصينية يتراجع إلى 49.3 نقطة مع ضعف الطلب المحلي\" -> china-factory-pmi-contracts-october-64c344",
+    "[10:44:36] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1500 attempt=1 ms=52224",
+    "[10:45:04] desk notes: the context fact is not grounded in its source or copies it; left out",
+    "[10:45:04] desk notes: 6 of 28 facts dropped (not in their source or copied from it)",
+    "[10:45:04] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=448 attempt=1 ms=28622",
+    "[10:45:58] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3701 attempt=1 ms=53815",
+    "[10:46:45] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1580 attempt=1 ms=46874",
+    "[10:46:45] evidence pair \"مؤشر المصانع الصينية يتراجع إلى 49.3 نقطة مع ضعف الطلب المحلي\": 0 proved error(s) live (v45), 0 with the kept lessons (v0); the private drafts are not published",
+    "[10:46:45] run budget of 35 minutes spent; \"منظم أبوظبي المالي يتابع بينانس بعد اختراق بقيمة 6.3 مليار دولار\" waits for the next run"
+  ]
+}

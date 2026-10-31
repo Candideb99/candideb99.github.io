@@ -13992,6 +13992,57 @@
         }
       ],
       "outcome": "clean"
+    },
+    "uae-caps-einvoicing-fines-50000-dirhams-3da2f9": {
+      "at": "2026-10-31T09:58:23.391Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v45",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-31T06:34:30.443Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 23,
+        "weak": 6,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "حدّد مجلس الوزراء الإماراتي سقفاً قدره 50 ألف درهم للغرامات على مخالفات تطبيق الفوترة الإلكترونية في أي 12 شهراً متتالية، قبل بدء التطبيق الإلزامي، وفق ما أعلنته وزارة المالية الجمعة.",
+          "quote": "The changes, announced by the Ministry of Finance on Friday, October 30, follow feedback from businesses and revise how penalties apply to companies that fail to meet e-invoicing requirements."
+        },
+        {
+          "sentence": "أما قرار مجلس الوزراء رقم 106 لسنة 2025، الذي يحل محله القرار الجديد، فكان يفرض 5 آلاف درهم عن كل شهر تأخير أو جزء منه إذا أخفق المُصدِر في التطبيق، ومن ذلك عدم تعيين مزود خدمة معتمد في الموعد المحدد.",
+          "quote": "The previous framework imposed AED5,000 for each month or part of a month of delay when an issuer failed to implement eInvoicing, including failure to appoint an Accredited Service Provider by the prescribed deadline."
+        },
+        {
+          "sentence": "ولم تكن القواعد السابقة تنص على سقف إجمالي معلن، بحسب صحيفة «غلف نيوز» الإماراتية؛ فالمنشأة التي تبقى غير ممتثلة 12 شهراً كان يمكن أن تتراكم عليها 60 ألف درهم، مقابل حد أقصى قدره 50 ألف درهم للفترة نفسها الآن.",
+          "quote": "Under the previous rules, businesses could face Dh5,000 for every month of delay in implementing e-invoicing, without a stated overall cap."
+        },
+        {
+          "sentence": "وكان القرار الوزاري رقم 197 لسنة 2026، الذي أُعلن في 19 أكتوبر، قد ألغى الالتزام نفسه بالإبلاغ عن العطل خلال يومي عمل، فجاء قرار الغرامات ليوائم العقوبات معه.",
+          "quote": "The decision follows an earlier amendment announced on October 19, which removed the requirement to notify the FTA of a system failure within two business days. The latest revision brings the penalty rules into line with that earlier change."
+        },
+        {
+          "sentence": "ولم يتضح مصير غرامات أخرى في الإطار السابق، منها 100 درهم عن كل فاتورة إلكترونية متأخرة بحد أقصى 5 آلاف درهم شهرياً؛ فقد قالت «غلف نيوز» إن وضعها في القرار البديل يحتاج إلى تأكيد من نصه القانوني الكامل.",
+          "quote": "The Ministry's October 30 announcement does not specifically identify changes to these penalties. Their treatment under the replacement decision would need to be confirmed from its complete legal text."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }
