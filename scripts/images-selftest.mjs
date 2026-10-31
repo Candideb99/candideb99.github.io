@@ -8,7 +8,7 @@
  *
  *   node scripts/images-selftest.mjs
  */
-import { withStandIns, pickImage, headlinePeople, headlineCompany, namesCompany, namesPerson, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { withStandIns, pickImage, headlinePeople, headlineCompany, namesCompany, namesPerson, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
 import { photoKey, sharedPhotos } from "../pipeline/lib/photo-key.mjs";
 import { BAD_TITLE, cleanArtist, creditName, attributionLine } from "../pipeline/lib/commons.mjs";
 
@@ -963,6 +963,54 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   const both = await scenario({ draft, plan: { queries: ["oil refinery"], place: [], people: [], focus: "subject", places: [], place_queries: [] }, world: { "oil refinery": [snap, pro] }, judge: (titles) => (titles.length ? 1 : 0), verify: amateurVerdict });
   check("a professional photograph found later runs before it", both.image?.title, pro.title);
   check("every judge is told amateur photographs come last, and to prefer the nearest, clearest subject", [both.judgePrompts.every((p) => p.includes("AMATEUR LAST")), both.judgePrompts.every((p) => p.includes("nearest, largest and sharpest"))], [true, true]);
+}
+
+// V. The state's own accounts (the owner, 2026-10-31: a crowded Cairo street market, Ataba in 2019 under a phone billboard,
+// ran under Egypt's budget deficit, the planner having made Ataba the story's place). No place tier, no search for a market,
+// a street or a port, no market file before a judge or past the code; a market stays for what households pay.
+{
+  const budget = { ...developers, title: "عجز موازنة مصر يتقلص إلى 1.3% من الناتج في أول شهرين من عامها المالي", subtitle: "الإيرادات الضريبية تنمو 23.8% في يوليو وأغسطس", tags: ["مصر", "عجز الموازنة"], imageQueries: ["Cairo street shoppers", "Egyptian pound banknotes"] };
+  check(
+    "the state's accounts are read from the headline: a budget, the public debt, tax revenue; not a balance sheet, state banks, a subsidy or a dek",
+    [
+      treasuryStory(budget),
+      treasuryStory({ title: "عجز الموازنة الأمريكية يقترب من تريليوني دولار في 2026" }),
+      treasuryStory({ title: "الدين العام لمصر يرتفع إلى 12 تريليون جنيه" }),
+      treasuryStory({ title: "الحصيلة الضريبية في السعودية تقفز 20%" }),
+      treasuryStory({ title: "بكين تضخ 360 مليار يوان في ثماني مؤسسات مالية حكومية" }),
+      treasuryStory({ title: "أرامكو تعزز الميزانية العمومية بإصدار سندات" }),
+      treasuryStory({ title: "موازنة مصر الجديدة تخفض دعم الخبز" }),
+      treasuryStory({ title: "«أنجلو جولد أشانتي» تطلب التنقيب عن الذهب", subtitle: "رصدت الشركة ميزانية بملايين الدولارات" }),
+    ],
+    [true, true, true, true, false, false, false, false],
+  );
+  const iraq = { ...developers, title: "العراق يطلب بحث برنامج تمويلي محتمل مع صندوق النقد الدولي", tags: ["العراق"] };
+  check(
+    "a market fails the desk's code under the state's accounts only; a stock market is no market",
+    [Boolean(publishedFault({ title: "Vegetable market in Cairo.jpg" }, budget)), Boolean(publishedFault({ title: "Street view", categories: "Markets in Cairo" }, budget)), publishedFault({ title: "Egyptian stock market traders.jpg" }, budget), publishedFault({ title: "Vegetable market in Baghdad.jpg" }, iraq)],
+    [true, true, null, null],
+  );
+  const ataba = file("My photography of the Attaba area in Cairo (Egypt) in 2019.jpg", { categories: "Ataba" });
+  const stalls = file("Vegetable market in Cairo 2024.jpg", { categories: "Markets in Cairo" });
+  const notes = file("Egyptian pound notes in hand 2025.jpg", { categories: "Banknotes of Egypt" });
+  const r = await scenario({
+    draft: budget,
+    plan: planFor({ queries: ["Cairo market shoppers", "Egyptian pounds"], places: ["Ataba"], place_queries: ["Ataba market Cairo"], categories: ["Markets in Cairo"], message_queries: ["vegetable market Cairo", "counting Egyptian pounds"] }),
+    world: { "Ataba market Cairo": [ataba], Ataba: [ataba], "Cairo street shoppers": [stalls], "Cairo market shoppers": [stalls], "vegetable market Cairo": [stalls], "Egyptian pounds": [stalls, notes], "counting Egyptian pounds": [notes] },
+    categoryWorld: { Ataba: [ataba], "Markets in Cairo": [stalls] },
+    judge: (titles) => (titles.length ? 1 : 0),
+    verify: () => "GENERIC_OK",
+  });
+  check(
+    "a budget story searches no place, market or street; no market reaches a judge; the country's money runs",
+    [r.searched.filter((q) => /ataba|market|street|category:/i.test(q)), r.judgePrompts.some((p) => p.includes("Vegetable market") || p.includes("Attaba")), r.image?.title],
+    [[], false, notes.title],
+  );
+  check(
+    "an advertisement for a brand the story does not name is refused by every judge and by the second check",
+    [r.judgePrompts.length > 0 && r.judgePrompts.every((p) => p.includes("an advertisement, a billboard or a shop sign")), photoRules({ draft: budget, image: {} }).includes("an advertisement, a billboard or a shop sign")],
+    [true, true],
+  );
 }
 
 // Openverse down (2026-10-30): six searches of one pass, every one timing out. Three go out; the breaker opens on the third
