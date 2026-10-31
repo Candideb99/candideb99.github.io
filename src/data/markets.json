@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T10:46:47.126Z",
+  "updatedAt": "2026-10-31T11:18:28.372Z",
   "source": "Yahoo Finance",
   "quotes": [
     {
@@ -720,7 +720,7 @@
       "price": 6131.31,
       "prev": 6207.07,
       "time": "2026-10-30T17:00:00.000Z",
-      "currency": null,
+      "currency": "EUR",
       "change": -75.76,
       "pct": -1.2205,
       "source": "yahoo",
@@ -3537,12 +3537,12 @@
       "unit": "دولار",
       "decimals": 0,
       "changeMode": "pct",
-      "price": 77336.84,
+      "price": 77315.06,
       "prev": 77202.4,
-      "time": "2026-10-31T10:46:43.000Z",
+      "time": "2026-10-31T11:18:25.000Z",
       "currency": "USD",
-      "change": 134.44,
-      "pct": 0.1741,
+      "change": 112.66,
+      "pct": 0.1459,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -3664,7 +3664,7 @@
         },
         {
           "d": "2026-10-31",
-          "c": 77336.84
+          "c": 77315.06
         }
       ]
     }
