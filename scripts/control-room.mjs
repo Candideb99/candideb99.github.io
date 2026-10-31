@@ -251,7 +251,9 @@ function jobProgress() {
   // Refused, held by the check before publication, failed, or left for the next run: each a story not written (until
   // 2026-10-31 only "reject" and "skip" lines were counted, and the second-pass critic printed none).
   const refused = job.log.filter((l) => /\] (?:reject|skip|held|story failed) /.test(l) || /\] run budget of .* waits for the next run/.test(l)).length;
-  const m = job.log[0]?.match(/--limit=(\d+)/);
+  // The run's own command line, not the job's first: since every job opens with the sync (2026-10-31) the first line
+  // is the pull, and "1 of 4 written" had become "1 written".
+  const m = job.log.find((l) => /^\$ .*--limit=\d+/.test(l))?.match(/--limit=(\d+)/);
   return { written, refused, target: m ? Number(m[1]) : null };
 }
 
@@ -1663,7 +1665,8 @@ function body(req) {
 }
 // --autostash: the chat leaves edits uncommitted on purpose and a plain rebase refuses to run over them.
 // -X theirs: the cloud commits pipeline/state every run; keep the local hunk, as newsroom.yml does.
-const SYNC = ["git", ["pull", "--rebase", "--autostash", "-X", "theirs", "pages", "main"]];
+// scripts/sync.mjs: the pull, without the conflict markers a bare `git pull --autostash` left in the run summary.
+const SYNC = ["node", ["scripts/sync.mjs", "pages", "main"]];
 const PUSH = [SYNC, ["git", ["push", "pages", "HEAD:main"]]];
 /**
  * What a story carries besides its file, which the cloud commits with it (newsroom.yml): its evidence and a handout

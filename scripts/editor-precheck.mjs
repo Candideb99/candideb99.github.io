@@ -218,6 +218,22 @@ for (const [name, file, maxH] of [["Market quotes", "src/data/markets.json", 12]
   if (at && hoursAgo(at) > maxH) findings.push({ key: `data:${file}`, text: `${name} (${file}) were last refreshed ${Math.round(hoursAgo(at))} hours ago. The refresh runs in the newsroom and deploy workflows as a best-effort step; read its output in the latest runs and fix the script if a source changed.` });
   else if (at) fine.push(`${name} refreshed ${Math.round(hoursAgo(at))} hour(s) ago.`);
 }
+// A news feed that still answers but has stopped moving gives the newsroom "0 fresh items" run after run and nothing
+// else: Sky News Arabia's business desk moved to its own site, snabusiness.com, on 2026-10-29 and its old feed stood
+// still for two days until an audit found it; cnbc-finance stood still for ten. The newsroom records each feed's newest
+// item of any age (pipeline/state/feeds.json). A news feed read in the last two days whose newest item is three days old
+// goes to the owner: the editor cannot read the web to find where a feed went.
+const feedsHeard = readJson(path.join("pipeline", "state", "feeds.json"))?.feeds ?? {};
+const stillFeeds = (readJson(path.join("pipeline", "sources.json"))?.sources ?? [])
+  .filter((s) => !s.disabled && s.kind === "news")
+  .filter((s) => feedsHeard[s.id]?.readAt && hoursAgo(feedsHeard[s.id].readAt) < 48 && feedsHeard[s.id].newestAt && hoursAgo(feedsHeard[s.id].newestAt) > 72);
+if (stillFeeds.length) {
+  owner.push({
+    key: "feeds",
+    title: "خازندار: news feeds that have served nothing new for three days",
+    text: `These feeds still answer the newsroom, but their newest item is three days old or more, so they give it nothing: ${stillFeeds.map((s) => `${s.id} (${s.nameEn}, ${s.url}; newest item ${feedsHeard[s.id].newestAt.slice(0, 10)})`).join("; ")}. A publisher may have moved its feed (Sky News Arabia's business desk moved to snabusiness.com on 2026-10-29 and its old feed stood still). Open the publisher's site: if it has published since, take the feed its pages name in their head (<link rel="alternate" type="application/rss+xml">) or its news sitemap, read it with \`node pipeline/run.mjs --dry-run --source=<its id>,<another id>\`, and put its address in pipeline/sources.json. If the publisher itself has not published, close this issue.`,
+  });
+} else if (Object.keys(feedsHeard).length) fine.push("Every news feed read in the last two days has an item from the last three days.");
 
 // 7. Soundness.
 let builds = true;
@@ -288,14 +304,36 @@ for (const f of wake) {
 }
 for (const [key, at] of Object.entries(state.woken)) if (hoursAgo(at) > 14 * 24) delete state.woken[key];
 
-// What only the owner can mend becomes an issue on the repository, once per problem while it stays open.
+// What only the owner can mend becomes an issue on the repository, once per problem while it stays open. An open one is
+// kept current: the corrections issue of 27 September still listed its first story on 31 October, when the round found
+// three. And an issue for a finding the editor could not fix is closed once the finding is gone: the stall of early
+// October stayed open for weeks after stories ran again, and since an open issue is never opened twice, a new stall
+// would have raised no alarm (2026-10-31).
+const ISSUE_MARK = "Opened by the daily editor's round (scripts/editor-precheck.mjs).";
 if (ON_GITHUB) {
+  let openIssues = null;
+  try {
+    openIssues = JSON.parse(execFileSync("gh", ["issue", "list", "--state", "open", "--limit", "200", "--json", "number,title,body"], { encoding: "utf8" }));
+  } catch (error) {
+    console.log(`could not list the open issues: ${String(error.message).split("\n")[0]}`);
+  }
   for (const o of owner) {
+    const body = `${o.text}\n\n${ISSUE_MARK} Close this issue once it is mended.`;
     try {
-      const open = JSON.parse(execFileSync("gh", ["issue", "list", "--state", "open", "--search", `${o.title} in:title`, "--json", "title"], { encoding: "utf8" }));
-      if (!open.some((i) => i.title === o.title)) execFileSync("gh", ["issue", "create", "--title", o.title, "--body", `${o.text}\n\nOpened by the daily editor's round (scripts/editor-precheck.mjs). Close this issue once it is mended.`]);
+      const open = (openIssues ?? JSON.parse(execFileSync("gh", ["issue", "list", "--state", "open", "--search", `${o.title} in:title`, "--json", "number,title,body"], { encoding: "utf8" }))).find((i) => i.title === o.title);
+      if (!open) execFileSync("gh", ["issue", "create", "--title", o.title, "--body", body]);
+      else if (String(open.body ?? "").trim() !== body.trim()) execFileSync("gh", ["issue", "edit", String(open.number), "--body", body]);
     } catch (error) {
-      console.log(`could not open the issue "${o.title}": ${String(error.message).split("\n")[0]}`);
+      console.log(`could not open or update the issue "${o.title}": ${String(error.message).split("\n")[0]}`);
+    }
+  }
+  for (const issue of openIssues ?? []) {
+    const stuck = String(issue.title).match(/the daily editor could not fix "([^"]+)"/);
+    if (!stuck || !String(issue.body ?? "").includes(ISSUE_MARK) || findings.some((f) => f.key === stuck[1])) continue;
+    try {
+      execFileSync("gh", ["issue", "close", String(issue.number), "--comment", `The daily round no longer finds "${stuck[1]}", so this is closed; a new issue opens if it returns.`]);
+    } catch (error) {
+      console.log(`could not close the issue "${issue.title}": ${String(error.message).split("\n")[0]}`);
     }
   }
 }

@@ -62,7 +62,11 @@ function figuresOf(text, read = extractNumbers) {
  */
 export function passagesOf(text, quotes, storyFigures) {
   const sentences = sentencesOf(text);
+  // The quoted sentences first, then the sentence either side of each: kept in one set in page order, the neighbours of
+  // early quotes used up the room before later quotes were reached (a review of 2026-10-31: the Hespress source of the
+  // Morocco trade story lost a quoted sentence carrying 750.56 and 597.64, figures the story prints).
   const quoted = new Set();
+  const near = new Set();
   // A quote the page's sentences do not contain as written (a quote across two sentences, a page cut differently), or
   // one inside a sentence too long to keep, is kept as the check quoted it: it is the evidence either way.
   const loose = [];
@@ -74,17 +78,19 @@ export function passagesOf(text, quotes, storyFigures) {
       loose.push(squash(q));
       continue;
     }
-    for (const j of [i - 1, i, i + 1]) if (j >= 0 && j < sentences.length && sentences[j].length <= LONG_SENTENCE) quoted.add(j);
+    quoted.add(i);
+    for (const j of [i - 1, i + 1]) if (j >= 0 && j < sentences.length && sentences[j].length <= LONG_SENTENCE) near.add(j);
   }
   const wanted = new Set(storyFigures);
   const figured = [];
   sentences.forEach((s, i) => {
-    if (!quoted.has(i) && s.length <= LONG_SENTENCE && figuresOf(s, sourceNumbers).some((f) => wanted.has(f))) figured.push(i);
+    if (!quoted.has(i) && !near.has(i) && s.length <= LONG_SENTENCE && figuresOf(s, sourceNumbers).some((f) => wanted.has(f))) figured.push(i);
   });
   let room = MAX_PASSAGES_CHARS;
   const fits = (piece) => piece.length + 1 <= room && (room -= piece.length + 1, true);
   const take = new Set([...quoted].sort((a, b) => a - b).filter((i) => fits(sentences[i])));
   const extra = [...new Set(loose)].filter((q) => !take.size || ![...take].some((i) => sentences[i].includes(q))).filter(fits);
+  for (const i of [...near].sort((a, b) => a - b)) if (!take.has(i) && fits(sentences[i])) take.add(i);
   for (const i of figured) if (fits(sentences[i])) take.add(i);
   return [...[...take].sort((a, b) => a - b).map((i) => sentences[i]), ...extra].join(" ");
 }

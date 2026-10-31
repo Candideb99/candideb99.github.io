@@ -155,7 +155,7 @@ async function check(story, ledger, report, corrections) {
       const copy = loadSnapshot(story.slug);
       const claims = copy?.claims;
       if (saved.length || claims?.length) {
-        result.checks = settleChanged(settleDrift(result.checks, saved), claims, saved, copy?.sources ?? []);
+        result.checks = settleChanged(settleDrift(result.checks, saved), claims, saved, copy?.sources ?? [], sources);
         result.counts = { ...result.counts, confirmed: result.checks.filter((c) => c.status === "confirmed").length, drift: result.checks.filter((c) => c.status === "drift").length };
       }
       entry.fromCopy = sources.filter((s) => s.snapshot).length || undefined;

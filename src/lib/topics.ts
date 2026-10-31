@@ -82,6 +82,13 @@ function termPattern(term: string): RegExp {
 }
 
 /** The text with a topic's excluded phrases read out. */
+/** Where a headline's cause or setting begins («… مع رهانات رفع الفائدة», «… مدفوعة بالذكاء الاصطناعي»). */
+const CAUSE = /(?:^|\s)(?:مع|بعد|بعدما|بسبب|وسط|إثر|عقب|جراء|جرّاء|على خلفية|في ظل|قبل|قبيل|حين|رغم|بدعم|بفضل|مدفوعة|مدفوعاً)\s/;
+function mainClause(title: string): string {
+  const at = title.search(CAUSE);
+  return at < 0 ? title : title.slice(0, at);
+}
+
 function readable(text: string, topic: Topic): string {
   let t = normalizeArabic(text);
   for (const phrase of topic.exclude ?? []) t = t.replace(termPattern(phrase), " ");
@@ -129,9 +136,12 @@ function hit(article: Article, topic: Topic): Hit | null {
  *  Fed's hold and Riyadh airport's reopening, whose tags ended in «النفط» (130 such listings, 2026-10-31). */
 export function topicArticles(articles: Article[], section: string, topic: Topic): Article[] {
   const own = new Set((topic.tags ?? []).map(normalizeArabic));
+  // The headline is read in whole words and in its main clause only (a review of 2026-10-31): a part of a word put
+  // «الصادرات غير النفطية» on the oil page, and a subject in a cause clause put gold's fall «مع رهانات رفع الفائدة» on
+  // the monetary page, as pipeline/lib/events.mjs reads a headline's cause for the same reason.
   const about = (a: Article) =>
     a.data.tags.slice(0, 2).some((t) => own.has(normalizeArabic(canonicalTag(t)))) ||
-    [...own].some((t) => normalizeArabic(a.data.title).includes(t));
+    [...own].some((t) => termPattern(t).test(readable(mainClause(a.data.title), topic)));
   return articles.filter((a) => (a.data.section === section && hit(a, topic) !== null) || (own.size > 0 && about(a)));
 }
 

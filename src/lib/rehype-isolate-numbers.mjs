@@ -8,8 +8,9 @@
 // range dash (2026-10-31; see src/lib/bidi.ts).
 const NUMBER_SRC = String.raw`(?:(?<=^|[\s(\[«"'،])[+\-−])?\d(?:[\d.,]*\d)?(?:\s?[%٪])?(?:(?:[\/:]|\s?[\-–]\s?)\d(?:[\d.,]*\d)?(?:\s?[%٪])?)*`;
 // Any Latin-script letter, accents included: an ASCII class cut «Jiménez» at «é» (2026-10-24; see src/lib/bidi.ts).
-// «&» joins a run («S&P 500»), and digits before a word join it, hyphened or not («10-year»; see src/lib/bidi.ts).
-const LATIN_SRC = String.raw`(?<![&\p{Script=Latin}\p{M}0-9])\(?(?:\d+-?(?=\p{Script=Latin}))?\p{Script=Latin}[\p{Script=Latin}\p{M}0-9'’.\-&]*(?:\s+[\p{Script=Latin}\p{M}0-9'’.\-&]+)*\)?`;
+// «&» joins a run («S&P 500»), and digits before a word join it, hyphened or not («10-year»; see src/lib/bidi.ts); a
+// spaced «&» or dash only between two Latin words (2026-10-31; see src/lib/bidi.ts).
+const LATIN_SRC = String.raw`(?<![&\p{Script=Latin}\p{M}0-9])\(?(?:\d+-?(?=\p{Script=Latin}))?\p{Script=Latin}[\p{Script=Latin}\p{M}0-9'’.\-&]*(?:\s+(?:[&\-–]\s+)?[\p{Script=Latin}\p{M}0-9][\p{Script=Latin}\p{M}0-9'’.\-&]*)*\)?`;
 const RUN = new RegExp(`(${LATIN_SRC})|(${NUMBER_SRC})`, "gu");
 
 /** A Latin run gives back the sentence's full stop and a bracket it did not open or close (latinParts in src/lib/bidi.ts). */

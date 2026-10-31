@@ -1017,6 +1017,22 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
     ],
     [true, true, true, true, false, false, false, false],
   );
+  // A review of 2026-10-31: household costs read as parts of words and anywhere in the headline hid four budgets, and a
+  // company's rating with its nationality passed as the state's.
+  check(
+    "a budget is the state's despite «بدعم», «مرسوم» or oil prices in a cause; «عجزاً مالياً» is a deficit; a company's rating is not",
+    [
+      treasuryStory({ title: "هيلي يعد بدعم النمو في موازنة 28 أكتوبر مع التمسك بالانضباط المالي" }),
+      treasuryStory({ title: "عجز موازنة السعودية يتسع 20% مع تراجع أسعار النفط" }),
+      treasuryStory({ title: "الكويت تسجل عجزاً مالياً بقيمة 5 مليارات دينار" }),
+      treasuryStory({ title: "مرسوم الميزانية يرفع الإنفاق العام" }),
+      treasuryStory({ title: "فيتش تحوّل نظرتها المستقبلية لتصنيف فرنسا إلى سلبية مع تفاقم الدين" }),
+      treasuryStory({ title: "فيتش تخفض تصنيف «أرامكو» السعودية" }),
+      treasuryStory({ title: "موديز ترفع تصنيف البنك الأهلي السعودي" }),
+      treasuryStory({ title: "مصر ترفع أسعار الوقود وتخفض عجز الموازنة" }),
+    ],
+    [true, true, true, true, true, false, false, false],
+  );
   const iraq = { ...developers, title: "العراق يطلب بحث برنامج تمويلي محتمل مع صندوق النقد الدولي", tags: ["العراق"] };
   check(
     "a market fails the desk's code under the state's accounts only; a stock market is no market",
@@ -1093,6 +1109,15 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   const sbp = { ...developers, title: "المركزي الباكستاني يرفع الفائدة إلى 12% في أول زيادة منذ أبريل", tags: ["باكستان"], regions: ["آسيا"] };
   const p = await scenario({ draft: sbp, plan: planFor({ queries: ["traders screens"], place: [] }), world: {}, judge: () => 0, lastResort: { scene: null, country: "Pakistan", institution: "State Bank of Pakistan", city: null } });
   check("Pakistan's State Bank is searched under its own rate decision", p.searched.some((q) => /State Bank of Pakistan/.test(q)), true);
+  const marked = await scenario({ draft: { ...sbp, title: "المركزي الباكستاني يُثبّت الفائدة عند 12%" }, plan: planFor({ queries: ["traders screens"], place: [] }), world: {}, judge: () => 0, lastResort: { scene: null, country: "Pakistan", institution: "State Bank of Pakistan", city: null } });
+  check("…and so it is when the decision carries its vowel marks («يُثبّت»)", marked.searched.some((q) => /State Bank of Pakistan/.test(q)), true);
+  // A commercial bank and a tower called Sama are no central bank (a review of 2026-10-31); SAMA's own building is.
+  const cbe = { ...developers, title: "المركزي المصري يثبت الفائدة", tags: ["مصر"] };
+  check(
+    "the National Bank of Egypt and Sama Tower are fronts; the Central Bank of Egypt and SAMA are central banks",
+    ["National Bank of Egypt headquarters, Cairo.jpg", "Sama Tower, Dubai skyline.jpg", "Central Bank of Egypt headquarters, Cairo.jpg", "SAMA headquarters, Riyadh.jpg"].map((title) => Boolean(publishedFault({ title }, cbe))),
+    [true, true, false, false],
+  );
   // A sovereign rating and the state's own deficit are its accounts (the audit of 31 October); a company's rating, a
   // trade deficit and a bond yield are not.
   check(

@@ -25,7 +25,7 @@ import { independentOutletCount } from "../pipeline/lib/news-evidence.mjs";
 import { boxFacts, figureOnly } from "../pipeline/lib/keyfacts.mjs";
 import { deskNotes, explainingFacts, newsDepthBrief, newsFloor, normalizeChart, normalizeDraft, paperNotes, prioritizeContext, substantiveFacts, validateDraft, validateWhyBasis, writePaperReading } from "../pipeline/lib/write.mjs";
 import { NEWS_DEPTH, NEWS_FLOOR, NEWS_MIN_EXPLAINING, NEWS_MIN_FACTS, SHORT_WORDS } from "../pipeline/lib/editorial.mjs";
-import { arabicEdition, bestPdf, editionKey, previousEdition, releaseDocument, releaseStory, reportExcerpts } from "../pipeline/lib/reports.mjs";
+import { arabicEdition, bestPdf, coveredBy, documentUrl, editionKey, previousEdition, releaseDocument, releaseStory, reportExcerpts } from "../pipeline/lib/reports.mjs";
 import { mergeNewsRefresh, serializeArticle } from "../pipeline/lib/article.mjs";
 import { cleanTags } from "../pipeline/lib/tags.mjs";
 import { countriesNamed, groundedRegions, unplacedActors } from "../pipeline/lib/regions.mjs";
@@ -111,6 +111,17 @@ const sources = [{ sourceName: "رويترز", title: "t", url: "https://example
     throw new Error(late.at(-1));
   } });
   check("…and untagged notes on the third and last try are kept", [late.length, lateKept?.notes?.facts.length], [2, 6]);
+  // The last try is chat()'s to say, not the answers' count (a review of 2026-10-31): a timeout and an unreadable answer
+  // first, then untagged notes on the third and last try, were asked again and the writer got no notes at all.
+  const timedOut = await deskNotes({ story: {}, sources, chatWith: async ({ validate }) => {
+    for (let attempt = 1; attempt <= 3; attempt += 1) {
+      if (attempt < 3) continue; // a timeout, then an answer that did not parse: validate() never runs
+      const data = { event: "e", reader_context: null, facts: facts() };
+      validate(data, { attempt, last: true });
+      return { data, model: "stand-in" };
+    }
+  } });
+  check("…and after two failed tries, untagged notes on the last are kept", timedOut?.notes?.facts.length, 6);
 }
 
 // Exercise the real checker response boundary; a nonempty array is not necessarily a completed check.
@@ -379,6 +390,11 @@ check(
   [[], [], ["spx", "us10y", "dxy"]],
 );
 check(
+  "a decision written with its vowel marks is a decision (a review of 2026-10-31)",
+  [macroMarketOf("المركزي المصري يُثبّت الفائدة عند 27.25%"), macroMarketOf("المركزي المصري يُخفّض الفائدة 200 نقطة")],
+  [["egx30", "usdegp"], ["egx30", "usdegp"]],
+);
+check(
   "an actor is placed by a whole word: «مشتركة» places no Turkish company, a Saudi city places a Saudi one",
   [unplacedActors({ title: "«أسيلسان» تؤسس شركة مشتركة لصناعة الرادارات", lede: "أعلنت «أسيلسان» التركية تأسيس شركة." }).length, unplacedActors({ title: "«معادن» توسّع مصهر الألمنيوم في ينبع", lede: "قالت «معادن» السعودية إنها توسّع." }).length],
   [1, 0],
@@ -391,6 +407,19 @@ check(
   const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">${entry("اقتصاد", "تاسي-يهبط", "لماذا هبط &quot;تاسي&quot;؟")}${entry("رياضة", "مباراة", "موعد المباراة")}</urlset>`;
   const items = await fetchFeed({ id: "t", url: `data:text/xml;charset=utf-8,${encodeURIComponent(xml)}`, pathFilter: "/node/\\d+/(اقتصاد|الأخبار)/" });
   check("a news sitemap is read, and its Arabic sections filtered", items.map((i) => i.title), ['لماذا هبط "تاسي"؟']);
+}
+
+// 2a'. A feed that answers but has stopped moving (2026-10-31: Sky News Arabia's business feed stood still for two days
+// after its desk moved to snabusiness.com) is told by its newest item of any age, never a future-dated one; a feed that
+// fails tells nothing.
+{
+  const item = (title, date) => `<item><title>${title}</title><link>https://www.example.com/${encodeURIComponent(title)}</link><pubDate>${new Date(date).toUTCString()}</pubDate></item>`;
+  const old = Date.now() - 4 * 86_400_000;
+  const rss = `<?xml version="1.0"?><rss version="2.0"><channel><title>x</title>${item("قديم", old - 86_400_000)}${item("الأحدث", old)}${item("موعد لاحق", Date.now() + 5 * 86_400_000)}</channel></rss>`;
+  const heard = [];
+  await fetchFeed({ id: "still", url: `data:text/xml;charset=utf-8,${encodeURIComponent(rss)}` }, { onRead: (info) => heard.push(info) });
+  await fetchFeed({ id: "down", url: "http://127.0.0.1:9/feed.xml" }, { onRead: (info) => heard.push(info) });
+  check("a feed tells its newest item of any age, never a future-dated one; a refused feed tells nothing", [heard.length, heard[0]?.newestAt?.slice(0, 10), heard[0]?.items], [1, new Date(old).toISOString().slice(0, 10), 3]);
 }
 
 // 2b. The last cut (2026-10-22): a sentence carrying a figure no source has, or a stitched second event, goes; the story stays.
@@ -567,6 +596,19 @@ if (spawnSync("git", ["--version"]).status === 0) {
     ],
     ["conflict", "confirmed"],
   );
+  // As production names them (the review of 2026-10-31): the copy keeps the Arabic name and the English one, the check
+  // names the source in English, and the page's list may number it differently. The same source is still the same.
+  const copyNamed = [{ name: "الشرق الأوسط", nameEn: "Asharq Al-Awsat", url: "https://aawsat.com/economy/1" }, { name: "ذا ناشيونال", nameEn: "The National", url: "https://www.thenationalnews.com/business/2" }];
+  const live = [{ n: 1, name: "The National", url: "https://www.thenationalnews.com/business/2" }, { n: 2, name: "Asharq Al-Awsat", url: "https://aawsat.com/economy/1" }];
+  check(
+    "the same source in another language or at another number is the same source; another source is a conflict",
+    [
+      settleChanged([against(2, "Asharq Al-Awsat", "وتبدأ قبل تطبيق التعريفة الجديدة.")], backed, ["وتبدأ قبل تطبيق التعريفة الجديدة."], copyNamed, live)[0].status,
+      settleChanged([against(1, "The National", "The support will take effect ahead of tariff changes.")], backed, ["The support will take effect ahead of tariff changes."], copyNamed, live)[0].status,
+      settleChanged([against(1, "Asharq Al-Awsat", "وتبدأ قبل تطبيق التعريفة الجديدة.")], backed, ["وتبدأ قبل تطبيق التعريفة الجديدة."], copyNamed)[0].status,
+    ],
+    ["confirmed", "conflict", "confirmed"],
+  );
 }
 
 // The mend keeps the revision's fixes (2026-10-30): gold's October loss of 3.8%, cut for a later price, came back into the
@@ -700,6 +742,10 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const englishFault = (body) => programmaticChecks({ ...withBox, body }, [{ text: "Brent 110, weekly gain 4.9%." }], { minWords: 0 }).issues.some((i) => i.startsWith("كلمات إنجليزية تُركت"));
   check("a parenthesized Latin proper name is identification, not English prose", englishFault("وقال النائب دون باير (Don Beyer) إن القرار لا يخدم مصالح بلاده."), false);
   check("an English common word in Arabic prose still needs translation", englishFault("وقال النائب دون باير إن outlook الاقتصاد تحسن."), true);
+  // The gas benchmark as the house style orders it written («عقود TTF الهولندية», style.mjs) is not untranslated
+  // (2026-10-31: its warning and the critic's «غير معرّب» helped reject the European gas story).
+  const ttf = programmaticChecks({ ...withBox, body: "وارتفعت عقود TTF الهولندية للغاز تسليم الشهر المقبل، كما صعد مؤشر JKM الآسيوي." }, [{ text: "Brent 110, weekly gain 4.9%. TTF and JKM rose." }], { minWords: 0 });
+  check("the gas benchmarks TTF and JKM are not called untranslated Latin", [...ttf.issues, ...ttf.warnings].some((m) => /TTF|JKM/.test(m)), false);
   // GRAVITY: a curiosity the photograph names and the story does not is refused in code.
   check("photos: a horse-drawn fuel cart under a central-bank story is refused", noveltyFault({ title: "CairoHorseDrawnFuelTransport.jpg", alt: "عربة وقود يجرها حصان في محطة بنزين بالقاهرة" }, { title: "برنت فوق 105 دولارات يعقّد حسابات المركزي المصري" }), "Horse");
   check("photos: an oil field's «nodding donkey» is a pumpjack, not an animal", noveltyFault({ title: "Oil pumpjack in the Permian Basin.jpg", categories: "Nodding donkeys in Texas" }, { title: "النفط يتراجع مع آمال مفاوضات هرمز" }), null);
@@ -852,6 +898,29 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const pages = ["Cover", "Executive summary\nGrowth in the region is projected at 2.1 percent in 2026 while Gulf output fell sharply in the second quarter of the year.", "In Germany, output is expected to grow by 0.4 percent in 2026, held back by weak industry and exports to China and the United States.\nIn Egypt, growth is projected at 4.6 percent in fiscal 2026, while Saudi Arabia's economy contracts by 3.0 percent as oil output falls."];
   const { summary, countries } = reportExcerpts(pages, { countryChars: 160 });
   check("the summary starts at the executive summary", summary.startsWith("[p.2] Executive summary"), true);
+  // 2026-10-31, the World Bank's Commodity Markets Outlook of October: its repository's download link is a script page,
+  // its summary heading comes out letter-spaced, and the news desk had told it already, naming the report in its body.
+  const spaced = reportExcerpts(["Cover", "", "Commodity Markets Outlook OCTOBER 2026 A World Bank Group Report", "© 2026 International Bank for Reconstruction and Development / The World Bank. Some rights reserved; this work is a product of the staff.", "E X E C U T I V E S U M M A RY C O M M O D I T Y M A R K E T S O U T L O O K\nEnergy prices are expected to rise 32 percent in 2026."]);
+  check("a letter-spaced summary heading is found, the copyright page left out", [spaced.summary.startsWith("[p.5] E X E C"), spaced.summary.includes("Some rights reserved")], [true, false]);
+  check(
+    "a repository's download link is read from its API; other addresses are left as they are",
+    [documentUrl("https://openknowledge.worldbank.org/bitstreams/b89c473c-d071-4aa4-9f4d-174281aaf0be/download"), documentUrl("https://www.imf.org/-/media/Files/Publications/WEO/2026/October/text.pdf"), documentUrl("https://example.com/ar/download")],
+    ["https://openknowledge.worldbank.org/server/api/core/bitstreams/b89c473c-d071-4aa4-9f4d-174281aaf0be/content", "https://www.imf.org/-/media/Files/Publications/WEO/2026/October/text.pdf", "https://example.com/ar/download"],
+  );
+  const cmo = { id: "wb-cmo", name: "آفاق أسواق السلع الأولية", nameEn: "Commodity Markets Outlook", publisher: "البنك الدولي" };
+  const told = { slug: "world-bank-raises-commodity-price-forecasts", kind: "news", publishedAt: "2026-10-29T01:16:55Z", title: "البنك الدولي يتوقع ارتفاع أسعار الطاقة 32% في 2026", subtitle: "", lede: "رفع البنك الدولي توقعاته لأسعار السلع الأولية.", body: "فالبنك يتوقع في تقريره «آفاق أسواق السلع الأولية» لشهر أكتوبر أن ترتفع الأسعار.", sourceUrls: ["https://www.reuters.com/x"] };
+  const at = Date.parse("2026-10-29T15:17:00Z");
+  const edition = { url: "https://openknowledge.worldbank.org/bitstreams/b89c473c-d071-4aa4-9f4d-174281aaf0be/download" };
+  check(
+    "a report the news desk told is not told again; a passing mention, a release's common name and an old story are not the edition",
+    [
+      coveredBy(cmo, edition, [told], { now: at })?.slug,
+      coveredBy(cmo, edition, [{ ...told, title: "أسعار النفط ترتفع مع تعطل الإمدادات", lede: "ارتفع خام برنت." }], { now: at }) ?? null,
+      coveredBy({ ...cmo, kind: "release", name: "التضخم في السعودية", publisher: "الهيئة العامة للإحصاء" }, edition, [{ ...told, title: "الهيئة العامة للإحصاء تنشر بيانات التجارة", body: "وكان التضخم في السعودية قد ارتفع." }], { now: at }) ?? null,
+      coveredBy(cmo, edition, [told], { now: at + 30 * 86_400_000 }) ?? null,
+    ],
+    ["world-bank-raises-commodity-price-forecasts", null, null, null],
+  );
   // Official releases (2026-10-19): a quarter is dated by its last month, and each edition reads its own month's PDF
   // from a page that lists every month's side by side.
   const q2 = editionKey("GDP and National Accounts Q2/2026");
@@ -1141,10 +1210,12 @@ if (spawnSync("git", ["--version"]).status === 0) {
     runs("إلى 17. وتقول"), runs("بين 3.75%-4% الشهر"), runs("عند 4.82 - 5.30 جنيه"), runs("(تقدير Kpler)"),
     runs("(10-year Treasury yield)"), runs("مؤشر S&P 500."), runs("شركة Apple Inc. أعلنت"), runs("عائد U.S. Treasury اليوم"),
     runs("العام المالي 2026/27 في 2026-09-19 تراجع −3.5%"), runs("ارتفع 5% - وهو أعلى"),
+    runs("شراكة Apple & غوغل"), runs("شركة Johnson & Johnson الأمريكية"), runs("فارق Brent - WTI اتسع"), runs("أرباح e& ترتفع"),
   ], [
     "إلى [17]. وتقول", "بين [3.75%-4%] الشهر", "عند [4.82 - 5.30] جنيه", "(تقدير [Kpler])",
     "[(10-year Treasury yield)]", "مؤشر [S&P 500].", "شركة [Apple Inc]. أعلنت", "عائد [U.S. Treasury] اليوم",
     "العام المالي [2026/27] في [2026-09-19] تراجع [−3.5%]", "ارتفع [5%] - وهو أعلى",
+    "شراكة [Apple] & غوغل", "شركة [Johnson & Johnson] الأمريكية", "فارق [Brent - WTI] اتسع", "أرباح [e&] ترتفع",
   ]);
   const patterns = (file) => [...readFileSync(file, "utf8").matchAll(/const (NUMBER_SRC|LATIN_SRC) = (String\.raw`[^`]+`)/g)].map((m) => m.slice(1).join("="));
   check("the headlines' isolation (bidi.ts) uses the article bodies' patterns", patterns("src/lib/bidi.ts"), patterns("src/lib/rehype-isolate-numbers.mjs"));
@@ -1178,12 +1249,21 @@ if (spawnSync("git", ["--version"]).status === 0) {
     "The key quote is here. Next one.",
     "ارتفعت الصادرات 5%. وقال الوزير إن الإنتاج سيزيد. وأضاف أن الأسعار مستقرة.",
   ]);
+  // Every quote before any neighbour (the review of 2026-10-31): fourteen quotes of about 2,000 characters on a page of
+  // forty sentences, and the neighbours of the early ones had filled the 4,000 characters before the last quotes.
+  const page = Array.from({ length: 40 }, (_, i) => `وذكر مكتب الصرف أن البند ${i + 1} من بيانات الشهر سجل ${1000 + i * 7} مليون درهم مقارنة مع ${2000 + i * 11} مليون درهم قبل عام وفق البيانات المؤقتة.`);
+  const pageQuotes = page.filter((_, i) => i % 3 === 1);
+  const kept = passagesOf(page.join(" "), pageQuotes, []);
+  check("every quoted sentence is kept before its neighbours", pageQuotes.filter((q) => !kept.includes(q)).length, 0);
   // (3) A minus typed after a box's figure is its sign; a spaced range is not touched.
   check("a trailing minus in a box value is the figure's sign", ["46%-", "46% -", "12 - 15%", "2025-2026"].map((v) => figureOnly(v)), ["−46%", "−46%", "12 - 15%", "2025-2026"]);
   // (4) One measure per chart: a company's revenue beside its net profit is two (SpaceX's results).
   // (5) The China factory explainer (the owner, 2026-10-31: "feels like this article is badly written"): a list of
   // questions and answers, a dek and a body built on what things are not, and Reuters' forecast in its glossary.
   const { styleIssues, negativeTurns } = await import("../pipeline/lib/style.mjs");
+  // «قام ب» and «لعب دور» from a word's start, their future and purpose forms included (a review of 2026-10-31).
+  const calque = (body) => styleIssues({ title: "عنوان", subtitle: "", lede: "", body, whyItMatters: "", keyFacts: [] }, { kind: "news" }).issues.some((i) => /سيقوم ب|لتقوم ب|سيلعب دور/.test(i));
+  check("«سيقوم بزيارة», «لتقوم بدور» and «سيلعب دوراً» are the calques; «الأرقام بعد» is not", [calque("وسيقوم بزيارة الرياض الأسبوع المقبل."), calque("وأُنشئت الهيئة لتقوم بدور الرقيب."), calque("وسيلعب دوراً في التمويل."), calque("وجاءت الأرقام بعد إعلان البيانات.")], [true, true, true, false]);
   const explainer = {
     title: "ماذا يعني تراجع مؤشر المصانع الصينية إلى 49.3 نقطة؟",
     subtitle: "القراءة تقيس انتشار التراجع بين المصانع، لا مقدار انكماش إنتاجها",
@@ -1193,7 +1273,7 @@ if (spawnSync("git", ["--version"]).status === 0) {
     keyFacts: [],
   };
   const flags = styleIssues(explainer, { kind: "explainer" }).issues;
-  const plain = styleIssues({ ...explainer, subtitle: "القراءة تقيس انتشار التراجع بين المصانع", body: "يأتي المؤشر من استبيان شهري.\n\n## عتبة 50 نقطة نقطة التوازن\n\nيقيس المؤشر الاتجاه.\n\n## لماذا تتقارب الكفتان؟\n\nلا يزال النمو عند 4.5%." }, { kind: "explainer" }).issues;
+  const plain = styleIssues({ ...explainer, subtitle: "القراءة تقيس انتشار التراجع بين المصانع", body: "يأتي المؤشر من استبيان شهري.\n\n## الرقم 50 يفصل بين التحسن والتراجع\n\nيقيس المؤشر الاتجاه.\n\n## لماذا تتقارب الكفتان؟\n\nلا يزال النمو عند 4.5%." }, { kind: "explainer" }).issues;
   check("an explainer of questions and answers, a contrasting dek and a body of «لا» turns are sent back; a plain one is not", [
     flags.some((i) => i.includes("كلها أسئلة")), flags.some((i) => i.includes("الوصف الفرعي يقول ما ليس")), flags.some((i) => i.includes("جمل تقول ما ليس")),
     plain.some((i) => /كلها أسئلة|يقول ما ليس|تقول ما ليس/.test(i)),

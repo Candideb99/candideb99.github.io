@@ -82,7 +82,8 @@ const MARKET_OF = [
 const NO_MARKET = placeWord("إمارات", "قطر", "كويت", "بحرين", "سلطنة عمان", "عماني", "مغرب", "أردن", "عراق", "لبنان", "لبناني", "تونس", "جزائر", "باكستان", "هند");
 /** The market of the place the headline names first; none when that place's markets are not quoted. */
 export function macroMarketOf(headline) {
-  const decision = RATE_MOVE.test(headline) && RATE_SETTER.test(headline);
+  // Read without its vowel marks: «يُثبّت الفائدة» and «يُخفّض» are decisions too (a review of 2026-10-31).
+  const decision = RATE_MOVE.test(String(headline ?? "").replace(/[ً-ٰٟ]/g, "")) && RATE_SETTER.test(headline);
   if (!(MACRO.test(headline) || decision) || FORECAST.test(headline)) return [];
   let first = null;
   for (const m of [...MARKET_OF, { place: NO_MARKET, ids: [] }]) {

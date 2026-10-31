@@ -42,10 +42,11 @@ import { ARTICLES_DIR, buildSlug, loadExistingArticles, mergeNewsRefresh, mergeR
 import { usage as llmUsage } from "./lib/llm.mjs";
 import { USER_AGENT, domainOf, fetchWithTimeout, fingerprint, hoursSince, isoNow, restoredFigures, sleep } from "./lib/util.mjs";
 import { pickDataChart } from "./lib/datacharts.mjs";
-import { latestEdition, loadRegistry, monthKey, pdfPages, readEdition, releaseStory, reportStory } from "./lib/reports.mjs";
+import { coveredBy, latestEdition, loadRegistry, monthKey, pdfPages, readEdition, releaseStory, reportStory } from "./lib/reports.mjs";
 
 const root = process.cwd();
 const STATE_PATH = path.join(root, "pipeline", "state", "seen.json");
+const FEEDS_PATH = path.join(root, "pipeline", "state", "feeds.json");
 const RUNS_DIR = path.join(root, "pipeline", "runs");
 
 const args = process.argv.slice(2);
@@ -170,10 +171,11 @@ async function gatherCandidates(sources, state, existing) {
   const enabled = sources.filter((s) => !s.disabled && (!ONLY_SOURCES || ONLY_SOURCES.includes(s.id)));
   const queue = [...enabled];
   const all = [];
+  const heard = {};
   async function worker() {
     while (queue.length) {
       const source = queue.shift();
-      const items = await fetchFeed(source, { log });
+      const items = await fetchFeed(source, { log, onRead: ({ newestAt }) => (heard[source.id] = { readAt: isoNow(), newestAt }) });
       for (const item of items) {
         all.push({
           ...item,
@@ -189,6 +191,13 @@ async function gatherCandidates(sources, state, existing) {
     }
   }
   await Promise.all(Array.from({ length: 6 }, worker));
+  if (!DRY_RUN && Object.keys(heard).length) {
+    // Each feed's last answer and its newest item of any age, for the morning round's list of feeds that have stopped
+    // moving (a feed that still answers gives only "0 fresh items"; the merge driver keeps both writers' entries).
+    const record = await readJson(FEEDS_PATH, { version: 1, feeds: {} });
+    record.feeds = { ...record.feeds, ...heard };
+    await writeJsonAtomic(FEEDS_PATH, record).catch((error) => log(`feeds record not saved: ${String(error.message).slice(0, 120)}`));
+  }
 
   const usedUrls = new Set(existing.flatMap((a) => a.sourceUrls).map((u) => fingerprint(u)));
   const seenTitles = new Set();
@@ -1656,10 +1665,9 @@ function runReports() {
         log(`report ${r.id}: «${edition.label}» failed twice; left`);
         continue;
       }
-      // The same edition told already, by the news file or by an earlier run: once is enough.
-      // A monthly release's name recurs every month: only a story of the last ten days can be this edition's.
-      const window = r.kind === "release" ? 24 * 10 : 24 * 21;
-      const covered = existing.find((a) => hoursSince(a.publishedAt) < window &&((a.sourceUrls ?? []).includes(edition.url) || String(a.title).includes(r.name)));
+      // The same edition told already, by the news file or by an earlier run: once is enough (`coveredBy()`; a monthly
+      // release's name recurs every month, so only a story of its last ten days can be this edition's).
+      const covered = coveredBy(r, edition, existing);
       if (covered) {
         mark(`covered by ${covered.slug}`);
         log(`report ${r.id}: «${edition.label}» already told in ${covered.slug}`);

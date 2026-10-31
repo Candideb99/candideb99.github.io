@@ -730,7 +730,9 @@ export async function chat({ role, system, user, images = [], json = true, valid
       let data = result.content;
       try {
         if (json) data = parseJsonLoose(result.content);
-        if (validate) validate(data);
+        // The attempt, so a validator can stop asking on the last one (the desk notes' job tags: counted by answers, a
+        // timeout and an unreadable answer first left the third try asking again and the writer with no notes).
+        if (validate) validate(data, { attempt, last: attempt === ATTEMPTS });
       } catch (error) {
         refusal = String(error.message).split("\n")[0].slice(0, 300);
         throw error;

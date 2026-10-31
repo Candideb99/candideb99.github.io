@@ -20,7 +20,9 @@ const NUMBER_SRC = String.raw`(?:(?<=^|[\s(\[«"'،])[+\-−])?\d(?:[\d.,]*\d)?(
 // «&» joins a run («S&P 500», «AT&T»): split at it, «S» stood alone and «P» was left to the Arabic line, which printed
 // «500 P&S» on six pages (2026-10-31).
 // Digits before a word join it, hyphened or not («3D», «10-year»): «(10-year Treasury yield)» had split at the hyphen.
-const LATIN_SRC = String.raw`(?<![&\p{Script=Latin}\p{M}0-9])\(?(?:\d+-?(?=\p{Script=Latin}))?\p{Script=Latin}[\p{Script=Latin}\p{M}0-9'’.\-&]*(?:\s+[\p{Script=Latin}\p{M}0-9'’.\-&]+)*\)?`;
+// A spaced «&» or dash joins a run only between two Latin words («Johnson & Johnson», «Brent - WTI»); before an Arabic
+// word it belongs to the Arabic line, or «Apple & غوغل» drew its «&» on the wrong side (a review of 2026-10-31).
+const LATIN_SRC = String.raw`(?<![&\p{Script=Latin}\p{M}0-9])\(?(?:\d+-?(?=\p{Script=Latin}))?\p{Script=Latin}[\p{Script=Latin}\p{M}0-9'’.\-&]*(?:\s+(?:[&\-–]\s+)?[\p{Script=Latin}\p{M}0-9][\p{Script=Latin}\p{M}0-9'’.\-&]*)*\)?`;
 const RUN = new RegExp(`(${LATIN_SRC})|(${NUMBER_SRC})`, "gu");
 
 /**

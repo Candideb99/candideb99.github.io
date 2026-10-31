@@ -1,6 +1,6 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import { PLACE_TAGS } from "./regions";
-import { canonicalTag, isFileTag } from "./topics";
+import { canonicalTag, isFileTag, subjectOfTag } from "./topics";
 
 export type Article = CollectionEntry<"articles">;
 
@@ -154,10 +154,17 @@ export function onTheSameTopic(article: Article, all: Article[], { exclude = new
   // Lagarde's departure to Egypt's rate hold and the Houthis' strikes to China's fuel stocks, and 412 of the site's 1,539
   // related links rested on such a tag alone (the audit of 2026-10-31). It counts only beside a second shared topic. And
   // two shared topics rank before one rare one.
+  // Two shared topics are two subjects, not two names of one: «النفط» and «خام برنت» are both the oil page's, and they
+  // tied a Brent story to Aramco's work-from-home notice (56 of 1,273 links, a review of 2026-10-31).
+  const subjects = (shared: string[]) =>
+    new Set(shared.map((t) => {
+      const s = subjectOfTag(t);
+      return s ? `${s.section}/${s.id}` : canonicalTag(t);
+    })).size;
   return all
     .filter((a) => a.id !== article.id && !exclude.has(a.id) && hoursOld(a, now) < days * 24)
     .map((a) => ({ a, shared: a.data.tags.filter((t) => topics.has(t)) }))
-    .filter(({ shared }) => shared.some((t) => count(t) <= narrow && isFileTag(t)) || shared.length >= 2)
+    .filter(({ shared }) => shared.some((t) => count(t) <= narrow && isFileTag(t)) || subjects(shared) >= 2)
     .map(({ a, shared }) => ({ a, score: shared.length + shared.reduce((sum, t) => sum + 1 / Math.max(1, count(t)), 0) }))
     .sort((x, y) => y.score - x.score)
     .slice(0, n)

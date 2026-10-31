@@ -87,6 +87,15 @@ const figureScore = (value: string) => {
   if (!/\d/.test(v) || /^(19|20)\d{2}$/.test(v) || v.length > 30) return -1;
   return (/[%٪]/.test(v) ? 2 : 0) + (/(مليار|مليون|ألف|دولار|ريال|يورو|جنيه|دينار|درهم|يوان|طن|برميل)/.test(v) ? 2 : 0) + (v.length <= 18 ? 1 : 0);
 };
+const labelWords = (label: string | undefined) => new Set(String(label ?? "").split(/\s+/).filter((w) => w.length >= 3));
+const sameFigure = (a: { value: string; label?: string }, b: { value: string; label?: string }) => {
+  if (a.value.trim() !== b.value.trim()) return false;
+  const x = labelWords(a.label);
+  const y = labelWords(b.label);
+  let shared = 0;
+  for (const w of x) if (y.has(w)) shared++;
+  return !x.size || !y.size || shared * 2 >= Math.min(x.size, y.size);
+};
 const figures = unplaced(articles)
   .filter((a) => a.data.kind !== "explainer" && citable(a))
   .slice(0, 8)
@@ -98,7 +107,9 @@ const figures = unplaced(articles)
     return best ? [best] : [];
   })
   // One figure once: an analysis and its own news story gave «20% عائد الإيداع لليلة واحدة بعد القرار» twice (2026-10-30).
-  .filter((f, i, all) => all.findIndex((g) => g.value.trim() === f.value.trim()) === i)
+  // A value two different facts share is two figures («12%» was Pakistan's policy rate in one story and the real's fall in
+  // another; a review of 2026-10-31): the same value is the same fact only when the labels share half their words.
+  .filter((f, i, all) => all.findIndex((g) => sameFigure(g, f)) === i)
   .slice(0, 3);
 place(figures.map((f) => f.article));
 // ملفات نتابعها runs as a row under the section bar: what the paper is following this week, subjects and running

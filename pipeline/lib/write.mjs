@@ -237,8 +237,10 @@ Return: {"event":"<one Arabic sentence naming the one event>","reader_context":{
       temperature: 0.2,
       maxTokens: 8000,
       log,
-      validate: (d) => {
+      validate: (d, tries) => {
         answers += 1;
+        // The last try is chat()'s to say; a scripted stand-in that does not say counts the answers.
+        const lastTry = tries?.last ?? answers >= 3;
         if (d && typeof d === "object") {
           d.facts = d.facts ?? d.key_facts ?? d.desk_notes ?? d.atomic_facts ?? [];
         }
@@ -250,7 +252,7 @@ Return: {"event":"<one Arabic sentence naming the one event>","reader_context":{
         const untagged = d.facts.filter((f) => !FACT_JOBS.has(f?.job)).length;
         // Asked only while a try remains (llm.mjs gives three): on the last, the notes are kept as they are.
         if (untagged > d.facts.length / 4) {
-          if (!tagsAsked && answers < 3) {
+          if (!tagsAsked && !lastTry) {
             tagsAsked = true;
             throw new Error(`${untagged} of ${d.facts.length} facts carry no job; tag every fact with one of ${[...FACT_JOBS].join("|")}`);
           }
@@ -615,7 +617,7 @@ const EXPLAINER_SCHEMA = `{
   "subtitle": "Arabic dek: the answer, in one sentence (max 160 chars), as a statement of its own, never a reply to the headline: no opening «لا،»، «نعم،»، «الجواب:» (2026-10-30: «لا، فالرقم الأمريكي معدل سنوي…» under a question read as a chat answer; write «الرقم الأمريكي معدل سنوي يعادل نحو 0.8% في الربع…»), and never the lede's own sentence; never what the piece does («يشرح…»، «نوضح…»), never a list of factors; what the answer IS, never a contrast with what it is not («…، لا مقدار…»)",
   "slug": "english-kebab-case-slug",
   "lede": "2-3 sentences, under 60 words: the fact from the stories that raised the question, with its figure and its day or date as the story gives them, then the answer in plain words; never a definition («X هو…»، «يُقصد بـ…»، «يطلق الاقتصاديون على…»)",
-  "body": "300-500 words in Markdown after the lede: the answer developed as one line of reasoning in three or four steps, deeper into the same question (how the thing works, why the figure reads as it does, what would change the answer), carried by the stories' real figures, each paragraph following from the one before. At most three '## ' subheads, each saying what its section shows as a statement («عتبة 50 نقطة نقطة التوازن»); at most ONE of them a question: every subhead a question turns the piece into a list of questions and answers, which all 32 explainers of October had become (the owner, 2026-10-31). A short piece needs two subheads or none. No label subheads (تعريف، مثال توضيحي، أخطاء شائعة، ما يجب متابعته), no closing list of indicators, no recap. No bullet lists.",
+  "body": "300-500 words in Markdown after the lede: the answer developed as one line of reasoning in three or four steps, deeper into the same question (how the thing works, why the figure reads as it does, what would change the answer), carried by the stories' real figures, each paragraph following from the one before. At most three '## ' subheads. A subhead is a short sentence the reader understands BEFORE he reads its section: a subject and its verb, in words he already has («السوق تحسب موعد إعادة البراميل»، «سعر الشحن صنع قفزة البحري»); never nouns stacked without a verb that he has to decode, and never a thing the section is there to introduce (survey «answers» named before the survey has been told). The owner, 2026-10-31, on «عتبة 50 نقطة توازن بين الإجابات», copied from an example this schema itself gave: 'weird and confusing'. At most ONE subhead a question: every subhead a question turns the piece into a list of questions and answers, which all 32 explainers of October had become (the owner, 2026-10-31). A short piece needs two subheads or none. No label subheads (تعريف، مثال توضيحي، أخطاء شائعة، ما يجب متابعته), no closing list of indicators, no recap. No bullet lists.",
   "key_facts": [{"label": "a term the piece uses", "value": "its meaning in one short line, never a figure, a forecast or a fact of the news"}],
   "why_it_matters": "One Arabic paragraph (40-80 words): what the answer changes for the reader's money, prices or country, or for how he reads the next news of this kind, from the stories' facts; not a summary of the piece; never address the reader, never open with «يعكس/يمثل/يُعدّ»",
   "tags": ["3-5 Arabic tags"],

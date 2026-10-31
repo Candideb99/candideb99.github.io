@@ -137,11 +137,23 @@ export function arabicEdition(edition) {
 }
 
 /**
+ * A DSpace repository's "download" link (the World Bank's Open Knowledge Repository: …/bitstreams/<uuid>/download) is a
+ * script page that fetches the file in the browser, 565 KB of HTML with no text for our reader, so the October 2026
+ * Commodity Markets Outlook was read as "0 chars, no PDF" twice and left (2026-10-29/30). The repository's own API
+ * serves the same file at …/server/api/core/bitstreams/<uuid>/content, which its robots.txt allows.
+ */
+export function documentUrl(url) {
+  const m = String(url ?? "").match(/^(https?:\/\/[^/]+)\/bitstreams\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\/download\/?(?:[?#].*)?$/i);
+  return m ? `${m[1]}/server/api/core/bitstreams/${m[2]}/content` : url;
+}
+
+/**
  * Text of a report's document, one string per page; null when it cannot be read. A PDF is read with unpdf; a text or
  * Markdown version (the IMF offers «Full Report (Markdown version)», 2026-10-18) is read as it is, in page-sized parts.
  * A publisher that asks us to slow down (HTTP 429: the IMF did after a few requests) is asked once more after a pause.
  */
 export async function pdfPages(url, log) {
+  url = documentUrl(url);
   try {
     if (!(await allowedByRobots(url))) return null;
     const get = () => fetchWithTimeout(url, { headers: { "user-agent": USER_AGENT, accept: "application/pdf,text/markdown,text/plain;q=0.9,*/*;q=0.5" } }, 60000);
@@ -192,7 +204,10 @@ const MAJOR = /United States|\bU\.?S\.?\b|China|Germany|France|United Kingdom|\b
  */
 export function reportExcerpts(pages, { summaryChars = 7000, countryChars = 9000 } = {}) {
   const clean = pages.map((p) => p.replace(/\n(?=[a-z,;])/g, " "));
-  const summaryAt = clean.findIndex((p, i) => i > 0 && /executive summary|key findings|main findings|overview|highlights|résumé|zusammenfassung|ملخص/i.test(p.slice(0, 600)));
+  // A heading may come out of the PDF letter-spaced («E X E C U T I V E S U M M A RY», the World Bank's Commodity Markets
+  // Outlook of October 2026, whose summary was then its copyright page and acknowledgments): it is also looked for with
+  // the spaces taken out.
+  const summaryAt = clean.findIndex((p, i) => i > 0 && (/executive summary|key findings|main findings|overview|highlights|résumé|zusammenfassung|ملخص/i.test(p.slice(0, 600)) || /executivesummary|keyfindings|mainfindings/i.test(p.slice(0, 600).replace(/\s+/g, ""))));
   const start = summaryAt >= 0 ? summaryAt : Math.min(2, clean.length - 1);
   let summary = "";
   for (let i = start; i < clean.length && summary.length < summaryChars; i += 1) {
@@ -324,9 +339,9 @@ export async function readEdition(report, edition, { log = () => {} } = {}) {
   const sources = [];
   const name = report.publisher;
   const nameEn = report.publisherEn;
-  const isPdf = /\.pdf(?:$|[?#])/i.test(edition.url);
+  const isPdf = /\.pdf(?:$|[?#])/i.test(edition.url) || documentUrl(edition.url) !== edition.url;
   let pageText = "";
-  let pdfUrl = isPdf ? edition.url : null;
+  let pdfUrl = isPdf ? documentUrl(edition.url) : null;
   let release = null;
   if (!isPdf) {
     const page = await extractArticle(edition.url, { maxChars: 7000, log });
@@ -413,6 +428,28 @@ export function releaseStory(report, edition) {
     format: "short",
     angle: `AN OFFICIAL DATA RELEASE: ${report.publisherEn}'s ${report.nameEn} for ${edition.label}, read from the release itself, a primary source. ${report.lead ?? "Lead with the release's headline figure and its change from the previous period, as the release states them."} The previous period's figure comes from the previous release supplied beside it: say plainly whether the figure rose, fell or held. Then the two or three components that drove it most, with their own figures. Leave out the minor components, the full list of categories and the methodology: a reader wants the figure, its direction and its cause. Every figure as the release states it, with its period and unit, attributed to the authority («بحسب الهيئة العامة للإحصاء»).`,
   };
+}
+
+/**
+ * The published story that has already told this edition, or null: one whose sources include the edition's address or
+ * whose headline carries the report's name; and, for a report (never a monthly release, whose names are common phrases
+ * such as «التضخم في السعودية»), a news story whose headline or lede names the publisher and whose text names the report.
+ * The news desk told the World Bank's October 2026 Commodity Markets Outlook on 29 October from the wires («البنك
+ * الدولي يتوقع ارتفاع أسعار الطاقة 32% في 2026», the report named in its body only); the reports desk, which looked at
+ * headlines alone, went on to read the same edition that afternoon and the next, and would have told it twice had its
+ * PDF been readable.
+ */
+export function coveredBy(report, edition, existing, { now = Date.now() } = {}) {
+  const windowH = report.kind === "release" ? 24 * 10 : 24 * 21;
+  const recent = existing.filter((a) => (now - Date.parse(a.publishedAt)) / 36e5 < windowH);
+  const told = recent.find((a) => (a.sourceUrls ?? []).includes(edition.url) || String(a.title).includes(report.name));
+  if (told || report.kind === "release") return told ?? null;
+  // «منظمة الأغذية والزراعة (فاو)» is named either way.
+  const publishers = [String(report.publisher ?? "").replace(/\s*\([^)]*\)/g, "").trim(), ...[...String(report.publisher ?? "").matchAll(/\(([^)]+)\)/g)].map((m) => m[1].trim())].filter(Boolean);
+  const names = [report.name, report.nameEn].filter(Boolean);
+  return recent.find((a) => (a.kind ?? "news") === "news"
+    && publishers.some((p) => `${a.title}\n${a.lede}`.includes(p))
+    && [a.subtitle, a.lede, a.body].some((t) => names.some((n) => String(t ?? "").includes(n)))) ?? null;
 }
 
 /** The editor's brief for a report story: the Arab world first, all of it, then the major economies the report covers. */

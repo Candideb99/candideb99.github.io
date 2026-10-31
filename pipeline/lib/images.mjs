@@ -650,16 +650,29 @@ const TREASURY_WORDS = [
   /(?:^|[^\p{L}])[وفبل]?(?:لل|ال)?(?:نفقات|إنفاق)\s+(?:ال)?(?:عامة|عام|حكومي|حكومية)(?![\p{L}])/u,
   // The deficit as the state's own (the audit of 31 October: «العجز المالي» was not read); a trade or current-account
   // deficit is not the state's accounts.
-  /(?:^|[^\p{L}])[وفبل]?(?:لل|ال)?عجز(?:ها|ه)?\s+(?:ال)?(?:مالي|حكومي)(?![\p{L}])/u,
+  /(?:^|[^\p{L}])[وفبل]?(?:لل|ال)?عجز(?:ها|ه|اً|ا)?\s+(?:ال)?(?:مالي|حكومي)(?:اً|ا)?(?![\p{L}])/u,
   /(?:^|[^\p{L}])[وفبل]?(?:لل|ال)عجز\s+(?:\S+\s+)?سقف/u,
 ];
 /** A rating agency's verdict on a state's debt: an agency's rating of a country the headline names (not a company's). */
 const RATING = /(?:موديز|فيتش|ستاندرد آند بورز|إس آند بي|S&P)[\s\S]*تصنيف|تصنيف(?:ها|ه)?\s+(?:ال)?(?:سيادي|ائتماني\s+السيادي)/u;
-const HOUSEHOLD_COST = /دعم|أسعار|سعر|القيمة المضافة|رسوم|أجور|رواتب|معاشات|تعرف?ة|تعريفة/u;
+/**
+ * What households pay, as whole words of the headline's main clause (a review of 2026-10-31: read as parts of words and
+ * anywhere, «بدعم النمو» in Britain's budget story, «مرسوم الميزانية» and «… مع تراجع أسعار النفط» after a deficit
+ * all read as a household cost, and the market photographs came back): a subsidy, consumer prices, VAT, fees, wages,
+ * pensions, tariffs; never support for growth, nor the price of oil, gold, money or shares.
+ */
+const HOUSEHOLD_COST = /(?:^|[^\p{L}])(?:[وفل]?(?:ال|لل)?دعم(?!\s+(?:ال)?(?:نمو|اقتصاد|شركات|قطاع|صادرات|استثمار))|[وفبل]?(?:ال|لل)?(?:أسعار|سعر)(?!\s+(?:ال)?(?:نفط|خام|برنت|فائدة|صرف|ذهب|أسهم|سهم|سندات|دولار))|[وفبل]?(?:ال|لل)?(?:القيمة المضافة|قيمة مضافة|رسوم|أجور|رواتب|معاشات|تعرفة|تعريفة))(?![\p{L}])/u;
+const CAUSE_AT = /(?:^|\s)(?:مع|بعد|بعدما|بسبب|وسط|إثر|عقب|جراء|جرّاء|على خلفية|في ظل|رغم)\s/u;
+/** The words after «تصنيف»: a sovereign rating names a country there, a company's a company («تصنيف «أرامكو» السعودية»). */
+const ratedIsState = (headline) => {
+  const after = headline.split(/تصنيف(?:ها|ه)?/u).slice(1).join(" ").trim().split(/\s+/).slice(0, 3).join(" ");
+  return countriesNamed(after).size > 0 && !/[«"“]|شركة|بنك|البنك|مصرف|المصرف/u.test(after);
+};
 export const treasuryStory = (draft) => {
   const headline = String(draft?.title ?? "");
-  if (HOUSEHOLD_COST.test(headline)) return false;
-  return TREASURY_WORDS.some((re) => re.test(headline)) || (RATING.test(headline) && (countriesNamed(headline).size > 0 || /السيادي/.test(headline)));
+  const at = headline.search(CAUSE_AT);
+  if (HOUSEHOLD_COST.test(at < 0 ? headline : headline.slice(0, at))) return false;
+  return TREASURY_WORDS.some((re) => re.test(headline)) || (RATING.test(headline) && (/السيادي/.test(headline) || ratedIsState(headline)));
 };
 /** A market, its stalls, vendors or shoppers in a file's record («Markets in Cairo»); a stock or bond market is not one. */
 const MARKET_SCENE = /(?<!\b(?:stock|financial|capital|money|bond|equity|debt|oil|gas|energy|commodity|commodities|labou?r|housing|property|emerging|frontier|single|black)\s)\b(?:markets?|marketplaces?)\b|\b(?:souqs?|souks?|suqs?|bazaa?rs?|shoppers?|shopping|vendors?|hawkers?|stalls?|grocer(?:y|ies)|supermarkets?)\b/i;
@@ -2353,8 +2366,9 @@ async function neutralScene({ draft, story, log, exclude, queries, place, fronts
  * 2026-10-22 (frontOfBuilding()).
  */
 // Pakistan's «State Bank» was not one (2026-10-31: its 2017 photograph was refused under its own rate rise, and the story
-// ran without a photo); nor were Bank Indonesia, Bank Negara or a «Banco Central».
-const CENTRAL_BANK = /\b(?:central bank|reserve bank|federal reserve|monetary (?:authority|agency)|bundesbank|bank of (?:england|japan|canada|korea|israel|russia|thailand|mexico|italy|france|spain|ghana|jamaica|uganda|tanzania|zambia|botswana|mauritius)|people'?s bank of china|swiss national bank|riksbank|norges bank|banque centrale|bank al-maghrib|banque du liban|state bank of (?:pakistan|vietnam)|bank indonesia|bank negara|banco central|banca d'italia|banco de (?:españa|portugal|mexico|méxico)|national bank of (?:egypt|poland|ukraine|kazakhstan|serbia|georgia|belgium|romania|hungary|denmark|slovakia|ethiopia|rwanda)|danmarks nationalbank|de nederlandsche bank|sama\b|saudi arabian monetary)\b/i;
+// ran without a photo); nor were Bank Indonesia, Bank Negara or a «Banco Central». The National Bank of Egypt is a
+// commercial bank (البنك الأهلي المصري), and Dubai's Sama Tower is no SAMA (a review of 2026-10-31: both passed).
+const CENTRAL_BANK = /\b(?:central bank|reserve bank|federal reserve|monetary (?:authority|agency)|bundesbank|bank of (?:england|japan|canada|korea|israel|russia|thailand|mexico|italy|france|spain|ghana|jamaica|uganda|tanzania|zambia|botswana|mauritius)|people'?s bank of china|swiss national bank|riksbank|norges bank|banque centrale|bank al-maghrib|banque du liban|state bank of (?:pakistan|vietnam)|bank indonesia|bank negara|banco central|banca d'italia|banco de (?:españa|portugal|mexico|méxico)|national bank of (?:poland|ukraine|kazakhstan|serbia|georgia|belgium|romania|hungary|denmark|slovakia|ethiopia|rwanda)|danmarks nationalbank|de nederlandsche bank|sama\b(?!\s+(?:tower|towers|hotel|beach|mall|residences?)\b)|saudi arabian monetary)\b/i;
 /** A headline stating a decision on rates or a currency («يثبّت الفائدة»، «يُبقي سعر الأساس»، «يحرر الجنيه»). */
 export const RATE_DECISION = /(?:^|[^\p{L}])[وف]?[يت](?:ثبّ?ت|ُ?بقي|رفع|خفّ?ض|قرّ?ر|حرّ?ر|عوّ?م)(?![\p{L}])\s+(?:(?!توقعات|رهانات)\S+\s+){0,3}?(?:الفائدة|أسعار الفائدة|سعر الفائدة|سعر الأساس|سعر الصرف|الجنيه|العملة|الليرة|الروبية|الريال|الدينار)(?![\p{L}])/u;
 async function lastResort({ draft, story, log, exclude, known = [], side = [] }) {
@@ -2388,7 +2402,8 @@ Return JSON: {"scene": "<search or null>", "country": "<name or null>", "institu
     }
     // And only under its own decision as the headline states it: two regional Fed presidents calling for more rises ran
     // the Eccles Building's front as "the last-resort exception" (2026-10-30, the audit of 31 October).
-    if (institution && !RATE_DECISION.test(draft.title ?? "")) {
+    // Read without its vowel marks: «يُثبّت الفائدة» and «يُخفّض» are decisions too (a review of 2026-10-31).
+    if (institution && !RATE_DECISION.test(String(draft.title ?? "").replace(/[ً-ٰٟ]/g, ""))) {
       log(`image: last resort: the headline is not ${institution}'s own decision on rates or its currency, so its building is not searched`);
       institution = null;
     }

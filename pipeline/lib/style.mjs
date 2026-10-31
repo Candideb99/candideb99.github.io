@@ -64,9 +64,10 @@ export const BANNED = [
   // for "before" («لم تبلغه من قبل»), which the desk cannot "fix", so it once cost a whole analysis (2026-10-18).
   { re: /من قِ?بَ?لِ?(?=\s+(?!(?:أن|ذلك|هذا|هذه)(?![؀-ۿ]))[؀-ۿ«])/g, fix: "اجعل الفاعل فاعلاً: «رفع البنك» لا «رُفع من قبل البنك»", hard: true },
   // From a word's start: «الأرقام بعد» is no «قام ب», and the matcher that read it as one threw away a mend that had put
-  // right both faults its critic named (2PointZero, 2026-10-30; the audit of 31 October).
-  { re: /(?<![؀-ۿ])(?:و|ف)?(?:يقوم|تقوم|قام|قامت|يقومون) ب/g, fix: "الفعل نفسه («زار» لا «قام بزيارة»)", hard: true },
-  { re: /(?<![؀-ۿ])(?:و|ف)?(?:يلعب|تلعب|لعب|لعبت) دور/g, fix: "«يؤدي دوراً»", hard: true },
+  // right both faults its critic named (2PointZero, 2026-10-30; the audit of 31 October). The future and purpose forms
+  // stay caught («سيقوم ب», «لتقوم بدور», «سيلعب دوراً»: a review of 2026-10-31 found the anchor had let them through).
+  { re: /(?<![؀-ۿ])(?:و|ف)?(?:س|ل)?(?:يقوم|تقوم|قام|قامت|يقومون) ب/g, fix: "الفعل نفسه («زار» لا «قام بزيارة»)", hard: true },
+  { re: /(?<![؀-ۿ])(?:و|ف)?(?:س|ل)?(?:يلعب|تلعب|لعب|لعبت|يلعبون) دور/g, fix: "«يؤدي دوراً»", hard: true },
   // A close is recorded, never reached: "falls 2.3% to its lowest close since 2021" word for word (the owner, 2026-10-23,
   // on «الأسهم السعودية تهبط 2.3% إلى أدنى إغلاق منذ 2021»: "reading this headline is not smooth"). The story's own
   // sources wrote «لتسجل أدنى إغلاق» (الشرق الأوسط) and «يسجل أدنى مستوى» (اندبندنت عربية); no other story carried it.
@@ -538,7 +539,7 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
     // A list of questions and answers (the owner, 2026-10-31, on the China factory explainer: "feels like this article is
     // badly written"): every subhead a question, in 32 of the 33 explainers published, as the schema had asked.
     const questions = [...body.matchAll(/^##\s+(.+)$/gm)].filter((m) => /[؟?]\s*$/.test(m[1])).length;
-    if (questions >= 2) issues.push(`${questions} عناوين فرعية كلها أسئلة، فصار الشرح قائمة أسئلة وأجوبة؛ العنوان الفرعي يقول ما يُظهره القسم («عتبة 50 نقطة نقطة التوازن»)، وسؤال واحد على الأكثر.`);
+    if (questions >= 2) issues.push(`${questions} عناوين فرعية كلها أسئلة، فصار الشرح قائمة أسئلة وأجوبة؛ العنوان الفرعي جملة قصيرة بفعلها يفهمها القارئ قبل أن يقرأ القسم («السوق تحسب موعد إعادة البراميل»)، وسؤال واحد على الأكثر.`);
     // The dek says what the answer is, never what it is not («القراءة تقيس انتشار التراجع بين المصانع، لا مقدار انكماش
     // إنتاجها», the same explainer).
     const dekTurn = negativeTurns(dek);

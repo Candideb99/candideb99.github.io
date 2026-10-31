@@ -114,9 +114,12 @@ function normalizeItems(doc) {
 
 /**
  * Fetches and normalizes one feed. Returns [] on any failure (the run must never
- * die because a single publisher is down).
+ * die because a single publisher is down). `onRead` hears, from a feed that answered and parsed, the date of its
+ * newest item of any age (null when none is dated): a feed that answers but has stopped moving gives "0 fresh items"
+ * run after run and nothing else, which is how Sky News Arabia's business feed sat frozen for two days after its desk
+ * moved to snabusiness.com on 2026-10-29, and cnbc-finance for ten (scripts/editor-precheck.mjs reads the record).
  */
-export async function fetchFeed(source, { maxAgeHours = 36, log = () => {} } = {}) {
+export async function fetchFeed(source, { maxAgeHours = 36, log = () => {}, onRead = null } = {}) {
   try {
     // `hourKey`: a publisher whose own cache stopped refreshing (Independent Arabia, 2026-10-22: Cloudflare served a
     // feed 65 hours old to every reader, browsers included) is asked once an hour under a new key, which its cache has
@@ -147,7 +150,7 @@ export async function fetchFeed(source, { maxAgeHours = 36, log = () => {} } = {
     const pathFilter = source.pathFilter ? new RegExp(source.pathFilter, "i") : null;
     const excludePath = source.excludePath ? new RegExp(source.excludePath, "i") : null;
     const limitHours = source.maxAgeHours ?? maxAgeHours;
-    const items = normalizeItems(doc)
+    const kept = normalizeItems(doc)
       .filter((item) => item.title && item.url && /^https?:\/\//i.test(item.url))
       .map((item) => ({
         ...item,
@@ -160,10 +163,12 @@ export async function fetchFeed(source, { maxAgeHours = 36, log = () => {} } = {
       .filter((item) => !pathFilter || pathFilter.test(item.url) || pathFilter.test(decoded(item.url)) || pathFilter.test(item.categories.join(" ")))
       .filter((item) => !excludePath || !(excludePath.test(item.url) || excludePath.test(decoded(item.url))))
       // A PDF cannot be read as a page; a working-paper series that links only to PDFs sets `allowPdf` and is read from its abstract.
-      .filter((item) => source.allowPdf || !item.url.toLowerCase().endsWith(".pdf"))
-      // An undated item has no age and cannot be "fresh": it is dropped (hoursSince(null) is Infinity).
-      .filter((item) => hoursSince(item.publishedAt) <= limitHours)
-      .slice(0, source.maxItems ?? 40);
+      .filter((item) => source.allowPdf || !item.url.toLowerCase().endsWith(".pdf"));
+    // A date days ahead is a typo or a scheduled post, never "new"; a few hours ahead is local time labelled GMT.
+    const dated = kept.map((item) => Date.parse(item.publishedAt ?? "")).filter((t) => Number.isFinite(t) && t <= Date.now() + 6 * 3_600_000);
+    onRead?.({ newestAt: dated.length ? new Date(Math.max(...dated)).toISOString() : null, items: kept.length });
+    // An undated item has no age and cannot be "fresh": it is dropped (hoursSince(null) is Infinity).
+    const items = kept.filter((item) => hoursSince(item.publishedAt) <= limitHours).slice(0, source.maxItems ?? 40);
     log(`feed ${source.id}: ${items.length} fresh items`);
     return items;
   } catch (error) {
