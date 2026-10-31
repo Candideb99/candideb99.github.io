@@ -14043,6 +14043,36 @@
         }
       ],
       "outcome": "clean"
+    },
+    "banque-du-liban-paris-meetings-deposits-recapitalization-910315": {
+      "at": "2026-10-31T12:42:22.679Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v45",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-31T10:29:46.156Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 16,
+        "checked": 16,
+        "supported": 16,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
     }
   }
 }

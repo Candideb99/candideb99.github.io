@@ -1,0 +1,47 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-10-31T12:42:22.287Z",
+  "durationSec": 58,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "banque-du-liban-paris-meetings-deposits-recapitalization-910315",
+      "title": "مصرف لبنان يقيّم مع المصارف في باريس حجم الودائع الممكن ردها",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 16,
+        "checked": 16,
+        "supported": 16,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 7039,
+    "completionTokens": 7618,
+    "cacheReadTokens": 0,
+    "costUsd": 0.2087,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[12:42:22] second look: 1 to read now (2 published pieces not yet read; 169 read clean before publication and left out of the audit sample)",
+    "[12:43:20] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3236 attempt=1 ms=54598",
+    "[12:43:20] banque-du-liban-paris-meetings-deposits-recapitalization-910315: 16 of 16 sentences checked · 16 supported · 0 without a source · 0 confirmed error(s)"
+  ]
+}

@@ -1,181 +1,465 @@
 {
-  "mode": "explainer",
-  "startedAt": "2026-10-31T11:10:40.843Z",
-  "durationSec": 466,
-  "published": 1,
+  "mode": "news",
+  "startedAt": "2026-10-31T12:43:21.729Z",
+  "durationSec": 2377,
+  "published": 3,
   "refreshed": 0,
   "report": [
     {
-      "headline": "مؤشر المصانع الصينية نزل إلى 49.3 نقطة، فماذا يعني هذا الرقم فعلاً؟",
-      "section": "explainers",
+      "headline": "عجز المغرب التجاري يتسع 25.4% إلى 323.9 مليار درهم في 9 أشهر",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://asharqbusiness.com/economics/153673/%D8%A7%D9%84%D8%B9%D8%AC%D8%B2-%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A-%D9%84%D9%84%D9%85%D8%BA%D8%B1%D8%A8-%D9%8A%D8%AA%D9%81%D8%A7%D9%82%D9%85-25-%D8%A8%D9%86%D9%87%D8%A7%D9%8A%D8%A9-%D8%B3%D8%A8%D8%AA%D9%85%D8%A8%D8%B1/",
+        "https://www.hespress.com/%d9%82%d9%81%d8%b2%d8%a9-%d8%a7%d9%84%d9%88%d8%a7%d8%b1%d8%af%d8%a7%d8%aa-%d8%aa%d8%b9%d9%85%d9%91%d9%82-%d8%a7%d9%84%d8%b9%d8%ac%d8%b2-%d8%a7%d9%84%d8%aa%d8%ac%d8%a7%d8%b1%d9%8a-%d9%84%d9%84%d9%85-1831967.html"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد (المغرب) والفترة (9 أشهر) والتغيّر (اتساع العجز 25.4% مع نمو الواردات 17% مقابل 10.7% للصادرات). والتمهيد يقدّم مكتب الصرف بوظيفته ويذكر أن الأرقام مؤقتة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المسودة تحمل المحرك الذي يورده المصدران: أسعار الوقود مقابل كمياته، وغلاء الكبريت واضطرابات هرمز، وتوقف مصفاة سامير. لكنها تُغفل العجز المجمع للسلع والخدمات (152.92 مليار درهم مقابل 110.02، المصدر 2)، وهو ما يوضح حدود ما يعوّضه فائض الخدمات. وتصف «لماذا يهمّ» الفوسفات خطأً بأكبر صناعة تصديرية.",
+              "repair": "إضافة الميزان المجمع وتغطيته (79.6%)، وتصحيح ترتيب الفوسفات بعد السيارات."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنصر الجديد في العنوان، أي اتساع العجز، يتطور مباشرة بعد التمهيد عبر الواردات والتغطية ثم الوقود والكبريت، وهذا بناء سليم. لكن فقرة واردات التجهيز معزولة تحت قسم الصادرات. وفي «لماذا يهمّ» تكرار لعبارة «التي تجاوزت 100 مليار درهم» الواردة في المتن، واستنتاج عن «سد الفجوة» يتجاوز الأرقام.",
+              "repair": "نقل فقرة التجهيز إلى قسم الواردات، وحذف تكرار عتبة الـ100 مليار من «لماذا يهمّ»، وصياغة الاستنتاج على أساس الحصة التي يعوّضها فائض الخدمات من عجز السلع."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصدرين، لكن «نحو ستة أعشارها» تقرّب 57.3% إلى 60%. وعنوان الرسم «أبرز مجموعات الواردات» يستبعد مجموعتين أكبر من الطاقة، هما الاستهلاك 162.69 وأنصاف المنتجات 133.74. وعبارة «بلغت… نحو 50 مليار دولار» تقابل في المصدر 1 «تجاوز… نحو 50 مليار دولار».",
+              "repair": "«أكثر من 57%»، وتصحيح عنوان الرسم أو استكمال فئاته، و«تجاوزت احتياطيات المملكة… نحو 50 مليار دولار»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يحدد البلد والمؤشر والنسبة والفترة («في تسعة أشهر»). والعنوان الفرعي يشرح التغيّر: الواردات 17% مقابل 10.7% للصادرات، والتغطية تهبط إلى 54.2%. والتمهيد يضيف أن المستوى هو الأعلى لهذه الفترة وأن البيانات مؤقتة (المصدران 1 و2). وعبارة «بقيادة الوقود والكبريت» مقبولة، فزيادتهما معاً (نحو 50 مليار درهم) تفوق زيادة التجهيز، ويدعمها عنوان المصدر 1.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "المسودة تحمل المحرّك الذي يورده المصدران: صعود أسعار الغازوال والفيول 47.5% مقابل 2.4% للكميات، وغلاء الكبريت واضطرابات هرمز، وتوقف مصفاة «سامير». وتحمل أثره في OCP: خفض الإنتاج 30% واستقرار صادرات الفوسفات. وتحمل حدود التعويض عبر العجز المجمع (152.92 مقابل 110.02 مليار درهم). ومكتب الصرف معرَّف بوظيفته. في «لماذا يهمّ» المقدمات مسندة: الكبريت، وخفض الإنتاج، وبرنت عند 117 دولاراً، والفائض 135.80 مقابل عجز 323.94. والاستنتاج محدود ومتناسب: الغلاء يُدفع مرتين، والفائض يعوّض أقل من نصف عجز السلع (41.9%). وشرطه صريح: «ما دام برنت قرب 117 دولاراً».",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "عنصر العنوان، أي اتساع العجز، يتطور مباشرة بعد التمهيد بالترتيب التالي: الواردات والصادرات، ثم التغطية، ثم أكبر المجموعات، ثم محرّكا الوقود والكبريت، ثم الصادرات المقابلة، ثم ما يعوّض العجز من الخدمات والتحويلات. نُقلت فقرة التجهيز إلى موضعها، وأزيل من الصندوق تكرار عتبة الـ100 مليار. ويكمل الصندوق المتن بفكرة «الدفع مرتين» بدل أن يعيده.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام تطابق المصدرين، و«أكثر من نصف» تصف 54.2% بدقة. غير أن «وتصدرتها أجزاء الطائرات» تحوّل «مدفوعة بـ» في المصدر 2 إلى ترتيب بالحجم. وبند الطاقة يحمل ثلاثة أسماء بين المتن والرسم والصندوق.",
+              "repair": "«وقادت زيادتَها أجزاءُ الطائرات…»، واعتماد «فاتورة الطاقة» اسماً واحداً في التقرير كله."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 5,
+      "mendIssues": [
+        "خطأ في الوقائع: عبارة «وتصدرتها أجزاء الطائرات بقيمة 16.58 مليار درهم» تجعل أجزاء الطائرات أكبر بنود واردات التجهيز، والمصدر 2 لا يقول ذلك. هو يذكرها بين محرّكات النمو فقط («مدفوعة بأجزاء الطائرات… والآلات والأجهزة المختلفة… والطائرات والمركبات الفضائية») ولا يرتّب البنود حسب الحجم. الإصلاح: «وقادت زيادتَها أجزاءُ الطائرات (16.58 مليار درهم، +35.8%) والآلات والأجهزة المختلفة (13.89 مليار درهم، +38.6%)، وقفزت واردات الطائرات والمركبات الفضائية 85.4% إلى 7.19 مليار درهم».",
+        "اسم واحد لشيء واحد: بند الطاقة يحمل في التقرير ثلاثة أسماء: «الفاتورة الطاقية» في المتن وفي «الأرقام»، و«الطاقة» في الرسم، و«فاتورة الوقود» في «لماذا يهمّ». و«الفاتورة الطاقية» صيغة مغاربية نقلها المصدر 2. الإصلاح: «فاتورة الطاقة» في المتن والصندوق و«لماذا يهمّ»، و«الطاقة» في الرسم.",
+        "عربية المصدر المحلية: «وحققت الأسفار وحدها مداخيل قدرها 115.26 مليار درهم» تنقل مصطلح المصدر 2 كما هو، وقارئ خازندار خارج المغرب لا يعرف أن «الأسفار» تعني السياحة. المصدر 1 يسميها «عائدات السياحة». الإصلاح: «وحققت السياحة (بند الأسفار) وحدها إيرادات قدرها 115.26 مليار درهم».",
+        "دقة الإسناد في العنوان الفرعي للقسم: عنوان «صادرات صناعية لا تجاري الواردات» يقدّم قراءة «الشرق» حقيقةً، ثم تسندها الجملة الأولى إليها («ترى «الشرق» أن…»). الإصلاح: الاكتفاء بعنوان وصفي مثل «السيارات والطيران تقود الصادرات»، مع إبقاء قراءة المصدر 1 مسندة في المتن.",
+        "الأرقام تطابق المصدرين، و«أكثر من نصف» تصف 54.2% بدقة. غير أن «وتصدرتها أجزاء الطائرات» تحوّل «مدفوعة بـ» في المصدر 2 إلى ترتيب بالحجم. وبند الطاقة يحمل ثلاثة أسماء بين المتن والرسم والصندوق. — «وقادت زيادتَها أجزاءُ الطائرات…»، واعتماد «فاتورة الطاقة» اسماً واحداً في التقرير كله."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
       "outcome": "published",
-      "slug": "what-china-factory-pmi-49-3-means-40c0c0",
-      "title": "ماذا يعني تراجع مؤشر المصانع الصينية إلى 49.3 نقطة؟",
+      "whyBasis": [
+        {
+          "fact": "ارتفعت أسعار الغازوال والفيول المستوردة 47.5% مقابل زيادة الكميات 2.4%",
+          "source": 2
+        },
+        {
+          "fact": "ارتفاع واردات الكبريت يعكس زيادة الأسعار أكثر من زيادة الشحنات، وخفّضت مجموعة OCP إنتاجها بنحو 30% في الربع الثاني بسبب غلاء الكبريت والأمونيا وصعوبة تأمين الشحنات",
+          "source": 1
+        },
+        {
+          "fact": "كان برنت يُتداول عند 117 دولاراً للبرميل في نهاية الأسبوع",
+          "source": 1
+        },
+        {
+          "fact": "بلغ عجز السلع 323.94 مليار درهم وفائض الخدمات 135.80 مليار درهم، واتسع عجز السلع والخدمات معاً إلى 152.92 مليار درهم حتى سبتمبر",
+          "source": 2
+        }
+      ],
+      "slug": "morocco-trade-deficit-widens-september-2026-b88d25",
+      "title": "العجز التجاري للمغرب يتسع 25.4% إلى 323.9 مليار درهم في تسعة أشهر",
       "score": 9,
       "image": "photo"
+    },
+    {
+      "headline": "روسيا تمدد حظر معظم صادرات الديزل حتى نهاية يناير",
+      "section": "energy",
+      "importance": 7,
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-10-31/russia-extends-ban-on-most-diesel-exports-through-january",
+        "https://www.ekonomim.com/ekonomi/rusya-dizel-ihracati-yasagini-uzatti-haberi-928246",
+        "https://www.shana.ir/news/3160518/%D8%B1%D9%88%D8%B3%DB%8C%D9%87-%D8%A8%DB%8C%D8%B4-%D8%A7%D8%B2-%DB%B2-%D9%85%DB%8C%D9%84%DB%8C%D9%88%D9%86-%D8%AA%D9%86-%DA%AF%D8%A7%D8%B2%D9%88%D8%A6%DB%8C%D9%84-%D8%AF%D8%B1-%D9%86%D9%88%D8%A7%D9%85%D8%A8%D8%B1-%D8%B5%D8%A7%D8%AF%D8%B1-%D9%85%DB%8C-%DA%A9%D9%86%D8%AF"
+      ],
+      "format": "short",
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان يحدد البلد والقرار والأجل بدقة (المصدران 1 و2)، والمقدمة توضح أن الحظر لا يمنع التصدير كلياً. غير أن الدِّك يذكر «نوفاك» باسمه المجرد، والمصادر لا تعطي صفته.",
+              "repair": "إسناد خطة التصدير في الدِّك إلى روسيا من دون الاسم المجرد، وإبقاء نوفاك في المتن منسوباً إلى رويترز."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "المصادر لا تذكر سبباً للحظر، ولا رقماً سابقاً للصادرات، ولا رد فعل. القصة لا تحشو هذا الفراغ، وتنقل آلية الاستثناء (الحصص لبعض الشركات) والكمية المزمعة لنوفمبر.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يتحدث عن حظر «معظم» الصادرات، والمتن يطوّر الاستثناء مباشرة، وهذا ترتيب سليم. لكن فكرة الاستثناء تُقال ثلاث مرات: في المقدمة، ثم في كلام نوفاك، ثم في جملة «وبذلك يبقى التصدير متاحاً…». كما أن الربط «أما طريقة خروج هذه الكميات، فقد أوضحها» يصنع صلة لا تذكرها المصادر.",
+              "repair": "حذف الجملة الختامية المكررة، واستبدال الربط بصيغة زمنية مسندة: «وكان مصدران قد قالا لرويترز…»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: 31 يناير 2027، و2.15 مليون طن، وتصريحات يوم الجمعة. لكن رواية المصدرين كانت عن تمديد «حتى نهاية العام الجاري» (المصدر 3)، وقد سقط هذا الأجل فاختلط بأجل يناير.",
+              "repair": "إعادة أجل «نهاية العام الجاري» إلى رواية المصدرين، وفصلها عن قرار التمديد حتى نهاية يناير."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يحدد العنوان البلد والقرار والأجل، ويبيّن الدِّك أن التصدير مستمر رغم الحظر من دون اسم مجرد. وتوضح المقدمة أن الحظر لا يغلق التصدير كلياً، فلا تناقض بين «حظر معظم الصادرات» وخطة تصدير أكثر من مليوني طن.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "لا تذكر المصادر سبباً للتمديد ولا رد فعل عليه. السياق المتاح هو توقع المصدرين لرويترز (تمديد حتى نهاية العام مع نظام حصص)، والمسودة تحمله. لكنها تعرّف نوفاك بصفة «نائب رئيس الوزراء» التي لا يعطيها أي مصدر.",
+              "repair": "حذف الصفة غير المسندة، والإبقاء على مقارنة توقع المصدرين بالقرار من دون حساب «شهر كامل»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يقول العنوان إن الجديد هو تمديد الحظر مع الاستثناء، والفقرة الأولى من المتن تطوره مباشرة بكلام نوفاك وخطة نوفمبر، وهذا ترتيب سليم. غير أن الفقرة الثانية «وتقتصر أرقام نوفاك… فيشمل وقود السفن والكيروسين أيضاً» تعود إلى ما قالته المقدمة ولا تضيف جديداً.",
+              "repair": "حذف الفقرة الثانية لتصبح القصة: المقدمة، ثم تصريحات نوفاك، ثم رواية المصدرين يليها الأجل النهائي."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "التاريخ 31 يناير 2027 والرقم مليونان و150 ألف طن صحيحان، وكذلك «الجمعة» بحسب المصدر 3. لكن «بحسب بلومبرغ» يغطي تفاصيل مصدرها إيكونوميم، و«قبل صدور القرار» توقيت غير مسند، و«شهراً كاملاً بعد انقضاء العام الجاري» حساب مبني على عبارة فارسية تحتمل معنى آخر.",
+              "repair": "إسناد القرار إلى الحكومة الروسية، وحذف «قبل صدور القرار»، واستبدال الجملة الختامية بـ«غير أن القرار مدّ الحظر حتى نهاية يناير»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 8,
+      "mendIssues": [
+        "صفة غير مذكورة في المصادر: «نائب رئيس الوزراء الروسي ألكسندر نوفاك». المصدر 3 يذكر «الکساندر نواک» باسمه فقط، ولا يعطيه أي صفة، والقصة القصيرة لا تأخذ شيئاً من الذاكرة. التصحيح: حذف الصفة وإسناد الكلام إلى الاسم كما ورد، مثل «قال ألكسندر نوفاك، في تصريحات نقلتها وسائل إعلام روسية وأوردتها رويترز، إن…». ويمكن بدلاً من ذلك إسناد التصريح إلى «الحكومة الروسية» إن أُريد تجنب الاسم المجرد.",
+        "إسناد خاطئ في المقدمة: «حتى 31 يناير 2027 حظراً عاماً يمنع المنتجين من تصدير الديزل ووقود السفن والكيروسين… بحسب بلومبرغ». المصدر 1 (بلومبرغ) لا يذكر إلا الديزل و«نهاية يناير». أما التاريخ الدقيق ووقود السفن والكيروسين فمصدرها المصدر 2 (إيكونوميم). التصحيح: «مددت الحكومة الروسية حتى 31 يناير 2027 حظراً عاماً على تصدير الديزل ووقود السفن والكيروسين، مع السماح بخروج بعض كميات الديزل إلى السوق العالمية»، فالقرار يُنسب إلى الحكومة صاحبة القرار. وإن بقي ذكر بلومبرغ فليقتصر على ما تقوله.",
+        "توقيت لا تذكره المصادر: «وكان مصدران قد قالا لرويترز قبل صدور القرار». المصدر 3 لا يحدد متى تحدث المصدران قياساً إلى صدور القرار. التصحيح: حذف «قبل صدور القرار» والاكتفاء بـ«وكان مصدران قد قالا لرويترز إن…».",
+        "تكرار ما قالته المقدمة: «أما الحظر العام الذي أقرته الحكومة الروسية فيشمل وقود السفن والكيروسين أيضاً». المقدمة ذكرت الوقودين، فالفقرة الثانية كلها إعادة لمعلومة سبقت. كما أن «أرقام نوفاك» جمع، والمصدر لم يذكر إلا رقماً واحداً. التصحيح: حذف الفقرة الثانية. وإن لزم بيان أن الاستثناء يخص الديزل، فيُضاف «من الديزل» في جملة نوفاك نفسها.",
+        "صياغة مثقلة في الختام: «فالحظر يبقى سارياً شهراً كاملاً بعد انقضاء العام الجاري». الجملة تعيد أجل العنوان في صورة عملية حسابية. ثم إن «سال جاری» في المصدر الفارسي قد يحتمل السنة الإيرانية، فالحساب غير مأمون. التصحيح: «غير أن القرار مدّ الحظر حتى نهاية يناير».",
+        "لا تذكر المصادر سبباً للتمديد ولا رد فعل عليه. السياق المتاح هو توقع المصدرين لرويترز (تمديد حتى نهاية العام مع نظام حصص)، والمسودة تحمله. لكنها تعرّف نوفاك بصفة «نائب رئيس الوزراء» التي لا يعطيها أي مصدر. — حذف الصفة غير المسندة، والإبقاء على مقارنة توقع المصدرين بالقرار من دون حساب «شهر كامل».",
+        "يقول العنوان إن الجديد هو تمديد الحظر مع الاستثناء، والفقرة الأولى من المتن تطوره مباشرة بكلام نوفاك وخطة نوفمبر، وهذا ترتيب سليم. غير أن الفقرة الثانية «وتقتصر أرقام نوفاك… فيشمل وقود السفن والكيروسين أيضاً» تعود إلى ما قالته المقدمة ولا تضيف جديداً. — حذف الفقرة الثانية لتصبح القصة: المقدمة، ثم تصريحات نوفاك، ثم رواية المصدرين يليها الأجل النهائي.",
+        "التاريخ 31 يناير 2027 والرقم مليونان و150 ألف طن صحيحان، وكذلك «الجمعة» بحسب المصدر 3. لكن «بحسب بلومبرغ» يغطي تفاصيل مصدرها إيكونوميم، و«قبل صدور القرار» توقيت غير مسند، و«شهراً كاملاً بعد انقضاء العام الجاري» حساب مبني على عبارة فارسية تحتمل معنى آخر. — إسناد القرار إلى الحكومة الروسية، وحذف «قبل صدور القرار»، واستبدال الجملة الختامية بـ«غير أن القرار مدّ الحظر حتى نهاية يناير»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [],
+      "slug": "russia-extends-diesel-export-ban-january-c76a48",
+      "title": "روسيا تمدد حظر معظم صادرات الديزل حتى نهاية يناير 2027",
+      "score": 7,
+      "image": "photo"
+    },
+    {
+      "headline": "أوبن إيه آي تخفض مستهدف التمويل 10 مليارات دولار مع تراجع أسهم الذكاء الاصطناعي",
+      "section": "technology",
+      "importance": 7,
+      "sources": [
+        "https://asharqbusiness.com/financing-and-investment/153702/%D8%A3%D9%88%D8%A8%D9%86-%D8%A5%D9%8A%D9%87-%D8%A2%D9%8A-%D8%AA%D8%AE%D9%81%D8%B6-%D9%85%D8%B3%D8%AA%D9%87%D8%AF%D9%81-%D8%A7%D9%84%D8%AA%D9%85%D9%88%D9%8A%D9%84-%D8%A8%D9%85%D9%82%D8%AF%D8%A7%D8%B1-10-%D9%85%D9%84%D9%8A%D8%A7%D8%B1%D8%A7%D8%AA-%D8%AF%D9%88%D9%84%D8%A7%D8%B1/",
+        "https://www.ft.com/content/7a3ad950-1b3b-4d9e-8c15-65a61ae6180f?syn-25a6b1a6=1"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يحددان ما تغيّر: خفض المستهدف بمقدار 10 مليارات إلى نحو 20 مليار دولار مع خفض التقييم إلى 1.25 تريليون. ويعرّف السطر الفرعي الشركة بأنها مطوّرة «تشات جي بي تي»، وهو اسم معروف للقارئ العربي. وما بقي قائماً واضح أيضاً، فالجولة مستمرة والمستثمرون الإماراتيون يُتوقع أن يكونوا المشارك الأكبر.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المصدر 1 يقدم ثلاثة تفسيرات. السبب: موجة بيع أسهم الذكاء الاصطناعي، واقتراب طرح «أنثروبيك» الذي يعقّد الحصول على الالتزامات، وقلق المستثمرين من حجم الإنفاق على الذكاء الاصطناعي، وهذا كله غائب ومستبدل بـ«تزامن». ردود الأطراف: رفض «أوبن إيه آي» التعليق غائب. الخطوة التالية: طرح «أنثروبيك» الشهر المقبل غائب. والصندوق يبني على تقييم طرح لا تذكره المصادر.",
+              "repair": "إدراج السبب المنسوب إلى «فايننشال تايمز» بعد المقدمة مباشرة، وإضافة موعد طرح «أنثروبيك» بوصفه منافسة على التمويل، وذكر رفض «أوبن إيه آي» التعليق، وإعادة صياغة الصندوق على أساس المنافسة على أموال المستثمرين وكلفة رأس المال اللازم للحوسبة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنصر الجديد في العنوان، أي الخفض بمقدار 10 مليارات، يُشرح في الفقرة الأولى من المتن. لكن سببه وتراجع التزامات المستثمرين متفرقان، والصلة بينهما مقطوعة بعبارة «تزامن». وفقرة «أنثروبيك» تقول المقارنة مرتين. والخاتمة «وهو الاستحقاق الذي ستُختبر فيه…» تعليق بلا مصدر، وعبارة «فالتعديل لا يقتصر…» تربط بـ«ف» علاقة سببية لا وجود لها.",
+              "repair": "جمع فقرة واحدة بعد المقدمة تضم: تراجع بعض الالتزامات، وقلق المستثمرين، وموجة البيع، وهبوط «ناسداك»، واقتراب طرح «أنثروبيك». ثم فقرة المشاركين مع ردود التعليق، ثم حاجة الشركة إلى رأس المال لتمويل الحوسبة وطرحها المحتمل، مع حذف الجملة المكررة والخاتمة التأويلية."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «أربع شركات… هي» تغلق قائمة يقدمها المصدر مفتوحة («تشمل»). وصف «سبتمبر» في صندوق الأرقام مستنتج من تاريخ النشر. عبارة «أصغر بكثير من سابقتها» افتراض. والصندوق يقدّم تقييم الجولة الخاصة على أنه تقييم الطرح.",
+              "repair": "استخدام «من بينها» و«الشهر الماضي»، وحذف «من سابقتها»، والفصل بين تقييم الجولة الخاصة والطرح المحتمل."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التالي يقولان ما تغير: خفض المستهدف بمقدار 10 مليارات دولار، وتقليص بعض المستثمرين التزاماتهم. ويعرّفان «أنثروبيك» بأنها منافسة، و«أوبن إيه آي» اسم معروف. والمقدمة تحدد المستهدف الجديد (20 ملياراً) والتقييم (1.25 تريليون).",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المصدر 1 يقدم ثلاثة أمور، والمسودة تحملها جميعاً: السبب (موجة بيع أسهم الذكاء الاصطناعي واقتراب طرح «أنثروبيك»)، وردود الأطراف (رفض التعليق)، والخطوة التالية (طرح «أنثروبيك» الشهر المقبل وطرح «أوبن إيه آي» المحتمل العام المقبل). لكن تفسير «قلق المستثمرين» منسوب خطأً إلى «فايننشال تايمز». وصندوق «لماذا يهمّ» يبني على مقدمات مثبتة: تقييم أدنى يعني حصة أكبر يتنازل عنها المساهمون مقابل كل دولار، والمنافسة على الالتزامات قائمة. هذا استنتاج محدود ومتناسب.",
+              "repair": "نزع الإسناد إلى الصحيفة عن جملة «قلق المستثمرين» كما في المصدر 1."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنصر الجديد في العنوان، أي الخفض، يُطوَّر بعد المقدمة مباشرة بحجمه السابق ثم بسببه. لكن طرح «أنثروبيك» يتوزع على الفقرات الثانية والثالثة والأخيرة. والفقرة الأولى تتناقض داخلياً بين «الخفض شمل… معاً» و«والجديد هو تقليص المبلغ».",
+              "repair": "ضم تفاصيل طرح «أنثروبيك» إلى فقرة الدافع، وحذف «أي بعد أشهر من دخول «أنثروبيك» السوق» و«والجديد هو تقليص المبلغ المطلوب»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«قبل أيام» بدل «الأسبوع الماضي»، و«بعد أشهر» استنتاج غير مسنود. وفي الصندوق رقم طرح «أنثروبيك» خارج الحدث. أما «من بينها» و«الشهر الماضي» و«على الأقل» فمضبوطة.",
+              "repair": "إعادة «الأسبوع الماضي»، وحذف «بعد أشهر»، وإخراج بند «أنثروبيك» من صندوق الأرقام."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 8,
+      "mendIssues": [
+        "خطأ في الإسناد: «ورأت الصحيفة في خفض المستهدفات دليلاً على اتساع قلق المستثمرين من حجم الأموال الضخمة المتدفقة على قطاع الذكاء الاصطناعي». في المصدر 1 تأتي جملة «ويعكس تقليص مستهدفات الشركة تزايد قلق المستثمرين…» بلا إسناد إلى «فايننشال تايمز». هي قراءة «الشرق» (بلومبرغ) للخبر، لا رأي الصحيفة البريطانية. الإصلاح: حذف «ورأت الصحيفة»، وكتابة الجملة خبراً موصولاً بالسياق، مثل «ويعكس تقليص المستهدفات تزايد قلق المستثمرين من حجم الأموال المتدفقة على الذكاء الاصطناعي»، من دون نسبتها إلى «فايننشال تايمز».",
+        "صندوق الأرقام: بند «التقييم الأدنى لطرح «أنثروبيك» الشهر المقبل: 1.5 تريليون دولار» رقم شركة أخرى وحدث آخر (اكتتابها العام)، لا رقم جولة «أوبن إيه آي». يُخرج من الصندوق ويبقى في المتن حيث يشرح المنافسة على التمويل (المصدر 1).",
+        "ربط بلا سند: خاتمة المتن «أي بعد أشهر من دخول «أنثروبيك» السوق» استنتاج من «الشهر المقبل» و«العام المقبل» لم يقله المصدر 1، فطرح «أوبن إيه آي» نفسه «محتمل» وموعده غير محدد داخل العام. الإصلاح: حذف العبارة، والاكتفاء بـ«وتستعد الشركة لطرح عام أولي محتمل لأسهمها العام المقبل».",
+        "بناء: طرح «أنثروبيك» موزع على ثلاث فقرات متباعدة. يرد دافعاً في الفقرة الثانية («و«أنثروبيك» المنافسة تقترب من الإدراج»)، وتفاصيله في فقرة مستقلة قصيرة («أما «أنثروبيك» فتعتزم…»)، ثم يعود في الخاتمة. الإصلاح: دمج موعد طرحها وتقييمه في الفقرة الثانية مباشرة بعد ذكره دافعاً، وحذف العودة إليه في الخاتمة.",
+        "وضوح: الفقرة الأولى تقول «أي أن الخفض شمل حجم الجولة وتقييم الشركة معاً»، ثم تقول بعد سطرين «فالتقييم الأدنى كان مطروحاً قبل أيام، والجديد هو تقليص المبلغ المطلوب». الجملتان تتنازعان، و«قبل أيام» تبدّل «الأسبوع الماضي» الواردة في المصدر 1. الإصلاح: «وكانت «بلومبرغ» قد أفادت الأسبوع الماضي بأن الشركة تفاوض عند تقييم 1.25 تريليون دولار»، وحذف الحكم «والجديد هو…» وفاء «فالتقييم».",
+        "المصدر 1 يقدم ثلاثة أمور، والمسودة تحملها جميعاً: السبب (موجة بيع أسهم الذكاء الاصطناعي واقتراب طرح «أنثروبيك»)، وردود الأطراف (رفض التعليق)، والخطوة التالية (طرح «أنثروبيك» الشهر المقبل وطرح «أوبن إيه آي» المحتمل العام المقبل). لكن تفسير «قلق المستثمرين» منسوب خطأً إلى «فايننشال تايمز». وصندوق «لماذا يهمّ» يبني على مقدمات مثبتة: تقييم أدنى يعني حصة أكبر يتنازل عنها المساهمون مقابل كل دولار، والمنافسة على الالتزامات قائمة. هذا استنتاج محدود ومتناسب. — نزع الإسناد إلى الصحيفة عن جملة «قلق المستثمرين» كما في المصدر 1.",
+        "العنصر الجديد في العنوان، أي الخفض، يُطوَّر بعد المقدمة مباشرة بحجمه السابق ثم بسببه. لكن طرح «أنثروبيك» يتوزع على الفقرات الثانية والثالثة والأخيرة. والفقرة الأولى تتناقض داخلياً بين «الخفض شمل… معاً» و«والجديد هو تقليص المبلغ». — ضم تفاصيل طرح «أنثروبيك» إلى فقرة الدافع، وحذف «أي بعد أشهر من دخول «أنثروبيك» السوق» و«والجديد هو تقليص المبلغ المطلوب».",
+        "«قبل أيام» بدل «الأسبوع الماضي»، و«بعد أشهر» استنتاج غير مسنود. وفي الصندوق رقم طرح «أنثروبيك» خارج الحدث. أما «من بينها» و«الشهر الماضي» و«على الأقل» فمضبوطة. — إعادة «الأسبوع الماضي»، وحذف «بعد أشهر»، وإخراج بند «أنثروبيك» من صندوق الأرقام."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "كانت الشركة تستهدف الشهر الماضي جمع 30 مليار دولار بتقييم 1.4 تريليون دولار، والمستهدف الحالي نحو 20 مليار دولار بتقييم 1.25 تريليون دولار.",
+          "source": 1
+        },
+        {
+          "fact": "تستعد «أنثروبيك» لطرح أسهمها الشهر المقبل، ويعقّد اقتراب طرحها جهود «أوبن إيه آي» للحصول على التزامات المستثمرين.",
+          "source": 1
+        },
+        {
+          "fact": "تسعى «أوبن إيه آي» إلى رأس مال جديد لتمويل طموحاتها الكبيرة في مجال الحوسبة.",
+          "source": 1
+        }
+      ],
+      "slug": "openai-cuts-funding-target-10-billion-a127c9",
+      "title": "«أوبن إيه آي» الأمريكية تخفض مستهدف جولة تمويلها بمقدار 10 مليارات دولار",
+      "score": 8,
+      "image": "cover-art"
+    },
+    {
+      "headline": "فيتش تخفض نظرة تصنيف فرنسا إلى سلبية بعد انكماش الربع الثالث",
+      "section": "economy",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
     }
   ],
   "llm": {
-    "calls": 18,
-    "failures": 0,
-    "promptTokens": 205460,
-    "completionTokens": 37155,
-    "cacheReadTokens": 73042,
-    "costUsd": 1.8168,
+    "calls": 81,
+    "failures": 3,
+    "promptTokens": 1143606,
+    "completionTokens": 234772,
+    "cacheReadTokens": 445046,
+    "costUsd": 10.3725,
     "byModel": {
-      "claude-cli/claude-opus-5-5": 18
+      "claude-cli/claude-opus-5-5": 81
     }
   },
   "log": [
-    "[11:12:42] checks explainer \"ماذا يعني تراجع مؤشر المصانع الصينية إلى 49.3 نقطة؟\": 504 words, 1 issues, 0 warnings",
-    "[11:13:08] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1788 attempt=1 ms=26239",
-    "[11:13:08] critic explainer: revise score=9 issues=3",
-    "[11:13:08]   · أرقام لا تظهر في المصادر: 0.7, 30, 25, 20, 15, 10. احذف كل رقم غير مذكور في المصادر أو صحّحه.",
-    "[11:13:08]   · خطأ في شرح الآلية: «وفيها تكون أغلبية واضحة من الشركات في تحسن» عن قطاعات بلغت مؤشراتها 53 نقطة أو أكثر. بحسب تعريف المقال نفسه (نسبة المتحسنين مضافاً إليها نصف",
-    "[11:13:08]   · ربط غير مدعوم يقلب منطق المصدر: «والشهر الأول من كل فصل أضعف أشهره نشاطاً في العادة، لكن القراءة جاءت مع ذلك دون مستوى 50 نقطة الذي توقعه استطلاع أجرته رويترز».",
-    "[11:13:08]   · وصف غير دقيق لما يقيسه المؤشر: «لكن المؤشر يقيس اتجاه المزاج في المصانع شهراً بشهر». المقال نفسه شرح أن الاستبيان يسأل عن تغير الإنتاج والطلبيات والتوظيف، وهي و",
-    "[11:13:37] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1186 attempt=1 ms=29122",
-    "[11:14:28] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3604 attempt=1 ms=51148",
-    "[11:14:28] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,whyItMatters,body] rejected=[]",
-    "[11:14:28] desk \"ماذا يعني تراجع مؤشر المصانع الصينية إلى 49.3 نقطة؟\": rewrote subtitle, whyItMatters, body",
-    "[11:14:55] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1859 attempt=1 ms=27022",
-    "[11:14:55] critic (second pass) explainer: publish score=9",
-    "[11:15:08] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1014 attempt=1 ms=12585",
-    "[11:15:08] image: the picture should say: Slightly more Chinese factories now see business slipping than improving, as orders at home and abroad thin out.",
-    "[11:15:08] image: tier 1, the story's own place (Dongguan, Shenzhen): Dongguan | Dongguan factory | Shenzhen factory; categories: Dongguan | Shenzhen | Factories in China | Industry in China | Factories in Guangdong",
-    "[11:15:08] pexels \"Dongguan\": 8 usable",
-    "[11:15:08] pexels \"Shenzhen factory\": 8 usable",
-    "[11:15:09] pexels \"Dongguan factory\": 8 usable",
-    "[11:15:09] commons \"Dongguan\": 19 usable of 24",
-    "[11:15:52] openverse \"Shenzhen factory\": 10 usable of 20",
-    "[11:15:53] openverse \"Dongguan\": The operation was aborted due to timeout",
-    "[11:15:53] image: dropped \"Panoramic view of a cable-stayed bridge in China crossing a vast body \" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:15:53] image: dropped \"Scenic view of traditional Chinese buildings beside a serene pond with\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:15:53] image: dropped \"Stunning aerial view of Xiamen city skyline and river, capturing moder\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:15:53] image: dropped \"Aerial view of Huizhou cityscape with modern skyscrapers and vibrant u\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:15:53] image: dropped \"Aerial view of Changsha's skyline with river and greenery under a clou\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:15:53] image: dropped \"Stunning aerial view of Qingdao's modern skyline with mountains in the\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:15:53] image: dropped \"Explore the urban skyline contrasted with lush green foothills.\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:15:53] image: dropped \"A stunning aerial view of Xiamen city skyline and river, capturing mod\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:15:53] openverse \"Dongguan factory\": The operation was aborted due to timeout",
-    "[11:15:53] commons \"Dongguan factory\": 8 usable of 9",
-    "[11:15:53] image: dropped \"Dongguan Factors.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:15:53] image: dropped \"EGLO Production in China.jpg\" — dated 2003, an archival picture",
-    "[11:15:53] image: dropped \"A stunning aerial view of an industrial area at sunset in Jiujiang, Ch\" — names too little of factory",
-    "[11:15:53] image: dropped \"Aerial view showcasing the vast industrial park landscape under a clea\" — names too little of factory",
-    "[11:15:53] image: dropped \"Aerial view of a power plant in Banten, Indonesia emitting smoke again\" — names too little of factory",
-    "[11:15:53] image: dropped \"Aerial shot showcasing a large industrial park in Thành phố Thủ Dầu Mộ\" — names too little of factory",
-    "[11:15:53] image: dropped \"A detailed aerial view of an industrial facility in Banten, Indonesia,\" — names too little of factory",
-    "[11:15:53] image: dropped \"Aerial view of industrial buildings in Thành phố Thủ Dầu Một, Bình Dươ\" — names too little of factory",
-    "[11:15:53] image: dropped \"Aerial shot of industrial warehouses under blue sky in Bình Dương, Vie\" — names too little of factory",
-    "[11:15:54] commons \"Shenzhen factory\": 23 usable of 24",
-    "[11:15:54] image: dropped \"SZ 深圳 Shenzhen BaoAn 永和路 YongHe Road factory building testing center 1\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:15:54] image: dropped \"SZ 深圳 Shenzhen BaoAn 永和路 YongHe Road n Baoshi West Road factory buildi\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:15:54] image: dropped \"SZ 深圳 Shenzhen BaoAn 永和路 YongHe Road factory building testing center n\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:15:54] image: dropped \"SZ 深圳博物館 Shenzhen Museum 深圳改革開放史展廳 Reform and Opening-up History Sept \" — a scan of a note's or a coin's face, not a photograph",
-    "[11:15:55] commons Category:Dongguan: 7 usable of 48",
-    "[11:15:57] commons Category:Shenzhen: 27 usable of 48",
-    "[11:15:57] commons Category:Factories in China: 20 usable of 48",
-    "[11:15:57] image: dropped \"兰州石化炼油厂夜间全景.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:15:57] image: dropped \"Hangzhou, panorámicas 1978 08.jpg\" — dated 1978, an archival picture",
-    "[11:15:59] commons Category:Industry in China: 10 usable of 48",
-    "[11:16:00] commons Category:Factories in Guangdong: 24 usable of 34",
-    "[11:16:00] image: dropped \"SZ 深圳 Shenzhen 寶安區 BaoAn 重慶路 Chongqing Road name sign night June 2024 \" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:16:00] image: dropped \"SZ 深圳 Shenzhen 寶安區 BaoAn 同富路 Tongfu Road 大族激光科技产业集团深圳廠廈 Han's Laser Bu\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:16:00] image: dropped \"SZ 深圳 Shenzhen 寶安區 BaoAn 同富路 Tongfu Road 大族激光科技产业集团深圳廠廈 Han's Laser Bu\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:16:00] image: dropped \"SZ 深圳 Shenzhen 寶安區 BaoAn 同富路 Tongfu Road 大族激光科技产业集团深圳廠廈 Han's Laser Bu\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:16:00] image: dropped \"SZ 深圳 Shenzhen 寶安區 BaoAn 同富路 Tongfu Road 大族激光科技产业集团深圳廠廈 Han's Laser Bu\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:16:00] image: dropped \"SZ 深圳 Shenzhen 寶安區 BaoAn 同富路 Tongfu Road 大族激光科技产业集团深圳廠廈 Han's Laser Bu\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:16:00] image: dropped \"SZ 深圳 Shenzhen 寶安區 BaoAn 同富路 Tongfu Road 大族激光科技产业集团深圳廠廈 Han's Laser Bu\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:16:00] image: dropped \"SZ 深圳 Shenzhen 寶安區 BaoAn 同富路 Tongfu Road 大族激光科技产业集团深圳廠廈 Han's Laser Bu\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:16:00] image: dropped \"SZ 深圳 Shenzhen 寶安區 BaoAn 同富路 Tongfu Road 大族激光科技产业集团深圳廠廈 Han's Laser Bu\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:16:00] image: dropped \"SZ 深圳 Shenzhen 寶安區 BaoAn 同富路 Tongfu Road 大族激光科技产业集团深圳廠廈 Han's Laser Bu\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:16:00] image: dropped \"SZ 深圳 Shenzhen 寶安區 BaoAn 同富路 Tongfu Road 大族激光科技产业集团深圳廠廈 Han's Laser Bu\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:16:00] image: dropped \"SZ 深圳 Shenzhen 寶安區 BaoAn 同富路 Tongfu Road 大族激光科技产业集团深圳廠廈 Han's Laser Bu\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:16:00] image: dropped \"SZ 深圳 Shenzhen 寶安區 BaoAn 同富路 Tongfu Road 大族激光科技产业集团深圳廠廈 Han's Laser Bu\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:16:00] image: dropped \"G.Tech Technology Factory Zhuhai China exterior.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:16:00] image: dropped \"A factory building before its demolition in Qianhai.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:16:00] image: dropped \"Zini Sugar Factory building.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:16:00] image: 1 file(s) dropped for naming none of Dongguan, Shenzhen",
-    "[11:16:07] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=81 attempt=1 ms=3743",
-    "[11:16:07] image: vision rejected all candidates (The story is about China's factory PMI and spreading weakness among manufacturers, so it needs a factory line or a port. None of the candidates shows that. Photos 1 to 4 are amateur close-ups of phones on store displays, with brands and logos the story does not name. Photo 5 is a river and housing in Shenzhen, and photo 6 is a street with office building fronts. Neither shows the manufacturing sector at work.)",
-    "[11:16:15] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=107 attempt=1 ms=3993",
-    "[11:16:15] image: vision rejected all candidates (None shows the story's subject, Chinese factories at work. Photos 1 and 2 are Shenzhen street and office scenes. Photo 3 is a brick wall and photo 4 a garden. Photo 5 is the gate of a Dongguan water plant, an amateur shot with a timestamp overlay. Photo 6 shows factory buildings in a blurred snapshot taken from a moving vehicle, also with a timestamp overlay. No factory floor or production line is on offer, so the fallback should look further.)",
-    "[11:16:15] image: tier 3, the writer's own subjects: China factory floor | Chinese factory workers | Shanghai container port",
-    "[11:16:15] commons \"China factory floor 2026\": 2 usable of 12",
-    "[11:16:16] commons \"China factory floor\": 4 usable of 12",
-    "[11:16:16] image: dropped \"The dragon, image, and demon; or, The three religions of China- Confuc\" — names too little of factory, floor",
-    "[11:16:17] commons \"Chinese factory workers 2026\": 0 usable of 1",
-    "[11:16:17] commons \"Chinese factory workers\": 12 usable of 12",
-    "[11:16:17] image: dropped \"BML Bamailong factory workers 1-014.jpg\" — dated 2002, an archival picture",
-    "[11:16:17] image: dropped \"BML Bamailong factory workers 1-013.jpg\" — dated 2002, an archival picture",
-    "[11:16:17] image: dropped \"BML Bamailong factory workers 1-007.jpg\" — dated 2002, an archival picture",
-    "[11:16:17] image: dropped \"BML Bamailong factory workers 1-021.jpg\" — dated 2002, an archival picture",
-    "[11:16:17] image: dropped \"BML Bamailong factory workers 1-015.jpg\" — dated 2002, an archival picture",
-    "[11:16:17] image: dropped \"BML Bamailong factory workers 1-017.jpg\" — dated 2002, an archival picture",
-    "[11:16:18] commons \"Shanghai container port 2026\": 1 usable of 1",
-    "[11:16:19] commons \"Shanghai container port\": 8 usable of 12",
-    "[11:16:19] image: dropped \"Former Shenango China Property in Winter of 2026.jpg\" — taken in United States, which the story does not name",
-    "[11:16:19] image: dropped \"SIMU 241059-9 22k2 tank container.jpg\" — taken in United States, which the story does not name",
-    "[11:16:19] image: dropped \"Chicago Flint and Lime Company -Glass Factory-, circa 1910 - Chesterto\" — taken in United States, which the story does not name",
-    "[11:16:30] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=653 attempt=1 ms=10452",
-    "[11:16:30] image: \"Port of Shanghai, Yangshan Deep-water Harbour Zone, 02.jpg\" names the story's topic without saying its point (This is China's busiest container port, with cranes and stacked containers clearly visible. It fits the story's weak new and export orders and reads well at a g); checked now and kept in reserve while the desk looks further",
-    "[11:16:41] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=944 attempt=1 ms=11205",
-    "[11:16:41] image: second check (claude-cli/claude-opus-5-5) RECAPTION \"Port of Shanghai, Yangshan Deep-water Harbour Zone, 02.jpg\": A busy container port in China fits a story on Chinese factories and export orders, but the caption names Yangshan port ",
-    "[11:16:46] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=301 attempt=1 ms=5034",
-    "[11:16:54] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=630 attempt=1 ms=7985",
-    "[11:16:54] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Port of Shanghai, Yangshan Deep-water Harbour Zone, 02.jpg\": A sharp, busy container yard at a Chinese port shows China's factory and export economy at work, which fits this PMI exp",
-    "[11:16:54] image: tier 4, the story's point and its subject: factory workers China | assembly line Dongguan | production line China | factory floor China | assembly line China | Chinese factory (home: China, Chinese, Guangdong, Shenzhen, Dongguan, Shanghai)",
-    "[11:16:55] pexels \"production line China\": 8 usable",
-    "[11:16:55] pexels \"assembly line China\": 8 usable",
-    "[11:16:55] pexels \"factory workers China\": 8 usable",
-    "[11:16:55] pexels \"factory floor China\": 8 usable",
-    "[11:16:55] pexels \"Chinese factory\": 8 usable",
-    "[11:16:55] pexels \"assembly line Dongguan\": 8 usable",
-    "[11:16:55] commons \"factory workers China\": 18 usable of 24",
-    "[11:16:55] image: dropped \"BML Bamailong factory workers 1-014.jpg\" — dated 2002, an archival picture",
-    "[11:16:55] image: dropped \"BML Bamailong factory workers 1-013.jpg\" — dated 2002, an archival picture",
-    "[11:16:55] image: dropped \"BML Bamailong factory workers 1-007.jpg\" — dated 2002, an archival picture",
-    "[11:16:55] image: dropped \"BML Bamailong factory workers 1-021.jpg\" — dated 2002, an archival picture",
-    "[11:16:55] image: dropped \"BML Bamailong factory workers 1-015.jpg\" — dated 2002, an archival picture",
-    "[11:16:55] image: dropped \"BML Bamailong factory workers 1-017.jpg\" — dated 2002, an archival picture",
-    "[11:16:55] image: dropped \"BML Bamailong factory workers 1-016.jpg\" — dated 2002, an archival picture",
-    "[11:16:55] image: dropped \"China-1978 Jade worker Art Factory Paul Burns.jpg\" — dated 1978, an archival picture",
-    "[11:16:55] image: dropped \"SZ 深圳博物館 Shenzhen Museum 深圳改革開放史展廳 Reform and Opening-up History Sept \" — a scan of a note's or a coin's face, not a photograph",
-    "[11:16:55] image: dropped \"China-1978 Lacquerware Art Factory Paul Burns.jpg\" — dated 1978, an archival picture",
-    "[11:17:39] openverse \"factory workers China\": The operation was aborted due to timeout",
-    "[11:17:39] openverse: 3 failures in a row; left alone for 10 minutes",
-    "[11:17:39] image: dropped \"Two women focused on machinery work in a cluttered industrial workshop\" — names too little of factory, workers",
-    "[11:17:40] commons \"assembly line Dongguan\": 0 usable of 0",
-    "[11:17:41] commons \"assembly line\": 9 usable of 24",
-    "[11:17:41] image: dropped \"Ford assembly line - 1913.jpg\" — dated 1913, an archival picture",
-    "[11:17:41] image: dropped \"Conveyor system in a factory.jpg\" — names too little of assembly, line",
-    "[11:17:41] image: dropped \"Alta Dena Dairy ice cream factory in Los Angeles.jpg\" — dated 1984, an archival picture",
-    "[11:17:41] image: dropped \"Elplc-linia-amortyzatorow.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:17:41] image: dropped \"\"Transfer point on belt conveyor system.\" - NARA - 294120.jpg\" — names too little of assembly, line",
-    "[11:17:41] image: dropped \"Vast industrial factory floor with machinery, crates, and structured w\" — names too little of assembly, line",
-    "[11:17:41] image: dropped \"Detailed view of organized electronic circuit boards in a production s\" — names too little of assembly, line",
-    "[11:17:41] image: dropped \"Top view of workers organizing yellow bricks in rows at an industrial \" — names too little of assembly, line",
-    "[11:17:41] image: dropped \"A complex piece of machinery in a dark industrial setting with vibrant\" — names too little of assembly, line",
-    "[11:17:41] image: dropped \"Woman in blue uniform handling textiles in a modern industrial factory\" — names too little of assembly, line",
-    "[11:17:41] image: dropped \"Modern conveyor system in a monochrome industrial factory setting in R\" — names too little of assembly, line",
-    "[11:17:41] image: dropped \"A row of industrial machines on a factory floor, highlighting manufact\" — names too little of assembly, line",
-    "[11:17:42] commons \"production line China\": 24 usable of 24",
-    "[11:17:43] commons \"factory floor China\": 6 usable of 24",
-    "[11:17:43] image: dropped \"The dragon, image, and demon; or, The three religions of China- Confuc\" — names too little of factory, floor",
-    "[11:17:44] commons \"assembly line China\": 13 usable of 24",
-    "[11:17:44] image: dropped \"Secretary Kerry Chats With Worker on Engine Assembly Line (12538366364\" — shows kerry, john, not the story's people",
-    "[11:17:44] image: dropped \"Chinese horrors and persecutions of the Christians; containing a full \" — names too little of assembly, line",
-    "[11:17:45] commons \"Chinese factory\": 24 usable of 24",
-    "[11:17:45] image: dropped \"Former Shenango China Property in Winter of 2026.jpg\" — taken in United States, which the story does not name",
-    "[11:17:45] image: dropped \"Hyundai car assembly line.jpg\" — taken in South Korea, which the story does not name",
-    "[11:17:45] image: dropped \"Chicago Flint and Lime Company -Glass Factory-, circa 1910 - Chesterto\" — taken in United States, which the story does not name",
-    "[11:18:07] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1728 attempt=1 ms=21597",
-    "[11:18:07] image: \"Plastic Woven Bag Production Line Pic 1.jpg\" names the story's topic without saying its point; kept beside the one the desk holds, and it looks further",
-    "[11:18:17] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=579 attempt=1 ms=9438",
-    "[11:18:17] image: \"Close-up of a factory production line with yellow components\" names the story's topic without saying its point; kept beside the one the desk holds, and it looks further",
-    "[11:18:27] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=569 attempt=1 ms=9167",
-    "[11:18:27] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"Port of Shanghai, Yangshan Deep-water Harbour Zone, 02.jpg\"",
-    "[11:18:27] published explainer \"ماذا يعني تراجع مؤشر المصانع الصينية إلى 49.3 نقطة؟\" -> what-china-factory-pmi-49-3-means-40c0c0"
+    "[13:20:19] image: dropped \"Isaac Herzog meeting with Sam Altman, June 2023 (GPOABG244).jpeg\" — an event's photograph, people and banners",
+    "[13:20:19] image: dropped \"Isaac Herzog meeting with Sam Altman, June 2023 (GPOABG539).jpeg\" — an event's photograph, people and banners",
+    "[13:20:19] image: dropped \"Nancy Pelosi GLAAD 2017 2.jpg\" — an event's photograph, people and banners",
+    "[13:20:19] pexels \"traders stock exchange screens\": 8 usable",
+    "[13:20:19] pexels \"Sam Altman\": 8 usable",
+    "[13:20:27] openverse \"Sam Altman\": 10 usable of 20",
+    "[13:20:27] image: dropped \"A hand holds a smartphone displaying Grok 3 announcement against a red\" — names too little of sam, altman",
+    "[13:20:27] image: dropped \"Man in casual attire leans against a stone wall, exuding a relaxed vib\" — names too little of sam, altman",
+    "[13:20:27] image: dropped \"Protecting LGBT Rights with GLAAD\" — names too little of sam, altman",
+    "[13:20:27] image: dropped \"Casual young man smiling outdoors by modern glass architecture.\" — names too little of sam, altman",
+    "[13:20:27] image: dropped \"487908877AP00017_TechCrunch\" — names too little of sam, altman",
+    "[13:20:27] image: dropped \"High angle of peaceful man with plastic cup sitting with African Ameri\" — names too little of sam, altman",
+    "[13:20:27] image: dropped \"487908877AP00004_TechCrunch\" — names too little of sam, altman",
+    "[13:20:27] image: dropped \"Calm male in casual clothes sitting at table with laptop with crossed \" — names too little of sam, altman",
+    "[13:20:27] image: dropped \"487908877AP00005_TechCrunch\" — names too little of sam, altman",
+    "[13:20:27] image: dropped \"Confident young male in casual clothes and sunglasses resting in moder\" — names too little of sam, altman",
+    "[13:20:27] image: dropped \"487908877AP00016_TechCrunch\" — names too little of sam, altman",
+    "[13:20:27] image: dropped \"Confident businessman in a modern office adjusting his glasses, convey\" — names too little of sam, altman",
+    "[13:20:27] image: dropped \"487908877AP00038_TechCrunch\" — names too little of sam, altman",
+    "[13:20:27] image: dropped \"Side view of concentrated young male resting on city street and lookin\" — names too little of sam, altman",
+    "[13:20:27] image: dropped \"487908877AP00002_TechCrunch\" — names too little of sam, altman",
+    "[13:20:27] image: dropped \"487908877AP00039_TechCrunch\" — names too little of sam, altman",
+    "[13:20:28] commons \"AI data center construction\": 12 usable of 24",
+    "[13:20:28] image: dropped \"Hyperion false color.jpg\" — names too little of data, center, construction",
+    "[13:20:28] image: dropped \"The Hyperion Proto-Supercluster.jpg\" — names too little of data, center, construction",
+    "[13:20:28] image: dropped \"Clanis hyperion MHNT CUT 2010 0 321 Khasi Hills Assam India female dor\" — names too little of data, center, construction",
+    "[13:20:28] image: dropped \"Clanis hyperion MHNT CUT 2010 0 321 Khasi Hills Assam India female ven\" — names too little of data, center, construction",
+    "[13:20:28] image: dropped \"Hyperion Augoust 25 2011.jpg\" — names too little of data, center, construction",
+    "[13:20:28] image: dropped \"Hyperion Track.jpg\" — names too little of data, center, construction",
+    "[13:20:28] image: dropped \"Hyperion Lyceum.jpg\" — names too little of data, center, construction",
+    "[13:20:28] image: dropped \"Hyperion hg.jpg\" — names too little of data, center, construction",
+    "[13:20:28] image: dropped \"Hyperion 3D PIA06244.jpg\" — names too little of data, center, construction",
+    "[13:20:28] image: dropped \"Hyperion Cassini december 2010.jpg\" — names too little of data, center, construction",
+    "[13:20:28] image: dropped \"Dynalogic Hyperion keyboard profile.jpg\" — names too little of data, center, construction",
+    "[13:20:28] image: dropped \"Hyperion Track2.jpg\" — names too little of data, center, construction",
+    "[13:21:03] openverse \"AI data center construction\": The operation was aborted due to timeout",
+    "[13:21:03] image: dropped \"Artistic arrangement of circuit boards and cables symbolizes modern te\" — names too little of data, center, construction",
+    "[13:21:03] image: dropped \"Empty industrial warehouse interior with polished concrete floor in Ho\" — names too little of data, center, construction",
+    "[13:21:03] image: dropped \"Empty modern warehouse interior with polished floor and ample space lo\" — names too little of data, center, construction",
+    "[13:21:03] openverse \"traders stock exchange screens\": The operation was aborted due to timeout",
+    "[13:21:04] commons \"traders stock exchange screens\": 0 usable of 0",
+    "[13:21:05] commons \"traders stock\": 7 usable of 24",
+    "[13:21:05] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[13:21:05] image: dropped \"Toronto Stock Exchange 1956.jpg\" — dated 1956, an archival picture",
+    "[13:21:05] image: dropped \"The diseases of live stock and their most efficient remedies; (1855) (\" — dated 1855, an archival picture",
+    "[13:21:05] image: dropped \"A man analyzes cryptocurrency graphs on a touchscreen monitor in a mod\" — names too little of traders, stock, exchange, screens",
+    "[13:21:05] image: dropped \"A bearded man with glasses examines trading charts on a computer scree\" — names too little of traders, stock, exchange, screens",
+    "[13:21:05] image: dropped \"Market analysis with focus on cryptocurrency trends displayed. Ideal f\" — names too little of traders, stock, exchange, screens",
+    "[13:21:07] commons \"data center United States\": 15 usable of 24",
+    "[13:21:07] image: dropped \"Eugene F. Kranz at his console at the NASA Mission Control Center.jpg\" — dated 1965, an archival picture",
+    "[13:21:07] image: dropped \"Bellingham data center building 2003.jpg\" — dated 2003, an archival picture",
+    "[13:21:07] image: dropped \"Ambassador and Delegation from the United Mexican States tour NASA God\" — an event's photograph, people and banners",
+    "[13:21:07] commons \"AI data center Texas\": 0 usable of 12",
+    "[13:21:08] commons \"AI data\": 6 usable of 24",
+    "[13:21:08] image: dropped \"Data and AI Summit 2026.jpg\" — an event's photograph, people and banners",
+    "[13:21:08] image: dropped \"AI and Wikipedia.jpg\" — names too little of data",
+    "[13:21:08] image: dropped \"Mountainous ecofuturist AI rendering.jpg\" — names too little of data",
+    "[13:21:08] image: dropped \"Ryan Paul Lafler presenting at the RVAtech Data + AI Summit in 2025.jp\" — an event's photograph, people and banners",
+    "[13:21:12] openverse \"data center United States\": The operation was aborted due to timeout",
+    "[13:21:12] openverse: 3 failures in a row; left alone for 10 minutes",
+    "[13:21:12] image: dropped \"Spacious and polished industrial facility with glossy epoxy flooring i\" — names too little of data, center",
+    "[13:21:13] commons \"data center\": 15 usable of 24",
+    "[13:21:13] image: dropped \"Utah Data Center Panorama (cropped).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[13:21:13] image: dropped \"Microsoft Data Center Middenmeer, the Netherlands - 1.jpg\" — another frame of a series a published story runs",
+    "[13:21:13] image: dropped \"From below of fiber optic equipment with similar colorful rubber cable\" — names too little of data, center",
+    "[13:21:13] image: dropped \"Deutsche-boerse-parkett-ffm006.jpg\" — taken in Germany, which the story does not name",
+    "[13:21:13] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/54444883782_007cdcd78f_n.jpg",
+    "[13:21:30] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=548 attempt=1 ms=9298",
+    "[13:21:30] image: \"Sam Altman TechCrunch SF 2019 Day 2 Oct 3 (cropped).jpg\" names the story's topic without saying its point (This is a sharp, professional portrait of Sam Altman, OpenAI's CEO, so it names the company whose funding round is cut. The other candidates fail: #1 shows anot); checked now and kept in reserve while the desk looks further",
+    "[13:21:35] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=447 attempt=1 ms=5545",
+    "[13:21:35] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Sam Altman TechCrunch SF 2019 Day 2 Oct 3 (cropped).jpg\": Altman is the story's own CEO, but the backdrop behind him carries the legible logo of TechCrunch, another news outlet, ",
+    "[13:21:35] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/54444883782_007cdcd78f_n.jpg",
+    "[13:21:52] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1248 attempt=1 ms=15929",
+    "[13:21:52] image: vision rejected all candidates (fallback pass) (No candidate is suitable. #1 shows Altman at TED 2025 with a mock-surprised face and raised hands, which reads as comic beside a funding cut. It is also an audience snapshot that shows another identifiable person (the interviewer), the TED logo and on-screen text. #2 is a staged stock image of chart monitors, a chart cliché with no link to OpenAI or AI. #3 is a map and #6 is a chart. #4 is an amateur shot of a local protest sign on a Ford truck in Kansas, a different topic. #5 is the front of CERN's building in Europe.)",
+    "[13:21:52] image: the company's own brand (OpenAI): OpenAI sign | OpenAI DevDay",
+    "[13:21:52] pexels \"OpenAI DevDay\": 8 usable",
+    "[13:21:52] commons \"OpenAI sign\": 13 usable of 24",
+    "[13:21:52] image: dropped \"Dülmen, Kirchspiel, Strohfiguren in Daldrup -- 2015 -- 5954.jpg\" — names too little of sign",
+    "[13:21:52] image: dropped \"Amboy (California, USA) -- 2012 -- 4.jpg\" — names too little of sign",
+    "[13:21:52] image: dropped \"Amboy (California, USA), Hist. Route 66 -- 2012 -- 1.jpg\" — names too little of sign",
+    "[13:21:52] image: dropped \"Münster, Prinzipalmarkt -- 2014 -- 4516-20-2.jpg\" — names too little of sign",
+    "[13:21:52] pexels \"OpenAI sign\": 8 usable",
+    "[13:21:52] image: dropped \"Close-up of a smartphone displaying ChatGPT app held over AI textbook.\" — names too little of sign",
+    "[13:21:52] commons \"OpenAI DevDay\": 1 usable of 1",
+    "[13:21:52] image: dropped \"Dülmen, Kirchspiel, Dernekamp, Getreidefeld -- 2024 -- 0003.jpg\" — names too little of openai, devday",
+    "[13:21:52] image: dropped \"A sleek digital display showcasing ChatGPT's introduction with vibrant\" — names too little of openai, devday",
+    "[13:21:52] image: dropped \"Screen displaying ChatGPT examples, capabilities, and limitations.\" — names too little of openai, devday",
+    "[13:21:52] image: dropped \"Close-up of wooden Scrabble tiles spelling OpenAI and DeepSeek on wood\" — a stock cliché («Scrabble»)",
+    "[13:21:52] image: 16 file(s) dropped for not naming OpenAI",
+    "[13:21:56] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=96 attempt=1 ms=3606",
+    "[13:21:56] image: vision rejected all candidates (Both candidates are staged stock shots of the OpenAI logo shown as a graphic on a monitor. The brand rule refuses a logo on a screen, and these frames say nothing about investors cutting commitments or the lower valuation. Neither shows Sam Altman or OpenAI's own site or signage, so let the fallback search further.)",
+    "[13:21:56] image: the story's people first: Sam Altman 2026 | Sam Altman | سام ألتمان",
+    "[13:21:57] commons \"Sam Altman 2026\": 1 usable of 8",
+    "[13:21:57] commons \"Sam Altman\": 9 usable of 20",
+    "[13:21:58] commons \"سام ألتمان\": 10 usable of 20",
+    "[13:21:58] image: set aside \"Sam altman.jpg\" — a 2016 photograph of a person, older than 2018",
+    "[13:21:58] image: set aside \"Nancy Pelosi GLAAD 2017 2.jpg\" — a 2017 photograph of a person, older than 2018",
+    "[13:21:58] image: people shortlist: 2025 Meeting with Masayoshi Son and Sam Altman (Februar | 2023 Isaac Herzog meeting with Sam Altman, June 2023 (G | 2023 Isaac Herzog meeting with Sam Altman, June 2023 (G | 2023 Isaac Herzog meeting with Sam Altman, June 2023 (G",
+    "[13:22:04] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=375 attempt=1 ms=6471",
+    "[13:22:04] image: vision rejected all candidates (Every candidate shows Sam Altman beside identifiable people who are not part of this story. Photo 1 adds Japan's PM Ishiba and minister Iwaya. Photos 2-5 add Israel's President Herzog. Photo 6 is a casual 2022 snapshot with Wade Foster and Jack Altman. None shows Altman alone or in the fundraising role, so no photo should run and the fallback should look for an OpenAI or sector scene.)",
+    "[13:22:04] image: nothing of them since 2018 fits; their newest older photographs, run as file photos: 2016 Sam altman.jpg | 2017 Nancy Pelosi GLAAD 2017 2.jpg",
+    "[13:22:11] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=348 attempt=1 ms=6054",
+    "[13:22:11] image: vision rejected all candidates (Both photos show Altman at unrelated 2016-2017 events as Y Combinator president, not at OpenAI. The story is about OpenAI's funding round, not Altman personally. Photo 1 also shows another named person in front of a backdrop of other brands' logos. Photo 2 features Nancy Pelosi, who is not part of the story, and has on-screen text. Better to let the fallback find a picture that fits.)",
+    "[13:22:13] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=64 attempt=1 ms=2130",
+    "[13:22:13] image: last resort: data center server racks United States | data center server racks | data center server racks industrial",
+    "[13:22:14] commons \"data center server racks United States\": 4 usable of 6",
+    "[13:22:14] commons \"data center server racks\": 14 usable of 24",
+    "[13:22:14] image: dropped \"Wikimedia Foundation Servers-8055 15.jpg\" — another frame of a series a published story runs",
+    "[13:22:14] image: dropped \"Wikimedia Foundation Servers-8055 02.jpg\" — another frame of a series a published story runs",
+    "[13:22:14] commons \"data center server racks industrial\": 0 usable of 0",
+    "[13:22:14] commons \"data center\": 15 usable of 24",
+    "[13:22:14] image: dropped \"Utah Data Center Panorama (cropped).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[13:22:14] image: dropped \"Microsoft Data Center Middenmeer, the Netherlands - 1.jpg\" — another frame of a series a published story runs",
+    "[13:22:19] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=171 attempt=1 ms=4779",
+    "[13:22:19] image: vision rejected all candidates (fallback pass) (No candidate is usable. No. 1 is an amateur shot of an Italian data-centre front under construction. No. 2 is a map. No. 3 is CERN's building front with signage. Nos. 4-6 are dark, cluttered rack and cable close-ups from the Epstein Files raid, which would be embarrassing next to an OpenAI funding story. None shows wary investors or OpenAI itself.)",
+    "[13:22:34] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=985 attempt=1 ms=13869",
+    "[13:22:40] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=377 attempt=1 ms=6600",
+    "[13:22:40] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Virginia Tech - data center.jpg\": The frame is Virginia Tech's 2008 supercomputer hall with SGI's logo legible at the top centre, another firm's and anoth",
+    "[13:22:40] image: last pass, a neutral illustration: data center construction | traders stock exchange screens | data center",
+    "[13:22:41] pexels \"data center\": 8 usable",
+    "[13:22:41] pexels \"data center construction\": 8 usable",
+    "[13:22:41] pexels \"traders stock exchange screens\": 8 usable",
+    "[13:22:41] commons \"data center construction\": 16 usable of 24",
+    "[13:22:41] image: dropped \"Hyperion false color.jpg\" — names too little of data, center, construction",
+    "[13:22:41] image: dropped \"CAMPUS - Military Data Center (52106762896).jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:22:41] image: dropped \"Construction of the B Control and Data Building (grc-1963-p-01304).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[13:22:41] image: dropped \"The Hyperion Proto-Supercluster.jpg\" — names too little of data, center, construction",
+    "[13:22:41] image: dropped \"Clanis hyperion MHNT CUT 2010 0 321 Khasi Hills Assam India female dor\" — names too little of data, center, construction",
+    "[13:22:41] image: dropped \"World Trade Center station construction, circa 2002.jpg\" — dated 2002, an archival picture",
+    "[13:22:41] image: dropped \"Empty industrial warehouse interior with polished concrete floor in Ho\" — names too little of data, center, construction",
+    "[13:22:41] image: dropped \"Empty modern warehouse interior with polished floor and ample space lo\" — names too little of data, center, construction",
+    "[13:22:41] image: dropped \"From below of fiber optic equipment with similar colorful rubber cable\" — names too little of data, center, construction",
+    "[13:22:41] image: dropped \"Detailed view of fiber optic patch cables connecting to a blue patch p\" — an event's photograph, people and banners",
+    "[13:22:41] commons \"traders stock exchange screens\": 0 usable of 0",
+    "[13:22:41] commons \"traders stock\": 7 usable of 24",
+    "[13:22:41] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[13:22:41] image: dropped \"Toronto Stock Exchange 1956.jpg\" — dated 1956, an archival picture",
+    "[13:22:41] image: dropped \"The diseases of live stock and their most efficient remedies; (1855) (\" — dated 1855, an archival picture",
+    "[13:22:41] image: dropped \"A man analyzes cryptocurrency graphs on a touchscreen monitor in a mod\" — names too little of traders, stock, exchange, screens",
+    "[13:22:41] image: dropped \"A bearded man with glasses examines trading charts on a computer scree\" — names too little of traders, stock, exchange, screens",
+    "[13:22:41] image: dropped \"Market analysis with focus on cryptocurrency trends displayed. Ideal f\" — names too little of traders, stock, exchange, screens",
+    "[13:22:41] commons \"data center\": 15 usable of 24",
+    "[13:22:41] image: dropped \"Utah Data Center Panorama (cropped).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[13:22:41] image: dropped \"Microsoft Data Center Middenmeer, the Netherlands - 1.jpg\" — another frame of a series a published story runs",
+    "[13:22:49] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=491 attempt=1 ms=7539",
+    "[13:22:49] image: vision rejected all candidates (fallback pass) (No candidate works. Photos 1 and 2 have stock charts as their subject, and 2 is a staged hand-on-keyboard cliché with a Bybit exchange name on screen. Photo 5 is a map. Photo 6 is a building front with a legible CERN sign. Photo 3 is an amateur shot of a facility exterior behind road barriers, and photo 4 is an unrelated construction site. None shows OpenAI's cut funding target or wary investors.)",
+    "[13:22:59] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=493 attempt=1 ms=8849",
+    "[13:22:59] image: vision rejected all candidates (fallback pass) (No candidate fits. 1 is a close-up of a data screen, so a chart is its subject. 2 is a staged stock shot of a model in front of a chart screen, a stock cliché. 3-5 show a metro station under construction, unrelated to OpenAI's funding round or AI. 6 is an old amateur street snapshot in Manhattan with a flag patch and a recognisable place, and it is not a trading scene. Better to run as text.)",
+    "[13:22:59] published \"«أوبن إيه آي» الأمريكية تخفض مستهدف جولة تمويلها بمقدار 10 مليارات دولار\" -> openai-cuts-funding-target-10-billion-a127c9",
+    "[13:22:59] run budget of 35 minutes spent; \"فيتش تخفض نظرة تصنيف فرنسا إلى سلبية بعد انكماش الربع الثالث\" waits for the next run"
   ]
 }
