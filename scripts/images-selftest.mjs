@@ -726,6 +726,18 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
     ["https://live.staticflickr.com/3790/12001284873_5581f12f6c_b.jpg", "https://farm4.staticflickr.com/3790/12001284873_5581f12f6c_z.jpg", "https://images.pexels.com/photos/36563588/pexels-photo-36563588.jpeg?auto=compress&cs=tinysrgb&w=1280", "https://images.pexels.com/photos/36563588/pexels-photo-36563588.jpeg?w=940"].map(photoKey),
     ["flickr:12001284873", "flickr:12001284873", "pexels:36563588", "pexels:36563588"],
   );
+  // One photograph under two identities (the audit of 31 October): a Commons file imported from Flickr is that Flickr
+  // photograph, and a crop of a file is the file.
+  check(
+    "a Commons file carrying a Flickr number is that Flickr photo; a crop is its file",
+    [
+      photoKey("https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Samco_Redwood_crude_oil_tanker_%2814783173609%29.jpg/960px-Samco_Redwood_crude_oil_tanker_%2814783173609%29.jpg"),
+      photoKey("https://live.staticflickr.com/3906/14783173609_0a1b2c3d4e_b.jpg"),
+      photoKey("https://upload.wikimedia.org/wikipedia/commons/a/ab/Mark_Zuckerberg_F8_2018_Keynote_(cropped).jpg") === photoKey("https://upload.wikimedia.org/wikipedia/commons/c/cd/Mark_Zuckerberg_F8_2018_Keynote.jpg"),
+      seriesKey("Mark Zuckerberg F8 2018 Keynote (cropped).jpg") === seriesKey("Mark Zuckerberg F8 2018 Keynote.jpg"),
+    ],
+    ["flickr:14783173609", "flickr:14783173609", true, true],
+  );
   // The New Capital's district, published under the old host with a written comma, is offered again in the upload form.
   const oldForm = cbd.url.replace("https://upload.wikimedia.org", "https://thumb.wikimedia.org").replace(/%2C/g, ",") + "?utm_source=commons.wikimedia.org&utm_content=thumbnail";
   const r = await scenario({
@@ -974,11 +986,15 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   const draft = { title: "مصافي النفط تعمل بطاقتها القصوى", subtitle: "", lede: "قفزت هوامش التكرير.", body: "فقرة.", tags: ["النفط"], regions: ["عالمي"], kind: "news", section: "energy", imageQueries: [] };
   const snap = file("Refinery seen from the road.jpg");
   const pro = file("Refinery towers at dusk.jpg");
-  const amateurVerdict = (name) => (name.includes("from the road") ? "AMATEUR" : "RIGHT");
+  // The held frame is read again with the standard set aside (the audit of 31 October): here its subject is right.
+  const amateurVerdict = (name, prompt) => (name.includes("from the road") && !prompt.includes("already known to be a snapshot") ? "AMATEUR" : "RIGHT");
   const alone = await scenario({ draft, plan: { queries: ["oil refinery"], place: [], people: [], focus: "subject", places: [], place_queries: [] }, world: { "oil refinery": [snap] }, judge: (titles) => (titles.length ? 1 : 0), verify: amateurVerdict });
   check("with nothing professional, the snapshot held back runs at the end", alone.image?.title, snap.title);
   const both = await scenario({ draft, plan: { queries: ["oil refinery"], place: [], people: [], focus: "subject", places: [], place_queries: [] }, world: { "oil refinery": [snap, pro] }, judge: (titles) => (titles.length ? 1 : 0), verify: amateurVerdict });
   check("a professional photograph found later runs before it", both.image?.title, pro.title);
+  // AMATEUR is one word and says nothing of the subject: a snapshot of the wrong subject is not held, and nothing runs.
+  const wrong = await scenario({ draft, plan: { queries: ["oil refinery"], place: [], people: [], focus: "subject", places: [], place_queries: [] }, world: { "oil refinery": [snap] }, judge: (titles) => (titles.length ? 1 : 0), verify: (name, prompt) => (prompt.includes("already known to be a snapshot") ? "WRONG_SUBJECT" : "AMATEUR") });
+  check("a snapshot whose subject the second reading refuses is not held back", [wrong.image?.title ?? null, wrong.calls.filter((c) => c.startsWith("verify:")).length >= 2], [null, true]);
   check("every judge is told amateur photographs come last, and to prefer the nearest, clearest subject", [both.judgePrompts.every((p) => p.includes("AMATEUR LAST")), both.judgePrompts.every((p) => p.includes("nearest, largest and sharpest"))], [true, true]);
 }
 
@@ -1073,6 +1089,17 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   const fed = { ...developers, title: "مسؤولان في الفيدرالي الأمريكي يريان حاجة إلى رفع الفائدة مجدداً", tags: ["الاحتياطي الفيدرالي"], regions: ["الأمريكتان"] };
   const r = await scenario({ draft: fed, plan: planFor({ queries: ["traders screens"], place: [] }), world: {}, judge: () => 0, lastResort: { scene: null, country: "United States", institution: "Federal Reserve", city: null } });
   check("a central bank's building is searched only under its own decision", r.searched.some((q) => /Federal Reserve/.test(q)), false);
+  // Pakistan's State Bank under its own rate rise is a central bank (the audit of 31 October: it was "not a central bank").
+  const sbp = { ...developers, title: "المركزي الباكستاني يرفع الفائدة إلى 12% في أول زيادة منذ أبريل", tags: ["باكستان"], regions: ["آسيا"] };
+  const p = await scenario({ draft: sbp, plan: planFor({ queries: ["traders screens"], place: [] }), world: {}, judge: () => 0, lastResort: { scene: null, country: "Pakistan", institution: "State Bank of Pakistan", city: null } });
+  check("Pakistan's State Bank is searched under its own rate decision", p.searched.some((q) => /State Bank of Pakistan/.test(q)), true);
+  // A sovereign rating and the state's own deficit are its accounts (the audit of 31 October); a company's rating, a
+  // trade deficit and a bond yield are not.
+  check(
+    "a sovereign rating and the state's deficit are the state's accounts; a company's rating, a trade deficit, a yield are not",
+    ["موديز تبقي تصنيف فرنسا عند Aa3 مع نظرة سلبية", "«ستاندرد آند بورز» تثبّت تصنيف السعودية الائتماني مع نظرة مستقرة", "العجز المالي في المغرب يبلغ 4%", "الحكومة المغربية تتوقع بلوغ العجز سقفه البالغ 3% في 2026", "موديز ترفع تصنيف أرامكو", "العجز التجاري لمصر يتسع", "عائد السندات الفرنسية يتجاوز 5%"].map((title) => treasuryStory({ title })),
+    [true, true, true, true, false, false, false],
+  );
   const mines = { title: "الحرس الثوري: ألغام بحرية تفجّر 3 ناقلات نفط جنوبي مضيق هرمز", subtitle: "", tags: [] };
   const rates = { ...developers, title: "المركزي المصري يرفع الفائدة 100 نقطة أساس في أول زيادة منذ مارس 2024", tags: ["مصر"] };
   const money = await scenario({ draft: rates, plan: planFor({ queries: ["counting Egyptian pounds", "Egyptian pound notes"], place: ["Egypt", "Egyptian", "Cairo"] }), world: {}, judge: () => 0 });

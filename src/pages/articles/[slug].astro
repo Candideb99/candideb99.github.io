@@ -46,7 +46,9 @@ const sideRelated = more.slice(1);
 // The paper does not end at the sources: the newest of the same section close the page, none of them already on it
 // (related, or in the «آخر الأخبار» strip above). The side column's «الأحدث» (the five newest stories) went on 2026-10-19
 // at the owner's choice: 17 of its 20 headlines on the pages checked were already in the strip at the top of the page.
-const onPage = new Set([...more, ...stripStories(all, path)].map((a) => a.id));
+// The strip leaves out what «اقرأ أيضاً» prints (2026-10-31: 55 pages ran a story in both).
+const printed = more.map((a) => a.id);
+const onPage = new Set([...more, ...stripStories(all, path, printed)].map((a) => a.id));
 const moreFromSection = all.filter((a) => a.data.section === d.section && a.id !== article.id && !onPage.has(a.id)).slice(0, 4);
 // Internal sources point at the paper's own stories; one that has since been retired is named, not linked.
 const known = new Set(all.map(articleHref));
@@ -108,7 +110,7 @@ const breadcrumbLd = {
 const jsonLd = [articleLd, breadcrumbLd];
 ---
 
-<Base title={d.title} description={description} path={path} image={ogImage} imageAlt={d.image?.alt} type="article" section={d.section} jsonLd={jsonLd} publishedAt={d.publishedAt} updatedAt={d.updatedAt}>
+<Base title={d.title} description={description} path={path} image={ogImage} imageAlt={d.image?.alt} type="article" section={d.section} jsonLd={jsonLd} publishedAt={d.publishedAt} updatedAt={d.updatedAt} printed={printed}>
   {/* Search can list a story by its date (`data-pagefind-sort`, in milliseconds so no colon splits the value): «النفط»
       listed 7 September to 1 October first, by relevance alone, with that day's oil stories out of sight (2026-10-19). */}
   <article class="article wrap--article" data-section={d.section} data-pagefind-body data-pagefind-meta={`section:${d.section}`} data-pagefind-sort={`date:${Date.parse(d.publishedAt)}`}>

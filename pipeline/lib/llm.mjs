@@ -166,6 +166,9 @@ function claudeCliEnv() {
   return env;
 }
 
+/** The plan's allowance refused the call: "You've hit your session limit", "… weekly limit", "usage limit reached". */
+export const CLAUDE_LIMIT = /hit your (?:[\w-]+ )?limit|usage limit (?:reached|exceeded)|limit reached\b.*\bresets/i;
+
 async function callClaudeCli({ model, system, user, images = [], timeoutMs, effort }) {
   const { spawn } = await import("node:child_process");
   const cliModel = model || process.env.KHAZENDAR_CLAUDE_MODEL || CLAUDE_MODEL;
@@ -215,7 +218,7 @@ async function callClaudeCli({ model, system, user, images = [], timeoutMs, effo
     });
     child.on("close", (code) => {
       clearTimeout(timer);
-      if (code !== 0 && !out) return reject(new LlmError(`claude cli exit ${code}: ${err.slice(0, 200)}`, { retryable: true }));
+      if (code !== 0 && !out) return reject(new LlmError(`claude cli exit ${code}: ${err.slice(0, 200)}`, CLAUDE_LIMIT.test(err) ? { quota: true, status: 429 } : { retryable: true }));
       resolve(out);
     });
     child.stdin.end(input);
@@ -237,6 +240,10 @@ async function callClaudeCli({ model, system, user, images = [], timeoutMs, effo
     // "Your organization has disabled Claude subscription access for Claude Code" refused every call from 1 to
     // 17 October 2026: a refusal, not a blip to retry.
     const login = /not logged in|\b401\b|authenticat|oauth|invalid (?:x-)?api[- ]key|credit balance|subscription access/i.test(message);
+    // "You've hit your session limit · resets 5:30am (Europe/Berlin)": the plan's allowance, shared with every Claude
+    // use on the account, is spent until the reset. On 2026-10-31 a dry run asked three times at every step, and two
+    // chosen stories failed and took the rejection mark; like the ChatGPT allowance, it defers instead (meta.quota).
+    if (!login && CLAUDE_LIMIT.test(message)) throw new LlmError(`claude cli: ${message.slice(0, 200)}`, { quota: true, status: 429, resets: (message.match(/resets\s+([^\n]+)/i) || [])[1]?.trim() ?? null });
     throw new LlmError(`claude cli: ${message.slice(0, 200)}`, login ? { status: 401 } : { retryable: true });
   }
   const used = payload.usage ?? {};

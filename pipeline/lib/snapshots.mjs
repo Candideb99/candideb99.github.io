@@ -24,8 +24,20 @@ export const SNAPSHOT_DIR = path.join(process.cwd(), "evidence");
 const MAX_PASSAGES_CHARS = 4000;
 
 const fileOf = (slug, dir) => path.join(dir, `${slug}.json.gz`);
-const sentencesOf = (text) => String(text ?? "").replace(/\s+/g, " ").split(/(?<=[.؟!?])\s+/).map((s) => s.trim()).filter(Boolean);
+/**
+ * A page's sentences. A reader often glues them («…to 84.8.Weaker demand…», as the quote matcher found on 2026-10-27):
+ * a full stop followed straight by a letter ends a sentence too, a decimal does not, and neither does an initial
+ * («Lisa D. Cook» was saved cut in two). A page whose text came as one run had kept 7 "sentences" in 8,269 characters.
+ */
+const sentencesOf = (text) =>
+  String(text ?? "")
+    .replace(/\s+/g, " ")
+    .split(/(?<![\s.(][A-Z]\.)(?<=[.؟!?])(?:\s+|(?=[A-Z؀-ۿ«"]))/u)
+    .map((s) => s.trim())
+    .filter(Boolean);
 const squash = (t) => String(t ?? "").replace(/\s+/g, " ").trim();
+/** A sentence longer than this is a run the splitter could not open: a quote in it keeps a window around itself. */
+const LONG_SENTENCE = 700;
 
 /**
  * The figures a reader would check: decimals, and whole numbers of 100 or more that are not years. A source's sentence
@@ -39,33 +51,42 @@ function figuresOf(text, read = extractNumbers) {
 }
 
 /**
- * The passages of one source the story rests on: each quoted sentence with its neighbours, then each sentence that
- * carries one of the story's figures; in the source's own order, at most MAX_PASSAGES_CHARS.
+ * The passages of one source the story rests on: each quoted sentence with its neighbours first, then each sentence that
+ * carries one of the story's figures, within MAX_PASSAGES_CHARS; printed in the source's own order, the quotes the
+ * page's sentences do not hold as written after them.
+ *
+ * Until 2026-10-31 a quoted sentence could be lost, and with it the second look's protection (settleChanged and
+ * settleDrift read these passages): a dangling `else` dropped every quote the sentences did not hold as written, the
+ * figure sentences filled the cap in page order before the quotes, and the first piece too long for what was left ended
+ * the copy (143 of 1,775 quotes found at publication were missing; a BBC source was saved empty).
  */
 export function passagesOf(text, quotes, storyFigures) {
   const sentences = sentencesOf(text);
-  const keep = new Set();
-  // A quote the page's sentences do not contain as written (a quote across two sentences, a page cut differently) is
-  // kept as the check quoted it: it is the evidence either way.
+  const quoted = new Set();
+  // A quote the page's sentences do not contain as written (a quote across two sentences, a page cut differently), or
+  // one inside a sentence too long to keep, is kept as the check quoted it: it is the evidence either way.
   const loose = [];
   for (const q of quotes) {
     const probe = squash(q).slice(0, 60);
     if (!probe) continue;
     const i = sentences.findIndex((s) => s.includes(probe) || probe.includes(s.slice(0, 60)));
-    if (i >= 0) for (const j of [i - 1, i, i + 1]) if (j >= 0 && j < sentences.length) keep.add(j);
-    else loose.push(squash(q));
+    if (i < 0 || sentences[i].length > LONG_SENTENCE) {
+      loose.push(squash(q));
+      continue;
+    }
+    for (const j of [i - 1, i, i + 1]) if (j >= 0 && j < sentences.length && sentences[j].length <= LONG_SENTENCE) quoted.add(j);
   }
   const wanted = new Set(storyFigures);
+  const figured = [];
   sentences.forEach((s, i) => {
-    if (figuresOf(s, sourceNumbers).some((f) => wanted.has(f))) keep.add(i);
+    if (!quoted.has(i) && s.length <= LONG_SENTENCE && figuresOf(s, sourceNumbers).some((f) => wanted.has(f))) figured.push(i);
   });
-  let out = "";
-  for (const piece of [...[...keep].sort((a, b) => a - b).map((i) => sentences[i]), ...loose]) {
-    if (out.includes(piece)) continue;
-    if (out.length + piece.length > MAX_PASSAGES_CHARS) break;
-    out += `${out ? " " : ""}${piece}`;
-  }
-  return out;
+  let room = MAX_PASSAGES_CHARS;
+  const fits = (piece) => piece.length + 1 <= room && (room -= piece.length + 1, true);
+  const take = new Set([...quoted].sort((a, b) => a - b).filter((i) => fits(sentences[i])));
+  const extra = [...new Set(loose)].filter((q) => !take.size || ![...take].some((i) => sentences[i].includes(q))).filter(fits);
+  for (const i of figured) if (fits(sentences[i])) take.add(i);
+  return [...[...take].sort((a, b) => a - b).map((i) => sentences[i]), ...extra].join(" ");
 }
 
 /**

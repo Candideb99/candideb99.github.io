@@ -4,11 +4,27 @@
  * Latin names keep their brackets and never split across lines inside Arabic text.
  */
 // One run per figure however many groups it has (2026/27, 2026-09-19, 14:30, 2020–2025); see src/lib/bidi.ts.
-const NUMBER_SRC = String.raw`(?:(?<=^|[\s(\[«"'،])[+\-−])?\d[\d.,]*(?:[\/:\-–]\d[\d.,]*)*(?:\s?[%٪])?`;
+// A figure ends on a digit, so a sentence's full stop stays outside it; a percent may stand before a spaced or unspaced
+// range dash (2026-10-31; see src/lib/bidi.ts).
+const NUMBER_SRC = String.raw`(?:(?<=^|[\s(\[«"'،])[+\-−])?\d(?:[\d.,]*\d)?(?:\s?[%٪])?(?:(?:[\/:]|\s?[\-–]\s?)\d(?:[\d.,]*\d)?(?:\s?[%٪])?)*`;
 // Any Latin-script letter, accents included: an ASCII class cut «Jiménez» at «é» (2026-10-24; see src/lib/bidi.ts).
-// «&» joins a run («S&P 500»; see src/lib/bidi.ts).
-const LATIN_SRC = String.raw`(?<![&\p{Script=Latin}\p{M}0-9])\(?(?:\d+(?=\p{Script=Latin}))?\p{Script=Latin}[\p{Script=Latin}\p{M}0-9'’.\-&]*(?:\s+[\p{Script=Latin}\p{M}0-9'’.\-&]+)*\)?`;
+// «&» joins a run («S&P 500»), and digits before a word join it, hyphened or not («10-year»; see src/lib/bidi.ts).
+const LATIN_SRC = String.raw`(?<![&\p{Script=Latin}\p{M}0-9])\(?(?:\d+-?(?=\p{Script=Latin}))?\p{Script=Latin}[\p{Script=Latin}\p{M}0-9'’.\-&]*(?:\s+[\p{Script=Latin}\p{M}0-9'’.\-&]+)*\)?`;
 const RUN = new RegExp(`(${LATIN_SRC})|(${NUMBER_SRC})`, "gu");
+
+/** A Latin run gives back the sentence's full stop and a bracket it did not open or close (latinParts in src/lib/bidi.ts). */
+export function latinParts(run) {
+  let head = "";
+  let core = run;
+  let tail = "";
+  const count = (s, c) => s.split(c).length - 1;
+  for (;;) {
+    if (core.length > 1 && core.endsWith(".")) [core, tail] = [core.slice(0, -1), `.${tail}`];
+    else if (core.endsWith(")") && count(core, ")") > count(core, "(")) [core, tail] = [core.slice(0, -1), `)${tail}`];
+    else if (core.startsWith("(") && count(core, "(") > count(core, ")")) [head, core] = [`${head}(`, core.slice(1)];
+    else return [head, core, tail];
+  }
+}
 const SKIP = new Set(["code", "pre", "bdi", "script", "style", "svg", "a"]);
 
 function latinNode(text) {
@@ -41,8 +57,13 @@ function walk(node) {
       pieces.forEach((piece, i) => {
         if (piece === undefined || piece === "") return;
         if (i % 3 === 0) next.push({ type: "text", value: piece });
-        else if (i % 3 === 1) next.push(latinNode(piece));
-        else next.push(numberNode(piece));
+        else if (i % 3 === 2) next.push(numberNode(piece));
+        else {
+          const [head, core, tail] = latinParts(piece);
+          if (head) next.push({ type: "text", value: head });
+          next.push(latinNode(core));
+          if (tail) next.push({ type: "text", value: tail });
+        }
       });
       continue;
     }

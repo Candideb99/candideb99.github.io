@@ -553,6 +553,20 @@ if (spawnSync("git", ["--version"]).status === 0) {
     ).map((c) => c.status),
     ["drift", "confirmed", "confirmed", "confirmed"],
   );
+  // Supported by one source at publication, contradicted later by another (the Saudi tariff support, 2026-10-31): the
+  // sources disagree, a conflict listed, never corrected. Contradicted by the same source it stays as above.
+  const tariff = "ويبدأ صرفه للعسكريين مع بدء تطبيق التعريفة الجديدة في 1 يناير 2027.";
+  const named = [{ name: "الشرق الأوسط" }, { name: "الجزيرة نت" }, { name: "ذا ناشيونال" }];
+  const backed = [{ sentence: tariff, status: "supported", source: 1, quote: "وتبدأ اعتباراً من العام المقبل وقت تطبيق التعريفة الجديدة." }];
+  const against = (source, sourceName, quote) => ({ status: "confirmed", class: "period", sentence: tariff, quote, source, sourceName });
+  check(
+    "another source contradicting what one bore out at publication is a conflict; the same source, as before",
+    [
+      settleChanged([against(3, "ذا ناشيونال", "The support will take effect ahead of tariff changes.")], backed, ["The support will take effect ahead of tariff changes."], named)[0].status,
+      settleChanged([against(1, "الشرق الأوسط", "وتبدأ قبل تطبيق التعريفة الجديدة.")], backed, ["وتبدأ قبل تطبيق التعريفة الجديدة."], named)[0].status,
+    ],
+    ["conflict", "confirmed"],
+  );
 }
 
 // The mend keeps the revision's fixes (2026-10-30): gold's October loss of 3.8%, cut for a later price, came back into the
@@ -1110,6 +1124,67 @@ if (spawnSync("git", ["--version"]).status === 0) {
     quotedOutletsBlock(sources).includes("تجارت نيوز"),
     labelLine({ sourceName: "الشرق الأوسط", sourceNameEn: "Asharq Al-Awsat" }),
   ], [true, true, false, ""]);
+}
+
+{
+  // The site's isolation of figures and Latin runs (2026-10-31): a figure ends on a digit, so the sentence's full stop
+  // stays in the Arabic line («إلى .17 وتقول» on 196 pages); a percent range is one run; a Latin run gives back the full
+  // stop and a bracket it did not open; «10-year» is one run. The headline copy (src/lib/bidi.ts) uses the same patterns.
+  const { default: isolate } = await import("../src/lib/rehype-isolate-numbers.mjs");
+  const runs = (text) => {
+    const tree = { type: "root", children: [{ type: "element", tagName: "p", children: [{ type: "text", value: text }] }] };
+    isolate()(tree);
+    const out = (n) => (n.type === "text" ? n.value : n.tagName === "bdi" ? `[${n.children.map(out).join("")}]` : n.children.map(out).join(""));
+    return out(tree.children[0]);
+  };
+  check("a figure keeps the sentence's full stop out, a range is one run, a Latin run gives back a stray bracket", [
+    runs("إلى 17. وتقول"), runs("بين 3.75%-4% الشهر"), runs("عند 4.82 - 5.30 جنيه"), runs("(تقدير Kpler)"),
+    runs("(10-year Treasury yield)"), runs("مؤشر S&P 500."), runs("شركة Apple Inc. أعلنت"), runs("عائد U.S. Treasury اليوم"),
+    runs("العام المالي 2026/27 في 2026-09-19 تراجع −3.5%"), runs("ارتفع 5% - وهو أعلى"),
+  ], [
+    "إلى [17]. وتقول", "بين [3.75%-4%] الشهر", "عند [4.82 - 5.30] جنيه", "(تقدير [Kpler])",
+    "[(10-year Treasury yield)]", "مؤشر [S&P 500].", "شركة [Apple Inc]. أعلنت", "عائد [U.S. Treasury] اليوم",
+    "العام المالي [2026/27] في [2026-09-19] تراجع [−3.5%]", "ارتفع [5%] - وهو أعلى",
+  ]);
+  const patterns = (file) => [...readFileSync(file, "utf8").matchAll(/const (NUMBER_SRC|LATIN_SRC) = (String\.raw`[^`]+`)/g)].map((m) => m.slice(1).join("="));
+  check("the headlines' isolation (bidi.ts) uses the article bodies' patterns", patterns("src/lib/bidi.ts"), patterns("src/lib/rehype-isolate-numbers.mjs"));
+}
+
+{
+  // The audit of 31 October. (1) The plan's session limit is the allowance spent, deferred like ChatGPT's (meta.quota),
+  // never three tries a step and the rejection mark: a dry run lost two chosen stories that way.
+  const { CLAUDE_LIMIT } = await import("../pipeline/lib/llm.mjs");
+  check("the plan's limit is read as the allowance spent; a blip is not", [
+    CLAUDE_LIMIT.test("You've hit your session limit · resets 5:30am (Europe/Berlin)"),
+    CLAUDE_LIMIT.test("You've hit your weekly limit · resets Nov 3"),
+    CLAUDE_LIMIT.test("Claude AI usage limit reached|1761901200"),
+    CLAUDE_LIMIT.test("API Error: 529 Overloaded"),
+    CLAUDE_LIMIT.test("Request timed out"),
+  ], [true, true, true, false, false]);
+  // (2) The evidence keeps every quoted sentence: a quote the sentences do not hold as written, quotes before the figures'
+  // sentences within the cap, past an oversized piece, and glued sentences split without cutting an initial.
+  const { passagesOf } = await import("../pipeline/lib/snapshots.mjs");
+  const filler = Array.from({ length: 120 }, (_, i) => `Output was ${100 + i}.5 million barrels in month ${i}.`).join(" ");
+  check("the evidence keeps every quote the check found", [
+    passagesOf("Alpha one. Beta two.", ["a quote not on the page"], []),
+    passagesOf("Prices rose to 84.8.Weaker demand hit sales.Governor Lisa D. Cook dissented. Others agreed.", ["Weaker demand hit sales"], []),
+    passagesOf(`${filler} The ministry said exports would fall sharply next year. ${filler}`, ["The ministry said exports would fall sharply next year"], Array.from({ length: 120 }, (_, i) => `${100 + i}.5`)).includes("The ministry said exports would fall sharply next year."),
+    passagesOf(`${"y".repeat(4500)} with 123.4 tons. The key quote is here. Next one.`, ["The key quote is here"], ["123.4"]),
+    passagesOf("ارتفعت الصادرات 5%.وقال الوزير إن الإنتاج سيزيد. وأضاف أن الأسعار مستقرة.", ["وقال الوزير إن الإنتاج سيزيد"], []),
+  ], [
+    "a quote not on the page",
+    "Prices rose to 84.8. Weaker demand hit sales. Governor Lisa D. Cook dissented.",
+    true,
+    "The key quote is here. Next one.",
+    "ارتفعت الصادرات 5%. وقال الوزير إن الإنتاج سيزيد. وأضاف أن الأسعار مستقرة.",
+  ]);
+  // (3) A minus typed after a box's figure is its sign; a spaced range is not touched.
+  check("a trailing minus in a box value is the figure's sign", ["46%-", "46% -", "12 - 15%", "2025-2026"].map((v) => figureOnly(v)), ["−46%", "−46%", "12 - 15%", "2025-2026"]);
+  // (4) One measure per chart: a company's revenue beside its net profit is two (SpaceX's results).
+  check("a chart of revenue beside net profit is dropped; profit over time is kept", [
+    normalizeChart({ type: "bar", categories: ["الإيرادات", "صافي الربح"], series: [{ name: "فعلي", values: [14.6, 4.4] }, { name: "متوقع", values: [12.72, 1.57] }] }),
+    Boolean(normalizeChart({ type: "bar", categories: ["الربع الثالث 2024", "الربع الثالث 2025", "الربع الثالث 2026"], series: [{ name: "صافي الربح", values: [1, 2, 3] }] })),
+  ], [null, true]);
 }
 
 if (failed) {

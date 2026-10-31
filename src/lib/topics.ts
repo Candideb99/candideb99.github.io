@@ -123,11 +123,16 @@ function hit(article: Article, topic: Topic): Hit | null {
   return best;
 }
 
-/** A sub-topic's stories, newest first: the section's stories filed under it, and every story, from any section, that
- *  carries one of the tags that are its subject (one page per subject, tag-map.mjs). */
+/** A sub-topic's stories, newest first: the section's stories filed under it, and every story, from any section, that is
+ *  about its subject (one page per subject, tag-map.mjs): one of the subject's tags among its first two, or in its
+ *  headline. A tag far down the list is a side of the story: the oil page had listed gold's fall below 4,000 dollars, the
+ *  Fed's hold and Riyadh airport's reopening, whose tags ended in «النفط» (130 such listings, 2026-10-31). */
 export function topicArticles(articles: Article[], section: string, topic: Topic): Article[] {
   const own = new Set((topic.tags ?? []).map(normalizeArabic));
-  return articles.filter((a) => (a.data.section === section && hit(a, topic) !== null) || (own.size > 0 && a.data.tags.some((t) => own.has(normalizeArabic(canonicalTag(t))))));
+  const about = (a: Article) =>
+    a.data.tags.slice(0, 2).some((t) => own.has(normalizeArabic(canonicalTag(t)))) ||
+    [...own].some((t) => normalizeArabic(a.data.title).includes(t));
+  return articles.filter((a) => (a.data.section === section && hit(a, topic) !== null) || (own.size > 0 && about(a)));
 }
 
 /**

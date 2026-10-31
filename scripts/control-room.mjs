@@ -248,7 +248,9 @@ function progressLines() {
 /** "2 of 4 written · 1 refused" — counted from the run's own log lines, so it is never a guess. */
 function jobProgress() {
   const written = job.log.filter((l) => /\] (drafted|published) "/.test(l)).length;
-  const refused = job.log.filter((l) => /\] (reject|skip) /.test(l)).length;
+  // Refused, held by the check before publication, failed, or left for the next run: each a story not written (until
+  // 2026-10-31 only "reject" and "skip" lines were counted, and the second-pass critic printed none).
+  const refused = job.log.filter((l) => /\] (?:reject|skip|held|story failed) /.test(l) || /\] run budget of .* waits for the next run/.test(l)).length;
   const m = job.log[0]?.match(/--limit=(\d+)/);
   return { written, refused, target: m ? Number(m[1]) : null };
 }
@@ -290,6 +292,8 @@ async function allArticles() {
       hasTable: Boolean(d.table),
       importance: d.quality?.importance ?? null,
       featured: d.featured === true,
+      featuredAt: d.featuredAt ? String(d.featuredAt) : null,
+      format: d.format ?? null,
       models: d.models ?? {},
       // A draft is what the pipeline flagged as one, or a brand-new file git has never seen.
       isDraft: d.draft === true || untracked,
@@ -322,23 +326,40 @@ function nextCloudRun() {
   return null;
 }
 /**
- * Where each live story sits, by the same arithmetic as src/pages/index.astro and src/lib/articles.ts:
- * lead = strongest fresh news story (importance − hours/12 + 1.5 for a photo; or the newest featured one
- * within 48 h); cover = lead + the four strongest of the freshest twelve; next five = ticker.
+ * Where each live story sits, by the same arithmetic as src/pages/index.astro and src/lib/articles.ts (pickLead), module
+ * by module, each taking only what no module above it placed: the lead (the newest story featured within 48 hours of
+ * `featuredAt`, else the strongest full story: importance − hours/12 + 1.5 for a photo); the cover (the lead and the four
+ * strongest of the freshest twelve, no short story); the three readings beside it; the two secondary cards; the seven of
+ * «الأخبار في سطور»; the top stories' list (the four strongest of three days, no short story). Until 2026-10-31 it still
+ * placed short stories on the cover and called the next five "the ticker", which the front dropped on 2026-10-19. The
+ * front's rule that one event appears once (repeatedEvents) is not repeated here.
  */
 function placeOnFront(live) {
   const now = Date.now();
   const hours = (a) => (now - Date.parse(a.publishedAt)) / 36e5;
-  const news = live.filter((a) => a.kind === "news").sort((x, y) => Date.parse(y.publishedAt) - Date.parse(x.publishedAt));
+  const all = live.filter((a) => a.kind === "news").sort((x, y) => Date.parse(y.publishedAt) - Date.parse(x.publishedAt));
   for (const a of live) a.where = a.kind === "news" ? "section" : "hub";
-  if (!news.length) return live;
-  const featured = news.filter((a) => a.featured && hours(a) < 48);
-  const lead = featured[0] ?? [...news].sort((x, y) => ((y.importance ?? 5) - hours(y) / 12 + (y.image ? 1.5 : 0)) - ((x.importance ?? 5) - hours(x) / 12 + (x.image ? 1.5 : 0)))[0];
+  if (!all.length) return live;
+  const full = all.filter((a) => a.format !== "short");
+  const pool = full.length ? full : all;
+  const featuredFor = (a) => (now - Date.parse(a.featuredAt || a.publishedAt)) / 36e5;
+  const featured = all.filter((a) => a.featured && featuredFor(a) < 48).sort((x, y) => Date.parse(y.featuredAt || y.publishedAt) - Date.parse(x.featuredAt || x.publishedAt));
+  const lead = featured[0] ?? [...pool].sort((x, y) => ((y.importance ?? 5) - hours(y) / 12 + (y.image ? 1.5 : 0)) - ((x.importance ?? 5) - hours(x) / 12 + (x.image ? 1.5 : 0)))[0];
   const imp = (a) => (a.importance ?? 5) + (a.image ? 0.5 : 0);
-  const cover = [lead, ...news.filter((a) => a !== lead).slice(0, 12).sort((x, y) => imp(y) - imp(x)).slice(0, 4)];
-  const ticker = news.filter((a) => !cover.includes(a)).slice(0, 5);
-  cover.forEach((a, i) => (a.where = i === 0 ? "lead" : `cover ${i + 1}`));
-  ticker.forEach((a) => (a.where = "ticker"));
+  const byImp = (list) => [...list].sort((x, y) => imp(y) - imp(x));
+  const placed = new Set();
+  const unplaced = (list) => list.filter((a) => !placed.has(a));
+  const put = (list, where) => list.forEach((a, i) => {
+    placed.add(a);
+    a.where = typeof where === "function" ? where(i) : where;
+  });
+  put([lead, ...byImp(unplaced(all).filter((a) => a !== lead && a.format !== "short").slice(0, 12)).slice(0, 4)], (i) => (i === 0 ? "lead" : `cover ${i + 1}`));
+  const hub = (kinds) => live.filter((a) => kinds.includes(a.kind)).sort((x, y) => Date.parse(y.publishedAt) - Date.parse(x.publishedAt));
+  const freshFeature = hub(["feature"]).find((a) => hours(a) < 72);
+  put([...hub(["weekly", "analysis"]).slice(0, 1), ...hub(["explainer"]).slice(0, 1), ...(freshFeature ? [freshFeature] : hub(["paper"]).slice(0, 1))], "reading");
+  put(byImp(unplaced(all).filter((a) => a.format !== "short").slice(0, 8)).slice(0, 2), "secondary");
+  put(unplaced(all).slice(0, 7), "digest");
+  put(byImp(unplaced(all).filter((a) => hours(a) < 72 && a.format !== "short")).slice(0, 4), "top list");
   return live;
 }
 /** Per section: stories in the last 24 h and 7 days, and the newest one — the answer to "is the whole paper alive?". */
@@ -346,7 +367,8 @@ function coverage(live) {
   const now = Date.now();
   const rows = {};
   for (const id of NEWS_SECTIONS) rows[id] = { id, name: SECTION_NAME[id], day: 0, week: 0, last: null };
-  for (const k of ["explainer", "analysis", "paper", "weekly", "feature"]) rows[k] = { id: k, name: { explainer: "Explainers", analysis: "Analyses", paper: "Paper readings", weekly: "Week's review", feature: "In depth (في العمق)" }[k], day: 0, week: 0, last: null };
+  // «في العمق» is stopped (the owner, 2026-10-19): no row of its own, which read "last 36 days ago" as if it were late.
+  for (const k of ["explainer", "analysis", "paper", "weekly"]) rows[k] = { id: k, name: { explainer: "Explainers", analysis: "Analyses", paper: "Paper readings", weekly: "Week's review" }[k], day: 0, week: 0, last: null };
   for (const a of live) {
     const key = a.kind === "news" ? a.section : a.kind;
     const r = rows[key];
@@ -362,8 +384,12 @@ function coverage(live) {
 async function markPublished(file) {
   const full = path.join(ARTICLES, file);
   let raw = await readFile(full, "utf8");
+  const wasDraft = /^draft:\s*true\r?\n/m.test(raw);
   raw = raw.replace(/^draft:\s*true\r?\n/m, "");
-  raw = raw.replace(/^(---\r?\n[\s\S]*?)(\r?\n---)/, (m, head, tail) => `${head}\nupdatedAt: ${new Date().toISOString()}${tail}`);
+  // A draft goes live now, and that is its time: kept at the hour it was written, a story approved hours later entered the
+  // cover already aged, and an «updatedAt» on its first publication said it had been changed (2026-10-31).
+  if (wasDraft && /^publishedAt:/m.test(raw)) raw = raw.replace(/^publishedAt:.*$/m, `publishedAt: ${new Date().toISOString()}`);
+  else raw = raw.replace(/^(---\r?\n[\s\S]*?)(\r?\n---)/, (m, head, tail) => `${head}\nupdatedAt: ${new Date().toISOString()}${tail}`);
   await writeFile(full, raw, "utf8");
 }
 /** A discarded story must not come back on the next run. */
@@ -379,8 +405,10 @@ async function markDiscarded(slug) {
       }
     }
     if (n) await writeFile(SEEN, `${JSON.stringify(state, null, 2)}\n`, "utf8");
+    return n;
   } catch {
     /* optional */
+    return 0;
   }
 }
 /** Set or clear `featured`; only one story is featured at a time. */
@@ -392,9 +420,10 @@ async function setFeatured(file, on) {
     let raw = await readFile(full, "utf8");
     const had = /^featured:\s*true\r?\n/m.test(raw);
     const want = on && f === file;
-    if (had === want) continue;
-    raw = raw.replace(/^featured:\s*true\r?\n/m, "");
-    if (want) raw = raw.replace(/^(---\r?\n[\s\S]*?)(\r?\n---)/, (m, head, tail) => `${head}\nfeatured: true${tail}`);
+    if (had === want && !want) continue;
+    raw = raw.replace(/^featured:\s*true\r?\n/m, "").replace(/^featuredAt:.*\r?\n/m, "");
+    // The 48 hours run from the click (`featuredAt`, read by the site's pickLead); featuring a story again restarts them.
+    if (want) raw = raw.replace(/^(---\r?\n[\s\S]*?)(\r?\n---)/, (m, head, tail) => `${head}\nfeatured: true\nfeaturedAt: ${new Date().toISOString()}${tail}`);
     await writeFile(full, raw, "utf8");
     touched.push(`content/articles/${f}`);
   }
@@ -454,10 +483,14 @@ async function health() {
   let editorReal = null;
   let deploy = null;
   if (ghOk) {
-    const d = await exec("gh", ["run", "list", "--repo", REPO, "--workflow", "deploy.yml", "-L", "1", "--json", "conclusion,createdAt,headSha,url"]);
+    // Judged on the last deploy that finished: a deploy still running has no result yet, and the newest run alone had shown
+    // "THE SITE IS NOT UPDATING" through each of the day's twenty-odd deploys; a cancelled one was replaced by a newer
+    // one (2026-10-31).
+    const d = await exec("gh", ["run", "list", "--repo", REPO, "--workflow", "deploy.yml", "-L", "8", "--json", "status,conclusion,createdAt,headSha,url"]);
     try {
-      const [r] = JSON.parse(d);
-      if (r) deploy = { ok: r.conclusion === "success", when: r.createdAt, sha: (r.headSha ?? "").slice(0, 7), url: r.url };
+      const runs = JSON.parse(d);
+      const r = runs.find((x) => x.status === "completed" && !["cancelled", "skipped"].includes(x.conclusion));
+      if (r) deploy = { ok: r.conclusion === "success", when: r.createdAt, sha: (r.headSha ?? "").slice(0, 7), url: r.url, deploying: Boolean(runs[0] && runs[0].status !== "completed") };
     } catch {
       /* none yet */
     }
@@ -513,7 +546,9 @@ async function health() {
       cloudKeySet: /ANTHROPIC_API_KEY/.test(secrets),
       cloudTokenSet: /CLAUDE_CODE_OAUTH_TOKEN/.test(secrets),
       model: local.KHAZENDAR_CLAUDE_MODEL || (activeProvider === "claude" ? local.KHAZENDAR_MODEL : "") || "claude-opus-5-5",
-      models: ["claude-opus-5-5", "claude-3-5-sonnet-20241022", "claude-3-5-haiku-20241022"],
+      // The current Claude models (the 3.5 models of 2024 offered here until 2026-10-31 are retired: chosen, the newsroom
+      // would stop).
+      models: ["claude-opus-5-5", "claude-sonnet-5-5", "claude-haiku-5-5"],
     },
     openai: {
       id: "openai",
@@ -609,7 +644,9 @@ function chatEnv() {
     else if (/(?:_KEY|_TOKEN|_SECRET)$|^KHAZENDAR_CODEX_AUTH/.test(key)) delete env[key];
   }
   if (oauth) env.CLAUDE_CODE_OAUTH_TOKEN = oauth;
-  if (apiKey) env.ANTHROPIC_API_KEY = apiKey;
+  // With a subscription token, never the API key too: Claude Code uses a key ahead of a token, and the chat would bill
+  // the API (the newsroom drops the key the same way, llm.mjs claudeCliEnv()).
+  else if (apiKey) env.ANTHROPIC_API_KEY = apiKey;
   return env;
 }
 const CHAT_RULES = `You are the site assistant for خازندار, an automated Arabic economics newspaper owned by Ahmed.
@@ -661,7 +698,9 @@ async function startChat(message) {
     chat.turns.push({ role: "you", text: message });
     chatSend({ t: "you", text: message });
     const args = [...CLI.slice(1), "-p", "--output-format", "stream-json", "--verbose", "--permission-mode", "acceptEdits", "--append-system-prompt", CHAT_RULES];
-    if (keys.KHAZENDAR_CHAT_MODEL) args.push("--model", keys.KHAZENDAR_CHAT_MODEL);
+    // The chat runs Claude Code, so its model is a Claude model; "Default (same as newsroom)" is the newsroom's own (until
+    // 2026-10-31 it passed none, and the CLI's own default answered; the menu also offered Gemini and GPT models it cannot run).
+    args.push("--model", /^claude-/.test(keys.KHAZENDAR_CHAT_MODEL ?? "") ? keys.KHAZENDAR_CHAT_MODEL : keys.KHAZENDAR_CLAUDE_MODEL || "claude-opus-5-5");
     if (chat.sessionId) args.push("--resume", chat.sessionId);
     else {
       chat.sessionId = randomUUID();
@@ -1012,13 +1051,13 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
         <div class="row"><button class="quiet" onclick="run('news')">News stories</button><label>in <select id="newsSection"><option value="">all sections</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option></select></label><label><select id="limit"><option>1</option><option>2</option><option selected>4</option><option>6</option><option>8</option></select> stories</label></div>
         <div class="row"><button class="quiet" onclick="run('dry')">Test one story (dry run)</button><span class="m">Uses the local controller and reports the result without saving an article.</span></div>
         <div class="row"><button class="quiet" onclick="run('explainer')">An explainer</button><button class="quiet" onclick="run('analysis')">An analysis</button><label>of <select id="analysisSection"><option value="">the week</option><option value="economy">الاقتصاد only</option><option value="markets">الأسواق only</option><option value="energy">الطاقة only</option></select></label></div>
-        <div class="row"><button class="quiet" onclick="run('paper')">A research paper</button><button class="quiet" onclick="run('weekly')">The week's review</button><button class="quiet" onclick="run('feature')">In depth (في العمق)</button><button class="quiet" onclick="run('pull')">Sync from GitHub</button></div>
-        <p class="m" style="margin:2px 0 0">These write drafts for your approval. News takes 8–10 minutes for four stories; the others 3–5.</p>
+        <div class="row"><button class="quiet" onclick="run('paper')">A research paper</button><button class="quiet" onclick="run('weekly')">The week's review</button><button class="quiet" onclick="run('feature')" title="Stopped on 19 October; runs only when you press this">In depth (في العمق, stopped)</button><button class="quiet" onclick="run('pull')">Sync from GitHub</button></div>
+        <p class="m" style="margin:2px 0 0">These write drafts for your approval. News takes about half an hour for four stories; the others 10–15 minutes.</p>
       </div>
       <h2>What runs on its own</h2>
       <ul class="sched" id="sched"></ul>
       <p class="m" style="margin-top:10px">All of it in the cloud, whether this laptop is on or not. The paper's sections are balanced by rule: a section with nothing for three days takes the next good story.</p>
-      <div id="rejected-box" style="display:none"><h2>Refused by the copy desk, last run</h2><div id="rejected" class="m"></div></div>
+      <div id="rejected-box" style="display:none"><h2>Not published from the last run</h2><div id="rejected" class="m"></div></div>
     </div>
   </div>
 </section>
@@ -1034,7 +1073,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
     <span class="m" id="f-count"></span>
   </div>
   <table class="list"><thead><tr><th>Story</th><th>Where</th><th>Score</th><th>Sources</th><th></th></tr></thead><tbody id="live"></tbody></table>
-  <p class="m" style="margin-top:14px"><b>Where</b> is the story's place right now: the front page's lead, one of the four cover stories, the ticker, or its section page (and الأحدث). Nothing is ever archived away — every story keeps its page, its section's older pages and its topic page for good, as the big dailies do.</p>
+  <p class="m" style="margin-top:14px"><b>Where</b> is the story's place right now: the front page's lead, one of the four cover stories, a reading beside them, a second story, «الأخبار في سطور», the top stories, or its section page (and الأحدث). The section blocks lower on the front page are not shown here. Nothing is ever archived away — every story keeps its page, its section's older pages and its topic page for good, as the big dailies do.</p>
 </section>
 
 <!-- ================================ SETTINGS ================================ -->
@@ -1055,11 +1094,11 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
       <label><span>Active AI Controller</span>
         <select id="activeProvider" onchange="onProviderChange()">
           <option value="codex">ChatGPT subscription — Codex (no API bill)</option>
-          <option value="gemini">Google Gemini (standby)</option>
-          <option value="claude">Anthropic Claude (Idle / Standby)</option>
+          <option value="gemini">Google Gemini</option>
+          <option value="claude">Anthropic Claude (subscription)</option>
           <option value="openai">OpenAI API (separate billing)</option>
-          <option value="qwen">Alibaba Qwen (Idle / Standby)</option>
-          <option value="openrouter">OpenRouter / Multi-model Hub (Idle / Standby)</option>
+          <option value="qwen">Alibaba Qwen</option>
+          <option value="openrouter">OpenRouter / Multi-model Hub</option>
         </select>
       </label>
 
@@ -1092,14 +1131,9 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
       <label><span>Model for the "Change the site" chat</span>
         <select id="chatModel">
           <option value="">Default (same as newsroom)</option>
-          <option value="gemini-3.8-flash">Gemini 3.8 Flash</option>
-          <option value="gemini-4-argon">Gemini 4 Argon</option>
-          <option value="gemini-3.7-flash">Gemini 3.7 Flash</option>
-          <option value="gpt-6.1-sol">GPT-6.1 Sol</option>
-          <option value="gpt-4o">GPT-4o</option>
-          <option value="gpt-4o-mini">GPT-4o mini</option>
-          <option value="claude-3-5-sonnet-20241022">Claude 3.5 Sonnet</option>
           <option value="claude-opus-5-5">Claude Opus 5.5</option>
+          <option value="claude-sonnet-5-5">Claude Sonnet 5.5</option>
+          <option value="claude-haiku-5-5">Claude Haiku 5.5</option>
         </select>
       </label>
 
@@ -1263,7 +1297,7 @@ var LIVE_URL=${JSON.stringify(LIVE)};
 var SECTION=${JSON.stringify(SECTION_NAME)};
 var DOTS=${JSON.stringify(ICON.dots)};
 var KIND={news:'news',explainer:'explainer',analysis:'analysis',paper:'paper reading',weekly:'weekly review',feature:'in depth'};
-var WHERE={lead:'Front page · the lead','cover 2':'Front page · cover 2','cover 3':'Front page · cover 3','cover 4':'Front page · cover 4','cover 5':'Front page · cover 5',ticker:'Front page · ticker',section:'Section page',hub:'Its hub'};
+var WHERE={lead:'Front page · the lead','cover 2':'Front page · cover 2','cover 3':'Front page · cover 3','cover 4':'Front page · cover 4','cover 5':'Front page · cover 5',reading:'Front page · beside the cover',secondary:'Front page · second story',digest:'Front page · الأخبار في سطور','top list':'Front page · top stories',section:'Section page',hub:'Its hub'};
 var esc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
 var rtl=function(s){return /[\\u0600-\\u06FF]/.test(s)};
 var post=function(url,body){return fetch(url,{method:'POST',headers:{'content-type':'application/json'},body:body?JSON.stringify(body):undefined})};
@@ -1307,7 +1341,7 @@ function render(s){
   if (r) {
     r.style.display=s.job.running?'grid':'none';
     if(s.job.running){document.getElementById('running-name').textContent='Working: '+s.job.name;var secs=Math.round((Date.now()-s.job.startedAt)/1000);document.getElementById('running-time').textContent=Math.floor(secs/60)+'m '+(secs%60)+'s';var c=s.job.counts;document.getElementById('running-count').textContent=c&&s.job.kind==='news'?'· '+c.written+(c.target?' of '+c.target:'')+' written'+(c.refused?' · '+c.refused+' refused':''):'';document.getElementById('running-lines').textContent=s.job.progress.join('\\n')||'starting…';document.getElementById('log').textContent=s.job.log.join('\\n')}
-    else if(wasRunning){document.getElementById('auto-note').textContent=s.job.exitCode===0?'Finished: '+s.job.name+'.':'Stopped or failed: '+s.job.name+'.'}
+    else if(wasRunning){var lg=(s.job.log||[]).filter(function(l){return l&&!/^— finished/.test(l)&&!/^\\$ /.test(l)});var said=lg.filter(function(l){return /\\] (published|drafted|reject|skip|held|story failed|desk paused)/.test(l)}).slice(-4);var tail=(s.job.exitCode===0||said.length?said:lg.slice(-3)).map(function(l){return l.replace(/^\\[\\d\\d:\\d\\d:\\d\\d\\] /,'').slice(0,220)}).join(' · ');document.getElementById('auto-note').textContent=(s.job.exitCode===0?'Finished: ':'Stopped or failed: ')+s.job.name+'.'+(tail?' '+tail:'')}
   }
   wasRunning=Boolean(s.job.running);
   var ndEl = document.getElementById('n-drafts');
@@ -1316,7 +1350,7 @@ function render(s){
   if (dEl) dEl.innerHTML=s.drafts.length?s.drafts.map(draft).join(''):'<div class="empty">Nothing waits for you. The newsroom is publishing on its own; anything you ask for on the right appears here for approval first.</div>';
   var daEl = document.getElementById('drafts-all');
   if (daEl) daEl.style.display=s.drafts.length>1?'block':'none';
-  var rej=(s.lastRun&&s.lastRun.report||[]).filter(function(x){return /^rejected|^skip/.test(x.outcome||'')});
+  var rej=(s.lastRun&&s.lastRun.report||[]).filter(function(x){return /^rejected|^skip|^held|^error|^deferred/.test(x.outcome||'')});
   var rbEl = document.getElementById('rejected-box');
   if (rbEl) rbEl.style.display=rej.length?'block':'none';
   var rjEl = document.getElementById('rejected');
@@ -1343,6 +1377,9 @@ function renderChecks(s){
 }
 function draft(a){var writer=(a.models&&a.models.writer)?String(a.models.writer).split('→').pop().trim().split('/').pop():'';return '<div class="draft">'+(a.image?'<img src="'+esc(a.image)+'" alt="">':'<div class="noimg">no photo</div>')+'<div><h3>'+esc(a.title)+'</h3><p>'+esc(a.subtitle)+'</p><div class="meta">'+esc(SECTION[a.section]||a.section)+' · '+esc(KIND[a.kind]||a.kind)+' · '+scoreTag(a.score)+' '+esc(a.verdict)+(a.hasChart?' · chart':'')+(a.hasTable?' · table':'')+' · '+a.sources.length+' sources'+(a.committed?' · from the cloud':'')+(writer?' · <span style="opacity:0.75" title="Writer: '+esc(a.models.writer)+'">'+esc(writer)+'</span>':'')+'</div><div class="acts"><button class="quiet sm" data-file="'+esc(a.file)+'" onclick="openPreview(this.dataset.file)">Read it</button><button class="go sm" data-file="'+esc(a.file)+'" onclick="publish(this.dataset.file)">Publish</button><button class="danger sm" data-file="'+esc(a.file)+'" data-slug="'+esc(a.slug)+'" onclick="discard(this.dataset.file,this.dataset.slug)">Discard</button></div></div></div>'}
 function renderLive(){
+  // The months the stories were published in (the list had offered only "any month", 2026-10-31).
+  var mEl=document.getElementById('f-month');
+  if(mEl&&mEl.options.length<2){LIVE.map(function(a){return a.publishedAt.slice(0,7)}).filter(function(m,i,all){return /^\\d{4}-\\d\\d$/.test(m)&&all.indexOf(m)===i}).sort().reverse().forEach(function(m){var o=document.createElement('option');o.value=m;o.textContent=new Date(m+'-15').toLocaleDateString('en-GB',{month:'long',year:'numeric'});mEl.appendChild(o)})}
   var sec=document.getElementById('f-section').value,kind=document.getElementById('f-kind').value,month=document.getElementById('f-month').value,where=document.getElementById('f-where').value,q=document.getElementById('f-q').value.trim().toLowerCase();
   var rows=LIVE.filter(function(a){var front=a.where!=='section'&&a.where!=='hub';return (!sec||a.section===sec)&&(!kind||a.kind===kind)&&(!month||a.publishedAt.slice(0,7)===month)&&(!where||(where==='front'?front:!front))&&(!q||(a.title+' '+a.subtitle).toLowerCase().indexOf(q)>=0)});
   document.getElementById('f-count').textContent=rows.length===LIVE.length?LIVE.length+' stories':rows.length+' of '+LIVE.length;
@@ -1508,7 +1545,7 @@ function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(f
   var dl = document.getElementById('deploy-light');
   if (dl && h.deploy) {
     dl.className = 'light ' + (h.deploy.ok ? 'ok' : 'no');
-    dl.innerHTML = '<i></i><span>' + (h.deploy.ok ? 'Site deploy OK · ' + esc(fmtWhen(h.deploy.when)) : '<b>THE SITE IS NOT UPDATING</b> — last deploy failed. <a href="' + esc(h.deploy.url) + '" target="_blank">See why</a>') + '</span>';
+    dl.innerHTML = '<i></i><span>' + (h.deploy.ok ? 'Site deploy OK · ' + esc(fmtWhen(h.deploy.when)) : '<b>THE SITE IS NOT UPDATING</b> — last deploy failed. <a href="' + esc(h.deploy.url) + '" target="_blank">See why</a>') + (h.deploy.deploying ? ' · deploying now' : '') + '</span>';
   }
 
   var cm = document.getElementById('chatModel');
@@ -1534,6 +1571,9 @@ function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(f
   }
 }).catch(function(err){ console.error('Health fetch failed:', err); });}
 loadHealth();
+// The deploy light was read once a page load; it is read again every five minutes, except while Settings is open, whose
+// fields the same answer fills (an unsaved choice would be reset).
+setInterval(function(){if(location.hash!=='#set')loadHealth()},5*60*1000);
 function saveKey(name,id){var v=document.getElementById(id).value.trim();if(!v)return;var n=document.getElementById('k_note');n.textContent='saving…';post('/keys',{name:name,value:v,github:document.getElementById('k_gh').checked}).then(function(r){return r.text()}).then(function(t){n.textContent=t;document.getElementById(id).value='';loadHealth()})}
 function testOpenAI(btn){var n=document.getElementById('openai-test');var model=document.getElementById('activeProvider').value==='openai'?document.getElementById('newsroomModel').value:'gpt-6.1-sol';btn.disabled=true;n.textContent='Testing '+model+'…';post('/providers/openai/test',{model:model}).then(function(r){return r.json()}).then(function(r){n.textContent=r.ok?'Connected: '+r.model+' · '+r.message+' · '+(r.ms/1000).toFixed(1)+'s':r.error}).catch(function(e){n.textContent='Could not test: '+e.message}).finally(function(){btn.disabled=false})}
 function testCodex(btn){var n=document.getElementById('codex-test');btn.disabled=true;n.textContent='Testing your ChatGPT subscription…';post('/providers/codex/test',{}).then(function(r){return r.json()}).then(function(r){n.textContent=r.ok?'Connected: '+r.model+' · '+r.message+' · '+r.billing:r.error}).catch(function(e){n.textContent='Could not test: '+e.message}).finally(function(){btn.disabled=false})}
@@ -1623,7 +1663,24 @@ function body(req) {
 }
 // --autostash: the chat leaves edits uncommitted on purpose and a plain rebase refuses to run over them.
 // -X theirs: the cloud commits pipeline/state every run; keep the local hunk, as newsroom.yml does.
-const PUSH = [["git", ["pull", "--rebase", "--autostash", "-X", "theirs", "pages", "main"]], ["git", ["push", "pages", "HEAD:main"]]];
+const SYNC = ["git", ["pull", "--rebase", "--autostash", "-X", "theirs", "pages", "main"]];
+const PUSH = [SYNC, ["git", ["push", "pages", "HEAD:main"]]];
+/**
+ * What a story carries besides its file, which the cloud commits with it (newsroom.yml): its evidence and a handout
+ * photograph kept on the site. Published from the desk without them, a handout ran as a broken image and the evidence
+ * never reached the repository (2026-10-31).
+ */
+async function filesOf(articleFiles) {
+  const extra = [];
+  for (const file of articleFiles) {
+    const parsed = parseArticle(file, await readFile(path.join(ARTICLES, file), "utf8").catch(() => ""));
+    const slug = parsed?.data?.slug;
+    if (slug && existsSync(path.join(root, "evidence", `${slug}.json.gz`))) extra.push(`evidence/${slug}.json.gz`);
+    const photo = String(parsed?.data?.image?.url ?? "");
+    if (/^\/photos\/handouts\/[\w.-]+$/.test(photo) && existsSync(path.join(root, "public", photo))) extra.push(`public${photo}`);
+  }
+  return extra;
+}
 function commitAndPush(name, paths, message) {
   return runJob(name, "publish", [["git", ["add", ...paths]], ["git", [...GIT_ID, "commit", "-q", "-m", message]], ...PUSH]);
 }
@@ -1690,22 +1747,24 @@ const server = http.createServer(async (req, res) => {
     if (url.pathname === "/run" && req.method === "POST") {
       const kind = url.searchParams.get("kind");
       const limit = Math.max(1, Math.min(Number(url.searchParams.get("limit")) || 4, 10));
+      // Every run starts from the cloud's latest stories and state (SYNC): from a stale copy the desk drafted events the
+      // cloud had already published, and Publish pushed the repeats (2026-10-31).
       const plans = {
-        dry: ["test one story", [["node", ["pipeline/run.mjs", "--dry-run", "--limit=1"]]]],
-        news: ["news stories", [["node", ["pipeline/run.mjs", "--draft", `--limit=${limit}`]]]],
-        explainer: ["an explainer", [["node", ["pipeline/run.mjs", "--draft", "--mode=explainer"]]]],
-        analysis: ["an analysis", [["node", ["pipeline/run.mjs", "--draft", "--mode=analysis"]]]],
-        paper: ["a research paper", [["node", ["pipeline/run.mjs", "--draft", "--mode=paper"]]]],
-        weekly: ["the week's review", [["node", ["pipeline/run.mjs", "--draft", "--mode=weekly"]]]],
-        feature: ["an in-depth piece (في العمق)", [["node", ["pipeline/run.mjs", "--draft", "--mode=feature"]]]],
+        dry: ["test one story", [SYNC, ["node", ["pipeline/run.mjs", "--dry-run", "--limit=1"]]]],
+        news: ["news stories", [SYNC, ["node", ["pipeline/run.mjs", "--draft", `--limit=${limit}`]]]],
+        explainer: ["an explainer", [SYNC, ["node", ["pipeline/run.mjs", "--draft", "--mode=explainer"]]]],
+        analysis: ["an analysis", [SYNC, ["node", ["pipeline/run.mjs", "--draft", "--mode=analysis"]]]],
+        paper: ["a research paper", [SYNC, ["node", ["pipeline/run.mjs", "--draft", "--mode=paper"]]]],
+        weekly: ["the week's review", [SYNC, ["node", ["pipeline/run.mjs", "--draft", "--mode=weekly"]]]],
+        feature: ["an in-depth piece (في العمق)", [SYNC, ["node", ["pipeline/run.mjs", "--draft", "--mode=feature"]]]],
         build: ["build & local preview", [["npm", ["run", "build"]], ["npx", ["astro", "preview", "--port", "4325", "--host", "127.0.0.1"]]], { env: { KHAZENDAR_SHOW_DRAFTS: "1" } }],
-        pull: ["sync from GitHub", [["git", ["pull", "--rebase", "--autostash", "-X", "theirs", "pages", "main"]]]],
+        pull: ["sync from GitHub", [SYNC]],
       };
       const plan = plans[kind];
       if (!plan) return text(400, "unknown action");
       const sections = (url.searchParams.get("sections") ?? "").replace(/[^a-z,]/g, "");
       if (sections && (kind === "news" || kind === "analysis")) {
-        plan[1][0][1].push(`--sections=${sections}`);
+        plan[1].find(([command]) => command === "node")[1].push(`--sections=${sections}`);
         plan[0] += ` (${sections})`;
       }
       if (!runJob(plan[0], kind, plan[1], plan[2])) return text(409, `Still busy with "${job.name}". Wait for it to finish, or press Stop.`);
@@ -1722,7 +1781,7 @@ const server = http.createServer(async (req, res) => {
       if (!file.endsWith(".md") || !existsSync(path.join(ARTICLES, file))) return text(404, "not found");
       if (job.running) return text(409, `Still busy with "${job.name}". Wait for it to finish first.`);
       await markPublished(file);
-      commitAndPush("publish 1 story", [`content/articles/${file}`, "pipeline/state", "pipeline/runs"], `newsroom: publish ${file.replace(/\.md$/, "")}`);
+      commitAndPush("publish 1 story", [`content/articles/${file}`, ...(await filesOf([file])), "pipeline/state", "pipeline/runs"], `newsroom: publish ${file.replace(/\.md$/, "")}`);
       return text(200, "Publishing — it is live in about a minute.");
     }
     if (url.pathname === "/publish-all" && req.method === "POST") {
@@ -1730,7 +1789,7 @@ const server = http.createServer(async (req, res) => {
       const drafts = (await allArticles()).filter((a) => a.isDraft);
       if (!drafts.length) return text(200, "Nothing to publish.");
       for (const d of drafts) await markPublished(d.file);
-      commitAndPush(`publish ${drafts.length} stories`, [...drafts.map((d) => `content/articles/${d.file}`), "pipeline/state", "pipeline/runs"], `newsroom: publish ${drafts.length} item(s) from the desk`);
+      commitAndPush(`publish ${drafts.length} stories`, [...drafts.map((d) => `content/articles/${d.file}`), ...(await filesOf(drafts.map((d) => d.file))), "pipeline/state", "pipeline/runs"], `newsroom: publish ${drafts.length} item(s) from the desk`);
       return text(200, "Publishing — they are live in about a minute.");
     }
     if (url.pathname === "/discard" && req.method === "POST") {
@@ -1739,9 +1798,14 @@ const server = http.createServer(async (req, res) => {
       if (!file.endsWith(".md") || !existsSync(full)) return text(404, "not found");
       const status = await porcelain();
       const tracked = !(status.get(`content/articles/${file}`) ?? "").includes("?");
+      // What the draft brought with it and nothing else holds: its evidence and a handout photograph, never committed.
+      const extras = (await filesOf([file])).filter((f) => (status.get(f) ?? "").includes("?"));
       await unlink(full);
-      await markDiscarded(url.searchParams.get("slug") ?? "");
-      if (tracked && !job.running) commitAndPush("discard a cloud draft", ["-A", `content/articles/${file}`, "pipeline/state"], `newsroom: discard ${file.replace(/\.md$/, "")}`);
+      for (const f of extras) await rm(path.join(root, f), { force: true });
+      const marked = await markDiscarded(url.searchParams.get("slug") ?? "");
+      // The mark that keeps it from coming back goes to the cloud too, a local draft's as a cloud draft's: kept on the
+      // laptop alone, the cloud could write the same story on its next run (2026-10-31).
+      if (!job.running && (tracked || marked)) commitAndPush(tracked ? "discard a cloud draft" : "record a discarded draft", tracked ? ["-A", `content/articles/${file}`, "pipeline/state"] : ["pipeline/state"], `newsroom: discard ${file.replace(/\.md$/, "")}`);
       return text(200, "discarded");
     }
     if (url.pathname === "/feature" && req.method === "POST") {
@@ -1774,7 +1838,9 @@ const server = http.createServer(async (req, res) => {
       if (!file.endsWith(".md") || !existsSync(full)) return text(404, "not found");
       if (job.running) return text(409, `Still busy with "${job.name}". Wait for it to finish first.`);
       await unlink(full);
-      commitAndPush("unpublish", ["-A", "content/articles"], `unpublish: ${file.replace(/\.md$/, "")}`);
+      // Only this story's removal: «-A content/articles» had also pushed every local draft and any article another session
+      // was editing (2026-10-31).
+      commitAndPush("unpublish", ["-A", `content/articles/${file}`], `unpublish: ${file.replace(/\.md$/, "")}`);
       return text(200, "Removed. The site updates in about a minute.");
     }
     if (url.pathname === "/health") return json(await health());
@@ -1884,6 +1950,9 @@ const server = http.createServer(async (req, res) => {
 
       const b = await exec("gh", ["variable", "set", "KHAZENDAR_PROVIDER", "--repo", REPO, `--body=${prov}`]);
       if (actualModel) await exec("gh", ["variable", "set", "KHAZENDAR_MODEL", "--repo", REPO, `--body=${actualModel}`]);
+      // The cloud reads Claude's model from its own variable first (newsroom.yml, llm.mjs): set alone, KHAZENDAR_MODEL
+      // changed nothing there while Settings showed it as the cloud's (2026-10-31).
+      if (actualModel && prov === "claude") await exec("gh", ["variable", "set", "KHAZENDAR_CLAUDE_MODEL", "--repo", REPO, `--body=${actualModel}`]);
       const bad = /error|not logged|could not/i.test(b) ? b : null;
       return text(200, bad ? `Saved locally; cloud variable update skipped: ${bad.slice(0, 100)}` : `Done — active controller is now ${prov.toUpperCase()} (${actualModel || "default"}). Other models are in idle mode.`);
     }
@@ -1923,6 +1992,8 @@ const server = http.createServer(async (req, res) => {
       return text(200, /error|not logged|could not/i.test(out) ? `Could not: ${out.slice(0, 160)}` : value === "1" ? "Done — from the next run the cloud writes drafts and waits for you." : "Done — the cloud publishes on its own.");
     }
     if (url.pathname === "/settings" && req.method === "POST") {
+      // Saved during a job, a setting never went live: later publishes commit only their own stories (2026-10-31).
+      if (job.running) return text(409, `Still busy with "${job.name}". Nothing was saved: save again when it finishes.`);
       const patch = await body(req);
       const current = JSON.parse(readFileSync(SITE_FILE, "utf8"));
       // The AdSense ID decides who is paid for the paper's ads and the verification code whom Google takes for its
@@ -1935,7 +2006,6 @@ const server = http.createServer(async (req, res) => {
       for (const key of ["contactEmail", "publisher", "adsenseClient", "googleSiteVerification"]) if (typeof patch[key] === "string") current[key] = patch[key].trim();
       if (typeof patch.private === "boolean") current.private = patch.private;
       await writeFile(SITE_FILE, `${JSON.stringify(current, null, 2)}\n`, "utf8");
-      if (job.running) return text(200, "Saved. It goes live with the next publish.");
       commitAndPush("publish settings", ["src/data/site.json"], "settings: from the control room");
       return text(200, "Saved and publishing — live in about a minute.");
     }
@@ -1962,8 +2032,10 @@ const server = http.createServer(async (req, res) => {
       const files = c.files.filter((f) => !f.file.startsWith(".github/"));
       if (!files.length) return text(200, "Only a change to an automatic job waits, and those are never published from the desk. Ask Claude Code to look at it.");
       if (job.running) return text(409, `Still busy with "${job.name}".`);
-      commitAndPush("publish site changes", files.map((f) => f.file), "site: changes from the control room");
-      return text(200, files.length < c.count ? "Publishing — live in about a minute. A change to an automatic job stays unpublished: those never go out from the desk." : "Publishing — live in about a minute.");
+      // The site's gate first (scripts/gate.mjs: every script parses, the type check, the build, the self-tests), as for any
+      // change to the site's code: until 2026-10-31 the chat's changes went to main unchecked. A failure stops the job.
+      runJob("check and publish site changes", "publish", [["node", ["scripts/gate.mjs"]], ["git", ["add", ...files.map((f) => f.file)]], ["git", [...GIT_ID, "commit", "-q", "-m", "site: changes from the control room"]], ...PUSH]);
+      return text(200, files.length < c.count ? "Checking the site, then publishing — about ten minutes. A change to an automatic job stays unpublished: those never go out from the desk." : "Checking the site, then publishing — about ten minutes.");
     }
     if (url.pathname === "/undo" && req.method === "POST") {
       if (chat.running) return text(409, "It is still working. Press Stop first.");
@@ -2016,7 +2088,12 @@ function listenOn(i = 0) {
         redir.listen(17777, "127.0.0.1");
       } catch {}
     }
-    if (process.env.KHAZENDAR_OPEN_BROWSER === "1") spawn("cmd", ["/c", "start", "", url], { shell: false, windowsHide: true, stdio: "ignore", detached: true }).unref();
+    if (process.env.KHAZENDAR_OPEN_BROWSER === "1") {
+      spawn("cmd", ["/c", "start", "", url], { shell: false, windowsHide: true, stdio: "ignore", detached: true }).unref();
+      // Opened by the owner (OPEN_CONTROL_ROOM.cmd): the desk first takes the cloud's latest stories and state, or every
+      // number on it is only as fresh as the last "Sync from GitHub" he pressed (2026-10-31).
+      runJob("sync from GitHub", "pull", [SYNC]);
+    }
   };
   server.once("error", onError);
   server.once("listening", onListening);

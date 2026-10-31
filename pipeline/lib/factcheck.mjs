@@ -383,12 +383,23 @@ export function settleDrift(checks, savedPool) {
  * live blog was retitled. When the saved passages carry the quote too, the check before publication missed a real error,
  * and it stays confirmed.
  */
-export function settleChanged(checks, claims, savedPool) {
+export function settleChanged(checks, claims, savedPool, savedSources = []) {
   if (!claims?.length) return checks;
   const norm = (s) => String(s ?? "").replace(/\s+/g, " ").trim();
-  const supported = new Set(claims.filter((c) => c.status === "supported").map((c) => norm(c.sentence)));
+  const supported = new Map(claims.filter((c) => c.status === "supported").map((c) => [norm(c.sentence), c]));
+  // The source that bore the sentence out at publication, by name where the copy names its sources (their numbers can
+  // shift between the copy and the page's list).
+  const backerOf = (claim) => savedSources[claim.source - 1]?.name ?? null;
   return checks.map((c) => {
-    if (c.status !== "confirmed" || c.source === 0 || !supported.has(norm(c.sentence))) return c;
+    if (c.status !== "confirmed" || c.source === 0) return c;
+    const was = supported.get(norm(c.sentence));
+    if (!was) return c;
+    // Another source than the one that bore it out: the sources disagree and the story followed one of them, which the
+    // check calls a conflict and lists, never corrects (2026-10-31: the Saudi tariff support «مع بدء تطبيق التعريفة»,
+    // as Asharq Al-Awsat had it, was "corrected" toward The National's "ahead of tariff changes").
+    const backer = backerOf(was);
+    const other = backer && c.sourceName ? norm(backer) !== norm(c.sourceName) : was.source != null && was.source !== c.source;
+    if (other && was.quote) return { ...c, status: "conflict", atPublication: "supported", backedBy: backer ?? was.source, backing: was.quote };
     if (c.quote && savedPool.some((t) => quoteFound(c.quote, t))) return c;
     return { ...c, status: "drift", atPublication: "supported" };
   });

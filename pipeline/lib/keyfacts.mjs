@@ -137,7 +137,9 @@ export function isFigure(value, label = "") {
  * and printed three names under «الأرقام». A clock time («02:22») has no space after its colon and is left alone.
  */
 export function figureOnly(value, label = "") {
-  const v = String(value ?? "").trim();
+  // A minus typed after the figure, as it falls in a right-to-left line («46%-», Aldar's box, 2026-10-31), is the sign
+  // in front of it: the site prints it «−46%», where the trailing hyphen only looked right on screen by accident.
+  const v = String(value ?? "").trim().replace(/^(\d[\d.,]*\s?[%٪]?)\s*[-−](?!\s*\d)(?=\s|$)/, "−$1");
   const m = v.match(/^(.+?)\s*[:：]\s+(?=[؀-ۿ«"])/);
   return m && isFigure(m[1], label) ? m[1].trim() : v;
 }

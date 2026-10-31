@@ -108,8 +108,9 @@ const articles = defineCollection({
       .optional(),
     ai: z.boolean().default(true),
     draft: z.boolean().default(false),
-    /** Set from the control room: this story leads the front page while it is fresh (48 hours). */
+    /** Set from the control room: this story leads the front page for 48 hours from `featuredAt` (else its publication). */
     featured: z.boolean().default(false),
+    featuredAt: isoString.optional(),
   }),
 });
 

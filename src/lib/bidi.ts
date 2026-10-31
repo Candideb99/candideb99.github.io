@@ -11,13 +11,35 @@
  * out in reverse («27/2026», «19-2026-09»), which the reader took for the figure itself (2026-09-22).
  * rehype-isolate-numbers.mjs carries the same pattern for the article body.
  */
-const NUMBER_SRC = String.raw`(?:(?<=^|[\s(\[«"'،])[+\-−])?\d[\d.,]*(?:[\/:\-–]\d[\d.,]*)*(?:\s?[%٪])?`;
+// A figure ends on a digit: «\d[\d.,]*» took a sentence's full stop into the run, and the line drew «إلى .17 وتقول» on
+// 196 pages (2026-10-31). A percent may stand before a range's dash, and the dash may be spaced: «3.75%-4%» had split in
+// two and read «4%-3.75%», «4.82 - 5.30» likewise.
+const NUMBER_SRC = String.raw`(?:(?<=^|[\s(\[«"'،])[+\-−])?\d(?:[\d.,]*\d)?(?:\s?[%٪])?(?:(?:[\/:]|\s?[\-–]\s?)\d(?:[\d.,]*\d)?(?:\s?[%٪])?)*`;
 // Any Latin-script letter, accents included (2026-10-24: «(Santiago Jiménez Londoño)» was cut at «é» and «ñ», and the
 // pieces were laid out right to left as «(o، énez Londoñ(Santiago Jim»).
 // «&» joins a run («S&P 500», «AT&T»): split at it, «S» stood alone and «P» was left to the Arabic line, which printed
 // «500 P&S» on six pages (2026-10-31).
-const LATIN_SRC = String.raw`(?<![&\p{Script=Latin}\p{M}0-9])\(?(?:\d+(?=\p{Script=Latin}))?\p{Script=Latin}[\p{Script=Latin}\p{M}0-9'’.\-&]*(?:\s+[\p{Script=Latin}\p{M}0-9'’.\-&]+)*\)?`;
+// Digits before a word join it, hyphened or not («3D», «10-year»): «(10-year Treasury yield)» had split at the hyphen.
+const LATIN_SRC = String.raw`(?<![&\p{Script=Latin}\p{M}0-9])\(?(?:\d+-?(?=\p{Script=Latin}))?\p{Script=Latin}[\p{Script=Latin}\p{M}0-9'’.\-&]*(?:\s+[\p{Script=Latin}\p{M}0-9'’.\-&]+)*\)?`;
 const RUN = new RegExp(`(${LATIN_SRC})|(${NUMBER_SRC})`, "gu");
+
+/**
+ * A Latin run gives back what belongs to the Arabic line around it: the sentence's full stop («… Kpler.»), and a bracket
+ * it did not open or close («(تقدير Kpler)» isolated «Kpler)», drawn with its bracket on the wrong side; 2026-10-31).
+ * rehype-isolate-numbers.mjs carries the same function.
+ */
+export function latinParts(run: string): [string, string, string] {
+  let head = "";
+  let core = run;
+  let tail = "";
+  const count = (s: string, c: string) => s.split(c).length - 1;
+  for (;;) {
+    if (core.length > 1 && core.endsWith(".")) [core, tail] = [core.slice(0, -1), `.${tail}`];
+    else if (core.endsWith(")") && count(core, ")") > count(core, "(")) [core, tail] = [core.slice(0, -1), `)${tail}`];
+    else if (core.startsWith("(") && count(core, "(") > count(core, ")")) [head, core] = [`${head}(`, core.slice(1)];
+    else return [head, core, tail];
+  }
+}
 
 export const NUMBER_PATTERN = new RegExp(NUMBER_SRC, "gu");
 export const RUN_PATTERN = RUN;
@@ -56,7 +78,7 @@ const HOLD_MAX = 16;
 const PARTICLES = new Set(["إلى", "في", "من", "على", "عن", "مع", "منذ", "بعد", "قبل", "حتى", "دون", "نحو", "عند", "بين", "رغم", "خلال", "وسط", "أمام", "ضد", "عبر", "لدى", "تحت", "فوق", "أو", "ثم", "لا", "لم", "لن", "قد", "بعدما", "بسبب", "إثر", "عقب"]);
 const HEADS = new Set(["أدنى", "أعلى", "أكبر", "أكثر", "أقل", "أول", "آخر", "أسرع", "أبطأ", "أقوى", "أضعف", "أفضل", "أسوأ", "أبرز", "أحدث"]);
 const UNITS = new Set(["مليار", "مليارات", "مليون", "ملايين", "ألف", "آلاف", "تريليون", "دولار", "دولاراً", "دولارا", "دولارات", "يورو", "جنيه", "جنيهاً", "جنيهات", "ريال", "ريالاً", "ريالات", "درهم", "درهماً", "دينار", "نقطة", "نقاط", "برميل", "براميل", "طن", "أطنان", "سنتاً", "شهراً", "أشهر", "عاماً", "أعوام", "سنوات", "يوماً", "أيام", "أسابيع"]);
-const FIGURE = /^[+\-−]?\d[\d.,]*(?:[\/:\-–]\d[\d.,]*)*[%٪]?$/;
+const FIGURE = /^[+\-−]?\d[\d.,]*(?:[%٪]?[\/:\-–]\d[\d.,]*)*[%٪]?$/;
 const bare = (word: string) => word.replace(/^[«"'(]+|[»"')،؛:.!؟]+$/g, "");
 /** A word of the set, alone or with the و/ف an Arabic joint attaches («وفي»، «وأعلى»). */
 const isIn = (set: Set<string>, word: string) => set.has(word) || (/^[وف]/.test(word) && set.has(word.slice(1)));
@@ -95,7 +117,9 @@ export function isolateNumbers(text: string): string {
       if (piece === undefined || piece === "") return "";
       // split() yields plain text at every third position, then the Latin and number captures
       if (i % 3 === 0) return escapeHtml(piece);
-      return i % 3 === 1 ? wrapRun(escapeHtml(piece), undefined) : wrapRun(undefined, escapeHtml(piece));
+      if (i % 3 === 2) return wrapRun(undefined, escapeHtml(piece));
+      const [head, core, tail] = latinParts(piece);
+      return escapeHtml(head) + wrapRun(escapeHtml(core), undefined) + escapeHtml(tail);
     })
     .join("");
 }

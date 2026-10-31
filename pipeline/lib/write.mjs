@@ -545,6 +545,9 @@ const MEASURE_FAMILIES = [
   ["inflation", /تضخم/],
   ["growth", /نمو|الناتج/],
   ["unemployment", /بطالة/],
+  // A company's results: SpaceX's revenue beside its net profit, actual against expected, passed as one measure (2026-10-31).
+  ["revenue", /إيرادات|مبيعات/],
+  ["profit", /ربح|أرباح|صافي الدخل/],
 ];
 const measureOf = (category) => MEASURE_FAMILIES.find(([, re]) => re.test(category))?.[0];
 

@@ -50,8 +50,12 @@ function tagCounts() {
 }
 
 const escape = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-/** The tag as a whole word behind the letters Arabic joins to it; group 1 is the joined letters, group 2 the tag. */
-const tagPattern = (tag) => new RegExp(`(?<![\\p{L}\\p{M}])((?:[وف])?(?:[بكل])?)(${escape(tag)})(?![\\p{L}\\p{M}])`, "u");
+/**
+ * The tag as a whole word behind the letters Arabic joins to it; group 1 is the joined letters, group 2 the tag. Never
+ * the second half of an institution's name: «لوزارة الدفاع» had linked «الدفاع» to the defence industry (2026-10-31).
+ */
+const NAME_HEAD = "(?:وزارة|وزير|وزيرة|هيئة|مجلس|سلطة|قوات)";
+const tagPattern = (tag) => new RegExp(`(?<![\\p{L}\\p{M}])(?<![\\p{L}]*${NAME_HEAD}\\s)((?:[وف])?(?:[بكل])?)(${escape(tag)})(?![\\p{L}\\p{M}])`, "u");
 
 export default function rehypeTopicLinks() {
   return (tree, file) => {

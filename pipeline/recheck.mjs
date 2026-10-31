@@ -55,6 +55,8 @@ const MAX_AGE_H = 7 * 24;
 const BUDGET_MS = (Number(option("budget", 28)) || 28) * 60 * 1000;
 /** A check that failed (Claude down, a limit reached) is tried again in a later run, twice at most. */
 const MAX_FAILURES = 2;
+/** Set when the model's allowance refuses a call: no further story is read this run (check()). */
+let paused = false;
 const started = Date.now();
 const lines = [];
 const log = (m) => {
@@ -150,9 +152,10 @@ async function check(story, ledger, report, corrections) {
       const saved = sources.map((s) => s.saved).filter(Boolean);
       // So is a sentence the check before publication found supported, when only a rewritten page now contradicts it
       // (settleChanged()).
-      const claims = loadSnapshot(story.slug)?.claims;
+      const copy = loadSnapshot(story.slug);
+      const claims = copy?.claims;
       if (saved.length || claims?.length) {
-        result.checks = settleChanged(settleDrift(result.checks, saved), claims, saved);
+        result.checks = settleChanged(settleDrift(result.checks, saved), claims, saved, copy?.sources ?? []);
         result.counts = { ...result.counts, confirmed: result.checks.filter((c) => c.status === "confirmed").length, drift: result.checks.filter((c) => c.status === "drift").length };
       }
       entry.fromCopy = sources.filter((s) => s.snapshot).length || undefined;
@@ -173,6 +176,13 @@ async function check(story, ledger, report, corrections) {
       for (const c of confirmed) log(`  ✗ [${c.class}] ${c.sentence.slice(0, 110)} — ${c.correction?.slice(0, 160)}`);
       if (confirmed.length) corrections.push({ slug: story.slug, issue: correctionIssue(confirmed) });
     } catch (error) {
+      // The plan's allowance is spent (ChatGPT's, or Claude's session limit): the second look stops, and the story is
+      // read in a later run, its tries untouched (two failures and it would be read no more).
+      if (error.meta?.quota) {
+        if (!paused) log(`the model's allowance is spent; the second look stops here (${String(error.message).split("\n").pop().slice(0, 160)})`);
+        paused = true;
+        return;
+      }
       const prior = ledger.stories[story.slug];
       entry.outcome = "failed";
       entry.failures = (prior?.outcome === "failed" ? prior.failures ?? 1 : 0) + 1;
@@ -226,9 +236,16 @@ async function main() {
   const queue = [...chosen];
   // Two at a time, as the newsroom calls Claude; no new check starts once the budget is spent.
   await Promise.all([0, 1].map(async () => {
-    while (queue.length && Date.now() - started < BUDGET_MS) await check(queue.shift(), ledger, report, corrections);
+    while (queue.length && !paused && Date.now() - started < BUDGET_MS) await check(queue.shift(), ledger, report, corrections);
   }));
-  if (queue.length) log(`${queue.length} left for the next run (time budget spent)`);
+  if (queue.length) log(`${queue.length} left for the next run (${paused ? "the model's allowance is spent" : "time budget spent"})`);
+  // The corrections editor would meet the same refusal, and a story recorded "flagged" is never read again (choose()):
+  // its errors wait for the next run, which reads the story afresh.
+  if (paused && corrections.length) {
+    for (const c of corrections) delete ledger.stories[c.slug];
+    log(`${corrections.length} stor${corrections.length === 1 ? "y" : "ies"} with a confirmed error wait for the next run, to be read again then`);
+    corrections.length = 0;
+  }
 
   let corrected = 0;
   let editorCalls = 0;

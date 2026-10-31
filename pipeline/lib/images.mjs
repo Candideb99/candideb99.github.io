@@ -9,6 +9,7 @@ import { claudeEffort } from "./claude-effort.mjs";
 import { fixNames } from "./copydesk.mjs";
 import { USER_AGENT, fetchWithTimeout } from "./util.mjs";
 import { photoKey } from "./photo-key.mjs";
+import { countriesNamed } from "./regions.mjs";
 
 /**
  * Everything the picture desk reaches outside itself for: the model, the libraries, the thumbnails. The desk calls
@@ -647,11 +648,18 @@ const TREASURY_WORDS = [
   /(?:^|[^\p{L}])[وفبل]?(?:فوائد|خدمة)\s+(?:ال)?(?:دين|ديون)(?![\p{L}])/u,
   /(?:^|[^\p{L}])[وفبل]?(?:لل|ال)مالية\s+العامة(?![\p{L}])/u,
   /(?:^|[^\p{L}])[وفبل]?(?:لل|ال)?(?:نفقات|إنفاق)\s+(?:ال)?(?:عامة|عام|حكومي|حكومية)(?![\p{L}])/u,
+  // The deficit as the state's own (the audit of 31 October: «العجز المالي» was not read); a trade or current-account
+  // deficit is not the state's accounts.
+  /(?:^|[^\p{L}])[وفبل]?(?:لل|ال)?عجز(?:ها|ه)?\s+(?:ال)?(?:مالي|حكومي)(?![\p{L}])/u,
+  /(?:^|[^\p{L}])[وفبل]?(?:لل|ال)عجز\s+(?:\S+\s+)?سقف/u,
 ];
+/** A rating agency's verdict on a state's debt: an agency's rating of a country the headline names (not a company's). */
+const RATING = /(?:موديز|فيتش|ستاندرد آند بورز|إس آند بي|S&P)[\s\S]*تصنيف|تصنيف(?:ها|ه)?\s+(?:ال)?(?:سيادي|ائتماني\s+السيادي)/u;
 const HOUSEHOLD_COST = /دعم|أسعار|سعر|القيمة المضافة|رسوم|أجور|رواتب|معاشات|تعرف?ة|تعريفة/u;
 export const treasuryStory = (draft) => {
   const headline = String(draft?.title ?? "");
-  return TREASURY_WORDS.some((re) => re.test(headline)) && !HOUSEHOLD_COST.test(headline);
+  if (HOUSEHOLD_COST.test(headline)) return false;
+  return TREASURY_WORDS.some((re) => re.test(headline)) || (RATING.test(headline) && (countriesNamed(headline).size > 0 || /السيادي/.test(headline)));
 };
 /** A market, its stalls, vendors or shoppers in a file's record («Markets in Cairo»); a stock or bond market is not one. */
 const MARKET_SCENE = /(?<!\b(?:stock|financial|capital|money|bond|equity|debt|oil|gas|energy|commodity|commodities|labou?r|housing|property|emerging|frontier|single|black)\s)\b(?:markets?|marketplaces?)\b|\b(?:souqs?|souks?|suqs?|bazaa?rs?|shoppers?|shopping|vendors?|hawkers?|stalls?|grocer(?:y|ies)|supermarkets?)\b/i;
@@ -684,6 +692,8 @@ export function seriesKey(title) {
     .replace(/\([^)]*\d[^)]*\)/g, " ")
     .replace(/[^\p{L}]+/gu, " ")
     .replace(/\b(?:img|dsc|dscn|dcim|pic|photo|image)\b/g, " ")
+    // a crop or an edit of a frame is the frame (Zuckerberg's F8 keynote ran on two Meta stories, 2026-10-31)
+    .replace(/\b(?:cropped|crop|edited|retouched|rotated)\b/g, " ")
     .replace(/\s+/g, " ")
     .trim();
   if (key.split(" ").filter((w) => w.length >= 3).length < 3) return "";
@@ -1441,7 +1451,7 @@ const AUDIT_EVENT = " A photograph of an earlier edition of the event the story 
 const AUDIT_OWN_OBJECT = " So is the story's own place or named object, as the desk's search for it finds it: a site, field, plant, port, ship or rig the story names and the file's record names too, shown in the frame. A ship or a rig is the story's own wherever the file says it was taken, as the story's people are (the drillship «ستينا فورث» under the well it drilled, photographed in the Canaries); RECAPTION when its caption names that other place.";
 const AUDIT_BRAND = " So is, under a headline that is ONE company's own news (its result, guidance, deal, listing, penalty or cuts), that company's CURRENT logo or brand as the clear subject, sharp, on its own sign, forecourt, store, vehicle or site, wherever it was photographed, and its own site abroad (the owner, 2026-10-30, on BP's results); a former logo, another company's brand, a street or building front where the brand is a small part, or the logo as a graphic, screen or sticker is WRONG_SUBJECT.";
 const AUDIT_PRINTED =` It is printed so: "the caption" is the line under "Caption the paper printed" above, never the file name or the Commons description (a file called "… at the oil terminal in Lisboa" printed as «ناقلة نفط (${ILLUSTRATIVE})» names no place; the audit of 2026-09-24 confused the two).`;
-export function photoRules({ draft, image = {}, neutral = false, people = [], places = [], skyline = false, thumbnail = null, known = [], side = [], event = [], lastResort = false, audit = false }) {
+export function photoRules({ draft, image = {}, neutral = false, people = [], places = [], skyline = false, thumbnail = null, known = [], side = [], event = [], lastResort = false, audit = false, standardAside = false }) {
   const personRule = known.length ? ` (${known.join(", ")})` : audit ? AUDIT_PEOPLE : "";
   // The company whose own news the story is (findImage(): `imageCompany`); the audit, which has no planner, reads AUDIT_BRAND.
   const company = draft?.imageCompany ?? "";
@@ -1456,7 +1466,7 @@ ${CONCEPT_KINDS.has(draft.kind) ? "- This piece explains or analyses a concept: 
 ${neutral ? "" : "- RECAPTION: the frame alone would be RIGHT or GENERIC_OK, but the caption names an airline, an operator, an owner, a company, a port, an airport or a person the story does not mention (an airline's A321neo under a story about the A321neo's fuselage; a tanker's operator under a story about tanker rates). " + (audit ? "The caption is then written again to name only what the story names." : "The paper then rewrites the caption to name only what the story names and asks you again.") + " Never for a wrong person, a wrong country or a wrong subject: those stay refusals.\n"}${places.length && !neutral && namesAPlace(image, places) ? `- ${placeTierNote(places)} The file places this photograph there: RIGHT when its frame shows the story's subject at that place, WRONG_SUBJECT when it shows something else there.\n` : ""}- UNSERIOUS, whatever else fits: ${GRAVITY_RULE}
 ${neutral ? NEUTRAL_CHECK + (audit ? AUDIT_PRINTED : "") : people.length ? "" : PLACE_RULE}${!neutral && company ? `\n${companyHome(company)}` : ""}
 - STOCK: ${STOCK_RULE}
-${thumbnail ? `- AMATEUR: the photograph itself is attached; refuse it when it is not to publication standard, whatever its subject: ${PUBLICATION_STANDARD.replace(/^PUBLICATION STANDARD\. /, "")}
+${thumbnail ? `${standardAside ? "- (This photograph is already known to be a snapshot below publication standard, to run only as the paper's last resort. That is not your question: judge everything else, its subject above all and whether it reads at a glance.)" : `- AMATEUR: the photograph itself is attached; refuse it when it is not to publication standard, whatever its subject: ${PUBLICATION_STANDARD.replace(/^PUBLICATION STANDARD\. /, "")}`}
 - UNCLEAR: the photograph itself is attached. Cover the caption and look at it as a reader meets it, small beside the headline. Refuse it when its subject cannot be recognised at a glance: a gate, a fence, a wall or a facade standing in for an industry; a hazy, dark, blurred or distant view; a cluttered scene with no main subject; a detail only a specialist would recognise. A photograph that needs its caption to be understood is UNCLEAR however true the caption is (a hazy phosphate-mine gate ran under a fertilizer story, 2026-10-18).\n` : ""}`;
 }
 
@@ -1486,7 +1496,7 @@ export function publishedFault(image, draft) {
  * event → the photo is refused and the story runs as text. This is the audit rubric of 2026-09-22
  * (37 flagged of 125) made a gate, so it cannot be skipped.
  */
-async function verifyImage({ image, draft, story, log, neutral = false, people = [], places = [], skyline = false, thumbnail = null, known = [], side = [], event = [], lastResort = false }) {
+async function verifyImage({ image, draft, story, log, neutral = false, people = [], places = [], skyline = false, thumbnail = null, known = [], side = [], event = [], lastResort = false, standardAside = false }) {
   // Where the file itself says it was taken is read in code first; a model is not trusted with it. The
   // last pass (`neutral`) looks for no place at all, so there the file's own record does not refuse it,
   // and neither does a photograph of the story's own people, taken wherever they last met.
@@ -1526,7 +1536,7 @@ Categories: ${image.categories || "(none)"}
 Date: ${image.date || "(unknown)"}
 Caption the paper would print: ${image.alt || "(none yet)"}
 
-${photoRules({ draft, image, neutral, people, places, skyline, thumbnail, known, side, event, lastResort })}Return JSON: {"verdict":"RIGHT|GENERIC_OK|${neutral ? "" : "RECAPTION|"}STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON|UNSERIOUS|STOCK${thumbnail ? "|AMATEUR|UNCLEAR" : ""}","reason":"<one short English sentence>"}`;
+${photoRules({ draft, image, neutral, people, places, skyline, thumbnail, known, side, event, lastResort, standardAside })}Return JSON: {"verdict":"RIGHT|GENERIC_OK|${neutral ? "" : "RECAPTION|"}STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON|UNSERIOUS|STOCK${thumbnail ? `${standardAside ? "" : "|AMATEUR"}|UNCLEAR` : ""}","reason":"<one short English sentence>"}`;
   const { data, model } = await outside.chat({
     role: "critic",
     system: "You are a strict newspaper picture editor. Answer with one JSON object only.",
@@ -1761,10 +1771,20 @@ async function settle({ image, chosen, thumbnail, draft, story, log, neutral = f
     for (const k of keys) exclude.add(k);
     // A refusal for what the frame shows follows the photo into the last pass (findImage), which forgives only places.
     if (HARD_REFUSALS.has(verdict)) for (const k of keys) (exclude.hard ??= new Set()).add(k);
-    // An amateur snapshot the judge chose as the best fit is held back as the last resort (AMATEUR_LAST): the first one.
+    // An amateur snapshot the judge chose as the best fit is held back as the last resort (AMATEUR_LAST): the first one
+    // that passes the check with the standard set aside. The verdict is one word, so AMATEUR said nothing of the frame's
+    // subject or its clarity, and a held frame had never been read for either (the audit of 31 October).
     if (verdict === "AMATEUR" && amateur && !amateur.held) {
-      amateur.held = people.length ? markFilePhoto(image, chosen, people) : markFilePhoto(await asIllustrationIfElsewhere(image, chosen, draft, log), chosen, [], filed);
-      log(`image: "${String(chosen.title ?? "").slice(0, 60)}" held back as the last resort, should no professional photograph be found`);
+      let rest = "FAILED";
+      try {
+        rest = await verifyImage({ image: { ...chosen, title: chosen.title ?? image.title, query: chosen.query, alt: image.alt }, draft, story, log, neutral, people, places, skyline, thumbnail, known, side, event, lastResort, standardAside: true });
+      } catch (error) {
+        log(`image: the held frame's second reading failed (${error.message.split("\n")[0]})`);
+      }
+      if (rest === "OK") {
+        amateur.held = people.length ? markFilePhoto(image, chosen, people) : markFilePhoto(await asIllustrationIfElsewhere(image, chosen, draft, log), chosen, [], filed);
+        log(`image: "${String(chosen.title ?? "").slice(0, 60)}" held back as the last resort, should no professional photograph be found`);
+      } else log(`image: "${String(chosen.title ?? "").slice(0, 60)}" is not held back either (${rest})`);
     }
     return null;
   }
@@ -2332,7 +2352,9 @@ async function neutralScene({ draft, story, log, exclude, queries, place, fronts
  * itself. No skyline since 2026-09-28 (SKYLINE_LAST), and no company's, ministry's or world body's building since
  * 2026-10-22 (frontOfBuilding()).
  */
-const CENTRAL_BANK = /\b(?:central bank|reserve bank|federal reserve|monetary (?:authority|agency)|bundesbank|bank of (?:england|japan|canada|korea|israel|russia|thailand|mexico|italy|france|spain)|people'?s bank of china|swiss national bank|riksbank|norges bank|banque centrale|bank al-maghrib|banque du liban)\b/i;
+// Pakistan's «State Bank» was not one (2026-10-31: its 2017 photograph was refused under its own rate rise, and the story
+// ran without a photo); nor were Bank Indonesia, Bank Negara or a «Banco Central».
+const CENTRAL_BANK = /\b(?:central bank|reserve bank|federal reserve|monetary (?:authority|agency)|bundesbank|bank of (?:england|japan|canada|korea|israel|russia|thailand|mexico|italy|france|spain|ghana|jamaica|uganda|tanzania|zambia|botswana|mauritius)|people'?s bank of china|swiss national bank|riksbank|norges bank|banque centrale|bank al-maghrib|banque du liban|state bank of (?:pakistan|vietnam)|bank indonesia|bank negara|banco central|banca d'italia|banco de (?:españa|portugal|mexico|méxico)|national bank of (?:egypt|poland|ukraine|kazakhstan|serbia|georgia|belgium|romania|hungary|denmark|slovakia|ethiopia|rwanda)|danmarks nationalbank|de nederlandsche bank|sama\b|saudi arabian monetary)\b/i;
 /** A headline stating a decision on rates or a currency («يثبّت الفائدة»، «يُبقي سعر الأساس»، «يحرر الجنيه»). */
 export const RATE_DECISION = /(?:^|[^\p{L}])[وف]?[يت](?:ثبّ?ت|ُ?بقي|رفع|خفّ?ض|قرّ?ر|حرّ?ر|عوّ?م)(?![\p{L}])\s+(?:(?!توقعات|رهانات)\S+\s+){0,3}?(?:الفائدة|أسعار الفائدة|سعر الفائدة|سعر الأساس|سعر الصرف|الجنيه|العملة|الليرة|الروبية|الريال|الدينار)(?![\p{L}])/u;
 async function lastResort({ draft, story, log, exclude, known = [], side = [] }) {

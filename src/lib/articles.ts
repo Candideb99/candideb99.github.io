@@ -36,9 +36,11 @@ export function pickLead(articles: Article[], now = Date.now()): Article | undef
   const full = all.filter((a) => a.data.format !== "short");
   const news = full.length ? full : all;
   if (!news.length) return articles[0];
-  // The editor's own choice comes first: a story featured from the control room leads for 48 hours
-  // (the newest featured one, if several), after which the formula below takes over again.
-  const featured = all.filter((a) => a.data.featured && hoursOld(a, now) < 48).sort((x, y) => Date.parse(y.data.publishedAt) - Date.parse(x.data.publishedAt));
+  // The editor's own choice comes first: a story featured from the control room leads for 48 hours from the moment it was
+  // featured (`featuredAt`; until 2026-10-31 from its publication, so a story older than two days could not be made the
+  // lead at all), the newest featured one if several, after which the formula below takes over again.
+  const featuredFor = (a: Article) => (now - Date.parse(a.data.featuredAt ?? a.data.publishedAt)) / 36e5;
+  const featured = all.filter((a) => a.data.featured && featuredFor(a) < 48).sort((x, y) => Date.parse(y.data.featuredAt ?? y.data.publishedAt) - Date.parse(x.data.featuredAt ?? x.data.publishedAt));
   if (featured.length) return featured[0];
   const scored = news.map((a) => ({
     a,

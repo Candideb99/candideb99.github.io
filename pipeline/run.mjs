@@ -513,6 +513,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     log(`critic (second pass) "${draft.title}": ${review.verdict} score=${review.score} issues=${review.issues.length}`);
     if (review.verdict === "reject" || review.score < floor) {
       entry.outcome = `rejected by critic after revision (${review.score}): ${review.summary}`;
+      log(`reject "${draft.title}" by the critic after revision (${review.score})`);
       report.push(entry);
       return { rejected: true, items };
     }
@@ -794,8 +795,10 @@ async function runNews(report) {
       await saveState(state);
     } catch (error) {
       if (error.meta?.quota) {
-        log(`desk paused for ChatGPT allowance: ${error.message}`);
-        report.push({ headline: story.headlineHint, section: story.section, outcome: "deferred: ChatGPT allowance exhausted", retryAt: error.meta.retryAt });
+        // The plan's allowance (ChatGPT's, or Claude's session limit) is spent: this story and the rest wait, unmarked,
+        // for a later run, rather than taking the rejection mark for a refusal that was never about them.
+        log(`desk paused, the model's allowance is spent: ${String(error.message).split("\n").pop()}`);
+        for (const rest of chosen.slice(chosen.indexOf(story))) report.push({ headline: rest.headlineHint, section: rest.section, outcome: "deferred: the model's allowance is spent", retryAt: error.meta.retryAt ?? error.meta.resets ?? null });
         break;
       }
       log(`story failed "${story.headlineHint}": ${String(error.message).split("\n")[0]}`);
@@ -952,8 +955,10 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   // the material disproves repaired, a piece still wrong held. Not for an explainer, whose announced hypotheses compute
   // figures no story carries (the check would call them drift and repair them away).
   let precheckTag = null;
+  let preChecks = [];
   if (kind !== "explainer") {
     const pre = await precheck({ draft, sources: checkSources, log, validate: (d) => programmaticChecks(d, checkSources, { ...flags, recentTitles }) });
+    preChecks = pre.checks ?? [];
     entry.precheck = { ok: pre.ok, repairs: pre.repairs, rounds: pre.rounds.length, found: pre.rounds.reduce((n, r) => n + r.found.length, 0) };
     if (!pre.ok) {
       entry.outcome = `held by the check before publication: ${pre.held}`;
@@ -996,6 +1001,13 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
     const dir = PREVIEW_DIR ?? ARTICLES_DIR;
     await mkdir(dir, { recursive: true });
     await writeFile(path.join(dir, `${slug}.md`), markdown);
+  }
+  // Its evidence, as a news story's (lib/snapshots.mjs): until 2026-10-31 a hub piece kept none, so the second look read
+  // its analyses with nothing to tell a rewritten page from an error (settleChanged, settleDrift). A rewrite keeps the
+  // first copy.
+  if (!DRY_RUN) {
+    const storyText = [draft.title, draft.subtitle, draft.lede, draft.body, draft.whyItMatters, ...(draft.keyFacts ?? []).map((k) => `${k.label} ${k.value}`)].join("\n");
+    await saveSnapshot({ slug, title: draft.title, publishedAt: replace ? null : isoNow(), sources: checkSources, checks: preChecks, storyText }).catch((error) => log(`evidence for ${slug} not saved: ${String(error.message).slice(0, 120)}`));
   }
   entry.outcome = "published";
   entry.slug = slug;

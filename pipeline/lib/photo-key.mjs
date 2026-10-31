@@ -19,6 +19,12 @@ export function photoKey(url) {
     // A Commons name is case-sensitive but for its first letter: «Riyadh_skyline.jpg» and «Riyadh_Skyline.jpg» are two
     // photographs, each on its own Saudi story.
     name = name.replace(/_/g, " ");
+    // A file imported from Flickr keeps the Flickr number in brackets: it is that Flickr photograph, which a story can
+    // run from Flickr itself (the same tanker ran on two stories of 26 October, one copy from each). A crop of a file is
+    // the file («… Keynote (cropped).jpg» beside «… Keynote.jpg», 2026-10-31).
+    const fromFlickr = name.match(/\((\d{9,12})\)(?:\s*\((?:cropped|edited)\))?\.\w+$/i);
+    if (fromFlickr) return `flickr:${fromFlickr[1]}`;
+    name = name.replace(/\s*\((?:cropped|edited|crop)\)(?=\.\w+$)/i, "");
     return `commons:${name.charAt(0).toUpperCase()}${name.slice(1)}`;
   }
   const flickr = u.match(/staticflickr\.com\/(?:\d+\/)*(\d+)_[0-9a-f]+/i);
