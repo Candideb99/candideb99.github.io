@@ -1,0 +1,31 @@
+{
+  "mode": "news",
+  "startedAt": "2026-10-31T19:21:24.937Z",
+  "durationSec": 12,
+  "published": 0,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "",
+      "section": "news",
+      "outcome": "error: claude cli: You've hit your 5-hour limit · resets 8:50pm (UTC)"
+    }
+  ],
+  "llm": {
+    "calls": 0,
+    "failures": 1,
+    "promptTokens": 0,
+    "completionTokens": 0,
+    "cacheReadTokens": 0,
+    "costUsd": 0,
+    "byModel": {}
+  },
+  "log": [
+    "[19:21:24] newsroom start mode=news limit=4 dry-run=false",
+    "[19:21:24] lessons: version 45, 10 active, read by the desk notes and the writer",
+    "[19:21:36] candidates: 7 price-service items left out (gold, dollar and share price tables)",
+    "[19:21:36] candidates: 600 fresh unseen items",
+    "[19:21:37] llm fail role=editor provider=claude model=claude-opus-5-5 attempt=1: claude cli: You've hit your 5-hour limit · resets 8:50pm (UTC)",
+    "[19:21:37] news failed: claude cli: You've hit your 5-hour limit · resets 8:50pm (UTC)"
+  ]
+}
