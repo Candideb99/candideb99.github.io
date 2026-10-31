@@ -9561,6 +9561,46 @@
           "noted": []
         }
       ]
+    },
+    "refining-margins-diesel-arab-fuel-bills-dcc57d": {
+      "at": "2026-10-31T18:38:07.641Z",
+      "title": "ماذا يعني هامش التكرير القياسي لفاتورة الديزل في المغرب والإمارات؟",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 46,
+            "checked": 46,
+            "supported": 28,
+            "weak": 3,
+            "noEvidence": 3,
+            "notFound": 11,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 23,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "واتسع الهامش في ربع ارتفع فيه الخام أيضاً، إذ بلغ متوسط سعر برنت 97 دولاراً للبرميل في الربع الثالث مقابل 69 دولاراً قبل عام، بحسب نتائج شيفرون.",
+              "quote": "وبلغ متوسط سعر خام النفط القياسي العالمي 94.90 دولاراً للبرميل في الربع الثالث، مقابل 69.10 دولاراً في الربع نفسه من العام الماضي.",
+              "source": "Khazendar",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []
