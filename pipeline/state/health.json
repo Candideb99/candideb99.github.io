@@ -1,33 +1,37 @@
 {
   "version": 1,
   "photos": {
-    "qatari-diar-launches-alam-al-roum-investment-zone-82ae33": {
-      "firstBadAt": "2026-10-23T18:59:45.051Z",
-      "lastCheckedAt": "2026-10-25T12:37:47.866Z",
-      "checks": 3,
-      "reason": "its page at the photo library is gone"
-    },
     "strategic-petroleum-reserve-emergency-oil-stocks-explained-c1ebfc": {
       "firstBadAt": "2026-10-30T14:20:37.462Z",
-      "lastCheckedAt": "2026-10-30T14:20:37.462Z",
-      "checks": 1,
-      "reason": "its page at the photo library is gone"
+      "lastCheckedAt": "2026-10-31T13:43:15.660Z",
+      "checks": 2,
+      "reason": "its page at the photo library is gone",
+      "url": "https://live.staticflickr.com/5524/12001284873_5581f12f6c_b.jpg"
     }
   },
   "woken": {
-    "dup:ab62f72506": "2026-10-26T14:25:52.317Z"
+    "dup:ab62f72506": "2026-10-26T14:25:52.317Z",
+    "dup:f50acce14e": "2026-10-31T13:51:09.733Z"
   },
   "pagesCheckedAt": "2026-10-30T14:20:37.462Z",
   "last": {
-    "at": "2026-10-30T14:24:37.862Z",
-    "findings": [],
+    "at": "2026-10-31T13:51:10.481Z",
+    "findings": [
+      "The same event was filed twice in the last two days: «حصاد الأسبوع: المركزي المصري يرفع الفائدة 100 نقطة أساس بعد تثبيت الفيدرالي» / «المركزي المصري يرفع الفائدة 100 نقطة أساس في أول زيادة منذ مارس 2024». That is a de-duplication weakness in pipeline/lib/select.mjs: tighten the rule; do not delete o"
+    ],
     "owner": [
       "خازندار: published stories with a proved error the corrections desk could not fix"
     ],
     "photos": {
-      "pending": 2,
-      "redo": []
+      "pending": 1,
+      "redo": [
+        "strategic-petroleum-reserve-emergency-oil-stocks-explained-c1ebfc",
+        "why-investors-accept-meta-non-voting-shares-946886",
+        "why-saudi-arabia-stores-crude-in-singapore-9ff749"
+      ]
     }
   },
-  "tries": {}
+  "tries": {
+    "dup:f50acce14e": 1
+  }
 }

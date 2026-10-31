@@ -26,14 +26,14 @@ readingMinutes: 3
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Mark_Zuckerberg_F8_2018_Keynote_%28cropped%29.jpg/1280px-Mark_Zuckerberg_F8_2018_Keynote_%28cropped%29.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/4/43/Meta_Headquarters_Sign.jpg
   width: 1280
-  height: 1281
-  alt: مارك زوكربيرغ خلال مؤتمر فيسبوك للمطورين F8 عام 2018
-  credit: Anthony Quintano · CC BY 2.0 · ويكيميديا كومنز
-  license: CC BY 2.0
-  licenseUrl: https://creativecommons.org/licenses/by/2.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AMark_Zuckerberg_F8_2018_Keynote_(cropped).jpg
+  height: 960
+  alt: شعار ميتا عند مدخل مقرها في مينلو بارك بولاية كاليفورنيا
+  credit: Nokia621 · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AMeta_Headquarters_Sign.jpg
 sources:
   - name: خازندار
     nameEn: Khazendar

@@ -27,14 +27,14 @@ readingMinutes: 3
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Samco_Redwood_crude_oil_tanker_%2814783173609%29.jpg/1280px-Samco_Redwood_crude_oil_tanker_%2814783173609%29.jpg
+  url: https://images.pexels.com/photos/38601974/pexels-photo-38601974.jpeg?auto=compress&cs=tinysrgb&w=1280
   width: 1280
-  height: 716
-  alt: ناقلة نفط خام في سنغافورة
-  credit: "Wikimedia Commons · CC BY 2.0 · ويكيميديا كومنز"
-  license: CC BY 2.0
-  licenseUrl: https://creativecommons.org/licenses/by/2.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3ASamco_Redwood_crude_oil_tanker_(14783173609).jpg
+  height: 853
+  alt: خزانات لتخزين النفط (صورة تعبيرية)
+  credit: Nothing Ahead · بيكسلز
+  license: Pexels License
+  licenseUrl: https://www.pexels.com/license/
+  pageUrl: https://www.pexels.com/photo/industrial-oil-storage-tanks-by-a-tranquil-lake-38601974/
 sources:
   - name: خازندار
     nameEn: Khazendar

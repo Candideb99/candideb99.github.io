@@ -300,31 +300,41 @@
       "read": 3,
       "confirmedPerStory": 1,
       "photosPending": 2
+    },
+    {
+      "date": "2026-10-31",
+      "published": 18,
+      "news": 14,
+      "styleFaultsPerStory": 0,
+      "corrections": 0,
+      "read": 9,
+      "confirmedPerStory": 0,
+      "photosPending": 1
     }
   ],
-  "updatedAt": "2026-10-30T14:24:38.083Z",
+  "updatedAt": "2026-10-31T13:51:10.744Z",
   "week": {
-    "published": 97,
-    "news": 82,
+    "published": 101,
+    "news": 85,
     "revisedShare": 1,
-    "styleFaultsPerStory": 0.04,
-    "styleWarningsPerStory": 0.52,
+    "styleFaultsPerStory": 0.05,
+    "styleWarningsPerStory": 0.46,
     "corrections": 14,
     "usefulness": {
       "withLessons": {
-        "stories": 67,
-        "words": 464,
-        "keyFacts": 4.5
+        "stories": 70,
+        "words": 466,
+        "keyFacts": 4.6
       },
       "control": {
         "stories": 15,
-        "words": 520,
-        "keyFacts": 5
+        "words": 493,
+        "keyFacts": 4.6
       }
     },
     "precheck": {
-      "checked": 93,
-      "clean": 84,
+      "checked": 97,
+      "clean": 88,
       "repaired": 9,
       "held": 0,
       "errorsFound": 9,
@@ -339,30 +349,30 @@
       "correctionsStuck": 1
     },
     "secondLook": {
-      "read": 32,
-      "clean": 20,
+      "read": 38,
+      "clean": 24,
       "corrected": 5,
       "stands": 0,
       "refused": 0,
-      "listed": 7,
+      "listed": 9,
       "unverifiable": 0,
-      "confirmedPerStory": 0.22,
+      "confirmedPerStory": 0.18,
       "withLessons": {
-        "read": 24,
-        "confirmedPerStory": 0.21
+        "read": 29,
+        "confirmedPerStory": 0.17
       },
       "claudeWithout": {
-        "read": 8,
-        "confirmedPerStory": 0.25
+        "read": 9,
+        "confirmedPerStory": 0.22
       }
     },
     "runs": {
       "count": 24,
-      "written": 43,
+      "written": 46,
       "refused": 9,
-      "callsPerStory": 22.6,
-      "tokensPerStory": 401930,
-      "costPerStory": 3.53,
+      "callsPerStory": 23.8,
+      "tokensPerStory": 435598,
+      "costPerStory": 3.73,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": [
@@ -376,39 +386,39 @@
         ]
       },
       {
-        "what": "newsroom: skipped: repeats a recent story («…»)",
-        "stories": 4,
+        "what": "newsroom: skipped: nothing readable in the report's pages",
+        "stories": 2,
         "examples": []
       },
       {
-        "what": "newsroom: skipped: nothing readable in the report's pages",
-        "stories": 3,
+        "what": "newsroom: skipped: repeats a recent story («…»)",
+        "stories": 2,
         "examples": []
       }
     ]
   },
   "weekBefore": {
-    "published": 87,
-    "news": 78,
-    "revisedShare": 0.87,
+    "published": 101,
+    "news": 89,
+    "revisedShare": 0.89,
     "styleFaultsPerStory": 0.04,
-    "styleWarningsPerStory": 0.51,
+    "styleWarningsPerStory": 0.53,
     "corrections": 6,
     "usefulness": {
       "withLessons": {
-        "stories": 45,
-        "words": 498,
-        "keyFacts": 4.8
+        "stories": 55,
+        "words": 486,
+        "keyFacts": 4.7
       },
       "control": {
-        "stories": 13,
-        "words": 519,
-        "keyFacts": 5.8
+        "stories": 14,
+        "words": 521,
+        "keyFacts": 5.9
       }
     },
     "precheck": {
-      "checked": 79,
-      "clean": 75,
+      "checked": 92,
+      "clean": 88,
       "repaired": 4,
       "held": 0,
       "errorsFound": 4,
@@ -423,16 +433,16 @@
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 30,
-      "clean": 20,
+      "read": 33,
+      "clean": 22,
       "corrected": 1,
       "stands": 0,
       "refused": 0,
-      "listed": 9,
+      "listed": 10,
       "unverifiable": 0,
       "confirmedPerStory": 0.03,
       "withLessons": {
-        "read": 16,
+        "read": 19,
         "confirmedPerStory": 0
       },
       "claudeWithout": {
@@ -452,9 +462,9 @@
     "recurring": []
   },
   "lessons": {
-    "version": 44,
-    "active": 9,
-    "learnedFrom": 225,
+    "version": 45,
+    "active": 10,
+    "learnedFrom": 226,
     "kept": null,
     "lastTest": {
       "at": "2026-10-26T12:52:29.979Z",
@@ -507,7 +517,7 @@
     }
   },
   "evidence": {
-    "pairs": 35,
+    "pairs": 36,
     "vsKept": {
       "n": 0,
       "better": 0,

@@ -27,14 +27,14 @@ readingMinutes: 3
 chart: null
 table: null
 image:
-  url: https://live.staticflickr.com/5524/12001284873_5581f12f6c_b.jpg
-  width: 1024
-  height: 678
-  alt: محطة وقود في لافاييت بولاية كاليفورنيا الأمريكية
-  credit: Franco Folini · CC BY-SA 2.0 · فليكر
-  license: CC BY-SA 2.0
-  licenseUrl: https://creativecommons.org/licenses/by-sa/2.0/
-  pageUrl: https://www.flickr.com/photos/78425154@N00/12001284873
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Gas_Prices_on_June_5%2C_2022_in_Eugene%2C_Oregon.jpg/1280px-Gas_Prices_on_June_5%2C_2022_in_Eugene%2C_Oregon.jpg
+  width: 1280
+  height: 720
+  alt: محطة وقود في يوجين بولاية أوريغون الأمريكية عام 2022
+  credit: Rick Obst · CC BY 2.0 · ويكيميديا كومنز
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AGas_Prices_on_June_5%2C_2022_in_Eugene%2C_Oregon.jpg
 sources:
   - name: خازندار
     nameEn: Khazendar
