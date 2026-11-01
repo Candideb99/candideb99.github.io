@@ -228,10 +228,12 @@
     "euro-area-gdp-grows-q3-france-contracts-65e2be:d654334d",
     "china-factory-pmi-contracts-october-64c344:123b6f44",
     "egypt-first-locally-assembled-electric-car-f79ba4:463d16b5",
-    "saudi-economy-contraction-slows-third-quarter-aba15b:14943288"
+    "saudi-economy-contraction-slows-third-quarter-aba15b:14943288",
+    "opec-plus-holds-december-oil-quotas-b01552:147f003a",
+    "hormuz-fertilizer-disruption-egypt-morocco-exporters-c8129a:98713950"
   ],
-  "version": 48,
-  "updatedAt": "2026-11-01T13:35:00.088Z",
+  "version": 49,
+  "updatedAt": "2026-11-01T19:45:24.665Z",
   "lessons": [
     {
       "id": "L1",
@@ -654,11 +656,12 @@
         "saudi-east-west-pipeline-closure-brent-d9de59:dffb331f",
         "hormuz-shipping-traffic-plunges-tensions-5c1d93:72f5ffc3",
         "egypt-offers-mining-incentives-equity-partnerships-42b042:f01d20ee",
-        "boj-holds-rate-inflation-hits-target-728e78:91475147"
+        "boj-holds-rate-inflation-hits-target-728e78:91475147",
+        "opec-plus-holds-december-oil-quotas-b01552:147f003a"
       ],
-      "seen": 6,
+      "seen": 7,
       "createdAt": "2026-09-25T16:38:55.969Z",
-      "lastSeen": "2026-10-30T10:09:17.581Z",
+      "lastSeen": "2026-11-01T19:45:24.665Z",
       "status": "active",
       "activatedAt": "2026-09-25T23:25:28.192Z"
     },
@@ -730,11 +733,12 @@
       },
       "evidence": [
         "qatar-saudi-stock-markets-liquidity-test-6421f7:4bf6e2c6",
-        "euro-area-gdp-grows-q3-france-contracts-65e2be:d654334d"
+        "euro-area-gdp-grows-q3-france-contracts-65e2be:d654334d",
+        "hormuz-fertilizer-disruption-egypt-morocco-exporters-c8129a:98713950"
       ],
-      "seen": 2,
+      "seen": 3,
       "createdAt": "2026-10-28T05:52:18.463Z",
-      "lastSeen": "2026-10-30T18:06:12.820Z",
+      "lastSeen": "2026-11-01T19:45:24.665Z",
       "status": "active",
       "activatedAt": "2026-10-30T18:06:12.820Z"
     }
@@ -1168,6 +1172,14 @@
       "mistakes": 1,
       "applied": [
         "reinforce L2 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-11-01T19:45:24.665Z",
+      "mistakes": 2,
+      "applied": [
+        "reinforce L9 (+1; reworded at most once a week)",
+        "reinforce L12 (+1; reworded at most once a week)"
       ]
     }
   ],

@@ -14411,6 +14411,76 @@
         }
       ],
       "outcome": "listed"
+    },
+    "egypt-chemical-fertilizer-exports-rise-34-percent-8c1575": {
+      "at": "2026-11-01T19:44:29.221Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v48",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-01T14:12:44.496Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 8,
+        "checked": 8,
+        "supported": 7,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "وتصدرت تركيا الدول المستوردة بقيمة 1.03 مليار دولار، أما أعلى نمو بين الأسواق الرئيسية فسجلته الصين، إذ صعدت الصادرات إليها إلى 299 مليون دولار من 49.6 مليون دولار.",
+          "quote": "وحققت الصين أكبر معدلات النمو بين الأسواق الرئيسية، بعدما ارتفعت الصادرات إليها إلى 299 مليون دولار، مقابل 49.6 مليون دولار، بنمو تجاوز 502%، كما سجلت الصادرات إلى بريطانيا 290.3 مليون دولار بنمو 194.4%، واليونان 271.8 مليون دولار بنمو تجاوز 101%."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "opec-plus-holds-december-oil-quotas-b01552": {
+      "at": "2026-11-01T19:44:29.227Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-01T13:49:58.491Z",
+      "sourcesRead": 2,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 24,
+        "checked": 24,
+        "supported": 20,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 4,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "ما دامت الحرب تحدّ من قدرة بعض منتجي الخليج على ضخ حصصهم، فإن ما يصل إلى السوق من نفط هؤلاء المنتجين يتبع وتيرة تعافي منشآتهم أكثر مما يتبع الحصص المعلنة.",
+        "وإذا أعاد اجتماع 29 نوفمبر شريحة المليوني برميل يومياً، فسيرفع سقوفاً لا يبلغها بعض الأعضاء، ولن يضيف من إنتاجهم براميل فعلية.",
+        "وتعطي سوق النفط إشارات متضاربة بين العقود الآجلة والشحنات الفعلية، بحسب «بلومبرغ».",
+        "وترى «بلومبرغ» أن إعادة هذه الكميات إلى السوق أعقد من إلغاء الخفض الطوعي السابق، لتفاوت القدرات الإنتاجية بين الأعضاء واستمرار أثر الحرب على المنشآت النفطية والبنية التحتية في المنطقة."
+      ],
+      "weak": [],
+      "outcome": "clean"
     }
   }
 }

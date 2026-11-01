@@ -10262,6 +10262,100 @@
           "noted": []
         }
       ]
+    },
+    "egypt-signs-1bn-world-bank-dpf-b46b95": {
+      "at": "2026-11-01T19:58:37.693Z",
+      "title": "مصر توقّع اتفاق تمويل بمليار دولار مع البنك الدولي لدعم إصلاحاتها",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 19,
+            "checked": 19,
+            "supported": 18,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [],
+          "unsourced": {
+            "asked": 1,
+            "kept": [],
+            "removed": [
+              {
+                "sentence": "تتجه هذه الإصلاحات، كما عدّدها البيان، إلى مجالين.",
+                "said": "unsourced"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "iraq-receives-first-batch-3-billion-cash-dollars-dinar-90b3e7": {
+      "at": "2026-11-01T20:13:24.720Z",
+      "title": "العراق يتسلّم أولى دفعات 3 مليارات دولار نقداً لكبح تراجع الدينار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v49",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 28,
+            "checked": 28,
+            "supported": 27,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "pakistan-lng-tanker-attacked-despite-iran-approval-09b70f": {
+      "at": "2026-11-01T20:24:30.385Z",
+      "title": "ناقلة غاز قطري متجهة إلى باكستان تتعرض لهجوم بعد ضوء أخضر إيراني لعبورها",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v49",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 18,
+            "checked": 18,
+            "supported": 18,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
