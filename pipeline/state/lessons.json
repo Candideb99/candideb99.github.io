@@ -227,10 +227,11 @@
     "boj-holds-rate-inflation-hits-target-728e78:91475147",
     "euro-area-gdp-grows-q3-france-contracts-65e2be:d654334d",
     "china-factory-pmi-contracts-october-64c344:123b6f44",
-    "egypt-first-locally-assembled-electric-car-f79ba4:463d16b5"
+    "egypt-first-locally-assembled-electric-car-f79ba4:463d16b5",
+    "saudi-economy-contraction-slows-third-quarter-aba15b:14943288"
   ],
-  "version": 47,
-  "updatedAt": "2026-11-01T06:18:50.700Z",
+  "version": 48,
+  "updatedAt": "2026-11-01T13:35:00.088Z",
   "lessons": [
     {
       "id": "L1",
@@ -351,11 +352,12 @@
         "samsung-raises-capex-despite-investor-disappointment-55895a:c5a20c49",
         "binance-freezes-3-billion-potential-hack-647d53:86705fb7",
         "china-factory-pmi-contracts-october-64c344:123b6f44",
-        "egypt-first-locally-assembled-electric-car-f79ba4:463d16b5"
+        "egypt-first-locally-assembled-electric-car-f79ba4:463d16b5",
+        "saudi-economy-contraction-slows-third-quarter-aba15b:14943288"
       ],
-      "seen": 53,
+      "seen": 54,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-11-01T06:18:50.700Z",
+      "lastSeen": "2026-11-01T13:35:00.088Z",
       "status": "active",
       "previous": [
         "Credit each fact to whom the source credits and name the originating outlet. An outlet's inference ('implying', 'suggesting') is not the official's own statement. An interview is not a statement. Add no conclusion the speaker did not draw.",
@@ -1156,6 +1158,13 @@
     },
     {
       "at": "2026-11-01T06:18:50.700Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L2 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-11-01T13:35:00.088Z",
       "mistakes": 1,
       "applied": [
         "reinforce L2 (+1; reworded at most once a week)"

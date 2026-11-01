@@ -10080,6 +10080,125 @@
           "noted": []
         }
       ]
+    },
+    "opec-plus-holds-december-oil-quotas-b01552": {
+      "at": "2026-11-01T13:49:58.498Z",
+      "title": "«أوبك+» يثبّت حصص إنتاج النفط لديسمبر للشهر الثالث توالياً",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 21,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 23,
+              "field": "body",
+              "class": "cause",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وعزت المنظمة الخفض إلى تداعيات حرب إيران على الاستهلاك العالمي واضطراب حركة التجارة والطاقة، ليبلغ مجموع ما خفضته من توقعات هذا العام نحو 1.2 مليون برميل يومياً منذ أبريل.",
+              "quote": "وبذلك تكون المنظمة قد خفضت توقعاتها لنمو الطلب خلال العام الجاري بنحو 1.2 مليون برميل يومياً منذ أبريل، في ظل تداعيات حرب إيران على الاستهلاك العالمي واضطراب حركة التجارة والطاقة.",
+              "source": "Asharq Business",
+              "sourceN": 3,
+              "correction": "The 1.2 million b/d cumulative cut is correct, but the source only reports the downgrade as coming amid the Iran war's effects; it does not say OPEC attributed the cut to them."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 22,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "elm-saudi-q3-profit-rises-39-percent-534177": {
+      "at": "2026-11-01T14:01:38.100Z",
+      "title": "أرباح «علم» السعودية ترتفع 39% إلى 778 مليون ريال في الربع الثالث",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v48",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 23,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "egypt-chemical-fertilizer-exports-rise-34-percent-8c1575": {
+      "at": "2026-11-01T14:12:44.500Z",
+      "title": "صادرات مصر من الكيماويات والأسمدة ترتفع 34% في تسعة أشهر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v48",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 8,
+            "checked": 8,
+            "supported": 7,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

@@ -1655,6 +1655,50 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-11-01T14:01:38.105Z",
+      "slug": "elm-saudi-q3-profit-rises-39-percent-534177",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v48",
+      "lessonsHash": "83821b3473",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 23,
+        "notFound": 1,
+        "checked": 26,
+        "words": 316,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 2
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 18,
+        "notFound": 0,
+        "checked": 23,
+        "words": 334,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 18,
+        "notFound": 0,
+        "checked": 23,
+        "words": 334,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }
