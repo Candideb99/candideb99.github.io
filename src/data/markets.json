@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T01:02:18.642Z",
+  "updatedAt": "2026-11-01T06:54:48.022Z",
   "source": "Yahoo Finance",
   "quotes": [
     {
@@ -720,7 +720,7 @@
       "price": 6131.31,
       "prev": 6207.07,
       "time": "2026-10-30T17:00:00.000Z",
-      "currency": "EUR",
+      "currency": null,
       "change": -75.76,
       "pct": -1.2205,
       "source": "yahoo",
@@ -1140,12 +1140,12 @@
       "unit": null,
       "decimals": 2,
       "changeMode": "pct",
-      "price": 3599.017,
-      "prev": 3651.43,
+      "price": 3599.0166,
+      "prev": 3651.4336,
       "time": "2026-10-30T07:00:34.000Z",
       "currency": "CNY",
-      "change": -52.413,
-      "pct": -1.4354,
+      "change": -52.417,
+      "pct": -1.4355,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -1267,7 +1267,7 @@
         },
         {
           "d": "2026-10-30",
-          "c": 3599.017
+          "c": 3599.0166
         }
       ]
     },
@@ -1986,19 +1986,15 @@
       "unit": null,
       "decimals": 4,
       "changeMode": "pct",
-      "price": 6.6449,
+      "price": 6.654,
       "prev": 6.6605,
-      "time": "2026-10-31T21:32:17.000Z",
+      "time": "2026-11-01T03:30:51.000Z",
       "currency": "CNY",
-      "change": -0.0156,
-      "pct": -0.2342,
+      "change": -0.0065,
+      "pct": -0.0976,
       "source": "yahoo",
       "stale": false,
       "history": [
-        {
-          "d": "2026-10-02",
-          "c": 6.6987
-        },
         {
           "d": "2026-10-03",
           "c": 6.6987
@@ -2114,6 +2110,10 @@
         {
           "d": "2026-10-31",
           "c": 6.6449
+        },
+        {
+          "d": "2026-11-01",
+          "c": 6.654
         }
       ]
     },
@@ -3537,12 +3537,12 @@
       "unit": "دولار",
       "decimals": 0,
       "changeMode": "pct",
-      "price": 77559.07,
+      "price": 77856.27,
       "prev": 77440.93,
-      "time": "2026-11-01T01:02:11.000Z",
+      "time": "2026-11-01T06:54:42.000Z",
       "currency": "USD",
-      "change": 118.14,
-      "pct": 0.1526,
+      "change": 415.34,
+      "pct": 0.5363,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -3664,7 +3664,7 @@
         },
         {
           "d": "2026-11-01",
-          "c": 77559.07
+          "c": 77856.27
         }
       ]
     }

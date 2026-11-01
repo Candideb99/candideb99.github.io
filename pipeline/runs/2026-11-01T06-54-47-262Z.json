@@ -1,0 +1,519 @@
+{
+  "mode": "news",
+  "startedAt": "2026-11-01T06:18:58.748Z",
+  "durationSec": 2149,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "بينانس تستأنف السحب على مراحل بعد تغطية 95% من الأصول المسروقة",
+      "section": "technology",
+      "importance": 7,
+      "sources": [
+        "https://aawsat.com/node/5336155",
+        "https://www.albayan.ae/economy/business/world-economy/1561961",
+        "https://www.thenationalnews.com/business/markets/2026/11/01/binance-to-resume-withdrawals-after-covering-95-of-63bn-crypto-heist/",
+        "https://www.annahar.com/economy/362204/%D8%A8%D9%8A%D9%86%D8%A7%D9%86%D8%B3-%D8%AA%D8%B3%D8%AA%D8%B1%D8%AF-90-%D9%85%D9%86-%D8%A7%D9%84%D8%A3%D8%B5%D9%88%D9%84-%D8%A7%D9%84%D9%85%D8%B3%D8%B1%D9%88%D9%82%D8%A9-%D9%88%D8%A7%D9%84%D8%B3%D8%AD%D8%A8-%D9%8A%D8%B9%D9%88%D8%AF-%D8%A7%D9%84%D8%A3%D8%AD%D8%AF"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقول العنوان والعنوان الفرعي ما تغيّر: يُستأنف السحب على مراحل بعد تغطية 95%، وتبقى 5% أصولاً أقل سيولة قد تتأخر. «بينانس» اسم معروف، ولا يذكر أي مصدر بلداً لها. واعتمدت المسودة نسبة 95% الواردة في المصدرين 2 و3، ولم تأخذ برقم 90% في عنوان المصدر 4 الخالي من النص.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "تحمل المسودة الدافع (التقييمات الأمنية وفحوص الجاهزية، المصدر 3) والخلفية (بايبت وإم تي غوكس وإف تي إكس) والخطوة التالية (الاستعادة التدريجية وتأخر الـ5%). لكنها تُسقط ربط المصدر 1 بين ثبات الأسعار وتعهد المنصة بتغطية الخسائر، فتبقى ردة الفعل رقماً معزولاً. أما الصندوق فيقدّم استنتاجاً معقولاً عن موضع العبء وبطء الشريحة الأخيرة، لكن صياغته «انتقل» تتجاوز ما في المقدمات.",
+              "repair": "ضمّ فقرة السوق إلى فقرة تحمّل الخسائر مع ربط المصدر 1. وتصحيح «انتقل» في الصندوق إلى صيغة تقول إن العبء وقع على المنصة لا على العملاء."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يطوّر المتن عنصر العنوان (الاستئناف على مراحل) مباشرة بعد المقدمة: المرحلة الأولى ثم تحمّل الخسائر ثم الجاهزية. لكن ردة فعل السوق، وهي مرتبطة بتعهد تغطية الخسائر، متروكة في الفقرة الأخيرة بعد فقرة تاريخ القطاع، فتأتي إحصاءً ختامياً منفصلاً عن الحدث.",
+              "repair": "نقل فقرة «وفي السوق...» إلى ما بعد فقرة تحمّل الخسائر مع ربطها المسند، وختم المتن بالخلفية التاريخية أو بفقرة اتهام كوريا الشمالية."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "توقيت 06:00–09:00 بتوقيت غرينتش يطابق المصدرين 2 و3، ويتسق مع 2–5 مساءً بتوقيت سنغافورة في المصدر 1. والاقتباس «مزيدا من عمليات غسل» حرفي من المصدر 2. والـ6.3 مليار والـ95% و1.4% و77700 دولار و1.5 مليار لبايبت كلها مطابقة للمصادر. وقد حُفظ وصف «وُصف بأنه أكبر سطو رقمي» بصيغته الحذرة.",
+              "repair": ""
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي يبيّنان ما تغيّر: عودة السحب على مراحل بعد تغطية 95%. ويبيّنان ما لم يكتمل: الـ5% الأقل سيولة. و«بينانس» اسم معروف عربياً، والمقدمة تعرّفها بأنها منصة للعملات المشفرة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المسودة تحمل سبب الاستئناف (التغطية وفحوص الأمن، المصدر 3)، ورد فعل السوق مربوطاً بتعهد التغطية (المصدر 1)، واتهام مكتب التحقيقات الفيدرالي، والخطوة التالية (توقع مزيد من الغسل). لكن صندوق «لماذا يهمّ» يكرر في جملته الأولى خلاصة الفقرة الثالثة، ويقدم سلامة الأرصدة واقعةً لا تعهداً.",
+              "repair": "إعادة كتابة الصندوق كما في الملاحظة الثانية، بحيث يربط ثبات الأسعار بقدرة المنصة على امتصاص الخسارة، ويربط الاكتمال بتأمين الشريحة الأقل سيولة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان (الاستئناف على مراحل) يتطور مباشرة بعد المقدمة. وفقرة السوق صارت بعد فقرة التحمّل، وهذا يحل الملاحظتين 1 و7 السابقتين. يبقى في الفقرة الثانية اعتذار عام من بيان المنصة يملأ الفقرة.",
+              "repair": "حذف جملة «تدرك أهمية انتظام السحب...» وضغط الفقرة الثانية في أسباب التعليق وما بقي مفتوحاً من الخدمات."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام صحيحة: 6.3 مليار دولار، و95%، ونافذة 06:00 إلى 09:00 بتوقيت غرينتش (تطابق الثانية إلى الخامسة بتوقيت سنغافورة في المصدر 1)، و77700 دولار، و1.4%، و1.5 مليار دولار لـ«بايبت»، والاقتباس «مزيدا من عمليات غسل» حرفي من المصدر 2. لكن عبارة «فلم يتوقف في أي مرحلة» تتجاوز المصدر 3.",
+              "repair": "«أما خدمات الإيداع فبقيت مفتوحة ولم تتأثر بالحادثة، بحسب المنصة»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 7,
+      "mendIssues": [
+        "خطأ في الوقائع وتناقض داخلي: «أما الإيداع فلم يتوقف في أي مرحلة، وبقيت خدماته مفتوحة» تزيد على المصدر 3. يقول المصدر إن خدمات الإيداع «remain open and are not affected by the incident»، ولا يقول إنها لم تتوقف في أي مرحلة. والفقرة نفسها تقول قبل ذلك إن المنصة «أوقفت المعاملات صباح الجمعة» (المصدر 1)، فيقرأ القارئ تناقضاً. الإصلاح: «أما خدمات الإيداع فبقيت مفتوحة ولم تتأثر بالحادثة، بحسب المنصة». ويُستحسن أن تصبح «أوقفت المعاملات» «علّقت السحب»، لأن المصدر 3 يحدد ما عُلّق بأنه السحب.",
+        "لماذا يهمّ: الجملة الأولى «بتحمّل «بينانس» الخسارة تقع كلفة أكبر سطو رقمي على المنصة نفسها، وتبقى أرصدة العملاء على حالها» تكرر ما انتهت إليه الفقرة الثالثة من المتن («تعهدت بتحمّل الأثر المالي... أموال المستخدمين لا تزال آمنة») ولا تضيف معنى. وهي أيضاً تقدم «تبقى أرصدة العملاء على حالها» واقعةً، بينما هي تعهد من المنصة (المصدر 3). والجملة الثانية قريبة من العنوان الفرعي. الإصلاح المقترح: «ثبات الأسعار قائم على تعهد «بينانس» بامتصاص خسارة قيمتها 6.3 مليار دولار من ميزانيتها، وما بقي من السحب الكامل معلّق بقدرتها على تأمين الـ5% الأقل سيولة من السوق».",
+        "إسناد مبهم: «وهو ما عُدّ إشارة إلى تجدد ثقة المستثمرين» تخفي صاحب هذه القراءة، وهي تقدير المصدر 1 لا واقعة. الإصلاح: «في إشارة، بحسب ما أوردته «الشرق الأوسط»، إلى تجدد ثقة المستثمرين...»، أو صياغة تبقي التقدير قراءةً للسوق لا حكماً مؤكداً.",
+        "حشو من كلام عام: «وقالت إنها تدرك أهمية انتظام السحب للمستخدمين، لكنها قدّمت حمايتهم وحماية المنصة على إعادة الخدمة» تنقل اعتذاراً عاماً من بيان المنصة لا يحمل قراراً ولا رقماً ولا موعداً. الإصلاح: حذفها والاكتفاء بأسباب التعليق المذكورة قبلها.",
+        "المسودة تحمل سبب الاستئناف (التغطية وفحوص الأمن، المصدر 3)، ورد فعل السوق مربوطاً بتعهد التغطية (المصدر 1)، واتهام مكتب التحقيقات الفيدرالي، والخطوة التالية (توقع مزيد من الغسل). لكن صندوق «لماذا يهمّ» يكرر في جملته الأولى خلاصة الفقرة الثالثة، ويقدم سلامة الأرصدة واقعةً لا تعهداً. — إعادة كتابة الصندوق كما في الملاحظة الثانية، بحيث يربط ثبات الأسعار بقدرة المنصة على امتصاص الخسارة، ويربط الاكتمال بتأمين الشريحة الأقل سيولة.",
+        "عنصر العنوان (الاستئناف على مراحل) يتطور مباشرة بعد المقدمة. وفقرة السوق صارت بعد فقرة التحمّل، وهذا يحل الملاحظتين 1 و7 السابقتين. يبقى في الفقرة الثانية اعتذار عام من بيان المنصة يملأ الفقرة. — حذف جملة «تدرك أهمية انتظام السحب...» وضغط الفقرة الثانية في أسباب التعليق وما بقي مفتوحاً من الخدمات.",
+        "الأرقام صحيحة: 6.3 مليار دولار، و95%، ونافذة 06:00 إلى 09:00 بتوقيت غرينتش (تطابق الثانية إلى الخامسة بتوقيت سنغافورة في المصدر 1)، و77700 دولار، و1.4%، و1.5 مليار دولار لـ«بايبت»، والاقتباس «مزيدا من عمليات غسل» حرفي من المصدر 2. لكن عبارة «فلم يتوقف في أي مرحلة» تتجاوز المصدر 3. — «أما خدمات الإيداع فبقيت مفتوحة ولم تتأثر بالحادثة، بحسب المنصة»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قالت بينانس إنها ستتحمّل الأثر المالي للأموال المسروقة بدل تحميل الخسائر لعملائها",
+          "source": 3
+        },
+        {
+          "fact": "لم تتحرك أسعار أغلب العملات المشفرة الكبرى إلا قليلاً، وعدّت الشرق الأوسط ذلك مؤشراً على عودة الثقة بعد تعهد بينانس بتغطية الخسائر",
+          "source": 1
+        },
+        {
+          "fact": "الـ5% الباقية من الرموز المسروقة أصول أقل سيولة وقد يتطلب تأمينها بالكميات اللازمة وقتاً أطول",
+          "source": 3
+        },
+        {
+          "fact": "المنصة تعيد السحب تدريجياً كلما أنهت فحوص الأمن والجاهزية",
+          "source": 3
+        }
+      ],
+      "slug": "binance-resumes-withdrawals-after-covering-95-percent-29bc64",
+      "title": "«بينانس» تستأنف السحب على مراحل بعد تغطية 95% من الأصول المسروقة",
+      "score": 9,
+      "image": "cover-art"
+    },
+    {
+      "headline": "احتجاز الرئيس التنفيذي لبورصة إسطنبول في تحقيق صناديق الاستثمار",
+      "section": "markets",
+      "importance": 7,
+      "sources": [
+        "https://asharqbusiness.com/financial-markets/153728/%D8%AA%D8%B1%D9%83%D9%8A%D8%A7-%D8%AA%D8%AD%D8%AA%D8%AC%D8%B2-%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3-%D8%A7%D9%84%D8%AA%D9%86%D9%81%D9%8A%D8%B0%D9%8A-%D9%84%D8%A8%D9%88%D8%B1%D8%B5%D8%A9-%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84-%D9%81%D9%8A-%D9%82%D8%B6%D9%8A%D8%A9-%D8%A7%D9%84%D8%B5%D9%86%D8%A7%D8%AF%D9%8A%D9%82/",
+        "https://www.bloomberght.com/borsa-istanbul-genel-muduru-korkmaz-enes-ergun-gozaltina-alindi-3792993"
+      ],
+      "outcome": "skipped: a single independent non-official reporting origin (needs a second independently reported outlet, or an official primary source)"
+    },
+    {
+      "headline": "فيتش تخفض نظرتها لتصنيف فرنسا إلى سلبية بعد انكماش الربع الثالث",
+      "section": "economy",
+      "importance": 6,
+      "sources": [
+        "https://www.ft.com/content/852b05a1-4090-4aee-afc6-4d4c353ef3cf?syn-25a6b1a6=1",
+        "https://aawsat.com/node/5335840",
+        "https://asharqbusiness.com/economics/153693/%D9%81%D9%8A%D8%AA%D8%B4-%D8%AA%D8%AD%D9%88-%D9%84-%D9%86%D8%B8%D8%B1%D8%AA%D9%87%D8%A7-%D9%84%D9%81%D8%B1%D9%86%D8%B3%D8%A7-%D8%A5%D9%84%D9%89-%D8%B3%D9%84%D8%A8%D9%8A%D8%A9-%D9%88%D8%B3%D8%B7-%D8%AA%D9%81%D8%A7%D9%82%D9%85-%D8%A3%D8%B2%D9%85%D8%A9-%D8%A7%D9%84%D8%AF%D9%8A%D9%88%D9%86/",
+        "https://www.euronews.com/2026/10/31/france-aims-for-responsible-2027-budget-as-fitch-downgrades-outlook",
+        "https://www.fidelity.com/learning-center/investment-products/fixed-income-bonds/bond-ratings"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد والوكالة. والمقدمة تفرق بوضوح بين ما تغيّر، وهو النظرة من «مستقرة» إلى «سلبية»، وما بقي ثابتاً، وهو التصنيف عند «A+»، مع شرط الخفض المحتمل.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السبب المعلن حاضر (ضعف النمو وكلفة الاقتراض والعجز)، والتوقع الذي أخطأه الانكماش حاضر (نمو 0.1%)، ورد الوزير حاضر. وشرح الدرجة الاستثمارية وموقع «A+» منها مقبول، مع ذكر العوائد الأعلى للأدنى تصنيفاً. لكن المقارنة مع «موديز» (المصدر 2 والمصدر 3) وعجز 5.4% هذا العام (المصدر 3) غائبان.",
+              "repair": "إضافة فقرة «موديز» وموقف «فيتش» الأكثر تشدداً، وإضافة رقم 5.4% إلى فقرة التوقعات المالية."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنصر الجديد في العنوان، أي الانكماش، يُعالج في الفقرة الثانية مباشرة، وهذا جيد. لكن تعليق ليسكور عليه منفصل في الفقرة الثامنة، وفقرة ماتيس عن المراسيم بلا تمهيد. وفي «لماذا يهمّ» الجملة الثانية استدلال مقبول مشروط بـ«إذا»، أما الأولى فتعمم سبباً واحداً.",
+              "repair": "نقل وصف «متوقف» إلى فقرة الانكماش، وتمهيد خيار المراسيم من المصدر 4، وإعادة صياغة الجملة الأولى في «لماذا يهمّ» بالعوامل الثلاثة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: 115.7% و124% و122.7% و3.5% و178 و165 نقطة أساس، والدرجات الست حتى فئة المخاطر العالية صحيحة على سلم «فيتش». غير أن «تبلغ بالعجز هذا الهدف» تُضيع الرقم، و«كل ربع من ضعف النمو» تعميم سببي غير مسند.",
+              "repair": "التصريح بـ«5%» في جملة ليسكور، ونسب ارتفاع التعديل المالي إلى العوامل الثلاثة كما أوردتها الوكالة."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يذكران فرنسا و«فيتش»، ويميزان ما تغيّر (النظرة من مستقرة إلى سلبية) مما بقي (التصنيف عند A+)، ويشرحان معنى النظرة السلبية: احتمال خفض لاحق ما لم تتحسن المؤشرات. والمراجعة غير مجدولة وجاءت بعد ساعات من بيانات الانكماش، كما في المصدر 1 والمصدر 3.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السبب المعلن حاضر (ضعف النمو وكلفة الاقتراض واتساع العجز)، وكذلك التوقع الذي أخطأه الانكماش (نمو 0.1%)، ورد الوزير، والمقارنة مع «موديز»، وشرح الدرجة الاستثمارية وموقع A+ منها، والعوائد الأعلى للأدنى تصنيفاً. يغيب سبب صريح آخر ذكرته الوكالة: الاحتجاجات الواسعة على الخدمات العامة وغلاء المعيشة (المصدر 2، المصدر 3، المصدر 4)، ولا يبقى منه إلا «المناخ الاجتماعي الصعب». وفي «لماذا يهمّ» المقدمات صحيحة (3% ثم 3.5%، والمادة 49.3 والمراسيم، وبرامج المرشحين)، والاستدلال الثاني المشروط بـ«إذا» مقبول. أما الأول فيحمّل الموازنة المقبلة تعديلاً تراكمياً.",
+              "repair": "إضافة قول «فيتش» عن الاحتجاجات وعن النقاشات السابقة للانتخابات في فقرة «موازنة بلا أغلبية». وإعادة صياغة الجملة الأولى في «لماذا يهمّ» على أن جهد الضبط المالي المطلوب لتثبيت الدين صار أكبر، والموازنة المقبلة أول اختباراته."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنصر الجديد في العنوان، «بعد انكماش الربع الثالث»، يتناوله التقرير في الفقرة الثانية مع وصف ليسكور للاقتصاد بأنه «متوقف»، وهذا جيد. وصار تمهيد خيار المراسيم قبل رأي ماتيس سليماً. لكن ملف «موديز» موزع بين الفقرة الخامسة والفقرة التاسعة. وتحذير «الحائط»، وقد قيل صباحاً تعليقاً على الانكماش، يأتي بعد «مساء الجمعة» كأنه رد على «فيتش».",
+              "repair": "جمع ترحيب ليسكور بقرار «موديز» مع فقرة «موديز» أو التذكير بالقرار حيث يرد. وتأريخ تحذير «الحائط» بصباح الجمعة في مقابلة «فرانس إنفو» نفسها."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام صحيحة: 0.1% و0.2% و115.7% و124% و122.7% و5.5% و5% و3.5% و178 و85 و165 نقطة أساس، والدرجات الست على سلم «فيتش». الاقتباس عن التعديل المالي حرفي من المصدر 3. لكن رأي ماتيس حُوّلت فيه البدائل المعطوفة بـ«أو» إلى شرط مجتمع («هشة وعرضة للمراجعة»). ورقم 5.4% جاء بالمبني للمجهول بين توقعات «فيتش» فيوحي بأنه تقديرها. و«لماذا يهمّ» يجعل التعديل «التراكمي» مطلوباً من «الموازنة المقبلة».",
+              "repair": "عطف احتمالات ماتيس بـ«أو» كما في المصدر 4. وفصل رقم 5.4% عن توقعات الوكالة. ووصف التعديل في «لماذا يهمّ» بأنه جهد تراكمي لتثبيت الدين."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 9,
+      "mendIssues": [
+        "ينقص التقرير: الاحتجاجات التي استندت إليها «فيتش» في تعليل قرارها. يكتفي التقرير بعبارة «والمناخ الاجتماعي الصعب»، فلا يعرف القارئ ما المقصود بها. قالت الوكالة إن «الاحتجاجات الواسعة على الخدمات العامة وتكاليف المعيشة تزيد من صعوبة تهيئة الظروف الاجتماعية اللازمة لضبط المالية العامة» (المصدر 3، والمصدر 2، والمصدر 4). وقالت أيضاً إن النقاشات السياسية قبل الانتخابات «لم تُعزّز بشكل ملموس» ثقتها بخفض العجز. ويذكر المصدر 3 أن الإعلان جاء عشية عطلة نهاية أسبوع جديدة من الاحتجاجات في باريس ومدن أخرى. الإصلاح: تحويل جملة «ترى «فيتش» أن استمرار التشرذم السياسي والمناخ الاجتماعي الصعب...» إلى فقرة تذكر الاحتجاجات على غلاء المعيشة والخدمات العامة، وتورد قول الوكالة في النقاشات السابقة للانتخابات.",
+        "خلل في التسلسل الزمني: «لكنه بدا أكثر تشاؤماً مساء الجمعة؛ فقد قال في بيان... وحذّر في مقابلة إذاعية من أن البلاد تتجه إلى طريق مسدود». يوحي النص بأن التحذير جاء بعد قرار «فيتش» مساء الجمعة. لكن المصدر 4 يذكر أن ليسكور قاله في وقت سابق من اليوم، على إذاعة «فرانس إنفو»، تعليقاً على انكماش الناتج، وهي المقابلة نفسها التي وصف فيها الاقتصاد بأنه «متوقف». الإصلاح: «وكان قد حذّر صباح الجمعة، في المقابلة الإذاعية نفسها، من أن البلاد تتجه إلى «حائط» إن لم تُقر موازنة التعافي». ويُستحسن ضمّها إلى فقرة الانكماش أو الإشارة صراحة إلى توقيتها.",
+        "تشتت ما يخص «موديز»: قرار «موديز» يرد في الفقرة الخامسة، بينما يتأخر ترحيب ليسكور به إلى الفقرة التاسعة («وكان ليسكور قد رحّب الأسبوع الماضي بقرار «موديز»»). فيعود القارئ إلى موضوع تركه قبل أربع فقرات. الإصلاح: نقل الترحيب إلى فقرة «موديز»، أو صياغة المقارنة في فقرة ليسكور صياغة تذكّر بالقرار: «بعدما كان قد رحّب الأسبوع الماضي بإبقاء «موديز» على التصنيف...» (المصدر 3).",
+        "دقة في نقل رأي ماتيس: «إن بدت هشة وعرضة للمراجعة بعد الانتخابات». يعدّد المصدر 4 ثلاثة احتمالات متبادلة بـ«أو»: أن تبدو الموازنة هشة، أو قابلة للنقض بعد الانتخابات، أو كاشفة عن عجز دائم للنظام السياسي عن بناء الأغلبيات. والعطف بالواو يجعلها شرطاً مجتمعاً. وسقط كذلك أول ما قاله: الأسواق تفضّل عادة قراراً مطعوناً فيه على غياب طويل للقرار. الإصلاح: «وأوضح أن الأسواق تفضّل عادة قراراً مطعوناً فيه على غياب القرار مدة طويلة، لكن أثر الموازنة على ثقة المستثمرين قد يبقى محدوداً إن بدت هشة، أو قابلة للنقض بعد الانتخابات، أو دليلاً على عجز دائم عن بناء الأغلبيات».",
+        "«لماذا يهمّ» يتجاوز مقدماته: «يعني أن الموازنة المقبلة مطالبة بخفض أكبر مما كانت تحتاجه قبل أشهر». تقدير «فيتش» يخص التعديل المالي «التراكمي» اللازم لتثبيت الدين، أي على امتداد سنوات (المصدر 3)، لا ما تتحمله موازنة واحدة. وكلمة «خفض» تُبقي المقصود غامضاً: هل هو خفض الإنفاق أم العجز؟ الإصلاح: «...يعني أن جهد الضبط المالي المطلوب لوقف ارتفاع الدين صار أكبر مما كان قبل أشهر، والموازنة المقبلة أول اختباراته».",
+        "إسناد ناقص: «ويُتوقع أن يتسع العجز هذا العام إلى 5.4% من الناتج» جاءت بالمبني للمجهول بين توقعات «فيتش». فيظنها القارئ تقدير الوكالة، والمصدر 3 لا ينسبها إليها. الإصلاح: فصلها عن توقعات الوكالة، مثلاً «ويتجه العجز هذا العام إلى نحو 5.4% من الناتج، بحسب التقديرات»، أو تقديمها أساساً للمقارنة قبل جملة «وتتوقع «فيتش»...».",
+        "السبب المعلن حاضر (ضعف النمو وكلفة الاقتراض واتساع العجز)، وكذلك التوقع الذي أخطأه الانكماش (نمو 0.1%)، ورد الوزير، والمقارنة مع «موديز»، وشرح الدرجة الاستثمارية وموقع A+ منها، والعوائد الأعلى للأدنى تصنيفاً. يغيب سبب صريح آخر ذكرته الوكالة: الاحتجاجات الواسعة على الخدمات العامة وغلاء المعيشة (المصدر 2، المصدر 3، المصدر 4)، ولا يبقى منه إلا «المناخ الاجتماعي الصعب». وفي «لماذا يهمّ» المقدمات صحيحة (3% ثم 3.5%، والمادة 49.3 والمراسيم، وبرامج المرشحين)، والاستدلال الثاني المشروط بـ«إذا» مقبول. أما الأول فيحمّل الموازنة المقبلة تعديلاً تراكمياً. — إضافة قول «فيتش» عن الاحتجاجات وعن النقاشات السابقة للانتخابات في فقرة «موازنة بلا أغلبية». وإعادة صياغة الجملة الأولى في «لماذا يهمّ» على أن جهد الضبط المالي المطلوب لتثبيت الدين صار أكبر، والموازنة المقبلة أول اختباراته.",
+        "العنصر الجديد في العنوان، «بعد انكماش الربع الثالث»، يتناوله التقرير في الفقرة الثانية مع وصف ليسكور للاقتصاد بأنه «متوقف»، وهذا جيد. وصار تمهيد خيار المراسيم قبل رأي ماتيس سليماً. لكن ملف «موديز» موزع بين الفقرة الخامسة والفقرة التاسعة. وتحذير «الحائط»، وقد قيل صباحاً تعليقاً على الانكماش، يأتي بعد «مساء الجمعة» كأنه رد على «فيتش». — جمع ترحيب ليسكور بقرار «موديز» مع فقرة «موديز» أو التذكير بالقرار حيث يرد. وتأريخ تحذير «الحائط» بصباح الجمعة في مقابلة «فرانس إنفو» نفسها.",
+        "الأرقام صحيحة: 0.1% و0.2% و115.7% و124% و122.7% و5.5% و5% و3.5% و178 و85 و165 نقطة أساس، والدرجات الست على سلم «فيتش». الاقتباس عن التعديل المالي حرفي من المصدر 3. لكن رأي ماتيس حُوّلت فيه البدائل المعطوفة بـ«أو» إلى شرط مجتمع («هشة وعرضة للمراجعة»). ورقم 5.4% جاء بالمبني للمجهول بين توقعات «فيتش» فيوحي بأنه تقديرها. و«لماذا يهمّ» يجعل التعديل «التراكمي» مطلوباً من «الموازنة المقبلة». — عطف احتمالات ماتيس بـ«أو» كما في المصدر 4. وفصل رقم 5.4% عن توقعات الوكالة. ووصف التعديل في «لماذا يهمّ» بأنه جهد تراكمي لتثبيت الدين."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قدّرت فيتش أن التعديل المالي التراكمي اللازم لاستقرار الدين ارتفع إلى نحو 3.5% من الناتج مقارنة بـ3% في أغسطس، وعزت تدهور الأوضاع إلى ضعف النمو وارتفاع تكاليف الاقتراض واتساع العجز",
+          "source": 3
+        },
+        {
+          "fact": "الحكومة لا تستبعد اللجوء إلى المادة 49.3 لتمرير الموازنة، والمراسيم خيار آخر لم يُستخدم لإقرار موازنة منذ 1958",
+          "source": 4
+        },
+        {
+          "fact": "مرشحون بارزون للرئاسة يطرحون خفض سن التقاعد وزيادات كبيرة في ضرائب الشركات، والانتخابات مقررة في أبريل ومايو",
+          "source": 3
+        },
+        {
+          "fact": "فيتش ترى آفاق خفض الدين بعد الانتخابات غير واضحة",
+          "source": 2
+        }
+      ],
+      "slug": "fitch-cuts-france-outlook-negative-contraction-3bef5e",
+      "title": "«فيتش» تخفض نظرتها لتصنيف فرنسا إلى «سلبية» بعد انكماش الربع الثالث",
+      "score": 9,
+      "image": "cover-art"
+    },
+    {
+      "headline": "مصر تبدأ آلية جديدة لتسريع تراخيص البناء الصناعي",
+      "section": "economy",
+      "importance": 6,
+      "sources": [
+        "https://dailynewsegypt.com/2026/10/31/ida-streamlines-industrial-building-permit-procedures-from-1-november/",
+        "https://alborsaanews.com/2026/10/31/2002984"
+      ],
+      "format": "short",
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان يحدد البلد (مصر) والإجراء. لكن العنوان الفرعي يذكر «المجمعة العشرية» من دون تعريف، فلا يعرف قارئ البطاقة أنها مجمعة تأمين أخطار البناء. ولا يوضح المقال أن شرط الخطاب والرسومات المختومة يخص المشروعات الكبيرة، وأن الملفات المستلمة قبل 1 نوفمبر تبقى على القواعد السابقة.",
+              "repair": "تعريف المجمعة باسمها الكامل عند أول ذكر، وذكر أن الشرط يخص «المشروعات الكبيرة» الملزمة بموافقة المجمعة (SOURCE 2)."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يورد المصدران سبب حصر الآلية في جزء من المنشآت: خفض القيمة التقديرية لتكلفة البناء بنسبة 90% أعفى الشريحة الأكبر من المنشآت الصغيرة والمتوسطة من وثيقة التأمين. هذا هو الرقم الحاسم في القصة، والمقال لا يذكره. أما الغرض المعلن (منع ازدواج المراجعة واختصار الوقت) فحاضر. ولا تذكر المصادر ردود فعل أطراف أخرى.",
+              "repair": "إضافة سطر الخفض بنسبة 90% وأثره في الإعفاء بعد المقدمة مباشرة (SOURCE 1، SOURCE 2)."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يعد بـ«تسريع» التراخيص، والفقرة الأولى تشرح الآلية فعلاً. لكن «الرسومات المختومة» تظهر بلا تمهيد، والفقرة الثانية تكرر ما قالته المقدمة والعنوان الفرعي عن التسريع ومنع الازدواج. أما الختام بدعوة المستثمرين فمقبول في خبر قصير.",
+              "repair": "ترتيب الفقرات على النحو التالي: المقدمة مع تعريف المجمعة، ثم السبب (خفض 90% والإعفاء)، ثم الآلية وشرط المشروعات الكبيرة، ثم الملفات السابقة، ثم مكان تقديم الخدمة، مع حذف صدى التسريع."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "تاريخ «الأحد 1 نوفمبر» صحيح. لكن المقال يحصر «خدمات المجمعة» في دعوة كانت إلى خدمات مقر الهيئة، ويحوّل «منظومة متكاملة» إلى «سلسلة متتابعة»، وينسب توجيهات الوزير إلى يوسف، ويُسقط قيد «المشروعات الكبيرة».",
+              "repair": "تصحيح الدعوة والإسناد وفق SOURCE 1 وSOURCE 2، واستعادة قيد المشروعات الكبيرة."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يحدد العنوان البلد (مصر) والإجراء. ويعرّف العنوان الفرعي المجمعة بأنها «مجمعة تأمين أخطار البناء»، وتورد المقدمة اسمها الكامل. ويوضح النص أن الآلية تخص المنشآت التي ما زالت ملزمة بالتأمين، وأن شرط الخطاب والرسومات المختومة يخص المشروعات الكبيرة، وأن الملفات المستلمة قبل 1 نوفمبر تبقى على القواعد السابقة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يورد المصدران سبب حصر الآلية في جزء من المنشآت (خفض 90% أعفى الشريحة الأكبر من الصغيرة والمتوسطة) وغرضها (منع ازدواج المراجعة وتوحيد خطوات العمل)، والمسودة تحمل الاثنين. ولا تذكر المصادر ردود فعل أطراف أخرى، والمسودة لا تملأ هذا الفراغ بحشو. ولا ينطبق صندوق «لماذا يهمّ» على هذا الشكل القصير.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يعد بالتسريع، والفقرة الأولى بعد المقدمة تشرح الآلية فعلاً، فالعمود الفقري سليم. لكن عبارة «التي ما زالت ملزمة بتقديم وثيقة التأمين» في المقدمة لا يأتي تفسيرها إلا في الفقرة الثالثة، بعد فقرة إجرائية عن الملفات السابقة.",
+              "repair": "تقديم فقرة خفض الـ90% والإعفاء لتلي المقدمة أو تسبق فقرة الملفات السابقة، وإبقاء دعوة المستثمرين في الختام."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "يوم «الأحد» يوافق 1 نوفمبر 2026. والاقتباس «ضماناً لعدم تأثر المشروعات الصناعية القائمة بإجراءات تطبيق الآلية الجديدة» حرفي من SOURCE 2. وتوجيهات الوزير منقولة بصوت التقرير لا على لسان يوسف، وعبارة «منظومة متكاملة» صحيحة، والدعوة موجهة إلى خدمات مقر الهيئة كما في المصدرين. وقيد المشروعات الكبيرة مستعاد.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 3,
+      "mendIssues": [
+        "ترتيب يبعد السبب عمّا يفسّره، وهو المشكلة 3 و9 التي بقي جزء منها: تقول المقدمة «المنشآت الصناعية التي ما زالت ملزمة بتقديم وثيقة التأمين»، ولا يأتي تفسير بقاء بعضها ملزماً (خفض القيمة التقديرية بنسبة 90% وإعفاء الشريحة الأكبر من المنشآت الصغيرة والمتوسطة، SOURCE 1 وSOURCE 2) إلا في الفقرة الثالثة. وقبله فقرة إجرائية عن الملفات السابقة هي أقل نفعاً للقارئ. الإصلاح: نقل الفقرة التي تبدأ بـ«وأضافت أن الآلية جزء من منظومة متكاملة...» لتصبح الأولى بعد المقدمة، أو تقديمها على الأقل على فقرة الملفات المستلمة قبل 1 نوفمبر، مع تعديل أول جملة في فقرة الآلية لتبدأ بالإسناد: «وقالت رئيسة الهيئة ناهد يوسف إن فروع المجمعة لن تتسلم...».",
+        "عبارة متكلفة ومرجع ملتبس: «وتنفّذ هذه الإجراءات توجيهات وزير الصناعة خالد هاشم». تأتي الجملة مباشرة بعد ذكر تيسيرات الوزارة، فلا يتضح هل «هذه الإجراءات» هي الآلية الجديدة (كما في SOURCE 1) أم حزمة الوزارة كلها. والصيغة العربية المعتادة أوضح. الإصلاح: «وتأتي الآلية تنفيذاً لتوجيهات وزير الصناعة خالد هاشم بمواصلة تطوير منظومة التراخيص الصناعية وتبسيط الإجراءات على المستثمرين».",
+        "العنوان يعد بالتسريع، والفقرة الأولى بعد المقدمة تشرح الآلية فعلاً، فالعمود الفقري سليم. لكن عبارة «التي ما زالت ملزمة بتقديم وثيقة التأمين» في المقدمة لا يأتي تفسيرها إلا في الفقرة الثالثة، بعد فقرة إجرائية عن الملفات السابقة. — تقديم فقرة خفض الـ90% والإعفاء لتلي المقدمة أو تسبق فقرة الملفات السابقة، وإبقاء دعوة المستثمرين في الختام."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [],
+      "slug": "egypt-ida-industrial-building-permits-mechanism-9dc933",
+      "title": "مصر تطبّق آلية جديدة لتسريع تراخيص بناء المنشآت الصناعية",
+      "score": 9,
+      "image": "photo"
+    }
+  ],
+  "llm": {
+    "calls": 76,
+    "failures": 0,
+    "promptTokens": 1116155,
+    "completionTokens": 199805,
+    "cacheReadTokens": 332689,
+    "costUsd": 10.3301,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 76
+    },
+    "byRole": {
+      "editor": {
+        "calls": 1,
+        "in": 78855,
+        "read": 0,
+        "out": 2732,
+        "usd": 0.6855
+      },
+      "desk": {
+        "calls": 17,
+        "in": 111742,
+        "read": 161876,
+        "out": 63232,
+        "usd": 2.1908
+      },
+      "writer": {
+        "calls": 16,
+        "in": 186007,
+        "read": 131608,
+        "out": 53148,
+        "usd": 2.5771
+      },
+      "critic": {
+        "calls": 12,
+        "in": 134695,
+        "read": 39205,
+        "out": 41326,
+        "usd": 1.9119
+      },
+      "checker": {
+        "calls": 3,
+        "in": 26045,
+        "read": 0,
+        "out": 20635,
+        "usd": 0.621
+      },
+      "vision": {
+        "calls": 27,
+        "in": 246122,
+        "read": 0,
+        "out": 18732,
+        "usd": 2.3438
+      }
+    }
+  },
+  "log": [
+    "[06:53:10] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=427 in=4398 read=0 out=624 attempt=1 ms=7267",
+    "[06:53:11] image: the source's photograph (Alborsa News) shows Rows of newly built blue-and-white factory units line freshly paved roads in a desert industrial zone, with power pylons; searching 10th of Ramadan industrial zone | factory units industrial zone Egypt | Sadat City industrial area | new factory buildings Egypt",
+    "[06:53:11] image: tier 2, like the sources' own photograph: 10th of Ramadan industrial zone | factory units industrial zone Egypt | Sadat City industrial area | new factory buildings Egypt",
+    "[06:53:11] pexels \"10th of Ramadan industrial zone\": 8 usable",
+    "[06:53:11] pexels \"Sadat City industrial area\": 8 usable",
+    "[06:53:11] commons \"10th of Ramadan industrial zone\": 0 usable of 0",
+    "[06:53:11] pexels \"factory units industrial zone Egypt\": 8 usable",
+    "[06:53:11] pexels \"new factory buildings Egypt\": 8 usable",
+    "[06:53:11] commons \"10th Ramadan industrial zone\": 0 usable of 0",
+    "[06:53:13] commons \"10th Ramadan\": 8 usable of 20",
+    "[06:53:13] image: dropped \"Flickr - DVIDSHUB - Humanitarian Aid in Baladiyat.jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[06:53:13] image: dropped \"High angle view of stacked concrete pipes organized in an outdoor stor\" — names too little of 10th, industrial, zone",
+    "[06:53:13] image: dropped \"Aerial view of Baku's bustling harbor and shipyard under clear blue sk\" — names too little of 10th, industrial, zone",
+    "[06:53:13] commons \"factory units industrial zone Egypt\": 0 usable of 0",
+    "[06:53:15] commons \"factory units\": 8 usable of 20",
+    "[06:53:15] image: dropped \"A monochrome image of an old, abandoned industrial building with visib\" — names too little of factory, units, industrial, zone",
+    "[06:53:15] image: dropped \"Detailed view of industrial architecture showcasing metal structures, \" — names too little of factory, units, industrial, zone",
+    "[06:53:15] image: dropped \"Aerial view of a large industrial facility with steel storage and ware\" — names too little of factory, units, industrial, zone",
+    "[06:53:15] image: dropped \"A detailed aerial view of an industrial facility in Banten, Indonesia,\" — names too little of factory, units, industrial, zone",
+    "[06:53:15] commons \"Sadat City industrial area\": 0 usable of 0",
+    "[06:53:16] commons \"Sadat City\": 17 usable of 20",
+    "[06:53:19] commons \"new factory buildings Egypt\": 6 usable of 17",
+    "[06:53:19] image: dropped \"Keswick Military Barracks c1913(GN02222).jpg\" — names too little of new, factory, buildings",
+    "[06:53:19] image: dropped \"Keswick Military Hospital c1915(GN02224).jpg\" — names too little of new, factory, buildings",
+    "[06:53:19] image: dropped \"Keswick Military Hospital c1915(GN02223).jpg\" — names too little of new, factory, buildings",
+    "[06:53:19] image: dropped \"Canadian forest industries 1916 (1916) (20340040568).jpg\" — names too little of new, factory, buildings",
+    "[06:53:19] image: dropped \"Hornsea War Memorial.jpg\" — names too little of new, factory, buildings",
+    "[06:53:19] image: dropped \"Laborers stacking bricks inside a kiln in Al Qanatir Al Khayriyyah, Eg\" — names too little of new, factory, buildings",
+    "[06:53:19] image: dropped \"Aerial shot of a modern industrial complex surrounded by greenery in B\" — names too little of new, factory, buildings",
+    "[06:53:19] image: dropped \"UnitFactory2.jpg\" — taken in Ukraine, which the story does not name",
+    "[06:53:19] image: 10 likeness(es) set aside for the country's own photographs",
+    "[06:53:23] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=51 in=10133 read=0 out=174 attempt=1 ms=2928",
+    "[06:53:23] image: vision rejected all candidates (None of the candidates shows new factory units in an industrial zone. They show a Carrefour store front, a residential gate, a city montage of landmarks, a lawn with distant buildings, a mosque and a roadside. All are amateur snapshots or building fronts that do not show industrial construction or licensing.)",
+    "[06:53:23] image: tier 3, the writer's own subjects: Egypt factory construction | industrial construction site Egypt | architectural drawings construction",
+    "[06:53:25] commons \"Egypt factory construction 2026\": 0 usable of 6",
+    "[06:53:26] commons \"Egypt factory construction\": 4 usable of 12",
+    "[06:53:26] image: dropped \"Railway and metal framework construction of the boiler house sugar fac\" — dated 1900, an archival picture",
+    "[06:53:26] image: dropped \"IWM-HU-59574 Constructing a Dummy Tank 1942.jpg\" — dated 1942, an archival picture",
+    "[06:53:27] commons \"industrial construction site Egypt 2026\": 7 usable of 9",
+    "[06:53:28] commons \"industrial construction site Egypt\": 9 usable of 12",
+    "[06:53:28] image: dropped \"Rákóczi Ferenc Straße 6-8, Tempel, 2026 Szombathely.jpg\" — names too little of industrial, construction, site",
+    "[06:53:28] image: dropped \"Fassade, Rákóczi Ferenc Straße 6-8, 2026 Szombathely.jpg\" — names too little of industrial, construction, site",
+    "[06:53:28] image: dropped \"Rákóczi Ferenc Straße 6-8 und 12, 2026 Szombathely.jpg\" — names too little of industrial, construction, site",
+    "[06:53:28] image: dropped \"Empfangsgebäude, Rákóczi Ferenc Straße 6-8, 2026 Szombathely.jpg\" — names too little of industrial, construction, site",
+    "[06:53:28] image: dropped \"Bernsteinstraße, Rákóczi Ferenc Straße 6-8, Rathaus, 2026 Szombathely.\" — names too little of industrial, construction, site",
+    "[06:53:28] image: dropped \"Bernsteinstraße, Rákóczi Ferenc Straße 6-8 und 12, 2026 Szombathely.jp\" — names too little of industrial, construction, site",
+    "[06:53:28] image: dropped \"Lake Nasser and the New Valley (6157).jpg\" — names too little of industrial, construction, site",
+    "[06:53:29] commons \"architectural drawings construction 2026\": 0 usable of 12",
+    "[06:53:31] commons \"architectural drawings construction\": 0 usable of 12",
+    "[06:53:32] commons \"architectural drawings\": 3 usable of 12",
+    "[06:53:32] image: dropped \"File-20353.BL-East Orange, NJ--East Orange Improvements--Grove Street \" — dated 1921, an archival picture",
+    "[06:53:32] image: dropped \"France-002865 - Metal on Enamel 1765 to 1770 (16003029391).jpg\" — taken in France, which the story does not name",
+    "[06:53:36] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=82 in=7643 read=0 out=215 attempt=1 ms=3286",
+    "[06:53:36] image: vision rejected all candidates (None of the candidates fits. 1 is an exam sheet of architectural drawings, a diagram with text rather than a photograph. 2 is a 3D render of a student modelling exercise, not a real photograph. 3 is Alexandria's railway station, which has nothing to do with industrial building permits or factory construction in Egypt.)",
+    "[06:53:36] image: tier 4, the story's point and its subject: factory construction site Egypt | construction workers Egypt | new factory building Egypt | factory construction Egypt | industrial zone Egypt | factory construction (home: Egypt, Egyptian, Cairo, 10th of Ramadan, 6th of October, Sadat City)",
+    "[06:53:36] pexels \"construction workers Egypt\": 8 usable",
+    "[06:53:37] pexels \"new factory building Egypt\": 8 usable",
+    "[06:53:37] pexels \"industrial zone Egypt\": 8 usable",
+    "[06:53:37] commons \"factory construction site Egypt\": 4 usable of 5",
+    "[06:53:37] image: dropped \"Keswick Military Barracks c1913(GN02222).jpg\" — names too little of factory, construction, site",
+    "[06:53:37] image: dropped \"Keswick Military Hospital c1915(GN02224).jpg\" — names too little of factory, construction, site",
+    "[06:53:37] image: dropped \"Keswick Military Hospital c1915(GN02223) (cropped).jpg\" — names too little of factory, construction, site",
+    "[06:53:37] pexels \"factory construction Egypt\": 8 usable",
+    "[06:53:37] pexels \"factory construction site Egypt\": 8 usable",
+    "[06:53:37] image: dropped \"Workers producing bricks using traditional methods in Cairo Governorat\" — names too little of factory, construction, site",
+    "[06:53:37] image: dropped \"Colorful stacks of industrial materials organized in an outdoor yard, \" — names too little of factory, construction, site",
+    "[06:53:37] image: dropped \"Laborers stacking bricks inside a kiln in Al Qanatir Al Khayriyyah, Eg\" — names too little of factory, construction, site",
+    "[06:53:37] image: dropped \"Neatly stacked metal beams in an outdoor industrial yard under dayligh\" — names too little of factory, construction, site",
+    "[06:53:38] pexels \"factory construction\": 8 usable",
+    "[06:53:42] commons \"construction workers Egypt\": 0 usable of 24",
+    "[06:53:42] commons \"construction workers\": 22 usable of 24",
+    "[06:53:42] image: dropped \"A dump truck unloading gravel on a dusty road in the Egyptian desert u\" — names too little of construction, workers",
+    "[06:53:42] image: dropped \"Youth unloading bricks outdoors in Egypt, showcasing teamwork and indu\" — names too little of construction, workers",
+    "[06:53:42] image: dropped \"Elderly man standing proudly in a Cairo shipyard, surrounded by boat h\" — names too little of construction, workers",
+    "[06:53:42] image: dropped \"A craftsman skillfully restores a wooden boat in Damietta, Egypt, high\" — names too little of construction, workers",
+    "[06:53:43] commons \"new factory building Egypt\": 6 usable of 17",
+    "[06:53:43] image: dropped \"Canadian forest industries 1916 (1916) (20340040568).jpg\" — names too little of new, factory, building",
+    "[06:53:43] image: dropped \"Hornsea War Memorial.jpg\" — names too little of new, factory, building",
+    "[06:53:43] image: dropped \"Aerial view of a large industrial facility with steel storage and ware\" — names too little of new, factory, building",
+    "[06:53:43] commons \"factory construction Egypt\": 13 usable of 24",
+    "[06:53:43] image: dropped \"Railway and metal framework construction of the boiler house sugar fac\" — dated 1900, an archival picture",
+    "[06:53:43] image: dropped \"IWM-HU-59574 Constructing a Dummy Tank 1942.jpg\" — dated 1942, an archival picture",
+    "[06:53:43] image: dropped \"The Old Train Station – Hatachana (9869202335).jpg\" — names too little of factory, construction",
+    "[06:53:43] image: dropped \"The Old Train Station – Hatachana (9869926683).jpg\" — names too little of factory, construction",
+    "[06:53:43] image: dropped \"The Old Train Station – Hatachana (9869826824).jpg\" — names too little of factory, construction",
+    "[06:53:43] image: dropped \"1933 Century of Progress, Armco-Ferro Porcelain Enameled House Brochur\" — names too little of factory, construction",
+    "[06:53:43] image: dropped \"A vast industrial complex set in a desert environment under a clear sk\" — names too little of factory, construction",
+    "[06:53:44] commons \"industrial zone Egypt\": 4 usable of 14",
+    "[06:53:44] image: dropped \"Arabah (9198183227).jpg\" — names too little of industrial, zone",
+    "[06:53:44] image: dropped \"Busy street workshop in Keraniganj, Dhaka with workers amidst equipmen\" — names too little of industrial, zone",
+    "[06:53:44] image: dropped \"Rustic vintage vans parked in a row on a leafy Cairo street, depicting\" — names too little of industrial, zone",
+    "[06:53:44] commons \"factory construction\": 16 usable of 24",
+    "[06:53:44] image: dropped \"Picture, factory, construction Fortepan 18172.jpg\" — dated 1907, an archival picture",
+    "[06:53:44] image: dropped \"Construction workers in Mexico.jpg\" — taken in Mexico, which the story does not name",
+    "[06:53:44] image: dropped \"Norblin Factory Redevelopment under construction, 12.jpg\" — taken in Poland, which the story does not name",
+    "[06:53:44] image: dropped \"France-002865 - Metal on Enamel 1765 to 1770 (16003029391).jpg\" — taken in France, which the story does not name",
+    "[06:53:44] image: dropped \"A worker in protective gear supervises operations in a modern Ankara f\" — taken in Turkey, which the story does not name",
+    "[06:53:44] image: dropped \"Workers on suspended scaffold in Korolyov.jpg\" — taken in Russia, which the story does not name",
+    "[06:53:44] image: dropped \"Aqaba (9198172605).jpg\" — taken in Israel, which the story does not name",
+    "[06:53:53] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=490 in=8760 read=0 out=709 attempt=1 ms=7688",
+    "[06:53:53] image: \"Golden hour at a construction site in Dahab, Egypt with silh\" names the story's topic without saying its point (Photo 1 is the only fitting candidate: a real, professional frame of a building site in Egypt with rising concrete columns, so it matches the story's subject (c); checked now and kept in reserve while the desk looks further",
+    "[06:54:01] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=656 in=6468 read=0 out=742 attempt=1 ms=8188",
+    "[06:54:01] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Golden hour at a construction site in Dahab, Egypt with silh\": The frame shows a generic construction site in the resort town of Dahab, likely tourism building and not an industrial p",
+    "[06:54:09] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=366 in=8798 read=0 out=569 attempt=1 ms=6593",
+    "[06:54:09] image: vision rejected all candidates (fallback pass) (None fits. The only Egyptian site photo (1) is black-and-white, hazy and reads as a poverty cliché. Photo 2 is a close-up of a private individual painting a ship, not factory construction. Photo 3 is a railway station, which is the wrong subject. Photo 4 is a construction site in Warsaw and photo 5 a factory in Konya, Türkiye; both are in the wrong country for a story about Egypt. Photo 6 is a landscape in the Arava Valley, the wrong place and subject.)",
+    "[06:54:11] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=105 in=2073 read=0 out=139 attempt=1 ms=2303",
+    "[06:54:11] image: last resort: factory construction site Egypt | factory construction site | factory construction site industrial",
+    "[06:54:11] commons \"factory construction site Egypt\": 4 usable of 5",
+    "[06:54:11] image: dropped \"Keswick Military Barracks c1913(GN02222).jpg\" — names too little of factory, construction, site",
+    "[06:54:11] image: dropped \"Keswick Military Hospital c1915(GN02224).jpg\" — names too little of factory, construction, site",
+    "[06:54:11] image: dropped \"Keswick Military Hospital c1915(GN02223) (cropped).jpg\" — names too little of factory, construction, site",
+    "[06:54:13] commons \"factory construction site\": 20 usable of 24",
+    "[06:54:13] image: dropped \"Old factory building in Istye 2025-01 1736158159.jpg\" — names too little of factory, construction, site",
+    "[06:54:14] commons \"factory construction site industrial\": 21 usable of 24",
+    "[06:54:14] image: dropped \"Shoe Factory Building Washington MO.jpg\" — names too little of factory, construction, site, industrial",
+    "[06:54:14] image: dropped \"Construction site of the Chugoku Mokuzai Noshiro Factory 20230401a.jpg\" — taken in Japan, which the story does not name",
+    "[06:54:14] image: dropped \"Construction site of the Chugoku Mokuzai Noshiro Factory 20230401b.jpg\" — taken in Japan, which the story does not name",
+    "[06:54:14] image: dropped \"Old factory building in Istye 2025-01 1736157779.jpg\" — taken in Russia, which the story does not name",
+    "[06:54:14] image: dropped \"Old factory building in Istye 2025-01 1736158392.jpg\" — taken in Russia, which the story does not name",
+    "[06:54:14] image: dropped \"Old factory building in Istye 2025-01 1736158055.jpg\" — taken in Russia, which the story does not name",
+    "[06:54:14] image: dropped \"Old factory building in Istye 2025-01 1736157910.jpg\" — taken in Russia, which the story does not name",
+    "[06:54:19] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=92 in=7707 read=0 out=217 attempt=1 ms=3958",
+    "[06:54:19] image: vision rejected all candidates (fallback pass) (Both photos are piles of foundation stones at a tea factory construction site in Uganda. The file names place them outside Egypt, which is wrong for a story about one country. A field of rubble also reads as a puzzling texture rather than a factory being built. Neither shows Egypt's industrial construction or licensing.)",
+    "[06:54:19] image: last pass, a neutral illustration: factory construction site | construction workers | new factory building | factory construction | industrial zone",
+    "[06:54:19] commons \"factory construction site\": 20 usable of 24",
+    "[06:54:19] image: dropped \"Old factory building in Istye 2025-01 1736158159.jpg\" — names too little of factory, construction, site",
+    "[06:54:19] pexels \"industrial zone\": 8 usable",
+    "[06:54:19] pexels \"construction workers\": 8 usable",
+    "[06:54:19] pexels \"factory construction\": 8 usable",
+    "[06:54:19] pexels \"new factory building\": 8 usable",
+    "[06:54:19] pexels \"factory construction site\": 8 usable",
+    "[06:54:19] image: dropped \"A detailed aerial view of an industrial facility in Banten, Indonesia,\" — names too little of factory, construction, site",
+    "[06:54:19] image: dropped \"Colorful stacks of industrial materials organized in an outdoor yard, \" — names too little of factory, construction, site",
+    "[06:54:19] image: dropped \"A large industrial crane working with silos at a modern cement plant u\" — names too little of factory, construction, site",
+    "[06:54:19] image: dropped \"Silhouetted industrial structures at sunset with vibrant clouds in Wes\" — names too little of factory, construction, site",
+    "[06:54:19] commons \"construction workers\": 22 usable of 24",
+    "[06:54:19] image: dropped \"Two construction workers install an electrical panel outside a buildin\" — an event's photograph, people and banners",
+    "[06:54:20] commons \"new factory building\": 9 usable of 24",
+    "[06:54:20] image: dropped \"Triangle Shirtwaist coffins.jpg\" — dated 1911, an archival picture",
+    "[06:54:20] image: dropped \"Photograph of a Hole at the Bottom of a Fire Escape after the Triangle\" — names too little of new, factory, building",
+    "[06:54:20] image: dropped \"Demonstration of Protest and Mourning for Triangle Shirtwaist Factory \" — names too little of new, factory, building",
+    "[06:54:20] commons \"factory construction\": 16 usable of 24",
+    "[06:54:20] image: dropped \"Picture, factory, construction Fortepan 18172.jpg\" — dated 1907, an archival picture",
+    "[06:54:23] commons \"industrial zone\": 17 usable of 24",
+    "[06:54:23] image: dropped \"Fabrieksgebouw Onroerend erfgoed Aalst januari29.1.jpg\" — names too little of industrial, zone",
+    "[06:54:35] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=697 in=8785 read=0 out=924 attempt=1 ms=10547",
+    "[06:54:40] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=307 in=1077 read=0 out=336 attempt=1 ms=4036",
+    "[06:54:47] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=435 in=6261 read=0 out=530 attempt=1 ms=7215",
+    "[06:54:47] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"A large industrial construction site in rural Thailand, feat\": A neutral, sharp frame of an industrial plant under construction with cranes and steel structures, showing the story's o",
+    "[06:54:47] published \"مصر تطبّق آلية جديدة لتسريع تراخيص بناء المنشآت الصناعية\" -> egypt-ida-industrial-building-permits-mechanism-9dc933"
+  ]
+}

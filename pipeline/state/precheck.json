@@ -9784,6 +9784,90 @@
           ]
         }
       ]
+    },
+    "binance-resumes-withdrawals-after-covering-95-percent-29bc64": {
+      "at": "2026-11-01T06:31:36.035Z",
+      "title": "«بينانس» تستأنف السحب على مراحل بعد تغطية 95% من الأصول المسروقة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v47",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 23,
+            "checked": 23,
+            "supported": 19,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "fitch-cuts-france-outlook-negative-contraction-3bef5e": {
+      "at": "2026-11-01T06:47:16.815Z",
+      "title": "«فيتش» تخفض نظرتها لتصنيف فرنسا إلى «سلبية» بعد انكماش الربع الثالث",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v47",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 41,
+            "checked": 41,
+            "supported": 37,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "egypt-ida-industrial-building-permits-mechanism-9dc933": {
+      "at": "2026-11-01T06:54:47.253Z",
+      "title": "مصر تطبّق آلية جديدة لتسريع تراخيص بناء المنشآت الصناعية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v47",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 11,
+            "checked": 11,
+            "supported": 11,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
