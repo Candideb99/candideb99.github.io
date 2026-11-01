@@ -10199,6 +10199,69 @@
           "noted": []
         }
       ]
+    },
+    "hormuz-fertilizer-disruption-egypt-morocco-exporters-c8129a": {
+      "at": "2026-11-01T19:06:58.342Z",
+      "title": "اضطراب هرمز يثقل صناعة الفوسفات المغربية بكلفة الكبريت",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 41,
+            "checked": 41,
+            "supported": 33,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 5,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 41,
+              "field": "body",
+              "class": "internal",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "فإن كان لغياب الشحنات الخليجية أثر في هذه الصادرات، فالأرجح أنه بقي محدوداً: نمت الأسمدة بوتيرة أبطأ كثيراً من القطاع كله، وحملت البتروكيماويات معظم قفزته.",
+              "quote": "ومن الزيادة البالغة نحو 2.40 مليار دولار، جاء أكثر من 1.19 مليار من البتروكيماويات، التي بلغت صادراتها 2.43 مليار دولار مقابل 1.23 مليار.",
+              "source": "the story itself",
+              "sourceN": 0,
+              "correction": "Petrochemicals contributed just over $1.19 billion (2.43 − 1.23 = 1.20) of the $2.40 billion increase, which is about half of the sector's gain, not most of it."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 41,
+            "checked": 41,
+            "supported": 34,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 5,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
