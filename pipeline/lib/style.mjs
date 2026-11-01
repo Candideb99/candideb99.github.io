@@ -15,7 +15,7 @@
  * file checks those.
  */
 import { normalizeDigits } from "./util.mjs";
-import { unplacedActors } from "./regions.mjs";
+import { unplacedActors, untradedActors } from "./regions.mjs";
 
 const AR = "؀-ۿ";
 
@@ -466,6 +466,11 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
   if (unplaced.length) {
     const named = unplaced.map((a) => `«${a.name}» ${a.nisba}`);
     issues.push(`العنوان والوصف يسمّيان ${unplaced.map((a) => `«${a.name}»`).join(" و")} دون بلدها، والخبر نفسه يقول ${named.join(" و")}؛ الصحف تعرّف في العنوان من قد لا يعرفه القارئ ببلده («"جي إي فيرنوفا" الأميركية تضخ 9 مليارات دولار…»، «أرباح "البحري" السعودية…»): اكتب ${named[0]} في العنوان، أو في أول الوصف إن ضاق العنوان.`);
+  }
+  // And what it does (untradedActors()): the story says «هيوماين» للذكاء الاصطناعي, the card does not.
+  const untraded = news ? untradedActors({ title, subtitle: dek, lede, body }) : [];
+  if (untraded.length) {
+    issues.push(`العنوان والوصف يسمّيان ${untraded.map((a) => `«${a.name}»`).join(" و")} دون ما تعمله، والخبر نفسه يقول ${untraded.map((a) => a.phrase).join(" و")}؛ الصحف تقول في العنوان ما تعمله شركة قد لا يعرفها القارئ («… بشركة معدات كهرباء ألمانية»): اكتب ${untraded[0].phrase} في العنوان، أو في أول الوصف إن ضاق العنوان.`);
   }
   // A nationality is the country's adjective, never one coined from a city or an emirate (the owner, 2026-10-30, on
   // «مجموعة «2 بوينت زيرو» الأبوظبية»: "weird arabic"). The city itself takes no article («سوق أبوظبي»), so «الأبوظبي…»

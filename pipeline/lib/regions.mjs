@@ -102,8 +102,10 @@ const NATIONALITIES = {
 };
 // Household names, whose country no Arab reader needs told (the writer's rule says the same; «مصر تبحث مع «بي بي»…»
 // was the one other hit of the first calibration).
+// The rating agencies and OpenAI joined with the trade check below (2026-11-01): «فيتش» needs no «للتصنيف الائتماني».
 const HOUSEHOLD = new Set(["بي بي", "شل", "توتال إنرجيز", "إكسون موبيل", "شيفرون", "أرامكو", "أدنوك", "أبل", "مايكروسوفت", "ألفابت",
-  "غوغل", "جوجل", "أمازون", "ميتا", "إنفيديا", "تسلا", "سامسونغ", "تويوتا", "بوينغ", "إيرباص"].map(normalizePlace));
+  "غوغل", "جوجل", "أمازون", "ميتا", "إنفيديا", "تسلا", "سامسونغ", "تويوتا", "بوينغ", "إيرباص", "أوبن إيه آي", "فيتش", "موديز",
+  "ستاندرد آند بورز"].map(normalizePlace));
 const nationalityKey = (word) => normalizePlace(word).replace(/(?:يه|يين|يون|ين|ي)$/, "");
 const NATIONALITY_BY_KEY = new Map(Object.entries(NATIONALITIES).map(([nisba, places]) => [nationalityKey(nisba), places.map((p) => placeRe(p, { country: true }))]));
 /** Text as the country readers read it: «المملكة المتحدة» is Britain, never also «المملكة»; «عمّان» with its shadda is
@@ -124,6 +126,49 @@ export function unplacedActors({ title = "", subtitle = "", lede = "", body = ""
     if (!places || HOUSEHOLD.has(normalizePlace(name)) || !head.includes(normalizePlace(name)) || out.some((o) => o.name === name)) continue;
     if (places.some((re) => re.test(shown))) continue;
     out.push({ name, nisba });
+  }
+  return out;
+}
+
+/**
+ * And what it does (the owner, 2026-11-01, on «أرامكو تكمل الاستحواذ على 49% من «هيوماين» السعودية…»: the headline and
+ * the dek "do not give any hint to what type of company is هيوماين"). Reuters headlined the deal "Saudi Aramco to take
+ * minority stake in PIF-owned AI firm Humain" (2025-10-28); Asharq Business «… بشركة معدات كهرباء ألمانية». Code sees the
+ * case the story itself settles: it says what the company does after its name («هيوماين» للذكاء الاصطناعي، «X» المتخصصة
+ * في …) or before it (شركة الذكاء الاصطناعي «هيوماين»), and the headline carries the name while neither it nor the dek
+ * carries a word of that. Over the 405 news stories of 21 September to 1 November: HUMAIN, Arada, Rua Al Haram, Anthropic,
+ * Binance and Solidigm; Fitch (household), «أوبن إيه آي» للحصول على… (a purpose, not a trade) and the East-West
+ * pipeline (a facility, not a company) were the false alarms of the first wording.
+ */
+// Whole words (a word may not end inside another: «للرقائ» before «ق في» slipped past the lookahead), and a phrase
+// followed by «على»، «إلى»، «من» is a purpose («للحصول على تمويل»), never a trade; «في» may follow a trade
+// («للرقائق في أمريكا»).
+const AR_WORD = "[\\u0621-\\u064A]+(?![\\u0621-\\u064A])";
+const TRADE_AFTER = new RegExp(`«([^»]{2,40})»(?:\\s*\\([^)]{1,60}\\))?(?:\\s+ال${AR_WORD})?\\s+((?:لل|المتخصصة في |المتخصصه في |العاملة في |العامله في )${AR_WORD}(?:\\s+ال${AR_WORD})?)(?!\\s+(?:على|من|إلى|الى|عن|مع|بين)(?![\\u0621-\\u064A]))`, "g");
+const TRADE_BEFORE = new RegExp(`(?<![\\u0621-\\u064A])(?:شركة|شركه|مجموعة|منصة|مطور|مطوّر|مشغل|مشغّل|مصنع|مصنّع|مصرف|بنك|عملاق)\\s+((?:ال${AR_WORD}\\s+){1,3})«([^»]{2,40})»`, "g");
+// A facility, a project or a deal named in «» is no company: «خط «شرق - غرب» للخام».
+const NOT_A_COMPANY = /(?:خط|مشروع|حقل|ميناء|منشأة|مصفاة|محطة|برنامج|مبادرة|منتدى|مؤتمر|اتفاق|اتفاقية|صفقة|مؤشر|صندوق|قناة|سفينة|ناقلة|مضيق)\s*$/;
+const TRADE_STOP = new Set(["شركه", "تابعه", "مملوكه", "مدرجه", "حكوميه", "عالميه", "دوليه", "كبري", "قابضه", "محدوده"].map(normalizePlace));
+/** The words of a trade a headline or a dek may carry: content words, a nisba left to unplacedActors(). */
+const tradeWords = (text) => (normalizePlace(text).match(/[ء-ي]{3,}/g) ?? [])
+  .map((w) => w.replace(/^(?:وال|فال|بال|كال|لل|ال)/, ""))
+  .filter((w) => w.length >= 3 && !TRADE_STOP.has(w) && !NATIONALITY_BY_KEY.has(nationalityKey(w)));
+
+/** The names the headline carries without what the story itself says they do: [{ name, trade }]. */
+export function untradedActors({ title = "", subtitle = "", lede = "", body = "" } = {}) {
+  const head = normalizePlace(title);
+  const shown = normalizePlace(`${title}\n${subtitle}`);
+  const story = `${lede}\n${body}`;
+  const found = [];
+  for (const m of story.matchAll(TRADE_AFTER)) if (!NOT_A_COMPANY.test(story.slice(Math.max(0, m.index - 14), m.index))) found.push({ name: m[1], trade: m[2], shown: `«${m[1]}» ${m[2]}` });
+  for (const m of story.matchAll(TRADE_BEFORE)) found.push({ name: m[2], trade: m[1].trim(), shown: m[0] });
+  const out = [];
+  for (const { name, trade, shown: phrase } of found) {
+    const key = normalizePlace(name);
+    if (HOUSEHOLD.has(key) || !head.includes(key) || out.some((o) => o.name === name)) continue;
+    const words = tradeWords(trade);
+    if (!words.length || words.some((w) => shown.includes(w))) continue;
+    out.push({ name, trade, phrase });
   }
   return out;
 }

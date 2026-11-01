@@ -685,12 +685,23 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("«لتسجل أدنى إغلاق», «إلى أدنى مستوى» and a broker («وسيط مالي») pass", closeFaults("السوق السعودية تهبط 2.3% لتسجل أدنى إغلاق منذ 2021", "المؤشر يهبط إلى أدنى مستوى منذ 2021 ووسيط مالي يتوقع ارتداداً"), [0, 0]);
   // WHO AND WHERE (the owner, 2026-10-29): a headline that drops the country its own story gives an actor.
   const acwa = { title: "«أكوا» و«إي آي جي» تؤسسان منصة كهرباء أمريكية برأسمال مستهدف 4 مليارات دولار", subtitle: "تملك «إي آي جي» 51% من منصة «بلينوم باور» و«أكوا» 49%", lede: "أعلنت «أكوا» السعودية و«إي آي جي» (EIG) الأمريكية إطلاق منصة مشتركة.", body: "", whyItMatters: "", keyFacts: [] };
-  const unplacedOf = (draft) => styleIssues(draft).issues.filter((i) => i.startsWith("العنوان والوصف يسمّيان"));
+  const unplacedOf = (draft) => styleIssues(draft).issues.filter((i) => i.startsWith("العنوان والوصف يسمّيان") && i.includes("دون بلدها"));
   check("ACWA's headline is sent back for «أكوا» السعودية, EIG placed by «أمريكية»", unplacedOf(acwa).map((i) => [i.includes("«أكوا» السعودية"), i.includes("«إي آي جي» الأمريكية")]), [[true, false]]);
   check("«أكوا» السعودية in the headline passes", unplacedOf({ ...acwa, title: "«أكوا» السعودية و«إي آي جي» تؤسسان منصة كهرباء أمريكية بـ4 مليارات دولار" }).length, 0);
   check("the country in the dek passes", unplacedOf({ ...acwa, subtitle: "الشركة السعودية تملك 49% من المنصة" }).length, 0);
   check("a name the headline carries unquoted is read («إس كيه هاينكس» الكورية)", unplacedOf({ title: "إس كيه هاينكس تعلّق طرح وحدتها «سوليدايم» في أمريكا", subtitle: "", lede: "علّقت «إس كيه هاينكس» الكورية الجنوبية طرح وحدتها.", body: "", whyItMatters: "" }).length, 1);
   check("a household name the story gives no country passes", unplacedOf({ title: "«أبل» تطلق أول «ماك بوك برو» بشاشة لمس", subtitle: "", lede: "أطلقت «أبل» أول حاسوب «ماك بوك برو» بشاشة لمس.", body: "", whyItMatters: "" }).length, 0);
+  // And what it does (the owner, 2026-11-01, on HUMAIN): the story says «هيوماين» للذكاء الاصطناعي, the card did not.
+  const humain = { title: "أرامكو تكمل الاستحواذ على 49% من «هيوماين» السعودية بضخ 9.9 مليار ريال", subtitle: "صندوق الاستثمارات العامة يحتفظ بالأغلبية عند 51%", lede: "أكملت أرامكو استحواذها على 49% من «هيوماين» للذكاء الاصطناعي التابعة لصندوق الاستثمارات العامة.", body: "", whyItMatters: "", keyFacts: [] };
+  const untradedOf = (draft) => styleIssues(draft).issues.filter((i) => i.includes("دون ما تعمله"));
+  check("HUMAIN's headline is sent back for «هيوماين» للذكاء الاصطناعي", untradedOf(humain).map((i) => i.includes("«هيوماين» للذكاء الاصطناعي")), [true]);
+  check("its trade in the headline passes", untradedOf({ ...humain, title: "أرامكو تكمل الاستحواذ على 49% من «هيوماين» السعودية للذكاء الاصطناعي" }).length, 0);
+  check("its trade in the dek passes", untradedOf({ ...humain, subtitle: "شركة الذكاء الاصطناعي يملك الصندوق 51% منها" }).length, 0);
+  check("a trade written before the name is read (شركة الذكاء الاصطناعي الصينية «ديب سيك»)", untradedOf({ title: "واشنطن تأمر الوكالات بإزالة «ديب سيك» الصينية من أنظمتها", subtitle: "", lede: "أمرت واشنطن بإزالة تطبيقات شركة الذكاء الاصطناعي الصينية «ديب سيك».", body: "", whyItMatters: "" }).length, 1);
+  check("a purpose is no trade («إكس» للحصول على تمويل)", untradedOf({ title: "«إكس» تجمع 10 مليارات دولار", subtitle: "", lede: "تسعى «إكس» للحصول على تمويل جديد.", body: "", whyItMatters: "" }).length, 0);
+  check("a facility is no company (خط «شرق - غرب» للخام)", untradedOf({ title: "السعودية تعيد تشغيل خط «شرق - غرب» النفطي", subtitle: "", lede: "أعادت السعودية تشغيل خط «شرق - غرب» للخام.", body: "", whyItMatters: "" }).length, 0);
+  check("a household name's trade is not asked for («فيتش» للتصنيف الائتماني)", untradedOf({ title: "«فيتش» تثبت تصنيف مصر", subtitle: "", lede: "ثبتت «فيتش» للتصنيف الائتماني تصنيف مصر.", body: "", whyItMatters: "" }).length, 0);
+  check("«للرقائق» is read whole before «في»", untradedOf({ title: "إس كيه هاينكس تعلّق طرح «سوليدايم» في أمريكا", subtitle: "", lede: "علّقت الشركة طرح وحدتها «سوليدايم» للرقائق في الولايات المتحدة.", body: "", whyItMatters: "" }).map((i) => i.includes("«سوليدايم» للرقائق")), [true]);
 
   // The first Sol story was factually clean but had an incomplete headline and three tiny dispatches.
   const dispatches = [

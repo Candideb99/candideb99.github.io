@@ -8,7 +8,7 @@
  *
  *   node scripts/images-selftest.mjs
  */
-import { withStandIns, pickImage, headlinePeople, headlineCompany, namesCompany, namesPerson, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { withStandIns, pickImage, headlinePeople, headlineCompany, namesCompany, namesPerson, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, noveltyFault, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
 import { photoKey, sharedPhotos } from "../pipeline/lib/photo-key.mjs";
 import { BAD_TITLE, cleanArtist, creditName, attributionLine } from "../pipeline/lib/commons.mjs";
 
@@ -1006,6 +1006,11 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   // AMATEUR is one word and says nothing of the subject: a snapshot of the wrong subject is not held, and nothing runs.
   const wrong = await scenario({ draft, plan: { queries: ["oil refinery"], place: [], people: [], focus: "subject", places: [], place_queries: [] }, world: { "oil refinery": [snap] }, judge: (titles) => (titles.length ? 1 : 0), verify: (name, prompt) => (prompt.includes("already known to be a snapshot") ? "WRONG_SUBJECT" : "AMATEUR") });
   check("a snapshot whose subject the second reading refuses is not held back", [wrong.image?.title ?? null, wrong.calls.filter((c) => c.startsWith("verify:")).length >= 2], [null, true]);
+  // A held frame read RECAPTION fits under a caption that names too much: its caption is written again, as the main path
+  // does, and it is held (the Jubail refinery under Saudi Arabia's GDP was dropped as "not held back either", 2026-11-01).
+  const recaption = await scenario({ draft, plan: { queries: ["oil refinery"], place: [], people: [], focus: "subject", places: [], place_queries: [] }, world: { "oil refinery": [snap] }, judge: (titles) => (titles.length ? 1 : 0),
+    verify: (name, prompt) => (!prompt.includes("already known to be a snapshot") ? "AMATEUR" : prompt.includes("Caption the paper would print: طائرة إيرباص A321neo") ? "RIGHT" : "RECAPTION") });
+  check("a held snapshot read RECAPTION is recaptioned and held, and runs", [recaption.image?.title ?? null, recaption.calls.includes("caption")], [snap.title, true]);
   check("every judge is told amateur photographs come last, and to prefer the nearest, clearest subject", [both.judgePrompts.every((p) => p.includes("AMATEUR LAST")), both.judgePrompts.every((p) => p.includes("nearest, largest and sharpest"))], [true, true]);
 }
 
@@ -1175,6 +1180,19 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
     globalThis.fetch = realFetch;
   }
   check("Openverse timing out: three searches are sent, and none queued behind them once the breaker opens", sent, 3);
+}
+
+// A market of one traditional product is folklore under an economy's figures (the owner, 2026-11-01, on a date market
+// under Saudi Arabia's third-quarter GDP: "not the best choice in my opinion"); a story about that product keeps it.
+{
+  const gdp = { title: "انكماش الاقتصاد السعودي يتباطأ إلى 3.8% في الربع الثالث", subtitle: "الناتج نما 1.3% بقيادة الأنشطة النفطية", lede: "انكمش الناتج المحلي الإجمالي الحقيقي للسعودية 3.8%.", body: "" };
+  const dates = { title: "صادرات السعودية من التمور ترتفع 12% في 9 أشهر", subtitle: "", lede: "ارتفعت صادرات التمور السعودية.", body: "" };
+  const souq = { title: "Vibrant scene of a traditional date market in Saudi Arabia with shoppers", description: "", categories: "" };
+  check("a date market under Saudi GDP is folklore", Boolean(noveltyFault(souq, gdp)), true);
+  check("its Arabic caption is read too («سوق للتمور»)", Boolean(noveltyFault({ title: "Market scene", alt: "بائع ومتسوقون في سوق للتمور في السعودية" }, gdp)), true);
+  check("a date market under a story about dates stays", noveltyFault(souq, dates), null);
+  check("an everyday market of many goods is not folklore («Shorja market»)", noveltyFault({ title: "Shoppers at Shorja market, Baghdad, 2024" }, gdp), null);
+  check("«المستمر» is not dates", noveltyFault(souq, { ...gdp, lede: "مع النمو المستمر للأنشطة غير النفطية" }) !== null, true);
 }
 
 console.log(failed ?`\n${failed} check(s) FAILED` : "\nall checks passed");
