@@ -27,7 +27,7 @@ import { boxFacts, figureOnly } from "../pipeline/lib/keyfacts.mjs";
 import { deskNotes, explainingFacts, newsDepthBrief, newsFloor, normalizeChart, normalizeDraft, paperNotes, prioritizeContext, substantiveFacts, validateDraft, validateWhyBasis, writePaperReading } from "../pipeline/lib/write.mjs";
 import { NEWS_DEPTH, NEWS_FLOOR, NEWS_MIN_EXPLAINING, NEWS_MIN_FACTS, SHORT_WORDS } from "../pipeline/lib/editorial.mjs";
 import { arabicEdition, bestPdf, coveredBy, documentUrl, editionKey, previousEdition, releaseDocument, releaseStory, reportExcerpts } from "../pipeline/lib/reports.mjs";
-import { mergeNewsRefresh, serializeArticle } from "../pipeline/lib/article.mjs";
+import { mergeNewsRefresh, recentNews, serializeArticle, weekStories } from "../pipeline/lib/article.mjs";
 import { cleanTags } from "../pipeline/lib/tags.mjs";
 import { countriesNamed, groundedRegions, unplacedActors } from "../pipeline/lib/regions.mjs";
 import { styleIssues } from "../pipeline/lib/style.mjs";
@@ -35,6 +35,7 @@ import { fixNames, judgeRewrite } from "../pipeline/lib/copydesk.mjs";
 import { CUTTABLE, cutToSources, normalizeCritique, programmaticChecks } from "../pipeline/lib/verify.mjs";
 import { noveltyFault } from "../pipeline/lib/images.mjs";
 import { changedSince, commitSteps, gitStatus, snapshot, undoChanges } from "./desk-git.mjs";
+import { chatRoute } from "./desk-chat.mjs";
 
 let failed = 0;
 function check(name, got, want) {
@@ -1531,6 +1532,44 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const clash = sync(desk);
   check("a real clash stops the sync, names the file and loses neither side", [clash.status, /src\/page\.astro/.test(clash.stderr), readFileSync(path.join(desk, "src/page.astro"), "utf8"), git(desk, "log", "--format=%s", "-1").stdout.trim(), git(desk, "log", "--format=%s", "-1", "origin/main").stdout.trim()], [1, true, "line 1\nline 2, the desk's edit\nline 3\n", "desk edit", "cloud fix"]);
   rmSync(tmp, { recursive: true, force: true, maxRetries: 3 });
+}
+
+// A draft is no hub piece's material (a review of 2026-11-01: the loader dropped the draft flag, and an analysis could
+// cite /articles/<draft>/, a page the site never builds). The repeat checks still see it.
+{
+  const now = new Date().toISOString();
+  const pieces = [{ slug: "live", kind: "news", draft: false, publishedAt: now }, { slug: "pending", kind: "news", draft: true, publishedAt: now }];
+  check("a draft is left out of the news a hub piece draws on", [recentNews(pieces, 10).map((a) => a.slug), weekStories(pieces).map((a) => a.slug)], [["live"], ["live"]]);
+  const dir = mkdtempSync(path.join(os.tmpdir(), "khazendar-drafts-"));
+  mkdirSync(path.join(dir, "content", "articles"), { recursive: true });
+  const story = (slug, draft) => `---\ntitle: خبر ${slug}\nslug: ${slug}\nkind: news\nsection: economy\npublishedAt: "${now}"\n${draft ? "draft: true\n" : ""}---\nنص.\n`;
+  writeFileSync(path.join(dir, "content", "articles", "live.md"), story("live", false));
+  writeFileSync(path.join(dir, "content", "articles", "pending.md"), story("pending", true));
+  const probe = `import { loadExistingArticles } from ${JSON.stringify(new URL("../pipeline/lib/article.mjs", import.meta.url).href)};
+console.log(JSON.stringify((await loadExistingArticles()).map((a) => [a.slug, a.draft]).sort()));`;
+  const loaded = spawnSync(process.execPath, ["--input-type=module", "-e", probe], { cwd: dir, encoding: "utf8" });
+  check("the article loader keeps each story's draft flag", loaded.stdout.trim(), JSON.stringify([["live", false], ["pending", true]]));
+  rmSync(dir, { recursive: true, force: true, maxRetries: 3 });
+}
+
+// The chat changes files through Claude Code whatever writes the news; without Claude Code it only answers (a review of
+// 2026-11-01: another newsroom provider made it a text model told to change the site).
+check(
+  "the chat runs Claude Code whenever it can, and answers only without it",
+  [chatRoute("claude"), chatRoute("gemini", { cli: ["claude.exe"], keys: { CLAUDE_CODE_OAUTH_TOKEN: "t" } }), chatRoute("codex", { cli: ["claude.exe"], keys: {} }), chatRoute("gemini", { cli: null, keys: { CLAUDE_CODE_OAUTH_TOKEN: "t" } })],
+  ["claude", "claude", "answer-only", "answer-only"],
+);
+
+// A tag inside «…» is left as written, and the search goes on past it (a review of 2026-11-01: a quoted first tag left
+// every later tag of the paragraph unlinked).
+{
+  const { default: topicLinks } = await import("../src/lib/rehype-topic-links.mjs");
+  const linksIn = (text) => {
+    const tree = { type: "root", children: [{ type: "element", tagName: "p", properties: {}, children: [{ type: "text", value: text }] }] };
+    topicLinks()(tree, { data: { astro: { frontmatter: { tags: ["النفط", "الذهب"] } } } });
+    return tree.children[0].children.filter((c) => c.tagName === "a").map((a) => a.children[0].value);
+  };
+  check("topic links skip a quoted mention and link the rest", [linksIn("ارتفعت أسعار النفط أمس، ثم صعد الذهب إلى مستوى جديد."), linksIn("ارتفعت أسعار «النفط» أمس، ثم صعد الذهب إلى مستوى جديد بينما تراجع النفط مساء.")], [["النفط", "الذهب"], ["الذهب", "النفط"]]);
 }
 
 if (failed) {

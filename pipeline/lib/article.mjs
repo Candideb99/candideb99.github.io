@@ -3,7 +3,7 @@ import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import YAML from "yaml";
 import { boxFacts } from "./keyfacts.mjs";
-import { sha1, slugifyLatin, wordCount } from "./util.mjs";
+import { hoursSince, sha1, slugifyLatin, wordCount } from "./util.mjs";
 
 export const ARTICLES_DIR = path.join(process.cwd(), "content", "articles");
 
@@ -122,6 +122,9 @@ export function serializeArticle({ draft, slug, section, sources, image, models,
 /**
  * Loads the metadata and text of existing articles (for dedup, recency, related pieces, and as the
  * material an analysis draws on). `kind` is news, explainer, analysis or paper; `body` is the Markdown text.
+ * `draft`: a story written for review and not yet published. The checks for a repeat count it; a hub piece never draws
+ * on it (recentNews(), weekStories()): it is not on the site, and a piece citing it linked a page no reader can open
+ * (a review of 2026-11-01).
  */
 export async function loadExistingArticles() {
   let files = [];
@@ -144,6 +147,7 @@ export async function loadExistingArticles() {
         subtitle: data.subtitle ?? "",
         section: data.section,
         kind: data.kind ?? "news",
+        draft: data.draft === true,
         format: data.format === "short" ? "short" : "full",
         publishedAt: data.publishedAt,
         lede: data.lede ?? "",
@@ -161,4 +165,16 @@ export async function loadExistingArticles() {
     }
   }
   return out.sort((a, b) => String(b.publishedAt).localeCompare(String(a.publishedAt)));
+}
+
+/** News stories of the last 72 hours, newest first, never a draft: the coverage a hub piece (explainer, analysis) is anchored in. */
+export const recentNews = (existing, max) => existing.filter((a) => a.kind === "news" && !a.draft && hoursSince(a.publishedAt) < 72).slice(0, max);
+
+/** The week's stories, strongest first: news and analyses of the last seven days, the top fourteen, never a draft. */
+export function weekStories(existing) {
+  const importance = (a) => (a.quality?.importance ?? 5) + (a.kind === "analysis" ? 0.5 : 0);
+  return existing
+    .filter((a) => (a.kind === "news" || a.kind === "analysis") && !a.draft && hoursSince(a.publishedAt) < 24 * 7)
+    .sort((x, y) => importance(y) - importance(x))
+    .slice(0, 14);
 }

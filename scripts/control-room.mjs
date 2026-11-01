@@ -30,6 +30,7 @@ import { accountById, listAccounts, beginAccountLogin, loginState, setAccountRem
 import { validateCodexAuth } from "../pipeline/lib/codex-cloud.mjs";
 import { readQuotaState, refreshAccountUsage } from "../pipeline/lib/codex-pool.mjs";
 import { NEWSROOM_FILES, changedSince, commitSteps, gitStatus, snapshot, undoChanges } from "./desk-git.mjs";
+import { chatRoute } from "./desk-chat.mjs";
 
 const root = process.cwd();
 const PORT = Number(process.env.KHAZENDAR_CONTROL_PORT ?? 7777);
@@ -666,6 +667,14 @@ WHAT YOU MUST NEVER DO — HE PUBLISHES, NOT YOU
   a picture. Never print, copy or commit .env, a key or a token.
 
 END EVERY TURN with one line: what changed, and whether the site still builds.`;
+/** The chat without Claude Code (desk-chat.mjs chatRoute()): a text model that reads no file and changes none. */
+const ANSWER_ONLY_RULES = `You are the site assistant for خازندار, an automated Arabic economics newspaper owned by Ahmed, answering in
+the paper's control room. Ahmed is not a programmer.
+In this chat you can neither read nor change the site's files: only Claude Code can, and it is not set up on this
+laptop. Answer questions about the site and the newsroom in plain words. Never say or imply that you changed, checked,
+built or published anything. When he asks for a change, say what the change would be and, in one line, that making it
+needs Claude Code with a Claude token, added in Settings.
+Answer in the language he wrote in, Arabic or English, in short plain sentences.`;
 // Also out of the chat's reach: the keys file, and the workflows, which run in the cloud with every key the site has.
 const BLOCKED_TOOLS = ["Bash(git commit:*)", "Bash(git push:*)", "Bash(git reset:*)", "Bash(git checkout:*)", "Bash(git restore:*)", "Bash(git clean:*)", "Bash(git stash:*)", "Bash(git rebase:*)", "Read(./.env)", "Read(./.env.*)", "Edit(./.github/workflows/**)"];
 // `before`: the working tree as the last message found it (desk-git.mjs snapshot()); `touched`: what that message changed.
@@ -678,13 +687,14 @@ async function startChat(message) {
   const keys = envFileKeys();
   const activeProvider = (keys.KHAZENDAR_PROVIDER || "gemini").toLowerCase();
 
-  if (activeProvider === "claude") {
+  // Claude Code whenever it can run, whatever writes the news: nothing else here can change a file (desk-chat.mjs).
+  if (chatRoute(activeProvider, { cli: CLI, keys }) === "claude") {
     if (!CLI) {
-      chatSend({ t: "error", text: "Claude Code is not installed on this machine. Switch to Gemini in Settings, or install Claude Code." });
+      chatSend({ t: "error", text: "Claude Code is not installed on this machine, and only Claude Code can change the site's files." });
       return true;
     }
     if (!keys.CLAUDE_CODE_OAUTH_TOKEN && !keys.ANTHROPIC_API_KEY) {
-      chatSend({ t: "error", text: "Claude is active but no key or token is saved. Open Settings and add one, or switch to Gemini." });
+      chatSend({ t: "error", text: "Claude is active but no key or token is saved. Open Settings and add one." });
       return true;
     }
     chat.before = await snapshot(root);
@@ -745,7 +755,7 @@ async function startChat(message) {
     return true;
   }
 
-  // Active provider is Gemini, OpenAI, Qwen, or OpenRouter
+  // No Claude Code here: the newsroom's provider (Gemini, ChatGPT, OpenAI, Qwen or OpenRouter) answers, and changes nothing.
   const hasKey = activeProvider === "gemini" ? Boolean(keys.GEMINI_API_KEY || keys.GOOGLE_API_KEY)
     : activeProvider === "codex" ? codexStatus(spawnSync, loadEnv()).subscription
     : activeProvider === "openai" ? Boolean(keys.OPENAI_API_KEY)
@@ -763,7 +773,7 @@ async function startChat(message) {
   chat.turns.push({ role: "you", text: message });
   chatSend({ t: "you", text: message });
   chatSend({ t: "busy" });
-  chatSend({ t: "step", text: `Thinking with ${activeProvider.toUpperCase()}...` });
+  chatSend({ t: "step", text: `Answering with ${activeProvider.toUpperCase()}, which cannot change the site's files: that needs Claude Code with a Claude token (Settings).` });
 
   (async () => {
     try {
@@ -771,7 +781,7 @@ async function startChat(message) {
       const history = chat.turns.slice(-6).map((t) => `${t.role === "you" ? "User" : "Assistant"}: ${t.text}`).join("\n\n");
       const res = await llmChat({
         role: "assistant",
-        system: CHAT_RULES,
+        system: ANSWER_ONLY_RULES,
         user: `${history}\n\nUser request: ${message}`,
         json: false,
         timeoutMs: 120000,

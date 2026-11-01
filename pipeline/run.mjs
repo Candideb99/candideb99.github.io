@@ -38,7 +38,7 @@ import { repeatsRecent } from "./lib/events.mjs";
 import { saveSnapshot } from "./lib/snapshots.mjs";
 import { pickImage } from "./lib/images.mjs";
 import { cleanTags, storyText as tagsText } from "./lib/tags.mjs";
-import { ARTICLES_DIR, buildSlug, loadExistingArticles, mergeNewsRefresh, mergeRewrite, serializeArticle } from "./lib/article.mjs";
+import { ARTICLES_DIR, buildSlug, loadExistingArticles, mergeNewsRefresh, mergeRewrite, recentNews, serializeArticle, weekStories } from "./lib/article.mjs";
 import { usage as llmUsage } from "./lib/llm.mjs";
 import { USER_AGENT, domainOf, fetchWithTimeout, fingerprint, hoursSince, isoNow, restoredFigures, sleep } from "./lib/util.mjs";
 import { pickDataChart } from "./lib/datacharts.mjs";
@@ -424,6 +424,10 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
 
   // The latest price of what the story is about (lib/context.mjs; the owner, 2026-10-19), read just before writing: the
   // oil story of that morning printed a price six hours old. Not for a flagship report, which is about its own figures.
+  // It comes on top of the evidence's five items (lib/news-evidence.mjs), on purpose: that cap holds the reports and the
+  // document a story is told from, and a price line is neither (eventSourcesOf() leaves it out). Held under the cap, the
+  // busiest market stories, the ones with five reports, would lose their latest price (a review of 2026-11-01 read the cap
+  // as one on every source; no published story has had more than five).
   if (!preset) {
     const market = await marketData({ story, sources: eventSources, log });
     if (market) {
@@ -845,8 +849,7 @@ async function runNewsRefresh(report) {
   return { report, published: 0, refreshed: 1 };
 }
 
-/** News stories of the last 72 hours, newest first: the coverage a hub piece (explainer, analysis) is anchored in. */
-const recentNews = (existing, max) => existing.filter((a) => a.kind === "news" && hoursSince(a.publishedAt) < 72).slice(0, max);
+// recentNews() and weekStories(), the hub pieces' material, live beside the loader in lib/article.mjs: never a draft.
 
 /** The full text of a published story, as the material an analysis may cite and is checked against. */
 function articleText(a) {
@@ -1085,7 +1088,7 @@ function runAnalysis() {
     // With `--sections`, the reading draws on those sections alone and looks back a week, since a
     // section like الدفاع does not fill in three days.
     const recent = SECTIONS.length
-      ? existing.filter((a) => a.kind === "news" && SECTIONS.includes(a.section) && hoursSince(a.publishedAt) < 24 * 7).slice(0, 40)
+      ? existing.filter((a) => a.kind === "news" && !a.draft && SECTIONS.includes(a.section) && hoursSince(a.publishedAt) < 24 * 7).slice(0, 40)
       : recentNews(existing, 40);
     if (SECTIONS.length) log(`analysis restricted to ${SECTIONS.join(", ")}: ${recent.length} stories of the week`);
     const analyses = existing.filter((a) => a.kind === "analysis").map((a) => a.title);
@@ -1359,8 +1362,8 @@ async function rewriteExplainer(old, { existing, report, replace }) {
   const at = Date.parse(old.publishedAt);
   const age = (a) => (at - Date.parse(a.publishedAt)) / 3600000;
   const filed = new Set((old.sources ?? []).map((s) => String(s.url ?? "").replace(/^\/articles\/|\/$/g, "")));
-  const own = existing.filter((a) => filed.has(a.slug));
-  const week = existing.filter((a) => a.kind === "news" && !filed.has(a.slug) && age(a) >= 0 && age(a) <= 24 * 7).slice(0, 25);
+  const own = existing.filter((a) => filed.has(a.slug) && !a.draft);
+  const week = existing.filter((a) => a.kind === "news" && !a.draft && !filed.has(a.slug) && age(a) >= 0 && age(a) <= 24 * 7).slice(0, 25);
   const recent = [...own, ...week];
   if (!recent.length) {
     report.push({ headline: old.title, section: old.section, outcome: "skipped: no story of its week to open on" });
@@ -1484,15 +1487,6 @@ function markdownSummary(summary) {
   return `## خازندار newsroom — ${summary.mode} (${summary.published} published)\n\n| section | story | score | image | outcome |\n|---|---|---|---|---|\n${rows || "| | (nothing) | | | |"}\n\nLLM calls: ${summary.llm.calls} ok, ${summary.llm.failures} failed; models: ${Object.entries(summary.llm.byModel).map(([m, n]) => `${m}×${n}`).join(", ") || "none"}\n`;
 }
 
-/** The week's stories, strongest first: news and analyses of the last seven days, the top fourteen. */
-function weekStories(existing) {
-  const importance = (a) => (a.quality?.importance ?? 5) + (a.kind === "analysis" ? 0.5 : 0);
-  return existing
-    .filter((a) => (a.kind === "news" || a.kind === "analysis") && hoursSince(a.publishedAt) < 24 * 7)
-    .sort((x, y) => importance(y) - importance(x))
-    .slice(0, 14);
-}
-
 /** The coming ten days of the calendar as plain text, and as a source the checks can ground dates against. */
 async function calendarForWeek() {
   try {
@@ -1556,7 +1550,7 @@ const REGION_TAGS = new Set(["الخليج", "مصر والمغرب العربي
 function runFeature() {
   return runHub("feature", "analysis", async (report) => {
     const existing = await loadExistingArticles();
-    const news = existing.filter((a) => a.kind === "news" && hoursSince(a.publishedAt) < 24 * FEATURE_DAYS);
+    const news = existing.filter((a) => a.kind === "news" && !a.draft && hoursSince(a.publishedAt) < 24 * FEATURE_DAYS);
     const features = existing.filter((a) => a.kind === "feature");
     const told = new Set(features.filter((a) => hoursSince(a.publishedAt) < 24 * FEATURE_REST_DAYS).flatMap((a) => (a.tags ?? []).slice(0, 1)));
     const byTag = new Map();

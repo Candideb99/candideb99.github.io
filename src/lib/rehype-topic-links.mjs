@@ -56,6 +56,15 @@ const escape = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
  */
 const NAME_HEAD = "(?:وزارة|وزير|وزيرة|هيئة|مجلس|سلطة|قوات)";
 const tagPattern = (tag) => new RegExp(`(?<![\\p{L}\\p{M}])(?<![\\p{L}]*${NAME_HEAD}\\s)((?:[وف])?(?:[بكل])?)(${escape(tag)})(?![\\p{L}\\p{M}])`, "u");
+/**
+ * The tag's first mention outside «…», which marks a name or a quotation and is left as written. The search goes on past
+ * a quoted mention: it stopped there, and every later tag of the paragraph went unlinked (a review of 2026-11-01).
+ */
+function outsideQuotes(re, text) {
+  const all = new RegExp(re.source, `${re.flags}g`);
+  for (let m; (m = all.exec(text)); ) if (!/«[^»]*$/.test(text.slice(0, m.index))) return m;
+  return null;
+}
 
 export default function rehypeTopicLinks() {
   return (tree, file) => {
@@ -94,11 +103,10 @@ export default function rehypeTopicLinks() {
         for (;;) {
           let best = null;
           for (const [tag, re] of pending) {
-            const m = re.exec(text);
+            const m = outsideQuotes(re, text);
             if (m && (!best || m.index < best.m.index)) best = { tag, m };
           }
-          // «» marks a name or a quotation: a tag inside one is left as written.
-          if (!best || /«[^»]*$/.test(text.slice(0, best.m.index)) || linked >= MAX_LINKS) break;
+          if (!best || linked >= MAX_LINKS) break;
           const { tag, m } = best;
           const start = m.index + m[1].length;
           out.push({ type: "text", value: text.slice(0, start) });
