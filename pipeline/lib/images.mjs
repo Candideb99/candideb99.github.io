@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
+import { AsyncLocalStorage } from "node:async_hooks";
 import path from "node:path";
 import { attributionLine, searchCommons, searchCommonsCategory } from "./commons.mjs";
 import { searchLibraries, noteUse } from "./photolibs.mjs";
@@ -23,6 +24,23 @@ export function withStandIns(standIns) {
   const saved = { ...outside };
   Object.assign(outside, standIns);
   return () => Object.assign(outside, saved);
+}
+
+/**
+ * The model calls that failed during one search (pickImage()). The desk carries on past a failed planner, judge, check
+ * or caption, rightly for the story in hand, but its "nothing fits" then means "not looked at": the morning round took it
+ * for a search done in full and never searched that story again (a review of 2026-11-01). Every model call of the desk
+ * goes through ask(). A library that does not answer is not counted: Openverse times out by nature (its breaker), and
+ * Commons answered all of the three last morning rounds' 512 searches.
+ */
+const failures = new AsyncLocalStorage();
+async function ask(options) {
+  try {
+    return await outside.chat(options);
+  } catch (error) {
+    failures.getStore()?.push(error);
+    throw error;
+  }
 }
 
 /** A photograph's type from its opening bytes, or null. */
@@ -1048,7 +1066,7 @@ export async function writeCaption({ file = {}, story = "", current = "", illust
   const plain = plainNames ? "\nName only what the story itself names and what the frame shows: the aircraft, ship, plant, product or building by its kind or model (as «طائرة إيرباص A321neo» or «ناقلة غاز مسال»), never the airline, operator, owner, company, port, airport or place of the photograph when the story does not name them." : "";
   for (let round = 0; round < 2; round++) {
     try {
-      const { data } = await outside.chat({
+      const { data } = await ask({
         role: "writer",
         system: "You write photo captions for an Arabic economics news website. Reply with one JSON object only.",
         user: `${CAPTION_RULE}${illustrative ? "\nThis photograph runs as an illustration («صورة تعبيرية»), so its caption names no place at all and invents no setting in its stead (no «في مياه مفتوحة», no «في أحد الموانئ»): only the thing it shows, as «ناقلة نفط خام» or «مصفاة نفط»." : ""}${plain}
@@ -1265,7 +1283,7 @@ ${CAPTION_RULE}${neutral ? " This is an illustrative photograph: its caption nam
 Return JSON: {"choice": <1-${list.length} or 0 for none>, "alt": "<the Arabic caption of the chosen photograph, written by the rule above>",${story?.message ? ` "says": <true or false>,` : ""} "reason": "<short English reason>"}`;
 
   try {
-    const { data, model } = await outside.chat({
+    const { data, model } = await ask({
       role: "vision",
       system: "You are a photo editor at an Arabic economics publication. Reply with one JSON object only.",
       user,
@@ -1329,7 +1347,7 @@ ${list.map((c, i) => `${i + 1}. "${c.title}" — ${c.description || "no descript
 Choose the single best photograph for this article, or none. ${rules} Prefer recent, plainly descriptive photographs of the place, institution or sector; reject anything whose title, description or categories suggest a map, diagram, chart, logo, document, screenshot, artwork, historical scene, or an unrelated subject.
 ${CAPTION_RULE}
 Return JSON: {"choice": <1-${list.length} or 0 for none>, "alt": "<the Arabic caption of the chosen photograph, written by the rule above>", "reason": "<short English reason>"}`;
-  const { data, model } = await outside.chat({
+  const { data, model } = await ask({
     role: "critic",
     system: "You are a photo editor at an Arabic economics publication choosing from wire captions. Reply with one JSON object only.",
     user,
@@ -1378,7 +1396,7 @@ async function genericQueries({ draft, story, log, sources = [] }) {
     .slice(0, 3)
     .map((s) => `— ${s.sourceNameEn || s.sourceName || s.name || "source"}: ${String(s.text).replace(/\s+/g, " ").trim().slice(0, 1200)}`)
     .join("\n");
-  const { data } = await outside.chat({
+  const { data } = await ask({
     role: "writer",
     system: "You are a photo editor at an Arabic economics news website choosing stock photographs from Wikimedia Commons. Reply with one JSON object only.",
     user: `Read the whole story first: the photographs are chosen for what it is about, where it happens and who is in it, never from its headline alone.
@@ -1550,7 +1568,7 @@ Date: ${image.date || "(unknown)"}
 Caption the paper would print: ${image.alt || "(none yet)"}
 
 ${photoRules({ draft, image, neutral, people, places, skyline, thumbnail, known, side, event, lastResort, standardAside })}Return JSON: {"verdict":"RIGHT|GENERIC_OK|${neutral ? "" : "RECAPTION|"}STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON|UNSERIOUS|STOCK${thumbnail ? `${standardAside ? "" : "|AMATEUR"}|UNCLEAR` : ""}","reason":"<one short English sentence>"}`;
-  const { data, model } = await outside.chat({
+  const { data, model } = await ask({
     role: "critic",
     system: "You are a strict newspaper picture editor. Answer with one JSON object only.",
     user,
@@ -1631,7 +1649,7 @@ export async function sourceBrief({ sources, draft, places = [], log = () => {} 
     log("image: no source photograph to read");
     return null;
   }
-  const { data } = await outside.chat({
+  const { data } = await ask({
     role: "vision",
     system: "You are the photo editor of an Arabic economics news website. Reply with one JSON object only.",
     user: `The story: ${draft.title}
@@ -1878,12 +1896,17 @@ function atHome(candidates, draft, log) {
 export async function pickImage(args) {
   // The desk never costs a story: the newsroom calls it after the story is written and checked, and an exception here
   // (a library that fails in a new way, a slip in this file) used to throw that work away. It runs without a photo.
+  // `onError`: a caller that remembers searches (backfill-images.mjs) must not take a failure for "nothing fits", so it
+  // hears of the desk's own exception and of a search a failed model call cut short (`failures`).
+  const failed = [];
   try {
-    const image = await findImage(args);
+    const image = await failures.run(failed, () => findImage(args));
     if (image) await outside.noteUse(image, args.log).catch(() => {});
+    else if (failed.length) args.onError?.(failed[0]);
     return image;
   } catch (error) {
     args.log?.(`image: the picture desk failed (${String(error?.message ?? error).split("\n")[0]}); the story runs without a photo`);
+    args.onError?.(error);
     return null;
   }
 }
@@ -2009,7 +2032,7 @@ async function handoutTier({ draft, log, sources = [], photoDir = null }) {
     }
     let read;
     try {
-      read = await outside.chat({
+      read = await ask({
         role: "vision",
         system: "You are a strict newspaper picture editor. Answer with one JSON object only.",
         user: `STORY (Arabic economics news site):
@@ -2375,7 +2398,7 @@ async function lastResort({ draft, story, log, exclude, known = [], side = [] })
   let queries = [];
   let institution = null;
   try {
-    const { data } = await outside.chat({
+    const { data } = await ask({
       role: "writer",
       system: "You name places for a newspaper photo desk. Reply with one JSON object only.",
       user: `Story headline: ${draft.title}

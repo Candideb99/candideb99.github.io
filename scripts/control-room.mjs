@@ -29,6 +29,7 @@ import { CLAUDE_EFFORTS, claudeEffort } from "../pipeline/lib/claude-effort.mjs"
 import { accountById, listAccounts, beginAccountLogin, loginState, setAccountReminder, setAccountPool, readAccountStore } from "../pipeline/lib/codex-accounts.mjs";
 import { validateCodexAuth } from "../pipeline/lib/codex-cloud.mjs";
 import { readQuotaState, refreshAccountUsage } from "../pipeline/lib/codex-pool.mjs";
+import { NEWSROOM_FILES, changedSince, commitSteps, gitStatus, snapshot, undoChanges } from "./desk-git.mjs";
 
 const root = process.cwd();
 const PORT = Number(process.env.KHAZENDAR_CONTROL_PORT ?? 7777);
@@ -169,27 +170,17 @@ async function configureCloudAccount(id, backup = "") {
  * (2026-10-23: `/writers` had put the model name it was sent into a shell line, and a page could run any program on
  * the laptop through it). Answers stdout and stderr together, trimmed; a program that cannot start answers its error.
  */
-function exec(command, args, { raw = false } = {}) {
+function exec(command, args) {
   return new Promise((resolve) => {
     const child = spawn(command, args, { cwd: root, shell: false, windowsHide: true });
     let out = "";
     child.stdout.on("data", (d) => (out += d));
-    if (!raw) child.stderr.on("data", (d) => (out += d));
+    child.stderr.on("data", (d) => (out += d));
     child.on("error", (error) => resolve(`error: ${error.message}`));
-    child.on("close", () => resolve(raw ? out : out.trim()));
+    child.on("close", () => resolve(out.trim()));
   });
 }
-async function porcelain() {
-  // git status --porcelain puts a LEADING SPACE on unstaged changes; never trim its output.
-  const out = await exec("git", ["status", "--porcelain"], { raw: true });
-  const map = new Map();
-  for (const line of out.split(/\r?\n/)) {
-    if (line.length < 4) continue;
-    const file = line.slice(3).replace(/^"|"$/g, "").split(" -> ").pop();
-    if (file) map.set(file.replace(/\\/g, "/"), line.slice(0, 2));
-  }
-  return map;
-}
+const porcelain = () => gitStatus(root);
 /** Kill a job and everything it spawned; `child.kill()` alone leaves node→shell→node grandchildren alive on Windows. */
 function killTree(child) {
   if (!child) return;
@@ -677,7 +668,8 @@ WHAT YOU MUST NEVER DO — HE PUBLISHES, NOT YOU
 END EVERY TURN with one line: what changed, and whether the site still builds.`;
 // Also out of the chat's reach: the keys file, and the workflows, which run in the cloud with every key the site has.
 const BLOCKED_TOOLS = ["Bash(git commit:*)", "Bash(git push:*)", "Bash(git reset:*)", "Bash(git checkout:*)", "Bash(git restore:*)", "Bash(git clean:*)", "Bash(git stash:*)", "Bash(git rebase:*)", "Read(./.env)", "Read(./.env.*)", "Edit(./.github/workflows/**)"];
-const chat = { running: null, sessionId: null, clients: new Set(), turns: [], baseline: null, touched: [] };
+// `before`: the working tree as the last message found it (desk-git.mjs snapshot()); `touched`: what that message changed.
+const chat = { running: null, sessionId: null, clients: new Set(), turns: [], before: null, touched: [] };
 function chatSend(event) {
   for (const res of chat.clients) res.write(`data: ${JSON.stringify(event)}\n\n`);
 }
@@ -695,7 +687,7 @@ async function startChat(message) {
       chatSend({ t: "error", text: "Claude is active but no key or token is saved. Open Settings and add one, or switch to Gemini." });
       return true;
     }
-    chat.baseline = await porcelain();
+    chat.before = await snapshot(root);
     chat.touched = [];
     chat.turns.push({ role: "you", text: message });
     chatSend({ t: "you", text: message });
@@ -747,8 +739,7 @@ async function startChat(message) {
     });
     child.on("close", async () => {
       chat.running = null;
-      const after = await porcelain();
-      chat.touched = [...after].filter(([f, c]) => chat.baseline.get(f) !== c && !f.startsWith("content/articles/")).map(([f]) => f);
+      chat.touched = await changedSince(root, chat.before);
       chatSend({ t: "changes", changes: await siteChanges() });
     });
     return true;
@@ -767,7 +758,7 @@ async function startChat(message) {
     return true;
   }
 
-  chat.baseline = await porcelain();
+  chat.before = await snapshot(root);
   chat.touched = [];
   chat.turns.push({ role: "you", text: message });
   chatSend({ t: "you", text: message });
@@ -792,8 +783,7 @@ async function startChat(message) {
       chatSend({ t: "error", text: `${activeProvider} error: ${err.message}` });
     } finally {
       chat.running = null;
-      const after = await porcelain();
-      chat.touched = [...after].filter(([f, c]) => chat.baseline.get(f) !== c && !f.startsWith("content/articles/")).map(([f]) => f);
+      chat.touched = await changedSince(root, chat.before);
       chatSend({ t: "changes", changes: await siteChanges() });
     }
   })();
@@ -817,7 +807,7 @@ function describe(file) {
 async function siteChanges() {
   const map = await porcelain();
   const files = [...map.entries()]
-    .filter(([f]) => !f.startsWith("content/articles/") && !f.startsWith("pipeline/state/") && !f.startsWith("pipeline/runs/"))
+    .filter(([f]) => !NEWSROOM_FILES.test(f))
     .map(([file, code]) => ({ file, what: describe(file), how: code.includes("?") ? "new" : code.includes("D") ? "removed" : "changed" }));
   return { files, count: files.length };
 }
@@ -1664,7 +1654,7 @@ function body(req) {
   });
 }
 // --autostash: the chat leaves edits uncommitted on purpose and a plain rebase refuses to run over them.
-// -X theirs: the cloud commits pipeline/state every run; keep the local hunk, as newsroom.yml does.
+// No -X theirs since 2026-11-01: it kept this copy's lines over a cloud fix to the same lines (scripts/sync.mjs).
 // scripts/sync.mjs: the pull, without the conflict markers a bare `git pull --autostash` left in the run summary.
 const SYNC = ["node", ["scripts/sync.mjs", "pages", "main"]];
 const PUSH = [SYNC, ["git", ["push", "pages", "HEAD:main"]]];
@@ -1684,8 +1674,15 @@ async function filesOf(articleFiles) {
   }
   return extra;
 }
+/**
+ * The runs' own reports, never the run summary (latest.json), which every run rewrites and the sync takes from the
+ * cloud: committed here, it clashed with the cloud's whenever both had run since the last sync, a clash `-X theirs`
+ * had settled silently (2026-11-01).
+ */
+const RUN_REPORTS = ["pipeline/runs", ":(exclude)pipeline/runs/latest.json"];
+// The paths alone are committed (desk-git.mjs commitSteps()): whatever else is staged stays out of the commit.
 function commitAndPush(name, paths, message) {
-  return runJob(name, "publish", [["git", ["add", ...paths]], ["git", [...GIT_ID, "commit", "-q", "-m", message]], ...PUSH]);
+  return runJob(name, "publish", [...commitSteps(paths, message, GIT_ID), ...PUSH]);
 }
 
 const server = http.createServer(async (req, res) => {
@@ -1784,7 +1781,7 @@ const server = http.createServer(async (req, res) => {
       if (!file.endsWith(".md") || !existsSync(path.join(ARTICLES, file))) return text(404, "not found");
       if (job.running) return text(409, `Still busy with "${job.name}". Wait for it to finish first.`);
       await markPublished(file);
-      commitAndPush("publish 1 story", [`content/articles/${file}`, ...(await filesOf([file])), "pipeline/state", "pipeline/runs"], `newsroom: publish ${file.replace(/\.md$/, "")}`);
+      commitAndPush("publish 1 story", [`content/articles/${file}`, ...(await filesOf([file])), "pipeline/state", ...RUN_REPORTS], `newsroom: publish ${file.replace(/\.md$/, "")}`);
       return text(200, "Publishing — it is live in about a minute.");
     }
     if (url.pathname === "/publish-all" && req.method === "POST") {
@@ -1792,7 +1789,7 @@ const server = http.createServer(async (req, res) => {
       const drafts = (await allArticles()).filter((a) => a.isDraft);
       if (!drafts.length) return text(200, "Nothing to publish.");
       for (const d of drafts) await markPublished(d.file);
-      commitAndPush(`publish ${drafts.length} stories`, [...drafts.map((d) => `content/articles/${d.file}`), ...(await filesOf(drafts.map((d) => d.file))), "pipeline/state", "pipeline/runs"], `newsroom: publish ${drafts.length} item(s) from the desk`);
+      commitAndPush(`publish ${drafts.length} stories`, [...drafts.map((d) => `content/articles/${d.file}`), ...(await filesOf(drafts.map((d) => d.file))), "pipeline/state", ...RUN_REPORTS], `newsroom: publish ${drafts.length} item(s) from the desk`);
       return text(200, "Publishing — they are live in about a minute.");
     }
     if (url.pathname === "/discard" && req.method === "POST") {
@@ -2037,21 +2034,13 @@ const server = http.createServer(async (req, res) => {
       if (job.running) return text(409, `Still busy with "${job.name}".`);
       // The site's gate first (scripts/gate.mjs: every script parses, the type check, the build, the self-tests), as for any
       // change to the site's code: until 2026-10-31 the chat's changes went to main unchecked. A failure stops the job.
-      runJob("check and publish site changes", "publish", [["node", ["scripts/gate.mjs"]], ["git", ["add", ...files.map((f) => f.file)]], ["git", [...GIT_ID, "commit", "-q", "-m", "site: changes from the control room"]], ...PUSH]);
+      runJob("check and publish site changes", "publish", [["node", ["scripts/gate.mjs"]], ...commitSteps(files.map((f) => f.file), "site: changes from the control room", GIT_ID, await porcelain()), ...PUSH]);
       return text(200, files.length < c.count ? "Checking the site, then publishing — about ten minutes. A change to an automatic job stays unpublished: those never go out from the desk." : "Checking the site, then publishing — about ten minutes.");
     }
     if (url.pathname === "/undo" && req.method === "POST") {
       if (chat.running) return text(409, "It is still working. Press Stop first.");
       if (!chat.touched.length) return text(200, "Nothing to undo from the last chat.");
-      const now = await porcelain();
-      const tracked = [];
-      for (const file of chat.touched) {
-        const isNew = (now.get(file) ?? "").includes("?") && !(chat.baseline.get(file) ?? "").includes("?");
-        if (isNew) await rm(path.join(root, file), { force: true, recursive: true });
-        else tracked.push(file);
-      }
-      if (tracked.length) await exec("git", ["restore", "--worktree", "--staged", "--", ...tracked]);
-      const n = chat.touched.length;
+      const n = await undoChanges(root, chat.before, chat.touched);
       chat.touched = [];
       return text(200, `Undone: ${n} file(s) put back.`);
     }

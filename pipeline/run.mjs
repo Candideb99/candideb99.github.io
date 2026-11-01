@@ -1628,8 +1628,16 @@ function runReports() {
     const save = async () => {
       if (!DRY_RUN) await writeJsonAtomic(REPORTS_STATE, state);
     };
-    const registry = (await loadRegistry()).filter((r) => !ONLY_REPORT || r.id === ONLY_REPORT);
     const existing = await loadExistingArticles();
+    // The day's cap holds here too: the desk's stories are news and count in every later run's 24 hours, yet it never
+    // asked, and with 20 already out it still wrote two more (a review of 2026-11-01). An edition the cap holds back
+    // waits for the next run without spending a try.
+    const room = Math.max(0, DAILY_CAP - existing.filter((a) => a.kind === "news" && hoursSince(a.publishedAt) < 24).length);
+    if (room === 0) {
+      log(`reports: daily budget spent (cap ${DAILY_CAP} news stories in 24 hours); new editions wait for the next run`);
+      return { report, published: 0 };
+    }
+    const registry = (await loadRegistry()).filter((r) => !ONLY_REPORT || r.id === ONLY_REPORT);
     const recentTitles = existing.filter((a) => hoursSince(a.publishedAt) < 96).map((a) => a.title);
     const current = monthKey();
     const fresh = [];
@@ -1671,6 +1679,10 @@ function runReports() {
       if (covered) {
         mark(`covered by ${covered.slug}`);
         log(`report ${r.id}: «${edition.label}» already told in ${covered.slug}`);
+        continue;
+      }
+      if (published >= room) {
+        log(`report ${r.id}: «${edition.label}» waits for the next run: the daily cap of ${DAILY_CAP} news stories is reached`);
         continue;
       }
       const { sources, pending } = await readEdition(r, edition, { log });

@@ -21,7 +21,19 @@ import { CLAUDE_EFFORTS } from "./claude-effort.mjs";
  * All other configured providers stay in "idle mode" with their credentials safely preserved.
  */
 
-export const usage = { calls: 0, failures: 0, promptTokens: 0, completionTokens: 0, cacheReadTokens: 0, costUsd: 0, byModel: {} };
+export const usage = { calls: 0, failures: 0, promptTokens: 0, completionTokens: 0, cacheReadTokens: 0, costUsd: 0, byModel: {}, byRole: {} };
+
+/** A role's share of the run (Claude calls only, refused answers included, since they cost the same): which desk spends
+ *  the tokens, read from the run report instead of guessed (2026-10-31: "check if there is a bug that causes tokens waste"). */
+function tally(role, tokens) {
+  if (!tokens) return;
+  const r = (usage.byRole[role] ??= { calls: 0, in: 0, read: 0, out: 0, usd: 0 });
+  r.calls += 1;
+  r.in += tokens.in;
+  r.read += tokens.read;
+  r.out += tokens.out;
+  r.usd = Number((r.usd + tokens.usd).toFixed(4));
+}
 
 export const PROVIDERS = ["gemini", "claude", "codex", "openai", "qwen", "openrouter"];
 
@@ -254,7 +266,10 @@ async function callClaudeCli({ model, system, user, images = [], timeoutMs, effo
   usage.costUsd = Number((usage.costUsd + (Number(payload.total_cost_usd) || 0)).toFixed(4));
   const answered = Object.keys(payload.modelUsage ?? {})[0] ?? cliModel;
   usage.byModel[`claude-cli/${answered}`] = (usage.byModel[`claude-cli/${answered}`] ?? 0) + 1;
-  return { content: String(payload.result ?? ""), ms: Date.now() - started, usage: { completion_tokens: used.output_tokens }, model: `claude-cli/${answered}`, effort: effort || "default", thinking: used.output_tokens_details?.thinking_tokens };
+  // Each call's own tokens, for the log line and the run report's `byRole` (chat()): input read fresh or written to the
+  // cache, input read from it, output (thinking included), and its price at API rates.
+  const tokens = { in: (used.input_tokens ?? 0) + (used.cache_creation_input_tokens ?? 0), read: used.cache_read_input_tokens ?? 0, out: used.output_tokens ?? 0, usd: Number(payload.total_cost_usd) || 0 };
+  return { content: String(payload.result ?? ""), ms: Date.now() - started, usage: { completion_tokens: used.output_tokens }, tokens, model: `claude-cli/${answered}`, effort: effort || "default", thinking: used.output_tokens_details?.thinking_tokens };
 }
 
 async function callClaudeApi({ model, system, user, images = [], timeoutMs, temperature, maxTokens }) {
@@ -727,6 +742,7 @@ export async function chat({ role, system, user, images = [], json = true, valid
       const told = attempt > 1 && refusal ? `\n\nYour previous answer was refused: ${refusal}. Correct exactly that in this answer.` : "";
       const nudge = attempt > 1 && json ? "\n\nIMPORTANT: Reply with ONE valid JSON value only. No prose, no markdown fences, no comments." : "";
       const result = await dispatchCall({ system, user: user + told + nudge, images, timeoutMs, temperature, maxTokens, json, effort });
+      tally(role, result.tokens);
       let data = result.content;
       try {
         if (json) data = parseJsonLoose(result.content);
@@ -737,7 +753,8 @@ export async function chat({ role, system, user, images = [], json = true, valid
         refusal = String(error.message).split("\n")[0].slice(0, 300);
         throw error;
       }
-      log(`llm ok role=${role} provider=${provider} model=${result.model || modelName}${result.effort ? ` effort=${result.effort} thinking=${result.thinking ?? "?"}` : ""} attempt=${attempt} ms=${result.ms}`);
+      const t = result.tokens;
+      log(`llm ok role=${role} provider=${provider} model=${result.model || modelName}${result.effort ? ` effort=${result.effort} thinking=${result.thinking ?? "?"}` : ""}${t ? ` in=${t.in} read=${t.read} out=${t.out}` : ""} attempt=${attempt} ms=${result.ms}`);
       return { data, text: result.content, model: result.model || modelName, ms: result.ms, usage: result.usage };
     } catch (error) {
       usage.failures += 1;

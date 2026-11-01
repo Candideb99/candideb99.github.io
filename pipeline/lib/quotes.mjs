@@ -85,8 +85,10 @@ function barsOf(result) {
 export async function yahooQuote(symbol) {
   const today = await yahooChart(symbol, "1d");
   const meta = today.meta;
-  const price = Number(meta.regularMarketPrice);
-  const time = Number(meta.regularMarketTime);
+  // A field Yahoo leaves empty is no price: Number(null) is 0, and a price of 0 reached the board and the stories'
+  // market data (a review of 2026-11-01).
+  const price = typeof meta.regularMarketPrice === "number" ? meta.regularMarketPrice : NaN;
+  const time = typeof meta.regularMarketTime === "number" ? meta.regularMarketTime : NaN;
   if (!Number.isFinite(price) || !Number.isFinite(time)) throw new Error("no price");
   let prev = Number(meta.chartPreviousClose);
   if (!Number.isFinite(prev) || prev <= 0) prev = null;

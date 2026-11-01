@@ -140,11 +140,13 @@ async function scenario({ draft, world = {}, categoryWorld = {}, libs = {}, plan
       return { data, model: "stand-in" };
     },
   });
+  // What the desk reports to a caller that remembers searches (pickImage's `onError`).
+  const errors = [];
   try {
     // IMAGES_SELFTEST_LOG=1 prints the desk's own log for every case.
     const log = process.env.IMAGES_SELFTEST_LOG ? (line) => console.log(`      ${line}`) : () => {};
-    const image = await pickImage({ draft, story: { angle: "" }, log, exclude, sources, photoDir });
-    return { image, searched, calls, inlined, judgePrompts, verifyPrompts, saved };
+    const image = await pickImage({ draft, story: { angle: "" }, log, exclude, sources, photoDir, onError: (error) => errors.push(error) });
+    return { image, searched, calls, inlined, judgePrompts, verifyPrompts, saved, errors };
   } finally {
     restore();
   }
@@ -315,6 +317,15 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
   check("a failed planner leaves the writer's searches", r.image?.title, dahab.title);
   const none = await scenario({ draft: developers, plan: "throw", world: {}, judge: () => 0 });
   check("with no searches at all the story runs without a photo, no crash", none.image, null);
+  // A search a failed model call cut short is reported, never taken for "nothing fits": the morning round remembered such
+  // a story as searched in full and never searched it again (a review of 2026-11-01). A search that ran to the end and
+  // found nothing reports nothing, and neither does a failure on the way to a photo.
+  check("a failed planner's empty search is reported to the caller", none.errors.length, 1);
+  const judged = await scenario({ draft: developers, plan: planFor({ queries: ["construction site Egypt"], places: [], place_queries: [] }), world: { "construction site Egypt": [dahab], "construction site": [dahab] }, judge: "throw", byText: () => 0 });
+  check("a failed judge's empty search is reported too", [judged.image, judged.errors.length > 0], [null, true]);
+  const searchedAll = await scenario({ draft: developers, plan: planFor({ queries: ["construction site Egypt"], places: [], place_queries: [] }), world: { "construction site Egypt": [dahab], "construction site": [dahab] }, judge: () => 0 });
+  check("a search that ran to the end and found nothing reports no failure", [searchedAll.image, searchedAll.errors.length], [null, 0]);
+  check("a failed planner whose story still found a photo reports no failure", r.errors.length, 0);
 }
 // I. A person with accents in her name is the news: she is searched, found and chosen.
 {

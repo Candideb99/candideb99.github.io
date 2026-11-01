@@ -129,12 +129,15 @@ import Base from "@layouts/Base.astro";
       say(counted(entries.length) + (shown < entries.length ? "، تُعرض <bdi>" + shown + "</bdi>" : ""));
       more.hidden = shown >= entries.length;
     }
-    // The next twenty, read and listed; after a tap on «المزيد» focus moves to the first of them.
+    // The next twenty, read and listed; after a tap on «المزيد» focus moves to the first of them. They are listed only
+    // while the list is still the one they were taken from: a tap while a new search loads read the old search's next
+    // twenty and put them under the new one's count (a review of 2026-11-01: 22 results listed under «نتيجتان»).
     function page(id, focus) {
       var start = shown;
+      var from = entries;
       var slice = entries.slice(start, start + PAGE);
       return read(slice).then(function () {
-        if (id !== current) return;
+        if (id !== current || from !== entries) return;
         var before = list.children.length;
         list.insertAdjacentHTML("beforeend", slice.map(function (e, i) {
           var at = start + i;

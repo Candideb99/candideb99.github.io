@@ -8,7 +8,7 @@
  *   node scripts/pipeline-selftest.mjs
  */
 import { spawnSync } from "node:child_process";
-import { mkdirSync, mkdtempSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, unlinkSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { MAX_REPAIRS, checkSourcesOf, precheck } from "../pipeline/lib/precheck.mjs";
@@ -21,6 +21,7 @@ import { loadSources, quoteFound, settleChanged, settleDrift, verifyStory } from
 import { readArticleHtml } from "../pipeline/lib/extract.mjs";
 import { labelLine, outletLabels, quotedOutletsBlock, unlabelledOutlets } from "../pipeline/lib/outlets.mjs";
 import { instrumentsOf, macroMarketOf, marketData, repeatsInstrument } from "../pipeline/lib/context.mjs";
+import { yahooQuote } from "../pipeline/lib/quotes.mjs";
 import { independentOutletCount } from "../pipeline/lib/news-evidence.mjs";
 import { boxFacts, figureOnly } from "../pipeline/lib/keyfacts.mjs";
 import { deskNotes, explainingFacts, newsDepthBrief, newsFloor, normalizeChart, normalizeDraft, paperNotes, prioritizeContext, substantiveFacts, validateDraft, validateWhyBasis, writePaperReading } from "../pipeline/lib/write.mjs";
@@ -33,6 +34,7 @@ import { styleIssues } from "../pipeline/lib/style.mjs";
 import { fixNames, judgeRewrite } from "../pipeline/lib/copydesk.mjs";
 import { CUTTABLE, cutToSources, normalizeCritique, programmaticChecks } from "../pipeline/lib/verify.mjs";
 import { noveltyFault } from "../pipeline/lib/images.mjs";
+import { changedSince, commitSteps, gitStatus, snapshot, undoChanges } from "./desk-git.mjs";
 
 let failed = 0;
 function check(name, got, want) {
@@ -454,6 +456,7 @@ check("a rule to remove unsupported claims is kept", lessonRuleOk("Omit any clai
   writeFileSync(broken, '{"lessons": [{"id": "L1"');
   const state = await loadLessons(broken);
   check("a damaged lessons file is read as damaged, not as empty", Boolean(state.damaged), true);
+  rmSync(dir, { recursive: true, force: true, maxRetries: 3 });
 }
 
 // 5. Two writers at once (the owner, 2026-09-26: "concurrent runs cannot silently lose fact-check, correction, or
@@ -508,7 +511,7 @@ function overlappingRuns(withDriver) {
     /* a merge that broke the JSON */
   }
   const l1 = ls?.lessons?.find((l) => l.id === "L1");
-  return {
+  const outcome = {
     status: rebase.status,
     stories: fc ? Object.keys(fc.stories).sort() : null,
     used: ls ? [...ls.used].sort() : null,
@@ -516,6 +519,8 @@ function overlappingRuns(withDriver) {
     l10: Boolean(ls?.lessons?.some((l) => l.id === "L10")),
     articles: readdirSync(path.join(repo, "content", "articles")).sort(),
   };
+  rmSync(repo, { recursive: true, force: true, maxRetries: 3 });
+  return outcome;
 }
 if (spawnSync("git", ["--version"]).status === 0) {
   const without = overlappingRuns(false);
@@ -609,6 +614,7 @@ if (spawnSync("git", ["--version"]).status === 0) {
     ],
     ["confirmed", "conflict", "confirmed"],
   );
+  rmSync(dir, { recursive: true, force: true, maxRetries: 3 });
 }
 
 // The mend keeps the revision's fixes (2026-10-30): gold's October loss of 3.8%, cut for a later price, came back into the
@@ -750,6 +756,7 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("photos: a horse-drawn fuel cart under a central-bank story is refused", noveltyFault({ title: "CairoHorseDrawnFuelTransport.jpg", alt: "عربة وقود يجرها حصان في محطة بنزين بالقاهرة" }, { title: "برنت فوق 105 دولارات يعقّد حسابات المركزي المصري" }), "Horse");
   check("photos: an oil field's «nodding donkey» is a pumpjack, not an animal", noveltyFault({ title: "Oil pumpjack in the Permian Basin.jpg", categories: "Nodding donkeys in Texas" }, { title: "النفط يتراجع مع آمال مفاوضات هرمز" }), null);
   check("photos: sheep on an Eid-prices story, a shopping trolley and a street named Jamal pass",[noveltyFault({ title: "Sheep market Riyadh.jpg", alt: "سوق الأغنام في الرياض" }, { title: "أسعار الأضاحي ترتفع في السعودية" }), noveltyFault({ title: "Shopping cart.jpg", alt: "عربة تسوق" }, { title: "التضخم في مصر" }), noveltyFault({ title: "Jamal Street.jpg", alt: "شارع جمال عبد الناصر" }, { title: "التضخم في مصر" })], [null, null, null]);
+  rmSync(dir, { recursive: true, force: true, maxRetries: 3 });
 }
 
 // 9. Reader findings survive an overgenerous overall score (the Russia-waiver report scored 10).
@@ -982,6 +989,10 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const again = (headlineHint, h) => repeatsInstrument({ headlineHint, section: "energy" }, ran, { now: Date.parse(at(h)) });
   check("the same instrument's move twice in four hours is held", Boolean(again("برنت يقفز فوق 109 دولارات مع تعطل صادرات ينبع", 4)), true);
   check("twelve hours on, or with a record, it is news again", [again("برنت يقترب من 100 دولار بعد هجمات حوثية", 12), again("برنت يصعد إلى أعلى مستوى منذ مايو", 2)], [null, null]);
+  // Only a price move is held (a review of 2026-11-01): Qatar starting a gas field is no repeat of the day's US gas price.
+  const gas = [{ kind: "news", section: "energy", title: "أسعار الغاز الطبيعي الأمريكي تقفز 6% مع موجة برد", publishedAt: at(0) }];
+  const gasAgain = (headlineHint) => repeatsInstrument({ headlineHint, section: "energy" }, gas, { now: Date.parse(at(3)) });
+  check("a story naming an instrument without a price move is not held; the next move is", [gasAgain("قطر للطاقة تبدأ إنتاج الغاز الطبيعي المسال من حقل الشمال الشرقي"), Boolean(gasAgain("الغاز الطبيعي الأمريكي يواصل الصعود ويرتفع 2%"))], [null, true]);
   const now = Date.parse("2026-10-19T10:35:00Z");
   const days = Array.from({ length: 60 }, (_, i) => ({ d: `2026-08-${String((i % 28) + 1).padStart(2, "0")}`, c: 100 }));
   const quote = async (symbol) => ({ price: symbol === "BZ=F" ? 108.63 : 98.36, prev: symbol === "BZ=F" ? 109.86 : 99.02, time: "2026-10-19T10:25:00Z", history: days });
@@ -1285,6 +1296,230 @@ if (spawnSync("git", ["--version"]).status === 0) {
     normalizeChart({ type: "bar", categories: ["الإيرادات", "صافي الربح"], series: [{ name: "فعلي", values: [14.6, 4.4] }, { name: "متوقع", values: [12.72, 1.57] }] }),
     Boolean(normalizeChart({ type: "bar", categories: ["الربع الثالث 2024", "الربع الثالث 2025", "الربع الثالث 2026"], series: [{ name: "صافي الربح", values: [1, 2, 3] }] })),
   ], [null, true]);
+}
+
+// The control room's git bookkeeping (scripts/desk-git.mjs; a review of 2026-11-01, both faults reproduced in a scratch
+// repository): a publish commits its own paths and nothing else that was staged, and the chat's Undo finds a file that
+// was already changed before the chat and changed again by it, and puts back what was there, never HEAD's version.
+if (spawnSync("git", ["--version"]).status === 0) {
+  const repo = mkdtempSync(path.join(os.tmpdir(), "khazendar-desk-"));
+  const git = (...args) => spawnSync("git", args, { cwd: repo, encoding: "utf8" }).stdout;
+  const put = (file, text) => {
+    mkdirSync(path.dirname(path.join(repo, file)), { recursive: true });
+    writeFileSync(path.join(repo, file), text);
+  };
+  const read = (file) => {
+    try {
+      return readFileSync(path.join(repo, file), "utf8");
+    } catch {
+      return null;
+    }
+  };
+  const id = ["-c", "user.name=selftest", "-c", "user.email=selftest@example.invalid"];
+  // Run as the control room's runJob() runs them: one after another, stopping at the first that fails.
+  const steps = (list) => list.every(([command, args]) => spawnSync(command, args, { cwd: repo }).status === 0);
+  git("init", "-q");
+  git("config", "core.autocrlf", "false");
+  for (const [file, text] of [["content/articles/old.md", "old\n"], ["content/articles/gone.md", "gone\n"], ["src/page.astro", "page\n"], ["src/layout.astro", "layout\n"], ["src/clean.css", "clean\n"], ["src/keep.css", "keep\n"], ["src/moved.astro", "moved\n".repeat(20)], ["src/dropped.astro", "dropped\n"], ["pipeline/state/seen.json", "{}\n"], ["pipeline/runs/news-1.json", "{}\n"]]) put(file, text);
+  git("add", "-A");
+  git(...id, "commit", "-q", "-m", "start");
+  // A half-done site change staged by hand; then the desk publishes a story with its state, and unpublishes another.
+  put("src/page.astro", "page\nhalf-done\n");
+  git("add", "src/page.astro");
+  put("content/articles/new.md", "story\n");
+  put("pipeline/state/seen.json", '{"new":1}\n');
+  put("pipeline/runs/news-2.json", "{}\n");
+  steps(commitSteps(["content/articles/new.md", "pipeline/state", "pipeline/runs"], "publish", id));
+  const published = git("show", "--name-only", "--format=", "HEAD").trim().split(/\r?\n/);
+  unlinkSync(path.join(repo, "content/articles/gone.md"));
+  steps(commitSteps(["-A", "content/articles/gone.md"], "unpublish", id));
+  const removed = git("show", "--name-status", "--format=", "HEAD").trim();
+  check("a publish commits its story and state, and the file staged by hand stays staged and out", [published, removed, git("status", "--porcelain").trim()], [["content/articles/new.md", "pipeline/runs/news-2.json", "pipeline/state/seen.json"], "D\tcontent/articles/gone.md", "M  src/page.astro"]);
+  // A rename and a removal staged by hand go out whole with the site's changes: a commit of the new path alone left the
+  // old one live, and `git add` refuses a path whose removal is already staged.
+  git("mv", "src/moved.astro", "src/moved-to.astro");
+  git("rm", "-q", "src/dropped.astro");
+  const status = await gitStatus(repo);
+  steps(commitSteps(["src/moved-to.astro", "src/moved.astro", "src/dropped.astro"], "site", id, status));
+  check("a staged rename and removal are published whole", [status.get("src/moved.astro"), git("show", "--name-status", "--format=", "HEAD").trim().split(/\r?\n/)], ["D ", ["D\tsrc/dropped.astro", "R100\tsrc/moved.astro\tsrc/moved-to.astro"]]);
+
+  // Before the chat: a site file already changed, an untracked note, a new folder with one file, a changed file the chat
+  // leaves alone. The chat changes the first three again, changes a clean file, creates a file and one more in the new
+  // folder; the newsroom writes its state meanwhile.
+  put("src/layout.astro", "layout\nbefore the chat\n");
+  put("notes/todo.md", "todo\n");
+  put("drafts/a.txt", "a\n");
+  put("src/keep.css", "keep\nbefore the chat\n");
+  const before = await snapshot(repo);
+  put("src/layout.astro", "layout\nbefore the chat\nthe chat's line\n");
+  put("notes/todo.md", "todo\nthe chat's line\n");
+  put("src/clean.css", "clean\nthe chat's line\n");
+  put("src/new.astro", "new\n");
+  put("drafts/b.txt", "b\n");
+  put("pipeline/state/seen.json", '{"new":2}\n');
+  const touched = (await changedSince(repo, before)).sort();
+  check("the chat's changes are found by their bytes, the newsroom's state left out", touched, ["drafts/b.txt", "notes/todo.md", "src/clean.css", "src/layout.astro", "src/new.astro"]);
+  await undoChanges(repo, before, touched);
+  check(
+    "Undo puts back what was there before the chat, removes what it created and leaves the rest",
+    ["src/layout.astro", "notes/todo.md", "src/clean.css", "src/new.astro", "drafts/a.txt", "drafts/b.txt", "src/keep.css", "src/page.astro", "pipeline/state/seen.json"].map(read),
+    ["layout\nbefore the chat\n", "todo\n", "clean\n", null, "a\n", null, "keep\nbefore the chat\n", "page\nhalf-done\n", '{"new":2}\n'],
+  );
+  rmSync(repo, { recursive: true, force: true, maxRetries: 3 });
+}
+
+// The reports desk keeps the day's cap (a review of 2026-11-01: with 20 news stories out it still wrote two more). With
+// the cap spent (a cap below any day's count) it stops before reading a publisher's page, so no edition spends a try.
+// The report named is no report, so a desk that ignored the cap would still read nothing and call no model.
+{
+  const env = { ...process.env, KHAZENDAR_DAILY_CAP: "-1" };
+  delete env.GITHUB_STEP_SUMMARY;
+  delete env.GITHUB_OUTPUT;
+  const run = spawnSync(process.execPath, [path.join("pipeline", "run.mjs"), "--mode=reports", "--dry-run", "--report=selftest-no-such-report"], { encoding: "utf8", env, timeout: 60000 });
+  check("the reports desk stops at the day's cap before reading any report", [/reports: daily budget spent/.test(run.stdout), /reports: \d+ new edition/.test(run.stdout)], [true, false]);
+}
+
+// The search page's own script (src/pages/search.astro), on a stand-in page with a scripted Pagefind: a tap on «المزيد»
+// while a new search loads read the old search's next twenty and listed them under the new one's count (a review of
+// 2026-11-01: 22 results listed under «نتيجتان»).
+{
+  const script = readFileSync(path.join("src", "pages", "search.astro"), "utf8").match(/<script is:inline>([\s\S]*?)<\/script>/)[1];
+  const element = () => {
+    const listeners = {};
+    return { hidden: false, dataset: {}, setAttribute() {}, addEventListener: (type, fn) => (listeners[type] ??= []).push(fn), fire: (type) => (listeners[type] ?? []).forEach((fn) => fn({ preventDefault() {} })) };
+  };
+  const items = [];
+  const list = {
+    insertAdjacentHTML: (where, html) => {
+      for (const m of html.matchAll(/<li class="([^"]*)"/g)) items.push({ classList: { contains: (c) => m[1].split(" ").includes(c) }, querySelector: () => ({ focus() {} }) });
+    },
+    get children() {
+      return items;
+    },
+    set innerHTML(value) {
+      items.length = 0;
+    },
+  };
+  const buttons = [{ ...element(), dataset: { order: "date" } }, { ...element(), dataset: { order: "relevance" } }];
+  const form = element();
+  const input = { ...element(), value: "", form };
+  const more = element();
+  const status = { innerHTML: "" };
+  const nodes = { ".search__clear": element(), ".search__status": status, ".search__sort": { ...element(), querySelectorAll: () => buttons }, ".search__list": list, ".search__more": more };
+  // Each search waits until the test answers it; a held result's text, until the test releases it.
+  const searches = [];
+  const held = [];
+  const pagefind = { init: async () => {}, search: (q) => new Promise((resolve) => searches.push({ q, resolve })) };
+  const result = (n, hold = false) => {
+    const data = { url: `/x/${n}/`, meta: { title: `t${n}` } };
+    return { words: [1, 2, 3, 4], data: () => (hold ? new Promise((resolve) => held.push(() => resolve(data))) : Promise.resolve(data)) };
+  };
+  const settle = async () => {
+    for (let i = 0; i < 20; i += 1) await new Promise((resolve) => setImmediate(resolve));
+  };
+  new Function("document", "history", "location", "__pagefind", script.replace('import("/pagefind/pagefind.js")', "__pagefind()"))({ getElementById: () => input, querySelector: (s) => nodes[s] }, { replaceState() {} }, { pathname: "/search/", search: "" }, async () => pagefind);
+  input.value = "النفط";
+  form.fire("submit");
+  await settle();
+  searches[0].resolve({ results: Array.from({ length: 45 }, (_, i) => result(i, i >= 20)) });
+  await settle();
+  const first = items.length;
+  input.value = "الذهب";
+  form.fire("submit");
+  await settle();
+  more.fire("click");
+  await settle();
+  searches[1].resolve({ results: [result(100), result(101)] });
+  await settle();
+  held.forEach((release) => release());
+  await settle();
+  check("a tap on «المزيد» while a new search loads lists nothing of the old one", [first, items.length, status.innerHTML], [20, 2, "نتيجتان"]);
+}
+
+// A field Yahoo leaves empty is no price (a review of 2026-11-01: `regularMarketPrice: null` was read as 0 and reached
+// the board and the stories' market data).
+{
+  const realFetch = globalThis.fetch;
+  const priceOf = async (meta) => {
+    globalThis.fetch = async () => new Response(JSON.stringify({ chart: { result: [{ meta, timestamp: [], indicators: { quote: [{ close: [] }] } }] } }), { status: 200, headers: { "content-type": "application/json" } });
+    try {
+      return await yahooQuote("BZ=F").then((q) => q.price, (error) => error.message);
+    } finally {
+      globalThis.fetch = realFetch;
+    }
+  };
+  check("a missing price or time is no price, never zero", [await priceOf({ regularMarketPrice: null, regularMarketTime: 1761900000 }), await priceOf({ regularMarketPrice: 61.2, regularMarketTime: null }), await priceOf({ regularMarketPrice: 61.2, regularMarketTime: 1761900000 })], ["no price", "no price", 61.2]);
+}
+
+// A photo dry run writes nothing, `--apply` included (a review of 2026-11-01: it wrote the saved photograph and its
+// model into the story). Run in a scratch folder with one story and one saved pick.
+{
+  const dir = mkdtempSync(path.join(os.tmpdir(), "khazendar-apply-"));
+  mkdirSync(path.join(dir, "content", "articles"), { recursive: true });
+  mkdirSync(path.join(dir, "src", "data"), { recursive: true });
+  writeFileSync(path.join(dir, "src", "data", "regions.json"), readFileSync(path.join("src", "data", "regions.json")));
+  const story = "---\ntitle: خبر للاختبار\nslug: selftest-story\nkind: news\n---\nنص الخبر.\n";
+  const storyFile = path.join(dir, "content", "articles", "selftest-story.md");
+  writeFileSync(storyFile, story);
+  const url = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Oil_tanker_at_sea.jpg/1280px-Oil_tanker_at_sea.jpg";
+  writeFileSync(path.join(dir, "picks.json"), JSON.stringify({ picks: [{ slug: "selftest-story", file: "selftest-story.md", fileTitle: "Oil tanker at sea.jpg", basis: null, model: "stand-in", image: { url, width: 1280, height: 853, alt: "ناقلة نفط", credit: "x", license: "CC0" } }] }));
+  const run = spawnSync(process.execPath, [path.resolve("pipeline", "backfill-images.mjs"), "--dry-run", "--apply=picks.json"], { cwd: dir, encoding: "utf8", timeout: 60000 });
+  check("a dry run with --apply lists the pick and leaves the story as it was", [/would write "Oil tanker at sea\.jpg"/.test(run.stdout), readFileSync(storyFile, "utf8") === story], [true, true]);
+  rmSync(dir, { recursive: true, force: true, maxRetries: 3 });
+}
+
+// The sync stops on a real clash instead of keeping this copy's lines over the cloud's (a review of 2026-11-01: a cloud
+// fix to the same line was dropped and the sync reported success), while a day's ordinary sync still goes through: the
+// state files merge entry by entry, and the run summary, which the desk no longer commits, is the cloud's.
+if (spawnSync("git", ["--version"]).status === 0) {
+  const tmp = mkdtempSync(path.join(os.tmpdir(), "khazendar-sync-"));
+  const run = (cwd, command, args) => spawnSync(command, args, { cwd, encoding: "utf8" });
+  const git = (cwd, ...args) => run(cwd, "git", args);
+  const put = (cwd, file, text) => {
+    mkdirSync(path.dirname(path.join(cwd, file)), { recursive: true });
+    writeFileSync(path.join(cwd, file), text);
+  };
+  const id = ["-c", "user.name=selftest", "-c", "user.email=selftest@example.invalid"];
+  const remote = path.join(tmp, "remote.git");
+  git(tmp, "init", "-q", "--bare", "-b", "main", remote);
+  const clone = (name) => {
+    const dir = path.join(tmp, name);
+    git(tmp, "clone", "-q", remote, dir);
+    git(dir, "config", "core.autocrlf", "false");
+    git(dir, "config", "merge.state-json.driver", `node "${path.resolve("scripts", "merge-state.mjs").replace(/\\/g, "/")}" %O %A %B`);
+    return dir;
+  };
+  const cloud = clone("cloud");
+  put(cloud, ".gitattributes", "pipeline/state/*.json merge=state-json\n");
+  put(cloud, "src/page.astro", "line 1\nline 2\nline 3\n");
+  put(cloud, "pipeline/state/seen.json", `${JSON.stringify({ items: { a: 1 } }, null, 2)}\n`);
+  put(cloud, "pipeline/runs/latest.json", '{"run":"base"}\n');
+  git(cloud, "add", "-A");
+  git(cloud, ...id, "commit", "-q", "-m", "base");
+  git(cloud, "push", "-q", "origin", "HEAD:main");
+  const desk = clone("desk");
+  const sync = (cwd) => run(cwd, process.execPath, [path.resolve("scripts", "sync.mjs"), "origin", "main"]);
+  // The day's ordinary case: both ran; each recorded an item and the cloud committed its run summary.
+  put(cloud, "pipeline/state/seen.json", `${JSON.stringify({ items: { a: 1, b: 1 } }, null, 2)}\n`);
+  put(cloud, "pipeline/runs/latest.json", '{"run":"cloud"}\n');
+  git(cloud, ...id, "commit", "-q", "-am", "cloud run");
+  git(cloud, "push", "-q", "origin", "HEAD:main");
+  put(desk, "pipeline/state/seen.json", `${JSON.stringify({ items: { a: 1, c: 1 } }, null, 2)}\n`);
+  put(desk, "pipeline/runs/latest.json", '{"run":"desk"}\n');
+  put(desk, "pipeline/runs/news-2.json", "{}\n");
+  for (const [command, args] of commitSteps(["pipeline/state", "pipeline/runs", ":(exclude)pipeline/runs/latest.json"], "desk run", id)) run(desk, command, args);
+  const ordinary = sync(desk);
+  const seen = JSON.parse(readFileSync(path.join(desk, "pipeline/state/seen.json"), "utf8"));
+  check("an ordinary sync merges the state, keeps the desk's report and takes the cloud's summary", [ordinary.status, Object.keys(seen.items).sort(), readFileSync(path.join(desk, "pipeline/runs/latest.json"), "utf8"), git(desk, "log", "--format=%s", "-2").stdout.trim().split(/\r?\n/)], [0, ["a", "b", "c"], '{"run":"cloud"}\n', ["desk run", "cloud run"]]);
+  // A real clash: the cloud fixes a line the desk has also changed.
+  put(cloud, "src/page.astro", "line 1\nline 2, the cloud's fix\nline 3\n");
+  git(cloud, ...id, "commit", "-q", "-am", "cloud fix");
+  git(cloud, "push", "-q", "origin", "HEAD:main");
+  put(desk, "src/page.astro", "line 1\nline 2, the desk's edit\nline 3\n");
+  git(desk, ...id, "commit", "-q", "-am", "desk edit");
+  const clash = sync(desk);
+  check("a real clash stops the sync, names the file and loses neither side", [clash.status, /src\/page\.astro/.test(clash.stderr), readFileSync(path.join(desk, "src/page.astro"), "utf8"), git(desk, "log", "--format=%s", "-1").stdout.trim(), git(desk, "log", "--format=%s", "-1", "origin/main").stdout.trim()], [1, true, "line 1\nline 2, the desk's edit\nline 3\n", "desk edit", "cloud fix"]);
+  rmSync(tmp, { recursive: true, force: true, maxRetries: 3 });
 }
 
 if (failed) {

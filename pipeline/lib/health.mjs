@@ -19,6 +19,9 @@ const API = "https://commons.wikimedia.org/w/api.php";
 /** Wikimedia asks automated clients to name themselves, with a way to reach them and the word "bot", and not to borrow a browser's name. */
 const HEADERS = { "user-agent": `KhazendarHealthBot/1.0 (https://khazendar.pages.dev/about/) node/${process.versions.node}` };
 export const CONFIRM_AFTER_H = 20;
+/** Stories the picture search went through to the end and found nothing for (pipeline/backfill-images.mjs writes it,
+ *  the morning round reads it): `{ version, none: { slug: when } }`. */
+export const PHOTO_SEARCHES = "pipeline/state/photo-searches.json";
 
 /** The Commons file title a photo was taken from ("File:Name.jpg"), or null for another library's photo. */
 export function commonsTitle(image) {

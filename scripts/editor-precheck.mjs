@@ -28,7 +28,7 @@ import { createHash } from "node:crypto";
 import { appendFileSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import YAML from "yaml";
-import { checkCommons, checkPages, commonsTitle, confirmLoss, renamedUrl } from "../pipeline/lib/health.mjs";
+import { PHOTO_SEARCHES, checkCommons, checkPages, commonsTitle, confirmLoss, renamedUrl } from "../pipeline/lib/health.mjs";
 import { sharedPhotos } from "../pipeline/lib/photo-key.mjs";
 
 const DAY = 86_400_000;
@@ -106,10 +106,15 @@ fine.push(`${lastDay.length} stories published in the last day, ${stories.length
 
 // 3. Pictures: a news story of the last two days without one. Filling it is mechanical (the pipeline's own picture
 // search), so the workflow does it in a plain step and it never wakes the editor; a story with no fitting photograph
-// runs as text, and after two days it is left alone.
-const bare = lastTwo.filter((s) => s.kind === "news" && !s.image && /^[a-z0-9-]+$/.test(s.slug));
+// runs as text, and after two days it is left alone. A story this round already searched to the end is not searched
+// again (PHOTO_SEARCHES): the two days are there for a round that missed a day, not for a second search of the same
+// story, which found one picture in 16 from 23 to 31 October.
+const searchedNone = readJson(PHOTO_SEARCHES)?.none ?? {};
+const unpictured = lastTwo.filter((s) => s.kind === "news" && !s.image && /^[a-z0-9-]+$/.test(s.slug));
+const bare = unpictured.filter((s) => !searchedNone[s.slug]);
 if (bare.length) fine.push(`${bare.length} news story(ies) of the last two days had no picture; the workflow searches for one: ${bare.map((s) => s.slug).join(", ")}.`);
-else fine.push("Every news story of the last two days has a picture.");
+else fine.push("Every news story of the last two days has a picture, or was searched once already.");
+if (unpictured.length > bare.length) fine.push(`Not searched again (a round found nothing for them): ${unpictured.filter((s) => searchedNone[s.slug]).map((s) => s.slug).join(", ")}.`);
 
 // 4. The photos already published. Commons answers for fifty files a request; the other libraries' pages are asked
 // once a week, and daily for a page already found gone once.

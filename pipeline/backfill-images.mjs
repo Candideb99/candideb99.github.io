@@ -8,7 +8,7 @@
  * Usage: node pipeline/backfill-images.mjs [--dry-run] [--limit=N] [--redo=slug,slug] [--only=slug,slug] [--no-sources]
  *        node pipeline/backfill-images.mjs --dry-run --save=picks.json [...]   the picks, kept to be looked at
  *        node pipeline/backfill-images.mjs --apply=picks.json [--only=slug,slug] [--redo=slug,slug] writes exactly those picks
- *        (over a story's current photograph only when --redo names it)
+ *        (over a story's current photograph only when --redo names it; with --dry-run it lists them and writes nothing)
  * Its model calls go to Claude (CLAUDE_CODE_OAUTH_TOKEN, from the environment or from .env).
  *
  * `--save` and `--apply` exist because the judges vary between runs: a dry run's pick, approved by the owner, was not what a
@@ -35,6 +35,22 @@ try {
 const { pickImage } = await import("./lib/images.mjs");
 const { extractArticle } = await import("./lib/extract.mjs");
 const { photoKey } = await import("./lib/photo-key.mjs");
+const { writeJsonAtomic } = await import("./lib/util.mjs");
+const { PHOTO_SEARCHES } = await import("./lib/health.mjs");
+
+/** Stories searched to the end with nothing found, read by the morning round (scripts/editor-precheck.mjs), which then
+ *  leaves them alone. It searched every story of the last two days without a picture, so each was searched twice; from
+ *  23 to 31 October the second search found one picture in 16 (a Moscow building site under an Abu Dhabi developer's
+ *  results), at about twelve calls a story at the Extra effort. A search the desk could not finish is not recorded. */
+const searched = JSON.parse(await readFile(path.join(root, PHOTO_SEARCHES), "utf8").catch(() => "{}"));
+searched.version = 1;
+searched.none ??= {};
+async function rememberNone(slug) {
+  const week = Date.now() - 7 * 864e5;
+  for (const [s, at] of Object.entries(searched.none)) if (Date.parse(at) < week) delete searched.none[s];
+  searched.none[slug] = new Date().toISOString();
+  await writeJsonAtomic(path.join(root, PHOTO_SEARCHES), searched);
+}
 
 const args = process.argv.slice(2);
 const DRY_RUN = args.includes("--dry-run");
@@ -112,11 +128,16 @@ if (APPLY) {
       continue;
     }
     taken.add(key);
-    await writeImage(full, match, data, entry.image, entry.model);
     written += 1;
+    // A dry run writes nothing, `--apply` included: it wrote the saved photograph and its model (a review of 2026-11-01).
+    if (DRY_RUN) {
+      log(`${entry.file}: would write "${entry.fileTitle}"`);
+      continue;
+    }
+    await writeImage(full, match, data, entry.image, entry.model);
     log(`${entry.file}: wrote "${entry.fileTitle}"`);
   }
-  log(`done: ${written} of ${(saved.picks ?? []).length} saved picks written`);
+  log(`done: ${written} of ${(saved.picks ?? []).length} saved picks ${DRY_RUN ? "would be written (dry run, nothing written)" : "written"}`);
   process.exit(0);
 }
 const savedPicks = [];
@@ -157,16 +178,19 @@ for (const file of files) {
     if (page.ogImage || page.text) sources.push({ sourceName: s.name, sourceNameEn: s.nameEn, title: s.title, url: s.url, ogImage: page.ogImage ?? "", photos: page.photos ?? [], text: page.ok ? page.text : "" });
   }
   let image = null;
+  let failed = false;
   try {
     const used = await usedNow();
     const exclude = AS_NEW ? new Set([...used].filter((u) => u !== own && !String(u).startsWith("title:") && !String(u).startsWith("series"))) : used;
     // A handout is kept on the site (lib/images.mjs handoutTier()); a dry run keeps nothing.
-    image = await pickImage({ draft, story, log, exclude, sources, photoDir: DRY_RUN ? null : path.join(process.cwd(), "public", "photos", "handouts") });
+    image = await pickImage({ draft, story, log, exclude, sources, photoDir: DRY_RUN ? null : path.join(process.cwd(), "public", "photos", "handouts"), onError: () => (failed = true) });
   } catch (error) {
+    failed = true;
     log(`${file}: failed (${error.message.split("\n")[0]})`);
   }
   if (!image) {
-    log(`${file}: no suitable photo${redo ? "; the old picture is removed" : ""}`);
+    log(`${file}: no suitable photo${redo ? "; the old picture is removed" : ""}${failed ? "; a failure cut the search short, so the next round searches again" : ""}`);
+    if (!DRY_RUN && !failed) await rememberNone(data.slug);
     if (redo && !DRY_RUN) await writeFile(full, `---
 ${YAML.stringify(data, { lineWidth: 0 }).trimEnd()}
 ---

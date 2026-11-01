@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtempSync, rmSync } from "node:fs";
+import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { routeSubscription, runSubscription, readQuotaState, quotaSnapshot } from "../pipeline/lib/codex-pool.mjs";
@@ -78,6 +78,16 @@ try {
   now += 61000;
   await assert.rejects(routeSubscription({}, { pool: weeklyCapped, now: () => now, limits: missingMeter, run: async () => assert.fail("A future weekly cap still blocks recovery") }));
   console.log("ok  Expired quota recovers through one bounded request; unknown/future windows stay blocked");
+
+  // A reading with the five-hour window alone keeps a saved weekly window spent until its own reset (a review of
+  // 2026-11-01: the partial answer erased it, and the spent account was called).
+  const partial = config(), spentWeek = { usedPercent: 100, windowDurationMins: 10080, resetsAt: now + 3 * 86400000 }, used = [];
+  writeFileSync(partial.stateFile, JSON.stringify({ accounts: { one: { checkedAt: now - 3600000, exhausted: true, retryAt: spentWeek.resetsAt, windows: [{ usedPercent: 20, windowDurationMins: 300, resetsAt: now + 3600000 }, spentWeek] } } }));
+  const shortOnly = async ({ codexHome }) => (codexHome === "one" ? { rateLimitsByLimitId: { codex: { primary: { usedPercent: 25, windowDurationMins: 300, resetsAt: (now + 3600000) / 1000 } } } } : usage(10, 10));
+  await routeSubscription({}, { pool: partial, now: () => now, limits: shortOnly, run: async (o) => { used.push(o.codexHome); return {}; } });
+  assert.deepEqual(used, ["two"], "A reading without the weekly window keeps the saved weekly exhaustion");
+  assert.equal(readQuotaState(partial.stateFile).accounts.one.retryAt, spentWeek.resetsAt);
+  console.log("ok  A partial usage reading keeps a known weekly limit until its own reset");
 
   const quotaError = new Error("Both account allowances exhausted"); quotaError.meta = { quota: true, status: 429 };
   const common = { draft: { body: "draft" }, sources: [{ title: "source", text: "fetched evidence", url: "https://example.invalid/source" }] };

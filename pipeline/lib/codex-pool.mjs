@@ -19,6 +19,18 @@ export function quotaSnapshot(response, now = Date.now()) {
     // Every exhausted window must reset before this account is eligible again.
     retryAt: blocked.length && blocked.every((w) => w.resetsAt) ? Math.max(...blocked.map((w) => w.resetsAt)) : null };
 }
+/**
+ * A fresh reading with what it left out: a window the service did not report this time (a five-hour reading without the
+ * weekly one) keeps its saved exhaustion until its own reset. Taken alone, one partial answer erased a known weekly
+ * limit and the spent account was called again (a review of 2026-11-01).
+ */
+export function withKnownLimits(fresh, saved, now = Date.now()) {
+  const kept = (saved?.windows ?? []).filter((w) => w.usedPercent >= 100 && Number.isFinite(w.resetsAt) && w.resetsAt > now && !fresh.windows.some((f) => f.windowDurationMins === w.windowDurationMins));
+  if (!kept.length) return fresh;
+  const windows = [...fresh.windows, ...kept];
+  const blocked = windows.filter((w) => w.usedPercent >= 100);
+  return { ...fresh, windows, exhausted: true, retryAt: blocked.every((w) => w.resetsAt) ? Math.max(...blocked.map((w) => w.resetsAt)) : null };
+}
 export function readQuotaState(file = quotaStateFile()) {
   try { return JSON.parse(readFileSync(file, "utf8")); }
   catch (error) { if (error.code === "ENOENT") return { accounts: {} }; throw new Error("The saved ChatGPT usage state could not be read."); }
@@ -61,7 +73,7 @@ export async function routeSubscription(options, { pool = accountPool(), run = r
     let quota = state.accounts[account.id];
     const fresh = quota && now() - quota.checkedAt < 60000 && !(quota.retryAt && quota.retryAt <= now());
     if (!fresh) {
-      try { quota = quotaSnapshot(await limits({ codexHome: account.home }), now()); }
+      try { quota = withKnownLimits(quotaSnapshot(await limits({ codexHome: account.home }), now()), quota, now()); }
       catch { quota = { ...quota, checkedAt: now(), unavailable: true }; }
       state.accounts[account.id] = quota; saveState(pool.stateFile, state);
     }
@@ -89,7 +101,7 @@ export async function routeSubscription(options, { pool = accountPool(), run = r
     } catch (error) {
       // Content refusals, network failures and authentication failures do not spend the other account's allowance.
       if (!isQuotaError(error)) throw error;
-      try { quota = quotaSnapshot(await limits({ codexHome: account.home }), now()); } catch {}
+      try { quota = withKnownLimits(quotaSnapshot(await limits({ codexHome: account.home }), now()), quota, now()); } catch {}
       if (!quota?.exhausted && !/usage_limit_reached|usage limit|quota (?:exceeded|exhausted)/i.test(error.message || "")) throw error;
       state.accounts[account.id] = { ...quota, checkedAt: now(), exhausted: true,
         ...(resetProbe ? { probeAfter: now() + 300000 } : {}) };
@@ -100,9 +112,10 @@ export async function routeSubscription(options, { pool = accountPool(), run = r
 }
 
 export async function refreshAccountUsage(account, stateFile = quotaStateFile()) {
-  const quota = quotaSnapshot(await codexRateLimits({ codexHome: account.home }));
+  const reading = quotaSnapshot(await codexRateLimits({ codexHome: account.home }));
   // Re-read after the network call so another account's updated data is retained.
   const current = readQuotaState(stateFile);
+  const quota = withKnownLimits(reading, current.accounts[account.id], reading.checkedAt);
   current.accounts[account.id] = quota; saveState(stateFile, current);
   return quota;
 }

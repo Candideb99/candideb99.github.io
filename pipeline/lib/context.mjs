@@ -113,15 +113,18 @@ export function instrumentsOf(story, sources = []) {
 /**
  * A routine move told twice: «برنت يقفز فوق 109 دولارات مع تعطل صادرات ينبع» ran four hours after «أرامكو تعلّق
  * تحميلات ينبع… برنت يرتفع 3%» (15 September). The newest of our price stories of the last `hours` (eight: the duplicate came four hours after, a real development twelve) on the same
- * instrument, or null; a new record or a reversal named in the headline is news again.
+ * instrument, or null; a new record or a reversal named in the headline is news again. Both headlines must report a
+ * price move: in the markets and energy sections an instrument's name alone counted, so Qatar starting a gas field was
+ * held as a repeat of the day's US gas price (a review of 2026-11-01).
  */
 const NEWS_AGAIN = /أعلى مستوى|أدنى مستوى|قياسي|قياسية|منذ (?:يناير|فبراير|مارس|أبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر|\d)|يعكس اتجاه|يمحو|يبدد/;
 export function repeatsInstrument(story, existing = [], { now = Date.now(), hours = 8 } = {}) {
-  if (!MARKET_SECTIONS.has(story.section) || NEWS_AGAIN.test(String(story.headlineHint ?? ""))) return null;
+  const headline = String(story.headlineHint ?? "");
+  if (!MARKET_SECTIONS.has(story.section) || !PRICE_WORDS.test(headline) || NEWS_AGAIN.test(headline)) return null;
   const lead = instrumentsOf({ headlineHint: story.headlineHint, section: story.section })[0];
   if (!lead) return null;
   const earlier = existing
-    .filter((a) => a.kind === "news" && MARKET_SECTIONS.has(a.section) && a.publishedAt && now - new Date(a.publishedAt) < hours * 3600000)
+    .filter((a) => a.kind === "news" && MARKET_SECTIONS.has(a.section) && a.publishedAt && now - new Date(a.publishedAt) < hours * 3600000 && PRICE_WORDS.test(String(a.title ?? "")))
     .filter((a) => instrumentsOf({ headlineHint: a.title, section: a.section })[0]?.id === lead.id)
     .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))[0];
   return earlier ? earlier.title : null;
