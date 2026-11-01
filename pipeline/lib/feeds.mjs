@@ -1,5 +1,5 @@
 import { XMLParser } from "fast-xml-parser";
-import { USER_AGENT, canonicalUrl, fetchWithTimeout, hoursSince, safeIsoDate, stripHtml, truncate } from "./util.mjs";
+import { USER_AGENT, canonicalUrl, fetchPublic, hoursSince, readCapped, safeIsoDate, stripHtml, truncate } from "./util.mjs";
 
 const parser = new XMLParser({
   ignoreAttributes: false,
@@ -126,7 +126,7 @@ export async function fetchFeed(source, { maxAgeHours = 36, log = () => {}, onRe
     // not seen. Our reader still names itself; a reader asks no more than once an hour.
     const hour = new Date().toISOString().slice(0, 13).replace(/\D/g, "");
     const url = source.hourKey ? `${source.url}${source.url.includes("?") ? "&" : "?"}t=${hour}` : source.url;
-    const response = await fetchWithTimeout(
+    const response = await fetchPublic(
       url,
       {
         headers: {
@@ -141,8 +141,10 @@ export async function fetchFeed(source, { maxAgeHours = 36, log = () => {}, onRe
       log(`feed ${source.id}: HTTP ${response.status}`);
       return [];
     }
-    const raw = await response.text();
-    if (raw.length > 4_000_000) {
+    // Read only so far: a body past the cap is cut off as it arrives (readCapped()), never held whole first.
+    const { bytes, cut } = await readCapped(response, 8_000_000);
+    const raw = bytes.toString("utf8");
+    if (cut || raw.length > 4_000_000) {
       log(`feed ${source.id}: oversized response`);
       return [];
     }

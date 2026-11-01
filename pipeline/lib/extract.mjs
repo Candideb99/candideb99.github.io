@@ -1,6 +1,6 @@
 import { Readability } from "@mozilla/readability";
 import { parseHTML } from "linkedom";
-import { USER_AGENT, fetchWithTimeout, stripHtml } from "./util.mjs";
+import { USER_AGENT, fetchPublic, readCapped, stripHtml } from "./util.mjs";
 
 const robotsCache = new Map();
 
@@ -20,7 +20,7 @@ export async function allowedByRobots(url) {
       origin,
       (async () => {
         try {
-          const response = await fetchWithTimeout(`${origin}/robots.txt`, { headers: { "user-agent": USER_AGENT } }, 10000);
+          const response = await fetchPublic(`${origin}/robots.txt`, { headers: { "user-agent": USER_AGENT } }, 10000);
           if (!response.ok) return [];
           const text = await response.text();
           const groups = [];
@@ -110,7 +110,7 @@ export async function extractArticle(url, { maxChars = 9000, log = () => {}, all
     let response;
     let current = url;
     for (let redirects = 0; redirects <= 4; redirects++) {
-      response = await fetchWithTimeout(
+      response = await fetchPublic(
       current,
       {
         headers: {
@@ -142,7 +142,8 @@ export async function extractArticle(url, { maxChars = 9000, log = () => {}, all
       result.reason = `content-type ${type}`;
       return result;
     }
-    const html = (await response.text()).slice(0, 3_000_000);
+    // Its first 3 million characters, as before, but read only so far: a page past the cap is cut off as it arrives.
+    const html = new TextDecoder().decode((await readCapped(response, 6_000_000)).bytes).slice(0, 3_000_000);
     Object.assign(result, readArticleHtml(html, response.url || current, { maxChars, log }));
     return result;
   } catch (error) {

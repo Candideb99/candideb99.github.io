@@ -7,7 +7,9 @@
  *
  *   node scripts/pipeline-selftest.mjs
  */
-import { spawnSync } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
+import http from "node:http";
+import net from "node:net";
 import { mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, unlinkSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -15,10 +17,10 @@ import { MAX_REPAIRS, checkSourcesOf, precheck } from "../pipeline/lib/precheck.
 import { repeatsRecent } from "../pipeline/lib/events.mjs";
 import { fetchFeed } from "../pipeline/lib/feeds.mjs";
 import { lessonRuleOk, loadLessons } from "../pipeline/lib/lessons.mjs";
-import { refersBack, restoredFigures, sentenceUnits, sourceNumbers, ungroundedNumbers, writeJsonAtomic } from "../pipeline/lib/util.mjs";
+import { fetchPublic, privateAddress, refersBack, restoredFigures, sentenceUnits, sourceNumbers, ungroundedNumbers, writeJsonAtomic } from "../pipeline/lib/util.mjs";
 import { loadSnapshot, saveSnapshot } from "../pipeline/lib/snapshots.mjs";
 import { loadSources, quoteFound, settleChanged, settleDrift, verifyStory } from "../pipeline/lib/factcheck.mjs";
-import { readArticleHtml } from "../pipeline/lib/extract.mjs";
+import { extractArticle, readArticleHtml } from "../pipeline/lib/extract.mjs";
 import { labelLine, outletLabels, quotedOutletsBlock, unlabelledOutlets } from "../pipeline/lib/outlets.mjs";
 import { instrumentsOf, macroMarketOf, marketData, repeatsInstrument } from "../pipeline/lib/context.mjs";
 import { yahooQuote } from "../pipeline/lib/quotes.mjs";
@@ -1589,6 +1591,92 @@ check(
     ],
     [1, 0],
   );
+}
+
+// Codex's sixth review (2026-11-01, security): an address from content never reaches this machine or a private network,
+// a body is read only so far, and a malformed request never stops the control room.
+{
+  check(
+    "private and reserved addresses are recognised; public ones are not",
+    [
+      ["127.0.0.1", "10.1.2.3", "172.20.0.1", "192.168.1.5", "169.254.169.254", "100.64.0.1", "0.0.0.0", "224.0.0.1", "::1", "::ffff:127.0.0.1", "::ffff:7f00:1", "fd12::1", "fe80::1"].every(privateAddress),
+      ["93.184.216.34", "8.8.8.8", "172.32.0.1", "100.128.0.1", "2606:4700:4700::1111"].some(privateAddress),
+    ],
+    [true, false],
+  );
+  const realFetch = globalThis.fetch;
+  const asked = [];
+  globalThis.fetch = async (url) => {
+    asked.push(String(url));
+    return new Response("", { status: 302, headers: { location: "http://127.0.0.1:8188/history" } });
+  };
+  let refused = "";
+  try {
+    await fetchPublic("http://93.184.216.34/story");
+  } catch (error) {
+    refused = error.message;
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+  check("a redirect to this machine is refused before it is followed", [/private address/.test(refused), asked], [true, ["http://93.184.216.34/story"]]);
+
+  // A page served on this machine, linked as a story's source.
+  const local = http.createServer((req, res) => {
+    if (req.url === "/robots.txt") {
+      res.writeHead(404);
+      return res.end();
+    }
+    res.writeHead(200, { "content-type": "text/html; charset=utf-8" });
+    res.end(`<html><head><title>Internal</title></head><body><article><p>${"An internal page of this machine, never a source. ".repeat(40)}</p></article></body></html>`);
+  });
+  await new Promise((resolve) => local.listen(0, "127.0.0.1", resolve));
+  const page = await extractArticle(`http://127.0.0.1:${local.address().port}/admin`);
+  local.close();
+  check("a link to this machine is never read as a source", [page.ok, /private address/.test(page.reason)], [false, true]);
+
+  // A feed whose answer keeps growing (a compressed bomb's expansion, as the reader sees it): read only to the cap.
+  let pulled = 0;
+  globalThis.fetch = async () =>
+    new Response(
+      new ReadableStream({
+        pull(controller) {
+          if (pulled >= 50_000_000) return controller.close();
+          pulled += 1_000_000;
+          controller.enqueue(new Uint8Array(1_000_000).fill(32));
+        },
+      }),
+      { status: 200, headers: { "content-type": "application/rss+xml" } },
+    );
+  const said = [];
+  let items = null;
+  try {
+    items = await fetchFeed({ id: "bomb", url: "http://93.184.216.34/feed.xml" }, { log: (line) => said.push(line) });
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+  check("a feed that grows past the cap is cut off as it arrives", [items, pulled <= 10_000_000, said.some((line) => /oversized/.test(line))], [[], true, true]);
+}
+
+// The control room answers a malformed request and stays up (a review of 2026-11-01: «GET //[» stopped it, from any page
+// open in the browser, before its door checked anything).
+{
+  const room = spawn(process.execPath, [path.join("scripts", "control-room.mjs")], { env: { ...process.env, KHAZENDAR_CONTROL_PORT: "0", KHAZENDAR_OPEN_BROWSER: "" }, stdio: ["ignore", "pipe", "pipe"] });
+  let said = "";
+  room.stdout.on("data", (d) => (said += d));
+  for (let i = 0; i < 80 && !/control room: http:\/\/127\.0\.0\.1:\d+/.test(said) && room.exitCode === null; i++) await new Promise((resolve) => setTimeout(resolve, 250));
+  const port = Number(said.match(/control room: http:\/\/127\.0\.0\.1:(\d+)/)?.[1]);
+  const reply = await new Promise((resolve) => {
+    let data = "";
+    const socket = net.connect(port, "127.0.0.1", () => socket.write(`GET //[ HTTP/1.1\r\nHost: 127.0.0.1:${port}\r\nOrigin: http://evil.test\r\nConnection: close\r\n\r\n`));
+    socket.on("data", (d) => (data += d));
+    socket.on("close", () => resolve(data));
+    socket.on("error", () => resolve(data));
+    setTimeout(() => socket.destroy(), 5000);
+  });
+  await new Promise((resolve) => setTimeout(resolve, 500));
+  const up = room.exitCode === null;
+  room.kill();
+  check("a malformed request is refused and the control room stays up", [reply.split("\r\n")[0], up], ["HTTP/1.1 400 Bad Request", true]);
 }
 
 if (failed) {

@@ -15,7 +15,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { parseHTML } from "linkedom";
 import { allowedByRobots, extractArticle } from "./extract.mjs";
-import { USER_AGENT, fetchWithTimeout, stripHtml } from "./util.mjs";
+import { USER_AGENT, fetchPublic, stripHtml } from "./util.mjs";
 
 export const REGISTRY_PATH = path.join(process.cwd(), "pipeline", "reports.json");
 
@@ -55,7 +55,7 @@ export async function loadRegistry() {
 
 async function fetchHtml(url) {
   if (!(await allowedByRobots(url))) return { ok: false, reason: "robots" };
-  const response = await fetchWithTimeout(url, { headers: { "user-agent": USER_AGENT, accept: "text/html,application/xhtml+xml" } }, 25000);
+  const response = await fetchPublic(url, { headers: { "user-agent": USER_AGENT, accept: "text/html,application/xhtml+xml" } }, 25000);
   const html = response.ok ? await response.text() : "";
   // A bot wall (Cloudflare's "Just a moment...") is a refusal, never a page to read.
   if (/<title>\s*(?:Just a moment|Attention Required|Client Challenge)/i.test(html)) return { ok: false, reason: "bot wall" };
@@ -156,7 +156,7 @@ export async function pdfPages(url, log) {
   url = documentUrl(url);
   try {
     if (!(await allowedByRobots(url))) return null;
-    const get = () => fetchWithTimeout(url, { headers: { "user-agent": USER_AGENT, accept: "application/pdf,text/markdown,text/plain;q=0.9,*/*;q=0.5" } }, 60000);
+    const get = () => fetchPublic(url, { headers: { "user-agent": USER_AGENT, accept: "application/pdf,text/markdown,text/plain;q=0.9,*/*;q=0.5" } }, 60000);
     let response = await get();
     if (response.status === 429) {
       await new Promise((resolve) => setTimeout(resolve, 8000));

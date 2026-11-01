@@ -40,7 +40,7 @@ import { pickImage } from "./lib/images.mjs";
 import { cleanTags, storyText as tagsText } from "./lib/tags.mjs";
 import { ARTICLES_DIR, buildSlug, loadExistingArticles, mergeNewsRefresh, mergeRewrite, recentNews, serializeArticle, weekStories } from "./lib/article.mjs";
 import { usage as llmUsage } from "./lib/llm.mjs";
-import { USER_AGENT, domainOf, fetchWithTimeout, fingerprint, hoursSince, isoNow, restoredFigures, sleep } from "./lib/util.mjs";
+import { USER_AGENT, domainOf, fetchPublic, fingerprint, hoursSince, isoNow, restoredFigures, sleep } from "./lib/util.mjs";
 import { pickDataChart } from "./lib/datacharts.mjs";
 import { coveredBy, latestEdition, loadRegistry, monthKey, pdfPages, readEdition, releaseStory, reportStory } from "./lib/reports.mjs";
 
@@ -1259,7 +1259,7 @@ async function readPaper(item) {
 async function paperPdf(url) {
   try {
     if (!(await allowedByRobots(url))) return null;
-    const response = await fetchWithTimeout(url, { headers: { "user-agent": USER_AGENT } }, 20000);
+    const response = await fetchPublic(url, { headers: { "user-agent": USER_AGENT } }, 20000);
     if (!response.ok) return null;
     const html = await response.text();
     const links = [...new Set([...html.matchAll(/href="([^"#?]+\.pdf)"/gi)].map((m) => new URL(m[1], url).href))].filter((href) => new URL(href).host === new URL(url).host);

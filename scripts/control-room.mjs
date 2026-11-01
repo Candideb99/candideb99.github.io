@@ -1696,7 +1696,15 @@ function commitAndPush(name, paths, message) {
 }
 
 const server = http.createServer(async (req, res) => {
-  const url = new URL(req.url, `http://127.0.0.1:${PORT}`);
+  // A malformed address («GET //[») threw here, before the door and outside every handler, and the control room exited:
+  // any page open in the browser could stop it (a review of 2026-11-01). It is refused like any bad request.
+  let url;
+  try {
+    url = new URL(req.url, `http://127.0.0.1:${PORT}`);
+  } catch {
+    res.writeHead(400, { "content-type": "text/plain; charset=utf-8" });
+    return res.end("Bad request.");
+  }
   const text = (code, s) => {
     res.writeHead(code, { "content-type": "text/plain; charset=utf-8" });
     res.end(s);

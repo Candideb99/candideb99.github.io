@@ -1,5 +1,7 @@
 import { createHash } from "node:crypto";
+import { lookup } from "node:dns/promises";
 import { mkdir, rename, writeFile } from "node:fs/promises";
+import { isIP } from "node:net";
 import path from "node:path";
 
 /**
@@ -30,6 +32,84 @@ export async function fetchWithTimeout(url, options = {}, timeoutMs = 20000) {
   const timeout = AbortSignal.timeout(timeoutMs);
   const signal = options.signal ? AbortSignal.any([options.signal, timeout]) : timeout;
   return fetch(url, { ...options, signal });
+}
+
+/**
+ * An address no story's link may lead to: this machine, a private or carrier network, link-local (a cloud's metadata
+ * service at 169.254.169.254), multicast, documentation and reserved ranges, in IPv4 and IPv6, IPv4 written inside IPv6.
+ */
+export function privateAddress(ip) {
+  const version = isIP(ip);
+  if (version === 4) {
+    const [a, b, c] = ip.split(".").map(Number);
+    return a === 0 || a === 10 || a === 127 || a >= 224 || (a === 100 && b >= 64 && b <= 127) || (a === 169 && b === 254) || (a === 172 && b >= 16 && b <= 31) || (a === 192 && b === 168) ||
+      (a === 192 && b === 0 && (c === 0 || c === 2)) || (a === 198 && (b === 18 || b === 19)) || (a === 198 && b === 51 && c === 100) || (a === 203 && b === 0 && c === 113);
+  }
+  if (version !== 6) return true;
+  const s = ip.toLowerCase();
+  const dotted = s.match(/^::ffff:(\d+\.\d+\.\d+\.\d+)$/);
+  if (dotted) return privateAddress(dotted[1]);
+  const hex = s.match(/^::ffff:([0-9a-f]{1,4}):([0-9a-f]{1,4})$/);
+  if (hex) return privateAddress([parseInt(hex[1], 16) >> 8, parseInt(hex[1], 16) & 255, parseInt(hex[2], 16) >> 8, parseInt(hex[2], 16) & 255].join("."));
+  return s === "::" || s === "::1" || /^f[cd]/.test(s) || /^fe[89ab]/.test(s) || /^ff/.test(s) || s.startsWith("64:ff9b:") || s.startsWith("2001:db8:");
+}
+
+/** Throws unless `url` is a web address whose host resolves to public addresses only. */
+async function publicTarget(url) {
+  const target = new URL(url);
+  // A data: address carries its content in itself and reaches no machine.
+  if (target.protocol === "data:") return;
+  if (target.protocol !== "http:" && target.protocol !== "https:") throw new Error(`not a web address: ${target.protocol}`);
+  const host = target.hostname.replace(/^\[|\]$/g, "");
+  const addresses = isIP(host) ? [host] : (await lookup(host, { all: true })).map((a) => a.address);
+  if (!addresses.length || addresses.some(privateAddress)) throw new Error(`private address refused: ${target.hostname}`);
+}
+
+/**
+ * fetchWithTimeout() for an address that came from content: a feed's link, a page's redirect, a photograph found on a
+ * page. The host and every redirect's host must resolve to public addresses; a link or a redirect to this machine or a
+ * private network had been read as a source, and its text could reach a story and the evidence the repository keeps
+ * (a review of 2026-11-01, reproduced with a feed pointing at a page served on this machine). Redirects are followed
+ * here, one checked hop at a time, at most five; with `redirect: "manual"` the caller follows them through this
+ * function again. The check reads the name before the fetch resolves it once more (a name that changes its answer in
+ * between is not caught), and the model providers' and the libraries' fixed addresses keep fetchWithTimeout().
+ */
+export async function fetchPublic(url, options = {}, timeoutMs = 20000) {
+  const follow = (options.redirect ?? "follow") === "follow";
+  let current = String(url);
+  for (let hop = 0; ; hop++) {
+    await publicTarget(current);
+    const response = await fetchWithTimeout(current, { ...options, redirect: "manual" }, timeoutMs);
+    const location = [301, 302, 303, 307, 308].includes(response.status) ? response.headers.get("location") : null;
+    if (!follow || !location) return response;
+    await response.body?.cancel().catch(() => {});
+    if (hop >= 5) throw new Error("too many redirects");
+    current = new URL(location, current).href;
+  }
+}
+
+/**
+ * A response's body, read only up to `maxBytes`: a server that sends more (a small compressed answer that expands to
+ * gigabytes) is cut off while the bytes arrive, never held whole first. The feed reader took the whole decompressed
+ * text and then checked its length: a 7.8 KB answer grew to 8 MB before it was refused (a review of 2026-11-01).
+ * Returns { bytes, cut }: the first `maxBytes` bytes, and whether there was more.
+ */
+export async function readCapped(response, maxBytes) {
+  const reader = response.body?.getReader();
+  if (!reader) return { bytes: Buffer.alloc(0), cut: false };
+  const chunks = [];
+  let size = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) return { bytes: Buffer.concat(chunks), cut: false };
+    if (size + value.byteLength > maxBytes) {
+      chunks.push(value.subarray(0, maxBytes - size));
+      await reader.cancel().catch(() => {});
+      return { bytes: Buffer.concat(chunks), cut: true };
+    }
+    chunks.push(value);
+    size += value.byteLength;
+  }
 }
 
 const TRACKING_PARAMS = /^(utm_|at_|fbclid|gclid|mc_|ref$|source$|traffic_source$|cmpid|ocid|ns_|_ga)/i;

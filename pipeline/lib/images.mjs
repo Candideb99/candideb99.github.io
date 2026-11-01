@@ -8,7 +8,7 @@ import { chat } from "./llm.mjs";
 import { claudeEffort } from "./claude-effort.mjs";
 // The house spellings the copy desk keeps («أمريكي»، «ترامب») hold under photographs too.
 import { fixNames } from "./copydesk.mjs";
-import { USER_AGENT, fetchWithTimeout } from "./util.mjs";
+import { USER_AGENT, fetchPublic, readCapped } from "./util.mjs";
 import { photoKey } from "./photo-key.mjs";
 import { countriesNamed } from "./regions.mjs";
 
@@ -56,7 +56,7 @@ export function sniffImage(bytes) {
 /** Vision providers cannot fetch Wikimedia URLs themselves; inline the thumbnails as data URLs. */
 export async function inlineImage(url, log = () => {}) {
   try {
-    const response = await fetchWithTimeout(url, { headers: { "user-agent": USER_AGENT } }, 25000);
+    const response = await fetchPublic(url, { headers: { "user-agent": USER_AGENT } }, 25000);
     if (!response.ok) {
       log(`image: thumbnail HTTP ${response.status} for ${url.slice(0, 90)}`);
       return null;
@@ -72,9 +72,9 @@ export async function inlineImage(url, log = () => {}) {
       log(`image: ${type || "no content type"} is not a photograph the judge can read (${url.slice(0, 90)})`);
       return null;
     }
-    const bytes = Buffer.from(await response.arrayBuffer());
-    if (bytes.length > 4_000_000) {
-      log(`image: thumbnail too large (${bytes.length} bytes)`);
+    const { bytes, cut } = await readCapped(response, 4_000_000);
+    if (cut) {
+      log("image: thumbnail too large (over 4,000,000 bytes)");
       return null;
     }
     if (unlabelled) {
@@ -2005,14 +2005,14 @@ export function handoutFault(photo, { story, source = {} }) {
 /** A source's photograph, fetched, measured and made ready to keep: { width, height, buffer (JPEG, at most 1280 wide), preview }. */
 async function fetchHandout(url, log = () => {}) {
   try {
-    const response = await fetchWithTimeout(url, { headers: { "user-agent": USER_AGENT, accept: "image/*" } }, 25000);
+    const response = await fetchPublic(url, { headers: { "user-agent": USER_AGENT, accept: "image/*" } }, 25000);
     const type = response.headers.get("content-type") ?? "";
     if (!response.ok || !/^image\//i.test(type)) {
       log(`image: handout ${response.status} ${type} for ${url.slice(0, 90)}`);
       return null;
     }
-    const raw = Buffer.from(await response.arrayBuffer());
-    if (raw.length > 15_000_000) return null;
+    const { bytes: raw, cut } = await readCapped(response, 15_000_000);
+    if (cut) return null;
     const sharp = (await import("sharp")).default;
     const meta = await sharp(raw).metadata();
     const out = await sharp(raw).rotate().resize({ width: 1280, withoutEnlargement: true }).jpeg({ quality: 82, mozjpeg: true }).toBuffer({ resolveWithObject: true });
