@@ -225,10 +225,11 @@
     "binance-freezes-3-billion-potential-hack-647d53:3630c5b4",
     "binance-freezes-3-billion-potential-hack-647d53:86705fb7",
     "boj-holds-rate-inflation-hits-target-728e78:91475147",
-    "euro-area-gdp-grows-q3-france-contracts-65e2be:d654334d"
+    "euro-area-gdp-grows-q3-france-contracts-65e2be:d654334d",
+    "china-factory-pmi-contracts-october-64c344:123b6f44"
   ],
-  "version": 45,
-  "updatedAt": "2026-10-30T18:06:12.820Z",
+  "version": 46,
+  "updatedAt": "2026-11-01T00:14:07.830Z",
   "lessons": [
     {
       "id": "L1",
@@ -347,11 +348,12 @@
         "aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210:f2007844",
         "french-bond-yields-jump-after-protests-1b64ee:1cdf42b9",
         "samsung-raises-capex-despite-investor-disappointment-55895a:c5a20c49",
-        "binance-freezes-3-billion-potential-hack-647d53:86705fb7"
+        "binance-freezes-3-billion-potential-hack-647d53:86705fb7",
+        "china-factory-pmi-contracts-october-64c344:123b6f44"
       ],
-      "seen": 51,
+      "seen": 52,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-10-30T08:36:46.654Z",
+      "lastSeen": "2026-11-01T00:14:07.830Z",
       "status": "active",
       "previous": [
         "Credit each fact to whom the source credits and name the originating outlet. An outlet's inference ('implying', 'suggesting') is not the official's own statement. An interview is not a statement. Add no conclusion the speaker did not draw.",
@@ -1141,6 +1143,13 @@
       "applied": [
         "reinforce L12 (+1; reworded at most once a week)",
         "L12 now read by the writer (proved in 2 unrelated stories)"
+      ]
+    },
+    {
+      "at": "2026-11-01T00:14:07.830Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L2 (+1; reworded at most once a week)"
       ]
     }
   ],

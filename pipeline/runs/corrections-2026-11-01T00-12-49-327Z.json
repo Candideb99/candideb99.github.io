@@ -1,0 +1,27 @@
+{
+  "startedAt": "2026-11-01T00:12:49.430Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "china-factory-pmi-contracts-october-64c344",
+      "issue": "The body says «غير أن اقتصاديين يرون أن قراءة أكتوبر تُظهر أن الصادرات، رغم ارتفاعها خلال معظم العام، قد لا تكون قوية بما يكفي لتعويض الركود الطويل في إنفاق المستهلكين الصينيين.» (Economists view the October reading as showing that exports, though rising for most of the year, may not be strong enough to offset the prolonged slump in Chinese consumer spending.). Source Independent Arabia says: \"ودعا اقتصاديون الحكومة إلى بذل مزيد من الجهود لدعم النمو في أعقاب صدور هذه الأرقام، التي سلطت الضوء على أن الصادرات، التي سجلت ارتفاعاً خلال معظم العام، قد لا تتمتع بالقوة الكافية لتعويض الركود طويل الأمد في الإنفاق الاستهلاكي.\". The source attributes to economists only the call for more government support; the point that exports may not be strong enough to offset weak consumer spending is the source's own reading of what the figures highlighted, not a view it attributes to economists.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن اقتصاديين يرون أن قراءة أكتوبر تُظهر أن الصادرات قد لا تكون قوية بما يكفي لتعويض ركود إنفاق المستهلكين، والصحيح أن أرقام أكتوبر نفسها أبرزت ذلك، أما الاقتصاديون فقد دعوا الحكومة إلى بذل مزيد من الجهود لدعم النمو.",
+      "model": "claude-cli/claude-opus-5-5",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "غير أن اقتصاديين يرون أن قراءة أكتوبر تُظهر أن الصادرات، رغم ارتفاعها خلال معظم العام، قد لا تكون قوية بما يكفي لتعويض الركود الطويل في إنفاق المستهلكين الصينيين.",
+        "ودعا الاقتصاديون أنفسهم الحكومة بعد صدور الأرقام إلى بذل مزيد من الجهود لدعم النمو."
+      ],
+      "newSentences": [
+        "غير أن أرقام أكتوبر أبرزت أن الصادرات، رغم ارتفاعها خلال معظم العام، قد لا تكون قوية بما يكفي لتعويض الركود الطويل في إنفاق المستهلكين الصينيين.",
+        "ودعا اقتصاديون الحكومة بعد صدور الأرقام إلى بذل مزيد من الجهود لدعم النمو."
+      ]
+    }
+  ]
+}

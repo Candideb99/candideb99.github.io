@@ -9601,6 +9601,189 @@
           ]
         }
       ]
+    },
+    "binance-covers-90-percent-hack-losses-39ca3c": {
+      "at": "2026-11-01T00:24:54.590Z",
+      "title": "بينانس تغطي ما يصل إلى 90% من 6.3 مليار دولار سُرقت منها",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v46",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 29,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "turkey-names-new-capital-markets-regulator-chief-9ab65e": {
+      "at": "2026-11-01T00:36:08.125Z",
+      "title": "تركيا تغيّر قيادة هيئة أسواق المال للتعامل مع أزمة صناديق الاستثمار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v46",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 19,
+            "checked": 19,
+            "supported": 17,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "middle-east-fertiliser-exports-fall-hormuz-7d205e": {
+      "at": "2026-11-01T00:48:18.143Z",
+      "title": "صادرات الأسمدة من الشرق الأوسط تهبط بنحو 70% مع تعطل الشحن عبر هرمز",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v46",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 29,
+            "checked": 29,
+            "supported": 25,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 14,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وكانت حرب إيران قد بدأت في 28 فبراير بهجمات أمريكية وإسرائيلية على طهران، وردّت إيران بمهاجمة دول خليجية، بما فيها بنيتها التحتية للطاقة والمدنية.",
+              "quote": "ایران نیز در واکنش تلافی‌جویانه، دارایی‌ها و تجهیزات آمریکا در منطقه را هدف حمله قرار داد.",
+              "source": "Tejarat News",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "egypt-first-locally-assembled-electric-car-f79ba4": {
+      "at": "2026-11-01T01:02:17.397Z",
+      "title": "«إس إن أوتوموتيف» تبدأ إنتاج أول سيارة كهربائية تُجمَّع في مصر بمكون محلي 45%",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v46",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 27,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 22,
+              "field": "body",
+              "class": "attribution",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وقال مسؤولون حكوميون لـ«الشرق بلومبرغ»، طالبين عدم ذكر أسمائهم، إن الحكومة تدرس إعفاء المصنعين من جمارك مستلزمات إنتاج السيارات الكهربائية لخفض تكاليف التصنيع، كما تدرس فرض رسوم جمركية على السيارات الكهربائية المستوردة.",
+              "quote": "تصريحات وزير الكهرباء تتزامن مع دراسة مصر إعفاء المُصنِّعين من الرسوم الجمركية المفروضة على مستلزمات إنتاج السيارات الكهربائية، بهدف خفض تكاليف التصنيع والمساهمة في تعزيز انتشار السيارات النظيفة في السوق المحلية، بحسب مسؤولين حكوميين لـ\"الشرق بلومبرغ\" طلبوا عدم نشر أسمائهم. يأتي ذلك امتداداً لجهود الدولة لتشجيع التصنيع المحلي للسيارات الكهربائية، عبر إعفاء مستلزمات الإنتاج من الرسوم الجمركية بما ي",
+              "source": "Asharq Business",
+              "sourceN": 1,
+              "correction": "The anonymous officials are cited only for the study of the input-duty exemption; that the government is studying duties on imported EVs is Asharq Bloomberg's own reporting, not attributed to the officials."
+            }
+          ],
+          "noted": [
+            {
+              "id": 29,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "يصل مدى «ميج» إلى 445 كيلومتراً بالشحنة الواحدة، وفق حماد، ويرفع الشاحن السريع بطاريتها من 30% إلى 80% في نحو 28 دقيقة.",
+              "quote": "وتصل القوة الإجمالية للسيارة إلى 163 حصانًا، فيما يبلغ مدى القيادة نحو 455 كيلومترًا بالشحنة الواحدة وفق معيار «CLTC»، كما تدعم تقنية الشحن السريع التي تتيح رفع مستوى شحن البطارية من 30% إلى 80% خلال نحو 28 دقيقة.",
+              "source": "Alborsa News",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 32,
+            "checked": 32,
+            "supported": 29,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 30,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "يصل مدى «ميج» إلى 445 كيلومتراً بالشحنة الواحدة، وفق حماد، ويرفع الشاحن السريع بطاريتها من 30% إلى 80% في نحو 28 دقيقة.",
+              "quote": "وتصل القوة الإجمالية للسيارة إلى 163 حصانًا، فيما يبلغ مدى القيادة نحو 455 كيلومترًا بالشحنة الواحدة وفق معيار «CLTC»، كما تدعم تقنية الشحن السريع التي تتيح رفع مستوى شحن البطارية من 30% إلى 80% خلال نحو 28 دقيقة.",
+              "source": "Alborsa News",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []

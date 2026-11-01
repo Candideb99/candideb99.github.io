@@ -14073,6 +14073,147 @@
       "notFound": [],
       "weak": [],
       "outcome": "clean"
+    },
+    "russia-extends-diesel-export-ban-january-c76a48": {
+      "at": "2026-11-01T00:11:12.466Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-31T13:06:48.417Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "fromCopy": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 8,
+        "checked": 8,
+        "supported": 8,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "morocco-trade-deficit-widens-september-2026-b88d25": {
+      "at": "2026-11-01T00:11:12.520Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v45",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-31T12:57:02.487Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 35,
+        "checked": 35,
+        "supported": 31,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "الواردات تنمو 17% مقابل 10.7% للصادرات مع قفزة فاتورة الطاقة وواردات الكبريت، فتهبط نسبة تغطية الواردات بالصادرات إلى 54.2%",
+          "quote": "وزادت الصادرات بنسبة 10,7 في المائة إلى 384,05 مليار درهم، بإضافة 36,97 مليار درهم. ونتيجة لذلك، تراجع معدل التغطية من 57,3 إلى 54,2 في المائة."
+        },
+        {
+          "sentence": "وما دام برنت قرب 117 دولاراً، ستظل فاتورة الطاقة تضخّم عجزاً تجارياً لا يغطي فائض الخدمات سوى أقل من نصفه.",
+          "quote": "بلغت صادرات الخدمات 262,50 مليار درهم (زائد 13,1 في المائة)، مقابل واردات قدرها 126,70 مليار درهم (زائد 11,3 في المائة)، ما رفع الفائض بنسبة 14,8 في المائة إلى 135,80 مليار درهم."
+        },
+        {
+          "sentence": "أما الصادرات فنمت 10.7% فقط إلى 384.05 مليار درهم، بزيادة قدرها 36.97 مليار درهم، فارتفع العجز من 258.28 مليار درهم في الفترة نفسها من العام الماضي.",
+          "quote": "وزادت الصادرات بنسبة 10,7 في المائة إلى 384,05 مليار درهم، بإضافة 36,97 مليار درهم."
+        },
+        {
+          "sentence": "وبقيت السيارات في صدارة الصادرات بمبيعات قيمتها 132.11 مليار درهم ونمو 14.3%، وزادت صادرات الطيران 22.3% إلى 26.22 مليار درهم.",
+          "quote": "حافظت السيارات على صدارة الصادرات المغربية بمبيعات بلغت 132,11 مليار درهم، بنمو 14,3 في المائة."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "china-factory-pmi-contracts-october-64c344": {
+      "at": "2026-11-01T00:11:34.422Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v45",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-10-31T10:43:44.003Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "fromCopy": 1,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 27,
+        "checked": 27,
+        "supported": 21,
+        "weak": 1,
+        "noEvidence": 3,
+        "notFound": 1,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 19,
+          "field": "body",
+          "sentence": "غير أن اقتصاديين يرون أن قراءة أكتوبر تُظهر أن الصادرات، رغم ارتفاعها خلال معظم العام، قد لا تكون قوية بما يكفي لتعويض الركود الطويل في إنفاق المستهلكين الصينيين.",
+          "claim": "Economists view the October reading as showing that exports, though rising for most of the year, may not be strong enough to offset the prolonged slump in Chinese consumer spending.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Independent Arabia",
+          "sourceDate": "2026-10-31",
+          "quote": "ودعا اقتصاديون الحكومة إلى بذل مزيد من الجهود لدعم النمو في أعقاب صدور هذه الأرقام، التي سلطت الضوء على أن الصادرات، التي سجلت ارتفاعاً خلال معظم العام، قد لا تتمتع بالقوة الكافية لتعويض الركود طويل الأمد في الإنفاق الاستهلاكي.",
+          "correction": "The source attributes to economists only the call for more government support; the point that exports may not be strong enough to offset weak consumer spending is the source's own reading of what the figures highlighted, not a view it attributes to economists.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "مؤشر المصانع الصينية يتراجع إلى 49.3 نقطة مع ضعف الطلب المحلي",
+        "ثالث انكماش لنشاط المصانع في الصين خلال أربعة أشهر، والطلبيات الجديدة وطلبيات التصدير تبقى دون 50 نقطة",
+        "تراجع مؤشر مديري المشتريات الرسمي لقطاع التصنيع في الصين إلى 49.3 نقطة في أكتوبر من 50.1 نقطة في سبتمبر، بحسب بيانات المكتب الوطني للإحصاء الصادرة السبت، مع ضعف الطلب المحلي على السلع وظهور مؤشرات على تراجع الصادرات.",
+        "بعد أن شُحنت طلبيات عيد الميلاد مبكراً في سبتمبر وبقيت طلبيات التصدير الجديدة في الانكماش، لن تصل إلى المصانع الصينية في ما تبقى من العام موجة طلبيات موسمية تعوّض ضعف استهلاك أسري لا يمثل سوى نحو 40% من الناتج."
+      ],
+      "weak": [
+        {
+          "sentence": "ومع بقاء المؤشرين الفرعيين للطلبيات الجديدة وطلبيات التصدير الجديدة دون 50 نقطة، انتقل نشاطا الإنتاج والمشتريات بدورهما من التوسع إلى الانكماش.",
+          "quote": "وظلت المؤشرات الفرعية للطلبيات الجديدة بصورة عامة ولطلبيات التصدير الجديدة في منطقة الانكماش خلال أكتوبر، وتحولت أنشطة الإنتاج والمشتريات من التوسع إلى الانكماش."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن اقتصاديين يرون أن قراءة أكتوبر تُظهر أن الصادرات قد لا تكون قوية بما يكفي لتعويض ركود إنفاق المستهلكين، والصحيح أن أرقام أكتوبر نفسها أبرزت ذلك، أما الاقتصاديون فقد دعوا الحكومة إلى بذل مزيد من الجهود لدعم النمو.",
+      "verified": {
+        "at": "2026-11-01T00:14:07.695Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
     }
   }
 }

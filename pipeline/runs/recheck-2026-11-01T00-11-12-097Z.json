@@ -1,0 +1,115 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-01T00:11:12.097Z",
+  "durationSec": 176,
+  "read": 3,
+  "corrected": 1,
+  "report": [
+    {
+      "slug": "russia-extends-diesel-export-ban-january-c76a48",
+      "title": "روسيا تمدد حظر معظم صادرات الديزل حتى نهاية يناير 2027",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 8,
+        "checked": 8,
+        "supported": 8,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "morocco-trade-deficit-widens-september-2026-b88d25",
+      "title": "العجز التجاري للمغرب يتسع 25.4% إلى 323.9 مليار درهم في تسعة أشهر",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 35,
+        "checked": 35,
+        "supported": 31,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "china-factory-pmi-contracts-october-64c344",
+      "title": "مؤشر المصانع الصينية يتراجع إلى 49.3 نقطة مع ضعف الطلب المحلي",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 27,
+        "checked": 27,
+        "supported": 21,
+        "weak": 1,
+        "noEvidence": 3,
+        "notFound": 1,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "attribution",
+          "sentence": "غير أن اقتصاديين يرون أن قراءة أكتوبر تُظهر أن الصادرات، رغم ارتفاعها خلال معظم العام، قد لا تكون قوية بما يكفي لتعويض الركود الطويل في إنفاق المستهلكين الصينيين.",
+          "quote": "ودعا اقتصاديون الحكومة إلى بذل مزيد من الجهود لدعم النمو في أعقاب صدور هذه الأرقام، التي سلطت الضوء على أن الصادرات، التي سجلت ارتفاعاً خلال معظم العام، قد لا تتمتع بالقوة الكافية لتعويض الركود طويل الأمد في الإنفاق الاستهلاكي.",
+          "source": "Independent Arabia",
+          "correction": "The source attributes to economists only the call for more government support; the point that exports may not be strong enough to offset weak consumer spending is the source's own reading of what the figures highlighted, not a view it attributes to economists."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 4,
+    "failures": 0,
+    "promptTokens": 27518,
+    "completionTokens": 28438,
+    "cacheReadTokens": 0,
+    "costUsd": 0.7889,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 4
+    },
+    "correctionsEditorCalls": 1
+  },
+  "log": [
+    "[00:11:12] second look: 3 to read now (3 published pieces not yet read; 171 read clean before publication and left out of the audit sample)",
+    "[00:11:12] russia-extends-diesel-export-ban-january-c76a48:   source https://www.bloomberg.com/news/articles/2026-10-31/russia-extends-ban-on-most-di: subscribers-only; read from the copy saved at publication (fetched then)",
+    "[00:11:13] russia-extends-diesel-export-ban-january-c76a48:   source https://www.ekonomim.com/ekonomi/rusya-dizel-ihracati-yasagini-uzatti-haberi-928: http-403; read from the copy saved at publication (fetched then)",
+    "[00:11:34] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=934 attempt=1 ms=19031",
+    "[00:11:34] russia-extends-diesel-export-ban-january-c76a48: 8 of 8 sentences checked · 8 supported · 0 without a source · 0 confirmed error(s)",
+    "[00:11:35] china-factory-pmi-contracts-october-64c344:   source https://www.bloomberg.com/news/articles/2026-10-31/china-factory-activity-manufa: subscribers-only; read from the copy saved at publication (fetched then)",
+    "[00:12:13] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1465 attempt=1 ms=59734",
+    "[00:12:13] morocco-trade-deficit-widens-september-2026-b88d25: 35 of 35 sentences checked · 31 supported · 0 without a source · 0 confirmed error(s)",
+    "[00:12:49] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=4144 attempt=1 ms=74092",
+    "[00:12:49] china-factory-pmi-contracts-october-64c344: 27 of 27 sentences checked · 21 supported · 4 without a source · 1 confirmed error(s)",
+    "[00:12:49]   ✗ [attribution] غير أن اقتصاديين يرون أن قراءة أكتوبر تُظهر أن الصادرات، رغم ارتفاعها خلال معظم العام، قد لا تكون قوية بما يكف — The source attributes to economists only the call for more government support; the point that exports may not be strong enough to offset weak consumer spending ",
+    "[00:12:49] corrections: 1 story to the corrections editor",
+    "[00:12:49] [correct] china-factory-pmi-contracts-october-64c344: fetching 2 source(s)",
+    "[00:12:49] [correct]   source https://www.bloomberg.com/news/articles/2026-10-31/china-factory-activ: subscribers-only; read from the copy saved at publication",
+    "[00:13:10] [correct] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=360 attempt=1 ms=20917",
+    "[00:13:10] [correct] china-factory-pmi-contracts-october-64c344: corrected; fields body",
+    "[00:13:10]     note: ذكرت نسخة سابقة من هذا الخبر أن اقتصاديين يرون أن قراءة أكتوبر تُظهر أن الصادرات قد لا تكون قوية بما يكفي لتعويض ركود إنفاق المستهلكين، والصحيح أن أرقام أكتوبر نفسها أبرزت ذلك، أما الاقتصاديون فقد دعوا الحكومة إلى بذل مزيد من الجهود لدعم النمو.",
+    "[00:13:10] [correct] done: 1 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-11-01T00-12-49-327Z.json",
+    "[00:13:11] china-factory-pmi-contracts-october-64c344:   source https://www.bloomberg.com/news/articles/2026-10-31/china-factory-activity-manufa: subscribers-only; read from the copy saved at publication (fetched then)",
+    "[00:14:07] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1676 attempt=1 ms=56194",
+    "[00:14:07] china-factory-pmi-contracts-october-64c344: the correction reads clean where it wrote"
+  ]
+}
