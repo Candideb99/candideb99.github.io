@@ -333,6 +333,60 @@ function dualSlips(text) {
 }
 
 /**
+ * A woman named by a family name that is also a man's given name, alone (the owner, 2026-11-01, on «وقالت يوسف» for
+ * Nahed Youssef, head of Egypt's Industrial Development Authority: "treating a masculine name as feminine"). It is the
+ * English wires' "Youssef said": that story's English source wrote "Youssef added", its Arabic one «وأوضحت ناهد يوسف».
+ * Two readings. A woman introduced by her full name (a feminine verb right before it, a feminine title before it with
+ * only the title's own words between, a feminine title or «التي» right after it, or a feminine title right before the
+ * family name) whose family name later follows a feminine verb, or «بحسب»/«حسب»/«وفق» before a comma or a particle,
+ * alone. And a feminine verb of saying right before such a name that stands alone, introduced or not. A woman's first
+ * name is never one of these names, so «قالت الهيئة إن محمد يوسف…» introduces no one. Returns [{ surname, name, at }].
+ * Over the 472 pieces then published it found the two that did it (Nahed Youssef three times, Mary Salem once).
+ */
+const MAN_GIVEN = [
+  "يوسف", "محمد", "أحمد", "محمود", "علي", "حسن", "حسين", "إبراهيم", "مصطفى", "خالد", "عمر", "عثمان", "سعيد", "سامي", "كمال",
+  "فريد", "جمال", "عادل", "سمير", "طارق", "هشام", "شريف", "أشرف", "أيمن", "وليد", "ياسر", "ماهر", "رامي", "فؤاد", "منصور",
+  "صالح", "سالم", "فهمي", "لطفي", "رشدي", "شوقي", "حمدي", "فتحي", "مجدي", "حلمي", "زكي", "رمزي", "نبيل", "عاطف", "عصام",
+  "عماد", "رضا", "صلاح", "سليمان", "إسماعيل", "موسى", "عيسى", "يحيى", "زكريا", "رمضان", "حامد", "راشد", "ناصر", "فيصل",
+  "فهد", "ماجد", "منير", "بشير", "جابر", "عزت", "رأفت", "مدحت", "ممدوح", "عوض", "غانم", "مراد", "توفيق", "رشيد", "حسني",
+  "مختار", "خليل", "سليم", "جورج", "ميشال", "إلياس", "حنا", "بطرس", "جرجس", "نجيب", "شكري", "عزيز", "وديع", "جبران",
+].join("|") + "|عبد ?ال[\\p{L}\\p{M}]+";
+const LETTER = "[\\p{L}\\p{M}]";
+const SHE_SAYS = "(?:قالت|أضافت|أوضحت|أكدت|ذكرت|دعت|أشارت|رأت|ترى|توقعت|تتوقع|حذرت|لفتت|شددت|طالبت|أعلنت|كشفت|بيّنت|بينت|تابعت|اعتبرت|نبهت|أفادت|صرحت|تقول|أردفت|ختمت|اختتمت)";
+const HER_TITLE = "(?:(?:ال)?(?:رئيسة|وزيرة|مديرة|نائبة|مستشارة|عضوة|سفيرة|محللة|خبيرة|باحثة|متحدثة|دكتورة|مهندسة|سيدة|أستاذة|شيخة|أميرة|محامية|كاتبة)|كبيرة (?:ال)?(?:اقتصاديين|محللين|باحثين|خبراء|مستشارين))";
+const NOT_A_NAME = `(?!(?:${MAN_GIVEN}|${HER_TITLE}|(?:ال)?(?:أمير|شيخ|ملك|رئيس|سيد|دكتور|مهندس|وزير)|ولي|العهد|بن|ابن|أبو|آل|إن|أن|قد|لقد|التي|الذي|الذين|و|في|من|على|إلى|عن|مع|كما|بعد|قبل|إنه|إنها|أنه|أنها)(?!${LETTER}))`;
+/** A woman's first name: never one of the names above, never with the article («أكدت الوزارة حسن سير العمل»). */
+const FIRST = `(?!ال)${NOT_A_NAME}${LETTER}{2,}`;
+const WOMAN_INTRODUCED = [
+  new RegExp(`(?<!${LETTER})[وف]?${SHE_SAYS}\\s+(${FIRST})\\s+(${MAN_GIVEN})(?!${LETTER})`, "gu"),
+  new RegExp(`(?<!${LETTER})[وفبل]?${HER_TITLE}(?:\\s+${NOT_A_NAME}${LETTER}+){0,5}?\\s+(${FIRST})\\s+(${MAN_GIVEN})(?!${LETTER})`, "gu"),
+  new RegExp(`(?<!${LETTER})(${FIRST})\\s+(${MAN_GIVEN})\\s*[،,]?\\s*(?:${HER_TITLE}|التي|وهي)(?!${LETTER})`, "gu"),
+  new RegExp(`(?<!${LETTER})[وفبل]?(${HER_TITLE})\\s+(${MAN_GIVEN})(?!${LETTER})`, "gu"),
+];
+/** What may follow a family name standing alone: a comma or a full stop, or a particle. */
+const STANDS_ALONE = `(?=\\s*[،,.:؛]|\\s*$|\\s+(?:إن|أن|بأن|إنه|إنها|في|من|على|إلى|عن|خلال|أمام|فإن)(?!${LETTER}))`;
+export function womenBySurname(text) {
+  const t = String(text ?? "");
+  const hits = [];
+  const seen = new Set();
+  const add = (surname, name, at) => {
+    if (seen.has(at)) return;
+    seen.add(at);
+    hits.push({ surname, name, at });
+  };
+  for (const re of WOMAN_INTRODUCED) {
+    for (const m of t.matchAll(re)) {
+      const [first, surname] = [m[1], m[2]];
+      const rest = t.slice(m.index + m[0].length);
+      const later = new RegExp(`(?<!${LETTER})(?:[وف]?${SHE_SAYS}\\s+${surname}(?!${LETTER})|(?:بحسب|حسب|وفق)\\s+${surname}${STANDS_ALONE})`, "gu");
+      for (const b of rest.matchAll(later)) add(surname, `${first} ${surname}`, b[0]);
+    }
+  }
+  for (const m of t.matchAll(new RegExp(`(?<!${LETTER})[وف]?${SHE_SAYS}\\s+(${MAN_GIVEN})${STANDS_ALONE}`, "gu"))) add(m[1], null, m[0]);
+  return hits;
+}
+
+/**
  * Checks a draft against the rulebook. Returns { issues[], warnings[] } in the newsroom's Arabic
  * issue style: each issue quotes the offending text and says what to do.
  * `sources`: the names the story's sources go by (Arabic and English), to count how often each is named.
@@ -486,6 +540,9 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
   // with it is the coined adjective; «الظبياني»، «الدبوي» likewise.
   const coined = `${title}\n${dek}\n${lede}\n${body}`.match(new RegExp(`(?<![${AR}])[وفبل]?(?:الأبو ?ظبي|الابو ?ظبي|(?:ال)?ظبياني|(?:ال)?دبوي|(?:ال)?دبياني|(?:ال)?شارقي)(?:ة|ون|ين|ان)?(?![${AR}])`));
   if (coined) issues.push(`«${coined[0]}» صفة منحوتة من اسم مدينة لا تكتبها الصحف؛ الصفة صفة البلد («الإماراتية»)، والمدينة تُذكر مكاناً («ومقرها أبوظبي»).`);
+  // A woman called by a family name that is a man's given name, alone («وقالت يوسف»): womenBySurname() above.
+  const woman = womenBySurname([title, dek, lede, body, box].join("\n"))[0];
+  if (woman) issues.push(`«${woman.at}»: «${woman.surname}» وحده يُقرأ اسمَ رجل، والمقصودة امرأة${woman.name ? ` (${woman.name})` : ""}؛ سمِّها باسمها كاملاً أو بلقبها في كل ذكر بعد الأول كما تكتب الصحف العربية («وقالت ناهد يوسف»، «وأضافت رئيسة الهيئة»)، لا باسم العائلة وحده.`);
   // A dek is a statement of its own, never a reply to its headline: an explainer's «…فهل الفارق بهذا الحجم فعلاً؟» over
   // «لا، فالرقم الأمريكي معدل سنوي…» read as a chat answer (the owner, 2026-10-30: "weird").
   const reply = dek.trim().match(/^(?:لا|نعم|بلى|كلا|أجل|الجواب|الإجابة|باختصار)\s*[،,:؛.]/);

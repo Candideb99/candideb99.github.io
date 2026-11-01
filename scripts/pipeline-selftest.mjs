@@ -705,6 +705,19 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("a facility is no company (خط «شرق - غرب» للخام)", untradedOf({ title: "السعودية تعيد تشغيل خط «شرق - غرب» النفطي", subtitle: "", lede: "أعادت السعودية تشغيل خط «شرق - غرب» للخام.", body: "", whyItMatters: "" }).length, 0);
   check("a household name's trade is not asked for («فيتش» للتصنيف الائتماني)", untradedOf({ title: "«فيتش» تثبت تصنيف مصر", subtitle: "", lede: "ثبتت «فيتش» للتصنيف الائتماني تصنيف مصر.", body: "", whyItMatters: "" }).length, 0);
   check("«للرقائق» is read whole before «في»", untradedOf({ title: "إس كيه هاينكس تعلّق طرح «سوليدايم» في أمريكا", subtitle: "", lede: "علّقت الشركة طرح وحدتها «سوليدايم» للرقائق في الولايات المتحدة.", body: "", whyItMatters: "" }).map((i) => i.includes("«سوليدايم» للرقائق")), [true]);
+  // A woman called by a family name that is a man's given name, alone (the owner, 2026-11-01, on «وقالت يوسف» for Nahed
+  // Youssef: "treating a masculine name as feminine"); the Arabic press writes her full name or her title.
+  const womanOf = (body) => styleIssues({ title: "مصر تطبّق آلية جديدة لتراخيص المنشآت الصناعية", subtitle: "", lede: "بدأت الهيئة تطبيق آلية جديدة لتراخيص البناء.", body, whyItMatters: "", keyFacts: [] }).issues.filter((i) => i.includes("وحده يُقرأ اسمَ رجل"));
+  const nahed = "وبموجب الآلية لن تُراجع الملفات قبل اعتماد الرسومات، بحسب رئيسة الهيئة ناهد يوسف.";
+  check("names: «وقالت يوسف» after «ناهد يوسف» is sent back", womanOf(`${nahed}\n\nوقالت يوسف إن ذلك يوحّد خطوات العمل.`).map((i) => i.includes("(ناهد يوسف)")), [true]);
+  check("names: «بحسب يوسف،» after her full name is sent back", womanOf(`${nahed}\n\nوالآلية، بحسب يوسف، جزء من منظومة تيسيرات.`).length, 1);
+  check("names: «بحسب سالم، التي…» after «ماري سالم» is sent back", womanOf("وقالت المحللة ماري سالم إن السوق تماسكت.\n\nوتبقى المخاطر قائمة، بحسب سالم، التي حذرت من التقلبات.").length, 1);
+  check("names: a feminine verb before such a name alone is sent back unintroduced", womanOf("وقالت يوسف إن الآلية تبدأ الأحد.").length, 1);
+  check("names: her full name or her title passes", womanOf(`${nahed}\n\nوقالت ناهد يوسف إن ذلك يوحّد خطوات العمل. وأضافت رئيسة الهيئة أن الملفات القديمة تُستكمل.`).length, 0);
+  check("names: a family name that reads as one passes («وأضافت المشاط»)", womanOf("قالت وزيرة التخطيط رانيا المشاط إن النمو تسارع.\n\nوأضافت المشاط أن الاستثمارات زادت.").length, 0);
+  check("names: a man of that family name passes («وقال يوسف»، «بحسب يوسف.»)", womanOf("وقال رئيس الهيئة محمد يوسف إن الآلية تبدأ الأحد.\n\nوقال يوسف إن الملفات القديمة تُستكمل، والآلية جزء من خطة أوسع بحسب يوسف.").length, 0);
+  check("names: «قالت الهيئة إن محمد يوسف…» introduces no woman", womanOf("قالت الهيئة إن محمد يوسف تولى الملف.\n\nوالخطة، بحسب يوسف، تبدأ الأحد.").length, 0);
+  check("names: «أكدت الوزارة حسن سير العمل» is no name", womanOf("أكدت الوزارة حسن سير العمل في المصانع.\n\nوأكدت حسن سير الإجراءات الجديدة.").length, 0);
 
   // The first Sol story was factually clean but had an incomplete headline and three tiny dispatches.
   const dispatches = [
