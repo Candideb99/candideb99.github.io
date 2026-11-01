@@ -45,7 +45,15 @@ chart:
         - 0
         - -0.1
 table: null
-image: null
+image:
+  url: https://images.pexels.com/photos/259249/pexels-photo-259249.jpeg?auto=compress&cs=tinysrgb&w=1280
+  width: 1280
+  height: 853
+  alt: رزمة من الأوراق النقدية من فئة 50 يورو (صورة تعبيرية)
+  credit: Pixabay · بيكسلز
+  license: Pexels License
+  licenseUrl: https://www.pexels.com/license/
+  pageUrl: https://www.pexels.com/photo/banknote-lot-259249/
 sources:
   - name: فايننشال تايمز
     nameEn: Financial Times
@@ -80,7 +88,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: null
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
   lessons: v47
 quality:
