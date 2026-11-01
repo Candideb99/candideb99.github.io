@@ -1572,6 +1572,25 @@ check(
   check("topic links skip a quoted mention and link the rest", [linksIn("ارتفعت أسعار النفط أمس، ثم صعد الذهب إلى مستوى جديد."), linksIn("ارتفعت أسعار «النفط» أمس، ثم صعد الذهب إلى مستوى جديد بينما تراجع النفط مساء.")], [["النفط", "الذهب"], ["الذهب", "النفط"]]);
 }
 
+// Codex's fifth review (2026-11-01): the desk may put a dual in its right case; an energy unit is a watt times an hour; a
+// figure pointed at after two sentences with figures is named.
+{
+  const deal = { title: "الحكومة توقع اتفاقاً لبناء مصنع جديد", subtitle: "د", lede: "ل", body: "ووقعت الحكومة اتفاقاً مع شركتان أجنبيتين لبناء المصنع الجديد في المنطقة الصناعية شرق العاصمة." };
+  const rightCase = judgeRewrite(deal, { body: "ووقعت الحكومة اتفاقاً مع شركتين أجنبيتين لبناء المصنع الجديد في المنطقة الصناعية شرق العاصمة." }, ["body"]);
+  const recount = judgeRewrite(deal, { body: "ووقعت الحكومة اتفاقاً مع شركات أجنبية لبناء المصنع الجديد في المنطقة الصناعية شرق العاصمة." }, ["body"]);
+  check("the desk may put a dual in its case; dropping the count is still refused", [Boolean(rightCase.accepted.body), Boolean(recount.accepted.body)], [true, false]);
+  check("an energy unit is a watt times an hour, never a watt per hour", ["بطارية سعتها 50.82 كيلووات/ساعة", "97 يورو للميغاواط/ساعة", "4 جيجاواط / ساعة", "كيلوواط ساعة"].map(fixNames), ["بطارية سعتها 50.82 كيلووات ساعة", "97 يورو للميغاواط ساعة", "4 جيجاواط ساعة", "كيلوواط ساعة"]);
+  const unclear = (lede) => styleIssues({ title: "لماذا ينكمش الاقتصاد السعودي والنفط فوق 110 دولارات؟", subtitle: "الناتج الحقيقي يقيس الكميات", lede, body: "فقرة أولى من المتن تشرح الفكرة." }, { kind: "explainer" }).warnings.filter((w) => w.startsWith("إشارة ملتبسة")).length;
+  check(
+    "«هذا الرقم» after two sentences with figures is flagged; after one it is not",
+    [
+      unclear("أظهرت تقديرات سريعة أن الاقتصاد السعودي انكمش 3.8% على أساس سنوي في الربع الثالث. وكان برنت قد أغلق الجمعة عند 113.43 دولار للبرميل. لكن هذا الرقم يقيس الناتج المحلي الحقيقي."),
+      unclear("أظهرت تقديرات سريعة أن الاقتصاد السعودي انكمش 3.8% على أساس سنوي في الربع الثالث. لكن هذا الرقم يقيس الناتج المحلي الحقيقي."),
+    ],
+    [1, 0],
+  );
+}
+
 if (failed) {
   console.log(`\n${failed} case(s) failed: a newsroom safeguard behaves wrongly.`);
   process.exit(1);

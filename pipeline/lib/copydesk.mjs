@@ -171,7 +171,11 @@ function quotedNames(text) {
     .map((m) => m[1].trim())
     .filter((n) => n && n.split(/\s+/).length <= 4 && !BANNED.some((r) => r.hard && n.match(r.re)) && !ARAB_OUTLET_NAMES.includes(n));
 }
-const dualsOf = (text) => [...String(text ?? "").matchAll(DUALS)].map((m) => m[1]);
+/**
+ * The duals a text holds, each read whatever its case: «شركتان» and «شركتين» are one fact, and a desk that put the case
+ * right («مع شركتان» → «مع شركتين») was refused for a changed number (a review of 2026-11-01).
+ */
+const dualsOf = (text) => [...String(text ?? "").matchAll(DUALS)].map((m) => m[1].replace(/^جزأ/, "جزء").replace(/ان$/, "ين"));
 
 /** The same word twice in a row (the back-reference is the point: "يتوسعون يتوسعون"). */
 const STUTTER = /(?<![؀-ۿ])([؀-ۿ]{3,})\s+\1(?![؀-ۿ])/;
@@ -431,6 +435,9 @@ const NAME_FIXES = [
   // source that writes it so (the Russian diesel story, 2026-10-18), is 2.22 million and not 222. The house writes the
   // decimal point; three digits after a comma stay a thousands group.
   [/(?<![\d.,٫])(\d{1,3}),(\d{1,2})(?!\d)(?![.,٫]\d)/g, "$1.$2"],
+  // A unit of energy is a watt times an hour, «كيلوواط ساعة», never a watt per hour: «50.82 كيلووات/ساعة» and «97 يورو
+  // للميغاواط/ساعة» ran in five stories, against 22 written right (a review of 2026-11-01).
+  [/(واط|وات)\s*\/\s*(ساعة)/g, "$1 $2"],
 ];
 export function fixNames(text) {
   let out = String(text ?? "");

@@ -247,6 +247,8 @@ const PAPER_ENGLISH = [
   { re: /(?<![\d.,])\d+\.0(?!\d)\s?%/gu, fix: "صفر عشري لا يقرؤه أحد؛ «31%» لا «31.0%»" },
 ];
 const sentencesOf = (text) => String(text ?? "").split(SENTENCE_SPLIT).map((s) => s.trim()).filter((s) => s.split(/\s+/).length >= 3);
+/** A sentence that opens by pointing back at a figure: «لكن هذا الرقم…»، «وهذه النسبة…». */
+const BACK_REFERENCE = new RegExp(`^(?:(?:لكن|ولكن|غير أن|إلا أن|و|ف)\\s*)?(?:هذا|هذه)\\s+(?:الرقم|النسبة|المعدل|المستوى|التراجع|الارتفاع|الانكماش|النمو|الزيادة|الانخفاض|السعر)(?![${AR}])`);
 
 /**
  * The joints that stitch a second event into a news story (ONE STORY, in styleIssues below; shared with the last cut,
@@ -379,6 +381,13 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
   const paragraphs = body.split(/\n\s*\n/).map((p) => p.trim()).filter((p) => p && !p.startsWith("## "));
   const walls = paragraphs.filter((p) => p.split(SENTENCE_SPLIT).filter((s) => s.trim().split(/\s+/).length >= 3).length >= 5);
   if (walls.length) warnings.push(`فقرات طويلة (${walls.length}) من خمس جمل أو أكثر؛ الفقرة في الصحافة العربية جملة إلى ثلاث.`);
+
+  // «هذا الرقم» right after two sentences that each give a figure: a reader takes the nearer one. The Saudi growth explainer
+  // of 2026-11-01 put Brent's close between the contraction and «لكن هذا الرقم يقيس الناتج المحلي الحقيقي» (a review that
+  // day). Over the 469 pieces then published it fired there alone.
+  const told = sentencesOf(`${lede}\n${body}`);
+  const unclear = told.find((s, i) => i >= 2 && BACK_REFERENCE.test(s) && /\d/.test(told[i - 1]) && /\d/.test(told[i - 2]));
+  if (unclear) warnings.push(`إشارة ملتبسة: «${unclear.split(/\s+/).slice(0, 4).join(" ")}» تأتي بعد جملتين في كل منهما رقم، فيفهمها القارئ على أقربهما؛ سمِّ الرقم المقصود أو قدّم جملته.`);
 
   // An isolated short paragraph is normal. A run of three tiny, separately attributed dispatches is
   // a prompt for editorial judgement, not a reason to reject an otherwise sound brief automatically.
