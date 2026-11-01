@@ -9,8 +9,9 @@
  *   node scripts/images-selftest.mjs
  */
 import { withStandIns, pickImage, headlinePeople, headlineCompany, namesCompany, namesPerson, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, noveltyFault, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { createHash } from "node:crypto";
 import { photoKey, sharedPhotos } from "../pipeline/lib/photo-key.mjs";
-import { BAD_TITLE, cleanArtist, creditName, attributionLine } from "../pipeline/lib/commons.mjs";
+import { BAD_TITLE, badTitle, cleanArtist, creditName, attributionLine, searchCommons } from "../pipeline/lib/commons.mjs";
 
 let failed = 0;
 function check(name, got, want) {
@@ -503,6 +504,21 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
   check("a handout of a building's front is refused and the cascade goes on", [f.image?.basis ?? null, f.saved.length, f.calls.includes("planner")], [null, 0, true]);
   const s = await scenario({ draft, sources, handoutWidth: 640, plan: planFor(), world: {}, judge: () => 1 });
   check("a handout under 700 pixels is never looked at", [s.calls.includes("handout"), s.image?.basis ?? null], [false, null]);
+  // One another story runs is passed over and the next one is read (a review of 2026-11-01: the tier chose the first,
+  // the cascade then found it taken, and the story ran as text with the second never tried).
+  const second = { ...ministry, url: "https://cdn.test/meeting-2.jpeg" };
+  const kept = (url) => `/photos/handouts/${createHash("sha1").update(url).digest("hex").slice(0, 12)}.jpg`;
+  const d = await scenario({ draft, sources: [{ ...sources[0], photos: [ministry, second] }], photoDir: "C:/site/public/photos/handouts", exclude: new Set([kept(ministry.url)]), plan: planFor(), world: {}, judge: () => 0 });
+  check("a handout another story runs is passed over and the next one taken", [d.image?.basis ?? null, d.image?.url ?? null], ["handout", kept(second.url)]);
+}
+
+// A file one search drops for naming too little of it is still read by the next search of the pass (a review of
+// 2026-11-01: a tanker dropped by a refinery search was skipped under "oil tanker", where it fits).
+{
+  const saudiOil = { ...developers, title: "صادرات النفط السعودية ترتفع في أكتوبر", subtitle: "", lede: "ارتفعت صادرات النفط السعودية.", body: "فقرة من المتن.", tags: ["السعودية", "النفط"], regions: ["الخليج"] };
+  const tanker = file("Oil tanker at sea.jpg", { categories: "Oil tankers" });
+  const r = await scenario({ draft: saudiOil, plan: planFor({ queries: ["crude refinery pipeline", "oil tanker"], place: ["Saudi Arabia"] }), world: { "crude refinery pipeline": [tanker], "oil tanker": [tanker] }, judge: pickTitle("tanker") });
+  check("a file one search drops is still read by the next", r.image?.title ?? null, tanker.title);
 }
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -842,6 +858,23 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
     ["Vegetable market in Cairo.jpg", "Photograph of traders.jpg", "Covered market Tunis.jpg", "Egyptian pound banknotes in hand.jpg", "The Egyptian Exchange logo.png", "Map of Egypt.jpg"].map((t) => BAD_TITLE.test(t)),
     [false, false, false, false, true, true],
   );
+  // A logo photographed where a reader meets it is the brand pass's picture; a logo by itself is still a graphic (a review
+  // of 2026-11-01: «BP logo at petrol station» was dropped at the search, «BP sign…» kept).
+  check(
+    "a photograph of a logo on a forecourt, a sign or a vehicle passes; a logo alone does not",
+    ["BP logo at petrol station.jpg", "Shell logo on a station sign.jpg", "Etihad logo on an aircraft tail.jpg", "BP logo.jpg", "The Egyptian Exchange logo.png", "Map of Egypt with BP logo.jpg"].map(badTitle),
+    [false, false, false, true, true, true],
+  );
+  const realCommonsFetch = globalThis.fetch;
+  globalThis.fetch = async () =>
+    new Response(JSON.stringify({ query: { pages: { 7: { title: "File:BP logo at petrol station.jpg", index: 1, imageinfo: [{ mime: "image/jpeg", width: 1600, height: 1067, url: "https://upload.wikimedia.org/wikipedia/commons/a/ab/BP_logo_at_petrol_station.jpg", thumburl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/BP_logo_at_petrol_station.jpg/1280px-BP_logo_at_petrol_station.jpg", thumbwidth: 1280, thumbheight: 853, timestamp: "2024-05-01T00:00:00Z", extmetadata: { LicenseShortName: { value: "CC BY-SA 4.0" }, LicenseUrl: { value: "https://creativecommons.org/licenses/by-sa/4.0" }, Artist: { value: "Tester" } } }] } } } }), { status: 200, headers: { "content-type": "application/json" } });
+  let forecourt = [];
+  try {
+    forecourt = (await searchCommons("BP sign")).map((f) => f.title);
+  } finally {
+    globalThis.fetch = realCommonsFetch;
+  }
+  check("the Commons search keeps the photograph of a logo on a forecourt", forecourt, ["BP logo at petrol station.jpg"]);
   const gold = { ...developers, title: "الذهب ينهي الأسبوع دون 4000 دولار للأوقية", tags: ["الذهب"], regions: ["عالمي"] };
   const ingots = file("Gold Ingots on white background.jpg");
   const vault = file("400-oz-Gold-Bars-AB-01.jpg", { categories: "Gold as an investment|Bank vaults|Gold ingots" });

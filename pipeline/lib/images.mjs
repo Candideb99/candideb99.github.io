@@ -818,8 +818,6 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
         seen.add(image.url);
         continue;
       }
-      seen.add(image.url);
-      seen.add(key);
       // A file that names less than half of what the phrase is about never reaches the judges («bond market
       // screens» found a church in the town of Market Rasen).
       let relevant = relevance(image, subject);
@@ -851,6 +849,11 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
         log(`image: dropped "${String(image.title).slice(0, 70)}" — names too little of ${subject.join(", ")}`);
         continue;
       }
+      // Seen once it fits a search: relevance is each search's own test, so the next search of the pass still reads a file
+      // this one dropped. Marked before it, a tanker a refinery search dropped was skipped under "oil tanker", where it
+      // fits (a review of 2026-11-01). Every test below is the file's own, whatever the search.
+      seen.add(image.url);
+      seen.add(key);
       // An archival picture is refused in code: the judges were told "no pre-2005 look" and still
       // put a 1963 Library of Congress trading floor on a 2026 tokenized-stocks story (2026-09-23).
       // When it was taken, from its record or its file name, never from its upload: a 1963 photo uploaded in
@@ -2027,12 +2030,20 @@ async function saveHandout(got, file) {
   await writeFile(file, got.buffer);
 }
 
-async function handoutTier({ draft, log, sources = [], photoDir = null }) {
+/** Where a handout is kept on the site (public/photos/handouts/), named by its source address. */
+const handoutName = (url) => `${createHash("sha1").update(url).digest("hex").slice(0, 12)}.jpg`;
+
+async function handoutTier({ draft, log, sources = [], photoDir = null, exclude = new Set() }) {
   const offered = [];
   for (const source of sources) {
     for (const photo of source.photos ?? []) {
       const fault = handoutFault(photo, { story: draft, source });
-      if (!fault) offered.push({ photo, source, body: creditedBody(photo) });
+      // One another story already runs is passed over here, so the next is still read: the cascade checked it after the
+      // tier had chosen it, and a story whose first handout was taken ran as text with a second never tried (a review of
+      // 2026-11-01).
+      const taken = !fault && (exclude.has(photo.url) || exclude.has(`/photos/handouts/${handoutName(photo.url)}`));
+      if (taken) log(`image: handout passed over (${source.sourceNameEn ?? source.sourceName ?? "source"}): another story runs it`);
+      else if (!fault) offered.push({ photo, source, body: creditedBody(photo) });
       else if (creditedBody(photo)) log(`image: handout passed over (${source.sourceNameEn ?? source.sourceName ?? "source"}): ${fault}`);
     }
   }
@@ -2092,7 +2103,7 @@ Return JSON: {"news_photo":true,"this_story":true,"watermark":false,"clear":true
       log(`image: handout from ${outlet} refused: a building's front, which says whose, never what happened (${String(v.reason ?? "").slice(0, 100)})`);
       continue;
     }
-    const name = `${createHash("sha1").update(photo.url).digest("hex").slice(0, 12)}.jpg`;
+    const name = handoutName(photo.url);
     if (photoDir) await outside.saveHandout(got, path.join(photoDir, name));
     log(`image: handout from ${outlet}, credited to ${credit}: ${caption}`);
     return {
@@ -2113,7 +2124,7 @@ Return JSON: {"news_photo":true,"this_story":true,"watermark":false,"clear":true
 
 async function findImage({ draft, story, log, exclude = new Set(), sources = [], photoDir = null }) {
   // The event's own handout, credited by the outlet to the institution, comes before every library (handoutTier()).
-  const handout = await handoutTier({ draft, log, sources, photoDir });
+  const handout = await handoutTier({ draft, log, sources, photoDir, exclude });
   if (handout && !exclude.has(handout.url)) return handout;
   // The photographs other stories already run, before this story's passes add their refusals: each by its own identity
   // (photoKey(): a Commons file under any address or width), and by the series it belongs to (seriesKey): a frame of the

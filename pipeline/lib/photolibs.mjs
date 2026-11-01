@@ -14,7 +14,7 @@
  * them alike. `library` says where each came from; `thumb` is a small copy for the judge to look at. Licences
  * that forbid commercial use or changes (NC, ND) are never asked for.
  */
-import { BAD_TITLE, cleanArtist } from "./commons.mjs";
+import { badTitle, cleanArtist } from "./commons.mjs";
 import { USER_AGENT, fetchWithTimeout } from "./util.mjs";
 
 /** A Flickr static URL at another of its sizes (n 320, w 400, z 640, c 800, b 1024); null for any other address. */
@@ -123,7 +123,7 @@ export async function searchOpenverse(query, { limit = 10, log = () => {}, simpl
       const title = String(r.title ?? "").trim();
       if (NOT_A_PHOTO.test(`${title} ${(r.tags ?? []).map((t) => t?.name).join(" ")}`)) continue;
       // Flickr's largest copy with the photo's own secret is 1024 pixels wide: enough for the article's 1024.
-      if (width < 960 || !landscape(width, height) || !/^https:\/\//.test(url) || BAD_TITLE.test(title)) continue;
+      if (width < 960 || !landscape(width, height) || !/^https:\/\//.test(url) || badTitle(title)) continue;
       const kind = String(r.license ?? "").toLowerCase();
       const license = kind === "cc0" ? "CC0" : kind === "pdm" ? "Public domain" : `CC ${kind.toUpperCase()} ${r.license_version ?? ""}`.trim();
       out.push({

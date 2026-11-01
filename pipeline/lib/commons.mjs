@@ -14,6 +14,18 @@ const FORBIDDEN_LICENSE = /[\s-](nc|nd)\b|non-?commercial|no ?derivative/i;
  * a photograph); a table is mostly furniture («gold bars on a table»), and a data table on Commons is a PNG, refused anyway.
  */
 export const BAD_TITLE = /(?<!\p{L})(?:logos?|maps?|diagrams?|screenshots?|charts?|graphs?|flags?|coats? of arms|seals?|icons?|covers?|posters?|banners?|infographics?|memes?|cartoons?|drawings?|sketch(?:es)?|paintings?|stamps?|coin|passports?|documents?|scan(?:s|ned)?|texts?|books?|pages?|plots?)(?!\p{L})|\.(?:svg|tiff?|gif|pdf)\b/iu;
+const LOGO_WORD = /(?<!\p{L})logos?(?!\p{L})/giu;
+const LOGO_SCENE = /(?<!\p{L})(?:signs?|signage|stations?|forecourts?|stores?|shops?|outlets?|branch(?:es)?|buildings?|offices?|headquarters|towers?|trucks?|lorr(?:y|ies)|vans?|bus(?:es)?|cars?|aircraft|planes?|airliners?|ships?|vessels?|tankers?|pumps?|canop(?:y|ies)|facades?|walls?|streets?|roads?|malls?|airports?|plants?|factor(?:y|ies)|refiner(?:y|ies)|stands?|booths?|exhibitions?)(?!\p{L})/iu;
+/**
+ * A title BAD_TITLE refuses, unless all it refuses is «logo» in a photograph of one where a reader meets it: «BP logo at
+ * petrol station» is the brand pass's own picture (images.mjs brandPhoto(), 2026-10-30), and the word alone dropped it at
+ * the search, before any pass saw it (a review of 2026-11-01). A logo by itself is still a graphic.
+ */
+export function badTitle(title) {
+  const text = String(title ?? "");
+  if (!BAD_TITLE.test(text)) return false;
+  return !(LOGO_SCENE.test(text) && !BAD_TITLE.test(text.replace(LOGO_WORD, " ")));
+}
 
 /**
  * Searches Wikimedia Commons for editorial photographs matching `query`.
@@ -126,7 +138,7 @@ function photographs(pages) {
       // Photographs are JPEGs; PNG and WebP files on Commons are mostly maps, diagrams and screenshots.
       if (!/^image\/jpeg$/i.test(info.mime ?? "")) continue;
       if (!ALLOWED_LICENSE.test(license) || FORBIDDEN_LICENSE.test(license)) continue;
-      if (BAD_TITLE.test(title)) continue;
+      if (badTitle(title)) continue;
       if ((info.width ?? 0) < 1000 || (info.height ?? 0) < 600) continue;
       const ratio = info.width / info.height;
       if (ratio < 0.95 || ratio > 2.6) continue;
