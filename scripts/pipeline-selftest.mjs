@@ -779,6 +779,14 @@ if (spawnSync("git", ["--version"]).status === 0) {
   // (2026-10-31: its warning and the critic's «غير معرّب» helped reject the European gas story).
   const ttf = programmaticChecks({ ...withBox, body: "وارتفعت عقود TTF الهولندية للغاز تسليم الشهر المقبل، كما صعد مؤشر JKM الآسيوي." }, [{ text: "Brent 110, weekly gain 4.9%. TTF and JKM rose." }], { minWords: 0 });
   check("the gas benchmarks TTF and JKM are not called untranslated Latin", [...ttf.issues, ...ttf.warnings].some((m) => /TTF|JKM/.test(m)), false);
+  // An analysis says in its headline what it found (the owner, 2026-11-01, on a «ماذا يعني…؟» analysis headline); a
+  // question is the explainers' headline.
+  const askedOf = (title, flags) => programmaticChecks({ ...withBox, title }, [{ text: "Brent 110, weekly gain 4.9%." }], { minWords: 0, ...flags }).issues.some((i) => i.startsWith("عنوان التحليل سؤال"));
+  check("headlines: an analysis titled «ماذا يعني…؟» is sent back", askedOf("ماذا يعني صعود برنت لموازنات الخليج؟", { analysis: true }), true);
+  check("headlines: an analysis titled «هل…» without its mark is sent back", askedOf("هل يكفي صعود برنت لسد عجز الموازنات", { analysis: true }), true);
+  check("headlines: an analysis that states its finding passes", askedOf("صعود برنت يخفف عجز الموازنات الخليجية ولا يلغيه", { analysis: true }), false);
+  check("headlines: an explainer's question is its headline", askedOf("لماذا يرتفع برنت رغم زيادة الإنتاج؟", { explainer: true }), false);
+  check("headlines: «من» opening a statement is no question", askedOf("من الرياض إلى القاهرة: برنت يرفع كلفة الدعم", { analysis: true }), false);
   // GRAVITY: a curiosity the photograph names and the story does not is refused in code.
   check("photos: a horse-drawn fuel cart under a central-bank story is refused", noveltyFault({ title: "CairoHorseDrawnFuelTransport.jpg", alt: "عربة وقود يجرها حصان في محطة بنزين بالقاهرة" }, { title: "برنت فوق 105 دولارات يعقّد حسابات المركزي المصري" }), "Horse");
   check("photos: an oil field's «nodding donkey» is a pumpjack, not an animal", noveltyFault({ title: "Oil pumpjack in the Permian Basin.jpg", categories: "Nodding donkeys in Texas" }, { title: "النفط يتراجع مع آمال مفاوضات هرمز" }), null);
