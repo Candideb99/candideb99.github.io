@@ -1609,6 +1609,52 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-11-01T09:30:01.729Z",
+      "slug": "saudi-economy-contraction-slows-third-quarter-aba15b",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v47",
+      "lessonsHash": "83821b3473",
+      "keptVersion": 0,
+      "live": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 2,
+        "supported": 21,
+        "notFound": 1,
+        "checked": 34,
+        "words": 457,
+        "keyFacts": 6,
+        "classes": [
+          "attribution"
+        ],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 24,
+        "notFound": 1,
+        "checked": 29,
+        "words": 466,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 24,
+        "notFound": 1,
+        "checked": 29,
+        "words": 466,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }

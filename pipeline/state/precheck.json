@@ -9868,6 +9868,218 @@
           "noted": []
         }
       ]
+    },
+    "saudi-economy-contraction-slows-third-quarter-aba15b": {
+      "at": "2026-11-01T09:30:01.718Z",
+      "title": "انكماش الاقتصاد السعودي يتباطأ إلى 3.8% في الربع الثالث",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v47",
+      "ok": true,
+      "repairs": 2,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 22,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 4,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 28,
+              "field": "body",
+              "class": "attribution",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وتواجه الأنشطة غير النفطية، وفق بلومبرغ، ضغوطاً متزايدة في الربع الأخير من العام بسبب التصعيد العسكري في اليمن وهجمات جماعة الحوثي على مطارات المملكة.",
+              "quote": "تأتي هذه البيانات في الوقت الذي يواجه في اقتصاد المملكة غير النفطي ضغوطاً متزايدة في الربع الأخير من العام الجاري، بسبب التصعيد العسكري في اليمن، واعتداءات جماعة الحوثي الموالية لإيران على مطارات المملكة.",
+              "source": "Asharq Business",
+              "sourceN": 3,
+              "correction": "This is Asharq Business's reporting, not Bloomberg's; the Bloomberg piece says nothing about pressure on non-oil activities."
+            }
+          ],
+          "noted": [
+            {
+              "id": 11,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "كان الناتج قد انكمش 4.8% في الربع الثاني.",
+              "quote": "وأظهر التقرير انكماش الناتج المحلي الإجمالي الحقيقي بنسبة 3.8%، مقارنة بـ4.7% في الربع الثاني.",
+              "source": "Asharq Business",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 12,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وبحسب قراءة وحدة التحليل المالي في صحيفة «الاقتصادية» السعودية، أسهم القطاعان معاً في تباطؤ الانكماش؛ فقد تقلص هبوط الأنشطة النفطية إلى 20.4% من 24.7% في الربع الثاني، وتسارع نمو الأنشطة غير النفطية إلى 1.9% من 0.6%، لتنمو للفصل الثالث والعشرين على التوالي.",
+              "quote": "بلغ معدل نمو الأنشطة غير النفطية 1.9% على أساس سنوي، مقارنة بـ0.9% في الربع الثاني من العام، بحسب القراءة الأولية التي نشرتها الهيئة العامة للإحصاء يوم الأحد، في حين تراجعت الأنشطة النفطية بتويرة أقل عند 20.4%.",
+              "source": "Asharq Business",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 29,
+              "field": "table",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "النشاط: الناتج المحلي الإجمالي الحقيقي · الربع الثاني (%): -4.8 · الربع الثالث (%): -3.8",
+              "quote": "وأظهر التقرير انكماش الناتج المحلي الإجمالي الحقيقي بنسبة 3.8%، مقارنة بـ4.7% في الربع الثاني.",
+              "source": "Asharq Business",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 30,
+              "field": "table",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "النشاط: الأنشطة غير النفطية · الربع الثاني (%): 0.6 · الربع الثالث (%): 1.9",
+              "quote": "بلغ معدل نمو الأنشطة غير النفطية 1.9% على أساس سنوي، مقارنة بـ0.9% في الربع الثاني من العام، بحسب القراءة الأولية التي نشرتها الهيئة العامة للإحصاء يوم الأحد، في حين تراجعت الأنشطة النفطية بتويرة أقل عند 20.4%.",
+              "source": "Asharq Business",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ],
+          "refused": [
+            "وسيلة إعلام عربية مذكورة مصدراً لواقعة عامة («ويواجه الاقتصاد غير النفطي في المملكة، بحسب «الشرق بلومبرغ»،…»)؛ الصحف العربية لا ينقل بعضها عن بعض الوقائع العامة: احذف اسم الوسيلة وانسب الواقعة إلى الجهة التي أعلنتها أو إلى الوكالة إن ذكرها المقال أو المصدر، أو اتركها بلا إسناد إن كانت علنية، ولا تخترع مصدراً؛ ولا تُسمّى الوسيلة إلا لما انفردت به (مصادرها، مقابلتها)."
+          ],
+          "repaired": {
+            "attempt": 2,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 25,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 4,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 11,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "كان الناتج قد انكمش 4.8% في الربع الثاني.",
+              "quote": "وأظهر التقرير انكماش الناتج المحلي الإجمالي الحقيقي بنسبة 3.8%، مقارنة بـ4.7% في الربع الثاني.",
+              "source": "Asharq Business",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 12,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وبحسب قراءة وحدة التحليل المالي في صحيفة «الاقتصادية» السعودية، أسهم القطاعان معاً في تباطؤ الانكماش؛ فقد تقلص هبوط الأنشطة النفطية إلى 20.4% من 24.7% في الربع الثاني، وتسارع نمو الأنشطة غير النفطية إلى 1.9% من 0.6%، لتنمو للفصل الثالث والعشرين على التوالي.",
+              "quote": "بلغ معدل نمو الأنشطة غير النفطية 1.9% على أساس سنوي، مقارنة بـ0.9% في الربع الثاني من العام، بحسب القراءة الأولية التي نشرتها الهيئة العامة للإحصاء يوم الأحد، في حين تراجعت الأنشطة النفطية بتويرة أقل عند 20.4%.",
+              "source": "Asharq Business",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 29,
+              "field": "table",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "النشاط: الناتج المحلي الإجمالي الحقيقي · الربع الثاني (%): -4.8 · الربع الثالث (%): -3.8",
+              "quote": "وأظهر التقرير انكماش الناتج المحلي الإجمالي الحقيقي بنسبة 3.8%، مقارنة بـ4.7% في الربع الثاني.",
+              "source": "Asharq Business",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 30,
+              "field": "table",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "النشاط: الأنشطة غير النفطية · الربع الثاني (%): 0.6 · الربع الثالث (%): 1.9",
+              "quote": "بلغ معدل نمو الأنشطة غير النفطية 1.9% على أساس سنوي، مقارنة بـ0.9% في الربع الثاني من العام، بحسب القراءة الأولية التي نشرتها الهيئة العامة للإحصاء يوم الأحد، في حين تراجعت الأنشطة النفطية بتويرة أقل عند 20.4%.",
+              "source": "Asharq Business",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "qatar-lng-tanker-al-mayeda-attacked-gulf-fb0a85": {
+      "at": "2026-11-01T09:41:24.807Z",
+      "title": "ناقلة غاز مسال قطرية تتعرض لهجوم بأجسام مجهولة في الخليج",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v47",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 8,
+            "checked": 8,
+            "supported": 8,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "aramco-completes-humain-stake-acquisition-8c73b9": {
+      "at": "2026-11-01T09:54:47.448Z",
+      "title": "أرامكو تكمل الاستحواذ على 49% من «هيوماين» السعودية بضخ 9.9 مليار ريال",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v47",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 22,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
