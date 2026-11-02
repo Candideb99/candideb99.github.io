@@ -10885,6 +10885,34 @@
           ]
         }
       ]
+    },
+    "egypt-fertilizer-exports-hormuz-gap-analysis-64466d": {
+      "at": "2026-11-02T22:54:04.764Z",
+      "title": "البتروكيماويات تقود قفزة صادرات مصر الكيماوية في تسعة أشهر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 41,
+            "checked": 41,
+            "supported": 34,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 6,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
