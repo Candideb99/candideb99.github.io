@@ -10356,6 +10356,145 @@
           "noted": []
         }
       ]
+    },
+    "binance-net-withdrawals-after-record-hack-01d2c8": {
+      "at": "2026-11-02T01:02:41.064Z",
+      "title": "«بينانس» تسجل صافي سحوبات 3.6 مليار دولار بعد اختراق منسوب إلى كوريا الشمالية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v49",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 27,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 20,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وأضافت أنها غطّت نحو 95% من الأصول المسروقة، وأن تأمين المبلغ المتبقي قد يستغرق وقتاً أطول.",
+              "quote": "The platform said it had replenished 90% of the ⁠amount stolen. The remaining 10% of tokens were less liquid, meaning they ⁠may take ​longer to buy, the company said in a post on X on Saturday.",
+              "source": "The Guardian",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "south-korea-exports-october-record-jump-424cdf": {
+      "at": "2026-11-02T01:19:55.446Z",
+      "title": "صادرات كوريا الجنوبية تقفز 93.7% في أكتوبر بأقوى نمو منذ 1974",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v49",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 25,
+            "weak": 2,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 18,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وكان النمو غير المعدّل في أكتوبر أسرع من زيادة سبتمبر البالغة 83.7%، لكن قيمة الصادرات بقيت دون المستوى القياسي لذلك الشهر البالغ 121.1 مليار دولار.",
+              "quote": "وعلى أساس غير معدل، ارتفعت الصادرات بنسبة 93.7%، بينما زادت الواردات 36%، ما أسفر عن فائض تجاري بلغ 42.5 مليار دولار. ويقارن ذلك بنمو الصادرات بنسبة 83.7% في سبتمبر، وفق البيانات المعدلة.",
+              "source": "Al Eqtisadiah",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 22,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وقال وزير التجارة والصناعة والموارد كيم جونغ كوان: «مع استمرار الصادرات في تحقيق نمو قوي وتجاوزها 110 مليارات دولار في أكتوبر، بات من المؤكد بلوغ صادرات سنوية بقيمة تريليون دولار خلال نوفمبر (تشرين الثاني)».",
+              "quote": "وقال وزير التجارة والصناعة والطاقة كيم جونغ كوان: «مع استمرار الصادرات في تحقيق نمو قوي وتجاوزها 110 مليارات دولار في أكتوبر، بات من المؤكد بلوغ صادرات سنوية بقيمة تريليون دولار خلال نوفمبر (تشرين الثاني)».",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ],
+          "unsourced": {
+            "asked": 1,
+            "kept": [
+              {
+                "sentence": "بحسب «بلومبرغ»، تعزز قوة الصادرات مبررات إقدام بنك كوريا المركزي على رفع الفائدة هذا الشهر، بعدما ثبّتها في أكتوبر عقب زيادتين متتاليتين في يوليو وأغسطس.",
+                "reason": "sourced"
+              }
+            ],
+            "removed": []
+          }
+        }
+      ]
+    },
+    "germany-misses-winter-gas-storage-target-98f7ee": {
+      "at": "2026-11-02T01:45:14.600Z",
+      "title": "متوسط ملء مخازن الغاز الألمانية يقف عند 61.4% دون مستهدف 70%",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v49",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 17,
+            "checked": 17,
+            "supported": 16,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [],
+          "unsourced": {
+            "asked": 1,
+            "kept": [
+              {
+                "sentence": "وفي السوق الفورية يُشترى الغاز للتسليم الفوري أو القريب بالأسعار السائدة وقت إبرام الصفقة، خلافاً للعقود طويلة الأجل.",
+                "reason": "definition"
+              }
+            ],
+            "removed": []
+          }
+        }
+      ]
     }
   },
   "held": []
