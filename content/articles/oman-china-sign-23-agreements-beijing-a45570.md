@@ -58,7 +58,15 @@ table:
     - - بي سي جي وهوي ميلز
       - "100"
       - طاقة شمسية ومصنع لمحولاتها في عُمان
-image: null
+image:
+  url: https://images.pexels.com/photos/6876537/pexels-photo-6876537.jpeg?auto=compress&cs=tinysrgb&w=1280
+  width: 1280
+  height: 853
+  alt: حقل ألواح شمسية لتوليد الكهرباء (صورة تعبيرية)
+  credit: Quang Nguyen Vinh · بيكسلز
+  license: Pexels License
+  licenseUrl: https://www.pexels.com/license/
+  pageUrl: https://www.pexels.com/photo/solar-panels-on-field-and-blue-sky-6876537/
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -88,7 +96,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: null
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
   lessons: v50
 quality:

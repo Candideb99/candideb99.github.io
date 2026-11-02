@@ -24,7 +24,13 @@ regions:
 readingMinutes: 3
 chart: null
 table: null
-image: null
+image:
+  url: /photos/handouts/99c622823d56.jpg
+  width: 1200
+  height: 630
+  alt: ولي عهد أبوظبي الشيخ خالد بن محمد بن زايد خلال لقائه الرئيس التنفيذي لـ«أوبن إيه آي» سام ألتمان
+  credit: مكتب أبوظبي الإعلامي
+  license: صورة رسمية
 sources:
   - name: الشرق بلومبرغ
     nameEn: Asharq Business
@@ -54,7 +60,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: null
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
   lessons: control
 quality:
