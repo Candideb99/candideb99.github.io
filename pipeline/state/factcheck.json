@@ -14741,6 +14741,190 @@
       ],
       "weak": [],
       "outcome": "listed"
+    },
+    "al-jaber-hormuz-billion-barrels-inventories-423d59": {
+      "at": "2026-11-02T21:45:43.216Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-02T10:01:13.761Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 11,
+        "checked": 11,
+        "supported": 11,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "adnoc-fid-ruwais-diyab-unconventional-gas-2833f2": {
+      "at": "2026-11-02T21:45:43.210Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v50",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-02T11:57:11.200Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 21,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "فما يضيفانه لتلبية الطلب المحلي المتنامي ولخطة رفع طاقة تصدير الغاز المسال إلى أكثر من الضعف يصل في نهاية العقد، ويقع عبء السنوات التي تسبقها على الإنتاج القائم."
+      ],
+      "weak": [
+        {
+          "sentence": "أعلنت شركة بترول أبوظبي الوطنية «أدنوك» الاثنين اتخاذ قرار الاستثمار النهائي في مشروع الغاز غير التقليدي في حوض الذياب بالرويس، وتتوقع أن ينتج 345 مليون قدم مكعبة قياسية يومياً من الغاز الخام بدءاً من 2029.",
+          "quote": "أعلنت \"أدنوك\"، الاثنين، خلال معرض ومؤتمر \"أديبك 2026\"، عن اتخاذ قرار الاستثمار النهائي لمشروع تطوير الغاز غير التقليدي ضمن حوض الذياب في الرويس."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "oil-falls-iran-hormuz-two-day-offer-c40213": {
+      "at": "2026-11-02T21:46:22.430Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v49",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-02T09:55:18.379Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "fromCopy": 1,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 33,
+        "checked": 33,
+        "supported": 24,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 7,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 3,
+          "field": "lede",
+          "sentence": "تراجعت أسعار النفط بأكثر من 3% في التعاملات المبكرة يوم الإثنين، بعدما عززت المحادثات بوساطة قطرية الآمال في اختراق دبلوماسي في الحرب على إيران.",
+          "claim": "Oil prices fell by more than 3% (a percentage) in early Monday trading after Qatar-mediated talks raised hopes of a diplomatic breakthrough in the Iran war.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "AGBI (Arabian Gulf Business Insight)",
+          "sourceDate": "2026-11-02",
+          "quote": "Oil prices fell in early Monday trading as talks mediated by Qatar raised hopes of a diplomatic breakthrough in the Iran war , despite fresh attacks on commercial shipping in the Gulf. Brent crude dropped more than $3 a barrel as Iranian officials continued discussions over a proposal to reopen the Strait of Hormuz.",
+          "correction": "The source says Brent dropped more than $3 a barrel in early Monday trading, not more than 3%.",
+          "class": "figure"
+        }
+      ],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "title",
+          "sentence": "النفط يهبط أكثر من 3% مع عرض إيراني مشروط لإعادة فتح هرمز",
+          "quote": "Brent crude dropped more than $3 a barrel as Iranian officials continued discussions over a proposal to reopen the Strait of Hormuz.",
+          "source": "AGBI (Arabian Gulf Business Insight)"
+        }
+      ],
+      "notFound": [
+        "برنت تسليم يناير الإثنين: 109.00 دولارات للبرميل",
+        "تراجع برنت يوم الإثنين: 3.91%",
+        "غرب تكساس تسليم ديسمبر الإثنين: 99.85 دولاراً للبرميل",
+        "تراجع غرب تكساس يوم الإثنين: 4.1%",
+        "هبطت العقود الآجلة لخام برنت تسليم يناير 3.91% إلى 109.00 دولار للبرميل بحلول الساعة 4:07 صباحاً بتوقيت شرق الولايات المتحدة، ونزل خام غرب تكساس الوسيط تسليم ديسمبر 4.1% إلى 99.85 دولار، دون حاجز 100 دولار.",
+        "وقال تاماس فارغا، المحلل لدى شركة بي في إم أويل أسوشيتس، إن استمرار الهجمات على السفن والمصافي في الشرق الأوسط لا يعزز الثقة في فرص وقف دائم لإطلاق النار في المستقبل المنظور.",
+        "لكن صحيفتي «وول ستريت جورنال» و«نيويورك تايمز» الأمريكيتين أفادتا بأن الولايات المتحدة تستعد لعمل عسكري محتمل متجدد بعد الانتخابات."
+      ],
+      "weak": [],
+      "outcome": "stands",
+      "reason": "The lede's «أكثر من 3%» is accurate: the story's own figures give Brent down 3.91% to 109.00 dollars and WTI down 4.1% in early Monday trading, and Brent falling more than 3 dollars a barrel, as AGBI reports, is the same move in dollars, so the two are consistent."
+    },
+    "banque-du-caire-shares-jump-egx-debut-412cd0": {
+      "at": "2026-11-02T21:46:34.412Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-02T09:40:10.823Z",
+      "sourcesRead": 4,
+      "sourcesAll": 5,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 22,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "class": "scope",
+          "field": "title",
+          "sentence": "سهم بنك القاهرة يرتفع 7% في أولى جلسات تداوله بالبورصة المصرية",
+          "quote": "وكان سهم البنك، وهو ثالث أكبر بنك حكومي في مصر، قد قفز بأكثر من 7% في مستهل أولى جلسات تداوله بالبورصة المصرية اليوم الاثنين، بعد طرح حصة من أسهمه في السوق وسط إقبال قوي من المستثمرين المحليين والدوليين، قبل أن يقلص مكاسبه لاحقاً ليصل إلى 5.45 جنيه، أي بارتفاع  2.83% عن سعر الطرح.",
+          "source": "Asharq Business",
+          "correction": "The 7% jump came only at the opening of the first session; the share later pared its gains to 5.45 pounds, 2.83% above the offer price."
+        },
+        {
+          "status": "conflict",
+          "field": "subtitle",
+          "sentence": "بلغت حصيلة الطرح نحو 36.4 مليار جنيه بعدما رفعت الحكومة الحصة المطروحة إلى 45% من رأس المال بدلاً من 30%",
+          "quote": "وأوضح مدبولي أن تقييم بنك القاهرة تجاوز 80 مليار جنيه، فيما بلغت قيمة الطرح نحو 36.3 مليار جنيه، معتبرًا أن هذه الأرقام الاستثنائية تعكس قوة المركز المالي للبنك ومتانته، وتمثل شهادة ثقة في القطاع المصرفي المصري، فضلًا عن تأكيد قدرة سوق المال المصرية على استيعاب طروحات كبرى بمليارات الجنيهات.",
+          "source": "Youm7"
+        },
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "حصيلة الطرح: نحو 36.4 مليار جنيه",
+          "quote": "وأوضح مدبولي أن تقييم بنك القاهرة تجاوز 80 مليار جنيه، فيما بلغت قيمة الطرح نحو 36.3 مليار جنيه، معتبرًا أن هذه الأرقام الاستثنائية تعكس قوة المركز المالي للبنك ومتانته، وتمثل شهادة ثقة في القطاع المصرفي المصري، فضلًا عن تأكيد قدرة سوق المال المصرية على استيعاب طروحات كبرى بمليارات الجنيهات.",
+          "source": "Youm7"
+        }
+      ],
+      "notFound": [],
+      "weak": [],
+      "outcome": "listed"
     }
   }
 }

@@ -10776,6 +10776,115 @@
           "noted": []
         }
       ]
+    },
+    "brent-falls-iran-leader-authorises-talks-5b7bfe": {
+      "at": "2026-11-02T22:01:40.434Z",
+      "title": "برنت يهبط نحو 8% مع تفويض المرشد الإيراني الحكومة بالتفاوض",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v50",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 30,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 5,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تراجع برنت في جلسة الاثنين: 7.98%",
+              "quote": "وانخفضت العقود الآجلة لخام برنت عند التسوية 8.66 دولار، بما يعادل 7.63 في المائة، إلى 104.77 دولار للبرميل.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "egypt-nears-government-spending-rationalisation-plan-6770ec": {
+      "at": "2026-11-02T22:17:51.841Z",
+      "title": "مصر تقترب من إنجاز خطة لترشيد الإنفاق الحكومي تحسباً للتوترات الإقليمية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v50",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 19,
+            "checked": 19,
+            "supported": 19,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "saudi-cma-ipo-underwriters-full-commitment-20cdcb": {
+      "at": "2026-11-02T22:30:09.537Z",
+      "title": "هيئة السوق السعودية تلزم متعهدي التغطية بشراء كامل الطرح قبل بناء سجل الأوامر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v50",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 29,
+            "checked": 29,
+            "supported": 27,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 1,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 28,
+              "field": "body",
+              "class": "superlative",
+              "verdict": "contradicted",
+              "status": "listed",
+              "sentence": "وتعدّها الوحدة الإضافة الأوضح في الأحكام، لأن القواعد النافذة لم تتضمن التزاماً عاماً بتقديم أرقام مالية مستقبلية محددة.",
+              "quote": "أما الجزء الذي يمثل إضافة أكثر وضوحا مقارنة بالإطار السابق، فهو ما يتعلق بالمعلومات المستقبلية. القواعد النافذة تلزم نشرة الإصدار بتقديم المعلومات اللازمة لتمكين المستثمر من تقييم نشاط الشركة وأصولها والتزاماتها ووضعها المالي وإدارتها وفرصها المتوقعة.",
+              "source": "Al Eqtisadiah",
+              "sourceN": 2,
+              "correction": "The Unit describes the forecast disclosure as a more clearly new addition compared with the previous framework, not as the clearest addition among the provisions."
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []

@@ -1,0 +1,142 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-02T21:45:42.279Z",
+  "durationSec": 127,
+  "read": 4,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "al-jaber-hormuz-billion-barrels-inventories-423d59",
+      "title": "الجابر: أزمة هرمز استنزفت نحو مليار برميل من مخزونات النفط العالمية",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 11,
+        "checked": 11,
+        "supported": 11,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "adnoc-fid-ruwais-diyab-unconventional-gas-2833f2",
+      "title": "أدنوك الإماراتية تقر مشروعاً للغاز غير التقليدي بطاقة 345 مليون قدم مكعبة يومياً",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 21,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "oil-falls-iran-hormuz-two-day-offer-c40213",
+      "title": "النفط يهبط أكثر من 3% مع عرض إيراني مشروط لإعادة فتح هرمز",
+      "kind": "news",
+      "outcome": "stands",
+      "counts": {
+        "sentences": 33,
+        "checked": 33,
+        "supported": 24,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 7,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "figure",
+          "sentence": "تراجعت أسعار النفط بأكثر من 3% في التعاملات المبكرة يوم الإثنين، بعدما عززت المحادثات بوساطة قطرية الآمال في اختراق دبلوماسي في الحرب على إيران.",
+          "quote": "Oil prices fell in early Monday trading as talks mediated by Qatar raised hopes of a diplomatic breakthrough in the Iran war , despite fresh attacks on commercial shipping in the Gulf. Brent crude dropped more than $3 a barrel as Iranian officials continued discussions over a proposal to reopen the Strait of Hormuz.",
+          "source": "AGBI (Arabian Gulf Business Insight)",
+          "correction": "The source says Brent dropped more than $3 a barrel in early Monday trading, not more than 3%."
+        }
+      ]
+    },
+    {
+      "slug": "banque-du-caire-shares-jump-egx-debut-412cd0",
+      "title": "سهم بنك القاهرة يرتفع 7% في أولى جلسات تداوله بالبورصة المصرية",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 22,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 4,
+    "failures": 0,
+    "promptTokens": 35558,
+    "completionTokens": 27909,
+    "cacheReadTokens": 0,
+    "costUsd": 0.8426,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 4
+    },
+    "byRole": {
+      "checker": {
+        "calls": 4,
+        "in": 35558,
+        "read": 0,
+        "out": 27909,
+        "usd": 0.8426
+      }
+    },
+    "correctionsEditorCalls": 1
+  },
+  "log": [
+    "[21:45:43] second look: 4 to read now (4 published pieces not yet read; 181 read clean before publication and left out of the audit sample)",
+    "[21:46:22] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1844 in=10392 read=0 out=4704 attempt=1 ms=35155",
+    "[21:46:22] al-jaber-hormuz-billion-barrels-inventories-423d59: 11 of 11 sentences checked · 11 supported · 0 without a source · 0 confirmed error(s)",
+    "[21:46:23] oil-falls-iran-hormuz-two-day-offer-c40213:   source https://www.agbi.com/oil-and-gas/2026/11/oil-retreats-as-diplomacy-raises-hopes-: subscribers-only; read from the copy saved at publication (fetched then)",
+    "[21:46:34] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1120 in=8732 read=0 out=6758 attempt=1 ms=48427",
+    "[21:46:34] adnoc-fid-ruwais-diyab-unconventional-gas-2833f2: 23 of 23 sentences checked · 21 supported · 1 without a source · 0 confirmed error(s)",
+    "[21:46:35] banque-du-caire-shares-jump-egx-debut-412cd0:   source https://finance.yahoo.com/quote/%5ECASE30/: a market quote of its moment, with no copy saved at publication",
+    "[21:47:27] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2805 in=8708 read=0 out=7826 attempt=1 ms=59792",
+    "[21:47:27] oil-falls-iran-hormuz-two-day-offer-c40213: 33 of 33 sentences checked · 24 supported · 7 without a source · 1 confirmed error(s) · 1 listed for a person",
+    "[21:47:27]   ✗ [figure] تراجعت أسعار النفط بأكثر من 3% في التعاملات المبكرة يوم الإثنين، بعدما عززت المحادثات بوساطة قطرية الآمال في ا — The source says Brent dropped more than $3 a barrel in early Monday trading, not more than 3%.",
+    "[21:47:40] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2950 in=7726 read=0 out=8621 attempt=1 ms=64478",
+    "[21:47:40] banque-du-caire-shares-jump-egx-debut-412cd0: 25 of 25 sentences checked · 22 supported · 0 without a source · 0 confirmed error(s) · 3 listed for a person",
+    "[21:47:40] corrections: 1 story to the corrections editor",
+    "[21:47:40] [correct] oil-falls-iran-hormuz-two-day-offer-c40213: fetching 4 source(s)",
+    "[21:47:40] [correct]   source https://www.agbi.com/oil-and-gas/2026/11/oil-retreats-as-diplomacy-rai: subscribers-only; read from the copy saved at publication",
+    "[21:47:48] [correct] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=482 in=24878 read=0 out=603 attempt=1 ms=7560",
+    "[21:47:48] [correct] oil-falls-iran-hormuz-two-day-offer-c40213: the story stands (The lede's «أكثر من 3%» is accurate: the story's own figures give Brent down 3.91% to 109.00 dollars and WTI down 4.1% in early Monday trading, and Brent falling more than 3 dollars a barrel, as AGBI reports, is the same move in dollars, so the two are consistent.)",
+    "[21:47:48] [correct] done: 0 corrected, 1 stand, 0 refused or failed; report pipeline/runs/corrections-2026-11-02T21-47-40-115Z.json"
+  ]
+}

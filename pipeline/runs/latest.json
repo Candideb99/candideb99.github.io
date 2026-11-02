@@ -1,29 +1,519 @@
 {
-  "mode": "reports",
-  "startedAt": "2026-11-02T18:30:13.633Z",
-  "durationSec": 26,
-  "published": 0,
+  "mode": "news",
+  "startedAt": "2026-11-02T21:47:49.411Z",
+  "durationSec": 2540,
+  "published": 3,
   "refreshed": 0,
-  "report": [],
+  "report": [
+    {
+      "headline": "برنت يهبط نحو 8% دون 105 دولارات مع منح المرشد الإيراني الحكومة صلاحيات للتفاوض",
+      "section": "energy",
+      "importance": 8,
+      "sources": [
+        "https://www.ft.com/content/d7fe99f8-d292-4cb5-a8fd-45be0f8cc2b3?syn-25a6b1a6=1",
+        "https://aawsat.com/node/5336833",
+        "https://www.theguardian.com/business/2026/nov/02/oil-price-falls-amid-hope-of-a-breakthrough-to-end-iran-war",
+        "https://www.aa.com.tr/en/economy/brent-crude-falls-nearly-8-below-105-as-us-iran-diplomacy-eases-supply-fears/4109065"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التمهيدي يحددان البلد (إيران) والفاعل (المرشد الإيراني) والمؤشر (برنت). ويوضحان أن ما تغيّر هو التفويض بالتفاوض، لا اتفاقاً منجزاً، مع قيد «صلاحيات معينة» بلا تفاصيل.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يحمل التقرير السبب (التفويض والمحادثات عبر قطر) وردود أفعال الأسواق والمحللين، لكنه يغفل ثلاثة عناصر من المصدر 2: تصريح ترامب يوم الاثنين «قد يحدث»، وتوجّه الوسطاء القطريين إلى طهران مساء الاثنين، وإغلاق برنت أكتوبر عند أعلى مستوى في ستة أشهر. وفي الصندوق، جملة شرط الحصار البحري استنتاج محدود ومسنود، أما جملة المستوردين العرب والمنتجين الخليجيين فأثر لا تقيمه المصادر.",
+              "repair": "أضف العناصر الثلاثة من المصدر 2 كلاً في موضعه، واحذف الجملة الأولى من «لماذا يهمّ»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان (التفويض) مُطوَّر مباشرة بعد المقدمة، وهذا سليم. لكن العنوان الفرعي «ترامب والانتخابات النصفية» يغطي فقرات الإمدادات وأوبك+ وغولدمان، وفقرة الأسواق الأخرى تقع تحت عنوان «انعكاس صعود الأسبوع الماضي».",
+              "repair": "اجعل لكل قسم عنواناً يطابق فقراته: الأسواق، ثم موقف واشنطن مع تحذير بوشامب، ثم مخاطر الإمدادات."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "برنت مقتبس بعقد واحد هو يناير (104.38 دولار من إغلاق 113.43، وأدنى مستوى في الجلسة 103.28 دولار للعقد نفسه بحسب حساب التسوية)، وغرب تكساس بعقد ديسمبر. فقرة الأسواق موقوتة «في تعاملات الاثنين»، وشرط توقع غولدمان محفوظ.",
+              "repair": ""
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد والفاعلين والرقم: برنت، والمرشد الإيراني، والنزول دون 105 دولارات لأول مرة منذ أوائل أكتوبر. والمقدمة تفرّق بين تفويض بالتفاوض واتفاق لم يُبرم.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السبب موجود (التفويض والمحادثات عبر قطر)، ورد الفعل موجود (السندات وأسهم الطيران والمحللون)، والخلفية موجودة (قمة أكتوبر وصعود الأسبوع الماضي). تغيب آلية المصدر 3 التي تربط هبوط النفط بتراجع العوائد عبر آمال انحسار التضخم. والصندوق يقوم على مقدمتين مسنودتين (شرط رفع الحصار، وتحذير المحللين)، لكنه ينتهي بيقين «بالسرعة نفسها».",
+              "repair": "أضف آلية التضخم من المصدر 3 إلى فقرة الأسواق، واحذف «بالسرعة نفسها» من الصندوق."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان (التفويض) مطوَّر بعد المقدمة مباشرة، والأقسام تطابق فقراتها. لكن الفقرة الثالثة تكرر صياغة العنوان الفرعي عن الآمال واستقرار الإمدادات، وكلمة «النبأ» في فقرة بوشامب تبدو عائدة على تصريحات ترامب وروبيو.",
+              "repair": "احذف جملة تكرار الآمال وابدأ الفقرة بشرط هرمز، واكتب «نبأ تفويض المرشد» في فقرة بوشامب."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأسعار متسقة: عقد يناير لبرنت في كل المواضع، وعقد ديسمبر لغرب تكساس، والإغلاق السابق 113.43. وشرط غولدمان ساكس محفوظ. أما «يمحو هذا الهبوط صعوداً» فحكم غير مسنود، و«كي تسمح طهران بإعادة فتح المضيق» تسقط احتمالية الأصل «so that Tehran might allow».",
+              "repair": "اكتب «ويأتي هذا الهبوط بعدما أنهى برنت أكتوبر عند أعلى مستوى في ستة أشهر…»، و«أملاً في أن تسمح طهران بإعادة فتح المضيق»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 9,
+      "mendIssues": [
+        "خطأ: «ويمحو هذا الهبوط صعوداً سبقه مباشرة» حكم لا تقيمه المصادر. المصدر 2 يقول فقط إن برنت أنهى أكتوبر عند أعلى مستوى في ستة أشهر، من دون مستوى ذلك الإغلاق ولا حجم الصعود. والمصدر 4 يقول إن السعر نزل دون 105 دولارات لأول مرة منذ أوائل أكتوبر، وهذا لا يثبت أن الصعود كله مُحي. الإصلاح: «ويأتي هذا الهبوط بعدما أنهى برنت تعاملات أكتوبر عند أعلى مستوى له في ستة أشهر، وسط مخاوف من تجدد التصعيد…».",
+        "خطأ في «لماذا يهمّ»: «قادرة على إعادة الأسعار إلى الصعود بالسرعة نفسها التي هبطت بها» يقين يتجاوز المقدمات. المحللون في المصدر 2 يقولون إن مخاطر الإمدادات «قد تدفع الأسعار إلى الارتفاع مجدداً»، ولا أحد يقدّر سرعة الارتداد. الإصلاح: «وإذا تعثرت المحادثات قبل تحقق هذا الشرط، عادت مخاطر نقص الإمدادات إلى دفع الأسعار نحو الصعود». بهذا يبقى الشرط وتبقى النتيجة من دون تقدير لسرعة لا تسنده المصادر.",
+        "ينقص التقرير: آلية رد فعل الأسواق الأخرى. فقد ذكرت «الغارديان» (المصدر 3) أن هبوط النفط أحيا الآمال بانحسار الضغوط التضخمية على الاقتصاد العالمي، فتراجعت تكاليف الاقتراض الحكومي. التقرير يكتفي بعبارة «وامتد أثر تراجع النفط إلى أسواق أخرى» ثم يسرد عائد السندات البريطانية. الإصلاح: «وأحيا تراجع النفط الآمال بانحسار الضغوط التضخمية، فانخفض العائد على السندات البريطانية لأجل 10 سنوات…».",
+        "مرجع غامض: في فقرة بوشامب «وصف… النبأ بأنه هدية لأسواق الأسهم» تأتي بعد فقرة عن ترامب وروبيو، فيبدو «النبأ» تصريحاتهما. أما في المصدر 3 فالنبأ هو تفويض المرشد. الإصلاح: «وصف… نبأ تفويض المرشد للحكومة بأنه هدية لأسواق الأسهم…».",
+        "عربية ومصطلح: «إن إيران ستتلقى ضربة المطرقة في مرحلة ما ما لم يتحقق تقدم» فيها تكرار ثقيل في «ما ما»، و«ضربة» زيادة على الأصل «the hammer». الأصح: «إن إيران ستتلقى «المطرقة» إن لم يتحقق تقدم». ويسمّي التقرير الحدث نفسه «الانتخابات النصفية الأمريكية» في موضع و«انتخابات التجديد النصفي» في موضع آخر، فالأولى اسم واحد في الموضعين. وعبارة «لكن مضيق هرمز عقدة أي تسوية» توصيف من التحرير. الأدق أن يُكتب ما يقوله المصدر 4: «وتربط طهران إعادة فتح مضيق هرمز برفع الحصار البحري الأمريكي».",
+        "تكرار وأساس: الفقرة الثالثة «وعززت هذه الاتصالات الآمال باتفاق… ومعها التوقعات باستقرار إمدادات الخام» تعيد ما قاله العنوان الفرعي، فالأولى حذفها والدخول مباشرة في شرط هرمز. وفي why_basis نُسب سعر 104.38 دولار وتراجع 7.98% إلى المصدر 4، وهما من المصدر 5. المصدر 4 يذكر 104.43 دولار وتراجعاً بنسبة 7.94%، فيجب تصحيح رقم المصدر.",
+        "السبب موجود (التفويض والمحادثات عبر قطر)، ورد الفعل موجود (السندات وأسهم الطيران والمحللون)، والخلفية موجودة (قمة أكتوبر وصعود الأسبوع الماضي). تغيب آلية المصدر 3 التي تربط هبوط النفط بتراجع العوائد عبر آمال انحسار التضخم. والصندوق يقوم على مقدمتين مسنودتين (شرط رفع الحصار، وتحذير المحللين)، لكنه ينتهي بيقين «بالسرعة نفسها». — أضف آلية التضخم من المصدر 3 إلى فقرة الأسواق، واحذف «بالسرعة نفسها» من الصندوق.",
+        "عنصر العنوان (التفويض) مطوَّر بعد المقدمة مباشرة، والأقسام تطابق فقراتها. لكن الفقرة الثالثة تكرر صياغة العنوان الفرعي عن الآمال واستقرار الإمدادات، وكلمة «النبأ» في فقرة بوشامب تبدو عائدة على تصريحات ترامب وروبيو. — احذف جملة تكرار الآمال وابدأ الفقرة بشرط هرمز، واكتب «نبأ تفويض المرشد» في فقرة بوشامب.",
+        "الأسعار متسقة: عقد يناير لبرنت في كل المواضع، وعقد ديسمبر لغرب تكساس، والإغلاق السابق 113.43. وشرط غولدمان ساكس محفوظ. أما «يمحو هذا الهبوط صعوداً» فحكم غير مسنود، و«كي تسمح طهران بإعادة فتح المضيق» تسقط احتمالية الأصل «so that Tehran might allow». — اكتب «ويأتي هذا الهبوط بعدما أنهى برنت أكتوبر عند أعلى مستوى في ستة أشهر…»، و«أملاً في أن تسمح طهران بإعادة فتح المضيق»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تراجع برنت لعقود يناير 7.98% إلى 104.38 دولار للبرميل",
+          "source": 5
+        },
+        {
+          "fact": "نزل برنت دون 105 دولارات للمرة الأولى منذ أوائل أكتوبر",
+          "source": 4
+        },
+        {
+          "fact": "قال بقائي إن إعادة فتح مضيق هرمز تستلزم رفع الحصار البحري الأمريكي عن إيران",
+          "source": 4
+        },
+        {
+          "fact": "يرى محللون أن مخاطر نقص الإمدادات ما زالت قائمة وقد ترفع الأسعار مجدداً",
+          "source": 2
+        }
+      ],
+      "slug": "brent-falls-iran-leader-authorises-talks-5b7bfe",
+      "title": "برنت يهبط نحو 8% مع تفويض المرشد الإيراني الحكومة بالتفاوض",
+      "score": 7,
+      "image": "photo"
+    },
+    {
+      "headline": "مصر تقترب من خطة لترشيد الإنفاق الحكومي وتعزز مخزونها الاستراتيجي من السلع",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://dailynewsegypt.com/2026/11/02/egypt-to-cut-government-spending-boost-strategic-reserves-amid-regional-tensions/",
+        "https://alborsaanews.com/2026/11/02/2003480"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد (مصر) والفاعلين بصفاتهم (وزيرا المالية والتخطيط)، وتصريح «تقترب من إنجاز» يطابق «بصدد الانتهاء». لكن «لن يمس... الاعتمادات المالية» يحوّل ضمان التوفير إلى استثناء من الترشيد.",
+              "repair": "«الخطة تضمن استمرار النشاط الإنتاجي وتوفير الاعتمادات للسلع الأساسية والمواد البترولية»."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "الدافع الذي يقدمه المصدران، وهو متابعة التطورات الجيوسياسية المتصاعدة وانعكاسها على الأسواق والاستعداد لسيناريوهات مختلفة، موجود في الفقرة الثانية. وأرقام المخزون والمبادرة مفسرة. المصادر لا تقدم ردود فعل ولا خلفية سابقة ولا موعداً تالياً، والمسودة لم تخترعها.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان (خطة الترشيد) مطور مباشرة بعد المقدمة، وهذا سليم. لكن الفقرة الرابعة «وبذلك يقع جانب من الخفض...» تعيد مضمون الفقرة الأولى. والصندوق ملخص مصغر للوقائع، فيه ربط تمويلي غير مسند («تأخذ جزءاً من كلفة الاستعداد») واستنتاج مبالغ فيه («خارج الترشيد»).",
+              "repair": "حذف الفقرة الرابعة، وإعادة كتابة الصندوق كاستنتاج واحد محدود: عبء الترشيد المعلن يقع على استهلاك الحكومة نفسها، مع ضمان تمويل السلع الأساسية والوقود."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة: 6 أشهر في المتوسط، 30 سلعة، تخفيضات بين 15% و25%، ومساء الاثنين 2 نوفمبر. والاقتباس «لدينا أيضاً تعاقدات جديدة...» حرفي من المصدر 2. لكن عبارة «خارج الترشيد» في الصندوق و«لن يمس» في العنوان الفرعي تخلطان بين ضمان التوفير والاستثناء.",
+              "repair": "استبدال الصيغتين بـ«تضمن توفير الاعتمادات»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد (مصر) وصفة الفاعلين (وزيرا المالية والتخطيط). وفعل «تقترب من إنجاز» يطابق «بصدد الانتهاء» في المصدر 2، فالخطة لم تُقر بعد. لكن «تحسباً للتوترات الإقليمية» يجعل التوترات نفسها هي المتوقعة، بينما المتوقع تداعياتها. وتعطي الفقرة الرابعة انطباعاً بخطة واحدة تجمع الترشيد والمخزون، وهو ما لا تقوله المصادر.",
+              "repair": "«تحسباً لتداعيات التوترات الإقليمية» في العنوان، وحذف الفقرة الرابعة."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يقدم المتن الدافع الذي تذكره المصادر: متابعة التطورات الجيوسياسية وانعكاساتها على الأسواق، والاستعداد لسيناريوهات مختلفة، والتحديات التي تحدث عنها الوزيران (المصدر 2). ويذكر ما يُستكمل بعد ذلك: تعاقدات جديدة لزيادة المخزون، والخطة قيد الإنجاز. ولا تورد المصادر ردود فعل أو خلفية سابقة. الصندوق يستند إلى مقدمات موثقة: الترشيد يقع على إنفاق الحكومة واستهلاكها، والخطة تضمن الاعتمادات. ويستنتج منها أولوية تمويل السلع والمواد البترولية بشرط تصاعد الأزمة، وهو استنتاج محدود ومتناسب.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان (خطة الترشيد) مطوَّر بعد المقدمة مباشرة في الفقرتين الأولى والثانية، وهذا سليم. لكن الفقرة الأولى تعيد العنوان الفرعي، والفقرة الرابعة («وتجمع الحكومة بذلك...») والخاتمة («فالمبادرة تستهدف...») جملتان تلخيصيتان تعيدان ما قيل.",
+              "repair": "تغيير العنوان الفرعي أو حذف تكراره في الفقرة الأولى، وحذف الفقرة الرابعة والخاتمة التلخيصية، وتسمية العنوان الداخلي بما تقوله فقرته."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام صحيحة: 6 أشهر في المتوسط، و30 سلعة، وتخفيضات بين 15% و25% مقارنة بالأسواق الخارجية، ومساء الاثنين. والاقتباس حرفي من المصدر 2. لكن الصندوق يقصر المواد البترولية على «وقود» المواطنين، والمصدر يجعلها للاستهلاك والإنتاج معاً.",
+              "repair": "«السلع الأساسية والمواد البترولية اللازمة للاستهلاك والإنتاج»."
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قال مدبولي إن الاستعدادات تشمل تطبيق إجراءات لترشيد الإنفاق الحكومي وخفض استهلاك الحكومة من الوقود والطاقة",
+          "source": 2
+        },
+        {
+          "fact": "قال وزيرا المالية والتخطيط إن الخطة ترتكز على ضمان توفير الاعتمادات المالية اللازمة للسلع الأساسية والمواد البترولية",
+          "source": 2
+        },
+        {
+          "fact": "قال مدبولي إن الحكومة تستعد لسيناريوهات مختلفة بهدف تخفيف حدة التداعيات في حال تصاعد الأزمة",
+          "source": 2
+        }
+      ],
+      "slug": "egypt-nears-government-spending-rationalisation-plan-6770ec",
+      "title": "مصر تقترب من إنجاز خطة لترشيد الإنفاق الحكومي تحسباً للتوترات الإقليمية",
+      "score": 7,
+      "image": "cover-art"
+    },
+    {
+      "headline": "هيئة السوق السعودية تشدد ضوابط الطروحات الأولية وتلزم متعهدي التغطية بشراء كامل الأسهم",
+      "section": "markets",
+      "importance": 7,
+      "sources": [
+        "https://aawsat.com/node/5336672",
+        "https://www.aleqt.com/%D8%AA%D9%82%D8%A7%D8%B1%D9%8A%D8%B1-%D9%88%D8%AA%D8%AD%D9%84%D9%8A%D9%84%D8%A7%D8%AA/%D9%87%D9%8A%D8%A6%D8%A9-%D8%A7%D9%84%D8%B3%D9%88%D9%82-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-%D8%AA%D8%B6%D8%A8%D8%B7-%D8%A7%D9%84%D8%A7%D9%83%D8%AA%D8%AA%D8%A7%D8%A8%D8%A7%D8%AA-%D9%88%D8%B3%D8%AC%D9%84-%D8%A7%D9%84%D8%A3%D9%88%D8%A7%D9%85%D8%B1-%D8%A3%D9%83%D8%AB%D8%B1-%D9%85%D8%B5%D8%AF%D8%A7%D9%82%D9%8A%D8%A9-15995"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والمقدمة يحددان البلد والجهة، والدك يوضح أن التغيير في توقيت الالتزام. لكن العنوان وحده يوحي بأن إلزام الشراء الكامل جديد، والمصدر 2 ينفي ذلك.",
+              "repair": "بناء العنوان على توقيت الالتزام: «منذ بدء بناء سجل الأوامر»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المسودة تحمل الآلية (شمول الأسعار الأدنى) والخلفية (تعليمات وتعميما 2020 و2022). وتغيب عنها ثلاثة أمور: قصر الملاءة على النقد وشبه النقد (المصدر 1 والمصدر 2)، وغرض الإفصاح عن التوقعات، وهو أن يقيّم المستثمر الاكتتاب برؤية الشركة لأدائها المتوقع لا بنتائجها التاريخية وحدها (المصدر 1)، وأثر عدم الإدراج على رأسمال المتعهد (المصدر 2). في «لماذا يهمّ»، المقدمة الأولى عن انتقال المخاطرة سليمة، لكن الثانية غير مسندة وتكرر المتن.",
+              "repair": "إضافة الحقائق الثلاث من مصادرها، وحذف الجملة الثانية من «لماذا يهمّ» أو تصحيحها."
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "بعد المقدمة مباشرة تتجمع فقرات توقيت الالتزام وعدم الإدراج، ثم بناء السجل، ثم التوقعات، وكل قسم يتبع فكرته. الفقرة المعلقة الوحيدة هي «وتستهدف متطلبات الملاءة» لأنها تحيل إلى متطلبات لم تُذكر.",
+              "repair": "تقديم متطلبات النقد وشبه النقد قبل هذه الجملة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "مضمون تعميم يناير 2022 معكوس. وموعد إلزام السداد غائب: آخر موعد لسداد قيمة الاكتتاب في نشرة الإصدار. أما الآراء والتوقعات فمسندة إلى «وحدة التحليل المالي» كما ينبغي.",
+              "repair": "تصحيح مضمون التعميم وإضافة موعد السداد الملزم."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والدك يحددان البلد والجهة، ويبيّنان أن التغيير في توقيت الالتزام. لكن عبارة «بناء السجل» غير مكتملة لقارئ البطاقة. والفقرة الأولى توحي بأن إلزام التغطية الكاملة جديد («لكن الأحكام لا تقصر دوره على ذلك»)، ثم تنفي الفقرة الثانية ذلك.",
+              "repair": "«…بشراء كامل الطرح منذ بدء بناء سجل الأوامر»، وإعادة صياغة الفقرة الأولى بحيث يبدو إلزام التغطية الكاملة قائماً، والجديد سريانه منذ بدء العملية."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المسودة تحمل الغرض (الحد من طلبات تفوق القدرة المالية، وتقييم الاكتتاب برؤية الشركة)، والآلية (شمول الأسعار الأدنى)، والخلفية (التعليمات وتعميما 2020 و2022)، وأثر عدم الإدراج على رأسمال المتعهد. ينقصها ما يذكره المصدر 2 من أن جعل الطلبات مضمونة وملزمة يخفف جزءاً من الخطر الجديد على المتعهد. «لماذا يهمّ» يقوم على مقدمات مسندة (الالتزام قبل أول طلب، وعدم الإدراج، ووزن المخاطر، وضعف الإقبال)، ويستنتج منها أن رأس المال يصير قيداً على عدد الطروحات التي تقبل البنوك تغطيتها. الاستدلال محدود ومعقول.",
+              "repair": "إضافة جملة التخفيف من المصدر 2 مسندة إلى «وحدة التحليل المالي» بعد فقرة التوقيت."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان عن توقيت التزام المتعهد، والفقرات الأربع بعد المقدمة تطوره كما ينبغي. لكن أثر شمول الأسعار الأدنى على حصة المتعهد وحد الـ5% ورد في القسم الثاني بعد مثال النطاق السعري، بعيداً عن فقرات المتعهد. وفقرة نسب التغطية تقول المعنى نفسه مرتين، مرة بالتلخيص ومرة بالاقتباس.",
+              "repair": "جمع ما يخص خطر المتعهد وتخفيفه في القسم الأول، وحذف التلخيص المكرر أو الاقتباس."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والتواريخ مطابقة للمصادر: 22 سبتمبر، و30 يوماً، و40-50 و47 ريالاً، ومليون سهم، و5%، وأغسطس 2020، ويناير 2022. والاقتباسان حرفيان. ولم يُستخدم سعر «تاسي» لأن أي مصدر لا يربطه بالقرار، وهذا صواب. أما «وتتوقع الوحدة أن تنخفض…» و«بل على اقتراب الرقم…» فيُسقطان «قد» و«ربما» من المصدر 2.",
+              "repair": "إعادة التحفظ: «قد يخفض… وربما يعني أن الرقم صار أقرب إلى الأموال الموجودة فعلاً»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 8,
+      "mendIssues": [
+        "ينقص التقرير: العنصر الذي يوازن الخبر الرئيسي. المصدر 2 يقول بعد شرح التزام المتعهد المبكر: «وفي المقابل، يخفف المشروع جزءاً من هذا الخطر حين يجعل الطلبات مضمونة وملزمة». المسودة تغفل هذه الصلة، وتضع أثر شمول الأسعار الأدنى على المتعهد («فتصغر الأسهم التي قد يضطر المتعهد إلى شرائها…») في قسم «طلبات تقف خلفها أموال»، بعيداً عن فقرات التوقيت. المطلوب: إضافة جملة التخفيف مسندة إلى «الوحدة» بعد فقرة التوقيت مباشرة، ونقل جملة «وبهذا يكبر الطلب المحتسب عند الحد الأدنى…» إليها، فيُروى أثر الأحكام على المتعهد في موضع واحد.",
+        "تعارض في عين القارئ بين الفقرتين الأولى والثانية. الأولى تقول: «لكن الأحكام لا تقصر دوره على ذلك، فهو ملزم بتغطية الأسهم المطروحة حتى إذا لم تكفِ طلبات المكتتبين»، فتقدّم إلزام التغطية الكاملة على أنه إضافة من الأحكام. والثانية تقول فوراً: «التغطية الكاملة للطرح شرط قائم أصلاً». المصدر 2 ينفي جدة الإلزام، ولا يفصل بين المصدرين إلا الإسناد. يُصاغ الربط بلا «لكن الأحكام لا تقصر»، مثلاً: «ومتعهد التغطية في العادة بنك استثماري يرتب الطرح ويسوّقه، وهو ملزم بتغطية الأسهم المطروحة حتى إذا لم تكفِ طلبات المكتتبين؛ والجديد أن هذا الالتزام يسري من بدء بناء السجل».",
+        "تكرار وإسقاط تحفظ في فقرة نسب التغطية. الجملة «وتتوقع الوحدة أن تنخفض بعض نسب تغطية الاكتتابات مستقبلاً… بل على اقتراب الرقم من الأموال الموجودة فعلاً خلف الطلبات» يعيد الاقتباس الذي يليها معناها. وهي أيضاً تحوّل «قد يسهم» و«ربما يعني» في المصدر 2 إلى توقع جازم. الحل: الاكتفاء بجملة واحدة مع إبقاء التحفظ، مثلاً: «وترى الوحدة أن التعديل قد يخفض بعض نسب التغطية، وأن ذلك ربما يعني أن الرقم صار أقرب إلى الأموال الموجودة فعلاً خلف الطلبات»، ثم يُختصر الاقتباس أو يُحذف.",
+        "العنوان ناقص في المصطلح: «بشراء الطرح منذ بدء بناء السجل». قارئ البطاقة لا يعرف أي «سجل» يُقصد، و«شراء الطرح» أضعف من نص المصدر 1 «شراء كامل أسهم الطرح». المقترح: «هيئة السوق السعودية تلزم متعهدي التغطية بشراء كامل الطرح منذ بدء بناء سجل الأوامر».",
+        "العنوان والدك يحددان البلد والجهة، ويبيّنان أن التغيير في توقيت الالتزام. لكن عبارة «بناء السجل» غير مكتملة لقارئ البطاقة. والفقرة الأولى توحي بأن إلزام التغطية الكاملة جديد («لكن الأحكام لا تقصر دوره على ذلك»)، ثم تنفي الفقرة الثانية ذلك. — «…بشراء كامل الطرح منذ بدء بناء سجل الأوامر»، وإعادة صياغة الفقرة الأولى بحيث يبدو إلزام التغطية الكاملة قائماً، والجديد سريانه منذ بدء العملية.",
+        "المسودة تحمل الغرض (الحد من طلبات تفوق القدرة المالية، وتقييم الاكتتاب برؤية الشركة)، والآلية (شمول الأسعار الأدنى)، والخلفية (التعليمات وتعميما 2020 و2022)، وأثر عدم الإدراج على رأسمال المتعهد. ينقصها ما يذكره المصدر 2 من أن جعل الطلبات مضمونة وملزمة يخفف جزءاً من الخطر الجديد على المتعهد. «لماذا يهمّ» يقوم على مقدمات مسندة (الالتزام قبل أول طلب، وعدم الإدراج، ووزن المخاطر، وضعف الإقبال)، ويستنتج منها أن رأس المال يصير قيداً على عدد الطروحات التي تقبل البنوك تغطيتها. الاستدلال محدود ومعقول. — إضافة جملة التخفيف من المصدر 2 مسندة إلى «وحدة التحليل المالي» بعد فقرة التوقيت.",
+        "العنوان عن توقيت التزام المتعهد، والفقرات الأربع بعد المقدمة تطوره كما ينبغي. لكن أثر شمول الأسعار الأدنى على حصة المتعهد وحد الـ5% ورد في القسم الثاني بعد مثال النطاق السعري، بعيداً عن فقرات المتعهد. وفقرة نسب التغطية تقول المعنى نفسه مرتين، مرة بالتلخيص ومرة بالاقتباس. — جمع ما يخص خطر المتعهد وتخفيفه في القسم الأول، وحذف التلخيص المكرر أو الاقتباس.",
+        "الأرقام والتواريخ مطابقة للمصادر: 22 سبتمبر، و30 يوماً، و40-50 و47 ريالاً، ومليون سهم، و5%، وأغسطس 2020، ويناير 2022. والاقتباسان حرفيان. ولم يُستخدم سعر «تاسي» لأن أي مصدر لا يربطه بالقرار، وهذا صواب. أما «وتتوقع الوحدة أن تنخفض…» و«بل على اقتراب الرقم…» فيُسقطان «قد» و«ربما» من المصدر 2. — إعادة التحفظ: «قد يخفض… وربما يعني أن الرقم صار أقرب إلى الأموال الموجودة فعلاً»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "يلتزم المتعهد وفق الأحكام الجديدة بشراء كامل الطرح قبل أن يرى طلباً واحداً، بعدما كان يتعهد بعد معرفة طلب المؤسسات والسعر النهائي",
+          "source": 2
+        },
+        {
+          "fact": "لن تُدرج أسهم المُصدر إذا أخلّ تملك المتعهد بمتطلبات الإدراج، مع بقائه ملزماً بشراء جميع الأسهم",
+          "source": 1
+        },
+        {
+          "fact": "الأسهم غير المدرجة تعاملها قواعد الكفاية المالية بوزن مخاطر أعلى بكثير وقد تستهلك ما يقارب قيمتها كاملة من رأسمال المتعهد إذا تجاوزت حد التركز",
+          "source": 2
+        },
+        {
+          "fact": "قد يضعف إقبال المتعهدين إذا لم يرغبوا في تعرض كبير لأسهم غير مدرجة في ميزاناتهم",
+          "source": 2
+        }
+      ],
+      "slug": "saudi-cma-ipo-underwriters-full-commitment-20cdcb",
+      "title": "هيئة السوق السعودية تلزم متعهدي التغطية بشراء كامل الطرح قبل بناء سجل الأوامر",
+      "score": 8,
+      "image": "cover-art"
+    },
+    {
+      "headline": "«أنثروبيك» تكشف إيرادات فصلية بـ17 مليار دولار وخسارة 23 ملياراً قبل طرحها",
+      "section": "technology",
+      "importance": 7,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
   "llm": {
-    "calls": 0,
+    "calls": 67,
     "failures": 0,
-    "promptTokens": 0,
-    "completionTokens": 0,
-    "cacheReadTokens": 0,
-    "costUsd": 0,
-    "byModel": {},
-    "byRole": {}
+    "promptTokens": 1082604,
+    "completionTokens": 231291,
+    "cacheReadTokens": 316255,
+    "costUsd": 10.8192,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 67
+    },
+    "byRole": {
+      "editor": {
+        "calls": 1,
+        "in": 86147,
+        "read": 0,
+        "out": 2702,
+        "usd": 0.7432
+      },
+      "desk": {
+        "calls": 15,
+        "in": 105187,
+        "read": 140173,
+        "out": 66583,
+        "usd": 2.2011
+      },
+      "writer": {
+        "calls": 14,
+        "in": 192969,
+        "read": 136232,
+        "out": 71919,
+        "usd": 3.0092
+      },
+      "critic": {
+        "calls": 10,
+        "in": 130286,
+        "read": 39850,
+        "out": 43597,
+        "usd": 1.9221
+      },
+      "checker": {
+        "calls": 3,
+        "in": 26469,
+        "read": 0,
+        "out": 26762,
+        "usd": 0.7469
+      },
+      "vision": {
+        "calls": 24,
+        "in": 225291,
+        "read": 0,
+        "out": 19728,
+        "usd": 2.1967
+      }
+    }
   },
   "log": [
-    "[18:30:13] newsroom start mode=reports limit=4 dry-run=false",
-    "[18:30:30] report iea-omr: www.iea.org/reports/oil-market-report-november-2026 not read (http-403)",
-    "[18:30:30] report iea-omr: www.iea.org/reports/oil-market-report-october-2026 not read (http-403)",
-    "[18:30:30] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
-    "[18:30:30] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
-    "[18:30:33] report un-tourism-barometer: page not read (http-403)",
-    "[18:30:38] reports: 1 new edition(s): sa-trade «International trade in goods for Saudi Arabia in September 2026»",
-    "[18:30:39] release sa-trade: International trade in goods for Saudi Arabia in September 2026 has no document yet",
-    "[18:30:39] report sa-trade: «International trade in goods for Saudi Arabia in September 2026» is listed without its document; it waits"
+    "[22:27:58] commons \"Saudi investors\": 3 usable of 24",
+    "[22:27:58] image: dropped \"Turkish Airlines Airbus A330-223 TC-JIZ (invest in Turkey) livery appr\" — names too little of investors",
+    "[22:27:58] image: dropped \"President Joe Biden stands with leaders of the GCC countries, Egypt, I\" — names too little of investors",
+    "[22:28:14] openverse \"Saudi investors trading screens\": 0 usable of 0",
+    "[22:28:23] openverse \"Riyadh brokerage investors\": 0 usable of 0",
+    "[22:28:28] openverse \"Saudi stock traders\": 0 usable of 0",
+    "[22:28:33] openverse \"Tadawul trading screens\": 0 usable of 0",
+    "[22:28:35] openverse \"Saudi riyal banknotes stack\": 0 usable of 0",
+    "[22:28:38] openverse \"Riyadh brokerage\": 0 usable of 0",
+    "[22:28:57] openverse \"Saudi investors\": 10 usable of 20",
+    "[22:28:57] image: dropped \"Top 10 Carbon Majors (with caption & annotations)\" — names too little of investors, trading, screens",
+    "[22:28:57] image: dropped \"Treemap of all carbon emissions from 1750-2010 (horizontal / shaded)\" — names too little of investors, trading, screens",
+    "[22:28:57] image: dropped \"Treemap of all carbon emissions from 1750-2010 (horizontal / flat)\" — names too little of investors, trading, screens",
+    "[22:28:57] image: dropped \"Top 10 Carbon Majors (with annotations)\" — names too little of investors, trading, screens",
+    "[22:28:57] image: dropped \"Market analysis with focus on cryptocurrency trends displayed. Ideal f\" — names too little of investors, trading, screens",
+    "[22:28:57] commons \"Riyadh brokerage investors\": 0 usable of 0",
+    "[22:28:57] commons \"Riyadh brokerage\": 0 usable of 0",
+    "[22:28:59] openverse \"Tadawul trading\": 0 usable of 0",
+    "[22:28:59] commons \"investors\": 7 usable of 24",
+    "[22:28:59] image: dropped \"GES+ Investor Roundtable.jpg\" — an event's photograph, people and banners",
+    "[22:28:59] image: dropped \"Houssam Nasrawin during investment forum in Jordan.jpg\" — shows abdullah, not the story's people",
+    "[22:28:59] image: dropped \"Investors Group Field 2018.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:28:59] image: dropped \"Amanda Staveley 2021.jpg\" — names too little of investors",
+    "[22:28:59] image: dropped \"Кыргыз Республикасынын Президенти Садыр Жапаров.jpg\" — names too little of investors",
+    "[22:28:59] image: dropped \"Monochrome image of stock market data on a screen, depicting financial\" — names too little of brokerage, investors",
+    "[22:28:59] image: dropped \"A breathtaking aerial view of Riyadh at night featuring the iconic Kin\" — names too little of brokerage, investors",
+    "[22:28:59] image: dropped \"Skyline of Riyadh, Saudi Arabia featuring modern skyscrapers and const\" — names too little of brokerage, investors",
+    "[22:28:59] image: dropped \"Illuminated Kingdom Centre Tower rises in Riyadh's urban landscape at \" — names too little of brokerage, investors",
+    "[22:28:59] image: dropped \"Dramatic aerial twilight view of Riyadh city skyline with lit streets.\" — names too little of brokerage, investors",
+    "[22:28:59] image: dropped \"Detailed financial trading screen with colorful charts and data repres\" — names too little of brokerage, investors",
+    "[22:28:59] image: dropped \"A vibrant nighttime cityscape featuring King Fahd National Library in \" — names too little of brokerage, investors",
+    "[22:28:59] commons \"Saudi riyal banknotes stack\": 0 usable of 0",
+    "[22:29:00] commons \"Saudi riyal banknotes\": 11 usable of 24",
+    "[22:29:00] image: dropped \"1968 Saudi 10 Riyal.jpg\" — dated 1968, an archival picture",
+    "[22:29:00] image: dropped \"2026. Río Sar. Padrón. Galiza.jpg\" — names too little of riyal, banknotes",
+    "[22:29:00] image: dropped \"Río Sar- Parque Eugenio Granell - Santiago de Compostela 1.jpg\" — names too little of riyal, banknotes",
+    "[22:29:00] image: dropped \"2026. Río Sar. Padrón. Galiza-2.jpg\" — names too little of riyal, banknotes",
+    "[22:29:00] image: dropped \"2026. Río Sar e Ponte de Santiago. Padrón. Galiza.jpg\" — names too little of riyal, banknotes",
+    "[22:29:01] commons \"Saudi stock traders\": 0 usable of 3",
+    "[22:29:01] commons \"Saudi stock\": 9 usable of 20",
+    "[22:29:01] image: dropped \"Foreign Secretary Yvette Cooper visits Saudi Arabia - 54901195650.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:29:01] image: dropped \"Foreign Secretary Yvette Cooper visits Saudi Arabia - 54900016437.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:29:01] image: dropped \"El Faleh (221650625).jpeg\" — names too little of stock",
+    "[22:29:01] image: dropped \"02019 1173 Rzeszów Pride.jpg\" — names too little of stock",
+    "[22:29:01] image: dropped \"Herforder kleinbahn Museum - in the former Enger Bahnhof (32459253027)\" — names too little of stock",
+    "[22:29:13] openverse \"Saudi riyals\": The operation was aborted due to timeout",
+    "[22:29:23] openverse \"Saudi stock\": The operation was aborted due to timeout",
+    "[22:29:23] image: dropped \"Two businessmen reviewing financial data on a laptop indoors, analyzin\" — names too little of stock, traders",
+    "[22:29:23] image: dropped \"Detailed view of cryptocurrency trading charts on digital screens, sho\" — names too little of stock, traders",
+    "[22:29:23] image: dropped \"Frustrated man monitoring multiple trading graphs on computer screens \" — names too little of stock, traders",
+    "[22:29:23] image: dropped \"High-resolution candlestick chart showing forex trading trends and ana\" — names too little of stock, traders",
+    "[22:29:23] image: dropped \"Financial candlestick chart showing market trends and data visualizati\" — names too little of stock, traders",
+    "[22:29:23] image: dropped \"Close-up of hands using a tablet for online trading and market analysi\" — names too little of stock, traders",
+    "[22:29:23] commons \"Tadawul trading screens\": 0 usable of 0",
+    "[22:29:24] commons \"Tadawul trading\": 0 usable of 0",
+    "[22:29:24] commons \"screens\": 15 usable of 24",
+    "[22:29:25] commons \"Saudi riyals\": 11 usable of 24",
+    "[22:29:25] image: dropped \"Saudia Airlines aircraft flying high in a clear blue sky.\" — names too little of riyals",
+    "[22:29:25] image: dropped \"Skyline of Riyadh, Saudi Arabia featuring modern skyscrapers and const\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:29:25] image: dropped \"A Saudia Cargo plane on a runway at twilight with a serene sky backgro\" — names too little of riyals",
+    "[22:29:25] image: dropped \"Cityscape of Riyadh with busy streets and modern skyscrapers on a sunn\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:29:25] image: dropped \"Majestic Saudi Arabian flag illuminated against the night sky, surroun\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:29:25] image: dropped \"Image of Saudia Airbus A320 flying against a clear blue sky in Dubai.\" — names too little of riyals",
+    "[22:29:25] image: dropped \"Aerial cityscape view featuring a mosque and mountains in Saudi Arabia\" — names too little of riyals",
+    "[22:29:25] image: dropped \"Ripon Cathedral Rood Screen, Nth Yorkshire, UK - Diliff.jpg\" — taken in United Kingdom, which the story does not name",
+    "[22:29:32] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=354 in=10085 read=0 out=486 attempt=1 ms=6456",
+    "[22:29:32] image: vision rejected all candidates (fallback pass) (None of the candidates fits. Photos 1 and 2 are stock images of charts on screens, with no people, no place and nothing about underwriting or IPOs. Photos 3, 4 and 6 are diagrams and logos of the riyal symbol. Photo 5 shows named people at an unrelated award ceremony in India.)",
+    "[22:29:38] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=128 in=10701 read=0 out=311 attempt=1 ms=5026",
+    "[22:29:38] image: vision rejected all candidates (fallback pass) (None of the photographs fits. 1 is a riyal-sign logo, a graphic and not a photograph of money. 2 is a cartoon crypto promotion with text. 3 is a night overpass with light trails, unrelated to IPOs. 4 is the front of the Hanoi Stock Exchange building, in the wrong country. 5 is a named executive with no link to the story. 6 is a studio close-up of a touch-screen product. The story runs better without a picture.)",
+    "[22:29:38] image: the story's people first: Mohammed El-Kuwaiz 2026 | Mohammed El-Kuwaiz | محمد القويز",
+    "[22:29:39] commons \"Mohammed El-Kuwaiz 2026\": 0 usable of 0",
+    "[22:29:39] commons \"Mohammed El-Kuwaiz\": 0 usable of 0",
+    "[22:29:39] commons \"Mohammed El-Kuwaiz\": 0 usable of 0",
+    "[22:29:39] commons \"محمد القويز\": 0 usable of 0",
+    "[22:29:39] image: no photograph of the story's people",
+    "[22:29:43] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=171 in=2801 read=0 out=218 attempt=1 ms=3696",
+    "[22:29:43] image: last resort: stock exchange trading screens Saudi Arabia | stock exchange trading screens | stock exchange trading screens industrial",
+    "[22:29:44] openverse \"Saudi riyal banknotes\": The operation was aborted due to timeout",
+    "[22:29:44] openverse: 3 failures in a row; left alone for 10 minutes",
+    "[22:29:44] commons \"stock exchange trading screens Saudi Arabia\": 0 usable of 1",
+    "[22:29:45] commons \"stock exchange\": 19 usable of 24",
+    "[22:29:45] image: dropped \"Stock Exchange Yangon.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:29:45] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[22:29:45] image: dropped \"Stock Exchange Arcade, Charters Towers, circa 1966.jpg\" — dated 1965, an archival picture",
+    "[22:29:45] commons \"stock exchange trading screens\": 5 usable of 9",
+    "[22:29:45] image: dropped \"NSE Building 2.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:29:45] image: dropped \"NSE Building.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:29:45] image: dropped \"Cannon Street Station, London EC4 - geograph.org.uk - 1702692.jpg\" — names too little of stock, exchange, trading, screens",
+    "[22:29:45] commons \"stock exchange trading screens industrial\": 0 usable of 0",
+    "[22:29:45] commons \"stock exchange\": 19 usable of 24",
+    "[22:29:45] image: dropped \"Frankfurt Stock Exchange (Ank Kumar, Infosys) 01.jpg\" — taken in Germany, which the story does not name",
+    "[22:29:45] image: dropped \"Frankfurt Stock Exchange (Ank Kumar, Infosys) 05.jpg\" — taken in Germany, which the story does not name",
+    "[22:29:45] image: dropped \"Frankfurt Stock Exchange (Ank Kumar, Infosys) 04.jpg\" — taken in Germany, which the story does not name",
+    "[22:29:45] image: dropped \"Frankfurt Stock Exchange (Ank Kumar, Infosys) 02.jpg\" — taken in Germany, which the story does not name",
+    "[22:29:49] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=40 in=7943 read=0 out=193 attempt=1 ms=3327",
+    "[22:29:49] image: vision rejected all candidates (fallback pass) (The only candidate is a staged stock cliché: a hand holding a phone with a folder of trading app icons from other companies (Coinbase, IG, Plus500), which the brief explicitly rejects. It shows nothing of the story, which is about Saudi underwriters having to commit to a whole IPO before book-building, and nothing of Saudi Arabia. The article runs better without a photograph.)",
+    "[22:29:49] image: last pass, a neutral illustration: investors trading screens | brokerage investors | Saudi riyal banknotes stack | stock traders | trading screens | Saudi riyals",
+    "[22:29:49] pexels \"Saudi riyals\": 8 usable",
+    "[22:29:49] pexels \"stock traders\": 8 usable",
+    "[22:29:49] pexels \"brokerage investors\": 8 usable",
+    "[22:29:49] pexels \"investors trading screens\": 8 usable",
+    "[22:29:49] pexels \"trading screens\": 8 usable",
+    "[22:29:49] pexels \"Saudi riyal banknotes stack\": 8 usable",
+    "[22:29:49] commons \"investors trading screens\": 2 usable of 7",
+    "[22:29:49] image: dropped \"NSE Building 2.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:29:49] image: dropped \"NSE Building.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:29:50] commons \"brokerage investors\": 4 usable of 10",
+    "[22:29:50] image: dropped \"GameStop Retail Store - Vallejo - California (50906730711).jpg\" — names too little of brokerage, investors",
+    "[22:29:50] image: dropped \"Bell telephone magazine (1950) (14751915571).jpg\" — names too little of brokerage, investors",
+    "[22:29:50] image: dropped \"Exchange Money Conversion to Foreign Currency.jpg\" — names too little of brokerage, investors",
+    "[22:29:50] image: dropped \"The Saturday evening post (1920) (14781892344).jpg\" — names too little of brokerage, investors",
+    "[22:29:50] image: dropped \"Monochrome image of stock market data on a screen, depicting financial\" — names too little of brokerage, investors",
+    "[22:29:50] image: dropped \"Detailed financial trading screen with colorful charts and data repres\" — names too little of brokerage, investors",
+    "[22:29:50] image: dropped \"Detailed stock market chart showcasing financial data and trading tren\" — names too little of brokerage, investors",
+    "[22:29:50] image: dropped \"High contrast trading chart showing market trends and analysis indicat\" — names too little of brokerage, investors",
+    "[22:29:50] image: dropped \"Portrait of a confident businessman sitting in an office under the sig\" — names too little of brokerage, investors",
+    "[22:29:50] image: dropped \"Two businessmen discussing financial data on a tablet during a meeting\" — names too little of brokerage, investors",
+    "[22:29:50] image: dropped \"Colorful stock market chart displaying trading volume and trends, idea\" — names too little of brokerage, investors",
+    "[22:29:50] commons \"Saudi riyal banknotes stack\": 0 usable of 0",
+    "[22:29:50] commons \"Saudi riyal banknotes\": 11 usable of 24",
+    "[22:29:50] image: dropped \"1968 Saudi 10 Riyal.jpg\" — dated 1968, an archival picture",
+    "[22:29:50] image: dropped \"2026. Río Sar. Padrón. Galiza.jpg\" — names too little of riyal, banknotes",
+    "[22:29:50] image: dropped \"Río Sar- Parque Eugenio Granell - Santiago de Compostela 1.jpg\" — names too little of riyal, banknotes",
+    "[22:29:50] image: dropped \"2026. Río Sar. Padrón. Galiza-2.jpg\" — names too little of riyal, banknotes",
+    "[22:29:50] image: dropped \"2026. Río Sar e Ponte de Santiago. Padrón. Galiza.jpg\" — names too little of riyal, banknotes",
+    "[22:29:51] commons \"stock traders\": 5 usable of 24",
+    "[22:29:51] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[22:29:51] image: dropped \"Toronto Stock Exchange 1956.jpg\" — dated 1956, an archival picture",
+    "[22:29:51] image: dropped \"The diseases of live stock and their most efficient remedies; (1855) (\" — dated 1855, an archival picture",
+    "[22:29:51] image: dropped \"Two businessmen reviewing financial data on a laptop indoors, analyzin\" — names too little of stock, traders",
+    "[22:29:51] image: dropped \"Frustrated man monitoring multiple trading graphs on computer screens \" — names too little of stock, traders",
+    "[22:29:51] image: dropped \"High-resolution candlestick chart showing forex trading trends and ana\" — names too little of stock, traders",
+    "[22:29:51] image: dropped \"Detailed view of cryptocurrency trading charts on digital screens, sho\" — names too little of stock, traders",
+    "[22:29:51] image: dropped \"Financial candlestick chart showing market trends and data visualizati\" — names too little of stock, traders",
+    "[22:29:52] commons \"trading screens\": 9 usable of 24",
+    "[22:29:52] image: dropped \"Indian Pass Trading Post and Raw Bar.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:29:52] commons \"Saudi riyals\": 11 usable of 24",
+    "[22:29:52] image: dropped \"Saudia Airlines aircraft flying high in a clear blue sky.\" — names too little of riyals",
+    "[22:29:52] image: dropped \"Skyline of Riyadh, Saudi Arabia featuring modern skyscrapers and const\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:29:52] image: dropped \"A Saudia Cargo plane on a runway at twilight with a serene sky backgro\" — names too little of riyals",
+    "[22:29:52] image: dropped \"Cityscape of Riyadh with busy streets and modern skyscrapers on a sunn\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:29:52] image: dropped \"Majestic Saudi Arabian flag illuminated against the night sky, surroun\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[22:29:52] image: dropped \"Image of Saudia Airbus A320 flying against a clear blue sky in Dubai.\" — names too little of riyals",
+    "[22:29:52] image: dropped \"Aerial cityscape view featuring a mosque and mountains in Saudi Arabia\" — names too little of riyals",
+    "[22:30:01] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=302 in=9552 read=0 out=491 attempt=1 ms=5974",
+    "[22:30:01] image: vision rejected all candidates (fallback pass) (No candidate fits. Photos 1 and 2 make on-screen charts their subject: 2 is the pointing-hand-at-chart stock cliché and 1 is dark, empty and staged, and neither shows underwriting or IPO book-building. Photo 3 is a museum artefact with no link to the story. Photos 4 and 5 are technical diagrams of the riyal symbol. Photo 6 is the refused phone-of-app-icons cliché showing other firms' logos.)",
+    "[22:30:09] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=484 in=9110 read=0 out=669 attempt=1 ms=8113",
+    "[22:30:09] image: vision rejected all candidates (fallback pass) (No candidate fits. 1 is a phone screenshot of a Thai stock app with a chart, a stock cliché. 2 and 3 are flat riyal-symbol logos. 4 is an amateur New York street snapshot with a US flag. 5 is the Frankfurt floor, recognisable by its DAX board and German text, and its file names trader Dirk Müller. It is also dated and shows trading rather than banks underwriting an IPO. The story runs better as text.)",
+    "[22:30:09] published \"هيئة السوق السعودية تلزم متعهدي التغطية بشراء كامل الطرح قبل بناء سجل الأوامر\" -> saudi-cma-ipo-underwriters-full-commitment-20cdcb",
+    "[22:30:09] run budget of 35 minutes spent; \"«أنثروبيك» تكشف إيرادات فصلية بـ17 مليار دولار وخسارة 23 ملياراً قبل طرحها\" waits for the next run"
   ]
 }
