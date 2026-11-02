@@ -14593,6 +14593,154 @@
         }
       ],
       "outcome": "clean"
+    },
+    "germany-misses-winter-gas-storage-target-98f7ee": {
+      "at": "2026-11-02T09:24:53.068Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v49",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-02T01:45:14.594Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "fromCopy": 1,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 17,
+        "checked": 17,
+        "supported": 15,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 1,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "listed",
+          "class": "cause",
+          "field": "whyItMatters",
+          "sentence": "وإذا تعطلت الواردات، وهي أحد ما تستند إليه الحكومة في طمأنتها، فستواجه ألمانيا الشتاء بهامش احتياطي أضيق من المستهدف.",
+          "quote": "تبدأ ألمانيا موسم التدفئة باحتياطيات أمان أقل. وهذا يزيد من قابلية تعرض إمدادات الغاز للمخاطر، لا سيما في حال انخفاض درجات الحرارة بشكل استثنائي أو حدوث اضطرابات إضافية في واردات الغاز.",
+          "source": "Asharq Al-Awsat",
+          "correction": "Germany already starts the heating season with lower-than-target reserves because the fill target was missed; import disruptions would add to supply vulnerability rather than cause the narrower margin."
+        }
+      ],
+      "notFound": [
+        "وفي السوق الفورية يُشترى الغاز للتسليم الفوري أو القريب بالأسعار السائدة وقت إبرام الصفقة، خلافاً للعقود طويلة الأجل."
+      ],
+      "weak": [],
+      "outcome": "listed"
+    },
+    "south-korea-exports-october-record-jump-424cdf": {
+      "at": "2026-11-02T09:24:53.074Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v49",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-02T01:19:55.439Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 24,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وكان النمو غير المعدّل في أكتوبر أسرع من زيادة سبتمبر البالغة 83.7%، لكن قيمة الصادرات بقيت دون المستوى القياسي لذلك الشهر البالغ 121.1 مليار دولار.",
+          "quote": "ويقارن ذلك بنمو الصادرات بنسبة 83.7% في سبتمبر، وفق البيانات المعدلة.",
+          "source": "Al Eqtisadiah"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وقال وزير التجارة والصناعة والموارد كيم جونغ كوان: «مع استمرار الصادرات في تحقيق نمو قوي وتجاوزها 110 مليارات دولار في أكتوبر، بات من المؤكد بلوغ صادرات سنوية بقيمة تريليون دولار خلال نوفمبر (تشرين الثاني)».",
+          "quote": "وقال وزير التجارة والصناعة والطاقة كيم جونغ كوان: «مع استمرار الصادرات في تحقيق نمو قوي وتجاوزها 110 مليارات دولار في أكتوبر، بات من المؤكد بلوغ صادرات سنوية بقيمة تريليون دولار خلال نوفمبر (تشرين الثاني)».",
+          "source": "Asharq Al-Awsat"
+        }
+      ],
+      "notFound": [
+        "بحسب «بلومبرغ»، تعزز قوة الصادرات مبررات إقدام بنك كوريا المركزي على رفع الفائدة هذا الشهر، بعدما ثبّتها في أكتوبر عقب زيادتين متتاليتين في يوليو وأغسطس."
+      ],
+      "weak": [
+        {
+          "sentence": "صادرات كوريا الجنوبية تقفز 93.7% في أكتوبر بأقوى نمو منذ 1974",
+          "quote": "وتجاوزت الزيادة، التي عززها ارتفاع عدد أيام العمل مقارنةً بالعام السابق بسبب اختلاف موعد عطلة تشوسوك، الزيادة في سبتمبر (أيلول) البالغة 83.7 في المائة، وكانت الأقوى منذ يناير (كانون الثاني) 1974."
+        },
+        {
+          "sentence": "حلّت عطلة تشوسوك هذا العام في سبتمبر فزادت أيام العمل في أكتوبر، وباستبعاد أثرها يبلغ النمو المعدّل وفق أيام العمل 76.1%",
+          "quote": "وربما أسهمت العوامل المرتبطة بالتقويم في تعقيد المقارنات، إذ حلّت عطلة تشوسوك الكورية في سبتمبر هذا العام، مقابل أكتوبر من العام الماضي، ما يجعل البيانات المعدلة وفق أيام العمل مقياساً أكثر دقة للزخم الأساسي للتجارة الخارجية."
+        },
+        {
+          "sentence": "فإذا رفع بنك كوريا الفائدة في 26 نوفمبر لكبح تضخم يفوق هدف 2%، فسيقع جزء من الكلفة على إنفاق أسر يتراجع أصلاً.",
+          "quote": "ويزيد هذا التفاوت من تعقيد مهمة بنك كوريا المركزي، الذي يتعين عليه الموازنة بين النمو الاقتصادي القوي والتضخم الذي يتجاوز المستوى المستهدف، في مقابل ضعف الطلب الاستهلاكي للأسر."
+        },
+        {
+          "sentence": "صدرت البيانات بعد جلسة بيع واسعة لأسهم التكنولوجيا الجمعة، تراجع فيها مؤشر «بلومبرغ» لشركات الرقائق الآسيوية بما يصل إلى 4.8%، وانخفض مؤشر «كوسبي» 3.5%، مع هبوط سهم «إس كيه هاينكس» 7% وسهم «سامسونغ إلكترونيكس» 3%.",
+          "quote": "كما انخفض مؤشر \"كوسبي\" الكوري الجنوبي، الذي يُنظر إليه على نطاق واسع باعتباره مقياساً رئيسياً للتداولات على الذكاء الاصطناعي، بنسبة 3.5%، مع هبوط سهم \"إس كيه هاينكس\" 7% و\"سامسونج إلكترونيكس\" 3%."
+        }
+      ],
+      "outcome": "listed"
+    },
+    "binance-net-withdrawals-after-record-hack-01d2c8": {
+      "at": "2026-11-02T09:25:34.820Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v49",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-02T01:02:41.054Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "fromCopy": 1,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 30,
+        "checked": 30,
+        "supported": 28,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وأضافت أنها غطّت نحو 95% من الأصول المسروقة، وأن تأمين المبلغ المتبقي قد يستغرق وقتاً أطول.",
+          "quote": "The platform said it had replenished 90% of the ⁠amount stolen. The remaining 10% of tokens were less liquid, meaning they ⁠may take ​longer to buy, the company said in a post on X on Saturday.",
+          "source": "The Guardian"
+        }
+      ],
+      "notFound": [
+        "«بينانس» تسجل صافي سحوبات 3.6 مليار دولار بعد اختراق منسوب إلى كوريا الشمالية"
+      ],
+      "weak": [],
+      "outcome": "listed"
     }
   }
 }

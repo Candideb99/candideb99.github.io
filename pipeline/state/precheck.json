@@ -10495,6 +10495,221 @@
           }
         }
       ]
+    },
+    "banque-du-caire-shares-jump-egx-debut-412cd0": {
+      "at": "2026-11-02T09:40:10.835Z",
+      "title": "سهم بنك القاهرة يرتفع 7% في أولى جلسات تداوله بالبورصة المصرية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 23,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 2,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 3,
+              "field": "lede",
+              "class": "internal",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "قفز سهم بنك القاهرة، ثالث أكبر بنك مملوك للحكومة في مصر، 7% إلى 5.6 جنيه في أولى دقائق جلسته الأولى بالبورصة المصرية الإثنين، بعد طرح لقي إقبالاً قوياً من مستثمرين محليين ودوليين.",
+              "quote": "وكان سعر الطرح النهائي قد حُدد عند 5.30 جنيه للسهم.",
+              "source": "the story itself",
+              "sourceN": 0,
+              "correction": "From the EGP 5.30 offer price the story gives, a rise to EGP 5.6 is about 5.7%, not 7%; a 7% rise would put the share at about EGP 5.67."
+            },
+            {
+              "id": 5,
+              "field": "keyFacts",
+              "class": "internal",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "صعود السهم في أولى دقائق التداول: 7% إلى 5.6 جنيه",
+              "quote": "سعر الطرح النهائي: 5.30 جنيه للسهم",
+              "source": "the story itself",
+              "sourceN": 0,
+              "correction": "From the EGP 5.30 offer price the story gives, a rise to EGP 5.6 is about 5.7%, not 7%; a 7% rise would put the share at about EGP 5.67."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 2
+          }
+        },
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 25,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "oil-falls-iran-hormuz-two-day-offer-c40213": {
+      "at": "2026-11-02T09:55:18.386Z",
+      "title": "النفط يهبط أكثر من 3% مع عرض إيراني مشروط لإعادة فتح هرمز",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v49",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 27,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 5,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 5,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "برنت تسليم يناير الإثنين: 109.00 دولارات للبرميل",
+              "quote": "تراجعت العقود الآجلة لخام برنت 3.01% إلى 110 دولارات للبرميل، وفق بيانات موقع أويل برايس.",
+              "source": "Al Jazeera Arabic",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 6,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تراجع برنت يوم الإثنين: 3.91%",
+              "quote": "تراجعت العقود الآجلة لخام برنت 3.01% إلى 110 دولارات للبرميل، وفق بيانات موقع أويل برايس.",
+              "source": "Al Jazeera Arabic",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 7,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "غرب تكساس تسليم ديسمبر الإثنين: 99.85 دولاراً للبرميل",
+              "quote": "في حين بلغ سعر خام غرب تكساس الوسيط الأمريكي 100.7 دولار للبرميل، ⁠⁠بانخفاض 3.3%، وقت كتابة التقرير.",
+              "source": "Al Jazeera Arabic",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 8,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تراجع غرب تكساس يوم الإثنين: 4.1%",
+              "quote": "في حين بلغ سعر خام غرب تكساس الوسيط الأمريكي 100.7 دولار للبرميل، ⁠⁠بانخفاض 3.3%، وقت كتابة التقرير.",
+              "source": "Al Jazeera Arabic",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 20,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وعقد مسؤولون إيرانيون محادثات في الدوحة مع الوسطاء القطريين من الجمعة إلى الأحد سعياً إلى اتفاق ينهي الحرب الأمريكية الإسرائيلية على إيران، ثم غادر الوفد الدوحة الأحد.",
+              "quote": "Iranian authorities also signaled that a deal is still possible, following two days of talks mediated by Qatar, as long as demands are implemented tangibly, according to Al Jazeera.",
+              "source": "CNBC",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "al-jaber-hormuz-billion-barrels-inventories-423d59": {
+      "at": "2026-11-02T10:01:13.768Z",
+      "title": "الجابر: أزمة هرمز استنزفت نحو مليار برميل من مخزونات النفط العالمية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 11,
+            "checked": 11,
+            "supported": 11,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "abu-dhabi-openai-four-agreements-adnoc-6eefed": {
+      "at": "2026-11-02T10:13:34.700Z",
+      "title": "أبوظبي توقع أربع اتفاقيات مع «أوبن إيه آي» للذكاء الاصطناعي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 22,
+            "weak": 2,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
