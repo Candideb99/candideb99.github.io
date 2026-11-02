@@ -1,435 +1,226 @@
 {
-  "mode": "news",
-  "startedAt": "2026-11-02T11:20:32.768Z",
-  "durationSec": 2198,
-  "published": 2,
+  "mode": "explainer",
+  "startedAt": "2026-11-02T13:49:04.731Z",
+  "durationSec": 564,
+  "published": 1,
   "refreshed": 0,
   "report": [
     {
-      "headline": "عُمان والصين توقعان 23 اتفاقاً بأكثر من 2.3 مليار دولار ومبادلة عملات",
-      "section": "economy",
-      "importance": 7,
-      "sources": [
-        "https://aawsat.com/node/5336608",
-        "https://asharqbusiness.com/financing-and-investment/153914/%D8%B9-%D9%85%D8%A7%D9%86-%D8%AA%D8%B9%D9%85-%D9%82-%D8%B4%D8%B1%D8%A7%D9%83%D8%AA%D9%87%D8%A7-%D9%85%D8%B9-%D8%A7%D9%84%D8%B5%D9%8A%D9%86-%D8%A8%D8%A7%D8%AA%D9%81%D8%A7%D9%82%D8%A7%D8%AA-%D8%AA%D8%AA%D8%AC%D8%A7%D9%88%D8%B2-%D9%85%D9%84%D9%8A%D8%A7%D8%B1%D9%8A-%D8%AF%D9%88%D9%84%D8%A7%D8%B1/",
-        "https://www.thenationalnews.com/news/gulf/2026/11/02/chinas-xi-tells-omans-sultan-haitham-gulf-should-not-become-arena-for-great-power-rivalry/",
-        "https://gulfnews.com/world/gulf/oman/oman-china-sign-currency-swap-deal-23-investment-agreements-during-sultan-haithams-visit-1.500732587"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "العنوان والدك يعرّفان البلدين والحزمة بوضوح، لكن المتن يقول إن أكبر البنود صندوق 300 مليون دولار، فيرسم للقارئ صورة خاطئة عن وزن الحزمة. ولا يرد صندوق طريق الحرير (800 مليون) ولا عقد «مزون» (418.7 مليون).",
-              "repair": "تقديم صندوق طريق الحرير بوصفه أكبر بند، وإضافة عقد «هونغدا» لمشروع «مزون» للنحاس والذهب (SOURCE 2)."
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "يحمل التقرير هدف وزارة الخارجية العُمانية (SOURCE 3) وتوقع صندوق النقد للأنشطة غير النفطية (SOURCE 2)، لكنه يغفل التفسير الأوضح لدافع الحزمة: تصريح المرشدي، رئيس جهاز الاستثمار، عن توطين الصناعات ونقل التقنيات وتنويع الشراكات. أما «لماذا يهمّ» فاستنتاجه سليم ومشروط بتحول الاتفاقات إلى إنفاق فعلي، لكنه مبني على مقدمة «معظم ما وُقّع مذكرات تفاهم» التي لا يسندها المصدر.",
-              "repair": "إدراج تصريح المرشدي، مع منصبه، بعد فقرة الصناديق، وتصحيح مقدمة الصندوق إلى «تضم الحزمة مذكرات تفاهم وشراكات وعقوداً»."
-            },
-            "flow": {
-              "status": "clear",
-              "evidence": "العنوان عن حزمة الاتفاقات، والمتن يطوّرها مباشرة بعد المقدمة: الصناديق والشراكات، ثم الطاقة واللوجستيات والحوسبة، ثم الهدف المعلن. ويأتي اقتراح الاتفاق التفضيلي والسياق التجاري لاحقاً بوصفهما جزءاً من الزيارة نفسها.",
-              "repair": ""
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "«ووزّع الجهاز بقية التزاماته» تنسب إلى جهاز الاستثمار شراكات لا يسنده المصدر في عقدها وتحوّلها إلى «التزامات». وإسناد مجموع 2.3 مليار إلى وكالة الأنباء العُمانية نقلٌ لحساب «الشرق» إلى الوكالة. أما خبر مبادلة العملات فلا يسنده إلا عنوان SOURCE 4، بلا تفاصيل.",
-              "repair": "«وشملت الحزمة شراكات استثمارية مع...»، و«تتجاوز القيم المعلنة لبنودها مجتمعةً 2.3 مليار دولار»، وإبقاء خبر مبادلة العملات في جملة واحدة مسندة دون زيادة."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان والدك يسمّيان البلدين وعدد الاتفاقات وقيمتها المعلنة وأكبر بنودها، أي صندوق طريق الحرير الصيني بـ800 مليون دولار ووجهة معظم استثماراته. ويعرّف المتن جهاز الاستثمار العُماني بأنه صندوق الثروة السيادي، ويميّز المقدمة بين القيم المعلنة للبنود وتوقيع الاتفاقات.",
-              "repair": ""
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "يحمل التقرير الدافع العُماني (المرشدي ووزارة الخارجية) وتوقع صندوق النقد، لكنه يغفل ما يقدمه SOURCE 2 من الجانب الصيني: بحث المؤسسات الصينية عن فرص في الخليج رغم حرب إيران، وتقدير دينيس ديبو من «رولاند بيرجر». ويغفل كذلك أمل السلطان في صناديق استثمار مشتركة (SOURCE 1). أما «لماذا يهمّ» فاستنتاجه المشروط بتحول الاتفاقات إلى إنفاق فعلي سليم، لكن مقدمته «تجارة قوامها صادرات عُمانية» غير مسندة.",
-              "repair": "إضافة سياق الاهتمام الصيني مع تعريف ديبو بمنصبه، وإضافة تصريح السلطان عن الصناديق المشتركة، وتصحيح مقدمة الصندوق إلى «إلى جانب صادرات عُمان من النفط الخام ومنتجات الطاقة إلى أكبر شركائها التجاريين»."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "العنوان يقول إن الجديد هو حزمة الاتفاقات وقيمتها، والمتن يبدأ بها مباشرة بعد المقدمة. لكن بنودها موزعة على كتلتين تفصل بينهما فقرة المنتدى وتصريح المرشدي وتوقع صندوق النقد، والفقرة الرابعة تقرأ صفوف الجدول. وتنتهي القصة بفقرة هرمز التي لا صلة لها بالحزمة، ويأتي قبلها ثناء شي العام.",
-              "repair": "جمع البنود كلها في كتلة متصلة بعد المقدمة، مع ترك الأرقام الصغيرة للجدول، ثم الدافع ثم التوقع ثم الاتفاق التفضيلي المقترح مع تصريح السلطان عن الصناديق، وحذف فقرة هرمز وثناء شي."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الأرقام والجدول مطابقة لـSOURCE 2، ومبادلة العملات مسندة إلى «غلف نيوز» دون زيادة. لكن المقدمة تُسقط قيد «منذ إقامة العلاقات عام 1978» عن «أول زيارة»، و«قوامها» في «لماذا يهمّ» تعمّم ما لا يقوله SOURCE 1.",
-              "repair": "نقل قيد 1978 إلى المقدمة وحذف تكراره في المتن، واستبدال «تجارة قوامها صادرات عُمانية» بصيغة «إلى جانب صادرات عُمان من النفط الخام ومنتجات الطاقة»."
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 9,
-      "mendIssues": [
-        "مقدمة غير مسندة في «لماذا يهمّ»: «تضيف الحزمة إلى تجارة قوامها صادرات عُمانية من النفط الخام ومنتجات الطاقة إلى الصين». هذا هو الخطأ الذي أُبلغ عنه في المسودة السابقة («علاقة تقوم أساساً على بيع النفط الخام»)، وقد بقي بصيغة أخرى. يقول SOURCE 1 إن عُمان «تُصدِّر النفط الخام ومنتجات الطاقة إلى الصين» وإن الصين أكبر شريك تجاري لها، ولا يقول إن هذه الصادرات قوام التجارة كلها. كما أن الجملة متعثرة: يتأخر المفعول «رؤوس أموال صينية» حتى يفصله عن فعله سطر كامل. الإصلاح: «إلى جانب صادرات عُمان من النفط الخام ومنتجات الطاقة إلى أكبر شركائها التجاريين، تجلب الحزمة رؤوس أموال صينية إلى التعدين والطاقة الشمسية والتخزين واللوجستيات داخل السلطنة، وإلى صناديق يُخصَّص معظم أكبرها للسوق العُمانية». ثم يُدمج توقع صندوق النقد وشرط التحول إلى إنفاق فعلي في جملة ثانية، لأن الصندوق يحتمل جملة أو جملتين لا ثلاثاً.",
-        "ينقص التقرير: الخلفية من الجانب الصيني، أي لماذا تتجه هذه الأموال إلى الخليج الآن. يذكر SOURCE 2 أن الاتفاقات تأتي في وقت تواصل فيه المؤسسات الصينية البحث عن فرص استثمارية في الخليج رغم تداعيات حرب إيران. ويذكر أن دينيس ديبو، المدير الإداري العالمي لشركة الاستشارات «رولاند بيرجر»، قال في مارس إن الشركات الصينية تنظر إلى الحرب باعتبارها تعطلاً مؤقتاً لخططها في المنطقة وليس سبباً للتخلي عنها، مستفيدة من وفرة رؤوس الأموال الخليجية. يُضاف ذلك بعد تصريح المرشدي، مع تعريف ديبو بمنصبه ومؤسسته وتاريخ تصريحه.",
-        "صفوف الجدول مقروءة في النص: الفقرة «وشملت الحزمة كذلك شراكات استثمارية مع «إي دبليو بي بارتنرز» بنحو 275 مليون دولار، و«تمبل ووتر» بـ260 مليوناً، و«آي دي جي كابيتال» بـ200 مليون»، ومعها جملة شراكة «بي سي جي» و«هوي ميلز» بـ100 مليون، تعيد الصفوف السبعة التي يطبعها الجدول. الإصلاح: يُبقي المتن على أكبر البنود، وهي صندوق طريق الحرير وعقد «مزون» وصندوق بنك التجار، وعلى ما يضيف معنى، مثل مصنع محولات الطاقة الشمسية في عُمان. أما الشراكات الثلاث مع شركات الاستثمار فتُختصر في جملة واحدة عن قطاعاتها (الطاقة والتكنولوجيا والتصنيع الذكي) وتُترك أرقامها للجدول.",
-        "بناء مبعثر لمحتوى الحزمة: يُفصل بين بنود الاتفاقات بفقرة إجرائية («ووقّع الجهاز ومؤسسات وشركات عُمانية أخرى الاتفاقات... خلال المنتدى») ثم بتصريح المرشدي وتوقع صندوق النقد. بعد ذلك تعود البنود تحت عنوان «طاقة ولوجستيات وحوسبة»: البطاريات وشراكة الطاقة الشمسية و«أسياد»/«جيه دي.كوم» و«هواوي» والأقمار الصناعية. ويخلط هذا القسم أيضاً بين بنود البيان المشترك (النفط والغاز والرياح) وبنود الاتفاقات. الإصلاح: تنتقل معلومة المنتدى ووكالة الأنباء العُمانية وأنواع الاتفاقات إلى المقدمة أو الفقرة الأولى. ثم تُجمع البنود كلها في كتلة متصلة بعد المقدمة: الصناديق، التعدين، الطاقة والتخزين، اللوجستيات، الحوسبة والفضاء. يلي ذلك الدافع (المرشدي ووزارة الخارجية) ثم توقع صندوق النقد. ويُفصل بيان النفط والغاز المشترك في جملة مسندة إلى البيان.",
-        "حشو من عبارات عامة: «ووصف شي البلدين بأنهما شريكان مستقران وموثوقان في الطاقة وشريكان استثماريان بإمكانات كبيرة، مبدياً استعداده لمواءمة استراتيجيات التنمية» ثناء بلا قرار أو رقم. كذلك تُختم القصة بفقرة مضيق هرمز ودعوة واشنطن وطهران إلى الحوار، وهي دبلوماسية لا يربطها أي مصدر بالحزمة الاستثمارية. وفي المقابل يغفل التقرير ما قاله السلطان عن الخطوة التالية (SOURCE 1): أن عُمان تأمل زيادة حجم تجارتها مع الصين وتطوير مشروعات عبر صناديق استثمار مشتركة في الطاقة المتجددة والذكاء الاصطناعي والتقنيات الرقمية والفضاء والدفاع. الإصلاح: تُحذف فقرة شي، أو تُختصر إلى نصف جملة، وتُحذف فقرة هرمز. ويُضاف تصريح السلطان المسند إلى وكالة الأنباء العُمانية في فقرة الاتفاق التفضيلي، لأنه يربط الاقتراح بصناديق الاستثمار المشتركة.",
-        "تكرار وقيد ساقط: في المقدمة «خلال أول زيارة رسمية لسلطان عُماني إلى الصين»، ثم يعيد المتن المعلومة نفسها: «هي الأولى لسلطان عُماني منذ إقامة العلاقات بين البلدين عام 1978». القيد «منذ إقامة العلاقات عام 1978» (SOURCE 1 وSOURCE 3) هو حد الادعاء ومكانه المقدمة. الإصلاح: «خلال أول زيارة لسلطان عُماني إلى الصين منذ إقامة العلاقات بين البلدين عام 1978»، ويُحذف التكرار من المتن ويُبقى فيه على موعد الوصول ومدة الزيارة فقط.",
-        "يحمل التقرير الدافع العُماني (المرشدي ووزارة الخارجية) وتوقع صندوق النقد، لكنه يغفل ما يقدمه SOURCE 2 من الجانب الصيني: بحث المؤسسات الصينية عن فرص في الخليج رغم حرب إيران، وتقدير دينيس ديبو من «رولاند بيرجر». ويغفل كذلك أمل السلطان في صناديق استثمار مشتركة (SOURCE 1). أما «لماذا يهمّ» فاستنتاجه المشروط بتحول الاتفاقات إلى إنفاق فعلي سليم، لكن مقدمته «تجارة قوامها صادرات عُمانية» غير مسندة. — إضافة سياق الاهتمام الصيني مع تعريف ديبو بمنصبه، وإضافة تصريح السلطان عن الصناديق المشتركة، وتصحيح مقدمة الصندوق إلى «إلى جانب صادرات عُمان من النفط الخام ومنتجات الطاقة إلى أكبر شركائها التجاريين».",
-        "العنوان يقول إن الجديد هو حزمة الاتفاقات وقيمتها، والمتن يبدأ بها مباشرة بعد المقدمة. لكن بنودها موزعة على كتلتين تفصل بينهما فقرة المنتدى وتصريح المرشدي وتوقع صندوق النقد، والفقرة الرابعة تقرأ صفوف الجدول. وتنتهي القصة بفقرة هرمز التي لا صلة لها بالحزمة، ويأتي قبلها ثناء شي العام. — جمع البنود كلها في كتلة متصلة بعد المقدمة، مع ترك الأرقام الصغيرة للجدول، ثم الدافع ثم التوقع ثم الاتفاق التفضيلي المقترح مع تصريح السلطان عن الصناديق، وحذف فقرة هرمز وثناء شي.",
-        "الأرقام والجدول مطابقة لـSOURCE 2، ومبادلة العملات مسندة إلى «غلف نيوز» دون زيادة. لكن المقدمة تُسقط قيد «منذ إقامة العلاقات عام 1978» عن «أول زيارة»، و«قوامها» في «لماذا يهمّ» تعمّم ما لا يقوله SOURCE 1. — نقل قيد 1978 إلى المقدمة وحذف تكراره في المتن، واستبدال «تجارة قوامها صادرات عُمانية» بصيغة «إلى جانب صادرات عُمان من النفط الخام ومنتجات الطاقة»."
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0,
-        "unsourcedCut": 1
-      },
+      "headline": "لماذا يحتاج العراق دولارات ورقية من أمريكا كي يوقف هبوط الدينار؟",
+      "section": "explainers",
       "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "الصين أكبر شريك تجاري لعُمان التي تصدّر إليها النفط الخام ومنتجات الطاقة",
-          "source": 1
-        },
-        {
-          "fact": "الاتفاقات شملت مذكرات تعاون وتفاهم وشراكات استثمارية، وعقداً لخدمات التعدين في مشروع «مزون» لعشر سنوات، وصندوقاً مع صندوق طريق الحرير يُخصَّص الجزء الأكبر من استثماراته للسوق العُمانية",
-          "source": 2
-        },
-        {
-          "fact": "يتوقع صندوق النقد أن تكون عُمان والسعودية وحدهما في الخليج تسجلان نمواً غير نفطي في 2026 مع انكماشه في الدول الأربع الأخرى",
-          "source": 2
-        }
-      ],
-      "slug": "oman-china-sign-23-agreements-beijing-a45570",
-      "title": "عُمان والصين توقعان 23 اتفاقاً تتجاوز قيمتها 2.3 مليار دولار",
-      "score": 6,
-      "image": "cover-art"
-    },
-    {
-      "headline": "أدنوك تقر الاستثمار في مشروع غاز الرويس لإنتاج 345 مليون قدم مكعبة يومياً من 2029",
-      "section": "energy",
-      "importance": 7,
-      "sources": [
-        "https://asharqbusiness.com/power/153903/%D8%A3%D8%AF%D9%86%D9%88%D9%83-%D8%AA%D9%88%D8%B3%D8%B9-%D8%A5%D9%86%D8%AA%D8%A7%D8%AC-%D8%A7%D9%84%D8%BA%D8%A7%D8%B2-%D8%A8%D9%85%D8%B4%D8%B1%D9%88%D8%B9-%D8%AC%D8%AF%D9%8A%D8%AF-%D9%81%D9%8A-%D8%A7%D9%84%D8%B1%D9%88%D9%8A%D8%B3-%D9%8A%D8%A8%D8%AF%D8%A3-%D9%81%D9%8A-2029/",
-        "https://economymiddleeast.com/news/adnoc-takes-fid-on-ruwais-diyab-gas-development-to-deliver-345-mmscfd-of-gas-from-2029/",
-        "https://www.snabusiness.com/article/1902081-%D8%A3%D8%AF%D9%86%D9%88%D9%83-%D8%AA%D9%82%D8%B1-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%AB%D9%85%D8%A7%D8%B1-%D8%A7%D9%84%D9%86%D9%87%D8%A7%D8%A6%D9%8A-%D9%84%D9%85%D8%B4%D8%B1%D9%88%D8%B9-%D8%AD%D9%88%D8%B6-%D8%A7%D9%84%D8%B0%D9%8A%D8%A7%D8%A8-%D8%A7%D9%84%D8%B1%D9%88%D9%8A%D8%B3"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "قرار الاستثمار النهائي اتُّخذ والإنتاج يبدأ في 2029، لكن العنوان يقول «ينتج». والعنوان والموجز لا يذكران الإمارات.",
-              "repair": "«أدنوك الإماراتية تقر أول مشروع واسع لها للغاز غير التقليدي بطاقة 345 مليون قدم مكعبة يومياً من 2029»."
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "تذكر المسودة دافع زيادة الإمدادات للطلب المحلي والتصدير رغم حرب إيران (المصدر 1). لكنها تغفل سلسلة الاستثمارات المماثلة (أم الشيف بـ6.2 مليار دولار و600 مليون قدم مكعبة من 2030، والغطاء الغازي لحقل باب بما يصل إلى 1.5 مليار قدم مكعبة) وهدف مضاعفة طاقة تصدير الغاز المسال (المصدر 1)، وسابع أكبر احتياطيات و298 تريليون قدم مكعبة (المصدران 2 و3). وتغفل كذلك نموذج «أدنوك البرية» للحد من مخاطر التطوير (المصدران 2 و3).",
-              "repair": "تُضاف هذه الحقائق بعد وصف المشروع، فهي التي تشرح حجمه وموقعه من خطة أدنوك."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "العنوان يقدّم الخبر بوصفه إقرار مشروع وطاقته، والمتن يصف المشروع بعد المقدمة. لكن وصف المعالجة والأنابيب يتوزع بين فقرتين، ويتكرر موضوع السوق المحلية والتصدير في قسمين. وكلام الجابر ووصف مراكز البيانات حشو. وتنتهي الخاتمة بتكرار 2029. أما «لماذا يهمّ» فصدى لحساب الأضعاف الثلاثة.",
-              "repair": "كتلة واحدة لوصف المشروع، ثم قسم واحد عن مكانه في توسع أدنوك الغازي بأرقام أم الشيف وباب وهدف الغاز المسال. ويُعاد بناء الصندوق على الفجوة بين موعد الإنتاج وتسارع الطلب والتصدير، دون الحساب المضاف."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "«ينتج» في العنوان تحوّل التوقع إلى واقع. و«قرابة ثلاثة أضعاف» حساب من خارج المصادر. و«التزام التصدير» يحوّل الهدف إلى التزام. أما الـ345 مليوناً فهي من الغاز الخام، ورقم المليار طاقة محتملة، والمسودة تحفظ هذين القيدين في المتن.",
-              "repair": "استخدام «بطاقة متوقعة» أو «سينتج من 2029»، وحذف الحساب، واستبدال «التزام» بـ«هدف» أو «استراتيجية»."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يقول العنوان والموجز إن «أدنوك الإماراتية» أقرت مشروعاً للغاز غير التقليدي بطاقة 345 مليون قدم مكعبة يومياً، وإنه أول مشروع واسع لها في هذا الغاز وقد ترتفع طاقته إلى مليار. وتضيف المقدمة أن ما اتُّخذ هو قرار الاستثمار النهائي وأن الإنتاج يبدأ في 2029 من الغاز الخام، فلا يُفهم أن المشروع ينتج الآن.",
-              "repair": ""
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "تحمل المسودة الدافع الذي يذكره المصدر 1 (الطلب المحلي وصادرات الغاز المسال رغم حرب إيران)، والخلفية (أم الشيف وباب)، والاحتياطيات (298 و160 تريليوناً)، ونموذج «أدنوك البرية». لكن الجملة الثانية في «لماذا يهمّ» («تتوزع الإمدادات القائمة بين طلب محلي متنامٍ وخطط التصدير») تكاد تكون تحصيل حاصل، ولا تقول ما الذي يترتب على أن الإنتاج الجديد يتأخر إلى 2029 و2030.",
-              "repair": "تُعاد صياغة الجملة الثانية في الصندوق لتقول النتيجة نفسها: الزيادة التي تحتاجها السوق المحلية وخطة مضاعفة تصدير الغاز المسال تأتي من 2029 و2030، دون توقيت أو أرقام من خارج المصادر."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "العنوان عن إقرار المشروع وطاقته، والمتن يصف المشروع بعد المقدمة مباشرة، وهذا جيد. لكن المحلي والتصدير يتكرران في المقدمة والفقرة الرابعة وفقرة الجابر. وفقرة الغاز المسال منفصلة في آخر التقرير بعد كلام عام، وجملة مراكز البيانات حشو.",
-              "repair": "تُدمج صفة الجابر في الفقرة الرابعة ويُحذف كلامه المكرر، وتُحذف جملة مراكز البيانات أو تُختصر، وتُنقل فقرة الغاز المسال لتلي جملة «أهداف التصدير»."
-            },
-            "precision": {
-              "status": "clear",
-              "evidence": "حُفظت القيود كلها: 345 مليوناً من الغاز الخام، ومليار طاقة محتملة «مستقبلاً»، ومدة 25 عاماً، و600 مليون لأم الشيف «تشمل سوائل الغاز المصاحبة» من 2030، و«بما يصل إلى» 1.5 مليار لباب، ومضاعفة طاقة التصدير بوصفها «استراتيجية» لا التزاماً، و160 تريليوناً «موارد» تقدّرها الشركة لا احتياطيات مؤكدة.",
-              "repair": ""
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 8,
+      "mendedAfterReview": 5,
       "mendIssues": [
-        "لا خطأ في الوقائع. أُصلح العنوان («بطاقة» بدل «ينتج» مع ذكر الإمارات)، وحُذف حساب «الأضعاف الثلاثة»، وأُضيفت أرقام أم الشيف وباب والاحتياطيات ونموذج «أدنوك البرية»، ودُمج القسمان الفرعيان في قسم واحد، وخرج رقم الـ160 تريليون من صندوق الأرقام، وحلّ «هدف» و«استراتيجية» محل «التزام». بقي من الملاحظتين 5 و9 ما يلي.",
-        "التكرار: فكرة خدمة السوق المحلية والتصدير معاً تُقال في المقدمة («تلبية الطلب المحلي المتنامي وتوسيع صادرات الغاز المسال»)، ثم في الفقرة الرابعة («يقوّي قدرة «أدنوك للغاز» على تلبية طلب عملائها داخل الإمارات وخارجها، ويخدم أيضاً أهداف التصدير»)، ثم مرة ثالثة في فقرة الجابر («يدعم تلبية الطلب المتزايد على إمدادات موثوقة من الغاز داخل الدولة وخارجها»). فقرة الجابر لا تضيف رقماً ولا موعداً ولا التزاماً (المصادر 1 و2 و3)، فهي ملاحظات عامة. الإصلاح: تُحذف فقرة الجابر، أو تُدمج صفته في جملة الفقرة الرابعة: «وقال سلطان الجابر، وزير الصناعة والتكنولوجيا المتقدمة والرئيس التنفيذي لأدنوك، إن الغاز الجديد سيعزز...»، بدل أن تُروى الفكرة مرتين.",
-        "حشو باقٍ من الملاحظة 5: «وتربط أدنوك هذا التوسع بنمو الطلب العالمي على طاقة أقل انبعاثاً وباحتياجات البنية التحتية الصناعية ومراكز بيانات الذكاء الاصطناعي» وصف عام تقدّم به الشركة نفسها (المصدران 2 و3)، ولا يتصل بأرقام المشروع. الإصلاح: تُحذف الجملة، أو تُختصر إلى «ومراكز بيانات الذكاء الاصطناعي» ضمن قائمة الطلب في الجملة السابقة.",
-        "بناء مفكك: هدف مضاعفة طاقة تصدير الغاز المسال والمنصة الموحدة (47 مليون طن بحلول 2035، المصدر 1) معزولان في الفقرة الأخيرة بعد كلام الجابر، مع أن الفقرة الرابعة هي التي تذكر «أهداف التصدير». الإصلاح: تُنقل فقرة «أما في الغاز المسال...» لتلي مباشرةً جملة «ويخدم أيضاً أهداف التصدير»، فيجتمع المحلي والتصدير في كتلة واحدة، وينتهي التقرير على المضمون لا على كلام عام.",
-        "مرجع غامض في الفقرة الأولى: «وتقول الشركة إن الهدف منه خفض مخاطر التطوير». لا يتضح أيعود الضمير إلى النموذج أم إلى برنامج الدراسات، والمصدر 3 يقول إن البرنامج نُفّذ وفق النموذج «بهدف الحدّ من المخاطر». الإصلاح: «...نفذتها «أدنوك البرية» وفق نموذج «التصميم والإنشاء والتشغيل» للحد من مخاطر التطوير، بحسب الشركة».",
-        "«لماذا يهمّ»: الجملة الثانية «وحتى يدخل هذا الغاز الشبكة، تتوزع الإمدادات القائمة بين طلب محلي متنامٍ وخطط التصدير» تكاد تكون تحصيل حاصل، فالإمدادات القائمة موزعة بين الوجهتين في كل الأحوال. وعبارة «بمواعيد تشغيل معلنة» ثقيلة. الإصلاح: تُقال النتيجة بلغة الحدث، مثلاً: «الغاز الذي أقرته أدنوك هذا العام من الذياب وأم الشيف لا يصل قبل 2029 و2030، فالزيادة التي تحتاجها الصناعة المحلية وخطة مضاعفة تصدير الغاز المسال معاً تأتي في العقد المقبل لا في السنوات القليلة الآتية». ولا تُضاف إليها نسبة أو توقيت لم تذكره المصادر.",
-        "تحمل المسودة الدافع الذي يذكره المصدر 1 (الطلب المحلي وصادرات الغاز المسال رغم حرب إيران)، والخلفية (أم الشيف وباب)، والاحتياطيات (298 و160 تريليوناً)، ونموذج «أدنوك البرية». لكن الجملة الثانية في «لماذا يهمّ» («تتوزع الإمدادات القائمة بين طلب محلي متنامٍ وخطط التصدير») تكاد تكون تحصيل حاصل، ولا تقول ما الذي يترتب على أن الإنتاج الجديد يتأخر إلى 2029 و2030. — تُعاد صياغة الجملة الثانية في الصندوق لتقول النتيجة نفسها: الزيادة التي تحتاجها السوق المحلية وخطة مضاعفة تصدير الغاز المسال تأتي من 2029 و2030، دون توقيت أو أرقام من خارج المصادر.",
-        "العنوان عن إقرار المشروع وطاقته، والمتن يصف المشروع بعد المقدمة مباشرة، وهذا جيد. لكن المحلي والتصدير يتكرران في المقدمة والفقرة الرابعة وفقرة الجابر. وفقرة الغاز المسال منفصلة في آخر التقرير بعد كلام عام، وجملة مراكز البيانات حشو. — تُدمج صفة الجابر في الفقرة الرابعة ويُحذف كلامه المكرر، وتُحذف جملة مراكز البيانات أو تُختصر، وتُنقل فقرة الغاز المسال لتلي جملة «أهداف التصدير»."
+        "تناقض في الآلية (قفزة): تقول الفقرة «وكل مسافر يحصل على حاجته من المصرف لا يقف أمام صرّاف في السوق الموازية. هكذا يقل الطلب في السوق ويزيد المعروض فيها في الوقت نفسه». بيع الدولار للمسافر في المصرف يخفض الطلب في السوق الموازية، لكنه لا يزيد المعروض فيها. والمقال نفسه يقول بعد سطرين: «فالدولار الذي يشتريه مسافر يُنفق خارج البلد، فلا يعود إلى السوق». الإصلاح: «هكذا يقل الطلب في السوق الموازية، فيقترب سعرها من السعر الرسمي». وإذا أردت ذكر المعروض فاربطه بما يقوله المصدر الأول: ضخ الأوراق النقدية يصل إلى الطلب الذي لا يمر عبر المصارف.",
+        "ربط لم يقله المصدر: «فيقترب السعر الموازي من السعر الرسمي، كما يتوقع تميم» تأتي خاتمةً لآلية بيع الدولار للمسافرين، فيبدو أن تميم بنى توقعه عليها. يقول المصدر الأول إن تميم توقع الاقتراب «بدعم من زيادة المعروض من الدولار والإجراءات التي تتخذها الحكومة والبنك المركزي»، ولم يذكر المسافرين. وحصة المسافر (ألفا دولار حتى 6 مرات في السنة) آلية قائمة يذكرها المصدر، ولا يربطها بالشحنات الجديدة. الإصلاح: افصل توقع تميم عن مثال المسافر، واكتب صراحة أن بيع الدولار للمسافرين أحد منافذ البيع بالسعر الرسمي، من دون أن تنسب إليه تحريك السعر وحده.",
+        "مرجع مبهم: «وعندما تصل الأوراق إلى المصارف، يبيعها البنك بالسعر الرسمي». لا يتضح أي «بنك» يبيع: المركزي أم المصرف التجاري؟ ولا يتضح لمن يبيع. الإصلاح: «ويبيع البنك المركزي الأوراق للمصارف، فتبيعها بدورها لعملائها بالسعر الرسمي، كالمسافر الذي يستطيع شراء ألفي دولار حتى 6 مرات في السنة».",
+        "إعادة رواية الخبر: الفقرة الأخيرة «ويصل المبلغ على دفعات: الأولى وصلت الخميس… بحسب تميم، الذي قال إن الولايات المتحدة اتخذت خلال الشهرين الماضيين إجراءات لإرسال المبلغ. أما داغر فقال إن شحنة جديدة…» تعيد جدول الشحنات من الخبر. وهي تكرر وصول الدفعة الأولى الخميس بعد أن ذكرته المقدمة، وتختم الشرح بسجل مواعيد لا يجيب عن السؤال. الإصلاح: احذف جملة «الشهرين الماضيين» وتكرار الخميس، وانقل ما يلزم إلى خطوة في الحجة. مثال: «والشحنات المقبلة، التي قال داغر إن قيمتها الإجمالية ستتجاوز مليار دولار، هي ما يمدّ هذا الأثر»، واجعلها تلي جملة «الأثر يدوم ما دامت الأوراق تكفي الطلب».",
+        "مبالغة في الدَّك: «فلا يصل إليه إلا ما يُضخ من أوراق نقدية». المصدر الأول يقول إن ضخ الأوراق النقدية «يصل إلى هذا الطلب مباشرة ويساعد على تهدئته»، ولا يقول إنه الوسيلة الوحيدة. والخبر نفسه يذكر «الإجراءات التي تتخذها الحكومة والبنك المركزي». الإصلاح: «…فيصل إليه ضخ الأوراق النقدية مباشرة»."
       ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "يبدأ إنتاج حوض الذياب في 2029 بـ345 مليون قدم مكعبة قياسية يومياً من الغاز الخام",
-          "source": 2
-        },
-        {
-          "fact": "خصصت أدنوك في يوليو 6.2 مليار دولار لتطوير الغطاء الغازي لحقل أم الشيف لإنتاج ما يصل إلى 600 مليون قدم مكعبة قياسية يومياً بدءاً من 2030",
-          "source": 1
-        },
-        {
-          "fact": "تستهدف استراتيجية أدنوك رفع طاقة تصدير الغاز المسال في أبوظبي إلى أكثر من الضعف",
-          "source": 1
-        },
-        {
-          "fact": "تسعى أدنوك إلى تلبية الطلب المحلي المتنامي على الغاز بالتوازي مع توسيع صادرات الغاز المسال",
-          "source": 1
-        }
-      ],
-      "slug": "adnoc-fid-ruwais-diyab-unconventional-gas-2833f2",
-      "title": "أدنوك الإماراتية تقر مشروعاً للغاز غير التقليدي بطاقة 345 مليون قدم مكعبة يومياً",
+      "slug": "why-iraq-needs-us-paper-dollars-to-support-dinar-6c2924",
+      "title": "لماذا يحتاج العراق إلى دولارات ورقية من أمريكا كي يوقف هبوط الدينار؟",
       "score": 8,
-      "image": "cover-art"
-    },
-    {
-      "headline": "واشنطن تسعى لإعادة الغاز الروسي إلى أوروبا عبر أوكرانيا قبل الشتاء",
-      "section": "energy",
-      "importance": 7,
-      "outcome": "deferred: run budget spent"
-    },
-    {
-      "headline": "مجموعة الحبتور تقرر بيع جميع أصولها واستثماراتها في لبنان",
-      "section": "companies",
-      "importance": 6,
-      "outcome": "deferred: run budget spent"
+      "image": "none"
     }
   ],
   "llm": {
-    "calls": 54,
+    "calls": 24,
     "failures": 0,
-    "promptTokens": 846079,
-    "completionTokens": 193608,
-    "cacheReadTokens": 215285,
-    "costUsd": 8.9611,
+    "promptTokens": 294638,
+    "completionTokens": 47919,
+    "cacheReadTokens": 80257,
+    "costUsd": 2.6893,
     "byModel": {
-      "claude-cli/claude-opus-5-5": 54
+      "claude-cli/claude-opus-5-5": 24
     },
     "byRole": {
       "editor": {
-        "calls": 1,
-        "in": 87474,
+        "calls": 2,
+        "in": 9549,
         "read": 0,
-        "out": 2431,
-        "usd": 0.7484
-      },
-      "desk": {
-        "calls": 11,
-        "in": 84301,
-        "read": 89201,
-        "out": 51667,
-        "usd": 1.7255
+        "out": 1205,
+        "usd": 0.1005
       },
       "writer": {
-        "calls": 12,
-        "in": 146609,
-        "read": 102174,
-        "out": 59715,
-        "usd": 2.3875
+        "calls": 6,
+        "in": 51973,
+        "read": 34058,
+        "out": 17620,
+        "usd": 0.7749
+      },
+      "desk": {
+        "calls": 4,
+        "in": 31646,
+        "read": 38229,
+        "out": 15474,
+        "usd": 0.5703
       },
       "critic": {
-        "calls": 8,
-        "in": 105272,
-        "read": 23910,
-        "out": 30425,
-        "usd": 1.4554
-      },
-      "checker": {
-        "calls": 5,
-        "in": 46005,
-        "read": 0,
-        "out": 34677,
-        "usd": 1.0616
+        "calls": 4,
+        "in": 40422,
+        "read": 7970,
+        "out": 9426,
+        "usd": 0.5135
       },
       "vision": {
-        "calls": 17,
-        "in": 161133,
+        "calls": 8,
+        "in": 80791,
         "read": 0,
-        "out": 14693,
-        "usd": 1.5827
+        "out": 4194,
+        "usd": 0.7301
       }
     }
   },
   "log": [
-    "[11:52:50] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=0 in=8804 read=0 out=137 attempt=1 ms=2741",
-    "[11:52:50] image: vision rejected all candidates (None of the candidates shows ADNOC, gas drilling, a gas plant or any energy activity. #1 is an amateur snapshot of a beach in grey light. #2 and #3 are casual dashboard shots of a desert highway near Ruwais/Tarif. All three only show the place, not the gas project, and none meets the publication standard.)",
-    "[11:52:50] image: tier 4, the story's point and its subject: gas drilling rig desert | ADNOC drilling rig | gas processing plant Abu Dhabi | drilling rig UAE | gas pipeline desert | gas field (home: United Arab Emirates, UAE, Emirati, Abu Dhabi, Ruwais)",
-    "[11:52:50] pexels \"ADNOC drilling rig\": 8 usable",
-    "[11:52:50] pexels \"gas pipeline desert\": 8 usable",
-    "[11:52:50] pexels \"drilling rig UAE\": 8 usable",
-    "[11:52:50] pexels \"gas drilling rig desert\": 8 usable",
-    "[11:52:50] pexels \"gas processing plant Abu Dhabi\": 8 usable",
-    "[11:52:50] pexels \"gas field\": 8 usable",
-    "[11:52:50] commons \"gas drilling rig desert\": 0 usable of 0",
-    "[11:52:51] commons \"gas drilling\": 11 usable of 24",
-    "[11:52:51] image: dropped \"Pacific Drilling - Offshore Deepwater Oil and Gas Drilling Company in \" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:52:51] image: dropped \"CSIRO ScienceImage 1905 Oil and Gas Drilling Platform.jpg\" — dated 2001, an archival picture",
-    "[11:53:35] openverse \"gas drilling rig desert\": The operation was aborted due to timeout",
-    "[11:53:35] image: dropped \"Dramatic silhouette of an oil pump jack against a vibrant sunset sky, \" — names too little of gas, drilling, rig, desert",
-    "[11:53:35] image: dropped \"High-angle view of an offshore oil platform with helipad surrounded by\" — names too little of gas, drilling, rig, desert",
-    "[11:53:35] image: dropped \"Oil pump jack and equipment at remote industrial site under cloudy sky\" — names too little of gas, drilling, rig, desert",
-    "[11:53:35] image: dropped \"Dramatic view of a large oil platform in Norway's North Sea, symbolizi\" — names too little of gas, drilling, rig, desert",
-    "[11:53:35] commons \"ADNOC drilling rig\": 0 usable of 0",
-    "[11:53:35] commons \"ADNOC drilling\": 0 usable of 0",
-    "[11:53:36] commons \"rig\": 17 usable of 24",
-    "[11:54:09] openverse \"ADNOC drilling rig\": 0 usable of 0",
-    "[11:54:18] openverse \"gas processing plant Abu Dhabi\": 0 usable of 0",
-    "[11:54:48] openverse \"drilling rig UAE\": 0 usable of 0",
-    "[11:54:54] openverse \"gas pipeline desert\": The operation was aborted due to timeout",
-    "[11:55:03] openverse \"gas field\": The operation was aborted due to timeout",
-    "[11:55:33] openverse \"ADNOC drilling\": The operation was aborted due to timeout",
-    "[11:55:33] openverse: 3 failures in a row; left alone for 10 minutes",
-    "[11:55:33] image: dropped \"High-angle view of an offshore oil platform with helipad surrounded by\" — names too little of drilling, rig",
-    "[11:55:33] image: dropped \"Offshore oil platform in urban harbor, showcasing industrial scenery a\" — names too little of drilling, rig",
-    "[11:55:33] image: dropped \"Offshore oil platform with cranes in Palermo harbor, capturing industr\" — names too little of drilling, rig",
-    "[11:55:33] image: dropped \"Oil platform in the sea under clear skies, showcasing industrial seasc\" — names too little of drilling, rig",
-    "[11:55:33] commons \"gas processing plant Abu Dhabi\": 0 usable of 0",
-    "[11:55:35] commons \"gas processing\": 10 usable of 24",
-    "[11:55:35] image: dropped \"Brunei natural gas processing area in Lumut 1959-1967.jpg\" — dated 1950, an archival picture",
-    "[11:55:35] image: dropped \"Trumbull-Cliffs Furnace flue gas processing plant 1929.jpg\" — dated 1929, an archival picture",
-    "[11:55:36] commons \"drilling rig UAE\": 0 usable of 5",
-    "[11:55:37] commons \"drilling rig\": 18 usable of 24",
-    "[11:55:37] commons \"gas pipeline desert\": 3 usable of 8",
-    "[11:55:37] image: dropped \"Austria Sub Float Tube Lake Constance.JPG\" — names too little of gas, pipeline, desert",
-    "[11:55:37] image: dropped \"Cadiz Valley (53055090679).jpg\" — names too little of gas, pipeline, desert",
-    "[11:55:37] image: dropped \"A series of large industrial pipes under a dramatic cloudy sky in New \" — names too little of gas, pipeline, desert",
-    "[11:55:37] image: dropped \"Aerial view of an oil refinery in Bratislava, Slovakia with flames on \" — names too little of gas, pipeline, desert",
-    "[11:55:39] commons \"gas field\": 12 usable of 24",
-    "[11:55:39] image: dropped \"Darvasa gas crater panorama crop.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:55:39] image: dropped \"Panorama of \"M-25\" gas field.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:55:39] image: dropped \"Drilling rig and a digger at a construction site in Tuntorp.jpg\" — taken in Sweden, which the story does not name",
-    "[11:55:39] image: dropped \"Rig, West Virginia 2020.jpg\" — taken in United States, which the story does not name",
-    "[11:55:39] image: dropped \"Refurbishment Platform for Drilling Rigs -- Corpus Christi.jpg\" — taken in United States, which the story does not name",
-    "[11:55:39] image: dropped \"Aderklaa - Gasstation.JPG\" — taken in Austria, which the story does not name",
-    "[11:55:39] image: dropped \"Indiana-Ohio oil and gas fields.jpg\" — taken in United States, which the story does not name",
-    "[11:55:39] image: dropped \"Marcellus Shale Gas Drilling Tower 1 crop.jpg\" — taken in United States, which the story does not name",
-    "[11:55:39] image: dropped \"Marcellus Shale Gas Drilling Tower 2.jpg\" — taken in United States, which the story does not name",
-    "[11:55:39] image: dropped \"Deepwater Horizon offshore drilling unit on fire 2010.jpg\" — taken in Mexico, which the story does not name",
-    "[11:55:39] image: dropped \"Gas Pipeline - panoramio.jpg\" — taken in United States, which the story does not name",
-    "[11:55:50] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=738 in=10782 read=0 out=948 attempt=1 ms=10551",
-    "[11:55:50] image: \"High angle view of an offshore oil rig near a developed coas\" names the story's topic without saying its point (A clear, professional frame of a drilling rig, the project's own sector. It shows no place, which is acceptable because no UAE photograph is on offer. But the r); checked now and kept in reserve while the desk looks further",
-    "[11:55:59] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=662 in=7981 read=0 out=776 attempt=1 ms=8999",
-    "[11:55:59] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"High angle view of an offshore oil rig near a developed coas\": An unbranded offshore jack-up rig off an unidentified coastline misrepresents ADNOC's onshore unconventional gas project",
-    "[11:56:09] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=582 in=10808 read=0 out=783 attempt=1 ms=9706",
-    "[11:56:09] image: vision rejected all candidates (fallback pass) (No candidate fits. 1 is an offshore rig, tiny and distant, while the story is an onshore desert basin at Ruwais. 2 is a piling machine on a construction site in a green mountain valley. 3 is Israel's Leviathan field, hazy and far off. 4 is a plant in Ukraine. 5 is a picturesque pipeline sign with an English warning. 6 is a close-up of pipes and valves in Saudi Arabia, the wrong country. None shows the UAE or ADNOC.)",
-    "[11:56:09] image: the company's own brand (ADNOC): ADNOC sign | ADNOC petrol station sign | ADNOC gas station",
-    "[11:56:09] pexels \"ADNOC petrol station sign\": 8 usable",
-    "[11:56:09] pexels \"ADNOC gas station\": 8 usable",
-    "[11:56:10] pexels \"ADNOC sign\": 8 usable",
-    "[11:56:10] commons \"ADNOC sign\": 1 usable of 7",
-    "[11:56:10] image: dropped \"KADRIS Group Chairman Najeeb Kadiri signed agreements with ADNOC under\" — shows najeeb, not the story's people",
-    "[11:56:10] image: dropped \"Stunning view of Abu Dhabi's skyline with skyscrapers and traffic at s\" — names too little of sign",
-    "[11:56:10] image: dropped \"A palm-lined street in Dubai featuring blank billboards under a clear \" — names too little of sign",
-    "[11:56:10] image: dropped \"A vibrant urban scene showing a Dubai underpass with traffic and cultu\" — names too little of sign",
-    "[11:56:10] image: dropped \"Capture of Abu Dhabi skyline with modern skyscrapers reflecting on cal\" — names too little of sign",
-    "[11:56:10] commons \"ADNOC petrol station sign\": 0 usable of 0",
-    "[11:56:10] commons \"ADNOC gas station\": 0 usable of 1",
-    "[11:56:10] image: 16 file(s) dropped for not naming ADNOC",
-    "[11:56:10] image: no photograph of ADNOC's brand",
-    "[11:56:10] image: the story's people first: Sultan Al Jaber 2026 | Sultan Al Jaber | سلطان الجابر",
-    "[11:56:11] commons \"Sultan Al Jaber 2026\": 9 usable of 14",
-    "[11:56:11] image: dropped \"Sofia Asia Fest 2026 - UAE Ambassador to Bulgaria - Abdulrahman Ahmed \" — names none of the story's people",
-    "[11:56:11] image: dropped \"Sultan Ahmed Al Jaber, President designate of COP28, at the European C\" — names none of the story's people",
-    "[11:56:11] image: dropped \"Sultan Ahmed Al Jaber, President designate of COP28, at the European C\" — names none of the story's people",
-    "[11:56:11] image: dropped \"Sultan Ahmed Al Jaber, President designate of COP28, at the European C\" — names none of the story's people",
-    "[11:56:11] image: dropped \"Sultan Ahmed Al Jaber, President designate of COP28, at the European C\" — names none of the story's people",
-    "[11:56:11] image: dropped \"Sultan Ahmed Al Jaber, President designate of COP28, at the European C\" — names none of the story's people",
-    "[11:56:11] image: dropped \"Sultan Ahmed Al Jaber, President designate of COP28, at the European C\" — names none of the story's people",
-    "[11:56:11] image: dropped \"Sultan Ahmed Al Jaber, President designate of COP28, at the European C\" — names none of the story's people",
-    "[11:56:11] image: dropped \"Visit of Ursula von der Leyen, President of the European Commission, t\" — names none of the story's people",
-    "[11:56:11] commons \"Sultan Al Jaber\": 14 usable of 20",
-    "[11:56:11] image: dropped \"Rafael Mariano Grossi meets Dr. Sultan Al Jaber (cop26 0790) (51650866\" — shows general, not the story's people",
-    "[11:56:11] image: dropped \"Rafael Mariano Grossi meets Dr. Sultan Al Jaber (cop26 0785) (51650672\" — shows general, not the story's people",
-    "[11:56:11] image: dropped \"Rafael Mariano Grossi meets Dr. Sultan Al Jaber (cop26 0792) (51650006\" — shows general, not the story's people",
-    "[11:56:12] commons \"سلطان الجابر\": 16 usable of 20",
-    "[11:56:12] image: dropped \"Rafael Mariano Grossi meets Dr. Sultan Al Jaber (cop26 0778) (51650672\" — shows al, general, al, not the story's people",
-    "[11:56:12] image: dropped \"Rafael Mariano Grossi meets Dr. Sultan Al Jaber (cop26 0777) (51649180\" — shows al, general, al, not the story's people",
-    "[11:56:12] image: dropped \"Rafael Mariano Grossi meets Dr. Sultan Al Jaber (cop26 0786) (51650867\" — shows al, general, al, not the story's people",
-    "[11:56:12] image: dropped \"Vice President JD Vance meeting with UAE Industry Minister Sultan Al J\" — shows jd, sultan, al, not the story's people",
-    "[11:56:12] image: dropped \"Bilateral Meeting UAE (cop26 0759) (51649180857).jpg\" — shows general, al, not the story's people",
-    "[11:56:12] image: people shortlist: 2021 Außenminister Alexander Schallenberg mit einer Wir",
-    "[11:56:17] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=212 in=8120 read=0 out=392 attempt=1 ms=5101",
-    "[11:56:17] image: vision rejected all candidates (The only candidate is a posed 2021 diplomatic photo of Sultan Al Jaber with Austria's foreign minister, a person outside this story. Both wear COVID masks, so their faces are hidden and the frame looks dated. The occasion has nothing to do with ADNOC's Al Dhafra unconventional gas investment, and the story is about the project, not Al Jaber himself. Better to let the fallback find an ADNOC site or a gas-sector scene.)",
-    "[11:56:20] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=64 in=2824 read=0 out=106 attempt=1 ms=2694",
-    "[11:56:20] image: last resort: gas drilling rig desert United Arab Emirates | gas drilling rig desert | gas drilling rig desert industrial",
-    "[11:56:20] commons \"gas drilling rig desert United Arab Emirates\": 0 usable of 0",
-    "[11:56:20] commons \"gas drilling\": 11 usable of 24",
-    "[11:56:20] image: dropped \"Pacific Drilling - Offshore Deepwater Oil and Gas Drilling Company in \" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:56:20] image: dropped \"CSIRO ScienceImage 1905 Oil and Gas Drilling Platform.jpg\" — dated 2001, an archival picture",
-    "[11:56:20] commons \"gas drilling rig desert\": 0 usable of 0",
-    "[11:56:20] commons \"gas drilling\": 11 usable of 24",
-    "[11:56:21] commons \"gas drilling rig desert industrial\": 0 usable of 0",
-    "[11:56:21] commons \"gas drilling\": 11 usable of 24",
-    "[11:56:21] image: dropped \"Marcellus Shale Gas Drilling Tower 1 crop.jpg\" — taken in United States, which the story does not name",
-    "[11:56:21] image: dropped \"Marcellus Shale Gas Drilling Tower 2.jpg\" — taken in United States, which the story does not name",
-    "[11:56:21] image: dropped \"Marcellus Shale Gas Drilling Tower 1.jpg\" — taken in United States, which the story does not name",
-    "[11:56:38] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1161 in=8407 read=0 out=1389 attempt=1 ms=16573",
-    "[11:56:47] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=558 in=8076 read=0 out=664 attempt=1 ms=8758",
-    "[11:56:47] image: second check (claude-cli/claude-opus-5-5) AMATEUR — refused \"Mudlogging.JPG\": A cluttered, low-resolution 2010 compact-camera snapshot of a small truck-mounted rig and a mud logger at a makeshift ta",
-    "[11:56:47] image: last pass, a neutral illustration: gas drilling rig desert | drilling rig | gas processing plant | gas pipeline desert | gas field",
-    "[11:56:47] commons \"gas drilling rig desert\": 0 usable of 0",
-    "[11:56:47] commons \"gas drilling\": 11 usable of 24",
-    "[11:56:47] image: dropped \"Pacific Drilling - Offshore Deepwater Oil and Gas Drilling Company in \" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:56:47] image: dropped \"CSIRO ScienceImage 1905 Oil and Gas Drilling Platform.jpg\" — dated 2001, an archival picture",
-    "[11:56:47] pexels \"gas drilling rig desert\": 8 usable",
-    "[11:56:47] image: dropped \"Dramatic silhouette of an oil pump jack against a vibrant sunset sky, \" — names too little of gas, drilling, rig, desert",
-    "[11:56:47] image: dropped \"High-angle view of an offshore oil platform with helipad surrounded by\" — names too little of gas, drilling, rig, desert",
-    "[11:56:47] image: dropped \"Oil pump jack and equipment at remote industrial site under cloudy sky\" — names too little of gas, drilling, rig, desert",
-    "[11:56:47] image: dropped \"Dramatic view of a large oil platform in Norway's North Sea, symbolizi\" — names too little of gas, drilling, rig, desert",
-    "[11:56:47] pexels \"drilling rig\": 8 usable",
-    "[11:56:47] commons \"drilling rig\": 18 usable of 24",
-    "[11:56:47] image: dropped \"High-angle view of an offshore oil platform with helipad surrounded by\" — names too little of drilling, rig",
-    "[11:56:47] image: dropped \"Dramatic silhouette of an oil pump jack against a vibrant sunset sky, \" — names too little of drilling, rig",
-    "[11:56:47] image: dropped \"Blue piling rig machine at a construction site in Faridabad, India, wi\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:56:47] pexels \"gas processing plant\": 8 usable",
-    "[11:56:47] pexels \"gas field\": 8 usable",
-    "[11:56:47] pexels \"gas pipeline desert\": 8 usable",
-    "[11:56:48] commons \"gas processing plant\": 14 usable of 24",
-    "[11:56:48] image: dropped \"Trumbull-Cliffs Furnace flue gas processing plant 1929.jpg\" — dated 1929, an archival picture",
-    "[11:56:48] commons \"gas pipeline desert\": 3 usable of 8",
-    "[11:56:48] image: dropped \"Austria Sub Float Tube Lake Constance.JPG\" — names too little of gas, pipeline, desert",
-    "[11:56:48] image: dropped \"Cadiz Valley (53055090679).jpg\" — names too little of gas, pipeline, desert",
-    "[11:56:48] image: dropped \"A series of large industrial pipes under a dramatic cloudy sky in New \" — names too little of gas, pipeline, desert",
-    "[11:56:48] image: dropped \"Aerial view of an oil refinery in Bratislava, Slovakia with flames on \" — names too little of gas, pipeline, desert",
-    "[11:56:48] commons \"gas field\": 12 usable of 24",
-    "[11:56:48] image: dropped \"Darvasa gas crater panorama crop.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:56:48] image: dropped \"Panorama of \"M-25\" gas field.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:57:01] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=934 in=10536 read=0 out=1136 attempt=1 ms=12540",
-    "[11:57:01] image: vision rejected all candidates (fallback pass) (None fits an onshore desert gas project. Photos 2 and 3 are construction drills in green, wooded or mountain land, which contradicts the Gulf desert and is not the gas sector. Photos 1 and 4 are offshore rigs at sea or at a quay, which misrepresents an onshore basin; 1 is also tiny and distant, and 4 is idle rigs under refurbishment with oversaturated colour. Photo 5 is distant and hazy behind foreground vegetation. Photo 6 is a map.)",
-    "[11:57:11] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=668 in=10946 read=0 out=841 attempt=1 ms=9684",
-    "[11:57:11] image: vision rejected all candidates (fallback pass) (None fits Al Dhiyab, an onshore desert gas basin. Photo 1 is an offshore rig shot from high above, which points to a sea project rather than this one. Photo 2 is a water-well drilling site among houses, not gas. Photo 3 shows a gas mast in a flooded green field under rain clouds. Photos 4-6 are amateur shots of a shale rig among forested hills, which contradicts the Gulf desert setting.)",
-    "[11:57:11] published \"أدنوك الإماراتية تقر مشروعاً للغاز غير التقليدي بطاقة 345 مليون قدم مكعبة يومياً\" -> adnoc-fid-ruwais-diyab-unconventional-gas-2833f2",
-    "[11:57:11] run budget of 35 minutes spent; \"واشنطن تسعى لإعادة الغاز الروسي إلى أوروبا عبر أوكرانيا قبل الشتاء\" waits for the next run",
-    "[11:57:11] run budget of 35 minutes spent; \"مجموعة الحبتور تقرر بيع جميع أصولها واستثماراتها في لبنان\" waits for the next run"
+    "[13:55:30] image: dropped \"Gold dinar of Lajin.jpg\" — taken in Egypt, which the story does not name",
+    "[13:55:30] image: dropped \"Leeds Corn Exchange HDR.jpg\" — taken in United Kingdom, which the story does not name",
+    "[13:55:35] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=102 in=8481 read=0 out=276 attempt=1 ms=4516",
+    "[13:55:35] image: vision rejected all candidates (Neither photo works. Candidate 1 is a scan of a counterfeit dinar note with a large «Contrefaçon» stamp across it. It is not editorial, and next to a story on the dinar's slide it would suggest forgery. Candidate 2 is an 1862 Confederate banknote showing enslaved people. It is archival, unrelated to modern US dollars or Iraq, and offensive in this context. The story runs better without a photo than with either.)",
+    "[13:55:35] image: tier 4, the story's point and its subject: money changer dollars Baghdad | Iraqi dinar dollar exchange | counting US dollars Iraq | money changer Baghdad | Iraqi dinars | US dollar banknotes (home: Iraq, Iraqi, Baghdad, Erbil, Basra)",
+    "[13:55:35] pexels \"money changer dollars Baghdad\": 8 usable",
+    "[13:55:35] pexels \"money changer Baghdad\": 8 usable",
+    "[13:55:35] pexels \"US dollar banknotes\": 8 usable",
+    "[13:55:35] pexels \"Iraqi dinar dollar exchange\": 8 usable",
+    "[13:55:35] pexels \"Iraqi dinars\": 8 usable",
+    "[13:55:35] pexels \"counting US dollars Iraq\": 8 usable",
+    "[13:55:36] commons \"money changer dollars Baghdad\": 0 usable of 0",
+    "[13:55:41] commons \"money changer\": 15 usable of 24",
+    "[13:55:41] image: dropped \"A Jewish money changer LOC matpc.19071.jpg\" — dated 1934, an archival picture",
+    "[13:55:41] image: dropped \"A Jewish money changer LOC matpc.19070.jpg\" — dated 1934, an archival picture",
+    "[13:55:46] openverse \"Iraqi dinar dollar exchange\": 0 usable of 0",
+    "[13:55:48] openverse \"money changer dollars Baghdad\": 0 usable of 0",
+    "[13:56:10] openverse \"money changer Baghdad\": 0 usable of 0",
+    "[13:56:20] openverse \"counting US dollars Iraq\": The operation was aborted due to timeout",
+    "[13:56:33] openverse \"Iraqi dinars\": The operation was aborted due to timeout",
+    "[13:56:55] openverse \"US dollar banknotes\": The operation was aborted due to timeout",
+    "[13:56:55] openverse: 3 failures in a row; left alone for 10 minutes",
+    "[13:56:56] commons \"Iraqi dinar dollar exchange\": 0 usable of 0",
+    "[13:56:59] commons \"Iraqi dinar\": 10 usable of 24",
+    "[13:56:59] image: dropped \"Commemorative coins of Iraq 1-Dinar-Oil-Nationalization-back.jpg\" — dated 1973, an archival picture",
+    "[13:56:59] image: dropped \"Commemorative coins of Iraq 1-Dinar-Oil-Nationalization (1).jpg\" — dated 1973, an archival picture",
+    "[13:56:59] image: dropped \"Marines and Sailors Transport Iraqi Dinar DVIDS56031.jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[13:56:59] image: dropped \"Marines and Sailors Transport Iraqi Dinar DVIDS56052.jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[13:56:59] image: dropped \"Marines and Sailors Transport Iraqi Dinar DVIDS56029.jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[13:56:59] image: dropped \"FGM-148 Javelin - ID 061024-A-0497K-004.JPEG\" — names too little of dinar",
+    "[13:56:59] image: dropped \"IS dinar reverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[13:56:59] image: dropped \"Wittenburg Kirche ID 34504681 v001.jpg\" — names too little of dinar",
+    "[13:56:59] image: dropped \"SM Brzezinka kościół Wniebowzięcia NMP (19) ID 596368.jpg\" — names too little of dinar",
+    "[13:56:59] image: dropped \"A collection of diverse Jordanian banknotes laid out on a surface, sho\" — names too little of dinar, dollar, exchange",
+    "[13:56:59] commons \"counting US dollars Iraq\": 2 usable of 3",
+    "[13:56:59] image: dropped \"Marine money handlers fill critical niche in Iraq DVIDS24943.jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[13:56:59] image: dropped \"USMC-051205-M-9499D-009.jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:57:00] commons \"money changer Baghdad\": 1 usable of 5",
+    "[13:57:00] image: dropped \"The thrones and palaces of Babylon and Ninevah from sea to sea; a thou\" — names too little of money, changer",
+    "[13:57:00] image: dropped \"An elderly man in an overcoat stands in front of a traditional shop wi\" — names too little of money, changer",
+    "[13:57:00] image: dropped \"A senior street vendor selling goods on a sunny day in Sulaymaniyah, I\" — names too little of money, changer",
+    "[13:57:03] commons \"Iraqi dinars\": 11 usable of 24",
+    "[13:57:03] image: dropped \"FGM-148 Javelin - ID 061024-A-0497K-004.JPEG\" — names too little of dinars",
+    "[13:57:03] image: dropped \"Wittenburg Kirche ID 34504681 v001.jpg\" — names too little of dinars",
+    "[13:57:03] image: dropped \"SM Brzezinka kościół Wniebowzięcia NMP (19) ID 596368.jpg\" — names too little of dinars",
+    "[13:57:03] image: dropped \"Volkswagen ID.5 GTX 1X7A0213.jpg\" — names too little of dinars",
+    "[13:57:03] image: dropped \"VW I.D. Buggy Genf 2019 1Y7A5934.jpg\" — names too little of dinars",
+    "[13:57:03] image: dropped \"A collection of diverse Jordanian banknotes laid out on a surface, sho\" — names too little of dinars",
+    "[13:57:03] image: dropped \"A close-up photo of diverse vintage banknotes, showcasing historical c\" — names too little of dinars",
+    "[13:57:03] image: dropped \"Detailed monochrome image of a Moroccan banknote showcasing intricate \" — names too little of dinars",
+    "[13:57:03] image: dropped \"A diverse collection of Tunisian coins showcasing intricate designs an\" — names too little of dinars",
+    "[13:57:03] image: dropped \"Close-up of North Macedonian denar coins on a bamboo table with artist\" — names too little of dinars",
+    "[13:57:03] image: dropped \"Scenic view of Montenegro's coastline with lush autumn foliage and dis\" — names too little of dinars",
+    "[13:57:04] commons \"US dollar banknotes\": 17 usable of 24",
+    "[13:57:04] image: dropped \"USA Ten Dollar Bill 1929 Whitney Bank New Orleans.jpg\" — dated 1929, an archival picture",
+    "[13:57:04] image: dropped \"United States paper currency, 1779, recto, from The Clark Digital Coll\" — a scan of a note's or a coin's face, not a photograph",
+    "[13:57:04] image: dropped \"Series 1953 US two-dollar bill reverse.jpg\" — dated 1953, an archival picture",
+    "[13:57:04] image: dropped \"Series 1953 US two-dollar bill obverse.jpg\" — dated 1953, an archival picture",
+    "[13:57:04] image: dropped \"1841 - Five Dollar Bill - Northampton Bank - PA.jpg\" — dated 1841, an archival picture",
+    "[13:57:04] image: dropped \"1844 - Five Dollar Bill - Lehigh County Bank - PA.jpg\" — dated 1844, an archival picture",
+    "[13:57:04] image: dropped \"A vibrant street scene in Damascus featuring locals at an antique shop\" — taken in Syria, which the story does not name",
+    "[13:57:12] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=418 in=11695 read=0 out=622 attempt=1 ms=7081",
+    "[13:57:12] image: vision rejected all candidates (fallback pass) (None fits. 1 and 2 show Jordanian notes, the wrong currency for an Iraqi story; 1 is also a flat amateur shot on a table. 3 is a flat scan of a counterfeit Iraqi note with a 'Contrefaçon' overlay. 4 shows money changers in Somaliland and 5 a money changer in Albania, both the wrong country, and 5 is an amateur close-up of an arm from 2005. 6 is an archival Confederate note showing slaves, which would be embarrassing beside the headline.)",
+    "[13:57:22] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=562 in=9896 read=0 out=753 attempt=1 ms=9155",
+    "[13:57:22] image: \"Close-up of person counting cash with a calculator and paper\" names the story's topic without saying its point (Hands counting US dollar notes is the agency-style way to show paper dollars changing hands, the cash the story is about. Its laptop and calculator give it a sl); checked now and kept in reserve while the desk looks further",
+    "[13:57:37] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=903 in=7675 read=0 out=1000 attempt=1 ms=15405",
+    "[13:57:37] image: second check (claude-cli/claude-opus-5-5) STOCK — refused \"Close-up of person counting cash with a calculator and paper\": This is a posed lifestyle stock shot of someone budgeting with small US bills, a calculator and a laptop on a home desk,",
+    "[13:57:41] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=265 in=3039 read=0 out=322 attempt=1 ms=4092",
+    "[13:57:41] image: last resort: the headline is not Central Bank of Iraq's own decision on rates or its currency, so its building is not searched",
+    "[13:57:41] image: last resort: Iraqi dinar banknotes Iraq | Iraqi dinar banknotes | Iraqi dinar banknotes industrial",
+    "[13:57:42] commons \"Iraqi dinar banknotes Iraq\": 11 usable of 24",
+    "[13:57:42] image: dropped \"1IQD1959back.jpg\" — dated 1959, an archival picture",
+    "[13:57:42] image: dropped \"1IQD1959front Signature by Khairuddin Haseeb.jpg\" — dated 1959, an archival picture",
+    "[13:57:42] image: dropped \"100IQD1939back.jpg\" — dated 1939, an archival picture",
+    "[13:57:42] image: dropped \"1IQD1932front.jpg\" — dated 1932, an archival picture",
+    "[13:57:42] image: dropped \"100IQD1939front.jpg\" — dated 1939, an archival picture",
+    "[13:57:42] image: dropped \"1IQDking1939front.jpg\" — dated 1939, an archival picture",
+    "[13:57:42] image: dropped \"100000000-dinar-1993-Yugoslav-reverse.jpg\" — dated 1993, an archival picture",
+    "[13:57:43] commons \"Iraqi dinar banknotes\": 16 usable of 24",
+    "[13:57:43] image: dropped \"100000000-dinar-1993-Yugoslav-obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[13:57:43] image: dropped \"100000-Yugoslav-dinar-1993 06.jpg\" — dated 1993, an archival picture",
+    "[13:57:44] commons \"Iraqi dinar banknotes industrial\": 0 usable of 0",
+    "[13:57:44] commons \"Iraqi dinar\": 10 usable of 24",
+    "[13:57:44] image: dropped \"Commemorative coins of Iraq 1-Dinar-Oil-Nationalization-back.jpg\" — dated 1973, an archival picture",
+    "[13:57:44] image: dropped \"Commemorative coins of Iraq 1-Dinar-Oil-Nationalization (1).jpg\" — dated 1973, an archival picture",
+    "[13:57:44] image: dropped \"Marines and Sailors Transport Iraqi Dinar DVIDS56031.jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[13:57:44] image: dropped \"Marines and Sailors Transport Iraqi Dinar DVIDS56052.jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[13:57:44] image: dropped \"Marines and Sailors Transport Iraqi Dinar DVIDS56029.jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[13:57:44] image: dropped \"FGM-148 Javelin - ID 061024-A-0497K-004.JPEG\" — names too little of dinar",
+    "[13:57:44] image: dropped \"IS dinar reverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[13:57:44] image: dropped \"Wittenburg Kirche ID 34504681 v001.jpg\" — names too little of dinar",
+    "[13:57:44] image: dropped \"SM Brzezinka kościół Wniebowzięcia NMP (19) ID 596368.jpg\" — names too little of dinar",
+    "[13:57:44] image: dropped \"TCDD DE 24 372 Dinar - Karakuyu.jpg\" — taken in Turkey, which the story does not name",
+    "[13:57:44] image: dropped \"Gold dinar of Lajin.jpg\" — taken in Egypt, which the story does not name",
+    "[13:57:48] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=71 in=9466 read=0 out=258 attempt=1 ms=3922",
+    "[13:57:48] image: vision rejected all candidates (fallback pass) (No candidate fits. 1 is a flat scan of a counterfeit Iraqi note with a 'Contrefaçon' text overlay, which would be misleading and embarrassing beside a story about the dinar. 2 to 4 are flat scans of 1980s Yugoslav dinar notes, the wrong country and currency. 5 is a medieval Zirid gold coin, archival and unrelated. None shows Iraqi money changing hands or dollars arriving. The story runs better as text.)",
+    "[13:57:48] image: last pass, a neutral illustration: money changer dollars Baghdad | Iraqi dinar dollar exchange | counting US dollars Iraq | money changer | Iraqi dinars | US dollar banknotes",
+    "[13:57:48] commons \"money changer dollars Baghdad\": 0 usable of 0",
+    "[13:57:48] commons \"money changer\": 15 usable of 24",
+    "[13:57:48] image: dropped \"A Jewish money changer LOC matpc.19071.jpg\" — dated 1934, an archival picture",
+    "[13:57:48] image: dropped \"A Jewish money changer LOC matpc.19070.jpg\" — dated 1934, an archival picture",
+    "[13:57:49] pexels \"US dollar banknotes\": 8 usable",
+    "[13:57:49] pexels \"Iraqi dinars\": 8 usable",
+    "[13:57:49] pexels \"counting US dollars Iraq\": 8 usable",
+    "[13:57:49] pexels \"money changer\": 8 usable",
+    "[13:57:49] pexels \"Iraqi dinar dollar exchange\": 8 usable",
+    "[13:57:49] pexels \"money changer dollars Baghdad\": 8 usable",
+    "[13:57:49] commons \"Iraqi dinar dollar exchange\": 0 usable of 0",
+    "[13:57:49] commons \"Iraqi dinar\": 10 usable of 24",
+    "[13:57:49] image: dropped \"Commemorative coins of Iraq 1-Dinar-Oil-Nationalization-back.jpg\" — dated 1973, an archival picture",
+    "[13:57:49] image: dropped \"Commemorative coins of Iraq 1-Dinar-Oil-Nationalization (1).jpg\" — dated 1973, an archival picture",
+    "[13:57:49] image: dropped \"Marines and Sailors Transport Iraqi Dinar DVIDS56031.jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[13:57:49] image: dropped \"Marines and Sailors Transport Iraqi Dinar DVIDS56052.jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[13:57:49] image: dropped \"Marines and Sailors Transport Iraqi Dinar DVIDS56029.jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[13:57:49] image: dropped \"FGM-148 Javelin - ID 061024-A-0497K-004.JPEG\" — names too little of dinar",
+    "[13:57:49] image: dropped \"IS dinar reverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[13:57:49] image: dropped \"Wittenburg Kirche ID 34504681 v001.jpg\" — names too little of dinar",
+    "[13:57:49] image: dropped \"SM Brzezinka kościół Wniebowzięcia NMP (19) ID 596368.jpg\" — names too little of dinar",
+    "[13:57:49] image: dropped \"A collection of diverse Jordanian banknotes laid out on a surface, sho\" — names too little of dinar, dollar, exchange",
+    "[13:57:49] commons \"counting US dollars Iraq\": 2 usable of 3",
+    "[13:57:49] image: dropped \"Marine money handlers fill critical niche in Iraq DVIDS24943.jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[13:57:49] image: dropped \"USMC-051205-M-9499D-009.jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:57:49] commons \"money changer\": 15 usable of 24",
+    "[13:57:49] image: dropped \"Two adults conversing at an outdoor money exchange booth with vivid si\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[13:57:49] commons \"Iraqi dinars\": 11 usable of 24",
+    "[13:57:49] image: dropped \"FGM-148 Javelin - ID 061024-A-0497K-004.JPEG\" — names too little of dinars",
+    "[13:57:49] image: dropped \"Wittenburg Kirche ID 34504681 v001.jpg\" — names too little of dinars",
+    "[13:57:49] image: dropped \"SM Brzezinka kościół Wniebowzięcia NMP (19) ID 596368.jpg\" — names too little of dinars",
+    "[13:57:49] image: dropped \"Volkswagen ID.5 GTX 1X7A0213.jpg\" — names too little of dinars",
+    "[13:57:49] image: dropped \"VW I.D. Buggy Genf 2019 1Y7A5934.jpg\" — names too little of dinars",
+    "[13:57:49] image: dropped \"A collection of diverse Jordanian banknotes laid out on a surface, sho\" — names too little of dinars",
+    "[13:57:49] image: dropped \"A close-up photo of diverse vintage banknotes, showcasing historical c\" — names too little of dinars",
+    "[13:57:49] image: dropped \"Detailed monochrome image of a Moroccan banknote showcasing intricate \" — names too little of dinars",
+    "[13:57:49] image: dropped \"A diverse collection of Tunisian coins showcasing intricate designs an\" — names too little of dinars",
+    "[13:57:49] image: dropped \"Close-up of North Macedonian denar coins on a bamboo table with artist\" — names too little of dinars",
+    "[13:57:49] image: dropped \"Scenic view of Montenegro's coastline with lush autumn foliage and dis\" — names too little of dinars",
+    "[13:57:49] commons \"US dollar banknotes\": 17 usable of 24",
+    "[13:57:49] image: dropped \"USA Ten Dollar Bill 1929 Whitney Bank New Orleans.jpg\" — dated 1929, an archival picture",
+    "[13:57:49] image: dropped \"United States paper currency, 1779, recto, from The Clark Digital Coll\" — a scan of a note's or a coin's face, not a photograph",
+    "[13:57:49] image: dropped \"Series 1953 US two-dollar bill reverse.jpg\" — dated 1953, an archival picture",
+    "[13:57:49] image: dropped \"Series 1953 US two-dollar bill obverse.jpg\" — dated 1953, an archival picture",
+    "[13:57:49] image: dropped \"1841 - Five Dollar Bill - Northampton Bank - PA.jpg\" — dated 1841, an archival picture",
+    "[13:57:49] image: dropped \"1844 - Five Dollar Bill - Lehigh County Bank - PA.jpg\" — dated 1844, an archival picture",
+    "[13:58:04] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=911 in=9754 read=0 out=1131 attempt=1 ms=13024",
+    "[13:58:11] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=666 in=1091 read=0 out=709 attempt=1 ms=7750",
+    "[13:58:21] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=596 in=7511 read=0 out=706 attempt=1 ms=9164",
+    "[13:58:21] image: second check (claude-cli/claude-opus-5-5) STOCK — refused \"Hands counting 100 dollar bills using a calculator and money\": Although dollar notes fit the story, this is a staged overhead stock flat-lay of scattered cash, a calculator and a cash",
+    "[13:58:28] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=378 in=11234 read=0 out=591 attempt=1 ms=7268",
+    "[13:58:28] image: vision rejected all candidates (fallback pass) (None fits. The Đà Nẵng and Pattaya booths carry legible local place names and a spa sign. The Iraqi dinar is a flat scan of a counterfeit note overlaid with 'Contrefaçon'. The Hargeisa frame is an amateur street scene that reads as a poverty cliché. The Jordanian notes are the wrong currency, shot flat on a table. The Tirana shot is a 2005 amateur close-up of a hairy arm holding Albanian lek. None shows dinars or dollars changing hands in a serious, professional frame.)",
+    "[13:58:28] published explainer \"لماذا يحتاج العراق إلى دولارات ورقية من أمريكا كي يوقف هبوط الدينار؟\" -> why-iraq-needs-us-paper-dollars-to-support-dinar-6c2924"
   ]
 }
