@@ -1743,6 +1743,50 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-11-02T11:37:03.038Z",
+      "slug": "oman-china-sign-23-agreements-beijing-a45570",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v50",
+      "lessonsHash": "a6c6134ebe",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 29,
+        "notFound": 3,
+        "checked": 33,
+        "words": 474,
+        "keyFacts": 5,
+        "classes": [],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 27,
+        "notFound": 2,
+        "checked": 30,
+        "words": 422,
+        "keyFacts": 5,
+        "classes": [],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 27,
+        "notFound": 2,
+        "checked": 30,
+        "words": 422,
+        "keyFacts": 5,
+        "classes": [],
+        "programmatic": 0
+      }
     }
   ]
 }

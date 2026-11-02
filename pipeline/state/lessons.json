@@ -230,10 +230,12 @@
     "egypt-first-locally-assembled-electric-car-f79ba4:463d16b5",
     "saudi-economy-contraction-slows-third-quarter-aba15b:14943288",
     "opec-plus-holds-december-oil-quotas-b01552:147f003a",
-    "hormuz-fertilizer-disruption-egypt-morocco-exporters-c8129a:98713950"
+    "hormuz-fertilizer-disruption-egypt-morocco-exporters-c8129a:98713950",
+    "banque-du-caire-shares-jump-egx-debut-412cd0:0b69ad47",
+    "banque-du-caire-shares-jump-egx-debut-412cd0:8f8cf933"
   ],
-  "version": 49,
-  "updatedAt": "2026-11-01T19:45:24.665Z",
+  "version": 50,
+  "updatedAt": "2026-11-02T11:20:21.952Z",
   "lessons": [
     {
       "id": "L1",
@@ -724,7 +726,7 @@
     {
       "id": "L12",
       "class": "internal",
-      "rule": "Before linking figures with 'because', 'as' or فقد, check the arithmetic: a total cannot fall more than all its parts, nor shares exceed 100%. If the source's numbers clash, keep every figure but drop the explanatory link and flag the clash to the desk.",
+      "rule": "Recompute each percentage change from the base the story gives, headlines and data lines included (5.30 to 5.6 is 5.7%, not 7%); no total falls more than its parts, no shares exceed 100%. If figures clash, keep each, drop the link, flag the desk.",
       "example": {
         "wrong": "وتراجعت الإيرادات التشغيلية للمجموعة 8.1% إلى 292.2 مليون ريال، وانخفضت الإيرادات المرتبطة بأنشطة التداول 14.6%؛ فقد خسر قطاع أسواق المال، المسؤول عن الإدراج والتداول، 12.5% من إيراداته، وخسر قطاع خدمات ما بعد التداول، من مقاصة وتسوية وحفظ، 7.2%.",
         "quote": "وتراجعت الإيرادات التشغيلية للمجموعة 8.1% إلى 292.2 مليون ريال، وانخفضت الإيرادات المرتبطة بأنشطة التداول 14.6%؛ فقد خسر قطاع أسواق المال، المسؤول عن الإدراج والتداول، 12.5% من إيراداته، وخسر قطاع خدمات ما بعد التداول، من مقاصة وتسوية وحفظ، 7.2%.",
@@ -734,13 +736,19 @@
       "evidence": [
         "qatar-saudi-stock-markets-liquidity-test-6421f7:4bf6e2c6",
         "euro-area-gdp-grows-q3-france-contracts-65e2be:d654334d",
-        "hormuz-fertilizer-disruption-egypt-morocco-exporters-c8129a:98713950"
+        "hormuz-fertilizer-disruption-egypt-morocco-exporters-c8129a:98713950",
+        "banque-du-caire-shares-jump-egx-debut-412cd0:0b69ad47",
+        "banque-du-caire-shares-jump-egx-debut-412cd0:8f8cf933"
       ],
-      "seen": 3,
+      "seen": 5,
       "createdAt": "2026-10-28T05:52:18.463Z",
-      "lastSeen": "2026-11-01T19:45:24.665Z",
+      "lastSeen": "2026-11-02T11:20:21.952Z",
       "status": "active",
-      "activatedAt": "2026-10-30T18:06:12.820Z"
+      "activatedAt": "2026-10-30T18:06:12.820Z",
+      "previous": [
+        "Before linking figures with 'because', 'as' or فقد, check the arithmetic: a total cannot fall more than all its parts, nor shares exceed 100%. If the source's numbers clash, keep every figure but drop the explanatory link and flag the clash to the desk."
+      ],
+      "sharpenedAt": "2026-11-02T11:20:21.952Z"
     }
   ],
   "model": "claude-cli/claude-opus-5-5",
@@ -1180,6 +1188,13 @@
       "applied": [
         "reinforce L9 (+1; reworded at most once a week)",
         "reinforce L12 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-11-02T11:20:21.952Z",
+      "mistakes": 2,
+      "applied": [
+        "sharpen L12 (+2)"
       ]
     }
   ],

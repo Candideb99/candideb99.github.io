@@ -10710,6 +10710,72 @@
           "noted": []
         }
       ]
+    },
+    "oman-china-sign-23-agreements-beijing-a45570": {
+      "at": "2026-11-02T11:37:03.028Z",
+      "title": "عُمان والصين توقعان 23 اتفاقاً تتجاوز قيمتها 2.3 مليار دولار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v50",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 38,
+            "checked": 38,
+            "supported": 35,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [],
+          "unsourced": {
+            "asked": 1,
+            "kept": [],
+            "removed": [
+              {
+                "sentence": "ووقّع البلدان كذلك اتفاقاً لمبادلة العملات، وفق صحيفة «غلف نيوز» الإماراتية.",
+                "said": "unsourced"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "adnoc-fid-ruwais-diyab-unconventional-gas-2833f2": {
+      "at": "2026-11-02T11:57:11.204Z",
+      "title": "أدنوك الإماراتية تقر مشروعاً للغاز غير التقليدي بطاقة 345 مليون قدم مكعبة يومياً",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v50",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 23,
+            "checked": 23,
+            "supported": 22,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
