@@ -1,0 +1,25 @@
+{
+  "startedAt": "2026-11-03T17:10:50.885Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "brent-rebounds-us-strike-qeshm-island-382dd6",
+      "issue": "The body says «سُوّيت العقود الآجلة لبرنت يوم الاثنين عند 104.77 دولار للبرميل، بانخفاض 8.66 دولار، وسط مساعٍ قطرية للتوصل إلى اتفاق سلام بين الولايات المتحدة وإيران، وفي يوم أبدى فيه الرئيسان الأمريكي والإيراني انفتاحهما على حل دبلوماسي للحرب.» (Brent futures settled Monday at $104.77, down $8.66, amid Qatari peace efforts, on a day when the US and Iranian presidents both expressed openness to a diplomatic solution.). Source CNBC says: \"Oil sold off more than 7% on Monday after Washington and Tehran signaled they were both open to discussions to reach a settlement.\". The source says Washington and Tehran signalled openness to discussions; it does not attribute this to the Iranian president.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن الرئيسين الأمريكي والإيراني أبديا الاثنين انفتاحهما على حل دبلوماسي للحرب، والصحيح أن واشنطن وطهران أبدتا انفتاحهما على مناقشات للتوصل إلى تسوية، من دون أن يُنسب ذلك إلى الرئيس الإيراني.",
+      "model": "claude-cli/claude-opus-5-5",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "سُوّيت العقود الآجلة لبرنت يوم الاثنين عند 104.77 دولار للبرميل، بانخفاض 8.66 دولار، وسط مساعٍ قطرية للتوصل إلى اتفاق سلام بين الولايات المتحدة وإيران، وفي يوم أبدى فيه الرئيسان الأمريكي والإيراني انفتاحهما على حل دبلوماسي للحرب."
+      ],
+      "newSentences": [
+        "سُوّيت العقود الآجلة لبرنت يوم الاثنين عند 104.77 دولار للبرميل، بانخفاض 8.66 دولار، وسط مساعٍ قطرية للتوصل إلى اتفاق سلام بين الولايات المتحدة وإيران، وفي يوم أبدت فيه واشنطن وطهران انفتاحهما على مناقشات للتوصل إلى تسوية."
+      ]
+    }
+  ]
+}

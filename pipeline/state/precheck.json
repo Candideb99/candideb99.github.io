@@ -11183,6 +11183,102 @@
           ]
         }
       ]
+    },
+    "saudi-q3-budget-deficit-oil-revenue-falls-7f7a75": {
+      "at": "2026-11-03T17:24:40.079Z",
+      "title": "عجز الميزانية السعودية يزيد على الضعف إلى 84.3 مليار ريال في الربع الثالث",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v51",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 38,
+            "checked": 38,
+            "supported": 33,
+            "weak": 2,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 1,
+              "field": "title",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "عجز الميزانية السعودية يزيد على الضعف إلى 84.3 مليار ريال في الربع الثالث",
+              "quote": "وقد بلغ إجمالي إيرادات الميزانية خلال الربع الثالث 259.1 مليار ريال (69.1 مليار دولار)، متراجعاً بنسبة 4 في المائة على أساس سنوي، فيما انخفضت المصروفات بنسبة 4 في المائة إلى 343.4 مليار ريال (91.6 مليار دولار)، لينتج عن ذلك عجز بلغ 84.3 مليار ريال (22.5 مليار دولار)، وفق التقرير الصادر عن وزارة المالية السعودية.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "brent-plunge-iran-talks-conflicting-reports-88afef": {
+      "at": "2026-11-03T17:39:55.469Z",
+      "title": "برنت يقلص خسارة تجاوزت 6 دولارات وسط أنباء متضاربة عن محادثات واشنطن وطهران",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v51",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 37,
+            "checked": 37,
+            "supported": 36,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "us-job-openings-jump-september-jolts-6d62a3": {
+      "at": "2026-11-03T17:51:46.034Z",
+      "title": "الوظائف الشاغرة في أمريكا تقفز إلى 7.52 مليون في سبتمبر متجاوزة التوقعات",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v51",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 30,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

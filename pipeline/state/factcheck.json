@@ -15043,6 +15043,183 @@
         }
       ],
       "outcome": "clean"
+    },
+    "xrg-buys-shell-north-west-shelf-stake-e2989d": {
+      "at": "2026-11-03T17:08:09.640Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v50",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-03T09:40:27.581Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "fromCopy": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 24,
+        "checked": 24,
+        "supported": 21,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "تشمل الصفقة حصة 16.67% في مشروع «نورث ويست شيلف» وتنتظر موافقات تنظيمية، وتتوقع «شل» إتمامها في 2027",
+          "quote": "The purchase is still subject to regulatory approvals.Shell expects closing it in 2027, and the buyers will take on decommissioning obligations."
+        },
+        {
+          "sentence": "السعر الأساسي للصفقة: 1.45 مليار دولار",
+          "quote": "It also mentions an additional milestone-linked contingent payment, on top of the base price."
+        },
+        {
+          "sentence": "واستحوذت «إكس آر جي» منذ إطلاقها في 2024 على حصص في مشروعات غاز عدة حول العالم، ونمت قيمتها المؤسسية من أكثر من 80 مليار دولار عند الإطلاق إلى أكثر من 150 ملياراً، وهي تخطط لمضاعفة قيمة أصولها خلال العقد المقبل.",
+          "quote": "XRG has been actively increasing its portfolio of investments globally and plans to double its asset value over the next decade. Launched in 2024 as an international lower-carbon energy and chemicals investment company, with an enterprise value exceeding $80 billion, it has acquired stakes in several global gas projects."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "brent-rebounds-us-strike-qeshm-island-382dd6": {
+      "at": "2026-11-03T17:08:09.647Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-03T07:29:12.894Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "fromCopy": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 26,
+        "checked": 26,
+        "supported": 17,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 6,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 14,
+          "field": "body",
+          "sentence": "وأفاد موقع «أرابيان غلف بزنس إنسايت» (AGBI) المتخصص في أخبار أعمال الخليج بأن دوي خمسة انفجارات سُمع في أنحاء الجزيرة، وأكدت وسائل إعلام إيرانية وقوع انفجارات في قشم، من دون أن تتحقق من أنها ناجمة عن ضربة أمريكية.",
+          "claim": "AGBI reported five explosions were heard across the island; Iranian media confirmed explosions on Qeshm without verifying they came from a US strike.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "AGBI (Arabian Gulf Business Insight)",
+          "sourceDate": "2026-11-03",
+          "quote": "Iranian media confirmed explosions on the island without verifying any US strike.",
+          "correction": "AGBI says only that Iranian media confirmed explosions on the island; it gives no count of five explosions.",
+          "class": "figure"
+        }
+      ],
+      "listed": [
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "title",
+          "sentence": "برنت يرتد 0.97% بعد تقارير عن ضربة أمريكية على جزيرة قشم الإيرانية",
+          "quote": "وارتفعت العقود الآجلة لخام 0.82% لتصل إلى 105.6 دولارات للبرميل، وقت كتابة التقرير.",
+          "source": "Al Jazeera Arabic",
+          "correction": "Al Jazeera gives a Brent rise of 0.82% (AGBI gives 0.31%); no source gives 0.97%."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "lede",
+          "sentence": "ارتفع خام برنت 0.97% إلى 105.77 دولار للبرميل في تعاملات الثلاثاء، إثر تقارير عن ضربة أمريكية استهدفت جزيرة قشم الإيرانية مساء الاثنين، عشية انتخابات التجديد النصفي الأمريكية.",
+          "quote": "وارتفعت العقود الآجلة لخام 0.82% لتصل إلى 105.6 دولارات للبرميل، وقت كتابة التقرير.",
+          "source": "Al Jazeera Arabic",
+          "correction": "Al Jazeera puts Brent up 0.82% at $105.6 (AGBI: up 0.31% at $105.10); no source gives 0.97% or $105.77."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "lede",
+          "sentence": "وصعد خام غرب تكساس الوسيط بالنسبة نفسها إلى 97.41 دولار للبرميل.",
+          "quote": "ارتفع خام غرب تكساس الوسيط الأمريكي 0.9% ⁠ليصل إلى 97.32 دولارا للبرميل، بحسب بيانات موقع أويل برايس.",
+          "source": "Al Jazeera Arabic",
+          "correction": "WTI rose 0.9% to $97.32 per Al Jazeera (AGBI: 0.45% to $96.89), not 0.97% to $97.41."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "سعر برنت الثلاثاء: 105.77 دولار للبرميل",
+          "quote": "وارتفعت العقود الآجلة لخام 0.82% لتصل إلى 105.6 دولارات للبرميل، وقت كتابة التقرير.",
+          "source": "Al Jazeera Arabic",
+          "correction": "Brent was $105.6 per Al Jazeera ($105.10 per AGBI), not $105.77."
+        },
+        {
+          "status": "drift",
+          "class": "internal",
+          "field": "keyFacts",
+          "sentence": "ارتفاع برنت الثلاثاء: 0.97%",
+          "quote": "سُوّيت العقود الآجلة لبرنت يوم الاثنين عند 104.77 دولار للبرميل، بانخفاض 8.66 دولار، وسط مساعٍ قطرية للتوصل إلى اتفاق سلام بين الولايات المتحدة وإيران، وفي يوم أبدى فيه الرئيسان الأمريكي والإيراني انفتاحهما على حل دبلوماسي للحرب.",
+          "source": "the story itself",
+          "correction": "A move from the $104.77 settlement to the story's $105.77 is a rise of about 0.95%, not 0.97%; the sources give 0.82% (Al Jazeera) or 0.31% (AGBI)."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "keyFacts",
+          "sentence": "سعر غرب تكساس الثلاثاء: 97.41 دولار للبرميل",
+          "quote": "ارتفع خام غرب تكساس الوسيط الأمريكي 0.9% ⁠ليصل إلى 97.32 دولارا للبرميل، بحسب بيانات موقع أويل برايس.",
+          "source": "Al Jazeera Arabic",
+          "correction": "WTI was $97.32 per Al Jazeera ($96.89 per AGBI), not $97.41."
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "ولم يؤكد أي مسؤول أمريكي الضربة رسمياً.",
+          "quote": "Oil price steady as Washington says attacks were defensive measure against Tehran’s potential use of surface-to-air missiles",
+          "source": "Financial Times"
+        },
+        {
+          "status": "conflict",
+          "class": "actor",
+          "field": "body",
+          "sentence": "سُوّيت العقود الآجلة لبرنت يوم الاثنين عند 104.77 دولار للبرميل، بانخفاض 8.66 دولار، وسط مساعٍ قطرية للتوصل إلى اتفاق سلام بين الولايات المتحدة وإيران، وفي يوم أبدى فيه الرئيسان الأمريكي والإيراني انفتاحهما على حل دبلوماسي للحرب.",
+          "quote": "Oil sold off more than 7% on Monday after Washington and Tehran signaled they were both open to discussions to reach a settlement.",
+          "source": "CNBC",
+          "correction": "The source says Washington and Tehran signalled openness to discussions; it does not attribute this to the Iranian president."
+        }
+      ],
+      "notFound": [],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن موقع «أرابيان غلف بزنس إنسايت» أفاد بسماع دوي خمسة انفجارات في أنحاء جزيرة قشم، والصحيح أن الموقع أفاد بأن وسائل إعلام إيرانية أكدت وقوع انفجارات في الجزيرة من دون أن يذكر عددها.",
+      "verified": {
+        "at": "2026-11-03T17:10:50.702Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": [
+          {
+            "class": "actor",
+            "field": "body",
+            "sentence": "سُوّيت العقود الآجلة لبرنت يوم الاثنين عند 104.77 دولار للبرميل، بانخفاض 8.66 دولار، وسط مساعٍ قطرية للتوصل إلى اتفاق سلام بين الولايات المتحدة وإيران، وفي يوم أبدى فيه الرئيسان الأمريكي والإيراني انفتاحهما على حل دبلوماسي للحرب.",
+            "quote": "Oil sold off more than 7% on Monday after Washington and Tehran signaled they were both open to discussions to reach a settlement.",
+            "correction": "The source says Washington and Tehran signalled openness to discussions; it does not attribute this to the Iranian president."
+          }
+        ],
+        "secondCorrection": "corrected"
+      }
     }
   }
 }

@@ -1,0 +1,111 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-03T17:08:08.883Z",
+  "durationSec": 183,
+  "read": 2,
+  "corrected": 2,
+  "report": [
+    {
+      "slug": "xrg-buys-shell-north-west-shelf-stake-e2989d",
+      "title": "ذراع «أدنوك» تتفق على شراء حصة «شل» في مشروع غاز أسترالي بـ1.45 مليار دولار",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 24,
+        "checked": 24,
+        "supported": 21,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "brent-rebounds-us-strike-qeshm-island-382dd6",
+      "title": "برنت يرتد 0.97% بعد تقارير عن ضربة أمريكية على جزيرة قشم الإيرانية",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 26,
+        "checked": 26,
+        "supported": 17,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 6,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "figure",
+          "sentence": "وأفاد موقع «أرابيان غلف بزنس إنسايت» (AGBI) المتخصص في أخبار أعمال الخليج بأن دوي خمسة انفجارات سُمع في أنحاء الجزيرة، وأكدت وسائل إعلام إيرانية وقوع انفجارات في قشم، من دون أن تتحقق من أنها ناجمة عن ضربة أمريكية.",
+          "quote": "Iranian media confirmed explosions on the island without verifying any US strike.",
+          "source": "AGBI (Arabian Gulf Business Insight)",
+          "correction": "AGBI says only that Iranian media confirmed explosions on the island; it gives no count of five explosions."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 3,
+    "failures": 0,
+    "promptTokens": 20911,
+    "completionTokens": 23494,
+    "cacheReadTokens": 0,
+    "costUsd": 0.6372,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 3
+    },
+    "byRole": {
+      "checker": {
+        "calls": 3,
+        "in": 20911,
+        "read": 0,
+        "out": 23494,
+        "usd": 0.6372
+      }
+    },
+    "correctionsEditorCalls": 1
+  },
+  "log": [
+    "[17:08:09] second look: 2 to read now (2 published pieces not yet read; 186 read clean before publication and left out of the audit sample)",
+    "[17:08:09] brent-rebounds-us-strike-qeshm-island-382dd6:   source https://www.ft.com/content/ebeaca62-8958-459a-be9d-d3d39e441a53?syn-25a6b1a6=1: http-403; read from the copy saved at publication (fetched then)",
+    "[17:08:09] xrg-buys-shell-north-west-shelf-stake-e2989d:   source https://www.ft.com/content/28649f64-1c4e-4163-ba2b-8d28c6e37616?syn-25a6b1a6=1: http-403; read from the copy saved at publication (fetched then)",
+    "[17:08:10] xrg-buys-shell-north-west-shelf-stake-e2989d:   source https://www.agbi.com/oil-and-gas/2026/11/xrg-agrees-1-5bn-australian-gas-deal/: subscribers-only; read from the copy saved at publication (fetched then)",
+    "[17:08:10] brent-rebounds-us-strike-qeshm-island-382dd6:   source https://www.agbi.com/oil-and-gas/2026/11/oil-rises-after-us-reportedly-strikes-i: subscribers-only; read from the copy saved at publication (fetched then)",
+    "[17:08:54] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2483 in=6433 read=0 out=5777 attempt=1 ms=43056",
+    "[17:08:54] xrg-buys-shell-north-west-shelf-stake-e2989d: 24 of 24 sentences checked · 21 supported · 0 without a source · 0 confirmed error(s)",
+    "[17:09:18] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=4268 in=7254 read=0 out=8833 attempt=1 ms=67260",
+    "[17:09:18] brent-rebounds-us-strike-qeshm-island-382dd6: 26 of 26 sentences checked · 17 supported · 0 without a source · 1 confirmed error(s) · 8 listed for a person",
+    "[17:09:18]   ✗ [figure] وأفاد موقع «أرابيان غلف بزنس إنسايت» (AGBI) المتخصص في أخبار أعمال الخليج بأن دوي خمسة انفجارات سُمع في أنحاء  — AGBI says only that Iranian media confirmed explosions on the island; it gives no count of five explosions.",
+    "[17:09:18] corrections: 1 story to the corrections editor",
+    "[17:09:18] [correct] brent-rebounds-us-strike-qeshm-island-382dd6: fetching 4 source(s)",
+    "[17:09:18] [correct]   source https://www.ft.com/content/ebeaca62-8958-459a-be9d-d3d39e441a53?syn-25: http-403; read from the copy saved at publication",
+    "[17:09:19] [correct]   source https://www.agbi.com/oil-and-gas/2026/11/oil-rises-after-us-reportedly: subscribers-only; read from the copy saved at publication",
+    "[17:09:40] [correct] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=351 in=23397 read=0 out=2880 attempt=1 ms=20202",
+    "[17:09:40] [correct] brent-rebounds-us-strike-qeshm-island-382dd6: corrected; fields body",
+    "[17:09:40]     note: ذكرت نسخة سابقة من هذا الخبر أن موقع «أرابيان غلف بزنس إنسايت» أفاد بسماع دوي خمسة انفجارات في أنحاء جزيرة قشم، والصحيح أن الموقع أفاد بأن وسائل إعلام إيرانية أكدت وقوع انفجارات في الجزيرة من دون أن يذكر عددها.",
+    "[17:09:40] [correct] done: 1 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-11-03T17-09-18-481Z.json",
+    "[17:09:40] brent-rebounds-us-strike-qeshm-island-382dd6:   source https://www.ft.com/content/ebeaca62-8958-459a-be9d-d3d39e441a53?syn-25a6b1a6=1: http-403; read from the copy saved at publication (fetched then)",
+    "[17:09:41] brent-rebounds-us-strike-qeshm-island-382dd6:   source https://www.agbi.com/oil-and-gas/2026/11/oil-rises-after-us-reportedly-strikes-i: subscribers-only; read from the copy saved at publication (fetched then)",
+    "[17:10:50] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=4177 in=7224 read=0 out=8884 attempt=1 ms=68908",
+    "[17:10:50] brent-rebounds-us-strike-qeshm-island-382dd6: the correction reads clean where it wrote; 1 other error(s) found, corrected once more",
+    "[17:10:50] [correct] brent-rebounds-us-strike-qeshm-island-382dd6: fetching 4 source(s)",
+    "[17:10:51] [correct]   source https://www.ft.com/content/ebeaca62-8958-459a-be9d-d3d39e441a53?syn-25: http-403; read from the copy saved at publication",
+    "[17:10:51] [correct]   source https://www.agbi.com/oil-and-gas/2026/11/oil-rises-after-us-reportedly: subscribers-only; read from the copy saved at publication",
+    "[17:11:11] [correct] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=235 in=6273 read=17126 out=2762 attempt=1 ms=19061",
+    "[17:11:11] [correct] brent-rebounds-us-strike-qeshm-island-382dd6: corrected; fields body",
+    "[17:11:11]     note: ذكرت نسخة سابقة من هذا الخبر أن الرئيسين الأمريكي والإيراني أبديا الاثنين انفتاحهما على حل دبلوماسي للحرب، والصحيح أن واشنطن وطهران أبدتا انفتاحهما على مناقشات للتوصل إلى تسوية، من دون أن يُنسب ذلك إلى الرئيس الإيراني.",
+    "[17:11:11] [correct] done: 1 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-11-03T17-10-50-702Z.json"
+  ]
+}

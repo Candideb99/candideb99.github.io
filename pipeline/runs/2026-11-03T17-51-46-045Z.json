@@ -1,0 +1,528 @@
+{
+  "mode": "news",
+  "startedAt": "2026-11-03T17:11:23.840Z",
+  "durationSec": 2422,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "عجز الميزانية السعودية يبلغ 84.3 مليار ريال في الربع الثالث والإيرادات غير النفطية تتجاوز النفطية",
+      "section": "economy",
+      "importance": 9,
+      "sources": [
+        "https://asharqbusiness.com/economics/154240/%D8%A5%D9%86%D9%81%D8%A7%D9%82-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-%D9%8A%D8%AA%D8%AC%D8%A7%D9%88%D8%B2-%D8%AA%D8%B1%D9%8A%D9%84%D9%8A%D9%88%D9%86-%D8%B1%D9%8A%D8%A7%D9%84-%D9%81%D9%8A-9-%D8%A3%D8%B4%D9%87%D8%B1-%D8%A8%D8%AF%D8%B9%D9%85-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%AB%D9%85%D8%A7%D8%B1/",
+        "https://www.bloomberg.com/news/articles/2026-11-03/saudi-budget-deficit-more-than-doubles-as-war-strains-finances",
+        "https://aawsat.com/node/5337067",
+        "https://www.arabnews.com/business/saudi-arabia-posts-2238bn-budget-deficit-in-q3-3009626"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التمهيدي يحددان البلد (السعودية) والفترة (الربع الثالث) والرقم (84.3 مليار ريال) والسبب الظاهر (هبوط إيرادات النفط). ويضيف السطر التمهيدي تعويض الإيرادات غير النفطية. لا تناقض بين تراجع مصروفات الربع 4% وارتفاع مصروفات 9 أشهر 8%، لأن المتن يميز بين الفترتين.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السبب موجود: إسناد هبوط النفط إلى اضطرابات الحرب الأمريكية الإيرانية عن «بلومبرغ» (SOURCE 2). ردود الفعل موجودة أيضاً: الجدعان، و«الرياض المالية»، والبنك الدولي، وباعجاجه مع صفته. لكن التقرير يغفل المقارنة بالتوقع، أي رفع تقديرات نفقات 2026 إلى 1.435 تريليون ريال من 1.313 تريليون (SOURCE 1). ويغفل كذلك موقف صندوق النقد الدولي بأن يكون الدعم المالي موجهاً ومؤقتاً مع حماية الهوامش المالية (SOURCE 1).",
+              "repair": "تُضاف التقديرات المعدلة لعام 2026 بجوار نسبة الصرف 84%. ويُضاف موقف صندوق النقد في جملة واحدة إلى جانب البنك الدولي."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يقوم على العجز وهبوط النفط، والمتن يعود إليهما مباشرة بعد السطر التمهيدي: مستوى العام الماضي، ثم تفسير «بلومبرغ»، ثم التعويض غير النفطي. هذا البناء متماسك. لكن الخاتمة عن عجز 2027 منفصلة عمّا قبلها. ومربع «لماذا يهمّ» يعيد في جملته الأولى مقارنة 8% و3% الواردة في المتن، ثم يقفز إلى مقايضة «على حساب بنود التنمية» التي لا تسندها المصادر.",
+              "repair": "تُجمع التقديرات السنوية (2026 المعدلة و2027) في فقرة واحدة. ويُقتصر في المربع على الاستدلال المحدود: حصة متزايدة لخدمة الدين إذا طال هبوط النفط."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: 84.3 و116.5 (‑23%) و150.8 و259.1 و343.4 و244.3 و1.10 تريليون و858.9 و435.8 و41.7 و54.8 و137.6 و230.8 (89%) و1.774 تريليون و399.5. الاستثناء الوحيد أن «خلال الأشهر التسعة» لإصدارات الدين البالغة 298.3 مليار ريال تحدد فترة لا يحددها SOURCE 3 صراحة.",
+              "repair": "تُكتب «حتى نهاية الربع الثالث» بدل «خلال الأشهر التسعة» في المتن وفي why_basis."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التمهيدي يحددان البلد والفترة والرقم: عجز 84.3 مليار ريال في الربع الثالث. والسطر التمهيدي يضيف تحولاً في هيكل الإيرادات من الحدث نفسه (SOURCE 3). والمقدمة تبيّن أن الإيرادات والمصروفات تراجعتا معاً 4% في الربع، وأن العجز نتج عن هبوط النفط 23%. و«الرياض المالية» معرّفة بأنها مؤسسة مالية سعودية.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "عناصر السياق كلها حاضرة. السبب: تفسير «بلومبرغ» بأن اضطرابات الحرب الأمريكية الإيرانية أضرت بعائدات النفط (SOURCE 2). المقارنة بالتوقع: رفع تقديرات نفقات 2026 إلى 1.435 تريليون من 1.313 (SOURCE 1)، وتجاوز عجز تسعة أشهر للعجز السنوي المقدر 165.4 مليار (SOURCE 4). ردود الفعل: الجدعان والبنك الدولي وصندوق النقد و«الرياض المالية» وباعجاجه بصفته. ومربع «لماذا يهمّ» يستدل من الاقتراض وقفزة نفقات التمويل 38% على كلفة سد الفجوة، ويقيّد توقعه بشرط «إذا طال هبوط الإيرادات النفطية» دون ادعاء اقتطاع من التنمية.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "المتن يعود إلى العجز ومصدره مباشرة بعد المقدمة، وهذا سليم. لكن تقديرات العام موزعة بين قسمين، وتكرر رقم المعتمد ثلاث مرات. وفقرتا بنود الإنفاق تقرآن صفوف الجدول. والعناوين الفرعية لا تطابق محتواها. والخاتمة تعيد مقارنة 8% و3%.",
+              "repair": "تُجمع تقديرات 2026 و2027 في فقرة واحدة، وتُختصر بنود الإنفاق إلى ما تُظهره، ويُعاد ضبط العناوين الفرعية، ويُختصر قول باعجاجه إلى ما يضيفه ويُضم إلى موقف صندوق النقد."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام والفترات مطابقة للمصادر. «حتى نهاية الربع الثالث» صُحّحت للإصدارات البالغة 298.3 مليار ريال في المتن وفي why_basis. والبيان التمهيدي مؤرخ في سبتمبر (SOURCE 4). وغاية وزارة المالية من الإنفاق التنموي مقدمة على أنها هدف معلن لا نتيجة متحققة.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 5,
+      "mendIssues": [
+        "تكرار صفوف الجدول في المتن (حشو، عيب عمق): تقرأ الفقرتان «وبقيت تعويضات العاملين أكبر بنود الإنفاق عند 435.8 مليار ريال بزيادة 1%، لكن أسرع الزيادات سُجّلت في الإعانات التي قفزت 49% إلى 41.7 مليار ريال، وفي نفقات التمويل التي ارتفعت 38% إلى 54.8 مليار ريال» و«وزاد الإنفاق الرأسمالي على الأصول غير المالية 17% إلى 137.6 مليار ريال» أربعة من صفوف الجدول الخمسة بأرقامها. والجدول يطبعها كاملة. الإصلاح: يقول النص ما تُظهره الأرقام في جملة واحدة: الأجور البند الأكبر، والإعانات ونفقات التمويل والإنفاق الرأسمالي هي الأسرع نمواً. ويُترك التفصيل للجدول، مع إبقاء جملة وزارة المالية عن غاية الإنفاق التنموي (SOURCE 1) بجوار الإنفاق الرأسمالي.",
+        "البناء (بقية الملاحظتين 5 و7 السابقتين): تقديرات العام لم تُجمع بعد. فالتقدير المعدل 1.435 تريليون ونسبة الصرف 84% تحت «الإنفاق يتجاوز المخطط»، أما «وكانت الميزانية المعتمدة قد قدّرت إيرادات 2026 بنحو 1.147 تريليون ريال ونفقاتها بـ1.313 تريليون ريال، بعجز سنوي قدره 165.4 مليار ريال» وعجز 2027 فتحت «الاقتراض ومسار العجز». ونفقات المعتمد تُذكر ثلاث مرات: 1.3128 ثم «ما كان مقرراً» ثم 1.313. الإصلاح: تُضم في فقرة واحدة عن مسار العام. الصرف 84% من 1.313 تريليون، والتقدير المرفوع 1.435 تريليون، والعجز المقدر 165.4 مليار وقد تجاوزه عجز تسعة أشهر (244.3 مليار)، ثم عجز 2027 المتوقع (SOURCE 1 وSOURCE 3 وSOURCE 4). ويُذكر رقم المعتمد مرة واحدة.",
+        "العناوين الفرعية لا تسمّي ما تحتها: تحت «الإنفاق يتجاوز المخطط» فقرتان عن تركيبة الإنفاق والقطاعات، لا عن تجاوز المخطط. وتحت «الاقتراض ومسار العجز» تقييمات «الرياض المالية» والبنك الدولي وصندوق النقد وباعجاجه، وهي ليست عن الاقتراض. الإصلاح: تُفصل فقرة القراءات المؤسسية بعنوان فرعي يسمّيها، مثل «حيز مالي ودعوات إلى توجيه الدعم». أو يُعاد توزيع الفقرات بحيث يطابق كل عنوان ما تحته.",
+        "تكرار ما قيل (TOLD ONCE): خاتمة باعجاجه «إن الفارق بين نمو المصروفات ونمو الإيرادات خلال الأشهر التسعة دليل على اتساع الفجوة بينهما» تعيد مقارنة 8% و3% الواردة في الفقرة الثالثة دون إضافة. و«ودعا إلى التركيز على كفاءة الإنفاق مستقبلاً» دعوة عامة. الإصلاح: يُختصر قوله إلى ما يضيفه، أي أهمية الموازنة بين مواصلة الإنفاق التنموي والمحافظة على الاستدامة المالية (SOURCE 3). ويوضع بجوار موقف صندوق النقد عن الدعم الموجّه والمؤقت، لأنهما يقولان الشيء نفسه من موقعين مختلفين.",
+        "المتن يعود إلى العجز ومصدره مباشرة بعد المقدمة، وهذا سليم. لكن تقديرات العام موزعة بين قسمين، وتكرر رقم المعتمد ثلاث مرات. وفقرتا بنود الإنفاق تقرآن صفوف الجدول. والعناوين الفرعية لا تطابق محتواها. والخاتمة تعيد مقارنة 8% و3%. — تُجمع تقديرات 2026 و2027 في فقرة واحدة، وتُختصر بنود الإنفاق إلى ما تُظهره، ويُعاد ضبط العناوين الفرعية، ويُختصر قول باعجاجه إلى ما يضيفه ويُضم إلى موقف صندوق النقد."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "ارتفع الإنفاق 8% إلى 1.10 تريليون ريال وزادت الإيرادات 3% إلى 858.9 مليار ريال في الأشهر التسعة الأولى",
+          "source": 4
+        },
+        {
+          "fact": "رفع البيان التمهيدي لميزانية 2027 تقديرات نفقات 2026 إلى 1.435 تريليون ريال من 1.313 تريليون ريال عند اعتماد الميزانية",
+          "source": 1
+        },
+        {
+          "fact": "ارتفعت نفقات التمويل 38% إلى 54.8 مليار ريال في الأشهر التسعة الأولى",
+          "source": 4
+        },
+        {
+          "fact": "بلغت إصدارات الدين الجديدة 298.3 مليار ريال حتى نهاية الربع الثالث لتمويل العجز المخطط وإدارة الاحتياجات التمويلية",
+          "source": 3
+        }
+      ],
+      "slug": "saudi-q3-budget-deficit-oil-revenue-falls-7f7a75",
+      "title": "عجز الميزانية السعودية يزيد على الضعف إلى 84.3 مليار ريال في الربع الثالث",
+      "score": 7,
+      "image": "cover-art"
+    },
+    {
+      "headline": "برنت يهبط 6 دولارات في دقائق مع تقارير متضاربة عن محادثات واشنطن وطهران",
+      "section": "energy",
+      "importance": 7,
+      "sources": [
+        "https://www.ft.com/content/d0ab9542-8542-4357-a534-ddbdd1a9678d?syn-25a6b1a6=1",
+        "https://oilprice.com/Energy/Crude-Oil/Trump-Bombs-Iran-Talks-Peace-and-Sends-Oil-Prices-Tumbling.html",
+        "https://www.moneycontrol.com/news/business/oil-prices-slide-about-2-to-multi-week-low-amid-peace-talks-14068056.html",
+        "https://oilprice.com/Latest-Energy-News/World-News/Brent-Flash-Crashes-6-Before-Rebounding-Towards-104.html"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والعنوان الفرعي واضحان في الدولة (إيران) والفاعل (برنت معروف للقارئ)، والعنوان الفرعي يحمل النفي الإيراني. لكن «في دقائق» تقول أكثر من المصدر 4. والقارئ لا يعرف من العنوان أن الخام استعاد جزءاً كبيراً من خسارته، وإن كانت المقدمة تقول ذلك.",
+              "repair": "حذف «في دقائق»، والإبقاء على الارتداد إلى نحو 104 دولارات في المقدمة."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السبب حاضر: تسلسل التقارير المتضاربة وتقدير «أويل برايس» لتداولات الزخم والأوامر الآلية. وردود الفعل حاضرة: المسؤول الإيراني، وقطر، و«آي إن جي». لكن المسودة تُسقط محور حرب أوكرانيا الذي يجعله المصدر 3 جزءاً من معادلة الأسعار، كما تُسقط محادثات أبوظبي في 10 و11 نوفمبر. وصندوق «لماذا يهمّ» يتجاهل آلية المصدر 2 (فارق دبي وفروق التسعير الآسيوية) ويجزم بمسار وحيد لخفض الكلفة.",
+              "repair": "إضافة فقرة أوكرانيا وروسيا من المصدر 3، وإعادة بناء الصندوق على آلية تسطح المنحنى بشرطها."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يقول إن الجديد هو الهبوط الحاد مع تضارب الأنباء، والفقرات الثلاث بعد المقدمة تطوره مباشرة بالترتيب: عنوان «بلومبرغ»، ثم تقرير «الجزيرة»، ثم تقدير «أويل برايس». هذا بناء سليم. العيب في جملة المضيق المقلوبة السببية، وفي ختام الصندوق الذي يكرر الارتداد بدل أن يضيف معنى.",
+              "repair": "إصلاح جملة المضيق كما في القضايا، وحذف «كما أظهر ارتداد الثلاثاء...» من الصندوق."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عقد برنت واحد في كل المقال (يناير، الإغلاق السابق 104.77 يطابق المصدرين 3 و5)، وشرط «غولدمان» محفوظ. لكن «في دقائق» زائدة، و«بتوقيت شرق الولايات المتحدة» مضافة إلى توقيت 8:20، ورواية مبادلة التنازلات النووية فقدت نسبتها إلى «العربي الجديد».",
+              "repair": "حذف «في دقائق» والمنطقة الزمنية المضافة، ونسبة رواية المبادلة إلى «العربي الجديد» كما في المصدر 4."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والعنوان الفرعي يحددان الدولة والطرفين ويحملان النفي الإيراني. لكن «يهبط أكثر من 6 دولارات» بلا «خلال الجلسة» أو ذكر للارتداد يوحي بخسارة يومية كهذه، والخسارة الفعلية عن إغلاق الاثنين 1.33% (المصدر 5).",
+              "repair": "«برنت يهوي أكثر من 6 دولارات خلال الجلسة ثم يقلص خسائره وسط أنباء متضاربة عن المحادثات الأمريكية الإيرانية»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السبب حاضر (تسلسل عنوان «بلومبرغ» وتقرير «الجزيرة»، وتداولات الزخم بتقدير «أويل برايس»)، وكذلك المقارنة (هبوط الاثنين 7.6% وأدنى إغلاق منذ 7 أكتوبر) وردود الفعل (المسؤول الإيراني، وقطر، و«آي إن جي»، و«غولدمان»). لكن رواية المبادلة النووية بلا صاحبها. وصندوق «لماذا يهمّ» يبني على آلية فارق دبي (المصدر 2) استدلالاً مشروطاً سليماً، غير أنه يُسند التسطح إلى «تقارير لم يُتحقق منها» بدل أنباء المحادثات القطرية.",
+              "repair": "نسبة المبادلة إلى «العربي الجديد» (المصدر 4)، وتصحيح مقدمة الصندوق إلى «جاء مع أنباء محادثات لم تُفضِ إلى اتفاق»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "جديد العنوان، أي الهبوط الحاد مع تضارب الأنباء، تطوره الفقرات الثلاث بعد المقدمة مباشرة، وهذا سليم. لكن محرك «موني كنترول» (الموازنة بين الحربين) يأتي في القسم الأخير. وجهود قطر مقسومة بين قسمين، وضربات قشم مكررة. والعنوان الفرعي «أبوظبي والانتخابات والمخزونات» يجمع ثلاثة موضوعات في سلة واحدة.",
+              "repair": "تقديم جملة الموازنة إلى ما بعد فقرة تداولات الزخم، وضم مساعي قطر إلى فقرة المتحدث القطري، وذكر قشم مرة واحدة، وفصل قسم أوكرانيا وروسيا عن المخزونات."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عقد برنت واحد (تسليم يناير، والإغلاق السابق 104.77 يطابق المصدرين 3 و5)، وشرط «غولدمان» محفوظ، وتوقيت 8:20 بلا منطقة زمنية مضافة. يبقى أن «كلفة الشحنات» في الصندوق ملتبسة بين سعر الخام وأجرة الشحن، وأن «قبل أن تنعكس» عبارة مترجمة.",
+              "repair": "«فينخفض سعر الخام الذي يدفعه المشترون الآسيويون قبل أن تزيد الكميات العابرة للمضيق»، و«قبل أن تعود إلى الهبوط صباحاً»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 9,
+      "mendIssues": [
+        "خطأ في مقدمة صندوق «لماذا يهمّ»: عبارة «لكن هذا التسطح قام على تقارير لم يُتحقق منها» تنسب تسطح منحنى دبي إلى التقارير غير المؤكدة. المصدر 2 يربطه بـ«أنباء المحادثات بوساطة قطرية»، وهي محادثات قائمة أكدتها قطر نفسها (المصدر 4: «Qatar confirmed that both sides were reviewing proposals»). أما «الاختراقات» غير المؤكدة فهي شيء آخر (المصدر 4). الإصلاح: «لكن هذا التسطح جاء مع أنباء محادثات لم تُفضِ إلى اتفاق، وطهران تشترط تلبية مطالبها قبل فتح المضيق، فأي تعثر فيها قد يعيد تلك الفروق إلى الارتفاع». ويُستبدل بعبارة «فتصل أنباء التفاوض إلى كلفة الشحنات عبر التسعير قبل أن تصل إليها عبر البراميل» قول صريح، لأن «كلفة الشحنات» قد تُفهم أجرة الشحن: «فينخفض سعر الخام الذي يدفعه المشترون الآسيويون قبل أن تزيد الكميات العابرة للمضيق».",
+        "القضية 2 السابقة باقية في شقها الثاني: «وتحدثت تقارير أخرى عن مقترح لمبادلة تنازلات نووية إيرانية بالإفراج عن أموال مجمدة» تُسقط صاحب الرواية، والمصدر 4 ينسبها صراحة إلى «العربي الجديد» («citing Al Araby Al Jadeed. The Al Araby report described a proposed exchange…»). وهذه رواية غير مؤكدة نفاها مسؤول إيراني، فنسبتها إلى صاحبها ضرورية. الإصلاح: «وأورد موقع «العربي الجديد» أن المقترح يقوم على مبادلة تنازلات نووية إيرانية بالإفراج عن أموال مجمدة».",
+        "العنوان يقول أكثر مما يراه قارئ البطاقة: «برنت يهبط أكثر من 6 دولارات» يوحي بأن هذا صافي خسارة اليوم. والواقع أن الهبوط كان من ذروة أثناء الجلسة (107.24)، وأن برنت استعاد قرابة 3 دولارات (المصدر 4) وتداول منخفضاً 1.33% فقط عن إغلاق الاثنين (المصدر 5). الإصلاح: «برنت يهوي أكثر من 6 دولارات خلال الجلسة ثم يقلص خسائره وسط أنباء متضاربة عن المحادثات الأمريكية الإيرانية»، أو إدخال «صباح الثلاثاء» والارتداد في العنوان الفرعي.",
+        "بناء مبعثر: المحرك الذي يذكره المصدر 3، أي موازنة المتعاملين بين محادثات إنهاء الحربين ومخاوف تعطل الإمدادات، مؤخَّر إلى قسم «أبوظبي والانتخابات والمخزونات». ومساعي قطر مقسومة بين «لا اتفاق معلناً» وفقرة الانتخابات («وقد كثّفت قطر جهودها… بعدها»). وضربات قشم تُروى مرتين: في «تقلب بعد هبوط الاثنين» ثم في فقرة «أويل برايس» عن الفوضى. الإصلاح: تقديم جملة الموازنة بين الحربين إلى ما بعد فقرة تداولات الزخم مباشرة، وضم تكثيف قطر جهودها إلى فقرة المتحدث القطري، والاكتفاء بذكر قشم مرة واحدة. ويُفصل قسم أوكرانيا وروسيا عن المخزونات والانتخابات بعنوان فرعي يسمي ما فيه.",
+        "عبارة مترجمة حرفياً: «قبل أن تنعكس صباحاً» نقلٌ لـ«reversing». الإصلاح: «قبل أن تعود إلى الهبوط صباحاً». ومثلها «ثم أُثيرت لاحقاً تساؤلات» التي تجمع «ثم» و«لاحقاً» في معنى واحد. الإصلاح: «ثم أُثيرت تساؤلات عن دقة العنوان في نقل التصريح الإيراني».",
+        "العنوان والعنوان الفرعي يحددان الدولة والطرفين ويحملان النفي الإيراني. لكن «يهبط أكثر من 6 دولارات» بلا «خلال الجلسة» أو ذكر للارتداد يوحي بخسارة يومية كهذه، والخسارة الفعلية عن إغلاق الاثنين 1.33% (المصدر 5). — «برنت يهوي أكثر من 6 دولارات خلال الجلسة ثم يقلص خسائره وسط أنباء متضاربة عن المحادثات الأمريكية الإيرانية».",
+        "السبب حاضر (تسلسل عنوان «بلومبرغ» وتقرير «الجزيرة»، وتداولات الزخم بتقدير «أويل برايس»)، وكذلك المقارنة (هبوط الاثنين 7.6% وأدنى إغلاق منذ 7 أكتوبر) وردود الفعل (المسؤول الإيراني، وقطر، و«آي إن جي»، و«غولدمان»). لكن رواية المبادلة النووية بلا صاحبها. وصندوق «لماذا يهمّ» يبني على آلية فارق دبي (المصدر 2) استدلالاً مشروطاً سليماً، غير أنه يُسند التسطح إلى «تقارير لم يُتحقق منها» بدل أنباء المحادثات القطرية. — نسبة المبادلة إلى «العربي الجديد» (المصدر 4)، وتصحيح مقدمة الصندوق إلى «جاء مع أنباء محادثات لم تُفضِ إلى اتفاق».",
+        "جديد العنوان، أي الهبوط الحاد مع تضارب الأنباء، تطوره الفقرات الثلاث بعد المقدمة مباشرة، وهذا سليم. لكن محرك «موني كنترول» (الموازنة بين الحربين) يأتي في القسم الأخير. وجهود قطر مقسومة بين قسمين، وضربات قشم مكررة. والعنوان الفرعي «أبوظبي والانتخابات والمخزونات» يجمع ثلاثة موضوعات في سلة واحدة. — تقديم جملة الموازنة إلى ما بعد فقرة تداولات الزخم، وضم مساعي قطر إلى فقرة المتحدث القطري، وذكر قشم مرة واحدة، وفصل قسم أوكرانيا وروسيا عن المخزونات.",
+        "عقد برنت واحد (تسليم يناير، والإغلاق السابق 104.77 يطابق المصدرين 3 و5)، وشرط «غولدمان» محفوظ، وتوقيت 8:20 بلا منطقة زمنية مضافة. يبقى أن «كلفة الشحنات» في الصندوق ملتبسة بين سعر الخام وأجرة الشحن، وأن «قبل أن تنعكس» عبارة مترجمة. — «فينخفض سعر الخام الذي يدفعه المشترون الآسيويون قبل أن تزيد الكميات العابرة للمضيق»، و«قبل أن تعود إلى الهبوط صباحاً»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "اقترب فارق دبي بين عقدي الشهرين الأول والثالث من الصفر مع استيعاب الأسواق أنباء المحادثات بوساطة قطرية، ويُستخدم فارق دبي لتحديد فروق أسعار الخام الشرق أوسطي، ورأى «أويل برايس» أن الفروق في آسيا يُفترض أن تنخفض قريباً",
+          "source": 2
+        },
+        {
+          "fact": "مضيق هرمز لا يزال مقيداً بعد إغلاقه الفعلي، وكان قبل ذلك ممراً لنحو 20% من إمدادات النفط العالمية",
+          "source": 3
+        },
+        {
+          "fact": "موقف طهران المعلن أن شروطها يجب أن تُلبّى قبل إعادة فتح المضيق",
+          "source": 4
+        },
+        {
+          "fact": "قطر أكدت أن الطرفين يدرسان مقترحات، ولم يُعلن أي اتفاق، وقال مسؤول إيراني كبير إن الاتفاق لا يزال بعيداً",
+          "source": 4
+        }
+      ],
+      "slug": "brent-plunge-iran-talks-conflicting-reports-88afef",
+      "title": "برنت يقلص خسارة تجاوزت 6 دولارات وسط أنباء متضاربة عن محادثات واشنطن وطهران",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "الوظائف الشاغرة في أمريكا تقفز إلى 7.52 مليون وتعزز احتمالات رفع الفائدة",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-11-03/treasuries-fall-amid-oil-price-swings-strong-job-openings-data",
+        "https://aawsat.com/node/5337122",
+        "https://www.bloomberg.com/news/articles/2026-11-03/us-job-openings-jump-to-highest-level-since-may-layoffs-fall",
+        "https://www.cnbc.com/2026/11/03/job-openings-posted-big-september-gain-in-positive-sign-for-labor-market-ahead-of-payrolls-report.html"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد (أمريكا) والرقم (7.52 مليون) والمقارنة بالتوقعات وأثر البيانات في السندات والفيدرالي، مع صيغة الاحتمال «قد تمنح». هيذر لونغ معرّفة بصفتها ومؤسستها ومصدر تصريحاتها.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المقارنة بالتوقعات حاضرة (7.15 مليون، المصدر 4)، وكذلك رد السوق والمحلل (المصدران 1 و4). لكن الخلفية غائبة: ثلاث سنوات من ضعف التوظيف وانخفاض حركة الانتقال، وحاجة الاتجاه إلى أشهر كي يتأكد (المصدر 2). ويغيب كذلك المحرك الذي يذكره المصدر 2: النمو الأقوى يرفع الطلب على العمالة. صندوق «لماذا يهمّ» يقارن الوظائف المعروضة بإضافة 29 ألف وظيفة فقط في سبتمبر، ويعلّق استنتاجه على شرط صريح، وهذا استدلال محدود مقبول.",
+              "repair": "إضافة فقرة الخلفية والتحفظ من المصدر 2 بعد فقرة المقارنة بالتوقعات، وإسناد المحرك (نمو الاقتصاد) إلى المصدر نفسه."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان، تجاوز التوقعات، يُطوَّر مباشرة بعد المقدمة، وهذا جيد. لكن نصف المتن يقرأ صفوف الجدول واحداً واحداً («بمقدار 321 ألفاً إلى 3.36 مليون»، «بمقدار 131 ألفاً إلى 5.4 مليون»، «بمقدار 127 ألفاً إلى 1.64 مليون»). وفقرة السندات تكرر صيغة العنوان الفرعي.",
+              "repair": "دمج فقرتي دوران العمالة في فقرة تقول ما تُظهره الأرقام (أعلى استقالات وأدنى تسريحات منذ مارس 2025، ودلالة ذلك على ثقة العاملين وطلب الشركات)، وحذف تكرار عبارة هامش الفيدرالي."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«أدنى قراءة هذا العام» وصف غير موجود في المصدر 2. وعبارة «الذي يقيس عدد الوظائف المضافة فعلاً» شرح لا يرد في المصادر، لكنه لا يغيّر المعنى. أما بقية الأرقام (333 ألفاً، 4.5%، 414 ألفاً، 1.05، 29 ألفاً، 59 ألفاً، 4.2%) فمطابقة للمصدر 4.",
+              "repair": "استبدال «أدنى قراءة هذا العام» بـ«المستوى المتدني المسجل في مارس»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يحدد البلد (أمريكا) والرقم (7.52 مليون) والشهر (سبتمبر) والعنصر الجديد (تجاوز التوقعات). والعنوان الفرعي يضيف رد سوق السندات ودلالته على الفائدة، وينسبها بصيغة احتمال «قد تمنح» كما في المصدر 1.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "المقارنة بالتوقع (7.15 مليون، المصدر 4) حاضرة، وكذلك المحرك (نمو أقوى يرفع الطلب على العمالة، المصدر 2) والخلفية (ثلاث سنوات من ضعف التوظيف وحاجة الاتجاه إلى أشهر كي يتأكد، المصدر 2). ورد هيذر لونغ معرّفة بصفتها ومؤسستها ومنسوب إلى «سي إن بي سي»، وتقرير الجمعة مذكور. أما صندوق «لماذا يهمّ» فيبني على مقدمات موثقة: تراجع التسريحات وإضافة 29 ألف وظيفة فقط، ويعلّق استنتاجه بشأن هامش الفيدرالي على شرط صريح، وهذا استدلال محدود مقبول.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "تجاوز التوقعات يُطوَّر مباشرة بعد المقدمة، والخلفية متصلة به. لكن جملة «بلومبرغ» تعيد القفزة وتراجع التسريحات بعد أن قيلا أكثر من مرة.",
+              "repair": "اختصار جملة «بلومبرغ» إلى دلالتها الجديدة وحدها: طلب أقوى على العمالة مع دخول الربع الرابع."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«هذا الركود» يحرّف «انخفاض حركة الانتقال» في المصدر 2. و«بعد تعديل قراءته إلى أعلى مستوى منذ مايو» تنسب أعلى مستوى منذ مايو إلى قراءة أغسطس المعدلة بدل قراءة سبتمبر. أما بقية الأرقام وخلايا الجدول (7.52 مليون و+333 ألفاً، 5.4 مليون و+131 ألفاً، 3.36 مليون و+321 ألفاً، 1.64 مليون و-127 ألفاً، 4.5%، 414 ألفاً، 1.05، 29 ألفاً، 59 ألفاً، 4.2%) فمطابقة للمصدر 4.",
+              "repair": "«ويمنح ضعفُ هذه الحركة…»، و«وصعد العدد من 7.19 مليون في أغسطس بحسب قراءته المعدلة، ليبلغ أعلى مستوى منذ مايو»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 5,
+      "mendIssues": [
+        "صياغة تغيّر المعنى: «ويمنح هذا الركود العاملين أماناً وظيفياً مرتفعاً نسبياً». كلمة «الركود» في صحيفة اقتصادية تعني الانكماش الاقتصادي، والمصدر 2 لا يتحدث عن ركود بل عن «انخفاض هذه الحركة»، أي حركة الانتقال بين الوظائف. القارئ قد يفهم أن الاقتصاد الأمريكي في ركود، وهذا يناقض الخبر نفسه. الإصلاح: «ويمنح ضعفُ هذه الحركة العاملين أماناً وظيفياً مرتفعاً نسبياً، لكنه يصعّب على الباحثين عن عمل العثور على وظيفة».",
+        "تركيب ملتبس: «وصعد العدد من 7.19 مليون في أغسطس بعد تعديل قراءته إلى أعلى مستوى منذ مايو». شبه الجملة «إلى أعلى مستوى» تتعلق نحوياً بـ«تعديل»، فيُفهم أن قراءة أغسطس هي التي عُدّلت إلى أعلى مستوى منذ مايو. والمقصود في المصدر 2 أن قراءة سبتمبر هي أعلى مستوى منذ مايو. الإصلاح: «وصعد العدد من 7.19 مليون في أغسطس بحسب قراءته المعدلة، ليبلغ أعلى مستوى منذ مايو».",
+        "تكرار لما قيل: «ورأت «بلومبرغ» أن القفزة غير المتوقعة في الوظائف المعروضة، مع تراجع التسريحات، تشير إلى طلب أقوى…». القفزة وتجاوزها للتوقعات وردتا في العنوان والمقدمة والفقرة الأولى، وتراجع التسريحات ورد في المقدمة وفي الجملة السابقة مباشرة. الجديد في الجملة هو دلالة الطلب مع دخول الربع الرابع وحدها. الإصلاح: «ورأت «بلومبرغ» (المصدر 3) أن ذلك يشير إلى طلب أقوى على العمالة مع دخول الاقتصاد الأمريكي الربع الرابع».",
+        "تجاوز التوقعات يُطوَّر مباشرة بعد المقدمة، والخلفية متصلة به. لكن جملة «بلومبرغ» تعيد القفزة وتراجع التسريحات بعد أن قيلا أكثر من مرة. — اختصار جملة «بلومبرغ» إلى دلالتها الجديدة وحدها: طلب أقوى على العمالة مع دخول الربع الرابع.",
+        "«هذا الركود» يحرّف «انخفاض حركة الانتقال» في المصدر 2. و«بعد تعديل قراءته إلى أعلى مستوى منذ مايو» تنسب أعلى مستوى منذ مايو إلى قراءة أغسطس المعدلة بدل قراءة سبتمبر. أما بقية الأرقام وخلايا الجدول (7.52 مليون و+333 ألفاً، 5.4 مليون و+131 ألفاً، 3.36 مليون و+321 ألفاً، 1.64 مليون و-127 ألفاً، 4.5%، 414 ألفاً، 1.05، 29 ألفاً، 59 ألفاً، 4.2%) فمطابقة للمصدر 4. — «ويمنح ضعفُ هذه الحركة…»، و«وصعد العدد من 7.19 مليون في أغسطس بحسب قراءته المعدلة، ليبلغ أعلى مستوى منذ مايو»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قراءة الوظائف الشاغرة الأعلى من التقديرات قد تمنح الاحتياطي الفيدرالي هامشاً لرفع الفائدة لكبح التضخم، بحسب بلومبرغ",
+          "source": 1
+        },
+        {
+          "fact": "تراجعت التسريحات إلى 1.64 مليون وارتفعت التعيينات إلى 5.4 مليون في سبتمبر",
+          "source": 4
+        },
+        {
+          "fact": "زادت الوظائف غير الزراعية 29 ألفاً فقط في سبتمبر، والتوقعات لأكتوبر 59 ألفاً في تقرير يصدر الجمعة",
+          "source": 4
+        }
+      ],
+      "slug": "us-job-openings-jump-september-jolts-6d62a3",
+      "title": "الوظائف الشاغرة في أمريكا تقفز إلى 7.52 مليون في سبتمبر متجاوزة التوقعات",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "مشروع مدعوم قطرياً يموّل مركز بيانات بـ27 مليار دولار في بريطانيا",
+      "section": "technology",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
+  "llm": {
+    "calls": 77,
+    "failures": 0,
+    "promptTokens": 1195789,
+    "completionTokens": 252094,
+    "cacheReadTokens": 316255,
+    "costUsd": 12.141,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 77
+    },
+    "byRole": {
+      "editor": {
+        "calls": 1,
+        "in": 85240,
+        "read": 0,
+        "out": 2194,
+        "usd": 0.7258
+      },
+      "desk": {
+        "calls": 15,
+        "in": 113409,
+        "read": 140173,
+        "out": 79306,
+        "usd": 2.5213
+      },
+      "writer": {
+        "calls": 14,
+        "in": 204089,
+        "read": 136232,
+        "out": 72125,
+        "usd": 3.1025
+      },
+      "critic": {
+        "calls": 17,
+        "in": 192118,
+        "read": 39850,
+        "out": 45442,
+        "usd": 2.4537
+      },
+      "checker": {
+        "calls": 3,
+        "in": 29973,
+        "read": 0,
+        "out": 27358,
+        "usd": 0.787
+      },
+      "vision": {
+        "calls": 27,
+        "in": 254705,
+        "read": 0,
+        "out": 25669,
+        "usd": 2.5506
+      }
+    }
+  },
+  "log": [
+    "[17:49:30] image: \"Sen. Coons Job Fair.jpg\" names the story's topic without saying its point (Candidate 3 is the closest match to the sources' scene: job seekers with bags and papers at a crowded US indoor job fair. It is also the most recent fitting fra); checked now and kept in reserve while the desk looks further",
+    "[17:49:41] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=960 in=7608 read=0 out=1058 attempt=1 ms=11826",
+    "[17:49:41] image: second check (claude-cli/claude-opus-5-5) STALE_EVENT — refused \"Sen. Coons Job Fair.jpg\": The frame shows a specific 2011 job fair hosted by Senator Chris Coons, whose name and seal on the sign are the most leg",
+    "[17:49:51] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=635 in=9779 read=0 out=845 attempt=1 ms=9304",
+    "[17:49:57] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=360 in=7704 read=0 out=474 attempt=1 ms=5762",
+    "[17:49:57] image: second check (claude-cli/claude-opus-5-5) AMATEUR — refused \"Career Fair (3344072303).jpg\": This 2009 Alabama career fair does fit a US jobs story, but it is a low-resolution, cluttered snapshot from an old Olymp",
+    "[17:50:04] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=535 in=7476 read=0 out=634 attempt=1 ms=7734",
+    "[17:50:04] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Career Fair (3344072303).jpg\": A 2009 Alabama campus career fair fits the topic of US hiring, but a MassMutual banner and tablecloth, a brand the story",
+    "[17:50:04] image: \"Career Fair (3344072303).jpg\" is not held back either (WRONG_SUBJECT)",
+    "[17:50:04] image: tier 3, the writer's own subjects: job fair United States | office workers desks | factory workers assembly line",
+    "[17:50:06] commons \"job fair United States 2026\": 12 usable of 12",
+    "[17:50:06] commons \"job fair United States\": 10 usable of 12",
+    "[17:50:06] image: dropped \"City of Seattle job booth at career fair, circa 1965.jpg\" — dated 1965, an archival picture",
+    "[17:50:06] image: dropped \"Job fair gives community members more job opportunities (7578469).jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[17:50:06] image: dropped \"Job fair gives community members more job opportunities (7578466).jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[17:50:06] image: dropped \"Job fair gives community members more job opportunities (7578465).jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[17:50:07] commons \"office workers desks 2026\": 0 usable of 0",
+    "[17:50:07] commons \"office workers desks\": 4 usable of 12",
+    "[17:50:07] image: dropped \"Office chair (4444288246).jpg\" — names too little of office, workers, desks",
+    "[17:50:07] image: dropped \"Frances Harriet Williams 1940s.jpg\" — dated 1940, an archival picture",
+    "[17:50:08] commons \"factory workers assembly line 2026\": 0 usable of 5",
+    "[17:50:08] commons \"factory workers assembly line\": 3 usable of 12",
+    "[17:50:08] image: dropped \"Experienced assembly line workers of both sexes contribute to the prod\" — dated 1942, an archival picture",
+    "[17:50:08] image: dropped \"Flower in hair, Betty Gumbetter adds glamour to the assembly line 8b07\" — dated 1942, an archival picture",
+    "[17:50:08] image: dropped \"Airacobra P39 Assembly LOC 02902u.jpg\" — dated 1940, an archival picture",
+    "[17:50:16] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=166 in=9952 read=0 out=316 attempt=1 ms=5271",
+    "[17:50:16] image: vision rejected all candidates (None fits. 1 is dominated by a Navy 250 banner with a blurred man in front. 2 is a 4-H history booth whose large sign reads 'Map Your 4-H History', not employers hiring. 3 is a dark frame of potted plants. 4 is a sepia archival office scene. 5 is a 1970s office in the UK, which is dated and the wrong country.)",
+    "[17:50:16] image: tier 4, the story's point and its subject: job fair United States | recruiters talking job seekers | hiring event USA | career fair USA | job fair | job seekers recruiters (home: United States, USA, American, Florida, New York, California)",
+    "[17:50:16] pexels \"job fair United States\": 8 usable",
+    "[17:50:16] pexels \"job fair\": 8 usable",
+    "[17:50:17] pexels \"recruiters talking job seekers\": 8 usable",
+    "[17:50:17] pexels \"career fair USA\": 8 usable",
+    "[17:50:17] pexels \"job seekers recruiters\": 8 usable",
+    "[17:50:17] commons \"job fair United States\": 21 usable of 24",
+    "[17:50:17] image: dropped \"City of Seattle job booth at career fair, circa 1965.jpg\" — dated 1965, an archival picture",
+    "[17:50:17] image: dropped \"Job fair gives community members more job opportunities (7578469).jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[17:50:17] image: dropped \"Job fair gives community members more job opportunities (7578466).jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[17:50:17] image: dropped \"Job fair gives community members more job opportunities (7578465).jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[17:50:17] image: dropped \"Job fair gives community members more job opportunities (7578468).jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[17:50:17] image: dropped \"Jimmy Panetta visits Census 2020 Job Fair at the Monterey Library.jpg\" — an event's photograph, people and banners",
+    "[17:50:17] image: dropped \"Job fair gives community members more job opportunities (7578467).jpg\" — a warship or weapon, and the story is not about the military",
+    "[17:50:17] image: dropped \"Job fair conversation (7713574).jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[17:50:17] image: dropped \"Job fair gives community members more job opportunities (7578464).jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[17:50:17] image: dropped \"A dramatic view of a State Fair sign on a brick building, captured out\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[17:50:17] image: dropped \"Business professionals in suits using smartphones outside a grand buil\" — names too little of job, fair",
+    "[17:50:17] image: dropped \"Focused multiracial colleagues in elegant formal wear standing with op\" — names too little of job, fair",
+    "[17:50:17] image: dropped \"Banner promoting a political event for Donald Trump in Wheeling, WV wi\" — names too little of job, fair",
+    "[17:50:17] image: dropped \"Business professionals engage in a meeting in a formal office environm\" — names too little of job, fair",
+    "[17:50:17] image: dropped \"A vibrant Ferris wheel with colorful cabins set against a bright blue \" — names too little of job, fair",
+    "[17:50:17] image: dropped \"A breathtaking view of the Oculus in New York City, showcasing its ico\" — names too little of job, fair",
+    "[17:50:17] image: dropped \"Vibrant cotton candy stand at Topsfield Fair with signage and festive \" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[17:50:17] commons \"recruiters talking job seekers\": 1 usable of 1",
+    "[17:50:17] image: dropped \"NAVFAC Hawaii Managers Receive Job Fair Participation Awards (27369853\" — names too little of recruiters, talking, job, seekers",
+    "[17:50:17] image: dropped \"Businesswoman in professional attire shaking hands with recruiter in a\" — names too little of recruiters, talking, job, seekers",
+    "[17:50:17] image: dropped \"Businesswomen shaking hands in an office, representing a successful jo\" — names too little of recruiters, talking, job, seekers",
+    "[17:50:17] image: dropped \"Two professionals in a modern office discussing business. Bright, prof\" — names too little of recruiters, talking, job, seekers",
+    "[17:50:17] image: dropped \"Young woman in a business meeting with an interviewer, showcasing conf\" — names too little of recruiters, talking, job, seekers",
+    "[17:50:17] image: dropped \"A focused interview scene in an office environment with business attir\" — names too little of recruiters, talking, job, seekers",
+    "[17:50:17] image: dropped \"Young woman attending a job interview in a modern office, showcasing c\" — names too little of recruiters, talking, job, seekers",
+    "[17:50:17] image: dropped \"Two businessmen engaged in a discussion during a job interview in a co\" — names too little of recruiters, talking, job, seekers",
+    "[17:50:17] image: dropped \"Colleagues in an office celebrating a successful negotiation with a ha\" — names too little of recruiters, talking, job, seekers",
+    "[17:50:17] pexels \"hiring event USA\": 8 usable",
+    "[17:50:18] commons \"hiring event USA\": 12 usable of 24",
+    "[17:50:18] image: dropped \"Wounded Warriors 2015 Winter Classic 3.jpg\" — names too little of hiring, event",
+    "[17:50:18] image: dropped \"Third Columbia-Wrightsville railroad bridge after 1896 hurricane.jpg\" — dated 1896, an archival picture",
+    "[17:50:18] image: dropped \"BRAC Board of Directors meet at Aberdeen Proving Ground (5179770886).j\" — soldiers or a patrol, and the story is not about the military",
+    "[17:50:18] image: dropped \"By chance, FEST engineer ‘comes across’ cousin in Liberia (15951679852\" — soldiers or a patrol, and the story is not about the military",
+    "[17:50:18] image: dropped \"By chance, FEST engineer ‘comes across’ cousin in Liberia (15766600347\" — soldiers or a patrol, and the story is not about the military",
+    "[17:50:18] image: dropped \"Galena Creek Bridge, Interstate 580, Near Reno, Nevada (179522166).jpg\" — names too little of hiring, event",
+    "[17:50:18] image: dropped \"Galena Creek Bridge, Interstate 580 Between Reno and Carson City, Neva\" — names too little of hiring, event",
+    "[17:50:18] image: dropped \"Recruitment12 (209634128).jpg\" — names too little of hiring, event",
+    "[17:50:18] image: dropped \"Recruitment17 (209647184).jpg\" — names too little of hiring, event",
+    "[17:50:18] image: dropped \"Recruitment13 (209636519).jpg\" — names too little of hiring, event",
+    "[17:50:18] image: dropped \"Silhouetted figures in front of a bright, wavy American flag create a \" — names too little of hiring, event",
+    "[17:50:18] image: dropped \"A woman in a job interview facing two employers with a focus on her re\" — names too little of hiring, event",
+    "[17:50:18] image: dropped \"Diverse group of political candidates standing with American flag at v\" — names too little of hiring, event",
+    "[17:50:18] image: dropped \"Two professionals in a modern office discussing business. Bright, prof\" — names too little of hiring, event",
+    "[17:50:18] image: dropped \"A person holding a megaphone in front of an American flag, symbolizing\" — names too little of hiring, event",
+    "[17:50:19] commons \"career fair USA\": 17 usable of 24",
+    "[17:50:19] image: dropped \"Corps talks jobs at GPS Career Fair (10019363093).jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[17:50:19] image: dropped \"Arianna Raymundo talks jobs at GPS Career Fair (10019254574).jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[17:50:19] image: dropped \"Matthew Valentine talks jobs at GPS Career Fair (10019273915).jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[17:50:19] image: dropped \"Hiring Our Heroes Career Summit (8392762).jpg\" — an event's photograph, people and banners",
+    "[17:50:19] image: dropped \"Los Angeles (California, USA), Santa Monica Beach, Will Rogers Monumen\" — names too little of career, fair",
+    "[17:50:19] image: dropped \"ACS Employment and Career Expo at SHAPE 160617-A-BD610-046.jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[17:50:19] image: dropped \"Stringfellow Orchards 2.jpg\" — names too little of career, fair",
+    "[17:50:19] image: dropped \"Highlight (4346275233).jpg\" — dated 1984, an archival picture",
+    "[17:50:19] image: dropped \"OpenCon 2016 Monrovia Conference Participants.jpg\" — names too little of career, fair",
+    "[17:50:19] image: dropped \"OpenCon 2016 Monrovia Conference breadfast.jpg\" — names too little of career, fair",
+    "[17:50:19] image: dropped \"OpenCon 2016 Monrovia Conference introduction 01.jpg\" — names too little of career, fair",
+    "[17:50:19] image: dropped \"US Navy 040622-N-8158F-003 Sailors from Commander Cruiser Destroyer Gr\" — names too little of career, fair",
+    "[17:50:19] image: dropped \"A diverse team in business attire at a podium with an American flag, s\" — names too little of career, fair",
+    "[17:50:19] image: dropped \"Confident man in a gray suit holding a cellphone outside a building wi\" — names too little of career, fair",
+    "[17:50:19] image: dropped \"Confident businessman using smartphone in front of iconic building wit\" — names too little of career, fair",
+    "[17:50:19] image: dropped \"Confident businessman with phone in front of Wall Street building with\" — names too little of career, fair",
+    "[17:50:19] image: dropped \"Professional man and woman handshake outside urban office setting with\" — names too little of career, fair",
+    "[17:50:19] image: dropped \"Flat lay of an American flag and a law book symbolizing justice and pa\" — names too little of career, fair",
+    "[17:50:19] image: dropped \"African American businessman smiling while checking his phone on a cit\" — names too little of career, fair",
+    "[17:50:19] image: dropped \"Vibrant scene of Ferris wheel and attractions at Coney Island, New Yor\" — names too little of career, fair",
+    "[17:50:19] commons \"job fair\": 20 usable of 24",
+    "[17:50:19] image: dropped \"STEM Career Fair (30624254501).jpg\" — an event's photograph, people and banners",
+    "[17:50:19] image: dropped \"STEM Career Fair (30675907756).jpg\" — an event's photograph, people and banners",
+    "[17:50:19] image: dropped \"STEM Career Fair (30412112410).jpg\" — an event's photograph, people and banners",
+    "[17:50:19] image: dropped \"STEM Career Fair (30078026633).jpg\" — an event's photograph, people and banners",
+    "[17:50:19] image: dropped \"STEM Career Fair (30412117770).jpg\" — an event's photograph, people and banners",
+    "[17:50:19] image: dropped \"STEM Career Fair (30412032740).jpg\" — an event's photograph, people and banners",
+    "[17:50:19] image: dropped \"STEM Career Fair (30595780592).jpg\" — an event's photograph, people and banners",
+    "[17:50:19] image: dropped \"STEM Career Fair (30675994016).jpg\" — an event's photograph, people and banners",
+    "[17:50:19] image: dropped \"Top view of a bustling indoor exhibition space in Taipei, Taiwan.\" — names too little of job, fair",
+    "[17:50:19] image: dropped \"A bustling trade show exhibition inside a modern hall with people netw\" — names too little of job, fair",
+    "[17:50:19] image: dropped \"A diverse group of business professionals reviewing documents in a mee\" — names too little of job, fair",
+    "[17:50:19] image: dropped \"Speaker holds microphone, engaging audience at an indoor business conf\" — names too little of job, fair",
+    "[17:50:19] image: dropped \"A person organizes vibrant baskets on a sunlit beach. Outdoor market s\" — names too little of job, fair",
+    "[17:50:19] image: dropped \"Aerial photograph of a bustling outdoor event with numerous tents, boo\" — names too little of job, fair",
+    "[17:50:19] image: dropped \"A diverse group of people engaged in activities at a cultural festival\" — names too little of job, fair",
+    "[17:50:20] commons \"job seekers recruiters\": 11 usable of 17",
+    "[17:50:20] image: dropped \"U.S. Immigration and Customs Enforcement (ICE) Enforcement and Removal\" — shows security, not the story's people",
+    "[17:50:20] image: dropped \"NAVFAC Hawaii Managers Receive Job Fair Participation Awards (27369853\" — names too little of job, seekers, recruiters",
+    "[17:50:20] image: dropped \"604 Arizona Avenue.jpg\" — names too little of job, seekers, recruiters",
+    "[17:50:20] image: dropped \"L-14-06-04-A.036 (14158457057).jpg\" — names too little of job, seekers, recruiters",
+    "[17:50:20] image: dropped \"USMC-100924-M-3215R-005.jpg\" — names too little of job, seekers, recruiters",
+    "[17:50:20] image: dropped \"Premiere- USAG Ansbach participates in job fair “All paths to your new\" — taken in Germany, which the story does not name",
+    "[17:50:20] image: dropped \"Victoria Park, London, Ontario (21848153821).jpg\" — taken in Canada, which the story does not name",
+    "[17:50:20] image: dropped \"Victoria Park, London, Ontario (21838547495).jpg\" — taken in Canada, which the story does not name",
+    "[17:50:42] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1738 in=11187 read=0 out=2008 attempt=1 ms=20494",
+    "[17:50:51] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=644 in=7785 read=0 out=768 attempt=1 ms=9307",
+    "[17:50:51] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"U.S. Immigration and Customs Enforcement (ICE) Enforcement a\": The frame shows an ICE/ERO recruiter wearing the DHS seal at a 2024 DHS career expo, so it pictures one federal agency's",
+    "[17:51:04] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=948 in=10981 read=0 out=1164 attempt=1 ms=12602",
+    "[17:51:04] image: \"U.S. Immigration and Customs Enforcement (ICE) Enforcement a\" names the story's topic without saying its point (The only usable candidate is a professional, recent US scene of job seekers at a hiring expo in Virginia, which fits the story's subject and country. The others); checked now and kept in reserve while the desk looks further",
+    "[17:51:16] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=885 in=7797 read=0 out=993 attempt=1 ms=11711",
+    "[17:51:16] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"U.S. Immigration and Customs Enforcement (ICE) Enforcement a\": A long queue of job seekers in the heat outside a 2024 DHS/ICE federal recruiting expo reads as scarce jobs and one agen",
+    "[17:51:19] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=226 in=3020 read=0 out=263 attempt=1 ms=3562",
+    "[17:51:19] image: last resort: now hiring sign United States | now hiring sign | now hiring sign industrial",
+    "[17:51:20] commons \"now hiring sign United States\": 10 usable of 24",
+    "[17:51:20] image: dropped \"Mack's Market, Shadeville, Florida.jpg\" — names too little of now, hiring, sign",
+    "[17:51:20] image: dropped \"The Summit of Raton Pass at Dusk, Showing the Welcome to Colorado Sign\" — names too little of now, hiring, sign",
+    "[17:51:20] image: dropped \"STS-130 landing 6.jpg\" — names too little of now, hiring, sign",
+    "[17:51:20] image: dropped \"ALDRO T. HIBBARD (AMERICAN 1886 – 1972).jpg\" — names too little of now, hiring, sign",
+    "[17:51:20] image: dropped \"1964 Imperial Crown Coupe (28267886990).jpg\" — names too little of now, hiring, sign",
+    "[17:51:21] commons \"now hiring sign\": 19 usable of 24",
+    "[17:51:21] image: dropped \"Staff Shortages at the Waffle House, Austinburg Township, Ashtabula Co\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[17:51:21] commons \"now hiring sign industrial\": 2 usable of 3",
+    "[17:51:21] image: dropped \"John Fishwick & Sons bus 3 (BCK 706R) 1977 Leyland Titan B15 prototype\" — names too little of now, hiring, sign, industrial",
+    "[17:51:21] image: dropped \"Black Lives Matter at Norwich anti Trump protest outside City Hall (32\" — names too little of now, hiring, sign, industrial",
+    "[17:51:21] image: dropped \"Future Shop (5669653506).jpg\" — taken in Canada, which the story does not name",
+    "[17:51:33] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=651 in=10175 read=0 out=878 attempt=1 ms=11481",
+    "[17:51:46] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=854 in=7586 read=0 out=939 attempt=1 ms=12604",
+    "[17:51:46] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"\"Now Hiring\" Sign.jpg\": A legible US 'Now Hiring' sign from a county government in North Carolina pictures American job openings, and state and ",
+    "[17:51:46] published \"الوظائف الشاغرة في أمريكا تقفز إلى 7.52 مليون في سبتمبر متجاوزة التوقعات\" -> us-job-openings-jump-september-jolts-6d62a3",
+    "[17:51:46] run budget of 35 minutes spent; \"مشروع مدعوم قطرياً يموّل مركز بيانات بـ27 مليار دولار في بريطانيا\" waits for the next run"
+  ]
+}

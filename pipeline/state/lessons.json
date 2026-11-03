@@ -232,10 +232,11 @@
     "opec-plus-holds-december-oil-quotas-b01552:147f003a",
     "hormuz-fertilizer-disruption-egypt-morocco-exporters-c8129a:98713950",
     "banque-du-caire-shares-jump-egx-debut-412cd0:0b69ad47",
-    "banque-du-caire-shares-jump-egx-debut-412cd0:8f8cf933"
+    "banque-du-caire-shares-jump-egx-debut-412cd0:8f8cf933",
+    "brent-rebounds-us-strike-qeshm-island-382dd6:331de844"
   ],
-  "version": 50,
-  "updatedAt": "2026-11-02T11:20:21.952Z",
+  "version": 51,
+  "updatedAt": "2026-11-03T17:11:12.184Z",
   "lessons": [
     {
       "id": "L1",
@@ -630,11 +631,12 @@
         "bahri-contract-three-crude-tankers-saudi-9dd9dc:cd0bd264",
         "alphabet-shares-fall-after-earnings-miss-7ca1aa:02d23766",
         "binance-freezes-3-billion-potential-hack-647d53:2997c61e",
-        "binance-freezes-3-billion-potential-hack-647d53:3630c5b4"
+        "binance-freezes-3-billion-potential-hack-647d53:3630c5b4",
+        "brent-rebounds-us-strike-qeshm-island-382dd6:331de844"
       ],
-      "seen": 23,
+      "seen": 24,
       "createdAt": "2026-09-25T12:04:58.585Z",
-      "lastSeen": "2026-10-30T08:36:46.654Z",
+      "lastSeen": "2026-11-03T17:11:12.184Z",
       "status": "active",
       "previous": [
         "Copy every number and ranking with its own qualifier. 500 is not 'more than 500', 'nearly 4,000' is not 4,000, and 'one of the most important' is not 'the most important'. Never move a qualifier from one figure onto its neighbour.",
@@ -1195,6 +1197,13 @@
       "mistakes": 2,
       "applied": [
         "sharpen L12 (+2)"
+      ]
+    },
+    {
+      "at": "2026-11-03T17:11:12.184Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L8 (+1; reworded at most once a week)"
       ]
     }
   ],

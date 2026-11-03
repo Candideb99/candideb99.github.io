@@ -1,0 +1,25 @@
+{
+  "startedAt": "2026-11-03T17:09:18.669Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "brent-rebounds-us-strike-qeshm-island-382dd6",
+      "issue": "The body says «وأفاد موقع «أرابيان غلف بزنس إنسايت» (AGBI) المتخصص في أخبار أعمال الخليج بأن دوي خمسة انفجارات سُمع في أنحاء الجزيرة، وأكدت وسائل إعلام إيرانية وقوع انفجارات في قشم، من دون أن تتحقق من أنها ناجمة عن ضربة أمريكية.» (AGBI reported five explosions were heard across the island; Iranian media confirmed explosions on Qeshm without verifying they came from a US strike.). Source AGBI (Arabian Gulf Business Insight) says: \"Iranian media confirmed explosions on the island without verifying any US strike.\". AGBI says only that Iranian media confirmed explosions on the island; it gives no count of five explosions.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن موقع «أرابيان غلف بزنس إنسايت» أفاد بسماع دوي خمسة انفجارات في أنحاء جزيرة قشم، والصحيح أن الموقع أفاد بأن وسائل إعلام إيرانية أكدت وقوع انفجارات في الجزيرة من دون أن يذكر عددها.",
+      "model": "claude-cli/claude-opus-5-5",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وأفاد موقع «أرابيان غلف بزنس إنسايت» (AGBI) المتخصص في أخبار أعمال الخليج بأن دوي خمسة انفجارات سُمع في أنحاء الجزيرة، وأكدت وسائل إعلام إيرانية وقوع انفجارات في قشم، من دون أن تتحقق من أنها ناجمة عن ضربة أمريكية."
+      ],
+      "newSentences": [
+        "وأفاد موقع «أرابيان غلف بزنس إنسايت» (AGBI) المتخصص في أخبار أعمال الخليج بأن وسائل إعلام إيرانية أكدت وقوع انفجارات في قشم، من دون أن تتحقق من أنها ناجمة عن ضربة أمريكية."
+      ]
+    }
+  ]
+}
