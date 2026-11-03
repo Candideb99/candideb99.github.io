@@ -10913,6 +10913,180 @@
           "noted": []
         }
       ]
+    },
+    "aramco-q3-adjusted-profit-rises-9-percent-9662aa": {
+      "at": "2026-11-03T07:12:24.503Z",
+      "title": "صافي دخل أرامكو المعدل يرتفع 9% إلى 31.2 مليار دولار في الربع الثالث",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v50",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 21,
+            "weak": 8,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "brent-rebounds-us-strike-qeshm-island-382dd6": {
+      "at": "2026-11-03T07:29:12.899Z",
+      "title": "برنت يرتد 0.97% بعد تقارير عن ضربة أمريكية على جزيرة قشم الإيرانية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 26,
+            "checked": 26,
+            "supported": 19,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 7,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 1,
+              "field": "title",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "برنت يرتد 0.97% بعد تقارير عن ضربة أمريكية على جزيرة قشم الإيرانية",
+              "quote": "Brent crude futures rose 0.31 percent to $105.10 a barrel by 03:00 GMT while US West Texas Intermediate crude gained 0.45 percent to $96.89 a barrel.",
+              "source": "AGBI (Arabian Gulf Business Insight)",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 3,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ارتفع خام برنت 0.97% إلى 105.77 دولار للبرميل في تعاملات الثلاثاء، إثر تقارير عن ضربة أمريكية استهدفت جزيرة قشم الإيرانية مساء الاثنين، عشية انتخابات التجديد النصفي الأمريكية.",
+              "quote": "وارتفعت العقود الآجلة لخام 0.82% لتصل إلى 105.6 دولارات للبرميل، وقت كتابة التقرير.",
+              "source": "Al Jazeera Arabic",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 4,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وصعد خام غرب تكساس الوسيط بالنسبة نفسها إلى 97.41 دولار للبرميل.",
+              "quote": "ارتفع خام غرب تكساس الوسيط الأمريكي 0.9% ⁠ليصل إلى 97.32 دولارا للبرميل، بحسب بيانات موقع أويل برايس.",
+              "source": "Al Jazeera Arabic",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 5,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "سعر برنت الثلاثاء: 105.77 دولار للبرميل",
+              "quote": "Brent crude futures rose 0.31 percent to $105.10 a barrel by 03:00 GMT while US West Texas Intermediate crude gained 0.45 percent to $96.89 a barrel.",
+              "source": "AGBI (Arabian Gulf Business Insight)",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 6,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ارتفاع برنت الثلاثاء: 0.97%",
+              "quote": "وارتفعت العقود الآجلة لخام 0.82% لتصل إلى 105.6 دولارات للبرميل، وقت كتابة التقرير.",
+              "source": "Al Jazeera Arabic",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 7,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "سعر غرب تكساس الثلاثاء: 97.41 دولار للبرميل",
+              "quote": "Brent crude futures rose 0.31 percent to $105.10 a barrel by 03:00 GMT while US West Texas Intermediate crude gained 0.45 percent to $96.89 a barrel.",
+              "source": "AGBI (Arabian Gulf Business Insight)",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 19,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وكان برنت قد أنهى أكتوبر عند أعلى مستوى في 6 أشهر، وسط مخاوف من تجدد التصعيد في الشرق الأوسط بعد انتخابات التجديد النصفي.",
+              "quote": "But before this development, Brent prices were at its highest since 2022, as fears of further U.S. strikes on Iran after the midterms mounted.",
+              "source": "CNBC",
+              "sourceN": 4,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "saudi-non-oil-pmi-slows-october-a95a70": {
+      "at": "2026-11-03T07:41:54.799Z",
+      "title": "القطاع غير النفطي السعودي ينمو للشهر السابع على التوالي بوتيرة أبطأ",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v50",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 27,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 25,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تصاعدت ضغوط التكاليف مع بداية الربع الرابع، فبلغ تضخم أسعار مستلزمات الإنتاج أعلى مستوى منذ يونيو بفعل كلفة الشحن والتأمين والمواد الخام والطاقة.",
+              "quote": "في المقابل، تصاعدت ضغوط التكاليف مع بداية الربع الأخير من العام، إذ ارتفعت أسعار مشتريات الشركات بأسرع وتيرة منذ ستة أشهر، مدفوعة بزيادة تكاليف الشحن والتأمين والمواد الخام والطاقة.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []

@@ -14925,6 +14925,70 @@
       "notFound": [],
       "weak": [],
       "outcome": "listed"
+    },
+    "egypt-nears-government-spending-rationalisation-plan-6770ec": {
+      "at": "2026-11-03T06:55:19.214Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v50",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-02T22:17:51.834Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 18,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "قال وزيرا المالية والتخطيط في مصر مساء الاثنين إنهما يقتربان من إنجاز تصور متكامل لترشيد الإنفاق الحكومي ورفع كفاءة استخدام الموارد العامة، في اجتماع للجنة الأزمات عرضت فيه الحكومة أيضاً خطط زيادة المخزون من السلع، تحسباً لتداعيات التوترات الإقليمية."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "saudi-cma-ipo-underwriters-full-commitment-20cdcb": {
+      "at": "2026-11-03T06:55:19.210Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v50",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-02T22:30:09.530Z",
+      "sourcesRead": 2,
+      "sourcesAll": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 28,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "حين يسبق التزام الشراء أول طلب في السجل، تتحمل ميزانيات البنوك الاستثمارية مخاطرة ضعف الإقبال منذ بدء بناء السجل، ويصير رأس المال الذي تستطيع حجزه لأسهم قد لا تُدرج قيداً على عدد الطروحات التي تقبل تغطيتها."
+      ],
+      "weak": [],
+      "outcome": "clean"
     }
   }
 }

@@ -1,22 +1,81 @@
 {
-  "mode": "analysis",
-  "startedAt": "2026-11-02T22:43:10.436Z",
-  "durationSec": 943,
-  "published": 1,
+  "mode": "news",
+  "startedAt": "2026-11-03T06:56:38.925Z",
+  "durationSec": 2716,
+  "published": 3,
   "refreshed": 0,
   "report": [
     {
-      "headline": "صادرات الأسمدة المصرية ترتفع بينما تتراجع شحنات الشرق الأوسط عبر هرمز",
-      "section": "analysis",
-      "outcome": "published",
-      "mendedAfterReview": 6,
+      "headline": "أرباح أرامكو المعدلة ترتفع 9% إلى 31.2 مليار دولار في الربع الثالث",
+      "section": "companies",
+      "importance": 9,
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-11-03/saudi-aramco-profit-rises-9-video",
+        "https://aawsat.com/node/5336906",
+        "https://aawsat.com/node/5336903",
+        "https://asharqbusiness.com/financial-reports/154074/%D8%A3%D8%B1%D8%A8%D8%A7%D8%AD-%D8%A3%D8%B1%D8%A7%D9%85%D9%83%D9%88-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-%D8%AA%D9%82%D9%81%D8%B2-%D9%85%D8%AA%D8%AC%D8%A7%D9%88%D8%B2%D8%A9-%D8%A7%D9%84%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA-%D9%84%D9%84%D8%B1%D8%A8%D8%B9-%D8%A7%D9%84%D8%AB%D8%A7%D9%84%D8%AB/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان واضح: الشركة المعروفة، والمقياس المعدل، والفترة. ويضيف العنوان التمهيدي قفزة الربح الصافي 41.3% «بدعم جزئي من مكاسب بيع حصة في شركة منتسبة». لكن المتن لا يقول أي حصة ولا كم بلغ المكسب، فيبقى الفارق بين 9% و41.3% غير مفسَّر للقارئ.",
+              "repair": "يُذكر في الفقرة الثانية مكسب 25.9 مليار ريال من بيع الحصة في «بريفكيم» إلى «بتروناس» (SOURCE 4)، مع تعليل الشركة للنمو، من دون نسبة الفارق كله أو جزء منه إلى الصفقة."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السبب حاضر: السعر المحقق وهوامش التكرير بحسب بلومبرغ والشركة. والتوقعات حاضرة: 28.7 مليار دولار و110.8 مليار ريال. لكن ردّ الشركة على الحرب غائب: لا أثر جوهرياً متوقعاً للهجمات، وخط «شرق-غرب»، والبحث عن مسارات وسعات بديلة، وموثوقية 97.8%. وفي «لماذا يهمّ» استدلال على مصدر الفائض يُسقط تراجع النفقات الرأسمالية من 47.1 إلى 39.5 مليار ريال.",
+              "repair": "يُضاف سياق الحرب والهجمات من SOURCE 3 وSOURCE 4 بجوار فقرة الإنتاج. وتُعاد صياغة «لماذا يهمّ» على أساس التدفقات التشغيلية والإنفاق الرأسمالي معاً، مع إبقاء شرط تراجع السعر المحقق."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يُطوَّر العنوان (+9% المعدل) في قسم «السعر والتكرير والإنتاج». لكن الفقرة الثانية تعود إلى عنصر الدك من غير رقمه. وفقرة «وانخفضت نسبة مديونية الشركة…» جملة منفردة بلا مقارنة تفسرها. ويخلو المتن مما يأتي بعد ذلك (الظلوف).",
+              "repair": "تُجمع الفقرات هكذا: الربح المعدل وأسبابه، ثم الربح الصافي ومكسب الصفقة، ثم السعر والتكرير بأرقامه، ثم الإنتاج مع سياق الهجمات وخط «شرق-غرب» ومشروع الظلوف، ثم النقد والإنفاق الرأسمالي وصافي الدين والمديونية، ثم التوزيعات ومواعيدها."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "يسقط من اسم مقياس التكرير «قبل الفوائد وضرائب الدخل والزكاة». وعبارة «بحسب تقدير بلومبرغ» تجعل نسبة 35% تقديراً، وهي في الواقع مقارنة سعر محقق معلن. والرسم الخطي يصل بين ربع ثالث 2025 والربع الثاني 2026 متخطياً ربعين، فيوحي باتجاه متصل غير مقيس.",
+              "repair": "يُستعمل الاسم الكامل للمقياس مع رقمي 38.6 و11.6 مليار ريال. وتصبح العبارة «أي أعلى بنحو 35%، كما أوردت بلومبرغ». ويُحوَّل الرسم إلى أعمدة بالفئات الثلاث نفسها."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يحدد العنوان الشركة المعروفة والمقياس المعدل ونسبته ورقمه والفترة. ويكمل العنوان التمهيدي ذلك بقفزة الأرباح المعلنة 41.3% ومكسب بيع الحصة. والمتن يفسر الفارق بين الرقمين بمكسب 25.9 مليار ريال من دون أن ينسب إليه الفارق كله.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "التقرير يحمل الأسباب الثلاثة التي تقدمها المصادر: السعر المحقق 95.2 دولار مقابل 70.1، وهوامش التكرير، ومكسب الصفقة. ويحمل التوقعات (28.7 مليار دولار و110.8 مليار ريال) ورد الشركة على الهجمات. لكن قسم الإنتاج يضيف سبباً لم يذكره أي مصدر («تحت ضغط الحرب»). ومربع «لماذا يهمّ» سليم: مقدماته مسندة، وهي تغطية التدفقات الحرة (28.2 مليار دولار) للتوزيعات (21.89 مليار) بفضل نقد تشغيلي أعلى وإنفاق رأسمالي أدنى. واستدلاله محدود بشرط واحد في «إذا»، هو استمرار نزول السعر المحقق عن الربع الثاني.",
+              "repair": "حذف الرابط السببي من العنوان الفرعي لقسم الإنتاج، وإبقاء أرقام الإنتاج بجوار تصريح الناصر وموقف الشركة من الهجمات بلا ربط سببي."
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "عنصر العنوان، أي صافي الدخل المعدل +9%، يُطوَّر مباشرة بعد المقدمة بمحركيه: السعر المحقق مقارنة بالعام السابق وبالربع الثاني، ثم التكرير بأرقامه. يلي ذلك عنصر العنوان التمهيدي (الأرباح المعلنة والصفقة)، ثم الإنتاج مع الهجمات وخط «شرق-غرب» والظلوف، ثم النقد وصافي الدين، ثم التوزيعات ومواعيدها. كل فقرة تؤدي وظيفة واحدة، ولا توجد فقرة مدائح مستقلة.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "اسم مقياس التكرير كامل، والقاعدة السنوية مذكورة في كل مقارنة، ومشروع الظلوف مقدم بوصفه ما «سيتيحه» المشروع قبل نهاية العام. أما «بيع حصتها في شركة «بريفكيم» المنتسبة إلى «بتروناس»» فيحرّف الطرف المشتري كما يرد في SOURCE 4.",
+              "repair": "«من بيع حصتها في «بريفكيم»، إحدى شركاتها المنتسبة، إلى «بتروناس»»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 5,
       "mendIssues": [
-        "التكرار بين المتن و«لماذا يهمّ» (من روح الملاحظة 6، وما زال قائماً بصيغة أخرى): الفقرة قبل الأخيرة في المتن تقول «فقد ترتفع حصيلة العام الكاملة عبر سعر الطن أكثر من عدد الأطنان... فقد تعود الكميات الخليجية وتضيق معها الميزة السعرية». ثم يعيد الصندوق الاستنتاج نفسه تقريباً بألفاظ أخرى: «فالأرجح أن تكسب مصر من أزمة هرمز عبر سعر الطن أكثر من عدد الأطنان... ثم تتقلص هذه الحصيلة متى عادت السفن». الإصلاح: يُختصر سيناريو المتن إلى المقدمات، أي توقع «كبلر» وأن البدائل تسد الفجوة بسعر أعلى، ويُترك الاستنتاج للصندوق وحده. وتُحدَّد فيه «حصيلة العام الكاملة» بأنها حصيلة الأسمدة لا القطاع كله، لأن الإشارة الحالية تشمل البتروكيماويات بلا سند.",
-        "الرقم الرئيسي مدفون في آخر المقال: الافتتاحية تذكر نسبة 34% وحدها، ولا تظهر القيمة «نحو 9.54 مليار دولار... مقابل 7.14 مليار» (المصدر 1) إلا في الفقرة قبل الأخيرة. وتفتتحها «وفي الحالتين»، وهي إحالة إلى الفقرة السابقة، ثم تربطها بـ«حصيلة مصر من العملة الأجنبية»، وهو ربط لا يورده المصدر، فقيمة الصادرات ليست حصيلة نقد أجنبي متحققة. الإصلاح: تُنقل القيمتان إلى الافتتاحية («ارتفعت... 34% إلى نحو 9.54 مليار دولار من 7.14 مليار»)، وتُحذف جملة «في الحالتين» وربطها بالعملة الأجنبية.",
-        "منطق الربط في الافتتاحية والعنوان الفرعي مقلوب: «فقد زادت صادرات الأسمدة 14.2%... مع أن صادرات الأسمدة من الشرق الأوسط تراجعت...»، و«ونمو الأسمدة يبقى أبطأ رغم هبوط شحنات الخليج». حرفا «مع أن» و«رغم» يوحيان بأن هبوط الشحنات الخليجية كان عائقاً أمام مصر، في حين أن حجة المقال هي العكس: أن الهبوط كان يُفترض أن يرفع حصة مصر. الإصلاح: «...زادت صادرات الأسمدة 14.2% فقط إلى 2.53 مليار دولار، في فترة تراجعت في أشهرها الأخيرة صادرات الشرق الأوسط من الأسمدة بنحو 70% إلى 75% بحسب «كبلر»»، وفي العنوان الفرعي «...ونمو الأسمدة أبطأ في فترة هبطت فيها شحنات الخليج عبر هرمز».",
-        "جملة عما لا تثبته المصادر وفرضية تنقض نفسها: «وقد تتقاطع القفزة الآسيوية مع الأسواق التي كانت تعتمد على يوريا الخليج، مثل الهند، غير أن تجميع المنتجات في رقم واحد يُبقي هذه الصلة فرضية». المصدر 1 لا يذكر الهند بين الوجهات. وأكبر قفزة آسيوية جاءت من الصين، وهي وفق «ريستاد إنرجي» (المصدر 2) أصبحت المورد المرجِّح للأسمدة لا مشترياً بديلاً منها. الإصلاح: حذف الجملة كلها والاكتفاء بأرقام الوجهات.",
-        "تكرار المعلومة نفسها: قفزة البتروكيماويات («تتضاعف تقريباً إلى 2.43 مليار دولار») ترد في العنوان الفرعي، ثم تعود في المتن «التي تضاعفت صادراتها تقريباً إلى 2.43 مليار دولار من 1.23 مليار». الإصلاح: يحتفظ المتن بالمقارنة مع سنة الأساس ومساهمة البتروكيماويات في الزيادة (1.19 من 2.40 مليار)، ويُستبدل بـ«تضاعفت تقريباً» نسبةُ المصدر (96.7%) أو تُحذف العبارة المكررة.",
-        "ختام المقال ينحرف عن سؤاله: الفقرة الأخيرة عن مؤشر الفاو وتضخم الغذاء عالمياً تأتي بعد خلاصة الحالة المصرية، فينتهي المقال على موضوع آخر. كما أن «فيتغذى تضخم أسعار الغذاء عالمياً» تُسقط الاحتمال الوارد في المصدر 2 («ما قد يغذي»). الإصلاح: تُنقل فقرة الفاو إلى جوار حديث «كبلر» و«ريستاد» عن أثر نقص الإمدادات، وتُكتب «ما قد يغذي تضخم أسعار الغذاء عالمياً»."
+        "خطأ في الطرف (SOURCE 4): «من بيع حصتها في شركة «بريفكيم» المنتسبة إلى «بتروناس»». المصدر يقول إن أرامكو حققت المكسب «من بيع حصتها في شركة \"بريفكيم\" إلى \"بتروناس\"»، أي إن «بتروناس» هي المشتري. صياغة المسودة تجعل «بريفكيم» شركة تابعة لـ«بتروناس» وتخفي هوية المشتري. الإصلاح: «وإلى مكسب قدره 25.9 مليار ريال حققته من بيع حصتها في شركة «بريفكيم» المنتسبة إلى «بتروناس» خلال الربع» تُستبدل بـ«وإلى مكسب قدره 25.9 مليار ريال حققته من بيع حصتها في «بريفكيم»، إحدى شركاتها المنتسبة، إلى «بتروناس» خلال الربع».",
+        "علاقة سببية لا يسندها مصدر: العنوان الفرعي «الإنتاج تحت ضغط الحرب» يربط تراجع الإنتاج من 13.3 إلى 11 مليون برميل مكافئ يومياً بالحرب. لا يقيم SOURCE 3 ولا SOURCE 4 هذا الرابط. الناصر تحدث عن أزمة الإمدادات العالمية، والشركة قالت إنها لا تتوقع أثراً جوهرياً للهجمات على مرافقها. وجملة «تحققت هذه الأرباح من إنتاج أقل» تبقى صحيحة. الإصلاح: عنوان فرعي يسمّي ما تقوله الفقرات من دون سبب، مثل «إنتاج أقل وصادرات عبر شرق-غرب»، مع إبقاء تصريح الناصر وموقف الشركة من الهجمات منسوبين كما هما، متجاورين مع أرقام الإنتاج لا شارحين لها.",
+        "إسناد ثانوي في «why_basis»: البند الأول ينسب رقم التوزيعات 21.89 مليار دولار إلى SOURCE 3، وهذا المصدر يذكر 21.9 مليار. الرقم 21.89 وارد في SOURCE 2. الإصلاح: نسبة رقم التوزيعات إلى SOURCE 2، أو كتابة «21.9 مليار دولار» إذا بقي المصدر 3.",
+        "التقرير يحمل الأسباب الثلاثة التي تقدمها المصادر: السعر المحقق 95.2 دولار مقابل 70.1، وهوامش التكرير، ومكسب الصفقة. ويحمل التوقعات (28.7 مليار دولار و110.8 مليار ريال) ورد الشركة على الهجمات. لكن قسم الإنتاج يضيف سبباً لم يذكره أي مصدر («تحت ضغط الحرب»). ومربع «لماذا يهمّ» سليم: مقدماته مسندة، وهي تغطية التدفقات الحرة (28.2 مليار دولار) للتوزيعات (21.89 مليار) بفضل نقد تشغيلي أعلى وإنفاق رأسمالي أدنى. واستدلاله محدود بشرط واحد في «إذا»، هو استمرار نزول السعر المحقق عن الربع الثاني. — حذف الرابط السببي من العنوان الفرعي لقسم الإنتاج، وإبقاء أرقام الإنتاج بجوار تصريح الناصر وموقف الشركة من الهجمات بلا ربط سببي.",
+        "اسم مقياس التكرير كامل، والقاعدة السنوية مذكورة في كل مقارنة، ومشروع الظلوف مقدم بوصفه ما «سيتيحه» المشروع قبل نهاية العام. أما «بيع حصتها في شركة «بريفكيم» المنتسبة إلى «بتروناس»» فيحرّف الطرف المشتري كما يرد في SOURCE 4. — «من بيع حصتها في «بريفكيم»، إحدى شركاتها المنتسبة، إلى «بتروناس»»."
       ],
       "precheck": {
         "ok": true,
@@ -24,217 +83,446 @@
         "rounds": 1,
         "found": 0
       },
-      "slug": "egypt-fertilizer-exports-hormuz-gap-analysis-64466d",
-      "title": "البتروكيماويات تقود قفزة صادرات مصر الكيماوية في تسعة أشهر",
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "صعدت التدفقات النقدية الحرة إلى 28.2 مليار دولار في الربع الثالث",
+          "source": 3
+        },
+        {
+          "fact": "رفعت أرامكو التوزيعات الأساسية عن الربع الثالث 3.5% إلى 21.89 مليار دولار",
+          "source": 2
+        },
+        {
+          "fact": "ارتفعت التدفقات النقدية من أنشطة التشغيل إلى 145.2 مليار ريال من 135.4 مليار ريال قبل عام",
+          "source": 3
+        },
+        {
+          "fact": "بلغت النفقات الرأسمالية 39.5 مليار ريال في الربع الثالث مقابل 47.1 مليار ريال قبل عام",
+          "source": 4
+        }
+      ],
+      "slug": "aramco-q3-adjusted-profit-rises-9-percent-9662aa",
+      "title": "صافي دخل أرامكو المعدل يرتفع 9% إلى 31.2 مليار دولار في الربع الثالث",
       "score": 8,
       "image": "photo"
+    },
+    {
+      "headline": "النفط يرتد صعوداً بعد ضربات أمريكية على جزيرة قشم في هرمز",
+      "section": "energy",
+      "importance": 8,
+      "sources": [
+        "https://www.ft.com/content/ebeaca62-8958-459a-be9d-d3d39e441a53?syn-25a6b1a6=1",
+        "https://www.agbi.com/oil-and-gas/2026/11/oil-rises-after-us-reportedly-strikes-irans-qeshm-island/",
+        "https://www.aljazeera.net/ebusiness/2026/11/3/%d8%a7%d9%84%d9%86%d9%81%d8%b7-%d9%8a%d8%b1%d8%aa%d9%81%d8%b9-%d8%a8%d8%b9%d8%af-%d8%a3%d9%86%d8%a8%d8%a7%d8%a1-%d8%b9%d9%86-%d9%82%d8%b5%d9%81-%d8%a3%d9%85%d8%b1%d9%8a%d9%83%d9%8a",
+        "https://www.cnbc.com/2026/11/03/oil-prices-climb-after-us-reportedly-strikes-irans-qeshm-island.html"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والمقدمة يقولان ما تغيّر: برنت يرتفع بعد تقارير عن ضربة. لكن الموجز يكرّس نصفه لهبوط الاثنين، ولا يقول ما الذي تغيّره الضربة. المصادر تعطي هذه النتيجة: تهديد مساعي السلام (المصدر 2)، ومخاوف التصعيد واضطراب الإمدادات (المصدر 3). كما أن النص يعامل الضربة أحياناً كواقعة مؤكدة مع أنها غير مؤكدة رسمياً.",
+              "repair": "موجز مقترح: «تقارير عن هجوم أمريكي تثير مخاوف من تصعيد الحرب واضطراب الإمدادات بعد هبوط 7.63% مع الوساطة القطرية». وأبقِ صيغة «تقارير» في كل موضع يرد فيه الهجوم."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يحمل التقرير السبب (تقارير الضربة) ورد فعل المحلل ووترر مع صفته، وخلفية الوساطة. لكنه يغفل الغرض المعلن للضربة، أي منع مهاجمة السفن التجارية في هرمز (المصدر 3)، ويضيف موقعاً للجزيرة لا يذكره أي مصدر. في «لماذا يهمّ» المقدمات صحيحة (الارتداد، وتسوية الاثنين، وتقييد الملاحة، وأسعار الوقود)، لكن الاستنتاج يتجاوز حجم الأرقام.",
+              "repair": "أضف الغرض المنسوب من المصدر 3 إلى الفقرة الأولى، واحذف «تقع قشم في مضيق هرمز». وأعد صياغة «لماذا يهمّ» على أساس أن معظم خصم الاثنين باقٍ، وأن علاوة المخاطر عادت إلى السعر."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "ما يقوله العنوان جديداً هو الارتداد بعد الضربة. تفسيره موزع بين الفقرة الثالثة (ووترر) والفقرتين الأخيرتين (المخاوف، وهرمز، وأعلى مستوى في 6 أشهر)، بينما تفصل بينها ثلاث فقرات عن الدبلوماسية. وتنتهي الفقرة الأخيرة بتكرار معنى أسعار الوقود مرتين.",
+              "repair": "رتّب التقرير هكذا: رواية الضربة وغرضها المعلن، ثم فقرة واحدة تجمع المخاوف وووترر وحصة هرمز، ثم هبوط الاثنين والدبلوماسية (طهران وترامب وفانس وروبيو)، ثم الانتخابات وأسعار الوقود في الختام دون تكرار."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأسعار متسقة مع تسوية 104.77 دولار، والنص يعتمد سعر «سي إن بي سي» الأحدث وقتاً. لكن «يتجنب استخدام القوة» أقوى من «prefers not to»، و«إذ» تنشئ سبباً غير مسنود، و«كل تحرك عسكري» يقين يتجاوز الأدلة. وتصريح ترامب لـ«أكسيوس» يُلحق ضمنياً بيوم الاثنين، والمصدر 2 لا يحدد تاريخه.",
+              "repair": "«ويفضّل ألا يلجأ إلى القوة العسكرية». احذف «إذ». افصل تصريح «أكسيوس» عن عبارة «الاثنين أيضاً». واحذف «كل» من «لماذا يهمّ»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "The headline and dek say what changed: Brent rose 0.97% after reports, not a confirmed fact, of a US strike on the Iranian island of Qeshm. The dek gives the consequence (fears of escalation and supply disruption, SOURCE 3) and the limiting comparison (Monday's 7.63% fall with Qatari mediation). The countries are clear, and the reports wording is kept throughout.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "The draft carries the three explanations the sources supply: (1) the cause, the strike reports and their stated purpose of stopping attacks on ships in Hormuz (SOURCE 3) or surface-to-air missiles (SOURCE 1); (2) the reaction, Waterer of «كيه سي إم تريد» on the risk premium, with his role, and AGBI on the threat to peace efforts; (3) the background, Hormuz's share of supplies, the diplomacy and the elections. The synthesis box identifies its premises (the small recovery against 8.66 dollars, restricted shipping) and infers that the premium returned. Its second sentence echoes the body.",
+              "repair": "Consolidate the second sentence of «لماذا يهمّ» as described in the issues."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "The headline's element, the rebound after the strike reports, is developed straight after the lede: the strike and its purpose, then the fears and Waterer, then Hormuz. After that come Monday's drop and the diplomacy, then the elections. The order is sound. The second paragraph, however, opens with a sentence about how an outlet published («حتى نشر موقع... تقريره»), and the closing paragraph repeats the meaning of fuel prices.",
+              "repair": "Rephrase the confirmation sentence as a fact («لم يؤكد... رسمياً») and merge the two fuel-price sentences into one."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "All prices match SOURCE 4, the latest-timed source, and are consistent with the 104.77 settlement (SOURCE 3). «يفضّل ألا يلجأ» is accurate, and the Axios remark is no longer tied to a date. The figures box still contains Monday's settlement, and the denial of official confirmation needs the word «رسمياً» so it does not clash with officials talking to «وول ستريت جورنال».",
+              "repair": "Remove «تسوية برنت الاثنين» from key_facts and add «رسمياً» to the confirmation sentence."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 6,
+      "mendIssues": [
+        "Most of the previously reported problems were fixed: the island's location, the strike stated as fact, «إذ», «يتجنب», the stated purpose under SOURCE 3, the grouping of the fears with Waterer's comment, the dek, the Axios date and «كل». Part of problem 6 remains. The «الأرقام» box still prints «تسوية برنت الاثنين: 104.77 دولار للبرميل». That is the price of another day, not of the event in the headline. Take it out of the box; the text already carries it in the Monday-drop paragraph.",
+        "«لم يؤكد أي مسؤول حكومي أمريكي الضربة حتى نشر موقع «أرابيان غلف بزنس إنسايت» (AGBI) المتخصص في أخبار أعمال الخليج تقريره، الذي أورد فيه...» has two defects. It recounts how one outlet published, instead of reporting the fact. It also appears to contradict the paragraph before it, which says US officials told «وول ستريت جورنال» about the attack. SOURCE 2 means public, official confirmation. Repair: «ولم يؤكد أي مسؤول أمريكي الضربة رسمياً، فيما أفاد موقع «أرابيان غلف بزنس إنسايت» (AGBI) المتخصص في أخبار أعمال الخليج بأن دوي خمسة انفجارات سُمع في أنحاء الجزيرة».",
+        "The closing paragraph says the same idea twice (TOLD ONCE). «وحرب إيران من الأسباب الرئيسية لارتفاع أسعار الوقود التي تثقل الناخبين الأمريكيين» (SOURCE 3) is followed directly by «وأسهم غلاء النفط بقدر كبير في التضخم وارتفاع أسعار البنزين... ما بات مصدر قلق للرئيس» (SOURCE 4). Merge them into one sentence that keeps both attributions without repeating the meaning: «وحرب إيران من الأسباب الرئيسية لغلاء الوقود، الذي أسهم بقدر كبير في التضخم الأمريكي وبات مصدر قلق لترامب قبيل الاقتراع، فيما يواجه ضغوطاً لإنهاء الحرب».",
+        "The second sentence of «لماذا يهمّ», «وهذه العلاوة تنتقل إلى أسعار الوقود التي تثقل الناخب الأمريكي، مع بدء التصويت»: (1) repeats the conclusion of the closing paragraph almost word for word; (2) states the pass-through to fuel prices as a certainty from a single session. Either cut it and keep the first sentence, which carries the real synthesis (most of Monday's discount remains, and one report brought back a risk premium while shipping through Hormuz is restricted), or turn it into a bounded condition with a different job: «وإذا استقرت هذه العلاوة فستبقي أسعار الوقود مرتفعة على الناخب الأمريكي في يوم الاقتراع».",
+        "The headline's element, the rebound after the strike reports, is developed straight after the lede: the strike and its purpose, then the fears and Waterer, then Hormuz. After that come Monday's drop and the diplomacy, then the elections. The order is sound. The second paragraph, however, opens with a sentence about how an outlet published («حتى نشر موقع... تقريره»), and the closing paragraph repeats the meaning of fuel prices. — Rephrase the confirmation sentence as a fact («لم يؤكد... رسمياً») and merge the two fuel-price sentences into one.",
+        "All prices match SOURCE 4, the latest-timed source, and are consistent with the 104.77 settlement (SOURCE 3). «يفضّل ألا يلجأ» is accurate, and the Axios remark is no longer tied to a date. The figures box still contains Monday's settlement, and the denial of official confirmation needs the word «رسمياً» so it does not clash with officials talking to «وول ستريت جورنال». — Remove «تسوية برنت الاثنين» from key_facts and add «رسمياً» to the confirmation sentence."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "ارتفع خام برنت يوم الثلاثاء 0.97% إلى 105.77 دولار للبرميل بعد تقارير عن ضربة أمريكية على جزيرة قشم",
+          "source": 4
+        },
+        {
+          "fact": "سُوّيت العقود الآجلة لبرنت يوم الاثنين عند 104.77 دولار للبرميل بانخفاض 8.66 دولار أو 7.63%",
+          "source": 3
+        },
+        {
+          "fact": "تقلصت حركة الملاحة بشدة في مضيق هرمز منذ اندلاع الحرب أواخر فبراير",
+          "source": 3
+        },
+        {
+          "fact": "لم يؤكد أي مسؤول حكومي أمريكي الضربة حتى نشر تقرير AGBI",
+          "source": 2
+        }
+      ],
+      "slug": "brent-rebounds-us-strike-qeshm-island-382dd6",
+      "title": "برنت يرتد 0.97% بعد تقارير عن ضربة أمريكية على جزيرة قشم الإيرانية",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "القطاع غير النفطي السعودي ينمو للشهر السابع بوتيرة أبطأ في أكتوبر",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://aawsat.com/node/5336910",
+        "https://asharqbusiness.com/economics/154065/%D8%A7%D9%84%D9%82%D8%B7%D8%A7%D8%B9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5-%D8%BA%D9%8A%D8%B1-%D8%A7%D9%84%D9%86%D9%81%D8%B7%D9%8A-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A-%D9%8A%D8%AA%D8%AD%D8%AF%D9%89-%D9%87%D8%AC%D9%85%D8%A7%D8%AA-%D8%A7%D9%84%D8%AD%D9%88%D8%AB%D9%8A-%D9%88%D9%8A%D9%86%D9%85%D9%88/",
+        "https://www.aleqt.com/%D8%A7%D9%84%D8%A3%D8%B3%D9%88%D8%A7%D9%82/%D8%A7%D9%84%D9%82%D8%B7%D8%A7%D8%B9-%D8%BA%D9%8A%D8%B1-%D8%A7%D9%84%D9%86%D9%81%D8%B7%D9%8A-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A-%D9%8A%D9%88%D8%A7%D8%B5%D9%84-%D9%86%D9%85%D9%88%D9%87-%D8%AE%D9%84%D8%A7%D9%84-%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1-%D8%A8%D8%AF%D8%B9%D9%85-%D8%AA%D8%AD%D8%B3%D9%86-%D8%A7%D9%84%D8%AA%D8%B4%D8%BA%D9%8A%D9%84-16006"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد (السعودية) والقطاع والمؤشر وقراءته (54 نقطة) والشهر. ويوضحان أن النمو مستمر لكنه أبطأ، ولا تناقض بين «ينمو» و«يتراجع» لأن المقدمة تشرح عتبة 50 نقطة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المسودة تحمل سبب تسارع الإنتاج (الطلب الأساسي والمبيعات والتسويق) وأسباب تراجع التصدير. لكنها تُسقط ثلاثة عناصر: انقلاب تسعير الشركات مقارنة بسبتمبر حين مررت التكاليف بثاني أسرع وتيرة في أكثر من ست سنوات (SOURCE 2)، ولجوء الشركات إلى المصادر المحلية (SOURCE 1)، وخلفية حرب إيران وهجمات الحوثي المتزامنة (SOURCE 2). أما «لماذا يهمّ» فمقدماته مسندة، وخلاصته عن امتصاص الهوامش معقولة، لكن «وحدها» تتجاوز الدليل.",
+              "repair": "إضافة مقارنة سبتمبر في فقرة الأسعار، والاعتماد على المصادر المحلية في فقرة الإمداد، وجملة الخلفية مقدَّمة تزامناً لا سبباً، وتلطيف «وحدها» في الصندوق."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان الجديد («بوتيرة أبطأ») يُطوَّر مباشرة في الفقرة الأولى من المتن، والفقرات مجمعة بحسب الموضوع. لكن الفقرة الأولى تضيف تفسيراً غير مسند («تكفي لسحب المؤشر»). وفقرة سلاسل الإمداد تبدأ بالأعمال غير المنجزة، وهي ليست من سلاسل الإمداد، ثم تنتقل إلى مواعيد التسليم والمخزون. والصندوق يعيد أرقام فقرة التكاليف بدل أن يضيف إليها معنى.",
+              "repair": "حذف «وهي مكونات تكفي…». نقل جملة الأعمال غير المنجزة إلى جوار التوظيف تحت سوق العمل. وصياغة الصندوق حول انتقال الشركات من تمرير الكلفة في سبتمبر إلى امتصاصها في أكتوبر."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والفترات مطابقة: 54 مقابل 55.3، الشهر السابع، الشهر الثامن للتصدير، أعلى تضخم مدخلات منذ يونيو، أبطأ رفع للأسعار منذ تسعة أشهر. لكن «بسبب المخاوف» تحوّل «مع استمرار المخاوف» (SOURCE 2) إلى سبب صريح، و«تكفي لسحب المؤشر» علاقة لا يقولها أي مصدر.",
+              "repair": "«في ظل استمرار المخاوف…» و«جاء التراجع رغم تسارع الإنتاج، إذ تباطأ…»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد والقطاع والشهر والرقم (54 من 55.3). ويميز المتن بين استمرار النمو فوق 50 نقطة وتباطؤ وتيرته. كما يعرّف بنك الرياض بأنه الجهة التي يحمل المؤشر اسمها.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "تحمل المسودة سبب تسارع الإنتاج (الطلب الأساسي وجهود المبيعات والتسويق) وأسباب تراجع التصدير، وانقلاب التسعير مقارنة بسبتمبر، واللجوء إلى المصادر المحلية، وتزامن هجمات الحوثي. لكنها تُسقط أن تسارع الإنتاج جاء بعد أدنى مستوى في خمسة أشهر في سبتمبر وظل دون مستوياته التاريخية (SOURCE 2 وSOURCE 3). أما «لماذا يهمّ» فمقدماته مسندة. خلاصته انتقال الشركات من تمرير الكلفة إلى امتصاصها بخصومات، مع وقوع العبء أساساً على الطلب المحلي، وهي خلاصة متناسبة ومشروطة بـ«أساساً»، وتضيف ربط الهوامش بالطلب المحلي إلى ما في المتن.",
+              "repair": "إضافة مقارنة الإنتاج بأدنى مستوى في خمسة أشهر في سبتمبر إلى الفقرة الأولى من المتن."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنصر الجديد في العنوان («بوتيرة أبطأ») يُطوَّر مباشرة بعد المقدمة، والفقرات مجمعة: الطلب والتصدير، ثم سوق العمل والأعمال غير المنجزة، ثم الإمداد، ثم التكاليف والأسعار. لكن المقال يُختم بإحصاء معلّق يكرر قمة سبتمبر: «وكان القطاع قد سجّل في سبتمبر أعلى نمو منذ اندلاع حرب إيران». وتصريحات الغيث تُروى في فقرة مستقلة بعيدة عن الطلب والتوظيف اللذين تفسرهما.",
+              "repair": "دمج قمة سبتمبر في الفقرة الأولى، وتوزيع تصريحات الغيث على فقرتي الطلبات الجديدة والتوظيف، وحذف عبارته العامة عن «المرونة»."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام والفترات مطابقة: 54 مقابل 55.3، والشهر السابع، والثامن للتصدير، والرابع للتوظيف، وأعلى تضخم للمدخلات منذ يونيو، وأبطأ رفع للأسعار منذ تسعة أشهر، وثاني أسرع وتيرة في ست سنوات في سبتمبر. وصار «مع استمرار المخاوف» تزامناً لا سبباً، وقُدّمت هجمات الحوثي تزامناً لا سبباً. واقتباس «جهود الشركات لتوسيع طاقتها التشغيلية وتلبية الطلب الحالي» حرفي من SOURCE 2.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 5,
+      "mendIssues": [
+        "ينقص التقرير: الأرقام في سياقها لتسارع الإنتاج. يقول SOURCE 2 وSOURCE 3 إن الإنتاج تسارع في أكتوبر «بعدما تباطأ في سبتمبر إلى أدنى مستوى في خمسة أشهر، وإن ظل دون مستوياته التاريخية المعتادة». المسودة تكتفي بـ«وجاء التراجع رغم تسارع الإنتاج»، فلا يعرف القارئ من أي مستوى تسارع ولا حدود هذا التسارع، مع أن هذه المقارنة هي ما يفسر مفارقة العنوان: مؤشر يتراجع وإنتاج يتسارع. الإصلاح: «وجاء التراجع رغم تسارع الإنتاج بعدما هبط نموه في سبتمبر إلى أدنى مستوى في خمسة أشهر، وإن بقي دون مستوياته التاريخية المعتادة».",
+        "يُروى أعلى نمو في سبتمبر مرتين بصيغتين مختلفتين. الأولى في الفقرة الأولى: «بعد قراءة سبتمبر التي كانت الأعلى في سبعة أشهر». والثانية في آخر جملة من المقال: «وكان القطاع قد سجّل في سبتمبر أعلى نمو منذ اندلاع حرب إيران». ورود الجملة الثانية خاتمةً بعد خبر هجمات الحوثي يجعلها إحصاءً معلّقاً لا يفسر شيئاً. الإصلاح: تُدمج الصيغتان في الفقرة الأولى في موضع واحد: «بعد قراءة سبتمبر التي سجّلت أعلى نمو منذ اندلاع حرب إيران» (SOURCE 2). ويُختم المقال بالتوقعات وتزامن الهجمات.",
+        "بناء: تصريحات الغيث مجموعة في فقرة واحدة مستقلة بسلسلة «ورأى… وقال إن… وإن… وإن…»، وكل منها بعيد عن الوقائع التي يفسرها. كما أن عبارته العامة «أظهر مرونة… بدعم من الطلب المحلي المستدام وتحسن النشاط التجاري واستمرار التوظيف» تعيد ما قاله المتن بالأرقام. الإصلاح: تُحذف العبارة العامة. ويُنقل قوله إن الطلب «بات أكثر انتقائية» إلى فقرة الطلبات الجديدة. ويُنقل اقتباسه «جهود الشركات لتوسيع طاقتها التشغيلية وتلبية الطلب الحالي» إلى فقرة التوظيف. ويُعرَّف بصفته («كبير الاقتصاديين في بنك الرياض») عند أول ذكر له.",
+        "تحمل المسودة سبب تسارع الإنتاج (الطلب الأساسي وجهود المبيعات والتسويق) وأسباب تراجع التصدير، وانقلاب التسعير مقارنة بسبتمبر، واللجوء إلى المصادر المحلية، وتزامن هجمات الحوثي. لكنها تُسقط أن تسارع الإنتاج جاء بعد أدنى مستوى في خمسة أشهر في سبتمبر وظل دون مستوياته التاريخية (SOURCE 2 وSOURCE 3). أما «لماذا يهمّ» فمقدماته مسندة. خلاصته انتقال الشركات من تمرير الكلفة إلى امتصاصها بخصومات، مع وقوع العبء أساساً على الطلب المحلي، وهي خلاصة متناسبة ومشروطة بـ«أساساً»، وتضيف ربط الهوامش بالطلب المحلي إلى ما في المتن. — إضافة مقارنة الإنتاج بأدنى مستوى في خمسة أشهر في سبتمبر إلى الفقرة الأولى من المتن.",
+        "العنصر الجديد في العنوان («بوتيرة أبطأ») يُطوَّر مباشرة بعد المقدمة، والفقرات مجمعة: الطلب والتصدير، ثم سوق العمل والأعمال غير المنجزة، ثم الإمداد، ثم التكاليف والأسعار. لكن المقال يُختم بإحصاء معلّق يكرر قمة سبتمبر: «وكان القطاع قد سجّل في سبتمبر أعلى نمو منذ اندلاع حرب إيران». وتصريحات الغيث تُروى في فقرة مستقلة بعيدة عن الطلب والتوظيف اللذين تفسرهما. — دمج قمة سبتمبر في الفقرة الأولى، وتوزيع تصريحات الغيث على فقرتي الطلبات الجديدة والتوظيف، وحذف عبارته العامة عن «المرونة»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "بلغ تضخم أسعار مستلزمات الإنتاج أعلى مستوى منذ يونيو بفعل كلفة الشحن والتأمين والمواد الخام والطاقة",
+          "source": 2
+        },
+        {
+          "fact": "رفعت الشركات أسعار البيع بأبطأ وتيرة منذ تسعة أشهر ولجأت إلى خصومات أكبر مع اشتداد المنافسة",
+          "source": 2
+        },
+        {
+          "fact": "في سبتمبر ارتفعت أسعار البيع بثاني أسرع وتيرة في أكثر من ست سنوات مع تمرير الشركات جانباً أكبر من زيادة التكاليف إلى العملاء",
+          "source": 2
+        },
+        {
+          "fact": "قام نمو الطلب أساساً على السوق المحلية وانخفضت طلبات التصدير للشهر الثامن على التوالي",
+          "source": 2
+        }
+      ],
+      "slug": "saudi-non-oil-pmi-slows-october-a95a70",
+      "title": "القطاع غير النفطي السعودي ينمو للشهر السابع على التوالي بوتيرة أبطأ",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "أستراليا ترفع الفائدة إلى 4.85% في أعلى مستوى منذ 2008",
+      "section": "economy",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
     }
   ],
   "llm": {
-    "calls": 28,
-    "failures": 1,
-    "promptTokens": 373256,
-    "completionTokens": 90408,
-    "cacheReadTokens": 126714,
-    "costUsd": 3.8057,
+    "calls": 88,
+    "failures": 2,
+    "promptTokens": 1225189,
+    "completionTokens": 234820,
+    "cacheReadTokens": 307798,
+    "costUsd": 12.0963,
     "byModel": {
-      "claude-cli/claude-opus-5-5": 28
+      "claude-cli/claude-opus-5-5": 88
     },
     "byRole": {
       "editor": {
         "calls": 1,
-        "in": 13694,
+        "in": 83628,
         "read": 0,
-        "out": 1140,
-        "usd": 0.1323
-      },
-      "writer": {
-        "calls": 7,
-        "in": 61104,
-        "read": 34316,
-        "out": 26725,
-        "usd": 1.0303
+        "out": 2104,
+        "usd": 0.7111
       },
       "desk": {
-        "calls": 6,
-        "in": 35513,
-        "read": 76458,
-        "out": 34375,
-        "usd": 0.9869
+        "calls": 13,
+        "in": 94671,
+        "read": 114687,
+        "out": 57320,
+        "usd": 1.9267
+      },
+      "writer": {
+        "calls": 20,
+        "in": 196799,
+        "read": 153261,
+        "out": 72844,
+        "usd": 3.0616
       },
       "critic": {
-        "calls": 6,
-        "in": 53203,
-        "read": 15940,
-        "out": 13012,
-        "usd": 0.689
+        "calls": 24,
+        "in": 246997,
+        "read": 39850,
+        "out": 52475,
+        "usd": 3.0332
       },
       "checker": {
-        "calls": 1,
-        "in": 8912,
+        "calls": 3,
+        "in": 28505,
         "read": 0,
-        "out": 9850,
-        "usd": 0.2683
+        "out": 22953,
+        "usd": 0.6871
       },
       "vision": {
-        "calls": 7,
-        "in": 74116,
+        "calls": 27,
+        "in": 266791,
         "read": 0,
-        "out": 5306,
-        "usd": 0.6989
+        "out": 27124,
+        "usd": 2.6766
       }
     }
   },
   "log": [
-    "[22:56:35] openverse \"fertilizer ship loading Egypt\": 0 usable of 0",
-    "[22:56:38] openverse \"fertilizer plant Egypt\": 1 usable of 1",
-    "[22:56:45] openverse \"farmer fertilizer field\": 10 usable of 20",
-    "[22:57:18] openverse \"fertilizer bags\": The operation was aborted due to timeout",
-    "[22:57:23] openverse \"petrochemical plant\": The operation was aborted due to timeout",
-    "[22:57:23] image: dropped \"A detailed view of industrial pipelines in a Saudi Arabian factory set\" — names too little of petrochemical, plant",
-    "[22:57:23] image: dropped \"A stunning night aerial shot of a well-lit oil refinery in Rosemount, \" — names too little of petrochemical, plant",
-    "[22:57:23] image: dropped \"Aerial view of a large industrial oil refinery in Banten, Indonesia wi\" — names too little of petrochemical, plant",
-    "[22:57:23] image: dropped \"Aerial view of large industrial oil tanks in a desert setting with mou\" — names too little of petrochemical, plant",
-    "[22:57:23] image: dropped \"A modern industrial refinery structure under a clear twilight sky in Z\" — names too little of petrochemical, plant",
-    "[22:57:23] image: dropped \"A striking view of an industrial facility in Zuid-Holland, illuminated\" — names too little of petrochemical, plant",
-    "[22:57:23] commons \"chemical tanker Egypt port\": 0 usable of 0",
-    "[22:57:24] commons \"chemical tanker\": 23 usable of 24",
-    "[22:57:30] openverse \"chemical tanker\": The operation was aborted due to timeout",
-    "[22:57:30] openverse: 3 failures in a row; left alone for 10 minutes",
-    "[22:57:30] image: dropped \"Industrial boat deck with safety equipment and prominent no smoking ar\" — names too little of chemical, tanker, port",
-    "[22:57:30] image: dropped \"Aerial view of a large cargo ship docked in an industrial harbor, show\" — names too little of chemical, tanker, port",
-    "[22:57:30] commons \"fertilizer ship loading Egypt\": 0 usable of 0",
-    "[22:57:31] commons \"fertilizer ship\": 10 usable of 24",
-    "[22:57:31] image: dropped \"Lilly's complete annual - bee supplies spray materiels poultry supplie\" — dated 1915, an archival picture",
-    "[22:57:31] image: dropped \"R. and J. Farquhar and Co's. catalogue, 1897 - reliable tested seeds p\" — dated 1897, an archival picture",
-    "[22:57:31] image: dropped \"Lilly's complete annual catalog - seeds fertilizers stock foods bee su\" — dated 1917, an archival picture",
-    "[22:57:31] image: dropped \"Farmers of forty centuries - Two large peanut cakes and a paper demijo\" — dated 1911, an archival picture",
-    "[22:57:31] image: dropped \"THE CHICAGO SANITARY LINER SHIPS MUCH OF ITS WASTE (SLUDGE) BY BARGE D\" — dated 1973, an archival picture",
-    "[22:57:31] image: dropped \"Dreer's wholesale price list - Henry A. Dreer. (20873281200).jpg\" — dated 1912, an archival picture",
-    "[22:57:31] image: dropped \"Zuiderdiep (1999).jpg\" — dated 1999, an archival picture",
-    "[22:57:31] image: dropped \"Top view of cargo boats loaded with sand along a vibrant riverbank.\" — names too little of fertilizer, ship, loading",
-    "[22:57:32] commons \"fertilizer plant Egypt\": 4 usable of 9",
-    "[22:57:32] image: dropped \"Rice harvesting 1.jpg\" — names too little of fertilizer, plant",
-    "[22:57:32] image: dropped \"Descriptive annual catalogue of Jos. F. Dickmann Seed Co.'s high-class\" — dated 1897, an archival picture",
-    "[22:57:32] image: dropped \"Cotton, its cultivation, marketing, manufacture, and the problems of t\" — names too little of fertilizer, plant",
-    "[22:57:32] image: dropped \"Lake Nasser (Lake Nubia) and the Toska Lakes (MODIS 2021-10-20).jpg\" — names too little of fertilizer, plant",
-    "[22:57:32] image: dropped \"Public Meeting: Towards a General Strike ندوة مركز الدراسات الاشتراكية\" — names too little of fertilizer, plant",
-    "[22:57:32] image: dropped \"Tractor spraying a vibrant farm field. Capturing modern agriculture in\" — names too little of fertilizer, plant",
-    "[22:57:32] image: dropped \"Tiny sprig with green leaves growing on fertile soil in field in farm\" — names too little of fertilizer, plant",
-    "[22:57:32] image: dropped \"A farmer spreads seeds over a vibrant field during sunset, capturing r\" — names too little of fertilizer, plant",
-    "[22:57:32] image: dropped \"Tractor spraying crops in a vast farmland at sunrise, promoting growth\" — names too little of fertilizer, plant",
-    "[22:57:32] image: dropped \"A vibrant corn field with lush green leaves basking in summer sunlight\" — names too little of fertilizer, plant",
-    "[22:57:32] image: dropped \"Vibrant green corn rows on farmland in summer, showcasing crop growth \" — names too little of fertilizer, plant",
-    "[22:57:33] commons \"fertilizer bags\": 14 usable of 24",
-    "[22:57:33] image: dropped \"Fertilizer bags at Agricultural Engineering Laboratory - DPLA - 7e9f9c\" — dated 1953, an archival picture",
-    "[22:57:33] image: dropped \"Many bags of slag (AM 75562-1).jpg\" — dated 1938, an archival picture",
-    "[22:57:34] commons \"farmer fertilizer field\": 11 usable of 24",
-    "[22:57:34] image: dropped \"Farmers of forty centuries - Distribution of old stubble to serve as f\" — dated 1911, an archival picture",
-    "[22:57:34] image: dropped \"Farmers of forty centuries -Japanese farmer tramping green herbage.jpg\" — dated 1911, an archival picture",
-    "[22:57:34] image: dropped \"Farmers of forty centuries - Applying chaff to a rice field, China.jpg\" — dated 1911, an archival picture",
-    "[22:57:34] image: dropped \"Farmers Fertilizer Company building photograph - DPLA - e343a4103f6bf4\" — dated 1912, an archival picture",
-    "[22:57:34] image: dropped \"Annual catalogue of Jos. F. Dickmann's realiable garden field and flow\" — dated 1895, an archival picture",
-    "[22:57:34] image: dropped \"Annual catalogue of Jos. F. Dickmann's realiable garden field and flow\" — dated 1895, an archival picture",
-    "[22:57:34] image: dropped \"Farmers of forty centuries - Recently excavated pit for receiving wint\" — dated 1911, an archival picture",
-    "[22:57:34] image: dropped \"SOMERVILLE, NEW JERSEY, FARMER WITH HIS STOCKPILE OF SLUDGE ASH. HE TR\" — dated 1974, an archival picture",
-    "[22:57:34] image: dropped \"Ventura Pier, Ventura, California (4)\" — names too little of farmer, fertilizer, field",
-    "[22:57:34] image: dropped \"Ventura Pier, Ventura, California (5)\" — names too little of farmer, fertilizer, field",
-    "[22:57:34] image: dropped \"Ventura, California (13)\" — names too little of farmer, fertilizer, field",
-    "[22:57:34] image: dropped \"Ventura, California (3)\" — names too little of farmer, fertilizer, field",
-    "[22:57:34] image: dropped \"Ventura, California (2)\" — names too little of farmer, fertilizer, field",
-    "[22:57:34] image: dropped \"Ventura Pier, Ventura, California (19)\" — names too little of farmer, fertilizer, field",
-    "[22:57:34] image: dropped \"Ventura Pier, Ventura, California (14)\" — names too little of farmer, fertilizer, field",
-    "[22:57:34] image: dropped \"Ventura Pier, Ventura, California (18)\" — names too little of farmer, fertilizer, field",
-    "[22:57:34] image: dropped \"Ventura Pier, Ventura, California (24)\" — names too little of farmer, fertilizer, field",
-    "[22:57:34] image: dropped \"Stenheim (IMO 9261114).jpg\" — taken in United Kingdom, which the story does not name",
-    "[22:57:34] image: dropped \"Petrochemical plant - Norway.jpg\" — taken in Norway, which the story does not name",
-    "[22:57:34] image: dropped \"Aerial view of a ship docking at an industrial port with storage tanks\" — taken in Indonesia, which the story does not name",
-    "[22:57:34] image: dropped \"An Indian farmer spreading fertilizer over a crop.jpg\" — taken in India, which the story does not name",
-    "[22:57:34] image: dropped \"A view of urea towers at an industrial plant in Libya, captured on a c\" — taken in Libya, which the story does not name",
-    "[22:57:34] image: dropped \"View of a large oil refinery plant with intricate pipelines in Trzebin\" — taken in Poland, which the story does not name",
-    "[22:57:49] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1200 in=10267 read=0 out=1450 attempt=1 ms=14140",
-    "[22:57:49] image: \"A large red oil tanker named Bow Excellence docked at a harb\" names the story's topic without saying its point (A sharp, professional photo of a chemical/product tanker at a port. It suits a story about petrochemical exports by sea, and nothing in the frame places it outs); checked now and kept in reserve while the desk looks further",
-    "[22:57:53] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=161 in=7939 read=0 out=256 attempt=1 ms=3981",
-    "[22:57:53] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"A large red oil tanker named Bow Excellence docked at a harb\": The hull reads «ODFJELL TANKERS» in large letters, a shipping company the story never names, and nothing in the frame or",
-    "[22:58:05] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=733 in=10257 read=0 out=1020 attempt=1 ms=11998",
-    "[22:58:05] image: \"A large cargo ship at a port with cranes lifting containers \" names the story's topic without saying its point (The only usable frame is a bulk carrier being worked by its cranes and a grab at a port. It is a sharp, professional scene of exports moving, and nothing in it ); checked now and kept in reserve while the desk looks further",
-    "[22:58:10] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=231 in=7937 read=0 out=331 attempt=1 ms=4928",
-    "[22:58:10] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"A large cargo ship at a port with cranes lifting containers \": The Berge Bulk name painted large across the hull is among the most legible things in the frame and reads as that operat",
-    "[22:58:14] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=238 in=3113 read=0 out=278 attempt=1 ms=4191",
-    "[22:58:14] image: last resort: fertilizer bags ship loading Egypt | fertilizer bags ship loading | fertilizer bags ship loading industrial",
-    "[22:58:15] commons \"fertilizer bags ship loading Egypt\": 0 usable of 0",
-    "[22:58:15] commons \"fertilizer bags\": 14 usable of 24",
-    "[22:58:15] image: dropped \"Fertilizer bags at Agricultural Engineering Laboratory - DPLA - 7e9f9c\" — dated 1953, an archival picture",
-    "[22:58:15] image: dropped \"Many bags of slag (AM 75562-1).jpg\" — dated 1938, an archival picture",
-    "[22:58:15] commons \"fertilizer bags ship loading\": 0 usable of 0",
-    "[22:58:15] commons \"fertilizer bags\": 14 usable of 24",
-    "[22:58:16] commons \"fertilizer bags ship loading industrial\": 0 usable of 0",
-    "[22:58:16] commons \"fertilizer bags\": 14 usable of 24",
-    "[22:58:16] image: dropped \"Fields TR Bazar NH-181 Nilgiris Aug25 A7CR 07388-HDR.jpg\" — taken in India, which the story does not name",
-    "[22:58:21] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=137 in=10079 read=0 out=277 attempt=1 ms=4642",
-    "[22:58:21] image: vision rejected all candidates (fallback pass) (None fit. Two are amateur snapshots of discarded fertilizer bags dumped in Taiwanese fields, which is the wrong country and an embarrassing scene of illegal dumping. The third shows distant bulk bags in an English field, also the wrong country and amateur. None shows Egypt's petrochemical sector, which is what the story is about.)",
-    "[22:58:21] image: last pass, a neutral illustration: petrochemical plant | chemical tanker port | fertilizer ship loading | fertilizer plant | fertilizer bags | farmer fertilizer field",
-    "[22:58:21] commons \"petrochemical plant\": 12 usable of 24",
-    "[22:58:21] image: dropped \"Combinatul de cauciuc sintetic și produse petrochimice Onești aerial.j\" — dated 1972, an archival picture",
-    "[22:58:21] image: dropped \"Clădiri la Combinatul de cauciuc sintetic și produse petrochimice Oneș\" — dated 1965, an archival picture",
-    "[22:58:21] image: dropped \"Социалистическая Республика Румыния. Онешти.jpg\" — dated 1965, an archival picture",
-    "[22:58:21] image: dropped \"Социалистическая Республика Румыния. Онешти back.jpg\" — dated 1965, an archival picture",
-    "[22:58:21] image: dropped \"Petrochemical plant in Sarnia, 1961.jpg\" — dated 1961, an archival picture",
-    "[22:58:21] image: dropped \"PETROCHEMICAL PLANT IN COASTAL AREA - NARA - 546389.jpg\" — dated 1973, an archival picture",
-    "[22:58:21] image: dropped \"Photo View of the olefin storage spheres at the petrochemical plant in\" — dated 1960, an archival picture",
-    "[22:58:21] pexels \"fertilizer plant\": 8 usable",
-    "[22:58:21] pexels \"fertilizer ship loading\": 8 usable",
-    "[22:58:21] pexels \"petrochemical plant\": 8 usable",
-    "[22:58:21] image: dropped \"Aerial view of a large industrial oil refinery in Banten, Indonesia wi\" — names too little of petrochemical, plant",
-    "[22:58:21] image: dropped \"A stunning night aerial shot of a well-lit oil refinery in Rosemount, \" — names too little of petrochemical, plant",
-    "[22:58:21] image: dropped \"A detailed view of industrial pipelines in a Saudi Arabian factory set\" — names too little of petrochemical, plant",
-    "[22:58:21] image: dropped \"A striking view of an industrial facility in Zuid-Holland, illuminated\" — names too little of petrochemical, plant",
-    "[22:58:21] image: dropped \"A modern industrial refinery structure under a clear twilight sky in Z\" — names too little of petrochemical, plant",
-    "[22:58:21] image: dropped \"Industrial factory near mountains by a river, showcasing chimneys and \" — names too little of petrochemical, plant",
-    "[22:58:21] image: dropped \"A detailed view of a refinery's towers against a cloudy dusk sky, show\" — names too little of petrochemical, plant",
-    "[22:58:21] pexels \"fertilizer bags\": 8 usable",
-    "[22:58:21] pexels \"chemical tanker port\": 8 usable",
-    "[22:58:21] pexels \"farmer fertilizer field\": 8 usable",
-    "[22:58:22] commons \"chemical tanker port\": 23 usable of 24",
-    "[22:58:22] image: dropped \"Colorful tankers docked at a riverside port with industrial buildings \" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[22:58:22] image: dropped \"Aerial view of a large cargo ship docked in an industrial harbor, show\" — names too little of chemical, tanker, port",
-    "[22:58:22] image: dropped \"Industrial boat deck with safety equipment and prominent no smoking ar\" — names too little of chemical, tanker, port",
-    "[22:58:23] commons \"fertilizer ship loading\": 0 usable of 24",
-    "[22:58:23] commons \"fertilizer ship\": 10 usable of 24",
-    "[22:58:23] image: dropped \"Lilly's complete annual - bee supplies spray materiels poultry supplie\" — dated 1915, an archival picture",
-    "[22:58:23] image: dropped \"R. and J. Farquhar and Co's. catalogue, 1897 - reliable tested seeds p\" — dated 1897, an archival picture",
-    "[22:58:23] image: dropped \"Lilly's complete annual catalog - seeds fertilizers stock foods bee su\" — dated 1917, an archival picture",
-    "[22:58:23] image: dropped \"Farmers of forty centuries - Two large peanut cakes and a paper demijo\" — dated 1911, an archival picture",
-    "[22:58:23] image: dropped \"THE CHICAGO SANITARY LINER SHIPS MUCH OF ITS WASTE (SLUDGE) BY BARGE D\" — dated 1973, an archival picture",
-    "[22:58:23] image: dropped \"Dreer's wholesale price list - Henry A. Dreer. (20873281200).jpg\" — dated 1912, an archival picture",
-    "[22:58:23] image: dropped \"Zuiderdiep (1999).jpg\" — dated 1999, an archival picture",
-    "[22:58:24] commons \"fertilizer plant\": 7 usable of 24",
-    "[22:58:24] image: dropped \"FERTILIZER PLANT NEAR EL CENTRO - NARA - 548851.jpg\" — dated 1972, an archival picture",
-    "[22:58:24] image: dropped \"Annual seed plant catalogue - flower, root and fertilizer (1886) (1937\" — dated 1886, an archival picture",
-    "[22:58:24] image: dropped \"Fertilizer-plant-near-el-centro-may-1972 7136442863 o.jpg\" — dated 1973, an archival picture",
-    "[22:58:24] image: dropped \"FERTILIZER PLANT-UPPER EAST SIDE MANHATTAN - NARA - 548423.jpg\" — dated 1973, an archival picture",
-    "[22:58:24] image: dropped \"Tractor spraying a vibrant farm field. Capturing modern agriculture in\" — names too little of fertilizer, plant",
-    "[22:58:24] image: dropped \"Tiny sprig with green leaves growing on fertile soil in field in farm\" — names too little of fertilizer, plant",
-    "[22:58:24] image: dropped \"Vibrant green corn rows on farmland in summer, showcasing crop growth \" — names too little of fertilizer, plant",
-    "[22:58:24] image: dropped \"Sprouting seedling in soil with mist, symbolizing growth and new begin\" — names too little of fertilizer, plant",
-    "[22:58:24] image: dropped \"A farmer sprays crops in a vibrant green field, showcasing modern agri\" — names too little of fertilizer, plant",
-    "[22:58:24] commons \"fertilizer bags\": 14 usable of 24",
-    "[22:58:24] image: dropped \"Fertilizer bags at Agricultural Engineering Laboratory - DPLA - 7e9f9c\" — dated 1953, an archival picture",
-    "[22:58:24] image: dropped \"Many bags of slag (AM 75562-1).jpg\" — dated 1938, an archival picture",
-    "[22:58:24] commons \"farmer fertilizer field\": 11 usable of 24",
-    "[22:58:24] image: dropped \"Farmers of forty centuries - Distribution of old stubble to serve as f\" — dated 1911, an archival picture",
-    "[22:58:24] image: dropped \"Farmers of forty centuries -Japanese farmer tramping green herbage.jpg\" — dated 1911, an archival picture",
-    "[22:58:24] image: dropped \"Farmers of forty centuries - Applying chaff to a rice field, China.jpg\" — dated 1911, an archival picture",
-    "[22:58:24] image: dropped \"Farmers Fertilizer Company building photograph - DPLA - e343a4103f6bf4\" — dated 1912, an archival picture",
-    "[22:58:24] image: dropped \"Annual catalogue of Jos. F. Dickmann's realiable garden field and flow\" — dated 1895, an archival picture",
-    "[22:58:24] image: dropped \"Annual catalogue of Jos. F. Dickmann's realiable garden field and flow\" — dated 1895, an archival picture",
-    "[22:58:24] image: dropped \"Farmers of forty centuries - Recently excavated pit for receiving wint\" — dated 1911, an archival picture",
-    "[22:58:24] image: dropped \"SOMERVILLE, NEW JERSEY, FARMER WITH HIS STOCKPILE OF SLUDGE ASH. HE TR\" — dated 1974, an archival picture",
-    "[22:58:36] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=635 in=10039 read=0 out=940 attempt=1 ms=11388",
-    "[22:58:39] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=112 in=1207 read=0 out=141 attempt=1 ms=3311",
-    "[22:58:50] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=764 in=7852 read=0 out=865 attempt=1 ms=10133",
-    "[22:58:50] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Pacific Prosperity, Chemical-Oil Products Tanker, IMO 932692\": A sharp, clearly composed chemical and oil-products tanker in port is a neutral picture of the petrochemical exports the",
-    "[22:58:53] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=121 in=1198 read=0 out=155 attempt=1 ms=3366",
-    "[22:58:53] published analysis \"البتروكيماويات تقود قفزة صادرات مصر الكيماوية في تسعة أشهر\" -> egypt-fertilizer-exports-hormuz-gap-analysis-64466d"
+    "[07:38:09] image: dropped \"Riyadh Park.JPG\" — names too little of shoppers",
+    "[07:38:09] commons \"container ship Jeddah port 2026\": 0 usable of 0",
+    "[07:38:10] commons \"container ship Jeddah port\": 1 usable of 1",
+    "[07:38:10] commons \"factory workers Saudi Arabia 2026\": 0 usable of 0",
+    "[07:38:12] commons \"factory workers Saudi Arabia\": 0 usable of 2",
+    "[07:38:12] commons \"factory workers\": 8 usable of 12",
+    "[07:38:12] image: dropped \"WomanFactory1940s.jpg\" — dated 1942, an archival picture",
+    "[07:38:12] image: dropped \"Huber workers 1910s.jpg\" — dated 1910, an archival picture",
+    "[07:38:12] image: dropped \"Sandakan Sabah Plywood-Factory-23.jpg\" — taken in Malaysia, which the story does not name",
+    "[07:38:12] image: dropped \"Workers in the fuse factory Woolwich Arsenal Flickr 4615367952 d40a18e\" — taken in United Kingdom, which the story does not name",
+    "[07:38:12] image: dropped \"Continental AG tire factory Mittellandkanal Stoecken Hannover Germany \" — taken in Germany, which the story does not name",
+    "[07:38:17] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=124 in=8766 read=0 out=298 attempt=1 ms=4403",
+    "[07:38:17] image: vision rejected all candidates (The only candidate was taken in Colón, Panama (its categories say 'Ships in Panama' and 'Panama photographs taken on 2011-04-17'). This is a story about one country, Saudi Arabia, so the location is wrong; the ship being named Maersk Jeddah does not change where it was photographed. The 2011 frame also looks like a hazy amateur shot, and the Maersk Line branding dominates it. Choose none.)",
+    "[07:38:17] image: tier 4, the story's point and its subject: Saudi factory workers | Jeddah port containers | Riyadh construction workers | factory Saudi Arabia | container port Jeddah | container ship (home: Saudi Arabia, Saudi, Riyadh, Jeddah, Dammam)",
+    "[07:38:17] pexels \"container port Jeddah\": 8 usable",
+    "[07:38:17] pexels \"factory Saudi Arabia\": 8 usable",
+    "[07:38:17] pexels \"container ship\": 8 usable",
+    "[07:38:17] pexels \"Jeddah port containers\": 8 usable",
+    "[07:38:17] commons \"Saudi factory workers\": 0 usable of 2",
+    "[07:38:17] pexels \"Riyadh construction workers\": 8 usable",
+    "[07:38:18] pexels \"Saudi factory workers\": 8 usable",
+    "[07:38:19] commons \"Saudi factory\": 5 usable of 16",
+    "[07:38:19] image: dropped \"F-ZWBG 6682 the first Panther for the Saudi Navy (4729241851).jpg\" — a warship or weapon, and the story is not about the military",
+    "[07:38:19] image: dropped \"English Electric Lightning F53 (ZF581) (13985531489).jpg\" — names too little of factory",
+    "[07:38:19] image: dropped \"English Electric Lightning F53 (ZF581) (14169480192).jpg\" — names too little of factory",
+    "[07:38:20] openverse \"Saudi factory workers\": 0 usable of 0",
+    "[07:38:20] openverse \"Jeddah port containers\": 0 usable of 0",
+    "[07:38:23] openverse \"container port Jeddah\": 0 usable of 0",
+    "[07:38:27] openverse \"Riyadh construction workers\": 0 usable of 0",
+    "[07:38:28] openverse \"factory Saudi Arabia\": 10 usable of 14",
+    "[07:38:37] openverse \"container ship\": 10 usable of 20",
+    "[07:38:41] openverse \"Saudi factory\": 10 usable of 18",
+    "[07:38:41] image: dropped \"Indomie: The Origin!\" — names too little of factory, workers",
+    "[07:38:41] image: dropped \"View of industrial power plant towers in Saudi Arabia, showcasing mode\" — names too little of factory, workers",
+    "[07:38:41] image: dropped \"English Electric Lightning F53 [ZF581]\" — names too little of factory, workers",
+    "[07:38:41] image: dropped \"English Electric Lightning F53 [ZF581]\" — names too little of factory, workers",
+    "[07:38:41] image: dropped \"Saudi Mountains\" — names too little of factory, workers",
+    "[07:38:41] image: dropped \"Men working with bricks in a dusty environment, focusing on manual lab\" — names too little of factory, workers",
+    "[07:38:41] image: dropped \"Berain water? Is this really Saudi?\" — names too little of factory, workers",
+    "[07:38:41] image: dropped \"Berain water? Is this really Saudi?\" — names too little of factory, workers",
+    "[07:38:41] commons \"Jeddah port containers\": 2 usable of 2",
+    "[07:38:41] image: dropped \"Clathrina sinusarabica (10.11646-zootaxa.4426.1.1) Figure 14.jpg\" — names too little of port, containers",
+    "[07:38:43] openverse \"Jeddah port\": 4 usable of 5",
+    "[07:38:43] image: dropped \"USS Pasadena (SSN 752)\" — a warship or weapon, and the story is not about the military",
+    "[07:38:43] image: dropped \"USS Pasadena (SSN 752)\" — names too little of port, containers",
+    "[07:38:44] commons \"Riyadh construction workers\": 0 usable of 0",
+    "[07:38:44] commons \"Riyadh construction\": 17 usable of 24",
+    "[07:38:44] image: dropped \"New Skyscraper under construction In Riyadh.jpeg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[07:38:44] image: dropped \"313 Cameron mosque near Riyadh - USACE-p15141coll5-15670.jpeg\" — names too little of construction",
+    "[07:38:44] image: dropped \"306 Cameron Riyadh king's palace - USACE-p15141coll5-15645.jpeg\" — names too little of construction",
+    "[07:38:44] image: dropped \"601 Cameron relay site at Riyadh - USACE-p15141coll5-15748.jpeg\" — names too little of construction",
+    "[07:38:44] image: dropped \"Building Under Construction 02.JPG\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[07:38:44] image: dropped \"Building Under Construction 01.JPG\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[07:38:44] image: dropped \"King Abdullah Financial District Riyadh 2014.JPG\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[07:38:44] image: dropped \"309 Cameron staff headquarters in Riyadh - USACE-p15141coll5-15716.jpe\" — names too little of construction",
+    "[07:38:47] openverse \"container port\": 10 usable of 20",
+    "[07:38:52] openverse \"Riyadh construction\": 10 usable of 16",
+    "[07:38:52] image: dropped \"The North Side Of Riyadh City\" — names too little of construction, workers",
+    "[07:38:52] image: dropped \"Skyline of Riyadh, Saudi Arabia featuring modern skyscrapers and const\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[07:38:52] image: dropped \"English Electric Lightning F53 [ZF581]\" — names too little of construction, workers",
+    "[07:38:52] image: dropped \"English Electric Lightning F53 [ZF581]\" — names too little of construction, workers",
+    "[07:38:52] image: dropped \"Workers building a foundation with rebar at a construction site.\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[07:38:52] image: dropped \"HZ-AKB\" — names too little of construction, workers",
+    "[07:38:52] image: dropped \"Two construction workers wearing helmets at a site in India with a cra\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[07:38:52] image: dropped \"Roadwork dangers\" — names too little of construction, workers",
+    "[07:38:52] commons \"factory Saudi Arabia\": 2 usable of 12",
+    "[07:38:52] image: dropped \"Indomie: The Origin!\" — names too little of factory",
+    "[07:38:52] image: dropped \"View of industrial power plant towers in Saudi Arabia, showcasing mode\" — names too little of factory",
+    "[07:38:52] image: dropped \"Cement processing plant in the Saudi Arabian desert. Industrial archit\" — names too little of factory",
+    "[07:38:52] image: dropped \"A large industrial facility on a cloudy day in Saudi Arabia, showcasin\" — names too little of factory",
+    "[07:38:52] image: dropped \"Saudi Mountains\" — names too little of factory",
+    "[07:38:52] image: dropped \"Berain water? Is this really Saudi?\" — names too little of factory",
+    "[07:38:52] image: dropped \"Berain water? Is this really Saudi?\" — names too little of factory",
+    "[07:38:52] image: dropped \"A modern power plant with turbines and chimneys under a clear blue sky\" — names too little of factory",
+    "[07:38:52] image: dropped \"Aerial view of a mosque nestled in the rocky mountains of Makkah, Saud\" — names too little of factory",
+    "[07:38:53] commons \"container port Jeddah\": 2 usable of 2",
+    "[07:38:53] image: dropped \"Clathrina sinusarabica (10.11646-zootaxa.4426.1.1) Figure 14.jpg\" — names too little of container, port",
+    "[07:38:53] commons \"container ship\": 19 usable of 24",
+    "[07:38:53] image: dropped \"Hamburg Hafen Containerterminal.jpg\" — dated 2004, an archival picture",
+    "[07:38:53] image: dropped \"2021-11-19 Damaged container ship, MV ZIM KINGSTON - IMO 9389693.jpg\" — taken in Canada, which the story does not name",
+    "[07:38:53] image: dropped \"Containers, Port of Rotterdam\" — taken in Netherlands, which the story does not name",
+    "[07:38:53] image: dropped \"Al Sohat plant- Falougha (9691131861).jpg\" — taken in Lebanon, which the story does not name",
+    "[07:38:53] image: thumbnail HTTP 403 for https://live.staticflickr.com/8265/8701407740_11b79b508b_n.jpg",
+    "[07:39:25] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=822 in=11635 read=0 out=1032 attempt=1 ms=11781",
+    "[07:39:25] image: \"مصنع-هضيم-.jpg\" names the story's topic without saying its point (Only professional candidate that shows Saudi non-oil private industry at work, with workers on a production line. The others fail: 1 is a processed skyline, 2 i); checked now and kept in reserve while the desk looks further",
+    "[07:39:32] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=392 in=9208 read=0 out=459 attempt=1 ms=6636",
+    "[07:39:32] image: second check (claude-cli/claude-opus-5-5) UNSERIOUS — refused \"مصنع-هضيم-.jpg\": The image is a two-panel promotional collage of a date factory, not a single real news photograph, which breaks the rule",
+    "[07:39:32] image: thumbnail HTTP 403 for https://live.staticflickr.com/8265/8701407740_11b79b508b_n.jpg",
+    "[07:39:48] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1164 in=11019 read=0 out=1455 attempt=1 ms=15595",
+    "[07:39:48] image: \"Riyadh Construction Site.jpg\" names the story's topic without saying its point (This is the only usable Saudi scene of the non-oil economy at work: excavators building a flyover in Riyadh in 2025. The rest fail. #1 is an artificially textur); checked now and kept in reserve while the desk looks further",
+    "[07:39:52] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=177 in=7595 read=0 out=273 attempt=1 ms=4227",
+    "[07:39:52] image: second check (claude-cli/claude-opus-5-5) AMATEUR — refused \"Riyadh Construction Site.jpg\": A hazy phone snapshot taken from a car, with a washed-out sky filling most of the frame, small distant excavators and a ",
+    "[07:40:03] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=872 in=7367 read=0 out=969 attempt=1 ms=10995",
+    "[07:40:03] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Riyadh Construction Site.jpg\": Excavators and a crane at a Riyadh building site read as Saudi non-oil construction at work, which suits a story about t",
+    "[07:40:03] image: \"Riyadh Construction Site.jpg\" held back as the last resort, should no professional photograph be found",
+    "[07:40:09] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=450 in=3024 read=0 out=503 attempt=1 ms=6214",
+    "[07:40:09] image: last resort: Riyadh shopping mall shoppers Saudi Arabia | Riyadh shopping mall shoppers | Riyadh shopping mall shoppers industrial",
+    "[07:40:10] commons \"Riyadh shopping mall shoppers Saudi Arabia\": 5 usable of 10",
+    "[07:40:10] image: dropped \"Riyadh Sahara Mall.JPG\" — shows abdullah, not the story's people",
+    "[07:40:10] image: dropped \"Riyadh Gallery.jpg\" — names too little of shopping, mall, shoppers",
+    "[07:40:11] commons \"Riyadh shopping mall shoppers\": 7 usable of 13",
+    "[07:40:11] image: dropped \"Riyadh Gallery.jpg\" — names too little of shopping, mall, shoppers",
+    "[07:40:11] commons \"Riyadh shopping mall shoppers industrial\": 0 usable of 0",
+    "[07:40:12] commons \"Riyadh shopping\": 14 usable of 24",
+    "[07:40:12] image: dropped \"Shola Shopping Center in 1980s.jpg\" — dated 1984, an archival picture",
+    "[07:40:12] image: dropped \"RIYADH 20250619 182107 402.jpg\" — names too little of shopping",
+    "[07:40:12] image: dropped \"Riyadh Park.JPG\" — names too little of shopping",
+    "[07:40:12] image: dropped \"Riyadh Park2.JPG\" — names too little of shopping",
+    "[07:40:12] image: dropped \"Algzar Street.JPG\" — names too little of shopping",
+    "[07:40:12] image: dropped \"Coffee-shop-in-Deera-Square.jpg\" — names too little of shopping",
+    "[07:40:12] image: dropped \"شارع التحلية (الرياض 2012) معرض نادي الهلال.JPG\" — names too little of shopping",
+    "[07:40:26] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=897 in=11694 read=0 out=1156 attempt=1 ms=12728",
+    "[07:40:26] image: vision rejected all candidates (fallback pass) (Every candidate is a mall facade, a shopping-area front, a skyline or a snapshot, and none shows Saudi non-oil business at work. 1 is an amateur shot of children in front of Vox and Toys R Us signs. 2 is a heavily processed outdoor dining facade dominated by a restaurant brand sign. 3 is labelled a UAE mall, so it is the wrong country. 4 is a 2011 Nokia shot of a building front. 5 is a street with the Kingdom Centre landmark. 6 is a dark 2008 night snapshot. Shoppers in a mall also suit a consumer-spending story, not a PMI growth story about export orders and shipping costs.)",
+    "[07:40:26] image: last pass, a neutral illustration: factory workers | port containers | construction workers | container port | container ship",
+    "[07:40:26] pexels \"factory workers\": 8 usable",
+    "[07:40:26] pexels \"container ship\": 8 usable",
+    "[07:40:26] pexels \"container port\": 8 usable",
+    "[07:40:26] pexels \"port containers\": 8 usable",
+    "[07:40:26] pexels \"construction workers\": 8 usable",
+    "[07:40:26] commons \"factory workers\": 14 usable of 24",
+    "[07:40:26] image: dropped \"WomanFactory1940s.jpg\" — dated 1942, an archival picture",
+    "[07:40:26] image: dropped \"Huber workers 1910s.jpg\" — dated 1910, an archival picture",
+    "[07:40:26] image: dropped \"StateLibQld 1 174703 Builders and butter factory workers at the Biggen\" — dated 1926, an archival picture",
+    "[07:40:26] image: dropped \"BML Bamailong factory workers 1-014.jpg\" — dated 2002, an archival picture",
+    "[07:40:46] openverse \"port containers\": 10 usable of 20",
+    "[07:40:46] openverse \"container port\": 10 usable of 20",
+    "[07:40:46] openverse \"container ship\": 10 usable of 20",
+    "[07:40:48] openverse \"factory workers\": 10 usable of 20",
+    "[07:40:48] commons \"port containers\": 17 usable of 24",
+    "[07:40:48] image: dropped \"Container-Terminal Bremerhaven 02.jpg\" — another frame of a series a published story runs",
+    "[07:40:49] commons \"construction workers\": 22 usable of 24",
+    "[07:40:49] image: dropped \"Workers on suspended scaffold in Korolyov.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[07:40:49] image: dropped \"Construction Photography of Workers on Site by Construction Photograph\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[07:40:49] commons \"container port\": 19 usable of 24",
+    "[07:40:49] image: dropped \"Red Hook Container Terminal New York September 2016 001.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[07:40:49] commons \"container ship\": 19 usable of 24",
+    "[07:40:49] image: dropped \"Hamburg Hafen Containerterminal.jpg\" — dated 2004, an archival picture",
+    "[07:40:49] image: thumbnail HTTP 403 for https://live.staticflickr.com/5563/14248143371_7da5193378_n.jpg",
+    "[07:40:55] openverse \"construction workers\": 10 usable of 20",
+    "[07:41:10] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=849 in=10088 read=0 out=1075 attempt=1 ms=12636",
+    "[07:41:17] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=495 in=1296 read=0 out=535 attempt=1 ms=6779",
+    "[07:41:21] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=121 in=7628 read=0 out=221 attempt=1 ms=4149",
+    "[07:41:21] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"MAERSK HANOI Container Ship (Port Koper SIKOP, 2023).jpg\": «MAERSK» is painted large across the hull as the most legible thing in the frame, so it reads as Maersk's picture rather",
+    "[07:41:21] image: thumbnail HTTP 403 for https://live.staticflickr.com/5563/14248143371_7da5193378_n.jpg",
+    "[07:41:36] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1065 in=9943 read=0 out=1309 attempt=1 ms=14762",
+    "[07:41:44] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=573 in=1231 read=0 out=610 attempt=1 ms=7627",
+    "[07:41:54] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=777 in=7519 read=0 out=875 attempt=1 ms=10480",
+    "[07:41:54] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"MSC HARMONY III (container ship, 2006) in Port Koper (SIKOP,\": A sharp, professional aerial frame of a loaded container ship at port cranes, with no large legible livery, names or lan",
+    "[07:41:54] published \"القطاع غير النفطي السعودي ينمو للشهر السابع على التوالي بوتيرة أبطأ\" -> saudi-non-oil-pmi-slows-october-a95a70",
+    "[07:41:54] run budget of 35 minutes spent; \"أستراليا ترفع الفائدة إلى 4.85% في أعلى مستوى منذ 2008\" waits for the next run"
   ]
 }
