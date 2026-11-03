@@ -11279,6 +11279,47 @@
           "noted": []
         }
       ]
+    },
+    "floods-car-makers-duplicate-engine-production-383cad": {
+      "at": "2026-11-03T18:16:33.942Z",
+      "title": "الفيضانات ترفع احتمال صنع محركات السيارات في مصنعين بدل نقل إنتاجها",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 39,
+            "checked": 39,
+            "supported": 37,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 1,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 30,
+              "field": "body",
+              "class": "cause",
+              "verdict": "contradicted",
+              "status": "listed",
+              "sentence": "ويرجّح الباحثون سببين لذلك: أن شحن السيارة أغلى من شحن المحرك، وأن البلدان التي تصنع فيها الشركة منصة الطراز لا تكاد تشتري منه شيئاً.",
+              "quote": "A plausible reason is that cars cost more to ship than engines, so that a car made in a second location needs sufficient local demand to be profitable. Yet the countries where the firm already builds the version’s platform and the cost of duplication hence are low enough, account for almost none of the version’s sales, suggesting low demand for these models in those locations.",
+              "source": "arXiv econ.GN",
+              "sourceN": 1,
+              "correction": "The source offers shipping costs and low local demand as the reason vehicle versions are not permanently duplicated, not as the reason flooded versions expand more slowly into new export markets, for which it gives no reason."
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []
