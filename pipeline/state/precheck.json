@@ -11320,6 +11320,34 @@
           ]
         }
       ]
+    },
+    "oil-revenue-drop-weighs-on-saudi-budget-4a680a": {
+      "at": "2026-11-03T20:38:49.108Z",
+      "title": "الإيرادات النفطية السعودية تهبط 23% في الربع الثالث رغم صعود أرباح أرامكو",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 47,
+            "checked": 47,
+            "supported": 34,
+            "weak": 10,
+            "noEvidence": 0,
+            "notFound": 3,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
