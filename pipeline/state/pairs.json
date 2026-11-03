@@ -1787,6 +1787,58 @@
         "classes": [],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-11-03T10:06:25.305Z",
+      "slug": "central-bank-gold-buying-rises-42-percent-27b4e5",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v50",
+      "lessonsHash": "a6c6134ebe",
+      "keptVersion": 0,
+      "live": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 1,
+        "supported": 24,
+        "notFound": 3,
+        "checked": 29,
+        "words": 509,
+        "keyFacts": 6,
+        "classes": [
+          "internal"
+        ],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 2,
+        "drift": 0,
+        "severity": 5,
+        "supported": 26,
+        "notFound": 1,
+        "checked": 30,
+        "words": 466,
+        "keyFacts": 6,
+        "classes": [
+          "scope",
+          "hedge"
+        ],
+        "programmatic": 2
+      },
+      "none": {
+        "errors": 2,
+        "drift": 0,
+        "severity": 5,
+        "supported": 26,
+        "notFound": 1,
+        "checked": 30,
+        "words": 466,
+        "keyFacts": 6,
+        "classes": [
+          "scope",
+          "hedge"
+        ],
+        "programmatic": 2
+      }
     }
   ]
 }

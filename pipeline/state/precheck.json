@@ -11087,6 +11087,102 @@
           ]
         }
       ]
+    },
+    "xrg-buys-shell-north-west-shelf-stake-e2989d": {
+      "at": "2026-11-03T09:40:27.590Z",
+      "title": "ذراع «أدنوك» تتفق على شراء حصة «شل» في مشروع غاز أسترالي بـ1.45 مليار دولار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v50",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 21,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "egypt-non-oil-private-sector-contracts-tenth-month-1493d5": {
+      "at": "2026-11-03T09:53:21.594Z",
+      "title": "القطاع الخاص غير النفطي في مصر ينكمش للشهر العاشر على التوالي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v50",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 23,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "central-bank-gold-buying-rises-42-percent-27b4e5": {
+      "at": "2026-11-03T10:06:25.295Z",
+      "title": "مشتريات البنوك المركزية من الذهب ترتفع 42% في الربع الثالث",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v50",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 35,
+            "checked": 35,
+            "supported": 31,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 33,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وفي جانب المعروض، ارتفع إنتاج المناجم 3% إلى مستوى فصلي قياسي عند 1071 طناً، وتراجعت إعادة التدوير 8% إلى 314 طناً، وهو أدنى مستوى منذ الربع الرابع من 2023.",
+              "quote": "ارتفع إنتاج المناجم بنسبة 3% على أساس سنوي، ليسجل مستوى قياسياً لأي ربع ثالث عند 1,071 طناً.",
+              "source": "Al Eqtisadiah",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []
