@@ -233,10 +233,11 @@
     "hormuz-fertilizer-disruption-egypt-morocco-exporters-c8129a:98713950",
     "banque-du-caire-shares-jump-egx-debut-412cd0:0b69ad47",
     "banque-du-caire-shares-jump-egx-debut-412cd0:8f8cf933",
-    "brent-rebounds-us-strike-qeshm-island-382dd6:331de844"
+    "brent-rebounds-us-strike-qeshm-island-382dd6:331de844",
+    "egypt-halts-red-sea-sinai-investment-land-sales-dd7f70:e1c54de8"
   ],
-  "version": 51,
-  "updatedAt": "2026-11-03T17:11:12.184Z",
+  "version": 52,
+  "updatedAt": "2026-11-04T06:36:40.703Z",
   "lessons": [
     {
       "id": "L1",
@@ -740,11 +741,12 @@
         "euro-area-gdp-grows-q3-france-contracts-65e2be:d654334d",
         "hormuz-fertilizer-disruption-egypt-morocco-exporters-c8129a:98713950",
         "banque-du-caire-shares-jump-egx-debut-412cd0:0b69ad47",
-        "banque-du-caire-shares-jump-egx-debut-412cd0:8f8cf933"
+        "banque-du-caire-shares-jump-egx-debut-412cd0:8f8cf933",
+        "egypt-halts-red-sea-sinai-investment-land-sales-dd7f70:e1c54de8"
       ],
-      "seen": 5,
+      "seen": 6,
       "createdAt": "2026-10-28T05:52:18.463Z",
-      "lastSeen": "2026-11-02T11:20:21.952Z",
+      "lastSeen": "2026-11-04T06:36:40.703Z",
       "status": "active",
       "activatedAt": "2026-10-30T18:06:12.820Z",
       "previous": [
@@ -1204,6 +1206,13 @@
       "mistakes": 1,
       "applied": [
         "reinforce L8 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-11-04T06:36:40.703Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L12 (+1; reworded at most once a week)"
       ]
     }
   ],

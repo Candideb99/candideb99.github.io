@@ -11512,6 +11512,143 @@
           ]
         }
       ]
+    },
+    "asian-tech-stocks-fall-democrats-midterms-726409": {
+      "at": "2026-11-04T06:51:38.424Z",
+      "title": "أسهم التكنولوجيا الآسيوية تهبط مع تقدم الديمقراطيين في انتخابات الكونغرس",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v52",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 26,
+            "checked": 26,
+            "supported": 23,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 1,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 20,
+              "field": "body",
+              "class": "superlative",
+              "verdict": "contradicted",
+              "status": "listed",
+              "sentence": "قادت أسهم صانعي الرقائق خسائر السوقين الكورية والتايوانية؛ فقد هبط سهم «إس كي هاينكس» الكورية 6.1% وسهم «سامسونغ للإلكترونيات» 4.1%.",
+              "quote": "وفي هذا السياق، تراجعت أسهم شركات صناعة الرقائق الكورية، إذ هبط سهم «إس كي هاينكس» بنسبة 6.1 في المائة، و«سامسونغ للإلكترونيات» 4.1 في المائة، فيما انخفض سهم «تي إس إم سي» التايوانية 2.2 في المائة.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 2,
+              "correction": "The source does not say chipmakers led the losses; it says only that Korean chipmakers fell, and TSMC's 2.2% drop was smaller than the Taiwan index's 3.3% fall, so chipmakers did not lead Taiwan's losses."
+            }
+          ]
+        }
+      ]
+    },
+    "emaar-properties-offer-emaar-development-full-control-c3b92d": {
+      "at": "2026-11-04T06:57:16.533Z",
+      "title": "«إعمار العقارية» تعتزم عرض 15 درهماً للسهم لشراء بقية «إعمار للتطوير»",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v52",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 9,
+            "checked": 9,
+            "supported": 6,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 5,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وعند سعر العرض، تبلغ قيمة هذه الأسهم نحو 12.5 مليار درهم، ويزيد السعر 1.10 درهم على إغلاق السهم عند 13.90 درهم الثلاثاء.",
+              "quote": "With the construction unit valued at more than Dh60 billion at current share price, the potential transaction could cost Emaar Properties as much as Dh12.6 billion, according to Bloomberg.",
+              "source": "The National",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "aramco-starts-east-west-pipeline-expansion-b8d24c": {
+      "at": "2026-11-04T07:09:23.353Z",
+      "title": "أرامكو تبدأ الأعمال الهندسية الأولية لتوسعة خط أنابيب «شرق-غرب»",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v52",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 23,
+            "checked": 23,
+            "supported": 21,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "dip-holding-prices-dubai-ipo-fde00e": {
+      "at": "2026-11-04T07:18:38.929Z",
+      "title": "طرح «دي آي بي هولدينغ» في دبي يجمع 1.9 مليار درهم",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v52",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 22,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

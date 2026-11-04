@@ -15275,6 +15275,36 @@
         }
       ],
       "outcome": "clean"
+    },
+    "egypt-halts-red-sea-sinai-investment-land-sales-dd7f70": {
+      "at": "2026-11-04T06:35:50.338Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v51",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-03T23:44:46.257Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 21,
+        "checked": 21,
+        "supported": 21,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
     }
   }
 }

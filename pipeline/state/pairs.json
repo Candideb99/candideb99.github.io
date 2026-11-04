@@ -1883,6 +1883,50 @@
         "classes": [],
         "programmatic": 3
       }
+    },
+    {
+      "at": "2026-11-04T07:18:38.939Z",
+      "slug": "dip-holding-prices-dubai-ipo-fde00e",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v52",
+      "lessonsHash": "a6c6134ebe",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 26,
+        "notFound": 0,
+        "checked": 28,
+        "words": 402,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 24,
+        "notFound": 0,
+        "checked": 30,
+        "words": 411,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 24,
+        "notFound": 0,
+        "checked": 30,
+        "words": 411,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      }
     }
   ]
 }
