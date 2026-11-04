@@ -340,31 +340,41 @@
       "read": 7,
       "confirmedPerStory": 0.14,
       "photosPending": 0
+    },
+    {
+      "date": "2026-11-04",
+      "published": 13,
+      "news": 10,
+      "styleFaultsPerStory": 0,
+      "corrections": 2,
+      "read": 4,
+      "confirmedPerStory": 0.25,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-11-03T15:28:57.480Z",
+  "updatedAt": "2026-11-04T15:43:22.331Z",
   "week": {
-    "published": 100,
-    "news": 83,
-    "revisedShare": 1,
+    "published": 99,
+    "news": 82,
+    "revisedShare": 0.99,
     "styleFaultsPerStory": 0.07,
-    "styleWarningsPerStory": 0.49,
-    "corrections": 11,
+    "styleWarningsPerStory": 0.38,
+    "corrections": 13,
     "usefulness": {
       "withLessons": {
         "stories": 70,
-        "words": 467,
-        "keyFacts": 4.3
+        "words": 462,
+        "keyFacts": 4.2
       },
       "control": {
-        "stories": 13,
-        "words": 440,
-        "keyFacts": 2.9
+        "stories": 12,
+        "words": 437,
+        "keyFacts": 2.8
       }
     },
     "precheck": {
-      "checked": 93,
-      "clean": 83,
+      "checked": 92,
+      "clean": 82,
       "repaired": 10,
       "held": 0,
       "errorsFound": 11,
@@ -373,42 +383,42 @@
     },
     "outcomes": {
       "repairedBeforePublication": 11,
-      "correctionsVerifiedClean": 1,
+      "correctionsVerifiedClean": 2,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 1
     },
     "secondLook": {
-      "read": 40,
-      "clean": 25,
-      "corrected": 2,
+      "read": 42,
+      "clean": 26,
+      "corrected": 3,
       "stands": 1,
       "refused": 0,
       "listed": 12,
       "unverifiable": 0,
-      "confirmedPerStory": 0.13,
+      "confirmedPerStory": 0.14,
       "withLessons": {
-        "read": 31,
+        "read": 32,
         "confirmedPerStory": 0.16
       },
       "claudeWithout": {
-        "read": 9,
-        "confirmedPerStory": 0
+        "read": 10,
+        "confirmedPerStory": 0.1
       }
     },
     "runs": {
       "count": 24,
-      "written": 47,
+      "written": 48,
       "refused": 2,
-      "callsPerStory": 25.7,
-      "tokensPerStory": 448625,
-      "costPerStory": 3.69,
+      "callsPerStory": 26.3,
+      "tokensPerStory": 459435,
+      "costPerStory": 3.8,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": [
       {
         "what": "second look: figure errors",
-        "stories": 2,
+        "stories": 3,
         "examples": [
           "binance-freezes-3-billion-potential-hack-647d53: الرقم في إعلان بينانس السابق: نحو 2.54 مليار دولار",
           "binance-freezes-3-billion-potential-hack-647d53: رفعت بينانس قيمة الأصول التي جمّدتها إلى نحو 3 مليارات دولار حتى الآن، بعدما أعلنت في وقت سابق رقماً يقارب 2.54 مليار دو",
@@ -426,35 +436,35 @@
     ]
   },
   "weekBefore": {
-    "published": 94,
-    "news": 81,
+    "published": 96,
+    "news": 82,
     "revisedShare": 1,
     "styleFaultsPerStory": 0.06,
-    "styleWarningsPerStory": 0.47,
+    "styleWarningsPerStory": 0.57,
     "corrections": 10,
     "usefulness": {
       "withLessons": {
-        "stories": 63,
-        "words": 470,
+        "stories": 66,
+        "words": 474,
         "keyFacts": 4.6
       },
       "control": {
-        "stories": 18,
-        "words": 507,
-        "keyFacts": 5.7
+        "stories": 16,
+        "words": 499,
+        "keyFacts": 5.5
       }
     },
     "precheck": {
-      "checked": 88,
-      "clean": 82,
-      "repaired": 6,
+      "checked": 91,
+      "clean": 84,
+      "repaired": 7,
       "held": 0,
-      "errorsFound": 6,
+      "errorsFound": 7,
       "unsourcedCut": 0,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 6,
+      "repairedBeforePublication": 7,
       "correctionsVerifiedClean": 4,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
@@ -499,9 +509,9 @@
     ]
   },
   "lessons": {
-    "version": 50,
+    "version": 52,
     "active": 10,
-    "learnedFrom": 233,
+    "learnedFrom": 235,
     "kept": null,
     "lastTest": {
       "at": "2026-11-02T15:40:49.741Z",
@@ -554,7 +564,7 @@
     }
   },
   "evidence": {
-    "pairs": 41,
+    "pairs": 43,
     "vsKept": {
       "n": 0,
       "better": 0,

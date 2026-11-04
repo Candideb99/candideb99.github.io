@@ -31,7 +31,15 @@ regions:
 readingMinutes: 2
 chart: null
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Midnight_Shot_at_Ritaj%2C_Dubai_Investments_Park_2%2C_Dubai_-Dubai_-UAE_-Ritaj_-DIP.jpg/1280px-Midnight_Shot_at_Ritaj%2C_Dubai_Investments_Park_2%2C_Dubai_-Dubai_-UAE_-Ritaj_-DIP.jpg
+  width: 1280
+  height: 853
+  alt: مجمع ريتاج السكني في مجمع دبي للاستثمار 2 بدبي
+  credit: Syed Ali · CC BY 2.0 · ويكيميديا كومنز
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AMidnight_Shot_at_Ritaj%2C_Dubai_Investments_Park_2%2C_Dubai_-Dubai_-UAE_-Ritaj_-DIP.jpg
 sources:
   - name: البيان
     nameEn: Al Bayan
@@ -49,7 +57,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: null
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
   lessons: v52
 quality:
