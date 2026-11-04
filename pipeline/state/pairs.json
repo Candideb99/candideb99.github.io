@@ -1839,6 +1839,50 @@
         ],
         "programmatic": 2
       }
+    },
+    {
+      "at": "2026-11-04T00:00:50.091Z",
+      "slug": "iea-gas-tightness-could-last-into-2027-3d207d",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v51",
+      "lessonsHash": "a6c6134ebe",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 26,
+        "notFound": 6,
+        "checked": 32,
+        "words": 541,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 2
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 21,
+        "notFound": 7,
+        "checked": 29,
+        "words": 509,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 3
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 21,
+        "notFound": 7,
+        "checked": 29,
+        "words": 509,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 3
+      }
     }
   ]
 }

@@ -11348,6 +11348,170 @@
           "noted": []
         }
       ]
+    },
+    "egypt-halts-red-sea-sinai-investment-land-sales-dd7f70": {
+      "at": "2026-11-03T23:44:46.266Z",
+      "title": "مصر توقف طرح الأراضي الاستثمارية في البحر الأحمر وجنوب سيناء لإعادة تخطيطها",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v51",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 21,
+            "checked": 21,
+            "supported": 20,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 20,
+              "field": "body",
+              "class": "internal",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وتستهدف الحكومة جذب استثمارات قدرها 35.4 مليار دولار لإضافة نحو 340 ألف غرفة فندقية بحلول 2031، فترتفع الطاقة الفندقية الإجمالية إلى 568 ألف غرفة تكفي لاستقبال 30 مليون سائح في السنة.",
+              "quote": "تضم مصر نحو 108 آلاف غرفة فندقية في 572 مشروعاً قائماً، إلى جانب 104 آلاف وحدة إسكان سياحي، ويجري حالياً بناء 57 ألف غرفة فندقية أخرى، وفق بيانات هيئة التنمية السياحية.",
+              "source": "the story itself",
+              "sourceN": 0,
+              "correction": "Adding about 340,000 rooms to the roughly 108,000 existing hotel rooms the story reports gives about 448,000 rooms, or about 505,000 including the 57,000 under construction, not 568,000; the 568,000 total implies a base of about 228,000 rooms that the story never gives."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 21,
+            "checked": 21,
+            "supported": 21,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "iea-gas-tightness-could-last-into-2027-3d207d": {
+      "at": "2026-11-04T00:00:50.082Z",
+      "title": "وكالة الطاقة الدولية: شح الغاز العالمي قد يمتد إلى 2027",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v51",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 29,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "qatar-backed-venture-funds-drax-ai-data-centre-ac7d4a": {
+      "at": "2026-11-04T00:20:33.034Z",
+      "title": "مشروع لـ«كاي» القطرية وبروكفيلد الكندية سيموّل مركز بيانات للذكاء الاصطناعي في بريطانيا",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v51",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 37,
+            "checked": 37,
+            "supported": 30,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 4,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 7,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "استثمار المرحلة الأولى: 2.5 مليار جنيه إسترليني",
+              "quote": "The first phase, which will cost $2.5 billion, will have a capacity of up to 100 megawatts (MW) and will be operational from the first quarter of 2028.",
+              "source": "AGBI (Arabian Gulf Business Insight)",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 10,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ارتفاع سهم دراكس صباح الثلاثاء: 8.5%",
+              "quote": "London-listed shares of Drax were up 8.8% in early morning trading.",
+              "source": "CNBC",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 17,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تستهدف المرحلة الأولى، باستثمار أولي قدره 2.5 مليار جنيه إسترليني، قدرة تصل إلى 100 ميغاواط تدخل التشغيل من الربع الأول من 2028، وتعمل بكهرباء الشبكة وتستهدف العملاء التجاريين.",
+              "quote": "The first phase, which will cost $2.5 billion, will have a capacity of up to 100 megawatts (MW) and will be operational from the first quarter of 2028.",
+              "source": "AGBI (Arabian Gulf Business Insight)",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 22,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وارتفع سهم دراكس 8.5% إلى 877 بنساً صباح الثلاثاء عقب الإعلان، متصدراً الرابحين على مؤشر فوتسي 250، ورحّب محللو الأسهم بالخبر بحسب «الغارديان».",
+              "quote": "London-listed shares of Drax were up 8.8% in early morning trading.",
+              "source": "CNBC",
+              "sourceN": 4,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []
