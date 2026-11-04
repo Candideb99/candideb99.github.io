@@ -11745,6 +11745,104 @@
           "noted": []
         }
       ]
+    },
+    "saudi-uae-expand-oil-outlets-bypassing-hormuz-fd8a9b": {
+      "at": "2026-11-04T21:01:25.794Z",
+      "title": "السعودية والإمارات تمضيان في توسيع منافذ النفط خارج هرمز مع هبوط برنت",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 2,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 47,
+            "checked": 45,
+            "supported": 36,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 4,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 43,
+              "field": "body",
+              "class": "hedge",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "إذا تعثرت قبل رفع الحصار، فمن المرجح أن تعود مخاطر نقص الإمدادات إلى دفع الأسعار صعوداً، وتوقعت «غولدمان ساكس» أن يبلغ برنت 140 دولاراً للبرميل في 2027 إذا بقي إنتاج الخليج دون متوسط 2025 بنحو 3.5 مليون برميل يومياً.",
+              "quote": "وإذا تعثرت المحادثات قبل تحقق هذا الشرط، فقد تعود مخاطر نقص الإمدادات إلى دفع الأسعار نحو الصعود.",
+              "source": "Khazendar",
+              "sourceN": 4,
+              "correction": "The source says supply risks 'may' push prices back up if talks stall, a possibility, not that this is likely."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 47,
+            "checked": 45,
+            "supported": 35,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 6,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 2,
+              "field": "subtitle",
+              "class": "attribution",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "طاقة أرامكو الإنتاجية القصوى 12 مليون برميل يومياً وطاقة خطها إلى البحر الأحمر نحو 7 ملايين، والشركة تقول إن التوسعة تعزز قدرتها على نقل الخام بعيداً عن المضيق",
+              "quote": "أعلن الرئيس التنفيذي لأرامكو السعودية أمين الناصر الثلاثاء بدء الأعمال الهندسية الأولية لتوسعة خط أنابيب «شرق-غرب»، لتعزيز قدرة الشركة على نقل النفط.",
+              "source": "Khazendar",
+              "sourceN": 1,
+              "correction": "The source says the expansion is meant to strengthen the company's ability to transport oil; 'away from Hormuz' is the outlet's own description of the line, not something the company said."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 2,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 47,
+            "checked": 45,
+            "supported": 36,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 6,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
