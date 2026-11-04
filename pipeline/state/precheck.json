@@ -11649,6 +11649,102 @@
           "noted": []
         }
       ]
+    },
+    "brent-falls-below-95-midterms-iran-bets-098597": {
+      "at": "2026-11-04T17:36:38.940Z",
+      "title": "برنت يهبط دون 95 دولاراً وسط رهانات على تفاوض واشنطن مع طهران",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v52",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 37,
+            "checked": 37,
+            "supported": 37,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "uae-third-oil-pipeline-bypass-hormuz-4998ba": {
+      "at": "2026-11-04T17:45:55.069Z",
+      "title": "بلومبرغ: الإمارات تدرس خط أنابيب ثالثاً لتصدير النفط بعيداً عن هرمز",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 21,
+            "checked": 21,
+            "supported": 20,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 20,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "أما الكويت، التي تصدّر نفطها كله عبر هرمز، فقال الشيخ نواف الصباح، الرئيس التنفيذي لمؤسسة البترول الكويتية، إنها تتباحث مع السعودية والإمارات بشأن بدائل عبر خطوط الأنابيب.",
+              "quote": "أما الكويت، التي تعتمد بالكامل على مضيق هرمز في تصدير نفطها، فتجري محادثات مع كل من السعودية والإمارات بشأن إيجاد بدائل عبر خطوط الأنابيب، وفقاً لما قاله الشيخ نواف الصباح، الرئيس التنفيذي لشركة البترول الوطنية الكويتية.",
+              "source": "Asharq Business",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "euro-zone-inflation-hits-4-percent-october-29c224": {
+      "at": "2026-11-04T17:58:31.067Z",
+      "title": "تضخم منطقة اليورو يصعد إلى 4% في أكتوبر مسجلاً أعلى مستوى منذ 2023",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v52",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 32,
+            "checked": 32,
+            "supported": 27,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

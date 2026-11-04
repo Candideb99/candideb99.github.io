@@ -15305,6 +15305,83 @@
       "notFound": [],
       "weak": [],
       "outcome": "clean"
+    },
+    "asian-tech-stocks-fall-democrats-midterms-726409": {
+      "at": "2026-11-04T17:20:07.232Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v52",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-04T06:51:38.414Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "fromCopy": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 26,
+        "checked": 26,
+        "supported": 24,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "وإذا مضى الكونغرس الجديد في تقييد توسع مراكز البيانات بسبب كلفة الكهرباء وآثارها البيئية، فالطلب على رقائق «إس كي هاينكس» و«سامسونغ» و«تي إس إم سي» من أول ما يتأثر."
+      ],
+      "weak": [
+        {
+          "sentence": "وتراجع مؤشر «نيكي» الياباني 4.41% حتى الساعة 03:54 بتوقيت غرينتش، وفقد «كوسبي» الكوري الجنوبي نحو 4%، وخسر المؤشر التايواني 3.3%.",
+          "quote": "وبحسب بيانات التداول عند الساعة 03:54 بتوقيت غرينتش، تراجع مؤشر «نيكي» الياباني 4.41 في المائة، ومؤشر شنغهاي 0.1 في المائة، فيما انخفض مؤشر الأسهم الهندية «نيفتي 50» بنسبة 0.29 في المائة."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "dip-holding-prices-dubai-ipo-fde00e": {
+      "at": "2026-11-04T17:20:07.227Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v52",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-04T07:18:38.921Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 23,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "بحصة 80% تبقى «دبي للاستثمار»، البائع الذي ذهبت إليه متحصلات الطرح، صاحبة الصوت الحاسم في تصويت المساهمين على التوزيعات التي يقوم عليها عائد المكتتب المتوقع، نحو 7.5% عند السعر النهائي.",
+          "quote": "وطرحت مؤسسة دبي للاستثمار، المساهم البائع، 1.735 مليار سهم عادي، تمثل %20 من رأس المال المصدر لشركة دي آي بي هولدينغ، على أن تحتفظ بحصة تبلغ 80% في الشركة بعد إتمام الطرح. وتمثل جميع أسهم الطرح أسهماً قائمة مملوكة للمساهم البائع، وتؤول صافي متحصلات الطرح إليه."
+        },
+        {
+          "sentence": "ويمنح هذا السعر الشركة قيمة سوقية عند الإدراج تبلغ نحو 9.7 مليار درهم (2.6 مليار دولار)، ضمن النطاق المعلن سابقاً بين 9.5 و10 مليارات درهم.",
+          "quote": "The final price of Dh1.12 values the company at Dh9.7 billion, within the Dh9.5 billion to Dh10 billion indicated earlier."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }

@@ -1,0 +1,82 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-04T17:20:06.696Z",
+  "durationSec": 53,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "asian-tech-stocks-fall-democrats-midterms-726409",
+      "title": "أسهم التكنولوجيا الآسيوية تهبط مع تقدم الديمقراطيين في انتخابات الكونغرس",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 26,
+        "checked": 26,
+        "supported": 24,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "dip-holding-prices-dubai-ipo-fde00e",
+      "title": "طرح «دي آي بي هولدينغ» في دبي يجمع 1.9 مليار درهم",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 23,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 2,
+    "failures": 0,
+    "promptTokens": 13276,
+    "completionTokens": 13492,
+    "cacheReadTokens": 0,
+    "costUsd": 0.376,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 2
+    },
+    "byRole": {
+      "checker": {
+        "calls": 2,
+        "in": 13276,
+        "read": 0,
+        "out": 13492,
+        "usd": 0.376
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[17:20:07] second look: 2 to read now (2 published pieces not yet read; 194 read clean before publication and left out of the audit sample)",
+    "[17:20:07] asian-tech-stocks-fall-democrats-midterms-726409:   source https://www.bloomberg.com/news/articles/2026-11-04/european-stocks-set-to-dip-as: http-403; read from the copy saved at publication (fetched then)",
+    "[17:20:08] asian-tech-stocks-fall-democrats-midterms-726409:   source https://www.bloomberg.com/news/articles/2026-11-04/japanese-stocks-sink-as-us-mi: http-403; read from the copy saved at publication (fetched then)",
+    "[17:20:08] asian-tech-stocks-fall-democrats-midterms-726409:   source https://www.ft.com/content/a0b18705-3bd8-4886-992c-b6062fdec6ea?syn-25a6b1a6=1: http-403; read from the copy saved at publication (fetched then)",
+    "[17:20:57] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1411 in=6915 read=0 out=6681 attempt=1 ms=48105",
+    "[17:20:57] asian-tech-stocks-fall-democrats-midterms-726409: 26 of 26 sentences checked · 24 supported · 1 without a source · 0 confirmed error(s)",
+    "[17:20:59] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2221 in=6361 read=0 out=6811 attempt=1 ms=51136",
+    "[17:20:59] dip-holding-prices-dubai-ipo-fde00e: 25 of 25 sentences checked · 23 supported · 0 without a source · 0 confirmed error(s)"
+  ]
+}
