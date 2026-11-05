@@ -12024,6 +12024,125 @@
           "noted": []
         }
       ]
+    },
+    "egypt-cabinet-approves-spending-cuts-fx-rationing-6e21ac": {
+      "at": "2026-11-05T17:49:36.662Z",
+      "title": "مصر تقر خطة لخفض الإنفاق الحكومي وترشيد النقد الأجنبي لمدة 3 أشهر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v53",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 30,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "egypt-urban-inflation-slows-nine-month-low-e8bbed": {
+      "at": "2026-11-05T18:03:08.825Z",
+      "title": "التضخم في مدن مصر يتباطأ إلى 12.7% في أكتوبر مسجلاً أدنى مستوى منذ 9 أشهر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v53",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 29,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 22,
+              "field": "body",
+              "class": "internal",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "ثم عكست العملة مسارها في أيام قليلة، فاستعادت نحو 5% من قيمتها منذ 29 أكتوبر، وتحسن سعر صرفها إلى 53.070 جنيه للدولار من 56.36 جنيه، وسط مؤشرات على تغير شهية المستثمرين تجاه الأصول المصرية.",
+              "quote": "ثم عكست العملة مسارها في أيام قليلة، فاستعادت نحو 5% من قيمتها منذ 29 أكتوبر، وتحسن سعر صرفها إلى 53.070 جنيه للدولار من 56.36 جنيه، وسط مؤشرات على تغير شهية المستثمرين تجاه الأصول المصرية.",
+              "source": "the story itself",
+              "sourceN": 0,
+              "correction": "A move from 56.36 to 53.070 pounds per dollar is a gain of about 6.2% in the pound's value (about 5.8% fewer pounds per dollar), not about 5%, even though the source prints the same 5% figure."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 28,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "bank-of-england-raises-rates-to-4-percent-a3418e": {
+      "at": "2026-11-05T18:14:43.986Z",
+      "title": "بنك إنجلترا يرفع الفائدة إلى 4% في أول زيادة منذ 2023",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v53",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 29,
+            "checked": 29,
+            "supported": 20,
+            "weak": 4,
+            "noEvidence": 3,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

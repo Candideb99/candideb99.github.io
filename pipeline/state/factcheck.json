@@ -15532,6 +15532,49 @@
         }
       ],
       "outcome": "clean"
+    },
+    "emirates-airline-half-year-profit-falls-66-851a38": {
+      "at": "2026-11-05T17:27:45.409Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v53",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-05T07:09:19.498Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 38,
+        "checked": 38,
+        "supported": 35,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "المجموعة الأم تحقق ربحاً قبل الضريبة قدره 4.1 مليار درهم رغم تضاعف أسعار وقود الطائرات وتراجع عدد المسافرين 22%",
+          "quote": "Against unprecedented regional challenges and high fuel prices, the group has delivered a profit before tax of AED4.1 billion ($1.1 billion). Customer demand held firm and our cargo operations made a strong contribution, keeping revenue and cash levels healthy even as global jet fuel prices doubled against the same period last year, impacting our costs and profitability,”"
+        },
+        {
+          "sentence": "ارتفعت كلفة الوقود على الناقلة 60% قبل التحوط، ولم تزد فاتورتها الصافية إلا 13% بفضل مكاسب التحوط.",
+          "quote": "لكن مكاسب التحوط البالغة 7.1 مليار درهم ساعدت في احتواء الزيادة الصافية في تكاليف الوقود عند 13%، بينما ظل الوقود أكبر مكونات المصروفات التشغيلية، مستحوذاً على 34% من إجماليها."
+        },
+        {
+          "sentence": "سجلت مجموعة الإمارات ربحاً قبل الضريبة قدره 4.1 مليار درهم (1.1 مليار دولار)، و3.6 مليار درهم (مليار دولار) بعد احتساب ضريبة الدخل.",
+          "quote": "After accounting for income tax charges, the group’s profit after tax was AED3.6 billion ($1 billion)."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }
