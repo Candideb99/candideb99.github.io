@@ -11899,6 +11899,131 @@
           "noted": []
         }
       ]
+    },
+    "emirates-airline-half-year-profit-falls-66-851a38": {
+      "at": "2026-11-05T07:09:19.505Z",
+      "title": "أرباح «طيران الإمارات» تتراجع 66% في النصف الأول بفعل حرب إيران",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v53",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 38,
+            "checked": 38,
+            "supported": 34,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "irgc-tankers-tugboat-fire-hormuz-f52ec1": {
+      "at": "2026-11-05T07:17:43.581Z",
+      "title": "الحرس الثوري الإيراني: حرائق في ناقلتي نفط وقاطرة بمضيق هرمز",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v53",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 9,
+            "checked": 9,
+            "supported": 8,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 1,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 5,
+              "field": "body",
+              "class": "cause",
+              "verdict": "contradicted",
+              "status": "listed",
+              "sentence": "أما الثانية، وهي ناقلة نفط عملاقة، فاشتعلت فيها النيران حين انحرفت عن مسارها في القسم الشرقي من الممر المائي، ثم امتد الحريق إلى قاطرة بحرية اقتربت منها للمساعدة في إخماده.",
+              "quote": "واندلعت النيران في قاطرة بحرية اقتربت من الناقلة الثانية للمساعدة في إخماد حريقها.",
+              "source": "Al Jazeera Arabic",
+              "sourceN": 1,
+              "correction": "The source says only that the tugboat that approached to help also caught fire; it does not say the tanker's fire spread to it."
+            }
+          ]
+        }
+      ]
+    },
+    "saudi-fund-syria-403-million-loans-eeba06": {
+      "at": "2026-11-05T07:22:47.949Z",
+      "title": "الصندوق السعودي للتنمية يقرض سوريا أكثر من 403 ملايين دولار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v53",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 11,
+            "checked": 11,
+            "supported": 9,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "apple-cuts-engineers-daily-ai-budgets-ebe7e1": {
+      "at": "2026-11-05T07:34:35.701Z",
+      "title": "«أبل» تخفض سقف إنفاق فرق هندسية على الذكاء الاصطناعي إلى 200 دولار يومياً",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v53",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 34,
+            "checked": 34,
+            "supported": 33,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

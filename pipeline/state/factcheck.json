@@ -15486,6 +15486,52 @@
         }
       ],
       "outcome": "clean"
+    },
+    "dow-jumps-democrats-win-congress-cbd5a8": {
+      "at": "2026-11-05T06:56:13.064Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v53",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-05T00:00:54.298Z",
+      "sourcesRead": 4,
+      "sourcesAll": 5,
+      "fromCopy": 1,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 34,
+        "checked": 34,
+        "supported": 30,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "فإذا لم تتحول هذه التوقعات إلى تهدئة تقررها الإدارة فعلاً، يفقد هبوط برنت دون 100 دولار سنده، ومعه جانب من الدعم الذي نالته الأسهم والسندات من نتيجة الانتخابات."
+      ],
+      "weak": [
+        {
+          "sentence": "قفز مؤشر داو جونز الصناعي 3.03% يوم الأربعاء إلى 53356.12 نقطة، مسجلاً أفضل أداء يومي له منذ أكثر من عام، بعدما فاز الحزب الديمقراطي بالسيطرة على مجلسي الشيوخ والنواب في انتخابات التجديد النصفي.",
+          "quote": "The Dow Jones rose close to 3%, its best day in over a year, while the tech-heavy Nasdaq and the benchmark S&P 500 gained about 1.5% each when markets closed on Wednesday afternoon, turning around overnight falls in US stock futures after the news that the Democratic party won control of the Senate and the House of Representatives."
+        },
+        {
+          "sentence": "واتسع الصعود إلى بقية السوق، فارتفع مؤشر «إس آند بي 500» 1.6% في أكبر مكسب له منذ أغسطس، وصعد مؤشر ناسداك المثقل بأسهم التكنولوجيا نحو 1.5% عند الإغلاق.",
+          "quote": "وارتفع مؤشر \"إس آند بي 500\" بنسبة 1.6%، في أكبر صعود له منذ أغسطس."
+        },
+        {
+          "sentence": "وهبط خام برنت نحو 10% إلى ما دون 100 دولار للبرميل للمرة الأولى منذ مطلع أكتوبر، مع تقييم المتعاملين أثر فوز الديمقراطيين على الحرب في إيران.",
+          "quote": "The price of oil dropped sharply as traders assessed the impact of the Democrats’ win on the war in Iran. Brent crude, the global oil benchmark, fell below $100 a barrel for the first time since early October."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }

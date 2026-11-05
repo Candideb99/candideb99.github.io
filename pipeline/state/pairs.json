@@ -1971,6 +1971,54 @@
         "classes": [],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-11-05T07:34:35.708Z",
+      "slug": "apple-cuts-engineers-daily-ai-budgets-ebe7e1",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v53",
+      "lessonsHash": "a6c6134ebe",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 34,
+        "notFound": 1,
+        "checked": 35,
+        "words": 464,
+        "keyFacts": 5,
+        "classes": [],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 3,
+        "supported": 31,
+        "notFound": 0,
+        "checked": 33,
+        "words": 432,
+        "keyFacts": 5,
+        "classes": [
+          "scope"
+        ],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 3,
+        "supported": 31,
+        "notFound": 0,
+        "checked": 33,
+        "words": 432,
+        "keyFacts": 5,
+        "classes": [
+          "scope"
+        ],
+        "programmatic": 0
+      }
     }
   ]
 }
