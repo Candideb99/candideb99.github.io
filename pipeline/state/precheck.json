@@ -12143,6 +12143,34 @@
           "noted": []
         }
       ]
+    },
+    "egypt-spending-cuts-hit-shrinking-private-demand-d784c4": {
+      "at": "2026-11-05T21:09:29.539Z",
+      "title": "تقشف الحكومة المصرية قد يزيد الضغط على قطاع خاص ينكمش منذ عشرة أشهر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 41,
+            "checked": 41,
+            "supported": 33,
+            "weak": 3,
+            "noEvidence": 1,
+            "notFound": 4,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
