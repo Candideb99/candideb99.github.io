@@ -1,580 +1,218 @@
 {
-  "mode": "news",
-  "startedAt": "2026-11-05T06:57:18.018Z",
-  "durationSec": 2486,
-  "published": 4,
+  "mode": "explainer",
+  "startedAt": "2026-11-05T13:27:57.913Z",
+  "durationSec": 618,
+  "published": 1,
   "refreshed": 0,
   "report": [
     {
-      "headline": "أرباح «طيران الإمارات» تتراجع 66% في ستة أشهر بفعل حرب إيران",
-      "section": "companies",
-      "importance": 8,
-      "sources": [
-        "https://asharqbusiness.com/financial-reports/154588/%D8%A3%D8%B1%D8%A8%D8%A7%D8%AD-%D8%B7%D9%8A%D8%B1%D8%A7%D9%86-%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA-%D8%AA%D9%87%D9%88%D9%8A-66-%D9%81%D9%8A-6-%D8%A3%D8%B4%D9%87%D8%B1-%D8%AA%D8%AD%D8%AA-%D9%88%D8%B7%D8%A3%D8%A9-%D8%AD%D8%B1%D8%A8-%D8%A5%D9%8A%D8%B1%D8%A7%D9%86/",
-        "https://economymiddleeast.com/news/emirates-group-delivers-1-1-billion-profit-before-tax-18-billion-revenue-6m-2026-27/",
-        "https://www.thenationalnews.com/business/aviation/2026/11/05/emirates-airline-posts-903m-in-half-year-profit-amid-regional-disruptions/",
-        "https://www.albayan.ae/economy/business/1562896"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان يذكر الناقلة والنسبة والفترة والسبب، والمقدمة تحدد الرقم 3.3 مليار درهم وفترة الأشهر الستة المنتهية في سبتمبر. المقدمة الفرعية تفصل بوضوح ربح المجموعة الأم قبل الضريبة (4.1 مليار) عن ربح الناقلة الصافي، و«طيران الإمارات» اسم معروف عربياً.",
-              "repair": ""
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "المسودة تحمل السبب (إغلاق الأجواء وتحذيرات السفر وارتفاع الوقود)، والمقارنة بالمستوى القياسي قبل الضريبة، وتوقعات «إياتا» للقطاع. لكنها تُسقط آلية الوقود كاملة، أي ارتفاع التكلفة 60% قبل التحوط مقابل 13% بعده، وتُسقط الربح القياسي 5.4 مليار دولار في السنة الماضية (SOURCE 1). الملخص التحريري يربط بين التحوط ووزن الوقود (34%) وتراجع السيولة، وهو استنتاج مشروط ومتناسب مع مقدماته، لكنه يقوى إذا ذُكرت الفجوة بين 60% و13% في المتن.",
-              "repair": "أضف رقم 60% قبل التحوط مع انخفاض الاستهلاك إلى فقرة الوقود، وأضف الربح القياسي للسنة الماضية إلى فقرة المقارنة."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "العنوان يقول إن الجديد هو تراجع الأرباح 66% بفعل الحرب، والمتن يطوّره مباشرة بعد المقدمة: الربح قبل الضريبة والإيرادات، ثم أثر الإغلاقات على المسافرين والسعة. لكن جملة عزو الإيرادات إلى الطلب والدرجات المميزة جاءت في فقرة الشحن، وفقرة الأسطول تعود إلى الناقلة بعد كتلة المجموعة.",
-              "repair": "انقل جملة عزو الإيرادات إلى فقرة الإيرادات الأولى، واجعل فقرة الأسطول في كتلة الناقلة أو اربطها بما تموله سيولة المجموعة."
-            },
-            "precision": {
-              "status": "clear",
-              "evidence": "الفترة (1 أبريل إلى 30 سبتمبر)، وأساس المقارنة السنوي، والتمييز بين الربح قبل الضريبة وبعدها، وبين الناقلة والمجموعة، واسم مقياس EBITDA، كلها مطابقة لـSOURCE 1 وSOURCE 2. وتوقعات «إياتا» مقدّمة بصيغة التوقع. عبارة «تضاعف أسعار وقود الطائرات» منسوبة في المتن إلى الشيخ أحمد بن سعيد كما في SOURCE 2.",
-              "repair": ""
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "publish",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يقول العنوان إن أرباح «طيران الإمارات» تراجعت 66% في النصف الأول بفعل حرب إيران، وهي ناقلة معروفة لا تحتاج إلى تعريف بلدها. يوضح العنوان الفرعي أن رقم 4.1 مليار درهم يخص «المجموعة الأم»، فلا يبدو متناقضاً مع رقم الناقلة. وتحدد الفقرة الأولى من المتن الفترة: من أول أبريل إلى 30 سبتمبر، والسنة المالية تنتهي في مارس.",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "تحمل المسودة التفسيرات الثلاثة التي توفرها المصادر. السبب: إغلاقات الأجواء وتحذيرات السفر (SOURCE 1 و2)، وتضاعف أسعار الوقود على لسان الشيخ أحمد بن سعيد، وآلية التحوط 60% مقابل 13% (SOURCE 1). المقارنة: الربح القياسي قبل الضريبة 11.4 مليار درهم، والربح السنوي القياسي 5.4 مليار دولار. القطاع والنظرة المقبلة: توقعات «إياتا» وتصريح كلارك والتفاؤل الحذر. ويستند ملخص «لماذا يهمّ» إلى مقدمات ثابتة: 60% و13% ووزن الوقود 34% وتراجع النقد من 59.6 إلى 54.1 مليار درهم. ويستنتج منها استنتاجاً مشروطاً بـ«إذا تقلصت هذه الحماية» ومتناسباً مع الأرقام.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "clear",
-              "evidence": "يطوّر المتن ما يقوله العنوان مباشرة بعد المقدمة: الربح قبل الضريبة مقابل المستوى القياسي، ثم الإيرادات وعزوها، ثم أثر الحرب على المسافرين والسعة، ثم الوقود والشحن. وتأتي فقرة الأسطول بعد ذكر تمويل دفعات الطائرات من سيولة المجموعة، فيبقى الانتقال مفهوماً تحت عنوانه الفرعي. ولا تُكرَّر الأرقام إلا في الملخص التحريري، حيث تحمل استنتاجاً جديداً.",
-              "repair": "اختياري: لتوضيح الصلة بين السيولة والأسطول أكثر، يمكن افتتاح فقرة الأسطول بقول الشيخ أحمد إن المجموعة لم توقف استثماراتها (SOURCE 2)."
-            },
-            "precision": {
-              "status": "clear",
-              "evidence": "يحتفظ كل مقياس باسمه وجهته. صافي ربح الناقلة بعد الضريبة 3.3 مليار درهم وربحها قبل الضريبة 3.7 مليار درهم منفصلان عن ربح المجموعة قبل الضريبة 4.1 مليار درهم وبعدها 3.6 مليار درهم. والأرباح قبل الفوائد والضرائب والإهلاك والاستهلاك مسماة باسمها لا «أرباحاً تشغيلية». وكل مقارنة مذكور أساسها: الفترة المقابلة، أو 31 مارس للنقد. أما توقعات «إياتا» فمنسوبة إليها كتوقعات.",
-              "repair": ""
-            }
-          }
-        }
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
+      "headline": "لماذا هبط النفط 8% لأن الديمقراطيين فازوا بالكونغرس الأمريكي؟",
+      "section": "explainers",
       "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "زادت تكاليف الوقود قبل احتساب مكاسب التحوط بنسبة 60% رغم انخفاض الكميات المستهلكة نتيجة تقليص العمليات",
-          "source": 1
-        },
-        {
-          "fact": "حدّت مكاسب تحوط قيمتها 7.1 مليار درهم من الزيادة الصافية في تكاليف الوقود فأبقتها عند 13%، وشكّل الوقود 34% من المصروفات التشغيلية",
-          "source": 1
-        },
-        {
-          "fact": "قال الشيخ أحمد بن سعيد إن أسعار وقود الطائرات عالمياً تضاعفت مقارنة بالفترة نفسها من العام الماضي، وإن ذلك أثّر في تكاليف المجموعة وربحيتها",
-          "source": 2
-        },
-        {
-          "fact": "تراجع رصيد المجموعة النقدي إلى 54.1 مليار درهم في 30 سبتمبر 2026 من 59.6 مليار درهم في 31 مارس 2026، وموّلت المجموعة من سيولتها دفعات الطائرات قبل التسليم وخدمة ديونها القائمة",
-          "source": 2
-        }
-      ],
-      "slug": "emirates-airline-half-year-profit-falls-66-851a38",
-      "title": "أرباح «طيران الإمارات» تتراجع 66% في النصف الأول بفعل حرب إيران",
+      "slug": "why-oil-fell-8-percent-after-democrats-won-congress-f3a65b",
+      "title": "لماذا هبط النفط 8% بعد فوز الديمقراطيين بالكونغرس الأمريكي؟",
       "score": 9,
-      "image": "photo"
-    },
-    {
-      "headline": "الحرس الثوري: حرائق في ناقلتي نفط وقاطرة بمضيق هرمز",
-      "section": "energy",
-      "importance": 7,
-      "sources": [
-        "https://www.aljazeera.net/news/2026/11/5/%d8%a7%d9%84%d8%ad%d8%b1%d8%b3-%d8%a7%d9%84%d8%ab%d9%88%d8%b1%d9%8a-%d8%a7%d9%84%d8%a5%d9%8a%d8%b1%d8%a7%d9%86%d9%8a-%d8%a7%d9%86%d8%af%d9%84%d8%a7%d8%b9-%d8%ad%d8%b1%d9%8a%d9%82-%d9%81%d9%8a",
-        "https://www.arabnews.com/middle-east/irans-irgc-says-two-tankers-and-tugboat-caught-fire-in-strait-of-hormuz-3009888",
-        "https://www.thenationalnews.com/news/mena/2026/11/05/live-iran-war-irgc-strait-of-hormuz/",
-        "https://www.independentarabia.com/node/662091/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1/%D9%83%D9%88%D8%B1%D9%8A%D8%A7-%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9-%D8%AA%D8%B3%D8%A7%D8%B9%D8%AF-%D9%81%D9%8A-%D8%A5%D8%A8%D9%82%D8%A7%D8%A1-%D9%87%D8%B1%D9%85%D8%B2-%D9%85%D9%81%D8%AA%D9%88%D8%AD%D8%A7-%D9%88%D8%A3%D9%86%D8%A8%D8%A7%D8%A1-%D8%B9%D9%86-%D8%AD%D9%88%D8%A7%D8%AF%D8%AB-%D9%81%D9%8A-%D8%A7%D9%84%D9%85%D8%B6%D9%8A%D9%82"
-      ],
-      "format": "short",
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يبيّن العنوان والعنوان الفرعي أن الخبر إيراني، وأن مصدره بيان للحرس الثوري، وأن الحوادث وقعت في مضيق هرمز. ويبقى العنوان في حدود ما يقوله البيان: حرائق ولغم، بلا تأكيد مستقل.",
-              "repair": ""
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "يورد الخبر السبب الذي ذكره الحرس، وهو سلوك «مسارات غير مصرح بها»، ويورد خلفية الحرب وموقع المضيق. لكنه يُسقط رد الفعل الأمريكي الوحيد المتاح، أي غياب التعليق الفوري (المصدر 1)، ويضيف بدلاً منه نتيجة غير مسندة عن حركة الشحن.",
-              "repair": "تُضاف جملة «ولم يصدر تعليق فوري عن الجانب الأمريكي»، وتُحذف عبارة «فأي حادث فيه يطال حركة الشحن»."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "يقول العنوان إن ثلاث سفن اشتعلت فيها النيران، لكن المتن يبدأ بالقاطرة و«الناقلة الثانية» من غير أن يصف الحادثتين الأوليين: اللغم جنوب المضيق، والناقلة العملاقة في الجزء الشرقي منه.",
-              "repair": "تجمع الفقرة الأولى من المتن الحوادث الثلاث بترتيبها: الناقلة التي اصطدمت بلغم، ثم الناقلة العملاقة التي اشتعلت أثناء خروجها من المسار شرقاً، ثم القاطرة التي اقتربت للمساعدة."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "عبارة «امتدت من الناقلة الثانية إلى قاطرة» تضيف علاقة سببية لا يذكرها المصدر. وتاريخ «28 فبراير» يرد بلا سنة.",
-              "repair": "تُكتب العبارة: «اشتعلت النيران في قاطرة اقتربت من الناقلة الثانية للمساعدة في إخماد حريقها»، ويُكتب التاريخ: «28 فبراير 2026»."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان والوصف الفرعي يحددان البلد والجهة (الحرس الثوري الإيراني) والمكان (مضيق هرمز). المقدمة تنسب الحوادث إلى بيان الحرس ولا تقدمها حقيقة مستقلة، وهذا يطابق المصدرين 1 و2.",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "المسودة تورد السبب الذي ذكره الحرس، أي سلوك «مسارات غير مصرح بها»، ورد الفعل الوحيد المتاح، أي غياب التعليق الأمريكي الفوري (المصدر 1)، وخلفية الحرب وموقع المضيق، دون حشو. حادثة المسيّرتين أُسقطت، وهذا مقبول لأنها تطور منفصل.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "يعلن العنوان حرائق في ناقلتين وقاطرة، لكن المتن يبدأ بـ«أما الناقلة الثانية»، فتسقط من المتن الناقلة الأولى التي اصطدمت بلغم جنوب المضيق، ولا تظهر إلا في الوصف الفرعي.",
-              "repair": "تُجمع الحوادث الثلاث في الفقرة الأولى من المتن بترتيبها: اللغم جنوباً، ثم الناقلة العملاقة شرقاً، ثم القاطرة. ويُعدَّل الوصف الفرعي حتى لا يكرر المتن."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الاقتباسان «مسارات غير مصرح بها» و«محاولة خرق القانون…» مطابقان حرفياً للمصدر 1. لكن «في 28 فبراير» يرد بلا سنة.",
-              "repair": "يُكتب «في 28 فبراير 2026»."
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 5,
-      "mendIssues": [
-        "خلل في البناء (الملاحظتان 4 و8 السابقتان لم تُعالجا): يبدأ المتن بـ«أما الناقلة الثانية، وهي ناقلة نفط عملاقة…»، ولم يرد في المقدمة أو المتن أي وصف للناقلة الأولى. حادث اللغم، وهو أول الحوادث الثلاثة التي يعلنها العنوان، موجود في الوصف الفرعي وحده (المصدران 1 و2). الإصلاح: تُفتتح الفقرة الأولى من المتن بالحوادث الثلاث بترتيبها: «وقال الحرس إن إحدى الناقلتين اصطدمت بلغم بحري أثناء محاولتها عبور ممر يقع جنوب المضيق، فيما اشتعلت النيران في ناقلة نفط عملاقة أخرى أثناء خروجها من المسار في الجزء الشرقي من الممر المائي. كما اشتعلت النيران في قاطرة بحرية اقتربت منها للمساعدة في إخماد حريقها». بذلك تُحذف «أما» التي تحيل إلى ما لم يُذكر.",
-        "مع نقل تفصيل اللغم إلى المتن يتكرر في الوصف الفرعي ما في المتن. الإصلاح: يحمل الوصف الفرعي تفصيلاً آخر من الحدث نفسه، مثل: «الحرس حذّر واشنطن من «أضرار مالية وهزائم سياسية»، ولا تعليق أمريكي فوري»، أو يُبقى اللغم في الوصف الفرعي ويقتصر المتن على إكمال وصف الحوادث الثلاث دون تكرار.",
-        "دقة التاريخ (الملاحظة 6 عولجت جزئياً): الصياغة المبنية للمجهول صُححت، لكن «في 28 فبراير» ما زال بلا سنة. الإصلاح: «في 28 فبراير 2026»، كما في المصدر 1.",
-        "يعلن العنوان حرائق في ناقلتين وقاطرة، لكن المتن يبدأ بـ«أما الناقلة الثانية»، فتسقط من المتن الناقلة الأولى التي اصطدمت بلغم جنوب المضيق، ولا تظهر إلا في الوصف الفرعي. — تُجمع الحوادث الثلاث في الفقرة الأولى من المتن بترتيبها: اللغم جنوباً، ثم الناقلة العملاقة شرقاً، ثم القاطرة. ويُعدَّل الوصف الفرعي حتى لا يكرر المتن.",
-        "الاقتباسان «مسارات غير مصرح بها» و«محاولة خرق القانون…» مطابقان حرفياً للمصدر 1. لكن «في 28 فبراير» يرد بلا سنة. — يُكتب «في 28 فبراير 2026»."
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [],
-      "slug": "irgc-tankers-tugboat-fire-hormuz-f52ec1",
-      "title": "الحرس الثوري الإيراني: حرائق في ناقلتي نفط وقاطرة بمضيق هرمز",
-      "score": 8,
-      "image": "cover-art"
-    },
-    {
-      "headline": "الصندوق السعودي للتنمية يقرض سوريا 403 ملايين دولار لمشاريع البنية التحتية",
-      "section": "economy",
-      "importance": 7,
-      "sources": [
-        "https://www.aljazeera.com/news/2026/11/5/syria-saudi-arabia-sign-defence-cooperation-deal-agree-403m-in-loans",
-        "https://www.arabnews.com/saudi-arabia/saudi-fund-provides-over-403m-for-infrastructure-and-public-service-projects-in-syria-3009880",
-        "https://www.aleqt.com/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1/%D9%88%D9%84%D9%8A-%D8%A7%D9%84%D8%B9%D9%87%D8%AF-%D9%88%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3-%D8%A7%D9%84%D8%B3%D9%88%D8%B1%D9%8A-%D9%8A%D8%B4%D9%87%D8%AF%D8%A7%D9%86-%D8%AA%D9%88%D9%82%D9%8A%D8%B9-%D9%85%D8%B0%D9%83%D8%B1%D8%A7%D8%AA-%D8%AA%D8%B9%D8%A7%D9%88%D9%86-%D8%A8%D9%8A%D9%86-%D8%A7%D9%84%D8%A8%D9%84%D8%AF%D9%8A%D9%86-16090"
-      ],
-      "format": "short",
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان والعنوان الفرعي يحددان البلدين والجهة المقرضة («الصندوق السعودي للتنمية») والقيمة وطبيعة القروض (ميسرة) وأبرز وجوه إنفاقها. مجموع البنود (105+100+90+60+30+18) يطابق أكثر من 403 ملايين دولار في ست اتفاقيات (المصدر 2).",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "الأغراض المعلنة لكل قرض واردة (استعادة قدرة محطة حلب على التوليد، تحسين الخدمات المالية الحكومية). الخلفية المقارنة موجودة: الدعم السعودي منذ ديسمبر 2024، ومنحتا سبتمبر 2025 للنفط والرواتب (المصدر 2)، ولقاء 6 أكتوبر حول إعادة الإعمار (المصدر 1). لا تقدم المصادر سبباً معلناً آخر يغيب عن المسودة.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "العنوان عن القروض، والجسم يطورها مباشرة بعد المقدمة مرتبة بحسب الحجم، وهذا جيد. غير أن الفقرة الأخيرة تخلط موضوعين: لقاء أكتوبر السابق واتفاقية الدفاع، فتأتي الاتفاقية بكلمة «أيضاً» بلا موقع واضح.",
-              "repair": "جملة الدفاع تصبح جملة أو فقرة قصيرة مستقلة بعد خلفية الزيارة: «ووقّعت وزارتا الدفاع في البلدين اتفاقية تعاون وصفتها الخارجية السورية بأنها الأبرز، من دون أن تكشف بنودها»."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "أعداد المستفيدين في المصدر 2 توقعات. حافظت المسودة على «يُتوقع» في الدفاع المدني ومحطة حلب، لكنها أسقطتها في العدادات: «يخدم نحو 1.5 مليون شخص». بقية الأرقام والمقادير مطابقة («ما يصل إلى 10 آلاف»، «أكثر من 18 مليون»).",
-              "repair": "استبدال «يخدم نحو 1.5 مليون شخص» بـ«يُتوقع أن يستفيد منها نحو 1.5 مليون شخص»."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "publish",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان والعنوان الفرعي يحددان البلدين وطبيعة الجهة: «الصندوق السعودي للتنمية يقرض سوريا». ويبيّن الفرعي أن القروض ميسرة وما تموّله. وتوزيع الأرقام (105 + 100 + 90 + 60 + 30 + 18) يطابق المجموع «أكثر من 403 ملايين» والقروض الست في المصدر 2.",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "يحمل الخبر الأغراض المعلنة للمشاريع، ومنها «لاستعادة قدرتها على إنتاج الكهرباء» و«لتحسين الخدمات المالية الحكومية وشفافيتها» (المصدر 2). ويقارنها بالمنحتين السابقتين في سبتمبر 2025 (المصدر 2)، ويذكر الدعم السعودي منذ ديسمبر 2024 ولقاء 6 أكتوبر (المصدر 1). لا يذكر نقاش انضمام سوريا إلى «تحالف مكة»، وهو سياق لاتفاقية الدفاع لا للقروض، ولا يلزم في خبر قصير عنوانه القروض.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "clear",
-              "evidence": "العنوان عن القروض، والفقرتان بعد المقدمة تطورانها مباشرة مرتبة بحسب الحجم. تليهما الخلفية ثم الزيارة الثانية. واتفاقية الدفاع صارت فقرة مستقلة مقرونة بوصف الخارجية السورية لها بأنها «الأبرز» وبأن بنودها لم تُكشف، فزالت ملاحظتا البناء السابقتان. الطول نحو 210 كلمات، ضمن حدود الخبر القصير.",
-              "repair": ""
-            },
-            "precision": {
-              "status": "clear",
-              "evidence": "أعداد المستفيدين كلها مقدمة توقعات («يُتوقع أن يستفيد»)، فعولجت ملاحظة العدادات. وحُفظت المقادير كما وردت: «ما يصل إلى 10 آلاف وحدة» و«أكثر من 18 مليون» و«أكثر من 7 ملايين». وتاريخ التوقيع الأربعاء مطابق للمصدرين 1 و3، والنسبة إلى وكالة الأنباء السعودية صحيحة. ملاحظة طفيفة غير مانعة: ضمير «منها» في «عداد مياه ذكي يُتوقع أن يستفيد منها» يعود إلى مفرد مذكر، والأدق «يُتوقع أن يستفيد منه» أي المشروع.",
-              "repair": ""
-            }
-          }
-        }
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [],
-      "slug": "saudi-fund-syria-403-million-loans-eeba06",
-      "title": "الصندوق السعودي للتنمية يقرض سوريا أكثر من 403 ملايين دولار",
-      "score": 9,
-      "image": "photo"
-    },
-    {
-      "headline": "«أبل» تخفض ميزانيات استخدام موظفيها للذكاء الاصطناعي",
-      "section": "technology",
-      "importance": 6,
-      "sources": [
-        "https://asharqbusiness.com/companies/154541/%D8%A3%D8%A8%D9%84-%D8%AA%D8%AE%D9%81%D8%B6-%D9%85%D8%AE%D8%B5%D8%B5%D8%A7%D8%AA-%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-%D9%85%D9%88%D8%B8%D9%81%D9%8A%D9%87%D8%A7-%D9%84%D9%84%D8%B0%D9%83%D8%A7%D8%A1-%D8%A7%D9%84%D8%A7%D8%B5%D8%B7%D9%86%D8%A7%D8%B9%D9%8A/",
-        "https://www.ekonomim.com/sirketler/appledan-yeni-tasarruf-hamlesi-yapay-zeka-butcesi-kisilacak-haberi-929293",
-        "https://www.dunya.com/ekonomi/appledan-yapay-zeka-harcamalarina-fren-haberi-846509",
-        "https://techcrunch.com/2026/11/04/apple-is-reportedly-cutting-budgets-for-its-internal-ai-usage/"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان والمقدمة يحددان ما تغير: خفض سقف بعض الفرق الهندسية من 300 إلى 200 دولار يومياً في أكتوبر. والعنوان الفرعي يميز الخفض المنفذ من التخفيضات المحتملة إلى 100 دولار ومن الاستثناءات. «أبل» اسم معروف لا يحتاج إلى تعريف بالبلد أو النشاط.",
-              "repair": "يُفضَّل «لبعض فرقها الهندسية» بدل «لفرق هندسية» في العنوان، وصيغة «يمكن طلبها من القيادة العليا» بدل «تمنحها القيادة العليا»، لأن المصدر 1 يتحدث عن طلب الاستثناءات لا عن منحها."
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "الدافع موجود (ضبط التكاليف، ونفقات بحث وتطوير ارتفعت 32% بدفع من الذكاء الاصطناعي)، وكذلك آلية التسعير بالرموز، وردود فعل الموظفين، والسياق القطاعي من المصدرين 1 و4. لكن التقرير يغفل من المصدر 1 أن الوفورات الفعلية غير واضحة لأن بعض الموظفين لم يقتربوا من حدودهم السابقة، ويغفل أن مهام البرمجة تستهلك كميات كبيرة من الرموز. وصندوق «لماذا يهمّ» يقيم استدلاله على مقدمات صحيحة، لكنه يعممها على «بقية الفرق» و«كل فرقة».",
-              "repair": "إضافة جملتَي المصدر 1 عن الوفورات غير الواضحة وعن استهلاك مهام البرمجة للرموز، وتضييق تعميم الصندوق إلى «بعض الفرق» و«الإنفاق الذي يتجاوز السقف»."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "العنوان يقول إن الجديد هو الخفض إلى 200 دولار، والمتن يطوره مباشرة بعد المقدمة: تعريف الرموز، ثم التخفيضات التالية، ثم الاستثناءات، ثم ردود الفعل. لكن العنوان الفرعي «نفقات أعلى في عهد تيرنوس» يربط بين أمرين لم تربطهما المصادر. وسطر تيرنوس منفصل عن مخاوف إعادة الهيكلة التي يفسرها في المصدر 1. وفقرة الصندوق تكتفي بإعادة صياغة جزئية لما في المتن.",
-              "repair": "نقل سطر تيرنوس مُسنداً إلى «بلومبرغ نيوز» إلى فقرة المستشارين الخارجيين، وتسمية القسم الثاني بما يقوله فعلاً عن ارتفاع الإنفاق رغم ضبط الكلفة."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الأرقام 300 و200 و100 و25 و32% و22% و75.5 مليار و16% وسقوف تسلا (200 أسبوعياً) وأوبر (1500 شهرياً لكل أداة) مطابقة للمصدر 1، والأربعاء يوافق 4 نوفمبر بحسب المصدر 4. لكن «إعادة هيكلة مقبلة» تقلب «محتملة»، و«في عهد تيرنوس» نسبة زمنية بلا سند، و«السقف اليومي المخطط» يُسقط «قد» الواردة في المصدر.",
-              "repair": "«محتملة» بدل «مقبلة»، وحذف «في عهد تيرنوس»، و«سقف محتمل» بدل «المخطط» في صندوق الأرقام."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "العنوان والمقدمة واضحان: خُفّض السقف من 300 إلى 200 دولار لبعض الفرق الهندسية في أكتوبر، والشركة تخطط لخفض أكبر، و«أبل» اسم يعرفه القارئ. لكن العنوان الفرعي يقول «استثناءات تمنحها القيادة العليا» فيجعل المنح أمراً واقعاً، والمصدر 1 يتحدث عن طلب استثناءات.",
-              "repair": "«مع استثناءات يطلبها الموظفون من القيادة العليا»."
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "المتن يحمل الدافع (ضبط التكاليف، ونفقات بحث وتطوير ارتفعت 32% بدفع من الذكاء الاصطناعي)، وآلية التسعير بالرموز واستهلاك البرمجة لها، وحدود الأثر (الوفورات غير واضحة)، وردود الموظفين، والسياق القطاعي. لكن صندوق «لماذا يهمّ» يقيم علاقة سببية بـ«لذلك» بين التسعير بالرموز وشرط موافقة القيادة، ويكرر مقدمات المتن، ولا يجيب عن السؤال الاقتصادي الذي يطرحه المصدر 1: كم يمكن توفيره من الإنفاق من دون تقويض مكاسب الكفاءة؟",
-              "repair": "إعادة كتابة الصندوق حول المفاضلة بين تعميق استخدام الذكاء الاصطناعي في الهندسة وتقنين الرموز، مع شرط «إذا نزل السقف إلى 100 دولار»، وحذف «لذلك» والربط السببي بين السقف وتوجيه الفرق إلى نماذج أرخص."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "يطوّر المتن عنصر العنوان بعد المقدمة مباشرة: ما يغطيه السقف، ثم التخفيضات التالية، ثم الاستثناءات وحدود الوفورات، ثم مخاوف الموظفين ومعها سطر تيرنوس، وهذا تجميع سليم. لكن فكرة «شجعت الشركات التجربة الواسعة ثم شددت الرقابة» تُروى مرتين، مرة في فقرة القطاع ومرة في الفقرة الأخيرة المنسوبة إلى «تك كرانش».",
-              "repair": "دمج الفقرتين: الموجة وانحسارها مرة واحدة منسوبة إلى «تك كرانش»، ثم أمثلة «مايكروسوفت» و«تسلا» و«أوبر» و«ميتا»، ثم الفجوة بين الكلفة ومكاسب الإنتاجية."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الأرقام 300 و200 و100 و25 و32% و22% و75.5 مليار و16% وسقفا «تسلا» و«أوبر» مطابقة للمصادر، و«محتملة» صُححت. لكن «فأكثف المستخدمين سيضطرون» تُسقط «قد» من المصدر 1، و«لأنه أجدى مالياً» تُسقط might من المصدر 4، وصندوق الأرقام يغفل السقف الجديد 200 دولار.",
-              "repair": "«إذ قد يضطر أكثف المستخدمين…»، و«إذ رأت فيه نهجاً قد يكون أجدى مالياً»، وإضافة «السقف اليومي الجديد لبعض الفرق الهندسية: 200 دولار» إلى صندوق الأرقام."
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 10,
-      "mendIssues": [
-        "خطأ في الاستدلال (لماذا يهمّ): يقول الصندوق «يسعّر مزودو النماذج خدماتهم بحسب الرموز المستهلكة، وكتابة الشيفرات وتصحيحها تستهلك منها الكثير؛ لذلك يجعل السقف الجديد كل إنفاق يتجاوز 200 دولار يومياً… مشروطاً بموافقة القيادة العليا». هذا ربط سببي خاطئ. التسعير بالرموز لا ينتج عنه شرط الموافقة، فالشرط مصدره قاعدة الاستثناءات في المصدر 1. كذلك تجعل عبارة «إلى بند يومي محدود يوجّه بعضها إلى نماذج أرخص» السقفَ سبباً لتوجيه الفرق، والمصدر 1 يورد التوجيه إجراءً مستقلاً («ويُوجَّه بعض الفرق…») ولا يقصره على الفرق الهندسية. والصندوق في مجمله يكرر مقدمات المتن (التسعير بالرموز، 32%، النماذج المحلية) بلا معنى مضاف. الإصلاح: بناء الاستدلال على المفاضلة التي يذكرها المصدر 1 نفسه، مثلاً: «تريد «أبل» أن يصير الذكاء الاصطناعي في صميم العمل الهندسي، والبرمجة أكثر استهلاكاً للرموز، فإذا نزل السقف إلى 100 دولار صار أكثف المستخدمين في الفرق المعنية يحتاجون إلى إذن من القيادة العليا للحفاظ على أدواتهم، وهذا يوازن الوفورات بكلفة كفاءة لم تُحسب بعد».",
-        "دقة (تحويل احتمال إلى يقين): «فأكثف المستخدمين سيضطرون عندها إلى طلب استثناءات». المصدر 1 يقول «ما قد يجبر المستخدمين الأكثر كثافة». الإصلاح: «إذ قد يضطر أكثف المستخدمين عندها إلى طلب استثناءات…».",
-        "دقة (حذف تحفّظ المصدر): «فاتجهت الشركات إلى تقنين الاستهلاك لأنه أجدى مالياً». المصدر 4 يقول: companies decided that token rationing might be a more fiscally sensible approach، أي إنها رأت التقنين قد يكون أجدى، ولم يثبت أنه أجدى. الإصلاح: «فاتجهت الشركات إلى تقنين الاستهلاك، إذ رأت فيه نهجاً قد يكون أجدى مالياً».",
-        "صندوق الأرقام (ملاحظة سابقة لم تُعالج): الصندوق يورد السقف السابق 300 دولار والسقفين المحتملين 100 و25 دولاراً، ويغفل رقم العنوان نفسه: السقف الجديد 200 دولار يومياً لبعض الفرق الهندسية (المصدر 1). الإصلاح: إضافة «السقف اليومي الجديد لبعض الفرق الهندسية منذ أكتوبر: 200 دولار».",
-        "تكرار المعنى: تقول فقرة القطاع «تشدد الشركات التي شجعت في البداية التجربة الواسعة للذكاء الاصطناعي رقابتها على تكاليفه»، ثم تعيد الفقرة الأخيرة الفكرة نفسها: «وكانت الشركات قد دفعت موظفيها في وقت سابق من هذا العام إلى استخدام الذكاء الاصطناعي أقصى ما يمكن… لكن تلك الموجة لم تدم طويلاً». الإصلاح: تُروى الموجة وانحسارها مرة واحدة منسوبة إلى «تك كرانش» في مطلع قسم القطاع، تليها أمثلة الشركات، ثم تُختم بالفجوة بين الكلفة ومكاسب الإنتاجية.",
-        "العنوان الفرعي: «مع استثناءات تمنحها القيادة العليا» يوحي بأن الاستثناءات تُمنح، والمصدر 1 يقول إن الموظفين «سيتمكنون… من طلب استثناءات من القيادة العليا». الإصلاح: «مع استثناءات يطلبها الموظفون من القيادة العليا».",
-        "العنوان والمقدمة واضحان: خُفّض السقف من 300 إلى 200 دولار لبعض الفرق الهندسية في أكتوبر، والشركة تخطط لخفض أكبر، و«أبل» اسم يعرفه القارئ. لكن العنوان الفرعي يقول «استثناءات تمنحها القيادة العليا» فيجعل المنح أمراً واقعاً، والمصدر 1 يتحدث عن طلب استثناءات. — «مع استثناءات يطلبها الموظفون من القيادة العليا».",
-        "المتن يحمل الدافع (ضبط التكاليف، ونفقات بحث وتطوير ارتفعت 32% بدفع من الذكاء الاصطناعي)، وآلية التسعير بالرموز واستهلاك البرمجة لها، وحدود الأثر (الوفورات غير واضحة)، وردود الموظفين، والسياق القطاعي. لكن صندوق «لماذا يهمّ» يقيم علاقة سببية بـ«لذلك» بين التسعير بالرموز وشرط موافقة القيادة، ويكرر مقدمات المتن، ولا يجيب عن السؤال الاقتصادي الذي يطرحه المصدر 1: كم يمكن توفيره من الإنفاق من دون تقويض مكاسب الكفاءة؟ — إعادة كتابة الصندوق حول المفاضلة بين تعميق استخدام الذكاء الاصطناعي في الهندسة وتقنين الرموز، مع شرط «إذا نزل السقف إلى 100 دولار»، وحذف «لذلك» والربط السببي بين السقف وتوجيه الفرق إلى نماذج أرخص.",
-        "يطوّر المتن عنصر العنوان بعد المقدمة مباشرة: ما يغطيه السقف، ثم التخفيضات التالية، ثم الاستثناءات وحدود الوفورات، ثم مخاوف الموظفين ومعها سطر تيرنوس، وهذا تجميع سليم. لكن فكرة «شجعت الشركات التجربة الواسعة ثم شددت الرقابة» تُروى مرتين، مرة في فقرة القطاع ومرة في الفقرة الأخيرة المنسوبة إلى «تك كرانش». — دمج الفقرتين: الموجة وانحسارها مرة واحدة منسوبة إلى «تك كرانش»، ثم أمثلة «مايكروسوفت» و«تسلا» و«أوبر» و«ميتا»، ثم الفجوة بين الكلفة ومكاسب الإنتاجية.",
-        "الأرقام 300 و200 و100 و25 و32% و22% و75.5 مليار و16% وسقفا «تسلا» و«أوبر» مطابقة للمصادر، و«محتملة» صُححت. لكن «فأكثف المستخدمين سيضطرون» تُسقط «قد» من المصدر 1، و«لأنه أجدى مالياً» تُسقط might من المصدر 4، وصندوق الأرقام يغفل السقف الجديد 200 دولار. — «إذ قد يضطر أكثف المستخدمين…»، و«إذ رأت فيه نهجاً قد يكون أجدى مالياً»، وإضافة «السقف اليومي الجديد لبعض الفرق الهندسية: 200 دولار» إلى صندوق الأرقام."
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "تسعى أبل إلى جعل الذكاء الاصطناعي في صميم عملياتها وتحديث عملياتها الهندسية به، بينما تشدد القيود على ما يمكن للموظفين إنفاقه عليه",
-          "source": 1
-        },
-        {
-          "fact": "تستهلك المهام المعقدة، مثل كتابة الشيفرات البرمجية وتصحيح أخطائها، كميات كبيرة من الرموز",
-          "source": 1
-        },
-        {
-          "fact": "تخطط أبل لتخفيضات إضافية قد تنزل بالسقف اليومي لبعض الفرق الهندسية إلى 100 دولار، ما قد يضطر أكثف المستخدمين إلى طلب استثناءات من القيادة العليا للحفاظ على وصولهم إلى الأدوات",
-          "source": 1
-        },
-        {
-          "fact": "لا تزال الوفورات الفعلية من التخفيضات غير واضحة، والتحدي أمام الشركات هو تحديد الإنفاق الذي يمكن الاستغناء عنه من دون تقويض مكاسب الكفاءة التي دفعتها إلى تبني التكنولوجيا",
-          "source": 1
-        }
-      ],
-      "slug": "apple-cuts-engineers-daily-ai-budgets-ebe7e1",
-      "title": "«أبل» تخفض سقف إنفاق فرق هندسية على الذكاء الاصطناعي إلى 200 دولار يومياً",
-      "score": 7,
       "image": "photo"
     }
   ],
   "llm": {
-    "calls": 91,
-    "failures": 1,
-    "promptTokens": 1311509,
-    "completionTokens": 258364,
-    "cacheReadTokens": 383282,
-    "costUsd": 12.6687,
+    "calls": 23,
+    "failures": 0,
+    "promptTokens": 329878,
+    "completionTokens": 64515,
+    "cacheReadTokens": 93000,
+    "costUsd": 3.2036,
     "byModel": {
-      "claude-cli/claude-opus-5-5": 91
+      "claude-cli/claude-opus-5-5": 23
     },
     "byRole": {
       "editor": {
-        "calls": 1,
-        "in": 83607,
+        "calls": 2,
+        "in": 10194,
         "read": 0,
-        "out": 2210,
-        "usd": 0.713
-      },
-      "desk": {
-        "calls": 17,
-        "in": 113813,
-        "read": 140173,
-        "out": 66973,
-        "usd": 2.2779
+        "out": 1203,
+        "usd": 0.1056
       },
       "writer": {
-        "calls": 18,
-        "in": 205480,
-        "read": 187319,
-        "out": 76389,
-        "usd": 3.2087
+        "calls": 5,
+        "in": 65035,
+        "read": 34058,
+        "out": 21044,
+        "usd": 0.9479
+      },
+      "desk": {
+        "calls": 5,
+        "in": 39774,
+        "read": 50972,
+        "out": 24120,
+        "usd": 0.8108
       },
       "critic": {
-        "calls": 18,
-        "in": 183036,
-        "read": 55790,
-        "out": 46800,
-        "usd": 2.4113
-      },
-      "checker": {
-        "calls": 6,
-        "in": 45320,
-        "read": 0,
-        "out": 37348,
-        "usd": 1.1094
+        "calls": 5,
+        "in": 59252,
+        "read": 7970,
+        "out": 10830,
+        "usd": 0.6922
       },
       "vision": {
-        "calls": 31,
-        "in": 296971,
+        "calls": 6,
+        "in": 62623,
         "read": 0,
-        "out": 28644,
-        "usd": 2.9483
+        "out": 7318,
+        "usd": 0.6471
       }
     }
   },
   "log": [
-    "[07:32:46] image: dropped \"President Ronald Reagan meeting with Senior Staff and talking to Helen\" — dated 1981, an archival picture",
-    "[07:32:46] image: dropped \"Photograph of Socks the Cat Sitting Behind the President's Desk in the\" — dated 1994, an archival picture",
-    "[07:32:46] image: dropped \"President Richard Nixon Working at the Oval Office Desk - DPLA - 52612\" — dated 1970, an archival picture",
-    "[07:32:46] image: dropped \"President Ronald Reagan Having a Photo Op. in The Oval Office with Whi\" — dated 1983, an archival picture",
-    "[07:32:46] image: dropped \"President Bill Clinton meeting with staff in the Oval Office in the Wh\" — dated 1993, an archival picture",
-    "[07:32:46] image: dropped \"President Bill Clinton meeting with staff in the Oval Office in the Wh\" — dated 1993, an archival picture",
-    "[07:32:46] image: dropped \"President Bill Clinton meeting with staff in the Oval Office in the Wh\" — dated 1993, an archival picture",
-    "[07:33:06] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1427 in=13903 read=0 out=1655 attempt=1 ms=19708",
-    "[07:33:06] image: \"Programmer writing code with Unit Tests.jpg\" names the story's topic without saying its point (This is the closest fit: a programmer writing code, the engineering work that uses up AI tokens. The computer is an Apple machine and the person is seen from be); checked now and kept in reserve while the desk looks further",
-    "[07:33:18] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=976 in=7943 read=0 out=1077 attempt=1 ms=11697",
-    "[07:33:18] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Programmer writing code with Unit Tests.jpg\": The photo shows an anonymous programmer writing Java unit tests on a 2014-era iMac, not Apple's engineers or their AI to",
-    "[07:33:18] image: tier 4, the story's point and its subject: software engineers coding | programmers at computers | developers office laptops | software engineers United States | programmers office California | software developers (home: United States, USA, American, California, Cupertino)",
-    "[07:33:18] pexels \"software engineers coding\": 8 usable",
-    "[07:33:18] pexels \"programmers at computers\": 8 usable",
-    "[07:33:18] pexels \"programmers office California\": 8 usable",
-    "[07:33:18] pexels \"developers office laptops\": 8 usable",
-    "[07:33:18] pexels \"software developers\": 8 usable",
-    "[07:33:18] commons \"software engineers coding\": 6 usable of 24",
-    "[07:33:18] image: dropped \"Chromatic (programmer) in 2016.jpg\" — names too little of software, engineers, coding",
-    "[07:33:18] image: dropped \"Atmega8 programmer box1.jpg\" — names too little of software, engineers, coding",
-    "[07:33:18] image: dropped \"Dev with Nishpal Singh.jpg\" — names too little of software, engineers, coding",
-    "[07:33:18] image: dropped \"Chris Hecker - Game Developers Conference 2010.jpg\" — names too little of software, engineers, coding",
-    "[07:33:18] image: dropped \"Profi5 EEPROM programmer (40044097820).jpg\" — names too little of software, engineers, coding",
-    "[07:33:18] pexels \"software engineers United States\": 8 usable",
-    "[07:33:22] openverse \"programmers at computers\": 10 usable of 20",
-    "[07:33:22] openverse \"developers office laptops\": 10 usable of 20",
-    "[07:33:23] openverse \"software engineers coding\": 8 usable of 20",
-    "[07:33:23] image: dropped \"The Future of Code\" — names too little of software, engineers, coding",
-    "[07:33:23] image: dropped \"IBM's $10 Billion Machine\" — names too little of software, engineers, coding",
-    "[07:33:23] image: dropped \"Group of developers working together on a computer programming project\" — names too little of software, engineers, coding",
-    "[07:33:23] image: dropped \"BikanerEnggCollege.SakshamaGN09.Niyam - 072\" — names too little of software, engineers, coding",
-    "[07:33:23] image: dropped \"Close-up of colorful programming code displayed on a computer monitor \" — names too little of software, engineers, coding",
-    "[07:33:23] image: dropped \"DNA barcoding\" — names too little of software, engineers, coding",
-    "[07:33:23] image: dropped \"Andrea and the photographers\" — names too little of software, engineers, coding",
-    "[07:33:23] image: dropped \"Focused view of a computer screen displaying programming code with vis\" — names too little of software, engineers, coding",
-    "[07:33:23] image: dropped \"Andrea explaining the Barcode Wales - Beyond the Visible exhibition\" — names too little of software, engineers, coding",
-    "[07:33:23] image: dropped \"A coder intensely typing at a workstation in a contemporary office set\" — names too little of software, engineers, coding",
-    "[07:33:23] image: dropped \"BikanerEnggCollege.SakshamaGN09.Niyam - 051\" — names too little of software, engineers, coding",
-    "[07:33:23] commons \"programmers at computers\": 14 usable of 24",
-    "[07:33:23] image: dropped \"Informatics General programmer at terminal.jpg\" — dated 1983, an archival picture",
-    "[07:33:23] image: dropped \"Programmer Life (53479114103).jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[07:33:23] image: dropped \"WWDC 2011 Moscone West Interior.jpg\" — names too little of programmers, computers",
-    "[07:33:23] image: dropped \"Two male developers at desks programming in a modern office workspace \" — names too little of programmers, computers",
-    "[07:33:23] image: dropped \"A quantum computing primer by Scott Aaronson\" — names too little of programmers, computers",
-    "[07:33:23] image: dropped \"Two male developers working on laptops indoors, discussing code.\" — names too little of programmers, computers",
-    "[07:33:24] commons \"developers office laptops\": 0 usable of 0",
-    "[07:33:24] openverse \"software engineers United States\": 10 usable of 19",
-    "[07:33:24] openverse \"programmers office California\": 2 usable of 4",
-    "[07:33:25] commons \"developers office\": 13 usable of 24",
-    "[07:33:25] image: dropped \"Haardit Developers Head Office.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[07:33:25] image: dropped \"Bridge Global developers' bay, Apr 2019.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[07:33:25] image: dropped \"Bridge Global developers' bay-2, Apr 2019.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[07:33:25] image: dropped \"Bridge Global developers' bay-3, Apr 2019.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[07:33:25] image: dropped \"Office within the Unix System Laboratories building in Summit, New Jer\" — dated 1994, an archival picture",
-    "[07:33:25] image: dropped \"Hokkaido-Govt-Oshima-General-Office-01.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[07:33:25] openverse \"software developers\": 10 usable of 20",
-    "[07:33:26] commons \"software engineers United States\": 8 usable of 24",
-    "[07:33:26] image: dropped \"United States Army Corps of Engineers Survey Mark (Key Biscayne, Flori\" — soldiers or a patrol, and the story is not about the military",
-    "[07:33:26] image: dropped \"Exterior of the United States Capitol - 4.JPG\" — names too little of software, engineers",
-    "[07:33:26] image: dropped \"Exterior of the United States Capitol - 3.JPG\" — names too little of software, engineers",
-    "[07:33:26] image: dropped \"Exterior of the United States Capitol - 5.JPG\" — names too little of software, engineers",
-    "[07:33:26] image: dropped \"Exterior of the United States Capitol - 2.JPG\" — names too little of software, engineers",
-    "[07:33:26] image: dropped \"SpaceX Dragon Propulsive Descent Landing Test\" — names too little of software, engineers",
-    "[07:33:26] image: dropped \"SpaceX Dragon Propulsive Descent Landing Test\" — names too little of software, engineers",
-    "[07:33:26] image: dropped \"TGM-65K Maverick (Training version of AGM-65K?)\" — names too little of software, engineers",
-    "[07:33:26] image: dropped \"Close-up of colorful programming code displayed on a computer monitor \" — names too little of software, engineers",
-    "[07:33:26] image: dropped \"How Popular United States Industries Share Internet Traffic\" — names too little of software, engineers",
-    "[07:33:26] image: dropped \"Colorful lines of code on a computer screen showcasing programming and\" — names too little of software, engineers",
-    "[07:33:26] image: dropped \"20151210-OCIO-RBN-0324\" — names too little of software, engineers",
-    "[07:33:26] image: dropped \"A businesswoman coding at a standing desk with city views through larg\" — names too little of software, engineers",
-    "[07:33:26] image: dropped \"Hill Air Force Base, Utah\" — names too little of software, engineers",
-    "[07:33:26] image: dropped \"Iowa National Guard\" — names too little of software, engineers",
-    "[07:33:26] image: dropped \"Focused view of a computer screen displaying programming code with vis\" — names too little of software, engineers",
-    "[07:33:26] image: dropped \"P-TECH interns brief civilian and military senior leadership-April 10,\" — names too little of software, engineers",
-    "[07:33:26] image: dropped \"P-TECH interns brief civilian and military senior leadership-April 10,\" — names too little of software, engineers",
-    "[07:33:26] image: dropped \"P-TECH interns brief civilian and military senior leadership-April 10,\" — names too little of software, engineers",
-    "[07:33:26] commons \"programmers office California\": 0 usable of 0",
-    "[07:33:27] commons \"programmers office\": 13 usable of 24",
-    "[07:33:27] image: dropped \"LibreOffice Conference 2019, by Ismael Olea 057.jpg\" — an event's photograph, people and banners",
-    "[07:33:27] image: dropped \"Olympe and Flore Chauveau by Theophile Hamel, 1851-1852.jpg\" — names too little of programmers, office",
-    "[07:33:28] commons \"software developers\": 19 usable of 24",
-    "[07:33:28] image: dropped \"Wikimedia Conference Berlin - Developer meeting (7747).jpg\" — an event's photograph, people and banners",
-    "[07:33:28] image: dropped \"Wikimedia Conference Berlin - Developer meeting (7739).jpg\" — an event's photograph, people and banners",
-    "[07:33:28] image: dropped \"Constance Steinkuehler at the 2015 Game Developers Conference's 1Reaso\" — an event's photograph, people and banners",
-    "[07:33:28] image: dropped \"Close-up of colorful programming code displayed on a computer monitor \" — names too little of software, developers",
-    "[07:33:28] image: dropped \"Rosie the dog at Amazon.com, getting her pets from Yohan, SDE (Softwar\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[07:33:28] image: dropped \"Two men working in a modern office, one on a computer and the other on\" — names too little of software, developers",
-    "[07:33:28] image: dropped \"Open concept meeting spaces, fishbowl - glass meeting room, new office\" — an event's photograph, people and banners",
-    "[07:33:28] image: dropped \"NeXT Benelux Software Developer Conference invitation\" — an event's photograph, people and banners",
-    "[07:33:28] image: dropped \"Focused view of a computer screen displaying programming code with vis\" — names too little of software, developers",
-    "[07:33:28] image: dropped \"Close-up of a laptop screen displaying programming code with a cute pl\" — names too little of software, developers",
-    "[07:33:28] image: dropped \"Nonprofit Software Development Summit 2014\" — an event's photograph, people and banners",
-    "[07:33:28] image: dropped \"2013 Nonprofit Software Development Summit\" — an event's photograph, people and banners",
-    "[07:33:28] image: dropped \"Mariam and Uche, a statistician and a software developer in Lagos\" — taken in Nigeria, which the story does not name",
-    "[07:33:28] image: dropped \"Contest for young scientists and developers in Israel, 2015 (3).jpg\" — taken in Israel, which the story does not name",
-    "[07:33:28] image: dropped \"Contest for young scientists and developers in Israel, 2015 (2).jpg\" — taken in Israel, which the story does not name",
-    "[07:33:28] image: dropped \"Office International L'université Laval.jpg\" — taken in Canada, which the story does not name",
-    "[07:33:28] image: thumbnail HTTP 403 for https://live.staticflickr.com/5043/5307654241_1ca723e937_n.jpg",
-    "[07:33:37] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=529 in=11095 read=0 out=757 attempt=1 ms=8705",
-    "[07:33:37] image: \"A female engineer works on code in a contemporary office set\" names the story's topic without saying its point (Photo 2 is the only fitting frame: a professional photograph of an anonymous engineer writing code, the kind of work that uses the most AI tokens. It names the ); checked now and kept in reserve while the desk looks further",
-    "[07:33:49] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=833 in=7944 read=0 out=926 attempt=1 ms=11433",
-    "[07:33:49] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"A female engineer works on code in a contemporary office set\": An anonymous engineer writing code at a sharp, well-lit desk shows the coding work whose AI token costs Apple is capping",
-    "[07:33:49] image: thumbnail HTTP 403 for https://live.staticflickr.com/7262/7490905028_f00b62c34a_n.jpg",
-    "[07:33:49] image: thumbnail HTTP 403 for https://live.staticflickr.com/7085/7163493915_413ccae7c4_n.jpg",
-    "[07:33:59] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=635 in=10190 read=0 out=861 attempt=1 ms=9461",
-    "[07:33:59] image: \"Programmers.jpg\" names the story's topic without saying its point; kept beside the one the desk holds, and it looks further",
-    "[07:33:59] image: the company's own brand (Apple): Apple Store sign | Apple logo store | Apple Store",
-    "[07:34:00] pexels \"Apple logo store\": 8 usable",
-    "[07:34:00] pexels \"Apple Store\": 8 usable",
-    "[07:34:00] pexels \"Apple Store sign\": 8 usable",
-    "[07:34:00] commons \"Apple Store sign\": 16 usable of 24",
-    "[07:34:09] openverse \"Apple logo store\": 10 usable of 20",
-    "[07:34:10] openverse \"Apple Store sign\": 10 usable of 20",
-    "[07:34:10] image: dropped \"Transparent walls of modern company building with label icon against o\" — names too little of sign",
-    "[07:34:10] image: dropped \"mar01_002\" — names too little of sign",
-    "[07:34:10] image: dropped \"Lively scene outside McDonald's in the bustling New York City street, \" — names too little of sign",
-    "[07:34:10] image: dropped \"Green Scene display glass apple jar\" — names too little of sign",
-    "[07:34:10] image: dropped \"Vibrant red apples stacked at a market stall, showcasing freshness and\" — names too little of sign",
-    "[07:34:10] image: dropped \"GROCERY BAG FROM THOMAS DUX\" — names too little of sign",
-    "[07:34:10] image: dropped \"A customer examines smartphones in a modern İstanbul gadget store.\" — names too little of sign",
-    "[07:34:10] image: dropped \"mar01_004\" — names too little of sign",
-    "[07:34:10] image: dropped \"Mar01_010\" — names too little of sign",
-    "[07:34:10] image: dropped \"Close-up of fresh red and green apples neatly arranged on shelves, ide\" — names too little of sign",
-    "[07:34:10] image: dropped \"Mar01_011\" — names too little of sign",
-    "[07:34:10] image: dropped \"mar01_001\" — names too little of sign",
-    "[07:34:10] image: dropped \"mar01_005\" — names too little of sign",
-    "[07:34:10] commons \"Apple logo store\": 8 usable of 24",
-    "[07:34:10] image: dropped \"Apple park cupertino 2019.jpg\" — another frame of a series a published story runs",
-    "[07:34:10] image: dropped \"Transparent walls of modern company building with label icon against o\" — names too little of logo, store",
-    "[07:34:10] image: dropped \"Torley visits the Apple Store 03\" — an event's photograph, people and banners",
-    "[07:34:10] image: dropped \"Torley visits the Apple Store 01\" — an event's photograph, people and banners",
-    "[07:34:10] image: dropped \"Torley visits the Apple Store 02\" — an event's photograph, people and banners",
-    "[07:34:10] image: dropped \"Torley visits the Apple Store 11\" — an event's photograph, people and banners",
-    "[07:34:11] commons \"Apple Store\": 22 usable of 24",
-    "[07:34:11] image: 2 file(s) dropped for not naming Apple",
-    "[07:34:11] image: thumbnail HTTP 403 for https://live.staticflickr.com/5029/14031043893_32c86e5473_n.jpg",
-    "[07:34:11] openverse \"Apple Store\": 10 usable of 20",
-    "[07:34:18] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=356 in=11722 read=0 out=521 attempt=1 ms=6742",
-    "[07:34:18] image: vision rejected all candidates (None fits. 1 and 5 are logo graphics, and 1 also carries Google's brand. 2 is a wide retail crowd with no legible Apple brand, about shoppers rather than engineering costs. 3 is a protest moment that would mislead beside the headline. 4 is a mall directory dominated by other brands. 6 is a 2012 amateur iPhone shot: square, black-and-white and rotated sideways.)",
-    "[07:34:18] image: thumbnail HTTP 403 for https://live.staticflickr.com/2493/4111380748_62e181f9db_n.jpg",
-    "[07:34:31] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=819 in=9927 read=0 out=1055 attempt=1 ms=11875",
-    "[07:34:35] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=211 in=8072 read=0 out=283 attempt=1 ms=4667",
-    "[07:34:35] image: second check (claude-cli/claude-opus-5-5) RIGHT \"Apple Store\": Apple's current logo is the large, sharp, clearly legible subject on its own San Francisco store, which is the standard ",
-    "[07:34:35] published \"«أبل» تخفض سقف إنفاق فرق هندسية على الذكاء الاصطناعي إلى 200 دولار يومياً\" -> apple-cuts-engineers-daily-ai-budgets-ebe7e1",
-    "[07:35:35] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2376 in=8028 read=0 out=8096 attempt=1 ms=59315",
-    "[07:36:23] desk notes: 4 of 28 facts dropped (not in their source or copied from it)",
-    "[07:36:23] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2619 in=8040 read=0 out=5527 attempt=1 ms=48356",
-    "[07:37:42] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=6479 in=8255 read=17029 out=9532 attempt=1 ms=79376",
-    "[07:38:43] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2371 in=7868 read=0 out=8065 attempt=1 ms=60913",
-    "[07:38:43] evidence pair \"«أبل» تخفض سقف إنفاق فرق هندسية على الذكاء الاصطناعي إلى 200 دولار يومياً\": 0 proved error(s) live (v53), 1 with the kept lessons (v0); the private drafts are not published"
+    "[13:29:51] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[13:29:51] desk \"لماذا هبط النفط 8% بعد فوز الديمقراطيين بالكونغرس الأمريكي؟\": rewrote body",
+    "[13:29:51] checks explainer \"لماذا هبط النفط 8% بعد فوز الديمقراطيين بالكونغرس الأمريكي؟\": 468 words, 1 issues, 0 warnings",
+    "[13:30:31] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2494 in=21021 read=0 out=4300 attempt=1 ms=39982",
+    "[13:30:31] critic explainer: revise score=8 issues=6",
+    "[13:30:31]   · أرقام لا تظهر في المصادر: 90, 130, 94. احذف كل رقم غير مذكور في المصادر أو صحّحه.",
+    "[13:30:31]   · خطأ حقيقي (تشديد شرط مصدر): يقول صندوق «لماذا يهمّ» «ولن يتحول هذا الهبوط إلى وقود أرخص للمستهلكين قبل أن تتعافى صادرات المنتجات المكررة من مصافي الشرق الأوسط».",
+    "[13:30:31]   · خطأ حقيقي (تقرير لا يسنده مصدر): يجزم الاستهلال «لم يتغير عدد البراميل في السوق ذلك اليوم» بحقيقة عن معروض الأربعاء لا يذكرها أي مصدر. يتحدث المصدر 1 عن «التعاف",
+    "[13:30:31]   · تعريف غير دقيق: «يدفع مشتري العقود الآجلة اليوم ثمن براميل تُسلَّم بعد أسابيع». مشتري العقد الآجل لا يدفع الثمن اليوم، بل يتفق اليوم على سعر يدفعه عند التسليم، ",
+    "[13:31:19] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2744 in=12525 read=17029 out=5625 attempt=1 ms=47429",
+    "[13:32:10] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3388 in=5334 read=12743 out=6300 attempt=1 ms=51412",
+    "[13:32:10] desk model=claude-cli/claude-opus-5-5 applied=[lede,body] rejected=[]",
+    "[13:32:10] desk \"لماذا هبط النفط 8% بعد فوز الديمقراطيين بالكونغرس الأمريكي؟\": rewrote lede, body",
+    "[13:32:52] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2734 in=14928 read=7970 out=4474 attempt=1 ms=42257",
+    "[13:32:52] critic (second pass) explainer: revise score=9",
+    "[13:33:52] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3912 in=14171 read=17029 out=6903 attempt=1 ms=59034",
+    "[13:34:40] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3070 in=5444 read=12743 out=6159 attempt=1 ms=48535",
+    "[13:34:40] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,body] rejected=[]",
+    "[13:34:40] desk \"لماذا هبط النفط 8% بعد فوز الديمقراطيين بالكونغرس الأمريكي؟\": rewrote subtitle, body",
+    "[13:34:40] last desk pass for 1 fault(s): نسبة النقل الحرفي من مصدر عربي مرتفعة (23%). أعد صياغة كل جم",
+    "[13:35:18] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1779 in=5788 read=12743 out=4728 attempt=1 ms=38385",
+    "[13:35:43] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=976 in=5187 read=12743 out=3032 attempt=1 ms=24105",
+    "[13:35:43] desk: body refused again (a hedge was dropped («وتراجع المخزونات على غير المتوقع بهذا القدر يدفع السعر عادة »))",
+    "[13:35:43] desk model=claude-cli/claude-opus-5-5 applied=[] rejected=[body:a hedge was dropped («فمخزونات الخام الأمريكية تراجعت 5.27 مليون برميل في الأسبوع »)]",
+    "[13:35:43] last desk pass: still 1 fault(s)",
+    "[13:35:43] mend refused by the checks (نسبة النقل الحرفي من مصدر عربي مرتفعة (23%). أعد صياغة كل جم); the reviewed draft goes on",
+    "[13:35:54] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=821 in=9214 read=0 out=1038 attempt=1 ms=11804",
+    "[13:35:54] image: the picture should say: Traders stripped out the war-risk premium they had paid in advance, though the barrels at sea stayed the same.",
+    "[13:35:54] image: tier 1, the story's own place (none named): no search; categories: Oil tankers | Strait of Hormuz",
+    "[13:35:55] commons Category:Oil tankers: 5 usable of 48",
+    "[13:35:55] commons Category:Strait of Hormuz: 23 usable of 48",
+    "[13:35:55] image: dropped \"The Eisenhower Carrier Strike Group Transits the Strait of Hormuz (817\" — a warship or weapon, and the story is not about the military",
+    "[13:35:55] image: dropped \"Usv-escort-strait-of-hormuz.jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:35:55] image: dropped \"Fast-attack craft approaching an internationally flagged merchant vess\" — a warship or weapon, and the story is not about the military",
+    "[13:35:55] image: dropped \"Strait Of Hormuz Transit 230508-N-NH257-1076.jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:35:55] image: dropped \"USS Tempest (PC 2) transits the Strait of Hormuz. (50679762106).jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:35:55] image: dropped \"USS Essex (LHD 2), right, and USNS Wally Schirra (T-AKE 8) transit the\" — a warship or weapon, and the story is not about the military",
+    "[13:35:55] image: dropped \"171022-N-VR594-0093 (38245775971).jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:35:55] image: dropped \"171022-N-VR594-0004 (38245776261).jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:35:55] image: dropped \"140614-N-EI510-217 (14310331669).jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:35:55] image: dropped \"CVN 69 transits the Strait of Hormuz (28465403076).jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:35:55] image: dropped \"CG 56 transits the Strait of Hormuz (28465394986).jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:35:55] image: dropped \"CVN 69 transits the Strait of Hormuz (28465400856).jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:35:55] image: dropped \"HMS Middleton in the Strait of Hormuz (8315145316).jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:35:55] image: dropped \"USS New York (LPD 21) 150120-N-XG464-004 (15724165494).jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:35:55] image: dropped \"USS New York (LPD 21) 150120-N-XG464-036 (16320642216).jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:36:11] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1059 in=10174 read=0 out=1268 attempt=1 ms=14591",
+    "[13:36:11] image: \"Alaskan Navigator in Long Beach Harbor.jpg\" names the story's topic without saying its point (A Brent price story is pictured as crude at sea, and a tanker riding at anchor fits the point that the barrels stayed the same. Frame 2 shows the hull more clea); checked now and kept in reserve while the desk looks further",
+    "[13:36:20] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=716 in=7766 read=0 out=810 attempt=1 ms=9704",
+    "[13:36:20] image: second check (claude-cli/claude-opus-5-5) RECAPTION \"Alaskan Navigator in Long Beach Harbor.jpg\": A silhouetted oil tanker under a US flag fits a global Brent story that turns on US politics, but the caption names Long",
+    "[13:36:26] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=382 in=1133 read=0 out=412 attempt=1 ms=5184",
+    "[13:36:33] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=420 in=7750 read=0 out=500 attempt=1 ms=7322",
+    "[13:36:33] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Alaskan Navigator in Long Beach Harbor.jpg\": A crude tanker afloat pictures Brent as oil at sea, and its US flag and Long Beach location match the story's American a",
+    "[13:36:47] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=991 in=11577 read=0 out=1217 attempt=1 ms=13101",
+    "[13:36:47] image: \"Navigator SFO.jpg\" names the story's topic without saying its point; kept beside the one the desk holds, and it looks further",
+    "[13:36:47] image: tier 3, the writer's own subjects: oil tanker Strait of Hormuz | commodity traders trading floor | oil tanker at sea",
+    "[13:36:47] commons \"oil tanker Strait of Hormuz 2026\": 0 usable of 0",
+    "[13:36:47] commons \"oil tanker Strait of Hormuz\": 11 usable of 12",
+    "[13:36:47] image: dropped \"Flickr - DVIDSHUB - USS Porter damaged in collision with oil tanker (I\" — a warship or weapon, and the story is not about the military",
+    "[13:36:47] image: dropped \"Flickr - DVIDSHUB - USS Porter damaged in collision with oil tanker (I\" — a warship or weapon, and the story is not about the military",
+    "[13:36:47] image: dropped \"120812-N-XO436-116 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:36:47] image: dropped \"120812-N-XO436-093 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:36:47] image: dropped \"120812-N-XO436-314 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:36:47] image: dropped \"120812-N-XO436-114 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:36:48] commons \"commodity traders trading floor 2026\": 0 usable of 0",
+    "[13:36:49] commons \"commodity traders trading floor\": 1 usable of 5",
+    "[13:36:49] image: dropped \"Winnipeg (6408469941).jpg\" — names too little of commodity, traders, trading, floor",
+    "[13:36:50] commons \"oil tanker at sea 2026\": 8 usable of 12",
+    "[13:36:50] commons \"oil tanker at sea\": 10 usable of 12",
+    "[13:36:50] image: dropped \"Coast Guard Cutter Mohawk returns home from 60-day patrol after escort\" — soldiers or a patrol, and the story is not about the military",
+    "[13:36:50] image: dropped \"Coast Guard Cutter Mohawk returns home from 60-day patrol after escort\" — soldiers or a patrol, and the story is not about the military",
+    "[13:36:50] image: dropped \"Coast Guard Cutter Mohawk returns home from 60-day patrol after escort\" — soldiers or a patrol, and the story is not about the military",
+    "[13:36:50] image: dropped \"Coast Guard Cutter Mohawk returns home from 60-day patrol after escort\" — soldiers or a patrol, and the story is not about the military",
+    "[13:36:50] image: dropped \"Sailors and Marines board M-T Celestial Sea (9700459).jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[13:37:03] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1019 in=9561 read=0 out=1243 attempt=1 ms=12603",
+    "[13:37:03] image: \"Oil tankers, Tranmere Oil Terminal (geograph 4548088).jpg\" names the story's topic without saying its point; kept beside the one the desk holds, and it looks further",
+    "[13:37:03] image: tier 4, the story's point and its subject: oil futures traders screens | oil tanker at sea | tankers Strait of Hormuz | oil tanker | crude oil tanker sea | oil traders trading floor",
+    "[13:37:03] commons \"oil futures traders screens\": 0 usable of 0",
+    "[13:37:04] pexels \"oil tanker\": 8 usable",
+    "[13:37:04] pexels \"oil traders trading floor\": 8 usable",
+    "[13:37:04] pexels \"oil tanker at sea\": 8 usable",
+    "[13:37:04] pexels \"crude oil tanker sea\": 8 usable",
+    "[13:37:04] pexels \"tankers Strait of Hormuz\": 8 usable",
+    "[13:37:04] pexels \"oil futures traders screens\": 8 usable",
+    "[13:37:05] commons \"oil futures\": 3 usable of 24",
+    "[13:37:05] image: dropped \"Commissioner Michael Dunn, U.S. Commodity Futures Trading Commission (\" — shows michael, not the story's people",
+    "[13:37:05] image: dropped \"Commissioner Michael Dunn, U.S. Commodity Futures Trading Commission (\" — shows michael, not the story's people",
+    "[13:37:08] openverse \"oil futures traders screens\": 0 usable of 0",
+    "[13:37:17] openverse \"tankers Strait of Hormuz\": HTTP 504",
+    "[13:37:18] openverse \"oil tanker at sea\": HTTP 504",
+    "[13:37:22] openverse \"oil tanker\": HTTP 504",
+    "[13:37:22] openverse: 3 failures in a row; left alone for 10 minutes",
+    "[13:37:22] image: dropped \"A hand points to a financial graph on a digital screen, indicating mar\" — names too little of oil, futures, traders, screens",
+    "[13:37:22] image: dropped \"Close-up of a digital screen displaying stock trading graphs and crypt\" — names too little of oil, futures, traders, screens",
+    "[13:37:22] image: dropped \"Two business professionals analyzing financial data on multiple comput\" — names too little of oil, futures, traders, screens",
+    "[13:37:22] image: dropped \"A professional in an office analyzing financial charts on multiple mon\" — names too little of oil, futures, traders, screens",
+    "[13:37:22] image: dropped \"A man celebrates success at a multi-monitor workstation while analyzin\" — names too little of oil, futures, traders, screens",
+    "[13:37:23] commons \"oil tanker at sea\": 18 usable of 24",
+    "[13:37:23] image: dropped \"BARC carrying a fuel tanker approaches an oiler.jpg\" — dated 1967, an archival picture",
+    "[13:37:23] image: dropped \"Grootste tanker in Europoort, de Sea Spray aan de loskade, Bestanddeel\" — dated 1967, an archival picture",
+    "[13:37:23] commons \"tankers Strait of Hormuz\": 18 usable of 19",
+    "[13:37:23] image: dropped \"A port view of the guided missile frigate USS TAYLOR (FFG-50) as it pa\" — dated 1992, an archival picture",
+    "[13:37:23] image: dropped \"AFCENT tankers team up with NAVCENT fighters to execute mission over U\" — a warship or weapon, and the story is not about the military",
+    "[13:37:23] image: dropped \"AFCENT tankers team up with NAVCENT fighters to execute mission over U\" — a warship or weapon, and the story is not about the military",
+    "[13:37:23] image: dropped \"AFCENT tankers team up with NAVCENT fighters to execute mission over U\" — a warship or weapon, and the story is not about the military",
+    "[13:37:23] image: dropped \"Flickr - DVIDSHUB - USS Porter damaged in collision with oil tanker (I\" — a warship or weapon, and the story is not about the military",
+    "[13:37:23] image: dropped \"Flickr - DVIDSHUB - USS Porter damaged in collision with oil tanker (I\" — a warship or weapon, and the story is not about the military",
+    "[13:37:23] image: dropped \"Iranian naval forces board MT Wila, August 12, 2020.jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:37:23] image: dropped \"120812-N-XO436-116 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:37:23] image: dropped \"120812-N-XO436-093 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:37:23] image: dropped \"120812-N-XO436-314 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:37:23] image: dropped \"120812-N-XO436-152 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:37:23] image: dropped \"120812-N-XO436-114 USS Porter after collision.jpg\" — a warship or weapon, and the story is not about the military",
+    "[13:37:23] image: dropped \"Aerial shot of two cargo ships in Gibraltar waters with boats nearby, \" — names too little of tankers",
+    "[13:37:23] image: dropped \"A stunning aerial shot of a cargo ship navigating the Bosphorus Strait\" — names too little of tankers",
+    "[13:37:23] image: dropped \"Aerial view of a cargo ship navigating through the Bosphorus Strait in\" — names too little of tankers",
+    "[13:37:23] image: dropped \"Top-down view of cargo ship and tugboats in turquoise waters near Butt\" — names too little of tankers",
+    "[13:37:23] image: dropped \"Aerial shot of a red cargo ship navigating the Bosphorus Strait near I\" — names too little of tankers",
+    "[13:37:23] image: dropped \"Cargo ship navigates the Gibraltar Strait as the sun sets, scenic view\" — names too little of tankers",
+    "[13:37:24] commons \"oil tanker\": 20 usable of 24",
+    "[13:37:24] image: dropped \"Britannica Ship, Oil-Tank Steamer.jpg\" — dated 1911, an archival picture",
+    "[13:37:24] commons \"crude oil tanker sea\": 14 usable of 24",
+    "[13:37:24] image: dropped \"Coast Guard Cutter Mohawk returns home from 60-day patrol after escort\" — soldiers or a patrol, and the story is not about the military",
+    "[13:37:24] image: dropped \"Coast Guard Cutter Mohawk returns home from 60-day patrol after escort\" — soldiers or a patrol, and the story is not about the military",
+    "[13:37:24] image: dropped \"Coast Guard Cutter Mohawk returns home from 60-day patrol after escort\" — soldiers or a patrol, and the story is not about the military",
+    "[13:37:24] image: dropped \"Coast Guard Cutter Mohawk returns home from 60-day patrol after escort\" — soldiers or a patrol, and the story is not about the military",
+    "[13:37:24] image: dropped \"South Sea House - Portal.jpg\" — names too little of crude, oil, tanker, sea",
+    "[13:37:24] image: dropped \"Guanyin of the South Sea of Sanya.jpg\" — names too little of crude, oil, tanker, sea",
+    "[13:37:24] image: dropped \"Guanyin of the South Sea of Sanya 1.jpg\" — names too little of crude, oil, tanker, sea",
+    "[13:37:24] image: dropped \"Guanyin of the South Sea of Sanya, China.jpg\" — names too little of crude, oil, tanker, sea",
+    "[13:37:24] image: dropped \"South Sea Island Museum item labelled 2015-835.d.JPG\" — names too little of crude, oil, tanker, sea",
+    "[13:37:24] image: dropped \"South Sea Islander Wall (2009).jpg\" — names too little of crude, oil, tanker, sea",
+    "[13:37:24] image: dropped \"Bright orange LNG carrier ship cruising through calm sea waters on a c\" — names too little of crude, oil, tanker, sea",
+    "[13:37:25] commons \"oil traders trading floor\": 0 usable of 0",
+    "[13:37:27] commons \"oil traders\": 18 usable of 24",
+    "[13:37:27] image: dropped \"Hunters and Traders by John Mix Stanley, c. 1860, oil on canvas, priva\" — dated 1860, an archival picture",
+    "[13:37:27] image: dropped \"A1 Houston Office Oil Traders on Monday.jpg\" — dated 2004, an archival picture",
+    "[13:37:27] image: dropped \"Fur Traders Descending the Missouri MET DT73.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[13:37:27] image: dropped \"WHITE TRADER Crude Oil Tanker, Bosphorus Strait, Istanbul, Turkiye (An\" — another frame of a series a published story runs",
+    "[13:37:27] image: dropped \"WHITE TRADER Crude Oil Tanker, Bosphorus Strait, Istanbul, Turkiye (An\" — another frame of a series a published story runs",
+    "[13:37:42] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1148 in=10173 read=0 out=1373 attempt=1 ms=15189",
+    "[13:37:42] image: \"A large red oil tanker named Bow Excellence docked at a harb\" names the story's topic without saying its point; kept beside the one the desk holds, and it looks further",
+    "[13:37:51] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=550 in=11322 read=0 out=766 attempt=1 ms=8065",
+    "[13:37:51] image: \"Oil tankers, Tranmere Oil Terminal (geograph 4548088).jpg\" names the story's topic without saying its point; kept beside the one the desk holds, and it looks further",
+    "[13:38:07] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1181 in=9816 read=0 out=1451 attempt=1 ms=16614",
+    "[13:38:07] image: of 4 photographs of the story's topic, \"Navigator SFO.jpg\" is chosen over the one held",
+    "[13:38:15] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=625 in=7787 read=0 out=746 attempt=1 ms=7798",
+    "[13:38:15] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Navigator SFO.jpg\": The Golden Gate Bridge dominates the frame and places this tanker in San Francisco, a domestic Alaskan-crude scene the s",
+    "[13:38:15] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"Alaskan Navigator in Long Beach Harbor.jpg\"",
+    "[13:38:15] published explainer \"لماذا هبط النفط 8% بعد فوز الديمقراطيين بالكونغرس الأمريكي؟\" -> why-oil-fell-8-percent-after-democrats-won-congress-f3a65b"
   ]
 }
