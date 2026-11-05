@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The picture desk, tested on cases whose right answer is known (94 checks), with scripted stand-ins for Claude, Wikimedia Commons,
+ * The picture desk, tested on cases whose right answer is known (160 checks), with scripted stand-ins for Claude, Wikimedia Commons,
  * the other libraries and the thumbnails: no model call, no network. Written 2026-09-28 after the owner asked for the
  * image engine to be stress-tested ("it might still be buggy"), so that the cascade's order, its place filter, the
  * repeat guard, its behaviour when a service fails, and the reading of accented names cannot regress unseen. The gate
@@ -8,7 +8,7 @@
  *
  *   node scripts/images-selftest.mjs
  */
-import { withStandIns, pickImage, headlinePeople, headlineCompany, namesCompany, namesPerson, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, noveltyFault, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { withStandIns, pickImage, headlinePeople, headlineCompany, namesCompany, namesPerson, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, noveltyFault, groundedClaimant, stampedSource, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
 import { createHash } from "node:crypto";
 import { photoKey, sharedPhotos } from "../pipeline/lib/photo-key.mjs";
 import { BAD_TITLE, badTitle, cleanArtist, creditName, attributionLine, searchCommons } from "../pipeline/lib/commons.mjs";
@@ -1226,6 +1226,76 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   check("a date market under a story about dates stays", noveltyFault(souq, dates), null);
   check("an everyday market of many goods is not folklore («Shorja market»)", noveltyFault({ title: "Shoppers at Shorja market, Baghdad, 2024" }, gdp), null);
   check("«المستمر» is not dates", noveltyFault(souq, { ...gdp, lede: "مع النمو المستمر للأنشطة غير النفطية" }) !== null, true);
+}
+
+// An armed group's claim with nothing of what it hit to show: its spokesman, as the desks run him, the last picture before
+// text (the owner, 2026-11-05: "what if what it hits is not available? then maybe use the spokesperson?"); and never a
+// photograph with another's stamp on it ("i do not want pictures to have other agencies logos on it or logos like getty
+// image etc").
+{
+  const houthi = {
+    ...developers,
+    title: "الحوثيون يعلنون استهداف منشآت نفطية في رأس تنورة",
+    subtitle: "أرامكو لم تعلق على الإعلان",
+    lede: "قال المتحدث العسكري باسم الحوثيين يحيى سريع إن الجماعة استهدفت منشآت نفطية في رأس تنورة.",
+    tags: ["السعودية", "الحوثيون", "النفط"],
+    regions: ["الخليج"],
+    section: "energy",
+  };
+  const saree = { name: "Yahya Saree", ar: "يحيى سريع", headline: "الحوثيون" };
+  check("the spokesman the story names, beside a group its headline names, is the claimant", groundedClaimant(houthi, saree)?.name, "Yahya Saree");
+  check(
+    "a spokesman the story and its sources never name is not (he may have left the post); nor is one whose group the headline does not name",
+    [groundedClaimant({ ...houthi, lede: "أعلنت الجماعة استهداف منشآت نفطية." }, saree), groundedClaimant({ ...houthi, title: "أرامكو: منشآت رأس تنورة تعمل بصورة طبيعية" }, saree)],
+    [null, null],
+  );
+  check("his Latin name in a source counts; «سريع» as an adjective does not", [groundedClaimant({ ...houthi, lede: "أعلنت الجماعة الهجوم." }, saree, [{ text: "Houthi military spokesman Yahya Saree said the group fired drones." }])?.name, groundedClaimant({ ...houthi, lede: "أعلنت الجماعة الهجوم بعد ارتفاع سريع للتوتر." }, saree)], ["Yahya Saree", null]);
+  check(
+    "the agencies that stamp their photographs are read from a file's record",
+    [stampedSource({ categories: "CC-BY-4.0|Hossein Mohebi|Photos from Mehrnews.com" }), stampedSource({ categories: "2025 in Yemen|Photos from Tasnim News Agency" }), stampedSource({ categories: "Oil terminals in Saudi Arabia", artist: "Tester" })],
+    ["Mehrnews", "Tasnim", ""],
+  );
+  const stampedFile = { title: "2026. Yahya Saree.jpg", categories: "2025 in Yemen|Photos from Tasnim News Agency" };
+  const withSpokesman = photoRules({ draft: houthi, image: stampedFile, people: ["Yahya Saree"], known: ["Yahya Saree"], thumbnail: "data:image/jpeg;base64,AAAA", claimant: "Yahya Saree" });
+  const without = photoRules({ draft: houthi, image: { title: "Ras Tanura.jpg" }, thumbnail: "data:image/jpeg;base64,AAAA" });
+  check(
+    "the second check takes the spokesman only in his pass, refuses a stamp it sees, and is told to look for one on an agency's file",
+    [withSpokesman.includes("So is Yahya Saree"), withSpokesman.includes("an armed group's spokesman, commander or fighters"), without.includes("an armed group's spokesman, commander or fighters"), withSpokesman.includes("- WATERMARK:"), withSpokesman.includes("comes from Tasnim"), without.includes("comes from")],
+    [true, false, true, true, true, false],
+  );
+
+  const terminal = file("Ras Tanura oil terminal, Saudi Arabia.jpg", { categories: "Ras Tanura|Oil terminals in Saudi Arabia" });
+  const portrait = file("2026. Yahya Saree.jpg", { categories: "2025 in Yemen|Photos from Tasnim News Agency", date: "2026-05-02" });
+  const world = { "oil terminal Saudi Arabia": [terminal], "Yahya Saree 2026": [portrait], "Yahya Saree": [portrait] };
+  const plan = planFor({ queries: ["oil terminal Saudi Arabia"], place: ["Saudi Arabia"], claimant: saree });
+  const choose = (titles) => titles.findIndex((t) => t.includes("Ras Tanura") || t.includes("Saree")) + 1;
+  const hit = await scenario({ draft: houthi, plan, world, judge: choose, verify: () => "RIGHT" });
+  check("what the attack hit runs when it passes, and the spokesman is never searched", [hit.image?.title, hit.searched.some((q) => q.includes("Saree"))], [terminal.title, false]);
+  const refusedHit = (name) => (name.includes("Ras Tanura") ? "WRONG_SUBJECT" : "RIGHT");
+  const last = await scenario({ draft: houthi, plan, world, judge: choose, verify: refusedHit });
+  check(
+    "nothing of what it hit passes: the spokesman runs, marked as a file photo, and his check is told he is this pass's subject",
+    [last.image?.title, String(last.image?.alt ?? "").includes("أرشيفية"), last.verifyPrompts.some((p) => p.includes("File name: 2026. Yahya Saree.jpg") && p.includes("So is Yahya Saree")), last.judgePrompts.some((p) => p.includes("THE GROUP'S SPOKESMAN"))],
+    [portrait.title, true, true, true],
+  );
+  const unnamed = await scenario({ draft: { ...houthi, lede: "أعلنت الجماعة استهداف منشآت نفطية في رأس تنورة." }, plan, world, judge: choose, verify: refusedHit });
+  check("a spokesman the story does not name is never searched, and the story runs as text", [unnamed.image, unnamed.searched.some((q) => q.includes("Saree"))], [null, false]);
+
+  // A refusal for a stamp is a refusal for what the frame shows: the neutral last pass never offers it again.
+  const iran = { ...developers, title: "صادرات النفط الإيرانية ترتفع إلى 1.8 مليون برميل يومياً", tags: ["إيران", "النفط"], regions: ["المشرق وإيران وتركيا"], section: "energy" };
+  const stampedTanker = file("Oil tanker at Kharg island 2026.jpg", { categories: "Kharg Island|Photos from Tasnim News Agency" });
+  const r = await scenario({
+    draft: iran,
+    plan: planFor({ queries: ["oil tanker Iran"], place: ["Iran"] }),
+    world: { "oil tanker Iran": [stampedTanker], "oil tanker": [stampedTanker] },
+    judge: pickTitle("Kharg"),
+    verify: (name) => (name.includes("Kharg") ? "WATERMARK" : "RIGHT"),
+  });
+  check(
+    "a stamped frame is refused once and never offered again, and every judge is told no other name may be stamped on the picture",
+    [r.image, r.calls.filter((c) => c.startsWith("verify:")).length, r.judgePrompts.every((p) => p.includes("NO OTHER NAME STAMPED ON THE PICTURE"))],
+    [null, 1, true],
+  );
 }
 
 console.log(failed ?`\n${failed} check(s) FAILED` : "\nall checks passed");

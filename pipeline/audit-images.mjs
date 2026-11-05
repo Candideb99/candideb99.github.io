@@ -112,7 +112,7 @@ Categories: ${meta.categories || "(none)"}
 Date: ${meta.date || "(unknown)"}
 Caption the paper printed: ${a.alt}
 
-${photoRules({ draft, image: record, neutral: illustrative, thumbnail, lastResort: true, audit: true })}Return JSON: {"verdict":"RIGHT|GENERIC_OK|${illustrative ? "" : "RECAPTION|"}STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON|UNSERIOUS|STOCK${thumbnail ? "|AMATEUR|UNCLEAR" : ""}","people_in_photo":"<names the file, the description or the frame give, or none>","own_company":"<the company whose own news the headline is, when the frame shows its own brand or site, or none>","reason":"<one short English sentence>"}`;
+${photoRules({ draft, image: record, neutral: illustrative, thumbnail, lastResort: true, audit: true })}Return JSON: {"verdict":"RIGHT|GENERIC_OK|${illustrative ? "" : "RECAPTION|"}STALE_EVENT|WRONG_SUBJECT|WRONG_PERSON|UNSERIOUS|STOCK${thumbnail ? "|AMATEUR|UNCLEAR|WATERMARK" : ""}","people_in_photo":"<names the file, the description or the frame give, or none>","own_company":"<the company whose own news the headline is, when the frame shows its own brand or site, or none>","reason":"<one short English sentence>"}`;
   try {
     const { data, model } = await chat({ role: "critic", system: "You are a strict newspaper picture editor. Answer with one JSON object only.", user, images: thumbnail ? [thumbnail] : [], json: true, maxTokens: 300, temperature: 0, log: () => {} });
     let verdict = String(data.verdict ?? "").toUpperCase();
