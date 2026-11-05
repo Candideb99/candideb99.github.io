@@ -350,56 +350,66 @@
       "read": 4,
       "confirmedPerStory": 0.25,
       "photosPending": 0
+    },
+    {
+      "date": "2026-11-05",
+      "published": 11,
+      "news": 9,
+      "styleFaultsPerStory": 0,
+      "corrections": 0,
+      "read": 5,
+      "confirmedPerStory": 0,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-11-04T15:43:22.331Z",
+  "updatedAt": "2026-11-05T15:47:09.746Z",
   "week": {
-    "published": 99,
-    "news": 82,
+    "published": 96,
+    "news": 79,
     "revisedShare": 0.99,
-    "styleFaultsPerStory": 0.07,
-    "styleWarningsPerStory": 0.38,
-    "corrections": 13,
+    "styleFaultsPerStory": 0.06,
+    "styleWarningsPerStory": 0.34,
+    "corrections": 4,
     "usefulness": {
       "withLessons": {
-        "stories": 70,
-        "words": 462,
+        "stories": 68,
+        "words": 458,
         "keyFacts": 4.2
       },
       "control": {
-        "stories": 12,
-        "words": 437,
-        "keyFacts": 2.8
+        "stories": 11,
+        "words": 404,
+        "keyFacts": 2.3
       }
     },
     "precheck": {
-      "checked": 92,
-      "clean": 82,
-      "repaired": 10,
+      "checked": 89,
+      "clean": 80,
+      "repaired": 9,
       "held": 0,
-      "errorsFound": 11,
-      "unsourcedCut": 5,
+      "errorsFound": 10,
+      "unsourcedCut": 4,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 11,
+      "repairedBeforePublication": 10,
       "correctionsVerifiedClean": 2,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 1
     },
     "secondLook": {
-      "read": 42,
-      "clean": 26,
+      "read": 43,
+      "clean": 29,
       "corrected": 3,
       "stands": 1,
       "refused": 0,
-      "listed": 12,
+      "listed": 10,
       "unverifiable": 0,
       "confirmedPerStory": 0.14,
       "withLessons": {
-        "read": 32,
-        "confirmedPerStory": 0.16
+        "read": 33,
+        "confirmedPerStory": 0.15
       },
       "claudeWithout": {
         "read": 10,
@@ -409,10 +419,10 @@
     "runs": {
       "count": 24,
       "written": 48,
-      "refused": 2,
-      "callsPerStory": 26.3,
-      "tokensPerStory": 459435,
-      "costPerStory": 3.8,
+      "refused": 3,
+      "callsPerStory": 26,
+      "tokensPerStory": 466428,
+      "costPerStory": 3.86,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": [
@@ -436,31 +446,31 @@
     ]
   },
   "weekBefore": {
-    "published": 96,
+    "published": 97,
     "news": 82,
     "revisedShare": 1,
-    "styleFaultsPerStory": 0.06,
-    "styleWarningsPerStory": 0.57,
-    "corrections": 10,
+    "styleFaultsPerStory": 0.07,
+    "styleWarningsPerStory": 0.56,
+    "corrections": 19,
     "usefulness": {
       "withLessons": {
-        "stories": 66,
-        "words": 474,
-        "keyFacts": 4.6
+        "stories": 67,
+        "words": 464,
+        "keyFacts": 4.5
       },
       "control": {
-        "stories": 16,
-        "words": 499,
-        "keyFacts": 5.5
+        "stories": 15,
+        "words": 513,
+        "keyFacts": 5.3
       }
     },
     "precheck": {
-      "checked": 91,
-      "clean": 84,
+      "checked": 92,
+      "clean": 85,
       "repaired": 7,
       "held": 0,
       "errorsFound": 7,
-      "unsourcedCut": 0,
+      "unsourcedCut": 1,
       "heldTitles": []
     },
     "outcomes": {
@@ -471,21 +481,21 @@
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 34,
+      "read": 33,
       "clean": 22,
       "corrected": 4,
       "stands": 0,
       "refused": 0,
-      "listed": 8,
+      "listed": 7,
       "unverifiable": 0,
       "confirmedPerStory": 0.12,
       "withLessons": {
-        "read": 26,
+        "read": 24,
         "confirmedPerStory": 0.08
       },
       "claudeWithout": {
-        "read": 8,
-        "confirmedPerStory": 0.25
+        "read": 9,
+        "confirmedPerStory": 0.22
       }
     },
     "runs": {
@@ -509,9 +519,9 @@
     ]
   },
   "lessons": {
-    "version": 52,
+    "version": 53,
     "active": 10,
-    "learnedFrom": 235,
+    "learnedFrom": 237,
     "kept": null,
     "lastTest": {
       "at": "2026-11-02T15:40:49.741Z",
@@ -564,7 +574,7 @@
     }
   },
   "evidence": {
-    "pairs": 43,
+    "pairs": 45,
     "vsKept": {
       "n": 0,
       "better": 0,
