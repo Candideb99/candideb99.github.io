@@ -1,0 +1,494 @@
+{
+  "mode": "news",
+  "startedAt": "2026-11-04T23:46:28.552Z",
+  "durationSec": 2428,
+  "published": 2,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "وول ستريت تقفز بعد فوز الديمقراطيين بالكونغرس وداو جونز يحقق أكبر مكسب يومي منذ أبريل 2025",
+      "section": "markets",
+      "importance": 8,
+      "sources": [
+        "https://www.nytimes.com/2026/11/04/business/midterm-elections-stock-market.html",
+        "https://asharqbusiness.com/financial-markets/154491/%D8%A5%D8%BA%D9%84%D8%A7%D9%82-%D8%A7%D9%84%D8%A3%D8%B3%D9%87%D9%85-%D8%A7%D9%84%D8%A3%D9%85%D9%8A%D8%B1%D9%83%D9%8A%D8%A9-%D9%8A%D9%88%D9%85-4-%D9%86%D9%88%D9%81%D9%85%D8%A8%D8%B1-2026/",
+        "https://www.theguardian.com/business/2026/nov/04/us-dollar-slides-democrats-midterm-election-win-growth-fears",
+        "https://aawsat.com/node/5337573"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والفقرة الفرعية يحددان البلد والمؤشر (داو جونز) والحدث (سيطرة الديمقراطيين على الكونغرس) والتغير (قفزة تتجاوز 3% ومحو خسائر العقود الآجلة الليلية). الاستهلال يضيف أفضل يوم منذ أكثر من عام. ويبين المتن لاحقاً ما بقي دون تغيير، أي صلاحيات ترامب التنفيذية وحق النقض.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "تحمل المسودة سبب رهان الجمود (برايد، المصدر 2) ورد فعل المحللين والشركات. لكنها تغفل قناة النفط والحرب (المصدر 2: معارضة حرب إيران مددت هبوط النفط فدعمت الأسهم والسندات)، وتغفل آلية الحد من التوسع المالي التي تخفف الضغط على السندات. ويستنتج صندوق «لماذا يهمّ» كلفة على شركات الذكاء الاصطناعي تخالف ما تورده المصادر عن صعود الشركات العملاقة.",
+              "repair": "إضافة فقرة المحرك المسندة إلى المصدرين 2 و4. وإعادة بناء الصندوق: مقدماته صلاحيات ترامب التنفيذية وحق النقض وهبوط النفط مع توقعات تقليص الحرب، واستنتاجه مقيّد بشرط واحد صريح، دون تفاضل «الأقدر»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنصر الجديد في العنوان، أي القفزة بعد سيطرة الديمقراطيين، يُطوَّر مباشرة بعد الاستهلال: المؤشرات، ثم انقلاب العقود الآجلة، ثم رهان الجمود. لكن برنت معلّق في آخر فقرة الدولار بلا وظيفة. كما أن رأي براون وهوي عن حدود أثر الكونغرس منفصل عن رهان الجمود الذي يرد عليه، والفقرتان كلتاهما تحت عنوان «السندات والدولار والنفط».",
+              "repair": "نقل برنت إلى فقرة المحرك. وضع توقعات روبنر وليرنر ورأي براون وهوي تحت عنوان فرعي خاص بما بعد الانتخابات. وجعل الصندوق يضيف قناة لم يغلقها المتن بدل تكرار ما قاله براون وهوي."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة: داو 3.03% إلى 53356.12 من إغلاق 51786.72، والعائدان 4.918% و4.597%، وسبيس إكس 5.8% وتسلا 5.1% في التعاملات المبكرة. لكن الرسم يقدّم ناسداك «نحو 1.5%» رقماً دقيقاً، ويضع إلى جانبه إس آند بي 1.6% من مصدر آخر. وعبارة «الأقدر على تحريك الأسعار» في الصندوق تتجاوز ما قاله المصدر.",
+              "repair": "الإشارة إلى أن رقم ناسداك تقريبي في الرسم، وحذف التفاضل من الصندوق."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد (داو جونز، الأسهم الأمريكية) والحدث (سيطرة الديمقراطيين على الكونغرس) والرهان (كبح نهج ترامب). ويحدد المتن ما لم يتغير: فبراون (المصدر 4) وهوي (المصدر 3) يقولان إن ترامب يحتفظ بحق النقض وبأدوات التجارة والرسوم والسياسة الخارجية، وهذا يحد من دلالة الرهان المذكور في العنوان الفرعي دون أن يناقضه.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "تحمل المسودة التفسيرات الثلاثة التي تقدمها المصادر. السبب: رهان الجمود وكبح ترامب (المصادر 2 و3 و4)، وقناة النفط وحرب إيران التي دعمت الأسهم والسندات (المصدر 2)، وآلية الحد من التوسع المالي. انقلاب العقود الآجلة: مخاوف الذكاء الاصطناعي ثم لهجة ترامب التصالحية والأسواق الأوروبية (المصدر 3). ردود الفعل: الشركات العملاقة والطاقة النظيفة والدفاع وشركات ماسك. الصندوق يأخذ مقدماته من هبوط النفط بتوقع تهدئة الحرب ومن صلاحيات ترامب وحق النقض، ويستنتج بشرط صريح واحد أن جانباً من الدعم قد يزول إن لم تقرر الإدارة التهدئة. استنتاجه متناسب ويضيف قناة لم يغلقها المتن.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "العنصر الجديد في العنوان، أي قفزة داو بعد سيطرة الديمقراطيين، يُطوَّر مباشرة بعد الاستهلال: اتساع الصعود، ثم رهان الكبح والجمود، ثم انقلاب العقود الآجلة، ثم قناة النفط والحرب. بعد ذلك تأتي الفقرات المرتبة تحت عناوين فرعية مطابقة لمحتواها، ومنها «ما بعد الانتخابات» لتوقعات روبنر وليرنر وحدود الأثر عند براون وهوي. انتقل برنت إلى فقرة المحرك ولم يعد معلّقاً بفقرة الدولار.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: داو 3.03% إلى 53356.12 من 51786.72 (المصدر 5)، وإس آند بي 1.6% (المصدر 2)، وناسداك «نحو 1.5%» معلَّمة تقريبية في الرسم، والعائدان 4.918% و4.597% (المصدر 3)، وتراجعا سبيس إكس وتسلا موقوتان بالتعاملات المبكرة. الخلل الوحيد عبارة «الأكثر تضرراً» عن شركات ماسك، إذ يورد المصدر 4 هبوطاً أشد لسهم «ترمب ميديا» بلغ 11%.",
+              "repair": "حذف صيغة التفضيل وإضافة هبوط «ترمب ميديا» 11%، أكبر تراجع له منذ 10 أغسطس، منسوباً إلى المصدر 4."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 2,
+      "mendIssues": [
+        "خطأ: «وكانت شركات إيلون ماسك الأكثر تضرراً» صيغة تفضيل لا يسندها أي مصدر. فالمصدر 4 نفسه يورد أن سهم «ترمب ميديا»، الشركة الأم لمنصة التواصل الاجتماعي التابعة للرئيس، هوى 11% مسجلاً أكبر تراجع له منذ 10 أغسطس، وهذا أشد من تراجع سبيس إكس (5.8%) وتسلا (5.1%). ويجعل المصدر 4 الضغوط على «شركات ماسك وترمب» معاً عنوانه. الإصلاح: «وتعرضت الشركات المرتبطة بالرئيس وحليفه إيلون ماسك لضغوط، فهوى سهم «ترمب ميديا»، الشركة الأم لمنصة التواصل الاجتماعي التابعة لترامب، 11% في أكبر تراجع له منذ 10 أغسطس، وتراجع سهم «سبيس إكس» 5.8% في التعاملات المبكرة…»، ثم يبقى باقي الفقرة كما هو.",
+        "الأرقام مطابقة للمصادر: داو 3.03% إلى 53356.12 من 51786.72 (المصدر 5)، وإس آند بي 1.6% (المصدر 2)، وناسداك «نحو 1.5%» معلَّمة تقريبية في الرسم، والعائدان 4.918% و4.597% (المصدر 3)، وتراجعا سبيس إكس وتسلا موقوتان بالتعاملات المبكرة. الخلل الوحيد عبارة «الأكثر تضرراً» عن شركات ماسك، إذ يورد المصدر 4 هبوطاً أشد لسهم «ترمب ميديا» بلغ 11%. — حذف صيغة التفضيل وإضافة هبوط «ترمب ميديا» 11%، أكبر تراجع له منذ 10 أغسطس، منسوباً إلى المصدر 4."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "سيطرة الديمقراطيين التي أبرزت معارضة حرب إيران مددت هبوط النفط، فهبط برنت بنحو 10% إلى ما دون 100 دولار، ما ساعد في دفع الأسهم والسندات إلى مكاسب كبيرة.",
+          "source": 2
+        },
+        {
+          "fact": "تعرضت أسهم الصناعات الدفاعية لضغوط وسط توقعات بأن تقلص التطورات السياسية حدة الحرب مع إيران.",
+          "source": 4
+        },
+        {
+          "fact": "قال تاي هوي إن ترامب لا يزال قادراً على التأثير في الأسواق عبر التجارة والرسوم الجمركية والسياسة الخارجية واللوائح القائمة.",
+          "source": 3
+        },
+        {
+          "fact": "قال ستيفن براون إن الديمقراطيين يفتقرون إلى أغلبية تتجاوز التعطيل في الشيوخ وإن ترامب يحتفظ بحق النقض.",
+          "source": 4
+        }
+      ],
+      "slug": "dow-jumps-democrats-win-congress-cbd5a8",
+      "title": "داو جونز يقفز أكثر من 3% بعد سيطرة الديمقراطيين على الكونغرس",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "قطر تتجه لتصبح أكبر مشترٍ للغاز المسال الأمريكي بحلول 2033",
+      "section": "energy",
+      "importance": 7,
+      "sources": [
+        "https://www.ft.com/content/88e46724-0bd4-451a-b02b-f5709c9771b7?syn-25a6b1a6=1",
+        "https://oilprice.com/Energy/Natural-Gas/Qatar-Becomes-Largest-Buyer-of-US-LNG-Amid-Hormuz-Crisis.html",
+        "https://tejaratnews.com/%d9%82%d8%b7%d8%b1-%d8%aa%d8%a7-%d8%b3%d8%a7%d9%84-%db%b2%db%b0%db%b3%db%b3-%d8%a8%d9%87-%d8%a8%d8%b2%d8%b1%da%af%d8%aa%d8%b1%db%8c%d9%86-%d8%ae%d8%b1%db%8c%d8%af%d8%a7%d8%b1-%da%af%d8%a7"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد والشركة («قطر للطاقة») والحدث، وهو التحول إلى أكبر مشترٍ للغاز الأمريكي بحلول 2033. ويوضح العنوان الفرعي القيد الحاسم: الشحنات تبدأ في 2030 و2031 ولا تعالج تعطل هرمز الحالي. والمقدمة تبيّن أن الغاز أمريكي، فلا يحتاج «تشينير» و«وودسايد» إلى تعريف إضافي في الواجهة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الدافع، وهو تعطل هرمز وهجمات مارس والقوة القاهرة، مذكور ومسند. ومسار إعادة البيع بعيداً عن المضيق موجود (SOURCE 3). لكن مكوّن الرقم 23.7 مليون طن، أي حصة «غولدن باس»، منفصل عن الرقم. ويقدّم الصندوق استنتاج «العقود نفسها» الذي لا تسنده المقدمات.",
+              "repair": "يُجمع شرح الرقم 23.7 مع مكوّناته بعد المقدمة، ويُعاد بناء الصندوق على «الالتزامات المستقبلية» كما في SOURCE 3."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يقول العنوان إن الجديد هو صدارة المشترين بحلول 2033، لكن عناصر هذا الادعاء موزعة على المقدمة والفقرتين الأولى والثالثة، وتتوسطها فقرة تقرأ الجدول. وتكرار «لا تقدمان حلاً» يعيد ما قاله العنوان الفرعي. وتأتي الجملة الأخيرة «وقال الكعبي إن قطر مستعدة...» فقرة يتيمة.",
+              "repair": "تُجمع فقرة «أكبر مشترٍ» بعد المقدمة، وتُختصر فقرة الجدول، ويُحذف التكرار. وتُدمج جملة الاستعداد لاستئناف العمليات في فقرة تصريحات سبتمبر مع ذكر توقيتها."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والتواريخ مطابقة. لكن وسم «خسارة الإيرادات السنوية المقدّرة منذ مارس» يحوّل تقديراً سنوياً أُعلن في مارس إلى خسارة متراكمة. وعبارة «بحسب إرنا» تغطي جملة نصفها من «أويل برايس». وتصريح الاستعداد لاستئناف العمليات يعود إلى سبتمبر، ولا يحدده النص.",
+              "repair": "«خسارة إيرادات سنوية تُقدَّر بـ20 مليار دولار (تقدير مارس)»، مع فصل الإسنادين، و«وقال الكعبي في المنتدى نفسه إن...»."
+            }
+          }
+        }
+      ],
+      "outcome": "rejected after revision: ورد اسم «إرنا» أول مرة بلا صفته؛ اكتب أول ذكر له: وكالة الأنباء الإيرانية الرسمية (إرنا)."
+    },
+    {
+      "headline": "الصندوق السعودي للتنمية يموّل مشاريع في سوريا بأكثر من 403 ملايين دولار",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://asharqbusiness.com/companies/154531/%D9%82%D8%B1%D9%88%D8%B6-%D9%85%D9%8A%D8%B3%D8%B1%D8%A9-%D9%85%D9%86-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-%D8%A5%D9%84%D9%89-%D8%B3%D9%88%D8%B1%D9%8A%D8%A7-%D8%A8%D8%A3%D9%83%D8%AB%D8%B1-%D9%85%D9%86-403-%D9%85%D9%84%D8%A7%D9%8A%D9%8A%D9%86-%D8%AF%D9%88%D9%84%D8%A7%D8%B1/",
+        "https://www.aleqt.com/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1/%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-%D8%AA%D9%85%D9%88%D9%84-%D9%85%D8%B4%D8%B1%D9%88%D8%B9%D8%A7%D8%AA-%D8%AA%D9%86%D9%85%D9%88%D9%8A%D8%A9-%D9%81%D9%8A-%D8%B3%D9%88%D8%B1%D9%8A%D8%A9-%D8%A8%D8%A3%D9%83%D8%AB%D8%B1-%D9%85%D9%86-403-%D9%85%D9%84%D8%A7%D9%8A%D9%8A%D9%86-%D8%AF%D9%88%D9%84%D8%A7%D8%B1-16092"
+      ],
+      "format": "short",
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التمهيدي يحددان البلدين والجهة: صندوق سعودي يقرض سوريا أكثر من 403 ملايين دولار، والسطر التمهيدي يضيف أكبر حصة (105 ملايين لمراكز الدفاع المدني). وصف القروض بأنها «تنموية ميسّرة» يرد في المقدمة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يورد المقال الخطوة التالية من المصدر 1، وهي حزمة 1.5 مليار دولار، والسياق السابق من المصدر 2، وهو منحتا سبتمبر 2025. لكنه يُغفل مناسبة التوقيع، أي زيارة الشرع وحضور ولي العهد (المصدران 1 و2). ويُغفل أيضاً المستفيدين من البنود الكبرى: 5 ملايين نسمة من محطة حلب، و10 آلاف وحدة سكنية، وأكثر من 7 ملايين نسمة من مراكز الدفاع المدني. لا يذكر أي مصدر سبباً أو رد فعل آخر.",
+              "repair": "إضافة المناسبة إلى المقدمة، وإضافة البنود الكبرى مع عدد المستفيدين من كل منها، بلا أي إضافة من خارج المصادر."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "السطر التمهيدي يقدّم خدمات الطوارئ بوصفها الحصة الأكبر، لكن الجسم يقفز من الموقّعين إلى بند المياه، ثم يجمع في فقرة واحدة التحول الرقمي والمشروع الصحي. يتبع الجسم ترتيب الملاحظات لا سؤال القارئ عن توزيع المبلغ.",
+              "repair": "ترتيب الجسم كالآتي: المقدمة بزمنها ومناسبتها، ثم فقرة توزيع المبلغ من الأكبر إلى الأصغر، ثم المياه والتحول الرقمي، ثم تصريح برنية عن حزمة 1.5 مليار والخطوة التالية، ثم المنحتان السابقتان، ضمن حدود 250 كلمة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام الواردة صحيحة: 403 ملايين، 6 اتفاقيات، 30 مليوناً و300 ألف عداد و1.5 مليون نسمة، 18 مليوناً، سبتمبر 2025 وثلاثة أشهر. لكن عبارة «هذه الحزمة هي الأولى» تنقل تصريح أكتوبر إلى حزمة اليوم، والمقدمة تخلو من تاريخ التوقيع (الأربعاء).",
+              "repair": "صياغة تصريح برنية بزمنه المستقبلي كما في المصدر 1، وإضافة يوم الأربعاء إلى المقدمة."
+            }
+          }
+        }
+      ],
+      "outcome": "rejected after revision: عبارة مترجمة أو حشو: «يقوم ب»؛ الفعل نفسه («زار» لا «قام بزيارة»)."
+    },
+    {
+      "headline": "«تعزيز» تجمع 1.39 مليار دولار لمشروعين في الرويس بتغطية فائضة",
+      "section": "companies",
+      "importance": 6,
+      "sources": [
+        "https://economymiddleeast.com/news/taziz-closes-1-39-billion-financing-for-two-strategic-projects-in-ruwais/",
+        "https://www.thenationalnews.com/business/2026/11/04/abu-dhabis-taziz-raises-139bn-for-two-ruwais-projects/",
+        "https://www.snabusiness.com/article/1902664-%D8%AA%D8%B9%D8%B2%D9%8A%D8%B2-%D8%AA%D8%B3%D8%AA%D9%83%D9%85%D9%84-%D8%AA%D9%85%D9%88%D9%8A%D9%84%D8%A7-%D8%A85-1-%D9%85%D9%84%D9%8A%D8%A7%D8%B1-%D8%AF%D8%B1%D9%87%D9%85-%D9%84%D9%85%D8%B4%D8%B1%D9%88%D8%B9%D9%8A%D9%86-%D8%A7%D9%84%D8%B1%D9%88%D9%8A%D8%B3"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد («الإماراتية») ونشاط الشركة (الكيماويات) ونوع المشروعين (محطة تصدير ومصنع أمونيا في الرويس). لكن عبارة «بتغطية فائضة» نقل حرفي، والعنوان يخلو من المكان.",
+              "repair": "«تعزيز» الإماراتية للكيماويات تجمع 1.39 مليار دولار لمشروعين في الرويس وسط طلب فاق المستهدف"
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "المسودة تحمل ما توفره المصادر من سياق: تمويل الميثانول في أبريل (المصدر 1 والمصدر 3)، ودور المحطة بوابةً للتصدير، ونسب إنجاز الأعمال، وخطة أدنوك، وطاقة المرحلة الأولى حتى نهاية 2028، والأثر الاقتصادي المتوقع منسوباً إلى الشركة. أما «لماذا يهمّ» فيبني على مقدمتين موثقتين، هما صيغة التمويل دون حق الرجوع ودور المحطة بوابةً للتصدير. ويستنتج منهما انتقال جزء من المخاطر إلى المقرضين، واحتمال أن يؤخر أي تأخر في المحطة وصول إنتاج الرويس إلى الأسواق، وهذا استنتاج مشروط ومتناسب.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الجديد في العنوان هو تجاوز الطلبات للمستهدف. يتناوله المتن مباشرة بعد المقدمة، ثم في تصريح فيركويين. بعد ذلك تُجمع وقائع كل مشروع في كتلة واحدة، وهذا بناء واضح. لكن الفقرة الأولى من المتن تفتتح بمديح الشركة لنفسها، وجملة الكندي تعيد المديح وتكرر الحصيلة التراكمية المذكورة في العنوان الفرعي.",
+              "repair": "حذف جملة البيان عن الثقة، والابتداء بتوزع البنوك على الصفقتين، ودمج الحصيلة التراكمية في موضع واحد."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والتحويلات صحيحة: 5.1 مليار درهم تعادل 1.39 مليار دولار، و3.41 و1.69 و826 مليون درهم، و12.44 مليار درهم تساوي 5.1 زائد 7.34. لكن صياغة «وإن بلوغها بشروط تمويلية تنافسية» تنسب إلى الحوشي أن المرحلة النهائية بُلغت، وهو كان يتحدث عن إتمام التمويل.",
+              "repair": "«إن إتمام التمويل بشروط تنافسية يعكس الانضباط... وإنه سيدعم المرحلة النهائية من تنفيذ المنشأة»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان يحدد البلد («الإماراتية») ونشاط الشركة (الكيماويات) والمكان (الرويس) والمبلغ. والمقدمة توضح أنه إغلاق مالي فاقت فيه الطلبات المستهدف. لكن العنوان الفرعي يضع المحطة «ضمن المرحلة الأولى» بصياغة متعثرة ومن دون سند صريح.",
+              "repair": "«يغطي التمويل محطة لتخزين الكيماويات وتصديرها ومصنعاً للأمونيا بطاقة مليون طن سنوياً، في منطقة صناعية يُنتظر اكتمال مرحلتها الأولى نهاية 2028»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يحمل المتن ما توفره المصادر: الغرض من كل مشروع، وتمويل الميثانول في أبريل للمقارنة، والحصيلة التراكمية، ونسب الإنجاز، وطاقة المنطقة ومساهمتها المتوقعة منسوبة إلى الشركة. وفي «لماذا يهمّ» استدلال محدود: الدين دون حق الرجوع ينقل جزءاً من المخاطر إلى المقرضين، وتأخر المحطة قد يؤخر التصدير. وهو استدلال مقيّد بـ«قد»، مع أن مقارنة 70% بـ90% مذكورة في المتن أيضاً. الناقص هو شركاء مشروع الأمونيا ووصفه بأنه من أكبر منشآت المنطقة (المصادر 1 و2 و3).",
+              "repair": "إضافة شركاء مشروع الأمونيا ووصف حجمه في كتلته. ويمكن حذف «فهي أقرب إلى الاكتمال من المحطة» من المتن لأن الصندوق يستخدم المقارنة نفسها."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يقول إن الجديد جمع 1.39 مليار دولار لمشروعين، والمتن يطوّره مباشرة: توزع البنوك، ثم كتلة لكل مشروع، ثم الحصيلة والمرحلة الأولى. البناء واضح. لكن كتلة المحطة تعيد معنى «دون حق الرجوع» ثلاث مرات، وتختم بمديح «إقبال الممولين يعكس جودة المشروع».",
+              "repair": "الإبقاء على شرح «دون حق الرجوع» مرة واحدة، واختصار فقرة فيركويين إلى أن هذه الشروط تتيح المضي في الإنشاء، وحذف جملة المديح."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر: 5.1 مليار درهم (1.39 مليار دولار)، و3.41 مليار درهم منها 826 مليون تمويل إسلامي، و1.69 مليار درهم، و7.34 مليار درهم (ملياران) في أبريل، و12.44 مليار درهم (3.39 مليار دولار). ونسب الإنجاز نحو 70% وأكثر من 90%، والطاقات 1.8 و1 و1.9 ومجموعها 4.7 مليون طن، والمساهمة المتوقعة 50 مليار دولار و20 ألف وظيفة و6 آلاف. والتوقعات منسوبة إلى الشركة، واتفاق «ألفا ظبي» مصاغ هدفاً لا إنجازاً. خلايا الجدول صحيحة.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 9,
+      "mendIssues": [
+        "العنوان الفرعي ركيك ويحمل ادعاءً لا تصرّح به المصادر: «ضمن المرحلة الأولى من منطقة صناعية يُنتظر اكتمال هذه المرحلة منها نهاية 2028». عبارة «هذه المرحلة منها» تكرار متعثر. والمصادر 2 و3 تُدرج الأمونيا في إنتاج المرحلة الأولى، لكنها لا تقول إن مشروع المحطات جزء منها. الإصلاح: «يغطي التمويل محطة لتخزين الكيماويات وتصديرها ومصنعاً للأمونيا بطاقة مليون طن سنوياً، في منطقة صناعية يُنتظر اكتمال مرحلتها الأولى نهاية 2028».",
+        "معنى «دون حق الرجوع» يُروى ثلاث مرات في كتلة المحطة: في العنوان الفرعي «تمويل دون الرجوع على الشركاء»، ثم في الشرح «ويُمنح هذا التمويل دون حق الرجوع على المساهمين، أي أن المقرضين...»، ثم في إعادة صياغة كلام فيركويين «إن الحصول على تمويل طويل الأجل دون حق الرجوع على المساهمين، وبهذه الشروط، إنجاز مهم». الإصلاح: يبقى الشرح في موضعه الأول، وتُختصر فقرة فيركويين إلى مضمونها العملي: «وقال باس فيركويين، الرئيس التنفيذي لشركة «أدفاريو» (Advario) الشريكة في المشروع، إن هذه الشروط تتيح المضي في أعمال الإنشاء بثقة».",
+        "حشو بمديح الذات: «ورأى أن إقبال الممولين يعكس جودة المشروع». هذا رأي شريك في المشروع، لا يحمل رقماً ولا قراراً. الإصلاح: حذف الجملة.",
+        "اسم واحد لشيء واحد: العنوان الفرعي يقول «الرجوع على الشركاء»، والمتن يقول «الرجوع على المساهمين» (وهي صيغة المصدر 3). الإصلاح: توحيد العنوان الفرعي على «تمويل دون حق الرجوع على المساهمين» أو على صيغة قصيرة تستعمل الكلمة نفسها.",
+        "نقص في تعريف مشروع الأمونيا: كتلة المحطة تذكر شريكيها («أدنوك» و«أدفاريو ستار إنرجي»)، أما كتلة الأمونيا فتذكر «فيرتيغلوب» وحدها. والمصادر 1 و2 و3 تذكر أن المشروع مشترك بين «تعزيز» و«فيرتيغلوب» و«ميتسوي» و«جي إس إنرجي»، وأنه من أكبر منشآت الأمونيا في المنطقة. الإصلاح: «وتبلغ طاقة المنشأة، وهي مشروع مشترك بين «تعزيز» و«فيرتيغلوب» و«ميتسوي» و«جي إس إنرجي»، مليون طن سنوياً، ما يجعلها من أكبر منشآت الأمونيا في المنطقة».",
+        "المشكلات التسع المبلّغ عنها في المسودة السابقة عولجت كلها. صار تصريح الحوشي «إن إتمام التمويل بشروط تنافسية يعكس الانضباط... وإنه سيدعم المرحلة النهائية». وخلا العنوان من «بتغطية فائضة» وأصبح يذكر الرويس. وحُذف مديح البيان وجملة الثقة. وذُكرت الحصيلة التراكمية مرة واحدة بالعملتين. وحُذف شرح مصدر السداد من المتن. ووُصفت «ألفا ظبي» بأنها مجموعة استثمارية. وتفتتح الفقرة الأولى بتوزع البنوك على الصفقتين.",
+        "العنوان يحدد البلد («الإماراتية») ونشاط الشركة (الكيماويات) والمكان (الرويس) والمبلغ. والمقدمة توضح أنه إغلاق مالي فاقت فيه الطلبات المستهدف. لكن العنوان الفرعي يضع المحطة «ضمن المرحلة الأولى» بصياغة متعثرة ومن دون سند صريح. — «يغطي التمويل محطة لتخزين الكيماويات وتصديرها ومصنعاً للأمونيا بطاقة مليون طن سنوياً، في منطقة صناعية يُنتظر اكتمال مرحلتها الأولى نهاية 2028».",
+        "يحمل المتن ما توفره المصادر: الغرض من كل مشروع، وتمويل الميثانول في أبريل للمقارنة، والحصيلة التراكمية، ونسب الإنجاز، وطاقة المنطقة ومساهمتها المتوقعة منسوبة إلى الشركة. وفي «لماذا يهمّ» استدلال محدود: الدين دون حق الرجوع ينقل جزءاً من المخاطر إلى المقرضين، وتأخر المحطة قد يؤخر التصدير. وهو استدلال مقيّد بـ«قد»، مع أن مقارنة 70% بـ90% مذكورة في المتن أيضاً. الناقص هو شركاء مشروع الأمونيا ووصفه بأنه من أكبر منشآت المنطقة (المصادر 1 و2 و3). — إضافة شركاء مشروع الأمونيا ووصف حجمه في كتلته. ويمكن حذف «فهي أقرب إلى الاكتمال من المحطة» من المتن لأن الصندوق يستخدم المقارنة نفسها.",
+        "العنوان يقول إن الجديد جمع 1.39 مليار دولار لمشروعين، والمتن يطوّره مباشرة: توزع البنوك، ثم كتلة لكل مشروع، ثم الحصيلة والمرحلة الأولى. البناء واضح. لكن كتلة المحطة تعيد معنى «دون حق الرجوع» ثلاث مرات، وتختم بمديح «إقبال الممولين يعكس جودة المشروع». — الإبقاء على شرح «دون حق الرجوع» مرة واحدة، واختصار فقرة فيركويين إلى أن هذه الشروط تتيح المضي في الإنشاء، وحذف جملة المديح."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "شاركت تسعة بنوك إقليمية ودولية في تمويل مشروع المحطات بصيغة طويلة الأجل دون حق الرجوع على المساهمين",
+          "source": 1
+        },
+        {
+          "fact": "مشروع المحطات مشترك بين أدنوك وأدفاريو ستار إنرجي، وسيكون البوابة اللوجستية الرئيسية للمنطقة بتوفير سعة لتخزين الكيماويات السائلة وتصديرها",
+          "source": 2
+        },
+        {
+          "fact": "بلغ إنجاز أعمال الهندسة والمشتريات والإنشاءات نحو 70% في مشروع المحطات وأكثر من 90% في مشروع الأمونيا",
+          "source": 1
+        }
+      ],
+      "slug": "taziz-closes-financing-ruwais-terminal-ammonia-6f1e5a",
+      "title": "«تعزيز» الإماراتية للكيماويات تجمع 1.39 مليار دولار لمشروعين في الرويس",
+      "score": 8,
+      "image": "photo"
+    }
+  ],
+  "llm": {
+    "calls": 76,
+    "failures": 0,
+    "promptTokens": 1238871,
+    "completionTokens": 269099,
+    "cacheReadTokens": 414028,
+    "costUsd": 12.063,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 76
+    },
+    "byRole": {
+      "editor": {
+        "calls": 1,
+        "in": 84664,
+        "read": 0,
+        "out": 2204,
+        "usd": 0.7214
+      },
+      "desk": {
+        "calls": 22,
+        "in": 154353,
+        "read": 203888,
+        "out": 96662,
+        "usd": 3.2088
+      },
+      "writer": {
+        "calls": 17,
+        "in": 211080,
+        "read": 170290,
+        "out": 79422,
+        "usd": 3.311
+      },
+      "critic": {
+        "calls": 12,
+        "in": 147748,
+        "read": 39850,
+        "out": 43640,
+        "usd": 2.0627
+      },
+      "checker": {
+        "calls": 4,
+        "in": 42208,
+        "read": 0,
+        "out": 34185,
+        "usd": 1.0214
+      },
+      "vision": {
+        "calls": 20,
+        "in": 184790,
+        "read": 0,
+        "out": 12986,
+        "usd": 1.7377
+      }
+    }
+  },
+  "log": [
+    "[00:25:18] image: dropped \"Hansen Storage, South Water Street, Milwaukee\" — names too little of chemical, terminal, storage, tanks",
+    "[00:25:18] image: dropped \"Hansen Storage, South Water Street, Milwaukee\" — names too little of chemical, terminal, storage, tanks",
+    "[00:25:18] image: dropped \"Hansen Storage, South Water Street, Milwaukee\" — names too little of chemical, terminal, storage, tanks",
+    "[00:25:18] image: dropped \"Hansen Storage, South Water Street, Milwaukee\" — names too little of chemical, terminal, storage, tanks",
+    "[00:25:18] commons \"petrochemical plant UAE\": 0 usable of 0",
+    "[00:25:18] commons \"petrochemical plant\": 12 usable of 24",
+    "[00:25:18] image: dropped \"A stunning night aerial shot of a well-lit oil refinery in Rosemount, \" — names too little of petrochemical, plant",
+    "[00:25:18] image: dropped \"Aerial view of a large industrial oil refinery in Banten, Indonesia wi\" — names too little of petrochemical, plant",
+    "[00:25:18] image: dropped \"A detailed view of industrial pipelines in a Saudi Arabian factory set\" — names too little of petrochemical, plant",
+    "[00:25:18] image: dropped \"Aerial view of large industrial oil tanks in a desert setting with mou\" — names too little of petrochemical, plant",
+    "[00:25:18] image: dropped \"Skyline view of an industrial factory with tall chimneys against a cle\" — names too little of petrochemical, plant",
+    "[00:25:18] image: dropped \"Gnome Man Auditions for New Gig 0223100939\" — names too little of petrochemical, plant",
+    "[00:25:18] image: dropped \"Valero refinery, Port Arthur TX\" — names too little of petrochemical, plant",
+    "[00:25:19] commons \"Ruwais refinery UAE\": 0 usable of 0",
+    "[00:25:19] commons \"Ruwais refinery\": 2 usable of 12",
+    "[00:25:19] image: dropped \"ADNOC Refining Ruwais Site-187.jpg\" — another frame of a series a published story runs",
+    "[00:25:19] image: dropped \"Aerial view of an illuminated factory with chimneys at sunset, showcas\" — names too little of refinery",
+    "[00:25:19] image: dropped \"Skyline view of an industrial factory with tall chimneys against a cle\" — names too little of refinery",
+    "[00:25:19] image: dropped \"A striking view of an industrial facility in Zuid-Holland, illuminated\" — names too little of refinery",
+    "[00:25:20] commons \"ammonia plant\": 12 usable of 24",
+    "[00:25:20] image: dropped \"Model of a synthetic ammonia plant - DPLA - 43698425d87469dfa52fb6d2d7\" — dated 1928, an archival picture",
+    "[00:25:20] image: dropped \"Ammonia Oxidation Plant at Plum Brook Ordnance Works (GRC-2004-C-00105\" — dated 1943, an archival picture",
+    "[00:25:20] image: dropped \"Ammonia Oxidation Plant at Plum Brook Ordnance Works – June 1943 (grc-\" — dated 1943, an archival picture",
+    "[00:25:20] image: dropped \"A modern industrial refinery structure under a clear twilight sky in Z\" — taken in Netherlands, which the story does not name",
+    "[00:25:20] image: dropped \"Petrochemical plant - Norway.jpg\" — taken in Norway, which the story does not name",
+    "[00:25:20] image: dropped \"Tanks in bund.jpg\" — taken in United Kingdom, which the story does not name",
+    "[00:25:20] image: thumbnail HTTP 403 for https://live.staticflickr.com/4124/4977631391_742846c4a5_n.jpg",
+    "[00:25:22] image: thumbnail HTTP 403 for https://live.staticflickr.com/4147/4978241276_265602d632_n.jpg",
+    "[00:25:39] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1376 in=9977 read=0 out=1605 attempt=1 ms=17256",
+    "[00:25:39] image: \"Ineos petrochemical plant\" names the story's topic without saying its point (A close, clear view of a working chemical plant with storage tanks fits a story about a chemical export terminal and an ammonia plant. It is a generic sector sc); checked now and kept in reserve while the desk looks further",
+    "[00:25:45] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=379 in=7933 read=0 out=483 attempt=1 ms=5878",
+    "[00:25:45] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Ineos petrochemical plant\": The file identifies the plant as Ineos's, another company's site, which has no presence in the UAE, so it cannot stand i",
+    "[00:25:45] image: thumbnail HTTP 403 for https://live.staticflickr.com/6197/6092260088_1c00b95f4a_n.jpg",
+    "[00:25:59] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=881 in=9996 read=0 out=1079 attempt=1 ms=13229",
+    "[00:25:59] image: \"A large oil refinery complex next to the water with cloudy s\" names the story's topic without saying its point (This is the only candidate showing the story's own sector, a waterside refinery or petrochemical complex, with no place named, which is acceptable because nothi); checked now and kept in reserve while the desk looks further",
+    "[00:26:06] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=456 in=7860 read=0 out=563 attempt=1 ms=6923",
+    "[00:26:06] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"A large oil refinery complex next to the water with cloudy s\": The frame shows an unidentified oil refinery, a neighbouring sector and not TA'ZIZ's chemicals export terminal or ammoni",
+    "[00:26:06] image: the company's own brand (TA'ZIZ): TA'ZIZ sign | TA'ZIZ stand ADIPEC | TA'ZIZ Ruwais",
+    "[00:26:06] commons \"TA'ZIZ sign\": 0 usable of 0",
+    "[00:26:06] pexels \"TA'ZIZ Ruwais\": 8 usable",
+    "[00:26:07] pexels \"TA'ZIZ stand ADIPEC\": 8 usable",
+    "[00:26:07] pexels \"TA'ZIZ sign\": 8 usable",
+    "[00:26:07] openverse \"TA'ZIZ Ruwais\": 0 usable of 0",
+    "[00:26:07] openverse \"TA'ZIZ stand ADIPEC\": 0 usable of 0",
+    "[00:26:07] openverse \"TA'ZIZ sign\": 0 usable of 0",
+    "[00:26:08] openverse \"TA ZIZ Ruwais\": 0 usable of 0",
+    "[00:26:08] openverse \"TA ZIZ stand ADIPEC\": 0 usable of 0",
+    "[00:26:08] openverse \"TA ZIZ sign\": 0 usable of 0",
+    "[00:26:09] commons \"TA'ZIZ stand ADIPEC\": 0 usable of 0",
+    "[00:26:09] image: dropped \"Modern solar panel structures in Dubai showcasing renewable energy inn\" — names too little of stand",
+    "[00:26:09] image: dropped \"Stylishly dressed women at a vibrant fruit market capturing the essenc\" — names too little of stand",
+    "[00:26:09] image: dropped \"A modern dome structure with geometric patterns surrounded by visitors\" — names too little of stand",
+    "[00:26:09] image: dropped \"Black and white photo of a modern architectural roof with unique suppo\" — names too little of stand",
+    "[00:26:09] image: dropped \"Modern architectural design of the National Library in Doha, Qatar.\" — names too little of stand",
+    "[00:26:09] image: dropped \"Intricate modern ceiling design at the iconic Louvre Abu Dhabi museum.\" — names too little of stand",
+    "[00:26:09] commons \"TA'ZIZ Ruwais\": 0 usable of 0",
+    "[00:26:09] image: dropped \"Colorful breakfast spread with fresh dishes and drinks on a modern tab\" — names too little of ta'ziz, ruwais",
+    "[00:26:09] image: dropped \"A table setting featuring a fresh pizza, chocolate dessert, and a refr\" — names too little of ta'ziz, ruwais",
+    "[00:26:09] image: dropped \"Close-up of a person dining with pizza and cocktail indoors, capturing\" — names too little of ta'ziz, ruwais",
+    "[00:26:09] image: dropped \"Exterior view of a stylish Dubai restaurant with palm trees and sunset\" — names too little of ta'ziz, ruwais",
+    "[00:26:09] image: dropped \"Bright wooden bistro entrance in Cairo, Egypt showcasing distinct arch\" — names too little of ta'ziz, ruwais",
+    "[00:26:09] image: dropped \"A vibrant assortment of dishes and colorful drinks on a dining table.\" — names too little of ta'ziz, ruwais",
+    "[00:26:09] image: dropped \"A cozy outdoor cafe in Tunis with Mediterranean architecture and empty\" — names too little of ta'ziz, ruwais",
+    "[00:26:09] image: dropped \"Delicious assortment of colorful dishes in bowls with bread, perfect f\" — names too little of ta'ziz, ruwais",
+    "[00:26:09] image: 8 file(s) dropped for not naming TA'ZIZ",
+    "[00:26:09] image: no photograph of TA'ZIZ's brand",
+    "[00:26:09] image: the story's people first: Mashal Saoud Al Kindi 2026 | Mashal Saoud Al Kindi | مشعل سعود الكندي | مشعل الكندي",
+    "[00:26:09] commons \"Mashal Saoud Al Kindi 2026\": 0 usable of 0",
+    "[00:26:10] commons \"Mashal Saoud\": 0 usable of 0",
+    "[00:26:10] commons \"Mashal Saoud Al Kindi\": 0 usable of 0",
+    "[00:26:10] commons \"Mashal Saoud\": 0 usable of 0",
+    "[00:26:10] commons \"مشعل سعود الكندي\": 0 usable of 0",
+    "[00:26:11] commons \"مشعل سعود\": 1 usable of 11",
+    "[00:26:11] image: dropped \"Prince Faisal bin Mishal Al Saud Portrait 2026.jpg\" — shows faisal, not the story's people",
+    "[00:26:11] commons \"مشعل الكندي\": 0 usable of 0",
+    "[00:26:11] image: no photograph of the story's people",
+    "[00:26:13] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=0 in=2895 read=0 out=43 attempt=1 ms=2472",
+    "[00:26:13] image: last resort: chemical storage tank terminal United Arab Emirates | chemical storage tank terminal | chemical storage tank terminal industrial",
+    "[00:26:14] commons \"chemical storage tank terminal United Arab Emirates\": 0 usable of 0",
+    "[00:26:15] commons \"chemical storage\": 17 usable of 24",
+    "[00:26:15] commons \"chemical storage tank terminal\": 2 usable of 3",
+    "[00:26:15] commons \"chemical storage tank terminal industrial\": 0 usable of 0",
+    "[00:26:15] commons \"chemical storage\": 17 usable of 24",
+    "[00:26:15] image: dropped \"Storage tank at a chemical works, Clayton - geograph.org.uk - 3986118.\" — taken in United Kingdom, which the story does not name",
+    "[00:26:15] image: dropped \"Tanks in bund.jpg\" — taken in United Kingdom, which the story does not name",
+    "[00:26:21] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=87 in=10093 read=0 out=250 attempt=1 ms=3709",
+    "[00:26:21] image: vision rejected all candidates (fallback pass) (None fits. Photos 1-3 are amateur snapshots of the outside of a small chemical store on an Israeli farm. They are building fronts in a country the story does not concern and show nothing of Ruwais or a chemical terminal or ammonia plant. Photo 4 is an amateur close-up of a spill wall filled with murky green water beside a worn tank: unclear at a glance, unprofessional and unflattering.)",
+    "[00:26:21] image: last pass, a neutral illustration: petrochemical plant construction | industrial construction site | chemical terminal storage tanks | petrochemical plant | ammonia plant",
+    "[00:26:21] openverse \"chemical terminal storage tanks\": 7 usable of 8",
+    "[00:26:21] openverse \"petrochemical plant\": 10 usable of 20",
+    "[00:26:21] openverse \"ammonia plant\": 10 usable of 20",
+    "[00:26:21] pexels \"ammonia plant\": 8 usable",
+    "[00:26:21] pexels \"chemical terminal storage tanks\": 8 usable",
+    "[00:26:21] pexels \"industrial construction site\": 8 usable",
+    "[00:26:21] pexels \"petrochemical plant construction\": 8 usable",
+    "[00:26:21] pexels \"petrochemical plant\": 8 usable",
+    "[00:26:21] commons \"petrochemical plant construction\": 2 usable of 3",
+    "[00:26:21] image: dropped \"Petrochemical plant in Sarnia, 1961.jpg\" — dated 1961, an archival picture",
+    "[00:26:21] image: dropped \"Dust over the Persian Gulf (MODIS 2026-02-02).jpg\" — names too little of petrochemical, plant, construction",
+    "[00:26:26] openverse \"petrochemical plant construction\": 10 usable of 20",
+    "[00:26:26] image: dropped \"NoPetroPA-plastic-nurdles-public-domain-7793\" — names too little of petrochemical, plant, construction",
+    "[00:26:26] image: dropped \"NoPetroPA-plastic-nurdles-public-domain-7752\" — names too little of petrochemical, plant, construction",
+    "[00:26:26] image: dropped \"A detailed view of industrial pipelines in a Saudi Arabian factory set\" — names too little of petrochemical, plant, construction",
+    "[00:26:26] image: dropped \"NoPetroPA-plastic-nurdles-public-domain-7787\" — names too little of petrochemical, plant, construction",
+    "[00:26:26] image: dropped \"NoPetroPA-plastic-nurdles-public-domain-7751\" — names too little of petrochemical, plant, construction",
+    "[00:26:26] image: dropped \"NoPetroPA-plastic-nurdles-public-domain-7767\" — names too little of petrochemical, plant, construction",
+    "[00:26:26] image: dropped \"A detailed view of an industrial refinery featuring pipelines and larg\" — names too little of petrochemical, plant, construction",
+    "[00:26:26] image: dropped \"NoPetroPA-plastic-nurdles-public-domain-7762\" — names too little of petrochemical, plant, construction",
+    "[00:26:26] image: dropped \"Skyline view of an industrial factory with tall chimneys against a cle\" — names too little of petrochemical, plant, construction",
+    "[00:26:26] image: dropped \"NoPetroPA-plastic-nurdles-public-domain-7765\" — names too little of petrochemical, plant, construction",
+    "[00:26:26] image: dropped \"A detailed view of a refinery's towers against a cloudy dusk sky, show\" — names too little of petrochemical, plant, construction",
+    "[00:26:26] image: dropped \"NoPetroPA-plastic-nurdles-public-domain-7791\" — names too little of petrochemical, plant, construction",
+    "[00:26:26] image: dropped \"A large industrial refinery with pipes and towers under a clear blue s\" — names too little of petrochemical, plant, construction",
+    "[00:26:26] image: dropped \"NoPetroPA-plastic-nurdles-public-domain-7768\" — names too little of petrochemical, plant, construction",
+    "[00:26:26] image: dropped \"NoPetroPA-plastic-nurdles-public-domain-7778\" — names too little of petrochemical, plant, construction",
+    "[00:26:27] openverse \"industrial construction site\": 10 usable of 20",
+    "[00:26:27] commons \"industrial construction site\": 17 usable of 24",
+    "[00:26:27] image: dropped \"Aerial view of an active construction site with heavy machinery and bu\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[00:26:27] image: dropped \"Concrete Housing Construction in Chile\" — names too little of industrial, construction, site",
+    "[00:26:27] image: dropped \"Modern steel framework structure under clear sky, showcasing architect\" — names too little of industrial, construction, site",
+    "[00:26:27] image: dropped \"Workers on a high-rise building construction site in Denizli, Türkiye,\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[00:26:27] image: dropped \"Detailed view of a high-rise building construction featuring a crane a\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[00:26:27] image: dropped \"Lake Shawnee Amusement Park\" — names too little of industrial, construction, site",
+    "[00:26:27] image: dropped \"Construction Worker Houston Texas 1\" — names too little of industrial, construction, site",
+    "[00:26:27] image: dropped \"Drone shot capturing aerial view of a large construction site with unf\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[00:26:27] commons \"chemical terminal storage tanks\": 2 usable of 3",
+    "[00:26:27] image: dropped \"Hansen Storage, South Water Street, Milwaukee\" — names too little of chemical, terminal, storage, tanks",
+    "[00:26:27] image: dropped \"Hansen Storage, South Water Street, Milwaukee\" — names too little of chemical, terminal, storage, tanks",
+    "[00:26:27] image: dropped \"Hansen Storage, South Water Street, Milwaukee\" — names too little of chemical, terminal, storage, tanks",
+    "[00:26:27] image: dropped \"Hansen Storage, South Water Street, Milwaukee\" — names too little of chemical, terminal, storage, tanks",
+    "[00:26:27] image: dropped \"Hansen Storage, South Water Street, Milwaukee\" — names too little of chemical, terminal, storage, tanks",
+    "[00:26:27] image: dropped \"Hansen Storage, South Water Street, Milwaukee\" — names too little of chemical, terminal, storage, tanks",
+    "[00:26:27] commons \"petrochemical plant\": 12 usable of 24",
+    "[00:26:27] image: dropped \"Combinatul de cauciuc sintetic și produse petrochimice Onești aerial.j\" — dated 1972, an archival picture",
+    "[00:26:27] image: dropped \"Clădiri la Combinatul de cauciuc sintetic și produse petrochimice Oneș\" — dated 1965, an archival picture",
+    "[00:26:27] image: dropped \"Социалистическая Республика Румыния. Онешти.jpg\" — dated 1965, an archival picture",
+    "[00:26:27] image: dropped \"Социалистическая Республика Румыния. Онешти back.jpg\" — dated 1965, an archival picture",
+    "[00:26:27] image: dropped \"PETROCHEMICAL PLANT IN COASTAL AREA - NARA - 546389.jpg\" — dated 1973, an archival picture",
+    "[00:26:27] image: dropped \"Photo View of the olefin storage spheres at the petrochemical plant in\" — dated 1960, an archival picture",
+    "[00:26:27] commons \"ammonia plant\": 12 usable of 24",
+    "[00:26:27] image: dropped \"Model of a synthetic ammonia plant - DPLA - 43698425d87469dfa52fb6d2d7\" — dated 1928, an archival picture",
+    "[00:26:27] image: dropped \"Ammonia Oxidation Plant at Plum Brook Ordnance Works (GRC-2004-C-00105\" — dated 1943, an archival picture",
+    "[00:26:27] image: dropped \"Ammonia Oxidation Plant at Plum Brook Ordnance Works – June 1943 (grc-\" — dated 1943, an archival picture",
+    "[00:26:28] image: thumbnail HTTP 403 for https://live.staticflickr.com/7450/8756741875_23908a5db5_n.jpg",
+    "[00:26:28] image: thumbnail HTTP 403 for https://live.staticflickr.com/2372/2363688612_6d71737477_n.jpg",
+    "[00:26:41] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=950 in=10361 read=0 out=1174 attempt=1 ms=12825",
+    "[00:26:48] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=551 in=1094 read=0 out=590 attempt=1 ms=6802",
+    "[00:26:56] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=520 in=7484 read=0 out=615 attempt=1 ms=7815",
+    "[00:26:56] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"View of an industrial refinery tower under construction with\": A clear, neutral frame of a chemical-process column rising under scaffolding fits a story about financing Ruwais chemica",
+    "[00:26:56] published \"«تعزيز» الإماراتية للكيماويات تجمع 1.39 مليار دولار لمشروعين في الرويس\" -> taziz-closes-financing-ruwais-terminal-ammonia-6f1e5a"
+  ]
+}

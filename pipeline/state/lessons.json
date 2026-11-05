@@ -234,10 +234,12 @@
     "banque-du-caire-shares-jump-egx-debut-412cd0:0b69ad47",
     "banque-du-caire-shares-jump-egx-debut-412cd0:8f8cf933",
     "brent-rebounds-us-strike-qeshm-island-382dd6:331de844",
-    "egypt-halts-red-sea-sinai-investment-land-sales-dd7f70:e1c54de8"
+    "egypt-halts-red-sea-sinai-investment-land-sales-dd7f70:e1c54de8",
+    "saudi-uae-expand-oil-outlets-bypassing-hormuz-fd8a9b:80e914eb",
+    "saudi-uae-expand-oil-outlets-bypassing-hormuz-fd8a9b:81a32522"
   ],
-  "version": 52,
-  "updatedAt": "2026-11-04T06:36:40.703Z",
+  "version": 53,
+  "updatedAt": "2026-11-04T23:46:15.324Z",
   "lessons": [
     {
       "id": "L1",
@@ -282,11 +284,12 @@
         "trump-5000-dividend-trillion-cost-36981a:3b90497d",
         "uae-germany-45-agreements-state-visit-9774e1:e22c45dc",
         "anthropic-researcher-ai-human-extinction-risk-8aa7a2:92d3dbf3",
-        "saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3:d59a7a95"
+        "saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3:d59a7a95",
+        "saudi-uae-expand-oil-outlets-bypassing-hormuz-fd8a9b:80e914eb"
       ],
-      "seen": 33,
+      "seen": 34,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-10-01T00:41:58.945Z",
+      "lastSeen": "2026-11-04T23:46:15.324Z",
       "status": "active",
       "previous": [
         "Keep every qualifier in Arabic: could, possibly, as much as, hopefully, expected, scheduled, will, estimates, reportedly. Name who claims, forecasts or estimates it. Never turn a claim, hope, forecast or reported figure into a stated fact, a present result or a bare headline number.",
@@ -359,11 +362,12 @@
         "binance-freezes-3-billion-potential-hack-647d53:86705fb7",
         "china-factory-pmi-contracts-october-64c344:123b6f44",
         "egypt-first-locally-assembled-electric-car-f79ba4:463d16b5",
-        "saudi-economy-contraction-slows-third-quarter-aba15b:14943288"
+        "saudi-economy-contraction-slows-third-quarter-aba15b:14943288",
+        "saudi-uae-expand-oil-outlets-bypassing-hormuz-fd8a9b:81a32522"
       ],
-      "seen": 54,
+      "seen": 55,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-11-01T13:35:00.088Z",
+      "lastSeen": "2026-11-04T23:46:15.324Z",
       "status": "active",
       "previous": [
         "Credit each fact to whom the source credits and name the originating outlet. An outlet's inference ('implying', 'suggesting') is not the official's own statement. An interview is not a statement. Add no conclusion the speaker did not draw.",
@@ -1213,6 +1217,14 @@
       "mistakes": 1,
       "applied": [
         "reinforce L12 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-11-04T23:46:15.324Z",
+      "mistakes": 2,
+      "applied": [
+        "reinforce L1 (+1; reworded at most once a week)",
+        "reinforce L2 (+1; reworded at most once a week)"
       ]
     }
   ],

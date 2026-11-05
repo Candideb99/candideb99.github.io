@@ -1927,6 +1927,50 @@
         "classes": [],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-11-05T00:00:54.334Z",
+      "slug": "dow-jumps-democrats-win-congress-cbd5a8",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v53",
+      "lessonsHash": "a6c6134ebe",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 28,
+        "notFound": 0,
+        "checked": 31,
+        "words": 537,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 3
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 27,
+        "notFound": 1,
+        "checked": 30,
+        "words": 551,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 27,
+        "notFound": 1,
+        "checked": 30,
+        "words": 551,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      }
     }
   ]
 }

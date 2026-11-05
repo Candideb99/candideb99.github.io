@@ -15382,6 +15382,110 @@
         }
       ],
       "outcome": "clean"
+    },
+    "euro-zone-inflation-hits-4-percent-october-29c224": {
+      "at": "2026-11-04T23:44:49.696Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v52",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-04T17:58:31.055Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 32,
+        "checked": 32,
+        "supported": 25,
+        "weak": 6,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "وإذا ظهر هذا الانتقال في الأشهر المقبلة، فستضعف حجة توقف المركزي الأوروبي بعد ديسمبر، وستتحمل أسر المنطقة وشركاتها كلفة اقتراض أعلى إلى جانب طاقة أغلى."
+      ],
+      "weak": [
+        {
+          "sentence": "قفزة تضخم الطاقة إلى 20.8% تقود الصعود، والقراءة البالغة ضعف هدف المركزي الأوروبي تعزز مبررات رفع الفائدة",
+          "quote": "تسارع التضخم في منطقة اليورو إلى ضعف المستوى المستهدف من البنك المركزي الأوروبي، ما يعزز المبررات الداعية إلى مواصلة رفع أسعار الفائدة."
+        },
+        {
+          "sentence": "تكاد الطاقة تحمل وحدها صعود أكتوبر بينما بقي التضخم الأساسي عند 2.5%، فتصبح زيادة ديسمبر المرجحة أداة لمنع انتقال الصدمة إلى الأجور وأسعار الشركات أكثر منها علاجاً لفاتورة الطاقة نفسها.",
+          "quote": "حتى الآن، ظلت الضغوط التضخمية محصورة في قطاع الطاقة. لكن البنك المركزي الأوروبي يتوخى الحذر، ويسعى إلى منع امتداد صدمة الأسعار إلى قطاعات أخرى عبر زيادات كبيرة في الأجور وأسعار بيع الشركات لمنتجاتها."
+        },
+        {
+          "sentence": "يبلغ التضخم بهذه القراءة ضعف هدف البنك المركزي الأوروبي البالغ 2%، بعدما كان معدله السنوي 2.1% في أكتوبر 2025.",
+          "quote": "The figure for the 21-country euro area was up from 3.8% in September and remains well above the 2% target set by the European Central Bank (ECB)."
+        },
+        {
+          "sentence": "ارتفع المعدل السنوي لأسعار الطاقة إلى 20.8% في أكتوبر من 18.9% في سبتمبر، وهو الأعلى بين مكونات التضخم، بعدما كان سالباً عند 0.9% في أكتوبر 2025.",
+          "quote": "Looking at the main components of euro area inflation, energy is expected to have the highest annual rate in October (20.8%, compared with 18.9% in September), followed by services (3.3%, compared with 3.2% in September), food, alcohol & tobacco (1.6%, compared with 1.3% in September) and non-energy industrial goods (1.2%, compared with 1.1% in September)."
+        },
+        {
+          "sentence": "استقر التضخم الأساسي، الذي يستثني الطاقة والغذاء والكحول والتبغ، عند 2.5% دون تغيير عن سبتمبر، وارتفع تضخم الخدمات إلى 3.3% من 3.2%، وتضخم الغذاء والكحول والتبغ إلى 1.6% من 1.3%.",
+          "quote": "Looking at the main components of euro area inflation, energy is expected to have the highest annual rate in October (20.8%, compared with 18.9% in September), followed by services (3.3%, compared with 3.2% in September), food, alcohol & tobacco (1.6%, compared with 1.3% in September) and non-energy industrial goods (1.2%, compared with 1.1% in September)."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "saudi-uae-expand-oil-outlets-bypassing-hormuz-fd8a9b": {
+      "at": "2026-11-04T23:44:49.694Z",
+      "kind": "analysis",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-04T21:04:00.623Z",
+      "sourcesRead": 5,
+      "sourcesAll": 5,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 47,
+        "checked": 44,
+        "supported": 37,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 3,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "فإن أضافت التوسعة خطوطاً إلى هذا الخط المتعدد الأنابيب أصلاً، فقد تخدم غرضين معاً: نقل كميات أكبر، وتخفيف أثر أي ضربة منفردة.",
+        "ولو أُعيد فتح المضيق، تبقى خلفه أزمة في المخزون والشحن.",
+        "في هذا المسار قد تصبح سعة خط «شرق-غرب» القيدَ الأهم على صادرات أرامكو."
+      ],
+      "weak": [
+        {
+          "sentence": "طاقة أرامكو الإنتاجية القصوى 12 مليون برميل يومياً وطاقة خطها إلى البحر الأحمر نحو 7 ملايين، والشركة تقول إن التوسعة تعزز قدرتها على نقل النفط",
+          "quote": "أعلن الرئيس التنفيذي لأرامكو السعودية أمين الناصر الثلاثاء بدء الأعمال الهندسية الأولية لتوسعة خط أنابيب «شرق-غرب»، لتعزيز قدرة الشركة على نقل النفط."
+        },
+        {
+          "sentence": "وفي الأيام نفسها نزل برنت تسليم يناير 2027 في ثلاث جلسات من إغلاق عند 113.43 دولار للبرميل إلى 94.84 دولار في تعاملات الأربعاء، مع رهانات على أن تنتهي حرب إيران بالتفاوض.",
+          "quote": "هبط عقد يناير 2027 لخام برنت 7.98% يوم الاثنين إلى 104.38 دولار للبرميل، فخسر 9.05 دولار من إغلاقه السابق عند 113.43 دولار، بعدما قال الرئيس الإيراني مسعود بزشكيان إن المرشد الأعلى منح الحكومة صلاحيات لإجراء محادثات تنهي الحرب."
+        },
+        {
+          "sentence": "كل برميل تضيفه التوسعة إلى خط «شرق-غرب» يرفع ما تستطيع السعودية نقله إلى البحر الأحمر من طاقة إنتاجية قصوى تبلغ 12 مليون برميل يومياً، إذا اضطربت الملاحة في هرمز مجدداً.",
+          "quote": "والتوسعة تستهدف أضيق حلقة بين الطاقتين: نقل الخام إلى البحر الأحمر."
+        },
+        {
+          "sentence": "يمتد الخط نحو 1200 كيلومتر من بقيق في شرق المملكة إلى ينبع، وقد توقف مؤقتاً إثر هجوم في سبتمبر، ثم قال الناصر بعد أيام إنه لا يمكن تعطيله بالكامل لأنه يتكون من عدة خطوط.",
+          "quote": "وكان الخط نفسه قد توقف مؤقتاً إثر هجمات، وقال الناصر في سبتمبر، بعد أيام من ذلك التوقف، إنه لا يمكن تعطيله بالكامل لأنه يتكون من عدة خطوط."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }

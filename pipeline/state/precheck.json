@@ -11843,6 +11843,62 @@
           "noted": []
         }
       ]
+    },
+    "dow-jumps-democrats-win-congress-cbd5a8": {
+      "at": "2026-11-05T00:00:54.310Z",
+      "title": "داو جونز يقفز أكثر من 3% بعد سيطرة الديمقراطيين على الكونغرس",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v53",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 34,
+            "checked": 34,
+            "supported": 30,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "taziz-closes-financing-ruwais-terminal-ammonia-6f1e5a": {
+      "at": "2026-11-05T00:26:56.418Z",
+      "title": "«تعزيز» الإماراتية للكيماويات تجمع 1.39 مليار دولار لمشروعين في الرويس",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v53",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 26,
+            "checked": 26,
+            "supported": 22,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
