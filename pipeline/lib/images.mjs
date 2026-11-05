@@ -214,8 +214,10 @@ export function groundedClaimant(draft, claimant, sources = []) {
   // A name is found whole or as its first and last words side by side («يحيى سريع» for «يحيى سريع»; «Yahya Saree»).
   const spans = (words) => (words.length >= 2 ? [words.join(" "), `${words[0]} ${words[words.length - 1]}`] : []);
   const arabicText = ` ${arabicWords(texts).join(" ")} `;
-  const latinText = ` ${fold(texts).replace(/[^a-z]+/g, " ")} `;
-  const named = spans(arabicWords(p.ar)).some((s) => arabicText.includes(` ${s} `)) || spans(fold(p.name).replace(/[^a-z]+/g, " ").trim().split(" ")).some((s) => latinText.includes(` ${s} `));
+  // An apostrophe is dropped on both sides: «Sare'e» and «Saree» are one spelling here.
+  const latin = (s) => fold(s).replace(/['’ʿʾ`]/g, "").replace(/[^a-z]+/g, " ").trim();
+  const latinText = ` ${latin(texts)} `;
+  const named = spans(arabicWords(p.ar)).some((s) => arabicText.includes(` ${s} `)) || spans(latin(p.name).split(" ")).some((s) => latinText.includes(` ${s} `));
   return named ? p : null;
 }
 
@@ -2230,6 +2232,7 @@ async function findImage({ draft, story, log, exclude = new Set(), sources = [],
     draft = { ...draft, imageCompany: company.name };
     log(`image: the story is ${company.name}'s own news`);
   }
+  if (claimant) log(`image: should nothing of what the armed group hit be found, its spokesman: ${claimant.name}`);
   // What the picture should say travels with the story to every judge of every pass (messageNote()), and every pass but
   // the last ones takes only a photograph that says it (chooseVerified()'s `gate`); one that only names the topic waits in
   // `reserve`. The story's own people (`known`) may appear in any pass, and every judge is told who they are.
@@ -2393,8 +2396,17 @@ const BRAND_SIGN = /\b(?:signs?|signage|pylons?|pole|totem|logos?|emblem|close[-
  */
 async function claimantPhoto({ claimant, draft, story, log, exclude, desk }) {
   log(`image: nothing of what the story's armed group hit was found; its spokesman, as the desks run him: ${claimant.name}`);
-  const note = `THE GROUP'S SPOKESMAN, the paper's last picture before running the story as text: nothing of what the group whose attack, claim or threat the headline reports hit or threatens could be found, and the desks then run the man who speaks for it, ${claimant.name}${claimant.ar ? ` (${claimant.ar})` : ""}. Choose a recent photograph of him speaking, at a podium, a briefing or a press conference, his face plain; never his group's fighters, weapons, parades or funerals, a portrait of him on a banner or at a memorial, or a frame from a broadcast. Its caption names him and his role for the group the headline names, and an earlier occasion as one.`;
-  return peoplePhoto({ people: [claimant.name], ar: claimant.ar ? { [claimant.name]: claimant.ar } : {}, draft, story, log, exclude, ...desk, gate: false, known: [claimant.name], tierNote: note, claimant: claimant.name });
+  // A planner spells an Arabic name with the apostrophe of its ʿayn or hamza («Yahya Sare'e»), where Wikipedia and Commons
+  // drop it («2026. Yahya Saree.jpg»), and the search found nothing (2026-11-05): the plain spelling first, then the planner's.
+  const plain = claimant.name.replace(/['’ʿʾ`]/g, "");
+  const spellings = [...new Set([plain, claimant.name])];
+  const note = `THE GROUP'S SPOKESMAN, the paper's last picture before running the story as text: nothing of what the group whose attack, claim or threat the headline reports hit or threatens could be found, and the desks then run the man who speaks for it, ${spellings.join(" or ")}${claimant.ar ? ` (${claimant.ar})` : ""}. Choose a recent photograph of him speaking, at a podium, a briefing or a press conference, his face plain; never his group's fighters, weapons, parades or funerals, a portrait of him on a banner or at a memorial, or a frame from a broadcast. Its caption names him and his role for the group the headline names, and an earlier occasion as one.`;
+  for (const [i, name] of spellings.entries()) {
+    // His Arabic name is searched once, with the first spelling.
+    const image = await peoplePhoto({ people: [name], ar: claimant.ar && !i ? { [name]: claimant.ar } : {}, draft, story, log, exclude, ...desk, gate: false, known: spellings, tierNote: note, claimant: name });
+    if (image) return image;
+  }
+  return null;
 }
 
 /** The event pass, as its judge reads it (findImage()). */
