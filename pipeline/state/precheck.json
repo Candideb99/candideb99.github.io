@@ -12636,6 +12636,34 @@
           "noted": []
         }
       ]
+    },
+    "week-in-review-2026-11-06-78b6d3": {
+      "at": "2026-11-06T21:18:15.307Z",
+      "title": "فوز الديمقراطيين الأمريكيين يهبط بـ«ناسداك 100» 6.4% وبرنت دون 95 دولاراً",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 81,
+            "checked": 81,
+            "supported": 66,
+            "weak": 14,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
