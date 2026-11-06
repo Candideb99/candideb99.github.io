@@ -75,7 +75,14 @@ table:
       - 179 مليون دولار
       - 602 مليون دولار
       - 599 مليون دولار
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Folding_money_%2820_dollar_US_banknotes%29.jpg/1280px-Folding_money_%2820_dollar_US_banknotes%29.jpg
+  width: 1280
+  height: 1222
+  alt: أوراق نقدية أمريكية من فئة 20 دولاراً
+  credit: United States Department of the Treasury · Public domain · ويكيميديا كومنز
+  license: Public domain
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AFolding_money_(20_dollar_US_banknotes).jpg
 sources:
   - name: الشرق بلومبرغ
     nameEn: Asharq Business
@@ -93,7 +100,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: null
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
   lessons: v54
 quality:

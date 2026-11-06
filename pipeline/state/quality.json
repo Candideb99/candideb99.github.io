@@ -360,35 +360,45 @@
       "read": 5,
       "confirmedPerStory": 0,
       "photosPending": 0
+    },
+    {
+      "date": "2026-11-06",
+      "published": 11,
+      "news": 9,
+      "styleFaultsPerStory": 0,
+      "corrections": 0,
+      "read": 4,
+      "confirmedPerStory": 0,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-11-05T15:47:09.746Z",
+  "updatedAt": "2026-11-06T15:23:01.554Z",
   "week": {
-    "published": 96,
-    "news": 79,
+    "published": 93,
+    "news": 76,
     "revisedShare": 0.99,
-    "styleFaultsPerStory": 0.06,
-    "styleWarningsPerStory": 0.34,
-    "corrections": 4,
+    "styleFaultsPerStory": 0.04,
+    "styleWarningsPerStory": 0.26,
+    "corrections": 3,
     "usefulness": {
       "withLessons": {
-        "stories": 68,
-        "words": 458,
+        "stories": 67,
+        "words": 459,
         "keyFacts": 4.2
       },
       "control": {
-        "stories": 11,
-        "words": 404,
-        "keyFacts": 2.3
+        "stories": 9,
+        "words": 372,
+        "keyFacts": 1.8
       }
     },
     "precheck": {
-      "checked": 89,
-      "clean": 80,
+      "checked": 86,
+      "clean": 77,
       "repaired": 9,
       "held": 0,
       "errorsFound": 10,
-      "unsourcedCut": 4,
+      "unsourcedCut": 2,
       "heldTitles": []
     },
     "outcomes": {
@@ -396,51 +406,42 @@
       "correctionsVerifiedClean": 2,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
-      "correctionsStuck": 1
+      "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 43,
-      "clean": 29,
-      "corrected": 3,
+      "read": 44,
+      "clean": 32,
+      "corrected": 2,
       "stands": 1,
       "refused": 0,
-      "listed": 10,
+      "listed": 9,
       "unverifiable": 0,
-      "confirmedPerStory": 0.14,
+      "confirmedPerStory": 0.07,
       "withLessons": {
         "read": 33,
-        "confirmedPerStory": 0.15
+        "confirmedPerStory": 0.06
       },
       "claudeWithout": {
-        "read": 10,
-        "confirmedPerStory": 0.1
+        "read": 11,
+        "confirmedPerStory": 0.09
       }
     },
     "runs": {
       "count": 24,
-      "written": 48,
+      "written": 46,
       "refused": 3,
-      "callsPerStory": 26,
-      "tokensPerStory": 466428,
-      "costPerStory": 3.86,
+      "callsPerStory": 25.8,
+      "tokensPerStory": 472669,
+      "costPerStory": 3.95,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": [
       {
         "what": "second look: figure errors",
-        "stories": 3,
-        "examples": [
-          "binance-freezes-3-billion-potential-hack-647d53: الرقم في إعلان بينانس السابق: نحو 2.54 مليار دولار",
-          "binance-freezes-3-billion-potential-hack-647d53: رفعت بينانس قيمة الأصول التي جمّدتها إلى نحو 3 مليارات دولار حتى الآن، بعدما أعلنت في وقت سابق رقماً يقارب 2.54 مليار دو",
-          "oil-falls-iran-hormuz-two-day-offer-c40213: تراجعت أسعار النفط بأكثر من 3% في التعاملات المبكرة يوم الإثنين، بعدما عززت المحادثات بوساطة قطرية الآمال في اختراق دبلو"
-        ]
-      },
-      {
-        "what": "second look: attribution errors",
         "stories": 2,
         "examples": [
-          "binance-freezes-3-billion-potential-hack-647d53: وأوضح تشاو أنه لم يعد يدير المنصة، لكنه يتوقع بصفته مساهماً أن تُغطى أموال المستخدمين بالكامل.",
-          "china-factory-pmi-contracts-october-64c344: غير أن اقتصاديين يرون أن قراءة أكتوبر تُظهر أن الصادرات، رغم ارتفاعها خلال معظم العام، قد لا تكون قوية بما يكفي لتعويض ا"
+          "oil-falls-iran-hormuz-two-day-offer-c40213: تراجعت أسعار النفط بأكثر من 3% في التعاملات المبكرة يوم الإثنين، بعدما عززت المحادثات بوساطة قطرية الآمال في اختراق دبلو",
+          "brent-rebounds-us-strike-qeshm-island-382dd6: وأفاد موقع «أرابيان غلف بزنس إنسايت» (AGBI) المتخصص في أخبار أعمال الخليج بأن دوي خمسة انفجارات سُمع في أنحاء الجزيرة، و"
         ]
       }
     ]
@@ -450,8 +451,8 @@
     "news": 82,
     "revisedShare": 1,
     "styleFaultsPerStory": 0.07,
-    "styleWarningsPerStory": 0.56,
-    "corrections": 19,
+    "styleWarningsPerStory": 0.54,
+    "corrections": 14,
     "usefulness": {
       "withLessons": {
         "stories": 67,
@@ -460,42 +461,42 @@
       },
       "control": {
         "stories": 15,
-        "words": 513,
-        "keyFacts": 5.3
+        "words": 520,
+        "keyFacts": 5
       }
     },
     "precheck": {
       "checked": 92,
-      "clean": 85,
-      "repaired": 7,
+      "clean": 83,
+      "repaired": 9,
       "held": 0,
-      "errorsFound": 7,
-      "unsourcedCut": 1,
+      "errorsFound": 9,
+      "unsourcedCut": 3,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 7,
+      "repairedBeforePublication": 9,
       "correctionsVerifiedClean": 4,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
-      "correctionsStuck": 0
+      "correctionsStuck": 1
     },
     "secondLook": {
-      "read": 33,
-      "clean": 22,
-      "corrected": 4,
+      "read": 32,
+      "clean": 20,
+      "corrected": 5,
       "stands": 0,
       "refused": 0,
       "listed": 7,
       "unverifiable": 0,
-      "confirmedPerStory": 0.12,
+      "confirmedPerStory": 0.22,
       "withLessons": {
         "read": 24,
-        "confirmedPerStory": 0.08
+        "confirmedPerStory": 0.21
       },
       "claudeWithout": {
-        "read": 9,
-        "confirmedPerStory": 0.22
+        "read": 8,
+        "confirmedPerStory": 0.25
       }
     },
     "runs": {
@@ -510,18 +511,19 @@
     "recurring": [
       {
         "what": "second look: attribution errors",
-        "stories": 2,
+        "stories": 3,
         "examples": [
           "aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210: أصدرت أرامكو السعودية تعليمات بإخلاء مقرها الرئيسي في الظهران والعمل عن بعد، بحسب ستة أشخاص مطلعين نقلت عنهم رويترز، دون",
-          "french-bond-yields-jump-after-protests-1b64ee: قالت وزارة الداخلية الفرنسية الأحد إن نحو 2400 شخص اعتُقلوا، بعد عنف اندلع عقب أسابيع من تظاهرات سلمية بشأن أوضاع المدار"
+          "french-bond-yields-jump-after-protests-1b64ee: قالت وزارة الداخلية الفرنسية الأحد إن نحو 2400 شخص اعتُقلوا، بعد عنف اندلع عقب أسابيع من تظاهرات سلمية بشأن أوضاع المدار",
+          "binance-freezes-3-billion-potential-hack-647d53: وأوضح تشاو أنه لم يعد يدير المنصة، لكنه يتوقع بصفته مساهماً أن تُغطى أموال المستخدمين بالكامل."
         ]
       }
     ]
   },
   "lessons": {
-    "version": 53,
+    "version": 54,
     "active": 10,
-    "learnedFrom": 237,
+    "learnedFrom": 238,
     "kept": null,
     "lastTest": {
       "at": "2026-11-02T15:40:49.741Z",
@@ -574,7 +576,7 @@
     }
   },
   "evidence": {
-    "pairs": 45,
+    "pairs": 47,
     "vsKept": {
       "n": 0,
       "better": 0,

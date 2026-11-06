@@ -46,7 +46,15 @@ chart:
         - 17
         - 9.3
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/No_Data_Center_sign_Thayer_2026-09-04.jpg/1280px-No_Data_Center_sign_Thayer_2026-09-04.jpg
+  width: 1280
+  height: 1179
+  alt: لافتة رافضة لإنشاء مركز بيانات في ثاير بولاية إلينوي الأمريكية
+  credit: Visviva · CC BY-SA 4.0 · ويكيميديا كومنز
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ANo_Data_Center_sign_Thayer_2026-09-04.jpg
 sources:
   - name: فايننشال تايمز
     nameEn: Financial Times
@@ -76,7 +84,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: null
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
   lessons: v54
 quality:
