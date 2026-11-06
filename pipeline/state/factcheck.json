@@ -15739,6 +15739,87 @@
         }
       ],
       "outcome": "clean"
+    },
+    "fao-food-price-index-october-2026-86a80b": {
+      "at": "2026-11-06T23:14:23.182Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-06T16:09:10.145Z",
+      "sourcesRead": 1,
+      "sourcesAll": 1,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 35,
+        "checked": 35,
+        "supported": 35,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "emaar-sales-fall-third-quarter-backlog-8f99f2": {
+      "at": "2026-11-06T23:14:23.177Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v55",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-06T17:27:00.460Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "fromCopy": 1,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 23,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "إذا بقيت المبيعات الجديدة عند وتيرة الربع الثالث، فقد تستهلك إعمار رصيدها المتراكم أسرع مما تعوّضه.",
+        "وإذا شمل ارتفاع فواتير البناء المنازل المبيعة سلفاً، فقد يضيق الهامش الذي تقوم عليه أرباحها الحالية."
+      ],
+      "weak": [
+        {
+          "sentence": "هبطت مبيعات إعمار العقارية، أكبر مطور عقاري في دبي والشركة الأم المدرجة التي تقف وراء «دبي مول» و«برج خليفة»، 46% إلى 8.2 مليار درهم في الربع الثالث، رغم نمو إيراداتها 13% في الأشهر التسعة الأولى من العام.",
+          "quote": "Group revenue rose 13 percent to AED37.5 billion ($10 billion) in the first nine months of the year, Emaar Properties reported. Net profit climbed 17 percent to just over AED17 billion."
+        },
+        {
+          "sentence": "بلغت المبيعات العقارية للمجموعة 34.7 مليار درهم (9.4 مليار دولار) في الأشهر التسعة المنتهية في 30 سبتمبر، سجلت منها «إعمار للتطوير»، ذراعها السكنية المدرجة التي تملك إعمار العقارية نحو أربعة أخماسها، 26.2 مليار درهم.",
+          "quote": "وسجّلت إعمار للتطوير مبيعات عقارية بقيمة 26.2 مليار درهم (7.1 مليارات دولار) خلال الأشهر التسعة الأولى من عام 2026."
+        },
+        {
+          "sentence": "ارتفعت إيرادات المجموعة في الأشهر التسعة إلى 37.5 مليار درهم (10.2 مليار دولار)، من 33.1 مليار درهم قبل عام، وصعد صافي ربحها بعد الضريبة 16.8% إلى 17.109 مليار درهم، من 14.647 مليار درهم.",
+          "quote": "وبلغ صافي الربح بعد الضريبة 17.109 مليار درهم مقارنة مع 14.647 مليار درهم، بنمو 16.8 بالمئة."
+        },
+        {
+          "sentence": "لكن إيرادات مراكز التسوق والتجزئة ارتفعت 10% إلى 5.2 مليار درهم، مع نسبة إشغال نحو 98% حتى 30 سبتمبر.",
+          "quote": "وبلغت الإيرادات 5.2 مليارات درهم (1.4 مليار دولار)، بزيادة 10 بالمئة مقارنةً بالأشهر التسعة الأولى من عام 2025."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }

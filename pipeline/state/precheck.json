@@ -12664,6 +12664,135 @@
           "noted": []
         }
       ]
+    },
+    "us-presses-china-busan-deal-rare-earths-farm-purchases-dcf97b": {
+      "at": "2026-11-06T23:28:19.237Z",
+      "title": "واشنطن تطالب بكين بتنفيذ اتفاق بوسان التجاري كاملاً وفوراً",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v55",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 20,
+            "checked": 20,
+            "supported": 18,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 2,
+              "field": "subtitle",
+              "class": "actor",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وزير الخزانة الأمريكي سكوت بيسنت يربط استمرار التقدم في العلاقة التجارية بين البلدين بنتائج صينية ملموسة في المعادن الأرضية النادرة والمشتريات الزراعية",
+              "quote": "Greer'in özellikle tarım ürünleri alımları, nadir toprak elementleri ve diğer kritik mineraller konusunda Çin'in somut adımlar atmasının kritik önem taşıdığına dikkat çektiği ifade edildi.",
+              "source": "Bloomberg HT",
+              "sourceN": 4,
+              "correction": "Bessent tied continued progress to concrete results in general; it was Greer, in the USTR statement, who named agricultural purchases, rare earths and other critical minerals."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 2
+          }
+        },
+        {
+          "counts": {
+            "sentences": 20,
+            "checked": 20,
+            "supported": 18,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "egypt-naseem-gas-discovery-mediterranean-tiba-d966b2": {
+      "at": "2026-11-06T23:40:42.313Z",
+      "title": "مصر تعلن كشفاً غازياً في المتوسط يقدَّر مبدئياً بـ200 مليار قدم مكعبة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v55",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 21,
+            "checked": 21,
+            "supported": 19,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [],
+          "unsourced": {
+            "asked": 1,
+            "kept": [
+              {
+                "sentence": "يدل الغاز الأصلي في المكمن على مجمل الكمية التي تختزنها صخوره، أما الاحتياطيات القابلة للاستخراج فهي الجزء الذي يمكن إنتاجه فعلاً من هذه الكمية.",
+                "reason": "definition"
+              }
+            ],
+            "removed": []
+          }
+        }
+      ]
+    },
+    "anthropic-ipo-buyers-lower-valuation-range-a08b2e": {
+      "at": "2026-11-06T23:59:07.067Z",
+      "title": "مشترون محتملون يخفضون تقديرهم لقيمة «أنثروبيك» إلى ما بين 1.2 و1.3 تريليون دولار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v55",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 35,
+            "checked": 35,
+            "supported": 32,
+            "weak": 2,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
