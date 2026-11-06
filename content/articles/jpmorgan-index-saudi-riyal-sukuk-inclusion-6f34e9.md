@@ -41,7 +41,15 @@ table:
       - "9"
       - "50"
       - 1.64%
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/JPMorgan_Chase_-_270_Park_Avenue_%2855283843744%29.jpg/1280px-JPMorgan_Chase_-_270_Park_Avenue_%2855283843744%29.jpg
+  width: 1280
+  height: 720
+  alt: مدخل مقر جي بي مورغان تشيس في 270 بارك أفينيو بنيويورك
+  credit: ajay_suresh · CC BY 4.0 · ويكيميديا كومنز
+  license: CC BY 4.0
+  licenseUrl: https://creativecommons.org/licenses/by/4.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3AJPMorgan_Chase_-_270_Park_Avenue_(55283843744).jpg
 sources:
   - name: الشرق بلومبرغ
     nameEn: Asharq Business
@@ -59,7 +67,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: null
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
   lessons: control
 quality:
