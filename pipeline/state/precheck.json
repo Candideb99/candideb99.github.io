@@ -12171,6 +12171,124 @@
           "noted": []
         }
       ]
+    },
+    "nasdaq-100-worst-day-since-2020-democrats-2e8f4f": {
+      "at": "2026-11-05T23:56:57.309Z",
+      "title": "«ناسداك 100» يهوي 6.4% في أسوأ يوم منذ 2020 بعد فوز الديمقراطيين",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v54",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 35,
+            "checked": 35,
+            "supported": 28,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 3,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 7,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تراجع «ستاندرد آند بورز 500» الخميس: 4.4%",
+              "quote": "The S&P 500 was down 4.3%.",
+              "source": "The Guardian",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 19,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "هبط مؤشر «ستاندرد آند بورز 500» 4.4%، مسجلاً أسوأ أداء يومي له منذ أبريل 2025، حين هزّت الرسوم الجمركية التي أعلنها الرئيس دونالد ترامب الأسواق.",
+              "quote": "The S&P 500 was down 4.3%.",
+              "source": "The Guardian",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 30,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "أما سهم «إنفيديا» فخسر 9.3% في أكبر انخفاض له منذ يناير 2025، ليمحو مكاسبه منذ بداية العام.",
+              "quote": "Nvidia, the chipmaker at the heart of the AI boom, was the top faller on the DJIA – down 9.2%, followed by Goldman Sachs, which fell 3.7%.",
+              "source": "The Guardian",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "jpmorgan-index-saudi-riyal-sukuk-inclusion-6f34e9": {
+      "at": "2026-11-06T00:09:43.675Z",
+      "title": "جي بي مورغان يدرج الصكوك السعودية في مؤشره لسندات الأسواق الناشئة من 2027",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 29,
+            "checked": 29,
+            "supported": 28,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "developing-countries-external-debt-record-world-bank-54d28d": {
+      "at": "2026-11-06T00:24:28.536Z",
+      "title": "الديون الخارجية للدول النامية ترتفع 5.5% إلى مستوى قياسي عند 9.4 تريليون دولار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v54",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 38,
+            "checked": 38,
+            "supported": 37,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

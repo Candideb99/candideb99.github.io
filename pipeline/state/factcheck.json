@@ -15575,6 +15575,87 @@
         }
       ],
       "outcome": "clean"
+    },
+    "bank-of-england-raises-rates-to-4-percent-a3418e": {
+      "at": "2026-11-05T23:41:06.326Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v53",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-05T18:14:43.979Z",
+      "sourcesRead": 4,
+      "sourcesAll": 5,
+      "fromCopy": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 23,
+        "weak": 4,
+        "noEvidence": 1,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "هدف الزيادة منع انتقال فاتورة الطاقة إلى الأجور والأسعار الأخرى، فتصبح تسويات الأجور مطلع العام الجديد اختباراً حاسماً للقرار.",
+        "وقالت اللجنة إن السياسة النقدية ليست على مسار محدد مسبقاً، وإنها ستقيّم في كل اجتماع مدى احتمال انتقال أسعار الطاقة المرتفعة إلى الأسعار الأخرى والاقتصاد، متعهدة بتعديل الفائدة عند الضرورة لإعادة التضخم إلى 2% على المدى المتوسط."
+      ],
+      "weak": [
+        {
+          "sentence": "بنك إنجلترا يرفع الفائدة إلى 4% في أول زيادة منذ 2023",
+          "quote": "Central bank lifts borrowing costs for first time since 2023"
+        },
+        {
+          "sentence": "يتوقع البنك أن يقترب التضخم من 5% بحلول منتصف العام المقبل مع مواصلة أسعار الطاقة صعودها في الشهر التاسع من صراع الشرق الأوسط",
+          "quote": "The conflict in the Middle East is now in its ninth month. Global energy prices have continued to rise from an already elevated level."
+        },
+        {
+          "sentence": "رفع بنك إنجلترا الخميس سعر الفائدة الرئيسي ربع نقطة مئوية إلى 4%، في أول زيادة لتكاليف الاقتراض في بريطانيا منذ 2023، قائلاً إن الضغوط التضخمية الكامنة في الاقتصاد باتت كافية لتبريرها.",
+          "quote": "However, the degree of inflationary pressure in the pipeline is now sufficient to warrant an increase in Bank Rate."
+        },
+        {
+          "sentence": "فإذا جاءت أعلى من توقعات الشركات مع صعود التضخم نحو 5%، فالأرجح أن يواجه المقترضون في بريطانيا زيادة أخرى، في وقت تمتص فيه شركات كثيرة جزءاً من التكاليف من هوامش أرباحها.",
+          "quote": "Agency intelligence suggested that many firms were also absorbing higher costs partly through lower profit margins."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "egypt-urban-inflation-slows-nine-month-low-e8bbed": {
+      "at": "2026-11-05T23:41:06.331Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v53",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-05T18:03:08.818Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 31,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
     }
   }
 }

@@ -1,0 +1,82 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-05T23:41:05.873Z",
+  "durationSec": 75,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "bank-of-england-raises-rates-to-4-percent-a3418e",
+      "title": "بنك إنجلترا يرفع الفائدة إلى 4% في أول زيادة منذ 2023",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 23,
+        "weak": 4,
+        "noEvidence": 1,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "egypt-urban-inflation-slows-nine-month-low-e8bbed",
+      "title": "التضخم في مدن مصر يتباطأ إلى 12.7% في أكتوبر مسجلاً أدنى مستوى منذ 9 أشهر",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 31,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 2,
+    "failures": 0,
+    "promptTokens": 16547,
+    "completionTokens": 15769,
+    "cacheReadTokens": 0,
+    "costUsd": 0.4477,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 2
+    },
+    "byRole": {
+      "checker": {
+        "calls": 2,
+        "in": 16547,
+        "read": 0,
+        "out": 15769,
+        "usd": 0.4477
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[23:41:06] second look: 2 to read now (2 published pieces not yet read; 202 read clean before publication and left out of the audit sample)",
+    "[23:41:06] bank-of-england-raises-rates-to-4-percent-a3418e:   source https://www.nytimes.com/2026/11/05/business/bank-of-england-interest-rates-infla: http-403",
+    "[23:41:06] bank-of-england-raises-rates-to-4-percent-a3418e:   source https://www.ft.com/content/290cf85b-6d95-4c79-af9b-e2a3d79072f6?syn-25a6b1a6=1: http-403; read from the copy saved at publication (fetched then)",
+    "[23:41:07] bank-of-england-raises-rates-to-4-percent-a3418e:   source https://www.bloomberg.com/news/articles/2026-11-05/bank-of-england-unanimously-h: subscribers-only; read from the copy saved at publication (fetched then)",
+    "[23:41:55] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2104 in=7954 read=0 out=6141 attempt=1 ms=47320",
+    "[23:41:55] bank-of-england-raises-rates-to-4-percent-a3418e: 29 of 29 sentences checked · 23 supported · 2 without a source · 0 confirmed error(s)",
+    "[23:42:20] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3013 in=8593 read=0 out=9628 attempt=1 ms=71387",
+    "[23:42:20] egypt-urban-inflation-slows-nine-month-low-e8bbed: 31 of 31 sentences checked · 31 supported · 0 without a source · 0 confirmed error(s)"
+  ]
+}

@@ -2019,6 +2019,50 @@
         ],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-11-06T00:24:28.554Z",
+      "slug": "developing-countries-external-debt-record-world-bank-54d28d",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v54",
+      "lessonsHash": "a6c6134ebe",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 32,
+        "notFound": 1,
+        "checked": 34,
+        "words": 537,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 2
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 34,
+        "notFound": 0,
+        "checked": 36,
+        "words": 589,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 34,
+        "notFound": 0,
+        "checked": 36,
+        "words": 589,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }

@@ -236,10 +236,11 @@
     "brent-rebounds-us-strike-qeshm-island-382dd6:331de844",
     "egypt-halts-red-sea-sinai-investment-land-sales-dd7f70:e1c54de8",
     "saudi-uae-expand-oil-outlets-bypassing-hormuz-fd8a9b:80e914eb",
-    "saudi-uae-expand-oil-outlets-bypassing-hormuz-fd8a9b:81a32522"
+    "saudi-uae-expand-oil-outlets-bypassing-hormuz-fd8a9b:81a32522",
+    "egypt-urban-inflation-slows-nine-month-low-e8bbed:cb900c51"
   ],
-  "version": 53,
-  "updatedAt": "2026-11-04T23:46:15.324Z",
+  "version": 54,
+  "updatedAt": "2026-11-05T23:42:21.104Z",
   "lessons": [
     {
       "id": "L1",
@@ -746,11 +747,12 @@
         "hormuz-fertilizer-disruption-egypt-morocco-exporters-c8129a:98713950",
         "banque-du-caire-shares-jump-egx-debut-412cd0:0b69ad47",
         "banque-du-caire-shares-jump-egx-debut-412cd0:8f8cf933",
-        "egypt-halts-red-sea-sinai-investment-land-sales-dd7f70:e1c54de8"
+        "egypt-halts-red-sea-sinai-investment-land-sales-dd7f70:e1c54de8",
+        "egypt-urban-inflation-slows-nine-month-low-e8bbed:cb900c51"
       ],
-      "seen": 6,
+      "seen": 7,
       "createdAt": "2026-10-28T05:52:18.463Z",
-      "lastSeen": "2026-11-04T06:36:40.703Z",
+      "lastSeen": "2026-11-05T23:42:21.104Z",
       "status": "active",
       "activatedAt": "2026-10-30T18:06:12.820Z",
       "previous": [
@@ -1225,6 +1227,13 @@
       "applied": [
         "reinforce L1 (+1; reworded at most once a week)",
         "reinforce L2 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-11-05T23:42:21.104Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L12 (+1; reworded at most once a week)"
       ]
     }
   ],
