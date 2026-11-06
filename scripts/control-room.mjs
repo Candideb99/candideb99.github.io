@@ -582,6 +582,12 @@ async function health() {
     ghOk,
     activeProvider,
     providers,
+    // The picture desk's free libraries (photolibs.mjs): Settings had no box for them, so Unsplash, wired since 2026-09-24,
+    // never ran (2026-11-06).
+    photoLibraries: {
+      pexels: { keySet: Boolean(local.PEXELS_API_KEY), cloudKeySet: /PEXELS_API_KEY/.test(secrets) },
+      unsplash: { keySet: Boolean(local.UNSPLASH_ACCESS_KEY), cloudKeySet: /UNSPLASH_ACCESS_KEY/.test(secrets) },
+    },
     chatgptAccounts: accounts,
     chatgptPool: { local: readAccountStore().pool || { enabled: false }, cloud: { enabled: Boolean(cloudBackupId && cloudBackupId !== "none"), primary: cloudAccountId, backup: cloudBackupId } },
     cloud: {
@@ -1251,6 +1257,29 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
         </div>
       </div>
 
+      <h3 style="margin:18px 0 4px">Photo libraries</h3>
+      <p class="m" style="margin:0 0 8px">Free keys that widen the picture desk's search. Unsplash: sign in at unsplash.com/developers, create an app, and paste its Access Key here.</p>
+      <div class="keycard" id="card_pexels">
+        <div class="khead">
+          <div><b>Pexels API Key</b><br><span class="m" id="ks_pexels">checking…</span></div>
+          <div style="display:flex;gap:6px;align-items:center"><button class="quiet sm" onclick="reveal('k_pexels')">Edit</button></div>
+        </div>
+        <div class="keyrow" id="w_k_pexels" style="display:none">
+          <label><input type="password" id="k_pexels" placeholder="Pexels API key" autocomplete="off"></label>
+          <button class="quiet" onclick="saveKey('PEXELS_API_KEY','k_pexels')">Save</button>
+        </div>
+      </div>
+      <div class="keycard" id="card_unsplash">
+        <div class="khead">
+          <div><b>Unsplash Access Key</b><br><span class="m" id="ks_unsplash">checking…</span></div>
+          <div style="display:flex;gap:6px;align-items:center"><button class="quiet sm" onclick="reveal('k_unsplash')">Edit</button></div>
+        </div>
+        <div class="keyrow" id="w_k_unsplash" style="display:none">
+          <label><input type="password" id="k_unsplash" placeholder="Unsplash Access Key" autocomplete="off"></label>
+          <button class="quiet" onclick="saveKey('UNSPLASH_ACCESS_KEY','k_unsplash')">Save</button>
+        </div>
+      </div>
+
       <p style="margin-top:14px"><label style="font-weight:400;display:flex;gap:8px;align-items:center"><input type="checkbox" id="k_gh" checked style="width:auto;margin:0"> Also send it to GitHub, so the cloud can use it</label> <span class="m" id="k_note"></span></p>
     </div>
     <div class="set">
@@ -1539,6 +1568,11 @@ function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(f
     }
   }
 
+  ['pexels', 'unsplash'].forEach(function (lib) {
+    var st = (h.photoLibraries || {})[lib] || {};
+    var el = document.getElementById('ks_' + lib);
+    if (el) el.innerHTML = st.keySet ? '<span class="ok">Saved on laptop' + (st.cloudKeySet ? ' and on GitHub' : '') + '</span>' : st.cloudKeySet ? '<span class="ok">Saved on GitHub</span>' : '<span class="m">Not set</span>';
+  });
   var ksOauth = document.getElementById('ks_oauth');
   if (ksOauth) ksOauth.innerHTML = h.providers.claude.tokenSet ? '<span class="ok">Saved' + (h.providers.claude.cloudTokenSet ? ' (laptop and GitHub)' : ' (laptop only)') + '</span>' : '<span class="no">Not set</span>';
   var ksAnt = document.getElementById('ks_ant');

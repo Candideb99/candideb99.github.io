@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The picture desk, tested on cases whose right answer is known (165 checks), with scripted stand-ins for Claude, Wikimedia Commons,
+ * The picture desk, tested on cases whose right answer is known (166 checks), with scripted stand-ins for Claude, Wikimedia Commons,
  * the other libraries and the thumbnails: no model call, no network. Written 2026-09-28 after the owner asked for the
  * image engine to be stress-tested ("it might still be buggy"), so that the cascade's order, its place filter, the
  * repeat guard, its behaviour when a service fails, and the reading of accented names cannot regress unseen. The gate
@@ -1322,6 +1322,15 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
     "a stamped frame is refused once and never offered again, and every judge is told no other name may be stamped on the picture",
     [r.image, r.calls.filter((c) => c.startsWith("verify:")).length, r.judgePrompts.every((p) => p.includes("NO OTHER NAME STAMPED ON THE PICTURE"))],
     [null, 1, true],
+  );
+  // 2026-11-06: a crane under a holding company's results, Nakilat's «موزة» under the attack on its «المايده», and
+  // rescuers in rubble under a development loan, all passed by the check.
+  const strictRules = photoRules({ draft: iran, image: { title: "x.jpg" }, thumbnail: "data:x" });
+  const neutralRules = photoRules({ draft: iran, image: { title: "x.jpg" }, thumbnail: "data:x", neutral: true });
+  check(
+    "every judge and the check hold one sector for many news, another named vessel (not in the neutral pass), and people in distress under money",
+    [r.judgePrompts.every((p) => p.includes("ONE SECTOR FOR MANY") && (p.includes("LAST PASS") || p.includes("THE STORY'S OWN VESSEL"))), strictRules.includes("a scene of one business or sector standing for news that spans several"), strictRules.includes("another named ship, aircraft or rig"), neutralRules.includes("another named ship, aircraft or rig"), strictRules.includes("People in distress")],
+    [true, true, true, false, true],
   );
 }
 
