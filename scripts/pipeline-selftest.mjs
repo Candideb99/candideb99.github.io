@@ -36,6 +36,7 @@ import { styleIssues } from "../pipeline/lib/style.mjs";
 import { fixNames, judgeRewrite } from "../pipeline/lib/copydesk.mjs";
 import { CUTTABLE, cutToSources, normalizeCritique, programmaticChecks } from "../pipeline/lib/verify.mjs";
 import { noveltyFault } from "../pipeline/lib/images.mjs";
+import { issuesToClose } from "../pipeline/lib/health.mjs";
 import { changedSince, commitSteps, gitStatus, snapshot, undoChanges } from "./desk-git.mjs";
 import { chatRoute } from "./desk-chat.mjs";
 
@@ -758,6 +759,31 @@ if (spawnSync("git", ["--version"]).status === 0) {
     [judgeRewrite(whether, { body: "وقال البنك إن لجنته ستدرس هل يتراجع التضخم بما يكفي قبل اجتماعها المقبل." }, ["body"]).rejected.some((r) => r.field === "body"), judgeRewrite(scenario, { body: inCase }, ["body"]).rejected.some((r) => r.field === "body")],
     [false, false],
   );
+  // 2026-11-06: «وكان … قد تراجع» is "had fallen", never a hedge; the desk's plain «وتراجع…» was refused for dropping it.
+  const nikkei = { ...scenario, lede: "هبط مؤشر نيكاي الياباني 3% اليوم الجمعة. وكان مؤشر ناسداك المركب قد تراجع 5.5% يوم الخميس، ليهبط أكثر من 10% عن ذروته.", body: "" };
+  const plainPast = "هبط مؤشر نيكاي الياباني 3% اليوم الجمعة. وتراجع مؤشر ناسداك المركب 5.5% يوم الخميس، ليهبط أكثر من 10% عن ذروته.";
+  const embeddedHedge = { ...nikkei, lede: nikkei.lede.replace("وكان مؤشر ناسداك المركب قد تراجع", "وكان البنك يرى أنها قد تتراجع") };
+  check(
+    "«وكان … قد تراجع» is the pluperfect, said plainly without it; «كان … أنها قد تتراجع» keeps its hedge",
+    [judgeRewrite(nikkei, { lede: plainPast }, ["lede"]).rejected.some((r) => r.field === "lede"), judgeRewrite(embeddedHedge, { lede: embeddedHedge.lede.replace("قد تتراجع", "تتراجع") }, ["lede"]).rejected.some((r) => r.field === "lede")],
+    [false, true],
+  );
+  // 2026-11-06: the silent-feed issue still named WIRED a day after WIRED published again; only "could not fix" issues closed.
+  {
+    const mark = "Opened by the daily editor's round (scripts/editor-precheck.mjs).";
+    const feeds = "خازندار: news feeds that have served nothing new for three days";
+    const open = [
+      { number: 3, title: feeds, body: `wired-business is silent.\n\n${mark}` },
+      { number: 1, title: "خازندار: published stories with a proved error the corrections desk could not fix", body: `three stories\n\n${mark}` },
+      { number: 7, title: 'خازندار: the daily editor could not fix "stall" in 2 tries', body: `stall\n\n${mark}` },
+      { number: 9, title: feeds, body: "opened by hand, no mark" },
+    ];
+    check(
+      "a cleared owner issue and a fixed finding close; one still found, one not checked, and one not the round's own stay open",
+      [issuesToClose(open, { mark, findings: [], cleared: new Set([feeds]) }).map((i) => i.number), issuesToClose(open, { mark, findings: [{ key: "stall" }], cleared: new Set() }).map((i) => i.number)],
+      [[3, 7], []],
+    );
+  }
   // 2026-10-18: no explainer or analysis had been published since 1 October; the two of that day were thrown away by
   // rules that contradicted each other or a sound phrase.
   const hedgedExplainer = { title: "إعادة تمويل الدين العام قد تغيّر كلفته حتى مع ثبات أصله", subtitle: "تستبدل الحكومة ديناً يحل أجله بدين جديد", lede: "تلجأ الحكومات إلى إعادة تمويل ديونها حين يحل أجل السندات.", body: "تصدر الحكومة سندات جديدة تسدد بها القديمة." };

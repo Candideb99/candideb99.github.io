@@ -203,7 +203,17 @@ function hedgeKind(word) {
   if (/^(?:إذا|في حالة|في حال|لو|افتراض|سيناريو|ما لم|ما دام|ما دامت|طالما|شريطة|بشرط)$/.test(word)) return "conditional";
   return "uncertain";
 }
-const hedgeKinds = (text) => new Set([...String(text ?? "").replace(/\p{M}/gu, "").matchAll(HEDGES)].map((m) => hedgeKind(m[1])));
+// «كان … قد» is the pluperfect ("had"), never a hedge: a masculine past of the تفاعل and تفعّل forms opens with «ت» as a
+// present does, so «وكان مؤشر ناسداك المركب قد تراجع 5.5%» read as one and the desk's plain «وتراجع المؤشر…» was
+// refused for dropping it (2026-11-06), though the house style itself offers «وكان … قد» as an opener. «كان» must open
+// the same clause, at most eight words before «قد», with no punctuation and no «أن/إن» between («وكان البنك يرى أنها
+// قد تتراجع» keeps its hedge); before «ي» «قد» stays a hedge as everywhere.
+const PLUPERFECT = /(?<![\p{L}\p{M}])[وف]?(?:كان|كانت|كانوا|كانا|كانتا)(?: (?![وفلب]?[أإ]ن(?:ه|ها|هم|هما|هن|نا|ني)?(?![\p{L}\p{M}]))[^\s،؛.:؟!]+){0,8} $/u;
+const hedgeKinds = (text) => {
+  const plain = String(text ?? "").replace(/\p{M}/gu, "");
+  const pluperfect = (m) => m[1] === "قد" && plain.startsWith(" ت", m.index + m[0].length) && PLUPERFECT.test(plain.slice(0, m.index));
+  return new Set([...plain.matchAll(HEDGES)].filter((m) => !pluperfect(m)).map((m) => hedgeKind(m[1])));
+};
 const sentencesOf = (text) => String(text ?? "").split(/(?<=[.؟!])\s+|\n+/).map((s) => s.trim()).filter((s) => s.split(/\s+/).length >= 3);
 
 /**

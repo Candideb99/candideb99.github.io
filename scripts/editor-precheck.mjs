@@ -28,7 +28,7 @@ import { createHash } from "node:crypto";
 import { appendFileSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import YAML from "yaml";
-import { PHOTO_SEARCHES, checkCommons, checkPages, commonsTitle, confirmLoss, renamedUrl } from "../pipeline/lib/health.mjs";
+import { PHOTO_SEARCHES, checkCommons, checkPages, commonsTitle, confirmLoss, issuesToClose, renamedUrl } from "../pipeline/lib/health.mjs";
 import { sharedPhotos } from "../pipeline/lib/photo-key.mjs";
 
 const DAY = 86_400_000;
@@ -41,6 +41,7 @@ const STATE_FILE = path.join("pipeline", "state", "health.json");
 const findings = []; // { key, text }: the editor's
 const owner = []; // { key, title, text }: only a person can mend these
 const fine = [];
+const cleared = new Set(); // the titles of owner issues whose check ran this round and found nothing (issuesToClose())
 const readJson = (file) => {
   try {
     return JSON.parse(readFileSync(file, "utf8"));
@@ -78,10 +79,11 @@ const lastReport = readJson(path.join("pipeline", "runs", "latest.json"));
 // (ReferenceError) until 2026-10-23. `login=refused` is how pipeline/lib/llm.mjs marks a refused credential for any
 // provider; the words are the older reports' only sign.
 const refusedLogin = (lastReport?.log ?? []).some((l) => /llm fail/.test(l) && (/ login=refused:/.test(l) || /not logged in|\b401\b|authenticat|oauth|invalid (?:x-)?api[- ]key|credit balance|subscription access/i.test(l)));
+const provider = (process.env.KHAZENDAR_PROVIDER || "gemini").toUpperCase();
+const tokenTitle = `خازندار: ${provider} refuses the newsroom's credentials`;
 if (refusedLogin) {
-  const provider = (process.env.KHAZENDAR_PROVIDER || "gemini").toUpperCase();
-  owner.push({ key: "token", title: `خازندار: ${provider} refuses the newsroom's credentials`, text: `The newsroom's last run (${lastReport.startedAt}) could not authenticate with ${provider}, so no story is being written. Verify the credentials in .env, the control room's Settings or repository secrets.` });
-}
+  owner.push({ key: "token", title: tokenTitle, text: `The newsroom's last run (${lastReport.startedAt}) could not authenticate with ${provider}, so no story is being written. Verify the credentials in .env, the control room's Settings or repository secrets.` });
+} else if (lastReport) cleared.add(tokenTitle);
 
 // The published stories.
 const dir = path.join("content", "articles");
@@ -232,13 +234,17 @@ const feedsHeard = readJson(path.join("pipeline", "state", "feeds.json"))?.feeds
 const stillFeeds = (readJson(path.join("pipeline", "sources.json"))?.sources ?? [])
   .filter((s) => !s.disabled && s.kind === "news")
   .filter((s) => feedsHeard[s.id]?.readAt && hoursAgo(feedsHeard[s.id].readAt) < 48 && feedsHeard[s.id].newestAt && hoursAgo(feedsHeard[s.id].newestAt) > 72);
+const feedsTitle = "خازندار: news feeds that have served nothing new for three days";
 if (stillFeeds.length) {
   owner.push({
     key: "feeds",
-    title: "خازندار: news feeds that have served nothing new for three days",
+    title: feedsTitle,
     text: `These feeds still answer the newsroom, but their newest item is three days old or more, so they give it nothing: ${stillFeeds.map((s) => `${s.id} (${s.nameEn}, ${s.url}; newest item ${feedsHeard[s.id].newestAt.slice(0, 10)})`).join("; ")}. A publisher may have moved its feed (Sky News Arabia's business desk moved to snabusiness.com on 2026-10-29 and its old feed stood still). Open the publisher's site: if it has published since, take the feed its pages name in their head (<link rel="alternate" type="application/rss+xml">) or its news sitemap, read it with \`node pipeline/run.mjs --dry-run --source=<its id>,<another id>\`, and put its address in pipeline/sources.json. If the publisher itself has not published, close this issue.`,
   });
-} else if (Object.keys(feedsHeard).length) fine.push("Every news feed read in the last two days has an item from the last three days.");
+} else if (Object.keys(feedsHeard).length) {
+  fine.push("Every news feed read in the last two days has an item from the last three days.");
+  cleared.add(feedsTitle);
+}
 
 // 7. Soundness.
 let builds = true;
@@ -273,7 +279,9 @@ if (!OFFLINE && builds && site?.url && newest) {
   } catch {
     status = -1;
   }
-  if (status === 404) owner.push({ key: "live", title: "خازندار: the live site has stopped updating", text: `${site.url} does not carry «${newest.title}», published ${Math.round((now - newest.at) / 36e5)} hours ago, although the site builds. The host (Cloudflare Pages, project khazendar) is failing to deploy: open its dashboard, Deployments, and read the failed build's log.` });
+  const liveTitle = "خازندار: the live site has stopped updating";
+  if (status === 200) cleared.add(liveTitle);
+  if (status === 404) owner.push({ key: "live", title: liveTitle, text: `${site.url} does not carry «${newest.title}», published ${Math.round((now - newest.at) / 36e5)} hours ago, although the site builds. The host (Cloudflare Pages, project khazendar) is failing to deploy: open its dashboard, Deployments, and read the failed build's log.` });
   else if (status === 200) fine.push(`The live site carries the newest story («${newest.title}»).`);
   else fine.push(`The live site could not be asked about the newest story (${status === -1 ? "no answer" : `HTTP ${status}`}); nothing is concluded from that.`);
 }
@@ -285,10 +293,12 @@ if (!OFFLINE && builds && site?.url && newest) {
 // unresolved consequential issues ... do not repeatedly notify me about the same unresolved item").
 const ledgerNow = readJson(path.join("pipeline", "state", "factcheck.json"))?.stories ?? {};
 const stuckCorrections = Object.entries(ledgerNow).filter(([, e]) => (["refused", "correction-failed"].includes(e.outcome) && (e.correctionAttempts ?? 1) >= 2) || e.verified?.resolved === false);
+const correctionsTitle = "خازندار: published stories with a proved error the corrections desk could not fix";
+if (!stuckCorrections.length && Object.keys(ledgerNow).length) cleared.add(correctionsTitle);
 if (stuckCorrections.length) {
   owner.push({
     key: "corrections",
-    title: "خازندار: published stories with a proved error the corrections desk could not fix",
+    title: correctionsTitle,
     text: `The second look proved an error in these published stories against their own sources, and the corrections desk could not correct it in two tries (or its correction left the error standing). Each is listed in pipeline/state/factcheck.json with the source sentence; correct it with \`node pipeline/correct.mjs --slug=… --issue="…"\`, or close this issue if the story stands:\n\n${stuckCorrections.map(([slug, e]) => `- ${slug}: ${e.problems?.join("; ") || e.reason || (e.verified?.remaining ?? []).map((r) => `[${r.class}] ${String(r.sentence).slice(0, 120)}`).join("; ") || e.outcome}`).join("\n")}`,
   });
 }
@@ -332,13 +342,11 @@ if (ON_GITHUB) {
       console.log(`could not open or update the issue "${o.title}": ${String(error.message).split("\n")[0]}`);
     }
   }
-  for (const issue of openIssues ?? []) {
-    const stuck = String(issue.title).match(/the daily editor could not fix "([^"]+)"/);
-    if (!stuck || !String(issue.body ?? "").includes(ISSUE_MARK) || findings.some((f) => f.key === stuck[1])) continue;
+  for (const { number, what } of issuesToClose(openIssues, { mark: ISSUE_MARK, findings, cleared })) {
     try {
-      execFileSync("gh", ["issue", "close", String(issue.number), "--comment", `The daily round no longer finds "${stuck[1]}", so this is closed; a new issue opens if it returns.`]);
+      execFileSync("gh", ["issue", "close", String(number), "--comment", `The daily round no longer finds ${what}, so this is closed; a new issue opens if it returns.`]);
     } catch (error) {
-      console.log(`could not close the issue "${issue.title}": ${String(error.message).split("\n")[0]}`);
+      console.log(`could not close the issue #${number}: ${String(error.message).split("\n")[0]}`);
     }
   }
 }

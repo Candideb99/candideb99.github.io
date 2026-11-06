@@ -143,3 +143,19 @@ export function confirmLoss(record, bad, reason, now = new Date()) {
   const confirmed = entry.checks >= 2 && (now.getTime() - Date.parse(first)) / 36e5 >= CONFIRM_AFTER_H;
   return { entry, confirmed };
 }
+
+/**
+ * The owner's issues the daily round opened that it should now close: one for a finding the editor could not fix, once
+ * the finding is gone (2026-10-31), and one for anything else it reports to the owner (a silent feed, a stuck correction,
+ * a refused login, a site that stopped updating), once that check ran and found nothing: `cleared` holds those titles.
+ * Until 2026-11-06 only the first kind closed, so the silent-feed issue still named WIRED's feed a day after WIRED
+ * published again. An issue whose body lacks the round's `mark` is never touched. Returns [{ number, what }].
+ */
+export function issuesToClose(openIssues, { mark, findings = [], cleared = new Set() }) {
+  return (openIssues ?? []).flatMap((issue) => {
+    if (!mark || !String(issue?.body ?? "").includes(mark)) return [];
+    const stuck = String(issue.title).match(/the daily editor could not fix "([^"]+)"/);
+    if (stuck) return findings.some((f) => f.key === stuck[1]) ? [] : [{ number: issue.number, what: `"${stuck[1]}"` }];
+    return cleared.has(issue.title) ? [{ number: issue.number, what: "what this issue reported" }] : [];
+  });
+}
