@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The picture desk, tested on cases whose right answer is known (161 checks), with scripted stand-ins for Claude, Wikimedia Commons,
+ * The picture desk, tested on cases whose right answer is known (165 checks), with scripted stand-ins for Claude, Wikimedia Commons,
  * the other libraries and the thumbnails: no model call, no network. Written 2026-09-28 after the owner asked for the
  * image engine to be stress-tested ("it might still be buggy"), so that the cascade's order, its place filter, the
  * repeat guard, its behaviour when a service fails, and the reading of accented names cannot regress unseen. The gate
@@ -1253,8 +1253,12 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   check(
     "the agencies that stamp their photographs are read from a file's record",
     [stampedSource({ categories: "CC-BY-4.0|Hossein Mohebi|Photos from Mehrnews.com" }), stampedSource({ categories: "2025 in Yemen|Photos from Tasnim News Agency" }), stampedSource({ categories: "Oil terminals in Saudi Arabia", artist: "Tester" })],
-    ["Mehrnews", "Tasnim", ""],
+    ["Mehrnews", "Tasnim News", ""],
   );
+  // A place or a given name is no agency (the review of 2026-11-06): Isna on the Nile, a photographer called Tasnim.
+  check("«Isna» the town and a photographer called Tasnim are no agencies", [stampedSource({ categories: "Isna|Temples in Egypt" }), stampedSource({ artist: "Tasnim Ahmed" })], ["", ""]);
+  // A rank in the planner's Arabic name, and the spokesman listed among the story's people too (the same review).
+  check("«العميد يحيى سريع» finds «يحيى سريع» in the story", groundedClaimant(houthi, { ...saree, ar: "العميد يحيى سريع" })?.name, "Yahya Saree");
   const stampedFile = { title: "2026. Yahya Saree.jpg", categories: "2025 in Yemen|Photos from Tasnim News Agency" };
   const withSpokesman = photoRules({ draft: houthi, image: stampedFile, people: ["Yahya Saree"], known: ["Yahya Saree"], thumbnail: "data:image/jpeg;base64,AAAA", claimant: "Yahya Saree" });
   const without = photoRules({ draft: houthi, image: { title: "Ras Tanura.jpg" }, thumbnail: "data:image/jpeg;base64,AAAA" });
@@ -1281,6 +1285,26 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   // The real planner spelled him «Yahya Sare'e», and Commons files him as «Yahya Saree» (2026-11-05).
   const spelled = await scenario({ draft: houthi, plan: { ...plan, claimant: { ...saree, name: "Yahya Sare'e" } }, world, judge: choose, verify: refusedHit });
   check("a planner's apostrophe («Yahya Sare'e») does not lose him: the plain spelling is searched first", [spelled.image?.title, spelled.searched.includes("Yahya Saree 2026")], [portrait.title, true]);
+  // The review of 2026-11-06: every pass before his calls him WRONG_SUBJECT, and that refusal hid him from his own pass;
+  // and his record's «military spokesman» dropped him as a warship.
+  const ownPassOnly = (name, prompt) => (name.includes("Saree") && prompt.includes("So is Yahya Saree") ? "RIGHT" : "WRONG_SUBJECT");
+  const statement = file("2026. Yahya Saree.jpg", { categories: "2025 in Yemen", date: "2026-05-02", description: "Yahya Saree reads a statement in Sanaa" });
+  const foundEarly = await scenario({
+    draft: houthi,
+    plan: { ...plan, queries: ["oil terminal Saudi Arabia", "Houthi statement Sanaa"] },
+    world: { "oil terminal Saudi Arabia": [terminal], "Houthi statement Sanaa": [statement], "Yahya Saree 2026": [statement], "Yahya Saree": [statement] },
+    judge: (titles) => titles.findIndex((t) => t.includes("Saree")) + 1 || choose(titles),
+    verify: ownPassOnly,
+  });
+  const military = file("2026. Yahya Saree.jpg", { categories: "2025 in Yemen", date: "2026-05-02", description: "Yahya Saree, the Houthi military spokesman, reads a statement in Sanaa" });
+  const inUniform = await scenario({ draft: houthi, plan, world: { ...world, "Yahya Saree 2026": [military], "Yahya Saree": [military] }, judge: choose, verify: ownPassOnly });
+  check(
+    "his photograph refused by an earlier pass still runs in his own, and «military spokesman» in its record does not drop it",
+    [foundEarly.image?.title, foundEarly.calls.filter((c) => c === "verify:2026. Yahya Saree.jpg").length >= 2, inUniform.image?.title],
+    [portrait.title, true, military.title],
+  );
+  const alsoPeople = await scenario({ draft: houthi, plan: { ...plan, people: [{ name: "Yahya Saree", ar: "يحيى سريع", headline: "الحوثيون" }], focus: "people" }, world, judge: choose, verify: () => "RIGHT" });
+  check("a spokesman the planner also lists among the story's people is not searched ahead of what his group hit", [alsoPeople.image?.title, alsoPeople.searched.some((q) => q.includes("Saree"))], [terminal.title, false]);
   const unnamed = await scenario({ draft: { ...houthi, lede: "أعلنت الجماعة استهداف منشآت نفطية في رأس تنورة." }, plan, world, judge: choose, verify: refusedHit });
   check("a spokesman the story does not name is never searched, and the story runs as text", [unnamed.image, unnamed.searched.some((q) => q.includes("Saree"))], [null, false]);
 

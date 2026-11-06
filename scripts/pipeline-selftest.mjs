@@ -719,6 +719,12 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("names: a man of that family name passes («وقال يوسف»، «بحسب يوسف.»)", womanOf("وقال رئيس الهيئة محمد يوسف إن الآلية تبدأ الأحد.\n\nوقال يوسف إن الملفات القديمة تُستكمل، والآلية جزء من خطة أوسع بحسب يوسف.").length, 0);
   check("names: «قالت الهيئة إن محمد يوسف…» introduces no woman", womanOf("قالت الهيئة إن محمد يوسف تولى الملف.\n\nوالخطة، بحسب يوسف، تبدأ الأحد.").length, 0);
   check("names: «أكدت الوزارة حسن سير العمل» is no name", womanOf("أكدت الوزارة حسن سير العمل في المصانع.\n\nوأكدت حسن سير الإجراءات الجديدة.").length, 0);
+  // The review of 2026-11-06: «وبحسب» and a verb with shadda were missed, and a man as a verb's object was flagged.
+  check(
+    "names: «وبحسب يوسف،» and «وشدّدت يوسف» are sent back; «ودعت خالد إلى» (she invited him) is not",
+    [womanOf(`${nahed}\n\nوالآلية، وبحسب يوسف، جزء من منظومة تيسيرات.`).length, womanOf(`${nahed}\n\nوشدّدت يوسف على توحيد الخطوات.`).length, womanOf("وتابعت الوزيرة الملف، ودعت خالد إلى زيارة القاهرة.").length],
+    [1, 1, 0],
+  );
 
   // The first Sol story was factually clean but had an incomplete headline and three tiny dispatches.
   const dispatches = [
@@ -768,6 +774,12 @@ if (spawnSync("git", ["--version"]).status === 0) {
     [judgeRewrite(nikkei, { lede: plainPast }, ["lede"]).rejected.some((r) => r.field === "lede"), judgeRewrite(embeddedHedge, { lede: embeddedHedge.lede.replace("قد تتراجع", "تتراجع") }, ["lede"]).rejected.some((r) => r.field === "lede")],
     [false, true],
   );
+  // The review of the same day: a «كان» of a relative clause, a new clause after «لكنها», and a present in «تت» keep «قد» a hedge.
+  const stillHedged = ["وقالت الوكالة إن الأسعار التي كانت مستقرة طوال العام قد ترتفع", "وكانت صادرات القمح مستقرة لكنها قد تتراجع", "وقال البنك إن النمو الذي كان قوياً قد تتباطأ وتيرته"].map((s) => {
+    const story = { ...nikkei, lede: `هبط مؤشر نيكاي الياباني 3% اليوم الجمعة. ${s} في الأشهر المقبلة.` };
+    return judgeRewrite(story, { lede: story.lede.replace(/قد (تت?[\p{L}]+)/u, "$1") }, ["lede"]).rejected.some((r) => r.field === "lede");
+  });
+  check("«قد» stays a hedge after a relative clause's «كان», after «لكنها», and before «تت…»", stillHedged, [true, true, true]);
   // 2026-11-06: the silent-feed issue still named WIRED a day after WIRED published again; only "could not fix" issues closed.
   {
     const mark = "Opened by the daily editor's round (scripts/editor-precheck.mjs).";
@@ -813,6 +825,7 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("headlines: an analysis that states its finding passes", askedOf("صعود برنت يخفف عجز الموازنات الخليجية ولا يلغيه", { analysis: true }), false);
   check("headlines: an explainer's question is its headline", askedOf("لماذا يرتفع برنت رغم زيادة الإنتاج؟", { explainer: true }), false);
   check("headlines: «من» opening a statement is no question", askedOf("من الرياض إلى القاهرة: برنت يرفع كلفة الدعم", { analysis: true }), false);
+  check("headlines: «متى…» and «مَنْ…» without their mark are questions too", [askedOf("متى يعود برنت إلى ما دون 90 دولاراً", { analysis: true }), askedOf("مَنْ يدفع ثمن صعود برنت في موازنات الخليج", { analysis: true })], [true, true]);
   // GRAVITY: a curiosity the photograph names and the story does not is refused in code.
   check("photos: a horse-drawn fuel cart under a central-bank story is refused", noveltyFault({ title: "CairoHorseDrawnFuelTransport.jpg", alt: "عربة وقود يجرها حصان في محطة بنزين بالقاهرة" }, { title: "برنت فوق 105 دولارات يعقّد حسابات المركزي المصري" }), "Horse");
   check("photos: an oil field's «nodding donkey» is a pumpjack, not an animal", noveltyFault({ title: "Oil pumpjack in the Permian Basin.jpg", categories: "Nodding donkeys in Texas" }, { title: "النفط يتراجع مع آمال مفاوضات هرمز" }), null);

@@ -365,8 +365,13 @@ const WOMAN_INTRODUCED = [
 ];
 /** What may follow a family name standing alone: a comma or a full stop, or a particle. */
 const STANDS_ALONE = `(?=\\s*[،,.:؛]|\\s*$|\\s+(?:إن|أن|بأن|إنه|إنها|في|من|على|إلى|عن|خلال|أمام|فإن)(?!${LETTER}))`;
+// A verb that can take a person as its object («ودعت خالد إلى زيارة القاهرة»: she invited Khaled) is read only after a
+// woman of that family name has been introduced; standing alone, the name after it may be its object (the review of
+// 2026-11-06).
+const SHE_SAYS_ALONE = "(?:قالت|أضافت|أوضحت|أكدت|ذكرت|أشارت|رأت|ترى|توقعت|تتوقع|لفتت|شددت|أعلنت|كشفت|بيّنت|بينت|أفادت|صرحت|تقول|أردفت|ختمت|اختتمت)";
 export function womenBySurname(text) {
-  const t = String(text ?? "");
+  // Read without marks: «وحذّرت سالم» and «وشدّدت يوسف» were missed for their shadda (the review of 2026-11-06).
+  const t = String(text ?? "").replace(/\p{M}/gu, "");
   const hits = [];
   const seen = new Set();
   const add = (surname, name, at) => {
@@ -378,11 +383,12 @@ export function womenBySurname(text) {
     for (const m of t.matchAll(re)) {
       const [first, surname] = [m[1], m[2]];
       const rest = t.slice(m.index + m[0].length);
-      const later = new RegExp(`(?<!${LETTER})(?:[وف]?${SHE_SAYS}\\s+${surname}(?!${LETTER})|(?:بحسب|حسب|وفق)\\s+${surname}${STANDS_ALONE})`, "gu");
+      // «وبحسب يوسف،» as well as «بحسب يوسف،» (66 «وبحسب» in the archive; the review of 2026-11-06).
+      const later = new RegExp(`(?<!${LETTER})(?:[وف]?${SHE_SAYS}\\s+${surname}(?!${LETTER})|[وف]?(?:بحسب|حسب|وفق)\\s+${surname}${STANDS_ALONE})`, "gu");
       for (const b of rest.matchAll(later)) add(surname, `${first} ${surname}`, b[0]);
     }
   }
-  for (const m of t.matchAll(new RegExp(`(?<!${LETTER})[وف]?${SHE_SAYS}\\s+(${MAN_GIVEN})${STANDS_ALONE}`, "gu"))) add(m[1], null, m[0]);
+  for (const m of t.matchAll(new RegExp(`(?<!${LETTER})[وف]?${SHE_SAYS_ALONE}\\s+(${MAN_GIVEN})${STANDS_ALONE}`, "gu"))) add(m[1], null, m[0]);
   return hits;
 }
 

@@ -67,7 +67,8 @@ export function programmaticChecks(draft, sources, { recentTitles = [], newsTitl
   // An analysis says in its headline what it found (the owner, 2026-11-01, called «ماذا يعني هامش التكرير القياسي لفاتورة
   // الديزل في المغرب والإمارات؟» badly written and confusing). Its schema's example had been a «ماذا يعني…» question; of
   // the 21 analyses then published only that one copied it, and no news story, reading, weekly or feature is a question.
-  if (analysis && /[؟?]\s*$|^(?:ماذا|لماذا|كيف|هل|ما الذي|من الذي|مَن)(?![\p{L}\p{M}])/u.test(String(draft.title ?? "").trim())) issues.push(`عنوان التحليل سؤال («${String(draft.title).trim()}»)؛ التحليل يقول في عنوانه ما وجده، بكلمات القارئ لا بمصطلح يشرحه النص، مثل «الفائدة الأمريكية تحرّك جرام الذهب في مصر أكثر من الجنيه»؛ عنوان السؤال لـ«مدخل إلى الاقتصاد».`);
+  // «متى»، «أين»، «كم» open a question too, and «مَنْ» may carry its sukun (the review of 2026-11-06).
+  if (analysis && /[؟?]\s*$|^(?:ماذا|لماذا|كيف|هل|ما الذي|من الذي|مَن|متى|أين|كم)\p{M}*(?![\p{L}\p{M}])/u.test(String(draft.title ?? "").trim())) issues.push(`عنوان التحليل سؤال («${String(draft.title).trim()}»)؛ التحليل يقول في عنوانه ما وجده، بكلمات القارئ لا بمصطلح يشرحه النص، مثل «الفائدة الأمريكية تحرّك جرام الذهب في مصر أكثر من الجنيه»؛ عنوان السؤال لـ«مدخل إلى الاقتصاد».`);
   const titleLatin = (draft.title.match(/[A-Za-z][A-Za-z&+.'-]*/g) ?? []).filter((w) => !ALLOWED_LATIN.test(w));
   if (titleLatin.length) issues.push(`العنوان يحتوي كلمات لاتينية (${titleLatin.join(", ")}). اكتب العنوان بالعربية كاملاً.`);
   const headlineLatinInBody = (`${draft.subtitle}\n${draft.lede}`.replace(/\([^)]*\)/g, " ").match(/\b[A-Za-z]{3,}\b/g) ?? []).filter((w) => !ALLOWED_LATIN.test(w));

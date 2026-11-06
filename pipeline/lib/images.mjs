@@ -203,6 +203,7 @@ export function headlinePeople(title, people) {
  * together, since a planner's memory of who speaks for a group may be a man since replaced or killed (the IRGC's
  * spokesman of 2025 was commemorated in April 2026). Null otherwise.
  */
+const CLAIMANT_RANK = new Set(["عميد", "لواء", "عقيد", "عماد", "فريق", "جنرال", "مقدم", "رائد", "نقيب", "شيخ", "سيد", "دكتور", "متحدث", "ناطق", "سردار"]);
 export function groundedClaimant(draft, claimant, sources = []) {
   if (!claimant || typeof claimant !== "object") return null;
   const p = { name: String(claimant.name ?? "").trim(), ar: String(claimant.ar ?? "").trim(), headline: String(claimant.headline ?? "").trim() };
@@ -217,7 +218,11 @@ export function groundedClaimant(draft, claimant, sources = []) {
   // An apostrophe is dropped on both sides: «Sare'e» and «Saree» are one spelling here.
   const latin = (s) => fold(s).replace(/['’ʿʾ`]/g, "").replace(/[^a-z]+/g, " ").trim();
   const latinText = ` ${latin(texts)} `;
-  const named = spans(arabicWords(p.ar)).some((s) => arabicText.includes(` ${s} `)) || spans(latin(p.name).split(" ")).some((s) => latinText.includes(` ${s} `));
+  // A rank the planner put before the name is not the name: «العميد يحيى سريع» must find «يحيى سريع» (the review of
+  // 2026-11-06).
+  const arName = arabicWords(p.ar);
+  while (arName.length > 2 && CLAIMANT_RANK.has(arName[0])) arName.shift();
+  const named = spans(arName).some((s) => arabicText.includes(` ${s} `)) || spans(latin(p.name).split(" ")).some((s) => latinText.includes(` ${s} `));
   return named ? p : null;
 }
 
@@ -1038,7 +1043,9 @@ const AMATEUR_LAST = `AMATEUR LAST. Choose a professional's frame before an amat
 // spokesman's one usable photograph carries a «MEHR NEWS AGENCY» box, the Front Altair's «Tasnim News» nine times (2026-11-05).
 const WATERMARK_RULE = `NO OTHER NAME STAMPED ON THE PICTURE. Refuse a photograph carrying a watermark, a logo or a credit stamped on the picture itself by a news agency, a photo agency, a stock library, a broadcaster or a photographer (Getty Images, AFP, Reuters, AP, Anadolu, Tasnim, Mehr, Fars, IRNA, iStock, Shutterstock, Alamy, a channel's logo in a corner, a «© name» line), however small, faint or tucked into a corner, and however well the picture fits: it reads as another's picture under this paper's headline (the owner, 2026-11-05: "i do not want pictures to have other agencies logos on it or logos like getty image etc"). Files from Iran's agencies (Tasnim, Mehr, Fars) nearly always carry one: look at every corner and along the edges. Writing that is part of the scene (a sign, a ship's name, a podium's emblem) is no stamp: the other rules judge it.`;
 /** Commons files from agencies that stamp their photographs, read from the file's record (stampedSource()). */
-const STAMPING_SOURCE = /\b(?:tasnim|mehr ?news|mehrnews|fars ?news|farsnews|fars media|irna|isna|mizan|khamenei\.ir|yjc|young journalists club|abna|irib|press ?tv|al[- ]?masirah)\b/i;
+// Each by its agency form, so a place is not read as one («Isna», a town on the Nile; the review of 2026-11-06).
+// «Tasnim» and «Irna» are also given names, so a photographer called Tasnim is no agency.
+const STAMPING_SOURCE = /\b(?:tasnim ?news|tasnimnews|mehr ?news|mehrnews|fars ?news|farsnews|fars media|irna\.ir|from irna|islamic republic news agency|isna(?:\.ir| news)|mizan(?:\.ir| news)|khamenei\.ir|yjc|young journalists club|abna(?:24|\.ir| news)|irib|press ?tv|al[- ]?masirah)\b/i;
 /** The stamping agency a file's record names (its categories, credit or author), or "". */
 export function stampedSource(image) {
   return String(`${image?.categories ?? ""} ${image?.credit ?? ""} ${image?.artist ?? ""}`).match(STAMPING_SOURCE)?.[0] ?? "";
@@ -1475,14 +1482,17 @@ Return JSON: {"queries": ["...", "...", "...", "..."], "place": ["..."], "people
       if (some(d.people) && d.people.some((p) => !p || typeof p !== "object")) throw new Error('each of "people" is {"name", "ar", "headline"}');
     },
   });
-  // Who may be pictured as the story's people is checked in code against the headline (headlinePeople()).
-  const { lead, side } = headlinePeople(draft.title, data.people);
+  // Who may be pictured as the story's people is checked in code against the headline (headlinePeople()). The armed
+  // group's spokesman is never among them, whatever the planner says: as a lead he would run ahead of what his group hit,
+  // as on 30 October, and as a side figure his own pass would be told he is the wrong person (the review of 2026-11-06).
+  const claimant = groundedClaimant(draft, data.claimant, sources);
+  const notClaimant = (p) => !claimant || fold(String(p?.name ?? p ?? "")).replace(/['’ʿʾ`]/g, "") !== fold(claimant.name).replace(/['’ʿʾ`]/g, "");
+  const { lead, side } = headlinePeople(draft.title, (Array.isArray(data.people) ? data.people : []).filter(notClaimant));
   for (const p of side) log(`image: ${p.name} is named in the story but not in its headline: never its photograph alone`);
   // The company is held to the headline too, and each brand search must name it.
   const company = headlineCompany(draft.title, data.company);
   if (data.company && !company) log(`image: the planner's company (${String(data.company?.name ?? "").slice(0, 40)}) is not what the headline names; no brand pass`);
-  // The armed group's spokesman, held to the headline and to the story's own text (groundedClaimant()).
-  const claimant = groundedClaimant(draft, data.claimant, sources);
+  // The armed group's spokesman, held to the headline and to the story's own text (groundedClaimant(), above).
   if (data.claimant && !claimant) log(`image: the planner's spokesman (${String(data.claimant?.name ?? "").slice(0, 40)}) is not named by the story or its sources beside a group its headline names; no spokesman pass`);
   return {
     claimant,
@@ -1529,7 +1539,8 @@ Return JSON: {"queries": ["...", "...", "...", "..."], "place": ["..."], "people
 const AUDIT_PEOPLE = ": the people its headline names or refers to, by name, by office or by the institution they lead (a place or a state is no one's office: under «قاضٍ في نيو مكسيكو يلزم ميتا…» a reader takes the man pictured for the judge)";
 const AUDIT_SIDE = " A person the story names only below its headline, pictured without one of the headline's people, is WRONG_PERSON too: it runs under the headline, and a reader takes the person pictured for the person the headline is about (the owner, 2026-10-24, on the head of Libya's State Council under the parliament's acceptance of the central bank governor's resignation).";
 const AUDIT_EVENT = " A photograph of an earlier edition of the event the story is about (its hall, its stage, its sessions), captioned with the edition's year, is RIGHT; another event stays STALE_EVENT.";
-const AUDIT_OWN_OBJECT = " So is the story's own place or named object, as the desk's search for it finds it: a site, field, plant, port, ship or rig the story names and the file's record names too, shown in the frame. A ship or a rig is the story's own wherever the file says it was taken, as the story's people are (the drillship «ستينا فورث» under the well it drilled, photographed in the Canaries); RECAPTION when its caption names that other place.";
+const AUDIT_CLAIMANT = " So is, under a headline reporting an armed group's or an army's attack, claim or threat, the man who speaks for it photographed speaking (at a podium, a briefing or a press conference), his face plain, named in the caption with his role: the desk runs him when nothing of what the group hit can be found (the owner, 2026-11-05).";
+const AUDIT_OWN_OBJECT =" So is the story's own place or named object, as the desk's search for it finds it: a site, field, plant, port, ship or rig the story names and the file's record names too, shown in the frame. A ship or a rig is the story's own wherever the file says it was taken, as the story's people are (the drillship «ستينا فورث» under the well it drilled, photographed in the Canaries); RECAPTION when its caption names that other place.";
 const AUDIT_BRAND = " So is, under a headline that is ONE company's own news (its result, guidance, deal, listing, penalty or cuts), that company's CURRENT logo or brand as the clear subject, sharp, on its own sign, forecourt, store, vehicle or site, wherever it was photographed, and its own site abroad (the owner, 2026-10-30, on BP's results); a former logo, another company's brand, a street or building front where the brand is a small part, or the logo as a graphic, screen or sticker is WRONG_SUBJECT.";
 const AUDIT_PRINTED =` It is printed so: "the caption" is the line under "Caption the paper printed" above, never the file name or the Commons description (a file called "… at the oil terminal in Lisboa" printed as «ناقلة نفط (${ILLUSTRATIVE})» names no place; the audit of 2026-09-24 confused the two).`;
 export function photoRules({ draft, image = {}, neutral = false, people = [], places = [], skyline = false, thumbnail = null, known = [], side = [], event = [], lastResort = false, audit = false, standardAside = false, claimant = "" }) {
@@ -1539,9 +1550,13 @@ export function photoRules({ draft, image = {}, neutral = false, people = [], pl
   const sideRule = side.length ? ` ${sideNote(side)}` : audit ? AUDIT_SIDE : "";
   // An armed group's spokesman is never the first picture of what its attack hit, and is the last one before text
   // (claimantPhoto()); its fighters, weapons and broadcasts never are.
+  // The audit cannot know whether anything of what the group hit could be found, so it holds a spokesman to the same
+  // terms as his own pass does (AUDIT_CLAIMANT): it had flagged every one the desk ran (the review of 2026-11-06).
   const armedGroup = claimant
     ? `${claimant}'s group's fighters, weapons, parades or funerals, a portrait of him on a banner or at a memorial, or a frame from a broadcast, under a story about what its attack hit`
-    : "an armed group's spokesman, commander or fighters under a story about what its attack hit (the Houthis' military spokesman in uniform under their claimed strikes on Saudi oil sites, 2026-10-30)";
+    : audit
+      ? "an armed group's fighters, weapons, parades or funerals, a portrait on a banner or at a memorial, or a frame from a broadcast, under a story about what its attack hit"
+      : "an armed group's spokesman, commander or fighters under a story about what its attack hit (the Houthis' military spokesman in uniform under their claimed strikes on Saudi oil sites, 2026-10-30)";
   // A file from an agency that stamps its photographs is looked at for the stamp (stampedSource()).
   const stamped = stampedSource(image);
   return `Judge as a strict picture editor of a paper read across the Arab world. ${neutral ? "The test is what readers will see: the frame and the caption" : "The test is what is in the frame, what the caption says, and where the photograph was taken; the file name, description and categories say where, even when readers never see them"}:
@@ -1550,7 +1565,7 @@ export function photoRules({ draft, image = {}, neutral = false, people = [], pl
 - ${PRICE_FORM_RULE} A frame in another form is WRONG_SUBJECT, and so is one showing the side of a contrast the headline is not about (manual work under a headline that rich countries can hand more of their work to AI).
 - STALE_EVENT: a specific past event (a summit, a ceremony, a visit) that the story is not about, unless the frame shows the story's own people${people.length || known.length ? ` (${(people.length ? people : known).join(", ")})` : ""}: a photograph of them at an earlier occasion, captioned with that occasion and its year or «(أرشيفية)», is how the desks illustrate a story about them, and it is RIGHT.${event.length ? ` The story is about «${event[0]}» itself: a photograph of an earlier edition of that same event (its hall, its stage, its sessions), captioned with the edition's year, is RIGHT; another event stays STALE_EVENT.` : audit ? AUDIT_EVENT : ""}
 ${CONCEPT_KINDS.has(draft.kind) ? "- This piece explains or analyses a concept: its subject at work is GENERIC_OK even where a news story would call it a neighbouring sector. A trading floor, traders at their screens or a price board in a trading hall pictures bonds, rates and markets alike (a Treasury-bond explainer lost an NYSE floor as \"equity trading\", 2026-09-24); an everyday food market pictures prices and inflation.\n" : ""}- GENERIC_OK: a neutral illustration whose frame shows the story's OWN sector or institution at work: the sector's own object (a battery production line, a data-centre hall, an LNG tanker, a refinery, a pipeline, a pumpjack, a trading floor, a port crane, a factory line, the named bank's or company's staff at work), never its building's front; for prices, inflation, a currency, wages or remittances, people paying or counting money, or the notes of the story's own currency. ${skyline ? "The named capital's skyline or central bank is acceptable ONLY for a story about the country's economy as a whole (inflation, growth, budget, currency, rates, sovereign rating, trade balance, jobs)." : "The named country's central bank is acceptable ONLY for a story about its own decision on interest rates or its currency, and its building only as the last resort. A skyline, a panorama, a landmark or a cityscape of a capital is WRONG_SUBJECT, whatever the story: no pass of this paper runs one (the story's own place, when one is named below and the file is taken there, is not a skyline)."} An anonymous scene of the story's sector — a battery production line, a refinery, a tanker at sea, a container port, a trading floor, a server hall — is acceptable as a stock photograph is, under the rule below${neutral ? "." : ": for a story about one country, only when nothing (frame, writing, caption, file name, description, categories) places it in another country."} A story about a sector's exports or imports named broadly (food, farm goods, textiles, building materials, manufactured goods) is pictured by the country's own goods of that kind, and such a frame is GENERIC_OK even when the story's figures cover a narrower part of the trade: fruit and vegetables in crates at the country's markets or fields, cartons on a packing line, containers at its port (the owner, 2026-09-27: the other desks pictured Egypt's food-industry exports with its oranges and crates of citrus, where this paper ran a cheese dairy's vat). ${ECONOMY_RULE}
-- RIGHT: the story's own people (also at an earlier occasion, captioned as one), place or event.${audit ? AUDIT_OWN_OBJECT : ""}${claimant ? ` So is ${claimant}, who speaks for the group whose attack, claim or threat the headline reports: nothing of what it hit could be found, and the desks then run the group's spokesman (the owner, 2026-11-05: "what if what it hits is not available? then maybe use the spokesperson?"). A recent photograph of him speaking (at a podium, a briefing or a press conference), his face plain, captioned with his name and his role, is RIGHT.` : ""}${company ? ` So is ${company}'s own brand, the story being its own news: its CURRENT logo or brand large and legible at a glance, as the subject or plainly on its own sign, forecourt, store, vehicle or site, wherever it was photographed (the desks' "The logo of BP is seen at a petrol station", the owner, 2026-10-30); a former logo, another company's brand, a street or building front where the brand is a small part, or the logo as a graphic, screen or sticker is WRONG_SUBJECT.` : audit ? AUDIT_BRAND : ""}
+- RIGHT: the story's own people (also at an earlier occasion, captioned as one), place or event.${audit ? AUDIT_OWN_OBJECT : ""}${claimant ? ` So is ${claimant}, who speaks for the group whose attack, claim or threat the headline reports: nothing of what it hit could be found, and the desks then run the group's spokesman (the owner, 2026-11-05: "what if what it hits is not available? then maybe use the spokesperson?"). A recent photograph of him speaking (at a podium, a briefing or a press conference), his face plain, captioned with his name and his role, is RIGHT.` : audit ? AUDIT_CLAIMANT : ""}${company ? ` So is ${company}'s own brand, the story being its own news: its CURRENT logo or brand large and legible at a glance, as the subject or plainly on its own sign, forecourt, store, vehicle or site, wherever it was photographed (the desks' "The logo of BP is seen at a petrol station", the owner, 2026-10-30); a former logo, another company's brand, a street or building front where the brand is a small part, or the logo as a graphic, screen or sticker is WRONG_SUBJECT.` : audit ? AUDIT_BRAND : ""}
 ${neutral ? "" : "- RECAPTION: the frame alone would be RIGHT or GENERIC_OK, but the caption names an airline, an operator, an owner, a company, a port, an airport or a person the story does not mention (an airline's A321neo under a story about the A321neo's fuselage; a tanker's operator under a story about tanker rates). " + (audit ? "The caption is then written again to name only what the story names." : "The paper then rewrites the caption to name only what the story names and asks you again.") + " Never for a wrong person, a wrong country or a wrong subject: those stay refusals.\n"}${places.length && !neutral && namesAPlace(image, places) ? `- ${placeTierNote(places)} The file places this photograph there: RIGHT when its frame shows the story's subject at that place, WRONG_SUBJECT when it shows something else there.\n` : ""}- UNSERIOUS, whatever else fits: ${GRAVITY_RULE}
 ${neutral ? NEUTRAL_CHECK + (audit ? AUDIT_PRINTED : "") : people.length ? "" : PLACE_RULE}${!neutral && company ? `\n${companyHome(company)}` : ""}
 - STOCK: ${STOCK_RULE}
@@ -2246,7 +2261,15 @@ async function findImage({ draft, story, log, exclude = new Set(), sources = [],
   // The end of the cascade: the armed group's spokesman when nothing of what it hit was found (claimantPhoto()), then the
   // snapshot held back, which the owner wants last of all (2026-10-30).
   const lastAmateur = async () => {
-    const spokesman = claimant ? await claimantPhoto({ claimant, draft, story, log, exclude, desk }) : null;
+    // His pass forgives the passes before it, as the neutral one does (`again`): each of them calls an armed group's
+    // spokesman WRONG_SUBJECT, so a photograph of him that an earlier search found was lost to his own pass (the review
+    // of 2026-11-06). The photographs other stories run and the refusals for what a frame shows stay out.
+    let spokesman = null;
+    if (claimant) {
+      const again = new Set([...used, ...(exclude.hard ?? [])]);
+      spokesman = await claimantPhoto({ claimant, draft, story, log, exclude: again, desk });
+      for (const x of again) exclude.add(x);
+    }
     if (spokesman) return spokesman;
     if (amateur.held) log(`image: no professional photograph was found; the snapshot held back runs as the last resort: "${String(amateur.held.title ?? "").slice(0, 60)}"`);
     return amateur.held;
@@ -2403,7 +2426,9 @@ async function claimantPhoto({ claimant, draft, story, log, exclude, desk }) {
   const note = `THE GROUP'S SPOKESMAN, the paper's last picture before running the story as text: nothing of what the group whose attack, claim or threat the headline reports hit or threatens could be found, and the desks then run the man who speaks for it, ${spellings.join(" or ")}${claimant.ar ? ` (${claimant.ar})` : ""}. Choose a recent photograph of him speaking, at a podium, a briefing or a press conference, his face plain; never his group's fighters, weapons, parades or funerals, a portrait of him on a banner or at a memorial, or a frame from a broadcast. Its caption names him and his role for the group the headline names, and an earlier occasion as one.`;
   for (const [i, name] of spellings.entries()) {
     // His Arabic name is searched once, with the first spelling.
-    const image = await peoplePhoto({ people: [name], ar: claimant.ar && !i ? { [name]: claimant.ar } : {}, draft, story, log, exclude, ...desk, gate: false, known: spellings, tierNote: note, claimant: name });
+    // No military filter here: his own record says «the Houthi military spokesman», and the filter dropped him as a
+    // warship (the review of 2026-11-06); the judges and the check refuse his fighters and weapons by rule.
+    const image = await peoplePhoto({ people: [name], ar: claimant.ar && !i ? { [name]: claimant.ar } : {}, draft, story, log, exclude, civilian: false, ...desk, gate: false, known: spellings, tierNote: note, claimant: name });
     if (image) return image;
   }
   return null;
@@ -2420,7 +2445,7 @@ function eventTierNote(event) {
  * one («… في أوساكا عام 2019» or «(أرشيفية)»); where it was taken does not matter, since the people are
  * the subject. Wrong people stay the gravest error, for both checks.
  */
-async function peoplePhoto({ people, ar = {}, draft, story, log, exclude, ...desk }) {
+async function peoplePhoto({ people, ar = {}, draft, story, log, exclude, civilian = civilianStory(draft), ...desk }) {
   // This year's photographs first: the year in the search finds files dated in their names or descriptions
   // («…-20260515.jpg»), and the ranking puts the newest of the fitting ones on the shortlist.
   const year = new Date().getUTCFullYear();
@@ -2438,7 +2463,7 @@ async function peoplePhoto({ people, ar = {}, draft, story, log, exclude, ...des
   // the New York Fed's John C. Williams was taken in 2008): such a file is dropped and the story falls back to a
   // scene of its sector.
   const oldest = year - 8;
-  const found = (await collect(queries, log, { perQuery: 10, max: 20, exclude, people: "by-query", together: [...people, ...arabic], fronts: true, simplify: "names", civilian: civilianStory(draft) })).filter((c) => !excluded(exclude, c));
+  const found = (await collect(queries, log, { perQuery: 10, max: 20, exclude, people: "by-query", together: [...people, ...arabic], fronts: true, simplify: "names", civilian })).filter((c) => !excluded(exclude, c));
   const recent = found.filter((c) => {
     const taken = photoYear(c);
     if (taken && taken < oldest) {
