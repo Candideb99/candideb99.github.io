@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The picture desk, tested on cases whose right answer is known (166 checks), with scripted stand-ins for Claude, Wikimedia Commons,
+ * The picture desk, tested on cases whose right answer is known (174 checks), with scripted stand-ins for Claude, Wikimedia Commons,
  * the other libraries and the thumbnails: no model call, no network. Written 2026-09-28 after the owner asked for the
  * image engine to be stress-tested ("it might still be buggy"), so that the cascade's order, its place filter, the
  * repeat guard, its behaviour when a service fails, and the reading of accented names cannot regress unseen. The gate
@@ -8,7 +8,7 @@
  *
  *   node scripts/images-selftest.mjs
  */
-import { withStandIns, pickImage, headlinePeople, headlineCompany, namesCompany, namesPerson, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, noveltyFault, groundedClaimant, stampedSource, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { withStandIns, pickImage, headlinePeople, headlineCompany, namesCompany, namesBrand, namesPerson, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, noveltyFault, groundedClaimant, stampedSource, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
 import { createHash } from "node:crypto";
 import { photoKey, sharedPhotos } from "../pipeline/lib/photo-key.mjs";
 import { BAD_TITLE, badTitle, cleanArtist, creditName, attributionLine, searchCommons } from "../pipeline/lib/commons.mjs";
@@ -1022,6 +1022,60 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   const sign = file("BP sign on the A1, Chesterton - geograph.org.uk - 6236712.jpg");
   const order = await scenario({ draft: bpDraft, plan: { ...plan, brand_queries: ["BP gas station", "BP sign"] }, world: { "oil refinery": [generic], "BP gas station": [far], "BP sign": [sign] }, judge: brandJudge, verify: () => "RIGHT" });
   check("the brand judge sees the sign before the station", titlesIn(order.judgePrompts.find((p) => p.includes("THE COMPANY'S OWN BRAND")) ?? "").slice(0, 2), [sign.title, far.title]);
+
+  // Its head office, searched in code (2026-11-06): the planner asked for "JPMorgan Chase sign" and "JPMorgan Chase bank",
+  // Commons holds neither phrase, and the brand's name over the entrance of 270 Park Avenue was never seen.
+  const jpmDraft = { title: "جي بي مورغان يدرج الصكوك السعودية في مؤشره لسندات الأسواق الناشئة من 2027", subtitle: "ثمانية إصدارات بالريال تدخل المؤشر على مدى 10 أشهر", lede: "أعلن بنك جي بي مورغان الأمريكي أنه سيدرج الصكوك الحكومية السعودية في مؤشره.", body: "فقرة.", tags: ["جي بي مورغان", "السعودية"], regions: ["الخليج"], kind: "news", section: "markets", imageQueries: [] };
+  const hq = file("JPMorgan Chase - 270 Park Avenue (55283843744).jpg", { description: "Wide steps lead to the glass-fronted JPMorgan Chase entrance at 270 Park Avenue. A sweeping metal canopy projects over the doors and lobby.", categories: "270 Park Avenue (2021–present)|Office buildings in New York City photographed in 2026", date: "2026-05-18" });
+  const jpmPlan = { queries: ["Saudi riyal banknotes"], place: ["Saudi Arabia", "Saudi"], people: [], focus: "subject", places: [], place_queries: [], company: { name: "JPMorgan Chase", headline: "جي بي مورغان" }, brand_queries: ["JPMorgan Chase sign", "JPMorgan Chase bank"] };
+  const atHq = await scenario({ draft: jpmDraft, plan: jpmPlan, world: { "JPMorgan Chase headquarters": [hq] }, judge: (titles, prompt) => (prompt.includes("THE COMPANY'S OWN BRAND") ? pickTitle("270 Park")(titles) : 0), verify: () => "RIGHT" });
+  check("the brand pass also looks at the company's head office, and its name over the door runs", [atHq.searched.includes("JPMorgan Chase headquarters"), atHq.image?.title], [true, hq.title]);
+  check("an entrance names the company as its own", [namesCompany(hq, "JPMorgan Chase"), namesCompany({ title: "Chase Lake entrance.jpg" }, "JPMorgan Chase")], [true, false]);
+
+  // The owner, 2026-11-07: "i bet there are many free to use photos of jp morgan, why the search results were so limited?"
+  // Its brand's other names count, its own Commons categories are browsed, this year's photographs are asked for first,
+  // and its name readable over its own entrance is its own site, not a front («yes run it»).
+  check(
+    "the planner's other names for the brand are kept, cleaned, never the name itself",
+    headlineCompany(jpmDraft.title, { name: "JPMorgan Chase", headline: "جي بي مورغان", also: ["J.P. Morgan", "Chase", "JPMorgan Chase", "<b>x</b>", "Chase"] })?.also,
+    ["J.P. Morgan", "Chase"],
+  );
+  const jpmNames = ["JPMorgan Chase", "J.P. Morgan", "Chase"];
+  check(
+    "a Chase branch names the company by its other name; a chief justice and an arena called Chase do not",
+    [namesBrand({ title: "A Chase bank location in Birmingham, Alabama.jpg" }, jpmNames), namesBrand({ title: "Salmon P. Chase, Chief Justice.jpg" }, jpmNames), namesBrand({ title: "Chase Center, San Francisco.jpg" }, jpmNames)],
+    [true, false, false],
+  );
+  const branch = file("A Chase bank location in Birmingham, Alabama.jpg", { categories: "Chase Bank", date: "2026-10-23" });
+  const viaCategory = await scenario({
+    draft: jpmDraft,
+    plan: { ...jpmPlan, company: { name: "JPMorgan Chase", headline: "جي بي مورغان", also: ["Chase"] }, brand_queries: ["JPMorgan Chase sign"], brand_categories: ["Chase Bank", "Salmon P. Chase"] },
+    categoryWorld: { "Chase Bank": [branch] },
+    judge: (titles, prompt) => (prompt.includes("THE COMPANY'S OWN BRAND") ? pickTitle("Birmingham")(titles) : 0),
+    verify: () => "RIGHT",
+  });
+  check(
+    "the brand pass browses the company's own category, asks for this year's photographs first, and runs a branch filed under its other name",
+    [viaCategory.searched.includes("category:Chase Bank"), viaCategory.searched.includes("category:Salmon P. Chase"), viaCategory.searched.some((q) => /^JPMorgan Chase sign 20\d\d$/.test(q)), viaCategory.image?.title],
+    [true, false, true, branch.title],
+  );
+  const brandJudgePrompt = viaCategory.judgePrompts.find((p) => p.includes("THE COMPANY'S OWN BRAND")) ?? "";
+  check(
+    "every judge and the check are told the brand's other names and that its name readable over its own entrance is its own site",
+    [brandJudgePrompt.includes("«Chase»"), brandJudgePrompt.includes("over the entrance of its own head office or branch"), viaCategory.verifyPrompts.some((p) => p.includes("over the entrance of its own head office or branch") && p.includes("cannot be read at a glance"))],
+    [true, true, true],
+  );
+}
+
+// «CEO of JPMorgan Chase» is no person called Chase (2026-11-06): the CEO's own photograph was dropped as someone else's.
+// A person named after a place still is one («Prime Minister of India Narendra Modi»).
+{
+  const draft = { title: "ديمون يحذر من تباطؤ الاقتصاد الأمريكي", subtitle: "", lede: "قال جيمي ديمون الرئيس التنفيذي لجي بي مورغان إن الاقتصاد يتباطأ.", body: "فقرة.", tags: ["جي بي مورغان"], regions: ["عالمي"], kind: "news", section: "economy", imageQueries: [] };
+  const ceo = file("Jamie Dimon, CEO of JPMorgan Chase.jpg", { date: "2024-01-09" });
+  const modi = file("Prime Minister of India Narendra Modi with Jamie Dimon.jpg", { date: "2024-06-20" });
+  const plan = { queries: ["bank trading floor"], place: [], people: [{ name: "Jamie Dimon", ar: "جيمي ديمون", headline: "ديمون" }], focus: "people", places: [], place_queries: [] };
+  const r = await scenario({ draft, plan, world: { "Jamie Dimon": [modi, ceo] }, judge: pickTitle("CEO of"), verify: () => "RIGHT" });
+  check("a name after «CEO of» is the company's, and the CEO's own photograph runs; a prime minister of a country is still a person", [r.image?.title, r.judgePrompts.some((p) => titlesIn(p).includes(modi.title))], [ceo.title, false]);
 }
 
 // Amateur photographs are the last resort (the owner, 2026-10-30: "make amateur photos last resort, and optimize for clear
