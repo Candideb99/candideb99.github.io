@@ -15656,6 +15656,45 @@
       "notFound": [],
       "weak": [],
       "outcome": "clean"
+    },
+    "jpmorgan-index-saudi-riyal-sukuk-inclusion-6f34e9": {
+      "at": "2026-11-06T06:56:18.358Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-06T00:09:43.670Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 27,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "الدولة: السعودية (صكوك بالريال) · عدد الإصدارات: 8 · القيمة الاسمية (مليار دولار): 79 · الوزن عند اكتمال الإدراج: 2.71%",
+          "quote": "وتجدر الإشارة إلى أن المؤشر سيشهد إضافة ثمانية صكوك سعودية قيمتها 79 مليار دولار، فضلاً عن تسع سندات فلبينية بقيمة اسمية إجمالية 50 مليار دولار."
+        },
+        {
+          "sentence": "الدولة: الفلبين (سندات بالبيزو) · عدد الإصدارات: 9 · القيمة الاسمية (مليار دولار): 50 · الوزن عند اكتمال الإدراج: 1.64%",
+          "quote": "وتجدر الإشارة إلى أن المؤشر سيشهد إضافة ثمانية صكوك سعودية قيمتها 79 مليار دولار، فضلاً عن تسع سندات فلبينية بقيمة اسمية إجمالية 50 مليار دولار."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }

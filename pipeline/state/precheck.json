@@ -12289,6 +12289,137 @@
           "noted": []
         }
       ]
+    },
+    "egypt-net-reserves-record-october-2026-c154c5": {
+      "at": "2026-11-06T07:09:06.386Z",
+      "title": "احتياطي مصر الدولي يرتفع إلى مستوى قياسي عند 57.5 مليار دولار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v54",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 26,
+            "checked": 26,
+            "supported": 23,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "ihc-third-quarter-profit-falls-third-0a92ce": {
+      "at": "2026-11-06T07:20:31.592Z",
+      "title": "أرباح «العالمية القابضة» الإماراتية تتراجع بنحو الثلث في الربع الثالث",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v54",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 26,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 23,
+              "field": "body",
+              "class": "internal",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وارتفع الربح قبل الضريبة 84.2% إلى 35.1 مليار درهم (نحو 8.9 مليار دولار)، والربح الإجمالي 35.4% إلى 25.3 مليار درهم.",
+              "quote": "على مدى الأشهر التسعة الأولى من العام، أعلنت الشركة إيرادات من العمليات المستمرة بلغت 100.5 مليار درهم (نحو 27.4 مليار دولار)، بزيادة 33.2% على أساس سنوي.",
+              "source": "the story itself",
+              "sourceN": 0,
+              "correction": "At the exchange rate the story itself uses (AED100.5bn ≈ $27.4bn, about 3.67 dirhams per dollar), AED35.1bn is about $9.6bn, not $8.9bn; the source prints the same wrong conversion."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 29,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "nikkei-kospi-ai-selloff-asia-395c79": {
+      "at": "2026-11-06T07:35:04.152Z",
+      "title": "نيكاي يهبط دون 60 ألف نقطة مع امتداد بيع أسهم الذكاء الاصطناعي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v54",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 37,
+            "checked": 37,
+            "supported": 29,
+            "weak": 6,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 17,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وانخفض مؤشر تايكس التايواني 4.51% إلى 39701.64 نقطة مع تراجع سهم «تايوان سيميكوندوكتور مانوفاكتشورينغ»، أكبر شركة لتصنيع الرقائق بالتعاقد في العالم، 4.7%.",
+              "quote": "Taiwan's benchmark TAIEX index was also down more than 8%.",
+              "source": "Deutsche Welle",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []

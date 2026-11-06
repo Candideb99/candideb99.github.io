@@ -1,0 +1,514 @@
+{
+  "mode": "news",
+  "startedAt": "2026-11-06T06:57:23.091Z",
+  "durationSec": 2505,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "احتياطي مصر الدولي يرتفع إلى مستوى قياسي عند 57.5 مليار دولار في أكتوبر",
+      "section": "economy",
+      "importance": 8,
+      "sources": [
+        "https://asharqbusiness.com/economics/154688/%D8%A5%D9%86%D9%81%D9%88%D8%BA%D8%B1%D8%A7%D9%81-%D8%A7%D8%AD%D8%AA%D9%8A%D8%A7%D8%B7%D9%8A-%D9%85%D8%B5%D8%B1-%D9%85%D9%86-%D8%A7%D9%84%D8%B9%D9%85%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D8%A3%D8%AC%D9%86%D8%A8%D9%8A%D8%A9-%D9%81%D9%8A-%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1-2026/",
+        "https://economymiddleeast.com/news/egypts-reserves-hit-record-57-5-billion-as-foreign-currency-holdings-rise-768-million/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد (مصر) والرقم القياسي (57.5 مليار دولار) وما الذي تغيّر: صعدت العملات الأجنبية إلى أعلى مستوى منذ 2020 وعوّضت تراجع الذهب وحقوق السحب الخاصة. لا تناقض ولا قيد ناقص.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المصدران لا يذكران سبباً لصعود العملات الأجنبية. يذكران فقط ما يفسر تراجع الذهب (أثر الأسعار في التقييم) والتزامن مع بيع الأجانب أذون الخزانة (المصدر 1) ومع التحويلات (المصدر 2)، والمسودة تحمل ذلك كله دون ربط سببي مخترع. ولا يوجد رد فعل على هذا الإصدار نفسه، فتعليق وزارة المالية سابق ويخص قرار موديز. الخلل أن سياق أذون الخزانة، وهو ما يمنح الزيادة أهميتها وفق المصدر 1، معزول عن فقرة العملات الأجنبية. أما «لماذا يهمّ» فمقدماتها مسندة: عجز جارٍ قدره 22.5 مليار دولار تقابله تدفقات قدرها 23.2 مليار دولار. واستنتاجها مشروط بـ«إذا تباطأت» ومتناسب مع الأرقام: يتحمل الاحتياطي جانباً أكبر من تمويل الفجوة. وهي تضيف معنى لا يكرر المتن.",
+              "repair": "تُنقل جملة أذون الخزانة إلى فقرة العملات الأجنبية، ويُبقى الصندوق كما هو."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يقدّم المستوى القياسي، والمتن يطوّره مباشرة بعد المقدمة بتفكيك المكوّنات، وهذا سليم. لكن الترتيب بعد ذلك يتشتت: العملات الأجنبية، ثم الذهب، ثم آلية التقييم، ثم أذون الخزانة المنفصلة. وتكرر جملة «ومن محصلة هذه التحركات الثلاثة...» ما قالته المقدمة. ويتحول قسم «عام من الصعود» إلى قراءة لأرقام الجدول والرسم.",
+              "repair": "يُعاد التجميع: العملات الأجنبية ومعها أذون الخزانة، ثم الذهب وحقوق السحب الخاصة ومعها آلية التقييم، ثم المقارنة السنوية بصيغة ما تُظهره (العملات الأجنبية محرّك صعود العام، وتسارع الصعود منذ يونيو)، ثم التحويلات وميزان المدفوعات. تُحذف الجملة المكررة وفقرة التعريف العام."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والفترات والوحدات مطابقة للمصادر، وكذلك 768 و613 و3 ملايين و7.43 مليار و15% و27.2% و29.6%. لكن الرسم يضع أشهراً غير متتالية على فواصل متساوية، ويغيب عن جملة موديز أن تعليق الوزارة كان في أكتوبر.",
+              "repair": "تُضاف قراءات فبراير ومارس وأبريل (52.746 و52.831 و53.009) ويُحذف أكتوبر 2025 من الخط، وتُضاف «في أكتوبر» إلى جملة وزارة المالية."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقول العنوان إن احتياطي مصر الدولي بلغ مستوى قياسياً عند 57.5 مليار دولار. ويحدد العنوان الفرعي الشهر (أكتوبر) ويبيّن أن العملات الأجنبية هي التي تعوّض تراجع الذهب وحقوق السحب الخاصة. البلد والمؤسسة واضحان لقارئ البطاقة، ولا تناقض بين العنوان والعنوان الفرعي.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "لا يذكر المصدران سبباً مباشراً لصعود العملات الأجنبية. وتحمل المسودة ما يوفرانه دون ربط سببي مخترع: آلية التقييم بأسعار الذهب والصرف (المصدر 2)، والتزامن مع بيع الأجانب أذون الخزانة (المصدر 1)، والتحويلات وميزان المدفوعات (المصدر 2)، وتعليق وزارة المالية منسوباً إليها. لا يعرّف المصدران رمز B3، فلا يُطلب تعريفه. ويستند «لماذا يهمّ» إلى مقدمات مسندة: عجز جارٍ قدره 22.5 مليار دولار تقابله تدفقات قدرها 23.2 مليار دولار، ودور الاحتياطي في المدفوعات الخارجية. واستنتاجه مشروط بـ«إذا تباطأت» ومتناسب مع الأرقام.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يطوّر المتن المستوى القياسي مباشرة بعد المقدمة بتفكيك المكوّنات: العملات الأجنبية ومعها أذون الخزانة، ثم الذهب وحقوق السحب الخاصة ومعها آلية التقييم، ثم المقارنة السنوية، ثم التحويلات وميزان المدفوعات. هذا البناء سليم. لكن جملة «وارتفع الاحتياطي في كل شهر من العام الجاري منذ نهاية يناير...» تقف فقرة مستقلة من جملة واحدة.",
+              "repair": "تُضم جملة الصعود الشهري إلى فقرة المقارنة السنوية."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام كلها مطابقة للمصدرين، وكذلك الرسم والجدول والفترات والوحدات. الخلل الوحيد أن «إذ سجّل الحساب الرأسمالي والمالي...» تجعل التدفقات والعجز تفسيراً لفائض الـ2.8 مليار دولار، مع أن الفرق بينهما نحو 0.7 مليار دولار، والمصدر 2 لا يقيم هذه العلاقة.",
+              "repair": "يُستبدل «إذ سجّل» بجملة مستقلة: «وسجّل الحساب الرأسمالي والمالي صافي تدفقات داخلة بقيمة 23.2 مليار دولار، في حين بلغ عجز الحساب الجاري 22.5 مليار دولار»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 5,
+      "mendIssues": [
+        "ربط تفسيري لا يسنده المصدر ولا الحساب: «وحقق ميزان المدفوعات خلال تلك السنة فائضاً كلياً بلغ 2.8 مليار دولار، إذ سجّل الحساب الرأسمالي والمالي صافي تدفقات داخلة بقيمة 23.2 مليار دولار، مقابل عجز في الحساب الجاري قدره 22.5 مليار دولار». «إذ» تقدّم الرقمين تفسيراً للفائض، مع أن الفرق بينهما نحو 0.7 مليار دولار لا 2.8 مليار. والمصدر 2 يورد الأرقام الثلاثة متجاورة («while») دون أن يجعل أحدها علة للآخر. الإصلاح: «وحقق ميزان المدفوعات خلال تلك السنة فائضاً كلياً بلغ 2.8 مليار دولار. وسجّل الحساب الرأسمالي والمالي صافي تدفقات داخلة بقيمة 23.2 مليار دولار، في حين بلغ عجز الحساب الجاري 22.5 مليار دولار».",
+        "صياغة متكلفة: «باع المستثمرون الأجانب أذون خزانة مصرية في السوق الثانوية بصافي نحو 3.5 مليار دولار». الصيغة الأوضح والأقرب إلى المصدر 1: «سجّل المستثمرون الأجانب صافي مبيعات لأذون الخزانة المصرية في السوق الثانوية بنحو 3.5 مليار دولار».",
+        "فقرة يتيمة: «وارتفع الاحتياطي في كل شهر من العام الجاري منذ نهاية يناير، وتسارع صعوده في يونيو ويوليو» جملة واحدة منفصلة عن فقرة المقارنة السنوية التي تكمّلها. الإصلاح: تُضم إلى الفقرة السابقة تحت «عام من الصعود».",
+        "يطوّر المتن المستوى القياسي مباشرة بعد المقدمة بتفكيك المكوّنات: العملات الأجنبية ومعها أذون الخزانة، ثم الذهب وحقوق السحب الخاصة ومعها آلية التقييم، ثم المقارنة السنوية، ثم التحويلات وميزان المدفوعات. هذا البناء سليم. لكن جملة «وارتفع الاحتياطي في كل شهر من العام الجاري منذ نهاية يناير...» تقف فقرة مستقلة من جملة واحدة. — تُضم جملة الصعود الشهري إلى فقرة المقارنة السنوية.",
+        "الأرقام كلها مطابقة للمصدرين، وكذلك الرسم والجدول والفترات والوحدات. الخلل الوحيد أن «إذ سجّل الحساب الرأسمالي والمالي...» تجعل التدفقات والعجز تفسيراً لفائض الـ2.8 مليار دولار، مع أن الفرق بينهما نحو 0.7 مليار دولار، والمصدر 2 لا يقيم هذه العلاقة. — يُستبدل «إذ سجّل» بجملة مستقلة: «وسجّل الحساب الرأسمالي والمالي صافي تدفقات داخلة بقيمة 23.2 مليار دولار، في حين بلغ عجز الحساب الجاري 22.5 مليار دولار»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "ارتفع مكوّن العملات الأجنبية 768 مليون دولار إلى 40.06 مليار دولار في أكتوبر، وهو أعلى مستوى منذ 2020",
+          "source": 1
+        },
+        {
+          "fact": "سجّل الأجانب صافي مبيعات لأذون الخزانة في السوق الثانوية بنحو 3.5 مليار دولار في أكتوبر",
+          "source": 1
+        },
+        {
+          "fact": "سجّل الحساب الرأسمالي والمالي صافي تدفقات داخلة بقيمة 23.2 مليار دولار في السنة المالية 2025-2026، مقابل عجز جارٍ بلغ 22.5 مليار دولار",
+          "source": 2
+        },
+        {
+          "fact": "تمنح الاحتياطيات البنك المركزي موارد للوفاء بالمدفوعات الخارجية، ومنها الواردات والتزامات الديون، وتحمي من اضطراب مصادر العملة الصعبة",
+          "source": 2
+        }
+      ],
+      "slug": "egypt-net-reserves-record-october-2026-c154c5",
+      "title": "احتياطي مصر الدولي يرتفع إلى مستوى قياسي عند 57.5 مليار دولار",
+      "score": 9,
+      "image": "cover-art"
+    },
+    {
+      "headline": "أرباح «العالمية القابضة» تتراجع بنحو الثلث في الربع الثالث رغم قفزة الإيرادات",
+      "section": "companies",
+      "importance": 7,
+      "sources": [
+        "https://www.agbi.com/markets/2026/11/rising-costs-hurt-as-ihc-profit-falls-by-almost-a-third/",
+        "https://www.snabusiness.com/article/1903018-27-%D9%85%D9%84%D9%8A%D8%A7%D8%B1-%D8%AF%D9%88%D9%84%D8%A7%D8%B1-%D8%A5%D9%8A%D8%B1%D8%A7%D8%AF%D8%A7%D8%AA-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D9%82%D8%A7%D8%A8%D8%B6%D8%A9-9-%D8%A3%D8%B4%D9%87%D8%B1"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد («الإماراتية») وطبيعة الشركة (قابضة)، والفترة (الربع الثالث)، وحجم التراجع وسببيه المسندين: تكاليف التمويل ومكسب بيع «بال كولينغ» في فترة المقارنة. والتناقض الظاهري مع قفزة ربح الأشهر التسعة يشرحه المتن.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يحمل التقرير المحرّك المسند للتراجع: المصاريف وتكاليف التمويل (المصدر 1)، والمكسب الاستثنائي في فترة المقارنة (المصدر 1)، وسبب ارتفاع صافي الدين (المصدر 2). لكنه يُغفل رصيد النقد البالغ 76.6 مليار درهم (المصدر 2) الذي يضع الدين في سياقه. ولا تورد المصادر رد فعل سوقي على النتائج، وتراجع السهم 18% منذ بداية العام خلفية لا رد فعل. أما «لماذا يهمّ» فمقدماتها مسندة، واستنتاجها المشروط عن عبء التمويل على الربح الفصلي متناسب، لكن جملتها الأولى تكرر المتن وتبالغ بعبارة «قامت على».",
+              "repair": "إضافة رصيد النقد بجانب صافي الدين، وحذف الجملة الأولى من الصندوق أو تخفيفها إلى «استفاد»، ليبقى الاستنتاج المشروط عن تكاليف التمويل."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "ما يقول العنوان إنه جديد هو تراجع ربح الربع الثالث بنحو الثلث، وتطوّره الفقرتان التاليتان للمقدمة مباشرة بالمصاريف والتمويل والمكسب الاستثنائي، وهذا بناء جيد. لكن فقرة ملكية الشركة وشركاتها التابعة تقطع قسم الإيرادات، والفقرة الختامية تخلط صافي الدين بأداء السهم، ثم ينتهي التقرير بعبارات عامة من البيان.",
+              "repair": "نقل التعريف بالشركة إلى جملة بعد المقدمة، وفصل أداء السهم عن الدين، وحذف الفقرة الختامية العامة، والختم بالدين والسيولة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام كلها مطابقة للمصدرين، بما فيها الجدول. غير أن المسودة تقابل «صافي الربح» الفصلي المحسوب من AGBI بـ«الربح بعد الضريبة» الذي أعلنته الشركة كأنهما مقياس واحد، وتحوّل «استفاد من الدخل الاستثماري» إلى «يستند إلى» و«قامت على».",
+              "repair": "تسمية كل مقياس باسمه ومصدره، والتقيد بفعل «استفاد» كما ورد في المصدر 2."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يحدد البلد («الإماراتية») والفترة (الربع الثالث) والمقياس (الأرباح بنحو الثلث). ويكمله العنوان الفرعي بقيد حاسم: مكسب 2.7 مليار درهم في فترة المقارنة. وتربط المقدمة التراجع بصعود الإيرادات 31%، وتنسب الأرقام إلى حسابات «أرابيان غلف بزنس إنسايت». أما ارتفاع ربح الأشهر التسعة 87% فيُشرح لاحقاً بالدخل الاستثماري، فلا يبدو تناقضاً.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "تورد المصادر محرّكين للتراجع، والمسودة تحملهما معاً: المصاريف وتكاليف التمويل، والمكسب الاستثنائي في فترة المقارنة (المصدر 1). وتحمل أيضاً سبب ارتفاع صافي الدين ورصيد النقد (المصدر 2). لا تورد المصادر توقعات للمحللين ولا رد فعل سوقياً على النتائج، وتراجع السهم 18% منذ بداية العام خلفية لا رد فعل. في الصندوق، المقدمات مسندة، والاستنتاج المشروط عن عبء التمويل على الربح الفصلي متناسب. لكن جملته الأولى تعيد المتن، وتغفل أثر قاعدة المقارنة.",
+              "repair": "تُحذف الجملة الأولى من «لماذا يهمّ»، ويبقى الاستنتاج المشروط مقروناً بقفزة تكاليف التمويل 32%."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "ما يقول العنوان إنه جديد هو تراجع ربح الربع الثالث بنحو الثلث. تطوّره الفقرتان التاليتان للمقدمة مباشرة بالمصاريف والتمويل ومكسب «بال كولينغ»، ثم تأتي فقرة تعريف قصيرة ثم قسم الأشهر التسعة، وهذا بناء متماسك. يبقى عيبان في السياق: جملة «وهي إيرادات تتوزع في قوائمها المالية على نحو 30 مصدراً» ملحقة بادعاء الشركة عن القطاعات بلا وظيفة، والصندوق يفتتح بصدى للمتن.",
+              "repair": "تُحذف جملة المصادر الثلاثين، وتُحذف الجملة الأولى من الصندوق."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصدرين، وسُمّي «صافي الربح» الفصلي (حسابات AGBI) و«الربح بعد الضريبة» للأشهر التسعة (الشركة) كلٌّ باسمه. لكن «جاء بفضل» تحوّل وصف الرئيس التنفيذي («يعكس») إلى علاقة سببية. ويُسقط الجدول قطاعي الأغذية والتكنولوجيا مع أن المصدر 2 يوردهما.",
+              "repair": "يُستبدل «يعكس» بـ«جاء بفضل»، ويُضاف إلى الجدول سطرا الأغذية (5.1، +25.7%) والتكنولوجيا (2.9، +20.5%)."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 7,
+      "mendIssues": [
+        "الجملة الأولى في «لماذا يهمّ» صدى للمقدمة والمتن: «نمو الإيرادات 31% في الربع الثالث لم يحمِ صافي الربح من ارتفاع المصاريف وتكاليف التمويل، في حين استفاد ربح الأشهر التسعة من دخل استثماري محقق في الخدمات المالية». رُفعت المبالغة («قامت على» صارت «استفاد»)، وهي من مشكلات المسودة السابقة. لكن الجملة لا تضيف معنى، وتنسب التراجع إلى التكاليف وحدها. وقد أورد المتن نفسه أن مكسب بيع «بال كولينغ» (2.7 مليار درهم، المصدر 1) ضخّم أرباح فترة المقارنة. الإصلاح: تُحذف هذه الجملة، ويبقى الاستنتاج المشروط وحده: «إذا واصلت المجموعة تمويل برنامجها الاستثماري بالاقتراض الذي رفع صافي دينها إلى 30.4 مليار درهم، فستبقى تكاليف التمويل، التي قفزت 32% في الربع الثالث، عبئاً مباشراً على ربحها الفصلي».",
+        "تصريح الرئيس التنفيذي حُوِّل من وصف إلى سبب: «إن تخطي الإيرادات 100 مليار درهم جاء بفضل نمو الأعمال التشغيلية وتوسع المنصة الاستثمارية الدولية». قال سيد بصر شعيب إن ذلك «يعكس نمو الأعمال التشغيلية والتوسع المستمر للمنصة الاستثمارية الدولية» (المصدر 2)، ولم يقل إنه جاء بفضلهما. الإصلاح: «وقال الرئيس التنفيذي للمجموعة سيد بصر شعيب إن تخطي الإيرادات 100 مليار درهم يعكس نمو الأعمال التشغيلية وتوسع المنصة الاستثمارية الدولية، مشيراً إلى أن الإيرادات الدولية ارتفعت إلى أكثر من ضعف مستواها السابق».",
+        "جملة ملحقة تخلط مصدرين وتربك المرجع: «وقالت إن سبعة من قطاعات أعمالها الثمانية سجلت نمواً في الإيرادات، وهي إيرادات تتوزع في قوائمها المالية على نحو 30 مصدراً، بحسب «أرابيان غلف بزنس إنسايت»». ادعاء الشركة عن القطاعات (المصدر 2) يلتصق هنا بملاحظة AGBI عن عدد بنود الإيرادات (المصدر 1). ولا تفسّر الملاحظة شيئاً من النتائج. الإصلاح: تُحذف عبارة «وهي إيرادات تتوزع… على نحو 30 مصدراً، بحسب…»، وتنتهي الجملة عند «سجلت نمواً في الإيرادات».",
+        "الجدول ناقص على نحو يوحي بترتيب غير صحيح. يورد المصدر 2 إيرادات الأغذية (5.1 مليار درهم، +25.7%) والتكنولوجيا (2.9 مليار درهم، +20.5%)، والجدول يضع الخدمات المالية (4.4) في آخره ويُسقط الأغذية، وهي أكبر منها. الإصلاح: يُضاف السطران «الأغذية | 5.1 | 25.7%» و«التكنولوجيا | 2.9 | 20.5%» حتى يكتمل ما أعلنته الشركة.",
+        "تورد المصادر محرّكين للتراجع، والمسودة تحملهما معاً: المصاريف وتكاليف التمويل، والمكسب الاستثنائي في فترة المقارنة (المصدر 1). وتحمل أيضاً سبب ارتفاع صافي الدين ورصيد النقد (المصدر 2). لا تورد المصادر توقعات للمحللين ولا رد فعل سوقياً على النتائج، وتراجع السهم 18% منذ بداية العام خلفية لا رد فعل. في الصندوق، المقدمات مسندة، والاستنتاج المشروط عن عبء التمويل على الربح الفصلي متناسب. لكن جملته الأولى تعيد المتن، وتغفل أثر قاعدة المقارنة. — تُحذف الجملة الأولى من «لماذا يهمّ»، ويبقى الاستنتاج المشروط مقروناً بقفزة تكاليف التمويل 32%.",
+        "ما يقول العنوان إنه جديد هو تراجع ربح الربع الثالث بنحو الثلث. تطوّره الفقرتان التاليتان للمقدمة مباشرة بالمصاريف والتمويل ومكسب «بال كولينغ»، ثم تأتي فقرة تعريف قصيرة ثم قسم الأشهر التسعة، وهذا بناء متماسك. يبقى عيبان في السياق: جملة «وهي إيرادات تتوزع في قوائمها المالية على نحو 30 مصدراً» ملحقة بادعاء الشركة عن القطاعات بلا وظيفة، والصندوق يفتتح بصدى للمتن. — تُحذف جملة المصادر الثلاثين، وتُحذف الجملة الأولى من الصندوق.",
+        "الأرقام مطابقة للمصدرين، وسُمّي «صافي الربح» الفصلي (حسابات AGBI) و«الربح بعد الضريبة» للأشهر التسعة (الشركة) كلٌّ باسمه. لكن «جاء بفضل» تحوّل وصف الرئيس التنفيذي («يعكس») إلى علاقة سببية. ويُسقط الجدول قطاعي الأغذية والتكنولوجيا مع أن المصدر 2 يوردهما. — يُستبدل «يعكس» بـ«جاء بفضل»، ويُضاف إلى الجدول سطرا الأغذية (5.1، +25.7%) والتكنولوجيا (2.9، +20.5%)."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 1,
+        "rounds": 2,
+        "found": 1
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قفزت تكاليف التمويل في الربع الثالث 32% إلى 1.6 مليار درهم",
+          "source": 1
+        },
+        {
+          "fact": "تراجع صافي ربح الربع الثالث 30% إلى 3.3 مليار درهم مع ارتفاع المصاريف التشغيلية وتكاليف التمويل",
+          "source": 1
+        },
+        {
+          "fact": "ارتفع صافي الدين إلى 30.4 مليار درهم نتيجة الحصول على تمويلات لدعم البرنامج الاستثماري",
+          "source": 2
+        }
+      ],
+      "slug": "ihc-third-quarter-profit-falls-third-0a92ce",
+      "title": "أرباح «العالمية القابضة» الإماراتية تتراجع بنحو الثلث في الربع الثالث",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "نيكاي يهوي 6% وتعليق التداول في كوسبي مع امتداد بيع أسهم الذكاء الاصطناعي إلى آسيا",
+      "section": "markets",
+      "importance": 7,
+      "sources": [
+        "https://www.ft.com/content/b77ebe43-a017-4e63-af84-5bdec8f47648?syn-25a6b1a6=1",
+        "https://asharqbusiness.com/financial-markets/154775/%D8%A7%D9%84%D8%A3%D8%B3%D9%87%D9%85-%D8%A7%D9%84%D8%A2%D8%B3%D9%8A%D9%88%D9%8A%D8%A9-%D9%8A%D9%88%D9%85-6-%D9%86%D9%88%D9%81%D9%85%D8%A8%D8%B1-2026/",
+        "https://www.dw.com/en/asian-stocks-slump-after-us-tech-rout-amid-ai-jitters/a-79871504?maca=en-rss-en-bus-2091-rdf",
+        "https://www.aa.com.tr/en/economy/asian-tech-stocks-plunge-as-wall-street-sell-off-fuels-ai-spending-concerns/4113600"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلدين (اليابان عبر نيكاي، وكوريا عبر كوسبي وسيول) ويقولان ما حدث. لكن العنوان الفرعي يقدّم تراجع كوسبي على أنه إغلاق، والمصدر 4 لا يقول ذلك. وعبارة «تشديد واشنطن تنظيم مراكز البيانات» في المقدمة توحي بقرار اتحادي، في حين أن المصادر (2 و3) تنسب التعهدات بالوقف إلى حكام ولايات منتخبين مثل حاكمة تكساس.",
+              "repair": "يُحذف «يغلق». وتصبح عبارة المقدمة «وسط مخاوف من تشديد القيود الأمريكية على مراكز البيانات وتنظيم الذكاء الاصطناعي بعد فوز الديمقراطيين في انتخابات التجديد النصفي»، اتباعاً لصيغة المصدرين 2 و4."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المسودة تقدّم السبب: تعهدات الحكام الديمقراطيين، ومخاوف الإنفاق على الذكاء الاصطناعي، وهبوط ناسداك 5.5%. وتقدّم ردّ فعل أسواق الأسهم ومحللَين. لكنها تُسقط من المصدر 2 ثلاثة أمور: غرض الإجراء الكوري، وإجراءات تايوان المرتقبة، ونسبة الـ40% من سعة مراكز البيانات. وتُسقط تعليق وودز على تخفيف حدة التصريحات، ومعيار ساوامورا الحاسم (المعنويات أم الأرباح). أما صندوق «لماذا يهمّ» فمقدمته الشرطية سليمة ومبنية على المصدرين 3 و4. غير أن ذيله «وهو ما تسعّره أسواق سيول وطوكيو وتايبيه بخسائر تفوق كثيراً خسائر شنغهاي وهونغ كونغ» ينسب فارق الخسائر إلى تسعير هذا السيناريو تحديداً. هذا يتجاوز ما تثبته المصادر، فالمصدر 4 يذكر أن مؤشري «ستار ماركت» و«تشاي نكست» للذكاء الاصطناعي في الصين هبطا أكثر من 4% أيضاً، أي أن الفارق بين المؤشرات العامة يعكس وزن أسهم الرقائق في كل سوق.",
+              "repair": "تُضاف الوقائع الناقصة من المصدر 2 في مواضعها. ويُعاد صوغ الصندوق ليربط الأثر بالأسواق الأثقل وزناً في أسهم الرقائق، مثل كوسبي الذي يصفه المصدر 3 بأنه مثقل بأسهم التكنولوجيا، وتايكس الذي يتحدث سافاج عن ثقل الرقائق فيه. ويُختم الصندوق بالنتيجة دون ادعاء أن الفارق مع الصين قياس لذلك السيناريو."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يجعل الخبر هبوط نيكاي دون 60 ألف نقطة، والفقرة الأولى بعد المقدمة تطوّره: المستوى الأدنى منذ مايو، والإغلاق السابق، وأكبر خسارة منذ أبريل 2025. لكن المتن بعد ذلك يتنقّل بين سيول وتايوان والصين، ويقرأ صفوف الرسم البياني. ثم تأتي سطور العقود الآجلة لـ«ناسداك 100» والأوروبية وتقرير الوظائف في الفقرة الأخيرة بلا رابط بالحدث. وصياغة تصريح مكارثي تُفرغه من معناه.",
+              "repair": "يُستبدل بسرد الأسهم وصفُ ما تُظهره. وتُجمع إجراءات كوريا وتايوان مع انحسار جزء من الخسائر وارتفاع العقود الآجلة الأمريكية في فقرة واحدة عن ردّ السلطات والأسواق. ويُعاد قول مكارثي بمعناه (الاتجاه نزولي)، ويقابله رأي ساوامورا بمعياره الحاسم واحتمال الارتداد."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «عند الإغلاق إلى 5085.55» ليس لها سند في المصادر. وعبارة «مرجحاً ارتداداً قوياً» تحوّل احتمالاً إلى ترجيح. وفي مقدمات الصندوق (why_basis) يرد تراجع نيكاي 6.16% نقلاً عن الأناضول، في حين تطبع المقدمة 5.96% عند 06:45 بتوقيت غرينتش (المصدر 5). القصة تستعمل إذن قياسين لمؤشر واحد.",
+              "repair": "يُحذف وصف الإغلاق. ويُعاد الاحتمال إلى صيغته في المصدر 2. ويُعتمد قياس واحد لنيكاي في المسودة كلها، ومنها مقدمات الصندوق، مع ذكر توقيته."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يحدد اليابان عبر نيكاي ويقول ما حدث: الهبوط دون 60 ألف نقطة، وهو مستند إلى المصدر 1. العنوان الفرعي يحدد كوريا ويذكر تعليق التداول والإجراء الكوري دون وصف الإغلاق الذي لا يسنده مصدر. والمقدمة تنسب المخاوف إلى «القيود الأمريكية» لا إلى قرار اتحادي.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "المسودة تحمل التفسيرات الثلاثة التي تقدمها المصادر. السبب: تعهدات الحكام الديمقراطيين ونسبة 40% من «كلين فيو» في المصدر 2، ومخاوف عائد الإنفاق في المصدر 4، وهبوط ناسداك في المصدر 4. ردّ الفعل: الإجراء الكوري بغرضه، وإجراءات تايوان المرتقبة، وانحسار خسائر «إم إس سي آي». والآراء: مكارثي وساوامورا ووودز، كل منهم بصفته. وصندوق «لماذا يهمّ» يبني على مقدمات مسندة: الـ40%، ومعيار المعنويات أم الطلب، وثقل الرقائق في كوسبي وتايكس. ويستنتج منها استنتاجاً مشروطاً بـ«إذا تحولت إلى قيود فعلية»، دون ادعاء تسعير.",
+              "repair": "تحسين اختياري: ذكر هبوط مؤشر فيلادلفيا لأشباه الموصلات 12.2% يوم الخميس (المصدر 4) بجانب ناسداك، لأنه المحرك المباشر لأسهم الرقائق."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يقول إن الخبر هو نيكاي دون 60 ألف نقطة، والفقرة الأولى بعد المقدمة تطوّره فوراً. والأقسام مجمعة الآن: الأسواق، ثم مراكز البيانات، ثم ردّ السلطات، ثم القراءات. لكن الخاتمة «ويترقب المستثمرون تقرير الوظائف…» تقف وحدها بلا صلة بالحدث. وجملة التصحيح تكرر عتبة الـ10%.",
+              "repair": "تُربط فقرة تقرير الوظائف بمسار الفائدة وتوقع رفعها في ديسمبر كما في المصدر 2، أو تُحذف. وتُختصر جملة التصحيح إلى «ليتراجع أكثر من 10% عن ذروته الأخيرة ويدخل منطقة التصحيح»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "نيكاي بقياس واحد: 5.96% عند 06:45 بتوقيت غرينتش (المصدر 5)، ولم يعد مقياس آخر في مقدمات الصندوق. وكوسبي 5.54% دون وصفه إغلاقاً. واحتمال ساوامورا بقي احتمالاً. لكن عبارة «مؤشري «ستار ماركت» و«تشاي نكست» للذكاء الاصطناعي» تنسب صفة الذكاء الاصطناعي إلى المؤشرين معاً، والمصدر 4 يقصرها على «تشاي نكست».",
+              "repair": "«فهبط مؤشر سوق «ستار» ومؤشر «تشاي نكست» للذكاء الاصطناعي أكثر من 4% لكل منهما»."
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تعهد عدد من الحكام الديمقراطيين المنتخبين خلال حملاتهم بإبطاء تطوير الذكاء الاصطناعي ووقف بناء مراكز البيانات أو تعليقه",
+          "source": 3
+        },
+        {
+          "fact": "من المقرر بناء نحو 40% من سعة مراكز البيانات قيد التطوير في الولايات المتحدة في ولايات تعهّد حكامها المنتخبون حديثاً بوقف هذا البناء أو تعليقه، وفق بيانات «كلين فيو»",
+          "source": 2
+        },
+        {
+          "fact": "يقيّم المستثمرون هل تؤدي قيود بناء مراكز البيانات إلى إبطاء الطلب على رقائق الذكاء الاصطناعي وبنيته التحتية",
+          "source": 4
+        },
+        {
+          "fact": "كوسبي مؤشر مثقل بأسهم التكنولوجيا، وتراجع بما يصل إلى 8.8% يوم الجمعة",
+          "source": 3
+        }
+      ],
+      "slug": "nikkei-kospi-ai-selloff-asia-395c79",
+      "title": "نيكاي يهبط دون 60 ألف نقطة مع امتداد بيع أسهم الذكاء الاصطناعي",
+      "score": 8,
+      "image": "cover-art"
+    },
+    {
+      "headline": "المغرب يوقف مؤقتاً تصدير الطماطم إلى أفريقيا لكبح الأسعار المحلية",
+      "section": "economy",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
+  "llm": {
+    "calls": 79,
+    "failures": 1,
+    "promptTokens": 1232185,
+    "completionTokens": 280843,
+    "cacheReadTokens": 350313,
+    "costUsd": 12.741,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 79
+    },
+    "byRole": {
+      "editor": {
+        "calls": 1,
+        "in": 85268,
+        "read": 0,
+        "out": 2681,
+        "usd": 0.7358
+      },
+      "desk": {
+        "calls": 16,
+        "in": 119509,
+        "read": 140173,
+        "out": 73603,
+        "usd": 2.4561
+      },
+      "writer": {
+        "calls": 21,
+        "in": 245383,
+        "read": 170290,
+        "out": 89696,
+        "usd": 3.7907
+      },
+      "critic": {
+        "calls": 13,
+        "in": 158954,
+        "read": 39850,
+        "out": 51514,
+        "usd": 2.3097
+      },
+      "checker": {
+        "calls": 6,
+        "in": 53577,
+        "read": 0,
+        "out": 47237,
+        "usd": 1.3733
+      },
+      "vision": {
+        "calls": 22,
+        "in": 219181,
+        "read": 0,
+        "out": 16112,
+        "usd": 2.0754
+      }
+    }
+  },
+  "log": [
+    "[07:34:05] image: dropped \"ゴルフ練習場 (19205004204).jpg\" — names too little of stock, board",
+    "[07:34:05] image: dropped \"LAY OF THE (IS)LAND: US ARMY JAPAN COMMANDING GENERAL TOURS U.S. INSTA\" — names too little of stock, board",
+    "[07:34:05] image: dropped \"LAY OF THE (IS)LAND: US ARMY JAPAN COMMANDING GENERAL TOURS U.S. INSTA\" — names too little of stock, board",
+    "[07:34:05] image: dropped \"LAY OF THE (IS)LAND: US ARMY JAPAN COMMANDING GENERAL TOURS U.S. INSTA\" — names too little of stock, board",
+    "[07:34:05] image: dropped \"LAY OF THE (IS)LAND: US ARMY JAPAN COMMANDING GENERAL TOURS U.S. INSTA\" — names too little of stock, board",
+    "[07:34:05] image: dropped \"Explore the vibrant nightlife of Shibuya, Tokyo, showcasing neon-lit s\" — names too little of stock, board",
+    "[07:34:05] image: dropped \"LAY OF THE (IS)LAND: US ARMY JAPAN COMMANDING GENERAL TOURS U.S. INSTA\" — names too little of stock, board",
+    "[07:34:05] image: dropped \"LAY OF THE (IS)LAND: US ARMY JAPAN COMMANDING GENERAL TOURS U.S. INSTA\" — names too little of stock, board",
+    "[07:34:05] image: dropped \"LAY OF THE (IS)LAND: US ARMY JAPAN COMMANDING GENERAL TOURS U.S. INSTA\" — names too little of stock, board",
+    "[07:34:05] image: dropped \"Front view of a traditional sushi restaurant in Tokyo with vibrant men\" — names too little of stock, board",
+    "[07:34:05] image: dropped \"LAY OF THE (IS)LAND: US ARMY JAPAN COMMANDING GENERAL TOURS U.S. INSTA\" — names too little of stock, board",
+    "[07:34:05] image: dropped \"Aerial view of Shibuya skyline with vibrant city lights under a clear \" — names too little of stock, board",
+    "[07:34:05] image: dropped \"LAY OF THE (IS)LAND: US ARMY JAPAN COMMANDING GENERAL TOURS U.S. INSTA\" — names too little of stock, board",
+    "[07:34:05] image: dropped \"LAY OF THE (IS)LAND: US ARMY JAPAN COMMANDING GENERAL TOURS U.S. INSTA\" — names too little of stock, board",
+    "[07:34:05] commons \"Nikkei index board\": 0 usable of 0",
+    "[07:34:06] commons \"Nikkei index\": 3 usable of 17",
+    "[07:34:06] image: dropped \"Ruscal Suzuka 20020113P1.jpg\" — dated 2002, an archival picture",
+    "[07:34:06] image: dropped \"Bolsa de Tokio\" — names too little of index, board",
+    "[07:34:06] image: dropped \"A collection of vintage library catalog cards hanging on wooden shelve\" — names too little of index, board",
+    "[07:34:06] image: dropped \"Candlestick chart showcasing crypto market trends with volume bars and\" — names too little of index, board",
+    "[07:34:06] image: dropped \"Detailed financial chart showing a downward trend, ideal for economics\" — names too little of index, board",
+    "[07:34:06] image: dropped \"Close-up of a woman's hand pointing to data trends on a stock market c\" — names too little of index, board",
+    "[07:34:06] image: dropped \"Colorful financial chart showcasing trends and metrics, ideal for busi\" — names too little of index, board",
+    "[07:34:06] image: dropped \"Detailed view of a financial stock market and cryptocurrency analysis \" — names too little of index, board",
+    "[07:34:06] image: dropped \"Two professionals analyze stock market graphs with a focus on finance \" — names too little of index, board",
+    "[07:34:06] image: dropped \"Detailed close-up of a newspaper displaying global financial market st\" — names too little of index, board",
+    "[07:34:07] commons \"stock traders\": 6 usable of 24",
+    "[07:34:07] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[07:34:07] image: dropped \"Toronto Stock Exchange 1956.jpg\" — dated 1956, an archival picture",
+    "[07:34:07] image: dropped \"The diseases of live stock and their most efficient remedies; (1855) (\" — dated 1855, an archival picture",
+    "[07:34:07] image: dropped \"Two businessmen reviewing financial data on a laptop indoors, analyzin\" — names too little of stock, traders",
+    "[07:34:07] image: dropped \"Monkey Business\" — names too little of stock, traders",
+    "[07:34:07] image: dropped \"Frustrated man monitoring multiple trading graphs on computer screens \" — names too little of stock, traders",
+    "[07:34:07] image: dropped \"High-resolution candlestick chart showing forex trading trends and ana\" — names too little of stock, traders",
+    "[07:34:07] image: dropped \"No Known Restrictions: Traders on the Floor of the New York Stock Exch\" — dated 1936, an archival picture",
+    "[07:34:07] image: dropped \"Barcelona, Spain 2012 - The Boqueria Market\" — names too little of stock, traders",
+    "[07:34:07] image: dropped \"Detailed view of cryptocurrency trading charts on digital screens, sho\" — names too little of stock, traders",
+    "[07:34:07] image: dropped \"Financial candlestick chart showing market trends and data visualizati\" — names too little of stock, traders",
+    "[07:34:07] image: dropped \"Crackhouse Cupcake\" — names too little of stock, traders",
+    "[07:34:07] image: dropped \"Christmas Market '20 Days Of Christmas' - Dublin Docklands\" — names too little of stock, traders",
+    "[07:34:07] image: dropped \"Deutsche-boerse-parkett-ffm006.jpg\" — taken in Germany, which the story does not name",
+    "[07:34:20] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=803 in=11242 read=0 out=1030 attempt=1 ms=11913",
+    "[07:34:20] image: \"Shinko Securities's electronic stock board nearby Yaesu side\" names the story's topic without saying its point (This is the only candidate showing the story's own market in its own city: anonymous people watching an electronic stock board in Tokyo's Yaesu district. It is ); checked now and kept in reserve while the desk looks further",
+    "[07:34:29] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=681 in=8315 read=0 out=793 attempt=1 ms=9150",
+    "[07:34:29] image: second check (claude-cli/claude-opus-5-5) STOCK — refused \"Shinko Securities's electronic stock board nearby Yaesu side\": This 2009 Flickr snapshot shows a board legibly reading the Nikkei at 7,972 under a headline about it falling below 60,0",
+    "[07:34:29] image: thumbnail HTTP 403 for https://live.staticflickr.com/2083/2291498814_923636ac78_n.jpg",
+    "[07:34:38] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=533 in=11185 read=0 out=744 attempt=1 ms=8247",
+    "[07:34:38] image: vision rejected all candidates (fallback pass) (No candidate fits. 1 and 3 are rainy street scenes in Kashiwa and in Billericay, UK. 2 is a screen of a US stock heatmap: a chart as subject with other companies' tickers, not Tokyo or Seoul. 4 is a document about a 2005 train derailment. 5 is a close-up of a private individual on a New York street, not a trading scene. 6 is a trading floor, but the AEX signage places it in Amsterdam, a market the story never mentions, and its CRT monitors give it a dated, pre-2005 look.)",
+    "[07:34:42] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=280 in=3114 read=0 out=310 attempt=1 ms=4411",
+    "[07:34:42] image: last resort: stock market display board | stock market display board industrial",
+    "[07:34:43] commons \"stock market display board\": 6 usable of 13",
+    "[07:34:43] image: dropped \"Floor of Toronto Stock Exchange 1956.jpg\" — dated 1956, an archival picture",
+    "[07:34:43] image: dropped \"1969 AMC SC-Rambler at Summit display in Georgia 3of7.jpg\" — names too little of stock, market, display, board",
+    "[07:34:43] image: dropped \"Canadian forest industries 1886-1888 (1888) (20335210990).jpg\" — names too little of stock, market, display, board",
+    "[07:34:43] image: dropped \"PACKARD 120 CONVERTIBLE COUPE (1939) (50072477626).jpg\" — names too little of stock, market, display, board",
+    "[07:34:43] commons \"stock market display board industrial\": 0 usable of 0",
+    "[07:34:44] commons \"stock market\": 11 usable of 24",
+    "[07:34:44] image: dropped \"Berlin-Marzahn-Magerviehhof-Friedrichsfelde-Zur-Alten-Boerse-Boersenge\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[07:34:44] image: dropped \"Berlin-Marzahn-Magerviehhof-Friedrichsfelde-Zur-Alten-Boerse-Boersenge\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[07:34:44] image: dropped \"Berlin-Marzahn-Magerviehhof-Friedrichsfelde-Zur-Alten-Boerse-Boersenge\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[07:34:44] image: dropped \"UK Stock Market - Investing in the United Kingdom.jpg\" — taken in United Kingdom, which the story does not name",
+    "[07:34:48] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=65 in=11116 read=0 out=206 attempt=1 ms=3913",
+    "[07:34:48] image: vision rejected all candidates (fallback pass) (None fits. 1 is a clip-art chart, 2 and 3 are composite graphics with the EU and US flags (Europe is not in the story, and the flags are overlays), 4 is a dated US stock certificate, and 5 is an app screenshot showing Apple. No candidate shows a trading floor or a market board in Tokyo or Seoul.)",
+    "[07:34:48] image: last pass, a neutral illustration: stock board | pedestrians stock board | investors watching stock prices | index board | stock traders",
+    "[07:34:48] openverse \"investors watching stock prices\": 0 usable of 0",
+    "[07:34:48] pexels \"index board\": 8 usable",
+    "[07:34:48] pexels \"stock board\": 8 usable",
+    "[07:34:48] pexels \"stock traders\": 8 usable",
+    "[07:34:48] openverse \"pedestrians stock board\": 0 usable of 1",
+    "[07:34:48] openverse \"stock traders\": 10 usable of 20",
+    "[07:34:48] openverse \"investors watching\": 3 usable of 20",
+    "[07:34:48] openverse \"pedestrians stock\": 10 usable of 20",
+    "[07:34:48] commons \"stock board\": 9 usable of 24",
+    "[07:34:48] image: dropped \"Board at the Toronto Stock Exchange.jpg\" — dated 1910, an archival picture",
+    "[07:34:48] image: dropped \"Discuss stock market situation. Washington, D.C., Oct. 19. The Board o\" — dated 1937, an archival picture",
+    "[07:34:48] image: dropped \"Minneapolis-St. Paul Stock Exchange Board - DPLA - 7e706bfbd7a9e6ad1d7\" — dated 1929, an archival picture",
+    "[07:34:48] image: dropped \"Toronto Stock Exchange 1956.jpg\" — dated 1956, an archival picture",
+    "[07:34:48] pexels \"investors watching stock prices\": 8 usable",
+    "[07:34:49] pexels \"pedestrians stock board\": 8 usable",
+    "[07:34:49] openverse \"index board\": 5 usable of 20",
+    "[07:34:49] openverse \"stock board\": 10 usable of 20",
+    "[07:34:49] image: dropped \"Business professionals discussing financial graphs on a flipchart duri\" — names too little of stock, board",
+    "[07:34:49] image: dropped \"1938 Phantom Corsair\" — names too little of stock, board",
+    "[07:34:49] image: dropped \"Flux Seed — Congrats to the first Google X spinout! Building better bu\" — names too little of stock, board",
+    "[07:34:49] image: dropped \"Evelyn Y. Davis\" — names too little of stock, board",
+    "[07:34:49] commons \"pedestrians stock board\": 2 usable of 2",
+    "[07:34:49] image: dropped \"Fire Brigade Station Westminster (14771838850).jpg\" — names too little of pedestrians, stock, board",
+    "[07:34:49] image: dropped \"Picturesque America; or, The land we live in. A delineation by pen and\" — names too little of pedestrians, stock, board",
+    "[07:34:49] image: dropped \"TIMES SQ NYC 1982\" — dated 1982, an archival picture",
+    "[07:34:49] image: dropped \"trabant, coffee & chai, students working together on laptops, bike, pe\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[07:34:49] image: dropped \"Barcelona, Spain 2012 - The Boqueria Market\" — names too little of pedestrians, stock, board",
+    "[07:34:49] commons \"investors watching stock prices\": 3 usable of 7",
+    "[07:34:49] image: dropped \"Trompe le pied.jpg\" — names too little of investors, watching, stock, prices",
+    "[07:34:49] image: dropped \"Porter County Asylum and Poor Farm, 1912 - Valparaiso, Indiana (418135\" — names too little of investors, watching, stock, prices",
+    "[07:34:49] image: dropped \"Porter County Infirmary, 1907 - Valparaiso, Indiana (19014932298).jpg\" — names too little of investors, watching, stock, prices",
+    "[07:34:49] image: dropped \"Top 10 Tech Trends for 2010\" — names too little of investors, watching, stock, prices",
+    "[07:34:49] image: dropped \"Hand pointing at a financial graph displaying cryptocurrency data anal\" — names too little of investors, watching, stock, prices",
+    "[07:34:49] image: dropped \"An Inconvenient Sequel: Truth to Power with Al Gore\" — names too little of investors, watching, stock, prices",
+    "[07:34:49] image: dropped \"Hand pointing at stock market graphs analyzed with financial metrics o\" — names too little of investors, watching, stock, prices",
+    "[07:34:49] image: dropped \"Visiting Baidu's AI Lab today\" — names too little of investors, watching, stock, prices",
+    "[07:34:49] image: dropped \"Closeup of hand analyzing financial graph on a digital screen for mark\" — names too little of investors, watching, stock, prices",
+    "[07:34:49] image: dropped \"A hand points to a financial graph on a large screen, indicating marke\" — names too little of investors, watching, stock, prices",
+    "[07:34:49] image: dropped \"Close-up of a person analyzing Bitcoin market trends on a digital trad\" — names too little of investors, watching, stock, prices",
+    "[07:34:49] image: dropped \"A person analyzing cryptocurrency market trends on a tablet device dis\" — names too little of investors, watching, stock, prices",
+    "[07:34:49] image: dropped \"A hand points at a stock market graph on a digital screen, highlightin\" — names too little of investors, watching, stock, prices",
+    "[07:34:49] image: dropped \"A hand points to cryptocurrency graphs on a trading screen indicating \" — names too little of investors, watching, stock, prices",
+    "[07:34:50] commons \"index board\": 6 usable of 24",
+    "[07:34:50] image: dropped \"WIPO Global Innovation Index (GII) Governing Board Meeting.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[07:34:50] image: dropped \"San Francisco–Oakland Bay Bridge- New and Old bridges.jpg\" — names too little of index, board",
+    "[07:34:50] image: dropped \"Carly Fiorina at New Hampshire Education Summit The Seventy-Four Augus\" — names too little of index, board",
+    "[07:34:50] image: dropped \"Vintage file folders organized in a row inside a dimly lit room.\" — names too little of index, board",
+    "[07:34:50] image: dropped \"Carly Fiorina at New Hampshire Education Summit The Seventy-Four Augus\" — names too little of index, board",
+    "[07:34:50] image: dropped \"A close-up of a traditional Rolodex with alphabet tabs on a wooden des\" — names too little of index, board",
+    "[07:34:50] image: dropped \"Do Your Bit! Measuring the ANZACs Crowdsource Project\" — names too little of index, board",
+    "[07:34:50] image: dropped \"Close-up of a woman's hand pointing to data trends on a stock market c\" — names too little of index, board",
+    "[07:34:50] image: dropped \"Carly Fiorina at New Hampshire Education Summit The Seventy-Four Augus\" — names too little of index, board",
+    "[07:34:50] image: dropped \"Stylish flat lay of a clipboard with pastel notebooks and a green stic\" — a stock cliché («sticky note»)",
+    "[07:34:50] image: dropped \"Carly Fiorina at New Hampshire Education Summit The Seventy-Four Augus\" — names too little of index, board",
+    "[07:34:50] image: dropped \"Two professionals analyze stock market graphs with a focus on finance \" — names too little of index, board",
+    "[07:34:50] image: dropped \"Colorful financial chart showcasing trends and metrics, ideal for busi\" — names too little of index, board",
+    "[07:34:50] commons \"stock traders\": 6 usable of 24",
+    "[07:34:50] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[07:34:50] image: dropped \"The diseases of live stock and their most efficient remedies; (1855) (\" — dated 1855, an archival picture",
+    "[07:34:50] image: dropped \"Two businessmen reviewing financial data on a laptop indoors, analyzin\" — names too little of stock, traders",
+    "[07:34:50] image: dropped \"Monkey Business\" — names too little of stock, traders",
+    "[07:34:50] image: dropped \"Frustrated man monitoring multiple trading graphs on computer screens \" — names too little of stock, traders",
+    "[07:34:50] image: dropped \"High-resolution candlestick chart showing forex trading trends and ana\" — names too little of stock, traders",
+    "[07:34:50] image: dropped \"No Known Restrictions: Traders on the Floor of the New York Stock Exch\" — dated 1936, an archival picture",
+    "[07:34:50] image: dropped \"Barcelona, Spain 2012 - The Boqueria Market\" — names too little of stock, traders",
+    "[07:34:50] image: dropped \"Detailed view of cryptocurrency trading charts on digital screens, sho\" — names too little of stock, traders",
+    "[07:34:50] image: dropped \"Financial candlestick chart showing market trends and data visualizati\" — names too little of stock, traders",
+    "[07:34:50] image: dropped \"Crackhouse Cupcake\" — names too little of stock, traders",
+    "[07:34:50] image: dropped \"Christmas Market '20 Days Of Christmas' - Dublin Docklands\" — names too little of stock, traders",
+    "[07:34:50] image: thumbnail HTTP 403 for https://live.staticflickr.com/8104/8586298942_f28c3c30fe_n.jpg",
+    "[07:34:50] image: thumbnail HTTP 403 for https://live.staticflickr.com/2083/2291498814_923636ac78_n.jpg",
+    "[07:34:50] image: thumbnail HTTP 403 for https://live.staticflickr.com/2082/2291498318_e698470a95_n.jpg",
+    "[07:34:58] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=448 in=10198 read=0 out=623 attempt=1 ms=7000",
+    "[07:34:58] image: vision rejected all candidates (fallback pass) (No candidate fits. 1 is an unrelated pin board. 2 is a close-up of a price screen listing companies in Arabic script, which points to an Arab exchange, not Tokyo or Seoul. 3 is a New York street scene with a US flag. 4 and 5 are dated amateur shots of the Amsterdam floor, with old CRT monitors and legible AEX signs. 6 shows a named, recognisable trader with NYSE logos.)",
+    "[07:34:59] image: thumbnail HTTP 403 for https://live.staticflickr.com/7136/7044604847_a90b6dc73c_n.jpg",
+    "[07:35:04] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=210 in=10108 read=0 out=417 attempt=1 ms=4982",
+    "[07:35:04] image: vision rejected all candidates (fallback pass) (No candidate shows Tokyo's or Asia's stock market falling. 1 is a rainy street scene with shop signs. 2 is a staged cliché of hands holding a cardboard file. 3, 4 and 5 show the NYSE Euronext logo and an empty New York boardroom, which is the wrong market and a sign or logo as the subject. 6 is an amateur film snapshot of identifiable men on phones in front of a cake display, with Japanese lettering; it is off-subject and reads as a curiosity. The story runs better without a photograph.)",
+    "[07:35:04] published \"نيكاي يهبط دون 60 ألف نقطة مع امتداد بيع أسهم الذكاء الاصطناعي\" -> nikkei-kospi-ai-selloff-asia-395c79",
+    "[07:36:12] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3841 in=10853 read=0 out=8429 attempt=1 ms=68636",
+    "[07:36:55] desk notes: the context fact is not grounded in its source or copies it; left out",
+    "[07:36:55] desk notes: 6 of 31 facts dropped (not in their source or copied from it)",
+    "[07:36:55] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1800 in=11456 read=0 out=5128 attempt=1 ms=42230",
+    "[07:37:59] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3847 in=10461 read=17029 out=7391 attempt=1 ms=64874",
+    "[07:39:08] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3485 in=11239 read=0 out=8735 attempt=1 ms=68330",
+    "[07:39:08] evidence pair \"نيكاي يهبط دون 60 ألف نقطة مع امتداد بيع أسهم الذكاء الاصطناعي\": 3 proved error(s) live (v54), 0 with the kept lessons (v0); the private drafts are not published",
+    "[07:39:08] run budget of 35 minutes spent; \"المغرب يوقف مؤقتاً تصدير الطماطم إلى أفريقيا لكبح الأسعار المحلية\" waits for the next run"
+  ]
+}

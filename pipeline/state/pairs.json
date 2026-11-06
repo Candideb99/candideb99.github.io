@@ -2063,6 +2063,54 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-11-06T07:35:04.159Z",
+      "slug": "nikkei-kospi-ai-selloff-asia-395c79",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v54",
+      "lessonsHash": "a6c6134ebe",
+      "keptVersion": 0,
+      "live": {
+        "errors": 3,
+        "drift": 1,
+        "severity": 9,
+        "supported": 18,
+        "notFound": 1,
+        "checked": 26,
+        "words": 452,
+        "keyFacts": 6,
+        "classes": [
+          "period",
+          "period",
+          "period"
+        ],
+        "programmatic": 2
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 21,
+        "notFound": 4,
+        "checked": 33,
+        "words": 516,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 21,
+        "notFound": 4,
+        "checked": 33,
+        "words": 516,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }
