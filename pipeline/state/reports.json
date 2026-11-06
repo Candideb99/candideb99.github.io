@@ -105,11 +105,11 @@
       "tries": 0
     },
     "fao-fpi": {
-      "edition": 202609,
-      "label": "averaged 136.0 points in September 2026",
+      "edition": 202610,
+      "label": "averaged 133.9 points in October 2026",
       "url": "https://www.fao.org/worldfoodsituation/foodpricesindex/en/",
-      "at": "2026-10-18T22:34:57.966Z",
-      "outcome": "starting point",
+      "at": "2026-11-06T16:09:10.172Z",
+      "outcome": "published fao-food-price-index-october-2026-86a80b",
       "tries": 0
     },
     "sa-cpi": {
@@ -124,7 +124,7 @@
       "edition": 202609,
       "label": "International trade in goods for Saudi Arabia in September 2026",
       "url": "https://www.stats.gov.sa/en/statistics-tabs?tab=436312&category=123481#",
-      "at": "2026-11-05T16:32:36.736Z",
+      "at": "2026-11-06T16:09:11.745Z",
       "outcome": "retry",
       "tries": 0,
       "waiting": true

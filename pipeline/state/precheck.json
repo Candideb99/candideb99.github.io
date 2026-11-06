@@ -12420,6 +12420,82 @@
           ]
         }
       ]
+    },
+    "fao-food-price-index-october-2026-86a80b": {
+      "at": "2026-11-06T16:09:10.153Z",
+      "title": "مؤشر فاو لأسعار الغذاء يتراجع 1.2% في أكتوبر مع هبوط الحبوب",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 35,
+            "checked": 35,
+            "supported": 34,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 13,
+              "field": "body",
+              "class": "internal",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "سجّل مؤشر فاو لأسعار الحبوب 116.8 نقطة في أكتوبر، بانخفاض 5.5 نقطة (4.5%) عن سبتمبر، وبفارق 13.1 نقطة (12.6%) دون مستواه في أكتوبر 2025.",
+              "quote": "سجّل مؤشر فاو لأسعار الحبوب 116.8 نقطة في أكتوبر، بانخفاض 5.5 نقطة (4.5%) عن سبتمبر، وبفارق 13.1 نقطة (12.6%) دون مستواه في أكتوبر 2025.",
+              "source": "the story itself",
+              "sourceN": 0,
+              "correction": "A 13.1-point gap below a year-earlier level of 129.9 points (116.8 + 13.1) is a drop of about 10.1%, not 12.6%, even though the FAO source prints 12.6%."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 35,
+            "checked": 35,
+            "supported": 34,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 1,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 12,
+              "field": "whyItMatters",
+              "class": "cause",
+              "verdict": "contradicted",
+              "status": "listed",
+              "sentence": "وفي الوقت نفسه يرتفع ما يدفعه المستوردون ثمناً للسكر وزيوت الصويا ودوار الشمس بفعل أمطار البرازيل والمخاوف على إنتاج السكر في الهند وطلب الوقود الحيوي.",
+              "quote": "World soybean oil quotations rose to their highest levels since late 2022, supported by continued firm demand from the biofuel sector and seasonally declining supplies from South America, while sunflower oil quotations rebounded from multi-month lows, underpinned by persistently tight export availabilities from the Black Sea region amid ongoing logistical disruptions.",
+              "source": "FAO",
+              "sourceN": 1,
+              "correction": "According to FAO, the sunflower oil rebound was driven by tight export availabilities from the Black Sea region amid logistical disruptions, not by Brazilian rains, Indian sugar concerns or biofuel demand (biofuel demand is cited only for soybean oil)."
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []
