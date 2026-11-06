@@ -12580,6 +12580,34 @@
           "noted": []
         }
       ]
+    },
+    "leveraged-etfs-gains-and-costs-study-97516d": {
+      "at": "2026-11-06T17:50:48.939Z",
+      "title": "صناديق الرافعة الصاعدة تتفوق على المؤشرات التي تتبعها بأكثر من 40 مليار دولار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 39,
+            "checked": 38,
+            "supported": 35,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
