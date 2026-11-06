@@ -15695,6 +15695,50 @@
         }
       ],
       "outcome": "clean"
+    },
+    "ihc-third-quarter-profit-falls-third-0a92ce": {
+      "at": "2026-11-06T16:48:31.882Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v54",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-06T07:20:31.587Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "fromCopy": 1,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 28,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "أرباح الربع المقابل من 2025 ضمّت مكسباً بقيمة 2.7 مليار درهم من بيع شركة تبريد، وتكاليف التمويل قفزت 32%",
+          "quote": "IHC booked an AED2.7 billion gain in the third quarter of 2025 after selling district cooling company PAL Cooling , swelling its profit in the prior-year period."
+        },
+        {
+          "sentence": "تراجع صافي ربح الشركة العالمية القابضة، أكبر شركة مدرجة في الإمارات، 30% على أساس سنوي في الربع الثالث إلى 3.3 مليار درهم (887 مليون دولار)، رغم صعود إيراداتها 31% إلى 35.6 مليار درهم، بحسب حسابات موقع «أرابيان غلف بزنس إنسايت» (AGBI).",
+          "quote": "Operating expenses and finance costs rose as IHC made a third-quarter net profit of AED3.3 billion ($887 million), down 30 percent year on year, according to AGBI calculations."
+        },
+        {
+          "sentence": "إذا واصلت المجموعة تمويل برنامجها الاستثماري بالاقتراض الذي رفع صافي دينها إلى 30.4 مليار درهم، فستبقى تكاليف التمويل، التي قفزت 32% في الربع الثالث، عبئاً مباشراً على ربحها الفصلي.",
+          "quote": "وبلغ النقد والأرصدة المصرفية 76.6 مليار درهم في نهاية سبتمبر، فيما ارتفع صافي الدين إلى 30.4 مليار درهم، نتيجة الحصول على تمويلات لدعم البرنامج الاستثماري للمجموعة."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }
