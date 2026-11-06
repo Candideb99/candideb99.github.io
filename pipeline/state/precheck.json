@@ -12608,6 +12608,34 @@
           "noted": []
         }
       ]
+    },
+    "uae-investors-chase-contracted-income-amid-falling-profits-460e15": {
+      "at": "2026-11-06T20:32:48.824Z",
+      "title": "إقبال المكتتبين والمقرضين في الإمارات يتجاوز المعروض مع تراجع أرباح شركات كبرى",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 49,
+            "checked": 49,
+            "supported": 39,
+            "weak": 8,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
