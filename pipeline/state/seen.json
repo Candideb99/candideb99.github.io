@@ -1,12 +1,6 @@
 {
   "version": 1,
   "items": {
-    "6b37a3ab8d4a1780": {
-      "at": "2026-10-17T14:04:27.017Z",
-      "decision": "rejected",
-      "title": "جورجييفا: العراق طلب برنامجاً تمويلياً من صندوق النقد",
-      "strikes": 1
-    },
     "454477c78729a341": {
       "at": "2026-10-18T04:54:55.153Z",
       "decision": "published",
@@ -18,66 +12,6 @@
       "decision": "published",
       "slug": "iraq-seeks-imf-financing-programme-talks-d17aa2",
       "title": "IMF to accelerate talks with Iraq and Lebanon as Mena support grows"
-    },
-    "f4f72be8b8ec9f22": {
-      "at": "2026-10-17T14:04:27.017Z",
-      "decision": "rejected",
-      "title": "جورجييفا تشير إلى “تقدم كبير” في مفاوضات صندوق النقد مع لبنان",
-      "strikes": 1
-    },
-    "7ec7290761c0ca84": {
-      "at": "2026-10-17T14:04:27.017Z",
-      "decision": "rejected",
-      "title": "غورغييفا: واثقون من التوصل إلى اتفاق مع لبنان بشأن برنامج مع صندوق النقد",
-      "strikes": 1
-    },
-    "d1b4c1813938b3e5": {
-      "at": "2026-10-17T14:08:38.151Z",
-      "decision": "rejected",
-      "title": "Egypt boosted by Moody's upgrade as inflation eases and investor confidence grows",
-      "strikes": 1
-    },
-    "073b1a667c85cbc7": {
-      "at": "2026-10-17T14:08:38.151Z",
-      "decision": "rejected",
-      "title": "«موديز» ترفع تصنيف مصر الائتماني وتبدي نظرة مستقبلية إيجابية",
-      "strikes": 1
-    },
-    "e1dd5cc8f4ff0c2e": {
-      "at": "2026-10-17T16:49:46.047Z",
-      "decision": "published",
-      "slug": "brent-touches-110-hormuz-supply-fears-44594d",
-      "title": "Oil touches $110 for first time since May on Mideast worries"
-    },
-    "a139b18f3cff2d6b": {
-      "at": "2026-10-17T16:49:46.047Z",
-      "decision": "published",
-      "slug": "brent-touches-110-hormuz-supply-fears-44594d",
-      "title": "Brent oil touches $110 as Iran escalates Hormuz attacks, Ukraine vows to hit Russian refineries"
-    },
-    "5bfbf5e1f3e292ef": {
-      "at": "2026-10-17T16:49:46.047Z",
-      "decision": "published",
-      "slug": "brent-touches-110-hormuz-supply-fears-44594d",
-      "title": "Oil touches $110 on continued uncertainty over Middle East supplies"
-    },
-    "45ba55ffab9fec37": {
-      "at": "2026-10-17T17:24:28.201Z",
-      "decision": "published",
-      "slug": "trump-waives-russia-sanctions-before-implementation-98007e",
-      "title": "Trump eases Russia oil sanctions, but is Europe still buying Moscow’s gas?"
-    },
-    "fbb451f0598973fb": {
-      "at": "2026-10-17T17:24:28.201Z",
-      "decision": "published",
-      "slug": "trump-waives-russia-sanctions-before-implementation-98007e",
-      "title": "ترمب يصدر إعفاءً من عقوبات ورسوم جمركية مرتبطة بروسيا"
-    },
-    "50ffba9c93137659": {
-      "at": "2026-10-17T17:24:28.201Z",
-      "decision": "published",
-      "slug": "trump-waives-russia-sanctions-before-implementation-98007e",
-      "title": "Trump waives broad new Russia sanctions and tariffs under Graham Act, citing national interest"
     },
     "8bc9a667815dfea6": {
       "at": "2026-10-17T20:50:56.578Z",
@@ -6051,6 +5985,108 @@
       "decision": "published",
       "slug": "imf-georgieva-ai-slowdown-central-banks-6a0c11",
       "title": "جورجيفا: أي تباطؤ في النمو المدفوع بالذكاء الاصطناعي سيؤثر على البنوك المركزية"
+    },
+    "ccc863cc8ca9557f": {
+      "at": "2026-11-07T19:41:50.823Z",
+      "decision": "published",
+      "slug": "centcom-iron-gate-task-force-iran-land-borders-e1dfe4",
+      "title": "هل تغلق \"البوابة الحديدية\" حدود إيران البرية؟"
+    },
+    "7b7d723742bdfed8": {
+      "at": "2026-11-07T19:41:50.823Z",
+      "decision": "published",
+      "slug": "centcom-iron-gate-task-force-iran-land-borders-e1dfe4",
+      "title": "\"سنتكوم\" تشكل وحدة خاصة لتعطيل طرق نقل الأسلحة الإيرانية براً"
+    },
+    "77f3a8eecb8a112f": {
+      "at": "2026-11-07T19:41:50.823Z",
+      "decision": "published",
+      "slug": "centcom-iron-gate-task-force-iran-land-borders-e1dfe4",
+      "title": "تشكيل قوة مهام أمريكية جديدة لمنع نقل الأسلحة عبر حدود إيران"
+    },
+    "83bc615bb6d99cfa": {
+      "at": "2026-11-07T19:41:50.823Z",
+      "decision": "published",
+      "slug": "centcom-iron-gate-task-force-iran-land-borders-e1dfe4",
+      "title": "US asked Iraq to close border crossings with Iran: FM Hussein"
+    },
+    "44f72646fa118752": {
+      "at": "2026-11-07T19:41:50.823Z",
+      "decision": "published",
+      "slug": "centcom-iron-gate-task-force-iran-land-borders-e1dfe4",
+      "title": "Expanding on naval blockade, US military looks to restrict Iranian land commerce"
+    },
+    "8b5bc3c48a75a0b7": {
+      "at": "2026-11-07T19:52:06.353Z",
+      "decision": "published",
+      "slug": "turkey-detains-bank-regulator-deputy-fund-probe-60fd94",
+      "title": "تركيا توسّع تحقيقات التلاعب بالسوق وتوقف مسؤولين رقابيين"
+    },
+    "8db4e0c6639f4b72": {
+      "at": "2026-11-07T19:52:06.353Z",
+      "decision": "published",
+      "slug": "turkey-detains-bank-regulator-deputy-fund-probe-60fd94",
+      "title": "Top Turkish Regulators Taken Into Custody in Fund Probe"
+    },
+    "381abbc25b343d38": {
+      "at": "2026-11-07T19:52:06.353Z",
+      "decision": "published",
+      "slug": "turkey-detains-bank-regulator-deputy-fund-probe-60fd94",
+      "title": "Fon soruşturmasında yeni gelişme"
+    },
+    "4ddc7b963f1c24fa": {
+      "at": "2026-11-07T19:52:06.353Z",
+      "decision": "published",
+      "slug": "turkey-detains-bank-regulator-deputy-fund-probe-60fd94",
+      "title": "Eski Takasbank Genel Müdürü Arıncı yeniden gözaltında"
+    },
+    "f0e89d32283dd6cf": {
+      "at": "2026-11-07T19:52:06.353Z",
+      "decision": "published",
+      "slug": "turkey-detains-bank-regulator-deputy-fund-probe-60fd94",
+      "title": "Fon soruşturmasında BDDK Başkan Yardımcısı ile Bulls, Takasbank ve Ruzy yöneticileri gözaltında"
+    },
+    "d79f85aeb562f1a0": {
+      "at": "2026-11-07T20:04:10.170Z",
+      "decision": "published",
+      "slug": "abu-dhabi-property-transactions-jump-76-percent-029942",
+      "title": "171.2 مليار درهم تصرفات عقارية بأبوظبي في 9 أشهر"
+    },
+    "1433fb11b5b207e0": {
+      "at": "2026-11-07T20:04:10.170Z",
+      "decision": "published",
+      "slug": "abu-dhabi-property-transactions-jump-76-percent-029942",
+      "title": "Abu Dhabi property transactions jump 76% to Dh171bn in first nine months of 2026"
+    },
+    "abf0be306a1ad113": {
+      "at": "2026-11-07T20:14:09.193Z",
+      "decision": "published",
+      "slug": "egypt-1-gigawatt-power-data-centers-565f56",
+      "title": "وزير الاتصالات: دفع الابتكار في الذكاء الاصطناعي بجذب استثمارات مراكز البيانات"
+    },
+    "e5bad98288a50add": {
+      "at": "2026-11-07T20:14:09.193Z",
+      "decision": "published",
+      "slug": "egypt-1-gigawatt-power-data-centers-565f56",
+      "title": "الاتصالات: نستهدف توطين صناعة الذكاء الاصطناعي وجذب استثمارات مراكز البيانات"
+    },
+    "6f00e3da2f5113d9": {
+      "at": "2026-11-07T20:14:09.193Z",
+      "decision": "published",
+      "slug": "egypt-1-gigawatt-power-data-centers-565f56",
+      "title": "وزير الاستثمار يستعرض سبل توظيف الذكاء الاصطناعى فى تطوير الخدمات"
+    },
+    "5f77c9c8bdeeb9bb": {
+      "at": "2026-11-07T20:14:09.193Z",
+      "decision": "published",
+      "slug": "egypt-1-gigawatt-power-data-centers-565f56",
+      "title": "وزراء الاتصالات والاستثمار والمالية والري يعرضون خططًا حكومية للتحول الرقمي والذكاء الاصطناعي"
+    },
+    "c3d30ef9a353fda1": {
+      "at": "2026-11-07T20:14:09.193Z",
+      "decision": "published",
+      "slug": "egypt-1-gigawatt-power-data-centers-565f56",
+      "title": "فريد: 3 وزارات تعد حزمة استثمارية لجذب مشروعات مراكز البيانات إلى مصر"
     }
   }
 }
