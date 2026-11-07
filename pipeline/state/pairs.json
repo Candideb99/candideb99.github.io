@@ -2159,6 +2159,50 @@
         ],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-11-07T09:20:21.725Z",
+      "slug": "williams-us-inflation-too-high-2-percent-ae679b",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v56",
+      "lessonsHash": "a6c6134ebe",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 18,
+        "notFound": 3,
+        "checked": 22,
+        "words": 332,
+        "keyFacts": 5,
+        "classes": [],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 23,
+        "notFound": 2,
+        "checked": 26,
+        "words": 359,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 23,
+        "notFound": 2,
+        "checked": 26,
+        "words": 359,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      }
     }
   ]
 }

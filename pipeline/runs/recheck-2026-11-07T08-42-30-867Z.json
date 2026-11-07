@@ -1,0 +1,80 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-07T08:42:30.867Z",
+  "durationSec": 69,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "openai-raises-11-billion-trillion-valuation-fa8f7b",
+      "title": "«أوبن إيه آي» تجمع 11 مليار دولار بتقييم 1.25 تريليون دولار",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 20,
+        "checked": 20,
+        "supported": 18,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "oil-traders-seek-us-licenses-sanctioned-tankers-582b45",
+      "title": "شركات نفط كبرى تسعى إلى تراخيص أمريكية لتشغيل نحو 50 ناقلة خاضعة للعقوبات",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 27,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 2,
+    "failures": 0,
+    "promptTokens": 14524,
+    "completionTokens": 15059,
+    "cacheReadTokens": 0,
+    "costUsd": 0.4173,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 2
+    },
+    "byRole": {
+      "checker": {
+        "calls": 2,
+        "in": 14524,
+        "read": 0,
+        "out": 15059,
+        "usd": 0.4173
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[08:42:31] second look: 2 to read now (2 published pieces not yet read; 213 read clean before publication and left out of the audit sample)",
+    "[08:42:32] openai-raises-11-billion-trillion-valuation-fa8f7b:   source https://www.theverge.com/ai-artificial-intelligence/1029380/openai-1-25-trillion: subscribers-only; read from the copy saved at publication (fetched then)",
+    "[08:43:23] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2913 in=5513 read=0 out=6412 attempt=1 ms=50066",
+    "[08:43:23] openai-raises-11-billion-trillion-valuation-fa8f7b: 20 of 20 sentences checked · 18 supported · 0 without a source · 0 confirmed error(s)",
+    "[08:43:39] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2834 in=9011 read=0 out=8647 attempt=1 ms=66674",
+    "[08:43:39] oil-traders-seek-us-licenses-sanctioned-tankers-582b45: 29 of 29 sentences checked · 27 supported · 0 without a source · 0 confirmed error(s)"
+  ]
+}

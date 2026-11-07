@@ -12849,6 +12849,238 @@
           "noted": []
         }
       ]
+    },
+    "sp-500-biggest-weekly-loss-ai-midterms-f9fb82": {
+      "at": "2026-11-07T08:58:35.927Z",
+      "title": "إس آند بي 500 يخسر 2.7% في أسوأ أسبوع منذ أبريل 2025",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v56",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 38,
+            "checked": 38,
+            "supported": 29,
+            "weak": 2,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 4,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 22,
+              "field": "body",
+              "class": "hedge",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وسجّلت أحجام تداول عقود الخيارات مستوى قياسياً، لكن المتداولين لم يكدّسوا رهانات هبوطية.",
+              "quote": "In the options market, while total option volumes surged to a record high on Thursday and put skews steepened as stock indexes plunged, the positioning signals that traders weren’t necessarily piling on bearish bets.",
+              "source": "Moneycontrol",
+              "sourceN": 3,
+              "correction": "The source says positioning only signals that traders weren't necessarily piling on bearish bets, an inference rather than a flat fact."
+            }
+          ],
+          "noted": [
+            {
+              "id": 1,
+              "field": "title",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "إس آند بي 500 يخسر 2.7% في أسوأ أسبوع منذ أبريل 2025",
+              "quote": "The benchmark index headed for its ‌worst ⁠week since June.",
+              "source": "Moneycontrol",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 3,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "أنهى مؤشر إس آند بي 500 الأسبوع منخفضاً 2.7%، في أكبر خسارة أسبوعية له منذ أبريل 2025، وسط مخاوف على رهانات الذكاء الاصطناعي عقب اكتساح الديمقراطيين انتخابات التجديد النصفي الأمريكية.",
+              "quote": "The benchmark index headed for its ‌worst ⁠week since June.",
+              "source": "Moneycontrol",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 6,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "إغلاق إس آند بي 500 الجمعة: 7376.86 نقطة",
+              "quote": "Unofficially, the S&P 500 climbed 0.32% to end the session at 7,376.92 points.",
+              "source": "Moneycontrol",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 25,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وأغلق إس آند بي 500 مرتفعاً 0.31% عند 7376.86 نقطة، لكن مكاسب ناسداك 100 في الجلسة لم تكفِ لتعويض خسائر الخميس.",
+              "quote": "Unofficially, the S&P 500 climbed 0.32% to end the session at 7,376.92 points.",
+              "source": "Moneycontrol",
+              "sourceN": 4,
+              "correction": ""
+            }
+          ],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 38,
+            "checked": 38,
+            "supported": 31,
+            "weak": 2,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 4,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 1,
+              "field": "title",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "إس آند بي 500 يخسر 2.7% في أسوأ أسبوع منذ أبريل 2025",
+              "quote": "The benchmark index headed for its ‌worst ⁠week since June.",
+              "source": "Moneycontrol",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 3,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "أنهى مؤشر إس آند بي 500 الأسبوع منخفضاً 2.7%، في أكبر خسارة أسبوعية له منذ أبريل 2025، وسط مخاوف على رهانات الذكاء الاصطناعي عقب اكتساح الديمقراطيين انتخابات التجديد النصفي الأمريكية.",
+              "quote": "The benchmark index headed for its ‌worst ⁠week since June.",
+              "source": "Moneycontrol",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 6,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "إغلاق إس آند بي 500 الجمعة: 7376.86 نقطة",
+              "quote": "Unofficially, the S&P 500 climbed 0.32% to end the session at 7,376.92 points.",
+              "source": "Moneycontrol",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 25,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وأغلق إس آند بي 500 مرتفعاً 0.31% عند 7376.86 نقطة، لكن مكاسب ناسداك 100 في الجلسة لم تكفِ لتعويض خسائر الخميس.",
+              "quote": "Unofficially, the S&P 500 climbed 0.32% to end the session at 7,376.92 points.",
+              "source": "Moneycontrol",
+              "sourceN": 4,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "oil-deepest-weekly-loss-since-2020-bb7959": {
+      "at": "2026-11-07T09:09:51.644Z",
+      "title": "النفط يسجل أعمق خسارة أسبوعية منذ 2020 مع رهانات التهدئة الأمريكية الإيرانية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v56",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 35,
+            "checked": 35,
+            "supported": 33,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 1,
+              "field": "title",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "النفط يسجل أعمق خسارة أسبوعية منذ 2020 مع رهانات التهدئة الأمريكية الإيرانية",
+              "quote": "تكبدت أسعار النفط العالمية خسائر أسبوعية حادة، هي الأكبر منذ سنة 2022، وسط تزايد التوقعات بإمكانية التوصل إلى اتفاق ينهي الحرب الأمريكية الإسرائيلية على إيران، عقب الهزيمة التي مني بها الحزب الجمهوري في انتخابات التجديد النصفي للكونغرس الأمريكي، وما رافقها من ضغوط سياسية على إدارة الرئيس دونالد ترامب لتسريع إنهاء النزاع.",
+              "source": "Hespress",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 3,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "سجّلت أسعار النفط أعمق خسارة أسبوعية منذ أزمة جائحة كورونا في 2020.",
+              "quote": "تكبدت أسعار النفط العالمية خسائر أسبوعية حادة، هي الأكبر منذ سنة 2022، وسط تزايد التوقعات بإمكانية التوصل إلى اتفاق ينهي الحرب الأمريكية الإسرائيلية على إيران، عقب الهزيمة التي مني بها الحزب الجمهوري في انتخابات التجديد النصفي للكونغرس الأمريكي، وما رافقها من ضغوط سياسية على إدارة الرئيس دونالد ترامب لتسريع إنهاء النزاع.",
+              "source": "Hespress",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "williams-us-inflation-too-high-2-percent-ae679b": {
+      "at": "2026-11-07T09:20:21.717Z",
+      "title": "رئيس فيدرالي نيويورك: التضخم مرتفع للغاية ويجب إعادته إلى 2%",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v56",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 23,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
