@@ -32,7 +32,7 @@ import { arabicEdition, bestPdf, coveredBy, documentUrl, editionKey, previousEdi
 import { mergeNewsRefresh, recentNews, serializeArticle, weekStories } from "../pipeline/lib/article.mjs";
 import { cleanTags } from "../pipeline/lib/tags.mjs";
 import { countriesNamed, groundedRegions, unplacedActors } from "../pipeline/lib/regions.mjs";
-import { styleIssues } from "../pipeline/lib/style.mjs";
+import { styleIssues, bareNameInDek } from "../pipeline/lib/style.mjs";
 import { fixNames, judgeRewrite } from "../pipeline/lib/copydesk.mjs";
 import { CUTTABLE, cutToSources, normalizeCritique, programmaticChecks } from "../pipeline/lib/verify.mjs";
 import { noveltyFault } from "../pipeline/lib/images.mjs";
@@ -695,6 +695,20 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("the country in the dek passes", unplacedOf({ ...acwa, subtitle: "الشركة السعودية تملك 49% من المنصة" }).length, 0);
   check("a name the headline carries unquoted is read («إس كيه هاينكس» الكورية)", unplacedOf({ title: "إس كيه هاينكس تعلّق طرح وحدتها «سوليدايم» في أمريكا", subtitle: "", lede: "علّقت «إس كيه هاينكس» الكورية الجنوبية طرح وحدتها.", body: "", whyItMatters: "" }).length, 1);
   check("a household name the story gives no country passes", unplacedOf({ title: "«أبل» تطلق أول «ماك بوك برو» بشاشة لمس", subtitle: "", lede: "أطلقت «أبل» أول حاسوب «ماك بوك برو» بشاشة لمس.", body: "", whyItMatters: "" }).length, 0);
+  // ONE PERSON ON THE CARD (the owner, 2026-11-07: "who is john williams?"): the headline gives a title, the dek a bare name.
+  const ny = { kind: "news", title: "رئيس فيدرالي نيويورك: التضخم مرتفع للغاية ويجب إعادته إلى 2%", subtitle: "تصريحات جون ويليامز في فرانكفورت تزامنت مع بيانات وظائف أقوى من المتوقع", lede: "قال رئيس الاحتياطي الفيدرالي في نيويورك جون ويليامز الجمعة إن التضخم لا يزال مرتفعاً.", body: "وتحدث ويليامز في مؤتمر للبنك المركزي الأوروبي في فرانكفورت." };
+  const bareOf = (draft) => bareNameInDek({ title: draft.title, subtitle: draft.subtitle, body: `${draft.lede}\n${draft.body}` });
+  check("a dek naming alone the person its headline gives by title is caught, and sent back by the house checks", [bareOf(ny), styleIssues(ny).issues.some((i) => i.includes("«ويليامز» وحده"))], ["ويليامز", true]);
+  check(
+    "the headline's title beside the name, the name with its title after a comma, or no name in the dek pass",
+    [bareOf({ ...ny, subtitle: "تصريحات رئيس الفيدرالي في نيويورك جون ويليامز في فرانكفورت تزامنت مع بيانات وظائف" }), bareOf({ ...ny, subtitle: "جون ويليامز، رئيس الفيدرالي في نيويورك، تحدث في فرانكفورت" }), bareOf({ ...ny, subtitle: "تصريحاته في فرانكفورت تزامنت مع بيانات وظائف أقوى من المتوقع" })],
+    [null, null, null],
+  );
+  check(
+    "a headline that names him, one with no title, and «وقال البنك» are not this fault",
+    [bareOf({ ...ny, title: "ويليامز: التضخم مرتفع للغاية ويجب إعادته إلى 2%" }), bareOf({ ...ny, title: "التضخم الأمريكي مرتفع للغاية" }), bareNameInDek({ title: "وزير المالية: العجز يتراجع", subtitle: "البنك يتوقع نمواً أسرع", body: "وقال البنك إن النمو سيتسارع." })],
+    [null, null, null],
+  );
   // And what it does (the owner, 2026-11-01, on HUMAIN): the story says «هيوماين» للذكاء الاصطناعي, the card did not.
   const humain = { title: "أرامكو تكمل الاستحواذ على 49% من «هيوماين» السعودية بضخ 9.9 مليار ريال", subtitle: "صندوق الاستثمارات العامة يحتفظ بالأغلبية عند 51%", lede: "أكملت أرامكو استحواذها على 49% من «هيوماين» للذكاء الاصطناعي التابعة لصندوق الاستثمارات العامة.", body: "", whyItMatters: "", keyFacts: [] };
   const untradedOf = (draft) => styleIssues(draft).issues.filter((i) => i.includes("دون ما تعمله"));

@@ -393,6 +393,31 @@ export function womenBySurname(text) {
 }
 
 /**
+ * A person the headline gives by title alone («رئيس فيدرالي نيويورك: …») and the dek by name alone («تصريحات جون ويليامز
+ * في فرانكفورت…»): a reader of the card sees a second person he cannot place (the owner, 2026-11-07: "who is john
+ * williams?"). A word is a person's family name when the story uses it alone after a verb of saying («وتحدث ويليامز»،
+ * «وقال رايت»); one that opens with the article is left to the writer and the desk, since «وقال البنك»، «وذكر التقرير» read
+ * the same. Its title beside it in the dek, before or after, is the desks' form. Over the 472 published news stories it
+ * finds this one and «وزير الطاقة الأمريكي: …» over «رايت: …». Returns the bare name, or null.
+ */
+const CARD_ROLE = `(?:رئيس|رئيسة|وزير|وزيرة|محافظ|محافظة|حاكم|حاكمة|مدير|مديرة|نائب|نائبة|متحدث|متحدثة|عضو|عضوة|أمين|أمينة|سفير|سفيرة|قائد|ملك|أمير|ولي|مستشار|مستشارة|زعيم|زعيمة|نظير|نظيره|نظيرته|نظيرها|محلل|محللة|خبير|خبيرة|كبير|كبيرة|مؤسس|مؤسسة|ملياردير|مستثمر|التنفيذي|التنفيذية|مسؤول|مسؤولة|مصدر)`;
+const CARD_SAYS = "(?:قال|قالت|أضاف|أضافت|أوضح|أوضحت|تابع|تابعت|أكد|أكدت|أشار|أشارت|لفت|لفتت|ذكر|ذكرت|رأى|رأت|يرى|ترى|حذر|حذرت|توقع|توقعت|تحدث|تحدثت|شدد|شددت|اعتبر|اعتبرت|يقول|تقول)";
+export function bareNameInDek({ title = "", subtitle = "", body = "" } = {}) {
+  const plain = (s) => String(s ?? "").replace(/\p{M}/gu, "");
+  const [head, dek, text] = [plain(title), plain(subtitle), plain(body)];
+  const role = new RegExp(`(?<!${LETTER})[وبلف]?(?:ال)?${CARD_ROLE}(?!${LETTER})`, "u");
+  if (!role.test(head)) return null;
+  const words = dek.match(new RegExp(`${LETTER}+`, "gu")) ?? [];
+  for (const [i, word] of words.entries()) {
+    if (word.length < 3 || /^ال/.test(word) || head.includes(word) || role.test(word)) continue;
+    if (!new RegExp(`(?<!${LETTER})[وف]?${CARD_SAYS}\\s+${word}(?!${LETTER})`, "u").test(text)) continue;
+    if (role.test([...words.slice(Math.max(0, i - 6), i), ...words.slice(i + 1, i + 4)].join(" "))) continue;
+    return word;
+  }
+  return null;
+}
+
+/**
  * Checks a draft against the rulebook. Returns { issues[], warnings[] } in the newsroom's Arabic
  * issue style: each issue quotes the offending text and says what to do.
  * `sources`: the names the story's sources go by (Arabic and English), to count how often each is named.
@@ -549,6 +574,9 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
   // A woman called by a family name that is a man's given name, alone («وقالت يوسف»): womenBySurname() above.
   const woman = womenBySurname([title, dek, lede, body, box].join("\n"))[0];
   if (woman) issues.push(`«${woman.at}»: «${woman.surname}» وحده يُقرأ اسمَ رجل، والمقصودة امرأة${woman.name ? ` (${woman.name})` : ""}؛ سمِّها باسمها كاملاً أو بلقبها في كل ذكر بعد الأول كما تكتب الصحف العربية («وقالت ناهد يوسف»، «وأضافت رئيسة الهيئة»)، لا باسم العائلة وحده.`);
+  // A person the headline gives by title alone, named in the dek without it (bareNameInDek() above).
+  const bare = news ? bareNameInDek({ title, subtitle: dek, body: `${lede}\n${body}` }) : null;
+  if (bare) issues.push(`الوصف يسمّي «${bare}» وحده، والعنوان لا يذكره إلا بلقبه، فيظنه قارئ البطاقة شخصاً آخر؛ ضع في الوصف اللقب الذي في العنوان بجانب الاسم، أو امضِ في الوصف دون الاسم.`);
   // A dek is a statement of its own, never a reply to its headline: an explainer's «…فهل الفارق بهذا الحجم فعلاً؟» over
   // «لا، فالرقم الأمريكي معدل سنوي…» read as a chat answer (the owner, 2026-10-30: "weird").
   const reply = dek.trim().match(/^(?:لا|نعم|بلى|كلا|أجل|الجواب|الإجابة|باختصار)\s*[،,:؛.]/);
