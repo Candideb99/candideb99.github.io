@@ -370,55 +370,65 @@
       "read": 4,
       "confirmedPerStory": 0,
       "photosPending": 0
+    },
+    {
+      "date": "2026-11-07",
+      "published": 19,
+      "news": 15,
+      "styleFaultsPerStory": 0,
+      "corrections": 0,
+      "read": 7,
+      "confirmedPerStory": 0,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-11-06T15:23:01.554Z",
+  "updatedAt": "2026-11-07T14:22:36.848Z",
   "week": {
-    "published": 93,
-    "news": 76,
+    "published": 94,
+    "news": 77,
     "revisedShare": 0.99,
     "styleFaultsPerStory": 0.04,
-    "styleWarningsPerStory": 0.26,
+    "styleWarningsPerStory": 0.31,
     "corrections": 3,
     "usefulness": {
       "withLessons": {
         "stories": 67,
-        "words": 459,
-        "keyFacts": 4.2
+        "words": 463,
+        "keyFacts": 4.1
       },
       "control": {
         "stories": 9,
-        "words": 372,
-        "keyFacts": 1.8
+        "words": 400,
+        "keyFacts": 2.4
       }
     },
     "precheck": {
-      "checked": 86,
-      "clean": 77,
-      "repaired": 9,
+      "checked": 87,
+      "clean": 75,
+      "repaired": 12,
       "held": 0,
-      "errorsFound": 10,
+      "errorsFound": 13,
       "unsourcedCut": 2,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 10,
+      "repairedBeforePublication": 13,
       "correctionsVerifiedClean": 2,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 44,
+      "read": 42,
       "clean": 32,
       "corrected": 2,
       "stands": 1,
       "refused": 0,
-      "listed": 9,
+      "listed": 7,
       "unverifiable": 0,
       "confirmedPerStory": 0.07,
       "withLessons": {
-        "read": 33,
+        "read": 31,
         "confirmedPerStory": 0.06
       },
       "claudeWithout": {
@@ -429,10 +439,10 @@
     "runs": {
       "count": 24,
       "written": 46,
-      "refused": 3,
-      "callsPerStory": 25.8,
-      "tokensPerStory": 472669,
-      "costPerStory": 3.95,
+      "refused": 6,
+      "callsPerStory": 24.7,
+      "tokensPerStory": 472311,
+      "costPerStory": 3.93,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": [
@@ -443,31 +453,36 @@
           "oil-falls-iran-hormuz-two-day-offer-c40213: تراجعت أسعار النفط بأكثر من 3% في التعاملات المبكرة يوم الإثنين، بعدما عززت المحادثات بوساطة قطرية الآمال في اختراق دبلو",
           "brent-rebounds-us-strike-qeshm-island-382dd6: وأفاد موقع «أرابيان غلف بزنس إنسايت» (AGBI) المتخصص في أخبار أعمال الخليج بأن دوي خمسة انفجارات سُمع في أنحاء الجزيرة، و"
         ]
+      },
+      {
+        "what": "newsroom: skipped: a single independent non-official reporting origin (needs a second independently",
+        "stories": 2,
+        "examples": []
       }
     ]
   },
   "weekBefore": {
-    "published": 97,
-    "news": 82,
+    "published": 101,
+    "news": 85,
     "revisedShare": 1,
-    "styleFaultsPerStory": 0.07,
-    "styleWarningsPerStory": 0.54,
+    "styleFaultsPerStory": 0.05,
+    "styleWarningsPerStory": 0.46,
     "corrections": 14,
     "usefulness": {
       "withLessons": {
-        "stories": 67,
-        "words": 464,
-        "keyFacts": 4.5
+        "stories": 70,
+        "words": 466,
+        "keyFacts": 4.6
       },
       "control": {
         "stories": 15,
-        "words": 520,
-        "keyFacts": 5
+        "words": 493,
+        "keyFacts": 4.6
       }
     },
     "precheck": {
-      "checked": 92,
-      "clean": 83,
+      "checked": 97,
+      "clean": 88,
       "repaired": 9,
       "held": 0,
       "errorsFound": 9,
@@ -482,21 +497,21 @@
       "correctionsStuck": 1
     },
     "secondLook": {
-      "read": 32,
-      "clean": 20,
+      "read": 38,
+      "clean": 24,
       "corrected": 5,
       "stands": 0,
       "refused": 0,
-      "listed": 7,
+      "listed": 9,
       "unverifiable": 0,
-      "confirmedPerStory": 0.22,
+      "confirmedPerStory": 0.18,
       "withLessons": {
-        "read": 24,
-        "confirmedPerStory": 0.21
+        "read": 29,
+        "confirmedPerStory": 0.17
       },
       "claudeWithout": {
-        "read": 8,
-        "confirmedPerStory": 0.25
+        "read": 9,
+        "confirmedPerStory": 0.22
       }
     },
     "runs": {
@@ -521,9 +536,9 @@
     ]
   },
   "lessons": {
-    "version": 54,
+    "version": 57,
     "active": 10,
-    "learnedFrom": 238,
+    "learnedFrom": 242,
     "kept": null,
     "lastTest": {
       "at": "2026-11-02T15:40:49.741Z",
@@ -576,7 +591,7 @@
     }
   },
   "evidence": {
-    "pairs": 47,
+    "pairs": 49,
     "vsKept": {
       "n": 0,
       "better": 0,

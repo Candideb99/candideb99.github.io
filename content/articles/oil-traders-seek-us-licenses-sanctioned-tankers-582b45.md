@@ -27,7 +27,15 @@ regions:
 readingMinutes: 3
 chart: null
 table: null
-image: null
+image:
+  url: https://images.pexels.com/photos/28247236/pexels-photo-28247236.jpeg?auto=compress&cs=tinysrgb&w=1280
+  width: 1280
+  height: 960
+  alt: سطح ناقلة نفط تبحر في عرض البحر
+  credit: Atmadeep Das · بيكسلز
+  license: Pexels License
+  licenseUrl: https://www.pexels.com/license/
+  pageUrl: https://www.pexels.com/photo/the-view-from-the-deck-of-a-ship-in-the-ocean-28247236/
 sources:
   - name: الشرق بلومبرغ
     nameEn: Asharq Business
@@ -45,7 +53,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: null
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
   lessons: v56
 quality:
