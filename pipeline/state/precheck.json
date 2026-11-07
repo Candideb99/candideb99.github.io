@@ -13188,6 +13188,46 @@
           "noted": []
         }
       ]
+    },
+    "saudi-exports-return-oil-weekly-loss-a7fddc": {
+      "at": "2026-11-07T18:51:37.775Z",
+      "title": "براميل السعودية العائدة تدخل سوقاً سجلت أعمق خسارة أسبوعية منذ 2020",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 42,
+            "checked": 42,
+            "supported": 37,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 22,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "فقد هوت الأسعار 8% الأربعاء إثر الفوز الساحق للديمقراطيين، وأغلق برنت لتسليم يناير عند 98.32 دولار للبرميل في ختام تعاملات الجمعة.",
+              "quote": "وهبط خام برنت نحو 10% إلى ما دون 100 دولار للبرميل للمرة الأولى منذ مطلع أكتوبر، مع تقييم المتعاملين أثر فوز الديمقراطيين على الحرب في إيران.",
+              "source": "Khazendar",
+              "sourceN": 4,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []
