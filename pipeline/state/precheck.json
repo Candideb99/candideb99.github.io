@@ -12793,6 +12793,62 @@
           "noted": []
         }
       ]
+    },
+    "oil-traders-seek-us-licenses-sanctioned-tankers-582b45": {
+      "at": "2026-11-07T06:27:22.047Z",
+      "title": "شركات نفط كبرى تسعى إلى تراخيص أمريكية لتشغيل نحو 50 ناقلة خاضعة للعقوبات",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v56",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 29,
+            "checked": 29,
+            "supported": 28,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "openai-raises-11-billion-trillion-valuation-fa8f7b": {
+      "at": "2026-11-07T06:38:54.521Z",
+      "title": "«أوبن إيه آي» تجمع 11 مليار دولار بتقييم 1.25 تريليون دولار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v56",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 20,
+            "checked": 20,
+            "supported": 17,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

@@ -2111,6 +2111,54 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-11-07T06:38:54.529Z",
+      "slug": "openai-raises-11-billion-trillion-valuation-fa8f7b",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v56",
+      "lessonsHash": "a6c6134ebe",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 18,
+        "notFound": 4,
+        "checked": 25,
+        "words": 379,
+        "keyFacts": 4,
+        "classes": [],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 2,
+        "supported": 24,
+        "notFound": 1,
+        "checked": 28,
+        "words": 379,
+        "keyFacts": 6,
+        "classes": [
+          "attribution"
+        ],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 2,
+        "supported": 24,
+        "notFound": 1,
+        "checked": 28,
+        "words": 379,
+        "keyFacts": 6,
+        "classes": [
+          "attribution"
+        ],
+        "programmatic": 0
+      }
     }
   ]
 }

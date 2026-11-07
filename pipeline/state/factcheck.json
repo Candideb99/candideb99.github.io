@@ -15820,6 +15820,39 @@
         }
       ],
       "outcome": "clean"
+    },
+    "us-presses-china-busan-deal-rare-earths-farm-purchases-dcf97b": {
+      "at": "2026-11-07T06:07:44.071Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v55",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-06T23:28:19.229Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "fromCopy": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 20,
+        "checked": 20,
+        "supported": 19,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "فإذا تمسك كل طرف بشرطه، بقيت المشتريات الزراعية الصينية عند الالتزامات القائمة، ولم يمضِ خفض الرسوم المتبادل."
+      ],
+      "weak": [],
+      "outcome": "clean"
     }
   }
 }
