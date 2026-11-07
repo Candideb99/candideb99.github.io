@@ -13081,6 +13081,113 @@
           "noted": []
         }
       ]
+    },
+    "china-central-bank-gold-purchases-october-2c79d0": {
+      "at": "2026-11-07T13:27:16.311Z",
+      "title": "المركزي الصيني يشتري 25.8 طناً من الذهب في أكتوبر مع هبوط سعره 7%",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v57",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 21,
+            "checked": 21,
+            "supported": 14,
+            "weak": 5,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "iea-uae-top-solar-per-capita-2031-fa1226": {
+      "at": "2026-11-07T13:45:42.582Z",
+      "title": "الإمارات مرشحة لتصدّر العالم في إنتاج الكهرباء الشمسية للفرد بحلول 2031",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v57",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 27,
+            "checked": 27,
+            "supported": 24,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 7,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "القدرات المتجددة المتوقع إضافتها عالمياً 2026-2031: نحو 4800 غيغاواط",
+              "quote": "That is part of a global renewables market whose capacity is projected to hit nearly 4,800GW by between 2026 and 2031, which is a 57 per cent jump compared to the previous six years, the IEA said.",
+              "source": "The National",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 22,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وتتوقع الوكالة أن يضاف عالمياً نحو 4800 غيغاواط من قدرات الطاقة المتجددة بين 2026 و2031، أي أكثر بـ57% مما أضيف خلال السنوات الست السابقة.",
+              "quote": "That is part of a global renewables market whose capacity is projected to hit nearly 4,800GW by between 2026 and 2031, which is a 57 per cent jump compared to the previous six years, the IEA said.",
+              "source": "The National",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "imf-georgieva-ai-slowdown-central-banks-6a0c11": {
+      "at": "2026-11-07T13:56:32.073Z",
+      "title": "صندوق النقد: على البنوك المركزية مراعاة أي تباطؤ في طفرة الذكاء الاصطناعي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v57",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 16,
+            "checked": 16,
+            "supported": 15,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

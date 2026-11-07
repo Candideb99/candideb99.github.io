@@ -15932,6 +15932,75 @@
         }
       ],
       "outcome": "clean"
+    },
+    "sp-500-biggest-weekly-loss-ai-midterms-f9fb82": {
+      "at": "2026-11-07T13:13:18.494Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v56",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-07T08:58:35.916Z",
+      "sourcesRead": 5,
+      "sourcesAll": 5,
+      "fromCopy": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 38,
+        "checked": 38,
+        "supported": 32,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 4,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "title",
+          "sentence": "إس آند بي 500 يخسر 2.7% في أسوأ أسبوع منذ أبريل 2025",
+          "quote": "The benchmark index headed for its ‌worst ⁠week since June.",
+          "source": "Moneycontrol"
+        },
+        {
+          "status": "conflict",
+          "field": "lede",
+          "sentence": "أنهى مؤشر إس آند بي 500 الأسبوع منخفضاً 2.7%، في أكبر خسارة أسبوعية له منذ أبريل 2025، وسط مخاوف على رهانات الذكاء الاصطناعي عقب اكتساح الديمقراطيين انتخابات التجديد النصفي الأمريكية.",
+          "quote": "The benchmark index headed for its ‌worst ⁠week since June.",
+          "source": "Moneycontrol"
+        },
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "إغلاق إس آند بي 500 الجمعة: 7376.86 نقطة",
+          "quote": "Unofficially, the S&P 500 climbed 0.32% to end the session at 7,376.92 points.",
+          "source": "Moneycontrol"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وأغلق إس آند بي 500 مرتفعاً 0.31% عند 7376.86 نقطة، لكن مكاسب ناسداك 100 في الجلسة لم تكفِ لتعويض خسائر الخميس.",
+          "quote": "Unofficially, the S&P 500 climbed 0.32% to end the session at 7,376.92 points.",
+          "source": "Moneycontrol"
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "خسارة إس آند بي 500 الأسبوعية: 2.7%",
+          "quote": "The US benchmark ended the week 2.7% lower, the most since April 2025."
+        },
+        {
+          "sentence": "مستوى الدعم التالي لناسداك 100: نحو 26100 نقطة",
+          "quote": "The next key support level for the tech gaugse is the 61.8% Fibonacci level around 26,100."
+        }
+      ],
+      "outcome": "listed"
     }
   }
 }

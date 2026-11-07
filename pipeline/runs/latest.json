@@ -1,196 +1,503 @@
 {
-  "mode": "explainer",
-  "startedAt": "2026-11-07T11:54:34.125Z",
-  "durationSec": 327,
-  "published": 1,
+  "mode": "news",
+  "startedAt": "2026-11-07T13:14:35.582Z",
+  "durationSec": 2517,
+  "published": 3,
   "refreshed": 0,
   "report": [
     {
-      "headline": "احتياطي مصر في مستوى قياسي، فلماذا تطلب الحكومة توفير الدولار الآن؟",
-      "section": "explainers",
+      "headline": "المركزي الصيني يشتري 25.8 طن ذهب في أكتوبر رغم هبوط الأسعار 7%",
+      "section": "markets",
+      "importance": 7,
+      "sources": [
+        "https://aawsat.com/node/5338548",
+        "https://www.aljazeera.net/ebusiness/2026/11/7/%d8%a7%d9%84%d8%b5%d9%8a%d9%86-%d8%aa%d9%88%d8%a7%d8%b5%d9%84-%d8%b1%d9%81%d8%b9-%d9%85%d8%b4%d8%aa%d8%b1%d9%8a%d8%a7%d8%aa%d9%87%d8%a7-%d9%85%d9%86-%d8%a7%d9%84%d8%b0%d9%87%d8%a8",
+        "https://alborsaanews.com/2026/11/07/2004572",
+        "https://tejaratnews.com/%d8%a7%d8%af%d8%a7%d9%85%d9%87-%d8%ae%d8%b1%db%8c%d8%af-%d8%b7%d9%84%d8%a7-%d8%aa%d9%88%d8%b3%d8%b7-%da%86%db%8c%d9%86-%d9%87%d9%85%d8%b2%d9%85%d8%a7%d9%86-%d8%a8%d8%a7-%da%a9%d8%a7%d9%87"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والمقدمة يحددان البلد (الصين) والفاعل (المركزي، بنك الشعب الصيني) والرقم الحاسم. لكن «رغم هبوط سعره» توحي بأن الشراء جاء معاكساً للسوق، والمتن والمصدر 2 يقولان إن البنك استفاد من الهبوط وكثّف الشراء.",
+              "repair": "يُستبدل «رغم» بـ«مع» في العنوان."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المصادر تقدم ثلاثة أنواع من الشرح. السبب: غلاء الطاقة الناتج عن الحرب رفع توقعات الفائدة، والتقرير يذكره. التوقعات: لا تتضمن المصادر توقعات سابقة لمقارنتها. ردّ الفعل: إقبال الأسر الصينية على الشراء (المصدران 2 و3)، وهو غائب. وفي الصندوق، المقدمة المنطقية «تراجع إقبال المستثمرين» غير موجودة في المصادر، وعبارة «كل هبوط جديد» تتجاوز ما تحتمله الوقائع.",
+              "repair": "يُضاف إقبال الأسر الصينية منسوباً إلى بلومبرغ. ويُعاد صوغ الصندوق على النحو: «...طلباً رسمياً يقابل ضغط توقعات الفائدة على معدن لا يدرّ عائداً، وإذا استمر هذا النمط فسيجد الهبوط مشترياً كبيراً عند المستويات الأدنى، وهو ما تراهن عليه الأسر الصينية»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يقول إن الجديد هو الشراء مع هبوط السعر، والفقرتان الأوليان تطوران ذلك. لكن الفقرة الخامسة («أما البنك المركزي الصيني فلا يشتري الذهب طلباً لعائد...») تبني على دافع مخترع. ويختم التقرير بأرقام البنوك المركزية عالمياً دون أن يعود إلى أثر الشراء في السوق الصينية.",
+              "repair": "تُحذف الفقرة الخامسة. وتُجمع بعد الفقرة الثانية الوقائع التي تطور خبر العنوان: تسارع الشراء، وبلوغ الاحتياطيات 78 مليون أونصة، وإقبال الأسر. ويأتي الضغط على السعر وتعافيه الأخير، ثم الطلب الرسمي عالمياً."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام 830 ألف أونصة و25.8 طن و129 طناً و321 طناً و24 شهراً مطابقة للمصادر. لكن خانة «صافي مشتريات البنوك المركزية في الربع الثالث 2026: نحو 321 طناً» في صندوق الأرقام تخص فترة أخرى وجهات أخرى غير حدث العنوان. وعبارة «بالسندات والودائع» تفصيل لم يرد في المصادر التي تقول «الأصول المدرة للفائدة».",
+              "repair": "تُخرج خانة الـ321 طناً من صندوق الأرقام ويبقى الرقم في المتن. وتُستبدل «بالسندات والودائع وغيرها» بعبارة «بالأصول المدرة للفائدة»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد والفاعل (المركزي الصيني، بنك الشعب الصيني) والكمية (25.8 طن) والفترة (أكتوبر). وتعبير «مع هبوط سعره 7%» يطابق المصدر 2 («مستفيداً من تراجع أسعار المعدن»).",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "الشروح الثلاثة التي تقدمها المصادر حاضرة كلها. السبب: البنك كثّف الشراء مع تراجع الأسعار، والطاقة والحرب رفعتا توقعات الفائدة (المصدران 2 و3). المقارنة: 78 مليون أونصة مقابل أقل من 73 مليوناً، وصدارة البنك للمشترين عالمياً في الربع الثالث بصافي 321 طناً (المصدر 2). ردّ الفعل: إقبال الأسر الصينية على الشراء منسوباً إلى بلومبرغ. أما الصندوق فيستنتج من وقائع مسنودة أن الطلب الرسمي يقابل ضغط الفائدة، ويقيد الاستنتاج بشرط واضح هو «إذا استمر هذا النمط».",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "البناء متماسك: الشراء وحجمه وأثره المحلي، ثم ضغط السعر وتعافيه، ثم الطلب الرسمي عالمياً. لكن تسارع الشراء مع تراجع الأسعار يتكرر في العنوان الفرعي والفقرة الأولى والصندوق، والصندوق يعيد خبر الأسر الوارد في الفقرة الثالثة.",
+              "repair": "تُختصر جملة الفقرة الأولى إلى ما يضيفه المتن (بداية الشراء في نوفمبر 2024 والنسبة إلى بلومبرغ). ويُحذف من الصندوق الاعتراض المكرر وإعادة خبر الأسر، ليبقى الاستنتاج وحده."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر: 830 ألف أونصة، و25.8 طن، و129 طناً، و78 و73 مليون أونصة، و7%، وأكثر من 20%، و321 طناً. ويُذكر السعر بمقياس واحد هو العقود الآجلة (4074.90 دولار، بتراجع 0.94% عن الإغلاق السابق، المصدر 5). ويخلو صندوق الأرقام من رقم البنوك المركزية العالمي.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 3,
+      "mendIssues": [
+        "تكرار الواقعة نفسها: تسارع الشراء مع تراجع الأسعار يُروى ثلاث مرات بصيغ مختلفة. يرد في العنوان الفرعي («وقد كثّفها في الأشهر الأخيرة مع تراجع الأسعار»)، ثم في الفقرة الأولى من المتن («وكان البنك قد كثّف مشترياته في الأشهر الأخيرة مع انخفاض الأسعار»)، ثم في صندوق «لماذا يهمّ» («الذي تكثّف مع تراجع الأسعار في الأشهر الأخيرة»). الإصلاح: يبقى الخبر في العنوان الفرعي. وفي المتن تُكتب الجملة لتضيف ما هو جديد فقط: «وواظب البنك على الشراء دون انقطاع منذ نوفمبر 2024، وتسارعت وتيرته في الأشهر الأخيرة، بحسب وكالة بلومبرغ للأنباء». ويُحذف الاعتراض «الذي تكثّف مع تراجع الأسعار في الأشهر الأخيرة» من الصندوق.",
+        "الصندوق يعيد صياغة خبر في المتن. عبارة «وهو ما تراهن عليه أسر صينية أقبلت على الشراء قرب 4000 دولار للأونصة» تكرر الفقرة الثالثة نفسها، بما فيها رقم 4000 دولار، وهو رقم ورد في المتن مرتين. الإصلاح: يُختم الصندوق بالاستنتاج دون إعادة الواقعة، مثلاً: «...فسيجد الهبوط مشترياً كبيراً عند المستويات الأدنى، وهو الرهان نفسه الذي يحرك طلب الأسر الصينية».",
+        "البناء متماسك: الشراء وحجمه وأثره المحلي، ثم ضغط السعر وتعافيه، ثم الطلب الرسمي عالمياً. لكن تسارع الشراء مع تراجع الأسعار يتكرر في العنوان الفرعي والفقرة الأولى والصندوق، والصندوق يعيد خبر الأسر الوارد في الفقرة الثالثة. — تُختصر جملة الفقرة الأولى إلى ما يضيفه المتن (بداية الشراء في نوفمبر 2024 والنسبة إلى بلومبرغ). ويُحذف من الصندوق الاعتراض المكرر وإعادة خبر الأسر، ليبقى الاستنتاج وحده."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
       "outcome": "published",
-      "slug": "egypt-record-reserves-why-government-rations-dollars-c3e384",
-      "title": "احتياطي مصر عند مستوى قياسي، فلماذا تقيّد الحكومة إنفاق الدولار؟",
-      "score": 9,
+      "whyBasis": [
+        {
+          "fact": "كثّف البنك المركزي الصيني مشترياته خلال الأشهر الأخيرة بالتزامن مع انخفاض أسعار الذهب، بحسب بلومبرغ",
+          "source": 2
+        },
+        {
+          "fact": "عزز ارتفاع تكاليف الطاقة التوقعات بتشديد السياسات النقدية ورفع أسعار الفائدة، ما يزيد الضغوط على الذهب الذي لا يدر عوائد دورية لحائزيه",
+          "source": 2
+        },
+        {
+          "fact": "أقبل عدد كبير من الأسر الصينية على شراء الذهب خلال أكتوبر مع اقتراب سعر الأوقية من 4 آلاف دولار، مراهنة على أن استمرار مشتريات البنك المركزي سيدعم الأسعار مستقبلاً، بحسب بلومبرغ",
+          "source": 2
+        }
+      ],
+      "slug": "china-central-bank-gold-purchases-october-2c79d0",
+      "title": "المركزي الصيني يشتري 25.8 طناً من الذهب في أكتوبر مع هبوط سعره 7%",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "العراق: الإنتاج يتجاوز 5 ملايين برميل يومياً ومشاورات مع أوبك لرفع سقف التصدير",
+      "section": "energy",
+      "outcome": "error: Model (claude/claude-opus-5-5) failed for role writer:"
+    },
+    {
+      "headline": "وكالة الطاقة: الإمارات أكبر منتج للكهرباء الشمسية عالمياً بحلول 2031",
+      "section": "energy",
+      "importance": 6,
+      "sources": [
+        "https://www.albayan.ae/economy/1563384",
+        "https://www.thenationalnews.com/business/energy/2026/11/07/uae-to-become-worlds-biggest-generator-of-solar-electricity-by-2031-iea-says/",
+        "https://oilprice.com/Latest-Energy-News/World-News/IEA-Sees-4800-GW-of-New-Renewables-by-2031.html",
+        "https://economymiddleeast.com/news/global-renewable-energy-capacity-to-surge-by-4800-gw-through-2031-as-energy-security-takes-priority-iea-says/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والدِّك يحددان البلد (الإمارات) والجهة (وكالة الطاقة الدولية) وأن الترتيب للفرد. والفقرة الأولى توضح أن الترتيب يقيس الإنتاج قياساً إلى السكان لا الحجم الإجمالي، فيزول الالتباس مع عبارة «أكبر منتج» في المصادر.",
+              "repair": "استخدم الاسم الكامل «وكالة الطاقة الدولية» في العنوان."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يحمل التقرير الدافع (أزمة هرمز وأمن الطاقة على لسان بيرول)، والمقارنة (العشر الأوائل فوق 2000 مقابل متوسط نحو 800)، ورفع التوقعات 20%. لكن جملة «صدارة أجندة السياسات...» منسوبة إلى الوكالة وهي من كلام OilPrice. وصندوق «لماذا يهمّ» يضيف مقدمة غير مسندة («تصدّران الوقود») ويعيد تلخيص المتن.",
+              "repair": "صحّح الإسناد. واقصر الصندوق على استنتاج انتقال الإنفاق من استيراد الوقود إلى تركيب القدرات المحلية، المبني على قول بيرول وSOURCE 3."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان (تصدّر الإمارات للفرد) يُطوَّر مباشرة بعد المقدمة بالترتيب والمقارنة، وهذا جيد. لكن فكرة أمن الطاقة تُقال في الدِّك ثم مرتين في القسم ثم في الصندوق.",
+              "repair": "اجمع الدافع في فقرة واحدة على لسان الوكالة وبيرول، واحذف الصدى في الدِّك والصندوق."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «المتوسط العالمي المتوقع للفرد بحلول 2031» تنسب إلى الرقم 800 توقيتاً لا تذكره المصادر. و«بنصيب يبلغ 4000» في مقابل «more than 4,000» في SOURCE 2.",
+              "repair": "احذف «المتوقع بحلول 2031» من وصف الرقم 800، واكتب «أكثر من 4000 كيلوواط ساعة للفرد»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والدِّك يسمّيان البلد (الإمارات) والجهة (وكالة الطاقة الدولية)، ويحفظان صفة التوقع بكلمة «مرشحة» وعبارة «بحلول 2031». وتوضح الفقرة الأولى أن الترتيب بحسب نصيب الفرد لا الإنتاج الإجمالي، وهذا يزيل التناقض الظاهر بين صدارة الإمارات ومجيء الصين تاسعة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يحمل التقرير السبب كما ورد في SOURCE 3 (أزمة هرمز وقفزة أسعار الوقود، وقول بيرول إن أمن الطاقة يقود التوسع)، والمقارنة (الحد الأدنى للعشر الأوائل 2000 كيلوواط ساعة مقابل متوسط عالمي نحو 800، وأن المتوسط سيزيد على الضعف)، ورفع التوقعات للاقتصادات الناشئة بنحو 20%، ومستهدف الإمارات وشروطه. مقدمات صندوق «لماذا يهمّ» مسندة إلى SOURCE 3، واستنتاجه محدود بشرطه «إذا»، وهو انتقال جزء من إنفاق الطاقة من استيراد الوقود إلى تركيب قدرات محلية.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الجديد في العنوان (صدارة الإمارات للفرد) يُطوَّر مباشرة بعد المقدمة بالترتيب والمقارنة، وهذا جيد. لكن مستهدف الإمارات وشروطه في آخر المقال، تفصله عن خط الإمارات فقرات الصين والهند والرياح البرية.",
+              "repair": "انقل قسم «مستهدف إماراتي أعلى» ليلي فقرة السعودية والإمارات، ثم انتقل إلى قسم أزمة هرمز والسوق العالمية."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«بزيادة 57% عن السنوات الست السابقة» و«تنمو بنحو 85% بحلول 2031» متجاورتان دون بيان أن الأولى مقارنة بين قدرات مضافة في فترتين، والثانية نمو إجمالي القدرة المركبة.",
+              "repair": "صغ الفقرة بحيث تُنسب الـ57% إلى ما يضاف مقارنة بما أضيف في الفترة السابقة (SOURCE 3)، والـ85% إلى إجمالي القدرة (SOURCE 2)."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 5,
+      "mendIssues": [
+        "التباس بين مقياسين للنمو في فقرة واحدة. تقول المسودة «بزيادة 57% عن السنوات الست السابقة» ثم بعدها مباشرة «القدرة المتجددة، التي يُرتقب أن تنمو بنحو 85% بحلول 2031»، فيرى القارئ رقمين مختلفين لنمو واحد. الرقمان صحيحان لكنهما يقيسان شيئين مختلفين: في SOURCE 3 تقارن الـ57% ما سيُضاف بين 2026 و2031 (نحو 4800 غيغاواط) بما أضيف في السنوات الست السابقة، وفي SOURCE 2 تصف الـ85% نمو إجمالي القدرة المركبة حتى 2031. الحل: «يُتوقع أن يضاف نحو 4800 غيغاواط بين 2026 و2031، أي أكثر بـ57% مما أضيف في السنوات الست السابقة، ليزيد إجمالي القدرة المتجددة بنحو 85%، تشكل الطاقة الشمسية نحو ثلاثة أرباعها».",
+        "العنوان مضغوط ينقصه المضاف: «مرشحة لتصدّر العالم في الكهرباء الشمسية للفرد». القارئ لا يعرف ما الذي تتصدر فيه بالضبط. الحل: «الإمارات مرشحة لتصدّر العالم في إنتاج الكهرباء الشمسية للفرد بحلول 2031»، وهو ما تقوله المقدمة نفسها بعبارة «نصيب الفرد من الكهرباء الشمسية».",
+        "تشتت ما يخص الإمارات في البناء. ترتيبها للفرد في الفقرتين الأوليين، وكونها الثانية بعد السعودية في التوسع في الفقرة الثالثة، أما مستهدفها الحكومي (35% طاقة نظيفة بحلول 2030-2031، وما يتطلبه من مشاريع جديدة ومنافسة وفرص للقطاع الخاص، SOURCE 1 وSOURCE 2) فمؤجل إلى آخر المقال بعد أربع فقرات عن السوق العالمية والصين والهند. الحل: انقل قسم «مستهدف إماراتي أعلى» ليلي فقرة السعودية والإمارات مباشرة، فيكتمل خط الإمارات قبل الانتقال إلى الصورة العالمية ودافع أمن الطاقة.",
+        "الجديد في العنوان (صدارة الإمارات للفرد) يُطوَّر مباشرة بعد المقدمة بالترتيب والمقارنة، وهذا جيد. لكن مستهدف الإمارات وشروطه في آخر المقال، تفصله عن خط الإمارات فقرات الصين والهند والرياح البرية. — انقل قسم «مستهدف إماراتي أعلى» ليلي فقرة السعودية والإمارات، ثم انتقل إلى قسم أزمة هرمز والسوق العالمية.",
+        "«بزيادة 57% عن السنوات الست السابقة» و«تنمو بنحو 85% بحلول 2031» متجاورتان دون بيان أن الأولى مقارنة بين قدرات مضافة في فترتين، والثانية نمو إجمالي القدرة المركبة. — صغ الفقرة بحيث تُنسب الـ57% إلى ما يضاف مقارنة بما أضيف في الفترة السابقة (SOURCE 3)، والـ85% إلى إجمالي القدرة (SOURCE 2)."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قال بيرول إن أمن الطاقة يقود توسع المتجددة أساساً مع سعي دول متزايدة إلى تقليص اعتمادها على الوقود المستورد",
+          "source": 3
+        },
+        {
+          "fact": "قالت الوكالة إن أزمة مضيق هرمز وقفزة أسعار الوقود تدفعان إلى تسريع نشر المتجددة في أنحاء العالم",
+          "source": 3
+        }
+      ],
+      "slug": "iea-uae-top-solar-per-capita-2031-fa1226",
+      "title": "الإمارات مرشحة لتصدّر العالم في إنتاج الكهرباء الشمسية للفرد بحلول 2031",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "صندوق النقد: تباطؤ طفرة الذكاء الاصطناعي عامل جديد أمام البنوك المركزية",
+      "section": "economy",
+      "importance": 6,
+      "sources": [
+        "https://aawsat.com/node/5338503",
+        "https://alborsaanews.com/2026/11/07/2004570"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان الفرعي يحدد المتحدثة («جورجيفا») ويفهم القارئ من العنوان أنها من صندوق النقد. لكن «تحسب حساب تباطؤ طفرة الذكاء الاصطناعي» يُقرأ كأن التباطؤ واقع، والمصدران يقولان «أي تباطؤ».",
+              "repair": "«جورجيفا: على البنوك المركزية أن تحسب حساب أي تباطؤ في طفرة الذكاء الاصطناعي»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يوفر المصدران سبباً لموجة البيع (مخاوف تشديد الرقابة بعد فوز الديمقراطيين، وشكوك في العوائد)، ورد فعل (اللجوء إلى السندات، وطلبات تغطية الهامش، وقلق الأفراد وصناديق التحوط)، وخطوة تالية (حزمة تشريعات في يناير بحسب «رويترز»). المسودة تحمل اللجوء إلى السندات وحده. مربع «لماذا يهمّ» يستند إلى مقدمات مسندة: الطفرة تسند النمو وتعوّض صدمة النفط وتغذي التضخم. ويستنتج منها معضلة نمو أضعف أمام تضخم مستعصٍ، وهو استنتاج محدود بشرطه «إذا تباطأت». الأدق ألا يفترض أن البنوك تكبح اليوم طلباً يسنده الاستثمار، فهذا لا يقوله أي مصدر.",
+              "repair": "إضافة السبب السياسي وشكوك العوائد وطلبات تغطية الهامش وخطة يناير (SOURCE 1، SOURCE 2). وفي المربع: «فتواجه البنوك المركزية نمواً أضعف بينما يبقى التضخم مستعصياً بفعل صدمة النفط» بدل «من كبح طلب يسنده الاستثمار»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان، أي أن تحسب البنوك المركزية حساب التباطؤ، يُطوَّر بعد الاستهلال مباشرة، وهذا سليم. لكن الفقرة الثانية تعيد الاستهلال وتضيف جملة تعليقية، وجملة الصعوبة معزولة في فقرة مستقلة بعيداً عن اقتباس التقلبات. والطول نحو 325 كلمة، دون نطاق 350-650، مع أن المصدرين يحملان مادة كافية.",
+              "repair": "حذف الجملة التعليقية، ودمج جملة الصعوبة مع اقتباس «الأمور تشهد صعوداً وهبوطاً»، وتوسيع قسم الأسواق بالمحرّك السياسي وطلبات تغطية الهامش، ثم الختام بخطة الديمقراطيين التشريعية في يناير."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«أي أن الصدمة على الاقتصاد الأكبر في العالم ستفوق المتوسط العالمي» تضيف وصفاً غير مسند وتسقط الشرط بصيغة «ستفوق». ورقما 1.1% و1.8% تقديرا الشهر الماضي، وقد وُضعا في مربع الأرقام كأنهما من حدث اليوم.",
+              "repair": "حذف الجملة، وإخراج الرقمين من key_facts مع إبقائهما في المتن مقرونين بشرطهما «في حال حدوث تراجع حاد»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان ينسب القول إلى صندوق النقد ويقول «أي تباطؤ»، فيحفظ أن التباطؤ احتمال لا واقع. والعنوان الفرعي يسمّي جورجيفا ويربط كلامها بهبوط أسهم التكنولوجيا. والاستهلال يعرّفها بأنها المديرة العامة للصندوق ويحدد الجمعة موعداً لتصريحاتها.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المصدران يوفران السبب (مخاوف تشديد الرقابة بعد فوز الديمقراطيين، والشكوك في العوائد)، ورد الفعل (اللجوء إلى السندات، وطلبات تغطية الهامش، وقلق الأفراد وصناديق التحوط)، والخطوة التالية (تشريعات يناير بحسب «رويترز»)، والمسودة تحملها كلها. أما المربع فمقدماته مسندة: الطفرة تسند النمو وتعوّض صدمة النفط وتغذي التضخم. لكن استنتاجه «يبقى التضخم… مستعصياً» يُسقط أن الطفرة نفسها مصدر لجزء من الضغوط التضخمية.",
+              "repair": "إعادة صياغة المربع ليقول إن التباطؤ يسحب سند النمو ويخفف جزءاً من الضغوط التضخمية معاً، بينما تبقى صدمة النفط قائمة، كما في الإصلاح المقترح في القائمة."
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "ما يقول العنوان إنه جديد، أي أن تحسب البنوك المركزية حساب أي تباطؤ، تطوّره الفقرتان التاليتان للاستهلال مباشرة: أثر الطفرة المزدوج في النمو والتضخم، ثم التقلبات وصعوبة مهمة البنوك. بعدها يأتي محرّك موجة البيع، فسيناريو الشهر الماضي، فخطة يناير. البناء متصل، ولا يعيبه إلا عنوان فرعي أضيق من فقرته وافتتاح فقرة بالنفي.",
+              "repair": "تعديل العنوان الفرعي الأول، وافتتاح فقرة الخلفية بالتحذير لا بـ«لم تكرر»."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "سيناريو 1.1% و1.8% بحلول 2028 محفوظ بشرطه («إن حدث، قد يُحدث»). وخطة الديمقراطيين منسوبة إلى «رويترز» بصيغة استعداد لا إنجاز. والخميس موعد الهبوط والجمعة موعد التصريحات، كما في SOURCE 2 «أمس الجمعة». ومربع الأرقام فارغ كما طُلب.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 5,
+      "mendIssues": [
+        "مربع «لماذا يهمّ» يأخذ نصف الآلية التي وصفتها جورجيفا. يقول المربع: «فتجد البنوك المركزية أمامها نمواً أضعف بينما يبقى التضخم الذي تواجهه مستعصياً». لكن المقدمة التي يستند إليها في SOURCE 1 وSOURCE 2 تقول إن الطفرة نفسها «تزيد الضغوط التضخمية». فتباطؤها يسحب سنداً للنمو ويخفف جزءاً من هذه الضغوط معاً، والجزم بأن التضخم «يبقى مستعصياً» بلا سبب مسند يتجاوز ما تحمله المقدمات. كما سقط سند الاستعصاء الذي اقترحته المراجعة السابقة («بفعل صدمة النفط»). الإصلاح: «إذا تباطأت طفرة الذكاء الاصطناعي فقدت الاقتصادات التي تسندها محركاً يعوّض جزئياً صدمة نقص النفط، وخفّت معها ضغوط تضخمية تغذيها، بينما تبقى صدمة النفط قائمة، فتزن البنوك المركزية خطواتها على نمو أضعف وتضخم لم يعد مصدره الطلب وحده».",
+        "العنوان الفرعي «مخاوف تنظيمية وراء موجة البيع» لا يسمّي ما تقوله فقرته الثانية. هذه الفقرة تتناول الشكوك في عوائد الإنفاق على البنية التحتية، وطلبات تغطية الهامش، وقلق المستثمرين الأفراد وصناديق التحوط (SOURCE 1). الإصلاح: «مخاوف تنظيمية وشكوك في العوائد وراء موجة البيع»، أو عنوان يجمع السبب ورد الفعل.",
+        "فقرة «سيناريو الشهر الماضي» تبدأ بما لم تقله المتحدثة: «لم تكرر جورجيفا الجمعة التوقعات السلبية…»، فيدخل القارئ الخلفية من باب النفي. الإصلاح: البدء بالتحذير نفسه، ثم إلحاق النفي جملةً تربطه باليوم: «وكان الصندوق قد حذّر الشهر الماضي من مخاطر كبيرة على النمو والاستقرار المالي إذا انتهت طفرة الاستثمار في الذكاء الاصطناعي… ولم تكرر جورجيفا هذه التقديرات الجمعة، لكنها أقرت بتزايد التقلبات» (SOURCE 1، SOURCE 2).",
+        "عبارة «تقع الطفرة الاستثمارية في الذكاء الاصطناعي على جانبي حسابات البنوك المركزية، كما عرضتها جورجيفا» مركّبة ومرجع الضمير في «عرضتها» ملتبس. فجورجيفا تحدثت عن أثر الطفرة في النمو والتضخم والاستقرار المالي، لا عن «جانبي حسابات» البنوك. الإصلاح: «وقالت جورجيفا، خلال فعالية في مقر الصندوق بواشنطن، إن طفرة الاستثمار في الذكاء الاصطناعي تسند النمو في بعض الدول وتساعد على تعويض صدمة نقص إمدادات النفط الناجمة عن الحرب في الشرق الأوسط، لكنها ترفع في الوقت نفسه الضغوط التضخمية ومخاطر الاستقرار المالي».",
+        "المصدران يوفران السبب (مخاوف تشديد الرقابة بعد فوز الديمقراطيين، والشكوك في العوائد)، ورد الفعل (اللجوء إلى السندات، وطلبات تغطية الهامش، وقلق الأفراد وصناديق التحوط)، والخطوة التالية (تشريعات يناير بحسب «رويترز»)، والمسودة تحملها كلها. أما المربع فمقدماته مسندة: الطفرة تسند النمو وتعوّض صدمة النفط وتغذي التضخم. لكن استنتاجه «يبقى التضخم… مستعصياً» يُسقط أن الطفرة نفسها مصدر لجزء من الضغوط التضخمية. — إعادة صياغة المربع ليقول إن التباطؤ يسحب سند النمو ويخفف جزءاً من الضغوط التضخمية معاً، بينما تبقى صدمة النفط قائمة، كما في الإصلاح المقترح في القائمة."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قالت جورجيفا إن طفرة الاستثمار في الذكاء الاصطناعي تسند النمو في بعض الدول وتعوض جزئياً صدمة نقص النفط الناتجة عن حرب الشرق الأوسط، لكنها ترفع الضغوط التضخمية ومخاطر الاستقرار المالي.",
+          "source": 1
+        },
+        {
+          "fact": "وصفت جورجيفا التضخم الذي تواجهه البنوك المركزية بأنه مستعصٍ، وقالت إن أي تباطؤ في النمو المدفوع بالذكاء الاصطناعي سيكون عاملاً في تقييمها لخطواتها.",
+          "source": 1
+        }
+      ],
+      "slug": "imf-georgieva-ai-slowdown-central-banks-6a0c11",
+      "title": "صندوق النقد: على البنوك المركزية مراعاة أي تباطؤ في طفرة الذكاء الاصطناعي",
+      "score": 8,
       "image": "photo"
     }
   ],
   "llm": {
-    "calls": 14,
-    "failures": 0,
-    "promptTokens": 200699,
-    "completionTokens": 32934,
-    "cacheReadTokens": 37742,
-    "costUsd": 1.9698,
+    "calls": 66,
+    "failures": 4,
+    "promptTokens": 1113720,
+    "completionTokens": 245715,
+    "cacheReadTokens": 380085,
+    "costUsd": 10.8587,
     "byModel": {
-      "claude-cli/claude-opus-5-5": 14
+      "claude-cli/claude-opus-5-5": 66
     },
     "byRole": {
       "editor": {
-        "calls": 2,
-        "in": 10161,
+        "calls": 1,
+        "in": 85269,
         "read": 0,
-        "out": 1012,
-        "usd": 0.1015
-      },
-      "writer": {
-        "calls": 3,
-        "in": 45389,
-        "read": 17029,
-        "out": 13590,
-        "usd": 0.6383
+        "out": 1946,
+        "usd": 0.7211
       },
       "desk": {
-        "calls": 2,
-        "in": 22890,
-        "read": 12743,
-        "out": 7505,
-        "usd": 0.3358
+        "calls": 17,
+        "in": 110266,
+        "read": 152916,
+        "out": 75581,
+        "usd": 2.4242
+      },
+      "writer": {
+        "calls": 15,
+        "in": 201233,
+        "read": 187319,
+        "out": 84034,
+        "usd": 3.3277
       },
       "critic": {
+        "calls": 12,
+        "in": 143943,
+        "read": 39850,
+        "out": 48324,
+        "usd": 2.1261
+      },
+      "checker": {
         "calls": 3,
-        "in": 39036,
-        "read": 7970,
-        "out": 8329,
-        "usd": 0.4805
+        "in": 22992,
+        "read": 0,
+        "out": 18094,
+        "usd": 0.5457
       },
       "vision": {
-        "calls": 4,
-        "in": 45481,
+        "calls": 18,
+        "in": 169932,
         "read": 0,
-        "out": 2498,
-        "usd": 0.4137
+        "out": 17736,
+        "usd": 1.7139
       }
     }
   },
   "log": [
-    "[11:54:34] newsroom start mode=explainer limit=4 dry-run=false",
-    "[11:54:46] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=521 in=7187 read=0 out=930 attempt=1 ms=11388",
-    "[11:54:46] explainer question: احتياطي مصر في مستوى قياسي، فلماذا تطلب الحكومة توفير الدولار الآن؟ (Reserve adequacy relative to external obligations); opens on \"مصر تقر خطة لخفض الإنفاق الحكومي وترشيد النقد الأجنبي لمدة 3 أشهر\"",
-    "[11:55:59] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=4983 in=25581 read=0 out=7517 attempt=1 ms=73004",
-    "[11:56:03] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=0 in=2974 read=0 out=82 attempt=1 ms=3303",
-    "[11:56:03] data chart: current trend EGY (The piece turns on Egypt's persistent current-account deficit, which leaves its record reserves reliant on volatile inflows.)",
-    "[11:56:27] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=769 in=17895 read=0 out=3060 attempt=1 ms=23494",
-    "[11:56:27] desk model=claude-cli/claude-opus-5-5 applied=[lede,whyItMatters,body] rejected=[]",
-    "[11:56:27] desk \"احتياطي مصر عند مستوى قياسي، فلماذا تقيّد الحكومة إنفاق الدولار؟\": rewrote lede, whyItMatters, body",
-    "[11:56:27] checks explainer \"احتياطي مصر عند مستوى قياسي، فلماذا تقيّد الحكومة إنفاق الدولار؟\": 431 words, 0 issues, 0 warnings",
-    "[11:57:15] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3318 in=18454 read=0 out=5182 attempt=1 ms=47960",
-    "[11:57:15] critic explainer: revise score=8 issues=6",
-    "[11:57:15]   · خطأ فعلي، دافع لا يذكره المصدر: يقول الدك «والحكومة تخفض طلبها على العملة الصعبة قبل أن يضطر البنك المركزي إلى السحب منه». هذا دافع للحكومة لم تقله أي من القصتي",
-    "[11:57:15]   · خطأ فعلي، توصيف ونتيجة لا يدعمهما المصدر: يقول المقال «أبقى القرار فوائد القروض وأقساطها خارج القيود. فالخطة توجّه الدولار إلى ما يجب دفعه… ويبقى الاحتياطي محفو",
-    "[11:57:15]   · إعادة رواية الخبر وخارج الخيط: الجملة الأخيرة «ويسري القرار 3 أشهر من بدء العمل به ما لم يصدر قرار بمده» تكرر ما قاله الاستهلال («مدة 3 أشهر») ولا تضيف شرحاً. و",
-    "[11:57:15]   · «لماذا يهمّ»: جملة «الرقم القياسي التالي للاحتياطي يُقرأ بمكوناته… أما الارتفاع الذي يصنعه سعر الذهب فيمكن أن يتبدد» تفترض رقماً قياسياً لم يحدث بعد، وتعيد فكرة",
-    "[11:57:49] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1630 in=10283 read=17029 out=4409 attempt=1 ms=34141",
-    "[11:58:25] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1950 in=4995 read=12743 out=4445 attempt=1 ms=36050",
-    "[11:58:25] desk model=claude-cli/claude-opus-5-5 applied=[lede,whyItMatters,body] rejected=[]",
-    "[11:58:25] desk \"احتياطي مصر عند مستوى قياسي، فلماذا تقيّد الحكومة إنفاق الدولار؟\": rewrote lede, whyItMatters, body",
-    "[11:58:48] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2107 in=12219 read=7970 out=2366 attempt=1 ms=22499",
-    "[11:58:48] critic (second pass) explainer: publish score=9",
-    "[11:59:04] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1387 in=9525 read=0 out=1664 attempt=1 ms=16123",
-    "[11:59:04] image: the picture should say: Egypt's record reserves must still cover a dollar gap, so the state is cutting its own demand for dollars.",
-    "[11:59:04] image: tier 3, the writer's own subjects: Egyptian pound banknotes | US dollar banknotes counting | Mostafa Madbouly",
-    "[11:59:05] commons \"Egyptian pound banknotes 2026\": 0 usable of 5",
-    "[11:59:06] commons \"Egyptian pound banknotes\": 3 usable of 12",
-    "[11:59:06] image: dropped \"One Egyptian pound note.jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[11:59:06] image: dropped \"1 Egyptian Pound Backside.jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[11:59:06] commons \"US dollar banknotes counting 2026\": 0 usable of 0",
-    "[11:59:06] commons \"US dollar banknotes counting\": 0 usable of 2",
-    "[11:59:08] commons \"US dollar\": 5 usable of 12",
-    "[11:59:08] image: dropped \"CSA-T21-$20-1862.jpg\" — dated 1862, an archival picture",
-    "[11:59:08] image: dropped \"U.S. hundred dollar bill, 1999.jpg\" — dated 1999, an archival picture",
-    "[11:59:08] image: dropped \"Three Dollar Bill.jpg\" — dated 2004, an archival picture",
-    "[11:59:08] image: dropped \"Dollarnote hq.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:59:08] commons \"Mostafa Madbouly 2026\": 1 usable of 3",
-    "[11:59:09] commons \"Mostafa Madbouly\": 3 usable of 12",
-    "[11:59:09] image: dropped \"International Conference on Development and Migration - 2023 (P061667-\" — names too little of mostafa, madbouly",
-    "[11:59:17] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=458 in=10832 read=0 out=625 attempt=1 ms=7807",
-    "[11:59:17] image: vision rejected all candidates (Candidates 1 and 3 show Mostafa Madbouly, but each also prominently shows another named person (Rick Perry, Ghada Waly) who is not part of the story. Candidate 2 is a flat scan of a single Egyptian pound note, which is not professional and does not show the dollar question the story is about. Candidate 4 is a historical Confederate banknote with no connection to the story. No photograph fits.)",
-    "[11:59:17] image: tier 4, the story's point and its subject: Egyptian pounds US dollars | currency exchange Cairo | counting dollar bills | Egyptian pounds | currency exchange Egypt | counting US dollars (home: Egypt, Egyptian, Cairo, Alexandria)",
-    "[11:59:18] pexels \"currency exchange Cairo\": 8 usable",
-    "[11:59:18] pexels \"counting US dollars\": 8 usable",
-    "[11:59:18] pexels \"counting dollar bills\": 8 usable",
-    "[11:59:18] pexels \"Egyptian pounds\": 8 usable",
-    "[11:59:18] pexels \"currency exchange Egypt\": 8 usable",
-    "[11:59:18] pexels \"Egyptian pounds US dollars\": 8 usable",
-    "[11:59:18] commons \"Egyptian pounds US dollars\": 1 usable of 4",
-    "[11:59:18] openverse \"currency exchange Cairo\": 0 usable of 0",
-    "[11:59:18] openverse \"Egyptian pounds US dollars\": 3 usable of 3",
-    "[11:59:18] image: dropped \"2003A\" — dated 2003, an archival picture",
-    "[11:59:18] image: dropped \"Colorful assortment of international paper currencies from various cou\" — names too little of pounds, dollars",
-    "[11:59:18] image: dropped \"1988-A\" — dated 1988, an archival picture",
-    "[11:59:18] openverse \"counting dollar bills\": 7 usable of 9",
-    "[11:59:19] openverse \"Egyptian pounds\": 10 usable of 20",
-    "[11:59:19] commons \"currency exchange Cairo\": 0 usable of 2",
-    "[11:59:19] openverse \"currency exchange Egypt\": 0 usable of 1",
-    "[11:59:19] openverse \"counting US dollars\": 9 usable of 20",
-    "[11:59:19] openverse \"currency exchange\": 10 usable of 20",
-    "[11:59:19] openverse \"currency exchange\": 10 usable of 20",
-    "[11:59:19] commons \"currency exchange\": 7 usable of 24",
-    "[11:59:20] commons \"counting dollar bills\": 12 usable of 24",
-    "[11:59:20] image: dropped \"Thirty years in Washington; or, Life and scenes in our national capita\" — names too little of counting, dollar, bills",
-    "[11:59:20] image: dropped \"Thirty years in Washington; or, Life and scenes in our national capita\" — dated 1901, an archival picture",
-    "[11:59:20] image: dropped \"Tom Turner's legacy (1902) (14769219095).jpg\" — names too little of counting, dollar, bills",
-    "[11:59:20] image: dropped \"Marine money handlers fill critical niche in Iraq DVIDS24943.jpg\" — soldiers or a patrol, and the story is not about the military",
-    "[11:59:20] image: dropped \"The Suburbanite; a monthly magazine for those who are and those who ou\" — names too little of counting, dollar, bills",
-    "[11:59:20] image: dropped \"Thirty years in Washington; or, Life and scenes in our national capita\" — names too little of counting, dollar, bills",
-    "[11:59:20] image: dropped \"The pathway of life; Intended to lead the young and the old into paths\" — names too little of counting, dollar, bills",
-    "[11:59:20] image: dropped \"Bell telephone magazine (1922) (14756134155).jpg\" — names too little of counting, dollar, bills",
-    "[11:59:20] image: dropped \"Bird lore (1908) (14564234800).jpg\" — names too little of counting, dollar, bills",
-    "[11:59:20] image: dropped \"Bell telephone magazine (1922) (14776014463).jpg\" — names too little of counting, dollar, bills",
-    "[11:59:20] image: dropped \"Every life a delight (1914) (14595226200).jpg\" — names too little of counting, dollar, bills",
-    "[11:59:20] image: dropped \"Canadian grocer January-June 1908 (1908) (14598495198).jpg\" — names too little of counting, dollar, bills",
-    "[11:59:20] image: dropped \"Another Abandoned Building for Bill Jefferson\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:59:21] commons \"Egyptian pounds\": 5 usable of 24",
-    "[11:59:21] image: dropped \"Obverse of Egyptian 20 piastres.jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[11:59:21] image: dropped \"EGP 100 Pounds 2009 (Back).jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[11:59:21] image: dropped \"One Egyptian pound note.jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[11:59:21] image: dropped \"1 Egyptian Pound Backside.jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[11:59:21] image: dropped \"Close-up of British coins and banknotes, showcasing different denomina\" — names too little of pounds",
-    "[11:59:21] image: dropped \"A close-up view of various British coins and banknotes, representing c\" — names too little of pounds",
-    "[11:59:21] image: dropped \"Journalist wearing a gas mask on Mansour Street.\" — names too little of pounds",
-    "[11:59:21] image: dropped \"Close-up of various British pound coins and banknotes displaying Queen\" — shows elizabeth, elizabeth, not the story's people",
-    "[11:59:21] image: dropped \"King Tut Burial Mask\" — names too little of pounds",
-    "[11:59:21] image: dropped \"Cairo cab\" — names too little of pounds",
-    "[11:59:21] image: dropped \"Good News for the Photographers\" — names too little of pounds",
-    "[11:59:21] commons \"currency exchange Egypt\": 0 usable of 3",
-    "[11:59:21] commons \"currency exchange\": 7 usable of 24",
-    "[11:59:22] commons \"counting US dollars\": 7 usable of 24",
-    "[11:59:22] image: dropped \"Weighing and Counting - Coiners Dept New Orleans Mint 1897.jpg\" — dated 1897, an archival picture",
-    "[11:59:22] image: dropped \"Side line poultry keeping - \"two dollars a day from poultry and eggs (\" — dated 1911, an archival picture",
-    "[11:59:22] image: dropped \"Samuel D. Ehrhart - An International High Noon Divorce (1906).jpg\" — names too little of counting, dollars",
-    "[11:59:22] image: dropped \"USMC-051205-M-9499D-009.jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:59:22] image: dropped \"THE WORLD'S MOST EXPENSIVE LICENSE PLATE, Abu Dhabi UAE --- REPLICA\" — names too little of counting, dollars",
-    "[11:59:22] image: dropped \"2013_10_23_Economy_Barclays_Remittance_Money_Transfer_009\" — names too little of counting, dollars",
-    "[11:59:22] image: dropped \"Speech by the President of Ukraine in the National Assembly of the Rep\" — names too little of counting, dollars",
-    "[11:59:22] image: dropped \"2013_10_23_Economy_Barclays_Remittance_Money_Transfer_011\" — names too little of counting, dollars",
-    "[11:59:22] image: dropped \"2013_10_23_Economy_Barclays_Remittance_Money_Transfer_015\" — names too little of counting, dollars",
-    "[11:59:22] image: dropped \"2013_10_23_Economy_Barclays_Remittance_Money_Transfer_014\" — names too little of counting, dollars",
-    "[11:59:22] image: dropped \"2013_10_23_Economy_Barclays_Remittance_Money_Transfer_012\" — names too little of counting, dollars",
-    "[11:59:22] image: dropped \"2013_10_23_Economy_Barclays_Remittance_Money_Transfer_010\" — names too little of counting, dollars",
-    "[11:59:22] image: thumbnail HTTP 403 for https://live.staticflickr.com/4767/25080987697_d3c4ce3294_n.jpg",
-    "[11:59:23] image: thumbnail HTTP 403 for https://live.staticflickr.com/3366/3333937161_e21a328b2b_n.jpg",
-    "[11:59:23] image: thumbnail HTTP 403 for https://live.staticflickr.com/3082/3107012507_87d2d103f4_n.jpg",
-    "[11:59:28] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=192 in=12789 read=0 out=355 attempt=1 ms=4626",
-    "[11:59:28] image: vision rejected all candidates (fallback pass) (None fits. 1 is a flat scan of a 1956 coin, archival. 2 shows British pounds, the wrong currency. 3 is a chart. 4 is a currency exchange in Moldova, the wrong country. 5 is a virtual-world render. 6 is an amateur snapshot of crumpled dollars beside a 'Poker Money' piggy bank, a comic cliché. The story runs better as text.)",
-    "[11:59:29] image: thumbnail HTTP 403 for https://live.staticflickr.com/7706/16689216443_83ae71832f_n.jpg",
-    "[11:59:29] image: thumbnail HTTP 403 for https://live.staticflickr.com/3865/14626588539_3040b188e4_n.jpg",
-    "[11:59:30] image: thumbnail HTTP 403 for https://live.staticflickr.com/2566/3914501583_9e532b461d_n.jpg",
-    "[11:59:40] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=536 in=11414 read=0 out=795 attempt=1 ms=9928",
-    "[11:59:40] image: \"Detailed image of hands counting US dollar bills on a desk, \" names the story's topic without saying its point (The story turns on Egypt's scarce dollars and the state rationing its own hard-currency spending. Anonymous hands counting US dollar notes is the agency-style w); checked now and kept in reserve while the desk looks further",
-    "[11:59:50] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=705 in=8363 read=0 out=781 attempt=1 ms=9747",
-    "[11:59:50] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Detailed image of hands counting US dollar bills on a desk, \": Hands counting US dollar notes picture the hard currency the government is rationing and the reserves are held in, with ",
-    "[11:59:50] image: the story's people first: Mostafa Madbouly 2026 | Mostafa Madbouly | مصطفى مدبولي",
-    "[11:59:50] commons \"Mostafa Madbouly 2026\": 1 usable of 3",
-    "[11:59:50] image: dropped \"International Conference on Development and Migration - 2023 (P061667-\" — names too little of mostafa, madbouly",
-    "[11:59:51] commons \"Mostafa Madbouly\": 4 usable of 20",
-    "[11:59:52] commons \"مصطفى مدبولي\": 6 usable of 20",
-    "[11:59:52] image: dropped \"Adam Boehler meets with Moustafa Madbouly in Cairo - 2019.jpg\" — shows moustafa, not the story's people",
-    "[11:59:52] image: dropped \"Ministries of Education-Tunisia-Egypt-2022.jpg\" — names too little of مصطفى, مدبولي",
-    "[11:59:52] image: dropped \"Tareq Shawki in Tunisia-2022-.jpg\" — names too little of مصطفى, مدبولي",
-    "[11:59:52] image: people shortlist: 2024 Samsung Factory in Egypt.jpg | 2019 Rick Perry and Moustafa Madbouly at 2019 IMF Meeti | 2021 Moustafa Madbouly & Ghada Waly - 2021.jpg",
-    "[12:00:01] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=506 in=10446 read=0 out=723 attempt=1 ms=9209",
-    "[12:00:01] image: vision rejected all candidates (No candidate fits. All three show Madbouly with other identifiable people who are not part of the story (Amr Talaat at Samsung, Rick Perry, Ghada Waly). Each is also an unrelated occasion: a factory visit, an energy meeting at the IMF and a UNODC conference. None pictures the cabinet's dollar-rationing plan or the reserves. Photo 1 also carries a 'صنع في مصر / facebook.com/MadeInEG' stamp. Better to let the fallback find a fitting scene, such as the central bank or Egyptian notes.)",
-    "[12:00:01] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"Detailed image of hands counting US dollar bills on a desk, \"",
-    "[12:00:01] published explainer \"احتياطي مصر عند مستوى قياسي، فلماذا تقيّد الحكومة إنفاق الدولار؟\" -> egypt-record-reserves-why-government-rations-dollars-c3e384"
+    "[13:54:34] image: the story's people first: Kristalina Georgieva 2026 | Kristalina Georgieva | كريستالينا جورجيفا",
+    "[13:54:35] commons \"Kristalina Georgieva 2026\": 17 usable of 20",
+    "[13:54:35] commons \"Kristalina Georgieva\": 12 usable of 20",
+    "[13:54:35] image: dropped \"Kristalina Georgieva (01012997) (51156970282).jpg\" — shows general, not the story's people",
+    "[13:54:36] commons \"كريستالينا جورجيفا\": 12 usable of 20",
+    "[13:54:36] image: set aside \"Visit of Kristalina Georgieva, to Denmark (P-020086-00-06).j\" — a 2011 photograph of a person, older than 2018",
+    "[13:54:36] image: set aside \"Visit of Kristalina Georgieva, to Denmark (P-020086-00-20).j\" — a 2011 photograph of a person, older than 2018",
+    "[13:54:36] image: set aside \"Visit of Kristalina Georgieva, to Denmark (P-020086-00-14).j\" — a 2011 photograph of a person, older than 2018",
+    "[13:54:36] image: set aside \"EC Commissioner Kristalina Georgieva to visit Chad (P-020169\" — a 2012 photograph of a person, older than 2018",
+    "[13:54:36] image: set aside \"Visit of Kristalina Georgieva, to Haiti (P-022483-00-38).jpg\" — a 2013 photograph of a person, older than 2018",
+    "[13:54:36] image: set aside \"EC Commissioner Kristalina Georgieva to visit Chad (P-020169\" — a 2012 photograph of a person, older than 2018",
+    "[13:54:36] image: set aside \"Visit of Kristalina Georgieva, Member of the EC, to Russia (\" — a 2011 photograph of a person, older than 2018",
+    "[13:54:36] image: set aside \"Kristalina Georgieva (4).jpg\" — a 2011 photograph of a person, older than 2018",
+    "[13:54:36] image: set aside \"Kristalina Georgieva (3).jpg\" — a 2011 photograph of a person, older than 2018",
+    "[13:54:36] image: set aside \"Kristalina Georgieva (5).jpg\" — a 2011 photograph of a person, older than 2018",
+    "[13:54:36] image: set aside \"Kristalina Georgieva (6).jpg\" — a 2011 photograph of a person, older than 2018",
+    "[13:54:36] image: set aside \"Kristalina Georgieva (2).jpg\" — a 2011 photograph of a person, older than 2018",
+    "[13:54:36] image: set aside \"Kristalina Georgieva (7).jpg\" — a 2011 photograph of a person, older than 2018",
+    "[13:54:36] image: people shortlist: 2025 NYCW 2025 - Kristalina Georgieva 02.jpg",
+    "[13:54:48] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=849 in=8463 read=0 out=1025 attempt=1 ms=11740",
+    "[13:54:51] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=116 in=7634 read=0 out=195 attempt=1 ms=3265",
+    "[13:54:51] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"NYCW 2025 - Kristalina Georgieva 02.jpg\": The legible «WSJ» logo on the shelf behind Georgieva makes this read as the Wall Street Journal's own interview picture,",
+    "[13:54:51] image: nothing of them since 2018 fits; their newest older photographs, run as file photos: 2011 Visit of Kristalina Georgieva, to Denmar | 2011 Visit of Kristalina Georgieva, to Denmar | 2011 Visit of Kristalina Georgieva, to Denmar | 2012 EC Commissioner Kristalina Georgieva to ",
+    "[13:55:04] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=592 in=10660 read=0 out=783 attempt=1 ms=9841",
+    "[13:55:04] image: vision rejected all candidates (Every candidate shows Georgieva in 2011-2013 as EU humanitarian-aid commissioner, not as IMF chief. That is an unrelated, dated role, and several frames show other named officials. Photos 4 and 6 (holding a goat) fail the gravity rule, and photo 5 is a Haiti relief camp, which suits no economics story. The headline credits the IMF rather than her personally, so choose none and let the fallback find her at the IMF or a scene that says the story.)",
+    "[13:55:30] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1983 in=10206 read=0 out=2179 attempt=1 ms=24402",
+    "[13:55:30] image: vision rejected all candidates (All six show Georgieva in 2011, as an EU Commissioner at Brussels interviews, a Friends of Europe podium and a Russian rescue centre. That is eight years before her IMF role and unrelated to this story. The story is the IMF's warning about AI stocks and central banks, not about her personally. A 15-year-old shot under a prominent 'Friends of Europe' banner would mislead. Choose none, so the fallback can find her at the IMF or traders at their screens during the tech sell-off.)",
+    "[13:55:37] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=252 in=4829 read=0 out=427 attempt=1 ms=6018",
+    "[13:55:37] image: the sources' photographs give no brief (1: IMF Managing Director Kristalina Georgieva gestures as she s; 2: Kristalina Georgieva, in a red jacket, speaks at a clear lec)",
+    "[13:55:37] image: tier 3, the writer's own subjects: Kristalina Georgieva | traders watching screens | data center servers",
+    "[13:55:37] commons \"Kristalina Georgieva 2026\": 10 usable of 12",
+    "[13:55:38] commons \"Kristalina Georgieva\": 7 usable of 12",
+    "[13:55:38] commons \"traders watching screens 2026\": 0 usable of 0",
+    "[13:55:38] commons \"traders watching screens\": 0 usable of 0",
+    "[13:55:39] commons \"traders watching\": 7 usable of 12",
+    "[13:55:39] image: dropped \"1984 BIG BROTHER IS WATCHING YOU 02.jpg\" — dated 1992, an archival picture",
+    "[13:55:39] image: dropped \"1984 BIG BROTHER IS WATCHING YOU 01.jpg\" — dated 1992, an archival picture",
+    "[13:55:40] commons \"data center servers 2026\": 5 usable of 12",
+    "[13:55:40] commons \"data center servers\": 5 usable of 12",
+    "[13:55:40] image: dropped \"RCC-K Hosts Humphreys High School Students for Inaugural Cyber Operati\" — soldiers or a patrol, and the story is not about the military",
+    "[13:55:40] image: dropped \"RCC-K Hosts Humphreys High School Students for Inaugural Cyber Operati\" — soldiers or a patrol, and the story is not about the military",
+    "[13:55:40] image: dropped \"North Central Telephone Cooperative Rural Broadband keeps TN and KY Hi\" — names too little of data, center, servers",
+    "[13:55:40] image: dropped \"Le torrette con i bocchettoni per il raffreddamento ad aria dei server\" — taken in Italy, which the story does not name",
+    "[13:55:40] image: dropped \"Visit of Kristalina Georgieva, to Denmark (P-020086-00-06).jpg\" — taken in Denmark, which the story does not name",
+    "[13:55:40] image: dropped \"Visit of Kristalina Georgieva, to Denmark (P-020086-00-20).jpg\" — taken in Denmark, which the story does not name",
+    "[13:55:40] image: dropped \"Visit of Kristalina Georgieva, to Denmark (P-020086-00-14).jpg\" — taken in Denmark, which the story does not name",
+    "[13:55:40] image: dropped \"\"...is watching you!\".jpg\" — taken in Germany, which the story does not name",
+    "[13:55:40] image: dropped \"Eyes Watching You (136834777).jpeg\" — taken in China, which the story does not name",
+    "[13:55:40] image: dropped \"Friedel Kantaut- \"Is watching You\".jpg\" — taken in Germany, which the story does not name",
+    "[13:55:50] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=617 in=8959 read=0 out=794 attempt=1 ms=9066",
+    "[13:55:50] image: vision rejected all candidates (Neither photo fits. #1 is a close-up of a private, identifiable technician, not Georgieva, with an NCTC logo on his cap. #2 is a 2008 SGI supercomputer aisle carrying the defunct SGI brand: dated hardware, an amateur Flickr frame, and only a generic server hall that names the AI topic without the IMF's warning to central banks. Better to let the fallback find Georgieva or a current scene.)",
+    "[13:55:50] image: tier 4, the story's point and its subject: Kristalina Georgieva speaking | traders watching stock screens | data center construction site | data center | data center server hall | traders New York Stock Exchange",
+    "[13:55:51] commons \"Kristalina Georgieva speaking\": 2 usable of 3",
+    "[13:55:51] image: dropped \"Visit by Roxana Mînzatu, to the USA (P-070503-00-19).jpg\" — an event's photograph, people and banners",
+    "[13:55:51] image: dropped \"Visit by Roxana Mînzatu, to the USA (P-070503-00-18).jpg\" — an event's photograph, people and banners",
+    "[13:55:51] pexels \"data center\": 8 usable",
+    "[13:55:51] pexels \"data center construction site\": 8 usable",
+    "[13:55:51] pexels \"traders New York Stock Exchange\": 8 usable",
+    "[13:55:51] pexels \"Kristalina Georgieva speaking\": 8 usable",
+    "[13:55:51] pexels \"data center server hall\": 8 usable",
+    "[13:55:51] pexels \"traders watching stock screens\": 8 usable",
+    "[13:55:53] openverse \"traders watching stock screens\": 0 usable of 0",
+    "[13:55:56] openverse \"Kristalina Georgieva speaking\": 4 usable of 4",
+    "[13:55:56] image: dropped \"Various microphones setup at a press conference in Kyiv, Ukraine.\" — names too little of speaking",
+    "[13:55:56] image: dropped \"A spokesperson engages with media during an outdoor press interview su\" — names too little of speaking",
+    "[13:55:56] image: dropped \"Woman in a beige coat winks with a playful expression in an office set\" — names too little of speaking",
+    "[13:55:56] image: dropped \"A woman speaking at a European Union conference while delegates listen\" — an event's photograph, people and banners",
+    "[13:55:56] image: dropped \"Participants actively engaged in a business meeting, discussing and sh\" — names too little of speaking",
+    "[13:55:56] image: dropped \"A woman giving a speech at a podium with an EU flag in a conference se\" — names too little of speaking",
+    "[13:55:56] image: dropped \"Engaged participants in a business conference, raising questions to th\" — names too little of speaking",
+    "[13:55:56] openverse \"data center construction site\": 10 usable of 20",
+    "[13:55:56] commons \"traders watching stock screens\": 0 usable of 0",
+    "[13:55:57] commons \"traders watching\": 15 usable of 24",
+    "[13:55:57] image: dropped \"1984 BIG BROTHER IS WATCHING YOU 02.jpg\" — dated 1992, an archival picture",
+    "[13:55:57] image: dropped \"1984 BIG BROTHER IS WATCHING YOU 01.jpg\" — dated 1992, an archival picture",
+    "[13:55:58] openverse \"data center server hall\": 0 usable of 0",
+    "[13:55:58] openverse \"data center\": 10 usable of 20",
+    "[13:55:58] openverse \"data center\": 10 usable of 20",
+    "[13:55:59] openverse \"traders New York Stock Exchange\": 6 usable of 9",
+    "[13:56:00] openverse \"traders watching\": 10 usable of 20",
+    "[13:56:00] image: dropped \"Fight Between 'Baltagaya' and Revolutionary Militia.\" — names too little of traders, watching, stock, screens",
+    "[13:56:00] image: dropped \"A professional examines financial graphs on a laptop, indicating marke\" — names too little of traders, watching, stock, screens",
+    "[13:56:00] image: dropped \"Christmas Market '20 Days Of Christmas' - Dublin Docklands\" — names too little of traders, watching, stock, screens",
+    "[13:56:00] image: dropped \"A man analyzes cryptocurrency graphs on a touchscreen monitor in a mod\" — names too little of traders, watching, stock, screens",
+    "[13:56:00] image: dropped \"India - Kerala - 073 - Cochin - Chinese fishing nets\" — names too little of traders, watching, stock, screens",
+    "[13:56:00] image: dropped \"Favorite low carb breakfast\" — names too little of traders, watching, stock, screens",
+    "[13:56:00] image: dropped \"Two men reviewing stock market data on a tablet, pointing at charts.\" — names too little of traders, watching, stock, screens",
+    "[13:56:00] image: dropped \"The Docklands Christmas Market 2010\" — names too little of traders, watching, stock, screens",
+    "[13:56:00] image: dropped \"Christmas Market '20 Days Of Christmas' - Dublin Docklands\" — names too little of traders, watching, stock, screens",
+    "[13:56:00] image: dropped \"The Docklands Christmas Market 2010\" — names too little of traders, watching, stock, screens",
+    "[13:56:00] image: dropped \"Frustrated man monitoring multiple trading graphs on computer screens \" — names too little of traders, watching, stock, screens",
+    "[13:56:00] image: dropped \"P E R F E C T L Y B A L A N C E D Vaporwave Mix OUT NOW! (Link in Desc\" — names too little of traders, watching, stock, screens",
+    "[13:56:00] image: dropped \"Modern office with financial trading screens and a diverse team discus\" — names too little of traders, watching, stock, screens",
+    "[13:56:00] image: dropped \"The Docklands Christmas Market 2010\" — names too little of traders, watching, stock, screens",
+    "[13:56:00] image: dropped \"The Docklands Christmas Market 2010 is a unique celebration of yuletid\" — names too little of traders, watching, stock, screens",
+    "[13:56:02] commons \"data center construction site\": 19 usable of 24",
+    "[13:56:02] image: dropped \"AERIAL - MSC SITE - CONSTRUCTION PROGRESS - MSC (s63-23656).jpg\" — dated 1963, an archival picture",
+    "[13:56:02] image: dropped \"Site Construction - MSC (s63-01074).jpg\" — dated 1963, an archival picture",
+    "[13:56:02] image: dropped \"Construction of the B Control and Data Building (grc-1963-p-01304).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[13:56:02] image: dropped \"KSC Vehicle Assembly Building and Launch Control Center under construc\" — dated 1964, an archival picture",
+    "[13:56:02] image: dropped \"KSC LP-39A under construction in December 1964.jpg\" — dated 1964, an archival picture",
+    "[13:56:02] image: dropped \"CONSTRUCTION SITE OF THE CENTRAL CONTROL BUILDING CCB - NARA - 1750067\" — dated 1980, an archival picture",
+    "[13:56:02] image: dropped \"Construction site for Central Library of the Saint Paul Public Library\" — dated 1915, an archival picture",
+    "[13:56:03] commons \"data center\": 15 usable of 24",
+    "[13:56:03] image: dropped \"Utah Data Center Panorama (cropped).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[13:56:03] image: dropped \"Microsoft Data Center Middenmeer, the Netherlands - 1.jpg\" — another frame of a series a published story runs",
+    "[13:56:03] commons \"data center server hall\": 8 usable of 19",
+    "[13:56:03] image: dropped \"UPComputerCenterjf3807 03.JPG\" — names too little of data, center, server, hall",
+    "[13:56:03] image: dropped \"UPComputerCenterjf3807 02.JPG\" — names too little of data, center, server, hall",
+    "[13:56:03] image: dropped \"UPComputerCenterjf3807 07.JPG\" — names too little of data, center, server, hall",
+    "[13:56:03] image: dropped \"UPComputerCenterjf3807 12.JPG\" — names too little of data, center, server, hall",
+    "[13:56:03] image: dropped \"UPComputerCenterjf3807 06.JPG\" — names too little of data, center, server, hall",
+    "[13:56:03] image: dropped \"UPComputerCenterjf3807 10.JPG\" — names too little of data, center, server, hall",
+    "[13:56:03] image: dropped \"UPComputerCenterjf3807 05.JPG\" — names too little of data, center, server, hall",
+    "[13:56:03] image: dropped \"UPComputerCenterjf3807 04.JPG\" — names too little of data, center, server, hall",
+    "[13:56:03] image: dropped \"Detailed image of illuminated server racks showcasing modern technolog\" — names too little of data, center, server, hall",
+    "[13:56:03] image: dropped \"National Data Center Capacity Building training course\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[13:56:03] image: dropped \"National Data Center Capacity Building training\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[13:56:04] commons \"traders New York Stock Exchange\": 17 usable of 24",
+    "[13:56:04] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[13:56:04] image: dropped \"New York - Docks-New York Harbor - NARA - 68146200 ed2.jpg\" — names too little of traders",
+    "[13:56:04] image: dropped \"New York - New York City - NARA - 68146147.jpg\" — dated 1928, an archival picture",
+    "[13:56:04] image: dropped \"New York - New York City - NARA - 68146159.jpg\" — names too little of traders",
+    "[13:56:04] image: dropped \"New York - New York City - NARA - 68146131.jpg\" — dated 1924, an archival picture",
+    "[13:56:04] image: dropped \"New York - New York City - NARA - 68145654.jpg\" — dated 1937, an archival picture",
+    "[13:56:04] image: dropped \"New York - Docks-New York Harbor - NARA - 68146234.jpg\" — names too little of traders",
+    "[13:56:04] image: dropped \"How to know New York City - a serviceable and trustworthy guide, havin\" — names too little of traders",
+    "[13:56:04] image: dropped \"Defense.gov News Photo 000706-N-1110A-505.jpg\" — dated 2000, an archival picture",
+    "[13:56:04] image: dropped \"No Known Restrictions: Traders on the Floor of the New York Stock Exch\" — dated 1936, an archival picture",
+    "[13:56:04] image: dropped \"Close-up of a hand holding a smartphone displaying a stock trading app\" — names too little of traders",
+    "[13:56:04] image: dropped \"Spirit of Freedom balloon - Smithsonian Air and Space Museum - 2012-05\" — names too little of traders",
+    "[13:56:04] image: dropped \"Ornate façade of the New York Stock Exchange featuring intricate stone\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[13:56:04] image: dropped \"Close-up of a smartphone screen displaying a stock trading app with ca\" — names too little of traders",
+    "[13:56:04] image: dropped \"161010-N-PX557-001\" — names too little of traders",
+    "[13:56:04] image: dropped \"Two business professionals in suits smiling and viewing a cellphone ou\" — names too little of traders",
+    "[13:56:04] image: dropped \"Classic architecture of the New York Stock Exchange facade in NYC.\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[13:56:04] image: dropped \"High-resolution candlestick chart showing forex trading trends and ana\" — names too little of traders",
+    "[13:56:04] image: dropped \"Captured the iconic facade of the New York Stock Exchange with intrica\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[13:56:04] image: dropped \"Eye of Spring under construction in Kunming.jpg\" — taken in China, which the story does not name",
+    "[13:56:04] image: dropped \"\"...is watching you!\".jpg\" — taken in Germany, which the story does not name",
+    "[13:56:04] image: dropped \"Eyes Watching You (136834777).jpeg\" — taken in China, which the story does not name",
+    "[13:56:04] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/4244643524_9612863c82_n.jpg",
+    "[13:56:11] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=217 in=10619 read=0 out=385 attempt=1 ms=5598",
+    "[13:56:11] image: vision rejected all candidates (fallback pass) (No candidate fits. 1 is an archival black-and-white postcard with printed text. 2 is a staged stock photo of an unknown woman, not Georgieva. 3 is a 1959 black-and-white construction site. 4 is a map. 5 names an identifiable person, Andrew Aziz, and shows other firms' logos. 6 is an amateur street snapshot centred on a private individual, not a trading scene.)",
+    "[13:56:11] image: thumbnail HTTP 403 for https://live.staticflickr.com/8189/8102212776_c2b9423058_n.jpg",
+    "[13:56:13] image: thumbnail HTTP 403 for https://live.staticflickr.com/6156/6205315211_fe458e509e_n.jpg",
+    "[13:56:26] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=936 in=10574 read=0 out=1156 attempt=1 ms=13061",
+    "[13:56:32] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=238 in=8085 read=0 out=344 attempt=1 ms=5733",
+    "[13:56:32] image: second check (claude-cli/claude-opus-5-5) RIGHT \"Kristalina Georgieva\": A sharp, professional photograph of Kristalina Georgieva, the story's own subject, speaking at an earlier event, correct",
+    "[13:56:32] published \"صندوق النقد: على البنوك المركزية مراعاة أي تباطؤ في طفرة الذكاء الاصطناعي\" -> imf-georgieva-ai-slowdown-central-banks-6a0c11"
   ]
 }

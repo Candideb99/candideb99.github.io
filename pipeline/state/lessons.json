@@ -240,10 +240,11 @@
     "egypt-urban-inflation-slows-nine-month-low-e8bbed:cb900c51",
     "ihc-third-quarter-profit-falls-third-0a92ce:180b81b3",
     "fao-food-price-index-october-2026-86a80b:f5ff02c7",
-    "us-presses-china-busan-deal-rare-earths-farm-purchases-dcf97b:d8c855a7"
+    "us-presses-china-busan-deal-rare-earths-farm-purchases-dcf97b:d8c855a7",
+    "sp-500-biggest-weekly-loss-ai-midterms-f9fb82:43da44aa"
   ],
-  "version": 56,
-  "updatedAt": "2026-11-07T06:08:24.865Z",
+  "version": 57,
+  "updatedAt": "2026-11-07T13:14:26.888Z",
   "lessons": [
     {
       "id": "L1",
@@ -289,11 +290,12 @@
         "uae-germany-45-agreements-state-visit-9774e1:e22c45dc",
         "anthropic-researcher-ai-human-extinction-risk-8aa7a2:92d3dbf3",
         "saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3:d59a7a95",
-        "saudi-uae-expand-oil-outlets-bypassing-hormuz-fd8a9b:80e914eb"
+        "saudi-uae-expand-oil-outlets-bypassing-hormuz-fd8a9b:80e914eb",
+        "sp-500-biggest-weekly-loss-ai-midterms-f9fb82:43da44aa"
       ],
-      "seen": 34,
+      "seen": 35,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-11-04T23:46:15.324Z",
+      "lastSeen": "2026-11-07T13:14:26.888Z",
       "status": "active",
       "previous": [
         "Keep every qualifier in Arabic: could, possibly, as much as, hopefully, expected, scheduled, will, estimates, reportedly. Name who claims, forecasts or estimates it. Never turn a claim, hope, forecast or reported figure into a stated fact, a present result or a bare headline number.",
@@ -1254,6 +1256,13 @@
       "mistakes": 1,
       "applied": [
         "reinforce L5 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-11-07T13:14:26.888Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L1 (+1; reworded at most once a week)"
       ]
     }
   ],
