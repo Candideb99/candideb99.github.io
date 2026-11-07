@@ -79,7 +79,8 @@ if (SAVE && !DRY_RUN) {
 }
 const log = (message) => console.log(`[backfill ${new Date().toISOString().slice(11, 19)}] ${message}`);
 /** The image block a story's frontmatter carries. */
-const record = (image) => ({ url: image.url, width: image.width, height: image.height, alt: image.alt, credit: image.credit, license: image.license, licenseUrl: image.licenseUrl || undefined, pageUrl: image.pageUrl });
+// `hub`: a city's business district (lib/images.mjs hubPhoto()), whose city rations the next one; never printed.
+const record = (image) => ({ url: image.url, width: image.width, height: image.height, alt: image.alt, credit: image.credit, license: image.license, licenseUrl: image.licenseUrl || undefined, pageUrl: image.pageUrl, hub: image.hub || undefined });
 async function writeImage(full, match, data, image, model) {
   data.image = image;
   data.models = { ...(data.models ?? {}), vision: model };

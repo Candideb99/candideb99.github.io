@@ -37,6 +37,9 @@ const image = z
     pageUrl: z.string().optional(),
     /** A handout photograph (pipeline/lib/images.mjs handoutTier()): the report it was taken from; never printed. */
     foundOn: z.string().optional(),
+    /** A city's business district run by the city pass (pipeline/lib/images.mjs hubPhoto()): the city, which rations the
+     *  next one (never two in two days); never printed. */
+    hub: z.string().optional(),
   })
   .nullable()
   .optional();

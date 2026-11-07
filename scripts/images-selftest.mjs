@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The picture desk, tested on cases whose right answer is known (174 checks), with scripted stand-ins for Claude, Wikimedia Commons,
+ * The picture desk, tested on cases whose right answer is known (185 checks), with scripted stand-ins for Claude, Wikimedia Commons,
  * the other libraries and the thumbnails: no model call, no network. Written 2026-09-28 after the owner asked for the
  * image engine to be stress-tested ("it might still be buggy"), so that the cascade's order, its place filter, the
  * repeat guard, its behaviour when a service fails, and the reading of accented names cannot regress unseen. The gate
@@ -8,8 +8,12 @@
  *
  *   node scripts/images-selftest.mjs
  */
-import { withStandIns, pickImage, headlinePeople, headlineCompany, namesCompany, namesBrand, namesPerson, namesAPlace, seriesKey, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, noveltyFault, groundedClaimant, stampedSource, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { withStandIns, pickImage, headlinePeople, headlineCompany, namesCompany, namesBrand, namesPerson, namesAPlace, seriesKey, marketCity, namesHub, hubByCity, recentHubs, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, noveltyFault, groundedClaimant, stampedSource, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
 import { createHash } from "node:crypto";
+import { mkdtempSync, writeFileSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
+import path from "node:path";
+import YAML from "yaml";
 import { photoKey, sharedPhotos } from "../pipeline/lib/photo-key.mjs";
 import { BAD_TITLE, badTitle, cleanArtist, creditName, attributionLine, searchCommons } from "../pipeline/lib/commons.mjs";
 
@@ -76,7 +80,7 @@ const fileNameIn = (prompt) => String(prompt).match(/^File name: (.*)$/m)?.[1] ?
  * "throw"); `judge(titles, prompt)` returns the 1-based choice or 0; `verify(fileName, prompt)` returns a verdict or
  * throws; `brief` is the source-photo reader's answer. Returns the photo, every search asked, and the calls made.
  */
-async function scenario({ draft, world = {}, categoryWorld = {}, libs = {}, plan, judge, verify = () => "RIGHT", brief = null, byText = null, sources = [], exclude = new Set(), lastResort = { scene: null, country: null, institution: null, city: null }, handout = null, handoutWidth = 975, photoDir = null }) {
+async function scenario({ draft, world = {}, categoryWorld = {}, libs = {}, plan, judge, verify = () => "RIGHT", brief = null, byText = null, sources = [], exclude = new Set(), lastResort = { scene: null, country: null, institution: null, city: null }, handout = null, handoutWidth = 975, photoDir = null, recentHubs = [] }) {
   const searched = [];
   const calls = [];
   const judgePrompts = [];
@@ -100,6 +104,8 @@ async function scenario({ draft, world = {}, categoryWorld = {}, libs = {}, plan
       return "data:image/jpeg;base64,AAAA";
     },
     noteUse: async () => {},
+    // The stories published with a city's business district (hubRationed()); never the real articles on disk.
+    recentHubs: async () => recentHubs,
     chat: async (opts) => {
       const { system = "", user = "", role } = opts;
       let data;
@@ -398,6 +404,7 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
     },
     inlineImage: async () => null,
     noteUse: async () => {},
+    recentHubs: async () => [],
     chat: async (opts) => {
       const data = opts.system.includes("choosing stock photographs") ? planFor({ places: ["New Capital"], place_queries: ["New Capital"] }) : { scene: "construction site", country: "Egypt", institution: null, city: null };
       opts.validate?.(data);
@@ -823,8 +830,9 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   const economy = { title: "كيف يحدد التصنيف السيادي كلفة اقتراض عُمان؟", subtitle: "", lede: "ليد", body: "نص", tags: ["عمان"], regions: ["الخليج"], kind: "explainer" };
   const rules = photoRules({ draft: economy, image: { title: "Duqm DryDock.jpg" }, lastResort: true, audit: true });
   check(
-    "the audit is told the desk's rules: no skyline in any pass, how an economy and a concept are pictured, the headline's people",
-    [rules.includes("is WRONG_SUBJECT, whatever the story: no pass of this paper runs one"), rules.includes("pictured by that country's economic life at work"), rules.includes("This piece explains or analyses a concept"), rules.includes("the people its headline names or refers to"), rules.includes("skyline or central bank is acceptable ONLY")],
+    // A skyline is refused in every pass but the city pass (2026-11-07), which runs only under a city's own stock market.
+    "the audit is told the desk's rules: no skyline but the city pass's, how an economy and a concept are pictured, the headline's people",
+    [rules.includes("is WRONG_SUBJECT in this pass, whatever the story (only the city pass, under a story about a city's own stock market"), rules.includes("pictured by that country's economic life at work"), rules.includes("This piece explains or analyses a concept"), rules.includes("the people its headline names or refers to"), rules.includes("skyline or central bank is acceptable ONLY")],
     [true, true, true, true, false],
   );
   check("another outlet's name or logo in the frame is refused by desk and audit alike", [rules.includes("another news outlet's or broadcaster's name or logo in the frame"), photoRules({ draft: economy, image: {} }).includes("another news outlet's or broadcaster's name or logo in the frame")], [true, true]);
@@ -1099,6 +1107,72 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
     verify: (name, prompt) => (!prompt.includes("already known to be a snapshot") ? "AMATEUR" : prompt.includes("Caption the paper would print: طائرة إيرباص A321neo") ? "RIGHT" : "RECAPTION") });
   check("a held snapshot read RECAPTION is recaptioned and held, and runs", [recaption.image?.title ?? null, recaption.calls.includes("caption")], [snap.title, true]);
   check("every judge is told amateur photographs come last, and to prefer the nearest, clearest subject", [both.judgePrompts.every((p) => p.includes("AMATEUR LAST")), both.judgePrompts.every((p) => p.includes("nearest, largest and sharpest"))], [true, true]);
+  // Not a stand-in: a snapshot its judge found only names the story's topic, in a pass that looks for its point, is not held,
+  // and the story runs as text (the owner, 2026-11-07, of a night snapshot of a housing compound in Dubai Investments Park,
+  // palms filling the frame, under DIP Holding's IPO: «i do not think the picture posted here is suitable»).
+  const pointed = { queries: ["oil refinery"], place: [], people: [], focus: "subject", places: [], place_queries: [], message: "refiners earn their widest margins in years" };
+  const topicOnly = await scenario({ draft, plan: pointed, world: { "oil refinery": [snap] }, judge: (titles) => ({ choice: titles.length ? 1 : 0, says: false }), verify: amateurVerdict });
+  const saysIt = await scenario({ draft, plan: pointed, world: { "oil refinery": [snap] }, judge: (titles) => ({ choice: titles.length ? 1 : 0, says: true }), verify: amateurVerdict });
+  check("a snapshot that only names the story's topic is not held back and the story runs as text; one that says its point still is", [topicOnly.image?.title ?? null, saysIt.image?.title ?? null], [null, snap.title]);
+  // The company's own brand is what its pass is for (no gate): its sign as a snapshot is still held, as the owner asked on
+  // 2026-10-30 ("make amateur photos last resort").
+  const bp = { ...draft, title: "أرباح «بي بي» تقفز إلى أعلى مستوى في 18 عاماً" };
+  const signSnap = file("BP sign on the A1, Chesterton - geograph.org.uk - 6236712.jpg");
+  const brandSnap = await scenario({ draft: bp, plan: { ...pointed, company: { name: "BP", headline: "بي بي" }, brand_queries: ["BP sign"] }, world: { "BP sign": [signSnap] }, judge: (titles) => ({ choice: titles.length ? 1 : 0, says: false }), verify: (name, prompt) => (prompt.includes("already known to be a snapshot") ? "RIGHT" : "AMATEUR") });
+  check("a snapshot of the company's own brand is still held back and runs", brandSnap.image?.title ?? null, signSnap.title);
+}
+
+// The city pass (the owner, 2026-11-07, of Bloomberg's Downtown Dubai under DIP Holding's offering: "why not then use dubai
+// city photo like bloomberg did?"; then: only economic hubs a reader knows the city by "without reading captions", never
+// "city photos everywhere", and nothing approved by hand). Only a story about a city's own stock market, only files naming
+// its business landmarks, never two in two days, no snapshot held.
+{
+  check("the stock-market stories of a hub city, and nothing else", [
+    marketCity({ title: "طرح «دي آي بي هولدينغ» في دبي يجمع 1.9 مليار درهم" })?.city,
+    marketCity({ title: "سهم بنك القاهرة يرتفع 7% في أولى جلسات تداوله بالبورصة المصرية" })?.city,
+    marketCity({ title: "مؤشر الأسهم السعودية يقفز 3.4% في أكبر مكسب يومي منذ أكثر من عام" })?.city,
+    marketCity({ title: "طرح «أكوا» السعودية في سوق دبي المالي" })?.city,
+    marketCity({ title: "أرباح الدار ترتفع 19% في 9 أشهر رغم تراجع مبيعاتها في الإمارات" }),
+    marketCity({ title: "«أرادَ» الإماراتية تدخل السوق السعودية بمشروع في الرياض قيمته 13.7 مليار درهم" }),
+    marketCity({ title: "«إنسكايل» تجمع 3.36 مليار دولار بمشاركة مجلس أبوظبي للاستثمار قبل طرحها العام", subtitle: "صندوق التحوط «ثيرد بوينت» قاد جولة سندات تتحول إلى أسهم مع إتمام الطرح العام الأولي" }),
+    marketCity({ title: "دبي تطرح مناقصة لتوسعة المترو" }),
+    marketCity({ title: "سهم جيو يقفز 27% في أول تداول بعد أكبر طرح أولي في الهند" }),
+    marketCity({ title: "أرامكو السعودية تدرج أسهماً في بورصة لندن" }),
+  ], ["Dubai", "Cairo", "Riyadh", "Dubai", null, null, null, null, null, null]);
+  const dip = { title: "طرح «دي آي بي هولدينغ» في دبي يجمع 1.9 مليار درهم", subtitle: "الأسهم المطروحة قائمة تبيعها الشركة الأم", lede: "حدّدت الشركة السعر النهائي لطرحها في سوق دبي المالي.", body: "فقرة.", tags: ["الإمارات", "سوق دبي المالي"], regions: ["الخليج"], kind: "news", section: "markets", imageQueries: [] };
+  const plan = { queries: ["stock exchange traders"], place: ["United Arab Emirates", "UAE", "Emirati", "Dubai"], people: [], focus: "subject", places: [], place_queries: [], message: "investors buy a fifth of DIP Holding for its dividends" };
+  const burj = file("Burj Khalifa and the Downtown Dubai skyline, 2024.jpg", { categories: "Downtown Dubai|Burj Khalifa", date: "2024-03-01" });
+  const creek = file("Abra boats on Dubai Creek.jpg", { categories: "Dubai Creek" });
+  const marina = file("Dubai Marina towers at dusk.jpg", { categories: "Dubai Marina" });
+  const world = { "Burj Khalifa Downtown Dubai": [creek, burj], "Sheikh Zayed Road Dubai": [marina] };
+  const hubJudge = (titles, prompt) => (prompt.includes("THE CITY'S BUSINESS DISTRICT") ? pickTitle("Burj Khalifa")(titles) : 0);
+  const r = await scenario({ draft: dip, plan, world, judge: hubJudge, verify: () => "RIGHT" });
+  const hubPrompt = r.judgePrompts.find((p) => p.includes("THE CITY'S BUSINESS DISTRICT")) ?? "";
+  check("a Dubai stock-market story with nothing of its own runs Downtown Dubai, marked with its city and as a file photo", [r.image?.title, r.image?.hub, r.image?.alt?.includes("أرشيفية")], [burj.title, "Dubai", true]);
+  check("only files naming the city's business landmarks reach its judge, who is not told that no skyline ever runs", [titlesIn(hubPrompt), hubPrompt.includes("is never chosen, whatever the story")], [[burj.title], false]);
+  check("its categories are browsed, and the second check is told the city pass's exception", [r.searched.includes("category:Downtown Dubai"), r.verifyPrompts.some((p) => p.includes("So is Dubai's business district"))], [true, true]);
+  const company = await scenario({ draft: { ...dip, title: "أرباح الدار ترتفع 19% في 9 أشهر رغم تراجع مبيعاتها في الإمارات", subtitle: "" }, plan, world, judge: hubJudge, verify: () => "RIGHT" });
+  check("a company's own results get no city pass, and run as text", [company.searched.includes("Burj Khalifa Downtown Dubai"), company.image?.title ?? null], [false, null]);
+  const rationed = await scenario({ draft: dip, plan, world, judge: hubJudge, verify: () => "RIGHT", recentHubs: [{ at: Date.now() - 10 * 3_600_000, slug: "saudi-index", hub: "Riyadh" }] });
+  const later = await scenario({ draft: dip, plan, world, judge: hubJudge, verify: () => "RIGHT", recentHubs: [{ at: Date.now() - 50 * 3_600_000, slug: "saudi-index", hub: "Riyadh" }] });
+  check("never two city photographs in two days: one ten hours ago rations it, one fifty hours ago does not", [rationed.searched.includes("Burj Khalifa Downtown Dubai"), rationed.image?.title ?? null, later.image?.title], [false, null, burj.title]);
+  const snapshot = await scenario({ draft: dip, plan, world, judge: hubJudge, verify: (name, prompt) => (prompt.includes("already known to be a snapshot") ? "RIGHT" : "AMATEUR") });
+  check("a snapshot of the city is never held back for it", snapshot.image?.title ?? null, null);
+  const printed = { title: "Burj Khalifa and the Downtown Dubai skyline, 2024.jpg", categories: "Downtown Dubai", hub: "Dubai" };
+  check("the audit holds a printed city photograph to the city pass's rules, and the code does not call it a front", [photoRules({ draft: dip, image: printed, audit: true }).includes("So is Dubai's business district"), publishedFault(printed, dip), publishedFault({ ...printed, hub: undefined }, dip) !== null], [true, null, true]);
+  check("a file names the city's landmark; a creek does not", [namesHub(burj, hubByCity("Dubai")), namesHub(creek, hubByCity("Dubai"))], [true, false]);
+  // The limit reads the stories as the newsroom and the morning round write them (YAML), so yesterday's city photo is seen.
+  const tmp = mkdtempSync(path.join(tmpdir(), "khz-hubs-"));
+  try {
+    const at = "2026-11-07T08:00:00.000Z";
+    const story = (image) => `---\n${YAML.stringify({ title: "عنوان", publishedAt: at, image, sources: [] }, { lineWidth: 0 }).trimEnd()}\n---\nفقرة.\n`;
+    writeFileSync(path.join(tmp, "a.md"), story({ url: "https://x/1.jpg", alt: "أفق مدينة الكويت (أرشيفية)", credit: "c", hub: "Kuwait City" }));
+    writeFileSync(path.join(tmp, "b.md"), story({ url: "https://x/2.jpg", alt: "ناقلة نفط", credit: "c" }));
+    writeFileSync(path.join(tmp, "c.md"), story(null));
+    check("the stories published with a city photograph are read back from their files, and only they", recentHubs(tmp).map((h) => [h.slug, h.hub, h.at]), [["a", "Kuwait City", Date.parse(at)]]);
+  } finally {
+    rmSync(tmp, { recursive: true, force: true });
+  }
 }
 
 // V. The state's own accounts (the owner, 2026-10-31: a crowded Cairo street market, Ataba in 2019 under a phone billboard,

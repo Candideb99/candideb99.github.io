@@ -98,6 +98,8 @@ export function serializeArticle({ draft, slug, section, sources, image, models,
           pageUrl: image.pageUrl,
           // A handout (lib/images.mjs): the report it was found in, kept for the record and never printed.
           foundOn: image.foundOn || undefined,
+          // A city's business district (lib/images.mjs hubPhoto()): its city, which rations the next one; never printed.
+          hub: image.hub || undefined,
         }
       : null,
     sources: sources.map((s) => ({

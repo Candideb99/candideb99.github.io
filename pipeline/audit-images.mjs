@@ -75,7 +75,7 @@ for (const f of files) {
   if (!m) continue;
   const d = YAML.parse(m[1]);
   if (d.draft || !d.image?.url) continue;
-  articles.push({ file: f, slug: d.slug, title: d.title, subtitle: d.subtitle ?? "", lede: d.lede ?? "", body: m[2], whyItMatters: d.whyItMatters ?? "", keyFacts: d.keyFacts ?? [], tags: d.tags ?? [], regions: d.regions ?? [], sources: (d.sources ?? []).map((s) => s.title).slice(0, 5), url: d.image.url, alt: d.image.alt ?? "", publishedAt: String(d.publishedAt), kind: d.kind ?? "news", section: d.section });
+  articles.push({ file: f, slug: d.slug, title: d.title, subtitle: d.subtitle ?? "", lede: d.lede ?? "", body: m[2], whyItMatters: d.whyItMatters ?? "", keyFacts: d.keyFacts ?? [], tags: d.tags ?? [], regions: d.regions ?? [], sources: (d.sources ?? []).map((s) => s.title).slice(0, 5), url: d.image.url, alt: d.image.alt ?? "", hub: d.image.hub ?? "", publishedAt: String(d.publishedAt), kind: d.kind ?? "news", section: d.section });
 }
 articles.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 const chosen = SLUGS.size ? articles.filter((a) => SLUGS.has(a.slug)) : articles;
@@ -94,7 +94,8 @@ for (const a of todo) {
   // The story as the desk reads it (storyText(): lede, body, «لماذا يهمّ», box), and the photograph as it would read a
   // candidate: its record, the caption printed and, since the second check looks at the frame, the frame itself.
   const draft = { title: a.title, subtitle: a.subtitle, lede: a.lede, body: a.body, whyItMatters: a.whyItMatters, keyFacts: a.keyFacts, tags: a.tags, regions: a.regions, kind: a.kind, section: a.section };
-  const record = { title: fileTitle ?? "", description: meta.description, categories: meta.categories, date: meta.date, alt: a.alt };
+  // `hub`: a city's business district the city pass ran, which the desk's rules allow under its own market's story.
+  const record = { title: fileTitle ?? "", description: meta.description, categories: meta.categories, date: meta.date, alt: a.alt, hub: a.hub || undefined };
   const illustrative = a.alt.includes(ILLUSTRATIVE);
   const thumbnail = await inlineImage(String(a.url).replace(/\/1280px-/, "/500px-").replace(/([?&]w=)\d+/, "$1500"));
   const user = `STORY (Arabic economics newspaper):
