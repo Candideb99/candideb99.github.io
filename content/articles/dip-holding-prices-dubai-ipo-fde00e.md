@@ -32,14 +32,15 @@ readingMinutes: 2
 chart: null
 table: null
 image:
-  url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Midnight_Shot_at_Ritaj%2C_Dubai_Investments_Park_2%2C_Dubai_-Dubai_-UAE_-Ritaj_-DIP.jpg/1280px-Midnight_Shot_at_Ritaj%2C_Dubai_Investments_Park_2%2C_Dubai_-Dubai_-UAE_-Ritaj_-DIP.jpg
+  url: https://images.pexels.com/photos/29470840/pexels-photo-29470840.jpeg?auto=compress&cs=tinysrgb&w=1280
   width: 1280
   height: 853
-  alt: مجمع ريتاج السكني في مجمع دبي للاستثمار 2 بدبي
-  credit: Syed Ali · CC BY 2.0 · ويكيميديا كومنز
-  license: CC BY 2.0
-  licenseUrl: https://creativecommons.org/licenses/by/2.0
-  pageUrl: https://commons.wikimedia.org/wiki/File%3AMidnight_Shot_at_Ritaj%2C_Dubai_Investments_Park_2%2C_Dubai_-Dubai_-UAE_-Ritaj_-DIP.jpg
+  alt: برج خليفة وناطحات سحاب في دبي (أرشيفية)
+  credit: Nelemson G · بيكسلز
+  license: Pexels License
+  licenseUrl: https://www.pexels.com/license/
+  pageUrl: https://www.pexels.com/photo/aerial-view-of-dubai-skyline-with-burj-khalifa-29470840/
+  hub: Dubai
 sources:
   - name: البيان
     nameEn: Al Bayan
