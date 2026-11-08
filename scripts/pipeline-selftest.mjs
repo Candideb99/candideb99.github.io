@@ -27,7 +27,7 @@ import { yahooQuote } from "../pipeline/lib/quotes.mjs";
 import { independentOutletCount } from "../pipeline/lib/news-evidence.mjs";
 import { boxFacts, figureOnly } from "../pipeline/lib/keyfacts.mjs";
 import { deskNotes, explainingFacts, newsDepthBrief, newsFloor, normalizeChart, normalizeDraft, paperNotes, prioritizeContext, substantiveFacts, validateDraft, validateWhyBasis, writePaperReading } from "../pipeline/lib/write.mjs";
-import { NEWS_DEPTH, NEWS_FLOOR, NEWS_MIN_EXPLAINING, NEWS_MIN_FACTS, SHORT_WORDS } from "../pipeline/lib/editorial.mjs";
+import { EDITORIAL_CRAFT, NEWS_DEPTH, NEWS_FLOOR, NEWS_MIN_EXPLAINING, NEWS_MIN_FACTS, SHORT_WORDS } from "../pipeline/lib/editorial.mjs";
 import { arabicEdition, bestPdf, coveredBy, documentUrl, editionKey, previousEdition, releaseDocument, releaseStory, reportExcerpts } from "../pipeline/lib/reports.mjs";
 import { mergeNewsRefresh, recentNews, serializeArticle, weekStories } from "../pipeline/lib/article.mjs";
 import { cleanTags } from "../pipeline/lib/tags.mjs";
@@ -709,6 +709,9 @@ if (spawnSync("git", ["--version"]).status === 0) {
     [bareOf({ ...ny, title: "ويليامز: التضخم مرتفع للغاية ويجب إعادته إلى 2%" }), bareOf({ ...ny, title: "التضخم الأمريكي مرتفع للغاية" }), bareNameInDek({ title: "وزير المالية: العجز يتراجع", subtitle: "البنك يتوقع نمواً أسرع", body: "وقال البنك إن النمو سيتسارع." })],
     [null, null, null],
   );
+  // A markets story's appended news (the owner, 2026-11-07, on the S&P 500's week closing on a section about October's
+  // jobs): no code can tell it from a real section, so the writer, the desk and the critic read the rule (EDITORIAL_CRAFT).
+  check("the writer, the desk and the critic are told a markets story's appended news is one sentence in its session", EDITORIAL_CRAFT.includes("one sentence in the paragraph of the session it came in, never a section of its own"), true);
   // And what it does (the owner, 2026-11-01, on HUMAIN): the story says «هيوماين» للذكاء الاصطناعي, the card did not.
   const humain = { title: "أرامكو تكمل الاستحواذ على 49% من «هيوماين» السعودية بضخ 9.9 مليار ريال", subtitle: "صندوق الاستثمارات العامة يحتفظ بالأغلبية عند 51%", lede: "أكملت أرامكو استحواذها على 49% من «هيوماين» للذكاء الاصطناعي التابعة لصندوق الاستثمارات العامة.", body: "", whyItMatters: "", keyFacts: [] };
   const untradedOf = (draft) => styleIssues(draft).issues.filter((i) => i.includes("دون ما تعمله"));
