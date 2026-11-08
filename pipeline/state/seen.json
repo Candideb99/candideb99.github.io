@@ -1,42 +1,6 @@
 {
   "version": 1,
   "items": {
-    "454477c78729a341": {
-      "at": "2026-10-18T04:54:55.153Z",
-      "decision": "published",
-      "slug": "iraq-seeks-imf-financing-programme-talks-d17aa2",
-      "title": "غورغييفا: سنقدم للعراق دعماً مالياً"
-    },
-    "c7e50354a0c85beb": {
-      "at": "2026-10-18T04:54:55.153Z",
-      "decision": "published",
-      "slug": "iraq-seeks-imf-financing-programme-talks-d17aa2",
-      "title": "IMF to accelerate talks with Iraq and Lebanon as Mena support grows"
-    },
-    "21bcd11435cc40a6": {
-      "at": "2026-10-18T04:50:58.094Z",
-      "decision": "published",
-      "slug": "dubai-real-gdp-first-half-contraction-507750",
-      "title": "Dubai's economy reaches Dh473bn in first half of 2026 as key sectors expand"
-    },
-    "5c25b31a0c1aa6d8": {
-      "at": "2026-10-18T04:50:58.094Z",
-      "decision": "published",
-      "slug": "dubai-real-gdp-first-half-contraction-507750",
-      "title": "473 مليار درهم الناتج المحلي الإجمالي لدبي في النصف الأول من 2026"
-    },
-    "c2c0f4b07e6f289a": {
-      "at": "2026-10-18T05:02:53.215Z",
-      "decision": "published",
-      "slug": "netflix-appoints-peter-rice-content-chief-f41468",
-      "title": "Netflix Hurries to Rewrite Its Narrative With Layoffs and a Sudden Firing"
-    },
-    "f878b4f8fc00cdaf": {
-      "at": "2026-10-18T05:02:53.215Z",
-      "decision": "published",
-      "slug": "netflix-appoints-peter-rice-content-chief-f41468",
-      "title": "Here's who Netflix just brought in to run content — and what it means for the streamer"
-    },
     "82ae0792003daea3": {
       "at": "2026-10-18T11:24:45.176Z",
       "decision": "published",
@@ -6093,6 +6057,102 @@
       "decision": "rejected",
       "title": "The US let Nvidia sell chips to an empty office in China",
       "strikes": 1
+    },
+    "1a6cb97578582b9d": {
+      "at": "2026-11-08T08:56:41.409Z",
+      "decision": "rejected",
+      "title": "أسهم شركات الأسمدة تهبط ببورصة مصر بعد تفاقم خفض إمدادات الغاز",
+      "strikes": 1
+    },
+    "d1553c4f5c5307c3": {
+      "at": "2026-11-08T08:56:41.409Z",
+      "decision": "rejected",
+      "title": "مصر ترفع نسبة خفض الغاز لمصانع الأسمدة إلى 33% بدءاً من الأحد",
+      "strikes": 1
+    },
+    "0fa8e43802a422e2": {
+      "at": "2026-11-08T08:56:41.409Z",
+      "decision": "rejected",
+      "title": "وزير الزراعة المصري لـ\"الشرق بلومبرغ\": الأسمدة المدعمة لن تتأثر بخفض إمدادات الغاز للمصانع",
+      "strikes": 1
+    },
+    "61389ecb5dde0273": {
+      "at": "2026-11-08T08:56:41.409Z",
+      "decision": "rejected",
+      "title": "مصر تخفض إمدادات الغاز لـ\"حديد عز\" 30% وسط ارتفاع كلفة الاستيراد",
+      "strikes": 1
+    },
+    "50edd4d9a12fb791": {
+      "at": "2026-11-08T08:56:41.409Z",
+      "decision": "rejected",
+      "title": "\"موبكو\" تحسم الجدل بالبورصة.. خفض الغاز بنسبة 33% وإدارة الإنتاج بالحد المتاح",
+      "strikes": 1
+    },
+    "1da67c6a36ec4be3": {
+      "at": "2026-11-08T09:08:02.605Z",
+      "decision": "published",
+      "slug": "aramco-riyadh-building-damaged-houthi-missiles-9827aa",
+      "title": "محاولة استهداف مبنى تابع لـ\"أرامكو السعودية\" في الرياض دون إصابات"
+    },
+    "0255c76a9a65195e": {
+      "at": "2026-11-08T09:08:02.605Z",
+      "decision": "published",
+      "slug": "aramco-riyadh-building-damaged-houthi-missiles-9827aa",
+      "title": "Saudi Arabia intercepts Houthi missiles targeting Riyadh, Eastern province"
+    },
+    "e1d4c6704099a1c8": {
+      "at": "2026-11-08T09:08:02.605Z",
+      "decision": "published",
+      "slug": "aramco-riyadh-building-damaged-houthi-missiles-9827aa",
+      "title": "دوي انفجارات في الرياض، والتحالف يعلن اعتراض صواريخ باليستية وكروز أطلقها الحوثيون"
+    },
+    "68443fd83094fe30": {
+      "at": "2026-11-08T09:08:02.605Z",
+      "decision": "published",
+      "slug": "aramco-riyadh-building-damaged-houthi-missiles-9827aa",
+      "title": "Saudi-led coalition intercepts two Houthi missiles fired towards Riyadh"
+    },
+    "d989fc5df500b3e7": {
+      "at": "2026-11-08T09:08:02.605Z",
+      "decision": "published",
+      "slug": "aramco-riyadh-building-damaged-houthi-missiles-9827aa",
+      "title": "Middle East latest: Projectile damages tower in Riyadh’s financial district, reports say"
+    },
+    "281a685f182ae4aa": {
+      "at": "2026-11-08T09:11:56.220Z",
+      "decision": "rejected",
+      "title": "دول الخليج تُوقِّع اتفاقية السكك الحديدية في ظل اضطرابات الملاحة بمضيق هرمز",
+      "strikes": 1
+    },
+    "b73d292a54b9c1bb": {
+      "at": "2026-11-08T09:11:56.220Z",
+      "decision": "rejected",
+      "title": "شبكة بـ16 مليار دولار.. دول الخليج توقع اليوم اتفاقية الربط السككي",
+      "strikes": 1
+    },
+    "54d71d8cfe98738e": {
+      "at": "2026-11-08T09:11:56.220Z",
+      "decision": "rejected",
+      "title": "دول الخليج تعزز التجارة والتكامل الاقتصادي عبر شبكة ربط سككي من 2117 كيلومتراً",
+      "strikes": 1
+    },
+    "681d78f3a14dae10": {
+      "at": "2026-11-08T09:11:56.220Z",
+      "decision": "rejected",
+      "title": "الربط السككي الخليجي يقترب من التنفيذ... هل يفتتح عصراً جديداً للتجارة البينية؟",
+      "strikes": 1
+    },
+    "1d3d7d1a56e07175": {
+      "at": "2026-11-08T09:23:25.323Z",
+      "decision": "published",
+      "slug": "egypt-sisi-orders-strategic-stockpile-study-c53757",
+      "title": "Egypt's El Sisi orders new emergency agency to build up strategic reserves"
+    },
+    "a48dec3ebb4b9c8a": {
+      "at": "2026-11-08T09:23:25.323Z",
+      "decision": "published",
+      "slug": "egypt-sisi-orders-strategic-stockpile-study-c53757",
+      "title": "Al-Sisi orders study of strategic emergency stockpile, completion of national crisis database"
     }
   }
 }

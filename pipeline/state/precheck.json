@@ -13396,6 +13396,121 @@
           "noted": []
         }
       ]
+    },
+    "aramco-riyadh-building-damaged-houthi-missiles-9827aa": {
+      "at": "2026-11-08T09:08:02.594Z",
+      "title": "مبنى لأرامكو في الرياض يتعرض لأضرار محدودة وسط هجمات صاروخية حوثية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v57",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 24,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "egypt-sisi-orders-strategic-stockpile-study-c53757": {
+      "at": "2026-11-08T09:23:25.314Z",
+      "title": "السيسي يوجّه بدراسة إنشاء مخزون استراتيجي لمصر لمواجهة الأزمات",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 15,
+            "checked": 15,
+            "supported": 11,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 12,
+              "field": "body",
+              "class": "superlative",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وقالت مصادر أمنية للصحيفة الأسبوع الماضي إن حالة التأهب في الجيش المصري رُفعت إلى الدرجة القصوى، وإن الدفاعات الجوية عُزّزت على ساحل البحر الأحمر المكشوف وعند قناة السويس، تحسباً لامتداد المواجهات إذا تجددت.",
+              "quote": "Security sources told The National last week that Egypt's armed forces had been placed on high alert, with air defence systems beefed up along the country's vulnerable Red Sea coastline and at the Suez Canal in anticipation of a possible spillover from renewed hostilities.",
+              "source": "The National",
+              "sourceN": 1,
+              "correction": "The sources said the armed forces were placed on high alert, not raised to the maximum level of alert."
+            }
+          ],
+          "noted": [
+            {
+              "id": 7,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تلقى التكليف محمد عبد الرحمن ربيع، رئيس هيئة عمليات القوات المسلحة ورئيس الهيئة الوطنية لإدارة الأزمات والطوارئ بحسب الرئاسة، خلال اجتماع عقده السيسي السبت مع قيادات عسكرية.",
+              "quote": "Mr El Sisi's order to Gen Mohammed Abdel Rahman Rabia, the armed forces' Chief of Staff and head of the National Authority for the Management of Crises and Emergencies, comes amid growing fears of a resumption of all-out hostilities between Iran and the US that could disrupt supply chains.",
+              "source": "The National",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 15,
+            "checked": 15,
+            "supported": 12,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 7,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تلقى التكليف محمد عبد الرحمن ربيع، رئيس هيئة عمليات القوات المسلحة ورئيس الهيئة الوطنية لإدارة الأزمات والطوارئ بحسب الرئاسة، خلال اجتماع عقده السيسي السبت مع قيادات عسكرية.",
+              "quote": "Mr El Sisi's order to Gen Mohammed Abdel Rahman Rabia, the armed forces' Chief of Staff and head of the National Authority for the Management of Crises and Emergencies, comes amid growing fears of a resumption of all-out hostilities between Iran and the US that could disrupt supply chains.",
+              "source": "The National",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []
