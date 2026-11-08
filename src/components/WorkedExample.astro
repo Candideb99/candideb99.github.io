@@ -1,0 +1,80 @@
+---
+/**
+ * An explainer's worked example (pipeline/lib/lesson.mjs), as a textbook prints one: what the sum answers, the formula
+ * in words, each figure with its label, the working, and the result. The result was computed by code from the figures,
+ * never by a model; the figures come from the week's stories, or, marked so, are round numbers that illustrate (the owner,
+ * 2026-11-08: "like economics textbooks with graphs, mathematics and everything (but simplified for everyone to
+ * understand)").
+ */
+import { isolateNumbers } from "@lib/bidi";
+
+interface Term {
+  label: string;
+  value: number;
+  unit?: string;
+}
+interface Props {
+  worked: {
+    title: string;
+    formula: string;
+    op: "difference" | "sum" | "ratio" | "share" | "change";
+    terms: Term[];
+    result: { label: string; value: number; unit?: string };
+    hypothetical?: boolean;
+  };
+}
+const { worked } = Astro.props;
+
+/** A figure as the site prints it: Western digits, a true minus, no more decimals than it has. */
+function fmt(v: number): string {
+  return v.toLocaleString("en-US", { maximumFractionDigits: 2 }).replace(/^-/, "−");
+}
+const withUnit = (v: number, unit = "") => (unit === "%" ? `${fmt(v)}%` : unit ? `${fmt(v)} ${unit}` : fmt(v));
+const [a, b] = worked.terms.map((t) => fmt(t.value));
+const r = fmt(worked.result.value);
+// The working, left to right as figures are written in an Arabic page.
+const working =
+  worked.op === "difference" ? `${a} − ${b} = ${r}`
+  : worked.op === "sum" ? `${worked.terms.map((t) => fmt(t.value)).join(" + ")} = ${r}`
+  : worked.op === "ratio" ? `${a} ÷ ${b} = ${r}`
+  : worked.op === "share" ? `${a} ÷ ${b} × 100 = ${r}%`
+  : `(${b} − ${a}) ÷ ${a} × 100 = ${r}%`;
+---
+
+<figure class="worked" aria-labelledby="worked-title">
+  <p class="worked__kicker ui">مثال محسوب</p>
+  <h2 id="worked-title" class="worked__title" set:html={isolateNumbers(worked.title)} />
+  <p class="worked__formula" set:html={isolateNumbers(worked.formula)} />
+  <dl class="worked__terms">
+    {worked.terms.map((t) => (
+      <div class="worked__term">
+        <dt set:html={isolateNumbers(t.label)} />
+        <dd set:html={isolateNumbers(withUnit(t.value, t.unit))} />
+      </div>
+    ))}
+  </dl>
+  <p class="worked__working"><bdi dir="ltr">{working}</bdi></p>
+  <p class="worked__result">
+    <span set:html={isolateNumbers(worked.result.label)} />
+    <strong set:html={isolateNumbers(withUnit(worked.result.value, worked.result.unit))} />
+  </p>
+  {worked.hypothetical && <p class="worked__note ui">أرقام تقريبية للتوضيح، لا أرقام فعلية.</p>}
+</figure>
+
+<style>
+  .worked { margin: 1.75rem 0; max-width: var(--measure); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); padding: 0.8rem 0 1rem; }
+  .worked__kicker { font-size: var(--fs-xs); font-weight: 700; color: var(--green); }
+  .worked__title { margin-top: 0.2rem; font-family: var(--font-title); font-weight: 700; font-size: var(--t-head); line-height: 1.4; }
+  /* The formula in words reads as a textbook's equation: set apart, on a pale ground, in the reading face. */
+  .worked__formula { margin-top: 0.75rem; padding: 0.6rem 0.8rem; background: var(--paper-2); font-family: var(--font-body); font-size: var(--n-text); line-height: 1.8; color: var(--ink); }
+  .worked__terms { margin: 0.75rem 0 0; display: grid; }
+  .worked__term { display: flex; justify-content: space-between; gap: 1rem; padding-block: 0.4rem; border-top: 1px solid var(--rule); }
+  .worked__term:first-child { border-top: 0; }
+  .worked__term dt { font-family: var(--font-ui); font-size: var(--fs-sm); color: var(--ink-2); line-height: 1.5; }
+  .worked__term dd { margin: 0; font-family: var(--font-ui); font-size: var(--fs-sm); font-weight: 700; color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums lining-nums; }
+  .worked__working { margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px solid var(--ink-3); text-align: center; font-family: var(--font-ui); font-size: var(--t-list); font-weight: 500; color: var(--ink-2); font-variant-numeric: tabular-nums lining-nums; }
+  .worked__result { margin-top: 0.35rem; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+  .worked__result span { font-family: var(--font-ui); font-size: var(--fs-sm); font-weight: 700; color: var(--ink); }
+  .worked__result strong { font-family: var(--font-title); font-size: var(--t-feature); font-weight: 700; color: var(--green); white-space: nowrap; font-variant-numeric: tabular-nums lining-nums; }
+  .worked__note { margin-top: 0.5rem; font-size: var(--fs-xs); color: var(--ink-3); }
+</style>

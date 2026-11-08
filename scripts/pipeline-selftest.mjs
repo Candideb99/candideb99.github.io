@@ -33,6 +33,7 @@ import { mergeNewsRefresh, recentNews, serializeArticle, weekStories } from "../
 import { cleanTags } from "../pipeline/lib/tags.mjs";
 import { countriesNamed, groundedRegions, unplacedActors } from "../pipeline/lib/regions.mjs";
 import { styleIssues, bareNameInDek } from "../pipeline/lib/style.mjs";
+import { keepLessonParts, normalizeDiagram, normalizeWorked } from "../pipeline/lib/lesson.mjs";
 import { fixNames, judgeRewrite } from "../pipeline/lib/copydesk.mjs";
 import { CUTTABLE, cutToSources, normalizeCritique, programmaticChecks } from "../pipeline/lib/verify.mjs";
 import { noveltyFault } from "../pipeline/lib/images.mjs";
@@ -708,6 +709,61 @@ if (spawnSync("git", ["--version"]).status === 0) {
     "a headline that names him, one with no title, and «وقال البنك» are not this fault",
     [bareOf({ ...ny, title: "ويليامز: التضخم مرتفع للغاية ويجب إعادته إلى 2%" }), bareOf({ ...ny, title: "التضخم الأمريكي مرتفع للغاية" }), bareNameInDek({ title: "وزير المالية: العجز يتراجع", subtitle: "البنك يتوقع نمواً أسرع", body: "وقال البنك إن النمو سيتسارع." })],
     [null, null, null],
+  );
+  // The explainer as a simplified textbook lesson (lib/lesson.mjs, the owner, 2026-11-08: "like economics textbooks with
+  // graphs, mathematics and everything"): code computes the worked example's result, the diagram is one of three
+  // templates, and both are held to the stories' figures.
+  const reservesSum = normalizeWorked({ title: "لماذا ارتفع الاحتياطي", formula: "التغير في الاحتياطي = الدولارات الداخلة − الدولارات الخارجة", op: "difference", terms: [{ label: "تدفقات الحساب الرأسمالي والمالي", value: 23.2, unit: "مليار دولار" }, { label: "عجز الحساب الجاري", value: 22.5, unit: "مليار دولار" }], result: { label: "التغير في الاحتياطي", unit: "مليار دولار", value: 99 } });
+  check("a worked example's result is computed in code, never the writer's", [reservesSum?.result.value, reservesSum?.result.unit], [0.7, "مليار دولار"]);
+  check(
+    "a share and a change are percentages to one decimal, and so is a ratio",
+    [
+      normalizeWorked({ title: "t", formula: "f", op: "share", terms: [{ label: "a", value: 22.8 }, { label: "b", value: 25.9 }], result: { label: "r" } })?.result,
+      normalizeWorked({ title: "t", formula: "f", op: "change", terms: [{ label: "from", value: 117.6, unit: "دولار" }, { label: "to", value: 98.32, unit: "دولار" }], result: { label: "r" } })?.result.value,
+      normalizeWorked({ title: "t", formula: "f", op: "ratio", terms: [{ label: "a", value: 57.5, unit: "مليار دولار" }, { label: "b", value: 4.6, unit: "مليار دولار" }], result: { label: "r", unit: "شهر" } })?.result.value,
+    ],
+    [{ label: "r", unit: "%", value: 88 }, -16.4, 12.5],
+  );
+  check(
+    "a difference of two units, an unknown operation and an unround illustration are refused",
+    [
+      normalizeWorked({ title: "t", formula: "f", op: "difference", terms: [{ label: "a", value: 2, unit: "مليار دولار" }, { label: "b", value: 1, unit: "%" }], result: { label: "r" } }),
+      normalizeWorked({ title: "t", formula: "f", op: "power", terms: [{ label: "a", value: 2 }, { label: "b", value: 1 }], result: { label: "r" } }),
+      normalizeWorked({ title: "t", formula: "f", op: "sum", terms: [{ label: "a", value: 37 }, { label: "b", value: 13 }], result: { label: "r" }, hypothetical: true }),
+    ],
+    [null, null, null],
+  );
+  const reservesFlows = normalizeDiagram({ type: "flows", title: "ما يدخل الاحتياطي وما يخرج منه", center: "احتياطي مصر", unit: "مليار دولار", inflows: [{ label: "تدفقات الحساب الرأسمالي والمالي", value: 23.2 }], outflows: [{ label: "عجز الحساب الجاري", value: 22.5 }] });
+  check(
+    "a flow diagram's net is computed; a supply-and-demand figure needs a shift, a chain two to five steps, a template its name",
+    [reservesFlows?.net, normalizeDiagram({ type: "supply_demand", title: "t", price: "p", quantity: "q", supply: "s", demand: "d", shift: null }), normalizeDiagram({ type: "chain", title: "t", steps: ["واحد"] }), normalizeDiagram({ type: "pie", title: "t" }), normalizeDiagram({ type: "supply_demand", title: "t", price: "p", quantity: "q", supply: "s", demand: "d", shift: "demand_up" })?.shift],
+    [0.7, null, null, null, "demand_up"],
+  );
+  const lessonDraft = () => ({ title: "لماذا يقيّد بلد احتياطيه قياسي إنفاق الدولار؟", subtitle: "", lede: "ليد.", body: "فقرة.", keyFacts: [], tags: [], regions: [], whyItMatters: "", chart: null, table: null, worked: reservesSum, diagram: reservesFlows });
+  const withFigures = lessonDraft();
+  programmaticChecks(withFigures, [{ title: "احتياطي", text: "Net inflows of 23.2 billion dollars covered a current-account deficit of 22.5 billion dollars." }], { minWords: 0, explainer: true });
+  const withoutFigures = lessonDraft();
+  programmaticChecks(withoutFigures, [{ title: "احتياطي", text: "Reserves rose to a record 57.5 billion dollars." }], { minWords: 0, explainer: true });
+  check("the worked example and the flows stay with the stories' figures and are dropped without them", [Boolean(withFigures.worked), Boolean(withFigures.diagram), withoutFigures.worked, withoutFigures.diagram], [true, true, null, null]);
+  // A part's printed words are held as a chart's labels are (the third test lesson of 2026-11-08 computed a residual,
+  // 2.1, into its figure), while what code computed, here 0.7, may be printed and said once in the text.
+  const reservesText = [{ title: "احتياطي", text: "Net inflows of 23.2 billion dollars covered a current-account deficit of 22.5 billion dollars." }];
+  const residualCaption = lessonDraft();
+  residualCaption.diagram = { ...reservesFlows, caption: "ويضاف إليهما بند السهو والخطأ البالغ 2.1 مليار دولار" };
+  programmaticChecks(residualCaption, reservesText, { minWords: 0, explainer: true });
+  const netSaid = lessonDraft();
+  netSaid.diagram = { ...reservesFlows, caption: "فبقي فرق قدره 0.7 مليار دولار" };
+  netSaid.body = "وبقي من التدفقات 0.7 مليار دولار أضيفت إلى الاحتياطي.";
+  const netChecks = programmaticChecks(netSaid, reservesText, { minWords: 0, explainer: true });
+  check(
+    "a computed residual in a figure's caption drops the figure; the result code computed may be printed and said",
+    [residualCaption.diagram, Boolean(netSaid.diagram), netChecks.issues.some((i) => i.includes("أرقام لا تظهر"))],
+    [null, true, false],
+  );
+  check(
+    "a revision that drops a lesson's part keeps the one it had, and only an explainer carries them",
+    [keepLessonParts({ worked: reservesSum, diagram: reservesFlows }, { title: "x" }).worked === reservesSum, keepLessonParts({ diagram: reservesFlows }, { diagram: null }).diagram === reservesFlows, normalizeDraft({ title: "x", worked: { op: "difference" }, diagram: { type: "chain", title: "t", steps: ["a", "b"] } }, { kind: "news" }).diagram],
+    [true, true, null],
   );
   // An explainer's chart of official data survives its revision (the record-reserves explainer lost Egypt's current
   // account, IMF figures the checks then called ungrounded, 2026-11-07): the reviser's echo never replaces it.

@@ -7,6 +7,8 @@ import Sources from "@components/Sources.astro";
 import StoryCard from "@components/StoryCard.astro";
 import Chart from "@components/Chart.astro";
 import DataTable from "@components/DataTable.astro";
+import Diagram from "@components/Diagram.astro";
+import WorkedExample from "@components/WorkedExample.astro";
 import Share from "@components/Share.astro";
 import TextSize from "@components/TextSize.astro";
 import { TEXT_SIZE_KEY, TEXT_SIZE_MIN, TEXT_SIZE_MAX } from "@lib/text-size";
@@ -31,6 +33,8 @@ const { Content } = await render(article);
 const d = article.data;
 const sec = getSection(d.section);
 const isHub = d.kind === "explainer" || d.kind === "analysis" || d.kind === "paper" || d.kind === "weekly" || d.kind === "feature";
+/** An explainer reads as a simplified textbook lesson: figure, explanation, worked example, then the official data. */
+const lesson = d.kind === "explainer";
 const description = d.subtitle || excerpt(d.lede, 160);
 const ogImage = d.image?.url ?? `/og/${d.slug}.png`;
 const more = related(article, all, 4);
@@ -179,10 +183,15 @@ const jsonLd = [articleLd, breadcrumbLd];
         <KeyFacts facts={d.keyFacts} placement="inline" terms={d.kind === "explainer"} />
         {/* A chart's title elsewhere on the site links here (`#story-chart`): the reader who clicked a chart lands on
             the chart, not on a headline and a photograph that do not name it (the owner, 2026-09-28). */}
-        {d.chart && <Chart chart={d.chart} id="story-chart" />}
+        {d.chart && !lesson && <Chart chart={d.chart} id="story-chart" />}
+        {/* An explainer reads as a simplified textbook lesson (the owner, 2026-11-08): its figure under the answer, then
+            the explanation, the worked example, and the official data. */}
+        {lesson && d.diagram && <Diagram diagram={d.diagram} />}
         <div class="prose" data-body>
           <Content />
         </div>
+        {lesson && d.worked && <WorkedExample worked={d.worked} />}
+        {d.chart && lesson && <Chart chart={d.chart} id="story-chart" />}
         {more.length > 0 && (
           <aside class="also" data-also data-pagefind-ignore aria-labelledby="also-head">
             <span id="also-head" class="also__head ui">اقرأ أيضاً</span>

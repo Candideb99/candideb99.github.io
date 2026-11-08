@@ -643,6 +643,12 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
     if (/^(?:و|ف)?(?:للمتابعة|أفضل ما يُ?تابَ?ع|ما يُ?تابَ?ع|ما يجب (?:متابعته|مراقبته)|من يريد (?:الحكم|متابعة|تقدير)|ومن يريد|يبقى على (?:القارئ|المتابع))/.test(last)) issues.push("الشرح يُختم بقائمة مؤشرات للمتابعة؛ اختمه بآخر ما يحتاجه القارئ من الجواب، أو بالموعد التالي الذي تذكره القصص.");
     // A list of questions and answers (the owner, 2026-10-31, on the China factory explainer: "feels like this article is
     // badly written"): every subhead a question, in 32 of the 33 explainers published, as the schema had asked.
+    // A lesson has at most three steps under their subheads (the schema's rule): the record-reserves explainer's test
+    // lesson ran five, two of them the cabinet plan's terms, which is news (2026-11-08).
+    // 15 of the 41 published explainers ran more: five or more is sent back, four warned (a send-back the revision could
+    // not mend would lose the day's explainer).
+    const subheads = [...body.matchAll(/^##\s+(.+)$/gm)].length;
+    if (subheads > 3) (subheads > 4 ? issues : warnings).push(`${subheads} عناوين فرعية، والشرح درس من ثلاث خطوات على الأكثر؛ اجمع الخطوات واحذف ما ليس خطوة في الجواب، وأولها تفاصيل الخبر نفسه (من قرر ماذا وبأي شروط).`);
     const questions = [...body.matchAll(/^##\s+(.+)$/gm)].filter((m) => /[؟?]\s*$/.test(m[1])).length;
     if (questions >= 2) issues.push(`${questions} عناوين فرعية كلها أسئلة، فصار الشرح قائمة أسئلة وأجوبة؛ العنوان الفرعي جملة قصيرة بفعلها يفهمها القارئ قبل أن يقرأ القسم («السوق تحسب موعد إعادة البراميل»)، وسؤال واحد على الأكثر.`);
     // The dek says what the answer is, never what it is not («القراءة تقيس انتشار التراجع بين المصانع، لا مقدار انكماش

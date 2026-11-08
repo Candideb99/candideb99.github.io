@@ -86,6 +86,9 @@ export function serializeArticle({ draft, slug, section, sources, image, models,
     readingMinutes: readingMinutes(draft),
     chart: draft.chart ?? null,
     table: draft.table ?? null,
+    // An explainer's worked example and diagram (lib/lesson.mjs), drawn by the site; nothing for other pieces.
+    ...(draft.worked ? { worked: draft.worked } : {}),
+    ...(draft.diagram ? { diagram: draft.diagram } : {}),
     image: image
       ? {
           url: image.url,

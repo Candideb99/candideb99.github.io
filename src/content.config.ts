@@ -69,6 +69,55 @@ const table = z
   .nullable()
   .optional();
 
+/**
+ * An explainer as a simplified textbook lesson (pipeline/lib/lesson.mjs, the owner, 2026-11-08: "like economics
+ * textbooks with graphs, mathematics and everything (but simplified for everyone to understand)"): the calculation the
+ * answer rests on, its result computed by code (WorkedExample.astro), and one textbook figure drawn from a template
+ * (Diagram.astro).
+ */
+const worked = z
+  .object({
+    title: z.string(),
+    formula: z.string(),
+    op: z.enum(["difference", "sum", "ratio", "share", "change"]),
+    terms: z.array(z.object({ label: z.string(), value: z.number(), unit: z.string().default("") })).min(2).max(6),
+    result: z.object({ label: z.string(), value: z.number(), unit: z.string().default("") }),
+    hypothetical: z.boolean().default(false),
+  })
+  .optional();
+
+const flow = z.object({ label: z.string(), value: z.number() });
+const diagram = z
+  .discriminatedUnion("type", [
+    z.object({
+      type: z.literal("supply_demand"),
+      title: z.string(),
+      caption: z.string().default(""),
+      price: z.string(),
+      quantity: z.string(),
+      supply: z.string(),
+      demand: z.string(),
+      shift: z.enum(["demand_up", "demand_down", "supply_up", "supply_down"]),
+    }),
+    z.object({
+      type: z.literal("flows"),
+      title: z.string(),
+      caption: z.string().default(""),
+      center: z.string(),
+      unit: z.string().default(""),
+      inflows: z.array(flow).min(1).max(3),
+      outflows: z.array(flow).min(1).max(3),
+      net: z.number(),
+    }),
+    z.object({
+      type: z.literal("chain"),
+      title: z.string(),
+      caption: z.string().default(""),
+      steps: z.array(z.string()).min(2).max(5),
+    }),
+  ])
+  .optional();
+
 const articles = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./content/articles" }),
   schema: z.object({
@@ -89,6 +138,8 @@ const articles = defineCollection({
     readingMinutes: z.number().default(3),
     chart,
     table,
+    worked,
+    diagram,
     image,
     sources: z.array(source).default([]),
     /** When the copy desk edited the story. A story that carries it is never sent to the desk again (the owner,
