@@ -675,7 +675,15 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
   if (count(/(?<![؀-ۿ])مما(?![؀-ۿ])/g) > 1) warnings.push(`«مما» مكررة (${count(/(?<![؀-ۿ])مما(?![؀-ۿ])/g)} مرات)؛ مرة واحدة في المقال على الأكثر، والباقي جملة مستقلة أو «فـ».`);
   if (count(/(?<![؀-ۿ])حيث(?![؀-ۿ])/g) > 2) warnings.push(`«حيث» مكررة؛ هي للمكان، والتعليل «إذ» أو «فـ».`);
   if (count(/، إذ(?![؀-ۿ])/g) > 2) warnings.push(`«، إذ» مكررة (${count(/، إذ(?![؀-ۿ])/g)} مرات)؛ للتعليل وحده، والباقي جمل مستقلة.`);
-  if (/(?<![؀-ۿ])(?:فيما|بينما)(?![؀-ۿ])/.test(dek)) warnings.push(`الوصف الفرعي يضيف تطوراً ثانياً بـ«فيما/بينما»؛ الوصف الفرعي جملة واحدة عن الخبر نفسه.`);
+  // An analysis's dek says its finding, so a second development glued on is sent back there: three of the 27 published
+  // analyses, each two ideas («…، فيما تدخل براميلها سوقاً قد يعيد إليها اتفاقٌ مع طهران الخامَ الإيراني», which the owner
+  // found hard to understand, 2026-11-07); a news story's stays a warning.
+  if (/(?<![؀-ۿ])(?:فيما|بينما)(?![؀-ۿ])/.test(dek)) (kind === "analysis" ? issues : warnings).push(kind === "analysis" ? `الوصف الفرعي يضيف فكرة ثانية بـ«فيما/بينما»؛ وصف التحليل جملة واحدة تقول خلاصته: من يربح أو يخسر وماذا.` : `الوصف الفرعي يضيف تطوراً ثانياً بـ«فيما/بينما»؛ الوصف الفرعي جملة واحدة عن الخبر نفسه.`);
+  // The same hedge again and again («والأرجح… والأرجح… فالأرجح»): 8 of the 27 published analyses said «الأرجح» three times
+  // or more, against one news story of 478; the critic asks a reading to be framed as one, and the hedge rule above offered
+  // «والأرجح أن» as the alternative. The desk keeps every hedge (its guard) but words each one differently.
+  const likely = count(/(?<![؀-ۿ])[وف]?الأرجح(?![؀-ۿ])/g);
+  if (likely > 2) warnings.push(`«الأرجح» ${likely} مرات؛ الاستنتاج يُقال مرة حيث يقوم عليه التحليل، وكل تحوّط آخر بصيغته («قد»، «يُتوقع أن»، «يرى محللون»)، أو يُدمج في جملة واحدة.`);
   if (count(/(?<![؀-ۿ])و?نراقب(?![؀-ۿ])/g) > 2) warnings.push(`«نراقب… ونراقب…» مكررة؛ اجمعها في جملة أو فقرة واحدة.`);
   if (count(/(?<![؀-ۿ])و(?:ال)?ثاني(?:ة)?(?![؀-ۿ])/g) > 1) warnings.push(`أكثر من تعداد «الأول… والثاني» في المقال؛ واحد على الأكثر.`);
 

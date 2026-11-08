@@ -709,6 +709,13 @@ if (spawnSync("git", ["--version"]).status === 0) {
     [bareOf({ ...ny, title: "ويليامز: التضخم مرتفع للغاية ويجب إعادته إلى 2%" }), bareOf({ ...ny, title: "التضخم الأمريكي مرتفع للغاية" }), bareNameInDek({ title: "وزير المالية: العجز يتراجع", subtitle: "البنك يتوقع نمواً أسرع", body: "وقال البنك إن النمو سيتسارع." })],
     [null, null, null],
   );
+  // An analysis the owner found hard to understand (2026-11-07): its dek glued a second idea on with «فيما», and it said
+  // «الأرجح» three times. The dek is sent back for an analysis and warned for news; the hedge, three times, is warned.
+  const twoIdeas = { title: "هبوط النفط يقلّص عائد زيادة إنتاج السعودية", subtitle: "إنتاج المملكة يرتفع في أكتوبر، فيما تتجه السوق إلى فائض في المعروض", lede: "رفعت السعودية إنتاجها في أكتوبر.", body: "فقرة." };
+  const gluedDek = (kind) => { const r = styleIssues(twoIdeas, { kind }); return [r.issues.some((i) => i.includes("وصف التحليل جملة واحدة")), r.warnings.some((w) => w.includes("يضيف تطوراً ثانياً"))]; };
+  check("a dek that glues a second idea on with «فيما» is sent back in an analysis and warned in news", [gluedDek("analysis"), gluedDek("news")], [[true, false], [false, true]]);
+  const hedged = (n) => styleIssues({ title: "هبوط النفط يقلّص عائد زيادة إنتاج السعودية", subtitle: "الأسعار تزن أكثر من الكميات", lede: "رفعت السعودية إنتاجها.", body: Array.from({ length: n }, (_, i) => `والأرجح أن يتراجع الإيراد ${i + 1}.`).join(" ") }, { kind: "analysis" }).warnings.some((w) => w.includes("«الأرجح»"));
+  check("«الأرجح» three times is warned, twice is not", [hedged(3), hedged(2)], [true, false]);
   // A markets story's appended news (the owner, 2026-11-07, on the S&P 500's week closing on a section about October's
   // jobs): no code can tell it from a real section, so the writer, the desk and the critic read the rule (EDITORIAL_CRAFT).
   check("the writer, the desk and the critic are told a markets story's appended news is one sentence in its session", EDITORIAL_CRAFT.includes("one sentence in the paragraph of the session it came in, never a section of its own"), true);
