@@ -13642,6 +13642,69 @@
           "noted": []
         }
       ]
+    },
+    "egypt-fertilizer-gas-cuts-reserves-discovery-248ff1": {
+      "at": "2026-11-08T19:12:22.161Z",
+      "title": "خفض الغاز 33% يضغط على منتجي الأسمدة في مصر لتقليص فاتورة الاستيراد",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 44,
+            "checked": 44,
+            "supported": 39,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 34,
+              "field": "body",
+              "class": "internal",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وفي السنة المالية 2025-2026 حقق ميزان المدفوعات فائضاً كلياً قدره 2.8 مليار دولار.",
+              "quote": "فقد قابل صافي تدفقات داخلة إلى الحساب الرأسمالي والمالي بقيمة 23.2 مليار دولار عجزاً في الحساب الجاري بلغ 22.5 مليار دولار.",
+              "source": "the story itself",
+              "sourceN": 0,
+              "correction": "Net inflows of $23.2bn against a current account deficit of $22.5bn leave $0.7bn, not $2.8bn, so the surplus cannot be explained by these two figures alone as the story presents it."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 2
+          }
+        },
+        {
+          "counts": {
+            "sentences": 43,
+            "checked": 43,
+            "supported": 39,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
