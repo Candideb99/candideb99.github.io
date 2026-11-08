@@ -164,7 +164,8 @@ function coerceBody(body) {
 export const newsFloor = (_notes) => NEWS_FLOOR;
 
 /** Structural validation of a writer's answer. `minWords`/`maxWords` bound the lede plus body (news defaults; analyses are longer). */
-export function validateDraft(draft, { minWords = 200, maxWords = 1100, short = false } = {}) {
+// `whyBox: false` for a piece with no «لماذا يهمّ» box: a short story, and since 2026-11-08 an explainer, which ends on its own answer.
+export function validateDraft(draft, { minWords = 200, maxWords = 1100, short = false, whyBox = !short } = {}) {
   if (!draft || typeof draft !== "object") throw new Error("draft is not an object");
   // Tolerate renamed keys and reshaped bodies from different models.
   draft.title = draft.title ?? draft.headline ?? draft.header;
@@ -181,7 +182,7 @@ export function validateDraft(draft, { minWords = 200, maxWords = 1100, short = 
   if (!Array.isArray(draft.tags) || !draft.tags.some((t) => String(t ?? "").trim())) throw new Error("draft.tags missing (a non-empty array)");
   if (String(draft.title).length < 15 || String(draft.title).length > 95) throw new Error("title length out of range (15-95 chars); write one idea per headline");
   if (!Array.isArray(draft.key_facts)) throw new Error("key_facts must be an array");
-  if (!draft.why_it_matters && !short) throw new Error("why_it_matters missing");
+  if (!draft.why_it_matters && whyBox) throw new Error("why_it_matters missing");
   const prose = [draft.title, draft.subtitle, draft.lede, draft.body, draft.why_it_matters].join("\n");
   if (arabicRatio(prose) < 0.85) throw new Error(`Arabic ratio too low: ${arabicRatio(prose).toFixed(2)}`);
   const words = wordCount(`${draft.lede}\n${draft.body}`);
@@ -441,7 +442,7 @@ export async function reviseArticle({ draft, sources, issues, log, wordLimits, k
   // test lesson's reviser answered «a link to the decision no story makes» with a section of the decision's terms, news
   // retold under a fourth subhead, and its mend computed a residual into the diagram, which the checks then dropped.
   const lessonNote = kind === "explainer"
-    ? "THIS IS A LESSON, NOT NEWS. Keep it one line of reasoning in at most three subheaded steps, with this week's event in ONE closing paragraph under no subhead of its own. When a problem says a link to the event is unsupported, that paragraph says only what the stories say of the event, in the lesson's terms; never answer it with the event's terms, dates or exemptions told for their own sake, which is the news retold. Every value in the worked example and the diagram is one the stories print, never one you computed (a residual, a total): the site computes the example's result and the diagram's difference. The text may say the example's result in words once; it shows no other arithmetic of your own.\n\n"
+    ? "THIS IS A STORY THAT ANSWERS ITS HEADLINE, NOT NEWS. The headline stays as it is (the page keeps it): when a problem says the piece does not answer it, change the piece, never the question. Keep the lede a puzzle the piece answers; the steps in the order of the reader's questions, at most three subheads, each step's first sentence picking up the question the one before left open; and the last paragraph, under no subhead of its own, the answer to the headline and what it means for this week's event. When a problem says a link to the event is unsupported, that paragraph says only what the stories say of the event; never answer it with the event's terms, dates or exemptions told for their own sake, which is the news retold. why_it_matters stays empty: an explainer prints no box. The draft's lessonPlan field is the researcher's plan, made before writing: keep to its path, and what it leaves out stays out, even where adding it would answer a problem more easily. Every value in the worked example and the diagram is one the stories print, never one you computed (a residual, a total): the site computes the example's result and the diagram's difference. Each keeps its \"section\", the step it prints in, unless that step moved. The text may say the example's result in words once; it shows no other arithmetic of your own.\n\n"
     : "";
   const user = `You previously wrote this ${short ? "short story" : "article"} for خازندار:
 ${JSON.stringify(shown, null, 2)}
@@ -467,7 +468,7 @@ Return the complete corrected ${short ? "story" : "article"} as one JSON object 
     validate: (d) => {
       ensureTags(d, draft.tags);
       if (short) return validateDraft(d, { ...SHORT_WORDS, short: true });
-      validateDraft(d, wordLimits ?? { minWords: newsFloor(notes) });
+      validateDraft(d, { ...(wordLimits ?? { minWords: newsFloor(notes) }), whyBox: kind !== "explainer" });
       if (news) validateWhyBasis(d, sources);
       // A reading's revision keeps every author it was written with (missingAuthors, below).
       const dropped = paper && notes?.authors ? missingAuthors(d, notes.authors.map((a) => a.en)) : [];
@@ -512,7 +513,8 @@ export function normalizeDraft(d, { kind = "news" } = {}) {
     lede: String(d.lede ?? "").trim(),
     body: String(d.body ?? "").trim(),
     keyFacts,
-    whyItMatters: String(d.why_it_matters ?? "").trim(),
+    // An explainer ends on its own answer and prints no box (2026-11-08): one a model still writes is dropped.
+    whyItMatters: kind === "explainer" ? "" : String(d.why_it_matters ?? "").trim(),
     whyBasis: (Array.isArray(d.why_basis ?? d.whyBasis) ? (d.why_basis ?? d.whyBasis) : []).map((p) => ({ fact: String(p?.fact ?? "").trim(), source: Number(p?.source) })).filter((p) => p.fact && Number.isInteger(p.source) && p.source > 0).slice(0, 4),
     tags: [],
     regions: [],
@@ -636,13 +638,13 @@ const HUB_IMAGE_QUERIES = `"image_queries": ["2-3 short English search terms (2-
 
 const EXPLAINER_SCHEMA = `{
   "title": "Arabic title: the reader's question itself, ending with «؟» (30-85 chars), in the everyday words of someone who has just read the news; it may carry the news fact or its figure first, as the wires title their explainers («النفط فوق 100 دولار، فلماذا لم يرتفع أكثر؟»); never a term the piece has to teach (unless the news headline already used it), never a statement, never a colon hinge (the owner, 2026-09-24 and 2026-10-23)",
-  "subtitle": "Arabic dek: the answer, in one sentence (max 160 chars), as a statement of its own, never a reply to the headline: no opening «لا،»، «نعم،»، «الجواب:» (2026-10-30: «لا، فالرقم الأمريكي معدل سنوي…» under a question read as a chat answer; write «الرقم الأمريكي معدل سنوي يعادل نحو 0.8% في الربع…»), and never the lede's own sentence; never what the piece does («يشرح…»، «نوضح…»), never a list of factors; what the answer IS, never a contrast with what it is not («…، لا مقدار…»)",
+  "subtitle": "Arabic dek: where the answer lies, in one plain sentence (max 160 chars), the short answer without the figures the piece works out; a statement of its own, never a reply to the headline: no opening «لا،»، «نعم،»، «الجواب:» (2026-10-30: «لا، فالرقم الأمريكي معدل سنوي…» under a question read as a chat answer; write «الرقم الأمريكي معدل سنوي يعادل نحو 0.8% في الربع…»), and never the lede's own sentence; never what the piece does («يشرح…»، «نوضح…»), never a list of factors; what the answer IS, never a contrast with what it is not («…، لا مقدار…»)",
   "slug": "english-kebab-case-slug",
-  "lede": "2-3 sentences, under 60 words: the fact from the stories that raised the question, with its figure and its day or date as the story gives them, then the answer in plain words; never a definition («X هو…»، «يُقصد بـ…»، «يطلق الاقتصاديون على…»)",
-  "body": "450-700 words in Markdown after the lede: the answer developed as one line of reasoning in three or four steps, deeper into the same question (how the thing works, why the figure reads as it does, what would change the answer), carried by the stories' real figures, each paragraph following from the one before. At most three '## ' subheads. A subhead is a short sentence the reader understands BEFORE he reads its section: a subject and its verb, in words he already has («السوق تحسب موعد إعادة البراميل»، «سعر الشحن صنع قفزة البحري»); never nouns stacked without a verb that he has to decode, and never a thing the section is there to introduce (survey «answers» named before the survey has been told). The owner, 2026-10-31, on «عتبة 50 نقطة توازن بين الإجابات», copied from an example this schema itself gave: 'weird and confusing'. At most ONE subhead a question: every subhead a question turns the piece into a list of questions and answers, which all 32 explainers of October had become (the owner, 2026-10-31). A short piece needs two subheads or none. No label subheads (تعريف، مثال توضيحي، أخطاء شائعة، ما يجب متابعته), no closing list of indicators, no recap. No bullet lists.",
+  "lede": "2-3 sentences, under 60 words: the fact from the stories that raised the question, with its figure and its day or date as the story gives them, then the puzzle it leaves the reader with (what does not seem to add up, or what the figure does not say on its face); it opens the question and leaves the answer to the piece; never a definition («X هو…»، «يُقصد بـ…»، «يطلق الاقتصاديون على…»)",
+  "body": "450-700 words in Markdown after the lede: the way from the puzzle to its answer, told as a story in the order the reader's questions come, each step answering the question the step before left open, carried by the stories' real figures; its last paragraph answers the headline's question. At most three '## ' subheads. A subhead is a short sentence the reader understands BEFORE he reads its section: a subject and its verb, in words he already has («السوق تحسب موعد إعادة البراميل»، «سعر الشحن صنع قفزة البحري»); never nouns stacked without a verb that he has to decode, and never a thing the section is there to introduce (survey «answers» named before the survey has been told). The owner, 2026-10-31, on «عتبة 50 نقطة توازن بين الإجابات», copied from an example this schema itself gave: 'weird and confusing'. At most ONE subhead a question: every subhead a question turns the piece into a list of questions and answers, which all 32 explainers of October had become (the owner, 2026-10-31). A short piece needs two subheads or none. No label subheads (تعريف، مثال توضيحي، أخطاء شائعة، ما يجب متابعته), no closing list of indicators, no recap. No bullet lists.",
   "key_facts": [{"label": "a term the piece uses", "value": "its meaning in one short line, never a figure, a forecast or a fact of the news"}],
   ${LESSON_SCHEMA},
-  "why_it_matters": "One Arabic paragraph (40-80 words): what the answer changes for the reader's money, prices or country, or for how he reads the next news of this kind, from the stories' facts; not a summary of the piece; never address the reader, never open with «يعكس/يمثل/يُعدّ»",
+  "why_it_matters": "", always empty: the piece ends on its own answer, and the page prints no «لماذا يهمّ» box under an explainer,
   "tags": ["3-5 Arabic tags"],
   "regions": ["1-2 region names, only from: ${REGION_NAMES}"],
   ${HUB_IMAGE_QUERIES}
@@ -650,36 +652,80 @@ const EXPLAINER_SCHEMA = `{
 The key facts print under the heading «مفاهيم أساسية»: three to five terms of the field the piece uses, each defined in one line as a textbook defines it; an example stays in the text.`;
 
 /**
+ * The researcher's work before an explainer is written (the owner, 2026-11-08, of a test piece that went from the
+ * reserves to gold's revaluation without warning: "you have to think like a researcher when writing this section, or
+ * think like pop-science writer who simplifies for audience but still true to the subject and science"). The brief had
+ * grown into a list of rules the writer met paragraph by paragraph; one of them, meant to keep a revaluation out of the
+ * flows figure, said it "stays in the text", and the writer put it there. A science writer first finds the one insight,
+ * the picture that carries it, the reader's questions on the way to it and what to leave out, and only then writes. One
+ * call; the plan travels with the draft (`lessonPlan`, kept through revision by keepLessonParts) and is never published.
+ */
+async function planExplainer({ topic, relatedArticles, log }) {
+  const user = `Plan an explainer for خازندار before anyone writes it. Work as a researcher who knows this field and its literature, and as a popular-science writer who makes it clear to anyone without making it less true.
+THE QUESTION (it will be the headline, and stays): ${topic.question_ar}
+THE EDITOR'S SHORT ANSWER (correct it where the material or the field says otherwise): ${topic.answer_ar ?? ""}
+THE CONCEPT IT TURNS ON: ${topic.concept_ar} (${topic.concept_en})
+
+MATERIAL: the خازندار stories that raised the question. Every fact of these weeks in the plan comes from them, with its figure exactly as they give it.
+${relatedArticles.map(relatedBlock).join("\n\n")}
+
+Work it out in this order:
+1. THE INSIGHT: what someone who knows the field sees at once and the reader does not, the one idea that resolves the question, in one plain sentence.
+2. THE PICTURE: one everyday situation that works the way the mechanism works, so the reader can see it, and where it stops matching, so it never misleads.
+3. THE PATH: two or three questions a curious reader asks on the way from the puzzle to the insight (the page has three steps at most), in the order they arise, each raised by the answer to the one before. For each: the bridge, the sentence that turns what the reader has just learned into this question, so no step arrives without the reader wanting it; its answer in one sentence; the term of the field it needs, if any (Arabic and English), with the relation that defines it or the standard measure and its limit; and the facts from the material it needs, copied with their figures. A question that does not lead to the insight is not on the path.
+4. THE NUMBERS: the one calculation on the stories' figures that a specialist would compute to answer the question (a ratio, a share, a change), never a breakdown the figure or the text already shows; and the one figure (supply and demand, money flowing in and out, or a chain of causes) that shows the mechanism, if one does.
+5. LEFT OUT: the facts in the material that are true and tempting but not on the path, each named. A good explainer is decided as much by what it leaves out.
+6. THE ENDING: the answer to the question in one plain sentence, and which part of the mechanism this week's event acts on, in the stories' facts only.
+7. THE SPECIALIST'S CHECK: anything above a specialist would call wrong, too simple to be true, or not what the field's own measures say, and the correct statement.
+Return one JSON object, in Arabic except a term's English: {"insight": "...", "picture": {"situation": "...", "limit": "..."}, "path": [{"bridge": "...", "question": "...", "answer": "...", "term": "Arabic (English): its relation or measure, or null", "facts": ["..."]}], "calculation": "...", "figure": "...", "left_out": ["..."], "ending": "...", "checks": ["..."]}`;
+  const { data } = await chat({
+    role: "planner",
+    system: WRITER_SYSTEM,
+    user,
+    temperature: 0.3,
+    maxTokens: 6000,
+    log,
+    validate: (d) => {
+      if (!d?.insight || !Array.isArray(d.path) || d.path.length < 2 || d.path.length > 3) throw new Error("plan needs an insight and a path of two or three questions, each with its bridge");
+    },
+  });
+  log(`explainer plan: ${String(data.insight).slice(0, 160)}`);
+  for (const [i, step] of data.path.entries()) log(`  plan step ${i + 1}: ${String(step?.bridge ?? "").slice(0, 120)} → ${String(step?.question ?? "").slice(0, 120)}`);
+  for (const item of data.left_out ?? []) log(`  plan leaves out: ${String(item).slice(0, 120)}`);
+  return data;
+}
+
+/**
  * Writes the answer to one question readers of this week's news are asking, opened on the stories that raised it
  * (2026-10-23). Every current fact comes from those stories; standard definitions and mechanisms need no source.
  * Until then the explainer was "evergreen" and forbidden any news: the owner read four of them as machine writing.
  */
 export async function writeExplainer({ topic, relatedArticles, log, today = new Date() }) {
+  // The researcher's plan first; a plan that fails leaves the writer to plan as it writes.
+  const plan = await planExplainer({ topic, relatedArticles, log }).catch((error) => {
+    log(`explainer plan failed: ${String(error.message).slice(0, 140)}`);
+    return null;
+  });
   const user = `Write an explainer for خازندار: the answer to one question readers of this week's news are asking.
 THE QUESTION: ${topic.question_ar}
 THE SHORT ANSWER (the editor's; correct it where the material or standard economics says otherwise): ${topic.answer_ar ?? ""}
 THE CONCEPT IT TURNS ON: ${topic.concept_ar} (${topic.concept_en})
 Today (UTC): ${new Date(today).toISOString().slice(0, 10)}
-
+${plan ? `\nTHE PLAN, worked out by a researcher before writing (write from it):\n${JSON.stringify(plan, null, 1)}\n` : ""}
 MATERIAL: the خازندار stories that raised the question, the first being the one to open on. Every fact of these weeks you state (a price, a figure, a date, a decision, a name) must come from them, attributed as they attribute it.
 ${relatedArticles.map(relatedBlock).join("\n\n")}
 
 HOW TO WRITE IT
-- A UNIVERSITY LESSON, NOT NEWS (the owner, 2026-11-08: the section should read "like economics textbooks with graphs, mathematics and everything (but simplified for everyone to understand)", then "i would make such articles bachelor and master degree students level so it dives deeper, also simplifying should be done professionally like a professor would do", and "it should be for layperson too, so you have to strike a delicate balance"). TWO READERS, ONE LESSON: a reader with no economics follows every sentence, and a student of economics, bachelor's taken to master's where the subject needs it, finds it worth reading and nothing a specialist would call wrong. Write as a good professor writes for the public: each idea first in plain words, then named with the field's term and stated as a relation, its formula in words, with the standard measures a specialist would cite, their assumptions and limits, each explained as plainly; this week's real numbers are the case study. Depth comes from the reasoning and the measures, never from jargon: one new term in a sentence at most, and a sentence the layperson cannot follow is rewritten, not cut. Never a retelling of the news. The stories give the question and the numbers; the text teaches the idea. "Lesson", "student" and "textbook" describe this brief, never the page: the text speaks to its reader and never names a student, a course, a lesson or a textbook (the third test lesson of 2026-11-08 spoke of its reader as a student).
-- THE LESSON'S ORDER, at most three subheaded steps: first the idea and its terms (what the thing is, what it is for, how the field defines and measures it); then how it works, step by step, its formal relation and the diagram; then the worked example on the stories' figures, what would change the answer (a what-if on the same figures) and the limits of the measure; then, in ONE short closing paragraph under no subhead of its own, what the lesson says about this week's event: which part of the mechanism the event acts on and how large that part is beside the lesson's figures, in the stories' own facts, never a motive, an aim or an effect the stories do not state. The event's own details (who decided what, its terms, exemptions, dates, the sector's other news) appear only where a step needs them, never in a section of their own: a section on a decision's terms is news, and the first test lesson of 2026-11-08 spent two of its five sections on the cabinet plan's terms.
-- THE WORKED EXAMPLE ("worked"): the one calculation the answer rests on, as a textbook works an example: the measure the lesson teaches (a ratio, a share, a change, a decomposition), never a difference the text or the diagram already shows (the second test lesson of 2026-11-08 worked 57.5 − 57.348 beside a figure of the same 152 million); the formula in words, then the stories' own figures, exactly as the material gives them, one unit for a sum or a difference. Code computes the result and the page prints the working, so the body says the result in words once at most and never shows other arithmetic. When the stories give no figures for the mechanism, small round numbers with "hypothetical": true, which the page labels as an illustration. null when no calculation is the answer.
-- THE DIAGRAM ("diagram"): the one textbook figure that shows the mechanism, drawn by the site from your labels: "supply_demand" when a price moves because buyers or sellers changed (name the axes and the curves, and say which curve shifts which way); "flows" when money comes into something and goes out of it (what flows in and what flows out, each value a figure the stories print, never one you computed, such as a residual or a balancing item: the site computes the difference, and an item the stories give only as a total stays in the text; flows are transactions, and a change in a price or an exchange rate, a revaluation, is no flow: it stays in the text); "chain" when one change leads to the next (two to five short steps, each a subject and its verb). Every label is in the reader's words. null when none of the three shows the mechanism: a wrong figure teaches the wrong idea.
-- Open on the news, never on a definition: the fact from the first story, with its figure and its day or date, then the answer in a sentence. The headline is the question as the reader would ask it; the dek is the answer.
-- THE FIELD'S TERMS, TAUGHT. Use the terms an economics student must learn, in the Arabic that Arab universities and central banks use, each defined precisely where it first appears, with its English in parentheses once; the intuition comes first, with people and things doing something (managers answer a monthly survey; a factory reports fewer orders than last month), and the term then names what the reader has just understood and is used from then on. A specialist finds nothing wrong in any sentence. (Until 2026-11-08 the term came only "in passing", for a reader with no economics, and the owner found the lessons too shallow.) Every sentence has a concrete subject and a verb: never a chain of abstract nouns («التحسن أوسع انتشاراً من التراجع»، «مدى اتساع الاتجاه بين المصانع»، «قيمة المؤشر بوصفه إنذاراً مبكراً تأتي من سرعته وطبيعة سؤاله»), which is how the China factory explainer read as robotic (the owner, 2026-10-31).
-- The stories' real figures carry the explanation wherever they exist. A mechanism the stories give no figures for may be shown ONCE with a small round-number picture said to be one («لو سُئل 100 مصنع، فقال 40 منها إن طلبياته زادت و40 إنها نقصت…»): the clearest way to make a mechanism click for a student meeting it for the first time. Never an invented currency unit («وحدات نقدية»), never a made-up scenario standing in for figures the stories give, and when arithmetic on the stories' own figures is the answer, say plainly where it becomes a hypothesis («لو مرّر التاجر الزيادة كاملة…»).
-- ONE LINE OF REASONING. Before writing, plan the answer as three or four steps, each needing the one before; the piece is those steps in that order and nothing else. A true and interesting fact that is not a step is left out, however well it fits the subject (the China factory explainer of 2026-10-31 also explained the inverted delivery-times index and the day the figure comes out, about eleven ideas in 494 words, and the owner found "too many contexts in one article"). Each paragraph opens from what the one before established and takes it one step further, saying how it follows («ولهذا…»، «وهنا يظهر سبب…»): the reader never wonders why a paragraph comes where it does.
-- Standard definitions and mechanisms are stated directly and briefly, without a source; anything about these weeks comes from the material. A term is explained once, where the reader first needs it. A definition or a method is stated as the figure is really built, or in words general enough to stay true: a composite index combines its parts with their weights and is never reduced to one count (China's official factory index weighs five sub-indices).
-- Answer the question in the first two paragraphs, then go deeper into the same question: how the thing works, why this figure reads as it does, what would change the answer. Stop when the answer is complete: the last paragraph is the last thing the reader needs, or the next dated decision or release the stories name; never a recap, never a list of indicators to watch, never advice.
-- NEVER RETELL THE STORY. The reader has read it, and it is a link away. A story's fact enters only where it carries the explanation: the figure the question is about, the number that shows the mechanism, each once. Its causes, reactions, quotes, sector details, forecasts and outlook stay in the story; the China factory explainer of 2026-10-31 retold its news story of 35 minutes before, Reuters' forecast, the holiday spending, the analyst's words and the GDP figures, under questions of its own, and readers met the same story twice. When the question cannot be answered without them, it is not an explainer's question.
-- SAY WHAT A THING IS. A sentence about what something is not, or a turn «لا X، بل Y» / «…، لا Y», appears once in a piece at most, where the reader would otherwise go wrong, and never in the dek; the rest says what it is («يقيس المؤشر انتشار التراجع بين المصانع»). A piece built on «لا يقيس… لا يعني… لا أن…» reads as a machine (the same explainer had seven).
-- One idea is said once: a point the lede made is developed, never restated in other words further down.
-- One story's facts never become another's: a figure stays with its own event and date.
-LENGTH: 500-750 words in the lede and body together: deeper into the one line of reasoning (the formal relation, the measures, their limits), never wider into other subjects, and short enough for a layperson to finish; a longer piece was filling itself with what was not a step.
+- Explain it as the best popular-science writers explain economics: a researcher's understanding, told as a story anyone can follow, and true enough that a specialist finds nothing wrong (the owner, 2026-11-08: "think like a researcher when writing this section, or think like pop-science writer who simplifies for audience but still true to the subject and science"; earlier the same day: "like economics textbooks with graphs, mathematics and everything (but simplified for everyone to understand)", "bachelor and master degree students level", "it should be for layperson too, so you have to strike a delicate balance"). A reader with no economics follows every sentence; a student of the field finds it worth reading.
+- ${plan ? "WRITE FROM THE PLAN" : "PLAN BEFORE WRITING, as a researcher would: the one insight that resolves the question, one everyday picture that works like the mechanism, the path of three or four questions from the puzzle to the insight, each raised by the answer to the one before, and what to leave out. Then write"}: the path is the body, in its order, one subheaded step per question, each step opening with its bridge, so the reader asks the question before its answer arrives, and every paragraph inside a step leading into the next; the picture carries the mechanism where it helps, and its limit is said once; what the plan leaves out stays out, however true; the ending is the last paragraph, under no subhead of its own: the answer to the headline with the worked example's result, and which part of the mechanism this week's event acts on, in the stories' facts only, never a motive or an effect they do not state.
+- THE HEADLINE is THE QUESTION as the reader would ask it: polish its words, never change what it asks; it stays through every revision. THE LEDE: the fact from the first story, with its figure and its day or date, then the puzzle it leaves; never the answer, never a definition. THE DEK: where the answer lies, in one plain sentence.
+- TERMS arrive in the step that needs them: the thing first in plain words, with people and things doing something; then its name in the Arabic that Arab universities and central banks use, with its English in parentheses once; then, where the step needs it, the relation that defines it as a formula in words, or the standard measure with its limit. One new term in a sentence at most. Every sentence has a concrete subject and a verb, never a chain of abstract nouns.
+- FIGURES: only the stories' facts a step needs, exactly as they give them; a round-number illustration once at most, said to be one; never an invented currency unit. The text says the worked example's result in words once and shows no other arithmetic.
+- THE WORKED EXAMPLE ("worked"): the one calculation the insight rests on, the measure the piece teaches (a ratio, a share, a change, a decomposition), never a difference the text or the figure already shows; the stories' figures exactly as given; "hypothetical" only for round numbers made up where the stories give none; null when no calculation is the answer. Its "section" is the step it belongs to.
+- THE FIGURE ("diagram"): the one figure that shows the mechanism: "supply_demand" (say which curve shifts which way), "flows" (each flow money that really moved, with the figure the stories print, never a residual or a total you computed: the site computes the difference), or "chain" (two to five steps, each a subject and its verb); labels in the reader's words; null when none fits. Its "section" is the step it shows.
+- NEVER RETELL the news story: the reader has read it, and its facts enter only where a step needs them.
+- House rules: a subhead is a short sentence with a verb, in words the reader already has, at most one a question; «لا X، بل Y» once at most and never in the dek; a definition is stated as the measure is really built; one idea is said once; no recap, no list of indicators to watch, no advice, no bullet lists; the text never names a student, a course, a lesson or a textbook.
+LENGTH: 500-750 words in the lede and body together.
 Return one JSON object exactly in this shape:
 ${EXPLAINER_SCHEMA}`;
   const { data, model } = await chat({
@@ -692,10 +738,14 @@ ${EXPLAINER_SCHEMA}`;
     log,
     validate: (d) => {
       ensureTags(d, [topic.concept_ar]);
-      validateDraft(d);
+      validateDraft(d, { whyBox: false });
     },
   });
-  return { draft: normalizeDraft(data, { kind: "explainer" }), model };
+  const draft = normalizeDraft(data, { kind: "explainer" });
+  // The plan travels with the draft (never published: serializeArticle keeps a fixed list of fields), so the reviser
+  // keeps to its path and leaves out what it leaves out.
+  if (plan) draft.lessonPlan = plan;
+  return { draft, model };
 }
 
 /** Word bounds of a house analysis (lede + body) for validateDraft: the brief asks for 600-900; the validator tolerates a margin.

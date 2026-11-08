@@ -40,6 +40,11 @@ const decimalsOf = (n) => {
   return i < 0 ? 0 : s.length - i - 1;
 };
 const round = (n, d) => Number(n.toFixed(d));
+/** The step a part prints in (the page sets it after that step's first paragraph), or null: the page's default place. */
+const sectionOf = (v) => {
+  const n = num(v);
+  return Number.isInteger(n) && n >= 1 && n <= 4 ? n : null;
+};
 
 /** The operations a worked example may carry: how many terms, the sign printed between them, and the result. */
 export const WORKED_OPS = {
@@ -72,7 +77,7 @@ export function normalizeWorked(w) {
   const formula = text(w.formula, 200);
   const result = { label: text(w.result?.label, 80), unit: op.percent ? "%" : text(w.result?.unit ?? (op.sameUnit ? terms[0].unit : ""), 30), value: round(raw, decimals) };
   if (!title || !formula || !result.label) return null;
-  return { title, formula, op: w.op, terms, result, hypothetical };
+  return { title, formula, op: w.op, terms, result, hypothetical, section: sectionOf(w.section) };
 }
 
 const SHIFTS = new Set(["demand_up", "demand_down", "supply_up", "supply_down"]);
@@ -89,9 +94,10 @@ export function normalizeDiagram(d) {
   if (!d || typeof d !== "object") return null;
   const title = text(d.title, 120);
   const caption = text(d.caption, 220);
+  const section = sectionOf(d.section);
   if (!title) return null;
   if (d.type === "supply_demand") {
-    const fig = { type: "supply_demand", title, caption, price: text(d.price, 50), quantity: text(d.quantity, 50), supply: text(d.supply, 40), demand: text(d.demand, 40), shift: SHIFTS.has(d.shift) ? d.shift : null };
+    const fig = { type: "supply_demand", title, caption, section, price: text(d.price, 50), quantity: text(d.quantity, 50), supply: text(d.supply, 40), demand: text(d.demand, 40), shift: SHIFTS.has(d.shift) ? d.shift : null };
     return fig.price && fig.quantity && fig.supply && fig.demand && fig.shift ? fig : null;
   }
   if (d.type === "flows") {
@@ -102,11 +108,11 @@ export function normalizeDiagram(d) {
     if (!inflows.length || !outflows.length || !center) return null;
     const decimals = Math.min(2, Math.max(...[...inflows, ...outflows].map((f) => decimalsOf(f.value))));
     const net = round(inflows.reduce((s, f) => s + f.value, 0) - outflows.reduce((s, f) => s + f.value, 0), decimals);
-    return { type: "flows", title, caption, center, unit: text(d.unit, 30), inflows, outflows, net };
+    return { type: "flows", title, caption, section, center, unit: text(d.unit, 30), inflows, outflows, net };
   }
   if (d.type === "chain") {
     const steps = (Array.isArray(d.steps) ? d.steps : []).map((s) => text(s, 60)).filter(Boolean);
-    return steps.length >= 2 && steps.length <= 5 ? { type: "chain", title, caption, steps } : null;
+    return steps.length >= 2 && steps.length <= 5 ? { type: "chain", title, caption, section, steps } : null;
   }
   return null;
 }
@@ -144,10 +150,12 @@ export function keepLessonParts(before, after) {
   const out = { ...after };
   if (before?.worked && !after?.worked) out.worked = before.worked;
   if (before?.diagram && !after?.diagram) out.diagram = before.diagram;
+  // The researcher's plan (write.mjs planExplainer) travels with the draft; a reviser never answers with it.
+  if (before?.lessonPlan && !after?.lessonPlan) out.lessonPlan = before.lessonPlan;
   return out;
 }
 
 /** The schema lines the explainer writer fills (write.mjs EXPLAINER_SCHEMA). */
 // Every label is short (at most six words): the page prints them beside their figures, and a long one is cut (text()).
-export const LESSON_SCHEMA = `"worked": null or {"title": "Arabic: what the sum answers, as a short phrase", "formula": "Arabic: the formula in words, with = and the operation, as a textbook writes it («الربح = الإيرادات − التكاليف»)", "op": "difference" | "sum" | "ratio" | "share" | "change", "terms": [{"label": "Arabic, at most six words: what the figure is", "value": a number exactly as in the material, "unit": "Arabic unit"}], "result": {"label": "Arabic, at most six words: what the result is", "unit": "Arabic unit (for share and change it is %)"}, "hypothetical": false, which is true ONLY for small round numbers made up to illustrate; a what-if worked on the stories' real figures stays false},
-  "diagram": null or {"type": "supply_demand", "title": "Arabic: what the figure shows", "price": "Arabic: the vertical axis, the price of the thing traded", "quantity": "Arabic: the horizontal axis, its quantity", "supply": "Arabic name of the supply curve", "demand": "Arabic name of the demand curve", "shift": "demand_up" | "demand_down" | "supply_up" | "supply_down", "caption": "one Arabic sentence: what moves and what follows"} or {"type": "flows", "title": "...", "center": "Arabic: what the money flows into and out of", "inflows": [{"label": "Arabic", "value": number}], "outflows": [{"label": "Arabic", "value": number}], "unit": "Arabic unit", "caption": "..."} or {"type": "chain", "title": "...", "steps": ["2-5 short Arabic steps, cause to effect, each a subject and its verb"], "caption": "..."}`;
+export const LESSON_SCHEMA = `"worked": null or {"title": "Arabic: what the sum answers, as a short phrase", "formula": "Arabic: the formula in words, with = and the operation, as a textbook writes it («الربح = الإيرادات − التكاليف»)", "op": "difference" | "sum" | "ratio" | "share" | "change", "terms": [{"label": "Arabic, at most six words: what the figure is", "value": a number exactly as in the material, "unit": "Arabic unit"}], "result": {"label": "Arabic, at most six words: what the result is", "unit": "Arabic unit (for share and change it is %)"}, "hypothetical": false, which is true ONLY for small round numbers made up to illustrate; a what-if worked on the stories' real figures stays false, "section": the number of the subheaded step whose question it answers (1, 2 or 3)},
+  "diagram": null or {"type": "supply_demand", "title": "Arabic: what the figure shows", "price": "Arabic: the vertical axis, the price of the thing traded", "quantity": "Arabic: the horizontal axis, its quantity", "supply": "Arabic name of the supply curve", "demand": "Arabic name of the demand curve", "shift": "demand_up" | "demand_down" | "supply_up" | "supply_down", "caption": "one Arabic sentence: what moves and what follows"} or {"type": "flows", "title": "...", "center": "Arabic: what the money flows into and out of", "inflows": [{"label": "Arabic", "value": number}], "outflows": [{"label": "Arabic", "value": number}], "unit": "Arabic unit", "caption": "..."} or {"type": "chain", "title": "...", "steps": ["2-5 short Arabic steps, cause to effect, each a subject and its verb"], "caption": "..."}; each figure also carries "section": the number of the subheaded step it shows (1, 2 or 3)`;

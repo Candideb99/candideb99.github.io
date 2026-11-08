@@ -884,6 +884,12 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   const desk = await copyDeskPass(firstDraft, { kind: deskKind, sources: checkSources ?? [] });
   let draft = desk.draft;
   const deskModel = desk.model;
+  // An explainer's headline is the reader's question and the piece's spine: it stays through every revision and desk
+  // pass after the first (2026-11-08). A test piece's revision had swapped «إذا كان لدى مصر دولارات أكثر من أي وقت مضى،
+  // فلماذا تقتصد الحكومة فيها؟» for an abstract question its body then answered, and the owner found the body
+  // "disassociated from the headline".
+  const heldTitle = kind === "explainer" ? draft.title : null;
+  const keepTitle = (d) => (heldTitle && d ? { ...d, title: heldTitle } : d);
   // A reading's headline is held against the last four days' news too, never only against its own kind's.
   const newsTitles = (existing ?? []).filter((a) => a.kind === "news" && hoursSince(a.publishedAt) < 96).map((a) => a.title);
   const flags = { [kind]: true, newsTitles };
@@ -904,21 +910,25 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   let revised = false;
   let finalReview = review;
   let writerModel = models.writer;
+  // An explainer's figures off its researcher's plan (the checks' «خارج الخطة» warning, 2026-11-08) go to its revision
+  // and its mend as problems to cut; never a reason to reject the piece.
+  const offPlan = (c) => (kind === "explainer" ? c.warnings.filter((w) => w.startsWith("خارج الخطة")) : []);
   // The same gate as a news story: out untouched only on "publish" at 6 or more with clean checks.
-  const straightOut = review.verdict === "publish" && review.score >= 6 && checks.ok;
+  const straightOut = review.verdict === "publish" && review.score >= 6 && checks.ok && !offPlan(checks).length;
   if (!straightOut) {
-    const issues = [...checks.issues, ...review.issues];
+    const issues = [...checks.issues, ...offPlan(checks), ...review.issues];
     if (!issues.length) issues.push(`المحرر أعطى المسودة ${review.score}/10 (${review.verdict})${review.summary ? `: ${review.summary}` : ""}؛ راجع الدقة والعزو والعربية.`);
     const reviewed = draft;
     const revision = await reviseArticle({ draft, sources: checkSources, issues, log, wordLimits, kind, notes });
     // The desk reads the revised body, as a news story's (2026-10-24): it had read a hub piece's body only in the first
     // draft, so the text that went out was the reviser's and the mender's, never desked, in 40 of the 45 hub pieces then
     // published (the AI-agents reading: «مقيّمون بشريون»، «سقف أعلى»، «تجد الورقة» written after the desk had passed).
-    draft = (await copyDeskPass(revision.draft, { kind: deskKind, sources: checkSources ?? [] })).draft;
+    draft = keepTitle((await copyDeskPass(keepTitle(revision.draft), { kind: deskKind, sources: checkSources ?? [] })).draft);
     writerModel = `${writerModel} → ${revision.model}`;
     revised = true;
     checks = programmaticChecks(draft, checkSources, { ...flags, recentTitles });
-    ({ draft, checks } = await lastDeskPass(draft, checks, { sources: checkSources ?? [], kind: deskKind, recheck: (d) => programmaticChecks(d, checkSources, { ...flags, recentTitles }) }));
+    ({ draft, checks } = await lastDeskPass(draft, checks, { sources: checkSources ?? [], kind: deskKind, recheck: (d) => programmaticChecks(keepTitle(d), checkSources, { ...flags, recentTitles }) }));
+    draft = keepTitle(draft);
     if (!checks.ok) {
       entry.outcome = `rejected after revision: ${checks.issues.join(" | ")}`;
       report.push(entry);
@@ -935,27 +945,29 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
     // Passed, yet still "revise": the findings are mended before publication, as a news story's are. Until 2026-10-23
     // a hub piece went out as reviewed, and 10 of 12 analyses, 3 of 4 paper readings and the week's review carried the
     // faults their own last review named («يبقى خطأ واحد يحوّل توقع البنك المركزي…»، «فتحتاج إلى مراجعة قبل النشر»).
-    if (finalReview.verdict === "revise" && finalReview.issues.length) {
+    const mendIssues = [...(finalReview.verdict === "revise" ? finalReview.issues : []), ...offPlan(checks)];
+    if (mendIssues.length) {
       try {
-        const mend = await reviseArticle({ draft, sources: checkSources, issues: finalReview.issues, log, wordLimits, kind, notes, settled: issues });
+        const mend = await reviseArticle({ draft, sources: checkSources, issues: mendIssues, log, wordLimits, kind, notes, settled: issues });
         // As a news story's mend: a figure the revision took out does not come back (restoredFigures()).
         const revisedDraft = draft;
         const recheck = (d) => {
-          const c = programmaticChecks(d, checkSources, { ...flags, recentTitles });
-          const back = restoredFigures(reviewed, revisedDraft, d, finalReview.issues.join(" "));
+          const c = programmaticChecks(keepTitle(d), checkSources, { ...flags, recentTitles });
+          const back = restoredFigures(reviewed, revisedDraft, d, mendIssues.join(" "));
           return back.length ? { ...c, ok: false, issues: [...c.issues, `الإصلاح الأخير أعاد رقماً حذفته المراجعة: ${back.join("، ")}`] } : c;
         };
-        let mended = (await copyDeskPass(mend.draft, { kind: deskKind, sources: checkSources ?? [] })).draft;
+        let mended = keepTitle((await copyDeskPass(keepTitle(mend.draft), { kind: deskKind, sources: checkSources ?? [] })).draft);
         let mendedChecks = recheck(mended);
         // As a news story's mend (2026-10-28): one more desk pass before a mend is thrown away for the desk's fault.
         if (!mendedChecks.ok) ({ draft: mended, checks: mendedChecks } = await lastDeskPass(mended, mendedChecks, { sources: checkSources ?? [], kind: deskKind, recheck }));
+        mended = keepTitle(mended);
         if (mendedChecks.ok) {
           draft = mended;
           checks = mendedChecks;
           writerModel = `${writerModel} → ${mend.model}`;
-          entry.mendedAfterReview = finalReview.issues.length;
-          entry.mendIssues = finalReview.issues;
-          log(`mended ${kind} "${draft.title}": the second pass's ${finalReview.issues.length} finding(s) sent back once more`);
+          entry.mendedAfterReview = mendIssues.length;
+          entry.mendIssues = mendIssues;
+          log(`mended ${kind} "${draft.title}": the second pass's ${mendIssues.length} finding(s) sent back once more`);
         } else log(`mend refused by the checks (${mendedChecks.issues.map((i) => i.slice(0, 60)).join(" | ")}); the reviewed draft goes on`);
       } catch (error) {
         if (error.meta?.quota) throw error;

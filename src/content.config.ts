@@ -83,6 +83,8 @@ const worked = z
     terms: z.array(z.object({ label: z.string(), value: z.number(), unit: z.string().default("") })).min(2).max(6),
     result: z.object({ label: z.string(), value: z.number(), unit: z.string().default("") }),
     hypothetical: z.boolean().default(false),
+    // The step a part prints in, after that step's first paragraph (2026-11-08); without one, the page's default place.
+    section: z.number().int().min(1).max(4).nullable().optional(),
   })
   .optional();
 
@@ -93,6 +95,7 @@ const diagram = z
       type: z.literal("supply_demand"),
       title: z.string(),
       caption: z.string().default(""),
+      section: z.number().int().min(1).max(4).nullable().optional(),
       price: z.string(),
       quantity: z.string(),
       supply: z.string(),
@@ -103,6 +106,7 @@ const diagram = z
       type: z.literal("flows"),
       title: z.string(),
       caption: z.string().default(""),
+      section: z.number().int().min(1).max(4).nullable().optional(),
       center: z.string(),
       unit: z.string().default(""),
       inflows: z.array(flow).min(1).max(3),
@@ -113,6 +117,7 @@ const diagram = z
       type: z.literal("chain"),
       title: z.string(),
       caption: z.string().default(""),
+      section: z.number().int().min(1).max(4).nullable().optional(),
       steps: z.array(z.string()).min(2).max(5),
     }),
   ])

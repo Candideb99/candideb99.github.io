@@ -34,6 +34,7 @@ import { cleanTags } from "../pipeline/lib/tags.mjs";
 import { countriesNamed, groundedRegions, unplacedActors } from "../pipeline/lib/regions.mjs";
 import { styleIssues, bareNameInDek } from "../pipeline/lib/style.mjs";
 import { keepLessonParts, normalizeDiagram, normalizeWorked } from "../pipeline/lib/lesson.mjs";
+import { placeLessonParts } from "../src/lib/lesson-layout.mjs";
 import { fixNames, judgeRewrite } from "../pipeline/lib/copydesk.mjs";
 import { CUTTABLE, cutToSources, normalizeCritique, programmaticChecks } from "../pipeline/lib/verify.mjs";
 import { noveltyFault } from "../pipeline/lib/images.mjs";
@@ -755,6 +756,43 @@ if (spawnSync("git", ["--version"]).status === 0) {
   netSaid.diagram = { ...reservesFlows, caption: "فبقي فرق قدره 0.7 مليار دولار" };
   netSaid.body = "وبقي من التدفقات 0.7 مليار دولار أضيفت إلى الاحتياطي.";
   const netChecks = programmaticChecks(netSaid, reservesText, { minWords: 0, explainer: true });
+  // An explainer is a story that answers its headline (2026-11-08): each part prints in the step that uses them, right
+  // after that step's first paragraph, and the piece ends on its own answer, with no «لماذا يهمّ» box.
+  // The first test of «after the step's first paragraph» set a chain of foreigners selling treasury bills after a
+  // paragraph on stock and flow: each part now follows the paragraph sharing its words and figures.
+  const storyHtml = "<p>الليد.</p><h2 id=\"a\">أول</h2><p>الرصيد ما يملكه البنك في يوم واحد، والتدفق ما يدخل ويخرج.</p><p>زادت أرصدة العملات 768 مليون دولار.</p><p>باع الأجانب أذون الخزانة بنحو 3.5 مليار دولار، فضغطوا على النقد الأجنبي.</p><h2 id=\"b\">ثان</h2><p>بلغ عجز الحساب الجاري 22.5 مليار دولار.</p><p>لو توقفت التدفقات لاستهلك العجز خُمسي الاحتياطي.</p>";
+  const billsChain = { type: "chain", title: "كيف يضغط بيع الأجانب للأذون على النقد الأجنبي", caption: "باع الأجانب أذون الخزانة بنحو 3.5 مليار دولار.", steps: ["مستثمر أجنبي يبيع أذون الخزانة", "يشتري بالحصيلة دولارات"], section: 1 };
+  const deficitShare = { title: "ما يأخذه عجز سنة من الاحتياطي", formula: "الحصة = عجز الحساب الجاري ÷ صافي الاحتياطي × 100", op: "share", terms: [{ label: "عجز الحساب الجاري", value: 22.5 }, { label: "صافي الاحتياطي", value: 57.5 }], result: { label: "حصة العجز", value: 39.1 }, section: 2 };
+  const placed = placeLessonParts(storyHtml, { diagram: billsChain, worked: deficitShare });
+  const which = (p) => ("part" in p ? p.part : p.html.endsWith("الأجنبي.</p>") ? "bills" : p.html.endsWith("22.5 مليار دولار.</p>") ? "deficit" : "rest");
+  check(
+    "a figure and a worked example print after the paragraph that leads into each; a part nothing leads into keeps the default place",
+    [
+      placed?.map(which),
+      placeLessonParts(storyHtml, { diagram: { type: "chain", title: "شيء آخر تماماً", steps: ["كذا", "كذا"], section: null } }),
+      [normalizeDiagram({ type: "chain", title: "t", steps: ["أ", "ب"], section: 2 })?.section, normalizeWorked({ title: "t", formula: "f", op: "ratio", terms: [{ label: "a", value: 57.5 }, { label: "b", value: 22.5 }], result: { label: "r" }, section: 9 })?.section],
+    ],
+    [["bills", "diagram", "deficit", "worked", "rest"], null, [2, null]],
+  );
+  // An explainer keeps to its researcher's plan: a figure no step of the plan carries is sent back to be cut (two test
+  // pieces in a row told gold's fall in value, which their question did not need), while the plan's own figures and a
+  // «لو» illustration stay.
+  const offPlanDraft = lessonDraft();
+  offPlanDraft.lessonPlan = { insight: "الاحتياطي رصيد", path: [{ question: "س", answer: "ج", facts: ["عجز الحساب الجاري 22.5 مليار دولار", "تدفقات داخلة 23.2 مليار دولار"] }], ending: "خ" };
+  offPlanDraft.body = "بلغ العجز 22.5 مليار دولار، وغطته تدفقات بلغت 23.2 مليار دولار.\n\nوتراجعت قيمة الذهب 613 مليون دولار.\n\nلو باع مصنع 150 وحدة لربح أكثر.";
+  const offPlanChecks = programmaticChecks(offPlanDraft, [{ title: "احتياطي", text: "The deficit was 22.5 billion dollars and inflows 23.2 billion dollars; gold fell by 613 million dollars." }], { minWords: 0, explainer: true });
+  const offPlanWarning = offPlanChecks.warnings.find((w) => w.startsWith("خارج الخطة")) ?? "";
+  check("an explainer's figure no step of its plan carries is sent back; the plan's own figures and a «لو» illustration are not", [/613/.test(offPlanWarning), /22\.5|23\.2|150/.test(offPlanWarning)], [true, false]);
+  const noBox = { title: "لماذا يقتصد بلد احتياطيه قياسي في الدولار؟", subtitle: "د", slug: "s", lede: "ليد.", body: "كلمة ".repeat(260), tags: ["مصر"], key_facts: [], why_it_matters: "" };
+  let noBoxError = null;
+  try { validateDraft({ ...noBox }, { whyBox: false }); } catch (e) { noBoxError = e.message; }
+  let boxError = null;
+  try { validateDraft({ ...noBox }); } catch (e) { boxError = e.message; }
+  check(
+    "an explainer validates without «لماذا يهمّ» and prints none, while a news draft still needs one",
+    [noBoxError, boxError, normalizeDraft({ ...noBox, why_it_matters: "فقرة." }, { kind: "explainer" }).whyItMatters, normalizeDraft({ ...noBox, why_it_matters: "فقرة." }, { kind: "news" }).whyItMatters],
+    [null, "why_it_matters missing", "", "فقرة."],
+  );
   check(
     "a computed residual in a figure's caption drops the figure; the result code computed may be printed and said",
     [residualCaption.diagram, Boolean(netSaid.diagram), netChecks.issues.some((i) => i.includes("أرقام لا تظهر"))],
@@ -1047,6 +1085,10 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const draft = { ...base, keyFacts: [], whyItMatters: "", regions: [], chart: null, table: null };
   const md = (format) => serializeArticle({ draft, slug: base.slug, section: "companies", sources: [], image: null, models: {}, quality: {}, format });
   check("a short story is marked in its frontmatter, a developed report is not", [/\nformat: short\n/.test(md("short")), /\nformat:/.test(md("full"))], [true, false]);
+  // An explainer's researcher's plan (write.mjs planExplainer, 2026-11-08) rides with its draft and never reaches the page.
+  const planned = { ...draft, lessonPlan: { insight: "رؤية الباحث قبل الكتابة", path: [] } };
+  const plannedMd = serializeArticle({ draft: planned, slug: base.slug, section: "explainers", sources: [], image: null, models: {}, quality: {}, kind: "explainer" });
+  check("an explainer's plan travels with its draft through a revision and is never published", [keepLessonParts(planned, { title: "x" }).lessonPlan === planned.lessonPlan, /lessonPlan|رؤية الباحث/.test(plannedMd)], [true, false]);
   const trimmed = judgeRewrite(draft, { body: bodyOf(11) }, ["body"], { minWords: SHORT_WORDS.minWords });
   const cut = judgeRewrite(draft, { body: bodyOf(7) }, ["body"], { minWords: SHORT_WORDS.minWords });
   check("the desk may trim a short story to its own floor, never below it", [Boolean(trimmed.accepted.body), Boolean(cut.accepted.body)], [true, false]);

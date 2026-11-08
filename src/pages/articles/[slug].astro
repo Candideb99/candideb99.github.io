@@ -20,6 +20,7 @@ import { formatDate, formatHijri, formatTime, readingLabel, excerpt } from "@lib
 import { headline, isolateNumbers } from "@lib/bidi";
 import { cardSizes } from "@lib/wikimedia";
 import { safeHref } from "@lib/safe-url.mjs";
+import { placeLessonParts } from "@lib/lesson-layout.mjs";
 import site from "@data/site.json";
 
 export async function getStaticPaths() {
@@ -35,6 +36,10 @@ const sec = getSection(d.section);
 const isHub = d.kind === "explainer" || d.kind === "analysis" || d.kind === "paper" || d.kind === "weekly" || d.kind === "feature";
 /** An explainer reads as a simplified textbook lesson: figure, explanation, worked example, then the official data. */
 const lesson = d.kind === "explainer";
+// Its figure and worked example print after the paragraph that leads into each (lib/lesson-layout.mjs), cut into the
+// body's rendered HTML; a part nothing leads into keeps its default place, the figure before the text, the example after.
+const lessonPieces = lesson && article.rendered?.html ? placeLessonParts(article.rendered.html, { diagram: d.diagram, worked: d.worked }) : null;
+const placedInline = new Set((lessonPieces ?? []).flatMap((p) => ("part" in p ? [p.part] : [])));
 const description = d.subtitle || excerpt(d.lede, 160);
 const ogImage = d.image?.url ?? `/og/${d.slug}.png`;
 const more = related(article, all, 4);
@@ -186,11 +191,20 @@ const jsonLd = [articleLd, breadcrumbLd];
         {d.chart && !lesson && <Chart chart={d.chart} id="story-chart" />}
         {/* An explainer reads as a simplified textbook lesson (the owner, 2026-11-08): its figure under the answer, then
             the explanation, the worked example, and the official data. */}
-        {lesson && d.diagram && <Diagram diagram={d.diagram} />}
-        <div class="prose" data-body>
-          <Content />
-        </div>
-        {lesson && d.worked && <WorkedExample worked={d.worked} />}
+        {lesson && d.diagram && !placedInline.has("diagram") && <Diagram diagram={d.diagram} />}
+        {lessonPieces ? (
+          lessonPieces.map((piece) =>
+            "html" in piece ? <div class="prose" data-body set:html={piece.html} />
+            : piece.part === "diagram" && d.diagram ? <Diagram diagram={d.diagram} />
+            : piece.part === "worked" && d.worked ? <WorkedExample worked={d.worked} />
+            : null
+          )
+        ) : (
+          <div class="prose" data-body>
+            <Content />
+          </div>
+        )}
+        {lesson && d.worked && !placedInline.has("worked") && <WorkedExample worked={d.worked} />}
         {d.chart && lesson && <Chart chart={d.chart} id="story-chart" />}
         {more.length > 0 && (
           <aside class="also" data-also data-pagefind-ignore aria-labelledby="also-head">
@@ -265,11 +279,17 @@ const jsonLd = [articleLd, breadcrumbLd];
     // Move the "read also" line after the third paragraph of the body; without JavaScript it
     // stays where it was rendered, at the end of the text.
     (function () {
+      // An explainer's body is cut around its figure and worked example into several blocks: count across them all,
+      // and never come between a paragraph and the figure or example it leads into (the last paragraph of a block).
       var also = document.querySelector("[data-also]");
-      var body = document.querySelector("[data-body]");
-      if (!also || !body) return;
-      var paragraphs = body.querySelectorAll(":scope > p");
-      if (paragraphs.length >= 5) paragraphs[2].insertAdjacentElement("afterend", also);
+      var paragraphs = document.querySelectorAll("[data-body] > p");
+      if (!also || paragraphs.length < 5) return;
+      for (var i = 2; i < paragraphs.length - 1; i++) {
+        if (paragraphs[i].nextElementSibling) {
+          paragraphs[i].insertAdjacentElement("afterend", also);
+          return;
+        }
+      }
     })();
   </script>
 </Base>
