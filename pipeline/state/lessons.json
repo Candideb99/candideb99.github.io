@@ -241,10 +241,11 @@
     "ihc-third-quarter-profit-falls-third-0a92ce:180b81b3",
     "fao-food-price-index-october-2026-86a80b:f5ff02c7",
     "us-presses-china-busan-deal-rare-earths-farm-purchases-dcf97b:d8c855a7",
-    "sp-500-biggest-weekly-loss-ai-midterms-f9fb82:43da44aa"
+    "sp-500-biggest-weekly-loss-ai-midterms-f9fb82:43da44aa",
+    "egypt-sisi-orders-strategic-stockpile-study-c53757:16a38807"
   ],
-  "version": 57,
-  "updatedAt": "2026-11-07T13:14:26.888Z",
+  "version": 58,
+  "updatedAt": "2026-11-08T10:30:05.684Z",
   "lessons": [
     {
       "id": "L1",
@@ -414,11 +415,12 @@
         "ecb-raises-rates-2-5-percent-second-hike-2026-e88f15:976fa682",
         "saudi-east-west-pipeline-flows-resume-411ecd:a01587d2",
         "google-finland-13-billion-ai-nuclear-54b058:60c19b40",
-        "google-finland-13-billion-ai-nuclear-54b058:6bb512b5"
+        "google-finland-13-billion-ai-nuclear-54b058:6bb512b5",
+        "egypt-sisi-orders-strategic-stockpile-study-c53757:16a38807"
       ],
-      "seen": 22,
+      "seen": 23,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-09-30T12:51:35.701Z",
+      "lastSeen": "2026-11-08T10:30:05.684Z",
       "status": "active",
       "previous": [
         "Translate financial terms and tenors exactly. The 10-year Treasury is سندات الخزانة لأجل 10 سنوات, not 'more than ten years'. A nominal yield is not 'actual'. Open interest is العقود/المراكز المفتوحة, not interest. Add no descriptor the source lacks."
@@ -1263,6 +1265,13 @@
       "mistakes": 1,
       "applied": [
         "reinforce L1 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-11-08T10:30:05.684Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L3 (+1; reworded at most once a week)"
       ]
     }
   ],

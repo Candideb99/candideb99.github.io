@@ -5837,16 +5837,16 @@
       "title": "البنك المركزي الصيني يعزز مشترياته من الذهب"
     },
     "795447921a5c8197": {
-      "at": "2026-11-07T13:35:15.825Z",
+      "at": "2026-11-08T10:41:06.769Z",
       "decision": "rejected",
       "title": "إنتاج العراق من النفط يتجاوز 5 ملايين برميل يومياً",
-      "strikes": 1
+      "strikes": 2
     },
     "b6aacda09b5cde4e": {
-      "at": "2026-11-07T13:35:15.825Z",
+      "at": "2026-11-08T10:41:06.769Z",
       "decision": "rejected",
       "title": "وزير النفط العراقي: مشاورات مع أوبك لرفع سقف تصدير النفط",
-      "strikes": 1
+      "strikes": 2
     },
     "8d7b1f70ca4dc398": {
       "at": "2026-11-07T13:45:42.602Z",
@@ -6153,6 +6153,48 @@
       "decision": "published",
       "slug": "egypt-sisi-orders-strategic-stockpile-study-c53757",
       "title": "Al-Sisi orders study of strategic emergency stockpile, completion of national crisis database"
+    },
+    "3adec17511a303c9": {
+      "at": "2026-11-08T10:31:02.937Z",
+      "decision": "rejected",
+      "title": "البحرين: تكامل شبكات النقل الخليجي ركيزة لتعزيز الأمن الاقتصادي وسلاسل الإمداد",
+      "strikes": 1
+    },
+    "08c59622cfa94f15": {
+      "at": "2026-11-08T10:31:02.937Z",
+      "decision": "rejected",
+      "title": "مجلس التعاون: اتفاقية سكة الحديد تؤسس إطاراً مشتركاً لتنفيذ المشروع وتشغيله",
+      "strikes": 1
+    },
+    "a1b862ab02686343": {
+      "at": "2026-11-08T10:51:30.455Z",
+      "decision": "rejected",
+      "title": "جولة في أخبار الشركات السعودية: أرباح \"أكوا\" تتجاوز التوقعات و\"أديس\" تفوز بعقود في الهند",
+      "strikes": 1
+    },
+    "2a24f547886c3e48": {
+      "at": "2026-11-08T10:51:30.455Z",
+      "decision": "rejected",
+      "title": "\"أديس\" تفوز بعقدين في الهند بـ 440 مليون ريال لتشغيل منصتين بحريتين",
+      "strikes": 1
+    },
+    "792fd9ae445a4885": {
+      "at": "2026-11-08T10:51:34.783Z",
+      "decision": "rejected",
+      "title": "الصين تتصدر استثمارات الطاقة عالمياً بـ940 مليار دولار في 2026",
+      "strikes": 1
+    },
+    "ad25358cfef59c80": {
+      "at": "2026-11-08T10:51:34.783Z",
+      "decision": "rejected",
+      "title": "China Set to Lead World in Energy Investment in 2026, CCTV Says",
+      "strikes": 1
+    },
+    "2d7e15b2a20ebe14": {
+      "at": "2026-11-08T10:51:34.783Z",
+      "decision": "rejected",
+      "title": "Çin'de 2026 enerjide rekor yatırım yılı olacak",
+      "strikes": 1
     }
   }
 }

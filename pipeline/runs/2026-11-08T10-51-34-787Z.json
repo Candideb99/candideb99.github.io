@@ -1,0 +1,104 @@
+{
+  "mode": "news",
+  "startedAt": "2026-11-08T10:30:16.248Z",
+  "durationSec": 1279,
+  "published": 0,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "اتفاقية سكة الحديد الخليجية تضع إطاراً مشتركاً لتنفيذ المشروع وتشغيله",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://aawsat.com/node/5338870",
+        "https://aawsat.com/node/5338866"
+      ],
+      "outcome": "skipped: a single independent non-official reporting origin (needs a second independently reported outlet, or an official primary source)"
+    },
+    {
+      "headline": "العراق ينتج أكثر من 5 ملايين برميل يومياً ويتشاور مع أوبك لرفع سقف التصدير",
+      "section": "energy",
+      "outcome": "error: Model (claude/claude-opus-5-5) failed for role writer:"
+    },
+    {
+      "headline": "أديس تفوز بعقدين في الهند بقيمة 440 مليون ريال لتشغيل منصتين بحريتين",
+      "section": "companies",
+      "outcome": "error: Model (claude/claude-opus-5-5) failed for role writer:"
+    },
+    {
+      "headline": "الصين تتصدر استثمارات الطاقة عالمياً بـ940 مليار دولار في 2026",
+      "section": "energy",
+      "importance": 6,
+      "sources": [
+        "https://asharqbusiness.com/power/154985/%D8%A7%D9%84%D8%B5%D9%8A%D9%86-%D8%AA%D8%AA%D8%B5%D8%AF%D8%B1-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85-%D9%81%D9%8A-%D8%A7%D8%B3%D8%AA%D8%AB%D9%85%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%B7%D8%A7%D9%82%D8%A9-%D8%A7%D9%84%D9%85%D8%AA%D9%88%D9%82%D8%B9%D8%A9-%D8%AE%D9%84%D8%A7%D9%84-2026/",
+        "https://www.bloomberg.com/news/articles/2026-11-08/china-set-to-lead-world-in-energy-investment-in-2026-cctv-says",
+        "https://www.bloomberght.com/cin-de-2026-enerjide-rekor-yatirim-yili-olacak-3793884"
+      ],
+      "outcome": "skipped: a single independent non-official reporting origin (needs a second independently reported outlet, or an official primary source)"
+    }
+  ],
+  "llm": {
+    "calls": 5,
+    "failures": 6,
+    "promptTokens": 145316,
+    "completionTokens": 29472,
+    "cacheReadTokens": 17324,
+    "costUsd": 1.6167,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 5
+    },
+    "byRole": {
+      "editor": {
+        "calls": 1,
+        "in": 75492,
+        "read": 0,
+        "out": 2476,
+        "usd": 0.6534
+      },
+      "desk": {
+        "calls": 2,
+        "in": 20015,
+        "read": 0,
+        "out": 6240,
+        "usd": 0.2849
+      },
+      "writer": {
+        "calls": 2,
+        "in": 32485,
+        "read": 17324,
+        "out": 20756,
+        "usd": 0.6784
+      }
+    }
+  },
+  "log": [
+    "[10:30:16] newsroom start mode=news limit=4 dry-run=false",
+    "[10:30:16] lessons: version 58, 10 active, read by the desk notes and the writer",
+    "[10:30:35] candidates: 13 price-service items left out (gold, dollar and share price tables)",
+    "[10:30:35] candidates: 532 fresh unseen items",
+    "[10:31:00] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1363 in=75492 read=0 out=2476 attempt=1 ms=24567",
+    "[10:31:00] editor raw: 4 stories; first ids=[\"c37\",\"c8\"] section=economy",
+    "[10:31:00] editor (claude-cli/claude-opus-5-5) selected 4 stories",
+    "[10:31:00]   [7] economy — اتفاقية سكة الحديد الخليجية تضع إطاراً مشتركاً لتنفيذ المشروع وتشغيله (c37,c8)",
+    "[10:31:00]   [7] energy — العراق ينتج أكثر من 5 ملايين برميل يومياً ويتشاور مع أوبك لرفع سقف التصدير (c423,c422)",
+    "[10:31:00]   [6] companies — أديس تفوز بعقدين في الهند بقيمة 440 مليون ريال لتشغيل منصتين بحريتين (c122,c188)",
+    "[10:31:00]   [6] energy — الصين تتصدر استثمارات الطاقة عالمياً بـ940 مليار دولار في 2026 (c222,c26,c147)",
+    "[10:31:02] skip \"اتفاقية سكة الحديد الخليجية تضع إطاراً مشتركاً لتنفيذ المشروع وتشغيله\": fewer than two independent non-official reporting origins; items marked for one retry",
+    "[10:31:05] control group: \"العراق ينتج أكثر من 5 ملايين برميل يومياً ويتشاور مع أوبك لرفع سقف التصدير\" is written without the lessons",
+    "[10:31:33] desk notes: 4 of 17 facts dropped (not in their source or copied from it)",
+    "[10:31:33] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1467 in=5936 read=0 out=3178 attempt=1 ms=28213",
+    "[10:31:33] desk notes: 13 facts (? 1, news 2, numbers 1, remark 1, driver 3, background 3, next 2), 2 quotes (claude-cli/claude-opus-5-5)",
+    "[10:33:00] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: body word count out of range (300-1100): 285",
+    "[10:37:03] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=2: claude cli timeout after 240000ms",
+    "[10:41:06] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=3: claude cli timeout after 240000ms",
+    "[10:41:06] story failed \"العراق ينتج أكثر من 5 ملايين برميل يومياً ويتشاور مع أوبك لرفع سقف التصدير\": Model (claude/claude-opus-5-5) failed for role writer:",
+    "[10:41:37] desk notes: 8 of 23 facts dropped (not in their source or copied from it)",
+    "[10:41:37] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=878 in=14079 read=0 out=3062 attempt=1 ms=25478",
+    "[10:41:37] desk notes: 15 facts (? 3, news 2, numbers 3, next 2, driver 1, reaction 1, remark 1, background 2), 2 quotes (claude-cli/claude-opus-5-5)",
+    "[10:43:24] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: body word count out of range (300-1100): 251",
+    "[10:47:27] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=2: claude cli timeout after 240000ms",
+    "[10:51:30] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=3: claude cli timeout after 240000ms",
+    "[10:51:30] story failed \"أديس تفوز بعقدين في الهند بقيمة 440 مليون ريال لتشغيل منصتين بحريتين\": Model (claude/claude-opus-5-5) failed for role writer:",
+    "[10:51:34] skip \"الصين تتصدر استثمارات الطاقة عالمياً بـ940 مليار دولار في 2026\": fewer than two independent non-official reporting origins; items marked for one retry"
+  ]
+}
