@@ -13705,6 +13705,102 @@
           "noted": []
         }
       ]
+    },
+    "khor-mor-gas-field-drone-attack-kurdistan-power-2c1b94": {
+      "at": "2026-11-08T22:30:03.644Z",
+      "title": "كردستان العراق تفقد بين 2500 و2800 ميغاواط بعد هجوم على حقل كورمور للغاز",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v59",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 22,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 3,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "أعلنت وزارة الكهرباء في حكومة إقليم كردستان العراق فقدان ما بين 2500 و2800 ميغاواط من الكهرباء، الأحد، بعد هجوم بطائرة مسيرة على حقل كورمور للغاز في محافظة السليمانية علّق إمدادات الغاز إلى محطات التوليد، بحسب وكالة الأنباء العراقية (واع).",
+              "quote": "أفادت وسائل إعلام عراقية بأن الحقل الواقع في محافظة السليمانية تعرض لاستهداف بثلاث طائرات مسيّرة، فيما نقلت وسائل إعلام كردية عدم تسجيل خسائر بشرية جراء الهجوم.",
+              "source": "Asharq Business",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "evergreen-resumes-suez-canal-transit-after-three-years-c52ad0": {
+      "at": "2026-11-08T22:45:28.578Z",
+      "title": "«إيفر غرين» يستأنف العبور من قناة السويس بعد انقطاع نحو ثلاث سنوات",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v59",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 11,
+            "checked": 11,
+            "supported": 11,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "nvidia-board-probes-huang-spy-reports-1b9a91": {
+      "at": "2026-11-08T22:55:44.910Z",
+      "title": "إنفيديا تحقق في تقارير عن استهداف رئيسها بعملية تجسس صينية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v59",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 32,
+            "checked": 32,
+            "supported": 29,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

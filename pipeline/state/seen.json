@@ -1,66 +1,6 @@
 {
   "version": 1,
   "items": {
-    "b236cc7f7a0fe78a": {
-      "at": "2026-10-18T19:41:22.028Z",
-      "decision": "published",
-      "slug": "egypt-offshore-seismic-survey-east-mediterranean-cbf72c",
-      "title": "البترول: بدء المسح السيزمي في المياه المصرية بشرق المتوسط خلال أسبوعين التعزيز اكتشافات البترول"
-    },
-    "9485664a11424338": {
-      "at": "2026-10-18T19:41:22.028Z",
-      "decision": "published",
-      "slug": "egypt-offshore-seismic-survey-east-mediterranean-cbf72c",
-      "title": "“البترول” تستعد لتنفيذ مسح سيزمي بحري متطوّر بشرق المتوسط"
-    },
-    "c0075e627b60667a": {
-      "at": "2026-10-18T21:00:26.098Z",
-      "decision": "published",
-      "slug": "syria-world-bank-reconstruction-trust-fund-464831",
-      "title": "سوريا والبنك الدولي يتفقان على إنشاء صندوق للتعافي وإعادة الإعمار"
-    },
-    "89a1d5d6ab11beb6": {
-      "at": "2026-10-18T21:00:26.099Z",
-      "decision": "published",
-      "slug": "syria-world-bank-reconstruction-trust-fund-464831",
-      "title": "Syria and World Bank to set up recovery and rebuilding fund"
-    },
-    "02b8790878e12593": {
-      "at": "2026-10-18T21:20:06.880Z",
-      "decision": "published",
-      "slug": "microsoft-exits-nscale-essex-datacentre-power-ce50c6",
-      "title": "Microsoft pulls out of AI datacentre project in Essex over power supply concerns"
-    },
-    "ac103aeecc083f7a": {
-      "at": "2026-10-18T21:20:06.880Z",
-      "decision": "published",
-      "slug": "microsoft-exits-nscale-essex-datacentre-power-ce50c6",
-      "title": "«مايكروسوفت» تنسحب من صفقة مركز بيانات في بريطانيا"
-    },
-    "efb8271a584852c1": {
-      "at": "2026-10-18T21:35:08.981Z",
-      "decision": "published",
-      "slug": "qatari-diar-launches-alam-al-roum-investment-zone-82ae33",
-      "title": "شركة الديار القطرية: مبيعات الأجانب بمشروع علم الروم فاقت توقعاتنا"
-    },
-    "37e25529381e2dbc": {
-      "at": "2026-10-18T21:35:08.981Z",
-      "decision": "published",
-      "slug": "qatari-diar-launches-alam-al-roum-investment-zone-82ae33",
-      "title": "Egypt launches investment zone for Qatar’s Alam Al Roum project in North Coast"
-    },
-    "b40ef20e355de17d": {
-      "at": "2026-10-18T21:35:08.981Z",
-      "decision": "published",
-      "slug": "qatari-diar-launches-alam-al-roum-investment-zone-82ae33",
-      "title": "«الديار القطرية» تطلق منطقة استثمارية بمشروع «علم الروم»"
-    },
-    "378a373d26f64c78": {
-      "at": "2026-10-18T21:35:08.981Z",
-      "decision": "published",
-      "slug": "qatari-diar-launches-alam-al-roum-investment-zone-82ae33",
-      "title": "مصر.. إطلاق المنطقة الاستثمارية لعلم الروم في الساحل الشمالي"
-    },
     "20dce07f486b1ca9": {
       "at": "2026-10-18T23:26:35.245Z",
       "decision": "published",
@@ -6171,6 +6111,90 @@
       "decision": "published",
       "slug": "gulf-states-sign-railway-link-agreement-36de9b",
       "title": "Gulf rail network: GCC states on board with plan for 2,100km project"
+    },
+    "6d817d28f3463803": {
+      "at": "2026-11-08T22:30:03.655Z",
+      "decision": "published",
+      "slug": "khor-mor-gas-field-drone-attack-kurdistan-power-2c1b94",
+      "title": "استهداف حقل كورمور في كردستان العراق وفقدان 2800 ميغاواط كهرباء بعد القصف"
+    },
+    "debb70dc604257b8": {
+      "at": "2026-11-08T22:30:03.655Z",
+      "decision": "published",
+      "slug": "khor-mor-gas-field-drone-attack-kurdistan-power-2c1b94",
+      "title": "عاجل | رويترز عن مصادر أمنية بكردستان العراق: توقف الإنتاج في حقل كورمور للغاز في السليمانية عقب هجوم بمسيرة"
+    },
+    "c776dc174bac019d": {
+      "at": "2026-11-08T22:30:03.655Z",
+      "decision": "published",
+      "slug": "khor-mor-gas-field-drone-attack-kurdistan-power-2c1b94",
+      "title": "Attack on Iraq gas complex, cuts supply: authorities"
+    },
+    "2d81a31f9afb9a04": {
+      "at": "2026-11-08T22:38:57.875Z",
+      "decision": "rejected",
+      "title": "محمد بن راشد: الإمارات محور رئيسي للتجارة الدولية رغم التحديات",
+      "strikes": 1
+    },
+    "8484d5e2ecc1c66b": {
+      "at": "2026-11-08T22:38:57.875Z",
+      "decision": "rejected",
+      "title": "Sheikh Mohammed says UAE nine-month trade approaches Dh3tn",
+      "strikes": 1
+    },
+    "66847e08bd1ff7f2": {
+      "at": "2026-11-08T22:38:57.875Z",
+      "decision": "rejected",
+      "title": "Mohammed bin Rashid: UAE foreign trade nears Dh3 trillion in nine months, up 10%",
+      "strikes": 1
+    },
+    "1320f3f6c0ced5e4": {
+      "at": "2026-11-08T22:45:28.585Z",
+      "decision": "published",
+      "slug": "evergreen-resumes-suez-canal-transit-after-three-years-c52ad0",
+      "title": "مصر: عودة الخط الملاحي «إيفر غرين» للعبور من قناة السويس"
+    },
+    "c2e2231e4ae8b96e": {
+      "at": "2026-11-08T22:45:28.585Z",
+      "decision": "published",
+      "slug": "evergreen-resumes-suez-canal-transit-after-three-years-c52ad0",
+      "title": "الخط الملاحي \"إيفر غرين\" يعود إلى قناة السويس بعد غياب 3 سنوات"
+    },
+    "66f1370e9051597c": {
+      "at": "2026-11-08T22:45:28.585Z",
+      "decision": "published",
+      "slug": "evergreen-resumes-suez-canal-transit-after-three-years-c52ad0",
+      "title": "خط «إيفر غرين» الملاحي يعود إلى قناة السويس بعد غياب 3 سنوات"
+    },
+    "e1bc043c12c3b579": {
+      "at": "2026-11-08T22:55:44.933Z",
+      "decision": "published",
+      "slug": "nvidia-board-probes-huang-spy-reports-1b9a91",
+      "title": "\"إنفيديا\" تحقق في محاولة تجسس صيني استهدفت رئيسها بعد اعترافه بخيانة زوجته"
+    },
+    "519fd56ef4e88334": {
+      "at": "2026-11-08T22:55:44.933Z",
+      "decision": "published",
+      "slug": "nvidia-board-probes-huang-spy-reports-1b9a91",
+      "title": "Nvidia’s board will probe CEO Jensen Huang’s relationship with an alleged spy. Here’s what to know."
+    },
+    "26a78b8c98a3d9d9": {
+      "at": "2026-11-08T22:55:44.933Z",
+      "decision": "published",
+      "slug": "nvidia-board-probes-huang-spy-reports-1b9a91",
+      "title": "Nvidia investigates CEO Jensen Huang's relationship with alleged Chinese spy"
+    },
+    "bc55171edc52873b": {
+      "at": "2026-11-08T22:55:44.933Z",
+      "decision": "published",
+      "slug": "nvidia-board-probes-huang-spy-reports-1b9a91",
+      "title": "Nvidia will investigate CEO Jensen Huang’s relationship with possible Chinese spy"
+    },
+    "ecd65815b585666d": {
+      "at": "2026-11-08T22:55:44.933Z",
+      "decision": "published",
+      "slug": "nvidia-board-probes-huang-spy-reports-1b9a91",
+      "title": "Nvidia is investigating Jensen Huang’s relationship with a Chinese spy"
     }
   }
 }

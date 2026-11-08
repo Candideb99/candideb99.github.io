@@ -1,0 +1,102 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-08T22:13:24.343Z",
+  "durationSec": 153,
+  "read": 3,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "egypt-fertilizer-gas-cuts-reserves-discovery-248ff1",
+      "title": "خفض الغاز 33% يضغط على منتجي الأسمدة في مصر لتقليص فاتورة الاستيراد",
+      "kind": "analysis",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 43,
+        "checked": 43,
+        "supported": 38,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 3,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "gulf-states-sign-railway-link-agreement-36de9b",
+      "title": "دول الخليج توقّع الاتفاقية العامة لشبكة سكك حديد بطول 2117 كيلومتراً",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 37,
+        "checked": 37,
+        "supported": 33,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 3,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "hormuz-shipping-near-halt-tanker-attacks-944c7e",
+      "title": "حركة السفن في مضيق هرمز تكاد تتوقف بعد هجمات على ناقلات",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 36,
+        "checked": 36,
+        "supported": 34,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 3,
+    "failures": 0,
+    "promptTokens": 44949,
+    "completionTokens": 30333,
+    "cacheReadTokens": 0,
+    "costUsd": 0.9663,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 3
+    },
+    "byRole": {
+      "checker": {
+        "calls": 3,
+        "in": 44949,
+        "read": 0,
+        "out": 30333,
+        "usd": 0.9663
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[22:13:25] second look: 3 to read now (3 published pieces not yet read; 225 read clean before publication and left out of the audit sample)",
+    "[22:14:39] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2047 in=14119 read=0 out=10181 attempt=1 ms=73882",
+    "[22:14:39] egypt-fertilizer-gas-cuts-reserves-discovery-248ff1: 43 of 43 sentences checked · 38 supported · 3 without a source · 0 confirmed error(s)",
+    "[22:14:42] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1474 in=17754 read=0 out=10112 attempt=1 ms=71097",
+    "[22:14:42] gulf-states-sign-railway-link-agreement-36de9b: 37 of 37 sentences checked · 33 supported · 0 without a source · 0 confirmed error(s) · 3 listed for a person",
+    "[22:15:57] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3508 in=13076 read=0 out=10040 attempt=1 ms=73989",
+    "[22:15:57] hormuz-shipping-near-halt-tanker-attacks-944c7e: 36 of 36 sentences checked · 34 supported · 0 without a source · 0 confirmed error(s) · 1 listed for a person"
+  ]
+}

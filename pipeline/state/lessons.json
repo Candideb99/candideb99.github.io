@@ -242,10 +242,12 @@
     "fao-food-price-index-october-2026-86a80b:f5ff02c7",
     "us-presses-china-busan-deal-rare-earths-farm-purchases-dcf97b:d8c855a7",
     "sp-500-biggest-weekly-loss-ai-midterms-f9fb82:43da44aa",
-    "egypt-sisi-orders-strategic-stockpile-study-c53757:16a38807"
+    "egypt-sisi-orders-strategic-stockpile-study-c53757:16a38807",
+    "gulf-states-sign-railway-link-agreement-36de9b:069419b4",
+    "egypt-fertilizer-gas-cuts-reserves-discovery-248ff1:ed4c2f70"
   ],
-  "version": 58,
-  "updatedAt": "2026-11-08T10:30:05.684Z",
+  "version": 59,
+  "updatedAt": "2026-11-08T22:15:57.702Z",
   "lessons": [
     {
       "id": "L1",
@@ -563,11 +565,12 @@
         "riyadh-airport-partial-reopening-houthi-missile-attacks-fe5c08:32216bd5",
         "saudi-utility-tariffs-monthly-support-2027-748f63:862951ed",
         "french-bond-yields-jump-after-protests-1b64ee:1cdf42b9",
-        "boj-holds-rate-inflation-hits-target-728e78:91475147"
+        "boj-holds-rate-inflation-hits-target-728e78:91475147",
+        "gulf-states-sign-railway-link-agreement-36de9b:069419b4"
       ],
-      "seen": 32,
+      "seen": 33,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-10-30T10:09:17.581Z",
+      "lastSeen": "2026-11-08T22:15:57.702Z",
       "status": "active",
       "previous": [
         "Take each event's day from the source's sentence about that event: 'this weekend' is not 'this week', and the event's day is not the report's publication date. Convert a weekday by counting back from publication. Keep announcements, remarks and replies on their own days.",
@@ -758,11 +761,12 @@
         "egypt-halts-red-sea-sinai-investment-land-sales-dd7f70:e1c54de8",
         "egypt-urban-inflation-slows-nine-month-low-e8bbed:cb900c51",
         "ihc-third-quarter-profit-falls-third-0a92ce:180b81b3",
-        "fao-food-price-index-october-2026-86a80b:f5ff02c7"
+        "fao-food-price-index-october-2026-86a80b:f5ff02c7",
+        "egypt-fertilizer-gas-cuts-reserves-discovery-248ff1:ed4c2f70"
       ],
-      "seen": 9,
+      "seen": 10,
       "createdAt": "2026-10-28T05:52:18.463Z",
-      "lastSeen": "2026-11-06T16:49:27.908Z",
+      "lastSeen": "2026-11-08T22:15:57.702Z",
       "status": "active",
       "activatedAt": "2026-10-30T18:06:12.820Z",
       "previous": [
@@ -1272,6 +1276,14 @@
       "mistakes": 1,
       "applied": [
         "reinforce L3 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-11-08T22:15:57.702Z",
+      "mistakes": 2,
+      "applied": [
+        "reinforce L6 (+1; reworded at most once a week)",
+        "reinforce L12 (+1; reworded at most once a week)"
       ]
     }
   ],
