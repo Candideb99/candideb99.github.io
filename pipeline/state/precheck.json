@@ -13340,6 +13340,62 @@
           "noted": []
         }
       ]
+    },
+    "us-disables-cargo-ship-iran-blockade-gulf-oman-c6c578": {
+      "at": "2026-11-08T00:55:17.749Z",
+      "title": "واشنطن تعطّل في خليج عمان سفينة تجارية حاولت خرق الحصار على إيران",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v57",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 22,
+            "checked": 22,
+            "supported": 20,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "berkshire-hathaway-9-6-billion-buyback-70b27a": {
+      "at": "2026-11-08T01:14:34.817Z",
+      "title": "بيركشاير هاثاواي الأمريكية تنفق 9.6 مليار دولار لشراء أسهمها في الربع الثالث",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v57",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 29,
+            "checked": 29,
+            "supported": 27,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
