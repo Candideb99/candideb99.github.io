@@ -467,8 +467,19 @@ Return the complete corrected ${short ? "story" : "article"} as one JSON object 
       if (dropped.length) throw new Error(`keep every author in the lede, with the Latin original in parentheses once: missing ${dropped.join(", ")}`);
     },
   });
-  const revised = normalizeDraft(data, { kind: kind || "news" });
+  const revised = keepDataChart(draft, normalizeDraft(data, { kind: kind || "news" }));
   return { draft: short ? asShort(revised) : revised, model };
+}
+
+/**
+ * A chart of official data (lib/datacharts.mjs) is code's, filled from the IMF or the World Bank, and no reviser redraws
+ * it. Rebuilt from the model's answer, a revised draft kept the chart but lost its mark, and the checks then dropped the
+ * IMF's figures as ungrounded: 6 of the 41 explainers carry «chart dropped: ungrounded values» and none of the 41 kept a
+ * chart (Egypt's current account under «احتياطي مصر عند مستوى قياسي، فلماذا تقيّد الحكومة إنفاق الدولار؟», chosen and
+ * checked clean at 11:56 on 2026-11-07, dropped after the revision; the owner, the next day, had expected graphs).
+ */
+export function keepDataChart(before, after) {
+  return before?.dataChart && before.chart ? { ...after, chart: before.chart, dataChart: true } : after;
 }
 
 /** `kind` decides what the key-facts box keeps (lib/keyfacts.mjs): figures only, except an explainer's glossary. */

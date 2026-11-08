@@ -26,7 +26,7 @@ import { instrumentsOf, macroMarketOf, marketData, repeatsInstrument } from "../
 import { yahooQuote } from "../pipeline/lib/quotes.mjs";
 import { independentOutletCount } from "../pipeline/lib/news-evidence.mjs";
 import { boxFacts, figureOnly } from "../pipeline/lib/keyfacts.mjs";
-import { deskNotes, explainingFacts, newsDepthBrief, newsFloor, normalizeChart, normalizeDraft, paperNotes, prioritizeContext, substantiveFacts, validateDraft, validateWhyBasis, writePaperReading } from "../pipeline/lib/write.mjs";
+import { deskNotes, explainingFacts, keepDataChart, newsDepthBrief, newsFloor, normalizeChart, normalizeDraft, paperNotes, prioritizeContext, substantiveFacts, validateDraft, validateWhyBasis, writePaperReading } from "../pipeline/lib/write.mjs";
 import { EDITORIAL_CRAFT, NEWS_DEPTH, NEWS_FLOOR, NEWS_MIN_EXPLAINING, NEWS_MIN_FACTS, SHORT_WORDS } from "../pipeline/lib/editorial.mjs";
 import { arabicEdition, bestPdf, coveredBy, documentUrl, editionKey, previousEdition, releaseDocument, releaseStory, reportExcerpts } from "../pipeline/lib/reports.mjs";
 import { mergeNewsRefresh, recentNews, serializeArticle, weekStories } from "../pipeline/lib/article.mjs";
@@ -709,6 +709,15 @@ if (spawnSync("git", ["--version"]).status === 0) {
     [bareOf({ ...ny, title: "ويليامز: التضخم مرتفع للغاية ويجب إعادته إلى 2%" }), bareOf({ ...ny, title: "التضخم الأمريكي مرتفع للغاية" }), bareNameInDek({ title: "وزير المالية: العجز يتراجع", subtitle: "البنك يتوقع نمواً أسرع", body: "وقال البنك إن النمو سيتسارع." })],
     [null, null, null],
   );
+  // An explainer's chart of official data survives its revision (the record-reserves explainer lost Egypt's current
+  // account, IMF figures the checks then called ungrounded, 2026-11-07): the reviser's echo never replaces it.
+  const imf = { type: "line", title: "رصيد الحساب الجاري", unit: "% من الناتج المحلي", source: "صندوق النقد الدولي", categories: ["2021", "2022", "2023", "2024", "2025"], series: [{ name: "مصر", values: [-4.4, -3.5, -1.2, -5.4, -2.9] }] };
+  const echoed = { title: "عنوان", chart: { ...imf, series: [{ name: "مصر", values: [-4, -3.5, -1, -5, -3] }] } };
+  const kept = keepDataChart({ chart: imf, dataChart: true }, echoed);
+  check("a revision keeps the official chart exactly, with its mark; a writer's own chart is the reviser's", [kept.chart === imf, kept.dataChart, keepDataChart({ chart: imf }, echoed).chart === echoed.chart], [true, true, true]);
+  const afterChecks = { title: "لماذا يقيّد بلد احتياطيه قياسي إنفاق الدولار؟", subtitle: "", lede: "ليد.", body: "فقرة.", keyFacts: [], tags: [], regions: [], whyItMatters: "", table: null, ...kept };
+  programmaticChecks(afterChecks, [{ text: "Egypt's reserves rose to 57.5 billion dollars." }], { minWords: 0, explainer: true });
+  check("…and the checks no longer drop it as ungrounded", Boolean(afterChecks.chart), true);
   // An analysis the owner found hard to understand (2026-11-07): its dek glued a second idea on with «فيما», and it said
   // «الأرجح» three times. The dek is sent back for an analysis and warned for news; the hedge, three times, is warned.
   const twoIdeas = { title: "هبوط النفط يقلّص عائد زيادة إنتاج السعودية", subtitle: "إنتاج المملكة يرتفع في أكتوبر، فيما تتجه السوق إلى فائض في المعروض", lede: "رفعت السعودية إنتاجها في أكتوبر.", body: "فقرة." };
