@@ -16084,6 +16084,48 @@
         }
       ],
       "outcome": "clean"
+    },
+    "egypt-sisi-orders-strategic-stockpile-study-c53757": {
+      "at": "2026-11-08T17:57:57.469Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-08T09:23:25.306Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 15,
+        "checked": 15,
+        "supported": 11,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "تلقى التكليف محمد عبد الرحمن ربيع، رئيس هيئة عمليات القوات المسلحة ورئيس الهيئة الوطنية لإدارة الأزمات والطوارئ بحسب الرئاسة، خلال اجتماع عقده السيسي السبت مع قيادات عسكرية.",
+          "quote": "Mr El Sisi's order to Gen Mohammed Abdel Rahman Rabia, the armed forces' Chief of Staff and head of the National Authority for the Management of Crises and Emergencies, comes amid growing fears of a resumption of all-out hostilities between Iran and the US that could disrupt supply chains.",
+          "source": "The National"
+        }
+      ],
+      "notFound": [
+        "الهيئة الوطنية لإدارة الأزمات المستحدثة مكلّفة بتقدير حجم المخزون اللازم، بعد شهر من إعلان الحكومة أن احتياطي السلع الغذائية الأساسية يكفي ستة أشهر",
+        "تقدير الهيئة لحجم المخزون اللازم هو ما سيختبر كفاية احتياطي الأشهر الستة المعلن لبلد يسكنه 110 ملايين نسمة.",
+        "وإذا انتهى التقدير إلى مخزون أكبر، فستتحمل الدولة كلفة شرائه وتخزينه في وقت تخشى فيه أن تعطّل مواجهات في البحر الأحمر سلاسل الإمداد."
+      ],
+      "weak": [],
+      "outcome": "listed"
     }
   }
 }

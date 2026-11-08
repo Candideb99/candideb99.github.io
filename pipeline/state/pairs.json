@@ -2203,6 +2203,98 @@
         "classes": [],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-11-08T18:11:12.538Z",
+      "slug": "egypt-raises-gas-cut-fertilizer-producers-33-602e71",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v58",
+      "lessonsHash": "a6c6134ebe",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 26,
+        "notFound": 0,
+        "checked": 28,
+        "words": 417,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 3,
+        "supported": 26,
+        "notFound": 1,
+        "checked": 32,
+        "words": 478,
+        "keyFacts": 6,
+        "classes": [
+          "scope"
+        ],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 3,
+        "supported": 26,
+        "notFound": 1,
+        "checked": 32,
+        "words": 478,
+        "keyFacts": 6,
+        "classes": [
+          "scope"
+        ],
+        "programmatic": 0
+      }
+    },
+    {
+      "at": "2026-11-08T18:43:34.677Z",
+      "slug": "gulf-states-sign-railway-link-agreement-36de9b",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v58",
+      "lessonsHash": "a6c6134ebe",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 27,
+        "notFound": 0,
+        "checked": 28,
+        "words": 441,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 30,
+        "notFound": 1,
+        "checked": 31,
+        "words": 448,
+        "keyFacts": 5,
+        "classes": [],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 30,
+        "notFound": 1,
+        "checked": 31,
+        "words": 448,
+        "keyFacts": 5,
+        "classes": [],
+        "programmatic": 0
+      }
     }
   ]
 }

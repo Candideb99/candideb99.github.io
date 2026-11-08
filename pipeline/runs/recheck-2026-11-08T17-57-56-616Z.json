@@ -1,0 +1,56 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-08T17:57:56.616Z",
+  "durationSec": 29,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "egypt-sisi-orders-strategic-stockpile-study-c53757",
+      "title": "السيسي يوجّه بدراسة إنشاء مخزون استراتيجي لمصر لمواجهة الأزمات",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 15,
+        "checked": 15,
+        "supported": 11,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 5201,
+    "completionTokens": 3363,
+    "cacheReadTokens": 0,
+    "costUsd": 0.1089,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "byRole": {
+      "checker": {
+        "calls": 1,
+        "in": 5201,
+        "read": 0,
+        "out": 3363,
+        "usd": 0.1089
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[17:57:57] second look: 1 to read now (1 published pieces not yet read; 224 read clean before publication and left out of the audit sample)",
+    "[17:58:25] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1002 in=5201 read=0 out=3363 attempt=1 ms=26718",
+    "[17:58:25] egypt-sisi-orders-strategic-stockpile-study-c53757: 15 of 15 sentences checked · 11 supported · 3 without a source · 0 confirmed error(s) · 1 listed for a person"
+  ]
+}

@@ -1,114 +1,6 @@
 {
   "version": 1,
   "items": {
-    "82ae0792003daea3": {
-      "at": "2026-10-18T11:24:45.176Z",
-      "decision": "published",
-      "slug": "morocco-budget-2027-purchasing-power-support-018b33",
-      "title": "موازنة المغرب 2027 تستهدف دعم القدرة الشرائية وإصلاح الأسواق"
-    },
-    "160ce511a42a600e": {
-      "at": "2026-10-18T11:24:45.176Z",
-      "decision": "published",
-      "slug": "morocco-budget-2027-purchasing-power-support-018b33",
-      "title": "مجلس وزاري برئاسة الملك يضع دعم القدرة الشرائية في صدارة أولويات 2027"
-    },
-    "e65bcf79faf03898": {
-      "at": "2026-10-18T11:31:53.950Z",
-      "decision": "published",
-      "slug": "venezuela-oil-gas-investment-outlook-2187ff",
-      "title": "فنزويلا تتوقع استثمارات نفطية بـ76 مليار دولار خلال 5 سنوات"
-    },
-    "b732a4002dc36690": {
-      "at": "2026-10-18T11:31:53.950Z",
-      "decision": "published",
-      "slug": "venezuela-oil-gas-investment-outlook-2187ff",
-      "title": "فنزويلا تستقطب 76 مليار دولار استثمارات في النفط والغاز خلال 5 سنوات"
-    },
-    "d7ec72467beb8df7": {
-      "at": "2026-10-18T11:41:52.877Z",
-      "decision": "published",
-      "slug": "egypt-fra-six-companies-fintech-approvals-c495f7",
-      "title": "الرقابة المالية توافق لـ6 شركات على مزاولة أنشطة مالية غير مصرفية باستخدام التكنولوجيا المالية"
-    },
-    "b52a863ddb56c56d": {
-      "at": "2026-10-18T11:41:52.877Z",
-      "decision": "published",
-      "slug": "egypt-fra-six-companies-fintech-approvals-c495f7",
-      "title": "“الرقابة المالية” تمنح 6 شركات موافقتها على مزاولة أنشطة باستخدام التكنولوجيا"
-    },
-    "8e4ffa75bbc6205b": {
-      "at": "2026-10-18T11:41:52.877Z",
-      "decision": "published",
-      "slug": "egypt-fra-six-companies-fintech-approvals-c495f7",
-      "title": "الرقابة المالية تمنح 6 شركات موافقة لمزاولة أنشطة مالية غير مصرفية بالتكنولوجيا المالية"
-    },
-    "de48f631a678dc65": {
-      "at": "2026-10-18T11:48:23.389Z",
-      "decision": "published",
-      "slug": "saudi-stocks-rise-led-by-heavyweights-3381fa",
-      "title": "السوق السعودية ترتفع 0.6 % رغم تراجع بورصات الخليج"
-    },
-    "a1b04713cdf003c5": {
-      "at": "2026-10-18T11:48:23.389Z",
-      "decision": "published",
-      "slug": "saudi-stocks-rise-led-by-heavyweights-3381fa",
-      "title": "الأسهم السعودية ترتد بعد جلستين من الهبوط وسط ترقب نتائج الشركات"
-    },
-    "592fb44aee9ae8e2": {
-      "at": "2026-10-18T16:21:12.920Z",
-      "decision": "published",
-      "slug": "banque-du-caire-share-offering-launch-f9a4ac",
-      "title": "أضخم طرح حكومي بالبورصة.. اعتماد نشرة بيع 30% من بنك القاهرة"
-    },
-    "999f1854bb97d396": {
-      "at": "2026-10-18T16:21:12.920Z",
-      "decision": "published",
-      "slug": "banque-du-caire-share-offering-launch-f9a4ac",
-      "title": "هاشم السيد: إعلان السعر النهائى لطرح بنك القاهرة بحد أقصى 26 أكتوبر"
-    },
-    "746c3c896b81ed13": {
-      "at": "2026-10-18T16:21:12.920Z",
-      "decision": "published",
-      "slug": "banque-du-caire-share-offering-launch-f9a4ac",
-      "title": "غدًا.. بدء الطرحين العام والخاص لبنك القاهرة بالبورصة المصرية"
-    },
-    "174d1970b34bd2b5": {
-      "at": "2026-10-18T16:29:24.855Z",
-      "decision": "published",
-      "slug": "egyptian-exchange-loses-market-value-sunday-b89572",
-      "title": "البورصة تفقد 160 مليار جنيه من رأس المال السوقي اليوم.. فما السبب؟"
-    },
-    "dc276abb91425054": {
-      "at": "2026-10-18T16:29:24.855Z",
-      "decision": "published",
-      "slug": "egyptian-exchange-loses-market-value-sunday-b89572",
-      "title": "من الأكثر تراجعاً بجلسة الأحد؟.. السيارات تتصدر هبوط القطاعات بـ 6.4%"
-    },
-    "13b4a02b5ffef236": {
-      "at": "2026-10-18T16:37:50.108Z",
-      "decision": "published",
-      "slug": "fertiglobe-egypt-phosphate-fertilizer-complex-plans-bad1ec",
-      "title": "أدنوك تبحث إقامة مجمع أسمدة فوسفاتية في مصر بـ1.5 مليار دولار"
-    },
-    "402339355878a270": {
-      "at": "2026-10-18T16:37:50.108Z",
-      "decision": "published",
-      "slug": "fertiglobe-egypt-phosphate-fertilizer-complex-plans-bad1ec",
-      "title": "وزير البترول يبحث مع رئيس فيرتيجلوب إقامة مجمع للأسمدة الفوسفاتية بالعين السخنة"
-    },
-    "67bcfd97b73300d3": {
-      "at": "2026-10-18T16:49:21.282Z",
-      "decision": "published",
-      "slug": "russian-diesel-us-delivery-contract-timeline-db7311",
-      "title": "موسكو: شحن الديزل إلى السوق الأميركية سيستغرق 20 يوماً"
-    },
-    "ff5b91817e99ce68": {
-      "at": "2026-10-18T16:49:21.282Z",
-      "decision": "published",
-      "slug": "russian-diesel-us-delivery-contract-timeline-db7311",
-      "title": "شحن الديزل الروسي إلى أمريكا يستغرق 20 يوماً"
-    },
     "b236cc7f7a0fe78a": {
       "at": "2026-10-18T19:41:22.028Z",
       "decision": "published",
@@ -6195,6 +6087,90 @@
       "decision": "rejected",
       "title": "Çin'de 2026 enerjide rekor yatırım yılı olacak",
       "strikes": 1
+    },
+    "78e33d0f3f65426b": {
+      "at": "2026-11-08T18:11:12.538Z",
+      "decision": "published",
+      "slug": "egypt-raises-gas-cut-fertilizer-producers-33-602e71",
+      "title": "مصر تزيد خفض إمدادات الغاز لمصانع الأسمدة في ظل تفاقم أزمة الطاقة"
+    },
+    "c244d26adfb8ddb1": {
+      "at": "2026-11-08T18:11:12.538Z",
+      "decision": "published",
+      "slug": "egypt-raises-gas-cut-fertilizer-producers-33-602e71",
+      "title": "خفض الغاز يربك سوق الأسمدة في مصر.. ماذا يحدث؟"
+    },
+    "1e8230b13efec953": {
+      "at": "2026-11-08T18:11:12.538Z",
+      "decision": "published",
+      "slug": "egypt-raises-gas-cut-fertilizer-producers-33-602e71",
+      "title": "تراجع أسهم شركات الأسمدة والكيماويات بالبورصة بعد خفض إمدادات الغاز الطبيعي"
+    },
+    "23e9a653a57bc70d": {
+      "at": "2026-11-08T18:11:12.538Z",
+      "decision": "published",
+      "slug": "egypt-raises-gas-cut-fertilizer-producers-33-602e71",
+      "title": "ضغوط واردات الغاز تدفع مصر إلى خفض إمدادات مصانع الأسمدة"
+    },
+    "7810958e08c236af": {
+      "at": "2026-11-08T18:11:12.538Z",
+      "decision": "published",
+      "slug": "egypt-raises-gas-cut-fertilizer-producers-33-602e71",
+      "title": "مصر تخفض إمدادات الغاز لمصانع الأسمدة 33 % إضافية مع تفاقم أزمة الطاقة"
+    },
+    "f22284109fdd1262": {
+      "at": "2026-11-08T18:30:40.862Z",
+      "decision": "published",
+      "slug": "hormuz-shipping-near-halt-tanker-attacks-944c7e",
+      "title": "مرصد هرمز | الملاحة تتراجع 70% وسط حوادث ناقلات وتشديد الحصار الأميركي"
+    },
+    "55f7ed9409fdd316": {
+      "at": "2026-11-08T18:30:40.862Z",
+      "decision": "published",
+      "slug": "hormuz-shipping-near-halt-tanker-attacks-944c7e",
+      "title": "رویترز: امروز هیچ نفتکشی از تنگه هرمز عبور نکرد"
+    },
+    "f3be4336c229f42d": {
+      "at": "2026-11-08T18:30:40.862Z",
+      "decision": "published",
+      "slug": "hormuz-shipping-near-halt-tanker-attacks-944c7e",
+      "title": "'Smoke blanketing the strait': Iran steps up campaign of threats to shipping"
+    },
+    "e0f9bf24fee7bbfd": {
+      "at": "2026-11-08T18:30:40.862Z",
+      "decision": "published",
+      "slug": "hormuz-shipping-near-halt-tanker-attacks-944c7e",
+      "title": "Iran says 3 tankers caught fire in Hormuz"
+    },
+    "dc73c6480f23517e": {
+      "at": "2026-11-08T18:43:34.677Z",
+      "decision": "published",
+      "slug": "gulf-states-sign-railway-link-agreement-36de9b",
+      "title": "قطار الخليج ينتقل إلى مرحلة التنفيذ... شبكة عابرة للدول الست بحلول 2030"
+    },
+    "23f38e4e2ee825a7": {
+      "at": "2026-11-08T18:43:34.677Z",
+      "decision": "published",
+      "slug": "gulf-states-sign-railway-link-agreement-36de9b",
+      "title": "«قطار الخليج»... شبكة عابرة للحدود تربط الدول الـ6 وتعيد رسم خريطة النقل والتجارة"
+    },
+    "7eac9c1011d13a2b": {
+      "at": "2026-11-08T18:43:34.677Z",
+      "decision": "published",
+      "slug": "gulf-states-sign-railway-link-agreement-36de9b",
+      "title": "وزير المواصلات البحريني لـ«الشرق الأوسط»: كل دولة تموّل حصتها في مشروع سكة حديد الخليج"
+    },
+    "1b8b94e0b3fbb989": {
+      "at": "2026-11-08T18:43:34.677Z",
+      "decision": "published",
+      "slug": "gulf-states-sign-railway-link-agreement-36de9b",
+      "title": "إنجاز الربط السككي الخليجي بنسبة 56% والتشغيل الكامل ديسمبر 2030"
+    },
+    "cd9f412562da23ad": {
+      "at": "2026-11-08T18:43:34.677Z",
+      "decision": "published",
+      "slug": "gulf-states-sign-railway-link-agreement-36de9b",
+      "title": "Gulf rail network: GCC states on board with plan for 2,100km project"
     }
   }
 }

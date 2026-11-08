@@ -13511,6 +13511,137 @@
           ]
         }
       ]
+    },
+    "egypt-raises-gas-cut-fertilizer-producers-33-602e71": {
+      "at": "2026-11-08T18:11:12.528Z",
+      "title": "مصر تعمّق خفض إمدادات الغاز لكبار منتجي الأسمدة إلى 33%",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v58",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 31,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "hormuz-shipping-near-halt-tanker-attacks-944c7e": {
+      "at": "2026-11-08T18:30:40.853Z",
+      "title": "حركة السفن في مضيق هرمز تكاد تتوقف بعد هجمات على ناقلات",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v58",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 36,
+            "checked": 36,
+            "supported": 34,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 23,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وقالت بحرية الحرس الثوري الإيراني إن النيران اشتعلت في ثلاث ناقلات نفط في المضيق صباح الأحد بعدما حاولت التهرب من الحصار الإيراني، وإنها سلكت مسارات لم تأذن بها طهران وعطّلت برامج الملاحة، وتوعدت كل سفينة تسلك المسارات نفسها بالمصير ذاته.",
+              "quote": "وفي تطور آخر، نقلت وكالة \"رويترز\" عن بحرية الحرس الثوري الإيراني قولها، في وقت مبكر من الأحد، إن ناقلتي نفط اشتعلتا بعد اصطدامهما بألغام أثناء محاولة المرور عبر مسار وصفته بأنه \"غير مصرح به\".",
+              "source": "Asharq Business",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "gulf-states-sign-railway-link-agreement-36de9b": {
+      "at": "2026-11-08T18:43:34.667Z",
+      "title": "دول الخليج توقّع الاتفاقية العامة لشبكة سكك حديد بطول 2117 كيلومتراً",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v58",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 37,
+            "checked": 37,
+            "supported": 36,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 15,
+              "field": "body",
+              "class": "period",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وكان المجلس الوزاري الخليجي قد حدد موعد التشغيل الكامل في ديسمبر 2023، وأجاز تشغيل الخط بين أي دولتين متجاورتين فور الانتهاء من الجزء الرابط بينهما، من دون انتظار اكتمال الشبكة كلها.",
+              "quote": "وفي ديسمبر 2023، وافق المجلس الوزاري الخليجي على أن يكون ديسمبر 2030 الموعد المستهدف للتشغيل الكامل للمشروع بين الدول الأعضاء، مع إتاحة تشغيل خطوط الربط بين أي دولتين متجاورتين فور الانتهاء من تنفيذ الجزء الرابط بينهما، من دون انتظار اكتمال الشبكة الخليجية بأكملها.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 2,
+              "correction": "In December 2023 the Ministerial Council approved December 2030 as the target date for full operation; December 2023 is the date of the decision, not the target."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 37,
+            "checked": 37,
+            "supported": 37,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
