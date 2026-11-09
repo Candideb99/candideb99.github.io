@@ -13801,6 +13801,199 @@
           "noted": []
         }
       ]
+    },
+    "china-producer-inflation-highest-since-2022-1c1e71": {
+      "at": "2026-11-09T06:57:10.506Z",
+      "title": "تضخم المنتجين في الصين يقفز إلى 5.7%، أعلى مستوى منذ 2022",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 23,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "uae-non-oil-trade-nears-3-trillion-ca042e": {
+      "at": "2026-11-09T07:04:00.122Z",
+      "title": "تجارة الإمارات غير النفطية تقترب من 3 تريليونات درهم في 9 أشهر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v59",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 13,
+            "checked": 13,
+            "supported": 13,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "adnoc-distribution-nine-month-profit-rises-ceb7e7": {
+      "at": "2026-11-09T07:14:04.032Z",
+      "title": "أرباح أدنوك للتوزيع ترتفع 37% إلى 791 مليون دولار في 9 أشهر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 35,
+            "checked": 35,
+            "supported": 31,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "gold-erases-friday-losses-oil-falls-2282bb": {
+      "at": "2026-11-09T07:28:02.841Z",
+      "title": "الذهب يمحو خسائر الجمعة بصعود يتجاوز 1% مع امتداد هبوط النفط",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v59",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 29,
+            "checked": 29,
+            "supported": 23,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 14,
+              "field": "body",
+              "class": "attribution",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وقال تيم ووترر، كبير محللي الأسواق في شركة «كيه سي إم تريد» (KCM Trade)، إن نبرة ترامب الأكثر ليناً تجاه إيران تكبح النفط وتخفف ضغوطاً تضخمية أثقلت الذهب، إلى جانب تراجع الدولار الطفيف الذي جعل المعدن المقوم به أقل تكلفة لحائزي العملات الأخرى.",
+              "quote": "وقال تيم ووترر، كبير محللي الأسواق لدى «كيه سي إم تريد»، إن النبرة الأكثر تصالحية لترمب تجاه إيران تساعد في الحد من ارتفاع أسعار النفط، الأمر الذي يخفف بعض الضغوط التضخمية التي كانت تؤثر سلباً في المعدن الأصفر، إلى جانب تراجع محدود في الدولار.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": "Waterer only mentioned the slight dollar dip; the point that a weaker dollar made gold cheaper for holders of other currencies is the outlet's own reporting, not his statement."
+            }
+          ],
+          "noted": [
+            {
+              "id": 20,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وفي وقت مبكر من التعاملات الآسيوية، كان الذهب في المعاملات الفورية مرتفعاً 1.6% عند 4129.69 دولار للأونصة بحلول الساعة 02:20 بتوقيت غرينتش.",
+              "quote": "وصعد الذهب في المعاملات الفورية بنسبة 1.3 في المائة إلى نحو 4122 دولاراً للأونصة، وفق بيانات التداول الصباحية، بعدما حقق مكاسب بلغت نحو 5 في المائة خلال الأسبوع الماضي.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 21,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وصعدت المعادن الأخرى في المعاملات الفورية، فقفزت الفضة 2.8% إلى 53.31 دولار للأونصة، وزاد البلاتين 1.6% إلى 1556.14 دولار، والبلاديوم 2.1% إلى 1044.28 دولار.",
+              "quote": "وفي أسواق المعادن النفيسة الأخرى، ارتفعت الفضة في المعاملات الفورية بنسبة 2.4 في المائة إلى 53.15 دولار للأونصة، كما صعد البلاتين 1.6 في المائة إلى 1556.14 دولار، والبلاديوم 2.1 في المائة إلى 1044.28 دولار.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 24,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 21,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وفي وقت مبكر من التعاملات الآسيوية، كان الذهب في المعاملات الفورية مرتفعاً 1.6% عند 4129.69 دولار للأونصة بحلول الساعة 02:20 بتوقيت غرينتش.",
+              "quote": "وصعد الذهب في المعاملات الفورية بنسبة 1.3 في المائة إلى نحو 4122 دولاراً للأونصة، وفق بيانات التداول الصباحية، بعدما حقق مكاسب بلغت نحو 5 في المائة خلال الأسبوع الماضي.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 22,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وصعدت المعادن الأخرى في المعاملات الفورية، فقفزت الفضة 2.8% إلى 53.31 دولار للأونصة، وزاد البلاتين 1.6% إلى 1556.14 دولار، والبلاديوم 2.1% إلى 1044.28 دولار.",
+              "quote": "وفي أسواق المعادن النفيسة الأخرى، ارتفعت الفضة في المعاملات الفورية بنسبة 2.4 في المائة إلى 53.15 دولار للأونصة، كما صعد البلاتين 1.6 في المائة إلى 1556.14 دولار، والبلاديوم 2.1 في المائة إلى 1044.28 دولار.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []

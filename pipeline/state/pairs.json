@@ -2295,6 +2295,56 @@
         "classes": [],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-11-09T07:28:02.849Z",
+      "slug": "gold-erases-friday-losses-oil-falls-2282bb",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v59",
+      "lessonsHash": "a6c6134ebe",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 22,
+        "notFound": 0,
+        "checked": 29,
+        "words": 460,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 2,
+        "drift": 0,
+        "severity": 4,
+        "supported": 22,
+        "notFound": 0,
+        "checked": 31,
+        "words": 462,
+        "keyFacts": 5,
+        "classes": [
+          "attribution",
+          "attribution"
+        ],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 2,
+        "drift": 0,
+        "severity": 4,
+        "supported": 22,
+        "notFound": 0,
+        "checked": 31,
+        "words": 462,
+        "keyFacts": 5,
+        "classes": [
+          "attribution",
+          "attribution"
+        ],
+        "programmatic": 1
+      }
     }
   ]
 }
