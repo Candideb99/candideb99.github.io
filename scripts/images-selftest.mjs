@@ -651,6 +651,37 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
     verify: (name) => (name.includes("Tata") ? "AMATEUR" : "GENERIC_OK"),
   });
   check("a held photograph the check refuses brings its companions back, and the port runs", back.image?.title, port.title);
+  // The owner, 2026-11-09, on Dukan Dam under the drone attack on the Khor Mor gas field: "why not choose صورة تعبيرية of
+  // other gas fields?". No free photograph of Khor Mor exists; the desk held the dam, a site the story names only as the
+  // ministry's stopgap, and the illustration pass came after a held photograph and never ran. An illustration of the
+  // story's own subject is now set beside the one held, and the comparison may choose it.
+  {
+    const dam = file("Dukan Dam, Sulaymaniyah, Iraqi Kurdistan.jpg", { categories: "Dukan Dam|Dams in Iraq" });
+    const plant = file("Gas field processing plant at Kimanis, Sabah, Malaysia.jpg", { categories: "Gas plants in Malaysia" });
+    const kurdistan = { ...developers, title: "كردستان العراق تفقد بين 2500 و2800 ميغاواط بعد هجوم على حقل كورمور للغاز", subtitle: "الوزارة تعتزم تشغيل محطتي دوكان ودربنديخان الكهرومائيتين", tags: ["العراق", "إقليم كردستان", "الغاز الطبيعي"], regions: ["المشرق وإيران وتركيا"], section: "energy" };
+    const plan = planFor({ queries: ["gas field Kurdistan"], place: ["Iraq", "Kurdistan"], places: ["Dukan Dam"], place_queries: ["Dukan Dam"], message: "One drone strike on the Khor Mor gas field cut off most of Kurdistan's electricity" });
+    const world = { "Dukan Dam": [dam], "gas field": [plant] };
+    const drawn = await scenario({
+      draft: kurdistan,
+      plan,
+      world,
+      judge: (titles, prompt) => (prompt.includes("Photograph 1 is the one held so far") ? { choice: titles.indexOf(plant.title) + 1, says: false } : { choice: titles.length ? 1 : 0, says: false }),
+      verify: () => "GENERIC_OK",
+    });
+    const comparison = drawn.judgePrompts.find((p) => p.includes("Photograph 1 is the one held so far")) ?? "";
+    check(
+      "an illustration of the story's own subject is set beside the photograph held, and runs, marked, when the comparison prefers it",
+      [drawn.image?.title, drawn.image?.alt?.includes(ILLUSTRATIVE), drawn.calls.includes("judge-neutral"), /Photograph 2 would run as an illustration/.test(comparison), drawn.calls.filter((c) => c.startsWith("verify:"))],
+      [plant.title, true, true, true, [`verify:${dam.title}`, `verify:${plant.title}`]],
+    );
+    const kept = await scenario({ draft: kurdistan, plan, world, judge: (titles) => ({ choice: titles.length ? 1 : 0, says: false }), verify: () => "GENERIC_OK" });
+    check("the photograph held still runs when the comparison keeps it", [kept.image?.title, kept.image?.alt?.includes(ILLUSTRATIVE)], [dam.title, false]);
+    check(
+      "the planner, every judge and the second check are told a site named only as the response is not the story's",
+      [drawn.judgePrompts.every((p) => p.includes("names only on the side")), drawn.verifyPrompts.every((p) => p.includes("names only on the side"))],
+      [true, true],
+    );
+  }
   // Every search of a pass is made: Morocco's first two searches filled the pass and «Tanger Med container port», its
   // fourth, was never asked (2026-10-22).
   const stalls = Array.from({ length: 8 }, (_, i) => file(`Olive stall in a market in Marrakesh ${i + 1}.jpg`, { categories: "Markets in Morocco" }));
