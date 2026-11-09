@@ -56,7 +56,7 @@ const normalizePlace = (s) => String(s ?? "").replace(/[ً-ٰٟـ]/g, "").replac
 const LETTER = "\\u0621-\\u065F\\u066E-\\u06D3\\u06FA-\\u06FF";
 // «ه» ends only a nisba's «ي» (السعودية، الروسية): after a city it makes another word, and «الرياضة» had read as «الرياض»
 // (the review of 2026-10-30). A country's name may also end «يا» (`country`: «تركيا» from «ترك»).
-const placeRe = (w, { country = false } = {}) => {
+export const placeRe = (w, { country = false } = {}) => {
   const n = escapeRe(normalizePlace(w));
   const forms = n.startsWith("ال") ? `[وفبك]?(?:${n}|لل${n.slice(2)})` : `[وفبلك]?(?:ال|لل)?${n}`;
   const ends = [...(n.endsWith("ي") ? ["ه"] : []), "ي", "يه", "ين", "يون", "يين", "ون", ...(country ? ["يا"] : ["ات"]), "ا"];
@@ -110,7 +110,7 @@ const nationalityKey = (word) => normalizePlace(word).replace(/(?:يه|يين|ي
 const NATIONALITY_BY_KEY = new Map(Object.entries(NATIONALITIES).map(([nisba, places]) => [nationalityKey(nisba), places.map((p) => placeRe(p, { country: true }))]));
 /** Text as the country readers read it: «المملكة المتحدة» is Britain, never also «المملكة»; «عمّان» with its shadda is
  *  Amman, never Oman. */
-const countryText = (text) => normalizePlace(String(text ?? "").replace(/عمّان/g, "الأردن")).replace(/المملكه المتحده/g, "بريطانيا");
+export const countryText = (text) => normalizePlace(String(text ?? "").replace(/عمّان/g, "الأردن")).replace(/المملكه المتحده/g, "بريطانيا");
 // A name in «», a Latin gloss in brackets allowed, then its nisba: «أكوا» السعودية، «إي آي جي» (EIG) الأمريكية.
 const NAMED_NATIONALITY = /«([^»]{2,40})»(?:\s*\([^)]{1,60}\))?\s+(ال[ء-ي]+)/g;
 
