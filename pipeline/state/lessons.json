@@ -245,10 +245,11 @@
     "egypt-sisi-orders-strategic-stockpile-study-c53757:16a38807",
     "gulf-states-sign-railway-link-agreement-36de9b:069419b4",
     "egypt-fertilizer-gas-cuts-reserves-discovery-248ff1:ed4c2f70",
-    "gold-erases-friday-losses-oil-falls-2282bb:9500b357"
+    "gold-erases-friday-losses-oil-falls-2282bb:9500b357",
+    "china-extends-us-tariff-suspension-two-months-ec7ccf:96e1b26c"
   ],
-  "version": 60,
-  "updatedAt": "2026-11-09T09:44:01.007Z",
+  "version": 61,
+  "updatedAt": "2026-11-09T19:55:21.076Z",
   "lessons": [
     {
       "id": "L1",
@@ -568,11 +569,12 @@
         "saudi-utility-tariffs-monthly-support-2027-748f63:862951ed",
         "french-bond-yields-jump-after-protests-1b64ee:1cdf42b9",
         "boj-holds-rate-inflation-hits-target-728e78:91475147",
-        "gulf-states-sign-railway-link-agreement-36de9b:069419b4"
+        "gulf-states-sign-railway-link-agreement-36de9b:069419b4",
+        "china-extends-us-tariff-suspension-two-months-ec7ccf:96e1b26c"
       ],
-      "seen": 33,
+      "seen": 34,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-11-08T22:15:57.702Z",
+      "lastSeen": "2026-11-09T19:55:21.076Z",
       "status": "active",
       "previous": [
         "Take each event's day from the source's sentence about that event: 'this weekend' is not 'this week', and the event's day is not the report's publication date. Convert a weekday by counting back from publication. Keep announcements, remarks and replies on their own days.",
@@ -779,18 +781,6 @@
   ],
   "model": "claude-cli/claude-opus-5-5",
   "history": [
-    {
-      "at": "2026-09-25T07:41:52.105Z",
-      "mistakes": 24,
-      "applied": [
-        "add L1 [hedge] from 9 mistake(s)",
-        "add L2 [attribution] from 5 mistake(s)",
-        "add L3 [term] from 4 mistake(s)",
-        "add L4 [scope] from 4 mistake(s)",
-        "add L5 [actor] from 1 mistake(s)",
-        "add L6 [period] from 1 mistake(s)"
-      ]
-    },
     {
       "at": "2026-09-25T07:42:29.972Z",
       "mistakes": 22,
@@ -1293,6 +1283,13 @@
       "mistakes": 1,
       "applied": [
         "reinforce L2 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-11-09T19:55:21.076Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L6 (+1; reworded at most once a week)"
       ]
     }
   ],

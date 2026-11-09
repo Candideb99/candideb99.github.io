@@ -1,0 +1,103 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-09T19:53:35.356Z",
+  "durationSec": 105,
+  "read": 3,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "saudi-ports-container-volumes-rise-14-percent-5651dd",
+      "title": "مناولة الحاويات في الموانئ السعودية ترتفع 14% في أكتوبر مع تحوّل مسارات الشحن",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 10,
+        "checked": 10,
+        "supported": 9,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "china-extends-us-tariff-suspension-two-months-ec7ccf",
+      "title": "الصين تمدد تعليق رسوم 24% على السلع الأمريكية شهرين إضافيين",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 16,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "maaden-q3-profit-falls-sulfur-costs-5c47b9",
+      "title": "أرباح «معادن» السعودية تتراجع 23.7% في الربع الثالث مع غلاء الكبريت",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 37,
+        "checked": 37,
+        "supported": 34,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 3,
+    "failures": 0,
+    "promptTokens": 24305,
+    "completionTokens": 18575,
+    "cacheReadTokens": 0,
+    "costUsd": 0.566,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 3
+    },
+    "byRole": {
+      "checker": {
+        "calls": 3,
+        "in": 24305,
+        "read": 0,
+        "out": 18575,
+        "usd": 0.566
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[19:53:36] second look: 3 to read now (3 published pieces not yet read; 230 read clean before publication and left out of the audit sample)",
+    "[19:53:36] china-extends-us-tariff-suspension-two-months-ec7ccf:   source https://www.bloomberg.com/news/articles/2026-11-09/china-extends-pause-on-24-us-: subscribers-only; read from the copy saved at publication (fetched then)",
+    "[19:54:03] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=877 in=6127 read=0 out=3433 attempt=1 ms=25446",
+    "[19:54:03] saudi-ports-container-volumes-rise-14-percent-5651dd: 10 of 10 sentences checked · 9 supported · 0 without a source · 0 confirmed error(s)",
+    "[19:54:15] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1261 in=5853 read=0 out=4892 attempt=1 ms=36862",
+    "[19:54:15] china-extends-us-tariff-suspension-two-months-ec7ccf: 18 of 18 sentences checked · 16 supported · 0 without a source · 0 confirmed error(s)",
+    "[19:55:20] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1947 in=12325 read=0 out=10250 attempt=1 ms=73447",
+    "[19:55:20] maaden-q3-profit-falls-sulfur-costs-5c47b9: 37 of 37 sentences checked · 34 supported · 1 without a source · 0 confirmed error(s)"
+  ]
+}

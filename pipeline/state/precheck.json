@@ -14141,6 +14141,160 @@
           "noted": []
         }
       ]
+    },
+    "saudi-east-west-pipeline-attacked-operations-continue-b5b8fe": {
+      "at": "2026-11-09T20:05:43.623Z",
+      "title": "الطاقة السعودية: خط شرق-غرب يعمل رغم استهدافه في منطقة المدينة المنورة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v61",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 11,
+            "checked": 11,
+            "supported": 11,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "brent-falls-ten-week-low-trump-iran-377a7a": {
+      "at": "2026-11-09T20:17:46.329Z",
+      "title": "برنت يهبط 7.4% إلى أدنى مستوى في عشرة أسابيع",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v61",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 22,
+            "checked": 22,
+            "supported": 21,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "germany-trade-surplus-shrinks-september-imports-271dbf": {
+      "at": "2026-11-09T20:33:23.268Z",
+      "title": "الفائض التجاري الألماني يتقلص إلى 15.6 مليار يورو مع تسارع الواردات",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v61",
+      "ok": true,
+      "repairs": 2,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 14,
+            "weak": 5,
+            "noEvidence": 5,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 21,
+              "field": "body",
+              "class": "period",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وكانت الصين الوحيدة بين الشركاء الثلاثة الذين يرصدهم المكتب خارج الاتحاد التي تراجعت الصادرات إليها في هذه الفترة، بنسبة 13.4%، وفي سبتمبر وحده انخفضت الصادرات إليها 5.2% عن أغسطس إلى 5.5 مليار يورو.",
+              "quote": "Volksrepublik China5,553,4-5,2-13,4",
+              "source": "Destatis",
+              "sourceN": 1,
+              "correction": "The 13.4% decline compares January–September 2026 with January–September 2025, not September 2026 with September 2025 (Destatis gives no year-on-year September figure for China)."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 12,
+            "weak": 6,
+            "noEvidence": 6,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 22,
+              "field": "body",
+              "class": "scope",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "ويصدر المكتب في 20 نوفمبر البيانات التفصيلية لشهر سبتمبر، ويحدّث معها هذه النتائج الأولية.",
+              "quote": "Dort sind auch erste vorläufige nominale Ergebnisse des Berichtsmonats September 2026 abrufbar (Tabellen 51000-0002, 51000-0004 und 51000-0006). Diese ersten vorläufigen Ergebnisse werden am 20. November 2026 zeitgleich mit der Veröffentlichung der vollständigen Detailergebnisse für den Berichtsmonat (Tabellen 51000) aktualisiert.",
+              "source": "Destatis",
+              "sourceN": 1,
+              "correction": "Destatis says the update on 20 November applies to the first provisional nominal (unadjusted) results in the GENESIS tables, not to the calendar- and seasonally adjusted figures the story reports."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 2,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 13,
+            "weak": 12,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
