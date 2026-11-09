@@ -12,8 +12,13 @@ interface Props {
   /** `url` is empty for an internal source whose article has since been retired: it is named, not linked. */
   sources: { name: string; nameEn?: string; title: string; url: string; publishedAt?: string | null; lang?: string }[];
   explainer?: boolean;
+  /** A news story credits its outlets in one line, each named once, as the desks credit theirs («المصدر: الجزيرة +
+   *  وكالات»), and the line opens the list of the reports it was written from (the owner, 2026-11-09: four rows of
+   *  headlines under every story, three of them from one outlet). A hub piece's own stories and a paper reading's paper
+   *  stay listed: there the list is the reading, not a credit. */
+  credit?: boolean;
 }
-const { explainer = false } = Astro.props;
+const { explainer = false, credit = false } = Astro.props;
 // An address that is not a web page is named, not linked, like a retired internal source (lib/safe-url.mjs).
 const sources = Astro.props.sources.map((s) => ({ ...s, url: safeHref(s.url) ?? "" }));
 function host(url: string) {
@@ -32,32 +37,47 @@ const titleLang = (s: { title: string; lang?: string }) =>
 /** A title in Arabic letters keeps its figures as the site prints them (2026-11-09: «12.7%» drew «%12.7» here while the
  *  same headline read «12.7%» everywhere else); a Latin-script title is its own left-to-right line already. */
 const titleHtml = (title: string) => (/[؀-ۿ]/.test(title) ? isolateNumbers(title) : escapeHtml(title));
+/** Each outlet once, in the order the story lists them. */
+const outlets = [...new Set(sources.map((s) => s.name.trim()).filter(Boolean))];
+const oneLine = credit && !explainer && outlets.length > 0;
+/** The credit line is the summary of a fold that holds the list; elsewhere the list stands open under its heading. */
+const Fold = oneLine ? "details" : "div";
 ---
 
 <section class="sources" aria-labelledby="sources-title">
-  <h2 id="sources-title" class="module__head">{explainer ? "مواد ذات صلة في خازندار" : "المصادر"}</h2>
-  {sources.length > 0 ? (
-    <ol class="sources__list">
-      {sources.map((s) => (
-        <li class="sources__item">
-          <span class="sources__name ui">{s.name}</span>
-          {s.url ? (
-            <a class="sources__title" href={s.url} rel={s.url.startsWith("/") ? undefined : "noopener nofollow"} target={s.url.startsWith("/") ? undefined : "_blank"}>
-              <bdi lang={titleLang(s)} set:html={titleHtml(s.title)} />
-            </a>
-          ) : (
-            <span class="sources__title"><bdi lang={titleLang(s)} set:html={titleHtml(s.title)} /></span>
-          )}
-          <span class="sources__host ui">
-            {host(s.url) && <bdi dir="ltr">{host(s.url)}</bdi>}
-            {s.publishedAt && <time datetime={s.publishedAt}>{formatShortDate(s.publishedAt)}</time>}
-          </span>
-        </li>
-      ))}
-    </ol>
-  ) : (
-    <p class="sources__none">شرح مفاهيمي يستند إلى التعريفات الاقتصادية المتعارف عليها؛ الأرقام الواردة فيه أمثلة توضيحية لا إحصاءات جارية.</p>
-  )}
+  <Fold class={oneLine ? "sources__fold" : "sources__body"}>
+    {oneLine ? (
+      <summary class="sources__credit">
+        <span id="sources-title" class="sources__label">{outlets.length > 1 ? "المصادر:" : "المصدر:"}</span>
+        <span class="sources__outlets">{outlets.map((name, i) => (<>{i > 0 && "، "}<bdi>{name}</bdi></>))}</span>
+        <span class="sources__more ui"><span class="sources__show">عرض الروابط</span><span class="sources__hide">إخفاء الروابط</span></span>
+      </summary>
+    ) : (
+      <h2 id="sources-title" class="module__head">{explainer ? "مواد ذات صلة في خازندار" : "المصادر"}</h2>
+    )}
+    {sources.length > 0 ? (
+      <ol class="sources__list">
+        {sources.map((s) => (
+          <li class="sources__item">
+            <span class="sources__name ui">{s.name}</span>
+            {s.url ? (
+              <a class="sources__title" href={s.url} rel={s.url.startsWith("/") ? undefined : "noopener nofollow"} target={s.url.startsWith("/") ? undefined : "_blank"}>
+                <bdi lang={titleLang(s)} set:html={titleHtml(s.title)} />
+              </a>
+            ) : (
+              <span class="sources__title"><bdi lang={titleLang(s)} set:html={titleHtml(s.title)} /></span>
+            )}
+            <span class="sources__host ui">
+              {host(s.url) && <bdi dir="ltr">{host(s.url)}</bdi>}
+              {s.publishedAt && <time datetime={s.publishedAt}>{formatShortDate(s.publishedAt)}</time>}
+            </span>
+          </li>
+        ))}
+      </ol>
+    ) : (
+      <p class="sources__none">شرح مفاهيمي يستند إلى التعريفات الاقتصادية المتعارف عليها؛ الأرقام الواردة فيه أمثلة توضيحية لا إحصاءات جارية.</p>
+    )}
+  </Fold>
   <p class="sources__note">
     {explainer
       ? "كُتب هذا الشرح آلياً بنماذج لغوية ثم رُوجع ببرنامج تدقيق مستقل. "
@@ -90,5 +110,23 @@ const titleHtml = (title: string) => (/[؀-ۿ]/.test(title) ? isolateNumbers(tit
     .sources__item { grid-template-columns: minmax(0, 1fr); }
     .sources__host { grid-column: 1; }
   }
+  /* The credit line (a news story): a rule over it, the label in bold, the outlets in the reading face, and the fold's
+     handle in the furniture face, in the house green, as the chart's «البيانات» fold is. */
+  .sources__fold { border-top: 1px solid var(--rule); padding-top: 0.75rem; }
+  .sources__credit {
+    list-style: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: var(--n-text);
+    line-height: 1.7;
+    color: var(--ink-2);
+  }
+  .sources__credit::-webkit-details-marker { display: none; }
+  .sources__label { font-weight: 700; color: var(--ink); margin-inline-end: 0.3rem; }
+  .sources__more { font-size: var(--fs-xs); font-weight: 700; color: var(--green); margin-inline-start: 0.6rem; white-space: nowrap; }
+  .sources__credit:hover .sources__more { text-decoration: underline; text-underline-offset: 0.2em; }
+  .sources__hide, .sources__fold[open] .sources__show { display: none; }
+  .sources__fold[open] .sources__hide { display: inline; }
+  .sources__fold .sources__list { margin-top: 0.5rem; }
   .sources__none, .sources__note { font-family: var(--font-body); font-size: var(--n-text); line-height: 1.7; color: var(--ink-3); margin-top: 0.9rem; }
 </style>

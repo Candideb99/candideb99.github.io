@@ -244,7 +244,7 @@ const jsonLd = [articleLd, breadcrumbLd];
         )}
         {/* A paper reading's source is the paper itself, outside the site: it was headed «مواد ذات صلة في خازندار» over
             an arXiv address and noted as a «شرح» (2026-11-09). Its facts are checked before publication as a story's are. */}
-        <Sources sources={sources} explainer={isHub && d.kind !== "paper"} />
+        <Sources sources={sources} explainer={isHub && d.kind !== "paper"} credit={!isHub} />
       </div>
       {/* Other stories' headlines stay out of this story's search entry (data-pagefind-ignore below): the «الأحدث» rail
           put the five newest headlines in every article, so «مضيق هرمز» matched all 147 (2026-09-24). */}
