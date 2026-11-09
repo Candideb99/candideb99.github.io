@@ -14295,6 +14295,69 @@
           "noted": []
         }
       ]
+    },
+    "saudi-ports-suez-hormuz-red-sea-shift-234b6e": {
+      "at": "2026-11-09T23:36:58.344Z",
+      "title": "مكاسب الموانئ السعودية من تحويل الشحن مرتبطة باستمرار تعطل هرمز",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 44,
+            "checked": 44,
+            "supported": 36,
+            "weak": 3,
+            "noEvidence": 1,
+            "notFound": 3,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 41,
+              "field": "body",
+              "class": "period",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وبلغت نسبة الإنجاز 55.9%، بحسب ما أعلنه الأمين العام لمجلس التعاون جاسم البديوي عند التوقيع، وأوضح الوزير البحريني أن هذه النسبة متوسط ما حققته الدول الأعضاء، ولا تعني اكتمال نصف أعمال الشبكة كلها.",
+              "quote": "وأعلن الأمين العام لمجلس التعاون لدول الخليج العربية جاسم البديوي عند التوقيع أن نسبة الإنجاز في المشروع بلغت 55.9%، بعدما تجاوزت 50% في النسبة المعلنة في مايو. وأوضح الوزير البحريني أن تلك النسبة، التي تخطت 50%، تمثل متوسط ما حققته الدول الأعضاء، ولا تعني أن نصف أعمال إنشاء الشبكة الخليجية كلها قد اكتمل.",
+              "source": "Khazendar",
+              "sourceN": 4,
+              "correction": "The minister's explanation referred to the earlier figure announced in May, which exceeded 50%, not to the 55.9% announced at the signing."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 44,
+            "checked": 44,
+            "supported": 36,
+            "weak": 5,
+            "noEvidence": 0,
+            "notFound": 3,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
