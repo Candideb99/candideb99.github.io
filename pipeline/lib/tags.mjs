@@ -1,6 +1,6 @@
 /**
- * A story's tags name what the story is about. They put it on tag pages, on the sections' sub-topic pages, in the
- * running files on the front and above its own headline, so a tag the story never mentions files it under a subject
+ * A story's tags name what the story is about. They put it on tag pages, on the sections' sub-topic pages, among the
+ * files and above its own headline, so a tag the story never mentions files it under a subject
  * it does not cover. The audit of 2026-09-27 (the owner: "posting info that does not match category/title") found
  * «الذكاء الاصطناعي» on a Trump–Xi summit story that never mentions AI, «التضخم» on a Japanese trade story, «أوبك+»,
  * «السعودية», «إيران» and «لجنة الاتصالات الفيدرالية» on stories that name none of them, and the tags of items pasted into

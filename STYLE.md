@@ -415,7 +415,7 @@ the spirit of the media-Arabic coursebooks: reporting (أفادت … بأن، �
   data and will not fake one.
 - **Inside the article:** the trail in the meta line (القسم › الموضوع, as the Arab news sites print it); the first mention of up to four of the story's tags linked to their files, as Al Jazeera and the BBC link people, places and topics in their copy; اقرأ أيضاً after the third paragraph as a ruled line; tags; المصادر with
   the wire or publisher named; المزيد من القسم after the sources. Every story states its sources.
-- **Running stories** live in ملفات (topic files) and the front's ملفات نتابعها band, the way the
+- **Running stories** live in ملفات (topic files), reached from each story's tags (the front's ملفات نتابعها row went on 2026-11-09), the way the
   desks keep dossiers; regions are a second axis (بحسب المنطقة).
 - **What we do not copy:** market-index tickers (no live data), AI-summary boxes, Arabic-Indic
   digits, long deks, form labels on every card.

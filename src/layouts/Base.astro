@@ -131,7 +131,6 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
     -->
     <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
     <Masthead active={section} compact={path !== "/"} />
-    <slot name="under-bar" />
     <MarketStrip omit={quotesShown} />
     {latestNews.length > 0 && <Ticker items={latestNews} label="آخر الأخبار" lead="time" />}
     <main id="main">

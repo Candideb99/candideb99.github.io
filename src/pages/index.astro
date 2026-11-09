@@ -2,11 +2,10 @@
 import Base from "@layouts/Base.astro";
 import Cover from "@components/Cover.astro";
 import Front from "@components/Front.astro";
-import FilesRow from "@components/FilesRow.astro";
 import StoryCard from "@components/StoryCard.astro";
 import { DESKS, desksOf } from "@lib/regions";
 import { analysisLabel } from "@lib/analysis";
-import { getArticles, pickLead, threads, chartOfTheDay, hoursOld, repeatedEvents, firstPictures, type Article } from "@lib/articles";
+import { getArticles, pickLead, chartOfTheDay, hoursOld, repeatedEvents, firstPictures, type Article } from "@lib/articles";
 import { newsSections, getSection, sectionHref, moreLabel } from "@lib/sections";
 import { articleHref } from "@lib/articles";
 import { headline } from "@lib/bidi";
@@ -112,10 +111,11 @@ const figures = unplaced(articles)
   .filter((f, i, all) => all.findIndex((g) => sameFigure(g, f)) === i)
   .slice(0, 3);
 place(figures.map((f) => f.article));
-// ملفات نتابعها runs as a row under the section bar: what the paper is following this week, subjects and running
-// files alike, busiest first, each once under its one page (lib/articles.ts `threads`). The band of four files it
-// replaced printed three headlines each, 10 of 12 of them printed elsewhere.
-const files = threads(articles.filter((a) => !repeats.has(a.id)));
+// No «ملفات نتابعها» row (removed 2026-11-09, the owner's choice): built from tags, it could not tell a running story
+// from a company, an institution, a kind of story or an indicator. On the day it went, one of its eight entries was a
+// running story (مضيق هرمز), Aramco stood in it twice under two spellings, and its pages mixed in stories a tag had only
+// touched. The sites that run such a row choose it by hand. The files stay one tap away: «الملفات والمناطق» in the
+// footer and the phone menu, the kicker and tag chips on every story, and the links in its text.
 // One chart module, the one in the numbers column: the band «بالرسوم البيانية» (three charts across the page, shown only
 // when three fresh charts were free) was a second module of the same kind and went on 2026-10-19 (the owner's check of
 // the front page). Other charts stay inside their stories.
@@ -176,14 +176,12 @@ const jsonLd = {
 ---
 
 <Base jsonLd={jsonLd} section="home">
-  <FilesRow slot="under-bar" files={files} />
   <h1 class="visually-hidden">{site.name} — {site.tagline}</h1>
   {cover.length > 0 ? (
     <>
       <div class="first">
         <Cover stories={cover} readings={readings} photoIds={photoIds} all={articles} />
         <Front secondary={secondary} digest={digest} picks={picks} figures={figures} chart={chart} photoIds={photoIds} />
-        <FilesRow files={files} placement="inline" />
       </div>
     </>
   ) : (
@@ -308,9 +306,6 @@ const jsonLd = {
     .first { display: flex; flex-direction: column; gap: 1.5rem; width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; padding-top: 1.1rem; }
     .first > :global(.cover), .first > :global(.front), .first :global(.front__mid) { display: contents; }
     .first :global(.cover__stage) { order: 1; padding-bottom: 1.25rem; border-bottom: 3px solid var(--ink); }
-    /* ملفات نتابعها follows the cover's stories on a phone (FilesRow `inline`), on the same order as the stage and
-       later in the page, so it comes straight after it. */
-    .first :global(.files-row--inline) { order: 1; margin-top: -0.25rem; }
     .first :global(.front__secondary) { order: 2; }
     .first :global(.front__top) { order: 3; }
     .first :global(.cover__beside) { order: 4; padding-top: 0; }

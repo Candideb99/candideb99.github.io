@@ -77,8 +77,8 @@ the repository and write `@claude` followed by the request in plain words (see s
 **What the front page does on its own.** The cover shows the day's strongest story and lists the next
 four beneath it as numbered tabs; it turns to the next one every seven seconds until the reader
 clicks, hovers or presses a key, and it stays still for readers who have asked their device for less
-motion. "ملفات نتابعها" gathers running stories (any topic with three or more articles) so a reader
-who missed a week can pick up the thread. "رسم اليوم" prints the freshest chart from the last three
+motion. Running stories (any topic with three or more articles) have pages of their own, reached from
+each story's tags and from "الملفات والمناطق", so a reader who missed a week can pick up the thread. "رسم اليوم" prints the freshest chart from the last three
 days. All of it is built from the articles; there is nothing to feed it.
 
 ## 2b. Keeping it unlisted before you launch

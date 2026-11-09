@@ -109,8 +109,8 @@
   --fs-sm: 0.86rem;
   /* Tajawal in data tables: a figure a step above the meta line. */
   --fs-data: 0.92rem;
-  /* The labels of the three strips under the bar (ملفات نتابعها، الأسواق، آخر الأخبار) share one width, so
-     their rules and first items line up. */
+  /* The labels of the strips under the bar (الأسواق، آخر الأخبار) share one width, so their rules and first items
+     line up. */
   --strip-label: 7.5rem;
 
   /* The type scale: one size for each role, named by what it does. The components had drifted to 44 sizes of their

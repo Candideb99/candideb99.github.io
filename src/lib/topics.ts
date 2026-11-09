@@ -170,7 +170,7 @@ export function subTopicOf(article: Article): Topic | undefined {
  * writers' tags: the tag the headline named first had put 144 different labels over about 260 news stories, «القمة»،
  * «الأمن»، «الحرب»، «توقعات 2026»، «أوباماكير» among them and one subject under four («النفط»، «أسعار النفط»، «برنت»،
  * «خام برنت»). The desks print a category of their own list above a headline, as Reuters and Asharq do; a running story
- * keeps its file in ملفات نتابعها and among the tag chips.
+ * keeps its file among the tag chips.
  */
 export function kickerOf(article: Article): { label: string; href: string } | undefined {
   const topic = subTopicOf(article);

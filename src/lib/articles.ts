@@ -225,30 +225,6 @@ export function dossiers(articles: Article[], { min = 3, max = 4, now = Date.now
   return out.sort((x, y) => score(y) - score(x)).slice(0, max);
 }
 
-export interface Thread {
-  label: string;
-  href: string;
-  /** Stories in the last `days` days. */
-  recent: number;
-  total: number;
-}
-
-/**
- * What the paper is following now, for the files row under the section bar: the running files (a running story, a
- * company, an institution, a person), each once under its one page, busiest in the last week first.
- *
- * Never a standing subject (2026-10-19, the owner's check of the front page): the row had carried the sub-topics with
- * tags of their own (النفط، الأسهم، التضخم…), seven of its eight entries one evening, a second copy of the section menus
- * under a label that promises the stories being followed. The running stories are what the big sites keep outside
- * their menus; the subjects are in the menus.
- */
-export function threads(articles: Article[], { days = 7, max = 8, now = Date.now() } = {}): Thread[] {
-  const recentOf = (items: Article[]) => items.filter((a) => hoursOld(a, now) < days * 24).length;
-  const out: Thread[] = [];
-  for (const d of dossiers(articles, { max: 500, now })) out.push({ label: d.tag, href: `/tags/${encodeURIComponent(d.tag)}/`, recent: recentOf(d.items), total: d.items.length });
-  return out.filter((t) => t.recent >= 2).sort((x, y) => y.recent - x.recent || y.total - x.total).slice(0, max);
-}
-
 /**
  * The chart of the day, for the front's side column (about 280px wide): the freshest chart of the last three days that
  * fits it, five categories or fewer, or none. Six long names such as the Egyptian exchange's indices could not stand
