@@ -24,13 +24,21 @@ export const INSTRUMENTS = [
   { id: "ftse", group: "world", symbol: "^FTSE", name: "فوتسي 100", short: "فوتسي 100", note: "بريطانيا", decimals: 2, limit: 15 },
   { id: "n225", group: "world", symbol: "^N225", name: "نيكاي 225", short: "نيكاي", note: "اليابان", decimals: 2, limit: 15 },
   { id: "sse", group: "world", symbol: "000001.SS", name: "شنغهاي المركب", short: "شنغهاي", note: "الصين", decimals: 2, limit: 15 },
-  // العملات
+  // العملات. A pound or a lira is named with its country, the short label too: «دولار/جنيه» alone could be the Sudanese
+  // or the British pound, «ليرة» the Lebanese or the Syrian (the owner, 2026-11-09). Only currencies that float and that
+  // Yahoo quotes cleanly: measured that day over three months of daily closes, its Moroccan dirham, Tunisian dinar,
+  // Qatari riyal and Pakistani rupee swing 2-4% every other day between two price sources (a move above 2% on 22 to 37
+  // of 65 days, most of them reversed the next day), its Saudi riyal sat at 3.64 for weeks against a peg of 3.75 and printed
+  // +3.21% on 9 November, and a pegged currency would print 0.00% forever. The franc and the rupee read clean: no move
+  // above 1.8% for the franc, one reversed pair of about 2% in August for the rupee, which its limit of 2 drops.
   { id: "eurusd", group: "fx", symbol: "EURUSD=X", name: "يورو / دولار", short: "يورو/دولار", decimals: 4, limit: 8, fallback: ["EUR", "USD"] },
   { id: "gbpusd", group: "fx", symbol: "GBPUSD=X", name: "جنيه إسترليني / دولار", short: "إسترليني/دولار", decimals: 4, limit: 8, fallback: ["GBP", "USD"] },
   { id: "usdjpy", group: "fx", symbol: "JPY=X", name: "دولار / ين ياباني", short: "دولار/ين", decimals: 2, limit: 8, fallback: ["USD", "JPY"] },
-  { id: "usdegp", group: "fx", symbol: "EGP=X", name: "دولار / جنيه مصري", short: "دولار/جنيه", decimals: 2, limit: 8, fallback: ["USD", "EGP"] },
-  { id: "usdtry", group: "fx", symbol: "TRY=X", name: "دولار / ليرة تركية", short: "دولار/ليرة", decimals: 2, limit: 8, fallback: ["USD", "TRY"] },
+  { id: "usdchf", group: "fx", symbol: "CHF=X", name: "دولار / فرنك سويسري", short: "دولار/فرنك سويسري", decimals: 4, limit: 8, fallback: ["USD", "CHF"] },
+  { id: "usdegp", group: "fx", symbol: "EGP=X", name: "دولار / جنيه مصري", short: "دولار/جنيه مصري", decimals: 2, limit: 8, fallback: ["USD", "EGP"] },
+  { id: "usdtry", group: "fx", symbol: "TRY=X", name: "دولار / ليرة تركية", short: "دولار/ليرة تركية", decimals: 2, limit: 8, fallback: ["USD", "TRY"] },
   { id: "usdcny", group: "fx", symbol: "CNY=X", name: "دولار / يوان صيني", short: "دولار/يوان", decimals: 4, limit: 8, fallback: ["USD", "CNY"] },
+  { id: "usdinr", group: "fx", symbol: "INR=X", name: "دولار / روبية هندية", short: "دولار/روبية هندية", decimals: 2, limit: 2, fallback: ["USD", "INR"] },
   { id: "dxy", group: "fx", symbol: "DX-Y.NYB", name: "مؤشر الدولار", short: "مؤشر الدولار", decimals: 2, limit: 8 },
   // السلع
   { id: "brent", group: "commodities", symbol: "BZ=F", name: "خام برنت", short: "برنت", unit: "دولار/برميل", decimals: 2, limit: 25 },
@@ -52,12 +60,12 @@ export async function fetchJson(url, headers = {}) {
   return res.json();
 }
 
-async function yahooChart(symbol, range) {
+async function yahooChart(symbol, range, interval = "1d") {
   let lastError;
   for (const host of ["query2", "query1"]) {
     for (let attempt = 0; attempt < 2; attempt++) {
       try {
-        const json = await fetchJson(`https://${host}.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?range=${range}&interval=1d&includePrePost=false`);
+        const json = await fetchJson(`https://${host}.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?range=${range}&interval=${interval}&includePrePost=false`);
         const result = json?.chart?.result?.[0];
         if (!result?.meta) throw new Error(json?.chart?.error?.description || "no result");
         return result;
@@ -132,11 +140,19 @@ export function sessionDay(meta, ms) {
  */
 export async function yahooQuote(symbol) {
   const today = await yahooChart(symbol, "1d");
+  // A currency's daily closes are read from its hourly prices, each session's last (found later on 2026-11-09, after the
+  // change above went live): Yahoo's daily currency bar carries roughly the price at the start of its day, not its end.
+  // Over three weeks, 7 to 15 of each currency's 21 daily closes sat nearer the evening before than their own day's end,
+  // and the board printed the euro −0.16%, the pound −0.24% and the yen +0.32% on a Monday when they had moved +0.60%,
+  // +0.51% and −0.27% from Friday's close. The hourly closes agreed with Yahoo's own previous close for all eight
+  // currencies. The indices, yields, futures and bitcoin keep their daily bars, which close their own day (a future's at
+  // its settlement price, checked against the hourly prices of Brent and copper).
+  const hourly = today.meta?.instrumentType === "CURRENCY";
   // Whether the three months were read: a one-day bar is not evidence that a feed keeps no daily closes (context.mjs
   // quoteLine(); the review of 2026-10-30: a failed call took gold's and Brent's moves away).
   let months = null;
   try {
-    months = await yahooChart(symbol, "3mo");
+    months = await yahooChart(symbol, "3mo", hourly ? "60m" : "1d");
   } catch {}
   // A field Yahoo leaves empty is no price: Number(null) is 0, and a price of 0 reached the board and the stories'
   // market data (a review of 2026-11-01). Of the two answers, the newer price.

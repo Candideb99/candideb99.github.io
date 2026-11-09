@@ -1687,8 +1687,10 @@ if (spawnSync("git", ["--version"]).status === 0) {
     }
     return out;
   };
-  const quoteOf = async (meta, todayBars, monthBars) => {
-    globalThis.fetch = async (url) => new Response(JSON.stringify(String(url).includes("range=1d") ? chart(meta, todayBars) : chart(meta, monthBars)), { status: 200, headers: { "content-type": "application/json" } });
+  // `hourBars`, when given, answer a request for hourly prices; otherwise every three-month request gets `monthBars`.
+  const quoteOf = async (meta, todayBars, monthBars, hourBars = null) => {
+    const pick = (url) => (url.includes("range=1d") ? todayBars : hourBars && url.includes("interval=60m") ? hourBars : monthBars);
+    globalThis.fetch = async (url) => new Response(JSON.stringify(chart(meta, pick(String(url)))), { status: 200, headers: { "content-type": "application/json" } });
     try {
       return await yahooQuote("TEST");
     } catch (error) {
@@ -1712,8 +1714,15 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const gas = await quoteOf({ instrumentType: "FUTURE", exchangeTimezoneName: "America/New_York", regularMarketPrice: 2.998, time: "2026-10-15T20:59:57Z", chartPreviousClose: 3.533 }, [], weekdays("2026-10-12", "2026-11-06", "05:00:00", []));
   check("a quote older than the feed's own daily closes is refused", /^stale quote/.test(gas.error ?? ""), true);
   // The euro on Sunday at 19:15 GMT: Monday's session, measured from Friday's close (Yahoo's base was a Sunday quote).
-  const euro = await quoteOf({ instrumentType: "CURRENCY", exchangeTimezoneName: "Europe/London", regularMarketPrice: 1.1148, time: "2026-11-08T19:15:31Z", chartPreviousClose: 1.1218 }, [["2026-11-08T19:15:31Z", 1.1148]], weekdays("2026-10-26", "2026-11-06", "00:00:00", [1.1218, 1.1174, 1.113, 1.1156, 1.1183, 1.1157, 1.1192, 1.1207, 1.1235, 1.1228]));
-  check("a currency quoted at the weekend belongs to Monday, measured from Friday", [euro.session, euro.prev, euro.prevFrom], ["2026-11-09", 1.1228, "bars"]);
+  // Friday's close is its last hourly price, 1.1143: Yahoo's daily bar for Friday says 1.1228, Thursday evening's price
+  // (later on 2026-11-09: the board had printed the euro down on a Monday it rose 0.60% from Friday's close).
+  const euro = await quoteOf(
+    { instrumentType: "CURRENCY", exchangeTimezoneName: "Europe/London", regularMarketPrice: 1.1148, time: "2026-11-08T19:15:31Z", chartPreviousClose: 1.1218 },
+    [["2026-11-08T19:15:31Z", 1.1148]],
+    weekdays("2026-10-26", "2026-11-06", "00:00:00", [1.1218, 1.1174, 1.113, 1.1156, 1.1183, 1.1157, 1.1192, 1.1207, 1.1235, 1.1228]),
+    [...weekdays("2026-10-26", "2026-11-06", "12:00:00", [1.1171, 1.1162, 1.1158, 1.1183, 1.1175, 1.1170, 1.1190, 1.1215, 1.1230, 1.1171]), ...weekdays("2026-10-26", "2026-11-06", "21:00:00", [1.118, 1.115, 1.116, 1.1194, 1.1166, 1.1192, 1.1192, 1.1232, 1.1222, 1.1143])].sort(([a], [b]) => (a < b ? -1 : 1)),
+  );
+  check("a currency quoted at the weekend belongs to Monday, measured from Friday's last hourly price", [euro.session, euro.prev, euro.prevFrom, euro.history.at(-2)], ["2026-11-09", 1.1143, "bars", { d: "2026-11-06", c: 1.1143 }]);
   // Bitcoin with Sunday's bar empty: the feed's own Sunday close, not Saturday's.
   const coin = await quoteOf({ instrumentType: "CRYPTOCURRENCY", exchangeTimezoneName: "UTC", regularMarketPrice: 74723.66, time: "2026-11-09T00:14:48Z", chartPreviousClose: 74719.82 }, [["2026-11-09T00:14:48Z", 74723.66]], [["2026-11-03T00:00:00Z", 77345.05], ["2026-11-04T00:00:00Z", 80405.29], ["2026-11-05T00:00:00Z", 75942.13], ["2026-11-06T00:00:00Z", 75746.93], ["2026-11-07T00:00:00Z", 75747.58], ["2026-11-08T00:00:00Z", null], ["2026-11-09T00:00:00Z", 74723.66]]);
   check("a session missing from the daily closes takes the feed's previous close", [coin.prev, coin.prevFrom], [74719.82, "feed"]);

@@ -24,7 +24,7 @@ const items = quotes(STRIP_IDS.filter((id) => !omit.includes(id)));
         {items.map((q) => {
           const dir = direction(q);
           return (
-            <li class="markets__item">
+            <li class="markets__item" data-id={q.id}>
               <a class={q.stale ? "q q--stale" : "q"} href="/markets/data/" title={`${q.name}${q.note ? ` (${q.note})` : ""}: ${formatPrice(q)}`}>
                 <span class="q__name">{q.short}</span>
                 {(q.changeMode === "abs" || dir === "none") && <bdi class="q__price">{formatPrice(q)}</bdi>}
@@ -76,5 +76,12 @@ const items = quotes(STRIP_IDS.filter((id) => !omit.includes(id)));
   @media (max-width: 719px) {
     .markets { gap: 0.6rem; min-height: 2rem; }
     .markets__time { display: none; }
+  }
+  /* The eight fit one line from 1366px. Below it the Nasdaq gives way (the S&P 500 stays) so the rest and the update
+     time fit: measured 2026-11-09 at 1240px with the time reading «منذ 5 ساعات», the last item ran 20px past the list's
+     edge, and 59px once «دولار/جنيه مصري» was named in full; the seven fit with about 60px to spare. A phone's strip
+     scrolls and keeps all eight. */
+  @media (min-width: 720px) and (max-width: 1365px) {
+    .markets__item[data-id="ndq"] { display: none; }
   }
 </style>
