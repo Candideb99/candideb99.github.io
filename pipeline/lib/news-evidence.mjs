@@ -1,6 +1,21 @@
 import { extractArticle } from "./extract.mjs";
 import { reportingOrigin } from "./outlets.mjs";
+import { pdfPages } from "./reports.mjs";
 import { canonicalUrl, fingerprint, hoursSince, isoNow } from "./util.mjs";
+
+/**
+ * Two kinds of official source whose pages the article reader cannot read (2026-11-09, when the owner asked for the large
+ * economies' own central banks): the Bank of Japan publishes its decisions, outlook and minutes only as PDFs
+ * (sources.json `readPdf`, read with the reports desk's reader), and Brazil's central bank draws its notes with a script,
+ * while its feed carries each note whole (`feedText`: the Copom's decision of 4 November ran 5,212 characters there).
+ */
+const PDF_URL = /\.pdf(?:$|[?#])/i;
+const FEED_TEXT_MIN = 400;
+async function readPdfSource(url, pdf, log) {
+  const pages = await pdf(url, log);
+  const text = (pages ?? []).join("\n\n").replace(/\n{3,}/g, "\n\n").trim().slice(0, 9000);
+  return text.length >= FEED_TEXT_MIN ? { ok: true, text, title: "", links: [], photos: [], ogImage: "" } : { ok: false, reason: pages ? "thin-pdf" : "pdf-unreadable" };
+}
 
 // Only cited public documents on these exact institutional hosts are followed.
 // This is an evidence supplement, not a crawler or a replacement for the feed registry.
@@ -123,18 +138,22 @@ function shared(a, b) {
 /** Four selected items, at most three report bodies and one cited primary document.
  * Failed enrichment leaves the original evidence intact. No model call is added.
  */
-export async function collectNewsEvidence(story, candidates, { extract = extractArticle, log = () => {}, now = isoNow } = {}) {
+export async function collectNewsEvidence(story, candidates, { extract = extractArticle, pdf = pdfPages, log = () => {}, now = isoNow } = {}) {
   const items = story.ids.map((id) => candidates.find((c) => c.id === id)).filter(Boolean);
   items.sort((a, b) => b.reliability - a.reliability || hoursSince(a.publishedAt) - hoursSince(b.publishedAt));
   const sources = [];
   const links = [];
   for (const item of items.slice(0, 4)) {
     let fetched = null;
-    if (!item.paywalled && sources.filter((s) => s.text).length < 3) {
-      fetched = await extract(item.url, { log });
+    const reads = !item.paywalled && sources.filter((s) => s.text).length < 3;
+    if (reads) {
+      fetched = item.readPdf && PDF_URL.test(item.url) ? await readPdfSource(item.url, pdf, log) : await extract(item.url, { log });
       if (!fetched.ok) log(`evidence ${item.sourceId}: ${fetched.reason}`);
     }
-    const text = fetched?.ok ? fetched.text : "";
+    const page = fetched?.ok ? fetched.text : "";
+    const feed = reads && item.feedText ? String(item.summary ?? "").trim() : "";
+    // A `feedText` source gives its feed's text when its page gives less (Brazil's central bank's pages give nothing).
+    const text = feed.length >= FEED_TEXT_MIN && feed.length > page.length ? feed : page;
     sources.push({ ...item, text, fetchedAt: text ? now() : null, ogImage: fetched?.ogImage ?? "", photos: fetched?.photos ?? [] });
     if (text && item.kind !== "official") {
       for (const link of fetched.links ?? []) {

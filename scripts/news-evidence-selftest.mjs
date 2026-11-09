@@ -155,6 +155,29 @@ try {
   const robots = await extractArticle("https://www.bankofengland.co.uk/news/2026/decision", { allowUrl: (url) => Boolean(officialDocument(url)) });
   assert.equal(robots.reason, "robots-disallow");
 } finally { globalThis.fetch = originalFetch; }
+// Two official sources whose pages the reader cannot read (2026-11-09): Brazil's central bank's notes come whole in its
+// feed (`feedText`), the Bank of Japan's decisions only as PDFs (`readPdf`).
+const note = "O Comitê de Política Monetária decidiu manter a taxa Selic em 13,75% a.a., em linha com a estratégia de convergência da inflação. ".repeat(6).trim();
+const unreadable = async () => ({ ok: false, reason: "thin" });
+const bcb = await collectNewsEvidence({ ids: [8] }, [item(8, { kind: "official", reliability: 3, feedText: true, summary: note, url: "https://www.bcb.gov.br/detalhenoticia/21309/nota" })], { extract: unreadable });
+assert.equal(bcb.sources[0].text, note, "a feedText source's feed text is its body when its page gives nothing");
+const plainSummary = await collectNewsEvidence({ ids: [8] }, [item(8, { kind: "official", reliability: 3, summary: note })], { extract: unreadable });
+assert.equal(plainSummary.sources[0].text, "", "without the flag a feed summary is never a body");
+const shortNote = await collectNewsEvidence({ ids: [8] }, [item(8, { kind: "official", reliability: 3, feedText: true, summary: "Copom mantém a taxa Selic." })], { extract: unreadable });
+assert.equal(shortNote.sources[0].text, "", "a feed's one-line summary is never a body, flag or not");
+const statement = "The Bank of Japan decided, by an 8-1 majority vote, to set the guideline for money market operations for the intermeeting period. ".repeat(6);
+const pdfAsked = [];
+const boj = await collectNewsEvidence({ ids: [9] }, [item(9, { kind: "official", reliability: 3, readPdf: true, url: "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k261030a.pdf" })], {
+  extract: async () => { throw new Error("a PDF was sent to the page reader"); },
+  pdf: async (url) => { pdfAsked.push(url); return [statement, "Page two of the statement."]; },
+});
+assert.deepEqual(pdfAsked, ["https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k261030a.pdf"]);
+assert.ok(boj.sources[0].text.startsWith("The Bank of Japan decided") && boj.sources[0].text.endsWith("Page two of the statement."), "a readPdf source is read from its PDF");
+const bojPage = await collectNewsEvidence({ ids: [9] }, [item(9, { kind: "official", reliability: 3, readPdf: true, url: "https://www.boj.or.jp/en/about/press/koen_2026/ko261107a.htm" })], {
+  extract: async () => ({ ...extracted, links: [] }), pdf: async () => { throw new Error("a page was sent to the PDF reader"); },
+});
+assert.equal(bojPage.sources[0].text, extracted.text, "a readPdf source's pages are still read as pages");
+
 const ratings = [item(1, { title: "Moody's raises Egypt credit rating" }), item(2, { title: "Egypt debt financing after Moody's rating action" })];
 assert.equal(needsRatingsReference({}, ratings), true);
 assert.equal(needsRatingsReference({ headlineHint: "موديز ترفع تصنيف مصر" }, []), true);

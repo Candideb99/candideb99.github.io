@@ -151,6 +151,10 @@ export async function fetchFeed(source, { maxAgeHours = 36, log = () => {}, onRe
     const doc = parser.parse(raw);
     const pathFilter = source.pathFilter ? new RegExp(source.pathFilter, "i") : null;
     const excludePath = source.excludePath ? new RegExp(source.excludePath, "i") : null;
+    // `excludeTitle`: a feed whose addresses say nothing of the item (the Reserve Bank of India's press releases are all
+    // «BS_PressReleaseDisplay.aspx?prid=…», ten of them a day, nearly all auctions and money-market notices, 2026-11-09)
+    // is filtered by its titles.
+    const excludeTitle = source.excludeTitle ? new RegExp(source.excludeTitle, "i") : null;
     const limitHours = source.maxAgeHours ?? maxAgeHours;
     const kept = normalizeItems(doc)
       .filter((item) => item.title && item.url && /^https?:\/\//i.test(item.url))
@@ -164,6 +168,7 @@ export async function fetchFeed(source, { maxAgeHours = 36, log = () => {}, onRe
       // An Arabic address is percent-encoded («/node/660964/%D8%A7…»): the filter reads it decoded too.
       .filter((item) => !pathFilter || pathFilter.test(item.url) || pathFilter.test(decoded(item.url)) || pathFilter.test(item.categories.join(" ")))
       .filter((item) => !excludePath || !(excludePath.test(item.url) || excludePath.test(decoded(item.url))))
+      .filter((item) => !excludeTitle || !excludeTitle.test(item.title))
       // A PDF cannot be read as a page; a working-paper series that links only to PDFs sets `allowPdf` and is read from its abstract.
       .filter((item) => source.allowPdf || !item.url.toLowerCase().endsWith(".pdf"));
     // A date days ahead is a typo or a scheduled post, never "new"; a few hours ahead is local time labelled GMT.

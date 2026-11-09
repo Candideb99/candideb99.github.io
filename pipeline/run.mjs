@@ -186,6 +186,10 @@ async function gatherCandidates(sources, state, existing) {
           lang: source.lang,
           paywalled: Boolean(source.paywalled),
           defaultSection: source.defaultSection,
+          // How the evidence step reads an item whose page the reader cannot (lib/news-evidence.mjs): from the feed's own
+          // text, or from its PDF.
+          ...(source.feedText ? { feedText: true } : {}),
+          ...(source.readPdf ? { readPdf: true } : {}),
         });
       }
     }

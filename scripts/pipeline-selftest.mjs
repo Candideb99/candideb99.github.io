@@ -430,6 +430,16 @@ check(
   check("a feed tells its newest item of any age, never a future-dated one; a refused feed tells nothing", [heard.length, heard[0]?.newestAt?.slice(0, 10), heard[0]?.items], [1, new Date(old).toISOString().slice(0, 10), 3]);
 }
 
+// 2a''. A feed whose addresses say nothing of the item is filtered by its titles (2026-11-09: the Reserve Bank of India's
+// press releases, ten a day, nearly all auctions and money-market notices).
+{
+  const fresh = new Date(Date.now() - 3600 * 1000).toUTCString();
+  const item = (title, n) => `<item><title>${title}</title><link>https://www.example.com/release.aspx?prid=${n}</link><pubDate>${fresh}</pubDate></item>`;
+  const rss = `<?xml version="1.0"?><rss version="2.0"><channel><title>x</title>${item("Money Market Operations as on November 08, 2026", 1)}${item("Resolution of the Monetary Policy Committee", 2)}${item("Auction of Government of India Dated Security", 3)}</channel></rss>`;
+  const items = await fetchFeed({ id: "rbi", url: `data:text/xml;charset=utf-8,${encodeURIComponent(rss)}`, excludeTitle: "money market operations|\\bauction\\b" });
+  check("a feed's routine notices are left out by their titles", items.map((i) => i.title), ["Resolution of the Monetary Policy Committee"]);
+}
+
 // 2b. The last cut (2026-10-22): a sentence carrying a figure no source has, or a stitched second event, goes; the story stays.
 {
   const sources = [{ title: "Houthi attack", text: "Drones struck the Dammam airport and an Aramco facility on Wednesday, killing 3 people and injuring 10. Brent rose to 111.2 dollars." }];
