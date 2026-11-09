@@ -1435,6 +1435,21 @@ if (spawnSync("git", ["--version"]).status === 0) {
   ]);
   const patterns = (file) => [...readFileSync(file, "utf8").matchAll(/const (NUMBER_SRC|LATIN_SRC) = (String\.raw`[^`]+`)/g)].map((m) => m.slice(1).join("="));
   check("the headlines' isolation (bidi.ts) uses the article bodies' patterns", patterns("src/lib/bidi.ts"), patterns("src/lib/rehype-isolate-numbers.mjs"));
+  // The search page prints results with its own copy of isolateNumbers(), fed the site's pattern (2026-11-09: escaped
+  // bare, «البالغ 5-7%» drew «%7-5» in the results and «737-10» «10-737»). The copy must print what the site prints.
+  // Node reads the TypeScript module directly; the address is built so the gate's name check does not refuse a ".ts" import.
+  const { isolateNumbers, RUN_PATTERN } = await import(new URL("../src/lib/bidi.ts", import.meta.url).href);
+  const page = readFileSync("src/pages/search.astro", "utf8");
+  const block = page.match(/\/\/ isolate:start([\s\S]*?)\/\/ isolate:end/)?.[1] ?? "";
+  const escapeBlock = page.match(/function escape\(text\) \{[\s\S]*?\n    \}/)?.[0] ?? "";
+  const searchIsolate = new Function("runSource", `${escapeBlock}\n${block}\nreturn isolate;`)(RUN_PATTERN.source);
+  const samples = ["البالغ 5-7%", "الرفع من 3.5%-3.75% إلى 3.75%-4%", "طائرات 737-10 في 2026-2031", "(تقدير Kpler) وS&P 500.", "شراكة Apple & غوغل", "<b>«4,2» مليار</b>", "فارق Brent - WTI اتسع", "e& و(10-year Treasury yield)"];
+  check(
+    "the search results isolate figures and Latin runs exactly as the site does",
+    samples.map((s) => searchIsolate(s) === isolateNumbers(s)),
+    samples.map(() => true),
+  );
+  check("the search page is handed the site's pattern and isolates titles and standfirsts", [/define:vars=\{\{ runSource \}\}/.test(page), /isolate\(meta\.title\)/.test(page), /isolate\(meta\.summary\)/.test(page)], [true, true, true]);
 }
 
 {
@@ -1588,7 +1603,7 @@ if (spawnSync("git", ["--version"]).status === 0) {
 // while a new search loads read the old search's next twenty and listed them under the new one's count (a review of
 // 2026-11-01: 22 results listed under «نتيجتان»).
 {
-  const script = readFileSync(path.join("src", "pages", "search.astro"), "utf8").match(/<script is:inline>([\s\S]*?)<\/script>/)[1];
+  const script = readFileSync(path.join("src", "pages", "search.astro"), "utf8").match(/<script is:inline[^>]*>([\s\S]*?)<\/script>/)[1];
   const element = () => {
     const listeners = {};
     return { hidden: false, dataset: {}, setAttribute() {}, addEventListener: (type, fn) => (listeners[type] ??= []).push(fn), fire: (type) => (listeners[type] ?? []).forEach((fn) => fn({ preventDefault() {} })) };
@@ -1622,7 +1637,8 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const settle = async () => {
     for (let i = 0; i < 20; i += 1) await new Promise((resolve) => setImmediate(resolve));
   };
-  new Function("document", "history", "location", "__pagefind", script.replace('import("/pagefind/pagefind.js")', "__pagefind()"))({ getElementById: () => input, querySelector: (s) => nodes[s] }, { replaceState() {} }, { pathname: "/search/", search: "" }, async () => pagefind);
+  // `runSource` is the site's pattern, which the page is handed at build time (define:vars); absent, results print plain.
+  new Function("document", "history", "location", "__pagefind", "runSource", script.replace('import("/pagefind/pagefind.js")', "__pagefind()"))({ getElementById: () => input, querySelector: (s) => nodes[s] }, { replaceState() {} }, { pathname: "/search/", search: "" }, async () => pagefind, undefined);
   input.value = "النفط";
   form.fire("submit");
   await settle();

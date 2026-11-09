@@ -132,7 +132,7 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
   {chart.series.length > 1 && (
     <ul class="chart__legend ui" aria-label="سلاسل البيانات">
       {chart.series.map((s, si) => (
-        <li><span class="chart__swatch" style={`background:${colors[si]}`} aria-hidden="true"></span>{s.name}</li>
+        <li><span class="chart__swatch" style={`background:${colors[si]}`} aria-hidden="true"></span><Fragment set:html={isolateNumbers(s.name)} /></li>
       ))}
     </ul>
   )}
@@ -216,7 +216,7 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
       {/* The categories as text under the plot, each under its own column or point: whole, wrapped to as many lines as
           they need at the site's small size. The drawing is announced by its title; the table below carries the data. */}
       <ol class="chart__cats" style={`--n:${n};--pl:${((PAD.left / W) * 100).toFixed(3)}%;--pr:${((PAD.right / W) * 100).toFixed(3)}%`} aria-hidden="true">
-        {chart.categories.map((c) => <li>{c}</li>)}
+        {chart.categories.map((c) => <li set:html={isolateNumbers(c)} />)}
       </ol>
     </>
   )}
@@ -227,13 +227,15 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
       <thead>
         <tr>
           <th scope="col">البند</th>
-          {chart.series.map((s) => <th scope="col">{s.name}</th>)}
+          {/* Every label of the drawing and its table is isolated as the bars' own labels are: «(15-30 م³)» read
+              «30-15» in the table under a bar that drew it right (2026-11-09). */}
+          {chart.series.map((s) => <th scope="col" set:html={isolateNumbers(s.name)} />)}
         </tr>
       </thead>
       <tbody>
         {chart.categories.map((c, i) => (
           <tr>
-            <th scope="row">{c}</th>
+            <th scope="row" set:html={isolateNumbers(c)} />
             {chart.series.map((s) => <td><bdi dir="ltr">{label(s.values[i])}</bdi></td>)}
           </tr>
         ))}

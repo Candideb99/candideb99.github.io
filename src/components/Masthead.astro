@@ -227,6 +227,13 @@ for (const s of sections) {
     });
   }
 
+  // A section reached by the keyboard is scrolled into the bar's view: on a phone the browser left a link the bar showed
+  // 8 of 72px of, its focus ring behind the search and menu buttons, until the tab reached «التكنولوجيا» (2026-11-09).
+  document.querySelector<HTMLElement>(".nav")?.addEventListener("focusin", (event) => {
+    const link = (event.target as HTMLElement).closest<HTMLElement>(".nav__link");
+    link?.scrollIntoView({ block: "nearest", inline: "nearest" });
+  });
+
   // The phone menu is a native disclosure; it also closes on Escape (focus back on its button) and on
   // a tap anywhere outside it.
   const menu = document.querySelector<HTMLDetailsElement>("[data-menu]");

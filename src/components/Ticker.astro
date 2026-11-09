@@ -67,7 +67,13 @@ const { items, label = "آخر الأخبار", lead = "time" } = Astro.props;
     if (!wrap) return;
     var vp = wrap.querySelector(".ticker__viewport");
     var list = wrap.querySelector(".ticker__list");
-    if (!vp || !list || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!vp || !list) return;
+    // A headline reached by the keyboard is brought fully into view, the strip moving or still: the browser leaves a
+    // half-shown link where it is, and the strip had stopped with the focused headline 156px past its edge (2026-11-09).
+    vp.addEventListener("focusin", function (e) {
+      if (e.target && e.target.scrollIntoView) e.target.scrollIntoView({ block: "nearest", inline: "nearest" });
+    });
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     // The list is printed twice; one period is the distance from the first headline to its
     // duplicate (the items' widths plus their gaps), measured again once the web fonts are in,
     // since the fallback face sets a different width.

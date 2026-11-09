@@ -6,6 +6,7 @@
  */
 import { formatShortDate } from "@lib/format";
 import { safeHref } from "@lib/safe-url.mjs";
+import { escapeHtml, isolateNumbers } from "@lib/bidi";
 
 interface Props {
   /** `url` is empty for an internal source whose article has since been retired: it is named, not linked. */
@@ -28,6 +29,9 @@ const latin = (t: string) => /[A-Za-z]/.test(t) && !/[؀-ۿ]/.test(t);
  *  2026-10-25), else English for Latin letters. */
 const titleLang = (s: { title: string; lang?: string }) =>
   s.lang && s.lang !== "ar" && /^[a-z]{2,3}(-[a-z0-9]+)*$/i.test(s.lang) ? s.lang : latin(s.title) ? "en" : undefined;
+/** A title in Arabic letters keeps its figures as the site prints them (2026-11-09: «12.7%» drew «%12.7» here while the
+ *  same headline read «12.7%» everywhere else); a Latin-script title is its own left-to-right line already. */
+const titleHtml = (title: string) => (/[؀-ۿ]/.test(title) ? isolateNumbers(title) : escapeHtml(title));
 ---
 
 <section class="sources" aria-labelledby="sources-title">
@@ -39,10 +43,10 @@ const titleLang = (s: { title: string; lang?: string }) =>
           <span class="sources__name ui">{s.name}</span>
           {s.url ? (
             <a class="sources__title" href={s.url} rel={s.url.startsWith("/") ? undefined : "noopener nofollow"} target={s.url.startsWith("/") ? undefined : "_blank"}>
-              <bdi lang={titleLang(s)}>{s.title}</bdi>
+              <bdi lang={titleLang(s)} set:html={titleHtml(s.title)} />
             </a>
           ) : (
-            <span class="sources__title"><bdi lang={titleLang(s)}>{s.title}</bdi></span>
+            <span class="sources__title"><bdi lang={titleLang(s)} set:html={titleHtml(s.title)} /></span>
           )}
           <span class="sources__host ui">
             {host(s.url) && <bdi dir="ltr">{host(s.url)}</bdi>}

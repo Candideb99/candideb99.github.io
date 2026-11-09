@@ -1,5 +1,8 @@
 ---
 import Base from "@layouts/Base.astro";
+import { RUN_PATTERN } from "@lib/bidi";
+// The site's own pattern for figures and Latin runs, handed to the page's plain script (src/lib/bidi.ts).
+const runSource = RUN_PATTERN.source;
 ---
 
 <Base title="بحث" description="ابحث في أرشيف خازندار" path="/search/" noindex>
@@ -33,7 +36,7 @@ import Base from "@layouts/Base.astro";
   </section>
 </Base>
 
-<script is:inline>
+<script is:inline define:vars={{ runSource }}>
   // Plain script on purpose: the Pagefind bundle is generated after the build and must not be touched by the bundler.
   (function () {
     var PAGE = 20;
@@ -63,6 +66,41 @@ import Base from "@layouts/Base.astro";
         return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
       });
     }
+    // isolate:start
+    // A result's headline and standfirst keep their figures and Latin names as every other page prints them
+    // (isolateNumbers() in src/lib/bidi.ts, its pattern handed in as `runSource`): escaped bare, «البالغ 5-7%» drew
+    // «%7-5», a range «3.5%-3.75%» «%3.75-%3.5» and «737-10» «10-737» (2026-11-09). A browser without the pattern's
+    // lookbehind keeps the plain text.
+    var RUN = null;
+    try {
+      if (typeof runSource === "string" && runSource) RUN = new RegExp(runSource, "gu");
+    } catch (error) {}
+    function latinParts(run) {
+      var head = "";
+      var core = run;
+      var tail = "";
+      function count(s, c) { return s.split(c).length - 1; }
+      for (;;) {
+        if (core.length > 1 && core.slice(-1) === ".") { tail = "." + tail; core = core.slice(0, -1); }
+        else if (core.slice(-1) === ")" && count(core, ")") > count(core, "(")) { tail = ")" + tail; core = core.slice(0, -1); }
+        else if (core.charAt(0) === "(" && count(core, "(") > count(core, ")")) { head = head + "("; core = core.slice(1); }
+        else return [head, core, tail];
+      }
+    }
+    function isolate(text) {
+      if (!RUN) return escape(text);
+      return String(text == null ? "" : text).split(RUN).map(function (piece, i) {
+        if (piece === undefined || piece === "") return "";
+        if (i % 3 === 0) return escape(piece);
+        if (i % 3 === 2) return '<bdi dir="ltr">' + escape(piece).replace(/^-/, "−") + "</bdi>";
+        var parts = latinParts(piece);
+        var core = escape(parts[1]);
+        var cls = core.trim().split(/\s+/).length <= 3 ? ' class="latin latin--short"' : ' class="latin"';
+        var held = core.replace(/[^\s]*[\p{L}\p{N}]-[\p{L}\p{N}][^\s]*/gu, function (word) { return '<span class="nb">' + word + "</span>"; });
+        return escape(parts[0]) + '<bdi dir="ltr"' + cls + ">" + held + "</bdi>" + escape(parts[2]);
+      }).join("");
+    }
+    // isolate:end
     function load() {
       if (pagefind) return Promise.resolve(pagefind);
       return import("/pagefind/pagefind.js")
@@ -119,8 +157,8 @@ import Base from "@layouts/Base.astro";
       var meta = d.meta || {};
       return (
         '<li class="search__item" data-section="' + escape(meta.section) + '">' +
-        '<a class="search__title" href="' + escape(d.url) + '">' + escape(meta.title) + "</a>" +
-        (meta.summary ? '<p class="search__excerpt">' + escape(meta.summary) + "</p>" : "") +
+        '<a class="search__title" href="' + escape(d.url) + '">' + isolate(meta.title) + "</a>" +
+        (meta.summary ? '<p class="search__excerpt">' + isolate(meta.summary) + "</p>" : "") +
         '<p class="meta">' + (meta.sectionName ? '<a href="/' + escape(meta.section) + '/">' + escape(meta.sectionName) + "</a>" : "") + (meta.date ? "<time>" + escape(meta.date) + "</time>" : "") + "</p>" +
         "</li>"
       );

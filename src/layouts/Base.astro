@@ -196,10 +196,33 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
             }
           }
         }
+        // The agenda's days likewise (Agenda.astro, relativeDay() in lib/calendar.ts): «اليوم», «غداً» or the day's name,
+        // and an event whose day has passed leaves the list.
+        function agenda() {
+          var days = document.querySelectorAll("[data-agenda-day]");
+          if (!days.length) return;
+          var map = partsIn(new Date());
+          var todayIso = map.year + "-" + pad(Number(map.month)) + "-" + pad(Number(map.day));
+          for (var i = 0; i < days.length; i++) {
+            var date = days[i].getAttribute("data-agenda-day");
+            var diff = Math.round((Date.parse(date) - Date.parse(todayIso)) / 86400000);
+            if (!isFinite(diff)) continue;
+            var item = days[i].closest(".agenda__item");
+            // The row's own `display: grid` outranks the hidden attribute, so it is put away by its style.
+            if (diff < 0) {
+              if (item) item.style.display = "none";
+              continue;
+            }
+            var d = new Date(date + "T12:00:00Z");
+            var label = diff === 0 ? "اليوم" : diff === 1 ? "غداً" : DAYS[d.getUTCDay()] + " " + d.getUTCDate() + " " + MONTHS[d.getUTCMonth()] + (date.slice(0, 4) === todayIso.slice(0, 4) ? "" : " " + d.getUTCFullYear());
+            if (days[i].textContent !== label) days[i].textContent = label;
+          }
+        }
         tick();
         masthead();
+        agenda();
         // The date line turns with the clock too: a page left open past midnight kept yesterday's date (2026-10-29).
-        setInterval(function () { tick(); masthead(); }, 60000);
+        setInterval(function () { tick(); masthead(); agenda(); }, 60000);
       })();
     </script>
     <script is:inline>

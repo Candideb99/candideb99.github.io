@@ -23,7 +23,9 @@ const events = upcoming(limit);
         const at = localTime(e);
         return (
           <li class="agenda__item" title={`${e.org}${at ? ` · ${at} ${site.timeZoneLabel}` : ""}${e.note ? ` · ${e.note}` : ""}`}>
-            <span class="agenda__day ui">{relativeDay(e.date)}</span>
+            {/* The day is written at build time and turned with the clock in the page (Base.astro): between midnight and
+                the next build it had called yesterday's decision «اليوم» and today's «غداً» (2026-11-09). */}
+            <span class="agenda__day ui" data-agenda-day={e.date}>{relativeDay(e.date)}</span>
             <a class="agenda__title" href="/calendar/">{e.short ?? e.title}</a>
           </li>
         );
