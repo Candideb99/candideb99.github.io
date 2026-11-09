@@ -13994,6 +13994,153 @@
           ]
         }
       ]
+    },
+    "maaden-q3-profit-falls-sulfur-costs-5c47b9": {
+      "at": "2026-11-09T09:56:09.793Z",
+      "title": "أرباح «معادن» السعودية تتراجع 23.7% في الربع الثالث مع غلاء الكبريت",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v60",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 37,
+            "checked": 37,
+            "supported": 34,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "saudi-ports-container-volumes-rise-14-percent-5651dd": {
+      "at": "2026-11-09T10:00:51.151Z",
+      "title": "مناولة الحاويات في الموانئ السعودية ترتفع 14% في أكتوبر مع تحوّل مسارات الشحن",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v60",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 10,
+            "checked": 10,
+            "supported": 9,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "china-extends-us-tariff-suspension-two-months-ec7ccf": {
+      "at": "2026-11-09T10:13:03.837Z",
+      "title": "الصين تمدد تعليق رسوم 24% على السلع الأمريكية شهرين إضافيين",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v60",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 18,
+            "checked": 18,
+            "supported": 16,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 12,
+              "field": "body",
+              "class": "period",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "فرضت الصين رسوم الـ24% لأول مرة في أبريل 2025 على بعض الواردات الأمريكية، ثم علّقتها لفترة قصيرة بعد عدة جولات من المفاوضات، قبل أن يتوصل الرئيسان الأمريكي دونالد ترامب والصيني شي جين بينغ إلى هدنة تجارية أوسع في بوسان في أكتوبر 2025.",
+              "quote": "ثم توصل الرئيسان الأمريكي دونالد ترامب والصيني شي جين بينج إلى هدنة تجارية أوسع في بوسان خلال شهر أكتوبر الماضي.",
+              "source": "Al Bayan",
+              "sourceN": 2,
+              "correction": "Al Bayan, published on 2026-11-09, dates the Busan truce to \"last October\", which relative to publication means October 2026, not October 2025."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 18,
+            "checked": 18,
+            "supported": 17,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "nvidia-shares-fall-board-probe-jensen-huang-9900e0": {
+      "at": "2026-11-09T10:23:24.108Z",
+      "title": "سهم إنفيديا يهبط نحو 5% إثر تحقيق في علاقة رئيسها التنفيذي بمتهمة بالتجسس",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v60",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 25,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

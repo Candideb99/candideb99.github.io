@@ -1,0 +1,105 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-09T09:42:25.172Z",
+  "durationSec": 96,
+  "read": 3,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "uae-non-oil-trade-nears-3-trillion-ca042e",
+      "title": "تجارة الإمارات غير النفطية تقترب من 3 تريليونات درهم في 9 أشهر",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 13,
+        "checked": 13,
+        "supported": 13,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "gold-erases-friday-losses-oil-falls-2282bb",
+      "title": "الذهب يمحو خسائر الجمعة بصعود يتجاوز 1% مع امتداد هبوط النفط",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 30,
+        "checked": 30,
+        "supported": 24,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "china-producer-inflation-highest-since-2022-1c1e71",
+      "title": "تضخم المنتجين في الصين يقفز إلى 5.7%، أعلى مستوى منذ 2022",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 23,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 3,
+    "failures": 0,
+    "promptTokens": 26749,
+    "completionTokens": 20994,
+    "cacheReadTokens": 0,
+    "costUsd": 0.6339,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 3
+    },
+    "byRole": {
+      "checker": {
+        "calls": 3,
+        "in": 26749,
+        "read": 0,
+        "out": 20994,
+        "usd": 0.6339
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[09:42:26] second look: 3 to read now (3 published pieces not yet read; 229 read clean before publication and left out of the audit sample)",
+    "[09:42:26] gold-erases-friday-losses-oil-falls-2282bb:   source https://www.bloomberg.com/news/articles/2026-11-08/gold-holds-decline-as-us-jobs: http-403; read from the copy saved at publication (fetched then)",
+    "[09:43:06] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2417 in=9933 read=0 out=5245 attempt=1 ms=38336",
+    "[09:43:06] uae-non-oil-trade-nears-3-trillion-ca042e: 13 of 13 sentences checked · 13 supported · 0 without a source · 0 confirmed error(s)",
+    "[09:43:06] china-producer-inflation-highest-since-2022-1c1e71:   source https://www.bloomberg.com/news/articles/2026-11-09/chinese-producer-inflation-so: http-403; read from the copy saved at publication (fetched then)",
+    "[09:43:06] china-producer-inflation-highest-since-2022-1c1e71:   source https://www.ekonomim.com/kuresel-ekonomi/cinde-uretici-enflasyonu-45-yilin-zirve: http-403; read from the copy saved at publication (fetched then)",
+    "[09:43:30] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2499 in=9153 read=0 out=8443 attempt=1 ms=62230",
+    "[09:43:30] gold-erases-friday-losses-oil-falls-2282bb: 30 of 30 sentences checked · 24 supported · 0 without a source · 0 confirmed error(s) · 2 listed for a person",
+    "[09:44:00] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2474 in=7663 read=0 out=7306 attempt=1 ms=53469",
+    "[09:44:00] china-producer-inflation-highest-since-2022-1c1e71: 25 of 25 sentences checked · 23 supported · 1 without a source · 0 confirmed error(s)"
+  ]
+}

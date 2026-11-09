@@ -244,10 +244,11 @@
     "sp-500-biggest-weekly-loss-ai-midterms-f9fb82:43da44aa",
     "egypt-sisi-orders-strategic-stockpile-study-c53757:16a38807",
     "gulf-states-sign-railway-link-agreement-36de9b:069419b4",
-    "egypt-fertilizer-gas-cuts-reserves-discovery-248ff1:ed4c2f70"
+    "egypt-fertilizer-gas-cuts-reserves-discovery-248ff1:ed4c2f70",
+    "gold-erases-friday-losses-oil-falls-2282bb:9500b357"
   ],
-  "version": 59,
-  "updatedAt": "2026-11-08T22:15:57.702Z",
+  "version": 60,
+  "updatedAt": "2026-11-09T09:44:01.007Z",
   "lessons": [
     {
       "id": "L1",
@@ -372,11 +373,12 @@
         "china-factory-pmi-contracts-october-64c344:123b6f44",
         "egypt-first-locally-assembled-electric-car-f79ba4:463d16b5",
         "saudi-economy-contraction-slows-third-quarter-aba15b:14943288",
-        "saudi-uae-expand-oil-outlets-bypassing-hormuz-fd8a9b:81a32522"
+        "saudi-uae-expand-oil-outlets-bypassing-hormuz-fd8a9b:81a32522",
+        "gold-erases-friday-losses-oil-falls-2282bb:9500b357"
       ],
-      "seen": 55,
+      "seen": 56,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-11-04T23:46:15.324Z",
+      "lastSeen": "2026-11-09T09:44:01.007Z",
       "status": "active",
       "previous": [
         "Credit each fact to whom the source credits and name the originating outlet. An outlet's inference ('implying', 'suggesting') is not the official's own statement. An interview is not a statement. Add no conclusion the speaker did not draw.",
@@ -1284,6 +1286,13 @@
       "applied": [
         "reinforce L6 (+1; reworded at most once a week)",
         "reinforce L12 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-11-09T09:44:01.007Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L2 (+1; reworded at most once a week)"
       ]
     }
   ],
