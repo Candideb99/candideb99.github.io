@@ -1,7 +1,7 @@
 ---
 /**
- * The market strip under the section bar, the way the business dailies' sites run theirs: nine
- * reference numbers, still, in the furniture face, each as its move on the day (the level is the
+ * The market strip under the section bar, the way the business dailies' sites run theirs: eight
+ * reference numbers (STRIP_IDS), still, in the furniture face, each as its move on the day (the level is the
  * tooltip; a yield prints its level, which is the number that matters). Every item links to the board.
  */
 import { board, quotes, STRIP_IDS, formatPrice, formatMove, direction, DIRECTION_LABEL } from "@lib/markets";
@@ -25,7 +25,7 @@ const items = quotes(STRIP_IDS.filter((id) => !omit.includes(id)));
           const dir = direction(q);
           return (
             <li class="markets__item">
-              <a class="q" href="/markets/data/" title={`${q.name}${q.note ? ` (${q.note})` : ""}: ${formatPrice(q)}`}>
+              <a class={q.stale ? "q q--stale" : "q"} href="/markets/data/" title={`${q.name}${q.note ? ` (${q.note})` : ""}: ${formatPrice(q)}`}>
                 <span class="q__name">{q.short}</span>
                 {(q.changeMode === "abs" || dir === "none") && <bdi class="q__price">{formatPrice(q)}</bdi>}
                 {dir !== "none" && (
@@ -68,6 +68,9 @@ const items = quotes(STRIP_IDS.filter((id) => !omit.includes(id)));
   .q__move--up { color: var(--up); }
   .q__move--down { color: var(--down); }
   .q__move--flat { color: var(--ink-3); }
+  /* A quote the last refresh did not reach is faded here too, as on the board (its note says so): the strip had printed
+     a days-old move in the day's colours. */
+  .q--stale .q__move, .q--stale .q__price { color: var(--ink-3); }
   .markets__time { flex: none; font-size: var(--fs-xs); color: var(--ink-3); white-space: nowrap; padding-inline-start: 0.75rem; border-inline-start: 1px solid var(--rule); }
   .markets__time time { color: inherit; }
   @media (max-width: 719px) {

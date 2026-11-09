@@ -150,9 +150,15 @@ export function whenLabel(q: Quote): string {
   return `${formatShortDate(q.time)} ${formatTime(q.time)}`;
 }
 
-/** Points for a small line of the instrument's closes, or null when there are too few to draw. */
+/**
+ * Points for a small line of the instrument's closes in the last month, as the data page's note says, or null when there
+ * are too few to draw. The record keeps thirty sessions, six weeks of a weekday market, and the line had drawn them all.
+ */
 export function sparkline(q: Quote, width = 96, height = 28, pad = 1.5): { points: string; days: number } | null {
-  const values = (q.history ?? []).map((p) => p.c).filter((v) => Number.isFinite(v));
+  const closes = (q.history ?? []).filter((p) => Number.isFinite(p.c) && /^\d{4}-\d{2}-\d{2}$/.test(p.d));
+  if (!closes.length) return null;
+  const from = new Date(Date.parse(`${closes[closes.length - 1].d}T00:00:00Z`) - 31 * 86400000).toISOString().slice(0, 10);
+  const values = closes.filter((p) => p.d > from).map((p) => p.c);
   if (values.length < 5) return null;
   const min = Math.min(...values);
   const max = Math.max(...values);

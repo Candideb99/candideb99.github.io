@@ -72,35 +72,144 @@ async function yahooChart(symbol, range) {
 }
 
 function barsOf(result) {
-  const stamps = result.timestamp || [];
-  const closes = result.indicators?.quote?.[0]?.close || [];
-  return stamps.map((t, i) => ({ d: new Date(t * 1000).toISOString().slice(0, 10), c: closes[i] })).filter((b) => Number.isFinite(b.c));
+  const stamps = result?.timestamp || [];
+  const closes = result?.indicators?.quote?.[0]?.close || [];
+  return stamps.map((t, i) => ({ t: t * 1000, c: closes[i] })).filter((b) => Number.isFinite(b.t) && Number.isFinite(b.c));
+}
+
+/** A moment's date (YYYY-MM-DD) in a time zone; an unknown zone reads as UTC. */
+function dateIn(ms, timeZone) {
+  try {
+    return new Intl.DateTimeFormat("en-CA", { timeZone: timeZone || "UTC", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date(ms));
+  } catch {
+    return new Date(ms).toISOString().slice(0, 10);
+  }
+}
+const weekdayOf = (day) => new Date(`${day}T12:00:00Z`).getUTCDay();
+const dayAfter = (day, step = 1) => new Date(Date.parse(`${day}T12:00:00Z`) + step * 86400000).toISOString().slice(0, 10);
+
+/**
+ * The weekdays (0 is Sunday) a market holds sessions on, from an instrument of the board or from Yahoo's answer: the Saudi
+ * and Egyptian exchanges Sunday to Thursday, crypto every day, every other market Monday to Friday.
+ */
+export function tradingWeekdays({ id, group, instrumentType, exchangeTimezoneName } = {}) {
+  if (id === "btc" || instrumentType === "CRYPTOCURRENCY") return [0, 1, 2, 3, 4, 5, 6];
+  if (group === "arab" || /^(?:Asia\/Riyadh|Africa\/Cairo)$/.test(exchangeTimezoneName ?? "")) return [0, 1, 2, 3, 4];
+  return [1, 2, 3, 4, 5];
+}
+
+/** Whether a stored date is a day the market holds a session on. */
+export function isSessionDay(day, market) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(String(day ?? "")) && tradingWeekdays(market).includes(weekdayOf(day));
 }
 
 /**
- * Two chart calls: a one-day range, whose `chartPreviousClose` is the close before that session
- * (over a longer range it is the close before the range's first bar, which misled the first
- * version by a week), and a three-month range for the line of daily closes, best effort.
+ * The session a moment belongs to, as the date Yahoo files its daily bar under (2026-11-09). A future's trading day opens
+ * at 18:00 New York time, so Sunday evening's prices are Monday's session (Yahoo stamps that bar on Monday); every other
+ * market's day is its exchange's own calendar day. A moment on a day the market holds no session (a currency quoted on a
+ * Saturday, the dollar index's Sunday evening) belongs to the next session. Dating a Sunday evening's price by its own
+ * date had left a point in the history no bar ever replaced: Brent "closed" on three Sundays of October, the dollar
+ * against the yen on a Saturday.
+ */
+export function sessionDay(meta, ms) {
+  let day = meta?.instrumentType === "FUTURE" ? dateIn(ms + 6 * 3600000, "America/New_York") : dateIn(ms, meta?.exchangeTimezoneName);
+  for (let i = 0; i < 6 && !isSessionDay(day, meta); i++) day = dayAfter(day);
+  return day;
+}
+
+/**
+ * Two chart calls: a one-day range for the latest price, and three months of daily closes. The move is measured from
+ * the close of the session before the quote's own, read from the daily closes (2026-11-09). The one-day range's
+ * `chartPreviousClose` had been the move's base, and it is the close before the range's day, which is not always the
+ * quote's: between a market's new day and its first trade, the range holds an empty day, its previous close is the
+ * quote's own close, and the board printed every commodity "unchanged, 0.00%" on Sunday evening (Brent's +0.03%,
+ * gold's −0.94% of Friday), wheat the same all night, and the Nikkei at 0.00% for the twenty minutes after Tokyo opened
+ * on Monday, beside its 5.97% fall of Friday. An index Yahoo keeps one bar for (the Saudi and Egyptian ones) has no
+ * daily closes to read: its move is the feed's previous close, which the board checks against its own record
+ * (`recordedPrev()`). A quote older than a session the daily closes already hold is stale and refused: on 8 November
+ * the one-day answer for natural gas gave a time of 15 October and a previous close of 3.533 beside Friday's price of
+ * 2.998, and the board printed −15.14% dated 15 October.
  */
 export async function yahooQuote(symbol) {
   const today = await yahooChart(symbol, "1d");
-  const meta = today.meta;
-  // A field Yahoo leaves empty is no price: Number(null) is 0, and a price of 0 reached the board and the stories'
-  // market data (a review of 2026-11-01).
-  const price = typeof meta.regularMarketPrice === "number" ? meta.regularMarketPrice : NaN;
-  const time = typeof meta.regularMarketTime === "number" ? meta.regularMarketTime : NaN;
-  if (!Number.isFinite(price) || !Number.isFinite(time)) throw new Error("no price");
-  let prev = Number(meta.chartPreviousClose);
-  if (!Number.isFinite(prev) || prev <= 0) prev = null;
-  let history = barsOf(today);
   // Whether the three months were read: a one-day bar is not evidence that a feed keeps no daily closes (context.mjs
   // quoteLine(); the review of 2026-10-30: a failed call took gold's and Brent's moves away).
-  let historyRead = false;
+  let months = null;
   try {
-    history = barsOf(await yahooChart(symbol, "3mo"));
-    historyRead = true;
+    months = await yahooChart(symbol, "3mo");
   } catch {}
-  return { price, prev, time: new Date(time * 1000).toISOString(), currency: meta.currency || null, history, historyRead };
+  // A field Yahoo leaves empty is no price: Number(null) is 0, and a price of 0 reached the board and the stories'
+  // market data (a review of 2026-11-01). Of the two answers, the newer price.
+  const priced = (m) => typeof m?.regularMarketPrice === "number" && Number.isFinite(m.regularMarketPrice) && typeof m.regularMarketTime === "number" && Number.isFinite(m.regularMarketTime);
+  const meta = [today.meta, months?.meta].filter(priced).sort((a, b) => b.regularMarketTime - a.regularMarketTime)[0];
+  if (!meta) throw new Error("no price");
+  const price = meta.regularMarketPrice;
+  const ms = meta.regularMarketTime * 1000;
+  const day = sessionDay(meta, ms);
+  // One close per session, the latest bar of a session winning (the dollar index's Sunday evening and its Monday).
+  const closes = new Map();
+  for (const bar of barsOf(months)) closes.set(sessionDay(meta, bar.t), bar.c);
+  const later = [...closes.keys()].filter((d) => d > day).sort();
+  if (later.length) throw new Error(`stale quote: dated ${day}, the daily closes reach ${later.at(-1)}`);
+  const before = [...closes.entries()].filter(([d]) => d < day).sort(([a], [b]) => (a < b ? -1 : 1));
+  // The feed's own previous close, usable only when its one-day range holds the quote's session (before a session's
+  // first trade the range is the new, empty day, and its previous close is the quote's own close).
+  const own = barsOf(today).some((bar) => sessionDay(meta, bar.t) === day);
+  const feed = Number(today.meta?.chartPreviousClose);
+  const feedUsable = own && Number.isFinite(feed) && feed > 0;
+  let lastSession = dayAfter(day, -1);
+  for (let i = 0; i < 6 && !isSessionDay(lastSession, meta); i++) lastSession = dayAfter(lastSession, -1);
+  // `prevFrom`: "bars" from the daily closes; "feed" from the feed when the daily closes miss the session before the
+  // quote's (Yahoo left bitcoin's Sunday bar empty on 8 November, and Saturday's close would have made Monday's move two
+  // days long); "unchecked" from the feed with no daily closes to hold it against, which the board checks against its
+  // own record (`recordedPrev()`) and the newsroom does not print (context.mjs, quoteLine()).
+  let prev = null;
+  let prevFrom = null;
+  if (before.length >= 4 && (before.at(-1)[0] === lastSession || !feedUsable)) {
+    prev = before.at(-1)[1];
+    prevFrom = "bars";
+  } else if (feedUsable) {
+    prev = feed;
+    prevFrom = before.length >= 4 ? "feed" : "unchecked";
+  }
+  const history = [...before.map(([d, c]) => ({ d, c })), { d: day, c: price }];
+  return { price, prev, prevFrom, time: new Date(ms).toISOString(), session: day, currency: meta.currency || null, history, historyRead: Boolean(months) };
+}
+
+const sameClose = (a, b) => Math.abs(a - b) <= Math.abs(b) * 0.0005;
+
+/**
+ * The previous close of an index Yahoo keeps one daily bar for (the Saudi and Egyptian ones), checked against the board's
+ * own record of its closes (2026-11-09): the feed's figure when it is the record's last close before the quote's session,
+ * the record's last close when the feed's is an earlier one, and none when the two cannot be matched. The feed is
+ * sometimes a session stale: on Sunday 8 November it gave the EGX30's close of Wednesday the 4th, and the board printed the
+ * index up 0.32% where it had lost 0.67% from Thursday's close (on 25 October the same fault had put a 6.85% fall in a
+ * story for 3.56%).
+ */
+export function recordedPrev(inst, quote, record = []) {
+  if (!Number.isFinite(quote?.prev) || !quote.session) return null;
+  const closes = record.filter((p) => p && Number.isFinite(p.c) && isSessionDay(p.d, inst) && p.d < quote.session).sort((a, b) => (a.d < b.d ? -1 : 1));
+  const last = closes.at(-1);
+  if (!last) return null;
+  if (sameClose(quote.prev, last.c)) return quote.prev;
+  if (closes.slice(0, -1).some((p) => sameClose(quote.prev, p.c))) return last.c;
+  return null;
+}
+
+/**
+ * An instrument's daily closes for its line: the stored record, the fresh closes over it, and the quote's own session,
+ * the last thirty sessions. A stored point on a day the market holds no session is dropped: a price dated by its own day
+ * rather than its session's had left Sunday "closes" in Brent's line that no bar of Yahoo's ever replaced.
+ */
+export function mergeHistory(inst, old = [], fresh = [], quote = null) {
+  const byDate = new Map();
+  const usable = (p) => p && Number.isFinite(p.c) && isSessionDay(p.d, inst);
+  for (const p of old ?? []) if (usable(p)) byDate.set(p.d, p.c);
+  for (const p of fresh ?? []) if (usable(p)) byDate.set(p.d, p.c);
+  // A feed that answers with the price alone still adds its session's point.
+  if (quote && Number.isFinite(quote.price) && isSessionDay(quote.session, inst)) byDate.set(quote.session, quote.price);
+  const round = (v) => Number(v.toFixed(inst.decimals + 2));
+  return [...byDate.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1)).slice(-30).map(([d, c]) => ({ d, c: round(c) }));
 }
 
 export function withChange(inst, quote) {

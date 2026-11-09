@@ -29,7 +29,7 @@ const stroke = dir === "up" ? "var(--up)" : dir === "down" ? "var(--down)" : "va
     )}
   </span>
   {spark && (
-    <svg class="quote__spark" viewBox="0 0 96 28" width="96" height="28" aria-label={`مسار ${spark.days} يوماً`} role="img">
+    <svg class="quote__spark" viewBox="0 0 96 28" width="96" height="28" aria-label="مسار الإغلاق اليومي في الشهر الأخير" role="img">
       <polyline points={spark.points} fill="none" stroke={stroke} stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
     </svg>
   )}

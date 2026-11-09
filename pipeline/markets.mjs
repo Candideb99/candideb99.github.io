@@ -14,23 +14,12 @@
  */
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
-import { INSTRUMENTS, fetchJson, withChange, yahooQuote } from "./lib/quotes.mjs";
+import { INSTRUMENTS, fetchJson, mergeHistory, recordedPrev, withChange, yahooQuote } from "./lib/quotes.mjs";
 
 export { INSTRUMENTS };
 
 const OUT = path.resolve("src/data/markets.json");
 const CHECK = process.argv.includes("--check");
-
-/** The stored closes merged with the fresh bars, by date, the last thirty trading days. */
-function mergeHistory(inst, old = [], fresh = [], quote) {
-  const byDate = new Map();
-  for (const p of old) if (p && Number.isFinite(p.c)) byDate.set(p.d, p.c);
-  for (const p of fresh) if (p && Number.isFinite(p.c)) byDate.set(p.d, p.c);
-  // A feed that answers with the price alone still adds today's point.
-  if (quote && Number.isFinite(quote.price) && quote.time) byDate.set(quote.time.slice(0, 10), quote.price);
-  const round = (v) => Number(v.toFixed(inst.decimals + 2));
-  return [...byDate.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1)).slice(-30).map(([d, c]) => ({ d, c: round(c) }));
-}
 
 /** Daily reference rates as a fallback for currencies (no change figure; the board prints the rate alone). */
 async function referenceRates() {
@@ -66,7 +55,11 @@ async function main() {
 
   const results = await pool(INSTRUMENTS, 4, async (inst) => {
     try {
-      const quote = withChange(inst, await yahooQuote(inst.symbol));
+      const raw = await yahooQuote(inst.symbol);
+      // An index Yahoo keeps one bar for: its previous close only when the board's own record bears it out.
+      const prev = raw.prevFrom === "unchecked" ? recordedPrev(inst, raw, previousById.get(inst.id)?.history) : raw.prev;
+      const quote = withChange(inst, { ...raw, prev });
+      delete quote.prevFrom;
       return { inst, quote: { ...quote, source: "yahoo", stale: false }, ok: true };
     } catch (error) {
       return { inst, error: String(error.message || error), ok: false };
@@ -96,6 +89,7 @@ async function main() {
     const history = mergeHistory(inst, old?.history, quote.history, quote.stale ? null : quote);
     delete quote.history;
     delete quote.historyRead;
+    delete quote.session;
     quotes.push({ id: inst.id, symbol: inst.symbol, name: inst.name, short: inst.short ?? inst.name, note: inst.note ?? null, group: inst.group, unit: inst.unit ?? null, decimals: inst.decimals, changeMode: inst.changeMode ?? "pct", ...quote, history });
   }
 

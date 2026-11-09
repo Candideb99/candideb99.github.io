@@ -23,7 +23,7 @@ import { loadSources, quoteFound, settleChanged, settleDrift, verifyStory } from
 import { extractArticle, readArticleHtml } from "../pipeline/lib/extract.mjs";
 import { labelLine, outletLabels, quotedOutletsBlock, unlabelledOutlets } from "../pipeline/lib/outlets.mjs";
 import { instrumentsOf, macroMarketOf, marketData, repeatsInstrument } from "../pipeline/lib/context.mjs";
-import { yahooQuote } from "../pipeline/lib/quotes.mjs";
+import { INSTRUMENTS, mergeHistory, recordedPrev, yahooQuote } from "../pipeline/lib/quotes.mjs";
 import { independentOutletCount } from "../pipeline/lib/news-evidence.mjs";
 import { boxFacts, figureOnly } from "../pipeline/lib/keyfacts.mjs";
 import { deskNotes, explainingFacts, keepDataChart, newsDepthBrief, newsFloor, normalizeChart, normalizeDraft, paperNotes, prioritizeContext, substantiveFacts, validateDraft, validateWhyBasis, writePaperReading } from "../pipeline/lib/write.mjs";
@@ -1654,6 +1654,73 @@ if (spawnSync("git", ["--version"]).status === 0) {
     }
   };
   check("a missing price or time is no price, never zero", [await priceOf({ regularMarketPrice: null, regularMarketTime: 1761900000 }), await priceOf({ regularMarketPrice: 61.2, regularMarketTime: null }), await priceOf({ regularMarketPrice: 61.2, regularMarketTime: 1761900000 })], ["no price", "no price", 61.2]);
+}
+
+// The board's moves and lines (2026-11-09: every commodity "0.00%" on Sunday evening, the Nikkei 0.00% after Tokyo
+// opened, natural gas −15.14% dated 15 October, the EGX30 up 0.32% where it had lost 0.67%, Sunday "closes" in Brent's
+// line). Each case is Yahoo's own answer of that night, cut down: a one-day range and three months of daily closes.
+{
+  const realFetch = globalThis.fetch;
+  const at = (iso) => Date.parse(iso) / 1000;
+  const chart = (meta, bars) => ({ chart: { result: [{ meta: { ...meta, regularMarketTime: at(meta.time) }, timestamp: bars.map(([t]) => at(t)), indicators: { quote: [{ close: bars.map(([, c]) => c) }] } }] } });
+  const weekdays = (from, to, hour, closes) => {
+    const out = [];
+    for (let t = Date.parse(`${from}T${hour}Z`), i = 0; t <= Date.parse(`${to}T${hour}Z`); t += 86400000) {
+      const day = new Date(t).getUTCDay();
+      if (day !== 0 && day !== 6) out.push([new Date(t).toISOString(), closes[i++] ?? 100]);
+    }
+    return out;
+  };
+  const quoteOf = async (meta, todayBars, monthBars) => {
+    globalThis.fetch = async (url) => new Response(JSON.stringify(String(url).includes("range=1d") ? chart(meta, todayBars) : chart(meta, monthBars)), { status: 200, headers: { "content-type": "application/json" } });
+    try {
+      return await yahooQuote("TEST");
+    } catch (error) {
+      return { error: error.message };
+    } finally {
+      globalThis.fetch = realFetch;
+    }
+  };
+  // Tokyo at 09:04 on Monday: the one-day range is the new, empty day, its previous close Friday's own close.
+  const tokyo = { instrumentType: "INDEX", exchangeTimezoneName: "Asia/Tokyo", regularMarketPrice: 57434.77, time: "2026-11-06T06:45:02Z", chartPreviousClose: 57434.77 };
+  const nikkei = await quoteOf(tokyo, [], [...weekdays("2026-10-26", "2026-11-04", "00:00:00", [62189.65, 63268.37, 63954.19, 64659.47, 63290.11, 63081.86, 62500, 62188.63]), ["2026-11-05T00:00:00Z", 61077.9], ["2026-11-06T00:00:00Z", 57434.77], ["2026-11-09T00:00:00Z", null]]);
+  check("before a session's first trade, the last session keeps its move", [nikkei.session, nikkei.prev, nikkei.prevFrom], ["2026-11-06", 61077.9, "bars"]);
+  // Brent at 23:54 GMT on Sunday: Monday's session, measured from Friday's close, and no Sunday point in its line.
+  const sunday = { instrumentType: "FUTURE", exchangeTimezoneName: "America/New_York", regularMarketPrice: 97.69, time: "2026-11-08T23:54:04Z", chartPreviousClose: 98.32 };
+  const brent = await quoteOf(sunday, [["2026-11-08T23:54:04Z", 97.69]], [...weekdays("2026-10-26", "2026-11-06", "05:00:00", [115.81, 113.88, 115.32, 114.88, 117.64, 104.77, 103.6, 94.62, 98.29, 98.32]), ["2026-11-08T23:54:04Z", 97.69]]);
+  check("a Sunday evening's futures price is Monday's session, measured from Friday", [brent.session, brent.prev, brent.history.some((p) => p.d === "2026-11-08"), brent.history.at(-1)], ["2026-11-09", 98.32, false, { d: "2026-11-09", c: 97.69 }]);
+  // Before Wednesday's first trade the old base was the quote's own close: wheat "unchanged" all of Sunday night.
+  const wheat = await quoteOf({ instrumentType: "FUTURE", exchangeTimezoneName: "America/New_York", regularMarketPrice: 591.25, time: "2026-11-06T19:19:59Z", chartPreviousClose: 591.25 }, [], weekdays("2026-10-26", "2026-11-06", "05:00:00", [610, 605, 603.5, 606.5, 603.5, 606.5, 599.75, 598.5, 599.25, 591.25]));
+  check("a market that has not traded today keeps its last session's move", [wheat.session, wheat.prev], ["2026-11-06", 599.25]);
+  // Natural gas: a time of 15 October beside daily closes up to 6 November is refused, not printed as −15.14%.
+  const gas = await quoteOf({ instrumentType: "FUTURE", exchangeTimezoneName: "America/New_York", regularMarketPrice: 2.998, time: "2026-10-15T20:59:57Z", chartPreviousClose: 3.533 }, [], weekdays("2026-10-12", "2026-11-06", "05:00:00", []));
+  check("a quote older than the feed's own daily closes is refused", /^stale quote/.test(gas.error ?? ""), true);
+  // The euro on Sunday at 19:15 GMT: Monday's session, measured from Friday's close (Yahoo's base was a Sunday quote).
+  const euro = await quoteOf({ instrumentType: "CURRENCY", exchangeTimezoneName: "Europe/London", regularMarketPrice: 1.1148, time: "2026-11-08T19:15:31Z", chartPreviousClose: 1.1218 }, [["2026-11-08T19:15:31Z", 1.1148]], weekdays("2026-10-26", "2026-11-06", "00:00:00", [1.1218, 1.1174, 1.113, 1.1156, 1.1183, 1.1157, 1.1192, 1.1207, 1.1235, 1.1228]));
+  check("a currency quoted at the weekend belongs to Monday, measured from Friday", [euro.session, euro.prev, euro.prevFrom], ["2026-11-09", 1.1228, "bars"]);
+  // Bitcoin with Sunday's bar empty: the feed's own Sunday close, not Saturday's.
+  const coin = await quoteOf({ instrumentType: "CRYPTOCURRENCY", exchangeTimezoneName: "UTC", regularMarketPrice: 74723.66, time: "2026-11-09T00:14:48Z", chartPreviousClose: 74719.82 }, [["2026-11-09T00:14:48Z", 74723.66]], [["2026-11-03T00:00:00Z", 77345.05], ["2026-11-04T00:00:00Z", 80405.29], ["2026-11-05T00:00:00Z", 75942.13], ["2026-11-06T00:00:00Z", 75746.93], ["2026-11-07T00:00:00Z", 75747.58], ["2026-11-08T00:00:00Z", null], ["2026-11-09T00:00:00Z", 74723.66]]);
+  check("a session missing from the daily closes takes the feed's previous close", [coin.prev, coin.prevFrom], [74719.82, "feed"]);
+  // The EGX30: one bar in three months, and the feed's previous close a session stale.
+  const egxMeta = { instrumentType: "INDEX", exchangeTimezoneName: "Africa/Cairo", regularMarketPrice: 50812.1, time: "2026-11-08T12:25:01Z", chartPreviousClose: 50650.2 };
+  const egx = await quoteOf(egxMeta, [["2026-11-08T12:25:01Z", 50812.1]], [["2026-11-08T12:25:01Z", 50812.1]]);
+  check("an index with one bar has an unchecked previous close", [egx.session, egx.prev, egx.prevFrom], ["2026-11-08", 50650.2, "unchecked"]);
+  const egxInst = INSTRUMENTS.find((i) => i.id === "egx30");
+  const record = [{ d: "2026-11-03", c: 49255.7 }, { d: "2026-11-04", c: 50650.2 }, { d: "2026-11-05", c: 51152.7 }];
+  check(
+    "the board's record corrects a stale previous close, confirms a right one, and refuses one it cannot match",
+    [recordedPrev(egxInst, egx, record), recordedPrev(egxInst, egx, record.slice(0, 2)), recordedPrev(egxInst, { ...egx, prev: 50000 }, record), recordedPrev(egxInst, egx, [])],
+    [51152.7, 50650.2, null, null],
+  );
+  // The lines: a Sunday point is dropped from a weekday market's record and kept in the Saudi index's and bitcoin's.
+  const inst = (id) => INSTRUMENTS.find((i) => i.id === id);
+  const days = (history) => history.map((p) => p.d);
+  check(
+    "a market's line holds only the days it trades",
+    [days(mergeHistory(inst("brent"), [{ d: "2026-10-23", c: 116.72 }, { d: "2026-10-25", c: 110.7 }, { d: "2026-10-26", c: 115.81 }], [], null)), days(mergeHistory(inst("tasi"), [{ d: "2026-10-23", c: 9700 }, { d: "2026-10-25", c: 9438.5 }], [], null)), days(mergeHistory(inst("btc"), [{ d: "2026-10-24", c: 80790.84 }, { d: "2026-10-25", c: 80024.01 }], [], null))],
+    [["2026-10-23", "2026-10-26"], ["2026-10-25"], ["2026-10-24", "2026-10-25"]],
+  );
+  check("the quote's own point goes under its session", days(mergeHistory(inst("brent"), [{ d: "2026-11-06", c: 98.32 }], [], { price: 97.69, session: "2026-11-09" })), ["2026-11-06", "2026-11-09"]);
 }
 
 // A photo dry run writes nothing, `--apply` included (a review of 2026-11-01: it wrote the saved photograph and its
